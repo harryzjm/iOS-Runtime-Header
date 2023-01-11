@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class UIColor, WFWorkflowIconDrawer;
 
-@interface WFGlyphView : UIView
+@interface WFGlyphView
 {
+    _Bool _outline;
     WFWorkflowIconDrawer *_iconDrawer;
     struct UIEdgeInsets _glyphInsets;
 }
 
-@property(readonly, nonatomic) WFWorkflowIconDrawer *iconDrawer; // @synthesize iconDrawer=_iconDrawer;
-@property(nonatomic) struct UIEdgeInsets glyphInsets; // @synthesize glyphInsets=_glyphInsets;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WFWorkflowIconDrawer *iconDrawer; // @synthesize iconDrawer=_iconDrawer;
+@property(nonatomic) _Bool outline; // @synthesize outline=_outline;
+@property(nonatomic) struct UIEdgeInsets glyphInsets; // @synthesize glyphInsets=_glyphInsets;
+- (void)redrawIcon;
 @property(retain, nonatomic) UIColor *glyphColor;
 @property(nonatomic) unsigned short glyphCharacter;
 - (void)drawRect:(struct CGRect)arg1;

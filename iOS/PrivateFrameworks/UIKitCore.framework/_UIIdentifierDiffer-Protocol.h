@@ -6,9 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSIndexSet, NSSet;
+@class NSIndexSet, NSOrderedCollectionDifference, NSSet;
 
 @protocol _UIIdentifierDiffer <NSObject>
+@property(readonly, nonatomic) NSOrderedCollectionDifference *collectionDifference;
 @property(readonly, nonatomic) _Bool hasChanges;
 @property(readonly, nonatomic) NSSet *movePairs;
 @property(readonly, nonatomic) NSIndexSet *deletedIndexes;

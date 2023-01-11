@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <CoreHAP/HAPTLVBase.h>
+
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDCameraRecordingAudioCodecConfiguration, HMDCameraRecordingGeneralConfiguration, HMDCameraRecordingVideoCodecConfiguration;
 
-@interface HMDCameraRecordingSelectedConfiguration <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDCameraRecordingSelectedConfiguration : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     HMDCameraRecordingGeneralConfiguration *_generalConfiguration;
     HMDCameraRecordingVideoCodecConfiguration *_videoConfiguration;
@@ -17,10 +19,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) HMDCameraRecordingAudioCodecConfiguration *audioConfiguration; // @synthesize audioConfiguration=_audioConfiguration;
 @property(readonly, copy, nonatomic) HMDCameraRecordingVideoCodecConfiguration *videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
 @property(readonly, copy, nonatomic) HMDCameraRecordingGeneralConfiguration *generalConfiguration; // @synthesize generalConfiguration=_generalConfiguration;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;

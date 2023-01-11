@@ -19,7 +19,7 @@
     id <MTLBuffer> _aBuf;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, nonatomic) float c; // @synthesize c=_c;
 @property(readonly, nonatomic) float b; // @synthesize b=_b;

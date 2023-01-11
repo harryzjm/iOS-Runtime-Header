@@ -15,7 +15,6 @@
 @interface GEOPBTransitVehiclePosition : PBCodable <GEOTransitVehiclePosition, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPBTransitArtwork *_artwork;
     NSString *_color;
@@ -26,6 +25,9 @@
     GEOStyleAttributes *_styleAttributes;
     unsigned long long _time;
     unsigned long long _tripId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     float _bearing;
     float _speed;
     struct {
@@ -41,18 +43,7 @@
         unsigned int read_latLng:1;
         unsigned int read_modeShield:1;
         unsigned int read_styleAttributes:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_artwork:1;
-        unsigned int wrote_color:1;
-        unsigned int wrote_directionName:1;
-        unsigned int wrote_headsign:1;
-        unsigned int wrote_latLng:1;
-        unsigned int wrote_modeShield:1;
-        unsigned int wrote_styleAttributes:1;
-        unsigned int wrote_time:1;
-        unsigned int wrote_tripId:1;
-        unsigned int wrote_bearing:1;
-        unsigned int wrote_speed:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -69,26 +60,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) GEOPBTransitArtwork *artwork;
 @property(readonly, nonatomic) _Bool hasArtwork;
-- (void)_readArtwork;
 @property(retain, nonatomic) GEOStyleAttributes *styleAttributes;
 @property(readonly, nonatomic) _Bool hasStyleAttributes;
-- (void)_readStyleAttributes;
 @property(retain, nonatomic) NSString *color;
 @property(readonly, nonatomic) _Bool hasColor;
-- (void)_readColor;
 @property(retain, nonatomic) GEOPBTransitShield *modeShield;
 @property(readonly, nonatomic) _Bool hasModeShield;
-- (void)_readModeShield;
 @property(retain, nonatomic) NSString *headsign;
 @property(readonly, nonatomic) _Bool hasHeadsign;
-- (void)_readHeadsign;
 @property(retain, nonatomic) NSString *directionName;
 @property(readonly, nonatomic) _Bool hasDirectionName;
-- (void)_readDirectionName;
 @property(nonatomic) _Bool hasSpeed;
 @property(nonatomic) float speed;
 @property(nonatomic) _Bool hasBearing;
@@ -97,9 +85,10 @@
 @property(nonatomic) unsigned long long time;
 @property(retain, nonatomic) GEOLatLng *latLng;
 @property(readonly, nonatomic) _Bool hasLatLng;
-- (void)_readLatLng;
 @property(nonatomic) _Bool hasTripId;
 @property(nonatomic) unsigned long long tripId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artworkDataSource;
 @property(readonly, copy, nonatomic) NSString *colorHexString;
 @property(readonly, nonatomic) NSDate *timestamp;

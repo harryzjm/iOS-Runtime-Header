@@ -17,20 +17,18 @@
     CDStruct_be739ab4 _has;
     _Bool _overwrite;
     _Bool _success;
-    _Bool __encodeLegacyGloryData;
     int _entityType;
     _INPBString *_destinationName;
     _INPBString *_entityName;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool success; // @synthesize success=_success;
 @property(nonatomic) _Bool overwrite; // @synthesize overwrite=_overwrite;
 @property(nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property(retain, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
 @property(retain, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

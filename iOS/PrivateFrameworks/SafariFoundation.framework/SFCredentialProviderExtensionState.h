@@ -16,20 +16,20 @@
     _Bool _enabled;
     _Bool _supportsIncrementalUpdates;
     NSString *_localizedDisplayName;
-    NSString *_containingAppBundleIdentifier;
+    id _credentialIdentityStoreIdentifier;
 }
 
 + (id)credentialProviderExtensionWithDisabledState;
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSString *containingAppBundleIdentifier; // @synthesize containingAppBundleIdentifier=_containingAppBundleIdentifier;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) id credentialIdentityStoreIdentifier; // @synthesize credentialIdentityStoreIdentifier=_credentialIdentityStoreIdentifier;
 @property(readonly, copy, nonatomic) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
 @property(readonly, nonatomic) _Bool supportsIncrementalUpdates; // @synthesize supportsIncrementalUpdates=_supportsIncrementalUpdates;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEnabledState:(_Bool)arg1 supportsIncrementalUpdates:(_Bool)arg2 localizedDisplayName:(id)arg3 containingAppBundleIdentifier:(id)arg4;
+- (id)initWithEnabledState:(_Bool)arg1 supportsIncrementalUpdates:(_Bool)arg2 localizedDisplayName:(id)arg3 credentialIdentityStoreIdentifier:(id)arg4;
 - (id)initWithEnabledState:(_Bool)arg1 supportsIncrementalUpdates:(_Bool)arg2;
 
 @end

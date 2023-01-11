@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSSet;
 
 @interface WFStorageServiceRegistry : NSObject
 {
@@ -16,9 +16,10 @@
 + (id)sharedRegistry;
 + (void)registerStorageServiceClass:(Class)arg1;
 + (void)registerAllActionKitStorageServiceClasses;
-@property(readonly, nonatomic) NSArray *registeredServices; // @synthesize registeredServices=_registeredServices;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *registeredServices; // @synthesize registeredServices=_registeredServices;
 - (id)storageServiceWithName:(id)arg1;
+@property(readonly, nonatomic) NSSet *objectRepresentationClasses;
 @property(readonly, nonatomic) NSArray *storageServices;
 - (id)init;
 

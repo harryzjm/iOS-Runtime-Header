@@ -23,6 +23,7 @@
     _Bool _prepareOnly;
     RPConnection *_rpCnx;
     CUTCPServer *_tcpServer;
+    _Bool _trafficRegistrationCalled;
     CUWiFiManager *_wifiManager;
     _Bool _serverMode;
     int _flowControlState;
@@ -37,6 +38,8 @@
     NSUUID *_nwClientID;
     CDUnknownBlockType _receivedEventHandler;
     CDUnknownBlockType _receivedRequestHandler;
+    CDUnknownBlockType _statusChangedHandler;
+    unsigned long long _statusFlags;
     NSString *_streamID;
     NSData *_streamKey;
     NSString *_trafficSessionID;
@@ -46,6 +49,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType streamAcceptHandler; // @synthesize streamAcceptHandler=_streamAcceptHandler;
 @property(nonatomic) _Bool serverMode; // @synthesize serverMode=_serverMode;
 @property(copy, nonatomic) NSData *pskData; // @synthesize pskData=_pskData;
@@ -57,6 +61,8 @@
 @property(copy, nonatomic) NSData *streamKey; // @synthesize streamKey=_streamKey;
 @property(copy, nonatomic) NSString *streamID; // @synthesize streamID=_streamID;
 @property(nonatomic) unsigned int streamFlags; // @synthesize streamFlags=_streamFlags;
+@property(readonly, nonatomic) unsigned long long statusFlags; // @synthesize statusFlags=_statusFlags;
+@property(copy, nonatomic) CDUnknownBlockType statusChangedHandler; // @synthesize statusChangedHandler=_statusChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedEventHandler; // @synthesize receivedEventHandler=_receivedEventHandler;
 @property(copy, nonatomic) NSUUID *nwClientID; // @synthesize nwClientID=_nwClientID;
@@ -65,7 +71,6 @@
 @property(readonly, nonatomic) int flowControlState; // @synthesize flowControlState=_flowControlState;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(nonatomic) unsigned long long delegatedProcessUPID; // @synthesize delegatedProcessUPID=_delegatedProcessUPID;
-- (void).cxx_destruct;
 - (void)_updateTrafficRegistrationForIP:(const CDUnion_fab80606 *)arg1;
 - (void)_updateTrafficRegistration;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;

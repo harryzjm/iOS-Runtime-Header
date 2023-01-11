@@ -21,12 +21,13 @@
 + (id)promiseWithError:(id)arg1;
 + (id)promiseWithAny:(id)arg1;
 + (id)promiseWithAll:(id)arg1;
-@property(retain, nonatomic) AMSPromise *backingPromise; // @synthesize backingPromise=_backingPromise;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AMSPromise *backingPromise; // @synthesize backingPromise=_backingPromise;
 - (void)_removeFromGlobalPromiseStorage;
 - (id)promiseAdapter;
 - (CDUnknownBlockType)completionHandlerAdapter;
 - (id)thenWithBlock:(CDUnknownBlockType)arg1;
+- (id)continueWithBlock:(CDUnknownBlockType)arg1;
 - (id)catchWithBlock:(CDUnknownBlockType)arg1;
 - (void)waitUntilFinishedWithTimeout:(double)arg1;
 - (void)waitUntilFinished;

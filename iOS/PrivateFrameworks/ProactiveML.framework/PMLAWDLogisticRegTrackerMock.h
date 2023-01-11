@@ -11,11 +11,11 @@
     PMLTrackerMockAdapter *_adapter;
 }
 
-+ (id)mockTrackerForPlanId:(struct NSString *)arg1;
++ (id)mockTrackerForPlanId:(id)arg1;
 + (id)mockTracker;
 - (void).cxx_destruct;
-@property(readonly) NSArray *trackedWeights; // @dynamic trackedWeights;
-@property(readonly) NSArray *trackedGradients; // @dynamic trackedGradients;
+@property(readonly, nonatomic) NSArray *trackedWeights; // @dynamic trackedWeights;
+@property(readonly, nonatomic) NSArray *trackedGradients; // @dynamic trackedGradients;
 - (void)clearTrackedMessages;
 - (id)initWithModel:(id)arg1;
 - (id)initWithAdapter:(id)arg1 modelInfo:(id)arg2;

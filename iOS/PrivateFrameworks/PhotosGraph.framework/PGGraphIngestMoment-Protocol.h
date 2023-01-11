@@ -9,6 +9,9 @@
 @class NSDate, NSString;
 
 @protocol PGGraphIngestMoment <NSObject>
+@property(readonly, nonatomic) unsigned long long numberOfAssetsInExtendedCuration;
+@property(readonly, nonatomic) double facesProcessedRatio;
+@property(readonly, nonatomic) double scenesProcessedRatio;
 @property(readonly, nonatomic) double behavioralScore;
 @property(readonly, nonatomic) unsigned long long numberOfRegularGemItems;
 @property(readonly, nonatomic) unsigned long long numberOfShinyGemItems;
@@ -22,6 +25,7 @@
 @property(readonly, nonatomic) unsigned long long numberOfItemsWithPersons;
 @property(readonly, nonatomic) unsigned long long numberOfItems;
 @property(readonly, nonatomic) double contentScore;
+@property(readonly, nonatomic) _Bool isInterestingWithAlternateJunking;
 @property(readonly, nonatomic) _Bool isInteresting;
 @property(readonly, nonatomic) _Bool isSmartInteresting;
 @property(readonly, nonatomic) NSDate *universalEndDate;

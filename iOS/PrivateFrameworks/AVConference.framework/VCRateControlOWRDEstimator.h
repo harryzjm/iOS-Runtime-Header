@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     double _shortAverageLag;
     double _longAverageLag;
     double _owrd;
+    unsigned int _abnormalOWRDSampleCount;
     _Bool _sendTimestampSpikeDetected;
     _Bool _receiveTimestampSpikeDetected;
     double _averageSendInterval;
@@ -35,7 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)resetOWRDEstimation;
 - (_Bool)detectOutOfOrderAndSpikeWithReceiveTimestamp:(unsigned int)arg1;
 - (_Bool)detectOutOfOrderAndSpikeWithSendTimestamp:(unsigned int)arg1;
-- (void)calculateOWRDWithSendTime:(double)arg1 receiveTime:(double)arg2;
+- (_Bool)detectAbnormalOWRDWithRoundTripTime:(double)arg1;
+- (void)calculateOWRDWithSendTime:(double)arg1 receiveTime:(double)arg2 roundTripTime:(double)arg3;
 - (double)relativeReceiveTimeWithTimestamp:(unsigned int)arg1 timestampRate:(unsigned int)arg2;
 - (double)relativeSendTimeWithTimestamp:(unsigned int)arg1 timestampRate:(unsigned int)arg2;
 

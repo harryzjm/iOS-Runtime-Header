@@ -23,8 +23,8 @@
     NUIWidgetGridView *_gridView;
 }
 
-@property(readonly, nonatomic) __weak NUIWidgetGridView *gridView; // @synthesize gridView=_gridView;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak NUIWidgetGridView *gridView; // @synthesize gridView=_gridView;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (CDStruct_c3b9c2ee)donatableSpace;
@@ -33,9 +33,6 @@
 @property(readonly, nonatomic) UILabel *subtitleLabel;
 @property(readonly, nonatomic) UILabel *titleLabel;
 @property(readonly, nonatomic) UIImageView *imageView;
-- (id)currentFont;
-- (id)_createLabelForStyle:(long long)arg1;
-- (id)_createButtonWithGridView:(id)arg1 item:(id)arg2;
 - (void)_didTapButton;
 - (id)initWithWidgetGridView:(id)arg1 item:(id)arg2 index:(unsigned long long)arg3;
 @property(readonly, nonatomic) unsigned long long index;

@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount, AMSAuthenticateOptions, NSNumber, NSString, NSUUID;
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@interface AMSAuthenticateTask
+@class AMSAuthenticateOptions, NSNumber, NSString, NSUUID;
+@protocol AMSAuthenticateTaskDelegate, AMSBagProtocol;
+
+@interface AMSAuthenticateTask <AMSBagConsumer>
 {
+    id <AMSBagProtocol> _bag;
+    id <AMSAuthenticateTaskDelegate> _delegate;
     AMSAuthenticateOptions *_options;
     NSString *_password;
     NSString *_multiUserToken;
@@ -15,12 +20,19 @@
     NSString *_altDSID;
     NSNumber *_DSID;
     NSUUID *_homeIdentifier;
+    NSUUID *_homeUserIdentifier;
     NSString *_username;
-    ACAccount *_authenticatedAccount;
 }
 
-@property(retain, nonatomic) ACAccount *authenticatedAccount; // @synthesize authenticatedAccount=_authenticatedAccount;
++ (void)_updateAccountPasswordUsingSecondaryAccounts:(id)arg1;
++ (id)_createFallbackBag;
++ (id)createBagForSubProfile;
++ (id)bagSubProfileVersion;
++ (id)bagSubProfile;
++ (id)bagKeySet;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *username; // @synthesize username=_username;
+@property(retain, nonatomic) NSUUID *homeUserIdentifier; // @synthesize homeUserIdentifier=_homeUserIdentifier;
 @property(retain, nonatomic) NSUUID *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
 @property(retain, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property(retain, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
@@ -28,21 +40,33 @@
 @property(retain, nonatomic) NSString *multiUserToken; // @synthesize multiUserToken=_multiUserToken;
 @property(retain, nonatomic) NSString *password; // @synthesize password=_password;
 @property(readonly, nonatomic) AMSAuthenticateOptions *options; // @synthesize options=_options;
-- (void).cxx_destruct;
-- (void)setHomeUserID:(id)arg1;
+@property(nonatomic) __weak id <AMSAuthenticateTaskDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (void)setHomeID:(id)arg1;
-- (id)homeUserID;
 - (id)homeID;
 - (void)_updateAccountWithProvidedInformation:(id)arg1;
+- (id)_sanitizeError:(id)arg1;
+- (id)_runDialogRequest:(id)arg1;
+- (_Bool)_runCreateAccountDialogWithError:(id *)arg1;
 - (id)_performAuthenticationUsingAccount:(id)arg1 credentialSource:(unsigned long long)arg2 error:(id *)arg3;
-- (id)_createVerifyCredentialOptionsWithCredentialSource:(unsigned long long)arg1;
+- (id)_handleDialogFromError:(id)arg1;
+- (id)_createAuthKitUpdateTaskForAccount:(id)arg1;
+- (id)_attemptPasswordReuseAuthenticationForAccount:(id)arg1 error:(id *)arg2;
+- (id)_attemptMultiUserTokenAuthenticationForAccount:(id)arg1;
 - (id)_accountStoreForAuthentication;
-- (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;
-- (id)_accountForAuthentication;
+- (id)_accountForAuthenticationWithError:(id *)arg1;
 - (id)performAuthentication;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithRequest:(id)arg1 bag:(id)arg2;
+- (id)initWithAccount:(id)arg1 options:(id)arg2 bag:(id)arg3;
 - (id)initWithAccount:(id)arg1 options:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -9,21 +9,19 @@
 @interface SBInsertionSwitcherModifier
 {
     SBAppLayout *_appLayout;
-    _Bool _keepAppLayoutsBeforeInsertionInHierarchy;
-    unsigned long long _indexToScrollToAfterInsertion;
+    _Bool _isSimulatingPreInsertionState;
     struct CGPoint _contentOffsetBeforeInsertion;
     unsigned long long _phase;
 }
 
-@property(readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 - (void).cxx_destruct;
-- (id)appLayoutsForInsertionOrRemoval;
+@property(readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
+- (void)_performBlockBySimulatingPreInsertionState:(CDUnknownBlockType)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (struct CGPoint)scrollViewContentOffset;
-- (id)appLayouts;
 - (id)handleInsertionEvent:(id)arg1;
 - (id)initWithAppLayout:(id)arg1;
 

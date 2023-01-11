@@ -32,8 +32,10 @@ __attribute__((visibility("hidden")))
     NSArray *_streamIDsWifi;
     NSArray *_streamIDsCell;
     unsigned int _captureFrameRate;
+    _Bool _dynamicVideoPriorityEnabled;
 }
 
+@property(nonatomic) _Bool dynamicVideoPriorityEnabled; // @synthesize dynamicVideoPriorityEnabled=_dynamicVideoPriorityEnabled;
 @property(nonatomic) float currentFrameTime; // @synthesize currentFrameTime=_currentFrameTime;
 @property(copy, nonatomic) NSArray *streamIDsWifi; // @synthesize streamIDsWifi=_streamIDsWifi;
 @property(copy, nonatomic) NSArray *streamIDsCell; // @synthesize streamIDsCell=_streamIDsCell;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)anchorStreamIDWithCappedVideoStreamIDs:(id)arg1;
 - (void)generateKeyFrameWithStreamID:(unsigned int)arg1;
 - (void)setIsLocalOnCellular:(_Bool)arg1 cappedVideoStreamIDs:(id)arg2;
+- (void)selectVideoStreamForVideoPriority;
 - (void)dealloc;
 - (id)initWithVideoStreams:(id)arg1 streamInfos:(id)arg2 delegate:(id)arg3;
 

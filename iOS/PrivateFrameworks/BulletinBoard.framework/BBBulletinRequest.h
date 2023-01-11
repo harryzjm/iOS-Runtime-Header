@@ -18,7 +18,6 @@
 @property(nonatomic) _Bool showsUnreadIndicator;
 - (void)generateBulletinID;
 - (void)addAlertSuppressionAppID:(id)arg1;
-@property(nonatomic) unsigned long long realertCount;
 - (void)setUnlockActionLabel:(id)arg1;
 - (void)_updateSupplementaryAction:(id)arg1;
 - (void)setSupplementaryActions:(id)arg1 forLayout:(long long)arg2;
@@ -75,13 +74,12 @@
 @property(copy, nonatomic) NSString *parentSectionID; // @dynamic parentSectionID;
 @property(copy, nonatomic) NSArray *peopleIDs; // @dynamic peopleIDs;
 @property(nonatomic) _Bool preemptsPresentedAlert; // @dynamic preemptsPresentedAlert;
-@property(nonatomic) _Bool preemptsSTAR; // @dynamic preemptsSTAR;
 @property(nonatomic) _Bool preventAutomaticRemovalFromLockScreen; // @dynamic preventAutomaticRemovalFromLockScreen;
 @property(copy, nonatomic) BBAttachmentMetadata *primaryAttachment; // @dynamic primaryAttachment;
 @property(retain, nonatomic) NSDate *publicationDate; // @dynamic publicationDate;
 @property(copy, nonatomic) NSString *publisherBulletinID; // @dynamic publisherBulletinID;
 @property(copy, nonatomic) BBAction *raiseAction; // @dynamic raiseAction;
-@property(nonatomic) unsigned long long realertCount_deprecated; // @dynamic realertCount_deprecated;
+@property(nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property(retain, nonatomic) NSDate *recencyDate; // @dynamic recencyDate;
 @property(copy, nonatomic) NSString *recordID; // @dynamic recordID;
 @property(copy, nonatomic) NSString *section; // @dynamic section;

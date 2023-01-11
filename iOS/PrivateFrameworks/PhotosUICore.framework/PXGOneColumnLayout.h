@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXCuratedLibraryAllPhotosBodyLayout-Protocol.h>
+#import <PhotosUICore/PXGItemsGeometry-Protocol.h>
+#import <PhotosUICore/PXZoomablePhotosContentLayout-Protocol.h>
 
 @class NSString;
 
-@interface PXGOneColumnLayout <PXCuratedLibraryAllPhotosBodyLayout>
+@interface PXGOneColumnLayout <PXZoomablePhotosContentLayout, PXGItemsGeometry>
 {
     CDStruct_d97c9657 _updateFlags;
     _Bool _isUpdating;
     _Bool _didAlreadyUpdateLoadedItems;
     _Bool _enableBestCropRect;
+    _Bool _enableEffects;
     _Bool _fillSafeAreaTopInset;
     int _mediaKind;
     int _presentationType;
     double _interItemSpacing;
+    double _itemCaptionSpacing;
     double _overrideAspectRatio;
     double _overrideAspectRatioAmount;
     double _aspectRatioLimit;
@@ -28,6 +31,7 @@
     struct UIEdgeInsets _padding;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGPoint anchorItemCenter; // @synthesize anchorItemCenter=_anchorItemCenter;
 @property(nonatomic) long long anchorItem; // @synthesize anchorItem=_anchorItem;
 @property(nonatomic) struct CGPoint anchorViewportCenter; // @synthesize anchorViewportCenter=_anchorViewportCenter;
@@ -36,13 +40,18 @@
 @property(nonatomic) double aspectRatioLimit; // @synthesize aspectRatioLimit=_aspectRatioLimit;
 @property(nonatomic) double overrideAspectRatioAmount; // @synthesize overrideAspectRatioAmount=_overrideAspectRatioAmount;
 @property(nonatomic) double overrideAspectRatio; // @synthesize overrideAspectRatio=_overrideAspectRatio;
+@property(nonatomic) _Bool enableEffects; // @synthesize enableEffects=_enableEffects;
 @property(nonatomic) _Bool enableBestCropRect; // @synthesize enableBestCropRect=_enableBestCropRect;
+@property(nonatomic) double itemCaptionSpacing; // @synthesize itemCaptionSpacing=_itemCaptionSpacing;
 @property(nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property(nonatomic) int presentationType; // @synthesize presentationType=_presentationType;
 @property(nonatomic) int mediaKind; // @synthesize mediaKind=_mediaKind;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
+- (id)itemsInRect:(struct CGRect)arg1 inLayout:(id)arg2;
+- (id)itemsBetweenItem:(long long)arg1 andItem:(long long)arg2;
+- (long long)itemClosestToItem:(long long)arg1 inDirection:(unsigned long long)arg2;
+- (id)itemsGeometry;
 - (void)applySpriteChangeDetails:(id)arg1 countAfterChanges:(unsigned int)arg2 initialState:(CDUnknownBlockType)arg3 modifyState:(CDUnknownBlockType)arg4;
 - (void)setNumberOfItems:(long long)arg1 withChangeDetails:(id)arg2 changeMediaVersionHandler:(CDUnknownBlockType)arg3;
 - (void)loadedItemsDidChange;
@@ -67,6 +76,7 @@
 - (void)update;
 @property(readonly, copy) NSString *description;
 - (id)init;
+@property(nonatomic) double accessoryAlpha;
 - (struct CGRect)frameForItem:(long long)arg1 usingInterItemSpacing:(double)arg2;
 @property(nonatomic) _Bool loadItemsOutsideAnchorViewport;
 @property(readonly, nonatomic) struct CGRect loadedItemsRect;
@@ -76,6 +86,7 @@
 - (long long)columnForItem:(long long)arg1;
 @property(nonatomic) long long numberOfColumns;
 @property(readonly, nonatomic) double rowHeight;
+@property(readonly, nonatomic) _Bool itemCaptionsVisible;
 @property(readonly, nonatomic) _Bool supportsContentMode;
 @property(nonatomic) unsigned char mediaFlags;
 

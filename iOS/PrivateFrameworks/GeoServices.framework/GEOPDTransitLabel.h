@@ -15,20 +15,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTransitLabel : PBCodable <GEOTransitLabelItem, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPBTransitArtwork *_labelArtwork;
     NSString *_labelTextString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _labelType;
     struct {
         unsigned int has_labelType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_labelArtwork:1;
         unsigned int read_labelTextString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_labelArtwork:1;
-        unsigned int wrote_labelTextString:1;
-        unsigned int wrote_labelType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,18 +43,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) GEOPBTransitArtwork *labelArtwork;
 @property(readonly, nonatomic) _Bool hasLabelArtwork;
-- (void)_readLabelArtwork;
 @property(retain, nonatomic) NSString *labelTextString;
 @property(readonly, nonatomic) _Bool hasLabelTextString;
-- (void)_readLabelTextString;
 - (int)StringAsLabelType:(id)arg1;
 - (id)labelTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasLabelType;
 @property(nonatomic) int labelType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSString *labelString;
 @property(readonly, nonatomic) unsigned long long type;
 

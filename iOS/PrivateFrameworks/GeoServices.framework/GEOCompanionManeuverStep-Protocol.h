@@ -7,8 +7,10 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class GEONameInfo, GEONameInfoList, NSMutableArray;
+@protocol GEOTransitArtworkDataSource;
 
 @protocol GEOCompanionManeuverStep <NSObject>
+@property(readonly, nonatomic) id <GEOTransitArtworkDataSource> maneuverArtworkOverride;
 @property(readonly, nonatomic) int transportType;
 @property(readonly, nonatomic) struct GEOJunctionElement *junctionElements;
 @property(readonly, nonatomic) unsigned long long junctionElementsCount;

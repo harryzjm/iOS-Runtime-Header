@@ -16,6 +16,7 @@
 @property(nonatomic) CDStruct_68f7c993 colorMatrix; // @synthesize colorMatrix=_colorMatrix;
 @property(nonatomic) CDStruct_59a221c9 range; // @synthesize range=_range;
 @property(nonatomic) long long binCount; // @synthesize binCount=_binCount;
+- (id)_computeHistogramForBufferRGBAhHLG:(id)arg1 error:(out id *)arg2;
 - (id)_computeHistogramForBufferBGRA8:(id)arg1 error:(out id *)arg2;
 - (id)computeHistogramFromBuffer:(id)arg1 error:(out id *)arg2;
 - (id)init;

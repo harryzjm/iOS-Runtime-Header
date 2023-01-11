@@ -13,7 +13,6 @@
 }
 
 - (id)dictionaryRepresentation;
-@property(readonly, copy) NSString *externalClassName;
 - (void)updateUniqueIdentifier;
 - (id)computeUniqueIdentifier;
 - (void)awakeFromInsert;

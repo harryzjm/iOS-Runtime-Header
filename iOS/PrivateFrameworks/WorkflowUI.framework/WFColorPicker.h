@@ -9,24 +9,24 @@
 #import <WorkflowUI/UICollectionViewDataSource-Protocol.h>
 #import <WorkflowUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UICollectionView, UIColor;
+@class NSArray, NSString, UICollectionView, WFColor;
 @protocol WFColorPickerDelegate;
 
 @interface WFColorPicker : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 {
-    UIColor *_selectedColor;
+    WFColor *_selectedColor;
     id <WFColorPickerDelegate> _delegate;
     NSArray *_colors;
     NSArray *_colorNames;
     UICollectionView *_colorCollectionView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionView *colorCollectionView; // @synthesize colorCollectionView=_colorCollectionView;
 @property(retain, nonatomic) NSArray *colorNames; // @synthesize colorNames=_colorNames;
 @property(retain, nonatomic) NSArray *colors; // @synthesize colors=_colors;
 @property(nonatomic) __weak id <WFColorPickerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIColor *selectedColor; // @synthesize selectedColor=_selectedColor;
-- (void).cxx_destruct;
+@property(retain, nonatomic) WFColor *selectedColor; // @synthesize selectedColor=_selectedColor;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

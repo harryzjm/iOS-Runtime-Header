@@ -8,21 +8,25 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, GEOPDCategorySearchResultSection, GEOPDRelatedSearchSuggestion, GEOPDSearchClientBehavior, NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOMapRegion, GEOPDRelatedSearchSuggestion, GEOPDSCategorySearchResultSection, GEOPDSearchClientBehavior, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategorySearchResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_browseCategorys;
-    GEOPDCategorySearchResultSection *_categorySearchResultSection;
+    GEOPDSCategorySearchResultSection *_categorySearchResultSection;
     GEOPDRelatedSearchSuggestion *_defaultRelatedSearchSuggestion;
     GEOMapRegion *_displayMapRegion;
+    NSMutableArray *_relatedEntitySections;
     NSMutableArray *_relatedSearchSuggestions;
     NSMutableArray *_resultDetourInfos;
     GEOPDSearchClientBehavior *_searchClientBehavior;
+    NSMutableArray *_searchTierMetadatas;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _enablePartialClientization;
     _Bool _isChainResultSet;
     struct {
@@ -33,23 +37,18 @@ __attribute__((visibility("hidden")))
         unsigned int read_categorySearchResultSection:1;
         unsigned int read_defaultRelatedSearchSuggestion:1;
         unsigned int read_displayMapRegion:1;
+        unsigned int read_relatedEntitySections:1;
         unsigned int read_relatedSearchSuggestions:1;
         unsigned int read_resultDetourInfos:1;
         unsigned int read_searchClientBehavior:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_browseCategorys:1;
-        unsigned int wrote_categorySearchResultSection:1;
-        unsigned int wrote_defaultRelatedSearchSuggestion:1;
-        unsigned int wrote_displayMapRegion:1;
-        unsigned int wrote_relatedSearchSuggestions:1;
-        unsigned int wrote_resultDetourInfos:1;
-        unsigned int wrote_searchClientBehavior:1;
-        unsigned int wrote_enablePartialClientization:1;
-        unsigned int wrote_isChainResultSet:1;
+        unsigned int read_searchTierMetadatas:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)searchTierMetadataType;
++ (Class)relatedEntitySectionType;
 + (Class)browseCategoryType;
 + (Class)resultDetourInfoType;
 + (Class)relatedSearchSuggestionType;
@@ -64,45 +63,50 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDCategorySearchResultSection *categorySearchResultSection;
+- (id)searchTierMetadataAtIndex:(unsigned long long)arg1;
+- (unsigned long long)searchTierMetadatasCount;
+- (void)addSearchTierMetadata:(id)arg1;
+- (void)clearSearchTierMetadatas;
+@property(retain, nonatomic) NSMutableArray *searchTierMetadatas;
+- (id)relatedEntitySectionAtIndex:(unsigned long long)arg1;
+- (unsigned long long)relatedEntitySectionsCount;
+- (void)addRelatedEntitySection:(id)arg1;
+- (void)clearRelatedEntitySections;
+@property(retain, nonatomic) NSMutableArray *relatedEntitySections;
+@property(retain, nonatomic) GEOPDSCategorySearchResultSection *categorySearchResultSection;
 @property(readonly, nonatomic) _Bool hasCategorySearchResultSection;
-- (void)_readCategorySearchResultSection;
 - (id)browseCategoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)browseCategorysCount;
-- (void)_addNoFlagsBrowseCategory:(id)arg1;
 - (void)addBrowseCategory:(id)arg1;
 - (void)clearBrowseCategorys;
 @property(retain, nonatomic) NSMutableArray *browseCategorys;
-- (void)_readBrowseCategorys;
 @property(nonatomic) _Bool hasEnablePartialClientization;
 @property(nonatomic) _Bool enablePartialClientization;
 @property(retain, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior;
 @property(readonly, nonatomic) _Bool hasSearchClientBehavior;
-- (void)_readSearchClientBehavior;
 @property(retain, nonatomic) GEOPDRelatedSearchSuggestion *defaultRelatedSearchSuggestion;
 @property(readonly, nonatomic) _Bool hasDefaultRelatedSearchSuggestion;
-- (void)_readDefaultRelatedSearchSuggestion;
 - (id)resultDetourInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)resultDetourInfosCount;
-- (void)_addNoFlagsResultDetourInfo:(id)arg1;
 - (void)addResultDetourInfo:(id)arg1;
 - (void)clearResultDetourInfos;
 @property(retain, nonatomic) NSMutableArray *resultDetourInfos;
-- (void)_readResultDetourInfos;
 - (id)relatedSearchSuggestionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)relatedSearchSuggestionsCount;
-- (void)_addNoFlagsRelatedSearchSuggestion:(id)arg1;
 - (void)addRelatedSearchSuggestion:(id)arg1;
 - (void)clearRelatedSearchSuggestions;
 @property(retain, nonatomic) NSMutableArray *relatedSearchSuggestions;
-- (void)_readRelatedSearchSuggestions;
 @property(nonatomic) _Bool hasIsChainResultSet;
 @property(nonatomic) _Bool isChainResultSet;
 @property(retain, nonatomic) GEOMapRegion *displayMapRegion;
 @property(readonly, nonatomic) _Bool hasDisplayMapRegion;
-- (void)_readDisplayMapRegion;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

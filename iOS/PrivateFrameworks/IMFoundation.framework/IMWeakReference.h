@@ -13,12 +13,12 @@
 }
 
 + (id)weakRefWithObject:(id)arg1;
+- (void).cxx_destruct;
 - (id)object;
 - (id)initRefWithObject:(id)arg1;
 - (id)copyObject;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 
 @end
 

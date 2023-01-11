@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <BusinessChatService/NSCopying-Protocol.h>
 #import <BusinessChatService/NSSecureCoding-Protocol.h>
 
-@class BCSOpenHours, NSArray, NSDate, NSString, NSURL;
+@class BCSBusinessItemIdentifier, BCSOpenHours, NSArray, NSDate, NSString, NSURL;
 
-@interface BCSBusinessItem : NSObject <NSCopying, NSSecureCoding>
+@interface BCSBusinessItem <NSCopying, NSSecureCoding>
 {
     NSString *_bizID;
     NSString *_phoneNumber;
@@ -28,11 +26,14 @@
     _Bool _isVerified;
     NSString *_intentID;
     NSString *_groupID;
+    BCSBusinessItemIdentifier *_itemIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)_businessItemsFromChatSuggestMessageDictionary:(id)arg1;
-+ (id)_businessItemsFromChatSuggestJSONObj:(id)arg1;
++ (id)businessItemsFromRecords:(id)arg1;
++ (id)businessItemsFromChatSuggestMessageDictionary:(id)arg1;
++ (id)businessItemsFromChatSuggestJSONObj:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *visibilityItems; // @synthesize visibilityItems=_visibilityItems;
 @property(readonly, nonatomic) BCSOpenHours *callingOpenHours; // @synthesize callingOpenHours=_callingOpenHours;
 @property(readonly, nonatomic) BCSOpenHours *messagingOpenHours; // @synthesize messagingOpenHours=_messagingOpenHours;
@@ -48,13 +49,18 @@
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(readonly, copy, nonatomic) NSString *bizID; // @synthesize bizID=_bizID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)_visibilityItemsDescription;
 - (id)_selectedVisibilityItemForLanguage:(id)arg1 country:(id)arg2;
-- (_Bool)_isChatSuggestVisibleForVisibilityItem:(id)arg1 DSID:(id)arg2 bizID:(id)arg3;
+- (_Bool)_isChatSuggestVisibleForVisibilityItem:(id)arg1 messagesIdentifier:(id)arg2 bizID:(id)arg3;
 - (id)_callToActionForLanguage:(id)arg1;
 - (id)callToAction;
+@property(readonly, nonatomic, getter=_businessItemIdentifier) BCSBusinessItemIdentifier *businessItemIdentifier;
+- (_Bool)matchesItemIdentifying:(id)arg1;
+- (long long)type;
+- (long long)truncatedHash;
+- (id)itemIdentifier;
 - (id)_dateWhenCallingAvailableNextAfterDate:(id)arg1;
 @property(readonly, nonatomic) NSDate *dateWhenCallingAvailableNext;
 - (_Bool)_isAvailableForCallingAtDate:(id)arg1;
@@ -64,6 +70,7 @@
 - (_Bool)_isAvailableForMessagingAtDate:(id)arg1;
 @property(readonly, nonatomic) _Bool isAvailableForMessaging;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
 - (id)description;
 - (id)initWithBizID:(id)arg1 phoneNumber:(id)arg2 name:(id)arg3 phoneHash:(long long)arg4 squareLogoURL:(id)arg5 wideLogoURL:(id)arg6 tintColor:(unsigned long long)arg7 backgroundColor:(unsigned long long)arg8 callToActions:(id)arg9 messagingOpenHours:(id)arg10 callingOpenHours:(id)arg11 isVerified:(_Bool)arg12 intentID:(id)arg13 groupID:(id)arg14 visibilityItems:(id)arg15;
 - (id)initWithChatSuggestMessage:(id)arg1 bucketID:(id)arg2;

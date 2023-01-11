@@ -7,27 +7,34 @@
 #import <objc/NSObject.h>
 
 #import <NewsAnalytics/FCBundleSubscriptionChangeObserver-Protocol.h>
+#import <NewsAnalytics/FCSubscriptionObserving-Protocol.h>
 #import <NewsAnalytics/FCUserInfoObserving-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC13NewsAnalytics15SessionObserver : NSObject <FCBundleSubscriptionChangeObserver, FCUserInfoObserving>
+@interface _TtC13NewsAnalytics15SessionObserver : NSObject <FCBundleSubscriptionChangeObserver, FCUserInfoObserving, FCSubscriptionObserving>
 {
     MISSING_TYPE *sessionManager;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *client;
     MISSING_TYPE *window;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)dealloc;
+- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2 changeSet:(id)arg3;
 - (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)bundleSubscriptionDidExpire:(id)arg1;
+- (void)pushContentEnvironmentData;
 - (void)pushOrientationData;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)pushMobileData;
 - (void)pushUserSubscriptionContextData;
-- (void)pushSessionData;
+- (void)pushSessionDataWithRegionIDs:(id)arg1;
 - (void)userInfoDidChangeFeldsparID:(id)arg1 fromCloud:(_Bool)arg2;
+- (void)subscriptionController:(id)arg1 didAddTags:(id)arg2 changeTags:(id)arg3 moveTags:(id)arg4 removeTags:(id)arg5 subscriptionType:(unsigned long long)arg6 eventInitiationLevel:(long long)arg7;
 
 @end
 

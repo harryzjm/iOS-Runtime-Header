@@ -28,6 +28,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *authors; // @synthesize authors=_authors;
 @property(retain, nonatomic) EDAMContact *contact; // @synthesize contact=_contact;
 @property(retain, nonatomic) NSString *clipUrl; // @synthesize clipUrl=_clipUrl;
@@ -44,7 +45,6 @@
 @property(retain, nonatomic) NSString *url; // @synthesize url=_url;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
-- (void).cxx_destruct;
 
 @end
 

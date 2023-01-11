@@ -14,23 +14,21 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryCategory : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOLocalizedString *_displayName;
     GEOStyleAttributes *_styleAttributes;
     NSData *_suggestionEntryMetadata;
     GEOPDVenueIdentifier *_venueIdentifier;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_displayName:1;
         unsigned int read_styleAttributes:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_venueIdentifier:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayName:1;
-        unsigned int wrote_styleAttributes:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_venueIdentifier:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,20 +44,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDVenueIdentifier *venueIdentifier;
 @property(readonly, nonatomic) _Bool hasVenueIdentifier;
-- (void)_readVenueIdentifier;
 @property(retain, nonatomic) NSData *suggestionEntryMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-- (void)_readSuggestionEntryMetadata;
 @property(retain, nonatomic) GEOStyleAttributes *styleAttributes;
 @property(readonly, nonatomic) _Bool hasStyleAttributes;
-- (void)_readStyleAttributes;
 @property(retain, nonatomic) GEOLocalizedString *displayName;
 @property(readonly, nonatomic) _Bool hasDisplayName;
-- (void)_readDisplayName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

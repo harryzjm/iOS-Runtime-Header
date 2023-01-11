@@ -6,20 +6,22 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSError, NSObject;
-@protocol OS_dispatch_queue;
+@class NSError, NSOperationQueue;
 
 @interface ICAsyncOperation : NSOperation
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    struct os_unfair_lock_s _asyncOperationLock;
+    NSOperationQueue *_childOperationQueue;
+    long long _qualityOfServiceForChildOperationQueue;
     _Bool _isExecuting;
     _Bool _isFinished;
     NSError *_error;
 }
 
-@property(readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
 - (void)_execute;
+- (void)enqueueChildOperation:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (void)finish;
 - (void)execute;

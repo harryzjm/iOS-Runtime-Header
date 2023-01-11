@@ -6,60 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <Photos/PHPhotoLibraryChangeObserver-Protocol.h>
+@class NSDate, NSMutableDictionary, NSMutableSet, PHPhotoLibrary;
 
-@class NSDate, NSMutableDictionary, NSMutableSet, NSString, PFDispatchQueue, PHPhotoLibrary;
-
-@interface PHImportDuplicateChecker : NSObject <PHPhotoLibraryChangeObserver>
+@interface PHImportDuplicateChecker : NSObject
 {
     NSMutableDictionary *_avchdAssetIdentifierCache;
     NSMutableDictionary *_sizeNameCache;
     NSMutableDictionary *_assetIdentifierCache;
-    NSMutableDictionary *_dupInfoByObjectID;
     NSDate *_lastChange;
     NSMutableSet *_updatedDupInfos;
-    PFDispatchQueue *_queue;
     PHPhotoLibrary *_library;
-    NSMutableDictionary *_foundPPTData;
-    NSMutableDictionary *_notFoundPPTData;
-    NSMutableDictionary *_generatedPPTData;
 }
 
-+ (void)removeLibrary:(id)arg1;
-+ (void)addLibrary:(id)arg1;
-+ (id)fetchAssetsFromLibrary:(id)arg1 withPredicates:(id)arg2;
-+ (id)dateWithDate:(id)arg1;
-+ (id)doneWithDuplicateCheckerForLibrary:(id)arg1 forClient:(id)arg2;
-+ (id)duplicateCheckerForClient:(id)arg1 andLibrary:(id)arg2;
-+ (void)initialize;
-@property(retain, nonatomic) NSMutableDictionary *generatedPPTData; // @synthesize generatedPPTData=_generatedPPTData;
-@property(retain, nonatomic) NSMutableDictionary *notFoundPPTData; // @synthesize notFoundPPTData=_notFoundPPTData;
-@property(retain, nonatomic) NSMutableDictionary *foundPPTData; // @synthesize foundPPTData=_foundPPTData;
-@property(retain, nonatomic) PHPhotoLibrary *library; // @synthesize library=_library;
-@property(retain) PFDispatchQueue *queue; // @synthesize queue=_queue;
++ (id)_fetchAssetInfoFromLibrary:(id)arg1 forFileSizes:(id)arg2;
++ (id)_dateWithDate:(id)arg1;
 - (void).cxx_destruct;
-- (id)generatePPTData;
-- (void)photoLibraryDidChange:(id)arg1;
-- (id)getAssetObjectIdsFromObjectIds:(id)arg1;
-- (void)checkForDuplicates:(id)arg1 considerItemsInTrash:(_Bool)arg2 forEach:(CDUnknownBlockType)arg3 atEnd:(CDUnknownBlockType)arg4;
-- (id)checkForDuplicate:(id)arg1 considerItemsInTheTrash:(_Bool)arg2;
-- (void)recordTimeSinceStart:(double)arg1 inData:(id)arg2 forKey:(id)arg3;
-- (_Bool)findFingerprint:(id)arg1 forItem:(id)arg2 inCache:(id)arg3 considerTrash:(_Bool)arg4;
-- (id)findMatchingAssetsForItem:(id)arg1 inSet:(id)arg2 matchingDate:(id *)arg3 confidence:(unsigned char *)arg4;
-- (id)filterDuplicatesForItem:(id)arg1 duplicateSet:(id)arg2 considerItemsInTrash:(_Bool)arg3;
-- (void)dePopulateCachesWithObjectID:(id)arg1;
-- (void)removeDuplicateInfo:(id)arg1 forFingerprint:(id)arg2 inCache:(id)arg3;
-- (void)populateCachesWithAssetInfo:(id)arg1;
-- (void)setDupInfo:(id)arg1 forFingerprint:(id)arg2 inCache:(id)arg3;
-- (void)updateAssetsFromDupInfos;
+@property(retain, nonatomic) PHPhotoLibrary *library; // @synthesize library=_library;
+- (void)findDuplicatesOfItems:(id)arg1 considerItemsInTrash:(_Bool)arg2 forEach:(CDUnknownBlockType)arg3 atEnd:(CDUnknownBlockType)arg4;
+- (id)_checkForDuplicate:(id)arg1 considerItemsInTheTrash:(_Bool)arg2;
+- (_Bool)_findFingerprint:(id)arg1 forItem:(id)arg2 inCache:(id)arg3 considerTrash:(_Bool)arg4;
+- (id)_findMatchingAssetsForItem:(id)arg1 inSet:(id)arg2 matchingDate:(id *)arg3 confidence:(unsigned char *)arg4;
+- (id)_filterDuplicatesForItem:(id)arg1 duplicateSet:(id)arg2 considerItemsInTrash:(_Bool)arg3;
+- (void)_populateCachesWithAssetInfo:(id)arg1;
+- (void)_setDupInfo:(id)arg1 forFingerprint:(id)arg2 inCache:(id)arg3;
+- (void)_updateAssetsFromDupInfos;
 - (id)initWithLibrary:(id)arg1;
-- (unsigned long long)populateCachesWithAssetsInfos:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (unsigned long long)_populateCachesWithAssetsInfos:(id)arg1;
 
 @end
 

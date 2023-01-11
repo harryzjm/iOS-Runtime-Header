@@ -40,6 +40,7 @@
     id <PKInlineColorPickerSerialViewControllerTransitionDelegate> _serialViewControllerTransitionDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKInlineColorPickerSerialViewControllerTransitionDelegate> serialViewControllerTransitionDelegate; // @synthesize serialViewControllerTransitionDelegate=_serialViewControllerTransitionDelegate;
 @property(nonatomic) __weak id <PKInlineColorPickerContentsHiddenDelegate> _contentsHiddenDelegate; // @synthesize _contentsHiddenDelegate=__contentsHiddenDelegate;
 @property(nonatomic) __weak id <_PKInlineColorPickerAllowDrawingWithPopoverDelegate> _allowDrawingWithPopoverDelegate; // @synthesize _allowDrawingWithPopoverDelegate=__allowDrawingWithPopoverDelegate;
@@ -62,12 +63,11 @@
 @property(nonatomic) __weak id <PKInlineColorPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long selectionState; // @synthesize selectionState=_selectionState;
 @property(nonatomic) unsigned long long sizeState; // @synthesize sizeState=_sizeState;
-- (void).cxx_destruct;
 - (id)_axLabelForColorButton:(id)arg1;
 - (void)_axHandleLongPressOnColorButtonForLargeTextHUD:(id)arg1;
 - (void)_allowDrawingWhilePresentingPopoverViewDidBeginDrawing:(id)arg1;
-- (_Bool)popoverPresentationControllerShouldDismissPopover:(id)arg1;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (_Bool)presentationControllerShouldDismiss:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)_colorPickerUserDidTouchUpInside:(id)arg1;
 - (void)colorPickerDidChangeSelectedColor:(id)arg1;

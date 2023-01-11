@@ -13,6 +13,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)updateProgress;
 - (_Bool)accessibilityViewIsModal;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilityApplyPlayPauseDeleteButtonLabel;
 
 @end
 

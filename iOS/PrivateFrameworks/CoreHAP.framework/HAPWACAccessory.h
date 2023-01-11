@@ -10,12 +10,6 @@
 
 @interface HAPWACAccessory : HMFObject
 {
-    _Bool _supportsLegacyWAC;
-    _Bool _supportsWAC2;
-    _Bool _supportsTokenAuth;
-    _Bool _supportsCertAuth;
-    _Bool _isHomeKitAccessory;
-    _Bool _isAirPlayAccessory;
     _Bool _supportsAirPlay;
     _Bool _requiresOwnershipToken;
     _Bool _homeKitPaired;
@@ -39,6 +33,7 @@
     HMFUnfairLock *_lock;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly, nonatomic) CUWiFiDevice *cuWiFiDevice; // @synthesize cuWiFiDevice=_cuWiFiDevice;
 @property(nonatomic) double discoveryTime; // @synthesize discoveryTime=_discoveryTime;
@@ -60,13 +55,12 @@
 @property(readonly, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property(readonly, nonatomic) NSString *model; // @synthesize model=_model;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isAirPlayAccessory; // @synthesize isAirPlayAccessory=_isAirPlayAccessory;
-@property(readonly, nonatomic) _Bool isHomeKitAccessory; // @synthesize isHomeKitAccessory=_isHomeKitAccessory;
-@property(readonly, nonatomic) _Bool supportsCertAuth; // @synthesize supportsCertAuth=_supportsCertAuth;
-@property(readonly, nonatomic) _Bool supportsTokenAuth; // @synthesize supportsTokenAuth=_supportsTokenAuth;
-@property(readonly, nonatomic) _Bool supportsWAC2; // @synthesize supportsWAC2=_supportsWAC2;
-@property(readonly, nonatomic) _Bool supportsLegacyWAC; // @synthesize supportsLegacyWAC=_supportsLegacyWAC;
+@property(readonly, nonatomic) _Bool isAirPlayAccessory;
+@property(readonly, nonatomic) _Bool isHomeKitAccessory;
+@property(readonly, nonatomic) _Bool supportsCertAuth;
+@property(readonly, nonatomic) _Bool supportsTokenAuth;
+@property(readonly, nonatomic) _Bool supportsWAC2;
+@property(readonly, nonatomic) _Bool supportsLegacyWAC;
 - (void)updateWithHAPWACAccessory:(id)arg1;
 - (id)description;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 category:(id)arg3 ssid:(id)arg4 deviceId:(id)arg5 flags:(unsigned int)arg6;

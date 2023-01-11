@@ -6,21 +6,22 @@
 
 #import <CloudPhotoLibrary/CPLPlatformImplementation-Protocol.h>
 
-@class CPLMomentShare, CPLResource, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
+@class CPLResource, CPLScopeChange, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol CPLLibraryManagerImplementation <CPLPlatformImplementation>
 - (void)setDiagnosticsEnabled:(_Bool)arg1;
 - (_Bool)diagnosticsEnabled;
 - (void)forceSynchronizingScopeWithIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(CPLForceSyncTask *))arg2;
-- (void)queryUserIdentitiesWithParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
-- (void)acceptMomentShare:(CPLMomentShare *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)fetchMomentShareFromShareURL:(NSURL *)arg1 completionHandler:(void (^)(CPLMomentShare *, NSError *))arg2;
-- (void)publishMomentShare:(CPLMomentShare *)arg1 completionHandler:(void (^)(CPLMomentShare *, NSError *))arg2;
+- (void)queryUserDetailsForShareParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)acceptSharedScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)fetchSharedScopeFromShareURL:(NSURL *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
+- (void)createScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)getMappedScopedIdentifiersForScopedIdentifiers:(NSArray *)arg1 inAreLocalIdentifiers:(_Bool)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)resolveLocalScopedIdentifiersForCloudScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResourceTransferTask *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, unsigned long long, NSError *))arg3;
-- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg4;
-- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(_Bool)arg3 proposedTaskIdentifier:(NSString *)arg4 completionHandler:(void (^)(CPLResourceTransferTask *))arg5;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 clientBundleID:(NSString *)arg4 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg5;
+- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 intent:(unsigned long long)arg3 proposedTaskIdentifier:(NSString *)arg4 completionHandler:(void (^)(CPLResourceTransferTask *))arg5;
 - (void)enableMingling;
 - (void)disableMingling;
 - (void)addStatusChangesForRecordsWithScopedIdentifiers:(NSArray *)arg1 persist:(_Bool)arg2;
@@ -40,8 +41,8 @@
 - (void)startSyncSession;
 - (void)resetStatus;
 - (void)boostPriorityForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)disableMainScopeWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)enableMainScopeWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)deactivateScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)activateScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deactivateWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)closeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)openWithCompletionHandler:(void (^)(NSError *, NSString *, NSString *, NSURL *))arg1;
@@ -49,12 +50,14 @@
 @optional
 - (void)provideCloudResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResource *, unsigned long long))arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(CPLRecordChange *, unsigned long long))arg2;
-- (void)provideLibraryInfoForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLLibraryInfo *, unsigned long long))arg2;
+- (void)provideScopeChangeForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLScopeChange *, unsigned long long))arg2;
 - (void)unblockEngineElementOnce:(NSString *)arg1;
 - (void)unblockEngineElement:(NSString *)arg1;
 - (void)blockEngineElement:(NSString *)arg1;
 - (void)reportMiscInformation:(NSDictionary *)arg1;
 - (void)reportSetting:(NSString *)arg1 hasBeenSetToValue:(NSString *)arg2;
+- (void)requestClientToPushAllChangesWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)forceBackupWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)addInfoToLog:(NSString *)arg1;
 - (void)compactFileCacheWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(CPLScopedIdentifier *)arg1 related:(_Bool)arg2 completionHandler:(void (^)(id, id, NSError *))arg3;

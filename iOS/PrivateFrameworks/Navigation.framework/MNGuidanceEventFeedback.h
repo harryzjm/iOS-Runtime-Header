@@ -18,6 +18,7 @@
     double _startDistance;
     double _startTime;
     double _vehicleSpeed;
+    NSString *_enrouteNoticeIdentifier;
     unsigned int _enrouteNoticeIndex;
     NSString *_eventDescription;
     unsigned int _eventIndex;
@@ -26,6 +27,7 @@
     unsigned int _selectedPrimaryStringIndex;
     unsigned int _selectedSecondaryStringIndex;
     unsigned int _stepID;
+    unsigned int _trafficCameraType;
     unsigned int _trafficColor;
     int _type;
     NSString *_uniqueIDstring;
@@ -42,6 +44,7 @@
         unsigned int selectedPrimaryStringIndex:1;
         unsigned int selectedSecondaryStringIndex:1;
         unsigned int stepID:1;
+        unsigned int trafficCameraType:1;
         unsigned int trafficColor:1;
         unsigned int type:1;
         unsigned int shortPrompt:1;
@@ -49,7 +52,10 @@
 }
 
 + (Class)junctionViewImageIDType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *eventDescription; // @synthesize eventDescription=_eventDescription;
+@property(nonatomic) unsigned int trafficCameraType; // @synthesize trafficCameraType=_trafficCameraType;
+@property(retain, nonatomic) NSString *enrouteNoticeIdentifier; // @synthesize enrouteNoticeIdentifier=_enrouteNoticeIdentifier;
 @property(retain, nonatomic) NSMutableArray *junctionViewImageIDs; // @synthesize junctionViewImageIDs=_junctionViewImageIDs;
 @property(nonatomic) double maneuverTime; // @synthesize maneuverTime=_maneuverTime;
 @property(nonatomic) double endDistance; // @synthesize endDistance=_endDistance;
@@ -66,7 +72,6 @@
 @property(nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
 @property(retain, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property(retain, nonatomic) NSString *uniqueIDstring; // @synthesize uniqueIDstring=_uniqueIDstring;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -77,6 +82,8 @@
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasEventDescription;
+@property(nonatomic) _Bool hasTrafficCameraType;
+@property(readonly, nonatomic) _Bool hasEnrouteNoticeIdentifier;
 - (id)junctionViewImageIDAtIndex:(unsigned long long)arg1;
 - (unsigned long long)junctionViewImageIDsCount;
 - (void)addJunctionViewImageID:(id)arg1;

@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
     struct MuninSceneLogic *_muninSceneLogic;
     shared_ptr_e963992e _taskContext;
     struct optional<(anonymous namespace)::PointSegment> _currentPointSegment;
-    struct unique_ptr<(anonymous namespace)::PathAnimator, std::__1::default_delete<(anonymous namespace)::PathAnimator>> _pathAnimator;
+    shared_ptr_781019ee _pathAnimator;
     struct unique_ptr<(anonymous namespace)::BumpAnimator, std::__1::default_delete<(anonymous namespace)::BumpAnimator>> _bumpAnimator;
     _Bool _panning;
     _Bool _panStopping;
+    Matrix_8746f91e _panLocation;
     Matrix_8746f91e _panTranslation;
     struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _panAnimation;
     _Bool _pinching;
@@ -28,18 +29,22 @@ __attribute__((visibility("hidden")))
     float _cameraOffsetFactor;
     struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _offsetAnimation;
     double _lastUpdateTime;
-    struct Spring<double, 1, mdc::SpringType::Angular> _panSpring;
+    struct Spring<double, 1, gdc::SpringType::Angular> _panSpring;
     Unit_3d259e8a _heading;
     Unit_3d259e8a _pitch;
     _Bool _restrictWidestFieldOfView;
     Unit_3d259e8a _widestFieldOfView;
     Coordinate3D_bc242218 _rigPosition;
     CameraFrame_406dbd31 _previousCameraFrame;
+    unsigned long long _tapIndex;
+    struct shared_ptr<geo::Task> _preparePath;
+    struct unique_ptr<(anonymous namespace)::PathAnimationDescription, std::__1::default_delete<(anonymous namespace)::PathAnimationDescription>> _currentPathAnimation;
+    struct unique_ptr<(anonymous namespace)::PendingPathAnimation, std::__1::default_delete<(anonymous namespace)::PendingPathAnimation>> _pendingPathAnimation;
 }
 
-@property(nonatomic) _Bool virtualParallaxEnabled; // @synthesize virtualParallaxEnabled=_virtualParallaxEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool virtualParallaxEnabled; // @synthesize virtualParallaxEnabled=_virtualParallaxEnabled;
 - (double)zoomLevelAdjustmentForTileSize:(long long)arg1;
 - (id)viewportInfo;
 - (double)topDownMinimumZoomLevelForTileSize:(long long)arg1;
@@ -55,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)updateRotationWithFocusPoint:(struct CGPoint)arg1 newValue:(double)arg2;
 - (void)startRotatingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)zoomAnimated:(Unit_3d259e8a)arg1 completion:(CDUnknownBlockType)arg2;
@@ -67,13 +73,20 @@ __attribute__((visibility("hidden")))
 - (void)stopPanningAtPoint:(struct CGPoint)arg1;
 - (void)willStopPanningAtPoint:(struct CGPoint)arg1 withVelocity:(struct CGPoint)arg2;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
+- (Unit_3d259e8a)_pitchForScreenPoint:(Matrix_8746f91e)arg1;
 - (Unit_3d259e8a)_verticalFieldOfView:(Unit_3d259e8a)arg1;
 - (Unit_3d259e8a)_horizontalFieldOfView:(Unit_3d259e8a)arg1;
 - (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(_Bool)arg2;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
-- (void)runBumpAnimation:(const Geocentric_d8fde6f2 *)arg1 targetPoint:(const Geocentric_d8fde6f2 *)arg2;
-- (void)animatePath:(vector_e91c9c3b *)arg1 withTarget:(const Geocentric_d8fde6f2 *)arg2 lookAtTarget:(_Bool)arg3 constantLod:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)moveAlongPath:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_6683d8a9)arg3 continued:(_Bool)arg4;
+- (void)pathAnimationComplete:(unsigned long long)arg1;
+- (void)pathAnimationPrepared:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_6683d8a9)arg3;
+- (void)runBumpAnimation:(const Geocentric_d8fde6f2 *)arg1 targetPoint:(const Geocentric_d8fde6f2 *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)animatePath:(vector_e91c9c3b *)arg1 withTarget:(const Geocentric_d8fde6f2 *)arg2 lookAtTarget:(_Bool)arg3 constantLod:(_Bool)arg4 prePruneData:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)animatePath:(vector_e91c9c3b *)arg1 animator:(const shared_ptr_781019ee *)arg2 preloadedRequiredViews:(unordered_map_6683d8a9 *)arg3 prePruneData:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)isAnimationsRunning;
+- (_Bool)isBumpAnimationRunning;
+- (_Bool)isPathAnimationRunning;
 - (_Bool)isAnimationsRunningExceptBump;
 - (_Bool)cancelPendingMoveExceptBump;
 - (_Bool)cancelPendingMove;
@@ -85,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (Matrix_8746f91e)screenPointWithOffset:(struct CGPoint)arg1;
 - (void)updateCurrentPointView:(_Bool)arg1;
 - (const struct CollectionPoint *)currentPoint;
+- (void)setCurrentPoint:(const struct CollectionPoint *)arg1 secondaryPoint:(optional_ff574c75)arg2;
 - (void)setCurrentPoint:(const struct CollectionPoint *)arg1;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCameraFrame:(CameraFrame_406dbd31)arg1;

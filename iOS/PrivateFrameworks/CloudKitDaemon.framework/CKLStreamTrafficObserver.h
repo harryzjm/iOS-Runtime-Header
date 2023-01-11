@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSObject;
+@class NSMutableDictionary, NSObject, NSPredicate;
 @protocol OS_dispatch_queue;
 
 @interface CKLStreamTrafficObserver
 {
+    NSPredicate *_logMessageFilter;
     CDUnknownBlockType _requestParsedBlock;
     NSMutableDictionary *_requestDictionary;
     NSObject<OS_dispatch_queue> *_printQueue;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_queue> *printQueue; // @synthesize printQueue=_printQueue;
 @property(retain) NSMutableDictionary *requestDictionary; // @synthesize requestDictionary=_requestDictionary;
 @property(copy, nonatomic) CDUnknownBlockType requestParsedBlock; // @synthesize requestParsedBlock=_requestParsedBlock;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSPredicate *logMessageFilter; // @synthesize logMessageFilter=_logMessageFilter;
 - (id)parserFromConfigurationMessage:(id)arg1;
 - (void)finish;
 - (void)parseRequestArrayAndPrint:(id)arg1;

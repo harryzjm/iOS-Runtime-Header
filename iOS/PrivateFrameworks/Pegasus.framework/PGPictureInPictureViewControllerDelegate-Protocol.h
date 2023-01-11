@@ -6,14 +6,11 @@
 
 #import <Pegasus/NSObject-Protocol.h>
 
-@class PGPictureInPictureViewController;
+@class PGCommand, PGPictureInPictureViewController;
 
 @protocol PGPictureInPictureViewControllerDelegate <NSObject>
-
-@optional
-- (void)pictureInPictureViewControllerCancelButtonTapped:(PGPictureInPictureViewController *)arg1;
-- (void)pictureInPictureViewControllerActionButtonTapped:(PGPictureInPictureViewController *)arg1;
-- (void)pictureInPictureViewControllerStopButtonTapped:(PGPictureInPictureViewController *)arg1;
+- (void)pictureInPictureViewController:(PGPictureInPictureViewController *)arg1 didTransitionToStashed:(_Bool)arg2 shouldBeginOrEndInterruption:(_Bool)arg3;
+- (void)pictureInPictureViewController:(PGPictureInPictureViewController *)arg1 didReceiveCommand:(PGCommand *)arg2;
 - (void)pictureInPictureViewControllerHostedWindowSizeChangeEnded:(PGPictureInPictureViewController *)arg1;
 - (void)pictureInPictureViewControllerHostedWindowSizeChangeBegan:(PGPictureInPictureViewController *)arg1;
 - (void)pictureInPictureViewController:(PGPictureInPictureViewController *)arg1 updateHostedWindowSize:(struct CGSize)arg2 animationType:(long long)arg3 initialSpringVelocity:(double)arg4;

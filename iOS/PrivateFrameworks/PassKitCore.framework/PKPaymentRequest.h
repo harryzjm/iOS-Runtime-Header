@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, NSURL, PKApplePayTrustSignatureRequest, PKContact, PKPaymentMerchantSession;
+@class AKAppleIDAuthenticationContext, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, NSURL, PKApplePayTrustSignatureRequest, PKContact, PKPaymentInstallmentConfiguration, PKPaymentMerchantSession;
 
 @interface PKPaymentRequest : NSObject <NSSecureCoding>
 {
@@ -17,6 +17,7 @@
     _Bool _accountPaymentUsePeerPaymentBalance;
     _Bool _deviceSupportsPeerPaymentAccountPayment;
     _Bool _suppressTotal;
+    _Bool _paymentSummaryPinned;
     _Bool _shippingEditable;
     _Bool _requiresAddressPrecision;
     _Bool _supportsInstantFundsIn;
@@ -60,11 +61,16 @@
     NSString *_localizedConfirmationTitle;
     NSString *_localizedBiometricConfirmationTitle;
     NSString *_localizedPasswordButtonTitle;
+    NSString *_localizedAuthorizingTitle;
+    NSString *_localizedErrorMessage;
+    NSString *_localizedCallbackErrorTitle;
+    NSString *_localizedCallbackErrorMessage;
     NSString *_shippingEditableMessage;
     PKPaymentMerchantSession *_merchantSession;
     NSString *_passTypeIdentifier;
     NSString *_passSerialNumber;
     double _clientCallbackTimeout;
+    PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
 + (id)paymentShippingAddressUnserviceableErrorWithLocalizedDescription:(id)arg1;
@@ -76,6 +82,8 @@
 + (long long)version;
 + (id)availableNetworks;
 + (id)requestWithProtobuf:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
 @property(nonatomic) _Bool supportsInstantFundsIn; // @synthesize supportsInstantFundsIn=_supportsInstantFundsIn;
 @property(nonatomic) double clientCallbackTimeout; // @synthesize clientCallbackTimeout=_clientCallbackTimeout;
 @property(copy, nonatomic) NSString *passSerialNumber; // @synthesize passSerialNumber=_passSerialNumber;
@@ -84,6 +92,10 @@
 @property(nonatomic) _Bool requiresAddressPrecision; // @synthesize requiresAddressPrecision=_requiresAddressPrecision;
 @property(copy, nonatomic) NSString *shippingEditableMessage; // @synthesize shippingEditableMessage=_shippingEditableMessage;
 @property(nonatomic, getter=isShippingEditable) _Bool shippingEditable; // @synthesize shippingEditable=_shippingEditable;
+@property(copy, nonatomic) NSString *localizedCallbackErrorMessage; // @synthesize localizedCallbackErrorMessage=_localizedCallbackErrorMessage;
+@property(copy, nonatomic) NSString *localizedCallbackErrorTitle; // @synthesize localizedCallbackErrorTitle=_localizedCallbackErrorTitle;
+@property(copy, nonatomic) NSString *localizedErrorMessage; // @synthesize localizedErrorMessage=_localizedErrorMessage;
+@property(copy, nonatomic) NSString *localizedAuthorizingTitle; // @synthesize localizedAuthorizingTitle=_localizedAuthorizingTitle;
 @property(copy, nonatomic) NSString *localizedPasswordButtonTitle; // @synthesize localizedPasswordButtonTitle=_localizedPasswordButtonTitle;
 @property(copy, nonatomic) NSString *localizedBiometricConfirmationTitle; // @synthesize localizedBiometricConfirmationTitle=_localizedBiometricConfirmationTitle;
 @property(copy, nonatomic) NSString *localizedConfirmationTitle; // @synthesize localizedConfirmationTitle=_localizedConfirmationTitle;
@@ -93,6 +105,7 @@
 @property(nonatomic) struct __SecAccessControl *accesssControlRef; // @synthesize accesssControlRef=_accesssControlRef;
 @property(copy, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
 @property(copy, nonatomic) NSString *localizedSummaryItemsTitle; // @synthesize localizedSummaryItemsTitle=_localizedSummaryItemsTitle;
+@property(nonatomic, getter=isPaymentSummaryPinned) _Bool paymentSummaryPinned; // @synthesize paymentSummaryPinned=_paymentSummaryPinned;
 @property(nonatomic) _Bool suppressTotal; // @synthesize suppressTotal=_suppressTotal;
 @property(copy, nonatomic) NSArray *paymentContentItems; // @synthesize paymentContentItems=_paymentContentItems;
 @property(nonatomic) unsigned long long requestor; // @synthesize requestor=_requestor;
@@ -129,10 +142,11 @@
 @property(copy, nonatomic) NSArray *supportedNetworks; // @synthesize supportedNetworks=_supportedNetworks;
 @property(copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
+@property(readonly) _Bool shouldUseMerchantSession;
 @property(readonly) _Bool _isAMPPayment;
 @property(readonly) _Bool _isPSD2StyleRequest;
+- (id)description;
 - (id)_transactionAmount;
 - (unsigned long long)_contactFieldsToAddressFields:(id)arg1;
 - (id)_addressFieldsToContactFields:(unsigned long long)arg1;

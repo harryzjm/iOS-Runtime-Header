@@ -7,24 +7,38 @@
 #import <objc/NSObject.h>
 
 #import <CoreHaptics/CHHapticAdvancedPatternPlayerExtended-Protocol.h>
+#import <CoreHaptics/PatternPlayerDetails-Protocol.h>
 
-@class NSString;
+@class AVHapticSequence, CHHapticEngine, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AdvancedPatternPlayer : NSObject <CHHapticAdvancedPatternPlayerExtended>
+@interface AdvancedPatternPlayer : NSObject <CHHapticAdvancedPatternPlayerExtended, PatternPlayerDetails>
 {
+    CHHapticEngine *_engine;
+    AVHapticSequence *_sequence;
+    double _patternDuration;
+    double _loopEnd;
+    int _state;
+    NSArray *_events;
+    int _muteState;
+    double _seekOffset;
     CDUnknownBlockType _completionHandler;
 }
 
-@property(copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 - (void).cxx_destruct;
+@property double seekOffset; // @synthesize seekOffset=_seekOffset;
+@property __weak CHHapticEngine *engine; // @synthesize engine=_engine;
 - (_Bool)setVolume:(float)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)activateChannelByIndex:(unsigned long long)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (id)initWithRingtoneData:(id)arg1 engine:(id)arg2 error:(id *)arg3;
+@property(copy) CDUnknownBlockType completionHandler;
 @property _Bool isMuted;
 @property float playbackRate;
 @property double loopEnd;
 @property _Bool loopEnabled;
+@property(readonly) _Bool paused;
+@property(readonly) _Bool running;
+@property(readonly) double patternDuration;
 - (_Bool)cancelAndReturnError:(id *)arg1;
 - (_Bool)seekToOffset:(double)arg1 error:(id *)arg2;
 - (_Bool)resumeAtTime:(double)arg1 error:(id *)arg2;
@@ -33,9 +47,18 @@ __attribute__((visibility("hidden")))
 - (_Bool)sendParameters:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)stopAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)startAtTime:(double)arg1 error:(id *)arg2;
+- (_Bool)doResumeAtTime:(double)arg1 error:(id *)arg2;
+- (_Bool)doStartFromPausedAtTime:(double)arg1 error:(id *)arg2;
+- (_Bool)doStartFromStoppedAtTime:(double)arg1 error:(id *)arg2;
+- (void)clearExternalResources:(id)arg1;
+- (void)doSetMute:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithPattern:(id)arg1 engine:(id)arg2 privileged:(_Bool)arg3 error:(id *)arg4;
 - (id)init;
+- (void)finishInit;
+- (void)setPaused;
+- (void)setRunning;
+- (void)resetState;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -20,10 +20,10 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *max; // @synthesize max=_max;
 @property(retain, nonatomic) NSNumber *min; // @synthesize min=_min;
-- (void).cxx_destruct;
-- (id)metricData;
+- (id)analyticsTriggerEventData;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;

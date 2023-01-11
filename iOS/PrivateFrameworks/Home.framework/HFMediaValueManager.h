@@ -22,19 +22,19 @@
     NSError *_cachedPlaybackStateWriteError;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *cachedPlaybackStateWriteError; // @synthesize cachedPlaybackStateWriteError=_cachedPlaybackStateWriteError;
 @property(retain, nonatomic) NSMutableArray *transactionStack; // @synthesize transactionStack=_transactionStack;
 @property(readonly, nonatomic) _Bool hasPendingWrites; // @synthesize hasPendingWrites=_hasPendingWrites;
 @property(readonly, nonatomic) __weak id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
-- (void).cxx_destruct;
 - (void)_notifyDelegatesFailedToUpdatePlaybackStateWithError:(id)arg1 mediaSession:(id)arg2;
 - (void)_notifyDelegatesWillUpdatePlaybackState:(long long)arg1 mediaSession:(id)arg2;
 - (void)_notifyDelegatesDidUpdatePlaybackState:(long long)arg1 mediaSession:(id)arg2;
 - (void)_updateLastPlaybackState:(long long)arg1 sender:(SEL)arg2 notifyWillUpdate:(_Bool)arg3 notifyDidUpdate:(_Bool)arg4;
 - (void)_updateCachedPlaybackStateWriteError:(id)arg1 operationType:(id)arg2 notifyDelegates:(_Bool)arg3;
-- (void)_clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(_Bool)arg2;
 - (void)mediaObject:(id)arg1 didUpdateMediaSession:(id)arg2;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;
+- (void)clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(_Bool)arg2;
 - (id)mediaProfileContainerForRouteID:(id)arg1;
 - (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
 - (id)writePlaybackState:(long long)arg1 playbackArchive:(id)arg2 forRouteID:(id)arg3;

@@ -25,11 +25,11 @@
 + (_Bool)canMakePaymentsUsingNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
 + (_Bool)canMakePaymentsUsingNetworks:(id)arg1;
 + (_Bool)canMakePayments;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPaymentAuthorizationViewControllerPrivateDelegate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
 @property(nonatomic) _Bool viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 @property(retain, nonatomic) PKPaymentAuthorizationCoordinator *paymentCoordinator; // @synthesize paymentCoordinator=_paymentCoordinator;
 @property(nonatomic) __weak id <PKPaymentAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)paymentAuthorizationCoordinator:(id)arg1 willFinishWithError:(id)arg2;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectPaymentMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectShippingAddress:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -37,8 +37,9 @@
 - (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinatorWillAuthorizePayment:(id)arg1;
-- (void)paymentAuthorizationCoordinator:(id)arg1 didRequestMerchantSession:(CDUnknownBlockType)arg2;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didRequestMerchantSessionUpdate:(CDUnknownBlockType)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (long long)modalPresentationStyle;

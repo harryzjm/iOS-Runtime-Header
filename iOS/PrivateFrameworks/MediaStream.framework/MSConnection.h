@@ -12,7 +12,6 @@
 @interface MSConnection : NSObject
 {
     NSXPCConnection *_center;
-    NSXPCConnection *_noWakeCenter;
     NSMutableDictionary *_serverSideConfig;
     NSObject<OS_dispatch_queue> *_serverSideConfigQueue;
     int _serverSideConfigNotificationToken;
@@ -21,8 +20,6 @@
 + (id)sharedConnection;
 - (void).cxx_destruct;
 - (id)_machErrorWithUnderlyingError:(id)arg1;
-- (_Bool)isBusy;
-- (void)isBusyCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)resume:(id)arg1;
 - (id)pause;
 - (void)abortActivitiesForPersonID:(id)arg1;

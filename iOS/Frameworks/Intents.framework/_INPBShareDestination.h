@@ -17,16 +17,14 @@
     struct {
         unsigned int deviceType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _deviceType;
     _INPBContact *_contact;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
 @property(retain, nonatomic) _INPBContact *contact; // @synthesize contact=_contact;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

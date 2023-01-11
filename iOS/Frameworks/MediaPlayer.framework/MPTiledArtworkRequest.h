@@ -9,11 +9,11 @@
 #import <MediaPlayer/NSCopying-Protocol.h>
 
 @class NSArray;
-@protocol NSCopying, OS_dispatch_queue;
+@protocol NSCopying;
 
 @interface MPTiledArtworkRequest : NSObject <NSCopying>
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    struct os_unfair_lock_s _cacheLock;
     NSArray *_artworkCatalogsCache;
     long long _artworkCatalogsCacheCount;
     _Bool _allowsSynchronousArtworkCatalogsBlockExecution;
@@ -26,6 +26,7 @@
     id <NSCopying> _revisionIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) id <NSCopying> revisionIdentifier; // @synthesize revisionIdentifier=_revisionIdentifier;
 @property(copy, nonatomic) id <NSCopying> namespaceIdentifier; // @synthesize namespaceIdentifier=_namespaceIdentifier;
 @property(copy, nonatomic) id <NSCopying> entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
@@ -34,7 +35,6 @@
 @property(nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property(nonatomic) _Bool allowsSynchronousArtworkCatalogsBlockExecution; // @synthesize allowsSynchronousArtworkCatalogsBlockExecution=_allowsSynchronousArtworkCatalogsBlockExecution;
 @property(copy, nonatomic) CDUnknownBlockType artworkCatalogsBlock; // @synthesize artworkCatalogsBlock=_artworkCatalogsBlock;
-- (void).cxx_destruct;
 - (_Bool)hasExistingArtworkCatalogsWithCount:(long long)arg1;
 - (id)existingArtworkCatalogsWithCount:(long long)arg1;
 - (id)artworkCatalogsWithCount:(unsigned long long)arg1;

@@ -12,13 +12,15 @@
 {
     _Bool _imageHidden;
     UIImage *_image;
+    UIImage *_invisibleInkEffectImage;
     NSString *_stickerAccessibilityDescription;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *stickerAccessibilityDescription; // @synthesize stickerAccessibilityDescription=_stickerAccessibilityDescription;
 @property(nonatomic) _Bool imageHidden; // @synthesize imageHidden=_imageHidden;
+@property(retain, nonatomic) UIImage *invisibleInkEffectImage; // @synthesize invisibleInkEffectImage=_invisibleInkEffectImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
-- (void).cxx_destruct;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

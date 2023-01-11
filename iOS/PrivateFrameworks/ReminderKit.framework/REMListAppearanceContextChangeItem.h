@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, REMListChangeItem;
+@class NSString, REMListBadge, REMListChangeItem;
 
 @interface REMListAppearanceContextChangeItem : NSObject
 {
     REMListChangeItem *_listChangeItem;
 }
 
-@property(retain, nonatomic) REMListChangeItem *listChangeItem; // @synthesize listChangeItem=_listChangeItem;
 - (void).cxx_destruct;
+@property(retain, nonatomic) REMListChangeItem *listChangeItem; // @synthesize listChangeItem=_listChangeItem;
 - (_Bool)showingLargeAttachments;
 - (void)setShowingLargeAttachments:(_Bool)arg1;
 @property(copy, nonatomic) NSString *badgeEmblem;
+@property(copy, nonatomic) REMListBadge *badge;
 - (id)initWithListChangeItem:(id)arg1;
 
 @end

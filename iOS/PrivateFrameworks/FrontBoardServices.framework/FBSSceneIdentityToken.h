@@ -9,21 +9,25 @@
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
+#import <FrontBoardServices/NSSecureCoding-Protocol.h>
 
 @class BSServiceConnectionEndpoint, NSString;
 
-@interface FBSSceneIdentityToken : NSObject <BSXPCSecureCoding, BSXPCCoding, NSCopying>
+@interface FBSSceneIdentityToken : NSObject <BSXPCSecureCoding, BSXPCCoding, NSSecureCoding, NSCopying>
 {
     BSServiceConnectionEndpoint *_endpoint;
     NSString *_identifier;
     NSString *_stringRepresentation;
 }
 
++ (_Bool)supportsSecureCoding;
 + (_Bool)supportsBSXPCSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) BSServiceConnectionEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSString *stringRepresentation; // @synthesize stringRepresentation=_stringRepresentation;
-- (void).cxx_destruct;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

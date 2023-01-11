@@ -36,6 +36,7 @@
 - (_Bool)handleGesture:(id)arg1;
 - (_Bool)canHandleGesture:(id)arg1;
 @property(readonly, nonatomic) _Bool isEditingText;
+- (struct CGImage *)textImageFromRect:(struct CGRect)arg1;
 - (void)resumeEditing;
 - (id)beginEditingRepForInfo:(id)arg1;
 - (id)p_beginEditingPossibleContainedRep:(id *)arg1;

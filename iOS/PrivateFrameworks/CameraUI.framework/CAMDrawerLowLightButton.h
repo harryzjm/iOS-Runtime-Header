@@ -7,10 +7,15 @@
 @interface CAMDrawerLowLightButton
 {
     _Bool _on;
+    _Bool _disabled;
 }
 
+@property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic, getter=isOn) _Bool on; // @synthesize on=_on;
 - (_Bool)adjustsImageWhenDisabled;
+- (_Bool)shouldShowSlashForCurrentState;
+- (_Bool)shouldUseSlash;
+- (void)setDisabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)shouldUseActiveTintForCurrentState;
 - (id)imageNameForCurrentState;
 - (long long)controlType;

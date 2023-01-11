@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, PKCurrencyAmount, PKMerchant;
+@class NSArray, NSDate, NSSet, PKCurrencyAmount, PKMerchant, PKSearchQuery;
 
 @interface PKPaymentTransactionGroup : NSObject <NSSecureCoding>
 {
@@ -17,21 +17,31 @@
     NSDate *_endDate;
     long long _merchantCategory;
     PKMerchant *_merchant;
+    NSSet *_handles;
+    NSArray *_regions;
+    PKSearchQuery *_searchQuery;
     unsigned long long _transactionCount;
     PKCurrencyAmount *_totalAmount;
     NSArray *_transactions;
+    unsigned long long _secondaryType;
+    unsigned long long _secondaryGroupCount;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long secondaryGroupCount; // @synthesize secondaryGroupCount=_secondaryGroupCount;
+@property(nonatomic) unsigned long long secondaryType; // @synthesize secondaryType=_secondaryType;
 @property(retain, nonatomic) NSArray *transactions; // @synthesize transactions=_transactions;
 @property(retain, nonatomic) PKCurrencyAmount *totalAmount; // @synthesize totalAmount=_totalAmount;
 @property(nonatomic) unsigned long long transactionCount; // @synthesize transactionCount=_transactionCount;
+@property(retain, nonatomic) PKSearchQuery *searchQuery; // @synthesize searchQuery=_searchQuery;
+@property(retain, nonatomic) NSArray *regions; // @synthesize regions=_regions;
+@property(retain, nonatomic) NSSet *handles; // @synthesize handles=_handles;
 @property(retain, nonatomic) PKMerchant *merchant; // @synthesize merchant=_merchant;
 @property(nonatomic) long long merchantCategory; // @synthesize merchantCategory=_merchantCategory;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

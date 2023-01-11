@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITableViewCell;
+@class UITableViewCell, UIView;
 
 @interface EKEventDeleteButtonEditItem
 {
@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *sourceViewForPopover;
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (_Bool)shouldAppearWithVisibility:(int)arg1;
 - (void)setDeleteButtonTarget:(id)arg1 action:(SEL)arg2;

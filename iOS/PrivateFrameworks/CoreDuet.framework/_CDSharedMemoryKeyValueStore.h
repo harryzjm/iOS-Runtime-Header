@@ -22,15 +22,12 @@
     unsigned long long _size;
 }
 
-+ (id)readKeyedDataDictionaryFromMemory:(void *)arg1 size:(unsigned long long)arg2;
-+ (void *)openOrCreateSharedMemoryWithName:(id)arg1 size:(unsigned long long)arg2;
-+ (id)log;
 + (id)keyValueStoreWithName:(id)arg1 size:(unsigned long long)arg2;
 + (id)sharedInstance;
 + (id)defaultName;
 + (unsigned long long)defaultSize;
-@property(readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
 - (id)description;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)valueForKey:(id)arg1;
@@ -40,11 +37,7 @@
 - (_Bool)removeDataForKey:(id)arg1;
 - (_Bool)setData:(id)arg1 forKey:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (_Bool)setData:(id)arg1 forKey:(id)arg2;
-- (_Bool)asyncPersistToShMemWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (_Bool)persistToShMemWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)errorForExceedingSizeLimits;
 - (void *)memoryPointer;
-- (id)initWithName:(id)arg1 size:(unsigned long long)arg2;
 
 @end
 

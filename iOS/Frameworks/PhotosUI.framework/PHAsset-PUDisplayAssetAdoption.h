@@ -40,6 +40,7 @@
 - (unsigned long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) _Bool isTemporaryPlaceholder;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
+- (CDStruct_8e0628e6)pu_vitalityPerspectiveTransform;
 
 // Remaining properties
 @property(readonly, nonatomic) double aspectRatio;
@@ -47,17 +48,20 @@
 @property(readonly, nonatomic) _Bool canPlayPhotoIris;
 @property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
 @property(readonly, nonatomic) _Bool hasPhotoColorAdjustments;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic, getter=isHidden) _Bool hidden;
 @property(readonly, nonatomic) _Bool isPhotoIrisPlaceholder;
 @property(readonly, nonatomic) NSDate *localCreationDate;
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType;
 @property(readonly, nonatomic) NSDate *modificationDate;
+@property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly, nonatomic) unsigned long long originalResourceChoice;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;

@@ -7,22 +7,25 @@
 #import <objc/NSObject.h>
 
 @class CNAutocompleteFetchRequest, NSMutableOrderedSet;
-@protocol CNAutocompleteFetchDelegate, CNFuture, CNPromise;
+@protocol CNAutocompleteFetchDelegate, CNFuture, CNPromise, OS_dispatch_queue;
 
 @interface CNAutocompleteQueryResponsePreparer : NSObject
 {
     NSMutableOrderedSet *_previouslyReturnedResults;
+    NSObject<OS_dispatch_queue> *_duetSortQueue;
     id <CNAutocompleteFetchDelegate> _delegate;
     CNAutocompleteFetchRequest *_fetchRequest;
     id <CNFuture> _priorityResultsFuture;
     id <CNPromise> _matchingPriorityResultsPromise;
 }
 
++ (id)makeBundleIdentifierOfCurrentProcess;
++ (id)bundleIdentifierOfCurrentProcess;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <CNPromise> matchingPriorityResultsPromise; // @synthesize matchingPriorityResultsPromise=_matchingPriorityResultsPromise;
 @property(retain, nonatomic) id <CNFuture> priorityResultsFuture; // @synthesize priorityResultsFuture=_priorityResultsFuture;
 @property(readonly, nonatomic) CNAutocompleteFetchRequest *fetchRequest; // @synthesize fetchRequest=_fetchRequest;
 @property(readonly, nonatomic) __weak id <CNAutocompleteFetchDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)suppressResultsWithAddresses:(id)arg1;
 - (id)askDelegateToAdjustResults;
 - (id)sortResults;

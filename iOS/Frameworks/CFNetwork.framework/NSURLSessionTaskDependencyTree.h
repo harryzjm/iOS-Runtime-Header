@@ -10,19 +10,16 @@
 
 @interface NSURLSessionTaskDependencyTree : NSObject
 {
+    NSURL *_mainDocumentURL;
+    NSMutableDictionary *_dependencies;
+    __NSCFURLSessionTaskDependencyTreeNode *_effectiveTree;
 }
 
-+ (id)mimeTypeForURLString:(id)arg1;
-+ (id)dependencyTreeWithJSONData:(id)arg1 error:(id *)arg2;
 + (id)dependencyTreeWithMainDocumentURL:(id)arg1 dependencyDescriptions:(id)arg2;
++ (id)dependencyTreeWithJSONData:(id)arg1 error:(id *)arg2;
 + (id)dependencyTreeDefaultWeb;
-- (id)_parentForMimeType:(id)arg1;
-- (id)_parentForURLPath:(id)arg1;
-
-// Remaining properties
-@property(retain, nonatomic) NSMutableDictionary *_dependencies; // @dynamic _dependencies;
-@property(retain, nonatomic) __NSCFURLSessionTaskDependencyTreeNode *_effectiveTree; // @dynamic _effectiveTree;
-@property(retain, nonatomic) NSURL *mainDocumentURL; // @dynamic mainDocumentURL;
+@property(retain, nonatomic) NSURL *mainDocumentURL; // @synthesize mainDocumentURL=_mainDocumentURL;
+- (void)dealloc;
 
 @end
 

@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CIVector *inputRedCoefficients; // @synthesize inputRedCoefficients;
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
+- (_Bool)_isIdentityAlpha;
 - (_Bool)_isIdentity;
+- (id)_kernelRGB;
 - (id)_kernel;
 
 @end

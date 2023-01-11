@@ -17,6 +17,7 @@
     UIView *_unfocusedShadowView;
     UIView *_focusedShadowView;
     _Bool _isSelected;
+    _Bool _focusedStateEnabled;
     TVMonogramViewConfiguration *_configuration;
     _TVMonogramDescription *_monogramDescription;
     UIImage *_image;
@@ -28,16 +29,17 @@
     TVImageProxy *_imageProxy;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TVImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;
 @property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property(copy, nonatomic) CDUnknownBlockType pressCompletionBlock; // @synthesize pressCompletionBlock=_pressCompletionBlock;
+@property(nonatomic, getter=isFocusedStateEnabled) _Bool focusedStateEnabled; // @synthesize focusedStateEnabled=_focusedStateEnabled;
 @property(retain, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property(nonatomic) double unfocusedImageAlpha; // @synthesize unfocusedImageAlpha=_unfocusedImageAlpha;
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) _TVMonogramDescription *monogramDescription; // @synthesize monogramDescription=_monogramDescription;
 @property(readonly, nonatomic) TVMonogramViewConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)_loadWithMonogramDescription:(id)arg1 imageProxy:(id)arg2;
 - (struct UIEdgeInsets)selectionMarginsForSize:(struct CGSize)arg1;
 - (void)floatingContentView:(id)arg1 didFinishTransitioningToState:(unsigned long long)arg2;

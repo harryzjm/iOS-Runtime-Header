@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOPDGroundViewLabelInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _endHeading;
     NSString *_localityName;
     NSString *_locationName;
     NSString *_secondaryLocationName;
     double _startHeading;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_endHeading:1;
         unsigned int has_startHeading:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_localityName:1;
         unsigned int read_locationName:1;
         unsigned int read_secondaryLocationName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_endHeading:1;
-        unsigned int wrote_localityName:1;
-        unsigned int wrote_locationName:1;
-        unsigned int wrote_secondaryLocationName:1;
-        unsigned int wrote_startHeading:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,6 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasEndHeading;
@@ -57,13 +57,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double startHeading;
 @property(retain, nonatomic) NSString *localityName;
 @property(readonly, nonatomic) _Bool hasLocalityName;
-- (void)_readLocalityName;
 @property(retain, nonatomic) NSString *secondaryLocationName;
 @property(readonly, nonatomic) _Bool hasSecondaryLocationName;
-- (void)_readSecondaryLocationName;
 @property(retain, nonatomic) NSString *locationName;
 @property(readonly, nonatomic) _Bool hasLocationName;
-- (void)_readLocationName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

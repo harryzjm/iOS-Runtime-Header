@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordZone, NSArray;
+@class CKAggregateZonePCSOperationInfo, CKRecordZone, NSArray;
 
 @interface CKAggregateZonePCSOperation
 {
@@ -13,9 +13,9 @@
     CKRecordZone *_targetZone;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CKRecordZone *targetZone; // @synthesize targetZone=_targetZone;
 @property(copy, nonatomic) NSArray *sourceZoneIDs; // @synthesize sourceZoneIDs=_sourceZoneIDs;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -26,6 +26,9 @@
 @property(copy, nonatomic) CDUnknownBlockType aggregateZonePCSCompletionBlock; // @synthesize aggregateZonePCSCompletionBlock=_aggregateZonePCSCompletionBlock;
 - (id)initWithSourceZoneIDs:(id)arg1 targetZone:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) CKAggregateZonePCSOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

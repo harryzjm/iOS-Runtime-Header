@@ -103,8 +103,8 @@
 - (double)ambientLightSensorIlluminance;
 - (void)setAmbientLightSensorColorTemperature:(double)arg1;
 - (double)ambientLightSensorColorTemperature;
-- (void)setAmbientLightDisplayBrightnessChanged:(unsigned char)arg1;
-- (unsigned char)ambientLightDisplayBrightnessChanged;
+- (void)setAmbientLightDisplayBrightnessChanged:(_Bool)arg1;
+- (_Bool)ambientLightDisplayBrightnessChanged;
 - (void)setAmbientLightColorSpace:(unsigned char)arg1;
 - (unsigned char)ambientLightColorSpace;
 - (void)setAmbientLightColorComponent2:(double)arg1;

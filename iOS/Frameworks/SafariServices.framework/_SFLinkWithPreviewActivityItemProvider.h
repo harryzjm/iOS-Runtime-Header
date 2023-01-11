@@ -8,7 +8,7 @@
 {
 }
 
-- (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
+- (id)activityViewControllerLinkMetadata:(id)arg1;
 
 @end
 

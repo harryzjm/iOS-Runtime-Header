@@ -12,6 +12,7 @@
 }
 
 @property(readonly, nonatomic) NSString *tracePath; // @synthesize tracePath=_tracePath;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (id)commandBufferWithUnretainedReferences;
 - (id)commandBuffer;
 - (id)initWithCommandQueue:(id)arg1 device:(id)arg2;

@@ -9,13 +9,16 @@
 @class MTLDebugInstrumentationData, NSData;
 
 @protocol MTLRenderPipelineStateSPI <MTLRenderPipelineState>
+@property(readonly, retain, nonatomic) MTLDebugInstrumentationData *tileDebugInstrumentationData;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *vertexDebugInstrumentationData;
 @property(readonly) unsigned long long uniqueIdentifier;
+@property(readonly) long long textureWriteRoundingMode;
 - (NSData *)newFragmentShaderDebugInfo;
 - (NSData *)newVertexShaderDebugInfo;
 
 @optional
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @end
 

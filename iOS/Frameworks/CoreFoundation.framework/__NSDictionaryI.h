@@ -7,7 +7,8 @@
 __attribute__((visibility("hidden")))
 @interface __NSDictionaryI
 {
-    unsigned int _used:58;
+    unsigned int _used:57;
+    unsigned int _copyKeys:1;
     unsigned int _szidx:6;
     id _list[0];
 }

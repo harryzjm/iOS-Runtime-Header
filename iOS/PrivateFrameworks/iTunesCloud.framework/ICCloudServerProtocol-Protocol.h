@@ -7,6 +7,7 @@
 @class ICCloudAddReferral, ICCloudItemIDList, ICConnectionConfiguration, NSArray, NSDictionary, NSString;
 
 @protocol ICCloudServerProtocol
+- (void)listCloudServerOperations;
 - (void)loadBooksForStoreIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)disableJaliscoGeniusForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)loadJaliscoGeniusOperationStatusForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(long long, NSError *))arg2;
@@ -28,6 +29,7 @@
 - (void)addStorePlaylistWithGlobalID:(NSString *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)sdk_addStoreItemWithOpaqueID:(NSString *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)addStoreItemWithAdamID:(long long)arg1 referral:(ICCloudAddReferral *)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)updatePinnedSubscribedPlaylistsWithConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateSubscribedPlaylistsWithSagaIDs:(NSArray *)arg1 ignoreMinRefreshInterval:(_Bool)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)uploadArtworkForPlaylistWithPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removePlaylistsWithSagaIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
@@ -77,17 +79,15 @@
 - (void)loadUpdateProgressForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *, float))arg2;
 - (void)loadIsUpdateInProgressForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(_Bool, _Bool))arg2;
 - (void)isMediaKindDisabledForJaliscoLibrary:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)updateJaliscoLibraryByAddingMediaKind:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)updateJaliscoLibraryByRemovingMediaKind:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeJaliscoLibraryForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setCloudAddToPlaylistBehavior:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)deauthenticateAndDisableActiveLockerAccountWithCompletion:(void (^)(NSError *))arg1;
+- (void)disableCloudLibraryWithReason:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deauthenticateForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)authenticateForConfiguration:(ICConnectionConfiguration *)arg1 startInitialImport:(_Bool)arg2 mergeWithCloudLibrary:(_Bool)arg3 isExplicitUserAction:(_Bool)arg4 completion:(void (^)(NSError *))arg5;
+- (void)authenticateForConfiguration:(ICConnectionConfiguration *)arg1 startInitialImport:(_Bool)arg2 enableCloudLibraryPolicy:(long long)arg3 isExplicitUserAction:(_Bool)arg4 completion:(void (^)(NSError *))arg5;
 - (void)updateSagaLibraryWithReason:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)updateJaliscoLibraryWithReason:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)isSagaAuthenticatedForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *, _Bool))arg2;
-- (void)setConnectionConfiguration:(ICConnectionConfiguration *)arg1 preferredVideoQuality:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setPreferredVideoQuality:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setupInitialJaliscoPoolingForConfiguration:(ICConnectionConfiguration *)arg1;
 - (void)setupInitialSagaPoolingForConfiguration:(ICConnectionConfiguration *)arg1;
 @end

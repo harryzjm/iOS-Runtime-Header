@@ -10,6 +10,7 @@
 #import <SpringBoard/SBAssistantObserver-Protocol.h>
 #import <SpringBoard/SBFloatingDockRootViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBFolderPresentationObserver-Protocol.h>
+#import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBIconLocationPresenting-Protocol.h>
 #import <SpringBoard/SBIconViewProviding-Protocol.h>
 #import <SpringBoard/SBIconViewQuerying-Protocol.h>
@@ -18,15 +19,15 @@
 #import <SpringBoard/SBRootFolderPageStateObserver-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class NSPointerArray, NSSet, NSString, PTToggleTestRecipe, SBApplication, SBDeviceOrientationUpdateDeferralAssertion, SBFAnalyticsClient, SBFailingSystemGestureRecognizer, SBFloatingDockBehaviorAssertion, SBFloatingDockRootViewController, SBFloatingDockViewController, SBFolderController, SBIconController, SBIconListView, SBLayoutStateTransitionCoordinator, SBMainScreenActiveInterfaceOrientationWindow, SBReusableViewMap, UIViewController, _UILegibilitySettings;
+@class NSPointerArray, NSSet, NSString, PTToggleTestRecipe, SBApplication, SBDeviceOrientationUpdateDeferralAssertion, SBFAnalyticsClient, SBFailingSystemGestureRecognizer, SBFloatingDockBehaviorAssertion, SBFloatingDockRootViewController, SBFloatingDockViewController, SBFolderController, SBHomeGestureParticipant, SBIconController, SBIconListView, SBIndirectPanGestureRecognizer, SBLayoutStateTransitionCoordinator, SBMainScreenActiveInterfaceOrientationWindow, SBReusableViewMap, UIHoverGestureRecognizer, UIViewController, _UILegibilitySettings;
 @protocol BSInvalidatable, SBFloatingDockControllerDelegate;
 
-@interface SBFloatingDockController : NSObject <SBFloatingDockRootViewControllerDelegate, SBFolderPresentationObserver, SBSystemGestureRecognizerDelegate, SBRootFolderPageStateObserver, SBAssistantObserver, BSDescriptionProviding, SBReusableViewMapDelegate, SBLayoutStateTransitionObserver, SBIconViewQuerying, SBIconLocationPresenting, SBIconViewProviding>
+@interface SBFloatingDockController : NSObject <SBFloatingDockRootViewControllerDelegate, SBFolderPresentationObserver, SBSystemGestureRecognizerDelegate, SBRootFolderPageStateObserver, SBAssistantObserver, BSDescriptionProviding, SBReusableViewMapDelegate, SBLayoutStateTransitionObserver, SBHomeGestureParticipantDelegate, SBIconViewQuerying, SBIconLocationPresenting, SBIconViewProviding>
 {
     SBFloatingDockRootViewController *_viewController;
     _Bool _homeScreenTransitioningToTodayView;
     _Bool _homeScreenTodayViewTransitioning;
-    NSPointerArray *_floatingDockBehaviorAssertionsByLevel[12];
+    NSPointerArray *_floatingDockBehaviorAssertionsByLevel[13];
     NSPointerArray *_floatingDockWindowLevelAssertionsByPriority[5];
     SBFAnalyticsClient *_analyticsClient;
     SBFloatingDockBehaviorAssertion *_inAppFloatingDockBehaviorAssertion;
@@ -39,24 +40,34 @@
     SBDeviceOrientationUpdateDeferralAssertion *_deferOrientationUpdatesAssertion;
     SBReusableViewMap *_iconViewMap;
     id <BSInvalidatable> _floatingDockStateDumpHandle;
+    id <BSInvalidatable> _floatingDockRecursiveHitTestingStateDumpHandle;
     PTToggleTestRecipe *_testRecipe;
+    _Bool _wasFloatingDockPresentedByPointer;
     SBMainScreenActiveInterfaceOrientationWindow *_floatingDockWindow;
     id <SBFloatingDockControllerDelegate> _delegate;
+    SBIndirectPanGestureRecognizer *_presentFloatingDockIndirectPanGestureRecognizer;
+    UIHoverGestureRecognizer *_dismissFloatingDockHoverGestureRecognizer;
     SBFailingSystemGestureRecognizer *_dismissFloatingDockSystemGestureRecognizer;
     SBIconController *_iconController;
     SBFloatingDockBehaviorAssertion *_activeAssertion;
     SBLayoutStateTransitionCoordinator *_transitionCoordinator;
+    SBHomeGestureParticipant *_homeGestureParticipant;
 }
 
 + (_Bool)isFloatingDockSupported;
++ (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property(nonatomic) __weak SBLayoutStateTransitionCoordinator *transitionCoordinator; // @synthesize transitionCoordinator=_transitionCoordinator;
 @property(nonatomic) __weak SBFloatingDockBehaviorAssertion *activeAssertion; // @synthesize activeAssertion=_activeAssertion;
 @property(readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
 @property(readonly, nonatomic) SBFailingSystemGestureRecognizer *dismissFloatingDockSystemGestureRecognizer; // @synthesize dismissFloatingDockSystemGestureRecognizer=_dismissFloatingDockSystemGestureRecognizer;
+@property(readonly, nonatomic) UIHoverGestureRecognizer *dismissFloatingDockHoverGestureRecognizer; // @synthesize dismissFloatingDockHoverGestureRecognizer=_dismissFloatingDockHoverGestureRecognizer;
+@property(readonly, nonatomic) SBIndirectPanGestureRecognizer *presentFloatingDockIndirectPanGestureRecognizer; // @synthesize presentFloatingDockIndirectPanGestureRecognizer=_presentFloatingDockIndirectPanGestureRecognizer;
+@property(nonatomic) _Bool wasFloatingDockPresentedByPointer; // @synthesize wasFloatingDockPresentedByPointer=_wasFloatingDockPresentedByPointer;
 @property(readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(nonatomic) __weak id <SBFloatingDockControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) SBMainScreenActiveInterfaceOrientationWindow *floatingDockWindow; // @synthesize floatingDockWindow=_floatingDockWindow;
-- (void).cxx_destruct;
 - (void)_setupStateDumper;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -72,12 +83,15 @@
 - (void)rootFolderPageStateProvider:(id)arg1 willBeginTransitionToState:(long long)arg2 animated:(_Bool)arg3 interactive:(_Bool)arg4;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
+- (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (void)_gestureRecognizerFailed:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
 - (void)_configureFloatingDockBehaviorAssertionForOpenFolder:(id)arg1 atLevel:(unsigned long long)arg2;
 - (void)_handleTransitionForFolder:(id)arg1 atLevel:(unsigned long long)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id)arg4;
 - (void)iconManager:(id)arg1 willPerformTransitionWithFolder:(id)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id)arg4;
+- (_Bool)viewMap:(id)arg1 shouldRecycleView:(id)arg2;
 - (id)recycledViewsContainerProviderForViewMap:(id)arg1;
 - (unsigned long long)viewMap:(id)arg1 maxRecycledViewsOfClass:(Class)arg2;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
@@ -90,6 +104,7 @@
 - (void)floatingDockRootViewController:(id)arg1 willPerformTransitionWithFolder:(id)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id)arg4;
 - (void)floatingDockRootViewController:(id)arg1 modifyProgress:(double)arg2 interactive:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)floatingDockRootViewController:(id)arg1 floatingDockWantsToBePresented:(_Bool)arg2;
+- (void)floatingDockRootViewController:(id)arg1 didChangeToFrame:(struct CGRect)arg2;
 - (void)floatingDockRootViewController:(id)arg1 willChangeToHeight:(double)arg2;
 - (_Bool)floatingDockRootViewControllerShouldHandlePanGestureRecognizer:(id)arg1;
 - (_Bool)_allowGestureRecognizers;
@@ -98,6 +113,9 @@
 - (void)_presentFloatingDockIfDismissedAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleSystemGestureRecognizer:(id)arg1;
 - (void)registerAsSharedInstance;
+- (void)handlePresentFloatingDockHoverGesture:(id)arg1;
+- (void)_handleDismissFloatingDockHoverGesture:(id)arg1;
+- (double)_dockProgressForHoverTranslation:(double)arg1;
 - (void)_evaluateAssertions:(unsigned long long)arg1 interactive:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_deriveActiveAssertion:(id *)arg1 dockProgress:(double *)arg2;
 - (unsigned long long)_indexOfPointerArray:(id)arg1 ofObject:(void *)arg2;
@@ -108,6 +126,7 @@
 - (void)_removeFloatingDockWindowLevelAssertion:(id)arg1;
 - (void)_addFloatingDockWindowLevelAssertion:(id)arg1;
 - (_Bool)handlePromptingUserToUninstallIcon:(id)arg1 location:(id)arg2;
+- (_Bool)shouldShowHideSuggestionForIconView:(id)arg1 proposedValue:(_Bool)arg2;
 - (_Bool)shouldShowCloseBoxForIconView:(id)arg1 proposedValue:(_Bool)arg2;
 - (void)layoutUserControlledIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(_Bool)arg3;
 - (void)dismissPresentedFolderAnimated:(_Bool)arg1 withTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;

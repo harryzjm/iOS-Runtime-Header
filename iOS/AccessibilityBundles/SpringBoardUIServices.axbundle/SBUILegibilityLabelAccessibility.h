@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned int)_accessibilityMediaAnalysisOption;
+- (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (_Bool)_accessibilityViewIsVisible;
 - (_Bool)_accessibilityOverridesInvisibility;

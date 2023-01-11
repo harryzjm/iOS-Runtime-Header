@@ -10,8 +10,9 @@
 {
 }
 
++ (id)debugDescriptionForCompressedZilchData:(id)arg1;
 + (id)subdataFromPointData:(id)arg1 fromPointIndex:(unsigned long long)arg2 usesZilch:(_Bool)arg3;
-+ (id)zilchData:(id)arg1 fromPointIndex:(unsigned long long)arg2;
++ (id)compressedZilchDataFromPoints:(void *)arg1 fromPointIndex:(unsigned long long)arg2 pointCount:(unsigned long long)arg3;
 + (id)unpackBasicPoints:(id)arg1;
 + (id)unpackZilchPoints:(id)arg1;
 + (id)unpackPoints:(id)arg1 usesZilch:(_Bool)arg2;

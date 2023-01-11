@@ -9,7 +9,7 @@
 #import <LinkPresentation/NSCopying-Protocol.h>
 #import <LinkPresentation/NSSecureCoding-Protocol.h>
 
-@class LPAudio, LPAudioMetadata, LPIconMetadata, LPImage, LPImageMetadata, LPSpecializationMetadata, LPVideo, LPVideoMetadata, NSArray, NSItemProvider, NSMutableArray, NSString, NSURL;
+@class LPAssociatedApplicationMetadata, LPAudio, LPAudioMetadata, LPIconMetadata, LPImage, LPImageMetadata, LPSpecializationMetadata, LPVideo, LPVideoMetadata, NSArray, NSItemProvider, NSMutableArray, NSString, NSURL;
 @protocol OS_dispatch_group;
 
 @interface LPLinkMetadata : NSObject <NSCopying, NSSecureCoding>
@@ -46,13 +46,16 @@
     NSArray *_videos;
     NSArray *_streamingVideos;
     NSArray *_audios;
+    LPAssociatedApplicationMetadata *_associatedApplication;
     LPSpecializationMetadata *_specialization;
 }
 
 + (id)keyPathsForValuesAffecting_dummyPropertyForObservation;
 + (id)metadataWithDataRepresentation:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) LPSpecializationMetadata *specialization; // @synthesize specialization=_specialization;
+@property(copy, nonatomic) LPAssociatedApplicationMetadata *associatedApplication; // @synthesize associatedApplication=_associatedApplication;
 @property(copy, nonatomic) NSArray *audios; // @synthesize audios=_audios;
 @property(copy, nonatomic) NSArray *streamingVideos; // @synthesize streamingVideos=_streamingVideos;
 @property(copy, nonatomic) NSArray *videos; // @synthesize videos=_videos;
@@ -81,7 +84,6 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(retain, nonatomic) NSURL *originalURL; // @synthesize originalURL=_originalURL;
-- (void).cxx_destruct;
 - (void)_decodeAllImagesWithMaximumSize:(struct CGSize)arg1;
 - (void)_populateMetadataForBackwardCompatibility;
 - (void)_enumerateAsynchronousFields:(CDUnknownBlockType)arg1;

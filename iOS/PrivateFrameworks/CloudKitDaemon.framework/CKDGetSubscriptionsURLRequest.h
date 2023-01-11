@@ -15,17 +15,16 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_subscriptionIDByRequestID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *subscriptionIDByRequestID; // @synthesize subscriptionIDByRequestID=_subscriptionIDByRequestID;
 @property(retain, nonatomic) NSArray *subscriptionIDs; // @synthesize subscriptionIDs=_subscriptionIDs;
 @property(copy, nonatomic) CDUnknownBlockType subscriptionFetchedBlock; // @synthesize subscriptionFetchedBlock=_subscriptionFetchedBlock;
 @property(retain, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
-- (int)operationType;
-- (id)initWithSubscriptionIDs:(id)arg1;
+- (id)initWithOperation:(id)arg1 subscriptionIDs:(id)arg2;
 
 @end
 

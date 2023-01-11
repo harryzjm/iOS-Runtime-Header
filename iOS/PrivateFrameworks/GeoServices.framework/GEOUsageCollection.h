@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOUsageCollection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEOTileUsage *_tileUsages;
     unsigned long long _tileUsagesCount;
     unsigned long long _tileUsagesSpace;
@@ -25,6 +24,9 @@ __attribute__((visibility("hidden")))
     NSString *_requestErrorDescription;
     NSString *_requestErrorDomain;
     double _timestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _cellWifi;
     int _geoService;
     int _placeRequestType;
@@ -48,21 +50,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_hwMachine:1;
         unsigned int read_requestErrorDescription:1;
         unsigned int read_requestErrorDomain:1;
-        unsigned int wrote_tileUsages:1;
-        unsigned int wrote_sessionID:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_hwMachine:1;
-        unsigned int wrote_requestErrorCode:1;
-        unsigned int wrote_requestErrorDescription:1;
-        unsigned int wrote_requestErrorDomain:1;
-        unsigned int wrote_timestamp:1;
-        unsigned int wrote_cellWifi:1;
-        unsigned int wrote_geoService:1;
-        unsigned int wrote_placeRequestType:1;
-        unsigned int wrote_requestDataSize:1;
-        unsigned int wrote_responseDataSize:1;
-        unsigned int wrote_responseTime:1;
-        unsigned int wrote_sessionIDIsPersistent:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -76,16 +64,17 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *requestErrorDescription;
 @property(readonly, nonatomic) _Bool hasRequestErrorDescription;
-- (void)_readRequestErrorDescription;
 @property(nonatomic) _Bool hasRequestErrorCode;
 @property(nonatomic) long long requestErrorCode;
 @property(retain, nonatomic) NSString *requestErrorDomain;
 @property(readonly, nonatomic) _Bool hasRequestErrorDomain;
-- (void)_readRequestErrorDomain;
 - (int)StringAsPlaceRequestType:(id)arg1;
 - (id)placeRequestTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasPlaceRequestType;
@@ -94,22 +83,18 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool sessionIDIsPersistent;
 @property(retain, nonatomic) NSString *hwMachine;
 @property(readonly, nonatomic) _Bool hasHwMachine;
-- (void)_readHwMachine;
 - (void)setTileUsages:(struct GEOTileUsage *)arg1 count:(unsigned long long)arg2;
 - (struct GEOTileUsage)tileUsageAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsTileUsage:(struct GEOTileUsage)arg1;
 - (void)addTileUsage:(struct GEOTileUsage)arg1;
 - (void)clearTileUsages;
 @property(readonly, nonatomic) struct GEOTileUsage *tileUsages;
 @property(readonly, nonatomic) unsigned long long tileUsagesCount;
-- (void)_readTileUsages;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) double timestamp;
 @property(nonatomic) _Bool hasSessionID;
 @property(nonatomic) struct GEOSessionID sessionID;
 @property(retain, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) _Bool hasCountryCode;
-- (void)_readCountryCode;
 - (int)StringAsCellWifi:(id)arg1;
 - (id)cellWifiAsString:(int)arg1;
 @property(nonatomic) _Bool hasCellWifi;
@@ -125,6 +110,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasGeoService;
 @property(nonatomic) int geoService;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

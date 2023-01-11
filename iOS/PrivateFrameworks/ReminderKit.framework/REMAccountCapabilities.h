@@ -22,18 +22,24 @@
     _Bool _supportsListSharees;
     _Bool _supportsListShareesMutation;
     _Bool _supportsMoveAcrossLists;
-    _Bool _supportsMoveAcrossSharedToMeLists;
+    _Bool _supportsMoveAcrossSharedLists;
+    _Bool _supportsMultipleDateAlarmsOnRecurrence;
     _Bool _supportsHandoff;
     _Bool _supportsReminderActions;
     _Bool _supportsCRDTs;
+    _Bool _supportsAssignments;
+    _Bool _insertsCompletedRecurrentCloneAtTail;
     long long _defaultReminderPriorityLevel;
 }
 
+@property(readonly, nonatomic) _Bool insertsCompletedRecurrentCloneAtTail; // @synthesize insertsCompletedRecurrentCloneAtTail=_insertsCompletedRecurrentCloneAtTail;
+@property(readonly, nonatomic) _Bool supportsAssignments; // @synthesize supportsAssignments=_supportsAssignments;
 @property(readonly, nonatomic) _Bool supportsCRDTs; // @synthesize supportsCRDTs=_supportsCRDTs;
 @property(readonly, nonatomic) _Bool supportsReminderActions; // @synthesize supportsReminderActions=_supportsReminderActions;
 @property(readonly, nonatomic) _Bool supportsHandoff; // @synthesize supportsHandoff=_supportsHandoff;
 @property(readonly, nonatomic) long long defaultReminderPriorityLevel; // @synthesize defaultReminderPriorityLevel=_defaultReminderPriorityLevel;
-@property(readonly, nonatomic) _Bool supportsMoveAcrossSharedToMeLists; // @synthesize supportsMoveAcrossSharedToMeLists=_supportsMoveAcrossSharedToMeLists;
+@property(readonly, nonatomic) _Bool supportsMultipleDateAlarmsOnRecurrence; // @synthesize supportsMultipleDateAlarmsOnRecurrence=_supportsMultipleDateAlarmsOnRecurrence;
+@property(readonly, nonatomic) _Bool supportsMoveAcrossSharedLists; // @synthesize supportsMoveAcrossSharedLists=_supportsMoveAcrossSharedLists;
 @property(readonly, nonatomic) _Bool supportsMoveAcrossLists; // @synthesize supportsMoveAcrossLists=_supportsMoveAcrossLists;
 @property(readonly, nonatomic) _Bool supportsListShareesMutation; // @synthesize supportsListShareesMutation=_supportsListShareesMutation;
 @property(readonly, nonatomic) _Bool supportsListSharees; // @synthesize supportsListSharees=_supportsListSharees;

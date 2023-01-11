@@ -22,15 +22,16 @@
     _HKMedicalIDData *_medicalIDData;
     HKTitledContactBuddyHeaderView *_headerView;
     WDBuddyFlowContinueFooterView *_footerView;
+    _Bool _hasSetUpHeaderAndFooterViews;
     id <WDBuddyControllerUserInfoDelegate> _delegate;
     NSArray *_dataEntryItems;
     WDBuddyFlowUserInfo *_userInfo;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) WDBuddyFlowUserInfo *userInfo; // @synthesize userInfo=_userInfo;
 @property(retain, nonatomic) NSArray *dataEntryItems; // @synthesize dataEntryItems=_dataEntryItems;
 @property(nonatomic) __weak id <WDBuddyControllerUserInfoDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)applyTransitionActivity:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -47,6 +48,7 @@
 - (void)_saveData;
 - (void)_loadData;
 - (void)_updateForCurrentSizeCategory;
+- (void)setUpHeaderAndFooterViewsIfNeeded;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)continueButtonTapped:(id)arg1;

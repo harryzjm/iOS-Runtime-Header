@@ -5,7 +5,7 @@
 //
 
 @class NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, _MTLCommandQueue;
-@protocol MTLCommandEncoder, MTLCommandQueue;
+@protocol MTLBuffer, MTLCommandEncoder, MTLCommandQueue;
 
 @interface _MTLCommandBuffer
 {
@@ -56,20 +56,33 @@
     _Bool _StatEnabled;
     CDUnknownBlockType _perfSampleHandlerBlock;
     _Bool _hasPresent;
+    id <MTLBuffer> _progressBuffer;
+    unsigned int _progressOffset;
+    _Bool _creatingProgressEncoder;
+    _Bool _needsFrameworkAssistedErrorTracking;
+    NSMutableArray *_encoderInfos;
+    NSMutableArray *_logs;
+    unsigned long long _errorOptions;
 }
 
 + (void)initialize;
+@property(nonatomic) unsigned long long errorOptions; // @synthesize errorOptions=_errorOptions;
+@property(readonly) NSMutableArray *logs; // @synthesize logs=_logs;
 @property(nonatomic) _Bool ownedByParallelEncoder; // @synthesize ownedByParallelEncoder=_ownedByParallelEncoder;
 @property(nonatomic) unsigned long long numEncoders; // @synthesize numEncoders=_numEncoders;
 @property(nonatomic) unsigned long long numThisCommandBuffer; // @synthesize numThisCommandBuffer=_numThisCommandBuffer;
-@property(nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
+@property(readonly, nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
 @property(nonatomic, getter=isStatEnabled) _Bool StatEnabled; // @synthesize StatEnabled=_StatEnabled;
 @property(readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property(readonly) unsigned long long status; // @synthesize status=_status;
 @property(readonly) id <MTLCommandQueue> commandQueue; // @synthesize commandQueue=_queue;
 @property(readonly) _Bool synchronousDebugMode; // @synthesize synchronousDebugMode=_synchronousDebugMode;
 @property(readonly) _Bool retainedReferences; // @synthesize retainedReferences=_retainedReferences;
+- (id)accelerationStructureCommandEncoder;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
+- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)executeSynchronizationNotifications:(int)arg1 scope:(unsigned long long)arg2 resources:(const id *)arg3 count:(unsigned long long)arg4;
 - (void)executeSynchronizationNotifications:(int)arg1;
@@ -98,7 +111,6 @@
 - (void)waitUntilCompleted;
 - (void)addCompletedHandler:(CDUnknownBlockType)arg1;
 - (void)waitUntilScheduled;
-- (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
 - (void)presentDrawable:(id)arg1;
 - (void)addScheduledHandler:(CDUnknownBlockType)arg1;
@@ -111,6 +123,12 @@
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 retainedReferences:(_Bool)arg2;
+- (void)getDriverEncoderInfoData:(id)arg1;
+- (void)processEncoderInfos;
+- (id)progressTrackingComputeCommandEncoder;
+- (id)progressTrackingRenderCommandEncoder;
+- (id)progressTrackingBlitCommandEncoder;
+- (void)initProgressTracking;
 - (id)initWithQueue:(id)arg1 retainedReferences:(_Bool)arg2 synchronousDebugMode:(_Bool)arg3;
 
 // Remaining properties

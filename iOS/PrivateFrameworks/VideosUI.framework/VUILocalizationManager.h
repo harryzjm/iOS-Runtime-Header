@@ -14,10 +14,10 @@
 }
 
 + (id)sharedInstance;
-@property(retain) NSDictionary *overideLocDict; // @synthesize overideLocDict=_overideLocDict;
 - (void).cxx_destruct;
+@property(retain) NSDictionary *overideLocDict; // @synthesize overideLocDict=_overideLocDict;
 - (void)updateWithJSDictionary:(id)arg1;
-- (id)localizedStringForKey:(id)arg1 withCount:(id)arg2;
+- (id)localizedStringForKey:(id)arg1 withCounts:(id)arg2;
 - (id)localizedStringForKey:(id)arg1;
 
 @end

@@ -33,7 +33,7 @@
 - (void)enumerateSupplementaryMetricsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSupplementaryLocations:(CDUnknownBlockType)arg1;
 - (id)_gkDescription;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
 - (id)localDescription;
 - (void)dealloc;

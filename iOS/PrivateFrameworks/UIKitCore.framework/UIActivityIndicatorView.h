@@ -37,6 +37,7 @@
 + (struct CGSize)defaultSizeForStyle:(long long)arg1;
 + (id)_loadResourcesForArtworkBasedStyle:(long long)arg1;
 + (id)_imageSetNameForArtworkBasedStyle:(long long)arg1 outImageCount:(out long long *)arg2;
+- (void).cxx_destruct;
 @property _Bool spinning; // @synthesize spinning=_spinning;
 @property(nonatomic) _Bool hasShadow; // @synthesize hasShadow=_hasShadow;
 @property(nonatomic) double width; // @synthesize width=_width;
@@ -56,7 +57,6 @@
 @property(readonly, nonatomic, getter=_animatingImageView) UIImageView *animatingImageView; // @synthesize animatingImageView=_animatingImageView;
 @property(nonatomic) _Bool hidesWhenStopped; // @synthesize hidesWhenStopped=_hidesWhenStopped;
 @property(nonatomic) double animationDuration; // @synthesize animationDuration=_duration;
-- (void).cxx_destruct;
 - (void)stopAnimation;
 - (void)startAnimation;
 @property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
@@ -66,11 +66,10 @@
 - (_Bool)_shouldGoBackToBaseStyle;
 - (_Bool)_shouldGoToCustomStyle;
 - (_Bool)_hasShadow;
+- (_Bool)_useCustomStyleForLegacyStyles;
 - (_Bool)_colorRequiresDynamicTinting;
 - (_Bool)_hasClientSetColor;
 - (_Bool)_isArtworkBasedStyle;
-- (_Bool)_canCustomize;
-- (_Bool)_canCustomizeStyle:(long long)arg1;
 - (void)_updateLayoutInfo;
 - (long long)_sizeForStyle:(long long)arg1;
 - (long long)_customStyleForStyle:(long long)arg1;

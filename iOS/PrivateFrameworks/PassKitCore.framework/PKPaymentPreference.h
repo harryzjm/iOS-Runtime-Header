@@ -22,6 +22,7 @@
     struct _NSRange _footerLinkRange;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *errors; // @synthesize errors=_errors;
 @property(readonly, nonatomic) _Bool supportsDeletion; // @synthesize supportsDeletion=_supportsDeletion;
 @property(nonatomic) _Bool isReadOnly; // @synthesize isReadOnly=_isReadOnly;
@@ -32,7 +33,7 @@
 @property(nonatomic) struct _NSRange footerLinkRange; // @synthesize footerLinkRange=_footerLinkRange;
 @property(copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+- (_Bool)preferenceObject:(id)arg1 representsContact:(id)arg2;
 - (void)clearAllErrors;
 - (id)errorsForPreference:(id)arg1;
 - (void)setErrors:(id)arg1 forPreference:(id)arg2;

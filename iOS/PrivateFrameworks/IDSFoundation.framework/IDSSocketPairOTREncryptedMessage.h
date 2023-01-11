@@ -20,13 +20,13 @@
     NSData *_data;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool fileXfer; // @synthesize fileXfer=_fileXfer;
 @property(nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
 @property(nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property(readonly, nonatomic) unsigned short priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) unsigned char versionNumber; // @synthesize versionNumber=_versionNumber;
 @property(readonly, nonatomic) _Bool encrypted; // @synthesize encrypted=_encrypted;
-- (void).cxx_destruct;
 - (id)_nonHeaderData;
 @property(readonly, nonatomic) NSData *data;
 - (unsigned char)command;
@@ -35,6 +35,7 @@
 - (id)initWithCommand:(unsigned char)arg1 underlyingData:(id)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool didWakeHint;
 @property(readonly, nonatomic) _Bool expectsPeerResponse;
 @property(retain, nonatomic) NSDate *expiryDate;
 @property(readonly, nonatomic) NSString *messageUUID;

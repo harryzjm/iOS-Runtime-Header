@@ -11,6 +11,7 @@
     MISSING_TYPE *hostView;
     MISSING_TYPE *representedView;
     MISSING_TYPE *focusAccessibilityNode;
+    MISSING_TYPE *helper;
 }
 
 @end

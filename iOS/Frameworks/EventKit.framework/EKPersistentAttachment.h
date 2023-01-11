@@ -14,10 +14,11 @@
 - (id)URLForPendingFileCopy;
 - (id)description;
 - (id)semanticIdentifier;
-- (void)setExternalId:(id)arg1;
-- (id)externalId;
+- (void)setExternalID:(id)arg1;
+- (id)externalID;
 - (void)setXPropertiesData:(id)arg1;
 - (id)XPropertiesData;
+- (void)setUUID:(id)arg1;
 - (id)UUID;
 - (void)setFileSize:(id)arg1;
 - (id)fileSize;
@@ -27,8 +28,8 @@
 - (_Bool)isBinary;
 - (void)setFileFormat:(id)arg1;
 - (id)fileFormat;
-- (void)setFileName:(id)arg1;
-- (id)fileName;
+- (void)setFileNameRaw:(id)arg1;
+- (id)fileNameRaw;
 - (void)setURL:(id)arg1;
 - (id)URL;
 - (int)entityType;

@@ -12,25 +12,29 @@
 
 @interface CTDisplayPlan : NSObject <NSSecureCoding>
 {
+    _Bool _isPhysical;
     CTPlan *_plan;
     NSString *_carrierName;
     NSString *_phoneNumber;
+    NSString *_label;
     long long _status;
     unsigned long long _attributes;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isPhysical; // @synthesize isPhysical=_isPhysical;
 @property(readonly, nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
 @property(readonly, nonatomic) long long status; // @synthesize status=_status;
+@property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(readonly, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
 @property(readonly, nonatomic) CTPlan *plan; // @synthesize plan=_plan;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithPlan:(id)arg1 status:(long long)arg2 attributes:(unsigned long long)arg3 carrierName:(id)arg4 phoneNumber:(id)arg5;
+- (id)initWithPlan:(id)arg1 status:(long long)arg2 attributes:(unsigned long long)arg3 isPhysical:(_Bool)arg4 carrierName:(id)arg5 phoneNumber:(id)arg6 label:(id)arg7;
 
 @end
 

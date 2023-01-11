@@ -15,21 +15,22 @@
 + (_Bool)supportsSecureCoding;
 + (id)bundledComplicationWithComplication:(id)arg1;
 + (id)bundledComplicationWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
-@property(readonly, nonatomic) CLKCBundleComplication *complication; // @synthesize complication=_complication;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CLKCBundleComplication *complication; // @synthesize complication=_complication;
 - (void)_addKeysToJSONDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
 - (id)localizedRichDetailText;
 - (id)localizedDetailText;
 - (id)localizedRichKeylineLabelText;
 - (id)localizedKeylineLabelText;
 - (id)description;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
+- (_Bool)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
+- (id)appIdentifier;
+- (id)_generateUniqueIdentifier;
 
 @end
 

@@ -15,16 +15,10 @@
 }
 
 + (id)sharedPreferences;
-@property(nonatomic) _Bool drawDebugViewColors; // @synthesize drawDebugViewColors=_drawDebugViewColors;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool drawDebugViewColors; // @synthesize drawDebugViewColors=_drawDebugViewColors;
 @property(retain, nonatomic) NSNumber *dayViewFirstVisibleSecond;
 @property(nonatomic) _Bool highColorCarplayEnabled;
-@property(retain, nonatomic) NSString *upNextColor;
-@property(retain, nonatomic) NSString *upNextLocation;
-@property(nonatomic) double upNextDuration;
-@property(retain, nonatomic) NSDate *upNextStartTime;
-@property(retain, nonatomic) NSString *upNextTitle;
-@property(nonatomic) _Bool upNextSimpleModeEnabled;
 @property(readonly, nonatomic) NSArray *deselectedCalendarSyncHashes;
 @property(nonatomic) _Bool eventAutocompleteEnabled;
 @property(nonatomic) _Bool enableAvatars;
@@ -57,6 +51,7 @@
 @property(retain, nonatomic) NSNumber *dayViewHourScale;
 @property(retain, nonatomic) NSNumber *lastSuspendTime;
 @property(retain, nonatomic) NSNumber *lastViewedDate;
+@property(retain, nonatomic) NSNumber *lastSidebarMode;
 @property(retain, nonatomic) NSNumber *lastViewMode;
 @property(retain, nonatomic) NSNumber *weekStart;
 @property(retain, nonatomic) NSDate *simulatedCurrentDate;

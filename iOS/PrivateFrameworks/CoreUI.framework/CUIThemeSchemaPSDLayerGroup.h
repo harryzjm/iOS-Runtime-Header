@@ -10,6 +10,7 @@
 }
 
 @property(nonatomic) _Bool isStart; // @synthesize isStart;
+- (id)description;
 
 @end
 

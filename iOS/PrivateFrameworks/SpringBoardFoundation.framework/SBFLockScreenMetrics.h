@@ -10,7 +10,6 @@
 {
 }
 
-+ (double)proudLockCenterFromTopOfScreen;
 + (double)proudLockOffsetFromTopOfScreen;
 + (struct CGSize)proudLockAssetSize;
 + (struct UIEdgeInsets)deviceInformationInsets;

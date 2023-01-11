@@ -6,13 +6,11 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class INStringLocalizer, NSDictionary;
 
 @protocol INCodableCoding <NSObject>
-- (NSDictionary *)dictionaryRepresentationForLanguage:(NSString *)arg1;
+- (NSDictionary *)dictionaryRepresentationWithLocalizer:(INStringLocalizer *)arg1;
 - (NSDictionary *)dictionaryRepresentation;
 - (void)updateWithDictionary:(NSDictionary *)arg1;
-- (NSString *)dictionaryKeyForKeyPath:(NSString *)arg1;
-- (NSString *)keyPrefix;
 @end
 

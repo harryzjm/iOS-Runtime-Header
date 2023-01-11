@@ -13,11 +13,13 @@
 @interface GEONavigationRouteSummary : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_destinationName;
     GEOComposedWaypoint *_destination;
     GEOComposedWaypoint *_origin;
     double _travelTime;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _transportType;
     struct {
         unsigned int has_travelTime:1;
@@ -25,11 +27,7 @@
         unsigned int read_destinationName:1;
         unsigned int read_destination:1;
         unsigned int read_origin:1;
-        unsigned int wrote_destinationName:1;
-        unsigned int wrote_destination:1;
-        unsigned int wrote_origin:1;
-        unsigned int wrote_travelTime:1;
-        unsigned int wrote_transportType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,23 +41,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasTravelTime;
 @property(nonatomic) double travelTime;
 @property(retain, nonatomic) NSString *destinationName;
 @property(readonly, nonatomic) _Bool hasDestinationName;
-- (void)_readDestinationName;
 @property(retain, nonatomic) GEOComposedWaypoint *destination;
 @property(readonly, nonatomic) _Bool hasDestination;
-- (void)_readDestination;
 @property(retain, nonatomic) GEOComposedWaypoint *origin;
 @property(readonly, nonatomic) _Bool hasOrigin;
-- (void)_readOrigin;
 - (int)StringAsTransportType:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasTransportType;
 @property(nonatomic) int transportType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (void)setRoute:(id)arg1;
 - (id)initWithRoute:(id)arg1 destinationName:(id)arg2;
 

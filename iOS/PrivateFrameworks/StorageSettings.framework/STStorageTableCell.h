@@ -16,18 +16,23 @@
     NSLayoutConstraint *_iconSizeConstraint;
     NSLayoutConstraint *_sizeRightConstraint;
     NSLayoutConstraint *_minHeightConstraint;
+    NSLayoutConstraint *_noCloudIconConstraint;
+    NSLayoutConstraint *_cloudIconConstraint;
     UIImageView *_iconView;
     UIView *_titleInfoView;
     UILabel *_titleLabel;
     UILabel *_infoLabel;
     UILabel *_sizeLabel;
+    UIImageView *_cloudIconView;
     long long _size;
     UIActivityIndicatorView *_spinner;
 }
 
 + (double)defaultCellHeight;
-@property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
+@property(nonatomic) _Bool cloudIconHidden;
+- (void)setEnabled:(_Bool)arg1;
 @property(nonatomic) long long size;
 @property(retain, nonatomic) NSString *sizeString;
 @property(nonatomic) _Bool infoHidden;

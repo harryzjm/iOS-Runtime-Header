@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class IDSService, NSObject, _HMDIDSProxyLinkPreferenceAssertion;
+@class HMDIDSActivityMonitor, HMDIDSActivityMonitorBroadcaster, HMDIDSActivityMonitorObserver, IDSService, NSObject, _HMDIDSProxyLinkPreferenceAssertion;
 @protocol OS_dispatch_queue;
 
 @interface HMDIDSServiceManager : HMFObject
@@ -14,18 +14,25 @@
     IDSService *_service;
     IDSService *_proxyService;
     IDSService *_streamService;
+    HMDIDSActivityMonitorBroadcaster *_activityBroadcaster;
+    HMDIDSActivityMonitorObserver *_activityObserver;
     NSObject<OS_dispatch_queue> *_workQueue;
+    HMDIDSActivityMonitor *_activityMonitor;
     _HMDIDSProxyLinkPreferenceAssertion *_proxyLinkPreferenceAssertion;
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property __weak _HMDIDSProxyLinkPreferenceAssertion *proxyLinkPreferenceAssertion; // @synthesize proxyLinkPreferenceAssertion=_proxyLinkPreferenceAssertion;
+@property(readonly, nonatomic) HMDIDSActivityMonitor *activityMonitor; // @synthesize activityMonitor=_activityMonitor;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly) HMDIDSActivityMonitorObserver *activityObserver; // @synthesize activityObserver=_activityObserver;
+@property(readonly) HMDIDSActivityMonitorBroadcaster *activityBroadcaster; // @synthesize activityBroadcaster=_activityBroadcaster;
 @property(readonly) IDSService *streamService; // @synthesize streamService=_streamService;
 @property(readonly) IDSService *proxyService; // @synthesize proxyService=_proxyService;
 @property(readonly) IDSService *service; // @synthesize service=_service;
-- (void).cxx_destruct;
 - (void)setProxyServiceLinkPreferences:(id)arg1;
+- (void)setActivityMonitorDataSource:(id)arg1;
 - (id)init;
 
 @end

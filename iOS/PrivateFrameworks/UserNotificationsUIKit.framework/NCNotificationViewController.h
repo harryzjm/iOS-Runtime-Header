@@ -9,19 +9,18 @@
 #import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentationControllerDelegate-Protocol.h>
-#import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationViewControllerView, NSPointerArray, NSString, UIPanGestureRecognizer, UIScrollView, UIView;
-@protocol NCAuxiliaryOptionsProviding, NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, PLContentSizeManaging, UIViewControllerTransitionCoordinator;
+@class NCNotificationRequest, NCNotificationViewControllerView, NSHashTable, NSString, UIPanGestureRecognizer, UIView;
+@protocol NCAuxiliaryOptionsProviding, NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, PLContentSizeManaging, PLPlatter><NCNotificationStaticContentAccepting, UIViewControllerTransitionCoordinator;
 
-@interface NCNotificationViewController : UIViewController <UIScrollViewDelegate, NCNotificationCustomContentDelegate, PLExpandedPlatterPresentationControllerDelegate, PLContentSizeCategoryAdjusting>
+@interface NCNotificationViewController : UIViewController <NCNotificationCustomContentDelegate, PLExpandedPlatterPresentationControllerDelegate, PLContentSizeCategoryAdjusting>
 {
     _Bool _didQueryCanPan;
     _Bool _canPan;
     long long _ncTransitionAnimationState;
-    NSPointerArray *_observers;
+    NSHashTable *_observers;
     UIView<PLContentSizeManaging> *_contentSizeManagingView;
-    struct UIView *_lookView;
+    UIView<PLPlatter><NCNotificationStaticContentAccepting> *_lookView;
     _Bool _revealAdditionalContentOnPresentation;
     _Bool _customContentHomeAffordanceVisible;
     _Bool _notificationContentViewHidden;
@@ -43,6 +42,7 @@
     CDUnknownBlockType _dismissalCompletion;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic, getter=_dismissalCompletion, setter=_setDismissalCompletion:) CDUnknownBlockType dismissalCompletion; // @synthesize dismissalCompletion=_dismissalCompletion;
 @property(nonatomic, getter=_shouldRestorePresentingShortLookOnDismiss, setter=_setShouldRestorePresentingShortLookOnDismiss:) _Bool shouldRestorePresentingShortLookOnDismiss; // @synthesize shouldRestorePresentingShortLookOnDismiss=_shouldRestorePresentingShortLookOnDismiss;
 @property(retain, nonatomic, getter=_customContentProvidingViewController, setter=_setCustomContentProvidingViewController:) UIViewController<NCNotificationCustomContent> *customContentProvidingViewController; // @synthesize customContentProvidingViewController=_customContentProvidingViewController;
@@ -62,7 +62,6 @@
 @property(nonatomic) _Bool revealAdditionalContentOnPresentation; // @synthesize revealAdditionalContentOnPresentation=_revealAdditionalContentOnPresentation;
 @property(retain, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property(nonatomic) __weak id <NCNotificationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -81,14 +80,13 @@
 - (void)customContent:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)contentProvider:(id)arg1 performAction:(id)arg2 animated:(_Bool)arg3;
 - (void)_askDelegateToExecuteAction:(id)arg1 withParameters:(id)arg2 animated:(_Bool)arg3;
-- (void)_updateScrollViewContentSize;
-- (_Bool)_shouldPadScrollViewContentSizeHeight;
+- (void)_executeNilAction:(_Bool)arg1;
 - (void)_executeCancelAction:(_Bool)arg1;
 - (void)_executeCloseAction:(_Bool)arg1;
 - (void)_executeClearAction:(_Bool)arg1;
 - (void)_executeDefaultAction:(_Bool)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (struct CGSize)preferredContentSizeWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
 - (void)setNCTransitionAnimationState:(long long)arg1;
 - (long long)ncTransitionAnimationState;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
@@ -108,7 +106,7 @@
 - (void)_setPreferredCustomContentSize:(struct CGSize)arg1;
 - (struct CGSize)_preferredCustomContentSizeForSize:(struct CGSize)arg1 parentContentContainerBounds:(struct CGRect)arg2;
 - (void)_notificationViewControllerViewDidLoad;
-- (void)_updateLookView:(struct UIView *)arg1 withTitleFromProvidedStaticContent:(id)arg2;
+- (void)_updateLookView:(id)arg1 withTitleFromProvidedStaticContent:(id)arg2;
 - (void)_loadLookView;
 - (id)_contentSizeManagingView;
 @property(readonly, nonatomic, getter=_notificationViewControllerView) NCNotificationViewControllerView *notificationViewControllerView;
@@ -120,9 +118,9 @@
 - (unsigned long long)_maximumNumberOfPrimaryLargeTextLinesForProvidedStaticContent;
 - (unsigned long long)_maximumNumberOfPrimaryTextLinesForProvidedStaticContent;
 - (void)_updateWithProvidedStaticContent;
-- (struct UIView *)_lookView;
-- (struct UIView *)_lookViewIfLoaded;
-- (struct UIView *)_lookViewLoadingIfNecessary:(_Bool)arg1;
+- (id)_lookView;
+- (id)_lookViewIfLoaded;
+- (id)_lookViewLoadingIfNecessary:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isCoalescedNotificationBundle) _Bool coalescedNotificationBundle;
 - (long long)materialRecipe;
 - (_Bool)shouldRestorePresentingShortLookOnDismiss;
@@ -131,8 +129,7 @@
 - (_Bool)restoreInputViews;
 - (void)preserveInputViews;
 - (_Bool)isContentExtensionVisible:(id)arg1;
-- (_Bool)dismissPresentedViewControllerAndClearNotification:(_Bool)arg1 animated:(_Bool)arg2;
-- (_Bool)dismissPresentedViewControllerAndClearNotification:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)dismissPresentedViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateContent;
 - (void)setHasUpdatedContent;
 - (_Bool)didReceiveNotificationRequest:(id)arg1;
@@ -144,15 +141,16 @@
 - (void)_setupCustomContentProvider;
 - (void)_setupStaticContentProvider;
 - (void)invalidateContentProviders;
+@property(readonly, nonatomic, getter=isNotPresentingOrHasCommittedToDismissingCustomContentProvidingViewController) _Bool notPresentingOrHasCommittedToDismissingCustomContentProvidingViewController;
 @property(readonly, nonatomic, getter=hasCommittedToPresentingCustomContentProvidingViewController) _Bool committedToPresentingCustomContentProvidingViewController;
 @property(readonly, nonatomic, getter=_isPresentingCustomContentProvidingViewController) _Bool presentingCustomContentProvidingViewController;
-@property(readonly, nonatomic, getter=isDragging) _Bool dragging;
 @property(readonly, nonatomic, getter=isShortLook) _Bool shortLook;
 - (_Bool)_setNotificationRequest:(id)arg1;
 - (_Bool)_setDelegate:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(_Bool)arg2;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(_Bool)arg2;
+- (_Bool)dismissPresentedViewControllerAndClearNotification:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentLongLookAnimated:(_Bool)arg1 trigger:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic, getter=_presentedLongLookViewController) NCNotificationViewController *presentedLongLookViewController;
 @property(readonly, nonatomic, getter=isLookStyleLongLook) _Bool lookStyleLongLook;
@@ -161,7 +159,6 @@
 // Remaining properties
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory;
-@property(readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView; // @dynamic scrollView;
 @property(readonly) Class superclass;
 
 @end

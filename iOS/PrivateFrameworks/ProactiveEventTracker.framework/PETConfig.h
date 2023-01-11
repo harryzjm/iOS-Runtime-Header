@@ -15,13 +15,15 @@
     NSDictionary *_messageGroups;
 }
 
-@property(readonly) unsigned long long version; // @synthesize version=_version;
 - (void).cxx_destruct;
+@property(readonly) unsigned long long version; // @synthesize version=_version;
 - (_Bool)isAggregatedForMessageName:(id)arg1;
 - (unsigned long long)sigFigsForMessageName:(id)arg1;
 - (id)bucketsForMessageName:(id)arg1;
 - (double)messageSamplingForMessageName:(id)arg1;
 - (double)deviceSamplingForMessageName:(id)arg1 isSeed:(_Bool)arg2;
+- (id)nestedFieldsForMessageName:(id)arg1;
+- (id)_nestedFieldsHelper:(id)arg1;
 - (id)whitelistForMessageName:(id)arg1;
 - (id)_whitelistHelper:(id)arg1;
 - (id)_groupConfigForMessageName:(id)arg1;

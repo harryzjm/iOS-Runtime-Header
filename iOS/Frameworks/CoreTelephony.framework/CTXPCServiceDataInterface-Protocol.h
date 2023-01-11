@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTXPCServiceSubscriptionContext, NSString;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSString;
 
 @protocol CTXPCServiceDataInterface
+- (void)enterLoopBackMode:(void (^)(NSError *))arg1;
 - (void)getPreferredDataServiceDescriptor:(void (^)(CTServiceDescriptor *, NSError *))arg1;
 - (void)getCurrentDataServiceDescriptor:(void (^)(CTServiceDescriptor *, NSError *))arg1;
 - (void)getPreferredDataSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
@@ -16,13 +17,15 @@
 - (void)getDataStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTDataStatus *, NSError *))arg2;
 - (void)getConnectionState:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(CTDataConnectionStatus *, NSError *))arg3;
 - (void)getActiveConnections:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)getTetheringStatus:(void (^)(CTTetheringStatus *, NSError *))arg1;
 - (void)getConnectionAvailability:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(CTDataConnectionAvailabilityStatus *, NSError *))arg3;
 - (void)getPacketContextCount:(void (^)(unsigned int))arg1;
 - (void)getSupportDynamicDataSimSwitch:(void (^)(_Bool, NSError *))arg1;
 - (void)setSupportDynamicDataSimSwitch:(_Bool)arg1 forIccid:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setSupportDynamicDataSimSwitch:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
-- (void)getInternationalDataAccessStatus:(void (^)(_Bool, NSError *))arg1;
-- (void)setInternationalDataAccessStatus:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getInternationalDataAccess:(CTServiceDescriptor *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)setInternationalDataAccess:(CTServiceDescriptor *)arg1 status:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (void)sendDeadPeerDetection:(void (^)(NSError *))arg1;
 - (void)resetAPNSettings:(void (^)(NSError *))arg1;
 - (void)setPacketContextActiveByServiceType:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 active:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
 @end

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView, UIViewController;
+@class UIMenu, UIViewController;
 
 @protocol CNKFaceTimeMultiwayConversationViewControllerDelegate
+- (UIMenu *)audioRouteMenuForViewController:(UIViewController *)arg1;
+- (void)viewControllerDidRequestTemporaryPreventSuspension:(UIViewController *)arg1;
 - (void)viewController:(UIViewController *)arg1 setStatusBarHidden:(_Bool)arg2;
-- (void)viewControllerDidRequestRoutePickerFrom:(UIView *)arg1;
 - (void)viewControllerDidRequestAddParticipants:(UIViewController *)arg1;
 @end
 

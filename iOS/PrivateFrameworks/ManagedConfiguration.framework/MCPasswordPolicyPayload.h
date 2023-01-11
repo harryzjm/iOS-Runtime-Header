@@ -24,6 +24,7 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSNumber *minComplexCharacters; // @synthesize minComplexCharacters=_minComplexCharacters;
 @property(readonly, retain, nonatomic) NSNumber *maxPasscodeAgeDays; // @synthesize maxPasscodeAgeDays=_maxPasscodeAgeDays;
 @property(readonly, retain, nonatomic) NSNumber *passcodeHistoryCount; // @synthesize passcodeHistoryCount=_passcodeHistoryCount;
@@ -35,13 +36,12 @@
 @property(readonly, retain, nonatomic) NSNumber *isAlphanumericPasscodeRequired; // @synthesize isAlphanumericPasscodeRequired=_isAlphanumericPasscodeRequired;
 @property(readonly, retain, nonatomic) NSNumber *isPasscodeRequired; // @synthesize isPasscodeRequired=_isPasscodeRequired;
 @property(readonly, retain, nonatomic) NSNumber *isSimplePasscodeAllowed; // @synthesize isSimplePasscodeAllowed=_isSimplePasscodeAllowed;
-- (void).cxx_destruct;
 - (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)restrictions;
 - (id)payloadDescriptionKeyValueSections;
 - (id)subtitle1Description;
 - (id)title;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 

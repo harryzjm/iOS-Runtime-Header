@@ -12,7 +12,7 @@
     float _delta;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float delta; // @synthesize delta=_delta;
 @property(nonatomic) float beta; // @synthesize beta=_beta;
 @property(nonatomic) float alpha; // @synthesize alpha=_alpha;

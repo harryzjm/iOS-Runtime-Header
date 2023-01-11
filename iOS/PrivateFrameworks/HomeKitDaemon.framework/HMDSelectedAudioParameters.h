@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <CoreHAP/HAPTLVBase.h>
+
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAudioCodecGroup, HMDAudioCodecParameters, HMDSelectedRTPParameters, NSNumber;
 
-@interface HMDSelectedAudioParameters <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDSelectedAudioParameters : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     HMDAudioCodecGroup *_codecGroup;
     HMDAudioCodecParameters *_codecParameters;
@@ -18,11 +20,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSNumber *comfortNoiseEnabled; // @synthesize comfortNoiseEnabled=_comfortNoiseEnabled;
 @property(readonly, copy, nonatomic) HMDSelectedRTPParameters *rtpParameters; // @synthesize rtpParameters=_rtpParameters;
 @property(readonly, copy, nonatomic) HMDAudioCodecParameters *codecParameters; // @synthesize codecParameters=_codecParameters;
 @property(readonly, copy, nonatomic) HMDAudioCodecGroup *codecGroup; // @synthesize codecGroup=_codecGroup;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;

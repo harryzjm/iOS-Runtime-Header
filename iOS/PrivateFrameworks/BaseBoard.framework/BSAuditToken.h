@@ -15,9 +15,10 @@
 @interface BSAuditToken : NSObject <NSCopying, BSXPCCoding, NSSecureCoding>
 {
     NSString *_bundleID;
-    CDStruct_4c969caf _auditToken;
+    _Bool _resolvedBundleID;
     struct os_unfair_lock_s _secTaskLock;
     struct __SecTask *_lazy_secTaskLock_secTask;
+    CDStruct_4c969caf _auditToken;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -28,26 +29,25 @@
 + (id)tokenFromAuditTokenRef:(CDStruct_4c969caf *)arg1;
 + (id)tokenFromAuditToken:(CDStruct_4c969caf)arg1;
 + (id)tokenForCurrentProcess;
-@property(readonly, nonatomic) CDStruct_4c969caf realToken; // @synthesize realToken=_auditToken;
-@property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDStruct_4c969caf realToken; // @synthesize realToken=_auditToken;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)_bundleIDGeneratingIfNeeded:(_Bool)arg1;
-- (id)_valueFromData:(id)arg1 ofType:(const char *)arg2;
-- (id)_dataWithValue:(id)arg1;
-- (void)_accessSecTask:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
+- (_Bool)hasSameProcessAsAuditToken:(id)arg1;
+@property(readonly, nonatomic, getter=isInvalid) _Bool invalid;
 - (id)valueForEntitlement:(id)arg1;
 - (_Bool)hasEntitlement:(id)arg1;
-@property(readonly, nonatomic) int pid; // @dynamic pid;
+@property(readonly, copy, nonatomic) NSString *bundleID;
+@property(readonly, nonatomic) unsigned int euid;
+@property(readonly, nonatomic) long long versionedPID;
+@property(readonly, nonatomic) int pid;
 - (void)dealloc;
-- (id)initWithXPCMessage:(id)arg1;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1;
 
 // Remaining properties

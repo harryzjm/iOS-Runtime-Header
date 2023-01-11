@@ -10,21 +10,24 @@
 #import <HealthRecordsUI/HKConceptStoreObserver-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreAccountStateChangeListener-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreIngestionStateListener-Protocol.h>
+#import <HealthRecordsUI/HRConceptTitleTableHeaderViewDelegate-Protocol.h>
+#import <HealthRecordsUI/HRTimelineHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchControllerDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
 #import <HealthRecordsUI/_TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_-Protocol.h>
 
-@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider;
+@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKConceptIdentifier, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSArray, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider, WDMedicalRecordStandaloneCell;
 @protocol HRRecordViewControllerFactory;
 
 __attribute__((visibility("hidden")))
-@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate>
+@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate, HRConceptTitleTableHeaderViewDelegate>
 {
     _Bool _loadingNextPage;
     _Bool _showSearchBar;
     _Bool _showsFilterControl;
     _Bool _enableReconnect;
     _Bool _queryReturned;
+    _Bool _chartabilityDetermined;
     _Bool _cloudSyncActive;
     WDMedicalRecordDisplayItemProvider *_displayItemProvider;
     HRProfile *_profile;
@@ -36,31 +39,41 @@ __attribute__((visibility("hidden")))
     WDMedicalRecordCategory *_category;
     NSSet *_categories;
     NSSet *_accounts;
+    HKConceptIdentifier *_conceptIdentifier;
     HKConcept *_concept;
     NSUUID *_highlightedRecordId;
+    NSArray *_preloadedRecords;
     id _medicalRecordSearchController;
     UISearchController *_navigationSearchController;
     NSTimer *_searchThrottleTimer;
+    NSTimer *_scrollToUUIDTrigger;
     HROverlayRoomViewController *_chartViewController;
     HKViewTableViewCell *_chartCell;
+    WDMedicalRecordStandaloneCell *_removedRecordsCell;
     UIButton *_filterButton;
     HRContentStatusView *_contentStatusView;
     HRContentStatusCell *_contentStatusCell;
     long long _ingestionState;
     unsigned long long _indexManagerState;
     HKCloudSyncObserver *_cloudSyncObserver;
+    NSHashTable *_floatingSectionHeaders;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSHashTable *floatingSectionHeaders; // @synthesize floatingSectionHeaders=_floatingSectionHeaders;
 @property(nonatomic) _Bool cloudSyncActive; // @synthesize cloudSyncActive=_cloudSyncActive;
 @property(retain, nonatomic) HKCloudSyncObserver *cloudSyncObserver; // @synthesize cloudSyncObserver=_cloudSyncObserver;
 @property(nonatomic) unsigned long long indexManagerState; // @synthesize indexManagerState=_indexManagerState;
 @property(nonatomic) long long ingestionState; // @synthesize ingestionState=_ingestionState;
+@property(nonatomic) _Bool chartabilityDetermined; // @synthesize chartabilityDetermined=_chartabilityDetermined;
 @property(nonatomic) _Bool queryReturned; // @synthesize queryReturned=_queryReturned;
 @property(retain, nonatomic) HRContentStatusCell *contentStatusCell; // @synthesize contentStatusCell=_contentStatusCell;
 @property(retain, nonatomic) HRContentStatusView *contentStatusView; // @synthesize contentStatusView=_contentStatusView;
 @property(retain, nonatomic) UIButton *filterButton; // @synthesize filterButton=_filterButton;
+@property(retain, nonatomic) WDMedicalRecordStandaloneCell *removedRecordsCell; // @synthesize removedRecordsCell=_removedRecordsCell;
 @property(retain, nonatomic) HKViewTableViewCell *chartCell; // @synthesize chartCell=_chartCell;
 @property(retain, nonatomic) HROverlayRoomViewController *chartViewController; // @synthesize chartViewController=_chartViewController;
+@property(retain, nonatomic) NSTimer *scrollToUUIDTrigger; // @synthesize scrollToUUIDTrigger=_scrollToUUIDTrigger;
 @property(retain, nonatomic) NSTimer *searchThrottleTimer; // @synthesize searchThrottleTimer=_searchThrottleTimer;
 @property(retain, nonatomic) UISearchController *navigationSearchController; // @synthesize navigationSearchController=_navigationSearchController;
 @property(retain, nonatomic) id medicalRecordSearchController; // @synthesize medicalRecordSearchController=_medicalRecordSearchController;
@@ -68,8 +81,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsFilterControl; // @synthesize showsFilterControl=_showsFilterControl;
 @property(nonatomic) _Bool showSearchBar; // @synthesize showSearchBar=_showSearchBar;
 @property(nonatomic) _Bool loadingNextPage; // @synthesize loadingNextPage=_loadingNextPage;
+@property(copy, nonatomic) NSArray *preloadedRecords; // @synthesize preloadedRecords=_preloadedRecords;
 @property(retain, nonatomic) NSUUID *highlightedRecordId; // @synthesize highlightedRecordId=_highlightedRecordId;
 @property(retain, nonatomic) HKConcept *concept; // @synthesize concept=_concept;
+@property(copy, nonatomic) HKConceptIdentifier *conceptIdentifier; // @synthesize conceptIdentifier=_conceptIdentifier;
 @property(retain, nonatomic) NSSet *accounts; // @synthesize accounts=_accounts;
 @property(retain, nonatomic) NSSet *categories; // @synthesize categories=_categories;
 @property(retain, nonatomic) WDMedicalRecordCategory *category; // @synthesize category=_category;
@@ -80,7 +95,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <HRRecordViewControllerFactory> factory; // @synthesize factory=_factory;
 @property(retain, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property(retain, nonatomic) WDMedicalRecordDisplayItemProvider *displayItemProvider; // @synthesize displayItemProvider=_displayItemProvider;
-- (void).cxx_destruct;
+- (void)trackInteractionOfType:(long long)arg1;
+- (void)trackImpression;
+- (long long)userInteractionContext;
+- (long long)userInteractionType;
+- (void)titleTableHeaderViewDidTapActionButton:(id)arg1;
 - (void)filterSettingsViewControllerWithDidSelectCategories:(id)arg1 accounts:(id)arg2;
 - (void)_updateFilterButtonImage;
 - (void)_filterButtonTapped:(id)arg1;
@@ -111,9 +130,8 @@ __attribute__((visibility("hidden")))
 - (void)_setupSearchController;
 - (void)_searchControllerHasQueryChange:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
-- (void)_postAWDMetricForDetailCategory;
-- (void)_postAWDMetricForTimelineCategory;
-- (void)_postAWDMetricForCategoryType:(int)arg1;
+- (void)headerViewDidEndFloating:(id)arg1;
+- (void)headerViewDidBeginFloating:(id)arg1;
 - (void)cloudSyncObserverSyncCompleted:(id)arg1;
 - (void)cloudSyncObserver:(id)arg1 syncFailedWithError:(id)arg2;
 - (void)cloudSyncObserver:(id)arg1 syncDidStartWithProgress:(id)arg2;
@@ -123,22 +141,26 @@ __attribute__((visibility("hidden")))
 - (void)healthRecordsStore:(id)arg1 ingestionStateDidUpdateTo:(long long)arg2;
 - (void)_updateSystemStatusViewAfterDelay:(_Bool)arg1;
 - (void)_updateSystemStatusView;
+- (_Bool)_isRemovedRecordsTimeline;
+- (_Bool)_shouldShowRemovedRecords;
 - (_Bool)_shouldShowInlineSystemStatusSection;
 - (_Bool)_hasDisplayableStatus;
 - (id)_systemStatusDisplay;
 - (void)_removeSystemStatusObservers;
 - (void)_setupSystemStatusObservers;
 - (void)_performActionForCellsSharingRecordsInTableView:(id)arg1 atIndexPath:(id)arg2 action:(CDUnknownBlockType)arg3;
-- (void)_updateTableHeaderView;
-- (id)_headerViewForTitle:(id)arg1;
+- (void)_updateTableHeaderViewClearBeforeUpdate:(_Bool)arg1;
+- (id)_headerViewForTitle:(id)arg1 buttonTitle:(id)arg2;
 - (void)_determineConceptChartabilityAndInsertChartIfNeeded;
+- (void)_scrollToHighlightedRecordIfNeeded;
 - (void)_updateTableViewGroups;
 - (void)_startCollectingData;
+- (void)_fetchConceptAndDeferDataLoading;
 - (id)_sampleTypesToDisplay;
 - (id)_filterFromCurrentPredicates;
 - (void)_setupDisplayItemProvider;
 - (void)_assertSearchControllerStatus;
-- (void)_scrollToRecordWithUUID:(id)arg1 animated:(_Bool)arg2;
+- (void)_scrollToRecordWithUUID:(id)arg1;
 - (id)_adjustedIndexPathForRecordId:(id)arg1;
 - (void)_reloadData;
 - (void)_reloadDataWithNotification:(id)arg1;
@@ -146,10 +168,14 @@ __attribute__((visibility("hidden")))
 - (void)_tapToRadar:(id)arg1;
 - (void)_configureBarButtonItems;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1 factory:(id)arg2 concept:(id)arg3 highlightedRecordId:(id)arg4;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 preloadedRecords:(id)arg3;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 concept:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 conceptIdentifier:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 category:(id)arg3 showInitialSearchBar:(_Bool)arg4;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 accountId:(id)arg3 showInitialSearchBar:(_Bool)arg4 enableReconnect:(_Bool)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 account:(id)arg3 showInitialSearchBar:(_Bool)arg4 enableReconnect:(_Bool)arg5;

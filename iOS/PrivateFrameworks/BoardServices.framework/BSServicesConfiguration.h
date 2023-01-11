@@ -17,14 +17,12 @@
 }
 
 + (id)defaultConfiguration;
-@property(readonly, copy, nonatomic) NSOrderedSet *_orderedDomains; // @synthesize _orderedDomains;
 - (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
-- (id)_initWithDomainsByIdentifier:(id)arg1;
 - (id)domainsContainingServiceIdentifier:(id)arg1;
 - (id)domainForMachName:(id)arg1;
 - (id)domainForIdentifier:(id)arg1;

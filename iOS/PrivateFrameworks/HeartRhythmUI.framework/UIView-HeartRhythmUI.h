@@ -17,5 +17,6 @@
 - (void)hrui_alignConstraintsWithView:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;
 - (void)hrui_alignConstraintsWithTopAnchor:(id)arg1 bottomAnchor:(id)arg2 insets:(struct NSDirectionalEdgeInsets)arg3;
 - (void)hrui_alignConstraintsWithLeadingAnchor:(id)arg1 trailingAnchor:(id)arg2 insets:(struct NSDirectionalEdgeInsets)arg3;
+- (id)_bottomVisibleView;
 @end
 

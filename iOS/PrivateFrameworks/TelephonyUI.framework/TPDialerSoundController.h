@@ -18,8 +18,8 @@
 - (void)_stopAllSoundsForcingCallbacks:(_Bool)arg1;
 - (void)setSoundsActivated:(_Bool)arg1;
 - (void)soundCompletedPlaying:(unsigned int)arg1;
-- (void)stopSoundForDialerCharacter:(unsigned int)arg1;
-- (void)playSoundForDialerCharacter:(unsigned int)arg1;
+- (void)stopSoundForDialerCharacter:(long long)arg1;
+- (void)playSoundForDialerCharacter:(long long)arg1;
 - (void)applicationSuspendedNotification:(id)arg1;
 - (void)applicationResumedNotification:(id)arg1;
 - (void)dealloc;

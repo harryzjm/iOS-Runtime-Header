@@ -6,10 +6,11 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, NSString;
 
 @protocol _CPSearchViewAppearFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *preexistingInput;
 @property(nonatomic) _Bool readerTextAvailable;
 @property(nonatomic) _Bool isOverApp;
 @property(nonatomic) _Bool isOnLockScreen;

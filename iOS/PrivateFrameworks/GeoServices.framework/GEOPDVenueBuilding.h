@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOPDVenueBuilding : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _directoryGroupingIds;
     CDStruct_62a50c50 _levelIds;
     unsigned long long _buildingId;
     GEOPDVenueLabel *_label;
     unsigned long long _muid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_buildingId:1;
         unsigned int has_muid:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_directoryGroupingIds:1;
         unsigned int read_levelIds:1;
         unsigned int read_label:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_directoryGroupingIds:1;
-        unsigned int wrote_levelIds:1;
-        unsigned int wrote_buildingId:1;
-        unsigned int wrote_label:1;
-        unsigned int wrote_muid:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,32 +46,32 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setDirectoryGroupingIds:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)directoryGroupingIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsDirectoryGroupingId:(unsigned long long)arg1;
 - (void)addDirectoryGroupingId:(unsigned long long)arg1;
 - (void)clearDirectoryGroupingIds;
 @property(readonly, nonatomic) unsigned long long *directoryGroupingIds;
 @property(readonly, nonatomic) unsigned long long directoryGroupingIdsCount;
-- (void)_readDirectoryGroupingIds;
 @property(nonatomic) _Bool hasMuid;
 @property(nonatomic) unsigned long long muid;
 @property(retain, nonatomic) GEOPDVenueLabel *label;
 @property(readonly, nonatomic) _Bool hasLabel;
-- (void)_readLabel;
 - (void)setLevelIds:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)levelIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsLevelId:(unsigned long long)arg1;
 - (void)addLevelId:(unsigned long long)arg1;
 - (void)clearLevelIds;
 @property(readonly, nonatomic) unsigned long long *levelIds;
 @property(readonly, nonatomic) unsigned long long levelIdsCount;
-- (void)_readLevelIds;
 @property(nonatomic) _Bool hasBuildingId;
 @property(nonatomic) unsigned long long buildingId;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

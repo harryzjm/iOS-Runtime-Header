@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, CLSHolidayCalendarEventService, NSArray, NSDate, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSSet, PGManager;
+@class CLLocation, CLSHolidayCalendarEventService, NSArray, NSDate, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSSet, PGGraph, PGManager, PHPhotoLibrary;
 @protocol OS_os_log;
 
 @interface PGMemoryController : NSObject
 {
+    PGManager *_manager;
     NSMutableArray *_latentMemories;
     NSArray *_existingMemories;
     NSArray *_blacklistedMemories;
@@ -26,7 +27,6 @@
     NSDate *_localDate;
     NSDate *_universalDate;
     CLLocation *_location;
-    unsigned long long _precision;
     NSDate *_earliestDate;
     NSDate *_latestDate;
     NSDate *_directModeStartDate;
@@ -37,6 +37,8 @@
     _Bool _isFirstTimesAfterUpgrade;
     _Bool _isAttemptingToUpgradeBestOfPastToFeaturedTrip;
     double _forcedBeta;
+    NSMutableDictionary *_scenesProcessedByYear;
+    NSMutableDictionary *_facesProcessedByYear;
     _Bool _isCreatingEverMemories;
     _Bool _bypassesCategoryCheckForUpgrades;
     _Bool _ignoresMomentIsInteresting;
@@ -51,12 +53,13 @@
     _Bool _skipsBlacklistedFeatureCheck;
     _Bool _isDryTesting;
     _Bool _probabilityAlwaysPasses;
+    _Bool _usesIsUtilityForMemories;
+    _Bool _looksIntoFuture;
     unsigned long long _numberOfNewMemoriesForPeriodicity;
     unsigned long long _numberOfNewMemoriesForUserRequest;
     unsigned long long _minimumNumberOfAssetsForMomentMemory;
     unsigned long long _minimumNumberOfAssetsForDisjointMomentsMemory;
     unsigned long long _minimumNumberOfAssetsForContiguousMomentsMemory;
-    PGManager *_manager;
     NSObject<OS_os_log> *_loggingConnection;
     CDUnknownBlockType _progressBlock;
     NSSet *_mandatoryFeatures;
@@ -67,7 +70,10 @@
 
 + (void)computeMinimumNumbersOfAssetsWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (unsigned long long)minimumNumberOfCuratedAssetsForMemories;
-+ (double)computeBetaWithManager:(id)arg1;
++ (double)computeBetaWithManager:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+@property(readonly) _Bool looksIntoFuture; // @synthesize looksIntoFuture=_looksIntoFuture;
+@property _Bool usesIsUtilityForMemories; // @synthesize usesIsUtilityForMemories=_usesIsUtilityForMemories;
 @property _Bool probabilityAlwaysPasses; // @synthesize probabilityAlwaysPasses=_probabilityAlwaysPasses;
 @property _Bool isDryTesting; // @synthesize isDryTesting=_isDryTesting;
 @property _Bool skipsBlacklistedFeatureCheck; // @synthesize skipsBlacklistedFeatureCheck=_skipsBlacklistedFeatureCheck;
@@ -88,13 +94,11 @@
 @property(readonly) _Bool isCreatingEverMemories; // @synthesize isCreatingEverMemories=_isCreatingEverMemories;
 @property(readonly, copy) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property(readonly) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
-@property(readonly, nonatomic) __weak PGManager *manager; // @synthesize manager=_manager;
 @property(readonly) unsigned long long minimumNumberOfAssetsForContiguousMomentsMemory; // @synthesize minimumNumberOfAssetsForContiguousMomentsMemory=_minimumNumberOfAssetsForContiguousMomentsMemory;
 @property(readonly) unsigned long long minimumNumberOfAssetsForDisjointMomentsMemory; // @synthesize minimumNumberOfAssetsForDisjointMomentsMemory=_minimumNumberOfAssetsForDisjointMomentsMemory;
 @property(readonly) unsigned long long minimumNumberOfAssetsForMomentMemory; // @synthesize minimumNumberOfAssetsForMomentMemory=_minimumNumberOfAssetsForMomentMemory;
 @property unsigned long long numberOfNewMemoriesForUserRequest; // @synthesize numberOfNewMemoriesForUserRequest=_numberOfNewMemoriesForUserRequest;
 @property unsigned long long numberOfNewMemoriesForPeriodicity; // @synthesize numberOfNewMemoriesForPeriodicity=_numberOfNewMemoriesForPeriodicity;
-- (void).cxx_destruct;
 - (void)resetIgnoresAndSkips;
 - (id)_doDirectModeWithLocalDate:(id)arg1 location:(id)arg2 peopleNames:(id)arg3 parameters:(id)arg4 progress:(CDUnknownBlockType)arg5;
 - (id)createMemoriesWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
@@ -143,6 +147,9 @@
 - (_Bool)_doFeaturedMeaningfulEventBeforeLocalDate:(id)arg1 eventType:(unsigned long long)arg2 usingLowRequirements:(_Bool)arg3 oldMemory:(_Bool)arg4;
 - (_Bool)_doFeaturedMeaningfulEventBeforeLocalDate:(id)arg1 usingLowRequirements:(_Bool)arg2 oldMemory:(_Bool)arg3;
 - (_Bool)_wantsFeaturedMeaningfulEventWithReason:(unsigned long long)arg1 usingLowRequirements:(_Bool)arg2;
+- (_Bool)_doFeaturedFoodieOfType:(id)arg1 kind:(id)arg2 beforeLocalDate:(id)arg3 oldMemory:(_Bool)arg4;
+- (_Bool)_doFeaturedFoodieBeforeLocalDate:(id)arg1 oldMemory:(_Bool)arg2;
+- (_Bool)_wantsFeaturedFoodieWithReason:(unsigned long long)arg1 usingLowRequirements:(_Bool)arg2;
 - (_Bool)_doFeaturedPastSupersetBeforeLocalDate:(id)arg1 usingLowRequirements:(_Bool)arg2 oldMemory:(_Bool)arg3;
 - (_Bool)_wantsFeaturedPastSupersetWithReason:(unsigned long long)arg1 usingLowRequirements:(_Bool)arg2;
 - (_Bool)_doFeaturedBabyBeforeLocalDate:(id)arg1 usingLowRequirements:(_Bool)arg2 oldMemory:(_Bool)arg3;
@@ -159,6 +166,8 @@
 - (_Bool)_doFeaturedPersonOverTimeBeforeLocalDate:(id)arg1 usingLowRequirements:(_Bool)arg2 oldMemory:(_Bool)arg3;
 - (_Bool)_wantsFeaturedPersonOverTimeWithReason:(unsigned long long)arg1 usingLowRequirements:(_Bool)arg2;
 - (_Bool)_doFeaturedPersonBeforeLocalDate:(id)arg1 usingLowRequirements:(_Bool)arg2 oldMemory:(_Bool)arg3;
+- (_Bool)_doPersonOverTimeMemoriesForPersonWithName:(id)arg1;
+- (_Bool)_doPeopleMemoriesForPeopleWithUUID:(id)arg1 year:(long long)arg2;
 - (_Bool)_wantsFeaturedPersonWithReason:(unsigned long long)arg1 usingLowRequirements:(_Bool)arg2;
 - (_Bool)_doFeaturedSocialGroupBeforeLocalDate:(id)arg1 usingLowRequirements:(_Bool)arg2 oldMemory:(_Bool)arg3;
 - (_Bool)_wantsFeaturedSocialGroupWithReason:(unsigned long long)arg1 usingLowRequirements:(_Bool)arg2;
@@ -205,6 +214,12 @@
 - (_Bool)_assetCollection:(id)arg1 matchesAssetCollection:(id)arg2;
 - (_Bool)_memories:(id)arg1 containAssetCollection:(id)arg2;
 - (_Bool)_memories:(id)arg1 containMemory:(id)arg2;
+- (_Bool)isUpcomingDayOfYearFromReferenceDate:(id)arg1 localDate:(id)arg2;
+- (_Bool)isUpcomingDayOfYearFromReferenceDate:(id)arg1;
+- (_Bool)eventPassesContextualityCheck:(id)arg1;
+- (_Bool)momentNodesHaveScenesProcessed:(id)arg1;
+- (_Bool)libraryHasEnoughScenesProcessed:(_Bool)arg1 haveFacesProcessed:(_Bool)arg2 forYear:(id)arg3;
+- (_Bool)libraryHasEnoughProcessedScenes:(_Bool)arg1 andProcessedFaces:(_Bool)arg2;
 - (_Bool)eventIsTimely:(id)arg1;
 - (id)momentForMomentID:(id)arg1;
 - (_Bool)probabilityPassWithThreshold:(double)arg1;
@@ -212,7 +227,25 @@
 - (unsigned int)randomNumber;
 @property(readonly) double minimumRatioOfFocusedPersonFacesPerAssetForMultipleFocusedPersonsFacedAssets;
 @property(readonly) unsigned long long maximumNumberOfFacesPerAssetForSingleFocusedPersonFacedAssets;
+- (void)matchFeatureVector:(id)arg1 relatedType:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)performSynchronouslyOnGraphUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly) PHPhotoLibrary *photoLibrary;
+@property(readonly) PGGraph *graph;
 - (id)initWithManager:(id)arg1;
+- (id)dejunkAndDedupeAssetsInAssets:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)deduplicatedAssets:(id)arg1;
+- (id)filteredAssetsFromAssetCollection:(id)arg1 throughCriteria:(id)arg2;
+- (id)curatedAssetsForAssetCollection:(id)arg1 duration:(unsigned long long)arg2 withContextualAssetLocalIdentifiers:(id)arg3 minimumProportion:(double)arg4 progressBlock:(CDUnknownBlockType)arg5;
+- (id)beautifyAssets:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (id)bestAssetsInAssets:(id)arg1 forReferencePersons:(id)arg2 minimumRatioOfReferencePersonsPerAsset:(double)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)curatedKeyAssetForAssetCollection:(id)arg1 curatedAssetCollection:(id)arg2 options:(id)arg3;
+- (id)bestAssetInAssets:(id)arg1 forReferencePersonsWithLocalIdentifiers:(id)arg2 requiredMinimumNumberOfReferencePersons:(unsigned long long)arg3;
+- (id)filteredAssetCollectionFromAssetCollection:(id)arg1 withContextualAssets:(id)arg2 approximateTimeDistance:(double)arg3;
+- (id)curatedAssetsWithFeeder:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)keyAssetWithFeeder:(id)arg1 options:(id)arg2 criteria:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)feederForMemoriesWithAssetCollection:(id)arg1;
+- (id)feederForMemoriesWithFeeder:(id)arg1 didFeederChange:(_Bool *)arg2;
+- (id)assetFetchOptionsForMemories;
 - (_Bool)anyBlacklistedFeatureIsHitByEvent:(id)arg1;
 - (id)anyBlacklistedFeatureHitByCompletePotentialMemory:(id)arg1;
 - (id)anyBlacklistedFeatureHitByEarlyPotentialMemory:(id)arg1;

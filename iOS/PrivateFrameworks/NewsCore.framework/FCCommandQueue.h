@@ -31,6 +31,7 @@
 }
 
 + (id)sharedWorkQueue;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *executingCommandsGroup; // @synthesize executingCommandsGroup=_executingCommandsGroup;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *pendingCommandsGroup; // @synthesize pendingCommandsGroup=_pendingCommandsGroup;
 @property(nonatomic, getter=isExecutingCommand) _Bool executingCommand; // @synthesize executingCommand=_executingCommand;
@@ -44,7 +45,6 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *persistentStorePath; // @synthesize persistentStorePath=_persistentStorePath;
 @property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (void)activityObservingApplicationDidEnterBackground;
 - (void)networkReachabilityDidChange:(id)arg1;
 - (id)_decodeCommand:(id)arg1;
@@ -53,9 +53,9 @@
 - (void)_serializeCommands:(id)arg1 toStore:(id)arg2;
 - (void)command:(id)arg1 didFinishWithStatus:(unsigned long long)arg2;
 - (void)_applicationDidEnterBackground;
-- (void)_savePendingCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_savePendingCommands;
 - (void)_loadFromDisk;
-- (long long)_qualityOfServiceForCommand:(id)arg1;
+- (long long)_qualityOfServiceForNextCommand;
 - (void)_executeNextCommand;
 - (void)_scheduleCommandExecution;
 - (_Bool)_isEmpty;

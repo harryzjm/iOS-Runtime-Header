@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIKBAlertControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIAlertController, UIKBTree, UILabel, UILexicon, UIView;
+@class NSArray, NSString, UIAlertController, UIKBTree, UILabel, UILexicon, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardLayoutCursor <UIKBAlertControllerDelegate>
@@ -24,23 +24,30 @@ __attribute__((visibility("hidden")))
     UILabel *_dictationHelpLabel;
     _Bool _didVariantDelete;
     _Bool _isForwardingEvent;
+    _Bool _overrideInitialKey;
+    int _overridenSelectedKeyType;
+    _Bool _shouldConfigureFloatingContentView;
+    _Bool _shouldToggleLetterCaseNext;
     UIAlertController *_recentInputsAlert;
     NSString *_keyplaneBeforeDictation;
     long long _selectedKeyBeforeDictation;
+    UIWindow *_focusWindow;
 }
 
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 + (id)carKeyboardNameForKeyboard:(id)arg1 screenTraits:(id)arg2;
+@property(retain, nonatomic) UIWindow *focusWindow; // @synthesize focusWindow=_focusWindow;
 @property(nonatomic) long long selectedKeyBeforeDictation; // @synthesize selectedKeyBeforeDictation=_selectedKeyBeforeDictation;
 @property(retain, nonatomic) NSString *keyplaneBeforeDictation; // @synthesize keyplaneBeforeDictation=_keyplaneBeforeDictation;
 @property(retain, nonatomic) UIAlertController *recentInputsAlert; // @synthesize recentInputsAlert=_recentInputsAlert;
+@property(readonly, nonatomic, getter=isSlimLinearKeyboardTV) _Bool slimLinearKeyboardTV;
+- (_Bool)_isKeyboardReverseOfSystemLanguageCharacterDirection;
+- (unsigned long long)_indexOfFirstKeyOfInteractionType:(int)arg1;
 - (_Bool)_handleMoveWithEvent:(id)arg1;
 - (_Bool)_isDirectionalHeading:(unsigned long long)arg1;
 - (void)_moveWithEvent:(id)arg1;
 - (_Bool)_handleWheelChangedWithEvent:(id)arg1;
 - (void)_wheelChangedWithEvent:(id)arg1;
-- (_Bool)_handlePhysicalKeyDownWithEvent:(id)arg1;
-- (void)_handleKeyUIEvent:(id)arg1;
 - (_Bool)_handleRemoteControlReceivedWithEvent:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
 - (_Bool)_handlePhysicalButtonEvent:(id)arg1;
@@ -51,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)returnToKeyplaneAfterDictation;
 - (void)switchToDictationKeyplaneWithActivationIdentifier:(id)arg1;
+- (unsigned long long)getNextKeyplaneIndex:(unsigned long long)arg1;
 - (_Bool)handleVisualDirectionalInput:(int)arg1;
 - (_Bool)handleLinearDirectionalInput:(int)arg1;
 - (void)handleVariantDeleteIfNecessaryForKey:(id)arg1;
@@ -59,18 +67,21 @@ __attribute__((visibility("hidden")))
 - (_Bool)canHandleEvent:(id)arg1;
 - (id)keyHitTestInSameRowAsCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2;
 - (long long)targetKeyIndexAtOffset:(struct CGPoint)arg1 fromKey:(id)arg2;
+- (long long)targetKeyIndexFromPoint:(struct CGPoint)arg1;
 - (void)setHighlightedVariantIndex:(long long)arg1 key:(id)arg2;
 - (_Bool)refreshSelectedCellIfNecessaryForKey:(id)arg1;
 - (void)setSelectedKeyIndex:(long long)arg1;
 - (void)deactivateKey:(id)arg1;
 - (struct CGRect)selectionFrameForKeyIndex:(long long)arg1;
 - (_Bool)shouldDeactivateWithoutWindow;
+- (void)restoreFocusFromEntryPoint:(struct CGPoint)arg1;
 - (void)setCursorLocation:(unsigned long long)arg1;
 - (unsigned long long)cursorLocation;
 - (unsigned long long)downActionFlagsForKey:(id)arg1;
 - (int)enabledStateForKey:(id)arg1;
 - (int)activeStateForKey:(id)arg1;
 - (void)updateStatesForGridSelection;
+- (void)showPopupKeyplaneSwitcher;
 - (void)longPressAction;
 - (void)endMultitapForKey:(id)arg1;
 - (_Bool)canMultitap;
@@ -86,13 +97,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsContinuousPath;
 - (_Bool)isKanaPlane;
 - (_Bool)isAlphabeticPlane;
+- (void)setShift:(_Bool)arg1;
 - (_Bool)ignoresShiftState;
 - (_Bool)usesAutoShift;
-- (_Bool)shouldUseDefaultShiftStateFromLayout;
 - (id)_keyplaneForKeyplaneProperties;
+- (_Bool)isPossibleToTypeFast;
 - (_Bool)supportsEmoji;
 - (unsigned char)getHandRestRecognizerState;
-- (_Bool)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
+- (_Bool)shouldRetestKey:(id)arg1 slidOffKey:(id)arg2 withKeyplane:(id)arg3;
 - (_Bool)shouldPreventInputManagerHitTestingForKey:(id)arg1;
 - (void)setRecentInputs:(id)arg1;
 - (void)acceptRecentInputIfNecessary;
@@ -113,10 +125,15 @@ __attribute__((visibility("hidden")))
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
 - (id)keyViewAnimator;
-- (void)configureChildCollectionViewCellsIfNeeded;
+- (void)_reducedTransparencyDidChange:(id)arg1;
+- (void)_accessibilityBoldTextChanged:(id)arg1;
+- (void)_configureFloatingContentViewsForTV;
+- (void)configureFloatingContentViewsIfNeeded;
 - (unsigned long long)variantCountForKey:(id)arg1;
+@property(readonly, nonatomic) struct CGRect globalFrameForCurrentKey;
 @property(readonly, nonatomic) UIKBTree *currentKey;
 - (void)runWithSuppressedActions:(CDUnknownBlockType)arg1;
+- (void)willMoveToWindow:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

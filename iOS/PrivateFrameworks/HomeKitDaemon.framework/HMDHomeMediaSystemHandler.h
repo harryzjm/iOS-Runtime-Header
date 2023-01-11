@@ -4,59 +4,67 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
-#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMediaSystemMessageHandlerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMFMessageDispatcher, NSMutableArray, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDHome, HMDHomeMediaSystemControllerMessageHandler, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSMutableDictionary, NSNotificationCenter, NSObject, NSString, NSUUID;
+@protocol HMDHomeMediaSystemHandlerDelegate, OS_dispatch_queue;
 
-@interface HMDHomeMediaSystemHandler : NSObject <HMDDevicePreferenceDataSource, NSSecureCoding, HMFLogging, HMDHomeMessageReceiver>
+@interface HMDHomeMediaSystemHandler : HMFObject <HMDDevicePreferenceDataSource, HMDHomeMediaSystemMessageHandlerDelegate, NSSecureCoding, HMFLogging>
 {
-    NSMutableArray *_mediaSystems;
+    HMFUnfairLock *_lock;
+    NSMutableDictionary *_uuidToMediaSystems;
+    id <HMDHomeMediaSystemHandlerDelegate> _delegate;
+    NSUUID *_parentUUID;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMFMessageDispatcher *_msgDispatcher;
+    HMFMessageDispatcher *_messsageDispatcher;
+    NSNotificationCenter *_notificationCenter;
     HMDHome *_home;
+    HMDHomeMediaSystemControllerMessageHandler *_messageHandler;
 }
 
-+ (_Bool)hasMessageReceiverChildren;
 + (_Bool)supportsSecureCoding;
-+ (id)preProcessMediaSystemMessage:(id)arg1 home:(id)arg2;
 + (id)logCategory;
-@property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
-@property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain, nonatomic) NSMutableArray *mediaSystems; // @synthesize mediaSystems=_mediaSystems;
 - (void).cxx_destruct;
+@property(retain) HMDHomeMediaSystemControllerMessageHandler *messageHandler; // @synthesize messageHandler=_messageHandler;
+@property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
+@property(retain) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property(retain, nonatomic) HMFMessageDispatcher *messsageDispatcher; // @synthesize messsageDispatcher=_messsageDispatcher;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(retain) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
+@property __weak id <HMDHomeMediaSystemHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_userAssistantAccessControlDidUpdate:(id)arg1 accessories:(id)arg2;
 - (id)_currentMediaSystemIfPrimary;
-@property(readonly, copy) NSSet *messageReceiverChildren;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)supportsDeviceWithCapabilities:(id)arg1;
-- (id)backingStoreObjects;
+- (id)backingStoreObjectsForVersion:(long long)arg1;
 - (void)_handleUpdateMediaSystemModel:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveMediaSystemModel:(id)arg1 message:(id)arg2;
 - (void)_handleAddMediaSystemModel:(id)arg1 message:(id)arg2;
-- (void)_removeMediaSystem:(id)arg1;
-- (void)_handleRemoveMediaSystem:(id)arg1;
-- (void)_addMediaSystem:(id)arg1;
-- (void)_handleAddMediaSystem:(id)arg1;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-- (id)messageDestination;
-@property(readonly, nonatomic) NSUUID *messageTargetUUID;
-- (void)_registerForMessages;
-- (void)configure:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
-@property(readonly, copy) NSString *description;
+- (void)messageHandlerRemoveMediaSystem:(id)arg1 builderSession:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)messageHandlerUpdateMediaSystem:(id)arg1 configuredName:(id)arg2 leftUUID:(id)arg3 leftAccessoryUUID:(id)arg4 rightUUID:(id)arg5 rightAccessoryUUID:(id)arg6 builderSession:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)messageHandlerAddMediaSystem:(id)arg1 configuredName:(id)arg2 leftUUID:(id)arg3 leftAccessoryUUID:(id)arg4 rightUUID:(id)arg5 rightAccessoryUUID:(id)arg6 builderSession:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)updateMediaSystemWithMessage:(id)arg1;
+- (id)processedMediaSystemBuilderMessageFor:(id)arg1;
+- (id)mediaSystemForAccessory:(id)arg1;
+- (void)configure:(id)arg1 delegate:(id)arg2 queue:(id)arg3 messageDispatcher:(id)arg4 notificationCenter:(id)arg5;
 - (id)logIdentifier;
-- (id)initWithHome:(id)arg1;
-- (id)init;
+- (id)attributeDescriptions;
+- (id)privateDescription;
+- (void)removeMediaSystem:(id)arg1;
+- (void)updateMediaSystem:(id)arg1;
+- (id)mediaSystemWithUUID:(id)arg1;
+@property(readonly, copy) NSArray *mediaSystems;
+- (id)initWithMediaSystems:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

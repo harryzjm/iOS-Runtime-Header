@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUICatalog, CUIMutableCatalog, NSBundle, NSDictionary, NSMapTable, NSString, UITraitCollection, _UICache;
+@class CUICatalog, CUIMutableCatalog, NSBundle, NSMapTable, NSString, UITraitCollection, _UICache;
 
 @interface _UIAssetManager : NSObject
 {
@@ -20,7 +20,6 @@
     long long _preferredLayoutDirectionTrait;
     NSBundle *_bundle;
     NSMapTable *_assetMap;
-    NSDictionary *_systemSymbolNameAliases;
     CUIMutableCatalog *_runtimeCatalog;
     struct os_unfair_lock_s _runtimeCatalogCreationLock;
     UITraitCollection *_preferredTraitCollection;
@@ -34,8 +33,6 @@
     _UIAssetManager *_nextAssetManager;
 }
 
-+ (_Bool)_validStackImageData:(id)arg1;
-+ (_Bool)validStackImageFile:(id)arg1;
 + (double)_watchScreenScale;
 + (void)_clearAllCachedImagesAndAssets;
 + (void)_dropResourceReferencesForURL:(id)arg1;
@@ -60,8 +57,6 @@
 - (id)_defaultAppearanceNames;
 - (id)_appearanceNames;
 - (_Bool)_hasMultipleAppearances;
-- (id)stackImageWithData:(id)arg1 forTraitCollection:(id)arg2;
-- (id)stackImageWithContentsOfFile:(id)arg1 forTraitCollection:(id)arg2;
 - (id)description;
 - (void)_disconnectImageAssets;
 - (id)_allImageNames;
@@ -90,7 +85,6 @@
 - (id)imageNamed:(id)arg1 idiom:(long long)arg2 subtype:(unsigned long long)arg3;
 - (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4;
 - (id)imageNamed:(id)arg1 configuration:(id)arg2 cachingOptions:(unsigned long long)arg3 attachCatalogImage:(_Bool)arg4;
-- (id)_symbolNameAliasForName:(id)arg1;
 - (_Bool)_isSystemAssetManager;
 @property(readonly, nonatomic, getter=_managingCoreGlyphs) _Bool managingCoreGlyphs;
 @property(readonly, nonatomic, getter=_managingUIKitAssets) _Bool managingUIKitAssets;

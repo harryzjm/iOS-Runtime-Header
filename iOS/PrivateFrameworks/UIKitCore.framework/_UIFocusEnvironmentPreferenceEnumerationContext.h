@@ -8,29 +8,32 @@
 
 #import <UIKitCore/_UIFocusEnvironmentPreferenceEnumerationContext-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableArray, NSString, UIFocusSystem, _UIDebugLogReport;
+@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSString, UIFocusSystem, _UIDebugLogReport;
 @protocol UIFocusEnvironment, _UIFocusEnvironmentPreferenceEnumerationContextDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusEnvironmentPreferenceEnumerationContext : NSObject <_UIFocusEnvironmentPreferenceEnumerationContext>
 {
     UIFocusSystem *_focusSystem;
+    id <UIFocusEnvironment> _preferredSubtree;
     NSMutableArray *_visitedEnvironmentStack;
     id <UIFocusEnvironment> _lastPrimaryPreferredEnvironment;
     NSArray *_cachedPreferredEnvironments;
     NSHashTable *_allVisitedEnvironments;
     _Bool _hasResolvedPreferredFocusEnvironments;
-    _Bool _hasNeverPopped;
+    _Bool _hasNeverPoppedInPreferredSubtree;
+    id <UIFocusEnvironment> _preferredSubtreeEntryPoint;
+    NSMapTable *_preferredEnvironmentsMap;
     _Bool _cachedPrefersNothingFocused;
     id <UIFocusEnvironment> _environment;
     id <_UIFocusEnvironmentPreferenceEnumerationContextDelegate> _delegate;
     _UIDebugLogReport *_debugReport;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIDebugLogReport *debugReport; // @synthesize debugReport=_debugReport;
 @property(nonatomic) __weak id <_UIFocusEnvironmentPreferenceEnumerationContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <UIFocusEnvironment> environment; // @synthesize environment=_environment;
-- (void).cxx_destruct;
 - (void)_reportInferredPreferredFocusEnvironment:(id)arg1;
 - (void)popEnvironment;
 - (void)pushEnvironment:(id)arg1;
@@ -40,11 +43,12 @@ __attribute__((visibility("hidden")))
 - (void)_invalidatePreferredEnvironments;
 @property(readonly, nonatomic) _Bool prefersNothingFocused; // @synthesize prefersNothingFocused=_cachedPrefersNothingFocused;
 @property(readonly, nonatomic) NSArray *preferredEnvironments;
+@property(readonly, nonatomic, getter=isInPreferredSubtree) _Bool inPreferredSubtree;
 @property(readonly, nonatomic) id <UIFocusEnvironment> preferringEnvironment;
 @property(readonly, nonatomic, getter=isPreferredByItself) _Bool preferredByItself;
 @property(readonly, nonatomic) _Bool isLeafPreference;
 @property(readonly, nonatomic) _Bool isPrimaryPreference;
-- (id)initWithInitialFocusEnvironment:(id)arg1;
+- (id)initWithFocusEnvironment:(id)arg1 enumerationMode:(long long)arg2;
 - (id)init;
 
 // Remaining properties

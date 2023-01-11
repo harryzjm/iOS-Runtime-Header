@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, PDFAnnotation, PDFPage;
+@class NSMutableArray, PDFAnnotation;
 
 @interface PDFAnnotationAccessibilityElement
 {
-    PDFPage *_page;
     PDFAnnotation *_annotation;
     NSMutableArray *_cachedAXElements;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *cachedAXElements; // @synthesize cachedAXElements=_cachedAXElements;
 @property(nonatomic) __weak PDFAnnotation *annotation; // @synthesize annotation=_annotation;
-@property(nonatomic) __weak PDFPage *page; // @synthesize page=_page;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)_accessibilityIsButtonWidget;
+- (id)_accessibilityAnnotationWidgetTextLabel;
 - (id)_accessibilityAnnotationFieldType;
 - (id)_accessibilityAnnotationType;
 - (id)_accessibilityLineStyleStringForLineStyle:(long long)arg1;
 - (id)accessibilityElements;
 - (id)accessibilityValue;
-- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (struct CGRect)accessibilityFrame;

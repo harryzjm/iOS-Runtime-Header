@@ -57,6 +57,7 @@
 - (void)addInfoFromRegion:(id)arg1;
 - (_Bool)hasSameInfoAsRegion:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)isNullRegion;
 - (_Bool)isWired;
 - (_Bool)isSubmap;
 - (unsigned int)maxProtection;
@@ -72,7 +73,7 @@
 - (void)getVMRegionDataExtra:(struct _VMUVMRegionDataExtra *)arg1;
 - (void)getVMRegionData:(struct _VMUVMRegionData *)arg1 withSimpleSerializer:(id)arg2;
 - (void)setVMRegionDataExtra:(struct _VMUVMRegionDataExtra *)arg1;
-- (id)initWithVMRegionData:(struct _VMUVMRegionData *)arg1 encodedVersion:(long long)arg2 simpleSerializer:(id)arg3;
+- (id)initWithVMRegionData:(struct _VMUVMRegionData *)arg1 encodedVersion:(long long)arg2 simpleSerializer:(id)arg3 error:(id *)arg4;
 - (id)init;
 
 @end

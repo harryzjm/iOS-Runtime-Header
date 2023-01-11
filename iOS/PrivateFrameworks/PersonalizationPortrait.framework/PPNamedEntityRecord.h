@@ -6,20 +6,22 @@
 
 #import <ProactiveSupport/_PASZonedObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
+#import <PersonalizationPortrait/PPRecord-Protocol.h>
 
-@class NSString, PPNamedEntity, PPNamedEntityMetadata, PPSource;
+@class NSSet, NSString, PPNamedEntity, PPNamedEntityMetadata, PPSource;
 
-@interface PPNamedEntityRecord : _PASZonedObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface PPNamedEntityRecord : _PASZonedObject <PPRecord, NSCopying, NSMutableCopying, NSSecureCoding, MLFeatureProvider>
 {
     PPNamedEntity *_entity;
     PPSource *_source;
     NSString *_extractionOsBuild;
     float _initialScore;
     float _decayRate;
-    unsigned short _extractionAssetVersion;
+    unsigned int _extractionAssetVersion;
     unsigned char _algorithm;
     unsigned char _changeType;
     PPNamedEntityMetadata *_metadata;
@@ -27,19 +29,22 @@
 }
 
 + (id)describeChangeType:(unsigned char)arg1;
++ (id)algorithmForName:(id)arg1;
 + (id)describeAlgorithm:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned char changeType; // @synthesize changeType=_changeType;
 @property(readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property(readonly, nonatomic) PPSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) PPNamedEntity *entity; // @synthesize entity=_entity;
-- (void).cxx_destruct;
+- (id)featureValueForName:(id)arg1;
+@property(readonly, nonatomic) NSSet *featureNames;
 - (_Bool)isEqualToNamedEntityRecord:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
 @property(readonly, nonatomic) PPNamedEntityMetadata *metadata;
-@property(readonly, nonatomic) unsigned long long extractionAssetVersion;
+@property(readonly, nonatomic) unsigned int extractionAssetVersion;
 @property(readonly, nonatomic) double sentimentScore; // @dynamic sentimentScore;
 @property(readonly, nonatomic) double decayRate;
 @property(readonly, nonatomic) double initialScore;

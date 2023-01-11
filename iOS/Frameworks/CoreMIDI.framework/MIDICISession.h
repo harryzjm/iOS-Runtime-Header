@@ -6,36 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+@class MIDICIDeviceInfo, NSArray, NSMutableArray, NSNumber;
 
 @interface MIDICISession : NSObject
 {
     unsigned int _client;
-    unsigned int _entity;
-    struct MIDICIDeviceIdentification _deviceIdentification;
+    unsigned int _destination;
     NSArray *_supportedProtocols;
     NSMutableArray *_profileStates;
     CDUnknownBlockType _profileChangedCallback;
-    CDUnknownBlockType _propertyChangedCallback;
-    CDUnknownBlockType _propertyResponseCallback;
+    CDUnknownBlockType _sessionDisconnectCallback;
+    CDUnknownBlockType _profileSpecificDataCallback;
     _Bool _supportsProfileCapability;
     _Bool _supportsPropertyCapability;
+    MIDICIDeviceInfo *_deviceInfo;
+    unsigned int _ciSessionRef;
+    unsigned int _maxSysExSize;
+    unsigned char _maxRequests;
     struct MIDICIDeviceIdentification _deviceID;
-    unsigned int _impl;
+    CDUnknownBlockType _propertyChangedCallback;
+    CDUnknownBlockType _propertyResponseCallback;
+    CDUnknownBlockType _profileSpecificDataHandler;
 }
 
++ (id)description;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType profileSpecificDataHandler; // @synthesize profileSpecificDataHandler=_profileSpecificDataHandler;
+@property(readonly, nonatomic) unsigned int midiDestination; // @synthesize midiDestination=_destination;
 @property(copy, nonatomic) CDUnknownBlockType propertyChangedCallback; // @synthesize propertyChangedCallback=_propertyChangedCallback;
+@property(copy, nonatomic) CDUnknownBlockType propertyResponseCallback; // @synthesize propertyResponseCallback=_propertyResponseCallback;
+@property(readonly, nonatomic) struct MIDICIDeviceIdentification deviceID; // @synthesize deviceID=_deviceID;
+@property(copy, nonatomic) CDUnknownBlockType profileSpecificDataBlock; // @synthesize profileSpecificDataBlock=_profileSpecificDataCallback;
+@property(copy, nonatomic) CDUnknownBlockType disconnectBlock; // @synthesize disconnectBlock=_sessionDisconnectCallback;
 @property(copy, nonatomic) CDUnknownBlockType profileChangedCallback; // @synthesize profileChangedCallback=_profileChangedCallback;
-@property(readonly, nonatomic) unsigned int entity; // @synthesize entity=_entity;
-@property(readonly, nonatomic) struct MIDICIDeviceIdentification deviceIdentification; // @synthesize deviceIdentification=_deviceID;
+@property(readonly, nonatomic) MIDICIDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property(readonly, nonatomic) _Bool supportsPropertyCapability; // @synthesize supportsPropertyCapability=_supportsPropertyCapability;
 @property(readonly, nonatomic) _Bool supportsProfileCapability; // @synthesize supportsProfileCapability=_supportsProfileCapability;
-- (void).cxx_destruct;
 - (_Bool)updateProfileStateForChannel:(unsigned char)arg1 withProfile:(id)arg2 enabled:(_Bool)arg3;
 - (void)addProfileState:(char *)arg1 length:(unsigned int)arg2 channel:(unsigned char)arg3;
-- (void)setProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
-- (void)getProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
-- (void)hasProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (_Bool)sendProfile:(id)arg1 onChannel:(unsigned char)arg2 profileData:(id)arg3;
 - (_Bool)toggleProfile:(id)arg1 onChannel:(unsigned char)arg2 enabling:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)disableProfile:(id)arg1 onChannel:(unsigned char)arg2 error:(id *)arg3;
 - (_Bool)enableProfile:(id)arg1 onChannel:(unsigned char)arg2 error:(id *)arg3;
@@ -43,8 +52,18 @@
 - (void)handleCINotification:(const struct MIDINotification *)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
+@property(readonly, nonatomic) NSNumber *maxPropertyRequests;
+@property(readonly, nonatomic) NSNumber *maxSysExSize;
+@property(readonly, nonatomic) unsigned int entity;
+- (id)description;
+- (id)initWithMIDIDestination:(unsigned int)arg1 dataReadyHandler:(CDUnknownBlockType)arg2;
+- (id)initWithMIDIDestination:(unsigned int)arg1 dataReadyHandler:(CDUnknownBlockType)arg2 disconnectHandler:(CDUnknownBlockType)arg3 profileSpecificDataHandler:(CDUnknownBlockType)arg4;
 - (id)initWithMIDIEntity:(unsigned int)arg1 dataReadyHandler:(CDUnknownBlockType)arg2;
+- (id)initWithDiscoveredNode:(id)arg1 dataReadyHandler:(CDUnknownBlockType)arg2 disconnectHandler:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)setProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (void)getProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (void)hasProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
 
 @end
 

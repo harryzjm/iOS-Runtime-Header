@@ -13,6 +13,7 @@
 
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
 + (id)fileURLForPayloadKeyData:(unsigned long long)arg1 assetID:(id)arg2;
++ (id)_fileURLFromKeyStruct:(struct PLPrimaryDataStore_UniformFileStrategy_KeyStruct_V1 *)arg1 assetID:(id)arg2;
 @property(nonatomic) struct PLPrimaryDataStore_UniformFileStrategy_KeyStruct_V1 keyStruct; // @synthesize keyStruct=_keyStruct;
 - (unsigned int)recipeIDForAssetID:(id)arg1;
 - (_Bool)isDerivative;

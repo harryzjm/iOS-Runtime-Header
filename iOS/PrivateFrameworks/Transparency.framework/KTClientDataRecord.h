@@ -18,16 +18,18 @@
     NSData *_clientDataVRFOutput;
     NSDate *_markedForDeletion;
     NSDate *_deletionEscrowExpiry;
+    NSDate *_addedDate;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property _Bool verified; // @synthesize verified=_verified;
+@property(retain) NSDate *addedDate; // @synthesize addedDate=_addedDate;
 @property(retain) NSDate *deletionEscrowExpiry; // @synthesize deletionEscrowExpiry=_deletionEscrowExpiry;
 @property(retain) NSDate *markedForDeletion; // @synthesize markedForDeletion=_markedForDeletion;
 @property(retain) NSData *clientDataVRFOutput; // @synthesize clientDataVRFOutput=_clientDataVRFOutput;
 @property unsigned long long applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property(retain) NSData *clientData; // @synthesize clientData=_clientData;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithSingleDataRecord:(id)arg1;
 - (id)initWithMutation:(id)arg1;

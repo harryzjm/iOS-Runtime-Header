@@ -12,14 +12,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSDictionary *testingContext; // @synthesize testingContext=_testingContext;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *testingContext; // @synthesize testingContext=_testingContext;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 - (_Bool)containsAudioInput;
 - (_Bool)containsRecognitionStrings;
-- (_Bool)containsPPT;
 - (id)initWithAudioInput:(id)arg1 siriContextOverride:(id)arg2;
 - (id)initWithAudioInput:(id)arg1;
 - (id)initWithRecognitionStrings:(id)arg1 siriContextOverride:(id)arg2;

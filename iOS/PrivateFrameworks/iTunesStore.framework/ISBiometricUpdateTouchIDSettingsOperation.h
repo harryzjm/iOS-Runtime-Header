@@ -20,6 +20,7 @@
     NSArray *_certChainExtended;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *certChainExtended; // @synthesize certChainExtended=_certChainExtended;
 @property(copy, nonatomic) NSArray *certChainPrimary; // @synthesize certChainPrimary=_certChainPrimary;
 @property(retain, nonatomic) ISBiometricStore *biometricStore; // @synthesize biometricStore=_biometricStore;
@@ -30,8 +31,7 @@
 @property _Bool shouldSuppressAuthPrompts; // @synthesize shouldSuppressAuthPrompts=_shouldSuppressAuthPrompts;
 @property(copy) CDUnknownBlockType resultBlock; // @synthesize resultBlock=_resultBlock;
 @property _Bool regeneratePublicKey; // @synthesize regeneratePublicKey=_regeneratePublicKey;
-- (void).cxx_destruct;
-- (id)_newUpdateTouchIDSettingsOperationWithTwoKeys;
+- (id)_newUpdateTouchIDSettingsOperation;
 - (void)run;
 - (id)initWithAccountIdentifier:(id)arg1;
 

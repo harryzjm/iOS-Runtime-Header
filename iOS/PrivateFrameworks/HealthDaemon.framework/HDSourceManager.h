@@ -27,13 +27,13 @@
 - (id)_createSourceEntityForLocalDeviceWithError:(id *)arg1;
 - (id)_fetchClientSourceForPersistentID:(id)arg1 error:(id *)arg2;
 - (id)_sourcePersistentIDsFromSourceEntities:(id)arg1;
-- (void)_deleteSourceIfNoSampleFoundWithBundleIdentifier:(id)arg1;
+- (_Bool)_deleteSourceIfNoSampleFound:(id)arg1;
 - (id)_localSourcesForBundleIDs:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_bundleIDsWithoutLocalSourceForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
-- (_Bool)_deleteSourcesWithUUIDs:(id)arg1 localSourceEntityCacheKey:(id)arg2 deleteSamples:(_Bool)arg3 database:(id)arg4 error:(id *)arg5;
+- (_Bool)_deleteSourcesWithUUIDs:(id)arg1 localSourceEntityCacheKey:(id)arg2 deleteSamples:(_Bool)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (id)_sourceUUIDsForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)deleteSourceWithBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (_Bool)_createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 sourceUUIDSToDelete:(id)arg3 deleteSamples:(_Bool)arg4 database:(id)arg5 error:(id *)arg6;
+- (_Bool)_createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 sourceUUIDSToDelete:(id)arg3 deleteSamples:(_Bool)arg4 transaction:(id)arg5 error:(id *)arg6;
 - (_Bool)createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 error:(id *)arg3;
 - (id)_clientSourcesWithPredicate:(id)arg1 error:(id *)arg2;
 - (id)allWatchSourcesWithError:(id *)arg1;

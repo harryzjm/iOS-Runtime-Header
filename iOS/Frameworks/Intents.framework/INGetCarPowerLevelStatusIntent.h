@@ -28,6 +28,7 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_metadata;
 - (id)_typedBackingStore;
+- (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

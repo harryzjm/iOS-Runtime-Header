@@ -21,15 +21,17 @@
     NSMutableDictionary *_actionsPerQuestionIndex;
     CLCircularRegion *_selectedRegion;
     NSMutableArray *_setupStepEvents;
+    unsigned long long _metricsSource;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long metricsSource; // @synthesize metricsSource=_metricsSource;
 @property(retain, nonatomic) NSMutableArray *setupStepEvents; // @synthesize setupStepEvents=_setupStepEvents;
 @property(retain, nonatomic) CLCircularRegion *selectedRegion; // @synthesize selectedRegion=_selectedRegion;
 @property(retain, nonatomic) NSMutableDictionary *actionsPerQuestionIndex; // @synthesize actionsPerQuestionIndex=_actionsPerQuestionIndex;
 @property(retain, nonatomic) UINavigationController *setupNavigationController; // @synthesize setupNavigationController=_setupNavigationController;
 @property(readonly, nonatomic) WFDailyRoutineShortcutSetupFlow *flow; // @synthesize flow=_flow;
 @property(nonatomic) __weak id <WFDailyRoutineShortcutSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)submitMetrics:(_Bool)arg1;
 - (id)currentStepEvent;
 - (void)dailyRoutineShortcutSetupTriggerViewControllerDidSkip:(id)arg1;
@@ -47,7 +49,7 @@
 - (void)pushTriggerSetupStep;
 - (long long)currentQuestionIndex;
 - (void)viewDidLoad;
-- (id)initWithFlow:(id)arg1;
+- (id)initWithFlow:(id)arg1 metricsSource:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

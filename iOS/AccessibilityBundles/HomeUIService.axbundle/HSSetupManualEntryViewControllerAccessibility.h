@@ -12,8 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)pair:(id)arg1;
-- (void)viewDidLoad;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -26,11 +26,16 @@
     NSString *_url;
     NSDictionary *_headers;
     NSData *_bodyData;
+    NSString *_experimentId;
+    NSString *_treatmentId;
     unsigned long long _whichTrigger;
 }
 
 + (id)startSearchFeedbackWithUUID;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long whichTrigger; // @synthesize whichTrigger=_whichTrigger;
+@property(copy, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
+@property(copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property(copy, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property(nonatomic) int tuscanyStatus; // @synthesize tuscanyStatus=_tuscanyStatus;
 @property(nonatomic) int endpoint; // @synthesize endpoint=_endpoint;
@@ -40,7 +45,6 @@
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property(nonatomic) unsigned long long timestamp;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

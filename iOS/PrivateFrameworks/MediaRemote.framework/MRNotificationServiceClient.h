@@ -40,6 +40,7 @@
 - (void)_handleOriginDidRegisterNotification:(id)arg1;
 - (void)_handleActiveOriginDidChangeNotification:(id)arg1;
 - (void)_notificationFired:(id)arg1 originNotification:(id)arg2 nowPlayingNotification:(id)arg3;
+- (void)_notificationFired:(id)arg1 clientNotification:(id)arg2 originNotification:(id)arg3 nowPlayingNotification:(id)arg4;
 - (void)_notificationFired:(id)arg1 playerPathNotifcation:(id)arg2 originNotification:(id)arg3 nowPlayingNotification:(id)arg4;
 - (_Bool)_processNeedsNonPlayerPathBasedNotificationsForBackwardCompatabilitySupport;
 - (_Bool)_shouldPostNotifications;

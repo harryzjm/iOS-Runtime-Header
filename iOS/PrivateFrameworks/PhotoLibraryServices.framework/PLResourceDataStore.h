@@ -12,7 +12,6 @@
 
 @interface PLResourceDataStore : NSObject <PLResourceDataStore>
 {
-    _Atomic unsigned long long _nextLocalAvailabilityRequestID;
     PLPhotoLibraryPathManager *_pathManager;
 }
 
@@ -21,17 +20,15 @@
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
 + (unsigned int)storeClassID;
 + (_Bool)isMasterThumbRecipeID:(unsigned int)arg1;
-@property(readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
 - (void).cxx_destruct;
-- (_Bool)verifyAndFixLocalAvailabilityForResource:(id)arg1 asset:(id)arg2 managedObjectContext:(id)arg3;
-- (unsigned long long)nextLocalAvailabilityRequestID;
+@property(readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
+- (_Bool)verifyAndFixLocalAvailabilityForResource:(id)arg1;
 - (id)guessUTIForExternalResource:(id)arg1 forAssetKind:(short)arg2 managedObjectContext:(id)arg3;
-- (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 inContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 inContext:(id)arg4 clientBundleID:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (_Bool)canStreamResource:(id)arg1;
 - (_Bool)videoResource:(id)arg1 matchesOrExceedsQualityLevel:(unsigned int)arg2;
-- (void)requestRemoteAvailabilityChange:(short)arg1 forResource:(id)arg2 asset:(id)arg3 inContext:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)cancelLocalAvailabilityChangeRequest:(unsigned long long)arg1;
-- (unsigned long long)requestLocalAvailabilityChange:(short)arg1 forResource:(id)arg2 asset:(id)arg3 inContext:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (_Bool)dataStoreSubtypeIsDownloadable:(unsigned long long)arg1;
+- (id)requestLocalAvailabilityChange:(short)arg1 forResource:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)storeExternalResource:(id)arg1 forAsset:(id)arg2 inContext:(id)arg3 options:(id)arg4 error:(id *)arg5 resultingResource:(id *)arg6;
 - (_Bool)canStoreExternalResource:(id)arg1;
 - (id)updateDerivativeResourcesForAsset:(id)arg1 forLifecycleEvent:(unsigned int)arg2;

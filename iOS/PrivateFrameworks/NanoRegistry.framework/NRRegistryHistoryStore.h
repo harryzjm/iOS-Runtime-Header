@@ -14,7 +14,6 @@
 }
 
 + (id)sharedInstance;
-@property(nonatomic) int keyBagStatusChangedNotificationToken; // @synthesize keyBagStatusChangedNotificationToken=_keyBagStatusChangedNotificationToken;
 - (void).cxx_destruct;
 - (void)invalidate;
 - (void)_notifyDiffIndexObserversWithHistoryEntry:(id)arg1 deviceCollection:(id)arg2 secureProperties:(id)arg3;
@@ -22,12 +21,9 @@
 - (id)addDiffIndexObserverWithWriteBlock:(CDUnknownBlockType)arg1;
 - (void)grabHistoryWithWriteBlock:(CDUnknownBlockType)arg1;
 - (void)grabHistoryWithReadBlock:(CDUnknownBlockType)arg1;
-@property(retain, nonatomic) NRDeviceCollectionHistory *history; // @synthesize history=_history;
+@property(readonly, nonatomic) NRDeviceCollectionHistory *history;
 - (void)setCollection:(id)arg1;
 - (id)collection;
-- (void)_removeUnreferencedSecureProperties;
-- (void)_persistCollection:(id)arg1 secureProperties:(id)arg2;
-- (void)_loadAndNotifySecureProperties;
 - (void)_notifyObserversSecurePropertiesAreAvailableWithCollection:(id)arg1 secureProperties:(id)arg2;
 - (void)dealloc;
 - (id)initWithParameters:(id)arg1;

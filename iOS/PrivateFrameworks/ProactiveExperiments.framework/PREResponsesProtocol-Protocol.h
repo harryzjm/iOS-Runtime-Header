@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDate, NSNumber, NSString;
 
 @protocol PREResponsesProtocol
 - (void)registerResponse:(NSString *)arg1 position:(NSNumber *)arg2 isCanned:(_Bool)arg3 isUsingQuickResponses:(_Bool)arg4 locale:(NSString *)arg5 modelConfigPath:(NSString *)arg6;
-- (void)preResponseItemsForMessage:(NSString *)arg1 maximumResponses:(unsigned long long)arg2 conversationHistory:(NSArray *)arg3 language:(NSString *)arg4 modelFilePath:(NSString *)arg5 modelConfigPath:(NSString *)arg6 registerDisplayed:(_Bool)arg7 completion:(void (^)(NSArray *, NSError *))arg8;
+- (void)preResponseItemsForMessage:(NSString *)arg1 maximumResponses:(unsigned long long)arg2 conversationHistory:(NSArray *)arg3 forContext:(NSString *)arg4 time:(NSDate *)arg5 language:(NSString *)arg6 recipientHandles:(NSArray *)arg7 modelFilePath:(NSString *)arg8 modelConfigPath:(NSString *)arg9 espressoBinFilePath:(NSString *)arg10 lexiconFilePath:(NSString *)arg11 registerDisplayed:(_Bool)arg12 completion:(void (^)(NSArray *, NSError *))arg13;
 @end
 

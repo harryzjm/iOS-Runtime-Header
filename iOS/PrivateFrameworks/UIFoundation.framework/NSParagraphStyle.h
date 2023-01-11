@@ -60,7 +60,7 @@
 @property(readonly, nonatomic) double maximumLineHeight;
 @property(readonly, nonatomic) double minimumLineHeight;
 @property(readonly, nonatomic) double firstLineHeadIndent;
-- (unsigned long long)lineBreakStrategy;
+@property(readonly, nonatomic) unsigned long long lineBreakStrategy;
 - (_Bool)usesOpticalAlignment;
 - (_Bool)allowsHangingPunctuation;
 - (unsigned long long)_lineBoundsOptions;

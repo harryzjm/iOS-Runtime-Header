@@ -20,7 +20,7 @@
     MPSImageStatisticsMinAndMax *_minmaxFilter;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) _Bool zeroHistogram; // @synthesize zeroHistogram=_zeroHistogram;
 @property(nonatomic) CDStruct_1e3be3a8 clipRectSource; // @synthesize clipRectSource=_clipRectSource;
 - (void)encodeToCommandBuffer:(id)arg1 sourceTexture:(id)arg2 minmaxTexture:(id)arg3 histogram:(id)arg4 histogramOffset:(unsigned long long)arg5;

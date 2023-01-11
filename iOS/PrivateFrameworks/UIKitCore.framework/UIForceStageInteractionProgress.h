@@ -17,8 +17,8 @@
     _Bool _completesAtTargetState;
 }
 
-@property(nonatomic) _Bool completesAtTargetState; // @synthesize completesAtTargetState=_completesAtTargetState;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool completesAtTargetState; // @synthesize completesAtTargetState=_completesAtTargetState;
 - (void)_reset;
 - (void)receiveObservedValue:(id)arg1;
 - (void)dealloc;

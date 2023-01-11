@@ -15,8 +15,8 @@
     id <SBControlCenterModuleTransientOverlayViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBControlCenterModuleTransientOverlayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBControlCenterModuleTransientOverlayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_animateTransitionFromViewController:(id)arg1 toViewController:(id)arg2 containerView:(id)arg3 isAnimated:(_Bool)arg4 otherAnimations:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (_Bool)_shouldBlurBackground;
 - (_Bool)handleHomeButtonPress;
@@ -25,6 +25,8 @@
 - (_Bool)shouldDisableOrientationUpdates;
 - (_Bool)shouldDisableControlCenter;
 @property(readonly, copy, nonatomic) CCSModulePresentationOptions *presentationOptions; // @dynamic presentationOptions;
+- (unsigned long long)supportedInterfaceOrientations;
+- (long long)preferredInterfaceOrientationForPresentation;
 - (void)contentModuleAlertViewControllerNeedsDismissal:(id)arg1;
 - (void)_dismiss;
 - (_Bool)_canShowWhileLocked;
@@ -34,6 +36,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (long long)preferredUnlockedGestureDismissalStyle;
 - (long long)preferredLockedGestureDismissalStyle;
+- (void)handleGestureDismissal;
 - (id)initWithModuleIdentifier:(id)arg1 presentationOptions:(id)arg2;
 
 // Remaining properties

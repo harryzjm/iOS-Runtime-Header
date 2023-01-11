@@ -13,14 +13,17 @@
 @interface GEOSharedNavState : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapItemStorage *_destinationInfo;
     GEOSharedNavETAInfo *_etaInfo;
     NSString *_groupIdentifier;
+    double _localUpdatedTimestamp;
     GEOSharedNavRouteInfo *_routeInfo;
     GEOSharedNavSenderInfo *_senderInfo;
     double _updatedTimestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _protocolVersion;
     int _referenceFrame;
     unsigned int _transportType;
@@ -28,6 +31,7 @@
     _Bool _closed;
     _Bool _muted;
     struct {
+        unsigned int has_localUpdatedTimestamp:1;
         unsigned int has_updatedTimestamp:1;
         unsigned int has_protocolVersion:1;
         unsigned int has_referenceFrame:1;
@@ -41,19 +45,7 @@
         unsigned int read_groupIdentifier:1;
         unsigned int read_routeInfo:1;
         unsigned int read_senderInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_destinationInfo:1;
-        unsigned int wrote_etaInfo:1;
-        unsigned int wrote_groupIdentifier:1;
-        unsigned int wrote_routeInfo:1;
-        unsigned int wrote_senderInfo:1;
-        unsigned int wrote_updatedTimestamp:1;
-        unsigned int wrote_protocolVersion:1;
-        unsigned int wrote_referenceFrame:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_arrived:1;
-        unsigned int wrote_closed:1;
-        unsigned int wrote_muted:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -70,8 +62,13 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasLocalUpdatedTimestamp;
+@property(nonatomic) double localUpdatedTimestamp;
 @property(nonatomic) _Bool hasProtocolVersion;
 @property(nonatomic) unsigned int protocolVersion;
 @property(nonatomic) _Bool hasTransportType;
@@ -90,19 +87,16 @@
 @property(nonatomic) _Bool arrived;
 @property(retain, nonatomic) NSString *groupIdentifier;
 @property(readonly, nonatomic) _Bool hasGroupIdentifier;
-- (void)_readGroupIdentifier;
 @property(retain, nonatomic) GEOSharedNavSenderInfo *senderInfo;
 @property(readonly, nonatomic) _Bool hasSenderInfo;
-- (void)_readSenderInfo;
 @property(retain, nonatomic) GEOSharedNavRouteInfo *routeInfo;
 @property(readonly, nonatomic) _Bool hasRouteInfo;
-- (void)_readRouteInfo;
 @property(retain, nonatomic) GEOSharedNavETAInfo *etaInfo;
 @property(readonly, nonatomic) _Bool hasEtaInfo;
-- (void)_readEtaInfo;
 @property(retain, nonatomic) GEOMapItemStorage *destinationInfo;
 @property(readonly, nonatomic) _Bool hasDestinationInfo;
-- (void)_readDestinationInfo;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

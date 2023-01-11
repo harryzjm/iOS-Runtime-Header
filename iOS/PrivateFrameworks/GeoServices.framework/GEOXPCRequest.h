@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
+#import <GeoServices/GEOXPCSerializable-Protocol.h>
 
 @class GEOApplicationAuditToken, GEODataRequestThrottlerToken, GEOMapServiceTraits, GEOPeer, NSError, NSProgress, NSString;
 @protocol OS_xpc_object;
 
-@interface GEOXPCRequest : NSObject <NSSecureCoding>
+@interface GEOXPCRequest : NSObject <GEOXPCSerializable>
 {
     unsigned char _flags;
     NSObject<OS_xpc_object> *_object;
@@ -26,7 +26,7 @@
 }
 
 + (_Bool)reportsProgress;
-+ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned char flags; // @synthesize flags=_flags;
 @property(readonly, nonatomic) GEODataRequestThrottlerToken *throttleToken; // @synthesize throttleToken=_throttleToken;
 @property(retain, nonatomic) GEOApplicationAuditToken *preferredAuditToken; // @synthesize preferredAuditToken=_auditToken;
@@ -36,18 +36,22 @@
 @property(retain, nonatomic) NSString *method; // @synthesize method=_method;
 @property(retain, nonatomic) NSString *service; // @synthesize service=_service;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *object; // @synthesize object=_object;
-- (void).cxx_destruct;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)sendSync:(id)arg1 error:(id *)arg2;
 - (void)send:(id)arg1 withReply:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)send:(id)arg1;
 - (id)_prepareRequest;
 - (id)_createConnectionWithQueue:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *replyDictionary;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithMessage:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 throttleToken:(id)arg4;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

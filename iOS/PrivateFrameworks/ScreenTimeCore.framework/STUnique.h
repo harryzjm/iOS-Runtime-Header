@@ -15,11 +15,12 @@
     id <STPersistenceControllerProtocol> _persistenceController;
 }
 
++ (Class)_internalClassForSerializableClassName:(id)arg1;
 + (id)mirroredEntityNames;
 + (id)cloudToLocalMapping;
 + (id)localToCloudMapping;
-@property(retain, nonatomic) id <STPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <STPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
 - (_Bool)addHistoryToken:(id)arg1 forAuthor:(id)arg2 toMetadataForStore:(id)arg3 error:(id *)arg4;
 - (id)historyTokenForAuthor:(id)arg1 fromStore:(id)arg2;
 - (void)resolveConflictsBetweenLocalDeltas:(id)arg1 cloudDeltas:(id)arg2;

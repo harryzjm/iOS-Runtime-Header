@@ -9,7 +9,8 @@
 @class HBXViewControllerFactory, HKHealthStore;
 
 @interface UIViewController (HealthExperienceUI)
-@property(nonatomic, readonly) HBXViewControllerFactory *resolvedHealthToolbox;
+- (void)submitUserActivityForRestoration:(id)arg1;
 @property(nonatomic, readonly) HKHealthStore *resolvedHealthStore;
+@property(nonatomic, readonly) HBXViewControllerFactory *resolvedHealthToolbox;
 @end
 

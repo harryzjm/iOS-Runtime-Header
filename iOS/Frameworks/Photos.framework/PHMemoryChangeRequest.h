@@ -24,8 +24,9 @@
 }
 
 + (id)changeRequestForRemotelyViewedMemoryWithLocalIdentifier:(id)arg1;
++ (void)blockPerson:(id)arg1 withAsset:(id)arg2;
++ (void)blockPerson:(id)arg1;
 + (void)deleteMemories:(id)arg1;
-+ (_Bool)canGenerateUUIDWithoutEntitlements;
 + (id)validateMemoryTitle:(id)arg1 error:(id *)arg2;
 + (id)changeRequestForMemory:(id)arg1;
 + (id)_preferredAttributesForMemoryCreationFromObject:(id)arg1 withSuccess:(_Bool)arg2 title:(id)arg3 subtitle:(id)arg4 error:(id)arg5 proposedAttributes:(id)arg6;
@@ -38,6 +39,7 @@
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 representativeAssets:(id)arg5 curatedAssets:(id)arg6 keyAsset:(id)arg7;
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 subcategory:(unsigned long long)arg5 representativeAssets:(id)arg6 curatedAssets:(id)arg7 extendedCuratedAssets:(id)arg8 keyAsset:(id)arg9;
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 subcategory:(unsigned long long)arg5 representativeAssets:(id)arg6 curatedAssets:(id)arg7 keyAsset:(id)arg8;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *movieCuratedAssetsHelper; // @synthesize movieCuratedAssetsHelper=_movieCuratedAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *extendedCuratedAssetsHelper; // @synthesize extendedCuratedAssetsHelper=_extendedCuratedAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *curatedAssetsHelper; // @synthesize curatedAssetsHelper=_curatedAssetsHelper;
@@ -45,7 +47,6 @@
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetHelper; // @synthesize keyAssetHelper=_keyAssetHelper;
 @property(readonly, nonatomic) NSDictionary *movieAssetState; // @synthesize movieAssetState=_movieAssetState;
 @property(readonly, nonatomic) _Bool clientEntitledToMemoryMutation; // @synthesize clientEntitledToMemoryMutation=_clientEntitledToMemoryMutation;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
@@ -68,6 +69,7 @@
 - (id)_mutableCuratedAssetObjectIDsAndUUIDs;
 - (id)_mutableRepresentativeAssetObjectIDsAndUUIDs;
 - (void)_prepareAssetIDsIfNeeded;
+@property(nonatomic) unsigned long long featuredState;
 @property(nonatomic) unsigned long long notificationState;
 @property(retain, nonatomic) NSDate *lastMoviePlayedDate;
 @property(retain, nonatomic) NSDate *lastViewedDate;
@@ -86,8 +88,6 @@
 @property(nonatomic, getter=isFavorite) _Bool favorite;
 @property(nonatomic, getter=isRejected) _Bool rejected;
 @property(readonly, nonatomic) NSString *managedEntityName;
-- (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
@@ -95,14 +95,15 @@
 @property(readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedMemory;
 
 // Remaining properties
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSString *clientName;
-@property(readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) _Bool isNewRequest;
 @property(readonly, getter=isMutated) _Bool mutated;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(nonatomic) _Bool shouldPerformConcurrentWork;
 @property(readonly) Class superclass;
 
 @end

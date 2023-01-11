@@ -30,6 +30,7 @@
     NSDictionary *_locationOfInterestHistograms;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *locationOfInterestHistograms; // @synthesize locationOfInterestHistograms=_locationOfInterestHistograms;
 @property(nonatomic) int highProbabilityItemMinNumOfEvents; // @synthesize highProbabilityItemMinNumOfEvents=_highProbabilityItemMinNumOfEvents;
 @property(nonatomic) double relativeHighProbabilityItemMinDifference; // @synthesize relativeHighProbabilityItemMinDifference=_relativeHighProbabilityItemMinDifference;
@@ -44,7 +45,6 @@
 @property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) _Bool locationsOfInterestsAvailable; // @synthesize locationsOfInterestsAvailable=_locationsOfInterestsAvailable;
-- (void).cxx_destruct;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_deleteUserInteractionsBeforeDate:(id)arg1;
 - (_Bool)_persistUserInteractionWithPredictedLocationOfInterest:(id)arg1 interaction:(unsigned long long)arg2 feedback:(id)arg3;
@@ -79,7 +79,7 @@
 - (void)_updateRegisteredDefaults:(CDUnknownBlockType)arg1;
 - (void)shutdown;
 - (void)_shutdown;
-- (id)initWithQueue:(id)arg1 learnedLocationManager:(id)arg2 eventManager:(id)arg3 metricManager:(id)arg4 managedObjectContext:(id)arg5 persistenceManager:(id)arg6 defaultsManager:(id)arg7;
+- (id)initWithDefaultsManager:(id)arg1 eventManager:(id)arg2 learnedLocationManager:(id)arg3 managedObjectContext:(id)arg4 metricManager:(id)arg5 persistenceManager:(id)arg6;
 - (id)init;
 - (void)_registerScoreBoardSubmission;
 - (unsigned long long)verifyPresenceOfUserWithEventLocation:(id)arg1 deviceLOIs:(id)arg2;

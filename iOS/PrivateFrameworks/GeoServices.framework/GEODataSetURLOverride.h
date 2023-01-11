@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEODataSetURLOverride : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_addressCorrectionInitURL;
     NSString *_addressCorrectionUpdateURL;
@@ -31,6 +30,9 @@ __attribute__((visibility("hidden")))
     NSString *_problemSubmissionURL;
     NSString *_simpleETAURL;
     NSString *_spatialLookupURL;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _dataSet;
     struct {
         unsigned int has_dataSet:1;
@@ -50,23 +52,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_problemSubmissionURL:1;
         unsigned int read_simpleETAURL:1;
         unsigned int read_spatialLookupURL:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressCorrectionInitURL:1;
-        unsigned int wrote_addressCorrectionUpdateURL:1;
-        unsigned int wrote_announcementsURL:1;
-        unsigned int wrote_batchReverseGeocoderURL:1;
-        unsigned int wrote_businessPortalBaseURL:1;
-        unsigned int wrote_directionsURL:1;
-        unsigned int wrote_dispatcherURL:1;
-        unsigned int wrote_etaURL:1;
-        unsigned int wrote_logMessageUsageURL:1;
-        unsigned int wrote_problemCategoriesURL:1;
-        unsigned int wrote_problemOptInURL:1;
-        unsigned int wrote_problemStatusURL:1;
-        unsigned int wrote_problemSubmissionURL:1;
-        unsigned int wrote_simpleETAURL:1;
-        unsigned int wrote_spatialLookupURL:1;
-        unsigned int wrote_dataSet:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -82,55 +68,45 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *spatialLookupURL;
 @property(readonly, nonatomic) _Bool hasSpatialLookupURL;
-- (void)_readSpatialLookupURL;
 @property(retain, nonatomic) NSString *logMessageUsageURL;
 @property(readonly, nonatomic) _Bool hasLogMessageUsageURL;
-- (void)_readLogMessageUsageURL;
 @property(retain, nonatomic) NSString *businessPortalBaseURL;
 @property(readonly, nonatomic) _Bool hasBusinessPortalBaseURL;
-- (void)_readBusinessPortalBaseURL;
 @property(retain, nonatomic) NSString *problemOptInURL;
 @property(readonly, nonatomic) _Bool hasProblemOptInURL;
-- (void)_readProblemOptInURL;
 @property(retain, nonatomic) NSString *dispatcherURL;
 @property(readonly, nonatomic) _Bool hasDispatcherURL;
-- (void)_readDispatcherURL;
 @property(retain, nonatomic) NSString *announcementsURL;
 @property(readonly, nonatomic) _Bool hasAnnouncementsURL;
-- (void)_readAnnouncementsURL;
 @property(retain, nonatomic) NSString *problemCategoriesURL;
 @property(readonly, nonatomic) _Bool hasProblemCategoriesURL;
-- (void)_readProblemCategoriesURL;
 @property(retain, nonatomic) NSString *problemStatusURL;
 @property(readonly, nonatomic) _Bool hasProblemStatusURL;
-- (void)_readProblemStatusURL;
 @property(retain, nonatomic) NSString *problemSubmissionURL;
 @property(readonly, nonatomic) _Bool hasProblemSubmissionURL;
-- (void)_readProblemSubmissionURL;
 @property(retain, nonatomic) NSString *addressCorrectionUpdateURL;
 @property(readonly, nonatomic) _Bool hasAddressCorrectionUpdateURL;
-- (void)_readAddressCorrectionUpdateURL;
 @property(retain, nonatomic) NSString *addressCorrectionInitURL;
 @property(readonly, nonatomic) _Bool hasAddressCorrectionInitURL;
-- (void)_readAddressCorrectionInitURL;
 @property(retain, nonatomic) NSString *simpleETAURL;
 @property(readonly, nonatomic) _Bool hasSimpleETAURL;
-- (void)_readSimpleETAURL;
 @property(retain, nonatomic) NSString *batchReverseGeocoderURL;
 @property(readonly, nonatomic) _Bool hasBatchReverseGeocoderURL;
-- (void)_readBatchReverseGeocoderURL;
 @property(retain, nonatomic) NSString *etaURL;
 @property(readonly, nonatomic) _Bool hasEtaURL;
-- (void)_readEtaURL;
 @property(retain, nonatomic) NSString *directionsURL;
 @property(readonly, nonatomic) _Bool hasDirectionsURL;
-- (void)_readDirectionsURL;
 @property(nonatomic) _Bool hasDataSet;
 @property(nonatomic) unsigned int dataSet;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

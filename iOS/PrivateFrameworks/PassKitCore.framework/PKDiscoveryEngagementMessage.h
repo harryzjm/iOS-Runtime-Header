@@ -11,7 +11,7 @@
 
 @interface PKDiscoveryEngagementMessage <NSSecureCoding, NSCopying>
 {
-    _Bool _reportIdentifier;
+    _Bool _reportIdentifierToAggd;
     long long _type;
     long long _passQualifier;
     NSString *_titleKey;
@@ -23,16 +23,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *localizedMessage; // @synthesize localizedMessage=_localizedMessage;
 @property(readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
-@property(nonatomic, getter=canReportIdentifier) _Bool reportIdentifier; // @synthesize reportIdentifier=_reportIdentifier;
+@property(nonatomic, getter=canReportIdentifierToAggd) _Bool reportIdentifierToAggd; // @synthesize reportIdentifierToAggd=_reportIdentifierToAggd;
 @property(retain, nonatomic) PKDiscoveryEngagementMessageAction *action; // @synthesize action=_action;
 @property(retain, nonatomic) NSDictionary *iconURLs; // @synthesize iconURLs=_iconURLs;
 @property(retain, nonatomic) NSString *messageKey; // @synthesize messageKey=_messageKey;
 @property(retain, nonatomic) NSString *titleKey; // @synthesize titleKey=_titleKey;
 @property(nonatomic) long long passQualifier; // @synthesize passQualifier=_passQualifier;
 @property(nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

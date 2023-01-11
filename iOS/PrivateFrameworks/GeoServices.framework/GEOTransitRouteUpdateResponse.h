@@ -13,7 +13,6 @@
 @interface GEOTransitRouteUpdateResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOTimepoint _timepointUsed;
     GEOPDDatasetABStatus *_datasetAbStatus;
@@ -21,6 +20,9 @@
     GEOTransitRouteUpdateConfiguration *_routeUpdateConfiguration;
     NSMutableArray *_routeUpdates;
     NSString *_transitDataVersion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_timepointUsed:1;
@@ -31,14 +33,7 @@
         unsigned int read_routeUpdateConfiguration:1;
         unsigned int read_routeUpdates:1;
         unsigned int read_transitDataVersion:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_timepointUsed:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_responseId:1;
-        unsigned int wrote_routeUpdateConfiguration:1;
-        unsigned int wrote_routeUpdates:1;
-        unsigned int wrote_transitDataVersion:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -55,33 +50,32 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *transitDataVersion;
 @property(readonly, nonatomic) _Bool hasTransitDataVersion;
-- (void)_readTransitDataVersion;
 @property(nonatomic) _Bool hasTimepointUsed;
 @property(nonatomic) struct GEOTimepoint timepointUsed;
 @property(retain, nonatomic) GEOTransitRouteUpdateConfiguration *routeUpdateConfiguration;
 @property(readonly, nonatomic) _Bool hasRouteUpdateConfiguration;
-- (void)_readRouteUpdateConfiguration;
 @property(retain, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
 @property(readonly, nonatomic) _Bool hasDatasetAbStatus;
-- (void)_readDatasetAbStatus;
 - (int)StringAsStatus:(id)arg1;
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;
 @property(nonatomic) int status;
 @property(retain, nonatomic) NSData *responseId;
 @property(readonly, nonatomic) _Bool hasResponseId;
-- (void)_readResponseId;
 - (id)routeUpdateAtIndex:(unsigned long long)arg1;
 - (unsigned long long)routeUpdatesCount;
-- (void)_addNoFlagsRouteUpdate:(id)arg1;
 - (void)addRouteUpdate:(id)arg1;
 - (void)clearRouteUpdates;
 @property(retain, nonatomic) NSMutableArray *routeUpdates;
-- (void)_readRouteUpdates;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

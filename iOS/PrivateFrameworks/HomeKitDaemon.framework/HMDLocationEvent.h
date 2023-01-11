@@ -16,9 +16,9 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
-@property(retain, nonatomic) CLRegion *region; // @synthesize region=_region;
 - (void).cxx_destruct;
-- (id)metricData;
+@property(retain, nonatomic) CLRegion *region; // @synthesize region=_region;
+- (id)analyticsTriggerEventData;
 - (void)didExitRegion:(id)arg1;
 - (void)didEnterRegion:(id)arg1;
 - (void)informLocationEventOccuranceToResident;

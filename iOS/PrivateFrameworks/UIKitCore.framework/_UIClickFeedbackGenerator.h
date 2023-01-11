@@ -15,7 +15,6 @@
 - (void)userInteractionCancelled;
 - (void)userInteractionEnded;
 - (void)userInteractionStarted;
-- (void)dragged;
 - (void)pressedUp;
 - (void)pressedDown;
 - (id)initWithCoordinateSpace:(id)arg1;

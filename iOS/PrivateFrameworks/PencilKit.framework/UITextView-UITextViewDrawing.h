@@ -19,6 +19,7 @@
 - (_Bool)_canAddStroke;
 - (void)_didEndStroke;
 - (void)_willBeginNewStrokeForTouch:(id)arg1;
+- (void)_updateDrawingBackgroundColor;
 - (void)_undoDrawingBounds:(struct CGRect)arg1 viewBounds:(struct CGRect)arg2 ofAttachmentUUID:(id)arg3;
 - (void)_growView:(id)arg1 textAttachment:(id)arg2 atCharacterIndex:(long long)arg3 step:(double)arg4 stop:(CDUnknownBlockType)arg5;
 - (void)_removeDrawingAttachment:(id)arg1 withView:(id)arg2 forDeletion:(_Bool)arg3;
@@ -30,10 +31,13 @@
 @property(retain, nonatomic) UIImage *paperTexture;
 @property(copy, nonatomic) PKLinedPaper *linedPaper;
 @property(nonatomic, getter=isRulerEnabled) _Bool rulerEnabled;
+@property(readonly, nonatomic) _Bool _isHandwritingToolSelected;
+- (void)_setSelectedInkColor:(id)arg1;
 @property(copy, nonatomic, setter=_setTool:) PKTool *_tool;
 @property(copy, nonatomic) PKInk *ink;
+- (id)_pkTiledViewIfEnabled;
 - (void)_clearDrawingInfo;
-- (id)_pkTiledView;
 - (id)_drawingInfo;
+- (id)_drawingInfoCreateIfNecessary;
 @end
 

@@ -12,16 +12,17 @@
 {
 }
 
++ (id)predicateForFaceCountTrigger;
 + (id)predicateForArchival;
 + (id)predicatesForFacesNeedingFaceCropGeneration;
 + (id)predicatesToExcludeNonVisibleFaces;
-+ (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 library:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)batchFetchKeyFaceByPersonObjectIDWithPersonObjectIDs:(id)arg1 library:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (unsigned long long)countOfHiddenFacesOnAssetsWithObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)detectedFaceWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityName;
 + (void)enumerateAssetUUIDsForSearchIndexingWithDetctedFaceUUIDs:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(CDUnknownBlockType)arg3;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(_Bool)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 + (long long)resetAssetForAllSyncableFacesInManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)syncableFacesToUploadInitiallyInLibrary:(id)arg1 limit:(unsigned long long)arg2;
 + (id)_syncableFacesToUploadInitiallyPredicate;
@@ -127,6 +128,7 @@
 @property(readonly) Class superclass;
 @property(nonatomic) int trainingType; // @dynamic trainingType;
 @property(retain, nonatomic) NSString *uuid; // @dynamic uuid;
+@property(nonatomic) short vipModelType; // @dynamic vipModelType;
 @property(nonatomic) double yaw; // @dynamic yaw;
 
 @end

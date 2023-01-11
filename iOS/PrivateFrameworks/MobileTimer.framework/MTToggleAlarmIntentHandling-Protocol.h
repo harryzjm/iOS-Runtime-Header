@@ -9,13 +9,13 @@
 @class MTIntentAlarm, MTToggleAlarmIntent;
 
 @protocol MTToggleAlarmIntentHandling <NSObject>
-- (void)provideAlarmOptionsForToggleAlarm:(MTToggleAlarmIntent *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
+- (void)provideAlarmOptionsCollectionForToggleAlarm:(MTToggleAlarmIntent *)arg1 withCompletion:(void (^)(INObjectCollection *, NSError *))arg2;
 - (void)resolveAlarmForToggleAlarm:(MTToggleAlarmIntent *)arg1 withCompletion:(void (^)(MTIntentAlarmResolutionResult *))arg2;
 - (void)resolveStateForToggleAlarm:(MTToggleAlarmIntent *)arg1 withCompletion:(void (^)(MTAlarmStateResolutionResult *))arg2;
-- (void)resolveOperationForToggleAlarm:(MTToggleAlarmIntent *)arg1 withCompletion:(void (^)(MTAlarmOperationResolutionResult *))arg2;
 - (void)handleToggleAlarm:(MTToggleAlarmIntent *)arg1 completion:(void (^)(MTToggleAlarmIntentResponse *))arg2;
 
 @optional
+- (void)provideAlarmOptionsForToggleAlarm:(MTToggleAlarmIntent *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (MTIntentAlarm *)defaultAlarmForToggleAlarm:(MTToggleAlarmIntent *)arg1;
 - (void)confirmToggleAlarm:(MTToggleAlarmIntent *)arg1 completion:(void (^)(MTToggleAlarmIntentResponse *))arg2;
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MLModel, MLNeuralNetworksCompileTimeParams, NSArray, NSDictionary, NSString;
+@class MLModel, MLNeuralNetworksCompileTimeParams, MLVersionInfo, NSArray, NSDictionary, NSString;
 
 @interface MLNeuralNetworkContainer : NSObject
 {
@@ -14,6 +14,7 @@
     _Bool _hasOptionalInputSequenceConcat;
     _Bool _hasDynamicLayer;
     _Bool _ndArrayInterpretation;
+    _Bool _modelIsEncrypted;
     int _precision;
     int _engine;
     NSString *_modelFilePath;
@@ -29,14 +30,22 @@
     MLModel *_transformDesc;
     NSDictionary *_imagePreprocessingParams;
     MLNeuralNetworksCompileTimeParams *_updatableModelCompiledParams;
+    NSDictionary *_optionalInputDefaultValues;
+    MLVersionInfo *_modelVersionInfo;
     map_7c549560 _optionalInputTypes;
 }
 
 + (id)containerFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (_Bool)readIsClassifier:(struct IArchive *)arg1;
 + (id)containerFromFilePath:(id)arg1 inputLayerNames:(id)arg2 outputLayerNames:(id)arg3 parameters:(id)arg4;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) map_7c549560 optionalInputTypes; // @synthesize optionalInputTypes=_optionalInputTypes;
 @property(nonatomic) int engine; // @synthesize engine=_engine;
 @property(nonatomic) int precision; // @synthesize precision=_precision;
+@property(retain, nonatomic) MLVersionInfo *modelVersionInfo; // @synthesize modelVersionInfo=_modelVersionInfo;
+@property(nonatomic) _Bool modelIsEncrypted; // @synthesize modelIsEncrypted=_modelIsEncrypted;
+@property(retain, nonatomic) NSDictionary *optionalInputDefaultValues; // @synthesize optionalInputDefaultValues=_optionalInputDefaultValues;
 @property(retain, nonatomic) MLNeuralNetworksCompileTimeParams *updatableModelCompiledParams; // @synthesize updatableModelCompiledParams=_updatableModelCompiledParams;
 @property(retain, nonatomic) NSDictionary *imagePreprocessingParams; // @synthesize imagePreprocessingParams=_imagePreprocessingParams;
 @property _Bool ndArrayInterpretation; // @synthesize ndArrayInterpretation=_ndArrayInterpretation;
@@ -54,8 +63,6 @@
 @property(readonly, retain, nonatomic) NSArray *outputLayerNames; // @synthesize outputLayerNames=_outputLayerNames;
 @property(readonly, retain, nonatomic) NSArray *inputLayerNames; // @synthesize inputLayerNames=_inputLayerNames;
 @property(retain, nonatomic) NSString *modelFilePath; // @synthesize modelFilePath=_modelFilePath;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)initWithFeatureDescriptions:(id)arg1 transformDesc:(id)arg2 outputLayerNames:(id)arg3 parameters:(id)arg4 configurations:(id)arg5 classScoreVectorName:(id)arg6 classLabels:(id)arg7 hasBidirectionalLayer:(_Bool)arg8 hasOptionalInputSequenceConcat:(_Bool)arg9 hasDynamicLayer:(_Bool)arg10;
 - (id)initWithFilePath:(id)arg1 inputLayerNames:(id)arg2 outputLayerNames:(id)arg3 parameters:(id)arg4;
 

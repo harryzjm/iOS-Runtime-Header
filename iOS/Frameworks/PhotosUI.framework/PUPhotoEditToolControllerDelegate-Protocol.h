@@ -40,7 +40,7 @@
 - (PLPhotoEditRenderer *)toolControllerMainRenderer:(PUPhotoEditToolController *)arg1;
 - (UIImage *)toolControllerPlaceholderImage:(PUPhotoEditToolController *)arg1;
 - (UIView *)toolControllerMainContainerView:(PUPhotoEditToolController *)arg1;
-- (CDStruct_910f5d27)toolControllerImageModulationOptions:(PUPhotoEditToolController *)arg1;
+- (CDStruct_0b004a15)toolControllerImageModulationOptions:(PUPhotoEditToolController *)arg1;
 - (PICompositionController *)toolControllerOriginalCompositionController:(PUPhotoEditToolController *)arg1;
 - (PICompositionController *)toolControllerUneditedCompositionController:(PUPhotoEditToolController *)arg1;
 - (void)toolController:(PUPhotoEditToolController *)arg1 switchEditSource:(long long)arg2;

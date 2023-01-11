@@ -12,11 +12,12 @@
     NSString *_memberEmail;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *memberEmail; // @synthesize memberEmail=_memberEmail;
 @property(copy, nonatomic) NSNumber *memberDSID; // @synthesize memberDSID=_memberDSID;
-- (void).cxx_destruct;
-- (id)urlRequest;
-- (id)urlString;
+- (void)URLRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_queryString;
+- (id)_endpoint;
 - (_Bool)isUserInitiated;
 
 @end

@@ -13,6 +13,7 @@
 @interface _UIStatusBarVisualProvider_iOS : NSObject <_UIStatusBarVisualProvider>
 {
     _Bool _expanded;
+    _Bool _onLockScreen;
     _UIStatusBar *_statusBar;
     _UIStatusBarDisplayItemPlacementNetworkGroup *_expandedNetworkGroup;
     NSArray *_expandedCellularPlacementsAffectedByAirplaneMode;
@@ -22,6 +23,7 @@
 }
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
++ (double)bluetoothPaddingInset;
 + (double)regionSpacing;
 + (double)expandedItemSpacing;
 + (double)itemSpacing;
@@ -29,15 +31,16 @@
 + (double)height;
 + (_Bool)wantsExpandedLeadingPlacements;
 + (_Bool)hasCellularCapability;
-+ (Class)visualProviderSubclassForScreen:(id)arg1;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacementGroup *secondaryWifiGroup; // @synthesize secondaryWifiGroup=_secondaryWifiGroup;
 @property(readonly, nonatomic) NSArray *expandedTrailingPlacements; // @synthesize expandedTrailingPlacements=_expandedTrailingPlacements;
 @property(readonly, nonatomic) NSArray *expandedLeadingPlacements; // @synthesize expandedLeadingPlacements=_expandedLeadingPlacements;
 @property(readonly, nonatomic) NSArray *expandedCellularPlacementsAffectedByAirplaneMode; // @synthesize expandedCellularPlacementsAffectedByAirplaneMode=_expandedCellularPlacementsAffectedByAirplaneMode;
 @property(readonly, nonatomic) _UIStatusBarDisplayItemPlacementNetworkGroup *expandedNetworkGroup; // @synthesize expandedNetworkGroup=_expandedNetworkGroup;
+@property(nonatomic) _Bool onLockScreen; // @synthesize onLockScreen=_onLockScreen;
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) __weak _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
-- (void).cxx_destruct;
 - (id)defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) _UIStatusBarAnimation *animationForAirplaneMode;
 @property(readonly, nonatomic) double airplaneObstacleFadeInDuration;
@@ -58,6 +61,7 @@
 - (id)setupInContainerView:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)styleAttributesForStyle:(long long)arg1;
+@property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 - (id)init;
 
 // Remaining properties

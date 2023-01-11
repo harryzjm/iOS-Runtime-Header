@@ -23,10 +23,12 @@
     NSArray *_bundleIdentifiers;
 }
 
++ (CDUnknownBlockType)Username;
 + (_Bool)supportsSecureCoding;
 + (id)socialProfileWithDictionaryRepresentation:(id)arg1;
 + (id)localizedStringForService:(id)arg1;
 + (id)localizedStringForKey:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
 @property(copy, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property(copy, nonatomic) NSString *displayname; // @synthesize displayname=_displayname;
@@ -34,7 +36,6 @@
 @property(copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(copy, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
-- (void).cxx_destruct;
 - (_Bool)isValid:(id *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1 ignoreURLs:(_Bool)arg2;

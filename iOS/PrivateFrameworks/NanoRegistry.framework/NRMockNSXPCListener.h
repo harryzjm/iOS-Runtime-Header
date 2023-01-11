@@ -20,11 +20,8 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property(retain, nonatomic) id <NRNSXPCListenerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (id)serverConnectionWithClientConnection:(id)arg1;
+@property(retain, nonatomic) id <NRNSXPCListenerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
 - (void)invalidate;
 - (void)suspend;

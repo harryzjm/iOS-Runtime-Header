@@ -11,12 +11,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)axAdditionalElements;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)accessibilityViewIsModal;
 - (id)_accessibilityHitTestingObscuredScreenAllowedViews;
+- (id)_accessibilityObscuredScreenAllowedViews;
+- (id)_accessibilityPresentationController;
 - (id)_accessibilityDimmingView;
 - (void)_didCompleteTransition:(_Bool)arg1;
 - (id)_accessibilityRetrieveDelegate;
+- (void)_axSetPresentationController:(id)arg1;
+- (id)_axPresentationController;
 
 @end
 

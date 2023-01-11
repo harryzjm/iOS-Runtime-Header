@@ -8,31 +8,36 @@
 
 #import <PencilKit/CHStroke-Protocol.h>
 
-@class NSString, PKStroke, PKStrokeProviderSliceIdentifier;
+@class CHEncodedStrokeIdentifier, NSString, PKStroke, PKStrokeProviderSliceIdentifier;
 @protocol CHStrokeIdentifier;
 
 @interface PKStrokeProviderSlice : NSObject <CHStroke>
 {
+    CHEncodedStrokeIdentifier *_encodedStrokeIdentifier;
     PKStrokeProviderSliceIdentifier *_identifier;
     PKStroke *_stroke;
     struct CGRect _bounds;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PKStroke *stroke; // @synthesize stroke=_stroke;
 @property(readonly, nonatomic) PKStrokeProviderSliceIdentifier *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)enumeratePointsWithDistanceStep:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumeratePointsWithTimestep:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (double)_strokeLength;
+- (long long)_lastPointIndex;
+- (long long)_firstPointIndex;
 - (double)_lengthOfSplineSegment:(unsigned long long)arg1;
 - (double)_interpolatedTimeForSplineSegment:(long long)arg1 t:(double)arg2;
 - (struct CGPoint)_interpolatedPointForSplineSegment:(long long)arg1 t:(double)arg2;
 - (struct CGPoint)_splineControlPoint:(long long)arg1;
 - (long long)compareTo:(id)arg1;
+@property(readonly, nonatomic) unsigned long long strokeAttributes;
 @property(readonly, nonatomic) double endTimestamp;
 @property(readonly, nonatomic) double startTimestamp;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property(readonly, nonatomic) CHEncodedStrokeIdentifier *encodedStrokeIdentifier; // @synthesize encodedStrokeIdentifier=_encodedStrokeIdentifier;
 @property(readonly, retain, nonatomic) id <CHStrokeIdentifier> strokeIdentifier;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

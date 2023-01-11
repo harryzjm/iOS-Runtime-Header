@@ -11,16 +11,18 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 
-@class NSSet, NSString, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap;
+@class NSData, NSSet, NSString, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap;
 
 @interface REMAccountStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
 {
     unsigned long long _storeGeneration;
     unsigned long long _copyGeneration;
+    struct os_unfair_lock_s _lock;
     _Bool _markedForRemoval;
     _Bool _listsDADisplayOrderChanged;
     _Bool _inactive;
     _Bool _didChooseToMigrate;
+    _Bool _didChooseToMigrateLocally;
     _Bool _didFinishMigration;
     _Bool _daAllowsCalendarAddDeleteModify;
     _Bool _daSupportsSharedCalendars;
@@ -33,8 +35,9 @@
     long long _type;
     NSString *_name;
     REMCRMergeableOrderedSet *_listIDsMergeableOrdering;
-    REMResolutionTokenMap *_resolutionTokenMap;
     NSSet *_listIDsToUndelete;
+    REMResolutionTokenMap *_resolutionTokenMap;
+    NSData *_resolutionTokenMapData;
     NSString *_daConstraintsDescriptionPath;
 }
 
@@ -43,16 +46,19 @@
 + (id)objectIDWithUUID:(id)arg1;
 + (id)newObjectID;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool daWasMigrated; // @synthesize daWasMigrated=_daWasMigrated;
 @property(nonatomic) _Bool daSupportsSharedCalendars; // @synthesize daSupportsSharedCalendars=_daSupportsSharedCalendars;
 @property(nonatomic) _Bool daAllowsCalendarAddDeleteModify; // @synthesize daAllowsCalendarAddDeleteModify=_daAllowsCalendarAddDeleteModify;
 @property(copy, nonatomic) NSString *daConstraintsDescriptionPath; // @synthesize daConstraintsDescriptionPath=_daConstraintsDescriptionPath;
 @property(nonatomic) _Bool didFinishMigration; // @synthesize didFinishMigration=_didFinishMigration;
+@property(nonatomic) _Bool didChooseToMigrateLocally; // @synthesize didChooseToMigrateLocally=_didChooseToMigrateLocally;
 @property(nonatomic) _Bool didChooseToMigrate; // @synthesize didChooseToMigrate=_didChooseToMigrate;
 @property(nonatomic) _Bool inactive; // @synthesize inactive=_inactive;
+@property(retain, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
+@property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
 @property(nonatomic) _Bool listsDADisplayOrderChanged; // @synthesize listsDADisplayOrderChanged=_listsDADisplayOrderChanged;
 @property(retain, nonatomic) NSSet *listIDsToUndelete; // @synthesize listIDsToUndelete=_listIDsToUndelete;
-@property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
 @property(nonatomic) _Bool markedForRemoval; // @synthesize markedForRemoval=_markedForRemoval;
 @property(retain, nonatomic) REMCRMergeableOrderedSet *listIDsMergeableOrdering; // @synthesize listIDsMergeableOrdering=_listIDsMergeableOrdering;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
@@ -62,9 +68,10 @@
 @property(copy, nonatomic) NSString *daSyncToken; // @synthesize daSyncToken;
 @property(copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property(copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;
-- (void).cxx_destruct;
 - (id)listIDsMergeableOrderingReplicaIDSource;
+- (id)cdKeyToStorageKeyMap;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
+@property(readonly, nonatomic) NSString *displayName;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

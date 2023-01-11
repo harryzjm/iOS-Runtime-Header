@@ -13,12 +13,14 @@
 @interface GEOTransitRouteUpdate : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_alerts;
     GEOTransitRouteDisplayStrings *_displayStrings;
     GEOTransitRouteIdentifier *_routeIdentifier;
     NSMutableArray *_stepUpdates;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_status:1;
@@ -27,12 +29,7 @@
         unsigned int read_displayStrings:1;
         unsigned int read_routeIdentifier:1;
         unsigned int read_stepUpdates:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_alerts:1;
-        unsigned int wrote_displayStrings:1;
-        unsigned int wrote_routeIdentifier:1;
-        unsigned int wrote_stepUpdates:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -50,32 +47,31 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)alertAtIndex:(unsigned long long)arg1;
 - (unsigned long long)alertsCount;
-- (void)_addNoFlagsAlert:(id)arg1;
 - (void)addAlert:(id)arg1;
 - (void)clearAlerts;
 @property(retain, nonatomic) NSMutableArray *alerts;
-- (void)_readAlerts;
 - (id)stepUpdateAtIndex:(unsigned long long)arg1;
 - (unsigned long long)stepUpdatesCount;
-- (void)_addNoFlagsStepUpdate:(id)arg1;
 - (void)addStepUpdate:(id)arg1;
 - (void)clearStepUpdates;
 @property(retain, nonatomic) NSMutableArray *stepUpdates;
-- (void)_readStepUpdates;
 @property(retain, nonatomic) GEOTransitRouteDisplayStrings *displayStrings;
 @property(readonly, nonatomic) _Bool hasDisplayStrings;
-- (void)_readDisplayStrings;
 - (int)StringAsStatus:(id)arg1;
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;
 @property(nonatomic) int status;
 @property(retain, nonatomic) GEOTransitRouteIdentifier *routeIdentifier;
 @property(readonly, nonatomic) _Bool hasRouteIdentifier;
-- (void)_readRouteIdentifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)_logDescription;
 
 @end

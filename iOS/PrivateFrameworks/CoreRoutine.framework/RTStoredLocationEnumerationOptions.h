@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <CoreRoutine/NSCopying-Protocol.h>
-#import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSDateInterval;
+@class CLLocation, NSDateInterval;
 
-@interface RTStoredLocationEnumerationOptions : NSObject <NSSecureCoding, NSCopying>
+@interface RTStoredLocationEnumerationOptions <NSCopying>
 {
     NSDateInterval *_dateInterval;
     double _horizontalAccuracy;
     unsigned long long _batchSize;
+    CLLocation *_boundingBoxLocation;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CLLocation *boundingBoxLocation; // @synthesize boundingBoxLocation=_boundingBoxLocation;
 @property(nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property(nonatomic) double horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property(copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
-- (void).cxx_destruct;
+- (CDUnknownBlockType)processingBlock;
+- (Class)enumeratedType;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqualToOptions:(id)arg1;
@@ -30,6 +31,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithDateInterval:(id)arg1 horizontalAccuracy:(double)arg2 batchSize:(unsigned long long)arg3 boundingBoxLocation:(id)arg4;
 - (id)initWithDateInterval:(id)arg1 horizontalAccuracy:(double)arg2 batchSize:(unsigned long long)arg3;
 - (id)init;
 

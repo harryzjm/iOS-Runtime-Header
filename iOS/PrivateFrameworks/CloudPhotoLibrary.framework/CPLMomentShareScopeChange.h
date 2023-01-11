@@ -4,22 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudPhotoLibrary/NSCopying-Protocol.h>
-#import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
+@class NSData, NSDate, NSString;
 
-@class CPLMomentShare;
-
-@interface CPLMomentShareScopeChange <NSSecureCoding, NSCopying>
+@interface CPLMomentShareScopeChange
 {
-    CPLMomentShare *_momentShare;
+    NSString *_title;
+    NSDate *_creationDate;
+    NSDate *_startDate;
+    NSDate *_endDate;
+    NSDate *_expiryDate;
+    long long _promisedAssetCount;
+    long long _promisedPhotosCount;
+    long long _promisedVideosCount;
+    NSData *_thumbnailImageData;
+    NSData *_previewImageData;
+    NSString *_originatingScopeIdentifier;
 }
 
-+ (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) CPLMomentShare *momentShare; // @synthesize momentShare=_momentShare;
 - (void).cxx_destruct;
-- (id)description;
-- (id)updatedLibraryInfoFromLibraryInfo:(id)arg1 didUpdate:(_Bool *)arg2;
-- (void)_setupWithLibraryInfo:(id)arg1;
+@property(copy, nonatomic) NSString *originatingScopeIdentifier; // @synthesize originatingScopeIdentifier=_originatingScopeIdentifier;
+@property(copy, nonatomic) NSData *previewImageData; // @synthesize previewImageData=_previewImageData;
+@property(copy, nonatomic) NSData *thumbnailImageData; // @synthesize thumbnailImageData=_thumbnailImageData;
+@property(nonatomic) long long promisedVideosCount; // @synthesize promisedVideosCount=_promisedVideosCount;
+@property(nonatomic) long long promisedPhotosCount; // @synthesize promisedPhotosCount=_promisedPhotosCount;
+@property(nonatomic) long long promisedAssetCount; // @synthesize promisedAssetCount=_promisedAssetCount;
+@property(copy, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
+@property(copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+- (void)udpateScopeFromScopeChange:(id)arg1 direction:(unsigned long long)arg2 didHaveChanges:(_Bool *)arg3;
+- (void)setLibraryInfo:(id)arg1;
+- (void)setMomentShare:(id)arg1;
+- (id)momentShare;
 
 @end
 

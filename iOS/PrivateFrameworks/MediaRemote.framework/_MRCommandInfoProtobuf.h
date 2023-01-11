@@ -15,6 +15,7 @@
     CDStruct_82f37d05 _preferredIntervals;
     CDStruct_95bda58d _supportedInsertionPositions;
     CDStruct_95bda58d _supportedPlaybackQueueTypes;
+    CDStruct_95bda58d _supportedQueueEndActions;
     struct {
         float *list;
         unsigned long long count;
@@ -23,6 +24,8 @@
     int _canScrub;
     int _command;
     NSMutableArray *_currentPlaybackSessionTypes;
+    int _currentQueueEndAction;
+    int _disabledReason;
     NSString *_localizedShortTitle;
     NSString *_localizedTitle;
     float _maximumRating;
@@ -44,6 +47,8 @@
     struct {
         unsigned int canScrub:1;
         unsigned int command:1;
+        unsigned int currentQueueEndAction:1;
+        unsigned int disabledReason:1;
         unsigned int maximumRating:1;
         unsigned int minimumRating:1;
         unsigned int numAvailableSkips:1;
@@ -63,6 +68,7 @@
 + (Class)currentPlaybackSessionTypesType;
 + (Class)supportedPlaybackSessionTypesType;
 + (Class)supportedCustomQueueIdentifierType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *playbackSessionIdentifier; // @synthesize playbackSessionIdentifier=_playbackSessionIdentifier;
 @property(retain, nonatomic) NSMutableArray *currentPlaybackSessionTypes; // @synthesize currentPlaybackSessionTypes=_currentPlaybackSessionTypes;
 @property(retain, nonatomic) NSMutableArray *supportedPlaybackSessionTypes; // @synthesize supportedPlaybackSessionTypes=_supportedPlaybackSessionTypes;
@@ -81,7 +87,6 @@
 @property(retain, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -91,6 +96,22 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsDisabledReason:(id)arg1;
+- (id)disabledReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasDisabledReason;
+@property(nonatomic) int disabledReason; // @synthesize disabledReason=_disabledReason;
+- (int)StringAsSupportedQueueEndActions:(id)arg1;
+- (id)supportedQueueEndActionsAsString:(int)arg1;
+- (void)setSupportedQueueEndActions:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedQueueEndActionsAtIndex:(unsigned long long)arg1;
+- (void)addSupportedQueueEndActions:(int)arg1;
+- (void)clearSupportedQueueEndActions;
+@property(readonly, nonatomic) int *supportedQueueEndActions;
+@property(readonly, nonatomic) unsigned long long supportedQueueEndActionsCount;
+- (int)StringAsCurrentQueueEndAction:(id)arg1;
+- (id)currentQueueEndActionAsString:(int)arg1;
+@property(nonatomic) _Bool hasCurrentQueueEndAction;
+@property(nonatomic) int currentQueueEndAction; // @synthesize currentQueueEndAction=_currentQueueEndAction;
 @property(readonly, nonatomic) _Bool hasPlaybackSessionIdentifier;
 - (id)currentPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)currentPlaybackSessionTypesCount;

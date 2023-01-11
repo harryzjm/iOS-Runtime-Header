@@ -6,28 +6,18 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <GameCenterUI/GKBubbleFlowableViewController-Protocol.h>
+@class GKRemoteUIController;
 
-@class GKRemoteUIController, NSString;
-
-@interface GKRemoteUINavigationController : UINavigationController <GKBubbleFlowableViewController>
+@interface GKRemoteUINavigationController : UINavigationController
 {
     GKRemoteUIController *_remoteUIController;
 }
 
-@property(readonly, nonatomic) GKRemoteUIController *remoteUIController; // @synthesize remoteUIController=_remoteUIController;
 - (void).cxx_destruct;
-- (_Bool)_gkCanBeRemovedFromParentWhenCovered;
-- (_Bool)_gkUsesBubbleFlowModalPresentation;
+@property(readonly, nonatomic) GKRemoteUIController *remoteUIController; // @synthesize remoteUIController=_remoteUIController;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)loadView;
 - (id)initWithRemoteUIController:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -6,6 +6,8 @@
 
 #import <UIKit/UIView.h>
 
+@protocol PKScribbleInteractionDelegate;
+
 @interface UIView (PKAdditions)
 - (struct CGRect)PK_convertRect:(struct CGRect)arg1 fromCoordinateSpace:(id)arg2;
 - (struct CGRect)PK_convertRect:(struct CGRect)arg1 toCoordinateSpace:(id)arg2;
@@ -15,5 +17,7 @@
 - (struct CGRect)PK_convertRect:(struct CGRect)arg1 toView:(id)arg2;
 - (struct CGPoint)PK_convertPoint:(struct CGPoint)arg1 toView:(id)arg2;
 - (struct CGPoint)PK_convertPoint:(struct CGPoint)arg1 fromView:(id)arg2;
+- (id)PK_enclosingScrollableScrollView;
+@property(retain, nonatomic) id <PKScribbleInteractionDelegate> fakeScribbleInteractionDelegate;
 @end
 

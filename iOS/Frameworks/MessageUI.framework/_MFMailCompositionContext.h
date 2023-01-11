@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <MessageUI/EMCollectionChangeObserver-Protocol.h>
 #import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
 #import <MessageUI/MFMailCompositionShareSheetRecipients-Protocol.h>
 
-@class EMMessage, MFAttachmentComposeManager, MFAttachmentCompositionContext, MFAttachmentManager, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
-@protocol MFComposeBodyField;
+@class EMMessage, EMMessageList, MFAttachmentComposeManager, MFAttachmentCompositionContext, MFAttachmentManager, MFComposeWebView, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString;
+@protocol EFScheduler, _MFMailCompositionContextDelegate;
 
-@interface _MFMailCompositionContext : NSObject <MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
+@interface _MFMailCompositionContext : NSObject <EMCollectionChangeObserver, MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
 {
     NSString *_sendingAddress;
     NSString *_subject;
@@ -36,8 +37,10 @@
     MFAttachmentComposeManager *_attachmentManager;
     NSMutableArray *_deferredAttachments;
     _Bool _registeredForDraw;
+    EMMessageList *_messageList;
     _Bool _usingDefaultAccount;
     _Bool _prefersFirstLineSelection;
+    _Bool _originatingFromAttachmentMarkup;
     int _sourceAccountManagement;
     NSString *_shareSheetSessionID;
     NSArray *_UTITypes;
@@ -50,17 +53,23 @@
     unsigned long long _defaultContentVariationIndex;
     NSString *_contentVariationAttachmentCID;
     NSString *_originatingBundleID;
-    UIView<MFComposeBodyField> *_bodyField;
+    id <_MFMailCompositionContextDelegate> _delegate;
+    MFComposeWebView *_composeWebView;
+    id <EFScheduler> _observationScheduler;
 }
 
 + (id)processMessageBody:(id)arg1 asHTML:(_Bool)arg2;
 + (id)log;
-@property UIView<MFComposeBodyField> *bodyField; // @synthesize bodyField=_bodyField;
+- (void).cxx_destruct;
+@property(retain, nonatomic) id <EFScheduler> observationScheduler; // @synthesize observationScheduler=_observationScheduler;
+@property MFComposeWebView *composeWebView; // @synthesize composeWebView=_composeWebView;
+@property(nonatomic) __weak id <_MFMailCompositionContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) int sourceAccountManagement; // @synthesize sourceAccountManagement=_sourceAccountManagement;
 @property(copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
-@property(retain, nonatomic) NSString *contentVariationAttachmentCID; // @synthesize contentVariationAttachmentCID=_contentVariationAttachmentCID;
+@property(copy, nonatomic) NSString *contentVariationAttachmentCID; // @synthesize contentVariationAttachmentCID=_contentVariationAttachmentCID;
 @property(nonatomic) unsigned long long defaultContentVariationIndex; // @synthesize defaultContentVariationIndex=_defaultContentVariationIndex;
 @property(copy, nonatomic) NSArray *contentVariations; // @synthesize contentVariations=_contentVariations;
+@property(nonatomic) _Bool originatingFromAttachmentMarkup; // @synthesize originatingFromAttachmentMarkup=_originatingFromAttachmentMarkup;
 @property(retain, nonatomic) MFMessageLoadingContext *loadingContext; // @synthesize loadingContext=_loadingContext;
 @property(nonatomic) unsigned long long caretPosition; // @synthesize caretPosition=_caretPosition;
 @property(nonatomic) _Bool prefersFirstLineSelection; // @synthesize prefersFirstLineSelection=_prefersFirstLineSelection;
@@ -87,15 +96,22 @@
 @property(copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property(copy, nonatomic) NSString *sendingAddress; // @synthesize sendingAddress=_sendingAddress;
 @property(nonatomic) _Bool usingDefaultAccount; // @synthesize usingDefaultAccount=_usingDefaultAccount;
-- (void).cxx_destruct;
+- (void)collection:(id)arg1 replacedExistingItemID:(id)arg2 withNewItemID:(id)arg3;
+- (void)collection:(id)arg1 movedItemIDs:(id)arg2 before:(id)arg3;
+- (void)collection:(id)arg1 movedItemIDs:(id)arg2 after:(id)arg3;
+- (void)collection:(id)arg1 deletedItemIDs:(id)arg2;
+- (void)collection:(id)arg1 changedItemIDs:(id)arg2;
+- (void)collection:(id)arg1 addedItemIDs:(id)arg2 before:(id)arg3;
+- (void)collection:(id)arg1 addedItemIDs:(id)arg2 after:(id)arg3;
 - (_Bool)hasDuetDonationContext;
-- (void)insertDeferredAttachmentsIntoBodyField:(id)arg1;
+- (void)insertDeferredAttachmentsIntoComposeWebView:(id)arg1;
 - (void)insertAttachmentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 - (void)insertAttachmentWithURL:(id)arg1;
 - (id)attachments;
 - (void)removeAttachment:(id)arg1;
 - (void)recordUndoAttachmentsForURLs:(id)arg1;
 - (void)recordPasteboardAttachmentsForURLs:(id)arg1;
+- (id)addAttachmentDataItemProvider:(id)arg1 mimeType:(id)arg2 filename:(id)arg3 contentID:(id)arg4;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 @property(readonly, nonatomic) NSString *autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
@@ -110,16 +126,27 @@
 - (id)initOutboxRestoreOfMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initSendAgainDraftOfMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initDraftRestoreOfMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initForwardOfMessage:(id)arg1 legacyMessage:(id)arg2 isEML:(_Bool)arg3;
+- (id)initReplyAllToMessage:(id)arg1 legacyMessage:(id)arg2 isEML:(_Bool)arg3;
+- (id)initReplyToMessage:(id)arg1 legacyMessage:(id)arg2 isEML:(_Bool)arg3;
 - (id)initForwardOfMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initReplyAllToMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initReplyToMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initRecoveredAutosavedMessageWithIdentifier:(id)arg1;
+- (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3 legacyMessage:(id)arg4 isEML:(_Bool)arg5;
 - (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3 legacyMessage:(id)arg4;
 - (id)initWithComposeType:(int)arg1 RFC822Data:(id)arg2;
 - (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2 legacyMessage:(id)arg3;
+- (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2 legacyMessage:(id)arg3 isEML:(_Bool)arg4;
 - (id)initWithComposeType:(int)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

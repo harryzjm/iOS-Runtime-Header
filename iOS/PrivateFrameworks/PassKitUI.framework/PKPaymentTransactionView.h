@@ -21,6 +21,8 @@
     _Bool _hideRewardsBackground;
     _Bool _showsAvatarView;
     _Bool _showsDisclosureView;
+    _Bool _allowPrimaryStringExpansion;
+    _Bool _strokeImage;
     UIColor *_primaryColor;
     UIColor *_secondaryColor;
     NSString *_primaryString;
@@ -31,8 +33,11 @@
 }
 
 + (id)defaultTertiaryLabelFont;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property(nonatomic) _Bool strokeImage; // @synthesize strokeImage=_strokeImage;
 @property(retain, nonatomic) UIImage *primaryImage; // @synthesize primaryImage=_primaryImage;
+@property(nonatomic) _Bool allowPrimaryStringExpansion; // @synthesize allowPrimaryStringExpansion=_allowPrimaryStringExpansion;
 @property(nonatomic) _Bool showsDisclosureView; // @synthesize showsDisclosureView=_showsDisclosureView;
 @property(nonatomic) _Bool showsAvatarView; // @synthesize showsAvatarView=_showsAvatarView;
 @property(nonatomic) _Bool hideRewardsBackground; // @synthesize hideRewardsBackground=_hideRewardsBackground;
@@ -41,7 +46,6 @@
 @property(retain, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
 @property(retain, nonatomic) UIColor *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
 @property(retain, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
-- (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
@@ -56,6 +60,7 @@
 @property(retain, nonatomic) NSString *rewardsValueString;
 - (id)defaultSecondaryColor;
 - (id)defaultPrimaryColor;
+- (void)_updatePrimaryLabelString;
 - (_Bool)_shouldUseStackedLayout;
 - (void)resetFonts;
 - (void)createSubviews;

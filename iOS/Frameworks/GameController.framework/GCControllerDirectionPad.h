@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GCControllerAxisInput, GCControllerButtonInput, NSString;
+@class GCControllerAxisInput, GCControllerButtonInput;
 
 @interface GCControllerDirectionPad
 {
-    NSString *_descriptionName;
     _Bool _wasZeroed;
     int _timesPressed;
     _Bool _nonAnalog;
@@ -17,13 +16,14 @@
     GCControllerAxisInput *_yAxis;
 }
 
+- (void).cxx_destruct;
 @property _Bool nonAnalog; // @synthesize nonAnalog=_nonAnalog;
 @property(retain, nonatomic) GCControllerAxisInput *yAxis; // @synthesize yAxis=_yAxis;
 @property(retain, nonatomic) GCControllerAxisInput *xAxis; // @synthesize xAxis=_xAxis;
 @property(copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
-- (void).cxx_destruct;
 - (int)getAndResetTimesPressed;
 - (void)setValueForXAxis:(float)arg1 yAxis:(float)arg2;
+- (_Bool)_commitPendingValueOnQueue:(id)arg1;
 @property(readonly, nonatomic) GCControllerButtonInput *right;
 @property(readonly, nonatomic) GCControllerButtonInput *left;
 @property(readonly, nonatomic) GCControllerButtonInput *down;
@@ -32,8 +32,8 @@
 - (_Bool)isAnalog;
 - (void)_fireValueChangedWithQueue:(id)arg1;
 - (void)_fireValueChanged;
-- (id)initWithFlippedY:(_Bool)arg1 digital:(_Bool)arg2 descriptionName:(id)arg3;
-- (id)initWithFlippedY:(_Bool)arg1 digital:(_Bool)arg2;
+- (id)initWithDigital:(_Bool)arg1 descriptionName:(id)arg2;
+- (id)initWithDigital:(_Bool)arg1;
 
 @end
 

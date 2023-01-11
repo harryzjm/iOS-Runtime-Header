@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) float fRate; // @synthesize fRate=_frameRate;
 @property(readonly, nonatomic) int iHeight; // @synthesize iHeight=_height;
 @property(readonly, nonatomic) int iWidth; // @synthesize iWidth=_width;
+- (_Bool)isVideoFullHD;
 - (void)setFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3;
 - (void)setToVideoRule:(id)arg1;
 @property(readonly, nonatomic) NSString *description;

@@ -22,6 +22,7 @@
 - (_Bool)isHighlighted;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)initWithCoder:(id)arg1;
+- (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

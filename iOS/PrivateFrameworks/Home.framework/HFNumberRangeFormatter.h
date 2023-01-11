@@ -8,11 +8,16 @@
 
 @interface HFNumberRangeFormatter : NSFormatter
 {
+    _Bool _consolidatesUnit;
     NSFormatter *_numberFormatter;
 }
 
-@property(retain, nonatomic) NSFormatter *numberFormatter; // @synthesize numberFormatter=_numberFormatter;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool consolidatesUnit; // @synthesize consolidatesUnit=_consolidatesUnit;
+@property(retain, nonatomic) NSFormatter *numberFormatter; // @synthesize numberFormatter=_numberFormatter;
+- (_Bool)_shouldRemoveUnitFromMaximumFormattedValue:(id)arg1;
+- (_Bool)_shouldRemoveUnitFromMinimumFormattedValue:(id)arg1;
+- (_Bool)_isRTL;
 - (id)stringForNumberRange:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)initWithNumberFormatter:(id)arg1;

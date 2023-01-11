@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsUI/FCAppActivityReceiver-Protocol.h>
 #import <NewsUI/NUAppActivityMonitor-Protocol.h>
 
-@class NSHashTable, NSMutableSet, NSNotificationCenter, NSString;
+@class NSHashTable, NSMutableSet, NSString;
 
-@interface NUApplicationAppActivityMonitorIOS : NSObject <NUAppActivityMonitor>
+@interface NUApplicationAppActivityMonitorIOS : NSObject <NUAppActivityMonitor, FCAppActivityReceiver>
 {
-    NSNotificationCenter *_notificationCenter;
     NSHashTable *_observers;
     NSMutableSet *_foregroundObserverBlocks;
     NSMutableSet *_backgroundObserverBlocks;
@@ -20,28 +20,29 @@
     NSMutableSet *_windowBackgroundObserverBlocks;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *windowBackgroundObserverBlocks; // @synthesize windowBackgroundObserverBlocks=_windowBackgroundObserverBlocks;
 @property(readonly, nonatomic) NSMutableSet *windowForegroundObserverBlocks; // @synthesize windowForegroundObserverBlocks=_windowForegroundObserverBlocks;
 @property(readonly, nonatomic) NSMutableSet *backgroundObserverBlocks; // @synthesize backgroundObserverBlocks=_backgroundObserverBlocks;
 @property(readonly, nonatomic) NSMutableSet *foregroundObserverBlocks; // @synthesize foregroundObserverBlocks=_foregroundObserverBlocks;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property(readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
-- (void).cxx_destruct;
+- (void)_applicationWillTerminate;
 - (void)_windowDidBecomeBackground;
 - (void)_windowDidBecomeForeground;
-- (void)activityObservingApplicationWillEnterForegroundNotification:(id)arg1;
-- (void)activityObservingApplicationDidFinishLaunchingNotification:(id)arg1;
-- (void)applicationDidEnterBackgroundNotification:(id)arg1;
-- (void)applicationDidBecomeActiveNotification:(id)arg1;
 - (void)performOnApplicationWindowDidBecomeForeground:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationWindowDidBecomeBackground:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationDidEnterBackground:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationWillEnterForeground:(CDUnknownBlockType)arg1;
+- (void)sceneWillConnect;
+- (void)sceneWillEnterForeground;
+- (void)sceneDidBecomeActive;
+- (void)sceneDidBecomeActiveWithURL:(id)arg1 sourceApplication:(id)arg2;
+- (void)sceneDidEnterBackground;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
-- (id)initWithNotificationCenter:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

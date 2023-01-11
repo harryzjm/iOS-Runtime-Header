@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSSet;
+
 @interface WFBundledActionProvider
 {
 }
@@ -18,6 +20,7 @@
 - (void)createActionsForRequests:(id)arg1;
 - (id)availableActionIdentifiers;
 - (id)actionDefinitionsWithIdentifiers:(id)arg1;
+@property(readonly, nonatomic) NSSet *identifiersOfActionsDisabledOnWatch;
 
 @end
 

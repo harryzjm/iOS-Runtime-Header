@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOCompletionItemPrivate-Protocol.h>
 
-@class GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -22,11 +22,15 @@ __attribute__((visibility("hidden")))
     NSArray *_lineHighlights;
     id <GEOMapItem> _mapItem;
     GEOSearchCategory *_category;
+    GEOCollectionResult *_collectionResult;
+    GEOPublisherResult *_publisherResult;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) GEOPDAutocompleteEntry *entry; // @synthesize entry=_entry;
 @property(readonly, nonatomic) NSArray *displayLines; // @synthesize displayLines=_displayLines;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) GEOPublisherResult *publisherResult;
+@property(readonly, nonatomic) GEOCollectionResult *collectionResult;
 @property(readonly, nonatomic) float disambiguationRadiusMeters;
 @property(readonly, nonatomic) _Bool hasDisambiguationRadiusMeters;
 @property(readonly, nonatomic) int placeType;
@@ -54,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)calloutTitle;
 - (id)queryLine;
 - (id)highlightsForLine:(unsigned long long)arg1;
-- (id)initWithEntry:(id)arg1 traits:(id)arg2 entryListIndex:(int)arg3 entryIndex:(int)arg4 mapItems:(id)arg5;
+- (id)initWithEntry:(id)arg1 traits:(id)arg2 entryListIndex:(int)arg3 entryIndex:(int)arg4 mapItems:(id)arg5 collections:(id)arg6 publishers:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

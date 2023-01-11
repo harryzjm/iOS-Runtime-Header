@@ -11,6 +11,8 @@
 + (id)brc_daemonAccessDisabledError;
 + (id)brc_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3;
 - (int)brc_syncOperationErrorKind;
+- (id)brc_telemetryReportableErrorWithRecordName:(id *)arg1;
+- (id)brc_cloudKitErrorMessage;
 - (id)brc_description;
 - (id)brc_wrappedError;
 - (id)brc_strippedError;
@@ -27,6 +29,9 @@
 - (_Bool)brc_isCloudKitErrorSafeToSyncUpWithoutSyncDown;
 - (_Bool)_brc_isCloudKitInternalErrorSafeToSyncUpWithoutSyncDown;
 - (_Bool)brc_isCloudKitErrorRequiringSkipThrottling;
+- (_Bool)brc_isRetriableForPCSChaining;
+- (_Bool)brc_isIndividualItemBlacklistError;
+- (_Bool)brc_isCloudKitErrorChainedToNewParent:(id *)arg1;
 - (_Bool)brc_isCloudKitErrorUnsupportedOSForZoneAndGetMinimumSupported:(id *)arg1;
 - (_Bool)brc_isCloudKitErrorUnsupportedOSForItemAndGetMinimumSupported:(id *)arg1;
 - (id)_brc_cloudKitPluginErrorPayload;
@@ -34,6 +39,8 @@
 - (_Bool)brc_isCloudKitErrorRequiringAssetReupload;
 - (_Bool)brc_isCloudKitErrorRequiringAssetRescan;
 - (_Bool)brc_isCloudKitUnknownItemError;
+- (_Bool)brc_isCloudKitPCSChainingError;
+- (_Bool)brc_isCloudKitAtomicFailure;
 - (_Bool)brc_isBatchRequestFailed;
 - (_Bool)brc_isCloudKitOutOfQuota;
 - (_Bool)brc_isCloudKitAssetFileModified;
@@ -49,9 +56,10 @@
 - (_Bool)_brc_isCloudKitErrorCode:(long long)arg1;
 - (_Bool)brc_checkErrorsFromCloudKit:(CDUnknownBlockType)arg1;
 - (_Bool)brc_isEverRetriable;
+- (_Bool)brc_isUserInitiatedRetriable;
 - (_Bool)brc_isRetriable;
 - (double)br_suggestedRetryTimeInterval;
-- (unsigned long long)brc_containerResetErrorForSharedZone:(_Bool)arg1 resetReason:(const char **)arg2;
+- (unsigned long long)brc_containerResetErrorForSharedZone:(_Bool)arg1 resetReason:(id *)arg2;
 - (_Bool)brc_isResetError;
 @end
 

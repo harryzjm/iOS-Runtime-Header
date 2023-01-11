@@ -10,6 +10,7 @@
 {
 }
 
++ (float)faceIDModelClassificationThreshold;
 + (unsigned long long)advancedStatusVerifiedPersonLimit;
 + (unsigned long long)advancedStatusMergeCandidateLimit;
 + (_Bool)isBlacklistDisabled;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, ACAccountType;
+@class ACAccountStore, ACAccountType, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface AKAccountManager : NSObject
@@ -19,13 +19,20 @@
     struct os_unfair_lock_s _appleIDAccountTypeLock;
     ACAccountType *_iCloudAccountType;
     struct os_unfair_lock_s _iCloudAccountTypeLock;
+    struct os_unfair_lock_s _accountTypeCacheLock;
+    NSMutableDictionary *_accountTypeCache;
 }
 
++ (void)performWithinPersonaForAccount:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
++ (id)personaIDIfCurrentPersonaIsDataSeparated;
 + (id)stringRepresentationForService:(long long)arg1;
 + (_Bool)isAccountsFrameworkAvailable;
 + (id)sharedInstance;
-@property(retain, nonatomic) ACAccountStore *store; // @synthesize store=_accountStore;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ACAccountStore *store; // @synthesize store=_accountStore;
+- (void)setAdditionalInfo:(id)arg1 forAccount:(id)arg2;
+- (id)additionalInfoForAccount:(id)arg1;
+- (id)accountTypeForTypeIdentifier:(id)arg1;
 @property(readonly, nonatomic) ACAccountType *appleIDAccountType;
 @property(readonly, nonatomic) ACAccountType *iCloudAccountType;
 - (id)_altDSIDForiCloudAccount:(id)arg1;
@@ -41,6 +48,7 @@
 - (_Bool)hasPrimaryiCloudAccountForAppleID:(id)arg1;
 - (void)removeUnusedAndDuplicateAuthKitAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)activeServiceNamesForAccount:(id)arg1;
+- (id)accountsUsingService:(long long)arg1;
 - (id)servicesUsingAccount:(id)arg1;
 - (void)setAccount:(id)arg1 inUse:(_Bool)arg2 byService:(long long)arg3;
 - (void)_removeTokenForKeys:(id)arg1 forAccount:(id)arg2;
@@ -48,6 +56,13 @@
 - (void)removeContinuationTokenForAccount:(id)arg1;
 - (void)removeAllPasswordResetTokens;
 - (id)mostRecentlyUsedAuthKitAccount;
+- (id)_matchingServiceAccountForAuthKitAccount:(id)arg1 service:(long long)arg2;
+- (_Bool)_isAccountEligibleForSecurityUpgrade:(id)arg1 ofServiceType:(long long)arg2;
+- (id)_accountTypeForServiceType:(long long)arg1;
+- (long long)_serviceTypeForServiceNameString:(id)arg1;
+- (id)_defaultSecurityUpgradeServiceNames;
+- (id)_serviceTypesForSecurityUpgrade;
+- (id)accountEligibleForUpdate;
 - (id)primaryAuthKitAccount;
 - (id)appleIDAccountWithAppleID:(id)arg1;
 - (id)appleIDAccountWithAltDSID:(id)arg1;
@@ -72,13 +87,15 @@
 - (_Bool)needsRepairForAccount:(id)arg1;
 - (void)updateSatoriWarmUpTimestampForAccount:(id)arg1;
 - (_Bool)shouldPerformSatoriWarmupVerificationForAccount:(id)arg1;
+- (void)setDeviceTrustRevoked:(_Bool)arg1 forAccount:(id)arg2;
+- (_Bool)deviceTrustRevokedForAccount:(id)arg1;
+- (void)updateAuthModeTimestampForAccount:(id)arg1;
+- (_Bool)shouldUpdateAuthModeForAccount:(id)arg1;
 - (void)setAuthenticationMode:(unsigned long long)arg1 forAccount:(id)arg2;
 - (unsigned long long)authenticationModeForAccount:(id)arg1;
 - (void)setSecurityLevel:(unsigned long long)arg1 forAccount:(id)arg2;
 - (unsigned long long)securityLevelForAccount:(id)arg1;
 - (_Bool)saveAccount:(id)arg1 error:(id *)arg2;
-- (void)setApplicationListVersion:(id)arg1 forAccount:(id)arg2;
-- (id)applicationListVersionForAccount:(id)arg1;
 - (void)setSelectedAuthorizationEmail:(id)arg1 forAccount:(id)arg2;
 - (id)selectedAuthorizationEmailForAccount:(id)arg1;
 - (void)setSelectedPrivateEmail:(_Bool)arg1 forAccount:(id)arg2;
@@ -95,17 +112,23 @@
 - (_Bool)authorizationUsedForAccount:(id)arg1;
 - (void)setAgeOfMajority:(id)arg1 forAccount:(id)arg2;
 - (id)ageOfMajorityForAccount:(id)arg1;
+- (void)setDemoAccount:(_Bool)arg1 forAccount:(id)arg2;
+- (_Bool)demoAccountForAccount:(id)arg1;
 - (void)setUserUnderage:(_Bool)arg1 forAccount:(id)arg2;
 - (_Bool)userUnderAgeForAccount:(id)arg1;
 - (void)setPhoneAsAppleID:(_Bool)arg1 forAccount:(id)arg2;
 - (_Bool)phoneAsAppleIDForAccount:(id)arg1;
 - (void)setVerifiedPrimaryEmail:(_Bool)arg1 forAccount:(id)arg2;
 - (_Bool)verifiedPrimaryEmailForAccount:(id)arg1;
+- (void)setPrimaryEmailAddress:(id)arg1 forAccount:(id)arg2;
+- (id)primaryEmailAddressForAccount:(id)arg1;
 - (_Bool)_setUsername:(id)arg1 forAccount:(id)arg2;
 - (void)updateUsername:(id)arg1 forAccountsWithAltDSID:(id)arg2;
+- (void)updateVerifiedEmail:(_Bool)arg1 forAccountWithAltDSID:(id)arg2;
 - (id)formattedUsernameForAccount:(id)arg1;
 - (void)setAliases:(id)arg1 forAccount:(id)arg2;
 - (id)aliasesForAccount:(id)arg1;
+- (id)combinedAliasesAndReachableEmailsForAccount:(id)arg1;
 - (void)setDSID:(id)arg1 forAccount:(id)arg2;
 - (id)DSIDForAccount:(id)arg1;
 - (void)setAltDSID:(id)arg1 forAccount:(id)arg2;

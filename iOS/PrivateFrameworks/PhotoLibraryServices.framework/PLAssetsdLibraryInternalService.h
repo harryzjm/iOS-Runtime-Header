@@ -12,6 +12,9 @@
 {
 }
 
+- (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)invalidateBehavioralScoreOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
 - (void)deleteiTunesSyncedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)backgroundJobServiceRemoveAllBundleRecordsFromProcessingSet;
@@ -25,14 +28,8 @@
 - (void)waitForSearchIndexExistenceWithReply:(CDUnknownBlockType)arg1;
 - (void)getSearchIndexProgressWithReply:(CDUnknownBlockType)arg1;
 - (void)markPersonAsNeedingKeyFaceWithPersonUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)resetPendingAnalysisStatesWithReply:(CDUnknownBlockType)arg1;
-- (void)markAnalysisStatesProcessedForWorkerType:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)removeAnalysisRecordsForDeletedAssetsWithUUIDs:(id)arg1 workerType:(unsigned long long)arg2;
 - (void)reloadMomentGenerationOptions;
 - (void)repairMemoriesWithUUIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)previewAssetLocalIdentifiersWithReply:(CDUnknownBlockType)arg1;
-- (void)previewRenderedContentURLAtIndex:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)previewRenderedContentURLCountWithReply:(CDUnknownBlockType)arg1;
 - (void)updateAssetLocationDataWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getSizeOfResourcesToUploadByCPLWithReply:(CDUnknownBlockType)arg1;
 - (void)getLibrarySizesFromDB:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;

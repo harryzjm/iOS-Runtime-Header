@@ -7,11 +7,10 @@
 #import <Preferences/PSListController.h>
 
 #import <SettingsCellularUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
-#import <SettingsCellularUI/RadiosPreferencesDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSString, PSSpecifier, PSUICarrierItemGroup, PSUICellularDataOptionsController, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularDataPlanSetupGroup, PSUICellularDataSpecifier, PSUICellularPlanListGroup, PSUICellularUsageSchedulingGroup, PSUISubscriptionContextMenusGroup, RadiosPreferences;
+@class CoreTelephonyClient, NSString, PSSpecifier, PSUICarrierItemGroup, PSUICellularDataOptionsController, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularDataPlanSetupGroup, PSUICellularDataSpecifier, PSUICellularPlanListGroup, PSUICellularUsageSchedulingGroup, PSUISubscriptionContextMenusGroup;
 
-@interface PSUICellularController : PSListController <CoreTelephonyClientSubscriberDelegate, RadiosPreferencesDelegate>
+@interface PSUICellularController : PSListController <CoreTelephonyClientSubscriberDelegate>
 {
     PSSpecifier *_viewAccount;
     PSSpecifier *_viewAccountGroup;
@@ -21,6 +20,7 @@
     _Bool _ignoreNextEntitlementStatusChange;
     PSSpecifier *_personalHotspotSpecifier;
     PSSpecifier *_fauxCardSpecifier;
+    _Bool _shouldCalculateDataUsage;
     PSUICellularDataSpecifier *_cellularDataSpecifier;
     PSUICellularDataOptionsController *_cellularDataOptionsController;
     PSUICellularDataPlanSetupGroup *_cellularDataPlanSetupGroup;
@@ -31,10 +31,9 @@
     PSUISubscriptionContextMenusGroup *_subscriptionContextMenus;
     PSUICellularUsageSchedulingGroup *_appUsageGroup;
     CoreTelephonyClient *_coreTelephonyClient;
-    RadiosPreferences *_radioPreferences;
 }
 
-@property(retain, nonatomic) RadiosPreferences *radioPreferences; // @synthesize radioPreferences=_radioPreferences;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property(retain, nonatomic) PSUICellularUsageSchedulingGroup *appUsageGroup; // @synthesize appUsageGroup=_appUsageGroup;
 @property(retain, nonatomic) PSUISubscriptionContextMenusGroup *subscriptionContextMenus; // @synthesize subscriptionContextMenus=_subscriptionContextMenus;
@@ -45,8 +44,9 @@
 @property(retain, nonatomic) PSUICellularDataPlanSetupGroup *cellularDataPlanSetupGroup; // @synthesize cellularDataPlanSetupGroup=_cellularDataPlanSetupGroup;
 @property(retain, nonatomic) PSUICellularDataOptionsController *cellularDataOptionsController; // @synthesize cellularDataOptionsController=_cellularDataOptionsController;
 @property(retain, nonatomic) PSUICellularDataSpecifier *cellularDataSpecifier; // @synthesize cellularDataSpecifier=_cellularDataSpecifier;
-- (void).cxx_destruct;
+- (id)selectSpecifier:(id)arg1;
 - (void)carrierItemsChanged;
+- (void)wirelessDataUsageCacheRefreshed;
 - (void)wirelessDataUsageChangedNotification;
 - (void)cellularPlanChanged:(id)arg1;
 - (void)airplaneModeChanged;
@@ -70,6 +70,8 @@
 - (void)handleURL:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)prefetchResourcesFor:(id)arg1;
+- (id)activeDataPlanLabel;
+- (id)appUsageGroupTitle;
 - (id)specifiers;
 - (void)turnOnLocationServicesPressed:(id)arg1;
 - (void)retryCarrierListFetch:(id)arg1;

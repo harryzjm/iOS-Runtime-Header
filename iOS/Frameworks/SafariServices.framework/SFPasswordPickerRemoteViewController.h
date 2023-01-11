@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)serviceViewControllerInterface;
 + (id)passwordServiceViewControllerName;
 - (void)selectedCredential:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,6 +10,7 @@
 @protocol CKSendAnimationContext;
 
 @protocol CKThrowAnimationManagerDelegate <NSObject>
+- (double)throwAnimationFinalFrameOffset:(CKThrowAnimationManager *)arg1;
 - (struct CGRect)throwAnimationWindowFrame:(CKThrowAnimationManager *)arg1;
 - (struct CGRect)throwAnimationKeyboardFrame:(CKThrowAnimationManager *)arg1;
 - (double)throwAnimationManagerTopHeaderHeight:(CKThrowAnimationManager *)arg1;

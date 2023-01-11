@@ -29,7 +29,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long bilateralFilterRadius; // @synthesize bilateralFilterRadius=_bilateralFilterRadius;
 @property(nonatomic) unsigned long long variancePrefilterRadius; // @synthesize variancePrefilterRadius=_variancePrefilterRadius;
 @property(nonatomic) unsigned long long varianceEstimationRadius; // @synthesize varianceEstimationRadius=_varianceEstimationRadius;

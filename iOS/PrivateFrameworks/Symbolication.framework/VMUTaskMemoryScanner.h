@@ -8,13 +8,14 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUTaskMemoryCache, VMUVMRegionIdentifier;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUTaskMemoryCache, VMUTaskThreadStates, VMUVMRegionIdentifier;
 
 @interface VMUTaskMemoryScanner : NSObject <VMUCommonGraphInterface>
 {
     unsigned int _task;
     int _pid;
     unsigned long long _suspendTime;
+    unsigned long long _suspendTimeContinuous;
     unsigned int _suspensionToken;
     VMUTaskMemoryCache *_memoryCache;
     VMUObjectIdentifier *_objectIdentifier;
@@ -30,10 +31,12 @@
     struct _VMURange _dataSegmentsRangeInSharedCache;
     struct _VMURange _dataSegmentsRangeOutsideSharedCache;
     VMURangeArray *_dataSegmentsRangeArrayOutsideSharedCache;
+    _Bool _recordRuntimeMetadataChunkInfo;
+    NSMutableDictionary *_addressToRuntimeMetadataChunkInfoDict;
     struct _VMUZoneNode *_zones;
     unsigned int _zonesCount;
     unsigned int _zonesSize;
-    struct _VMUThreadNode *_threads;
+    VMUTaskThreadStates *_threadStates;
     unsigned int _threadsCount;
     struct _VMUInstanceValues *_instanceValues;
     unsigned int _instanceValuesCount;
@@ -44,9 +47,10 @@
     struct _VMUScanLocationCache **_scanCaches;
     unsigned int _autoreleasePoolBoundaryNode;
     unsigned int _recordAutoreleasePoolBoundaries;
-    NSMutableArray *_sortedMethodCacheBucketPtrAddresses;
-    unsigned long long _sortedMethodCacheBucketPtrAddressesIndex;
-    unsigned long long _nextMethodCacheBucketPtrAddress;
+    NSMutableSet *_methodCacheBucketPtrAddresses;
+    unsigned int _objcClassStructureClassInfoIndex;
+    unsigned int _swiftClassStructureClassInfoIndex;
+    unsigned int _swiftMetadataClassInfoIndex;
     _Bool _exactScanningEnabled;
     unsigned long long _maxInteriorOffset;
     unsigned int _scanningMask;
@@ -65,12 +69,16 @@
     VMUProcessObjectGraph *_processObjectGraph;
     void *_userMarkedAbandoned;
     NSMutableDictionary *_variantCachesByIsaIndex;
+    NSMutableDictionary *_srcAddressToExtraAutoreleaseCountDict;
     unsigned long long _cfPasteboardReservedBase;
 }
 
 + (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(CDStruct_599faf0f)arg2 destinationNode:(CDStruct_599faf0f)arg3 sortedVMRegions:(id)arg4 symbolicator:(struct _CSTypeRef)arg5 alignmentSpacing:(unsigned int)arg6;
 + (id)nodeDescription:(CDStruct_599faf0f)arg1 withNodeOffset:(unsigned long long)arg2 sortedVMRegions:(id)arg3;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long suspendTimeContinuous; // @synthesize suspendTimeContinuous=_suspendTimeContinuous;
+@property(nonatomic) _Bool recordRuntimeMetadataChunkInfo; // @synthesize recordRuntimeMetadataChunkInfo=_recordRuntimeMetadataChunkInfo;
 @property(readonly, nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
 @property(readonly, nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
 @property(readonly, nonatomic) NSString *binaryImagesDescription; // @synthesize binaryImagesDescription=_binaryImagesDescription;
@@ -90,13 +98,13 @@
 @property(readonly, nonatomic) VMUTaskMemoryCache *memoryCache; // @synthesize memoryCache=_memoryCache;
 @property(readonly, nonatomic) unsigned int task; // @synthesize task=_task;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
-- (void).cxx_destruct;
 - (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3 symbolicator:(struct _CSTypeRef)arg4 alignmentSpacing:(unsigned int)arg5;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2;
 - (id)nodeDescription:(unsigned int)arg1;
 - (void)setReferenceScanningLogger:(CDUnknownBlockType)arg1;
 - (void)setNodeScanningLogger:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned int nodeNamespaceSize;
+@property(readonly, nonatomic) unsigned int kernelPageSize;
 @property(readonly, nonatomic) unsigned int vmPageSize;
 @property(readonly, nonatomic) _Bool is64bit;
 - (void *)copyUserMarked;
@@ -131,17 +139,19 @@
 - (void)orderedNodeTraversal:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_withOrderedNodeMapper:(CDUnknownBlockType)arg1;
 - (void)_withScanningContext:(CDUnknownBlockType)arg1;
-- (unsigned long long)checkSourceAddress:(unsigned long long)arg1 toMaskDestinationAddress:(unsigned long long)arg2;
 - (void)_buildRegionPageBlockMaps;
 - (void)refineTypesWithOverlay:(id)arg1;
 - (void)_findMarkedAbandonedBlocks;
 - (void)_identifyNonObjectsPointedToByTypedIvars;
 - (void)_fixupBlockIsas;
+- (void)printRuntimeMetadataInfo;
 - (void)_identifyObjCClassStructureBlocks;
 - (void)_sortAndClassifyBlocks;
 - (void)addMallocNodes:(id)arg1;
 - (void)addMallocNodesFromTask;
 - (void)_sortBlocks;
+@property(nonatomic) unsigned int objectContentLevel;
+- (id)_readonlyRegionRanges;
 - (void)addRootNodesFromTask;
 - (void)_addSpecialNodesFromTask;
 - (void)_addThreadNodesFromTask;
@@ -155,6 +165,7 @@
 - (void)dealloc;
 - (void)detachFromTask;
 - (_Bool)_suspend;
+- (void)mapDyldSharedCacheFromTargetWithRegions:(id)arg1;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
 - (id)initWithSelfTaskAndOptions:(unsigned long long)arg1;

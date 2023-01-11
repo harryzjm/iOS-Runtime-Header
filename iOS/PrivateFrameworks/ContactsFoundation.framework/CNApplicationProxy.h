@@ -12,22 +12,22 @@
 
 @interface CNApplicationProxy : NSObject <NSSecureCoding>
 {
-    NSString *_applicationIdentifier;
+    NSString *_bundleIdentifier;
     NSString *_teamIdentifier;
     NSString *_localizedName;
     NSArray *_activityTypes;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *activityTypes; // @synthesize activityTypes=_activityTypes;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(copy, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
-@property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithApplicationIdentifier:(id)arg1 teamIdentifier:(id)arg2 localizedName:(id)arg3 activityTypes:(id)arg4;
+- (id)initWithBundleIdentifier:(id)arg1 teamIdentifier:(id)arg2 localizedName:(id)arg3 activityTypes:(id)arg4;
 - (id)initWithLSApplicationProxy:(id)arg1;
 - (id)init;
 

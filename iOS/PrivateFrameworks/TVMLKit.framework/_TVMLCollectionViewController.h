@@ -9,13 +9,12 @@
 #import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
 #import <TVMLKit/UICollectionViewDataSource-Protocol.h>
 #import <TVMLKit/_TVCollectionViewDelegate-Protocol.h>
-#import <TVMLKit/_TVSubviewPreloading-Protocol.h>
+#import <TVMLKit/_TVCollectionViewing-Protocol.h>
 
 @class IKCollectionElement, IKViewElement, NSArray, NSDictionary, NSIndexPath, NSString, UICollectionView, _TVCollectionWrappingView, _TVNeedsMoreContentEvaluator, _TVShadowViewElement;
 @protocol TVPreviewInteractionController;
 
-__attribute__((visibility("hidden")))
-@interface _TVMLCollectionViewController : UIViewController <TVAppTemplateImpressionable, _TVCollectionViewDelegate, UICollectionViewDataSource, _TVSubviewPreloading>
+@interface _TVMLCollectionViewController : UIViewController <TVAppTemplateImpressionable, _TVCollectionViewing, _TVCollectionViewDelegate, UICollectionViewDataSource>
 {
     _Bool _didAppear;
     _Bool _didUpdateFocus;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 + (id)_shadowViewElementForCollectionElement:(id)arg1;
 + (id)footerElementFromCollectionElement:(id)arg1;
 + (id)headerElementFromCollectionElement:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *sortedIndexTitles; // @synthesize sortedIndexTitles=_sortedIndexTitles;
 @property(copy, nonatomic) NSDictionary *indexPathsByIndexTitle; // @synthesize indexPathsByIndexTitle=_indexPathsByIndexTitle;
 @property(nonatomic) struct TVShowcaseConfig showcaseConfig; // @synthesize showcaseConfig=_showcaseConfig;
@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) IKCollectionElement *collectionElement; // @synthesize collectionElement=_collectionElement;
 @property(retain, nonatomic) UIViewController *headerViewController; // @synthesize headerViewController=_headerViewController;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-- (void).cxx_destruct;
 - (id)_closestIndexPathToIndexPath:(id)arg1;
 - (void)_registerCellClassesInCollectionView:(id)arg1;
 - (void)_updateFooterView;
@@ -63,7 +62,8 @@ __attribute__((visibility("hidden")))
 - (void)adjustContentOffsetToDisplayIndexPath:(id)arg1;
 - (void)_applicationWillResignActive:(id)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;
-- (void)preloadSubviewsInRect:(struct CGRect)arg1;
+- (void)resetLastFocusedIndexPath;
+- (void)preloadCellsInRect:(struct CGRect)arg1;
 - (id)impressionableElementsContainedInDocument:(id)arg1;
 - (void)_recordImpressionsForVisibleView;
 - (void)_cancelImpressionsUpdate;

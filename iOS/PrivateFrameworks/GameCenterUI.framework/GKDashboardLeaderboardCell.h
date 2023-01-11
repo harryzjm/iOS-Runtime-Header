@@ -21,11 +21,12 @@
     UIColor *_titleLabelColor;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *titleLabelColor; // @synthesize titleLabelColor=_titleLabelColor;
 @property(retain, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
-@property(nonatomic) UILabel *countLabel; // @synthesize countLabel=_countLabel;
-@property(nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
+@property(retain, nonatomic) UILabel *countLabel; // @synthesize countLabel=_countLabel;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) GKLeaderboard *leaderboard; // @synthesize leaderboard=_leaderboard;
 @property(retain, nonatomic) GKLeaderboardSet *leaderboardSet; // @synthesize leaderboardSet=_leaderboardSet;
 @property(retain, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
@@ -37,7 +38,6 @@
 - (void)updateImage;
 - (void)updateRank;
 @property(readonly, nonatomic) UIView *popoverSourceView;
-- (void)dealloc;
 - (void)awakeFromNib;
 
 @end

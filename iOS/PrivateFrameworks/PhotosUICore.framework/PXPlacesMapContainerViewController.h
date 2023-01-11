@@ -6,27 +6,32 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUICore/PXGridPresentationNavigationItemDelegate-Protocol.h>
+#import <PhotosUICore/PXGridPresentationBarsUpdateDelegate-Protocol.h>
 #import <PhotosUICore/PXPlacesMapBarButtonsDelegate-Protocol.h>
 
-@class NSString, PXPlacesMapFetchResultViewController, UISegmentedControl;
+@class NSString, PXPlacesMapFetchResultViewController, PXProgrammaticNavigationDestination, UISegmentedControl;
 
-@interface PXPlacesMapContainerViewController : UIViewController <PXPlacesMapBarButtonsDelegate, PXGridPresentationNavigationItemDelegate>
+@interface PXPlacesMapContainerViewController : UIViewController <PXPlacesMapBarButtonsDelegate, PXGridPresentationBarsUpdateDelegate>
 {
     _Bool _gridControllerEditing;
+    PXProgrammaticNavigationDestination *_px_navigationDestination;
     PXPlacesMapFetchResultViewController *_fetchResultViewController;
     UIViewController *_currentViewController;
     UISegmentedControl *_subviewControl;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool gridControllerEditing; // @synthesize gridControllerEditing=_gridControllerEditing;
 @property(retain, nonatomic) UISegmentedControl *subviewControl; // @synthesize subviewControl=_subviewControl;
 @property(retain, nonatomic) UIViewController *currentViewController; // @synthesize currentViewController=_currentViewController;
 @property(readonly, nonatomic) PXPlacesMapFetchResultViewController *fetchResultViewController; // @synthesize fetchResultViewController=_fetchResultViewController;
-- (void).cxx_destruct;
+- (id)px_navigationDestination;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)setBarButtonItems:(id)arg1;
 - (void)_resetNavigationItem;
-- (void)viewController:(id)arg1 updatedNavigationItem:(id)arg2 animated:(_Bool)arg3;
+- (void)viewControllerDidUpdateNavigationItemAppearance:(id)arg1;
+- (void)viewController:(id)arg1 didUpdateBarsAnimated:(_Bool)arg2 isSelecting:(_Bool)arg3;
 - (void)subviewControlChanged:(id)arg1;
 - (void)_switchChildViewControllerFrom:(id)arg1 to:(id)arg2;
 - (void)viewDidLoad;

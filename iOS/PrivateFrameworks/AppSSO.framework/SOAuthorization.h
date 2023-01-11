@@ -17,19 +17,22 @@
     SOAuthorizationCore *_authorizationCore;
     SOExtension *_extension;
     SORemoteExtensionViewController *_extensionViewController;
+    CDUnknownBlockType _pendingFinishAuthorizationBlock;
     _Bool _enableEmbeddedAuthorizationViewController;
     id <SOAuthorizationDelegate> _delegate;
 }
 
 + (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 useInternalExtensions:(_Bool)arg3;
 + (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool enableEmbeddedAuthorizationViewController; // @synthesize enableEmbeddedAuthorizationViewController=_enableEmbeddedAuthorizationViewController;
 @property __weak id <SOAuthorizationDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewControllerDidCancel:(id)arg1;
 - (void)presentAuthorizationViewControllerWithHints:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)authorizationDidCompleteWithCredential:(id)arg1 error:(id)arg2;
 - (void)_extensionCleanup;
+- (void)_applicationActivationWithTimeout:(_Bool)arg1;
+- (void)applicationDidBecomeActive:(id)arg1;
 - (void)_finishAuthorizationWithCredential:(id)arg1 error:(id)arg2;
 - (void)_cancelAuthorization;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
@@ -40,6 +43,7 @@
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 @property(retain, nonatomic) NSDictionary *authorizationOptions;
 @property(retain) NSObject<OS_dispatch_queue> *delegateDispatchQueue;
+- (void)dealloc;
 - (id)init;
 - (id)realms;
 

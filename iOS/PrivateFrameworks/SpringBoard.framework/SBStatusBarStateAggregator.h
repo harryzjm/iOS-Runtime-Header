@@ -10,7 +10,7 @@
 #import <SpringBoard/SBAVSystemControllerCacheObserver-Protocol.h>
 #import <SpringBoard/SBDateTimeOverrideObserver-Protocol.h>
 
-@class DNDState, DNDStateService, NSDateFormatter, NSHashTable, NSString, NSTimer, SBSStatusBarStyleOverridesAssertion, SBStatusBarDefaults, SBSystemStatusBatteryDataProvider, SBSystemStatusWifiDataProvider, SBTelephonyManager, SBUserSessionController, STBatteryStatusDomain, STTelephonyStatusDomain, STTelephonyStatusDomainDataProvider, STVoiceControlStatusDomain, STWifiStatusDomain;
+@class DNDState, DNDStateService, NSDateFormatter, NSHashTable, NSMutableDictionary, NSString, NSTimer, SBSStatusBarStyleOverridesAssertion, SBStatusBarDefaults, SBSystemStatusBatteryDataProvider, SBSystemStatusWifiDataProvider, SBTelephonyManager, SBUserSessionController, STBatteryStatusDomain, STCallingStatusDomain, STTelephonyStatusDomain, STTelephonyStatusDomainDataProvider, STVoiceControlStatusDomain, STWifiStatusDomain;
 
 @interface SBStatusBarStateAggregator : NSObject <SBDateTimeOverrideObserver, DNDStateUpdateListener, SBAVSystemControllerCacheObserver>
 {
@@ -19,13 +19,13 @@
     SBUserSessionController *_override_userSessionController;
     unsigned long long _coalescentBlockDepth;
     _Bool _hasPostedOnce;
-    unsigned long long _itemPostState[42];
+    unsigned long long _itemPostState[43];
     _Bool _nonItemDataChanged;
-    CDStruct_0942cde0 _data;
+    CDStruct_3fd7985f _data;
     int _actions;
     _Bool _performingAtomicUpdate;
-    unsigned long long _atomicUpdateItemPostState[42];
-    CDStruct_0942cde0 _atomicUpdateData;
+    unsigned long long _atomicUpdateItemPostState[43];
+    CDStruct_3fd7985f _atomicUpdateData;
     NSHashTable *_postObservers;
     _Bool _notifyingPostObservers;
     long long _showsRecordingOverrides;
@@ -56,6 +56,7 @@
     int _locationStatusBarIconType;
     unsigned int _locationIconPendingRequestCount;
     SBSStatusBarStyleOverridesAssertion *_tetheringStatusBarStyleOverrideAssertion;
+    NSMutableDictionary *_callingStatusBarStyleOverrideAssertionsByStyleOverride;
     SBUserSessionController *_lazy_userSessionController;
     NSString *_personName;
     NSString *_overridePersonName;
@@ -66,6 +67,7 @@
     STTelephonyStatusDomainDataProvider *_telephonyDataProvider;
     SBSystemStatusWifiDataProvider *_wifiDataProvider;
     STBatteryStatusDomain *_batteryDomain;
+    STCallingStatusDomain *_callingDomain;
     STTelephonyStatusDomain *_telephonyDomain;
     STVoiceControlStatusDomain *_voiceControlDomain;
     STWifiStatusDomain *_wifiDomain;
@@ -73,16 +75,17 @@
 
 + (int)_thermalColorForLevel:(long long)arg1;
 + (id)sharedInstance;
-@property(readonly, nonatomic) STWifiStatusDomain *wifiDomain; // @synthesize wifiDomain=_wifiDomain;
-@property(readonly, nonatomic) STVoiceControlStatusDomain *voiceControlDomain; // @synthesize voiceControlDomain=_voiceControlDomain;
-@property(readonly, nonatomic) STTelephonyStatusDomain *telephonyDomain; // @synthesize telephonyDomain=_telephonyDomain;
-@property(readonly, nonatomic) STBatteryStatusDomain *batteryDomain; // @synthesize batteryDomain=_batteryDomain;
+- (void).cxx_destruct;
+@property(retain, nonatomic, getter=_wifiDomain, setter=_setWifiDomain:) STWifiStatusDomain *wifiDomain; // @synthesize wifiDomain=_wifiDomain;
+@property(retain, nonatomic, getter=_voiceControlDomain, setter=_setVoiceControlDomain:) STVoiceControlStatusDomain *voiceControlDomain; // @synthesize voiceControlDomain=_voiceControlDomain;
+@property(retain, nonatomic, getter=_telephonyDomain, setter=_setTelephonyDomain:) STTelephonyStatusDomain *telephonyDomain; // @synthesize telephonyDomain=_telephonyDomain;
+@property(retain, nonatomic, getter=_callingDomain, setter=_setCallingDomain:) STCallingStatusDomain *callingDomain; // @synthesize callingDomain=_callingDomain;
+@property(retain, nonatomic, getter=_batteryDomain, setter=_setBatteryDomain:) STBatteryStatusDomain *batteryDomain; // @synthesize batteryDomain=_batteryDomain;
 @property(readonly, nonatomic) SBSystemStatusWifiDataProvider *wifiDataProvider; // @synthesize wifiDataProvider=_wifiDataProvider;
 @property(readonly, nonatomic) STTelephonyStatusDomainDataProvider *telephonyDataProvider; // @synthesize telephonyDataProvider=_telephonyDataProvider;
 @property(readonly, nonatomic) SBSystemStatusBatteryDataProvider *batteryDataProvider; // @synthesize batteryDataProvider=_batteryDataProvider;
 @property(retain, nonatomic, getter=_telephonyManager, setter=_setTelephonyManager:) SBTelephonyManager *telephonyManager; // @synthesize telephonyManager=_override_telephonyManager;
 @property(retain, nonatomic, getter=_userSessionController, setter=_setUserSessionController:) SBUserSessionController *userSessionController; // @synthesize userSessionController=_override_userSessionController;
-- (void).cxx_destruct;
 - (void)cache:(id)arg1 didUpdatePickableRoutes:(id)arg2;
 - (void)cache:(id)arg1 didUpdateActiveAudioRoute:(id)arg2;
 - (void)stateService:(id)arg1 didReceiveDoNotDisturbStateUpdate:(id)arg2;
@@ -102,9 +105,11 @@
 - (_Bool)_setItem:(int)arg1 enabled:(_Bool)arg2;
 - (void)_postItem:(int)arg1 withState:(unsigned long long)arg2 inList:(unsigned long long *)arg3;
 - (void)updateStatusBarItem:(int)arg1;
+- (void)_updateCallingStatusBarStyleOverrideAssertionsForStyleOverride:(int)arg1 callingAttributions:(id)arg2;
 - (void)_updateTetheringState;
 - (void)_removeTetheringStatusBarStyleOverrideAssertion;
 - (void)_updatePersonNameItem;
+- (void)_updateSensorActivityItem;
 - (void)_updateCarPlayItem;
 - (void)_updateThermalColorItem;
 - (void)_updateAirplayItem;
@@ -142,7 +147,6 @@
 - (void)addPostingObserver:(id)arg1;
 - (void)sendStatusBarActions:(int)arg1;
 - (void)setUserNameOverride:(id)arg1;
-- (void)updateBackgroundActivityStartTimeForApplication:(id)arg1;
 - (void)setShowsSyncActivityIndicator:(_Bool)arg1;
 - (void)setShowsActivityIndicatorEverywhere:(_Bool)arg1;
 - (void)setShowsActivityIndicatorOnHomeScreen:(_Bool)arg1;
@@ -153,7 +157,7 @@
 - (void)_updateStateAtomicallyWithoutAnimationUsingBlock:(CDUnknownBlockType)arg1;
 - (void)endCoalescentBlock;
 - (void)beginCoalescentBlock;
-- (const CDStruct_0942cde0 *)_statusBarData;
+- (const CDStruct_3fd7985f *)_statusBarData;
 - (void)dealloc;
 - (id)init;
 

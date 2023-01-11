@@ -9,12 +9,13 @@
 #import <WorkflowUI/UIDocumentPickerDelegate-Protocol.h>
 #import <WorkflowUI/UIImagePickerControllerDelegate-Protocol.h>
 #import <WorkflowUI/UINavigationControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFWorkflowWizardNameCellDataSource-Protocol.h>
 #import <WorkflowUI/WFWorkflowWizardNameCellDelegate-Protocol.h>
 
 @class NSString, WFAddToHomeIconPreviewCell, WFHomeScreenIcon, WFWorkflow, WFWorkflowWizardNameCell;
 @protocol WFAddToHomeScreenViewControllerDelegate;
 
-@interface WFAddToHomeScreenViewController : UITableViewController <WFWorkflowWizardNameCellDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate>
+@interface WFAddToHomeScreenViewController : UITableViewController <WFWorkflowWizardNameCellDelegate, WFWorkflowWizardNameCellDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate>
 {
     id <WFAddToHomeScreenViewControllerDelegate> _delegate;
     WFWorkflow *_workflow;
@@ -23,18 +24,18 @@
     WFWorkflowWizardNameCell *_editorCell;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) WFWorkflowWizardNameCell *editorCell; // @synthesize editorCell=_editorCell;
 @property(retain, nonatomic) WFAddToHomeIconPreviewCell *previewCell; // @synthesize previewCell=_previewCell;
 @property(retain, nonatomic) WFHomeScreenIcon *icon; // @synthesize icon=_icon;
 @property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(nonatomic) __weak id <WFAddToHomeScreenViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
 - (void)didTapAdd;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)presentPickerControllerWithSourceType:(long long)arg1;
-- (void)workflowWizardNameCellDidSelectEditIcon:(id)arg1;
+- (id)iconButtonDropdownMenuInWorkflowWizardNameCell:(id)arg1;
 - (void)workflowWizardNameCell:(id)arg1 didUpdateName:(id)arg2;
 - (void)registerCells;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

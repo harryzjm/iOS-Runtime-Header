@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPModelAlbum, MPModelArtist, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPlaylistEntry, MPModelPodcast, MPModelPodcastEpisode, MPModelRadioStation, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow;
+@class MPModelAlbum, MPModelArtist, MPModelComposer, MPModelCurator, MPModelGenre, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPlaylistEntry, MPModelPodcast, MPModelPodcastEpisode, MPModelRadioStation, MPModelSocialPerson, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow;
 
 @interface MPModelGenericObject
 {
 }
 
++ (id)__socialPerson_KEY;
++ (id)__curator_KEY;
++ (id)__genre_KEY;
++ (id)__composer_KEY;
 + (id)__radioStation_KEY;
 + (id)__podcastEpisode_KEY;
 + (id)__podcast_KEY;
@@ -24,6 +28,7 @@
 + (id)__album_KEY;
 + (id)__song_KEY;
 + (id)genericObjectWithModelObject:(id)arg1;
++ (id)relationshipKeyForGenericObjectType:(long long)arg1;
 + (id)kindWithRelationshipKinds:(id)arg1;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)artworkCatalog;
@@ -32,16 +37,20 @@
 - (id)anyObject;
 - (id)identifiers;
 - (id)humanDescription;
+- (id)mergeWithObject:(id)arg1;
+- (id)copyWithIdentifiers:(id)arg1 propertySet:(id)arg2;
+- (id)copyWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)mediaItemPropertyValues;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;
-- (_Bool)storeItemMetadataRequestNeedsPersonalization;
-- (id)storeItemMetadataRequestItemIdentifier;
 
 // Remaining properties
 @property(retain, nonatomic) MPModelAlbum *album; // @dynamic album;
 @property(retain, nonatomic) MPModelArtist *artist; // @dynamic artist;
+@property(retain, nonatomic) MPModelComposer *composer; // @dynamic composer;
+@property(retain, nonatomic) MPModelCurator *curator; // @dynamic curator;
+@property(retain, nonatomic) MPModelGenre *genre; // @dynamic genre;
 @property(retain, nonatomic) MPModelMediaClip *mediaClip; // @dynamic mediaClip;
 @property(retain, nonatomic) MPModelMovie *movie; // @dynamic movie;
 @property(retain, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
@@ -51,6 +60,7 @@
 @property(retain, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
 @property(retain, nonatomic) MPModelTVSeason *season; // @dynamic season;
 @property(retain, nonatomic) MPModelTVShow *show; // @dynamic show;
+@property(retain, nonatomic) MPModelSocialPerson *socialPerson; // @dynamic socialPerson;
 @property(retain, nonatomic) MPModelSong *song; // @dynamic song;
 @property(retain, nonatomic) MPModelTVEpisode *tvEpisode; // @dynamic tvEpisode;
 

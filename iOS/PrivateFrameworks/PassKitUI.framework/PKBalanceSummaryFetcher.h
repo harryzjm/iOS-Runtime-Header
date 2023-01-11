@@ -8,13 +8,12 @@
 
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 
-@class NSCalendar, NSString, PKAccount, PKPaymentDefaultDataProvider, PKPaymentPass;
+@class NSCalendar, NSString, PKAccount, PKPaymentDefaultDataProvider, PKTransactionSource;
 @protocol OS_dispatch_queue;
 
 @interface PKBalanceSummaryFetcher : NSObject <PKPaymentDataProviderDelegate>
 {
-    PKPaymentPass *_paymentPass;
-    NSString *_passUniqueID;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_replyQueue;
@@ -29,7 +28,7 @@
 - (id)_sortedTransactions:(id)arg1 ascending:(_Bool)arg2;
 - (id)_summaryWithTransactions:(id)arg1 currency:(id)arg2 type:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5;
 - (void)balanceSummaryStartingWithDate:(id)arg1 endDate:(id)arg2 type:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)initWithPaymentPass:(id)arg1 account:(id)arg2;
+- (id)initWithTransactionSource:(id)arg1 account:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

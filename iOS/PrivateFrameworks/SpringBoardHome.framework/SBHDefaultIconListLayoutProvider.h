@@ -18,22 +18,27 @@
     unsigned long long _layoutOptions;
 }
 
++ (id)frameworkFallbackInstance;
 + (unsigned long long)currentDeviceScreenType;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(readonly, nonatomic) unsigned long long screenType; // @synthesize screenType=_screenType;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+- (struct UIEdgeInsets)homeScreenSearchOverlayInsetsForScreenType:(unsigned long long)arg1 layoutOptions:(unsigned long long)arg2 forAppLibrary:(_Bool)arg3;
 - (id)layoutForIconLocation:(id)arg1;
-- (void)configureSidebarConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2;
-- (void)configureClockIconConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
-- (void)configureFolderIconConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
-- (void)configureFloatyFolderConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2;
+- (void)configureRootFolderConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
+- (void)configureSidebarConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3 getBottomSearchOffset:(double *)arg4;
+- (void)configureFolderIconConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 numberOfRows:(unsigned long long)arg3 layoutOptions:(unsigned long long)arg4;
+- (void)configureFloatyFolderConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
+- (void)configureAppLibraryConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
 - (void)configureIconAccessoryConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
 - (void)configureLabelConfigurations:(id)arg1 forScreenType:(unsigned long long)arg2;
+- (void)configureSupportedIconGridSizeClasses:(unsigned long long *)arg1 forScreenType:(unsigned long long)arg2 iconLocation:(id)arg3;
+- (void)configureGridSizeClassSizes:(struct SBHIconGridSizeClassSizes *)arg1 forScreenType:(unsigned long long)arg2 numberOfColumns:(unsigned long long)arg3;
 - (id)makeLayoutForIconLocation:(id)arg1;
 - (id)initWithScreenType:(unsigned long long)arg1 layoutOptions:(unsigned long long)arg2;
 - (id)initWithLayoutOptions:(unsigned long long)arg1;

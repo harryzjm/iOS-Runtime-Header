@@ -20,7 +20,12 @@
 
 + (id)deviceCapabilitiesModelIdentifierWithParentIdentifier:(id)arg1;
 + (_Bool)supportsSecureCoding;
++ (unsigned long long)supportedPairingCapabilities;
 + (id)deviceCapabilities;
++ (_Bool)supportsStereoPairingV2;
++ (_Bool)supportsStereoPairingV1;
++ (_Bool)supportsBulletinBoard;
++ (_Bool)supportsHomeKitDataStream;
 + (_Bool)isCompanionCapable;
 + (_Bool)supportsBackboard;
 + (_Bool)supportsSyncingToSharedUsers;
@@ -38,12 +43,11 @@
 + (_Bool)supportsIntentDonation;
 + (_Bool)supportsHomeApp;
 + (_Bool)supportsLocalization;
-@property(retain, nonatomic) HMDDeviceCapabilitiesModel *objectModel; // @synthesize objectModel=_objectModel;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HMDDeviceCapabilitiesModel *objectModel; // @synthesize objectModel=_objectModel;
 - (id)modelBackedObjects;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
-- (id)modelCopyWithChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 @property(copy, nonatomic) NSUUID *modelParentIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *modelIdentifier;
 @property(readonly) Class modelClass;
@@ -52,10 +56,19 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly) _Bool supportsThirdPartyMusic;
+@property(readonly) _Bool supportsDoorbellChime;
+@property(readonly, nonatomic) _Bool supportsCameraRecordingReachabilityNotifications;
+@property(readonly, nonatomic) _Bool supportsIDSActivityMonitorPresence;
+@property(readonly, nonatomic) _Bool supportsNaturalLighting;
+@property(readonly, nonatomic) _Bool supportsFaceClassification;
+@property(readonly, nonatomic) _Bool supportsCameraActivityZones;
+@property(readonly, nonatomic) _Bool supportsCameraSignificantEventNotifications;
 @property(readonly, nonatomic) _Bool supportsMediaActions;
 @property(readonly, nonatomic) _Bool supportsShortcutActions;
 @property(readonly, nonatomic) _Bool supportsRouterManagement;
 @property(readonly, nonatomic) _Bool supportsCameraRecording;
+@property(readonly, nonatomic) _Bool supportsCompanionInitiatedRestart;
 @property(readonly, nonatomic) _Bool supportsMultiUser;
 @property(readonly, nonatomic) _Bool supportsTargetControl;
 @property(readonly, nonatomic) _Bool supportsHomeInvitation;
@@ -73,6 +86,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithObjectModel:(id)arg1;
+- (id)initWithProductInfo:(id)arg1 homekitVersion:(id)arg2;
 - (id)initWithProductInfo:(id)arg1;
 - (id)init;
 

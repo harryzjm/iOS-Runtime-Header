@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface EKFrozenReminderStructuredLocation
 {
@@ -12,11 +14,12 @@ __attribute__((visibility("hidden")))
 + (id)uniqueIdentifierForREMObject:(id)arg1;
 + (_Bool)canCommitSelf;
 + (Class)meltedClass;
-- (void)setLatitudeAndLongitudeFromAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inChangeSet:(id)arg2;
+- (void)setLatitudeAndLongitudeFromAlternateUniverseObject:(id)arg1 inChangeSet:(id)arg2;
 - (double)radius;
 - (int)referenceFrame;
 - (double)longitude;
 - (double)latitude;
+- (id)address;
 - (id)mapKitHandle;
 - (id)updateParentToCommitSelf:(id)arg1;
 - (id)title;
@@ -24,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (id)updatedStructuredLocation;
 - (id)_structuredLocation;
 - (id)remObjectID;
-- (id)uniqueIdentifier;
-- (id)initWithAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
+@property(readonly) NSString *uniqueIdentifier;
+- (id)initWithAlternateUniverseObject:(id)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 
 @end
 

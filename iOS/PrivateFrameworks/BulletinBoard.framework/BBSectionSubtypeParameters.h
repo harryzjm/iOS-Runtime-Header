@@ -29,7 +29,6 @@
     NSString *_secondaryContentRemoteServiceBundleIdentifier;
     NSNumber *_boxedSuppressesAlertsWhenAppIsActive;
     NSNumber *_boxedCoalescesWhenLocked;
-    NSNumber *_boxedRealertCount;
     NSNumber *_boxedInertWhenLocked;
     NSNumber *_boxedPreservesUnlockActionCase;
     NSNumber *_boxedVisuallyIndicatesWhenDateIsInFuture;
@@ -56,6 +55,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *boxedHideDismissActionInCarPlay; // @synthesize boxedHideDismissActionInCarPlay=_boxedHideDismissActionInCarPlay;
 @property(retain, nonatomic) NSNumber *boxedSuppressDelayForForwardedBulletins; // @synthesize boxedSuppressDelayForForwardedBulletins=_boxedSuppressDelayForForwardedBulletins;
 @property(retain, nonatomic) NSNumber *boxedPlaysMediaWhenRaised; // @synthesize boxedPlaysMediaWhenRaised=_boxedPlaysMediaWhenRaised;
@@ -79,7 +79,6 @@
 @property(retain, nonatomic) NSNumber *boxedVisuallyIndicatesWhenDateIsInFuture; // @synthesize boxedVisuallyIndicatesWhenDateIsInFuture=_boxedVisuallyIndicatesWhenDateIsInFuture;
 @property(retain, nonatomic) NSNumber *boxedPreservesUnlockActionCase; // @synthesize boxedPreservesUnlockActionCase=_boxedPreservesUnlockActionCase;
 @property(retain, nonatomic) NSNumber *boxedInertWhenLocked; // @synthesize boxedInertWhenLocked=_boxedInertWhenLocked;
-@property(retain, nonatomic) NSNumber *boxedRealertCount; // @synthesize boxedRealertCount=_boxedRealertCount;
 @property(retain, nonatomic) NSNumber *boxedCoalescesWhenLocked; // @synthesize boxedCoalescesWhenLocked=_boxedCoalescesWhenLocked;
 @property(retain, nonatomic) NSNumber *boxedSuppressesAlertsWhenAppIsActive; // @synthesize boxedSuppressesAlertsWhenAppIsActive=_boxedSuppressesAlertsWhenAppIsActive;
 @property(copy, nonatomic) NSString *secondaryContentRemoteServiceBundleIdentifier; // @synthesize secondaryContentRemoteServiceBundleIdentifier=_secondaryContentRemoteServiceBundleIdentifier;
@@ -96,7 +95,6 @@
 @property(copy, nonatomic) NSString *subtypeSummaryFormat; // @synthesize subtypeSummaryFormat=_subtypeSummaryFormat;
 @property(copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
 @property(nonatomic) __weak BBSectionSubtypeParameters *fallbackParameters; // @synthesize fallbackParameters=_fallbackParameters;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -125,7 +123,6 @@
 @property(nonatomic) _Bool visuallyIndicatesWhenDateIsInFuture;
 @property(nonatomic) _Bool preservesUnlockActionCase;
 @property(nonatomic) _Bool inertWhenLocked;
-@property(nonatomic) unsigned long long realertCount;
 @property(nonatomic) _Bool coalescesWhenLocked;
 @property(nonatomic) _Bool suppressesAlertsWhenAppIsActive;
 @property(retain, nonatomic) NSSet *alertSuppressionAppIDs;

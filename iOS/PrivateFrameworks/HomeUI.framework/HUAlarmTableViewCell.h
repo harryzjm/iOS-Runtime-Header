@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class MTUIAlarmView, UISwitch;
+@class MTUIAlarmView, UIStackView, UISwitch;
 @protocol HUAlarmTableViewCellDelegate;
 
 @interface HUAlarmTableViewCell : UITableViewCell
@@ -16,22 +16,28 @@
     id <HUAlarmTableViewCellDelegate> _delegate;
     MTUIAlarmView *_alarmView;
     UISwitch *_enabledSwitch;
+    UIStackView *_stackView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
+@property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UISwitch *enabledSwitch; // @synthesize enabledSwitch=_enabledSwitch;
 @property(retain, nonatomic) MTUIAlarmView *alarmView; // @synthesize alarmView=_alarmView;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) __weak id <HUAlarmTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)layoutSubviews;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)willTransitionToState:(unsigned long long)arg1;
 - (void)_alarmActiveChanged:(id)arg1;
 - (void)setAlarmActiveDelegate:(id)arg1;
+- (void)_setupConstraints;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)refreshUI:(id)arg1 animated:(_Bool)arg2;
+- (void)refreshUI:(id)arg1 accessoryName:(id)arg2 animated:(_Bool)arg3;
+- (id)_alarmBackgroundColor;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)init;
 

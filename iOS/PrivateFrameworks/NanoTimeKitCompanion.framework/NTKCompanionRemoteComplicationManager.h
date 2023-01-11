@@ -14,6 +14,7 @@
 
 @interface NTKCompanionRemoteComplicationManager : NSObject <NTKComplicationCollectionObserver, NTKRemoteComplicationProvider>
 {
+    _Bool _loaded;
     NTKComplicationCollection *_remoteComplications;
     NSDictionary *_installedComplications;
     NSMutableDictionary *_syncedComplications;
@@ -22,17 +23,22 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(retain, nonatomic) NSMutableDictionary *syncedComplications; // @synthesize syncedComplications=_syncedComplications;
 @property(retain, nonatomic) NSDictionary *installedComplications; // @synthesize installedComplications=_installedComplications;
 @property(retain, nonatomic) NTKComplicationCollection *remoteComplications; // @synthesize remoteComplications=_remoteComplications;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool loaded; // @synthesize loaded=_loaded;
 - (void)complicationCollection:(id)arg1 didRemoveSampleTemplatesForClient:(id)arg2;
-- (void)complicationCollection:(id)arg1 didUpdateSampleTemplateForClient:(id)arg2;
+- (void)complicationCollection:(id)arg1 didUpdateComplicationDescriptorsForClient:(id)arg2;
+- (void)complicationCollection:(id)arg1 didUpdateSampleTemplateForClient:(id)arg2 descriptor:(id)arg3;
 - (void)complicationCollectionDidLoad:(id)arg1;
 - (id)localizedAppNameForClientIdentifier:(id)arg1;
 - (_Bool)vendorExistsWithClientIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
+- (void)notifyAppForClientIdentifier:(id)arg1 ofSharedComplicationDescriptors:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)enumerateComplicationDescriptorsForClientIdentifier:(id)arg1 family:(long long)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (id)itemIdForVendorWithClientIdentifier:(id)arg1;
 - (void)enumerateEnabledVendorsForComplicationFamily:(long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_safeInstalledComplications;
 - (id)_safeComplications;

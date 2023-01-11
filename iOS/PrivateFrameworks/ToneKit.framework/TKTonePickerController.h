@@ -27,8 +27,6 @@
     _Bool _hasLoadedTonesOnce;
     NSMutableArray *_cachedPickerSectionItems;
     NSMutableArray *_cachedPickerRowItems;
-    NSMutableArray *_cachedClassicRingtonePickerItems;
-    NSMutableArray *_cachedClassicAlertTonePickerItems;
     NSArray *_installedTones;
     NSMutableArray *_toneGroupLists;
     NSMutableArray *_toneGroupNames;
@@ -61,6 +59,7 @@
 
 + (void)_updateLatestRedownloadAllTonesDate;
 + (id)_latestRedownloadAllTonesDate;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setBehavesAsRingtonePicker:) _Bool _behavesAsRingtonePicker; // @synthesize _behavesAsRingtonePicker=__behavesAsRingtonePicker;
 @property(retain, nonatomic, setter=_setSelectedToneIndexPath:) NSIndexPath *_selectedToneIndexPath; // @synthesize _selectedToneIndexPath=__selectedToneIndexPath;
 @property(nonatomic, setter=_setSelectedClassicAlertToneIndex:) unsigned long long _selectedClassicAlertToneIndex; // @synthesize _selectedClassicAlertToneIndex=__selectedClassicAlertToneIndex;
@@ -83,7 +82,6 @@
 @property(copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property(readonly, nonatomic) long long alertType; // @synthesize alertType=_alertType;
 @property(nonatomic) __weak id <TKTonePickerControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_handleAlertOverridePolicyDidChangeNotification:(id)arg1;
 - (void)_toneManagerContentsChanged:(id)arg1;
 - (void)_resetSelectedClassicAlertToneIndex;
@@ -171,14 +169,12 @@
 @property(readonly, nonatomic) NSIndexPath *_indexPathForVibrationGroup;
 - (id)_indexPathForIgnoreMuteGroup;
 - (void)_invalidatePickerItemCaches;
-- (void)_cacheToneClassicsPickerItem:(id)arg1 forIndex:(long long)arg2 headerKind:(unsigned long long)arg3;
-- (id)_cachedToneClassicsPickerItemForIndex:(long long)arg1 headerKind:(unsigned long long)arg2;
 - (void)_uncachePickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
 - (void)_cachePickerRowItem:(id)arg1 atIndex:(long long)arg2 inSectionForItem:(id)arg3;
 - (id)_cachedPickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
 - (void)_cachePickerSectionItem:(id)arg1 forSection:(long long)arg2;
 - (id)_cachedPickerItemForSection:(long long)arg1;
-- (id)_toneClassicsPickerItemAtIndex:(long long)arg1 belowTonePickerItem:(id)arg2;
+- (id)_toneClassicsPickerItemAtIndex:(long long)arg1 withToneIdentifier:(id)arg2 belowTonePickerItem:(id)arg3;
 - (id)_pickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
 - (id)pickerItemForSection:(long long)arg1;
 - (long long)numberOfSections;

@@ -12,26 +12,28 @@
 
 @interface HKSampleTypeChange : NSObject <NSSecureCoding>
 {
-    _Bool _samplesWereDeleted;
+    _Bool _hasUnfrozenSeries;
     HKSampleType *_sampleType;
     double _startTime;
     double _endTime;
+    long long _queryStrategy;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)sampleTypeChangeWithSampleType:(id)arg1 dateInterval:(id)arg2 samplesWereDeleted:(_Bool)arg3;
++ (id)sampleTypeChangeWithSampleType:(id)arg1 dateInterval:(id)arg2 hasUnfrozenSeries:(_Bool)arg3;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) long long queryStrategy; // @synthesize queryStrategy=_queryStrategy;
 @property(readonly, nonatomic) double endTime; // @synthesize endTime=_endTime;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
-@property(readonly, nonatomic) _Bool samplesWereDeleted; // @synthesize samplesWereDeleted=_samplesWereDeleted;
+@property(readonly, nonatomic) _Bool hasUnfrozenSeries; // @synthesize hasUnfrozenSeries=_hasUnfrozenSeries;
 @property(readonly, copy, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)_extendDateIntervalWithSample:(id)arg1;
 @property(readonly, copy, nonatomic) NSDateInterval *dateInterval;
-- (id)_initWithSampleType:(id)arg1 startTime:(double)arg2 endTime:(double)arg3 deletions:(_Bool)arg4;
+- (id)_initWithSampleType:(id)arg1 startTime:(double)arg2 endTime:(double)arg3 hasUnfrozenSeries:(_Bool)arg4 queryStrategy:(long long)arg5;
 
 @end
 

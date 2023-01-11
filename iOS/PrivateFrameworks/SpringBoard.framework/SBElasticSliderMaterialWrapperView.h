@@ -17,14 +17,14 @@
     long long _shadowMode;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long shadowMode; // @synthesize shadowMode=_shadowMode;
 @property(readonly, nonatomic) UIView *maskView; // @synthesize maskView=_maskView;
 @property(readonly, nonatomic) MTMaterialShadowView *baseMaterialView; // @synthesize baseMaterialView=_baseMaterialView;
-@property(retain, nonatomic) SBElasticSliderView *sliderView; // @synthesize sliderView=_sliderView;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) SBElasticSliderView *sliderView; // @synthesize sliderView=_sliderView;
 - (void)_updateShadowMode;
 - (void)_setContinuousCornerRadius:(double)arg1;
-- (void)setFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (id)init;
 
 @end

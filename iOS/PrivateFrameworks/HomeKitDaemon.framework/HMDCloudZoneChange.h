@@ -17,11 +17,11 @@
 }
 
 + (id)shortDescription;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMDCloudGroupChange *rootGroupChange; // @synthesize rootGroupChange=_rootGroupChange;
 @property(nonatomic) __weak HMDCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic, getter=isTemporaryCache) _Bool temporaryCache; // @synthesize temporaryCache=_temporaryCache;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *objectChanges;
 - (id)changeWithRecordName:(id)arg1;
 - (id)changeWithObjectID:(id)arg1;
@@ -35,6 +35,7 @@
 - (void)loadCloudRecordsAndDetermineDeletesFromCache:(CDUnknownBlockType)arg1;
 - (void)cachedCloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cachedCloudRecordWithObjectID:(id)arg1;
+@property(readonly) _Bool doRecordsExistInCache;
 - (_Bool)doesRecordExistInCacheWithObjectID:(id)arg1;
 - (_Bool)doesRecordExistWithObjectID:(id)arg1;
 @property(readonly, nonatomic) _Bool hasValidChanges;

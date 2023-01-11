@@ -13,13 +13,15 @@
 @interface GEOTransitVehicleInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _clusteredRouteLineArtworkIndexs;
     GEOTransitVehicleTime *_arrivalTime;
     GEOTransitVehicleTime *_departureTime;
     unsigned long long _tripMuid;
     NSString *_vehicleNumber;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _departureFrequencyMax;
     unsigned int _departureFrequencyMin;
     unsigned int _lineIndex;
@@ -37,17 +39,7 @@
         unsigned int read_arrivalTime:1;
         unsigned int read_departureTime:1;
         unsigned int read_vehicleNumber:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clusteredRouteLineArtworkIndexs:1;
-        unsigned int wrote_arrivalTime:1;
-        unsigned int wrote_departureTime:1;
-        unsigned int wrote_tripMuid:1;
-        unsigned int wrote_vehicleNumber:1;
-        unsigned int wrote_departureFrequencyMax:1;
-        unsigned int wrote_departureFrequencyMin:1;
-        unsigned int wrote_lineIndex:1;
-        unsigned int wrote_pickupDropoffType:1;
-        unsigned int wrote_routeLineArtworkIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -63,11 +55,13 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *vehicleNumber;
 @property(readonly, nonatomic) _Bool hasVehicleNumber;
-- (void)_readVehicleNumber;
 @property(nonatomic) _Bool hasTripMuid;
 @property(nonatomic) unsigned long long tripMuid;
 @property(nonatomic) _Bool hasDepartureFrequencyMax;
@@ -80,23 +74,21 @@
 @property(nonatomic) int pickupDropoffType;
 - (void)setClusteredRouteLineArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)clusteredRouteLineArtworkIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsClusteredRouteLineArtworkIndex:(unsigned int)arg1;
 - (void)addClusteredRouteLineArtworkIndex:(unsigned int)arg1;
 - (void)clearClusteredRouteLineArtworkIndexs;
 @property(readonly, nonatomic) unsigned int *clusteredRouteLineArtworkIndexs;
 @property(readonly, nonatomic) unsigned long long clusteredRouteLineArtworkIndexsCount;
-- (void)_readClusteredRouteLineArtworkIndexs;
 @property(nonatomic) _Bool hasRouteLineArtworkIndex;
 @property(nonatomic) unsigned int routeLineArtworkIndex;
 @property(nonatomic) _Bool hasLineIndex;
 @property(nonatomic) unsigned int lineIndex;
 @property(retain, nonatomic) GEOTransitVehicleTime *departureTime;
 @property(readonly, nonatomic) _Bool hasDepartureTime;
-- (void)_readDepartureTime;
 @property(retain, nonatomic) GEOTransitVehicleTime *arrivalTime;
 @property(readonly, nonatomic) _Bool hasArrivalTime;
-- (void)_readArrivalTime;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

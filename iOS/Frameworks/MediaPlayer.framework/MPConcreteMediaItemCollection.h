@@ -9,6 +9,7 @@
 
 @class MPConcreteMediaEntityPropertiesCache, MPMediaItem, MPMediaQuery;
 
+__attribute__((visibility("hidden")))
 @interface MPConcreteMediaItemCollection <NSCopying, MPCacheableConcreteMediaEntity>
 {
     long long _identifier;
@@ -19,6 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)createUncachedMediaItemCollectionWithIdentifier:(long long)arg1 valuesForProperties:(id)arg2 itemsQuery:(id)arg3 grouping:(long long)arg4 representativeItemIdentifier:(long long)arg5;
 - (void).cxx_destruct;
 - (void)_enumerateItemPersistentIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)count;

@@ -4,25 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PGGraphSeasonNode;
+@class NSString, PGGraphCalendarUnitNode, PGGraphSeasonNode;
 
 @interface PGGraphDateNode
 {
-    PGGraphSeasonNode *_seasonNode;
+    NSString *_name;
 }
 
++ (id)momentOfDate;
++ (id)yearOfDate;
++ (id)seasonOfDate;
 + (id)dateNodeForDayNode:(id)arg1 monthNode:(id)arg2 yearNode:(id)arg3;
++ (id)filter;
 - (void).cxx_destruct;
+@property(readonly) NSString *name; // @synthesize name=_name;
 - (id)associatedNodesForRemoval;
 - (id)lastWeekDateNodes;
 - (id)sameWeekDateNodes;
 - (id)localDate;
-@property(readonly, nonatomic) PGGraphSeasonNode *seasonNode; // @synthesize seasonNode=_seasonNode;
+@property(readonly, nonatomic) PGGraphSeasonNode *seasonNode;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)momentNodes;
 - (void)enumerateHolidayNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) long long day;
 @property(readonly) long long month;
 @property(readonly) long long year;
+@property(readonly) PGGraphCalendarUnitNode *weekOfMonthNode;
+@property(readonly) PGGraphCalendarUnitNode *weekOfYearNode;
+@property(readonly) PGGraphCalendarUnitNode *dayNode;
+@property(readonly) PGGraphCalendarUnitNode *monthNode;
+@property(readonly) PGGraphCalendarUnitNode *yearNode;
+- (unsigned short)domain;
+- (id)label;
+- (id)description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 @end
 

@@ -16,7 +16,7 @@
     UIImageView *_incidentIconImageView;
     _MKUILabel *_primaryLabel;
     MKThemeMultiPartLabel *_secondaryLabel;
-    _MKUILabel *_tertiaryLabel;
+    MKThemeMultiPartLabel *_tertiaryLabel;
     UIButton *_incidentButton;
     _MKUILabel *_departureLabel;
     _MKUILabel *_departureDetailLabel;
@@ -65,19 +65,20 @@
 + (id)_departureLabelFont;
 + (id)defaultSecondaryFont;
 + (id)strongSecondaryFont;
-+ (void)useCompressedGutter:(out _Bool *)arg1 compressedLeading:(out _Bool *)arg2 forImageWidth:(double)arg3 inWidth:(double)arg4 compressed:(_Bool)arg5;
-+ (double)_minTextWidth:(_Bool)arg1;
++ (void)useCompressedGutter:(out _Bool *)arg1 compressedLeading:(out _Bool *)arg2 forImageWidth:(double)arg3 inWidth:(double)arg4;
++ (double)_minTextWidth;
 + (double)_maxExpectedDepartureLabelWidth;
 + (void)_calculateMaxLabelWidths;
 + (_Bool)_needsUpdateMaxLabelWidths;
 + (double)labelMarginWithLineImageViewWidth:(double)arg1;
-+ (double)maxLineImageWidthforWidth:(double)arg1 compressed:(_Bool)arg2;
++ (double)maxLineImageWidthforWidth:(double)arg1;
 + (void)_addEmDashAttributes:(id)arg1;
 + (void)_enumerateMinutesUntilDepartureDates:(id)arg1 withReferenceDate:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (id)_nowString;
 + (id)displayableCountdowDepartureDatesFromDates:(id)arg1 withReferenceDate:(id)arg2;
 + (id)_attributedStringForCountdownDepartures:(id)arg1 referenceDate:(id)arg2 isShowingNoConnectionEmDash:(_Bool)arg3;
 + (id)_stringFromTimestampDate:(id)arg1 departureTimeZone:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *departureCutoffDate; // @synthesize departureCutoffDate=_departureCutoffDate;
 @property(nonatomic) _Bool useCompressedLeading; // @synthesize useCompressedLeading=_useCompressedLeading;
 @property(nonatomic) _Bool useCompressedGutter; // @synthesize useCompressedGutter=_useCompressedGutter;
@@ -91,7 +92,6 @@
 @property(nonatomic) unsigned long long departureStyle; // @synthesize departureStyle=_departureStyle;
 @property(retain, nonatomic) NSArray *departures; // @synthesize departures=_departures;
 @property(nonatomic) double lineImageViewSize; // @synthesize lineImageViewSize=_lineImageViewSize;
-- (void).cxx_destruct;
 - (void)setSeparatorHidden:(_Bool)arg1;
 @property(readonly, nonatomic) double labelMargin;
 - (void)setIncidentButtonHidden:(_Bool)arg1;
@@ -137,7 +137,7 @@
 - (void)configureCellForRowIndex:(long long)arg1 withMapItem:(id)arg2 sectionController:(id)arg3 outNextLineIsSame:(_Bool *)arg4;
 - (id)_operatingHoursDescriptionForSequence:(id)arg1 mapItem:(id)arg2;
 - (id)_startEndDatesForSequence:(id)arg1 date:(id)arg2 mapItem:(id)arg3;
-- (void)configureLeadingWithTableViewContentMargin:(double)arg1 width:(double)arg2 compressed:(_Bool)arg3;
+- (void)configureLeadingWithTableViewContentMargin:(double)arg1 width:(double)arg2;
 - (id)multipartStringSeparator;
 
 @end

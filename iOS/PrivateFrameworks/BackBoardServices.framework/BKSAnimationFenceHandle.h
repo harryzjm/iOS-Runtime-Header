@@ -15,34 +15,27 @@
 
 @interface BKSAnimationFenceHandle : NSObject <BSXPCCoding, NSSecureCoding, NSCopying, BSInvalidatable>
 {
-    unsigned long long _fenceName;
-    BSMachPortSendRight *_caFence;
-    BSMachPortSendRight *_preFence;
-    BSMachPortSendRight *_preFenceTrigger;
-    unsigned long long _handleName;
-    int _valid;
-    _Bool _shouldTrace;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)newFenceHandleForCAFenceHandle:(id)arg1;
 + (id)newFenceHandleForContext:(id)arg1;
 + (id)newSystemFenceHandle;
-@property(readonly, nonatomic) BSMachPortSendRight *trigger; // @synthesize trigger=_preFenceTrigger;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool shouldIgnoreTrigger;
+@property(readonly, nonatomic) BSMachPortSendRight *trigger;
+- (id)CAFenceHandle;
 - (unsigned int)CAPort;
 - (void)invalidate;
 @property(readonly, nonatomic, getter=isUsable) _Bool usable;
 @property(readonly, nonatomic) unsigned long long fenceName;
-- (void)dealloc;
+- (id)_init;
 - (id)init;
-- (id)_initWithFence:(id)arg1;
-- (id)_initWithFenceName:(unsigned long long)arg1 fence:(id)arg2 preFence:(id)arg3 preFenceTrigger:(id)arg4 shouldTrace:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

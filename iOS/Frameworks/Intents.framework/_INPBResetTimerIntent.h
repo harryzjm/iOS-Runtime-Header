@@ -18,17 +18,15 @@
         unsigned int resetMultiple:1;
     } _has;
     _Bool _resetMultiple;
-    _Bool __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
     _INPBTimer *_targetTimer;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBTimer *targetTimer; // @synthesize targetTimer=_targetTimer;
 @property(nonatomic) _Bool resetMultiple; // @synthesize resetMultiple=_resetMultiple;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

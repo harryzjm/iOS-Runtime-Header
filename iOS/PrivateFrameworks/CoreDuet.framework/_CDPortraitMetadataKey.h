@@ -10,6 +10,7 @@
 {
 }
 
++ (id)compatibilityVersion;
 + (id)assetVersion;
 + (id)osBuild;
 + (id)sentimentScore;

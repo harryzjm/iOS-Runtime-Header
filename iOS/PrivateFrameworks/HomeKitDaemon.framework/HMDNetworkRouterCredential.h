@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSData, NSString;
 
-@interface HMDNetworkRouterCredential : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterCredential : NSObject <NSCopying, HAPTLVProtocol>
 {
     NSData *_macAddress;
     NSData *_psk;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *psk; // @synthesize psk=_psk;
 @property(retain, nonatomic) NSData *macAddress; // @synthesize macAddress=_macAddress;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

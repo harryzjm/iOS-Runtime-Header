@@ -13,6 +13,12 @@
 @property(readonly, nonatomic) unsigned long long whichSectionbundleid;
 @property(readonly, nonatomic) unsigned long long whichResultbundleidentifier;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool usesCompactDisplay;
+@property(nonatomic) _Bool didTakeoverGo;
+@property(nonatomic) _Bool wasCompact;
+@property(nonatomic) _Bool preferTopPlatter;
+@property(nonatomic) _Bool noGoTakeover;
+@property(nonatomic) _Bool shouldUseCompactDisplay;
 @property(copy, nonatomic) NSData *entityData;
 @property(nonatomic) int knownApplicationBundleIdentifier;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier;
@@ -36,7 +42,6 @@
 @property(nonatomic) double rankingScore;
 @property(copy, nonatomic) NSString *resultType;
 @property(retain, nonatomic) _CPStruct *localFeatures;
-@property(copy, nonatomic) NSString *srf;
 @property(nonatomic) int type;
 @property(retain, nonatomic) _CPPunchoutForFeedback *punchout;
 @property(retain, nonatomic) _CPActionItemForFeedback *action;

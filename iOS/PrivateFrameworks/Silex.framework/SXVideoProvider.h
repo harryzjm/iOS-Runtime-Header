@@ -19,27 +19,25 @@
     SVTimeline *_timeline;
     double _pausedAtTime;
     NSString *_mediaIdentifier;
+    unsigned long long _playMethod;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long playMethod; // @synthesize playMethod=_playMethod;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 @property(nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
 @property(readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
 @property(nonatomic) __weak id <SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) id <SXAnalyticsReporting> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-- (void).cxx_destruct;
-- (_Bool)supportsQuartileReporting;
-- (void)playbackResumedAtTime:(double)arg1;
-- (void)playbackPausedAtTime:(double)arg1;
-- (void)configureTimelineForQuartileReporting;
-- (void)timeElapsed:(double)arg1 duration:(double)arg2;
+- (void)playbackPassedQuartile:(unsigned long long)arg1;
 - (void)muteStateChanged:(_Bool)arg1;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
 - (void)playbackResumed;
 - (void)playbackPaused;
 - (void)playbackStarted;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(_Bool)arg1;
 - (CDUnknownBlockType)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)initWithURL:(id)arg1;
 
@@ -47,6 +45,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) double impressionThreshold;
 @property(readonly) Class superclass;
 
 @end

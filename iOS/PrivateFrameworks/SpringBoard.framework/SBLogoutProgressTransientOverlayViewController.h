@@ -21,10 +21,10 @@
     id <SBLogoutProgressDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBLogoutProgressDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UMUser *user; // @synthesize user=_user;
 @property(nonatomic) __weak id <SBLogoutProgressDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (void)_updateData;
 - (void)_updateLegibility;
 - (id)_legibilitySettings;
@@ -39,6 +39,8 @@
 @property(readonly, nonatomic) long long scrollingStrategy;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
+- (void)conformsToCSExternalBehaviorProviding;
+- (void)conformsToCSBehaviorProviding;
 - (void)setContainerOrientation:(long long)arg1;
 - (id)newTransientOverlayPresentationTransitionCoordinator;
 - (id)newTransientOverlayDismissalTransitionCoordinator;

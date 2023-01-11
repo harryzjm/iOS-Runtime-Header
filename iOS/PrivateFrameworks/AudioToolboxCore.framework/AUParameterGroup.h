@@ -15,10 +15,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *childIndicesByIdentifier; // @synthesize childIndicesByIdentifier=_childIndicesByIdentifier;
 @property(readonly, nonatomic) NSArray *children; // @synthesize children=_children;
-- (void).cxx_destruct;
-- (void)_deserialize:(struct CADeserializer *)arg1;
+- (void)_deserialize:(struct CADeserializer *)arg1 fromSetFullState:(_Bool)arg2;
 - (void)_serialize:(struct CASerializer *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

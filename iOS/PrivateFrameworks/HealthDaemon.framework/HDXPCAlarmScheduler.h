@@ -16,9 +16,11 @@
     NSMapTable *_alarms;
     NSMutableSet *_pendingEvents;
     NSObject<OS_dispatch_queue> *_queue;
+    CDUnknownBlockType _unitTest_schedulerObserver;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType unitTest_schedulerObserver; // @synthesize unitTest_schedulerObserver=_unitTest_schedulerObserver;
 - (id)diagnosticDescription;
 - (void)unscheduleEventWithName:(id)arg1;
 - (void)scheduleEvent:(id)arg1;

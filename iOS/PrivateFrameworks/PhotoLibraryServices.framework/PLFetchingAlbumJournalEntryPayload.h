@@ -14,7 +14,7 @@
 + (id)payloadClassID;
 + (id)modelProperties;
 + (id)nonPersistedModelPropertiesDescription;
-- (void)migrateMergedPayload;
+- (void)migrateMergedPayloadWithUpdatePayloads:(id)arg1;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;
 - (void)_fixHasLocationSmartAlbum;
 

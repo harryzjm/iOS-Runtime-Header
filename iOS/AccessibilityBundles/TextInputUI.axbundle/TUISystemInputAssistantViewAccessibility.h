@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)shouldGroupAccessibilityChildren;
 - (void)_didTapExpandButton:(id)arg1;
 - (void)setShowsExpandableButtonBarItems:(_Bool)arg1;
 - (id)_accessibilityScannerGroupElements;

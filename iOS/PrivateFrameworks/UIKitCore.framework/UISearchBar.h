@@ -5,35 +5,43 @@
 //
 
 #import <UIKitCore/UIBarPositioning-Protocol.h>
+#import <UIKitCore/UIScribbleInteractionDelegate-Protocol.h>
 #import <UIKitCore/UITextInputTraits-Protocol.h>
 #import <UIKitCore/UITextInputTraits_Private-Protocol.h>
 #import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 #import <UIKitCore/_UINavigationBarAugmentedTitleView-Protocol.h>
 #import <UIKitCore/_UISearchBarVisualProvidingDelegate-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString, UIButton, UIColor, UIImage, UIInputContextHistory, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputPasswordRules, UITextInputTraits, UIView, _UINavigationControllerPalette;
-@protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private, _UISearchBarVisualProviding;
+@class NSArray, NSIndexSet, NSString, UIButton, UIColor, UIImage, UIInputContextHistory, UISearchBarTextField, UISearchController, UISearchTextField, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputPasswordRules, UITextInputTraits, UIView, _UINavigationControllerPalette;
+@protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private, _UISearchBarSearchContainerLayoutCustomizationDelegate, _UISearchBarVisualProviding;
 
-@interface UISearchBar <_UISearchBarVisualProvidingDelegate, UITextInputTraits_Private, _UIBarPositioningInternal, _UINavigationBarAugmentedTitleView, UIBarPositioning, UITextInputTraits>
+@interface UISearchBar <_UISearchBarVisualProvidingDelegate, UIScribbleInteractionDelegate, UITextInputTraits_Private, _UIBarPositioningInternal, _UINavigationBarAugmentedTitleView, UIBarPositioning, UITextInputTraits>
 {
     id <UISearchBarDelegate><UISearchBarDelegate_Private> _delegate;
     UITapGestureRecognizer *_tapToActivateGestureRecognizer;
     UITextInputTraits *_textInputTraits;
+    _Bool _didAddScribbleInteraction;
+    _Bool _forceLegacyVisual;
+    _Bool __supportsDynamicType;
     _Bool __forceCenteredPlaceholderLayout;
     _Bool __transplanting;
     UIView *_inputAccessoryView;
     id <_UISearchBarVisualProviding> _visualProvider;
+    id <_UISearchBarSearchContainerLayoutCustomizationDelegate> _searchFieldContainerLayoutCustomizationDelegate;
+    Class _classForSearchTextField;
     UISearchController *__searchController;
 }
 
 + (void)_initializeForIdiom:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setTransplanting:) _Bool _transplanting; // @synthesize _transplanting=__transplanting;
 @property(nonatomic, setter=_setSearchController:) UISearchController *_searchController; // @synthesize _searchController=__searchController;
 @property(nonatomic) _Bool _forceCenteredPlaceholderLayout; // @synthesize _forceCenteredPlaceholderLayout=__forceCenteredPlaceholderLayout;
+@property(nonatomic, setter=_setSupportsDynamicType:) _Bool _supportsDynamicType; // @synthesize _supportsDynamicType=__supportsDynamicType;
+@property(nonatomic, setter=_setSearchFieldContainerLayoutCustomizationDelegate:) __weak id <_UISearchBarSearchContainerLayoutCustomizationDelegate> _searchFieldContainerLayoutCustomizationDelegate; // @synthesize _searchFieldContainerLayoutCustomizationDelegate;
 @property(readonly, nonatomic) id <_UISearchBarVisualProviding> _visualProvider; // @synthesize _visualProvider;
 @property(retain, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
 @property(nonatomic) __weak id <UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_uiktest_placeholderLabelColor;
 - (void)_setCancelButtonWantsLetterpress;
 - (_Bool)_shouldUseNavigationBarHeight;
@@ -52,6 +60,7 @@
 - (void)setCenterPlaceholder:(_Bool)arg1;
 - (id)_presentationBackgroundBlurEffectForTraitCollection:(id)arg1;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 - (unsigned long long)_backdropStyle;
 - (void)_setBackdropStyle:(unsigned long long)arg1;
 @property(nonatomic) unsigned long long searchBarStyle;
@@ -137,6 +146,7 @@
 - (void)_animateTransitionToSearchLayoutState:(long long)arg1;
 - (void)_prepareForTransitionToSearchLayoutState:(long long)arg1;
 - (void)_driveTransitionToSearchLayoutState:(long long)arg1;
+- (id)_traitCollectionOverridesForNavigationBarTraitCollection:(id)arg1;
 - (void)_navigationBarTraitCollectionDidChangeTo:(id)arg1 from:(id)arg2;
 - (void)_navigationBarTransitionCompleted:(long long)arg1 willBeDisplayed:(_Bool)arg2;
 - (void)_performNavigationBarTransition:(long long)arg1 willBeDisplayed:(_Bool)arg2;
@@ -175,6 +185,7 @@
 - (_Bool)_wouldCombineLandscapeBarsForSize:(struct CGSize)arg1;
 - (_Bool)_shouldCombineLandscapeBarsForOrientation:(long long)arg1;
 - (_Bool)_shouldCombineLandscapeBars;
+@property(readonly, nonatomic) long long _expectedInterfaceOrientation;
 @property(nonatomic, setter=_setAllowsInlineScopeBar:) _Bool _allowsInlineScopeBar;
 @property(nonatomic, getter=_isHostedByNavigationBar, setter=_setHostedByNavigationBar:) _Bool _hostedByNavigationBar;
 - (void)_resetIfNecessaryForNavigationBarHosting:(_Bool)arg1;
@@ -195,7 +206,8 @@
 @property(copy, nonatomic) NSString *placeholder;
 @property(copy, nonatomic) NSString *prompt;
 @property(copy, nonatomic) NSString *text;
-- (id)searchTextField;
+@property(readonly, nonatomic) UISearchTextField *searchTextField;
+@property(retain, nonatomic, setter=_setClassForSearchTextField:) Class _classForSearchTextField; // @synthesize _classForSearchTextField;
 @property(nonatomic, getter=isTranslucent) _Bool translucent;
 @property(nonatomic) long long barStyle;
 - (void)didMoveToSuperview;
@@ -205,6 +217,8 @@
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
 - (id)_scopeBar;
+- (void)_didUpdateEffectivelySupportsDynamicType;
+@property(readonly, nonatomic) _Bool _effectivelySupportsDynamicType;
 @property(readonly, nonatomic, getter=_searchBarTextField) UISearchBarTextField *searchBarTextField;
 - (id)searchField;
 - (id)_cancelButtonText;
@@ -217,6 +231,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, setter=_setAdditionalPaddingForCancelButtonAtLeadingEdge:) double _additionalPaddingForCancelButtonAtLeadingEdge;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
 @property(readonly, copy) NSString *description;
@@ -270,6 +285,12 @@
 - (_Bool)_isInBarButNotHosted;
 - (void)setPretendsIsInBar:(_Bool)arg1;
 - (_Bool)pretendsIsInBar;
+- (void)_setHelperPlaceholderHidden:(_Bool)arg1;
+- (void)_setHelperPlaceholderOverride:(id)arg1;
+- (void)_setHelperPlaceholder:(id)arg1;
+- (_Bool)_showsHelperPlaceholder;
+@property(nonatomic, setter=_setForceLegacyVisual:) _Bool _forceLegacyVisual;
+- (_Bool)scribbleInteractionShouldDelayFocus:(id)arg1;
 - (id)_selectedTokens;
 - (void)_setTokenBackgroundColor:(id)arg1;
 - (void)_replaceTextInRange:(struct _NSRange)arg1 withToken:(id)arg2;
@@ -287,6 +308,7 @@
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
@@ -321,6 +343,7 @@
 @property(nonatomic) _Bool learnsCorrections;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;

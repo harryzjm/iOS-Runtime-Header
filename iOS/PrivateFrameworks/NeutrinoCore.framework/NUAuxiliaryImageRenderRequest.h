@@ -10,6 +10,7 @@
 }
 
 @property long long auxiliaryImageType; // @synthesize auxiliaryImageType=_auxiliaryImageType;
+- (id)submitSynchronous:(out id *)arg1;
 - (void)submit:(CDUnknownBlockType)arg1;
 - (id)newRenderJob;
 - (long long)mediaComponentType;

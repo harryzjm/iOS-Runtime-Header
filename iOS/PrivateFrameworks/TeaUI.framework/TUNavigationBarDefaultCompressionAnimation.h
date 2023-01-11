@@ -13,6 +13,7 @@
 @interface TUNavigationBarDefaultCompressionAnimation : NSObject <TUBarCompressionAnimating>
 {
     _Bool shouldCompressAtTop;
+    _Bool shouldCloseGapOnScroll;
     _Bool _hideTitleOnTop;
     _Bool _compressTitleView;
     double topOffset;
@@ -23,6 +24,7 @@
     TUAnimationFloatFunction *_translateFunction;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool compressTitleView; // @synthesize compressTitleView=_compressTitleView;
 @property(retain, nonatomic) TUAnimationFloatFunction *translateFunction; // @synthesize translateFunction=_translateFunction;
 @property(retain, nonatomic) TUAnimationFloatFunction *scaleFunction; // @synthesize scaleFunction=_scaleFunction;
@@ -31,10 +33,10 @@
 @property(retain, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
 @property(nonatomic) _Bool hideTitleOnTop; // @synthesize hideTitleOnTop=_hideTitleOnTop;
 @property(nonatomic) double topOffset; // @synthesize topOffset;
-- (void).cxx_destruct;
 - (id)fetchRegularTitleView;
 - (id)fetchCustomTitleView;
 - (void)reloadWithTraitCollection:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldCloseGapOnScroll; // @synthesize shouldCloseGapOnScroll;
 @property(readonly, nonatomic) _Bool shouldCompressAtTop; // @synthesize shouldCompressAtTop;
 - (void)scrollViewIsAtTop:(_Bool)arg1;
 - (_Bool)animationShouldBeginForScrollView:(id)arg1 currentlyFullyCompressed:(_Bool)arg2;

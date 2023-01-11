@@ -28,9 +28,9 @@ __attribute__((visibility("hidden")))
     PKPrinter *_printer;
 }
 
+- (void).cxx_destruct;
 @property _Bool userSelectedPrinter; // @synthesize userSelectedPrinter=_userSelectedPrinter;
 @property(retain, nonatomic) PKPrinter *printer; // @synthesize printer=_printer;
-- (void).cxx_destruct;
 - (_Bool)shouldShowPrinter:(id)arg1;
 - (_Bool)filtersPrinters;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)presentPrinterPickerPanelFromBarButtonItem:(id)arg1 animated:(_Bool)arg2;
 - (void)presentPrinterPickerPanelFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(_Bool)arg3;
-- (void)presentPrinterPickerPanelAnimated:(_Bool)arg1;
+- (void)presentPrinterPickerPanelAnimated:(_Bool)arg1 hostingScene:(id)arg2;
 - (void)_keyWindowWillRotate:(id)arg1;
 - (void)_presentWindow;
 - (void)_presentInParentAnimated:(_Bool)arg1;

@@ -17,7 +17,7 @@
 - (id)_valueDescription;
 - (_Bool)_shouldNotifyOnInsert;
 - (id)_validateSample;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 @property(readonly) unsigned long long count;
 - (void)_setCount:(unsigned long long)arg1;
 

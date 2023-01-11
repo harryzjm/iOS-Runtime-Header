@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, PLFrequentLocationManager, PLLocalCreationDateCreator;
+@class NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, PLFrequentLocationManager, PLLocalCreationDateCreator, PLMomentGenerationThrottle, PLPhotoLibraryBundle;
 @protocol OS_dispatch_queue, PLMomentGenerationDataManagement><PLHighlightItemModelReader;
 
 @interface PLMomentGeneration : NSObject
 {
-    _Bool _isGenerationPassInProgress;
     unsigned long long _inProgressCount;
     NSMutableOrderedSet *_pendingInsertsAndUpdates;
     NSMutableDictionary *_pendingDeletes;
@@ -21,12 +20,14 @@
     NSObject<OS_dispatch_queue> *_incrementalGenerationStateQueue;
     PLFrequentLocationManager *_frequentLocationManager;
     PLLocalCreationDateCreator *_localCreationDateCreator;
+    PLMomentGenerationThrottle *_incrementalMomentGenThrottle;
+    PLPhotoLibraryBundle *_libraryBundle;
     id <PLMomentGenerationDataManagement><PLHighlightItemModelReader> _momentGenerationDataManager;
 }
 
 + (id)dateIntervalsAroundSortedDates:(id)arg1 minimumIntervalDuration:(double)arg2;
-@property(readonly, nonatomic) __weak id <PLMomentGenerationDataManagement><PLHighlightItemModelReader> momentGenerationDataManager; // @synthesize momentGenerationDataManager=_momentGenerationDataManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <PLMomentGenerationDataManagement><PLHighlightItemModelReader> momentGenerationDataManager; // @synthesize momentGenerationDataManager=_momentGenerationDataManager;
 - (void)validateLibraryWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)allMomentsMetadataWriteToFile:(id)arg1;
 - (id)_detailsForMoment:(id)arg1;
@@ -53,9 +54,12 @@
 - (void)saveChangesForAssetInsertsAndUpdates:(id)arg1 assetDeletes:(id)arg2 assetUpdatesForHighlights:(id)arg3 momentUpdatesForHighlights:(id)arg4;
 - (_Bool)_isAsset:(id)arg1 identicalToAssetForMoments:(id)arg2;
 - (id)_newPublicGlobalUUIDsToAssetsMappingWithAssets:(id)arg1;
+- (void)_runIncrementalMomentGenerationIfItemsArePendingWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_hasWorkWorkRemainingWithCompletionBlocks:(id *)arg1;
 - (void)_updateIncrementalMomentGeneration;
 - (_Bool)isGenerationPassInProgress;
-- (id)initWithMomentGenerationDataManager:(id)arg1;
+- (id)initWithMomentGenerationDataManager:(id)arg1 bundle:(id)arg2;
+- (_Bool)regenerateMonthHighlightTitlesWithManager:(id)arg1 error:(id *)arg2;
 - (_Bool)rebuildAllMomentsWithManager:(id)arg1 error:(id *)arg2;
 
 @end

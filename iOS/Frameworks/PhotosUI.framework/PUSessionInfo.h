@@ -8,47 +8,62 @@
 
 #import <PhotosUI/PUPhotoSelectionManagerChangeObserver-Protocol.h>
 
-@class NSOrderedSet, NSPointerArray, NSString, PHAssetCollection, PUPhotoSelectionManager;
-@protocol PLAlbumProtocol;
+@class NSOrderedSet, NSPointerArray, NSPredicate, NSString, PHAssetCollection, PUPhotoSelectionManager, PXLoadingStatusManager, PXSelectionCoordinator;
+@protocol PLAlbumProtocol, PXPhotosViewDelegate;
 
 @interface PUSessionInfo : NSObject <PUPhotoSelectionManagerChangeObserver>
 {
     NSPointerArray *_observers;
-    _Bool _selectingAssets;
     _Bool _selectingTargetAlbum;
+    _Bool _allowsMultipleSelection;
     _Bool _enforcesSelectionLimitByDelesectingOtherAssets;
     _Bool _showsFileSizePicker;
+    _Bool _isForAssetPicker;
+    _Bool _isLimitedLibraryPicker;
     long long _status;
     PUPhotoSelectionManager *_photoSelectionManager;
     PHAssetCollection *_sourceAlbum;
     NSOrderedSet *_transferredAssets;
-    struct NSObject *_targetAlbum;
+    NSObject<PLAlbumProtocol> *_targetAlbum;
     NSString *_targetAlbumName;
+    NSPredicate *_assetsFilterPredicate;
+    unsigned long long _assetTypesToInclude;
     NSString *_localizedPrompt;
     long long _promptLocation;
     CDUnknownBlockType _bannerGenerator;
     unsigned long long _selectionLimit;
+    id <PXPhotosViewDelegate> _photosViewDelegate;
+    PXLoadingStatusManager *_loadingStatusManager;
+    PXSelectionCoordinator *_selectionCoordinator;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PXSelectionCoordinator *selectionCoordinator; // @synthesize selectionCoordinator=_selectionCoordinator;
+@property(retain, nonatomic) PXLoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
+@property(nonatomic) __weak id <PXPhotosViewDelegate> photosViewDelegate; // @synthesize photosViewDelegate=_photosViewDelegate;
+@property(readonly, nonatomic) _Bool isLimitedLibraryPicker; // @synthesize isLimitedLibraryPicker=_isLimitedLibraryPicker;
+@property(readonly, nonatomic) _Bool isForAssetPicker; // @synthesize isForAssetPicker=_isForAssetPicker;
 @property(nonatomic) _Bool showsFileSizePicker; // @synthesize showsFileSizePicker=_showsFileSizePicker;
 @property(nonatomic) _Bool enforcesSelectionLimitByDelesectingOtherAssets; // @synthesize enforcesSelectionLimitByDelesectingOtherAssets=_enforcesSelectionLimitByDelesectingOtherAssets;
+@property(nonatomic) _Bool allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
 @property(nonatomic) unsigned long long selectionLimit; // @synthesize selectionLimit=_selectionLimit;
 @property(copy, nonatomic) CDUnknownBlockType bannerGenerator; // @synthesize bannerGenerator=_bannerGenerator;
 @property(nonatomic) long long promptLocation; // @synthesize promptLocation=_promptLocation;
 @property(copy, nonatomic) NSString *localizedPrompt; // @synthesize localizedPrompt=_localizedPrompt;
+@property(nonatomic) unsigned long long assetTypesToInclude; // @synthesize assetTypesToInclude=_assetTypesToInclude;
+@property(retain, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property(retain, nonatomic) NSString *targetAlbumName; // @synthesize targetAlbumName=_targetAlbumName;
 @property(retain, nonatomic) NSObject<PLAlbumProtocol> *targetAlbum; // @synthesize targetAlbum=_targetAlbum;
 @property(copy, nonatomic) NSOrderedSet *transferredAssets; // @synthesize transferredAssets=_transferredAssets;
 @property(retain, nonatomic) PHAssetCollection *sourceAlbum; // @synthesize sourceAlbum=_sourceAlbum;
 @property(retain, nonatomic) PUPhotoSelectionManager *photoSelectionManager; // @synthesize photoSelectionManager=_photoSelectionManager;
 @property(readonly, nonatomic, getter=isSelectingTargetAlbum) _Bool selectingTargetAlbum; // @synthesize selectingTargetAlbum=_selectingTargetAlbum;
-@property(readonly, nonatomic, getter=isSelectingAssets) _Bool selectingAssets; // @synthesize selectingAssets=_selectingAssets;
 @property(nonatomic) long long status; // @synthesize status=_status;
-- (void).cxx_destruct;
 - (void)photoSelectionManagerSelectionDidChange:(id)arg1;
 - (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeSessionInfoObserver:(id)arg1;
 - (void)addSessionInfoObserver:(id)arg1;
+@property(readonly, nonatomic, getter=isSelectingAssets) _Bool selectingAssets;
 - (id)init;
 - (_Bool)hasLocalTargetAlbum;
 - (_Bool)hasTargetAlbum;

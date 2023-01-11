@@ -8,15 +8,20 @@
 
 @interface SearchUICalendarIconImage
 {
+    _Bool _isCurrentDate;
     NSDate *_date;
 }
 
-@property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isCurrentDate; // @synthesize isCurrentDate=_isCurrentDate;
+@property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)loadImage;
+- (void)invalidateAppIcon;
+- (_Bool)shouldInvalidateAppIconForChangedBundleIdentifier:(id)arg1;
 - (id)initWithDate:(id)arg1 variant:(unsigned long long)arg2;
+- (id)initWithCurrentDateAndVariant:(unsigned long long)arg1;
 
 @end
 

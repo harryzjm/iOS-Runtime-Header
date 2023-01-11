@@ -22,6 +22,7 @@
 + (id)gigapascals;
 + (id)newtonsPerMetersSquared;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

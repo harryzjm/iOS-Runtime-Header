@@ -10,11 +10,16 @@
     Class _customCardSectionViewClass;
 }
 
+- (void).cxx_destruct;
 @property(readonly) Class customCardSectionViewClass; // @synthesize customCardSectionViewClass=_customCardSectionViewClass;
 @property(nonatomic) _Bool isInline; // @synthesize isInline=_isInline;
-- (void).cxx_destruct;
 - (id)description;
-- (double)leadingSeparatorImageInset;
+- (id)accessibilityIdentifier;
+- (Class)cardSectionViewClass;
+- (_Bool)supportsCustomUserReportRequestAfforance;
+- (_Bool)prefersNoSeparatorAbove;
+- (_Bool)hasLeadingImage;
+- (_Bool)fillsBackgroundWithContent;
 - (int)separatorStyle;
 - (id)dragURL;
 - (id)dragText;
@@ -22,6 +27,7 @@
 - (id)dragTitle;
 - (_Bool)isDraggable;
 - (_Bool)isTappable;
+- (id)fallbackCardSectionForCompactResult;
 - (id)nextCard;
 - (_Bool)anyInlineCardSectionsHaveNextCards;
 - (Class)cellViewClass;

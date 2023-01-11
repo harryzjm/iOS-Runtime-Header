@@ -14,17 +14,15 @@
 {
     _Bool _isManagedCalendar;
     _Bool _isHolidaySubscribedCalendar;
-    _Bool _didTrySSL;
     int _subCalAccountVersion;
     NSData *_tmpICSData;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *tmpICSData; // @synthesize tmpICSData=_tmpICSData;
-@property(nonatomic) _Bool didTrySSL; // @synthesize didTrySSL=_didTrySSL;
 @property(nonatomic) int subCalAccountVersion; // @synthesize subCalAccountVersion=_subCalAccountVersion;
 @property(nonatomic) _Bool isHolidaySubscribedCalendar; // @synthesize isHolidaySubscribedCalendar=_isHolidaySubscribedCalendar;
 @property(nonatomic) _Bool isManagedCalendar; // @synthesize isManagedCalendar=_isManagedCalendar;
-- (void).cxx_destruct;
 - (void)handleTrustChallenge:(id)arg1 forTask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleTrustChallenge:(id)arg1 forTask:(id)arg2;
 - (_Bool)hasSubscribedCalendarAtURL:(id)arg1;
@@ -32,24 +30,28 @@
 - (id)localizedInvalidPasswordMessage;
 - (id)localizedIdenticalAccountFailureMessage;
 - (void)removeDBSyncData;
-- (_Bool)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
+- (_Bool)accountHasSignificantPropertyChangesWithChangeInfo:(id)arg1;
 - (_Bool)isEqualToAccount:(id)arg1;
 - (void)refreshAllCalendars:(_Bool)arg1;
+@property(nonatomic) _Bool useFTP;
+@property(nonatomic) double refreshInterval;
+@property(nonatomic) _Bool shouldRemoveAttachments;
 @property(nonatomic) _Bool shouldRemoveAlarms;
 @property(retain, nonatomic) NSDictionary *externalRepresentation;
 @property(retain, nonatomic) NSString *syncId;
 - (void)setHost:(id)arg1;
 - (void)upgradeAccountSpecificPropertiesOnAccount:(id)arg1 inStore:(id)arg2 parentAccount:(id)arg3;
 - (_Bool)upgradeAccount;
+@property(nonatomic) _Bool allowInsecureConnection;
 @property(nonatomic) _Bool subscribedURLSanitized;
 - (void)clearTmpICSData;
 - (void)saveTmpICSData;
 - (id)_tmpICSCalendarPath;
-- (void)subCalValidationTask:(id)arg1 finishedWithError:(id)arg2 calendarName:(id)arg3 calendarData:(id)arg4;
+- (void)subCalValidationTask:(id)arg1 downloadProgressedTo:(long long)arg2 outOf:(long long)arg3;
+- (void)subCalValidationTask:(id)arg1 finishedWithError:(id)arg2 calendarName:(id)arg3 document:(id)arg4 calendarData:(id)arg5;
 - (void)quickValidate:(id)arg1;
 - (void)discoverInitialPropertiesWithConsumer:(id)arg1;
 - (void)_checkValidityWithConsumer:(id)arg1 quickValidate:(_Bool)arg2;
-- (void)_checkValidityWithConsumer:(id)arg1 quickValidate:(_Bool)arg2 forceSSL:(_Bool)arg3;
 @property(readonly, nonatomic) DACoreDAVTaskManager *taskManager;
 @property(readonly, nonatomic) NSString *calendarExternalId;
 @property(retain, nonatomic) NSString *calDAVURLString;

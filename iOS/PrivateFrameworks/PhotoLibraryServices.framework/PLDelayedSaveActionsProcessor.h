@@ -7,14 +7,19 @@
 #import <objc/NSObject.h>
 
 @class PLLibraryServicesManager;
+@protocol OS_dispatch_queue;
 
 @interface PLDelayedSaveActionsProcessor : NSObject
 {
     PLLibraryServicesManager *_libraryServicesManager;
+    NSObject<OS_dispatch_queue> *_coreDuetCallback;
 }
 
 - (void).cxx_destruct;
-- (void)_processDelayedAssetsForAnalysis:(id)arg1 photoLibrary:(id)arg2 transaction:(id)arg3;
+- (void)_deleteUUIDs:(id)arg1 fromCoreDuetStreams:(id)arg2 transaction:(id)arg3;
+- (void)_processDelayedMemoriesForDuetDelete:(id)arg1 transaction:(id)arg2;
+- (void)_processDelayedAssetsForDuetDelete:(id)arg1 transaction:(id)arg2;
+- (void)_processDelayedWidgetTimelineReload:(_Bool)arg1 library:(id)arg2 transaction:(id)arg3;
 - (void)_processDelayedAssetsForFileSystemPersistency:(id)arg1 library:(id)arg2 transaction:(id)arg3;
 - (void)_processDelayedAlbumCountsAndDateRangeUpdates:(id)arg1 library:(id)arg2 transaction:(id)arg3;
 - (void)_processDelayedSearchIndexUpdates:(id)arg1 transaction:(id)arg2;

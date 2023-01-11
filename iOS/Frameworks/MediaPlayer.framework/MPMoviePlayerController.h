@@ -6,35 +6,55 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/AVPlayerViewControllerDelegatePrivate-Protocol.h>
 #import <MediaPlayer/MPMediaPlayback-Protocol.h>
 
-@class NSURL, UIView;
+@class AVPlayerViewController, NSString, NSURL, UIView, _MPMoviePlayerProxyView;
 
-@interface MPMoviePlayerController : NSObject <MPMediaPlayback>
+@interface MPMoviePlayerController : NSObject <AVPlayerViewControllerDelegatePrivate, MPMediaPlayback>
 {
-    id _implementation;
+    _MPMoviePlayerProxyView *_proxyView;
+    UIView *_backgroundView;
+    _Bool _useApplicationAudioSession;
+    _Bool _isFullscreen;
+    _Bool _shouldAutoplay;
+    long long _movieSourceType;
+    NSURL *_contentURL;
+    long long _controlStyle;
+    long long _repeatMode;
+    double _initialPlaybackTime;
+    double _endPlaybackTime;
+    AVPlayerViewController *_playerViewController;
 }
 
-+ (void)allInstancesResignActive;
 - (void).cxx_destruct;
-- (_Bool)_isReadyForDisplay;
-@property(readonly, nonatomic) _Bool readyForDisplay;
-- (void)_resignActive;
-@property(nonatomic) float currentPlaybackRate;
-@property(nonatomic) double currentPlaybackTime;
-@property(nonatomic) double endPlaybackTime;
-@property(nonatomic) double initialPlaybackTime;
-@property(readonly, nonatomic) struct CGSize naturalSize;
-@property(readonly, nonatomic) double playableDuration;
-@property(readonly, nonatomic) double duration;
-@property(nonatomic) long long movieSourceType;
-@property(readonly, nonatomic) unsigned long long movieMediaTypes;
-- (void)skipToPreviousItem;
-- (void)skipToBeginning;
-- (void)skipToNextItem;
+@property(readonly, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
+@property(nonatomic) double endPlaybackTime; // @synthesize endPlaybackTime=_endPlaybackTime;
+@property(nonatomic) double initialPlaybackTime; // @synthesize initialPlaybackTime=_initialPlaybackTime;
+@property(nonatomic) _Bool shouldAutoplay; // @synthesize shouldAutoplay=_shouldAutoplay;
+@property(nonatomic) long long repeatMode; // @synthesize repeatMode=_repeatMode;
+@property(nonatomic) long long controlStyle; // @synthesize controlStyle=_controlStyle;
+@property(copy, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
+@property(nonatomic) long long movieSourceType; // @synthesize movieSourceType=_movieSourceType;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_playerControllerPlaybackDidEndNotification:(id)arg1;
+- (void)playerViewController:(id)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (void)playerViewController:(id)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (id)_videoViewController;
+- (id)_advertisementView;
+- (void)setUseApplicationAudioSession:(_Bool)arg1;
+- (_Bool)useApplicationAudioSession;
+- (id)errorLog;
+- (id)accessLog;
+- (id)timedMetadata;
+- (void)cancelAllThumbnailImageRequests;
+- (void)requestThumbnailImagesAtTimes:(id)arg1 timeOption:(long long)arg2;
+- (id)thumbnailImageAtTime:(double)arg1 timeOption:(long long)arg2;
 - (void)endSeeking;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
+@property(nonatomic) float currentPlaybackRate;
+@property(nonatomic) double currentPlaybackTime;
 - (void)stop;
 - (void)pause;
 - (void)play;
@@ -42,24 +62,27 @@
 - (void)prepareToPlay;
 @property(readonly, nonatomic, getter=isAirPlayVideoActive) _Bool airPlayVideoActive;
 @property(nonatomic) _Bool allowsAirPlay;
+@property(readonly, nonatomic) struct CGSize naturalSize;
+@property(readonly, nonatomic) double playableDuration;
+@property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) unsigned long long movieMediaTypes;
+@property(readonly, nonatomic) _Bool readyForDisplay;
 @property(nonatomic) long long scalingMode;
 - (void)setFullscreen:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isFullscreen) _Bool fullscreen;
-@property(nonatomic) _Bool shouldAutoplay;
-@property(nonatomic) long long repeatMode;
-@property(nonatomic) long long controlStyle;
 @property(readonly, nonatomic) unsigned long long loadState;
 @property(readonly, nonatomic) long long playbackState;
 @property(readonly, nonatomic) UIView *backgroundView;
 @property(readonly, nonatomic) UIView *view;
-@property(copy, nonatomic) NSURL *contentURL;
-- (void)forwardInvocation:(id)arg1;
-- (id)methodSignatureForSelector:(SEL)arg1;
 - (void)dealloc;
-- (id)init;
-- (id)initWithPlayerItem:(id)arg1;
-- (id)initWithAsset:(id)arg1;
 - (id)initWithContentURL:(id)arg1;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

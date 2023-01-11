@@ -18,7 +18,7 @@
     unsigned long long _pickerMode;
     NSURL *_url;
     NSString *_displayTitle;
-    struct _UIArrayController *_observer;
+    _UIArrayController<_UIDocumentPickerDirectoryObserver> *_observer;
     id _urlObserver;
 }
 
@@ -26,6 +26,7 @@
 + (id)_tagBlipColors;
 + (id)allTags;
 + (id)tagColorsByTag;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id urlObserver; // @synthesize urlObserver=_urlObserver;
 @property(retain, nonatomic) _UIArrayController<_UIDocumentPickerDirectoryObserver> *observer; // @synthesize observer=_observer;
 @property(copy, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
@@ -33,7 +34,6 @@
 @property(nonatomic) unsigned long long pickerMode; // @synthesize pickerMode=_pickerMode;
 @property(copy, nonatomic) NSArray *pickableTypes; // @synthesize pickableTypes=_pickableTypes;
 @property(retain, nonatomic) NSArray *modelObjects; // @synthesize modelObjects=_modelObjects;
-- (void).cxx_destruct;
 - (void)updateObserverForURL:(id)arg1;
 - (_Bool)afterInitialUpdate;
 @property(readonly, copy) NSString *description;
@@ -46,7 +46,7 @@
 - (void)updateSortDescriptors;
 - (void)stopMonitoringChanges;
 - (id)scopes;
-- (struct _UIArrayController *)_createObserver;
+- (id)_createObserver;
 - (void)startMonitoringChanges;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 pickableTypes:(id)arg2 mode:(unsigned long long)arg3;

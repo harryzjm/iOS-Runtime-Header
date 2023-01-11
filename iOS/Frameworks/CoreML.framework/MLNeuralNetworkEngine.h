@@ -10,11 +10,25 @@
 #import <CoreML/MLNeuralNetwork-Protocol.h>
 #import <CoreML/MLRegressor-Protocol.h>
 
-@class MLModelDescription, MLModelInterface, MLModelMetadata, MLProbabilityDictionary, NSArray, NSDictionary, NSObject, NSString;
+@class EspressoProfilingNetworkInfo, MLModelDescription, MLModelInterface, MLModelMetadata, MLNeuralNetworkContainer, MLProbabilityDictionary, MLVersionInfo, NSArray, NSDictionary, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface MLNeuralNetworkEngine <MLNeuralNetwork, MLClassifier, MLRegressor, MLModelSpecificationLoader, MLCompiledModelLoader>
 {
+    struct vector<std::__1::map<std::__1::basic_string<char>, espresso_buffer_t *, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, espresso_buffer_t *>>>, std::__1::allocator<std::__1::map<std::__1::basic_string<char>, espresso_buffer_t *, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, espresso_buffer_t *>>>>> _inputBuffers;
+    struct vector<std::__1::map<std::__1::basic_string<char>, espresso_buffer_t *, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, espresso_buffer_t *>>>, std::__1::allocator<std::__1::map<std::__1::basic_string<char>, espresso_buffer_t *, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, espresso_buffer_t *>>>>> _outputBuffers;
+    struct map<std::__1::basic_string<char>, espresso_simple_image_preprocessing_params_t, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, espresso_simple_image_preprocessing_params_t>>> _params;
+    struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _widths;
+    struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _heights;
+    struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _ks;
+    struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _batches;
+    struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _sequences;
+    struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _ranks;
+    map_7c549560 _optionalInputTypes;
+    struct vector<bool, std::__1::allocator<bool>> _bufferAvailable;
+    struct set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> _flexibleShapesConfigNamesInNet;
+    basic_string_90719d97 _currentConfigurationName;
+    struct map<std::__1::basic_string<char>, bool, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, bool>>> _OutputBlobIsDynamic;
     _Bool _hardwareFallbackDetected;
     _Bool _ndArrayInterpretation;
     _Bool _usingCPU;
@@ -33,32 +47,22 @@
     NSDictionary *_imagePreprocessingParameters;
     NSDictionary *_espressoInputShapes;
     NSDictionary *_espressoInputStrides;
+    MLVersionInfo *_modelVersionInfo;
     unsigned long long _numInputs;
     unsigned long long _numOutputs;
     void *_plan;
     void *_context;
     MLProbabilityDictionary *_probDict;
     NSString *_modelFilePath;
+    NSDictionary *_defaultOptionalValues;
     NSObject<OS_dispatch_semaphore> *_bufferSemaphore;
     NSObject<OS_dispatch_queue> *_espressoQueue;
     NSObject<OS_dispatch_queue> *_predictionsQueue;
     NSObject<OS_dispatch_semaphore> *_submitSemaphore;
-    NSDictionary *_blobNameToRank;
+    NSMutableDictionary *_blobNameToLastPtrFlags;
+    EspressoProfilingNetworkInfo *_espressoProfileInfo;
+    MLNeuralNetworkContainer *_container;
     CDStruct_2bc666a5 _network;
-    vector_d21bac94 _inputBuffers;
-    vector_d21bac94 _outputBuffers;
-    map_bc506073 _params;
-    map_72eb5488 _widths;
-    map_72eb5488 _heights;
-    map_72eb5488 _ks;
-    map_72eb5488 _batches;
-    map_72eb5488 _sequences;
-    map_72eb5488 _ranks;
-    map_7c549560 _optionalInputTypes;
-    vector_553f084a _bufferAvailable;
-    set_0cfa92bf _flexibleShapesConfigNamesInNet;
-    basic_string_23d93216 _currentConfigurationName;
-    map_2ee3570a _OutputBlobIsDynamic;
 }
 
 + (id)neuralNetworkFromContainer:(id)arg1 classScoreVectorName:(id)arg2 classLabels:(id)arg3 error:(id *)arg4;
@@ -66,41 +70,34 @@
 + (id)neuralNetworkFromContainer:(id)arg1 error:(id *)arg2;
 + (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 + (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
-@property(retain, nonatomic) NSDictionary *blobNameToRank; // @synthesize blobNameToRank=_blobNameToRank;
-@property(nonatomic) map_2ee3570a OutputBlobIsDynamic; // @synthesize OutputBlobIsDynamic=_OutputBlobIsDynamic;
-@property basic_string_23d93216 currentConfigurationName; // @synthesize currentConfigurationName=_currentConfigurationName;
-@property set_0cfa92bf flexibleShapesConfigNamesInNet; // @synthesize flexibleShapesConfigNamesInNet=_flexibleShapesConfigNamesInNet;
++ (Class)containerClass;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(nonatomic) __weak MLNeuralNetworkContainer *container; // @synthesize container=_container;
+@property(retain, nonatomic) EspressoProfilingNetworkInfo *espressoProfileInfo; // @synthesize espressoProfileInfo=_espressoProfileInfo;
+@property(readonly, nonatomic) NSMutableDictionary *blobNameToLastPtrFlags; // @synthesize blobNameToLastPtrFlags=_blobNameToLastPtrFlags;
 @property _Bool isANEPathForbidden; // @synthesize isANEPathForbidden=_isANEPathForbidden;
 @property _Bool isGPUPathForbidden; // @synthesize isGPUPathForbidden=_isGPUPathForbidden;
 @property(retain) NSObject<OS_dispatch_semaphore> *submitSemaphore; // @synthesize submitSemaphore=_submitSemaphore;
-@property vector_553f084a bufferAvailable; // @synthesize bufferAvailable=_bufferAvailable;
 @property(retain) NSObject<OS_dispatch_queue> *predictionsQueue; // @synthesize predictionsQueue=_predictionsQueue;
 @property(retain) NSObject<OS_dispatch_queue> *espressoQueue; // @synthesize espressoQueue=_espressoQueue;
 @property(retain) NSObject<OS_dispatch_semaphore> *bufferSemaphore; // @synthesize bufferSemaphore=_bufferSemaphore;
 @property(nonatomic) _Bool hasOptionalInputSequenceConcat; // @synthesize hasOptionalInputSequenceConcat=_hasOptionalInputSequenceConcat;
 @property(nonatomic) _Bool hasBidirectionalLayer; // @synthesize hasBidirectionalLayer=_hasBidirectionalLayer;
-@property(nonatomic) map_7c549560 optionalInputTypes; // @synthesize optionalInputTypes=_optionalInputTypes;
+@property(retain, nonatomic) NSDictionary *defaultOptionalValues; // @synthesize defaultOptionalValues=_defaultOptionalValues;
 @property(retain, nonatomic) NSString *modelFilePath; // @synthesize modelFilePath=_modelFilePath;
 @property(retain, nonatomic) MLProbabilityDictionary *probDict; // @synthesize probDict=_probDict;
-@property(nonatomic) map_72eb5488 ranks; // @synthesize ranks=_ranks;
-@property(nonatomic) map_72eb5488 sequences; // @synthesize sequences=_sequences;
-@property(nonatomic) map_72eb5488 batches; // @synthesize batches=_batches;
-@property(nonatomic) map_72eb5488 ks; // @synthesize ks=_ks;
-@property(nonatomic) map_72eb5488 heights; // @synthesize heights=_heights;
-@property(nonatomic) map_72eb5488 widths; // @synthesize widths=_widths;
 @property(nonatomic) _Bool isEspresoBiasPreprocessingShared; // @synthesize isEspresoBiasPreprocessingShared=_isEspresoBiasPreprocessingShared;
 @property(nonatomic) void *context; // @synthesize context=_context;
 @property(nonatomic) int qos; // @synthesize qos=_qos;
 @property(nonatomic) int engine; // @synthesize engine=_engine;
 @property(nonatomic) int precision; // @synthesize precision=_precision;
-@property(nonatomic) map_bc506073 params; // @synthesize params=_params;
 @property(nonatomic) CDStruct_2bc666a5 network; // @synthesize network=_network;
 @property(nonatomic) void *plan; // @synthesize plan=_plan;
 @property(nonatomic) _Bool usingCPU; // @synthesize usingCPU=_usingCPU;
-@property(nonatomic) vector_d21bac94 outputBuffers; // @synthesize outputBuffers=_outputBuffers;
-@property(nonatomic) vector_d21bac94 inputBuffers; // @synthesize inputBuffers=_inputBuffers;
 @property(readonly, nonatomic) unsigned long long numOutputs; // @synthesize numOutputs=_numOutputs;
 @property(readonly, nonatomic) unsigned long long numInputs; // @synthesize numInputs=_numInputs;
+@property(readonly, nonatomic) MLVersionInfo *modelVersionInfo; // @synthesize modelVersionInfo=_modelVersionInfo;
 @property(nonatomic) _Bool ndArrayInterpretation; // @synthesize ndArrayInterpretation=_ndArrayInterpretation;
 @property(retain, nonatomic) NSDictionary *espressoInputStrides; // @synthesize espressoInputStrides=_espressoInputStrides;
 @property(retain, nonatomic) NSDictionary *espressoInputShapes; // @synthesize espressoInputShapes=_espressoInputShapes;
@@ -110,8 +107,7 @@
 @property(readonly, retain, nonatomic) NSArray *inputLayers; // @synthesize inputLayers=_inputLayers;
 @property(retain, nonatomic) NSString *classScoreVectorName; // @synthesize classScoreVectorName=_classScoreVectorName;
 @property(retain, nonatomic) NSArray *classLabels; // @synthesize classLabels=_classLabels;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+- (id)executionSchedule;
 - (id)parameterValueForKey:(id)arg1 error:(id *)arg2;
 - (void)dumpTestVectorsToPath:(id)arg1;
 - (id)predictionsFromBatch:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -125,9 +121,23 @@
 - (void)dealloc;
 - (void)_deallocContextAndPlan;
 - (struct __CVBuffer *)_pixelBufferFromEbuf:(CDStruct_cf098810 *)arg1 description:(id)arg2 error:(id *)arg3;
-- (id)populateOutputs:(unsigned long long)arg1 error:(id *)arg2;
-- (id)evaluateNoAutoRelease:(id)arg1 error:(id *)arg2;
+- (id)multiArrayFeatureValueFromEbuf:(CDStruct_cf098810 *)arg1 backingMultiArray:(id)arg2 description:(id)arg3 outputName:(id)arg4 error:(id *)arg5;
+- (id)imageFeatureValueFromEbuf:(CDStruct_cf098810 *)arg1 backingCVPixelBuffer:(struct __CVBuffer *)arg2 description:(id)arg3 error:(id *)arg4;
+- (_Bool)copyEbuf:(const CDStruct_cf098810 *)arg1 ofPixelType:(unsigned long long)arg2 toPixelBuffer:(struct __CVBuffer *)arg3 error:(id *)arg4;
+- (id)populateOutputs:(unsigned long long)arg1 outputBackings:(id)arg2 error:(id *)arg3;
+- (_Bool)bindDynamicOutputBuffers:(const map_2ca54a57 *)arg1 error:(id *)arg2;
+- (_Bool)executePlan:(void *)arg1 error:(id *)arg2;
+- (id)evaluateInputs:(id)arg1 bufferIndex:(unsigned long long)arg2 options:(id)arg3 error:(id *)arg4;
+- (id)completeOutputBackings:(id)arg1 automaticOutputBackingMode:(id)arg2 error:(id *)arg3;
+- (void)populateMultiArrayShape:(id *)arg1 strides:(id *)arg2 forEbuf:(CDStruct_cf098810 *)arg3 featureDescription:(id)arg4 ndArrayInterpretation:(_Bool)arg5;
+- (_Bool)updateDynamicOutputBlobIndicatorCacheAndReturnError:(id *)arg1;
+- (id)evaluateInputs:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)unlockCVPixelBuffers:(id)arg1 error:(id *)arg2;
+- (_Bool)bindOutputBuffers:(const map_2ca54a57 *)arg1 outputBackings:(id)arg2 automaticOutputBackingMode:(id)arg3 error:(id *)arg4;
+- (_Bool)tryToSetOutputBacking:(id)arg1 forFeature:(id)arg2 toEbuf:(CDStruct_cf098810 *)arg3 reportPointerFlags:(int *)arg4 error:(id *)arg5;
+- (_Bool)_espressoOutputShapeForFeatureName:(id)arg1 matchesShapeOfMLMultiArray:(id)arg2;
+- (_Bool)_setMultiArrayOutputBacking:(id)arg1 forOutputFeatureName:(id)arg2 toEbuf:(CDStruct_cf098810 *)arg3 error:(id *)arg4;
+- (_Bool)bindInputFeatures:(id)arg1 bufferIndex:(unsigned long long)arg2 allocatedImageData:(vector_fd38efa8 *)arg3 error:(id *)arg4;
 - (_Bool)bindInputsAndOutputs:(id)arg1 allocatedImageData:(vector_fd38efa8 *)arg2 bufferIndex:(unsigned long long)arg3 error:(id *)arg4;
 - (void)releaseBuffer:(unsigned long long)arg1;
 - (unsigned long long)obtainBuffer;
@@ -136,6 +146,7 @@
 - (_Bool)_setupContextAndPlanWithConfiguration:(id)arg1 usingCPU:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)_setupContextAndPlanWithConfiguration:(id)arg1 error:(id *)arg2;
 - (_Bool)_setupContextAndPlanWithForceCPU:(_Bool)arg1 error:(id *)arg2;
+- (int)_espressoDeviceForConfiguration:(id)arg1 error:(id *)arg2;
 - (_Bool)fillInInitialShapeFromEspressoNet:(id *)arg1;
 - (id)initWithContainer:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void)collectParametersFromContainer:(id)arg1 configuration:(id)arg2;
@@ -147,6 +158,7 @@
 - (id)addClassifierInformationToOutput:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)convertPredictionToClassifierResult:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (int)sequenceNamed:(id)arg1;
+- (_Bool)sequenceConcatConsumesOptionalInputNamed:(id)arg1;
 - (_Bool)usingEspressoConfigurations;
 
 // Remaining properties

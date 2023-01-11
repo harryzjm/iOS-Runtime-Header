@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficRegion : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_area;
     NSMutableArray *_boundingBoxs;
     NSMutableArray *_geohashes;
     NSString *_name;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_area:1;
         unsigned int read_boundingBoxs:1;
         unsigned int read_geohashes:1;
         unsigned int read_name:1;
-        unsigned int wrote_area:1;
-        unsigned int wrote_boundingBoxs:1;
-        unsigned int wrote_geohashes:1;
-        unsigned int wrote_name:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,28 +42,27 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)boundingBoxAtIndex:(unsigned long long)arg1;
 - (unsigned long long)boundingBoxsCount;
-- (void)_addNoFlagsBoundingBox:(id)arg1;
 - (void)addBoundingBox:(id)arg1;
 - (void)clearBoundingBoxs;
 @property(retain, nonatomic) NSMutableArray *boundingBoxs;
-- (void)_readBoundingBoxs;
 @property(retain, nonatomic) NSString *area;
 @property(readonly, nonatomic) _Bool hasArea;
-- (void)_readArea;
 - (id)geohashesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)geohashesCount;
-- (void)_addNoFlagsGeohashes:(id)arg1;
 - (void)addGeohashes:(id)arg1;
 - (void)clearGeohashes;
 @property(retain, nonatomic) NSMutableArray *geohashes;
-- (void)_readGeohashes;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

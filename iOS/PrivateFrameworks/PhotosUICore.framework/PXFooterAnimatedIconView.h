@@ -12,6 +12,8 @@
 @interface PXFooterAnimatedIconView : UIView
 {
     unsigned long long _reasonsToPause;
+    struct os_unfair_lock_s _lock;
+    long long _lock_desiredMode;
     NSObject<OS_dispatch_queue> *_queue;
     AVPlayer *_player;
     CDStruct_1b6d18a9 _introStartTime;
@@ -27,13 +29,12 @@
     _Bool _isPlayerPaused;
     AVPlayerItem *_playerItem;
     long long _style;
-    long long _desiredMode;
     AVPlayerLayer *_playerLayer;
 }
 
-@property(retain, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
-@property(nonatomic) long long desiredMode; // @synthesize desiredMode=_desiredMode;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+- (void)_mediaServicesWereReset:(id)arg1;
 - (void)_applicationDidEnterForeground:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -63,6 +64,7 @@
 - (void)_removeReasonToPause:(unsigned long long)arg1;
 - (void)_addReasonToPause:(unsigned long long)arg1;
 - (void)_updateStyle;
+@property long long desiredMode;
 - (void)_windowDidChange;
 - (void)setHidden:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

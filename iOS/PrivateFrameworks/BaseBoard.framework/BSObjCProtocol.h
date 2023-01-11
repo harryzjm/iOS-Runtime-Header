@@ -13,20 +13,17 @@
 
 @interface BSObjCProtocol : NSObject <NSCopying, BSDescriptionProviding>
 {
+    NSArray *_inheritedProtocols;
     NSString *_name;
     Protocol *_protocol;
-    NSArray *_inheritedProtocols;
     NSArray *_methods;
 }
 
-+ (id)_gatherMethodMetadataForProtocol:(id)arg1 required:(_Bool)arg2;
-+ (id)_gatherMethodMetadataForProtocol:(id)arg1;
-+ (id)_gatherAdoptedProtocolsForProtocol:(id)arg1;
 + (id)protocolForProtocol:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *methods; // @synthesize methods=_methods;
 @property(readonly, retain, nonatomic) Protocol *protocol; // @synthesize protocol=_protocol;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -35,12 +32,10 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_unionMethodsIgnoringObjCProtocols:(id)arg1;
 - (id)flattenWithIgnoredInheritedProtocols:(id)arg1;
 - (id)inheritedProtocolForProtocol:(id)arg1;
 - (id)methodForSelector:(SEL)arg1;
 @property(readonly, copy, nonatomic) NSArray *inheritedProtocols;
-- (id)_initWithName:(id)arg1 protocol:(id)arg2 inherited:(id)arg3 methods:(id)arg4;
 - (id)init;
 
 // Remaining properties

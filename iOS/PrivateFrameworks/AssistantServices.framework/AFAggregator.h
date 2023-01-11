@@ -29,9 +29,6 @@
 + (void)logLocalFinalSpeechRecognitionWithDuration:(double)arg1;
 + (void)logLocalSpeechStartedWithDuration:(double)arg1;
 + (void)logLocalRecognitionAssetEvictedForLanguage:(id)arg1;
-+ (void)logDictationEnabledSetTo:(_Bool)arg1 by:(id)arg2;
-+ (void)logAssistantEnabledSetTo:(_Bool)arg1 by:(id)arg2;
-+ (void)_logFeature:(id)arg1 setTo:(_Bool)arg2 by:(id)arg3;
 + (void)logEnabledState:(unsigned long long)arg1;
 + (void)logPingTimeout;
 + (void)logLoadAssistant;

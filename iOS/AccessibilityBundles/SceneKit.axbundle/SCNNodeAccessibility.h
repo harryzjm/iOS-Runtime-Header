@@ -12,6 +12,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityConvertSCNVector3Points:(id)arg1 toNode:(id)arg2;
+- (id)_accessibilitySCNVector3BoundingBoxPoints;
 - (id)accessibilityIdentifier;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)isAccessibilityElement;

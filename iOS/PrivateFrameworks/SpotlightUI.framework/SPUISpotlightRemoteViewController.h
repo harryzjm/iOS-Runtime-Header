@@ -10,13 +10,15 @@
 #import <SpotlightUI/FBProcessWatchdogProviding-Protocol.h>
 #import <SpotlightUI/FBSceneObserver-Protocol.h>
 #import <SpotlightUI/SBUIActiveOrientationObserver-Protocol.h>
+#import <SpotlightUI/SPUISpotlightSceneManagerDelegate-Protocol.h>
 
 @class FBApplicationUpdateScenesTransaction, FBScene, NSMutableArray, NSString, UIView, _UILegibilitySettings;
 @protocol UIScenePresentation, UIScenePresenter;
 
-@interface SPUISpotlightRemoteViewController : UIViewController <SBUIActiveOrientationObserver, FBProcessWatchdogProviding, FBApplicationUpdateScenesTransactionObserver, FBSceneObserver>
+@interface SPUISpotlightRemoteViewController : UIViewController <SBUIActiveOrientationObserver, FBProcessWatchdogProviding, SPUISpotlightSceneManagerDelegate, FBApplicationUpdateScenesTransactionObserver, FBSceneObserver>
 {
     _Bool _crashedWhileForeground;
+    _Bool _prewarmSceneInTheBackground;
     _UILegibilitySettings *_legibilitySettings;
     NSString *_sceneIdentifier;
     FBScene *_scene;
@@ -27,22 +29,24 @@
     NSMutableArray *_sceneEventsQueue;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool prewarmSceneInTheBackground; // @synthesize prewarmSceneInTheBackground=_prewarmSceneInTheBackground;
 @property(retain) NSMutableArray *sceneEventsQueue; // @synthesize sceneEventsQueue=_sceneEventsQueue;
 @property _Bool crashedWhileForeground; // @synthesize crashedWhileForeground=_crashedWhileForeground;
-@property long long currentOrientation; // @synthesize currentOrientation=_currentOrientation;
+@property(nonatomic) long long currentOrientation; // @synthesize currentOrientation=_currentOrientation;
 @property(retain) id <UIScenePresenter> presenter; // @synthesize presenter=_presenter;
 @property(retain) UIView<UIScenePresentation> *hostView; // @synthesize hostView=_hostView;
 @property(retain) FBApplicationUpdateScenesTransaction *transaction; // @synthesize transaction=_transaction;
 @property(retain) FBScene *scene; // @synthesize scene=_scene;
 @property(retain) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-- (void).cxx_destruct;
 - (id)watchdogTerminationRequestForProcess:(id)arg1 error:(id)arg2;
 - (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
+- (_Bool)setSceneFrameOnRotation;
 - (_Bool)_canShowWhileLocked;
 - (void)clearEventQueue;
 - (void)addOrExecuteEventAsNeeded:(CDUnknownBlockType)arg1;
-- (struct CGRect)hostViewRectForRect:(struct CGRect)arg1;
+- (struct CGRect)sceneSettingsFrameFromRect:(struct CGRect)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
@@ -59,6 +63,7 @@
 - (void)updateSafeAreasOnSettings:(id)arg1;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)updateTraitCollection;
+- (void)willLaunchSpotlightInBackground;
 - (id)initWithSceneIdentifier:(id)arg1;
 
 // Remaining properties

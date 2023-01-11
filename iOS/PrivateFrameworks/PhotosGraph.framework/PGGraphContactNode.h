@@ -8,14 +8,26 @@
 
 @interface PGGraphContactNode
 {
+    NSString *_name;
     NSString *_contactIdentifier;
+    NSDate *_birthdayDate;
+    NSDate *_potentialBirthdayDate;
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSDate *potentialBirthdayDate;
-@property(readonly) NSDate *birthdayDate;
-- (unsigned long long)genderHintForGivenName;
-@property(readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property(readonly) NSDate *potentialBirthdayDate; // @synthesize potentialBirthdayDate=_potentialBirthdayDate;
+@property(readonly) NSDate *birthdayDate; // @synthesize birthdayDate=_birthdayDate;
+@property(readonly) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property(readonly) NSString *name; // @synthesize name=_name;
+- (unsigned long long)sexHintForGivenName;
+- (unsigned short)domain;
+- (id)label;
+- (id)description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 @end
 

@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AdPlatforms/ADAttribution_XPC-Protocol.h>
-
-@interface ADAttribution : NSObject <ADAttribution_XPC>
+@interface ADAttribution : NSObject
 {
     _Bool _hasCompletedResponse;
-    int _numRetries;
+    unsigned char _numRetries;
 }
 
 + (id)sharedInstance;
-@property(nonatomic) int numRetries; // @synthesize numRetries=_numRetries;
+@property(nonatomic) unsigned char numRetries; // @synthesize numRetries=_numRetries;
 @property(nonatomic) _Bool hasCompletedResponse; // @synthesize hasCompletedResponse=_hasCompletedResponse;
 - (void)setStocksAdEnabled:(_Bool)arg1;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;

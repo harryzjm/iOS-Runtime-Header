@@ -8,8 +8,8 @@
 
 #import <Navigation/MNNavigationServiceProxy-Protocol.h>
 
-@class MNSettings, NSHashTable, NSMutableArray, NSString, NSXPCConnection;
-@protocol MNNavigationServiceClientInterface;
+@class MNSettings, MNStartNavigationDetails, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
+@protocol MNNavigationServiceClientInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationServiceRemoteProxy : NSObject <MNNavigationServiceProxy>
@@ -17,32 +17,34 @@ __attribute__((visibility("hidden")))
     _Bool _applicationActive;
     NSXPCConnection *_connection;
     MNSettings *_settings;
+    geo_isolater *_clientsLock;
     NSHashTable *_clients;
+    MNStartNavigationDetails *_startNavigationDetails;
     NSMutableArray *_interruptionDates;
     _Bool _isReconnecting;
     CDUnknownBlockType _predictionHandler;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     long long _sandboxHandle;
     id <MNNavigationServiceClientInterface> _delegate;
 }
 
-@property(nonatomic) __weak id <MNNavigationServiceClientInterface> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MNNavigationServiceClientInterface> delegate; // @synthesize delegate=_delegate;
 - (void)navigationServiceProxy:(id)arg1 didUpdateNavigationDetails:(id)arg2;
 - (void)navigationServiceProxy:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)resumeRealtimeUpdatesForSubscriber:(id)arg1;
 - (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
 - (void)checkinForNavigationService:(CDUnknownBlockType)arg1;
-- (void)updateGuidanceWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
 - (void)recordPedestrianTracePath:(id)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(id)arg1;
 - (void)setTracePosition:(double)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTraceIsPlaying:(_Bool)arg1;
-- (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlert:(id)arg2;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
 - (void)setGuidancePromptsEnabled:(_Bool)arg1;
@@ -68,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_releaseSandboxExtension;
 - (void)_consumeSandboxExtension:(char *)arg1;
 - (id)_remoteObjectProxy;
+- (void)_startNavigationWithDetails:(id)arg1;
 - (void)_closeConnection;
 - (_Bool)_shouldReconnectWithInterruptionOnDate:(id)arg1;
 - (void)_restoreIdleConnection;
@@ -82,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)closeForClient:(id)arg1;
 - (void)openForClient:(id)arg1;
 - (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

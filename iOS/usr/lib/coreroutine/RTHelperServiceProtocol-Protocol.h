@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOMapItemStorage, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID, RTLocation, RTMapServiceOptions;
+@class GEOMapItemStorage, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID, RTLocation, RTMapItem, RTMapServiceOptions;
 
 @protocol RTHelperServiceProtocol
+- (void)fetchCountryAndSubdivisionCodesFromLocation:(RTLocation *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchPostalAddressForMapItem:(RTMapItem *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(CNPostalAddress *, NSError *))arg3;
 - (void)fetchMapItemsFromAddressDictionary:(NSDictionary *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchMapItemsFromAddressString:(NSString *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchMapItemsFromLocations:(NSArray *)arg1 accessPoints:(NSArray *)arg2 startDate:(NSDate *)arg3 endDate:(NSDate *)arg4 options:(RTMapServiceOptions *)arg5 handler:(void (^)(NSArray *, NSError *))arg6;

@@ -15,6 +15,7 @@
     long long _weekNumber;
 }
 
++ (long long)icsWeekDayFromDayOfTheWeek:(long long)arg1;
 + (id)dayOfWeek:(long long)arg1 weekNumber:(long long)arg2;
 + (id)dayOfWeek:(long long)arg1;
 + (_Bool)supportsSecureCoding;

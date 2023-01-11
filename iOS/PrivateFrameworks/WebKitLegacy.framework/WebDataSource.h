@@ -44,9 +44,9 @@
 - (id)_responseMIMEType;
 - (void)_addSubframeArchives:(id)arg1;
 - (id)_mainDocumentError;
-@property(nonatomic, setter=_setQuickLookPreviewLoaderClient:) struct PreviewLoaderClient *_quickLookPreviewLoaderClient;
+@property(nonatomic, setter=_setQuickLookPreviewLoaderClient:) struct LegacyPreviewLoaderClient *_quickLookPreviewLoaderClient;
 - (id)_initWithDocumentLoader:(Ref_2c3922bd *)arg1;
-- (struct DocumentLoader *)_documentLoader;
+- (NakedPtr_2c503e7f)_documentLoader;
 - (void)_makeRepresentation;
 - (_Bool)_isDocumentHTML;
 - (id)_webView;

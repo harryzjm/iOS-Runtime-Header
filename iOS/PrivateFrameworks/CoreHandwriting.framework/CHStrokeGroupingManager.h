@@ -15,10 +15,13 @@
     id <CHStrokeProvider> _strokeProvider;
     CHRecognitionSessionResult *_sessionLastResult;
     NSArray *_locales;
+    NSArray *_textInputTargets;
     NSDictionary *_groupingStrategiesByIdentifier;
 }
 
++ (_Bool)_isGroupableNonTextForStrokeClassification:(long long)arg1;
 @property(readonly, retain, nonatomic) NSDictionary *groupingStrategiesByIdentifier; // @synthesize groupingStrategiesByIdentifier=_groupingStrategiesByIdentifier;
+@property(readonly, retain, nonatomic) NSArray *textInputTargets; // @synthesize textInputTargets=_textInputTargets;
 @property(readonly, nonatomic) _Bool isInlineContinuousMode; // @synthesize isInlineContinuousMode=_isInlineContinuousMode;
 @property(readonly, retain, nonatomic) NSArray *locales; // @synthesize locales=_locales;
 @property(readonly, retain, nonatomic) CHRecognitionSessionResult *sessionLastResult; // @synthesize sessionLastResult=_sessionLastResult;
@@ -27,6 +30,7 @@
 - (id)_simpleDrawingForStrokeGroup:(id)arg1 originalDrawing:(id *)arg2 orderedStrokeIDs:(id *)arg3;
 - (id)recognizableDrawingForStrokeGroup:(id)arg1 translationVector:(struct CGVector)arg2 originalDrawing:(id *)arg3 orderedStrokesIDs:(id *)arg4 rescalingFactor:(double *)arg5;
 - (id)_greedyCombinationOfGroupingResults:(id)arg1 stableStrokeIdentifiers:(id)arg2 withCancellationBlock:(CDUnknownBlockType)arg3;
+- (id)_groupsFromClusterResult:(id)arg1 strokes:(id)arg2 strokeClassificationsByStrokeIdentifier:(id)arg3;
 - (id)updatedGroupingResultByAddingStrokes:(id)arg1 removingStrokeIdentifiers:(id)arg2 orderedStrokeIdentifiers:(id)arg3 strokeClassificationResult:(id)arg4 cancellationBlock:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)initWithStrokeProvider:(id)arg1 sessionLastResult:(id)arg2 locales:(id)arg3 isInlineContinuousMode:(_Bool)arg4 inlineContinuousModeTargets:(id)arg5;

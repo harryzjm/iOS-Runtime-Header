@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString, TSTCell;
+@class MISSING_TYPE, NSObject, NSString, TSTCell;
 
 #pragma mark Function Pointers and Blocks
 
@@ -179,10 +179,6 @@ struct Info {
     struct __CFString *_field8;
 };
 
-struct NSObject {
-    Class _field1;
-};
-
 struct ObjcSharedPtr<NSString> {
     id _field1;
 };
@@ -226,8 +222,6 @@ struct Spec {
     struct vector<EQKit::OpticalKern::Spec::Entry, std::__1::allocator<EQKit::OpticalKern::Spec::Entry>> _field1;
     unsigned int _field2;
 };
-
-struct TSDBrushVertexData;
 
 struct TSTCellStorage {
     struct {
@@ -601,6 +595,8 @@ struct TSWPLineFragment {
     double _field33;
     id _field34;
     struct CGColor *_field35;
+    double _field36;
+    unsigned short _field37;
 };
 
 struct TSWPLineFragmentArray;
@@ -774,13 +770,6 @@ struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct __wrap_iter<double *> {
     double *_field1;
 };
@@ -852,7 +841,9 @@ struct array<unsigned char, 20> {
 };
 
 struct atomic<int> {
-    _Atomic int __a_;
+    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
+    } __a_;
 };
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
@@ -860,16 +851,15 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -1725,10 +1715,10 @@ struct vector<EQKitTypes::Crossout::Enum, std::__1::allocator<EQKitTypes::Crosso
 };
 
 struct vector<TSDBrushVertexData, std::__1::allocator<TSDBrushVertexData>> {
-    struct TSDBrushVertexData *_field1;
-    struct TSDBrushVertexData *_field2;
+    CDStruct_183601bc *_field1;
+    CDStruct_183601bc *_field2;
     struct __compressed_pair<TSDBrushVertexData *, std::__1::allocator<TSDBrushVertexData>> {
-        struct TSDBrushVertexData *_field1;
+        CDStruct_183601bc *_field1;
     } _field3;
 };
 
@@ -1877,10 +1867,10 @@ struct vector<id<EQKitLayoutNode>, std::__1::allocator<id<EQKitLayoutNode>>> {
 };
 
 struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    basic_string_a1f69cfb *_field1;
-    basic_string_a1f69cfb *_field2;
+    basic_string_7c0a1c0b *_field1;
+    basic_string_7c0a1c0b *_field2;
     struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        basic_string_a1f69cfb *_field1;
+        basic_string_7c0a1c0b *_field1;
     } _field3;
 };
 
@@ -1931,6 +1921,12 @@ typedef struct {
     id _field1;
     id _field2;
 } CDStruct_a70f6672;
+
+typedef struct {
+    id _field1;
+    unsigned long long _field2;
+    double _field3;
+} CDStruct_45a6b6f8;
 
 typedef struct {
     _Bool _field1;
@@ -1984,6 +1980,10 @@ typedef struct {
 } CDStruct_0441cfb5;
 
 typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
+
+typedef struct {
     double _field1;
     double _field2;
     double _field3;
@@ -1997,20 +1997,27 @@ typedef struct {
 typedef struct {
     double _field1;
     double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_d2b197d1;
+
+typedef struct {
+    double _field1;
+    double _field2;
 } CDStruct_c3b9c2ee;
 
 typedef struct {
-    float x;
-    float y;
-    float z;
-    float w;
-} CDStruct_f2e236b6;
+    float r;
+    float g;
+    float b;
+    float a;
+} CDStruct_83984b6f;
 
 typedef struct {
-    float x;
-    float y;
-    float z;
-} CDStruct_03942939;
+    float _field1;
+    float _field2;
+    float _field3;
+} CDStruct_869f9c67;
 
 typedef struct {
     float x;
@@ -2227,6 +2234,12 @@ typedef struct {
     unsigned short _field2;
 } CDStruct_d65e47c4;
 
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+} CDStruct_39925896;
+
 typedef struct __wrap_iter<double *> {
     double *_field1;
 } __wrap_iter_8fb6ff7c;
@@ -2240,16 +2253,15 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -2257,7 +2269,7 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
             } _field1;
         } _field1;
     } _field1;
-} basic_string_a1f69cfb;
+} basic_string_7c0a1c0b;
 
 typedef struct set<EQKitTypes::Attributes::Enum, std::__1::less<EQKitTypes::Attributes::Enum>, std::__1::allocator<EQKitTypes::Attributes::Enum>> {
     struct __tree<EQKitTypes::Attributes::Enum, std::__1::less<EQKitTypes::Attributes::Enum>, std::__1::allocator<EQKitTypes::Attributes::Enum>> {
@@ -2310,12 +2322,12 @@ typedef struct vector<EQKitTypes::Crossout::Enum, std::__1::allocator<EQKitTypes
 } vector_e38595b5;
 
 typedef struct vector<TSDBrushVertexData, std::__1::allocator<TSDBrushVertexData>> {
-    struct TSDBrushVertexData *_field1;
-    struct TSDBrushVertexData *_field2;
+    CDStruct_183601bc *_field1;
+    CDStruct_183601bc *_field2;
     struct __compressed_pair<TSDBrushVertexData *, std::__1::allocator<TSDBrushVertexData>> {
-        struct TSDBrushVertexData *_field1;
+        CDStruct_183601bc *_field1;
     } _field3;
-} vector_b5dead7b;
+} vector_8bba9095;
 
 typedef struct vector<TSWPAdornmentLine, std::__1::allocator<TSWPAdornmentLine>> {
     struct TSWPAdornmentLine *_field1;

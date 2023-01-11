@@ -11,8 +11,8 @@
     SAMLResponseElement *_responseElement;
 }
 
-@property(retain, nonatomic) SAMLResponseElement *responseElement; // @synthesize responseElement=_responseElement;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SAMLResponseElement *responseElement; // @synthesize responseElement=_responseElement;
 - (id)authorizationStatusForResource:(id)arg1;
 - (long long)expectedAction;
 - (id)primaryStatusCode;
@@ -20,6 +20,7 @@
 - (_Bool)isValid:(id *)arg1;
 - (_Bool)assertionMeetsConditions:(id *)arg1;
 - (id)authenticationSessionId;
+- (void)setAuthenticationTTL:(id)arg1;
 - (id)authenticationTTL;
 - (_Bool)hasValidAuthentication;
 - (id)userName;

@@ -15,12 +15,12 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *ippAddresses; // @synthesize ippAddresses=_ippAddresses;
 @property(nonatomic) unsigned long long airPrintCount; // @synthesize airPrintCount=_airPrintCount;
-- (void).cxx_destruct;
 - (id)restrictions;
 - (id)payloadDescriptionKeyValueSections;
-- (id)description;
+- (id)verboseDescription;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
 - (id)stubDictionary;

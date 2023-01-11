@@ -11,7 +11,6 @@
 @protocol GEONavigationServerListenerXPCInterface <NSObject>
 - (void)currentRoadNameUpdated:(NSString *)arg1;
 - (void)navigationUpdatedWithVoiceVolumeData:(NSData *)arg1;
-- (void)routeSummaryUpdatedWithTrafficIncidentAlertDetailsData:(NSData *)arg1;
 - (void)routeSummaryUpdatedWithPositionFromDestinationData:(NSData *)arg1;
 - (void)routeSummaryUpdatedWithPositionFromManeuverData:(NSData *)arg1;
 - (void)routeSummaryUpdatedWithPositionFromSignData:(NSData *)arg1;

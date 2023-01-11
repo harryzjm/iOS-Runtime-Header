@@ -8,7 +8,7 @@
 
 #import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
 
-@class HKSourceListDataSource, NSArray, NSString, UIImage, WDProfile;
+@class HKSourceListDataSource, NSArray, UIImage, WDProfile;
 
 __attribute__((visibility("hidden")))
 @interface WDUninstalledAppSourcesViewController : HKTableViewController <HKSourceListDataSourceObserver>
@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
     NSArray *_uninstalledSources;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *uninstalledSources; // @synthesize uninstalledSources=_uninstalledSources;
 @property(retain, nonatomic) HKSourceListDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -31,12 +31,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) UIImage *uninistalledAppImage;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

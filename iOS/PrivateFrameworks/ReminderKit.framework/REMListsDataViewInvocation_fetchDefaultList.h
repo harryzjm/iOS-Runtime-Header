@@ -8,17 +8,14 @@
 
 @interface REMListsDataViewInvocation_fetchDefaultList <NSSecureCoding>
 {
-    _Bool _keepDefaultOnly;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) _Bool keepDefaultOnly; // @synthesize keepDefaultOnly=_keepDefaultOnly;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithKeepDefaultOnly:(_Bool)arg1;
 
 @end
 

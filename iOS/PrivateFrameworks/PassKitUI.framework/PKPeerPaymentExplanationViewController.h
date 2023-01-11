@@ -6,45 +6,33 @@
 
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSelectPassesViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentSetupFlowControllerDataSource-Protocol.h>
 
-@class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentTermsController, PKPeerPaymentWebService, UIImage;
-@protocol PKPaymentSetupViewControllerDelegate;
+@class NSString, PKPeerPaymentSetupFlowController, PKPeerPaymentSetupFlowProvisionConfiguration, UIViewController;
 
-@interface PKPeerPaymentExplanationViewController <PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate, PKExplanationViewControllerDelegate>
+@interface PKPeerPaymentExplanationViewController <PKExplanationViewDelegate, PKExplanationViewControllerDelegate, PKPeerPaymentSetupFlowControllerDataSource>
 {
-    PKPaymentProvisioningController *_provisioningController;
-    PKPeerPaymentCredential *_credential;
-    id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
-    PKPeerPaymentTermsController *_termsController;
-    PKPeerPaymentWebService *_peerPaymentWebService;
-    UIImage *_passSnapShot;
+    unsigned long long _operations;
+    PKPeerPaymentSetupFlowController *_peerPaymentSetupFlowController;
+    UIViewController *_nextViewController;
+    PKPeerPaymentSetupFlowProvisionConfiguration *_configuration;
     _Bool _hidesSetupLater;
-    _Bool _presentedDeviceToDeviceEncryptionFlow;
     _Bool _allowsManualEntry;
 }
 
-@property(nonatomic) _Bool allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 - (void)_showSpinner:(_Bool)arg1;
 - (void)_terminateSetupFlow;
-- (void)_handleNextStep;
-- (struct CGSize)_snapshotSize;
-- (void)_presentNextViewController;
-- (void)_presentAlertControllerForError:(id)arg1;
-- (void)_displayTermsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_presentSetupWillCompleteLaterAlertController;
-- (void)_presentDeviceToDeviceEncryptionFlow;
-- (void)_continuePressed;
-- (void)_addDifferentCard;
 - (id)_bodyText;
-- (void)explanationViewControllerDidSelectCancel:(id)arg1;
-- (void)selectPassesViewController:(id)arg1 didSelectPasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_addDifferentCard;
+- (void)_presentDisplayableError:(id)arg1;
+- (void)_handleNextStep;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
-- (void)setHideSetupLaterButton:(_Bool)arg1;
+- (_Bool)shouldPushTerms;
 - (void)viewDidLoad;
-- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 credential:(id)arg4;
+- (id)initWithProvisoningController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 credential:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

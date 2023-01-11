@@ -22,10 +22,11 @@ __attribute__((visibility("hidden")))
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *asyncShouldPerformSemaphore; // @synthesize asyncShouldPerformSemaphore=_asyncShouldPerformSemaphore;
 @property(nonatomic) _Bool asyncShouldPerformResponse; // @synthesize asyncShouldPerformResponse=_asyncShouldPerformResponse;
-- (void).cxx_destruct;
 - (void)asyncShouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
+- (void)presentCancelConfirmationAlert;
 - (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)didExecuteClearRecentsDataAction;
 - (void)viewDidAppear;
@@ -37,8 +38,10 @@ __attribute__((visibility("hidden")))
 - (void)updateEditing:(_Bool)arg1 doneButtonEnabled:(_Bool)arg2 doneButtonText:(id)arg3;
 - (_Bool)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
 - (void)asyncShouldPerformDefaultActionResponse:(_Bool)arg1;
+- (void)performConfirmedCancel;
 - (void)toggleEditing;
 - (void)editCancel;
+- (void)didChangeToShowTitle:(_Bool)arg1;
 - (void)didChangeToEditMode:(_Bool)arg1;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
 - (id)host;

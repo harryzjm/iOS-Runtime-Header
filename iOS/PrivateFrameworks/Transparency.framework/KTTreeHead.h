@@ -17,14 +17,17 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(copy, nonatomic) NSString *application; // @dynamic application;
+@property(nonatomic) long long consistencyVerified; // @dynamic consistencyVerified;
 @property(retain, nonatomic) NSSet *failures; // @dynamic failures;
+@property(nonatomic) long long inclusionVerified; // @dynamic inclusionVerified;
+@property(nonatomic) _Bool isMapHead; // @dynamic isMapHead;
 @property(nonatomic) long long logBeginTime; // @dynamic logBeginTime;
+@property(retain, nonatomic) NSData *logHeadHash; // @dynamic logHeadHash;
 @property(nonatomic) long long logType; // @dynamic logType;
 @property(nonatomic) double receiptTime; // @dynamic receiptTime;
 @property(nonatomic) long long revision; // @dynamic revision;
-@property(nonatomic) _Bool signatureVerified; // @dynamic signatureVerified;
+@property(nonatomic) long long signatureVerified; // @dynamic signatureVerified;
 @property(retain, nonatomic) NSData *sth; // @dynamic sth;
-@property(nonatomic) long long verificationResult; // @dynamic verificationResult;
 
 @end
 

@@ -5,6 +5,9 @@
 //
 
 @interface (null) (HealthExperience)
-- (void)mergeExternalChanges;
+- (void)cloudSyncObserverStatusUpdated:(id)arg1 status:(id)arg2;
+- (void)cloudSyncObserver:(id)arg1 syncDidStartWithProgress:(id)arg2;
+- (void)cloudSyncObserver:(id)arg1 syncFailedWithError:(id)arg2;
+- (void)cloudSyncObserverSyncCompleted:(id)arg1;
 @end
 

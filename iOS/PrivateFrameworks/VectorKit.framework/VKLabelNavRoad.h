@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 @interface VKLabelNavRoad : NSObject <VKLabelNavFeature>
 {
     shared_ptr_702c344d _tile;
-    CDStruct_a190bee8 *_data;
+    CDStruct_887e071c *_data;
+    struct optional<gss::LineType> _lineType;
     unsigned long long _vertexIndexA;
     unsigned long long _vertexIndexB;
     CDStruct_3b01f0aa *_junctionA;
@@ -37,15 +38,17 @@ __attribute__((visibility("hidden")))
     NSString *_shieldGroup;
     VKLabelNavRoadLabel *_roadSign;
     VKLabelNavRoadLabel *_roadShield;
-    _Bool _isVisibilityCached[3];
-    _Bool _cachedSignVisibility[3];
-    _Bool _cachedShieldVisibility[3];
+    _Bool _isVisibilityCached[8];
+    _Bool _cachedSignVisibility[8];
+    _Bool _cachedShieldVisibility[8];
     _Bool _hasVisibleSigns;
     _Bool _hasVisibleShields;
     _Bool _suppressRoadSignIfShieldPresent;
     _Bool _isPicked;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) const shared_ptr_702c344d *tile; // @synthesize tile=_tile;
 @property(nonatomic) _Bool isPicked; // @synthesize isPicked=_isPicked;
 @property(readonly, nonatomic) _Bool suppressRoadSignIfShieldPresent; // @synthesize suppressRoadSignIfShieldPresent=_suppressRoadSignIfShieldPresent;
@@ -62,8 +65,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isOnRoute; // @synthesize isOnRoute=_isOnRoute;
 @property(nonatomic) Matrix_8746f91e direction; // @synthesize direction=_direction;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isTrafficCameraFeature;
 @property(readonly, nonatomic) _Bool isEtaFeature;
 - (double)length;

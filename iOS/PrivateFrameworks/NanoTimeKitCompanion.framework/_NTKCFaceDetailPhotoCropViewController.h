@@ -22,24 +22,26 @@
     UIBarButtonItem *_cancelButton;
     _Bool _cancelConfirmed;
     _Bool _deleteConfirmed;
+    CDUnknownBlockType _completionHandler;
     unsigned long long _index;
     NTKCompanionCustomPhotosEditor *_editor;
     NTKFace *_face;
     NTKDigitalTimeLabelStyle *_timeStyle;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NTKDigitalTimeLabelStyle *timeStyle; // @synthesize timeStyle=_timeStyle;
 @property(retain, nonatomic) NTKFace *face; // @synthesize face=_face;
 @property(retain, nonatomic) NTKCompanionCustomPhotosEditor *editor; // @synthesize editor=_editor;
 @property(nonatomic) unsigned long long index; // @synthesize index=_index;
-- (void).cxx_destruct;
 - (void)dismissWithSaving:(_Bool)arg1;
 - (void)_donePressed;
 - (void)_deletePressed;
 - (void)_cancelPressed;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 forFace:(id)arg3 timeStyle:(id)arg4;
+- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 forFace:(id)arg3 timeStyle:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

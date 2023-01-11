@@ -10,7 +10,7 @@
 #import <coreroutine/RTPersistenceMetricsDelegate-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSString, RTAccount, RTAccountManager, RTDataProtectionManager, RTDefaultsManager, RTKeychainManager, RTLifeCycleManager, RTPersistenceManager, RTPersistenceResetSyncContext, RTPlatform;
+@class NSString, RTAccount, RTAccountManager, RTDarwinNotificationHelper, RTDataProtectionManager, RTDefaultsManager, RTKeychainManager, RTLifeCycleManager, RTPersistenceManager, RTPersistenceResetSyncContext, RTPlatform;
 @protocol OS_dispatch_queue, OS_os_transaction, RTPersistenceMetricsDelegate;
 
 @interface RTPersistenceDriver : NSObject <RTPersistenceMetricsDelegate, RTPersistenceDelegate, RTPurgable>
@@ -31,8 +31,11 @@
     RTAccount *_currentAccount;
     id <RTPersistenceMetricsDelegate> _metricsDelegate;
     RTPersistenceResetSyncContext *_resetSyncContext;
+    RTDarwinNotificationHelper *_notificationHelper;
 }
 
+- (void).cxx_destruct;
+@property(retain) RTDarwinNotificationHelper *notificationHelper; // @synthesize notificationHelper=_notificationHelper;
 @property(retain) RTPersistenceResetSyncContext *resetSyncContext; // @synthesize resetSyncContext=_resetSyncContext;
 @property __weak id <RTPersistenceMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
 @property(retain) RTAccount *currentAccount; // @synthesize currentAccount=_currentAccount;
@@ -49,11 +52,9 @@
 @property(readonly) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property(readonly) RTDataProtectionManager *dataProtectionManager; // @synthesize dataProtectionManager=_dataProtectionManager;
 @property(readonly) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
-- (void).cxx_destruct;
 - (_Bool)importSourceStore:(id)arg1 sourceCoordinator:(id)arg2 destinationStore:(id)arg3 destinationCoordinator:(id)arg4 managedObjectModel:(id)arg5 configuration:(id)arg6 error:(id *)arg7;
 - (id)prepareForDatabaseRekey:(id *)arg1;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)persistenceStore:(id)arg1 willBeginMirroringWithOptions:(id)arg2;
 - (void)persistenceMigrator:(id)arg1 didFinishMigratingStore:(id)arg2 withModelProvider:(id)arg3;
 - (void)persistenceMigrator:(id)arg1 didStartMigratingStore:(id)arg2 withModelProvider:(id)arg3;
 - (unsigned long long)persistenceDeviceClassForPlatform;
@@ -66,7 +67,6 @@
 - (void)persistenceManagerWillStartResetSync:(id)arg1 userInfo:(id)arg2 context:(id)arg3;
 - (_Bool)persistenceMirroringManagerDidFinishZonePurge:(id)arg1 store:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (void)persistenceManager:(id)arg1 didFinishSetup:(_Bool)arg2;
-- (_Bool)purgeExpiredRecordsFromPersistenceStore:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
 - (_Bool)backupPersistenceStore:(id)arg1 error:(id *)arg2;
 - (void)persistenceStore:(id)arg1 encounteredCriticalError:(id)arg2;
 - (void)persistenceStore:(id)arg1 failedWithError:(id)arg2;
@@ -94,11 +94,15 @@
 - (void)start;
 - (id)initWithPersistenceManager:(id)arg1 dataProtectionManager:(id)arg2 accountManager:(id)arg3 platform:(id)arg4 keychainManager:(id)arg5 defaultsManager:(id)arg6 lifecycleManager:(id)arg7;
 - (id)init;
-- (void)persistenceDriver:(id)arg1 persistenceStore:(id)arg2 willBeginMirroringWithOptions:(id)arg3;
+- (void)onDailyMetricsNotification:(id)arg1;
 - (void)persistenceDriver:(id)arg1 persistenceMigrator:(id)arg2 didFinishMigratingStore:(id)arg3 withModelProvider:(id)arg4;
 - (void)persistenceDriver:(id)arg1 persistenceMigrator:(id)arg2 didStartMigratingStore:(id)arg3 withModelProvider:(id)arg4;
 - (void)persistenceStoreResetSyncWithUserInfo:(id)arg1;
 - (void)persistenceStoreFailedWithError:(id)arg1;
+- (id)cloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 context:(id)arg4 error:(id *)arg5;
+- (id)earliestCloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 context:(id)arg3 error:(id *)arg4;
+- (id)latestCloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 context:(id)arg3 error:(id *)arg4;
+- (unsigned long long)countOfCloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (void)persistenceStore:(id)arg1 didPrepareWithContext:(id)arg2;
 
 // Remaining properties

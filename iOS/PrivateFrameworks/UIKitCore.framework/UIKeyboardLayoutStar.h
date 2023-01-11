@@ -5,15 +5,17 @@
 //
 
 #import <UIKitCore/UIKBEmojiHitTestResponder-Protocol.h>
+#import <UIKitCore/UIKBKeyplaneViewDelegate-Protocol.h>
 #import <UIKitCore/UIKBResizingKeyplaneCoordinatorCoordinatorDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardHandBiasTransitionCoordinatorDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardPinchGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardTypingStyleEstimatorDelegate-Protocol.h>
 
 @class CADisplayLink, NSDate, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSTimer, UIButton, UIDelayedAction, UIGestureKeyboardIntroduction, UIImageView, UIKBBackgroundView, UIKBKeyViewAnimator, UIKBKeyplaneView, UIKBRenderConfig, UIKBResizingKeyplaneCoordinator, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIKeyboardHandBiasTransitionCoordinator, UIKeyboardPinchGestureRecognizer, UIKeyboardSplitTransitionView, UISelectionFeedbackGenerator, UISwipeGestureRecognizer, UIView, _UIKeyboardTypingSpeedLogger;
+@protocol UIKeyboardLayoutStarDelegate, UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardLayoutStar <UIKBEmojiHitTestResponder, UIKeyboardHandBiasTransitionCoordinatorDelegate, UIKBResizingKeyplaneCoordinatorCoordinatorDelegate, UIKeyboardPinchGestureRecognizerDelegate, UIKeyboardTypingStyleEstimatorDelegate>
+@interface UIKeyboardLayoutStar <UIKBEmojiHitTestResponder, UIKeyboardHandBiasTransitionCoordinatorDelegate, UIKBResizingKeyplaneCoordinatorCoordinatorDelegate, UIKeyboardPinchGestureRecognizerDelegate, UIKeyboardTypingStyleEstimatorDelegate, UIKBKeyplaneViewDelegate>
 {
     UIKBTree *_keyboard;
     UIKBTree *_keyplane;
@@ -130,12 +132,15 @@ __attribute__((visibility("hidden")))
     UIView *_keyplaneTransformationAreaView;
     _Bool _externalDictationAndInternationalKeys;
     _Bool _showsPunctuationKeysOnPrimaryKeyplane;
+    _Bool _preventPaddlesForPointerTouches;
     _Bool _muteNextKeyClickSound;
     int playKeyClickSoundOn;
     UIKBRenderConfig *_renderConfig;
     UIView *_modalDisplayView;
     UISelectionFeedbackGenerator *_slideBehaviour;
+    id <UIKeyboardLayoutStarDelegate> _delegate;
     double _lastTwoFingerTapTimestamp;
+    id <UITextCursorAssertion> _blinkAssertion;
 }
 
 + (id)sharedPunctuationCharacterSet;
@@ -145,8 +150,11 @@ __attribute__((visibility("hidden")))
 + (id)keyboardFromFactoryWithName:(id)arg1 screen:(id)arg2;
 + (void)accessibilitySensitivityChanged;
 + (Class)_subclassForScreenTraits:(id)arg1;
+@property(retain, nonatomic) id <UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property(nonatomic) _Bool muteNextKeyClickSound; // @synthesize muteNextKeyClickSound=_muteNextKeyClickSound;
+@property(nonatomic) _Bool preventPaddlesForPointerTouches; // @synthesize preventPaddlesForPointerTouches=_preventPaddlesForPointerTouches;
 @property(nonatomic) double lastTwoFingerTapTimestamp; // @synthesize lastTwoFingerTapTimestamp=_lastTwoFingerTapTimestamp;
+@property(nonatomic) id <UIKeyboardLayoutStarDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UISelectionFeedbackGenerator *slideBehaviour; // @synthesize slideBehaviour=_slideBehaviour;
 @property(retain, nonatomic) UIView *modalDisplayView; // @synthesize modalDisplayView=_modalDisplayView;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
@@ -180,7 +188,7 @@ __attribute__((visibility("hidden")))
 - (id)keyplaneNamed:(id)arg1;
 - (id)keyplaneForKey:(id)arg1;
 - (id)baseKeyForString:(id)arg1;
-- (_Bool)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
+- (_Bool)shouldRetestKey:(id)arg1 slidOffKey:(id)arg2 withKeyplane:(id)arg3;
 - (_Bool)shouldRetestTouchDraggedFromKey:(id)arg1;
 - (void)didRotate;
 - (void)willRotate;
@@ -217,6 +225,7 @@ __attribute__((visibility("hidden")))
 - (void)swipeDetected:(id)arg1;
 - (void)uninstallGestureRecognizers;
 - (void)installGestureRecognizers;
+- (void)_gestureRecognizerFailed:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)touchChanged:(id)arg1 executionContext:(id)arg2;
@@ -256,11 +265,14 @@ __attribute__((visibility("hidden")))
 - (void)completeCommitTouchesPrecedingTouchDownWithKey:(id)arg1 withActions:(unsigned long long)arg2 executionContext:(id)arg3;
 - (void)incrementPunctuationIfNeeded:(id)arg1;
 - (_Bool)shouldCommitPrecedingTouchesForTouchDownWithActions:(unsigned long long)arg1;
-- (void)touchDownWithKey:(id)arg1 atPoint:(struct CGPoint)arg2 executionContext:(id)arg3;
+- (void)touchDownWithKey:(id)arg1 withTouchInfo:(id)arg2 atPoint:(struct CGPoint)arg3 executionContext:(id)arg4;
+- (void)_cleanUpBlinkAssertionIfNecessary;
 - (_Bool)isKeyScriptSwitchKey:(id)arg1;
 - (_Bool)shouldSkipResponseToGlobeKey:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (void)playKeyClickSoundOnUpForKey:(id)arg1;
 - (void)playKeyClickSoundOnDownForKey:(id)arg1;
 - (void)playKeyClickSoundForKey:(id)arg1;
+- (void)playKeyReleaseSoundForKey:(id)arg1;
 - (void)completeHitTestForTouchDown:(id)arg1 executionContext:(id)arg2;
 - (void)touchDown:(id)arg1 executionContext:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
@@ -320,6 +332,7 @@ __attribute__((visibility("hidden")))
 - (void)setHideKeysUnderIndicator:(_Bool)arg1;
 - (_Bool)shouldShowIndicator;
 - (void)showPopupVariantsForKey:(id)arg1;
+- (id)_variantsOfCurrencyKey:(id)arg1 language:(id)arg2;
 - (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
 - (id)_appendingSecondaryStringToVariantsTop:(id)arg1 secondaryString:(id)arg2 withDirection:(id)arg3;
 - (id)_keyplaneVariantsKeyForString:(id)arg1;
@@ -346,6 +359,7 @@ __attribute__((visibility("hidden")))
 - (void)endMultitapForKey:(id)arg1;
 - (void)multitapInterrupted;
 - (_Bool)canMultitap;
+- (id)multitapForwardKeys;
 - (id)multitapCompleteKeys;
 - (id)activeMultitapCompleteKey;
 - (_Bool)hasAccentKey;
@@ -355,6 +369,7 @@ __attribute__((visibility("hidden")))
 - (void)deleteHandwritingStrokesAtIndexes:(id)arg1;
 - (void)clearHandwritingStrokesIfNeededAndNotify:(_Bool)arg1;
 - (id)createKeyEventForStringAction:(id)arg1 forKey:(id)arg2 inputFlags:(int)arg3;
+- (id)createKeyEventForStringAction:(id)arg1 forKey:(id)arg2 touchInfo:(id)arg3 inputFlags:(int)arg4;
 - (id)currentRepresentedStringForDualDisplayKey:(id)arg1;
 - (void)updatePhysicalKeyboardEvent:(id)arg1 withMarkedInput:(id)arg2;
 - (_Bool)isDeadkeyInput:(id)arg1;
@@ -382,21 +397,25 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldUseDefaultShiftStateFromLayout;
 - (void)setToInitialKeyplane;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+- (void)showKeyboardWithInputMode:(id)arg1 renderConfig:(id)arg2 inputTraits:(id)arg3 screenTraits:(id)arg4 splitTraits:(id)arg5;
 - (_Bool)_shouldInheritScreenScaleAsContentScaleFactor;
 - (void)updateCachedKeyplaneKeycaps;
 - (id)cacheTokenForKeyplane:(id)arg1 caseAlternates:(_Bool)arg2;
 - (id)cacheIdentifierForKeyplaneNamed:(id)arg1;
-- (id)emojiKeyManager;
+@property(readonly, nonatomic) UIKeyboardEmojiKeyDisplayController *emojiKeyManager; // @synthesize emojiKeyManager=_emojiKeyManager;
 - (id)keyViewAnimator;
+- (void)updateState:(int)arg1 forKey:(id)arg2;
 - (void)setState:(int)arg1 forKey:(id)arg2;
 - (int)stateForKey:(id)arg1;
 - (void)refreshForDictationAvailablityDidChange;
 - (_Bool)shouldMergeKey:(id)arg1;
 - (id)inputModeToMergeCapsLockKey;
+- (_Bool)canAddRomanSwitchKey;
 - (void)relayoutForWriteboardKey;
 - (void)transitionToModalContinuousPathKeyplane;
 - (void)updateReturnKeysIfNeeded;
 - (void)updateMoreAndInternationalKeys;
+- (void)_transformCarPlayIfNecessary;
 - (void)_transformFloatingKeyboardIfNecessary;
 - (void)_addResizeTransformationIfNecessary;
 - (void)_addExtraControlKeysIfNecessary;
@@ -415,6 +434,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportStylingWithKey:(id)arg1;
 - (int)stateForDictationKey:(id)arg1;
 - (int)stateForCandidateListKey:(id)arg1;
+- (int)stateForMultitapForwardKey:(id)arg1;
 - (int)stateForMultitapReverseKey:(id)arg1;
 - (int)displayTypeHintForShiftKey;
 - (int)displayTypeHintForMoreKey;
@@ -434,7 +454,7 @@ __attribute__((visibility("hidden")))
 - (void)reloadCurrentKeyplane;
 - (_Bool)_allowPaddle;
 - (_Bool)_allowContinuousPathUI;
-- (_Bool)_allowStartingContinuousPathForTouchInfo:(id)arg1;
+- (_Bool)_allowStartingContinuousPathForTouchInfo:(id)arg1 alreadyActiveKeyExisting:(_Bool)arg2;
 - (unsigned long long)keyplaneShiftState;
 - (_Bool)shouldAllowCurrentKeyplaneReload;
 - (_Bool)shouldMergeAssistantBarWithKeyboardLayout;
@@ -462,6 +482,7 @@ __attribute__((visibility("hidden")))
 - (void)willBeginIndirectSelectionGesture:(_Bool)arg1;
 - (void)willBeginIndirectSelectionGesture;
 - (void)setPasscodeOutlineAlpha:(double)arg1;
+- (void)didTriggerDestructiveRenderConfigChange;
 - (void)traitCollectionDidChange;
 - (struct CGImage *)renderedKeyplaneWithToken:(id)arg1 split:(_Bool)arg2;
 - (struct CGImage *)renderedImageWithToken:(id)arg1;
@@ -472,16 +493,20 @@ __attribute__((visibility("hidden")))
 - (void)updateLocalizedKeysForKeyplane:(id)arg1 updateAllKeyplanes:(_Bool)arg2;
 - (void)updateLocalizedKeys:(_Bool)arg1;
 - (void)updateInputModeLocalizedKeysForKeyplane:(id)arg1;
+- (void)updateLocalizedDisplayStringsForKeys:(id)arg1;
 - (void)updateAutolocalizedKeysForKeyplane:(id)arg1;
 - (void)updateLocalizedKeysOnKeyplane:(id)arg1;
 - (void)nextToUseInputModeDidChange:(id)arg1;
 - (id)internationalKeyDisplayStringOnEmojiKeyboard;
 - (void)updateLocalizedDisplayStringOnEmojiInternationalWithKeyplane:(id)arg1 withInputMode:(id)arg2;
 - (_Bool)canProduceString:(id)arg1;
+@property(readonly, nonatomic) _Bool hasActiveKeys;
 - (double)lastTouchDownTimestamp;
 - (double)lastTouchUpTimestamp;
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
+- (id)keyForKeyboardName:(id)arg1 screenTraits:(id)arg2;
 - (void)updateKeyboardForKeyplane:(id)arg1;
+- (struct CGSize)sizeForKeyplane:(id)arg1;
 - (_Bool)allKeyplanesHaveSameHeight;
 - (void)setKeyboardAppearance:(long long)arg1;
 - (int)visualStyleForKeyboardIfSplit:(_Bool)arg1;
@@ -511,6 +536,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)frameForLastKeyWithRepresentedString:(id)arg1;
 - (struct CGRect)frameForKeyWithRepresentedString:(id)arg1;
 - (id)keyWithRepresentedString:(id)arg1;
+- (id)keyplaneView:(id)arg1 containingViewForActiveKey:(id)arg2;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (void)showPopupView:(long long)arg1 withKey:(id)arg2 popupInfo:(id)arg3 force:(_Bool)arg4;
 - (void)setKeyboardDim:(_Bool)arg1;
@@ -527,7 +553,7 @@ __attribute__((visibility("hidden")))
 - (void)populateFlickPopupsForKey:(id)arg1;
 - (id)flickStringForInputKey:(id)arg1 direction:(long long)arg2;
 - (id)flickPopupStringForKey:(id)arg1 withString:(id)arg2;
-- (void)finishContinuousPathView;
+- (void)finishContinuousPathView:(_Bool)arg1;
 - (void)clearContinuousPathView;
 - (void)addContinuousPathPoint:(struct CGPoint)arg1 withTimestamp:(double)arg2;
 - (void)didBeginContinuousPath;

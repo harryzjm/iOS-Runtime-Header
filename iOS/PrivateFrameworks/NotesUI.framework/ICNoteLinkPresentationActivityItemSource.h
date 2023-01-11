@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIImage;
 @protocol ICSearchIndexableNote;
 
 @interface ICNoteLinkPresentationActivityItemSource
 {
     id <ICSearchIndexableNote> _note;
+    UIImage *_thumbnailImage;
 }
 
-@property(retain) id <ICSearchIndexableNote> note; // @synthesize note=_note;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
+@property(retain) id <ICSearchIndexableNote> note; // @synthesize note=_note;
+- (id)iconImage;
 - (id)detail;
 - (id)title;
+- (id)initWithNote:(id)arg1 thumbnailImage:(id)arg2;
 - (id)initWithNote:(id)arg1;
 - (id)init;
 

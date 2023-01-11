@@ -17,13 +17,13 @@
     long long _cellStyle;
 }
 
-@property(nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
 - (void).cxx_destruct;
+@property(nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
 - (_Bool)_shouldInset;
 - (void)traitCollectionDidChangeFromTrait:(id)arg1 toTrait:(id)arg2 inCollectionView:(id)arg3;
 - (void)_updateMessageView:(id)arg1 withItem:(id)arg2;
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;

@@ -8,15 +8,18 @@
 
 #import <HealthToolbox/UITextFieldDelegate-Protocol.h>
 
-@class NSString, UIButton, UIColor, UILabel, UITextField, UIView;
+@class NSArray, NSLayoutConstraint, NSString, UIButton, UIColor, UILabel, UITextField, UIView;
 
-__attribute__((visibility("hidden")))
 @interface WDProfileTableViewCell : UITableViewCell <UITextFieldDelegate>
 {
-    UILabel *_displayNameLabel;
     UIButton *_clearButton;
     UIColor *_normalDisplayValueColor;
     UIColor *_selectedDisplayValueColor;
+    NSLayoutConstraint *_displayValueTrailingConstraint;
+    NSLayoutConstraint *_clearButtonWidthAnchor;
+    NSLayoutConstraint *_displayValueLeadingAnchor;
+    NSArray *_normalSizeConstraints;
+    NSArray *_accessibilitySizeConstraints;
     _Bool _shouldUseSelectedColorForDisplayValue;
     _Bool _shouldDisplayClearButtonDuringEditing;
     NSString *_displayName;
@@ -25,19 +28,21 @@ __attribute__((visibility("hidden")))
     UIView *_inputView;
     UIView *_inputAccessoryView;
     UITextField *_displayValueTextField;
+    UILabel *_displayNameLabel;
 }
 
-+ (double)notEditingRightEdgeMargin;
-+ (double)editingRightEdgeMargin;
++ (double)notEditingTrailingEdgeMargin;
++ (double)editingTrailingEdgeMargin;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *displayNameLabel; // @synthesize displayNameLabel=_displayNameLabel;
 @property(retain, nonatomic) UITextField *displayValueTextField; // @synthesize displayValueTextField=_displayValueTextField;
 @property(retain, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
 @property(retain, nonatomic) UIView *inputView; // @synthesize inputView=_inputView;
 @property(nonatomic) _Bool shouldDisplayClearButtonDuringEditing; // @synthesize shouldDisplayClearButtonDuringEditing=_shouldDisplayClearButtonDuringEditing;
 @property(nonatomic) _Bool shouldUseSelectedColorForDisplayValue; // @synthesize shouldUseSelectedColorForDisplayValue=_shouldUseSelectedColorForDisplayValue;
-@property(retain, nonatomic) NSString *placeholderValue; // @synthesize placeholderValue=_placeholderValue;
-@property(retain, nonatomic) NSString *displayValue; // @synthesize displayValue=_displayValue;
-@property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *placeholderValue; // @synthesize placeholderValue=_placeholderValue;
+@property(copy, nonatomic) NSString *displayValue; // @synthesize displayValue=_displayValue;
+@property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 - (void)_updateClearButtonState;
 - (void)removeClearButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)addClearButtonTarget:(id)arg1 action:(SEL)arg2;
@@ -45,9 +50,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)layoutSubviews;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)_setupConstraintsForContentSize;
+- (void)_setupConstraints;
+- (void)_setupAccessibilitySizeConstraintsWithTrailingConstant:(double)arg1;
+- (void)_setupNonAccessibilitySizeConstraints;
 - (void)_updateForCurrentSizeCategory;
 - (void)_setupUI;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

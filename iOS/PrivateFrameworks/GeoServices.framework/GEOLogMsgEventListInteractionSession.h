@@ -13,17 +13,17 @@
 @interface GEOLogMsgEventListInteractionSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_listResultItems;
     NSString *_searchString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _listType;
     struct {
         unsigned int has_listType:1;
         unsigned int read_listResultItems:1;
         unsigned int read_searchString:1;
-        unsigned int wrote_listResultItems:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_listType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,22 +38,24 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *searchString;
 @property(readonly, nonatomic) _Bool hasSearchString;
-- (void)_readSearchString;
 - (id)listResultItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)listResultItemsCount;
-- (void)_addNoFlagsListResultItem:(id)arg1;
 - (void)addListResultItem:(id)arg1;
 - (void)clearListResultItems;
 @property(retain, nonatomic) NSMutableArray *listResultItems;
-- (void)_readListResultItems;
 - (int)StringAsListType:(id)arg1;
 - (id)listTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasListType;
 @property(nonatomic) int listType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

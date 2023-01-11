@@ -13,12 +13,14 @@
 @interface GEORPCorrectedSearch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDPlaceRequest *_placeRequest;
     GEOPDPlaceResponse *_placeResponse;
     GEOPlaceSearchRequest *_placeSearchRequest;
     GEOPlaceSearchResponse *_placeSearchResponse;
     NSString *_preferredSearchDisplayLocation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _correctedSearchResultIndex;
     unsigned int _originalSearchResultIndex;
     struct {
@@ -29,13 +31,7 @@
         unsigned int read_placeSearchRequest:1;
         unsigned int read_placeSearchResponse:1;
         unsigned int read_preferredSearchDisplayLocation:1;
-        unsigned int wrote_placeRequest:1;
-        unsigned int wrote_placeResponse:1;
-        unsigned int wrote_placeSearchRequest:1;
-        unsigned int wrote_placeSearchResponse:1;
-        unsigned int wrote_preferredSearchDisplayLocation:1;
-        unsigned int wrote_correctedSearchResultIndex:1;
-        unsigned int wrote_originalSearchResultIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,27 +45,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDPlaceResponse *placeResponse;
 @property(readonly, nonatomic) _Bool hasPlaceResponse;
-- (void)_readPlaceResponse;
 @property(retain, nonatomic) GEOPDPlaceRequest *placeRequest;
 @property(readonly, nonatomic) _Bool hasPlaceRequest;
-- (void)_readPlaceRequest;
 @property(retain, nonatomic) NSString *preferredSearchDisplayLocation;
 @property(readonly, nonatomic) _Bool hasPreferredSearchDisplayLocation;
-- (void)_readPreferredSearchDisplayLocation;
 @property(nonatomic) _Bool hasCorrectedSearchResultIndex;
 @property(nonatomic) unsigned int correctedSearchResultIndex;
 @property(nonatomic) _Bool hasOriginalSearchResultIndex;
 @property(nonatomic) unsigned int originalSearchResultIndex;
 @property(retain, nonatomic) GEOPlaceSearchResponse *placeSearchResponse;
 @property(readonly, nonatomic) _Bool hasPlaceSearchResponse;
-- (void)_readPlaceSearchResponse;
 @property(retain, nonatomic) GEOPlaceSearchRequest *placeSearchRequest;
 @property(readonly, nonatomic) _Bool hasPlaceSearchRequest;
-- (void)_readPlaceSearchRequest;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (_Bool)containsReportableData;
 
 @end

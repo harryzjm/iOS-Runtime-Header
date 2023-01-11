@@ -25,6 +25,7 @@
 + (id)vui_tertiaryTextColor;
 + (id)vui_secondaryTextColor;
 + (id)vui_primaryTextColor;
++ (id)vui_opacityColorWithType:(long long)arg1;
 + (id)vui_tertiaryDynamicBackgroundColor;
 + (id)vui_secondaryDynamicBackgroundColor;
 + (id)vui_primaryDynamicBackgroundColor;

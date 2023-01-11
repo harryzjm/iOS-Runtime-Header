@@ -8,7 +8,7 @@
 
 #import <HomeKit/HMFLogging-Protocol.h>
 
-@class HMFUnfairLock, HMHome, HMMediaSystem, HMMutableArray, NSArray, NSString, NSUUID, _HMContext;
+@class HMFActivity, HMFUnfairLock, HMHome, HMMediaSystem, HMMutableArray, NSArray, NSString, NSUUID, _HMContext;
 
 @interface HMMediaSystemBuilder : NSObject <HMFLogging>
 {
@@ -23,11 +23,15 @@
     HMHome *_home;
     HMMediaSystem *_mediaSystem;
     HMMutableArray *_componentsArray;
+    HMFActivity *_activity;
 }
 
 + (id)logCategory;
++ (_Bool)isStereoPairingSupportedForAccessories:(id)arg1;
 + (_Bool)supportsMediaSystem:(id)arg1;
 + (_Bool)canSupportMediaSystem:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly) HMFActivity *activity; // @synthesize activity=_activity;
 @property(retain, nonatomic) HMMutableArray *componentsArray; // @synthesize componentsArray=_componentsArray;
 @property(readonly, nonatomic) HMMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
 @property(readonly, nonatomic) __weak HMHome *home; // @synthesize home=_home;
@@ -36,7 +40,6 @@
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)_callCompletion:(CDUnknownBlockType)arg1 builderSessionID:(id)arg2 error:(id)arg3 response:(id)arg4;
 - (void)_commitWithCompletionHandler:(CDUnknownBlockType)arg1;

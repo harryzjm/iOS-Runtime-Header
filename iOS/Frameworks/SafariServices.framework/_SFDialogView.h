@@ -23,11 +23,13 @@
     id <_SFDialogViewDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <_SFDialogViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property(nonatomic) __weak id <_SFDialogViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_keyboardDismissGesture:(id)arg1;
 - (void)willDisappear;
 - (void)didAppear;
+- (void)setTableViewRows:(id)arg1 didSelectRowAction:(CDUnknownBlockType)arg2;
 - (void)setDialogActions:(id)arg1;
 - (void)setPasswordText:(id)arg1 placeholder:(id)arg2;
 - (void)setInputText:(id)arg1 placeholder:(id)arg2;

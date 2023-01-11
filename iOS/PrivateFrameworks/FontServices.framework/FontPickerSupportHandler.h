@@ -9,17 +9,23 @@
 #import <FontServices/FontServicesFontPickerSupportProtocol-Protocol.h>
 #import <FontServices/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCListener;
+@class NSString, NSXPCConnection, NSXPCListener;
 
 @interface FontPickerSupportHandler : NSObject <FontServicesFontPickerSupportProtocol, NSXPCListenerDelegate>
 {
     NSXPCListener *_listener;
+    NSXPCListener *_listenerForFontServicesDaemon;
+    NSXPCConnection *_connection;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 - (void).cxx_destruct;
-- (void)locallyActivatedFontFiles:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(retain, nonatomic) NSXPCListener *listenerForFontServicesDaemon; // @synthesize listenerForFontServicesDaemon=_listenerForFontServicesDaemon;
+@property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
+- (void)registeredFontsChanged:(id)arg1;
+- (void)checkin:(CDUnknownBlockType)arg1;
+- (_Bool)pathsContainsFontAsset:(id)arg1;
 - (void)activateFontsForFontPickerClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)ping:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

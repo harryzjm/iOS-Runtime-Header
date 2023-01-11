@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)isXL;
 - (CDUnknownBlockType)customizeMeterLayerBlock;
 
 @end

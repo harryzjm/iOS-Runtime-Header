@@ -6,24 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, UILabel, _UIBackdropView, _UIBackdropViewSettings;
+@class NSArray, NSString, UIColor, UILabel, UIVisualEffectView;
 
 @interface AVTUserInfoView : UIView
 {
-    _UIBackdropViewSettings *_backdropSettings;
-    _UIBackdropView *_userInfoBackdropView;
+    _Bool _isRegisteredForCategorySizeChange;
+    UIColor *_containerBackgroundColor;
+    UIVisualEffectView *_userInfoEffectView;
     UILabel *_userInfoLabel;
     NSArray *_activeConstraints;
     struct NSDirectionalEdgeInsets _textInsets;
 }
 
 + (double)textVerticalPadding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
 @property(retain, nonatomic) UILabel *userInfoLabel; // @synthesize userInfoLabel=_userInfoLabel;
-@property(retain, nonatomic) _UIBackdropView *userInfoBackdropView; // @synthesize userInfoBackdropView=_userInfoBackdropView;
-@property(retain, nonatomic) _UIBackdropViewSettings *backdropSettings; // @synthesize backdropSettings=_backdropSettings;
+@property(retain, nonatomic) UIVisualEffectView *userInfoEffectView; // @synthesize userInfoEffectView=_userInfoEffectView;
+@property(nonatomic) _Bool isRegisteredForCategorySizeChange; // @synthesize isRegisteredForCategorySizeChange=_isRegisteredForCategorySizeChange;
+@property(nonatomic) UIColor *containerBackgroundColor; // @synthesize containerBackgroundColor=_containerBackgroundColor;
 @property(nonatomic) struct NSDirectionalEdgeInsets textInsets; // @synthesize textInsets=_textInsets;
-- (void).cxx_destruct;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)updateConstraints;

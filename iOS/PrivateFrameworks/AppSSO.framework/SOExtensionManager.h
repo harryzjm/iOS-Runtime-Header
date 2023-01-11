@@ -11,11 +11,12 @@
 
 @interface SOExtensionManager : NSObject
 {
-    NSArray *_loadedExtensions;
     NSObject<OS_dispatch_queue> *_extensionManagerQueue;
     SOExtensionFinder *_extensionFinder;
+    NSArray *_loadedExtensions;
 }
 
++ (_Bool)isTiburonExtensionBundleIdentifier:(id)arg1;
 + (_Bool)isAppleConnectExtensionBundleIdentifier:(id)arg1;
 + (_Bool)isInternalExtensionBundleIdentifier:(id)arg1;
 + (id)internalExtensionsBundleIdentifiers;
@@ -23,8 +24,8 @@
 + (_Bool)_isMatchedExtension:(id)arg1 forBundleIdentifier:(id)arg2;
 + (void)_sendNotificationsLoadedExtensions:(id)arg1 new:(id)arg2 removed:(id)arg3;
 + (id)sharedInstance;
-@property(readonly, nonatomic) NSArray *loadedExtensions; // @synthesize loadedExtensions=_loadedExtensions;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *loadedExtensions; // @synthesize loadedExtensions=_loadedExtensions;
 - (void)_doEndMatchingExtensions;
 - (void)_doBeginMatchingExtensions;
 - (_Bool)isLoadedExtensionWithBundleIdentifer:(id)arg1;

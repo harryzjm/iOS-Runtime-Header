@@ -9,7 +9,7 @@
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 #import <FamilyCircleUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
 
-@class AAUIServerHookResponse, NSString, PSCloudStorageOffersManager;
+@class AAUIServerHookResponse, NSString, PSCloudStorageOffersManager, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface FABuyStorageHook : NSObject <PSCloudStorageOffersManagerDelegate, AAUIServerHook>
@@ -20,8 +20,8 @@
     id <AAUIServerHookDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_completionWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)managerDidCancel:(id)arg1;
 - (void)manager:(id)arg1 didCompleteWithError:(id)arg2;
@@ -36,6 +36,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) RUIObjectModel *objectModel;
 @property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property(readonly) Class superclass;
 

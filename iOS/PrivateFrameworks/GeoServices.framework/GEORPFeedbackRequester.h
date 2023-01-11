@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 - (id)_validateResponse:(id)arg1;
 - (void)cancelRequest:(id)arg1;
 - (void)startWithRequest:(id)arg1 traits:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_requestConfigForRequest:(id)arg1;
 
 @end
 

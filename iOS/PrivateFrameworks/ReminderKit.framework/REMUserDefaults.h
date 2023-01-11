@@ -10,19 +10,19 @@
 
 @interface REMUserDefaults : NSObject
 {
+    _Bool _showRemindersAsOverdue_cached;
     NSString *_suiteName;
     NSMutableDictionary *_observers;
     NSUserDefaults *_userDefaults;
 }
 
-+ (void)migrateUserDefaults;
-+ (id)_oldDeprecatedAppGroupUserDefaults;
 + (id)appGroupUserDefaults;
 + (id)daemonUserDefaults;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
+@property(nonatomic) _Bool showRemindersAsOverdue_cached; // @synthesize showRemindersAsOverdue_cached=_showRemindersAsOverdue_cached;
 @property(readonly, nonatomic) NSMutableDictionary *observers; // @synthesize observers=_observers;
 @property(readonly, nonatomic) NSString *suiteName; // @synthesize suiteName=_suiteName;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_removeObserver:(id)arg1;
 - (id)_addObserverForKey:(id)arg1 block:(CDUnknownBlockType)arg2;

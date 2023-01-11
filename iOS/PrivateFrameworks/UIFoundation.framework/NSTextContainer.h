@@ -38,11 +38,15 @@
     long long _layoutOrientation;
     NSDictionary *_attributesForExtraLineFragment;
     long long _applicationFrameworkContext;
+    _Bool _textViewSupportsAdaptiveColor;
 }
 
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
 - (id)description;
+- (id)markedTextAttributesAtCharacterIndex:(long long)arg1 effectiveRange:(out struct _NSRange *)arg2;
+- (id)selectedTextAttributes;
+- (id)renderingColorForDocumentColor:(id)arg1;
 - (void)setLayoutOrientation:(long long)arg1;
 @property(readonly, nonatomic) long long layoutOrientation; // @dynamic layoutOrientation;
 - (_Bool)containsPoint:(struct CGPoint)arg1;
@@ -79,6 +83,7 @@
 - (double)minimumLineFragmentWidth;
 - (void)setMinimumLineFragmentWidth:(double)arg1;
 - (void)coordinateAccess:(CDUnknownBlockType)arg1;
+- (void)invalidateTextContainerOrigin;
 - (struct NSEdgeInsets)textContainerInsetsForView:(id)arg1;
 - (void)_containerTextViewFrameChanged:(id)arg1;
 - (void)_resizeAccordingToTextView:(id)arg1;

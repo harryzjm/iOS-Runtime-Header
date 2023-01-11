@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBBaseWelcomeController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <SIMSetupSupport/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
@@ -15,7 +15,7 @@
 @class CAShapeLayer, CTDisplayPlanList, NSArray, NSDate, NSDictionary, NSString, TSCellularPlanQRCodeScannerView, UIActivityIndicatorView, UIButton, UILabel, UITableView, UIView;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanScanTransferViewController : OBBaseWelcomeController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
+@interface TSCellularPlanScanTransferViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
 {
     _Bool _receivedPendingInstallItems;
     _Bool _receivedTransferItems;
@@ -29,14 +29,12 @@
     UIActivityIndicatorView *_activityView;
     _Bool _confirmationCodeRequired;
     _Bool _manualCardInfoEntry;
-    _Bool _isOneClickSupported;
-    _Bool _transferError;
+    _Bool _transferring;
     id <TSSIMSetupFlowDelegate> _delegate;
     NSString *_fauxCardData;
+    NSDictionary *_physicalTransferPlan;
     UIView *_scanView;
     UIView *_cutoutView;
-    NSDictionary *_postdata;
-    NSString *_URL;
     UIActivityIndicatorView *_checkingAvailablePlansSpinner;
     UILabel *_checkingAvailablePlansLabel;
     UIButton *_enterDetailsManuallyButton;
@@ -45,30 +43,30 @@
     UITableView *_pendingPlansListTableView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UITableView *pendingPlansListTableView; // @synthesize pendingPlansListTableView=_pendingPlansListTableView;
 @property(nonatomic) __weak UILabel *positionQRCodeLabel; // @synthesize positionQRCodeLabel=_positionQRCodeLabel;
 @property(nonatomic) __weak UILabel *scanQRCodeLabel; // @synthesize scanQRCodeLabel=_scanQRCodeLabel;
 @property(nonatomic) __weak UIButton *enterDetailsManuallyButton; // @synthesize enterDetailsManuallyButton=_enterDetailsManuallyButton;
 @property(nonatomic) __weak UILabel *checkingAvailablePlansLabel; // @synthesize checkingAvailablePlansLabel=_checkingAvailablePlansLabel;
 @property(nonatomic) __weak UIActivityIndicatorView *checkingAvailablePlansSpinner; // @synthesize checkingAvailablePlansSpinner=_checkingAvailablePlansSpinner;
-@property(readonly) _Bool transferError; // @synthesize transferError=_transferError;
-@property(readonly) _Bool isOneClickSupported; // @synthesize isOneClickSupported=_isOneClickSupported;
-@property(readonly) NSString *URL; // @synthesize URL=_URL;
-@property(readonly) NSDictionary *postdata; // @synthesize postdata=_postdata;
+@property(readonly) _Bool transferring; // @synthesize transferring=_transferring;
 @property(nonatomic) __weak UIView *cutoutView; // @synthesize cutoutView=_cutoutView;
 @property(nonatomic) __weak UIView *scanView; // @synthesize scanView=_scanView;
+@property(readonly) NSDictionary *physicalTransferPlan; // @synthesize physicalTransferPlan=_physicalTransferPlan;
 @property(readonly) _Bool manualCardInfoEntry; // @synthesize manualCardInfoEntry=_manualCardInfoEntry;
 @property(readonly) _Bool confirmationCodeRequired; // @synthesize confirmationCodeRequired=_confirmationCodeRequired;
 @property(readonly) NSString *fauxCardData; // @synthesize fauxCardData=_fauxCardData;
 @property __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (long long)navigationBarScrollToEdgeBehavior;
 - (void)_startPendingInstall:(id)arg1;
 - (void)_maybeUpdateTableView;
 - (void)_startPlanTransfer:(id)arg1;
-- (id)_messageTextForActionSheet:(id)arg1 carrierName:(id)arg2 countryCode:(id)arg3;
+- (id)_messageTextForActionSheet:(id)arg1 carrierName:(id)arg2 transferCapability:(unsigned long long)arg3;
 - (void)_presentActionSheetForPendingInstall:(id)arg1;
 - (void)_presentActionSheetForPlanTransfer:(id)arg1;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

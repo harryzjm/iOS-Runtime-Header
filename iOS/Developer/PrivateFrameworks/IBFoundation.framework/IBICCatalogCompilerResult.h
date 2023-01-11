@@ -8,11 +8,11 @@
 
 #import <IBFoundation/IBBinaryArchiving-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface IBICCatalogCompilerResult : NSObject <IBBinaryArchiving>
 {
-    NSMutableArray *_outputFiles;
+    NSMutableSet *_outputFiles;
     NSMutableArray *_hardErrors;
     NSMutableArray *_softErrors;
     NSMutableArray *_issues;
@@ -21,15 +21,16 @@
 }
 
 + (id)resultWithSingleError:(id)arg1;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *partialInfoPlist; // @synthesize partialInfoPlist=_partialInfoPlist;
 @property(copy, nonatomic) NSArray *issues; // @synthesize issues=_issues;
 @property(copy, nonatomic) NSArray *softErrors; // @synthesize softErrors=_softErrors;
 @property(copy, nonatomic) NSArray *hardErrors; // @synthesize hardErrors=_hardErrors;
-@property(copy, nonatomic) NSArray *outputFiles; // @synthesize outputFiles=_outputFiles;
+@property(copy, nonatomic) NSSet *outputFiles; // @synthesize outputFiles=_outputFiles;
 @property(nonatomic) _Bool success; // @synthesize success=_success;
-- (void).cxx_destruct;
 - (void)mergeResults:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (id)sortedOutputFiles;
 - (void)addOutputFiles:(id)arg1;
 - (void)addOutputFile:(id)arg1;
 - (void)addIssues:(id)arg1;

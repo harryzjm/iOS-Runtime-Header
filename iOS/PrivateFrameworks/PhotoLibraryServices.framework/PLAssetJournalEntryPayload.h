@@ -12,6 +12,8 @@
 }
 
 + (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1;
++ (id)snapshotSortDescriptors;
++ (_Bool)shouldPersistForChangedKeys:(id)arg1 entityName:(id)arg2;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (unsigned int)payloadVersion;
 + (id)additionalEntityNames;
@@ -20,8 +22,15 @@
 + (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;
 - (void).cxx_destruct;
-- (void)migrateMergedPayload;
+- (id)_loadOriginalVideoMetadataWithPathManager:(id)arg1 timezoneLookup:(id)arg2;
+- (void)migrateMergedPayloadWithUpdatePayloads:(id)arg1;
 - (void)setLocation:(id)arg1;
+- (unsigned long long)bestCPLResourceTypeForAdjustedFingerPrint;
+- (id)filename;
+- (id)directory;
+- (id)adjustmentFormatVersion;
+- (id)adjustmentFormatIdentifier;
+- (id)originalOrientation;
 - (id)extendedAttributesLongitude;
 - (id)extendedAttributesLatitude;
 - (id)longitude;
@@ -29,21 +38,26 @@
 - (id)locationData;
 - (id)dateCreated;
 - (id)uniformTypeIdentifier;
+- (id)hdrGain;
 - (_Bool)hasAdjustments;
+- (_Bool)isDefaultAdjustedSlomo;
+- (id)highFrameRateState;
 - (_Bool)isImage;
 - (_Bool)isVideo;
+- (short)kindSubtype;
 - (short)kind;
 - (id)originalResourceRelativePaths;
 - (id)cloudMasterGUID;
 @property(readonly, nonatomic) NSString *mediaGroupUUID;
 @property(readonly, nonatomic) short savedAssetType;
 @property(readonly, nonatomic) NSArray *resources;
-- (void)applyPayloadProperty:(id)arg1 toManagedObject:(id)arg2 key:(id)arg3;
-- (id)insertAssetFromDataInManagedObjectContext:(id)arg1 keywordUUIDRemapping:(id)arg2;
+- (void)applyPayloadProperty:(id)arg1 toManagedObject:(id)arg2 key:(id)arg3 payloadAttributesToUpdate:(id)arg4;
+- (id)insertAssetFromDataInManagedObjectContext:(id)arg1 keywordUUIDRemapping:(id)arg2 payloadAttributesToUpdate:(id)arg3;
 - (_Bool)comparePayloadValue:(id)arg1 toObjectDictionaryValue:(id)arg2 forPayloadProperty:(id)arg3;
 - (void)updatePayloadAttributes:(id)arg1 withDecodedAttributes:(id)arg2 forPayloadProperty:(id)arg3;
 - (void)updateEncodableAttributes:(id)arg1 fromPayloadAttributes:(id)arg2 forPayloadProperty:(id)arg3;
 - (_Bool)updatePayloadAttributes:(id)arg1 withManagedObject:(id)arg2 forPayloadProperty:(id)arg3;
+- (id)initWithEditedIPTCAttributes:(id)arg1 changedKeys:(id)arg2;
 - (id)initWithExtendedAttributes:(id)arg1 changedKeys:(id)arg2;
 - (id)initWithCloudMasterMediaMetadata:(id)arg1 payloadID:(id)arg2 changedKeys:(id)arg3 modelProperties:(id)arg4;
 - (id)initWithCloudMaster:(id)arg1 payloadID:(id)arg2 changedKeys:(id)arg3;
@@ -52,6 +66,9 @@
 - (id)initWithUnmanagedAdjustment:(id)arg1 changedKeys:(id)arg2;
 - (id)initWithAssetDescription:(id)arg1 changedKeys:(id)arg2;
 - (id)initWithAdditionalAssetAttributes:(id)arg1 changedKeys:(id)arg2;
+- (void)_convertDepthStatesToDepthType;
+- (void)_fixHDRGainZeroValueToNULL;
+- (void)_fixOriginalAlternateImageOrientation;
 - (void)_fixResourceTypeUnknownValues;
 - (void)_fixXMPSidecarUTI;
 - (void)_fixLocationData;

@@ -17,6 +17,7 @@
 @property(copy, nonatomic) NSString *externalUUID; // @dynamic externalUUID;
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(copy, nonatomic) NSData *externalRepresentation; // @dynamic externalRepresentation;
+@property(copy, nonatomic) NSString *externalURI; // @dynamic externalURI;
 @property(copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(copy, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property(copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;

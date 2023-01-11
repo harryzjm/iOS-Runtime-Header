@@ -13,13 +13,13 @@
     UIView *_coverView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *coverView; // @synthesize coverView=_coverView;
 @property(readonly, nonatomic) id <SXIssueCoverViewProvider> viewProvider; // @synthesize viewProvider=_viewProvider;
-- (void).cxx_destruct;
 - (void)renderIssueCover;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 viewProvider:(id)arg5;
 
 @end

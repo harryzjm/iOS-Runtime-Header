@@ -4,46 +4,74 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIImageView, UILabel, UIStackView;
+@class NSArray, NSLayoutConstraint, UIImageView, UILabel, UIStackView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuActionView
 {
-    _Bool _disabled;
-    _Bool _destructive;
+    _Bool _needsConstraintRebuild;
+    unsigned long long _options;
     UIStackView *_labelStackView;
-    UILabel *_titleLabel;
     UILabel *_subtitleLabel;
-    UIImageView *_imageView;
+    UIImageView *_leadingImageView;
+    UIImageView *_trailingImageView;
+    NSArray *_managedConstraints;
     NSLayoutConstraint *_topToFirstBaseline;
     NSLayoutConstraint *_lastBaselineToBottom;
-    NSLayoutConstraint *_imageCenterXToTrailing;
-    NSLayoutConstraint *_labelStackViewTrailingToImageCenterX;
+    NSLayoutConstraint *_leadingToLabelStackViewLeading;
+    NSLayoutConstraint *_leadingViewCenterX;
+    NSLayoutConstraint *_trailingViewCenterXToTrailing;
+    NSLayoutConstraint *_labelStackViewTrailingToTrailingViewCenterX;
+    NSLayoutConstraint *_nonSymbolImageWidth;
+    NSLayoutConstraint *_nonSymbolImageHeight;
+    NSLayoutConstraint *_minHeightConstraint;
+    UILabel *_titleLabel;
 }
 
-@property(retain, nonatomic) NSLayoutConstraint *labelStackViewTrailingToImageCenterX; // @synthesize labelStackViewTrailingToImageCenterX=_labelStackViewTrailingToImageCenterX;
-@property(retain, nonatomic) NSLayoutConstraint *imageCenterXToTrailing; // @synthesize imageCenterXToTrailing=_imageCenterXToTrailing;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(nonatomic) _Bool needsConstraintRebuild; // @synthesize needsConstraintRebuild=_needsConstraintRebuild;
+@property(retain, nonatomic) NSLayoutConstraint *minHeightConstraint; // @synthesize minHeightConstraint=_minHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *nonSymbolImageHeight; // @synthesize nonSymbolImageHeight=_nonSymbolImageHeight;
+@property(retain, nonatomic) NSLayoutConstraint *nonSymbolImageWidth; // @synthesize nonSymbolImageWidth=_nonSymbolImageWidth;
+@property(retain, nonatomic) NSLayoutConstraint *labelStackViewTrailingToTrailingViewCenterX; // @synthesize labelStackViewTrailingToTrailingViewCenterX=_labelStackViewTrailingToTrailingViewCenterX;
+@property(retain, nonatomic) NSLayoutConstraint *trailingViewCenterXToTrailing; // @synthesize trailingViewCenterXToTrailing=_trailingViewCenterXToTrailing;
+@property(retain, nonatomic) NSLayoutConstraint *leadingViewCenterX; // @synthesize leadingViewCenterX=_leadingViewCenterX;
+@property(retain, nonatomic) NSLayoutConstraint *leadingToLabelStackViewLeading; // @synthesize leadingToLabelStackViewLeading=_leadingToLabelStackViewLeading;
 @property(retain, nonatomic) NSLayoutConstraint *lastBaselineToBottom; // @synthesize lastBaselineToBottom=_lastBaselineToBottom;
 @property(retain, nonatomic) NSLayoutConstraint *topToFirstBaseline; // @synthesize topToFirstBaseline=_topToFirstBaseline;
-@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) NSArray *managedConstraints; // @synthesize managedConstraints=_managedConstraints;
+@property(retain, nonatomic) UIImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
+@property(retain, nonatomic) UIImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIStackView *labelStackView; // @synthesize labelStackView=_labelStackView;
-@property(nonatomic) _Bool destructive; // @synthesize destructive=_destructive;
-@property(nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long options; // @synthesize options=_options;
+- (id)_selectionImage;
+- (struct CGSize)_maxImageSize;
 - (id)_imageTintColor;
 - (id)_subtitleTextColor;
-- (id)_colorReflectingActionStateForColor:(id)arg1;
+- (double)_primaryContentAlphaForCurrentState;
+- (id)_primaryContentColorForCurrentState;
+- (id)_symbolConfigurationForCurrentTraits;
+- (void)_updateSubtitleLabelNumberOfLines;
+- (void)_updateTitleLabelNumberOfLines;
 - (id)_subtitleLabelFilterForCurrentTraits;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (void)_updateAppearanceForStateChange;
-- (id)_imageViewForImage:(id)arg1;
-- (id)_subtitleLabel;
-- (id)_primaryTitleLabel;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
-- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 image:(id)arg3;
+- (void)_updateAttachedConstraintsForViewHierarchyChange;
+- (id)_contentImageViewForImage:(id)arg1;
+- (void)_installSubtitleLabelIfNeeded;
+- (void)_installTitleLabelIfNeeded;
+- (void)_installLabelStackViewIfNeeded;
+- (void)_updateForOptionsChangeFromPreviousOptions:(unsigned long long)arg1;
+- (void)layoutSubviews;
+- (void)_setNeedsConstraintRebuild;
+- (void)setTrailingImage:(id)arg1;
+- (void)setSubtitle:(id)arg1;
+- (void)setTitle:(id)arg1;
+@property(readonly, nonatomic) UIView *trailingView;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -30,7 +30,6 @@
     _Bool _shouldSuppressSyncDismissalWhenRemoved;
     _Bool _shouldUseRequestIdentifierForDismissalSync;
     _Bool _shouldPreemptPresentedNotification;
-    _Bool _shouldPreemptSTAR;
     _Bool _allowsDefaultDestinations;
     _Bool _allowsAlertDestination;
     _Bool _allowsLockScreenDestination;
@@ -63,6 +62,7 @@
     NSString *_identifier;
     NSString *_launchImageName;
     NSDate *_requestDate;
+    unsigned long long _presentationOptions;
     NSString *_audioCategory;
     NSNumber *_audioVolume;
     double _soundMaximumDuration;
@@ -72,6 +72,7 @@
     NSString *_title;
     NSArray *_titleLocalizationArguments;
     NSString *_titleLocalizationKey;
+    unsigned long long _realertCount;
     NSString *_summaryArgument;
     unsigned long long _summaryArgumentCount;
     NSString *_targetContentIdentifier;
@@ -95,6 +96,7 @@
     NSURL *_vibrationPatternFileURL;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSURL *vibrationPatternFileURL; // @synthesize vibrationPatternFileURL=_vibrationPatternFileURL;
 @property(copy, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
@@ -123,6 +125,7 @@
 @property(copy, nonatomic) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property(nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property(copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
+@property(nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property(copy, nonatomic) NSString *titleLocalizationKey; // @synthesize titleLocalizationKey=_titleLocalizationKey;
 @property(copy, nonatomic) NSArray *titleLocalizationArguments; // @synthesize titleLocalizationArguments=_titleLocalizationArguments;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -132,7 +135,6 @@
 @property(nonatomic) double soundMaximumDuration; // @synthesize soundMaximumDuration=_soundMaximumDuration;
 @property(copy, nonatomic) NSNumber *audioVolume; // @synthesize audioVolume=_audioVolume;
 @property(copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
-@property(nonatomic) _Bool shouldPreemptSTAR; // @synthesize shouldPreemptSTAR=_shouldPreemptSTAR;
 @property(nonatomic) _Bool shouldPreemptPresentedNotification; // @synthesize shouldPreemptPresentedNotification=_shouldPreemptPresentedNotification;
 @property(nonatomic) _Bool shouldUseRequestIdentifierForDismissalSync; // @synthesize shouldUseRequestIdentifierForDismissalSync=_shouldUseRequestIdentifierForDismissalSync;
 @property(nonatomic) _Bool shouldSuppressSyncDismissalWhenRemoved; // @synthesize shouldSuppressSyncDismissalWhenRemoved=_shouldSuppressSyncDismissalWhenRemoved;
@@ -140,6 +142,7 @@
 @property(nonatomic) _Bool shouldPreventNotificationDismissalAfterDefaultAction; // @synthesize shouldPreventNotificationDismissalAfterDefaultAction=_shouldPreventNotificationDismissalAfterDefaultAction;
 @property(nonatomic) _Bool shouldBackgroundDefaultAction; // @synthesize shouldBackgroundDefaultAction=_shouldBackgroundDefaultAction;
 @property(nonatomic) _Bool shouldAuthenticateDefaultAction; // @synthesize shouldAuthenticateDefaultAction=_shouldAuthenticateDefaultAction;
+@property(nonatomic) unsigned long long presentationOptions; // @synthesize presentationOptions=_presentationOptions;
 @property(nonatomic) _Bool shouldPresentAlert; // @synthesize shouldPresentAlert=_shouldPresentAlert;
 @property(nonatomic) _Bool shouldPlaySound; // @synthesize shouldPlaySound=_shouldPlaySound;
 @property(nonatomic) _Bool shouldSuppressScreenLightUp; // @synthesize shouldSuppressScreenLightUp=_shouldSuppressScreenLightUp;
@@ -176,7 +179,6 @@
 @property(copy, nonatomic) NSNumber *badge; // @synthesize badge=_badge;
 @property(copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property(copy, nonatomic) NSString *accessoryImageName; // @synthesize accessoryImageName=_accessoryImageName;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -191,6 +193,7 @@
 - (_Bool)isSimilar:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+- (id)dictionaryRepresentationWithTruncation:(_Bool)arg1;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)init;

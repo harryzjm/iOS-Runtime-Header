@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CSSearchQuery, NSArray, NSString;
+@class CKQLPreviewControllerDataSource, CSSearchQuery, NSArray, NSString;
 @protocol CKSearchControllerDelegate;
 
 @interface CKSearchController : NSObject
@@ -17,39 +17,46 @@
     NSString *_currentSearchText;
     unsigned long long _mode;
     CSSearchQuery *_query;
+    NSString *_currentQueryIdentifier;
     CDUnknownBlockType _queryFoundItemHandler;
     CDUnknownBlockType _queryCompletionHandler;
     unsigned long long _sectionIndex;
     NSArray *_results;
+    CKQLPreviewControllerDataSource *_qlPreviewDataSource;
 }
 
 + (long long)orthogonalScrollingBehavior;
 + (Class)cellClass;
++ (id)indexingString;
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
 + (unsigned long long)recencyRankedTargetResultCount;
 + (_Bool)previewControllerPresentsModally;
 + (_Bool)supportsMenuInteraction;
-+ (_Bool)supportsQuicklook;
++ (_Bool)supportsQuicklookForResult:(id)arg1;
 + (_Bool)useRecencyRankedSearchForMode:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool queryRunning; // @synthesize queryRunning=_queryRunning;
+@property(retain, nonatomic) CKQLPreviewControllerDataSource *qlPreviewDataSource; // @synthesize qlPreviewDataSource=_qlPreviewDataSource;
 @property(nonatomic) _Bool suppressAvatars; // @synthesize suppressAvatars=_suppressAvatars;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(nonatomic) unsigned long long sectionIndex; // @synthesize sectionIndex=_sectionIndex;
 @property(copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType queryFoundItemHandler; // @synthesize queryFoundItemHandler=_queryFoundItemHandler;
+@property(retain, nonatomic) NSString *currentQueryIdentifier; // @synthesize currentQueryIdentifier=_currentQueryIdentifier;
 @property(retain, nonatomic) CSSearchQuery *query; // @synthesize query=_query;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) NSString *currentSearchText; // @synthesize currentSearchText=_currentSearchText;
 @property(nonatomic) __weak id <CKSearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)handleSelectionForResult:(id)arg1;
+- (void)didSelectResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
-- (id)_additionalMenuActionsForResult:(id)arg1;
+- (id)_overridingMenuElementsForResult:(id)arg1;
+- (id)_additionalMenuElementsForResult:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
-- (id)menuActionsForResult:(id)arg1 atRect:(struct CGRect)arg2;
+- (id)menuElementsForResult:(id)arg1 atRect:(struct CGRect)arg2;
 - (id)queryResultsForItems:(id)arg1;
 - (id)chatGUIDForSearchableItem:(id)arg1;
 - (void)searchEnded;
@@ -64,6 +71,7 @@
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
 - (id)cellForItemInCollectionView:(id)arg1 atIndex:(long long)arg2 withIdentifier:(id)arg3;
 - (id)layoutGroupWithEnvironment:(id)arg1;
+- (id)customLayoutSectionForEnvironment:(id)arg1;
 - (_Bool)applyLayoutMarginsToLayoutGroup;
 - (Class)footerClass;
 - (Class)headerOverrideClass;
@@ -71,6 +79,8 @@
 - (_Bool)wantsHeaderSection;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (double)interGroupSpacing;
+- (void)deleteAttachmentForResult:(id)arg1;
+- (void)saveAttachmentForResult:(id)arg1;
 - (id)initWithSectionIndex:(unsigned long long)arg1;
 - (_Bool)shouldStartMenuInteractionForResult:(id)arg1;
 - (id)rankingQueriesWithText:(id)arg1;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
+
 @class NSArray, NSDictionary, NSMutableArray, NSString, UICalloutBarBackground, UICalloutBarButton, UIResponder, UIScrollView, UIStackView, UIView;
 
-@interface UICalloutBar
+@interface UICalloutBar <_UICursorInteractionDelegate>
 {
     id m_delegate;
     struct CGPoint m_pointBelowControls;
@@ -37,6 +39,7 @@
     NSMutableArray *m_rectsToEvade;
     UICalloutBarBackground *m_overlay;
     double m_fadedTime;
+    _Bool m_fadedDueToCommand;
     NSDictionary *m_currentAppearOrFadeContext;
     id m_responderTarget;
     CDUnknownBlockType m_responderTargetCompletionHandler;
@@ -50,7 +53,9 @@
     _Bool m_isDisplayingVertically;
     UIScrollView *m_verticalScrollView;
     UIStackView *m_verticalStackView;
-    NSMutableArray *m_axSeparatorViews;
+    NSMutableArray *m_separatorViews;
+    UIView *m_buttonView;
+    long long m_hoveredIndex;
 }
 
 + (void)hideSharedCalloutBarFromTargetView:(id)arg1;
@@ -62,6 +67,7 @@
 + (id)activeCalloutBar;
 + (id)sharedCalloutBar;
 + (void)performWithoutAffectingSharedCalloutBar:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=m_verticalStackView;
 @property(readonly, nonatomic) UIScrollView *verticalScrollView; // @synthesize verticalScrollView=m_verticalScrollView;
 @property(nonatomic) _Bool suppressesAppearance; // @synthesize suppressesAppearance=m_suppressesAppearance;
@@ -85,7 +91,6 @@
 @property(nonatomic) struct CGPoint pointLeftOfControls; // @synthesize pointLeftOfControls=m_pointLeftOfControls;
 @property(nonatomic) struct CGPoint pointBelowControls; // @synthesize pointBelowControls=m_pointBelowControls;
 @property(nonatomic) struct CGPoint pointAboveControls; // @synthesize pointAboveControls=m_pointAboveControls;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isDisplayingVertically; // @synthesize isDisplayingVertically=m_isDisplayingVertically;
 - (void)clearSupressesHorizontalMovementFrame;
 - (void)clearReplacements;
@@ -94,6 +99,7 @@
 - (void)addRectToEvade:(struct CGRect)arg1;
 - (void)fadeAnimationDidStopWithContext:(id)arg1 finished:(_Bool)arg2;
 - (void)appearAnimationDidStopWithContext:(id)arg1;
+- (_Bool)fadedDueToCommand;
 - (_Bool)recentlyFaded;
 - (void)updateAnimated:(_Bool)arg1;
 - (void)update;
@@ -109,12 +115,14 @@
 - (void)appear;
 - (void)show;
 - (void)buttonHighlighted:(id)arg1 highlighted:(_Bool)arg2;
+- (void)buttonHovered:(id)arg1 index:(long long)arg2 hovered:(_Bool)arg3;
+- (long long)indexOfButton:(id)arg1;
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 arrowDirection:(int)arg3;
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 pointLeftOfControls:(struct CGPoint)arg3 pointRightOfControls:(struct CGPoint)arg4;
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 pointBelowControls:(struct CGPoint)arg3 pointAboveControls:(struct CGPoint)arg4;
 - (_Bool)_updateVisibleItemsAnimated:(_Bool)arg1;
 - (void)adjustFrameToAvoidDividerOnArrow;
-- (void)addVerticalSeparatorAfterButton:(id)arg1;
+- (void)addVerticalSeparatorAfterButton:(id)arg1 usingLargeText:(_Bool)arg2;
 - (void)updateForCurrentVerticalPage;
 - (void)updateForCurrentHorizontalPage;
 - (void)updateForCurrentPage;
@@ -145,6 +153,12 @@
 - (void)applicationDidAddDeactivationReason:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

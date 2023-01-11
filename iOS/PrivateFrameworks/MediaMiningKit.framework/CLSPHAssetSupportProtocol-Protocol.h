@@ -6,38 +6,36 @@
 
 #import <MediaMiningKit/CLSInvestigationItem-Protocol.h>
 
-@class CLSAssetFaceInformationSummary, NSData, NSSet;
+@class CLSAssetFaceInformationSummary, NSSet, PHAssetAestheticProperties, PHAssetCurationProperties, PHAssetMediaAnalysisProperties;
+@protocol CLSAssetProcessedSignals;
 
 @protocol CLSPHAssetSupportProtocol <CLSInvestigationItem>
+@property(readonly, nonatomic) id <CLSAssetProcessedSignals> clsProcessedSignals;
 @property(readonly, nonatomic) CLSAssetFaceInformationSummary *clsFaceInformationSummary;
-@property(readonly, nonatomic) unsigned long long clsPeopleCount;
-- (long long)highestSupportedScoringVersion;
 - (short)clsInterestingAudioClassifications;
-- (double)duration;
+- (_Bool)clsIsTragicFailure;
 - (NSSet *)clsSceneClassifications;
-- (_Bool)clsIsTragicallyBad;
-- (double)clsAestheticScore;
-- (double)clsExposureScore;
-- (double)clsSharpnessScore;
 - (unsigned long long)clsVideoFaceCount;
 - (double)clsActivityScore;
 - (double)clsVideoScore;
-- (NSData *)clsDistanceIdentity;
-- (long long)clsShareCount;
-- (long long)clsPlayCount;
-- (long long)clsViewCount;
-- (unsigned long long)facesCount;
+- (PHAssetCurationProperties *)curationProperties;
+- (PHAssetMediaAnalysisProperties *)mediaAnalysisProperties;
+- (PHAssetAestheticProperties *)aestheticProperties;
+- (unsigned long long)reframeVariation;
+- (unsigned long long)pixelHeight;
+- (unsigned long long)pixelWidth;
+- (double)duration;
 - (_Bool)representsBurst;
 - (_Bool)isSubtype:(unsigned long long)arg1;
 - (_Bool)isIncludedInCloudFeeds;
 - (_Bool)hasAdjustments;
-- (_Bool)isUtility;
-- (_Bool)isBlurry;
+- (_Bool)isPSD;
+- (_Bool)isPNG;
+- (_Bool)isPDF;
+- (_Bool)isAnimatedGIF;
 - (_Bool)isTrashed;
 - (_Bool)isAudio;
-- (_Bool)isVideo;
 - (_Bool)isPhoto;
 - (_Bool)isHidden;
-- (_Bool)isFavorite;
 @end
 

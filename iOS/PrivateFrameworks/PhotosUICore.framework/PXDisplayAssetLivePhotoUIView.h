@@ -15,8 +15,8 @@
     AVPlayerItem *_videoPlayerItem;
 }
 
-@property(retain, nonatomic) AVPlayerItem *videoPlayerItem; // @synthesize videoPlayerItem=_videoPlayerItem;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AVPlayerItem *videoPlayerItem; // @synthesize videoPlayerItem=_videoPlayerItem;
 - (void)_updateLivePhotoPlayerItem;
 - (_Bool)isDisplayingFullQualityContent;
 - (void)contentsRectDidChange;

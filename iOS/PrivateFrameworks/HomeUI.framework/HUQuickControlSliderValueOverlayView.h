@@ -18,9 +18,12 @@
     unsigned long long _controlSize;
     CAShapeLayer *_primaryGrabberShadowLayer;
     CAShapeLayer *_secondaryGrabberShadowLayer;
+    UIView *_topBorder;
 }
 
 + (Class)layerClass;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *topBorder; // @synthesize topBorder=_topBorder;
 @property(nonatomic) __weak CAShapeLayer *secondaryGrabberShadowLayer; // @synthesize secondaryGrabberShadowLayer=_secondaryGrabberShadowLayer;
 @property(retain, nonatomic) CAShapeLayer *primaryGrabberShadowLayer; // @synthesize primaryGrabberShadowLayer=_primaryGrabberShadowLayer;
 @property(nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
@@ -28,7 +31,6 @@
 @property(nonatomic) _Bool showGrabbers; // @synthesize showGrabbers=_showGrabbers;
 @property(nonatomic) _Bool hasSecondGrabber; // @synthesize hasSecondGrabber=_hasSecondGrabber;
 @property(nonatomic, getter=isOff) _Bool off; // @synthesize off=_off;
-- (void).cxx_destruct;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)layoutSubviews;
 - (void)_updateBlendMode;

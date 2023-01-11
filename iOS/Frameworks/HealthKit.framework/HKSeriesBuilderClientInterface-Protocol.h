@@ -7,6 +7,6 @@
 #import <HealthKit/NSObject-Protocol.h>
 
 @protocol HKSeriesBuilderClientInterface <NSObject>
-- (void)clientRemote_didChangeToState:(long long)arg1;
+- (void)clientRemote_didChangeToState:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

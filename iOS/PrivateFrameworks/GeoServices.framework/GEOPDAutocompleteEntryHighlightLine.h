@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryHighlightLine : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_line;
     NSMutableArray *_spans;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_line:1;
         unsigned int read_spans:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_line:1;
-        unsigned int wrote_spans:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,18 +41,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)spanAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spansCount;
-- (void)_addNoFlagsSpan:(id)arg1;
 - (void)addSpan:(id)arg1;
 - (void)clearSpans;
 @property(retain, nonatomic) NSMutableArray *spans;
-- (void)_readSpans;
 @property(retain, nonatomic) NSString *line;
 @property(readonly, nonatomic) _Bool hasLine;
-- (void)_readLine;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

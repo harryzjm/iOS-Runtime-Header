@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 @interface GEOPDQuickLinkFilter : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    int _quickLinkItemsCount;
+    struct {
+        unsigned int has_quickLinkItemsCount:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -28,8 +32,13 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasQuickLinkItemsCount;
+@property(nonatomic) int quickLinkItemsCount;
 
 @end
 

@@ -13,19 +13,22 @@
 @interface ADSponsoredSearchRequest : PBRequest <NSCopying>
 {
     ADUserTargetingProperties *_properties;
+    _Bool _enableImagesForDupes;
     _Bool _isBaseline;
     _Bool _isTest;
     struct {
+        unsigned int enableImagesForDupes:1;
         unsigned int isBaseline:1;
         unsigned int isTest:1;
     } _has;
 }
 
 + (id)options;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool enableImagesForDupes; // @synthesize enableImagesForDupes=_enableImagesForDupes;
 @property(nonatomic) _Bool isBaseline; // @synthesize isBaseline=_isBaseline;
 @property(nonatomic) _Bool isTest; // @synthesize isTest=_isTest;
 @property(retain, nonatomic) ADUserTargetingProperties *properties; // @synthesize properties=_properties;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -35,6 +38,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasEnableImagesForDupes;
 @property(nonatomic) _Bool hasIsBaseline;
 @property(nonatomic) _Bool hasIsTest;
 @property(readonly, nonatomic) _Bool hasProperties;

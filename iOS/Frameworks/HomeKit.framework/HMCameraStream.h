@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _HMCameraStream;
+@class NSNumber, _HMCameraStream;
 
 @interface HMCameraStream
 {
     _HMCameraStream *_stream;
 }
 
-@property(retain, nonatomic) _HMCameraStream *stream; // @synthesize stream=_stream;
 - (void).cxx_destruct;
-- (id)audioVolume;
+@property(retain, nonatomic) _HMCameraStream *stream; // @synthesize stream=_stream;
+@property(readonly, nonatomic) NSNumber *audioVolume;
 - (void)updateAudioVolume:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAudioStreamSetting:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAudioStreamSetting:(unsigned long long)arg1;

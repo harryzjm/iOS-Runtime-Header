@@ -14,23 +14,9 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct ActivityStateChangeObserver;
 
-struct AdClickAttribution {
-    struct Campaign _field1;
-    struct Source _field2;
-    struct Destination _field3;
-    struct WallTime _field4;
-    struct Optional<WebCore::AdClickAttribution::Conversion> _field5;
-    struct Optional<WTF::WallTime> _field6;
-};
-
-struct AgentRegistry {
-    struct Vector<std::__1::unique_ptr<Inspector::InspectorAgentBase, std::__1::default_delete<Inspector::InspectorAgentBase>>, 0, WTF::CrashOnOverflow, 16> _field1;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field2;
-};
-
 struct AlternativeTextClient;
 
-struct ApplicationCacheHost;
+struct AlternativeTextUIController;
 
 struct ApplicationCacheStorage;
 
@@ -43,21 +29,7 @@ struct ApplicationManifest {
     struct URL _field6;
 };
 
-struct Archive;
-
-struct ArchiveResource {
-    CDUnknownFunctionPointerType *_field1;
-    unsigned int _field2;
-    struct URL _field3;
-    struct ResourceResponse _field4;
-    struct Ref<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> _field5;
-    struct String _field6;
-    struct String _field7;
-    struct String _field8;
-    _Bool _field9;
-};
-
-struct ArchiveResourceCollection;
+struct ArchiveResource;
 
 struct AtomString {
     struct String _field1;
@@ -67,22 +39,16 @@ struct Atomic<unsigned char> {
     struct atomic<unsigned char> value;
 };
 
-struct AudioTrackList;
-
 struct AuthenticatorCoordinator;
 
 struct BackForwardController;
 
-struct BackForwardItemIdentifier {
-    struct ObjectIdentifier<WebCore::ProcessIdentifierType> _field1;
-    struct ObjectIdentifier<WebCore::BackForwardItemIdentifier::ItemIdentifierType> _field2;
-};
-
 struct BackForwardList;
 
-struct BackendDispatcher;
-
-struct Blob;
+struct BoundaryPoint {
+    struct Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field1;
+    unsigned int _field2;
+};
 
 struct CGAffineTransform {
     double _field1;
@@ -92,8 +58,6 @@ struct CGAffineTransform {
     double _field5;
     double _field6;
 };
-
-struct CGPath;
 
 struct CGPoint {
     double x;
@@ -112,37 +76,11 @@ struct CGSize {
 
 struct CSSAnimationController;
 
-struct CacheControlDirectives {
-    struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> _field1;
-    struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> _field2;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-};
-
 struct CacheStorageProvider;
-
-struct CachedResource;
-
-struct CachedResourceHandle<WebCore::CachedRawResource> {
-    struct CachedResource *_field1;
-};
-
-struct CachedResourceLoader;
 
 struct CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>;
 
 struct CallableWrapperBase<void>;
-
-struct Campaign {
-    unsigned int _field1;
-};
-
-struct CertificateInfo {
-    struct RetainPtr<__SecTrust *> _field1;
-    struct RetainPtr<const __CFArray *> _field2;
-};
 
 struct Chrome;
 
@@ -156,165 +94,46 @@ struct Color {
 struct Command {
     struct EditorInternalCommand *_field1;
     int _field2;
-    struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> _field3;
+    struct RefPtr<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> _field3;
+    struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> _field4;
 };
 
-struct CommonHeader;
+struct CompactPointerTuple<WebCore::RenderObject *, unsigned char> {
+    unsigned long long _field1;
+};
 
 struct ContainerNode;
 
-struct ContentFilter;
-
-struct Conversion {
-    unsigned int _field1;
-    unsigned int _field2;
-    _Bool _field3;
-};
-
 struct CookieJar;
-
-struct CustomHeaderFields;
-
-struct DOMPromiseDeferred<void>;
 
 struct DOMWrapperWorld {
     unsigned int _field1;
     struct VM *_field2;
-    struct HashSet<WebCore::WindowProxy *, WTF::PtrHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> _field3;
-    struct HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::PtrHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>> _field4;
-    _Bool _field5;
-    _Bool _field6;
+    struct HashSet<WebCore::WindowProxy *, WTF::DefaultHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> _field3;
+    struct HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::DefaultHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>> _field4;
+    struct String _field5;
+    int _field6;
     _Bool _field7;
+    _Bool _field8;
 };
 
 struct DatabaseProvider;
 
 struct Debugger;
 
-struct DebuggerCallFrame;
-
-struct DeferrableTask<WebCore::Timer> {
-    struct WeakPtrFactory<WebCore::DeferrableTask<WebCore::Timer>> _field1;
-    struct TaskDispatcher<WebCore::Timer> _field2;
-    _Bool _field3;
-    _Bool _field4;
-};
-
-struct Deque<WTF::Function<void ()>, 0> {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    struct VectorBuffer<WTF::Function<void ()>, 0> _field3;
-};
-
-struct Deque<WTF::RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>>, 0> {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    struct VectorBuffer<WTF::RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>>, 0> _field3;
-};
-
-struct Destination {
-    struct RegistrableDomain _field1;
-};
-
 struct DeviceOrientationClientMock;
 
 struct DeviceOrientationData;
 
+struct DeviceOrientationUpdateProvider;
+
 struct DiagnosticLoggingClient;
+
+struct DictationAlternative;
 
 struct Document;
 
-struct DocumentLoader {
-    CDUnknownFunctionPointerType *_field1;
-    struct Frame *_field2;
-    unsigned int _field3;
-    CDUnknownFunctionPointerType *_field4;
-    CDUnknownFunctionPointerType *_field5;
-    _Bool _field6;
-    struct Ref<WebCore::CachedResourceLoader, WTF::DumbPtrTraits<WebCore::CachedResourceLoader>> _field7;
-    struct CachedResourceHandle<WebCore::CachedRawResource> _field8;
-    struct HashMap<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>> _field9;
-    struct HashMap<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>> _field10;
-    struct HashMap<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>> _field11;
-    struct DocumentWriter _field12;
-    struct ResourceRequest _field13;
-    struct SubstituteData _field14;
-    struct ResourceRequest _field15;
-    struct ResourceRequest _field16;
-    struct ResourceResponse _field17;
-    struct ResourceError _field18;
-    _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    _Bool _field22;
-    _Bool _field23;
-    _Bool _field24;
-    _Bool _field25;
-    struct StringWithDirection _field26;
-    struct String _field27;
-    struct NavigationAction _field28;
-    struct ResourceRequest _field29;
-    struct Vector<WebCore::ResourceResponse, 0, WTF::CrashOnOverflow, 16> _field30;
-    _Bool _field31;
-    struct HashMap<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>, WTF::PtrHash<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>> _field32;
-    struct Timer _field33;
-    struct unique_ptr<WebCore::ArchiveResourceCollection, std::__1::default_delete<WebCore::ArchiveResourceCollection>> _field34;
-    struct RefPtr<WebCore::Archive, WTF::DumbPtrTraits<WebCore::Archive>> _field35;
-    struct RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> _field36;
-    struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> _field37;
-    struct Vector<WebCore::ResourceRequest, 0, WTF::CrashOnOverflow, 16> _field38;
-    struct String _field39;
-    _Bool _field40;
-    _Bool _field41;
-    struct LoadTiming _field42;
-    struct MonotonicTime _field43;
-    unsigned long long _field44;
-    struct Timer _field45;
-    _Bool _field46;
-    _Bool _field47;
-    struct HashMap<unsigned long long, WebCore::LinkIcon, WTF::IntHash<unsigned long long>, WTF::HashTraits<unsigned long long>, WTF::HashTraits<WebCore::LinkIcon>> _field48;
-    struct HashMap<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<unsigned long long>> _field49;
-    struct Vector<WebCore::LinkIcon, 0, WTF::CrashOnOverflow, 16> _field50;
-    struct HashMap<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<unsigned long long>> _field51;
-    struct Vector<WebCore::CustomHeaderFields, 0, WTF::CrashOnOverflow, 16> _field52;
-    _Bool _field53;
-    unsigned char _field54;
-    struct unique_ptr<WebCore::ApplicationCacheHost, std::__1::default_delete<WebCore::ApplicationCacheHost>> _field55;
-    struct unique_ptr<WebCore::ContentFilter, std::__1::default_delete<WebCore::ContentFilter>> _field56;
-    struct unique_ptr<WebCore::PreviewConverter, std::__1::default_delete<WebCore::PreviewConverter>> _field57;
-    struct HashMap<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>> _field58;
-    struct HashMap<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>> _field59;
-    struct String _field60;
-    struct String _field61;
-    _Bool _field62;
-    struct String _field63;
-    _Bool _field64;
-    unsigned char _field65;
-    unsigned char _field66;
-    struct OptionSet<WebCore::AutoplayQuirk> _field67;
-    unsigned char _field68;
-    unsigned char _field69;
-    unsigned char _field70;
-    unsigned char _field71;
-    unsigned char _field72;
-    struct Optional<WebCore::ServiceWorkerRegistrationData> _field73;
-    struct Optional<WebCore::DocumentLoader::TemporaryServiceWorkerClient> _field74;
-    _Bool _field75;
-    struct String _field76;
-};
-
-struct DocumentParser;
-
-struct DocumentWriter {
-    struct Frame *_field1;
-    _Bool _field2;
-    struct String _field3;
-    _Bool _field4;
-    struct String _field5;
-    struct RefPtr<WebCore::TextResourceDecoder, WTF::DumbPtrTraits<WebCore::TextResourceDecoder>> _field6;
-    struct RefPtr<WebCore::DocumentParser, WTF::DumbPtrTraits<WebCore::DocumentParser>> _field7;
-    int _field8;
-};
+struct DocumentLoader;
 
 struct DragCaretController;
 
@@ -324,10 +143,10 @@ struct DragData {
     struct IntPoint _field1;
     struct IntPoint _field2;
     void *_field3;
-    int _field4;
-    int _field5;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field6;
-    int _field7;
+    struct OptionSet<WebCore::DragOperation> _field4;
+    struct OptionSet<WebCore::DragApplicationFlags> _field5;
+    Vector_05504c84 _field6;
+    struct OptionSet<WebCore::DragDestinationAction> _field7;
     struct String _field8;
 };
 
@@ -340,7 +159,7 @@ struct DragImage {
 struct DragItem {
     struct DragImage _field1;
     struct FloatPoint _field2;
-    int _field3;
+    struct Optional<WebCore::DragSourceAction> _field3;
     struct IntPoint _field4;
     struct IntPoint _field5;
     struct IntPoint _field6;
@@ -352,8 +171,6 @@ struct DragItem {
 };
 
 struct EditingStyle;
-
-struct Editor;
 
 struct EditorClient;
 
@@ -368,12 +185,13 @@ struct Element {
     struct TreeScope *_field6;
     struct Node *_field7;
     struct Node *_field8;
-    union DataUnion _field9;
-    struct WeakPtrFactory<WebCore::ContainerNode> _field10;
-    struct Node *_field11;
+    struct CompactPointerTuple<WebCore::RenderObject *, unsigned char> _field9;
+    struct unique_ptr<WebCore::NodeRareData, WebCore::Node::NodeRareDataDeleter> _field10;
+    struct WeakPtrFactory<WebCore::ContainerNode, WTF::EmptyCounter> _field11;
     struct Node *_field12;
-    struct QualifiedName _field13;
-    struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData>> _field14;
+    struct Node *_field13;
+    struct QualifiedName _field14;
+    struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData>> _field15;
 };
 
 struct ElementData;
@@ -385,8 +203,6 @@ struct EventHandler;
 struct EventPath;
 
 struct EventTarget;
-
-struct ExecState;
 
 struct ExtendedColor;
 
@@ -401,9 +217,9 @@ struct FileChooserClient;
 struct FileChooserSettings {
     _Bool _field1;
     _Bool _field2;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field3;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field4;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field5;
+    Vector_05504c84 _field3;
+    Vector_05504c84 _field4;
+    Vector_05504c84 _field5;
     int _field6;
 };
 
@@ -431,47 +247,42 @@ struct FloatSize {
 
 struct FocusController;
 
-struct FormData;
-
 struct Frame {
     CDUnknownFunctionPointerType *_field1;
     struct atomic<unsigned int> _field2;
     struct Ref<WebCore::WindowProxy, WTF::DumbPtrTraits<WebCore::WindowProxy>> _field3;
-    struct HashSet<WebCore::FrameDestructionObserver *, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> _field4;
-    struct Frame *_field5;
-    struct Page *_field6;
-    struct RefPtr<WebCore::Settings, WTF::DumbPtrTraits<WebCore::Settings>> _field7;
-    struct FrameTree _field8;
-    struct UniqueRef<WebCore::FrameLoader> _field9;
-    struct UniqueRef<WebCore::NavigationScheduler> _field10;
-    struct HTMLFrameOwnerElement *_field11;
-    struct RefPtr<WebCore::FrameView, WTF::DumbPtrTraits<WebCore::FrameView>> _field12;
-    struct RefPtr<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> _field13;
-    struct UniqueRef<WebCore::ScriptController> _field14;
-    struct UniqueRef<WebCore::Editor> _field15;
-    struct UniqueRef<WebCore::FrameSelection> _field16;
-    struct UniqueRef<WebCore::CSSAnimationController> _field17;
-    struct RetainPtr<NSArray> _field18;
-    struct ViewportArguments _field19;
-    _Bool _field20;
+    struct HashSet<WebCore::FrameDestructionObserver *, WTF::DefaultHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> _field4;
+    struct Vector<std::__1::pair<WTF::Ref<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>>, WTF::UniqueRef<WebCore::UserScript>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field5;
+    struct Frame *_field6;
+    struct Page *_field7;
+    struct RefPtr<WebCore::Settings, WTF::DumbPtrTraits<WebCore::Settings>> _field8;
+    struct FrameTree _field9;
+    struct UniqueRef<WebCore::FrameLoader> _field10;
+    struct UniqueRef<WebCore::NavigationScheduler> _field11;
+    struct HTMLFrameOwnerElement *_field12;
+    struct RefPtr<WebCore::FrameView, WTF::DumbPtrTraits<WebCore::FrameView>> _field13;
+    struct RefPtr<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> _field14;
+    struct UniqueRef<WebCore::ScriptController> _field15;
+    struct UniqueRef<WebCore::CSSAnimationController> _field16;
+    struct RetainPtr<NSArray> _field17;
+    struct ViewportArguments _field18;
+    _Bool _field19;
+    struct VisibleSelection _field20;
     struct VisibleSelection _field21;
-    struct VisibleSelection _field22;
+    float _field22;
     float _field23;
-    float _field24;
-    int _field25;
-    _Bool _field26;
+    int _field24;
+    _Bool _field25;
+    unsigned int _field26;
     unsigned int _field27;
-    unsigned int _field28;
-    _Bool _field29;
-    unsigned int _field30;
-    struct UniqueRef<WebCore::EventHandler> _field31;
+    _Bool _field28;
+    unsigned int _field29;
+    struct UniqueRef<WebCore::EventHandler> _field30;
 };
 
 struct FrameDestructionObserver;
 
 struct FrameLoader;
-
-struct FrameSelection;
 
 struct FrameTree {
     struct Frame *_field1;
@@ -488,8 +299,6 @@ struct FrameTree {
 
 struct FrameView;
 
-struct FrontendRouter;
-
 struct Function<void ()> {
     struct unique_ptr<WTF::Detail::CallableWrapperBase<void>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void>>> _field1;
 };
@@ -498,41 +307,30 @@ struct Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)> {
     struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>>> m_callableWrapper;
 };
 
-struct GenericEventQueue {
-    struct EventTarget *_field1;
-    struct GenericTaskQueue<WebCore::Timer> _field2;
-    struct Deque<WTF::RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>>, 0> _field3;
-    _Bool _field4;
-    _Bool _field5;
-};
-
-struct GenericTaskQueue<WebCore::Timer> {
-    struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer>> _field1;
-    struct TaskDispatcher<WebCore::Timer> _field2;
-    unsigned int _field3;
-    _Bool _field4;
-};
-
 struct Geolocation {
     CDUnknownFunctionPointerType *_field1;
     struct ScriptExecutionContext *_field2;
     unsigned int _field3;
     struct Weak<WebCore::JSDOMObject> _field4;
     unsigned int _field5;
-    struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field6;
-    struct Watchers _field7;
-    struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field8;
-    struct RefPtr<WebCore::Geoposition, WTF::DumbPtrTraits<WebCore::Geoposition>> _field9;
-    int _field10;
-    _Bool _field11;
-    _Bool _field12;
+    struct WeakPtr<WebCore::Navigator, WTF::EmptyCounter> _field6;
+    struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field7;
+    struct Watchers _field8;
+    struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field9;
+    struct RefPtr<WebCore::GeolocationPosition, WTF::DumbPtrTraits<WebCore::GeolocationPosition>> _field10;
+    int _field11;
+    struct String _field12;
     _Bool _field13;
-    struct RefPtr<WebCore::PositionError, WTF::DumbPtrTraits<WebCore::PositionError>> _field14;
-    struct Timer _field15;
-    struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field16;
+    _Bool _field14;
+    _Bool _field15;
+    struct RefPtr<WebCore::GeolocationPositionError, WTF::DumbPtrTraits<WebCore::GeolocationPositionError>> _field16;
+    struct Timer _field17;
+    struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field18;
 };
 
-struct GeolocationPosition {
+struct GeolocationPosition;
+
+struct GeolocationPositionData {
     double timestamp;
     double latitude;
     double longitude;
@@ -544,7 +342,7 @@ struct GeolocationPosition {
     struct Optional<double> floorLevel;
 };
 
-struct Geoposition;
+struct GeolocationPositionError;
 
 struct HTMLFrameOwnerElement {
     CDUnknownFunctionPointerType *_field1;
@@ -555,587 +353,165 @@ struct HTMLFrameOwnerElement {
     struct TreeScope *_field6;
     struct Node *_field7;
     struct Node *_field8;
-    union DataUnion _field9;
-    struct WeakPtrFactory<WebCore::ContainerNode> _field10;
-    struct Node *_field11;
+    struct CompactPointerTuple<WebCore::RenderObject *, unsigned char> _field9;
+    struct unique_ptr<WebCore::NodeRareData, WebCore::Node::NodeRareDataDeleter> _field10;
+    struct WeakPtrFactory<WebCore::ContainerNode, WTF::EmptyCounter> _field11;
     struct Node *_field12;
-    struct QualifiedName _field13;
-    struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData>> _field14;
-    struct Frame *_field15;
-    int _field16;
+    struct Node *_field13;
+    struct QualifiedName _field14;
+    struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData>> _field15;
+    struct Frame *_field16;
+    int _field17;
 };
 
-struct HTMLImageLoader;
+struct HTMLVideoElement;
 
-struct HTMLSourceElement;
-
-struct HTMLVideoElement {
-    CDUnknownFunctionPointerType *_field1;
-    struct Weak<WebCore::JSDOMObject> _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    struct ContainerNode *_field5;
-    struct TreeScope *_field6;
-    struct Node *_field7;
-    struct Node *_field8;
-    union DataUnion _field9;
-    struct WeakPtrFactory<WebCore::ContainerNode> _field10;
-    struct Node *_field11;
-    struct Node *_field12;
-    struct QualifiedName _field13;
-    struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData>> _field14;
-    CDUnknownFunctionPointerType *_field15;
-    struct ScriptExecutionContext *_field16;
-    unsigned int _field17;
-    CDUnknownFunctionPointerType *_field18;
-    CDUnknownFunctionPointerType *_field19;
-    CDUnknownFunctionPointerType *_field20;
-    CDUnknownFunctionPointerType *_field21;
-    CDUnknownFunctionPointerType *_field22;
-    struct WeakPtrFactory<WebCore::MediaProducer> _field23;
-    CDUnknownFunctionPointerType *_field24;
-    CDUnknownFunctionPointerType *_field25;
-    CDUnknownFunctionPointerType *_field26;
-    CDUnknownFunctionPointerType *_field27;
-    CDUnknownFunctionPointerType *_field28;
-    CDUnknownFunctionPointerType *_field29;
-    CDUnknownFunctionPointerType *_field30;
-    struct Timer _field31;
-    struct Timer _field32;
-    struct Timer _field33;
-    struct Timer _field34;
-    struct Timer _field35;
-    struct DeferrableTask<WebCore::Timer> _field36;
-    struct DeferrableTask<WebCore::Timer> _field37;
-    struct DeferrableTask<WebCore::Timer> _field38;
-    struct DeferrableTask<WebCore::Timer> _field39;
-    struct DeferrableTask<WebCore::Timer> _field40;
-    struct DeferrableTask<WebCore::Timer> _field41;
-    struct DeferrableTask<WebCore::Timer> _field42;
-    struct DeferrableTask<WebCore::Timer> _field43;
-    struct GenericTaskQueue<WebCore::Timer> _field44;
-    struct GenericTaskQueue<WebCore::Timer> _field45;
-    struct GenericTaskQueue<WebCore::Timer> _field46;
-    struct GenericTaskQueue<WebCore::Timer> _field47;
-    struct GenericTaskQueue<WebCore::Timer> _field48;
-    struct GenericTaskQueue<WebCore::Timer> _field49;
-    struct RefPtr<WebCore::TimeRanges, WTF::DumbPtrTraits<WebCore::TimeRanges>> _field50;
-    struct GenericEventQueue _field51;
-    struct DeferrableTask<WebCore::Timer> _field52;
-    struct Vector<WebCore::DOMPromiseDeferred<void>, 0, WTF::CrashOnOverflow, 16> _field53;
-    double _field54;
-    double _field55;
-    double _field56;
-    _Bool _field57;
-    int _field58;
-    int _field59;
-    int _field60;
-    struct URL _field61;
-    struct RefPtr<WebCore::MediaError, WTF::DumbPtrTraits<WebCore::MediaError>> _field62;
-    struct unique_ptr<WebCore::HTMLMediaElement::PendingSeek, std::__1::default_delete<WebCore::HTMLMediaElement::PendingSeek>> _field63;
-    int _field64;
-    double _field65;
-    _Bool _field66;
-    struct MediaTime _field67;
-    struct MonotonicTime _field68;
-    double _field69;
-    struct MonotonicTime _field70;
-    struct MediaTime _field71;
-    int _field72;
-    struct RefPtr<WebCore::HTMLSourceElement, WTF::DumbPtrTraits<WebCore::HTMLSourceElement>> _field73;
-    struct RefPtr<WebCore::HTMLSourceElement, WTF::DumbPtrTraits<WebCore::HTMLSourceElement>> _field74;
-    unsigned int _field75;
-    _Bool _field76;
-    _Bool _field77;
-    struct Function<void ()> _field78;
-    _Bool _field79;
-    struct RetainPtr<CALayer> _field80;
-    struct FloatRect _field81;
-    int _field82;
-    struct RefPtr<WebCore::MediaPlayer, WTF::DumbPtrTraits<WebCore::MediaPlayer>> _field83;
-    int _field84;
-    int _field85;
-    int _field86;
-    struct MediaTime _field87;
-    struct MonotonicTime _field88;
-    struct MonotonicTime _field89;
-    struct MediaTime _field90;
-    struct MediaTime _field91;
-    unsigned int _field92;
-    int _field93;
-    int _field94;
-    int _field95;
-    int _field96;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    int _field97;
-    struct String _field98;
-    struct MediaTime _field99;
-    struct Optional<WebCore::CaptionUserPreferences::CaptionDisplayMode> _field100;
-    struct RefPtr<WebCore::AudioTrackList, WTF::DumbPtrTraits<WebCore::AudioTrackList>> _field101;
-    struct RefPtr<WebCore::TextTrackList, WTF::DumbPtrTraits<WebCore::TextTrackList>> _field102;
-    struct RefPtr<WebCore::VideoTrackList, WTF::DumbPtrTraits<WebCore::VideoTrackList>> _field103;
-    struct Vector<WTF::RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTrack>>, 0, WTF::CrashOnOverflow, 16> _field104;
-    struct PODIntervalTree<WTF::MediaTime, WebCore::TextTrackCue *> _field105;
-    struct Vector<WebCore::PODInterval<WTF::MediaTime, WebCore::TextTrackCue *>, 0, WTF::CrashOnOverflow, 16> _field106;
-    int _field107;
-    _Bool _field108;
-    struct MediaElementAudioSourceNode *_field109;
-    struct String _field110;
-    struct RefPtr<WebCore::MediaController, WTF::DumbPtrTraits<WebCore::MediaController>> _field111;
-    struct unique_ptr<PAL::SleepDisabler, std::__1::default_delete<PAL::SleepDisabler>> _field112;
-    struct WeakPtr<const WebCore::MediaResourceLoader> _field113;
-    struct RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>> _field114;
-    struct Optional<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> _field115;
-    struct RefPtr<WebCore::WebKitMediaKeys, WTF::DumbPtrTraits<WebCore::WebKitMediaKeys>> _field116;
-    struct RefPtr<WebCore::MediaKeys, WTF::DumbPtrTraits<WebCore::MediaKeys>> _field117;
-    _Bool _field118;
-    _Bool _field119;
-    struct GenericTaskQueue<WebCore::Timer> _field120;
-    struct unique_ptr<WebCore::MediaElementSession, std::__1::default_delete<WebCore::MediaElementSession>> _field121;
-    unsigned long long _field122;
-    struct RefPtr<WTF::Logger, WTF::DumbPtrTraits<WTF::Logger>> _field123;
-    void *_field124;
-    struct RefPtr<WebCore::MediaControlsHost, WTF::DumbPtrTraits<WebCore::MediaControlsHost>> _field125;
-    struct RefPtr<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>> _field126;
-    struct RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>> _field127;
-    _Bool _field128;
-    unsigned int _field129;
-    _Bool _field130;
-    _Bool _field131;
-    _Bool _field132;
-    _Bool _field133;
-    _Bool _field134;
-    struct unique_ptr<WebCore::HTMLImageLoader, std::__1::default_delete<WebCore::HTMLImageLoader>> _field135;
-    struct AtomString _field136;
-    unsigned int _field137;
-    unsigned int _field138;
+struct HashMap<CALayer *, CALayer *, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>> {
+    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, CALayer *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, CALayer *>>, WTF::DefaultHash<CALayer *>, WTF::HashMap<CALayer *, CALayer *, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
 };
 
-struct HTTPHeaderMap {
-    struct Vector<WebCore::HTTPHeaderMap::CommonHeader, 0, WTF::CrashOnOverflow, 6> _field1;
-    struct Vector<WebCore::HTTPHeaderMap::UncommonHeader, 0, WTF::CrashOnOverflow, 0> _field2;
+struct HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>> {
+    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>, WTF::DefaultHash<CALayer *>, WTF::HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
 };
 
-struct HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>> {
-    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, CALayer *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, CALayer *>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
+struct HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>> {
+    struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>>, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>>::KeyValuePairTraits, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field1;
 };
 
-struct HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>> {
-    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
+struct HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::DefaultHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>> {
+    struct HashTable<WTF::RetainPtr<CALayer>, WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>, WTF::DefaultHash<WTF::RetainPtr<CALayer>>, WTF::HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::DefaultHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<CALayer>>> _field1;
 };
 
-struct HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>> {
-    struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>>, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>>::KeyValuePairTraits, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field1;
-};
-
-struct HashMap<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>, WTF::PtrHash<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>> {
-    struct HashTable<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::KeyValuePair<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>>, WTF::PtrHash<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashMap<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>, WTF::PtrHash<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>> _field1;
-};
-
-struct HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::PtrHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>> {
-    struct HashTable<WTF::RetainPtr<CALayer>, WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>, WTF::PtrHash<WTF::RetainPtr<CALayer>>, WTF::HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::PtrHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<CALayer>>> _field1;
-};
-
-struct HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::PtrHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>> {
-    struct HashTable<WTF::RetainPtr<WebView>, WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>, WTF::PtrHash<WTF::RetainPtr<WebView>>, WTF::HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::PtrHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<WebView>>> m_impl;
-};
-
-struct HashMap<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>> {
-    struct HashTable<WTF::String, WTF::KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>>, WTF::StringHash, WTF::HashMap<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::String>> _field1;
-};
-
-struct HashMap<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>> {
-    struct HashTable<WTF::String, WTF::KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>>, WTF::StringHash, WTF::HashMap<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>>::KeyValuePairTraits, WTF::HashTraits<WTF::String>> _field1;
+struct HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::DefaultHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>> {
+    struct HashTable<WTF::RetainPtr<WebView>, WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>, WTF::DefaultHash<WTF::RetainPtr<WebView>>, WTF::HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::DefaultHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<WebView>>> m_impl;
 };
 
 struct HashMap<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>, WTF::PtrHash<const char *>, WTF::HashTraits<const char *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>> {
     struct HashTable<const char *, WTF::KeyValuePair<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>>, WTF::PtrHash<const char *>, WTF::HashMap<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>, WTF::PtrHash<const char *>, WTF::HashTraits<const char *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>>::KeyValuePairTraits, WTF::HashTraits<const char *>> _field1;
 };
 
-struct HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IntHash<unsigned int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
-    struct HashTable<int, WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>, WTF::IntHash<unsigned int>, WTF::HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IntHash<unsigned int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>::KeyValuePairTraits, WTF::HashTraits<int>> _field1;
+struct HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
+    struct HashTable<int, WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>, WTF::DefaultHash<int>, WTF::HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>::KeyValuePairTraits, WTF::HashTraits<int>> _field1;
 };
 
-struct HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>;
+struct HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>;
 
-struct HashMap<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<unsigned long long>> {
-    struct HashTable<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, WTF::KeyValuePair<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long>>, WTF::PtrHash<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashMap<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<unsigned long long>>::KeyValuePairTraits, WTF::HashTraits<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>> _field1;
+struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::DefaultHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>> {
+    struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>>, WTF::DefaultHash<unsigned long>, WTF::HashMap<unsigned long, WTF::RetainPtr<id>, WTF::DefaultHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> m_impl;
 };
 
-struct HashMap<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<unsigned long long>> {
-    struct HashTable<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, WTF::KeyValuePair<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long>>, WTF::PtrHash<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashMap<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<unsigned long long>>::KeyValuePairTraits, WTF::HashTraits<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>> _field1;
-};
-
-struct HashMap<unsigned long long, WebCore::LinkIcon, WTF::IntHash<unsigned long long>, WTF::HashTraits<unsigned long long>, WTF::HashTraits<WebCore::LinkIcon>> {
-    struct HashTable<unsigned long long, WTF::KeyValuePair<unsigned long long, WebCore::LinkIcon>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long long, WebCore::LinkIcon>>, WTF::IntHash<unsigned long long>, WTF::HashMap<unsigned long long, WebCore::LinkIcon, WTF::IntHash<unsigned long long>, WTF::HashTraits<unsigned long long>, WTF::HashTraits<WebCore::LinkIcon>>::KeyValuePairTraits, WTF::HashTraits<unsigned long long>> _field1;
-};
-
-struct HashMap<unsigned long, JSC::Breakpoint *, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<JSC::Breakpoint *>> {
-    struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, JSC::Breakpoint *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, JSC::Breakpoint *>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, JSC::Breakpoint *, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<JSC::Breakpoint *>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> _field1;
-};
-
-struct HashMap<unsigned long, JSC::DebuggerParseData, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<JSC::DebuggerParseData>> {
-    struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, JSC::DebuggerParseData>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, JSC::DebuggerParseData>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, JSC::DebuggerParseData, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<JSC::DebuggerParseData>>::KeyValuePairTraits, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> _field1;
-};
-
-struct HashMap<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>> {
-    struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>>::KeyValuePairTraits, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> _field1;
-};
-
-struct HashMap<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>> {
-    struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> _field1;
-};
-
-struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>> {
-    struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::RetainPtr<id>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> m_impl;
-};
-
-struct HashMap<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>> {
-    struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> _field1;
-};
-
-struct HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::PtrHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>> {
-    struct HashTable<void *, WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>>, WTF::PtrHash<void *>, WTF::HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::PtrHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>>::KeyValuePairTraits, WTF::HashTraits<void *>> _field1;
-};
-
-struct HashSet<Inspector::ScriptDebugListener *, WTF::PtrHash<Inspector::ScriptDebugListener *>, WTF::HashTraits<Inspector::ScriptDebugListener *>> {
-    struct HashTable<Inspector::ScriptDebugListener *, Inspector::ScriptDebugListener *, WTF::IdentityExtractor, WTF::PtrHash<Inspector::ScriptDebugListener *>, WTF::HashTraits<Inspector::ScriptDebugListener *>, WTF::HashTraits<Inspector::ScriptDebugListener *>> _field1;
-};
-
-struct HashSet<JSC::JSGlobalObject *, WTF::PtrHash<JSC::JSGlobalObject *>, WTF::HashTraits<JSC::JSGlobalObject *>> {
-    struct HashTable<JSC::JSGlobalObject *, JSC::JSGlobalObject *, WTF::IdentityExtractor, WTF::PtrHash<JSC::JSGlobalObject *>, WTF::HashTraits<JSC::JSGlobalObject *>, WTF::HashTraits<JSC::JSGlobalObject *>> _field1;
+struct HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::DefaultHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>> {
+    struct HashTable<void *, WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>>, WTF::DefaultHash<void *>, WTF::HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::DefaultHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>>::KeyValuePairTraits, WTF::HashTraits<void *>> _field1;
 };
 
 struct HashSet<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>, WTF::SchedulePairHash, WTF::HashTraits<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>>>;
 
-struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
-    struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IdentityExtractor, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field1;
+struct HashSet<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
+    struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IdentityExtractor, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field1;
 };
 
-struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> {
-    struct HashTable<WTF::String, WTF::String, WTF::IdentityExtractor, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::String>> _field1;
+struct HashSet<WTF::String, WTF::DefaultHash<WTF::String>, WTF::HashTraits<WTF::String>> {
+    struct HashTable<WTF::String, WTF::String, WTF::IdentityExtractor, WTF::DefaultHash<WTF::String>, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::String>> _field1;
 };
 
-struct HashSet<WebCore::ActivityStateChangeObserver *, WTF::PtrHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> {
-    struct HashTable<WebCore::ActivityStateChangeObserver *, WebCore::ActivityStateChangeObserver *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> _field1;
+struct HashSet<WebCore::ActivityStateChangeObserver *, WTF::DefaultHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> {
+    struct HashTable<WebCore::ActivityStateChangeObserver *, WebCore::ActivityStateChangeObserver *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> _field1;
 };
 
-struct HashSet<WebCore::FrameDestructionObserver *, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> {
-    struct HashTable<WebCore::FrameDestructionObserver *, WebCore::FrameDestructionObserver *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> _field1;
+struct HashSet<WebCore::FrameDestructionObserver *, WTF::DefaultHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> {
+    struct HashTable<WebCore::FrameDestructionObserver *, WebCore::FrameDestructionObserver *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> _field1;
 };
 
-struct HashSet<WebCore::Page *, WTF::PtrHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> {
-    struct HashTable<WebCore::Page *, WebCore::Page *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> _field1;
+struct HashSet<WebCore::Page *, WTF::DefaultHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> {
+    struct HashTable<WebCore::Page *, WebCore::Page *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> _field1;
 };
 
-struct HashSet<WebCore::RenderObject *, WTF::PtrHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> {
-    struct HashTable<WebCore::RenderObject *, WebCore::RenderObject *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> _field1;
+struct HashSet<WebCore::RenderObject *, WTF::DefaultHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> {
+    struct HashTable<WebCore::RenderObject *, WebCore::RenderObject *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> _field1;
 };
 
-struct HashSet<WebCore::WindowProxy *, WTF::PtrHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> {
-    struct HashTable<WebCore::WindowProxy *, WebCore::WindowProxy *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> _field1;
+struct HashSet<WebCore::WindowProxy *, WTF::DefaultHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> {
+    struct HashTable<WebCore::WindowProxy *, WebCore::WindowProxy *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> _field1;
 };
 
-struct HashSet<WebView *, WTF::PtrHash<WebView *>, WTF::HashTraits<WebView *>> {
-    struct HashTable<WebView *, WebView *, WTF::IdentityExtractor, WTF::PtrHash<WebView *>, WTF::HashTraits<WebView *>, WTF::HashTraits<WebView *>> m_impl;
+struct HashSet<WebView *, WTF::DefaultHash<WebView *>, WTF::HashTraits<WebView *>> {
+    struct HashTable<WebView *, WebView *, WTF::IdentityExtractor, WTF::DefaultHash<WebView *>, WTF::HashTraits<WebView *>, WTF::HashTraits<WebView *>> m_impl;
 };
 
-struct HashSet<unsigned long long, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned long long>> {
-    struct HashTable<unsigned long long, unsigned long long, WTF::IdentityExtractor, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned long long>, WTF::HashTraits<unsigned long long>> _field1;
+struct HashSet<unsigned int, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned int>> {
+    struct HashTable<unsigned int, unsigned int, WTF::IdentityExtractor, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned int>, WTF::HashTraits<unsigned int>> _field1;
 };
 
-struct HashSet<unsigned long, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> {
-    struct HashTable<unsigned long, unsigned long, WTF::IdentityExtractor, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> _field1;
-};
-
-struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, CALayer *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, CALayer *>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> {
+struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, CALayer *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, CALayer *>>, WTF::DefaultHash<CALayer *>, WTF::HashMap<CALayer *, CALayer *, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> {
     struct KeyValuePair<CALayer *, CALayer *> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> {
+struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>, WTF::DefaultHash<CALayer *>, WTF::HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> {
     struct KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<Inspector::ScriptDebugListener *, Inspector::ScriptDebugListener *, WTF::IdentityExtractor, WTF::PtrHash<Inspector::ScriptDebugListener *>, WTF::HashTraits<Inspector::ScriptDebugListener *>, WTF::HashTraits<Inspector::ScriptDebugListener *>> {
-    struct ScriptDebugListener **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<JSC::JSGlobalObject *, JSC::JSGlobalObject *, WTF::IdentityExtractor, WTF::PtrHash<JSC::JSGlobalObject *>, WTF::HashTraits<JSC::JSGlobalObject *>, WTF::HashTraits<JSC::JSGlobalObject *>> {
-    struct JSGlobalObject **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>>, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>>::KeyValuePairTraits, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
+struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>>, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>>::KeyValuePairTraits, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
     struct KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IdentityExtractor, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
+struct HashTable<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IdentityExtractor, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> {
     struct RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::KeyValuePair<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>>, WTF::PtrHash<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashMap<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>, WTF::PtrHash<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>> {
-    struct KeyValuePair<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<WTF::RetainPtr<CALayer>, WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>, WTF::PtrHash<WTF::RetainPtr<CALayer>>, WTF::HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::PtrHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<CALayer>>> {
+struct HashTable<WTF::RetainPtr<CALayer>, WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>, WTF::DefaultHash<WTF::RetainPtr<CALayer>>, WTF::HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::DefaultHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<CALayer>>> {
     struct KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WTF::RetainPtr<WebView>, WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>, WTF::PtrHash<WTF::RetainPtr<WebView>>, WTF::HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::PtrHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<WebView>>> {
+struct HashTable<WTF::RetainPtr<WebView>, WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>, WTF::DefaultHash<WTF::RetainPtr<WebView>>, WTF::HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>, WTF::DefaultHash<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<WebView>>, WTF::HashTraits<WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::RetainPtr<WebView>>> {
     struct KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>> *m_table;
-    unsigned int m_tableSize;
-    unsigned int m_tableSizeMask;
-    unsigned int m_keyCount;
-    unsigned int m_deletedCount;
 };
 
-struct HashTable<WTF::String, WTF::KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>>, WTF::StringHash, WTF::HashMap<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::String>> {
-    struct KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<WTF::String, WTF::KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>>, WTF::StringHash, WTF::HashMap<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>>::KeyValuePairTraits, WTF::HashTraits<WTF::String>> {
-    struct KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<WTF::String, WTF::String, WTF::IdentityExtractor, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::String>> {
+struct HashTable<WTF::String, WTF::String, WTF::IdentityExtractor, WTF::DefaultHash<WTF::String>, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::String>> {
     struct String *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WebCore::ActivityStateChangeObserver *, WebCore::ActivityStateChangeObserver *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> {
+struct HashTable<WebCore::ActivityStateChangeObserver *, WebCore::ActivityStateChangeObserver *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> {
     struct ActivityStateChangeObserver **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WebCore::FrameDestructionObserver *, WebCore::FrameDestructionObserver *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> {
+struct HashTable<WebCore::FrameDestructionObserver *, WebCore::FrameDestructionObserver *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>> {
     struct FrameDestructionObserver **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WebCore::Page *, WebCore::Page *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> {
+struct HashTable<WebCore::Page *, WebCore::Page *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> {
     struct Page **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WebCore::RenderObject *, WebCore::RenderObject *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> {
+struct HashTable<WebCore::RenderObject *, WebCore::RenderObject *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> {
     struct RenderObject **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WebCore::WindowProxy *, WebCore::WindowProxy *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> {
+struct HashTable<WebCore::WindowProxy *, WebCore::WindowProxy *, WTF::IdentityExtractor, WTF::DefaultHash<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>, WTF::HashTraits<WebCore::WindowProxy *>> {
     struct WindowProxy **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<WebView *, WebView *, WTF::IdentityExtractor, WTF::PtrHash<WebView *>, WTF::HashTraits<WebView *>, WTF::HashTraits<WebView *>> {
+struct HashTable<WebView *, WebView *, WTF::IdentityExtractor, WTF::DefaultHash<WebView *>, WTF::HashTraits<WebView *>, WTF::HashTraits<WebView *>> {
     id *m_table;
-    unsigned int m_tableSize;
-    unsigned int m_tableSizeMask;
-    unsigned int m_keyCount;
-    unsigned int m_deletedCount;
 };
 
 struct HashTable<const char *, WTF::KeyValuePair<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>>, WTF::PtrHash<const char *>, WTF::HashMap<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>, WTF::PtrHash<const char *>, WTF::HashTraits<const char *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>>::KeyValuePairTraits, WTF::HashTraits<const char *>> {
     struct KeyValuePair<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<int, WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>, WTF::IntHash<unsigned int>, WTF::HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IntHash<unsigned int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>::KeyValuePairTraits, WTF::HashTraits<int>> {
+struct HashTable<int, WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>, WTF::DefaultHash<int>, WTF::HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>>::KeyValuePairTraits, WTF::HashTraits<int>> {
     struct KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
-struct HashTable<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, WTF::KeyValuePair<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long>>, WTF::PtrHash<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashMap<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<unsigned long long>>::KeyValuePairTraits, WTF::HashTraits<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>> {
-    struct KeyValuePair<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
+struct HashTable<unsigned int, unsigned int, WTF::IdentityExtractor, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned int>, WTF::HashTraits<unsigned int>> {
+    unsigned int *_field1;
 };
 
-struct HashTable<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, WTF::KeyValuePair<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long>>, WTF::PtrHash<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashMap<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>, WTF::HashTraits<unsigned long long>>::KeyValuePairTraits, WTF::HashTraits<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>>> {
-    struct KeyValuePair<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long long, WTF::KeyValuePair<unsigned long long, WebCore::LinkIcon>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long long, WebCore::LinkIcon>>, WTF::IntHash<unsigned long long>, WTF::HashMap<unsigned long long, WebCore::LinkIcon, WTF::IntHash<unsigned long long>, WTF::HashTraits<unsigned long long>, WTF::HashTraits<WebCore::LinkIcon>>::KeyValuePairTraits, WTF::HashTraits<unsigned long long>> {
-    struct KeyValuePair<unsigned long long, WebCore::LinkIcon> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long long, unsigned long long, WTF::IdentityExtractor, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned long long>, WTF::HashTraits<unsigned long long>> {
-    unsigned long long *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, JSC::Breakpoint *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, JSC::Breakpoint *>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, JSC::Breakpoint *, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<JSC::Breakpoint *>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> {
-    struct KeyValuePair<unsigned long, JSC::Breakpoint *> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, JSC::DebuggerParseData>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, JSC::DebuggerParseData>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, JSC::DebuggerParseData, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<JSC::DebuggerParseData>>::KeyValuePairTraits, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> {
-    struct KeyValuePair<unsigned long, JSC::DebuggerParseData> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>>::KeyValuePairTraits, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> {
-    struct KeyValuePair<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> {
-    struct KeyValuePair<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::RetainPtr<id>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> {
+struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::RetainPtr<id>>>, WTF::DefaultHash<unsigned long>, WTF::HashMap<unsigned long, WTF::RetainPtr<id>, WTF::DefaultHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> {
     struct KeyValuePair<unsigned long, WTF::RetainPtr<id>> *m_table;
-    unsigned int m_tableSize;
-    unsigned int m_tableSizeMask;
-    unsigned int m_keyCount;
-    unsigned int m_deletedCount;
 };
 
-struct HashTable<unsigned long, WTF::KeyValuePair<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>>, WTF::IntHash<unsigned long>, WTF::HashMap<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>>::KeyValuePairTraits, WTF::HashTraits<unsigned long>> {
-    struct KeyValuePair<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<unsigned long, unsigned long, WTF::IdentityExtractor, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> {
-    unsigned long long *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct HashTable<void *, WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>>, WTF::PtrHash<void *>, WTF::HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::PtrHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>>::KeyValuePairTraits, WTF::HashTraits<void *>> {
+struct HashTable<void *, WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<void *, JSC::Weak<JSC::JSObject>>>, WTF::DefaultHash<void *>, WTF::HashMap<void *, JSC::Weak<JSC::JSObject>, WTF::DefaultHash<void *>, WTF::HashTraits<void *>, WTF::HashTraits<JSC::Weak<JSC::JSObject>>>::KeyValuePairTraits, WTF::HashTraits<void *>> {
     struct KeyValuePair<void *, JSC::Weak<JSC::JSObject>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
 struct Highlight {
@@ -1145,7 +521,7 @@ struct Highlight {
     struct Color _field4;
     struct Color _field5;
     int _field6;
-    struct Vector<WebCore::FloatQuad, 0, WTF::CrashOnOverflow, 16> _field7;
+    struct Vector<WebCore::FloatQuad, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field7;
     _Bool _field8;
 };
 
@@ -1169,52 +545,14 @@ struct HitTestResult {
     struct RefPtr<WebCore::Element, WTF::DumbPtrTraits<WebCore::Element>> _field6;
     struct RefPtr<WebCore::Scrollbar, WTF::DumbPtrTraits<WebCore::Scrollbar>> _field7;
     _Bool _field8;
-    struct unique_ptr<WTF::ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>, std::__1::default_delete<WTF::ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>>> _field9;
+    struct unique_ptr<WTF::ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>, std::__1::default_delete<WTF::ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>>> _field9;
 };
 
 struct IDBConnectionToServer;
 
 struct Image;
 
-struct InspectorAgent;
-
-struct InspectorBackendDispatchTask;
-
-struct InspectorClient;
-
-struct InspectorController {
-    CDUnknownFunctionPointerType *_field1;
-    struct Ref<WebCore::InstrumentingAgents, WTF::DumbPtrTraits<WebCore::InstrumentingAgents>> _field2;
-    struct unique_ptr<WebCore::WebInjectedScriptManager, std::__1::default_delete<WebCore::WebInjectedScriptManager>> _field3;
-    struct Ref<Inspector::FrontendRouter, WTF::DumbPtrTraits<Inspector::FrontendRouter>> _field4;
-    struct Ref<Inspector::BackendDispatcher, WTF::DumbPtrTraits<Inspector::BackendDispatcher>> _field5;
-    struct unique_ptr<WebCore::InspectorOverlay, std::__1::default_delete<WebCore::InspectorOverlay>> _field6;
-    struct Ref<WTF::Stopwatch, WTF::DumbPtrTraits<WTF::Stopwatch>> _field7;
-    struct PageScriptDebugServer _field8;
-    struct AgentRegistry _field9;
-    struct Page *_field10;
-    struct InspectorClient *_field11;
-    struct InspectorFrontendClient *_field12;
-    struct InspectorAgent *_field13;
-    struct InspectorDOMAgent *_field14;
-    struct InspectorPageAgent *_field15;
-    _Bool _field16;
-    _Bool _field17;
-    _Bool _field18;
-    _Bool _field19;
-};
-
-struct InspectorDOMAgent;
-
-struct InspectorFrontendClient;
-
-struct InspectorFrontendHost;
-
-struct InspectorOverlay;
-
-struct InspectorPageAgent;
-
-struct InstrumentingAgents;
+struct InspectorController;
 
 struct IntPoint {
     int _field1;
@@ -1233,8 +571,6 @@ struct IntSize {
 
 struct JSCell;
 
-struct JSGlobalObject;
-
 struct JSValue {
     union EncodedValueDescriptor u;
 };
@@ -1245,37 +581,15 @@ struct KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints
 
 struct KeyValuePair<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int>;
 
-struct KeyValuePair<WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>, WTF::RefPtr<WebCore::SubstituteResource, WTF::DumbPtrTraits<WebCore::SubstituteResource>>>;
-
 struct KeyValuePair<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>;
 
 struct KeyValuePair<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProviderInitializationListener>>>;
-
-struct KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>;
-
-struct KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>;
 
 struct KeyValuePair<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>;
 
 struct KeyValuePair<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>;
 
-struct KeyValuePair<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long>;
-
-struct KeyValuePair<std::__1::unique_ptr<WebCore::IconLoader, std::__1::default_delete<WebCore::IconLoader>>, unsigned long long>;
-
-struct KeyValuePair<unsigned long long, WebCore::LinkIcon>;
-
-struct KeyValuePair<unsigned long, JSC::Breakpoint *>;
-
-struct KeyValuePair<unsigned long, JSC::DebuggerParseData>;
-
-struct KeyValuePair<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>;
-
-struct KeyValuePair<unsigned long, WTF::RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader>>>;
-
 struct KeyValuePair<unsigned long, WTF::RetainPtr<id>>;
-
-struct KeyValuePair<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>;
 
 struct KeyValuePair<void *, JSC::Weak<JSC::JSObject>>;
 
@@ -1315,7 +629,7 @@ struct KeyboardEvent {
     struct Optional<unsigned int> _field21;
     struct Optional<unsigned int> _field22;
     _Bool _field23;
-    struct Vector<WebCore::KeypressCommand, 0, WTF::CrashOnOverflow, 16> _field24;
+    struct Vector<WebCore::KeypressCommand, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field24;
 };
 
 struct KeypressCommand;
@@ -1331,95 +645,73 @@ struct LayoutUnit {
     int _field1;
 };
 
+struct LegacyPreviewLoaderClient {
+    CDUnknownFunctionPointerType *_field1;
+    unsigned int _field2;
+};
+
 struct LegacyWebArchive {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
     struct RefPtr<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>> _field3;
-    struct Vector<WTF::Ref<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>>, 0, WTF::CrashOnOverflow, 16> _field4;
-    struct Vector<WTF::Ref<WebCore::Archive, WTF::DumbPtrTraits<WebCore::Archive>>, 0, WTF::CrashOnOverflow, 16> _field5;
+    struct Vector<WTF::Ref<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field4;
+    struct Vector<WTF::Ref<WebCore::Archive, WTF::DumbPtrTraits<WebCore::Archive>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field5;
 };
 
 struct LibWebRTCProvider;
 
-struct LinkIcon;
-
-struct ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>;
-
-struct LoadTiming {
-    struct WallTime _field1;
-    struct MonotonicTime _field2;
-    struct MonotonicTime _field3;
-    struct MonotonicTime _field4;
-    struct MonotonicTime _field5;
-    struct MonotonicTime _field6;
-    struct MonotonicTime _field7;
-    struct MonotonicTime _field8;
-    struct MonotonicTime _field9;
-    struct MonotonicTime _field10;
-    struct MonotonicTime _field11;
-    short _field12;
-    _Bool _field13;
-    _Bool _field14;
-};
+struct ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>;
 
 struct Lock {
     struct Atomic<unsigned char> m_byte;
 };
 
-struct Logger;
-
 struct LowPowerModeNotifier;
 
-struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> {
-    struct Seconds _field1;
-};
-
-struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> {
-    struct WallTime _field1;
-};
-
-struct MediaController;
-
-struct MediaControlsHost;
-
-struct MediaElementAudioSourceNode;
-
-struct MediaElementSession;
-
-struct MediaError;
-
-struct MediaKeys;
-
-struct MediaPlayer;
-
-struct MediaStream;
-
-struct MediaTime {
-    union {
-        long long _field1;
-        double _field2;
-    } _field1;
-    unsigned int _field2;
-    unsigned char _field3;
-};
+struct MediaRecorderProvider;
 
 struct MimeClassInfo;
+
+struct Monostate;
 
 struct MonotonicTime {
     double _field1;
 };
 
-struct MouseEventData {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    struct LayoutPoint _field6;
-    struct FloatPoint _field7;
-    short _field8;
-    unsigned short _field9;
-    _Bool _field10;
+struct NakedPtr<WebCore::DocumentLoader> {
+    struct DocumentLoader *_field1;
+};
+
+struct NakedPtr<WebCore::Frame> {
+    struct Frame *m_ptr;
+};
+
+struct NakedPtr<WebCore::Geolocation> {
+    struct Geolocation *_field1;
+};
+
+struct NakedPtr<WebCore::HTMLVideoElement> {
+    struct HTMLVideoElement *_field1;
+};
+
+struct NakedPtr<WebCore::InspectorController> {
+    struct InspectorController *m_ptr;
+};
+
+struct NakedPtr<WebCore::Page> {
+    struct Page *_field1;
+};
+
+struct NakedPtr<WebInspectorFrontendClient> {
+    struct WebInspectorFrontendClient *m_ptr;
+};
+
+struct NakedRef<WebCore::ArchiveResource> {
+    struct ArchiveResource *_field1;
+};
+
+struct NakedRef<WebCore::Geolocation> {
+    struct Geolocation *_field1;
 };
 
 struct Navigation {
@@ -1427,65 +719,13 @@ struct Navigation {
     unsigned char _field2;
 };
 
-struct NavigationAction {
-    struct Optional<WebCore::NavigationAction::Requester> _field1;
-    struct ResourceRequest _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned char _field5;
-    struct Optional<WebCore::NavigationAction::UIEventWithKeyStateData> _field6;
-    struct Optional<WebCore::NavigationAction::MouseEventData> _field7;
-    struct RefPtr<WebCore::UserGestureToken, WTF::DumbPtrTraits<WebCore::UserGestureToken>> _field8;
-    struct AtomString _field9;
-    _Bool _field10;
-    _Bool _field11;
-    _Bool _field12;
-    struct Optional<WebCore::BackForwardItemIdentifier> _field13;
-    struct Optional<WebCore::BackForwardItemIdentifier> _field14;
-    _Bool _field15;
-    _Bool _field16;
-    struct Optional<WebCore::AdClickAttribution> _field17;
-};
-
 struct NavigationScheduler;
-
-struct NetworkLoadMetrics {
-    struct Seconds _field1;
-    struct Seconds _field2;
-    struct Seconds _field3;
-    struct Seconds _field4;
-    struct Seconds _field5;
-    struct Seconds _field6;
-    struct Seconds _field7;
-    struct Seconds _field8;
-    struct String _field9;
-    struct String _field10;
-    struct String _field11;
-    unsigned char _field12;
-    struct String _field13;
-    struct String _field14;
-    _Bool _field15;
-    struct HTTPHeaderMap _field16;
-    unsigned int _field17;
-    unsigned int _field18;
-    unsigned long long _field19;
-    unsigned long long _field20;
-    unsigned long long _field21;
-};
 
 struct Node;
 
-struct NodeRareDataBase;
+struct NodeRareData;
 
-struct ObjectIdentifier<WebCore::BackForwardItemIdentifier::ItemIdentifierType> {
-    unsigned long long _field1;
-};
-
-struct ObjectIdentifier<WebCore::DocumentIdentifierType> {
-    unsigned long long _field1;
-};
-
-struct ObjectIdentifier<WebCore::PageIdentifierType> {
+struct ObjectIdentifier<WebCore::DictationContextType> {
     unsigned long long _field1;
 };
 
@@ -1493,19 +733,19 @@ struct ObjectIdentifier<WebCore::ProcessIdentifierType> {
     unsigned long long m_identifier;
 };
 
-struct ObjectIdentifier<WebCore::ServiceWorkerIdentifierType> {
-    unsigned long long _field1;
-};
-
-struct ObjectIdentifier<WebCore::ServiceWorkerRegistrationIdentifierType> {
-    unsigned long long _field1;
-};
-
 struct OptionSet<WebCore::ActivityState::Flag> {
     unsigned int _field1;
 };
 
-struct OptionSet<WebCore::AutoplayQuirk> {
+struct OptionSet<WebCore::DragApplicationFlags> {
+    unsigned char _field1;
+};
+
+struct OptionSet<WebCore::DragDestinationAction> {
+    unsigned char _field1;
+};
+
+struct OptionSet<WebCore::DragOperation> {
     unsigned char _field1;
 };
 
@@ -1521,9 +761,12 @@ struct OptionSet<WebCore::PlatformEvent::Modifier> {
     unsigned char _field1;
 };
 
-struct Optional<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> {
-    _Bool _field1;
-    union storage_t<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> _field2;
+struct OptionSet<WebCore::TextIndicatorOption> {
+    unsigned short _field1;
+};
+
+struct OptionSet<WebCore::ThrottlingReason> {
+    unsigned int _field1;
 };
 
 struct Optional<WTF::WallTime> {
@@ -1531,34 +774,9 @@ struct Optional<WTF::WallTime> {
     union constexpr_storage_t<WTF::WallTime> _field2;
 };
 
-struct Optional<WebCore::AdClickAttribution::Conversion> {
-    _Bool _field1;
-    union constexpr_storage_t<WebCore::AdClickAttribution::Conversion> _field2;
-};
-
-struct Optional<WebCore::AdClickAttribution> {
-    _Bool _field1;
-    union storage_t<WebCore::AdClickAttribution> _field2;
-};
-
 struct Optional<WebCore::ApplicationManifest> {
     _Bool _field1;
     union storage_t<WebCore::ApplicationManifest> _field2;
-};
-
-struct Optional<WebCore::BackForwardItemIdentifier> {
-    _Bool _field1;
-    union constexpr_storage_t<WebCore::BackForwardItemIdentifier> _field2;
-};
-
-struct Optional<WebCore::CaptionUserPreferences::CaptionDisplayMode> {
-    _Bool _field1;
-    union constexpr_storage_t<WebCore::CaptionUserPreferences::CaptionDisplayMode> _field2;
-};
-
-struct Optional<WebCore::CertificateInfo> {
-    _Bool _field1;
-    union storage_t<WebCore::CertificateInfo> _field2;
 };
 
 struct Optional<WebCore::CompositingPolicy> {
@@ -1566,29 +784,14 @@ struct Optional<WebCore::CompositingPolicy> {
     union constexpr_storage_t<WebCore::CompositingPolicy> _field2;
 };
 
-struct Optional<WebCore::DocumentLoader::TemporaryServiceWorkerClient> {
+struct Optional<WebCore::DragSourceAction> {
     _Bool _field1;
-    union constexpr_storage_t<WebCore::DocumentLoader::TemporaryServiceWorkerClient> _field2;
+    union constexpr_storage_t<WebCore::DragSourceAction> _field2;
 };
 
 struct Optional<WebCore::EventThrottlingBehavior> {
     _Bool _field1;
     union constexpr_storage_t<WebCore::EventThrottlingBehavior> _field2;
-};
-
-struct Optional<WebCore::NavigationAction::MouseEventData> {
-    _Bool _field1;
-    union constexpr_storage_t<WebCore::NavigationAction::MouseEventData> _field2;
-};
-
-struct Optional<WebCore::NavigationAction::Requester> {
-    _Bool _field1;
-    union storage_t<WebCore::NavigationAction::Requester> _field2;
-};
-
-struct Optional<WebCore::NavigationAction::UIEventWithKeyStateData> {
-    _Bool _field1;
-    union constexpr_storage_t<WebCore::NavigationAction::UIEventWithKeyStateData> _field2;
 };
 
 struct Optional<WebCore::Page::Navigation> {
@@ -1616,16 +819,6 @@ struct Optional<WebCore::Path> {
     union storage_t<WebCore::Path> _field2;
 };
 
-struct Optional<WebCore::ServiceWorkerData> {
-    _Bool _field1;
-    union storage_t<WebCore::ServiceWorkerData> _field2;
-};
-
-struct Optional<WebCore::ServiceWorkerRegistrationData> {
-    _Bool _field1;
-    union storage_t<WebCore::ServiceWorkerRegistrationData> _field2;
-};
-
 struct Optional<WebCore::TextIndicatorData> {
     _Bool _field1;
     union storage_t<WebCore::TextIndicatorData> _field2;
@@ -1646,11 +839,6 @@ struct Optional<double> {
     union constexpr_storage_t<double> storage_;
 };
 
-struct Optional<int> {
-    _Bool _field1;
-    union constexpr_storage_t<int> _field2;
-};
-
 struct Optional<unsigned int> {
     _Bool _field1;
     union constexpr_storage_t<unsigned int> _field2;
@@ -1661,17 +849,9 @@ struct Optional<unsigned short> {
     union constexpr_storage_t<unsigned short> _field2;
 };
 
-struct PODInterval<WTF::MediaTime, WebCore::TextTrackCue *>;
-
-struct PODIntervalTree<WTF::MediaTime, WebCore::TextTrackCue *> {
-    CDUnknownFunctionPointerType *_field1;
-    struct Node *_field2;
-    _Bool _field3;
-};
-
 struct Page {
     struct HashMap<const char *, std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>, WTF::PtrHash<const char *>, WTF::HashTraits<const char *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::Supplement<WebCore::Page>, std::__1::default_delete<WebCore::Supplement<WebCore::Page>>>>> _field1;
-    struct WeakPtrFactory<WebCore::Page> _field2;
+    struct WeakPtrFactory<WebCore::Page, WTF::EmptyCounter> _field2;
     struct unique_ptr<WTF::HashSet<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>, WTF::SchedulePairHash, WTF::HashTraits<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>>>, std::__1::default_delete<WTF::HashSet<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>, WTF::SchedulePairHash, WTF::HashTraits<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>>>>> _field3;
     struct unique_ptr<WebCore::Chrome, std::__1::default_delete<WebCore::Chrome>> _field4;
     struct unique_ptr<WebCore::DragCaretController, std::__1::default_delete<WebCore::DragCaretController>> _field5;
@@ -1687,129 +867,143 @@ struct Page {
     Ref_840bf4f8 _field15;
     struct RefPtr<WebCore::PluginData, WTF::DumbPtrTraits<WebCore::PluginData>> _field16;
     struct UniqueRef<WebCore::EditorClient> _field17;
-    struct PlugInClient *_field18;
+    struct unique_ptr<WebCore::PlugInClient, std::__1::default_delete<WebCore::PlugInClient>> _field18;
     struct unique_ptr<WebCore::ValidationMessageClient, std::__1::default_delete<WebCore::ValidationMessageClient>> _field19;
     struct unique_ptr<WebCore::DiagnosticLoggingClient, std::__1::default_delete<WebCore::DiagnosticLoggingClient>> _field20;
     struct unique_ptr<WebCore::PerformanceLoggingClient, std::__1::default_delete<WebCore::PerformanceLoggingClient>> _field21;
     struct unique_ptr<WebCore::WebGLStateTracker, std::__1::default_delete<WebCore::WebGLStateTracker>> _field22;
     struct unique_ptr<WebCore::SpeechSynthesisClient, std::__1::default_delete<WebCore::SpeechSynthesisClient>> _field23;
-    struct UniqueRef<WebCore::LibWebRTCProvider> _field24;
-    struct RTCController _field25;
-    int _field26;
-    struct Function<void ()> _field27;
-    int _field28;
-    struct String _field29;
-    _Bool _field30;
-    _Bool _field31;
+    struct UniqueRef<WebCore::MediaRecorderProvider> _field24;
+    struct UniqueRef<WebCore::LibWebRTCProvider> _field25;
+    struct RTCController _field26;
+    unsigned int _field27;
+    struct Optional<unsigned int> _field28;
+    int _field29;
+    struct Function<void ()> _field30;
+    struct String _field31;
     _Bool _field32;
     _Bool _field33;
-    unsigned int _field34;
+    _Bool _field34;
     _Bool _field35;
-    _Bool _field36;
-    float _field37;
-    unsigned int _field38;
+    unsigned int _field36;
+    _Bool _field37;
+    _Bool _field38;
     float _field39;
-    float _field40;
+    unsigned int _field40;
     float _field41;
     float _field42;
     float _field43;
-    struct RectEdges<float> _field44;
-    struct RectEdges<float> _field45;
+    float _field44;
+    float _field45;
     struct RectEdges<float> _field46;
     struct RectEdges<float> _field47;
-    struct Seconds _field48;
-    _Bool _field49;
-    _Bool _field50;
+    struct RectEdges<float> _field48;
+    struct RectEdges<float> _field49;
+    struct Seconds _field50;
     _Bool _field51;
     _Bool _field52;
-    struct Optional<bool> _field53;
-    float _field54;
-    float _field55;
-    _Bool _field56;
-    unsigned int :2;
-    unsigned int :2;
-    struct Pagination _field57;
+    _Bool _field53;
+    _Bool _field54;
+    struct Optional<bool> _field55;
+    float _field56;
+    float _field57;
     _Bool _field58;
-    struct String _field59;
-    struct String _field60;
-    _Bool _field61;
-    struct Optional<WTF::WallTime> _field62;
-    struct String _field63;
-    struct unique_ptr<WebCore::PageGroup, std::__1::default_delete<WebCore::PageGroup>> _field64;
-    struct PageGroup *_field65;
-    struct Debugger *_field66;
-    _Bool _field67;
-    struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageNamespace>> _field68;
-    struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageNamespace>> _field69;
-    int _field70;
-    struct MonotonicTime _field71;
-    struct Seconds _field72;
-    struct Timer _field73;
-    struct Seconds _field74;
-    _Bool _field75;
+    unsigned int :2;
+    unsigned int :2;
+    struct Pagination _field59;
+    _Bool _field60;
+    struct String _field61;
+    struct String _field62;
+    _Bool _field63;
+    struct Optional<WTF::WallTime> _field64;
+    struct String _field65;
+    struct unique_ptr<WebCore::PageGroup, std::__1::default_delete<WebCore::PageGroup>> _field66;
+    struct PageGroup *_field67;
+    struct Debugger *_field68;
+    _Bool _field69;
+    struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageNamespace>> _field70;
+    int _field71;
+    struct MonotonicTime _field72;
+    struct Seconds _field73;
+    struct Timer _field74;
+    struct Seconds _field75;
     _Bool _field76;
-    struct OptionSet<WebCore::ActivityState::Flag> _field77;
-    struct OptionSet<WebCore::LayoutMilestone> _field78;
-    int _field79;
+    _Bool _field77;
+    struct OptionSet<WebCore::ActivityState::Flag> _field78;
+    struct OptionSet<WebCore::LayoutMilestone> _field79;
     int _field80;
-    struct unique_ptr<WebCore::RenderingUpdateScheduler, std::__1::default_delete<WebCore::RenderingUpdateScheduler>> _field81;
-    struct HashSet<WebCore::RenderObject *, WTF::PtrHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> _field82;
-    struct Region _field83;
+    int _field81;
+    struct unique_ptr<WebCore::RenderingUpdateScheduler, std::__1::default_delete<WebCore::RenderingUpdateScheduler>> _field82;
+    struct HashSet<WebCore::RenderObject *, WTF::DefaultHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> _field83;
     struct Region _field84;
     struct Region _field85;
-    _Bool _field86;
-    struct AlternativeTextClient *_field87;
-    _Bool _field88;
-    struct unique_ptr<WebCore::PageConsoleClient, std::__1::default_delete<WebCore::PageConsoleClient>> _field89;
-    struct unique_ptr<WebCore::PageDebuggable, std::__1::default_delete<WebCore::PageDebuggable>> _field90;
-    struct RefPtr<WebCore::IDBClient::IDBConnectionToServer, WTF::DumbPtrTraits<WebCore::IDBClient::IDBConnectionToServer>> _field91;
-    struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> _field92;
-    struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> _field93;
-    unsigned int _field94;
+    struct Region _field86;
+    _Bool _field87;
+    struct unique_ptr<WebCore::AlternativeTextClient, std::__1::default_delete<WebCore::AlternativeTextClient>> _field88;
+    _Bool _field89;
+    struct unique_ptr<WebCore::PageConsoleClient, std::__1::default_delete<WebCore::PageConsoleClient>> _field90;
+    struct unique_ptr<WebCore::PageDebuggable, std::__1::default_delete<WebCore::PageDebuggable>> _field91;
+    struct RefPtr<WebCore::IDBClient::IDBConnectionToServer, WTF::DumbPtrTraits<WebCore::IDBClient::IDBConnectionToServer>> _field92;
+    struct HashSet<WTF::String, WTF::DefaultHash<WTF::String>, WTF::HashTraits<WTF::String>> _field93;
+    struct HashSet<WTF::String, WTF::DefaultHash<WTF::String>, WTF::HashTraits<WTF::String>> _field94;
     unsigned int _field95;
-    struct Ref<WebCore::SocketProvider, WTF::DumbPtrTraits<WebCore::SocketProvider>> _field96;
-    struct Ref<WebCore::CookieJar, WTF::DumbPtrTraits<WebCore::CookieJar>> _field97;
-    struct Ref<WebCore::ApplicationCacheStorage, WTF::DumbPtrTraits<WebCore::ApplicationCacheStorage>> _field98;
-    struct Ref<WebCore::CacheStorageProvider, WTF::DumbPtrTraits<WebCore::CacheStorageProvider>> _field99;
-    struct Ref<WebCore::DatabaseProvider, WTF::DumbPtrTraits<WebCore::DatabaseProvider>> _field100;
-    struct Ref<WebCore::PluginInfoProvider, WTF::DumbPtrTraits<WebCore::PluginInfoProvider>> _field101;
-    struct Ref<WebCore::StorageNamespaceProvider, WTF::DumbPtrTraits<WebCore::StorageNamespaceProvider>> _field102;
-    struct Ref<WebCore::UserContentProvider, WTF::DumbPtrTraits<WebCore::UserContentProvider>> _field103;
-    struct Ref<WebCore::VisitedLinkStore, WTF::DumbPtrTraits<WebCore::VisitedLinkStore>> _field104;
-    struct RefPtr<WebCore::WheelEventTestTrigger, WTF::DumbPtrTraits<WebCore::WheelEventTestTrigger>> _field105;
-    struct HashSet<WebCore::ActivityStateChangeObserver *, WTF::PtrHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> _field106;
-    struct unique_ptr<WebCore::ResourceUsageOverlay, std::__1::default_delete<WebCore::ResourceUsageOverlay>> _field107;
-    struct SessionID _field108;
-    _Bool _field109;
-    _Bool _field110;
+    unsigned int _field96;
+    unsigned int _field97;
+    struct Ref<WebCore::SocketProvider, WTF::DumbPtrTraits<WebCore::SocketProvider>> _field98;
+    struct Ref<WebCore::CookieJar, WTF::DumbPtrTraits<WebCore::CookieJar>> _field99;
+    struct Ref<WebCore::ApplicationCacheStorage, WTF::DumbPtrTraits<WebCore::ApplicationCacheStorage>> _field100;
+    struct Ref<WebCore::CacheStorageProvider, WTF::DumbPtrTraits<WebCore::CacheStorageProvider>> _field101;
+    struct Ref<WebCore::DatabaseProvider, WTF::DumbPtrTraits<WebCore::DatabaseProvider>> _field102;
+    struct Ref<WebCore::PluginInfoProvider, WTF::DumbPtrTraits<WebCore::PluginInfoProvider>> _field103;
+    struct Ref<WebCore::StorageNamespaceProvider, WTF::DumbPtrTraits<WebCore::StorageNamespaceProvider>> _field104;
+    struct Ref<WebCore::UserContentProvider, WTF::DumbPtrTraits<WebCore::UserContentProvider>> _field105;
+    struct Ref<WebCore::VisitedLinkStore, WTF::DumbPtrTraits<WebCore::VisitedLinkStore>> _field106;
+    struct RefPtr<WebCore::WheelEventTestMonitor, WTF::DumbPtrTraits<WebCore::WheelEventTestMonitor>> _field107;
+    struct HashSet<WebCore::ActivityStateChangeObserver *, WTF::DefaultHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> _field108;
+    struct unique_ptr<WebCore::ResourceUsageOverlay, std::__1::default_delete<WebCore::ResourceUsageOverlay>> _field109;
+    struct SessionID _field110;
     unsigned int _field111;
-    struct Timer _field112;
+    _Bool _field112;
     _Bool _field113;
     _Bool _field114;
-    _Bool _field115;
-    _Bool _field116;
+    unsigned int _field115;
+    struct Timer _field116;
     _Bool _field117;
     _Bool _field118;
     _Bool _field119;
-    unsigned char _field120;
-    struct Optional<WebCore::EventThrottlingBehavior> _field121;
-    struct Optional<WebCore::CompositingPolicy> _field122;
-    struct unique_ptr<WebCore::PerformanceMonitor, std::__1::default_delete<WebCore::PerformanceMonitor>> _field123;
-    struct unique_ptr<WebCore::LowPowerModeNotifier, std::__1::default_delete<WebCore::LowPowerModeNotifier>> _field124;
-    struct Optional<bool> _field125;
-    struct Optional<WebCore::Page::Navigation> _field126;
-    struct unique_ptr<WebCore::PerformanceLogging, std::__1::default_delete<WebCore::PerformanceLogging>> _field127;
-    struct unique_ptr<WebCore::WheelEventDeltaFilter, std::__1::default_delete<WebCore::WheelEventDeltaFilter>> _field128;
-    struct unique_ptr<WebCore::PageOverlayController, std::__1::default_delete<WebCore::PageOverlayController>> _field129;
-    struct unique_ptr<WebCore::PaymentCoordinator, std::__1::default_delete<WebCore::PaymentCoordinator>> _field130;
-    struct UniqueRef<WebCore::AuthenticatorCoordinator> _field131;
-    struct Optional<WebCore::ApplicationManifest> _field132;
-    struct Optional<WebCore::ViewportArguments> _field133;
-    _Bool _field134;
-    _Bool _field135;
-    _Bool _field136;
-    _Bool _field137;
-    _Bool _field138;
+    _Bool _field120;
+    _Bool _field121;
+    _Bool _field122;
+    _Bool _field123;
+    _Bool _field124;
+    _Bool _field125;
+    _Bool _field126;
+    _Bool _field127;
+    _Bool _field128;
+    _Bool _field129;
+    _Bool _field130;
+    struct Optional<WebCore::EventThrottlingBehavior> _field131;
+    struct Optional<WebCore::CompositingPolicy> _field132;
+    struct unique_ptr<WebCore::PerformanceMonitor, std::__1::default_delete<WebCore::PerformanceMonitor>> _field133;
+    struct unique_ptr<WebCore::LowPowerModeNotifier, std::__1::default_delete<WebCore::LowPowerModeNotifier>> _field134;
+    struct OptionSet<WebCore::ThrottlingReason> _field135;
+    struct OptionSet<WebCore::ThrottlingReason> _field136;
+    struct Optional<WebCore::Page::Navigation> _field137;
+    struct unique_ptr<WebCore::PerformanceLogging, std::__1::default_delete<WebCore::PerformanceLogging>> _field138;
+    struct unique_ptr<WebCore::WheelEventDeltaFilter, std::__1::default_delete<WebCore::WheelEventDeltaFilter>> _field139;
+    struct unique_ptr<WebCore::PageOverlayController, std::__1::default_delete<WebCore::PageOverlayController>> _field140;
+    struct unique_ptr<WebCore::PaymentCoordinator, std::__1::default_delete<WebCore::PaymentCoordinator>> _field141;
+    struct UniqueRef<WebCore::AuthenticatorCoordinator> _field142;
+    struct Optional<WebCore::ApplicationManifest> _field143;
+    struct Optional<WebCore::ViewportArguments> _field144;
+    struct RefPtr<WebCore::DeviceOrientationUpdateProvider, WTF::DumbPtrTraits<WebCore::DeviceOrientationUpdateProvider>> _field145;
+    struct Vector<WebCore::UserContentURLPattern, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field146;
+    struct Vector<WebCore::UserStyleSheet, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field147;
+    _Bool _field148;
+    _Bool _field149;
+    _Bool _field150;
+    _Bool _field151;
+    _Bool _field152;
 };
 
 struct PageConsoleClient;
@@ -1820,54 +1014,11 @@ struct PageGroup;
 
 struct PageOverlayController;
 
-struct PageScriptDebugServer {
-    CDUnknownFunctionPointerType *_field1;
-    struct VM *_field2;
-    struct HashSet<JSC::JSGlobalObject *, WTF::PtrHash<JSC::JSGlobalObject *>, WTF::HashTraits<JSC::JSGlobalObject *>> _field3;
-    struct HashMap<unsigned long, JSC::DebuggerParseData, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<JSC::DebuggerParseData>> _field4;
-    struct HashSet<unsigned long, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>> _field5;
-    int _field6;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    int _field7;
-    struct JSValue _field8;
-    struct ExecState *_field9;
-    struct ExecState *_field10;
-    unsigned int _field11;
-    unsigned long long _field12;
-    unsigned long long _field13;
-    unsigned long long _field14;
-    struct HashMap<unsigned long, JSC::Breakpoint *, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<JSC::Breakpoint *>> _field15;
-    struct HashMap<unsigned long, WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>, WTF::IntHash<unsigned long>, WTF::UnsignedWithZeroKeyHashTraits<unsigned long>, WTF::HashTraits<WTF::HashMap<unsigned int, WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>, WTF::IntHash<int>, WTF::UnsignedWithZeroKeyHashTraits<int>, WTF::HashTraits<WTF::RefPtr<JSC::BreakpointsList, WTF::DumbPtrTraits<JSC::BreakpointsList>>>>>> _field16;
-    struct RefPtr<JSC::DebuggerCallFrame, WTF::DumbPtrTraits<JSC::DebuggerCallFrame>> _field17;
-    struct ProfilingClient *_field18;
-    _Bool _field19;
-    struct HashMap<unsigned long, WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::Vector<Inspector::ScriptBreakpointAction, 0, WTF::CrashOnOverflow, 16>>> _field20;
-    struct HashSet<Inspector::ScriptDebugListener *, WTF::PtrHash<Inspector::ScriptDebugListener *>, WTF::HashTraits<Inspector::ScriptDebugListener *>> _field21;
-    _Bool _field22;
-    unsigned int _field23;
-    unsigned int _field24;
-    struct Page *_field25;
-};
-
 struct Pagination {
     unsigned char _field1;
     _Bool _field2;
     unsigned int _field3;
     unsigned int _field4;
-};
-
-struct ParsedContentRange {
-    long long _field1;
-    long long _field2;
-    long long _field3;
-    _Bool _field4;
 };
 
 struct PasteboardWriterData {
@@ -1877,14 +1028,14 @@ struct PasteboardWriterData {
 };
 
 struct Path {
-    struct CGPath *_field1;
+    struct RetainPtr<CGPath *> _field1;
+    struct Variant<WTF::Monostate, WebCore::MoveData, WebCore::LineData, WebCore::ArcData, WebCore::QuadCurveData, WebCore::BezierCurveData> _field2;
+    _Bool _field3;
 };
 
 struct PaymentCoordinator;
 
 struct PeerConnectionOrigin;
-
-struct PendingSeek;
 
 struct PerformanceLogging;
 
@@ -1907,7 +1058,7 @@ struct PluginInfo {
     struct String name;
     struct String file;
     struct String desc;
-    struct Vector<WebCore::MimeClassInfo, 0, WTF::CrashOnOverflow, 16> mimes;
+    struct Vector<WebCore::MimeClassInfo, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> mimes;
     _Bool isApplicationPlugin;
     unsigned char clientLoadPolicy;
     struct String bundleIdentifier;
@@ -1924,21 +1075,10 @@ struct PolicyCheckIdentifier {
 
 struct Position {
     struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field1;
-    int _field2;
+    unsigned int _field2;
     unsigned int :3;
     unsigned int :1;
 };
-
-struct PositionError;
-
-struct PreviewConverter;
-
-struct PreviewLoaderClient {
-    CDUnknownFunctionPointerType *_field1;
-    unsigned int _field2;
-};
-
-struct ProfilingClient;
 
 struct ProgressTracker;
 
@@ -1947,8 +1087,8 @@ struct PromisedAttachmentInfo {
     struct String _field2;
     struct String _field3;
     struct String _field4;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field5;
-    struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16> _field6;
+    Vector_05504c84 _field5;
+    struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field6;
 };
 
 struct QualifiedName {
@@ -1958,23 +1098,12 @@ struct QualifiedName {
 struct QualifiedNameImpl;
 
 struct RTCController {
-    struct Vector<WebCore::RTCController::PeerConnectionOrigin, 0, WTF::CrashOnOverflow, 16> _field1;
-    struct Vector<std::__1::reference_wrapper<WebCore::RTCPeerConnection>, 0, WTF::CrashOnOverflow, 16> _field2;
+    struct Vector<WebCore::RTCController::PeerConnectionOrigin, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field1;
+    struct Vector<std::__1::reference_wrapper<WebCore::RTCPeerConnection>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field2;
     _Bool _field3;
 };
 
-struct Range {
-    unsigned int _field1;
-    struct Ref<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> _field2;
-    struct RangeBoundaryPoint _field3;
-    struct RangeBoundaryPoint _field4;
-};
-
-struct RangeBoundaryPoint {
-    struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field1;
-    struct Optional<unsigned int> _field2;
-    struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field3;
-};
+struct Range;
 
 struct RectEdges<float> {
     struct array<float, 4> _field1;
@@ -1982,18 +1111,6 @@ struct RectEdges<float> {
 
 struct Ref<BackForwardList, WTF::DumbPtrTraits<BackForwardList>> {
     struct BackForwardList *_field1;
-};
-
-struct Ref<Inspector::BackendDispatcher, WTF::DumbPtrTraits<Inspector::BackendDispatcher>> {
-    struct BackendDispatcher *_field1;
-};
-
-struct Ref<Inspector::FrontendRouter, WTF::DumbPtrTraits<Inspector::FrontendRouter>> {
-    struct FrontendRouter *_field1;
-};
-
-struct Ref<WTF::Stopwatch, WTF::DumbPtrTraits<WTF::Stopwatch>> {
-    struct Stopwatch *_field1;
 };
 
 struct Ref<WTF::Thread, WTF::DumbPtrTraits<WTF::Thread>> {
@@ -2014,10 +1131,6 @@ struct Ref<WebCore::CacheStorageProvider, WTF::DumbPtrTraits<WebCore::CacheStora
     struct CacheStorageProvider *_field1;
 };
 
-struct Ref<WebCore::CachedResourceLoader, WTF::DumbPtrTraits<WebCore::CachedResourceLoader>> {
-    struct CachedResourceLoader *_field1;
-};
-
 struct Ref<WebCore::CookieJar, WTF::DumbPtrTraits<WebCore::CookieJar>> {
     struct CookieJar *_field1;
 };
@@ -2028,10 +1141,6 @@ struct Ref<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld
 
 struct Ref<WebCore::DatabaseProvider, WTF::DumbPtrTraits<WebCore::DatabaseProvider>> {
     struct DatabaseProvider *_field1;
-};
-
-struct Ref<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> {
-    struct Document *_field1;
 };
 
 struct Ref<WebCore::EditingStyle, WTF::DumbPtrTraits<WebCore::EditingStyle>> {
@@ -2046,24 +1155,16 @@ struct Ref<WebCore::HistoryItem, WTF::DumbPtrTraits<WebCore::HistoryItem>> {
     struct HistoryItem *_field1;
 };
 
-struct Ref<WebCore::InspectorBackendDispatchTask, WTF::DumbPtrTraits<WebCore::InspectorBackendDispatchTask>> {
-    struct InspectorBackendDispatchTask *_field1;
-};
-
-struct Ref<WebCore::InstrumentingAgents, WTF::DumbPtrTraits<WebCore::InstrumentingAgents>> {
-    struct InstrumentingAgents *_field1;
-};
-
 struct Ref<WebCore::LegacyWebArchive, WTF::DumbPtrTraits<WebCore::LegacyWebArchive>> {
     struct LegacyWebArchive *_field1;
 };
 
-struct Ref<WebCore::PluginInfoProvider, WTF::DumbPtrTraits<WebCore::PluginInfoProvider>> {
-    struct PluginInfoProvider *_field1;
+struct Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> {
+    struct Node *_field1;
 };
 
-struct Ref<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> {
-    struct SharedBuffer *_field1;
+struct Ref<WebCore::PluginInfoProvider, WTF::DumbPtrTraits<WebCore::PluginInfoProvider>> {
+    struct PluginInfoProvider *_field1;
 };
 
 struct Ref<WebCore::SocketProvider, WTF::DumbPtrTraits<WebCore::SocketProvider>> {
@@ -2094,40 +1195,20 @@ struct Ref<WebDocumentLoaderMac, WTF::DumbPtrTraits<WebDocumentLoaderMac>> {
     struct WebDocumentLoaderMac *_field1;
 };
 
-struct RefPtr<JSC::DebuggerCallFrame, WTF::DumbPtrTraits<JSC::DebuggerCallFrame>> {
-    struct DebuggerCallFrame *_field1;
-};
-
 struct RefPtr<LayerFlushController, WTF::DumbPtrTraits<LayerFlushController>> {
     struct LayerFlushController *m_ptr;
-};
-
-struct RefPtr<WTF::Logger, WTF::DumbPtrTraits<WTF::Logger>> {
-    struct Logger *_field1;
 };
 
 struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>> {
     struct StringImpl *m_ptr;
 };
 
-struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> {
-    struct WeakPtrImpl *_field1;
-};
-
-struct RefPtr<WebCore::Archive, WTF::DumbPtrTraits<WebCore::Archive>> {
-    struct Archive *_field1;
+struct RefPtr<WTF::WeakPtrImpl<WTF::EmptyCounter>, WTF::DumbPtrTraits<WTF::WeakPtrImpl<WTF::EmptyCounter>>> {
+    struct WeakPtrImpl<WTF::EmptyCounter> *_field1;
 };
 
 struct RefPtr<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>> {
     struct ArchiveResource *m_ptr;
-};
-
-struct RefPtr<WebCore::AudioTrackList, WTF::DumbPtrTraits<WebCore::AudioTrackList>> {
-    struct AudioTrackList *_field1;
-};
-
-struct RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>> {
-    struct Blob *_field1;
 };
 
 struct RefPtr<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>> {
@@ -2138,12 +1219,12 @@ struct RefPtr<WebCore::DeviceOrientationData, WTF::DumbPtrTraits<WebCore::Device
     struct DeviceOrientationData *m_ptr;
 };
 
-struct RefPtr<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> {
-    struct Document *_field1;
+struct RefPtr<WebCore::DeviceOrientationUpdateProvider, WTF::DumbPtrTraits<WebCore::DeviceOrientationUpdateProvider>> {
+    struct DeviceOrientationUpdateProvider *_field1;
 };
 
-struct RefPtr<WebCore::DocumentParser, WTF::DumbPtrTraits<WebCore::DocumentParser>> {
-    struct DocumentParser *_field1;
+struct RefPtr<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> {
+    struct Document *_field1;
 };
 
 struct RefPtr<WebCore::Element, WTF::DumbPtrTraits<WebCore::Element>> {
@@ -2166,10 +1247,6 @@ struct RefPtr<WebCore::FileChooser, WTF::DumbPtrTraits<WebCore::FileChooser>> {
     struct FileChooser *m_ptr;
 };
 
-struct RefPtr<WebCore::FormData, WTF::DumbPtrTraits<WebCore::FormData>> {
-    struct FormData *_field1;
-};
-
 struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> {
     struct Frame *m_ptr;
 };
@@ -2184,12 +1261,12 @@ struct RefPtr<WebCore::Geolocation, WTF::DumbPtrTraits<WebCore::Geolocation>> {
     struct Geolocation *m_ptr;
 };
 
-struct RefPtr<WebCore::Geoposition, WTF::DumbPtrTraits<WebCore::Geoposition>> {
-    struct Geoposition *_field1;
+struct RefPtr<WebCore::GeolocationPosition, WTF::DumbPtrTraits<WebCore::GeolocationPosition>> {
+    struct GeolocationPosition *_field1;
 };
 
-struct RefPtr<WebCore::HTMLSourceElement, WTF::DumbPtrTraits<WebCore::HTMLSourceElement>> {
-    struct HTMLSourceElement *_field1;
+struct RefPtr<WebCore::GeolocationPositionError, WTF::DumbPtrTraits<WebCore::GeolocationPositionError>> {
+    struct GeolocationPositionError *_field1;
 };
 
 struct RefPtr<WebCore::HistoryItem, WTF::DumbPtrTraits<WebCore::HistoryItem>> {
@@ -2204,36 +1281,8 @@ struct RefPtr<WebCore::Image, WTF::DumbPtrTraits<WebCore::Image>> {
     struct Image *_field1;
 };
 
-struct RefPtr<WebCore::InspectorFrontendHost, WTF::DumbPtrTraits<WebCore::InspectorFrontendHost>> {
-    struct InspectorFrontendHost *_field1;
-};
-
 struct RefPtr<WebCore::LegacyWebArchive, WTF::DumbPtrTraits<WebCore::LegacyWebArchive>> {
     struct LegacyWebArchive *m_ptr;
-};
-
-struct RefPtr<WebCore::MediaController, WTF::DumbPtrTraits<WebCore::MediaController>> {
-    struct MediaController *_field1;
-};
-
-struct RefPtr<WebCore::MediaControlsHost, WTF::DumbPtrTraits<WebCore::MediaControlsHost>> {
-    struct MediaControlsHost *_field1;
-};
-
-struct RefPtr<WebCore::MediaError, WTF::DumbPtrTraits<WebCore::MediaError>> {
-    struct MediaError *_field1;
-};
-
-struct RefPtr<WebCore::MediaKeys, WTF::DumbPtrTraits<WebCore::MediaKeys>> {
-    struct MediaKeys *_field1;
-};
-
-struct RefPtr<WebCore::MediaPlayer, WTF::DumbPtrTraits<WebCore::MediaPlayer>> {
-    struct MediaPlayer *_field1;
-};
-
-struct RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>> {
-    struct MediaStream *_field1;
 };
 
 struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> {
@@ -2242,10 +1291,6 @@ struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> {
 
 struct RefPtr<WebCore::PluginData, WTF::DumbPtrTraits<WebCore::PluginData>> {
     struct PluginData *_field1;
-};
-
-struct RefPtr<WebCore::PositionError, WTF::DumbPtrTraits<WebCore::PositionError>> {
-    struct PositionError *_field1;
 };
 
 struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl, WTF::DumbPtrTraits<WebCore::QualifiedName::QualifiedNameImpl>> {
@@ -2264,10 +1309,6 @@ struct RefPtr<WebCore::ScrollingCoordinator, WTF::DumbPtrTraits<WebCore::Scrolli
     struct ScrollingCoordinator *_field1;
 };
 
-struct RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>> {
-    struct SecurityOrigin *_field1;
-};
-
 struct RefPtr<WebCore::Settings, WTF::DumbPtrTraits<WebCore::Settings>> {
     struct Settings *_field1;
 };
@@ -2280,46 +1321,20 @@ struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageName
     struct StorageNamespace *_field1;
 };
 
-struct RefPtr<WebCore::TextResourceDecoder, WTF::DumbPtrTraits<WebCore::TextResourceDecoder>> {
-    struct TextResourceDecoder *_field1;
-};
-
-struct RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTrack>>;
-
-struct RefPtr<WebCore::TextTrackList, WTF::DumbPtrTraits<WebCore::TextTrackList>> {
-    struct TextTrackList *_field1;
-};
-
 struct RefPtr<WebCore::ThreadTimerHeapItem, WTF::DumbPtrTraits<WebCore::ThreadTimerHeapItem>> {
     struct ThreadTimerHeapItem *_field1;
-};
-
-struct RefPtr<WebCore::TimeRanges, WTF::DumbPtrTraits<WebCore::TimeRanges>> {
-    struct TimeRanges *_field1;
 };
 
 struct RefPtr<WebCore::UndoStep, WTF::DumbPtrTraits<WebCore::UndoStep>> {
     struct UndoStep *m_ptr;
 };
 
-struct RefPtr<WebCore::UserGestureToken, WTF::DumbPtrTraits<WebCore::UserGestureToken>> {
-    struct UserGestureToken *_field1;
-};
-
 struct RefPtr<WebCore::ValidationBubble, WTF::DumbPtrTraits<WebCore::ValidationBubble>> {
     struct ValidationBubble *m_ptr;
 };
 
-struct RefPtr<WebCore::VideoTrackList, WTF::DumbPtrTraits<WebCore::VideoTrackList>> {
-    struct VideoTrackList *_field1;
-};
-
-struct RefPtr<WebCore::WebKitMediaKeys, WTF::DumbPtrTraits<WebCore::WebKitMediaKeys>> {
-    struct WebKitMediaKeys *_field1;
-};
-
-struct RefPtr<WebCore::WheelEventTestTrigger, WTF::DumbPtrTraits<WebCore::WheelEventTestTrigger>> {
-    struct WheelEventTestTrigger *_field1;
+struct RefPtr<WebCore::WheelEventTestMonitor, WTF::DumbPtrTraits<WebCore::WheelEventTestMonitor>> {
+    struct WheelEventTestMonitor *_field1;
 };
 
 struct RefPtr<WebCore::WindowProxy, WTF::DumbPtrTraits<WebCore::WindowProxy>> {
@@ -2343,89 +1358,13 @@ struct RenderObject;
 
 struct RenderingUpdateScheduler;
 
-struct Requester {
-    struct URL _field1;
-    struct RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>> _field2;
-    struct pair<WTF::ObjectIdentifier<WebCore::PageIdentifierType>, unsigned long long> _field3;
-};
-
-struct ResourceError {
-    struct String _field1;
-    struct URL _field2;
-    struct String _field3;
-    int _field4;
-    unsigned char _field5;
-    _Bool _field6;
-    struct RetainPtr<NSError> _field7;
-};
-
-struct ResourceRequest {
-    struct URL _field1;
-    double _field2;
-    struct URL _field3;
-    struct String _field4;
-    struct String _field5;
-    struct String _field6;
-    struct HTTPHeaderMap _field7;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field8;
-    struct RefPtr<WebCore::FormData, WTF::DumbPtrTraits<WebCore::FormData>> _field9;
-    unsigned char _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    unsigned char _field13;
-    struct Optional<int> _field14;
-    _Bool _field15;
-    _Bool _field16;
-    _Bool _field17;
-    _Bool _field18;
-    _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    _Bool _field22;
-    struct IntRect _field23;
-    struct RetainPtr<NSURLRequest> _field24;
-};
-
-struct ResourceResponse {
-    struct URL _field1;
-    struct AtomString _field2;
-    long long _field3;
-    struct AtomString _field4;
-    struct AtomString _field5;
-    struct AtomString _field6;
-    struct HTTPHeaderMap _field7;
-    struct NetworkLoadMetrics _field8;
-    struct Optional<WebCore::CertificateInfo> _field9;
-    struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> _field10;
-    struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> _field11;
-    struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> _field12;
-    struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> _field13;
-    struct ParsedContentRange _field14;
-    struct CacheControlDirectives _field15;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned char _field16;
-    unsigned char _field17;
-    unsigned char _field18;
-    int _field19;
-    unsigned int :3;
-    _Bool _field20;
-    struct RetainPtr<NSURLResponse> _field21;
-};
-
 struct ResourceUsageOverlay;
 
-struct RetainPtr<CALayer> {
+struct RetainPtr<CGImage *> {
     void *_field1;
 };
 
-struct RetainPtr<CGImage *> {
+struct RetainPtr<CGPath *> {
     void *_field1;
 };
 
@@ -2439,10 +1378,6 @@ struct RetainPtr<NSArray> {
 
 struct RetainPtr<NSData> {
     void *m_ptr;
-};
-
-struct RetainPtr<NSError> {
-    void *_field1;
 };
 
 struct RetainPtr<NSMutableDictionary> {
@@ -2459,14 +1394,6 @@ struct RetainPtr<NSTimer> {
 
 struct RetainPtr<NSURL> {
     void *m_ptr;
-};
-
-struct RetainPtr<NSURLRequest> {
-    void *_field1;
-};
-
-struct RetainPtr<NSURLResponse> {
-    void *_field1;
 };
 
 struct RetainPtr<WebDataSource> {
@@ -2493,6 +1420,10 @@ struct RetainPtr<WebUITextIndicatorData> {
     void *m_ptr;
 };
 
+struct RetainPtr<WebVideoFullscreenController> {
+    void *m_ptr;
+};
+
 struct RetainPtr<WebView> {
     void *m_ptr;
 };
@@ -2505,17 +1436,7 @@ struct RetainPtr<__CFBundle *> {
     void *m_ptr;
 };
 
-struct RetainPtr<__SecTrust *> {
-    void *_field1;
-};
-
-struct RetainPtr<const __CFArray *> {
-    void *_field1;
-};
-
 struct ScriptController;
-
-struct ScriptDebugListener;
 
 struct ScriptExecutionContext;
 
@@ -2549,30 +1470,6 @@ struct SecurityOriginData {
     struct Optional<unsigned short> _field3;
 };
 
-struct ServiceWorkerData {
-    struct ObjectIdentifier<WebCore::ServiceWorkerIdentifierType> _field1;
-    struct URL _field2;
-    unsigned char _field3;
-    int _field4;
-    struct ObjectIdentifier<WebCore::ServiceWorkerRegistrationIdentifierType> _field5;
-};
-
-struct ServiceWorkerRegistrationData {
-    struct ServiceWorkerRegistrationKey _field1;
-    struct ObjectIdentifier<WebCore::ServiceWorkerRegistrationIdentifierType> _field2;
-    struct URL _field3;
-    unsigned char _field4;
-    struct WallTime _field5;
-    struct Optional<WebCore::ServiceWorkerData> _field6;
-    struct Optional<WebCore::ServiceWorkerData> _field7;
-    struct Optional<WebCore::ServiceWorkerData> _field8;
-};
-
-struct ServiceWorkerRegistrationKey {
-    struct SecurityOriginData _field1;
-    struct URL _field2;
-};
-
 struct SessionID {
     unsigned long long _field1;
 };
@@ -2583,17 +1480,14 @@ struct Shape;
 
 struct SharedBuffer;
 
-struct SleepDisabler;
+struct SimpleRange {
+    struct BoundaryPoint _field1;
+    struct BoundaryPoint _field2;
+};
 
 struct SocketProvider;
 
-struct Source {
-    struct RegistrableDomain _field1;
-};
-
 struct SpeechSynthesisClient;
-
-struct Stopwatch;
 
 struct StorageNamespace;
 
@@ -2605,53 +1499,27 @@ struct String {
 
 struct StringImpl;
 
-struct StringWithDirection {
-    struct String _field1;
-    unsigned char _field2;
-};
-
-struct SubstituteData {
-    struct RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> _field1;
-    struct URL _field2;
-    struct ResourceResponse _field3;
-    int _field4;
-};
-
-struct TaskDispatcher<WebCore::Timer> {
-    struct WeakPtrFactory<WebCore::TaskDispatcher<WebCore::Timer>> _field1;
-    struct Deque<WTF::Function<void ()>, 0> _field2;
-};
-
-struct TemporaryServiceWorkerClient {
-    struct ObjectIdentifier<WebCore::DocumentIdentifierType> _field1;
-    struct SessionID _field2;
-};
+struct TextAlternativeWithRange;
 
 struct TextIndicatorData {
     struct FloatRect _field1;
     struct FloatRect _field2;
     struct FloatRect _field3;
-    struct Vector<WebCore::FloatRect, 0, WTF::CrashOnOverflow, 16> _field4;
+    struct Vector<WebCore::FloatRect, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field4;
     float _field5;
     struct RefPtr<WebCore::Image, WTF::DumbPtrTraits<WebCore::Image>> _field6;
     struct RefPtr<WebCore::Image, WTF::DumbPtrTraits<WebCore::Image>> _field7;
     struct RefPtr<WebCore::Image, WTF::DumbPtrTraits<WebCore::Image>> _field8;
     struct Color _field9;
     unsigned char _field10;
-    unsigned short _field11;
+    struct OptionSet<WebCore::TextIndicatorOption> _field11;
 };
 
 struct TextIterator;
 
-struct TextResourceDecoder;
-
-struct TextTrackList;
-
 struct Thread;
 
 struct ThreadTimerHeapItem;
-
-struct TimeRanges;
 
 struct Timer {
     CDUnknownFunctionPointerType *_field1;
@@ -2663,14 +1531,6 @@ struct Timer {
 };
 
 struct TreeScope;
-
-struct UIEventWithKeyStateData {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-};
 
 struct URL {
     struct String _field1;
@@ -2693,8 +1553,6 @@ struct URLData {
     struct String _field2;
 };
 
-struct UncommonHeader;
-
 struct UndoStep {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
@@ -2706,10 +1564,6 @@ struct UniqueRef<WebCore::AuthenticatorCoordinator> {
 
 struct UniqueRef<WebCore::CSSAnimationController> {
     struct unique_ptr<WebCore::CSSAnimationController, std::__1::default_delete<WebCore::CSSAnimationController>> _field1;
-};
-
-struct UniqueRef<WebCore::Editor> {
-    struct unique_ptr<WebCore::Editor, std::__1::default_delete<WebCore::Editor>> _field1;
 };
 
 struct UniqueRef<WebCore::EditorClient> {
@@ -2724,12 +1578,12 @@ struct UniqueRef<WebCore::FrameLoader> {
     struct unique_ptr<WebCore::FrameLoader, std::__1::default_delete<WebCore::FrameLoader>> _field1;
 };
 
-struct UniqueRef<WebCore::FrameSelection> {
-    struct unique_ptr<WebCore::FrameSelection, std::__1::default_delete<WebCore::FrameSelection>> _field1;
-};
-
 struct UniqueRef<WebCore::LibWebRTCProvider> {
     struct unique_ptr<WebCore::LibWebRTCProvider, std::__1::default_delete<WebCore::LibWebRTCProvider>> _field1;
+};
+
+struct UniqueRef<WebCore::MediaRecorderProvider> {
+    struct unique_ptr<WebCore::MediaRecorderProvider, std::__1::default_delete<WebCore::MediaRecorderProvider>> _field1;
 };
 
 struct UniqueRef<WebCore::NavigationScheduler> {
@@ -2750,9 +1604,9 @@ struct UserContentURLPattern {
     _Bool m_matchSubdomains;
 };
 
-struct UserGestureToken;
-
 struct UserInputBridge;
+
+struct UserStyleSheet;
 
 struct VM;
 
@@ -2760,169 +1614,155 @@ struct ValidationBubble;
 
 struct ValidationMessageClient;
 
-struct Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>> {
-    union __variant_data<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>> {
-        union __variant_data<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>> {
-            struct __storage_wrapper<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>> {
-                struct type _field1;
-            } _field1;
+struct Variant<WTF::Monostate, WebCore::MoveData, WebCore::LineData, WebCore::ArcData, WebCore::QuadCurveData, WebCore::BezierCurveData> {
+    union __variant_data<WTF::Monostate, WebCore::MoveData, WebCore::LineData, WebCore::ArcData, WebCore::QuadCurveData, WebCore::BezierCurveData> {
+        union __variant_data<WTF::Monostate> {
+            struct Monostate _field1;
             struct __dummy_type _field2;
         } _field1;
-        union __variant_data<WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>> {
-            struct __storage_wrapper<WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>> {
-                struct type _field1;
+        union __variant_data<WebCore::MoveData, WebCore::LineData, WebCore::ArcData, WebCore::QuadCurveData, WebCore::BezierCurveData> {
+            union __variant_data<WebCore::MoveData> {
+                struct __storage_wrapper<WebCore::MoveData> {
+                    struct type _field1;
+                } _field1;
+                struct __dummy_type _field2;
             } _field1;
-            struct __dummy_type _field2;
+            union __variant_data<WebCore::LineData, WebCore::ArcData, WebCore::QuadCurveData, WebCore::BezierCurveData> {
+                union __variant_data<WebCore::LineData> {
+                    struct __storage_wrapper<WebCore::LineData> {
+                        struct type _field1;
+                    } _field1;
+                    struct __dummy_type _field2;
+                } _field1;
+                union __variant_data<WebCore::ArcData, WebCore::QuadCurveData, WebCore::BezierCurveData> {
+                    union __variant_data<WebCore::ArcData> {
+                        struct __storage_wrapper<WebCore::ArcData> {
+                            struct type _field1;
+                        } _field1;
+                        struct __dummy_type _field2;
+                    } _field1;
+                    union __variant_data<WebCore::QuadCurveData, WebCore::BezierCurveData> {
+                        union __variant_data<WebCore::QuadCurveData> {
+                            struct __storage_wrapper<WebCore::QuadCurveData> {
+                                struct type _field1;
+                            } _field1;
+                            struct __dummy_type _field2;
+                        } _field1;
+                        union __variant_data<WebCore::BezierCurveData> {
+                            struct __storage_wrapper<WebCore::BezierCurveData> {
+                                struct type _field1;
+                            } _field1;
+                            struct __dummy_type _field2;
+                        } _field2;
+                    } _field2;
+                } _field2;
+            } _field2;
         } _field2;
     } _field1;
     char _field2;
 };
 
-struct Vector<WTF::Ref<WebCore::Archive, WTF::DumbPtrTraits<WebCore::Archive>>, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WTF::Ref<WebCore::Archive, WTF::DumbPtrTraits<WebCore::Archive>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct Ref<WebCore::Archive, WTF::DumbPtrTraits<WebCore::Archive>> *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WTF::Ref<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>>, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WTF::Ref<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     Ref_23906fc6 *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WTF::RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTrack>>, 0, WTF::CrashOnOverflow, 16> {
-    struct RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTrack>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
+struct Vector<WTF::RetainPtr<WebVideoFullscreenController>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct RetainPtr<WebVideoFullscreenController> *m_buffer;
+    unsigned int m_capacity;
+    unsigned int m_size;
 };
 
-struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct String *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WebCore::CustomHeaderFields, 0, WTF::CrashOnOverflow, 16> {
-    struct CustomHeaderFields *_field1;
+struct Vector<WebCore::DictationAlternative, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct DictationAlternative *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WebCore::DOMPromiseDeferred<void>, 0, WTF::CrashOnOverflow, 16> {
-    struct DOMPromiseDeferred<void> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<WebCore::FloatQuad, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WebCore::FloatQuad, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct FloatQuad *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WebCore::FloatRect, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WebCore::FloatRect, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct FloatRect *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WebCore::HTTPHeaderMap::CommonHeader, 0, WTF::CrashOnOverflow, 6> {
-    struct CommonHeader *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<WebCore::HTTPHeaderMap::UncommonHeader, 0, WTF::CrashOnOverflow, 0> {
-    struct UncommonHeader *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<WebCore::KeypressCommand, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WebCore::KeypressCommand, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct KeypressCommand *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WebCore::LinkIcon, 0, WTF::CrashOnOverflow, 16> {
-    struct LinkIcon *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<WebCore::MimeClassInfo, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WebCore::MimeClassInfo, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct MimeClassInfo *m_buffer;
     unsigned int m_capacity;
     unsigned int m_size;
 };
 
-struct Vector<WebCore::Node *, 0, WTF::CrashOnOverflow, 16> {
-    struct Node **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<WebCore::PODInterval<WTF::MediaTime, WebCore::TextTrackCue *>, 0, WTF::CrashOnOverflow, 16> {
-    struct PODInterval<WTF::MediaTime, WebCore::TextTrackCue *> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<WebCore::RTCController::PeerConnectionOrigin, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WebCore::RTCController::PeerConnectionOrigin, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct PeerConnectionOrigin *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WebCore::ResourceRequest, 0, WTF::CrashOnOverflow, 16> {
-    struct ResourceRequest *_field1;
+struct Vector<WebCore::TextAlternativeWithRange, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct TextAlternativeWithRange *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<WebCore::ResourceResponse, 0, WTF::CrashOnOverflow, 16> {
-    struct ResourceResponse *_field1;
+struct Vector<WebCore::UserContentURLPattern, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct UserContentURLPattern *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<std::__1::reference_wrapper<WebCore::RTCPeerConnection>, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<WebCore::UserStyleSheet, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct UserStyleSheet *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
+
+struct Vector<std::__1::pair<WTF::Ref<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>>, WTF::UniqueRef<WebCore::UserScript>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct pair<WTF::Ref<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>>, WTF::UniqueRef<WebCore::UserScript>> *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
+
+struct Vector<std::__1::reference_wrapper<WebCore::RTCPeerConnection>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct reference_wrapper<WebCore::RTCPeerConnection> *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
 
-struct Vector<std::__1::unique_ptr<Inspector::InspectorAgentBase, std::__1::default_delete<Inspector::InspectorAgentBase>>, 0, WTF::CrashOnOverflow, 16> {
-    struct unique_ptr<Inspector::InspectorAgentBase, std::__1::default_delete<Inspector::InspectorAgentBase>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<unsigned short, 0, WTF::CrashOnOverflow, 16> {
+struct Vector<unsigned short, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     unsigned short *m_buffer;
     unsigned int m_capacity;
     unsigned int m_size;
 };
-
-struct VectorBuffer<WTF::Function<void ()>, 0> {
-    struct Function<void ()> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct VectorBuffer<WTF::RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>>, 0> {
-    struct RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct VideoTrackList;
 
 struct ViewportArguments {
     int _field1;
@@ -2965,8 +1805,8 @@ struct WallTime {
 };
 
 struct Watchers {
-    struct HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::IntHash<unsigned int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field1;
-    struct HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::PtrHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>> _field2;
+    struct HashMap<int, WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, WTF::DefaultHash<int>, WTF::HashTraits<int>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>> _field1;
+    struct HashMap<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>, int, WTF::DefaultHash<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<WTF::RefPtr<WebCore::GeoNotifier, WTF::DumbPtrTraits<WebCore::GeoNotifier>>>, WTF::HashTraits<int>> _field2;
 };
 
 struct Weak<WebCore::JSDOMObject> {
@@ -2975,35 +1815,19 @@ struct Weak<WebCore::JSDOMObject> {
 
 struct WeakImpl;
 
-struct WeakPtr<const WebCore::MediaResourceLoader> {
-    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
+struct WeakPtr<WebCore::Navigator, WTF::EmptyCounter> {
+    struct RefPtr<WTF::WeakPtrImpl<WTF::EmptyCounter>, WTF::DumbPtrTraits<WTF::WeakPtrImpl<WTF::EmptyCounter>>> _field1;
 };
 
-struct WeakPtrFactory<WebCore::ContainerNode> {
-    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
+struct WeakPtrFactory<WebCore::ContainerNode, WTF::EmptyCounter> {
+    struct RefPtr<WTF::WeakPtrImpl<WTF::EmptyCounter>, WTF::DumbPtrTraits<WTF::WeakPtrImpl<WTF::EmptyCounter>>> _field1;
 };
 
-struct WeakPtrFactory<WebCore::DeferrableTask<WebCore::Timer>> {
-    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
+struct WeakPtrFactory<WebCore::Page, WTF::EmptyCounter> {
+    struct RefPtr<WTF::WeakPtrImpl<WTF::EmptyCounter>, WTF::DumbPtrTraits<WTF::WeakPtrImpl<WTF::EmptyCounter>>> _field1;
 };
 
-struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer>> {
-    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
-};
-
-struct WeakPtrFactory<WebCore::MediaProducer> {
-    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
-};
-
-struct WeakPtrFactory<WebCore::Page> {
-    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
-};
-
-struct WeakPtrFactory<WebCore::TaskDispatcher<WebCore::Timer>> {
-    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
-};
-
-struct WeakPtrImpl;
+struct WeakPtrImpl<WTF::EmptyCounter>;
 
 struct WebContent {
     struct String _field1;
@@ -3014,8 +1838,8 @@ struct WebContent {
     struct RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> _field6;
     struct String _field7;
     struct String _field8;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field9;
-    struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16> _field10;
+    Vector_05504c84 _field9;
+    struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field10;
 };
 
 struct WebDocumentLoaderMac;
@@ -3029,7 +1853,7 @@ struct WebEdgeInsets {
 
 struct WebFixedPositionContentData {
     id _field1;
-    struct HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::PtrHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>> _field2;
+    struct HashMap<WTF::RetainPtr<CALayer>, std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>, WTF::DefaultHash<WTF::RetainPtr<CALayer>>, WTF::HashTraits<WTF::RetainPtr<CALayer>>, WTF::HashTraits<std::__1::unique_ptr<ViewportConstrainedLayerData, std::__1::default_delete<ViewportConstrainedLayerData>>>> _field2;
 };
 
 struct WebFrameLoadDelegateImplementationCache {
@@ -3084,21 +1908,7 @@ struct WebHistoryDelegateImplementationCache {
     CDUnknownFunctionPointerType populateVisitedLinksFunc;
 };
 
-struct WebInjectedScriptManager;
-
-struct WebInspectorFrontendClient {
-    CDUnknownFunctionPointerType *_field1;
-    struct InspectorController *_field2;
-    struct Page *_field3;
-    struct RefPtr<WebCore::InspectorFrontendHost, WTF::DumbPtrTraits<WebCore::InspectorFrontendHost>> _field4;
-    struct unique_ptr<WebCore::InspectorFrontendClientLocal::Settings, std::__1::default_delete<WebCore::InspectorFrontendClientLocal::Settings>> _field5;
-    _Bool _field6;
-    int _field7;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field8;
-    struct Ref<WebCore::InspectorBackendDispatchTask, WTF::DumbPtrTraits<WebCore::InspectorBackendDispatchTask>> _field9;
-};
-
-struct WebKitMediaKeys;
+struct WebInspectorFrontendClient;
 
 struct WebPreferencesPrivate {
     struct RetainPtr<NSMutableDictionary> _field1;
@@ -3150,14 +1960,14 @@ struct WebViewGroup;
 struct WebVisitedLinkStore {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
-    struct HashSet<WebCore::Page *, WTF::PtrHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> _field3;
-    struct HashSet<unsigned long long, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned long long>> _field4;
+    struct HashSet<WebCore::Page *, WTF::DefaultHash<WebCore::Page *>, WTF::HashTraits<WebCore::Page *>> _field3;
+    struct HashSet<unsigned int, WebCore::SharedStringHashHash, WTF::HashTraits<unsigned int>> _field4;
     _Bool _field5;
 };
 
 struct WheelEventDeltaFilter;
 
-struct WheelEventTestTrigger;
+struct WheelEventTestMonitor;
 
 struct WindowProxy;
 
@@ -3180,30 +1990,23 @@ struct array<float, 4> {
 };
 
 struct atomic<unsigned char> {
-    _Atomic unsigned char __a_;
+    struct __cxx_atomic_impl<unsigned char, std::__1::__cxx_atomic_base_impl<unsigned char>> {
+        _Atomic unsigned char __a_value;
+    } __a_;
 };
 
 struct atomic<unsigned int> {
-    _Atomic unsigned int _field1;
+    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+        _Atomic unsigned int _field1;
+    } _field1;
 };
 
-struct pair<WTF::ObjectIdentifier<WebCore::PageIdentifierType>, unsigned long long> {
-    struct ObjectIdentifier<WebCore::PageIdentifierType> _field1;
-    unsigned long long _field2;
-};
+struct pair<WTF::Ref<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>>, WTF::UniqueRef<WebCore::UserScript>>;
 
 struct reference_wrapper<WebCore::RTCPeerConnection>;
 
 struct type {
     unsigned char _field1[8];
-};
-
-struct unique_ptr<Inspector::InspectorAgentBase, std::__1::default_delete<Inspector::InspectorAgentBase>>;
-
-struct unique_ptr<PAL::SleepDisabler, std::__1::default_delete<PAL::SleepDisabler>> {
-    struct __compressed_pair<PAL::SleepDisabler *, std::__1::default_delete<PAL::SleepDisabler>> {
-        struct SleepDisabler *_field1;
-    } _field1;
 };
 
 struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>>> {
@@ -3218,9 +2021,9 @@ struct unique_ptr<WTF::Detail::CallableWrapperBase<void>, std::__1::default_dele
     } _field1;
 };
 
-struct unique_ptr<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>, std::__1::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>>> {
-    struct __compressed_pair<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>*, std::__1::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>>> {
-        struct HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>> *__value_;
+struct unique_ptr<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>, std::__1::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>>> {
+    struct __compressed_pair<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>*, std::__1::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>>> {
+        struct HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>> *__value_;
     } __ptr_;
 };
 
@@ -3230,28 +2033,28 @@ struct unique_ptr<WTF::HashSet<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits
     } _field1;
 };
 
-struct unique_ptr<WTF::ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>, std::__1::default_delete<WTF::ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>>> {
-    struct __compressed_pair<WTF::ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>*, std::__1::default_delete<WTF::ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>>> {
-        struct ListHashSet<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::PtrHash<WTF::RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>> *_field1;
+struct unique_ptr<WTF::ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>, std::__1::default_delete<WTF::ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>>> {
+    struct __compressed_pair<WTF::ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>*, std::__1::default_delete<WTF::ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>>>> {
+        struct ListHashSet<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>, WTF::DefaultHash<WTF::Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>>>> *_field1;
     } _field1;
 };
 
-struct unique_ptr<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>, std::__1::default_delete<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>>> {
-    struct __compressed_pair<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>*, std::__1::default_delete<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16>>> {
-        struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> *__value_;
+struct unique_ptr<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc>, std::__1::default_delete<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc>>> {
+    struct __compressed_pair<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc>*, std::__1::default_delete<WTF::Vector<WTF::String, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc>>> {
+        Vector_05504c84 *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<WebCore::ApplicationCacheHost, std::__1::default_delete<WebCore::ApplicationCacheHost>> {
-    struct __compressed_pair<WebCore::ApplicationCacheHost *, std::__1::default_delete<WebCore::ApplicationCacheHost>> {
-        struct ApplicationCacheHost *_field1;
+struct unique_ptr<WebCore::AlternativeTextClient, std::__1::default_delete<WebCore::AlternativeTextClient>> {
+    struct __compressed_pair<WebCore::AlternativeTextClient *, std::__1::default_delete<WebCore::AlternativeTextClient>> {
+        struct AlternativeTextClient *_field1;
     } _field1;
 };
 
-struct unique_ptr<WebCore::ArchiveResourceCollection, std::__1::default_delete<WebCore::ArchiveResourceCollection>> {
-    struct __compressed_pair<WebCore::ArchiveResourceCollection *, std::__1::default_delete<WebCore::ArchiveResourceCollection>> {
-        struct ArchiveResourceCollection *_field1;
-    } _field1;
+struct unique_ptr<WebCore::AlternativeTextUIController, std::__1::default_delete<WebCore::AlternativeTextUIController>> {
+    struct __compressed_pair<WebCore::AlternativeTextUIController *, std::__1::default_delete<WebCore::AlternativeTextUIController>> {
+        struct AlternativeTextUIController *__value_;
+    } __ptr_;
 };
 
 struct unique_ptr<WebCore::AuthenticatorCoordinator, std::__1::default_delete<WebCore::AuthenticatorCoordinator>> {
@@ -3275,12 +2078,6 @@ struct unique_ptr<WebCore::CSSAnimationController, std::__1::default_delete<WebC
 struct unique_ptr<WebCore::Chrome, std::__1::default_delete<WebCore::Chrome>> {
     struct __compressed_pair<WebCore::Chrome *, std::__1::default_delete<WebCore::Chrome>> {
         struct Chrome *_field1;
-    } _field1;
-};
-
-struct unique_ptr<WebCore::ContentFilter, std::__1::default_delete<WebCore::ContentFilter>> {
-    struct __compressed_pair<WebCore::ContentFilter *, std::__1::default_delete<WebCore::ContentFilter>> {
-        struct ContentFilter *_field1;
     } _field1;
 };
 
@@ -3308,12 +2105,6 @@ struct unique_ptr<WebCore::DragController, std::__1::default_delete<WebCore::Dra
     } _field1;
 };
 
-struct unique_ptr<WebCore::Editor, std::__1::default_delete<WebCore::Editor>> {
-    struct __compressed_pair<WebCore::Editor *, std::__1::default_delete<WebCore::Editor>> {
-        struct Editor *_field1;
-    } _field1;
-};
-
 struct unique_ptr<WebCore::EditorClient, std::__1::default_delete<WebCore::EditorClient>> {
     struct __compressed_pair<WebCore::EditorClient *, std::__1::default_delete<WebCore::EditorClient>> {
         struct EditorClient *_field1;
@@ -3338,39 +2129,9 @@ struct unique_ptr<WebCore::FrameLoader, std::__1::default_delete<WebCore::FrameL
     } _field1;
 };
 
-struct unique_ptr<WebCore::FrameSelection, std::__1::default_delete<WebCore::FrameSelection>> {
-    struct __compressed_pair<WebCore::FrameSelection *, std::__1::default_delete<WebCore::FrameSelection>> {
-        struct FrameSelection *_field1;
-    } _field1;
-};
-
-struct unique_ptr<WebCore::HTMLImageLoader, std::__1::default_delete<WebCore::HTMLImageLoader>> {
-    struct __compressed_pair<WebCore::HTMLImageLoader *, std::__1::default_delete<WebCore::HTMLImageLoader>> {
-        struct HTMLImageLoader *_field1;
-    } _field1;
-};
-
-struct unique_ptr<WebCore::HTMLMediaElement::PendingSeek, std::__1::default_delete<WebCore::HTMLMediaElement::PendingSeek>> {
-    struct __compressed_pair<WebCore::HTMLMediaElement::PendingSeek *, std::__1::default_delete<WebCore::HTMLMediaElement::PendingSeek>> {
-        struct PendingSeek *_field1;
-    } _field1;
-};
-
 struct unique_ptr<WebCore::InspectorController, std::__1::default_delete<WebCore::InspectorController>> {
     struct __compressed_pair<WebCore::InspectorController *, std::__1::default_delete<WebCore::InspectorController>> {
         struct InspectorController *_field1;
-    } _field1;
-};
-
-struct unique_ptr<WebCore::InspectorFrontendClientLocal::Settings, std::__1::default_delete<WebCore::InspectorFrontendClientLocal::Settings>> {
-    struct __compressed_pair<WebCore::InspectorFrontendClientLocal::Settings *, std::__1::default_delete<WebCore::InspectorFrontendClientLocal::Settings>> {
-        struct Settings *_field1;
-    } _field1;
-};
-
-struct unique_ptr<WebCore::InspectorOverlay, std::__1::default_delete<WebCore::InspectorOverlay>> {
-    struct __compressed_pair<WebCore::InspectorOverlay *, std::__1::default_delete<WebCore::InspectorOverlay>> {
-        struct InspectorOverlay *_field1;
     } _field1;
 };
 
@@ -3386,15 +2147,21 @@ struct unique_ptr<WebCore::LowPowerModeNotifier, std::__1::default_delete<WebCor
     } _field1;
 };
 
-struct unique_ptr<WebCore::MediaElementSession, std::__1::default_delete<WebCore::MediaElementSession>> {
-    struct __compressed_pair<WebCore::MediaElementSession *, std::__1::default_delete<WebCore::MediaElementSession>> {
-        struct MediaElementSession *_field1;
+struct unique_ptr<WebCore::MediaRecorderProvider, std::__1::default_delete<WebCore::MediaRecorderProvider>> {
+    struct __compressed_pair<WebCore::MediaRecorderProvider *, std::__1::default_delete<WebCore::MediaRecorderProvider>> {
+        struct MediaRecorderProvider *_field1;
     } _field1;
 };
 
 struct unique_ptr<WebCore::NavigationScheduler, std::__1::default_delete<WebCore::NavigationScheduler>> {
     struct __compressed_pair<WebCore::NavigationScheduler *, std::__1::default_delete<WebCore::NavigationScheduler>> {
         struct NavigationScheduler *_field1;
+    } _field1;
+};
+
+struct unique_ptr<WebCore::NodeRareData, WebCore::Node::NodeRareDataDeleter> {
+    struct __compressed_pair<WebCore::NodeRareData *, WebCore::Node::NodeRareDataDeleter> {
+        struct NodeRareData *_field1;
     } _field1;
 };
 
@@ -3452,15 +2219,15 @@ struct unique_ptr<WebCore::PlatformKeyboardEvent, std::__1::default_delete<WebCo
     } _field1;
 };
 
-struct unique_ptr<WebCore::PointerCaptureController, std::__1::default_delete<WebCore::PointerCaptureController>> {
-    struct __compressed_pair<WebCore::PointerCaptureController *, std::__1::default_delete<WebCore::PointerCaptureController>> {
-        struct PointerCaptureController *_field1;
+struct unique_ptr<WebCore::PlugInClient, std::__1::default_delete<WebCore::PlugInClient>> {
+    struct __compressed_pair<WebCore::PlugInClient *, std::__1::default_delete<WebCore::PlugInClient>> {
+        struct PlugInClient *_field1;
     } _field1;
 };
 
-struct unique_ptr<WebCore::PreviewConverter, std::__1::default_delete<WebCore::PreviewConverter>> {
-    struct __compressed_pair<WebCore::PreviewConverter *, std::__1::default_delete<WebCore::PreviewConverter>> {
-        struct PreviewConverter *_field1;
+struct unique_ptr<WebCore::PointerCaptureController, std::__1::default_delete<WebCore::PointerCaptureController>> {
+    struct __compressed_pair<WebCore::PointerCaptureController *, std::__1::default_delete<WebCore::PointerCaptureController>> {
+        struct PointerCaptureController *_field1;
     } _field1;
 };
 
@@ -3524,12 +2291,6 @@ struct unique_ptr<WebCore::WebGLStateTracker, std::__1::default_delete<WebCore::
     } _field1;
 };
 
-struct unique_ptr<WebCore::WebInjectedScriptManager, std::__1::default_delete<WebCore::WebInjectedScriptManager>> {
-    struct __compressed_pair<WebCore::WebInjectedScriptManager *, std::__1::default_delete<WebCore::WebInjectedScriptManager>> {
-        struct WebInjectedScriptManager *_field1;
-    } _field1;
-};
-
 struct unique_ptr<WebCore::WheelEventDeltaFilter, std::__1::default_delete<WebCore::WheelEventDeltaFilter>> {
     struct __compressed_pair<WebCore::WheelEventDeltaFilter *, std::__1::default_delete<WebCore::WheelEventDeltaFilter>> {
         struct WheelEventDeltaFilter *_field1;
@@ -3553,13 +2314,53 @@ typedef struct Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentif
     struct unique_ptr<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void, WebCore::PolicyAction, WebCore::PolicyCheckIdentifier>>> m_callableWrapper;
 } Function_b3117096;
 
-typedef struct HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>> {
-    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, CALayer *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, CALayer *>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
-} HashMap_9d18c561;
+typedef struct HashMap<CALayer *, CALayer *, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>> {
+    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, CALayer *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, CALayer *>>, WTF::DefaultHash<CALayer *>, WTF::HashMap<CALayer *, CALayer *, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
+} HashMap_3ffacf9f;
 
-typedef struct HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>> {
-    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
-} HashMap_8e3a669a;
+typedef struct HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>> {
+    struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>, WTF::DefaultHash<CALayer *>, WTF::HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::DefaultHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
+} HashMap_16811959;
+
+typedef struct NakedPtr<WebCore::DocumentLoader> {
+    struct DocumentLoader *_field1;
+} NakedPtr_2c503e7f;
+
+typedef struct NakedPtr<WebCore::Frame> {
+    struct Frame *m_ptr;
+} NakedPtr_4ac97545;
+
+typedef struct NakedPtr<WebCore::Geolocation> {
+    struct Geolocation *_field1;
+} NakedPtr_331571b6;
+
+typedef struct NakedPtr<WebCore::HTMLVideoElement> {
+    struct HTMLVideoElement *_field1;
+} NakedPtr_311734dd;
+
+typedef struct NakedPtr<WebCore::InspectorController> {
+    struct InspectorController *m_ptr;
+} NakedPtr_5b249b89;
+
+typedef struct NakedPtr<WebCore::Page> {
+    struct Page *_field1;
+} NakedPtr_4f2b354f;
+
+typedef struct NakedPtr<WebInspectorFrontendClient> {
+    struct WebInspectorFrontendClient *m_ptr;
+} NakedPtr_fc424271;
+
+typedef struct NakedRef<WebCore::ArchiveResource> {
+    struct ArchiveResource *_field1;
+} NakedRef_f8818be1;
+
+typedef struct NakedRef<WebCore::Geolocation> {
+    struct Geolocation *_field1;
+} NakedRef_f8c98cc9;
+
+typedef struct ObjectIdentifier<WebCore::DictationContextType> {
+    unsigned long long _field1;
+} ObjectIdentifier_2e565102;
 
 typedef struct OptionSet<WebCore::PaintBehavior> {
     unsigned short _field1;
@@ -3613,18 +2414,25 @@ typedef struct RefPtr<WebCore::Range, WTF::DumbPtrTraits<WebCore::Range>> {
     struct Range *_field1;
 } RefPtr_033e7b31;
 
-typedef struct Vector<WebCore::Node *, 0, WTF::CrashOnOverflow, 16> {
-    struct Node **_field1;
+typedef struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct String *_field1;
     unsigned int _field2;
     unsigned int _field3;
-} Vector_1d266cd7;
+} Vector_05504c84;
+
+typedef struct Vector<WebCore::DictationAlternative, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct DictationAlternative *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+} Vector_4aeed4b7;
+
+typedef struct Vector<WebCore::TextAlternativeWithRange, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct TextAlternativeWithRange *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+} Vector_15b552f4;
 
 #pragma mark Named Unions
-
-union DataUnion {
-    struct RenderObject *_field1;
-    struct NodeRareDataBase *_field2;
-};
 
 union EncodedValueDescriptor {
     long long asInt64;
@@ -3640,44 +2448,19 @@ union constexpr_storage_t<WTF::WallTime> {
     struct WallTime _field2;
 };
 
-union constexpr_storage_t<WebCore::AdClickAttribution::Conversion> {
-    unsigned char _field1;
-    struct Conversion _field2;
-};
-
-union constexpr_storage_t<WebCore::BackForwardItemIdentifier> {
-    unsigned char _field1;
-    struct BackForwardItemIdentifier _field2;
-};
-
-union constexpr_storage_t<WebCore::CaptionUserPreferences::CaptionDisplayMode> {
-    unsigned char _field1;
-    int _field2;
-};
-
 union constexpr_storage_t<WebCore::CompositingPolicy> {
+    unsigned char _field1;
+    _Bool _field2;
+};
+
+union constexpr_storage_t<WebCore::DragSourceAction> {
     unsigned char _field1;
     unsigned char _field2;
 };
 
-union constexpr_storage_t<WebCore::DocumentLoader::TemporaryServiceWorkerClient> {
-    unsigned char _field1;
-    struct TemporaryServiceWorkerClient _field2;
-};
-
 union constexpr_storage_t<WebCore::EventThrottlingBehavior> {
     unsigned char _field1;
-    int _field2;
-};
-
-union constexpr_storage_t<WebCore::NavigationAction::MouseEventData> {
-    unsigned char _field1;
-    struct MouseEventData _field2;
-};
-
-union constexpr_storage_t<WebCore::NavigationAction::UIEventWithKeyStateData> {
-    unsigned char _field1;
-    struct UIEventWithKeyStateData _field2;
+    _Bool _field2;
 };
 
 union constexpr_storage_t<WebCore::ViewportArguments> {
@@ -3695,11 +2478,6 @@ union constexpr_storage_t<double> {
     double value_;
 };
 
-union constexpr_storage_t<int> {
-    unsigned char _field1;
-    int _field2;
-};
-
 union constexpr_storage_t<unsigned int> {
     unsigned char _field1;
     unsigned int _field2;
@@ -3710,29 +2488,9 @@ union constexpr_storage_t<unsigned short> {
     unsigned short _field2;
 };
 
-union storage_t<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> {
-    unsigned char _field1;
-    struct Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>> _field2;
-};
-
-union storage_t<WebCore::AdClickAttribution> {
-    unsigned char _field1;
-    struct AdClickAttribution _field2;
-};
-
 union storage_t<WebCore::ApplicationManifest> {
     unsigned char _field1;
     struct ApplicationManifest _field2;
-};
-
-union storage_t<WebCore::CertificateInfo> {
-    unsigned char _field1;
-    struct CertificateInfo _field2;
-};
-
-union storage_t<WebCore::NavigationAction::Requester> {
-    unsigned char _field1;
-    struct Requester _field2;
 };
 
 union storage_t<WebCore::Page::Navigation> {
@@ -3758,16 +2516,6 @@ union storage_t<WebCore::PasteboardWriterData::WebContent> {
 union storage_t<WebCore::Path> {
     unsigned char _field1;
     struct Path _field2;
-};
-
-union storage_t<WebCore::ServiceWorkerData> {
-    unsigned char _field1;
-    struct ServiceWorkerData _field2;
-};
-
-union storage_t<WebCore::ServiceWorkerRegistrationData> {
-    unsigned char _field1;
-    struct ServiceWorkerRegistrationData _field2;
 };
 
 union storage_t<WebCore::TextIndicatorData> {

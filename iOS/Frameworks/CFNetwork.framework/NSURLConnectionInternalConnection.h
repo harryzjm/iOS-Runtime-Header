@@ -25,7 +25,6 @@
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;
-- (void)cleanupChallenges;
 - (void)_setShouldSkipCancelOnRelease:(_Bool)arg1;
 - (void)_resumeLoading;
 - (void)_suspendLoading;
@@ -38,11 +37,7 @@
 - (void)_setDelegateQueue:(id)arg1;
 - (void)dealloc;
 - (id)_timingData;
-- (struct _CFURLConnection *)_retainCFURLConnection;
-- (struct _CFURLConnection *)_atomic_CFURLConnection;
-- (struct _CFURLConnection *)_CFURLConnection;
 - (id)initWithInfo:(const struct InternalInit *)arg1;
-- (void)sendCFChallenge:(struct _CFURLAuthChallenge *)arg1 toSelector:(SEL)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

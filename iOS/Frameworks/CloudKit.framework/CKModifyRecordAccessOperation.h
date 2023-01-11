@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKModifyRecordAccessOperationCallbacks-Protocol.h>
 
-@interface CKModifyRecordAccessOperation
+@class CKModifyRecordAccessOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifyRecordAccessOperationCallbacks;
+
+@interface CKModifyRecordAccessOperation <CKModifyRecordAccessOperationCallbacks>
 {
     CDUnknownBlockType _recordAccessGrantedBlock;
     CDUnknownBlockType _recordAccessRevokedBlock;
@@ -18,14 +21,16 @@
     NSMutableArray *_revokedRecordIDs;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *revokedRecordIDs; // @synthesize revokedRecordIDs=_revokedRecordIDs;
 @property(retain, nonatomic) NSMutableArray *grantedRecordIDs; // @synthesize grantedRecordIDs=_grantedRecordIDs;
 @property(retain, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property(retain, nonatomic) NSArray *recordIDsToRevoke; // @synthesize recordIDsToRevoke=_recordIDsToRevoke;
 @property(retain, nonatomic) NSArray *recordIDsToGrant; // @synthesize recordIDsToGrant=_recordIDsToGrant;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleRecordAccessRevocationForRecordID:(id)arg1 error:(id)arg2;
+- (void)handleRecordAccessInitiationForRecordID:(id)arg1 accessToken:(id)arg2 referenceIdentifier:(id)arg3 error:(id)arg4;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -36,6 +41,10 @@
 @property(copy, nonatomic) CDUnknownBlockType recordAccessRevokedBlock; // @synthesize recordAccessRevokedBlock=_recordAccessRevokedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordAccessGrantedBlock; // @synthesize recordAccessGrantedBlock=_recordAccessGrantedBlock;
 - (id)initWithRecordIDsToGrantAccess:(id)arg1 recordIDsToRevokeAccess:(id)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKModifyRecordAccessOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKModifyRecordAccessOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

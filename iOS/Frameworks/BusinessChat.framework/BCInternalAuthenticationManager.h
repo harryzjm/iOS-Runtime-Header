@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, BCInternalAuthenticationRequest, NSString;
+@class BCInternalAuthenticationRequest, NSString;
+@protocol ACAccountProtocol, ACAccountStoreProtocol;
 
 @interface BCInternalAuthenticationManager : NSObject
 {
     BCInternalAuthenticationRequest *_authenticationRequest;
-    ACAccount *_account;
-    ACAccountStore *_accountStore;
+    id <ACAccountProtocol> _account;
+    id <ACAccountStoreProtocol> _accountStore;
 }
 
-@property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
-@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-@property(retain, nonatomic) BCInternalAuthenticationRequest *authenticationRequest; // @synthesize authenticationRequest=_authenticationRequest;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <ACAccountStoreProtocol> accountStore; // @synthesize accountStore=_accountStore;
+@property(retain, nonatomic) id <ACAccountProtocol> account; // @synthesize account=_account;
+@property(retain, nonatomic) BCInternalAuthenticationRequest *authenticationRequest; // @synthesize authenticationRequest=_authenticationRequest;
 - (id)labelCategory;
 - (id)globalAuthToken;
 - (id)deviceSerialNumber;
@@ -34,6 +35,7 @@
 @property(readonly, copy, nonatomic) NSString *firstName;
 @property(readonly, copy, nonatomic) NSString *username;
 - (void)fetchCredentials:(CDUnknownBlockType)arg1;
+- (id)initWithAuthenticationRequest:(id)arg1 acAccount:(id)arg2 acAccountStore:(id)arg3;
 - (id)initWithAuthenticationRequest:(id)arg1;
 
 @end

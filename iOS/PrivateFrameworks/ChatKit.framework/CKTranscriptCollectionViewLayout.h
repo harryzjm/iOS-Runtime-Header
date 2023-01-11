@@ -6,12 +6,15 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-@class CADisplayLink, NSArray, NSDate, NSIndexSet, NSMutableDictionary, NSMutableIndexSet;
+@class CADisplayLink, IMScheduledUpdater, NSArray, NSDate, NSIndexSet, NSMutableDictionary, NSMutableIndexSet;
 
 @interface CKTranscriptCollectionViewLayout : UICollectionViewLayout
 {
     _Bool _holdingBoundsInvalidation;
     _Bool _useInitialLayoutAttributesForRotation;
+    _Bool _useOverlayLayout;
+    _Bool _inlineAnimatingOut;
+    unsigned char _chatStyle;
     _Bool _isResting;
     _Bool _easingUp;
     _Bool _hasLoadMore;
@@ -21,6 +24,7 @@
     double _anchorYPosition;
     NSIndexSet *_indicesOfChatItemsToBeRemovedWithoutFading;
     NSIndexSet *_indicesOfChatItemsToBeInsertedWithoutFading;
+    NSIndexSet *_indicesOfReplyChatItemsToBeInserted;
     NSArray *_layoutAttributes;
     NSArray *_associatedLayoutAttributes;
     NSArray *_decorationLayoutAttributes;
@@ -31,6 +35,7 @@
     NSDate *_lastTouchTime;
     NSMutableDictionary *_initialParentLayoutAttributes;
     NSMutableDictionary *_finalParentVerticalOffsets;
+    IMScheduledUpdater *_dynamicsUpdater;
     struct CGPoint _targetContentOffset;
     struct CGSize _sizeForRotation;
     struct CGSize _contentSize;
@@ -39,40 +44,49 @@
 
 + (Class)layoutAttributesClass;
 + (long long)translateLayoutIndexToEffectIndex:(long long)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) IMScheduledUpdater *dynamicsUpdater; // @synthesize dynamicsUpdater=_dynamicsUpdater;
 @property(nonatomic) _Bool sizeCategoryIsAccessibilitySizeCategory; // @synthesize sizeCategoryIsAccessibilitySizeCategory=_sizeCategoryIsAccessibilitySizeCategory;
 @property(nonatomic) _Bool coalesceInvalidations; // @synthesize coalesceInvalidations=_coalesceInvalidations;
-@property(nonatomic) _Bool useFastQuanta; // @synthesize useFastQuanta=_useFastQuanta;
 @property(retain, nonatomic) NSMutableDictionary *finalParentVerticalOffsets; // @synthesize finalParentVerticalOffsets=_finalParentVerticalOffsets;
 @property(retain, nonatomic) NSMutableDictionary *initialParentLayoutAttributes; // @synthesize initialParentLayoutAttributes=_initialParentLayoutAttributes;
 @property(nonatomic) _Bool hasLoadMore; // @synthesize hasLoadMore=_hasLoadMore;
 @property(retain, nonatomic) NSDate *lastTouchTime; // @synthesize lastTouchTime=_lastTouchTime;
-@property(nonatomic) _Bool easingUp; // @synthesize easingUp=_easingUp;
-@property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
-@property(nonatomic) double prevTimestamp; // @synthesize prevTimestamp=_prevTimestamp;
-@property(nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
-@property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property(retain, nonatomic) NSMutableIndexSet *insertedAssociatedLayoutAttributes; // @synthesize insertedAssociatedLayoutAttributes=_insertedAssociatedLayoutAttributes;
 @property(copy, nonatomic) NSArray *oldAssociatedLayoutAttributes; // @synthesize oldAssociatedLayoutAttributes=_oldAssociatedLayoutAttributes;
 @property(copy, nonatomic) NSArray *decorationLayoutAttributes; // @synthesize decorationLayoutAttributes=_decorationLayoutAttributes;
 @property(copy, nonatomic) NSArray *associatedLayoutAttributes; // @synthesize associatedLayoutAttributes=_associatedLayoutAttributes;
 @property(copy, nonatomic) NSArray *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+@property(retain, nonatomic) NSIndexSet *indicesOfReplyChatItemsToBeInserted; // @synthesize indicesOfReplyChatItemsToBeInserted=_indicesOfReplyChatItemsToBeInserted;
 @property(retain, nonatomic) NSIndexSet *indicesOfChatItemsToBeInsertedWithoutFading; // @synthesize indicesOfChatItemsToBeInsertedWithoutFading=_indicesOfChatItemsToBeInsertedWithoutFading;
 @property(retain, nonatomic) NSIndexSet *indicesOfChatItemsToBeRemovedWithoutFading; // @synthesize indicesOfChatItemsToBeRemovedWithoutFading=_indicesOfChatItemsToBeRemovedWithoutFading;
 @property(nonatomic) struct CGSize sizeForRotation; // @synthesize sizeForRotation=_sizeForRotation;
-@property(nonatomic) _Bool isResting; // @synthesize isResting=_isResting;
+@property(readonly, nonatomic) _Bool isResting;
+@property(nonatomic) unsigned char chatStyle; // @synthesize chatStyle=_chatStyle;
+@property(nonatomic, getter=isInlineAnimatingOut) _Bool inlineAnimatingOut; // @synthesize inlineAnimatingOut=_inlineAnimatingOut;
+@property(nonatomic, getter=isUsingOverlayLayout) _Bool useOverlayLayout; // @synthesize useOverlayLayout=_useOverlayLayout;
 @property(nonatomic, getter=isUsingInitialLayoutAttributesForRotation) _Bool useInitialLayoutAttributesForRotation; // @synthesize useInitialLayoutAttributesForRotation=_useInitialLayoutAttributesForRotation;
 @property(nonatomic, getter=isHoldingBoundsInvalidation) _Bool holdingBoundsInvalidation; // @synthesize holdingBoundsInvalidation=_holdingBoundsInvalidation;
 @property(nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
 @property(nonatomic) double anchorYPosition; // @synthesize anchorYPosition=_anchorYPosition;
-- (void).cxx_destruct;
 - (void)reduceMotionSettingChanged:(id)arg1;
 - (void)sizeCategoryDidChange:(id)arg1;
+- (void)_applyCurrentFrameOffsetsForLayoutAttributesIfNeeded:(id)arg1;
+- (void)_applyTargetFrameOffsetsForLayoutAttributesIfNeeded:(id)arg1;
+- (struct CGRect)_convertScreenFrameToLocalFrame:(struct CGRect)arg1;
+- (void)_applyAttributeUpdatesWithTargetMap:(id)arg1 layoutAttributes:(id)arg2 updateBlock:(CDUnknownBlockType)arg3;
+- (_Bool)needsAdditionalBracketPaddingForChatItem:(id)arg1 prevChatItem:(id)arg2;
+- (_Bool)previousReplyCount:(unsigned long long)arg1 isOccludedForAssociatedFrame:(struct CGRect)arg2 outMaxY:(double *)arg3;
+- (_Bool)nextMessageIsReplyForIndex:(unsigned long long)arg1;
+- (_Bool)nextItemIsOriginatorWithRepliesForIndex:(unsigned long long)arg1;
+- (double)handleInvalidCaseForChatItem:(id)arg1 withPrevChatItem:(id)arg2;
 - (void)updateFrames;
 - (void)displayLinkFired:(id)arg1;
 - (double)bezierPointForPercentage:(double)arg1 anchor1:(double)arg2 anchor2:(double)arg3 control1:(double)arg4 control2:(double)arg5;
 - (void)updateAttributesForTargetContentOffsetChangeWithAttributes:(id)arg1;
 - (void)updateAttributesForAnchorYChangeWithAttributes:(id)arg1;
 - (void)updateContentSize;
+- (void)_configureThreadGroupsForAttributes:(id)arg1 outMaxYAnchorAttribute:(id *)arg2 forVisibleBounds:(struct CGRect)arg3;
 - (void)clearParentInitialIndexesAndFinalOffsets;
 - (void)setVerticalOffset:(double)arg1 forParentOfAssociatedItemDeletedAtIndex:(unsigned long long)arg2;
 - (void)setInitialIndex:(unsigned long long)arg1 forParentOfAssociatedItemInsertedAtIndex:(unsigned long long)arg2;
@@ -86,10 +100,15 @@
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
+- (struct UIEdgeInsets)_visibleRectInsectsForMaxYAnchorLayoutAttribute:(id)arg1 forVisibleBounds:(struct CGRect)arg2;
 - (void)prepareLayout;
 - (void)prepareLayoutForRotisserieScrolling;
 - (void)_dealloc;
 - (void)dealloc;
+- (void)setNeedsDynamicsUpdate;
+- (void)endHoldingDynamicsUpdatesForKey:(id)arg1;
+- (void)beginHoldingDynamicsUpdatesForKey:(id)arg1;
+- (void)_kickDynamicsIfNeeded;
 - (id)init;
 - (long long)effectIndexForDecorationViewAtIndex:(long long)arg1;
 

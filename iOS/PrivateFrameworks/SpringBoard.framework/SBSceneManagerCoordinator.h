@@ -27,8 +27,8 @@
 + (id)secureMainDisplaySceneManager;
 + (id)mainDisplaySceneManager;
 + (id)sharedInstance;
-@property(readonly, nonatomic) UIApplicationSceneDeactivationManager *sceneDeactivationManager; // @synthesize sceneDeactivationManager=_sceneDeactivationManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIApplicationSceneDeactivationManager *sceneDeactivationManager; // @synthesize sceneDeactivationManager=_sceneDeactivationManager;
 - (void)sceneManagerDidInvalidateForReference:(id)arg1;
 - (void)displayMonitor:(id)arg1 willDisconnectIdentity:(id)arg2;
 - (void)displayMonitor:(id)arg1 didConnectIdentity:(id)arg2 withConfiguration:(id)arg3;
@@ -46,6 +46,7 @@
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 interceptUpdateForScene:(id)arg2 withNewSettings:(id)arg3;
 - (id)sceneManager:(id)arg1 createDefaultTransitionContextForScene:(id)arg2;
+- (void)sceneManager:(id)arg1 clientDidConnectWithHandshake:(id)arg2;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (void)registerSceneWorkspaceIdentifierToIgnore:(id)arg1;

@@ -10,16 +10,19 @@
 
 @interface BFFCapabilities : NSObject
 {
+    _Bool _shouldShowWalletInitialized;
+    _Bool _shouldShowWallet;
     NSObject<OS_dispatch_queue> *_fetchQueue;
-    _Bool _regionSupportsPaymentRegistrationInitialized;
-    _Bool _regionSupportsPaymentRegistration;
 }
 
 + (id)sharedCapabilities;
 - (void).cxx_destruct;
-- (void)getRegionSupportsPaymentRegistrationWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)supportsApplePay;
-- (void)localeChanged:(id)arg1;
+@property(nonatomic) _Bool shouldShowWallet; // @synthesize shouldShowWallet=_shouldShowWallet;
+@property(nonatomic) _Bool shouldShowWalletInitialized; // @synthesize shouldShowWalletInitialized=_shouldShowWalletInitialized;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
+- (void)_localeChanged:(id)arg1;
+- (void)shouldShowWallet:(CDUnknownBlockType)arg1;
+- (_Bool)hasSecureElement;
 - (_Bool)isAppleTV;
 - (void)dealloc;
 - (id)init;

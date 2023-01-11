@@ -16,6 +16,7 @@
 @property(nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
 - (id)_potentialMemoriesForDryTesting;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)keyAssetCurationOptions;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <iTunesStore/NSObject-Protocol.h>
 
-@class AMSBagValue, NSDate, NSString;
+@class ACAccount, AMSBagValue, AMSProcessInfo, NSDate, NSString;
 
 @protocol AMSBagProtocol <NSObject>
 @property(readonly, copy, nonatomic) NSString *profileVersion;
@@ -21,5 +21,9 @@
 - (void)createSnapshotWithCompletion:(void (^)(AMSSnapshotBag *, NSError *))arg1;
 - (AMSBagValue *)boolForKey:(NSString *)arg1;
 - (AMSBagValue *)arrayForKey:(NSString *)arg1;
+
+@optional
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
+- (AMSBagValue *)URLForKey:(NSString *)arg1 account:(ACAccount *)arg2;
 @end
 

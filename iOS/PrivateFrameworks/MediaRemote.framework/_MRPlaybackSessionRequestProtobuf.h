@@ -23,13 +23,12 @@
     } _has;
 }
 
-+ (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *type; // @synthesize type=_type;
 @property(nonatomic) int length; // @synthesize length=_length;
 @property(nonatomic) int location; // @synthesize location=_location;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -44,7 +43,6 @@
 @property(nonatomic) _Bool hasLocation;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 @property(readonly, nonatomic) _Bool hasRequestID;
-- (id)customDescription;
 
 @end
 

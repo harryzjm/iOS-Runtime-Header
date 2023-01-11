@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class GEOQuickLink, MKVibrantView, NSArray, NSLayoutConstraint, UIImageView, _MKUILabel;
+@class GEOAppStoreAppClip, GEOQuickLink, MKVibrantView, NSArray, NSLayoutConstraint, UIImageView, _MKUILabel;
 @protocol MKQuickLinkItemViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _touched;
     id <MKQuickLinkItemViewDelegate> _delegate;
     GEOQuickLink *_quickLink;
+    GEOAppStoreAppClip *_appClip;
 }
 
 + (double)minWidthForString:(id)arg1 forSize:(id)arg2;
@@ -30,12 +31,16 @@ __attribute__((visibility("hidden")))
 + (id)appLabelFont;
 + (id)labelFont;
 + (double)widthBrandItem;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool touched; // @synthesize touched=_touched;
+@property(retain, nonatomic) GEOAppStoreAppClip *appClip; // @synthesize appClip=_appClip;
 @property(retain, nonatomic) GEOQuickLink *quickLink; // @synthesize quickLink=_quickLink;
 @property(nonatomic) __weak id <MKQuickLinkItemViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)_loadAppArtwork:(id)arg1 adamID:(id)arg2;
+- (void)_loadAppArtwork:(id)arg1;
+- (void)_loadAppClipArtwork:(id)arg1 bundleID:(id)arg2;
+- (void)_loadFallBackApp;
 - (void)_loadOfficialApp;
+- (void)_loadAppClip;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

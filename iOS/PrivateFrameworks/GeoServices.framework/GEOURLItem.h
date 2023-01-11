@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOURLItem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOMapItemStorage *_mapItemStorage;
     GEOPlace *_place;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _currentLocation;
     struct {
         unsigned int has_currentLocation:1;
         unsigned int read_mapItemStorage:1;
         unsigned int read_place:1;
-        unsigned int wrote_mapItemStorage:1;
-        unsigned int wrote_place:1;
-        unsigned int wrote_currentLocation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,16 +38,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOMapItemStorage *mapItemStorage;
 @property(readonly, nonatomic) _Bool hasMapItemStorage;
-- (void)_readMapItemStorage;
 @property(nonatomic) _Bool hasCurrentLocation;
 @property(nonatomic) _Bool currentLocation;
 @property(retain, nonatomic) GEOPlace *place;
 @property(readonly, nonatomic) _Bool hasPlace;
-- (void)_readPlace;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (void)setMapItem:(id)arg1;
 - (id)mapItem;
 

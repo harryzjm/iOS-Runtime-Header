@@ -39,6 +39,7 @@
     NSHashTable *_disabledAutoUnlockAssertions;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_getPassLibrary, setter=_setPassLibrary:) PKPassLibrary *passLibrary; // @synthesize passLibrary=_passLibrary;
 @property(readonly, nonatomic, getter=_state) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic, getter=_walletPrearmRecognizer) SBWalletPrearmRecognizer *walletPrearmRecognizer; // @synthesize walletPrearmRecognizer=_walletPrearmRecognizer;
@@ -46,7 +47,6 @@
 @property(nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_isAuthenticated;
 @property(nonatomic) _Bool bioAuthenticatedWhileMenuButtonDown; // @synthesize bioAuthenticatedWhileMenuButtonDown=_bioAuthenticatedWhileMenuButtonDown;
 @property(nonatomic) __weak id <SBLockScreenBiometricAuthenticationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_walletPreArmDisabledDidChange:(id)arg1;
 - (void)_clearFingerDetectAssertion;
 - (void)_createFingerDetectAssertion;

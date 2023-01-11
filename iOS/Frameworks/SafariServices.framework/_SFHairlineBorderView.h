@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     UIColor *_borderColor;
 }
 
-@property(retain, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

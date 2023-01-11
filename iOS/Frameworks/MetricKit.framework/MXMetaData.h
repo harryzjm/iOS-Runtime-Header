@@ -16,19 +16,23 @@
     NSString *_osVersion;
     NSString *_deviceType;
     NSString *_applicationBuildVersion;
+    NSString *_platformArchitecture;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly) NSString *applicationBuildVersion; // @synthesize applicationBuildVersion=_applicationBuildVersion;
-@property(readonly) NSString *deviceType; // @synthesize deviceType=_deviceType;
-@property(readonly) NSString *osVersion; // @synthesize osVersion=_osVersion;
-@property(readonly) NSString *regionFormat; // @synthesize regionFormat=_regionFormat;
 - (void).cxx_destruct;
+@property(retain) NSString *platformArchitecture; // @synthesize platformArchitecture=_platformArchitecture;
+@property(retain) NSString *applicationBuildVersion; // @synthesize applicationBuildVersion=_applicationBuildVersion;
+@property(retain) NSString *deviceType; // @synthesize deviceType=_deviceType;
+@property(retain) NSString *osVersion; // @synthesize osVersion=_osVersion;
+@property(retain) NSString *regionFormat; // @synthesize regionFormat=_regionFormat;
+- (id)dictionaryRepresentation;
 - (id)DictionaryRepresentation;
 - (id)JSONRepresentation;
 - (id)toDictionary;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithRegionFormat:(id)arg1 osVersion:(id)arg2 deviceType:(id)arg3 appBuildVersion:(id)arg4 platformArchitecture:(id)arg5;
 - (id)initWithRegionFormat:(id)arg1 osVersion:(id)arg2 deviceType:(id)arg3 appBuildVersion:(id)arg4;
 
 @end

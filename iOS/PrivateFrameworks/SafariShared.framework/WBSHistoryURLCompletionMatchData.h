@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) _Bool lastVisitWasFailure;
 @property(readonly, nonatomic) double lastVisitedTimeInterval;
 @property(readonly, nonatomic) _Bool containsBookmark;
-- (float)topSitesScoreForPageTitleAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
+- (float)topSitesScoreForPageTitleAtTime:(double)arg1;
 - (float)topSitesScoreForURLStringAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)matchesAutocompleteTrigger:(id)arg1;
 - (void)enumeratePageTitlesUsingBlock:(CDUnknownBlockType)arg1;
@@ -31,6 +31,7 @@
 - (id)userVisibleURLStringForPageTitleAtIndex:(unsigned long long)arg1;
 - (id)userVisibleURLStringAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *originalURLString;
+@property(readonly, nonatomic) _Bool shouldPreload;
 - (id)matchDataByMergingWithMatchData:(id)arg1;
 - (id)initWithCompletionItem:(struct HistoryURLCompletionItem *)arg1;
 - (id)init;

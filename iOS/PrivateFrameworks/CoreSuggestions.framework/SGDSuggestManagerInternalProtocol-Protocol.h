@@ -7,10 +7,12 @@
 #import <CoreSuggestions/_SGDSuggestManagerBaseProtocol-Protocol.h>
 #import <CoreSuggestions/_SGDSuggestManagerInternalHarvestProtocol-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString, NSURL, SGRecordId;
+@class NSArray, NSData, NSDate, NSString, NSURL, SGRecordId, SGSimpleMailMessage;
 
 @protocol SGDSuggestManagerInternalProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerInternalHarvestProtocol>
+- (void)powerStateWithCompletion:(void (^)(SGXPCResponse1 *))arg1;
 - (void)deleteCloudKitZoneWithCompletion:(void (^)(SGXPCResponse *))arg1;
+- (void)suggestionsFromSimpleMailMessage:(SGSimpleMailMessage *)arg1 headers:(NSData *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(SGXPCResponse1 *))arg4;
 - (void)suggestionsFromEmailContent:(NSString *)arg1 headers:(NSData *)arg2 source:(NSString *)arg3 options:(unsigned long long)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
 - (void)sleepWithCompletion:(void (^)(SGXPCResponse *))arg1;
 - (void)daemonExitWithCompletion:(void (^)(SGXPCResponse *))arg1;

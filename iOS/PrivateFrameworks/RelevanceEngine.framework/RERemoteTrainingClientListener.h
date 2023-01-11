@@ -19,8 +19,9 @@
     id <RERemoteTrainingClientListenerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <RERemoteTrainingClientListenerDelegate> delegate; // @synthesize delegate=_delegate;
++ (id)sharedTrainingClientListener;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <RERemoteTrainingClientListenerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)dealloc;
 - (id)init;

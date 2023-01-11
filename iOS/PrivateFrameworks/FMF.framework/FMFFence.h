@@ -9,7 +9,7 @@
 #import <FMF/NSCopying-Protocol.h>
 #import <FMF/NSSecureCoding-Protocol.h>
 
-@class CLLocation, FMFPlacemark, NSArray, NSDate, NSString;
+@class CLLocation, FMFPlacemark, FMFSchedule, NSArray, NSDate, NSString;
 
 @interface FMFFence : NSObject <NSCopying, NSSecureCoding>
 {
@@ -26,6 +26,8 @@
     NSString *_type;
     unsigned long long _locationType;
     NSString *_acceptanceStatus;
+    FMFSchedule *_schedule;
+    NSDate *_muteEndDate;
     NSString *_ckRecordName;
     NSString *_ckRecordZoneOwnerName;
     NSDate *_timestamp;
@@ -37,12 +39,16 @@
 + (_Bool)isAllowedAtLocation:(struct CLLocationCoordinate2D)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)genericFriendName;
++ (id)endDateForMuteTimespan:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *pendingIdentifier; // @synthesize pendingIdentifier=_pendingIdentifier;
 @property(retain, nonatomic) NSString *createdByIdentifier; // @synthesize createdByIdentifier=_createdByIdentifier;
 @property(retain, nonatomic) NSString *friendIdentifier; // @synthesize friendIdentifier=_friendIdentifier;
 @property(retain, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property(retain, nonatomic) NSString *ckRecordZoneOwnerName; // @synthesize ckRecordZoneOwnerName=_ckRecordZoneOwnerName;
 @property(retain, nonatomic) NSString *ckRecordName; // @synthesize ckRecordName=_ckRecordName;
+@property(retain, nonatomic) NSDate *muteEndDate; // @synthesize muteEndDate=_muteEndDate;
+@property(retain, nonatomic) FMFSchedule *schedule; // @synthesize schedule=_schedule;
 @property(nonatomic, getter=isFromMe) _Bool fromMe; // @synthesize fromMe=_fromMe;
 @property(nonatomic, getter=isRecurring) _Bool recurring; // @synthesize recurring=_recurring;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
@@ -56,17 +62,19 @@
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (id)handlesForArray:(id)arg1;
 - (id)locationForDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)updateFenceMuteEndDate:(id)arg1;
 - (void)updateFenceLocation:(id)arg1 placemark:(id)arg2 label:(id)arg3 trigger:(id)arg4 type:(id)arg5 locationType:(unsigned long long)arg6;
 @property(readonly, nonatomic, getter=isRegionAllowed) _Bool regionAllowed;
 @property(readonly, getter=isSupported) _Bool supported;
 @property(readonly, nonatomic, getter=shouldUseCloudKitStore) _Bool useCloudKitStore;
+@property(readonly, nonatomic, getter=inviteDate) NSDate *inviteDate;
+@property(readonly, nonatomic, getter=isMuted) _Bool isMuted;
 @property(readonly, nonatomic, getter=shouldUseIDSTrigger) _Bool useIDSTrigger;
 @property(readonly, nonatomic, getter=isOnMe) _Bool onMe;
 - (void)encodeWithCoder:(id)arg1;

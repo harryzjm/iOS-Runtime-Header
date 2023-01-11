@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     UIViewController *_mainViewController;
     UIViewController *_leadingViewController;
+    UIViewController *_supplementaryViewController;
     UIViewController *_trailingViewController;
     UIViewController *_collapsedViewController;
     UIViewController *_preservedDetailController;
@@ -25,12 +26,15 @@ __attribute__((visibility("hidden")))
     UISlidingBarStateRequest *_externallyAnimatingStateRequest;
     long long _externallyAnimatingAffectedSides;
     _UIPanelAnimationState *_animationState;
+    UISlidingBarStateRequest *_interactiveStateRequest;
     long long _collapsedState;
     double _keyboardAdjustment;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double keyboardAdjustment; // @synthesize keyboardAdjustment=_keyboardAdjustment;
 @property(nonatomic) long long collapsedState; // @synthesize collapsedState=_collapsedState;
+@property(copy, nonatomic) UISlidingBarStateRequest *interactiveStateRequest; // @synthesize interactiveStateRequest=_interactiveStateRequest;
 @property(retain, nonatomic) _UIPanelAnimationState *animationState; // @synthesize animationState=_animationState;
 @property(nonatomic) long long externallyAnimatingAffectedSides; // @synthesize externallyAnimatingAffectedSides=_externallyAnimatingAffectedSides;
 @property(copy, nonatomic) UISlidingBarStateRequest *externallyAnimatingStateRequest; // @synthesize externallyAnimatingStateRequest=_externallyAnimatingStateRequest;
@@ -40,11 +44,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIViewController *preservedDetailController; // @synthesize preservedDetailController=_preservedDetailController;
 @property(retain, nonatomic) UIViewController *collapsedViewController; // @synthesize collapsedViewController=_collapsedViewController;
 @property(retain, nonatomic) UIViewController *trailingViewController; // @synthesize trailingViewController=_trailingViewController;
+@property(retain, nonatomic) UIViewController *supplementaryViewController; // @synthesize supplementaryViewController=_supplementaryViewController;
 @property(retain, nonatomic) UIViewController *leadingViewController; // @synthesize leadingViewController=_leadingViewController;
 @property(retain, nonatomic) UIViewController *mainViewController; // @synthesize mainViewController=_mainViewController;
-- (void).cxx_destruct;
+- (id)description;
 - (id)_stateForInteractiveRequest:(id)arg1 withAffectedSides:(long long)arg2 inPossibleStates:(id)arg3;
+- (id)computePossibleStatesGivenParentView:(id)arg1 withSize:(struct CGSize)arg2 forceOverlay:(_Bool)arg3;
 - (id)computePossibleStatesGivenParentView:(id)arg1 withSize:(struct CGSize)arg2;
+- (id)_allowedSupplementaryWidthsForParentWidth:(double)arg1;
 - (id)_allowedTrailingWidthsForParentWidth:(double)arg1;
 - (id)_allowedLeadingWidthsForParentWidth:(double)arg1;
 - (double)_defaultWidthForViewController:(id)arg1 parentWidth:(double)arg2;

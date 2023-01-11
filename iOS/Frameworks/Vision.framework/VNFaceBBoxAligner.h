@@ -14,13 +14,11 @@ __attribute__((visibility("hidden")))
     id <VNModelFile> mFaceBoxAlignerModelFileHandle;
 }
 
-+ (_Bool)shouldDumpDebugIntermediates;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)processWithOptions:(id)arg1 warningRecorder:(id)arg2 error:(id *)arg3;
-- (void)dumpDebugIntermediatesWithImageBuffer:(id)arg1 lumaIntermediate:(struct __CVBuffer *)arg2 rawBBoxInLumaIntermediateCoordinates:(struct _Geometry2D_rect2D_)arg3 alignedBBoxInLumaIntermediateCoordinates:(struct _Geometry2D_rect2D_)arg4 meanShapeInLumaIntermediateCoordinates:(const vector_f48c7054 *)arg5 rotationAngle:(float)arg6;
 - (void)dealloc;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end
 

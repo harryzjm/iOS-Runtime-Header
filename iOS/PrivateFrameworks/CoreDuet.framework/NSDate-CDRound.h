@@ -16,7 +16,7 @@
 - (int)slotFromMidnightWithTotalSlotsInDay:(int)arg1;
 - (id)floorDateWithTotalSlotsInDay:(int)arg1;
 - (double)timeSinceMidnight:(id *)arg1;
-- (id)dk_localtimeString;
 - (id)dedup;
+- (id)dk_dedup;
 @end
 

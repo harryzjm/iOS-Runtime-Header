@@ -10,7 +10,6 @@
 - (void)deviceDidWake;
 - (void)deviceWillSleep;
 - (Class)agentClass;
-- (void)_debug_resetBabysitterWithRestrictedAccountID:(id)arg1;
 - (id)rem_provideAccountInfo;
 - (id)rem_account;
 - (id)rem_saveRequest;

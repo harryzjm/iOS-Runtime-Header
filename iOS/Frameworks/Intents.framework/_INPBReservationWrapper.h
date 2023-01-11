@@ -10,12 +10,13 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBReservationWrapper-Protocol.h>
 
-@class NSString, _INPBFlightReservation, _INPBLodgingReservation, _INPBRentalCarReservation, _INPBRestaurantReservation, _INPBTicketedEventReservation, _INPBTrainReservation;
+@class NSString, _INPBBoatReservation, _INPBBusReservation, _INPBFlightReservation, _INPBLodgingReservation, _INPBRentalCarReservation, _INPBRestaurantReservation, _INPBTicketedEventReservation, _INPBTrainReservation;
 
 @interface _INPBReservationWrapper : PBCodable <_INPBReservationWrapper, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
+    _INPBBoatReservation *_boatReservation;
+    _INPBBusReservation *_busReservation;
     _INPBFlightReservation *_flightReservation;
     _INPBLodgingReservation *_lodgingReservation;
     _INPBRentalCarReservation *_rentalCarReservation;
@@ -25,14 +26,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBTrainReservation *trainReservation; // @synthesize trainReservation=_trainReservation;
 @property(retain, nonatomic) _INPBTicketedEventReservation *ticketedEventReservation; // @synthesize ticketedEventReservation=_ticketedEventReservation;
 @property(retain, nonatomic) _INPBRestaurantReservation *restaurantReservation; // @synthesize restaurantReservation=_restaurantReservation;
 @property(retain, nonatomic) _INPBRentalCarReservation *rentalCarReservation; // @synthesize rentalCarReservation=_rentalCarReservation;
 @property(retain, nonatomic) _INPBLodgingReservation *lodgingReservation; // @synthesize lodgingReservation=_lodgingReservation;
 @property(retain, nonatomic) _INPBFlightReservation *flightReservation; // @synthesize flightReservation=_flightReservation;
-- (void).cxx_destruct;
+@property(retain, nonatomic) _INPBBusReservation *busReservation; // @synthesize busReservation=_busReservation;
+@property(retain, nonatomic) _INPBBoatReservation *boatReservation; // @synthesize boatReservation=_boatReservation;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -47,6 +49,8 @@
 @property(readonly, nonatomic) _Bool hasRentalCarReservation;
 @property(readonly, nonatomic) _Bool hasLodgingReservation;
 @property(readonly, nonatomic) _Bool hasFlightReservation;
+@property(readonly, nonatomic) _Bool hasBusReservation;
+@property(readonly, nonatomic) _Bool hasBoatReservation;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

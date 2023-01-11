@@ -7,43 +7,40 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/ICCloudAvailability-Protocol.h>
-#import <iTunesCloud/ICCloudServerListenerEndpointProvider-Protocol.h>
 
-@class ICCloudClientAvailabilityService, ICCloudClientCloudService, ICConnectionConfiguration, NSString, NSXPCConnection;
+@class ICCloudClientAvailabilityService, ICCloudClientCloudService, ICCloudServerListenerEndpointProvider, ICConnectionConfiguration, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface ICCloudClient : NSObject <ICCloudServerListenerEndpointProvider, ICCloudAvailability>
+@interface ICCloudClient : NSObject <ICCloudAvailability>
 {
     _Bool _active;
+    ICConnectionConfiguration *_configuration;
     CDUnknownBlockType _updateSagaInProgressChangedHandler;
     CDUnknownBlockType _updateJaliscoInProgressChangedHandler;
     NSXPCConnection *_xpcConnection;
-    NSXPCConnection *_xpcListenerEndpointProviderConnection;
+    ICCloudServerListenerEndpointProvider *_listenerEndpointProvider;
     NSObject<OS_dispatch_queue> *_serialAccessQueue;
-    ICConnectionConfiguration *_configuration;
     long long _preferredVideoQuality;
     ICCloudClientAvailabilityService *_availabilityService;
     ICCloudClientCloudService *_cloudService;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) ICCloudClientCloudService *cloudService; // @synthesize cloudService=_cloudService;
 @property(readonly, nonatomic) ICCloudClientAvailabilityService *availabilityService; // @synthesize availabilityService=_availabilityService;
 @property(nonatomic) long long preferredVideoQuality; // @synthesize preferredVideoQuality=_preferredVideoQuality;
-@property(retain, nonatomic) ICConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialAccessQueue; // @synthesize serialAccessQueue=_serialAccessQueue;
+@property(readonly, nonatomic) ICCloudServerListenerEndpointProvider *listenerEndpointProvider; // @synthesize listenerEndpointProvider=_listenerEndpointProvider;
 @property(copy, nonatomic) CDUnknownBlockType updateJaliscoInProgressChangedHandler; // @synthesize updateJaliscoInProgressChangedHandler=_updateJaliscoInProgressChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType updateSagaInProgressChangedHandler; // @synthesize updateSagaInProgressChangedHandler=_updateSagaInProgressChangedHandler;
-- (void).cxx_destruct;
+- (_Bool)_isAuthenticated;
 - (void)_serverJaliscoUpdateInProgressDidChange;
 - (void)_serverSagaUpdateInProgressDidChange;
 - (void)_serverDidLaunch;
-- (void)_sendConfigurationToDaemon;
 @property(readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-@property(readonly, nonatomic) NSXPCConnection *xpcListenerEndpointProviderConnection; // @synthesize xpcListenerEndpointProviderConnection=_xpcListenerEndpointProviderConnection;
 - (void)_tearDownNotifications;
 - (void)_setupNotifications;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
-- (id)listenerEndpointForService:(long long)arg1 error:(id *)arg2;
 - (_Bool)shouldProhibitActionsForCurrentNetworkConditions;
 - (_Bool)isCellularDataRestricted;
 - (_Bool)canShowCloudVideo;
@@ -57,6 +54,10 @@
 - (_Bool)isCellularDataRestrictedForMusic;
 - (_Bool)hasProperNetworkConditionsToShowCloudMedia;
 - (_Bool)hasProperNetworkConditionsToPlayMedia;
+- (void)listCloudServerOperations;
+- (_Bool)hasSetPreferenceForAutomaticDownloads;
+- (_Bool)isAutomaticDownloadsEnabledForMediaKindMusic;
+- (void)handleAutomaticDownloadPreferenceChangedForMediaKindMusic:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadBooksForStoreIDs:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateArtistHeroImages;
 - (void)setAlbumProperties:(id)arg1 forAlbumPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -116,6 +117,7 @@
 - (void)loadLastKnownEnableICMLErrorStatusWithCompletionHander:(CDUnknownBlockType)arg1;
 - (void)isAuthenticatedWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)isAuthenticatedWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)isAuthenticated;
 - (void)disableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusOperationStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancelUpdateJaliscoGeniusDataInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -125,18 +127,18 @@
 - (void)loadJaliscoGeniusCUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusLearnMoreURLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadIsJaliscoGeniusSupportedWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)deauthenticateAndDisableActiveLockerAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deauthenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateSagaLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateSagaLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateJaliscoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)isMediaKindDisabledForJaliscoLibrary:(long long)arg1;
-- (void)updateJaliscoLibraryByAddingMediaKind:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateJaliscoLibraryByRemovingMediaKind:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeJaliscoLibraryWithCompletionHander:(CDUnknownBlockType)arg1;
 - (void)updateJaliscoLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)becomeActive;
-- (void)authenticateAndStartInitialImport:(_Bool)arg1 mergeWithCloudLibrary:(_Bool)arg2 isExplicitUserAction:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)disableCloudLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)disableCloudLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_enableCloudLibraryWithPolicy:(long long)arg1 startinitialImport:(_Bool)arg2 isExplicitUserAction:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)enableCloudLibraryWithPolicy:(long long)arg1 startInitialImport:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authenticateAndStartInitialImport:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addGeniusPlaylistWithPersistentID:(long long)arg1 name:(id)arg2 seedItemSagaIDs:(id)arg3 itemSagaIDs:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -146,6 +148,7 @@
 - (void)addStorePlaylistWithGlobalID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)sdk_addStoreItemWithOpaqueID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addStoreItemWithAdamID:(long long)arg1 referral:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updatePinnedSubscribedPlaylistsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSubscribedPlaylistsWithSagaIDs:(id)arg1 ignoreMinRefreshInterval:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)uploadArtworkForPlaylistWithPersistentID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishPlaylistWithSagaID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -158,6 +161,7 @@
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setCloudAddToPlaylistBehavior:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)cloudAddToPlaylistBehavior;
+@property(readonly, nonatomic) ICConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithUserIdentity:(id)arg1;

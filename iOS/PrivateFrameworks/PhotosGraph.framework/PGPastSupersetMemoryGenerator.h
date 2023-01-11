@@ -11,11 +11,10 @@
     NSDate *_localDate;
 }
 
-@property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 - (_Bool)canFallbackToDejunkAndDedupeForShowMore;
 - (void)_potentialMemoryAssetsForSupersetLocationNodes:(id)arg1 interestingMomentNodes:(id)arg2 andMomentNodes:(id)arg3 result:(CDUnknownBlockType)arg4;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;

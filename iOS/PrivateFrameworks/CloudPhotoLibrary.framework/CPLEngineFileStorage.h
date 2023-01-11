@@ -24,11 +24,13 @@
 }
 
 + (id)platformImplementationProtocol;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool deleteImmediately; // @synthesize deleteImmediately=_deleteImmediately;
 @property(nonatomic) _Bool keepOriginals; // @synthesize keepOriginals=_keepOriginals;
 @property(readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
-- (void).cxx_destruct;
+- (void)writeTransactionDidSucceed;
+- (void)writeTransactionDidFail;
 - (_Bool)checkIsEmpty;
 - (id)fileEnumerator;
 - (id)fileEnumeratorIncludingPropertiesForKeys:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
@@ -50,7 +52,7 @@
 - (_Bool)discardUncommittedFileWithIdentity:(id)arg1 error:(id *)arg2;
 - (_Bool)commitFileWithIdentity:(id)arg1 error:(id *)arg2;
 - (_Bool)storeData:(id)arg1 identity:(id)arg2 isOriginal:(_Bool)arg3 needsCommit:(_Bool *)arg4 error:(id *)arg5;
-- (_Bool)storeFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(_Bool)arg3 needsCommit:(_Bool *)arg4 error:(id *)arg5;
+- (_Bool)storeFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(_Bool)arg3 moveIfPossible:(_Bool)arg4 needsCommit:(_Bool *)arg5 error:(id *)arg6;
 - (_Bool)_fixupIdentity:(id)arg1 fileURL:(id)arg2 data:(id)arg3 error:(id *)arg4;
 - (void)_removeIdentityFromUncommittedFiles:(id)arg1;
 - (void)_addIdentityToUncommittedFiles:(id)arg1;
@@ -62,6 +64,8 @@
 - (_Bool)doWrite:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)doRead:(CDUnknownBlockType)arg1;
 - (id)initWithBaseURL:(id)arg1;
+@property(nonatomic) _Bool trackAllStoresAndDeletes;
+- (id)_markerURLForTrackAllStoresAndDeletes;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

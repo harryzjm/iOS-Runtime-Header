@@ -17,9 +17,9 @@
     HFItemModule *_module;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HFItemModule *module; // @synthesize module=_module;
 @property(nonatomic) __weak id <HUItemTableModuleControllerHosting> host; // @synthesize host=_host;
-- (void).cxx_destruct;
 - (id)textFieldForVisibleItem:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
 - (void)textFieldDidBeginEditing:(id)arg1 item:(id)arg2;
@@ -28,6 +28,8 @@
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
 - (_Bool)shouldManageTextFieldForItem:(id)arg1;
+- (id)trailingSwipeActionsForItem:(id)arg1;
+- (id)leadingSwipeActionsForItem:(id)arg1;
 - (long long)rowAnimationForOperationType:(unsigned long long)arg1 item:(id)arg2 suggestedAnimation:(long long)arg3;
 - (void)accessoryButtonTappedForItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;

@@ -14,6 +14,7 @@
 {
     unsigned long long _aggdStartTime;
     BSMonotonicReferenceTime *_lastPressDownReferenceTime;
+    int _sysdiagnoseDidBeginNotificationToken;
     SBLockHardwareButtonActions *_buttonActions;
     SBHardwareButtonGestureParameters *_buttonGestureParameters;
     SBPressGestureRecognizer *_buttonDownGestureRecognizer;
@@ -31,6 +32,7 @@
     unsigned long long _currentPressCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentPressCount; // @synthesize currentPressCount=_currentPressCount;
 @property(nonatomic) unsigned long long configuredMaximumPressCount; // @synthesize configuredMaximumPressCount=_configuredMaximumPressCount;
 @property(nonatomic) long long homeButtonType; // @synthesize homeButtonType=_homeButtonType;
@@ -46,7 +48,6 @@
 @property(retain, nonatomic) SBPressGestureRecognizer *buttonDownGestureRecognizer; // @synthesize buttonDownGestureRecognizer=_buttonDownGestureRecognizer;
 @property(retain, nonatomic) SBHardwareButtonGestureParameters *buttonGestureParameters; // @synthesize buttonGestureParameters=_buttonGestureParameters;
 @property(retain, nonatomic) SBLockHardwareButtonActions *buttonActions; // @synthesize buttonActions=_buttonActions;
-- (void).cxx_destruct;
 - (id)hardwareButtonGestureParameters;
 - (void)provider:(id)arg1 didUpdateButtonGestureParameters:(id)arg2;
 - (void)_reportAggdLoggingForButtonEventIsDownEvent:(_Bool)arg1;
@@ -70,6 +71,7 @@
 - (void)_reconfigureButtonGestureRecognizers;
 - (void)screenshotRecognizerDidRecognize:(id)arg1;
 - (void)_createGestureRecognizers;
+- (void)dealloc;
 - (id)initWithScreenshotGestureRecognizer:(id)arg1 shutdownGestureRecognizer:(id)arg2 proximitySensorManager:(id)arg3 homeHardwareButton:(id)arg4 volumeHardwareButton:(id)arg5 buttonActions:(id)arg6 homeButtonType:(long long)arg7 createGestures:(_Bool)arg8;
 - (id)initWithScreenshotGestureRecognizer:(id)arg1 shutdownGestureRecognizer:(id)arg2 proximitySensorManager:(id)arg3 homeHardwareButton:(id)arg4 volumeHardwareButton:(id)arg5 homeButtonType:(long long)arg6;
 

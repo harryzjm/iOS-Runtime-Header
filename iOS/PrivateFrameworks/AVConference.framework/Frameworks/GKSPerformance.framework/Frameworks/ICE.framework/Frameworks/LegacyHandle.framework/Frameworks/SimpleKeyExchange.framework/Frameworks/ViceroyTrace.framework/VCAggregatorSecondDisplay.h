@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, VCHistogram;
+@class NSMutableDictionary, NSString, VCHistogram;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregatorSecondDisplay
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     double _averageExpirationTime;
     double _maxExpirationTime;
     double _averageWiFiPacketDelay;
+    double _averageMaxAverageWiFiPacketDelay;
     unsigned int _averageWiFiThroughput;
     unsigned int _totalNACKCounter;
     unsigned int _averageBurstyPacketLossCount;
@@ -37,10 +38,19 @@ __attribute__((visibility("hidden")))
     unsigned int _averageBandwidthEstimation;
     unsigned int _maxBandwidthEstimation;
     unsigned int _averageJitterQueueSize;
+    unsigned int _averageJitterQueueSizeChanges;
+    double _timeSpentWithNonZeroJitterQueueSize;
+    double _timeWeightedJitterQueueSize;
     unsigned int _maxJitterQueueSize;
+    double _averagePlaybackOffset;
+    double _maxPlaybackOffset;
+    unsigned int _accumVideoFrameErasureCount;
+    unsigned int _maxVideoFrameErasureCount;
+    unsigned int _maxVideoStallCount;
+    unsigned int _minVideoFrameRate;
     unsigned int _averageRoundTripTime;
     unsigned int _maxRoundTripTime;
-    unsigned int _averageHIDEventLatencyReportCount;
+    unsigned int _averageHIDEventLatencySampleCount;
     unsigned int _averageHIDEventLatency;
     unsigned int _maxHIDEventLatency;
     unsigned int _minHIDEventLatency;
@@ -50,6 +60,11 @@ __attribute__((visibility("hidden")))
     unsigned int _decodedVideoFrameEnqueueCounter;
     unsigned int _videoFrameReceivedCounter;
     unsigned int _videoFrameExpectedCounter;
+    unsigned int _rtcpTimeoutCount;
+    unsigned int _evictedFramesLikelyRecoverableCount;
+    unsigned int _evictedFramesTrackedCount;
+    unsigned int _evictedFramesAnalysisValidIntervals;
+    double _evictedFramesAverageLatePacketDelay;
     VCHistogram *_RBR;
     VCHistogram *_TBR;
     VCHistogram *_SBR;
@@ -62,8 +77,21 @@ __attribute__((visibility("hidden")))
     VCHistogram *_RTT;
     VCHistogram *_HEL;
     NSMutableDictionary *_fecStatsDict;
+    int _twoPtFourGhzChannelCount;
+    int _fiveGhzChannelCount;
+    int _dfsChannelCount;
+    int _inactiveSlotCount;
+    NSString *_channelSequence;
+    CDStruct_f2f7ecfd _channelSequenceStats;
+    NSString *_previousChannelSequence;
+    CDStruct_f2f7ecfd _previousChannelSequenceStats;
+    NSString *_remoteOSBuildVersion;
+    NSString *_remoteFrameworkVersion;
+    NSString *_remoteDeviceModel;
 }
 
+@property(retain, nonatomic) NSString *previousChannelSequence; // @synthesize previousChannelSequence=_previousChannelSequence;
+@property(copy, nonatomic) NSString *channelSequence; // @synthesize channelSequence=_channelSequence;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)updateReceiverVideoStreamConfiguration:(id)arg1;
 - (void)updateSenderVideoStreamConfiguration:(id)arg1;

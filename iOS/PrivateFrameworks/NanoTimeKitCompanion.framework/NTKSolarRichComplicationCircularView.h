@@ -4,21 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKSolarRichComplicationFullColorImageView;
-
 @interface NTKSolarRichComplicationCircularView
 {
-    NTKSolarRichComplicationFullColorImageView *_solarImageView;
 }
 
-- (void).cxx_destruct;
-- (void)_updateWithLocation:(id)arg1 useIdealizedTime:(_Bool)arg2 forceUpdate:(_Bool)arg3 animated:(_Bool)arg4;
-- (_Bool)_shouldAnimateWithTemplateUpdateReason:(long long)arg1;
-- (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)layoutSubviews;
++ (_Bool)supportsComplicationFamily:(long long)arg1;
 - (id)init;
 
 @end

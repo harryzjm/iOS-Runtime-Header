@@ -6,26 +6,27 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDNetworkRouterLANRule-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddress, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterMulticastBridgingRuleDirection, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddress, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterRuleDirection, NSString;
 
-@interface HMDNetworkRouterMulticastBridgingRule : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterMulticastBridgingRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HAPTLVProtocol>
 {
-    HMDNetworkRouterMulticastBridgingRuleDirection *_direction;
+    HMDNetworkRouterRuleDirection *_direction;
     HMDNetworkRouterLANIdentifierList *_lanIdentifierList;
     HMDNetworkRouterIPAddress *_destinationIPAddress;
-    HMDTLVUnsignedNumberValue *_destinationPort;
+    HAPTLVUnsignedNumberValue *_destinationPort;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 + (id)ruleFromFirewallRuleLAN:(id)arg1;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *destinationPort; // @synthesize destinationPort=_destinationPort;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *destinationPort; // @synthesize destinationPort=_destinationPort;
 @property(retain, nonatomic) HMDNetworkRouterIPAddress *destinationIPAddress; // @synthesize destinationIPAddress=_destinationIPAddress;
 @property(retain, nonatomic) HMDNetworkRouterLANIdentifierList *lanIdentifierList; // @synthesize lanIdentifierList=_lanIdentifierList;
-@property(retain, nonatomic) HMDNetworkRouterMulticastBridgingRuleDirection *direction; // @synthesize direction=_direction;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HMDNetworkRouterRuleDirection *direction; // @synthesize direction=_direction;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,6 +34,7 @@
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
 - (id)initWithDirection:(id)arg1 lanIdentifierList:(id)arg2 destinationIPAddress:(id)arg3 destinationPort:(id)arg4;
 - (id)init;
+- (void)addTo:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

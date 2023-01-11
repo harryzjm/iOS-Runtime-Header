@@ -14,6 +14,7 @@
 - (void)couldNotRenewBecauseNotADonorExtension:(id)arg1;
 - (void)didRenewValue:(CNDonationValue *)arg1 untilDate:(NSDate *)arg2;
 - (void)willRenewValues:(NSArray *)arg1 withDonor:(NSString *)arg2;
+- (void)foundUnhashableValue:(CNDonationValue *)arg1;
 - (void)didRemoveAllRejections;
 - (void)willRemoveAllRejections;
 - (void)didListRejections;

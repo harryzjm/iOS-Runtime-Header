@@ -25,18 +25,20 @@
     id <SBIdleTimerCoordinating> _idleTimerCoordinator;
     SBDeviceApplicationSceneStatusBarBreadcrumbProvider *_breadcrumbProvider;
     SBDeviceApplicationSceneStatusBarStateProvider *_statusBarStateProvider;
+    NSString *_lastActivationIconLeafIdentifier;
     struct CGRect _statusBarAvoidanceFrame;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SBDeviceApplicationSceneStatusBarBreadcrumbProvider *breadcrumbProvider; // @synthesize breadcrumbProvider=_breadcrumbProvider;
 @property(nonatomic) struct CGRect statusBarAvoidanceFrame; // @synthesize statusBarAvoidanceFrame=_statusBarAvoidanceFrame;
+@property(copy, nonatomic) NSString *lastActivationIconLeafIdentifier; // @synthesize lastActivationIconLeafIdentifier=_lastActivationIconLeafIdentifier;
 @property(nonatomic, getter=_idleTimerCoordinator, setter=_setIdleTimerCoordinator:) __weak id <SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 @property(nonatomic) long long whitePointAdaptivityStyle; // @synthesize whitePointAdaptivityStyle=_whitePointAdaptivityStyle;
 @property(nonatomic) int statusBarStyleOverridesToSuppress; // @synthesize statusBarStyleOverridesToSuppress=_statusBarStyleOverridesToSuppress;
 @property(nonatomic) _Bool hasMainSceneBeenForegroundAtLeastOnce; // @synthesize hasMainSceneBeenForegroundAtLeastOnce=_hasMainSceneBeenForegroundAtLeastOnce;
 @property(readonly, nonatomic, getter=isEffectivelyForeground) _Bool effectivelyForeground; // @synthesize effectivelyForeground=_isEffectivelyForeground;
 @property(nonatomic) long long lastActivationSource; // @synthesize lastActivationSource=_lastActivationSource;
-- (void).cxx_destruct;
 - (id)_potentiallyJailedDisplayConfiguration;
 - (id)_generateIdleTimerBehavior;
 - (void)_updateIdleTimerForReason:(id)arg1;
@@ -51,6 +53,7 @@
 - (id)newScenePlaceholderContentContextWithActivationSettings:(id)arg1;
 - (id)newSceneViewWithReferenceSize:(struct CGSize)arg1 orientation:(long long)arg2 hostRequester:(id)arg3;
 - (_Bool)isDeviceApplicationSceneHandle;
+- (void)_updateSceneHostingInfoForSnapshottingWithView:(id)arg1;
 - (void)_modifyApplicationTransitionContext:(id)arg1 fromRequestContext:(id)arg2 entity:(id)arg3;
 - (void)_modifyApplicationSceneClientSettings:(id)arg1 fromRequestContext:(id)arg2 entity:(id)arg3 initialSceneSettings:(id)arg4;
 - (id)_sceneCornerRadiusConfigurationFromRequestContext:(id)arg1 forEntity:(id)arg2;
@@ -62,6 +65,7 @@
 - (void)_didUpdateClientSettingsWithDiff:(id)arg1 transitionContext:(id)arg2;
 - (void)_didDestroyScene:(id)arg1;
 - (void)_didCreateScene:(id)arg1;
+- (void)_populateSettingsWithDefaultStatusBarHeight:(id)arg1;
 - (long long)_initialMainSceneCompabilityMode:(id)arg1;
 - (void)_noteMainSceneBackgroundStyleChanged;
 - (void)_noteActivationConditionsChanged;
@@ -70,6 +74,13 @@
 - (long long)_resumingInterfaceOrientationForOrientation:(long long)arg1;
 - (unsigned long long)_mainSceneSupportedInterfaceOrientations;
 - (_Bool)_mainSceneSupportsInterfaceOrientation:(long long)arg1;
+- (_Bool)forbidsActivationByBreadcrumbAction;
+- (_Bool)shouldAlwaysDisplayLiveContent;
+- (_Bool)prefersKillingInSwitcherDisabled;
+- (_Bool)prefersHeaderHiddenInSwitcher;
+- (_Bool)shouldPrioritizeForSwitcherOrdering;
+- (unsigned long long)preferredHardwareButtonEventTypes;
+- (_Bool)handleHardwareButtonEventType:(long long)arg1;
 - (id)additionalActionsForActivatingSceneEntity:(id)arg1 withTransitionContext:(id)arg2;
 - (_Bool)isEdgeProtectEnabledForHomeGesture;
 - (_Bool)isAutoHideEnabledForHomeAffordance;
@@ -81,6 +92,7 @@
 @property(readonly, copy, nonatomic) NSData *activationConditionsData;
 @property(readonly, nonatomic) long long activationBias;
 @property(readonly, copy, nonatomic) NSString *sceneTitle;
+- (id)displayEdgeInfoForForLayoutEnvironment:(long long)arg1 isInsetForHomeAffordance:(_Bool)arg2;
 - (_Bool)wantsDeviceOrientationEventsEnabled;
 - (long long)activationInterfaceOrientationForOrientation:(long long)arg1;
 - (long long)activationInterfaceOrientationForCurrentOrientation;

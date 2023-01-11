@@ -15,15 +15,16 @@
 }
 
 + (Class)homeKitRepresentationClass;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(readonly, nonatomic) id homeKitRepresentation; // @synthesize homeKitRepresentation=_homeKitRepresentation;
-- (void).cxx_destruct;
 - (id)_failureFutureWithReason:(id)arg1;
 - (id)verifyNameIsNotEmpty:(id)arg1;
 - (id)verifyProperty:(id)arg1 matchesCondition:(CDUnknownBlockType)arg2 description:(id)arg3;
 - (id)verifyPropertiesAreSet:(id)arg1;
 - (id)verifyPropertyIsSet:(id)arg1;
 - (id)commitItemBuilderSetDiff:(id)arg1 addBlock:(CDUnknownBlockType)arg2 deleteBlock:(CDUnknownBlockType)arg3;
+- (id)_commitSetDiff:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)commitSetDiff:(id)arg1 addBlock:(CDUnknownBlockType)arg2 updateBlock:(CDUnknownBlockType)arg3 deleteBlock:(CDUnknownBlockType)arg4;
 - (void)setHome:(id)arg1;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;

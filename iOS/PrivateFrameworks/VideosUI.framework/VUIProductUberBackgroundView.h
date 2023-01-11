@@ -6,24 +6,28 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, VUIProductUberBackgroundViewLayout, _TVImageView;
+@class CAGradientLayer, UIVisualEffectView, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUIProductUberBackgroundView : UIView
 {
-    VUIProductUberBackgroundViewLayout *_layout;
+    _Bool _isChannelBanner;
     _TVImageView *_imageView;
+    long long _configuredBlurInterfaceStyle;
     CAGradientLayer *_maskGradientLayer;
-    UIView *_blurEffectView;
+    UIVisualEffectView *_blurEffectView;
     double _contentOffset;
+    struct CGSize _imageSize;
 }
 
-@property(nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
-@property(retain, nonatomic) UIView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
-@property(retain, nonatomic) CAGradientLayer *maskGradientLayer; // @synthesize maskGradientLayer=_maskGradientLayer;
-@property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
-@property(retain, nonatomic) VUIProductUberBackgroundViewLayout *layout; // @synthesize layout=_layout;
 - (void).cxx_destruct;
+@property(nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
+@property(retain, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
+@property(retain, nonatomic) CAGradientLayer *maskGradientLayer; // @synthesize maskGradientLayer=_maskGradientLayer;
+@property(nonatomic) long long configuredBlurInterfaceStyle; // @synthesize configuredBlurInterfaceStyle=_configuredBlurInterfaceStyle;
+@property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property(nonatomic) _Bool isChannelBanner; // @synthesize isChannelBanner=_isChannelBanner;
 - (void)layoutSubviews;
 - (void)setImageOffset:(double)arg1;
 - (void)configureBlurWithInterfaceStyle:(long long)arg1;

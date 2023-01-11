@@ -26,6 +26,8 @@
 - (void)hk_alignVerticalConstraintsWithView:(id)arg1 margin:(double)arg2;
 - (void)hk_alignConstraintsWithGuide:(id)arg1;
 - (void)hk_alignConstraintsWithView:(id)arg1;
+- (void)hk_constrainToSuperviewAlongEdges:(id)arg1 constant:(double)arg2;
+- (void)hk_constrainToView:(id)arg1 fromEdge:(long long)arg2 toEdge:(long long)arg3 constant:(double)arg4;
 - (long long)hk_trailingTextAlignmentAtOrBelowSizeCategory:(id)arg1;
 - (_Bool)hk_isLeftToRight;
 - (id)hk_addConstraintsWithFormat:(id)arg1 options:(unsigned long long)arg2 views:(id)arg3;

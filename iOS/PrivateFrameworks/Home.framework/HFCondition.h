@@ -16,12 +16,13 @@
 }
 
 + (Class)homeKitRepresentationClass;
-@property(readonly, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
+- (id)hf_naturalLanguageSummaryWithOptions:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

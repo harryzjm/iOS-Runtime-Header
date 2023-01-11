@@ -6,10 +6,12 @@
 
 #import <HealthKitUI/HKGLView.h>
 
-@class GLKTextureInfo, MISSING_TYPE;
-@protocol FIUIDeepBreathingPetalRingGLViewDelegate;
+#import <FitnessUI/FIUIBreathingPetalRingViewDrawable-Protocol.h>
 
-@interface FIUIDeepBreathingPetalRingGLView : HKGLView
+@class GLKTextureInfo, MISSING_TYPE, NSString, UIView;
+@protocol FIUIDeepBreathingPetalRingViewDelegate;
+
+@interface FIUIDeepBreathingPetalRingGLView : HKGLView <FIUIBreathingPetalRingViewDrawable>
 {
     unsigned int _program;
     MISSING_TYPE *_ringCenterVector;
@@ -25,25 +27,23 @@
     unsigned int _petalPositionUniform;
     unsigned int _petalPropertiesUniform;
     unsigned int _textureRotationUniform;
+    CDStruct_7104cd25 _circleProperties;
     GLKTextureInfo *_texture;
-    MISSING_TYPE *_circlePosition[20];
-    MISSING_TYPE *_circleProperties[20];
-    MISSING_TYPE *_textureRotationVector;
     _Bool _showBlurTrails;
     float _ringRadius;
-    id <FIUIDeepBreathingPetalRingGLViewDelegate> _petalRingDelegate;
+    id <FIUIDeepBreathingPetalRingViewDelegate> _petalRingDelegate;
     long long _numberOfPetals;
     long long _numberOfVisiblePetals;
     struct CGPoint _ringCenter;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) float ringRadius; // @synthesize ringRadius=_ringRadius;
+@property(nonatomic) struct CGPoint ringCenter; // @synthesize ringCenter=_ringCenter;
 @property(readonly, nonatomic) _Bool showBlurTrails; // @synthesize showBlurTrails=_showBlurTrails;
 @property(readonly, nonatomic) long long numberOfVisiblePetals; // @synthesize numberOfVisiblePetals=_numberOfVisiblePetals;
 @property(readonly, nonatomic) long long numberOfPetals; // @synthesize numberOfPetals=_numberOfPetals;
-@property(nonatomic) float ringRadius; // @synthesize ringRadius=_ringRadius;
-@property(nonatomic) struct CGPoint ringCenter; // @synthesize ringCenter=_ringCenter;
-@property(nonatomic) __weak id <FIUIDeepBreathingPetalRingGLViewDelegate> petalRingDelegate; // @synthesize petalRingDelegate=_petalRingDelegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <FIUIDeepBreathingPetalRingViewDelegate> petalRingDelegate; // @synthesize petalRingDelegate=_petalRingDelegate;
 - (void)_teardown;
 - (unsigned int)drawInRect:(struct CGRect)arg1 withContext:(id)arg2;
 - (void)_updateVertices;
@@ -61,8 +61,17 @@
 - (void)_context_loadShadersWithNumberOfPetals:(long long)arg1 showBlurTrails:(_Bool)arg2;
 - (void)update;
 - (void)dealloc;
+@property(readonly, nonatomic) UIView *view;
 - (void)importDataFromPetalRing:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 numberOfPetals:(long long)arg2 showBlurTrails:(_Bool)arg3 device:(id)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 numberOfPetals:(long long)arg2 showBlurTrails:(_Bool)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(nonatomic) float preferredFramesPerSecond;
+@property(readonly) Class superclass;
 
 @end
 

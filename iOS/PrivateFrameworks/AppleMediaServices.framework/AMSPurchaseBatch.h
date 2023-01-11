@@ -12,25 +12,25 @@ __attribute__((visibility("hidden")))
 @interface AMSPurchaseBatch : NSObject
 {
     _Bool _isComplete;
-    NSMutableArray *_contexts;
     NSLock *_lock;
-    NSMutableDictionary *_contextMap;
-    NSMutableArray *_results;
     AMSLazyPromise *_promise;
+    NSMutableArray *_purchases;
+    NSMutableDictionary *_purchaseMap;
+    NSMutableArray *_results;
 }
 
-@property(readonly, nonatomic) AMSLazyPromise *promise; // @synthesize promise=_promise;
-@property(readonly, nonatomic) NSMutableArray *results; // @synthesize results=_results;
-@property(nonatomic) _Bool isComplete; // @synthesize isComplete=_isComplete;
-@property(readonly, nonatomic) NSMutableDictionary *contextMap; // @synthesize contextMap=_contextMap;
-@property(retain, nonatomic) NSLock *lock; // @synthesize lock=_lock;
-@property(readonly, nonatomic) NSMutableArray *contexts; // @synthesize contexts=_contexts;
 - (void).cxx_destruct;
-- (id)nextPurchaseContext;
-- (_Bool)finishContext:(id)arg1 withResult:(id)arg2;
-- (_Bool)finishContext:(id)arg1 withError:(id)arg2;
-- (id)contextForPurchaseId:(id)arg1;
-- (id)initWithContexts:(id)arg1 weakPromise:(id)arg2;
+@property(readonly, nonatomic) NSMutableArray *results; // @synthesize results=_results;
+@property(readonly, nonatomic) NSMutableDictionary *purchaseMap; // @synthesize purchaseMap=_purchaseMap;
+@property(readonly, nonatomic) NSMutableArray *purchases; // @synthesize purchases=_purchases;
+@property(readonly, nonatomic) AMSLazyPromise *promise; // @synthesize promise=_promise;
+@property(retain, nonatomic) NSLock *lock; // @synthesize lock=_lock;
+@property(nonatomic) _Bool isComplete; // @synthesize isComplete=_isComplete;
+- (id)nextPurchase;
+- (_Bool)finishPurchase:(id)arg1 withResult:(id)arg2;
+- (_Bool)finishPurchase:(id)arg1 withError:(id)arg2;
+- (id)purchaseForPurchaseId:(id)arg1;
+- (id)initWithPurchases:(id)arg1 weakPromise:(id)arg2;
 
 @end
 

@@ -67,13 +67,6 @@ struct UIEdgeInsets {
     double right;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -91,4 +84,9 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct {
+    CDStruct_1b6d18a9 start;
+    CDStruct_1b6d18a9 duration;
+} CDStruct_e83c9415;
 

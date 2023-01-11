@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct CGRect)_stringDrawingCoreTextEngineWithOriginalString:(id)arg1 rect:(struct CGRect)arg2 padding:(double)arg3 graphicsContext:(id)arg4 forceClipping:(_Bool)arg5 attributes:(id)arg6 stringDrawingOptions:(long long)arg7 drawingContext:(id)arg8 wantsTextLineFragments:(_Bool)arg9 validatedAttributedString:(id)arg10 firstNonRenderedCharacterIndex:(long long *)arg11 foundSoftHyphenAtEOL:(_Bool *)arg12 enginePathUsed:(unsigned char *)arg13;
+- (struct CGRect)_stringDrawingCoreTextEngineWithOriginalString:(id)arg1 rect:(struct CGRect)arg2 padding:(double)arg3 graphicsContext:(id)arg4 forceClipping:(_Bool)arg5 attributes:(id)arg6 stringDrawingOptions:(long long)arg7 drawingContext:(id)arg8 stringDrawingInterface:(CDStruct_65ebe2bc *)arg9;
 
 @end
 

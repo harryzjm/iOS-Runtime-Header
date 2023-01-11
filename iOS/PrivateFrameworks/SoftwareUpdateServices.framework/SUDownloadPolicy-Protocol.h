@@ -10,9 +10,12 @@
 @protocol SUDownloadPolicy;
 
 @protocol SUDownloadPolicy <NSObject>
+@property(nonatomic) int cellularFeeAgreementStatus;
 @property(retain, nonatomic) SUDescriptor *descriptor;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2 powerRequired:(_Bool *)arg3;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2;
+- (unsigned long long)wifiOnlyPeriodInDays;
+- (_Bool)allowExpensiveNetwork;
 - (_Bool)isDownloadAllowableForWiFi;
 - (_Bool)isDownloadAllowableForCellularRoaming;
 - (_Bool)isDownloadAllowableForCellular2G;

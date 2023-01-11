@@ -19,7 +19,7 @@
     CDStruct_67e7699a _resultMatrixOrigin;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) CDStruct_14f26992 resultMatrixOrigin; // @synthesize resultMatrixOrigin=_resultMatrixOrigin;
 @property(nonatomic) float neuronC; // @synthesize neuronC=_neuronC;
 @property(nonatomic) float neuronB; // @synthesize neuronB=_neuronB;

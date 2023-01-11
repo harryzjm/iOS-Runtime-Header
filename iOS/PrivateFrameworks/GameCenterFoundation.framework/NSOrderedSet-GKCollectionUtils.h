@@ -15,6 +15,6 @@
 - (id)_gkMapDictionaryWithKeyPath:(id)arg1;
 - (id)_gkFilteredOrderedSetUsingPredicate:(id)arg1;
 - (id)_gkSortedOrderedSetUsingDescriptors:(id)arg1;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 @end
 

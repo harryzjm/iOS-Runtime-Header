@@ -4,19 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AXMImageCaptionModel;
+@class AXImageCaptionModel, AXMSceneDetectorNode, NSURL;
 
 @interface AXMCaptionDetectorNode
 {
-    AXMImageCaptionModel *_captionImpl;
+    AXMSceneDetectorNode *_sceneDetector;
 }
 
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
++ (struct CGSize)preferredModelInputSize;
 - (void).cxx_destruct;
-- (void)evaluate:(id)arg1;
+@property(nonatomic) __weak AXMSceneDetectorNode *sceneDetector; // @synthesize sceneDetector=_sceneDetector;
+@property(readonly, nonatomic) AXImageCaptionModel *effectiveCaptionModelInfo;
+@property(readonly, nonatomic) NSURL *effectiveModelURL;
+@property(nonatomic) unsigned long long genderStrategy;
+@property(nonatomic) unsigned long long overrideScaleMethod;
+@property(retain, nonatomic) NSURL *overrideModelURL;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (_Bool)requiresVisionFramework;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (void)nodeInitialize;
 
 @end
 

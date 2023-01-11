@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)retain;
 - (unsigned long long)retainCount;
 - (void)dealloc;
-- (id)_init:(id)arg1;
 
 @end
 

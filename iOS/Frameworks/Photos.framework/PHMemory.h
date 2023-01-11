@@ -17,6 +17,7 @@
     unsigned long long _category;
     unsigned long long _subcategory;
     unsigned long long _notificationState;
+    unsigned long long _featuredState;
     _Bool _rejected;
     _Bool _favorite;
     _Bool _pending;
@@ -40,8 +41,13 @@
     NSDictionary *_photosGraphProperties;
 }
 
++ (id)blockedPersonLocalIdentifiersInPhotoLibrary:(id)arg1;
++ (id)fetchMostRelevantMemoryWithOptions:(id)arg1;
 + (unsigned long long)_contextualScoreForMemory:(id)arg1;
 + (id)fetchBestRecentMemoryWithOptions:(id)arg1;
++ (_Bool)isTriggeredMemoryCategory:(unsigned long long)arg1;
++ (id)stringForFeaturedState:(unsigned long long)arg1;
++ (id)stringForNotificationState:(unsigned long long)arg1;
 + (id)stringForSubcategory:(unsigned long long)arg1;
 + (id)stringForCategory:(unsigned long long)arg1;
 + (id)assetListPredicateFromQueryHintObjects:(id)arg1;
@@ -58,10 +64,15 @@
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (void)generateMemoriesWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)mostRelevantMemoryInMemories:(id)arg1 atDate:(id)arg2;
++ (id)fetchMostRelevantMemoryAtDate:(id)arg1 options:(id)arg2;
++ (void)clearCurrentMemoryForURLNavigation;
++ (void)setCurrentMemoryForURLNavigation:(id)arg1;
 + (id)memoryTreeLevelWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)memoryInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)_fetchOptionsForTransientMemoryAssetsWithOptions:(id)arg1;
 + (id)transientMemoryWithInfo:(id)arg1 photoLibrary:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHMemoryFeature *blacklistedFeature; // @synthesize blacklistedFeature=_blacklistedFeature;
 @property(readonly, nonatomic) NSData *assetListPredicate; // @synthesize assetListPredicate=_assetListPredicate;
 @property(readonly, nonatomic) NSDate *lastMoviePlayedDate; // @synthesize lastMoviePlayedDate=_lastMoviePlayedDate;
@@ -73,15 +84,19 @@
 @property(readonly, nonatomic, getter=isPending) _Bool pending; // @synthesize pending=_pending;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
 @property(readonly, nonatomic, getter=isRejected) _Bool rejected; // @synthesize rejected=_rejected;
+@property(readonly, nonatomic) unsigned long long featuredState; // @synthesize featuredState=_featuredState;
 @property(readonly, nonatomic) unsigned long long notificationState; // @synthesize notificationState=_notificationState;
 @property(readonly, nonatomic) unsigned long long subcategory; // @synthesize subcategory=_subcategory;
 @property(readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) double currentRelevanceScore;
+@property(readonly, nonatomic) _Bool isCurrentlyRelevant;
 @property(readonly, nonatomic) NSDictionary *photosGraphProperties; // @synthesize photosGraphProperties=_photosGraphProperties;
 @property(readonly, nonatomic) _Bool isGreat;
 @property(readonly, nonatomic) _Bool isStellar;
 @property(readonly, nonatomic) _Bool isMustSee;
+- (id)presentationHints;
 @property(readonly, nonatomic) NSDictionary *musicGenreDistribution;
+- (id)meaningLabels;
 - (id)moodKeywords;
 - (unsigned long long)suggestedMood;
 - (id)description;
@@ -111,6 +126,10 @@
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (Class)changeRequestClass;
 - (id)movieStateDataForAsset:(id)arg1;
+- (double)relevanceScoreAtDate:(id)arg1;
+- (_Bool)isRelevantAtDate:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *URLNavigationSourceIdentifier;
+@property(readonly, nonatomic, getter=isPresentedFromURLNavigation) _Bool presentedFromURLNavigation;
 - (id)transientMemoryStartDate;
 - (id)rejectionCause;
 - (_Bool)isTransient;

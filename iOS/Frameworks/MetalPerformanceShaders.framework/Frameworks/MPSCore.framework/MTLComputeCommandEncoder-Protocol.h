@@ -6,10 +6,11 @@
 
 #import <MPSCore/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLComputePipelineState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLResource, MTLSamplerState, MTLTexture;
+@protocol MTLAccelerationStructure, MTLBuffer, MTLComputePipelineState, MTLCounterSampleBuffer, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLIntersectionFunctionTable, MTLResource, MTLSamplerState, MTLTexture, MTLVisibleFunctionTable;
 
 @protocol MTLComputeCommandEncoder <MTLCommandEncoder>
 @property(readonly) unsigned long long dispatchType;
+- (void)sampleCountersInBuffer:(id <MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1;
 - (void)executeCommandsInBuffer:(id <MTLIndirectCommandBuffer>)arg1 indirectBuffer:(id <MTLBuffer>)arg2 indirectBufferOffset:(unsigned long long)arg3;
@@ -33,6 +34,11 @@
 - (void)setSamplerState:(id <MTLSamplerState>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTexture:(id <MTLTexture>)arg1 atIndex:(unsigned long long)arg2;
+- (void)setAccelerationStructure:(id <MTLAccelerationStructure>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id <MTLIntersectionFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id <MTLVisibleFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffer:(id <MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;

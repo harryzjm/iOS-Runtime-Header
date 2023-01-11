@@ -13,10 +13,10 @@
 @property(copy, nonatomic) CDUnknownBlockType networkActivityChangeBlock;
 @property(readonly) NSError *error;
 @property(readonly, nonatomic) _Bool isValid;
+@property(readonly, nonatomic) _Bool isConstrained;
 @property(readonly, nonatomic) _Bool isCellularConnection;
 @property(readonly, nonatomic) _Bool isWritable;
 @property(readonly, nonatomic) _Bool isReadable;
-@property(readonly, nonatomic) NSString *sourceIPAddressString;
 @property(readonly, nonatomic) unsigned int remotePortNumber;
 @property(readonly, nonatomic) NSString *remoteHostname;
 @property(readonly, copy, nonatomic) NSString *service;
@@ -31,6 +31,8 @@
 @property(nonatomic) _Bool allowsTrustPrompt;
 @property(nonatomic) unsigned int timeout;
 - (void)close;
+- (void)stopActivity;
+- (void)startActivity;
 - (long long)readBytesIntoBuffer:(char *)arg1 maxLength:(unsigned long long)arg2;
 - (long long)writeBytes:(const char *)arg1 length:(unsigned long long)arg2;
 - (_Bool)connectToHost:(NSString *)arg1 withPort:(unsigned int)arg2 service:(NSString *)arg3;

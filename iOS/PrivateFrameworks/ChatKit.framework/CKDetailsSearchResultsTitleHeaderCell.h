@@ -5,20 +5,24 @@
 //
 
 @class CALayer;
+@protocol CKDetailsSearchResultsTitleHeaderCellDelegate;
 
 @interface CKDetailsSearchResultsTitleHeaderCell
 {
+    id <CKDetailsSearchResultsTitleHeaderCellDelegate> _detailsViewDelegate;
     CALayer *_bottomHairline;
 }
 
 + (id)reuseIdentifier;
 + (id)supplementaryViewType;
-@property(retain, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
+@property(nonatomic) id <CKDetailsSearchResultsTitleHeaderCellDelegate> detailsViewDelegate; // @synthesize detailsViewDelegate=_detailsViewDelegate;
+- (void)_showAllButtonTapped:(id)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
-- (void)setTitle:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setTitle:(id)arg1;
 
 @end
 

@@ -5,13 +5,13 @@
 //
 
 @class CKShareMetadata, NSData, NSString;
+@protocol CKCompleteParticipantVettingOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDCompleteParticipantVettingOperation
 {
     CDUnknownBlockType _verifyProgressURLReconstructedBlock;
     CDUnknownBlockType _verifyProgressShareMetadataFetchedBlock;
-    CDUnknownBlockType _verifyCompletionBlock;
     NSString *_vettingToken;
     NSString *_vettingEmail;
     NSString *_vettingPhone;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     CKShareMetadata *_shareMetadata;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;
 @property(retain, nonatomic) NSString *shortToken; // @synthesize shortToken=_shortToken;
 @property(nonatomic) struct _OpaquePCSShareProtection *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
@@ -34,10 +35,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *vettingPhone; // @synthesize vettingPhone=_vettingPhone;
 @property(readonly, nonatomic) NSString *vettingEmail; // @synthesize vettingEmail=_vettingEmail;
 @property(readonly, nonatomic) NSString *vettingToken; // @synthesize vettingToken=_vettingToken;
-@property(copy, nonatomic) CDUnknownBlockType verifyCompletionBlock; // @synthesize verifyCompletionBlock=_verifyCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType verifyProgressShareMetadataFetchedBlock; // @synthesize verifyProgressShareMetadataFetchedBlock=_verifyProgressShareMetadataFetchedBlock;
 @property(copy, nonatomic) CDUnknownBlockType verifyProgressURLReconstructedBlock; // @synthesize verifyProgressURLReconstructedBlock=_verifyProgressURLReconstructedBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_verifyOONParticipant;
@@ -51,6 +50,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKCompleteParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

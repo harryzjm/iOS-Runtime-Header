@@ -13,9 +13,11 @@
 @interface GEOLogMsgStateSuggestions : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_displayedResults;
     NSString *_searchString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _acSequenceNumber;
     int _searchFieldType;
     int _selectedIndex;
@@ -25,11 +27,7 @@
         unsigned int has_selectedIndex:1;
         unsigned int read_displayedResults:1;
         unsigned int read_searchString:1;
-        unsigned int wrote_displayedResults:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_acSequenceNumber:1;
-        unsigned int wrote_searchFieldType:1;
-        unsigned int wrote_selectedIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,6 +42,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasAcSequenceNumber;
@@ -56,14 +57,13 @@
 @property(nonatomic) int selectedIndex;
 - (id)displayedResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)displayedResultsCount;
-- (void)_addNoFlagsDisplayedResult:(id)arg1;
 - (void)addDisplayedResult:(id)arg1;
 - (void)clearDisplayedResults;
 @property(retain, nonatomic) NSMutableArray *displayedResults;
-- (void)_readDisplayedResults;
 @property(retain, nonatomic) NSString *searchString;
 @property(readonly, nonatomic) _Bool hasSearchString;
-- (void)_readSearchString;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

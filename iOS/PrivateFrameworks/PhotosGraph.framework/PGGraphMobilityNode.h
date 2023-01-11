@@ -4,11 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PGGraphMobilityNode
 {
+    NSString *_label;
 }
 
++ (unsigned long long)mobilityTypeForMobilityLabel:(id)arg1;
+- (void).cxx_destruct;
+- (id)label;
 @property(readonly, nonatomic) unsigned long long mobilityType;
+- (unsigned short)domain;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1;
 
 @end
 

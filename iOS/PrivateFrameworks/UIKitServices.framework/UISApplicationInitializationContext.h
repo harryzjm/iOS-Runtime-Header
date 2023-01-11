@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <UIKitServices/BSXPCCoding-Protocol.h>
+#import <UIKitServices/BSXPCSecureCoding-Protocol.h>
 #import <UIKitServices/NSCopying-Protocol.h>
 #import <UIKitServices/NSMutableCopying-Protocol.h>
 
 @class FBSSceneIdentityToken, NSSet, NSString, UISDeviceContext, UISDisplayContext;
 
-@interface UISApplicationInitializationContext : NSObject <NSCopying, NSMutableCopying, BSXPCCoding>
+@interface UISApplicationInitializationContext : NSObject <BSXPCCoding, NSCopying, NSMutableCopying, BSXPCSecureCoding>
 {
     UISDisplayContext *_displayContext;
     UISDeviceContext *_deviceContext;
@@ -20,19 +21,20 @@
     FBSSceneIdentityToken *_defaultSceneToken;
 }
 
++ (_Bool)supportsBSXPCSecureCoding;
 + (id)defaultContext;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FBSSceneIdentityToken *defaultSceneToken; // @synthesize defaultSceneToken=_defaultSceneToken;
 @property(readonly, nonatomic) NSSet *persistedSceneIdentifiers; // @synthesize persistedSceneIdentifiers=_persistedSceneIdentifiers;
 @property(readonly, nonatomic) UISDeviceContext *deviceContext; // @synthesize deviceContext=_deviceContext;
 @property(readonly, nonatomic) UISDisplayContext *displayContext; // @synthesize displayContext=_displayContext;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
-- (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)initWithUISApplicationInitializationContext:(id)arg1;
 - (id)initWithDisplayContext:(id)arg1 deviceContext:(id)arg2 persistedSceneIdentifiers:(id)arg3;
 

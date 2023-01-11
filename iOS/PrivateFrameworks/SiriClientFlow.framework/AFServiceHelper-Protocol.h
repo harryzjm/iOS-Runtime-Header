@@ -6,7 +6,7 @@
 
 #import <SiriClientFlow/NSObject-Protocol.h>
 
-@class AFPeerInfo, NSBundle, NSString, NSURL, SABaseCommand;
+@class AFPeerInfo, NSBundle, NSSet, NSString, NSURL, SABaseCommand;
 
 @protocol AFServiceHelper <NSObject>
 - (void)prepareForAudioHandoffFailedWithCompletion:(void (^)(void))arg1;
@@ -14,9 +14,14 @@
 - (AFPeerInfo *)peerInfoForCurrentCommand;
 - (_Bool)isTimeoutSuspended;
 - (void)handleCommand:(SABaseCommand *)arg1 completion:(void (^)(SABaseCommand *, NSError *))arg2;
+- (_Bool)isDeviceInCarDND;
+- (_Bool)isDeviceInStarkMode;
 - (_Bool)isDeviceLockedWithPasscode;
 - (NSString *)assistantLocalizedStringForKey:(NSString *)arg1 table:(NSString *)arg2 bundle:(NSBundle *)arg3;
 - (void)dismissAssistant;
 - (_Bool)openSensitiveURL:(NSURL *)arg1;
+
+@optional
+- (void)fetchContextsForKeys:(NSSet *)arg1 includesNearbyDevices:(_Bool)arg2 completion:(void (^)(NSArray *))arg3;
 @end
 

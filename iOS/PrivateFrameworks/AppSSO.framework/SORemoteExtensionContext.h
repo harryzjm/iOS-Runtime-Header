@@ -6,30 +6,32 @@
 
 #import <Foundation/NSExtensionContext.h>
 
+#import <AppSSO/SOExtensionContext-Protocol.h>
 #import <AppSSO/SORemoteExtensionContextProtocol-Protocol.h>
 
-@class ASAuthorizationProviderExtensionAuthorizationRequest, NSString, NSValue, SOExtensionServiceConnection, SOExtensionViewService;
+@class ASAuthorizationProviderExtensionAuthorizationRequest, NSString, SOExtensionServiceConnection, SOExtensionViewService;
 @protocol ASAuthorizationProviderExtensionAuthorizationRequestHandler;
 
 __attribute__((visibility("hidden")))
-@interface SORemoteExtensionContext : NSExtensionContext <SORemoteExtensionContextProtocol>
+@interface SORemoteExtensionContext : NSExtensionContext <SORemoteExtensionContextProtocol, SOExtensionContext>
 {
     SOExtensionServiceConnection *_extensionServiceConnection;
     SOExtensionViewService *_viewService;
     ASAuthorizationProviderExtensionAuthorizationRequest *_extensionAuthorizationRequest;
-    NSValue *_extensionWindowSize;
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
-@property(retain, nonatomic) NSValue *extensionWindowSize; // @synthesize extensionWindowSize=_extensionWindowSize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) ASAuthorizationProviderExtensionAuthorizationRequest *extensionAuthorizationRequest; // @synthesize extensionAuthorizationRequest=_extensionAuthorizationRequest;
 @property __weak SOExtensionViewService *viewService; // @synthesize viewService=_viewService;
-- (void).cxx_destruct;
 - (void)_disableAppSSOInCFNetwork;
+- (_Bool)canOpenURL:(id)arg1;
+- (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginAuthorizationWithServiceXPCEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)synchronousHostContextWithError:(id *)arg1;
 - (id)hostContextWithError:(id *)arg1;
 @property(readonly, nonatomic) id <ASAuthorizationProviderExtensionAuthorizationRequestHandler> extensionViewController;
 

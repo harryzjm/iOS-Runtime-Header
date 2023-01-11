@@ -6,25 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class PHCollectionList, PHFetchResult;
+@class NSPredicate, PHCollectionList, PHFetchResult;
 
 @interface PXNavigationListDataSectionConfiguration : NSObject
 {
     _Bool _emptyCollectionsHidden;
+    _Bool _showSyncedFromMacAlbums;
     _Bool _includeKeyAssetFetches;
     _Bool _includeUserSmartAlbums;
+    _Bool _hideHiddenAlbum;
+    _Bool _skipKeyAssetFetchesForSmartAlbums;
+    _Bool _skipAssetFetches;
+    _Bool _skipAssetCountFetches;
     PHCollectionList *_collectionList;
     PHFetchResult *_collectionsFetchResult;
+    NSPredicate *_assetsFilterPredicate;
 }
 
 + (id)configurationWithCollectionsFetchResult:(id)arg1;
 + (id)configurationWithCollectionList:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
+@property(nonatomic) _Bool skipAssetCountFetches; // @synthesize skipAssetCountFetches=_skipAssetCountFetches;
+@property(nonatomic) _Bool skipAssetFetches; // @synthesize skipAssetFetches=_skipAssetFetches;
+@property(nonatomic) _Bool skipKeyAssetFetchesForSmartAlbums; // @synthesize skipKeyAssetFetchesForSmartAlbums=_skipKeyAssetFetchesForSmartAlbums;
+@property(nonatomic) _Bool hideHiddenAlbum; // @synthesize hideHiddenAlbum=_hideHiddenAlbum;
 @property(nonatomic) _Bool includeUserSmartAlbums; // @synthesize includeUserSmartAlbums=_includeUserSmartAlbums;
 @property(nonatomic) _Bool includeKeyAssetFetches; // @synthesize includeKeyAssetFetches=_includeKeyAssetFetches;
+@property(nonatomic) _Bool showSyncedFromMacAlbums; // @synthesize showSyncedFromMacAlbums=_showSyncedFromMacAlbums;
 @property(nonatomic) _Bool emptyCollectionsHidden; // @synthesize emptyCollectionsHidden=_emptyCollectionsHidden;
 @property(readonly, nonatomic) PHFetchResult *collectionsFetchResult; // @synthesize collectionsFetchResult=_collectionsFetchResult;
 @property(readonly, nonatomic) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
-- (void).cxx_destruct;
 - (id)description;
 - (id)initWithCollectionsFetchResult:(id)arg1;
 - (id)initWithCollectionList:(id)arg1;

@@ -10,7 +10,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableAttribute, NSString;
+@class INCodableAttribute, INCodableDescription, NSString;
 
 @interface INCodableAttributeDialog : NSObject <NSSecureCoding, NSCopying, INCodableCoding>
 {
@@ -21,23 +21,28 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isDefaultDialog) _Bool defaultDialog; // @synthesize defaultDialog=_defaultDialog;
 @property(copy, nonatomic) NSString *formatStringID; // @synthesize formatStringID=_formatStringID;
 @property(copy, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
 @property(nonatomic, setter=_setCodableAttribute:) __weak INCodableAttribute *_codableAttribute; // @synthesize _codableAttribute;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (id)dictionaryRepresentation;
 - (void)updateWithDictionary:(id)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
-- (id)keyPrefix;
+@property(readonly, nonatomic) __weak INCodableDescription *_codableDescription;
+- (id)localizedDialogWithIntent:(id)arg1 tokens:(id)arg2 localizer:(id)arg3;
 - (id)localizedDialogWithIntent:(id)arg1 tokens:(id)arg2 forLanguage:(id)arg3;
 - (id)localizedDialogWithIntent:(id)arg1 tokens:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)__INCodableDescriptionFormatStringKey;
+- (id)__INCodableDescriptionFormatStringDictionaryKey;
+- (id)__INCodableDescriptionFormatStringDictionaryLanguageCodeKey;
+- (id)__INCodableDescriptionFormatStringIDKey;
+- (id)__INCodableDescriptionFormatStringLanguageCodeKey;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

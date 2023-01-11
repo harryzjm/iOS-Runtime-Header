@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+#import <CloudKit/CKPublishAssetsOperationCallbacks-Protocol.h>
 
-@interface CKPublishAssetsOperation
+@class CKPublishAssetsOperationInfo, NSArray, NSDictionary, NSMutableDictionary;
+@protocol CKPublishAssetsOperationCallbacks;
+
+@interface CKPublishAssetsOperation <CKPublishAssetsOperationCallbacks>
 {
     CDUnknownBlockType _assetPublishedBlock;
     CDUnknownBlockType _publishAssetCompletionBlock;
@@ -17,14 +20,15 @@
     NSMutableDictionary *_perItemErrorsByRecordID;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *perItemErrorsByRecordID; // @synthesize perItemErrorsByRecordID=_perItemErrorsByRecordID;
 @property(retain, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property(nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property(nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
-@property(retain, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleAssetPublishCompletionForRecordID:(id)arg1 publishedAsset:(id)arg2 recordKey:(id)arg3 error:(id)arg4;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -34,6 +38,10 @@
 @property(copy, nonatomic) CDUnknownBlockType assetPublishedBlock; // @synthesize assetPublishedBlock=_assetPublishedBlock;
 - (id)activityCreate;
 - (id)initWithRecordIDs:(id)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKPublishAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKPublishAssetsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

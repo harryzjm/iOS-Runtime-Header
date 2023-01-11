@@ -5,9 +5,11 @@
 //
 
 @class NSArray, NSDate, NSManagedObjectID, NSSortDescriptor, NSString;
+@protocol PHCollectionPresentationHints;
 
 @interface PHCollection
 {
+    _Bool _trashed;
     _Bool _customSortAscending;
     unsigned int _customSortKey;
     unsigned long long _estimatedPhotosCount;
@@ -16,8 +18,10 @@
     NSString *_localizedSubtitle;
 }
 
++ (id)fetchFilteredAssetCollections:(id)arg1 containingAssetsMatchingPredicate:(id)arg2;
 + (id)fetchMomentsForPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)fetchMomentsForAssetsWithOIDs:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchTopLevelUserCollectionsWithOptions:(id)arg1;
 + (id)fetchCollectionsInCollectionList:(id)arg1 options:(id)arg2;
@@ -26,14 +30,17 @@
 + (_Bool)managedObjectSupportsTrashedState;
 + (id)fetchType;
 + (id)managedEntityName;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int customSortKey; // @synthesize customSortKey=_customSortKey;
 @property(readonly, nonatomic) _Bool customSortAscending; // @synthesize customSortAscending=_customSortAscending;
+@property(readonly, nonatomic, getter=isTrashed) _Bool trashed; // @synthesize trashed=_trashed;
 @property(readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) unsigned long long estimatedVideosCount; // @synthesize estimatedVideosCount=_estimatedVideosCount;
 @property(readonly, nonatomic) unsigned long long estimatedPhotosCount; // @synthesize estimatedPhotosCount=_estimatedPhotosCount;
-- (void).cxx_destruct;
 - (id)description;
+@property(readonly, nonatomic) _Bool startsAtEnd;
+@property(readonly, copy, nonatomic) id <PHCollectionPresentationHints> presentationHints;
 @property(readonly, nonatomic) _Bool isUserSmartAlbum;
 @property(readonly, nonatomic) _Bool isAlbumContentTitleSort;
 @property(readonly, nonatomic) _Bool isAlbumContentSort;
@@ -45,7 +52,7 @@
 @property(readonly, nonatomic) NSManagedObjectID *parentFolderID;
 - (unsigned long long)collectionFixedOrderPriority;
 - (_Bool)collectionHasFixedOrder;
-@property(readonly, nonatomic, getter=isTrashed) _Bool trashed;
+- (_Bool)isDeleted;
 @property(readonly, nonatomic) _Bool hasLocationInfo;
 @property(readonly, nonatomic) _Bool hasLocalizedTitle;
 @property(readonly, nonatomic) NSString *localizedTitle;

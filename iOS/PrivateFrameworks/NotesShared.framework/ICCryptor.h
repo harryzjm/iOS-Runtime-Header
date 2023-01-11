@@ -11,7 +11,6 @@
 }
 
 + (void)rewrapAndDivergeKeyForObject:(id)arg1 usingPassphrase:(id)arg2;
-+ (void)removeItemFromBiometricID:(id)arg1;
 + (void)removePassphraseForNotesInAccount:(id)arg1;
 + (void)removePassphraseForAccount:(id)arg1;
 + (void)cachedKeyClearingTimerDidFire;
@@ -31,7 +30,7 @@
 + (id)allCachedKeys;
 + (id)cachedMasterKeyForIdentifier:(id)arg1;
 + (void)setCachedMasterKey:(id)arg1 forObject:(id)arg2;
-+ (void)setCachedMasterKey:(id)arg1 forIdentifier:(id)arg2;
++ (void)setCachedMasterKey:(id)arg1 forIdentifier:(id)arg2 bioAuthAccountID:(id)arg3;
 + (id)masterKeysByAccountIdentifier;
 + (void)cacheMasterKeyWithPassphrase:(id)arg1 forNote:(id)arg2;
 + (void)cacheMasterKeyWithPassphrase:(id)arg1 forAccount:(id)arg2;

@@ -6,10 +6,21 @@
 
 #import <HealthUI/HKDataMetadataSection.h>
 
-@interface HRElectrocardiogramEducationSection : HKDataMetadataSection
+#import <HeartRhythmUI/HROnboardingPageViewControllerDelegate-Protocol.h>
+
+@class HKHealthStore, NSMutableDictionary, NSString;
+
+@interface HRElectrocardiogramEducationSection : HKDataMetadataSection <HROnboardingPageViewControllerDelegate>
 {
+    HKHealthStore *_store;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HKHealthStore *store; // @synthesize store=_store;
+- (id)onboardingManagerDelegate;
+- (id)dateCache;
+- (void)stepForward;
+- (id)healthStore;
 - (id)_viewControllerForEducationRow:(unsigned long long)arg1;
 - (id)_cellTitleForEducationRow:(unsigned long long)arg1;
 - (void)willDisplayCell:(id)arg1 forIndex:(unsigned long long)arg2 tableView:(id)arg3;
@@ -17,6 +28,14 @@
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
 - (unsigned long long)numberOfRowsInSection;
 - (id)sectionTitle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool firstTimeOnboarding;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(retain, nonatomic) NSMutableDictionary *userInfo;
 
 @end
 

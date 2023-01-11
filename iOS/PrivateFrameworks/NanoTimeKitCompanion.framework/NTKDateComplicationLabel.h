@@ -36,6 +36,7 @@
     struct UIEdgeInsets _touchEdgeInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets touchEdgeInsets; // @synthesize touchEdgeInsets=_touchEdgeInsets;
 @property(nonatomic) unsigned long long overrideDateStyle; // @synthesize overrideDateStyle=_overrideDateStyle;
 @property(nonatomic) _Bool legibilityHidden; // @synthesize legibilityHidden=_legibilityHidden;
@@ -47,7 +48,6 @@
 @property(readonly, nonatomic) long long sizeStyle; // @synthesize sizeStyle=_sizeStyle;
 @property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
-- (void).cxx_destruct;
 - (double)_legibtilityShadowRadius;
 - (struct CGSize)_highlightInset;
 - (double)_cornerRadius;
@@ -67,6 +67,7 @@
 - (void)_updateTextColor;
 - (id)_attributedStringAccentingNumbersInString:(id)arg1;
 - (void)setDateComplicationText:(id)arg1 withDayRange:(struct _NSRange)arg2 forDateStyle:(unsigned long long)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithSizeStyle:(long long)arg1 accentType:(long long)arg2 forDevice:(id)arg3;

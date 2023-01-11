@@ -25,6 +25,8 @@
 }
 
 + (void)applyText:(id)arg1 toLabel:(id)arg2;
++ (double)naturalWidthOfLabel:(id)arg1 inFittingSize:(struct CGSize)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
 @property(retain, nonatomic) TLKLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
 @property(retain, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
@@ -37,7 +39,6 @@
 @property(retain, nonatomic) TLKRichText *leadingSubtitle; // @synthesize leadingSubtitle=_leadingSubtitle;
 @property(retain, nonatomic) TLKRichText *leadingTitle; // @synthesize leadingTitle=_leadingTitle;
 @property(retain, nonatomic) TLKImage *leadingImage; // @synthesize leadingImage=_leadingImage;
-- (void).cxx_destruct;
 - (id)bottomRowViews;
 - (id)topRowViews;
 - (double)widthOfColumnAtIndex:(unsigned long long)arg1;
@@ -50,12 +51,13 @@
 - (id)leadingSubtitleLabelString;
 - (id)leadingTitleLabelString;
 - (id)stringForLabel:(id)arg1;
+- (id)leadingTextView;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (_Bool)hasSubtitles;
 - (void)observedPropertiesChanged;
 - (id)gridOfAllViews;
-- (_Bool)usesDefaultInsets;
+- (_Bool)usesDefaultLayoutMargins;
 - (id)setupContentView;
 
 // Remaining properties

@@ -11,12 +11,15 @@
 @interface NURenderPipelineFilter : NSObject
 {
     NUScript *_script;
+    CDUnknownBlockType _filterBlock;
 }
 
 + (id)stopAtTagFilter:(id)arg1;
-@property(readonly, nonatomic) NUScript *script; // @synthesize script=_script;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDUnknownBlockType filterBlock; // @synthesize filterBlock=_filterBlock;
+@property(readonly, nonatomic) NUScript *script; // @synthesize script=_script;
 - (id)description;
+- (id)initWithScript:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)initWithScript:(id)arg1;
 - (id)init;
 

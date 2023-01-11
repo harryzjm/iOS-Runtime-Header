@@ -9,18 +9,19 @@
 #import <SpringBoard/RadiosPreferencesDelegate-Protocol.h>
 
 @class RadiosPreferences;
-@protocol SBAirplaneModeDelegate;
+@protocol OS_dispatch_queue, SBAirplaneModeDelegate;
 
 @interface SBAirplaneModeController : NSObject <RadiosPreferencesDelegate>
 {
     RadiosPreferences *_radioPrefs;
     _Bool _cachedInAirplaneMode;
+    NSObject<OS_dispatch_queue> *_radioQueue;
     id <SBAirplaneModeDelegate> _delegate;
 }
 
 + (id)sharedInstance;
-@property(nonatomic) __weak id <SBAirplaneModeDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBAirplaneModeDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)airplaneModeChanged;
 @property(nonatomic, getter=isInAirplaneMode) _Bool inAirplaneMode;
 - (id)init;

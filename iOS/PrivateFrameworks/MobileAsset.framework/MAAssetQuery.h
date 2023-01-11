@@ -10,7 +10,11 @@
 
 @interface MAAssetQuery : NSObject
 {
+    _Bool _isPallasResult;
+    _Bool _isDone;
     _Bool _doNotBlockBeforeFirstUnlock;
+    _Bool _doNotBlockOnNetworkStatus;
+    long long _resultCode;
     NSDate *_postedDate;
     NSMutableArray *_queryParams;
     NSString *_assetType;
@@ -24,12 +28,19 @@
 @property(readonly, nonatomic) long long returnTypes; // @synthesize returnTypes=_returnTypes;
 @property(readonly, nonatomic) NSSet *assetIds; // @synthesize assetIds=_assetIds;
 @property(readonly, nonatomic) NSArray *results; // @synthesize results=_results;
+@property(nonatomic) _Bool doNotBlockOnNetworkStatus; // @synthesize doNotBlockOnNetworkStatus=_doNotBlockOnNetworkStatus;
 @property(readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property(readonly, nonatomic) NSMutableArray *queryParams; // @synthesize queryParams=_queryParams;
 @property(nonatomic) _Bool doNotBlockBeforeFirstUnlock; // @synthesize doNotBlockBeforeFirstUnlock=_doNotBlockBeforeFirstUnlock;
 @property(readonly, nonatomic) NSDate *postedDate; // @synthesize postedDate=_postedDate;
+@property(readonly, nonatomic) long long resultCode; // @synthesize resultCode=_resultCode;
+@property(readonly, nonatomic) _Bool isDone; // @synthesize isDone=_isDone;
+- (id)description;
+- (_Bool)isCatalogFetchedFromLiveServer;
+- (_Bool)isCatalogFetchedWithinThePastFewDays:(int)arg1;
 - (long long)queryMetaDataSync;
 - (long long)queryInstalledAssetIds;
+- (void)queryMetaDataWithError:(CDUnknownBlockType)arg1;
 - (void)queryMetaData:(CDUnknownBlockType)arg1;
 - (void)getResultsFromMessage:(id)arg1;
 - (long long)addKeyValuePair:(id)arg1 with:(id)arg2;

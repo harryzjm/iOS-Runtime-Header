@@ -11,6 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityOverridesInstructionsHint;
+- (id)accessibilityHint;
+- (unsigned long long)accessibilityTraits;
+- (_Bool)_axIsSummaryExpandable;
+- (_Bool)_accessibilityPerformLinkAction:(id)arg1;
+- (id)accessibilityCustomActions;
+- (id)_axLinkLabel;
+- (_Bool)_axIsAnnotationCellExpanded;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 

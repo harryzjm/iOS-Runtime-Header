@@ -10,7 +10,7 @@
 #import <Sharing/HMHomeManagerDelegate-Protocol.h>
 #import <Sharing/HMHomeManagerDelegatePrivate-Protocol.h>
 
-@class ACAccount, HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
+@class ACAccount, HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMMediaSystem, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceOperationHomeKitSetup : NSObject <HMAccessoryBrowserDelegate, HMHomeManagerDelegate, HMHomeManagerDelegatePrivate>
@@ -32,7 +32,9 @@
     _Bool _homeKitAddedAccessory;
     _Bool _homeKitAddedAppData;
     _Bool _configuredStereoPair;
+    HMMediaSystem *_homeKitMediaSystem;
     _Bool _personalRequestsDone;
+    _Bool _userInteractive;
     _Bool _hasHomePod;
     _Bool _hasMultipleUsers;
     _Bool _keyExchangeOnly;
@@ -54,8 +56,11 @@
     CDUnknownBlockType _promptToInstallHomeAppHandler;
     HMAccessory *_stereoCounterpart;
     TRSession *_trSession;
+    double _timeoutInSeconds;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double timeoutInSeconds; // @synthesize timeoutInSeconds=_timeoutInSeconds;
 @property(retain, nonatomic) TRSession *trSession; // @synthesize trSession=_trSession;
 @property(nonatomic) int stereoRole; // @synthesize stereoRole=_stereoRole;
 @property(retain, nonatomic) HMAccessory *stereoCounterpart; // @synthesize stereoCounterpart=_stereoCounterpart;
@@ -74,10 +79,10 @@
 @property(readonly, nonatomic) HMHome *homeKitSelectedHome; // @synthesize homeKitSelectedHome=_homeKitSelectedHome;
 @property(readonly, nonatomic) _Bool hasMultipleUsers; // @synthesize hasMultipleUsers=_hasMultipleUsers;
 @property(readonly, nonatomic) _Bool hasHomePod; // @synthesize hasHomePod=_hasHomePod;
+@property(nonatomic) _Bool userInteractive; // @synthesize userInteractive=_userInteractive;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) NSDictionary *appDataSelf; // @synthesize appDataSelf=_appDataSelf;
-- (void).cxx_destruct;
 - (void)_updateAccount;
 - (void)_updateHomeStats;
 - (void)_restoreHomeApp;
@@ -85,7 +90,7 @@
 - (id)_normalizedString:(id)arg1;
 - (id)_mediaSystemForAccessory:(id)arg1;
 - (_Bool)_isOwnerOfHome:(id)arg1;
-- (id)findStereoCounterparts;
+- (id)findStereoCounterpartsWithSupportedVersions:(unsigned long long)arg1;
 - (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (void)homeManagerDidUpdateDataSyncState:(id)arg1;

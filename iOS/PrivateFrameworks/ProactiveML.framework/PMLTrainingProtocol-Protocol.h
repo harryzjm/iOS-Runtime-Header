@@ -10,8 +10,9 @@
 
 @protocol PMLTrainingProtocol <NSObject>
 - (void)setSourceRecoverer:(id (^)(NSData *))arg1;
+- (NSDictionary *)planReceivedWithRecipe:(NSDictionary *)arg1 attachments:(NSArray *)arg2 error:(id *)arg3;
 - (NSDictionary *)planReceivedWithPayload:(NSData *)arg1 error:(id *)arg2;
-- (void)trimDb;
+- (void)trimDbWithDeferralBlock:(_Bool (^)(void))arg1;
 - (void)updateLastTrainingFeaturizationForModel:(PMLSessionDescriptor *)arg1 andData:(NSData *)arg2;
 - (_PASTuple2 *)lastTrainingFeaturizationForModelName:(NSString *)arg1 andLocale:(NSString *)arg2;
 - (void)updateSessionsAndLabelForModel:(PMLSessionDescriptor *)arg1 block:(void (^)(long long, NSData *, void (^)(long long, PMLSparseVector *, PMLSessionDescriptor *)))arg2;

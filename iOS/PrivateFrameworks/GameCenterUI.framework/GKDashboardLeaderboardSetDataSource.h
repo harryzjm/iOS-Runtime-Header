@@ -14,6 +14,7 @@
     NSArray *_leaderboardSets;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *leaderboardSets; // @synthesize leaderboardSets=_leaderboardSets;
 @property(retain, nonatomic) GKGameRecord *gameRecord; // @synthesize gameRecord=_gameRecord;
 @property(retain, nonatomic) NSDictionary *leaderboardAssetNames; // @synthesize leaderboardAssetNames=_leaderboardAssetNames;
@@ -29,7 +30,6 @@
 - (void)removeLeaderboardSetsWithoutImages;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1;
 
 @end

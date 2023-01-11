@@ -10,11 +10,7 @@
     _Bool _shouldWaitForTls;
 }
 
-+ (id)opWithBlock:(CDUnknownBlockType)arg1 description:(const char *)arg2;
 - (void)dealloc;
-- (void)markBlockAsWaitingOnTls:(_Bool)arg1;
-- (_Bool)shouldWaitForTLS;
-- (void)executeBlock;
 
 @end
 

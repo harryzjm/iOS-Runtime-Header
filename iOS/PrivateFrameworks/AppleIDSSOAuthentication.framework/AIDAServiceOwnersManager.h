@@ -19,9 +19,15 @@
 
 + (id)supportedServices;
 + (id)serviceOwnerBundles;
-@property(copy, nonatomic) NSDictionary *serviceOwners; // @synthesize serviceOwners=_serviceOwners;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *serviceOwners; // @synthesize serviceOwners=_serviceOwners;
+- (void)signOutOfServices:(id)arg1 usingContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)signOutOfAllServicesUsingContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)signOutService:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)signInToServices:(id)arg1 usingContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)signInToAllServicesInBackground:(_Bool)arg1 usingContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_postCloudSupportedServicesForAltDSID:(id)arg1;
+- (void)signInToAllServicesInBackgroundUsingContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)signInService:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)nameComponentsForAccount:(id)arg1 service:(id)arg2;
 - (id)DSIDForAccount:(id)arg1 service:(id)arg2;

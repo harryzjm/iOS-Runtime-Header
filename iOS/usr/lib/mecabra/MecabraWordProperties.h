@@ -27,6 +27,7 @@
 @property(retain, nonatomic) NSArray *codeLookupInformation; // @synthesize codeLookupInformation=_codeLookupInformation;
 @property(retain, nonatomic) NSArray *characterInformation; // @synthesize characterInformation=_characterInformation;
 @property(copy, nonatomic) NSString *analysisString; // @synthesize analysisString=_analysisString;
+- (id)wubixingCodesForStandard:(int)arg1;
 - (id)valueForKey:(int)arg1;
 - (id)isIncludedInCurrentLanguage;
 - (id)cangjieCodes;

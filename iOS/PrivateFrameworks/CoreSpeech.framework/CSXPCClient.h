@@ -13,33 +13,41 @@
 #import <CoreSpeech/CSAudioSessionProviding-Protocol.h>
 #import <CoreSpeech/CSAudioStreamProviding-Protocol.h>
 #import <CoreSpeech/CSAudioTimeConversionProviding-Protocol.h>
-#import <CoreSpeech/CSSmartSiriVolumeProviding-Protocol.h>
+#import <CoreSpeech/CSFallbackAudioSessionReleaseProviding-Protocol.h>
 #import <CoreSpeech/CSTriggerInfoProviding-Protocol.h>
 
 @class CSAudioStream, NSHashTable, NSMutableSet, NSString;
 @protocol CSAudioAlertProvidingDelegate, CSAudioSessionProvidingDelegate, CSAudioStreamProvidingDelegate, CSXPCClientDelegate, OS_xpc_object;
 
-@interface CSXPCClient : NSObject <CSAudioSessionProviding, CSAudioStreamProviding, CSAudioAlertProviding, CSAudioSessionInfoProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSSmartSiriVolumeProviding, CSAudioTimeConversionProviding, CSTriggerInfoProviding>
+@interface CSXPCClient : NSObject <CSAudioSessionProviding, CSFallbackAudioSessionReleaseProviding, CSAudioStreamProviding, CSAudioAlertProviding, CSAudioSessionInfoProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSAudioTimeConversionProviding, CSTriggerInfoProviding>
 {
     id <CSAudioSessionProvidingDelegate> _audioSessionProvidingDelegate;
     id <CSAudioStreamProvidingDelegate> _audioStreamProvidingDelegate;
     id <CSAudioAlertProvidingDelegate> _audioAlertProvidingDelegate;
     id <CSXPCClientDelegate> _delegate;
+    NSString *_UUID;
     NSObject<OS_xpc_object> *_xpcConnection;
     CSAudioStream *_audioStream;
     NSMutableSet *_activationAssertions;
     NSHashTable *_audioSessionInfoObservers;
+    unsigned long long _xpcClientType;
 }
 
++ (id)createStopAudioStreamMessage;
++ (id)createStartAudioStreamMessageWithOption:(id)arg1;
++ (id)createPrepareAudioStreamMessageWithRequest:(id)arg1;
++ (id)createAudioStreamMessageWithRequest:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long xpcClientType; // @synthesize xpcClientType=_xpcClientType;
 @property(retain, nonatomic) NSHashTable *audioSessionInfoObservers; // @synthesize audioSessionInfoObservers=_audioSessionInfoObservers;
 @property(retain, nonatomic) NSMutableSet *activationAssertions; // @synthesize activationAssertions=_activationAssertions;
 @property(retain, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property(nonatomic) __weak id <CSXPCClientDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <CSAudioAlertProvidingDelegate> audioAlertProvidingDelegate; // @synthesize audioAlertProvidingDelegate=_audioAlertProvidingDelegate;
 @property(nonatomic) __weak id <CSAudioStreamProvidingDelegate> audioStreamProvidingDelegate; // @synthesize audioStreamProvidingDelegate=_audioStreamProvidingDelegate;
 @property(nonatomic) __weak id <CSAudioSessionProvidingDelegate> audioSessionProvidingDelegate; // @synthesize audioSessionProvidingDelegate=_audioSessionProvidingDelegate;
-- (void).cxx_destruct;
 - (void)_handleStreamProvidingDelegateHardwareConfigChange:(id)arg1;
 - (void)_handleStreamProvidingDelegateChunkForTVAvailable:(id)arg1;
 - (void)_handleStreamProvidingDelegateChunkAvailable:(id)arg1;
@@ -67,22 +75,24 @@
 - (_Bool)_sendMessageAndReplySync:(id)arg1 connection:(id)arg2 error:(id *)arg3;
 - (id)_decodeError:(id)arg1;
 - (void)_sendMessage:(id)arg1 connection:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)fallbackDeactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)sampleCountFromHostTime:(unsigned long long)arg1;
 - (unsigned long long)hostTimeFromSampleCount:(unsigned long long)arg1;
-- (void)updateTimerState:(long long)arg1;
-- (void)updateAlarmState:(long long)arg1;
-- (void)updateAlarmVolume:(float)arg1;
-- (void)updateMusicVolume:(float)arg1;
-- (float)getEstimatedTTSVolume;
 - (unsigned int)audioSessionID;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
+- (_Bool)isRecording;
+- (void)cancelAudioStreamHold:(id)arg1;
+- (id)holdAudioStreamWithDescription:(id)arg1 timeout:(double)arg2;
+- (void)saveRecordingBufferToEndFrom:(unsigned long long)arg1 toURL:(id)arg2;
+- (void)saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(id)arg3;
+- (id)audioChunkToEndFrom:(unsigned long long)arg1;
+- (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (id)playbackRoute;
 - (_Bool)isNarrowBand;
 - (id)recordSettings;
 - (id)recordDeviceInfo;
 - (id)recordRoute;
-- (void)enableVoiceTrigger:(_Bool)arg1 withAssertion:(id)arg2;
 - (void)triggerInfoForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -104,17 +114,19 @@
 - (void)setAudioAlertDelegate:(id)arg1;
 - (void)setAudioSessionDelegate:(id)arg1;
 - (void)enableMiniDucking:(_Bool)arg1;
+- (void)enableSmartRoutingConsideration:(_Bool)arg1;
 - (void)setDuckOthersOption:(_Bool)arg1;
 - (_Bool)duckOthersOption;
 - (_Bool)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
-- (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
+- (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 dynamicAttribute:(unsigned long long)arg2 bundleID:(id)arg3 error:(id *)arg4;
 - (_Bool)prewarmAudioSessionWithError:(id *)arg1;
 - (void)pingpong:(CDUnknownBlockType)arg1;
 - (_Bool)prepareAudioProviderWithContext:(id)arg1 clientType:(unsigned long long)arg2 error:(id *)arg3;
+- (void)sendXPCClientType;
 - (void)dealloc;
 - (void)disconnect;
 - (void)connect;
-- (id)init;
+- (id)initWithType:(unsigned long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

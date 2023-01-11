@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class FCCachePolicy, NSString;
 @protocol FCContentContext, FCFlintHelper;
 
 @interface FCOfflineIssueFetchOperation
@@ -18,8 +18,11 @@
     id <FCFlintHelper> _flintHelper;
     NSString *_issueID;
     id _resultHoldToken;
+    FCCachePolicy *_issueRecordCachePolicy;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) FCCachePolicy *issueRecordCachePolicy; // @synthesize issueRecordCachePolicy=_issueRecordCachePolicy;
 @property(retain, nonatomic) id resultHoldToken; // @synthesize resultHoldToken=_resultHoldToken;
 @property(copy, nonatomic) NSString *issueID; // @synthesize issueID=_issueID;
 @property(retain, nonatomic) id <FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
@@ -29,7 +32,6 @@
 @property double progress; // @synthesize progress=_progress;
 @property(copy, nonatomic) CDUnknownBlockType layeredCoverHandlesProvider; // @synthesize layeredCoverHandlesProvider=_layeredCoverHandlesProvider;
 @property(nonatomic) _Bool cachedOnly; // @synthesize cachedOnly=_cachedOnly;
-- (void).cxx_destruct;
 - (id)_pdfArchiveURLForIssue:(id)arg1;
 - (void)_updateProgress:(double)arg1;
 - (id)_resourceIDsFromMetadataJSONData:(id)arg1;
@@ -43,6 +45,9 @@
 - (id)_promiseCoverImageForIssue:(id)arg1;
 - (id)_promiseMetadataForIssue:(id)arg1;
 - (id)_promiseIssue;
+- (void)resetForRetry;
+- (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
+- (unsigned long long)maxRetries;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

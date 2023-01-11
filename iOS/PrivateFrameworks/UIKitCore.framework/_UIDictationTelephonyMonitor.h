@@ -20,12 +20,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _activityChanged;
 }
 
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType activityChanged; // @synthesize activityChanged=_activityChanged;
 @property(readonly, nonatomic) _Bool telephonyActivity; // @synthesize telephonyActivity=_telephonyActivity;
 - (void)_backgroundReset;
 - (void)_backgroundInit;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (void)start;
 

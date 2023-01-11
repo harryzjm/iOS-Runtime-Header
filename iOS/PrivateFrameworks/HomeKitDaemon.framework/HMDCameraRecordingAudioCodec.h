@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreHAP/HAPNumberParser.h>
+
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDCameraRecordingAudioCodec <NSCopying, NSSecureCoding>
+@interface HMDCameraRecordingAudioCodec : HAPNumberParser <NSCopying, NSSecureCoding>
 {
     long long _type;
 }

@@ -34,6 +34,7 @@
     NSMutableSet *_exposedGalleryItems;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *exposedGalleryItems; // @synthesize exposedGalleryItems=_exposedGalleryItems;
 @property(retain, nonatomic) SXImageView *targetGalleryItem; // @synthesize targetGalleryItem=_targetGalleryItem;
 @property(nonatomic) unsigned long long lastPreloadViewIndex; // @synthesize lastPreloadViewIndex=_lastPreloadViewIndex;
@@ -51,7 +52,6 @@
 @property(readonly, nonatomic) double xOffset; // @synthesize xOffset=_xOffset;
 @property(readonly, nonatomic) id <SXFullscreenCanvasControllerFactory> canvasControllerFactory; // @synthesize canvasControllerFactory=_canvasControllerFactory;
 @property(readonly, nonatomic) id <SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
-- (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
 - (void)preloadAdjacentViewsForIndex:(unsigned long long)arg1;
 - (void)finishMediaViewEvent;
@@ -110,7 +110,7 @@
 - (unsigned long long)numberOfViewsInItemizedScrollView:(id)arg1;
 - (id)createViewForViewIndex:(unsigned long long)arg1;
 - (void)discardContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)loadComponent:(id)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 mediaSharingPolicyProvider:(id)arg7 imageViewFactory:(id)arg8 canvasControllerFactory:(id)arg9;

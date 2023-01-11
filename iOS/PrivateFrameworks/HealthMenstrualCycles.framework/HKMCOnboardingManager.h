@@ -6,18 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKKeyValueDomain, HKMenstrualCyclesStore, HKQuantity, NSDate;
+@class HKHealthStore, HKKeyValueDomain, HKMenstrualCyclesStore, HKQuantity, NSDate, NSNumber;
 
 @interface HKMCOnboardingManager : NSObject
 {
     HKHealthStore *_healthStore;
     HKMenstrualCyclesStore *_menstrualCyclesStore;
     HKKeyValueDomain *_keyValueDomain;
+    NSNumber *_mostRecentOnboardingVersionCompleted;
 }
 
 - (void).cxx_destruct;
-- (void)resetOnboarding;
-- (void)setOnboardingCompletedWithUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3;
+@property(readonly, copy, nonatomic) NSNumber *mostRecentOnboardingVersionCompleted; // @synthesize mostRecentOnboardingVersionCompleted=_mostRecentOnboardingVersionCompleted;
+- (void)resetOnboarding:(CDUnknownBlockType)arg1;
+- (void)_triggerHealthKitSync;
+- (_Bool)_resetOnboardingCharacteristicsWithError:(id *)arg1;
+- (_Bool)_resetOnboardingKeyValueDomainWithError:(id *)arg1;
+- (void)setOnboardingCompletedWithUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_saveUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)_setKeyValueDomainOnboardingCompletedVersion:(long long)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) HKQuantity *userEnteredPeriodLength;
 @property(readonly, nonatomic) HKQuantity *userEnteredCycleLength;
 @property(readonly, copy, nonatomic) NSDate *onboardingFirstCompletedDate;

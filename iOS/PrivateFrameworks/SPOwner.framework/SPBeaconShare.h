@@ -9,7 +9,7 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSUUID, SPHandle;
+@class NSDate, NSString, NSUUID, SPHandle;
 
 @interface SPBeaconShare : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,21 +17,27 @@
     NSUUID *_identifier;
     SPHandle *_handle;
     NSDate *_expiration;
+    NSDate *_shareDate;
+    unsigned long long _sharePrimaryIndex;
+    NSString *_correlationIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *correlationIdentifier; // @synthesize correlationIdentifier=_correlationIdentifier;
+@property(readonly, nonatomic) unsigned long long sharePrimaryIndex; // @synthesize sharePrimaryIndex=_sharePrimaryIndex;
+@property(readonly, copy, nonatomic) NSDate *shareDate; // @synthesize shareDate=_shareDate;
 @property(copy, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property(nonatomic) _Bool accepted; // @synthesize accepted=_accepted;
 @property(copy, nonatomic) SPHandle *handle; // @synthesize handle=_handle;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 handle:(id)arg2 accepted:(_Bool)arg3 expiration:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 handle:(id)arg2 accepted:(_Bool)arg3 expiration:(id)arg4 correlationIdentifier:(id)arg5 shareDate:(id)arg6 sharePrimaryIndex:(unsigned long long)arg7;
 
 @end
 

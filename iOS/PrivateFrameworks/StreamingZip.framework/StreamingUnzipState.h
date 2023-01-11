@@ -39,9 +39,12 @@ __attribute__((visibility("hidden")))
     _Bool _storeCurrentFileInMemory;
     _Bool _currentLFRequiresDataDescriptor;
     _Bool _denyInvalidSymlinks;
+    _Bool _performCachedWrites;
 }
 
 + (id)unzipStateWithPath:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool performCachedWrites; // @synthesize performCachedWrites=_performCachedWrites;
 @property(nonatomic) _Bool denyInvalidSymlinks; // @synthesize denyInvalidSymlinks=_denyInvalidSymlinks;
 @property(nonatomic) CDStruct_1e765437 *dataDescriptor; // @synthesize dataDescriptor=_dataDescriptor;
 @property(nonatomic) unsigned long long totalFileSizeWritten; // @synthesize totalFileSizeWritten=_totalFileSizeWritten;
@@ -67,7 +70,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *streamInfoDict; // @synthesize streamInfoDict=_streamInfoDict;
 @property(readonly, nonatomic) CDStruct_3b890e00 hashContext; // @synthesize hashContext=_hashContext;
 @property(readonly, nonatomic) NSString *unzipPath; // @synthesize unzipPath=_unzipPath;
-- (void).cxx_destruct;
 - (id)initWithPath:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)finishStream;
 - (id)updateHashFromOffset:(unsigned long long)arg1 withBytes:(const void *)arg2 length:(unsigned long long)arg3;

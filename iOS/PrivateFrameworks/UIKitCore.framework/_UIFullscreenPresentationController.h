@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)_adjustOrientationIfNecessaryInWindow:(id)arg1 forViewController:(id)arg2 preservingViewController:(id)arg3;
 - (_Bool)_invokesDelegatesOnOrientationChange;
 - (struct CGRect)frameOfPresentedViewInContainerView;
-- (_Bool)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (_Bool)_shouldRespectDefinesPresentationContext;
 - (_Bool)shouldPresentInFullscreen;
 - (void)dealloc;

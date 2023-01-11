@@ -11,6 +11,11 @@
 @protocol SBPIPContainerViewControllerObserver <NSObject>
 
 @optional
+- (void)containerViewController:(SBPIPContainerViewController *)arg1 didFinishStartAnimationWithInitialInterfaceOrientation:(long long)arg2;
+- (void)containerViewControllerStopReducingResourcesUsage:(SBPIPContainerViewController *)arg1;
+- (void)containerViewControllerStartReducingResourcesUsage:(SBPIPContainerViewController *)arg1;
+- (void)containerViewController:(SBPIPContainerViewController *)arg1 userDidUpdateStashState:(long long)arg2;
+- (void)containerViewControllerUserMayUpdateStashState:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerRequiredInterfaceOrientationDidChange:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerRequiredInterfaceOrientationWillChange:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerRelinquishInterfaceOrientationLock:(SBPIPContainerViewController *)arg1;

@@ -6,34 +6,50 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/GEOXPCSerializable-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString, geo_isolater;
 
-@interface GEOApplicationAuditToken : NSObject <NSSecureCoding>
+@interface GEOApplicationAuditToken : NSObject <NSSecureCoding, GEOXPCSerializable>
 {
     NSData *_tokenData;
     NSString *_proxiedBundleId;
     NSString *_resolvedBundleId;
+    NSString *_resolvedNetworkAttributionBundleId;
     geo_isolater *_isolater;
+    _Bool _proxiedExternalBundleId;
+    NSString *_secondaryIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSString *proxiedBundleId; // @synthesize proxiedBundleId=_proxiedBundleId;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic, getter=_secondaryIdentifier) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;
+@property(readonly, nonatomic, getter=isProxiedExternalBundleId) _Bool proxiedExternalBundleId; // @synthesize proxiedExternalBundleId=_proxiedExternalBundleId;
+@property(readonly, nonatomic) NSString *proxiedBundleId; // @synthesize proxiedBundleId=_proxiedBundleId;
 - (id)_bundleIdForAuditToken;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)bundleIdForNetworkAttribution;
 - (id)bundleId;
 - (id)backingTokenData;
 - (id)init;
 - (id)publicLogDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
+- (id)initWithSecondaryIdentifier:(id)arg1;
+- (id)initWithProxiedExternalApplicationBundleId:(id)arg1;
 - (id)initWithProxiedApplicationBundleId:(id)arg1;
 - (id)initWithAuditTokenData:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithNSXPCConnection:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

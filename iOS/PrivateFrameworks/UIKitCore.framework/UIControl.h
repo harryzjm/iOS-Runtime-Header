@@ -4,9 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSSet;
+#import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIContextMenuInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UIVariableGestureContextMenuInteractionDelegate-Protocol.h>
 
-@interface UIControl
+@class NSMutableArray, NSSet, NSString, UIContextMenuInteraction, UIPointerInteraction, _UICursorInteraction;
+
+@interface UIControl <_UIVariableGestureContextMenuInteractionDelegate, UIPointerInteractionDelegate, UIContextMenuInteractionDelegate_Private, _UICursorInteractionDelegate, UIContextMenuInteractionDelegate>
 {
     NSMutableArray *_targetActions;
     struct CGPoint _previousPoint;
@@ -19,7 +25,6 @@
         unsigned int requiresDisplayOnTracking:1;
         unsigned int highlighted:1;
         unsigned int dontHighlightOnTouchDown:1;
-        unsigned int delayActions:1;
         unsigned int allowActionsToQueue:1;
         unsigned int pendingUnhighlight:1;
         unsigned int selected:1;
@@ -27,16 +32,58 @@
         unsigned int horizontalAlignment:3;
         unsigned int wasLastHighlightSuccessful:1;
         unsigned int touchHasHighlighted:1;
+        unsigned int hasPointerInteraction:1;
+        unsigned int hasProxyPointerInteraction:1;
+        unsigned int hasContextMenuInteraction:1;
+        unsigned int highlightForMenuPresentation:1;
     } _controlFlags;
+    long long _requiredButtonMask;
 }
 
++ (_Bool)_cursorInteractionEnabled;
 + (unsigned long long)_primaryStateForState:(unsigned long long)arg1;
 + (_Bool)_allowActionsToQueue;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setRequiredButtonMask:) long long _requiredButtonMask; // @synthesize _requiredButtonMask;
+- (long long)_sceneDraggingBehaviorOnPan;
+- (void)_contextMenuInteraction:(id)arg1 willBeginWithConfiguration:(id)arg2;
+- (id)_contextMenuInteraction:(id)arg1 interactionEffectForTargetedPreview:(id)arg2;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+@property(nonatomic) _Bool contextMenuIsPrimary;
+@property(nonatomic, getter=isContextMenuEnabled) _Bool contextMenuEnabled;
+@property(nonatomic) _Bool showsMenuAsPrimaryAction;
+@property(nonatomic, getter=isContextMenuInteractionEnabled) _Bool contextMenuInteractionEnabled;
+@property(nonatomic, setter=_setProxySender:) __weak id _proxySender;
+- (struct CGPoint)menuAttachmentPointForConfiguration:(id)arg1;
+- (id)_contextMenuInteraction;
+@property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction;
+- (void)_installCursorInteractionIfNeeded;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+@property(readonly, nonatomic) _UICursorInteraction *_cursorInteraction;
+@property(readonly, nonatomic) _UICursorInteraction *cursorInteraction;
+- (void)_invalidatePointerInteraction;
+@property(retain, nonatomic, setter=_setProxyPointerInteraction:) UIPointerInteraction *_proxyPointerInteraction;
+@property(readonly, nonatomic) UIPointerInteraction *_pointerInteraction;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+@property(nonatomic, getter=isPointerInteractionEnabled) _Bool pointerInteractionEnabled;
+@property(readonly, nonatomic) UIPointerInteraction *pointerInteraction;
+- (id)_createPointerInteraction;
 - (_Bool)_accessibilityShouldActivateOnHUDLift;
 - (unsigned long long)_stateForFocusUpdateContext:(id)arg1;
 - (long long)_focusedSound;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (_Bool)canBecomeFocused;
 - (void)_sendDelayedActions:(_Bool)arg1;
 - (void)_unhighlight;
@@ -64,13 +111,21 @@
 - (struct CGRect)_clippedHighlightBounds;
 - (_Bool)canBecomeFirstResponder;
 - (void)sendActionsForControlEvents:(unsigned long long)arg1;
+- (void)sendAction:(id)arg1;
 - (void)sendAction:(SEL)arg1 to:(id)arg2 forEvent:(id)arg3;
+- (void)enumerateEventHandlers:(CDUnknownBlockType)arg1;
 - (id)actionsForTarget:(id)arg1 forControlEvent:(unsigned long long)arg2;
 @property(readonly, nonatomic) unsigned long long allControlEvents;
 @property(readonly, nonatomic) NSSet *allTargets;
+- (id)_allTargetActions;
+- (void)removeActionForIdentifier:(id)arg1 forControlEvents:(unsigned long long)arg2;
+- (void)removeAction:(id)arg1 forControlEvents:(unsigned long long)arg2;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
+- (void)addAction:(id)arg1 forControlEvents:(unsigned long long)arg2;
 - (void)addTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
+- (void)_addControlTargetAction:(id)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (void)_willMoveToWindow:(id)arg1;
 - (void)touchesEstimatedPropertiesUpdated:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
@@ -81,7 +136,7 @@
 @property(nonatomic, getter=isSelected) _Bool selected; // @dynamic selected;
 @property(readonly, nonatomic) long long effectiveContentHorizontalAlignment;
 @property(nonatomic) long long contentHorizontalAlignment; // @dynamic contentHorizontalAlignment;
-- (long long)effectiveContentVerticalAlignment;
+@property(readonly, nonatomic) long long effectiveContentVerticalAlignment;
 @property(nonatomic) long long contentVerticalAlignment; // @dynamic contentVerticalAlignment;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @dynamic highlighted;
 - (void)cancelTrackingWithEvent:(id)arg1;
@@ -94,9 +149,10 @@
 @property(readonly, nonatomic) unsigned long long state; // @dynamic state;
 @property(readonly, nonatomic, getter=isTracking) _Bool tracking; // @dynamic tracking;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @dynamic enabled;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 primaryAction:(id)arg2;
+- (void)_commonInitForPrimaryAction:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (void)_commitInteractionDurationStatisticMeasurements;
@@ -108,6 +164,12 @@
 - (id)__distributionStatisticsForUserInteractionDuration;
 - (id)__scalarStatisticsForUserValueChangedEvent;
 - (id)__scalarStatisticsForUserTouchUpInsideEvent;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

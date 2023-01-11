@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKColoringLabel, NTKRichComplicationImageView;
+@class NTKColoringLabel;
 
 @interface NTKRichComplicationRectangularLargeTextView
 {
-    NTKRichComplicationImageView *_headerImageView;
-    NTKColoringLabel *_headerLabel;
     NTKColoringLabel *_line1Label;
 }
 
@@ -20,8 +18,6 @@
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
-- (void)setFilterProvider:(id)arg1;
-- (void)setPaused:(_Bool)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)layoutSubviews;
 - (id)init;

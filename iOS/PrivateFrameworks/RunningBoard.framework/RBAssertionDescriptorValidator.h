@@ -14,9 +14,6 @@
 {
 }
 
-- (id)_errorWithDescription:(id)arg1;
-- (id)_flattenedAttributesFromAttribute:(id)arg1 context:(id)arg2;
-- (id)_flattenedAttributesFromContext:(id)arg1;
 - (_Bool)isAssertionValidForContext:(id)arg1 error:(out id *)arg2;
 
 // Remaining properties

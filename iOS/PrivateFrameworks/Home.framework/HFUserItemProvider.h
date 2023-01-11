@@ -9,16 +9,18 @@
 @interface HFUserItemProvider
 {
     _Bool _includeCurrentUser;
+    _Bool _includeOtherUsers;
     unsigned long long _nameStyle;
     HMHome *_home;
     NSMutableSet *_userItems;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *userItems; // @synthesize userItems=_userItems;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(nonatomic) unsigned long long nameStyle; // @synthesize nameStyle=_nameStyle;
+@property(nonatomic) _Bool includeOtherUsers; // @synthesize includeOtherUsers=_includeOtherUsers;
 @property(nonatomic) _Bool includeCurrentUser; // @synthesize includeCurrentUser=_includeCurrentUser;
-- (void).cxx_destruct;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

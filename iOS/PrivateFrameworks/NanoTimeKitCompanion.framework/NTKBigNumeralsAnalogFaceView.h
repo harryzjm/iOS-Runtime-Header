@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKBigNumeralsTimeComponentLabel, UIView;
+@class CAGradientLayer, CALayer, CLKClockTimerToken, NTKBigNumeralsTimeComponentLabel, UIView;
 
 @interface NTKBigNumeralsAnalogFaceView
 {
     UIView *_hourLabelContainerView;
     NTKBigNumeralsTimeComponentLabel *_hourLabel;
-    struct NSNumber *_timerToken;
+    CLKClockTimerToken *_timerToken;
     _Bool _showingStatusBar;
+    CAGradientLayer *_gradientLayer;
+    CALayer *_labelColorLayer;
 }
 
++ (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
++ (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (Class)_timeViewClass;
-+ (long long)uiSensitivity;
 - (void).cxx_destruct;
 - (id)_renderTimeViewSwatchImageForStyle:(unsigned long long)arg1 typeface:(unsigned long long)arg2 color:(unsigned long long)arg3;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;

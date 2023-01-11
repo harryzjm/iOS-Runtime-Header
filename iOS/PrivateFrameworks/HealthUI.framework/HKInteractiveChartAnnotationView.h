@@ -6,28 +6,55 @@
 
 #import <UIKit/UIView.h>
 
-@class UIStackView;
-@protocol HKInteractiveChartAnnotationViewDataSource;
+@class NSLayoutConstraint, NSTimer, UIButton, _HKAnnotationColumnLayout, _HKBodyMarginsLayout, _HKDateContentLayout;
+@protocol HKInteractiveChartAnnotationViewDataSource, HKInteractiveChartAnnotationViewDelegate;
 
 @interface HKInteractiveChartAnnotationView : UIView
 {
+    _Bool _showsInfoButton;
     id <HKInteractiveChartAnnotationViewDataSource> _dataSource;
-    UIStackView *_columnStack;
-    UIStackView *_containerStack;
-    UIStackView *_marginStack;
+    id <HKInteractiveChartAnnotationViewDelegate> _delegate;
+    _HKAnnotationColumnLayout *_columnLayout;
+    _HKDateContentLayout *_dateContentLayout;
+    _HKBodyMarginsLayout *_bodyMarginsLayout;
+    UIButton *_infoButton;
+    long long _context;
+    NSLayoutConstraint *_leadingMarginConstraint;
+    NSLayoutConstraint *_trailingMarginConstraint;
+    NSTimer *_deferredNoDataTimer;
 }
 
-@property(retain, nonatomic) UIStackView *marginStack; // @synthesize marginStack=_marginStack;
-@property(retain, nonatomic) UIStackView *containerStack; // @synthesize containerStack=_containerStack;
-@property(retain, nonatomic) UIStackView *columnStack; // @synthesize columnStack=_columnStack;
-@property(nonatomic) __weak id <HKInteractiveChartAnnotationViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void).cxx_destruct;
-- (id)_createSeparatorView;
+@property(nonatomic) __weak NSTimer *deferredNoDataTimer; // @synthesize deferredNoDataTimer=_deferredNoDataTimer;
+@property(retain, nonatomic) NSLayoutConstraint *trailingMarginConstraint; // @synthesize trailingMarginConstraint=_trailingMarginConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *leadingMarginConstraint; // @synthesize leadingMarginConstraint=_leadingMarginConstraint;
+@property(nonatomic) long long context; // @synthesize context=_context;
+@property(retain, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
+@property(retain, nonatomic) _HKBodyMarginsLayout *bodyMarginsLayout; // @synthesize bodyMarginsLayout=_bodyMarginsLayout;
+@property(retain, nonatomic) _HKDateContentLayout *dateContentLayout; // @synthesize dateContentLayout=_dateContentLayout;
+@property(retain, nonatomic) _HKAnnotationColumnLayout *columnLayout; // @synthesize columnLayout=_columnLayout;
+@property(nonatomic) _Bool showsInfoButton; // @synthesize showsInfoButton=_showsInfoButton;
+@property(nonatomic) __weak id <HKInteractiveChartAnnotationViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <HKInteractiveChartAnnotationViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+- (void)handleCurrentTimeGesture:(id)arg1;
+- (void)infoButtonPressed:(id)arg1;
+- (void)showNoDataStatus;
+- (_Bool)_dataSourceHasNoData;
+- (void)_cancelDeferredDataReload;
+- (void)scheduleDeferredDataReload;
+- (void)_removeViewsForRebuild;
+- (void)_invalidateLayout;
+- (void)_buildStandardAnnotationViews;
+- (double)_trailingMargin;
+- (double)_leadingMargin;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (void)reloadData;
-- (void)lowerPriorityConstraint:(id)arg1;
-- (void)_configureStacks;
+- (void)_configureLayout;
+- (id)_buildInfoButton;
 - (id)initWithCoder:(id)arg1;
-- (id)init;
+- (id)initWithContext:(long long)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/PKSetupFlowControllerProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, PKAccount, PKAssertion, PKFeatureApplication, PKPaymentProvisioningController, PKPaymentService, PKPaymentWebService;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, NSURL, PKAccount, PKAssertion, PKFeatureApplication, PKPaymentInstallmentConfiguration, PKPaymentProvisioningController, PKPaymentService, PKPaymentWebService;
 @protocol OS_dispatch_queue, PKPaymentSetupViewControllerDelegate, PKSetupFlowControllerProtocol;
 
 @interface PKApplyController : NSObject <PKSetupFlowControllerProtocol, PKPaymentServiceDelegate>
@@ -34,14 +34,18 @@
     long long _context;
     PKPaymentProvisioningController *_provisioningController;
     id <PKSetupFlowControllerProtocol> _parentFlowController;
+    PKPaymentInstallmentConfiguration *_installmentConfiguration;
+    NSURL *_applyServiceURL;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
+@property(retain, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
 @property(retain, nonatomic) id <PKSetupFlowControllerProtocol> parentFlowController; // @synthesize parentFlowController=_parentFlowController;
 @property(readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property(readonly, nonatomic) long long context; // @synthesize context=_context;
 @property(readonly, nonatomic) PKFeatureApplication *featureApplication; // @synthesize featureApplication=_featureApplication;
 @property(readonly, nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
-- (void).cxx_destruct;
 - (void)featureApplicationChanged:(id)arg1;
 - (id)_displayableErrorForError:(id)arg1 showDetailedErrorFlow:(_Bool)arg2;
 - (void)_invalidateAssertion;
@@ -55,10 +59,12 @@
 - (void)_queueAcceptedFlowWithPage:(id)arg1;
 - (void)_queueCannotResumeIDVFlow;
 - (void)_queueEmailRequiredErrorViewController;
-- (void)_queuePassActiviationFlowWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queuePassActivationFlowWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queueDeclinedFlowWithPage:(id)arg1;
+- (void)_queueProgramConsentFlowWithPage:(id)arg1;
 - (void)_queueStateReasonExplanationFlowWithPage:(id)arg1;
 - (void)_queueApplicationTermsFlow;
+- (id)_formatStringSuffixForItemType:(long long)arg1;
 - (void)_queueOfferFlowWithPage:(id)arg1;
 - (id)_fieldsViewControllerForPage:(id)arg1;
 - (void)_queueFieldsFlowWithNextStepInfo:(id)arg1;
@@ -68,17 +74,19 @@
 - (void)_handleApplyResponse:(id)arg1 originalFeatureApplication:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleResponseError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)submitActionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)termsDataForFeatureWithFormat:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)termsDataForFeatureWithIdentifier:(id)arg1 format:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)termsDataForIdentifier:(id)arg1 format:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performApplyWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performCreateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deviceMetadataFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performWithdrawWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reset;
+- (void)_stopPaymentServiceListener;
+- (void)_startPaymentServiceListener;
 - (void)endApplyFlow;
 - (id)applicationUpdatedAlertControllerWithHandler:(CDUnknownBlockType)arg1;
 - (void)withdrawApplicationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)termsAccepted:(_Bool)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)termsAccepted:(_Bool)arg1 termsIdentifier:(id)arg2 secondaryIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)termsShownWithIdentifier:(id)arg1;
 - (void)submitDocumentPage:(id)arg1 selectedDocument:(id)arg2 frontImage:(id)arg3 backImage:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)submitFieldsPage:(id)arg1 completion:(CDUnknownBlockType)arg2;

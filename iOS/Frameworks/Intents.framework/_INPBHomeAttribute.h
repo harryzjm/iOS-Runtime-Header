@@ -17,16 +17,14 @@
     struct {
         unsigned int attributeType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _attributeType;
     _INPBHomeAttributeValue *_attributeValue;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBHomeAttributeValue *attributeValue; // @synthesize attributeValue=_attributeValue;
 @property(nonatomic) int attributeType; // @synthesize attributeType=_attributeType;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

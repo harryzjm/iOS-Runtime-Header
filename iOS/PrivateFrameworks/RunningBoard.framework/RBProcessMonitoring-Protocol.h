@@ -6,11 +6,12 @@
 
 #import <RunningBoard/NSObject-Protocol.h>
 
-@class NSArray, NSObject, RBProcess, RBProcessState, RBProcessStateChangeSet, RBSProcessIdentity, RBSProcessMonitorConfiguration, RBSProcessPredicate;
+@class NSArray, NSObject, NSSet, RBProcess, RBProcessState, RBProcessStateChangeSet, RBSProcessIdentity, RBSProcessMonitorConfiguration, RBSProcessPredicate;
 @protocol OS_dispatch_queue, RBProcessMonitorObserving;
 
 @protocol RBProcessMonitoring <NSObject>
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *monitorSerializationQueue;
+- (void)didResolvePreventLaunchPredicates:(NSSet *)arg1;
 - (void)unsuppressUpdatesForIdentity:(RBSProcessIdentity *)arg1;
 - (void)suppressUpdatesForIdentity:(RBSProcessIdentity *)arg1;
 - (void)removeStateForProcessIdentity:(RBSProcessIdentity *)arg1;
@@ -18,6 +19,7 @@
 - (void)didRemoveProcess:(RBProcess *)arg1 withState:(RBProcessState *)arg2;
 - (void)didUpdateProcessStates:(RBProcessStateChangeSet *)arg1;
 - (void)didAddProcess:(RBProcess *)arg1 withState:(RBProcessState *)arg2;
+- (NSSet *)preventLaunchPredicates;
 - (NSArray *)statesMatchingConfiguration:(RBSProcessMonitorConfiguration *)arg1;
 - (NSArray *)statesMatchingPredicate:(RBSProcessPredicate *)arg1;
 - (void)removeObserver:(id <RBProcessMonitorObserving>)arg1;

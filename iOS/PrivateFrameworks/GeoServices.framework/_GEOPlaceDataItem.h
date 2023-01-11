@@ -8,32 +8,46 @@
 
 #import <GeoServices/GEOMapItem-Protocol.h>
 
-@class GEOAddress, GEOAddressObject, GEOAssociatedApp, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDMultiLocalizedString, GEOPDPlace, GEOPlace, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSString, NSTimeZone, NSURL, _GEOEncyclopedicInfo;
+@class GEOAddress, GEOAddressObject, GEOAppleRating, GEOAssociatedApp, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDMultiLocalizedString, GEOPDPlace, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSString, NSTimeZone, NSURL, _GEOEncyclopedicInfo, geo_isolater;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @interface _GEOPlaceDataItem : NSObject <GEOMapItem>
 {
     GEOMapItemIdentifier *_identifier;
     GEOPDPlace *_placeData;
-    GEOPlace *_place;
     NSMapTable *_attributionMap;
     GEOPDMultiLocalizedString *_disambiguationLabel;
     GEOMapItemDetourInfo *_detourInfo;
+    _Bool _isTransitDisplayFeature;
+    NSData *_externalTransitStationCode;
+    geo_isolater *_lazyIvarIsolater;
+    GEOPlace *_place;
     _GEOEncyclopedicInfo *_encyclopedicInfo;
     GEOStorefrontInfo *_storefrontInfo;
     GEOStorefrontPresentationInfo *_storefrontPresentationInfo;
     id <GEOMapItemVenueInfo> _venueInfo;
+    NSArray *_additionalPlaces;
     GEOAddressObject *_addressObject;
     NSString *_name;
-    NSData *_externalTransitStationCode;
     GEOBusinessHours *_businessHours;
-    _Bool _isTransitDisplayFeature;
     NSArray *_spatialMappedPlaceCategories;
     NSArray *_childItems;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
+@property(readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
+- (id)_iso3166Value;
+@property(readonly, nonatomic, getter=_canDownloadMorePhotos) _Bool canDownloadMorePhotos;
+@property(readonly, nonatomic, getter=_totalPhotoCount) unsigned long long totalPhotoCount;
+@property(readonly, nonatomic, getter=_identifierHistory) NSArray *identifierHistory;
+@property(readonly, nonatomic, getter=_hasPlaceQuestionnaire) _Bool hasPlaceQuestionnaire;
+@property(readonly, nonatomic, getter=_placeQuestionnaire) GEOPlaceQuestionnaire *placeQuestionnaire;
+@property(readonly, nonatomic, getter=_overallAppleRating) GEOAppleRating *overallRating;
+@property(readonly, nonatomic, getter=_appleRatings) NSArray *appleRatings;
+@property(readonly, nonatomic, getter=_supportsAppleRatings) _Bool supportsAppleRatings;
 @property(readonly, nonatomic, getter=_showSuggestAnEditButton) _Bool showSuggestAnEditButton;
+@property(readonly, nonatomic, getter=_alternateSearchableNames) NSArray *alternateSearchableNames;
 @property(readonly, nonatomic, getter=_enableRAPLightweightFeedback) _Bool enableRAPLightweightFeedback;
 @property(readonly, nonatomic, getter=_walletCategoryIdentifier) NSString *walletCategoryIdentifier;
 @property(readonly, nonatomic, getter=_walletMapsCategoryIdentifier) NSString *walletMapsCategoryIdentifier;
@@ -79,7 +93,9 @@
 @property(readonly, nonatomic, getter=_hasBrandMUID) _Bool hasBrandMUID;
 @property(readonly, nonatomic, getter=_placecardLayoutConfiguration) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
 @property(readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
+@property(readonly, nonatomic, getter=_placeCollectionsIds) NSArray *placeCollectionsIds;
 @property(readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
+@property(readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property(readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
 @property(readonly, nonatomic, getter=_messageLink) GEOMessageLink *messageLink;
 @property(readonly, nonatomic, getter=_isStandaloneBrand) _Bool isStandAloneBrand;
@@ -136,6 +152,9 @@
 @property(readonly, nonatomic, getter=_resultSnippetLocationString) NSString *resultSnippetLocationString;
 @property(readonly, nonatomic, getter=_priceRange) unsigned int priceRange;
 @property(readonly, nonatomic, getter=_hasPriceRange) _Bool hasPriceRange;
+- (int)_expectedUserRatingType;
+- (float)_normalizedThirdPartyUserRatingScore;
+- (float)_normalizedFirstPartyUserRatingScore;
 @property(readonly, nonatomic, getter=_normalizedUserRatingScore) float normalizedUserRatingScore;
 @property(readonly, nonatomic, getter=_sampleSizeForUserRatingScore) unsigned int sampleSizeForUserRatingScore;
 @property(readonly, nonatomic, getter=_hasUserRatingScore) _Bool hasUserRatingScore;
@@ -211,7 +230,7 @@
 @property(readonly, copy) NSString *description;
 - (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2;
 - (id)initWithPlaceData:(id)arg1;
-- (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2 disambiguationLabel:(id)arg3 detourInfo:(id)arg4 externalTransitStationCode:(id)arg5;
+- (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2 disambiguationLabel:(id)arg3 detourInfo:(id)arg4 externalTransitStationCode:(id)arg5 additionalPlaces:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

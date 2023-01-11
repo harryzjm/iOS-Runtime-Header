@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumberFormatter;
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
 
-@interface NSLengthFormatter
+@class NSNumberFormatter, NSString;
+
+@interface NSLengthFormatter <NSObservable, NSObserver>
 {
     void *_formatter;
     _Bool _isForPersonHeight;
@@ -29,6 +32,13 @@
 - (void)dealloc;
 - (id)init;
 - (long long)targetUnitFromMeters:(double)arg1;
+- (void)receiveObservedValue:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

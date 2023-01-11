@@ -9,7 +9,10 @@
 @class NSString;
 
 @protocol IDSCTSIM <NSObject>
+@property(readonly, nonatomic) NSString *mobileNetworkCode;
+@property(readonly, nonatomic) NSString *mobileCountryCode;
 @property(readonly, nonatomic) unsigned long long slot;
+@property(readonly, nonatomic) _Bool isDefaultVoiceSIM;
 @property(readonly, nonatomic) NSString *label;
 @property(readonly, nonatomic) NSString *phoneNumber;
 @property(readonly, nonatomic) NSString *SIMIdentifier;

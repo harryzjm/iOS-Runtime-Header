@@ -14,5 +14,16 @@
     MISSING_TYPE *privateDataContext;
 }
 
+@property(nonatomic, readonly) _Bool narrativeAudio;
+@property(nonatomic, readonly) _Bool useNewsUINotificationHandling;
+@property(nonatomic, readonly) _Bool useNewAds;
+@property(nonatomic, readonly) _Bool useSearchModule;
+@property(nonatomic, readonly) _Bool useTagFeedModule;
+@property(nonatomic, readonly) _Bool useSavedFeedModule;
+@property(nonatomic, readonly) _Bool useHistoryFeedModule;
+@property(nonatomic, readonly) _Bool useTodayModule;
+@property(nonatomic, readonly) _Bool allowSharingAlways;
+@property(nonatomic, readonly) _Bool appleMagazineContent;
+
 @end
 

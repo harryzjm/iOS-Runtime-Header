@@ -8,6 +8,7 @@
 
 @interface PHFace
 {
+    _Bool _isInVIPModel;
     _Bool _hidden;
     _Bool _inTrash;
     _Bool _manual;
@@ -17,6 +18,7 @@
     short _confirmedFaceCropGenerationState;
     unsigned short _ageType;
     unsigned short _genderType;
+    unsigned short _sexType;
     unsigned short _eyesState;
     unsigned short _smileType;
     unsigned short _facialHairType;
@@ -50,11 +52,11 @@
     long long _faceAlgorithmVersion;
 }
 
-+ (id)fetchKeyFacesGroupedByPersons:(id)arg1;
++ (id)fetchSuggestedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchFacesGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)propertySetAccessorsByPropertySet;
 + (Class)propertySetClassForPropertySet:(id)arg1;
-+ (id)fetchKeyFacesGroupedByPersonLocalIdentifierForPersonLocalIdentifiers:(id)arg1 fetchOptions:(id)arg2;
++ (id)fetchKeyFaceByPersonLocalIdentifierForPersons:(id)arg1 options:(id)arg2;
 + (id)fetchFacesForPersonsAssociatedWithFaceGroupsContainingFacesWithClusterSequenceNumbers:(id)arg1 options:(id)arg2;
 + (id)fetchFacesForFaceCrop:(id)arg1 options:(id)arg2;
 + (id)fetchRejectedFacesForPerson:(id)arg1 options:(id)arg2;
@@ -72,6 +74,8 @@
 + (id)entityKeyMap;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)_composePropertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)analyticsPropertiesToFetch;
++ (id)genderAgePropertiesToFetch;
 + (id)personBuilderPropertiesToFetch;
 + (id)croppingPropertiesToFetch;
 + (id)corePropertiesToFetch;
@@ -81,6 +85,7 @@
 + (id)identifierCode;
 + (id)propertySetsForPropertyFetchHints:(unsigned long long)arg1;
 + (unsigned long long)propertyFetchHintsForPropertySets:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned short lipMakeupType; // @synthesize lipMakeupType=_lipMakeupType;
 @property(readonly, nonatomic) unsigned short eyeMakeupType; // @synthesize eyeMakeupType=_eyeMakeupType;
 @property(readonly, nonatomic) unsigned short glassesType; // @synthesize glassesType=_glassesType;
@@ -89,6 +94,7 @@
 @property(readonly, nonatomic) unsigned short facialHairType; // @synthesize facialHairType=_facialHairType;
 @property(readonly, nonatomic) unsigned short smileType; // @synthesize smileType=_smileType;
 @property(readonly, nonatomic) unsigned short eyesState; // @synthesize eyesState=_eyesState;
+@property(readonly, nonatomic) unsigned short sexType; // @synthesize sexType=_sexType;
 @property(readonly, nonatomic) unsigned short genderType; // @synthesize genderType=_genderType;
 @property(readonly, nonatomic) unsigned short ageType; // @synthesize ageType=_ageType;
 @property(nonatomic) long long faceAlgorithmVersion; // @synthesize faceAlgorithmVersion=_faceAlgorithmVersion;
@@ -103,6 +109,7 @@
 @property(readonly, nonatomic) _Bool manual; // @synthesize manual=_manual;
 @property(readonly, nonatomic, getter=isInTrash) _Bool inTrash; // @synthesize inTrash=_inTrash;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
+@property(readonly, nonatomic) _Bool isInVIPModel; // @synthesize isInVIPModel=_isInVIPModel;
 @property(readonly, nonatomic) double yaw; // @synthesize yaw=_yaw;
 @property(readonly, nonatomic) double roll; // @synthesize roll=_roll;
 @property(readonly, nonatomic) double mouthY; // @synthesize mouthY=_mouthY;
@@ -121,7 +128,6 @@
 @property(readonly, nonatomic) double centerY; // @synthesize centerY=_centerY;
 @property(readonly, nonatomic) double centerX; // @synthesize centerX=_centerX;
 @property(readonly, nonatomic) double size; // @synthesize size=_size;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isConfirmedFaceCropGenerationPending) _Bool confirmedFaceCropGenerationPending;
 - (id)faceClusteringProperties;
 - (id)_createPropertyObjectOfClass:(Class)arg1;

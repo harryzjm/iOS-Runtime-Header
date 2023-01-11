@@ -21,7 +21,7 @@
     _Bool _isDeallocating;
 }
 
-+ (_Bool)updateDigest:(array_019f9a10 *)arg1 withProtobufString:(const basic_string_a1f69cfb *)arg2;
++ (_Bool)updateDigest:(array_019f9a10 *)arg1 withProtobufString:(const basic_string_7c0a1c0b *)arg2;
 + (id)requiredAVAssetOptions;
 + (id)cullingListeners;
 + (void)removeCullingListener:(id)arg1;
@@ -38,8 +38,8 @@
 + (id)dataFromURL:(id)arg1 useExternalReferenceIfAllowed:(_Bool)arg2 useFileCoordination:(_Bool)arg3 context:(id)arg4;
 + (id)dataFromURL:(id)arg1 useExternalReferenceIfAllowed:(_Bool)arg2 context:(id)arg3;
 + (id)dataFromURL:(id)arg1 context:(id)arg2;
-@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 - (_Bool)isStorageInPackage:(id)arg1;
 - (const array_019f9a10 *)digest;
 - (id)preferredFilename;

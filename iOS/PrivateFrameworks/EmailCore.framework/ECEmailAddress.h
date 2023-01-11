@@ -23,8 +23,8 @@
 + (id)emailAddressWithString:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)emailAddressesFromStrings:(id)arg1 invalidAddresses:(id *)arg2;
-@property(readonly, copy, nonatomic) ECEmailAddressComponents *components; // @synthesize components=_components;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) ECEmailAddressComponents *components; // @synthesize components=_components;
 @property(readonly) NSString *stringValue;
 @property(readonly, nonatomic) ECEmailAddress *emailAddressValue;
 - (id)valueForUndefinedKey:(id)arg1;
@@ -45,11 +45,11 @@
 - (id)initWithString:(id)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *address; // @dynamic address;
 @property(readonly, copy) NSString *displayName; // @dynamic displayName;
 @property(readonly, copy) NSString *domain; // @dynamic domain;
 @property(readonly, copy) NSString *idnaAddress; // @dynamic idnaAddress;
 @property(readonly, copy) NSString *localPart; // @dynamic localPart;
+@property(readonly, copy) NSString *simpleAddress; // @dynamic simpleAddress;
 @property(readonly) Class superclass;
 
 @end

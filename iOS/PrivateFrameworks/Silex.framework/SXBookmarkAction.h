@@ -4,16 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
+#import <Silex/SXAction-Protocol.h>
+
+@class NSString;
 @protocol SXBookmark;
 
-@interface SXBookmarkAction
+@interface SXBookmarkAction : NSObject <SXAction>
 {
     id <SXBookmark> _bookmark;
 }
 
-@property(readonly, nonatomic) id <SXBookmark> bookmark; // @synthesize bookmark=_bookmark;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <SXBookmark> bookmark; // @synthesize bookmark=_bookmark;
+@property(readonly, nonatomic) NSString *type;
 - (id)initWithBookmark:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

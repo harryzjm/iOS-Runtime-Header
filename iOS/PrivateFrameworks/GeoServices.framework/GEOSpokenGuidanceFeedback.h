@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class GEOTrafficCameraInformation;
+
 @interface GEOSpokenGuidanceFeedback : PBCodable <NSCopying>
 {
+    GEOTrafficCameraInformation *_trafficCameraGuidanceFeedback;
     int _spokenGuidanceIndex;
     _Bool _shortPrompt;
     struct {
@@ -19,6 +22,7 @@
 }
 
 + (_Bool)isValid:(id)arg1;
+- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -27,8 +31,13 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOTrafficCameraInformation *trafficCameraGuidanceFeedback;
+@property(readonly, nonatomic) _Bool hasTrafficCameraGuidanceFeedback;
 @property(nonatomic) _Bool hasShortPrompt;
 @property(nonatomic) _Bool shortPrompt;
 @property(nonatomic) _Bool hasSpokenGuidanceIndex;

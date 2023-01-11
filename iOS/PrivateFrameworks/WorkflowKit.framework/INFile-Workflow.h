@@ -7,11 +7,13 @@
 #import <Intents/INFile.h>
 
 #import <WorkflowKit/WFCodableAttributeContentConvertible-Protocol.h>
+#import <WorkflowKit/WFCodableAttributeTransformable-Protocol.h>
 
 @class NSString;
 
-@interface INFile (Workflow) <WFCodableAttributeContentConvertible>
+@interface INFile (Workflow) <WFCodableAttributeContentConvertible, WFCodableAttributeTransformable>
 + (Class)wf_contentItemClass;
++ (id)wf_fileWithFileRepresentation:(id)arg1;
 - (id)wf_fileRepresentation;
 - (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)wf_contentItemWithCodableAttribute:(id)arg1;

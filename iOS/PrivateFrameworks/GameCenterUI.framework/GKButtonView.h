@@ -18,11 +18,11 @@
 
 + (void)registerSupplementaryViewClassesForKind:(id)arg1 withCollectionView:(id)arg2;
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKCollectionViewDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) NSMutableArray *buttonConstraints; // @synthesize buttonConstraints=_buttonConstraints;
 @property(nonatomic) SEL action; // @synthesize action=_action;
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
-- (void)dealloc;
 - (void)buttonPressed:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)updateConstraints;

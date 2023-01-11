@@ -23,6 +23,7 @@
 - (void)didReceiveNotificationResponse:(id)arg1;
 - (void)withdrawNotificationsWithProcessID:(int)arg1 codeType:(long long)arg2;
 - (id)_notificationWithIdentifier:(id)arg1;
+- (void)_addRequestForNotification:(id)arg1 codeType:(long long)arg2;
 - (void)scheduleNotification:(id)arg1 codeType:(long long)arg2;
 - (id)_userNotificationCenterForCodeType:(long long)arg1;
 - (void)invalidate;

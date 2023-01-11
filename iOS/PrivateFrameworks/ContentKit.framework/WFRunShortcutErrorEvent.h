@@ -8,18 +8,20 @@
 
 @interface WFRunShortcutErrorEvent
 {
+    _Bool _didRunRemotely;
     NSString *_key;
-    NSString *_actionName;
+    NSString *_actionIdentifier;
     NSString *_errorDomain;
     NSString *_errorCode;
 }
 
 + (Class)codableEventClass;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
 @property(copy, nonatomic) NSString *errorCode; // @synthesize errorCode=_errorCode;
 @property(copy, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
-@property(copy, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
+@property(copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property(copy, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 
 @end
 

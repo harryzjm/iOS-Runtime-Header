@@ -20,14 +20,15 @@
     HMDCameraVideoTier *_currentPickedTier;
 }
 
-+ (_Bool)supportsSecureCoding;
 + (id)logCategory;
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMDCameraVideoTier *currentPickedTier; // @synthesize currentPickedTier=_currentPickedTier;
 @property(retain, nonatomic) HMDCameraVideoTier *firstPickedTier; // @synthesize firstPickedTier=_firstPickedTier;
 @property(readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property(retain, nonatomic) NSArray *tierOrder; // @synthesize tierOrder=_tierOrder;
 @property(readonly, nonatomic) NSDictionary *videoTierCombinations; // @synthesize videoTierCombinations=_videoTierCombinations;
-- (void).cxx_destruct;
+- (id)logIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)pickHigherTier;
@@ -36,7 +37,6 @@
 - (void)updateTierParameters:(id)arg1 firstPickedParameter:(id)arg2;
 - (void)updateTierOrder:(id)arg1;
 - (void)_generateAllVideoTiers:(id)arg1;
-- (id)logIdentifier;
 - (id)initWithSessionID:(id)arg1 streamingCapabilities:(id)arg2;
 
 // Remaining properties

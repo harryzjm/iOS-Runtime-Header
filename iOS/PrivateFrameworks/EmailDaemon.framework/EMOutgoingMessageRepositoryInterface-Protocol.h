@@ -7,15 +7,18 @@
 #import <EmailDaemon/NSObject-Protocol.h>
 
 @class EMMailboxObjectID, EMMessageObjectID, EMObjectID, EMOutgoingMessage, NSString;
+@protocol EMOutgoingMessageRepositoryInterfaceObserver;
 
 @protocol EMOutgoingMessageRepositoryInterface <NSObject>
+- (void)cancelObservation:(EMObjectID *)arg1;
+- (void)startObservingPendingMessageChangesWithChangeObserver:(id <EMOutgoingMessageRepositoryInterfaceObserver>)arg1 observationIdentifier:(EMObjectID *)arg2;
 - (void)numberOfPendingMessagesWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)isProcessingWithCompletion:(void (^)(_Bool))arg1;
 - (void)processAllQueuedMessages;
 - (void)resumeDeliveryQueue;
 - (void)suspendDeliveryQueue;
 - (void)outboxContainsMessageFromAccountObjectID:(EMObjectID *)arg1 completion:(void (^)(_Bool))arg2;
-- (void)deliverMessage:(EMOutgoingMessage *)arg1 usingMailDrop:(_Bool)arg2 completion:(void (^)(long long))arg3;
+- (void)deliverMessage:(EMOutgoingMessage *)arg1 usingMailDrop:(_Bool)arg2 completion:(void (^)(EMMessageDeliveryResult *))arg3;
 - (void)deleteDraftsInMailboxID:(EMMailboxObjectID *)arg1 documentID:(NSString *)arg2 previousDraftObjectID:(EMMessageObjectID *)arg3;
 - (void)saveDraftMessage:(EMOutgoingMessage *)arg1 mailboxID:(EMMailboxObjectID *)arg2 previousDraftObjectID:(EMMessageObjectID *)arg3 completion:(void (^)(EMMessage *))arg4;
 @end

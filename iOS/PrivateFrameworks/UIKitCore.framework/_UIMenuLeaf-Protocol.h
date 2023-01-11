@@ -10,6 +10,7 @@
 @protocol _UIMenuLeaf, _UIMenuLeafAlternate;
 
 @protocol _UIMenuLeaf <NSObject>
+@property(readonly, nonatomic) _Bool requiresAuthenticatedInput;
 @property(nonatomic) long long state;
 @property(nonatomic) unsigned long long attributes;
 @property(copy, nonatomic) NSString *discoverabilityTitle;
@@ -18,6 +19,7 @@
 - (id <_UIMenuLeaf>)_validatedLeafWithAlternate:(id <_UIMenuLeafAlternate>)arg1 target:(id)arg2 validation:(_UIMenuLeafValidation *)arg3;
 - (id)_resolvedTargetFromFirstTarget:(id)arg1;
 - (void)_performWithTarget:(id)arg1;
+- (_Bool)_isDefaultCommand;
 - (long long)_leafKeyModifierFlags;
 - (NSString *)_leafKeyInput;
 - (NSArray *)_leafAlternates;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)shouldIndentWhileEditing;
 + (_Bool)wantsChevron;
 - (void)pickerDidCancel:(id)arg1;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;

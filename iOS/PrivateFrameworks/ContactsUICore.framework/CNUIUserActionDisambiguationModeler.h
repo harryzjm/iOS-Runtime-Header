@@ -10,7 +10,6 @@
 
 @interface CNUIUserActionDisambiguationModeler : NSObject
 {
-    _Bool _tracksChanges;
     id <CNUIUserActionTargetDiscovering> _targetDiscoveringHelper;
     id <CNUIUserActionRanking> _rankingHelper;
     id <CNUIDefaultUserActionFetcher> _defaultActionFetcher;
@@ -18,24 +17,21 @@
 }
 
 + (id)descriptorForRequiredKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <CNUIUserActionDiscoveringEnvironment> discoveringEnvironment; // @synthesize discoveringEnvironment=_discoveringEnvironment;
 @property(retain, nonatomic) id <CNUIDefaultUserActionFetcher> defaultActionFetcher; // @synthesize defaultActionFetcher=_defaultActionFetcher;
 @property(retain, nonatomic) id <CNUIUserActionRanking> rankingHelper; // @synthesize rankingHelper=_rankingHelper;
 @property(retain, nonatomic) id <CNUIUserActionTargetDiscovering> targetDiscoveringHelper; // @synthesize targetDiscoveringHelper=_targetDiscoveringHelper;
-@property(nonatomic) _Bool tracksChanges; // @synthesize tracksChanges=_tracksChanges;
-- (void).cxx_destruct;
 - (id)thirdPartyActionsForContactProperty:(id)arg1;
 - (id)thirdPartyTargetsForActionTypes:(id)arg1;
 - (id)sortActionsOnModel:(id)arg1;
-- (id)modelsWithDefaultAction:(id)arg1 actions:(id)arg2 recentActions:(id)arg3 directoryServiceActions:(id)arg4 foundOnDeviceActions:(id)arg5 sorts:(_Bool)arg6 throttles:(_Bool)arg7;
+- (id)modelsWithDefaultAction:(id)arg1 actions:(id)arg2 recentActions:(id)arg3 sorts:(_Bool)arg4 throttles:(_Bool)arg5;
 - (id)recentActionsFromActions:(id)arg1;
 - (id)defaultActionFromActions:(id)arg1;
 - (id)defaultActionChangedObservable;
-- (id)defaultActionFromActions:(id)arg1 trackingChanges:(_Bool)arg2;
 - (id)_discoverActionsForContact:(id)arg1 actionType:(id)arg2;
 - (id)discoverActionsForContact:(id)arg1 actionType:(id)arg2;
 - (id)targetsChangedObservableForActionType:(id)arg1;
-- (id)discoverActionsForContact:(id)arg1 actionType:(id)arg2 trackingChanges:(_Bool)arg3;
 - (id)modelsWithContact:(id)arg1 actionType:(id)arg2;
 - (id)schedulerProvider;
 - (void)setContactStore:(id)arg1;

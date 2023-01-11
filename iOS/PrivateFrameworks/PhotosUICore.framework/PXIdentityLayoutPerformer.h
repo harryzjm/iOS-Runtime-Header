@@ -14,9 +14,8 @@
 }
 
 + (struct CGSize)performLayoutWithLayoutInput:(CDStruct_392cfed4)arg1 layoutOutput:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)setChildren:(id)arg1;
-@property(readonly, nonatomic) NSArray *children;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *children; // @synthesize children;
 - (struct CGSize)performLayout;
 
 // Remaining properties

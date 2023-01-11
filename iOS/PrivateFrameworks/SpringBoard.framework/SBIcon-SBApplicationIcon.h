@@ -7,7 +7,7 @@
 #import <SpringBoardHome/SBIcon.h>
 
 @interface SBIcon (SBApplicationIcon)
-- (id)masqueradeIdentifier;
+- (id)iTunesCategoriesOrderedByRelevancy;
 - (id)application;
 - (_Bool)isApplicationIcon;
 - (_Bool)isBookmarkIcon;

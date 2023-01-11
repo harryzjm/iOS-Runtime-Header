@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVKit/NSObject-Protocol.h>
+#import <AVKit/AVLayoutViewItem-Protocol.h>
 
-@protocol AVPlaybackControlsViewItem <NSObject>
+@protocol AVPlaybackControlsViewItem <AVLayoutViewItem>
 @property(nonatomic) _Bool hasFullScreenAppearance;
 @property(nonatomic) _Bool hasAlternateAppearance;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;

@@ -7,6 +7,8 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (BLHLSPlaylist)
++ (id)bl_numberWithItemIdentifier:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long bl_hlsUnsignedIntegerValue;
+- (unsigned long long)bl_itemIdentifierValue;
 @end
 

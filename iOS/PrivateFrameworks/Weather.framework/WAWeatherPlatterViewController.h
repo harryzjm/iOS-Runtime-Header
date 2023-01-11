@@ -8,7 +8,7 @@
 
 #import <Weather/WFTemperatureUnitObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSURL, UIStackView, UIView, WATodayHeaderView, WATodayModel, WFURLComponents;
+@class City, NSArray, NSMutableArray, NSString, NSURL, UIStackView, UIView, WAAQIView, WATodayHeaderView, WATodayModel, WFURLComponents;
 
 @interface WAWeatherPlatterViewController : UIViewController <WFTemperatureUnitObserver>
 {
@@ -18,35 +18,49 @@
     WATodayModel *_model;
     UIView *_backgroundView;
     WATodayHeaderView *_headerView;
-    UIView *_dividerLineView;
+    UIView *_afterHeaderDividerLineView;
+    WAAQIView *_aqiView;
+    UIView *_afterAQIDividerLineView;
     NSArray *_hourlyForecastViews;
     UIStackView *_hourlyBeltView;
     NSMutableArray *_constraints;
-    double _viewWidth;
+    City *_city;
+    struct CGRect _lastBounds;
 }
 
-@property(nonatomic) double viewWidth; // @synthesize viewWidth=_viewWidth;
++ (double)defaultViewHeight;
+- (void).cxx_destruct;
+@property(nonatomic) struct CGRect lastBounds; // @synthesize lastBounds=_lastBounds;
+@property(retain, nonatomic) City *city; // @synthesize city=_city;
 @property(retain, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property(retain, nonatomic) UIStackView *hourlyBeltView; // @synthesize hourlyBeltView=_hourlyBeltView;
 @property(retain, nonatomic) NSArray *hourlyForecastViews; // @synthesize hourlyForecastViews=_hourlyForecastViews;
-@property(retain, nonatomic) UIView *dividerLineView; // @synthesize dividerLineView=_dividerLineView;
+@property(retain, nonatomic) UIView *afterAQIDividerLineView; // @synthesize afterAQIDividerLineView=_afterAQIDividerLineView;
+@property(retain, nonatomic) WAAQIView *aqiView; // @synthesize aqiView=_aqiView;
+@property(retain, nonatomic) UIView *afterHeaderDividerLineView; // @synthesize afterHeaderDividerLineView=_afterHeaderDividerLineView;
 @property(retain, nonatomic) WATodayHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) WATodayModel *model; // @synthesize model=_model;
 @property(retain, nonatomic) WFURLComponents *URLComponents; // @synthesize URLComponents=_URLComponents;
 @property(copy, nonatomic) NSURL *commitURL; // @synthesize commitURL=_commitURL;
 @property(nonatomic) long long status; // @synthesize status=_status;
-- (void).cxx_destruct;
 - (void)_updateStatus:(long long)arg1;
+- (void)_updateViewWithAQIFromCity:(id)arg1;
+- (double)preferredContentWidth;
+- (_Bool)_showingAQIViewForCity:(id)arg1;
+- (void)_loadAQIDataForLocation:(id)arg1;
 - (void)_buildModelForLocation:(id)arg1;
 - (void)_kickoffLoadingWithLocation:(id)arg1 orPerhapsALocationString:(id)arg2;
 - (void)_contentSizeDidUpdate:(id)arg1;
 - (void)_updateViewContent;
+- (_Bool)_canShowWhileLocked;
 - (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnitTo:(int)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)setupConstraints;
 - (void)setupHourlyForecast;
-- (void)setupDividerView;
+- (void)setupAfterAQIDividerView;
+- (void)setupAQIView;
+- (void)setupAfterHeaderDividerView;
 - (void)setupHeaderView;
 - (void)setupBackgroundView;
 - (void)updateViewConstraints;

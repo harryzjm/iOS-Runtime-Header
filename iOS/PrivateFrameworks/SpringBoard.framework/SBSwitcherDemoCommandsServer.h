@@ -26,12 +26,11 @@
 - (void).cxx_destruct;
 - (void)_queue_removeConnection:(id)arg1;
 - (void)_queue_addConnection:(id)arg1;
-- (id)_filePathFromUnsanitizedFilename:(id)arg1;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
 - (_Bool)updateHiddenApplicationBundleIDs:(id)arg1;
 - (_Bool)setShouldDisableSwitcherModelUpdates:(id)arg1;
-- (_Bool)stashSwitcherModelToFilename:(id)arg1;
-- (_Bool)loadStashedSwitcherModelFromFilename:(id)arg1;
+- (_Bool)stashSwitcherModelToPath:(id)arg1;
+- (_Bool)loadStashedSwitcherModelFromPath:(id)arg1;
 - (id)initWithRecentAppLayouts:(id)arg1 demoFilteringController:(id)arg2;
 
 // Remaining properties

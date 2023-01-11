@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
     vector_f48c7054 _landmarkPoints65;
 }
 
-+ (const map_c38c583f *)_requestConstellationToDetectorConstellationMap;
++ (const map_781928e9 *)_requestConstellationToDetectorConstellationMap;
 + (id)outputBlobNames;
 + (id)inputBlobNames;
 + (id)configurationOptionKeysForDetectorKey;

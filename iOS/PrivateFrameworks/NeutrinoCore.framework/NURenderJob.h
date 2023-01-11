@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVAudioMix, AVComposition, AVVideoComposition, CIImage, NSArray, NSError, NSString, NUComposition, NUGeometrySpaceMap, NUImageGeometry, NUObservatory, NUPriority, NURenderJobStatistics, NURenderNode, NURenderPipeline, NURenderRequest;
-@protocol NUDevice, NUExtentPolicy, NURenderStatistics, NURenderer, NUScalePolicy, OS_dispatch_group, OS_dispatch_queue;
+@protocol NUDevice, NUExtentPolicy, NURenderStatistics, NUScalePolicy, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NURenderJob : NSObject
 {
@@ -46,6 +46,7 @@
 
 + (void)flushCache;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVAudioMix *outputAudioMix; // @synthesize outputAudioMix=_outputAudioMix;
 @property(retain, nonatomic) AVVideoComposition *outputVideoComposition; // @synthesize outputVideoComposition=_outputVideoComposition;
 @property(retain, nonatomic) AVComposition *outputVideo; // @synthesize outputVideo=_outputVideo;
@@ -67,7 +68,6 @@
 @property(readonly) NURenderRequest *request; // @synthesize request=_request;
 @property(readonly, nonatomic) id <NURenderStatistics> statistics; // @synthesize statistics=_stats;
 @property(readonly) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
-- (void).cxx_destruct;
 - (void)_notifyCanceled:(long long)arg1;
 - (void)_notifyStageTransition:(long long)arg1;
 - (void)removeObserver:(id)arg1;
@@ -133,7 +133,7 @@
 @property(readonly, nonatomic) _Bool wantsOutputVideoFrame;
 @property(readonly, nonatomic) _Bool wantsOutputImage;
 @property(readonly, nonatomic) _Bool wantsOutputGeometry;
-@property(readonly, nonatomic) id <NURenderer> renderer;
+- (id)renderer:(out id *)arg1;
 @property(readonly) id <NUExtentPolicy> extentPolicy;
 @property(readonly) id <NUScalePolicy> scalePolicy;
 @property(readonly) NUPriority *priority;

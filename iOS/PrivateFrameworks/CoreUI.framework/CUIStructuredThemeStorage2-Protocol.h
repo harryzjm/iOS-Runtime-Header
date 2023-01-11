@@ -12,6 +12,8 @@
 - (NSDictionary *)appearances;
 - (NSString *)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (unsigned short)appearanceIdentifierForName:(NSString *)arg1;
+- (NSArray *)mappedAliases;
+- (_Bool)containsLookupForName:(NSString *)arg1;
 - (NSArray *)imagesWithName:(NSString *)arg1;
 - (NSArray *)allImageNames;
 - (const struct _renditionkeytoken *)renditionKeyForName:(NSString *)arg1;

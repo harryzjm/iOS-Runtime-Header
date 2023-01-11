@@ -4,26 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImpactFeedbackGenerator;
+@class NSString, UIImpactFeedbackGenerator;
 @protocol UISwitchControl;
 
-__attribute__((visibility("hidden")))
 @interface UISwitchVisualElement
 {
     _Bool _enabled;
+    NSString *_title;
     id <UISwitchControl> _switchControl;
     UIImpactFeedbackGenerator *_impactFeedbackGenerator;
     double _enabledAlpha;
 }
 
++ (_Bool)isFixedSize;
++ (struct UIEdgeInsets)preferredAlignmentRectInsets;
 + (struct CGSize)preferredContentSize;
+- (void).cxx_destruct;
 @property(nonatomic) double enabledAlpha; // @synthesize enabledAlpha=_enabledAlpha;
 @property(retain, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
 @property(nonatomic) __weak id <UISwitchControl> switchControl; // @synthesize switchControl=_switchControl;
+@property(copy) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
-- (void).cxx_destruct;
 - (void)setShowsOnOffLabel:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (void)setOn:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setOffImage:(id)arg1;
 - (void)setOnImage:(id)arg1;

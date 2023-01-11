@@ -15,13 +15,12 @@
     UIImage *_image;
     SBSnapshotDataProviderContext *_context;
     double _scaleFactor;
-    _Bool _allowIOSurface;
 }
 
-@property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
-- (id)fetchImage;
-- (id)initWithImage:(id)arg1 context:(id)arg2 scaleFactor:(double)arg3 allowIOSurface:(_Bool)arg4;
+@property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context; // @synthesize context=_context;
+- (id)fetchImageForFormat:(long long)arg1;
+- (id)initWithImage:(id)arg1 context:(id)arg2 scaleFactor:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,7 +10,7 @@
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <MapKit/_MKUserInteractionGestureRecognizerTouchObserver-Protocol.h>
 
-@class MKBasicMapView, MKCompassView, MKRotationFilter, MKScaleView, MKTiltGestureRecognizer, MKVariableDelayTapRecognizer, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UITraitCollection, VKCompoundAnimation, VKDynamicAnimation, VKTimedAnimation, _MKDirectionalArrowRecognizer, _MKOneHandedZoomGestureRecognizer, _MKUserInteractionGestureRecognizer;
+@class MKBasicMapView, MKCompassView, MKRotationFilter, MKScaleView, MKTiltGestureRecognizer, MKVariableDelayTapRecognizer, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UITraitCollection, VKCompoundAnimation, VKDynamicAnimation, VKTimedAnimation, _MKConditionalPanRotationGestureRecognizer, _MKConditionalPanTiltGestureRecognizer, _MKConditionalPanZoomGestureRecognizer, _MKDirectionalArrowRecognizer, _MKOneHandedZoomGestureRecognizer, _MKUserInteractionGestureRecognizer, _MKZoomingGestureControlConfiguration, _UIInterruptScrollDecelerationGestureRecognizer;
 @protocol MKMapGestureControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,9 +27,19 @@ __attribute__((visibility("hidden")))
     UILongPressGestureRecognizer *_twoFingerLongPressGestureRecognizer;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UIPanGestureRecognizer *_panGestureRecognizer;
-    UIPanGestureRecognizer *_verticalPanGestureRecognizer;
     _MKOneHandedZoomGestureRecognizer *_oneHandedZoomGestureRecognizer;
+    _MKZoomingGestureControlConfiguration *_zoomConfiguration;
+    struct CGPoint _panRotateStartPoint;
+    struct CGPoint _panZoomStartPoint;
+    UIPanGestureRecognizer *_scaleDragGestureRecognizer;
+    _MKConditionalPanRotationGestureRecognizer *_conditionalPanRotationGestureRecognizer;
+    _MKConditionalPanZoomGestureRecognizer *_conditionalPanZoomGestureRecognizer;
+    _MKConditionalPanTiltGestureRecognizer *_conditionalPanTiltGestureRecognizer;
+    _UIInterruptScrollDecelerationGestureRecognizer *_gestureInterruptionRecognizer;
+    _MKDirectionalArrowRecognizer *_activeArrowGestureRecognizer;
     _MKDirectionalArrowRecognizer *_arrowZoomGestureRecognizer;
+    _MKDirectionalArrowRecognizer *_arrowRotateGestureRecognizer;
+    _MKDirectionalArrowRecognizer *_arrowPanGestureRecognizer;
     VKTimedAnimation *_currentArrowAnimation;
     double _arrowZoomSpeed;
     double _arrowZoomStartTimestamp;
@@ -49,9 +59,15 @@ __attribute__((visibility("hidden")))
     _Bool _isPanning;
     _Bool _isPinching;
     UITraitCollection *_traitCollection;
+    double _lastZoomPanTranslation;
+    struct CGPoint _scrollTranslation;
+    struct CGPoint _lastArrowScrollTranslationDelta;
+    _Bool _isFullRotatingFromArrows;
+    double _lastRotationInGestureDelta;
+    double _lastRotation;
 }
 
-@property(readonly, nonatomic) UIPanGestureRecognizer *verticalPanGestureRecognizer; // @synthesize verticalPanGestureRecognizer=_verticalPanGestureRecognizer;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool panWithMomentum; // @synthesize panWithMomentum=_panWithMomentum;
 @property(retain, nonatomic) MKRotationFilter *rotationFilter; // @synthesize rotationFilter=_rotationFilter;
 @property(retain, nonatomic) MKCompassView *compassView; // @synthesize compassView=_compassView;
@@ -64,11 +80,19 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UILongPressGestureRecognizer *twoFingerLongPressGestureRecognizer; // @synthesize twoFingerLongPressGestureRecognizer=_twoFingerLongPressGestureRecognizer;
 @property(readonly, nonatomic) UITapGestureRecognizer *twoFingerTapGestureRecognizer; // @synthesize twoFingerTapGestureRecognizer=_twoFingerTapGestureRecognizer;
 @property(readonly, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
-- (void).cxx_destruct;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)tiltGestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleArrowZoom:(id)arg1;
+- (void)handleArrowRotate:(id)arg1;
+- (void)handleArrowPan:(id)arg1;
+- (void)cancelZoomInOrOut;
+- (void)zoomOut;
+- (void)zoomIn;
+- (void)_handleInterrupt:(id)arg1;
+- (void)_handleZoomPan:(id)arg1;
+- (void)_handleRotationPan:(id)arg1;
 - (void)handleZoomArrowMask:(long long)arg1 speed:(double)arg2;
 - (double)variableDelayTapRecognizer:(id)arg1 shouldWaitForNextTapForDuration:(double)arg2 afterTouch:(id)arg3;
 - (void)gestureRecognizerTouchesCanceled:(id)arg1;

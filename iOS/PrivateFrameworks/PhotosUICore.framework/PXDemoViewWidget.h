@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 
 @class NSString, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIView;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXDemoViewWidget : NSObject <PXWidget>
 {
@@ -25,6 +25,7 @@
     struct CGSize __contentSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setAnimationCount:) long long _animationCount; // @synthesize _animationCount=__animationCount;
 @property(nonatomic, setter=_setDidLoadContent:) _Bool _didLoadContent; // @synthesize _didLoadContent=__didLoadContent;
 @property(nonatomic, setter=_setContentSize:) struct CGSize _contentSize; // @synthesize _contentSize=__contentSize;
@@ -33,7 +34,6 @@
 @property(nonatomic, setter=_setContentViewAnchoringType:) long long contentViewAnchoringType; // @synthesize contentViewAnchoringType=_contentViewAnchoringType;
 @property(retain, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
-- (void).cxx_destruct;
 - (void)userDidSelectDisclosureControl;
 @property(readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
@@ -57,17 +57,22 @@
 @property(retain, nonatomic) PXPhotosDetailsContext *context;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

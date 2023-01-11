@@ -14,9 +14,15 @@
     NSMutableArray *mBidiTestedLanguagesArray;
 }
 
++ (void)unsubscribeFromAppLanguageChanges;
++ (void)subscribeToAppLanguageChanges:(CDUnknownBlockType)arg1;
++ (id)perAppLanguageSelectionBundleIdentifiers;
++ (id)_getXPCConnectionForLocalizationSwitcher;
 + (void)setPreferredLanguage:(id)arg1 forBundleID:(id)arg2 andRelaunchWithCompletion:(CDUnknownBlockType)arg3;
 + (void)setPreferredLanguage:(id)arg1 forBundleID:(id)arg2;
 + (void)_setPreferredLanguage:(id)arg1 forBundleID:(id)arg2;
++ (void)preferredLanguagesForBundleID:(id)arg1 reply:(CDUnknownBlockType)arg2;
++ (id)_preferredLanguagesForBundleID:(id)arg1;
 + (id)_proposedOverrideLanguageFromLanguage:(id)arg1 forLocalizations:(id)arg2 preferredLanguages:(id)arg3 regionCode:(id)arg4;
 + (id)preferredLanguageForBundleID:(id)arg1;
 + (long long)formattingContextFromIUDisplayNameContext:(unsigned long long)arg1;

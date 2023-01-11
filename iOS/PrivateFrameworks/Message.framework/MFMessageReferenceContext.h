@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class ECSubject, EFMutableInt64Set, MFEmailSet, MFMailMessage, NSArray, NSMutableDictionary, NSString;
+@class ECSubject, EFMutableInt64Set, MFMailMessage, NSArray, NSMutableDictionary, NSSet;
+@protocol ECEmailAddressConvertible;
 
-__attribute__((visibility("hidden")))
 @interface MFMessageReferenceContext : NSObject
 {
-    NSString *_sender;
+    id <ECEmailAddressConvertible> _sender;
     NSArray *_senderList;
-    NSString *_to;
+    id <ECEmailAddressConvertible> _to;
     NSArray *_toList;
-    NSString *_cc;
+    id <ECEmailAddressConvertible> _cc;
     NSArray *_ccList;
-    NSString *_bcc;
+    id <ECEmailAddressConvertible> _bcc;
     NSArray *_bccList;
     MFMailMessage *_message;
     long long _libraryID;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     double _dateSentInterval;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double dateSentInterval; // @synthesize dateSentInterval=_dateSentInterval;
 @property(nonatomic) unsigned long long *conversationFlagsRef; // @synthesize conversationFlagsRef=_conversationFlagsRef;
 @property(nonatomic) long long conversationIDHash; // @synthesize conversationIDHash=_conversationIDHash;
@@ -41,16 +42,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long messageIDHash; // @synthesize messageIDHash=_messageIDHash;
 @property(nonatomic) long long libraryID; // @synthesize libraryID=_libraryID;
 @property(retain, nonatomic) MFMailMessage *message; // @synthesize message=_message;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) MFEmailSet *participants;
+@property(readonly, nonatomic) NSSet *participants;
 @property(copy, nonatomic) NSArray *bccList; // @synthesize bccList=_bccList;
-@property(copy, nonatomic) NSString *bcc; // @synthesize bcc=_bcc;
+@property(copy, nonatomic) id <ECEmailAddressConvertible> bcc; // @synthesize bcc=_bcc;
 @property(copy, nonatomic) NSArray *ccList; // @synthesize ccList=_ccList;
-@property(copy, nonatomic) NSString *cc; // @synthesize cc=_cc;
+@property(copy, nonatomic) id <ECEmailAddressConvertible> cc; // @synthesize cc=_cc;
 @property(copy, nonatomic) NSArray *toList; // @synthesize toList=_toList;
-@property(copy, nonatomic) NSString *to; // @synthesize to=_to;
+@property(copy, nonatomic) id <ECEmailAddressConvertible> to; // @synthesize to=_to;
 @property(copy, nonatomic) NSArray *senderList; // @synthesize senderList=_senderList;
-@property(copy, nonatomic) NSString *sender; // @synthesize sender=_sender;
+@property(copy, nonatomic) id <ECEmailAddressConvertible> sender; // @synthesize sender=_sender;
 
 @end
 

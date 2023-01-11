@@ -11,6 +11,7 @@
 @protocol UIPrintInteractionControllerActivityDelegate <NSObject>
 
 @optional
+- (_Bool)shouldDismissParentViewController:(UIPrintInteractionController *)arg1;
 - (UIWindow *)printInteractionControllerWindowForPresentation:(UIPrintInteractionController *)arg1;
 - (UIViewController *)printInteractionControllerParentViewController:(UIPrintInteractionController *)arg1;
 @end

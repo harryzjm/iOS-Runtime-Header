@@ -10,11 +10,11 @@
 {
 }
 
-+ (id)_tintedInitialsImage:(id)arg1;
-+ (id)_initialsImageGradientEndColor;
-+ (id)_initialsImageGradientStartColor;
++ (id)_initialsFromFirstName:(id)arg1 lastName:(id)arg2;
 + (id)textForDate:(id)arg1;
 + (void)requestPersonImageWithTargetSize:(struct CGSize)arg1 matchingEmail:(id)arg2 orPhone:(id)arg3 withFirstName:(id)arg4 lastName:(id)arg5 prefersPhotosImage:(_Bool)arg6 withCompletion:(CDUnknownBlockType)arg7;
++ (void)_requestMonogramForFirstName:(id)arg1 lastName:(id)arg2 targetSize:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)requestImageForContact:(id)arg1 targetSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)requestImageFromPeopleAlbumForPerson:(id)arg1 targetSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)requestContactMatchingEmail:(id)arg1 orPhone:(id)arg2 withFirstName:(id)arg3 lastName:(id)arg4 keysToFetch:(id)arg5 withCompletion:(CDUnknownBlockType)arg6;
 + (void)requestMeContactWithCompletion:(CDUnknownBlockType)arg1;

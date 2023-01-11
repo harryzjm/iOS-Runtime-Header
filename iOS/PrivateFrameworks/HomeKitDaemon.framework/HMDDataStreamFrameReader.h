@@ -24,6 +24,7 @@
 - (void)_readFrameHeaderIfPossible;
 - (void)pushFrameData:(id)arg1;
 - (unsigned long long)bytesNeededForCurrentFrame;
+- (unsigned long long)_getCurrentFrameSize;
 - (_Bool)hasPartialData;
 - (_Bool)hasCompleteFrame;
 - (_Bool)hasFailed;

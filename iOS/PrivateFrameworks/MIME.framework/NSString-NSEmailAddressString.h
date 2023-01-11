@@ -28,7 +28,6 @@
 - (id)mf_copyUncommentedAddress;
 - (id)mf_copyDisplayString;
 - (id)mf_copyDisplayStringInRange:(struct _NSRange)arg1;
-- (id)mf_MD5Digest;
 - (id)mf_dataUsingEncoding:(unsigned long long)arg1 allowLossyConversion:(_Bool)arg2;
 - (id)mf_dataUsingEncoding:(unsigned long long)arg1;
 - (long long)mf_caseInsensitiveCompareExcludingXDash:(id)arg1;

@@ -6,16 +6,17 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKDatabase, CKOperationGroup, CKServerChangeToken, NSError, NSOperationQueue;
+@class CKDatabase, CKOperationGroup, CKServerChangeToken, NSError, NSOperationQueue, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKSyncEngineFetchChangesOperation : NSOperation
 {
+    _Bool _shouldFetchDatabaseChanges;
     _Bool _isExecuting;
     _Bool _isFinished;
     CKDatabase *_database;
     CKServerChangeToken *_previousDatabaseServerChangeToken;
     CKOperationGroup *_group;
+    NSSet *_zoneIDs;
     CDUnknownBlockType _recordZoneWithIDChangedBlock;
     CDUnknownBlockType _recordZoneWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneWithIDWasPurgedBlock;
@@ -32,6 +33,9 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_operationQueue;
 }
 
++ (unsigned long long)maxZonesPerOperation;
++ (void)setMaxZonesPerOperation:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
 @property(nonatomic) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
@@ -48,10 +52,13 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasPurgedBlock; // @synthesize recordZoneWithIDWasPurgedBlock=_recordZoneWithIDWasPurgedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasDeletedBlock; // @synthesize recordZoneWithIDWasDeletedBlock=_recordZoneWithIDWasDeletedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDChangedBlock; // @synthesize recordZoneWithIDChangedBlock=_recordZoneWithIDChangedBlock;
+@property(retain, nonatomic) NSSet *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
+@property(nonatomic) _Bool shouldFetchDatabaseChanges; // @synthesize shouldFetchDatabaseChanges=_shouldFetchDatabaseChanges;
 @property(retain, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
 @property(copy, nonatomic) CKServerChangeToken *previousDatabaseServerChangeToken; // @synthesize previousDatabaseServerChangeToken=_previousDatabaseServerChangeToken;
 @property(readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
+- (void)fetchRecordZoneChanges;
+- (void)fetchDatabaseChangesThenRecordZoneChanges;
 - (void)start;
 - (id)cancelledError;
 - (void)finishWithError:(id)arg1;

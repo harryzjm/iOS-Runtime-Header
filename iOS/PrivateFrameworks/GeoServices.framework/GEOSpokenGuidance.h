@@ -13,10 +13,12 @@
 @interface GEOSpokenGuidance : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_announcements;
     NSMutableArray *_timeGaps;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _alignment;
     unsigned int _endDesiredTime;
     unsigned int _exclusiveSetIdentifier;
@@ -37,17 +39,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_announcements:1;
         unsigned int read_timeGaps:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_announcements:1;
-        unsigned int wrote_timeGaps:1;
-        unsigned int wrote_alignment:1;
-        unsigned int wrote_endDesiredTime:1;
-        unsigned int wrote_exclusiveSetIdentifier:1;
-        unsigned int wrote_numChainedVariants:1;
-        unsigned int wrote_priority:1;
-        unsigned int wrote_repetitionInterval:1;
-        unsigned int wrote_startDesiredTime:1;
-        unsigned int wrote_tapBeforeAnnouncement:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -65,17 +57,18 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasExclusiveSetIdentifier;
 @property(nonatomic) unsigned int exclusiveSetIdentifier;
 - (id)timeGapAtIndex:(unsigned long long)arg1;
 - (unsigned long long)timeGapsCount;
-- (void)_addNoFlagsTimeGap:(id)arg1;
 - (void)addTimeGap:(id)arg1;
 - (void)clearTimeGaps;
 @property(retain, nonatomic) NSMutableArray *timeGaps;
-- (void)_readTimeGaps;
 @property(nonatomic) _Bool hasTapBeforeAnnouncement;
 @property(nonatomic) _Bool tapBeforeAnnouncement;
 @property(nonatomic) _Bool hasNumChainedVariants;
@@ -94,11 +87,11 @@
 @property(nonatomic) unsigned int startDesiredTime;
 - (id)announcementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)announcementsCount;
-- (void)_addNoFlagsAnnouncement:(id)arg1;
 - (void)addAnnouncement:(id)arg1;
 - (void)clearAnnouncements;
 @property(retain, nonatomic) NSMutableArray *announcements;
-- (void)_readAnnouncements;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

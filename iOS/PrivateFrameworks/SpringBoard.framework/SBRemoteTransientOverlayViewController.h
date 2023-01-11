@@ -26,12 +26,13 @@
 }
 
 + (void)requestViewControllerForAlertDefinition:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) long long wallpaperVariant; // @synthesize wallpaperVariant=_wallpaperVariant;
 @property(nonatomic) __weak id <SBRemoteTransientOverlayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long preferredDismissalAnimationStyle; // @synthesize preferredDismissalAnimationStyle=_preferredDismissalAnimationStyle;
-- (void).cxx_destruct;
 - (_Bool)_needsWallpaperEffectView;
 - (void)_configureWallpaperEffectViewWithAnimationSettings:(id)arg1;
+- (void)_setMediaOverridePID:(int)arg1;
 - (void)prepareForActivationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didInvalidate;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -49,7 +50,6 @@
 - (_Bool)shouldDisableBanners;
 - (void)setIdleTimerCoordinator:(id)arg1;
 - (void)setContainerOrientation:(long long)arg1;
-- (id)preferredStatusBarLegibilitySettings;
 - (int)preferredStatusBarStyleOverridesToCancel;
 - (void)restoreInputViewsAnimated:(_Bool)arg1;
 - (void)preserveInputViewsAnimated:(_Bool)arg1;
@@ -63,6 +63,7 @@
 - (int)pictureInPictureProcessIdentifier;
 - (_Bool)isContentOpaque;
 - (_Bool)hasServiceProcessIdentifier:(int)arg1;
+- (void)handleGestureDismissal;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
 - (void)handlePictureInPictureDidBegin;

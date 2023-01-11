@@ -12,8 +12,8 @@
     NSString *_text;
 }
 
-@property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(retain, nonatomic) NSString *placeholder;
 - (_Bool)becomeFirstResponder;
 @property(readonly, retain, nonatomic) UITextView *textView;

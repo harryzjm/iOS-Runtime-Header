@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)sourceType;
 - (id)currentValue;
 - (id)_initWithValue:(id)arg1;
 

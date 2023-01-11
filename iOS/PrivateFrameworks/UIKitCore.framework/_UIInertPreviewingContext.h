@@ -21,12 +21,11 @@ __attribute__((visibility("hidden")))
     struct CGRect _sourceRect;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain, nonatomic) UIView *customViewForInteractiveHighlight; // @synthesize customViewForInteractiveHighlight=_customViewForInteractiveHighlight;
 @property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
-- (void)setDelegate:(id)arg1;
-@property(readonly, nonatomic) id <UIViewControllerPreviewingDelegate> delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <UIViewControllerPreviewingDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)unregister;
 - (struct CGRect)preferredSourceViewRectInCoordinateSpace:(id)arg1;
 @property(readonly, nonatomic) UIGestureRecognizer *previewingGestureRecognizerForFailureRelationship;

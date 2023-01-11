@@ -25,6 +25,7 @@
     UIView *_pluginSnapshotView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool suppressMask; // @synthesize suppressMask=_suppressMask;
 @property(retain, nonatomic) UIView *pluginSnapshotView; // @synthesize pluginSnapshotView=_pluginSnapshotView;
 @property(retain, nonatomic) CKBalloonImageView *outlineMask; // @synthesize outlineMask=_outlineMask;
@@ -37,7 +38,6 @@
 @property(nonatomic) __weak UIViewController *pluginViewController; // @synthesize pluginViewController=_pluginViewController;
 - (long long)userInterfaceLevel;
 - (long long)userInterfaceStyle;
-- (void).cxx_destruct;
 - (void)clearFilters;
 - (void)addFilter:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldMaskWhenOpaque;
@@ -54,6 +54,7 @@
 - (id)overlayColor;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (void)setCanUseOpaqueMask:(_Bool)arg1;
+- (_Bool)canUseOpaqueMask;
 - (void)prepareForReuse;
 - (void)setUserInterfaceLevel:(long long)arg1;
 - (void)setUserInterfaceStyle:(long long)arg1;

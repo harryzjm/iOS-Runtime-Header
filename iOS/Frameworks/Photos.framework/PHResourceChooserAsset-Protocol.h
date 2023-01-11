@@ -11,6 +11,7 @@
 @protocol PHResourceChooserAsset <PLAssetID>
 @property(readonly, nonatomic) unsigned long long originalResourceChoice;
 @property(readonly, nonatomic) _Bool isRAWPlusJPEG;
+@property(readonly, nonatomic) unsigned long long effectiveThumbnailIndex;
 @property(readonly, nonatomic) long long mediaType;
 @property(readonly, nonatomic) NSManagedObjectContext *managedObjectContextForFetchingResources;
 @property(readonly, nonatomic) _Bool hasAdjustments;

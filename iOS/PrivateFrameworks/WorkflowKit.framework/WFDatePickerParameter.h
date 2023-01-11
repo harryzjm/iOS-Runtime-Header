@@ -4,22 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
 
-@interface WFDatePickerParameter
+@class NSDate, NSString;
+
+@interface WFDatePickerParameter <WFParameterDialogProvider>
 {
     long long _datePickerMode;
     NSDate *_minimumDate;
     NSDate *_maximumDate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *maximumDate; // @synthesize maximumDate=_maximumDate;
 @property(retain, nonatomic) NSDate *minimumDate; // @synthesize minimumDate=_minimumDate;
 @property(nonatomic) long long datePickerMode; // @synthesize datePickerMode=_datePickerMode;
-- (void).cxx_destruct;
+- (id)parameterStateFromDialogResponse:(id)arg1;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)defaultSupportedVariableTypes;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,34 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
-
 @interface SPSuggestionsQueryTask
 {
-    NSArray *_mutableCombinedSuggestions;
-    NSArray *_mutableParsecSuggestions;
-    NSArray *_mutableLocalSuggestions;
 }
 
-- (void).cxx_destruct;
-- (void)searchDaemonLocalSuggestionsData:(id)arg1;
-- (unsigned int)_lexiconTokenIDForToken:(id)arg1 lexicon:(struct _LXLexicon *)arg2;
-- (void)searchDaemonSuggestionsArray:(id)arg1;
 - (void)clearInternal:(int)arg1 invalidate:(_Bool)arg2;
 - (id)unsafeSections;
-- (id)makeSuggestionsSection;
+- (id)_makeSuggestionsSectionFromSuggestions:(id)arg1 andResultSection:(id)arg2 withSectionBundleIdentifier:(id)arg3;
+- (id)makeSearchThroughSuggestions;
 - (id)_newSuggestionSection;
-- (id)_suggestionResultFromSuggestion:(id)arg1 forQuery:(id)arg2;
-- (id)unsafeCombinedSuggestions;
-- (id)dedupedSuggestions:(id)arg1 dedupeQueries:(id)arg2 maxCount:(long long)arg3;
-- (id)contactSuggestions:(id)arg1 maxCount:(long long)arg2;
-- (id)appSuggestions:(id)arg1 maxCount:(long long)arg2;
+- (id)searchThroughSuggestions:(id)arg1 maxCount:(long long)arg2;
+- (void)filterSearchThroughStringsNotInShowMore:(id)arg1 excludedBundleIdentifiers:(id)arg2;
+- (id)bundleIdentifiersForHiddenSections;
 - (id)sectionsForCompletions;
+- (id)committedSearchSections;
+- (void)addAsYouTypeRelatedSearchResultToSections:(id)arg1 withRelatedSearchSection:(id)arg2;
+- (id)showMoreButtonResultSection;
 - (id)_originalTopResultFromSections:(id)arg1;
 - (id)_whiteListedTopResultFromSection:(id)arg1;
 - (id)_appResultSection;
+- (void)processAppResults:(id)arg1 maxAppResults:(unsigned long long)arg2 section:(id)arg3 topHitsIndex:(unsigned long long *)arg4;
+- (id)_topResultOnlySectionFrom:(id)arg1;
 - (id)searchThroughSection:(id)arg1;
-- (id)suggestionsDebugLog:(id)arg1;
 - (id)displayedText;
 - (_Bool)readyToUpdate;
 - (id)initForSession:(id)arg1 withQuery:(id)arg2;

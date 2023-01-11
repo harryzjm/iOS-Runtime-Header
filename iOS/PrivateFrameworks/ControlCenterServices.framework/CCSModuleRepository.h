@@ -14,7 +14,7 @@
 @interface CCSModuleRepository : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
     NSArray *_directoryURLs;
-    NSSet *_whitelistedModuleIdentifiers;
+    NSSet *_allowedModuleIdentifiers;
     NSDictionary *_allModuleMetadataByIdentifier;
     NSSet *_availableModuleIdentifiers;
     NSSet *_interestingBundleIdentifiers;
@@ -22,12 +22,12 @@
     NSHashTable *_observers;
     NSObject<BSDefaultObserver> *_internalDefaultsObserver;
     NSSet *_loadableModuleIdentifiers;
-    _Bool _ignoreWhitelist;
+    _Bool _ignoreAllowedList;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callOutQueue;
 }
 
-+ (id)_defaultModuleIdentifierWhitelist;
++ (id)_defaultModuleIdentifierAllowedList;
 + (id)_defaultModuleDirectories;
 + (id)repositoryWithDefaults;
 + (id)_deviceFamily;
@@ -55,7 +55,6 @@
 - (void)_queue_updateAvailableModuleMetadata;
 - (void)_updateAvailableModuleMetadata;
 - (void)_queue_updateAllModuleMetadata;
-- (void)_updateAllModuleMetadata;
 - (void)_applicationsDidChange:(id)arg1;
 - (void)applicationStateDidChange:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
@@ -64,10 +63,12 @@
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)moduleMetadataForModuleIdentifier:(id)arg1;
-- (void)_queue_setIgnoreWhitelist:(_Bool)arg1;
+- (void)_queue_setIgnoreAllowedList:(_Bool)arg1;
 @property(readonly, copy, nonatomic) NSSet *loadableModuleIdentifiers;
-- (void)dealloc;
-- (id)_initWithDirectoryURLs:(id)arg1 whitelistedModuleIdentifiers:(id)arg2;
+- (void)setVisibility:(_Bool)arg1 forModuleIdentifier:(id)arg2;
+- (_Bool)visibilityForModuleIdentifier:(id)arg1;
+- (void)invalidate;
+- (id)_initWithDirectoryURLs:(id)arg1 allowedModuleIdentifiers:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

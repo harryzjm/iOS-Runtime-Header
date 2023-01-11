@@ -23,12 +23,13 @@
 }
 
 + (id)xpcInterface;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak BBObserver *observer; // @synthesize observer=_observer;
-- (void).cxx_destruct;
 - (void)getObserverDebugInfo:(CDUnknownBlockType)arg1;
+- (void)noteBulletinsLoadedForSectionID:(id)arg1;
 - (void)noteServerReceivedResponseForBulletin:(id)arg1;
 - (void)updateSectionParameters:(id)arg1 forSectionID:(id)arg2;
 - (void)updateGlobalSettings:(id)arg1;
@@ -39,9 +40,6 @@
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getBulletinsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getUniversalSectionIDForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-- (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getSectionParametersForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForActiveSectionsWithHandler:(CDUnknownBlockType)arg1;

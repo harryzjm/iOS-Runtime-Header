@@ -10,6 +10,7 @@
 {
 }
 
+- (_Bool)getInputContentFromVariablesInParameterState:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

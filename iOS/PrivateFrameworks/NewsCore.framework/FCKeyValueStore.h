@@ -8,22 +8,23 @@
 
 #import <NewsCore/FCJSONEncodableObjectProviding-Protocol.h>
 
-@class FCKeyValueStoreClassRegistry, NSDictionary, NSMutableDictionary, NSString;
+@class FCKeyValueStoreClassRegistry, FCKeyValueStoreSavePolicy, NSDictionary, NSMutableDictionary, NSString;
 @protocol FCKeyValueStoreMigrating, NFLocking;
 
 @interface FCKeyValueStore : NSObject <FCJSONEncodableObjectProviding>
 {
     _Bool _shouldExportJSONSidecar;
     _Bool _unsafeWaitingOnSave;
+    NSString *_storeDirectory;
     NSString *_name;
     unsigned long long _storeSize;
     NSMutableDictionary *_unsafeObjectsByKey;
     id <NFLocking> _lock;
-    NSString *_storeDirectory;
     unsigned long long _clientVersion;
     unsigned long long _optionsMask;
     FCKeyValueStoreClassRegistry *_classRegistry;
     id <FCKeyValueStoreMigrating> _migrator;
+    FCKeyValueStoreSavePolicy *_savePolicy;
     CDUnknownBlockType _objectHandler;
     CDUnknownBlockType _arrayObjectHandler;
     CDUnknownBlockType _dictionaryKeyHandler;
@@ -32,22 +33,23 @@
 
 + (_Bool)shouldDumpToJSON;
 + (id)persistenceQueue;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dictionaryValueHandler; // @synthesize dictionaryValueHandler=_dictionaryValueHandler;
 @property(copy, nonatomic) CDUnknownBlockType dictionaryKeyHandler; // @synthesize dictionaryKeyHandler=_dictionaryKeyHandler;
 @property(copy, nonatomic) CDUnknownBlockType arrayObjectHandler; // @synthesize arrayObjectHandler=_arrayObjectHandler;
 @property(copy, nonatomic) CDUnknownBlockType objectHandler; // @synthesize objectHandler=_objectHandler;
+@property(retain, nonatomic) FCKeyValueStoreSavePolicy *savePolicy; // @synthesize savePolicy=_savePolicy;
 @property(retain, nonatomic) id <FCKeyValueStoreMigrating> migrator; // @synthesize migrator=_migrator;
 @property(retain, nonatomic) FCKeyValueStoreClassRegistry *classRegistry; // @synthesize classRegistry=_classRegistry;
 @property(nonatomic) unsigned long long optionsMask; // @synthesize optionsMask=_optionsMask;
 @property(nonatomic) unsigned long long clientVersion; // @synthesize clientVersion=_clientVersion;
-@property(retain, nonatomic) NSString *storeDirectory; // @synthesize storeDirectory=_storeDirectory;
 @property(retain, nonatomic) id <NFLocking> lock; // @synthesize lock=_lock;
 @property(nonatomic) _Bool unsafeWaitingOnSave; // @synthesize unsafeWaitingOnSave=_unsafeWaitingOnSave;
 @property(retain, nonatomic) NSMutableDictionary *unsafeObjectsByKey; // @synthesize unsafeObjectsByKey=_unsafeObjectsByKey;
 @property(nonatomic) unsigned long long storeSize; // @synthesize storeSize=_storeSize;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSString *storeDirectory; // @synthesize storeDirectory=_storeDirectory;
 @property(nonatomic) _Bool shouldExportJSONSidecar; // @synthesize shouldExportJSONSidecar=_shouldExportJSONSidecar;
-- (void).cxx_destruct;
 - (id)fc_jsonString;
 - (id)fc_jsonStringWithDictionary:(id)arg1;
 - (id)fc_jsonEncodableDictionary;
@@ -60,7 +62,6 @@
 - (_Bool)_shouldMigrateOnUpgrade;
 - (void)_clearStore;
 - (id)_initializeStoreDirectoryWithName:(id)arg1;
-- (void)_logCacheStatus;
 - (void)_save;
 - (void)_maybeSaveJSONRepresentationWithDictionary:(id)arg1;
 - (id)_loadFromDisk;
@@ -85,12 +86,14 @@
 - (void)removeAllObjects;
 - (void)removeObjectsForKeys:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;
+- (void)replaceContentsWithDictionary:(id)arg1;
 - (void)addEntriesFromDictionary:(id)arg1;
 - (void)setObjects:(id)arg1 forKeys:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (_Bool)containsObjectForKey:(id)arg1;
 - (id)initWithName:(id)arg1 directory:(id)arg2 version:(unsigned long long)arg3 options:(unsigned long long)arg4 classRegistry:(id)arg5;
 - (id)initWithName:(id)arg1 directory:(id)arg2 version:(unsigned long long)arg3 options:(unsigned long long)arg4 classRegistry:(id)arg5 migrator:(id)arg6;
+- (id)initWithName:(id)arg1 directory:(id)arg2 version:(unsigned long long)arg3 options:(unsigned long long)arg4 classRegistry:(id)arg5 migrator:(id)arg6 savePolicy:(id)arg7;
 - (id)init;
 
 @end

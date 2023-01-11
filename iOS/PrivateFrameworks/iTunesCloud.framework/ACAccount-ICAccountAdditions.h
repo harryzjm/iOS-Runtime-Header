@@ -9,9 +9,14 @@
 @class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface ACAccount (ICAccountAdditions)
-@property(readonly, copy, nonatomic) NSDictionary *ic_privateListeningEnabledForHomeUsers;
+- (_Bool)_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 error:(id *)arg2;
+@property(copy, nonatomic, setter=ic_setPrivateListeningEnabledForHomeUsers:) NSDictionary *ic_privateListeningEnabledForHomeUsers;
 @property(copy, nonatomic, setter=ic_setPrivateListeningEnabled:) NSNumber *ic_privateListeningEnabled;
+- (void)ic_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)ic_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)ic_isAutomaticDownloadsEnabledForMediaKindMusic;
 @property(copy, nonatomic, setter=ic_setAutomaticDownloadKinds:) NSSet *ic_automaticDownloadKinds;
+@property(readonly, nonatomic, getter=ic_isManageable) _Bool ic_manageable;
 @property(readonly, nonatomic, getter=ic_isLocalAccount) _Bool ic_localAccount;
 @property(copy, nonatomic, setter=ic_setCloudLibraryStateReason:) NSDictionary *ic_cloudLibraryStateReason;
 @property(readonly, copy, nonatomic) NSArray *ic_homeUserIdentifiers;

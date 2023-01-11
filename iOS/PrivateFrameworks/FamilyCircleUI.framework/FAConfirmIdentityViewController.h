@@ -32,16 +32,10 @@
     id <FAConfirmIdentityViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <FAConfirmIdentityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <FAConfirmIdentityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateFonts;
-- (void)imagePickerControllerDidCancel:(id)arg1;
-- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
-- (void)_presentImagePickerWithSourceType:(long long)arg1;
-- (void)actionSheet:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)_showImageSourcePicker;
 - (void)_showImagePickerForAvailableSources;
 - (void)_useDifferentIDButtonWasTapped:(id)arg1;
 - (void)continueButtonWasTapped:(id)arg1;

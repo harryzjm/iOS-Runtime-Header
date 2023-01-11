@@ -9,7 +9,9 @@
 }
 
 + (_Bool)isValidForTransitionRequest:(id)arg1;
-- (void)_sendActivationResultWithSuccess:(_Bool)arg1;
+- (_Bool)canInterruptForTransitionRequest:(id)arg1;
+- (_Bool)_canBeInterrupted;
+- (void)_sendActivationResultWithError:(id)arg1;
 - (void)_didComplete;
 - (void)_begin;
 

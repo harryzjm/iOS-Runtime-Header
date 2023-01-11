@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableData, NSString, NSURL, NSURLConnection, UIImage;
+@class NSArray, NSMutableData, NSString, NSURL, NSURLConnection, NSUserActivity, UIImage;
 @protocol WebClipDelegate;
 
 @interface UIWebClip : NSObject
@@ -39,6 +39,11 @@
     NSURLConnection *_startupImageConnection;
     NSMutableData *_customStartupLandscapeImageData;
     NSURLConnection *_startupLandscapeImageConnection;
+    _Bool _isAppClip;
+    _Bool _scenelessBackgroundLaunch;
+    _Bool _ignoreManifestScope;
+    _Bool _configurationIsManaged;
+    unsigned long long _contentMode;
     unsigned long long _webClipStatusBarStyle;
 }
 
@@ -59,12 +64,21 @@
 + (long long)webClipStatusBarStyleForWebDocumentView:(id)arg1;
 + (long long)_webClipStatusBarStyleForMetaTagContent:(id)arg1;
 + (id)_contentForMetaName:(id)arg1 inWebDocumentView:(id)arg2;
++ (id)_normalizedWebClipIdentifierFromBundleIdentifier:(id)arg1;
 + (id)webClipIdentifierFromBundleIdentifier:(id)arg1;
 + (_Bool)bundleIdentifierContainsWebClipIdentifier:(id)arg1;
++ (id)clipsIncludingWebClips:(_Bool)arg1 includingAppClips:(_Bool)arg2;
++ (id)appClips;
 + (id)webClips;
 + (id)webClipWithURL:(id)arg1;
 + (id)webClipWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long webClipStatusBarStyle; // @synthesize webClipStatusBarStyle=_webClipStatusBarStyle;
+@property _Bool configurationIsManaged; // @synthesize configurationIsManaged=_configurationIsManaged;
+@property _Bool ignoreManifestScope; // @synthesize ignoreManifestScope=_ignoreManifestScope;
+@property unsigned long long contentMode; // @synthesize contentMode=_contentMode;
+@property _Bool scenelessBackgroundLaunch; // @synthesize scenelessBackgroundLaunch=_scenelessBackgroundLaunch;
+@property _Bool isAppClip; // @synthesize isAppClip=_isAppClip;
 @property(nonatomic) __weak id <WebClipDelegate> delegate; // @synthesize delegate;
 @property(retain, nonatomic) UIImage *initialLaunchImage; // @synthesize initialLaunchImage;
 @property(retain, nonatomic) UIImage *startupLandscapeImage; // @synthesize startupLandscapeImage;
@@ -78,14 +92,11 @@
 @property _Bool classicMode; // @synthesize classicMode;
 @property _Bool fullScreen; // @synthesize fullScreen;
 @property(readonly, nonatomic) unsigned long long bundleVersion; // @synthesize bundleVersion;
-@property(copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier;
 @property(copy, nonatomic) NSString *title; // @synthesize title;
 @property(retain) NSURL *startupLandscapeImageURL; // @synthesize startupLandscapeImageURL;
 @property(retain) NSURL *startupImageURL; // @synthesize startupImageURL;
 @property(retain) NSArray *icons; // @synthesize icons;
-@property(retain, nonatomic) NSURL *pageURL; // @synthesize pageURL;
 @property(copy) NSString *identifier; // @synthesize identifier;
-- (void).cxx_destruct;
 - (id)getStartupImage:(long long)arg1;
 - (void)requestCustomLandscapeStartupImageUpdate;
 - (void)requestCustomPortraitStartupImageUpdate;
@@ -112,13 +123,18 @@
 @property(readonly) NSString *iconImagePath;
 - (id)_bundleImageWithName:(id)arg1;
 - (id)_bundleResourceWithName:(id)arg1;
+@property(retain, nonatomic) NSURL *pageURL; // @synthesize pageURL;
 - (id)_initWithIdentifier:(id)arg1;
 - (_Bool)removeFromDisk;
 - (_Bool)createOnDisk;
 - (_Bool)updateOnDisk;
 - (_Bool)_writeImage:(id)arg1 toDiskWithFileName:(id)arg2;
+- (void)setContentModeWithString:(id)arg1;
 - (id)_info;
+@property(readonly, nonatomic) NSUserActivity *appClipUserActivity;
+- (id)_launchURLWithScheme:(id)arg1;
 @property(readonly, nonatomic) NSURL *applicationLaunchURL;
+@property(copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier;
 - (void)_reloadProperties;
 - (void)_readPropertiesFromBundle:(id)arg1;
 - (void)configureWithMetaTags:(id)arg1 linkTags:(id)arg2;

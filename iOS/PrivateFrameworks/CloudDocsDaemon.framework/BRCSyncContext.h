@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCThrottleBase, BRCTransferStream, BRCUserDefaults, CKContainer, CKContainerID, NSDate, NSMutableSet, NSString;
+@class BRCAccountSession, BRCThrottleBase, BRCTransferStream, BRCUserDefaults, CKContainer, CKContainerID, NSDate, NSHashTable, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     CKContainer *_ckContainer;
     NSString *_contextIdentifier;
-    NSString *_sourceAppIdentifier;
     _Bool _isShared;
     _Bool _isCancelled;
     int _notifyTokenForFramework;
@@ -25,6 +24,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_timerForForcedForegroundPeriod;
     NSObject<OS_dispatch_queue> *_foregroundStateQueue;
     unsigned long long _foregroundState;
+    NSHashTable *_nonDiscretionaryModifyOperations;
+    NSHashTable *_discretionaryModifyOperations;
     BRCAccountSession *_session;
     BRCThrottleBase *_readerThrottle;
     BRCThrottleBase *_applyThrottle;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 + (id)transferContextForServerZone:(id)arg1 appLibrary:(id)arg2;
 + (id)contextIdentifierForMangledID:(id)arg1;
 + (id)_contextIdentifierForMangledID:(id)arg1 metadata:(_Bool)arg2;
-+ (id)_sourceAppIdentifierForMangledID:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isShared; // @synthesize isShared=_isShared;
 @property(readonly, nonatomic) BRCTransferStream *downloadStream; // @synthesize downloadStream=_downloadStream;
 @property(readonly, nonatomic) BRCTransferStream *uploadStream; // @synthesize uploadStream=_uploadStream;
@@ -51,7 +52,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BRCThrottleBase *readerThrottle; // @synthesize readerThrottle=_readerThrottle;
 @property(readonly, nonatomic) NSString *contextIdentifier; // @synthesize contextIdentifier=_contextIdentifier;
 @property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
 - (void)_notifyContainerBeingNowForeground;
 - (void)_notifyFrameworkContainersMonitorWithState:(_Bool)arg1;
 - (void)_armForegroundGraceTimerForClientDescription:(id)arg1;
@@ -71,13 +71,14 @@ __attribute__((visibility("hidden")))
 - (void)addOperation:(id)arg1 allowsCellularAccess:(id)arg2;
 - (void)addOperation:(id)arg1;
 - (_Bool)allowsCellularAccess;
+- (void)_preventConcurrentModifyRecordsOperations:(id)arg1 nonDiscretionary:(_Bool)arg2;
 - (void)notifyDuetFromAccessByBundleID:(id)arg1;
 - (id)_database;
 @property(readonly, nonatomic) CKContainerID *ckContainerID;
 @property(readonly, nonatomic) CKContainer *ckContainer;
 - (void)setupIfNeeded;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 contextIdentifier:(id)arg2 sourceAppIdentifier:(id)arg3 isShared:(_Bool)arg4;
+- (id)initWithSession:(id)arg1 contextIdentifier:(id)arg2 isShared:(_Bool)arg3;
 - (id)description;
 @property(readonly, nonatomic) BRCUserDefaults *defaults;
 

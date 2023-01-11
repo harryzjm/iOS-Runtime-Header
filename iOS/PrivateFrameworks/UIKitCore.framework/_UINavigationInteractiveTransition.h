@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIScreenEdgePanGestureRecognizer;
+@class UIScreenEdgePanGestureRecognizer, _UIParallaxTransitionPanGestureRecognizer;
 
 @interface _UINavigationInteractiveTransition
 {
-    UIScreenEdgePanGestureRecognizer *_edgePanRecognizer;
+    _UIParallaxTransitionPanGestureRecognizer *_edgePanRecognizer;
 }
 
 - (void).cxx_destruct;
@@ -20,6 +20,7 @@
 - (_Bool)_gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)_gestureRecognizer:(id)arg1 shouldReceiveEvent:(id)arg2;
 - (void)_setShouldReverseLayoutDirection:(_Bool)arg1;
 - (void)_configureNavigationGesture;
 - (id)initWithViewController:(id)arg1 animator:(id)arg2;

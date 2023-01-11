@@ -15,8 +15,12 @@
 - (id)accessibilityLabel;
 - (id)accessibilityUserInputLabels;
 - (_Bool)isAccessibilityElement;
+- (void)_axSetProviderGroup:(id)arg1;
+- (id)_axProviderGroup;
 - (void)_axSetProviderItem:(id)arg1;
 - (id)_axProviderItem;
+- (void)_axSetIsVariant:(_Bool)arg1;
+- (_Bool)_axIsVariant;
 - (void)_axSetIsAddItem:(_Bool)arg1;
 - (_Bool)_axIsAddItem;
 

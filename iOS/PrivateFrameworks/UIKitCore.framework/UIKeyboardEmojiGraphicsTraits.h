@@ -13,6 +13,7 @@
     double _minimumInteritemSpacing;
     double _columnOffset;
     double _sectionOffset;
+    double _bottomPadding;
     double _categoryHeaderHeight;
     double _categoryHeaderLeftPadding;
     double _categorySelectedCirWidth;
@@ -41,6 +42,7 @@
 @property(readonly, nonatomic) double categorySelectedCirWidth; // @synthesize categorySelectedCirWidth=_categorySelectedCirWidth;
 @property(readonly, nonatomic) double categoryHeaderLeftPadding; // @synthesize categoryHeaderLeftPadding=_categoryHeaderLeftPadding;
 @property(readonly, nonatomic) double categoryHeaderHeight; // @synthesize categoryHeaderHeight=_categoryHeaderHeight;
+@property(readonly, nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property(readonly, nonatomic) double sectionOffset; // @synthesize sectionOffset=_sectionOffset;
 @property(readonly, nonatomic) double columnOffset; // @synthesize columnOffset=_columnOffset;
 @property(readonly, nonatomic) double minimumInteritemSpacing; // @synthesize minimumInteritemSpacing=_minimumInteritemSpacing;

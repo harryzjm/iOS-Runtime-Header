@@ -15,11 +15,13 @@
 }
 
 - (void).cxx_destruct;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)_triggerCatFlexingEvent;
 - (void)_unregisterForCatFlexingNotifications;
 - (void)_listenForCatFlexingFakingNotifications;
 - (void)_triggerCatFlexingEventWithTimeout:(double)arg1;
 - (void)_deliverWorkoutEvent:(long long)arg1 sessionId:(id)arg2 eventDate:(id)arg3;
+- (void)workoutManager:(id)arg1 workoutLocationEventUpdate:(id)arg2;
 - (void)workoutManager:(id)arg1 suggestedStopWorkout:(id)arg2 atDate:(id)arg3;
 - (void)workoutManager:(id)arg1 didFailWorkout:(id)arg2 withError:(id)arg3;
 - (void)workoutManager:(id)arg1 willResumeWorkout:(id)arg2 atDate:(id)arg3;

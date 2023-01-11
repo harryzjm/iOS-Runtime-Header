@@ -6,12 +6,12 @@
 
 #import <MTLSimDriver/MTLCommandQueue-Protocol.h>
 
-@class NSArray, NSDictionary, NSObject;
+@class MTLCommandQueueSPIStats, NSArray, NSDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @protocol MTLCommandQueueSPI <MTLCommandQueue>
 @property(getter=isProfilingEnabled) _Bool profilingEnabled;
-@property _Bool isOpenGLQueue;
+@property(readonly) _Bool isOpenGLQueue;
 @property _Bool executionEnabled;
 @property _Bool skipRender;
 @property(readonly) _Bool disableCrossQueueHazardTracking;
@@ -43,5 +43,6 @@
 - (int)requestCounters:(NSArray *)arg1;
 - (NSArray *)availableCountersAndDict;
 - (NSArray *)availableCounters;
+- (MTLCommandQueueSPIStats *)getSPIStats;
 @end
 

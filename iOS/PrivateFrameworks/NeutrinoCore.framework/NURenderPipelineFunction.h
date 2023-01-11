@@ -10,6 +10,11 @@
 {
 }
 
++ (id)grainInputSeedFromFrameTime;
++ (id)redEyeSpotsWithCorrectionInfo:(id)arg1;
++ (id)sharpnessWithIntensity:(double)arg1;
++ (id)scaledVector:(id)arg1;
++ (id)scaleMultiplyOfScalar:(double)arg1;
 + (id)functionWithEvaluationBlock:(CDUnknownBlockType)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

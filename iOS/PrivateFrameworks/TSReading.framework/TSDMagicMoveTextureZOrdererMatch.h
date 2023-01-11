@@ -31,7 +31,9 @@
 - (double)intersectionPercentWithZOrdererMatch:(id)arg1;
 - (_Bool)intersectsZOrdererMatch:(id)arg1;
 - (_Bool)intersectsZOrdererMatch:(id)arg1 withAttemptedZIndex:(long long)arg2;
+- (void)dealloc;
 - (id)initWithAnimationMatch:(id)arg1;
+- (id)init;
 
 @end
 

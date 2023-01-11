@@ -58,12 +58,14 @@
 + (id)_fileProviderInterface;
 + (id)_filePresenterInterface;
 + (id)_createIdentifierForNewClaim;
++ (unsigned long long)_providedItemGenerationCount;
 + (void)_setCurrentClaimPurposeIdentifier:(id)arg1;
 + (void)_setKernelMaterializationOperation:(unsigned int)arg1;
 + (void)_setReadingOptions:(unsigned long long)arg1;
 + (void)_removeInfoForID:(id)arg1;
 + (void)_addProcessIdentifier:(int)arg1 observedUbiquityAttributes:(id)arg2 forID:(id)arg3;
 + (void)_accessPresenterInfoUsingBlock:(CDUnknownBlockType)arg1;
++ (void)_setProvidedItemRecursiveGenerationCount:(unsigned long long)arg1;
 + (unsigned int)_kernelMaterializationOperation;
 + (unsigned long long)_readingOptions;
 + (_Bool)_provideRecursively;

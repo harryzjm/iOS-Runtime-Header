@@ -27,6 +27,7 @@
     double _requestSessionTimeout;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double requestSessionTimeout; // @synthesize requestSessionTimeout=_requestSessionTimeout;
 @property(nonatomic) _Bool suppressAuthorizationPrompt; // @synthesize suppressAuthorizationPrompt=_suppressAuthorizationPrompt;
 @property(retain, nonatomic) NSMutableDictionary *activeObjectPromptSessionsBySessionIdentifier; // @synthesize activeObjectPromptSessionsBySessionIdentifier=_activeObjectPromptSessionsBySessionIdentifier;
@@ -37,11 +38,11 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (void)handleObjectAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_queue_activePromptSessionForBundleIdentifier:(id)arg1;
 - (id)enqueueObjectAuthorizationRequestForBundleIdentifier:(id)arg1 samples:(id)arg2 promptIfNeeded:(_Bool)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_reportAuthorizationChangeForBundleIdentifier:(id)arg1;
 - (void)_performNanoSyncImmediatelyWithReason:(id)arg1;
 - (void)_queue_resetAllAuthorizationRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)_queue_resetAuthorizationRecordsForBundleIdentifier:(id)arg1 error:(id *)arg2;
@@ -53,6 +54,7 @@
 - (long long)_authorizationRequestStatusForClientBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 updateAuthorizationStatuses:(_Bool)arg4 error:(id *)arg5;
 - (void)_queue_cancelAuthorizationRequestsWithIdentifiers:(id)arg1;
 - (void)_queue_enqueueAuthorizationRequestWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 writeTypes:(id)arg3 readTypes:(id)arg4 authorizationNeededHandler:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_updateSourceOrderWithAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)applicationsUninstalledNotification:(id)arg1;
 - (void)requestRemoteAuthorizationForRequestRecord:(id)arg1 requestSentHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -64,6 +66,7 @@
 - (void)handleAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)enqueueAuthorizationRequestForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)hasRequiredAuthorizationStatusesForBundleIdentifier:(id)arg1 requiredReadTypes:(id)arg2 error:(id *)arg3;
+- (_Bool)verifyProfileAuthorizationForClient:(id)arg1 error:(id *)arg2;
 - (long long)authorizationRequestStatusForClientBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 error:(id *)arg4;
 - (void)setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)dealloc;

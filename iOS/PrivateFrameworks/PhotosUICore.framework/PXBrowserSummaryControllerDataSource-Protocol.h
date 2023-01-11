@@ -13,6 +13,7 @@
 
 @optional
 @property(readonly, nonatomic) _Bool shouldShowImportDates;
+- (_Bool)browserSummaryControllerShouldUpdateImmediately:(PXBrowserSummaryController *)arg1;
 - (_Bool)isFilteringContainerContentForBrowserSummaryController:(PXBrowserSummaryController *)arg1;
 - (id <PXBrowserSelectionSnapshot>)selectionSnapshotForBrowserSummaryController:(PXBrowserSummaryController *)arg1;
 - (id <PXBrowserVisibleContentSnapshot>)visibleContentSnapshotForBrowserSummaryController:(PXBrowserSummaryController *)arg1;

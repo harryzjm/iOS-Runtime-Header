@@ -9,6 +9,7 @@
 @protocol VUIApplicationDelegate;
 
 @interface UIApplication (VideosUI)
+@property(readonly, nonatomic) _Bool vui_isNonLightningAVAdapterConnected;
 @property(readonly, nonatomic) id <VUIApplicationDelegate> vui_delegate;
 @end
 

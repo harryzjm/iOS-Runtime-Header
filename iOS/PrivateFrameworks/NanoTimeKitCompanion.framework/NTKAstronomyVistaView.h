@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NUAnimationObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NUViewDelegate-Protocol.h>
 
-@class CLKDevice, NSMutableSet, NSString, NUScene, NUView, UIImageView;
+@class CLKDevice, CLKUIQuadView, NSMutableSet, NSString, NUScene, NUView, UIImageView;
 @protocol NTKAstronomyVistaViewObserver;
 
 @interface NTKAstronomyVistaView : UIView <NUAnimationObserver, NUViewDelegate>
@@ -26,9 +26,9 @@
     id <NTKAstronomyVistaViewObserver> _observer;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <NTKAstronomyVistaViewObserver> observer; // @synthesize observer=_observer;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (void)viewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (void)setZoomFraction:(float)arg1 targetDiameter:(float)arg2;
 - (void)universeAnimationFinished:(id)arg1;
@@ -48,6 +48,7 @@
 - (void)setOpaque:(_Bool)arg1;
 @property(retain, nonatomic) NUScene *scene;
 - (id)_fallbackImageForVista:(unsigned long long)arg1;
+@property(readonly, nonatomic) CLKUIQuadView *quadView;
 - (id)snapshotImage;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;

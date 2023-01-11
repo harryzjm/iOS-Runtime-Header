@@ -7,6 +7,7 @@
 #import <ChatKit/NSObject-Protocol.h>
 
 @class CKMessageEntryView, NSIndexPath;
+@protocol CKAppMenuItem;
 
 @protocol CKMessageEntryViewInputDelegate <NSObject>
 - (long long)messageEntryViewHighLightInputButton:(CKMessageEntryView *)arg1;
@@ -17,6 +18,7 @@
 - (void)messageEntryViewPhotoButtonHit:(CKMessageEntryView *)arg1;
 
 @optional
+- (void)messageEntryViewSelectedAppMenuItem:(id <CKAppMenuItem>)arg1;
 - (void)messageEntryViewDidCollapse:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewDidExpand:(CKMessageEntryView *)arg1;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 didSelectPluginAtIndex:(NSIndexPath *)arg2;

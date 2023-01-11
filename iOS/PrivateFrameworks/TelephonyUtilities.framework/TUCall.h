@@ -22,12 +22,14 @@
     _Bool _video;
     _Bool _ringtoneSuppressedRemotely;
     _Bool _wasPulledToCurrentDevice;
+    _Bool _isKnownCaller;
     int _disconnectedReason;
     int _faceTimeIDStatus;
     int _filteredOutReason;
     int _transitionStatus;
     int _hardPauseDigitsState;
     int _ttyType;
+    int _originatingUIType;
     NSDate *_dateCreated;
     NSDate *_dateAnsweredOrDialed;
     NSDate *_dateSentInvitation;
@@ -52,6 +54,8 @@
     double _hostMessageSendTime;
     double _clientMessageReceiveTime;
     NSString *_hardPauseDigits;
+    long long _junkConfidence;
+    long long _identificationCategory;
     struct CGSize _remoteScreenAspectRatio;
 }
 
@@ -60,6 +64,14 @@
 + (id)supplementalDialTelephonyCallString;
 + (id)supplementalDialTelephonyCallStringForDestination:(id)arg1 isPhoneNumber:(_Bool)arg2;
 + (id)_supplementalDialTelephonyCallStringForLocString:(id)arg1 destination:(id)arg2 isPhoneNumber:(_Bool)arg3 includeFaceTimeAudio:(_Bool)arg4;
++ (_Bool)isJunkConfidenceLevelJunk:(long long)arg1;
++ (long long)maxJunkConfidence;
++ (long long)acceptableJunkConfidence;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isKnownCaller; // @synthesize isKnownCaller=_isKnownCaller;
+@property(readonly, nonatomic) long long identificationCategory; // @synthesize identificationCategory=_identificationCategory;
+@property(readonly, nonatomic) long long junkConfidence; // @synthesize junkConfidence=_junkConfidence;
+@property(readonly, nonatomic) int originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property(nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property(copy, nonatomic) NSString *hardPauseDigits; // @synthesize hardPauseDigits=_hardPauseDigits;
 @property(nonatomic) int hardPauseDigitsState; // @synthesize hardPauseDigitsState=_hardPauseDigitsState;
@@ -100,7 +112,6 @@
 @property(nonatomic, getter=isEndpointOnCurrentDevice) _Bool endpointOnCurrentDevice; // @synthesize endpointOnCurrentDevice=_endpointOnCurrentDevice;
 @property(nonatomic) int faceTimeIDStatus; // @synthesize faceTimeIDStatus=_faceTimeIDStatus;
 @property(nonatomic) int disconnectedReason; // @synthesize disconnectedReason=_disconnectedReason;
-- (void).cxx_destruct;
 - (_Bool)isDialRequestVideoUpgrade:(id)arg1;
 - (_Bool)isVideoUpgradeFromCall:(id)arg1;
 - (void)setRemoteVideoPresentationState:(int)arg1;
@@ -145,10 +156,10 @@
 @property(readonly, copy, nonatomic) NSString *audioCategory;
 @property(readonly, nonatomic) _Bool supportsDTMFTones;
 @property(readonly, nonatomic) _Bool shouldPlayDTMFTone;
+@property(readonly, nonatomic, getter=isJunk) _Bool junk;
 @property(readonly, nonatomic, getter=isEmergencyCall) _Bool emergencyCall;
 @property(readonly, nonatomic) _Bool statusIsProvisional;
 @property(readonly, nonatomic) int callStatus;
-- (id)statusDisplayStringWithLabel:(id)arg1;
 @property(readonly, nonatomic) int status;
 @property(readonly, nonatomic) NSString *reminderString;
 @property(readonly, copy, nonatomic) NSString *callDurationString;
@@ -195,6 +206,7 @@
 @property(readonly, nonatomic) TUCallProvider *backingProvider;
 @property(readonly, nonatomic) TUCallProvider *provider;
 @property(readonly, copy, nonatomic) NSUUID *uniqueProxyIdentifierUUID;
+- (void)postNotificationsAfterUpdatesInBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *hardPauseDigitsDisplayString;
 - (void)sendHardPauseDigits;
 - (void)playDTMFToneForKey:(unsigned char)arg1;

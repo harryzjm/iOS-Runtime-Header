@@ -17,6 +17,7 @@
     long long _minimumNewsVersion;
     unsigned long long _nameImageBaselineShift;
     double _nameImageScaleFactor;
+    long long _propertyFlags;
     long long _score;
     NSMutableArray *_allowedStorefrontIDs;
     NSString *_archiveIssueListID;
@@ -26,7 +27,6 @@
     NSString *_channelDefaultSectionID;
     NSMutableArray *_channelSectionFeedConfigurations;
     NSMutableArray *_channelSectionIDs;
-    NSString *_coverArticleListID;
     NSString *_coverImageURL;
     NTPBFeedConfiguration *_feedConfiguration;
     NSString *_feedNavImageURL;
@@ -47,7 +47,7 @@
     NSString *_nameImageMaskWidgetLQURL;
     NSData *_nameImageMetadata;
     NSString *_nameImageURL;
-    NSString *_paidBundleSubscriptionButtonConfigurationJson;
+    NSString *_paidBundlePaywallConfigurationJson;
     NSString *_parentID;
     NSString *_primaryAudience;
     NSString *_publisherPaidAuthorizationURL;
@@ -60,7 +60,10 @@
     NTPBDate *_publisherSpecifiedArticleIdsModifiedDate;
     NSMutableArray *_purchaseOfferableConfigurations;
     NSString *_replacementID;
+    NSString *_stocksFeedConfigurationJson;
     NSString *_subtitle;
+    NSString *_supergroupConfigJson;
+    NSString *_supergroupKnobsJson;
     NSString *_templateJson;
     int _type;
     _Bool _hideAccessoryText;
@@ -77,6 +80,7 @@
         unsigned int minimumNewsVersion:1;
         unsigned int nameImageBaselineShift:1;
         unsigned int nameImageScaleFactor:1;
+        unsigned int propertyFlags:1;
         unsigned int score:1;
         unsigned int groupingAvailability:1;
         unsigned int type:1;
@@ -102,7 +106,11 @@
 + (Class)allowedStorefrontIDsType;
 + (Class)blockedStorefrontIDsType;
 + (Class)iAdCategoriesType;
-@property(retain, nonatomic) NSString *paidBundleSubscriptionButtonConfigurationJson; // @synthesize paidBundleSubscriptionButtonConfigurationJson=_paidBundleSubscriptionButtonConfigurationJson;
+@property(nonatomic) long long propertyFlags; // @synthesize propertyFlags=_propertyFlags;
+@property(retain, nonatomic) NSString *supergroupKnobsJson; // @synthesize supergroupKnobsJson=_supergroupKnobsJson;
+@property(retain, nonatomic) NSString *supergroupConfigJson; // @synthesize supergroupConfigJson=_supergroupConfigJson;
+@property(retain, nonatomic) NSString *stocksFeedConfigurationJson; // @synthesize stocksFeedConfigurationJson=_stocksFeedConfigurationJson;
+@property(retain, nonatomic) NSString *paidBundlePaywallConfigurationJson; // @synthesize paidBundlePaywallConfigurationJson=_paidBundlePaywallConfigurationJson;
 @property(retain, nonatomic) NSString *magazineGenre; // @synthesize magazineGenre=_magazineGenre;
 @property(retain, nonatomic) NSString *language; // @synthesize language=_language;
 @property(retain, nonatomic) NSString *archiveIssueListID; // @synthesize archiveIssueListID=_archiveIssueListID;
@@ -135,7 +143,6 @@
 @property(nonatomic) _Bool isNotificationEnabled; // @synthesize isNotificationEnabled=_isNotificationEnabled;
 @property(nonatomic) _Bool isExplicitContent; // @synthesize isExplicitContent=_isExplicitContent;
 @property(nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
-@property(retain, nonatomic) NSString *coverArticleListID; // @synthesize coverArticleListID=_coverArticleListID;
 @property(retain, nonatomic) NSMutableArray *channelSectionFeedConfigurations; // @synthesize channelSectionFeedConfigurations=_channelSectionFeedConfigurations;
 @property(retain, nonatomic) NSString *channelDefaultSectionID; // @synthesize channelDefaultSectionID=_channelDefaultSectionID;
 @property(retain, nonatomic) NSMutableArray *channelSectionIDs; // @synthesize channelSectionIDs=_channelSectionIDs;
@@ -167,7 +174,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasPaidBundleSubscriptionButtonConfigurationJson;
+@property(nonatomic) _Bool hasPropertyFlags;
+@property(readonly, nonatomic) _Bool hasSupergroupKnobsJson;
+@property(readonly, nonatomic) _Bool hasSupergroupConfigJson;
+@property(readonly, nonatomic) _Bool hasStocksFeedConfigurationJson;
+@property(readonly, nonatomic) _Bool hasPaidBundlePaywallConfigurationJson;
 @property(readonly, nonatomic) _Bool hasMagazineGenre;
 @property(readonly, nonatomic) _Bool hasLanguage;
 @property(readonly, nonatomic) _Bool hasArchiveIssueListID;
@@ -220,7 +231,6 @@
 @property(nonatomic) _Bool hasIsNotificationEnabled;
 @property(nonatomic) _Bool hasIsExplicitContent;
 @property(nonatomic) _Bool hasMinimumNewsVersion;
-@property(readonly, nonatomic) _Bool hasCoverArticleListID;
 - (id)channelSectionFeedConfigurationsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)channelSectionFeedConfigurationsCount;
 - (void)addChannelSectionFeedConfigurations:(id)arg1;

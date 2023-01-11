@@ -14,7 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface SCNMTLRenderContext : NSObject <SCNBufferStream>
 {
-    C3DColor4_a26f5c89 _rendererPremultipliedBackgroundColor;
     long long _currentFrameIndex;
     struct __C3DEngineStats *__engineStats;
     double _superSamplingFactor;
@@ -192,6 +191,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerBindings;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *generatedTexturePath; // @synthesize generatedTexturePath=_generatedTexturePath;
 @property(nonatomic) double superSamplingFactor; // @synthesize superSamplingFactor=_superSamplingFactor;
 @property(retain, nonatomic) id <MTLCommandQueue> clientCommandQueue; // @synthesize clientCommandQueue=_clientCommandQueue;
@@ -205,8 +206,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <MTLCommandBuffer> clientCommandBuffer; // @synthesize clientCommandBuffer=_clientCommandBuffer;
 @property(retain, nonatomic) id <MTLRenderCommandEncoder> clientRenderCommandEncoder; // @synthesize clientRenderCommandEncoder=_clientRenderCommandEncoder;
 @property(retain, nonatomic) MTLRenderPassDescriptor *clientRenderPassDescriptor; // @synthesize clientRenderPassDescriptor=_clientRenderPassDescriptor;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (unsigned long long)cubeArrayTypeIfSupported;
 - (struct __C3DMaterial *)getCurrentPassMaterial;
 - (unsigned long long)getCurrentPassHash;
@@ -245,7 +244,7 @@ __attribute__((visibility("hidden")))
 - (void)startProcessingRendererElementsWithEngineIterationContext:(CDStruct_65434d98 *)arg1;
 - (void)processRendererElements:(CDStruct_d65e47c4 *)arg1 count:(unsigned int)arg2 engineIterationContext:(CDStruct_65434d98 *)arg3;
 - (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const C3DColor4_0cad58d8 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(_Bool)arg10;
-- (void)renderVideoBackground:(struct __C3DImageProxy *)arg1 engineContext:(struct __C3DEngineContext *)arg2;
+- (void)renderVideoBackground:(struct __C3DImageProxy *)arg1 engineContext:(struct __C3DEngineContext *)arg2 slot:(struct __C3DEffectSlot *)arg3;
 - (void)renderBackground:(struct __C3DEffectSlot *)arg1 engineContext:(struct __C3DEngineContext *)arg2 passInstance:(struct __C3DFXPassInstance *)arg3;
 - (float)_zFarForSkyboxRenderingProjectionMatrix:(const union C3DMatrix4x4 *)arg1 defaultZFar:(float)arg2;
 - (void)_updateProjectionMatrixForOrthographicSkyboxRenderingIfNeeded:(union C3DMatrix4x4 *)arg1;
@@ -280,7 +279,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *resourceGroup;
 @property(readonly, nonatomic) long long currentFrameIndex;
-- (void)setRendererPremultipliedBackgroundColor:(C3DColor4_0cad58d8)arg1;
 - (struct __C3DEngineStats *)stats;
 - (void)_clearUnusedBindingPoints;
 @property(nonatomic) _Bool isOpaque;

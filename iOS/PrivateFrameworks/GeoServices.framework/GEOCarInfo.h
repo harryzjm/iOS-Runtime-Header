@@ -13,7 +13,6 @@
 @interface GEOCarInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _engineTypes;
     CDStruct_95bda58d _inputMethods;
@@ -22,6 +21,9 @@
     NSString *_manufacturer;
     NSString *_model;
     GEOScreenDimension *_screenDimension;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _brightness;
     int _colorRange;
     int _deviceConnection;
@@ -41,19 +43,7 @@
         unsigned int read_manufacturer:1;
         unsigned int read_model:1;
         unsigned int read_screenDimension:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_engineTypes:1;
-        unsigned int wrote_inputMethods:1;
-        unsigned int wrote_screenResolution:1;
-        unsigned int wrote_carName:1;
-        unsigned int wrote_manufacturer:1;
-        unsigned int wrote_model:1;
-        unsigned int wrote_screenDimension:1;
-        unsigned int wrote_brightness:1;
-        unsigned int wrote_colorRange:1;
-        unsigned int wrote_deviceConnection:1;
-        unsigned int wrote_navAidedDrivingStatus:1;
-        unsigned int wrote_destinationSharingEnabled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -70,38 +60,35 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsInputMethods:(id)arg1;
 - (id)inputMethodsAsString:(int)arg1;
 - (void)setInputMethods:(int *)arg1 count:(unsigned long long)arg2;
 - (int)inputMethodAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsInputMethod:(int)arg1;
 - (void)addInputMethod:(int)arg1;
 - (void)clearInputMethods;
 @property(readonly, nonatomic) int *inputMethods;
 @property(readonly, nonatomic) unsigned long long inputMethodsCount;
-- (void)_readInputMethods;
 @property(nonatomic) _Bool hasBrightness;
 @property(nonatomic) int brightness;
 @property(nonatomic) _Bool hasColorRange;
 @property(nonatomic) int colorRange;
 @property(retain, nonatomic) GEOScreenDimension *screenDimension;
 @property(readonly, nonatomic) _Bool hasScreenDimension;
-- (void)_readScreenDimension;
 @property(retain, nonatomic) NSString *carName;
 @property(readonly, nonatomic) _Bool hasCarName;
-- (void)_readCarName;
 - (int)StringAsEngineTypes:(id)arg1;
 - (id)engineTypesAsString:(int)arg1;
 - (void)setEngineTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)engineTypeAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsEngineType:(int)arg1;
 - (void)addEngineType:(int)arg1;
 - (void)clearEngineTypes;
 @property(readonly, nonatomic) int *engineTypes;
 @property(readonly, nonatomic) unsigned long long engineTypesCount;
-- (void)_readEngineTypes;
 - (int)StringAsNavAidedDrivingStatus:(id)arg1;
 - (id)navAidedDrivingStatusAsString:(int)arg1;
 @property(nonatomic) _Bool hasNavAidedDrivingStatus;
@@ -116,11 +103,11 @@
 @property(nonatomic) struct GEOScreenResolution screenResolution;
 @property(retain, nonatomic) NSString *model;
 @property(readonly, nonatomic) _Bool hasModel;
-- (void)_readModel;
 @property(retain, nonatomic) NSString *manufacturer;
 @property(readonly, nonatomic) _Bool hasManufacturer;
-- (void)_readManufacturer;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithTraits:(id)arg1;
 
 @end

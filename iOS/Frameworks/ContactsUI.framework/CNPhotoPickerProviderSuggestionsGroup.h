@@ -4,20 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerProviderSuggestionsGroup
 {
+    NSArray *_addItems;
 }
 
+- (void).cxx_destruct;
+- (void)setAddItems:(id)arg1;
+- (id)addItems;
 - (void)providerItemDidUpdate:(id)arg1;
+- (void)reloadMonogramProviderGroupWithVisualIdentity:(id)arg1 size:(struct CGSize)arg2 RTL:(_Bool)arg3;
+- (id)defaultMonogramItem;
+- (long long)removeProviderItem:(id)arg1;
 - (long long)addProviderItem:(id)arg1;
 - (unsigned long long)maxRecentsAndMonogramsCount;
 - (id)paddedDisplayItems:(id)arg1;
 - (id)providerItems:(id)arg1 withMaxRecentsAndMonogramsCount:(unsigned long long)arg2;
-- (id)removeDuplicateItemsFrom:(id)arg1 withMaxRecentsAndMonogramsCount:(unsigned long long)arg2;
 - (void)prepareDisplayItems:(id)arg1;
-- (id)addSymbolImageName;
+- (void)loadAvailablePaddingItems;
 - (id)dedupedSuggestionItemsGroupedByProvider;
+- (id)itemsForProviderIdentifier:(id)arg1;
 - (long long)indexForDefaultMonogram;
 - (id)providerOfClass:(Class)arg1;
 - (id)initWithProviders:(id)arg1 environment:(id)arg2 allowAddItem:(_Bool)arg3;

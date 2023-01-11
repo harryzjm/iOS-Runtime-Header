@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface DADAgentManager : NSObject
@@ -20,23 +20,23 @@
     CDUnknownBlockType _startAgentsWhenSystemReadyBlock;
     NSObject<OS_dispatch_queue> *_CTCellularUsagePolicyNotificationQ;
     struct __CTServerConnection *_ctServerConnection;
+    NSDictionary *_wirelessPolicies;
     int _pendingAccountSetupCount;
     NSMutableArray *_subCalHandlers;
     unsigned long long _nextDisableMonitoringAgentsToken;
     NSMutableDictionary *_disableMonitoringAgentsTokens;
 }
 
++ (_Bool)_shouldAccount:(id)arg1 syncWhenSyncingParentAccountWithID:(id)arg2;
++ (_Bool)wirelessPolicy:(id)arg1 isMorePermissiveThanPolicy:(id)arg2;
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *disableMonitoringAgentsTokens; // @synthesize disableMonitoringAgentsTokens=_disableMonitoringAgentsTokens;
 @property(nonatomic) unsigned long long nextDisableMonitoringAgentsToken; // @synthesize nextDisableMonitoringAgentsToken=_nextDisableMonitoringAgentsToken;
 @property(retain, nonatomic) NSMutableArray *subCalHandlers; // @synthesize subCalHandlers=_subCalHandlers;
-- (void).cxx_destruct;
 - (void)upgradeAccountsInSimulator;
 - (void)disableActiveSync;
 - (void)enableActiveSync;
-- (void)cleanupLaunchdSemaphore;
-- (void)disableDaemon;
-- (void)enableDaemon;
 - (_Bool)hasActiveAccounts;
 - (_Bool)hasPendingAccountSetup;
 - (void)removePendingAccountSetup;
@@ -52,14 +52,13 @@
 - (void)processMeetingRequestDatas:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (_Bool)hasEASAccountConfigured;
 - (id)activeAccountBundleIDs;
-- (_Bool)isDelegateAccount:(id)arg1 forParentAccountID:(id)arg2;
 - (id)agentsToSyncForAccountID:(id)arg1;
 - (_Bool)updateContentsOfAllFoldersForAccountID:(id)arg1 andDataclasses:(long long)arg2 isUserRequested:(_Bool)arg3;
 - (_Bool)updateContentsOfFolders:(id)arg1 forAccountID:(id)arg2 andDataclasses:(long long)arg3 isUserRequested:(_Bool)arg4;
 - (_Bool)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2 requireChangedFolders:(_Bool)arg3 isUserRequested:(_Bool)arg4;
 - (unsigned long long)disableMonitoringAgents;
 - (void)enableMonitoringAgentsWithToken:(unsigned long long)arg1;
-- (void)_addAccountAggdEntries;
+- (void)_sendAccountAnalytics;
 - (void)_stopMonitoringAndSaveAgents;
 - (void)registerForBuddy;
 - (void)_loadAndStartMonitoringAgents;
@@ -69,7 +68,8 @@
 - (void)_resetMonitoringRequestsAndLoadAgents;
 - (_Bool)_systemMayNowBeReady;
 - (void)_clearOrphanedStores;
-- (_Bool)_clearOrphanedSubscribedCalendars:(void *)arg1 eventAccountIds:(id)arg2 toDoAccountIds:(id)arg3;
+- (id)appleAccountsMatchingClass:(id)arg1 errror:(id *)arg2;
+- (_Bool)_clearOrphanedSubscribedCalendars:(void *)arg1 eventAccountIds:(id)arg2;
 - (_Bool)clearPersistMonitoringAccountID:(id)arg1 clientID:(id)arg2;
 - (_Bool)removePersistMonitoringAccountID:(id)arg1 folderIDs:(id)arg2 clientID:(id)arg3;
 - (_Bool)addPersistMonitoringAccountID:(id)arg1 folderIDs:(id)arg2 clientID:(id)arg3;
@@ -79,14 +79,11 @@
 - (_Bool)startMonitoringAccountID:(id)arg1 folderIDs:(id)arg2;
 - (void)requestPolicyUpdateForAccount:(id)arg1;
 - (id)currentPolicyKeyForAccount:(id)arg1;
-- (_Bool)dadRemoveStoresForAccountWithID:(id)arg1;
-- (_Bool)_removeSubscribedCalendarsForAccountWithID:(id)arg1 inStore:(void *)arg2;
 - (void)_deviceDidWake;
 - (void)_deviceWillSleep;
 - (void)saveAndReleaseAgents;
 - (void)loadAgents;
 - (void)_ensureHolidaySubscribedCalendarExists;
-- (id)_phoneVersion;
 - (id)_accountInfoPath;
 - (id)_configFileForAgent:(id)arg1;
 - (id)accountWithAccountID:(id)arg1 andClassName:(id)arg2;

@@ -50,6 +50,7 @@
     CDUnknownBlockType _postCommandCompletionBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType postCommandCompletionBlock; // @synthesize postCommandCompletionBlock=_postCommandCompletionBlock;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serverSideConfigQueue; // @synthesize serverSideConfigQueue=_serverSideConfigQueue;
@@ -72,7 +73,6 @@
 @property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property(nonatomic) __weak MSAlbumSharingDaemon *daemon; // @synthesize daemon=_daemon;
-- (void).cxx_destruct;
 - (void)MSASAssetDownloaderDidFinishBatch:(id)arg1;
 - (void)_sendReauthorizeAssetsForDownloadDisposition:(int)arg1 params:(id)arg2;
 - (void)workQueueScheduleReauthForAssets:(id)arg1 inAlbum:(id)arg2;
@@ -138,7 +138,7 @@
 - (void)checkForUpdatesInAlbums:(id)arg1 resetSync:(_Bool)arg2 info:(id)arg3;
 - (void)_checkForChangesDisposition:(int)arg1 params:(id)arg2;
 - (void)checkForChangesResetSync:(_Bool)arg1 info:(id)arg2;
-- (void)checkForChangesInfo:(id)arg1;
+- (void)checkForChangesIfMissingRootCtag;
 - (id)_assetCollectionFailedError;
 - (id)_assetCollectionRejectedError;
 - (id)_stoppedError;
@@ -186,7 +186,6 @@
 - (void)_workQueueEmptyFileTransferQueuesCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)start;
 - (void)workQueueApplyServerSideConfiguration;
-- (int)assetsInDownloadQueueCount;
 - (id)initWithPersonID:(id)arg1 eventQueue:(id)arg2;
 - (id)initWithPersonID:(id)arg1;
 - (id)init;

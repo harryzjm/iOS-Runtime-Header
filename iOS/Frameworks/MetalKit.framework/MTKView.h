@@ -66,6 +66,7 @@
 }
 
 + (Class)layerClass;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(readonly, nonatomic) struct CGSize preferredDrawableSize; // @synthesize preferredDrawableSize=_preferredDrawableSize;
 @property(nonatomic) struct CGSize drawableSize; // @synthesize drawableSize=_drawableSize;
@@ -79,11 +80,11 @@
 @property(nonatomic) unsigned long long depthStencilPixelFormat; // @synthesize depthStencilPixelFormat=_depthStencilPixelFormat;
 @property(retain, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
 @property(nonatomic) __weak id <MTKViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(nonatomic) _Bool presentsWithTransaction;
 @property(nonatomic) _Bool framebufferOnly;
 @property(nonatomic) unsigned long long multisampleColorAttachmentTextureUsage;
 @property(nonatomic) unsigned long long depthStencilAttachmentTextureUsage;
+- (void)setNilValueForKey:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setContentScaleFactor:(double)arg1;

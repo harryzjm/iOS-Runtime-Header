@@ -11,7 +11,7 @@
 @class HMDHTTPDevice, HMDHTTPServerMessageTransport, HMFNetServiceBrowser, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDHTTPMessageTransport <HMDHTTPClientMessageTransportDelegate, HMDHTTPServerMessageTransportDelegate, HMFNetServiceBrowserDelegate>
+@interface HMDHTTPMessageTransport <HMDHTTPServerMessageTransportDelegate, HMFNetServiceBrowserDelegate, HMDHTTPClientMessageTransportDelegate>
 {
     id <HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
@@ -31,8 +31,8 @@
 + (_Bool)shouldHostMessageServer;
 + (id)protocolVersion;
 + (unsigned long long)restriction;
-@property(readonly, nonatomic) HMFNetServiceBrowser *clientBrowser; // @synthesize clientBrowser=_clientBrowser;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMFNetServiceBrowser *clientBrowser; // @synthesize clientBrowser=_clientBrowser;
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didAddService:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;
@@ -42,6 +42,7 @@
 - (void)server:(id)arg1 didStopWithError:(id)arg2;
 - (void)client:(id)arg1 didReceiveMessage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)client:(id)arg1 didStopWithError:(id)arg2;
+- (void)startObservingIsPublishingForService:(id)arg1;
 - (void)_connectToDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_stopServer;
 - (void)_startServerWithDevice:(id)arg1;

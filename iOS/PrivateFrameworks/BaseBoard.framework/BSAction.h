@@ -6,25 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <BaseBoard/BSDescriptionProviding-Protocol.h>
+#import <BaseBoard/BSDebugDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 #import <BaseBoard/BSSettingDescriptionProvider-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
 
-@class BSActionListenerToken, BSActionResponse, BSAuditHistory, BSMachPortReceiveRight, BSMachPortTransferableSendRight, BSPortDeathSentinel, BSSettings, BSTimer, NSString;
+@class BSActionListenerToken, BSActionResponse, BSAuditHistory, BSMachPortReceiveRight, BSMachPortTransferableSendRight, BSPortDeathSentinel, BSSettings, BSTimer, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
-@interface BSAction : NSObject <BSXPCCoding, NSSecureCoding, BSSettingDescriptionProvider, BSDescriptionProviding, BSInvalidatable>
+@interface BSAction : NSObject <BSXPCCoding, NSSecureCoding, BSSettingDescriptionProvider, BSDebugDescriptionProviding, BSInvalidatable>
 {
-    BSSettings *_info;
-    _Bool _hasTimeout;
-    _Bool _expectsResponse;
-    _Bool _originatingAction;
     unsigned long long _timeout;
     NSObject<OS_dispatch_queue> *_queue;
-    _Bool _queue_hasBeenNeutered;
-    _Bool _queue_invalidated;
     CDUnknownBlockType _queue_handler;
     BSActionListenerToken *_queue_listenerToken;
     BSTimer *_queue_timer;
@@ -34,18 +28,19 @@
     BSMachPortReceiveRight *_queue_receiveRight;
     BSMachPortTransferableSendRight *_queue_sendRight;
     BSPortDeathSentinel *_queue_portDeathSentinel;
+    NSArray *_queue_neuteredCallStack;
+    _Bool _hasTimeout;
+    _Bool _originatingAction;
+    _Bool _queue_hasBeenNeuteredForEncode;
+    _Bool _queue_hasBeenNeuteredForSend;
+    _Bool _queue_invalidated;
+    _Bool _expectsResponse;
+    BSSettings *_info;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic, getter=_expectsResponse) _Bool expectsResponse; // @synthesize expectsResponse=_expectsResponse;
 @property(readonly, copy, nonatomic) BSSettings *info; // @synthesize info=_info;
-- (void)_queue_tryExecuteQueueHandler;
-- (id)_queue_encodedSendRight;
-- (id)_queue_handlerDescription;
-- (void)_queue_setInvalidatedAndNotify:(_Bool)arg1 errorCode:(long long)arg2;
-- (void)_queue_callHandlerWithResponse:(id)arg1;
-- (void)_queue_addAuditHistoryWithFormat:(id)arg1;
-- (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 safely:(_Bool)arg2;
 - (id)debugDescriptionWithMultilinePrefix:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -68,7 +63,6 @@
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)dealloc;
-- (id)_initWithInfo:(id)arg1 invalidated:(_Bool)arg2 expectsResponse:(_Bool)arg3 auditHistory:(id)arg4 xPort:(id)arg5 xEndpoint:(id)arg6 sendRight:(id)arg7;
 - (id)init;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 

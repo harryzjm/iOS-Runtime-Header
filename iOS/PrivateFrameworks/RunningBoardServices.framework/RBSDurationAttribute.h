@@ -20,12 +20,9 @@
 @property(nonatomic) unsigned long long startPolicy; // @synthesize startPolicy=_startPolicy;
 @property(nonatomic) double warningDuration; // @synthesize warningDuration=_warningDuration;
 @property(nonatomic) double invalidationDuration; // @synthesize invalidationDuration=_invalidationDuration;
-- (id)_initWithInvalidationDuration:(double)arg1 warningDuration:(double)arg2 startPolicy:(unsigned long long)arg3 endPolicy:(unsigned long long)arg4;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 

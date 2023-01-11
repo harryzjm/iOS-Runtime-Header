@@ -22,9 +22,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(retain, nonatomic) VNMPImageDescriptor *descriptor; // @synthesize descriptor=_descriptor;
-- (void).cxx_destruct;
 - (id)serializeStateAndReturnError:(id *)arg1;
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) unsigned long long serializedLength;
@@ -35,7 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithState:(id)arg1 error:(id *)arg2;
-- (id)initWithState:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
 - (id)initWithImageDescriptor:(id)arg1 type:(unsigned long long)arg2 requestRevision:(unsigned long long)arg3;
 - (id)initWithCoder:(id)arg1;
 

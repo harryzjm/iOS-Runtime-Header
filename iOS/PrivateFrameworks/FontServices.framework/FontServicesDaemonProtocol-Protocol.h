@@ -4,15 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString, NSXPCListenerEndpoint;
+#import <FontServices/FontServicesProtocol-Protocol.h>
+#import <FontServices/FontServicesWebKitSupportProtocol-Protocol.h>
 
-@protocol FontServicesDaemonProtocol
-- (void)resumeAndShowAlertForSuspendedFontProviders:(void (^)(void))arg1;
-- (void)fontChanged:(NSDictionary *)arg1 reply:(void (^)(void))arg2;
-- (void)requestFonts:(NSString *)arg1 forClient:(NSXPCListenerEndpoint *)arg2 reply:(void (^)(_Bool))arg3;
-- (void)requestFonts:(NSArray *)arg1 reply:(void (^)(NSDictionary *))arg2;
-- (void)requestFileAccess:(NSArray *)arg1 reply:(void (^)(NSDictionary *))arg2;
-- (void)checkinForFontPicker:(void (^)(NSDictionary *))arg1;
-- (void)checkin:(void (^)(NSDictionary *))arg1;
+@protocol FontServicesDaemonProtocol <FontServicesProtocol, FontServicesWebKitSupportProtocol>
 @end
 

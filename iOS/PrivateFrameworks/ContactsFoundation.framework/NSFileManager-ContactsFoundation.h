@@ -8,7 +8,8 @@
 
 @interface NSFileManager (ContactsFoundation)
 - (_Bool)_cn_removeExtendedAttributeForKey:(id)arg1 path:(id)arg2 error:(id *)arg3;
-- (id)_cn_extendedAttributeForKey:(id)arg1 path:(id)arg2 error:(id *)arg3;
-- (_Bool)_cn_setExtendedAttribute:(id)arg1 forKey:(id)arg2 path:(id)arg3 error:(id *)arg4;
+- (_Bool)_cn_getValue:(id *)arg1 forExtendendAttribute:(id)arg2 path:(id)arg3 error:(id *)arg4;
+- (id)_cn_valueForExtendedAttribute:(id)arg1 path:(id)arg2 error:(id *)arg3;
+- (_Bool)_cn_setValue:(id)arg1 forExtendedAttribute:(id)arg2 path:(id)arg3 error:(id *)arg4;
 @end
 

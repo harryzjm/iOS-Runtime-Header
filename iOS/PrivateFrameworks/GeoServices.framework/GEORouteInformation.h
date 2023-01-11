@@ -8,23 +8,29 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, PBDataReader, PBUnknownFields;
+@class GEOFormattedString, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEORouteInformation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOFormattedString *_detail;
+    GEOFormattedString *_distance;
     GEOFormattedString *_duration;
+    GEOFormattedString *_routeDescription;
+    NSString *_separator;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_detail:1;
+        unsigned int read_distance:1;
         unsigned int read_duration:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_detail:1;
-        unsigned int wrote_duration:1;
+        unsigned int read_routeDescription:1;
+        unsigned int read_separator:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,14 +46,23 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *separator;
+@property(readonly, nonatomic) _Bool hasSeparator;
+@property(retain, nonatomic) GEOFormattedString *routeDescription;
+@property(readonly, nonatomic) _Bool hasRouteDescription;
+@property(retain, nonatomic) GEOFormattedString *distance;
+@property(readonly, nonatomic) _Bool hasDistance;
 @property(retain, nonatomic) GEOFormattedString *detail;
 @property(readonly, nonatomic) _Bool hasDetail;
-- (void)_readDetail;
 @property(retain, nonatomic) GEOFormattedString *duration;
 @property(readonly, nonatomic) _Bool hasDuration;
-- (void)_readDuration;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

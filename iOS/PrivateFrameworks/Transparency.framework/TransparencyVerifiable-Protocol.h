@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject;
+
 @protocol TransparencyVerifiable
-- (_Bool)verifyWithError:(id *)arg1;
+@property(retain) NSObject *verifier;
+- (unsigned long long)verifyWithError:(id *)arg1;
 @end
 

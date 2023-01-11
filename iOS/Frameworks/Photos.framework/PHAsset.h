@@ -8,7 +8,7 @@
 #import <Photos/PHThumbnailAsset-Protocol.h>
 #import <Photos/_PLImageLoadingAsset-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSManagedObjectContext, NSManagedObjectID, NSSet, NSString, NSURL, PHPhotoLibrary;
+@class CLLocation, NSArray, NSData, NSDate, NSManagedObjectContext, NSManagedObjectID, NSNumber, NSSet, NSString, NSURL, PHPhotoLibrary;
 
 @interface PHAsset <PHThumbnailAsset, _PLImageLoadingAsset, PHResourceChooserAsset>
 {
@@ -17,6 +17,7 @@
     NSSet *_sceneClassifications;
     _Bool _hidden;
     _Bool _favorite;
+    _Bool _syncFailureHidden;
     _Bool _cloudIsDeletable;
     _Bool _complete;
     _Bool _hasAdjustments;
@@ -24,14 +25,14 @@
     _Bool _assetDescriptionWasSet;
     _Bool _canUseLocationCoordinateForLocation;
     _Bool _isPhotoIris;
+    _Bool _trashed;
     short _savedAssetType;
     unsigned short _videoCpVisibilityState;
     unsigned short _playbackVariation;
+    unsigned short _deferredProcessingNeeded;
     int _avalanchePickType;
     int _exifOrientation;
     float _overallAestheticScore;
-    float _hdrGain;
-    int _deferredProcessingNeeded;
     NSDate *_localCreationDate;
     long long _playbackStyle;
     long long _mediaType;
@@ -58,13 +59,14 @@
     double _curationScore;
     long long _cloudPlaceholderKind;
     long long _videoCpDurationValue;
+    NSNumber *_hdrGain;
     unsigned long long _reframeVariation;
     NSArray *_faceRegions;
     double _faceAreaMinX;
     double _faceAreaMaxX;
     double _faceAreaMinY;
     double _faceAreaMaxY;
-    long long _RAWPlusJPEGBadgeAttributes;
+    long long _RAWBadgeAttributes;
     id _faceAdjustmentVersion;
     NSDate *_analysisStateModificationDate;
     double _highlightPromotionScore;
@@ -84,6 +86,7 @@
 + (id)descriptionForPlaybackStyle:(long long)arg1;
 + (id)_descriptionForVariationSuggestionStates:(unsigned long long)arg1;
 + (id)_descriptionForVariationSuggestionType:(unsigned long long)arg1;
++ (id)fetchAssetsFromCameraSinceDate:(id)arg1 options:(id)arg2;
 + (id)fetchAllAssetsInYearRepresentedByYearHighlight:(id)arg1 options:(id)arg2;
 + (id)fetchFirstAssetInEachMonthHighlightWithOptions:(id)arg1;
 + (id)fetchReferencedAssetsWithOptions:(id)arg1;
@@ -103,6 +106,7 @@
 + (id)fetchAssetsWithBurstIdentifier:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsWithALAssetURLs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
++ (id)fetchAssetsWithUUIDs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsWithMediaType:(long long)arg1 options:(id)arg2;
 + (id)fetchAssetsWithoutOriginalsInAssetCollection:(id)arg1 options:(id)arg2;
@@ -112,6 +116,7 @@
 + (id)fetchAssetsGroupedByFaceUUIDForFaces:(id)arg1;
 + (long long)countOfAssetsWithLocationFromUUIDs:(id)arg1 photoLibrary:(id)arg2;
 + (_Bool)_isLivePhotoWithPhotoIris:(_Bool)arg1 hasAdjustments:(_Bool)arg2 videoCpDuration:(long long)arg3 videoCPVisibility:(unsigned short)arg4 sourceType:(unsigned long long)arg5;
++ (id)quickClassificationFaceAdjustmentVersion;
 + (void)_batchFetchAdditionalPropertySetsIfNeeded:(id)arg1 forAssets:(id)arg2;
 + (id)_unfetchedPropertySetsForAssets:(id)arg1 fromPropertySets:(id)arg2;
 + (id)propertySetAccessorsByPropertySet;
@@ -120,6 +125,8 @@
 + (id)_transformMediaSubtypeReferences:(id)arg1 inComparisonPredicate:(id)arg2 options:(id)arg3;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyMap;
++ (_Bool)managedObjectSupportsContributor;
++ (_Bool)managedObjectSupportsAllowedForAnalysis;
 + (_Bool)managedObjectSupportsMontage;
 + (_Bool)managedObjectSupportsSavedAssetType;
 + (_Bool)managedObjectSupportsBursts;
@@ -143,8 +150,10 @@
 + (id)_fetchAssetsMatchingMasterFingerPrint:(id)arg1;
 + (void)_computeFingerPrintsOfAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)pl_managedAssetsForAssets:(id)arg1;
++ (id)fetchKeyAssetBySuggestionUUIDForSuggestions:(id)arg1 options:(id)arg2;
 + (id)fetchKeyAssetByHighlightUUIDForHighlights:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsForBehavioralCurationWithOptions:(id)arg1;
++ (id)fetchKeyAssetForEachSuggestion:(id)arg1 options:(id)arg2;
 + (id)fetchCuratedAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchReducedCuratedAssetsInMemory:(id)arg1 options:(id)arg2;
 + (id)fetchRepresentativeAssetsInAssetCollection:(id)arg1;
@@ -155,9 +164,9 @@
 + (id)fetchKeyCuratedAssetInAssetCollection:(id)arg1 referencePersons:(id)arg2;
 + (id)fetchKeyCuratedAssetInAssetCollection:(id)arg1 referenceAsset:(id)arg2 options:(id)arg3;
 + (id)fetchKeyCuratedAssetInAssetCollection:(id)arg1 referenceAsset:(id)arg2;
++ (id)_assetFetchResultFromAssets:(id)arg1 options:(id)arg2;
 + (id)_fetchRepresentativeAssetInAssetCollection:(id)arg1;
 + (id)_fetchCuratedAssetInAssetCollection:(id)arg1 referenceAsset:(id)arg2 referencePersons:(id)arg3 fetchOptions:(id)arg4 onlyKey:(_Bool)arg5;
-+ (id)_requestResultInfoForImageInfo:(id)arg1 videoInfo:(id)arg2 adjustmentInfo:(id)arg3 renderingError:(id)arg4;
 + (id)fetchAssetsForReferences:(id)arg1 photoLibrary:(id)arg2;
 + (void)_inq_trimToMostRecentImageManagerMessages;
 + (id)_currentTimestampString;
@@ -166,16 +175,18 @@
 + (id)_inq_highestImageManagerRequestIDsObserved;
 + (id)_inq_imageManagerRequestLogsByAssetUUID;
 + (id)_imageManagerRequestLoggingQueue;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double highlightVisibilityScore; // @synthesize highlightVisibilityScore=_highlightVisibilityScore;
 @property(readonly, nonatomic) double highlightPromotionScore; // @synthesize highlightPromotionScore=_highlightPromotionScore;
+@property(readonly, nonatomic, getter=isTrashed) _Bool trashed; // @synthesize trashed=_trashed;
 @property(readonly, nonatomic) _Bool isPhotoIris; // @synthesize isPhotoIris=_isPhotoIris;
-@property(readonly, nonatomic) int deferredProcessingNeeded; // @synthesize deferredProcessingNeeded=_deferredProcessingNeeded;
+@property(readonly, nonatomic) unsigned short deferredProcessingNeeded; // @synthesize deferredProcessingNeeded=_deferredProcessingNeeded;
 @property(readonly, nonatomic) NSDate *analysisStateModificationDate; // @synthesize analysisStateModificationDate=_analysisStateModificationDate;
 @property(nonatomic) _Bool canUseLocationCoordinateForLocation; // @synthesize canUseLocationCoordinateForLocation=_canUseLocationCoordinateForLocation;
 @property(nonatomic) _Bool assetDescriptionWasSet; // @synthesize assetDescriptionWasSet=_assetDescriptionWasSet;
 @property(readonly, nonatomic) id faceAdjustmentVersion; // @synthesize faceAdjustmentVersion=_faceAdjustmentVersion;
 @property(readonly, nonatomic) _Bool hasKeywords; // @synthesize hasKeywords=_hasKeywords;
-@property(readonly, nonatomic) long long RAWPlusJPEGBadgeAttributes; // @synthesize RAWPlusJPEGBadgeAttributes=_RAWPlusJPEGBadgeAttributes;
+@property(readonly, nonatomic) long long RAWBadgeAttributes; // @synthesize RAWBadgeAttributes=_RAWBadgeAttributes;
 @property(readonly, nonatomic) double faceAreaMaxY; // @synthesize faceAreaMaxY=_faceAreaMaxY;
 @property(readonly, nonatomic) double faceAreaMinY; // @synthesize faceAreaMinY=_faceAreaMinY;
 @property(readonly, nonatomic) double faceAreaMaxX; // @synthesize faceAreaMaxX=_faceAreaMaxX;
@@ -184,7 +195,7 @@
 @property(readonly, nonatomic) struct CGRect acceptableCropRect; // @synthesize acceptableCropRect=_acceptableCropRect;
 @property(readonly, nonatomic) struct CGRect preferredCropRect; // @synthesize preferredCropRect=_preferredCropRect;
 @property(readonly, nonatomic) unsigned long long reframeVariation; // @synthesize reframeVariation=_reframeVariation;
-@property(readonly, nonatomic) float hdrGain; // @synthesize hdrGain=_hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain; // @synthesize hdrGain=_hdrGain;
 @property(readonly, nonatomic) unsigned short playbackVariation; // @synthesize playbackVariation=_playbackVariation;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D locationCoordinate; // @synthesize locationCoordinate=_locationCoordinate;
 @property(readonly, nonatomic) long long videoCpDurationValue; // @synthesize videoCpDurationValue=_videoCpDurationValue;
@@ -212,6 +223,7 @@
 @property(readonly, nonatomic) int avalanchePickType; // @synthesize avalanchePickType=_avalanchePickType;
 @property(readonly, nonatomic) unsigned long long localResourcesState; // @synthesize localResourcesState=_localResourcesState;
 @property(readonly, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
+@property(readonly, nonatomic, getter=isSyncFailureHidden) _Bool syncFailureHidden; // @synthesize syncFailureHidden=_syncFailureHidden;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
@@ -222,9 +234,9 @@
 @property(readonly, nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property(readonly, nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
 @property(readonly, nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSManagedObjectContext *managedObjectContextForFetchingResources;
 - (void)_reportUsage;
+@property(readonly, nonatomic) NSString *croppingDebugDescription;
 @property(readonly, nonatomic) NSString *variationSuggestionStatesDetails;
 @property(readonly, nonatomic) NSString *metadataDebugDescription;
 @property(readonly, nonatomic) NSString *resourcesDebugDescription;
@@ -243,10 +255,11 @@
 - (id)adjustmentVersion;
 @property(readonly, nonatomic) _Bool canPerformSharingAction;
 - (_Bool)canPerformEditOperation:(long long)arg1;
+@property(readonly, nonatomic) _Bool canFlipFullSizeRender;
 - (_Bool)hasContentEqualTo:(id)arg1;
 - (void)getFingerPrintForAssetType:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)getMasterFingerPrintWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic, getter=isTrashed) _Bool trashed;
+- (_Bool)isDeleted;
 @property(readonly, nonatomic) _Bool isTimelapsePlaceholder;
 @property(readonly, nonatomic) _Bool isIncludedInCloudFeeds;
 @property(readonly, nonatomic) _Bool isIncludedInMoments;
@@ -295,7 +308,7 @@
 - (struct CGSize)imageSize;
 - (short)kindSubtype;
 - (short)kind;
-- (unsigned long long)effectiveThumbnailIndex;
+@property(readonly, nonatomic) unsigned long long effectiveThumbnailIndex;
 - (_Bool)hasLegacyAdjustments;
 - (id)debugFilename;
 - (_Bool)isOriginalSRGB;
@@ -306,7 +319,7 @@
 @property(readonly, nonatomic) double aspectRatio;
 - (id)pl_photoLibrary;
 - (Class)changeRequestClass;
-- (id)originalAVAssetCreationDate;
+- (id)originalAVAssetCreationDateMetadataItem;
 - (id)originalAVAssetCommonMetadata;
 - (id)originalAVAssetOrProxy;
 - (id)originalImageProperties;
@@ -332,6 +345,7 @@
 @property(readonly, nonatomic) NSData *distanceIdentity;
 @property(readonly, nonatomic) NSSet *sceneClassifications;
 @property(readonly, nonatomic) unsigned long long originalResourceChoice;
+- (id)coarseLocationProperties;
 - (id)gridMetadataProperties;
 - (id)keywordProperties;
 - (id)destinationAssetCopyProperties;
@@ -360,6 +374,7 @@
 - (void)_addPropertyHint:(unsigned long long)arg1;
 - (void)fetchPropertySetsIfNeeded;
 - (void)_createExtendedPropertySetsIfNeededWithPropertyHint:(unsigned long long)arg1 fetchDictionary:(id)arg2;
+- (_Bool)needsDeferredProcessing;
 @property(readonly, nonatomic) NSDate *localCreationDate; // @synthesize localCreationDate=_localCreationDate;
 - (_Bool)isMediaSubtype:(unsigned long long)arg1;
 - (short)assetSource;
@@ -367,6 +382,9 @@
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (id)pl_managedAsset;
 - (id)pl_managedAssetFromPhotoLibrary:(id)arg1;
+- (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withFocusRegion:(struct CGRect)arg2 andOutputCropScore:(double *)arg3;
+- (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withFocusRegion:(struct CGRect)arg2;
+- (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1;
 - (void)_renderTemporaryVideoForObjectBuilder:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_requestRenderedVideoForVideoURL:(id)arg1 adjustmentData:(id)arg2 canHandleAdjustmentData:(_Bool)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)cancelContentEditingInputRequest:(unsigned long long)arg1;

@@ -8,12 +8,14 @@
 
 #import <VideosUI/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentUpdateEventDescriptor : NSObject <NSCopying>
 {
+    _Bool _animated;
     unsigned long long _type;
 }
 
++ (id)iamMessageReceived;
++ (id)locationRetrieved;
 + (id)locationAuthorizationChanged;
 + (id)appRefresh;
 + (id)clearPlayHistory;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 + (id)settings;
 + (id)playActivity;
 + (id)purchases;
+@property(nonatomic) _Bool animated; // @synthesize animated=_animated;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;

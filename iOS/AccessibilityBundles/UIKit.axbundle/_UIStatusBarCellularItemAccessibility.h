@@ -12,7 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)init;
-- (_Bool)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3;
+- (void)_axAnnotateDataNetworkViewWithEntry:(id)arg1;
+- (_Bool)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3 forceShowingDisabledSignalBars:(_Bool)arg4;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

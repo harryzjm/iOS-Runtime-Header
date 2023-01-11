@@ -31,6 +31,7 @@
     struct UIEdgeInsets _insetMargins;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(nonatomic) __weak id <NCNotificationListCoalescingControlsHandler> coalescingControlsHandlerInForceTouchState; // @synthesize coalescingControlsHandlerInForceTouchState=_coalescingControlsHandlerInForceTouchState;
 @property(nonatomic) __weak NCNotificationListSectionHeaderView *headerViewInForceTouchState; // @synthesize headerViewInForceTouchState=_headerViewInForceTouchState;
@@ -45,13 +46,13 @@
 @property(readonly, nonatomic) struct UIEdgeInsets insetMargins; // @synthesize insetMargins=_insetMargins;
 @property(nonatomic, getter=isDeviceAuthenticated) _Bool deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property(nonatomic) __weak id <NCNotificationStructuredListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_resetCellWithRevealedActions;
 - (_Bool)_forwarNotificationRequestToLongLookIfNecessary:(id)arg1;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (void)_contentSizeCategoryDidChange;
 - (void)_requestAuthenticationAndPerformBlock:(CDUnknownBlockType)arg1;
 - (id)_sectionSettingsForSectionIdentifier:(id)arg1;
 - (id)_logDescription;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)notificationManagementViewPresenterDidDismissManagementView:(id)arg1;
 - (void)notificationManagementViewPresenterWillPresentManagementView:(id)arg1;
 - (void)notificationManagementViewPresenter:(id)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forNotificationRequest:(id)arg3 withSectionIdentifier:(id)arg4;
@@ -97,6 +98,7 @@
 - (double)insetHorizontalMarginForNotificationListComponent:(id)arg1;
 - (id)containerViewForPreviewInteractionPresentedContentForNotificationListComponent:(id)arg1;
 - (id)notificationListComponent:(id)arg1 sectionSettingsForSectionIdentifier:(id)arg2;
+- (void)notificationListComponent:(id)arg1 willDismissLongLookForCancelActionForViewController:(id)arg2;
 - (void)notificationListComponent:(id)arg1 requestsExecuteAction:(id)arg2 forNotificationRequest:(id)arg3 requestAuthentication:(_Bool)arg4 withParameters:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)notificationListComponent:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotificationRequest:(id)arg3 withParameters:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)legibilitySettingsForNotificationListComponent:(id)arg1;
@@ -118,8 +120,10 @@
 - (void)toggleMissedSectionActive:(_Bool)arg1 reason:(unsigned long long)arg2;
 - (void)toggleFilteringForSectionIdentifier:(id)arg1 shouldFilter:(_Bool)arg2;
 - (void)migrateNotifications;
+@property(readonly, nonatomic) _Bool hasVisibleContentToReveal;
 @property(readonly, nonatomic) _Bool hasVisibleContent;
 @property(readonly, nonatomic) UIScrollView *scrollView;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)modifyNotificationRequest:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1;

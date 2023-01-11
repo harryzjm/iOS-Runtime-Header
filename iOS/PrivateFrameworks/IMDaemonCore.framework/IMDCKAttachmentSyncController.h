@@ -53,6 +53,8 @@
 - (void)_migrateSyncToken;
 - (void)_resetAttachmentSyncStateForRecord:(id)arg1 toState:(long long)arg2;
 - (void)_markTransferAsNotBeingAbleToSyncUsingCKRecord:(id)arg1;
+- (void)_markTransferAsNotBeingAbleToSync:(id)arg1;
+- (void)_markAttachmentWithROWIDAsSyncedWithCloudKit:(id)arg1;
 - (void)_kickOffAssetFetchForTransfersIfNeeded;
 - (void)_updateTransferUsingCKRecord:(id)arg1 wasFetched:(_Bool)arg2;
 - (void)_removeTransferFromiCloudBackupWithGuid:(id)arg1;
@@ -78,7 +80,6 @@
 - (void)_fetchAttachmentZoneRecords:(id)arg1 desiredKeys:(long long)arg2 useNonHSA2ManateeDatabase:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_writeAttachmentsToCloudKit:(CDUnknownBlockType)arg1;
 - (id)_updateAttachmentGUIDIfNeededAndReturnTransfersToForceMarkAsSync:(id)arg1 transfersToSyncRowIDs:(id)arg2;
-- (void)_markAttachmentWithROWIDAsSyncedWithCloudKit:(id)arg1;
 - (unsigned long long)_numberOfAttachmentsToWriteUp;
 - (unsigned long long)_numberOfAttachmentsToDownload;
 - (void)_scheduleOperation:(id)arg1;

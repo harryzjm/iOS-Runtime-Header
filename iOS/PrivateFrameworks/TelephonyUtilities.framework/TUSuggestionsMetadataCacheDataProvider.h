@@ -18,9 +18,9 @@
 + (id)suggestedNamesForDestinationID:(id)arg1 onlySignificant:(_Bool)arg2 error:(id *)arg3;
 + (id)sharedService;
 + (_Bool)canUseSiriSuggestions;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id suggestionsContactsObserver; // @synthesize suggestionsContactsObserver=_suggestionsContactsObserver;
 @property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *suggestionsServiceThrottleSemaphore; // @synthesize suggestionsServiceThrottleSemaphore=_suggestionsServiceThrottleSemaphore;
-- (void).cxx_destruct;
 - (void)updateCacheWithDestinationIDs:(id)arg1 withGroup:(id)arg2;
 - (id)init;
 

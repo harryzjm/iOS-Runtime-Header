@@ -12,16 +12,16 @@
 {
     NSNumber *_preferredOverlayIndex;
     NSString *_quantityTypeIdentifier;
-    NSString *_secondaryIdentifier;
+    long long _preferredOverlay;
     NSMutableArray *_contextDelegates;
     HKAudioExposureDevicesDataSource *_audioExposureDevicesDataSource;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKAudioExposureDevicesDataSource *audioExposureDevicesDataSource; // @synthesize audioExposureDevicesDataSource=_audioExposureDevicesDataSource;
 @property(retain, nonatomic) NSMutableArray *contextDelegates; // @synthesize contextDelegates=_contextDelegates;
-@property(readonly, copy, nonatomic) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;
-@property(nonatomic) NSString *quantityTypeIdentifier; // @synthesize quantityTypeIdentifier=_quantityTypeIdentifier;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) long long preferredOverlay; // @synthesize preferredOverlay=_preferredOverlay;
+@property(readonly, nonatomic) NSString *quantityTypeIdentifier; // @synthesize quantityTypeIdentifier=_quantityTypeIdentifier;
 - (CDUnknownBlockType)_userInfoCreationBlockForLEQ;
 - (CDUnknownBlockType)_buildGranularAverageDataSourceTitleFromTimeScope;
 - (CDUnknownBlockType)_buildAverageDataSourceTitleFromTimeScope;
@@ -35,14 +35,15 @@
 - (_Bool)_isEnvironmentalAudioExposureRoom;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
 - (id)initialSelectedContextForMode:(long long)arg1;
-- (long long)_initialPillForIdentifier:(id)arg1;
+- (long long)_initialPillForPreference:(long long)arg1;
 - (id)_makeHeadphoneDeviceFiltersUsingContextCreator:(CDUnknownBlockType)arg1;
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
+- (id)showAllFiltersButtonTitle;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (void)viewDidLoad;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 secondaryIdentifier:(id)arg5;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 secondaryIdentifier:(id)arg5 audioExposureDeviceDataSource:(id)arg6;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5 audioExposureDeviceDataSource:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

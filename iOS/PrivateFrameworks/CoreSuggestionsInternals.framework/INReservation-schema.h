@@ -9,6 +9,7 @@
 @interface INReservation (schema)
 + (id)reservationStatusToSchema:(long long)arg1;
 + (id)schemaFromReservation:(id)arg1;
++ (id)urlFromReservationSchema:(id)arg1;
 + (id)reservationHolderNameFromReservationSchema:(id)arg1;
 + (long long)reservationStatusFromReservationSchema:(id)arg1;
 + (id)bookingTimeFromReservationSchema:(id)arg1;

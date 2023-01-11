@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class PPContactStorage, PPSQLDatabase;
+
 @interface PPSourceStorage : NSObject
 {
+    PPSQLDatabase *_db;
+    PPContactStorage *_contactStorage;
 }
 
-+ (id)statsWithMedianRefCountNeeded:(_Bool)arg1;
-+ (id)statsWithDatabase:(id)arg1 medianRefCountNeeded:(_Bool)arg2;
-+ (id)statsForTableWithName:(id)arg1 medianRefCountNeeded:(_Bool)arg2 txnWitness:(id)arg3;
-+ (id)statsWithDatabase:(id)arg1 medianRefCountNeeded:(_Bool)arg2 table:(id)arg3 txnWitness:(id)arg4;
-+ (long long)updateOrCreateRowForSource:(id)arg1 addingRefCount:(long long)arg2 txnWitness:(id)arg3;
-+ (id)createSourceWithStatement:(id)arg1;
-+ (id)loadSourcesWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 txnWitness:(id)arg4;
-+ (id)sha256ForSource:(id)arg1;
 + (double)matchAccuracyForSecondsFrom1970;
+- (void).cxx_destruct;
+- (long long)pruneSourcesWithNoReferencesWithTxnWitness:(id)arg1;
+- (long long)updateOrCreateRowForSource:(id)arg1 addingRefCount:(long long)arg2 txnWitness:(id)arg3;
+- (id)createSourceWithStatement:(id)arg1 txnWitness:(id)arg2;
+- (id)loadSourcesWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 txnWitness:(id)arg4;
+- (id)whereSourceIdInSubclauseWithSourceIds:(id)arg1 tableNameAlias:(id)arg2 binders:(id)arg3;
+- (_Bool)iterSourcesWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (id)initWithDatabase:(id)arg1;
+- (id)init;
 
 @end
 

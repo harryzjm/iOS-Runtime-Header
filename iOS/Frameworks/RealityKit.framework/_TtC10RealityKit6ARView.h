@@ -8,7 +8,7 @@
 
 #import <RealityKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, MISSING_TYPE;
+@class CALayer, MISSING_TYPE, NSArray;
 
 @interface _TtC10RealityKit6ARView : UIView <UIGestureRecognizerDelegate>
 {
@@ -17,6 +17,7 @@
     MISSING_TYPE *debugOptions;
     MISSING_TYPE *initialized;
     MISSING_TYPE *engineStartedByThisView;
+    MISSING_TYPE *currentIBL;
     MISSING_TYPE *environment;
     MISSING_TYPE *__environmentEntity;
     MISSING_TYPE *__enableAutomaticFrameRate;
@@ -27,11 +28,15 @@
     MISSING_TYPE *useCAMetalLayer;
     MISSING_TYPE *pauseEngineOnLeaveForeground;
     MISSING_TYPE *__renderGraphEmitter;
+    MISSING_TYPE *__forceLocalizedProbes;
+    MISSING_TYPE *__parallaxBackgroundProbe;
     MISSING_TYPE *layerHandle;
     MISSING_TYPE *updateSubscription;
     MISSING_TYPE *renderSubscription;
     MISSING_TYPE *realityAssetCollisionSubscription;
     MISSING_TYPE *__disableComposition;
+    MISSING_TYPE *__nonARKitDevices;
+    MISSING_TYPE *enablePresentsWithTransaction;
     MISSING_TYPE *presentsWithTransactionFrames;
     MISSING_TYPE *__statisticsOptions;
     MISSING_TYPE *__disableStatisticsRendering;
@@ -39,9 +44,13 @@
 
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (_Bool)handleTapForEntityAccessibilityWrapper:(id)arg1;
+- (float)distanceInMetersFromEntityAccessibilityWrapper:(id)arg1;
+@property(nonatomic, readonly) NSArray *entityAccessibilityWrappers;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleSingleTapWithRecognizer:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

@@ -26,11 +26,11 @@
 - (id)suggestionWithAsset:(id)arg1;
 - (id)suggestedAssetsInAssets:(id)arg1 options:(id)arg2;
 - (id)suggestedAssetsInAssets:(id)arg1;
-- (id)livePhotosBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
+- (id)livePhotosBetweenStartDate:(id)arg1 andEndDate:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (id)recipeForVariationWithLivePhoto:(id)arg1 inResults:(id)arg2 suggestionSubtype:(unsigned short *)arg3;
 - (void)_setDoFlagsWithOptions:(id)arg1;
 - (void)reset;
-- (id)nextSuggestion;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 
@@ -38,6 +38,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool lastSuggestionWasColliding;
 @property(readonly) Class superclass;
 
 @end

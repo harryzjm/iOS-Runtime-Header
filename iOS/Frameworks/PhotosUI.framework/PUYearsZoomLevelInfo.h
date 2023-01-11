@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)renderedStripsElementKind;
 - (id)newCollectionViewLayout;
 - (struct __CFString *)aggregateLevelKey;
-- (unsigned long long)dateRangeFormatterPreset;
+- (long long)dateRangeFormatterPreset;
 - (id)momentsInCollectionList:(id)arg1;
 - (id)_yearsFetchResult;
 - (id)initWithZoomLevel:(unsigned long long)arg1 zoomLevelManager:(id)arg2 baseZoomLevelInfo:(id)arg3;

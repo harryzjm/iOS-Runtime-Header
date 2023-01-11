@@ -25,11 +25,9 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
+struct _opaque_pthread_rwlock_t {
+    long long __sig;
+    char __opaque[192];
 };
 
 #pragma mark Typedef'd Structures

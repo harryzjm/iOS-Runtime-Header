@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOABConfigKeyValuePair : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_abConfigKey;
     GEOABConfigValue *_abConfigValue;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _abConfigValueType;
     struct {
         unsigned int has_abConfigValueType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_abConfigKey:1;
         unsigned int read_abConfigValue:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_abConfigKey:1;
-        unsigned int wrote_abConfigValue:1;
-        unsigned int wrote_abConfigValueType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,18 +42,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOABConfigValue *abConfigValue;
 @property(readonly, nonatomic) _Bool hasAbConfigValue;
-- (void)_readAbConfigValue;
 - (int)StringAsAbConfigValueType:(id)arg1;
 - (id)abConfigValueTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasAbConfigValueType;
 @property(nonatomic) int abConfigValueType;
 @property(retain, nonatomic) NSString *abConfigKey;
 @property(readonly, nonatomic) _Bool hasAbConfigKey;
-- (void)_readAbConfigKey;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

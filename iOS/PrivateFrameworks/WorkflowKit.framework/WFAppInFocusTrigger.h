@@ -8,19 +8,25 @@
 
 @interface WFAppInFocusTrigger
 {
-    NSArray *_selectedApps;
+    _Bool _onFocus;
+    _Bool _onBackground;
+    NSArray *_selectedBundleIdentifiers;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
++ (_Bool)isUserInitiated;
 + (_Bool)isAllowedToRunAutomatically;
-@property(copy, nonatomic) NSArray *selectedApps; // @synthesize selectedApps=_selectedApps;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool onBackground; // @synthesize onBackground=_onBackground;
+@property(nonatomic) _Bool onFocus; // @synthesize onFocus=_onFocus;
+@property(copy, nonatomic) NSArray *selectedBundleIdentifiers; // @synthesize selectedBundleIdentifiers=_selectedBundleIdentifiers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
+- (id)localizedDescriptionWithConfigurationSummary;
 - (_Bool)hasValidConfiguration;
 - (id)init;
 

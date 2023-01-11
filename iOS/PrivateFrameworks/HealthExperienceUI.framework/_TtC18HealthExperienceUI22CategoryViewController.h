@@ -9,14 +9,17 @@
 @interface _TtC18HealthExperienceUI22CategoryViewController
 {
     MISSING_TYPE *typeGroup;
+    MISSING_TYPE *healthExperienceStore;
+    MISSING_TYPE *providedHealthStore;
+    MISSING_TYPE *categoryViewDataSource;
+    MISSING_TYPE *navigationBarStyle;
 }
 
 - (void).cxx_destruct;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCollectionViewLayout:(id)arg1;
+- (void)restoreUserActivityState:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
-- (id)init;
 
 @end
 

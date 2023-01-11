@@ -20,6 +20,7 @@
 - (long long)br_compareToStringForHFS:(id)arg1 isCaseSensitive:(_Bool)arg2;
 - (id)br_representableDirectoryName;
 - (id)br_sideFaultName;
+- (id)_br_nameWithAddedExtension:(id)arg1 makeDotFile:(_Bool)arg2;
 - (id)br_sideFaultPath;
 - (id)br_representableHFSFileNameWithNumber:(id)arg1 addedExtension:(id)arg2 makeDotFile:(_Bool)arg3;
 - (id)brc_representableHFSFileNameWithSuffix:(id)arg1 addedExtension:(id)arg2 makeDotFile:(_Bool)arg3;
@@ -29,6 +30,7 @@
 - (const char *)br_fileSystemRepresentation;
 - (_Bool)br_isAbsolutePath;
 - (id)br_pathRelativeToPath:(id)arg1;
+- (id)removingROSPPrefix;
 - (id)br_pathRelativeToPackageRoot;
 - (id)br_pathOfPackageRoot;
 - (_Bool)br_isPackageRoot;

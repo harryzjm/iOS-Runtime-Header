@@ -8,23 +8,25 @@
 
 #import <SpringBoard/FBSDisplayObserving-Protocol.h>
 
-@class FBSDisplayLayoutPublisher, NSMutableDictionary, NSString, SBMainDisplaySceneManager, SBMainWorkspace;
+@class FBSDisplayLayoutPublisher, FBSDisplayMonitor, NSMutableDictionary, NSMutableSet, NSString, SBMainDisplaySceneManager, SBMainWorkspace;
 @protocol SBFAuthenticationStatusProvider;
 
 @interface SBExternalDisplayManager : NSObject <FBSDisplayObserving>
 {
+    FBSDisplayMonitor *_displayMonitor;
     SBMainWorkspace *_mainWorkspace;
     id <SBFAuthenticationStatusProvider> _userAuthenticationProvider;
     SBMainDisplaySceneManager *_mainDisplaySceneManager;
     FBSDisplayLayoutPublisher *_layoutPublisher;
     NSMutableDictionary *_displayToControllerMap;
+    NSMutableSet *_disconnectingDisplays;
 }
 
 - (void).cxx_destruct;
 - (void)displayMonitor:(id)arg1 willDisconnectIdentity:(id)arg2;
 - (void)displayMonitor:(id)arg1 didUpdateIdentity:(id)arg2 withConfiguration:(id)arg3;
 - (void)displayMonitor:(id)arg1 didConnectIdentity:(id)arg2 withConfiguration:(id)arg3;
-- (id)initWithMainWorkspace:(id)arg1 userAuthenticationProvider:(id)arg2 mainSceneManager:(id)arg3;
+- (id)initWithDisplayMonitor:(id)arg1 mainWorkspace:(id)arg2 userAuthenticationProvider:(id)arg3 mainSceneManager:(id)arg4;
 - (id)init;
 
 // Remaining properties

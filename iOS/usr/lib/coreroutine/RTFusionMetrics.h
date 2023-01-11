@@ -23,17 +23,17 @@
 + (id)integerKeys;
 + (id)unsignedIntegerKeys;
 + (id)booleanKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *learnedPlaceHomeWorkCandidates; // @synthesize learnedPlaceHomeWorkCandidates=_learnedPlaceHomeWorkCandidates;
 @property(retain, nonatomic) NSArray *learnedPlaceCandidatesExcludingHomeWork; // @synthesize learnedPlaceCandidatesExcludingHomeWork=_learnedPlaceCandidatesExcludingHomeWork;
 @property(retain, nonatomic) NSArray *localHintCandidates; // @synthesize localHintCandidates=_localHintCandidates;
 @property(retain, nonatomic) NSArray *bluePOICandidates; // @synthesize bluePOICandidates=_bluePOICandidates;
-- (void).cxx_destruct;
 - (_Bool)submitMetricsWithError:(id *)arg1;
 - (void)setDerivedMetrics;
 - (void)setMetricsUsingInputCandidates:(id)arg1 outputFusedInferredMapItems:(id)arg2 bestFusedInferredMapItem:(id)arg3 outputError:(id)arg4;
 - (void)setOutputMetrics:(id)arg1 bestFusedInferredMapItem:(id)arg2 outputError:(id)arg3;
 - (void)setInputMetrics:(id)arg1;
-- (id)init;
+- (id)initWithLoggingEnabled:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

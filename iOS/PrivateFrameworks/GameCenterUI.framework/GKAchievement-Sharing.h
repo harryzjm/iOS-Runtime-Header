@@ -17,7 +17,6 @@
 - (id)activityViewController:(id)arg1 itemsForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItems:(id)arg1;
 - (id)fetchSharingInfo;
-- (_Bool)canBeShared;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)showBanner;
 - (id)imageURL;

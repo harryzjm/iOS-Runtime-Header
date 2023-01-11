@@ -37,7 +37,6 @@
 
 - (void)finalize;
 - (void)dealloc;
-- (id)initWithTypesetter:(id)arg1;
 
 @end
 

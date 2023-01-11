@@ -6,20 +6,20 @@
 
 #import <Home/HFItem.h>
 
-@class NSSet;
+@class HMAccessoryNetworkProtectionGroup;
 
 @interface HUNetworkProtectionModeOptionItem : HFItem
 {
     long long _targetProtectionModeOption;
-    NSSet *_networkConfigurationProfiles;
+    HMAccessoryNetworkProtectionGroup *_group;
 }
 
 + (long long)_priorityForTargetProtectionMode:(long long)arg1;
-@property(readonly, copy, nonatomic) NSSet *networkConfigurationProfiles; // @synthesize networkConfigurationProfiles=_networkConfigurationProfiles;
-@property(readonly, nonatomic) long long targetProtectionModeOption; // @synthesize targetProtectionModeOption=_targetProtectionModeOption;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) HMAccessoryNetworkProtectionGroup *group; // @synthesize group=_group;
+@property(readonly, nonatomic) long long targetProtectionModeOption; // @synthesize targetProtectionModeOption=_targetProtectionModeOption;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (id)initWithNetworkConfigurationProfiles:(id)arg1 targetProtectionModeOption:(long long)arg2;
+- (id)initWithGroup:(id)arg1 targetProtectionModeOption:(long long)arg2;
 
 @end
 

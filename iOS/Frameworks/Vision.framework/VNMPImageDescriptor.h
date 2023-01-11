@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)currentVersion;
+- (void).cxx_destruct;
 @property(readonly) NSString *imageFilePath; // @synthesize imageFilePath=_imageFilePath;
 @property float previousLeafTotalDistance; // @synthesize previousLeafTotalDistance=_previousLeafTotalDistance;
 @property float nextLeafTotalDistance; // @synthesize nextLeafTotalDistance=_nextLeafTotalDistance;
@@ -50,25 +51,22 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long exifTimestamp; // @synthesize exifTimestamp=_exifTimestamp;
 @property(readonly) NSString *externalImageId; // @synthesize externalImageId=_externalImageId;
 @property(readonly) long long descriptorId; // @synthesize descriptorId=_internalNonSerializedDescriptorId;
-- (void).cxx_destruct;
 - (id)initWithRawColorGaborDescriptor:(id)arg1;
 @property(readonly) NSData *rawColorGaborDescriptor;
 - (float)computeFinalDescriptorBasedDistanceForColorDistance:(float)arg1 andSceneClassifierDistance:(float)arg2;
 - (float)distanceFromDescriptor:(id)arg1;
-- (_Bool)computeQualityForImageData:(id)arg1 andQualityCriteria:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (_Bool)computeRegistrationFeaturesForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (_Bool)computeDescriptorForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (_Bool)computeConvnetDescriptorForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
-- (id)initWithState:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) unsigned long long serializedLength;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithImageData:(id)arg1 andCustomQualityScore:(float)arg2 context:(id)arg3 error:(id *)arg4;
-- (id)initWithImageData:(id)arg1 andQualityCriteria:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (id)initWithImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 
 @end

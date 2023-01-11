@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSUUID, REMObjectID, REMStoreContainerToken;
+@class NSString, NSURL, NSUUID, REMObjectID, REMStoreContainerToken;
 
 @protocol REMXPCDebugPerformer
+- (void)downloadContainerToOutputDir:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)resetBabysitterWithRestrictedAccountID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)dataAccessStatusReports:(void (^)(NSArray *, NSError *))arg1;
 - (void)logStoresDirectoryContents;
@@ -22,7 +23,12 @@
 - (void)purgeDeletedObjectsWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)persistenceStoreIDForAccountID:(REMObjectID *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)fireDebugNotificationWithText:(NSString *)arg1 identifier:(NSString *)arg2 categoryIdentifier:(NSString *)arg3 reference:(NSString *)arg4 isRemove:(_Bool)arg5 completion:(void (^)(NSError *))arg6;
+- (void)cloudKitStatus:(void (^)(NSString *, NSDictionary *, NSError *))arg1;
+- (void)cancelCloudKitSync:(void (^)(NSError *))arg1;
+- (void)testReinitializeCloudKitWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)testInitialSyncWithAccountName:(NSString *)arg1 completion:(void (^)(long long, NSDictionary *, NSError *))arg2;
 - (void)nukeDatabase:(void (^)(NSError *))arg1;
+- (void)daemonStatus:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)daemonVersion:(void (^)(NSString *))arg1;
 @end
 

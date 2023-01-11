@@ -4,25 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HUNetworkConfigurationSettingsItemManager, HUNetworkConfigurationSettingsModuleController;
+#import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@interface HUNetworkConfigurationSettingsViewController
+@class HUNetworkConfigurationSettingsItemManager, HUNetworkConfigurationSettingsModuleController, NSString;
+
+@interface HUNetworkConfigurationSettingsViewController <UITextViewDelegate>
 {
     HUNetworkConfigurationSettingsModuleController *_networkConfigurationSettingsModuleController;
 }
 
-@property(retain, nonatomic) HUNetworkConfigurationSettingsModuleController *networkConfigurationSettingsModuleController; // @synthesize networkConfigurationSettingsModuleController=_networkConfigurationSettingsModuleController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HUNetworkConfigurationSettingsModuleController *networkConfigurationSettingsModuleController; // @synthesize networkConfigurationSettingsModuleController=_networkConfigurationSettingsModuleController;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateNetworkConfigurationSettingsModuleFooter;
-- (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
-- (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)buildItemModuleControllerForModule:(id)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithNetworkConfigurationGroupItem:(id)arg1;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) HUNetworkConfigurationSettingsItemManager *itemManager; // @dynamic itemManager;
+@property(readonly) Class superclass;
 
 @end
 

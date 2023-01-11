@@ -16,15 +16,17 @@
     NSString *identifier;
     struct __IOHIDEventSystemClient *_systemClient;
     CDUnknownBlockType _matchingServiceHandler;
+    CDUnknownBlockType _failedToHandleInTime;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType failedToHandleInTime; // @synthesize failedToHandleInTime=_failedToHandleInTime;
 @property(copy, nonatomic) CDUnknownBlockType matchingServiceHandler; // @synthesize matchingServiceHandler=_matchingServiceHandler;
 @property(retain, nonatomic) struct __IOHIDEventSystemClient *systemClient; // @synthesize systemClient=_systemClient;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(nonatomic) int priority; // @synthesize priority;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler;
-- (void).cxx_destruct;
 - (id)description;
 - (void)dealloc;
 

@@ -16,27 +16,25 @@
     NSString *_identifier;
     NSURL *_URL;
     NSString *_type;
-    unsigned long long _family;
     UNNotificationAttachmentOptions *_options;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)attachmentWithIdentifier:(id)arg1 URL:(id)arg2 options:(id)arg3 error:(id *)arg4;
-+ (unsigned long long)stagingActionForAttachmentURL:(id)arg1 bundleProxy:(id)arg2 error:(id *)arg3;
-+ (id)_systemDirectoryURL;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) UNNotificationAttachmentOptions *options; // @synthesize options=_options;
-@property(readonly, nonatomic) unsigned long long family; // @synthesize family=_family;
 @property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+@property(readonly, nonatomic) unsigned long long family; // @dynamic family;
 - (id)initWithIdentifier:(id)arg1 family:(unsigned long long)arg2 URL:(id)arg3 type:(id)arg4 options:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 URL:(id)arg2 type:(id)arg3 options:(id)arg4;
 - (id)init;
 
 @end

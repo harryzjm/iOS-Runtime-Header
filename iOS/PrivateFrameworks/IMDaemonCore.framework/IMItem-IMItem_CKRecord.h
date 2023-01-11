@@ -19,9 +19,13 @@
 + (id)participantChangeProtobufForCompressedData:(id)arg1;
 + (id)populateIMGroupTitleChangeItem:(id)arg1 withProtobufData:(id)arg2;
 + (id)groupTitleChangeProtobufForCompressedData:(id)arg1;
-+ (id)populateIMMessageItemWithProtoBufFields:(id)arg1 withProtbufData:(id)arg2;
++ (id)populateIMMessageItemWithProtobufFields:(id)arg1 withProtobufDataP2:(id)arg2;
++ (id)populateIMMessageItemWithProtobufFields:(id)arg1 withProtobufData:(id)arg2;
++ (id)protobufForCompressedDataP2:(id)arg1;
 + (id)protobufForCompressedData:(id)arg1;
+- (_Bool)isCompatibleWithMiC;
 - (_Bool)shouldStoreMessage;
+- (_Bool)callerIDShouldBeCheckedForRegistration:(id)arg1;
 - (_Bool)_shouldDownloadIfPhoneNumberAndNoSIM:(id)arg1;
 - (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
 - (_Bool)_usingStingRay;
@@ -38,6 +42,7 @@
 - (id)compressedProtobufDataForGroupTitleChangeItem;
 - (void)_populateCKRecordWithIMMessageItemFields:(id)arg1;
 - (void)_populateCKRecordWithIMItemFields:(id)arg1;
+- (id)compressedProtobufDataForMessageP2;
 - (id)compressedProtobufDataForMessage;
 - (id)compressedProtobufDataWithPadding:(id)arg1;
 - (id)_accountControllerSharedInstance;

@@ -7,7 +7,7 @@
 #import <SpringBoardHome/SBFolderIconImageCacheObserver-Protocol.h>
 #import <SpringBoardHome/SBFolderIconObserver-Protocol.h>
 
-@class NSMutableArray, NSString, SBFloatyFolderView, UIView, _SBIconGridWrapperView;
+@class NSHashTable, NSMutableArray, NSString, SBFloatyFolderView, UIView, _SBIconGridWrapperView;
 
 @interface SBFolderIconImageView <SBFolderIconObserver, SBFolderIconImageCacheObserver>
 {
@@ -21,20 +21,20 @@
     SBFloatyFolderView *_crossfadeFolderView;
     UIView *_crossfadeScalingView;
     _Bool _animating;
-    unsigned long long _imageUpdatesDisableCount;
+    NSHashTable *_imageUpdateDisableAssertions;
     unsigned long long _transitionToken;
     _Bool _hasCustomBackgroundView;
     unsigned long long _backgroundStyle;
     unsigned long long _currentBackgroundStyle;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentBackgroundStyle; // @synthesize currentBackgroundStyle=_currentBackgroundStyle;
 @property(readonly, nonatomic) _Bool hasCustomBackgroundView; // @synthesize hasCustomBackgroundView=_hasCustomBackgroundView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
 @property(readonly, nonatomic) unsigned long long currentPageIndex; // @synthesize currentPageIndex=_currentPageIndex;
 @property(nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
-- (void).cxx_destruct;
 - (void)fulfillGridImageForPageElement:(id)arg1;
 - (id)representedListLayout;
 - (void)_showRightMinigrid;
@@ -57,14 +57,14 @@
 - (void)folderIconImageCache:(id)arg1 didUpdateImagesForFolderIcon:(id)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (void)iconViewLegibilitySettingsDidChange;
-- (void)enableImageUpdates;
-- (void)disableImageUpdates;
+- (void)invalidateImageUpdatesAssertion:(id)arg1;
+- (id)disableImageUpdatesForReason:(id)arg1;
 - (void)cleanupAfterFloatyFolderCrossfade;
 - (void)setFloatyFolderCrossfadeFraction:(double)arg1;
 - (void)prepareToCrossfadeWithFloatyFolderView:(id)arg1 allowFolderInteraction:(_Bool)arg2;
 - (void)setBackgroundScale:(double)arg1;
 - (void)setBackgroundAndIconGridImageAlpha:(double)arg1;
-- (void)setIconGridImageAlpha:(double)arg1;
+@property(nonatomic) double iconGridImageAlpha;
 - (struct CGRect)frameForMiniIconAtIndexPath:(id)arg1;
 - (struct CGRect)visibleImageRelativeFrameForMiniIconAtIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForMiniIconAtIndex:(unsigned long long)arg1;
@@ -84,6 +84,7 @@
 - (void)updateImageAnimated:(_Bool)arg1;
 - (id)_generateSquareContentsImage;
 - (id)contentsImage;
+@property(nonatomic, getter=isPageGridHidden) _Bool pageGridHidden;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

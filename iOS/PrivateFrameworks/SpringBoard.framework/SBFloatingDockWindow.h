@@ -8,6 +8,7 @@
 {
 }
 
+- (_Bool)_canBecomeKeyWindow;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)floatingDockRootViewController;
 

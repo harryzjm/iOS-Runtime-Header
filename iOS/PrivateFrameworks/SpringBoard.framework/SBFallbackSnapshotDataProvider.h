@@ -19,11 +19,11 @@
     IOSurface *_processedSurface;
 }
 
-@property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
+@property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context; // @synthesize context=_context;
 - (void)_invalidateSnapshotData;
-- (id)fetchImage;
-- (id)IOSurface;
+- (id)fetchImageForFormat:(long long)arg1;
+- (id)IOSurfaceForFormat:(long long)arg1;
 - (id)initWithSceneSnapshot:(id)arg1 scaleFactor:(double)arg2;
 
 // Remaining properties

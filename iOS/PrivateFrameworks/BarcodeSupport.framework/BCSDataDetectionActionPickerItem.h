@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) CNContact *contact;
 - (id)actionURL;
 - (id)targetApplicationBundleIdentifier;
+- (id)icon;
 - (id)label;
 - (_Bool)isCopyActionItem;
 - (_Bool)shouldDismissAlertWhenActionIsTaken;

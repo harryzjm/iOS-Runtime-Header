@@ -16,7 +16,7 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)shouldTrustCertificate:(id)arg1;
+- (void)verifyCertificate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)securityIdentity;
 - (id)_certificateChain;
 - (struct __SecIdentity *)_appleIDIdentity;

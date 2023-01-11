@@ -7,18 +7,20 @@
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXOneUpPresentationDelegate-Protocol.h>
 
-@class NSString, PXAssetReference, PXAssetsDataSourceManager, PXPhotoKitUIMediaProvider;
+@class NSString, PXAssetReference, PXForYouSuggestionAssetsDataSourceManager, PXPhotoKitAdjustedUIMediaProvider;
 
 @interface PXForYouRecentInterestSuggestionsGadgetProvider <PXOneUpPresentationDelegate, PXActionPerformerDelegate>
 {
-    PXPhotoKitUIMediaProvider *_oneUpMediaProvider;
-    PXAssetsDataSourceManager *_oneUpDataSourceManager;
+    PXPhotoKitAdjustedUIMediaProvider *_oneUpMediaProvider;
+    PXForYouSuggestionAssetsDataSourceManager *_oneUpDataSourceManager;
     PXAssetReference *_oneUpInitialAssetReference;
 }
 
 - (void).cxx_destruct;
-- (_Bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (void)_fileRadarForSuggestion:(id)arg1;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
+- (_Bool)oneUpPresentationWantsShowInLibraryButton:(id)arg1;
 - (long long)oneUpPresentationActionContext:(id)arg1;
 - (id)oneUpPresentationActionManagerForPreviewing:(id)arg1;
 - (void)oneUpPresentation:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
@@ -29,10 +31,12 @@
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
+- (void)_addTTRActionIntoPreview:(id)arg1 forGadget:(id)arg2;
+- (void)_insertRemoveSuggestionActionIntoPreview:(id)arg1 forGadget:(id)arg2;
 - (void)suggestionGadget:(id)arg1 didDismissPreviewController:(id)arg2 committing:(_Bool)arg3;
 - (void)suggestionGadget:(id)arg1 commitViewController:(id)arg2;
 - (id)suggestionGadgetPreviewController:(id)arg1;
-- (void)presentOneUpForSuggestion:(id)arg1;
+- (void)presentOneUpForSuggestion:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_prepareForOneUpPresentationForSuggestion:(id)arg1;
 - (id)init;
 

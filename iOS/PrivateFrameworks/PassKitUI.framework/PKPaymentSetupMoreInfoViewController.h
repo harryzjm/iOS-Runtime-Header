@@ -4,48 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+@class NSArray, PKSecureElementPass;
+@protocol PKPaymentWebServiceTargetDeviceProtocol;
 
-#import <PassKitUI/UIScrollViewDelegate-Protocol.h>
-
-@class NSArray, NSString, PKPaymentPass, PKPaymentSetupMoreInfoView;
-
-@interface PKPaymentSetupMoreInfoViewController : UIViewController <UIScrollViewDelegate>
+@interface PKPaymentSetupMoreInfoViewController
 {
     _Bool _isFinalViewController;
-    PKPaymentPass *_pass;
+    PKSecureElementPass *_pass;
     NSArray *_moreInfoItems;
-    long long _context;
+    id <PKPaymentWebServiceTargetDeviceProtocol> _targetDevice;
     CDUnknownBlockType _dismissalHandler;
-    PKPaymentSetupMoreInfoView *_moreInfoView;
 }
 
-@property(nonatomic) _Bool isFinalViewController; // @synthesize isFinalViewController=_isFinalViewController;
-@property(readonly, retain, nonatomic) PKPaymentSetupMoreInfoView *moreInfoView; // @synthesize moreInfoView=_moreInfoView;
-@property(copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
-@property(readonly, nonatomic) long long context; // @synthesize context=_context;
-@property(readonly, retain, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
-@property(readonly, retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isFinalViewController; // @synthesize isFinalViewController=_isFinalViewController;
+@property(copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
+@property(readonly, nonatomic) id <PKPaymentWebServiceTargetDeviceProtocol> targetDevice; // @synthesize targetDevice=_targetDevice;
+@property(readonly, retain, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
+@property(readonly, retain, nonatomic) PKSecureElementPass *pass; // @synthesize pass=_pass;
+- (struct CGSize)_snapshotSize;
+- (void)_linkTapped;
+- (void)_alternateActionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)explanationViewDidSelectBodyButton:(id)arg1;
+- (void)explanationViewDidSelectSetupLater:(id)arg1;
+- (void)explanationViewDidSelectContinue:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)_handleDismissal;
 - (void)_handlePush;
-- (void)_nextTapped:(id)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
+- (void)_next;
 - (id)_nextItems;
 - (id)_currentItem;
-- (void)viewWillLayoutSubviews;
-- (void)viewDidLoad;
 - (void)loadView;
 - (unsigned long long)edgesForExtendedLayout;
-- (void)_configureNavigationItem;
-- (id)initWithMoreInfoItems:(id)arg1 paymentPass:(id)arg2 context:(long long)arg3 dismissalHandler:(CDUnknownBlockType)arg4;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithMoreInfoItems:(id)arg1 paymentPass:(id)arg2 targetDevice:(id)arg3 context:(long long)arg4 dismissalHandler:(CDUnknownBlockType)arg5;
 
 @end
 

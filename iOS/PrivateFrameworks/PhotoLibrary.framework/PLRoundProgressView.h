@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, CAShapeLayer, NSDate, NSTimer, PLProgressArcLayer;
+@class CALayer, CAShapeLayer, NSDate, NSTimer, PLProgressArcLayer, UIColor;
 
 @interface PLRoundProgressView : UIView
 {
@@ -18,6 +18,7 @@
     double _increaseRate;
     NSDate *_prevUpdateTime;
     long long _style;
+    UIColor *_manualColor;
     double _progress;
     UIView *__contentView;
     CAShapeLayer *__sliceLayer;
@@ -34,8 +35,9 @@
 @property(retain, nonatomic, setter=_setSliceLayer:) CAShapeLayer *_sliceLayer; // @synthesize _sliceLayer=__sliceLayer;
 @property(retain, nonatomic, setter=_setContentView:) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
+@property(retain, nonatomic) UIColor *manualColor; // @synthesize manualColor=_manualColor;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)resetProgress;
 - (void)recalculateIncreaseProgress:(double)arg1 withTimeDiff:(double)arg2;
 - (void)setInitialIncreaseRatePerFrame:(double)arg1;

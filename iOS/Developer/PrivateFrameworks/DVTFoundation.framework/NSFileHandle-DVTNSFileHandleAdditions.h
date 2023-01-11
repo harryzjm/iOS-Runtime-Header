@@ -10,7 +10,7 @@
 - (void)dvt_writeData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dvt_readToEndOfFileWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)dvt_writeFormat:(id)arg1;
-- (_Bool)dvt_writeFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
+- (_Bool)dvt_writeFormat:(id)arg1 arguments:(char *)arg2;
 - (_Bool)dvt_writeString:(id)arg1;
 - (_Bool)dvt_writeString:(id)arg1 error:(id *)arg2;
 - (_Bool)dvt_writeData:(id)arg1 error:(id *)arg2;

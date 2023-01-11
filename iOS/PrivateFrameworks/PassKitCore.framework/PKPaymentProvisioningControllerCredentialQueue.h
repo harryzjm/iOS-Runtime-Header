@@ -11,10 +11,14 @@
 @interface PKPaymentProvisioningControllerCredentialQueue : NSObject
 {
     NSMutableArray *_credentials;
+    NSMutableArray *_completedCredentials;
     unsigned long long _currentIndex;
 }
 
 - (void).cxx_destruct;
+- (id)completedCredentials;
+- (id)credentials;
+- (unsigned long long)completedCount;
 - (unsigned long long)remaining;
 - (unsigned long long)count;
 - (void)setCurrentCredential:(id)arg1;

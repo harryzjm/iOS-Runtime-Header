@@ -40,6 +40,7 @@
 }
 
 + (id)baseHTMLString;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool updatingContent; // @synthesize updatingContent=_updatingContent;
 @property(retain, nonatomic) ICSelectorDelayer *updateContentDelayer; // @synthesize updateContentDelayer=_updateContentDelayer;
 @property(copy, nonatomic) NSArray *attachmentsToLoad; // @synthesize attachmentsToLoad=_attachmentsToLoad;
@@ -59,7 +60,6 @@
 @property(nonatomic) __weak id <NoteHTMLEditorViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property(nonatomic) __weak id <NoteHTMLEditorViewActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property(nonatomic) __weak id <NoteHTMLEditorViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)contextMenuConfigurationForElement:(id)arg1 presentation:(id)arg2;
 - (void)webView:(id)arg1 stopURLSchemeTask:(id)arg2;
 - (void)webView:(id)arg1 startURLSchemeTask:(id)arg2;
@@ -69,6 +69,7 @@
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)_webView:(id)arg1 contextMenuDidEndForElement:(id)arg2;
 - (void)_webView:(id)arg1 contextMenuConfigurationForElement:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_webView:(id)arg1 didInsertAttachment:(id)arg2 withSource:(id)arg3;
 - (_Bool)_webView:(id)arg1 performDataInteractionOperationWithItemProviders:(id)arg2;
 - (long long)_webView:(id)arg1 dataOwnerForDropSession:(id)arg2;
 - (long long)_webView:(id)arg1 dataOwnerForDragSession:(id)arg2;
@@ -81,7 +82,7 @@
 - (_Bool)isFirstResponder;
 - (void)setSelectionToEnd;
 - (void)setSelectionToStart;
-- (struct CGRect)rectForSelection;
+- (void)getRectForSelectionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)scrollSelectionToVisible:(_Bool)arg1;
 - (void)removeStyle:(id)arg1;
 - (void)insertOrderedList:(id)arg1;
@@ -89,6 +90,7 @@
 - (void)insertBulletedList:(id)arg1;
 - (void)insertImage:(id)arg1;
 - (void)updateContent;
+- (void)stopEditingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopEditing;
 - (void)startEditing;
 - (void)adoptEditableState;
@@ -100,7 +102,7 @@
 - (void)replaceSelectionWithAttachmentPresentation:(id)arg1;
 - (id)jsonStringFromDictionaryOrArray:(id)arg1;
 - (id)attachmentInfoDictionaryForAttachmentPresentation:(id)arg1;
-- (id)contentAsPasteboardItems;
+- (void)copyNoteHTMLToPasteboard;
 - (void)insertLinksWithURLs:(id)arg1 titles:(id)arg2;
 - (void)insertLinkWithURL:(id)arg1 title:(id)arg2;
 - (void)insertHTMLString:(id)arg1;
@@ -112,7 +114,6 @@
 @property(readonly, nonatomic) WebArchive *webArchive;
 @property(readonly, nonatomic) UIViewPrintFormatter *viewPrintFormatter;
 - (id)webViewConfiguration;
-- (void)layoutSubviews;
 - (void)setupWebView;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

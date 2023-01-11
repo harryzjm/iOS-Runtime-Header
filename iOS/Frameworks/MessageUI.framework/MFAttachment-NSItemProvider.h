@@ -13,7 +13,6 @@
 @interface MFAttachment (NSItemProvider) <NSItemProviderWriting>
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)attachmentElementHTMLStringWithAttributes:(id)arg1;
-+ (_Bool)canInlineImageType:(id)arg1 data:(id)arg2;
 + (_Bool)_isPDF:(id)arg1;
 + (_Bool)isBasicImageMimeType:(id)arg1;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;

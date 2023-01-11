@@ -13,7 +13,9 @@
 
 + (id)titleBarMaskImageForWidth:(double)arg1 constraints:(struct IMPreviewConstraints)arg2;
 + (id)valueForKey:(id)arg1 forURLComponents:(id)arg2;
++ (struct CLLocationCoordinate2D)_legacyCoordinateForvCardURL:(id)arg1;
 + (struct CLLocationCoordinate2D)coordinateForvCardURL:(id)arg1;
++ (_Bool)supportsBlastDoor;
 + (id)vCardURLSForData:(id)arg1;
 + (id)vCardDataForURL:(id)arg1;
 + (struct CGSize)mapThumbnailFillSizeForWidth:(double)arg1;

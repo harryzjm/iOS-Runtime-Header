@@ -33,6 +33,7 @@
     id <_UIDocumentSharingControllerDelegate_Private> __privateDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_legacyAppearance, setter=_setLegacyAppearance:) _Bool legacyAppearance; // @synthesize legacyAppearance=_legacyAppearance;
 @property(nonatomic, getter=_privateDelegate, setter=_setPrivateDelegate:) __weak id <_UIDocumentSharingControllerDelegate_Private> _privateDelegate; // @synthesize _privateDelegate=__privateDelegate;
 @property(copy, nonatomic, getter=_appName, setter=_setAppName:) NSString *appName; // @synthesize appName=_appName;
@@ -51,12 +52,13 @@
 @property(retain, nonatomic, getter=_strongReferenceToOurself, setter=_setStrongReferenceToOurself:) UIViewController *strongReferenceToOurself; // @synthesize strongReferenceToOurself=_strongReferenceToOurself;
 @property(nonatomic, getter=_originalPresentingViewController, setter=_setOriginalPresentingViewController:) __weak UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
 @property(retain, nonatomic, getter=_childViewController, setter=_setChildViewController:) _UIResilientRemoteViewContainerViewController *childViewController; // @synthesize childViewController=_childViewController;
-- (void).cxx_destruct;
 - (void)_representFullscreenAfterActivityDismissal:(CDUnknownBlockType)arg1;
 - (void)_dismissForActivityRepresentation:(CDUnknownBlockType)arg1;
 - (id)_sharingViewPresentationController;
 - (id)_customPresentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (_Bool)_requiresCustomPresentationController;
+- (void)_cloudSharingControllerDidChooseTransport:(id)arg1;
+- (void)_cloudSharingControllerDidActivateShowSharedFolder;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(_Bool)arg1;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(_Bool)arg1;
 - (void)_requestSavedShareWithCompletion:(CDUnknownBlockType)arg1;
@@ -70,6 +72,7 @@
 @property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property(readonly, nonatomic, getter=_remoteViewController) _UIShareInvitationRemoteViewController *remoteViewController;
 - (void)_updatePresentationStyleForLegacyAppearance;
+- (void)_presentationControllerDidDismiss:(id)arg1;
 - (void)dealloc;
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2;
 - (id)initWithFileURL:(id)arg1;

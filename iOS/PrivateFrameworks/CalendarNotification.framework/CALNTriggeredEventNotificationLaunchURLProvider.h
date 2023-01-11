@@ -12,6 +12,7 @@
 
 + (id)_travelLaunchURLForEventID:(id)arg1 hypothesis:(id)arg2;
 + (id)_launchURLForEventID:(id)arg1 hypothesis:(id)arg2 isTravelLaunchURL:(_Bool *)arg3;
++ (id)launchURLForOptionalEventOccurrenceID:(id)arg1;
 + (id)launchURLForOptionalEventID:(id)arg1 hypothesis:(id)arg2 isTravelLaunchURL:(_Bool *)arg3;
 
 @end

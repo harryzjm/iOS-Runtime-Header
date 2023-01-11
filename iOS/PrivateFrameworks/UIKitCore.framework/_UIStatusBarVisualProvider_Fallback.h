@@ -18,12 +18,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *placements; // @synthesize placements=_placements;
 @property(nonatomic) __weak _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
-- (void).cxx_destruct;
 - (id)styleAttributesForStyle:(long long)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;

@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
     double _lastVideoQualityDegradedSwitchTime;
     double _firstDegradedMeasure;
     double _videoDegradedThreshold;
+    double _videoImprovedThreshold;
+    double _videoMinFrameRate;
+    _Bool _shouldUseExitHysteresis;
 }
 
 @property(nonatomic) _Bool videoIsExpected; // @synthesize videoIsExpected=_videoIsExpected;

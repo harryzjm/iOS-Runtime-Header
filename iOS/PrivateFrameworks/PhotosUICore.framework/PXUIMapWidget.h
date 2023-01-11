@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXImageUIView, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UIFont, UIView;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXUIMapWidget : NSObject <PXPhotosDataSourceChangeObserver, PXUIWidget>
 {
@@ -42,6 +42,8 @@
     PXPlacesSnapshotFactory *__factory;
 }
 
++ (id)sharedSnapshotRequestConcurrentQueue;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setHasLoadedContentData:) _Bool hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property(retain, nonatomic) PXPlacesSnapshotFactory *_factory; // @synthesize _factory=__factory;
 @property(retain, nonatomic) NSMutableArray *_nearbyCountCompletionBlocks; // @synthesize _nearbyCountCompletionBlocks=__nearbyCountCompletionBlocks;
@@ -61,7 +63,6 @@
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate; // @synthesize widgetUnlockDelegate=_widgetUnlockDelegate;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
-- (void).cxx_destruct;
 - (_Bool)_hasCachedSnapshotImageForKey:(id)arg1;
 - (void)_setImage:(id)arg1 animated:(_Bool)arg2;
 - (void)_handleSnapshotResponse:(id)arg1 viewPort:(id)arg2 snapshotMapType:(unsigned long long)arg3 shouldFetchNearbyAssetCount:(_Bool)arg4 fetchedImageKey:(id)arg5 error:(id)arg6;
@@ -106,12 +107,16 @@
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
+@property(readonly, nonatomic) _Bool cursorInteractionEnabled;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(retain, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
@@ -119,6 +124,8 @@
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 
 @end
 

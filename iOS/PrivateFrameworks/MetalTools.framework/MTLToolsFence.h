@@ -14,7 +14,6 @@
 }
 
 @property(copy) NSString *label;
-- (void)acceptVisitor:(id)arg1;
 @property(readonly) id <MTLDevice> device;
 
 // Remaining properties

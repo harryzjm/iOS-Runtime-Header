@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 - (id)_alertControllerContainer;
 - (id)_alertController;
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
-- (void)dimmingViewWasTapped:(id)arg1;
+- (_Bool)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_compactPresentationController;
 

@@ -8,24 +8,22 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class BKSApplicationStateMonitor, HDDaemon, NSHashTable, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class BKSApplicationStateMonitor, NSHashTable, NSMutableDictionary, NSString;
+@protocol HDApplicationStateMonitorProvider, OS_dispatch_queue;
 
 @interface HDProcessStateManager : NSObject <HDDiagnosticObject>
 {
-    HDDaemon *_daemon;
     NSMutableDictionary *_processObserversByBundleID;
     NSHashTable *_foregroundClientProcessObservers;
     BKSApplicationStateMonitor *_applicationMonitor;
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_clientCalloutQueue;
     NSMutableDictionary *_processInfoByBundleID;
+    id <HDApplicationStateMonitorProvider> _applicationStateMonitorProvider;
 }
 
-+ (_Bool)applicationIsForeground:(id)arg1;
-+ (int)processIdentifierForApplicationIdentifier:(id)arg1;
-+ (id)bundleVersionStringForProcessIdentifier:(int)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <HDApplicationStateMonitorProvider> applicationStateMonitorProvider; // @synthesize applicationStateMonitorProvider=_applicationStateMonitorProvider;
 - (id)diagnosticDescription;
 - (void)_lock_notifyObserversProcessWithBundleIdentifier:(id)arg1 processIdentifier:(int)arg2 applicationStateChanged:(unsigned int)arg3 previousApplicationState:(unsigned int)arg4;
 - (void)_lock_handleProcessInfoChangedWithAllPreviousProcessInfos:(id)arg1;
@@ -35,7 +33,7 @@
 - (void)_handleBackboardApplicationInfoChanged:(id)arg1;
 - (int)processIdentifierForApplicationIdentifier:(id)arg1;
 - (_Bool)applicationIsForeground:(id)arg1;
-- (id)bundleVersionStringForProcessIdentifier:(int)arg1;
+- (_Bool)isApplicationInExtendedRuntimeSessionForBundleIdentifier:(id)arg1;
 - (_Bool)isApplicationStateForegroundForBundleIdentifier:(id)arg1;
 - (_Bool)isApplicationStateSuspendedForBundleIdentifier:(id)arg1;
 - (unsigned int)applicationStateForBundleIdentifier:(id)arg1;
@@ -44,7 +42,7 @@
 - (void)unregisterObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (_Bool)registerObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)dealloc;
-- (id)initWithDaemon:(id)arg1;
+- (id)initWithApplicationStateMonitorProvider:(id)arg1;
 - (id)init;
 
 // Remaining properties

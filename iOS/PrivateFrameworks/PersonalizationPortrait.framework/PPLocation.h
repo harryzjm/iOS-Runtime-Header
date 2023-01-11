@@ -6,24 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class CLPlacemark, PPLocationRecord;
+@class CLPlacemark, NSSet, NSString, PPLocationRecord;
 
-@interface PPLocation : NSObject <NSCopying, NSSecureCoding>
+@interface PPLocation : NSObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     unsigned short _category;
     CLPlacemark *_placemark;
     PPLocationRecord *_mostRelevantRecord;
+    NSString *_clusterIdentifier;
 }
 
++ (id)clusterIdentifierFromPlacemark:(id)arg1;
 + (id)describeCategory:(unsigned short)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *clusterIdentifier; // @synthesize clusterIdentifier=_clusterIdentifier;
 @property(readonly, nonatomic) PPLocationRecord *mostRelevantRecord; // @synthesize mostRelevantRecord=_mostRelevantRecord;
 @property(readonly, nonatomic) unsigned short category; // @synthesize category=_category;
 @property(readonly, nonatomic) CLPlacemark *placemark; // @synthesize placemark=_placemark;
-- (void).cxx_destruct;
+- (id)featureValueForName:(id)arg1;
+@property(readonly, nonatomic) NSSet *featureNames;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)customizedDescription;

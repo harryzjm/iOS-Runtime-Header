@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString, WLKShowContentRating;
+@class NSDate, NSString;
 
 @interface WLKBasicShowMetadata
 {
-    WLKShowContentRating *_contentRating;
     NSDate *_releaseDate;
     NSDate *_finaleDate;
     NSString *_network;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *network; // @synthesize network=_network;
 @property(readonly, nonatomic) NSDate *finaleDate; // @synthesize finaleDate=_finaleDate;
 @property(readonly, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
-@property(readonly, nonatomic) WLKShowContentRating *contentRating; // @synthesize contentRating=_contentRating;
-- (void).cxx_destruct;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 

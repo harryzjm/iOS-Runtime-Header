@@ -16,7 +16,9 @@
 - (void *)identifier;
 - (_Bool)dumpState:(void *)arg1 withSize:(unsigned long long)arg2 hints:(struct os_state_hints_s *)arg3;
 - (void)updateState:(CDUnknownBlockType)arg1;
+@property(nonatomic) _Bool isAuthorizedForWidgetUpdates;
 @property(nonatomic) _Bool courtesyPromptNeeded;
+@property(nonatomic) _Bool fusionInfoEnabled;
 @property(nonatomic) _Bool groundAltitudeEnabled;
 @property(nonatomic) _Bool matchInfoEnabled;
 @property(nonatomic) _Bool updatingVehicleHeading;
@@ -28,6 +30,7 @@
 @property(nonatomic) _Bool paused;
 @property int pausesLocationUpdatesAutomatically;
 @property(nonatomic) long long activityType;
+@property(nonatomic) _Bool limitsPrecision;
 @property(nonatomic) int previousAuthorizationStatus;
 @property(nonatomic) _Bool previousAuthorizationStatusValid;
 @property(nonatomic) _Bool dynamicAccuracyReductionEnabled;

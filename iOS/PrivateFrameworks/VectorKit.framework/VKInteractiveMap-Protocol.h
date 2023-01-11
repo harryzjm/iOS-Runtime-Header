@@ -14,8 +14,6 @@
 @property(readonly, nonatomic) NSArray *visibleTileSets;
 @property(readonly, nonatomic) NSArray *overlays;
 @property(nonatomic) id <VKInteractiveMapDelegate> delegate;
-- (float)currentRoadSignOffset;
-- (void)setNavCameraIsDetached:(_Bool)arg1;
 - (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(VKCameraController<VKNavigationCameraController> *)arg5 pounceCompletionHandler:(void (^)(_Bool))arg6;
 - (_Bool)isPointValidForGesturing:(struct CGPoint)arg1;
 - (NSArray *)attributionsForCurrentRegion;
@@ -32,7 +30,6 @@
 - (_Bool (^)(struct))annotationCoordinateTest;
 - (long long (^)(double, double, double, double))annotationRectTest;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
-- (void)requestStylesheetMapDisplayStyle:(struct DisplayStyle)arg1 animated:(_Bool)arg2;
 - (void)setMapType:(int)arg1 animated:(_Bool)arg2;
 - (NSString *)consoleString:(_Bool)arg1;
 - (NSString *)detailedDescription;

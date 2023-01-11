@@ -6,19 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WebKit/UIDocumentMenuDelegate-Protocol.h>
+#import <WebKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <WebKit/UIDocumentPickerDelegate-Protocol.h>
 #import <WebKit/UIImagePickerControllerDelegate-Protocol.h>
 #import <WebKit/UINavigationControllerDelegate-Protocol.h>
 #import <WebKit/UIPopoverControllerDelegate-Protocol.h>
 
-@class NSString, WKContentView;
+@class NSString;
 @protocol WKFileUploadPanelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKFileUploadPanel : UIViewController <UIPopoverControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate>
+@interface WKFileUploadPanel : UIViewController <UIPopoverControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UIAdaptivePresentationControllerDelegate, UIContextMenuInteractionDelegate>
 {
-    WKContentView *_view;
+    struct WeakObjCPtr<WKContentView> _view;
     struct RefPtr<WebKit::WebOpenPanelResultListenerProxy, WTF::DumbPtrTraits<WebKit::WebOpenPanelResultListenerProxy>> _listener;
     RetainPtr_f649c0c3 _mimeTypes;
     struct CGPoint _interactionPoint;
@@ -27,15 +28,16 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIImagePickerController> _imagePicker;
     struct RetainPtr<UIViewController> _presentationViewController;
     struct RetainPtr<UIPopoverController> _presentationPopover;
-    struct RetainPtr<UIDocumentMenuViewController> _documentMenuController;
+    _Bool _isPresentingSubMenu;
+    struct RetainPtr<UIContextMenuInteraction> _documentContextMenuInteraction;
     struct RetainPtr<UIDocumentPickerViewController> _documentPickerController;
     int _mediaCaptureType;
     id <WKFileUploadPanelDelegate> _delegate;
 }
 
-@property(nonatomic) id <WKFileUploadPanelDelegate> delegate; // @synthesize delegate=_delegate;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) id <WKFileUploadPanelDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)platformSupportsPickerViewController;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
@@ -48,9 +50,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_willMultipleSelectionDelegateBeCalled;
 - (void)documentPickerWasCancelled:(id)arg1;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
-- (void)documentMenuWasCancelled:(id)arg1;
-- (void)documentMenu:(id)arg1 didPickDocumentPicker:(id)arg2;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)_presentFullscreenViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)_presentPopoverWithContentViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)_presentMenuOptionForCurrentInterfaceIdiom:(id)arg1;
@@ -58,9 +59,17 @@ __attribute__((visibility("hidden")))
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (_Bool)_shouldMediaCaptureOpenMediaDevice;
 - (void)_adjustMediaCaptureType;
-- (void)_showDocumentPickerMenu;
+- (void)showDocumentPickerMenu;
+- (void)showFilePickerMenu;
+- (void)ensureContextMenuInteraction;
+- (void)removeContextMenuInteraction;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)_cameraButtonLabelAllowingPhoto:(_Bool)arg1 allowingVideo:(_Bool)arg2;
 - (id)_photoLibraryButtonLabel;
+- (id)_browseFilesButtonLabel;
 - (id)_mediaTypesForPickerSourceType:(long long)arg1;
 - (id)currentAvailableActionTitles;
 - (void)_dismissDisplayAnimated:(_Bool)arg1;

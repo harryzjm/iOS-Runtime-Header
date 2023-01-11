@@ -53,8 +53,6 @@
 + (id)localizedSectionIndexTitleForSectionHeader:(id)arg1;
 + (id)localizedSectionHeaderForSectionHeader:(id)arg1;
 + (_Bool)supportsSecureCoding;
-+ (void)setCompanionDeviceActiveStoreAccountSubscriber:(_Bool)arg1;
-+ (_Bool)companionDeviceActiveStoreAccountIsSubscriber;
 + (_Bool)deviceSupportsMultipleLibraries;
 + (void)enableAutomaticDatabaseValidation;
 + (void)disableAutomaticDatabaseValidation;
@@ -104,6 +102,7 @@
 + (id)unitTestableLibraryForTest:(id)arg1 basePath:(id)arg2 setupSQLFilenames:(id)arg3;
 + (id)databasePathForUnitTest:(id)arg1 withBasePath:(id)arg2;
 + (id)jaliscoGetSortedMediaKinds:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isReadOnly) _Bool readOnly; // @synthesize readOnly=_readOnly;
 @property(nonatomic, getter=isUsingSharedLibraryPath) _Bool usingSharedLibraryPath; // @synthesize usingSharedLibraryPath=_usingSharedLibraryPath;
 @property(retain, nonatomic) NSArray *libraryPublicContainerFilterPredicates; // @synthesize libraryPublicContainerFilterPredicates=_libraryPublicContainerFilterPredicates;
@@ -114,8 +113,7 @@
 @property(readonly, copy, nonatomic) NSString *accountDSID; // @synthesize accountDSID=_accountDSID;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) ML3LibraryNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
-- (void).cxx_destruct;
-- (void)_updateDatabaseConnectionsProfilingLevel;
+- (void)_onQueue_updateDatabaseConnectionsProfilingLevel;
 - (void)_postClientNotificationWithDistributedName:(id)arg1 localName:(id)arg2;
 - (void)_tearDownNotificationManager;
 - (void)_setupNotificationManager;
@@ -210,6 +208,7 @@
 - (void)notifyInvisiblePropertyDidChange;
 - (void)notifyNonContentsPropertyDidChange;
 - (void)notifyEntitiesAddedOrRemoved;
+- (void)notifyAssistantContentsDidChange;
 - (void)notifyContentsDidChange;
 - (unsigned long long)unknownSectionIndex;
 - (unsigned long long)sectionIndexTitleIndexForSectionIndex:(unsigned long long)arg1;
@@ -256,7 +255,7 @@
 @property(nonatomic) long long syncGenerationID;
 @property(readonly, nonatomic) long long currentContentRevision;
 @property(readonly, nonatomic) long long currentRevision;
-@property(nonatomic) _Bool downloadOnAddToLibrary;
+@property(readonly, nonatomic) _Bool downloadOnAddToLibrary;
 @property(nonatomic) _Bool isHomeSharingLibrary;
 @property(readonly, nonatomic) struct iPhoneSortKeyBuilder *sortKeyBuilder; // @synthesize sortKeyBuilder=_sortKeyBuilder;
 @property(readonly, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
@@ -290,8 +289,9 @@
 - (id)genreForGenre:(id)arg1;
 - (id)composerForComposerName:(id)arg1;
 - (id)albumArtistForEffectiveAlbumArtistName:(id)arg1;
+- (void)_updateSystemPlaylist:(id)arg1 withName:(id)arg2 usingConnection:(id)arg3;
 - (void)updateOrderingLanguagesForCurrentLanguage;
-- (_Bool)updateSystemPlaylistNamesForCurrentLanguage;
+- (_Bool)updateSystemPlaylistNamesForCurrentLanguageUsingConnection:(id)arg1;
 - (long long)_clearPurgeableTracksOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2 includeCloudAssets:(_Bool)arg3 includeAutoFilledTracks:(_Bool)arg4;
 - (long long)_clearPurgeableTracksOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2 includeAutoFilledTracks:(_Bool)arg3;
 - (long long)_clearOrphanedAssetsOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
@@ -311,9 +311,11 @@
 - (id)_purgeableItemsPredicateSQLWithUrgency:(unsigned long long)arg1;
 - (unsigned long long)_managedClearPurgeableTracksOfAmount:(unsigned long long)arg1 urgency:(unsigned long long)arg2;
 - (unsigned long long)_managedPurgeableTracksTotalSizeWithUrgency:(unsigned long long)arg1;
-- (long long)_clearPurgeableArtworkOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
-- (long long)_purgeableArtworkTotalSizeWithUrgency:(unsigned long long)arg1;
-- (long long)_artworkTotalSize;
+- (unsigned long long)_clearPurgeableArtworkOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
+- (unsigned long long)_purgeableArtworkTotalSizeWithUrgency:(unsigned long long)arg1;
+- (unsigned long long)_purgeAllArtwork;
+- (_Bool)_shouldPurgeAllArtworkAtUrgency:(unsigned long long)arg1;
+- (unsigned long long)_artworkTotalSize;
 - (long long)_cloudAssetsTotalSize;
 - (long long)_databaseFileFreeSpace;
 - (_Bool)_shouldPurgeKeepLocalTracksForUrgency:(unsigned long long)arg1;

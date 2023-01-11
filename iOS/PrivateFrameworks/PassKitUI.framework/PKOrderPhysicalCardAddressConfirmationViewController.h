@@ -27,8 +27,8 @@
     id <PKPaymentSetupViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizeApplePayTrustSignature:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -39,7 +39,8 @@
 - (void)_showDisplayableError:(id)arg1;
 - (void)_showSpinner:(_Bool)arg1;
 - (void)_terminateFlow;
-- (void)_handleDidOrderPhysicalCard;
+- (void)_presentViewController:(id)arg1;
+- (void)_presentNextViewControllerOrTerminate;
 - (id)_addressBodyStringWithPostalAddress:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;

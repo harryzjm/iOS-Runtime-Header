@@ -17,6 +17,12 @@
 {
     _Bool _isScrollView;
     _Bool _delegateConformsToProtocol;
+    struct {
+        unsigned int respondsToShouldPreventDragLiftGesture:1;
+        unsigned int respondsToShouldAllowSelectionExtensionAtPoint:1;
+        unsigned int respondsToDidCancelMultiSelectInteraction:1;
+        unsigned int respondsToShouldBeginMultiSelectInteraction:1;
+    } _optionalDelegateFlags;
     _UIMultiSelectOneFingerPanGesture *_multiSelectModePan;
     UIPanGestureRecognizer *_multiFingerPan;
     UITapGestureRecognizer *_multiFingerTap;
@@ -25,13 +31,13 @@
     UIView *_view;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <UIMultiSelectInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) _UISingleFingerTapExtensionGesture *_singleFingerExtensionTap; // @synthesize _singleFingerExtensionTap;
 @property(retain, nonatomic) UITapGestureRecognizer *_multiFingerTap; // @synthesize _multiFingerTap;
 @property(retain, nonatomic) UIPanGestureRecognizer *_multiFingerPan; // @synthesize _multiFingerPan;
 @property(retain, nonatomic) _UIMultiSelectOneFingerPanGesture *_multiSelectModePan; // @synthesize _multiSelectModePan;
-- (void).cxx_destruct;
 - (void)_handleSelectionExtensionTapGesture:(id)arg1;
 - (void)_multiFingerTapGesture:(id)arg1;
 - (void)_didInvokeMultiSelectExtendGestureAtLocation:(struct CGPoint)arg1;
@@ -45,6 +51,7 @@
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (_Bool)_triggeredLegacyPathInsteadForGestureRecognizer:(id)arg1 velocity:(struct CGPoint)arg2 shouldBegin:(out _Bool *)arg3;
 - (_Bool)multiSelectOneFingerPanGestureShouldPreventDragInteractionGesture:(id)arg1;
 - (unsigned long long)_currentExtensionTypeForOneFingerTapGesture:(id)arg1;
 - (_Bool)_isCommandKeyBeingHeldWithGesture:(id)arg1;
@@ -60,6 +67,7 @@
 @property(nonatomic) double singleTouchPanGestureHysteresis; // @dynamic singleTouchPanGestureHysteresis;
 - (id)_interactionDelegate;
 - (void)_updateDelegateConformance;
+- (long long)_gestureTypeForGestureInstance:(id)arg1;
 - (id)init;
 
 // Remaining properties

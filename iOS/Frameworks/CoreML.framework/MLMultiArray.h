@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreML/NSSecureCoding-Protocol.h>
+
 @class NSArray;
 
-@interface MLMultiArray : NSObject
+@interface MLMultiArray : NSObject <NSSecureCoding>
 {
     struct MultiArrayBuffer *_pArray;
     _Bool _managingData;
@@ -17,19 +19,26 @@
     NSArray *_strides;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)stringForDataType:(long long)arg1;
-+ (vector_06e666a8)indexVectorFromArray:(id)arg1;
 + (id)arrayFromIndexVector:(const vector_06e666a8 *)arg1;
++ (_Bool)fillIndexVector:(vector_06e666a8 *)arg1 fromArray:(id)arg2 error:(id *)arg3;
 + (int)cppStorageOrder:(long long)arg1;
++ (id)multiArrayByConcatenatingMultiArrays:(id)arg1 alongAxis:(long long)arg2 dataType:(long long)arg3;
++ (_Bool)validateMultiArrays:(id)arg1 forConcatenatingAlongAxis:(long long)arg2 normalizedAxis:(unsigned long long *)arg3 reason:(id *)arg4;
++ (id)float32MatrixWithValues:(id)arg1 error:(id *)arg2;
 + (id)doubleMatrixWithValues:(id)arg1 error:(id *)arg2;
++ (_Bool)getShapeOfArrayOfSameLengthArrays:(id)arg1 numberOfRows:(unsigned long long *)arg2 numberOfColumns:(unsigned long long *)arg3 error:(id *)arg4;
 + (id)doubleMultiArrayWithShape:(id)arg1 valueArray:(id)arg2 error:(id *)arg3;
 + (id)doubleVectorWithValues:(id)arg1;
 + (id)doubleMultiArrayWithCopyOfMultiArray:(id)arg1;
 + (struct __CVBuffer *)pixelBufferBGRA8FromMultiArrayCHW:(id)arg1 channelOrderIsBGR:(_Bool)arg2 error:(id *)arg3;
 + (struct __CVBuffer *)pixelBufferGray8FromMultiArrayHW:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *strides; // @synthesize strides=_strides;
 @property(readonly, nonatomic) NSArray *shape; // @synthesize shape=_shape;
-- (void).cxx_destruct;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) long long dataType;
 @property(readonly, nonatomic) long long count;
@@ -44,6 +53,7 @@
 - (id)numberAtOffset:(unsigned long long)arg1;
 - (id)initWithDataPointer:(void *)arg1 shape:(id)arg2 dataType:(long long)arg3 strides:(id)arg4 deallocator:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (id)initWithShape:(id)arg1 dataType:(long long)arg2 error:(id *)arg3;
+- (float *)float32Pointer;
 - (double *)doublePointer;
 - (_Bool)isEqualToMultiArray:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -51,16 +61,22 @@
 @property(readonly, nonatomic, getter=isContiguous) _Bool contiguous;
 @property(readonly, nonatomic, getter=isManagingData) _Bool managingData;
 @property(readonly, nonatomic) unsigned long long numberOfBytesPerElement;
-- (id)initWithShape:(id)arg1 dataType:(long long)arg2 storageOrder:(long long)arg3 error:(id *)arg4;
 - (_Bool)vectorizeIntoMultiArray:(id)arg1 storageOrder:(long long)arg2 error:(id *)arg3;
 - (_Bool)copyIntoMultiArray:(id)arg1 error:(id *)arg2;
 - (id)numberArray;
 - (_Bool)setRangeWithRawData:(id)arg1 destIndex:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)fillWithNumber:(id)arg1;
+- (id)initWithShape:(id)arg1 dataType:(long long)arg2 storageOrder:(long long)arg3 bufferAlignment:(unsigned long long)arg4;
+- (id)initWithMultiArrayBuffer:(struct MultiArrayBuffer *)arg1;
+- (id)initWithShape:(id)arg1 dataType:(long long)arg2 storageOrder:(long long)arg3 error:(id *)arg4;
+- (void *)multiArrayBuffer;
+- (id)multiArrayViewExpandingDimensionsAtAxis:(long long)arg1;
 - (id)squeezeDimensions:(id)arg1 error:(id *)arg2;
 - (id)squeeze;
 - (id)sliceAtOrigin:(id)arg1 shape:(id)arg2 squeeze:(_Bool)arg3 error:(id *)arg4;
-- (void *)multiArrayBuffer;
+- (_Bool)renderToCVPixelBuffer:(struct __CVBuffer *)arg1 channelOrderIsBGR:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)renderTo32BGRAPixelBuffer:(struct __CVBuffer *)arg1 channelOrderIsBGR:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)renderToOneComponent8PixelBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)debugQuickLookObject;
 
 @end

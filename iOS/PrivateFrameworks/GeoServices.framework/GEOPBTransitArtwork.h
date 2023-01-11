@@ -15,12 +15,14 @@
 @interface GEOPBTransitArtwork : PBCodable <GEOTransitArtworkDataSource, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_accessibilityString;
     GEOPBTransitShield *_iconFallbackShield;
     GEOPBTransitIcon *_icon;
     GEOPBTransitShield *_shield;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _artworkType;
     int _artworkUse;
     int _badge;
@@ -33,14 +35,7 @@
         unsigned int read_iconFallbackShield:1;
         unsigned int read_icon:1;
         unsigned int read_shield:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_accessibilityString:1;
-        unsigned int wrote_iconFallbackShield:1;
-        unsigned int wrote_icon:1;
-        unsigned int wrote_shield:1;
-        unsigned int wrote_artworkType:1;
-        unsigned int wrote_artworkUse:1;
-        unsigned int wrote_badge:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,24 +51,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSString *accessibilityString;
 @property(readonly, nonatomic) _Bool hasAccessibilityString;
-- (void)_readAccessibilityString;
 - (int)StringAsBadge:(id)arg1;
 - (id)badgeAsString:(int)arg1;
 @property(nonatomic) _Bool hasBadge;
 @property(nonatomic) int badge;
 @property(retain, nonatomic) GEOPBTransitShield *iconFallbackShield;
 @property(readonly, nonatomic) _Bool hasIconFallbackShield;
-- (void)_readIconFallbackShield;
 @property(retain, nonatomic) GEOPBTransitIcon *icon;
 @property(readonly, nonatomic) _Bool hasIcon;
-- (void)_readIcon;
 @property(retain, nonatomic) GEOPBTransitShield *shield;
 @property(readonly, nonatomic) _Bool hasShield;
-- (void)_readShield;
 - (int)StringAsArtworkUse:(id)arg1;
 - (id)artworkUseAsString:(int)arg1;
 @property(nonatomic) _Bool hasArtworkUse;
@@ -82,6 +76,8 @@
 - (id)artworkTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasArtworkType;
 @property(nonatomic) int artworkType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) id <GEOTransitTextDataSource> textDataSource;
 @property(readonly, nonatomic) NSString *accessibilityText;
 @property(readonly, nonatomic) _Bool hasRoutingIncidentBadge;

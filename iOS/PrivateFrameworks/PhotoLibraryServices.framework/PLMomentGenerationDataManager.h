@@ -19,30 +19,34 @@
     PLMomentGeneration *_generator;
     NSDictionary *_generationOptions;
     _Bool _observingReachability;
-    _Bool _isLightweightMigrationManager;
+    struct os_unfair_lock_s _lightweightMigrationLock;
     PLPhotoLibraryPathManager *_lightWeightMigrationPathManager;
     PLLibraryServicesManager *_libraryServicesManager;
     PLRoutineService *_routineManager;
     _Bool _shouldPerformLightweightValidation;
     _Bool _previousValidationSucceeded;
+    _Bool _isLightweightMigrationManager;
     long long _previousValidatedModelVersion;
     PLCameraAppWatcher *_cameraWatcher;
-    NSManagedObjectContext *_managedObjectContext;
     PLPhotoLibrary *_momentGenerationLibrary;
+    NSManagedObjectContext *_managedObjectContext;
 }
 
 + (_Bool)isManagedObjectContextMomentarilyBlessed:(id)arg1;
 + (void)_setManagedObjectContextMomentarilyBlessed:(id)arg1;
 + (void)setManagerMomentarilyBlessed:(id)arg1;
 + (void)initialize;
-@property(retain, nonatomic) PLPhotoLibrary *momentGenerationLibrary; // @synthesize momentGenerationLibrary=_momentGenerationLibrary;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
+@property(retain, nonatomic) PLPhotoLibrary *momentGenerationLibrary; // @synthesize momentGenerationLibrary=_momentGenerationLibrary;
+@property(readonly, nonatomic) _Bool isLightweightMigrationManager; // @synthesize isLightweightMigrationManager=_isLightweightMigrationManager;
 @property(readonly, nonatomic) PLCameraAppWatcher *cameraWatcher; // @synthesize cameraWatcher=_cameraWatcher;
 @property(nonatomic) _Bool previousValidationSucceeded; // @synthesize previousValidationSucceeded=_previousValidationSucceeded;
 @property(nonatomic) long long previousValidatedModelVersion; // @synthesize previousValidatedModelVersion=_previousValidatedModelVersion;
 @property(nonatomic) _Bool shouldPerformLightweightValidation; // @synthesize shouldPerformLightweightValidation=_shouldPerformLightweightValidation;
-- (void).cxx_destruct;
 - (void)runPeriodicMaintenanceTasks:(unsigned long long)arg1 withTransaction:(id)arg2;
+- (id)lastLocationOfInterestVisit;
+- (void)fetchLocationsOfInterestIfNeeded;
 - (_Bool)cameraIsActive;
 - (id)locationsOfInterest;
 - (_Bool)routineIsAvailable;

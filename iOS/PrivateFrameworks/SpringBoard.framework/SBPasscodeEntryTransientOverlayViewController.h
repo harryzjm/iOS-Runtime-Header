@@ -8,7 +8,7 @@
 #import <SpringBoard/SBFAuthenticationResponder-Protocol.h>
 #import <SpringBoard/SBUIPasscodeLockViewDelegate-Protocol.h>
 
-@class CSLockScreenPearlSettings, NSString, SBFUserAuthenticationController, SBUIPasscodeViewWithLockScreenStyle;
+@class CSLockScreenPearlSettings, CSPoseidonViewController, NSString, SBFUserAuthenticationController, SBUIPasscodeViewWithLockScreenStyle;
 @protocol SBPasscodeEntryTransientOverlayViewControllerDelegate, SBUIPasscodeLockView;
 
 @interface SBPasscodeEntryTransientOverlayViewController <PTSettingsKeyObserver, SBFAuthenticationResponder, SBUIPasscodeLockViewDelegate>
@@ -18,17 +18,20 @@
     id <SBUIPasscodeLockView> _passcodeRequester;
     SBUIPasscodeViewWithLockScreenStyle *_passcodeView;
     CSLockScreenPearlSettings *_pearlSettings;
+    CSPoseidonViewController *_poseidonViewController;
     _Bool _showEmergencyCallButton;
     _Bool _useBiometricPresentation;
+    int _intent;
     id <SBPasscodeEntryTransientOverlayViewControllerDelegate> _delegate;
     NSString *_unlockDestination;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) int intent; // @synthesize intent=_intent;
 @property(copy, nonatomic) NSString *unlockDestination; // @synthesize unlockDestination=_unlockDestination;
 @property(nonatomic) _Bool useBiometricPresentation; // @synthesize useBiometricPresentation=_useBiometricPresentation;
 @property(nonatomic) _Bool showEmergencyCallButton; // @synthesize showEmergencyCallButton=_showEmergencyCallButton;
 @property(nonatomic) __weak id <SBPasscodeEntryTransientOverlayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_updatePrototypeSettings;
 - (void)_passcodeLockViewPasscodeEntered:(id)arg1 viaMesa:(_Bool)arg2;
 - (void)_attemptUnlock:(id)arg1 passcode:(id)arg2;
@@ -48,6 +51,7 @@
 - (id)newTransientOverlayPresentationTransitionCoordinator;
 - (id)newTransientOverlayDismissalTransitionCoordinator;
 - (_Bool)isContentOpaque;
+- (int)_preferredStatusBarVisibility;
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

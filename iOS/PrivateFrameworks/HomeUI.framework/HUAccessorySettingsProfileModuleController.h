@@ -14,9 +14,10 @@
     id <HUAccessorySettingsProfileModuleControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <HUAccessorySettingsProfileModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <HUAccessorySettingsProfileModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)profileViewControllerDidSelectRemoveProfile:(id)arg1;
+- (_Bool)profileViewControllerIsProfileInstalled;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1;

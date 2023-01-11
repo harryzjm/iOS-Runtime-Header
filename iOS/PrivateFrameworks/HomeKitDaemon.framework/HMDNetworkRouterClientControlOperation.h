@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class HMDNetworkRouterClientConfiguration, HMDNetworkRouterControlOperation, NSString;
 
-@interface HMDNetworkRouterClientControlOperation : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientControlOperation : NSObject <NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterControlOperation *_operation;
     HMDNetworkRouterClientConfiguration *_configuration;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMDNetworkRouterClientConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) HMDNetworkRouterControlOperation *operation; // @synthesize operation=_operation;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

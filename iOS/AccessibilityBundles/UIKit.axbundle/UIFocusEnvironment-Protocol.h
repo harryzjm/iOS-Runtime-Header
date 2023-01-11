@@ -19,6 +19,7 @@
 - (void)setNeedsFocusUpdate;
 
 @optional
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 - (NSString *)soundIdentifierForFocusUpdateInContext:(UIFocusUpdateContext *)arg1;
 @end

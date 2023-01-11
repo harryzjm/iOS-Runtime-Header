@@ -13,13 +13,19 @@
     GEOResource *_resource;
     NSArray *_equivalentResources;
     _Bool _allowResumingPartialDownload;
+    NSString *_eTag;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *eTag; // @synthesize eTag=_eTag;
 @property(nonatomic, getter=_allowResumingPartialDownload, setter=_setAllowResumingPartialDownload:) _Bool allowResumingPartialDownload; // @synthesize allowResumingPartialDownload=_allowResumingPartialDownload;
 @property(readonly, nonatomic) GEOResource *resource; // @synthesize resource=_resource;
 @property(copy, nonatomic) NSArray *equivalentResources; // @synthesize equivalentResources=_equivalentResources;
-- (void).cxx_destruct;
 - (id)description;
+- (_Bool)shouldCheckForUpdateForResourceAtPath:(id)arg1 useExtendedAttrs:(_Bool)arg2 forceUpdateCheck:(_Bool)arg3 log:(id)arg4;
+- (_Bool)validateResourceAtPath:(id)arg1 useExtendedAttrs:(_Bool)arg2 log:(id)arg3;
+- (_Bool)validateResource:(id)arg1 log:(id)arg2;
+@property(readonly, nonatomic) int validationMethod;
 @property(readonly, nonatomic) NSData *checksum;
 @property(readonly, nonatomic) int type;
 @property(readonly, nonatomic) NSString *name;

@@ -15,7 +15,6 @@
 {
     _Bool _probeTFO;
     _Bool _probeNoTFOCookie;
-    _Bool _probeUseTFOHeuristics;
     _Bool _passedReprobeThreshold;
     _Bool _needReprobe;
     _Bool _isObserving;
@@ -37,6 +36,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property _Bool isObserving; // @synthesize isObserving=_isObserving;
 @property _Bool needReprobe; // @synthesize needReprobe=_needReprobe;
 @property(retain) NSNumber *currentTimeout; // @synthesize currentTimeout=_currentTimeout;
@@ -48,7 +48,6 @@
 @property(retain) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property long long probeCount; // @synthesize probeCount=_probeCount;
 @property long long TFOStatus; // @synthesize TFOStatus=_TFOStatus;
-@property _Bool probeUseTFOHeuristics; // @synthesize probeUseTFOHeuristics=_probeUseTFOHeuristics;
 @property _Bool probeNoTFOCookie; // @synthesize probeNoTFOCookie=_probeNoTFOCookie;
 @property _Bool probeTFO; // @synthesize probeTFO=_probeTFO;
 @property long long interfaceType; // @synthesize interfaceType=_interfaceType;
@@ -58,7 +57,6 @@
 @property unsigned long long roundTripTime; // @synthesize roundTripTime=_roundTripTime;
 @property(retain) NWEndpoint *probeEndpoint; // @synthesize probeEndpoint=_probeEndpoint;
 @property unsigned long long edgeIndex; // @synthesize edgeIndex=_edgeIndex;
-- (void).cxx_destruct;
 - (_Bool)isComplete:(_Bool)arg1;
 - (_Bool)isMatched:(id)arg1;
 - (_Bool)isMatched:(id)arg1 parameters:(struct networkParameters *)arg2;

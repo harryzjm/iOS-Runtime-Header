@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
+#import <TVMLKit/AMSUIDynamicViewControllerDelegate-Protocol.h>
 #import <TVMLKit/IKAppContextDelegate-Protocol.h>
+#import <TVMLKit/IKAppContextDelegatePrivate-Protocol.h>
 #import <TVMLKit/IKAppContextInspectorDelegate-Protocol.h>
 #import <TVMLKit/IKAppDeviceConfig-Protocol.h>
 #import <TVMLKit/_TVAppNavigationControllerDelegate-Protocol.h>
@@ -14,7 +16,7 @@
 @class IKAppContext, IKAppDataStorage, NSDate, NSDictionary, NSString, NSXPCListener, TVApplicationControllerContext, UINavigationController, UIView, UIViewController, UIWindow, _TVApplicationInspector, _TVMLKitApplication;
 @protocol TVAppRootViewController, TVApplicationControllerDelegate, UITraitEnvironment;
 
-@interface TVApplicationController : NSObject <IKAppContextInspectorDelegate, IKAppDeviceConfig, _TVAppNavigationControllerDelegate, IKAppContextDelegate>
+@interface TVApplicationController : NSObject <IKAppContextInspectorDelegate, IKAppDeviceConfig, IKAppContextDelegatePrivate, AMSUIDynamicViewControllerDelegate, _TVAppNavigationControllerDelegate, IKAppContextDelegate>
 {
     IKAppContext *_appContext;
     _TVMLKitApplication *_application;
@@ -35,18 +37,20 @@
     UIWindow *_window;
     TVApplicationControllerContext *_context;
     id <TVApplicationControllerDelegate> _delegate;
+    CDUnknownBlockType _dynamicUICompletion;
     _TVApplicationInspector *_applicationInspector;
     id <UITraitEnvironment> _keyTraitEnvironment;
 }
 
 + (id)_jsLaunchOptionsWithApplicationOptions:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <UITraitEnvironment> keyTraitEnvironment; // @synthesize keyTraitEnvironment=_keyTraitEnvironment;
 @property(readonly, nonatomic) _TVApplicationInspector *applicationInspector; // @synthesize applicationInspector=_applicationInspector;
+@property(copy, nonatomic) CDUnknownBlockType dynamicUICompletion; // @synthesize dynamicUICompletion=_dynamicUICompletion;
 @property(readonly, nonatomic) __weak id <TVApplicationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) TVApplicationControllerContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) UIWindow *window; // @synthesize window=_window;
-- (void).cxx_destruct;
 - (id)_rootViewController;
 - (_Bool)_hasReloadOnResumeMinIntervalPassed;
 - (_Bool)_shouldReloadOnResume;
@@ -74,6 +78,9 @@
 - (struct CGSize)screenSize;
 - (unsigned long long)preferredVideoPreviewFormat;
 - (unsigned long long)preferredVideoFormat;
+- (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
+- (void)appContext:(id)arg1 openMarketingItem:(id)arg2 metricsOverlay:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)appContext:(id)arg1 openDynamicUIURL:(id)arg2 metricsOverlay:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)appContext:(id)arg1 needsReloadWithUrgency:(unsigned long long)arg2 options:(id)arg3;
 - (void)reload;
 - (void)appContext:(id)arg1 evaluateAppJavaScriptInContext:(id)arg2;

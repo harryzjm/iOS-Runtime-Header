@@ -14,9 +14,9 @@
     WBSPerSitePreference *_geolocationPreference;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) WBSPerSitePreference *geolocationPreference; // @synthesize geolocationPreference=_geolocationPreference;
 @property(readonly, nonatomic) WBSPerSitePreferencesSQLiteStore *perSitePreferencesStore; // @synthesize perSitePreferencesStore=_perSitePreferencesStore;
-- (void).cxx_destruct;
 - (void)_setValue:(id)arg1 forDomain:(id)arg2 shouldIncludeTimestamp:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)_isDateLessThanOneDayAgo:(id)arg1;
 - (id)perSitePreferenceValueForGeolocationSetting:(long long)arg1;
@@ -32,8 +32,10 @@
 - (void)_removePermissionsPassingTest:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removePermissionsAddedAfterDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeTemporaryPermissionsAddedAfterDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeAllPermissionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeAllPermissions;
 - (void)removeAllTemporaryPermissions;
+- (void)setDefaultGeolocationSetting:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDefaultGeolocationSetting:(long long)arg1;
 - (void)setGeolocationSetting:(long long)arg1 forDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getGeolocationSettingForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

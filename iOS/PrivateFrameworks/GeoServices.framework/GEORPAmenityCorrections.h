@@ -13,17 +13,17 @@
 @interface GEORPAmenityCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _addedAmenities;
     CDStruct_95bda58d _removedAmenities;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_addedAmenities:1;
         unsigned int read_removedAmenities:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addedAmenities:1;
-        unsigned int wrote_removedAmenities:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,29 +39,30 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsRemovedAmenities:(id)arg1;
 - (id)removedAmenitiesAsString:(int)arg1;
 - (void)setRemovedAmenities:(int *)arg1 count:(unsigned long long)arg2;
 - (int)removedAmenitiesAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsRemovedAmenities:(int)arg1;
 - (void)addRemovedAmenities:(int)arg1;
 - (void)clearRemovedAmenities;
 @property(readonly, nonatomic) int *removedAmenities;
 @property(readonly, nonatomic) unsigned long long removedAmenitiesCount;
-- (void)_readRemovedAmenities;
 - (int)StringAsAddedAmenities:(id)arg1;
 - (id)addedAmenitiesAsString:(int)arg1;
 - (void)setAddedAmenities:(int *)arg1 count:(unsigned long long)arg2;
 - (int)addedAmenitiesAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsAddedAmenities:(int)arg1;
 - (void)addAddedAmenities:(int)arg1;
 - (void)clearAddedAmenities;
 @property(readonly, nonatomic) int *addedAmenities;
 @property(readonly, nonatomic) unsigned long long addedAmenitiesCount;
-- (void)_readAddedAmenities;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

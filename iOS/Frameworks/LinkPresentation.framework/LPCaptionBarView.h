@@ -6,7 +6,7 @@
 
 #import <LinkPresentation/CAAnimationDelegate-Protocol.h>
 
-@class LPCaptionBarAccessoryView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPComponentView, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSString;
+@class LPCaptionBarAccessoryView, LPCaptionBarButtonView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPComponentView, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSString;
 @protocol LPTextStyleable;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     LPPlayButtonView *_playButton;
     LPCaptionBarAccessoryView *_leftAccessoryView;
     LPCaptionBarAccessoryView *_rightAccessoryView;
+    LPCaptionBarButtonView *_buttonView;
     LPComponentView<LPTextStyleable> *_aboveTopCaptionView;
     LPComponentView<LPTextStyleable> *_topCaptionView;
     LPComponentView<LPTextStyleable> *_bottomCaptionView;
@@ -30,9 +31,10 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _textSafeAreaInset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets textSafeAreaInset; // @synthesize textSafeAreaInset=_textSafeAreaInset;
 @property(nonatomic) _Bool useProgressSpinner; // @synthesize useProgressSpinner=_useProgressSpinner;
-- (void).cxx_destruct;
+- (id)button;
 - (void)_buildViewsForCaptionBarIfNeeded;
 - (struct CGSize)_layoutCaptionBarForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

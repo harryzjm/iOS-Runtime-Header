@@ -66,7 +66,8 @@
 + (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 serviceClient:(struct __IOHIDServiceClient *)arg2 hidStreamIdentifier:(id)arg3;
 + (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)representationWithLocation:(struct CGPoint)arg1 windowLocation:(struct CGPoint)arg2 handInfo:(id)arg3;
-+ (id)_pointerControllerEvent:(struct __IOHIDEvent *)arg1;
++ (id)_motionGestureTapEvent:(struct __IOHIDEvent *)arg1 serviceClient:(struct __IOHIDServiceClient *)arg2 hidStreamIdentifier:(id)arg3 clientID:(id)arg4 taskPort:(unsigned int)arg5;
++ (id)_pointerControllerEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)_gameControllerEvent:(struct __IOHIDEvent *)arg1;
 + (id)_wheelEvent:(struct __IOHIDEvent *)arg1;
 + (id)_keyboardButtonEvent:(struct __IOHIDEvent *)arg1;
@@ -76,6 +77,7 @@
 + (id)representationWithType:(unsigned int)arg1 subtype:(int)arg2 time:(unsigned long long)arg3 location:(struct CGPoint)arg4 windowLocation:(struct CGPoint)arg5 handInfo:(id)arg6;
 + (id)representationWithData:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) void *window; // @synthesize window=_window;
 @property(retain, nonatomic) AXEventData *accessibilityData; // @synthesize accessibilityData=_accessibilityData;
@@ -114,7 +116,6 @@
 @property(nonatomic) int subtype; // @synthesize subtype=_subtype;
 @property(nonatomic) unsigned int originalType; // @synthesize originalType=_originalType;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)_accessibilityDataFromRealEvent:(struct __IOHIDEvent *)arg1;
 - (void)_applyAccessibilityDataToRealEvent:(struct __IOHIDEvent *)arg1;
 - (struct __IOHIDEvent *)_accessibilityEventFromRealEvent:(struct __IOHIDEvent *)arg1;
@@ -152,7 +153,6 @@
 - (unsigned long long)_machTimeForHIDEventRef;
 - (_Bool)isDownEvent;
 - (struct __IOHIDEvent *)newHIDEventRef;
-- (unsigned int)_contextIDFromHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)dataRepresentation;
 @property(readonly, nonatomic) _Bool willBeUpdated;
 @property(readonly, nonatomic) _Bool isUpdate;

@@ -11,7 +11,6 @@
 @protocol GEONavigationServerPushStateXPCInterface <NSObject>
 - (void)setCurrentRoadName:(NSString *)arg1;
 - (void)setNavigationVoiceVolumeWithData:(NSData *)arg1;
-- (void)setRouteSummaryWithTrafficIncidentAlertDetailsData:(NSData *)arg1;
 - (void)setRouteSummaryWithPositionFromDestinationData:(NSData *)arg1;
 - (void)setRouteSummaryWithPositionFromManeuverData:(NSData *)arg1;
 - (void)setRouteSummaryWithPositionFromSignData:(NSData *)arg1;

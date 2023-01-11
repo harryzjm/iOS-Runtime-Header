@@ -20,14 +20,19 @@
     long long _currentSearchItem;
     UIColor *_normalTextViewBackground;
     UIColor *_selectedTextViewBackground;
+    UIColor *_currentSelectionForeground;
     UIColor *_currentSelectionBackground;
+    UIColor *_otherSelectionForeground;
     UIColor *_otherSelectionBackground;
     double _currentKeyboardHeight;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double currentKeyboardHeight; // @synthesize currentKeyboardHeight=_currentKeyboardHeight;
 @property(readonly, nonatomic) UIColor *otherSelectionBackground; // @synthesize otherSelectionBackground=_otherSelectionBackground;
+@property(readonly, nonatomic) UIColor *otherSelectionForeground; // @synthesize otherSelectionForeground=_otherSelectionForeground;
 @property(readonly, nonatomic) UIColor *currentSelectionBackground; // @synthesize currentSelectionBackground=_currentSelectionBackground;
+@property(readonly, nonatomic) UIColor *currentSelectionForeground; // @synthesize currentSelectionForeground=_currentSelectionForeground;
 @property(readonly, nonatomic) UIColor *selectedTextViewBackground; // @synthesize selectedTextViewBackground=_selectedTextViewBackground;
 @property(readonly, nonatomic) UIColor *normalTextViewBackground; // @synthesize normalTextViewBackground=_normalTextViewBackground;
 @property long long currentSearchItem; // @synthesize currentSearchItem=_currentSearchItem;
@@ -38,7 +43,6 @@
 @property(readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 @property(readonly, nonatomic) NSString *dataAsString; // @synthesize dataAsString=_dataAsString;
 @property(readonly) NSData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
 - (void)searchBarChangeSearch:(id)arg1 searchString:(id)arg2;
 - (void)searchBarDoneAction:(id)arg1;
 - (void)searchBarDownAction:(id)arg1;

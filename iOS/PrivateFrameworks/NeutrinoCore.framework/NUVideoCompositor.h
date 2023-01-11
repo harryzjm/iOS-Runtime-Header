@@ -15,13 +15,16 @@
 {
     _Atomic unsigned long long _requestCounter;
     NSObject<OS_dispatch_queue> *_renderingQueue;
-    NSMutableSet *_inFlightRequests;
-    struct os_unfair_lock_s _inFlightRequestsLock;
+    NSMutableSet *_pendingRequests;
+    struct os_unfair_lock_s _pendingRequestsLock;
+    struct os_unfair_lock_s _renderingQueueInitializeLock;
 }
 
 - (void).cxx_destruct;
 - (void)failVideoCompositionRequest:(id)arg1 error:(id)arg2;
+- (void)setColorSpaceOfDestinationBuffer:(struct __CVBuffer *)arg1 fromPrimarySourceBufferOfRequest:(id)arg2;
 - (id)videoFramesFromRequest:(id)arg1;
+- (void)finishCompositionRequest:(id)arg1 withComposedVideoFrame:(struct __CVBuffer *)arg2;
 - (void)fulfillVideoCompositionRequest:(id)arg1;
 - (void)cancelAllPendingVideoCompositionRequests;
 @property(readonly, nonatomic) _Bool supportsWideColorSourceFrames;
@@ -31,12 +34,14 @@
 - (id)init;
 @property(readonly, nonatomic) NSDictionary *requiredPixelBufferAttributesForRenderContext;
 @property(readonly, nonatomic) NSDictionary *sourcePixelBufferAttributes;
+- (id)standardPixelFormatsAllowCompressed:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsHDRSourceFrames;
 
 @end
 

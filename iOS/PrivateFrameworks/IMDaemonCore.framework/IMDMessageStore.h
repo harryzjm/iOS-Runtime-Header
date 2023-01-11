@@ -21,7 +21,8 @@
 + (void)_displayDatabaseFullAlert;
 + (void)databaseNoLongerFull;
 + (void)databaseFull;
-+ (void)_updateCacheForMessageGUID:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 updateLastMessage:(_Bool)arg4 calculateUnreadCount:(_Bool)arg5;
++ (id)_missingMessageReadReceiptCache;
++ (_Bool)_updateCacheForMessageGUID:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 updateLastMessage:(_Bool)arg4 calculateUnreadCount:(_Bool)arg5;
 + (id)sharedInstance;
 @property(retain) NSString *modificationStamp; // @synthesize modificationStamp=_modificationStamp;
 - (long long)lastSyncedMessageRowID;
@@ -41,6 +42,7 @@
 - (void)rebuildUnreadMessageCount;
 - (void)rebuildLastFailedMessageDate;
 - (_Bool)_shouldUseBadgeUtilities;
+- (id)notificationContext;
 - (void)databaseChatSpamUpdated:(id)arg1;
 - (void)updateStamp;
 - (void)_postDBUpdate;
@@ -52,10 +54,9 @@
 - (void)cleanseAttachments;
 - (long long)unreadMessagesCount;
 - (long long)lastFailedMessageDate;
-- (id)markMessagesAsReadWithRoomname:(id)arg1 onService:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(_Bool)arg5;
-- (id)markMessagesAsReadWithHandle:(id)arg1 onService:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(_Bool)arg5;
-- (id)markMessagesAsReadWithRoomNames:(id)arg1 onServices:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(_Bool)arg5;
-- (id)markMessagesAsReadWithHandles:(id)arg1 onServices:(id)arg2 upToGUID:(id)arg3 readDate:(id)arg4 fromMe:(_Bool)arg5;
+- (id)markMessagesAsReadWithChatGUIDs:(id)arg1 upToGUID:(id)arg2 readDate:(id)arg3 fromMe:(_Bool)arg4;
+- (id)markMessagesAsReadWithIdentifiers:(id)arg1 onServices:(id)arg2 chatStyle:(unsigned char)arg3 upToGUID:(id)arg4 readDate:(id)arg5 fromMe:(_Bool)arg6;
+- (void)markMessageGUIDUnread:(id)arg1;
 - (id)deleteMessagesWithReplaceMessageID:(int)arg1 fromHandle:(id)arg2 onService:(id)arg3;
 - (id)deleteMessagesWithChatIdentifiers:(id)arg1 style:(unsigned char)arg2 onServices:(id)arg3;
 - (id)deleteMessagesWithChatIdentifiers:(id)arg1 style:(unsigned char)arg2 onServices:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -64,6 +65,7 @@
 - (id)deleteMessageGUIDs:(id)arg1 inChat:(id)arg2;
 - (void)resolveUnformattedRepresentationsForHandles:(id)arg1 onService:(id)arg2 message:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)_cleanUnformattedPhoneNumber:(id)arg1 countryCode:(id)arg2;
+- (_Bool)_isValidPhoneNumber:(id)arg1 forCountryCode:(id)arg2;
 - (struct _IMDHandleRecordStruct *)_copyHandle:(id)arg1 onService:(id)arg2;
 - (id)_chatsForMessageIdentifier:(long long)arg1;
 - (id)chatForMessageIdentifier:(long long)arg1;
@@ -73,6 +75,8 @@
 - (id)chatForMessageGUID:(id)arg1 enableVerboseLogging:(_Bool)arg2;
 - (id)chatForMessageGUID:(id)arg1;
 - (id)chatForMessage:(id)arg1;
+- (_Bool)popReadReceiptForMissingGUID:(id)arg1;
+- (void)addMissingMessageReadReceipt:(id)arg1;
 - (id)messagesWithReplyToGUID:(id)arg1;
 - (id)frequentRepliesForForChatIdentifiers:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
 - (id)messageActionItemsForOriginalMessageGUID:(id)arg1;
@@ -82,9 +86,11 @@
 - (id)unreadMessagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
 - (id)unreadMessagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
 - (id)lastMessageWithHandles:(id)arg1 onServices:(id)arg2;
-- (id)messagesWithHandlesBeforeAndAfterGUID:(id)arg1 handles:(id)arg2 onServices:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5;
+- (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 threadIdentifier:(id)arg6 hasMessagesBefore:(_Bool *)arg7 hasMessagesAfter:(_Bool *)arg8;
+- (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5;
 - (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4;
 - (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
+- (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5;
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4;
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
 - (id)messageWithReplaceMessageID:(int)arg1 fromHandle:(id)arg2 onService:(id)arg3;
@@ -103,9 +109,9 @@
 - (void)registerTransfersWithGUIDs:(id)arg1 forMessageGUID:(id)arg2;
 - (id)_unreadMessagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
 - (id)_unreadMessagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
-- (id)_messagesWithHandlesBeforeAndAfterGUID:(id)arg1 handles:(id)arg2 onServices:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5;
-- (id)_messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(_Bool)arg5;
-- (id)_messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(_Bool)arg5;
+- (id)_messagesWithHandlesBeforeAndAfterGUID:(id)arg1 handles:(id)arg2 onServices:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 threadIdentifier:(id)arg6 hasMessagesBefore:(_Bool *)arg7 hasMessagesAfter:(_Bool *)arg8;
+- (id)_messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5 onlyMessages:(_Bool)arg6;
+- (id)_messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 threadIdentifier:(id)arg4 limit:(unsigned long long)arg5 onlyMessages:(_Bool)arg6;
 - (id)_itemsWithGUIDs:(id)arg1;
 - (id)_itemsWithAssociatedGUID:(id)arg1 shouldLoadAttachments:(_Bool)arg2;
 - (_Bool)_hasMessagesWithGUIDs:(id)arg1;

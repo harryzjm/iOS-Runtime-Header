@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, VNImageAestheticsObservation, VNObservation, VNSaliencyImageObservation, VNSceneObservation;
+#import <PhotosFormats/NSSecureCoding-Protocol.h>
 
-@interface PFCameraMetadata : NSObject
+@class NSArray, NSData, NSString, VNImageAestheticsObservation, VNSaliencyImageObservation, VNSceneObservation;
+
+@interface PFCameraMetadata : NSObject <NSSecureCoding>
 {
     _Bool _horizonLinePresent;
     float _horizonLineAngleInDegrees;
@@ -17,7 +19,6 @@
     VNSaliencyImageObservation *_saliencyObservation;
     VNSceneObservation *_scenePrintObservation;
     VNSceneObservation *_compressedScenePrintObservation;
-    VNObservation *_imageCorrectionNeedObservation;
     NSArray *_detectedHumanFaces;
     NSArray *_detectedHumanBodies;
     NSArray *_detectedCatBodies;
@@ -27,6 +28,8 @@
     NSString *_captureFolderPath;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *captureFolderPath; // @synthesize captureFolderPath=_captureFolderPath;
 @property(readonly, nonatomic) float horizonLineAngleInDegrees; // @synthesize horizonLineAngleInDegrees=_horizonLineAngleInDegrees;
 @property(readonly, nonatomic) _Bool horizonLinePresent; // @synthesize horizonLinePresent=_horizonLinePresent;
@@ -36,14 +39,16 @@
 @property(readonly, nonatomic) NSArray *detectedCatBodies; // @synthesize detectedCatBodies=_detectedCatBodies;
 @property(readonly, nonatomic) NSArray *detectedHumanBodies; // @synthesize detectedHumanBodies=_detectedHumanBodies;
 @property(readonly, nonatomic) NSArray *detectedHumanFaces; // @synthesize detectedHumanFaces=_detectedHumanFaces;
-@property(readonly, nonatomic) VNObservation *imageCorrectionNeedObservation; // @synthesize imageCorrectionNeedObservation=_imageCorrectionNeedObservation;
 @property(readonly, nonatomic) VNSceneObservation *compressedScenePrintObservation; // @synthesize compressedScenePrintObservation=_compressedScenePrintObservation;
 @property(readonly, nonatomic) VNSceneObservation *scenePrintObservation; // @synthesize scenePrintObservation=_scenePrintObservation;
 @property(readonly, nonatomic) VNSaliencyImageObservation *saliencyObservation; // @synthesize saliencyObservation=_saliencyObservation;
 @property(readonly, nonatomic) VNImageAestheticsObservation *imageAestheticsObservation; // @synthesize imageAestheticsObservation=_imageAestheticsObservation;
 @property(readonly, nonatomic) NSArray *junkImageClassificationObservations; // @synthesize junkImageClassificationObservations=_junkImageClassificationObservations;
-- (void).cxx_destruct;
-- (id)initWithJunkImageClassificationObservations:(id)arg1 imageAestheticsObservation:(id)arg2 saliencyObservation:(id)arg3 scenePrintObservation:(id)arg4 compressedScenePrintObservation:(id)arg5 imageCorrectionNeedObservation:(id)arg6 detectedObjectsInfoHumanFaces:(id)arg7 detectedObjectsInfoHumanBodies:(id)arg8 detectedObjectsInfoCatBodies:(id)arg9 detectedObjectsInfoDogBodies:(id)arg10 detectedObjectsSalientObjects:(id)arg11 stitchConfidence:(unsigned long long)arg12 horizonLinePresent:(_Bool)arg13 horizonLineAngleInDegrees:(float)arg14 captureFolderPath:(id)arg15;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+@property(readonly) NSData *JSONDebugDescription;
+- (id)initWithSpatialOverCapturePrivateClientMetadata:(id)arg1;
+- (id)initWithJunkImageClassificationObservations:(id)arg1 imageAestheticsObservation:(id)arg2 saliencyObservation:(id)arg3 scenePrintObservation:(id)arg4 compressedScenePrintObservation:(id)arg5 detectedObjectsInfoHumanFaces:(id)arg6 detectedObjectsInfoHumanBodies:(id)arg7 detectedObjectsInfoCatBodies:(id)arg8 detectedObjectsInfoDogBodies:(id)arg9 detectedObjectsSalientObjects:(id)arg10 stitchConfidence:(unsigned long long)arg11 horizonLinePresent:(_Bool)arg12 horizonLineAngleInDegrees:(float)arg13 captureFolderPath:(id)arg14;
 
 @end
 

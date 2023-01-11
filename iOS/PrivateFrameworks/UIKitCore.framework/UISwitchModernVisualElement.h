@@ -7,11 +7,12 @@
 #import <UIKitCore/CAAnimationDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UISwitchMVEGestureTrackingSessionElement-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
 @class NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwitchMVEGestureTrackingSession, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UISwitchModernVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate>
+@interface UISwitchModernVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate, _UICursorInteractionDelegate>
 {
     UIView *_switchWellView;
     UIView *_leftSwitchWellView;
@@ -38,7 +39,9 @@ __attribute__((visibility("hidden")))
 
 + (id)_modernThumbImageWithColor:(id)arg1 mask:(unsigned long long)arg2 traitCollection:(id)arg3;
 + (id)_modernGradientImageWithOnColor:(id)arg1 traitCollection:(id)arg2;
++ (struct UIEdgeInsets)preferredAlignmentRectInsets;
 + (struct CGSize)preferredContentSize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIPanGestureRecognizer *pan; // @synthesize pan=_pan;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPress; // @synthesize longPress=_longPress;
 @property(retain, nonatomic) UISwitchMVEGestureTrackingSession *gestureTrackingSession; // @synthesize gestureTrackingSession=_gestureTrackingSession;
@@ -48,7 +51,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImage *offImage; // @synthesize offImage=_offImage;
 @property(retain, nonatomic) UIImage *onImage; // @synthesize onImage=_onImage;
 @property(retain, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
-- (void).cxx_destruct;
 - (_Bool)_feedbackEnabled;
 - (id)_settings;
 - (void)setSemanticContentAttribute:(long long)arg1;
@@ -106,12 +108,15 @@ __attribute__((visibility("hidden")))
 - (void)_switchToStaticMode:(_Bool)arg1;
 - (void)_invalidateControl;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (void)_handlePanWithGestureLocationInBounds:(struct CGPoint)arg1 horizontalTranslation:(double)arg2 gestureState:(long long)arg3 resetPanTranslationBlock:(CDUnknownBlockType)arg4;
 - (void)_handlePan:(id)arg1;
 - (void)_handleLongPressWithGestureLocationInBounds:(struct CGPoint)arg1 gestureState:(long long)arg2;
 - (void)_handleLongPress:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)_gestureRecognizer:(id)arg1 shouldReceiveEvent:(id)arg2;
 - (_Bool)displayedOn;
 - (void)interactiveChangeToDisplayedOn:(_Bool)arg1;
 - (void)performStateChangeFeedback;

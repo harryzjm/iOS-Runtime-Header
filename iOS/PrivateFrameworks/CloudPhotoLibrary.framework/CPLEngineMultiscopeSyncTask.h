@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTaskDelegate-Protocol.h>
 
-@class CPLEngineScopeStorage, CPLEngineScopedTask, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class CPLEngineScopeStorage, CPLEngineScopedTask, CPLScopeFilter, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineMultiscopeSyncTask <CPLEngineSyncTaskDelegate>
@@ -19,11 +19,14 @@
     NSMutableDictionary *_transportScopes;
     NSString *_clientCacheIdentifier;
     CPLEngineScopeStorage *_scopes;
+    CPLScopeFilter *_scopeFilter;
 }
 
-@property(readonly, nonatomic) CPLEngineScopeStorage *scopes; // @synthesize scopes=_scopes;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CPLScopeFilter *scopeFilter; // @synthesize scopeFilter=_scopeFilter;
+@property(readonly, nonatomic) CPLEngineScopeStorage *scopes; // @synthesize scopes=_scopes;
 - (id)phaseDescription;
+- (id)phaseDescriptionLastChangeDate:(id *)arg1;
 - (void)task:(id)arg1 didProgress:(float)arg2 userInfo:(id)arg3;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;
 - (void)cancel;

@@ -13,6 +13,7 @@
 
 @interface ASDApplicationMetadata : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _deviceBasedVPP;
     _Bool _isBeta;
     NSString *_accountName;
     NSNumber *_accountID;
@@ -34,6 +35,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
 @property(copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 @property(copy, nonatomic) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
@@ -44,6 +46,7 @@
 @property(nonatomic) _Bool isBeta; // @synthesize isBeta=_isBeta;
 @property(copy, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;
 @property(copy, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
+@property(nonatomic) _Bool deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;
 @property(copy, nonatomic) NSString *deviceVendorID; // @synthesize deviceVendorID=_deviceVendorID;
 @property(copy, nonatomic) NSString *cohort; // @synthesize cohort=_cohort;
 @property(copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
@@ -52,7 +55,6 @@
 @property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(copy, nonatomic) NSNumber *accountID; // @synthesize accountID=_accountID;
 @property(copy, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
-- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

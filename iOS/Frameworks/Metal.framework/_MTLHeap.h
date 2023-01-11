@@ -8,8 +8,10 @@
 {
     unsigned long long _heapResourceOptions;
     long long _heapType;
+    unsigned long long _gpuAddress;
 }
 
+@property(readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 @property(readonly) unsigned long long unfilteredResourceOptions;

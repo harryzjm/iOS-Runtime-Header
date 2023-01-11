@@ -19,12 +19,14 @@
     NSString *_decimalSeparator;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool converted; // @synthesize converted=_converted;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool replaceAfterNumerals; // @synthesize replaceAfterNumerals=_replaceAfterNumerals;
 @property(copy, nonatomic) NSString *decimalSeparator; // @synthesize decimalSeparator=_decimalSeparator;
-- (void).cxx_destruct;
 - (id)mathSymbolPunctuationedStringForInputString:(id)arg1;
+- (_Bool)updateInputString:(id)arg1;
+- (void)setInputString:(id)arg1;
 - (void)reset;
 - (id)init;
 

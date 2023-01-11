@@ -16,14 +16,14 @@
 - (void).cxx_destruct;
 - (_Bool)_isIndexToAppLayout:(unsigned long long)arg1;
 - (_Bool)_isIndexFromAppLayout:(unsigned long long)arg1;
-- (id)layoutSettings;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)topMostLayoutElements;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
 - (struct CGRect)containerViewBounds;
 - (id)transitionWillBegin;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 floatingConfiguration:(long long)arg4;

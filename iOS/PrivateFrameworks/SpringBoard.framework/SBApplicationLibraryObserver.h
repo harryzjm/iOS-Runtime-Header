@@ -8,12 +8,12 @@
 
 #import <SpringBoard/MCProfileConnectionObserver-Protocol.h>
 
-@class FBSApplicationLibrary, NSArray, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, SBSplashBoardController;
+@class FBSApplicationLibrary, NSArray, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, XBApplicationController;
 @protocol OS_dispatch_queue;
 
 @interface SBApplicationLibraryObserver : NSObject <MCProfileConnectionObserver>
 {
-    SBSplashBoardController *_splashBoardController;
+    XBApplicationController *_splashBoardController;
     FBSApplicationLibrary *_appLibrary;
     NSMutableSet *_suspendCalloutsAssertionReasons;
     NSObject<OS_dispatch_queue> *_mainQueueProxy;
@@ -29,6 +29,7 @@
 - (void)_didChangeNetworkUsage:(_Bool)arg1;
 - (void)_didDemoteApplications:(id)arg1;
 - (void)_didRemoveApplications:(id)arg1;
+- (id)_appBundleIDsForApplications:(id)arg1;
 - (void)_didUpdateApplications:(id)arg1;
 - (void)_didReplaceApplications:(id)arg1;
 - (void)_didAddApplications:(id)arg1;
@@ -43,7 +44,7 @@
 - (void)addApplicationLifecycleObserver:(id)arg1;
 - (id)suspendCalloutsAssertionWithReason:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *placeholders;
-- (id)initWithAppLibrary:(id)arg1;
+- (id)initWithAppLibrary:(id)arg1 splashBoardController:(id)arg2;
 - (id)init;
 
 // Remaining properties

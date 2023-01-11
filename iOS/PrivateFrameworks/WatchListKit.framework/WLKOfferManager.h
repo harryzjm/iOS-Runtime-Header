@@ -19,10 +19,11 @@
 + (id)_offerFullPath;
 + (id)_offerPath;
 + (id)defaultOfferManager;
-@property(retain, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 - (void)_setOffers:(id)arg1;
 - (id)_offers;
+- (void)_activeAccountChangedNotification:(id)arg1;
 - (id)_connection;
 - (void)clearOffers:(CDUnknownBlockType)arg1;
 - (void)fetchOffers:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;

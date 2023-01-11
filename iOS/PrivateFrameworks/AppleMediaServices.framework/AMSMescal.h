@@ -27,6 +27,7 @@
 + (_Bool)_matchSignSapURL:(id)arg1 bagDictionary:(id)arg2 error:(id *)arg3;
 + (id)_matchSignedActions:(id)arg1 withURL:(id)arg2 error:(id *)arg3;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;

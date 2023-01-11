@@ -20,12 +20,12 @@ __attribute__((visibility("hidden")))
     NSPointerArray *_rebaseObservers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSPointerArray *rebaseObservers; // @synthesize rebaseObservers=_rebaseObservers;
 @property(retain, nonatomic) NSMutableArray *_shadowUpdates; // @synthesize _shadowUpdates=__shadowUpdates;
 @property(retain, nonatomic) _UIDataSourceUpdateMap *updateMap; // @synthesize updateMap=_updateMap;
 @property(retain, nonatomic) _UIDataSourceSnapshotter *initialSnapshot; // @synthesize initialSnapshot=_initialSnapshot;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-- (void).cxx_destruct;
 - (void)_pruneAndRebaseShadowUpdatesForShadowInsertWithIdentifier:(id)arg1;
 - (id)_findInsertShadowUpdateForFinalIndexPath:(id)arg1;
 - (id)_findShadowUpdateForIdentifier:(id)arg1 inShadowUpdates:(id)arg2;
@@ -69,10 +69,6 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 dragPreviewParametersForItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
-- (void)collectionView:(id)arg1 listLayout:(id)arg2 didEndEditingRowAtIndexPath:(id)arg3;
-- (void)collectionView:(id)arg1 listLayout:(id)arg2 willBeginEditingRowAtIndexPath:(id)arg3;
-- (id)collectionView:(id)arg1 listLayout:(id)arg2 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg3;
-- (id)collectionView:(id)arg1 listLayout:(id)arg2 leadingSwipeActionsConfigurationForRowAtIndexPath:(id)arg3;
 - (double)collectionView:(id)arg1 listLayout:(id)arg2 heightForFooterInSection:(long long)arg3;
 - (double)collectionView:(id)arg1 listLayout:(id)arg2 heightForHeaderInSection:(long long)arg3;
 - (double)collectionView:(id)arg1 listLayout:(id)arg2 heightForRowAtIndexPath:(id)arg3;
@@ -116,12 +112,19 @@ __attribute__((visibility("hidden")))
 - (id)_collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 cancelPrefetchingForItemsAtIndexPaths:(id)arg2;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
+- (id)_collectionView:(id)arg1 accessoriesForContextMenuWithConfiguration:(id)arg2 layoutAnchor:(CDStruct_a36705e8)arg3;
+- (id)_collectionView:(id)arg1 styleForContextMenuWithConfiguration:(id)arg2;
 - (void)_collectionView:(id)arg1 willLayoutCell:(id)arg2 usingTemplateLayoutCell:(id)arg3 forItemAtIndexPath:(id)arg4;
 - (id)_collectionView:(id)arg1 templateLayoutCellForCellsWithReuseIdentifier:(id)arg2;
 - (id)_collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (_Bool)_collectionView:(id)arg1 shouldApplyTransitionContentOffset:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
 - (struct CGPoint)_collectionView:(id)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;
 - (id)_indexPathOfReferenceItemForLayoutTransitionInCollectionView:(id)arg1;
+- (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
+- (void)collectionView:(id)arg1 willDisplayContextMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (void)collectionView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
+- (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (void)collectionView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (_Bool)collectionView:(id)arg1 shouldUpdateFocusInContext:(id)arg2;
@@ -132,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (void)collectionView:(id)arg1 performAction:(SEL)arg2 forItemAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (_Bool)collectionView:(id)arg1 canPerformAction:(SEL)arg2 forItemAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (_Bool)collectionView:(id)arg1 shouldShowMenuForItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 canEditItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingSupplementaryView:(id)arg2 forElementOfKind:(id)arg3 atIndexPath:(id)arg4;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;

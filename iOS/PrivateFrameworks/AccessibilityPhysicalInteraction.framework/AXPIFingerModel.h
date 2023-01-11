@@ -13,18 +13,22 @@
     _Bool _pressed;
     _Bool _selected;
     double _force;
+    unsigned long long _shape;
     id <AXPIFingerModelDelegate> _delegate;
     struct CGPoint _location;
 }
 
 + (id)fingerModelForLocation:(struct CGPoint)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <AXPIFingerModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(nonatomic, getter=isPressed) _Bool pressed; // @synthesize pressed=_pressed;
+@property(nonatomic) unsigned long long shape; // @synthesize shape=_shape;
 @property(nonatomic) double force; // @synthesize force=_force;
 @property(nonatomic) struct CGPoint location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (id)description;
+- (void)updateWithPropertiesFromFingerModel:(id)arg1;
+- (void)setPressed:(_Bool)arg1 sendDelegateCallback:(_Bool)arg2;
 
 @end
 

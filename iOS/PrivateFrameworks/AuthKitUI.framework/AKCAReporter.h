@@ -17,7 +17,7 @@
 }
 
 - (void).cxx_destruct;
-- (double)_machAbsoluteTimeToTimeInterval:(unsigned long long)arg1;
+- (double)machAbsoluteTimeToTimeInterval:(unsigned long long)arg1;
 - (void)sendReport;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;

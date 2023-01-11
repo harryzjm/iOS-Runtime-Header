@@ -15,14 +15,16 @@
     NSIndexPath *_indexPath;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionViewCell *cell; // @synthesize cell=_cell;
 @property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
-- (void).cxx_destruct;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)_accessibilityViewHierarchyHasNativeFocus;
 - (_Bool)_accessibilitySetNativeFocus;
 - (_Bool)_accessibilityHasNativeFocus;
 - (_Bool)_accessibilityCanBecomeNativeFocused;
 - (id)_accessibilitySemanticContextForElement:(id)arg1;
+- (id)_accessibilityUserTestingProxyView;
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (_Bool)_accessibilityUserTestingIsPreferredButton;
 - (_Bool)_accessibilityUserTestingIsDestructiveButton;
@@ -41,6 +43,7 @@
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (id)accessibilityLanguage;
+- (_Bool)_accessibilityImplementsDefaultRowRange;
 - (struct _NSRange)accessibilityRowRange;
 - (id)accessibilityHint;
 - (_Bool)_accessibilityIsAwayAlertElement;

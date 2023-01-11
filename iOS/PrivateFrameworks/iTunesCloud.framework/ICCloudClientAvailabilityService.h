@@ -9,18 +9,18 @@
 #import <iTunesCloud/ICCloudAvailability-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol ICCloudServerListenerEndpointProvider, OS_dispatch_queue;
+@protocol ICCloudServerListenerEndpointProviding, OS_dispatch_queue;
 
 @interface ICCloudClientAvailabilityService : NSObject <ICCloudAvailability>
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    id <ICCloudServerListenerEndpointProvider> _listenerEndpointProvider;
+    id <ICCloudServerListenerEndpointProviding> _listenerEndpointProvider;
 }
 
-@property(readonly, nonatomic) __weak id <ICCloudServerListenerEndpointProvider> listenerEndpointProvider; // @synthesize listenerEndpointProvider=_listenerEndpointProvider;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <ICCloudServerListenerEndpointProviding> listenerEndpointProvider; // @synthesize listenerEndpointProvider=_listenerEndpointProvider;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 - (id)_xpcConnectionWithListenerEndpoint:(id)arg1;
 @property(readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (_Bool)shouldProhibitActionsForCurrentNetworkConditions;

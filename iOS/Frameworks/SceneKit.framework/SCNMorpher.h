@@ -38,6 +38,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_didDecodeSCNMorpher:(id)arg1;
 - (void)_customEncodingOfSCNMorpher:(id)arg1;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (id)valueForUndefinedKey:(id)arg1;
 - (void)_customDecodingOfSCNMorpher:(id)arg1;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -47,6 +49,10 @@
 - (_Bool)_isUsingSparseTargets;
 - (void)convertToAdditiveWithBaseGeometry:(id)arg1;
 - (void)setWantsCPUMorphing:(_Bool)arg1;
+- (void)setWeightIncrementalThreshold:(float)arg1;
+- (float)weightIncrementalThreshold;
+- (void)setShouldClearCPUDataAfterUpload:(_Bool)arg1;
+- (_Bool)shouldClearCPUDataAfterUpload;
 - (_Bool)wantsCPUMorphing;
 - (void)setShouldMorphNormals:(_Bool)arg1;
 - (_Bool)shouldMorphNormals;

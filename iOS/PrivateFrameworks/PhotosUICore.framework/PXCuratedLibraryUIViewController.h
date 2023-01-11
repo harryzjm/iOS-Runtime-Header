@@ -10,31 +10,36 @@
 #import <PhotosUICore/PXCuratedLibraryActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryFooterControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibrarySkimmingControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXCuratedLibraryUIKeyCommandDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryZoomLevelControlDelegate-Protocol.h>
-#import <PhotosUICore/PXMovieProviderDelegate-Protocol.h>
+#import <PhotosUICore/PXGAXResponder-Protocol.h>
 #import <PhotosUICore/PXOneUpPresentationDelegate-Protocol.h>
+#import <PhotosUICore/PXPhotosDragControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXPhotosGlobalFooterViewDelegate-Protocol.h>
+#import <PhotosUICore/PXPhotosPointerControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
+#import <PhotosUICore/PXSplitViewControllerChangeObserver-Protocol.h>
+#import <PhotosUICore/PXStatusViewDelegate-Protocol.h>
 #import <PhotosUICore/PXSwipeSelectionManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXTouchingUIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUICore/PXUserInterfaceFeatureViewController-Protocol.h>
-#import <PhotosUICore/UIContextMenuInteractionDelegate-Protocol.h>
-#import <PhotosUICore/UIDragInteractionDelegate-Protocol.h>
-#import <PhotosUICore/UIDropInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PHPhotoLibrary, PXAssetReference, PXChangeDirectionNumberFilter, PXContentUnavailableView, PXCuratedLibraryBarsController, PXCuratedLibrarySecondaryToolbarController, PXCuratedLibrarySkimmingController, PXCuratedLibraryViewProvider, PXCuratedLibraryZoomLevelControl, PXCuratedLibraryZoomLevelPinchFilter, PXGTransition, PXGView, PXMovieProvider, PXProgrammaticNavigationRequest, PXRelaxedScreenEdgePanGestureRecognizer, PXSwipeSelectionManager, PXTouchingUIGestureRecognizer, UIContextMenuInteraction, UIPanGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer, UITargetedPreview;
-@protocol UIDragSession;
+@class NSString, PHPhotoLibrary, PXAssetReference, PXAssetSelectionUserActivityController, PXCPLStatusController, PXCPLUIStatusProvider, PXChangeDirectionNumberFilter, PXCuratedLibraryBarsController, PXCuratedLibrarySecondaryToolbarController, PXCuratedLibrarySkimmingController, PXCuratedLibraryViewProvider, PXCuratedLibraryZoomLevelControl, PXCuratedLibraryZoomLevelPinchFilter, PXGTransition, PXGView, PXMiroMoviePresenter, PXMovieProvider, PXPhotosDragController, PXPhotosPointerController, PXProgrammaticNavigationRequest, PXRelaxedScreenEdgePanGestureRecognizer, PXSwipeSelectionManager, PXTouchingUIGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer, UIView;
+@protocol PXGAXResponder;
 
-@interface PXCuratedLibraryUIViewController : UIViewController <UIDragInteractionDelegate, UIDropInteractionDelegate, PXUserInterfaceFeatureViewController, PXScrollViewControllerObserver, PXOneUpPresentationDelegate, UIGestureRecognizerDelegate, PXSwipeSelectionManagerDelegate, PXCuratedLibrarySkimmingControllerDelegate, PXTouchingUIGestureRecognizerDelegate, PXCuratedLibraryZoomLevelControlDelegate, PXChangeObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterControllerDelegate, PXCuratedLibraryActionPerformerDelegate, PXMovieProviderDelegate, UIContextMenuInteractionDelegate>
+@interface PXCuratedLibraryUIViewController : UIViewController <PXChangeObserver, PXCuratedLibraryActionPerformerDelegate, PXCuratedLibraryFooterControllerDelegate, PXCuratedLibrarySkimmingControllerDelegate, PXCuratedLibraryUIKeyCommandDelegate, PXCuratedLibraryZoomLevelControlDelegate, PXGAXResponder, PXOneUpPresentationDelegate, PXPhotosPointerControllerDelegate, PXPhotosDragControllerDelegate, PXPhotosGlobalFooterViewDelegate, PXScrollViewControllerObserver, PXStatusViewDelegate, PXSwipeSelectionManagerDelegate, PXTouchingUIGestureRecognizerDelegate, PXUserInterfaceFeatureViewController, UIGestureRecognizerDelegate, PXSplitViewControllerChangeObserver>
 {
     _Bool _isGridViewReady;
-    _Bool __previewCommitting;
+    _Bool _isInUnselectedTab;
     PXCuratedLibraryViewProvider *_viewProvider;
     PXCuratedLibrarySkimmingController *_skimmingController;
+    id <PXGAXResponder> axNextResponder;
     PHPhotoLibrary *_photoLibrary;
-    id <UIDragSession> _dragSession;
     PXCuratedLibraryBarsController *_barsController;
+    PXAssetSelectionUserActivityController *_userActivityController;
+    PXPhotosDragController *_dragController;
+    PXPhotosDragController *_emptyPlaceholderDragController;
     PXCuratedLibrarySecondaryToolbarController *_secondaryToolbarController;
     PXCuratedLibraryZoomLevelControl *_zoomLevelControl;
     UITapGestureRecognizer *_tapGesture;
@@ -45,32 +50,33 @@
     long long _zoomLevelBeforeBackNavigationTransition;
     PXGTransition *_backNavigationTransition;
     PXRelaxedScreenEdgePanGestureRecognizer *_screenEdgePanGestureRecognizer;
-    long long _trackedScrollZoomLevel;
     PXSwipeSelectionManager *_swipeSelectionManager;
     PXAssetReference *_navigatedAssetReference;
     PXMovieProvider *_movieProvider;
+    PXPhotosPointerController *_pointerController;
     PXCuratedLibraryZoomLevelPinchFilter *_zoomLevelPinchFilter;
     PXProgrammaticNavigationRequest *_initialNavigationRequest;
-    PXContentUnavailableView *_emptyPlaceHolderView;
-    UIContextMenuInteraction *__contextMenuInteraction;
-    PXAssetReference *__interactionAssetReference;
-    UITargetedPreview *__interactionTargetedPreview;
-    UIViewController *__interactionPreviewViewController;
+    PXCPLUIStatusProvider *_cplUIStatusProvider;
+    UIView *_emptyPlaceholderView;
+    PXCPLStatusController *_statusController;
+    PXMiroMoviePresenter *_miroMoviePresenter;
+    CDStruct_0c606d9b _trackedScrollContext;
 }
 
-@property(nonatomic, setter=_setPreviewCommitting:) _Bool _previewCommitting; // @synthesize _previewCommitting=__previewCommitting;
-@property(retain, nonatomic, setter=_setInteractionPreviewViewController:) UIViewController *_interactionPreviewViewController; // @synthesize _interactionPreviewViewController=__interactionPreviewViewController;
-@property(retain, nonatomic, setter=_setInteractionTargetedPreview:) UITargetedPreview *_interactionTargetedPreview; // @synthesize _interactionTargetedPreview=__interactionTargetedPreview;
-@property(retain, nonatomic, setter=_setInteractionAssetReference:) PXAssetReference *_interactionAssetReference; // @synthesize _interactionAssetReference=__interactionAssetReference;
-@property(retain, nonatomic, setter=_setContextMenuInteraction:) UIContextMenuInteraction *_contextMenuInteraction; // @synthesize _contextMenuInteraction=__contextMenuInteraction;
-@property(retain, nonatomic) PXContentUnavailableView *emptyPlaceHolderView; // @synthesize emptyPlaceHolderView=_emptyPlaceHolderView;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PXMiroMoviePresenter *miroMoviePresenter; // @synthesize miroMoviePresenter=_miroMoviePresenter;
+@property(retain, nonatomic) PXCPLStatusController *statusController; // @synthesize statusController=_statusController;
+@property(retain, nonatomic) UIView *emptyPlaceholderView; // @synthesize emptyPlaceholderView=_emptyPlaceholderView;
+@property(retain, nonatomic) PXCPLUIStatusProvider *cplUIStatusProvider; // @synthesize cplUIStatusProvider=_cplUIStatusProvider;
+@property(nonatomic) _Bool isInUnselectedTab; // @synthesize isInUnselectedTab=_isInUnselectedTab;
 @property(retain, nonatomic) PXProgrammaticNavigationRequest *initialNavigationRequest; // @synthesize initialNavigationRequest=_initialNavigationRequest;
 @property(nonatomic) _Bool isGridViewReady; // @synthesize isGridViewReady=_isGridViewReady;
 @property(readonly, nonatomic) PXCuratedLibraryZoomLevelPinchFilter *zoomLevelPinchFilter; // @synthesize zoomLevelPinchFilter=_zoomLevelPinchFilter;
+@property(readonly, nonatomic) PXPhotosPointerController *pointerController; // @synthesize pointerController=_pointerController;
 @property(retain, nonatomic) PXMovieProvider *movieProvider; // @synthesize movieProvider=_movieProvider;
 @property(retain, nonatomic) PXAssetReference *navigatedAssetReference; // @synthesize navigatedAssetReference=_navigatedAssetReference;
 @property(readonly, nonatomic) PXSwipeSelectionManager *swipeSelectionManager; // @synthesize swipeSelectionManager=_swipeSelectionManager;
-@property(nonatomic) long long trackedScrollZoomLevel; // @synthesize trackedScrollZoomLevel=_trackedScrollZoomLevel;
+@property(nonatomic) CDStruct_0c606d9b trackedScrollContext; // @synthesize trackedScrollContext=_trackedScrollContext;
 @property(readonly, nonatomic) PXRelaxedScreenEdgePanGestureRecognizer *screenEdgePanGestureRecognizer; // @synthesize screenEdgePanGestureRecognizer=_screenEdgePanGestureRecognizer;
 @property(retain, nonatomic) PXGTransition *backNavigationTransition; // @synthesize backNavigationTransition=_backNavigationTransition;
 @property(nonatomic) long long zoomLevelBeforeBackNavigationTransition; // @synthesize zoomLevelBeforeBackNavigationTransition=_zoomLevelBeforeBackNavigationTransition;
@@ -81,43 +87,33 @@
 @property(readonly, nonatomic) UITapGestureRecognizer *tapGesture; // @synthesize tapGesture=_tapGesture;
 @property(readonly, nonatomic) PXCuratedLibraryZoomLevelControl *zoomLevelControl; // @synthesize zoomLevelControl=_zoomLevelControl;
 @property(readonly, nonatomic) PXCuratedLibrarySecondaryToolbarController *secondaryToolbarController; // @synthesize secondaryToolbarController=_secondaryToolbarController;
+@property(retain, nonatomic) PXPhotosDragController *emptyPlaceholderDragController; // @synthesize emptyPlaceholderDragController=_emptyPlaceholderDragController;
+@property(readonly, nonatomic) PXPhotosDragController *dragController; // @synthesize dragController=_dragController;
+@property(readonly, nonatomic) PXAssetSelectionUserActivityController *userActivityController; // @synthesize userActivityController=_userActivityController;
 @property(readonly, nonatomic) PXCuratedLibraryBarsController *barsController; // @synthesize barsController=_barsController;
-@property(retain, nonatomic) id <UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
-- (void).cxx_destruct;
-- (_Bool)footerController:(id)arg1 performCPLAction:(long long)arg2;
-- (struct NSObject *)presentingViewControllerForFooterController:(id)arg1;
+@property(nonatomic) __weak id <PXGAXResponder> axNextResponder; // @synthesize axNextResponder;
+- (void)splitViewController:(id)arg1 willChangeSidebarVisibility:(_Bool)arg2;
+- (id)_assetCollectionReferenceForGroup:(id)arg1;
+- (void)_handleShowDefaultUIForGroup:(id)arg1;
+- (void)_handleShowAlternateUIForGroup:(id)arg1;
+- (void)_handleScrollToRevealInfo:(id)arg1 inGroup:(id)arg2;
+- (_Bool)axGroup:(id)arg1 didRequestToPerformAction:(long long)arg2 userInfo:(id)arg3;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (id)axContainingViewForAXGroup:(id)arg1;
+- (id)presentingViewControllerForFooterController:(id)arg1;
 - (void)footerControllerRevealFooter:(id)arg1;
+- (void)statusView:(id)arg1 dismissViewController:(id)arg2;
+- (void)statusView:(id)arg1 presentViewController:(id)arg2;
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_rescheduleNavigationRequest:(id)arg1;
 - (void)_handleNavigationRequestConditionCompletionForNavigationRequest:(id)arg1 withAssetReference:(id)arg2;
 - (void)_navigateToRevealAssetForNavigationRequest:(id)arg1;
 - (void)_navigateToInitialScrollPositionForNavigationRequest:(id)arg1;
+- (id)px_navigationDestination;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)canRouteToDestination:(id)arg1;
-- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
-- (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
-- (_Bool)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
-@property(readonly, nonatomic) _Bool canDragIn;
-- (id)dragInteraction:(id)arg1 sessionForAddingItems:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
-- (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
-- (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
-- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
-- (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
-- (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
-- (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
-- (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
-- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
-- (id)_draggableAssetReferenceAtLocation:(struct CGPoint)arg1;
-- (void)_presentConfidentialityWarning;
-- (_Bool)_addDraggedAssetReferences:(id)arg1;
-- (id)_regionOfInterestForDragItem:(id)arg1 image:(id *)arg2;
-- (id)_createDragItemForAssetReference:(id)arg1;
-- (id)_assetReferenceForDragItem:(id)arg1;
-- (id)_previewImageViewForImage:(id)arg1 frame:(struct CGRect)arg2 regionOfInterest:(id)arg3;
-@property(readonly, nonatomic) _Bool isDraggingOut;
-@property(readonly, nonatomic) _Bool canDragOut;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)zoomLevelControl:(id)arg1 didTapOnAlreadySelectedZoomLevel:(long long)arg2;
 - (void)_createAnimationForSkimmingWithDuration:(double)arg1 indicatorsDidChangeVisibility:(_Bool)arg2;
 - (void)skimmingControllerDidStopSkimming:(id)arg1 animationDuration:(double)arg2;
@@ -129,12 +125,27 @@
 - (id)_dominantAssetCollectionReferenceForSkimming;
 - (void)_updateSkimmingSlideshowEnabled;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
-- (id)_hitTestResultForPreviewingAtLocation:(struct CGPoint)arg1;
-- (void)contextMenuInteractionDidEnd:(id)arg1;
-- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
-- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)_createPreviewViewForAssetReference:(id)arg1;
+- (id)_createPreviewViewForHitTestResult:(id)arg1;
+- (id)_bestHitTestResultForCursorAtLocation:(struct CGPoint)arg1;
+- (void)pointerController:(id)arg1 didExitRegionWithRect:(struct CGRect)arg2 inCoordinateSpace:(id)arg3;
+- (void)pointerController:(id)arg1 willEnterRegionWithRect:(struct CGRect)arg2 inCoordinateSpace:(id)arg3;
+- (long long)pointerController:(id)arg1 interactionOptionsForRegionAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (id)pointerController:(id)arg1 viewForCursorInteractionAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (id)pointerController:(id)arg1 identifierForRegionAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (_Bool)_shouldExposeCursorAnimations;
+- (id)pointerController:(id)arg1 regionOfInterestForCursorAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (_Bool)dragController:(id)arg1 shouldResizeCancelledPreviewForAssetReference:(id)arg2;
+- (_Bool)dragController:(id)arg1 shouldSelectRearrangedAssetReferences:(id)arg2;
+- (id)dragControllerViewControllerForPresentation:(id)arg1;
+- (void)dragController:(id)arg1 dropTargetAssetReferenceDidChange:(id)arg2;
+- (void)dragController:(id)arg1 draggedAssetReferencesDidChange:(id)arg2;
+- (id)dragController:(id)arg1 scrollViewForAssetReference:(id)arg2;
+- (id)dragController:(id)arg1 dropTargetAssetReferenceForLocation:(struct CGPoint)arg2;
+- (id)dragController:(id)arg1 regionOfInterestForAssetReference:(id)arg2 image:(id *)arg3;
+- (void)dragController:(id)arg1 isDragSessionActiveDidChange:(_Bool)arg2;
+- (id)dragControllerAssetReferenceForBeginningSession:(id)arg1;
+- (id)dragController:(id)arg1 draggableAssetReferenceAtLocation:(struct CGPoint)arg2;
 - (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (_Bool)oneUpPresentationShouldPreventShowInAllPhotosAction:(id)arg1;
 - (id)oneUpPresentationActionManagerForPreviewing:(id)arg1;
@@ -142,14 +153,26 @@
 - (void)oneUpPresentation:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (id)oneUpPresentation:(id)arg1 currentImageForAssetReference:(id)arg2;
 - (id)oneUpPresentation:(id)arg1 regionOfInterestForAssetReference:(id)arg2;
+- (void)oneUpPresentation:(id)arg1 didEndPreviewingForContextMenuInteraction:(id)arg2;
+- (void)oneUpPresentation:(id)arg1 willStartPreviewingForContextMenuInteraction:(id)arg2;
+- (_Bool)oneUpPresentation:(id)arg1 allowsActionsForContextMenuInteraction:(id)arg2;
+- (_Bool)oneUpPresentation:(id)arg1 canStartPreviewingForContextMenuInteraction:(id)arg2;
 - (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
-- (id)presentingViewControllerForMovieProvider:(id)arg1;
+- (void)curatedLibraryActionPerformer:(id)arg1 filterStateChanged:(id)arg2;
+- (void)_setAllPhotosFilterState:(id)arg1;
 - (void)assetCollectionActionPerformer:(id)arg1 playMovieForAssetCollection:(id)arg2;
-- (_Bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (_Bool)actionPerformer:(id)arg1 transitionToViewController:(id)arg2 transitionType:(long long)arg3;
+- (_Bool)_actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)curatedLibraryActionPerformer:(id)arg1 presentShareSheetWithSharingContext:(id)arg2;
+- (id)preferredFocusEnvironments;
+- (void)keyCommandDidRequestToNavigateToOneUp:(id)arg1;
+- (void)keyCommandDidRequestToBePerformed:(id)arg1;
+- (id)keyCommands;
+- (_Bool)canBecomeFirstResponder;
+- (void)swipeSelectionManagerDidAutoScroll:(id)arg1;
 - (id)swipeSelectionManager:(id)arg1 indexPathSetFromIndexPath:(struct PXSimpleIndexPath)arg2 toIndexPath:(struct PXSimpleIndexPath)arg3;
 - (id)_hitTestResultAtLocation:(struct CGPoint)arg1 withPadding:(struct UIEdgeInsets)arg2 swipeSelectionManager:(id)arg3;
 - (struct PXSimpleIndexPath)_indexPathForAssetAtLocation:(struct CGPoint)arg1 withPadding:(struct UIEdgeInsets)arg2 forSwipeSelectionManager:(id)arg3;
@@ -160,9 +183,7 @@
 - (_Bool)swipeSelectionManager:(id)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2;
 - (_Bool)swipeSelectionManagerIsInMultiSelectMode:(id)arg1;
 - (void)_scrollLibraryViewToInitialPositionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_stopLibraryViewScrolling;
-- (void)_presentOneUpForAssetReference:(id)arg1 animated:(_Bool)arg2 withInteractiveMode:(long long)arg3;
-- (void)scrollViewControllerDidEndScrolling:(id)arg1;
+- (_Bool)_presentOneUpForAssetReference:(id)arg1 animated:(_Bool)arg2 withInteractiveMode:(long long)arg3;
 - (_Bool)scrollViewControllerShouldScrollToTop:(id)arg1;
 - (void)scrollViewControllerWillEndScrolling:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewControllerDidScroll:(id)arg1;
@@ -179,18 +200,17 @@
 - (void)_handlePinch:(id)arg1;
 - (_Bool)_scrollToNextSectionInDirection:(long long)arg1 animated:(_Bool)arg2;
 - (_Bool)_handleTapOnTitleWithHitTestResult:(id)arg1;
-- (_Bool)_handleTapWithHitTestResult:(id)arg1;
-- (_Bool)_handleShowingChromeIfNeeded:(struct CGPoint)arg1;
+- (_Bool)_handleTapWithHitTestResult:(id)arg1 rangeSelectionEnabled:(_Bool)arg2;
+- (void)_setWantsOptionalChromeVisible:(_Bool)arg1 changeReason:(long long)arg2;
+- (_Bool)_handleTapToToggleChromeWithGestureRecognizer:(id)arg1;
 - (void)_handleTap:(id)arg1;
 - (void)_scrollToBottomAnimated:(_Bool)arg1;
 - (_Bool)pu_scrollToInitialPositionAnimated:(_Bool)arg1;
 - (_Bool)pu_handleSecondTabTap;
 - (void)_saveCurrentAllPhotosScrollPosition;
-- (void)_setHiddenAssetReferences:(id)arg1;
 - (id)_regionOfInterestForAssetReference:(id)arg1 image:(id *)arg2;
 - (id)_scrollView;
 - (void)_prepareSelectionManager;
-- (void)_prepareDragAndDrop;
 - (void)_prepareGestureRecognizers;
 - (void)_updateTrackedScrollLevelIfNeeded;
 - (void)_updateStatusBarStyle;
@@ -202,12 +222,15 @@
 - (void)viewWillLayoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 - (long long)preferredStatusBarStyle;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)_updateEmptyPlaceholder;
+- (void)_conditionallyUpdateEmptyPlaceholder;
+- (void)_addContentView:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 @property(readonly, nonatomic) long long userInterfaceFeature;
 @property(readonly, nonatomic) PXGView *gridView;

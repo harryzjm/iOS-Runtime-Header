@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
     struct __CFString *_containerPath;
 }
 
+- (void)dealloc;
 - (struct __CFString *)container;
 - (id)initWithDomain:(struct __CFString *)arg1 userName:(struct __CFString *)arg2 container:(struct __CFString *)arg3 byHost:(_Bool)arg4 managed:(_Bool)arg5 shmemIndex:(short)arg6 daemon:(id)arg7;
 

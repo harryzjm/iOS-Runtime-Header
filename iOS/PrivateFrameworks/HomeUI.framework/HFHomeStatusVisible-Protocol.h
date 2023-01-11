@@ -9,6 +9,7 @@
 @class NAFuture;
 
 @protocol HFHomeStatusVisible <NSObject>
+@property(readonly, nonatomic) _Bool hf_isForcedVisibleInHomeStatus;
 @property(readonly, nonatomic) _Bool hf_hasSetVisibleInHomeStatus;
 @property(readonly, nonatomic) _Bool hf_isVisibleInHomeStatus;
 @property(readonly, nonatomic) _Bool hf_supportsHomeStatus;

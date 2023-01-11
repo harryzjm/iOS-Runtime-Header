@@ -6,30 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class ACRemoteAccountStoreSession, NSArray, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class ACRemoteAccountStoreSession, ACTimedExpirer, NSArray, NSMutableDictionary, NSString, NSXPCListenerEndpoint;
+@protocol ACRemoteAccountStoreSessionDelegate, OS_dispatch_queue;
 
 @interface ACAccountStore : NSObject
 {
-    NSObject<OS_dispatch_queue> *_replyQueue;
     id _daemonAccountStoreDidChangeObserver;
     NSMutableDictionary *_accountCache;
+    NSMutableDictionary *_accountsWithAccountTypeCache;
+    NSXPCListenerEndpoint *_endpoint;
     ACRemoteAccountStoreSession *_remoteAccountStoreSession;
+    struct os_unfair_lock_s _remoteAccountStoreSessionLock;
+    ACTimedExpirer *_remoteAccountStoreSessionExpirer;
     ACRemoteAccountStoreSession *_longLivedRemoteAccountStoreSession;
+    struct os_unfair_lock_s _longLivedRemoteAccountStoreSessionLock;
+    ACTimedExpirer *_longLivedRemoteAccountStoreSessionExpirer;
+    NSObject<OS_dispatch_queue> *_replyQueue;
     NSString *_effectiveBundleID;
 }
 
++ (id)_obsoleteAccountTypeIDsToRemove;
 + (_Bool)canSaveAccountsOfAccountTypeIdentifier:(id)arg1;
 + (long long)countOfAccountsWithAccountTypeIdentifier:(id)arg1;
 + (int)accountsWithAccountTypeIdentifierExist:(id)arg1;
++ (void)_setConnectionTimeout:(unsigned long long)arg1;
 + (void)_setDefaultStore:(id)arg1;
 + (id)_defaultStore;
-@property(readonly) NSString *effectiveBundleID; // @synthesize effectiveBundleID=_effectiveBundleID;
-@property(readonly, nonatomic) ACRemoteAccountStoreSession *longLivedRemoteAccountStoreSession; // @synthesize longLivedRemoteAccountStoreSession=_longLivedRemoteAccountStoreSession;
-@property(readonly, nonatomic) ACRemoteAccountStoreSession *remoteAccountStoreSession; // @synthesize remoteAccountStoreSession=_remoteAccountStoreSession;
 - (void).cxx_destruct;
+@property(readonly) NSString *effectiveBundleID; // @synthesize effectiveBundleID=_effectiveBundleID;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *replyQueue; // @synthesize replyQueue=_replyQueue;
+- (id)_unsanitizeError:(id)arg1;
+- (id)_sanitizeOptionsDictionary:(id)arg1;
+- (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
+- (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
 - (void)reportTelemetryForLandmarkEvent:(CDUnknownBlockType)arg1;
+- (void)handleURL:(id)arg1;
+- (id)typeIdentifierForDomain:(id)arg1;
 - (id)_createSMTPAccountForServerAccount:(id)arg1;
 - (void)_removeObsoleteOSXServerAccountForiOS:(id)arg1;
 - (id)_removeObsoleteOSXServerAccountForMacOS:(id)arg1;
@@ -42,28 +55,14 @@
 - (void)notifyRemoteDevicesOfNewAccount:(id)arg1;
 - (void)notifyRemoteDevicesOfUpdatedCredentials:(id)arg1;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1;
-- (id)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 error:(id *)arg3;
-- (id)accountsWithAccountTypeIdentifiers:(id)arg1 error:(id *)arg2;
-- (void)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)accountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)visibleTopLevelAccountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)openAuthenticationURLForAccount:(id)arg1 withDelegateClassName:(id)arg2 fromBundleAtPath:(id)arg3 shouldConfirm:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)openAuthenticationURL:(id)arg1 forAccount:(id)arg2 shouldConfirm:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_unsanitizeError:(id)arg1;
-- (id)_sanitizeOptionsDictionary:(id)arg1;
 - (void)discoverPropertiesForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)addClientToken:(id)arg1 forAccount:(id)arg2;
 - (id)clientTokenForAccount:(id)arg1;
-- (void)handleURL:(id)arg1;
-- (int)updateExistenceCacheOfAccountWithTypeIdentifier:(id)arg1;
-- (void)cachedAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)accountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)accountIdentifiersEnabledForDataclasses:(id)arg1 withAccountTypeIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)isPushSupportedForAccount:(id)arg1;
-- (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)tetheredSyncSourceTypeForDataclass:(id)arg1;
 - (_Bool)isTetheredSyncingEnabledForDataclass:(id)arg1;
-- (_Bool)hasAccountWithDescription:(id)arg1;
 - (_Bool)isPerformingDataclassActionsForAccount:(id)arg1 error:(id *)arg2;
 - (_Bool)isPerformingDataclassActionsForAccount:(id)arg1;
 - (id)dataclassActionsForAccountDeletion:(id)arg1 error:(id *)arg2;
@@ -74,14 +73,6 @@
 - (id)accountIdentifiersEnabledToSyncDataclass:(id)arg1;
 - (id)accountIdentifiersEnabledForDataclass:(id)arg1;
 - (id)displayTypeForAccountWithIdentifier:(id)arg1;
-- (id)typeIdentifierForDomain:(id)arg1;
-- (void)clearGrantedPermissionsForAccountType:(id)arg1;
-- (id)grantedPermissionsForAccountType:(id)arg1;
-- (_Bool)permissionForAccountType:(id)arg1;
-- (void)clearAllPermissionsGrantedForAccountType:(id)arg1;
-- (void)setPermissionGranted:(_Bool)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3;
-- (id)appPermissionsForAccountType:(id)arg1;
-- (id)accessKeysForAccountType:(id)arg1;
 - (id)syncableDataclassesForAccountType:(id)arg1;
 - (id)supportedDataclassesForAccountType:(id)arg1;
 - (id)provisionedDataclassesForAccount:(id)arg1 error:(id *)arg2;
@@ -104,8 +95,7 @@
 - (id)credentialForAccount:(id)arg1 serviceID:(id)arg2;
 - (id)credentialForAccount:(id)arg1 error:(id *)arg2;
 - (id)credentialForAccount:(id)arg1;
-- (id)allDataclasses;
-- (id)allAccountTypes;
+- (void)migrateCredentialForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewCredentialsForAccount:(id)arg1 services:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)renewCredentialsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewCredentialsForAccount:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -114,8 +104,16 @@
 - (void)verifyCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)verifyCredentialsForAccount:(id)arg1 saveWhenAuthorized:(_Bool)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)verifyCredentialsForAccount:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)clearGrantedPermissionsForAccountType:(id)arg1;
+- (id)grantedPermissionsForAccountType:(id)arg1;
+- (_Bool)permissionForAccountType:(id)arg1;
+- (void)clearAllPermissionsGrantedForAccountType:(id)arg1;
+- (void)setPermissionGranted:(_Bool)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3;
+- (id)appPermissionsForAccountType:(id)arg1;
+- (id)accessKeysForAccountType:(id)arg1;
 - (void)requestAccessToAccountsWithType:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestAccessToAccountsWithType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (int)updateExistenceCacheOfAccountWithTypeIdentifier:(id)arg1;
 - (_Bool)saveVerifiedAccount:(id)arg1 error:(id *)arg2;
 - (void)saveVerifiedAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2 doVerify:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
@@ -128,7 +126,18 @@
 - (void)removeAccount:(id)arg1 withDeleteSync:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccountType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)insertAccountType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)isPushSupportedForAccount:(id)arg1;
+- (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)hasAccountWithDescription:(id)arg1;
+- (void)visibleTopLevelAccountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)allAccountTypes;
+- (id)allDataclasses;
 - (void)accountsOnPairedDeviceWithAccountType:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)cachedAccountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 error:(id *)arg3;
+- (id)accountsWithAccountTypeIdentifiers:(id)arg1 error:(id *)arg2;
+- (void)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)accountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)accountsWithAccountType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
@@ -137,12 +146,17 @@
 - (void)accountTypeWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)accountTypeWithAccountTypeIdentifier:(id)arg1 error:(id *)arg2;
 - (id)accountTypeWithAccountTypeIdentifier:(id)arg1;
+- (void)cachedAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)accountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)accountWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)accountWithIdentifier:(id)arg1;
 - (void)setNotificationsEnabled:(_Bool)arg1;
 - (id)_connectionFailureError;
+@property(readonly) id <ACRemoteAccountStoreSessionDelegate> connectionDelegate;
 - (void)disconnectFromRemoteAccountStore;
-- (void)connectToRemoteAccountStoreUsingEndpoint:(id)arg1;
+@property(readonly, nonatomic) ACRemoteAccountStoreSession *longLivedRemoteAccountStoreSession;
+@property(readonly, nonatomic) ACRemoteAccountStoreSession *remoteAccountStoreSession;
+- (void)_clearAccountCaches;
 - (void)dealloc;
 - (id)initWithRemoteEndpoint:(id)arg1 effectiveBundleID:(id)arg2;
 - (id)initWithEffectiveBundleID:(id)arg1;

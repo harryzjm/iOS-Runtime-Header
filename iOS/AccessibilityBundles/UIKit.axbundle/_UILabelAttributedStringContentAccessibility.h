@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)initWithAttributedString:(id)arg1 defaultAttributesProvider:(id)arg2;
+- (id)initWithAttributedString:(id)arg1 defaultAttributes:(id)arg2;
 
 @end
 

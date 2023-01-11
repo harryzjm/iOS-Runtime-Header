@@ -12,7 +12,7 @@
 
 @optional
 - (void)arrivalUpdaterDidTimeoutInArrivalRegion:(MNArrivalUpdater *)arg1;
-- (void)arrivalUpdaterDidEnterPreArrivalState:(MNArrivalUpdater *)arg1;
-- (void)arrivalUpdaterDidArrive:(MNArrivalUpdater *)arg1;
+- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 didEnterPreArrivalStateForLegIndex:(unsigned long long)arg2;
+- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 didArriveAtEndOfLegAtIndex:(unsigned long long)arg2;
 @end
 

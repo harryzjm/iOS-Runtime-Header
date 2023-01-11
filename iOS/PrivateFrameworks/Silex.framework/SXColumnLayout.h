@@ -14,8 +14,8 @@
 {
     id <SXDocumentLayout> _documentLayout;
     long long _layoutWidth;
-    long long _leftMargin;
-    long long _rightMargin;
+    double _leftMargin;
+    double _rightMargin;
     long long _gutter;
     unsigned long long _numberOfColumns;
     double _columnWidth;
@@ -33,6 +33,7 @@
     struct CGSize _viewportSize;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long layoutColumns; // @synthesize layoutColumns=_layoutColumns;
 @property(readonly, nonatomic) double contentScaleFactor; // @synthesize contentScaleFactor=_contentScaleFactor;
 @property(readonly, nonatomic) double rightScreenMargin; // @synthesize rightScreenMargin=_rightScreenMargin;
@@ -46,13 +47,12 @@
 @property(readonly, nonatomic) double columnWidth; // @synthesize columnWidth=_columnWidth;
 @property(readonly, nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property(readonly, nonatomic) long long gutter; // @synthesize gutter=_gutter;
-@property(readonly, nonatomic) long long rightMargin; // @synthesize rightMargin=_rightMargin;
-@property(readonly, nonatomic) long long leftMargin; // @synthesize leftMargin=_leftMargin;
+@property(readonly, nonatomic) double rightMargin; // @synthesize rightMargin=_rightMargin;
+@property(readonly, nonatomic) double leftMargin; // @synthesize leftMargin=_leftMargin;
 @property(readonly, nonatomic) long long layoutWidth; // @synthesize layoutWidth=_layoutWidth;
 @property(readonly, nonatomic) id <SXDocumentLayout> documentLayout; // @synthesize documentLayout=_documentLayout;
 @property(readonly, nonatomic) struct CGSize viewportSize; // @synthesize viewportSize=_viewportSize;
 @property(readonly, nonatomic) struct CGSize constrainedViewportSize; // @synthesize constrainedViewportSize=_constrainedViewportSize;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

@@ -8,22 +8,13 @@
 
 #import <AppPredictionClient/SFFeedbackListener-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PETGoalConversionEventTracker, SFSearchResult;
-@protocol ATXSearchFeedbackListenerTarget;
+@class ATXActionPredictionClient, ATXActionSearchResult, ATXEngagementRecordManager, NSMutableArray, NSMutableSet, NSString, PETGoalConversionEventTracker;
+@protocol ATXPETEventTracker2Protocol, ATXSearchFeedbackListenerTarget;
 
 @interface ATXSearchFeedbackListener : NSObject <SFFeedbackListener>
 {
     NSObject<ATXSearchFeedbackListenerTarget> *_target;
-    NSArray *_currentZKWItems;
-    NSString *_query;
-    unsigned char _appConsumerSubType;
-    unsigned char _actionConsumerSubType;
     PETGoalConversionEventTracker *_apAppPredictionsShownTracker;
-    _Bool _waitingForPredictedAppFeedback;
-    _Bool _waitingForPredictedActionFeedback;
-    SFSearchResult *_engagedResult;
-    NSMutableArray *_explicitlyDismissedActions;
-    _Bool _cardWasEngaged;
     struct {
         CDStruct_a7b080c6 resultsDidBecomeVisible;
         CDStruct_a7b080c6 didStartSearch;
@@ -32,12 +23,26 @@
         CDStruct_a7b080c6 didEngageResult;
         CDStruct_a7b080c6 didEngageCardSection;
     } _debounce;
+    ATXEngagementRecordManager *_engagementRecordManager;
+    ATXActionPredictionClient *_actionPredictionClient;
+    id <ATXPETEventTracker2Protocol> _tracker;
+    NSString *_currentQuery;
+    _Bool _didSearchDuringSession;
+    NSMutableSet *_visibleActionUUIDs;
+    NSMutableSet *_visibleAppUUIDs;
+    NSMutableSet *_visibleAppBundleIds;
+    ATXActionSearchResult *_currentResultCard;
+    NSString *_appBlendingCacheId;
+    NSString *_actionBlendingCacheId;
+    _Bool _hasSeenSearchViewDidAppear;
+    NSMutableArray *_queuedEvents;
+    _Bool _currentSessionHasEngagement;
+    _Bool _previousSessionHadEngagement;
     _Bool _shouldDebounce;
 }
 
-+ (id)mergeNewSearchResults:(id)arg1 intoExistingResults:(id)arg2;
-@property(nonatomic) _Bool shouldDebounce; // @synthesize shouldDebounce=_shouldDebounce;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldDebounce; // @synthesize shouldDebounce=_shouldDebounce;
 - (void)didEngageCardSection:(id)arg1;
 - (void)cardViewDidDisappear:(id)arg1;
 - (void)didEngageResult:(id)arg1;
@@ -45,15 +50,13 @@
 - (void)didStartSearch:(id)arg1;
 - (void)searchViewDidDisappear:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;
-- (void)_sendAppFeedback:(id)arg1 searchResults:(id)arg2;
-- (void)_sendActionFeedback:(id)arg1 searchedActionType:(unsigned long long)arg2 engagedAppString:(id)arg3 searchResults:(id)arg4 executedInBackground:(_Bool)arg5;
-- (void)_sendFeedbackForEngagement:(_Bool)arg1 actionExecutedInBackground:(_Bool)arg2;
-- (void)_resetState;
-- (void)_zkwItemsDidAppear:(id)arg1;
-- (void)_setQuery:(id)arg1;
-- (void)_setAppConsumerSubType:(unsigned char)arg1 actionConsumerSubType:(unsigned char)arg2;
+- (void)sendUpdateNotification;
+- (void)writeSpotlightEvent:(id)arg1 isViewAppearEvent:(_Bool)arg2;
+- (void)_tryRemoveLockscreenActionPredictionMatchingSuggestion:(id)arg1;
+- (void)_logAppPredictionsShown;
 - (_Bool)_isDuplicateEventWithState:(CDStruct_a7b080c6 *)arg1 timestamp:(unsigned long long)arg2 method:(SEL)arg3;
-- (id)initWithTarget:(id)arg1;
+- (void)_resetState;
+- (id)initWithTarget:(id)arg1 engagementRecordManager:(id)arg2 actionClient:(id)arg3 tracker:(id)arg4;
 - (id)init;
 
 // Remaining properties

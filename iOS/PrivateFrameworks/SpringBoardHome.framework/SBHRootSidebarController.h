@@ -20,25 +20,32 @@
     SBHSidebarVisualConfiguration *_sidebarVisualConfiguration;
     unsigned long long _layoutInsetsIgnoredEdges;
     id <SBHSidebarProviderDelegate> _delegate;
+    UIViewController *_avocadoViewController;
     NSMutableArray *_widgetViewControllerConstraints;
     NSLayoutConstraint *_dockHeightConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *dockHeightConstraint; // @synthesize dockHeightConstraint=_dockHeightConstraint;
-@property(copy, nonatomic) NSMutableArray *widgetViewControllerConstraints; // @synthesize widgetViewControllerConstraints=_widgetViewControllerConstraints;
+@property(retain, nonatomic) NSMutableArray *widgetViewControllerConstraints; // @synthesize widgetViewControllerConstraints=_widgetViewControllerConstraints;
+@property(retain, nonatomic) UIViewController *avocadoViewController; // @synthesize avocadoViewController=_avocadoViewController;
 @property(nonatomic) __weak id <SBHSidebarProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long layoutInsetsIgnoredEdges; // @synthesize layoutInsetsIgnoredEdges=_layoutInsetsIgnoredEdges;
 @property(retain, nonatomic) SBHSidebarVisualConfiguration *sidebarVisualConfiguration; // @synthesize sidebarVisualConfiguration=_sidebarVisualConfiguration;
 @property(retain, nonatomic) WGWidgetGroupViewController *widgetViewController; // @synthesize widgetViewController=_widgetViewController;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-- (void).cxx_destruct;
 - (void)_updateDockHeightConstraint;
 - (void)_configureLayoutMargins;
-- (void)_addEditButton;
+- (void)_addEditButtonForWidgetGroupViewController:(id)arg1;
 - (void)_configureWidgetViewController;
+- (void)_configureAvocadoViewController;
+- (void)_setupConstraintsForViewController:(id)arg1;
 - (void)setEditingIcons:(_Bool)arg1;
 @property(readonly, nonatomic) SBHDateHeaderViewController *dateViewController; // @synthesize dateViewController=_dateViewController;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 

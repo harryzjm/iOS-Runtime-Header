@@ -10,21 +10,18 @@
 
 @interface NTPBSectionSlotCostInfo : PBCodable <NSCopying>
 {
-    double _leadingFirstHeadlineSlotCost;
+    double _headlineSlotCost;
+    double _sectionFooterSlotCost;
     double _sectionTitleSlotCost;
-    double _standardFirstHeadlineSlotCost;
-    double _subsequentHeadlineSlotCost;
     struct {
-        unsigned int leadingFirstHeadlineSlotCost:1;
+        unsigned int headlineSlotCost:1;
+        unsigned int sectionFooterSlotCost:1;
         unsigned int sectionTitleSlotCost:1;
-        unsigned int standardFirstHeadlineSlotCost:1;
-        unsigned int subsequentHeadlineSlotCost:1;
     } _has;
 }
 
-@property(nonatomic) double subsequentHeadlineSlotCost; // @synthesize subsequentHeadlineSlotCost=_subsequentHeadlineSlotCost;
-@property(nonatomic) double leadingFirstHeadlineSlotCost; // @synthesize leadingFirstHeadlineSlotCost=_leadingFirstHeadlineSlotCost;
-@property(nonatomic) double standardFirstHeadlineSlotCost; // @synthesize standardFirstHeadlineSlotCost=_standardFirstHeadlineSlotCost;
+@property(nonatomic) double sectionFooterSlotCost; // @synthesize sectionFooterSlotCost=_sectionFooterSlotCost;
+@property(nonatomic) double headlineSlotCost; // @synthesize headlineSlotCost=_headlineSlotCost;
 @property(nonatomic) double sectionTitleSlotCost; // @synthesize sectionTitleSlotCost=_sectionTitleSlotCost;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -34,9 +31,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasSubsequentHeadlineSlotCost;
-@property(nonatomic) _Bool hasLeadingFirstHeadlineSlotCost;
-@property(nonatomic) _Bool hasStandardFirstHeadlineSlotCost;
+@property(nonatomic) _Bool hasSectionFooterSlotCost;
+@property(nonatomic) _Bool hasHeadlineSlotCost;
 @property(nonatomic) _Bool hasSectionTitleSlotCost;
 
 @end

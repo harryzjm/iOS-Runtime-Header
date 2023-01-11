@@ -13,10 +13,12 @@
 @interface GEODirectionsRequestFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_appIdentifier;
     NSString *_requestingAppId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _purpose;
     int _source;
     struct {
@@ -25,11 +27,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_appIdentifier:1;
         unsigned int read_requestingAppId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_appIdentifier:1;
-        unsigned int wrote_requestingAppId:1;
-        unsigned int wrote_purpose:1;
-        unsigned int wrote_source:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,14 +43,15 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *requestingAppId;
 @property(readonly, nonatomic) _Bool hasRequestingAppId;
-- (void)_readRequestingAppId;
 @property(retain, nonatomic) NSString *appIdentifier;
 @property(readonly, nonatomic) _Bool hasAppIdentifier;
-- (void)_readAppIdentifier;
 - (int)StringAsSource:(id)arg1;
 - (id)sourceAsString:(int)arg1;
 @property(nonatomic) _Bool hasSource;
@@ -61,6 +60,8 @@
 - (id)purposeAsString:(int)arg1;
 @property(nonatomic) _Bool hasPurpose;
 @property(nonatomic) int purpose;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithPurpose:(int)arg1 andSource:(int)arg2 andIdentifier:(id)arg3;
 - (id)initWithPurpose:(int)arg1 andSource:(int)arg2;
 - (id)initWithPurpose:(int)arg1;

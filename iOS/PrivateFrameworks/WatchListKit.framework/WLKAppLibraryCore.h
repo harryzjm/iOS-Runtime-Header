@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 - (id)_connection;
 - (void)_fetchApplicationsInProcess:(CDUnknownBlockType)arg1;
+- (id)_otherBundlesOfInterest;
+- (id)_nonConformingBundleList;
 - (void)fetchApplications:(CDUnknownBlockType)arg1;
 - (id)init;
 

@@ -22,17 +22,9 @@
     CNManagedConfiguration *_managedConfiguration;
 }
 
-@property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
-@property(readonly, nonatomic) id <CNContactsLogger> logger; // @synthesize logger=_logger;
-@property(retain, nonatomic) id <CNEncodedFetchCursor> cursor; // @synthesize cursor=_cursor;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
-@property(readonly, nonatomic) CNContactFetchRequest *contactFetchRequest; // @synthesize contactFetchRequest=_contactFetchRequest;
-@property(readonly, nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
 - (void).cxx_destruct;
 - (void)fetchNextBatchWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)fetchEncodedPeopleWithError:(id *)arg1 cancelationToken:(id)arg2 batchHandler:(CDUnknownBlockType)arg3;
-- (id)cursorWithError:(id *)arg1;
 - (void)dealloc;
 - (id)initWithFetchRequest:(id)arg1 addressBook:(void *)arg2 managedConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 environment:(id)arg5;
 

@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSDate;
 
-#import <HealthKit/NSSecureCoding-Protocol.h>
-
-@class NSDate, NSUUID;
-
-@interface _HKDeepBreathingSessionConfiguration : NSObject <NSSecureCoding>
+@interface _HKDeepBreathingSessionConfiguration
 {
-    NSUUID *_UUID;
     NSDate *_startDate;
     double _sessionDuration;
     double _inhaleExhaleRatio;
@@ -21,14 +16,14 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)sessionConfigurationWithStartDate:(id)arg1 sessionDuration:(double)arg2 inhaleExhaleRatio:(double)arg3 respirationsPerMinute:(double)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) double respirationsPerMinute; // @synthesize respirationsPerMinute=_respirationsPerMinute;
 @property(nonatomic) double inhaleExhaleRatio; // @synthesize inhaleExhaleRatio=_inhaleExhaleRatio;
 @property(nonatomic) double sessionDuration; // @synthesize sessionDuration=_sessionDuration;
-@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property(readonly) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)_initWithStartDate:(id)arg1 sessionDuration:(double)arg2 inhaleExhaleRatio:(double)arg3 respirationsPerMinute:(double)arg4;
 

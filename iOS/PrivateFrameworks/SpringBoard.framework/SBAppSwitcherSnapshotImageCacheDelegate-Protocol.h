@@ -6,17 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSArray, SBAppLayout, SBAppSwitcherSnapshotImageCache;
+@class SBAppLayout, SBAppSwitcherSnapshotImageCache;
 
 @protocol SBAppSwitcherSnapshotImageCacheDelegate <NSObject>
 - (struct CGSize)snapshotSizeForItemWithRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 interfaceOrientation:(long long)arg3 inImageCache:(SBAppSwitcherSnapshotImageCache *)arg4;
-- (NSArray *)defaultAppLayoutsForImageCache:(SBAppSwitcherSnapshotImageCache *)arg1;
-- (NSArray *)appLayoutsForWhichToGenerateFullSizeSnapshotsInImageCache:(SBAppSwitcherSnapshotImageCache *)arg1;
-- (double)scaleForDownscaledSnapshotsForImageCache:(SBAppSwitcherSnapshotImageCache *)arg1;
+- (double)scaleForDownscaledSnapshotsOfAppLayout:(SBAppLayout *)arg1 inImageCache:(SBAppSwitcherSnapshotImageCache *)arg2;
 - (long long)orientationForSnapshotOfAppLayout:(SBAppLayout *)arg1 inImageCache:(SBAppSwitcherSnapshotImageCache *)arg2;
-- (NSArray *)highPriorityAppLayoutsForImageCache:(SBAppSwitcherSnapshotImageCache *)arg1;
-- (_Bool)biasForwardForImageCache:(SBAppSwitcherSnapshotImageCache *)arg1;
-- (struct _NSRange)visibleAppLayoutRangeForImageCache:(SBAppSwitcherSnapshotImageCache *)arg1;
-- (NSArray *)appLayoutsForImageCache:(SBAppSwitcherSnapshotImageCache *)arg1;
 @end
 

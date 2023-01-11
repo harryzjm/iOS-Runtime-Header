@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class UIAction;
+
 __attribute__((visibility("hidden")))
 @interface UIControlTargetAction : NSObject
 {
+    UIAction *_actionHandler;
     id _target;
     SEL _action;
     unsigned long long _eventMask;
     _Bool _cancelled;
 }
 
-@property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
+- (id)description;
 
 @end
 

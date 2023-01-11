@@ -9,15 +9,16 @@
 #import <EventKitUI/EKEventDetailNotesCellDelegate-Protocol.h>
 #import <EventKitUI/EKEventTitleDetailItemDelegate-Protocol.h>
 #import <EventKitUI/EKUIEventStatusButtonsViewDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 #import <EventKitUI/UIAlertViewDelegate-Protocol.h>
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKCustomTitleView, EKEvent, EKEventDetailItem, EKEventEditViewController, EKEventTitleDetailItem, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSMutableDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
+@class EKCustomTitleView, EKEvent, EKEventDetailItem, EKEventEditViewController, EKEventTitleDetailItem, EKUIEventStatusButtonsView, EKUIInviteesViewMessageSendingManager, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSMutableDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
 @protocol EKEventViewDelegate;
 
-@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEventDetailNotesCellDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEventDetailNotesCellDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EKUIManagedViewController>
 {
     NSArray *_items;
     EKEvent *_event;
@@ -78,13 +79,16 @@
     int _editorShowTransition;
     int _editorHideTransition;
     id <EKEventViewDelegate> _delegate;
-    struct NSDictionary *_context;
+    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
+    NSDictionary *_context;
     struct UIEdgeInsets _layoutMargins;
 }
 
++ (void)popViewControllersAfterAndIncluding:(id)arg1 fromNavigationController:(id)arg2 animated:(_Bool)arg3;
 + (void)adjustLayoutForCell:(id)arg1 tableViewWidth:(double)arg2 numRowsInSection:(unsigned long long)arg3 cellRow:(unsigned long long)arg4 forceLayout:(_Bool)arg5;
 + (id)_orderedActionsForMask:(long long)arg1;
 + (void)setDefaultDatesForEvent:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property(nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property(nonatomic) int editorHideTransition; // @synthesize editorHideTransition=_editorHideTransition;
@@ -102,14 +106,15 @@
 @property(nonatomic) _Bool showsAddToCalendarForICSPreview; // @synthesize showsAddToCalendarForICSPreview=_showsAddToCalendarForICSPreview;
 @property(nonatomic) _Bool allowsInviteResponses; // @synthesize allowsInviteResponses=_allowsInviteResponses;
 @property(nonatomic, getter=isICSPreview) _Bool ICSPreview; // @synthesize ICSPreview=_ICSPreview;
+@property(retain, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property _Bool viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property(nonatomic) __weak id <EKEventViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)canBecomeFirstResponder;
 - (void)_performEditKeyCommand;
 - (void)_setUpkeyCommands;
 - (void)editButtonPressed;
+- (_Bool)_shouldShowInlineButtonFromDelegate;
 - (_Bool)shouldShowEditButtonInline;
 - (void)detailItem:(id)arg1 wantsIndexPathsScrolledToVisible:(id)arg2;
 - (void)detailItem:(id)arg1 wantsRowInsertions:(id)arg2 rowDeletions:(id)arg3 rowReloads:(id)arg4;
@@ -139,7 +144,7 @@
 - (void)eventStatusButtonsView:(id)arg1 calculatedFontSizeToFit:(double)arg2;
 - (double)eventStatusButtonsViewButtonFontSize:(id)arg1;
 - (void)eventStatusButtonsView:(id)arg1 didSelectAction:(long long)arg2 ifCancelled:(CDUnknownBlockType)arg3;
-- (id)previewActionsWithPresentationController:(id)arg1;
+- (id)previewActionsWithPresentationController:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
 - (id)_statusButtonsForOrb:(_Bool)arg1;
 - (long long)_actionsMaskForOrb:(_Bool)arg1;
 - (id)_organizerContact;
@@ -150,7 +155,7 @@
 - (void)_deleteSuggestionTapped:(id)arg1;
 - (void)_addToCalendarClicked:(id)arg1;
 - (void)_deleteClicked:(id)arg1;
-- (void)_saveStatus:(long long)arg1;
+- (void)_saveStatus:(long long)arg1 sourceViewForPopover:(id)arg2;
 - (void)_joinMeeting;
 - (void)_emailOrganizer;
 - (void)_contactOrganizer;
@@ -158,18 +163,21 @@
 - (_Bool)_canEmailOrganizer;
 - (void)_cancelProposedTime;
 - (void)_rejectProposedTime;
-- (void)_acceptProposedTime;
+- (void)_acceptProposedTimeWithSourceViewForPopover:(id)arg1;
 - (id)_proposedDate;
-- (void)invokeAction:(long long)arg1;
+- (void)invokeAction:(long long)arg1 eventStatusButtonsView:(id)arg2;
 - (void)_prepareEventForEdit;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)_dismissEditor:(_Bool)arg1 deleted:(_Bool)arg2;
 - (id)viewControllerForEventItem:(id)arg1;
 - (void)eventItemDidEndEditing:(id)arg1;
+- (void)eventDetailItemWantsRefresh:(id)arg1;
 - (void)eventItemDidSave:(id)arg1;
 - (void)eventItemDidStartEditing:(id)arg1;
 - (void)eventDetailItemWantsRefeshForHeightChange;
-- (void)_presentDetachSheet;
+- (CDUnknownBlockType)_detachSheetHandler;
+- (void)_presentDetachSheetFromView:(id)arg1;
+- (void)_presentDetachSheetFromBarButtonItem:(id)arg1;
 @property(nonatomic) __weak UIViewController *presentationSourceViewController;
 - (void)viewLayoutMarginsDidChange;
 - (struct CGSize)preferredContentSize;
@@ -182,6 +190,7 @@
 - (void)setActiveEventEditor:(id)arg1;
 - (id)activeEventEditor;
 - (void)editEvent;
+- (void)_doneButtonPressed:(id)arg1;
 - (void)doneButtonPressed;
 - (void)_notifyDetailItemsOfVisibilityOnScreen;
 - (void)_updateStatusButtonsActions;
@@ -221,6 +230,8 @@
 - (void)_reloadIfNeeded;
 - (void)_setNeedsReloadIncludingItems:(_Bool)arg1;
 - (void)setNeedsReload;
+- (_Bool)canManagePresentationStyle;
+- (_Bool)wantsManagement;
 - (void)openAttendeesDetailItem;
 - (void)_pop;
 - (_Bool)_shouldPopSelf;
@@ -246,7 +257,7 @@
 - (void)dealloc;
 - (void)_teardownTableView;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithContext:(struct NSDictionary *)arg1;
+- (id)initWithContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

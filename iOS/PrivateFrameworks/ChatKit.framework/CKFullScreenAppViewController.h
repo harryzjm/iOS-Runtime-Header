@@ -41,6 +41,7 @@
     struct CGRect _targetBrowserFrame;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long lastKnownDeviceOrientation; // @synthesize lastKnownDeviceOrientation=_lastKnownDeviceOrientation;
 @property(nonatomic) _Bool inDragAndDrop; // @synthesize inDragAndDrop=_inDragAndDrop;
 @property(nonatomic) struct CGRect targetBrowserFrame; // @synthesize targetBrowserFrame=_targetBrowserFrame;
@@ -56,7 +57,6 @@
 @property(nonatomic) _Bool addsVerticalPaddingForStatusBar; // @synthesize addsVerticalPaddingForStatusBar=_addsVerticalPaddingForStatusBar;
 @property(nonatomic) __weak id <CKFullScreenAppViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *contentViewController; // @synthesize contentViewController=_contentViewController;
-- (void).cxx_destruct;
 - (_Bool)_currentPluginIsJellyfish;
 - (_Bool)_currentPluginIsAppManager;
 - (_Bool)_currentPluginIsAppStore;
@@ -91,6 +91,7 @@
 - (void)animateBrowserViewToTargetRect:(struct CGRect)arg1 grabberView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)animateBrowserViewFromSourceRect:(struct CGRect)arg1 interactive:(_Bool)arg2 grabberView:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct CGRect)leftRightSafeAreaInsetRect:(struct CGRect)arg1;
+- (struct UIEdgeInsets)additionalSafeAreaInsets;
 - (struct CGRect)finalContentViewFrame;
 - (void)updateGrabberTitleAndIconForPlugin:(id)arg1;
 - (double)topAreaHeight;

@@ -61,7 +61,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithFirstKey:(int)arg1 andArgumentList:(struct __va_list_tag [1])arg2;
+- (id)initWithFirstKey:(int)arg1 andArgumentList:(char *)arg2;
 - (id)initWithPropertiesAndValues:(int)arg1;
 - (id)initWithPropertyMap:(id)arg1;
 - (id)initWithCapacity:(unsigned long long)arg1;

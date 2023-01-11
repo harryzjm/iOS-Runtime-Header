@@ -10,6 +10,7 @@
 }
 
 @property(nonatomic) _Bool testAppBlocked; // @synthesize testAppBlocked=_testAppBlocked;
+- (long long)screenTimePolicy;
 - (_Bool)isBlockedForScreenTimeExpiration;
 
 @end

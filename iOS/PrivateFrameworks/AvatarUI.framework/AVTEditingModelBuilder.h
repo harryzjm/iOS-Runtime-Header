@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)buildCoreModelFromPlistWithLogger:(id)arg1;
-+ (id)buildCoreModelFromPlist;
++ (id)buildCoreModelFromPlistForPlatform:(unsigned long long)arg1 withLogger:(id)arg2;
++ (id)buildCoreModelFromPlistForPlatform:(unsigned long long)arg1;
 
 @end
 

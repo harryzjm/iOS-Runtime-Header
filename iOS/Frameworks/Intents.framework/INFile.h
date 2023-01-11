@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INFileURLEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INJSONSerializable-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString, NSURL;
 
-@interface INFile : NSObject <INFileURLEnumerable, INJSONSerializable>
+@interface INFile : NSObject <INEnumerable, INJSONSerializable, NSSecureCoding>
 {
     NSData *_memoryMappedFileData;
+    _Bool _deletesFileOnDeallocationIfNeeded;
     NSData *_data;
     NSString *_filename;
     NSURL *_fileURL;
@@ -23,10 +25,16 @@
 + (_Bool)supportsSecureCoding;
 + (id)fileWithFileURL:(id)arg1 filename:(id)arg2 typeIdentifier:(id)arg3;
 + (id)fileWithData:(id)arg1 filename:(id)arg2 typeIdentifier:(id)arg3;
++ (void)initialize;
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
-@property(readonly, copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
-@property(copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
+@property(nonatomic, setter=_setDeletesFileOnDeallocationIfNeeded:) _Bool _deletesFileOnDeallocationIfNeeded; // @synthesize _deletesFileOnDeallocationIfNeeded;
+@property(copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
+- (void)_setAssociatedAuditToken:(CDStruct_4c969caf)arg1;
+- (_Bool)_associatedAuditTokenIsEqualToAuditToken:(CDStruct_4c969caf)arg1;
+@property(nonatomic, getter=_isMarkedForDeletionOnDeallocation, setter=_setMarkedForDeletionOnDeallocation:) _Bool _markedForDeletionOnDeallocation;
+@property(readonly, nonatomic) _Bool _hasAssociatedAuditToken;
 - (id)_dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -34,11 +42,12 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool _isFileURLBased;
+- (void)dealloc;
 - (id)_initWithData:(id)arg1 filename:(id)arg2 fileURL:(id)arg3 typeIdentifier:(id)arg4;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
-- (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (_Bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 
 // Remaining properties

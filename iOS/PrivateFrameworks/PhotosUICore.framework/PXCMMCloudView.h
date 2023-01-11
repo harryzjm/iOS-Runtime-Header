@@ -15,6 +15,7 @@
     struct {
         _Bool learnMoreTapped;
         _Bool dismissTapped;
+        _Bool sizeThatFitsDidChange;
     } _delegateRespondsTo;
     id <PXCMMCloudViewViewDelegate> _delegate;
     UIButton *_dismissButton;
@@ -22,15 +23,17 @@
     UIImageView *_graphicImageView;
     UILabel *_bodyLabel;
     UIButton *_learnMoreButton;
+    unsigned long long _style;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(readonly, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property(readonly, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property(readonly, nonatomic) UIImageView *graphicImageView; // @synthesize graphicImageView=_graphicImageView;
 @property(readonly, nonatomic) PXGradientView *graphicGradientView; // @synthesize graphicGradientView=_graphicGradientView;
 @property(readonly, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
 @property(nonatomic) __weak id <PXCMMCloudViewViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_didTapDismissButton:(id)arg1;
 - (void)_learnMoreTapped:(id)arg1;
 - (struct CGSize)_performLayoutInRect:(struct CGRect)arg1 updateSubviewFrames:(_Bool)arg2;
@@ -41,7 +44,7 @@
 - (id)_constrainedFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 @property(nonatomic) _Bool disableDismissAction;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 style:(unsigned long long)arg2;
 
 @end
 

@@ -11,6 +11,7 @@
 
 @class NSArray, NSHTTPCookieStorage, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSOperationQueue, NSRecursiveLock, NSSet, NSString, NSURLCache, NSURLSession;
 
+__attribute__((visibility("hidden")))
 @interface MCLURLDataLoader : NSObject <NSURLSessionDataDelegate, NSURLSessionDownloadDelegate>
 {
     NSString *_cachePath;
@@ -45,9 +46,9 @@
 + (id)fileExtensionForMimeType:(id)arg1;
 + (id)dateFromRFC1123:(id)arg1;
 + (id)uniqueImageKeyForURL:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSHTTPCookieStorage *cookieStorage; // @synthesize cookieStorage=_cookieStorage;
 @property(readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
 - (id)_cachedResponseForRequest:(id)arg1;
 - (void)_removeCachedResponseForRequest:(id)arg1 force:(_Bool)arg2;
 - (void)_removeCachedResponseForRequest:(id)arg1;
@@ -83,6 +84,7 @@
 - (id)defaultSessionConfiguration;
 - (void)configureSession;
 @property(readonly, nonatomic) NSSet *cacheLocations;
+- (id)downloadCachesDirectory;
 - (void)setCategory:(id)arg1 forTasks:(id)arg2;
 - (void)setCategory:(id)arg1 forTask:(id)arg2;
 - (void)cancelTasks:(id)arg1;

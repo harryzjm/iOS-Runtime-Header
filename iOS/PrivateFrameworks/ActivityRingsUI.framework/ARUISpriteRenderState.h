@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (_Bool)shouldRunStateForIcon:(id)arg1;
 - (id)name;
 - (id)initWithPipelineLibrary:(id)arg1;
 - (id)renderPipelineDescriptorFromLibrary:(id)arg1;

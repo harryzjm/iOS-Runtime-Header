@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_groupID;
     unsigned long long _nbClients;
     NSMutableSet *_liveModeParticipantIdentifiers;
-    IDSService *_sharingService;
+    IDSService *_sharingIDSService;
     NSMutableSet *_identifiers;
     NSObject<OS_os_transaction> *_transaction;
     NSString *_initiatorIdentifier;
@@ -27,27 +27,27 @@ __attribute__((visibility("hidden")))
     id <MSPSharedTripGroupSessionDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <MSPSharedTripGroupSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *initiatorDisplayName; // @synthesize initiatorDisplayName=_initiatorDisplayName;
 @property(readonly, nonatomic) NSString *initiatorIdentifier; // @synthesize initiatorIdentifier=_initiatorIdentifier;
-- (void).cxx_destruct;
 - (void)participantDidLeave:(id)arg1;
 - (void)participantDidJoin:(id)arg1;
 - (_Bool)_validParticipant:(id)arg1;
 - (id)_currentRoutePath;
-- (void)sendCommand:(id)arg1 fromHandle:(id)arg2 fromAccountID:(id)arg3;
-- (void)sendChunkedMessage:(id)arg1 to:(id)arg2;
-- (void)_sendChunkMessage:(id)arg1 to:(id)arg2 packet:(id)arg3;
+- (_Bool)_sendChunkMessage:(id)arg1 to:(id)arg2 packet:(id)arg3 error:(id *)arg4;
+- (_Bool)sendChunkedMessage:(id)arg1 to:(id)arg2 error:(id *)arg3;
+- (_Bool)sendCommand:(id)arg1 fromHandle:(id)arg2 fromAccountID:(id)arg3 error:(id *)arg4;
 - (void)_sharingEndedWithError:(id)arg1;
 - (void)_sharingEnded;
-- (_Bool)removeSharingWith:(id)arg1;
+- (_Bool)sessionIsAliveAfterRemovingSharingIdentifiers:(id)arg1;
 - (void)addSharingWith:(id)arg1;
 @property(readonly, nonatomic) _Bool inLiveMode;
-- (void)_leaveLivemode;
-- (void)_joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2;
-- (void)leaveLiveModeForced;
-- (_Bool)leaveLiveModeIfNeeded;
-- (void)joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2;
+- (_Bool)_leaveLiveMode:(id *)arg1;
+- (_Bool)_joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2 error:(id *)arg3;
+- (_Bool)leaveLiveModeForced:(id *)arg1;
+- (_Bool)leaveLiveModeIfNeeded:(id *)arg1;
+- (_Bool)joinLiveModeFromHandle:(id)arg1 fromAccountID:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) NSArray *accountIdentifiers;
 @property(readonly, nonatomic) NSString *identifier;
 - (void)dealloc;

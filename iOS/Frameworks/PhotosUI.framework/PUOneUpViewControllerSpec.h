@@ -36,15 +36,20 @@ __attribute__((visibility("hidden")))
     long long _tileInitialContentMode;
     struct CGSize _progressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
+    struct CGSize _renderIndicatorSize;
+    struct UIEdgeInsets _progressIndicatorContentInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setShouldPlaceScrubberInScrubberBar:) _Bool shouldPlaceScrubberInScrubberBar; // @synthesize shouldPlaceScrubberInScrubberBar=_shouldPlaceScrubberInScrubberBar;
 @property(nonatomic, setter=_setShouldLayoutReviewScreenControlBarVertically:) _Bool shouldLayoutReviewScreenControlBarVertically; // @synthesize shouldLayoutReviewScreenControlBarVertically=_shouldLayoutReviewScreenControlBarVertically;
 @property(nonatomic, setter=_setShouldPinContentToTop:) _Bool shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
 @property(nonatomic, setter=_setShouldCounterrotateReviewScreenBars:) _Bool shouldCounterrotateReviewScreenBars; // @synthesize shouldCounterrotateReviewScreenBars=_shouldCounterrotateReviewScreenBars;
 @property(nonatomic, setter=_setTileInitialContentMode:) long long tileInitialContentMode; // @synthesize tileInitialContentMode=_tileInitialContentMode;
 @property(nonatomic, setter=_setShouldUseCompactCommentsTitle:) _Bool shouldUseCompactCommentsTitle; // @synthesize shouldUseCompactCommentsTitle=_shouldUseCompactCommentsTitle;
+@property(readonly, nonatomic) struct CGSize renderIndicatorSize; // @synthesize renderIndicatorSize=_renderIndicatorSize;
 @property(nonatomic, setter=_setBufferingIndicatorSize:) struct CGSize bufferingIndicatorSize; // @synthesize bufferingIndicatorSize=_bufferingIndicatorSize;
+@property(nonatomic, setter=_setProgressIndicatorContentInsets:) struct UIEdgeInsets progressIndicatorContentInsets; // @synthesize progressIndicatorContentInsets=_progressIndicatorContentInsets;
 @property(nonatomic, setter=_setProgressIndicatorSize:) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
 @property(retain, nonatomic, setter=_setBackgroundColorOverride:) UIColor *backgroundColorOverride; // @synthesize backgroundColorOverride=_backgroundColorOverride;
 @property(nonatomic, setter=_setShouldDisplayEmptyPlaceholder:) _Bool shouldDisplayEmptyPlaceholder; // @synthesize shouldDisplayEmptyPlaceholder=_shouldDisplayEmptyPlaceholder;
@@ -65,7 +70,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=setShowingPlayPauseButtonInBars:) _Bool isShowingPlayPauseButtonInBars; // @synthesize isShowingPlayPauseButtonInBars=_isShowingPlayPauseButtonInBars;
 @property(nonatomic, setter=setPresentedForPreview:) _Bool isPresentedForPreview; // @synthesize isPresentedForPreview=_isPresentedForPreview;
 @property(nonatomic, setter=setChromeVisible:) _Bool isChromeVisible; // @synthesize isChromeVisible=_isChromeVisible;
-- (void).cxx_destruct;
+- (void)_setRenderIndicatorSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct CGSize playButtonSize;
 - (void)updateIfNeeded;
 @property(readonly, nonatomic) _Bool shouldDisableNavigationBarsVisibility;

@@ -11,16 +11,26 @@
 
 @interface PGGraphSeasonNode <PGGraphLocalizable, PGGraphSynonymSupport>
 {
+    NSString *_name;
 }
 
 + (id)_localizationKeyForSeasonNode:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 @property(readonly, nonatomic) NSString *localizedName;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned short)domain;
+- (id)label;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

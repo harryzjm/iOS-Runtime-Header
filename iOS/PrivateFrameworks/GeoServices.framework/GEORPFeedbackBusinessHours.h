@@ -13,12 +13,14 @@
 @interface GEORPFeedbackBusinessHours : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_comments;
     unsigned long long _end;
     unsigned long long _start;
     GEOPDHours *_weeklyHours;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _hoursType;
     struct {
         unsigned int has_end:1;
@@ -27,12 +29,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_comments:1;
         unsigned int read_weeklyHours:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_comments:1;
-        unsigned int wrote_end:1;
-        unsigned int wrote_start:1;
-        unsigned int wrote_weeklyHours:1;
-        unsigned int wrote_hoursType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,6 +45,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsHoursType:(id)arg1;
@@ -56,14 +56,14 @@
 @property(nonatomic) int hoursType;
 @property(retain, nonatomic) NSString *comments;
 @property(readonly, nonatomic) _Bool hasComments;
-- (void)_readComments;
 @property(nonatomic) _Bool hasEnd;
 @property(nonatomic) unsigned long long end;
 @property(nonatomic) _Bool hasStart;
 @property(nonatomic) unsigned long long start;
 @property(retain, nonatomic) GEOPDHours *weeklyHours;
 @property(readonly, nonatomic) _Bool hasWeeklyHours;
-- (void)_readWeeklyHours;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

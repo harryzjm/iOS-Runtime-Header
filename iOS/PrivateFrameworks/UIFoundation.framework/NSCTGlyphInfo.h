@@ -14,6 +14,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)characterCollection;
 - (unsigned long long)characterIdentifier;
+- (unsigned int)_glyph;
 - (id)glyphName;
 - (id)_baseString;
 - (unsigned int)_glyphForFont:(id)arg1 baseString:(id)arg2;

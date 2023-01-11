@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _hasMadeFinalPush;
     unsigned long long _maxPostedNotifications;
-    unsigned long long _postedNotifcations;
+    unsigned long long _postedNotifications;
     double _minimumETADifference;
     double _minimumNotificationInterval;
     NSDate *_lastPostedETADate;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 + (id)unarchivingObjectsSet;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasMadeFinalPush; // @synthesize hasMadeFinalPush=_hasMadeFinalPush;
 @property(retain, nonatomic) NSDate *currentETADate; // @synthesize currentETADate=_currentETADate;
 @property(retain, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
@@ -33,14 +34,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *lastPostedETADate; // @synthesize lastPostedETADate=_lastPostedETADate;
 @property(nonatomic) double minimumNotificationInterval; // @synthesize minimumNotificationInterval=_minimumNotificationInterval;
 @property(nonatomic) double minimumETADifference; // @synthesize minimumETADifference=_minimumETADifference;
-@property(nonatomic) unsigned long long postedNotifcations; // @synthesize postedNotifcations=_postedNotifcations;
+@property(nonatomic) unsigned long long postedNotifications; // @synthesize postedNotifications=_postedNotifications;
 @property(nonatomic) unsigned long long maxPostedNotifications; // @synthesize maxPostedNotifications=_maxPostedNotifications;
-- (void).cxx_destruct;
 - (double)minimumETADifferenceIncrement;
-- (void)incrementMinimumETADiffernce;
+- (void)incrementMinimumETADifference;
 - (void)didReceiveUpdateWithETA:(double)arg1 lastUpdated:(double)arg2;
 @property(readonly, nonatomic) unsigned long long currentlyNecessaryNotificationType;
 - (void)didPostNotification;
+- (id)description;
 - (id)initWithMaximumNumberOfNotifications:(unsigned long long)arg1 minimumNotificationInterval:(double)arg2;
 - (id)initWithMaximumNumberOfNotifications:(unsigned long long)arg1;
 - (id)init;

@@ -7,6 +7,7 @@
 #import <CoreFollowUp/NSObject-Protocol.h>
 
 @protocol FLExtensionHostContextInterface <NSObject>
+- (void)extensionDidFinishWithCompletionHandler:(void (^)(void))arg1;
 - (void)extensionDidFinish;
 @end
 

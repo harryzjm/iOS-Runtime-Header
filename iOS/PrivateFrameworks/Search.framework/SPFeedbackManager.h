@@ -8,19 +8,29 @@
 
 #import <Search/SFFeedbackListener-Protocol.h>
 
-@class NSString;
+@class NSString, NSUserDefaults;
 @protocol OS_dispatch_queue, SFFeedbackListener;
 
 @interface SPFeedbackManager : NSObject <SFFeedbackListener>
 {
+    _Bool _needsToDisplayFirstTimeView;
+    _Bool _isParsecEnabled;
     NSObject<SFFeedbackListener> *_feedbackListener;
     NSObject<OS_dispatch_queue> *_feedbackQueue;
+    NSUserDefaults *_defaultsCenter;
 }
 
++ (void)bumpPriorityOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (void)flushFeedbackWithCompletion:(CDUnknownBlockType)arg1;
 + (id)sharedManager;
+- (void).cxx_destruct;
+@property _Bool isParsecEnabled; // @synthesize isParsecEnabled=_isParsecEnabled;
+@property _Bool needsToDisplayFirstTimeView; // @synthesize needsToDisplayFirstTimeView=_needsToDisplayFirstTimeView;
+@property(retain, nonatomic) NSUserDefaults *defaultsCenter; // @synthesize defaultsCenter=_defaultsCenter;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *feedbackQueue; // @synthesize feedbackQueue=_feedbackQueue;
 @property(retain, nonatomic) NSObject<SFFeedbackListener> *feedbackListener; // @synthesize feedbackListener=_feedbackListener;
-- (void).cxx_destruct;
+- (void)updateParsecEnabled;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (void)cardViewDidAppear:(id)arg1;

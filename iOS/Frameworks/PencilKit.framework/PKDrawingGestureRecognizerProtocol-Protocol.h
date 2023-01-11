@@ -10,8 +10,10 @@
 @protocol PKDrawingGestureRecognizerDelegate, PKDrawingGestureTarget;
 
 @protocol PKDrawingGestureRecognizerProtocol <NSObject>
+@property(readonly, nonatomic) unsigned long long activeInputProperties;
 @property(nonatomic) __weak id <PKDrawingGestureTarget> drawingTarget;
 @property(nonatomic) __weak id <PKDrawingGestureRecognizerDelegate> delegate;
+@property(readonly, nonatomic) _Bool isReplaying;
 @property(readonly, nonatomic) UITouch *drawingTouch;
 - (void)end;
 - (void)cancel;

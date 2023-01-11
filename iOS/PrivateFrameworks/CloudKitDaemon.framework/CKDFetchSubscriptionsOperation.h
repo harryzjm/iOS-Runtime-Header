@@ -5,6 +5,7 @@
 //
 
 @class NSArray, NSMutableArray;
+@protocol CKFetchSubscriptionsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchSubscriptionsOperation
@@ -15,16 +16,20 @@ __attribute__((visibility("hidden")))
     NSArray *_subscriptionIDs;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isFetchAllSubscriptionsOperation; // @synthesize isFetchAllSubscriptionsOperation=_isFetchAllSubscriptionsOperation;
 @property(retain, nonatomic) NSArray *subscriptionIDs; // @synthesize subscriptionIDs=_subscriptionIDs;
 @property(copy, nonatomic) CDUnknownBlockType subscriptionFetchedProgressBlock; // @synthesize subscriptionFetchedProgressBlock=_subscriptionFetchedProgressBlock;
 @property(retain, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
+- (int)operationType;
 - (void)_handleSubscriptionFetched:(id)arg1 withID:(id)arg2 responseCode:(id)arg3;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKFetchSubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

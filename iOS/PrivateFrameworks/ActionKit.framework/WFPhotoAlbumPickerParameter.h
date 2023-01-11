@@ -12,6 +12,7 @@
 
 @interface WFPhotoAlbumPickerParameter : WFEnumerationParameter <PHPhotoLibraryChangeObserver>
 {
+    _Bool _includesSmartAlbum;
     NSArray *_possibleStates;
     id _defaultSerializedRepresentation;
     WFPhotoAccessResource *_photoAccessResource;
@@ -19,8 +20,9 @@
 
 + (id)referencedActionResourceClasses;
 + (_Bool)hasPhotosAccess;
-@property(retain, nonatomic) WFPhotoAccessResource *photoAccessResource; // @synthesize photoAccessResource=_photoAccessResource;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool includesSmartAlbum; // @synthesize includesSmartAlbum=_includesSmartAlbum;
+@property(retain, nonatomic) WFPhotoAccessResource *photoAccessResource; // @synthesize photoAccessResource=_photoAccessResource;
 - (void)photoLibraryDidChange:(id)arg1;
 - (id)defaultSerializedRepresentation;
 - (id)localizedLabelForPossibleState:(id)arg1;
@@ -29,8 +31,10 @@
 - (void)resourceAvailabilityChanged;
 - (void)wasRemovedFromWorkflow;
 - (void)wasAddedToWorkflow;
+- (id)sharedLibrary;
 - (void)setActionResources:(id)arg1;
 - (Class)singleStateClass;
+- (id)initWithDefinition:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

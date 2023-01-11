@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)_accessibilityIsSpeakThisElement;
 - (void)setDate:(id)arg1;
 - (void)updateDateLabel;
 - (id)initWithFrame:(struct CGRect)arg1;

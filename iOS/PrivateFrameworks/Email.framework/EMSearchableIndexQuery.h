@@ -12,7 +12,7 @@
 #import <Email/EMSearchableIndexQueryBuilder-Protocol.h>
 #import <Email/NSProgressReporting-Protocol.h>
 
-@class CSSearchQuery, EFPromise, EMSearchableIndexQueryExpression, NSArray, NSLock, NSProgress, NSString;
+@class CSSearchQuery, EFPromise, EMSearchableIndexQueryExpression, NSArray, NSError, NSLock, NSProgress, NSString;
 
 @interface EMSearchableIndexQuery : NSObject <EFLoggable, EMSearchableIndexQueryBuilder, EFSignpostable, EFCancelable, NSProgressReporting>
 {
@@ -23,6 +23,8 @@
     _Bool _counting;
     _Bool _live;
     _Bool _queryDidMoveToFinishedState;
+    _Bool _liveQueryDidGather;
+    NSString *_bundleIdentifier;
     CDUnknownBlockType _resultsBlock;
     CDUnknownBlockType _completionBlock;
     CDUnknownBlockType _failureBlock;
@@ -39,6 +41,7 @@
     NSString *_logPrefixString;
     NSString *_queryStatus;
     long long _count;
+    NSError *_simulatedFailedQueryError;
     CSSearchQuery *_query;
 }
 
@@ -54,8 +57,11 @@
 + (id)queryStringByJoiningQueries:(id)arg1 withOperand:(long long)arg2;
 + (id)_modifierStringFromModifiers:(unsigned long long)arg1;
 + (id)_operandStringForOperand:(long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CSSearchQuery *query; // @synthesize query=_query;
+@property(retain, nonatomic) NSError *simulatedFailedQueryError; // @synthesize simulatedFailedQueryError=_simulatedFailedQueryError;
 @property(nonatomic) long long count; // @synthesize count=_count;
+@property(nonatomic) _Bool liveQueryDidGather; // @synthesize liveQueryDidGather=_liveQueryDidGather;
 @property(nonatomic) _Bool queryDidMoveToFinishedState; // @synthesize queryDidMoveToFinishedState=_queryDidMoveToFinishedState;
 @property(copy, nonatomic) NSString *queryStatus; // @synthesize queryStatus=_queryStatus;
 @property(copy, nonatomic) NSString *logPrefixString; // @synthesize logPrefixString=_logPrefixString;
@@ -74,7 +80,7 @@
 @property(copy, nonatomic) CDUnknownBlockType failureBlock; // @synthesize failureBlock=_failureBlock;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(copy, nonatomic) CDUnknownBlockType resultsBlock; // @synthesize resultsBlock=_resultsBlock;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (void)_logSignpostForSearchQueryDidFinishWithStatus:(id)arg1;
 - (void)_logSignpostForSearchQueryDidReceiveFirstResultsWithItemCount:(unsigned long long)arg1;
 - (void)_logSignpostForSearchQueryStart;
@@ -88,8 +94,11 @@
 - (void)_performClientWork:(CDUnknownBlockType)arg1;
 - (void)_removeAllLiveUpdatesBlocks;
 - (void)_removeResultsBlock;
+- (void)simulateFailedQueryWithError:(id)arg1;
 - (void)start;
+@property(readonly, nonatomic) _Bool isCancelled;
 - (void)_cancel;
+- (void)_cancelQuery;
 - (void)cancel;
 - (void)_failedWithError:(id)arg1;
 - (_Bool)_isCancellationError:(id)arg1;
@@ -100,6 +109,7 @@
 - (void)_changedItems:(id)arg1;
 - (void)_foundItems:(id)arg1;
 @property(readonly) NSProgress *progress;
+@property(readonly, nonatomic) _Bool isFinished;
 - (_Bool)_isFinishedQueryStatus:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;

@@ -9,6 +9,7 @@
 @class NSValue;
 
 @interface AVAsset (PhotosUICore)
+@property(readonly, nonatomic) struct CGSize px_dimensionsOfFirstVideoTrack;
 - (void)px_loadDurationWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 px_duration;
 @property(readonly, nonatomic) NSValue *px_cachedDuration;

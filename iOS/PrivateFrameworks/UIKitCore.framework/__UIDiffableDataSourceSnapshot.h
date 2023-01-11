@@ -6,12 +6,54 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+@protocol _UIDiffableDataSourceState;
+
 @interface __UIDiffableDataSourceSnapshot <NSCopying>
 {
+    id <_UIDiffableDataSourceState> _state;
+    NSMutableArray *_pendingSnapshotUpdates;
 }
 
+- (void).cxx_destruct;
+- (void)_validateReloadUpdateThrowingIfNeeded:(id)arg1;
+- (void)_commitUpdateAtomic:(id)arg1;
+- (id)indexPathForItemIdentifier:(id)arg1;
+- (id)itemIdentifierForIndexPath:(id)arg1;
+- (void)insertSectionWithIdentifier:(id)arg1 afterSectionWithIdentifier:(id)arg2;
+- (void)insertSectionWithIdentifier:(id)arg1 beforeSectionWithIdentifier:(id)arg2;
+- (void)appendSectionWithIdentifier:(id)arg1;
+- (void)reloadSectionsWithIdentifiers:(id)arg1;
+- (void)moveSectionWithIdentifier:(id)arg1 afterSectionWithIdentifier:(id)arg2;
+- (void)moveSectionWithIdentifier:(id)arg1 beforeSectionWithIdentifier:(id)arg2;
+- (void)deleteSectionsWithIdentifiers:(id)arg1;
+- (void)insertSectionsWithIdentifiers:(id)arg1 afterSectionWithIdentifier:(id)arg2;
+- (void)insertSectionsWithIdentifiers:(id)arg1 beforeSectionWithIdentifier:(id)arg2;
+- (void)appendSectionsWithIdentifiers:(id)arg1;
+- (void)reloadItemsWithIdentifiers:(id)arg1;
+- (void)moveItemWithIdentifier:(id)arg1 afterItemWithIdentifier:(id)arg2;
+- (void)moveItemWithIdentifier:(id)arg1 beforeItemWithIdentifier:(id)arg2;
+- (void)deleteAllItems;
+- (void)deleteItemsWithIdentifiers:(id)arg1;
+- (void)insertItemsWithIdentifiers:(id)arg1 afterItemWithIdentifier:(id)arg2;
+- (void)insertItemsWithIdentifiers:(id)arg1 beforeItemWithIdentifier:(id)arg2;
+- (void)appendItemsWithIdentifiers:(id)arg1 intoSectionWithIdentifier:(id)arg2;
+- (void)appendItemsWithIdentifiers:(id)arg1;
+- (long long)indexOfSectionIdentifier:(id)arg1;
+- (long long)indexOfItemIdentifier:(id)arg1;
+- (id)sectionIdentifierForSectionContainingItemIdentifier:(id)arg1;
+- (id)itemIdentifiersInSectionWithIdentifier:(id)arg1;
+- (long long)numberOfItemsInSection:(id)arg1;
+- (id)itemIdentifiers;
+- (id)sectionIdentifiers;
+- (long long)numberOfSections;
+- (long long)numberOfItems;
 - (_Bool)isEqual:(id)arg1;
+- (id)pendingSnapshotUpdates;
+- (id)state;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)initWithState:(id)arg1;
 - (id)init;
 
 @end

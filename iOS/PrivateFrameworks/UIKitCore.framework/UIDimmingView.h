@@ -7,6 +7,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSArray, NSString, UIBarButtonItem, UIColor, UIImageView, UITapGestureRecognizer;
+@protocol UIDimmingViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIDimmingView <UIGestureRecognizerDelegate>
@@ -20,20 +21,21 @@ __attribute__((visibility("hidden")))
     UIColor *_dimmingColor;
     UITapGestureRecognizer *_singleFingerTapRecognizer;
     _Bool _suppressesBackdrops;
-    id _delegate;
+    id <UIDimmingViewDelegate> _delegate;
     double _percentDisplayed;
     double _percentLightened;
 }
 
 + (id)defaultDimmingColor;
+- (void).cxx_destruct;
 @property(nonatomic) double percentLightened; // @synthesize percentLightened=_percentLightened;
 @property(nonatomic) double percentDisplayed; // @synthesize percentDisplayed=_percentDisplayed;
 @property(nonatomic) _Bool suppressesBackdrops; // @synthesize suppressesBackdrops=_suppressesBackdrops;
 @property(retain, nonatomic) UIColor *dimmingColor; // @synthesize dimmingColor=_dimmingColor;
 @property(nonatomic) _Bool ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
 @property(copy, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
-@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <UIDimmingViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_sendDelegateDimmingViewWasTapped;
 - (void)_simulateTap;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)handleSingleTap:(id)arg1;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)mouseUp:(struct __GSEvent *)arg1;
 - (void)updateBackgroundColor;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)display:(_Bool)arg1 withAnimationDuration:(double)arg2 afterDelay:(double)arg3;
 - (void)display:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool displayed;

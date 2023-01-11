@@ -26,10 +26,11 @@
     NSString *_loginID;
 }
 
-@property(retain, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
 - (void)deactivateAndPurgeIdentify;
 - (void)_reregisterAndReidentify:(_Bool)arg1;
+- (void)forceRemoveAccount;
 - (void)unregisterAccount;
 - (void)registerAccount;
 - (void)unvalidateAliases:(id)arg1;
@@ -89,6 +90,7 @@
 - (void)setAuthToken:(id)arg1;
 - (void)setPassword:(id)arg1;
 @property(readonly, nonatomic) _Bool isUserDisabled;
+- (_Bool)isTemporary;
 @property(readonly, nonatomic) int accountType;
 @property(nonatomic, setter=_setIsEnabled:) _Bool _isEnabled;
 @property(readonly, nonatomic) NSString *uniqueID;

@@ -6,9 +6,10 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class INCodableAttribute;
+@class INCodableAttribute, INStringLocalizer;
 
 @protocol WFCodableAttributeBackedParameter <NSObject>
+@property(retain, nonatomic) INStringLocalizer *stringLocalizer;
 @property(retain, nonatomic) INCodableAttribute *codableAttribute;
 @end
 

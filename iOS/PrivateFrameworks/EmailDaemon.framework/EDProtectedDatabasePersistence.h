@@ -28,12 +28,12 @@
 + (id)protectedDatabaseName;
 + (id)signpostLog;
 + (id)log;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isReconciling; // @synthesize isReconciling=_isReconciling;
 @property(nonatomic) _Bool isInitialized; // @synthesize isInitialized=_isInitialized;
 @property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *reconciliationQueue; // @synthesize reconciliationQueue=_reconciliationQueue;
 @property(readonly, nonatomic) EDPersistenceHookRegistry *hookRegistry; // @synthesize hookRegistry=_hookRegistry;
 @property(readonly, nonatomic) EDPersistenceDatabaseJournalManager *journalManager; // @synthesize journalManager=_journalManager;
-- (void).cxx_destruct;
 - (void)addAdditionalCriteriaToCleanupActivity:(id)arg1;
 - (void)finishJournalReconciliation:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool protectedDataAvailable;
@@ -49,8 +49,8 @@
 - (id)_databaseIDsToDeleteForTable:(id)arg1;
 - (void)scheduleRecurringActivity;
 - (unsigned long long)_deleteRowIDs:(id)arg1 fromJournal:(id)arg2 withConnection:(id)arg3;
-- (unsigned long long)_mergeTable:(id)arg1 connection:(id)arg2;
-- (unsigned long long)_mergeSchema:(id)arg1 connection:(id)arg2;
+- (unsigned long long)_mergeTable:(id)arg1 connection:(id)arg2 journaledRows:(unsigned long long *)arg3 newRows:(unsigned long long *)arg4;
+- (unsigned long long)_mergeSchema:(id)arg1 connection:(id)arg2 journaledRows:(unsigned long long *)arg3 newRows:(unsigned long long *)arg4;
 - (unsigned long long)_runReconciliationWithSchema:(id)arg1 connection:(id)arg2;
 - (unsigned long long)_reconcileJournalsWithSchema:(id)arg1 connection:(id)arg2;
 - (void)reconcileJournalsWithSchema:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

@@ -18,15 +18,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *updateTimestamp; // @synthesize updateTimestamp=_updateTimestamp;
 @property(retain, nonatomic) HMDUserPresenceRegion *presenceRegionStatus; // @synthesize presenceRegionStatus=_presenceRegionStatus;
 @property(readonly, nonatomic) HMDUser *user; // @synthesize user=_user;
-- (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic, getter=isNotAtHome) _Bool notAtHome;
 @property(readonly, nonatomic, getter=isAtHome) _Bool atHome;
-- (id)description;
 - (id)initWithUser:(id)arg1 presenceRegionStatus:(id)arg2;
 
 @end

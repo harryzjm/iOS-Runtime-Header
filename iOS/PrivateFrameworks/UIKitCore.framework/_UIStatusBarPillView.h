@@ -7,24 +7,28 @@
 #import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 #import <UIKitCore/_UIStatusBarPersistentAnimation-Protocol.h>
 
-@class CALayer, NSString, UIAccessibilityHUDItem, UIColor, UIView;
+@class CALayer, NSString, UIAccessibilityHUDItem, UIColor, UIView, UIVisualEffect, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarPillView <_UIStatusBarDisplayable, _UIStatusBarPersistentAnimation>
 {
     _Bool _pulsing;
+    UIVisualEffect *_visualEffect;
     UIColor *_pillColor;
     UIView *_subviewForBaselineAlignment;
     CALayer *_pulseLayer;
+    UIVisualEffectView *_visualEffectView;
     struct UIEdgeInsets _alignmentRectInsets;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 @property(retain, nonatomic) CALayer *pulseLayer; // @synthesize pulseLayer=_pulseLayer;
 @property(nonatomic) __weak UIView *subviewForBaselineAlignment; // @synthesize subviewForBaselineAlignment=_subviewForBaselineAlignment;
 @property(retain, nonatomic) UIColor *pillColor; // @synthesize pillColor=_pillColor;
+@property(retain, nonatomic) UIVisualEffect *visualEffect; // @synthesize visualEffect=_visualEffect;
 @property(nonatomic) _Bool pulsing; // @synthesize pulsing=_pulsing;
 @property(nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
-- (void).cxx_destruct;
 - (id)viewForLastBaselineLayout;
 - (void)applyStyleAttributes:(id)arg1;
 - (void)_updateBackgroundColor;

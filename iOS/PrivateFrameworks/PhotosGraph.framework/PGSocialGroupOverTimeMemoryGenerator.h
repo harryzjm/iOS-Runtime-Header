@@ -14,8 +14,8 @@
 @property(nonatomic) long long socialGroupID; // @synthesize socialGroupID=_socialGroupID;
 - (_Bool)canFallbackToDejunkAndDedupeForShowMore;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (unsigned long long)durationForExtendedCuration;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_computeOverTheTimeFacedAssetsForPersonUUIDs:(id)arg1 inFacedAssets:(id)arg2;
 

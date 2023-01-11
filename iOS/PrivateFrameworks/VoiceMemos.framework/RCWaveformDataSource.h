@@ -14,7 +14,6 @@
 @interface RCWaveformDataSource : NSObject <RCWaveformGeneratorSegmentOutputObserver>
 {
     RCMutableWaveform *_accumulatorWaveform;
-    RCMutableWaveform *_liveRecordingMergingWaveform;
     double _liveRecordingMergeTime;
     _Bool _hasSavedGeneratedWaveform;
     _Bool _hasStartedLoading;
@@ -25,16 +24,15 @@
     NSHashTable *_weakObservers;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasStartedLoading; // @synthesize hasStartedLoading=_hasStartedLoading;
 @property(readonly, nonatomic) NSHashTable *weakObservers; // @synthesize weakObservers=_weakObservers;
 @property(readonly, nonatomic) NSURL *generatedWaveformOutputURL; // @synthesize generatedWaveformOutputURL=_generatedWaveformOutputURL;
 @property _Bool hasSavedGeneratedWaveform; // @synthesize hasSavedGeneratedWaveform=_hasSavedGeneratedWaveform;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) double durationPerWaveformSlice; // @synthesize durationPerWaveformSlice=_durationPerWaveformSlice;
-@property(readonly, nonatomic) RCWaveform *liveRecordingMergingWaveform; // @synthesize liveRecordingMergingWaveform=_liveRecordingMergingWaveform;
 @property(readonly, nonatomic) RCWaveform *accumulatorWaveform; // @synthesize accumulatorWaveform=_accumulatorWaveform;
 @property(readonly, nonatomic) RCWaveformGenerator *waveformGenerator; // @synthesize waveformGenerator=_waveformGenerator;
-- (void).cxx_destruct;
 - (void)_performObserversBlock:(CDUnknownBlockType)arg1;
 - (void)_performOnObserversBlock:(CDUnknownBlockType)arg1;
 - (void)waveformGenerator:(id)arg1 didLoadWaveformSegment:(id)arg2;

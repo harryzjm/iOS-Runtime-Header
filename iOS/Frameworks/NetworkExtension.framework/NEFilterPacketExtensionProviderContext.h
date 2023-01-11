@@ -16,14 +16,15 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *interposes; // @synthesize interposes=_interposes;
 @property(retain) NSObject<OS_nw_interpose> *nw_interpose; // @synthesize nw_interpose=_nw_interpose;
-- (void).cxx_destruct;
 - (void)stopWithReason:(int)arg1;
 - (void)dealloc;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)interposeClaimWithUUID:(id)arg1;
 - (void)interposeHandleFlowEvent:(int)arg1 interface:(id)arg2 flow_id:(unsigned char [16])arg3 nexus_instance:(unsigned char [16])arg4 nexus_port:(unsigned int)arg5 key:(void *)arg6 key_length:(unsigned int)arg7;
+- (Class)requiredProviderSuperClass;
 - (id)extensionPoint;
 
 @end

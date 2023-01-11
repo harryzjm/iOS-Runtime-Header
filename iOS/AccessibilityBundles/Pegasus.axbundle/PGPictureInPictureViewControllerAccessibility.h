@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setStashState:(long long)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)viewDidLoad;
 
 @end
 

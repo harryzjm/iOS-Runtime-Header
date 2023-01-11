@@ -17,15 +17,14 @@
     id <AVTPhysicsControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <AVTPhysicsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <AVTPhysicsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)resetToPhysicsState:(id)arg1;
 - (id)physicsState;
 - (void)setupPhysicsIfNeeded;
 - (void)downforcesDidChange;
 - (void)_setupPhysicsChain:(id)arg1;
 - (void)_setupCollisionNode:(id)arg1;
-- (void)setupPhysicsDebugNodes;
 - (void)setupPhysics;
 - (MISSING_TYPE *)offsetFromRestingPositionForNode:(id)arg1 inCoordinateSpaceOfNode:(id)arg2;
 - (void)updateAtTime:(double)arg1 forceMultiplier:(double)arg2;

@@ -10,6 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (_Bool)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (void)sendActionsForControlEvents:(unsigned long long)arg1;
 - (_Bool)isAccessibilityElement;

@@ -163,6 +163,7 @@
 - (void)_assistFormNode:(id)arg1;
 - (void)_endAllowingFocusRedirects;
 - (void)_beginAllowingFocusRedirects;
+- (void)_focusAndAssistFormNode:(id)arg1;
 - (void)_updateAccessory;
 - (void)_updateAutoFillButton;
 - (void)_displayFormNodeInputView;
@@ -198,6 +199,7 @@
 - (void)_prevAccessoryTab:(id)arg1;
 - (void)_nextAccessoryTab:(id)arg1;
 - (id)keyCommands;
+- (_Bool)_resignFirstResponderAndBlurFocusedElement;
 - (_Bool)resignFirstResponder;
 - (id)textDocument;
 - (id)_keyboardResponder;

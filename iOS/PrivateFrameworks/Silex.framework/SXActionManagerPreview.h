@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class SXAction, UIViewController;
-@protocol SXActionPreviewActivity;
+@class UIViewController;
+@protocol SXAction, SXActionPreviewActivity;
 
 @interface SXActionManagerPreview : NSObject
 {
-    SXAction *_action;
+    id <SXAction> _action;
     id <SXActionPreviewActivity> _previewActivity;
     UIViewController *_viewController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(readonly, nonatomic) id <SXActionPreviewActivity> previewActivity; // @synthesize previewActivity=_previewActivity;
-@property(readonly, nonatomic) SXAction *action; // @synthesize action=_action;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) id <SXAction> action; // @synthesize action=_action;
 - (id)initWithAction:(id)arg1 viewController:(id)arg2 previewActivity:(id)arg3;
 
 @end

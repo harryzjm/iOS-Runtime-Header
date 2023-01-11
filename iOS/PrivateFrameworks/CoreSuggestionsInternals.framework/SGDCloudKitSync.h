@@ -45,6 +45,7 @@
 + (void)setSharedInstanceConfigurationBlock:(CDUnknownBlockType)arg1;
 + (id)sharedInstance;
 + (id)_sharedInstanceConfigurationQueue;
++ (id)_callbackQueue;
 - (void).cxx_destruct;
 - (void)connectionDidReconnect:(id)arg1;
 - (void)connection:(id)arg1 didChangeConnectedStatus:(_Bool)arg2;
@@ -62,7 +63,7 @@
 - (void)setNewEntitiesCallback:(CDUnknownBlockType)arg1;
 - (void)setReadyForNewEntities:(_Bool)arg1;
 - (void)deleteGroupId:(id)arg1;
-- (void)addEntity:(id)arg1 withParentEntity:(id)arg2;
+- (void)addEnrichment:(id)arg1 withParentEntity:(id)arg2;
 - (void)setDatabase:(id)arg1;
 - (void)createSubscriptionWithRetries:(unsigned long long)arg1;
 - (id)shouldRemoveEventsFromEventKit;

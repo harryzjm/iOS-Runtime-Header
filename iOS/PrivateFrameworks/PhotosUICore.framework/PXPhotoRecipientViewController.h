@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXSearchRecipientControllerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CNContactPickerViewController, NSArray, NSLayoutConstraint, NSString, PXComposeRecipientView, PXRecipientSearchDataSourceManager, PXSearchRecipientController, UIBarButtonItem;
+@class CNContactPickerViewController, NSArray, NSLayoutConstraint, NSString, PXComposeRecipientView, PXRecipientSearchDataSourceManager, PXSearchRecipientController, UIBarButtonItem, UILabel;
 @protocol PXPhotoRecipientViewControllerDelegate;
 
 @interface PXPhotoRecipientViewController : UIViewController <PXSearchRecipientControllerDelegate, PXComposeRecipientViewDelegate, UIPopoverPresentationControllerDelegate, CNContactPickerDelegate>
@@ -26,10 +26,13 @@
     PXSearchRecipientController *_searchRecipientController;
     PXRecipientSearchDataSourceManager *_searchDataSourceManager;
     PXComposeRecipientView *_composeRecipientView;
+    UILabel *_noContentLabel;
     NSArray *_layoutConstraints;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
+@property(retain, nonatomic) UILabel *noContentLabel; // @synthesize noContentLabel=_noContentLabel;
 @property(retain, nonatomic) PXComposeRecipientView *composeRecipientView; // @synthesize composeRecipientView=_composeRecipientView;
 @property(readonly, nonatomic) PXRecipientSearchDataSourceManager *searchDataSourceManager; // @synthesize searchDataSourceManager=_searchDataSourceManager;
 @property(retain, nonatomic) PXSearchRecipientController *searchRecipientController; // @synthesize searchRecipientController=_searchRecipientController;
@@ -38,8 +41,12 @@
 @property(nonatomic) long long maxRecipients; // @synthesize maxRecipients=_maxRecipients;
 @property(copy, nonatomic) NSString *fieldLabel; // @synthesize fieldLabel=_fieldLabel;
 @property(nonatomic) __weak id <PXPhotoRecipientViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (void)_updateNoContentLabelFont;
+- (void)searchRecipientController:(id)arg1 searchStateDidChange:(long long)arg2;
+- (void)searchRecipientController:(id)arg1 numberOfSearchRecipientsDidChange:(unsigned long long)arg2;
 - (void)searchRecipientController:(id)arg1 didSelectRecipient:(id)arg2;
+- (id)viewControllerForPresentingContactViewControllerBySearchRecipientController:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)_contactPicker:(id)arg1 didSelectContact:(id)arg2;
@@ -49,9 +56,11 @@
 - (void)composeRecipientView:(id)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)composeRecipientView:(id)arg1 didRemoveRecipient:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
+- (void)composeRecipientView:(id)arg1 disambiguateRecipient:(id)arg2;
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;
 - (void)composeRecipientView:(id)arg1 didFinishEnteringAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 textDidChange:(id)arg2;
+- (void)_updateNoContentLabelVisibility;
 - (void)_updateAddButton;
 - (void)_handleDoneButton:(id)arg1;
 - (void)_handleCancelButton:(id)arg1;

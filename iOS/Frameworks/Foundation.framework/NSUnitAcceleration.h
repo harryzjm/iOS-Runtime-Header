@@ -13,6 +13,7 @@
 + (id)metersPerSecondSquared;
 + (id)gravity;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

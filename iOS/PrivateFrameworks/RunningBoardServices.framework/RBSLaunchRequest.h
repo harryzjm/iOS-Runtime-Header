@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSLaunchContext;
 
-@interface RBSLaunchRequest <BSXPCSecureCoding, NSCopying>
+@interface RBSLaunchRequest <RBSXPCSecureCoding, NSCopying>
 {
     RBSLaunchContext *_context;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-@property(readonly, nonatomic) RBSLaunchContext *context; // @synthesize context=_context;
++ (_Bool)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+@property(readonly, nonatomic) RBSLaunchContext *context; // @synthesize context=_context;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;

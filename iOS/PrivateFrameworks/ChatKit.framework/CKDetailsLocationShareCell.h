@@ -6,23 +6,27 @@
 
 #import <ChatKit/CKDetailsCell-Protocol.h>
 
-@class NSString, UILabel;
+@class CKStandardButton, NSString, UILabel, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface CKDetailsLocationShareCell <CKDetailsCell>
 {
     _Bool _showOfferTimeRemaining;
+    UIMenu *_menu;
     double _offerTimeRemaining;
+    CKStandardButton *_button;
     UILabel *_timeRemainingLabel;
 }
 
 + (double)preferredHeight;
 + (_Bool)shouldHighlight;
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *timeRemainingLabel; // @synthesize timeRemainingLabel=_timeRemainingLabel;
+@property(retain, nonatomic) CKStandardButton *button; // @synthesize button=_button;
 @property(nonatomic) double offerTimeRemaining; // @synthesize offerTimeRemaining=_offerTimeRemaining;
 @property(nonatomic) _Bool showOfferTimeRemaining; // @synthesize showOfferTimeRemaining=_showOfferTimeRemaining;
-- (void).cxx_destruct;
+@property(copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
 - (id)timeStringForTimeInterval:(double)arg1;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

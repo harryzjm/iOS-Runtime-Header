@@ -26,7 +26,7 @@
 - (id)processUserAction:(id)arg1 searchableItem:(id)arg2;
 - (id)extractionsFromUserAction:(id)arg1 searchableItem:(id)arg2;
 - (id)_entityContainersForUserAction:(id)arg1 searchableItem:(id)arg2;
-- (void)_processCSSearchableItemLocationWithName:(id)arg1 thoroughfare:(id)arg2 city:(id)arg3 state:(id)arg4 country:(id)arg5 postalCode:(id)arg6 extractionContainer:(id)arg7;
+- (void)_processCSSearchableItemLocationWithName:(id)arg1 thoroughfare:(id)arg2 city:(id)arg3 state:(id)arg4 country:(id)arg5 postalCode:(id)arg6 latitude:(id)arg7 longitude:(id)arg8 extractionContainer:(id)arg9;
 - (void)_processUserActivity:(id)arg1 extractionContainer:(id)arg2 language:(id)arg3;
 - (id)extractionsFromSearchableItem:(id)arg1;
 - (id)_extractionsFromEntityContainers:(id)arg1;

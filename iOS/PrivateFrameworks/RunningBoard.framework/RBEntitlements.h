@@ -6,24 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/RBEntitlementPossessing-Protocol.h>
 
 @class NSSet, NSString;
 
-@interface RBEntitlements : NSObject <BSDescriptionProviding, RBEntitlementPossessing>
+@interface RBEntitlements : NSObject <RBEntitlementPossessing>
 {
     NSSet *_entitlements;
 }
 
 - (void).cxx_destruct;
-- (id)_entitlementsForOption:(unsigned long long)arg1;
-- (id)_entitlementsForOptions:(unsigned long long)arg1;
 - (id)_initWithEntitlements:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)hasEntitlementDomain:(unsigned long long)arg1;
 - (_Bool)hasEntitlement:(id)arg1;

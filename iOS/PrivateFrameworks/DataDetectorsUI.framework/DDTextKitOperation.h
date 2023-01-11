@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)doURLificationOnDocument;
 - (void)dispatchContainerModificationBlock:(CDUnknownBlockType)arg1;
 - (struct _NSRange)_addResultsToAttributesInStorage:(id)arg1;
-- (struct _NSRange)_addResultToAttributes:(id)arg1 inStorage:(id)arg2;
+- (struct _NSRange)_addResultToAttributes:(id)arg1 inStorage:(id)arg2 editing:(_Bool)arg3;
 - (struct __DDScanQuery *)_createScanQueryForBackend;
 - (_Bool)_rangeValidForContainer;
 - (void)_updateGenerationNumber;

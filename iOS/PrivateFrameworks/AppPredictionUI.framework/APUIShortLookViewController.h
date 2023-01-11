@@ -13,12 +13,11 @@
 #import <AppPredictionUI/CRKCardViewControllerDelegate-Protocol.h>
 #import <AppPredictionUI/PLClickPresentationInteractionManagerDelegate-Protocol.h>
 #import <AppPredictionUI/PLClickPresentationInteractionPresenting-Protocol.h>
-#import <AppPredictionUI/SearchUIResultShortLook-Protocol.h>
 
 @class APUIIntentHandlingViewController, APUILongLookViewController, APUITVIntentHandler, ATXAction, CRKCardPresentation, INIntent, INInteraction, NSString, NSUserActivity, NSUserDefaults, PLClickPresentationInteractionManager, SFSearchResult, UIView;
-@protocol APUIShortLookViewControllerDelegate, CRKCardViewControllerDelegate, CRKCardViewControlling, PLClickPresentationInteractionPresentable;
+@protocol APUIActionFeedbackDelegate, APUIShortLookViewControllerDelegate, CRKCardViewControllerDelegate, CRKCardViewControlling, PLClickPresentationInteractionPresentable;
 
-@interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLClickPresentationInteractionPresenting, PLClickPresentationInteractionManagerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, SearchUIResultShortLook>
+@interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLClickPresentationInteractionPresenting, PLClickPresentationInteractionManagerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate>
 {
     APUILongLookViewController<PLClickPresentationInteractionPresentable> *_presentableViewController;
     APUITVIntentHandler *_tvIntentHandler;
@@ -35,7 +34,9 @@
     PLClickPresentationInteractionManager *_clickPresentationInteractionManager;
     NSString *_bundleId;
     SFSearchResult *_searchResult;
+    long long _displayContext;
     id <APUIShortLookViewControllerDelegate> _delegate;
+    id <APUIActionFeedbackDelegate> _actionFeedbackDelegate;
     APUIIntentHandlingViewController *_intentHandlingViewController;
     ATXAction *_atxAction;
     INInteraction *_interaction;
@@ -43,16 +44,18 @@
     UIViewController<CRKCardViewControlling> *_currentCardViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController<CRKCardViewControlling> *currentCardViewController; // @synthesize currentCardViewController=_currentCardViewController;
 @property(retain, nonatomic) CRKCardPresentation *cardPresentation; // @synthesize cardPresentation=_cardPresentation;
 @property(retain, nonatomic) INInteraction *interaction; // @synthesize interaction=_interaction;
 @property(retain, nonatomic) ATXAction *atxAction; // @synthesize atxAction=_atxAction;
 @property(retain, nonatomic) APUIIntentHandlingViewController *intentHandlingViewController; // @synthesize intentHandlingViewController=_intentHandlingViewController;
+@property(nonatomic) __weak id <APUIActionFeedbackDelegate> actionFeedbackDelegate; // @synthesize actionFeedbackDelegate=_actionFeedbackDelegate;
 @property(nonatomic) __weak id <APUIShortLookViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) long long displayContext; // @synthesize displayContext=_displayContext;
 @property(retain, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property(copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property(readonly, nonatomic) PLClickPresentationInteractionManager *clickPresentationInteractionManager; // @synthesize clickPresentationInteractionManager=_clickPresentationInteractionManager;
-- (void).cxx_destruct;
 - (void)intentHandlingViewController:(id)arg1 didComplete:(_Bool)arg2;
 - (void)intentHandlingViewControllerDidFailAuthorizationCheck:(id)arg1;
 - (void)intentHandlingViewController:(id)arg1 willContinueInAppForIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -61,6 +64,7 @@
 @property(readonly, nonatomic) id <CRKCardViewControllerDelegate> cardViewControllerDelegate;
 - (void)cardViewControllerBoundsDidChange:(id)arg1;
 - (void)cardViewControllerDidLoad:(id)arg1;
+- (_Bool)_isLongLookDebugUIEnabled;
 - (void)longLookPlatterDidTapUtilityButton:(id)arg1;
 - (_Bool)longLookPlatterShouldShowUtilityButton:(id)arg1;
 - (void)handOverIntentHandlingToApp;
@@ -96,6 +100,7 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)setView:(id)arg1;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties

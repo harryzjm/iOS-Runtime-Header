@@ -9,17 +9,19 @@
 #import <NanoTimeKitCompanion/CLKTimeFormatterObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKDevice, CLKTimeFormatter, NSString, NTKOlympusColorPalette, NTKVictoryLabel, NTKVictoryTimeLabel, UIButton, UIColor;
+@class CLKDevice, CLKTimeFormatter, NSString, NTKOlympusColorPalette, NTKVictoryLabel, NTKVictoryTimeLabel, UIButton, UIColor, UIImage;
 @protocol NTKOlympusContentViewDelegate;
 
 @interface NTKOlympusTimeContentView : UIView <CLKTimeFormatterObserver, NTKTimeView>
 {
     _Bool frozen;
     _Bool _invertedColors;
+    _Bool _useSmallFont;
     id <NTKOlympusContentViewDelegate> _delegate;
     CLKDevice *_device;
     UIButton *_fullscreenLogoButton;
     UIButton *_circularLogoButton;
+    UIImage *_circularLogoImage;
     NTKVictoryTimeLabel *_fullscreenHybridUpperTimeLabel;
     NTKVictoryLabel *_fullscreenHybridLowerTimeLabel;
     NTKVictoryLabel *_fullscreenDigitalUpperTimeLabel;
@@ -48,6 +50,8 @@
 }
 
 + (double)scaleForViewDuringColorChangeTransitionWithFraction:(double)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 @property(nonatomic) struct CGSize logoImageSizeForCircularDial; // @synthesize logoImageSizeForCircularDial=_logoImageSizeForCircularDial;
 @property(nonatomic) double analogStyleSwooshPositionFraction; // @synthesize analogStyleSwooshPositionFraction=_analogStyleSwooshPositionFraction;
 @property(nonatomic) double olympusDigitalLabelsPositionFraction; // @synthesize olympusDigitalLabelsPositionFraction=_olympusDigitalLabelsPositionFraction;
@@ -73,13 +77,13 @@
 @property(retain, nonatomic) NTKVictoryLabel *fullscreenDigitalUpperTimeLabel; // @synthesize fullscreenDigitalUpperTimeLabel=_fullscreenDigitalUpperTimeLabel;
 @property(retain, nonatomic) NTKVictoryLabel *fullscreenHybridLowerTimeLabel; // @synthesize fullscreenHybridLowerTimeLabel=_fullscreenHybridLowerTimeLabel;
 @property(retain, nonatomic) NTKVictoryTimeLabel *fullscreenHybridUpperTimeLabel; // @synthesize fullscreenHybridUpperTimeLabel=_fullscreenHybridUpperTimeLabel;
+@property(retain, nonatomic) UIImage *circularLogoImage; // @synthesize circularLogoImage=_circularLogoImage;
 @property(retain, nonatomic) UIButton *circularLogoButton; // @synthesize circularLogoButton=_circularLogoButton;
 @property(retain, nonatomic) UIButton *fullscreenLogoButton; // @synthesize fullscreenLogoButton=_fullscreenLogoButton;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(nonatomic) _Bool invertedColors; // @synthesize invertedColors=_invertedColors;
 @property(nonatomic) __weak id <NTKOlympusContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isFrozen) _Bool frozen; // @synthesize frozen;
-- (void).cxx_destruct;
 - (void)timeFormatterTextDidChange:(id)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)containsSubview:(id)arg1;
@@ -105,8 +109,6 @@
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromDial:(unsigned long long)arg2 toDial:(unsigned long long)arg3;
 - (void)updateColors;
-- (id)circularLogoImageWithoutText;
-- (id)circularLogoImage;
 - (void)updateTimeLabelsFrame;
 - (void)updateLogosFrame;
 - (void)layoutSubviews;
@@ -126,6 +128,8 @@
 - (void)createFullscreenLogoIfNeeded;
 - (void)configureViewsForEditing;
 - (void)createAndRemoveViewsForCurrentStateIfNeeded;
+- (void)dealloc;
+- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 useSmallFont:(_Bool)arg5 circularLogoImage:(id)arg6;
 - (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4;
 
 // Remaining properties

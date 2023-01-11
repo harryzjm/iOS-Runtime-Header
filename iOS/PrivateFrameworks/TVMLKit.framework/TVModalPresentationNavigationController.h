@@ -22,9 +22,9 @@
     TVModalPresentationConfiguration *_configuration;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TVModalPresentationConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) __weak UIAlertController *containingAlertController; // @synthesize containingAlertController=_containingAlertController;
-- (void).cxx_destruct;
 - (void)updatePreferredFocusedViewStateForFocus:(_Bool)arg1;
 - (void)_dismissForLastViewController:(_Bool)arg1;
 - (id)popViewControllerAnimated:(_Bool)arg1;
@@ -39,6 +39,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;

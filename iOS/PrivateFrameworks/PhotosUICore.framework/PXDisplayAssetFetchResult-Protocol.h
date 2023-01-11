@@ -10,8 +10,10 @@
 @protocol PXDisplayAsset, PXDisplayThumbnailAsset;
 
 @protocol PXDisplayAssetFetchResult <PXSectionedFetchResult>
+@property(readonly, nonatomic) id <PXDisplayAsset> lastObject;
 @property(readonly, nonatomic) id <PXDisplayAsset> firstObject;
 - (id <PXDisplayThumbnailAsset>)thumbnailAssetAtIndex:(unsigned long long)arg1;
+- (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
 - (_Bool)containsObject:(id <PXDisplayAsset>)arg1;
 - (NSArray *)objectsAtIndexes:(NSIndexSet *)arg1;

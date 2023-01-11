@@ -15,12 +15,17 @@
     NSString *_sourceKey;
 }
 
-+ (id)storageReminderFromEntity:(id)arg1 withOrigin:(id)arg2;
-+ (id)storageReminderFromEntity:(id)arg1 withStore:(id)arg2;
++ (id)storageReminderWithPrimaryKey:(long long)arg1 store:(id)arg2;
++ (id)storageReminderFromEntity:(id)arg1 origin:(id)arg2;
++ (id)storageReminderFromDuplicateKey:(id)arg1 store:(id)arg2;
++ (id)storageReminderFromEntity:(id)arg1 store:(id)arg2;
++ (id)storageReminderFromRecordId:(id)arg1 store:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *sourceKey; // @synthesize sourceKey=_sourceKey;
 @property(readonly, nonatomic) SGStorageLocation *dueStorageLocation; // @synthesize dueStorageLocation=_dueStorageLocation;
 @property(readonly, nonatomic) SGDuplicateKey *duplicateKey; // @synthesize duplicateKey=_duplicateKey;
-- (void).cxx_destruct;
+- (id)loggingIdentifier;
+- (long long)commitWithStore:(id)arg1;
 - (id)toReminder;
 - (id)description;
 - (unsigned long long)hash;

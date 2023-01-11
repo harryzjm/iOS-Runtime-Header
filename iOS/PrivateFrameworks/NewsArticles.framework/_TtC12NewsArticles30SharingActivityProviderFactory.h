@@ -10,11 +10,9 @@
 
 @interface _TtC12NewsArticles30SharingActivityProviderFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *reportConcernModule;
     MISSING_TYPE *sharingActivityItemFactory;
-    MISSING_TYPE *coordinator;
-    MISSING_TYPE *overlayAlertPresenter;
     MISSING_TYPE *activityTypeProvider;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

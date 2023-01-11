@@ -16,6 +16,7 @@
 + (void)destroyCredential:(id)arg1;
 + (void)destroyAllCredentials;
 + (struct gss_cred_id_t_desc_struct *)createCredential:(id)arg1 withOptions:(id)arg2 andError:(id *)arg3;
++ (unsigned int)createGSSName:(id)arg1 gname:(struct gss_name_t_desc_struct **)arg2 error:(id *)arg3;
 + (_Bool)validatePassword:(id)arg1 forUser:(id)arg2;
 + (_Bool)changePasswordForUPN:(id)arg1 withOldPassword:(id)arg2 withNewPassword:(id)arg3 withError:(id *)arg4;
 + (_Bool)_testForUPNForUser:(id)arg1;

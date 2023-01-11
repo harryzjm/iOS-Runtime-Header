@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SAUISnippet;
+#import <SiriUI/SiriUISizeClassConfiguring-Protocol.h>
 
-@interface SiriUILegacyCardSnippetViewController
+@class NSString, SAUISnippet;
+
+@interface SiriUILegacyCardSnippetViewController <SiriUISizeClassConfiguring>
 {
     SAUISnippet *_snippet;
 }
 
 + (void)initialize;
-- (id)snippet;
 - (void).cxx_destruct;
+- (id)snippet;
 - (void)cardViewControllerDidLoad:(id)arg1;
 - (_Bool)cardViewController:(id)arg1 shouldLoadIdentifiedCardSectionViewProvidersWithProviderManager:(id)arg2;
 - (Class)transparentHeaderViewClass;
@@ -54,7 +56,14 @@
 - (void)setSnippet:(id)arg1;
 - (id)_backingSnippetViewController;
 - (id)_legacyCardSectionViewController;
+- (void)configureContentWithSizeClass:(long long)arg1;
 - (id)initWithSnippet:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

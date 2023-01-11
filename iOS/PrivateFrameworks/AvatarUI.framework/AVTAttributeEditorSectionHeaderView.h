@@ -7,29 +7,30 @@
 #import <UIKit/UICollectionReusableView.h>
 
 @class NSString, UIButton, UILabel;
-@protocol AVTAttributeEditorSectionHeaderViewDelegate, AVTAvatarAttributeEditorHeaderPicker;
+@protocol AVTAttributeEditorSectionHeaderViewDelegate, AVTAvatarAttributeEditorSectionSupplementalPicker;
 
 @interface AVTAttributeEditorSectionHeaderView : UICollectionReusableView
 {
     id <AVTAttributeEditorSectionHeaderViewDelegate> _delegate;
-    id <AVTAvatarAttributeEditorHeaderPicker> _accessoryPicker;
+    id <AVTAvatarAttributeEditorSectionSupplementalPicker> _supplementalPicker;
     UILabel *_label;
     UIButton *_accessoryButton;
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
-@property(retain, nonatomic) id <AVTAvatarAttributeEditorHeaderPicker> accessoryPicker; // @synthesize accessoryPicker=_accessoryPicker;
+@property(retain, nonatomic) id <AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker; // @synthesize supplementalPicker=_supplementalPicker;
 @property(nonatomic) __weak id <AVTAttributeEditorSectionHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)pickerButtonTapped;
+- (id)chevronImage;
 - (void)updateButtonForSelectedSectionItem;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)shouldPresentAlert;
 - (_Bool)isRTL;
 @property(copy, nonatomic) NSString *displayString;
+- (void)updateMenu;
 - (void)createAccessoryButtonIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
 

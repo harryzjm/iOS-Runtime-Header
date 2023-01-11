@@ -8,18 +8,16 @@
 
 @interface EKSourceConstraints : NSObject
 {
-    CDStruct_6a9d2bb3 _flags;
-    _Bool _eventAvalabilityLimited;
+    CDStruct_9e0d2422 _flags;
 }
 
-@property(nonatomic) _Bool eventAvalabilityLimited; // @synthesize eventAvalabilityLimited=_eventAvalabilityLimited;
++ (id)allAllowSourceConstraints;
 @property(nonatomic) _Bool supportsRecurrenceSplit;
+@property(nonatomic) _Bool supportsInvitationModificationsWithoutNotification;
 @property(nonatomic) _Bool supportsDelegateEnumeration;
 @property(nonatomic) _Bool supportsDelegation;
-- (void)setProhibitsUsingEventOrganizerEmailWhenComposingMail:(_Bool)arg1;
-- (_Bool)prohibitsUsingEventOrganizerEmailWhenComposingMail;
-- (void)setSupportsFloatingTimeZone:(_Bool)arg1;
-- (_Bool)supportsFloatingTimeZone;
+@property(nonatomic) _Bool prohibitsUsingEventOrganizerEmailWhenComposingMail;
+@property(nonatomic) _Bool supportsFloatingTimeZone;
 @property(nonatomic) _Bool shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars;
 @property(nonatomic) _Bool requiresOpeningAttachmentAsLink;
 @property(nonatomic) _Bool supportsAttachments;
@@ -58,7 +56,7 @@
 @property(nonatomic) _Bool shouldDeclineDeletedInvitations;
 @property(nonatomic) _Bool shouldCancelDeletedEvents;
 @property(nonatomic) _Bool requiresMSFormattedUID;
-- (_Bool)eventAvailabilityLimited;
+@property(nonatomic) _Bool eventAvailabilityLimited;
 @property(nonatomic) _Bool canSetAvailability;
 @property(nonatomic) _Bool mustAcknowledgeMasterEvent;
 @property(nonatomic) _Bool requiresAttendeeSearchInSingleAccount;
@@ -87,7 +85,7 @@
 @property(nonatomic) int maxRecurrencesAllowed;
 @property(nonatomic) int maxAlarmsAllowed;
 - (id)init;
-- (id)initWithCDBSourceConstraintFlags:(CDStruct_6a9d2bb3)arg1;
+- (id)initWithCDBSourceConstraintFlags:(CDStruct_9e0d2422)arg1;
 
 @end
 

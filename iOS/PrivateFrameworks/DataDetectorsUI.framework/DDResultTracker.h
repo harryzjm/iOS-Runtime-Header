@@ -23,10 +23,10 @@ __attribute__((visibility("hidden")))
     struct __DDResult *referenceResult;
 }
 
+- (void).cxx_destruct;
 @property unsigned long long maximumDistance; // @synthesize maximumDistance;
 @property unsigned long long maximumDistanceForEmails; // @synthesize maximumDistanceForEmails;
 @property(readonly) unsigned int totalCountRemaining; // @synthesize totalCountRemaining;
-- (void).cxx_destruct;
 - (id)results;
 - (_Bool)addResultIfAppropriate:(struct __DDResult *)arg1;
 - (void)dealloc;

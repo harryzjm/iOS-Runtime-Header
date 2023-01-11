@@ -15,15 +15,20 @@
     long long _state;
     long long _parentLabel;
     NSMutableSet *_connections;
+    _Bool _hasStarted;
 }
 
 - (void).cxx_destruct;
+- (int)_completionReasonToNWActivityCompletionReason:(long long)arg1;
 - (void)_networkActivityRestart;
 - (void)_networkActivityAbort;
 - (void)_networkActivityState:(long long)arg1;
+- (void)setHasStarted:(_Bool)arg1;
+- (_Bool)hasStarted;
 - (long long)parentLabel;
+- (id)nwActivityToken;
 - (id)nwActivity;
-- (void)stop;
+- (void)stopWithCompletionReason:(long long)arg1;
 - (void)removeConnection:(id)arg1;
 - (void)addConnection:(id)arg1;
 - (void)activate;

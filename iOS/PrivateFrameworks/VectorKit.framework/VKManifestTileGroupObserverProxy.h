@@ -14,16 +14,16 @@
 __attribute__((visibility("hidden")))
 @interface VKManifestTileGroupObserverProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOExperimentConfigurationObserver>
 {
-    function_288b8140 _willChangeActiveTileGroup;
-    function_3dbef162 _didChangeActiveTileGroup;
-    function_d50775c7 _experimentConfigurationDidChange;
+    function_6bb6aae3 _willChangeActiveTileGroup;
+    function_391631e2 _didChangeActiveTileGroup;
+    function_70614617 _experimentConfigurationDidChange;
 }
 
-@property function_d50775c7 experimentConfigurationDidChange; // @synthesize experimentConfigurationDidChange=_experimentConfigurationDidChange;
-@property function_3dbef162 didChangeActiveTileGroup; // @synthesize didChangeActiveTileGroup=_didChangeActiveTileGroup;
-@property function_288b8140 willChangeActiveTileGroup; // @synthesize willChangeActiveTileGroup=_willChangeActiveTileGroup;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property function_70614617 experimentConfigurationDidChange; // @synthesize experimentConfigurationDidChange=_experimentConfigurationDidChange;
+@property function_391631e2 didChangeActiveTileGroup; // @synthesize didChangeActiveTileGroup=_didChangeActiveTileGroup;
+@property function_6bb6aae3 willChangeActiveTileGroup; // @synthesize willChangeActiveTileGroup=_willChangeActiveTileGroup;
 - (void)experimentConfigurationDidChange:(id)arg1;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;

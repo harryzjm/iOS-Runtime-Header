@@ -15,10 +15,15 @@
 + (_Bool)cellInterfaceUp:(id)arg1;
 + (_Bool)networkingAvailable:(id)arg1;
 + (_Bool)inexpensiveNetworkingAvailable:(id)arg1;
++ (long long)cellInterfaceClass:(id)arg1;
++ (long long)wifiInterfaceClass:(id)arg1;
++ (long long)wiredInterfaceClass:(id)arg1;
++ (long long)interfaceClassForPath:(id)arg1 inContext:(id)arg2;
 + (long long)cellQuality:(id)arg1;
 + (long long)wifiQuality:(id)arg1;
 + (long long)wiredQuality:(id)arg1;
 + (long long)qualityForPath:(id)arg1 inContext:(id)arg2;
++ (id)interfaceClassKey;
 + (id)predictionKey;
 + (id)loiKey;
 + (id)uploadPowerCostKey;

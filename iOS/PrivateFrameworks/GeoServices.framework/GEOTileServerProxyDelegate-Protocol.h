@@ -9,7 +9,7 @@
 @class GEOTileData, GEOTileKeyList, GEOTileServerProxy, NSDictionary, NSError;
 
 @protocol GEOTileServerProxyDelegate <NSObject>
-- (void)proxy:(GEOTileServerProxy *)arg1 didShrinkDiskCacheByAmount:(unsigned long long)arg2;
+- (void)proxyDidDeleteExternalTileData:(GEOTileServerProxy *)arg1;
 - (void)proxy:(GEOTileServerProxy *)arg1 canShrinkDiskCacheByAmount:(unsigned long long)arg2;
 - (void)proxy:(GEOTileServerProxy *)arg1 willGoToNetworkForTiles:(GEOTileKeyList *)arg2;
 - (void)proxy:(GEOTileServerProxy *)arg1 failedToLoadAllPendingTilesWithError:(NSError *)arg2;

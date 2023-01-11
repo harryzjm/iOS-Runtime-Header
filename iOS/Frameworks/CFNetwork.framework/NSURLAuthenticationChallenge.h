@@ -28,14 +28,12 @@
 @property(readonly, copy) NSURLCredential *proposedCredential;
 @property(readonly, copy) NSURLProtectionSpace *protectionSpace;
 - (void)dealloc;
-- (id)_initWithCFAuthChallenge:(struct _CFURLAuthChallenge *)arg1 sender:(id)arg2;
 - (id)initWithAuthenticationChallenge:(id)arg1 sender:(id)arg2;
 - (id)_initWithListOfProtectionSpaces:(id)arg1 CurrentProtectionSpace:(id)arg2 proposedCredential:(id)arg3 previousFailureCount:(long long)arg4 failureResponse:(id)arg5 error:(id)arg6 sender:(id)arg7;
 - (id)initWithProtectionSpace:(id)arg1 proposedCredential:(id)arg2 previousFailureCount:(long long)arg3 failureResponse:(id)arg4 error:(id)arg5 sender:(id)arg6;
 - (id)init;
 - (struct _CFURLAuthChallenge *)_createCFAuthChallenge;
 - (void)setSender:(id)arg1;
-- (_Bool)_isPasswordBasedChallenge;
 
 @end
 

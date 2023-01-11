@@ -12,9 +12,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryFooterViews;
-- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityCustomActions;
+- (_Bool)accessibilityActivate;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityCustomContent;
 - (id)accessibilityLabel;
 - (id)_axEpisodeView;
 - (_Bool)isAccessibilityElement;

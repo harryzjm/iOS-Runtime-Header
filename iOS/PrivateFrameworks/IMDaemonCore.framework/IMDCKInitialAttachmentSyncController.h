@@ -18,6 +18,7 @@
 - (_Bool)_deviceConditionsAllowsMessageSync;
 - (_Bool)_deviceConditionsAllowsMessageSyncForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (id)latestSyncToken;
+- (void)setLatestSyncToken:(id)arg1 forSyncType:(id)arg2;
 - (void)setLatestSyncToken:(id)arg1;
 - (void)dealloc;
 

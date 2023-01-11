@@ -8,18 +8,20 @@
 
 #import <CarPlaySupport/CPSButtonDelegate-Protocol.h>
 
-@class NSString, NSUUID;
+@class CPBarButton, NSString, NSUUID;
 @protocol CPSButtonDelegate;
 
 @interface CPSBarButtonItem : UIBarButtonItem <CPSButtonDelegate>
 {
     NSUUID *_identifier;
+    CPBarButton *_barButton;
     id <CPSButtonDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <CPSButtonDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CPSButtonDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) CPBarButton *barButton; // @synthesize barButton=_barButton;
+@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)didSelectButton:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setTitle:(id)arg1;

@@ -9,22 +9,22 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSSet, NSString, NSURL;
 
 @interface _WKProcessPoolConfiguration : NSObject <WKObject, NSCopying>
 {
     struct ObjectStorage<API::ProcessPoolConfiguration> _processPoolConfiguration;
+    _Bool _shouldCaptureAudioInUIProcess;
 }
 
+@property(nonatomic) _Bool shouldCaptureAudioInUIProcess; // @synthesize shouldCaptureAudioInUIProcess=_shouldCaptureAudioInUIProcess;
 @property(readonly) struct Object *_apiObject;
+@property(nonatomic) _Bool configureJSCForTesting;
 @property(copy, nonatomic) NSString *customWebContentServiceBundleIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool shouldTakeUIBackgroundAssertion;
 @property(nonatomic) _Bool alwaysRunsAtBackgroundPriority;
-@property(copy, nonatomic) NSString *CTDataConnectionServiceType;
-@property(nonatomic) _Bool suppressesConnectionTerminationOnSystemChange;
-@property(nonatomic) unsigned long long downloadMonitorSpeedMultiplierForTesting;
 @property(copy, nonatomic, setter=setHSTSStorageDirectory:) NSURL *hstsStorageDirectory;
 @property(nonatomic, getter=isJITEnabled) _Bool JITEnabled;
 @property(nonatomic) _Bool usesSingleWebProcess;
@@ -35,7 +35,6 @@
 @property(nonatomic) _Bool prewarmsProcessesAutomatically;
 @property(nonatomic) _Bool processSwapsOnNavigation;
 @property(nonatomic) int presentingApplicationPID;
-@property(nonatomic) _Bool shouldCaptureAudioInUIProcess;
 @property(copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property(copy, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property(copy, nonatomic) NSArray *alwaysRevalidatedURLSchemes;
@@ -46,6 +45,7 @@
 @property(nonatomic) _Bool diskCacheSpeculativeValidationEnabled;
 @property(nonatomic) long long diskCacheSizeOverride;
 @property(nonatomic) unsigned long long maximumProcessCount;
+@property(copy, nonatomic) NSSet *customClassesForParameterCoder;
 @property(copy, nonatomic) NSURL *injectedBundleURL;
 - (void)dealloc;
 - (id)init;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
 
-@interface INCodableTimeIntervalAttributeMetadata
+@class NSNumber, NSString;
+
+@interface INCodableTimeIntervalAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     long long _defaultUnit;
     long long _minimumUnit;
@@ -17,17 +19,45 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property(retain, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
 @property(retain, nonatomic) NSNumber *defaultValue; // @synthesize defaultValue=_defaultValue;
 @property(nonatomic) long long maximumUnit; // @synthesize maximumUnit=_maximumUnit;
 @property(nonatomic) long long minimumUnit; // @synthesize minimumUnit=_minimumUnit;
 @property(nonatomic) long long defaultUnit; // @synthesize defaultUnit=_defaultUnit;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)defaultValueForIntentDefaultValueProvider;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
+- (id)__INCodableDescriptionDefaultUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultUnitKey;
+- (id)__INTypeCodableDescriptionDefaultUnitKey;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionMaximumUnitKey;
+- (id)__INIntentResponseCodableDescriptionMaximumUnitKey;
+- (id)__INTypeCodableDescriptionMaximumUnitKey;
+- (id)__INCodableDescriptionMaximumValueKey;
+- (id)__INIntentResponseCodableDescriptionMaximumValueKey;
+- (id)__INTypeCodableDescriptionMaximumValueKey;
+- (id)__INCodableDescriptionMinimumUnitKey;
+- (id)__INIntentResponseCodableDescriptionMinimumUnitKey;
+- (id)__INTypeCodableDescriptionMinimumUnitKey;
+- (id)__INCodableDescriptionMinimumValueKey;
+- (id)__INIntentResponseCodableDescriptionMinimumValueKey;
+- (id)__INTypeCodableDescriptionMinimumValueKey;
+- (id)__INCodableDescriptionUnitKey;
+- (id)__INIntentResponseCodableDescriptionUnitKey;
+- (id)__INTypeCodableDescriptionUnitKey;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

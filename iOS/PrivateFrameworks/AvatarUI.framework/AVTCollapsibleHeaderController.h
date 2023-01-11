@@ -33,6 +33,7 @@
     unsigned long long _currentScrollDirection;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentScrollDirection; // @synthesize currentScrollDirection=_currentScrollDirection;
 @property(nonatomic) double singleTouchOffset; // @synthesize singleTouchOffset=_singleTouchOffset;
 @property(nonatomic) double previousOffset; // @synthesize previousOffset=_previousOffset;
@@ -51,7 +52,6 @@
 @property(nonatomic) id <AVTCollapsibleHeaderControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-- (void).cxx_destruct;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
@@ -73,7 +73,7 @@
 - (void)updateHeaderForHeight:(double)arg1 withOffset:(struct CGPoint)arg2 animated:(_Bool)arg3;
 - (void)snapToMinMaxIfNeededAnimated:(_Bool)arg1;
 - (void)collapseAnimated:(_Bool)arg1;
-- (void)expandAnimated:(_Bool)arg1 withFocusRect:(struct CGRect)arg2;
+- (void)expandAnimated:(_Bool)arg1 withFocusRect:(struct CGRect)arg2 standardItemHeight:(double)arg3;
 - (void)expandAnimated:(_Bool)arg1;
 - (void)updateMinHeight:(double)arg1 maxHeight:(double)arg2 animated:(_Bool)arg3;
 - (id)initWithScrollView:(id)arg1 headerView:(id)arg2 minHeight:(double)arg3 maxHeight:(double)arg4;

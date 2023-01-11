@@ -15,6 +15,8 @@
 
 @interface HMDHomeLocationHandler : HMFObject <HMDBatchLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding>
 {
+    int _regionStateAtHome;
+    int _regionStateNearbyHome;
     int _locationAuthorization;
     CLLocation *_location;
     NSTimeZone *_timeZone;
@@ -23,22 +25,26 @@
     HMFMessageDispatcher *_msgDispatcher;
     HMDHome *_home;
     NSDate *_locationUpdateTimestamp;
-    CLRegion *_region;
+    CLRegion *_regionAtHome;
+    CLRegion *_regionNearbyHome;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)hasMessageReceiverChildren;
 + (_Bool)mergeLocationDataForLocalHome:(id)arg1 withCloudHome:(id)arg2;
-@property(retain, nonatomic) CLRegion *region; // @synthesize region=_region;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CLRegion *regionNearbyHome; // @synthesize regionNearbyHome=_regionNearbyHome;
+@property(retain, nonatomic) CLRegion *regionAtHome; // @synthesize regionAtHome=_regionAtHome;
 @property(nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property(retain, nonatomic) NSDate *locationUpdateTimestamp; // @synthesize locationUpdateTimestamp=_locationUpdateTimestamp;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(nonatomic) int regionStateNearbyHome; // @synthesize regionStateNearbyHome=_regionStateNearbyHome;
+@property(nonatomic) int regionStateAtHome; // @synthesize regionStateAtHome=_regionStateAtHome;
 @property(retain, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
@@ -60,7 +66,7 @@
 - (_Bool)_canExtractBatchLocations;
 - (void)accessoriesBecomeUnreachable;
 - (void)accessoriesBecomeReachable;
-- (void)accessoryAdded;
+- (void)updateHomeLocation;
 - (void)_handleRetrieveLocation:(id)arg1;
 - (void)_handleLocationAuthorization:(int)arg1;
 - (void)_handleLocationAuthorizationChangedNotification:(id)arg1;

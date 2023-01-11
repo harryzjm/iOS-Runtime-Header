@@ -9,8 +9,9 @@
 @class IMChat, IMHandle, NSArray, NSString;
 
 @protocol IMAssistantChatDataSource <NSObject>
+@property(readonly, nonatomic) _Bool blackholedChatsExist;
 @property(readonly, nonatomic) NSArray *allExistingChats;
-- (NSArray *)chatGUIDsForChat:(IMChat *)arg1;
+- (NSArray *)allGUIDsForChat:(IMChat *)arg1;
 - (IMChat *)chatForIMHandles:(NSArray *)arg1;
 - (IMChat *)chatForIMHandle:(IMHandle *)arg1;
 - (IMChat *)existingChatForAddresses:(NSArray *)arg1 allowRetargeting:(_Bool)arg2 bestHandles:(id *)arg3;

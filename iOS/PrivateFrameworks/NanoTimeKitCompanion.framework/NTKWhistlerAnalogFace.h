@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKWhistlerAnalogFace
+#import <NanoTimeKitCompanion/NTKFaceComplicationPreviewable-Protocol.h>
+
+@class NSString;
+
+@interface NTKWhistlerAnalogFace <NTKFaceComplicationPreviewable>
 {
 }
 
@@ -12,6 +16,7 @@
 + (id)_orderedComplicationSlots;
 + (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
 + (id)_complicationSlotDescriptors;
+- (void)applyPreviewConfigurationWithFamily:(long long)arg1 faceColor:(long long)arg2;
 - (id)_localizedNameForComplicationSlot:(id)arg1;
 - (id)_defaultColorOption;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
@@ -20,6 +25,12 @@
 - (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_customEditModes;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

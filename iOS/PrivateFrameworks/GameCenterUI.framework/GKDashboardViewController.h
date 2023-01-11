@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GKChallengeDataSource, GKCollectionMultiDataSource, GKDashboardHeaderView, GKGameRecord, NSArray, NSMutableDictionary, NSString;
+@class GKCollectionMultiDataSource, GKDashboardChallengeDataSource, GKDashboardHeaderView, GKGameRecord, NSArray, NSMutableDictionary, NSString;
 
 @interface GKDashboardViewController
 {
@@ -18,10 +18,10 @@
     GKCollectionMultiDataSource *_multiDataSource;
     NSMutableDictionary *_viewStateIndexes;
     NSArray *_titles;
-    GKChallengeDataSource *_challengeDataSource;
+    GKDashboardChallengeDataSource *_challengeDataSource;
 }
 
-@property(nonatomic) GKChallengeDataSource *challengeDataSource; // @synthesize challengeDataSource=_challengeDataSource;
+@property(nonatomic) GKDashboardChallengeDataSource *challengeDataSource; // @synthesize challengeDataSource=_challengeDataSource;
 @property(retain, nonatomic) NSArray *titles; // @synthesize titles=_titles;
 @property(retain, nonatomic) NSMutableDictionary *viewStateIndexes; // @synthesize viewStateIndexes=_viewStateIndexes;
 @property(retain, nonatomic) GKCollectionMultiDataSource *multiDataSource; // @synthesize multiDataSource=_multiDataSource;

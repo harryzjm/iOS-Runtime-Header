@@ -39,8 +39,12 @@
 - (id)_newSmallModularTemplate;
 - (id)_newSignatureCornerGaugeImageTemplate;
 - (id)_newSignatureRectangular;
+- (id)_newSignatureBezelTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
+- (id)_newSignatureCircularTemplate;
 - (id)_countdownTextProvider;
 - (id)templateForComplicationFamily:(long long)arg1;
+- (id)_templateMetadata;
 
 @end
 

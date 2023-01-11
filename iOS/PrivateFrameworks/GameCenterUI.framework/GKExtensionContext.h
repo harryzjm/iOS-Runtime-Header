@@ -16,9 +16,11 @@
     long long _sandboxToken;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long sandboxToken; // @synthesize sandboxToken=_sandboxToken;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 - (void)hostApp:(id)arg1 grantingAccessExtensionSandbox:(id)arg2 replyWithEndpoint:(CDUnknownBlockType)arg3;
+- (void)tearDownExtensionWithReply:(CDUnknownBlockType)arg1;
 - (void)setInitialState:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)messageFromClient:(id)arg1;
 - (void)dealloc;

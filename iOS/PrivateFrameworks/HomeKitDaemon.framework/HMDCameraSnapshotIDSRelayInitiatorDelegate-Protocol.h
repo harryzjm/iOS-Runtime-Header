@@ -9,6 +9,10 @@
 @class HMDCameraSnapshotIDSRelayInitiator, NSError;
 
 @protocol HMDCameraSnapshotIDSRelayInitiatorDelegate <NSObject>
-- (void)relayInitiator:(HMDCameraSnapshotIDSRelayInitiator *)arg1 didFailToSendFile:(NSError *)arg2;
+- (void)relayInitiatorDidStartDataSend:(HMDCameraSnapshotIDSRelayInitiator *)arg1;
+- (void)relayInitiatorDidSendDataSuccessfully:(HMDCameraSnapshotIDSRelayInitiator *)arg1;
+- (void)relayInitiator:(HMDCameraSnapshotIDSRelayInitiator *)arg1 didEndIDSSessionWithError:(NSError *)arg2;
+- (void)relayInitiatorDidSendIDSInvitation:(HMDCameraSnapshotIDSRelayInitiator *)arg1;
+- (void)relayInitiatorIDSSessionDidStart:(HMDCameraSnapshotIDSRelayInitiator *)arg1;
 @end
 

@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_setClearButtonImage:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)_delegateShouldChangeCharactersInTextStorageRange:(struct _NSRange)arg1 replacementString:(id)arg2 delegateCares:(_Bool *)arg3;
 
 @end

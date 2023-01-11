@@ -11,10 +11,15 @@
 @interface NSError (HDSQLiteDatabase)
 + (id)hk_errorWithCodableError:(id)arg1;
 - (_Bool)hd_isConstraintViolation;
+- (_Bool)hd_isNotADatabaseError;
 - (_Bool)hd_isDatabaseCorruptionError;
 - (id)hd_underlyingSQLiteError;
 - (id)hk_codableError;
 - (id)hd_persistentMessage;
+- (_Bool)hd_isCorruptionError;
+- (id)hd_errorStrippingCloudKitPartialFailuresWithShouldIgnoreBlock:(CDUnknownBlockType)arg1;
+- (id)hd_errorStrippingExpectedCloudKitPartialFailures;
+- (_Bool)hd_isManateeIdentityLossError;
 - (id)hd_cloudKitErrorRequiringUserActionFromCKErrorDomain;
 - (id)hd_cloudKitErrorRequiringUserAction;
 - (_Bool)hd_isResponseTimeout;

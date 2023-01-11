@@ -4,11 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class GEOComposedRouteEVStepInfo;
+
 @interface GEOComposedDrivingRouteStep
 {
+    GEOComposedRouteEVStepInfo *_evInfo;
 }
 
-- (id)initWithComposedRoute:(id)arg1 GEOStep:(id)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4 maneuverPointRange:(struct _NSRange)arg5;
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)evInfo;
+- (id)initWithComposedRoute:(id)arg1 geoRouteLeg:(id)arg2 geoStep:(id)arg3 stepIndex:(unsigned long long)arg4 pointRange:(struct _NSRange)arg5 maneuverPointRange:(struct _NSRange)arg6;
 
 @end
 

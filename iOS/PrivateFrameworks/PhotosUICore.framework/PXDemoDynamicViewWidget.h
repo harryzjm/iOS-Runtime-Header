@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 
 @class NSString, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIView;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXDemoDynamicViewWidget : NSObject <PXWidget>
 {
@@ -18,10 +18,10 @@
     double __preferredHeightPhase;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setPreferredHeight:) double _preferredHeightPhase; // @synthesize _preferredHeightPhase=__preferredHeightPhase;
 @property(readonly, nonatomic) UIView *_view; // @synthesize _view=__view;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *localizedTitle;
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 - (double)preferredContentHeightForWidth:(double)arg1;
@@ -38,12 +38,15 @@
 @property(retain, nonatomic) PXPhotosDetailsContext *context;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property(retain, nonatomic) PXWidgetSpec *spec;
@@ -51,6 +54,8 @@
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

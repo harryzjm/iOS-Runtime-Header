@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CBPeer, NSInputStream, NSOutputStream;
+@class CBPeer, CBUUID, NSInputStream, NSOutputStream;
 
 @interface CBL2CAPChannel : NSObject
 {
@@ -15,14 +15,16 @@
     CBPeer *_peer;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
+    CBUUID *_serviceUUID;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) int socketFD; // @synthesize socketFD=_socketFD;
+@property(retain, nonatomic) CBUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
 @property(readonly, nonatomic) unsigned short PSM; // @synthesize PSM=_PSM;
 @property(readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
 @property(readonly, nonatomic) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
 @property(readonly, nonatomic) CBPeer *peer; // @synthesize peer=_peer;
-- (void).cxx_destruct;
 - (id)description;
 - (void)dealloc;
 - (id)initWithPeer:(id)arg1 info:(id)arg2;

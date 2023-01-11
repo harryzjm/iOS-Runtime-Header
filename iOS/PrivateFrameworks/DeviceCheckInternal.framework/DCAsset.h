@@ -8,6 +8,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface DCAsset : NSObject
 {
     unsigned long long _version;
@@ -16,10 +17,10 @@
 }
 
 + (id)assetWithMobileAsset:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property(nonatomic) double publicKeyRefreshInterval; // @synthesize publicKeyRefreshInterval=_publicKeyRefreshInterval;
 @property(nonatomic) unsigned long long version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (id)description;
 
 @end

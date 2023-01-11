@@ -13,17 +13,18 @@
 {
     NSObject<OS_dispatch_source> *_timer;
     NSString *_storageKey;
-    NSDate *_endDate;
     unsigned long long _budget;
     NSObject<OS_dispatch_queue> *_queue;
+    NSDate *_endDate;
     id <_CPLScheduledOverrideDelegate> _delegate;
 }
 
 + (unsigned long long)_systemBudgetForBudgetKey:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <_CPLScheduledOverrideDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) unsigned long long budget; // @synthesize budget=_budget;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *status;
 - (void)cancel;
 - (_Bool)scheduleEndOfOverride;

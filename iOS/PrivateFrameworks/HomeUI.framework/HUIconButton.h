@@ -14,10 +14,15 @@
     HUIconView *_iconView;
 }
 
-@property(retain, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
+- (void)setVibrancyEffect:(id)arg1 animated:(_Bool)arg2;
+- (id)vibrancyEffect;
+- (void)setContentMode:(long long)arg1;
+- (long long)contentMode;
 @property(readonly, nonatomic) id <HFIconDescriptor> iconDescriptor;
 - (struct CGSize)intrinsicContentSize;
+- (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (void)updateWithIconDescriptor:(id)arg1 animated:(_Bool)arg2;
 - (void)setSelected:(_Bool)arg1;
 - (void)tintColorDidChange;

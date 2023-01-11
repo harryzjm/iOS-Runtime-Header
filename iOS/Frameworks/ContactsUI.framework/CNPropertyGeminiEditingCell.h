@@ -17,15 +17,15 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)wantsHorizontalLayout;
 + (_Bool)wantsChevron;
-@property(retain, nonatomic) CNGeminiPickerController *geminiPicker; // @synthesize geminiPicker=_geminiPicker;
++ (_Bool)shouldIndentWhileEditing;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CNGeminiPickerController *geminiPicker; // @synthesize geminiPicker=_geminiPicker;
 - (void)geminiDataSourceDidUpdate:(id)arg1;
 - (void)pickerDidCancel:(id)arg1;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)performDefaultAction;
 - (_Bool)shouldPerformDefaultAction;
 - (id)variableConstraints;
-- (_Bool)shouldIndentWhileEditing;
 - (double)minCellHeight;
 - (id)geminiItem;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

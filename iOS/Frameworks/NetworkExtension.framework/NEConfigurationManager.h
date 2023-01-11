@@ -7,16 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NEHelper, NSData, NSDictionary, NSKeyedUnarchiver, NSMutableDictionary, NSString, NSUUID;
-@protocol NEConfigurationManagerDelegate, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface NEConfigurationManager : NSObject
 {
     NSString *_description;
-    NEHelper *_helper;
     _Bool _hasReadPermission;
     _Bool _isVPNPublicAPI;
     _Bool _isVPNPrivateAPI;
     _Bool _isNEHelper;
+    _Bool _isSynchronous;
     _Bool _hasVPNAPIEntitlement;
     int _changedNotifyToken;
     NSString *_pluginType;
@@ -29,9 +29,9 @@
     NSMutableDictionary *_loadedConfigurations;
     NSKeyedUnarchiver *_decoder;
     long long _generation;
+    NEHelper *_helper;
     NSData *_SCPreferencesSignature;
     NSUUID *_userUUID;
-    id <NEConfigurationManagerDelegate> _delegate;
     long long _configurationChangeSource;
 }
 
@@ -41,15 +41,17 @@
 + (void)updateFlags:(unsigned long long *)arg1 withConfiguration:(id)arg2;
 + (id)sharedManagerForAllUsers;
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property long long configurationChangeSource; // @synthesize configurationChangeSource=_configurationChangeSource;
-@property(retain) id <NEConfigurationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) NSUUID *userUUID; // @synthesize userUUID=_userUUID;
 @property _Bool hasVPNAPIEntitlement; // @synthesize hasVPNAPIEntitlement=_hasVPNAPIEntitlement;
+@property(nonatomic) _Bool isSynchronous; // @synthesize isSynchronous=_isSynchronous;
 @property _Bool isNEHelper; // @synthesize isNEHelper=_isNEHelper;
 @property _Bool isVPNPrivateAPI; // @synthesize isVPNPrivateAPI=_isVPNPrivateAPI;
 @property _Bool isVPNPublicAPI; // @synthesize isVPNPublicAPI=_isVPNPublicAPI;
 @property _Bool hasReadPermission; // @synthesize hasReadPermission=_hasReadPermission;
 @property(retain) NSData *SCPreferencesSignature; // @synthesize SCPreferencesSignature=_SCPreferencesSignature;
+@property(retain) NEHelper *helper; // @synthesize helper=_helper;
 @property long long generation; // @synthesize generation=_generation;
 @property(retain) NSKeyedUnarchiver *decoder; // @synthesize decoder=_decoder;
 @property(retain) NSMutableDictionary *loadedConfigurations; // @synthesize loadedConfigurations=_loadedConfigurations;
@@ -61,12 +63,14 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *outerQueue; // @synthesize outerQueue=_outerQueue;
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) NSString *pluginType; // @synthesize pluginType=_pluginType;
-- (void).cxx_destruct;
 - (id)getCurrentUserUUIDForConfigurationID:(id)arg1 fromIndex:(id)arg2;
-- (void)upgradeLegacyPluginConfigurationsWithUpgradeInfo:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)upgradeLegacyPluginConfigurations:(id)arg1 withUpgradeInfo:(id)arg2 completionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)loadLegacyPluginConfigurationsWithCompletionQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchUpgradeInfoForPluginType:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchClientListenerWithBundleID:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)showObsoleteAppAlert;
+- (void)repopulateNetworkPrivacyConfigurationResetAll:(_Bool)arg1;
+- (void)showLocalNetworkAlertForApp:(id)arg1 withCompletionQueue:(id)arg2 query:(id)arg3 hasEntitlement:(_Bool)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)showLocalNetworkAlertForApp:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)triggerLocalAuthenticationForConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)copyIdentities:(id)arg1 fromDomain:(long long)arg2 withCompletionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)handleApplicationsRemoved:(id)arg1 completionQueue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -77,6 +81,8 @@
 - (void)saveConfiguration:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)resetKeychainItemsAfterProtocolChange:(id)arg1 newConfiguration:(id)arg2;
 - (void)loadConfigurationsWithCompletionQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)loadConfigurationAndUserWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)getConfigurationUserUUID:(id)arg1;
 - (void)loadConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)loadConfigurations:(id)arg1 withFilter:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)loadConfigurationsInternal:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -104,11 +110,13 @@
 - (void)postGeneration;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 @property(copy) CDUnknownBlockType incomingMessageHandler;
-@property(readonly) NEHelper *helper;
 - (id)decodeConfigurationWithIdentifier:(id)arg1;
+- (void)executeCallbackOnQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)executeBlock:(CDUnknownBlockType)arg1;
 - (id)errorWithCode:(long long)arg1 specifics:(id)arg2;
 - (id)description;
 - (void)dealloc;
+- (id)initSynchronous;
 - (id)initForAllUsers;
 - (id)initWithPluginType:(id)arg1;
 - (id)init;

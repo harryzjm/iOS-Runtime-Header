@@ -16,14 +16,14 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *persistentURL; // @synthesize persistentURL=_persistentURL;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSData *fontData; // @synthesize fontData=_fontData;
-- (void).cxx_destruct;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
 - (id)title;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 

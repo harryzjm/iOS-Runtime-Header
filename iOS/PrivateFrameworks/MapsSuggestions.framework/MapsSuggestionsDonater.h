@@ -19,12 +19,8 @@
 }
 
 - (void).cxx_destruct;
-- (void)_unscheduleCloseConnection;
-- (void)_scheduleCloseConnection;
-- (void)_initCloseTimerIfNecessary;
-- (void)_closeConnection;
-- (_Bool)_openConnectionIfNecessary;
 @property(readonly, nonatomic) NSString *uniqueName;
+- (_Bool)donateFlightLookupWithFlightNumber:(id)arg1 departureAirportCode:(id)arg2 departureTime:(id)arg3;
 - (_Bool)donateSignalPack:(id)arg1;
 - (_Bool)donateETA:(id)arg1 entry:(id)arg2;
 - (void)dealloc;

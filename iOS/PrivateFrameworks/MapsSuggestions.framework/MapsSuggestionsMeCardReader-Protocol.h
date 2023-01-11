@@ -11,6 +11,6 @@
 @protocol MapsSuggestionsMeCardReader <MapsSuggestionsObject>
 - (void)removeMeCardObserver:(id <MapsSuggestionsMeCardObserver>)arg1;
 - (void)addMeCardObserver:(id <MapsSuggestionsMeCardObserver>)arg1;
-- (_Bool)readMeCardWithHandler:(void (^)(MapsSuggestionsMeCard *, NSError *))arg1;
+- (BOOL)readMeCardWithHandler:(void (^)(MapsSuggestionsMeCard *, NSError *))arg1;
 @end
 

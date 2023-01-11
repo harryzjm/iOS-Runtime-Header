@@ -13,17 +13,17 @@
 @interface GEOPDLocationInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_localityName;
     NSString *_locationName;
     NSString *_secondaryLocationName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_localityName:1;
         unsigned int read_locationName:1;
         unsigned int read_secondaryLocationName:1;
-        unsigned int wrote_localityName:1;
-        unsigned int wrote_locationName:1;
-        unsigned int wrote_secondaryLocationName:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,17 +37,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *localityName;
 @property(readonly, nonatomic) _Bool hasLocalityName;
-- (void)_readLocalityName;
 @property(retain, nonatomic) NSString *secondaryLocationName;
 @property(readonly, nonatomic) _Bool hasSecondaryLocationName;
-- (void)_readSecondaryLocationName;
 @property(retain, nonatomic) NSString *locationName;
 @property(readonly, nonatomic) _Bool hasLocationName;
-- (void)_readLocationName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

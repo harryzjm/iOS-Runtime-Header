@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIRecentsInputViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView, UIViewController;
+@class NSArray, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView, UIViewController;
 @protocol UISystemInputViewControllerDelegate, UITextInput, UITraitEnvironment;
 
 @interface UISystemInputViewController <UIRecentsInputViewControllerDelegate>
@@ -32,8 +32,8 @@
     UIButton *_doneButton;
     UIViewController *_inputVC;
     UIRecentsInputViewController *_recentsVC;
-    NSLayoutConstraint *_verticalAlignment;
-    NSLayoutConstraint *_horizontalAlignment;
+    NSArray *_verticalAlignments;
+    NSArray *_horizontalAlignments;
     UIResponder<UITextInput> *_nextInputDelegate;
     UITextInputTraits *_textInputTraits;
     UILexicon *_cachedRecents;
@@ -63,8 +63,8 @@
 @property(retain, nonatomic) UILexicon *cachedRecents; // @synthesize cachedRecents=_cachedRecents;
 @property(retain, nonatomic) UITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 @property(retain, nonatomic) UIResponder<UITextInput> *nextInputDelegate; // @synthesize nextInputDelegate=_nextInputDelegate;
-@property(retain, nonatomic) NSLayoutConstraint *horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
-@property(retain, nonatomic) NSLayoutConstraint *verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
+@property(retain, nonatomic) NSArray *horizontalAlignments; // @synthesize horizontalAlignments=_horizontalAlignments;
+@property(retain, nonatomic) NSArray *verticalAlignments; // @synthesize verticalAlignments=_verticalAlignments;
 @property(retain, nonatomic) UIRecentsInputViewController *recentsVC; // @synthesize recentsVC=_recentsVC;
 @property(retain, nonatomic) UIViewController *inputVC; // @synthesize inputVC=_inputVC;
 @property(retain, nonatomic) UIButton *doneButton; // @synthesize doneButton=_doneButton;
@@ -78,7 +78,6 @@
 @property(nonatomic) id <UISystemInputViewControllerDelegate> systemInputViewControllerDelegate; // @synthesize systemInputViewControllerDelegate=_systemInputViewControllerDelegate;
 @property(nonatomic) _Bool supportsRecentInputsIntegration; // @synthesize supportsRecentInputsIntegration=_supportsRecentInputsIntegration;
 @property(nonatomic) _Bool supportsTouchInput; // @synthesize supportsTouchInput=_supportsTouchInput;
-- (id)_effectView;
 - (void)_willResume:(id)arg1;
 - (void)_didSuspend:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -90,6 +89,8 @@
 - (void)_resetDelegate;
 - (void)setAlignmentConstraint:(id)arg1 forAxis:(long long)arg2;
 - (id)alignmentConstraintForAxis:(long long)arg1;
+- (void)setAlignmentConstraintArray:(id)arg1 forAxis:(long long)arg2;
+- (id)alignmentConstraintArrayForAxis:(long long)arg1;
 - (void)setAccessoryViewController:(id)arg1 forEdge:(long long)arg2;
 - (id)accessoryViewControllerForEdge:(long long)arg1;
 - (id)_accessoryViewControllerForEdge:(long long)arg1;

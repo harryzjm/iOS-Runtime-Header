@@ -6,12 +6,11 @@
 
 #import <ContentKit/WFContentItemClass-Protocol.h>
 
-@class EKParticipant;
-
 @interface WFEKParticipantContentItem <WFContentItemClass>
 {
 }
 
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)countDescription;
 + (id)pluralFilterDescription;
 + (id)filterDescription;
@@ -31,7 +30,7 @@
 - (void)generateObjectRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)canGenerateContact;
-@property(readonly, nonatomic) EKParticipant *participant;
+- (id)participant;
 
 @end
 

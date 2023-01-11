@@ -17,15 +17,16 @@
 }
 
 + (id)packageTypeIdentifier;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) UIImage *artworkImage; // @synthesize artworkImage=_artworkImage;
 @property(copy, nonatomic) MPNowPlayingContentItem *contentItem; // @synthesize contentItem=_contentItem;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)writeWithError:(id *)arg1;
 - (_Bool)saveWithError:(id *)arg1;
+- (id)description;
 - (id)initWithURL:(id)arg1 identifier:(id)arg2;
 - (id)initWithURL:(id)arg1;
 

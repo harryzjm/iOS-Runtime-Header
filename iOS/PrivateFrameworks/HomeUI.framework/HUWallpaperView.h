@@ -6,19 +6,36 @@
 
 #import <UIKit/UIView.h>
 
-@class HFWallpaperSlice;
+#import <HomeUI/HUBackgroundEffectViewGrouping-Protocol.h>
 
-@interface HUWallpaperView : UIView
+@class CABackdropLayer, HFWallpaperSlice, NSString, UIVisualEffect, UIVisualEffectView;
+
+@interface HUWallpaperView : UIView <HUBackgroundEffectViewGrouping>
 {
     HFWallpaperSlice *_wallpaperSlice;
     UIView *_wallpaperContentView;
+    UIVisualEffectView *_visualEffectView;
 }
 
++ (id)_sharedBlurEffect;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 @property(retain, nonatomic) UIView *wallpaperContentView; // @synthesize wallpaperContentView=_wallpaperContentView;
 @property(retain, nonatomic) HFWallpaperSlice *wallpaperSlice; // @synthesize wallpaperSlice=_wallpaperSlice;
-- (void).cxx_destruct;
+- (void)_updateVisualEffectView;
 - (struct CGRect)normalizedWallpaperRectForFrameInWindowSpace:(struct CGRect)arg1;
+@property(readonly, nonatomic) UIVisualEffect *sharedEffect;
+- (void)backgroundEffectRemoveCaptureDependent:(id)arg1;
+- (void)backgroundEffectAddCaptureDependent:(id)arg1;
+@property(readonly, nonatomic) CABackdropLayer *backdropLayer;
+- (void)updateConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

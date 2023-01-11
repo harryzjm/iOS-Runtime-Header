@@ -17,11 +17,14 @@
     CDUnknownFunctionPointerType trcFun;
     CDUnknownFunctionPointerType lutFun;
     CDUnknownFunctionPointerType optionsFun;
+    CDUnknownFunctionPointerType inputRangeFun;
+    CDUnknownFunctionPointerType outputRangeFun;
+    CDUnknownFunctionPointerType propertiesFun;
     unsigned long long sourceAlpha;
     unsigned long long destinationAlpha;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) unsigned long long destinationAlpha; // @synthesize destinationAlpha;
 @property(readonly, nonatomic) unsigned long long sourceAlpha; // @synthesize sourceAlpha;
 - (void)encodeToCommandBuffer:(id)arg1 sourceTexture:(id)arg2 sourceDecode:(const float *)arg3 destinationTexture:(id)arg4 destinationDecode:(const float *)arg5;

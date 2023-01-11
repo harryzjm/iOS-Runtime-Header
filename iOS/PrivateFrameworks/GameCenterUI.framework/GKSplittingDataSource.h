@@ -35,7 +35,7 @@
 - (id)sectionInfoForSection:(long long)arg1;
 - (void)configureDataSource;
 @property(readonly, nonatomic) long long sectionCount;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 

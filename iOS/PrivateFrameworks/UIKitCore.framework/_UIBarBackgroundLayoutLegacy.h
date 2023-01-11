@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIColor, UIImage;
+@class NSArray, UIColor, UIImage, UIVibrancyEffect;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarBackgroundLayoutLegacy
@@ -15,12 +15,13 @@ __attribute__((visibility("hidden")))
     NSArray *_backgroundEffects;
     UIImage *_shadowImage;
     UIColor *_shadowColor;
+    UIVibrancyEffect *_shadowEffect;
     _Bool _hasShadow;
     double _topInset;
 }
 
-@property(nonatomic) double topInset; // @synthesize topInset=_topInset;
 - (void).cxx_destruct;
+@property(nonatomic) double topInset; // @synthesize topInset=_topInset;
 - (void)describeInto:(id)arg1;
 - (void)configureWithoutShadow;
 - (void)configureShadowForBarStyle:(long long)arg1;
@@ -33,11 +34,11 @@ __attribute__((visibility("hidden")))
 - (void)configureBackgroundColor:(id)arg1 barStyle:(long long)arg2 translucent:(_Bool)arg3;
 - (void)configureEffectForStyle:(long long)arg1 backgroundTintColor:(id)arg2 forceOpaque:(_Bool)arg3;
 - (id)_blurWithStyle:(long long)arg1 tint:(id)arg2;
-- (id)_shadowColorForStyle:(long long)arg1;
 - (id)_colorForStyle:(long long)arg1;
 @property(readonly, nonatomic) _Bool hasBackgroundEffect;
 @property(readonly, nonatomic) UIImage *shadowImage;
 - (double)bg1ShadowAlpha;
+- (id)bg1ShadowEffect;
 - (id)bg1ShadowImage;
 - (id)bg1ShadowColor;
 - (_Bool)bg1HasShadow;

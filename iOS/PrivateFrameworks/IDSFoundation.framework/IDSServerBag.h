@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSRateLimiter, IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
+@class IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface IDSServerBag : NSObject
@@ -35,7 +35,6 @@
     NSData *_serverGivenBag;
     CDUnknownBlockType _remoteURLCreationBlock;
     CDUnknownBlockType _connectionMonitorCreationBlock;
-    IDSRateLimiter *_rateLimiter;
 }
 
 + (id)_bagCreationLock;
@@ -44,7 +43,7 @@
 + (id)_sharedInstance;
 + (id)_sharedInstanceForClass:(Class)arg1;
 + (id)sharedInstance;
-@property(retain, nonatomic) IDSRateLimiter *rateLimiter; // @synthesize rateLimiter=_rateLimiter;
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType connectionMonitorCreationBlock; // @synthesize connectionMonitorCreationBlock=_connectionMonitorCreationBlock;
 @property(copy) CDUnknownBlockType remoteURLCreationBlock; // @synthesize remoteURLCreationBlock=_remoteURLCreationBlock;
 @property BOOL hashAlgorithm; // @synthesize hashAlgorithm=_hashAlgorithm;
@@ -69,11 +68,12 @@
 @property(retain) NSString *apsEnvironmentName; // @synthesize apsEnvironmentName=_apsEnvironmentName;
 @property(retain) NSURL *bagURL; // @synthesize bagURL=_bagURL;
 @property(retain) IMConnectionMonitor *_connectionMonitor; // @synthesize _connectionMonitor;
-- (void).cxx_destruct;
 - (void)connectionMonitorDidUpdate:(id)arg1;
 @property(readonly) _Bool isServerAvailable;
 - (id)urlWithKey:(id)arg1;
 - (id)objectForKey:(id)arg1;
+@property(readonly) _Bool requiresIDSConnection;
+@property(readonly) _Bool requiresIDSHost;
 @property(readonly) _Bool isInDebilitatedMode;
 @property(readonly) _Bool isLoaded;
 @property(readonly) _Bool isLoading;

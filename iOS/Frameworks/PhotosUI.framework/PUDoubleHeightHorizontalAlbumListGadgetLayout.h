@@ -11,13 +11,13 @@
     NSMutableDictionary *_layoutAttributesByIndexPath;
 }
 
-@property(readonly, nonatomic) NSMutableDictionary *layoutAttributesByIndexPath; // @synthesize layoutAttributesByIndexPath=_layoutAttributesByIndexPath;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableDictionary *layoutAttributesByIndexPath; // @synthesize layoutAttributesByIndexPath=_layoutAttributesByIndexPath;
 - (void)_adjustLayoutAttributes:(id)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (struct CGSize)collectionViewContentSize;
-- (_Bool)pagingEnabled;
+- (_Bool)prefersPagingEnabled;
 - (void)invalidateLayout;
 - (id)initWithHorizontalLayoutDelegate:(id)arg1;
 

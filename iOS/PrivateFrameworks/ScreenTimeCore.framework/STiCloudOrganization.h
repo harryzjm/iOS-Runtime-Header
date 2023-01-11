@@ -4,16 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class STiCloudOrganizationSettings;
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
 
-@interface STiCloudOrganization
+@class NSString, STiCloudOrganizationSettings;
+
+@interface STiCloudOrganization <STSerializableMappedObject>
 {
 }
 
++ (id)serializableClassName;
 + (id)fetchOrCreateiCloudOrganizationWithContext:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(copy, nonatomic) STiCloudOrganizationSettings *settings; // @dynamic settings;
+@property(readonly) Class superclass;
 
 @end
 

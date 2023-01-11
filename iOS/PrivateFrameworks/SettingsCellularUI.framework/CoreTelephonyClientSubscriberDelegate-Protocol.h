@@ -6,11 +6,12 @@
 
 #import <SettingsCellularUI/NSObject-Protocol.h>
 
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSString;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSNumber, NSString;
 
 @protocol CoreTelephonyClientSubscriberDelegate <NSObject>
 
 @optional
+- (void)prlVersionDidChange:(CTXPCServiceSubscriptionContext *)arg1 version:(NSNumber *)arg2;
 - (void)userDefaultVoiceSlotDidChange:(CTXPCServiceSubscriptionContext *)arg1;
 - (void)subscriberCountryCodeDidChange:(CTXPCServiceSubscriptionContext *)arg1;
 - (void)shortLabelsDidChange;

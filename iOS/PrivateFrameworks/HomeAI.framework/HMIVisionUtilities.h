@@ -15,10 +15,24 @@
 }
 
 + (id)logCategory;
-+ (int)createIOSurfaceBackedPixelBufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelBuffer:(struct __CVBuffer **)arg3;
-+ (struct __CVBuffer *)cropAndResizePixelBuffer:(struct __CVBuffer *)arg1 rect:(struct CGRect)arg2 size:(struct CGSize)arg3 error:(id *)arg4;
-+ (struct __CVBuffer *)resizePixelBuffer:(struct __CVBuffer *)arg1 resultSize:(struct CGSize)arg2 error:(id *)arg3;
-+ (struct __CVBuffer *)cropPixelBuffer:(struct __CVBuffer *)arg1 cropRect:(struct CGRect)arg2 error:(id *)arg3;
++ (void)releaseCachedVisionResources;
++ (struct __CVBuffer *)transferPixelBuffer:(struct __CVBuffer *)arg1 rotationAngle:(float)arg2 crop:(struct CGRect)arg3 size:(struct CGSize)arg4 precision:(unsigned long long)arg5 error:(id *)arg6;
++ (_Bool)saveVideoFrame:(id)arg1 videoId:(id)arg2 baseURL:(id)arg3 error:(id *)arg4;
++ (struct CGRect)maintainAspectRatio:(struct CGRect)arg1 originalSize:(struct CGSize)arg2 ratioThreshold:(float)arg3;
++ (struct CGRect)imposeMinSizeFor:(struct CGRect)arg1 withOriginalSize:(struct CGSize)arg2 minCrop:(int)arg3;
++ (struct CGRect)applyPadding:(struct CGRect)arg1 withOriginalSize:(struct CGSize)arg2 padding:(struct CGSize)arg3;
++ (struct __CVBuffer *)createPixelBufferWithSize:(struct CGSize)arg1 pixelFormat:(unsigned int)arg2 useIOSurface:(_Bool)arg3;
++ (struct __CVBuffer *)dewarpPixelBuffer:(struct __CVBuffer *)arg1 crop:(struct CGRect)arg2 size:(struct CGSize)arg3 pixelFormat:(unsigned int)arg4 options:(long long)arg5 cameraModel:(id)arg6 error:(id *)arg7;
++ (struct __CVBuffer *)createPixelBufferFromImageData:(id)arg1 error:(id *)arg2;
++ (struct __CVBuffer *)createPixelBufferFromJPEGData:(id)arg1 error:(id *)arg2;
++ (struct __CVBuffer *)createPixelBufferFromJPEGPath:(id)arg1 error:(id *)arg2;
++ (struct __CVBuffer *)createPixelBufferFromJPEGDataProvider:(struct CGDataProvider *)arg1 error:(id *)arg2;
++ (id)createJPEGDataFromPixelBuffer:(struct __CVBuffer *)arg1 scale:(float)arg2 encodeQuality:(float)arg3 error:(id *)arg4;
++ (struct __CVBuffer *)transferPixelBuffer:(struct __CVBuffer *)arg1 crop:(struct CGRect)arg2 size:(struct CGSize)arg3 pixelFormat:(unsigned int)arg4 options:(long long)arg5 error:(id *)arg6;
++ (struct __CVBuffer *)transferPixelBuffer:(struct __CVBuffer *)arg1 pixelFormat:(unsigned int)arg2 options:(long long)arg3 error:(id *)arg4;
++ (struct __CVBuffer *)resizePixelBuffer:(struct __CVBuffer *)arg1 size:(struct CGSize)arg2 pixelFormat:(unsigned int)arg3 options:(long long)arg4 error:(id *)arg5;
++ (struct __CVBuffer *)resizePixelBuffer:(struct __CVBuffer *)arg1 size:(struct CGSize)arg2 error:(id *)arg3;
++ (struct __CVBuffer *)cropPixelBuffer:(struct __CVBuffer *)arg1 crop:(struct CGRect)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

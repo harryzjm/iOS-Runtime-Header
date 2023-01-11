@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKActivityItemLinkPresentationSource-Protocol.h>
+#import <MapKit/UIActivityItemLinkPresentationSource-Protocol.h>
 
-@class GEOComposedRoute, NSString;
+@class GEOComposedRoute, LPLinkMetadata, NSString;
 
-@interface MKRouteLinkPresentationActivityProvider <MKActivityItemLinkPresentationSource>
+@interface MKRouteLinkPresentationActivityProvider <UIActivityItemLinkPresentationSource>
 {
     GEOComposedRoute *_composedRoute;
+    LPLinkMetadata *_cachedMetadata;
 }
 
 - (void).cxx_destruct;

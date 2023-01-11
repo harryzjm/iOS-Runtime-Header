@@ -18,15 +18,15 @@
 
 + (id)wallpapersConfigurationFileURL;
 + (id)defaultWallpaperBundleImporter;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *_wallpaperTypeToBundleCollection; // @synthesize _wallpaperTypeToBundleCollection=__wallpaperTypeToBundleCollection;
 @property(retain, nonatomic) NSArray *_wallpaperTypesOrdering; // @synthesize _wallpaperTypesOrdering=__wallpaperTypesOrdering;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *_bundleImportQueue; // @synthesize _bundleImportQueue=__bundleImportQueue;
-- (void).cxx_destruct;
 - (void)_raiseInvalidMetadataExceptionForMetadataKeypath:(id)arg1;
 - (void)_loadWallpapersFromDisk;
-- (id)wallpaperBundleWithIdentifier:(unsigned long long)arg1;
+- (id)wallpaperBundleWithIdentifier:(long long)arg1;
 - (id)wallpaperBundleCollectionForWallpaperType:(unsigned long long)arg1;
-- (unsigned long long)wallpaperTypeAtIndex:(unsigned long long)arg1;
+- (unsigned long long)wallpaperTypeAtIndex:(long long)arg1;
 @property(readonly, nonatomic) long long numberOfWallpaperBundleCollections;
 - (id)init;
 

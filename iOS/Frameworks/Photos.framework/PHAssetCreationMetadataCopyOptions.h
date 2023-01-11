@@ -7,15 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/NSSecureCoding-Protocol.h>
 
-@interface PHAssetCreationMetadataCopyOptions : NSObject <NSCopying>
+@interface PHAssetCreationMetadataCopyOptions : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _shouldCopyTitleDescriptionAndKeywords;
     _Bool _shouldCopySpatialOverCaptureResources;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)metadataCopyOptionsForPublishingOriginals;
 @property(nonatomic) _Bool shouldCopySpatialOverCaptureResources; // @synthesize shouldCopySpatialOverCaptureResources=_shouldCopySpatialOverCaptureResources;
 @property(nonatomic) _Bool shouldCopyTitleDescriptionAndKeywords; // @synthesize shouldCopyTitleDescriptionAndKeywords=_shouldCopyTitleDescriptionAndKeywords;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)plRepresentation;
 - (id)description;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

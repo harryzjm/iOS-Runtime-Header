@@ -23,7 +23,6 @@
 @property(readonly, nonatomic) NSUUID *sourceId;
 @property(readonly, nonatomic) long long recordId;
 @property(readonly, nonatomic) long long activityType;
-@property(readonly, nonatomic) long long session;
 @property(readonly, nonatomic) NSNumber *basalNatalies;
 @property(readonly, nonatomic) NSNumber *natalies;
 @property(readonly, nonatomic) NSNumber *mets;

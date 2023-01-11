@@ -10,8 +10,5 @@
 {
 }
 
-+ (id)keyToAttribute;
-+ (id)attributeToKey;
-
 @end
 

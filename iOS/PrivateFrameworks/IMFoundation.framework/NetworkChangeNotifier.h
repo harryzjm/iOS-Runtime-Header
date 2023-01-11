@@ -23,6 +23,7 @@
 + (void)disableNotifications;
 + (_Bool)enableNotifications;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool lastPostedNetworkUp; // @synthesize lastPostedNetworkUp=_lastPostedNetworkUp;
 @property(retain, nonatomic) IMConnectionMonitor *connectionMonitor; // @synthesize connectionMonitor=_connectionMonitor;
 @property(retain, nonatomic) NSArray *myIPs; // @synthesize myIPs=_myIPs;

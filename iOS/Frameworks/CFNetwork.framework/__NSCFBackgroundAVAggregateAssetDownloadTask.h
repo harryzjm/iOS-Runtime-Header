@@ -5,15 +5,16 @@
 //
 
 #import <CFNetwork/AVAssetDownloadDelegate-Protocol.h>
+#import <CFNetwork/AVAssetDownloadDelegatePrivate-Protocol.h>
 
 @class AVURLAsset, NSArray, NSData, NSDictionary, NSString, NSURLSession;
 
-@interface __NSCFBackgroundAVAggregateAssetDownloadTask <AVAssetDownloadDelegate>
+@interface __NSCFBackgroundAVAggregateAssetDownloadTask <AVAssetDownloadDelegate, AVAssetDownloadDelegatePrivate>
 {
     _Bool _sentWillDownloadToURL;
     _Bool _sentWillBeginDelayedRequest;
-    unsigned long long _AVAssetDownloadToken;
     AVURLAsset *_URLAsset;
+    unsigned long long _AVAssetDownloadToken;
     NSArray *_mediaSelections;
     NSString *_assetTitle;
     NSData *_assetArtworkData;
@@ -23,24 +24,11 @@
     NSArray *_childAssetDownloadTasks;
 }
 
-+ (id)childSessionConfigurationWithClientConfiguration:(id)arg1 identifier:(id)arg2;
-@property(readonly) NSArray *childAssetDownloadTasks; // @synthesize childAssetDownloadTasks=_childAssetDownloadTasks;
-@property(readonly) NSURLSession *childAssetDownloadSession; // @synthesize childAssetDownloadSession=_childAssetDownloadSession;
-@property(readonly) NSString *childAssetDownloadTasksSessionIdentifier; // @synthesize childAssetDownloadTasksSessionIdentifier=_childAssetDownloadTasksSessionIdentifier;
-@property(copy) NSDictionary *options; // @synthesize options=_options;
-@property(copy) NSData *assetArtworkData; // @synthesize assetArtworkData=_assetArtworkData;
-@property(copy) NSString *assetTitle; // @synthesize assetTitle=_assetTitle;
-@property(retain) NSArray *mediaSelections; // @synthesize mediaSelections=_mediaSelections;
 @property(retain) AVURLAsset *URLAsset; // @synthesize URLAsset=_URLAsset;
-@property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
 - (void)URLSession:(id)arg1 assetDownloadTask:(id)arg2 didLoadTimeRange:(CDStruct_3c1748cc)arg3 totalTimeRangesLoaded:(id)arg4 timeRangeExpectedToLoad:(CDStruct_3c1748cc)arg5;
 - (void)URLSession:(id)arg1 assetDownloadTask:(id)arg2 willDownloadToURL:(id)arg3;
-- (void)_onqueue_childTask:(id)arg1 didLoadTimeRange:(CDStruct_3c1748cc)arg2 totalTimeRangesLoaded:(id)arg3 timeRangeExpectedToLoad:(CDStruct_3c1748cc)arg4;
-- (void)_onqueue_childTask:(id)arg1 willDownloadToURL:(id)arg2;
 - (void)URLSession:(id)arg1 task:(id)arg2 willBeginDelayedRequest:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)_onqueue_childTask:(id)arg1 willBeginDelayedRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_onqueue_childTask:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)_onqueue_cancel;
 - (void)_onqueue_suspend;
 - (void)_onqueue_resume;
@@ -51,7 +39,6 @@
 - (_Bool)isKindOfClass:(Class)arg1;
 - (void)dealloc;
 - (id)initWithTaskInfo:(id)arg1 taskGroup:(id)arg2 ident:(unsigned long long)arg3;
-- (id)initWithTaskGroup:(id)arg1 URLAsset:(id)arg2 mediaSelections:(id)arg3 assetTitle:(id)arg4 assetArtworkData:(id)arg5 options:(id)arg6 ident:(unsigned long long)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

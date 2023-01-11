@@ -13,7 +13,9 @@
 - (void)_mergeChangesFromDidSaveDictionary:(id)arg1 usingObjectIDs:(_Bool)arg2;
 - (void)tearDownLocalChangeNotifications;
 - (void)setupLocalChangeNotifications;
+- (_Bool)shouldMergeFromRemoteContextWithChanges:(id)arg1;
 - (_Bool)isUserInterfaceContext;
+- (_Bool)_hasChangesForCloudShared:(id)arg1;
 
 @end
 

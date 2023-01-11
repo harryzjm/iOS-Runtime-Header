@@ -16,8 +16,8 @@
 + (id)remindersFromAccountStorages:(id)arg1 listStorages:(id)arg2 reminderStorages:(id)arg3 store:(id)arg4 showMarkedForDeleteObjects:(_Bool)arg5;
 + (id)remindersFromAccountStorages:(id)arg1 listStorages:(id)arg2 reminderStorages:(id)arg3 store:(id)arg4 requestedStringIdentifiers:(id)arg5 identifierSelector:(SEL)arg6;
 + (id)remindersFromAccountStorages:(id)arg1 listStorages:(id)arg2 reminderStorages:(id)arg3 store:(id)arg4 requestedReminderIDs:(id)arg5 showMarkedForDeleteObjects:(_Bool)arg6;
-@property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
 - (id)fetchRemindersWithDACalendarItemUniqueIdentifiers:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchReminderWithDACalendarItemUniqueIdentifier:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchAllRemindersWithExternalIdentifier:(id)arg1 error:(id *)arg2;
@@ -26,6 +26,7 @@
 - (id)fetchRemindersCountWithListID:(id)arg1 error:(id *)arg2;
 - (id)fetchRemindersWithObjectIDs:(id)arg1 includeMarkedForDelete:(_Bool)arg2 error:(id *)arg3;
 - (id)fetchRemindersWithParentReminderIDs:(id)arg1 error:(id *)arg2;
+- (id)fetchRemindersMatchingPredicateDescriptor:(id)arg1 sortDescriptors:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)fetchRemindersWithObjectIDs:(id)arg1 error:(id *)arg2;
 - (id)fetchReminderIncludingMarkedForDeleteWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchReminderWithObjectID:(id)arg1 error:(id *)arg2;

@@ -13,17 +13,17 @@
 @interface GEOSnapScorePoint : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_candidates;
     GEOLatLng *_point;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_candidates:1;
         unsigned int read_point:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_candidates:1;
-        unsigned int wrote_point:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,18 +40,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)candidateAtIndex:(unsigned long long)arg1;
 - (unsigned long long)candidatesCount;
-- (void)_addNoFlagsCandidate:(id)arg1;
 - (void)addCandidate:(id)arg1;
 - (void)clearCandidates;
 @property(retain, nonatomic) NSMutableArray *candidates;
-- (void)_readCandidates;
 @property(retain, nonatomic) GEOLatLng *point;
 @property(readonly, nonatomic) _Bool hasPoint;
-- (void)_readPoint;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -12,6 +12,8 @@
 + (Class)synonymsType;
 @property(readonly, nonatomic) unsigned long long synonymsCount;
 @property(copy, nonatomic) NSArray *synonyms;
+@property(nonatomic) _Bool hasRequiresUserIdentification;
+@property(nonatomic) _Bool requiresUserIdentification;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 @property(copy, nonatomic) NSString *identifier;
 - (_INPBIntentSlotVocabularyValue *)synonymsAtIndex:(unsigned long long)arg1;

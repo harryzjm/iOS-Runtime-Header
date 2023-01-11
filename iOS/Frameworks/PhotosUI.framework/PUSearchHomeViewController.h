@@ -6,20 +6,26 @@
 
 #import <PhotosUICore/PXGadgetUIViewController.h>
 
-#import <PhotosUI/PXNavigationRoot-Protocol.h>
+#import <PhotosUI/UISearchControllerDelegate-Protocol.h>
 
-@class NSString, PUSearchHomeGadgetDataSourceManager, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
+@class NSString, PUSearchHomeGadgetDataSourceManager, PXProgrammaticNavigationDestination;
+@protocol PXViewControllerEventTracker;
 
-@interface PUSearchHomeViewController : PXGadgetUIViewController <PXNavigationRoot>
+@interface PUSearchHomeViewController : PXGadgetUIViewController <UISearchControllerDelegate>
 {
-    UIBarButtonItem *_navigationDisplayModeButtonItem;
+    _Bool _shouldActiveSearchFieldUponAppearing;
+    PXProgrammaticNavigationDestination *_px_navigationDestination;
     PUSearchHomeGadgetDataSourceManager *_searchHomeDataSourceManager;
+    id <PXViewControllerEventTracker> _searchControllerEventTracker;
 }
 
 + (Class)gadgetSpecClass;
-@property(retain, nonatomic) PUSearchHomeGadgetDataSourceManager *searchHomeDataSourceManager; // @synthesize searchHomeDataSourceManager=_searchHomeDataSourceManager;
-@property(retain, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem; // @synthesize navigationDisplayModeButtonItem=_navigationDisplayModeButtonItem;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PXViewControllerEventTracker> searchControllerEventTracker; // @synthesize searchControllerEventTracker=_searchControllerEventTracker;
+@property(nonatomic) _Bool shouldActiveSearchFieldUponAppearing; // @synthesize shouldActiveSearchFieldUponAppearing=_shouldActiveSearchFieldUponAppearing;
+@property(retain, nonatomic) PUSearchHomeGadgetDataSourceManager *searchHomeDataSourceManager; // @synthesize searchHomeDataSourceManager=_searchHomeDataSourceManager;
+- (void)didDismissSearchController:(id)arg1;
+- (void)didPresentSearchController:(id)arg1;
 - (void)ppt_dismissKeyboard;
 - (void)ppt_prepareForSearchTest:(CDUnknownBlockType)arg1;
 - (void)ppt_prepareForSearchScrollingTestWithSearchText:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -27,12 +33,16 @@
 - (long long)scrollAnimationIdentifier;
 - (void)_notifyAnalyticsSearchAction:(unsigned long long)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
-@property(readonly, nonatomic) NSString *navigationIdentifier;
-@property(readonly, nonatomic) NSString *navigationTitle;
+- (id)px_navigationDestination;
+- (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (_Bool)pu_scrollToInitialPositionAnimated:(_Bool)arg1;
+- (void)presentForSearchHashtag:(id)arg1;
 - (void)presentOneYearAgo;
 - (void)presentSiriSearchRequest:(id)arg1 resultCount:(unsigned long long)arg2;
+- (void)performRecentSearchNew:(id)arg1;
 - (void)performRecentSearch:(id)arg1;
 - (void)selectZeroKeyword:(id)arg1;
 - (void)_clearSearchField;
@@ -50,8 +60,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
-@property(readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager;
 @property(readonly) Class superclass;
 
 @end

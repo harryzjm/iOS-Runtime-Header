@@ -18,23 +18,24 @@
     NSUserDefaults *_preferences;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSUserDefaults *preferences; // @synthesize preferences=_preferences;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain) id embeddedPrincipal; // @synthesize embeddedPrincipal=_embeddedPrincipal;
 @property(retain) id hostPrincipal; // @synthesize hostPrincipal=_hostPrincipal;
 @property(retain) id plugInPrincipal; // @synthesize plugInPrincipal=_plugInPrincipal;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)prefsSetObject:(id)arg1 forKey:(id)arg2 inPlugIn:(id)arg3 result:(CDUnknownBlockType)arg4;
 - (void)prefsObjectForKey:(id)arg1 inPlugIn:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (void)shutdownPlugIn;
+- (double)cleanExitTimeout;
 - (id)defaultPrincipalObject;
 - (void)hostHasControl;
 - (id)findProtocol:(id)arg1;
 - (void)beginUsingPlugIn:(id)arg1 ready:(CDUnknownBlockType)arg2;
 - (void)prepareUsingPlugIn:(id)arg1 hostProtocol:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)prepareUsing:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)setupWithIdentifier:(id)arg1;
+- (id)setupWithIdentifier:(id)arg1 extensionPointPlatform:(unsigned int)arg2;
 - (id)initWithConnection:(id)arg1;
 
 // Remaining properties

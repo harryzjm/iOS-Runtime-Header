@@ -16,7 +16,9 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)accessibilityCustomContent;
 - (_Bool)isAccessibilityElement;
+- (_Bool)_accessibilitySkipImageTraitDescription;
 - (id)_axPHAsset;
 
 @end

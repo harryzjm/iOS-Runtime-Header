@@ -10,7 +10,7 @@
     float _alpha;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float alpha; // @synthesize alpha=_alpha;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;

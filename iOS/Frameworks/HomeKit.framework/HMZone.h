@@ -25,9 +25,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMMutableArray *currentRooms; // @synthesize currentRooms=_currentRooms;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -52,10 +52,10 @@
 @property(readonly, copy, nonatomic) NSArray *rooms;
 - (void)setName:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)_invalidate;
-- (void)_unconfigure;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (id)initWithName:(id)arg1 uuid:(id)arg2;
 - (id)init;
 

@@ -27,12 +27,14 @@
 - (id)curatedAssetIdentifiersForCollectionWithIdentifier:(id)arg1 options:(id)arg2;
 - (void)setCuratedAssets:(id)arg1 forCollectionWithIdentifier:(id)arg2 options:(id)arg3;
 - (double)contentScoreForMomentLocalIdentifier:(id)arg1 precision:(unsigned long long)arg2 isCached:(_Bool *)arg3;
-- (_Bool)isMomentLocalIdentifierInteresting:(id)arg1 precision:(unsigned long long)arg2 isCached:(_Bool *)arg3;
+- (_Bool)_isMomentLocalIdentifierInteresting:(id)arg1 withAlternateJunking:(_Bool)arg2 precision:(unsigned long long)arg3 isCached:(_Bool *)arg4;
 - (double)contentScoreForMoment:(id)arg1 precision:(unsigned long long)arg2 isCached:(_Bool *)arg3;
 - (_Bool)isMomentInteresting:(id)arg1 precision:(unsigned long long)arg2 isCached:(_Bool *)arg3;
+- (_Bool)isMomentInteresting:(id)arg1 withAlternateJunking:(_Bool)arg2 precision:(unsigned long long)arg3 isCached:(_Bool *)arg4;
 - (id)curatedAssetIdentifiersForMoment:(id)arg1 options:(id)arg2;
 - (void)setMeanContentScore:(double)arg1 forMoment:(id)arg2 precision:(unsigned long long)arg3;
 - (void)setContentScore:(double)arg1 forMoment:(id)arg2 precision:(unsigned long long)arg3;
+- (void)setMomentInteresting:(_Bool)arg1 withAlternateJunking:(_Bool)arg2 forMoment:(id)arg3 precision:(unsigned long long)arg4;
 - (void)setMomentInteresting:(_Bool)arg1 forMoment:(id)arg2 precision:(unsigned long long)arg3;
 - (void)setCuratedAssets:(id)arg1 forMoment:(id)arg2 options:(id)arg3;
 - (void)setCuratedKeyAsset:(id)arg1 forMoment:(id)arg2 options:(id)arg3;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)formatCurrency:(double)arg1;
 - (id)formatDefault:(double)arg1;
 - (id)formatDefault:(double)arg1 showingNumberOfDigits:(unsigned long long)arg2;
+- (_Bool)useBigNumberFormatterForValue:(double)arg1;
 - (unsigned long long)optimalNumberOfDigitsForValue:(double)arg1;
 - (id)formatPercent:(double)arg1;
 - (id)formatDoubleValue:(double)arg1;

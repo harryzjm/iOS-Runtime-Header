@@ -10,12 +10,13 @@
 #import <SiriUI/SiriUICardSnippetViewDataSource-Protocol.h>
 #import <SiriUI/SiriUICardSnippetViewDelegate-Protocol.h>
 #import <SiriUI/SiriUIModalContainerViewControllerDelegate-Protocol.h>
+#import <SiriUI/SiriUISizeClassConfiguring-Protocol.h>
 #import <SiriUI/_SiriUICardLoaderDelegate-Protocol.h>
 
-@class CRKCardPresentation, NSMutableDictionary, NSObject, NSString, SACardSnippet, SiriUICardSnippetView, SiriUIModalContainerViewController, UIViewController, _SiriUICardLoader;
+@class CRKCardPresentation, NSMutableDictionary, NSObject, NSString, NSTimer, SACardSnippet, SiriUICardSnippetView, SiriUIModalContainerViewController, UIViewController, _SiriUICardLoader;
 @protocol CRKCardViewControllerDelegate, CRKCardViewControlling, OS_dispatch_group;
 
-@interface SiriUICardSnippetViewController <_SiriUICardLoaderDelegate, SiriUICardLoadingObserver, SiriUIModalContainerViewControllerDelegate, CRKCardPresentationDelegate, SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate, CRKCardViewControllerDelegate>
+@interface SiriUICardSnippetViewController <_SiriUICardLoaderDelegate, SiriUICardLoadingObserver, SiriUIModalContainerViewControllerDelegate, CRKCardPresentationDelegate, SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate, CRKCardViewControllerDelegate, SiriUISizeClassConfiguring>
 {
     SACardSnippet *_snippet;
     struct CGSize _contentSize;
@@ -24,16 +25,22 @@
     NSObject<OS_dispatch_group> *_cardLoadingGroup;
     SACardSnippet *_newlyLoadedCardSnippet;
     _SiriUICardLoader *_cardLoader;
+    CDUnknownBlockType _cardLoadingCompletionhandler;
+    NSTimer *_cardLoadingTimer;
+    _Bool _isCardLoading;
+    long long _sizeClass;
     SiriUIModalContainerViewController *_presentedModalContainerViewController;
     UIViewController<CRKCardViewControlling> *_cardViewController;
     CRKCardPresentation *_cardPresentation;
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_cardPresentation, setter=_setCardPresentation:) CRKCardPresentation *cardPresentation; // @synthesize cardPresentation=_cardPresentation;
 @property(retain, nonatomic, getter=_cardViewController, setter=_setCardViewController:) UIViewController<CRKCardViewControlling> *cardViewController; // @synthesize cardViewController=_cardViewController;
 - (id)snippet;
-- (void).cxx_destruct;
+- (void)_logCardRelationshipIdentifiedForCompactCard:(id)arg1 fullCard:(id)arg2 snippet:(id)arg3;
+- (id)_analytics;
 - (double)boundingWidthForPresentation:(id)arg1;
 @property(readonly, nonatomic) id <CRKCardViewControllerDelegate> cardViewControllerDelegate;
 - (double)desiredHeightForTransparentHeaderView;
@@ -51,6 +58,8 @@
 - (void)cardViewDidAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardViewWillAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)userDidReportFeedback:(id)arg1 fromCardSection:(id)arg2;
+- (id)_instrumentationManager;
+- (void)_instrumentCardSectionInteractionForId:(id)arg1 previousTurn:(id)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
 - (void)modalContainerViewControllerViewDidDisappear:(id)arg1;
 - (void)modalContainerViewControllerViewWillDisappear:(id)arg1;
@@ -66,9 +75,10 @@
 - (void)cardViewControllerBoundsDidChange:(id)arg1;
 - (void)cardViewControllerDidLoad:(id)arg1;
 - (void)cardSnippetViewSashWasTapped:(id)arg1;
-- (double)contentHeightForWidth:(double)arg1;
+- (double)preferredContentHeight;
 - (id)localeForCardSnippetView:(id)arg1;
 - (id)sashItemForCardSnippetView:(id)arg1;
+- (void)_navigationButtonTapped:(id)arg1;
 - (void)_forwardProgressEvent:(unsigned long long)arg1 toCardViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)_forwardProgressEventToCardViewController:(unsigned long long)arg1;
 - (void)willConfirm;
@@ -89,6 +99,8 @@
 - (void)willCancel;
 - (void)siriDidDeactivate;
 - (void)wasAddedToTranscript;
+- (_Bool)isNavigating;
+- (void)setNavigating:(_Bool)arg1;
 - (id)requestContext;
 - (_Bool)logContentsIfApplicable;
 - (_Bool)isIndicatingActivity;
@@ -96,8 +108,12 @@
 - (_Bool)usePlatterStyle;
 - (struct UIEdgeInsets)defaultViewInsets;
 - (void)setSnippet:(id)arg1;
+- (void)_removeBottomKeylineFromCard:(id)arg1;
+- (void)_addNextCardTo:(id)arg1 fullCard:(id)arg2;
+- (void)configureContentWithSizeClass:(long long)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

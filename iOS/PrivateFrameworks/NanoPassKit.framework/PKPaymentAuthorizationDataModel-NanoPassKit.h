@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitCore/PKPaymentAuthorizationDataModel.h>
+#import <PassKit/PKPaymentAuthorizationDataModel.h>
 
 @interface PKPaymentAuthorizationDataModel (NanoPassKit)
+- (_Bool)npkIsExternalContextAuthorization;
 - (_Bool)npkIsCardOnFilePayment;
 - (_Bool)_hasNonPeerPaymentAcceptedPasses;
 - (_Bool)npkIsSplitPeerPaymentWithoutAnotherPaymentMethod;
 - (_Bool)npkIsSplitPeerPaymentWithAnotherPaymentMethod;
 - (_Bool)npkIsSplitPeerPayment;
+- (_Bool)npkIsTopUp;
 - (_Bool)npkIsSkeletonPeerPayment;
 - (_Bool)npkIsPeerPayment;
 - (void)npkSetPassAndPaymentApplicationForAID:(id)arg1;

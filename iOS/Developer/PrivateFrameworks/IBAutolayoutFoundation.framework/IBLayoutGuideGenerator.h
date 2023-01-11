@@ -18,12 +18,12 @@
     NSString *_fallbackContainerWidgetType;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *fallbackContainerWidgetType; // @synthesize fallbackContainerWidgetType=_fallbackContainerWidgetType;
 @property(copy, nonatomic) NSString *fallbackWidgetType; // @synthesize fallbackWidgetType=_fallbackWidgetType;
 @property(readonly) NSObject<IBAutolayoutItem> *coordinateSpaceView; // @synthesize coordinateSpaceView=_coordinateSpaceView;
 @property(retain) id <IBLayoutGuideGeneratorSnappingDelegate> snappingDelegate; // @synthesize snappingDelegate=_snappingDelegate;
 @property(readonly) id <IBLayoutGuideGeneratorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)generateGuidesForRootedView:(id)arg1 optionsMask:(unsigned long long)arg2;
 - (id)generateGuidesForUnionedBoundingRect:(struct CGRect)arg1 ofViews:(id)arg2 targetSuperview:(id)arg3 siblings:(id)arg4 baselines:(id)arg5 knobPosition:(CDUnion_42e99c75)arg6 snapDistance:(double)arg7 optionsMask:(unsigned long long)arg8;
 - (long long)_layoutRuleSubKeyForWidgetType:(id)arg1;
@@ -42,12 +42,12 @@
 - (_Bool)applyMiddlingRuleToSelectionRect:(struct CGRect)arg1 centeringRectForSelectionRect:(struct CGRect)arg2 rectToCenterTo:(struct CGRect)arg3 knobPosition:(CDUnion_42e99c75)arg4 snapDistance:(double)arg5 displayOnly:(_Bool)arg6 applicationState:(id)arg7 feedbackToken:(out id *)arg8;
 - (_Bool)applyCenteringRuleToSelectionRect:(struct CGRect)arg1 centeringRectForSelectionRect:(struct CGRect)arg2 rectToCenterTo:(struct CGRect)arg3 knobPosition:(CDUnion_42e99c75)arg4 snapDistance:(double)arg5 displayOnly:(_Bool)arg6 applicationState:(id)arg7 feedbackToken:(out id *)arg8;
 - (void)applySizingGuideForRect:(struct CGRect)arg1 vertical:(_Bool)arg2 originalCoordinate:(double)arg3 displayOnly:(_Bool)arg4 withTarget:(double)arg5 applicationState:(id)arg6 exclusive:(_Bool)arg7;
-- (void)applyContainmentGuideForContainerEdge:(unsigned long long)arg1 ofContainerRect:(struct CGRect)arg2 toSubviewRect:(struct CGRect)arg3 originalCoordinate:(double)arg4 applicationState:(id)arg5 displayOnly:(_Bool)arg6 withTarget:(double)arg7 exclusive:(_Bool)arg8;
+- (void)applyContainmentGuideForContainerEdge:(long long)arg1 ofContainerRect:(struct CGRect)arg2 toSubviewRect:(struct CGRect)arg3 originalCoordinate:(double)arg4 applicationState:(id)arg5 displayOnly:(_Bool)arg6 withTarget:(double)arg7 exclusive:(_Bool)arg8;
 - (void)applyLayoutGuide:(id)arg1 originalCoordinate:(double)arg2 displayOnly:(_Bool)arg3 withTarget:(double)arg4 applicationState:(id)arg5 exclusive:(_Bool)arg6;
 - (void)applyBaselineGuideForBaseline:(double)arg1 selectionRect:(struct CGRect)arg2 siblingRect:(struct CGRect)arg3 originalCoordinate:(double)arg4 displayOnly:(_Bool)arg5 withTarget:(double)arg6 applicationState:(id)arg7 exclusive:(_Bool)arg8;
 - (void)applyCenteringGuide:(_Bool)arg1 selectionDrawingRect:(struct CGRect)arg2 realtiveRect:(struct CGRect)arg3 originalCoordinate:(double)arg4 displayOnly:(_Bool)arg5 withTarget:(double)arg6 applicationState:(id)arg7 exclusive:(_Bool)arg8;
-- (void)applyIndentationGuideFromEdge:(unsigned long long)arg1 ofSelectionRect:(struct CGRect)arg2 toEdge:(unsigned long long)arg3 ofSiblingRect:(struct CGRect)arg4 originalCoordinate:(double)arg5 displayOnly:(_Bool)arg6 withTarget:(double)arg7 applicationState:(id)arg8 exclusive:(_Bool)arg9;
-- (void)applyEdgeToEdgeGuideFromEdge:(unsigned long long)arg1 ofSelectionRect:(struct CGRect)arg2 toEdge:(unsigned long long)arg3 ofSiblingRect:(struct CGRect)arg4 originalCoordinate:(double)arg5 displayOnly:(_Bool)arg6 withTarget:(double)arg7 applicationState:(id)arg8 exclusive:(_Bool)arg9;
+- (void)applyIndentationGuideFromEdge:(long long)arg1 ofSelectionRect:(struct CGRect)arg2 toEdge:(long long)arg3 ofSiblingRect:(struct CGRect)arg4 originalCoordinate:(double)arg5 displayOnly:(_Bool)arg6 withTarget:(double)arg7 applicationState:(id)arg8 exclusive:(_Bool)arg9;
+- (void)applyEdgeToEdgeGuideFromEdge:(long long)arg1 ofSelectionRect:(struct CGRect)arg2 toEdge:(long long)arg3 ofSiblingRect:(struct CGRect)arg4 originalCoordinate:(double)arg5 displayOnly:(_Bool)arg6 withTarget:(double)arg7 applicationState:(id)arg8 exclusive:(_Bool)arg9;
 - (void)addLayoutGuideMatchForAttribute:(unsigned long long)arg1 constant:(id)arg2 applicationState:(id)arg3 feedbackToken:(id)arg4;
 - (void)addLayoutGuideMatchForAttribute:(unsigned long long)arg1 relativeTo:(id)arg2 relativeType:(unsigned long long)arg3 constant:(id)arg4 applicationState:(id)arg5 feedbackToken:(id)arg6;
 - (id)effectiveLayoutConstantWithValue:(double)arg1;

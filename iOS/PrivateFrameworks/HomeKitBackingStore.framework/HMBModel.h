@@ -9,7 +9,7 @@
 #import <HomeKitBackingStore/HMBModelProperties-Protocol.h>
 #import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@class HMBModelContainer, HMFVersion, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID;
+@class HMBModelContainer, HMFVersion, NSMutableDictionary, NSSet, NSString, NSUUID;
 
 @interface HMBModel : HMFObject <HMFLogging, HMBModelProperties>
 {
@@ -27,18 +27,24 @@
 + (id)shortDescription;
 + (_Bool)resolveInstanceMethod:(SEL)arg1;
 + (id)logCategory;
++ (id)hmbExternalRecordFields;
 + (id)hmbExternalProperties;
 + (id)formattedStringForValue:(id)arg1;
 + (_Bool)propertyDiffersFrom:(id)arg1 to:(id)arg2;
 + (Class)hmbGenericRepresentation;
 + (id)hmbReadOnlyBefore;
 + (id)hmbExternalRecordType;
++ (_Bool)hmbExcludeFromCloudStorage;
 + (id)hmbSchemaHashRoot;
++ (void)hmbPrepareQueries;
++ (void)hmbResetModelsWithQueries;
++ (id)hmbModelClassesWithQueries;
++ (id)hmbMutableModelClassesWithQueries;
++ (id)hmbQueries;
++ (id)hmbPropertyNames;
 + (id)hmbProperties;
-+ (id)properties;
-+ (void)setHmbShouldLogPrivateInformation:(_Bool)arg1;
 + (_Bool)hmbShouldLogPrivateInformation;
-+ (id)sort:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak HMBModelContainer *hmbModelContainer; // @synthesize hmbModelContainer=_hmbModelContainer;
 @property(retain, nonatomic) NSSet *hmbReadOnlyProperties; // @synthesize hmbReadOnlyProperties=_hmbReadOnlyProperties;
 @property(retain, nonatomic) NSSet *hmbUnavailableProperties; // @synthesize hmbUnavailableProperties=_hmbUnavailableProperties;
@@ -48,15 +54,15 @@
 @property(retain, nonatomic) NSUUID *hmbParentModelID; // @synthesize hmbParentModelID=_hmbParentModelID;
 @property(retain, nonatomic) NSUUID *hmbModelID; // @synthesize hmbModelID=_hmbModelID;
 @property(retain, nonatomic) NSMutableDictionary *hmbReserved; // @synthesize hmbReserved=_hmbReserved;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 @property(readonly, nonatomic) NSString *hmbDescription;
 - (void)dumpDebug;
 - (void)dumpDebug:(id)arg1;
-@property(readonly, nonatomic) NSDictionary *hmbQueryableProperties;
 - (_Bool)hmbPropertyIsExternal:(id)arg1;
 @property(nonatomic) _Bool hmbExternallyFetched;
-- (id)copy;
+@property(readonly, copy, nonatomic) NSSet *hmbSetExternalRecordFields;
+@property(readonly, copy, nonatomic) NSSet *hmbSetExternalProperties;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (_Bool)hmbCanonicalTypeInferred;
 @property(readonly, nonatomic) NSString *hmbCanonicalType;
@@ -64,13 +70,13 @@
 - (id)hmbPropertyNamed:(id)arg1;
 - (id)hmbDefaultValueForPropertyNamed:(id)arg1;
 - (id)hmbPropertyNamed:(id)arg1 isSet:(_Bool *)arg2;
-- (void)hmbSetPropertyIfNotNil:(id)arg1 named:(id)arg2;
+- (void)hmbUnsetPropertyNamed:(id)arg1;
 - (void)hmbSetProperty:(id)arg1 named:(id)arg2;
 @property(readonly, nonatomic) _Bool hmbIgnoreModel;
 @property(retain, nonatomic) HMFVersion *hmbIgnoredBefore;
-- (_Bool)hmbDiff:(id)arg1 differingFields:(id *)arg2;
-- (id)hmbMerge:(id)arg1 fromStorageLocation:(unsigned long long)arg2;
-- (void)hmbMergeMetadataFromModel:(id)arg1 fromStorageLocation:(unsigned long long)arg2;
+- (_Bool)hmbIsDifferentFromModel:(id)arg1 differingFields:(id *)arg2;
+- (void)hmbMergeSetPropertiesFromModel:(id)arg1;
+- (id)hmbModelByMergingFromModel:(id)arg1 isFromCloud:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)hmbValidForStorage:(id)arg1;
 - (_Bool)hmbPropertyIsAvailable:(id)arg1;
 - (_Bool)hmbPropertyIsReadOnly:(id)arg1;
@@ -81,10 +87,9 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)prepareForStorageLocation:(unsigned long long)arg1 using:(id)arg2 updatedModelIDs:(id)arg3 error:(id *)arg4;
-- (id)hmbPrepareFor:(unsigned long long)arg1;
+- (id)hmbPrepareForStorageLocation:(unsigned long long)arg1;
 - (id)validateType:(id)arg1 path:(id)arg2;
 - (_Bool)_validateType:(id)arg1 error:(id *)arg2;
-@property(readonly, nonatomic) NSSet *hmbDependentUUIDs;
 @property(readonly, nonatomic) HMFVersion *hmbContainerDataVersion;
 - (void)hmbAssociateWithContainer:(id)arg1;
 - (id)initWithModelID:(id)arg1 parentModelID:(id)arg2;

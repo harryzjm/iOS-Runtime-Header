@@ -10,17 +10,18 @@
 #import <PassKitUI/PKDashboardViewControllerDelegateFlowLayout-Protocol.h>
 #import <PassKitUI/UICollectionViewDataSourcePrefetching-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSSet, NSString, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKUISpringAnimationFactory, UICollectionViewLayout;
+@class NSDictionary, NSMutableDictionary, NSSet, NSString, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKUISpringAnimationFactory, UICollectionViewLayout;
 @protocol PKDashboardDataSource, PKDashboardDelegate, PKDashboardLayout;
 
 @interface PKDashboardViewController : UICollectionViewController <UICollectionViewDataSourcePrefetching, PKDashboardDataSourceDelegate, PKDashboardViewControllerDelegateFlowLayout>
 {
-    NSArray *_presenters;
-    NSMutableDictionary *_presentersPerItemClassName;
+    NSDictionary *_presentersPerIdentifier;
+    CDStruct_8bc48212 *_presentersOptionalMethods;
+    NSDictionary *_presenterMethodsIndexPerIdentifier;
     PKDashboardTitleHeaderView *_sampleHeaderView;
     NSMutableDictionary *_titlesForSection;
     PKDashboardFooterTextView *_sampleFooterView;
-    NSMutableDictionary *_footersForSection;
+    NSMutableDictionary *_footerTextItemsBySection;
     double _lastScrollOffset;
     _Bool _inScrollViewDidScroll;
     NSSet *_visibleCellsExcludingSafeArea;
@@ -38,11 +39,11 @@
 }
 
 + (id)backgroundColor;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldUseClearNavigationBar; // @synthesize shouldUseClearNavigationBar=_shouldUseClearNavigationBar;
 @property(readonly, nonatomic) _Bool isPresentingContent; // @synthesize isPresentingContent=_isPresentingContent;
 @property(nonatomic) __weak id <PKDashboardDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <PKDashboardDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateNavigationBarVisibility;
 - (void)_updateNavigationBarAppearance;
@@ -54,6 +55,7 @@
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)itemChanged:(id)arg1 atIndexPath:(id)arg2;
 - (void)contentIsLoaded;
+- (void)updateContent;
 - (_Bool)itemIsIndependentInCollectionView:(id)arg1 atIndexPath:(id)arg2;
 - (_Bool)itemIsStackableInCollectionView:(id)arg1 atIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
@@ -79,6 +81,9 @@
 - (void)setActionForVisibilityChange:(CDUnknownBlockType)arg1 indexPath:(id)arg2;
 - (long long)preferredStatusBarStyle;
 - (void)viewDidLoad;
+- (CDStruct_8bc48212)methodsForItemIdentifier:(id)arg1;
+- (void)_setupPresenters:(id)arg1;
+- (void)dealloc;
 - (id)initWithDataSource:(id)arg1 presenters:(id)arg2 layout:(id)arg3;
 
 // Remaining properties

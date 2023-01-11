@@ -22,6 +22,7 @@
     double _progress;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isPaused; // @synthesize isPaused=_isPaused;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(copy, nonatomic) NSString *applicationDisplayName; // @synthesize applicationDisplayName=_applicationDisplayName;
@@ -30,7 +31,6 @@
 @property(nonatomic) _Bool isPausable; // @synthesize isPausable;
 @property(nonatomic) _Bool isCloudDemoted; // @synthesize isCloudDemoted;
 @property(nonatomic) _Bool isCancelable; // @synthesize isCancelable;
-- (void).cxx_destruct;
 - (double)progressPercentForIcon:(id)arg1;
 - (long long)progressStateForIcon:(id)arg1;
 - (unsigned long long)priorityForIcon:(id)arg1;
@@ -52,11 +52,13 @@
 @property(readonly, nonatomic, getter=isCloudDemoted) _Bool cloudDemoted;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) Class iconClass;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 
 @end
 

@@ -17,6 +17,11 @@ __attribute__((visibility("hidden")))
 - (id)shapesByInsettingShapes:(id)arg1 withInsets:(struct UIEdgeInsets)arg2;
 - (id)shapesByResizingShapes:(id)arg1 withOffset:(struct CGPoint)arg2;
 - (id)shapesByRepositioningShapes:(id)arg1 withOffset:(struct CGPoint)arg2;
+- (id)shapesByCenteringShapesPreservingLayout:(id)arg1 insideRect:(struct CGRect)arg2 horizontal:(_Bool)arg3 vertical:(_Bool)arg4;
+- (id)shapesByVerticallyCenteringShapesPreservingLayout:(id)arg1 insideRect:(struct CGRect)arg2;
+- (id)shapesByHorizontallyCenteringShapesPreservingLayout:(id)arg1 insideRect:(struct CGRect)arg2;
+- (id)shapesByCenteringShapesPreservingLayout:(id)arg1 insideRect:(struct CGRect)arg2;
+- (struct CGPoint)offsetForCenteringShapes:(id)arg1 insideRect:(struct CGRect)arg2;
 - (id)shapesByCenteringShapes:(id)arg1 insideRect:(struct CGRect)arg2;
 - (id)shapesByElaboratingShapes:(id)arg1 insideShape:(id)arg2 count:(long long)arg3;
 - (id)shapesByScalingShapes:(id)arg1 factor:(struct CGSize)arg2;

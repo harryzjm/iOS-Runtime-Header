@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPSandboxingURLWrapper, NSArray, NSDate, NSFileHandle, NSString, NSURL, QLThumbnailItem;
+@class FPItemID, FPSandboxingURLWrapper, NSArray, NSDate, NSFileHandle, NSNumber, NSString, NSURL, QLThumbnailItem;
 @protocol QLIncrementalThumbnailGenerationHandler;
 
 @protocol QLThumbnailsInterface
+- (void)getAllThumbnailsForFPItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSArray *))arg2;
+- (void)getAllThumbnailsForIno:(NSNumber *)arg1 fsid:(NSArray *)arg2 completionHandler:(void (^)(NSArray *))arg3;
+- (void)getCacheInfo:(void (^)(NSDictionary *))arg1;
+- (void)getAllThumbnailsInfo:(void (^)(NSArray *))arg1;
 - (void)getCanGenerateThumbnailsForContentType:(NSString *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)reset;
 - (void)setLastHitDateOfAllCachedThumbnailsToDate:(NSDate *)arg1 withCompletionHandler:(void (^)(void))arg2;
 - (void)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)cancelThumbnailRequests:(NSArray *)arg1;
 - (void)generateSuccessiveThumbnailRepresentationsForRequests:(NSArray *)arg1 generationHandler:(id <QLIncrementalThumbnailGenerationHandler>)arg2 completionHandler:(void (^)(void))arg3;
-- (void)requestThumbnailOfMaximumSize:(struct CGSize)arg1 scale:(double)arg2 forThumbnailItem:(QLThumbnailItem *)arg3 completionHandler:(void (^)(UIImage *))arg4;
 - (void)requestWritingThumbnailOfMaximumSize:(struct CGSize)arg1 forThumbnailItem:(QLThumbnailItem *)arg2 toFileHandle:(NSFileHandle *)arg3 atBackgroundPriority:(_Bool)arg4 completionHandler:(void (^)(id <QLThumbnailGenerationRequest>))arg5;
 - (void)requestWritingThumbnailOfMaximumSize:(struct CGSize)arg1 forDocumentAtURL:(NSURL *)arg2 sandboxExtension:(NSString *)arg3 toFileHandle:(NSFileHandle *)arg4 atBackgroundPriority:(_Bool)arg5 completionHandler:(void (^)(id <QLThumbnailGenerationRequest>))arg6;
 - (void)askThumbnailAdditionIndex:(void (^)(id <QLThumbnailAdditionIndexInterface>))arg1;

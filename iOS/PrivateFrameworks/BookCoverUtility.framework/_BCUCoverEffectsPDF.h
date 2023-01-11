@@ -20,9 +20,9 @@
     NSString *_identifier;
 }
 
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
-- (id)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(id)arg5 waitForCPUSynchronization:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)_layerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 scale:(double)arg3 minificationFilter:(id)arg4;
 - (struct UIEdgeInsets)_roundedInsetsWithSize:(struct CGSize)arg1;
 - (id)shadowLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 kind:(unsigned long long)arg4;

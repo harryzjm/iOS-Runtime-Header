@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, geo_isolater;
 @protocol OS_xpc_object;
 
 @interface GEOXPCActivity : NSObject
@@ -16,6 +16,8 @@
     _Bool _shouldLaunchDaemon;
     CDUnknownBlockType _handler;
     NSObject<OS_xpc_object> *_activity;
+    NSObject<OS_xpc_object> *_criteria;
+    geo_isolater *_isolation;
 }
 
 + (void)cancelActivity:(id)arg1;

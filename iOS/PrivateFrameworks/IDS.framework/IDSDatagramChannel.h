@@ -20,8 +20,10 @@
 - (void)_reportFirstPacketTimeForMKI:(id)arg1;
 - (void)reportFirstPacketTimeForMKI:(id)arg1;
 - (void)requestSessionInfoWithOptions:(id)arg1;
-- (void)stopActiveProbingOnLinks:(id)arg1;
-- (void)startActiveProbingOnLinks:(id)arg1 interval:(unsigned int)arg2 timeout:(unsigned int)arg3;
+- (void)queryStatusWithOptions:(id)arg1;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
+- (void)stopActiveProbingWithOptions:(id)arg1;
+- (void)startActiveProbingWithOptions:(id)arg1;
 - (void)setWiFiAssist:(_Bool)arg1;
 - (CDStruct_3310d7af *)_setWiFiAssist:(_Bool)arg1;
 - (void)setChannelPreferences:(id)arg1;
@@ -46,7 +48,7 @@
 - (void)sendMediaEncryptionInfoWithMKM:(id)arg1 MKS:(id)arg2 MKI:(id)arg3 isLocallyGenerated:(_Bool)arg4;
 - (void)selectDefaultLink:(BOOL)arg1;
 - (void)addNewIDSDataChannelLinkWithAttributes:(char *)arg1 linkAttributesLength:(unsigned short)arg2;
-- (void)removeIDSDataChannelLinkContext:(BOOL)arg1 linkUUID:(id)arg2;
+- (void)removeIDSDataChannelLinkContext:(BOOL)arg1 linkUUID:(id)arg2 reason:(unsigned char)arg3;
 - (void)sendEventConnectedWithDummyLinkInfo;
 - (int)underlyingFileDescriptor;
 - (void)_logReceivingStats:(unsigned long long)arg1;

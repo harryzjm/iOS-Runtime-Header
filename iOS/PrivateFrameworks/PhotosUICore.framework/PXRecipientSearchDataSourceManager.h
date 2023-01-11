@@ -9,12 +9,12 @@
 @interface PXRecipientSearchDataSourceManager
 {
     NSString *_queryString;
-    unsigned long long _state;
+    unsigned long long _searchState;
 }
 
-@property(nonatomic) unsigned long long state; // @synthesize state=_state;
-@property(copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long searchState; // @synthesize searchState=_searchState;
+@property(copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 - (void)queryStringDidChange;
 
 // Remaining properties

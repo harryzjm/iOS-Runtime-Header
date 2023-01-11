@@ -19,11 +19,12 @@
     BKSProcessAssertion *_backgroundRunningAssertion;
     AFUISceneConfiguration *_pendingConfigurationToApply;
     _Bool _sceneForeground;
+    unsigned long long _invalidationReason;
     id <AFUISceneControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <AFUISceneControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <AFUISceneControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)transaction:(id)arg1 didLaunchProcess:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (void)sceneDidInvalidate:(id)arg1;
@@ -31,11 +32,11 @@
 - (void)_recordSceneCreateEnd;
 - (void)_recordSceneCreateBegin;
 - (id)_currentConfiguration;
-- (void)deactiveSceneWithCompletion:(CDUnknownBlockType)arg1;
+- (void)invalidateSceneForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (void)cancelSceneLoadingTimeOut;
 - (void)startSceneLoadingTimeOutTimerWithDuration:(double)arg1;
 - (void)sceneLoadingTimeOutDidOccur;
-- (void)updateSceneViewWithConfiguration:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)updateSceneViewWithConfiguration:(id)arg1;
 - (void)requestSceneViewWithConfiguration:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 @property(readonly, copy) NSString *description;

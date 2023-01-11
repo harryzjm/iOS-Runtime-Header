@@ -7,8 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (TelephonyUI)
-+ (id)tp_inCallServiceURLWithReason:(long long)arg1;
-+ (id)launchQueryForValue:(id)arg1;
-- (_Bool)tp_isInCallServiceURLWithReason:(long long)arg1;
+- (id)tp_sosURLActivationReason;
+@property(readonly, nonatomic) _Bool isSOS;
 @end
 

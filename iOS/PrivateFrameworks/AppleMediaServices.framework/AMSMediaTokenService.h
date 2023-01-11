@@ -31,9 +31,11 @@
 }
 
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool URLKnownToBeTrusted; // @synthesize URLKnownToBeTrusted=_URLKnownToBeTrusted;
 @property(nonatomic) double refreshTime; // @synthesize refreshTime=_refreshTime;
 @property(nonatomic) double refreshPercentage; // @synthesize refreshPercentage=_refreshPercentage;
@@ -46,7 +48,6 @@
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (id)initWithClientIdentifier:(id)arg1 clientVersion:(id)arg2 bag:(id)arg3;
 - (id)_tokenRequestWithError:(id *)arg1;
 - (_Bool)_shouldReturnMediaToken:(id)arg1;

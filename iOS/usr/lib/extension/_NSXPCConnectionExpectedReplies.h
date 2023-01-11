@@ -14,9 +14,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _sequence;
 }
 
-- (id)progressForSequence:(unsigned long long)arg1;
-- (void)removeProgressSequence:(unsigned long long)arg1;
-- (unsigned long long)sequenceForProgress:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

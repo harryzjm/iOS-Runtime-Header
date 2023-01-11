@@ -13,6 +13,7 @@
 - (double)strokeWidth;
 - (PRMonogramColor *)color;
 - (_Bool)rightToLeft;
+- (unsigned long long)avatarViewBackgroundStyle;
 - (unsigned long long)avatarViewStyle;
 - (struct CGSize)pointSize;
 - (double)scale;

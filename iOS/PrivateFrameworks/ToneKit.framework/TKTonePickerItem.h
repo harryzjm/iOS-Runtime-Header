@@ -6,7 +6,7 @@
 
 #import <ToneKit/TKPickerContainerItem-Protocol.h>
 
-@class NSString, TKTonePickerController, TKTonePickerSectionItem;
+@class NSArray, NSString, TKTonePickerSectionItem;
 
 @interface TKTonePickerItem <TKPickerContainerItem>
 {
@@ -15,21 +15,21 @@
     _Bool _needsDownloadProgress;
     float _downloadProgress;
     unsigned long long _itemKind;
-    TKTonePickerController *__parentTonePickerController;
-    long long _numberOfChildren;
+    TKTonePickerSectionItem *_parentSectionItem;
+    NSArray *_childrenToneClassicsPickerItems;
 }
 
-@property(nonatomic, setter=_setNumberOfChildren:) long long numberOfChildren; // @synthesize numberOfChildren=_numberOfChildren;
-@property(nonatomic, setter=_setParentTonePickerController:) __weak TKTonePickerController *_parentTonePickerController; // @synthesize _parentTonePickerController=__parentTonePickerController;
+- (void).cxx_destruct;
+@property(copy, nonatomic, setter=_setChildrenToneClassicsPickerItems:) NSArray *childrenToneClassicsPickerItems; // @synthesize childrenToneClassicsPickerItems=_childrenToneClassicsPickerItems;
 @property(nonatomic, setter=_setDownloadProgress:) float downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property(nonatomic, setter=_setNeedsDownloadProgress:) _Bool needsDownloadProgress; // @synthesize needsDownloadProgress=_needsDownloadProgress;
 @property(nonatomic, setter=_setNeedsActivityIndicator:) _Bool needsActivityIndicator; // @synthesize needsActivityIndicator=_needsActivityIndicator;
 @property(nonatomic, setter=_setNeedsRoomForCheckmark:) _Bool needsRoomForCheckmark; // @synthesize needsRoomForCheckmark=_needsRoomForCheckmark;
+@property(nonatomic, setter=_setParentSectionItem:) __weak TKTonePickerSectionItem *parentSectionItem; // @synthesize parentSectionItem=_parentSectionItem;
 @property(nonatomic, setter=_setItemKind:) unsigned long long itemKind; // @synthesize itemKind=_itemKind;
-- (void).cxx_destruct;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
 - (id)childItemAtIndex:(long long)arg1;
-@property(readonly, nonatomic) TKTonePickerSectionItem *parentSectionItem;
+@property(readonly, nonatomic) long long numberOfChildren;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

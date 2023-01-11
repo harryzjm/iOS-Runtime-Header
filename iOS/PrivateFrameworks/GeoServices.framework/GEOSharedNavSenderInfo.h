@@ -13,23 +13,21 @@
 @interface GEOSharedNavSenderInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_fromDisplayName;
     NSString *_fromIdentifier;
     NSString *_localContactIdentifier;
     NSString *_localName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_fromDisplayName:1;
         unsigned int read_fromIdentifier:1;
         unsigned int read_localContactIdentifier:1;
         unsigned int read_localName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_fromDisplayName:1;
-        unsigned int wrote_fromIdentifier:1;
-        unsigned int wrote_localContactIdentifier:1;
-        unsigned int wrote_localName:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,20 +43,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *fromDisplayName;
 @property(readonly, nonatomic) _Bool hasFromDisplayName;
-- (void)_readFromDisplayName;
 @property(retain, nonatomic) NSString *fromIdentifier;
 @property(readonly, nonatomic) _Bool hasFromIdentifier;
-- (void)_readFromIdentifier;
 @property(retain, nonatomic) NSString *localContactIdentifier;
 @property(readonly, nonatomic) _Bool hasLocalContactIdentifier;
-- (void)_readLocalContactIdentifier;
 @property(retain, nonatomic) NSString *localName;
 @property(readonly, nonatomic) _Bool hasLocalName;
-- (void)_readLocalName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

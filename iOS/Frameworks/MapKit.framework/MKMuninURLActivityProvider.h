@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKActivityItemSource-Protocol.h>
+#import <MapKit/UIActivityItemSource-Protocol.h>
 
 @class NSString;
 
-@interface MKMuninURLActivityProvider <MKActivityItemSource>
+@interface MKMuninURLActivityProvider <UIActivityItemSource>
 {
 }
 

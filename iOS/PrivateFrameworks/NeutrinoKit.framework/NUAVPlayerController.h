@@ -18,6 +18,7 @@
     } _playerControllerKVOFlags;
     NSMutableArray *_playerItemObservations;
     _Bool _loopsVideo;
+    _Bool _currentlySeeking;
     _Bool _muted;
     AVPlayer *_player;
     double _updateInterval;
@@ -27,7 +28,9 @@
     id <NUAVPlayerControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isMuted) _Bool muted; // @synthesize muted=_muted;
+@property(readonly, nonatomic) _Bool currentlySeeking; // @synthesize currentlySeeking=_currentlySeeking;
 @property(nonatomic) _Bool loopsVideo; // @synthesize loopsVideo=_loopsVideo;
 @property(nonatomic) __weak id <NUAVPlayerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) AVAudioMix *audioMix; // @synthesize audioMix=_audioMix;
@@ -35,7 +38,6 @@
 @property(readonly, nonatomic) AVAsset *videoAsset; // @synthesize videoAsset=_videoAsset;
 @property(nonatomic) double updateInterval; // @synthesize updateInterval=_updateInterval;
 @property(retain, nonatomic) AVPlayer *player; // @synthesize player=_player;
-- (void).cxx_destruct;
 - (void)_addPlayerItemKVO:(id)arg1;
 - (void)_removePlayerItemKVO:(id)arg1 removeFromArray:(_Bool)arg2;
 - (void)_removePlayerItemKVO:(id)arg1;
@@ -48,6 +50,8 @@
 - (CDStruct_198678f7)_effectiveTimeForTime:(CDStruct_198678f7)arg1;
 - (void)_addTimeObserver;
 - (void)removeObserver:(id)arg1;
+- (void)_notifyExternalPlaybackChange:(_Bool)arg1;
+- (void)addExternalPlaybackObserver:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_notifyPlayerStatusChange:(long long)arg1;
 - (void)addPlayerStatusObserver:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_notifyPlaybackTimeChange:(CDStruct_198678f7)arg1;
@@ -55,8 +59,7 @@
 - (void)_notifyPlaybackRateChange:(float)arg1;
 - (void)addPlaybackRateObserver:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)step:(long long)arg1;
-- (void)seek:(CDStruct_198678f7)arg1;
-- (void)seekToTime:(double)arg1;
+- (void)seek:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
 - (void)seekBack;
 - (void)seekForward;
 - (void)play;

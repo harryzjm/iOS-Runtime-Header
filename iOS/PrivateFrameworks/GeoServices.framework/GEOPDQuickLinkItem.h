@@ -14,24 +14,28 @@ __attribute__((visibility("hidden")))
 @interface GEOPDQuickLinkItem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_appAdamId;
+    NSString *_bundleId;
     NSString *_title;
     NSString *_url;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    int _linkType;
     struct {
+        unsigned int has_linkType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_appAdamId:1;
+        unsigned int read_bundleId:1;
         unsigned int read_title:1;
         unsigned int read_url:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_appAdamId:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_url:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (id)secondaryQuickLinksForPlaceData:(id)arg1;
 + (id)quickLinksForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
@@ -44,17 +48,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsLinkType:(id)arg1;
+- (id)linkTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasLinkType;
+@property(nonatomic) int linkType;
+@property(retain, nonatomic) NSString *bundleId;
+@property(readonly, nonatomic) _Bool hasBundleId;
 @property(retain, nonatomic) NSString *appAdamId;
 @property(readonly, nonatomic) _Bool hasAppAdamId;
-- (void)_readAppAdamId;
 @property(retain, nonatomic) NSString *url;
 @property(readonly, nonatomic) _Bool hasUrl;
-- (void)_readUrl;
 @property(retain, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (void)_readTitle;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

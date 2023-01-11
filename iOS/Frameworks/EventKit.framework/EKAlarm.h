@@ -16,8 +16,6 @@
     NSURL *_url;
 }
 
-+ (id)noneTriggerDate;
-+ (id)alarmWithAlarm:(id)arg1;
 + (double)defaultGeofencedReminderRadius;
 + (_Bool)areLocationsCurrentlyEnabled;
 + (_Bool)areLocationsAllowedWithAuthorizationStatus:(int)arg1;
@@ -27,20 +25,17 @@
 + (long long)maxPublicProximity;
 + (id)alarmWithRelativeOffset:(double)arg1;
 + (id)alarmWithAbsoluteDate:(id)arg1;
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (id)knownRelationshipMultiValueKeys;
 + (id)knownRelationshipSingleValueKeys;
 + (Class)frozenClass;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(copy, nonatomic) NSString *soundName; // @synthesize soundName=_soundName;
 @property(copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
-- (_Bool)shouldIncludeInNormalAlarms;
-- (void)setIsTimeToLeaveAlarm:(_Bool)arg1;
-- (_Bool)isTimeToLeaveAlarm;
-- (_Bool)isVehicleAlarm;
-- (void)setTriggerIsNotRelativeToTravelTime:(_Bool)arg1;
-- (_Bool)triggerIsNotRelativeToTravelTime;
+- (_Bool)_reset;
 - (_Bool)isTopographicallyEqualToAlarm:(id)arg1;
 - (long long)compare:(id)arg1;
 - (_Bool)validateWithOwner:(id)arg1 error:(id *)arg2;
@@ -53,6 +48,7 @@
 @property(copy, nonatomic) NSArray *snoozedAlarms;
 @property(retain, nonatomic) EKAlarm *originalAlarm;
 @property(nonatomic, getter=isDefaultAlarm) _Bool defaultAlarm;
+- (_Bool)defaultAlarm;
 - (id)ownerUUID;
 @property(copy, nonatomic) EKStructuredLocation *structuredLocation;
 @property(nonatomic) long long proximity;

@@ -8,32 +8,47 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSArray, NSData, NSHashTable, NSString, NSURL;
+@protocol HMFLocking;
 
 @interface HMDApplicationInfo : HMFObject <HMFLogging>
 {
-    _Bool _spiClient;
-    NSString *_teamIdentifier;
     NSString *_bundleIdentifier;
-    NSString *_companionAppBundleIdentifier;
-    NSMutableDictionary *_activeProcesses;
+    _Bool _independent;
+    id <HMFLocking> _lock;
+    NSHashTable *_processes;
+    HMDApplicationInfo *_companionApplicationInfo;
 }
 
 + (id)logCategory;
-@property(readonly, nonatomic, getter=isSPIClient) _Bool spiClient; // @synthesize spiClient=_spiClient;
-@property(readonly, nonatomic) NSMutableDictionary *activeProcesses; // @synthesize activeProcesses=_activeProcesses;
-@property(readonly, copy, nonatomic) NSString *companionAppBundleIdentifier; // @synthesize companionAppBundleIdentifier=_companionAppBundleIdentifier;
-@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property(readonly, copy, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
++ (id)applicationInfoForBundleIdentifier:(id)arg1;
++ (id)applicationInfoForBundleURL:(id)arg1;
++ (id)privateVendorIdentifier;
 - (void).cxx_destruct;
-@property(readonly, copy) NSString *description;
+@property(readonly) HMDApplicationInfo *companionApplicationInfo; // @synthesize companionApplicationInfo=_companionApplicationInfo;
+@property(readonly, getter=isIndependent) _Bool independent; // @synthesize independent=_independent;
+@property(readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)logIdentifier;
-- (id)initWithBundleIdentifier:(id)arg1 teamIdentifier:(id)arg2 companionAppBundleIdentifier:(id)arg3 spiClient:(_Bool)arg4;
+- (void)removeProcess:(id)arg1;
+- (void)addProcess:(id)arg1;
+@property(readonly, copy) NSArray *processes;
+- (id)clientIdentifierSalt:(id *)arg1;
+@property(readonly, getter=isEntitledForSPIAccess) _Bool entitledForSPIAccess;
+@property(readonly, getter=isEntitledForAPIAccess) _Bool entitledForAPIAccess;
+@property(readonly, getter=isInstalled) _Bool installed;
+@property(readonly) HMDApplicationInfo *hostApplicationInfo;
+@property(readonly, copy) NSData *vendorIdentifier;
+@property(readonly) NSURL *bundleURL;
+- (id)attributeDescriptions;
+- (id)shortDescription;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (id)initWithBundleIdentifier:(id)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

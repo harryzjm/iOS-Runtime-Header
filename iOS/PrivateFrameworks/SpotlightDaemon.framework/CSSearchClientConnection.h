@@ -10,17 +10,16 @@
 
 @interface CSSearchClientConnection : NSObject
 {
-    unsigned int _outBatchCount;
+    _Atomic unsigned int _outBatchCount;
     NSMutableDictionary *_queryTasks;
     SDConnectionConfiguration *_configuration;
     NSMutableOrderedSet *_pausedTasks;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableOrderedSet *pausedTasks; // @synthesize pausedTasks=_pausedTasks;
 @property(retain, nonatomic) SDConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSMutableDictionary *queryTasks; // @synthesize queryTasks=_queryTasks;
-@property(readonly, nonatomic) unsigned int outBatchCount; // @synthesize outBatchCount=_outBatchCount;
-- (void).cxx_destruct;
 - (id)protectionClass;
 - (_Bool)searchInternal;
 - (id)bundleID;
@@ -33,6 +32,7 @@
 - (void)cancelQueryTask:(long long)arg1;
 - (id)initWithConnection:(id)arg1;
 - (id)initWithConnectionConfiguration:(id)arg1;
+@property(readonly, nonatomic) unsigned int outBatchCount;
 
 @end
 

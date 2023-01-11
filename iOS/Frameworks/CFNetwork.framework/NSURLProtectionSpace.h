@@ -40,7 +40,6 @@
 - (id)_initWithCFURLProtectionSpace:(struct _CFURLProtectionSpace *)arg1;
 - (id)initWithProxyHost:(id)arg1 port:(long long)arg2 type:(id)arg3 realm:(id)arg4 authenticationMethod:(id)arg5;
 - (id)initWithHost:(id)arg1 port:(long long)arg2 protocol:(id)arg3 realm:(id)arg4 authenticationMethod:(id)arg5;
-- (id)_internalInit;
 
 @end
 

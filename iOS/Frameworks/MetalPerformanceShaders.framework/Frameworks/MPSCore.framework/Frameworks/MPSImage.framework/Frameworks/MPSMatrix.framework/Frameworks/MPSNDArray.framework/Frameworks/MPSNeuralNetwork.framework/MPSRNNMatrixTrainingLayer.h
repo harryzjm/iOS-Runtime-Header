@@ -23,17 +23,21 @@
     _Bool _trainingStateIsTemporary;
     _Bool _storeAllIntermediateStates;
     _Bool _accumulateWeightGradients;
+    _Bool _propagateFullRecurrentRows;
     unsigned long long _inputFeatureChannels;
     unsigned long long _outputFeatureChannels;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+@property(nonatomic) _Bool propagateFullRecurrentRows; // @synthesize propagateFullRecurrentRows=_propagateFullRecurrentRows;
 @property(nonatomic) _Bool accumulateWeightGradients; // @synthesize accumulateWeightGradients=_accumulateWeightGradients;
 @property(nonatomic) _Bool storeAllIntermediateStates; // @synthesize storeAllIntermediateStates=_storeAllIntermediateStates;
 @property(readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
 @property(readonly, nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
 @property(nonatomic) _Bool trainingStateIsTemporary; // @synthesize trainingStateIsTemporary=_trainingStateIsTemporary;
 @property(nonatomic) _Bool recurrentOutputIsTemporary; // @synthesize recurrentOutputIsTemporary=_recurrentOutputIsTemporary;
+- (id)temporaryRecurrentStateForCommandBuffer:(id)arg1 batchSize:(unsigned long long)arg2 forGradientPass:(_Bool)arg3;
+- (id)recurrentStateForBatchSize:(unsigned long long)arg1 forGradientPass:(_Bool)arg2;
 - (void)encodeGradientSequenceToCommandBuffer:(id)arg1 forwardSources:(id)arg2 sourceGradients:(id)arg3 destinationGradients:(id)arg4 weightGradients:(id)arg5 trainingStates:(id)arg6 weights:(id)arg7;
 - (void)encodeGradientSequenceToCommandBuffer:(id)arg1 forwardSources:(id)arg2 forwardSourceOffsets:(unsigned long long *)arg3 sourceGradients:(id)arg4 sourceGradientOffsets:(unsigned long long *)arg5 destinationGradients:(id)arg6 destinationOffsets:(unsigned long long *)arg7 weightGradients:(id)arg8 trainingStates:(id)arg9 recurrentInputState:(id)arg10 recurrentOutputStates:(id)arg11 weights:(id)arg12;
 - (void)encodeForwardSequenceToCommandBuffer:(id)arg1 sourceMatrices:(id)arg2 destinationMatrices:(id)arg3 trainingStates:(id)arg4 weights:(id)arg5;

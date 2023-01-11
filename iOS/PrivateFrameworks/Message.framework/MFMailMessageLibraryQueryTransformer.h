@@ -18,11 +18,12 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property(retain, nonatomic) MFMessageCriterionConverter *criterionConverter; // @synthesize criterionConverter=_criterionConverter;
-- (void).cxx_destruct;
 - (unsigned int)optionsForQuery:(id)arg1;
 - (id)criterionForQuery:(id)arg1;
+- (id)mailAccountForIdentifier:(id)arg1;
 - (id)messageCriterionConverter:(id)arg1 expressionForConstantValue:(id)arg2 withCriterionType:(long long)arg3;
 - (long long)messageCriterionConverter:(id)arg1 criterionTypeForKey:(id)arg2;
 - (id)initWithMessagePersistence:(id)arg1;

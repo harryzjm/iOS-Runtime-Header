@@ -13,15 +13,15 @@ __attribute__((visibility("hidden")))
     NSString *_serviceName;
     NSString *_functionName;
     NSData *_serializedParameters;
-    NSURL *_explicitBaseURL;
+    NSURL *_resolvedBaseURL;
 }
 
-@property(copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *resolvedBaseURL; // @synthesize resolvedBaseURL=_resolvedBaseURL;
 @property(retain, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
 @property(copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(copy, nonatomic) CDUnknownBlockType serializedResultsCallback; // @synthesize serializedResultsCallback=_serializedResultsCallback;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (Class)expectedResponseClass;
@@ -32,10 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)additionalHeaderValues;
 - (id)url;
 - (long long)serverType;
+- (long long)databaseScope;
 - (long long)partitionType;
 - (_Bool)allowsAnonymousAccount;
 - (_Bool)requestGETPreAuth;
-- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 explicitBaseURL:(id)arg4;
+- (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 resolvedBaseURL:(id)arg5;
 
 @end
 

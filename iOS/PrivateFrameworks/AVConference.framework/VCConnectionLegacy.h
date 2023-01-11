@@ -4,21 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AVConference/VCConnectionProtocol-Protocol.h>
 
 @class NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface VCConnectionLegacy : NSObject <VCConnectionProtocol>
+@interface VCConnectionLegacy <VCConnectionProtocol>
 {
     unsigned int _type;
     int _priority;
     _Bool _waitToBeNominated;
     struct tagCONNRESULT *_connectionResult;
+    _Bool isLocalConstrained;
+    _Bool isLocalExpensive;
+    _Bool isRemoteConstrained;
+    _Bool isRemoteExpensive;
+    _Bool isLocalDelegated;
+    _Bool isRemoteDelegated;
 }
 
+@property(readonly) _Bool isRemoteDelegated; // @synthesize isRemoteDelegated;
+@property(readonly) _Bool isLocalDelegated; // @synthesize isLocalDelegated;
+@property(readonly) _Bool isRemoteExpensive; // @synthesize isRemoteExpensive;
+@property(readonly) _Bool isRemoteConstrained; // @synthesize isRemoteConstrained;
+@property(readonly) _Bool isLocalExpensive; // @synthesize isLocalExpensive;
+@property(readonly) _Bool isLocalConstrained; // @synthesize isLocalConstrained;
 @property(readonly) unsigned int type; // @synthesize type=_type;
 @property(readonly) struct tagCONNRESULT *connectionResult; // @synthesize connectionResult=_connectionResult;
 @property _Bool waitToBeNominated; // @synthesize waitToBeNominated=_waitToBeNominated;

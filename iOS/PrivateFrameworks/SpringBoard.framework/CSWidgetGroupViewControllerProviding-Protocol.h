@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class WGWidgetGroupViewController;
+@class WGMajorListViewController, WGWidgetGroupViewController;
 
 @protocol CSWidgetGroupViewControllerProviding <NSObject>
+- (WGMajorListViewController *)newWidgetListViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
 - (WGWidgetGroupViewController *)newWidgetGroupViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
 @end
 

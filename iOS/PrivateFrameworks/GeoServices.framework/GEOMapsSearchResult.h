@@ -8,22 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOPlaceActionDetails, PBDataReader;
+@class GEOAddress, GEOPDMapsIdentifier, GEOPlaceActionDetails, PBDataReader;
 
 @interface GEOMapsSearchResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOAddress *_address;
+    GEOPDMapsIdentifier *_mapsId;
     unsigned long long _muid;
     GEOPlaceActionDetails *_placeActionDetails;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_muid:1;
         unsigned int read_address:1;
+        unsigned int read_mapsId:1;
         unsigned int read_placeActionDetails:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_placeActionDetails:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,16 +39,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOPDMapsIdentifier *mapsId;
+@property(readonly, nonatomic) _Bool hasMapsId;
 @property(retain, nonatomic) GEOPlaceActionDetails *placeActionDetails;
 @property(readonly, nonatomic) _Bool hasPlaceActionDetails;
-- (void)_readPlaceActionDetails;
 @property(retain, nonatomic) GEOAddress *address;
 @property(readonly, nonatomic) _Bool hasAddress;
-- (void)_readAddress;
 @property(nonatomic) _Bool hasMuid;
 @property(nonatomic) unsigned long long muid;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

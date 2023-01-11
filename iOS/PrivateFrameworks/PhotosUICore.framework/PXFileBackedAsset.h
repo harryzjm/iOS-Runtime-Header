@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXLayoutItemInput-Protocol.h>
 #import <PhotosUICore/PXMetadataAsset-Protocol.h>
 
-@class CLLocation, NSDate, NSString, NSURL, PXFileBackedAssetDescription, _PXFileBackedAssetMetadata;
+@class CLLocation, NSDate, NSNumber, NSString, NSURL, PXFileBackedAssetDescription, _PXFileBackedAssetMetadata;
 
 @interface PXFileBackedAsset : NSObject <PXDisplayAsset, PXLayoutItemInput, PXMetadataAsset>
 {
@@ -25,9 +25,9 @@
 + (id)_locationFromImageProperties:(id)arg1;
 + (id)_creationDateFromImageProperties:(id)arg1;
 + (id)_exifDateFormatter;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property(readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isAnimatedImage;
 @property(readonly, nonatomic) _Bool canPlayPhotoIris;
 @property(readonly, nonatomic) _Bool canPlayLoopingVideo;
@@ -72,8 +72,9 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) double duration;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;

@@ -12,7 +12,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)moreButtonPressed;
-- (void)updateHeaderButtonVisibility;
+- (void)updateHeaderButtonVisibilityAnimated:(_Bool)arg1;
+- (id)accessibilityHint;
+- (id)_accessibilityUserTestingChildren;
+- (id)accessibilityLabel;
+- (_Bool)accessibilityRespondsToUserInteraction;
+- (_Bool)accessibilityActivate;
+- (_Bool)isAccessibilityElement;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
 - (id)init;

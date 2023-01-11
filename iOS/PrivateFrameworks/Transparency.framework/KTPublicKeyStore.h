@@ -6,31 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary;
+@class KTApplicationPublicKeyStore, NSArray, NSDictionary, NSMutableDictionary;
 
 @interface KTPublicKeyStore : NSObject
 {
-    NSDictionary *_applicationKeyStores;
+    _Bool _forceRefresh;
+    KTApplicationPublicKeyStore *_tltKeyStore;
+    NSMutableDictionary *__applicationKeyStores;
     NSArray *_applications;
 }
 
-@property(retain) NSArray *applications; // @synthesize applications=_applications;
-@property(retain) NSDictionary *applicationKeyStores; // @synthesize applicationKeyStores=_applicationKeyStores;
 - (void).cxx_destruct;
+@property _Bool forceRefresh; // @synthesize forceRefresh=_forceRefresh;
+@property(retain) NSArray *applications; // @synthesize applications=_applications;
+@property(retain) NSMutableDictionary *_applicationKeyStores; // @synthesize _applicationKeyStores=__applicationKeyStores;
+@property(retain) KTApplicationPublicKeyStore *tltKeyStore; // @synthesize tltKeyStore=_tltKeyStore;
 @property(readonly) _Bool ready;
 - (void)clearApplicationState:(id)arg1 error:(id *)arg2;
-- (id)init;
-- (_Bool)configureWithDisk:(id *)arg1;
-- (void)configureWithClient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)configureWithClient:(id)arg1 ignoreCachedKeys:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)configureWithClient:(id)arg1 application:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)createApplicationKeyStore:(id)arg1 keyStoreResponse:(id)arg2 error:(id *)arg3;
-- (_Bool)configureApplicationKeyStore:(id)arg1 keyStoreData:(id)arg2 error:(id *)arg3;
-- (_Bool)saveApplicationKeyStore:(id)arg1 error:(id *)arg2;
+- (id)initWithDataStore:(id)arg1;
+- (_Bool)configureWithDisk:(id)arg1 error:(id *)arg2;
+- (void)configureWithClient:(id)arg1 dataStore:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)configureWithClient:(id)arg1 ignoreCachedKeys:(_Bool)arg2 dataStore:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchKeyStore:(id)arg1 application:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)createApplicationKeyStore:(id)arg1 keyStoreResponse:(id)arg2 dataStore:(id)arg3 error:(id *)arg4;
+- (id)createApplicationKeyStore:(id)arg1 keyStoreData:(id)arg2 dataStore:(id)arg3 error:(id *)arg4;
+- (_Bool)saveDiskApplicationKeyStore:(id)arg1 error:(id *)arg2;
 - (_Bool)hasApplicationPublicKeyStoreOnDisk:(id)arg1 error:(id *)arg2;
-- (_Bool)clearApplicationKeyStore:(id)arg1 error:(id *)arg2;
+- (_Bool)clearDiskApplicationKeyStore:(id)arg1 error:(id *)arg2;
 - (_Bool)writePublicKeyStoreToDisk:(id)arg1 error:(id *)arg2;
 - (id)readPublicKeyStoreFromDisk:(id *)arg1;
+- (id)copyKeyStoreState;
+- (id)copyMetadata;
+- (void)updateTLTKeyStoreWithApplicationKeyStore:(id)arg1;
+@property(readonly) NSDictionary *applicationKeyStores;
 
 @end
 

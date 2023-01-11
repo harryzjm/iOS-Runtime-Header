@@ -41,6 +41,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (void)conformsToCSBehaviorProviding;
 - (void)removeRestrictedCapabilities:(unsigned long long)arg1;
 - (void)addRestrictedCapabilities:(unsigned long long)arg1;
 - (_Bool)areRestrictedCapabilities:(unsigned long long)arg1;

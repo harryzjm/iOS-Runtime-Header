@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SFNavigationBarMetrics : NSObject
 {
+    _Bool _usesNavigationBarHeightForSheetPresentation;
     UITraitCollection *_traitCollectionForFontMetrics;
     double _minimumBarHeight;
     UIFont *_defaultLabelFont;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     double _statusBarHeight;
     UIImageSymbolConfiguration *_accessoryImageSymbolConfiguration;
     UIImageSymbolConfiguration *_squishedAccessoryImageSymbolConfiguration;
+    UIImageSymbolConfiguration *_mediumButtonImageSymbolConfiguration;
     double _accessibilityImageScale;
     double _urlOutlineCornerRadius;
     double _defaultBarHeight;
@@ -34,32 +36,11 @@ __attribute__((visibility("hidden")))
     double _urlLabelAccessoryItemSquishedVerticalOffset;
     double _urlLabelAccessoryLockItemVerticalOffset;
     double _distanceFromLabelBaselineToURLOutlineBottom;
+    UITraitCollection *_traitCollectionForButtonMetrics;
 }
 
-@property(readonly, nonatomic) double distanceFromLabelBaselineToURLOutlineBottom; // @synthesize distanceFromLabelBaselineToURLOutlineBottom=_distanceFromLabelBaselineToURLOutlineBottom;
-@property(readonly, nonatomic) double urlLabelAccessoryLockItemVerticalOffset; // @synthesize urlLabelAccessoryLockItemVerticalOffset=_urlLabelAccessoryLockItemVerticalOffset;
-@property(readonly, nonatomic) double urlLabelAccessoryItemSquishedVerticalOffset; // @synthesize urlLabelAccessoryItemSquishedVerticalOffset=_urlLabelAccessoryItemSquishedVerticalOffset;
-@property(readonly, nonatomic) double urlLabelVerticalOffset; // @synthesize urlLabelVerticalOffset=_urlLabelVerticalOffset;
-@property(readonly, nonatomic) double urlOutlineHeight; // @synthesize urlOutlineHeight=_urlOutlineHeight;
-@property(readonly, nonatomic) double urlContainerTop; // @synthesize urlContainerTop=_urlContainerTop;
-@property(readonly, nonatomic) double minimumBarHeight; // @synthesize minimumBarHeight=_minimumBarHeight;
-@property(readonly, nonatomic) double defaultBarHeight; // @synthesize defaultBarHeight=_defaultBarHeight;
-@property(readonly, nonatomic) double urlOutlineCornerRadius; // @synthesize urlOutlineCornerRadius=_urlOutlineCornerRadius;
-@property(readonly, nonatomic) double accessibilityImageScale; // @synthesize accessibilityImageScale=_accessibilityImageScale;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIImageSymbolConfiguration *squishedAccessoryImageSymbolConfiguration;
-@property(readonly, nonatomic) UIImageSymbolConfiguration *accessoryImageSymbolConfiguration;
-@property(readonly, nonatomic) double narrowEditingScaleFactor;
-@property(readonly, nonatomic) UIFont *narrowEditingLabelFont;
-@property(readonly, nonatomic) UIFont *defaultBoldFont;
-@property(readonly, nonatomic) UIFont *defaultLabelFont;
-- (double)squishHeightQuantizationOffsetWithBarMetricsCategory:(long long)arg1;
-- (double)barHeightWithBarMetricsCategory:(long long)arg1;
-- (void)_updateMetrics;
-- (_Bool)updateForStatusBarHeight:(double)arg1;
-- (_Bool)updateForContentSizeCategory:(id)arg1;
 - (id)init;
-- (id)_contentSizeCategoryWithPreferredCategory:(id)arg1;
 
 @end
 

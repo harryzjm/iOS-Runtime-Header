@@ -19,9 +19,10 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_regionAnimation;
     VKAnnotationTrackingCameraController *_annotationTrackingCameraController;
     VKGestureCameraBehavior *_gestureCameraControllerBehavior;
-    long long _annotationTrackingZoomStyle;
+    CDStruct_211b8904 _annotationTrackingBehavior;
     long long _annotationTrackingHeadingAnimationDisplayRate;
     _Bool _isPitchIncreasing;
+    _Bool _userChangedZoomSinceLastProgrammaticRegionChange;
     VKCameraRegionRestriction *_regionRestriction;
     struct {
         double min;
@@ -30,9 +31,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
+@property(nonatomic) _Bool userChangedZoomSinceLastProgrammaticRegionChange; // @synthesize userChangedZoomSinceLastProgrammaticRegionChange=_userChangedZoomSinceLastProgrammaticRegionChange;
 @property(nonatomic) CDStruct_c3b9c2ee centerCoordinateDistanceRange; // @synthesize centerCoordinateDistanceRange=_centerCoordinateDistanceRange;
 @property(nonatomic) long long annotationTrackingHeadingAnimationDisplayRate; // @synthesize annotationTrackingHeadingAnimationDisplayRate=_annotationTrackingHeadingAnimationDisplayRate;
-@property(nonatomic) long long annotationTrackingZoomStyle; // @synthesize annotationTrackingZoomStyle=_annotationTrackingZoomStyle;
+@property(nonatomic) CDStruct_211b8904 annotationTrackingBehavior; // @synthesize annotationTrackingBehavior=_annotationTrackingBehavior;
 - (void)setCamera:(id)arg1;
 - (_Bool)canEnter3DMode;
 - (void)exit3DMode;
@@ -42,11 +44,12 @@ __attribute__((visibility("hidden")))
 - (void)setYaw:(double)arg1 animated:(_Bool)arg2;
 - (void)setCenterCoordinate3D:(CDStruct_071ac149)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
-- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (double)durationToAnimateToMapRegion:(id)arg1;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
 - (void)transferGestureState:(id)arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopRotatingWithFocusPoint:(struct CGPoint)arg1;
@@ -72,7 +75,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isTrackingHeading;
 @property(readonly, nonatomic) id <VKTrackableAnnotation> trackingAnnotation;
 - (void)stopTrackingAnnotation;
-- (void)startTrackingAnnotation:(id)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)startTrackingAnnotation:(id)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3 duration:(double)arg4 timingFunction:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 

@@ -8,15 +8,19 @@
 
 #import <HealthUI/HKInteractiveChartAnnotationViewDataSource-Protocol.h>
 
-@class HKSleepChartPointUserInfo, NSString;
+@class HKSleepChartPointUserInfo, NSArray, NSString;
 
 @interface HKSleepAnnotationViewDataSource : NSObject <HKInteractiveChartAnnotationViewDataSource>
 {
     HKSleepChartPointUserInfo *_sleepChartPointUserInfo;
+    NSArray *_titles;
+    NSArray *_values;
 }
 
-@property(retain, nonatomic) HKSleepChartPointUserInfo *sleepChartPointUserInfo; // @synthesize sleepChartPointUserInfo=_sleepChartPointUserInfo;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *values; // @synthesize values=_values;
+@property(retain, nonatomic) NSArray *titles; // @synthesize titles=_titles;
+@property(retain, nonatomic) HKSleepChartPointUserInfo *sleepChartPointUserInfo; // @synthesize sleepChartPointUserInfo=_sleepChartPointUserInfo;
 - (id)_titleBodyGroupWithTitle:(id)arg1 body:(id)arg2 orientation:(long long)arg3;
 - (id)_dateGroupWithDate:(id)arg1 orientation:(long long)arg2;
 - (id)_dateRowWithDate:(id)arg1;

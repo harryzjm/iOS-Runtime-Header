@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDModule : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    NSString *_debugDescription;
+    NSString *_moduleDebugDescription;
     GEOPDModuleOptions *_options;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _type;
     struct {
         unsigned int has_type:1;
         unsigned int read_unknownFields:1;
-        unsigned int read_debugDescription:1;
+        unsigned int read_moduleDebugDescription:1;
         unsigned int read_options:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_debugDescription:1;
-        unsigned int wrote_options:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,18 +42,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSString *debugDescription;
-@property(readonly, nonatomic) _Bool hasDebugDescription;
-- (void)_readDebugDescription;
+@property(retain, nonatomic) NSString *moduleDebugDescription;
+@property(readonly, nonatomic) _Bool hasModuleDebugDescription;
 @property(retain, nonatomic) GEOPDModuleOptions *options;
 @property(readonly, nonatomic) _Bool hasOptions;
-- (void)_readOptions;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

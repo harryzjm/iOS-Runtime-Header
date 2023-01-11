@@ -6,11 +6,14 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
-@class AMSBagKeySet, NSString;
+@class AMSBag, AMSBagKeySet, NSString;
 
 @protocol AMSBagConsumer <NSObject>
 + (NSString *)bagSubProfileVersion;
 + (NSString *)bagSubProfile;
 + (AMSBagKeySet *)bagKeySet;
+
+@optional
++ (AMSBag *)createBagForSubProfile;
 @end
 

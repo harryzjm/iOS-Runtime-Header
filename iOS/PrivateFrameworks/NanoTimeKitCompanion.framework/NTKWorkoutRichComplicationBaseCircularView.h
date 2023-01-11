@@ -4,41 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+@class NTKWorkoutRichComplicationCircularContentView;
 
-#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
-
-@class CLKComplicationTemplate, NSString, NTKColoringImageView, UIColor;
-@protocol CLKMonochromeFilterProvider;
-
-@interface NTKWorkoutRichComplicationBaseCircularView : UIView <CLKMonochromeComplicationView>
+@interface NTKWorkoutRichComplicationBaseCircularView
 {
-    UIView *_backgroundView;
-    UIColor *_immutableBackgroundColor;
-    NTKColoringImageView *_staticImageView;
-    long long _state;
-    _Bool _paused;
-    id <CLKMonochromeFilterProvider> _filterProvider;
-    CLKComplicationTemplate *_complicationTemplate;
+    NTKWorkoutRichComplicationCircularContentView *_richView;
 }
 
-@property(retain, nonatomic) CLKComplicationTemplate *complicationTemplate; // @synthesize complicationTemplate=_complicationTemplate;
-@property(nonatomic) _Bool paused; // @synthesize paused=_paused;
-@property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 - (void).cxx_destruct;
-- (void)_updateUI;
-- (void)_applyChanges;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)_applyPausedUpdate;
+- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (id)_animatedImagesName;
+- (id)_workoutImageName;
 - (void)layoutSubviews;
-- (void)dealloc;
-- (id)initWithNoActiveWorkoutImageName:(id)arg1 animatedImagesName:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithFamily:(long long)arg1;
 
 @end
 

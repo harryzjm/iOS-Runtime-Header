@@ -24,6 +24,9 @@
 }
 
 + (id)clientOfService:(id)arg1 withConnection:(id)arg2 andContext:(id)arg3;
++ (id)clientInterface;
++ (id)serverInterface;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *devicesToActivateByRemoteUserContextProxySourceDeviceUUID; // @synthesize devicesToActivateByRemoteUserContextProxySourceDeviceUUID=_devicesToActivateByRemoteUserContextProxySourceDeviceUUID;
 @property(retain, nonatomic) NSMutableSet *nonWakingRegistration; // @synthesize nonWakingRegistration=_nonWakingRegistration;
 @property(retain, nonatomic) NSMutableSet *wakingRegistrations; // @synthesize wakingRegistrations=_wakingRegistrations;
@@ -32,10 +35,10 @@
 @property(retain, nonatomic) _CDUserContextService *service; // @synthesize service=_service;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *activateMonitorQueue; // @synthesize activateMonitorQueue=_activateMonitorQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (void)_valuesForPaths:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)valuesForPaths:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)valuesForPaths:(id)arg1 inContextsMatching:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)removeObjects:(id)arg1 fromArrayAtPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)addObjects:(id)arg1 toArrayAtPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)addObjects:(id)arg1 andRemoveObjects:(id)arg2 forArrayAtPath:(id)arg3 handler:(CDUnknownBlockType)arg4;

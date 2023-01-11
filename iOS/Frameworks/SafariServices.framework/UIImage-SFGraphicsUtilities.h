@@ -12,6 +12,7 @@
 + (id)_sf_favoritesFavicon;
 + (id)_sf_fallbackFavicon;
 + (id)_sf_faviconFromSystemImageNamed:(id)arg1;
+- (id)_sf_outlineIconForSize:(struct CGSize)arg1;
 - (void)_sf_registerFaviconForDarkUserInterfaceStyle;
 @property(readonly, nonatomic) _Bool _sf_hasRegisteredFaviconForDarkUserInterfaceStyle;
 @property(readonly, nonatomic) _Bool _sf_shouldApplyBackingForDarkBackdrop;

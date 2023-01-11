@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (unsigned int *)_deserializeValues:(unsigned int)arg1;
-- (const char *)copyDeserializedNullTerminatedBytes;
-- (id)copyDeserializedString;
-- (id)copyDeserializedStringWithID:(unsigned int)arg1;
+- (unsigned int *)_deserializeValues:(unsigned int)arg1 error:(id *)arg2;
+- (const char *)copyDeserializedNullTerminatedBytesWithError:(id *)arg1;
+- (id)copyDeserializedStringWithError:(id *)arg1;
+- (id)copyDeserializedStringWithID:(unsigned int)arg1 error:(id *)arg2;
 - (void)skipFields:(unsigned int)arg1;
-- (unsigned long long)deserialize64;
-- (unsigned int)deserialize32;
+- (unsigned long long)deserialize64WithError:(id *)arg1;
+- (unsigned int)deserialize32WithError:(id *)arg1;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 

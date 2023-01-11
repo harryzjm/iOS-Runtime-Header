@@ -14,7 +14,6 @@
 - (id)complicationApplicationIdentifier;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)alwaysShowIdealizedTemplateInSwitcher;
 - (id)currentSwitcherTemplate;
 - (unsigned long long)timelineAnimationBehavior;

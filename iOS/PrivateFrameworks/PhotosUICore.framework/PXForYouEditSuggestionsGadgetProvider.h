@@ -17,6 +17,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)oneUpPresentationWantsShowInLibraryButton:(id)arg1;
 - (id)oneUpPresentationGestureProvider:(id)arg1;
 - (long long)oneUpPresentationActionContext:(id)arg1;
 - (void)oneUpPresentation:(id)arg1 setHiddenAssetReferences:(id)arg2;
@@ -31,7 +32,7 @@
 - (void)suggestionGadget:(id)arg1 willDismissPreviewController:(id)arg2;
 - (void)suggestionGadget:(id)arg1 commitViewController:(id)arg2;
 - (id)suggestionGadgetPreviewController:(id)arg1;
-- (void)presentOneUpForSuggestion:(id)arg1;
+- (void)presentOneUpForSuggestion:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_prepareForOneUpPresentationForSuggestion:(id)arg1;
 - (void)configureGadget:(id)arg1;
 - (id)init;

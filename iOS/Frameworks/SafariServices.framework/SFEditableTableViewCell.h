@@ -6,13 +6,20 @@
 
 #import <UIKit/UITableViewCell.h>
 
+@protocol SFEditableTableViewCellDelegate;
+
 __attribute__((visibility("hidden")))
 @interface SFEditableTableViewCell : UITableViewCell
 {
     _Bool _enabled;
+    id <SFEditableTableViewCellDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <SFEditableTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+- (void)copy:(id)arg1;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)_updateTextFieldTextColor;
 - (void)tintColorDidChange;
 - (id)initWithEnabledState:(_Bool)arg1;

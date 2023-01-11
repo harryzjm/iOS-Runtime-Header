@@ -24,7 +24,7 @@
 - (id)takeMaintenanceSuspensionAssertionForOwner:(id)arg1;
 - (void)cancelAllOperations;
 - (void)enqueueMaintenanceOperation:(id)arg1;
-@property(readonly) _Bool suspended;
+@property _Bool suspended;
 - (id)init;
 
 // Remaining properties

@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/SBReusableView-Protocol.h>
+#import <SpringBoard/SBFluidSwitcherItemContainerReusable-Protocol.h>
 
-@class NSString, SBAppLayout;
+@class NSString;
 
-@interface SBReusableSnapshotItemContainer <SBReusableView>
+@interface SBReusableSnapshotItemContainer <SBFluidSwitcherItemContainerReusable>
 {
-    SBAppLayout *_snapshotAppLayout;
 }
 
-@property(retain, nonatomic) SBAppLayout *snapshotAppLayout; // @synthesize snapshotAppLayout=_snapshotAppLayout;
-- (void).cxx_destruct;
 - (id)_snapshotView;
+- (void)_updateSnapshotViewWithAppLayout:(id)arg1;
+- (void)setAppLayout:(id)arg1;
 - (void)setContentView:(id)arg1;
 - (void)prepareForReuse;
+- (void)conformsToProtocolSBFluidSwitcherItemContainerReusable;
+- (id)initWithFrame:(struct CGRect)arg1 appLayout:(id)arg2 delegate:(id)arg3 active:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

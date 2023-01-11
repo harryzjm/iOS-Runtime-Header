@@ -19,6 +19,7 @@
     CATOperation *mOperation;
     _Bool _printJSON;
     _Bool _printVerbose;
+    _Bool _useDMFRequest;
     id <CRKToolCommandDelegate> _delegate;
     NSString *_sessionIdentifier;
 }
@@ -30,13 +31,15 @@
 + (id)description;
 + (id)aliases;
 + (id)subcommandPath;
++ (_Bool)supportsDMFRequest;
 + (_Bool)supportsVerboseOutput;
 + (_Bool)supportsJSON;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(nonatomic) __weak id <CRKToolCommandDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=shouldUseDMFRequest) _Bool useDMFRequest; // @synthesize useDMFRequest=_useDMFRequest;
 @property(nonatomic, getter=shouldPrintVerbose) _Bool printVerbose; // @synthesize printVerbose=_printVerbose;
 @property(nonatomic, getter=shouldPrintJSON) _Bool printJSON; // @synthesize printJSON=_printJSON;
-- (void).cxx_destruct;
 - (void)clientDidDisconnect:(id)arg1;
 - (void)client:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)client:(id)arg1 didReceiveNotificationWithName:(id)arg2 userInfo:(id)arg3;
@@ -52,10 +55,10 @@
 - (id)transportProvider;
 - (void)remoteTaskDidFinish:(id)arg1;
 - (void)remoteTaskDidProgress:(id)arg1;
+- (id)DMFRequestWithArguments:(id)arg1;
 - (id)requestWithArguments:(id)arg1;
 - (id)operationWithClient:(id)arg1 arguments:(id)arg2;
 - (id)arrayByParsingAndRemovingArgumentFlags:(id)arg1;
-- (_Bool)pluckFlag:(id)arg1 fromArguments:(id)arg2;
 - (void)runWithClient:(id)arg1 arguments:(id)arg2;
 - (void)runWithArguments:(id)arg1;
 - (id)init;

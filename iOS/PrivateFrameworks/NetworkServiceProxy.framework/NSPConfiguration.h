@@ -35,12 +35,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)defaultConfiguration;
+- (void).cxx_destruct;
 @property(retain) NSPConfiguration *defaults; // @synthesize defaults=_defaults;
 @property(readonly) long long diskVersion; // @synthesize diskVersion=_diskVersion;
 @property(copy) NSNumber *persistMetrics; // @synthesize persistMetrics=_persistMetrics;
-@property(retain) NSDictionary *edgeSets; // @synthesize edgeSets=_edgeSets;
+@property(retain, nonatomic) NSDictionary *edgeSets; // @synthesize edgeSets=_edgeSets;
 @property _Bool ignoreInvalidCerts; // @synthesize ignoreInvalidCerts=_ignoreInvalidCerts;
-@property(retain) NSURLSession *waldoSession; // @synthesize waldoSession=_waldoSession;
+@property(retain, nonatomic) NSURLSession *waldoSession; // @synthesize waldoSession=_waldoSession;
 @property(copy) NSNumber *waldoRevocationFailClosed; // @synthesize waldoRevocationFailClosed=_waldoRevocationFailClosed;
 @property(copy) NSString *waldoLeafOID; // @synthesize waldoLeafOID=_waldoLeafOID;
 @property(copy) NSNumber *waldoRequestTimeout; // @synthesize waldoRequestTimeout=_waldoRequestTimeout;
@@ -52,7 +53,6 @@
 @property(copy) NSNumber *enabled; // @synthesize enabled=_enabled;
 @property(readonly) NSNumber *timestamp; // @synthesize timestamp=_timestamp;
 @property(readonly) NSNumber *version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (void)incrementSessionCountersOnFirstLaunch;
 - (_Bool)resetStaleEdgeSets;
 @property(copy) NSString *waldoHost;

@@ -7,26 +7,35 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/CSSpotlightPresenting-Protocol.h>
+#import <SpringBoard/SBDashBoardSpotlightViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 #import <SpringBoard/SPUIRemoteSearchViewDelegate-Protocol.h>
 
-@class CSCoverSheetViewController, CSPageViewController, NSString, SBDashBoardSpotlightViewController;
+@class NSString, SBDashBoardSpotlightViewController;
+@protocol SBFDashBoardModalPresenterProtocol, SBFLegibilitySettingsProvider;
 
-@interface SBDashBoardSpotlightPresenter : NSObject <SPUIRemoteSearchViewDelegate, CSSpotlightPresenting>
+@interface SBDashBoardSpotlightPresenter : NSObject <SPUIRemoteSearchViewDelegate, SBFLegibilitySettingsProviderDelegate, SBDashBoardSpotlightViewControllerDelegate, CSSpotlightPresenting>
 {
-    CSCoverSheetViewController *_coverSheetViewController;
+    id <SBFDashBoardModalPresenterProtocol> _presenterViewController;
     SBDashBoardSpotlightViewController *_spotlightViewController;
-    CSPageViewController *_todayPageViewController;
+    id <SBFLegibilitySettingsProvider> _spotlightLegibilitySettingsProvider;
+    unsigned long long _spotlightMultiplexingLevel;
+    unsigned long long _remoteSearchViewPresentationSource;
+    long long _homeGestureParticipantIdentifier;
 }
 
-@property(nonatomic) __weak CSPageViewController *todayPageViewController; // @synthesize todayPageViewController=_todayPageViewController;
 - (void).cxx_destruct;
+- (long long)homeGestureParticipantIdentifierForSpotlightViewController:(id)arg1;
+- (unsigned long long)remoteSearchViewPresentationSourceForSpotlightViewController:(id)arg1;
+- (unsigned long long)spotlightMultiplexingLevelForSpotlightViewController:(id)arg1;
+- (void)providerLegibilitySettingsChanged:(id)arg1;
 - (void)dismissSearchView;
 - (id)createSpotlightLegiblitySettingsProvider;
 - (void)dismissSpotlightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissSpotlight;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(_Bool)arg2;
-- (id)initWithCoverSheetViewController:(id)arg1;
+- (id)initWithPresenterViewController:(id)arg1 spotlightMultiplexingLevel:(unsigned long long)arg2 remoteSearchViewPresentationSource:(unsigned long long)arg3 homeGestureParticipantIdentifier:(long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

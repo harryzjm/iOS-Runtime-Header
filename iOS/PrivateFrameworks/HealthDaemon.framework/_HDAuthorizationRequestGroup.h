@@ -9,29 +9,30 @@
 @class HKSource, NSMutableArray, NSMutableSet, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface _HDAuthorizationRequestGroup : NSObject
 {
     NSMutableSet *_typesToWrite;
     NSMutableSet *_typesToRead;
     _Bool _inTransaction;
-    HKSource *_source;
-    NSUUID *_promptSessionIdentifier;
-    CDUnknownBlockType _promptHandler;
     NSMutableArray *_requests;
     NSMutableArray *_completions;
     NSObject<OS_dispatch_source> *_sessionTimeoutSource;
+    HKSource *_source;
+    NSUUID *_promptSessionIdentifier;
+    CDUnknownBlockType _promptHandler;
 }
 
-@property(nonatomic, getter=isInTransaction) _Bool inTransaction; // @synthesize inTransaction=_inTransaction;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *sessionTimeoutSource; // @synthesize sessionTimeoutSource=_sessionTimeoutSource;
-@property(retain, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
-@property(retain, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType promptHandler; // @synthesize promptHandler=_promptHandler;
+@property(nonatomic, getter=isInTransaction) _Bool inTransaction; // @synthesize inTransaction=_inTransaction;
 @property(readonly, nonatomic) NSUUID *promptSessionIdentifier; // @synthesize promptSessionIdentifier=_promptSessionIdentifier;
 @property(readonly, copy, nonatomic) NSSet *typesToRead; // @synthesize typesToRead=_typesToRead;
 @property(readonly, copy, nonatomic) NSSet *typesToWrite; // @synthesize typesToWrite=_typesToWrite;
 @property(readonly, copy, nonatomic) HKSource *source; // @synthesize source=_source;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_source> *sessionTimeoutSource; // @synthesize sessionTimeoutSource=_sessionTimeoutSource;
+@property(retain, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
+@property(retain, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
 - (id)description;
 - (void)_cancelTimeoutSource;
 - (void)beginTransaction;

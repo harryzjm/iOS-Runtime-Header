@@ -4,14 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface BKSHIDEventDigitizerAttributes
 {
+    unsigned char _touchStreamIdentifier;
+    _Bool _systemGesturesPossible;
+    _Bool _systemGestureStateChange;
     float _maximumForce;
+    double _digitizerSurfaceWidth;
+    double _digitizerSurfaceHeight;
+    NSArray *_pathAttributes;
+    double _initialTouchTimestamp;
 }
 
 + (id)protobufSchema;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool systemGestureStateChange; // @synthesize systemGestureStateChange=_systemGestureStateChange;
+@property(nonatomic) _Bool systemGesturesPossible; // @synthesize systemGesturesPossible=_systemGesturesPossible;
+@property(nonatomic) unsigned char touchStreamIdentifier; // @synthesize touchStreamIdentifier=_touchStreamIdentifier;
+@property(nonatomic) double initialTouchTimestamp; // @synthesize initialTouchTimestamp=_initialTouchTimestamp;
+@property(retain, nonatomic) NSArray *pathAttributes; // @synthesize pathAttributes=_pathAttributes;
+@property(nonatomic) double digitizerSurfaceHeight; // @synthesize digitizerSurfaceHeight=_digitizerSurfaceHeight;
+@property(nonatomic) double digitizerSurfaceWidth; // @synthesize digitizerSurfaceWidth=_digitizerSurfaceWidth;
 @property(nonatomic) float maximumForce; // @synthesize maximumForce=_maximumForce;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (void)appendDescriptionToFormatter:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

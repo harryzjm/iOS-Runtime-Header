@@ -15,16 +15,14 @@
 @interface _INPBConfidenceScoreComponent : PBCodable <_INPBConfidenceScoreComponent, NSSecureCoding, NSCopying>
 {
     CDStruct_4b1634df _has;
-    _Bool __encodeLegacyGloryData;
     float _score;
     NSString *_source;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property(nonatomic) float score; // @synthesize score=_score;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

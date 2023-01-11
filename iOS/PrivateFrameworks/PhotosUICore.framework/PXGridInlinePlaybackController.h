@@ -31,6 +31,7 @@
     _Bool _autoplaySettingEnabled;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool autoplaySettingEnabled; // @synthesize autoplaySettingEnabled=_autoplaySettingEnabled;
 @property(nonatomic) _Bool lowPowerModeEnabled; // @synthesize lowPowerModeEnabled=_lowPowerModeEnabled;
 @property(nonatomic) _Bool applicationActive; // @synthesize applicationActive=_applicationActive;
@@ -41,10 +42,9 @@
 @property(nonatomic) _Bool isContextMenuInteractionActive; // @synthesize isContextMenuInteractionActive=_isContextMenuInteractionActive;
 @property(nonatomic) _Bool isOneUpVisible; // @synthesize isOneUpVisible=_isOneUpVisible;
 @property(nonatomic) _Bool isContentViewVisible; // @synthesize isContentViewVisible=_isContentViewVisible;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *currentRecords;
 - (_Bool)_hasAnyPlaybackRecords;
-- (_Bool)_isDisplayAssetEligibleForAutoPlayback:(id)arg1;
+- (_Bool)isDisplayAssetEligibleForAutoPlayback:(id)arg1;
 - (void)_stopPlaybackForRecords:(id)arg1;
 - (void)_startPlaybackForRecords:(id)arg1;
 - (void)_updatePlayingRecords;
@@ -70,6 +70,7 @@
 @property(readonly, nonatomic) struct CGRect currentVisibleRect;
 - (id)createPlaybackRecordForDisplayAsset:(id)arg1 mediaProvider:(id)arg2 geometryReference:(id)arg3;
 - (void)visibleRectDidChange;
+- (_Bool)isPlayingDisplayAsset:(id)arg1;
 - (void)checkInPlaybackRecordForDisplayAssets:(id)arg1;
 - (void)checkInPlaybackRecordForDisplayAsset:(id)arg1;
 - (void)willCheckInPlaybackRecordForDisplayAsset:(id)arg1;

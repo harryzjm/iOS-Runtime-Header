@@ -21,13 +21,14 @@
     PKDiscoveryCallToActionFooterView *_ctaFooterView;
     UITapGestureRecognizer *_tapRecognizer;
     PKContinuousButton *_dismissButton;
-    _Bool _dismissable;
     _Bool _removing;
     _Bool _hasSafeAreaInsetOverride;
     PKDiscoveryArticleLayout *_articleLayout;
+    long long _priority;
     id <PKDiscoveryCardViewDelegate> _delegate;
     long long _displayType;
     CDUnknownBlockType _callToActionTappedOverride;
+    CDUnknownBlockType _dismissAction;
     struct UIEdgeInsets _safeAreaOverrideInsets;
 }
 
@@ -38,15 +39,16 @@
 + (struct CGSize)expandedSize;
 + (double)expandedHeight;
 + (double)expandedWidth;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType dismissAction; // @synthesize dismissAction=_dismissAction;
 @property(copy, nonatomic) CDUnknownBlockType callToActionTappedOverride; // @synthesize callToActionTappedOverride=_callToActionTappedOverride;
 @property(nonatomic) struct UIEdgeInsets safeAreaOverrideInsets; // @synthesize safeAreaOverrideInsets=_safeAreaOverrideInsets;
 @property(nonatomic) _Bool hasSafeAreaInsetOverride; // @synthesize hasSafeAreaInsetOverride=_hasSafeAreaInsetOverride;
 @property(nonatomic, getter=isRemoving) _Bool removing; // @synthesize removing=_removing;
-@property(nonatomic, getter=isDismissable) _Bool dismissable; // @synthesize dismissable=_dismissable;
 @property(nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property(nonatomic) __weak id <PKDiscoveryCardViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) PKDiscoveryArticleLayout *articleLayout; // @synthesize articleLayout=_articleLayout;
-- (void).cxx_destruct;
 - (id)_dismissButtonTintColor;
 - (id)_headingLabelTextColor;
 - (id)_titleLabelTextColor;
@@ -59,7 +61,7 @@
 - (id)_headingLabelFont;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3 dismissable:(_Bool)arg4 callToActionTappedOverride:(CDUnknownBlockType)arg5;
+- (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3 callToActionTappedOverride:(CDUnknownBlockType)arg4;
 - (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3;
 
 @end

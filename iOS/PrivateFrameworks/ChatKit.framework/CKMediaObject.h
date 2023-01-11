@@ -8,7 +8,7 @@
 
 #import <ChatKit/QLPreviewItem-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL, UITraitCollection;
+@class NSData, NSDate, NSDictionary, NSString, NSURL, UITraitCollection;
 @protocol CKFileTransfer, OS_dispatch_group;
 
 @interface CKMediaObject : NSObject <QLPreviewItem>
@@ -16,32 +16,36 @@
     _Bool _isFromMe;
     _Bool _suppressPreviewForUnknownSender;
     _Bool _forceInlinePreviewGeneration;
+    _Bool _cachedValidPreviewExists;
     id <CKFileTransfer> _transfer;
     UITraitCollection *_transcriptTraitCollection;
+    NSDate *_time;
     NSURL *_cachedHighQualityFileURL;
     NSObject<OS_dispatch_group> *_highQualityFetchInProgressGroup;
     unsigned long long _oopPreviewRequestCount;
 }
 
 + (id)mediaClasses;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
 + (id)iconCache;
++ (_Bool)canGeneratePreviewInMVSHostProcess;
 + (_Bool)shouldUseTranscoderGeneratedPreviewSize;
 + (_Bool)shouldShadePreview;
 + (_Bool)shouldScaleUpPreview;
 + (_Bool)isPreviewable;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool cachedValidPreviewExists; // @synthesize cachedValidPreviewExists=_cachedValidPreviewExists;
 @property(nonatomic) unsigned long long oopPreviewRequestCount; // @synthesize oopPreviewRequestCount=_oopPreviewRequestCount;
 @property(nonatomic) _Bool forceInlinePreviewGeneration; // @synthesize forceInlinePreviewGeneration=_forceInlinePreviewGeneration;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *highQualityFetchInProgressGroup; // @synthesize highQualityFetchInProgressGroup=_highQualityFetchInProgressGroup;
 @property(retain, nonatomic) NSURL *cachedHighQualityFileURL; // @synthesize cachedHighQualityFileURL=_cachedHighQualityFileURL;
+@property(retain, nonatomic) NSDate *time; // @synthesize time=_time;
 @property(retain, nonatomic) UITraitCollection *transcriptTraitCollection; // @synthesize transcriptTraitCollection=_transcriptTraitCollection;
 @property(nonatomic) _Bool suppressPreviewForUnknownSender; // @synthesize suppressPreviewForUnknownSender=_suppressPreviewForUnknownSender;
 @property(nonatomic) _Bool isFromMe; // @synthesize isFromMe=_isFromMe;
 @property(retain, nonatomic) id <CKFileTransfer> transfer; // @synthesize transfer=_transfer;
-- (void).cxx_destruct;
 - (_Bool)isPromisedItem;
 @property(readonly, nonatomic) NSURL *previewItemURL;
 @property(readonly, nonatomic) _Bool canShareItem;
@@ -51,11 +55,14 @@
 @property(readonly, nonatomic) _Bool needsAnimation;
 @property(readonly, nonatomic) int mediaType;
 - (id)pasteboardItem;
+@property(readonly, nonatomic) NSString *metricsCollectorMediaType;
 @property(readonly, copy, nonatomic) NSString *UTIType;
+- (_Bool)isDirectory;
 @property(readonly, copy, nonatomic) NSString *mimeType;
 @property(readonly, copy, nonatomic) NSDictionary *transcoderUserInfo;
 @property(readonly, copy, nonatomic) NSString *filename;
 @property(readonly, copy, nonatomic) NSURL *fileURL;
+- (id)attachmentSummary:(unsigned long long)arg1;
 @property(readonly, copy, nonatomic) NSData *data;
 @property(readonly, copy, nonatomic) NSString *transferGUID;
 - (_Bool)isEqual:(id)arg1;
@@ -63,6 +70,8 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)composeImagesForEntryContentViewWidth:(double)arg1;
+- (id)_composeImageForBalloonView:(id)arg1 colorType:(BOOL)arg2;
+- (id)_balloonViewForClassWithWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)ASTCDataFromImage:(id)arg1;
 - (id)JPEGDataFromImage:(id)arg1;
 - (id)fileManager;
@@ -85,13 +94,15 @@
 - (void)generateOOPPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (id)image:(id)arg1 withBackgroundColor:(id)arg2;
+- (id)invisibleInkEffectImageWithPreview:(id)arg1;
 - (void)cacheAndPersistPreview:(id)arg1 orientation:(BOOL)arg2;
 - (id)fileSizeString;
 - (id)downloadProgressString;
 - (id)downloadProgressImage;
 - (_Bool)transcoderPreviewGenerationFailed;
 - (_Bool)shouldShowDisclosure;
-- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2;
+- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(_Bool)arg3;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
 - (void)export:(id)arg1;
 - (_Bool)canExport;
@@ -100,6 +111,8 @@
 - (id)location;
 - (id)_qlThumbnailGeneratorSharedGenerator;
 - (id)richIcon;
+- (_Bool)_shouldBlacklistFromRichIcon;
+- (id)generateIconWithURL:(id)arg1;
 - (id)icon;
 - (id)subtitle;
 - (id)title;

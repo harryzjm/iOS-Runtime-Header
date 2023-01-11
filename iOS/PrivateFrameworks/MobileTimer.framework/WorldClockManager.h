@@ -18,9 +18,10 @@
 
 + (id)sharedManagerWithPreferences:(id)arg1;
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *lastModified; // @synthesize lastModified;
 @property(readonly, nonatomic) NSArray *cities; // @synthesize cities=_cities;
-- (void).cxx_destruct;
+- (id)citiesMatchingIdentifiers:(id)arg1;
 - (void)_notifyNano;
 - (void)moveCityFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)removeAllCities;
@@ -36,6 +37,7 @@
 - (id)worldClockCityFromPersistenceDictionary:(id)arg1;
 - (id)worldClockCityFromPersistenceArray:(id)arg1;
 - (id)worldClockCityFromPersistenceRepresentation:(id)arg1;
+- (id)allCities;
 - (void)saveCities;
 - (void)loadCities;
 - (id)initWithPreferences:(id)arg1;

@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView, UIWindow;
+@class CALayer, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface SCNUIKitSource
 {
     id _uiView;
     id _uiWindow;
+    CALayer *_uiWindowLayer;
+    _Bool _isOpaque;
+    _Bool _windowPreparing;
 }
 
 @property(retain, nonatomic) UIWindow *uiWindow; // @synthesize uiWindow=_uiWindow;

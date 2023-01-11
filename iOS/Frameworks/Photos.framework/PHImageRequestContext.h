@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSProgress, PHImageRequest, PHImageRequestOptions, PHMediaResourceRequest;
+@class NSProgress, PHCompositeMediaResult, PHImageRequest, PHImageRequestOptions, PHMediaResourceRequest;
 
 @interface PHImageRequestContext
 {
@@ -13,14 +13,14 @@
     PHImageRequest *_intermediateRequest;
     PHImageRequest *_finalRequest;
     PHMediaResourceRequest *_resourceRequest;
-    _Atomic _Bool _finalImageRequestStarted;
-    _Atomic _Bool _finalImageReceived;
+    struct atomic_flag _firstNonFastResultWasObserved;
+    struct atomic_flag _finalResultSent;
+    PHCompositeMediaResult *_delayedFinalInvalidDataResult;
     PHImageRequestOptions *_imageOptions;
 }
 
-+ (long long)type;
-@property(readonly, nonatomic) PHImageRequestOptions *imageOptions; // @synthesize imageOptions=_imageOptions;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHImageRequestOptions *imageOptions; // @synthesize imageOptions=_imageOptions;
 - (void)processMediaResult:(id)arg1 forRequest:(id)arg2;
 - (id)progresses;
 - (CDUnknownBlockType)progressHandler;
@@ -30,6 +30,7 @@
 - (_Bool)representsShareableHighQualityResource;
 - (_Bool)isSynchronous;
 - (_Bool)isNetworkAccessAllowed;
+- (long long)type;
 - (id)_produceIntermediateImageRequestForRequest:(id)arg1;
 - (id)_produceFinalImageRequestForRequest:(id)arg1;
 - (id)_lazyProgress;

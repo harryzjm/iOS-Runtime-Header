@@ -17,12 +17,17 @@
     NSArray *routines;
     NSString *language;
     CKRecordID *base;
+    NSString *persistentIdentifier;
     NSArray *donations;
     NSArray *donationsGroupedByApp;
+    NSArray *automationSuggestions;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *automationSuggestions; // @synthesize automationSuggestions;
 @property(copy, nonatomic) NSArray *donationsGroupedByApp; // @synthesize donationsGroupedByApp;
 @property(copy, nonatomic) NSArray *donations; // @synthesize donations;
+@property(copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;
 @property(retain, nonatomic) CKRecordID *base; // @synthesize base;
 @property(copy, nonatomic) NSString *language; // @synthesize language;
 @property(copy, nonatomic) NSArray *routines; // @synthesize routines;
@@ -32,7 +37,6 @@
 @property(copy, nonatomic) NSNumber *minVersion; // @synthesize minVersion;
 @property(copy, nonatomic) NSString *name; // @synthesize name;
 @property(copy, nonatomic) CKRecordID *identifier; // @synthesize identifier;
-- (void).cxx_destruct;
 
 @end
 

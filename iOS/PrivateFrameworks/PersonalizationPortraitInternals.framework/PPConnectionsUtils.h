@@ -10,13 +10,8 @@
 {
 }
 
-+ (id)springboardBundleIdentifier;
-+ (id)mapsBundleIdentifier;
-+ (id)calendarBundleIdentifier;
 + (id)calendarUserActivityExternalIDKey;
 + (id)calendarUserActivityIdentifier;
-+ (id)siriBundleIdentifier;
-+ (id)safariBundleIdentifier;
 + (unsigned char)locationFieldFromSemanticTag:(unsigned char)arg1;
 + (id)triggerTypeFromQuery:(id)arg1;
 + (_Bool)shouldAggregateLabel:(id)arg1 withValue:(id)arg2 query:(id)arg3;

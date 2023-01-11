@@ -11,18 +11,20 @@
 #import <ChatKit/CKDetailsDownloadAttachmentsHeaderFooterViewDelegate-Protocol.h>
 #import <ChatKit/CKDetailsSearchControllerDelegate-Protocol.h>
 #import <ChatKit/CNAvatarViewDelegate-Protocol.h>
+#import <ChatKit/CNGroupIdentityHeaderViewControllerDelegate-Protocol.h>
+#import <ChatKit/CNVisualIdentityPickerViewControllerDelegate-Protocol.h>
 #import <ChatKit/FMFMapViewControllerDelegate-Protocol.h>
-#import <ChatKit/UIAlertViewDelegate-Protocol.h>
+#import <ChatKit/UIImagePickerControllerDelegate-Protocol.h>
 #import <ChatKit/UINavigationControllerDelegate-Protocol.h>
 #import <ChatKit/UITableViewDataSource-Protocol.h>
 #import <ChatKit/UITableViewDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 #import <ChatKit/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class CKAvatarPickerViewController, CKBusinessInfoView, CKConversation, CKDetailsAddGroupNameView, CKDetailsContactsManager, CKDetailsDownloadAttachmentsHeaderFooterView, CKDetailsGroupNameCell, CKDetailsLocationShareCell, CKDetailsMapViewCell, CKDetailsSearchViewController, CKDetailsTableView, CKEntity, CKGroupRecipientSelectionController, CKTranscriptDetailsResizableCell, CNContactStore, FMFMapViewController, NSString, NSTimer, UITextView, UIVisualEffectView;
+@class CKBusinessInfoView, CKConversation, CKDetailsAddGroupNameView, CKDetailsCell, CKDetailsContactsManager, CKDetailsDownloadAttachmentsHeaderFooterView, CKDetailsGroupNameCell, CKDetailsLocationShareCell, CKDetailsMapViewCell, CKDetailsSearchViewController, CKDetailsTableView, CKEntity, CKGroupPhotoCell, CKGroupRecipientSelectionController, CKNavigationController, CKTranscriptDetailsResizableCell, CNContactStore, CNGroupIdentityHeaderViewController, FMFMapViewController, NSData, NSString, NSTimer, UIButton, UITextView, UIVisualEffectView;
 @protocol CKDetailsControllerDelegate;
 
-@interface CKDetailsController <FMFMapViewControllerDelegate, UIViewControllerPreviewingDelegate, CKDetailsAddGroupNameViewDelegate, UITextViewDelegate, UIAlertViewDelegate, CKDetailsContactsManagerDelegate, CNAvatarViewDelegate, CKDetailsContactsTableViewCellDelegate, CKBusinessInfoViewDelegate, CKDetailsDownloadAttachmentsHeaderFooterViewDelegate, CKDetailsSearchControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface CKDetailsController <FMFMapViewControllerDelegate, UIViewControllerPreviewingDelegate, CKDetailsAddGroupNameViewDelegate, UITextViewDelegate, CKDetailsContactsManagerDelegate, CNAvatarViewDelegate, CKDetailsContactsTableViewCellDelegate, CKBusinessInfoViewDelegate, CKDetailsDownloadAttachmentsHeaderFooterViewDelegate, CKDetailsSearchControllerDelegate, UIImagePickerControllerDelegate, CNGroupIdentityHeaderViewControllerDelegate, CNVisualIdentityPickerViewControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     _Bool _fmfEnabled;
     _Bool _fmfRestricted;
@@ -34,13 +36,24 @@
     CKDetailsTableView *_tableView;
     UIVisualEffectView *_visualEffectView;
     CKDetailsGroupNameCell *_groupNameCell;
+    CKGroupPhotoCell *_groupPhotoCell;
+    double _showMoreContactCellHeight;
+    double _addContactCellHeight;
+    double _groupPhotoHeaderHeight;
+    double _simLabelCellHeight;
+    double _optionCellHeight;
+    NSData *_selectedImageData;
     CKDetailsAddGroupNameView *_groupNameView;
     CKDetailsMapViewCell *_mapViewCell;
     CKDetailsLocationShareCell *_locationShareCell;
     CKTranscriptDetailsResizableCell *_locationSendCell;
     CKTranscriptDetailsResizableCell *_locationStartShareCell;
+    CKTranscriptDetailsResizableCell *_openInContactsCell;
+    CKDetailsCell *_changeGroupNamePhotoCell;
     CKDetailsSearchViewController *_searchViewController;
-    CKAvatarPickerViewController *_avatarPickerViewController;
+    CNGroupIdentityHeaderViewController *_groupPhotoHeaderViewController;
+    CKNavigationController *_groupNavigationController;
+    UIButton *_screenShareContextButton;
     CKGroupRecipientSelectionController *_addRecipientsController;
     CKDetailsContactsManager *_contactsManager;
     FMFMapViewController *_mapViewController;
@@ -56,6 +69,9 @@
     unsigned long long _downloadButtonState;
 }
 
++ (void)updateParticipantsWithGroupPhotoAtPath:(id)arg1 forConversation:(id)arg2;
++ (void)saveGroupPhotoDataAndUpdateParticipants:(id)arg1 forConversation:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isDisplayingPhotos; // @synthesize isDisplayingPhotos=_isDisplayingPhotos;
 @property(nonatomic) unsigned long long downloadButtonState; // @synthesize downloadButtonState=_downloadButtonState;
 @property(nonatomic) unsigned long long undownloadedPhotoAttachmentCount; // @synthesize undownloadedPhotoAttachmentCount=_undownloadedPhotoAttachmentCount;
@@ -74,19 +90,34 @@
 @property(nonatomic) _Bool fmfEnabled; // @synthesize fmfEnabled=_fmfEnabled;
 @property(retain, nonatomic) CKDetailsContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
 @property(retain, nonatomic) CKGroupRecipientSelectionController *addRecipientsController; // @synthesize addRecipientsController=_addRecipientsController;
-@property(retain, nonatomic) CKAvatarPickerViewController *avatarPickerViewController; // @synthesize avatarPickerViewController=_avatarPickerViewController;
+@property(retain, nonatomic) UIButton *screenShareContextButton; // @synthesize screenShareContextButton=_screenShareContextButton;
+@property(retain, nonatomic) CKNavigationController *groupNavigationController; // @synthesize groupNavigationController=_groupNavigationController;
+@property(retain, nonatomic) CNGroupIdentityHeaderViewController *groupPhotoHeaderViewController; // @synthesize groupPhotoHeaderViewController=_groupPhotoHeaderViewController;
 @property(retain, nonatomic) CKDetailsSearchViewController *searchViewController; // @synthesize searchViewController=_searchViewController;
+@property(retain, nonatomic) CKDetailsCell *changeGroupNamePhotoCell; // @synthesize changeGroupNamePhotoCell=_changeGroupNamePhotoCell;
+@property(retain, nonatomic) CKTranscriptDetailsResizableCell *openInContactsCell; // @synthesize openInContactsCell=_openInContactsCell;
 @property(retain, nonatomic) CKTranscriptDetailsResizableCell *locationStartShareCell; // @synthesize locationStartShareCell=_locationStartShareCell;
 @property(retain, nonatomic) CKTranscriptDetailsResizableCell *locationSendCell; // @synthesize locationSendCell=_locationSendCell;
 @property(retain, nonatomic) CKDetailsLocationShareCell *locationShareCell; // @synthesize locationShareCell=_locationShareCell;
 @property(retain, nonatomic) CKDetailsMapViewCell *mapViewCell; // @synthesize mapViewCell=_mapViewCell;
 @property(retain, nonatomic) CKDetailsAddGroupNameView *groupNameView; // @synthesize groupNameView=_groupNameView;
+@property(retain, nonatomic) NSData *selectedImageData; // @synthesize selectedImageData=_selectedImageData;
+@property(nonatomic) double optionCellHeight; // @synthesize optionCellHeight=_optionCellHeight;
+@property(nonatomic) double simLabelCellHeight; // @synthesize simLabelCellHeight=_simLabelCellHeight;
+@property(nonatomic) double groupPhotoHeaderHeight; // @synthesize groupPhotoHeaderHeight=_groupPhotoHeaderHeight;
+@property(nonatomic) double addContactCellHeight; // @synthesize addContactCellHeight=_addContactCellHeight;
+@property(nonatomic) double showMoreContactCellHeight; // @synthesize showMoreContactCellHeight=_showMoreContactCellHeight;
+@property(retain, nonatomic) CKGroupPhotoCell *groupPhotoCell; // @synthesize groupPhotoCell=_groupPhotoCell;
 @property(retain, nonatomic) CKDetailsGroupNameCell *groupNameCell; // @synthesize groupNameCell=_groupNameCell;
 @property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 @property(retain, nonatomic) CKDetailsTableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak id <CKDetailsControllerDelegate> detailsControllerDelegate; // @synthesize detailsControllerDelegate=_detailsControllerDelegate;
-- (void).cxx_destruct;
+- (void)_chatAllowedByScreenTimeChanged:(id)arg1;
+- (void)visualIdentityPicker:(id)arg1 didUpdatePhotoForVisualIdentity:(id)arg2 withContactImage:(id)arg3;
+- (void)visualIdentityPickerDidCancel:(id)arg1;
+- (void)_presentGroupNameAndPhotoEditor;
+- (void)headerViewControllerDidTapActionButton:(id)arg1;
 - (void)_batchDownloadNotificationFired:(id)arg1;
 - (void)_updateDownloadButtonStateIfNeeded;
 @property(readonly, nonatomic) _Bool shouldShowDownloadMoreCell;
@@ -96,6 +127,8 @@
 - (void)businessInfoView:(id)arg1 infoButtonTapped:(id)arg2;
 - (id)downloadButtonText;
 - (id)downloadAttachmentsText;
+- (void)fmfMapViewController:(id)arg1 didDeselectHandle:(id)arg2;
+- (void)fmfMapViewController:(id)arg1 didSelectHandle:(id)arg2;
 - (id)annotationContactForHandle:(id)arg1;
 - (id)annotationImageForHandle:(id)arg1;
 - (id)fmfHandlesFromIMHandles:(id)arg1;
@@ -104,21 +137,20 @@
 - (struct CGSize)screenSize;
 - (void)_toggleSharingStateFromABCard;
 - (void)_showContactCardForEntity:(id)arg1 fromView:(id)arg2;
-- (void)_requestCallTypeForEntity:(id)arg1 withAddresses:(id)arg2 withLabels:(id)arg3 faceTimeAudioEnabled:(_Bool)arg4;
 - (id)avatarView:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)detailsAddGroupNameView:(id)arg1 didCommitGroupName:(id)arg2;
 - (void)presentLeaveActionSheetFromView:(id)arg1;
 - (void)_presentRemoveRecipientSheetForHandle:(id)arg1 fromView:(id)arg2;
-- (void)contactsManager:(id)arg1 didRequestCallTypeForEntity:(id)arg2 addresses:(id)arg3 abLabels:(id)arg4 faceTimeAudioEnabled:(_Bool)arg5;
+- (void)_hideAllContactCellButtons;
 - (void)contactsManagerViewModelsDidChange:(id)arg1;
 - (void)adjustContentOffsetReloadingSharedAssetsContentViewCell;
 - (void)readReceiptsSwitchValueChanged:(id)arg1;
 - (void)doNotDisturbValueChange:(id)arg1;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
+- (_Bool)isGroupPhotoEnabled;
 - (void)handleCancelAction:(id)arg1;
 - (void)handleDoneAction:(id)arg1;
-- (void)presentGroupRecipientSelectionController;
+- (void)presentGroupRecipientSelectionControllerAtIndexPath:(id)arg1;
 - (void)collapseContactsSection;
 - (void)expandContactsSection;
 - (_Bool)conversationHasLeft;
@@ -128,14 +160,16 @@
 - (_Bool)shouldShowActiveDeviceSwitchFooter;
 - (_Bool)shouldShowFMFView;
 - (_Bool)isContactsSectionCollapsible;
+- (_Bool)shouldShowGroupCount;
 - (long long)visibleContactsRows;
 - (_Bool)_canLeaveConversation;
+- (_Bool)conversationIsGroupSMS;
 - (_Bool)_fmfExpirationDateIsValid;
 - (id)currentlyActiveFMFDevice;
 - (void)updateTimedFMFState;
 - (void)handleFriendshipStatusChanged:(id)arg1;
 - (void)handleActiveDeviceChanged:(id)arg1;
-- (void)presentSharingActionSheetCurrentlySharing:(_Bool)arg1 fromView:(id)arg2;
+- (id)locationShareMenu;
 - (void)sendCurrentLocation;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
@@ -153,8 +187,12 @@
 - (id)_conversationOfferTimeExpiration;
 - (id)_tableViewCellForSharingLocation:(_Bool)arg1;
 - (id)_tableViewCellForSendLocation;
-- (id)locationShareCellForIndexPath:(id)arg1;
-- (void)_configureSeparatorForCell:(id)arg1 indexPath:(id)arg2;
+- (id)locationShareCellForIndexPathRow:(long long)arg1;
+- (void)_configureSeparatorForContactCell:(id)arg1 indexPath:(id)arg2;
+- (void)groupCellDidTapPhoneButton:(id)arg1;
+- (void)groupCellDidTapFaceTimeVideoButton:(id)arg1;
+- (void)contactsCell:(id)arg1 didHoverWithState:(long long)arg2;
+- (id)screenSharingButtonContextMenuForCell:(id)arg1;
 - (void)contactsCellDidTapFaceTimeVideoButton:(id)arg1;
 - (void)contactsCellDidTapMessagesButton:(id)arg1;
 - (void)contactsCellDidTapPhoneButton:(id)arg1;
@@ -162,24 +200,41 @@
 - (long long)rowForAddMemberCell;
 - (long long)rowForShowMoreContactsCell;
 - (id)contactsManagerCellForIndexPath:(id)arg1;
+- (id)groupCountCellForIndexPath:(id)arg1;
 - (void)initializeBusinessInfoViewIfNecessary;
 - (void)initializeLocationSharingTextViewIfNecessary;
 - (id)fmfViewControllerCellForIndexPath:(id)arg1;
 - (id)groupNameCellForIndexPath:(id)arg1;
+- (id)groupPhotoCellForIndexPath:(id)arg1;
+- (id)setupGroupIdentityActionsForChat:(id)arg1;
+- (void)openInContacts;
+- (id)screenShareContextMenuForEntity:(id)arg1;
+- (id)emailAddressesForChat:(id)arg1;
+- (id)contactsInChat:(id)arg1 forContactsKeyDescriptors:(id)arg2;
 - (id)simTypeCellForIndexPath:(id)arg1;
 - (id)leaveCellForIndexPath:(id)arg1;
 - (void)_updateDownloadFooterView;
 - (id)downloadAttachmentsFooterViewForSection:(long long)arg1;
 - (id)businessInfoFooterViewForSection:(long long)arg1;
 - (id)locationFooterViewForSection:(long long)arg1;
+- (void)_chatParticipantsChangedNotification:(id)arg1;
+- (void)_handleGroupDisplayNameChanged:(id)arg1;
+- (void)_handleGroupPhotoChanged:(id)arg1;
+- (void)contentSizeCategoryDidChange:(id)arg1;
+- (void)_handleAddressBookChanged:(id)arg1;
 - (void)_lastAddressedHandleUpdateNotification:(id)arg1;
 - (void)showMapkitBusinessData;
+- (void)shareLocationAction;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
+- (_Bool)_canRemoveRecipientAtIndexPath:(id)arg1;
+- (double)calculateHeightForLocationSharingFooter;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (id)_menuConfigForContactsCell:(id)arg1;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (_Bool)shouldDisplayFooterForSection:(unsigned long long)arg1;
@@ -188,7 +243,15 @@
 - (double)_heightForAuxContactCellAtindexPath:(id)arg1;
 - (double)_heightForContactCellAtIndexPath:(id)arg1;
 - (unsigned long long)_countOfContactViewModels;
+- (id)simCellText:(id)arg1;
+- (id)labelForChat;
+- (double)calculateHeightForSIMLabelCell;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
+- (double)calculateHeightForGroupPhotoHeader;
+- (id)screenSharingActionView;
+- (void)updateScreenSharingStatusAndViews;
+- (void)configureGroupPhotoHeaderForCell:(id)arg1;
+- (id)_groupPhotoHeaderRequiredContactKeys;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -198,12 +261,19 @@
 - (void)_handleKeyboardWillHideNotification:(id)arg1;
 - (void)_handleKeyboardWillShowNotification:(id)arg1;
 - (void)handleDoneButton:(id)arg1;
+- (_Bool)isGroupChat;
+- (struct CGSize)computedPreferredContentSize;
 - (id)inputAccessoryViewController;
 - (_Bool)canBecomeFirstResponder;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
+- (void)updateManualScrollEdgeProgress;
+- (void)scrollViewDidScroll:(id)arg1;
+- (id)defaultNavBarAppearance;
+- (id)transparentNavBarAppearance;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithConversation:(id)arg1;

@@ -16,6 +16,7 @@
     NSArray *mInfos;
     NSArray *mTopLevelReps;
     NSSet *mAllReps;
+    NSArray *mAllRepsOrdered;
     struct __CFDictionary *mRepsByLayout;
     TSDLayoutController *mLayoutController;
     _Bool mIsTemporaryForLayout;
@@ -38,6 +39,7 @@
     _Bool pInTearDown;
 }
 
++ (void)p_recursivelyAddOrderedChildrenOfRep:(id)arg1 toArray:(id)arg2;
 @property(readonly, nonatomic) _Bool isTemporaryForLayout; // @synthesize isTemporaryForLayout=mIsTemporaryForLayout;
 @property(nonatomic) double viewScale; // @synthesize viewScale=mViewScale;
 @property(nonatomic) struct CGSize unscaledSize; // @synthesize unscaledSize=mUnscaledSize;
@@ -99,6 +101,7 @@
 - (void)invalidateReps;
 - (void)layoutInvalidated;
 - (void)recreateAllLayoutsAndReps;
+@property(readonly, nonatomic) NSArray *allRepsOrdered;
 - (id)allReps;
 - (id)topLevelReps;
 - (id)repForLayout:(id)arg1;

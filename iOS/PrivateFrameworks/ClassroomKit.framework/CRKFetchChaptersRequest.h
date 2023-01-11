@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskRequest.h"
+#import <DeviceManagement/CATTaskRequest.h>
 
 @class NSString;
 
@@ -17,10 +17,10 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *identifierType; // @synthesize identifierType=_identifierType;
 @property(copy, nonatomic) NSString *path; // @synthesize path=_path;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isValidWithError:(id *)arg1;

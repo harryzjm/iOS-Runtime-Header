@@ -8,7 +8,7 @@
 
 #import <DataDetectorsUI/UIActionSheetDelegate-Protocol.h>
 
-@class DDActionController, NSMapTable, NSOperationQueue, NSString;
+@class BCSBusinessQueryService, DDActionController, NSMapTable, NSOperationQueue, NSString;
 @protocol DDDetectionControllerDelegate, OS_dispatch_queue;
 
 @interface DDDetectionController : NSObject <UIActionSheetDelegate>
@@ -20,19 +20,26 @@
     NSMapTable *_containerToResultsTable;
     NSMapTable *_containerToContextsTable;
     DDActionController *_actionController;
+    BCSBusinessQueryService *_bizService;
     NSObject<DDDetectionControllerDelegate> *_delegate;
 }
 
++ (id)lightUnderlineColorFromTextColor:(id)arg1;
++ (id)filterResults:(id)arg1 forTypes:(unsigned long long)arg2 referenceDate:(id)arg3 referenceTimeZone:(id)arg4;
++ (unsigned long long)allPublicTypes;
 + (id)barcodeContext:(id)arg1 preview:(_Bool)arg2 contact:(id)arg3 ics:(id)arg4;
 + (_Bool)_shouldConsiderResultForCoreRecents:(struct __DDResult *)arg1;
 + (CDUnknownBlockType)messagesActionHandler;
 + (void)setMessagesActionHandler:(CDUnknownBlockType)arg1;
 + (id)tapAndHoldSchemes;
 + (id)sharedController;
-@property(nonatomic) __weak NSObject<DDDetectionControllerDelegate> *delegate; // @synthesize delegate=_delegate;
++ (id)updateContext:(id)arg1 forResult:(struct __DDResult *)arg2 atIndex:(unsigned long long)arg3 ofStorage:(id)arg4;
 - (void).cxx_destruct;
+@property(nonatomic) __weak NSObject<DDDetectionControllerDelegate> *delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) BCSBusinessQueryService *_bizService; // @synthesize _bizService;
 - (id)barcodePreviewActionForContext:(id)arg1 URL:(id)arg2 result:(struct __DDResult *)arg3 contact:(id)arg4 ics:(id)arg5;
 - (id)barcodeActionsForContext:(id)arg1 URL:(id)arg2 result:(struct __DDResult *)arg3 contact:(id)arg4 ics:(id)arg5;
+- (id)_businessItemForNumber:(id)arg1 messageable:(_Bool *)arg2;
 - (_Bool)_phoneNumberIsABusinessNumber:(id)arg1 messageable:(_Bool *)arg2;
 - (id)_phoneNumberFromResult:(struct __DDResult *)arg1;
 - (_Bool)_checkIfBusinessWithResult:(struct __DDResult *)arg1 messageable:(_Bool *)arg2;

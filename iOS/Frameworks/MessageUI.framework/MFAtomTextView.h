@@ -57,6 +57,7 @@
 + (id)defaultFont;
 + (Class)_backgroundViewClass;
 + (Class)_fieldEditorClass;
+- (void).cxx_destruct;
 @property(nonatomic, getter=_drawsDebugBaselines, setter=_setDrawsDebugBaselines:) _Bool drawsDebugBaselines; // @synthesize drawsDebugBaselines=_drawsDebugBaselines;
 @property(nonatomic) struct NSDirectionalEdgeInsets clearButtonInsets; // @synthesize clearButtonInsets=_clearButtonInsets;
 @property(nonatomic) long long clearButtonMode; // @synthesize clearButtonMode=_clearButtonMode;
@@ -73,7 +74,6 @@
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(nonatomic) __weak id <MFAtomTextViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)isFirstResponder;
 - (_Bool)resignFirstResponder;
@@ -199,6 +199,7 @@
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
@@ -206,6 +207,7 @@
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property(readonly, nonatomic) UITextPosition *beginningOfDocument; // @dynamic beginningOfDocument;
 @property(nonatomic) _Bool contentsIsSingleValue;
+@property(readonly, nonatomic) long long cursorBehavior;
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
@@ -242,6 +244,7 @@
 @property(readonly, nonatomic) UITextRange *markedTextRange; // @dynamic markedTextRange;
 @property(copy, nonatomic) NSDictionary *markedTextStyle; // @dynamic markedTextStyle;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
@@ -260,6 +263,7 @@
 @property(nonatomic) long long smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;

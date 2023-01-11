@@ -28,6 +28,8 @@
     struct CGImage *_thumbnailIfAvailable;
     struct CGImage *_largeThumbnailIfAvailable;
     NSDictionary *_metadataIfAvailable;
+    unsigned long long _privMetadataState;
+    unsigned long long _privThumbnailState;
     CDUnknownBlockType _completionBlock;
     CDUnknownBlockType _completionBlock_deprecated;
     CDUnknownBlockType _downloadCompletionBlock;
@@ -51,6 +53,8 @@
 @property(copy) CDUnknownBlockType completionBlock_deprecated; // @synthesize completionBlock_deprecated=_completionBlock_deprecated;
 @property(copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(nonatomic) unsigned int objectHandle; // @synthesize objectHandle=_objectHandle;
+@property(nonatomic) unsigned long long privThumbnailState; // @synthesize privThumbnailState=_privThumbnailState;
+@property(nonatomic) unsigned long long privMetadataState; // @synthesize privMetadataState=_privMetadataState;
 @property(readonly) NSDictionary *metadataIfAvailable; // @synthesize metadataIfAvailable=_metadataIfAvailable;
 @property(readonly) struct CGImage *largeThumbnailIfAvailable; // @synthesize largeThumbnailIfAvailable=_largeThumbnailIfAvailable;
 @property(readonly) struct CGImage *thumbnailIfAvailable; // @synthesize thumbnailIfAvailable=_thumbnailIfAvailable;
@@ -78,6 +82,10 @@
 @property(readonly, nonatomic) struct CGImage *thumbnail;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)dealloc;
+@property(readonly) unsigned long long thumbnailState;
+- (void)setThumbnailState:(unsigned long long)arg1;
+@property(readonly) unsigned long long metadataState;
+- (void)setMetadataState:(unsigned long long)arg1;
 - (long long)compareCameraItem:(id)arg1;
 - (void)setObjectID:(unsigned long long)arg1;
 - (void)setTwinID:(unsigned long long)arg1;

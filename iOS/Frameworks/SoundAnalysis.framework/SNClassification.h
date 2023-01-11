@@ -6,27 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNConfidenceProvidingWritable-Protocol.h>
 
 @class NSString;
 
-@interface SNClassification : NSObject <SNConfidenceProvidingWritable>
+@interface SNClassification : NSObject <NSCopying, NSSecureCoding, SNConfidenceProvidingWritable>
 {
     NSString *_identifier;
     double _confidence;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)new;
+- (void).cxx_destruct;
 @property(nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToClassification:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_init;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

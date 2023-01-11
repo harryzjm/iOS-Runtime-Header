@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) unsigned int regionCount;
 @property(readonly, nonatomic) unsigned int zoneCount;
 @property(readonly, nonatomic) VMUClassInfoMap *realizedClasses;
+@property(readonly, nonatomic) unsigned int kernelPageSize;
 @property(readonly, nonatomic) unsigned int vmPageSize;
 @property(readonly, nonatomic) _Bool is64bit;
 @property(readonly, nonatomic) int pid;

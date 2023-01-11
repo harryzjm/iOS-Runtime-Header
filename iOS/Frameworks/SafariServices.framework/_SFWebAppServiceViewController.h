@@ -5,11 +5,12 @@
 //
 
 #import <SafariServices/SFWebAppServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/WBSDigitalHealthManagerDelegate-Protocol.h>
+#import <SafariServices/_SFMediaRecordingDocument-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSMutableArray, NSString, NSURL, UIView, UIWebClip, WBSDigitalHealthManager, WKProcessPool, WKWebsiteDataStore;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFApplicationManifestFetcher, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
 
-@interface _SFWebAppServiceViewController <WBSDigitalHealthManagerDelegate, SFWebAppServiceViewControllerProtocol>
+__attribute__((visibility("hidden")))
+@interface _SFWebAppServiceViewController <SFWebAppServiceViewControllerProtocol, _SFMediaRecordingDocument>
 {
     UIWebClip *_webClip;
     UIView *_statusBarBackgroundView;
@@ -18,15 +19,25 @@
     NSMutableArray *_fallbackURLs;
     BKSApplicationStateMonitor *_stateMonitor;
     unsigned int _hostState;
-    NSURL *_currentUsageTrackingURL;
-    WBSDigitalHealthManager *_digitalHealthManager;
+    unsigned long long _mediaStateIconBeforeSuspension;
+    _SFApplicationManifestFetcher *_applicationManifestFetcher;
+    _SFInjectedJavaScriptController *_activityJSController;
+    _SFWebClipMetadataFetcher *_webClipMetadataFetcher;
 }
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
+- (void)_fetchApplicationManifestIfNeeded;
+- (void)statusBarIndicatorTappedWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool audioOnly;
+- (void)muteMediaCapture;
+@property(readonly, nonatomic) NSString *URLString;
+- (void)setMediaStateIcon:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool canOverrideStatusBar;
 - (void)_loadNextFallbackURL;
 - (void)_loadWebClipPageURL:(id)arg1;
+- (id)_canonicalPageURL;
 - (void)_handleHostStateUpdate:(id)arg1;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
@@ -43,24 +54,20 @@
 - (void)webViewControllerDidChangeURL:(id)arg1;
 - (void)webViewController:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)webViewController:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
-- (_Bool)_isURLOutOfScope:(id)arg1;
+- (_Bool)_isURLOutOfScope:(id)arg1 withLoginURLExempted:(_Bool)arg2;
+- (_Bool)_isURLOutOfLegacyScope:(id)arg1 withLoginURLExempted:(_Bool)arg2;
 - (_Bool)_isURLOutOfManifestScope:(id)arg1;
 - (void)webViewController:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (void)_hideDigitalHealthOverlay;
-- (void)_showDigitalHealthOverlay;
-- (void)_updateDigitalHealthTracking;
-- (void)policyDidChangeForDigitalHealthManager:(id)arg1;
-- (id)_digitalHealthManager;
 - (void)webViewControllerDidFirstVisuallyNonEmptyLayout:(id)arg1;
 - (void)webViewControllerDidChangeLoadingState:(id)arg1;
+- (void)webAppWillResignActive;
+- (void)webAppDidBecomeActive;
 - (void)_hostApplicationDidEnterBackground;
-- (_Bool)_shouldCacheWebViewController;
 - (void)setNeedsStatusBarAppearanceUpdate;
 - (long long)preferredStatusBarStyle;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (_Bool)_clientIsWebApp;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

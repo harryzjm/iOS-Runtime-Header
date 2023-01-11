@@ -22,8 +22,12 @@
 @property(readonly, copy, nonatomic) NSURL *baseURL;
 @property(readonly, copy, nonatomic) NSString *source;
 - (void)dealloc;
+- (id)initWithSource:(id)arg1 forWKWebView:(id)arg2 forMainFrameOnly:(_Bool)arg3 includeMatchPatternStrings:(id)arg4 excludeMatchPatternStrings:(id)arg5 baseURL:(id)arg6 level:(long long)arg7 contentWorld:(id)arg8;
+- (id)initWithSource:(id)arg1 forMainFrameOnly:(_Bool)arg2 legacyWhitelist:(id)arg3 legacyBlacklist:(id)arg4 baseURL:(id)arg5 level:(long long)arg6 userContentWorld:(id)arg7;
 - (id)initWithSource:(id)arg1 forMainFrameOnly:(_Bool)arg2 legacyWhitelist:(id)arg3 legacyBlacklist:(id)arg4 baseURL:(id)arg5 userContentWorld:(id)arg6;
 - (id)initWithSource:(id)arg1 forMainFrameOnly:(_Bool)arg2 legacyWhitelist:(id)arg3 legacyBlacklist:(id)arg4 userContentWorld:(id)arg5;
+- (id)initWithSource:(id)arg1 forWKWebView:(id)arg2 forMainFrameOnly:(_Bool)arg3 baseURL:(id)arg4 level:(long long)arg5 userContentWorld:(id)arg6;
+- (id)initWithSource:(id)arg1 forWKWebView:(id)arg2 forMainFrameOnly:(_Bool)arg3 level:(long long)arg4 userContentWorld:(id)arg5;
 - (id)initWithSource:(id)arg1 forMainFrameOnly:(_Bool)arg2;
 
 // Remaining properties

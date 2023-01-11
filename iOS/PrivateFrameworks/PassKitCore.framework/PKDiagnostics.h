@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_createDiagnosticJsonWithDictionary:(id)arg1 hasLibrary:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)saveTransitState:(id)arg1 forPaymentApplication:(id)arg2;
 + (id)_metadataForCardAtURL:(id)arg1;
 + (id)_allPasses;

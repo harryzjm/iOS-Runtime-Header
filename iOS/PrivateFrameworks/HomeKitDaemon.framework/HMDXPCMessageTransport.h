@@ -6,37 +6,41 @@
 
 #import <HMFoundation/HMFMessageTransport.h>
 
-#import <HomeKitDaemon/HMDApplicationMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageTransportDelegate-Protocol.h>
 #import <HomeKitDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class HMDApplicationRegistry, NSMutableSet, NSObject, NSString, NSXPCListener;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class HMDApplicationRegistry, HMDProcessMonitor, HMDXPCMessageCountTracker, NSArray, NSMutableSet, NSObject, NSString, NSXPCInterface, NSXPCListener;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDXPCMessageTransport : HMFMessageTransport <NSXPCListenerDelegate, HMDApplicationMonitorDelegate, HMFLogging, HMFMessageTransportDelegate>
+@interface HMDXPCMessageTransport : HMFMessageTransport <NSXPCListenerDelegate, HMFLogging, HMFMessageTransportDelegate>
 {
+    id <HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
-    HMDApplicationRegistry *_applicationRegistry;
+    NSMutableSet *_connections;
+    NSXPCInterface *_exportedInterface;
+    NSXPCInterface *_remoteObjectInterface;
+    HMDXPCMessageCountTracker *_xpcCounterTracker;
+    HMDProcessMonitor *_processMonitor;
     NSXPCListener *_listener;
-    NSMutableSet *_xpcClients;
-    NSObject<OS_dispatch_group> *_activeMessageTracker;
 }
 
 + (id)logCategory;
 + (id)defaultTransport;
-@property(retain, nonatomic) NSObject<OS_dispatch_group> *activeMessageTracker; // @synthesize activeMessageTracker=_activeMessageTracker;
-@property(retain, nonatomic) NSMutableSet *xpcClients; // @synthesize xpcClients=_xpcClients;
-@property(readonly) NSXPCListener *listener; // @synthesize listener=_listener;
-@property(readonly) HMDApplicationRegistry *applicationRegistry; // @synthesize applicationRegistry=_applicationRegistry;
 - (void).cxx_destruct;
+@property(readonly) NSXPCListener *listener; // @synthesize listener=_listener;
+@property(readonly) HMDProcessMonitor *processMonitor; // @synthesize processMonitor=_processMonitor;
+- (id)dumpState;
+- (void)resetCounters;
+- (void)submitCounters;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
-- (void)applicationMonitorDidChangeActiveHomeKitAppStatus:(_Bool)arg1;
-- (void)applicationMonitorDidChangeAppState:(id)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)activeRequests;
+@property(readonly, copy) NSArray *connections;
 - (_Bool)stop;
 - (_Bool)start;
+@property(readonly) HMDApplicationRegistry *applicationRegistry;
 - (id)init;
 
 // Remaining properties

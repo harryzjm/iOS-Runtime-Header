@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <Email/EFCacheable-Protocol.h>
 #import <Email/EMCollectionItemID-Protocol.h>
 
 @class NSString;
 
-@interface EMMessageCollectionItemID : NSObject <EMCollectionItemID>
+@interface EMMessageCollectionItemID : NSObject <EFCacheable, EMCollectionItemID>
 {
+    long long _globalMessageID;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)messageCollectionItemIDForMessageIDHeaderHash:(id)arg1 mailboxScope:(id)arg2;
-+ (id)messageCollectionItemIDForDatabaseID:(long long)arg1;
-- (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) long long globalMessageID; // @synthesize globalMessageID=_globalMessageID;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithGlobalMessageID:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+- (id)cachedSelf;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

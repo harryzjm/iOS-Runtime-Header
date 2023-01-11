@@ -8,31 +8,33 @@
 
 #import <WorkflowUI/WFModuleTitleViewDelegate-Protocol.h>
 
-@class NSString, UIButton, WFAction, WFDragController, WFDragGestureRecognizer, WFModuleTitleView;
-@protocol WFActionDrawerActionTableViewCellDelegate;
+@class NSString, UIButton, UIViewController, WFAction, WFActionDrawerCoordinator, WFDragController, WFDragGestureRecognizer, WFModuleTitleView;
 
 @interface WFActionDrawerActionTableViewCell : UITableViewCell <WFModuleTitleViewDelegate>
 {
     WFAction *_action;
+    WFActionDrawerCoordinator *_coordinator;
+    UIViewController *_viewController;
     WFDragGestureRecognizer *_dragRecognizer;
-    id <WFActionDrawerActionTableViewCellDelegate> _delegate;
+    WFDragController *_dragController;
     WFModuleTitleView *_titleView;
     UIButton *_infoButton;
 }
 
 + (double)preferredHeight;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property(readonly, nonatomic) __weak WFModuleTitleView *titleView; // @synthesize titleView=_titleView;
-@property(nonatomic) __weak id <WFActionDrawerActionTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) __weak WFDragGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
-@property(readonly, nonatomic) WFAction *action; // @synthesize action=_action;
-- (void).cxx_destruct;
+@property(retain, nonatomic) WFDragController *dragController; // @synthesize dragController=_dragController;
+@property(retain, nonatomic) WFDragGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
+@property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
+@property(nonatomic) __weak WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
+@property(retain, nonatomic) WFAction *action; // @synthesize action=_action;
 - (void)infoButtonPressed;
 - (_Bool)isAccessibilityElement;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
-- (void)configureWithAction:(id)arg1;
-@property(readonly, nonatomic) WFDragController *dragController;
+- (void)configureWithAction:(id)arg1 coordinator:(id)arg2 viewController:(id)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties

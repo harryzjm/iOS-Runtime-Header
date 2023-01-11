@@ -6,7 +6,11 @@
 
 #import <CarPlayServices/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol CRSAppHistoryClientToServerInterface <NSObject>
+- (void)fetchSessionFeatureKeysWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)setSessionFeatureKeys:(NSArray *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)fetchSessionEchoContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchSessionUIContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchUIContextStatesWithCompletion:(void (^)(NSArray *, NSError *))arg1;

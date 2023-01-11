@@ -8,19 +8,36 @@
 
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface _UISheetPresentationControllerConfiguration : NSObject <NSSecureCoding>
 {
     _Bool __wantsFullScreen;
+    _Bool __wantsBottomAttachedInCompactHeight;
+    _Bool __widthFollowsPreferredContentSizeWhenBottomAttached;
+    _Bool __prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
     long long __mode;
+    NSArray *__detents;
+    long long __indexOfCurrentDetent;
+    long long __indexOfLastUndimmedDetent;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)_fullScreenConfiguration;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setPrefersScrollingExpandsToLargerDetentWhenScrolledToEdge:) _Bool _prefersScrollingExpandsToLargerDetentWhenScrolledToEdge; // @synthesize _prefersScrollingExpandsToLargerDetentWhenScrolledToEdge=__prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
+@property(nonatomic, setter=_setIndexOfLastUndimmedDetent:) long long _indexOfLastUndimmedDetent; // @synthesize _indexOfLastUndimmedDetent=__indexOfLastUndimmedDetent;
+@property(nonatomic, setter=_setIndexOfCurrentDetent:) long long _indexOfCurrentDetent; // @synthesize _indexOfCurrentDetent=__indexOfCurrentDetent;
+@property(copy, nonatomic, setter=_setDetents:) NSArray *_detents; // @synthesize _detents=__detents;
 @property(nonatomic, setter=_setMode:) long long _mode; // @synthesize _mode=__mode;
+@property(nonatomic, setter=_setWidthFollowsPreferredContentSizeWhenBottomAttached:) _Bool _widthFollowsPreferredContentSizeWhenBottomAttached; // @synthesize _widthFollowsPreferredContentSizeWhenBottomAttached=__widthFollowsPreferredContentSizeWhenBottomAttached;
+@property(nonatomic, setter=_setWantsBottomAttachedInCompactHeight:) _Bool _wantsBottomAttachedInCompactHeight; // @synthesize _wantsBottomAttachedInCompactHeight=__wantsBottomAttachedInCompactHeight;
 @property(nonatomic, setter=_setWantsFullScreen:) _Bool _wantsFullScreen; // @synthesize _wantsFullScreen=__wantsFullScreen;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)init;
 
 @end
 

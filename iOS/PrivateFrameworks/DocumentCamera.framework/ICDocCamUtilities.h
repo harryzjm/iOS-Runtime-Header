@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)resizedImage:(id)arg1 newSize:(struct CGSize)arg2 interpolationQuality:(int)arg3;
 + (struct CGSize)aspectFitSize:(struct CGSize)arg1 targetSize:(struct CGSize)arg2;
 + (struct CGSize)aspectFillSize:(struct CGSize)arg1 targetSize:(struct CGSize)arg2;
-+ (_Bool)shouldPerformCustomAnimationForTransitionCoordinator:(id)arg1;
++ (_Bool)shouldPerformCustomAnimationForTransitionCoordinator:(id)arg1 window:(id)arg2;
 + (id)buttonFromCopyingValuesFromButton:(id)arg1;
 + (void)prepareForRotationIfNecessaryWithShutterButton:(id)arg1 coodinator:(id)arg2;
 

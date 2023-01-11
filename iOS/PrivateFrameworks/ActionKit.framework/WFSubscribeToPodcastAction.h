@@ -13,7 +13,7 @@
 - (id)errorSubscribingToPodcast:(unsigned int)arg1;
 - (id)genericSubscribeFailedError;
 - (id)contentNotFoundError;
-- (void)subscribeToPodcast:(id)arg1;
+- (void)subscribeToPodcast:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBCardSectionValue-Protocol.h>
 
-@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection;
+@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAttributionFooterCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection, _SFPBWorldMapCardSection;
 
 @interface _SFPBCardSectionValue : PBCodable <_SFPBCardSectionValue, NSSecureCoding>
 {
@@ -51,8 +51,13 @@
     _SFPBMediaRemoteControlCardSection *_mediaRemoteControlCardSection;
     _SFPBMapPlaceCardSection *_mapPlaceCardSection;
     _SFPBCompactRowCardSection *_compactRowCardSection;
+    _SFPBWorldMapCardSection *_worldMapCardSection;
+    _SFPBAttributionFooterCardSection *_attributionFooterCardSection;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBAttributionFooterCardSection *attributionFooterCardSection; // @synthesize attributionFooterCardSection=_attributionFooterCardSection;
+@property(retain, nonatomic) _SFPBWorldMapCardSection *worldMapCardSection; // @synthesize worldMapCardSection=_worldMapCardSection;
 @property(retain, nonatomic) _SFPBCompactRowCardSection *compactRowCardSection; // @synthesize compactRowCardSection=_compactRowCardSection;
 @property(retain, nonatomic) _SFPBMapPlaceCardSection *mapPlaceCardSection; // @synthesize mapPlaceCardSection=_mapPlaceCardSection;
 @property(retain, nonatomic) _SFPBMediaRemoteControlCardSection *mediaRemoteControlCardSection; // @synthesize mediaRemoteControlCardSection=_mediaRemoteControlCardSection;
@@ -91,7 +96,6 @@
 @property(retain, nonatomic) _SFPBKeyValueDataCardSection *keyValueDataCardSection; // @synthesize keyValueDataCardSection=_keyValueDataCardSection;
 @property(retain, nonatomic) _SFPBDescriptionCardSection *descriptionCardSection; // @synthesize descriptionCardSection=_descriptionCardSection;
 @property(retain, nonatomic) _SFPBAppLinkCardSection *appLinkCardSection; // @synthesize appLinkCardSection=_appLinkCardSection;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

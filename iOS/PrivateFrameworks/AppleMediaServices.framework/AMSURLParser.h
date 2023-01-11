@@ -18,13 +18,22 @@
 }
 
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
-@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
+- (void)_waitForPromises:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (_Bool)_matchURL:(id)arg1 toPatterns:(id)arg2;
+- (id)_legacyWebAllowedForURL:(id)arg1;
+- (id)_dynamicUIAllowedForURL:(id)arg1;
+- (id)_defaultWebAllowedForURL:(id)arg1;
+- (id)_commerceUIArrayForKey:(id)arg1;
 - (id)bagContract;
 - (id)initWithBagContract:(id)arg1;
+- (id)typeForURL:(id)arg1;
+- (id)typeForCommerceUIURL:(id)arg1;
 - (id)isCommerceUIURL:(id)arg1;
 - (id)initWithBag:(id)arg1;
 

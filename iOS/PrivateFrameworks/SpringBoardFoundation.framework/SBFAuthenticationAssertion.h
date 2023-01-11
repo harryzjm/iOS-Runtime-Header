@@ -19,12 +19,11 @@
     SBFUserAuthenticationController *_controller;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak SBFUserAuthenticationController *controller; // @synthesize controller=_controller;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (void)invalidate;
-- (void)deactivate;
 - (void)activate;
 @property(readonly, nonatomic, getter=isValid) _Bool valid; // @dynamic valid;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

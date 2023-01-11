@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (Class)loadNeuralNetworkClass:(_Bool)arg1;
 - (Class)classForCompilingModelType:(int)arg1;
 - (Class)classForLoadingModelType:(int)arg1 isUpdatable:(_Bool)arg2;
 - (Class)classForLoadingModelType:(int)arg1;

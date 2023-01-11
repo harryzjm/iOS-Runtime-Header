@@ -6,9 +6,10 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSDateInterval, NSString;
+@class CLCircularRegion, NSArray, NSDateInterval, NSString;
 
 @protocol PGGraphIngestBusiness <NSObject>
+@property(readonly, nonatomic) CLCircularRegion *region;
 @property(readonly, nonatomic) _Bool hasRoutineVisit;
 @property(readonly, nonatomic) double routineVisitConfidence;
 @property(readonly, nonatomic) NSDateInterval *dateInterval;

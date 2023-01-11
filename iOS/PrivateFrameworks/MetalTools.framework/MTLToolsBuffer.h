@@ -6,15 +6,13 @@
 
 #import <MetalTools/MTLBuffer-Protocol.h>
 
-@class MTLToolsPointerArray, NSString;
+@class NSString;
 @protocol MTLDevice, MTLHeap;
 
 @interface MTLToolsBuffer <MTLBuffer>
 {
-    MTLToolsPointerArray *_textures;
 }
 
-@property(readonly, nonatomic) MTLToolsPointerArray *textures; // @synthesize textures=_textures;
 - (struct __IOSurface *)iosurface;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3;
 - (void)removeAllDebugMarkers;
@@ -22,9 +20,8 @@
 - (id)newLinearTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4;
 - (void)didModifyRange:(struct _NSRange)arg1;
 - (void *)contents;
+- (unsigned long long)gpuAddress;
 @property(readonly) unsigned long long length;
-- (void)acceptVisitor:(id)arg1;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
 

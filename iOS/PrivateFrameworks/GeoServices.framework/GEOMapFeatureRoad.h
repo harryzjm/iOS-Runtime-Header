@@ -8,7 +8,7 @@
 
 @interface GEOMapFeatureRoad
 {
-    CDStruct_c8b5ad3f *_feature;
+    CDStruct_4da79865 *_feature;
     unsigned long long _roadID;
     GEOMapFeatureJunction *_junctionA;
     GEOMapFeatureJunction *_junctionB;
@@ -16,11 +16,13 @@
     _Bool _checkedJunctionB;
 }
 
-+ (double)estimatedWidthForRoad:(CDStruct_c8b5ad3f *)arg1;
++ (double)estimatedWidthForRoad:(CDStruct_4da79865 *)arg1;
 - (void).cxx_destruct;
 - (CDStruct_6e3f967a *)_tilePointsForSection:(unsigned long long)arg1 withCount:(out unsigned long long *)arg2;
 - (id)_attributes;
 - (id)_containingTile;
+- (int)_flippedBikeLaneSideFor:(int)arg1;
+- (int)_flippedBikeableSideFor:(int)arg1;
 - (int)_flippedSidewalkSideFor:(int)arg1;
 - (int)_flippedWalkableSideFor:(int)arg1;
 - (id)_junctionB;
@@ -32,6 +34,8 @@
 @property(readonly, nonatomic) _Bool isRail;
 @property(readonly, nonatomic) _Bool isBridge;
 @property(readonly, nonatomic) _Bool isTunnel;
+@property(readonly, nonatomic) int bikeLaneSide;
+@property(readonly, nonatomic) int bikeableSide;
 @property(readonly, nonatomic) int sidewalkSide;
 @property(readonly, nonatomic) int walkableSide;
 @property(readonly, nonatomic) _Bool isRoadPedestrianNavigable;
@@ -50,10 +54,10 @@
 - (id)debugDescription;
 @property(readonly, nonatomic) _Bool isFlipped;
 @property(readonly, nonatomic) unsigned long long featureIndex;
-@property(readonly, nonatomic) CDStruct_c8b5ad3f *feature;
+@property(readonly, nonatomic) CDStruct_4da79865 *feature;
 @property(readonly, nonatomic) struct _GEOTileKey tileKey;
 - (void)dealloc;
-- (id)initWithFeature:(CDStruct_c8b5ad3f *)arg1;
+- (id)initWithFeature:(CDStruct_4da79865 *)arg1;
 - (void)updateForDesiredRoadDirectionality:(unsigned long long)arg1 isOutboundRoad:(_Bool)arg2;
 
 @end

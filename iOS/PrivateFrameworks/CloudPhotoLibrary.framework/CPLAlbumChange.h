@@ -7,7 +7,7 @@
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface CPLAlbumChange <NSSecureCoding, NSCopying>
 {
@@ -18,15 +18,21 @@
     long long _position;
     NSString *_parentIdentifier;
     unsigned long long _albumSortType;
+    NSString *_projectDocumentType;
+    NSData *_projectData;
+    NSData *_projectPreviewImageData;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSData *projectPreviewImageData; // @synthesize projectPreviewImageData=_projectPreviewImageData;
+@property(copy, nonatomic) NSData *projectData; // @synthesize projectData=_projectData;
+@property(copy, nonatomic) NSString *projectDocumentType; // @synthesize projectDocumentType=_projectDocumentType;
 @property(nonatomic) _Bool albumSortAscending; // @synthesize albumSortAscending=_albumSortAscending;
 @property(nonatomic) unsigned long long albumSortType; // @synthesize albumSortType=_albumSortType;
 @property(copy, nonatomic) NSString *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property(nonatomic) long long position; // @synthesize position=_position;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) unsigned long long albumType; // @synthesize albumType=_albumType;
-- (void).cxx_destruct;
 - (id)propertiesDescription;
 - (void)setRelatedIdentifier:(id)arg1;
 - (id)relatedIdentifier;

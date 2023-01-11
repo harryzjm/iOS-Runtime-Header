@@ -9,11 +9,13 @@
 #import <CoreSpeech/AVVoiceControllerRecordDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioDecoderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioFileReaderDelegate-Protocol.h>
+#import <CoreSpeech/CSAudioServerCrashEventProviding-Protocol.h>
+#import <CoreSpeech/CSAudioSessionEventProviding-Protocol.h>
 
 @class AVVoiceController, CSAudioFileReader, CSRemoteRecordClient, NSDictionary, NSHashTable, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@protocol CSAudioServerCrashEventProvidingDelegate, CSAudioSessionEventProvidingDelegate, OS_dispatch_queue;
 
-@interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, CSAudioDecoderDelegate, CSAudioFileReaderDelegate>
+@interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, CSAudioDecoderDelegate, CSAudioFileReaderDelegate, CSAudioServerCrashEventProviding, CSAudioSessionEventProviding>
 {
     AVVoiceController *_voiceController;
     struct OpaqueAudioConverter *_deinterleaver;
@@ -26,15 +28,22 @@
     CSAudioFileReader *_audioFileReader;
     unsigned long long _audioFilePathIndex;
     _Bool _waitingForDidStart;
+    unsigned long long _pendingTwoShotVTToken;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_voiceControllerCreationQueue;
     NSHashTable *_observers;
+    id <CSAudioServerCrashEventProvidingDelegate> _crashEventDelegate;
+    id <CSAudioSessionEventProvidingDelegate> _sessionEventDelegate;
 }
 
 + (void)createSharedAudioSession;
 + (unsigned long long)_convertDeactivateOption:(unsigned long long)arg1;
-@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CSAudioSessionEventProvidingDelegate> sessionEventDelegate; // @synthesize sessionEventDelegate=_sessionEventDelegate;
+@property(nonatomic) __weak id <CSAudioServerCrashEventProvidingDelegate> crashEventDelegate; // @synthesize crashEventDelegate=_crashEventDelegate;
+@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *voiceControllerCreationQueue; // @synthesize voiceControllerCreationQueue=_voiceControllerCreationQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (id)_getRecordSettingsWithRequest:(id)arg1;
 - (void)audioFileReaderDidStopRecording:(id)arg1 forReason:(long long)arg2;
 - (void)audioFileReaderDidStartRecording:(id)arg1 successfully:(_Bool)arg2 error:(id)arg3;
@@ -73,13 +82,18 @@
 - (void)_processAudioChain:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 remoteVAD:(id)arg3 atTime:(unsigned long long)arg4;
 - (_Bool)_shouldUseRemoteBuiltInMic:(id)arg1;
 - (_Bool)_shouldUseRemoteRecordForContext:(id)arg1;
+- (id)_updateLanguageCodeForRemoteVTEIResult:(id)arg1;
 - (id)voiceTriggerInfo;
 - (id)playbackRoute;
 - (void)configureAlertBehavior:(id)arg1 audioStreamHandleId:(unsigned long long)arg2;
 - (void)enableMiniDucking:(_Bool)arg1;
 @property(nonatomic) _Bool duckOthersOption;
-- (_Bool)deactivateAudioSession:(unsigned long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
+- (void)enableSmartRoutingConsiderationForStream:(unsigned long long)arg1 enable:(_Bool)arg2;
+- (_Bool)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
+- (_Bool)setRecordMode:(long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
+- (void)_logResourceNotAvailableErrorIfNeeded:(id)arg1;
+- (_Bool)_shouldLogResourceNotAvailableError;
 - (_Bool)prewarmAudioSessionWithStreamHandleId:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)isNarrowBandWithStreamHandleId:(unsigned long long)arg1;
 - (id)recordSettingsWithStreamHandleId:(unsigned long long)arg1;
@@ -99,6 +113,8 @@
 - (void)_destroyVoiceController;
 - (void)dealloc;
 - (void)willDestroy;
+- (void)setAudioSessionEventDelegate:(id)arg1;
+- (void)setAudioServerCrashEventDelegate:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (id)initWithQueue:(id)arg1 error:(id *)arg2;

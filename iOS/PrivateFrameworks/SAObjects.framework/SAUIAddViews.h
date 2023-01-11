@@ -16,10 +16,12 @@
 + (id)addViews;
 @property(copy, nonatomic) NSArray *views;
 @property(nonatomic) _Bool temporary;
+@property(nonatomic) _Bool supplemental;
 @property(nonatomic) _Bool scrollToTop;
 @property(nonatomic) _Bool requiresResponse;
 @property(retain, nonatomic) SASendCommands *refreshCommand;
 @property(nonatomic) _Bool mutatingCommand;
+@property(nonatomic) _Bool immersiveExperience;
 @property(copy, nonatomic) NSString *displayTarget;
 @property(copy, nonatomic) NSString *dialogPhase;
 - (id)encodedClassName;

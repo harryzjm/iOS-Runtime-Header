@@ -41,8 +41,11 @@
 + (id)revalidateAvalancheAssets:(id)arg1 inLibrary:(id)arg2 deleteNonPicks:(_Bool)arg3 allowDissolve:(_Bool)arg4;
 + (void)disolveBurstForAssets:(id)arg1 permanently:(_Bool)arg2;
 + (_Bool)isValidBurstWithAssets:(id)arg1;
-+ (unsigned long long)countForNonMPSAssetsWithAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
-+ (id)nonMPSAssetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)supportedSavedAssetTypes;
++ (id)_fetchRequestForAssetsWithAvalancheUUID:(id)arg1;
++ (unsigned long long)countForAssetsWithAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
++ (id)assetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setCompletionHandler:) CDUnknownBlockType _completionHandler; // @synthesize _completionHandler=__completionHandler;
 @property(retain, nonatomic, setter=_setAnOldPick:) PLManagedAsset *_anOldPick; // @synthesize _anOldPick=__anOldPick;
 @property(retain, nonatomic, setter=_setANewPick:) PLManagedAsset *_aNewPick; // @synthesize _aNewPick=__aNewPick;
@@ -55,7 +58,6 @@
 @property(retain, nonatomic) NSOrderedSet *assets; // @synthesize assets=_assets;
 @property(readonly, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *localizedLocationNames;
 @property(readonly, nonatomic) _Bool canShowAvalancheStacks;
 @property(readonly, nonatomic) _Bool canShowComments;

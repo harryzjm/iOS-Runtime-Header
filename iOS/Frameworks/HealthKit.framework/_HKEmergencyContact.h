@@ -23,9 +23,10 @@
     NSString *_relationship;
 }
 
-+ (id)nameForContact:(id)arg1;
++ (id)emergencyContactUsingSimCardNumberWithContact:(id)arg1 property:(id)arg2;
 + (id)emergencyContactWithContact:(id)arg1 property:(id)arg2;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
 @property(copy, nonatomic) NSString *phoneNumberLabel; // @synthesize phoneNumberLabel=_phoneNumberLabel;
 @property(copy, nonatomic) NSString *phoneNumberContactIdentifier; // @synthesize phoneNumberContactIdentifier=_phoneNumberContactIdentifier;
@@ -34,9 +35,9 @@
 @property(copy, nonatomic) NSString *nameContactIdentifier; // @synthesize nameContactIdentifier=_nameContactIdentifier;
 @property(retain, nonatomic) NSNumber *nameRecordID; // @synthesize nameRecordID=_nameRecordID;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)isEqualToSyncedContact:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;

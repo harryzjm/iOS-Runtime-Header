@@ -4,11 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBAlertLayoutPresentationVerifier;
+
 @interface SBAlertItemWindow
 {
+    SBAlertLayoutPresentationVerifier *_alertLayoutPresentationVerifier;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak SBAlertLayoutPresentationVerifier *alertLayoutPresentationVerifier; // @synthesize alertLayoutPresentationVerifier=_alertLayoutPresentationVerifier;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setCenter:(struct CGPoint)arg1;
+- (void)setTransform:(struct CGAffineTransform)arg1;
 - (_Bool)_canBecomeKeyWindow;
+- (id)initWithDebugName:(id)arg1 alertLayoutPresentationVerifier:(id)arg2;
 
 @end
 

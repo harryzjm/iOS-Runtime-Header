@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationInfoHolderOperation
 {
+    int _operationType;
 }
 
+@property(nonatomic) int operationType; // @synthesize operationType=_operationType;
 - (void)main;
+- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2 operationType:(int)arg3;
 
 @end
 

@@ -12,14 +12,20 @@ __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlobVideoRuleCollection : PBCodable <NSCopying>
 {
     unsigned int _formats;
+    unsigned int _formatsExt1;
     int _operation;
     unsigned int _preferredFormat;
+    unsigned int _preferredFormatExt1;
     int _transport;
     struct {
+        unsigned int formatsExt1:1;
         unsigned int preferredFormat:1;
+        unsigned int preferredFormatExt1:1;
     } _has;
 }
 
+@property(nonatomic) unsigned int preferredFormatExt1; // @synthesize preferredFormatExt1=_preferredFormatExt1;
+@property(nonatomic) unsigned int formatsExt1; // @synthesize formatsExt1=_formatsExt1;
 @property(nonatomic) unsigned int preferredFormat; // @synthesize preferredFormat=_preferredFormat;
 @property(nonatomic) unsigned int formats; // @synthesize formats=_formats;
 @property(nonatomic) int operation; // @synthesize operation=_operation;
@@ -33,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasPreferredFormatExt1;
+@property(nonatomic) _Bool hasFormatsExt1;
 @property(nonatomic) _Bool hasPreferredFormat;
 - (int)StringAsOperation:(id)arg1;
 - (id)operationAsString:(int)arg1;

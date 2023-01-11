@@ -51,13 +51,28 @@ __attribute__((visibility("hidden")))
     unsigned int _lastReportedUplinkPacketsReceived;
     unsigned int _lastReportedUplinkPacketsSent;
     unsigned int _lastReportedUplinkBytesSent;
+    unsigned int _videoDegradedTotalCounter;
+    unsigned int _videoDegradedMaxPercentOfParticipant;
+    unsigned int _significantVideoStallMaxPercentOfParticipant;
+    unsigned int _significantAudioErasureMaxPercentOfParticipant;
+    unsigned int _totalDuplicationTicks;
     double _sessionCreatedTime;
     _Bool _isFullsizeUI;
     _Bool _isDuplicationEnabled;
+    unsigned long long _totalCellTxDataBytes;
+    unsigned long long _totalCellRxDataBytes;
+    unsigned long long _totalCellDupTxDataBytes;
+    unsigned long long _totalCellDupRxDataBytes;
 }
 
 - (double)timeWeightedNumberOfParticipants;
 - (double)audioErasureTotalTime;
+- (unsigned short)minVideoFrameRate;
+- (unsigned short)maxJBTargetSizeChanges;
+- (double)avgJBTargetSizeChanges;
+- (double)averageJitterBufferDelay;
+- (unsigned short)maxVideoStallCount;
+- (unsigned short)maxAudioErasureCount;
 - (unsigned int)audioErasureCount;
 - (double)significantVideoStallTotalTime;
 - (unsigned int)significantVideoStallCount;
@@ -66,15 +81,17 @@ __attribute__((visibility("hidden")))
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 - (int)adaptiveLearningState;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (void)updateWRMMetrics:(unsigned int)arg1 payload:(id)arg2;
 - (_Bool)isDuplicationChanged:(_Bool)arg1;
 - (void)processUISizeEventForParticipant:(id)arg1 isFullSize:(_Bool)arg2;
 - (void)processInternalErrorDetectedWithCode:(id)arg1;
 - (void)processVideoDegraded:(_Bool)arg1 participantID:(id)arg2;
+- (unsigned int)currentDegragedParticipantCount;
 - (_Bool)isVideoDegraded;
 - (void)processSessionStart;
 - (void)processSessionInit;
 - (void)processParticipantTimingInfo:(id)arg1;
-- (void)processNumberOfParticipants:(unsigned int)arg1;
+- (void)processStatsForNumberOfParticipants:(unsigned int)arg1;
 - (_Bool)currentUISize;
 - (void)processRTEvent:(id)arg1;
 - (void)processDownlinkBWEstimation:(unsigned int)arg1;
@@ -104,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (id)interfaceTypeIndicator;
 - (void)saveCallSegmentHistory;
 - (id)aggregatedSessionReport;
+- (void)addCellByteCountStats:(id)arg1;
 - (id)aggregatedCallReports;
 - (id)aggregatedSegmentQRReport;
 - (id)aggregatedSegmentReport:(int)arg1;

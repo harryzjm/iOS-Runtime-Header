@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 @interface CRKBlockOperation : CATOperation
 {
@@ -12,8 +12,8 @@
 }
 
 + (id)blockOperationWithBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) CDUnknownBlockType operationBlock; // @synthesize operationBlock=_operationBlock;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDUnknownBlockType operationBlock; // @synthesize operationBlock=_operationBlock;
 - (void)main;
 - (void)cancel;
 - (_Bool)isAsynchronous;

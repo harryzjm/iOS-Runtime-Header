@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDPopularNearbySearchParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSData *_suggestionEntryMetadata;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _maxResults;
     int _searchType;
     struct {
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_searchType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,6 +44,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsSearchType:(id)arg1;
@@ -54,12 +55,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int searchType;
 @property(retain, nonatomic) NSData *suggestionEntryMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-- (void)_readSuggestionEntryMetadata;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(nonatomic) _Bool hasMaxResults;
 @property(nonatomic) unsigned int maxResults;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

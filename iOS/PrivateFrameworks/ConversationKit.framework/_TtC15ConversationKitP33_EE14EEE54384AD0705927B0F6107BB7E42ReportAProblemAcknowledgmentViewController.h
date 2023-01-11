@@ -6,9 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <ConversationKit/MFMessageComposeViewControllerDelegate-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC15ConversationKitP33_EE14EEE54384AD0705927B0F6107BB7E42ReportAProblemAcknowledgmentViewController : UIViewController
+@interface _TtC15ConversationKitP33_EE14EEE54384AD0705927B0F6107BB7E42ReportAProblemAcknowledgmentViewController : UIViewController <MFMessageComposeViewControllerDelegate>
 {
     MISSING_TYPE *conversation;
     MISSING_TYPE *radarIdentifier;
@@ -21,6 +23,7 @@
 @property(nonatomic, readonly) long long preferredStatusBarStyle;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
+- (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 
 @end
 

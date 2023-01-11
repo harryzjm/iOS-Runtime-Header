@@ -5,16 +5,16 @@
 //
 
 #import <HomeUI/HFAccessoryVendor-Protocol.h>
+#import <HomeUI/HFNamedItemBuilder-Protocol.h>
 #import <HomeUI/NSObject-Protocol.h>
 
 @class HFRoomBuilder, NAFuture, NSArray, NSString;
 @protocol HFIconDescriptor;
 
-@protocol HFServiceLikeBuilder <HFAccessoryVendor, NSObject>
+@protocol HFServiceLikeBuilder <HFAccessoryVendor, HFNamedItemBuilder, NSObject>
 @property(retain, nonatomic) HFRoomBuilder *room;
 @property(readonly, nonatomic) _Bool supportsFavoriting;
 @property(readonly, nonatomic) NSString *originalName;
-@property(copy, nonatomic) NSString *name;
 - (NAFuture *)removeItemFromHome;
 
 @optional

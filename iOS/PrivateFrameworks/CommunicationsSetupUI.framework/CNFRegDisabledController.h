@@ -6,6 +6,7 @@
 
 @class PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegDisabledController
 {
     PSSpecifier *_spinner;

@@ -17,12 +17,12 @@
     CDStruct_8e0628e6 _trajectoryHomography;
 }
 
+- (void).cxx_destruct;
 @property(readonly) CDStruct_8e0628e6 trajectoryHomography; // @synthesize trajectoryHomography=_trajectoryHomography;
 @property(readonly) struct CGVector estimatedMotionBlur; // @synthesize estimatedMotionBlur=_estimatedMotionBlur;
 @property(readonly) struct CGVector estimatedCenterMotion; // @synthesize estimatedCenterMotion=_estimatedCenterMotion;
 @property(readonly) NSArray *subjects; // @synthesize subjects=_subjects;
 @property(readonly) CDStruct_1b6d18a9 time; // @synthesize time=_time;
-- (void).cxx_destruct;
 - (void)setTrajectoryHomography:(CDStruct_8e0628e6)arg1;
 - (void)setEstimatedMotionBlur:(struct CGVector)arg1;
 - (void)setEstimatedCenterMotion:(struct CGVector)arg1;

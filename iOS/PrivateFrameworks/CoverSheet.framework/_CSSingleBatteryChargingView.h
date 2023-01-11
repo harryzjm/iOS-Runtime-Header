@@ -15,14 +15,19 @@
     NSArray *_batteryConstraints;
     NSLayoutConstraint *_batteryTopOffset;
     UIImage *_batteryImage;
+    _Bool _horizontalLayoutNeeded;
+    struct CGSize _batterySize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool horizontalLayoutNeeded; // @synthesize horizontalLayoutNeeded=_horizontalLayoutNeeded;
+@property(nonatomic) struct CGSize batterySize; // @synthesize batterySize=_batterySize;
 - (id)_chargePercentFont;
 - (double)_batteryNoseOffset;
 - (void)_layoutBattery;
 - (void)_layoutChargePercentLabel;
 - (void)layoutSubviews;
+- (void)performAnimation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (double)desiredVisibilityDuration;
 - (long long)batteryCount;
 - (void)setBatteryVisible:(_Bool)arg1;

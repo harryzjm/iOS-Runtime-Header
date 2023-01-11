@@ -17,11 +17,15 @@
     NSArray *_healthDataSpecifiers;
     NSArray *_healthRecordsDataSpecifiers;
     NSArray *_wheelchairDataSpecifiers;
+    NSArray *_automatedFeedbackSpecifiers;
+    NSArray *_improveSiriSpecifiers;
 }
 
 + (_Bool)isProblemReportingEnabled;
-@property(nonatomic) _Bool shouldShareHealthRecordsData; // @synthesize shouldShareHealthRecordsData=_shouldShareHealthRecordsData;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *improveSiriSpecifiers; // @synthesize improveSiriSpecifiers=_improveSiriSpecifiers;
+@property(retain, nonatomic) NSArray *automatedFeedbackSpecifiers; // @synthesize automatedFeedbackSpecifiers=_automatedFeedbackSpecifiers;
+@property(nonatomic) _Bool shouldShareHealthRecordsData; // @synthesize shouldShareHealthRecordsData=_shouldShareHealthRecordsData;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)setShouldShareAppActivityWithAppDevelopers:(id)arg1 specifier:(id)arg2;
 - (id)shouldShareAppActivityWithAppDevelopers;
@@ -40,7 +44,6 @@
 - (void)setAutomatedFeedbackEnabled:(id)arg1 specifier:(id)arg2;
 - (id)automatedFeedbackEnabled:(id)arg1;
 - (void)automatedFeedbackLinkTapped;
-- (id)automatedFeedbackSpecifiers;
 - (id)iCloudSpecifiers;
 - (_Bool)shouldShowiCloudSpecifiersForAccount:(id)arg1;
 - (void)setShouldShareiCloudAnalytics:(id)arg1 specifier:(id)arg2;
@@ -59,6 +62,7 @@
 - (void)showAboutHealthDataSheet;
 - (void)showAboutAppAnalyticsSheet;
 - (void)showAboutiCloudAnalyticsSheet;
+- (void)showAboutImproveSiriAnalyticsSheet;
 - (void)showAboutAnalyticsSheet;
 - (void)dismissAboutSheet:(id)arg1;
 - (void)showAboutSheetWithTitle:(id)arg1 content:(id)arg2;

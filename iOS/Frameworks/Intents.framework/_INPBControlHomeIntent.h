@@ -15,7 +15,6 @@
 @interface _INPBControlHomeIntent : PBCodable <_INPBControlHomeIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     NSArray *_contents;
     NSArray *_filters;
     _INPBIntentMetadata *_intentMetadata;
@@ -26,13 +25,12 @@
 + (_Bool)supportsSecureCoding;
 + (Class)filtersType;
 + (Class)contentsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBHomeUserTask *userTask; // @synthesize userTask=_userTask;
 @property(retain, nonatomic) _INPBDateTimeRange *time; // @synthesize time=_time;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;
 @property(copy, nonatomic) NSArray *contents; // @synthesize contents=_contents;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

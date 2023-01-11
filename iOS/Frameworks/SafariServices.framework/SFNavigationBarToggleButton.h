@@ -6,41 +6,43 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIColor, UIImage, UIImageView, UIView;
+#import <SafariServices/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString, SFToggleBackgroundView, UIColor, UIImage, UIImageSymbolConfiguration, UIImageView, UIPointerInteraction, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SFNavigationBarToggleButton : UIButton
+@interface SFNavigationBarToggleButton : UIButton <UIPointerInteractionDelegate>
 {
+    _Bool _liftedForCursor;
+    UIPointerInteraction *_pointerInteraction;
     UIImageView *_defaultStateImageView;
     UIImageView *_selectedStateImageView;
-    UIView *_selectedStateView;
-    _Bool _useStandaloneAppearance;
+    SFToggleBackgroundView *_selectedStateMaskView;
+    UIView *_selectedStateFillView;
+    unsigned long long _inputMode;
     _Bool _drawsLightGlyph;
     _Bool _usesInsetFromBackground;
     _Bool _highlightsBackground;
     UIImage *_image;
     double _resizableBackgroundCornerRadius;
     UIColor *_glyphTintColor;
+    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
 }
 
-+ (id)readerImage;
-+ (id)formatMenuImage;
-+ (struct CGSize)glyphSize;
-@property(nonatomic) _Bool highlightsBackground; // @synthesize highlightsBackground=_highlightsBackground;
-@property(retain, nonatomic) UIColor *glyphTintColor; // @synthesize glyphTintColor=_glyphTintColor;
-@property(nonatomic) _Bool usesInsetFromBackground; // @synthesize usesInsetFromBackground=_usesInsetFromBackground;
-@property(nonatomic) double resizableBackgroundCornerRadius; // @synthesize resizableBackgroundCornerRadius=_resizableBackgroundCornerRadius;
-@property(nonatomic) _Bool drawsLightGlyph; // @synthesize drawsLightGlyph=_drawsLightGlyph;
-@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 - (void).cxx_destruct;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
-- (void)_updateSelectedStateView;
-- (void)_updateDefaultStateImageView;
-- (_Bool)_effectiveHighlightsBackground;
-- (void)_updateImageViews;
 - (void)layoutSubviews;
-- (id)initWithImage:(id)arg1 forInputMode:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -32,6 +32,7 @@
     _Bool _isConnectedToSystem;
     _Bool _visibleInSettings;
     _Bool _connectedToSystem;
+    unsigned short _appearance;
     unsigned int _writesPending;
     id <CBPeripheralDelegate> _delegate;
     NSString *_name;
@@ -42,11 +43,13 @@
     NSString *_BDAddress;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isConnectedToSystem) _Bool connectedToSystem; // @synthesize connectedToSystem=_connectedToSystem;
 @property(readonly) _Bool visibleInSettings; // @synthesize visibleInSettings=_visibleInSettings;
 @property(retain) NSString *BDAddress; // @synthesize BDAddress=_BDAddress;
 @property(readonly, retain, nonatomic) NSHashTable *l2capChannels; // @synthesize l2capChannels=_l2capChannels;
 @property unsigned int writesPending; // @synthesize writesPending=_writesPending;
+@property unsigned short appearance; // @synthesize appearance=_appearance;
 @property _Bool ancsAuthorized; // @synthesize ancsAuthorized=_ancsAuthorized;
 @property _Bool canSendWriteWithoutResponse; // @synthesize canSendWriteWithoutResponse=_canSendWriteWithoutResponse;
 @property(retain) NSArray *services; // @synthesize services=_services;
@@ -54,7 +57,6 @@
 @property(retain) NSNumber *RSSI; // @synthesize RSSI=_RSSI;
 @property(retain) NSString *name; // @synthesize name=_name;
 @property(nonatomic) __weak id <CBPeripheralDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)handleDescriptorValueWritten:(id)arg1;
 - (void)handleDescriptorValueUpdated:(id)arg1;
 - (void)handleCharacteristicDescriptorsDiscovered:(id)arg1;
@@ -81,6 +83,7 @@
 - (void)openL2CAPChannel:(unsigned short)arg1;
 - (void)setHighPriorityStream:(_Bool)arg1 duration:(id)arg2;
 - (void)getTimeSyncData;
+- (void)setVisibleInSettings:(_Bool)arg1;
 - (void)setPeripheralName:(id)arg1;
 - (void)writeValue:(id)arg1 forDescriptor:(id)arg2;
 - (void)readValueForDescriptor:(id)arg1;

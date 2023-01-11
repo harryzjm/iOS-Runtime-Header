@@ -13,9 +13,8 @@
 
 @interface PXPhotoKitEditSourceLoader : NSObject <PXEditSourceLoader>
 {
-    unsigned long long _imageRequestID;
-    _Bool _didBeginLoading;
-    NSDate *_loadingStartDate;
+    unsigned long long _loadingQueue_imageRequestID;
+    NSDate *_mainQueue_loadingStartDate;
     NSProgress *_editSourceCreationProgress;
     NSObject<OS_dispatch_queue> *_loadingQueue;
     _Bool _overcaptureSourceIsActive;
@@ -31,6 +30,7 @@
     PHAsset *_asset;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property(readonly, copy, nonatomic) NSString *livePhotoPairingIdentifier; // @synthesize livePhotoPairingIdentifier=_livePhotoPairingIdentifier;
 @property(readonly, nonatomic) NSNumber *loadDuration; // @synthesize loadDuration=_loadDuration;
@@ -41,9 +41,11 @@
 @property(readonly, copy, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property(readonly, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property(readonly, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) PLEditSource *activeEditSource;
+- (void)_mainQueue_handleEditSource:(id)arg1 overCaptureEditSource:(id)arg2 compositionController:(id)arg3 originalCompositionController:(id)arg4 overCaptureEditSourceIsActive:(_Bool)arg5 error:(id)arg6;
 - (void)_handleContentEditingInputRequestCompletion:(id)arg1 info:(id)arg2 asset:(id)arg3;
+- (void)_cancelContentInputRequest;
+- (void)_resetProgress;
 - (void)_handleCancellation;
 - (void)beginLoading;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier;

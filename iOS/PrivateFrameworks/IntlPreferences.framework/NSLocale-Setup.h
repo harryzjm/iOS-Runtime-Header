@@ -12,9 +12,11 @@
 + (id)_subdivisionCodeFromSubdivisionTag:(id)arg1 restrictedToRegionCode:(id)arg2;
 + (id)displayNameForSelectableScriptCode:(id)arg1;
 + (void)setArchivedPreferences:(id)arg1;
++ (id)archivedPreferencesWithHash:(out id *)arg1;
 + (id)archivedPreferences;
 + (void)unregisterPreferredLanguageForKeyboardLanguage:(id)arg1;
 + (void)registerPreferredLanguageForAddedKeyboardLanguage:(id)arg1;
++ (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1 currentLocale:(id)arg2;
 + (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1;
 + (void)enableDefaultKeyboardForPreferredLanguages;
 + (void)setLanguageToPreferredLanguages:(id)arg1 fallback:(id)arg2;

@@ -13,11 +13,13 @@
 @interface GEOLogMsgEventThrottle : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_manifestEnv;
     NSString *_requestAppIdentifier;
     double _throttleDuration;
     NSString *_throttleReqType;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _networkService;
     unsigned int _throttleCount;
     int _throttleMode;
@@ -37,17 +39,7 @@
         unsigned int read_manifestEnv:1;
         unsigned int read_requestAppIdentifier:1;
         unsigned int read_throttleReqType:1;
-        unsigned int wrote_manifestEnv:1;
-        unsigned int wrote_requestAppIdentifier:1;
-        unsigned int wrote_throttleDuration:1;
-        unsigned int wrote_throttleReqType:1;
-        unsigned int wrote_networkService:1;
-        unsigned int wrote_throttleCount:1;
-        unsigned int wrote_throttleMode:1;
-        unsigned int wrote_throttleTriggerCount:1;
-        unsigned int wrote_throttleTriggerDuration:1;
-        unsigned int wrote_throttleType:1;
-        unsigned int wrote_tilesetId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -61,6 +53,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasThrottleDuration;
@@ -73,7 +68,6 @@
 @property(nonatomic) unsigned int throttleTriggerCount;
 @property(retain, nonatomic) NSString *throttleReqType;
 @property(readonly, nonatomic) _Bool hasThrottleReqType;
-- (void)_readThrottleReqType;
 - (int)StringAsThrottleMode:(id)arg1;
 - (id)throttleModeAsString:(int)arg1;
 @property(nonatomic) _Bool hasThrottleMode;
@@ -86,14 +80,14 @@
 @property(nonatomic) unsigned int tilesetId;
 @property(retain, nonatomic) NSString *manifestEnv;
 @property(readonly, nonatomic) _Bool hasManifestEnv;
-- (void)_readManifestEnv;
 @property(retain, nonatomic) NSString *requestAppIdentifier;
 @property(readonly, nonatomic) _Bool hasRequestAppIdentifier;
-- (void)_readRequestAppIdentifier;
 - (int)StringAsNetworkService:(id)arg1;
 - (id)networkServiceAsString:(int)arg1;
 @property(nonatomic) _Bool hasNetworkService;
 @property(nonatomic) int networkService;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

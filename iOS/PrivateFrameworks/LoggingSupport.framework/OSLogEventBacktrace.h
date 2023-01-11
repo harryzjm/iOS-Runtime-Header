@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) NSArray *frames; // @synthesize frames=_frames;
 - (void)dealloc;
+- (id)initWithFrames:(id)arg1;
 - (id)initWithSingleFrame:(id)arg1;
 - (id)initWithBacktrace:(struct os_log_backtrace_s *)arg1;
 

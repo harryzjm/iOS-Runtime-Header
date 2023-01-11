@@ -10,12 +10,13 @@
 #import <NewsCore/FCFeedTheming-Protocol.h>
 #import <NewsCore/FCSectionProviding-Protocol.h>
 #import <NewsCore/FCTagProviding-Protocol.h>
+#import <NewsCore/FCTagStocksFields-Protocol.h>
 #import <NewsCore/FCTopicProviding-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCHeadlineTemplate, FCInterestToken, FCSubscriptionButtonConfiguration, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
-@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTopicProviding;
+@class FCAssetHandle, FCColor, FCContentColorMap, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
+@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagStocksFields, FCTopicProviding;
 
-@interface FCTag : NSObject <FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming>
+@interface FCTag : NSObject <FCTagStocksFields, FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming>
 {
     _Bool _isPublic;
     _Bool _isDeprecated;
@@ -27,6 +28,10 @@
     _Bool _isHidden;
     _Bool _isRealTimeTrackingEnabled;
     _Bool _isArticleReadCountReportingEnabled;
+    _Bool _isAutoDarkModeEnabled;
+    _Bool _isInternal;
+    _Bool _isSandbox;
+    _Bool _isLocal;
     NSString *_identifier;
     NSString *_versionKey;
     NSString *_name;
@@ -55,7 +60,6 @@
     FCAssetHandle *_logoImageAssetHandle;
     FCAssetHandle *_coverImageAssetHandle;
     FCAssetHandle *_feedNavImageAssetHandle;
-    NSString *_coverArticleListID;
     FCTextInfo *_headlineTitleTextInfo;
     FCTextInfo *_headlineExcerptTextInfo;
     FCTextInfo *_headlineBylineTextInfo;
@@ -79,17 +83,22 @@
     unsigned long long _groupingEligibility;
     NSArray *_publisherSpecifiedArticleIDs;
     NSDate *_publisherSpecifiedArticleIDsModifiedDate;
-    FCSubscriptionButtonConfiguration *_paidBundleSubscriptionButtonConfiguration;
+    FCPaywallConfiguration *_paidBundlePaywallConfiguration;
+    NSString *_supergroupConfigJson;
+    NSString *_supergroupKnobsJson;
+    FCSectionSupergroupKnobs *_supergroupKnobs;
+    NSString *_groupTitleColorHexString;
+    NSString *_groupDarkStyleTitleColorHexString;
+    FCContentColorMap *_contentColorMap;
     NSString *_pptFeedIDOverride;
     FCInterestToken *_tagInterestToken;
+    unsigned long long _userFacingTagTypeOverride;
     NTPBFeedConfiguration *_feedConfiguration;
     NSArray *_sectionFeedConfigurations;
     NSString *_backgroundColorHexString;
     NSString *_darkStyleBackgroundColorHexString;
     NSString *_foregroundColorHexString;
     NSString *_darkStyleForegroundColorHexString;
-    NSString *_groupTitleColorHexString;
-    NSString *_groupDarkStyleTitleColorHexString;
     NSDate *_loadDate;
     NTPBTagRecord *_tagRecord;
     FCInterestToken *_tagRecordInterestToken;
@@ -101,22 +110,32 @@
     struct FCEdgeInsets _nameImageMaskInsets;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FCInterestToken *tagRecordInterestToken; // @synthesize tagRecordInterestToken=_tagRecordInterestToken;
 @property(readonly, nonatomic) NTPBTagRecord *tagRecord; // @synthesize tagRecord=_tagRecord;
 @property(retain, nonatomic) NSDate *loadDate; // @synthesize loadDate=_loadDate;
-@property(copy, nonatomic) NSString *groupDarkStyleTitleColorHexString; // @synthesize groupDarkStyleTitleColorHexString=_groupDarkStyleTitleColorHexString;
-@property(copy, nonatomic) NSString *groupTitleColorHexString; // @synthesize groupTitleColorHexString=_groupTitleColorHexString;
 @property(copy, nonatomic) NSString *darkStyleForegroundColorHexString; // @synthesize darkStyleForegroundColorHexString=_darkStyleForegroundColorHexString;
 @property(copy, nonatomic) NSString *foregroundColorHexString; // @synthesize foregroundColorHexString=_foregroundColorHexString;
 @property(copy, nonatomic) NSString *darkStyleBackgroundColorHexString; // @synthesize darkStyleBackgroundColorHexString=_darkStyleBackgroundColorHexString;
 @property(copy, nonatomic) NSString *backgroundColorHexString; // @synthesize backgroundColorHexString=_backgroundColorHexString;
 @property(copy, nonatomic) NSArray *sectionFeedConfigurations; // @synthesize sectionFeedConfigurations=_sectionFeedConfigurations;
 @property(copy, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
+@property(nonatomic) unsigned long long userFacingTagTypeOverride; // @synthesize userFacingTagTypeOverride=_userFacingTagTypeOverride;
 @property(retain, nonatomic) FCInterestToken *tagInterestToken; // @synthesize tagInterestToken=_tagInterestToken;
 @property(copy, nonatomic) NSString *pptFeedIDOverride; // @synthesize pptFeedIDOverride=_pptFeedIDOverride;
-@property(readonly, copy, nonatomic) FCSubscriptionButtonConfiguration *paidBundleSubscriptionButtonConfiguration; // @synthesize paidBundleSubscriptionButtonConfiguration=_paidBundleSubscriptionButtonConfiguration;
+@property(readonly, nonatomic) FCContentColorMap *contentColorMap; // @synthesize contentColorMap=_contentColorMap;
+@property(copy, nonatomic) NSString *groupDarkStyleTitleColorHexString; // @synthesize groupDarkStyleTitleColorHexString=_groupDarkStyleTitleColorHexString;
+@property(copy, nonatomic) NSString *groupTitleColorHexString; // @synthesize groupTitleColorHexString=_groupTitleColorHexString;
+@property(readonly, nonatomic) FCSectionSupergroupKnobs *supergroupKnobs; // @synthesize supergroupKnobs=_supergroupKnobs;
+@property(readonly, nonatomic) NSString *supergroupKnobsJson; // @synthesize supergroupKnobsJson=_supergroupKnobsJson;
+@property(readonly, nonatomic) NSString *supergroupConfigJson; // @synthesize supergroupConfigJson=_supergroupConfigJson;
+@property(readonly, copy, nonatomic) FCPaywallConfiguration *paidBundlePaywallConfiguration; // @synthesize paidBundlePaywallConfiguration=_paidBundlePaywallConfiguration;
 @property(readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate; // @synthesize publisherSpecifiedArticleIDsModifiedDate=_publisherSpecifiedArticleIDsModifiedDate;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs; // @synthesize publisherSpecifiedArticleIDs=_publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) _Bool isLocal; // @synthesize isLocal=_isLocal;
+@property(readonly, nonatomic) _Bool isSandbox; // @synthesize isSandbox=_isSandbox;
+@property(readonly, nonatomic) _Bool isInternal; // @synthesize isInternal=_isInternal;
+@property(readonly, nonatomic) _Bool isAutoDarkModeEnabled; // @synthesize isAutoDarkModeEnabled=_isAutoDarkModeEnabled;
 @property(readonly, nonatomic) _Bool isArticleReadCountReportingEnabled; // @synthesize isArticleReadCountReportingEnabled=_isArticleReadCountReportingEnabled;
 @property(readonly, nonatomic) _Bool isRealTimeTrackingEnabled; // @synthesize isRealTimeTrackingEnabled=_isRealTimeTrackingEnabled;
 @property(readonly, nonatomic) _Bool isHidden; // @synthesize isHidden=_isHidden;
@@ -140,7 +159,6 @@
 @property(readonly, copy, nonatomic) FCTextInfo *headlineBylineTextInfo; // @synthesize headlineBylineTextInfo=_headlineBylineTextInfo;
 @property(readonly, copy, nonatomic) FCTextInfo *headlineExcerptTextInfo; // @synthesize headlineExcerptTextInfo=_headlineExcerptTextInfo;
 @property(readonly, copy, nonatomic) FCTextInfo *headlineTitleTextInfo; // @synthesize headlineTitleTextInfo=_headlineTitleTextInfo;
-@property(readonly, copy, nonatomic) NSString *coverArticleListID; // @synthesize coverArticleListID=_coverArticleListID;
 @property(readonly, nonatomic) FCAssetHandle *feedNavImageAssetHandle; // @synthesize feedNavImageAssetHandle=_feedNavImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *coverImageAssetHandle; // @synthesize coverImageAssetHandle=_coverImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *logoImageAssetHandle; // @synthesize logoImageAssetHandle=_logoImageAssetHandle;
@@ -179,7 +197,6 @@
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *versionKey; // @synthesize versionKey=_versionKey;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isWhitelisted;
 @property(readonly, nonatomic) _Bool supportsNotifications;
 @property(readonly, nonatomic) NSData *backingTagRecordData;
@@ -198,6 +215,8 @@
 @property(readonly, nonatomic) _Bool isWhite;
 @property(readonly, nonatomic) FCTagBanner *bannerImageForMask; // @synthesize bannerImageForMask=_bannerImageForMask;
 @property(readonly, nonatomic) long long feedType;
+@property(readonly, copy, nonatomic) NSString *stocksFeedConfigJSON;
+@property(readonly, nonatomic) id <FCTagStocksFields> stocksFields;
 - (_Bool)_isValidScheme:(id)arg1;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 - (id)prefetchPurchaseOffer;
@@ -233,6 +252,7 @@
 @property(readonly, nonatomic) _Bool isBlockedExplicitContent;
 @property(readonly, nonatomic) NSArray *loadableFonts;
 - (id)purchaseOfferableConfigurationsFromProtobufList:(id)arg1;
+@property(readonly, nonatomic) unsigned long long userFacingTagType;
 - (id)initWithTagRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3;
 - (id)initWithData:(id)arg1 context:(id)arg2;
 - (id)initWithTagType:(unsigned long long)arg1 identifier:(id)arg2 name:(id)arg3;

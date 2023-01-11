@@ -9,15 +9,15 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFActivity, HMFTimer, HMFUnfairLock, NSDate, NSError, NSObject, NSString, NSUUID;
+@class HMFActivity, HMFTimer, NSDate, NSError, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_voucher;
 
 @interface HMFOperation : NSOperation <HMFLogging, HMFTimerDelegate>
 {
+    struct os_unfair_lock_s _lock;
     _Bool _executing;
     _Bool _finished;
     NSError *_error;
-    HMFUnfairLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_voucher> *_voucher;
     HMFActivity *_activity;
@@ -27,15 +27,16 @@
 
 + (id)logCategory;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
-@property(retain) HMFTimer *timer; // @synthesize timer=_timer;
-@property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
+@property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)timerDidFire:(id)arg1;
 - (id)logIdentifier;
 @property(retain) HMFActivity *activity; // @synthesize activity=_activity;
 - (void)finish;
 - (void)cancelWithError:(id)arg1;
 - (void)cancel;
+- (void)main;
 - (void)start;
 - (void)setQualityOfService:(long long)arg1;
 @property(readonly, copy) NSDate *timeoutDate;

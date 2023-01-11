@@ -12,9 +12,10 @@
 
 @interface UIView (MTVisualStylingProviderAdditions) <MTVisualStylingProviding>
 - (id)visualStylingProviderForCategory:(long long)arg1;
-- (void)mt_removeAllVisualStyling;
-- (void)mt_replaceVisualStyling:(id)arg1;
 - (void)_mt_applyVisualStyling:(id)arg1;
+- (void)mt_removeAllVisualStyling;
+- (void)mt_applyVisualStyling:(id)arg1;
+- (void)mt_replaceVisualStyling:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

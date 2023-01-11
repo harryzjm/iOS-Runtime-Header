@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
-- (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (unsigned long long)urlType;
 - (id)initWithTimeout:(double)arg1;
 

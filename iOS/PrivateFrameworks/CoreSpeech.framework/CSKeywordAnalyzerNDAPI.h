@@ -21,14 +21,18 @@
     id <CSKeywordAnalyzerNDAPIScoreDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CSKeywordAnalyzerNDAPIScoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned int activePhraseId; // @synthesize activePhraseId=_activePhraseId;
 @property(nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
-- (void).cxx_destruct;
+- (float)getRejectLoggingThreshold;
 - (float)getLoggingThreshold;
 - (float)getThreshold;
 - (id)getSuperVectorWithEndPoint:(unsigned long long)arg1;
+- (id)getAnalyzedMpVtResults;
 - (id)getAnalyzedResult;
+- (id)_keywordAnalyzerNDAPIResultForPhraseId:(unsigned int)arg1 withNovDetectorResult:(id)arg2;
+- (void)analyzeWavFloatData:(id)arg1 numSamples:(unsigned long long)arg2;
 - (void)analyzeWavData:(id)arg1 numSamples:(unsigned long long)arg2;
 - (void)processAudioChunk:(id)arg1;
 - (void)_setStartAnalyzeTime:(unsigned long long)arg1;

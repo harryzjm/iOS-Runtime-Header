@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct AudioStreamBasicDescription clientAudioFormat; // @synthesize clientAudioFormat=_clientFormat;
 @property(readonly, nonatomic) unsigned int samplesPerFrame; // @synthesize samplesPerFrame=_clientSamplesPerFrame;
 - (void)stopWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)stopWithCompletionHandlerInternal:(CDUnknownBlockType)arg1;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;

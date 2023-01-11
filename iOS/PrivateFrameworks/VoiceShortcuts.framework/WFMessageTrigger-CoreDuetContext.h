@@ -7,6 +7,7 @@
 #import <WorkflowKit/WFMessageTrigger.h>
 
 @interface WFMessageTrigger (CoreDuetContext)
+- (_Bool)requiresEventInfoAsInput;
 - (unsigned int)contextStoreQualityOfService;
 - (id)contextStorePredicate;
 - (id)contextStoreKeyPathForCurrentState;

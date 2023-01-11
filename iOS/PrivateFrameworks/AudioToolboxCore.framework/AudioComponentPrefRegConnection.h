@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)getExtensionIcon:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setComponentUserTags:(id)arg1 tags:(id)arg2;
 - (void)getComponentUserTags:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getExtensionComponentList:(id)arg1 linkedSDKVersion:(int)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)setExtensionComponentList:(id)arg1 linkedSDKVersion:(int)arg2 components:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)getExtensionComponentList:(id)arg1 linkedSDKRequiresEntitlement:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setExtensionComponentList:(id)arg1 linkedSDKRequiresEntitlement:(_Bool)arg2 components:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)initWithRegistrar:(struct AudioComponentRegistrarImpl *)arg1 connection:(id)arg2;
 
 @end

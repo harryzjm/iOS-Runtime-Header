@@ -13,8 +13,8 @@
 
 + (id)structFields;
 + (id)structName;
-@property(retain, nonatomic) NSArray *profiles; // @synthesize profiles=_profiles;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *profiles; // @synthesize profiles=_profiles;
 
 @end
 

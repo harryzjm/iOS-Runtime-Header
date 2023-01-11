@@ -48,7 +48,6 @@
     NSNumber *_probeTFO;
     NSNumber *_probeNoTFOCookie;
     NSNumber *_probeTimeout;
-    NSNumber *_probeUseTFOHeuristics;
     NSNumber *_retryPause;
     NSNumber *_signatureLimit;
     NSNumber *_observedRTTSampleSize;
@@ -89,6 +88,7 @@
 
 + (id)createEndpointFromHostList:(id)arg1 defaultPortString:(id)arg2 allowIPv6:(_Bool)arg3;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) NSData *updateHash; // @synthesize updateHash=_updateHash;
 @property(readonly) NSObject<OS_dispatch_queue> *reprocessQueue; // @synthesize reprocessQueue=_reprocessQueue;
 @property(retain) NSUUID *configurationIdentifier; // @synthesize configurationIdentifier=_configurationIdentifier;
@@ -101,16 +101,16 @@
 @property _Bool daypassRefreshInProgress; // @synthesize daypassRefreshInProgress=_daypassRefreshInProgress;
 @property(retain) NSMutableDictionary *networkInformation; // @synthesize networkInformation=_networkInformation;
 @property _Bool reprocessPending; // @synthesize reprocessPending=_reprocessPending;
-@property(retain) NPWaldoLocationManager *locationManager; // @synthesize locationManager=_locationManager;
-@property(retain) NPKeyBag *keybag; // @synthesize keybag=_keybag;
-@property(retain) NSPNetworkAgent *agent; // @synthesize agent=_agent;
-@property(retain) NPWaldo *defaults; // @synthesize defaults=_defaults;
-@property(retain) NSDate *locationExpiration; // @synthesize locationExpiration=_locationExpiration;
-@property(retain) NSDate *locationCheckTimestamp; // @synthesize locationCheckTimestamp=_locationCheckTimestamp;
-@property(retain) NPLocation *cachedLocation; // @synthesize cachedLocation=_cachedLocation;
+@property(retain, nonatomic) NPWaldoLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property(retain, nonatomic) NPKeyBag *keybag; // @synthesize keybag=_keybag;
+@property(retain, nonatomic) NSPNetworkAgent *agent; // @synthesize agent=_agent;
+@property(retain, nonatomic) NPWaldo *defaults; // @synthesize defaults=_defaults;
+@property(retain, nonatomic) NSDate *locationExpiration; // @synthesize locationExpiration=_locationExpiration;
+@property(retain, nonatomic) NSDate *locationCheckTimestamp; // @synthesize locationCheckTimestamp=_locationCheckTimestamp;
+@property(retain, nonatomic) NPLocation *cachedLocation; // @synthesize cachedLocation=_cachedLocation;
 @property _Bool shouldSave; // @synthesize shouldSave=_shouldSave;
 @property __weak id <NPWaldoDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain) NSString *hostname; // @synthesize hostname=_hostname;
+@property(retain, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property long long currentEdgeIndex; // @synthesize currentEdgeIndex=_currentEdgeIndex;
 @property(copy) NSNumber *usedEdgesGeneration; // @synthesize usedEdgesGeneration=_usedEdgesGeneration;
 @property(copy) NSNumber *edgesGeneration; // @synthesize edgesGeneration=_edgesGeneration;
@@ -130,7 +130,6 @@
 @property(copy) NSNumber *observedRTTSampleSize; // @synthesize observedRTTSampleSize=_observedRTTSampleSize;
 @property(copy) NSNumber *signatureLimit; // @synthesize signatureLimit=_signatureLimit;
 @property(copy) NSNumber *retryPause; // @synthesize retryPause=_retryPause;
-@property(copy) NSNumber *probeUseTFOHeuristics; // @synthesize probeUseTFOHeuristics=_probeUseTFOHeuristics;
 @property(copy) NSNumber *probeTimeout; // @synthesize probeTimeout=_probeTimeout;
 @property(copy) NSNumber *probeNoTFOCookie; // @synthesize probeNoTFOCookie=_probeNoTFOCookie;
 @property(copy) NSNumber *probeTFO; // @synthesize probeTFO=_probeTFO;
@@ -157,7 +156,6 @@
 @property(copy) NSNumber *timestamp; // @synthesize timestamp=_timestamp;
 @property(readonly) long long source; // @synthesize source=_source;
 @property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)incrementSessionCounters;
 - (void)cleanupStaleKeys;
 @property(readonly) CDUnknownBlockType latencyComparator;

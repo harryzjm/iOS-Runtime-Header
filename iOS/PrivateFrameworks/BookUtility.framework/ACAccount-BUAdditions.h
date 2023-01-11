@@ -9,6 +9,7 @@
 @class NSNumber, NSString;
 
 @interface ACAccount (BUAdditions)
++ (id)bu_currentStorefront;
 + (id)bu_localStoreAccount;
 + (id)bu_activeStoreAccount;
 + (id)bu_storeAccountWithDSID:(id)arg1;

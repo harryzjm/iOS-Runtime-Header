@@ -8,14 +8,14 @@
 
 #import <StoreKitUI/SKUIFlexibleSegmentedControlDelegate-Protocol.h>
 
-@class NSArray, NSString, SKUIFlexibleSegmentedControl, _UIBackdropView;
+@class NSArray, NSString, SKUIFlexibleSegmentedControl, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface SKUIChartColumnsView : UIView <SKUIFlexibleSegmentedControlDelegate>
 {
     NSArray *_allViewControllers;
     long long _animatingToNumberOfVisibleColumns;
-    _UIBackdropView *_backdropView;
+    UIVisualEffectView *_effectView;
     UIView *_borderView0;
     UIView *_borderView1;
     long long _columnChangeAnimationCount;
@@ -28,11 +28,11 @@ __attribute__((visibility("hidden")))
     SKUIFlexibleSegmentedControl *_segmentedControl;
 }
 
-@property(readonly, nonatomic) _UIBackdropView *backdropView; // @synthesize backdropView=_backdropView;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property(nonatomic) long long numberOfVisibleColumns; // @synthesize numberOfVisibleColumns=_numberOfVisibleColumns;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property(copy, nonatomic) NSArray *chartViewControllers; // @synthesize chartViewControllers=_allViewControllers;
-- (void).cxx_destruct;
 - (void)_reloadColumnViews;
 - (id)_headerViewWithViewControllers:(id)arg1;
 - (void)segmentedControl:(id)arg1 didSelectSegmentIndex:(long long)arg2;

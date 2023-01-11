@@ -19,10 +19,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property(readonly, copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
@@ -35,6 +35,7 @@
 - (id)bag_stringForKey:(id)arg1;
 - (_Bool)bag_boolForKey:(id)arg1;
 - (id)_bag_objectOfClass:(Class)arg1 forKey:(id)arg2;
+@property(readonly, nonatomic) _Bool exp;
 @property(readonly, nonatomic) long long protocolVersion;
 @property(readonly, nonatomic) NSDictionary *tuscanyConfiguration;
 @property(readonly, copy, nonatomic) NSString *parsecFeedbackFormat;
@@ -45,7 +46,12 @@
 @property(readonly, nonatomic) _Bool collectAnonymousMetadata;
 @property(readonly, nonatomic) _Bool collectScores;
 @property(readonly, nonatomic) _Bool sampleFeatures;
+@property(readonly, nonatomic) _Bool allowSafariRankingDataCollection;
+@property(readonly, nonatomic) double safariDwellTimeThresholdHigh;
+@property(readonly, nonatomic) double safariDwellTimeThresholdMedium;
+@property(readonly, nonatomic) NSArray *sampleClientTimingEventWhitelist;
 @property(readonly, nonatomic) _Bool sampleClientTiming;
+@property(readonly, nonatomic) NSDictionary *smartSearchV2Parameters;
 @property(readonly, nonatomic) unsigned long long smartHistoryMinimumQueryLength;
 @property(readonly, nonatomic) _Bool smartHistoryFeatureFeedbackEnabled;
 @property(readonly, nonatomic) unsigned long long smartHistorySampleThreshold;
@@ -74,6 +80,8 @@
 @property(readonly, copy, nonatomic) NSString *firstUseDescriptionText;
 @property(readonly, copy, nonatomic) NSArray *enabledDomains;
 @property(readonly, copy, nonatomic) NSArray *recentlyUsedAppIdentifierWhitelist;
+@property(readonly, copy, nonatomic) NSArray *skuUploadWhitelist;
+@property(readonly, nonatomic) _Bool imageTimingFeedbackEnabled;
 @property(readonly, nonatomic) _Bool feedbackEnabled;
 @property(readonly, nonatomic) long long abTest2WeekZoneSize;
 @property(readonly, nonatomic) unsigned long long maximumCachedQueriesToSend;
@@ -84,6 +92,7 @@
 - (id)personalizationParameters;
 @property(readonly, nonatomic) NSURL *crowdsourcingURL;
 @property(readonly, nonatomic) NSURL *feedbackURL;
+@property(readonly, nonatomic) NSURL *uncommittedSearchURL;
 @property(readonly, nonatomic) NSURL *searchURL;
 @property(readonly, nonatomic) NSURL *warmURL;
 @property(readonly, nonatomic) double minimumIntervalBetweenQueriesFromBag;

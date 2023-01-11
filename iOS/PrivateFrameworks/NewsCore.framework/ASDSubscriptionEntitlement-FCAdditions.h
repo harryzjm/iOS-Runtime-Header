@@ -7,6 +7,7 @@
 #import <AppStoreDaemon/ASDSubscriptionEntitlement.h>
 
 @interface ASDSubscriptionEntitlement (FCAdditions)
+- (id)servicesBundlePurchaseID;
 - (id)description;
 @end
 

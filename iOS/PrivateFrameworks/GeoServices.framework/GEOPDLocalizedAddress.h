@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDLocalizedAddress : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOAddress *_address;
     NSString *_language;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_address:1;
         unsigned int read_language:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_language:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,14 +40,17 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOAddress *address;
 @property(readonly, nonatomic) _Bool hasAddress;
-- (void)_readAddress;
 @property(retain, nonatomic) NSString *language;
 @property(readonly, nonatomic) _Bool hasLanguage;
-- (void)_readLanguage;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -14,20 +14,19 @@
 @interface GEOAddress : PBCodable <GEOURLSerializable, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_formattedAddressLines;
     GEOStructuredAddress *_structuredAddress;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _formattedAddressType;
     struct {
         unsigned int has_formattedAddressType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_formattedAddressLines:1;
         unsigned int read_structuredAddress:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_formattedAddressLines:1;
-        unsigned int wrote_structuredAddress:1;
-        unsigned int wrote_formattedAddressType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,6 +44,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 - (int)StringAsFormattedAddressType:(id)arg1;
@@ -53,14 +55,13 @@
 @property(nonatomic) int formattedAddressType;
 @property(retain, nonatomic) GEOStructuredAddress *structuredAddress;
 @property(readonly, nonatomic) _Bool hasStructuredAddress;
-- (void)_readStructuredAddress;
 - (id)formattedAddressLineAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formattedAddressLinesCount;
-- (void)_addNoFlagsFormattedAddressLine:(id)arg1;
 - (void)addFormattedAddressLine:(id)arg1;
 - (void)clearFormattedAddressLines;
 @property(retain, nonatomic) NSMutableArray *formattedAddressLines;
-- (void)_readFormattedAddressLines;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (_Bool)_isEquivalentURLRepresentationTo:(id)arg1;
 - (id)urlRepresentation;
 - (id)initWithUrlRepresentation:(id)arg1;

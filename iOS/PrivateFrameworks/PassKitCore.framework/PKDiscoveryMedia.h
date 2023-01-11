@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, PKColor;
+@class NSDictionary, NSString, NSURL, PKColor;
 
 @interface PKDiscoveryMedia : NSObject <NSSecureCoding>
 {
@@ -18,22 +18,26 @@
     double _height;
     PKColor *_backgroundColor;
     NSString *_passKitUIImageName;
+    NSURL *_localAssetURL;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *localAssetURL; // @synthesize localAssetURL=_localAssetURL;
 @property(readonly, nonatomic) NSString *passKitUIImageName; // @synthesize passKitUIImageName=_passKitUIImageName;
 @property(readonly, nonatomic) PKColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) double height; // @synthesize height=_height;
 @property(readonly, nonatomic) double width; // @synthesize width=_width;
 @property(readonly, nonatomic) NSDictionary *urls; // @synthesize urls=_urls;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
-- (id)_remoteAssetForScale:(double)arg1;
-- (void)downloadImageDataWithScale:(double)arg1 shouldWriteData:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)imageDataFromCacheWithScale:(double)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)_remoteAssetForScale:(double)arg1;
+- (void)downloadImageDataWithScale:(double)arg1 shouldWriteData:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)imageDataFromCacheWithScale:(double)arg1;
 - (id)initWithDictionary:(id)arg1;
 
 @end

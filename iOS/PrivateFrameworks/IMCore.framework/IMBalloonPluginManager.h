@@ -25,9 +25,12 @@
 
 + (_Bool)isRunningPPT;
 + (void)setIsRunningPPT:(_Bool)arg1;
++ (id)balloonProviderBundlePathURL;
 + (id)_extensionBlacklist;
 + (id)sharedInstance;
++ (void)enableAlternatePathPlugins;
 + (void)disableExtensionDiscovery;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *localParticipantID2; // @synthesize localParticipantID2=_localParticipantID2;
 @property(retain, nonatomic) NSUUID *localParticipantID1; // @synthesize localParticipantID1=_localParticipantID1;
 @property(retain, nonatomic) NSString *simulatedConversationID2; // @synthesize simulatedConversationID2=_simulatedConversationID2;
@@ -39,7 +42,7 @@
 @property(retain, nonatomic) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
 @property(retain, nonatomic) NSMutableDictionary *pluginsMap; // @synthesize pluginsMap=_pluginsMap;
 @property(readonly, retain, nonatomic) Class richLinksDataSourceClass; // @synthesize richLinksDataSourceClass=_richLinksDataSourceClass;
-- (void).cxx_destruct;
+- (id)systemBundleIdentifierForPluginIdentifier:(id)arg1;
 - (id)balloonPluginForBundleID:(id)arg1;
 - (id)allPlugins;
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
@@ -83,8 +86,8 @@
 - (id)_infoPlistPathForPluginCreatingFolderIfNeeded:(id)arg1;
 - (id)_pluginPlistPath:(id)arg1;
 - (void)dealloc;
-- (void)pluginChatItem:(id)arg1 didRelenquishNonResuableController:(id)arg2;
-- (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2;
+- (void)pluginChatItem:(id)arg1 didRelenquishNonResuableController:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
+- (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
 - (id)init;
 
 @end

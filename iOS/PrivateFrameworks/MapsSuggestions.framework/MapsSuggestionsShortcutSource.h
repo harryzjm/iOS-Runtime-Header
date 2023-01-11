@@ -13,24 +13,22 @@
 @interface MapsSuggestionsShortcutSource <MapsSuggestionsMeCardObserver, MapsSuggestionsSource>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    MapsSuggestionsCanKicker *_updateForcer;
     MapsSuggestionsShortcutManager *_shortcutManager;
+    MapsSuggestionsCanKicker *_updateForcer;
 }
 
 + (unsigned long long)disposition;
 + (_Bool)isEnabled;
-@property(retain, nonatomic) MapsSuggestionsShortcutManager *shortcutManager; // @synthesize shortcutManager=_shortcutManager;
 - (void).cxx_destruct;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
 - (_Bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)canProduceEntriesOfType:(long long)arg1;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
 - (void)start;
-- (void)_updateSuggestionEntries;
-- (void)_treatShortcuts:(struct NSArray *)arg1 error:(id)arg2;
-- (id)initWithDelegate:(id)arg1 name:(struct NSString *)arg2;
-- (void)_renameDuplicateMeCardTypes:(struct NSArray *)arg1;
+- (void)_renameDuplicateMeCardTypes:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
+- (id)initWithShortcutManager:(id)arg1 delegate:(id)arg2 name:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (_Bool)lockPurgeableResourcesAddToSet:(id)arg1;
-- (unsigned long long)inkVersion;
+- (_Bool)isCompatibleWithInk:(id)arg1;
 - (_Bool)needsCompute;
 - (unsigned long long)cacheCost;
 @property(readonly, nonatomic) NSArray *buffers; // @dynamic buffers;

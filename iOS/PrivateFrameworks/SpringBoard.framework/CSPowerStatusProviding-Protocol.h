@@ -7,6 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol CSPowerStatusProviding <NSObject>
+@property(readonly, nonatomic, getter=isConnectedToQiPower) _Bool connectedToQiPower;
 @property(readonly, nonatomic, getter=isConnectedToExternalChargingSource) _Bool connectedToExternalChargingSource;
 @property(readonly, nonatomic, getter=isOnAC) _Bool onAC;
 @end

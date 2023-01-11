@@ -31,6 +31,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
 @property _Atomic int currentRequestId; // @synthesize currentRequestId=_currentRequestId;
 @property(nonatomic) long long cachedPeopleCount; // @synthesize cachedPeopleCount=_cachedPeopleCount;
@@ -38,7 +39,6 @@
 @property(retain, nonatomic) PXPeopleProgressManager *progressMgr; // @synthesize progressMgr=_progressMgr;
 @property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property(readonly, nonatomic) PXPeopleSectionedDataSource *peopleDataSource; // @synthesize peopleDataSource=_peopleDataSource;
-- (void).cxx_destruct;
 - (void)_appWillEnterForeground;
 - (void)_invalidateCache;
 - (void)imageCacheDidChanged:(id)arg1;

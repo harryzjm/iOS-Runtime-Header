@@ -8,10 +8,10 @@
 
 #import <Cards/CRCardViewDisappearanceFeedback-Protocol.h>
 
-@class NSString, SFFeedback;
+@class NSString;
 
 @interface SFCardViewDisappearFeedback (CRFeedback) <CRCardViewDisappearanceFeedback>
-@property(readonly, nonatomic) SFFeedback *backingFeedback;
+@property(readonly, nonatomic) SFCardViewDisappearFeedback *backingFeedback;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

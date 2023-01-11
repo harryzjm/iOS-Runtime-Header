@@ -7,15 +7,18 @@
 #import <PassKitUI/PKAuthenticatorDelegate-Protocol.h>
 #import <PassKitUI/PKContactlessInterfaceSessionDelegate-Protocol.h>
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
+#import <PassKitUI/PKLinkedApplicationObserver-Protocol.h>
 #import <PassKitUI/PKPassPaymentApplicationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPassPaymentPayStateViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
+#import <PassKitUI/PKTransactionAuthenticationPasscodeViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKUIForegroundActiveArbiterDeactivationObserver-Protocol.h>
+#import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class LAUIPhysicalButtonView, NSMutableArray, NSNumber, NSObject, NSString, PKAuthenticator, PKContactlessInterfaceSession, PKFooterTransactionView, PKPassLibrary, PKPassPaymentApplicationView, PKPassPaymentPayStateView, PKPassValueAddedServiceInfoView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentContactResolver, PKPeerPaymentService, PKTransitBalanceModel, UIButton, UIViewController;
-@protocol OS_dispatch_queue, OS_dispatch_source, UICoordinateSpace;
+@class LAUIPhysicalButtonView, NSArray, NSData, NSMutableArray, NSNumber, NSObject, NSString, PKAssertion, PKAuthenticator, PKContactlessInterfaceSession, PKLinkedApplication, PKPassLibrary, PKPassPaymentApplicationView, PKPassPaymentPayStateView, PKPassValueAddedServiceInfoView, PKPaymentBarcodeViewController, PKPaymentService, PKPaymentTransactionView, PKPeerPaymentAccountResolutionController, PKPeerPaymentContactResolver, PKPeerPaymentService, PKTransitBalanceModel, UIButton, UITextView, UIView, UIViewController;
+@protocol OS_dispatch_queue, OS_dispatch_source, PKPaymentDashboardCellActionHandleable, UICoordinateSpace;
 
-@interface PKPassPaymentContainerView <PKPaymentServiceDelegate, PKAuthenticatorDelegate, PKPassPaymentPayStateViewDelegate, PKPassPaymentApplicationViewDelegate, PKContactlessInterfaceSessionDelegate, PKForegroundActiveArbiterObserver, PKUIForegroundActiveArbiterDeactivationObserver>
+@interface PKPassPaymentContainerView <PKPaymentServiceDelegate, PKAuthenticatorDelegate, PKPassPaymentPayStateViewDelegate, PKPassPaymentApplicationViewDelegate, PKContactlessInterfaceSessionDelegate, PKForegroundActiveArbiterObserver, PKUIForegroundActiveArbiterDeactivationObserver, PKTransactionAuthenticationPasscodeViewControllerDelegate, PKLinkedApplicationObserver, UITextViewDelegate>
 {
     PKPaymentService *_paymentService;
     PKAuthenticator *_authenticator;
@@ -28,7 +31,10 @@
     _Bool _fieldDetectShouldEmulateExpress;
     id <UICoordinateSpace> _fixedScreenCoordinateSpace;
     LAUIPhysicalButtonView *_physicalButtonView;
-    PKFooterTransactionView *_transactionView;
+    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellPrimary;
+    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellSecondary;
+    UIView<PKPaymentDashboardCellActionHandleable> *_dualValueCellPrimary;
+    UIView *_displayedCellPrimary;
     unsigned long long _transactionUpdateCounter;
     NSString *_ignoringUpdatesFromTransactionIdentifier;
     PKPassLibrary *_passLibrary;
@@ -45,14 +51,15 @@
     long long _currentPayState;
     unsigned long long _authenticatorState;
     _Bool _authenticating;
-    _Bool _recognizing;
-    _Bool _returnToSummaryOnFingerOff;
-    long long _pearlState;
+    _Bool _userIntentRequired;
+    long long _userIntentStyle;
+    long long _authenticationEvaluationState;
     _Bool _transitioning;
     NSMutableArray *_transitionCompletionHandlers;
     NSMutableArray *_pendingGlyphStateCompletionHandlers;
     _Bool _glyphStateDirty;
-    _Bool _presentationWasForced;
+    _Bool _presentationWasForcedFromButton;
+    _Bool _presentationWasForFieldDetect;
     _Bool _waitingForGlyphView;
     long long _transactionSubstate;
     _Bool _holdingTerminalSubstate;
@@ -72,19 +79,57 @@
     _Bool _pendingAutomaticAuthorization;
     _Bool _pendingPerformAuthorization;
     NSNumber *_pendingPresentationContextState;
-    double _lastFingerOnTime;
     double _lastTransactionTime;
-    NSObject<OS_dispatch_source> *_summaryAuthenticationTimer;
     _Bool _encounteredTerminalFailure;
     NSMutableArray *_valueAddedPasses;
     _Bool _didBecomeHiddenWhileAuthorized;
     PKTransitBalanceModel *_transitBalanceModel;
+    NSString *_activeBarcodeIdentifier;
+    NSData *_activeBarcodeCredential;
+    PKAssertion *_userNotificationSupressionAssertion;
+    NSObject<OS_dispatch_source> *_barcodeDisplayTimer;
+    _Bool _transactionAuthenticationInProgress;
+    _Bool _transactionAuthenticationUIActive;
+    UIViewController *_activeTransactionAuthenticationViewController;
+    PKPaymentTransactionView *_transactionAwardsView;
+    NSArray *_transactionAwards;
+    UITextView *_bottomTextView;
+    _Bool _bottomTextViewAnimating;
+    _Bool _bottomTextViewNeedsUpdate;
+    double _bottomTextViewDisplayedTimestamp;
+    PKLinkedApplication *_linkedApplication;
+    NSMutableArray *_linkedApplicationUpdateCompletionHandlers;
+    _Bool _collectingBarcodeEventMetadata;
+    PKPaymentBarcodeViewController *_barcodeViewController;
 }
 
-+ (_Bool)shouldAutomaticallyAuthorizeForPassType:(unsigned long long)arg1 withContext:(id)arg2;
-+ (_Bool)initialUserIntentAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
++ (_Bool)shouldAutomaticallyAuthorizeForPass:(id)arg1 withContext:(id)arg2;
++ (_Bool)_initialUserIntentRequiredAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3 requirePhysicalButton:(_Bool)arg4;
++ (_Bool)initialUserIntentRequiredAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
++ (_Bool)initialPhysicalButtonRequiredAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
++ (_Bool)userIntentPotentiallyRequiredForPass:(id)arg1 fieldDetect:(_Bool)arg2;
 - (void).cxx_destruct;
+- (void)_collectAndSubmitBarcodeEventMetadataWithAuthenticationType:(long long)arg1;
+- (void)linkedApplicationDidChangeState:(id)arg1;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)_updateBottomTextView;
+- (id)_attributedStringForBottomTextViewFromString:(id)arg1;
+- (void)_showInstallAssociatedApplicationInstructionsIfNecessary;
+- (void)_dismissTransactionAuthenticationPasscodeViewController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)passcodeViewController:(id)arg1 didGenerateEncryptedPasscode:(id)arg2;
+- (void)passcodeViewControllerDidCancel:(id)arg1;
+- (void)_cancelTransactionAuthentication;
+- (void)_resetTransactionAuthenticationIfNecessary;
+- (void)_setTransactionAuthenticationUIActive:(_Bool)arg1;
+- (void)_setTransactionAuthenticationInProgress:(_Bool)arg1;
+- (void)_performUserConfirmationForTransaction:(id)arg1;
+- (void)_performApplicationRedirectForTransaction:(id)arg1;
+- (void)_performPaymentPINCollectionForTransaction:(id)arg1;
+- (void)_performAuthenticationForTransactionIfNecessary:(id)arg1;
+- (void)_handleReceivedBarcodePaymentTransaction:(id)arg1;
+- (void)_dismissBarcodeViewControllerIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_processValueAddedServiceTransactionsForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_insertPaymentTransactionForActiveBarcode;
 - (void)_processPaymentTransactionForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)_hasValueAddedServicePasses;
 - (void)_setValueAddedServicePasses:(id)arg1;
@@ -99,18 +144,21 @@
 - (id)_paymentApplicationForAutomaticAuthorization;
 - (_Bool)_passContainsPaymentApplication:(id)arg1;
 - (_Bool)_authenticationAllowed;
-- (_Bool)_isTransactionViewVisible;
+- (_Bool)_isSecondaryViewVisible;
+- (_Bool)_isPrimaryViewVisible;
 - (_Bool)_isVASInfoViewVisible;
-- (_Bool)_isSummaryViewVisible;
-- (_Bool)_showTransactionViewDuringPayment;
-- (_Bool)_shouldDisplayTransactionView;
+- (_Bool)_showGlyphForPayState:(long long)arg1;
+- (_Bool)_showPhysicalButtonForPayState:(long long)arg1;
+- (_Bool)_shouldDisplaySecondaryView;
+- (_Bool)_shouldDisplayPrimaryView;
 - (_Bool)_maintainAuthorizationAfterTransaction;
-- (void)_stopBiometricRecognitionAnimationWithSuccess:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_startBiometricRecognitionAnimation;
 - (id)_filledButtonWithTitle:(id)arg1;
 - (id)_passcodeButtonTitle;
 - (id)_emphasisButtonForState:(long long)arg1;
 - (id)_buttonForState:(long long)arg1;
+- (void)_updatePhysicalButtonRequirement;
+- (void)_setUserIntentStyle:(long long)arg1;
+- (void)_setUserIntentRequired:(_Bool)arg1;
 - (_Bool)_canAuthenticateWithPasscode;
 - (_Bool)_canAuthenticateWithBiometrics;
 - (void)_updateAuthenticatorState;
@@ -125,6 +173,7 @@
 - (void)_transitionToState:(long long)arg1 withTextOverride:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2 playSystemSound:(_Bool)arg3;
 - (void)_emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2;
+- (void)_showEmphasisButtonForStateIfPossible:(long long)arg1;
 - (void)_applyPayState:(long long)arg1 withTextOverride:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_applyPayState:(long long)arg1 withTextOverride:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_applyPayState:(long long)arg1 withTextOverride:(id)arg2;
@@ -139,6 +188,9 @@
 - (void)_applyPresentationPayState:(long long)arg1;
 - (void)_configureForValueAddedServiceWithPass:(id)arg1 context:(id)arg2;
 - (void)_configureForPaymentWithPaymentPass:(id)arg1 context:(id)arg2;
+- (id)_findOrCreateSecondaryView;
+- (id)_findOrCreatePrimaryFusedDoubleCellView;
+- (id)_findOrCreatePrimaryAdjustableSingleCellView;
 - (void)_configureForStyle:(long long)arg1 context:(id)arg2;
 - (_Bool)_isBackgroundedForReasons:(unsigned long long)arg1;
 - (_Bool)_isDeactivatedForReasons:(unsigned long long)arg1;
@@ -149,34 +201,31 @@
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (void)_performActivationStateUpdate:(CDUnknownBlockType)arg1;
 - (void)_updateApplicationsView;
-- (void)_updateContentViewsWithTransaction:(id)arg1 transitBalanceModel:(id)arg2;
-- (void)_updateContentViewsWithTransitBalanceModel:(id)arg1;
-- (void)_updateContentViewsWithTransaction:(id)arg1;
+- (void)_updateContentSecondaryView;
+- (void)_updateContentPrimaryView;
 - (void)_applyLatestContentToViews;
 - (void)_resetCardEmulationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resetActiveApplicationForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_authorizeForTransactionWithCredential:(id)arg1 authenticationIdentifier:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_authorizeForTransactionWithAuthenticatorEvaluationResponse:(id)arg1 authenticationIdentifier:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_openURL:(id)arg1;
+- (void)_updateCoachingInstruction;
 - (void)_didAuthorizePaymentApplicationWithAuthenticationIdentifier:(unsigned long long)arg1;
 - (void)_promoteToAuthorizedStateIfPossible;
-- (void)_resetToIdleStateAfterDelay:(double)arg1 whileIgnoreField:(_Bool)arg2;
 - (void)_resetToIdleStateAfterDelay:(double)arg1;
-- (void)_resetToIdleStateWhileIgnoringField:(_Bool)arg1;
 - (void)_resetToIdleState;
-- (void)_prearmButtonPressed:(id)arg1;
+- (void)_addPasscodeButtonPressed:(id)arg1;
 - (void)_passcodeFallbackButtonPressed:(id)arg1;
-- (void)_passcodeAuthenticationButtonPressed:(id)arg1;
-- (void)_beginPasscodeOnlyAuthentication;
 - (void)_activateForPaymentWithApplication:(id)arg1;
 - (void)_activateForPayment;
 - (void)_endContactlessPaymentSession;
 - (void)_performAuthentication;
-- (void)_cancelSummaryAuthenticationTimer;
-- (void)_beginSummaryAuthenticationIfNecessary;
+- (void)_cancelBarcodeDisplayTimer;
+- (void)_beginBarcodeDisplayTimer;
 - (_Bool)_restartPaymentAuthorization;
 - (void)_endPaymentAuthorization;
-- (void)_beginPaymentAuthorizationWithImmediatePasscode:(_Bool)arg1;
 - (void)_beginPaymentAuthorization;
+- (void)payStateViewDidUpdateLayout:(id)arg1;
 - (void)payStateView:(id)arg1 revealingCheckmark:(_Bool)arg2;
 - (void)contactlessInterfaceSession:(id)arg1 didReceiveExpressState:(unsigned long long)arg2;
 - (void)contactlessInterfaceSession:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
@@ -194,26 +243,19 @@
 - (void)contactlessInterfaceSessionDidStartTransaction:(id)arg1;
 - (void)contactlessInterfaceSessionDidTimeout:(id)arg1 forPaymentApplication:(id)arg2 paymentPass:(id)arg3 valueAddedServicePasses:(id)arg4;
 - (void)contactlessInterfaceSessionHasPendingServerRequest:(id)arg1;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(_Bool)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
-- (_Bool)_shouldDisplayTransaction:(id)arg1;
+- (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentServiceReceivedInterruption;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)dismissPasscodeViewController;
 - (void)presentPasscodeViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)_cancelBiometricRecognitionAndPromptUserAction:(long long)arg1;
-- (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
-- (void)authenticatorDidEncounterMatchMiss:(id)arg1;
-- (void)authenticatorDidEncounterFingerOff:(id)arg1;
-- (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
-- (void)authenticatorWillRestartEvaluation:(id)arg1;
+- (void)authenticator:(id)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_912cb5d2)arg2;
 - (_Bool)_recognizingBiometrics;
 - (void)paymentApplicationView:(id)arg1 didSelectApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)invalidate;
+- (void)showFullScreenBarcode;
+- (void)coachingStateDidChange;
 - (void)didBecomeHiddenAnimated:(_Bool)arg1;
 - (void)willBecomeHiddenAnimated:(_Bool)arg1;
 - (void)didBecomeVisibleAnimated:(_Bool)arg1;

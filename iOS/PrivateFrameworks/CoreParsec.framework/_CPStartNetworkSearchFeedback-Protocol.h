@@ -11,6 +11,8 @@
 @protocol _CPStartNetworkSearchFeedback <NSObject>
 @property(readonly, nonatomic) unsigned long long whichTrigger;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *treatmentId;
+@property(copy, nonatomic) NSString *experimentId;
 @property(copy, nonatomic) NSData *bodyData;
 @property(nonatomic) int tuscanyStatus;
 @property(nonatomic) int lookupSelectionType;

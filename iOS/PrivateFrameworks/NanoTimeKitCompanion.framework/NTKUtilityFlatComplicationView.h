@@ -24,10 +24,10 @@
 
 + (void)circleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 interior:(_Bool *)arg4 forPlacement:(unsigned long long)arg5 forDevice:(id)arg6;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) double textWidthInRadians; // @synthesize textWidthInRadians=_textWidthInRadians;
 @property(nonatomic) __weak id <NTKUtilityFlatComplicationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
 - (id)colorForView:(id)arg1 accented:(_Bool)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
@@ -37,6 +37,7 @@
 - (void)_enumerateColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)_backgroundPlatterImage;
 - (void)layoutSubviews;
+- (struct CGSize)boundingSizeOfCurrentComplicationTemplate;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)_updateForTemplateChange;
 - (double)_widthThatFits;

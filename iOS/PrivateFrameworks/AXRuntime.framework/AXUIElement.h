@@ -24,6 +24,8 @@
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 startWithElement:(id)arg2;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
++ (id)scrollAncestorAtCoordinate:(struct CGPoint)arg1;
++ (id)proxiedMLElementsForApp:(id)arg1;
 + (id)uiElementWithAXElement:(struct __AXUIElement *)arg1 cache:(id)arg2;
 + (id)uiElementWithAXElement:(struct __AXUIElement *)arg1;
 + (void)initialize;
@@ -32,6 +34,7 @@
 + (struct __AXUIElement *)systemWideAXUIElement;
 - (void).cxx_destruct;
 - (struct _NSRange)nextCursorRangeInDirection:(unsigned long long)arg1 unit:(unsigned long long)arg2 outputRange:(struct _NSRange *)arg3 currentCursorRange:(struct _NSRange)arg4;
+- (struct _NSRange)_lineRangeWithFaultTolerance:(long long)arg1 forward:(_Bool)arg2;
 - (struct _NSRange)nextCursorRangeInDirection:(unsigned long long)arg1 unit:(unsigned long long)arg2 outputRange:(struct _NSRange *)arg3;
 - (struct _NSRange)_lineRangeForPosition:(unsigned long long)arg1;
 - (long long)_lineEndPosition;
@@ -41,6 +44,7 @@
 - (id)_objectForRange:(struct _NSRange)arg1 withParameterizedAttribute:(long long)arg2;
 - (struct _NSRange)_selectedTextRange;
 - (void)setAXAttribute:(long long)arg1 withObject:(id)arg2;
+- (_Bool)isMLElement;
 - (_Bool)isMockElement;
 - (void)setAXAttribute:(long long)arg1 withObject:(id)arg2 synchronous:(_Bool)arg3;
 - (void)setAXAttribute:(long long)arg1 withArray:(id)arg2;
@@ -55,6 +59,7 @@
 - (void)setAXAttribute:(long long)arg1 withString:(id)arg2;
 - (void)setAXAttribute:(long long)arg1 withBOOL:(_Bool)arg2;
 - (id)_elementsWithParameter:(long long)arg1 count:(unsigned long long)arg2 prefetchAttributes:(_Bool)arg3;
+- (id)childrenIncludingPrefetchedAttributesWithCount:(unsigned long long)arg1;
 - (id)previousElementsWithCount:(unsigned long long)arg1;
 - (id)nextElementsIncludingPrefetchedAttributesWithCount:(unsigned long long)arg1;
 - (id)nextElementsWithCount:(unsigned long long)arg1;

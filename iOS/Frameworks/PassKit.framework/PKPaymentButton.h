@@ -6,32 +6,29 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, CAShapeLayer, PKShapeView, UILabel, UIView;
+@class CAFilter, CAShapeLayer;
 
 @interface PKPaymentButton : UIButton
 {
     CAShapeLayer *_layer;
     long long _style;
     long long _type;
-    UIView *_container;
-    UILabel *_buyLabel;
     CAFilter *_highlightFilter;
     _Bool _highlighted;
-    struct CGSize _boundsSize;
-    PKShapeView *_maskView;
-    double _fontRatio;
     double _cornerRadius;
 }
 
 + (id)titleForType:(long long)arg1;
 + (id)buttonWithType:(long long)arg1 style:(long long)arg2;
 + (Class)layerClass;
-@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 - (void).cxx_destruct;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+- (long long)_effectiveButtonStyle;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_createHighlightFilterIfNecessary;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)drawRect:(struct CGRect)arg1;

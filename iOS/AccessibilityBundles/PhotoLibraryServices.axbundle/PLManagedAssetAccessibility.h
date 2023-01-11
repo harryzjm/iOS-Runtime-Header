@@ -12,9 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
 - (id)accessibilityLabel;
-- (id)_accessibilityPhotoDescription;
 
 @end
 

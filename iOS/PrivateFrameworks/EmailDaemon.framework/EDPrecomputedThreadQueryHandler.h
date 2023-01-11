@@ -7,11 +7,12 @@
 #import <EmailDaemon/EDMessageChangeHookResponder-Protocol.h>
 #import <EmailDaemon/EDThreadChangeHookResponder-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
+#import <EmailDaemon/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 
-@class EDThreadPersistence, EDUpdateThrottler, EFCancelationToken, EMThreadScope, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class EDThreadPersistence, EDThreadReloadSummaryHelper, EDUpdateThrottler, EFCancelationToken, EMCollectionItemIDStateCapturer, EMMailboxScope, EMThreadScope, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol EFCancelable, EFScheduler;
 
-@interface EDPrecomputedThreadQueryHandler <EDMessageChangeHookResponder, EDThreadChangeHookResponder, EFLoggable>
+@interface EDPrecomputedThreadQueryHandler <EDMessageChangeHookResponder, EDThreadChangeHookResponder, EFLoggable, EMCollectionItemIDStateCapturerDelegate>
 {
     EMThreadScope *_threadScope;
     EDThreadPersistence *_threadPersistence;
@@ -20,21 +21,26 @@
     EFCancelationToken *_cancelationToken;
     NSMutableDictionary *_pendingChanges;
     NSMutableArray *_pendingPositionChanges;
-    NSMutableSet *_pendingDeletes;
     NSMutableSet *_unreportedJournaledObjectIDs;
     NSMutableDictionary *_reportedJournaledObjectIDs;
     NSMutableDictionary *_oldestThreadObjectIDsByMailbox;
     id <EFCancelable> _updateOldestThreadsCancelationToken;
     EDUpdateThrottler *_updateThrottler;
+    EDThreadReloadSummaryHelper *_reloadSummaryHelper;
+    EMMailboxScope *_mailboxScope;
+    EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 + (id)log;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
+@property(readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
+@property(readonly, nonatomic) EDThreadReloadSummaryHelper *reloadSummaryHelper; // @synthesize reloadSummaryHelper=_reloadSummaryHelper;
 @property(readonly, nonatomic) EDUpdateThrottler *updateThrottler; // @synthesize updateThrottler=_updateThrottler;
 @property(retain, nonatomic) id <EFCancelable> updateOldestThreadsCancelationToken; // @synthesize updateOldestThreadsCancelationToken=_updateOldestThreadsCancelationToken;
 @property(retain, nonatomic) NSMutableDictionary *oldestThreadObjectIDsByMailbox; // @synthesize oldestThreadObjectIDsByMailbox=_oldestThreadObjectIDsByMailbox;
 @property(retain, nonatomic) NSMutableDictionary *reportedJournaledObjectIDs; // @synthesize reportedJournaledObjectIDs=_reportedJournaledObjectIDs;
 @property(retain, nonatomic) NSMutableSet *unreportedJournaledObjectIDs; // @synthesize unreportedJournaledObjectIDs=_unreportedJournaledObjectIDs;
-@property(retain, nonatomic) NSMutableSet *pendingDeletes; // @synthesize pendingDeletes=_pendingDeletes;
 @property(retain, nonatomic) NSMutableArray *pendingPositionChanges; // @synthesize pendingPositionChanges=_pendingPositionChanges;
 @property(retain, nonatomic) NSMutableDictionary *pendingChanges; // @synthesize pendingChanges=_pendingChanges;
 @property(retain, nonatomic) EFCancelationToken *cancelationToken; // @synthesize cancelationToken=_cancelationToken;
@@ -42,12 +48,13 @@
 @property(readonly, nonatomic) id <EFScheduler> changeScheduler; // @synthesize changeScheduler=_changeScheduler;
 @property(readonly, nonatomic) EDThreadPersistence *threadPersistence; // @synthesize threadPersistence=_threadPersistence;
 @property(readonly, nonatomic) EMThreadScope *threadScope; // @synthesize threadScope=_threadScope;
-- (void).cxx_destruct;
+- (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
+- (id)labelForStateCapture;
 - (void)_oldestThreadsNeedUpdate;
 - (id)_messageForPersistedMessage:(id)arg1;
 - (void)persistenceDidUpdateProperties:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;
-- (void)persistenceCanResetThreadScope:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
+- (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
+- (void)persistenceWillResetThreadScope:(id)arg1 denyBlock:(CDUnknownBlockType)arg2;
 - (void)persistenceDidFinishThreadUpdates;
 - (void)persistenceIsDeletingThreadWithObjectID:(id)arg1 generationWindow:(id)arg2;
 - (_Bool)_keyPathsAffectSorting:(id)arg1;
@@ -63,9 +70,11 @@
 - (void)_addChangeToPendingChanges:(id)arg1 forThreadObjectID:(id)arg2;
 - (id)threadForObjectID:(id)arg1 error:(id *)arg2;
 - (void)_getInitialResults;
+- (void)_onScheduler:(id)arg1 performCancelableBlock:(CDUnknownBlockType)arg2;
+- (void)test_tearDown;
 - (void)cancel;
 - (void)start;
-- (id)initWithQuery:(id)arg1 threadScope:(id)arg2 messagePersistence:(id)arg3 threadPersistence:(id)arg4 hookRegistry:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
+- (id)initWithQuery:(id)arg1 threadScope:(id)arg2 messagePersistence:(id)arg3 threadPersistence:(id)arg4 hookRegistry:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7 observationResumer:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

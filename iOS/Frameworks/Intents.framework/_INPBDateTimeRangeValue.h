@@ -20,9 +20,9 @@
         unsigned int startCalendar:1;
     } _has;
     _Bool _allDay;
-    _Bool __encodeLegacyGloryData;
     long long _endCalendar;
     _INPBDateTime *_endDateTime;
+    NSString *_name;
     _INPBRecurrenceValue *_recurrence;
     long long _startCalendar;
     _INPBDateTime *_startDateTime;
@@ -30,15 +30,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 @property(retain, nonatomic) _INPBDateTime *startDateTime; // @synthesize startDateTime=_startDateTime;
 @property(nonatomic) long long startCalendar; // @synthesize startCalendar=_startCalendar;
 @property(retain, nonatomic) _INPBRecurrenceValue *recurrence; // @synthesize recurrence=_recurrence;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) _INPBDateTime *endDateTime; // @synthesize endDateTime=_endDateTime;
 @property(nonatomic) long long endCalendar; // @synthesize endCalendar=_endCalendar;
 @property(nonatomic) _Bool allDay; // @synthesize allDay=_allDay;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -51,6 +51,7 @@
 @property(readonly, nonatomic) _Bool hasStartDateTime;
 @property(nonatomic) _Bool hasStartCalendar;
 @property(readonly, nonatomic) _Bool hasRecurrence;
+@property(readonly, nonatomic) _Bool hasName;
 @property(readonly, nonatomic) _Bool hasEndDateTime;
 @property(nonatomic) _Bool hasEndCalendar;
 @property(nonatomic) _Bool hasAllDay;

@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, SSVPlayActivityController;
+@class ICPlayActivityController, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface ICFlushPlayActivityEventsOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    SSVPlayActivityController *_playActivityController;
+    ICPlayActivityController *_playActivityController;
 }
 
-@property(readonly, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) ICPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 - (void)execute;
 - (id)initWithPlayActivityController:(id)arg1;
 - (id)init;

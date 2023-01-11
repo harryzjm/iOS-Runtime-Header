@@ -8,14 +8,15 @@
 
 @class NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreLibraryMappingResponse : NSObject
 {
     NSMutableDictionary *_storeIdentifierSetToLibraryIdentifierSet;
     long long _libraryAddedStatus;
 }
 
-@property(nonatomic) long long libraryAddedStatus; // @synthesize libraryAddedStatus=_libraryAddedStatus;
 - (void).cxx_destruct;
+@property(nonatomic) long long libraryAddedStatus; // @synthesize libraryAddedStatus=_libraryAddedStatus;
 - (void)setLibraryIdentifierSet:(id)arg1 forIdentifierSet:(id)arg2;
 - (id)libraryIdentifierSetForIdentifierSet:(id)arg1;
 

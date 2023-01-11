@@ -11,8 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityImageLabelforStatus:(long long)arg1;
+- (id)_accessibilityImageLabelforAttributedLocationName:(id)arg1 andLocationStatus:(long long)arg2;
+- (id)_accessibilitySupplementaryFooterViews;
 - (void)addLocation:(id)arg1;
 - (id)accessibilityLabel;
+- (id)accessibilityCustomContent;
+- (id)accessibilityCustomActions;
 - (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateLocationViewsIfNeeded;

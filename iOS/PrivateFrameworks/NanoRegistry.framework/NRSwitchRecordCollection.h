@@ -14,9 +14,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (void)truncateSwitchRecords;
-- (id)initWithHistoryEntries:(id)arg1;
-- (id)deviceIDAtSwitchIndex:(unsigned int)arg1 date:(id *)arg2;
-- (void)addSwitchRecordWithHistoryEntry:(id)arg1;
 
 @end
 

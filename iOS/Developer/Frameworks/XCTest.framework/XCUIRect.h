@@ -12,6 +12,7 @@
 }
 
 @property(readonly) struct CGRect rect; // @synthesize rect=_rect;
+- (id)description;
 - (id)initWithRect:(struct CGRect)arg1;
 
 @end

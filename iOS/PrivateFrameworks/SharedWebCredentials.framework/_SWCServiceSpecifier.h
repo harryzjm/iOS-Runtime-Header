@@ -10,7 +10,7 @@
 #import <SharedWebCredentials/NSSecureCoding-Protocol.h>
 #import <SharedWebCredentials/SWCRedactedDescription-Protocol.h>
 
-@class NSString, _SWCApplicationIdentifier, _SWCDomain;
+@class NSNumber, NSString, _SWCApplicationIdentifier, _SWCDomain;
 
 @interface _SWCServiceSpecifier : NSObject <SWCRedactedDescription, NSSecureCoding, NSCopying>
 {
@@ -23,10 +23,10 @@
 + (id)serviceSpecifiersWithEntitlementValue:(id)arg1 serviceType:(id)arg2 error:(id *)arg3;
 + (id)serviceSpecifiersWithEntitlementValue:(id)arg1 error:(id *)arg2;
 + (id)_serviceSpecifiersWithEntitlementValue:(id)arg1 serviceType:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
 @property(readonly) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(readonly) _SWCDomain *SWCDomain; // @synthesize SWCDomain=_domain;
 @property(readonly) _SWCApplicationIdentifier *SWCApplicationIdentifier; // @synthesize SWCApplicationIdentifier=_applicationIdentifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -42,7 +42,12 @@
 - (id)init;
 - (id)initWithServiceType:(id)arg1 applicationIdentifier:(id)arg2 domain:(id)arg3;
 @property(readonly, getter=isValid) _Bool valid;
+- (_Bool)domainEncompassesDomainOfServiceSpecifier:(id)arg1;
+- (_Bool)domainEncompassesDomain:(id)arg1;
+@property(readonly) BOOL domainModeOfOperation;
+@property(readonly) NSNumber *domainPort;
 @property(readonly, getter=isDomainWildcard) _Bool domainWildcard;
+@property(readonly) NSString *domainHost;
 @property(readonly) NSString *applicationIdentifierPrefix;
 @property(readonly) NSString *bundleIdentifier;
 

@@ -5,20 +5,24 @@
 //
 
 #import <SearchUI/SearchUIFeedbackDelegateInternal-Protocol.h>
+#import <SearchUI/SearchUITableViewSizingDelegate-Protocol.h>
 #import <SearchUI/SearchUITableViewTesting-Protocol.h>
+#import <SearchUI/UITableViewDelegatePrivate-Protocol.h>
 
 @class NSString, SearchUIPeekDelegate, SearchUITableModel, SearchUITableView, TLKTableViewScrollTester, UIContextMenuInteraction;
-@protocol SFFeedbackListener, SearchUIResultsViewDelegate;
+@protocol SFFeedbackListener, SearchUIResultsViewDelegate, SearchUISizingDelegate;
 
-@interface SearchUITableViewController <SearchUITableViewTesting, SearchUIFeedbackDelegateInternal>
+@interface SearchUITableViewController <SearchUITableViewSizingDelegate, UITableViewDelegatePrivate, SearchUITableViewTesting, SearchUIFeedbackDelegateInternal>
 {
     _Bool _shouldUseInsetRoundedSections;
     _Bool _shouldUseStandardSectionInsets;
+    _Bool _tableViewAnimating;
     CDUnknownBlockType tableViewWillUpdateHandler;
     CDUnknownBlockType tableViewDidUpdateHandler;
     CDUnknownBlockType cellWillDisplayHandler;
     id <SFFeedbackListener> _feedbackListener;
     id <SearchUIResultsViewDelegate> _resultsViewDelegate;
+    id <SearchUISizingDelegate> _sizingDelegate;
     SearchUITableModel *_tableModel;
     SearchUIPeekDelegate *_peekDelegate;
     UIContextMenuInteraction *_contextInteraction;
@@ -28,8 +32,9 @@
     struct CGPoint _stateRestoredScrollPoint;
 }
 
-+ (void)applySeparatorStyleToCell:(id)arg1 forCurrentRowModel:(id)arg2 nextRowModel:(id)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKTableViewScrollTester *scrollTester; // @synthesize scrollTester=_scrollTester;
+@property(nonatomic) _Bool tableViewAnimating; // @synthesize tableViewAnimating=_tableViewAnimating;
 @property(nonatomic) struct CGPoint stateRestoredScrollPoint; // @synthesize stateRestoredScrollPoint=_stateRestoredScrollPoint;
 @property(retain, nonatomic) SearchUITableModel *stateRestoredTableModel; // @synthesize stateRestoredTableModel=_stateRestoredTableModel;
 @property(nonatomic) long long preferredPunchoutIndex; // @synthesize preferredPunchoutIndex=_preferredPunchoutIndex;
@@ -38,12 +43,12 @@
 @property(retain, nonatomic) SearchUITableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property(nonatomic) _Bool shouldUseStandardSectionInsets; // @synthesize shouldUseStandardSectionInsets=_shouldUseStandardSectionInsets;
 @property(nonatomic) _Bool shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
+@property __weak id <SearchUISizingDelegate> sizingDelegate; // @synthesize sizingDelegate=_sizingDelegate;
 @property __weak id <SearchUIResultsViewDelegate> resultsViewDelegate; // @synthesize resultsViewDelegate=_resultsViewDelegate;
 @property(nonatomic) __weak id <SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
 @property(copy, nonatomic) CDUnknownBlockType cellWillDisplayHandler; // @synthesize cellWillDisplayHandler;
 @property(copy, nonatomic) CDUnknownBlockType tableViewDidUpdateHandler; // @synthesize tableViewDidUpdateHandler;
 @property(copy, nonatomic) CDUnknownBlockType tableViewWillUpdateHandler; // @synthesize tableViewWillUpdateHandler;
-- (void).cxx_destruct;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (_Bool)forwardFeedbackForSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
@@ -57,9 +62,13 @@
 - (_Bool)_canShowWhileLocked;
 - (void)updateContentScrolledOffScreenStatus;
 - (double)offScreenContentScrollDistance;
+- (id)searchUICommandEnvironment;
+- (id)commandEnvironment;
+- (void)performTapCommandForRowModel:(id)arg1 environment:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)deselectSelectedRows;
+- (void)restoreResultsIfNeeded;
 - (void)purgeMemory;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
@@ -67,7 +76,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)updateViewControllerTitle:(id)arg1;
 - (void)cardSectionViewDidSelectPreferredPunchoutIndex:(long long)arg1;
-- (void)updateSeparators;
+- (void)removeRowModel:(id)arg1;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1 animate:(_Bool)arg2;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateTableForNewCellHeightAnimated:(_Bool)arg1;
@@ -81,24 +90,21 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)willDismissViewController:(id)arg1;
 - (void)showViewController:(id)arg1;
-- (void)presentViewController:(id)arg1 animated:(_Bool)arg2 forceModalPresentation:(_Bool)arg3;
-- (void)presentViewController:(id)arg1;
-- (void)requestAuthIfNecessaryAndPresentViewController:(id)arg1 animated:(_Bool)arg2 forceModalPresentation:(_Bool)arg3;
-- (unsigned long long)handleSelectionAtIndexPath:(id)arg1 wasPop:(_Bool)arg2;
 - (void)sendFeedbackForCardSectionEngagement:(id)arg1 atIndexPath:(id)arg2 withTriggerEvent:(unsigned long long)arg3;
 - (id)cardSectionForIndexPath:(id)arg1;
 - (id)resultForIndexPath:(id)arg1;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)fallbackPeekViewControllerForIndexPath:(id)arg1;
-- (id)viewControllerForIndexPath:(id)arg1 isPeek:(_Bool)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)popAtIndexPath:(id)arg1;
+- (void)updateTableModel:(id)arg1 withInsertedSections:(id)arg2 deletedSections:(id)arg3;
 @property(nonatomic) _Bool threeDTouchEnabled;
 - (void)updateLayoutMarginsWithSize:(struct CGSize)arg1 orientation:(long long)arg2;
 - (void)updateLayoutMargins;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)addOrbInteractionIfNeeded;
+- (void)contentSizeDidChange:(struct CGSize)arg1;
+- (void)sceneDidActivate:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -24,15 +24,20 @@ __attribute__((visibility("hidden")))
     unsigned int _burstyLossArraySize;
     unsigned int _burstyLossArrayIndex;
     unsigned int _redundancyMode;
+    unsigned char _mediaControlInfoFECFeedbackVersion;
+    struct OpaqueVCFECFeedbackAnalyzer *_feedbackAnalyzer;
 }
 
 @property(readonly, nonatomic) double redundancyInterval; // @synthesize redundancyInterval=_redundancyInterval;
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
+- (CDStruct_cd7ddd1c)getFecLevelPerFrameSizeVector;
 - (unsigned int)computeRedundancyWithBurstyLoss;
 - (unsigned int)computeRedundancyWithLossPercentage;
 - (void)updateBurstyLoss:(unsigned int)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
-- (id)initWithRedundancyControllerMode:(unsigned int)arg1 maxAllowedRedundancyPercentage:(unsigned int)arg2;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (CDStruct_9650830d)setupFeedbackAnalyzerConfig;
+- (void)dealloc;
+- (id)initWithRedundancyControllerMode:(unsigned int)arg1 maxAllowedRedundancyPercentage:(unsigned int)arg2 mediaControlInfoFECFeedbackVersion:(unsigned char)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

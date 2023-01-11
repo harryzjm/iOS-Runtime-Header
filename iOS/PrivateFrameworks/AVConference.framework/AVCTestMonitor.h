@@ -16,6 +16,12 @@
     AVConferenceXPCClient *_connection;
 }
 
+- (void)setEmulatedNetworkConfigurationPath:(id)arg1;
+- (void)setForcedCapBitrate:(int)arg1;
+- (void)setForcedTargetBitrate:(int)arg1;
+- (void)setCannedReplayPath:(id)arg1;
+- (void)setEmulatedRxPLR:(double)arg1;
+- (void)setEnableOneToOneMode:(_Bool)arg1;
 - (void)setEnableLoopbackInterface:(_Bool)arg1;
 - (void)forceNetworkCellular:(_Bool)arg1;
 - (void)updateAudioInjectConfig:(id)arg1;

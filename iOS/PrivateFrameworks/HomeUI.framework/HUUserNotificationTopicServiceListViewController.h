@@ -4,19 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFUserNotificationServiceTopic, HMHome, HUUserNotificationTopicServiceListModuleController;
+@class HFUserNotificationServiceTopic, HMHome, HUFaceRecognitionItemModuleController, HUUserNotificationTopicServiceListModuleController;
 
 @interface HUUserNotificationTopicServiceListViewController
 {
     HMHome *_home;
     HFUserNotificationServiceTopic *_topic;
     HUUserNotificationTopicServiceListModuleController *_moduleController;
+    HUFaceRecognitionItemModuleController *_faceRecognitionModuleController;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HUFaceRecognitionItemModuleController *faceRecognitionModuleController; // @synthesize faceRecognitionModuleController=_faceRecognitionModuleController;
 @property(retain, nonatomic) HUUserNotificationTopicServiceListModuleController *moduleController; // @synthesize moduleController=_moduleController;
 @property(readonly, nonatomic) HFUserNotificationServiceTopic *topic; // @synthesize topic=_topic;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
+- (_Bool)_shouldShowFaceRecognition;
+- (id)presentFaceRecognitionAddPersonSettingsForUnknownPersonEvent:(id)arg1 animated:(_Bool)arg2;
+- (id)presentFaceRecognitionPersonSettingsForPerson:(id)arg1 personManager:(id)arg2 animated:(_Bool)arg3;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(_Bool)arg2;
 - (id)buildItemModuleControllerForModule:(id)arg1;
 - (id)initWithHome:(id)arg1 topic:(id)arg2;

@@ -21,7 +21,6 @@
     } _has;
     _Bool _overwrite;
     _Bool _success;
-    _Bool __encodeLegacyGloryData;
     _INPBString *_destinationName;
     NSArray *_entityNames;
     _INPBString *_sourceName;
@@ -29,13 +28,12 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)entityNameType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool success; // @synthesize success=_success;
 @property(retain, nonatomic) _INPBString *sourceName; // @synthesize sourceName=_sourceName;
 @property(nonatomic) _Bool overwrite; // @synthesize overwrite=_overwrite;
 @property(copy, nonatomic) NSArray *entityNames; // @synthesize entityNames=_entityNames;
 @property(retain, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

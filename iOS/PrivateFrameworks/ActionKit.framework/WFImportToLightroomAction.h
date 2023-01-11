@@ -13,7 +13,7 @@
 - (_Bool)populatesInputFromInputParameter;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)initializeParameters;
-- (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
+- (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 
 @end
 

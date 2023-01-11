@@ -38,15 +38,18 @@
 - (void)_runMaintenanceOperation;
 - (void)_queue_enqueueMaintenanceOperationIfNeeded;
 - (void)_queue_analyzeIfNeeded;
+- (void)_queue_analyzeOperationDidExecute;
 - (id)analyzeWithError:(id *)arg1;
 @property(readonly, copy, nonatomic) HKMCAnalysis *currentAnalysis;
 - (void)_calendarDayDidChange:(id)arg1;
 - (void)_userCharacteristicsDidChange:(id)arg1;
+- (void)settingsManagerDidUpdateAlgorithmVersionMismatchSettings:(id)arg1;
 - (void)settingsManagerDidUpdateAnalysisSettings:(id)arg1;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)_startObserving;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
+- (void)dealloc;
 - (id)initWithProfile:(id)arg1 settingsManager:(id)arg2;
 
 // Remaining properties

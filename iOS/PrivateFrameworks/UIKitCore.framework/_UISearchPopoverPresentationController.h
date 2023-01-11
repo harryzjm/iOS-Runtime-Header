@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     struct CGRect finalFrameForContainerView;
 }
 
-@property(readonly, nonatomic) struct CGRect finalFrameForContainerView; // @synthesize finalFrameForContainerView;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGRect finalFrameForContainerView; // @synthesize finalFrameForContainerView;
 @property(readonly, nonatomic) unsigned long long edgeForHidingNavigationBar;
 @property(readonly, nonatomic) _Bool forceObeyNavigationBarInsets;
 @property(readonly, nonatomic) _Bool animatorShouldLayoutPresentationViews;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool resultsUnderlapsSearchBar;
 @property(readonly, nonatomic) _Bool shouldAccountForStatusBar;
 @property(readonly, retain, nonatomic) UIView *searchBarContainerView;
+- (_Bool)_forcePresentationInPresenterScene;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_presentedViewControllerForSizeClassPair:(CDStruct_912cb5d2)arg1;
 - (long long)adaptivePresentationStyle;

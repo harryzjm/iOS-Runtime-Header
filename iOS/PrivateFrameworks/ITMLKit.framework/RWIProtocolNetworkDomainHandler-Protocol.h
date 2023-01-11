@@ -9,6 +9,16 @@
 @class NSString, RWIProtocolNetworkHeaders;
 
 @protocol RWIProtocolNetworkDomainHandler <NSObject>
+
+@optional
+- (void)interceptRequestWithErrorWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 requestId:(NSString *)arg3 errorType:(long long)arg4;
+- (void)interceptRequestWithResponseWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 requestId:(NSString *)arg3 content:(NSString *)arg4 base64Encoded:(_Bool)arg5 mimeType:(NSString *)arg6 status:(int)arg7 statusText:(NSString *)arg8 headers:(RWIProtocolNetworkHeaders *)arg9;
+- (void)interceptWithResponseWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 requestId:(NSString *)arg3 content:(NSString *)arg4 base64Encoded:(_Bool)arg5 mimeType:(id *)arg6 status:(int *)arg7 statusText:(id *)arg8 headers:(id *)arg9;
+- (void)interceptWithRequestWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 requestId:(NSString *)arg3 url:(id *)arg4 method:(id *)arg5 headers:(id *)arg6 postData:(id *)arg7;
+- (void)interceptContinueWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 requestId:(NSString *)arg3 stage:(long long)arg4;
+- (void)removeInterceptionWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 url:(NSString *)arg3 stage:(long long)arg4 caseSensitive:(_Bool *)arg5 isRegex:(_Bool *)arg6;
+- (void)addInterceptionWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 url:(NSString *)arg3 stage:(long long)arg4 caseSensitive:(_Bool *)arg5 isRegex:(_Bool *)arg6;
+- (void)setInterceptionEnabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 enabled:(_Bool)arg3;
 - (void)resolveWebSocketWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolRuntimeRemoteObject *))arg2 requestId:(NSString *)arg3 objectGroup:(id *)arg4;
 - (void)getSerializedCertificateWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 requestId:(NSString *)arg3;
 - (void)loadResourceWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *, NSString *, int))arg2 frameId:(NSString *)arg3 url:(NSString *)arg4;

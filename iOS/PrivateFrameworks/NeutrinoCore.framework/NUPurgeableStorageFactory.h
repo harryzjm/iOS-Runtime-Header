@@ -17,6 +17,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *debugDescription;
 - (id)newStorageWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
 - (void)returnStorage:(id)arg1;
 - (id)initWithStorageClass:(Class)arg1 storagePool:(id)arg2;
@@ -24,7 +25,6 @@
 - (id)initWithStorageClass:(Class)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

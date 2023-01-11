@@ -8,17 +8,20 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class _UIButtonBarButtonVisualProvider;
+@class NSString, _UIButtonBarButtonVisualProvider;
 
 @interface UIKBRenderConfig : NSObject <NSCopying>
 {
     _Bool _useEmojiStyles;
     _Bool _lightKeyboard;
+    _Bool _isFloating;
     long long _forceQuality;
     double _blurRadius;
     double _blurSaturation;
     double _keycapOpacity;
     double _lightKeycapOpacity;
+    NSString *_controlKeyBackgroundName;
+    NSString *_activatedKeyplaneSwitchControlKeyBackgroundName;
     _UIButtonBarButtonVisualProvider *_buttonBarVisualProvider;
 }
 
@@ -29,6 +32,9 @@
 + (id)defaultEmojiConfig;
 + (id)defaultConfig;
 @property(readonly, nonatomic) _UIButtonBarButtonVisualProvider *buttonBarVisualProvider; // @synthesize buttonBarVisualProvider=_buttonBarVisualProvider;
+@property(nonatomic) _Bool isFloating; // @synthesize isFloating=_isFloating;
+@property(nonatomic) NSString *activatedKeyplaneSwitchControlKeyBackgroundName; // @synthesize activatedKeyplaneSwitchControlKeyBackgroundName=_activatedKeyplaneSwitchControlKeyBackgroundName;
+@property(nonatomic) NSString *controlKeyBackgroundName; // @synthesize controlKeyBackgroundName=_controlKeyBackgroundName;
 @property(nonatomic) _Bool lightKeyboard; // @synthesize lightKeyboard=_lightKeyboard;
 @property(nonatomic) double lightKeycapOpacity; // @synthesize lightKeycapOpacity=_lightKeycapOpacity;
 @property(nonatomic) double keycapOpacity; // @synthesize keycapOpacity=_keycapOpacity;

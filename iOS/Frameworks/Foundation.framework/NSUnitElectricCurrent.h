@@ -17,6 +17,7 @@
 + (id)kiloamperes;
 + (id)megaamperes;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

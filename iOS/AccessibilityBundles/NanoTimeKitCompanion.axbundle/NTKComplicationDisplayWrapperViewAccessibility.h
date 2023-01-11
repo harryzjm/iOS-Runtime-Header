@@ -4,19 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface NTKComplicationDisplayWrapperViewAccessibility
 {
+    NSString *_accessibilityLocalizedComplicationName;
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *accessibilityLocalizedComplicationName; // @synthesize accessibilityLocalizedComplicationName=_accessibilityLocalizedComplicationName;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (_Bool)accessibilityActivate;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)accessibilityIdentifier;
 - (_Bool)isAccessibilityElement;
 - (void)accessibilitySetComplicationSlotIdentifier:(id)arg1;
 - (id)accessibilityComplicationSlotIdentifier;

@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, _SFDialogController;
 
 @interface _SFDialog : NSObject
 {
     _Bool _completed;
     _Bool _shouldIgnoreGlobalModalUIDisplayPolicy;
+    _SFDialogController *_dialogController;
 }
 
++ (id)websiteLocationDialogForURL:(id)arg1 preciseLocation:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)authenticatorDialogForPanel:(id)arg1 dialogController:(id)arg2;
 + (id)allowDownloadDialogWithDownload:(id)arg1 initiatingURL:(id)arg2 allowViewAction:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)increaseApplicationCacheQuotaDialogForOrigin:(id)arg1 newQuota:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)increaseDatabaseQuotaDialogForOrigin:(id)arg1 newQuota:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -26,6 +29,8 @@
 + (id)genericErrorDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(_Bool)arg3;
 + (id)printBlockedDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (id)redirectDialogWithNavigationResult:(id)arg1 promptPolicy:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)_appLinkRedirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)redirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)noFeedAppDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)formSubmissionDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -38,6 +43,8 @@
 + (id)javaScriptConfirmDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptAlertDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+@property(nonatomic) __weak _SFDialogController *dialogController; // @synthesize dialogController=_dialogController;
 @property(readonly, nonatomic) _Bool shouldIgnoreGlobalModalUIDisplayPolicy; // @synthesize shouldIgnoreGlobalModalUIDisplayPolicy=_shouldIgnoreGlobalModalUIDisplayPolicy;
 - (void)didCompleteWithResponse:(id)arg1;
 - (id)newViewControllerRepresentationWithCompletionHandler:(CDUnknownBlockType)arg1;

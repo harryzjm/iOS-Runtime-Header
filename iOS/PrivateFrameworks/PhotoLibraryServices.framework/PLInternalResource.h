@@ -5,15 +5,14 @@
 //
 
 #import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
-#import <PhotoLibraryServices/PLCloudResourceCommon-Protocol.h>
 #import <PhotoLibraryServices/PLResource-Protocol.h>
 #import <PhotoLibraryServices/PLResourceAvailabilityMarking-Protocol.h>
 #import <PhotoLibraryServices/PLValidatesResourceModel-Protocol.h>
 
-@class CPLScopedIdentifier, NSData, NSDate, NSManagedObjectID, NSNumber, NSString, PLCloudMaster, PLCodec, PLFileSystemBookmark, PLFileSystemVolume, PLInternalResourceSidecarRepresentation, PLManagedAsset, PLUniformTypeIdentifier;
+@class NSData, NSDate, NSNumber, NSString, PLCloudMaster, PLCodec, PLFileSystemBookmark, PLFileSystemVolume, PLInternalResourceSidecarRepresentation, PLManagedAsset, PLUniformTypeIdentifier;
 @protocol PLAssetID, PLCodecIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
 
-@interface PLInternalResource <PLCloudResourceCommon, PLResource, PLValidatesResourceModel, PLResourceAvailabilityMarking, PLCloudDeletable>
+@interface PLInternalResource <PLResource, PLValidatesResourceModel, PLResourceAvailabilityMarking, PLCloudDeletable>
 {
     PLInternalResourceSidecarRepresentation *_sidecarRepresentation;
 }
@@ -33,6 +32,7 @@
 + (id)predicateForOriginalsToDownload;
 + (id)prunePredicateForAllCPLResourceTypes;
 + (id)prunePredicateForCPLResourceTypes:(id)arg1;
++ (id)predicateForResourceIsNotLocallyAvailableWithCPLResourceType:(unsigned long long)arg1 version:(unsigned int)arg2;
 + (id)predicateForMaxFilesize:(long long)arg1;
 + (id)predicateForResourceCreatedAfterDate:(id)arg1;
 + (id)predicateForImageResourcePixelsLessOrEqual:(long long)arg1;
@@ -57,8 +57,12 @@
 + (id)resourceForManagedAsset:(id)arg1 sharedStreamsType:(unsigned int)arg2 managedObjectContext:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *debugDescription;
+- (id)redactedDescription;
+- (id)singleLineDescription;
 - (id)photosCTLJSONDict;
 - (id)photosCTLDescription;
+- (_Bool)isRemotelyAvailable;
+- (_Bool)isLocallyAvailable;
 - (void)deleteResource;
 - (void)markAsNotLocallyAvailable;
 - (void)markAsLocallyAvailableWithFilePath:(id)arg1;
@@ -66,7 +70,7 @@
 - (_Bool)isAdjustedResource;
 - (_Bool)isDefaultOrientation;
 - (id)fileURL;
-- (void)setQualitySortValueBasedOnAssetWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (void)setQualitySortValueBasedOnAssetWidth:(long long)arg1 height:(long long)arg2;
 - (void)setResourceIdentity:(id)arg1 managedObjectContext:(id)arg2;
 - (_Bool)repairResourceValidationErrors:(id)arg1 managedObjectContext:(id)arg2;
 - (id)validatedExternalResourceRepresentationUsingFileURL:(id)arg1;
@@ -75,6 +79,7 @@
 @property(readonly, nonatomic) long long estimatedDataLength; // @dynamic estimatedDataLength;
 - (_Bool)isPlayableVideo;
 @property(readonly, nonatomic) float scale;
+- (float)scaleGivenAssetHasAdjustments:(_Bool)arg1 currentWidth:(long long)arg2 currentHeight:(long long)arg3;
 @property(readonly, nonatomic) long long orientedHeight;
 @property(readonly, nonatomic) long long orientedWidth;
 @property(readonly, nonatomic) id <PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
@@ -98,23 +103,11 @@
 - (_Bool)isSyncableChange;
 - (_Bool)supportsCloudUpload;
 - (_Bool)_colorSpaceIsNativeForDisplay;
+- (id)_libraryID;
+- (id)referenceMediaFileURL;
 - (_Bool)canRepresentAsSidecar;
-@property(readonly, retain, nonatomic) CPLScopedIdentifier *scopedIdentifier;
+- (id)scopedIdentifier;
 @property(nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
-@property(retain, nonatomic) NSDate *prunedAt;
-@property(retain, nonatomic) NSDate *lastOnDemandDownloadDate;
-@property(retain, nonatomic) NSDate *lastPrefetchDate;
-@property(nonatomic) short prefetchCount;
-@property(nonatomic) _Bool isAvailable;
-@property(readonly, nonatomic) unsigned long long sourceCplType;
-@property(readonly, nonatomic) unsigned int resourceRecipeID;
-@property(readonly, retain, nonatomic) NSString *utiString;
-@property(readonly, nonatomic) long long height;
-@property(readonly, nonatomic) long long width;
-@property(readonly, nonatomic) _Bool isLocallyAvailable;
-@property(readonly, retain, nonatomic) NSString *filePath;
-@property(readonly, nonatomic) unsigned long long fileSize;
-@property(readonly, retain, nonatomic) NSString *assetUuid;
 @property(nonatomic) long long dataLength; // @dynamic dataLength;
 - (id)cplFileURL;
 - (void)transitional_reconsiderLocalAvailabilityBasedOnExistingLocationOfCPLResourceAtFilePath:(id)arg1;
@@ -151,7 +144,6 @@
 @property(retain, nonatomic) PLFileSystemVolume *fileSystemVolume; // @dynamic fileSystemVolume;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) short localAvailabilityTarget; // @dynamic localAvailabilityTarget;
-@property(readonly, nonatomic) NSManagedObjectID *objectID;
 @property(nonatomic) unsigned int orientation; // @dynamic orientation;
 @property(nonatomic) long long ptpTrashedState; // @dynamic ptpTrashedState;
 @property(nonatomic) int qualitySortValue; // @dynamic qualitySortValue;

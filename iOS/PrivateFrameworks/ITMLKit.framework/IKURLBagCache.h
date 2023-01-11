@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, SSURLBag;
+#import <ITMLKit/AMSBagProtocol-Protocol.h>
 
-@interface IKURLBagCache : NSObject
+@class AMSProcessInfo, NSDate, NSDictionary, NSString, SSURLBag;
+
+@interface IKURLBagCache : NSObject <AMSBagProtocol>
 {
     SSURLBag *_urlBag;
     NSDictionary *_existingDictionary;
@@ -17,17 +19,39 @@
 
 + (id)URLBagContext;
 + (id)sharedCache;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *cachePath; // @synthesize cachePath=_cachePath;
 @property(readonly, nonatomic) NSDictionary *existingDictionary; // @synthesize existingDictionary=_existingDictionary;
 @property(readonly, nonatomic) SSURLBag *urlBag; // @synthesize urlBag=_urlBag;
-- (void).cxx_destruct;
+- (id)_bagValueForKey:(id)arg1 valueType:(unsigned long long)arg2;
+- (id)stringForKey:(id)arg1;
+- (id)integerForKey:(id)arg1;
+- (id)doubleForKey:(id)arg1;
+- (id)dictionaryForKey:(id)arg1;
+- (void)createSnapshotWithCompletion:(CDUnknownBlockType)arg1;
+- (id)boolForKey:(id)arg1;
+- (id)arrayForKey:(id)arg1;
+- (id)URLForKey:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *profileVersion;
+@property(readonly, copy, nonatomic) NSString *profile;
+- (_Bool)isLoaded;
+@property(readonly, nonatomic, getter=isExpired) _Bool expired;
+@property(readonly, nonatomic) NSDate *expirationDate;
 - (void)checkTrustStatusForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)isTrustedURL:(id)arg1;
 - (void)loadValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_urlForKey:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (void)_loadWithNotification:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateWithInvalidation:(_Bool)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
+@property(readonly) Class superclass;
 
 @end
 

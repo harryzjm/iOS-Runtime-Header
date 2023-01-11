@@ -18,13 +18,15 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serializationQueue; // @synthesize serializationQueue=_serializationQueue;
 @property(retain, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
-- (void).cxx_destruct;
 - (_Bool)_performRenameMailboxChangeAction:(id)arg1;
 - (_Bool)_performMoveMailboxChangeAction:(id)arg1;
 - (_Bool)_performDeleteMailboxChangeAction:(id)arg1;
 - (_Bool)_performCreateMailboxChangeAction:(id)arg1;
+- (void)mailboxTypeForMailboxObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)mailboxObjectIDsForMailboxType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshMailboxList;
 - (void)performMailboxChangeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelObservation:(id)arg1;

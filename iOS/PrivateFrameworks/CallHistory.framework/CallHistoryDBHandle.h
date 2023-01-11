@@ -21,9 +21,9 @@
 + (id)createForServer;
 + (id)createForClient;
 + (id)createWithDBManager:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CallDBManager *callDBManager; // @synthesize callDBManager;
 @property(readonly, nonatomic) NSString *objectId; // @synthesize objectId;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (_Bool)resetAllTimers;
 - (void)resetTimers;
@@ -49,6 +49,7 @@
 - (id)fetchAllNoLimit;
 - (id)fetchAll;
 - (id)updateManagedCallsWithPredicate:(id)arg1 propertiesToUpdate:(id)arg2;
+- (id)fetchManagedCallIdentifiersWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchManagedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (unsigned long long)fetchManagedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
 - (long long)deleteManagedCalls:(id)arg1;

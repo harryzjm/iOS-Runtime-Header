@@ -15,28 +15,39 @@
 @interface SPUIResultsViewController : SearchUIResultsViewController <SPSearchAgentDelegate, SPUIResultsViewTestingDelegate>
 {
     unsigned long long _startTime;
+    _Bool _isHighlighting;
     _Bool _hasResultsWaitingToUpdate;
     CDUnknownBlockType didFinishGettingAllResultsHandler;
+    SFSearchResult *_goTakeoverResult;
     NSArray *_resultSections;
     SFResultSection *_suggestionsSection;
     SFResultSection *_searchThroughSection;
     unsigned long long _previousQueryId;
+    SFSearchResult *_highlightedResult;
 }
 
+- (void).cxx_destruct;
+@property(retain) SFSearchResult *highlightedResult; // @synthesize highlightedResult=_highlightedResult;
 @property unsigned long long previousQueryId; // @synthesize previousQueryId=_previousQueryId;
 @property(retain) SFResultSection *searchThroughSection; // @synthesize searchThroughSection=_searchThroughSection;
 @property _Bool hasResultsWaitingToUpdate; // @synthesize hasResultsWaitingToUpdate=_hasResultsWaitingToUpdate;
 @property(retain) SFResultSection *suggestionsSection; // @synthesize suggestionsSection=_suggestionsSection;
 @property(retain) NSArray *resultSections; // @synthesize resultSections=_resultSections;
+@property(readonly, nonatomic) _Bool isHighlighting; // @synthesize isHighlighting=_isHighlighting;
+@property(retain, nonatomic) SFSearchResult *goTakeoverResult; // @synthesize goTakeoverResult=_goTakeoverResult;
 @property(copy, nonatomic) CDUnknownBlockType didFinishGettingAllResultsHandler; // @synthesize didFinishGettingAllResultsHandler;
-- (void).cxx_destruct;
+- (void)changeTextFieldsReturnKeyType:(long long)arg1 withGoTakeoverResult:(id)arg2;
+- (void)forceHighlightForResult:(id)arg1;
 - (void)_pushSectionsUpdate;
+- (void)insertYahooAttributionIfNecessaryForResult:(id)arg1;
+- (id)asTypedSearchResult;
+- (void)removeCompletionAndHighlightAsTyped:(_Bool)arg1;
 - (_Bool)_hasRealSuggestions;
 - (void)clearSuggestionSection;
-- (void)searchStringUpdated:(id)arg1 wantsCompletions:(_Bool)arg2 withQueryId:(unsigned long long)arg3;
+- (void)searchUpdatedWithString:(id)arg1 tokenEntity:(id)arg2 queryId:(unsigned long long)arg3 wantsCompletions:(_Bool)arg4;
+- (id)makeAsYouTypeSuggestionSearchResultWithSearchString:(id)arg1 detailText:(id)arg2 suggestionIdentifier:(id)arg3 queryId:(unsigned long long)arg4;
 @property(readonly) SFSearchResult *actualSearchSuggestionResult;
 - (void)searchAgentClearedResults:(id)arg1;
-- (void)_truncateResultsSectionToFit;
 - (void)searchAgentFinishedQueryWithoutAdditionalResults:(id)arg1;
 - (void)searchAgentUpdatedResults:(id)arg1;
 - (_Bool)isResultOriginalSearchSuggestion:(id)arg1;

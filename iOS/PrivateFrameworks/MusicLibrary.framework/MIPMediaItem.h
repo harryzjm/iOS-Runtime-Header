@@ -8,7 +8,7 @@
 
 #import <MusicLibrary/NSCopying-Protocol.h>
 
-@class MIPMovie, MIPPodcast, MIPSong, MIPTVShow, NSData, NSMutableArray, NSString;
+@class MIPAudiobook, MIPMovie, MIPPodcast, MIPSong, MIPTVShow, NSData, NSMutableArray, NSString;
 
 @interface MIPMediaItem : PBCodable <NSCopying>
 {
@@ -33,6 +33,7 @@
     long long _storefrontId;
     long long _subscriptionStoreItemId;
     NSString *_artworkId;
+    MIPAudiobook *_audiobook;
     NSString *_chapterMetadataUrl;
     int _cloudMatchedStatus;
     int _cloudPlaybackEndpointType;
@@ -137,6 +138,8 @@
 }
 
 + (Class)libraryIdentifiersType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) MIPAudiobook *audiobook; // @synthesize audiobook=_audiobook;
 @property(retain, nonatomic) MIPPodcast *podcast; // @synthesize podcast=_podcast;
 @property(retain, nonatomic) MIPTVShow *tvShow; // @synthesize tvShow=_tvShow;
 @property(retain, nonatomic) MIPMovie *movie; // @synthesize movie=_movie;
@@ -207,7 +210,6 @@
 @property(nonatomic) long long releaseDateTime; // @synthesize releaseDateTime=_releaseDateTime;
 @property(retain, nonatomic) NSString *sortTitle; // @synthesize sortTitle=_sortTitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -217,6 +219,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasAudiobook;
 @property(readonly, nonatomic) _Bool hasPodcast;
 @property(readonly, nonatomic) _Bool hasTvShow;
 @property(readonly, nonatomic) _Bool hasMovie;

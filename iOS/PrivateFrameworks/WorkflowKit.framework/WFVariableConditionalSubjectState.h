@@ -13,8 +13,8 @@
 }
 
 + (id)subjectType;
-@property(readonly, nonatomic) WFVariableParameterState *variableState; // @synthesize variableState=_variableState;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WFVariableParameterState *variableState; // @synthesize variableState=_variableState;
 - (id)localizedLabelForEnumerationPossibleState:(id)arg1;
 - (void)getEnumerationPossibleStatesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)isEnumeration;
@@ -22,13 +22,13 @@
 - (unsigned long long)displayableTimeUnits;
 - (unsigned long long)tense;
 - (_Bool)isIrrational;
-- (id)unit;
+- (id)unitType;
 - (_Bool)isCaseInsensitive;
 - (id)supportedComparisonOperators;
 @property(readonly, nonatomic) WFContentProperty *effectiveContentProperty; // @synthesize effectiveContentProperty=_effectiveContentProperty;
 - (Class)contentClassProvidingContentProperty;
 - (long long)contentType;
-- (void)getContentWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)containedVariables;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

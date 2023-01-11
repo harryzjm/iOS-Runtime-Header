@@ -18,5 +18,6 @@
 @property(readonly, nonatomic) STUsageCategory *category; // @dynamic category;
 @property(readonly, nonatomic) NSString *domain; // @dynamic domain;
 @property(readonly, nonatomic) long long totalTimeInSeconds; // @dynamic totalTimeInSeconds;
+@property(readonly, nonatomic) _Bool usageTrusted; // @dynamic usageTrusted;
 @end
 

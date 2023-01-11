@@ -14,6 +14,7 @@
 {
 }
 
++ (id)_pruningPredicateWithDate:(id)arg1 profile:(id)arg2 anchor:(id)arg3;
 + (id)pruneSyncedObjectsThroughAnchor:(id)arg1 limit:(unsigned long long)arg2 nowDate:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
 + (id)objectsFromCodableObjectsInCollection:(id)arg1;
@@ -28,6 +29,8 @@
 + (id)_objectWithCodable:(id)arg1;
 + (Class)healthEntityClass;
 + (id)syncEntityIdentifier;
++ (id)unitTest_pruningPredicateForDate:(id)arg1 profile:(id)arg2;
++ (id)unitTest_predicateForSyncSession:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

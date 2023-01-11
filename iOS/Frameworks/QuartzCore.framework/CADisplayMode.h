@@ -19,8 +19,10 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) unsigned long long preferredScale;
 @property(readonly, nonatomic) unsigned long long internalRepresentation;
+@property(readonly, nonatomic) unsigned long long bitDepth;
 @property(readonly, copy, nonatomic) NSString *colorGamut;
 @property(readonly, copy, nonatomic) NSString *hdrMode;
+@property(readonly, nonatomic) _Bool colorModeIsYCbCr;
 @property(readonly, copy, nonatomic) NSString *colorMode;
 @property(readonly, nonatomic, getter=isHighBandwidth) _Bool highBandwidth;
 @property(readonly, nonatomic) _Bool isVirtual;

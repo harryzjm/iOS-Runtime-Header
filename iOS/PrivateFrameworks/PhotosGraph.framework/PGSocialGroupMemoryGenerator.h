@@ -18,8 +18,10 @@
 @property(nonatomic) long long socialGroupID; // @synthesize socialGroupID=_socialGroupID;
 - (_Bool)canFallbackToDejunkAndDedupeForShowMore;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (_Bool)semanticalDedupingEnabledForExtendedCuration;
+- (unsigned long long)durationForExtendedCuration;
+- (unsigned long long)durationForCuration;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_potentialMemoriesWithSocialGroupNode:(id)arg1 inYear:(long long)arg2 result:(CDUnknownBlockType)arg3;
 

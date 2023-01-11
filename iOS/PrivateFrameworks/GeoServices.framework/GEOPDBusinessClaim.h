@@ -13,11 +13,13 @@
 @interface GEOPDBusinessClaim : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_buttonLabel;
     NSString *_descriptionText;
     NSString *_titleText;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _buttonEnabled;
     struct {
         unsigned int has_buttonEnabled:1;
@@ -25,11 +27,7 @@
         unsigned int read_buttonLabel:1;
         unsigned int read_descriptionText:1;
         unsigned int read_titleText:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_buttonLabel:1;
-        unsigned int wrote_descriptionText:1;
-        unsigned int wrote_titleText:1;
-        unsigned int wrote_buttonEnabled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,19 +44,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *descriptionText;
 @property(readonly, nonatomic) _Bool hasDescriptionText;
-- (void)_readDescriptionText;
 @property(retain, nonatomic) NSString *titleText;
 @property(readonly, nonatomic) _Bool hasTitleText;
-- (void)_readTitleText;
 @property(nonatomic) _Bool hasButtonEnabled;
 @property(nonatomic) _Bool buttonEnabled;
 @property(retain, nonatomic) NSString *buttonLabel;
 @property(readonly, nonatomic) _Bool hasButtonLabel;
-- (void)_readButtonLabel;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

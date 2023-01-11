@@ -6,15 +6,28 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface SGQuickResponsesClassificationParameters : NSObject
 {
     double _positiveSamplingRate;
+    double _dynamicLabelSamplingRate;
     double _negativeSamplingRate;
+    unsigned long long _maxReplyLength;
+    unsigned long long _maxPromptLength;
+    double _maxPromptWindowSeconds;
+    NSString *_promptJoiningString;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *promptJoiningString; // @synthesize promptJoiningString=_promptJoiningString;
+@property(readonly, nonatomic) double maxPromptWindowSeconds; // @synthesize maxPromptWindowSeconds=_maxPromptWindowSeconds;
+@property(readonly, nonatomic) unsigned long long maxPromptLength; // @synthesize maxPromptLength=_maxPromptLength;
+@property(readonly, nonatomic) unsigned long long maxReplyLength; // @synthesize maxReplyLength=_maxReplyLength;
 @property(readonly, nonatomic) double negativeSamplingRate; // @synthesize negativeSamplingRate=_negativeSamplingRate;
+@property(readonly, nonatomic) double dynamicLabelSamplingRate; // @synthesize dynamicLabelSamplingRate=_dynamicLabelSamplingRate;
 @property(readonly, nonatomic) double positiveSamplingRate; // @synthesize positiveSamplingRate=_positiveSamplingRate;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 language:(id)arg2;
 
 @end
 

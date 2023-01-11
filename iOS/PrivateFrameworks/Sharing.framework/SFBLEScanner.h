@@ -8,7 +8,7 @@
 
 #import <Sharing/CBCentralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CURetrier, NSArray, NSData, NSSet, NSString;
+@class CBCentralManager, CURetrier, NSArray, NSData, NSMutableDictionary, NSSet, NSString, SFBLERecorder;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFBLEScanner : NSObject <CBCentralManagerDelegate>
@@ -16,8 +16,10 @@
     _Bool _activateCalled;
     _Bool _activated;
     _Bool _activeScan;
+    struct BTSessionImpl *_btSession;
+    _Bool _btStarted;
     CBCentralManager *_centralManager;
-    struct NSMutableDictionary *_devices;
+    NSMutableDictionary *_devices;
     _Bool _invalidateCalled;
     NSObject<OS_dispatch_source> *_lostTimer;
     _Bool _needDups;
@@ -78,6 +80,7 @@
     NSData *_payloadFilterData;
     NSData *_payloadFilterMask;
     double _rescanInterval;
+    SFBLERecorder *_recorder;
     long long _rssiThreshold;
     long long _scanInterval;
     long long _scanRate;
@@ -89,6 +92,7 @@
     NSSet *_trackedPeers;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *trackedPeers; // @synthesize trackedPeers=_trackedPeers;
 @property(copy, nonatomic) CDUnknownBlockType timeoutHandler; // @synthesize timeoutHandler=_timeoutHandler;
 @property(nonatomic) double timeout; // @synthesize timeout=_timeout;
@@ -99,6 +103,7 @@
 @property(nonatomic) long long scanInterval; // @synthesize scanInterval=_scanInterval;
 @property(nonatomic) _Bool scanCache; // @synthesize scanCache=_scanCache;
 @property(nonatomic) long long rssiThreshold; // @synthesize rssiThreshold=_rssiThreshold;
+@property(retain, nonatomic) SFBLERecorder *recorder; // @synthesize recorder=_recorder;
 @property(nonatomic) _Bool rssiLogStdOut; // @synthesize rssiLogStdOut=_rssiLogStdOut;
 @property(nonatomic) _Bool rssiLog; // @synthesize rssiLog=_rssiLog;
 @property(nonatomic) double rescanInterval; // @synthesize rescanInterval=_rescanInterval;
@@ -112,8 +117,12 @@
 @property(copy, nonatomic) NSArray *deviceFilter; // @synthesize deviceFilter=_deviceFilter;
 @property(nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
 @property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
-- (void).cxx_destruct;
+- (void)_recordDevice:(id)arg1 data:(id)arg2 rssi:(id)arg3 info:(id)arg4;
+- (void)_btSessionEnsureStopped;
+- (int)_btSessionEnsureStarted;
+- (_Bool)_btSessionUsable;
 - (void)_watchSetupParseName:(id)arg1 fields:(id)arg2;
+- (void)foundPeripheralDevice:(id)arg1 advertisementData:(id)arg2 RSSI:(id)arg3;
 - (void)centralManager:(id)arg1 didDiscoverPeripheral:(id)arg2 advertisementData:(id)arg3 RSSI:(id)arg4;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)_updateRescanTimer;

@@ -11,12 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface LSApplicationRestrictionsManager : NSObject
 {
+    NSSet *_removedSystemApplicationIdentifiers;
 }
 
 + (id)activeRestrictionIdentifiers;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *removedSystemApplicationIdentifiers; // @synthesize removedSystemApplicationIdentifiers=_removedSystemApplicationIdentifiers;
 @property(readonly, getter=isSystemAppDeletionEnabled) _Bool systemAppDeletionEnabled;
-- (id)identifierForRemovedAppPrompt:(id)arg1;
+@property(readonly, getter=isLimitAdTrackingForced) _Bool limitAdTrackingForced;
 @property(readonly, getter=isAdTrackingEnabled) _Bool adTrackingEnabled; // @dynamic adTrackingEnabled;
 - (void)beginListeningForChanges;
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(_Bool)arg3;

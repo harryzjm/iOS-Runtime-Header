@@ -13,7 +13,6 @@
 @interface GEORPProblemStatusRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOABSecondPartyPlaceRequestClientMetaData *_abAssignmentMetadata;
     GEOPDAnalyticMetadata *_analyticMetadata;
     GEORPClientCapabilities *_clientCapabilities;
@@ -21,6 +20,9 @@
     GEOServicesState *_servicesState;
     NSString *_statusNotificationId;
     GEORPUserCredentials *_userCredentials;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_abAssignmentMetadata:1;
         unsigned int read_analyticMetadata:1;
@@ -29,13 +31,7 @@
         unsigned int read_servicesState:1;
         unsigned int read_statusNotificationId:1;
         unsigned int read_userCredentials:1;
-        unsigned int wrote_abAssignmentMetadata:1;
-        unsigned int wrote_analyticMetadata:1;
-        unsigned int wrote_clientCapabilities:1;
-        unsigned int wrote_problemIds:1;
-        unsigned int wrote_servicesState:1;
-        unsigned int wrote_statusNotificationId:1;
-        unsigned int wrote_userCredentials:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,33 +48,30 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOServicesState *servicesState;
 @property(readonly, nonatomic) _Bool hasServicesState;
-- (void)_readServicesState;
 @property(retain, nonatomic) GEOABSecondPartyPlaceRequestClientMetaData *abAssignmentMetadata;
 @property(readonly, nonatomic) _Bool hasAbAssignmentMetadata;
-- (void)_readAbAssignmentMetadata;
 @property(retain, nonatomic) GEOPDAnalyticMetadata *analyticMetadata;
 @property(readonly, nonatomic) _Bool hasAnalyticMetadata;
-- (void)_readAnalyticMetadata;
 @property(retain, nonatomic) GEORPClientCapabilities *clientCapabilities;
 @property(readonly, nonatomic) _Bool hasClientCapabilities;
-- (void)_readClientCapabilities;
 - (id)problemIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problemIdsCount;
-- (void)_addNoFlagsProblemId:(id)arg1;
 - (void)addProblemId:(id)arg1;
 - (void)clearProblemIds;
 @property(retain, nonatomic) NSMutableArray *problemIds;
-- (void)_readProblemIds;
 @property(retain, nonatomic) NSString *statusNotificationId;
 @property(readonly, nonatomic) _Bool hasStatusNotificationId;
-- (void)_readStatusNotificationId;
 @property(retain, nonatomic) GEORPUserCredentials *userCredentials;
 @property(readonly, nonatomic) _Bool hasUserCredentials;
-- (void)_readUserCredentials;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (void)populateAnalyticsMetadata;
 
 @end

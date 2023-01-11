@@ -13,8 +13,8 @@
 
 + (id)probe;
 + (int)_processIdentifierWithProcessName:(const char *)arg1 error:(id *)arg2;
-@property(retain) NSThread *pollingThread; // @synthesize pollingThread=_pollingThread;
 - (void).cxx_destruct;
+@property(retain) NSThread *pollingThread; // @synthesize pollingThread=_pollingThread;
 - (void)_pollBasicTaskInformation:(id)arg1 pid:(int)arg2;
 - (void)_pollTaskMachPortInformation:(id)arg1 task:(unsigned int)arg2;
 - (void)_pollProcessResourceUsageWithData:(id)arg1 pid:(int)arg2;
@@ -29,7 +29,6 @@
 - (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 mach_space_basicinfo:(struct ipc_info_space_basic *)arg3;
 - (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 taskinfo:(struct proc_taskinfo *)arg3;
 - (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 rusage_v4:(struct rusage_info_v4 *)arg3;
-- (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 rusage:(struct rusage_info_v4 *)arg3;
 - (id)init;
 
 @end

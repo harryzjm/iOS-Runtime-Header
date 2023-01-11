@@ -6,37 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthRecordsStore, HKHealthStore, HKSource, NSArray, NSDate, NSError, NSMutableSet, NSSet;
+@class HKAuthorizationStore, HKHealthRecordsStore, HKHealthStore, HKSource, NSArray, NSDate, NSError, NSMutableSet, NSSet;
 
 @interface HKClinicalSourceAuthorizationController : NSObject
 {
     _Bool _anyDeterminedTypeAllowsReading;
     HKSource *_source;
+    HKHealthStore *_healthStore;
     NSArray *_orderedTypesForReading;
     NSError *_fetchError;
     long long _authorizationModeForSource;
     NSDate *_displayReadAuthorizationAnchorDate;
-    HKHealthStore *_healthStore;
     HKHealthRecordsStore *_healthRecordsStore;
+    HKAuthorizationStore *_authorizationStore;
     NSSet *_typesForReading;
     NSSet *_typesRequestedForReading;
     NSMutableSet *_typesEnabledForReading;
     CDUnknownBlockType __unitTesting_reminderRegistryCompletion;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic, setter=_unitTesting_setReminderRegistryCompletion:) CDUnknownBlockType _unitTesting_reminderRegistryCompletion; // @synthesize _unitTesting_reminderRegistryCompletion=__unitTesting_reminderRegistryCompletion;
 @property(readonly, nonatomic) NSMutableSet *typesEnabledForReading; // @synthesize typesEnabledForReading=_typesEnabledForReading;
 @property(readonly, copy, nonatomic) NSSet *typesRequestedForReading; // @synthesize typesRequestedForReading=_typesRequestedForReading;
 @property(copy, nonatomic) NSSet *typesForReading; // @synthesize typesForReading=_typesForReading;
+@property(readonly, nonatomic) HKAuthorizationStore *authorizationStore; // @synthesize authorizationStore=_authorizationStore;
 @property(readonly, nonatomic) HKHealthRecordsStore *healthRecordsStore; // @synthesize healthRecordsStore=_healthRecordsStore;
-@property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(copy, nonatomic) NSDate *displayReadAuthorizationAnchorDate; // @synthesize displayReadAuthorizationAnchorDate=_displayReadAuthorizationAnchorDate;
 @property(nonatomic) _Bool anyDeterminedTypeAllowsReading; // @synthesize anyDeterminedTypeAllowsReading=_anyDeterminedTypeAllowsReading;
 @property(nonatomic) long long authorizationModeForSource; // @synthesize authorizationModeForSource=_authorizationModeForSource;
 @property(copy, nonatomic) NSError *fetchError; // @synthesize fetchError=_fetchError;
 @property(readonly, copy, nonatomic) NSArray *orderedTypesForReading; // @synthesize orderedTypesForReading=_orderedTypesForReading;
+@property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(readonly, copy, nonatomic) HKSource *source; // @synthesize source=_source;
-- (void).cxx_destruct;
 - (void)_setAuthorizationStatuses:(id)arg1 modes:(id)arg2 shouldUpdateAnchor:(_Bool)arg3;
 - (id)_authorizationStatusesWithTypes:(id)arg1;
 - (id)_authorizationModesWithMode:(long long)arg1 types:(id)arg2;

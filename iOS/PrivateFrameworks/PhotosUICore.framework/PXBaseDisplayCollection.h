@@ -14,12 +14,15 @@
 {
 }
 
+@property(readonly, nonatomic) id px_cheapLogIdentifier;
 @property(readonly, nonatomic) _Bool px_isTransientPlacesCollection;
-@property(readonly, nonatomic) _Bool px_canRearrangeContent;
 @property(readonly, nonatomic) _Bool px_isImportSessionCollection;
 @property(readonly, nonatomic) _Bool px_isImportHistoryCollection;
+@property(readonly, nonatomic) _Bool px_isSharedAlbumsVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isMyAlbumsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isSharedActivityVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPeopleVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isForYouVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMemoriesVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMomentsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPhotosVirtualCollection;
@@ -29,15 +32,21 @@
 @property(readonly, nonatomic) _Bool px_isMacSyncedAlbum;
 @property(readonly, nonatomic) _Bool px_isProjectsFolder;
 @property(readonly, nonatomic) _Bool px_isMediaTypesFolder;
+@property(readonly, nonatomic) _Bool px_isSharedAlbumsAndActivityFolder;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsFolder;
 @property(readonly, nonatomic) _Bool px_isTopLevelFolder;
 @property(readonly, nonatomic) _Bool px_isFavoriteMemoriesSmartFolder;
 @property(readonly, nonatomic) _Bool px_isRegularFolder;
 @property(readonly, nonatomic) _Bool px_isSmartFolder;
 @property(readonly, nonatomic) _Bool px_isFolder;
+@property(readonly, nonatomic) _Bool px_isInReadWriteCloudLibrary;
 @property(readonly, nonatomic) _Bool px_isCloudMultipleContributorsEnabled;
 @property(readonly, nonatomic) _Bool px_isOwnedSharedAlbum;
 @property(readonly, nonatomic) _Bool px_isSharedAlbum;
+@property(readonly, nonatomic) _Bool px_isSuggestion;
+@property(readonly, nonatomic) _Bool px_isHighlight;
+@property(readonly, nonatomic) _Bool px_isMoment;
+@property(readonly, nonatomic) _Bool px_isPanoramasSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isScreenRecordingsSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentlyEditedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentsSmartAlbum;
@@ -56,6 +65,12 @@
 @property(readonly, nonatomic) _Bool px_isRegularAlbum;
 @property(readonly, nonatomic) _Bool px_isStandInAlbum;
 @property(readonly, nonatomic) _Bool px_isUserCreated;
+@property(readonly, nonatomic) _Bool px_canAddContent;
+@property(readonly, nonatomic) _Bool px_canRearrangeContent;
+@property(readonly, nonatomic) _Bool px_allowsImplicitSelectionForProjectOrSharingAction;
+@property(readonly, nonatomic) _Bool canContainCollections;
+@property(readonly, nonatomic) _Bool canContainAssets;
+@property(readonly, nonatomic) NSString *localizedTitle;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties

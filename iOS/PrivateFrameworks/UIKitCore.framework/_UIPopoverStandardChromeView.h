@@ -10,9 +10,6 @@ __attribute__((visibility("hidden")))
 @interface _UIPopoverStandardChromeView
 {
     UIView *_arrowBackgroundView;
-    UIView *_arrowView;
-    UIView *_leftCapView;
-    UIView *_rightCapView;
     UIVisualEffectView *_blurView;
     UIView *_maskView;
     UIColor *_popoverBackgroundColor;
@@ -23,20 +20,27 @@ __attribute__((visibility("hidden")))
     long long _requestedBackgroundStyle;
     long long _backgroundStyle;
     _Bool _arrowVisible;
+    _Bool _wasPinned;
     _Bool useShortMode;
     _Bool _debugMode;
     UIView *viewToMaskWhenContentExtendsOverArrow;
     UIColor *_contentBlendingColor;
+    UIView *_arrowView;
+    UIView *_leftCapView;
+    UIView *_rightCapView;
 }
 
 + (struct UIEdgeInsets)contentViewInsets;
 + (double)arrowBase;
 + (double)arrowHeight;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *rightCapView; // @synthesize rightCapView=_rightCapView;
+@property(readonly, nonatomic) UIView *leftCapView; // @synthesize leftCapView=_leftCapView;
+@property(readonly, nonatomic) UIView *arrowView; // @synthesize arrowView=_arrowView;
 @property(readonly, nonatomic) UIColor *contentBlendingColor; // @synthesize contentBlendingColor=_contentBlendingColor;
 @property(nonatomic) __weak UIView *viewToMaskWhenContentExtendsOverArrow; // @synthesize viewToMaskWhenContentExtendsOverArrow;
 @property(nonatomic, getter=isDebugModeEnabled) _Bool debugModeEnabled; // @synthesize debugModeEnabled=_debugMode;
 @property(nonatomic) _Bool useShortMode; // @synthesize useShortMode;
-- (void).cxx_destruct;
 - (void)setArrowVisible:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isArrowVisible) _Bool arrowVisible;
 @property(copy, nonatomic) UIColor *arrowBackgroundColor;
@@ -51,8 +55,9 @@ __attribute__((visibility("hidden")))
 - (double)minNonPinnedOffset;
 - (_Bool)wouldPinForOffset:(double)arg1;
 - (_Bool)isPinned;
-- (_Bool)hasComponentViews;
+@property(readonly, nonatomic) _Bool hasComponentViews;
 - (void)_loadNecessaryViews;
+- (void)_resetComponentViews;
 - (struct CGRect)_contentViewFrame;
 - (struct UIEdgeInsets)safeAreaInsetsForContentView;
 - (_Bool)_shouldUseEqualContentInsetsOnAllSides;

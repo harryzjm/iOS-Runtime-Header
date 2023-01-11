@@ -10,24 +10,24 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBSearchForMediaIntent-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaSearch;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaSearch, _INPBPrivateSearchForMediaIntentData;
 
 @interface _INPBSearchForMediaIntent : PBCodable <_INPBSearchForMediaIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
     NSArray *_mediaItems;
     _INPBMediaSearch *_mediaSearch;
+    _INPBPrivateSearchForMediaIntentData *_privateSearchForMediaIntentData;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)mediaItemsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
+@property(retain, nonatomic) _INPBPrivateSearchForMediaIntentData *privateSearchForMediaIntentData; // @synthesize privateSearchForMediaIntentData=_privateSearchForMediaIntentData;
 @property(retain, nonatomic) _INPBMediaSearch *mediaSearch; // @synthesize mediaSearch=_mediaSearch;
 @property(copy, nonatomic) NSArray *mediaItems; // @synthesize mediaItems=_mediaItems;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -36,6 +36,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(readonly, nonatomic) _Bool hasPrivateSearchForMediaIntentData;
 @property(readonly, nonatomic) _Bool hasMediaSearch;
 - (id)mediaItemsAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long mediaItemsCount;

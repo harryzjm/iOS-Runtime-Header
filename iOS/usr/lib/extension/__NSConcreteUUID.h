@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (id)debugDescription;
 - (id)description;
 - (id)UUIDString;
-- (CDStruct_bd2f613f)_cfUUIDBytes;
 - (void)getUUIDBytes:(unsigned char [16])arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithUUIDBytes:(unsigned char [16])arg1;

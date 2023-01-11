@@ -9,28 +9,29 @@
 #import <HomeUI/WKNavigationDelegate-Protocol.h>
 #import <HomeUI/WKUIDelegate-Protocol.h>
 
-@class NSString, WKUserContentController, WKWebView;
+@class NSString, UIFont, WKUserContentController, WKWebView;
 @protocol HUInlineWebContainerViewDelegate;
 
 @interface HUInlineWebContainerView : UIView <WKUIDelegate, WKNavigationDelegate>
 {
     WKWebView *_webView;
     NSString *_HTMLContent;
+    UIFont *_font;
     id <HUInlineWebContainerViewDelegate> _delegate;
     double _estimatedHeight;
     WKUserContentController *_contentController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) WKUserContentController *contentController; // @synthesize contentController=_contentController;
 @property(nonatomic) double estimatedHeight; // @synthesize estimatedHeight=_estimatedHeight;
 @property(nonatomic) __weak id <HUInlineWebContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(copy, nonatomic) NSString *HTMLContent; // @synthesize HTMLContent=_HTMLContent;
 @property(readonly, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
-- (void).cxx_destruct;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (_Bool)webView:(id)arg1 shouldPreviewElement:(id)arg2;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (id)_defaultFont;
 - (double)heightForWidth:(double)arg1;
 - (void)layoutSubviews;
 - (void)setUserStyleSheet;

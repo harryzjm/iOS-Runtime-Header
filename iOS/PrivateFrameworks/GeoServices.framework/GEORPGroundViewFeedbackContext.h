@@ -13,7 +13,6 @@
 @interface GEORPGroundViewFeedbackContext : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _visiblePlaceMuids;
     NSString *_imageId;
@@ -21,6 +20,9 @@
     NSMutableArray *_onscreenImageResources;
     GEOPDMuninViewState *_viewState;
     NSMutableArray *_visibleFeatureHandles;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _metadataTileBuildId;
     struct {
         unsigned int has_imdataId:1;
@@ -31,14 +33,7 @@
         unsigned int read_onscreenImageResources:1;
         unsigned int read_viewState:1;
         unsigned int read_visibleFeatureHandles:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_visiblePlaceMuids:1;
-        unsigned int wrote_imageId:1;
-        unsigned int wrote_imdataId:1;
-        unsigned int wrote_onscreenImageResources:1;
-        unsigned int wrote_viewState:1;
-        unsigned int wrote_visibleFeatureHandles:1;
-        unsigned int wrote_metadataTileBuildId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,41 +51,38 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)visibleFeatureHandleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)visibleFeatureHandlesCount;
-- (void)_addNoFlagsVisibleFeatureHandle:(id)arg1;
 - (void)addVisibleFeatureHandle:(id)arg1;
 - (void)clearVisibleFeatureHandles;
 @property(retain, nonatomic) NSMutableArray *visibleFeatureHandles;
-- (void)_readVisibleFeatureHandles;
 @property(retain, nonatomic) NSString *imageId;
 @property(readonly, nonatomic) _Bool hasImageId;
-- (void)_readImageId;
 @property(nonatomic) _Bool hasImdataId;
 @property(nonatomic) unsigned long long imdataId;
 - (void)setVisiblePlaceMuids:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)visiblePlaceMuidAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsVisiblePlaceMuid:(unsigned long long)arg1;
 - (void)addVisiblePlaceMuid:(unsigned long long)arg1;
 - (void)clearVisiblePlaceMuids;
 @property(readonly, nonatomic) unsigned long long *visiblePlaceMuids;
 @property(readonly, nonatomic) unsigned long long visiblePlaceMuidsCount;
-- (void)_readVisiblePlaceMuids;
 - (id)onscreenImageResourceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)onscreenImageResourcesCount;
-- (void)_addNoFlagsOnscreenImageResource:(id)arg1;
 - (void)addOnscreenImageResource:(id)arg1;
 - (void)clearOnscreenImageResources;
 @property(retain, nonatomic) NSMutableArray *onscreenImageResources;
-- (void)_readOnscreenImageResources;
 @property(nonatomic) _Bool hasMetadataTileBuildId;
 @property(nonatomic) unsigned int metadataTileBuildId;
 @property(retain, nonatomic) GEOPDMuninViewState *viewState;
 @property(readonly, nonatomic) _Bool hasViewState;
-- (void)_readViewState;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

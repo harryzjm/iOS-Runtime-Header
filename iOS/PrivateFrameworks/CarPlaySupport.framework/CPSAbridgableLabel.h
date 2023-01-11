@@ -10,22 +10,26 @@
 
 @interface CPSAbridgableLabel : UILabel
 {
+    _Bool _useAttributedTextVariants;
     NSArray *_textVariants;
     NSArray *_attributedTextVariants;
     unsigned long long _variantsIndex;
 }
 
 + (id)sanitizedTextForText:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useAttributedTextVariants; // @synthesize useAttributedTextVariants=_useAttributedTextVariants;
 @property(nonatomic) unsigned long long variantsIndex; // @synthesize variantsIndex=_variantsIndex;
 @property(copy, nonatomic) NSArray *attributedTextVariants; // @synthesize attributedTextVariants=_attributedTextVariants;
 @property(copy, nonatomic) NSArray *textVariants; // @synthesize textVariants=_textVariants;
-- (void).cxx_destruct;
 - (long long)_compareBoundsSizeToLayoutSizeForString:(id)arg1;
 - (void)_updateVariant;
 - (unsigned long long)_numberOfVariants;
 - (id)_variantsList;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setText:(id)arg1;
+- (void)setAttributedText:(id)arg1;
 - (id)sanitizedAttributedStringForString:(id)arg1;
 - (id)init;
 

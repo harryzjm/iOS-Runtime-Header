@@ -18,6 +18,7 @@
     _Bool _hasImageData;
     int _propertyID;
     WFFileRepresentation *_vCardRepresentation;
+    WFFileRepresentation *_fullDataVCardRepresentation;
     long long _multivalueIndex;
     NSString *_nickname;
     NSArray *_socialProfiles;
@@ -27,18 +28,19 @@
 + (_Bool)supportsSecureCoding;
 + (void)removeContactsChangeObserver:(id)arg1;
 + (id)addContactsChangeObserver:(CDUnknownBlockType)arg1;
++ (long long)predictedTypeForHandleValue:(id)arg1;
 + (id)contactWithVCardData:(id)arg1 propertyID:(int)arg2 multivalueIndex:(long long)arg3;
 + (id)contactsWithVCardData:(id)arg1;
 + (id)contactsWithName:(id)arg1;
 + (id)allContactsWithSortOrder:(long long)arg1;
 + (id)allContactsWithSortOrder:(long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (Class)preferredConcreteSubclass;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
 @property(readonly, nonatomic) _Bool hasImageData; // @synthesize hasImageData=_hasImageData;
 @property(readonly, nonatomic) NSString *nickname; // @synthesize nickname=_nickname;
 @property(readonly, nonatomic) long long multivalueIndex; // @synthesize multivalueIndex=_multivalueIndex;
 @property(readonly, nonatomic) int propertyID; // @synthesize propertyID=_propertyID;
-- (void).cxx_destruct;
 - (id)wfSerializedRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -64,6 +66,8 @@
 @property(readonly, nonatomic) NSString *firstName;
 @property(readonly, nonatomic) NSString *namePrefix;
 @property(readonly, nonatomic) NSString *formattedName;
+- (id)vCardRepresentationWithFullData:(_Bool)arg1;
+@property(readonly, nonatomic) WFFileRepresentation *fullDataVCardRepresentation; // @synthesize fullDataVCardRepresentation=_fullDataVCardRepresentation;
 @property(readonly, nonatomic) WFFileRepresentation *vCardRepresentation; // @synthesize vCardRepresentation=_vCardRepresentation;
 - (id)contactWithPropertyID:(int)arg1 multivalueIndex:(long long)arg2;
 - (id)valueForPropertyID:(int)arg1;

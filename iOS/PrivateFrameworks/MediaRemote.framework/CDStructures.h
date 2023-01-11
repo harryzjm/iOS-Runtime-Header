@@ -10,14 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct NSMutableDictionary {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
-};
-
 struct _MRHIDButtonEvent {
     unsigned int _field1;
     unsigned int _field2;
@@ -29,39 +21,6 @@ struct _MRHIDTouchEvent {
     unsigned int _field2;
     unsigned long long _field3;
     unsigned int _field4;
-};
-
-struct _MRNowPlayingPlayerPathProtobuf {
-    Class _field1;
-    id _field2;
-    id _field3;
-    id _field4;
-};
-
-struct _MROriginProtobuf {
-    Class _field1;
-    id _field2;
-    id _field3;
-    int _field4;
-    int _field5;
-    CDStruct_d7010776 _field6;
-};
-
-struct _MRPlaybackSessionProtobuf {
-    Class _field1;
-    id _field2;
-    id _field3;
-    id _field4;
-};
-
-struct _MRPlaybackSessionRequestProtobuf {
-    Class _field1;
-    id _field2;
-    int _field3;
-    int _field4;
-    id _field5;
-    id _field6;
-    CDStruct_d7010776 _field7;
 };
 
 struct _MRTextInputTraits {
@@ -80,10 +39,9 @@ struct _MRTextInputTraits {
     unsigned long long PINEntrySeparatorIndexesCount;
 };
 
-struct _MRTransactionKeyProtobuf {
-    Class _field1;
-    id _field2;
-    id _field3;
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -116,13 +74,16 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
-    unsigned int :1;
-    unsigned int :1;
-} CDStruct_d7010776;
-
-typedef struct {
     unsigned int controllerID:1;
 } CDStruct_669c4a63;
+
+typedef struct {
+    unsigned int errorCode:1;
+} CDStruct_70a7dc3e;
+
+typedef struct {
+    unsigned int lastPlayingTimestamp:1;
+} CDStruct_d7e5e336;
 
 typedef struct {
     unsigned int state:1;

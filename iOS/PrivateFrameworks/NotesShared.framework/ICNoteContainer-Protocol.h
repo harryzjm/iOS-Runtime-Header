@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) _Bool isTrashFolder;
 @property(readonly, nonatomic) _Bool supportsEditingNotes;
 @property(readonly, nonatomic) _Bool isAllNotesContainer;
+@property(readonly, nonatomic) _Bool isSharedReadOnly;
 @property(readonly, nonatomic) _Bool isSharedViaICloud;
 @property(readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 @property(readonly) NSManagedObjectContext *managedObjectContext;
@@ -30,7 +31,6 @@
 - (NSPredicate *)predicateForPinnedNotes;
 - (NSPredicate *)predicateForVisibleNotes;
 - (NSString *)accountName;
-- (NSString *)detailForTableViewCell;
 - (NSString *)titleForTableViewCell;
 - (NSString *)titleForNavigationBar;
 - (unsigned long long)visibleNotesCount;

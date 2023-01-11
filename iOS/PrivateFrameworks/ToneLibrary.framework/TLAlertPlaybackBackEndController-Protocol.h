@@ -9,11 +9,12 @@
 @class NSArray, TLAlert, TLAlertStoppingOptions;
 
 @protocol TLAlertPlaybackBackEndController <NSObject>
-- (void)stopPlayingAlerts:(NSArray *)arg1 withOptions:(TLAlertStoppingOptions *)arg2 playbackCompletionType:(long long)arg3 completionHandler:(void (^)(_Bool))arg4;
+- (void)stopPlayingAlerts:(NSArray *)arg1 withOptions:(TLAlertStoppingOptions *)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(void (^)(_Bool))arg4 completionHandler:(void (^)(_Bool))arg5;
 - (void)playAlert:(TLAlert *)arg1 withCompletionHandler:(void (^)(long long, NSError *))arg2;
 
 @optional
 - (void)updateAudioVolumeDynamicallyForAlert:(TLAlert *)arg1 toValue:(float)arg2;
+- (void)preheatForAlert:(TLAlert *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)handleActivationAssertionStatusChangeForAlert:(TLAlert *)arg1 updatedStatus:(_Bool)arg2;
 @end
 

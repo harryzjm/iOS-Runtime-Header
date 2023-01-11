@@ -17,6 +17,6 @@
 - (void)streamingManager:(HMDStreamingManager *)arg1 didStartStream:(NSError *)arg2 slotIdentifier:(NSNumber *)arg3;
 
 @optional
-- (void)streamingManager:(HMDStreamingManager *)arg1 didStartRelay:(NSError *)arg2;
+- (void)streamingManagerDidStartRelay:(HMDStreamingManager *)arg1;
 @end
 

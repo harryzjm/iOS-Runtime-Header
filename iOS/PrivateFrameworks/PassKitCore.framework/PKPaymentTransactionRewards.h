@@ -6,30 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
 @class NSArray;
 
-@interface PKPaymentTransactionRewards : NSObject <NSSecureCoding, PKCloudStoreCoding>
+@interface PKPaymentTransactionRewards : NSObject <NSSecureCoding, PKCloudStoreCoding, NSCopying>
 {
     NSArray *_rewardsItems;
 }
 
 + (id)_rewardsItemsSetFromJsonString:(id)arg1;
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSArray *rewardsItems; // @synthesize rewardsItems=_rewardsItems;
++ (id)recordNamePrefix;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *rewardsItems; // @synthesize rewardsItems=_rewardsItems;
+- (id)totalEligibleValueForUnit:(unsigned long long)arg1;
 - (id)description;
 - (_Bool)isEqualToRewards:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)itemType;
-- (id)recordTypesAndNames;
+- (id)primaryIdentifier;
+- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)_rewardItemsFromRecord:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (id)jsonString;
 - (id)jsonArrayRepresentation;

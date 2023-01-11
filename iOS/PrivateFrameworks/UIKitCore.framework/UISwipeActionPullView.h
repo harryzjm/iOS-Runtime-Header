@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, UIColor, UIContextualAction, UISwipeActionButton;
+@class NSArray, NSMutableArray, UIColor, UIContextualAction, UISwipeActionButton, UIView;
 @protocol UISwipeActionPullViewDelegate;
 
 @interface UISwipeActionPullView
 {
+    UIView *_clippingView;
     NSMutableArray *_buttons;
     NSArray *_actions;
     UISwipeActionButton *_pressedButton;
     _Bool _swipeActionsDidChange;
-    _Bool _isCollapsed;
+    _Bool _isTentative;
     double _openThreshold;
     double _confirmationThreshold;
     double _minimumOffset;
-    double _currentExtraOffset;
     unsigned long long _style;
     _Bool _buttonsUnderlapSwipedView;
     _Bool _autosizesButtons;
@@ -29,15 +29,15 @@
     struct UIEdgeInsets _contentInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) _Bool autosizesButtons; // @synthesize autosizesButtons=_autosizesButtons;
 @property(nonatomic) _Bool buttonsUnderlapSwipedView; // @synthesize buttonsUnderlapSwipedView=_buttonsUnderlapSwipedView;
 @property(copy, nonatomic) UIColor *backgroundPullColor; // @synthesize backgroundPullColor=_backgroundPullColor;
 @property(nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
-@property(nonatomic) id <UISwipeActionPullViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <UISwipeActionPullViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double currentOffset; // @synthesize currentOffset=_currentOffset;
 @property(readonly, nonatomic) unsigned long long cellEdge; // @synthesize cellEdge=_cellEdge;
-- (void).cxx_destruct;
 - (id)description;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_unpressedButton:(id)arg1;
@@ -49,9 +49,17 @@
 - (void)configureWithSwipeActions:(id)arg1;
 - (void)freeze;
 - (void)resetView;
+- (void)_layoutClippingLayer;
+- (void)_setLayerBounds:(struct CGRect)arg1;
+- (void)_setWidth:(double)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (id)_inferredAccessibilityIdentifierTemplate;
 - (void)_rebuildButtons;
+- (void)_setupClippingViewIfNeeded;
+- (double)_totalInterButtonPadding;
+- (double)_interButtonPadding;
+- (double)_paddingToSwipedView;
 - (Class)_buttonClass;
 - (unsigned long long)_swipeActionCount;
 - (double)_directionalMultiplier;

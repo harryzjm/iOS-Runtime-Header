@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<cvml::util::model_file_cache, std::__1::default_delete<cvml::util::model_file_cache>> m_impl;
 }
 
++ (_Bool)useFOpenForModelWithPath:(id)arg1;
 + (id)sharedInstance;
 - (id).cxx_construct;
 - (void).cxx_destruct;

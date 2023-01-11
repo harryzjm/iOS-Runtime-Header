@@ -14,12 +14,14 @@
 @interface AFDictationOptions : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _forceOfflineRecognition;
+    _Bool _preferOnlineRecognition;
     _Bool _detectUtterances;
     _Bool _secureOfflineOnly;
     _Bool _farField;
     _Bool _releaseAudioSessionOnRecordingCompletion;
     _Bool _incremental;
     NSString *_applicationName;
+    NSString *_applicationDisplayName;
     NSString *_applicationVersion;
     STSiriContext *_context;
     NSString *_fieldLabel;
@@ -49,9 +51,12 @@
     NSURL *_modelOverrideURL;
     AFLanguageDetectionUserContext *_languageDetectionUserContext;
     long long _dictationInputOrigin;
+    NSString *_samplingInfo;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *samplingInfo; // @synthesize samplingInfo=_samplingInfo;
 @property(nonatomic) long long dictationInputOrigin; // @synthesize dictationInputOrigin=_dictationInputOrigin;
 @property(copy, nonatomic) AFLanguageDetectionUserContext *languageDetectionUserContext; // @synthesize languageDetectionUserContext=_languageDetectionUserContext;
 @property(copy, nonatomic) NSURL *modelOverrideURL; // @synthesize modelOverrideURL=_modelOverrideURL;
@@ -64,6 +69,7 @@
 @property(nonatomic) _Bool farField; // @synthesize farField=_farField;
 @property(nonatomic) _Bool secureOfflineOnly; // @synthesize secureOfflineOnly=_secureOfflineOnly;
 @property(nonatomic) _Bool detectUtterances; // @synthesize detectUtterances=_detectUtterances;
+@property(nonatomic) _Bool preferOnlineRecognition; // @synthesize preferOnlineRecognition=_preferOnlineRecognition;
 @property(nonatomic) _Bool forceOfflineRecognition; // @synthesize forceOfflineRecognition=_forceOfflineRecognition;
 @property(copy, nonatomic) NSDictionary *voiceTriggerEventInfo; // @synthesize voiceTriggerEventInfo=_voiceTriggerEventInfo;
 @property(copy, nonatomic) NSDictionary *voiceSearchQueryParameters; // @synthesize voiceSearchQueryParameters=_voiceSearchQueryParameters;
@@ -87,8 +93,8 @@
 @property(copy, nonatomic) NSString *fieldLabel; // @synthesize fieldLabel=_fieldLabel;
 @property(retain, nonatomic) STSiriContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
+@property(copy, nonatomic) NSString *applicationDisplayName; // @synthesize applicationDisplayName=_applicationDisplayName;
 @property(copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
-- (void).cxx_destruct;
 - (id)dictationOptionsWithoutTextContext;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;

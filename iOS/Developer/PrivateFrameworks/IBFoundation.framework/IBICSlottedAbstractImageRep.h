@@ -13,10 +13,12 @@
     _Bool _imageDataPixelSizeIsValid;
 }
 
++ (Class)slottedAssetClass;
 - (void).cxx_destruct;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (void)populateIssues:(id)arg1 context:(id)arg2;
 - (_Bool)hasPDFSibling;
+- (_Bool)isSVG;
 - (_Bool)isPDF;
 - (_Bool)isJPEG;
 - (_Bool)isPNG;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)_notifyOnExplicitLayout;
 + (_Bool)_shouldHitTestInputViewFirst;
 + (_Bool)requiresConstraintBasedLayout;
+- (void)_updateSafeAreaInsets;
 - (void)layoutIfNeeded;
 - (unsigned long long)_clipCornersOfView:(id)arg1;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;

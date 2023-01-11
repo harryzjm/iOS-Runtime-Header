@@ -30,6 +30,8 @@
 + (void)loadAchievementsForGameV2:(id)arg1 player:(id)arg2 includeUnreported:(_Bool)arg3 includeHidden:(_Bool)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 + (void)loadAchievementsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 @property(nonatomic) _Bool showsCompletionBanner; // @synthesize showsCompletionBanner=_showsCompletionBanner;
 @property(retain) GKAchievementInternal *internal; // @synthesize internal=_internal;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -40,12 +42,10 @@
 - (void)reportAchievementWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)description;
 @property(readonly, nonatomic, getter=isCompleted) _Bool completed;
-@property(nonatomic) GKGame *game; // @synthesize game=_game;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(readonly, retain, nonatomic) GKPlayer *player; // @synthesize player=_player;
+@property(readonly, nonatomic) GKPlayer *player; // @synthesize player=_player;
 @property(copy, nonatomic) NSString *playerID; // @dynamic playerID;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 forPlayer:(id)arg2;

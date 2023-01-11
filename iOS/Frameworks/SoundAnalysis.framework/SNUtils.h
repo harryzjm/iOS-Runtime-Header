@@ -11,6 +11,25 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (long long)detectionCountInResults:(id)arg1;
++ (id)valueForEntitlement:(id)arg1 error:(id *)arg2;
++ (id)valueForEntitlement:(id)arg1 fromTask:(struct __SecTask *)arg2 error:(id *)arg3;
++ (long long)audioFileFrameCount:(id)arg1;
++ (id)diskSpaceRemainingBytesContainingDirectory:(id)arg1;
++ (id)fileSizeBytes:(id)arg1;
++ (id)fileCreationDate:(id)arg1;
++ (void)_deleteWAVAndTextFilesInDirectory:(id)arg1 createdBeforeDate:(id)arg2 withRemainingDirectoryByteSizeLessThan:(long long)arg3;
++ (void)deleteWAVAndTextFilesInDirectory:(id)arg1 createdBeforeDate:(id)arg2 withRemainingDirectoryByteSizeLessThan:(long long)arg3;
++ (id)loggingPrefixForRequest:(id)arg1;
++ (_Bool)isInternalBuild;
++ (_Bool)isRunningInDaemon;
++ (_Bool)isFormatPCM:(id)arg1;
++ (id)parseFeedbackConnectionsString:(id)arg1;
++ (id)subtractSet:(id)arg1 from:(id)arg2;
++ (id)userSuppliedFeatureNames:(id)arg1 direction:(long long)arg2;
++ (id)userSuppliedOutputFeatureNames:(id)arg1;
++ (id)userSuppliedInputFeatureNames:(id)arg1;
++ (id)feedbackConnections:(id)arg1;
 + (int)modelOutputBlockSize:(id)arg1;
 + (int)modelInputBlockSize:(id)arg1;
 + (int)modelBlockSize:(id)arg1;

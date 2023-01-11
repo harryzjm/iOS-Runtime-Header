@@ -35,10 +35,22 @@
 + (id)paletteForColor:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)swatchImage;
+@property(readonly, nonatomic) UIColor *worldClockNighttimeHandsDotColors;
+@property(readonly, nonatomic) UIColor *worldClockNighttimeHandsColors;
+@property(readonly, nonatomic) UIColor *worldClockNighttimeBackgrounColor;
+@property(readonly, nonatomic) UIColor *worldClockDaytimeHandsDotColors;
+@property(readonly, nonatomic) UIColor *worldClockDaytimeHandsColors;
+@property(readonly, nonatomic) UIColor *worldClockDaytimeBackgrounColor;
+- (_Bool)isLightColor;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) _Bool isBlackBackground;
 - (id)circularDialFillColor;
 - (id)circularDialSubtickColor;
 - (id)circularDialTickColor;
+- (id)_colorForCircularTicksForMinute:(unsigned long long)arg1;
+- (id)colorForCircularTicksForHour:(unsigned long long)arg1;
+- (id)colorForCircularTicksForMinute:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool isMulticolorPalette;
 @property(readonly, nonatomic) UIColor *platterTextColor;
 @property(readonly, nonatomic) long long richComplicationViewTheme;
 @property(readonly, nonatomic) UIColor *bezelComplicationColor;
@@ -52,11 +64,13 @@
 @property(readonly, nonatomic) UIColor *hourHandInlayColor;
 @property(readonly, nonatomic) UIColor *largeTickColor;
 @property(readonly, nonatomic) UIColor *smallTickColor;
+- (id)colorForHourMarker:(unsigned long long)arg1;
 @property(readonly, nonatomic) UIColor *hourMarkerColor;
 @property(readonly, nonatomic) UIColor *circularBackgroundColor;
 - (id)swatchBackgroundColor;
 @property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) unsigned long long color;
+- (_Bool)_shouldHideColor:(unsigned long long)arg1;
 - (id)initWithColor:(unsigned long long)arg1;
 
 // Remaining properties

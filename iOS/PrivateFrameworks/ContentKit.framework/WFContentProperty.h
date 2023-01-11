@@ -8,7 +8,7 @@
 
 #import <ContentKit/NSCopying-Protocol.h>
 
-@class NSArray, NSString, NSUnit;
+@class NSArray, NSString;
 @protocol WFPropertyListObject;
 
 @interface WFContentProperty : NSObject <NSCopying>
@@ -31,16 +31,17 @@
     unsigned long long _tense;
     unsigned long long _timeUnits;
     unsigned long long _comparableUnits;
-    NSUnit *_measurementUnit;
+    NSString *_measurementUnitType;
     NSString *_displayName;
     NSArray *_possibleValues;
     CDUnknownBlockType _possibleValuesGetter;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType possibleValuesGetter; // @synthesize possibleValuesGetter=_possibleValuesGetter;
 @property(copy, nonatomic) NSArray *possibleValues; // @synthesize possibleValues=_possibleValues;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property(readonly, nonatomic) NSUnit *measurementUnit; // @synthesize measurementUnit=_measurementUnit;
+@property(readonly, nonatomic) NSString *measurementUnitType; // @synthesize measurementUnitType=_measurementUnitType;
 @property(readonly, nonatomic) unsigned long long comparableUnits; // @synthesize comparableUnits=_comparableUnits;
 @property(readonly, nonatomic) unsigned long long timeUnits; // @synthesize timeUnits=_timeUnits;
 @property(readonly, nonatomic) unsigned long long tense; // @synthesize tense=_tense;
@@ -59,7 +60,6 @@
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property(readonly, copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
-- (void).cxx_destruct;
 - (unsigned long long)equivalentHash;
 - (_Bool)isEquivalentToProperty:(id)arg1;
 - (void)getValuesForObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -70,7 +70,7 @@
 @property(readonly, copy, nonatomic) NSString *localizedName;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithKeyPath:(id)arg1 block:(CDUnknownBlockType)arg2 name:(id)arg3 propertyClass:(Class)arg4 multipleValues:(_Bool)arg5 filterable:(_Bool)arg6 sortable:(_Bool)arg7 gettable:(_Bool)arg8 primary:(_Bool)arg9 allowedOperators:(id)arg10 userInfo:(id)arg11 possibleValues:(id)arg12 possibleValuesGetter:(CDUnknownBlockType)arg13 caseInsensitive:(_Bool)arg14 negativeName:(id)arg15 singularItemName:(id)arg16 irrational:(_Bool)arg17 tense:(unsigned long long)arg18 timeUnits:(unsigned long long)arg19 comparableUnits:(unsigned long long)arg20 measurementUnit:(id)arg21 displayName:(id)arg22;
+- (id)initWithKeyPath:(id)arg1 block:(CDUnknownBlockType)arg2 name:(id)arg3 propertyClass:(Class)arg4 multipleValues:(_Bool)arg5 filterable:(_Bool)arg6 sortable:(_Bool)arg7 gettable:(_Bool)arg8 primary:(_Bool)arg9 allowedOperators:(id)arg10 userInfo:(id)arg11 possibleValues:(id)arg12 possibleValuesGetter:(CDUnknownBlockType)arg13 caseInsensitive:(_Bool)arg14 negativeName:(id)arg15 singularItemName:(id)arg16 irrational:(_Bool)arg17 tense:(unsigned long long)arg18 timeUnits:(unsigned long long)arg19 comparableUnits:(unsigned long long)arg20 measurementUnitType:(id)arg21 displayName:(id)arg22;
 @property(readonly, nonatomic) Class valueItemClass;
 
 @end

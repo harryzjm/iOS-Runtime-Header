@@ -10,6 +10,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
+};
+
 struct ccdh_gp;
 
 struct ccdigest_info;
@@ -18,7 +27,16 @@ struct ccmode_cbc;
 
 struct ccmode_ecb;
 
+struct ccmode_gcm;
+
 struct ccrng_state;
+
+struct ccrsa_full_ctx {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    struct cczp_funcs *_field3;
+    unsigned long long _field4[0];
+};
 
 struct ccses_crypto_t {
     struct ccdigest_info *_field1;
@@ -44,7 +62,18 @@ struct ccsrp_ctx {
         unsigned int :1;
         unsigned int :16;
     } _field4;
-    unsigned char _field5[7];
-    unsigned long long _field6[1];
+    unsigned long long _field5[1];
+};
+
+struct cczp_funcs;
+
+struct ckvr_srp_context {
+    struct ccrng_state *_field1;
+    struct ccdigest_info *_field2;
+    struct ccmode_cbc *_field3;
+    struct ccmode_cbc *_field4;
+    struct ccmode_gcm *_field5;
+    struct ccmode_gcm *_field6;
+    struct ccsrp_ctx *_field7;
 };
 

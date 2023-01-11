@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface PLCloudSharedDeleteAlbumsJob
 {
     NSArray *_albumCloudGUIDsToDelete;
+    NSString *_inviterAddress;
 }
 
++ (void)deleteLocalAlbumForMSASAlbumGUID:(id)arg1 inviterAddress:(id)arg2;
 + (void)deleteLocalAlbumsForMSASAlbumGUIDs:(id)arg1;
-@property(retain, nonatomic) NSArray *albumCloudGUIDsToDelete; // @synthesize albumCloudGUIDsToDelete=_albumCloudGUIDsToDelete;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *inviterAddress; // @synthesize inviterAddress=_inviterAddress;
+@property(retain, nonatomic) NSArray *albumCloudGUIDsToDelete; // @synthesize albumCloudGUIDsToDelete=_albumCloudGUIDsToDelete;
 - (void)runDaemonSide;
 - (void)run;
 - (long long)daemonOperation;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount, NSDictionary, NSString, NSURL, SUMescalSession;
+#import <iTunesStoreUI/SUNavigationItemDelegate-Protocol.h>
 
-@interface SUAccountViewController
+@class ACAccount, NSDictionary, NSString, NSURL, SUMescalSession, UIBarButtonItem;
+
+@interface SUAccountViewController <SUNavigationItemDelegate>
 {
     _Bool _failed;
     long long _style;
@@ -15,14 +17,18 @@
     long long _mescalState;
     NSString *_primingSignature;
     NSDictionary *_tidHeaders;
+    _Bool _showAccountGlyph;
     ACAccount *_account;
+    UIBarButtonItem *_logoutButton;
 }
 
 + (id)_latestAccountViewController;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIBarButtonItem *logoutButton; // @synthesize logoutButton=_logoutButton;
+@property(nonatomic) _Bool showAccountGlyph; // @synthesize showAccountGlyph=_showAccountGlyph;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(readonly, nonatomic, getter=_mescalSession) SUMescalSession *_mescalSession; // @synthesize _mescalSession;
-- (void).cxx_destruct;
 - (id)_URLByRemovingBlacklistedParametersWithURL:(id)arg1;
 - (_Bool)_shouldUseWebViewFastPath;
 - (void)_mescalDidOpenWithSession:(id)arg1 error:(id)arg2;
@@ -30,7 +36,10 @@
 - (void)_didEnterBackground:(id)arg1;
 - (id)_bagKeyForStyle:(long long)arg1;
 - (id)_authenticationQueryParametersForStyle:(long long)arg1;
+- (void)_logoutPressed:(id)arg1;
 - (void)_closeMescalSession;
+- (id)navigationItem:(id)arg1 willChangeLeftItems:(id)arg2 toNewItems:(id)arg3;
+- (id)navigationItem:(id)arg1 willChangeLeftItem:(id)arg2 toNewItem:(id)arg3;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
@@ -42,6 +51,12 @@
 - (id)copyArchivableContext;
 - (id)initWithExternalAccountURL:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

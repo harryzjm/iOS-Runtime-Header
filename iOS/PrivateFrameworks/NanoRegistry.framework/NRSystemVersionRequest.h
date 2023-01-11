@@ -15,8 +15,6 @@
 }
 
 - (void)sendVersionRequestToCompanion;
-- (id)proxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)connection;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

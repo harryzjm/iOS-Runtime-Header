@@ -6,7 +6,7 @@
 
 #import <Intents/INPlayMediaIntentExport-Protocol.h>
 
-@class INMediaItem, INMediaSearch, NSArray, NSDate, NSNumber, NSString;
+@class INMediaItem, INMediaSearch, INPrivatePlayMediaIntentData, NSArray, NSDate, NSNumber, NSString;
 
 @interface INPlayMediaIntent <INPlayMediaIntentExport>
 {
@@ -24,7 +24,11 @@
 - (id)_keyCodableAttributes;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
+@property(copy, nonatomic) INPrivatePlayMediaIntentData *privatePlayMediaIntentData;
 @property(copy, nonatomic) NSString *proxiedBundleIdentifier;
+@property(nonatomic) long long parsecCategory;
+@property(copy, nonatomic) NSArray *alternativeResults;
+@property(copy, nonatomic) NSArray *audioSearchResults;
 @property(copy, nonatomic) NSArray *hashedRouteUIDs;
 - (void)setMediaSearch:(id)arg1;
 @property(readonly, copy, nonatomic) INMediaSearch *mediaSearch;
@@ -53,7 +57,9 @@
 - (id)_typedBackingStore;
 - (id)initWithMediaItems:(id)arg1 mediaContainer:(id)arg2 playShuffled:(id)arg3 playbackRepeatMode:(long long)arg4 resumePlayback:(id)arg5;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
-- (id)_titleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
+- (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
+- (_Bool)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

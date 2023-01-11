@@ -18,9 +18,9 @@
     double _aspectRatio;
 }
 
-@property(readonly, nonatomic) CALayer *shineLayer; // @synthesize shineLayer=_shineLayer;
 - (void).cxx_destruct;
-- (void)update:(double)arg1 visible:(double)arg2 layer:(id)arg3;
+@property(readonly, nonatomic) CALayer *shineLayer; // @synthesize shineLayer=_shineLayer;
+- (void)update:(double)arg1 visibility:(double)arg2 layer:(id)arg3;
 - (id)initWithDeviceMaskImage:(id)arg1;
 @property(nonatomic) float opacity;
 @property(nonatomic) struct CATransform3D transform;

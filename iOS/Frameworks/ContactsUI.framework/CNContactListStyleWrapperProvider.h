@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     CNContactStyle *_contactStyle;
 }
 
-@property(readonly, nonatomic) CNContactStyle *contactStyle; // @synthesize contactStyle=_contactStyle;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CNContactStyle *contactStyle; // @synthesize contactStyle=_contactStyle;
 - (_Bool)navigationBarIsTranslucent;
 - (long long)navigationBarStyle;
 - (_Bool)searchBarIsTranslucent;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)searchBarTextDisabledColor;
 - (id)searchBarTextColor;
 - (id)searchBarBackgroundColor;
+- (_Bool)usesInsetPlatterStyle;
 - (_Bool)tableIsOpaque;
 - (long long)tableSeparatorOverlayBlendMode;
 - (long long)tableSeparatorStyle;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)cellNameTextFont;
 - (id)cellSearchResultTextDisabledColor;
 - (id)cellSearchResultTextColor;
+- (id)cellSearchBackgroundColor;
 - (id)cellNameTextHighlightedColor;
 - (id)cellNameTextColor;
 - (id)cellBackgroundSelectedColor;

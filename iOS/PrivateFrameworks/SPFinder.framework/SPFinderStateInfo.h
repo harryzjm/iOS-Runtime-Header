@@ -8,29 +8,34 @@
 
 #import <SPFinder/NSSecureCoding-Protocol.h>
 
-@class NSDate;
+@class NSArray, NSDate, NSSet;
 
 @interface SPFinderStateInfo : NSObject <NSSecureCoding>
 {
     _Bool _state;
+    _Bool _optInScreenOffScan;
     NSDate *_lastUpdated;
     NSDate *_lastPublishDate;
     NSDate *_lastScheduledPublishActivityDate;
     long long _activeCache;
+    NSArray *_disabledReasonsArray;
 }
 
 + (_Bool)canPublishAnonymously;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *disabledReasonsArray; // @synthesize disabledReasonsArray=_disabledReasonsArray;
 @property(nonatomic) long long activeCache; // @synthesize activeCache=_activeCache;
 @property(copy, nonatomic) NSDate *lastScheduledPublishActivityDate; // @synthesize lastScheduledPublishActivityDate=_lastScheduledPublishActivityDate;
 @property(copy, nonatomic) NSDate *lastPublishDate; // @synthesize lastPublishDate=_lastPublishDate;
 @property(copy, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
+@property(nonatomic) _Bool optInScreenOffScan; // @synthesize optInScreenOffScan=_optInScreenOffScan;
 @property(nonatomic) _Bool state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (id)description;
+@property(readonly, copy, nonatomic) NSSet *disabledReasons;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithState:(_Bool)arg1 lastUpdated:(id)arg2 lastPublishDate:(id)arg3 lastScheduledPublishActivityDate:(id)arg4 activeCache:(long long)arg5;
+- (id)initWithState:(_Bool)arg1 optInScreenOffScan:(_Bool)arg2 lastUpdated:(id)arg3 lastPublishDate:(id)arg4 lastScheduledPublishActivityDate:(id)arg5 activeCache:(long long)arg6 disabledReasons:(id)arg7;
 
 @end
 

@@ -6,23 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class AMSAuthenticateRequest, AMSFinanceDialogResponse;
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
+
+@class AMSAuthenticateRequest, AMSFinanceDialogResponse, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceAuthenticateResponse : NSObject
+@interface AMSFinanceAuthenticateResponse : NSObject <AMSFinancePerformable>
 {
     AMSAuthenticateRequest *_authenticateRequest;
+    NSDictionary *_dialogDictionary;
     AMSFinanceDialogResponse *_dialogResponse;
 }
 
-+ (id)_createRequestFromDictionary:(id)arg1 dialogRequest:(id)arg2 taskInfo:(id)arg3;
-@property(readonly, nonatomic) AMSFinanceDialogResponse *dialogResponse; // @synthesize dialogResponse=_dialogResponse;
-@property(readonly, nonatomic) AMSAuthenticateRequest *authenticateRequest; // @synthesize authenticateRequest=_authenticateRequest;
++ (void)_updateTaskWithLastCredentialSource:(id)arg1 taskInfo:(id)arg2;
++ (void)_updateTaskWithAuthedAccount:(id)arg1 taskInfo:(id)arg2;
++ (id)_presentAuthRequest:(id)arg1 taskInfo:(id)arg2;
++ (id)_handleDialogFromAuthError:(id)arg1 taskInfo:(id)arg2;
++ (id)_performAuthRequest:(id)arg1 actionResult:(id)arg2 redirectURL:(id)arg3 taskInfo:(id)arg4;
++ (id)_authenticateRequestWithAuthType:(unsigned long long)arg1 taskInfo:(id)arg2 dialogResponse:(id)arg3;
++ (id)performAuthFromResponse:(id)arg1 taskInfo:(id)arg2;
++ (unsigned long long)authenticationTypeForResponse:(id)arg1 responseDictionary:(id)arg2;
 - (void).cxx_destruct;
-- (id)_handleAuthenticateResult:(id)arg1 error:(id)arg2;
-- (id)_findActionableButton;
+@property(readonly, nonatomic) AMSFinanceDialogResponse *dialogResponse; // @synthesize dialogResponse=_dialogResponse;
+@property(retain, nonatomic) NSDictionary *dialogDictionary; // @synthesize dialogDictionary=_dialogDictionary;
+@property(readonly, nonatomic) AMSAuthenticateRequest *authenticateRequest; // @synthesize authenticateRequest=_authenticateRequest;
+- (id)_locateActionableButtonUsingDialogResponse:(id)arg1;
 - (id)performWithTaskInfo:(id)arg1;
-- (id)initWithDialogDictionary:(id)arg1 taskInfo:(id)arg2;
+- (id)initWithResponseDictionary:(id)arg1 taskInfo:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

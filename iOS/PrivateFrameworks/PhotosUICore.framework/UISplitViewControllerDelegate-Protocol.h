@@ -9,6 +9,14 @@
 @protocol UISplitViewControllerDelegate
 
 @optional
+- (void)splitViewControllerInteractivePresentationGestureDidEnd:(UISplitViewController *)arg1;
+- (void)splitViewControllerInteractivePresentationGestureWillBegin:(UISplitViewController *)arg1;
+- (void)splitViewController:(UISplitViewController *)arg1 willHideColumn:(long long)arg2;
+- (void)splitViewController:(UISplitViewController *)arg1 willShowColumn:(long long)arg2;
+- (void)splitViewControllerDidExpand:(UISplitViewController *)arg1;
+- (void)splitViewControllerDidCollapse:(UISplitViewController *)arg1;
+- (long long)splitViewController:(UISplitViewController *)arg1 displayModeForExpandingToProposedDisplayMode:(long long)arg2;
+- (long long)splitViewController:(UISplitViewController *)arg1 topColumnForCollapsingToProposedTopColumn:(long long)arg2;
 - (_Bool)splitViewController:(UISplitViewController *)arg1 shouldHideViewController:(UIViewController *)arg2 inOrientation:(long long)arg3;
 - (void)splitViewController:(UISplitViewController *)arg1 popoverController:(UIPopoverController *)arg2 willPresentViewController:(UIViewController *)arg3;
 - (void)splitViewController:(UISplitViewController *)arg1 willShowViewController:(UIViewController *)arg2 invalidatingBarButtonItem:(UIBarButtonItem *)arg3;

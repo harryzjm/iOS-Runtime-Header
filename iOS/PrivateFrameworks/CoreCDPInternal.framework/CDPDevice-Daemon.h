@@ -7,7 +7,9 @@
 #import <CoreCDP/CDPDevice.h>
 
 @interface CDPDevice (Daemon)
+- (id)initWithEscrowRecordMetadata:(id)arg1;
 - (id)initWithSecureBackupMetadataInfo:(id)arg1;
+- (id)initWithEscrowRecord:(id)arg1;
 - (id)initWithSecureBackupRecordInfo:(id)arg1;
 @end
 

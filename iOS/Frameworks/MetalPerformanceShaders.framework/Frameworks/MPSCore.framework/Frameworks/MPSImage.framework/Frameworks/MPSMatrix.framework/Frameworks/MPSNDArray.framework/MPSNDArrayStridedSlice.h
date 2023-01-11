@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 @interface MPSNDArrayStridedSlice
 {
+    CDStruct_f52b1b8f _strides;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+@property(nonatomic) CDStruct_f52b1b8f strides; // @synthesize strides=_strides;
+- (MISSING_TYPE *)stridesAtSourceIndex:(unsigned long long)arg1;
 - (id)destinationArrayDescriptorForSourceArrays:(id)arg1 sourceState:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (unsigned long long)kernelDimensionalityForSourceArrays:(id)arg1;
-
-// Remaining properties
-@property(nonatomic) CDStruct_df9f7954 strides; // @dynamic strides;
 
 @end
 

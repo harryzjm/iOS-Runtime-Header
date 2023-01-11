@@ -13,17 +13,17 @@
 @interface GEORPWatchAuxiliaryControl : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_hardwareIdentifier;
     NSString *_osBuild;
     NSString *_osVersion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_hardwareIdentifier:1;
         unsigned int read_osBuild:1;
         unsigned int read_osVersion:1;
-        unsigned int wrote_hardwareIdentifier:1;
-        unsigned int wrote_osBuild:1;
-        unsigned int wrote_osVersion:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,17 +37,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *osBuild;
 @property(readonly, nonatomic) _Bool hasOsBuild;
-- (void)_readOsBuild;
 @property(retain, nonatomic) NSString *osVersion;
 @property(readonly, nonatomic) _Bool hasOsVersion;
-- (void)_readOsVersion;
 @property(retain, nonatomic) NSString *hardwareIdentifier;
 @property(readonly, nonatomic) _Bool hasHardwareIdentifier;
-- (void)_readHardwareIdentifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

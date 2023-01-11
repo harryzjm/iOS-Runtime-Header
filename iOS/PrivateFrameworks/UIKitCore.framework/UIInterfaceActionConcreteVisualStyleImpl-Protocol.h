@@ -14,7 +14,6 @@
 - (UIView<UIInterfaceActionVisualBackgroundDisplaying> *)newActionBackgroundViewForViewState:(UIInterfaceActionViewState *)arg1;
 - (UIColor *)actionTitleLabelColorForViewState:(UIInterfaceActionViewState *)arg1;
 - (UIFont *)actionTitleLabelFontForViewState:(UIInterfaceActionViewState *)arg1;
-- (double)minimumImageGapWidth;
 - (double)verticalImageContentSpacing;
 - (double)horizontalImageContentSpacing;
 - (struct UIEdgeInsets)contentMargin;
@@ -38,6 +37,7 @@
 - (UIView<UIInterfaceActionVisualSectionSeparatorDisplaying> *)newSectionSeparatorViewForGroupViewState:(UIInterfaceActionGroupViewState *)arg1;
 - (UIView<UIInterfaceActionVisualSeparatorDisplaying> *)newActionSeparatorViewForGroupViewState:(UIInterfaceActionGroupViewState *)arg1;
 - (id)actionViewStateForAttachingToActionRepresentationView:(UIView *)arg1;
+- (_Bool)selectByIndirectPointerTouchRequired;
 - (_Bool)selectionFeedbackEnabled;
 - (_Bool)selectByPressGestureRequired;
 - (struct CGSize)maximumActionGroupContentSize;

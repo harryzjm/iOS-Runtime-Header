@@ -13,6 +13,7 @@
 
 @property(retain, nonatomic) CUIThemeSchemaRendition *rendition; // @synthesize rendition;
 - (void)dealloc;
+- (id)description;
 
 @end
 

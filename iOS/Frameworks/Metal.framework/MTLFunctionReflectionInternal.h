@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSData;
 
 @interface MTLFunctionReflectionInternal
 {
     NSArray *_builtInArguments;
     NSArray *_arguments;
+    NSData *_pluginReturnData;
 }
 
+- (id)pluginReturnData;
 - (id)arguments;
 - (id)builtInArguments;
 - (void)dealloc;
 - (id)initWithDevice:(id)arg1 reflectionData:(id)arg2 functionType:(unsigned long long)arg3 options:(unsigned long long)arg4;
-- (id)initWithArguments:(id *)arg1 argumentCount:(unsigned int)arg2 builtInArgumentCount:(unsigned int)arg3;
+- (id)initWithArguments:(id *)arg1 argumentCount:(unsigned int)arg2 builtInArgumentCount:(unsigned int)arg3 pluginReturnData:(id)arg4;
 
 @end
 

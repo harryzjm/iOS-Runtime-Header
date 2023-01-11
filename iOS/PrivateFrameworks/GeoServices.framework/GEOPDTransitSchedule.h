@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTransitSchedule : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDDeparturePredicate *_departurePredicateCountdown;
     GEOPDDeparturePredicate *_departurePredicateStamp;
     NSMutableArray *_departureSequences;
     struct GEOPDTimeRange _operatingHoursRange;
     unsigned long long _ttlSeconds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_operatingHoursRange:1;
         unsigned int has_ttlSeconds:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_departurePredicateCountdown:1;
         unsigned int read_departurePredicateStamp:1;
         unsigned int read_departureSequences:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_departurePredicateCountdown:1;
-        unsigned int wrote_departurePredicateStamp:1;
-        unsigned int wrote_departureSequences:1;
-        unsigned int wrote_operatingHoursRange:1;
-        unsigned int wrote_ttlSeconds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -51,6 +48,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasTtlSeconds;
@@ -59,17 +59,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct GEOPDTimeRange operatingHoursRange;
 @property(retain, nonatomic) GEOPDDeparturePredicate *departurePredicateStamp;
 @property(readonly, nonatomic) _Bool hasDeparturePredicateStamp;
-- (void)_readDeparturePredicateStamp;
 @property(retain, nonatomic) GEOPDDeparturePredicate *departurePredicateCountdown;
 @property(readonly, nonatomic) _Bool hasDeparturePredicateCountdown;
-- (void)_readDeparturePredicateCountdown;
 - (id)departureSequenceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)departureSequencesCount;
-- (void)_addNoFlagsDepartureSequence:(id)arg1;
 - (void)addDepartureSequence:(id)arg1;
 - (void)clearDepartureSequences;
 @property(retain, nonatomic) NSMutableArray *departureSequences;
-- (void)_readDepartureSequences;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

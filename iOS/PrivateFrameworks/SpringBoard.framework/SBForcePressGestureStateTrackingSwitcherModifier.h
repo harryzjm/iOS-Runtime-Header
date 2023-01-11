@@ -18,6 +18,7 @@
     struct CGPoint _averageVelocity;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool didPop; // @synthesize didPop=_didPop;
 @property(readonly, nonatomic) _Bool didBeginPanning; // @synthesize didBeginPanning=_didBeginPanning;
 @property(readonly, nonatomic) double forceProgress; // @synthesize forceProgress=_forceProgress;
@@ -25,13 +26,12 @@
 @property(readonly, nonatomic) double panTranslationThreshold; // @synthesize panTranslationThreshold=_panTranslationThreshold;
 @property(readonly, nonatomic) struct CGPoint averageVelocity; // @synthesize averageVelocity=_averageVelocity;
 @property(readonly, nonatomic) struct CGPoint velocity; // @synthesize velocity=_velocity;
-- (void).cxx_destruct;
 - (_Bool)_canCommitToSwitcherWithPanPercent:(double)arg1 forceComplete:(_Bool)arg2;
 - (double)_projectedTranslationWithVelocity:(struct CGPoint)arg1 initialTranslation:(double)arg2;
 - (double)_currentProgressForGestureEvent:(id)arg1;
 - (void)_updateForcePressTrackingWithGestureEvent:(id)arg1;
 - (long long)_currentFinalDestination;
-- (id)_actionForActivatingFinalDestination:(long long)arg1;
+- (id)_responseForActivatingFinalDestination:(long long)arg1;
 - (id)_updateForGestureDidEndWithGestureEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithGestureEvent:(id)arg1;
 - (id)_updateForGestureDidBeginWithGestureEvent:(id)arg1;

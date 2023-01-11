@@ -15,8 +15,8 @@
     NSArray *_timestamps;
 }
 
-@property(retain, nonatomic) NSArray *timestamps; // @synthesize timestamps=_timestamps;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *timestamps; // @synthesize timestamps=_timestamps;
 - (id)description;
 - (void)mergeWithTimestamp:(id)arg1;
 - (unsigned long long)compareTo:(id)arg1;
@@ -31,8 +31,8 @@
 - (id)initWithTimestamps:(id)arg1;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)serialize;
-- (void)saveToArchive:(VectorTimestamp_cd1d3bcf *)arg1;
-- (id)initWithArchive:(const VectorTimestamp_cd1d3bcf *)arg1 andCapacity:(unsigned long long)arg2;
+- (void)saveToArchive:(VectorTimestamp_2287ec0f *)arg1;
+- (id)initWithArchive:(const VectorTimestamp_2287ec0f *)arg1 andCapacity:(unsigned long long)arg2;
 - (id)initWithData:(id)arg1 andCapacity:(unsigned long long)arg2;
 
 @end

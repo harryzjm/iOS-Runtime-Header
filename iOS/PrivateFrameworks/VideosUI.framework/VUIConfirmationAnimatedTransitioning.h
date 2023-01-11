@@ -9,14 +9,19 @@
 #import <VideosUI/UIViewControllerAnimatedTransitioning-Protocol.h>
 
 @class NSString;
+@protocol VUIConfirmationAnimatedTransitioningDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUIConfirmationAnimatedTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
 {
     _Bool _presenting;
+    id <VUIConfirmationAnimatedTransitioningDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isPresenting) _Bool presenting; // @synthesize presenting=_presenting;
+@property(nonatomic) __weak id <VUIConfirmationAnimatedTransitioningDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)animationEnded:(_Bool)arg1;
 - (void)animateTransition:(id)arg1;
 - (double)transitionDuration:(id)arg1;
 - (id)initWithPresenting:(_Bool)arg1;

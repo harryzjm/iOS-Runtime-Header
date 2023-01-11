@@ -14,6 +14,7 @@
     NSArray *_leaderboards;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *leaderboards; // @synthesize leaderboards=_leaderboards;
 @property(retain, nonatomic) GKLeaderboardSet *leaderboardSet; // @synthesize leaderboardSet=_leaderboardSet;
 @property(retain, nonatomic) GKGameRecord *gameRecord; // @synthesize gameRecord=_gameRecord;
@@ -29,7 +30,6 @@
 - (void)removeLeaderboardsWithoutImages;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1 leaderboardSet:(id)arg2;
 
 @end

@@ -35,12 +35,15 @@ __attribute__((visibility("hidden")))
     UIView *__contentView;
     long long __contentInsetsChangeReason;
     double __minimumVisibleHeight;
+    double __editorHeightDelta;
     struct CGRect __contentBounds;
     struct CGRect __untransformedMasterContentFrame;
     struct UIEdgeInsets __contentInsets;
     struct CGRect __keyboardFrame;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setEditorHeightDelta:) double _editorHeightDelta; // @synthesize _editorHeightDelta=__editorHeightDelta;
 @property(nonatomic, setter=_setWasActiveOnLastMasterContentOffsetChange:) _Bool _wasActiveOnLastMasterContentOffsetChange; // @synthesize _wasActiveOnLastMasterContentOffsetChange=__wasActiveOnLastMasterContentOffsetChange;
 @property(nonatomic, setter=_setMinimumVisibleHeight:) double _minimumVisibleHeight; // @synthesize _minimumVisibleHeight=__minimumVisibleHeight;
 @property(nonatomic, setter=_setContentInsetsChangeReason:) long long _contentInsetsChangeReason; // @synthesize _contentInsetsChangeReason=__contentInsetsChangeReason;
@@ -54,9 +57,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property(nonatomic) __weak id <PUAccessoryTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
+- (void)accessoryContentViewController:(id)arg1 editorHeightDidChange:(double)arg2;
 - (void)accessoryContentViewControllerContentBoundsDidChange:(id)arg1;
 - (id)accessoryContentViewControllerViewHostingGestureRecognizers:(id)arg1;
 - (void)_updateMasterContentOffsetIfNeeded;

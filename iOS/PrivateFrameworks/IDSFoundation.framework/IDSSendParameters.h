@@ -53,6 +53,7 @@
 @property(nonatomic) _Bool useDictAsTopLevel;
 @property(nonatomic) _Bool compressed;
 @property(nonatomic) _Bool expectsPeerResponse;
+@property(retain, nonatomic) NSNumber *pushPriority;
 @property(retain, nonatomic) NSNumber *originalTimestamp;
 @property(retain, nonatomic) NSNumber *dropMessageIndicatorCommand;
 @property(retain, nonatomic) NSString *metricReportIdentifier;

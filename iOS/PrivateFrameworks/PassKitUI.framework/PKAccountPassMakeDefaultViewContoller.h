@@ -7,7 +7,7 @@
 #import <PassKitUI/PKAccountFlowControllerDelegate-Protocol.h>
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
-@class CLInUseAssertion, NSString, PKAccountFlowController, PKAccountPostProvisioningContent, UIView;
+@class CLInUseAssertion, NSString, PKAccountFlowController, PKAccountPostProvisioningContent;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKAccountPassMakeDefaultViewContoller <PKAccountFlowControllerDelegate, PKViewControllerPreflightable>
@@ -17,10 +17,10 @@
     unsigned long long _featureIdentifier;
     PKAccountPostProvisioningContent *_makeDefaultPostProvisioningContent;
     CLInUseAssertion *_inUseAssertion;
-    UIView *_topBackgroundView;
 }
 
 - (void).cxx_destruct;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)_terminateSetupFlow;
 - (void)_presentDisplayableError:(id)arg1;
 - (void)_presentViewController:(id)arg1;
@@ -30,8 +30,9 @@
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (_Bool)_willPerformProvisioningActions;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
-- (void)viewWillLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;

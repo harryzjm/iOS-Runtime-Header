@@ -18,16 +18,18 @@
     float _progress;
     MAAsset *_rawAsset;
     NSString *_definitionLanguage;
+    long long _preferredOrder;
 }
 
-+ (id)displayNameForLanguageIdentifier:(id)arg1 forSorting:(_Bool)arg2;
++ (id)displayNameForLanguageIdentifier:(id)arg1;
+- (void).cxx_destruct;
+@property long long preferredOrder; // @synthesize preferredOrder=_preferredOrder;
 @property _Bool isTTYDictionary; // @synthesize isTTYDictionary=_isTTYDictionary;
 @property _Bool isAppleDictionary; // @synthesize isAppleDictionary=_isAppleDictionary;
 @property float progress; // @synthesize progress=_progress;
 @property(nonatomic) _Bool activated; // @synthesize activated=_activated;
 @property(readonly) NSString *definitionLanguage; // @synthesize definitionLanguage=_definitionLanguage;
 @property(readonly) MAAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
-- (void).cxx_destruct;
 - (id)description;
 @property(readonly) struct __DCSDictionary *dictionaryRef;
 @property(readonly) _Bool needsDownloadNewerVersion;
@@ -36,11 +38,8 @@
 @property(readonly) NSString *localizedDictionaryName;
 @property(readonly) NSString *localizedSortName;
 @property(readonly) NSString *localizedLanguageName;
-- (id)localizedLanguageName:(_Bool)arg1;
 - (void)setAssetToUpgrade:(id)arg1;
 - (void)dealloc;
-- (_Bool)assetIsDeletable;
-- (_Bool)assetIsLocal;
 - (id)initWithAsset:(id)arg1;
 
 @end

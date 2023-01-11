@@ -9,13 +9,14 @@
 @class NSArray, UIView, UIViewController;
 
 @protocol PKPalettePopoverPresenting <NSObject>
+@property(retain, nonatomic) UIViewController *palettePopoverPresentingController;
+- (void)updatePalettePopover:(UIViewController *)arg1;
 - (UIView *)palettePopoverSourceView;
 - (struct CGRect)palettePopoverSourceRect;
 - (_Bool)wantsCustomPalettePopoverPresentationSource;
 - (struct UIEdgeInsets)palettePopoverLayoutMargins;
 - (unsigned long long)palettePopoverPermittedArrowDirections;
 - (NSArray *)palettePopoverPassthroughViews;
-- (UIViewController *)palettePopoverPresentingController;
 - (_Bool)isPalettePresentingPopover;
 - (_Bool)shouldPalettePresentPopover;
 @end

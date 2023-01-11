@@ -90,6 +90,7 @@
 - (id)_NSItemProviderTypeCoercion_coercedUIImageValueFromNSURLValue:(id)arg1 error:(id *)arg2;
 - (id)uiPresentationManager;
 - (id)__autorotationSanityCheckObjectFromSource:(id)arg1 selector:(SEL)arg2;
+- (_Bool)_isGestureType:(long long)arg1;
 - (void)prepareForInterfaceBuilder;
 - (void)awakeFromNib;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;

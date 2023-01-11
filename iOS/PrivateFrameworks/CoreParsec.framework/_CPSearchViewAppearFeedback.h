@@ -19,8 +19,11 @@
     _Bool _readerTextAvailable;
     int _viewAppearEvent;
     unsigned long long _timestamp;
+    NSString *_preexistingInput;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *preexistingInput; // @synthesize preexistingInput=_preexistingInput;
 @property(nonatomic) _Bool readerTextAvailable; // @synthesize readerTextAvailable=_readerTextAvailable;
 @property(nonatomic) _Bool isOverApp; // @synthesize isOverApp=_isOverApp;
 @property(nonatomic) _Bool isOnLockScreen; // @synthesize isOnLockScreen=_isOnLockScreen;

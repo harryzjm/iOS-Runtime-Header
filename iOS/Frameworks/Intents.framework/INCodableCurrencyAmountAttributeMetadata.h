@@ -4,20 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface INCodableCurrencyAmountAttributeMetadata
 {
+    NSString *_currencyCode;
     NSArray *_currencyCodes;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *currencyCodes; // @synthesize currencyCodes=_currencyCodes;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *currencyCodes; // @synthesize currencyCodes=_currencyCodes;
+@property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
+- (id)__INCodableDescriptionCurrencyCodeKey;
+- (id)__INIntentResponseCodableDescriptionCurrencyCodeKey;
+- (id)__INTypeCodableDescriptionCurrencyCodeKey;
+- (id)__INCodableDescriptionCurrencyCodesKey;
+- (id)__INIntentResponseCodableDescriptionCurrencyCodesKey;
+- (id)__INTypeCodableDescriptionCurrencyCodesKey;
 
 @end
 

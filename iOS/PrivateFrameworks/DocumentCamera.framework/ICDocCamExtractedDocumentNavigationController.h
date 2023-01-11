@@ -14,6 +14,7 @@
 {
 }
 
+- (_Bool)_canShowWhileLocked;
 - (void)prepareForDismissal;
 - (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;

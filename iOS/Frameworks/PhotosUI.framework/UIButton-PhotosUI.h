@@ -8,7 +8,7 @@
 
 @interface UIButton (PhotosUI)
 - (void)pu_sendActionForControlEventsWithHighlightTimeout:(unsigned long long)arg1;
-- (void)pu_setTitle:(id)arg1 withFallback:(CDUnknownBlockType)arg2 forState:(unsigned long long)arg3;
+- (void)pu_setTitle:(id)arg1 andAccessibilityTitle:(id)arg2 withFallback:(CDUnknownBlockType)arg3 forState:(unsigned long long)arg4;
 - (void)pu_setRTLAwareContentEdgeInsets:(struct UIEdgeInsets)arg1;
 @end
 

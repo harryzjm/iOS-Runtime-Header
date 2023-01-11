@@ -29,6 +29,7 @@
 
 + (id)logCategory;
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool supportsRegisteringAccessories; // @synthesize supportsRegisteringAccessories=_supportsRegisteringAccessories;
 @property(nonatomic, getter=isDeviceProblemNotificationTokenValid) _Bool deviceProblemNotificationTokenValid; // @synthesize deviceProblemNotificationTokenValid=_deviceProblemNotificationTokenValid;
 @property(nonatomic) int deviceProblemNotificationToken; // @synthesize deviceProblemNotificationToken=_deviceProblemNotificationToken;
@@ -41,7 +42,6 @@
 @property(readonly, nonatomic) id <HMDSharingDeviceDiscovery> deviceDiscovery; // @synthesize deviceDiscovery=_deviceDiscovery;
 @property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-- (void).cxx_destruct;
 - (void)handleCurrentNetworkDidChangeNotification:(id)arg1;
 - (void)handleAccessoryWiFiNetworkInfoUpdatedNotification:(id)arg1;
 - (void)handleAccessoryRemovedNotification:(id)arg1;
@@ -71,7 +71,7 @@
 - (void)registerAccessory:(id)arg1 delegate:(id)arg2;
 @property(readonly, copy, nonatomic) NSSet *currentDeviceSymptoms;
 - (void)dealloc;
-- (id)initWithDeviceDiscovery:(id)arg1 companionLinkClient:(id)arg2 wifiManager:(id)arg3;
+- (id)initWithQueue:(id)arg1 deviceDiscovery:(id)arg2 companionLinkClient:(id)arg3 wifiManager:(id)arg4;
 - (id)init;
 
 // Remaining properties

@@ -12,30 +12,24 @@
 
 @interface MapsSuggestionsObservers : NSObject <MapsSuggestionsObject>
 {
-    struct NSString *_name;
-    struct unique_ptr<MSg::Queue, std::__1::default_delete<MSg::Queue>> _callbackQueue;
+    NSString *_name;
+    struct Queue _callbackQueue;
     NSHashTable *_innerObservers;
-    CDUnknownBlockType _onFirstObserverBlock;
-    CDUnknownBlockType _onLastObserverBlock;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
-- (_Bool)synchronouslyEnumerateWithBlock:(CDUnknownBlockType)arg1;
-- (_Bool)enumerateWithBlock:(CDUnknownBlockType)arg1;
-- (unsigned long long)count;
-- (unsigned long long)_count;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
-- (void)onRemovingObserverRunBlock:(CDUnknownBlockType)arg1;
-- (void)onAddingObserverRunBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 @property(readonly, nonatomic) NSString *uniqueName;
+- (_Bool)synchronouslyCallBlock:(CDUnknownBlockType)arg1;
+- (_Bool)callBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)count;
+- (void)removeObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)addObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithName:(struct NSString *)arg1;
-- (id)initWithCallbackQueue:(id)arg1 name:(struct NSString *)arg2;
-- (id)initWithCallbackQueue:(id)arg1 name:(struct NSString *)arg2 strong:(_Bool)arg3;
+- (id)initWithName:(id)arg1;
+- (id)initWithCallbackQueue:(id)arg1 name:(id)arg2;
+- (id)initWithCallbackQueue:(id)arg1 name:(id)arg2 strong:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

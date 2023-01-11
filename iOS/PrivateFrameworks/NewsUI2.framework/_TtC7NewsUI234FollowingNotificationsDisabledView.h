@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI234FollowingNotificationsDisabledView : UIView
 {
     MISSING_TYPE *titleLabel;
@@ -18,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

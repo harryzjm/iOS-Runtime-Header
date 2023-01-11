@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVObservationController, AVPlayerController, NSString;
+@class AVObservationController, AVPlayerController, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSString *_overrideParentApplicationDisplayIdentifier;
     AVPlayerController *_playerController;
     AVPlayerController *_playerControllerToActivateAfterDelay;
+    NSTimer *_startNowPlayingUpdatesTimer;
 }
 
 + (id)_mediaRemoteLanguageOptionCharacteristicForAVMediaCharacteristic:(id)arg1;
@@ -30,11 +31,12 @@ __attribute__((visibility("hidden")))
 + (void *)_createMediaRemoteLanguageOptionWithAVMediaSelectionOption:(id)arg1;
 + (void *)_createMediaRemoteLanguageOptionGroupWithAVMediaSelectionOptions:(id)arg1;
 + (void)sharedNowPlayingInfoControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) __weak NSTimer *startNowPlayingUpdatesTimer; // @synthesize startNowPlayingUpdatesTimer=_startNowPlayingUpdatesTimer;
 @property(nonatomic) __weak AVPlayerController *playerControllerToActivateAfterDelay; // @synthesize playerControllerToActivateAfterDelay=_playerControllerToActivateAfterDelay;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property(copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property(nonatomic) _Bool requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
-- (void).cxx_destruct;
 - (id)_currentLanguageOptions;
 - (id)_availableLanguageOptions;
 - (unsigned int)_handleRemoteCommand:(unsigned int)arg1 options:(id)arg2;

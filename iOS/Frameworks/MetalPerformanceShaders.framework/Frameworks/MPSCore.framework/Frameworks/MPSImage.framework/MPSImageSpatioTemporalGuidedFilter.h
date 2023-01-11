@@ -20,6 +20,8 @@
     unsigned long long _sourceChannels;
     unsigned long long _guideChannels;
     _Bool _preallocateIntermediates;
+    _Bool _useFloatIntermediates;
+    _Bool _supportsReadWriteTextures;
     MPSImageBox3D *_boxFilter;
     MPSImageBilinearScale *_bilinearScaler;
     id <MTLTexture> _guideStack;
@@ -32,10 +34,11 @@
     unsigned long long _preallocatedSize;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) unsigned long long preallocatedSize; // @synthesize preallocatedSize=_preallocatedSize;
 - (void)encodeDownsamplingOn:(id)arg1 inputTexture:(id)arg2 outputTexture:(id)arg3;
 - (void)encodeShiftOn:(id)arg1 textureArray:(id)arg2 by:(unsigned long long)arg3;
+- (id)newTemporaryIntermediate:(id)arg1 texture:(id)arg2;
 - (void)validateCoefficientsTextures:(id)arg1;
 - (void)encodeToCommandBuffer:(id)arg1 sourceTextureArray:(id)arg2 guidanceTexture:(id)arg3 constraintsTextureArray:(id)arg4 numberOfIterations:(unsigned long long)arg5 destinationTextureArray:(id)arg6;
 - (void)encodeReconstructionToCommandBuffer:(id)arg1 guidanceTexture:(id)arg2 constraintsTextureArray:(id)arg3 coefficientsTextureArray:(id)arg4 destinationTextureArray:(id)arg5;

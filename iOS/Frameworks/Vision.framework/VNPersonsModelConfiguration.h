@@ -12,7 +12,7 @@
 @interface VNPersonsModelConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _maximumIdentities;
-    unsigned long long _maximumFaceprintsPerIdentity;
+    unsigned long long _maximumTrainingFaceprintsPerIdentity;
     unsigned long long _faceprintRequestRevision;
 }
 
@@ -27,7 +27,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(nonatomic) unsigned long long maximumFaceprintsPerIdentity; // @synthesize maximumFaceprintsPerIdentity=_maximumFaceprintsPerIdentity;
+@property(nonatomic) unsigned long long maximumTrainingFaceprintsPerIdentity; // @synthesize maximumTrainingFaceprintsPerIdentity=_maximumTrainingFaceprintsPerIdentity;
 - (id)init;
 - (int)faceIDModelMaximumElementsPerID;
 

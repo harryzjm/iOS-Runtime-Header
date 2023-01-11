@@ -23,6 +23,8 @@
 @property(copy, nonatomic) NSString *language;
 @property(copy, nonatomic) NSString *connectionType;
 @property(copy, nonatomic) NSString *connectionMode;
+@property(copy, nonatomic) NSString *appleConnectSessionToken;
+@property(copy, nonatomic) NSString *appleConnectServiceTicket;
 @property(copy, nonatomic) NSData *activationToken;
 - (id)encodedClassName;
 - (id)groupIdentifier;

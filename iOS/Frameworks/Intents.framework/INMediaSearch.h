@@ -28,6 +28,7 @@
 
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 @property(readonly, nonatomic) long long reference; // @synthesize reference=_reference;
 @property(readonly, copy, nonatomic) INDateComponentsRange *releaseDate; // @synthesize releaseDate=_releaseDate;
@@ -38,7 +39,6 @@
 @property(readonly, copy, nonatomic) NSString *mediaName; // @synthesize mediaName=_mediaName;
 @property(readonly, nonatomic) long long sortOrder; // @synthesize sortOrder=_sortOrder;
 @property(readonly, nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
-- (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
@@ -50,7 +50,6 @@
 @property(readonly) unsigned long long hash;
 - (id)initWithMediaType:(long long)arg1 sortOrder:(long long)arg2 mediaName:(id)arg3 artistName:(id)arg4 albumName:(id)arg5 genreNames:(id)arg6 moodNames:(id)arg7 releaseDate:(id)arg8 reference:(long long)arg9 mediaIdentifier:(id)arg10;
 @property(readonly, copy, nonatomic) NSArray *activityNames;
-- (id)initWithMediaType:(long long)arg1 sortOrder:(long long)arg2 mediaName:(id)arg3 artistName:(id)arg4 albumName:(id)arg5 genreNames:(id)arg6 moodNames:(id)arg7 activityNames:(id)arg8 releaseDate:(id)arg9 reference:(long long)arg10 mediaIdentifier:(id)arg11;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

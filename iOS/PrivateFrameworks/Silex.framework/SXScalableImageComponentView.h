@@ -26,6 +26,7 @@
     struct CGRect _previousContentFrame;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIView *gestureView; // @synthesize gestureView=_gestureView;
 @property(nonatomic) struct CGRect previousContentFrame; // @synthesize previousContentFrame=_previousContentFrame;
 @property(retain, nonatomic) SXMediaViewEvent *activeViewEvent; // @synthesize activeViewEvent=_activeViewEvent;
@@ -36,7 +37,6 @@
 @property(readonly, nonatomic) id <SXMediaSharingPolicyProvider> mediaSharingPolicyProvider; // @synthesize mediaSharingPolicyProvider=_mediaSharingPolicyProvider;
 @property(readonly, nonatomic) id <SXFullscreenCanvasControllerFactory> canvasControllerFactory; // @synthesize canvasControllerFactory=_canvasControllerFactory;
 @property(readonly, nonatomic) id <SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
-- (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
 @property(readonly, copy) NSString *description;
 - (void)finishMediaViewEvent;
@@ -62,8 +62,9 @@
 - (unsigned long long)fullScreenCanvasController:(id)arg1 numberOfViewsForShowable:(id)arg2;
 - (void)fullScreenCanvasController:(id)arg1 shouldAddGestureView:(id)arg2 forShowable:(id)arg3;
 - (struct CGRect)fullScreenCanvasController:(id)arg1 fullScreenFrameForShowable:(id)arg2 viewIndex:(unsigned long long)arg3 withinRect:(struct CGRect)arg4;
-- (void)fullScreenCanvasController:(id)arg1 didShowShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
+- (void)fullScreenCanvasController:(id)arg1 willHideShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(id)arg1 didHideShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
+- (void)fullScreenCanvasController:(id)arg1 willReturnToFullscreenForShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (_Bool)fullScreenCanvasController:(id)arg1 willShowShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (id)fullScreenCanvasController:(id)arg1 captionForShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(id)arg1 showable:(id)arg2 shouldTransferToOriginalViewWithIndex:(unsigned long long)arg3;
@@ -74,7 +75,7 @@
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)loadComponent:(id)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8 mediaSharingPolicyProvider:(id)arg9;
 

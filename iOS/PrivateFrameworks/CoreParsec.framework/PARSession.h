@@ -10,7 +10,7 @@
 #import <CoreParsec/SFResourceLoader-Protocol.h>
 
 @class GEOSearchFoundationFeedbackListener, NSFileManager, NSSet, NSString, NSXPCConnection, PARBag, PARSearchClient, PARSessionConfiguration;
-@protocol PARSessionDelegate;
+@protocol OS_dispatch_queue, PARSessionDelegate;
 
 @interface PARSession : NSObject <SFFeedbackListener, SFResourceLoader>
 {
@@ -18,24 +18,26 @@
     GEOSearchFoundationFeedbackListener *_mapsListener;
     PARBag *_bag;
     _Atomic _Bool _sampled;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSSet *_allowedAppsForSiriSuggestions;
+    NSSet *_sampleClientTimingEventWhitelist;
     PARSearchClient *_client;
     PARSessionConfiguration *_configuration;
     id <PARSessionDelegate> _delegate;
-    NSSet *_allowedAppsForSiriSuggestions;
 }
 
 + (id)sessionWithConfiguration:(id)arg1 delegate:(id)arg2 startImmediately:(_Bool)arg3;
 + (id)sessionWithConfiguration:(id)arg1;
 + (id)sharedSession;
 + (id)sharedPARSessionWithConfiguration:(id)arg1;
-@property(retain) NSSet *allowedAppsForSiriSuggestions; // @synthesize allowedAppsForSiriSuggestions=_allowedAppsForSiriSuggestions;
+- (void).cxx_destruct;
 @property __weak id <PARSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(retain, nonatomic) PARSearchClient *client; // @synthesize client=_client;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) PARSearchClient *client; // @synthesize client=_client;
+@property(retain) NSSet *allowedAppsForSiriSuggestions;
 - (void)didUpdateSiriSuggestionsAppWhitelist;
 - (void)sendCBAEngagementFeedback:(id)arg1 query:(unsigned long long)arg2;
-- (void)reportFeedback:(id)arg1 queryId:(unsigned long long)arg2;
+- (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)reportFeedback:(id)arg1;
 - (void)reportEvent:(id)arg1;
 - (void)didSubmitUserReportFeedback:(id)arg1;
@@ -73,8 +75,8 @@
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadTask:(id)arg1;
 - (id)taskWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)awaitBag;
 @property(retain) PARBag *bag;
+@property(readonly, nonatomic) NSSet *sampleClientTimingEventWhitelist;
 @property(readonly, nonatomic) NSXPCConnection *connection;
 - (void)start;
 - (id)initWithConfiguration:(id)arg1 connection:(id)arg2 delegate:(id)arg3 startImmediately:(_Bool)arg4;

@@ -8,31 +8,16 @@
 
 #import <ARKit/ARSensor-Protocol.h>
 
-@class ARAccelerometerData, ARGyroscopeData, NSString;
-@protocol ARSensorDelegate, OS_dispatch_queue;
+@class NSString;
+@protocol ARSensorDelegate;
 
 @interface ARIOMotionSensor : NSObject <ARSensor>
 {
-    struct __IOHIDEventSystemClient *_accelerometerSystemClient;
-    struct __IOHIDServiceClient *_accelerometerService;
-    struct __IOHIDEventSystemClient *_gyroSystemClient;
-    struct __IOHIDServiceClient *_gyroService;
-    NSObject<OS_dispatch_queue> *_imuDataQueue;
-    ARGyroscopeData *_currentGyroData;
-    ARAccelerometerData *_currentAccelerometerData;
     id <ARSensorDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <ARSensorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)gyroscopeDidOutputEvent:(struct __IOHIDEvent *)arg1 timestamp:(double)arg2;
-- (void)accelerometerDidOutputEvent:(struct __IOHIDEvent *)arg1 timestamp:(double)arg2;
-- (void)stop;
-- (void)start;
-- (long long)preferredSampleRate;
-- (unsigned long long)providedDataTypes;
-- (void)dealloc;
-- (id)init;
+@property(nonatomic) __weak id <ARSensorDelegate> delegate; // @synthesize delegate=_delegate;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,7 +9,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKCalendarItem, EKEventStore, EKStructuredLocation, EKTravelRouteEstimationController, NSDate, NSIndexPath, NSString, UISwitch, UITableView, UIView;
+@class EKCalendarItem, EKEventStore, EKStructuredLocation, EKTravelRouteEstimationController, NSDate, NSIndexPath, NSString, UISwitch, UITableView, UITableViewCell, UIView;
 
 @interface EKEventTravelTimeEditViewController <UITableViewDataSource, UITableViewDelegate, EKTravelRouteEstimationControllerDelegate, EKEditItemViewControllerDelegate>
 {
@@ -35,6 +35,7 @@
     long long _originalSelectedRoutingMode;
     double _originalSelectedTravelTime;
     UIView *_shadowView;
+    UITableViewCell *_sampleSizingCell;
     double _selectedTravelTime;
     NSDate *_arrivalDate;
     EKStructuredLocation *_originStructuredLocation;
@@ -46,16 +47,17 @@
 + (id)_cannotProvideDirectionsLocalizedString;
 + (id)_startingLocationLocalizedString;
 + (id)_travelTimeLocalizedString;
+- (void).cxx_destruct;
 @property(retain, nonatomic) EKStructuredLocation *destinationStructuredLocation; // @synthesize destinationStructuredLocation=_destinationStructuredLocation;
 @property(retain, nonatomic) EKStructuredLocation *originStructuredLocation; // @synthesize originStructuredLocation=_originStructuredLocation;
 @property(retain, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
 @property(nonatomic) double selectedTravelTime; // @synthesize selectedTravelTime=_selectedTravelTime;
-- (void).cxx_destruct;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (long long)_cellStyleForIndexPath:(id)arg1;
 - (void)setCell:(id)arg1 checked:(_Bool)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)_numberOfEstimatedTravelTimeResultRows;
@@ -85,6 +87,7 @@
 - (void)_handleOriginLocationErrorsWithAlert:(_Bool)arg1;
 - (void)routeEstimationControllerDidFinishOriginLocationLookup:(id)arg1;
 - (void)routeEstimationControllerDidBeginOriginLocationLookup:(id)arg1;
+- (id)editItemEventToDetach;
 - (_Bool)editItemViewControllerShouldShowDetachAlert;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
 - (_Bool)editItemViewControllerSave:(id)arg1;

@@ -16,11 +16,10 @@
 {
     struct {
         unsigned int effect:1;
-        unsigned int messageType:1;
+        unsigned int outgoingMessageType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _effect;
-    int _messageType;
+    int _outgoingMessageType;
     NSArray *_attachments;
     _INPBString *_content;
     NSString *_conversationIdentifier;
@@ -35,19 +34,18 @@
 + (_Bool)supportsSecureCoding;
 + (Class)recipientType;
 + (Class)attachmentsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDataString *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
 @property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(retain, nonatomic) _INPBContact *sender; // @synthesize sender=_sender;
 @property(copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
-@property(nonatomic) int messageType; // @synthesize messageType=_messageType;
+@property(nonatomic) int outgoingMessageType; // @synthesize outgoingMessageType=_outgoingMessageType;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBString *groupName; // @synthesize groupName=_groupName;
 @property(nonatomic) int effect; // @synthesize effect=_effect;
 @property(copy, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property(retain, nonatomic) _INPBString *content; // @synthesize content=_content;
 @property(copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -63,9 +61,9 @@
 @property(readonly, nonatomic) unsigned long long recipientsCount;
 - (void)addRecipient:(id)arg1;
 - (void)clearRecipients;
-- (int)StringAsMessageType:(id)arg1;
-- (id)messageTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasMessageType;
+- (int)StringAsOutgoingMessageType:(id)arg1;
+- (id)outgoingMessageTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasOutgoingMessageType;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(readonly, nonatomic) _Bool hasGroupName;
 - (int)StringAsEffect:(id)arg1;

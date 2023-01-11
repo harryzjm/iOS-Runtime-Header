@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class WFCoreDataWorkflow;
+@class WFCoreDataCollection, WFCoreDataWorkflow;
 
 @interface WFCoreDataWorkflowIcon : NSManagedObject
 {
@@ -16,6 +16,7 @@
 
 // Remaining properties
 @property(nonatomic) long long backgroundColorValue; // @dynamic backgroundColorValue;
+@property(retain, nonatomic) WFCoreDataCollection *collection; // @dynamic collection;
 @property(nonatomic) long long glyphNumber; // @dynamic glyphNumber;
 @property(retain, nonatomic) WFCoreDataWorkflow *workflow; // @dynamic workflow;
 

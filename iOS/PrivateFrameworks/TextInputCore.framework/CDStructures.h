@@ -63,7 +63,8 @@ struct Candidate {
 struct CandidateCollection {
     struct vector<KB::Candidate, std::__1::allocator<KB::Candidate>> _field1;
     struct vector<KB::Candidate, std::__1::allocator<KB::Candidate>> _field2;
-    int _field3;
+    struct vector<KB::Candidate, std::__1::allocator<KB::Candidate>> _field3;
+    int _field4;
 };
 
 struct CandidateScoreFactors {
@@ -107,15 +108,14 @@ struct LanguageModelContext {
     vector_5bda1073 _field1;
     unsigned long long _field2;
     unsigned long long _field3;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field4;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field6;
 };
 
 struct LockedInput {
     unsigned int _field1;
     unsigned int _field2;
-};
-
-struct NSDictionary {
-    Class _field1;
 };
 
 struct Parameters {
@@ -204,7 +204,7 @@ struct TIInputManager {
     RefPtr_9bddf3b2 _field12;
     shared_ptr_e9f752ce _field13;
     unsigned int _field14;
-    struct Vector<WTF::RefPtr<TI::Favonius::LayoutKey>, 0> _field15;
+    Vector_edffb8f6 _field15;
     _Bool _field16;
     struct String _field17;
     RefPtr_54d74a7c _field18;
@@ -225,6 +225,7 @@ struct TIInputManager {
     _Bool _field33;
     _Bool _field34;
     _Bool _field35;
+    int _field36;
 };
 
 struct TITokenID {
@@ -273,6 +274,29 @@ struct __shared_weak_count;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
+};
+
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
+                struct __short {
+                    char _field1[23];
+                    struct {
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
 };
 
 struct map<int, KB::ContinuousPathDetector::AnnotatedPath, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, KB::ContinuousPathDetector::AnnotatedPath>>> {
@@ -374,6 +398,14 @@ struct vector<float, std::__1::allocator<float>> {
     } _field3;
 };
 
+struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field2;
+    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
+        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
+    } _field3;
+};
+
 struct vector<std::__1::shared_ptr<KB::LanguageModel>, std::__1::allocator<std::__1::shared_ptr<KB::LanguageModel>>> {
     shared_ptr_e9f752ce *_field1;
     shared_ptr_e9f752ce *_field2;
@@ -393,8 +425,8 @@ struct vector<unsigned int, std::__1::allocator<unsigned int>> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    float _field1;
-} CDStruct_37a3040a;
+    double _field1;
+} CDStruct_2418a849;
 
 typedef struct CDStruct_183601bc;
 
@@ -420,6 +452,11 @@ typedef struct RefPtr<TI::Favonius::CMTouchHistory> {
 typedef struct RefPtr<TI::Favonius::KeyboardLayout> {
     struct KeyboardLayout *m_ptr;
 } RefPtr_54d74a7c;
+
+typedef struct Vector<WTF::RefPtr<TI::Favonius::LayoutKey>, 0> {
+    unsigned long long _field1;
+    struct VectorBuffer<WTF::RefPtr<TI::Favonius::LayoutKey>, 0> _field2;
+} Vector_edffb8f6;
 
 typedef struct shared_ptr<KB::LanguageModel> {
     struct LanguageModel *__ptr_;

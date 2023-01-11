@@ -14,6 +14,7 @@
 @property _Bool allowsCellularAccess; // @dynamic allowsCellularAccess;
 @property unsigned long long networkServiceType; // @dynamic networkServiceType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(getter=isKnownHTTP3Capable) _Bool knownHTTP3Capable; // @dynamic knownHTTP3Capable;
 @property _Bool allowsExpensiveNetworkAccess; // @dynamic allowsExpensiveNetworkAccess;
 @property _Bool allowsConstrainedNetworkAccess; // @dynamic allowsConstrainedNetworkAccess;
 @property(copy) NSURL *mainDocumentURL; // @dynamic mainDocumentURL;

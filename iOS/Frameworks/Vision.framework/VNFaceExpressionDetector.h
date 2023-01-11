@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol VNModelFile;
-
 __attribute__((visibility("hidden")))
 @interface VNFaceExpressionDetector
 {
     struct shared_ptr<vision::mod::LandmarkAttributes> m_FaceAttributesImpl;
-    _Bool modelFilesWereMemmapped;
-    id <VNModelFile> m_LandmarkRefinerModelFileHandle;
+    _Bool _modelFilesWereMemmapped;
 }
 
 + (id)createExpressionDetectionDictionaryFromScores:(id)arg1;
@@ -21,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (void)dealloc;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end
 

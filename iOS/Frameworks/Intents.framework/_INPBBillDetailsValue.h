@@ -15,7 +15,6 @@
 @interface _INPBBillDetailsValue : PBCodable <_INPBBillDetailsValue, NSSecureCoding, NSCopying>
 {
     CDStruct_c8e9def3 _has;
-    _Bool __encodeLegacyGloryData;
     int _billType;
     int _status;
     _INPBCurrencyAmountValue *_amountDue;
@@ -28,7 +27,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 @property(nonatomic) int status; // @synthesize status=_status;
 @property(retain, nonatomic) _INPBDateTime *paymentDate; // @synthesize paymentDate=_paymentDate;
@@ -38,7 +37,6 @@
 @property(nonatomic) int billType; // @synthesize billType=_billType;
 @property(retain, nonatomic) _INPBBillPayeeValue *billPayee; // @synthesize billPayee=_billPayee;
 @property(retain, nonatomic) _INPBCurrencyAmountValue *amountDue; // @synthesize amountDue=_amountDue;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

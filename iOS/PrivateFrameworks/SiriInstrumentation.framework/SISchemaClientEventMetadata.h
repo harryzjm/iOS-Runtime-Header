@@ -6,37 +6,39 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaClientEventMetadata-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaClientEventMetadata : PBCodable <SISchemaClientEventMetadata, NSSecureCoding>
+@interface SISchemaClientEventMetadata : PBCodable
 {
     NSData *_turnID;
     NSData *_siriDeviceID;
     NSString *_eventGeneratedTimestampRefId;
     long long _eventGeneratedRelativeToBootTimeTimestampNs;
+    struct {
+        unsigned int eventGeneratedRelativeToBootTimeTimestampNs:1;
+    } _has;
+    _Bool _hasTurnID;
+    _Bool _hasSiriDeviceID;
+    _Bool _hasEventGeneratedTimestampRefId;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasEventGeneratedTimestampRefId; // @synthesize hasEventGeneratedTimestampRefId=_hasEventGeneratedTimestampRefId;
+@property(nonatomic) _Bool hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
+@property(nonatomic) _Bool hasTurnID; // @synthesize hasTurnID=_hasTurnID;
 @property(nonatomic) long long eventGeneratedRelativeToBootTimeTimestampNs; // @synthesize eventGeneratedRelativeToBootTimeTimestampNs=_eventGeneratedRelativeToBootTimeTimestampNs;
 @property(copy, nonatomic) NSString *eventGeneratedTimestampRefId; // @synthesize eventGeneratedTimestampRefId=_eventGeneratedTimestampRefId;
 @property(copy, nonatomic) NSData *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;
 @property(copy, nonatomic) NSData *turnID; // @synthesize turnID=_turnID;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+@property(nonatomic) _Bool hasEventGeneratedRelativeToBootTimeTimestampNs;
 
 @end
 

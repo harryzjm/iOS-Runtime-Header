@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class ACHEarnedInstanceStore;
+@class ACHEarnedInstanceStore, HDProfile;
 
 @interface ACHEarnedInstanceCleanupUtility : NSObject
 {
     ACHEarnedInstanceStore *_earnedInstanceStore;
+    HDProfile *_profile;
 }
 
-@property(retain, nonatomic) ACHEarnedInstanceStore *earnedInstanceStore; // @synthesize earnedInstanceStore=_earnedInstanceStore;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property(retain, nonatomic) ACHEarnedInstanceStore *earnedInstanceStore; // @synthesize earnedInstanceStore=_earnedInstanceStore;
+- (long long)_historicalEvaluationAdjustment;
+- (id)_cleanupLifetimeMoveGoalAchievements;
 - (id)_cleanupNewExerciseRecordAchievements;
 - (id)_cleanupLongestMoveStreakAchievements;
 - (id)_cleanupBestWorkoutAchievements;
 - (id)_cleanupFirstWorkoutAchievements;
 - (void)performCleanup;
-- (id)initWithEarnedInstanceStore:(id)arg1;
+- (id)initWithEarnedInstanceStore:(id)arg1 profile:(id)arg2;
 
 @end
 

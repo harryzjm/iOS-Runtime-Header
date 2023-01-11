@@ -31,6 +31,7 @@
 }
 
 + (id)sceneWithSize:(struct CGSize)arg1 forDevice:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldHideVariantsBelowCurrent; // @synthesize shouldHideVariantsBelowCurrent=_shouldHideVariantsBelowCurrent;
 @property(retain, nonatomic) UIColor *alternativeTickColor; // @synthesize alternativeTickColor=_alternativeTickColor;
 @property(retain, nonatomic) UIColor *tickColor; // @synthesize tickColor=_tickColor;
@@ -43,7 +44,6 @@
 @property(readonly, nonatomic) SKNode *circle; // @synthesize circle=_circle;
 @property(readonly, nonatomic) SKNode *background; // @synthesize background=_background;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (id)handColor;
 - (id)auxiliaryScrubbingObscuredNodes;
 - (void)endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -57,7 +57,7 @@
 - (void)_prepareForEditing;
 - (void)_cleanupAfterEditing;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4;
-- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3 withScale:(double)arg4;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_applyShowContentForUnadornedSnapshot;
 - (void)_applyDataMode:(long long)arg1;

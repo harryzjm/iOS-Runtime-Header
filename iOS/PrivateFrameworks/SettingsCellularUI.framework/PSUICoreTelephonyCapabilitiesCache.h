@@ -22,17 +22,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *volteEnabledDict; // @synthesize volteEnabledDict=_volteEnabledDict;
 @property(copy) NSMutableDictionary *volteCapabilityInfoDict; // @synthesize volteCapabilityInfoDict=_volteCapabilityInfoDict;
 @property(retain) NSMutableDictionary *volteCapabilityDict; // @synthesize volteCapabilityDict=_volteCapabilityDict;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
-- (void).cxx_destruct;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
 - (_Bool)singleSimCanSetCapabilityVoLTE;
 - (void)setCapabilityVoLTE:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)capabilityEnabledVoLTE:(id)arg1;
 - (void)fetchCapabilityEnabledVoLTE;
-- (_Bool)canChangeVoLTESettingEnableStillProvisioning:(id)arg1;
+- (_Bool)isVoLTEStillProvisioningForContext:(id)arg1;
 - (_Bool)cannotChangeVoLTESettingCallCarrier:(id)arg1;
 - (_Bool)canSetCapabilityVoLTE:(id)arg1;
 - (void)fetchCanSetCapabilityVoLTE;

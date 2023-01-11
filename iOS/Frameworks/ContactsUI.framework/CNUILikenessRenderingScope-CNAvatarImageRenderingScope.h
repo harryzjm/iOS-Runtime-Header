@@ -12,6 +12,7 @@
 
 @interface CNUILikenessRenderingScope (CNAvatarImageRenderingScope) <CNAvatarImageRenderingScopeInternal>
 - (id)likenessRenderingScope;
+- (unsigned long long)avatarViewBackgroundStyle;
 - (unsigned long long)avatarViewStyle;
 
 // Remaining properties

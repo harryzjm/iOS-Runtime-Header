@@ -13,6 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _refreshInProgress;
+    _Bool _cacheNeedsRefresh;
     CoreTelephonyClient *_client;
     CTDeviceDataUsage *_cachedDeviceDataUsage;
     CDUnknownBlockType _refreshCompletionHandler;
@@ -21,13 +22,14 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property _Bool cacheNeedsRefresh; // @synthesize cacheNeedsRefresh=_cacheNeedsRefresh;
 @property(retain) NSDictionary *hotspotClientsUsage; // @synthesize hotspotClientsUsage=_hotspotClientsUsage;
 @property(retain) NSDictionary *workspaceInfoDict; // @synthesize workspaceInfoDict=_workspaceInfoDict;
 @property(copy) CDUnknownBlockType refreshCompletionHandler; // @synthesize refreshCompletionHandler=_refreshCompletionHandler;
 @property _Bool refreshInProgress; // @synthesize refreshInProgress=_refreshInProgress;
 @property(retain) CTDeviceDataUsage *cachedDeviceDataUsage; // @synthesize cachedDeviceDataUsage=_cachedDeviceDataUsage;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
-- (void).cxx_destruct;
 - (void)_handleUsageOrInfoChanged;
 - (id)previousBillingCycleEndDate;
 - (id)billingCycleEndDate;
@@ -55,6 +57,7 @@
 - (id)displayNameForAppBundleID:(id)arg1;
 - (id)appBundleIDs;
 - (void)fetchHotspotClientsUsage;
+- (void)refreshCacheIfNeeded;
 - (void)fetchDeviceDataUsageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchDeviceDataUsage;
 - (void)_clearCache;

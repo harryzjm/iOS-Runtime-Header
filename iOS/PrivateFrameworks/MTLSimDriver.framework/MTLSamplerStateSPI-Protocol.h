@@ -7,9 +7,11 @@
 #import <MTLSimDriver/MTLSamplerState-Protocol.h>
 
 @protocol MTLSamplerStateSPI <MTLSamplerState>
+@property(readonly, nonatomic) unsigned long long pixelFormat;
 
 @optional
 @property(readonly) unsigned long long uniqueIdentifier;
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @end
 

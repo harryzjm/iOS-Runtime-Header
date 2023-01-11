@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class LKTOpticalFlow, VNImageSignature;
+
+__attribute__((visibility("hidden")))
 @interface VNOpticalFlowObservation
 {
+    VNImageSignature *_targetImageSignature;
+    LKTOpticalFlow *_opticalFlow;
 }
 
-- (struct __CVBuffer *)getPixelBufferFP32FormattedAndReturnError:(id *)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) LKTOpticalFlow *opticalFlow; // @synthesize opticalFlow=_opticalFlow;
+@property(retain, nonatomic) VNImageSignature *targetImageSignature; // @synthesize targetImageSignature=_targetImageSignature;
 
 @end
 

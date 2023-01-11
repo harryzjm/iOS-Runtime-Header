@@ -6,30 +6,28 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDSQLiteQuery, NSArray, NSString;
+@class NSArray;
 
 @interface HDSQLiteContainsPredicate <NSCopying>
 {
-    _Bool _negative;
-    HDSQLiteQuery *_query;
-    NSString *_queryProperty;
-    id _values;
+    _Bool _contains;
+    NSArray *_values;
 }
 
++ (id)_arrayFromValues:(id)arg1;
++ (id)_containsPredicateWithProperty:(id)arg1 values:(id)arg2 contains:(_Bool)arg3;
 + (id)doesNotContainPredicateWithProperty:(id)arg1 values:(id)arg2;
-+ (id)containsPredicateWithProperty:(id)arg1 query:(id)arg2 queryProperty:(id)arg3;
 + (id)containsPredicateWithProperty:(id)arg1 values:(id)arg2;
-@property(readonly, nonatomic) NSArray *values; // @synthesize values=_values;
-@property(readonly, nonatomic) NSString *queryProperty; // @synthesize queryProperty=_queryProperty;
-@property(readonly, nonatomic) HDSQLiteQuery *query; // @synthesize query=_query;
-@property(readonly, nonatomic, getter=isNegative) _Bool negative; // @synthesize negative=_negative;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *values; // @synthesize values=_values;
+@property(readonly, nonatomic) _Bool contains; // @synthesize contains=_contains;
 - (id)description;
 - (_Bool)isCompatibleWithPredicate:(id)arg1;
 - (id)SQLForEntityClass:(Class)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)bindToStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(int *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithProperty:(id)arg1 values:(id)arg2 contains:(_Bool)arg3;
 
 @end
 

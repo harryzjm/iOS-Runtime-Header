@@ -9,11 +9,14 @@
 @class NSCharacterSet, NSLocale;
 
 @protocol CHRecognizing <NSObject>
-@property(nonatomic) _Bool shouldEnableCachingIfAvailable;
+@property(readonly, nonatomic) _Bool enableGen2CharacterLMIfAvailable;
+@property(readonly, nonatomic) _Bool enableGen2ModelIfAvailable;
+@property(readonly, nonatomic) _Bool enableCachingIfAvailable;
 @property(nonatomic) struct CGSize minimumDrawingSize;
 @property(retain, nonatomic) NSCharacterSet *activeCharacterSet;
 @property(nonatomic) unsigned long long maxRecognitionResultCount;
 @property(readonly, copy, nonatomic) NSLocale *locale;
+@property(nonatomic) int autoCapitalizationMode;
 @property(nonatomic) int contentType;
 @property(readonly, nonatomic) int recognitionMode;
 - (id)initWithMode:(int)arg1 locale:(NSLocale *)arg2;

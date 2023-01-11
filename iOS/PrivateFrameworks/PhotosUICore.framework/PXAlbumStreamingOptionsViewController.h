@@ -18,7 +18,6 @@
     NSString *_visiblePublicURL;
     _Bool _showShareLink;
     PLCloudSharedAlbum *_album;
-    id <PXAlbumStreamingOptionsViewControllerDelegate> _delegate;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_doneButton;
     UITableView *_optionsTableView;
@@ -31,11 +30,12 @@
     NSArray *_familyMembers;
     AAUIProfilePictureStore *_familyMemberPictureStore;
     NSMutableDictionary *_familyProfilePictures;
-    _Bool _isPresentedModally;
+    _Bool _presentedModally;
     _Bool _streamOwner;
     _Bool __shouldScrollToTopOnNextViewLayout;
     _Bool _albumIsFamilyStream;
     _Bool __showingPublicURLActivitySpinner;
+    id <PXAlbumStreamingOptionsViewControllerDelegate> _delegate;
     NSString *_albumName;
     NSArray *_sharedAlbumSubscribers;
     PLCloudSharedAlbumInvitationRecord *__selectedSubscriberInvitationRecord;
@@ -43,6 +43,7 @@
     NSString *__lastMultiContributorsSectionFooterTitle;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setShowingPublicURLActivitySpinner:) _Bool _showingPublicURLActivitySpinner; // @synthesize _showingPublicURLActivitySpinner=__showingPublicURLActivitySpinner;
 @property(nonatomic) _Bool albumIsFamilyStream; // @synthesize albumIsFamilyStream=_albumIsFamilyStream;
 @property(copy, nonatomic, setter=_setLastMultiContributorsSectionFooterTitle:) NSString *_lastMultiContributorsSectionFooterTitle; // @synthesize _lastMultiContributorsSectionFooterTitle=__lastMultiContributorsSectionFooterTitle;
@@ -52,10 +53,9 @@
 @property(nonatomic) _Bool streamOwner; // @synthesize streamOwner=_streamOwner;
 @property(retain, nonatomic) NSArray *sharedAlbumSubscribers; // @synthesize sharedAlbumSubscribers=_sharedAlbumSubscribers;
 @property(copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
-@property(nonatomic) _Bool isPresentedModally; // @synthesize isPresentedModally=_isPresentedModally;
+@property(nonatomic, getter=isPresentedModally) _Bool presentedModally; // @synthesize presentedModally=_presentedModally;
 @property(retain, nonatomic) PLCloudSharedAlbum *album; // @synthesize album=_album;
-@property(nonatomic) id <PXAlbumStreamingOptionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <PXAlbumStreamingOptionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -82,7 +82,6 @@
 - (void)_changeWantsAcceptCloudNotification:(id)arg1;
 - (void)_changeWantsPublicWebsite:(id)arg1;
 - (void)_doneAction:(id)arg1;
-- (void)_cancelAction:(id)arg1;
 - (void)_handleCompletionWithReason:(int)arg1;
 - (id)_suppressionContexts;
 - (struct CGSize)contentSizeForViewInPopover;
@@ -95,12 +94,16 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
+- (void)_updateNavigationItem;
 - (void)_updateWantsMultipleContributorsField;
 - (void)_updateWantsAcceptCloudNotificationField;
 - (void)_updateWantsPublicWebsiteField;
 - (void)_updateAllControls;
 - (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithAlbum:(id)arg1;
+- (id)initWithPHAlbum:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

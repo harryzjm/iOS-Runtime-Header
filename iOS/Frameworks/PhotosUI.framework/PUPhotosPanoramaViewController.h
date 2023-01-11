@@ -12,15 +12,16 @@
     PHAssetCollection *_userPanoAlbum;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PHAssetCollection *userPanoAlbum; // @synthesize userPanoAlbum=_userPanoAlbum;
 @property(retain, nonatomic) PUPhotosPanoramaViewControllerSpec *panoramaSpec; // @synthesize panoramaSpec=_panoramaSpec;
-- (void).cxx_destruct;
 - (void)_updatePhotoDecorationForCell:(id)arg1 animated:(_Bool)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)rotatePhotoViewToHorizontalIfNeeded:(id)arg1 withAsset:(id)arg2;
 - (void)updatePhotoViewContent:(id)arg1 withThumbnailImage:(id)arg2;
 - (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (struct CGSize)maximumThumbnailRequestSize;
 - (_Bool)canBeginStackCollapseTransition;
 - (long long)cellFillMode;
 - (id)imageRequestOptionsForAsset:(id)arg1 pixelSize:(inout struct CGSize *)arg2;

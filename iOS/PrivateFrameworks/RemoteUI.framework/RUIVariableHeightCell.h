@@ -7,8 +7,10 @@
 @interface RUIVariableHeightCell
 {
     _Bool _supportsAccessory;
+    long long _detailTextAlignment;
 }
 
+@property(nonatomic) long long detailTextAlignment; // @synthesize detailTextAlignment=_detailTextAlignment;
 @property(nonatomic) _Bool supportsAccessory; // @synthesize supportsAccessory=_supportsAccessory;
 - (double)height;
 - (struct CGSize)sizeForTextLabel:(id)arg1 width:(double)arg2;

@@ -8,14 +8,14 @@
 #import <QuickLook/QLPrintingProtocol-Protocol.h>
 #import <QuickLook/QLRemotePopoverTracker-Protocol.h>
 
-@class NSDictionary, NSExtension, NSLayoutConstraint, NSString, QLCustomItemViewControllerHostProxy, QLRemotePreviewHostContext, QLRemotePreviewHostViewController;
+@class NSDictionary, NSExtension, NSLayoutConstraint, NSString, QLCustomItemViewControllerHostProxy, QLPreviewExtensionHostContext, QLRemotePreviewHostViewController;
 @protocol QLPrintingProtocol, QLRemotePopoverTracker;
 
 __attribute__((visibility("hidden")))
 @interface QLRemoteItemViewController <QLPrintingProtocol, QLCustomItemViewControllerHost, QLRemotePopoverTracker>
 {
     NSExtension *_extension;
-    QLRemotePreviewHostContext *_hostContext;
+    QLPreviewExtensionHostContext *_hostContext;
     NSDictionary *_hostConfiguration;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
     QLRemotePreviewHostViewController *_remoteViewController;
 }
 
-@property(retain, nonatomic) QLRemotePreviewHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) QLRemotePreviewHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 - (void)getFrameWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)forwardMessageToHostOfCustomViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dismissQuickLook;
@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canShowNavBar;
 - (_Bool)canPinchToDismiss;
 - (_Bool)canSwipeToDismiss;
+- (_Bool)canClickToToggleFullscreen;
 - (_Bool)canEnterFullScreen;
 - (void)previewDidDisappear:(_Bool)arg1;
 - (void)previewWillDisappear:(_Bool)arg1;

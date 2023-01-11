@@ -10,17 +10,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct ccdh_gp {
     unsigned long long _field1;
     unsigned long long _field2;
-    CDUnknownFunctionPointerType _field3;
+    struct cczp_funcs *_field3;
     unsigned long long _field4[0];
 };
 
@@ -62,13 +55,19 @@ struct ccsrp_ctx {
         unsigned int :1;
         unsigned int :16;
     } _field4;
-    unsigned char _field5[7];
-    unsigned long long _field6[1];
+    unsigned long long _field5[1];
 };
+
+struct cczp_funcs;
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
     unsigned char _field1[16];
 } CDStruct_60067b7e;
+
+// Ambiguous groups
+typedef struct {
+    unsigned int supported:1;
+} CDStruct_495da94c;
 

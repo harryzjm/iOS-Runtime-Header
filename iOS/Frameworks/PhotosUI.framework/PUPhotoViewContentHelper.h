@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PHLivePhotoViewDelegate-Protocol.h>
 
-@class AVAsset, ISAnimatedImageView, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSString, PHAnimatedImage, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PUTextBannerView, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTitleSubtitleUILabel, PXUIAssetBadgeView, PXVideoPlayerView, UIColor, UIImage, UIImageView, UIView;
+@class AVAsset, ISAnimatedImageView, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSString, PHAnimatedImage, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTextBannerView, PXTitleSubtitleUILabel, PXUIAssetBadgeView, PXVideoPlayerView, UIColor, UIImage, UIImageView, UIView;
 @protocol PUPhotoViewContentHelperDelegate;
 
 @interface PUPhotoViewContentHelper : NSObject <PHLivePhotoViewDelegate>
@@ -61,7 +61,7 @@
     PHAnimatedImage *_animatedImage;
     struct CGColor *_avalancheStackBackgroundColor;
     long long _badgeStyle;
-    PUTextBannerView *_textBannerView;
+    PXTextBannerView *_textBannerView;
     PXFeatureSpec *_featureSpec;
     PXCollectionTileLayoutTemplate *_collectionTileLayoutTemplate;
     NSString *_titleFontName;
@@ -85,6 +85,7 @@
 
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 imageSize:(struct CGSize)arg2 fillMode:(long long)arg3;
 + (struct CGRect)_imageContentFrameForBounds:(struct CGRect)arg1 imageSize:(struct CGSize)arg2 fillMode:(long long)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setAudioSession:) ISWrappedAVAudioSession *_audioSession; // @synthesize _audioSession=__audioSession;
 @property(retain, nonatomic, setter=_setTitleSubtitleUILabel:) PXTitleSubtitleUILabel *_titleSubtitleLabel; // @synthesize _titleSubtitleLabel=__titleSubtitleLabel;
 @property(retain, nonatomic, setter=_setBadgeView:) PXUIAssetBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
@@ -100,7 +101,7 @@
 @property(retain, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
 @property(retain, nonatomic) PXCollectionTileLayoutTemplate *collectionTileLayoutTemplate; // @synthesize collectionTileLayoutTemplate=_collectionTileLayoutTemplate;
 @property(retain, nonatomic) PXFeatureSpec *featureSpec; // @synthesize featureSpec=_featureSpec;
-@property(readonly, nonatomic) PUTextBannerView *textBannerView; // @synthesize textBannerView=_textBannerView;
+@property(readonly, nonatomic) PXTextBannerView *textBannerView; // @synthesize textBannerView=_textBannerView;
 @property(nonatomic) struct CGSize customPaddingForBadgeElements; // @synthesize customPaddingForBadgeElements=_customPaddingForBadgeElements;
 @property(nonatomic) long long badgeStyle; // @synthesize badgeStyle=_badgeStyle;
 @property(nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
@@ -135,7 +136,6 @@
 @property(nonatomic) long long fillMode; // @synthesize fillMode=_fillMode;
 @property(readonly, nonatomic) __weak UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic, getter=isTextBannerVisible) _Bool textBannerVisible; // @synthesize textBannerVisible=_isTextBannerVisible;
-- (void).cxx_destruct;
 - (void)animateCrossfadeToImage:(id)arg1;
 - (void)contentViewDynamicUserInterfaceTraitDidChange;
 - (void)layoutSubviewsOfContentView;

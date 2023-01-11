@@ -25,6 +25,7 @@
 - (id)policyByMappingContainedPoliciesWithBlock:(CDUnknownBlockType)arg1;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *assertionEndpoint;
 - (id)matchSharingTouchesPolicy:(CDUnknownBlockType)arg1 orCancelTouchesPolicy:(CDUnknownBlockType)arg2 orCombinedPolicy:(CDUnknownBlockType)arg3;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

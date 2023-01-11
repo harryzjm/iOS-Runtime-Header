@@ -17,11 +17,14 @@
 + (id)_mapkit_preferredFontForTextStyleInTableViewCell:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
 + (id)_mapkit_preferredFontForTextStyleInTableViewCell:(id)arg1;
 + (id)_contentSizeCategoryInTableViewCellWithContentSizeCategory:(id)arg1;
+- (id)traitCollectionFromTraitEnvironment:(id)arg1;
+- (double)_mapkit_scaledValueForValue:(double)arg1 scalingForMacIdiom:(_Bool)arg2 respectingTraitEnvironment:(id)arg3;
+- (double)_mapkit_scaledValueForValue:(double)arg1;
+- (id)_mapkit_fontWithSymbolicTraits:(unsigned int)arg1;
 - (id)_mapkit_fontWithWeight:(double)arg1;
 - (id)_mapkit_fontByAddingFeaturesForTabularFigures;
 - (id)_mapkit_fontByAddingFeaturesForTimeDisplay;
 - (id)_mapkit_fontByAddingFeaturesForTimeDisplayUseMonospace:(_Bool)arg1;
-- (double)_mapkit_scaledValueForValue:(double)arg1;
 - (double)_mapkit_lineHeight;
 @end
 

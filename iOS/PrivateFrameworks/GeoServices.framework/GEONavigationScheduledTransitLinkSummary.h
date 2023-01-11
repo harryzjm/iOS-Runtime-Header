@@ -13,23 +13,21 @@
 @interface GEONavigationScheduledTransitLinkSummary : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     unsigned long long _lineID;
     double _scheduledArrival;
     double _scheduledDeparture;
     GEONavigationTransitStopSummary *_stopFrom;
     GEONavigationTransitStopSummary *_stopTo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_lineID:1;
         unsigned int has_scheduledArrival:1;
         unsigned int has_scheduledDeparture:1;
         unsigned int read_stopFrom:1;
         unsigned int read_stopTo:1;
-        unsigned int wrote_lineID:1;
-        unsigned int wrote_scheduledArrival:1;
-        unsigned int wrote_scheduledDeparture:1;
-        unsigned int wrote_stopFrom:1;
-        unsigned int wrote_stopTo:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,20 +41,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEONavigationTransitStopSummary *stopTo;
 @property(readonly, nonatomic) _Bool hasStopTo;
-- (void)_readStopTo;
 @property(retain, nonatomic) GEONavigationTransitStopSummary *stopFrom;
 @property(readonly, nonatomic) _Bool hasStopFrom;
-- (void)_readStopFrom;
 @property(nonatomic) _Bool hasScheduledArrival;
 @property(nonatomic) double scheduledArrival;
 @property(nonatomic) _Bool hasScheduledDeparture;
 @property(nonatomic) double scheduledDeparture;
 @property(nonatomic) _Bool hasLineID;
 @property(nonatomic) unsigned long long lineID;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithTransitTripRouteStep:(id)arg1 originSummary:(id)arg2 destinationSummary:(id)arg3;
 
 @end

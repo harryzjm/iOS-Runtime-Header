@@ -8,7 +8,7 @@
 
 #import <NanoRegistry/NRTermsAcknowledgementRegistry-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSString;
 @protocol NRTermsAcknowledgementRegistry;
 
 @interface NRTermsAcknowledgementRegistry : NSObject <NRTermsAcknowledgementRegistry>
@@ -18,12 +18,9 @@
 
 + (id)errorWithEnum:(unsigned long long)arg1;
 + (id)errorStringWithEnum:(unsigned long long)arg1;
-@property(readonly, nonatomic) id <NRTermsAcknowledgementRegistry> proxy; // @synthesize proxy=_proxy;
 - (void).cxx_destruct;
 - (void)checkForAcknowledgement:(id)arg1 forDeviceID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)add:(id)arg1 forDeviceID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (id)proxyWithErrorHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSXPCConnection *connection;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

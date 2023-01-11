@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CHManager, PSListController, PSSpecifier;
+#import <SettingsCellularUI/Loggable-Protocol.h>
+
+@class CHManager, Logger, NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUICallTimeGroup : NSObject
+@interface PSUICallTimeGroup : NSObject <Loggable>
 {
+    Logger *_logger;
     PSListController *_hostController;
     CHManager *_callHistoryManager;
     PSSpecifier *_groupSpecifier;
@@ -18,18 +21,25 @@ __attribute__((visibility("hidden")))
     PSSpecifier *_lifetimeCallTimeSpecifier;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PSSpecifier *lifetimeCallTimeSpecifier; // @synthesize lifetimeCallTimeSpecifier=_lifetimeCallTimeSpecifier;
 @property(retain, nonatomic) PSSpecifier *currentCallTimeSpecifier; // @synthesize currentCallTimeSpecifier=_currentCallTimeSpecifier;
 @property(retain, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(retain, nonatomic) CHManager *callHistoryManager; // @synthesize callHistoryManager=_callHistoryManager;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
-- (void).cxx_destruct;
+- (id)getLogger;
 - (id)lifetimeCallTime:(id)arg1;
 - (id)callTime:(id)arg1;
 - (id)callTimeDurationRestrictedToCurrentPeriod:(_Bool)arg1;
 - (void)handleCallTimersChanged;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

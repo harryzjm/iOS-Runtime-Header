@@ -10,44 +10,51 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCameraResidentMessageHandler, HMDCameraSettingsControlManager, HMDCameraStreamManagerSession, HMDCameraStreamSnapshotHandler, HMDCameraSupportedConfigurationCache, HMDHAPAccessory, HMDNotificationRegistration, HMDService, HMFNetMonitor, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDCameraResidentMessageHandler, HMDCameraStreamManagerSession, HMDCameraStreamSnapshotHandler, HMDCameraSupportedConfigurationCache, HMDDeviceCapabilities, HMDDynamicActivityAttributionPublisher, HMDHAPAccessory, HMDPhoneCallObserver, HMDService, HMFMessageDispatcher, HMFNetMonitor, NSObject, NSString, NSUUID;
+@protocol HMDCameraStreamControlMessageHandlerDataSource, OS_dispatch_queue;
 
 @interface HMDCameraStreamControlMessageHandler : HMFObject <HMFTimerDelegate, HMDCameraStreamControlManagerDelegate, HMFLogging>
 {
     HMDCameraStreamManagerSession *_streamSession;
     HMDService *_streamManagementService;
-    HMDNotificationRegistration *_notificationRegistration;
+    HMDPhoneCallObserver *_phoneCallObserver;
     HMDCameraResidentMessageHandler *_residentMessageHandler;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHAPAccessory *_accessory;
-    CDUnknownBlockType _messageSender;
     NSUUID *_uniqueIdentifier;
     NSUUID *_profileUniqueIdentifier;
     HMDCameraSupportedConfigurationCache *_supportedConfigCache;
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
-    HMDCameraSettingsControlManager *_settingsControlManager;
     HMFNetMonitor *_networkMonitor;
+    HMFMessageDispatcher *_messageDispatcher;
+    HMDDynamicActivityAttributionPublisher *_dynamicActivityAttributionPublisher;
+    id <HMDCameraStreamControlMessageHandlerDataSource> _dataSource;
+    HMDDeviceCapabilities *_deviceCapabilities;
 }
 
 + (id)logCategory;
-@property(retain, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
-@property(readonly, nonatomic) HMDCameraSettingsControlManager *settingsControlManager; // @synthesize settingsControlManager=_settingsControlManager;
-@property(readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
-@property(retain, nonatomic) HMDCameraSupportedConfigurationCache *supportedConfigCache; // @synthesize supportedConfigCache=_supportedConfigCache;
-@property(readonly, nonatomic) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
-@property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property(readonly, nonatomic) CDUnknownBlockType messageSender; // @synthesize messageSender=_messageSender;
-@property(readonly, nonatomic) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
-@property(readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
-@property(readonly, nonatomic) HMDService *streamManagementService; // @synthesize streamManagementService=_streamManagementService;
 - (void).cxx_destruct;
+@property(readonly) HMDDeviceCapabilities *deviceCapabilities; // @synthesize deviceCapabilities=_deviceCapabilities;
+@property(readonly) id <HMDCameraStreamControlMessageHandlerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly) HMDDynamicActivityAttributionPublisher *dynamicActivityAttributionPublisher; // @synthesize dynamicActivityAttributionPublisher=_dynamicActivityAttributionPublisher;
+@property(retain) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
+@property(readonly) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
+@property(readonly) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
+@property(readonly) HMDCameraSupportedConfigurationCache *supportedConfigCache; // @synthesize supportedConfigCache=_supportedConfigCache;
+@property(readonly) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
+@property(readonly) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(readonly) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
+@property(readonly) HMDPhoneCallObserver *phoneCallObserver; // @synthesize phoneCallObserver=_phoneCallObserver;
+@property(readonly) HMDService *streamManagementService; // @synthesize streamManagementService=_streamManagementService;
+- (void)handleActivePhoneCallEstablishedNotification:(id)arg1;
+- (void)handleProcessStateChange:(id)arg1;
+- (void)handleAccessoryDisconnected:(id)arg1;
 - (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)_resetCurrentStreamState:(id)arg1;
+- (void)_resetStreamSession:(id)arg1;
 - (void)_sendStreamStoppedNotification:(id)arg1;
 - (void)streamControlManagerDidStopStreamForSessionID:(id)arg1 error:(id)arg2;
 - (void)streamControlManagerDidReconfigureStream:(id)arg1;
@@ -56,8 +63,11 @@
 - (void)streamControlManagerDidSetupRemoteConnection:(id)arg1;
 - (void)streamControlManagerDidNegotiateStream:(id)arg1 selectedParameters:(id)arg2;
 - (void)streamControlManager:(id)arg1 didFail:(id)arg2;
-@property(readonly, nonatomic, getter=isStreamingSessionInProgress) _Bool streamingSessionInProgress;
-@property(readonly, copy, nonatomic) NSString *streamSessionID;
+- (void)timerDidFire:(id)arg1;
+- (id)logIdentifier;
+- (_Bool)_shouldStopStreamSessionForProcessInfo:(id)arg1;
+@property(readonly, getter=isStreamingSessionInProgress) _Bool streamingSessionInProgress;
+@property(readonly, copy) NSString *streamSessionID;
 - (void)_handleSetAudioState:(id)arg1;
 - (void)setAudioVolume:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_handleSetAudioVolume:(id)arg1;
@@ -66,8 +76,9 @@
 - (void)_handleStartMessage:(id)arg1;
 - (void)_handleRemoteSetupMessage:(id)arg1;
 - (void)_handleNegotiateMessage:(id)arg1;
+- (_Bool)_shouldHandleNegotiateMessage:(id)arg1 accessoryReachable:(_Bool)arg2;
 - (void)handleMessage:(id)arg1;
-- (void)_stopStream:(id)arg1;
+- (void)_stopStreamWithError:(id)arg1;
 - (_Bool)_isRemoteSetupMessage:(id)arg1;
 - (_Bool)_isSetAudioVolumeMessage:(id)arg1;
 - (_Bool)_isSetAudioStreamSettingMessage:(id)arg1;
@@ -75,16 +86,12 @@
 - (_Bool)_isReconfigureMessage:(id)arg1;
 - (_Bool)_isStartMessage:(id)arg1;
 - (_Bool)_isNegotiateMessage:(id)arg1;
-@property(retain, nonatomic) HMDCameraStreamManagerSession *streamSession; // @synthesize streamSession=_streamSession;
-- (void)handleActivePhoneCallEstablishedNotification:(id)arg1;
-- (void)handleForegroundAppsNotification:(id)arg1;
-- (void)timerDidFire:(id)arg1;
-- (void)handleAccessoryIsNotReachable:(id)arg1;
+@property(retain) HMDCameraStreamManagerSession *streamSession; // @synthesize streamSession=_streamSession;
 - (void)dealloc;
-- (void)registerForMessages;
+- (void)configureWithMessageDispatcher:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)logIdentifier;
-- (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 messageSender:(CDUnknownBlockType)arg3 accessory:(id)arg4 streamManagementService:(id)arg5 msgDispatcher:(id)arg6 profileUniqueIdentifier:(id)arg7 networkMonitor:(id)arg8 residentMessageHandler:(id)arg9;
+- (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6 residentMessageHandler:(id)arg7;
+- (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6 residentMessageHandler:(id)arg7 phoneCallObserver:(id)arg8 deviceCapabilities:(id)arg9 dataSource:(id)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

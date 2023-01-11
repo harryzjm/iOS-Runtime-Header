@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface VCHardwareSettings : NSObject
@@ -14,14 +14,20 @@ __attribute__((visibility("hidden")))
     _Bool _supportVCPEncoderInitialized;
     _Bool _supportVCPEncoder;
     NSMutableDictionary *_hardwareUsageModeSettings;
+    NSMutableSet *_pixelFormatCollections;
     _Bool _vcpSupportsHEVCEncoder;
 }
 
++ (unsigned int)maxRemoteParticipants30fps;
++ (unsigned int)builtinMicCount;
 + (long long)deviceClass;
+@property(readonly, nonatomic) NSSet *pixelFormatCollections; // @synthesize pixelFormatCollections=_pixelFormatCollections;
 @property(readonly, nonatomic) _Bool vcpSupportsHEVCEncoder; // @synthesize vcpSupportsHEVCEncoder=_vcpSupportsHEVCEncoder;
+@property(readonly, nonatomic) _Bool isVideoRenderingSupported;
 - (unsigned int)maxNetworkBitrateMultiwayVideoOnWifi:(_Bool)arg1;
 - (unsigned int)maxNetworkBitrateMultiwayAudioOnWifi:(_Bool)arg1;
 - (_Bool)storeHardwareSettingsForAllOperatingModes;
+- (unsigned int)tilesPerVideoFrame:(int)arg1 hdrMode:(unsigned long long)arg2;
 - (unsigned int)tilesPerVideoFrame:(int)arg1;
 - (id)featureListStringForHEVC:(int)arg1;
 - (id)featureListStringForH264:(int)arg1;

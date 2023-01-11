@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PHAsset;
+@class NSMutableArray, NSString, PHAsset;
 
 @interface PHMediaRequest : NSObject
 {
     unsigned long long _requestIndex;
     _Atomic _Bool _cancelled;
     NSString *_identifierString;
+    NSMutableArray *_progresses;
+    struct os_unfair_lock_s _lock;
+    _Bool _wantsProgress;
     int _requestID;
     unsigned long long _managerID;
     PHAsset *_asset;
@@ -20,13 +23,19 @@
     unsigned long long _signpostID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool wantsProgress; // @synthesize wantsProgress=_wantsProgress;
 @property(nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property(readonly, nonatomic) long long contextType; // @synthesize contextType=_contextType;
 @property(readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property(readonly, nonatomic) unsigned long long managerID; // @synthesize managerID=_managerID;
 @property(readonly, nonatomic) unsigned long long requestIndex; // @synthesize requestIndex=_requestIndex;
 @property(readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
-- (void).cxx_destruct;
+- (void)recordMetricsWithMetricsHandler:(CDUnknownBlockType)arg1;
+- (id)sendResourceRepairRequestForResource:(id)arg1 errorCodes:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)sendMakeAvailableRequestForResource:(id)arg1 reply:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) long long downloadIntent;
+@property(readonly, nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
 - (void)cancel;
 - (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;

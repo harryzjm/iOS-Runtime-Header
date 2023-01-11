@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLKProgressProvider, UIView;
+@class CLKProgressProvider, NSNumber, UIView;
 @protocol NTKComplicationImageView;
 
 @interface NTKCircularSmallRingImageComplicationView
 {
     UIView<NTKComplicationImageView> *_imageView;
     CLKProgressProvider *_progressProvider;
-    struct NSNumber *_progressUpdateToken;
+    NSNumber *_progressUpdateToken;
 }
 
 + (double)_imageScaleForTemplate:(id)arg1;

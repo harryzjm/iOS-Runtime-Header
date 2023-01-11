@@ -6,17 +6,19 @@
 
 #import <WorkflowKit/MTLJSONSerializing-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, NSURL;
 
 @interface WFiTunesPodcastObject <MTLJSONSerializing>
 {
     NSString *_podcastUUID;
+    NSURL *_feedURL;
 }
 
 + (id)JSONKeyPathsByPropertyKey;
-@property(copy, nonatomic) NSString *podcastUUID; // @synthesize podcastUUID=_podcastUUID;
 - (void).cxx_destruct;
-- (id)initWithName:(id)arg1 identifier:(id)arg2 podcastUUID:(id)arg3 kind:(id)arg4;
+@property(retain, nonatomic) NSURL *feedURL; // @synthesize feedURL=_feedURL;
+@property(copy, nonatomic) NSString *podcastUUID; // @synthesize podcastUUID=_podcastUUID;
+- (id)initWithName:(id)arg1 identifier:(id)arg2 podcastUUID:(id)arg3 feedURL:(id)arg4 kind:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

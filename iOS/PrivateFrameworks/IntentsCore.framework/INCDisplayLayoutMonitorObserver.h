@@ -6,26 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <IntentsCore/FBSDisplayLayoutObserver-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface INCDisplayLayoutMonitorObserver : NSObject <FBSDisplayLayoutObserver>
+@interface INCDisplayLayoutMonitorObserver : NSObject
 {
     CDUnknownBlockType _handler;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (void)layoutMonitor:(id)arg1 didUpdateDisplayLayout:(id)arg2 withContext:(id)arg3;
-- (void)setHandler:(CDUnknownBlockType)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+- (void)updateDisplayLayout:(id)arg1;
 
 @end
 

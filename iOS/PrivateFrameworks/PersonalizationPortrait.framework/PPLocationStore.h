@@ -20,6 +20,7 @@
 + (id)placemarkWithName:(id)arg1 clLocation:(id)arg2;
 + (id)placemarkWithLatitudeDegrees:(id)arg1 longitudeDegrees:(id)arg2 name:(id)arg3 thoroughfare:(id)arg4 subthoroughFare:(id)arg5 locality:(id)arg6 subLocality:(id)arg7 administrativeArea:(id)arg8 subAdministrativeArea:(id)arg9 postalCode:(id)arg10 countryCode:(id)arg11 country:(id)arg12 inlandWater:(id)arg13 ocean:(id)arg14 areasOfInterest:(id)arg15;
 + (id)placemarkWithLocation:(id)arg1 name:(id)arg2 thoroughfare:(id)arg3 subthoroughFare:(id)arg4 locality:(id)arg5 subLocality:(id)arg6 administrativeArea:(id)arg7 subAdministrativeArea:(id)arg8 postalCode:(id)arg9 countryCode:(id)arg10 country:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14;
++ (id)_mergedThoroughfareForThorughfare:(id)arg1 subThoroughfare:(id)arg2 subPremises:(id)arg3;
 + (id)defaultStore;
 - (void).cxx_destruct;
 - (id)forwardingTargetForSelector:(SEL)arg1;

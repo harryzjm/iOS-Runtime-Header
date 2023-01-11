@@ -34,6 +34,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *noRenameNotebook; // @synthesize noRenameNotebook=_noRenameNotebook;
 @property(retain, nonatomic) NSNumber *noShareNotesWithBusiness; // @synthesize noShareNotesWithBusiness=_noShareNotesWithBusiness;
 @property(retain, nonatomic) NSNumber *expungeWhichSharedNotebookRestrictions; // @synthesize expungeWhichSharedNotebookRestrictions=_expungeWhichSharedNotebookRestrictions;
@@ -56,7 +57,6 @@
 @property(retain, nonatomic) NSNumber *noUpdateNotes; // @synthesize noUpdateNotes=_noUpdateNotes;
 @property(retain, nonatomic) NSNumber *noCreateNotes; // @synthesize noCreateNotes=_noCreateNotes;
 @property(retain, nonatomic) NSNumber *noReadNotes; // @synthesize noReadNotes=_noReadNotes;
-- (void).cxx_destruct;
 
 @end
 

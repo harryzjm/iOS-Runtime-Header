@@ -36,10 +36,13 @@
     NSString *_publisherBulletinID;
     NSString *_threadID;
     NSString *_internalID;
+    unsigned long long _feed;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)internalIDForBBBulletinID:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long feed; // @synthesize feed=_feed;
 @property(readonly, copy, nonatomic) NSString *internalID; // @synthesize internalID=_internalID;
 @property(readonly, copy, nonatomic) NSString *threadID; // @synthesize threadID=_threadID;
 @property(readonly, nonatomic) _Bool previewRestricted; // @synthesize previewRestricted=_previewRestricted;
@@ -63,11 +66,12 @@
 @property(nonatomic) _Bool supportsSpokenNotification; // @synthesize supportsSpokenNotification=_supportsSpokenNotification;
 @property(nonatomic) _Bool availableOnLockScreen; // @synthesize availableOnLockScreen=_availableOnLockScreen;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)wasRemovedFromFeed:(unsigned long long)arg1;
 - (void)setNotification:(id)arg1 fromSourceApp:(id)arg2;
+- (void)setBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
 - (void)setBulletin:(id)arg1;
 - (id)_displayNameForBulletin:(id)arg1;
 

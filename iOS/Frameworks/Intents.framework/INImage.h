@@ -19,12 +19,14 @@
 @interface INImage : NSObject <INJSONSerializable, INKeyImageProducing, INCacheableObject, INImageProxyInjecting, INImageExport, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
+    long long __renderingMode;
     CDStruct_8caa76fc _imageSize;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)_classesInCluster;
 + (id)_bundleImageWithURL:(id)arg1;
++ (id)systemImageNamed:(id)arg1;
 + (id)imageNamed:(id)arg1;
 + (id)imageWithImageData:(id)arg1;
 + (id)imageWithURL:(id)arg1 width:(double)arg2 height:(double)arg3;
@@ -33,9 +35,10 @@
 + (void)initialize;
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (void)buildFromCachePayload:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setRenderingMode:) long long _renderingMode; // @synthesize _renderingMode=__renderingMode;
 @property(nonatomic, setter=_setImageSize:) CDStruct_8caa76fc _imageSize; // @synthesize _imageSize;
 @property(copy, nonatomic, setter=_setIdentifier:) NSString *_identifier; // @synthesize _identifier;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)_copyWithSubclass:(Class)arg1;
@@ -50,6 +53,7 @@
 - (id)_initWithURLRepresentation:(id)arg1;
 - (id)_URLRepresentation;
 - (id)_preferredImageLoader;
+@property(copy, nonatomic, setter=_setSandboxExtensionData:) NSData *_sandboxExtensionData;
 @property(copy, nonatomic, setter=_setBundleIdentifier:) NSString *_bundleIdentifier;
 @property(copy, nonatomic, setter=_setBundlePath:) NSString *_bundlePath;
 @property(copy, nonatomic, setter=_setName:) NSString *_name;
@@ -58,10 +62,11 @@
 - (void)_requestProxy:(CDUnknownBlockType)arg1;
 - (void)_retrieveImageDataWithReply:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool _requiresRetrieval;
+@property(readonly, nonatomic, getter=_isSystem) _Bool system;
 - (id)_initWithData:(id)arg1;
 - (id)_initWithIdentifier:(id)arg1;
 - (id)init;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 @property(readonly) INImage *_keyImage;

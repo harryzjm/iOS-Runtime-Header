@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MPSImage, MPSMatrix;
 @protocol MPSNNLossCallback;
 
 @interface MPSNNForwardLoss
 {
+    _Bool _reduceAcrossBatch;
     id <MPSNNLossCallback> _propertyCallback;
+    MPSMatrix *_reductionBuffer;
+    MPSImage *_firstLossImage;
     unsigned int _lossType;
     int _reductionType;
     float _weight;
@@ -18,20 +22,21 @@
     unsigned long long _numberOfClasses;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float delta; // @synthesize delta=_delta;
 @property(nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property(readonly, nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;
 @property(nonatomic) float labelSmoothing; // @synthesize labelSmoothing=_labelSmoothing;
 @property(nonatomic) float weight; // @synthesize weight=_weight;
+@property(readonly, nonatomic) _Bool reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property(readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property(readonly, nonatomic) unsigned int lossType; // @synthesize lossType=_lossType;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (_Bool)isResultStateReusedAcrossBatch;
 - (unsigned long long)maxBatchSize;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 labels:(struct NSArray *)arg3 weights:(struct NSArray *)arg4 destinationStates:(struct NSArray **)arg5 destinationStateIsTemporary:(_Bool)arg6;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 labels:(struct NSArray *)arg3 weights:(struct NSArray *)arg4 destinationStates:(struct NSArray *)arg5 destinationImages:(struct NSArray *)arg6;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 labels:(id)arg3 weights:(id)arg4 destinationStates:(id *)arg5 destinationStateIsTemporary:(_Bool)arg6;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 labels:(id)arg3 weights:(id)arg4 destinationStates:(id)arg5 destinationImages:(id)arg6;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2;
 - (id)debugDescription;
 - (void)dealloc;

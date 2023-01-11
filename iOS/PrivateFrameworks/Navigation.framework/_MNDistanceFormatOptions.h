@@ -9,22 +9,22 @@
 __attribute__((visibility("hidden")))
 @interface _MNDistanceFormatOptions : NSObject
 {
-    _Bool metric;
-    _Bool yards;
-    _Bool abbreviateUnits;
-    _Bool spoken;
-    unsigned long long maximumFractionDigits;
-    long long rounding;
+    _Bool _metric;
+    _Bool _yards;
+    _Bool _abbreviateUnits;
+    _Bool _spoken;
     unsigned long long _minimumFractionDigits;
+    unsigned long long _maximumFractionDigits;
+    long long _rounding;
 }
 
+@property(nonatomic) long long rounding; // @synthesize rounding=_rounding;
+@property(nonatomic) _Bool spoken; // @synthesize spoken=_spoken;
+@property(nonatomic) _Bool abbreviateUnits; // @synthesize abbreviateUnits=_abbreviateUnits;
+@property(nonatomic) _Bool yards; // @synthesize yards=_yards;
+@property(nonatomic) _Bool metric; // @synthesize metric=_metric;
+@property(nonatomic) unsigned long long maximumFractionDigits; // @synthesize maximumFractionDigits=_maximumFractionDigits;
 @property(nonatomic) unsigned long long minimumFractionDigits; // @synthesize minimumFractionDigits=_minimumFractionDigits;
-@property(nonatomic) long long rounding; // @synthesize rounding;
-@property(nonatomic) _Bool spoken; // @synthesize spoken;
-@property(nonatomic) _Bool abbreviateUnits; // @synthesize abbreviateUnits;
-@property(nonatomic) _Bool yards; // @synthesize yards;
-@property(nonatomic) _Bool metric; // @synthesize metric;
-@property(nonatomic) unsigned long long maximumFractionDigits; // @synthesize maximumFractionDigits;
 
 @end
 

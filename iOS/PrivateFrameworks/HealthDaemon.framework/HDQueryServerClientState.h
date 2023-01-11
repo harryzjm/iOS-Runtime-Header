@@ -13,6 +13,7 @@
     unsigned int _applicationState;
 }
 
+@property(readonly, nonatomic) unsigned int applicationState; // @synthesize applicationState=_applicationState;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 @property(readonly, nonatomic, getter=isSuspended) _Bool suspended;

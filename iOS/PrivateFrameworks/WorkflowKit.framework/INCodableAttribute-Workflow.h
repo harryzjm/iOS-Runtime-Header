@@ -18,7 +18,7 @@
 - (void)wf_updateParameterDictionary:(id)arg1 parameterClass:(Class)arg2;
 @property(readonly, nonatomic) Class wf_parameterClass;
 @property(readonly, nonatomic) _Bool wf_multipleValues;
-@property(readonly, nonatomic) NSString *wf_outputDisplayName;
+- (id)wf_outputDisplayNameWithLocalizer:(id)arg1;
 @property(readonly, nonatomic) Class wf_contentItemClass;
 @property(readonly, nonatomic) Class wf_facadeClass;
 @property(readonly, nonatomic) Class wf_objectClass;

@@ -6,23 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PSPhotosPolicyController;
+@class NEConfiguration, NSString, PSAccountEnumerator, PSContactsPolicyController, PSPhotosPolicyController;
+@protocol PSSystemPolicyForAppDelegate;
 
 @interface PSSystemPolicyForApp : NSObject
 {
     unsigned long long _policyOptions;
     _Bool _forcePolicyOptions;
     PSPhotosPolicyController *_photosPrivacyController;
+    PSContactsPolicyController *_contactsPrivacyController;
+    PSAccountEnumerator *_accountEnumerator;
+    NEConfiguration *_pathControllerConfiguration;
+    id <PSSystemPolicyForAppDelegate> _delegate;
     NSString *_bundleIdentifier;
 }
 
 + (_Bool)isServiceRestricted:(id)arg1;
-@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(nonatomic) __weak id <PSSystemPolicyForAppDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)setDefaultMailApp:(id)arg1 specifier:(id)arg2;
+- (id)defaultMailApp:(id)arg1;
+- (id)defaultMailAppSpecifier;
+- (void)setDefaultBrowser:(id)arg1 specifier:(id)arg2;
+- (id)defaultBrowser:(id)arg1;
+- (id)defaultBrowserSpecifier;
+- (id)defaultAppSpecifierWithAppRecordsMatchingBlock:(CDUnknownBlockType)arg1 getter:(SEL)arg2 setter:(SEL)arg3 title:(id)arg4;
 - (id)preferredLanguage:(id)arg1;
 - (id)preferredLanguageSpecifier;
+- (id)exposureSpecifiers;
 - (id)documentSource:(id)arg1;
 - (id)documentsSpecifier;
+- (void)headerLinkWasTapped;
+- (id)trackingSpecifiers;
 - (id)privacyAccessForSpecifier:(id)arg1;
 - (id)_privacyAccessForService:(struct __CFString *)arg1;
 - (void)setPrivacyAccess:(id)arg1 forSpecifier:(id)arg2;
@@ -33,6 +49,15 @@
 - (id)locationStatus:(id)arg1;
 - (_Bool)_isLocationServicesRestricted;
 - (id)locationServicesSpecifier;
+- (id)networkServicesSpecifier;
+- (id)isLocalNetworkEnabled:(id)arg1;
+- (void)setLocalNetworkEnabled:(id)arg1 specifier:(id)arg2;
+- (id)pathRuleForBundleID:(id)arg1 create:(_Bool)arg2;
+- (void)saveNetworkConfiguration;
+- (void)loadNetworkConfigurationsForceRefresh:(_Bool)arg1;
+- (void)setupNetworkConfiguration;
+- (_Bool)getMulticastAllowed:(_Bool *)arg1;
+- (id)contactsServicesSpecifier;
 - (id)photosServicesSpecifier;
 - (id)isBackgroundRefreshEnabled:(id)arg1;
 - (void)setBackgroundRefreshEnabled:(id)arg1 forSpecifier:(id)arg2;
@@ -44,6 +69,9 @@
 - (_Bool)isCellularBundleID:(id)arg1;
 - (id)dataUsageWorkspaceInfo;
 - (id)assistantAndSearchSpecifiers;
+- (_Bool)_accountModificationDisabledByRestrictions;
+- (void)_handleAddAccountButtonAction:(id)arg1;
+- (id)accountsSpecifier;
 - (id)notificationSpecifier;
 - (id)specifiersForPolicyOptions:(unsigned long long)arg1 force:(_Bool)arg2;
 - (id)specifiers;

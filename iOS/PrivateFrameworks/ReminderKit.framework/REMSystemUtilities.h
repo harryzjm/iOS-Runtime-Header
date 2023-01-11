@@ -10,6 +10,7 @@
 {
 }
 
++ (id)systemBuildVersion;
 + (_Bool)isInternalInstall;
 
 @end

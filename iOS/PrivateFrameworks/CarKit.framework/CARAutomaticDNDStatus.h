@@ -16,12 +16,13 @@
     NSXPCConnection *_connection;
 }
 
-+ (id)automaticDNDQueue;
++ (_Bool)isAutomaticDNDAvailable;
++ (id)_DNDServiceInterface;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(copy, nonatomic) CDUnknownBlockType exitConfirmationChangeObserver; // @synthesize exitConfirmationChangeObserver=_exitConfirmationChangeObserver;
 @property(copy, nonatomic) CDUnknownBlockType statusChangeObserver; // @synthesize statusChangeObserver=_statusChangeObserver;
 @property(readonly, nonatomic) unsigned long long cachedAutomaticDNDActiveState; // @synthesize cachedAutomaticDNDActiveState=_cachedAutomaticDNDActiveState;
-- (void).cxx_destruct;
 - (void)_detachObservers;
 - (void)_notifyExitConfirmationActive:(_Bool)arg1;
 - (void)_fetchStatusForObserver;
@@ -38,6 +39,8 @@
 - (void)setHasAdjustedTriggerMethod:(_Bool)arg1;
 - (_Bool)hasOptedOutOfAutomaticDND;
 - (void)setOptedOutOfAutomaticDND:(_Bool)arg1;
+- (_Bool)isAutomaticDNDInternalDNDBuddyPreference;
+- (void)setAutomaticDNDInternalDNDBuddyEnabledPreference:(_Bool)arg1;
 - (_Bool)isAutomaticDNDInternalShowUserAlertsEnabledPreference;
 - (void)setAutomaticDNDInternalShowUserAlertsEnabledPreference:(_Bool)arg1;
 - (_Bool)isAutomaticDNDInternalShowGeofencingAlertsEnabledPreference;
@@ -56,8 +59,6 @@
 - (void)disableDNDUntilEndOfDriveWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutomaticDNDTriggerPreference:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)fetchAutomaticDNDTriggerPreferenceWithReply:(CDUnknownBlockType)arg1;
-- (id)automaticDNDInternalAutoReplyWhitelist;
-- (void)setAutomaticDNDInternalAutoReplyWhitelist:(id)arg1;
 - (_Bool)shouldEnforceInternalWhitelist;
 - (_Bool)platformSupportsUrgentMessages;
 - (_Bool)platformSupportsSendingAutoReplies;

@@ -21,6 +21,9 @@
 @property(readonly, nonatomic) _Bool textOnly; // @synthesize textOnly=_textOnly;
 @property(readonly, retain, nonatomic) CHStrokeClassificationResult *strokeClassificationLastResult; // @synthesize strokeClassificationLastResult=_strokeClassificationLastResult;
 @property(readonly, retain, nonatomic) id <CHStrokeProvider> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
+- (id)refineStrokeClassificationResultUsingClassificationResult:(id)arg1 strokeClassificationModel:(id)arg2 sortedAddedStrokes:(id)arg3 removedStrokeIdentifiers:(id)arg4 cancellationBlock:(CDUnknownBlockType)arg5;
+- (long long)_tileIndexForYPosition:(double)arg1 tileHeight:(long long)arg2;
+- (_Bool)changeableClassificationByRefinement:(long long)arg1 stroke:(id)arg2;
 - (id)updatedStrokeClassificationResultByAddingStrokes:(id)arg1 removingStrokeIdentifiers:(id)arg2 clutterFilter:(id)arg3 affectedClutterStrokeIDs:(id)arg4 cancellationBlock:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)initWithStrokeProvider:(id)arg1 strokeClassificationLastResult:(id)arg2 textOnly:(_Bool)arg3;

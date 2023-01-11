@@ -8,6 +8,5 @@
 
 @interface EKEvent (Compatibility)
 - (_Bool)organizedByMe;
-- (_Bool)isBirthday;
 @end
 

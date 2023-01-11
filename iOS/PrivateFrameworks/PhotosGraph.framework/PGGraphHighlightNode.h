@@ -13,6 +13,12 @@
 
 @interface PGGraphHighlightNode <PGGraphFullMeaninglessEvent, PGGraphPhotoEvent, PGGraphRelatableEvent, PGEventEnrichment>
 {
+    double _localStartTimestamp;
+    double _localEndTimestamp;
+    NSString *_name;
+    NSString *_uuid;
+    double _universalStartTimestamp;
+    double _universalEndTimestamp;
 }
 
 + (id)inclusivePathToTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
@@ -31,6 +37,11 @@
 + (CDStruct_c591f335)_promotionScoreDescriptorWithMomentNodes:(id)arg1;
 + (id)otherVeryMeaningfulMeanings;
 + (double)promotionScoreWithHighlightNode:(id)arg1 enrichmentState:(unsigned short)arg2 numberOfExtendedAssets:(unsigned long long)arg3;
+- (void).cxx_destruct;
+@property(readonly) double timestampUTCEnd; // @synthesize timestampUTCEnd=_universalEndTimestamp;
+@property(readonly) double timestampUTCStart; // @synthesize timestampUTCStart=_universalStartTimestamp;
+@property(readonly) NSString *uuid; // @synthesize uuid=_uuid;
+@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)naturalLanguageFeatures;
 - (id)keywordsForRelatedType:(unsigned long long)arg1 focusOnNodes:(id)arg2;
 - (id)relatableNode;
@@ -66,7 +77,6 @@
 - (id)fetchAssetCollection;
 - (id)anniversaryPersonNode;
 - (id)birthdayPersonNode;
-@property(readonly, nonatomic) NSString *uuid;
 - (id)reliableMeaningLabels;
 - (id)meaningLabels;
 - (void)enumerateMeaningNodesUsingBlock:(CDUnknownBlockType)arg1;
@@ -80,17 +90,18 @@
 @property(readonly) double contentScore;
 - (_Bool)endsBeforeLocalDate:(id)arg1;
 - (_Bool)startsAfterLocalDate:(id)arg1;
-@property(readonly) NSDate *universalEndDate;
-@property(readonly) NSDate *universalStartDate;
-@property(readonly) NSDate *localEndDate;
-@property(readonly) NSDate *localStartDate;
+@property(retain, nonatomic) NSDate *universalEndDate;
+@property(retain, nonatomic) NSDate *universalStartDate;
+@property(retain, nonatomic) NSDate *localEndDate;
+@property(retain, nonatomic) NSDate *localStartDate;
 @property(readonly) _Bool hasOnlyMomentsAtWork;
 @property(readonly) _Bool happensPartiallyAtMyWork;
 @property(readonly) _Bool happensPartiallyAtMyHome;
 @property(readonly) unsigned long long numberOfShinyGemAssets;
 @property(readonly) unsigned long long numberOfRegularGemAssets;
 @property(readonly) double neighborScore;
-- (_Bool)isSmartInteresting;
+@property(readonly) _Bool isSmartInteresting;
+@property(readonly) _Bool isInterestingWithAlternateJunking;
 @property(readonly) _Bool isInteresting;
 @property(readonly) _Bool petIsPresent;
 @property(readonly) _Bool babyIsPresent;
@@ -102,13 +113,23 @@
 @property(readonly) _Bool isPartOfShortTrip;
 @property(readonly) _Bool isPartOfLongTrip;
 @property(readonly) _Bool isPartOfTrip;
+@property(readonly) double timezoneOffsetAtEnd;
+@property(readonly) double timezoneOffsetAtStart;
 @property(readonly) PGGraphHighlightGroupNode *highlightGroupNode;
+@property(readonly) NSString *UUID;
 @property(readonly) NSString *localIdentifier;
+- (unsigned short)domain;
+- (id)label;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
+- (double)nonMeaningfulPromotionScoreForTripKeyAssetWithEnrichmentState:(unsigned short)arg1;
 
 // Remaining properties
-@property(readonly) NSString *UUID;
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

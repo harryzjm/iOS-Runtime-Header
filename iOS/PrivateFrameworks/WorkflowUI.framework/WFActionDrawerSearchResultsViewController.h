@@ -6,30 +6,20 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerActionTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerAppsTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
 @class NSArray, NSString, WFActionDrawerState;
-@protocol WFActionDrawerSearchResultsViewControllerDelegate;
 
-@interface WFActionDrawerSearchResultsViewController <WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFActionDrawerAppsTableViewCellDelegate, WFActionDrawerActionTableViewCellDelegate, UITableViewDelegate, UITableViewDataSource, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
+@interface WFActionDrawerSearchResultsViewController <UITableViewDelegate, UITableViewDataSource, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
-    id <WFActionDrawerSearchResultsViewControllerDelegate> _delegate;
     NSArray *_combinedActionActivitySections;
 }
 
-@property(retain, nonatomic) NSArray *combinedActionActivitySections; // @synthesize combinedActionActivitySections=_combinedActionActivitySections;
-@property(nonatomic) __weak id <WFActionDrawerSearchResultsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)appsTableViewCell:(id)arg1 didSelectSection:(id)arg2;
+@property(retain, nonatomic) NSArray *combinedActionActivitySections; // @synthesize combinedActionActivitySections=_combinedActionActivitySections;
 - (_Bool)moveToState:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) WFActionDrawerState *state;
-- (void)siriSuggestionsTableViewCell:(id)arg1 infoButtonTappedForSuggestion:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 didSelectAction:(id)arg2;
-- (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;

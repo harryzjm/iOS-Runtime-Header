@@ -18,14 +18,14 @@
     _SFPrintController *_printController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool canVendPDFRepresentation; // @synthesize canVendPDFRepresentation=_canVendPDFRepresentation;
 @property(readonly, nonatomic) _Bool hasReservedPrintInteractionController; // @synthesize hasReservedPrintInteractionController=_hasReservedPrintInteractionController;
 @property(readonly, nonatomic) _SFPrintController *printController; // @synthesize printController=_printController;
-- (void).cxx_destruct;
 - (id)activityViewController:(id)arg1 itemsForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItems:(id)arg1;
 @property(readonly, nonatomic) NSItemProvider *pdfItemProvider;
-- (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
+- (id)activityViewControllerLinkMetadata:(id)arg1;
 - (id)item;
 - (id)initWithPrintController:(id)arg1 webView:(id)arg2;
 

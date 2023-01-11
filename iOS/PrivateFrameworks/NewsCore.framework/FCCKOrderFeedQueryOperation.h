@@ -12,7 +12,7 @@
     NSArray *_feedRequests;
     NSArray *_desiredKeys;
     unsigned long long _resultsLimit;
-    long long _queryPriority;
+    unsigned long long _queryPriority;
     NSArray *_articleLinkKeys;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCEdgeCacheHint *_edgeCacheHint;
@@ -25,6 +25,7 @@
     NSError *_resultError;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *resultError; // @synthesize resultError=_resultError;
 @property(retain, nonatomic) NSArray *resultFeedResponses; // @synthesize resultFeedResponses=_resultFeedResponses;
 @property(retain, nonatomic) NSArray *resultIssueRecords; // @synthesize resultIssueRecords=_resultIssueRecords;
@@ -35,12 +36,11 @@
 @property(copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
 @property(copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property(copy, nonatomic) NSArray *articleLinkKeys; // @synthesize articleLinkKeys=_articleLinkKeys;
-@property(nonatomic) long long queryPriority; // @synthesize queryPriority=_queryPriority;
+@property(nonatomic) unsigned long long queryPriority; // @synthesize queryPriority=_queryPriority;
 @property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(copy, nonatomic) NSArray *feedRequests; // @synthesize feedRequests=_feedRequests;
 @property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
 - (id)_feedRelativeDictionaryFromResultsArray:(id)arg1;
 - (void)_processResultsRecord:(id)arg1 feedItemAndArticleRecords:(id)arg2 tagRecords:(id)arg3 issueRecords:(id)arg4;
 - (id)_requiredKeys;

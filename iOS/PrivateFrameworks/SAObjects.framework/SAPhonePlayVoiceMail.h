@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSURL, SARemoteDevice;
 
 @interface SAPhonePlayVoiceMail
 {
@@ -14,6 +14,7 @@
 + (id)playVoiceMail;
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSURL *voiceMailId;
+@property(retain, nonatomic) SARemoteDevice *targetDevice;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

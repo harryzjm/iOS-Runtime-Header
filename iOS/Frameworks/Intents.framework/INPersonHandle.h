@@ -14,6 +14,7 @@
 
 @interface INPersonHandle : NSObject <INPersonHandleExport, NSCopying, NSSecureCoding>
 {
+    _Bool _suggested;
     NSString *_value;
     long long _type;
     NSString *_label;
@@ -21,11 +22,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isSuggested) _Bool suggested; // @synthesize suggested=_suggested;
 @property(readonly, nonatomic) long long emergencyType; // @synthesize emergencyType=_emergencyType;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
-- (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
@@ -34,6 +36,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3 emergencyType:(long long)arg4 suggested:(_Bool)arg5;
+- (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3 suggested:(_Bool)arg4;
 - (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3 emergencyType:(long long)arg4;
 - (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3;
 - (id)initWithValue:(id)arg1 type:(long long)arg2;

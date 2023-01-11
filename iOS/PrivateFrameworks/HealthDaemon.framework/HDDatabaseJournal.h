@@ -6,54 +6,60 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileHandle, NSLock, NSProgress, NSString;
-@protocol HDDatabaseJournalDelegate;
+@class HDDatabaseTransaction, NSLock, NSProgress, NSURL;
+@protocol HDDatabaseJournalDelegate, HDJournalChapter;
 
 @interface HDDatabaseJournal : NSObject
 {
     struct os_unfair_lock_s _progressLock;
+    NSProgress *_progressLock_observableProgress;
+    NSProgress *_progressLock_internalProgress;
+    struct os_unfair_lock_s _activeTransactionLock;
+    struct os_unfair_lock_s _interruptionLock;
+    HDDatabaseTransaction *_activeMergeTransaction;
+    long long _journalStatus;
+    _Bool _interrupted;
+    _Bool _invalidated;
+    Class _lastInsertedEntryClass;
     long long _type;
     id <HDDatabaseJournalDelegate> _delegate;
-    NSString *_path;
+    NSURL *_URL;
     NSLock *_journalLock;
-    NSFileHandle *_fileHandle;
-    NSProgress *_parentProgress;
+    id <HDJournalChapter> _currentJournalChapter;
 }
 
-@property(retain, nonatomic) NSProgress *parentProgress; // @synthesize parentProgress=_parentProgress;
-@property(retain, nonatomic) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
+- (void).cxx_destruct;
+@property(retain, nonatomic) id <HDJournalChapter> currentJournalChapter; // @synthesize currentJournalChapter=_currentJournalChapter;
 @property(retain, nonatomic) NSLock *journalLock; // @synthesize journalLock=_journalLock;
-@property(copy, nonatomic) NSString *path; // @synthesize path=_path;
+@property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(nonatomic) __weak id <HDDatabaseJournalDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
-- (id)_unitTesting_journalFiles;
-- (void)_unitTesting_closeCurrentJournalFile;
+- (_Bool)_isJournalDatabaseFeatureEnabled;
+- (void)_unitTesting_setJournalStatusRequiresMerge;
+- (id)_unitTesting_directoryURL;
+- (void)_unitTesting_closeCurrentJournalChapter;
 - (_Bool)_performPostJournalMergeWithVersion:(unsigned int)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
-- (unsigned int)_processMonarchJournalWithVersion:(unsigned int)arg1 fileHandle:(id)arg2 mapping:(void *)arg3 size:(unsigned long long)arg4 headerLength:(unsigned long long)arg5 profile:(id)arg6 transaction:(id)arg7 error:(id *)arg8;
-- (unsigned int)_processOkemoJournalWithVersion:(unsigned int)arg1 fileHandle:(id)arg2 mapping:(void *)arg3 size:(unsigned long long)arg4 headerLength:(unsigned long long)arg5 profile:(id)arg6 transaction:(id)arg7 error:(id *)arg8;
-- (unsigned int)_processJournalFile:(id)arg1 profile:(id)arg2 transaction:(id)arg3 fileHandle:(id)arg4 mapping:(void *)arg5 length:(unsigned long long)arg6 error:(id *)arg7;
-- (unsigned int)_processJournalFile:(id)arg1 profile:(id)arg2 transaction:(id)arg3 fileHandle:(id)arg4 fileSize:(unsigned long long *)arg5 error:(id *)arg6;
 - (void)_mergeJournalEntries:(id)arg1 profile:(id)arg2;
-- (_Bool)_loadJournalFromMapping:(void *)arg1 size:(unsigned long long)arg2 headerLength:(unsigned long long)arg3 journalEntries:(id *)arg4 error:(id *)arg5;
-- (_Bool)_loadJournalWithFileHandle:(id)arg1 journalEntries:(id *)arg2 error:(id *)arg3;
-- (id)_loadJournalEntry:(id)arg1;
-- (id)_sortedListOfJournalFiles;
-- (id)_nameOfNextJournalFile;
-- (id)_journalFiles;
-- (_Bool)_appendData:(id)arg1 error:(id *)arg2;
-- (_Bool)_openNextJournalFileWithError:(id *)arg1;
+- (void)_waitIfInterrupted;
+- (_Bool)_appendData:(id)arg1 entryClass:(Class)arg2 error:(id *)arg3;
+- (_Bool)_createNextJournalChapterWithError:(id *)arg1;
 - (void)_executeAtomically:(CDUnknownBlockType)arg1;
 - (id)_mergeTransactionContextWithContext:(id)arg1;
-- (_Bool)_processJournalFile:(id)arg1 profile:(id)arg2 accessibilityAssertion:(id)arg3;
-- (_Bool)_processJournalFilesWithProfile:(id)arg1;
-- (unsigned long long)journalFileCount;
+- (_Bool)_setActiveTransactionAndReturnInterrupted:(id)arg1;
+- (unsigned int)_mergeJournalChapter:(id)arg1 profile:(id)arg2 accessibilityAssertion:(id)arg3;
+- (_Bool)_processJournalChaptersWithProfile:(id)arg1;
+- (unsigned long long)sizeOnDisk;
+- (long long)journalChapterCount;
+- (void)invalidate;
+- (void)resumeJournalMerge;
+- (void)interruptJournalMerge;
 - (_Bool)mergeWithProfile:(id)arg1;
 - (id)progressForJournalMerge;
 - (_Bool)performMergeTransactionWithProfile:(id)arg1 transactionContext:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
-- (_Bool)addJournalEntries:(id)arg1 error:(id *)arg2;
+- (_Bool)addJournalEntries:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (void)unlock;
 - (void)lock;
+- (id)description;
 - (void)dealloc;
 - (id)init;
 - (id)initWithType:(long long)arg1 path:(id)arg2;

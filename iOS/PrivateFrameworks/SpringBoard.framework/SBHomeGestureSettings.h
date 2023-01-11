@@ -15,6 +15,8 @@
     _Bool _snapToMaxVelocityThresholdAfterAccelerationDip;
     _Bool _injectGestureVelocityForZoomDown;
     _Bool _onlyInjectVelocityForShortFlicks;
+    _Bool _morphShouldShowBlackCurtainOverSource;
+    _Bool _morphShouldMatchMove;
     _Bool _preventMultipleEdgesAfterAppInteraction;
     _Bool _resetSwitcherListAfterAppInteraction;
     double _hysteresis;
@@ -42,11 +44,11 @@
     double _velocitySlopeThresholdForScrunchArc;
     double _velocitySlopeThresholdForCurrentLayout;
     double _edgeDistanceToCorrectGestureFinalDestination;
+    double _edgeAngleWindow;
     double _cardFlyInMaximumVelocityThreshold;
     double _cardFlyInDelayAfterEnteringAppSwitcher;
     double _maximumDistanceYThresholdToPresentDock;
-    double _centerYOffsetPercentOfScreenHeightPhone;
-    double _centerYOffsetPercentOfScreenHeightPad;
+    double _homeGestureCenterZoomDownCenterYOffsetFactor;
     double _verticalRubberbandStart;
     double _verticalRubberbandEnd;
     double _verticalRubberbandDistance;
@@ -61,17 +63,28 @@
     double _maximumScaleVelocity;
     double _morphSourceClipDuration;
     double _morphTargetUnclipDuration;
+    double _morphSourceUnclipDuration;
+    double _morphTargetClipDuration;
     double _secondsToAllowMultipleEdges;
     double _secondsToResetSwitcherListAfterTransition;
+    double _travelDistanceForTranslatingScreenHeight;
+    double _minimumDistanceThresholdToScaleMultiplier;
     SBHomeGestureExclusionTrapezoidSettings *_exclusionTrapezoidSettings;
 }
 
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBHomeGestureExclusionTrapezoidSettings *exclusionTrapezoidSettings; // @synthesize exclusionTrapezoidSettings=_exclusionTrapezoidSettings;
+@property(nonatomic) double minimumDistanceThresholdToScaleMultiplier; // @synthesize minimumDistanceThresholdToScaleMultiplier=_minimumDistanceThresholdToScaleMultiplier;
+@property(nonatomic) double travelDistanceForTranslatingScreenHeight; // @synthesize travelDistanceForTranslatingScreenHeight=_travelDistanceForTranslatingScreenHeight;
 @property(nonatomic) _Bool resetSwitcherListAfterAppInteraction; // @synthesize resetSwitcherListAfterAppInteraction=_resetSwitcherListAfterAppInteraction;
 @property(nonatomic) double secondsToResetSwitcherListAfterTransition; // @synthesize secondsToResetSwitcherListAfterTransition=_secondsToResetSwitcherListAfterTransition;
 @property(nonatomic) _Bool preventMultipleEdgesAfterAppInteraction; // @synthesize preventMultipleEdgesAfterAppInteraction=_preventMultipleEdgesAfterAppInteraction;
 @property(nonatomic) double secondsToAllowMultipleEdges; // @synthesize secondsToAllowMultipleEdges=_secondsToAllowMultipleEdges;
+@property(nonatomic) _Bool morphShouldMatchMove; // @synthesize morphShouldMatchMove=_morphShouldMatchMove;
+@property(nonatomic) _Bool morphShouldShowBlackCurtainOverSource; // @synthesize morphShouldShowBlackCurtainOverSource=_morphShouldShowBlackCurtainOverSource;
+@property(nonatomic) double morphTargetClipDuration; // @synthesize morphTargetClipDuration=_morphTargetClipDuration;
+@property(nonatomic) double morphSourceUnclipDuration; // @synthesize morphSourceUnclipDuration=_morphSourceUnclipDuration;
 @property(nonatomic) double morphTargetUnclipDuration; // @synthesize morphTargetUnclipDuration=_morphTargetUnclipDuration;
 @property(nonatomic) double morphSourceClipDuration; // @synthesize morphSourceClipDuration=_morphSourceClipDuration;
 @property(nonatomic) double maximumScaleVelocity; // @synthesize maximumScaleVelocity=_maximumScaleVelocity;
@@ -88,11 +101,11 @@
 @property(nonatomic) double verticalRubberbandDistance; // @synthesize verticalRubberbandDistance=_verticalRubberbandDistance;
 @property(nonatomic) double verticalRubberbandEnd; // @synthesize verticalRubberbandEnd=_verticalRubberbandEnd;
 @property(nonatomic) double verticalRubberbandStart; // @synthesize verticalRubberbandStart=_verticalRubberbandStart;
-@property(nonatomic) double centerYOffsetPercentOfScreenHeightPad; // @synthesize centerYOffsetPercentOfScreenHeightPad=_centerYOffsetPercentOfScreenHeightPad;
-@property(nonatomic) double centerYOffsetPercentOfScreenHeightPhone; // @synthesize centerYOffsetPercentOfScreenHeightPhone=_centerYOffsetPercentOfScreenHeightPhone;
+@property(nonatomic) double homeGestureCenterZoomDownCenterYOffsetFactor; // @synthesize homeGestureCenterZoomDownCenterYOffsetFactor=_homeGestureCenterZoomDownCenterYOffsetFactor;
 @property(nonatomic) double maximumDistanceYThresholdToPresentDock; // @synthesize maximumDistanceYThresholdToPresentDock=_maximumDistanceYThresholdToPresentDock;
 @property(nonatomic) double cardFlyInDelayAfterEnteringAppSwitcher; // @synthesize cardFlyInDelayAfterEnteringAppSwitcher=_cardFlyInDelayAfterEnteringAppSwitcher;
 @property(nonatomic) double cardFlyInMaximumVelocityThreshold; // @synthesize cardFlyInMaximumVelocityThreshold=_cardFlyInMaximumVelocityThreshold;
+@property(nonatomic) double edgeAngleWindow; // @synthesize edgeAngleWindow=_edgeAngleWindow;
 @property(nonatomic) double edgeDistanceToCorrectGestureFinalDestination; // @synthesize edgeDistanceToCorrectGestureFinalDestination=_edgeDistanceToCorrectGestureFinalDestination;
 @property(nonatomic) double velocitySlopeThresholdForCurrentLayout; // @synthesize velocitySlopeThresholdForCurrentLayout=_velocitySlopeThresholdForCurrentLayout;
 @property(nonatomic) double velocitySlopeThresholdForScrunchArc; // @synthesize velocitySlopeThresholdForScrunchArc=_velocitySlopeThresholdForScrunchArc;
@@ -121,7 +134,6 @@
 @property(nonatomic) _Bool recognizeAlongEdge; // @synthesize recognizeAlongEdge=_recognizeAlongEdge;
 @property(nonatomic) double hysteresis; // @synthesize hysteresis=_hysteresis;
 @property(nonatomic, getter=isHomeGestureEnabled) _Bool homeGestureEnabled; // @synthesize homeGestureEnabled=_homeGestureEnabled;
-- (void).cxx_destruct;
 - (void)setLatchDefaults;
 - (void)setHomeGestureTuningDefaults;
 - (void)setDefaultValues;

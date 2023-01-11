@@ -6,25 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <WallpaperKit/NAIdentifiable-Protocol.h>
+#import <WallpaperKit/WKDescribable-Protocol.h>
 #import <WallpaperKit/WKWallpaper-Protocol.h>
 
-@class NSString;
+@class NADescriptionBuilder, NSString;
 
-@interface WKAbstractWallpaper : NSObject <WKWallpaper>
+@interface WKAbstractWallpaper : NSObject <WKDescribable, NAIdentifiable, WKWallpaper>
 {
-    unsigned long long _identifier;
+    long long _identifier;
     NSString *_name;
     unsigned long long _type;
+    unsigned long long _backingType;
 }
 
++ (id)na_identity;
 + (id)new;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long backingType; // @synthesize backingType=_backingType;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) CDUnknownBlockType descriptionBuilderBlock;
+@property(readonly, copy, nonatomic) NSString *description;
+@property(readonly, nonatomic) NADescriptionBuilder *wk_descriptionBuilder;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2;
+- (id)initWithIdentifier:(long long)arg1 name:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

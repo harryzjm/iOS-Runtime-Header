@@ -7,11 +7,12 @@
 #import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
 #import <CFNetwork/NSURLSessionDataDelegatePrivate-Protocol.h>
 #import <CFNetwork/NSURLSessionDataDelegate_Internal-Protocol.h>
+#import <CFNetwork/NSURLSessionDelegate_Internal-Protocol.h>
 #import <CFNetwork/NSURLSessionTaskDelegatePrivate-Protocol.h>
 
 @class NSArray, NSCachedURLResponse, NSString, NSURLRequest, NSURLSessionTask;
 
-@interface __NSCFURLProxySessionConnection <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate_Internal>
+@interface __NSCFURLProxySessionConnection <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal, NSURLSessionDataDelegate_Internal>
 {
     NSURLSessionTask *_proxyTask;
     NSURLSessionTask *_cacheTask;
@@ -40,16 +41,14 @@
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)setIsDownload:(_Bool)arg1;
-- (void)_deliverDidCompleteWithError:(id)arg1;
-- (void)setExpectedProgressTarget:(unsigned long long)arg1;
-- (void)setPriorityHint:(float)arg1;
+- (void)setTLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
+- (void)setTLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
+- (void)expectedProgressTargetChanged;
+- (void)setPriorityHint:(float)arg1 incremental:(_Bool)arg2;
 - (void)setPoolPriority:(long long)arg1;
 - (void)resume;
 - (void)suspend;
 - (void)cancel;
-- (void)_performOriginLoad;
-- (void)_startLoad;
-- (id)clientErrorForError:(id)arg1;
 - (void)dealloc;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 

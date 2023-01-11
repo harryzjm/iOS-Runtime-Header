@@ -11,6 +11,8 @@
 }
 
 + (id)defaultPropertiesToLoad;
+- (id)url;
+- (id)displayName;
 - (id)semanticIdentifier;
 - (void)setProposedStartDateStatus:(int)arg1;
 - (int)proposedStartDateStatus;
@@ -20,10 +22,9 @@
 - (id)owner;
 - (void)setComment:(id)arg1;
 - (id)comment;
-- (void)setAddress:(id)arg1;
-- (id)address;
+- (void)setURL:(id)arg1;
+- (id)URL;
 - (void)setLastName:(id)arg1;
-- (id)url;
 - (id)lastName;
 - (void)setFirstName:(id)arg1;
 - (id)firstName;
@@ -31,8 +32,8 @@
 - (id)phoneNumber;
 - (void)setEmailAddress:(id)arg1;
 - (id)emailAddress;
-- (void)setDisplayName:(id)arg1;
-- (id)displayName;
+- (void)setDisplayNameRaw:(id)arg1;
+- (id)displayNameRaw;
 - (void)setUUID:(id)arg1;
 - (id)UUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;

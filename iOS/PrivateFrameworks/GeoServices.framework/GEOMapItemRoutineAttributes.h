@@ -13,11 +13,13 @@
 @interface GEOMapItemRoutineAttributes : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _eventDate;
     NSString *_eventName;
     NSString *_loiIdentifierString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _loiType;
     _Bool _isEventAllDay;
     struct {
@@ -27,12 +29,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_eventName:1;
         unsigned int read_loiIdentifierString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_eventDate:1;
-        unsigned int wrote_eventName:1;
-        unsigned int wrote_loiIdentifierString:1;
-        unsigned int wrote_loiType:1;
-        unsigned int wrote_isEventAllDay:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,22 +45,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *loiIdentifierString;
 @property(readonly, nonatomic) _Bool hasLoiIdentifierString;
-- (void)_readLoiIdentifierString;
 @property(nonatomic) _Bool hasIsEventAllDay;
 @property(nonatomic) _Bool isEventAllDay;
 @property(nonatomic) _Bool hasEventDate;
 @property(nonatomic) double eventDate;
 @property(retain, nonatomic) NSString *eventName;
 @property(readonly, nonatomic) _Bool hasEventName;
-- (void)_readEventName;
 - (int)StringAsLoiType:(id)arg1;
 - (id)loiTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasLoiType;
 @property(nonatomic) int loiType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(retain, nonatomic) NSUUID *loiIdentifier;
 
 @end

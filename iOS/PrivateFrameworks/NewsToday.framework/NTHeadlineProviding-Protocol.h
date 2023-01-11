@@ -13,26 +13,20 @@
 @protocol NTHeadlineAdElement, NTHeadlineAnalyticsElementProviding, NTHeadlineBackingElement, NTHeadlinePersonalizationMetadata;
 
 @protocol NTHeadlineProviding <NSObject, NFCopying, NSSecureCoding, NTTodayItem>
-@property(readonly, copy, nonatomic) NSURL *videoCallToActionURL;
-@property(readonly, copy, nonatomic) NSString *videoCallToActionTitle;
 @property(readonly, copy, nonatomic) NSURL *flintDocumentURL;
 @property(readonly, copy, nonatomic) NSObject<NTHeadlineBackingElement> *backingElement;
 @property(readonly, copy, nonatomic) NSObject<NTHeadlinePersonalizationMetadata> *personalizationMetadata;
 @property(readonly, copy, nonatomic) NSObject<NTHeadlineAdElement> *adElement;
 @property(readonly, copy, nonatomic) NSObject<NTHeadlineAnalyticsElementProviding> *analyticsElement;
-@property(readonly, nonatomic, getter=isBoundToContext) _Bool boundToContext;
 @property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
-@property(readonly, nonatomic, getter=isHiddenFromFeeds) _Bool hiddenFromFeeds;
 @property(readonly, nonatomic) _Bool supportsSavingForLater;
-@property(readonly, nonatomic) _Bool displaysWithLeadingCellAppearance;
-@property(readonly, nonatomic) double videoDuration;
-@property(readonly, copy, nonatomic) NSURL *videoURL;
 @property(readonly, copy, nonatomic) SFSearchResult *searchResult;
 @property(readonly, copy, nonatomic) NSArray *topicIDs;
 @property(readonly, copy, nonatomic) NSString *storyType;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, copy, nonatomic) NSURL *NewsURL;
 @property(readonly, copy, nonatomic) NSURL *webURL;
+@property(readonly, nonatomic) _Bool needsPlaceholderThumbnail;
 @property(readonly, nonatomic) struct CGRect thumbnailFocalFrame;
 @property(readonly, nonatomic) unsigned long long thumbnailSizePreset;
 @property(copy, nonatomic) NSString *thumbnailIdentifier;

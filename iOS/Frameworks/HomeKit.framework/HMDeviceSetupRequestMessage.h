@@ -11,11 +11,13 @@
 @interface HMDeviceSetupRequestMessage : TRRequestMessage
 {
     NSData *_payload;
+    long long _qualityOfService;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSData *payload; // @synthesize payload=_payload;
 - (void).cxx_destruct;
+@property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property(readonly, copy, nonatomic) NSData *payload; // @synthesize payload=_payload;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPayload:(id)arg1;

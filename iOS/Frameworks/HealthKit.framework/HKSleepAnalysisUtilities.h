@@ -20,15 +20,13 @@
 + (void)categorizeSleepPeriods:(id)arg1 dateInterval:(id)arg2 calendar:(id)arg3;
 + (id)sortedSleepPeriodSegmentsFromSleepSamples:(id)arg1;
 + (id)dateIntervalBoundingSleepPeriods:(id)arg1;
-+ (_Bool)findBedtimeAlarmAndUpdateSleepPeriods:(id)arg1 calendar:(id)arg2 startOfDayTransform:(CDUnknownBlockType)arg3;
-+ (void)enumerateSleepPeriodsForAnalysis:(id)arg1 calendar:(id)arg2 dateInterval:(id)arg3 dateComponents:(id)arg4 analysisBlock:(CDUnknownBlockType)arg5;
++ (void)_enumerateSleepPeriodsForAnalysis:(id)arg1 calendar:(id)arg2 dateInterval:(id)arg3 dateComponents:(id)arg4 analysisBlock:(CDUnknownBlockType)arg5;
 + (id)sleepPeriodSegmentsFromSleepSamples:(id)arg1 minimumInterSegmentTimeInterval:(double)arg2 categoryValue:(long long)arg3;
-+ (double)durationFromDateIntervals:(id)arg1;
++ (double)_durationFromDateIntervals:(id)arg1;
 + (id)boundingDateIntervalsForDateIntervals:(id)arg1;
 + (id)filterSleepDays:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (id)filterSleepPeriods:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (id)filterSleepSamples:(id)arg1 categoryValue:(long long)arg2;
-+ (id)sleepAnalysisDateIntervalWithCalendar:(id)arg1 visibleRangeStartDate:(id)arg2 visibleRangeEndDate:(id)arg3 startOfDayTransform:(CDUnknownBlockType)arg4;
 
 @end
 

@@ -16,7 +16,7 @@
 @property(nonatomic) struct _NSRange candidateNameRange; // @synthesize candidateNameRange=_candidateNameRange;
 @property(nonatomic) _Bool isNegativeExample; // @synthesize isNegativeExample=_isNegativeExample;
 @property(nonatomic) _Bool isPositiveExample; // @synthesize isPositiveExample=_isPositiveExample;
-- (id)initWithEntity:(id)arg1 candidateName:(struct _NSRange)arg2;
+- (id)initWithMessage:(id)arg1 candidateName:(struct _NSRange)arg2;
 
 @end
 

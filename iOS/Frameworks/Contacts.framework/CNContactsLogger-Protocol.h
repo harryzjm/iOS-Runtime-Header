@@ -36,8 +36,8 @@
 - (void)fetchContactsMatchingPredicate:(NSPredicate *)arg1 unifyResults:(_Bool)arg2 keysToFetch:(NSArray *)arg3;
 - (void)noAccessToContactsWithError:(NSError *)arg1;
 - (void)contactsAccessWasGranted:(_Bool)arg1;
-- (void)tccAccessRequestWasDenied;
-- (void)tccAccessPreflightWasDenied;
+- (void)requestAuthorizationWasDenied;
+- (void)accessAuthorizationStatusWasDenied;
 - (void)postingNotification:(void (^)(void (^)(void)))arg1;
 - (void)settingDefaultAccount:(void (^)(void (^)(void)))arg1;
 - (void)resettingSortDataIfNeeded:(void (^)(void (^)(void)))arg1;

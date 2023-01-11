@@ -14,27 +14,25 @@
 
 @interface HKConceptRelationship : NSObject <NSObject, NSCopying, NSSecureCoding>
 {
-    long long _identifier;
-    HKConcept *_owner;
     NSString *_name;
+    long long _identifier;
+    long long _type;
     HKConcept *_destination;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) HKConcept *destination; // @synthesize destination=_destination;
-@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, nonatomic) __weak HKConcept *owner; // @synthesize owner=_owner;
-@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
++ (id)relationshipWithIdentifier:(long long)arg1 type:(long long)arg2 destination:(id)arg3;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) HKConcept *destination; // @synthesize destination=_destination;
+@property(readonly, nonatomic) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy) NSString *debugDescription;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (void)setOwner:(id)arg1;
 - (id)init;
-- (id)initWithOwner:(id)arg1 name:(id)arg2 destination:(id)arg3;
-- (id)initWithIdentifier:(long long)arg1 owner:(id)arg2 name:(id)arg3 destination:(id)arg4;
+- (id)initWithIdentifier:(long long)arg1 type:(long long)arg2 name:(id)arg3 destination:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *description;

@@ -6,50 +6,48 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHomeManager, HMDSyncOperationQueue, HMFExponentialBackoffTimer, NSMutableArray, NSMutableDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class HMDSyncOperation, HMDSyncOperationQueue, HMFExponentialBackoffTimer, NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@protocol HMDSyncOperationManagerDataSource, OS_dispatch_queue;
 
-@interface HMDSyncOperationManager : HMFObject <HMFTimerDelegate>
+@interface HMDSyncOperationManager : HMFObject <HMFLogging, HMFTimerDelegate>
 {
-    _Bool _pauseQueue;
-    _Bool _syncLoopDialogDisplayed;
-    HMDHomeManager *_homeManager;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    HMDSyncOperationQueue *_cloudPushOperations;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_cloudVerifyAccountOperations;
-    HMDSyncOperationQueue *_cloudFetchOperations;
-    NSMutableArray *_cloudZonePushOperations;
-    NSMutableDictionary *_cloudZonePushOperationsMap;
-    NSMutableArray *_cloudZoneFetchOperations;
-    NSMutableDictionary *_cloudZoneFetchOperationsMap;
+    NSMutableArray *_cloudZonePushOperationQueues;
+    NSMutableArray *_cloudZoneFetchOperationQueues;
     NSMutableArray *_cloudCancelPauseOperations;
     NSMutableArray *_cloudQueryDatabaseOperations;
+    NSMutableArray *_cloudPostFetchOperations;
+    NSMutableDictionary *_cloudZonePushOperationQueuesMap;
+    NSMutableDictionary *_cloudZoneFetchOperationQueuesMap;
+    _Bool _pauseQueue;
+    _Bool _syncLoopDialogDisplayed;
+    HMDSyncOperationQueue *_cloudPushOperations;
+    HMDSyncOperationQueue *_cloudFetchOperations;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_clientQueue;
     long long _pauseCloudPushLevel;
     HMFExponentialBackoffTimer *_cloudPushDelayTimer;
+    HMDSyncOperation *_currentOperation;
+    id <HMDSyncOperationManagerDataSource> _dataSource;
+    CDUnknownBlockType _timerFactory;
 }
 
++ (id)logCategory;
+- (void).cxx_destruct;
+@property(readonly) CDUnknownBlockType timerFactory; // @synthesize timerFactory=_timerFactory;
+@property(readonly, nonatomic) __weak id <HMDSyncOperationManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) HMDSyncOperation *currentOperation; // @synthesize currentOperation=_currentOperation;
 @property(nonatomic, getter=wasSyncLoopDialogDisplayed) _Bool syncLoopDialogDisplayed; // @synthesize syncLoopDialogDisplayed=_syncLoopDialogDisplayed;
 @property(retain, nonatomic) HMFExponentialBackoffTimer *cloudPushDelayTimer; // @synthesize cloudPushDelayTimer=_cloudPushDelayTimer;
 @property(nonatomic) long long pauseCloudPushLevel; // @synthesize pauseCloudPushLevel=_pauseCloudPushLevel;
 @property(nonatomic) _Bool pauseQueue; // @synthesize pauseQueue=_pauseQueue;
-@property(retain, nonatomic) NSMutableArray *cloudQueryDatabaseOperations; // @synthesize cloudQueryDatabaseOperations=_cloudQueryDatabaseOperations;
-@property(retain, nonatomic) NSMutableArray *cloudCancelPauseOperations; // @synthesize cloudCancelPauseOperations=_cloudCancelPauseOperations;
-@property(retain, nonatomic) NSMutableDictionary *cloudZoneFetchOperationsMap; // @synthesize cloudZoneFetchOperationsMap=_cloudZoneFetchOperationsMap;
-@property(retain, nonatomic) NSMutableArray *cloudZoneFetchOperations; // @synthesize cloudZoneFetchOperations=_cloudZoneFetchOperations;
-@property(retain, nonatomic) NSMutableDictionary *cloudZonePushOperationsMap; // @synthesize cloudZonePushOperationsMap=_cloudZonePushOperationsMap;
-@property(retain, nonatomic) NSMutableArray *cloudZonePushOperations; // @synthesize cloudZonePushOperations=_cloudZonePushOperations;
-@property(retain, nonatomic) HMDSyncOperationQueue *cloudFetchOperations; // @synthesize cloudFetchOperations=_cloudFetchOperations;
-@property(retain, nonatomic) NSMutableArray *cloudVerifyAccountOperations; // @synthesize cloudVerifyAccountOperations=_cloudVerifyAccountOperations;
-@property(retain, nonatomic) HMDSyncOperationQueue *cloudPushOperations; // @synthesize cloudPushOperations=_cloudPushOperations;
+@property(readonly, copy) NSArray *cloudZoneFetchOperationQueues; // @synthesize cloudZoneFetchOperationQueues=_cloudZoneFetchOperationQueues;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (void)resetCloudPushTimer:(id)arg1;
 - (void)killCloudPushAndResume;
@@ -60,17 +58,40 @@
 - (void)pause;
 - (void)_handleCancelledOperations:(id)arg1;
 - (void)_handleNextOperation;
-- (id)dequeueNextOperation;
+- (id)_dequeueNextOperation;
 - (void)cancelOperations;
-- (long long)_cloudZoneFetchOperationsCountTotal;
-- (long long)_cloudZonePushOperationsCountTotal;
 - (void)pauseAndWaitForCurrentOperationCompletion:(CDUnknownBlockType)arg1;
+- (void)addOperationRespectingOptions:(id)arg1 withDelay:(double)arg2;
 - (void)addOperation:(id)arg1 withDelay:(double)arg2;
 - (void)addOperation:(id)arg1;
 - (void)_reportPossibleSyncLoop;
 - (id)dumpState;
 @property(readonly, copy) NSString *description;
-- (id)initWithClientQueue:(id)arg1 homeManager:(id)arg2;
+- (id)popCloudPostFetchOperation;
+- (_Bool)dropCloudPostFetchOperationsIfPresent;
+- (_Bool)addCloudPostFetchOperationIfNonePresent:(id)arg1;
+- (id)popCloudQueryDatabaseOperation;
+- (_Bool)addCloudQueryDatabaseOperationIfNonePresent:(id)arg1;
+- (id)popCloudCancelPauseOperation;
+- (void)addCloudCancelPauseOperation:(id)arg1;
+- (_Bool)popCloudZoneFetchOperationAndMoveQueueToEnd:(id *)arg1;
+- (void)removeCloudZoneFetchOperationQueue:(id)arg1;
+- (_Bool)addCloudZoneFetchOperation:(id)arg1 delay:(double)arg2;
+- (id)popCloudZonePushOperationAndMoveQueueToEnd;
+- (void)removeCloudZonePushOperationQueue:(id)arg1;
+- (_Bool)addCloudZonePushOperation:(id)arg1 delay:(double)arg2;
+- (id)popCloudVerifyAccountOperation;
+- (void)addCloudVerifyAccountOperation:(id)arg1;
+@property(readonly, copy) NSArray *cloudPostFetchOperations;
+@property(readonly, copy) NSArray *cloudQueryDatabaseOperations;
+@property(readonly, copy) NSArray *cloudCancelPauseOperations;
+- (id)cloudZoneFetchOperations;
+@property(readonly, copy) NSArray *cloudZonePushOperationQueues;
+@property(readonly) HMDSyncOperationQueue *cloudFetchOperations; // @synthesize cloudFetchOperations=_cloudFetchOperations;
+@property(readonly, copy) NSArray *cloudVerifyAccountOperations;
+@property(readonly) HMDSyncOperationQueue *cloudPushOperations; // @synthesize cloudPushOperations=_cloudPushOperations;
+- (id)initWithClientQueue:(id)arg1 dataSource:(id)arg2 timerFactory:(CDUnknownBlockType)arg3;
+- (id)initWithClientQueue:(id)arg1 dataSource:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

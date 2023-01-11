@@ -27,6 +27,7 @@
 + (void)willFinishSessionWithRecoveryData:(id)arg1 profile:(id)arg2;
 + (id)recoveryIdentifier;
 - (void).cxx_destruct;
+- (long long)_currentActivityMoveMode;
 - (id)_relaunchPayloadOptions;
 - (id)_queue_assertionsPerStateForActivityType:(unsigned long long)arg1;
 - (id)_takeQuietModeAssertion;
@@ -42,6 +43,7 @@
 - (id)_takeBackgroundRunningAssertion;
 - (id)_ownerIdentifier;
 - (void)_queue_setupAssertionGroup;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)hktest_setStateTransitionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)receivedWorkoutEvent:(id)arg1;
 - (void)workoutSessionServer:(id)arg1 accumulatorDidChange:(id)arg2;

@@ -14,14 +14,23 @@
 {
     int _app;
     int _extracted;
+    unsigned int _extractionModelVersion;
     NSString *_key;
+    int _type;
     _Bool _selfId;
-    CDStruct_5f298e02 _has;
+    struct {
+        unsigned int app:1;
+        unsigned int extracted:1;
+        unsigned int extractionModelVersion:1;
+        unsigned int type:1;
+        unsigned int selfId:1;
+    } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned int extractionModelVersion; // @synthesize extractionModelVersion=_extractionModelVersion;
 @property(nonatomic) _Bool selfId; // @synthesize selfId=_selfId;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -31,6 +40,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsType:(id)arg1;
+- (id)typeAsString:(int)arg1;
+@property(nonatomic) _Bool hasType;
+@property(nonatomic) int type; // @synthesize type=_type;
+@property(nonatomic) _Bool hasExtractionModelVersion;
 @property(nonatomic) _Bool hasSelfId;
 - (int)StringAsExtracted:(id)arg1;
 - (id)extractedAsString:(int)arg1;

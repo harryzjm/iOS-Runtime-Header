@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityCanAppearInContextMenuPreview;
-- (_Bool)_accessibilityCanShowContextMenuForInteraction:(id)arg1 atLocation:(struct CGPoint)arg2;
 - (long long)_accessibilitySortPriority;
 - (void)accessibilityElementDidLoseFocus;
 - (void)accessibilityElementDidBecomeFocused;

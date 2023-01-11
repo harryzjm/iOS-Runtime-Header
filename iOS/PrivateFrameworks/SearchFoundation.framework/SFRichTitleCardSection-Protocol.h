@@ -11,6 +11,7 @@
 @protocol SFRichTitleCardSection <SFTitleCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool subtitleIsEmphasized;
 @property(retain, nonatomic) SFRichText *richSubtitle;
 @property(copy, nonatomic) NSString *footnote;
 @property(copy, nonatomic) NSArray *offers;

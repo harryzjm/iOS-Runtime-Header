@@ -14,7 +14,6 @@
 + (id)buttonWithType:(long long)arg1;
 - (void)_updateText;
 - (id)_fontTextStyle;
-- (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

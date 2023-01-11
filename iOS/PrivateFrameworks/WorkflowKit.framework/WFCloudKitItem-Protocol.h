@@ -6,7 +6,7 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class CKRecordID, NSDate, NSDictionary, NSString;
+@class CKRecordID, NSData, NSDate, NSDictionary, NSString;
 
 @protocol WFCloudKitItem <NSObject>
 + (NSDictionary *)properties;
@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) CKRecordID *identifier;
 
 @optional
+@property(copy, nonatomic) NSData *recordSystemFieldsData;
 - (void)ensureFileAssets;
 - (void)setCreatedAt:(NSDate *)arg1 modifiedAt:(NSDate *)arg2 createdBy:(NSString *)arg3;
 - (unsigned long long)referenceActionForKey:(NSString *)arg1;

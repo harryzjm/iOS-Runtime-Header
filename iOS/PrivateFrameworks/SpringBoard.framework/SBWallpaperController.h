@@ -9,91 +9,76 @@
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/CSWallpaperOverlayHosting-Protocol.h>
 #import <SpringBoard/SBFLegibilitySettingsProviderDelegate-Protocol.h>
-#import <SpringBoard/SBFWallpaperConfigurationManagerDelegate-Protocol.h>
 #import <SpringBoard/SBFWallpaperViewDelegate-Protocol.h>
 #import <SpringBoard/SBFWallpaperViewInternalObserver-Protocol.h>
 #import <SpringBoard/SBUIActiveOrientationObserver-Protocol.h>
+#import <SpringBoard/SBWallpaperLegibilityProviding-Protocol.h>
+#import <SpringBoard/SBWallpaperPresenting-Protocol.h>
+#import <SpringBoard/SBWallpaperPresentingDelegate-Protocol.h>
+#import <SpringBoard/SBWallpaperReachabilityCoordinating-Protocol.h>
 #import <SpringBoard/SBWallpaperServerDelegate-Protocol.h>
-#import <SpringBoard/SBWallpaperWindowDelegate-Protocol.h>
 #import <SpringBoard/UIWindowDelegate-Protocol.h>
 #import <SpringBoard/_UISettingsKeyObserver-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSMutableSet, NSString, PTSingleTestRecipe, SBFWallpaperConfigurationManager, SBFWallpaperView, SBRootSettings, SBWallpaperAggdLogger, SBWallpaperStyleInfo, UIGestureRecognizer, UIScreen, UITraitCollection, UIView, UIWindow;
-@protocol SBFIrisWallpaperView, SBUIWallpaperOverlay;
+@class NSMapTable, NSMutableSet, NSString, PTSingleTestRecipe, SBFWallpaperConfigurationManager, SBWallpaperAggdLogger, SBWallpaperViewController, UIGestureRecognizer, UIScreen, UITraitCollection, UIView, UIWindow;
+@protocol BSInvalidatable, SBFIrisWallpaperView, SBUIWallpaperOverlay, SBWallpaperLegibilityProviding, SBWallpaperPresenting, SBWallpaperPresentingDelegate;
 
-@interface SBWallpaperController : NSObject <SBFLegibilitySettingsProviderDelegate, SBFWallpaperViewInternalObserver, SBUIActiveOrientationObserver, _UISettingsKeyObserver, SBFWallpaperConfigurationManagerDelegate, BSDescriptionProviding, SBWallpaperServerDelegate, SBFWallpaperViewDelegate, SBWallpaperWindowDelegate, UIWindowDelegate, CSWallpaperOverlayHosting>
+@interface SBWallpaperController : NSObject <SBFLegibilitySettingsProviderDelegate, SBFWallpaperViewInternalObserver, SBUIActiveOrientationObserver, _UISettingsKeyObserver, SBWallpaperPresentingDelegate, SBWallpaperReachabilityCoordinating, BSDescriptionProviding, SBWallpaperServerDelegate, SBFWallpaperViewDelegate, UIWindowDelegate, CSWallpaperOverlayHosting, SBWallpaperPresenting, SBWallpaperLegibilityProviding>
 {
     UIWindow *_wallpaperWindow;
     UIView *_wallpaperContainerView;
     UIView *_wallpaperOverlayContainerView;
     long long _orientation;
-    SBFWallpaperView *_lockscreenWallpaperView;
-    SBFWallpaperView *_homescreenWallpaperView;
-    SBFWallpaperView *_sharedWallpaperView;
-    NSHashTable *_lockscreenObservers;
-    NSHashTable *_homescreenObservers;
-    NSMutableSet *_suspendColorSamplingReasons;
-    NSMutableSet *_suspendWallpaperAnimationReasons;
-    NSMutableSet *_requireWallpaperReasons;
-    NSMutableSet *_hideHomescreenWallpaperReasons;
-    NSMutableSet *_hideLockscreenWallpaperReasons;
     long long _displayedVariant;
-    double _lockscreenOnlyWallpaperAlpha;
-    NSHashTable *_lockscreenBlurViews;
-    NSHashTable *_homescreenBlurViews;
-    long long _disallowRasterizationBlockCount;
-    NSMutableSet *_disallowRasterizationReasonsHomeVariant;
-    NSMutableSet *_disallowRasterizationReasonsLockVariant;
-    _Bool _isSuspendingMotionEffectsForStyle;
-    NSMutableSet *_homescreenStyleChangeDelayReasons;
-    SBFWallpaperConfigurationManager *_wallpaperConfigurationManager;
     UIView<SBUIWallpaperOverlay> *_wallpaperOverlay;
     NSMutableSet *_activeOrientationSources;
     NSMapTable *_orientationProviders;
     PTSingleTestRecipe *_migrationTestRecipe;
     PTSingleTestRecipe *_reloadTestRecipe;
+    SBWallpaperViewController *_wallpaperViewController;
+    id <SBWallpaperPresenting> _wallpaperPresenter;
+    id <SBWallpaperLegibilityProviding> _wallpaperLegibilityProvider;
+    id <SBWallpaperPresentingDelegate> _wallpaperPresentingDelegate;
     UIScreen *_screen;
     NSString *_cachingIdentifier;
-    double _homescreenWallpaperScale;
-    double _lockscreenWallpaperScale;
-    SBWallpaperStyleInfo *_homescreenStyleInfo;
-    SBWallpaperStyleInfo *_lockscreenStyleInfo;
+    SBFWallpaperConfigurationManager *_wallpaperConfigurationManager;
     SBWallpaperAggdLogger *_wallpaperAggdLogger;
-    SBRootSettings *_rootSettings;
     UITraitCollection *_fakeBlurViewOverrideTraitCollection;
+    id <BSInvalidatable> _batterySaverAnimationAssertion;
+    id <BSInvalidatable> _wallpaperStyleAnimationAssertion;
 }
 
-+ (id)substitutionFlatColorForWallpaperName:(id)arg1;
 + (id)accessAuthenticator;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) id <BSInvalidatable> wallpaperStyleAnimationAssertion; // @synthesize wallpaperStyleAnimationAssertion=_wallpaperStyleAnimationAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> batterySaverAnimationAssertion; // @synthesize batterySaverAnimationAssertion=_batterySaverAnimationAssertion;
 @property(retain, nonatomic) UITraitCollection *fakeBlurViewOverrideTraitCollection; // @synthesize fakeBlurViewOverrideTraitCollection=_fakeBlurViewOverrideTraitCollection;
-@property(retain, nonatomic) SBRootSettings *rootSettings; // @synthesize rootSettings=_rootSettings;
 @property(retain, nonatomic) SBWallpaperAggdLogger *wallpaperAggdLogger; // @synthesize wallpaperAggdLogger=_wallpaperAggdLogger;
-@property(readonly, nonatomic) SBWallpaperStyleInfo *lockscreenStyleInfo; // @synthesize lockscreenStyleInfo=_lockscreenStyleInfo;
-@property(readonly, nonatomic) SBWallpaperStyleInfo *homescreenStyleInfo; // @synthesize homescreenStyleInfo=_homescreenStyleInfo;
-@property(retain, nonatomic) SBFWallpaperView *sharedWallpaperView; // @synthesize sharedWallpaperView=_sharedWallpaperView;
-@property(retain, nonatomic) SBFWallpaperView *homescreenWallpaperView; // @synthesize homescreenWallpaperView=_homescreenWallpaperView;
-@property(retain, nonatomic) SBFWallpaperView *lockscreenWallpaperView; // @synthesize lockscreenWallpaperView=_lockscreenWallpaperView;
 @property(readonly, nonatomic) SBFWallpaperConfigurationManager *wallpaperConfigurationManager; // @synthesize wallpaperConfigurationManager=_wallpaperConfigurationManager;
-@property(nonatomic) double lockscreenWallpaperScale; // @synthesize lockscreenWallpaperScale=_lockscreenWallpaperScale;
-@property(nonatomic) double homescreenWallpaperScale; // @synthesize homescreenWallpaperScale=_homescreenWallpaperScale;
 @property(readonly, copy, nonatomic) NSString *cachingIdentifier; // @synthesize cachingIdentifier=_cachingIdentifier;
 @property(readonly, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 @property(readonly, nonatomic, getter=_WallpaperOrientationNotForYou) long long _orientation; // @synthesize _orientation;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <SBWallpaperPresentingDelegate> wallpaperPresentingDelegate; // @synthesize wallpaperPresentingDelegate=_wallpaperPresentingDelegate;
+@property(readonly, nonatomic) id <SBWallpaperLegibilityProviding> legibilityProvider; // @synthesize legibilityProvider=_wallpaperLegibilityProvider;
+@property(readonly, nonatomic) id <SBWallpaperPresenting> presenter; // @synthesize presenter=_wallpaperPresenter;
 - (id)relinquishHostingOfWallpaperOverlay;
 - (void)startHostingWallpaperOverlay:(id)arg1;
+@property(readonly, nonatomic) double effectiveReachabilityYOffset;
+- (_Bool)isWindowIgnoredForReachability:(id)arg1;
+- (void)removeReachabilityObserver:(id)arg1;
+- (void)addReachabilityObserver:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)wallpaperServer:(id)arg1 restoreDefaultWallpaperWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)wallpaperServer:(id)arg1 setWallpaperGradient:(id)arg2 forVariants:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)wallpaperServer:(id)arg1 setWallpaperColor:(id)arg2 darkColor:(id)arg3 forVariants:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)wallpaperServer:(id)arg1 setWallpaperColorName:(id)arg2 forVariants:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)wallpaperServer:(id)arg1 setWallpaperVideoWithWallpaperMode:(id)arg2 cropRect:(struct CGRect)arg3 wallpaperMode:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)wallpaperServer:(id)arg1 fetchContentCutoutBoundsForVariant:(long long)arg2 orientation:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)wallpaperServer:(id)arg1 fetchOriginalVideoURLDataForVariant:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)wallpaperServer:(id)arg1 fetchOriginalImageDataForVariant:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)wallpaperServer:(id)arg1 fetchThumbnailDataForVariant:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateWallpaper:(id)arg1 forWallpaperDimming:(_Bool)arg2;
-- (void)updateWallpaper:(id)arg1 forWallpaperMode:(long long)arg2;
 - (id)wallpaperView:(id)arg1 wallpaperConfigurationIncludingValueTypes:(unsigned long long)arg2;
-- (void)_updateAndPrewarmWallpapers;
-- (void)wallpaperConfigurationManager:(id)arg1 didChangeWallpaperConfigurationForVariants:(long long)arg2;
 - (void)wallpaperViewDidChangeWantsRasterization:(id)arg1;
 - (void)wallpaperView:(id)arg1 didChangeZoomFactor:(double)arg2;
 - (void)wallpaperViewDidInvalidateBlurs:(id)arg1;
@@ -114,6 +99,8 @@
 @property(readonly, nonatomic) long long activeOrientationSource;
 - (void)_noteSignificantTimeChanged:(id)arg1;
 - (void)_saveWallpaperAggdKeysForLocations:(long long)arg1 withConfiguration:(id)arg2;
+- (long long)wallpaperPresenter:(id)arg1 requestsOrientationWithRefresh:(_Bool)arg2;
+- (void)wallpaperPresenter:(id)arg1 didChangeWallpaperForLocations:(long long)arg2 withConfiguration:(id)arg3;
 - (id)activeInterfaceOrientationSourcesDescriptions;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
@@ -121,66 +108,20 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)_reloadWallpaperAndFlushCaches:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_updateRasterizationState;
-- (void)_endDisallowRasterizationBlock;
-- (void)_beginDisallowRasterizationBlock;
-- (id)_getImageInRect:(struct CGRect)arg1 withZoomFactor:(double)arg2 forVariant:(long long)arg3 style:(inout long long *)arg4;
-- (id)_newFakeBlurViewForVariant:(long long)arg1 style:(long long)arg2 transformOptions:(unsigned long long)arg3;
-- (void)_updateBlurGeneration;
-- (id)_sourceForFakeBlurView:(id)arg1;
-- (void)_unregisterFakeBlurView:(id)arg1;
-- (void)_registerFakeBlurView:(id)arg1;
 - (void)cancelInProcessAnimations;
-- (void)_suspendOrResumeWallpaperAnimation;
-- (void)_suspendOrResumeColorSampling;
-- (id)_blurViewsForVariant:(long long)arg1;
-- (id)_observersForVariant:(long long)arg1;
-- (id)_activeWallpaperView;
 - (void)preheatWallpaperForVariant:(long long)arg1;
 - (id)_wallpaperViewForVariant:(long long)arg1;
-- (void)_updateBlurImagesForVariant:(long long)arg1;
-- (void)_reconfigureBlurViewsForVariant:(long long)arg1;
-- (void)_handleWallpaperLegibilitySettingsChanged:(id)arg1 forVariant:(long long)arg2;
-- (void)_handleWallpaperChangedForVariant:(long long)arg1;
-- (_Bool)_updateEffectViewForVariant:(long long)arg1 withFactory:(id)arg2;
-- (_Bool)_updateEffectViewForVariant:(long long)arg1 oldState:(CDStruct_059c2b36 *)arg2 newState:(CDStruct_059c2b36 *)arg3 oldEffectView:(id *)arg4 newEffectView:(id *)arg5;
-- (void)_updateMotionEffectsForState:(CDStruct_059c2b36)arg1;
-- (_Bool)_shouldSuspendMotionEffectsForState:(CDStruct_059c2b36)arg1;
-- (_Bool)_shouldSuspendMotionEffectsForStyle:(long long)arg1;
-- (void)_endSuspendingMotionEffectsForStyleIfNeeded;
-- (void)_beginSuspendingMotionEffectsForStyleIfNeeded;
 - (void)_updateScreenBlanked;
-- (void)_accessibilityReduceTransparencyChanged:(id)arg1;
 - (void)_motionEffectsChanged;
-- (id)_newWallpaperEffectViewForVariant:(long long)arg1 transitionState:(CDStruct_059c2b36)arg2;
-- (void)_clearWallpaperEffectView:(id)arg1;
-- (void)_clearWallpaperView:(id)arg1;
-- (id)_makeWallpaperViewWithConfiguration:(id)arg1 forVariant:(long long)arg2 shared:(_Bool)arg3 options:(unsigned long long)arg4;
-- (void)cleanupOldSharedWallpaper:(id)arg1 lockSreenWallpaper:(id)arg2 homeScreenWallpaper:(id)arg3;
-- (void)_updateSeparateWallpaperForVariants:(long long)arg1 options:(unsigned long long)arg2 wallpaperMode:(long long)arg3;
-- (void)_precacheStyles:(id)arg1 usingTraitCollection:(id)arg2;
-- (void)_updateSharedWallpaperWithOptions:(unsigned long long)arg1 wallpaperMode:(long long)arg2;
-- (_Bool)_isWallpaperView:(id)arg1 displayingWallpaperWithConfiguration:(id)arg2 forVariant:(long long)arg3;
 - (void)_updateWallpaperForLocations:(long long)arg1 options:(unsigned long long)arg2 wallpaperMode:(long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_updateWallpaperForLocations:(long long)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (id)substitutionWallpaperConfigurationForWallpaperConfiguration:(id)arg1;
-- (id)wallpaperConfigurationForVariant:(long long)arg1 includingValuesForTypes:(unsigned long long)arg2 wallpaperMode:(long long)arg3;
-- (id)wallpaperConfigurationForUpdatingWallpaperViewsForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
-- (unsigned long long)wallpaperDataTypesToRequestForUpdatingWallpaperViews;
-- (_Bool)variantsShareWallpaper;
-- (void)_updateWallpaperParallax;
 - (void)_batterySaverModeChanged:(id)arg1;
-- (void)_updateWallpaperHidden;
-- (_Bool)_isWallpaperHiddenForVariant:(long long)arg1;
-- (void)_setWallpaperHidden:(_Bool)arg1 variant:(long long)arg2 reason:(id)arg3;
-- (_Bool)_setDisallowRasterization:(_Bool)arg1 withReason:(id)arg2 reasons:(id)arg3;
-- (_Bool)_isRasterizationDisallowedForCurrentVariant;
 - (id)_window;
-- (id)vendWallpaperViewForConfiguration:(id)arg1 forVariant:(long long)arg2 shared:(_Bool)arg3 options:(unsigned long long)arg4;
-- (Class)_wallpaperViewClassForType:(long long)arg1;
-- (unsigned long long)_bestWallpaperViewInitializationOptionsForVariant:(long long)arg1 shared:(_Bool)arg2 wallpaperOptions:(id)arg3 options:(unsigned long long)arg4;
+- (void)updateWallpaperForLocations:(long long)arg1 wallpaperMode:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)updateWallpaperForLocations:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)newFakeBlurViewForVariant:(long long)arg1 style:(long long)arg2 transformOptions:(unsigned long long)arg3;
+- (void)setWallpaperHidden:(_Bool)arg1 variant:(long long)arg2 reason:(id)arg3;
 - (void)setDisallowsRasterization:(_Bool)arg1 forVariant:(long long)arg2 withReason:(id)arg3;
-- (double)contrastInRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3 forVariant:(long long)arg4;
 - (double)contrastForVariant:(long long)arg1;
 - (double)contrastInRect:(struct CGRect)arg1 forVariant:(long long)arg2;
 - (id)averageColorInRect:(struct CGRect)arg1 forVariant:(long long)arg2 withSmudgeRadius:(double)arg3;
@@ -189,25 +130,24 @@
 - (id)legibilitySettingsForVariant:(long long)arg1;
 @property(readonly, nonatomic) UIGestureRecognizer *wallpaperGestureRecognizer;
 @property(readonly, nonatomic) id <SBFIrisWallpaperView> irisWallpaperView;
-- (void)resumeWallpaperAnimationForReason:(id)arg1;
-- (void)suspendWallpaperAnimationForReason:(id)arg1;
-- (void)resumeColorSamplingForReason:(id)arg1;
-- (void)suspendColorSamplingForReason:(id)arg1;
+- (id)suspendWallpaperAnimationForReason:(id)arg1;
+- (id)suspendColorSamplingForReason:(id)arg1;
 - (void)removeObserver:(id)arg1 forVariant:(long long)arg2;
 - (void)addObserver:(id)arg1 forVariant:(long long)arg2;
-- (_Bool)shouldDelayHomescreenStyleUpdates;
 - (void)endDelayingHomescreenStyleChangesForReason:(id)arg1 animationFactory:(id)arg2;
 - (void)beginDelayingHomescreenStyleChangesForReason:(id)arg1;
-- (void)endRequiringWithReason:(id)arg1;
-- (void)beginRequiringWithReason:(id)arg1;
+- (id)beginRequiringWithReason:(id)arg1;
 - (_Bool)removeWallpaperStyleForPriority:(long long)arg1 forVariant:(long long)arg2 withAnimationFactory:(id)arg3;
 - (_Bool)setWallpaperStyleTransitionState:(CDStruct_059c2b36)arg1 forPriority:(long long)arg2 forVariant:(long long)arg3 withAnimationFactory:(id)arg4;
 - (_Bool)setWallpaperStyle:(long long)arg1 forPriority:(long long)arg2 forVariant:(long long)arg3 withAnimationFactory:(id)arg4;
-- (id)wallpaperStyleInfoForVariant:(long long)arg1;
 @property(readonly, nonatomic) CDStruct_059c2b36 currentHomescreenStyleTransitionState;
 - (void)setLockscreenOnlyWallpaperAlpha:(double)arg1;
+@property(readonly, nonatomic) double minimumLockscreenWallpaperScale;
 - (void)setLockscreenWallpaperScale:(double)arg1 withAnimationFactory:(id)arg2;
-- (void)setHomescreenWallpaperScale:(double)arg1 withAnimationFactory:(id)arg2;
+@property(nonatomic) double lockscreenWallpaperScale;
+@property(readonly, nonatomic) double minimumHomescreenWallpaperScale;
+- (id)setHomescreenWallpaperScale:(double)arg1 withAnimationFactory:(id)arg2;
+@property(readonly, nonatomic) double homescreenWallpaperScale;
 @property(nonatomic) double windowLevel;
 - (void)setLockscreenWallpaperContentsRect:(struct CGRect)arg1;
 - (void)updateIrisWallpaperForInteractiveMode;
@@ -217,9 +157,9 @@
 @property(nonatomic) long long variant;
 - (void)dealloc;
 - (id)init;
-- (id)initWithWallpaperConfigurationManager:(id)arg1 cachingIdentifier:(id)arg2 rootSettings:(id)arg3;
+- (id)initWithWallpaperConfigurationManager:(id)arg1 cachingIdentifier:(id)arg2;
 - (id)initWithWallpaperConfigurationManager:(id)arg1;
-- (id)initWithScreen:(id)arg1 orientation:(long long)arg2 variant:(long long)arg3 wallpaperConfigurationManager:(id)arg4 cachingIdentifier:(id)arg5 rootSettings:(id)arg6;
+- (id)initWithScreen:(id)arg1 orientation:(long long)arg2 variant:(long long)arg3 wallpaperConfigurationManager:(id)arg4 cachingIdentifier:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

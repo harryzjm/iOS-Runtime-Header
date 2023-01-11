@@ -12,18 +12,20 @@
 
 @interface NPKProtoCatalogChangedRequest : PBRequest <NSCopying>
 {
-    NPKProtoCatalog *_catalog;
+    NPKProtoCatalog *_companionCatalog;
     unsigned int _lastKnownResyncID;
     unsigned int _resyncID;
     unsigned int _syncID;
+    NPKProtoCatalog *_watchCatalog;
     CDStruct_02c44088 _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NPKProtoCatalog *watchCatalog; // @synthesize watchCatalog=_watchCatalog;
 @property(nonatomic) unsigned int syncID; // @synthesize syncID=_syncID;
 @property(nonatomic) unsigned int lastKnownResyncID; // @synthesize lastKnownResyncID=_lastKnownResyncID;
 @property(nonatomic) unsigned int resyncID; // @synthesize resyncID=_resyncID;
-@property(retain, nonatomic) NPKProtoCatalog *catalog; // @synthesize catalog=_catalog;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NPKProtoCatalog *companionCatalog; // @synthesize companionCatalog=_companionCatalog;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -33,6 +35,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasWatchCatalog;
 @property(nonatomic) _Bool hasSyncID;
 @property(nonatomic) _Bool hasLastKnownResyncID;
 @property(nonatomic) _Bool hasResyncID;

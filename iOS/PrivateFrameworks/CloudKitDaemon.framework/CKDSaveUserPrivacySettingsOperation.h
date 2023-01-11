@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 
 + (long long)isPredominatelyDownload;
 @property(nonatomic) long long discoverable; // @synthesize discoverable=_discoverable;
+- (int)operationType;
 - (void)main;
 - (_Bool)shouldCheckAppVersion;
 - (id)activityCreate;

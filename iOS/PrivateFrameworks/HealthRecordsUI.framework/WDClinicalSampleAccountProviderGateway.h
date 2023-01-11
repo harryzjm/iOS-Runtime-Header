@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class HKFHIRVersion, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalSampleAccountProviderGateway : NSObject
@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
     NSString *_title;
     NSDictionary *_properties;
+    HKFHIRVersion *_FHIRVersion;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) HKFHIRVersion *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
 @property(copy, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 
 @end
 

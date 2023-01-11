@@ -4,48 +4,90 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKit/UIViewController.h>
 
-#import <PhotosUI/PUSidebarDataSourceControllerDelegate-Protocol.h>
-#import <PhotosUI/PUTabbedLibraryViewControllerContainerDelegate-Protocol.h>
+#import <PhotosUI/PUCollectionsCollectionViewDropDataProvider-Protocol.h>
+#import <PhotosUI/PUOutlineCellDelegate-Protocol.h>
+#import <PhotosUI/PXAssetCollectionActionPerformerDelegate-Protocol.h>
+#import <PhotosUI/PXProgrammaticNavigationUpdateTarget-Protocol.h>
+#import <PhotosUI/PXSidebarOutlineSectionControllerDelegate-Protocol.h>
+#import <PhotosUI/PXSplitViewControllerChangeObserver-Protocol.h>
+#import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, PUSidebarDataSource, PUSidebarDataSourceController, PUTabbedLibraryViewController, UITabBarItem;
+@class NSString, PHPhotoLibrary, PUCollectionsCollectionViewDropDelegate, PUSidebarDataSectionEnablementController, PUSidebarReorderController, PXProgrammaticNavigationDestination, PXSidebarDataController, PXSidebarOutlineSectionController, UICollectionView, UICollectionViewDiffableDataSource, _UIDiffableDataSourceOutlineSectionController;
+@protocol PXProgrammaticNavigationParticipant;
 
-@interface PUSidebarViewController : UITableViewController <PUSidebarDataSourceControllerDelegate, PUTabbedLibraryViewControllerContainerDelegate>
+@interface PUSidebarViewController : UIViewController <UICollectionViewDelegate, PUCollectionsCollectionViewDropDataProvider, PUOutlineCellDelegate, PXAssetCollectionActionPerformerDelegate, PXSidebarOutlineSectionControllerDelegate, PXProgrammaticNavigationUpdateTarget, PXSplitViewControllerChangeObserver>
 {
-    PUSidebarDataSource *_dataSource;
-    PUSidebarDataSourceController *_dataSourceController;
-    NSMapTable *_navigationRootsByDataSourceManagers;
-    _Bool _didCallNumberOfItemsInSection;
-    _Bool _isSelectingTabViewController;
-    PUTabbedLibraryViewController *_tabbedLibraryViewController;
-    NSArray *_tabBarItems;
-    UITabBarItem *_selectedTabBarItem;
+    _Bool _selectingAlreadySelectedIndexPath;
+    id <PXProgrammaticNavigationParticipant> _navigationRoot;
+    PHPhotoLibrary *_photoLibrary;
+    UICollectionView *_collectionView;
+    UICollectionViewDiffableDataSource *_dataSource;
+    _UIDiffableDataSourceOutlineSectionController *_dataSourceSectionController;
+    PXSidebarOutlineSectionController *_sidebarOutlineSectionController;
+    PUSidebarDataSectionEnablementController *_sidebarDataSectionEnablementController;
+    PXSidebarDataController *_sidebarDataController;
+    PUCollectionsCollectionViewDropDelegate *_dropDelegate;
+    PXProgrammaticNavigationDestination *_currentNavigationDestination;
+    PUSidebarReorderController *_reorderController;
+    long long _suspendSelectionUpdatesMode;
 }
 
-@property(retain, nonatomic) UITabBarItem *selectedTabBarItem; // @synthesize selectedTabBarItem=_selectedTabBarItem;
-@property(retain, nonatomic) NSArray *tabBarItems; // @synthesize tabBarItems=_tabBarItems;
-@property(readonly, nonatomic) PUTabbedLibraryViewController *tabbedLibraryViewController; // @synthesize tabbedLibraryViewController=_tabbedLibraryViewController;
 - (void).cxx_destruct;
-- (void)tabbedLibraryViewControllerDidChangeSelectedViewController:(id)arg1;
-- (void)tabbedLibraryViewControllerDidChangeViewControllers:(id)arg1;
-- (void)sidebarDataSourceController:(id)arg1 didChangeDataSourceWithChangeDetails:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)viewDidLayoutSubviews;
+@property(nonatomic) _Bool selectingAlreadySelectedIndexPath; // @synthesize selectingAlreadySelectedIndexPath=_selectingAlreadySelectedIndexPath;
+@property(nonatomic) long long suspendSelectionUpdatesMode; // @synthesize suspendSelectionUpdatesMode=_suspendSelectionUpdatesMode;
+@property(retain, nonatomic) PUSidebarReorderController *reorderController; // @synthesize reorderController=_reorderController;
+@property(retain, nonatomic) PXProgrammaticNavigationDestination *currentNavigationDestination; // @synthesize currentNavigationDestination=_currentNavigationDestination;
+@property(retain, nonatomic) PUCollectionsCollectionViewDropDelegate *dropDelegate; // @synthesize dropDelegate=_dropDelegate;
+@property(retain, nonatomic) PXSidebarDataController *sidebarDataController; // @synthesize sidebarDataController=_sidebarDataController;
+@property(retain, nonatomic) PUSidebarDataSectionEnablementController *sidebarDataSectionEnablementController; // @synthesize sidebarDataSectionEnablementController=_sidebarDataSectionEnablementController;
+@property(retain, nonatomic) PXSidebarOutlineSectionController *sidebarOutlineSectionController; // @synthesize sidebarOutlineSectionController=_sidebarOutlineSectionController;
+@property(retain, nonatomic) _UIDiffableDataSourceOutlineSectionController *dataSourceSectionController; // @synthesize dataSourceSectionController=_dataSourceSectionController;
+@property(retain, nonatomic) UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(readonly, nonatomic) id <PXProgrammaticNavigationParticipant> navigationRoot; // @synthesize navigationRoot=_navigationRoot;
+- (void)ppt_runTabSwitchingTestWithName:(id)arg1 options:(id)arg2 delegate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)navigateToFallbackForDestination:(id)arg1;
+- (void)splitViewControllerWillExpand:(id)arg1;
+- (void)sidebarOutlineSectionController:(id)arg1 willApplySnapshotWithChangedItemsBeforeChange:(id)arg2 changedItemsAfterChange:(id)arg3 applyBlock:(CDUnknownBlockType)arg4;
+- (void)px_navigationDestinationWillChange:(id)arg1;
+- (void)_highlightNavigationDestination:(id)arg1;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
+- (id)actionPerformerDelegateForCollectionViewDropDelegate:(id)arg1;
+- (id)collectionViewDropDelegate:(id)arg1 collectionAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
+- (_Bool)collectionView:(id)arg1 shouldSpringLoadItemAtIndexPath:(id)arg2 withContext:(id)arg3;
+- (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)_didReorderItems:(id)arg1 transaction:(id)arg2;
+- (_Bool)_canReorderItem:(id)arg1;
+- (void)outlineCell:(id)arg1 updatedTitle:(id)arg2 forItem:(id)arg3;
+- (void)_deleteItemTapped:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_trailingSwipeActionConfigurationForIndexPath:(id)arg1;
+- (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (id)_actionPerformerIdentifierForNavigationListItem:(id)arg1;
+- (void)_executeActionForActionItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_triggerNavigationToDestination:(id)arg1 animated:(_Bool)arg2 suspendSelections:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_navigateToDestinationForItem:(id)arg1 sameItem:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_handleDidSelectListItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)_canSelectListItem:(id)arg1;
+- (id)_backNavigationRootItemForItem:(id)arg1;
+- (void)_updateSelectedRowScrollToVisible:(_Bool)arg1;
+- (void)_expandItemsForSelectedIndexPath:(id)arg1 collectionToSelect:(id)arg2 animated:(_Bool)arg3;
+- (id)_collectionViewIndexPathForItemIdentifier:(id)arg1;
+- (void)_sectionControllerWillCollapseItem:(id)arg1;
+- (void)_sectionControllerWillExpandItem:(id)arg1;
+- (void)setupDataSectionManager;
+- (void)configureDataSource;
+- (id)generateLayout;
+- (void)configureViewHierarchy;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (void)_setSelectedTabViewController:(id)arg1;
-- (void)_updateSelectedRow;
-- (void)_updateDataSource;
-- (void)_updateDataSourceManager;
-@property(readonly, nonatomic) NSArray *navigationRoots;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithStyle:(long long)arg1;
-- (id)initWithTabbedLibraryViewController:(id)arg1;
+- (id)initWithNavigationRoot:(id)arg1 photoLibrary:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

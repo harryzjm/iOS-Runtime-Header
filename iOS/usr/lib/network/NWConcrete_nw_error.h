@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, copy) NSString *description;
-- (id)initWithDomain:(int)arg1 code:(int)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

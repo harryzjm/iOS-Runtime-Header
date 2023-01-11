@@ -7,14 +7,12 @@
 #import <HealthUI/HKTableViewController.h>
 
 #import <HealthToolbox/HKSwitchTableViewCellDelegate-Protocol.h>
-#import <HealthToolbox/SKStoreProductViewControllerDelegate-Protocol.h>
-#import <HealthToolbox/WDAppSwooshTableViewCellDelegate-Protocol.h>
 #import <HealthToolbox/WDUserActivityResponder-Protocol.h>
 
 @class HKAudiogramChartViewController, HKDisplayType, NSArray, NSString, WDProfile;
 
 __attribute__((visibility("hidden")))
-@interface WDAudiogramOverviewViewController : HKTableViewController <HKSwitchTableViewCellDelegate, WDAppSwooshTableViewCellDelegate, SKStoreProductViewControllerDelegate, WDUserActivityResponder>
+@interface WDAudiogramOverviewViewController : HKTableViewController <HKSwitchTableViewCellDelegate, WDUserActivityResponder>
 {
     HKDisplayType *_displayType;
     WDProfile *_profile;
@@ -22,26 +20,21 @@ __attribute__((visibility("hidden")))
     NSArray *_sectionToRows;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *sectionToRows; // @synthesize sectionToRows=_sectionToRows;
 @property(readonly, nonatomic) HKAudiogramChartViewController *audiogramChartViewController; // @synthesize audiogramChartViewController=_audiogramChartViewController;
 @property(readonly, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
-- (void).cxx_destruct;
-- (_Bool)_shouldShowAppsRow;
 - (void)_pushSourcesAndAccessViewController;
 - (void)_pushShowAllDataViewController;
 - (void)_updateAudiogramSamples:(id)arg1 error:(id)arg2;
 - (void)_queryForAudiogramChartSamples;
-- (id)_recommendedAppsCell;
 - (id)_sourcesAndAccessCell;
 - (id)_showAllDataCell;
 - (_Bool)_isDisplayTypeFavorited;
 - (id)_addToFavoritesCell;
 - (id)_descriptionCell;
 - (id)_audiogramChartCell;
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)appsCell:(id)arg1 showStorePageWithStoreID:(id)arg2;
-- (void)_displayAppWithStoreID:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(_Bool)arg2;
 - (id)applyTransitionActivity:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;

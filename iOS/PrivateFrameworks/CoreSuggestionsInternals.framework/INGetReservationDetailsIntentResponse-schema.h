@@ -13,6 +13,7 @@
 @interface INGetReservationDetailsIntentResponse (schema) <SGSchemaConversionProtocol>
 + (Class)reservationClassForSchema:(id)arg1;
 + (id)fromSchemas:(id)arg1;
+- (_Bool)reservationsContainUniqueItemReferences;
 - (id)toSchemas;
 
 // Remaining properties

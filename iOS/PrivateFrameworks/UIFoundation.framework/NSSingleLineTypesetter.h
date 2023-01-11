@@ -19,7 +19,7 @@
 
 + (_Bool)_validateAttributes:(id)arg1 measuringOnly:(_Bool)arg2;
 + (void)initialize;
-+ (id)singleLineTypesetter;
++ (void)performWithSingleLineTypesetterContext:(CDUnknownBlockType)arg1;
 - (void)setBidiLevels:(const char *)arg1 forGlyphRange:(struct _NSRange)arg2;
 - (void)setAttachmentSize:(struct CGSize)arg1 forGlyphRange:(struct _NSRange)arg2;
 - (void)setLocation:(struct CGPoint)arg1 withAdvancements:(const double *)arg2 forStartOfGlyphRange:(struct _NSRange)arg3;
@@ -39,8 +39,8 @@
 - (void)setIntAttribute:(long long)arg1 value:(long long)arg2 forGlyphAtIndex:(unsigned long long)arg3;
 - (void)insertGlyphs:(const unsigned int *)arg1 length:(unsigned long long)arg2 forStartingGlyphAtIndex:(unsigned long long)arg3 characterIndex:(unsigned long long)arg4;
 - (void)setGlyphs:(const unsigned short *)arg1 properties:(const long long *)arg2 characterIndexes:(const unsigned long long *)arg3 font:(id)arg4 forGlyphRange:(struct _NSRange)arg5;
-- (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(_Bool)arg3 hasStrongRight:(_Bool)arg4 syncDirection:(_Bool)arg5 mirrorsTextAlignment:(_Bool)arg6 maximumWidth:(double)arg7;
 - (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(_Bool)arg3 hasStrongRight:(_Bool)arg4 maximumWidth:(double)arg5;
+- (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(_Bool)arg3 hasStrongRight:(_Bool)arg4 syncDirection:(_Bool)arg5 mirrorsTextAlignment:(_Bool)arg6 maximumWidth:(double)arg7;
 - (id)init;
 - (id)_textStorageForAttachmentProtocol;
 - (id)_textContainerForAttachmentProtocol;
@@ -49,7 +49,6 @@
 - (_Bool)_allowsEllipsisGlyphSubstitution;
 - (_Bool)_usesScreenFonts;
 - (void)dealloc;
-- (void)done;
 
 @end
 

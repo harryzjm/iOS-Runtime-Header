@@ -21,7 +21,7 @@
     } weights[2];
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (struct MPSRegion)sourceRegionForDestinationSize:(CDStruct_14f26992)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

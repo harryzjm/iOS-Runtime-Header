@@ -12,17 +12,17 @@
 __attribute__((visibility("hidden")))
 @interface PSUITotalCellularUsageSubgroup : NSObject
 {
-    PSDataUsageStatisticsCache *_statisticsCache;
     id <PSBillingPeriodSource> _billingPeriodSource;
+    PSDataUsageStatisticsCache *_statisticsCache;
     PSSpecifier *_totalUsageSpecifier;
     PSSpecifier *_totalRoamingUsageSpecifier;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PSSpecifier *totalRoamingUsageSpecifier; // @synthesize totalRoamingUsageSpecifier=_totalRoamingUsageSpecifier;
 @property(retain, nonatomic) PSSpecifier *totalUsageSpecifier; // @synthesize totalUsageSpecifier=_totalUsageSpecifier;
-@property(nonatomic) __weak id <PSBillingPeriodSource> billingPeriodSource; // @synthesize billingPeriodSource=_billingPeriodSource;
 @property(retain, nonatomic) PSDataUsageStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <PSBillingPeriodSource> billingPeriodSource; // @synthesize billingPeriodSource=_billingPeriodSource;
 - (id)totalRoamingDataUsageForSpecifier:(id)arg1;
 - (id)totalDataUsageForSpecifier:(id)arg1;
 - (id)totalRoamingBytesUsed;

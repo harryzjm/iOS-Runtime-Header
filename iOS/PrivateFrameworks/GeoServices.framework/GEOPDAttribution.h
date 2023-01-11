@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAttribution : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_actionUrlComponent;
     NSMutableArray *_attributionUrls;
     NSString *_externalComponentId;
     NSString *_externalItemId;
     NSString *_vendorId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_actionUrlComponent:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_externalComponentId:1;
         unsigned int read_externalItemId:1;
         unsigned int read_vendorId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_actionUrlComponent:1;
-        unsigned int wrote_attributionUrls:1;
-        unsigned int wrote_externalComponentId:1;
-        unsigned int wrote_externalItemId:1;
-        unsigned int wrote_vendorId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,27 +53,26 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *actionUrlComponent;
 @property(readonly, nonatomic) _Bool hasActionUrlComponent;
-- (void)_readActionUrlComponent;
 - (id)attributionUrlAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionUrlsCount;
-- (void)_addNoFlagsAttributionUrl:(id)arg1;
 - (void)addAttributionUrl:(id)arg1;
 - (void)clearAttributionUrls;
 @property(retain, nonatomic) NSMutableArray *attributionUrls;
-- (void)_readAttributionUrls;
 @property(retain, nonatomic) NSString *externalComponentId;
 @property(readonly, nonatomic) _Bool hasExternalComponentId;
-- (void)_readExternalComponentId;
 @property(retain, nonatomic) NSString *externalItemId;
 @property(readonly, nonatomic) _Bool hasExternalItemId;
-- (void)_readExternalItemId;
 @property(retain, nonatomic) NSString *vendorId;
 @property(readonly, nonatomic) _Bool hasVendorId;
-- (void)_readVendorId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (_Bool)_isYelp;
 
 @end

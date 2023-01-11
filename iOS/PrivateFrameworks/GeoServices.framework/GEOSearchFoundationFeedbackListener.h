@@ -14,10 +14,13 @@
 {
     int _uiTarget;
     NSArray *_sections;
+    NSArray *_resultCardSections;
 }
 
 + (id)feedbackListenerForParsec;
 - (void).cxx_destruct;
+- (void)cardViewDidAppear:(id)arg1;
+- (void)didEngageCardSection:(id)arg1;
 - (void)didEngageResult:(id)arg1;
 - (void)didEngageSection:(id)arg1;
 - (void)resultsDidBecomeVisible:(id)arg1;

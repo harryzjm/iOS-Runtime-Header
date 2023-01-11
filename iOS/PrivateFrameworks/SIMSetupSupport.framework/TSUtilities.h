@@ -10,6 +10,8 @@
 {
 }
 
++ (id)textColorForRemotePlan:(_Bool)arg1;
++ (id)backgroundColorForRemotePlan:(_Bool)arg1;
 + (id)_findPPRItem:(id)arg1;
 + (id)preinstallPPRAlertControllerWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)getErrorTitleDetail:(id)arg1 forCarrier:(id)arg2;

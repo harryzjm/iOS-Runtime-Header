@@ -8,7 +8,7 @@
 
 #import <NanoBackup/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString, NSURL, NSUUID;
+@class NSData, NSDate, NSNumber, NSString, NSURL, NSUUID;
 
 @interface NBBackup : NSObject <NSSecureCoding>
 {
@@ -37,10 +37,15 @@
     NSString *_watchFaceColor;
     NSDate *_lastModificationDate;
     NSNumber *_sizeInBytes;
+    NSString *_deviceCSN;
+    NSData *_watchFaceData;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasResolvedActiveWatchFaceFilePath; // @synthesize hasResolvedActiveWatchFaceFilePath=_hasResolvedActiveWatchFaceFilePath;
+@property(retain, nonatomic) NSData *watchFaceData; // @synthesize watchFaceData=_watchFaceData;
+@property(retain, nonatomic) NSString *deviceCSN; // @synthesize deviceCSN=_deviceCSN;
 @property(retain, nonatomic) NSNumber *sizeInBytes; // @synthesize sizeInBytes=_sizeInBytes;
 @property(retain, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property(nonatomic, getter=isDiagnosticsOptInEnabled) _Bool diagnosticsOptInEnabled; // @synthesize diagnosticsOptInEnabled=_diagnosticsOptInEnabled;
@@ -64,7 +69,6 @@
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) unsigned long long backupType; // @synthesize backupType=_backupType;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(retain, nonatomic) NSURL *activeWatchFaceFileURL; // @synthesize activeWatchFaceFileURL=_activeWatchFaceFileURL;

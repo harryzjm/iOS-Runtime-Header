@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVLoadingButtonView;
+@class AVLoadingButtonView, UIFont;
 
 @interface AVHomeLoadingButtonControlItem
 {
+    UIFont *_titleFont;
     AVLoadingButtonView *_loadingButtonView;
 }
 
-@property(retain, nonatomic) AVLoadingButtonView *loadingButtonView; // @synthesize loadingButtonView=_loadingButtonView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AVLoadingButtonView *loadingButtonView; // @synthesize loadingButtonView=_loadingButtonView;
 - (void)_updateTintColor;
+- (void)setTitleFont:(id)arg1;
+- (id)titleFont;
 @property(nonatomic) _Bool showsLoadingIndicator;
 - (void)_buttonTouchUpInside:(id)arg1;
 - (id)view;

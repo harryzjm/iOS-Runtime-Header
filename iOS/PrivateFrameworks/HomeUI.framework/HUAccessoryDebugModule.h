@@ -11,10 +11,8 @@
 
 @interface HUAccessoryDebugModule : HFItemModule
 {
-    _Bool _fakeWifiNetworkMismatchSymptom;
     id <HFHomeKitObject> _homeKitObject;
     HFItem *_fakeUnreachableItem;
-    HFItem *_fakeShouldDisplayManualFixOptionItem;
     HFItem *_fakeWiFiSymptomItem;
     HFItem *_fakeWiFiPerformanceSymptomItem;
     HFItem *_fakeInternetFixSymptomItem;
@@ -37,10 +35,10 @@
     HFStaticItemProvider *_debugItemProvider;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HFStaticItemProvider *debugItemProvider; // @synthesize debugItemProvider=_debugItemProvider;
 @property(readonly, nonatomic) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property(readonly, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
-@property(nonatomic) _Bool fakeWifiNetworkMismatchSymptom; // @synthesize fakeWifiNetworkMismatchSymptom=_fakeWifiNetworkMismatchSymptom;
 @property(readonly, nonatomic) HFItem *fakeStereoPairVersionMismatchSymptomItem; // @synthesize fakeStereoPairVersionMismatchSymptomItem=_fakeStereoPairVersionMismatchSymptomItem;
 @property(readonly, nonatomic) HFItem *fakeStereoPairNotFoundSymptomItem; // @synthesize fakeStereoPairNotFoundSymptomItem=_fakeStereoPairNotFoundSymptomItem;
 @property(readonly, nonatomic) HFItem *fakeStereoPairGeneralSymptomItem; // @synthesize fakeStereoPairGeneralSymptomItem=_fakeStereoPairGeneralSymptomItem;
@@ -58,10 +56,8 @@
 @property(readonly, nonatomic) HFItem *fakeInternetFixSymptomItem; // @synthesize fakeInternetFixSymptomItem=_fakeInternetFixSymptomItem;
 @property(readonly, nonatomic) HFItem *fakeWiFiPerformanceSymptomItem; // @synthesize fakeWiFiPerformanceSymptomItem=_fakeWiFiPerformanceSymptomItem;
 @property(readonly, nonatomic) HFItem *fakeWiFiSymptomItem; // @synthesize fakeWiFiSymptomItem=_fakeWiFiSymptomItem;
-@property(readonly, nonatomic) HFItem *fakeShouldDisplayManualFixOptionItem; // @synthesize fakeShouldDisplayManualFixOptionItem=_fakeShouldDisplayManualFixOptionItem;
 @property(readonly, nonatomic) HFItem *fakeUnreachableItem; // @synthesize fakeUnreachableItem=_fakeUnreachableItem;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject; // @synthesize homeKitObject=_homeKitObject;
-- (void).cxx_destruct;
 - (void)_pushSymptomUpdate;
 - (void)_reloadItemProviders;
 @property(nonatomic) _Bool fakeNetworkNotShareableSymptom;
@@ -76,9 +72,7 @@
 @property(nonatomic) _Bool fakeWiFiPerformanceSymptom;
 @property(nonatomic) _Bool fakeWiFiSymptom;
 @property(nonatomic) _Bool fakeVPNProfileExpiredSymptom;
-- (void)setFakeWiFiNetworkMismatchSymptom:(_Bool)arg1;
-- (_Bool)fakeWiFiNetworkMismatchSymptom;
-@property(nonatomic) _Bool fakeShouldDisplayManualFixOption;
+@property(nonatomic) _Bool fakeWiFiNetworkMismatchSymptom;
 @property(nonatomic) _Bool fakeUnreachableError;
 @property(nonatomic) _Bool fakeHomeKitSymptom;
 @property(nonatomic) _Bool fakeGeneralFixSymptom;

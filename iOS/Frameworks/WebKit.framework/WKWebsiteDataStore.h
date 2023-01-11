@@ -9,13 +9,13 @@
 #import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, WKHTTPCookieStore;
+@class NSDictionary, NSString, NSURL, WKHTTPCookieStore, _WKWebsiteDataStoreConfiguration;
 @protocol _WKWebsiteDataStoreDelegate;
 
 @interface WKWebsiteDataStore : NSObject <WKObject, NSSecureCoding>
 {
-    struct ObjectStorage<API::WebsiteDataStore> _websiteDataStore;
-    struct RetainPtr<id<_WKWebsiteDataStoreDelegate>> _delegate;
+    struct ObjectStorage<WebKit::WebsiteDataStore> _websiteDataStore;
+    struct WeakObjCPtr<id<_WKWebsiteDataStoreDelegate>> _delegate;
 }
 
 + (id)allWebsiteDataTypes;
@@ -37,27 +37,36 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+- (id)init;
+- (void)_appBoundSchemes:(CDUnknownBlockType)arg1;
+- (void)_appBoundDomains:(CDUnknownBlockType)arg1;
+@property(readonly, copy, nonatomic) _WKWebsiteDataStoreConfiguration *_configuration;
 @property(nonatomic) __weak id <_WKWebsiteDataStoreDelegate> _delegate;
+- (void)_renameOrigin:(id)arg1 to:(id)arg2 forDataOfTypes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)_hasRegisteredServiceWorker;
+- (void)_setThirdPartyCookieBlockingMode:(_Bool)arg1 onlyOnSitesWithoutUserInteraction:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_processStatisticsAndDataRecords:(CDUnknownBlockType)arg1;
+- (void)_statisticsDatabaseHasAllTables:(CDUnknownBlockType)arg1;
+- (void)_isRegisteredAsSubresourceUnderFirstParty:(id)arg1 thirdParty:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_getResourceLoadStatisticsDataSummary:(CDUnknownBlockType)arg1;
+- (void)_clearResourceLoadStatistics:(CDUnknownBlockType)arg1;
 - (void)_clearPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_getIsPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_logUserInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_scheduleCookieBlockingUpdate:(CDUnknownBlockType)arg1;
 - (void)_getAllStorageAccessEntriesFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_clearLoadedThirdPartyDomainsFor:(id)arg1;
+- (void)_loadedThirdPartyDomainsFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setResourceLoadStatisticsTestingCallback:(CDUnknownBlockType)arg1;
-- (void)_resourceLoadStatisticsSetShouldSubmitTelemetry:(_Bool)arg1;
 @property(readonly, nonatomic) NSURL *_indexedDBDatabaseDirectory;
 @property(nonatomic, setter=_setProxyConfiguration:) NSDictionary *_proxyConfiguration;
 @property(nonatomic, setter=_setAllowsTLSFallback:) _Bool _allowsTLSFallback;
-@property(copy, nonatomic, setter=_setSourceApplicationSecondaryIdentifier:) NSString *_sourceApplicationSecondaryIdentifier;
-@property(copy, nonatomic, setter=_setSourceApplicationBundleIdentifier:) NSString *_sourceApplicationBundleIdentifier;
 @property(nonatomic, setter=_setAllowsCellularAccess:) _Bool _allowsCellularAccess;
 @property(nonatomic, setter=_setBoundInterfaceIdentifier:) NSString *_boundInterfaceIdentifier;
-@property(nonatomic, setter=_setServiceWorkerRegistrationDirectory:) NSString *_serviceWorkerRegistrationDirectory;
-@property(nonatomic, setter=_setCacheStorageDirectory:) NSString *_cacheStorageDirectory;
 @property(nonatomic, setter=_setPerOriginStorageQuota:) unsigned long long _perOriginStorageQuota;
 @property(nonatomic, setter=_setResourceLoadStatisticsDebugMode:) _Bool _resourceLoadStatisticsDebugMode;
+- (void)_setUseITPDatabase:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(nonatomic, setter=_setResourceLoadStatisticsEnabled:) _Bool _resourceLoadStatisticsEnabled;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_initWithConfiguration:(id)arg1;

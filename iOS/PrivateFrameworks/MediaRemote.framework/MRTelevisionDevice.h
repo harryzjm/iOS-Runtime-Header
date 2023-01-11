@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_hiliteModeCallbackQueue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *hiliteModeCallbackQueue; // @synthesize hiliteModeCallbackQueue=_hiliteModeCallbackQueue;
 @property(copy, nonatomic) CDUnknownBlockType hiliteModeCallback; // @synthesize hiliteModeCallback=_hiliteModeCallback;
 @property(retain, nonatomic) RTIInputSystemSourceSession *rtiSourceSession; // @synthesize rtiSourceSession=_rtiSourceSession;
@@ -45,18 +46,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int gameControllerInputMode; // @synthesize gameControllerInputMode=_gameControllerInputMode;
 @property(copy, nonatomic) CDUnknownBlockType gameControllerInputModeCallback; // @synthesize gameControllerInputModeCallback=_gameControllerInputModeCallback;
 @property(readonly, nonatomic) _Bool hiliteMode; // @synthesize hiliteMode=_hiliteMode;
-- (void).cxx_destruct;
-- (void)_handleHiliteModeMessage:(id)arg1;
-- (void)_callClientRTICallback:(id)arg1;
-- (void)_handleRemoteTextInputMessage:(id)arg1;
 - (void)handleTextActionPayload:(id)arg1;
-- (void)_handleKeyboardMessage:(id)arg1;
-- (void)_callCientHiliteModeCallback;
-- (void)_callClientTextInputCallback:(id)arg1 type:(unsigned int)arg2;
-- (void)_callClientRecordingStateCallback;
-- (void)_callClientGameControllerPropertiesCallback:(id)arg1 controller:(unsigned long long)arg2;
-- (void)_callClientGameControllerInputModeCallback;
-- (void)_sendTextInputMessageWithActionType:(unsigned long long)arg1 text:(id)arg2;
 - (void)wake;
 - (void)exitHiliteMode;
 - (void)processVoiceInputAudioDataForDeviceID:(unsigned int)arg1 withBuffer:(id)arg2 time:(CDStruct_ace97b7a)arg3 gain:(float)arg4;
@@ -70,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (void)setTextOnActiveTextEditingSessionWithText:(id)arg1;
 - (void)insertTextIntoActiveTextEditingSessionWithText:(id)arg1;
 - (void)getTextEditingSessionWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)sendHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendTouchEvent:(struct _MRHIDTouchEvent)arg1 toVirtualDeviceWithID:(unsigned long long)arg2;
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)currentClientUpdatesConfigMessage;
@@ -81,8 +70,6 @@ __attribute__((visibility("hidden")))
 - (void)setTextEditingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerPropertiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerInputModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
-- (void)setHiliteMode:(_Bool)arg1;
-- (void)setVoiceRecordingState:(unsigned int)arg1;
 - (id)initWithTransport:(id)arg1;
 
 // Remaining properties

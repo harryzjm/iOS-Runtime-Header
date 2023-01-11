@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+
 @class NSString, UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationLayoutView
+@interface UIDictationLayoutView <UIPointerInteractionDelegate>
 {
     _Bool _hideSwitcher;
     UIButton *_globeButton;
@@ -18,6 +20,7 @@ __attribute__((visibility("hidden")))
     _Bool _blackTextColor;
 }
 
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (_Bool)isShowing;
 - (void)returnToKeyboard;
 - (void)finishReturnToKeyboard;
@@ -31,6 +34,12 @@ __attribute__((visibility("hidden")))
 - (id)darkGrayColor;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

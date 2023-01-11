@@ -12,9 +12,9 @@
     PKPaymentPass *_paymentPass;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property(retain, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
-- (void).cxx_destruct;
 - (id)description;
 - (id)initWithRequestContext:(id)arg1;
 

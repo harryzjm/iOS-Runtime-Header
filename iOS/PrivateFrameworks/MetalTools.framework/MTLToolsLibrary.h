@@ -6,18 +6,22 @@
 
 #import <MetalTools/MTLLibrarySPI-Protocol.h>
 
-@class MTLToolsPointerArray, NSArray, NSString;
+@class NSArray, NSString;
 @protocol MTLDevice;
 
 @interface MTLToolsLibrary <MTLLibrarySPI>
 {
-    MTLToolsPointerArray *_functions;
 }
 
-@property(readonly, nonatomic) MTLToolsPointerArray *functions; // @synthesize functions=_functions;
+@property(readonly) NSString *installName;
+@property(readonly) long long type;
 @property(readonly) NSArray *externFunctionNames;
 @property(readonly) NSArray *functionNames;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (void)newIntersectionFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 error:(id *)arg4;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
@@ -26,9 +30,6 @@
 @property(readonly) id <MTLDevice> device;
 @property(copy) NSString *label;
 @property(copy) NSString *overrideTriple;
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

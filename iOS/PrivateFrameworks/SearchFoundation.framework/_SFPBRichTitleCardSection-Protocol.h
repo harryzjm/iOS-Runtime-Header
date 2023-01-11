@@ -10,6 +10,7 @@
 
 @protocol _SFPBRichTitleCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool subtitleIsEmphasized;
 @property(retain, nonatomic) _SFPBRichText *richSubtitle;
 @property(copy, nonatomic) NSString *footnote;
 @property(copy, nonatomic) NSArray *offers;

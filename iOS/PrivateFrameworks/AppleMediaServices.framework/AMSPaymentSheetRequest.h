@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, AMSBiometricsSignatureRequest, NSArray, NSAttributedString, NSNumber, NSString, NSURL;
+@class ACAccount, AMSBiometricsSignatureRequest, NSArray, NSAttributedString, NSDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface AMSPaymentSheetRequest : NSObject
 {
+    _Bool _applePayClassic;
     _Bool _requiresAuthorization;
     _Bool _shouldUppercaseText;
     ACAccount *_account;
     NSString *_accountHeader;
+    NSArray *_attributedList;
     AMSBiometricsSignatureRequest *_biometricsRequest;
     long long _confirmationTitle;
     NSString *_currencyCode;
@@ -24,10 +26,12 @@ __attribute__((visibility("hidden")))
     NSArray *_flexList;
     NSArray *_inlineImages;
     NSString *_logKey;
+    NSDictionary *_merchantSession;
     NSString *_message;
     long long _payee;
     NSString *_paymentSession;
     NSString *_paymentSummary;
+    NSArray *_preSheetDialog;
     NSNumber *_price;
     NSArray *_priceSectionItems;
     NSString *_ratingHeader;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
     long long _titleType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long titleType; // @synthesize titleType=_titleType;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *storeName; // @synthesize storeName=_storeName;
@@ -54,10 +59,12 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *ratingHeader; // @synthesize ratingHeader=_ratingHeader;
 @property(copy, nonatomic) NSArray *priceSectionItems; // @synthesize priceSectionItems=_priceSectionItems;
 @property(copy, nonatomic) NSNumber *price; // @synthesize price=_price;
+@property(copy, nonatomic) NSArray *preSheetDialog; // @synthesize preSheetDialog=_preSheetDialog;
 @property(copy, nonatomic) NSString *paymentSummary; // @synthesize paymentSummary=_paymentSummary;
 @property(copy, nonatomic) NSString *paymentSession; // @synthesize paymentSession=_paymentSession;
 @property(nonatomic) long long payee; // @synthesize payee=_payee;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property(copy, nonatomic) NSDictionary *merchantSession; // @synthesize merchantSession=_merchantSession;
 @property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property(retain, nonatomic) NSArray *inlineImages; // @synthesize inlineImages=_inlineImages;
 @property(copy, nonatomic) NSArray *flexList; // @synthesize flexList=_flexList;
@@ -67,9 +74,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property(nonatomic) long long confirmationTitle; // @synthesize confirmationTitle=_confirmationTitle;
 @property(retain, nonatomic) AMSBiometricsSignatureRequest *biometricsRequest; // @synthesize biometricsRequest=_biometricsRequest;
+@property(copy, nonatomic) NSArray *attributedList; // @synthesize attributedList=_attributedList;
+@property(nonatomic, getter=isApplePayClassic) _Bool applePayClassic; // @synthesize applePayClassic=_applePayClassic;
 @property(copy, nonatomic) NSString *accountHeader; // @synthesize accountHeader=_accountHeader;
 @property(copy, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (struct CGImage *)_createRGBImageRefForGreyScaleImageRef:(struct CGImage *)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
 - (struct CGImage *)_createResizedImageWithOriginalImage:(struct CGImage *)arg1 targetHeight:(double)arg2;
 - (struct CGImage *)_createRatingImageWithStringValue:(id)arg1 assetScale:(float *)arg2;
@@ -80,14 +88,18 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)_createImageForResourceName:(id)arg1 outAssetScale:(float *)arg2;
 - (struct CGImage *)_createDefaultImageWithImageRef:(struct CGImage *)arg1 size:(struct CGSize)arg2 borderPath:(struct CGPath *)arg3;
 - (struct CGPath *)_createBorderPathForAdornmentStyle:(long long)arg1 iconWidth:(double)arg2 iconHeight:(double)arg3;
-- (id)_replaceImagePlaceholderTagWithImageData:(id)arg1 tag:(id)arg2 data:(id)arg3 scale:(float)arg4;
+- (id)_summaryItemsForAttributedList:(id)arg1 cache:(id)arg2 bag:(id)arg3;
+- (id)_replaceImagePlaceholderTagWithImageData:(id)arg1 tag:(id)arg2 data:(id)arg3 scale:(float)arg4 tint:(_Bool)arg5;
 - (id)_removeAllImagePlaceholderTags:(id)arg1;
 - (long long)_imageTypeForURL:(id)arg1;
+- (id)_contentItemsForFlexibleList:(id)arg1 cache:(id)arg2 bag:(id)arg3;
 - (unsigned long long)_countImagePlaceholderTags:(id)arg1;
 - (id)ams_createContentItemForSalableInfoWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createContentItemForRating;
+- (id)ams_createContentItemsForPreScreenDialogWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createContentItemsForFlexibleListWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createContentItemForAccount;
+- (id)ams_createSummaryItemsForAttributedListWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createSummaryItems;
 @property(readonly, nonatomic) unsigned long long ams_paymentRequestorType;
 @property(readonly, nonatomic) unsigned long long ams_confirmationStyle;

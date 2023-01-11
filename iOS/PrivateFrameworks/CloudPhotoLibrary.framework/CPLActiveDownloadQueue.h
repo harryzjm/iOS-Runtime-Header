@@ -14,15 +14,22 @@
     NSMutableArray *_transportTasks;
     _Bool _FIFOQueue;
     NSString *_name;
+    unsigned long long _type;
     unsigned long long _maximumBatchSize;
+    long long _coalescingInterval;
+    CDUnknownBlockType _groupConstructor;
     unsigned long long _maximumConcurrentTransportTasks;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long maximumConcurrentTransportTasks; // @synthesize maximumConcurrentTransportTasks=_maximumConcurrentTransportTasks;
+@property(readonly, nonatomic) CDUnknownBlockType groupConstructor; // @synthesize groupConstructor=_groupConstructor;
+@property(readonly, nonatomic) long long coalescingInterval; // @synthesize coalescingInterval=_coalescingInterval;
 @property(readonly, nonatomic) unsigned long long maximumBatchSize; // @synthesize maximumBatchSize=_maximumBatchSize;
 @property(readonly, nonatomic, getter=isFIFOQueue) _Bool FIFOQueue; // @synthesize FIFOQueue=_FIFOQueue;
+@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isHighPriority;
 - (id)status;
 - (id)dequeueLastTransportTask;
 @property(readonly, nonatomic) unsigned long long countOfTransferTasksInTransportTasks;
@@ -35,7 +42,7 @@
 @property(readonly, nonatomic) unsigned long long countOfTransferTasks;
 - (void)removeTransferTask:(id)arg1;
 - (void)addTransferTask:(id)arg1;
-- (id)initWithName:(id)arg1 FIFOQueue:(_Bool)arg2 maximumBatchSize:(unsigned long long)arg3 maximumConcurrentTransportTasks:(unsigned long long)arg4;
+- (id)initWithName:(id)arg1 type:(unsigned long long)arg2 FIFOQueue:(_Bool)arg3 maximumBatchSize:(unsigned long long)arg4 maximumConcurrentTransportTasks:(unsigned long long)arg5 coalescingInterval:(long long)arg6 groupConstructor:(CDUnknownBlockType)arg7;
 
 @end
 

@@ -14,9 +14,10 @@
     NSString *_preferredHandle;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak NSString *preferredHandle; // @synthesize preferredHandle=_preferredHandle;
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-- (void).cxx_destruct;
+@property(retain, nonatomic, setter=_ck_setContextToken:) NSString *_ck_contextToken;
 - (void)setHighlighted:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;

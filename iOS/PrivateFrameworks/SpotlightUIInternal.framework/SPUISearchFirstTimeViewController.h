@@ -6,16 +6,22 @@
 
 #import <SearchUI/SearchUIFirstTimeExperienceViewController.h>
 
+@class UIView;
+
 @interface SPUISearchFirstTimeViewController : SearchUIFirstTimeExperienceViewController
 {
     _Bool _hasBeenDisplayed;
+    UIView *_contentView;
 }
 
 + (void)updateViewCountToCount:(long long)arg1;
 + (void)dismissForever;
 + (long long)viewCount;
 + (_Bool)needsDisplay;
+- (void).cxx_destruct;
+@property(retain) UIView *contentView; // @synthesize contentView=_contentView;
 @property _Bool hasBeenDisplayed; // @synthesize hasBeenDisplayed=_hasBeenDisplayed;
+- (double)idealContentHeight;
 - (void)updateViewCount;
 - (id)initWithSupportedDomains:(unsigned long long)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
 

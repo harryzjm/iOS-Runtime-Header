@@ -4,14 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PXAlbumsDebugUISettings
 {
     _Bool _showBestKeyFrameDebugAlbum;
     _Bool _showUtilitiesDebugAlbum;
+    _Bool _showDreamyDebugAlbum;
+    _Bool _showCustomDebugAlbum;
+    NSString *_customDebugAlbumTitle;
+    NSString *_customDebugInternalPredicate;
+    NSString *_customDebugPredicate;
 }
 
 + (id)sharedInstance;
++ (CDUnknownBlockType)_predicateValidatorUsingInternalPredicate:(_Bool)arg1;
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *customDebugPredicate; // @synthesize customDebugPredicate=_customDebugPredicate;
+@property(copy, nonatomic) NSString *customDebugInternalPredicate; // @synthesize customDebugInternalPredicate=_customDebugInternalPredicate;
+@property(copy, nonatomic) NSString *customDebugAlbumTitle; // @synthesize customDebugAlbumTitle=_customDebugAlbumTitle;
+@property(nonatomic) _Bool showCustomDebugAlbum; // @synthesize showCustomDebugAlbum=_showCustomDebugAlbum;
+@property(nonatomic) _Bool showDreamyDebugAlbum; // @synthesize showDreamyDebugAlbum=_showDreamyDebugAlbum;
 @property(nonatomic) _Bool showUtilitiesDebugAlbum; // @synthesize showUtilitiesDebugAlbum=_showUtilitiesDebugAlbum;
 @property(nonatomic) _Bool showBestKeyFrameDebugAlbum; // @synthesize showBestKeyFrameDebugAlbum=_showBestKeyFrameDebugAlbum;
 - (void)setDefaultValues;

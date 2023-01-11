@@ -4,48 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+#import <objc/NSObject.h>
 
+#import <AVConference/NSCoding-Protocol.h>
 #import <AVConference/NSCopying-Protocol.h>
+#import <AVConference/NSSecureCoding-Protocol.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray, NSMutableString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCCaptionsTranscription : PBCodable <NSCopying>
+@interface VCCaptionsTranscription : NSObject <NSCopying, NSCoding, NSSecureCoding>
 {
     NSMutableArray *_segments;
-    unsigned int _updateNumber;
+    NSMutableString *_formattedText;
     unsigned int _utteranceNumber;
-    _Bool _isFinal;
+    unsigned int _updateNumber;
     _Bool _isLocal;
-    struct {
-        unsigned int isFinal:1;
-        unsigned int isLocal:1;
-    } _has;
+    _Bool _isFinal;
 }
 
-+ (Class)segmentsType;
-@property(retain, nonatomic) NSMutableArray *segments; // @synthesize segments=_segments;
++ (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) NSArray *segments; // @synthesize segments=_segments;
 @property(nonatomic) _Bool isFinal; // @synthesize isFinal=_isFinal;
 @property(nonatomic) _Bool isLocal; // @synthesize isLocal=_isLocal;
 @property(nonatomic) unsigned int updateNumber; // @synthesize updateNumber=_updateNumber;
 @property(nonatomic) unsigned int utteranceNumber; // @synthesize utteranceNumber=_utteranceNumber;
-- (void)mergeFrom:(id)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
-- (void)writeTo:(id)arg1;
-- (_Bool)readFrom:(id)arg1;
-- (id)dictionaryRepresentation;
-- (id)description;
-- (id)segmentsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)segmentsCount;
-- (void)addSegments:(id)arg1;
-- (void)clearSegments;
-@property(nonatomic) _Bool hasIsFinal;
-@property(nonatomic) _Bool hasIsLocal;
+- (void)addSegment:(id)arg1;
+@property(readonly, nonatomic) NSString *formattedText;
 - (void)dealloc;
+- (id)initWithUtteranceNumber:(unsigned int)arg1 updateNumber:(unsigned int)arg2 isLocal:(_Bool)arg3 isFinal:(_Bool)arg4;
 
 @end
 

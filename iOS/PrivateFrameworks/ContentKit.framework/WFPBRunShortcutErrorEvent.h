@@ -13,17 +13,22 @@
 __attribute__((visibility("hidden")))
 @interface WFPBRunShortcutErrorEvent : PBCodable <NSCopying>
 {
-    NSString *_actionName;
+    NSString *_actionIdentifier;
     NSString *_errorCode;
     NSString *_errorDomain;
     NSString *_key;
+    _Bool _didRunRemotely;
+    struct {
+        unsigned int didRunRemotely:1;
+    } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
+@property(retain, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property(retain, nonatomic) NSString *errorCode; // @synthesize errorCode=_errorCode;
 @property(retain, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
-@property(retain, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -33,9 +38,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDidRunRemotely;
+@property(readonly, nonatomic) _Bool hasActionIdentifier;
 @property(readonly, nonatomic) _Bool hasErrorCode;
 @property(readonly, nonatomic) _Bool hasErrorDomain;
-@property(readonly, nonatomic) _Bool hasActionName;
 @property(readonly, nonatomic) _Bool hasKey;
 
 @end

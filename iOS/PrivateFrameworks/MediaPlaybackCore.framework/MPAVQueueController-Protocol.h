@@ -10,11 +10,15 @@
 @protocol MPAVQueueControllerDelegate, MPAVQueueCoordinating;
 
 @protocol MPAVQueueController <MPAVQueueCoordinatingDataSource>
+@property(readonly, copy, nonatomic) NSString *preferredFirstContentItemID;
+@property(readonly, nonatomic) _Bool userCanEnableAutoPlay;
 @property(nonatomic) _Bool allowsQueueModifications;
 @property(readonly, nonatomic) _Bool userCanChangeShuffleAndRepeatType;
 @property(readonly, nonatomic) unsigned long long supportedInsertionPositions;
+@property(nonatomic) _Bool autoPlayEnabled;
 @property(nonatomic) long long shuffleType;
 @property(nonatomic) long long repeatType;
+@property(readonly, nonatomic) long long displayCount;
 @property(retain, nonatomic) id <MPAVQueueCoordinating> queueCoordinator;
 @property(nonatomic) __weak id <MPAVQueueControllerDelegate> delegate;
 @property(readonly, nonatomic) MPAVItem *currentItem;
@@ -24,21 +28,23 @@
 - (_Bool)isPlaceholderItemForContentItemID:(NSString *)arg1;
 - (MPAVItem *)itemForContentItemID:(NSString *)arg1;
 - (NSString *)contentItemIDWithCurrentItemOffset:(long long)arg1 mode:(long long)arg2 didReachEnd:(_Bool *)arg3;
+- (NSString *)contentItemIDAtIndex:(long long)arg1;
+- (void)jumpToContentItemID:(NSString *)arg1 userInitiated:(_Bool)arg2;
 - (void)jumpToContentItemID:(NSString *)arg1;
 - (void)jumpToFirstContentItem;
+- (void)clearUpNext;
 - (void)reshuffle;
 - (void)player:(MPAVController *)arg1 currentItemDidChangeFromItem:(MPAVItem *)arg2 toItem:(MPAVItem *)arg3;
-- (void)finalizeStateRestorationWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)handlePlaybackFailureForItem:(MPAVItem *)arg1;
 - (void)removeContentItemID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)moveContentItemID:(NSString *)arg1 afterContentItemID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)moveContentItemID:(NSString *)arg1 beforeContentItemID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 jumpToIt:(_Bool)arg3 userModification:(_Bool)arg4 completion:(void (^)(NSError *))arg5;
 - (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 jumpToIt:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
 - (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addPlaybackContext:(MPPlaybackContext *)arg1 afterContentItemID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)reloadWithPlaybackContext:(MPPlaybackContext *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)reset;
-- (unsigned long long)displayCountForItem:(MPAVItem *)arg1;
-- (unsigned long long)displayIndexForItem:(MPAVItem *)arg1;
+- (long long)displayIndexForContentItemID:(NSString *)arg1;
 - (_Bool)canSkipItem:(MPAVItem *)arg1;
 
 @optional

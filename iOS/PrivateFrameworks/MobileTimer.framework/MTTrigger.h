@@ -6,24 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <MobileTimer/BSDescriptionProviding-Protocol.h>
 #import <MobileTimer/NAEquatable-Protocol.h>
 #import <MobileTimer/NSCopying-Protocol.h>
 #import <MobileTimer/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface MTTrigger : NSObject <NAEquatable, NSCopying, NSSecureCoding>
+@interface MTTrigger : NSObject <BSDescriptionProviding, NAEquatable, NSCopying, NSSecureCoding>
 {
+    _Bool _isPastOverrideEvent;
     unsigned long long _triggerType;
     NSDate *_triggerDate;
 }
 
 + (id)_stringForType:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
++ (id)triggerWithDate:(id)arg1 triggerType:(unsigned long long)arg2 isPastOverrideEvent:(_Bool)arg3;
 + (id)triggerWithDate:(id)arg1 triggerType:(unsigned long long)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isPastOverrideEvent; // @synthesize isPastOverrideEvent=_isPastOverrideEvent;
 @property(copy, nonatomic) NSDate *triggerDate; // @synthesize triggerDate=_triggerDate;
 @property(nonatomic) unsigned long long triggerType; // @synthesize triggerType=_triggerType;
-- (void).cxx_destruct;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool isWakeUpRelated;
 @property(readonly, nonatomic) _Bool isBedtimeRelated;
 @property(readonly, nonatomic) _Bool isEvent;
@@ -32,7 +41,6 @@
 @property(readonly, nonatomic) _Bool isForGoToBed;
 @property(readonly, nonatomic) _Bool isForNotification;
 @property(readonly, nonatomic) _Bool isForSnooze;
-@property(readonly, copy) NSString *description;
 - (long long)compare:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -41,6 +49,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithDate:(id)arg1 type:(unsigned long long)arg2;
+- (id)initWithDate:(id)arg1 type:(unsigned long long)arg2 isPastOverrideEvent:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

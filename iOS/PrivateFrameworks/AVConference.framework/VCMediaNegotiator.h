@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canDecodeVideo:(id)arg1;
 - (_Bool)canEncodeVideo:(id)arg1;
 - (_Bool)processParameterSets:(id)arg1 videoResults:(id)arg2;
+- (_Bool)processPixelFormats:(id)arg1 videoResults:(id)arg2;
 - (void)negotiateTilesPerFrame:(id)arg1;
 - (void)negotiateRTCPFB:(id)arg1;
 - (_Bool)selectBestVideoRuleForTransport:(unsigned char)arg1 payload:(int)arg2 encodingType:(unsigned char)arg3 localVideoRuleCollection:(id)arg4 remoteVideoSettings:(id)arg5 negotiatedVideoSettings:(id)arg6 isScreen:(_Bool)arg7;

@@ -16,6 +16,7 @@
 
 + (_Bool)isAvailable;
 @property(readonly, nonatomic) CMWorkoutManagerInternal *_internal; // @synthesize _internal;
+- (void)triggerWorkoutLocationUpdateForTesting:(long long)arg1;
 - (void)userDismissedWorkoutAlert;
 - (void)setSuggestedStopTimeout:(double)arg1;
 - (void)getPromptsNeededForWorkoutType:(long long)arg1 handler:(CDUnknownBlockType)arg2;

@@ -7,10 +7,12 @@
 @interface CKTranscriptCollectionView
 {
     _Bool _ignoresContentOffsetChanges;
+    _Bool _ignoresReloadDataRequests;
     _Bool _dynamicsDisabled;
 }
 
 @property(nonatomic) _Bool dynamicsDisabled; // @synthesize dynamicsDisabled=_dynamicsDisabled;
+@property(nonatomic) _Bool ignoresReloadDataRequests; // @synthesize ignoresReloadDataRequests=_ignoresReloadDataRequests;
 @property(nonatomic) _Bool ignoresContentOffsetChanges; // @synthesize ignoresContentOffsetChanges=_ignoresContentOffsetChanges;
 - (void)reloadData;
 - (void)setContentSize:(struct CGSize)arg1;

@@ -13,7 +13,6 @@
 @interface GEOWaypointID : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOStructuredAddress *_addressHint;
     NSMutableArray *_formattedAddressLineHints;
@@ -21,6 +20,9 @@
     unsigned long long _muid;
     NSString *_placeNameHint;
     unsigned long long _resultProviderId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _addressGeocodeAccuracyHint;
     int _placeTypeHint;
     struct {
@@ -33,15 +35,7 @@
         unsigned int read_formattedAddressLineHints:1;
         unsigned int read_locationHint:1;
         unsigned int read_placeNameHint:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressHint:1;
-        unsigned int wrote_formattedAddressLineHints:1;
-        unsigned int wrote_locationHint:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_placeNameHint:1;
-        unsigned int wrote_resultProviderId:1;
-        unsigned int wrote_addressGeocodeAccuracyHint:1;
-        unsigned int wrote_placeTypeHint:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,6 +52,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
@@ -70,24 +67,21 @@
 @property(nonatomic) int placeTypeHint;
 - (id)formattedAddressLineHintAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formattedAddressLineHintsCount;
-- (void)_addNoFlagsFormattedAddressLineHint:(id)arg1;
 - (void)addFormattedAddressLineHint:(id)arg1;
 - (void)clearFormattedAddressLineHints;
 @property(retain, nonatomic) NSMutableArray *formattedAddressLineHints;
-- (void)_readFormattedAddressLineHints;
 @property(retain, nonatomic) NSString *placeNameHint;
 @property(readonly, nonatomic) _Bool hasPlaceNameHint;
-- (void)_readPlaceNameHint;
 @property(retain, nonatomic) GEOStructuredAddress *addressHint;
 @property(readonly, nonatomic) _Bool hasAddressHint;
-- (void)_readAddressHint;
 @property(retain, nonatomic) GEOLatLng *locationHint;
 @property(readonly, nonatomic) _Bool hasLocationHint;
-- (void)_readLocationHint;
 @property(nonatomic) _Bool hasResultProviderId;
 @property(nonatomic) unsigned long long resultProviderId;
 @property(nonatomic) _Bool hasMuid;
 @property(nonatomic) unsigned long long muid;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

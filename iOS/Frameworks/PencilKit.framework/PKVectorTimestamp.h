@@ -16,7 +16,10 @@
     NSMutableDictionary *_clock;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)shortDescription;
 - (void)mergeWithTimestamp:(id)arg1;

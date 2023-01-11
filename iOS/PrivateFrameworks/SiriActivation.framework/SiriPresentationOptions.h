@@ -13,9 +13,11 @@
 {
     _Bool _wakeScreen;
     _Bool _hideOtherWindowsDuringAppearance;
+    long long _rotationStyle;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) long long rotationStyle; // @synthesize rotationStyle=_rotationStyle;
 @property(nonatomic) _Bool hideOtherWindowsDuringAppearance; // @synthesize hideOtherWindowsDuringAppearance=_hideOtherWindowsDuringAppearance;
 @property(nonatomic) _Bool wakeScreen; // @synthesize wakeScreen=_wakeScreen;
 - (void)encodeWithCoder:(id)arg1;

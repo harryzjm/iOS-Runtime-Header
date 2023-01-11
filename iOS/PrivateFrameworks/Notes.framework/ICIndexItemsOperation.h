@@ -6,26 +6,34 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CSSearchableIndex, NSArray, NSError;
+@class CSSearchableIndex, NSArray, NSError, NSMutableArray, NSMutableDictionary;
 
 @interface ICIndexItemsOperation : NSOperation
 {
     CSSearchableIndex *_searchableIndex;
     NSArray *_dataSources;
-    unsigned long long _maxBytesPerBatch;
     NSError *_error;
+    NSMutableArray *_objectIDsToIndex;
+    NSMutableArray *_searchableItemsToIndex;
+    unsigned long long _totalSizeOfSearchableItemsToIndex;
+    NSMutableArray *_objectIDURIsToDelete;
+    NSMutableDictionary *_contextCache;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *contextCache; // @synthesize contextCache=_contextCache;
+@property(retain, nonatomic) NSMutableArray *objectIDURIsToDelete; // @synthesize objectIDURIsToDelete=_objectIDURIsToDelete;
+@property(nonatomic) unsigned long long totalSizeOfSearchableItemsToIndex; // @synthesize totalSizeOfSearchableItemsToIndex=_totalSizeOfSearchableItemsToIndex;
+@property(retain, nonatomic) NSMutableArray *searchableItemsToIndex; // @synthesize searchableItemsToIndex=_searchableItemsToIndex;
+@property(retain, nonatomic) NSMutableArray *objectIDsToIndex; // @synthesize objectIDsToIndex=_objectIDsToIndex;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(nonatomic) unsigned long long maxBytesPerBatch; // @synthesize maxBytesPerBatch=_maxBytesPerBatch;
 @property(copy, nonatomic) NSArray *dataSources; // @synthesize dataSources=_dataSources;
 @property(retain, nonatomic) CSSearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
-- (void).cxx_destruct;
-- (id)objectIDURIsToDeleteFromDataSource:(id)arg1;
-- (id)objectIDsToIndexFromDataSource:(id)arg1;
-- (void)indexItems;
-- (void)deleteItems;
+- (void)commitObjectIDsToIndexIfNecessaryForDataSource:(id)arg1 forceCommit:(_Bool)arg2;
+- (void)commitObjectIDURIsToDeleteIfNecessaryForDataSource:(id)arg1 forceCommit:(_Bool)arg2;
+- (void)processItems;
 - (void)main;
+- (id)managedObjectContextForDataSource:(id)arg1;
 - (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2;
 - (id)init;
 

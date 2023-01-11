@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CAMCaptureRequest, NSDate, NSMutableDictionary;
+@class CAMCaptureRequest, NSDate, NSMutableDictionary, NSString;
 
 @interface CAMPendingRemotePersistenceWrapper : NSObject
 {
     CAMCaptureRequest *_request;
     NSDate *_creationDate;
     NSMutableDictionary *_job;
+    NSString *_loggingIdentifier;
     CDUnknownBlockType _completionHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(readonly, copy, nonatomic) NSString *loggingIdentifier; // @synthesize loggingIdentifier=_loggingIdentifier;
 @property(readonly, nonatomic) NSMutableDictionary *job; // @synthesize job=_job;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) CAMCaptureRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
-- (id)initWithRequest:(id)arg1 creationDate:(id)arg2 job:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithRequest:(id)arg1 creationDate:(id)arg2 job:(id)arg3 loggingIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

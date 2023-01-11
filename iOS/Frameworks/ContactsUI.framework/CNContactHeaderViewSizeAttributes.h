@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     double _photoMaxBottomMargin;
 }
 
++ (id)displayAttributesWithNavBar;
 + (id)editingAttributesWithNavBar;
 + (id)editingAttributes;
 + (id)displayAttributes;

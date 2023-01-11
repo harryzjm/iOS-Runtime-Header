@@ -31,22 +31,22 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *eventStatus; // @synthesize eventStatus=_eventStatus;
 @property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(retain, nonatomic) SFSportsTeam *team2; // @synthesize team2=_team2;
 @property(retain, nonatomic) SFSportsTeam *team1; // @synthesize team1=_team1;
-@property(copy, nonatomic) NSString *subtitle;
-@property(copy, nonatomic) NSString *title;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
-@property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(retain, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property(nonatomic) _Bool hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property(nonatomic) _Bool hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
+@property(nonatomic) _Bool canBeHidden; // @synthesize canBeHidden=_canBeHidden;
+@property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
+@property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;

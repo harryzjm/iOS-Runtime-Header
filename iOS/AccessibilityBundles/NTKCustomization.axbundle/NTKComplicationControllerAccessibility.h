@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)addDisplayWrapper:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <SAObjects/SASTTemplateItem-Protocol.h>
 
-@class NSString, SAUIDecoratedText;
+@class NSString, NSURL, SAUIDecoratedText;
 
 @interface SASTMessageItem <SASTTemplateItem>
 {
@@ -18,6 +18,7 @@
 @property(retain, nonatomic) SAUIDecoratedText *recipient;
 @property(retain, nonatomic) SAUIDecoratedText *content;
 @property(copy, nonatomic) NSString *bundleId;
+@property(copy, nonatomic) NSURL *audioMessageURL;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

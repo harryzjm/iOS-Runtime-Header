@@ -9,8 +9,8 @@
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/FCFeedGroupOutlining-Protocol.h>
 
-@class FCColor, FCColorGradient, FCFeedDescriptor, FCFeedEdition, NSArray, NSDate, NSString, NTPBDiscoverMoreVideosInfo;
-@protocol FCForYouMagazineFeedGroup;
+@class FCColor, FCFeedDescriptor, FCFeedEdition, FCHeadlineClusteringRules, NSArray, NSDate, NSString;
+@protocol FCCardStyleProviding, FCForYouBridgedFeedGroup;
 
 @interface FCFeedGroup : NSObject <FCFeedElement, FCFeedGroupOutlining>
 {
@@ -18,81 +18,79 @@
     NSString *_identifier;
     NSString *_sourceIdentifier;
     FCColor *_titleColor;
-    FCColorGradient *_backgroundGradient;
-    FCColorGradient *_darkStyleBackgroundGradient;
+    id <FCCardStyleProviding> _cardStyle;
+    id <FCCardStyleProviding> _darkCardStyle;
     NSDate *_creationDate;
     NSArray *_issueIDs;
-    id <FCForYouMagazineFeedGroup> _magazineGroup;
+    NSString *_backingTagID;
+    id <FCForYouBridgedFeedGroup> _bridgedGroup;
     unsigned long long _options;
     unsigned long long _mergeID;
     long long _groupType;
     NSArray *_elements;
     NSArray *_headlines;
+    NSArray *_debugHeadlines;
+    FCHeadlineClusteringRules *_clusteringRules;
     NSString *_eyebrowText;
     NSString *_title;
     NSString *_subtitle;
     NSString *_ctaText;
     FCColor *_darkStyleTitleColor;
-    FCColorGradient *_sauceGradient;
-    FCColorGradient *_darkStyleSauceGradient;
-    FCColor *_cardBackgroundColor;
-    FCColor *_darkStyleCardBackgroundColor;
-    NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
-    NSArray *_videoPlaylistHeadlines;
     FCFeedDescriptor *_L2FeedDescriptor;
     FCFeedEdition *_edition;
 }
 
 + (id)_pbHeadlinesFromHeadlines:(id)arg1 sharedStringIndex:(id)arg2;
 + (id)pbGroupFromGroup:(id)arg1 sharedStringIndex:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isFirstFromEdition; // @synthesize isFirstFromEdition=_isFirstFromEdition;
 @property(readonly, copy, nonatomic) FCFeedEdition *edition; // @synthesize edition=_edition;
 @property(readonly, copy, nonatomic) FCFeedDescriptor *L2FeedDescriptor; // @synthesize L2FeedDescriptor=_L2FeedDescriptor;
-@property(readonly, copy, nonatomic) NSArray *videoPlaylistHeadlines; // @synthesize videoPlaylistHeadlines=_videoPlaylistHeadlines;
-@property(readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
-@property(readonly, copy, nonatomic) FCColor *darkStyleCardBackgroundColor; // @synthesize darkStyleCardBackgroundColor=_darkStyleCardBackgroundColor;
-@property(readonly, copy, nonatomic) FCColor *cardBackgroundColor; // @synthesize cardBackgroundColor=_cardBackgroundColor;
-@property(readonly, copy, nonatomic) FCColorGradient *darkStyleSauceGradient; // @synthesize darkStyleSauceGradient=_darkStyleSauceGradient;
-@property(readonly, copy, nonatomic) FCColorGradient *sauceGradient; // @synthesize sauceGradient=_sauceGradient;
 @property(readonly, copy, nonatomic) FCColor *darkStyleTitleColor; // @synthesize darkStyleTitleColor=_darkStyleTitleColor;
 @property(readonly, copy, nonatomic) NSString *ctaText; // @synthesize ctaText=_ctaText;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSString *eyebrowText; // @synthesize eyebrowText=_eyebrowText;
+@property(readonly, copy, nonatomic) FCHeadlineClusteringRules *clusteringRules; // @synthesize clusteringRules=_clusteringRules;
+@property(readonly, copy, nonatomic) NSArray *debugHeadlines; // @synthesize debugHeadlines=_debugHeadlines;
 @property(readonly, copy, nonatomic) NSArray *headlines; // @synthesize headlines=_headlines;
 @property(readonly, copy, nonatomic) NSArray *elements; // @synthesize elements=_elements;
 @property(readonly, nonatomic) long long groupType; // @synthesize groupType=_groupType;
 @property(readonly, nonatomic) unsigned long long mergeID; // @synthesize mergeID=_mergeID;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(readonly, nonatomic) id <FCForYouMagazineFeedGroup> magazineGroup; // @synthesize magazineGroup=_magazineGroup;
+@property(readonly, nonatomic) id <FCForYouBridgedFeedGroup> bridgedGroup; // @synthesize bridgedGroup=_bridgedGroup;
+@property(readonly, copy, nonatomic) NSString *backingTagID; // @synthesize backingTagID=_backingTagID;
 @property(readonly, copy, nonatomic) NSArray *issueIDs; // @synthesize issueIDs=_issueIDs;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
-@property(readonly, copy, nonatomic) FCColorGradient *darkStyleBackgroundGradient; // @synthesize darkStyleBackgroundGradient=_darkStyleBackgroundGradient;
-@property(readonly, copy, nonatomic) FCColorGradient *backgroundGradient; // @synthesize backgroundGradient=_backgroundGradient;
+@property(readonly, copy, nonatomic) id <FCCardStyleProviding> darkCardStyle; // @synthesize darkCardStyle=_darkCardStyle;
+@property(readonly, copy, nonatomic) id <FCCardStyleProviding> cardStyle; // @synthesize cardStyle=_cardStyle;
 @property(readonly, copy, nonatomic) FCColor *titleColor; // @synthesize titleColor=_titleColor;
 @property(readonly, copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool usesPlaceholderHeadlines;
+@property(readonly, copy, nonatomic) NSString *contentIdentifier;
+- (_Bool)containsHeadlineIdenticalTo:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isGap;
 @property(readonly, nonatomic) long long feedElementType;
-@property(readonly, copy, nonatomic) NSString *backingTagID;
-@property(readonly, nonatomic) _Bool shouldPresentCollapsed;
+- (id)equivalentTopicIDs;
+@property(readonly, nonatomic, getter=isTopStories) _Bool topStories;
 @property(readonly, nonatomic) _Bool hasStrictHeadlineOrder;
 @property(readonly, nonatomic) _Bool canBeExtended;
 - (id)copyWithEdition:(id)arg1 isFirst:(_Bool)arg2;
 - (id)copyWithMergeID:(unsigned long long)arg1;
+- (id)copyWithOptions:(unsigned long long)arg1;
 - (id)copyWithElements:(id)arg1;
-- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 magazineGroup:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 L2FeedDescriptor:(id)arg4 bridgedGroup:(id)arg5;
 - (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 L2FeedDescriptor:(id)arg4 issueIDs:(id)arg5;
-- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 elements:(id)arg3 options:(unsigned long long)arg4;
-- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 eyebrowText:(id)arg5 ctaText:(id)arg6 titleColor:(id)arg7 darkStyleTitleColor:(id)arg8 sauceGradient:(id)arg9 darkStyleSauceGradient:(id)arg10 backgroundGradient:(id)arg11 darkStyleBackgroundGradient:(id)arg12 cardBackgroundColor:(id)arg13 darkStyleCardBackgroundColor:(id)arg14 elements:(id)arg15 options:(unsigned long long)arg16;
-- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleColor:(id)arg5 darkStyleTitleColor:(id)arg6 backgroundGradient:(id)arg7 darkStyleBackgroundGradient:(id)arg8 discoverMoreVideosInfo:(id)arg9 videoPlaylistHeadlines:(id)arg10 L2FeedDescriptor:(id)arg11 elements:(id)arg12 options:(unsigned long long)arg13;
-- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleColor:(id)arg6 darkStyleTitleColor:(id)arg7 backgroundGradient:(id)arg8 darkStyleBackgroundGradient:(id)arg9 discoverMoreVideosInfo:(id)arg10 videoPlaylistHeadlines:(id)arg11 L2FeedDescriptor:(id)arg12 elements:(id)arg13 options:(unsigned long long)arg14;
-- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 creationDate:(id)arg4 title:(id)arg5 subtitle:(id)arg6 eyebrowText:(id)arg7 ctaText:(id)arg8 titleColor:(id)arg9 darkStyleTitleColor:(id)arg10 cardBackgroundColor:(id)arg11 darkStyleCardBackgroundColor:(id)arg12 sauceGradient:(id)arg13 darkStyleSauceGradient:(id)arg14 backgroundGradient:(id)arg15 darkStyleBackgroundGradient:(id)arg16 discoverMoreVideosInfo:(id)arg17 videoPlaylistHeadlines:(id)arg18 L2FeedDescriptor:(id)arg19 edition:(id)arg20 isFirstFromEdition:(_Bool)arg21 elements:(id)arg22 issueIDs:(id)arg23 magazineGroup:(id)arg24 options:(unsigned long long)arg25 mergeID:(unsigned long long)arg26;
+- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 elements:(id)arg3 debugHeadlines:(id)arg4 options:(unsigned long long)arg5;
+- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 eyebrowText:(id)arg5 ctaText:(id)arg6 cardStyle:(id)arg7 darkCardStyle:(id)arg8 elements:(id)arg9 debugHeadlines:(id)arg10 options:(unsigned long long)arg11;
+- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleColor:(id)arg5 darkStyleTitleColor:(id)arg6 L2FeedDescriptor:(id)arg7 elements:(id)arg8 debugHeadlines:(id)arg9 clusteringRules:(id)arg10 options:(unsigned long long)arg11;
+- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleColor:(id)arg6 darkStyleTitleColor:(id)arg7 L2FeedDescriptor:(id)arg8 elements:(id)arg9 debugHeadlines:(id)arg10 clusteringRules:(id)arg11 options:(unsigned long long)arg12;
+- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 creationDate:(id)arg4 title:(id)arg5 subtitle:(id)arg6 eyebrowText:(id)arg7 ctaText:(id)arg8 titleColor:(id)arg9 darkStyleTitleColor:(id)arg10 cardStyle:(id)arg11 darkCardStyle:(id)arg12 L2FeedDescriptor:(id)arg13 backingTagID:(id)arg14 edition:(id)arg15 isFirstFromEdition:(_Bool)arg16 elements:(id)arg17 debugHeadlines:(id)arg18 clusteringRules:(id)arg19 issueIDs:(id)arg20 bridgedGroup:(id)arg21 options:(unsigned long long)arg22 mergeID:(unsigned long long)arg23;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

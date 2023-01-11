@@ -27,13 +27,14 @@
     long long _pendingEvent;
 }
 
+- (void).cxx_destruct;
 @property long long pendingEvent; // @synthesize pendingEvent=_pendingEvent;
 @property(copy) CDUnknownBlockType transitionalEventFilter; // @synthesize transitionalEventFilter=_transitionalEventFilter;
 @property(copy) CDUnknownBlockType diagnosticHandler; // @synthesize diagnosticHandler=_diagnosticHandler;
 @property(copy) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (void)addChildStates:(id)arg1 toState:(id)arg2 withEntryState:(id)arg3;
+- (void)export;
 - (id)graphDescription;
 - (id)description;
 - (void)addStates:(id)arg1;

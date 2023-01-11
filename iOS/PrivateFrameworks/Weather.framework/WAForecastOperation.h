@@ -6,12 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
-@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAirQualityConditions, WFAirQualityRequest, WFDailyForecastRequest, WFForecastRequest, WFHourlyForecastRequest, WFLocation, WFServiceConnection, WFWeatherConditions;
+@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAggregateCommonRequest, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFServiceConnection, WFWeatherConditions;
 
 @interface WAForecastOperation : NSOperation
 {
     _Bool _isDay;
     _Bool _shouldAttachRawAPIData;
+    int _units;
     City *_city;
     WFLocation *_location;
     WACurrentForecast *_currentConditions;
@@ -25,10 +26,10 @@
     WFWeatherConditions *_currentWeatherConditions;
     NSArray *_dailyForecastConditions;
     NSArray *_hourlyForecastConditions;
-    WFDailyForecastRequest *_dailyForecastRequest;
-    WFHourlyForecastRequest *_hourlyForecastRequest;
-    WFForecastRequest *_todayForecastRequest;
-    WFAirQualityRequest *_airQualityRequest;
+    NSArray *_severeWeatherEvents;
+    NSArray *_changeForecasts;
+    WFNextHourPrecipitation *_nextHourPrecipitation;
+    WFAggregateCommonRequest *_aggregateRequest;
     NSCalendar *_calendar;
     NSLocale *_locale;
     NSString *_trackingParameter;
@@ -36,17 +37,19 @@
     WFServiceConnection *_connection;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) WFServiceConnection *connection; // @synthesize connection=_connection;
+@property(nonatomic) int units; // @synthesize units=_units;
 @property(retain, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
 @property(nonatomic) _Bool shouldAttachRawAPIData; // @synthesize shouldAttachRawAPIData=_shouldAttachRawAPIData;
 @property(retain) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 @property(retain) NSLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(nonatomic) _Bool isDay; // @synthesize isDay=_isDay;
-@property(retain, nonatomic) WFAirQualityRequest *airQualityRequest; // @synthesize airQualityRequest=_airQualityRequest;
-@property(retain, nonatomic) WFForecastRequest *todayForecastRequest; // @synthesize todayForecastRequest=_todayForecastRequest;
-@property(retain, nonatomic) WFHourlyForecastRequest *hourlyForecastRequest; // @synthesize hourlyForecastRequest=_hourlyForecastRequest;
-@property(retain, nonatomic) WFDailyForecastRequest *dailyForecastRequest; // @synthesize dailyForecastRequest=_dailyForecastRequest;
+@property(retain, nonatomic) WFAggregateCommonRequest *aggregateRequest; // @synthesize aggregateRequest=_aggregateRequest;
+@property(retain, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
+@property(retain, nonatomic) NSArray *changeForecasts; // @synthesize changeForecasts=_changeForecasts;
+@property(retain, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
 @property(retain, nonatomic) NSArray *hourlyForecastConditions; // @synthesize hourlyForecastConditions=_hourlyForecastConditions;
 @property(retain, nonatomic) NSArray *dailyForecastConditions; // @synthesize dailyForecastConditions=_dailyForecastConditions;
 @property(retain, nonatomic) WFWeatherConditions *currentWeatherConditions; // @synthesize currentWeatherConditions=_currentWeatherConditions;
@@ -60,7 +63,6 @@
 @property(retain, nonatomic) WACurrentForecast *currentConditions; // @synthesize currentConditions=_currentConditions;
 @property(retain, nonatomic) WFLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) City *city; // @synthesize city=_city;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) WAForecastModel *forecastModel;
 - (void)_mapReferralLinks;
 - (void)_determineSunriseAndSunset;
@@ -69,6 +71,7 @@
 - (void)main;
 - (_Bool)_needsGeolocation;
 - (id)initWithLocation:(id)arg1 onConnection:(id)arg2;
+- (id)initWithCity:(id)arg1 withUnits:(int)arg2 onConnection:(id)arg3;
 - (id)initWithCity:(id)arg1 onConnection:(id)arg2;
 
 @end

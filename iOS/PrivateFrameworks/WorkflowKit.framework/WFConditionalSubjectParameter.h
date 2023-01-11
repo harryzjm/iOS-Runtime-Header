@@ -9,7 +9,7 @@
 }
 
 - (id)defaultSupportedVariableTypes;
-- (_Bool)supportsImportQuestions;
+- (id)importQuestionBehavior;
 - (_Bool)allowsMultipleValues;
 - (Class)stateClass;
 

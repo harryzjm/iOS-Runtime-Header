@@ -8,6 +8,7 @@
 
 @interface FCCKContentQueryOperation
 {
+    int _networkEventType;
     FCCKContentDatabase *_database;
     CKQuery *_query;
     CKQueryCursor *_cursor;
@@ -16,18 +17,20 @@
     CDUnknownBlockType _recordFetchedBlock;
     CDUnknownBlockType _queryCompletionBlock;
     NSArray *_requestUUIDs;
-    long long _networkEventType;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCEdgeCacheHint *_edgeCacheHint;
+    unsigned long long _queryPriority;
     NSArray *_networkEvents;
     CKQueryCursor *_resultCursor;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKQueryCursor *resultCursor; // @synthesize resultCursor=_resultCursor;
 @property(copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
+@property(nonatomic) unsigned long long queryPriority; // @synthesize queryPriority=_queryPriority;
 @property(copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
 @property(copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
-@property(nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
+@property(nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
 @property(copy, nonatomic) NSArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property(copy, nonatomic) CDUnknownBlockType queryCompletionBlock; // @synthesize queryCompletionBlock=_queryCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
@@ -36,7 +39,6 @@
 @property(retain, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property(retain, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
 - (id)_ckCursorFromQueryResponse:(id)arg1;
 - (id)_ckRecordsFromQueryResponse:(id)arg1;
 - (id)_requestOperations;

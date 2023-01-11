@@ -21,6 +21,7 @@
 - (id)pkDeconstructContactUsingKey:(id)arg1 substring:(id)arg2;
 - (id)pkDeconstructContactUsingKey:(id)arg1;
 - (id)localizedDisplayNameWithLabel:(id)arg1;
+- (id)pkContactWithCleanedUpCountryCode;
 - (id)contactWithCleanedUpDistrict;
 - (id)sanitizedContact;
 - (id)nameComponents;
@@ -30,6 +31,7 @@
 - (id)pkPhoneticName;
 - (id)pkFullName;
 - (id)pkFullyQualifiedName;
+@property(nonatomic) _Bool recentFromContactInformation;
 - (_Bool)isSubsetOfMeCard;
 @property(nonatomic) unsigned long long contactSource;
 @property(retain, nonatomic) CRRecentContact *recentContact;

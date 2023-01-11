@@ -14,14 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOCluster : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _indexs;
     GEOPlaceResult *_container;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_indexs:1;
         unsigned int read_container:1;
-        unsigned int wrote_indexs:1;
-        unsigned int wrote_container:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -36,20 +37,22 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setIndexs:(int *)arg1 count:(unsigned long long)arg2;
 - (int)indexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsIndex:(int)arg1;
 - (void)addIndex:(int)arg1;
 - (void)clearIndexs;
 @property(readonly, nonatomic) int *indexs;
 @property(readonly, nonatomic) unsigned long long indexsCount;
-- (void)_readIndexs;
 @property(retain, nonatomic) GEOPlaceResult *container;
 @property(readonly, nonatomic) _Bool hasContainer;
-- (void)_readContainer;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

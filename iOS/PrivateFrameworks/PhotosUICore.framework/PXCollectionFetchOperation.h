@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class PHCollection, PHFetchOptions, PHFetchResult;
+@class NSPredicate, PHCollection, PHFetchOptions, PHFetchResult;
 @protocol PXCollectionFetchOperationDelegate;
 
 @interface PXCollectionFetchOperation : NSOperation
@@ -15,19 +15,21 @@
     PHFetchOptions *_fetchOptions;
     PHCollection *_collection;
     PHFetchResult *_outputFetchResult;
+    NSPredicate *_assetsFilterPredicate;
 }
 
 + (id)fetchOperationWithCollection:(id)arg1 delegate:(id)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property(retain, nonatomic) PHFetchResult *outputFetchResult; // @synthesize outputFetchResult=_outputFetchResult;
 @property(readonly, nonatomic) PHCollection *collection; // @synthesize collection=_collection;
 @property(retain, nonatomic) PHFetchOptions *fetchOptions; // @synthesize fetchOptions=_fetchOptions;
 @property(nonatomic) __weak id <PXCollectionFetchOperationDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)handleFinish;
 - (void)handleBegin;
 - (void)main;
 - (id)init;
-- (id)initWithCollection:(id)arg1;
+- (id)initWithCollection:(id)arg1 assetsFilterPredicate:(id)arg2;
 
 @end
 

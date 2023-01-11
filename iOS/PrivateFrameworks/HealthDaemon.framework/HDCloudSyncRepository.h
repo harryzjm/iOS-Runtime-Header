@@ -6,65 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, HDProfile, NSArray, NSDictionary, NSMutableArray, NSSet;
+@class CKContainer, HDProfile, NSArray, NSMutableArray, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDCloudSyncRepository : NSObject
 {
+    struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_queue;
     long long _pullOperationFailureCount;
     NSMutableArray *_ownerIdentifierFetchCompletionBlocks;
-    NSMutableArray *_blocksPendingDeviceToDeviceEncryptionAvailability;
-    _Bool _deviceToDeviceEncryptionCheckInProgress;
-    _Bool _deviceToDeviceEncryptionRecheckRequired;
+    _Bool _shouldPushToUnifiedZone;
     HDProfile *_profile;
     CKContainer *_primaryCKContainer;
     NSArray *_secondaryCKContainers;
     NSSet *_allCKContainers;
     unsigned long long _repositorySettings;
-    NSDictionary *_ownerIdentifiersByContainerIdentifier;
+    NSString *_syncCircleIdentifier;
 }
 
-@property(readonly, copy, nonatomic) NSDictionary *ownerIdentifiersByContainerIdentifier; // @synthesize ownerIdentifiersByContainerIdentifier=_ownerIdentifiersByContainerIdentifier;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldPushToUnifiedZone; // @synthesize shouldPushToUnifiedZone=_shouldPushToUnifiedZone;
+@property(readonly, copy, nonatomic) NSString *syncCircleIdentifier; // @synthesize syncCircleIdentifier=_syncCircleIdentifier;
 @property(nonatomic) unsigned long long repositorySettings; // @synthesize repositorySettings=_repositorySettings;
 @property(readonly, nonatomic) NSSet *allCKContainers; // @synthesize allCKContainers=_allCKContainers;
 @property(readonly, nonatomic) NSArray *secondaryCKContainers; // @synthesize secondaryCKContainers=_secondaryCKContainers;
 @property(readonly, nonatomic) CKContainer *primaryCKContainer; // @synthesize primaryCKContainer=_primaryCKContainer;
-@property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
-- (void)cloudKitIdentityUpdated:(id)arg1;
+@property(readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 - (void)_queue_generateRestoreEventSyncCompleteWithPullCompleteDate:(id)arg1;
-- (void)_queue_performWhenDeviceToDeviceEncryptionIsAvailable:(CDUnknownBlockType)arg1;
-- (void)_queue_checkForDeviceToDeviceEncryptionAvailability;
-- (void)_queue_flushPendingDeviceToDeviceEncryptionAvailabilityBlocks;
-- (long long)_pendingProgressCountForPullOperationsGivenOptions:(unsigned long long)arg1;
-- (long long)_pendingProgressCountForPushOperationGivenOptions:(unsigned long long)arg1 maxPullOperationCount:(long long)arg2;
-- (id)_lastSuccessfulPullKey;
 - (id)description;
-- (id)_operationGroupForReason:(long long)arg1 options:(unsigned long long)arg2;
 - (void)_disableCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
-- (id)disableAndDeleteAllSyncDataWithTaskTree:(id)arg1 identifier:(id)arg2;
-- (void)disableSyncLocallyWithTaskTree:(id)arg1;
-- (void)fetchSyncStatusWithTaskTree:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
-- (id)_cloudSyncContainerDescriptionFromFetchOperationResult:(id)arg1 configuration:(id)arg2;
-- (id)_fetchDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 taskTree:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
-- (id)fetchDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 taskTree:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
-- (id)resetWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 taskTree:(id)arg4;
-- (void)resetContainer:(id)arg1 withOptions:(unsigned long long)arg2 reason:(long long)arg3 progress:(id)arg4 syncIdentifier:(id)arg5 taskTree:(id)arg6;
-- (void)_updateProgress:(id)arg1 isPrimaryContainer:(_Bool)arg2 forOperationComponent:(unsigned long long)arg3;
-- (id)_startPullOperationForPullZone:(id)arg1 configuration:(id)arg2 fetchOperationResult:(id)arg3 taskTree:(id)arg4;
-- (void)_queue_recordSuccessfulPull;
-- (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 accessibilityAssertion:(id)arg4 taskTree:(id)arg5;
-- (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 taskTree:(id)arg4;
-- (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_queue_fetchOwnerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_fetchOwnerIdentifierForContainer:(id)arg1 results:(id)arg2 taskTree:(id)arg3;
-@property(readonly, copy, nonatomic) NSSet *allOwnerIdentifiers;
-- (void)fetchOwnerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
+- (id)ownerIdentifierForContainer:(id)arg1 error:(id *)arg2;
 - (id)containerForContainerIdentifier:(id)arg1;
-@property(readonly, nonatomic) long long deviceMode;
+- (void)unitTest_setShouldPushToUnifiedZone:(_Bool)arg1;
+@property(readonly, nonatomic) int deviceMode;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1 primaryCKContainer:(id)arg2 secondaryCKContainers:(id)arg3;
+- (id)initWithProfile:(id)arg1 syncCircleIdentifier:(id)arg2 primaryCKContainer:(id)arg3 secondaryCKContainers:(id)arg4;
+- (id)init;
 
 @end
 

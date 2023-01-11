@@ -13,6 +13,7 @@
 
 @interface ACXDeviceConnection : NSObject <ACXDeviceConnectionDelegateProtocol>
 {
+    _Bool _monitoringForDeviceChanges;
     id <ACXDeviceConnectionDelegate> _delegate;
     NSXPCConnection *_xpcConnection;
     NSHashTable *_observers;
@@ -24,13 +25,15 @@
 + (void)_removeFilesAtURL:(id)arg1;
 + (void)performUninstallationCleanup;
 + (id)sharedDeviceConnection;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool monitoringForDeviceChanges; // @synthesize monitoringForDeviceChanges=_monitoringForDeviceChanges;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *observerReEstablishTimer; // @synthesize observerReEstablishTimer=_observerReEstablishTimer;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(nonatomic) __weak id <ACXDeviceConnectionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)killDaemonForTestingWithError:(id *)arg1;
 - (_Bool)acknowledgeTestFlightInstallBegunForApp:(id)arg1 onDeviceWithPairingID:(id)arg2 error:(id *)arg3;
 - (_Bool)installRequestFailedForApp:(id)arg1 onDeviceWithPairingID:(id)arg2 failureReason:(id)arg3 wasUserInitiated:(_Bool)arg4 error:(id *)arg5;
 - (void)systemAppIsInstallableOnDeviceWithPairingID:(id)arg1 withBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -113,7 +116,11 @@
 - (void)_invalidateXPCConnection;
 - (void)_onQueue_reEstablishObserverConnectionIfNeeded;
 - (id)init;
-- (_Bool)_onQueue_createXPCConnectionIfNecessary;
+- (_Bool)_onQueue_createXPCConnectionIfNecessary:(id *)arg1;
+- (void)_deviceDidPairNotification:(id)arg1;
+- (void)_deviceDidBecomeActiveNotification:(id)arg1;
+- (void)_onQueue_endMonitoringNanoRegistryDeviceState;
+- (void)_onQueue_beginMonitoringNanoRegistryDeviceState;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

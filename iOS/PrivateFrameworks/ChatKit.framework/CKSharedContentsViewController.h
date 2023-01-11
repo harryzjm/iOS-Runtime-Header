@@ -10,6 +10,7 @@
 #import <ChatKit/CKSharedAssetsControllerProtocol-Protocol.h>
 #import <ChatKit/CKSharedContentsCollectionViewCellDelegate-Protocol.h>
 #import <ChatKit/CNAvatarViewDelegate-Protocol.h>
+#import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 #import <ChatKit/UICollectionViewDataSource-Protocol.h>
 #import <ChatKit/UICollectionViewDelegate-Protocol.h>
 #import <ChatKit/UICollectionViewDragSource-Protocol.h>
@@ -19,7 +20,7 @@
 @class CKQLDetailsPreviewController, NSArray, NSString, UIBarButtonItem, UICollectionView, UICollectionViewFlowLayout, UIView;
 @protocol CKSharedAssetsControllerDelegate;
 
-@interface CKSharedContentsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CNAvatarViewDelegate, UICollectionViewDragSource, UIViewControllerPreviewingDelegate, CKQLPreviewControllerDelegate, UIGestureRecognizerDelegate, CKSharedContentsCollectionViewCellDelegate, CKSharedAssetsControllerProtocol>
+@interface CKSharedContentsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CNAvatarViewDelegate, UICollectionViewDragSource, UIViewControllerPreviewingDelegate, CKQLPreviewControllerDelegate, UIGestureRecognizerDelegate, CKSharedContentsCollectionViewCellDelegate, CKSharedAssetsControllerProtocol, QLPreviewControllerDelegate>
 {
     _Bool _selectingAttachments;
     UICollectionView *_collectionView;
@@ -33,6 +34,7 @@
     NSArray *_parentRightBarButtonItemsToRestore;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *parentRightBarButtonItemsToRestore; // @synthesize parentRightBarButtonItemsToRestore=_parentRightBarButtonItemsToRestore;
 @property(retain, nonatomic) UIBarButtonItem *deleteButton; // @synthesize deleteButton=_deleteButton;
 @property(retain, nonatomic) UIBarButtonItem *saveButton; // @synthesize saveButton=_saveButton;
@@ -43,7 +45,6 @@
 @property(retain, nonatomic) UICollectionViewFlowLayout *collectionviewLayout; // @synthesize collectionviewLayout=_collectionviewLayout;
 @property(nonatomic) __weak id <CKSharedAssetsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

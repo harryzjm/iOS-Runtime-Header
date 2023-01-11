@@ -60,6 +60,7 @@
     NSDate *_responseReceived;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *responseReceived; // @synthesize responseReceived=_responseReceived;
 @property(retain, nonatomic) NSDate *requestEnd; // @synthesize requestEnd=_requestEnd;
 @property(retain, nonatomic) NSDate *requestStart; // @synthesize requestStart=_requestStart;
@@ -103,7 +104,6 @@
 @property unsigned long long uniqueID; // @synthesize uniqueID=_uniqueID;
 @property(retain, setter=_setCachedBody:) NSDictionary *_cachedBody; // @synthesize _cachedBody;
 @property(setter=_setUsingOutgoingPush:) _Bool _usingOutgoingPush; // @synthesize _usingOutgoingPush;
-- (void).cxx_destruct;
 - (void)logFailureInfo;
 - (void)handleResponseDictionary:(id)arg1;
 - (void)handleResponseStatus:(unsigned long long)arg1;
@@ -124,6 +124,11 @@
 @property(readonly) _Bool requiresPushTokenKeys;
 @property(readonly) NSArray *requiredKeys;
 - (_Bool)hasRequiredKeys:(id *)arg1;
+- (_Bool)wantsUDID;
+- (_Bool)wantsClientInfo;
+- (_Bool)wantsGZip;
+- (id)parsedIDSMessageResult;
+- (id)overrideContentType;
 @property(copy, nonatomic) NSNumber *serverTimestampReceivedDate;
 @property(copy, nonatomic) NSNumber *serverTimestamp;
 @property(readonly, copy, nonatomic) NSData *IDCertificate;

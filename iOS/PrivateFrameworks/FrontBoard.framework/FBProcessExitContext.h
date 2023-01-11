@@ -8,12 +8,13 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class FBProcessState, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, NSString, RBSProcessExitContext;
+@class FBProcessState, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, NSError, NSString, RBSProcessExitContext;
 
 @interface FBProcessExitContext : NSObject <BSDescriptionProviding>
 {
     unsigned long long _exitReason;
     RBSProcessExitContext *_underlyingContext;
+    NSError *_launchError;
     FBSProcessTerminationRequest *_terminationRequest;
     FBProcessWatchdogEventContext *_watchdogContext;
     FBProcessState *_stateBeforeExiting;
@@ -21,19 +22,22 @@
 }
 
 + (id)descriptionForExitReason:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long terminationReason; // @synthesize terminationReason=_terminationReason;
 @property(copy, nonatomic) FBProcessState *stateBeforeExiting; // @synthesize stateBeforeExiting=_stateBeforeExiting;
 @property(retain, nonatomic) FBProcessWatchdogEventContext *watchdogContext; // @synthesize watchdogContext=_watchdogContext;
 @property(retain, nonatomic) FBSProcessTerminationRequest *terminationRequest; // @synthesize terminationRequest=_terminationRequest;
+@property(readonly, nonatomic) NSError *launchError; // @synthesize launchError=_launchError;
 @property(readonly, nonatomic) RBSProcessExitContext *underlyingContext; // @synthesize underlyingContext=_underlyingContext;
 @property(readonly, nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+- (id)createError;
+- (id)initWithLaunchError:(id)arg1 underlyingContext:(id)arg2;
 - (id)initWithUnderlyingContext:(id)arg1;
 - (_Bool)fairPlayFailure;
 - (_Bool)consideredJetsam;

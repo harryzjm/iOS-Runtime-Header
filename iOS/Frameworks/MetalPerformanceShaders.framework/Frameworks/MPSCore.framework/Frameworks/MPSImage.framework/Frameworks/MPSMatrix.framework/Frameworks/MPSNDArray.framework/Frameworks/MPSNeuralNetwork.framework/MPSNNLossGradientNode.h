@@ -19,12 +19,14 @@
     MPSCNNLossDescriptor *_descriptor;
     _Bool _isLabelsGradientFilter;
     id <MPSNNLossCallback> _propertyCallBack;
+    _Bool _reduceAcrossBatch;
 }
 
 + (id)nodeWithSources:(id)arg1 gradientState:(id)arg2 lossDescriptor:(id)arg3 isLabelsGradientFilter:(_Bool)arg4;
 + (id)nodeWithSourceGradient:(id)arg1 sourceImage:(id)arg2 labels:(id)arg3 gradientState:(id)arg4 lossDescriptor:(id)arg5 isLabelsGradientFilter:(_Bool)arg6;
 + (id)nodeWithSourceGradient:(id)arg1 sourceImage:(id)arg2 labels:(id)arg3 weights:(id)arg4 gradientState:(id)arg5 lossDescriptor:(id)arg6 isLabelsGradientFilter:(_Bool)arg7;
 @property(retain, nonatomic) id <MPSNNLossCallback> propertyCallBack; // @synthesize propertyCallBack=_propertyCallBack;
+@property(readonly, nonatomic) _Bool reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property(readonly, nonatomic) _Bool isLabelsGradientFilter; // @synthesize isLabelsGradientFilter=_isLabelsGradientFilter;
 @property(readonly, nonatomic) float delta; // @synthesize delta=_delta;
 @property(readonly, nonatomic) float epsilon; // @synthesize epsilon=_epsilon;

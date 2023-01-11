@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficRerouteFeedbackCollection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSData *_directionResponseID;
     NSData *_oldRouteID;
     NSMutableArray *_oldRouteIncidents;
     NSData *_reroutedRouteID;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _oldRouteHistoricTravelTime;
     unsigned int _oldRouteTravelTime;
     unsigned int _reroutedRouteHistoricTravelTime;
@@ -34,15 +36,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_oldRouteID:1;
         unsigned int read_oldRouteIncidents:1;
         unsigned int read_reroutedRouteID:1;
-        unsigned int wrote_directionResponseID:1;
-        unsigned int wrote_oldRouteID:1;
-        unsigned int wrote_oldRouteIncidents:1;
-        unsigned int wrote_reroutedRouteID:1;
-        unsigned int wrote_oldRouteHistoricTravelTime:1;
-        unsigned int wrote_oldRouteTravelTime:1;
-        unsigned int wrote_reroutedRouteHistoricTravelTime:1;
-        unsigned int wrote_reroutedRouteTravelTime:1;
-        unsigned int wrote_oldRouteBlocked:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -57,24 +51,22 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *reroutedRouteID;
 @property(readonly, nonatomic) _Bool hasReroutedRouteID;
-- (void)_readReroutedRouteID;
 @property(retain, nonatomic) NSData *oldRouteID;
 @property(readonly, nonatomic) _Bool hasOldRouteID;
-- (void)_readOldRouteID;
 @property(retain, nonatomic) NSData *directionResponseID;
 @property(readonly, nonatomic) _Bool hasDirectionResponseID;
-- (void)_readDirectionResponseID;
 - (id)oldRouteIncidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)oldRouteIncidentsCount;
-- (void)_addNoFlagsOldRouteIncidents:(id)arg1;
 - (void)addOldRouteIncidents:(id)arg1;
 - (void)clearOldRouteIncidents;
 @property(retain, nonatomic) NSMutableArray *oldRouteIncidents;
-- (void)_readOldRouteIncidents;
 @property(nonatomic) _Bool hasOldRouteBlocked;
 @property(nonatomic) _Bool oldRouteBlocked;
 @property(nonatomic) _Bool hasReroutedRouteHistoricTravelTime;
@@ -85,6 +77,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int reroutedRouteTravelTime;
 @property(nonatomic) _Bool hasOldRouteTravelTime;
 @property(nonatomic) unsigned int oldRouteTravelTime;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

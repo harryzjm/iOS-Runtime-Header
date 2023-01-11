@@ -8,7 +8,6 @@
 {
 }
 
-- (void).cxx_destruct;
 - (id)initWithHealthRecordsStore:(id)arg1;
 
 @end

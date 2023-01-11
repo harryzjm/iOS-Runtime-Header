@@ -9,27 +9,24 @@
 #import <SpringBoard/NCAlertingController-Protocol.h>
 
 @class NCNotificationRequest, NSMutableSet, NSString, SBCommunicationPolicyManager, SBLockScreenManager, SBNCScreenController, SBNCSoundController;
-@protocol SBStarkNotificationsAgent;
 
 @interface SBNCAlertingController : NSObject <NCAlertingController>
 {
     SBNCSoundController *_soundController;
     SBNCScreenController *_screenController;
     SBLockScreenManager *_lockScreenManager;
-    id <SBStarkNotificationsAgent> _carNotificationsAgent;
     SBCommunicationPolicyManager *_communicationPolicyManager;
     NCNotificationRequest *_activeRequestWithRealerts;
     NSMutableSet *_realertTimers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *realertTimers; // @synthesize realertTimers=_realertTimers;
 @property(retain, nonatomic) NCNotificationRequest *activeRequestWithRealerts; // @synthesize activeRequestWithRealerts=_activeRequestWithRealerts;
 @property(retain, nonatomic) SBCommunicationPolicyManager *communicationPolicyManager; // @synthesize communicationPolicyManager=_communicationPolicyManager;
-@property(nonatomic) __weak id <SBStarkNotificationsAgent> carNotificationsAgent; // @synthesize carNotificationsAgent=_carNotificationsAgent;
 @property(retain, nonatomic) SBLockScreenManager *lockScreenManager; // @synthesize lockScreenManager=_lockScreenManager;
 @property(retain, nonatomic) SBNCScreenController *screenController; // @synthesize screenController=_screenController;
 @property(retain, nonatomic) SBNCSoundController *soundController; // @synthesize soundController=_soundController;
-- (void).cxx_destruct;
 - (void)_scheduleRealertsForNotificationRequest:(id)arg1;
 - (void)_realertTimerFired:(id)arg1;
 - (void)_killRealertsForNotificationRequest:(id)arg1;
@@ -49,7 +46,7 @@
 - (void)killAlertsForNotificationRequest:(id)arg1;
 - (void)alertOnPresentationForNotificationRequest:(id)arg1 presentingDestination:(id)arg2;
 - (void)alertOnPostForNotificationRequest:(id)arg1 forRequestDestinations:(id)arg2;
-- (id)initWithSoundController:(id)arg1 screenController:(id)arg2 lockScreenManager:(id)arg3 carNotificationsAgent:(id)arg4 communicationPolicyManager:(id)arg5;
+- (id)initWithSoundController:(id)arg1 screenController:(id)arg2 lockScreenManager:(id)arg3 communicationPolicyManager:(id)arg4;
 - (id)init;
 
 // Remaining properties

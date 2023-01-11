@@ -9,13 +9,14 @@
 #import <NanoTimeKitCompanion/NTKOlympusContentViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKDevice, NSDate, NSString, NTKOlympusTimeContentView;
+@class CLKDevice, NSDate, NSString, NTKOlympusTimeContentView, UIImage;
 @protocol NTKOlympusViewDelegate;
 
 @interface NTKOlympusTimeView : UIView <NTKOlympusContentViewDelegate, NTKTimeView>
 {
     _Bool frozen;
     _Bool _maskingPathStartsFromHourHand;
+    _Bool _useSmallFont;
     id <NTKOlympusViewDelegate> _delegate;
     NSDate *_date;
     double _hourHandAngle;
@@ -26,10 +27,14 @@
     CLKDevice *_device;
     NTKOlympusTimeContentView *_contentView;
     NTKOlympusTimeContentView *_overlayContentView;
+    UIImage *_circularLogoImage;
     struct CGSize _maskingSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize maskingSize; // @synthesize maskingSize=_maskingSize;
+@property(retain, nonatomic) UIImage *circularLogoImage; // @synthesize circularLogoImage=_circularLogoImage;
+@property(nonatomic) _Bool useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 @property(nonatomic) _Bool maskingPathStartsFromHourHand; // @synthesize maskingPathStartsFromHourHand=_maskingPathStartsFromHourHand;
 @property(retain, nonatomic) NTKOlympusTimeContentView *overlayContentView; // @synthesize overlayContentView=_overlayContentView;
 @property(retain, nonatomic) NTKOlympusTimeContentView *contentView; // @synthesize contentView=_contentView;
@@ -42,7 +47,6 @@
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(nonatomic) __weak id <NTKOlympusViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isFrozen) _Bool frozen; // @synthesize frozen;
-- (void).cxx_destruct;
 - (_Bool)_maskingPathStartsFromHourHandForDate:(id)arg1;
 - (void)openVictoryAppFromRect:(struct CGRect)arg1;
 - (void)olympusContentView:(id)arg1 didHandleLogoTouchUpInsideFromRect:(struct CGRect)arg2;
@@ -71,6 +75,7 @@
 - (void)configureViewsForEditing;
 - (void)createAndRemoveViewsForCurrentStateIfNeeded;
 - (void)layoutSubviews;
+- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 date:(id)arg5 useSmallFont:(_Bool)arg6 circularLogoImage:(id)arg7;
 - (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 date:(id)arg5;
 
 // Remaining properties

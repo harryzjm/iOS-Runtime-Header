@@ -39,7 +39,7 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionViewDidBecomeInactive:(id)arg1;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;

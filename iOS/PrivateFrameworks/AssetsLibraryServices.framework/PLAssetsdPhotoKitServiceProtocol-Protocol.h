@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetsLibraryServices/NSObject-Protocol.h>
+#import <AssetsLibraryServices/PLAssetsdPhotoKitCommonServiceProtocol-Protocol.h>
 
-@class NSArray, NSString, PLXPCObject;
+@class NSSet;
 
-@protocol PLAssetsdPhotoKitServiceProtocol <NSObject>
-- (void)clearSaveTokens:(NSArray *)arg1;
-- (void)requestUUIDWithCustomUUID:(NSString *)arg1 reply:(void (^)(NSString *, NSString *, NSError *))arg2;
-- (void)applyChangesRequest:(PLXPCObject *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+@protocol PLAssetsdPhotoKitServiceProtocol <PLAssetsdPhotoKitCommonServiceProtocol>
+- (void)getUUIDsForCloudIdentifiers:(NSSet *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface WKFullScreenViewController : UIViewController <UIGestureRecognizerDelegate, UIToolbarDelegate>
 {
     struct RetainPtr<UILongPressGestureRecognizer> _touchGestureRecognizer;
-    struct RetainPtr<UIView> _animatingView;
+    RetainPtr_1ac284e4 _animatingView;
     struct RetainPtr<WKFullscreenStackView> _stackView;
     struct RetainPtr<_WKExtrinsicButton> _cancelButton;
     struct RetainPtr<_WKExtrinsicButton> _pipButton;
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSLayoutConstraint> _topConstraint;
     struct FullscreenTouchSecheuristic _secheuristic;
     struct WKFullScreenViewControllerPlaybackSessionModelClient _playbackClient;
-    struct WKFullScreenViewControllerVideoFullscreenModelClient _videoFullscreenClient;
     double _nonZeroStatusBarHeight;
     _Bool _prefersStatusBarHidden;
     _Bool _prefersHomeIndicatorAutoHidden;
@@ -32,21 +31,21 @@ __attribute__((visibility("hidden")))
     _Bool _pictureInPictureActive;
     _Bool _animating;
     id _target;
-    SEL _action;
+    SEL _exitFullScreenAction;
     NSString *_location;
     WKWebView *__webView;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) __weak WKWebView *_webView; // @synthesize _webView=__webView;
 @property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
 @property(nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
 @property(copy, nonatomic) NSString *location; // @synthesize location=_location;
-@property(nonatomic) SEL action; // @synthesize action=_action;
+@property(nonatomic) SEL exitFullScreenAction; // @synthesize exitFullScreenAction=_exitFullScreenAction;
 @property(retain, nonatomic) id target; // @synthesize target=_target;
 @property(nonatomic) _Bool prefersHomeIndicatorAutoHidden; // @synthesize prefersHomeIndicatorAutoHidden=_prefersHomeIndicatorAutoHidden;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)_showPhishingAlert;
 - (void)_updateWebViewFullscreenInsets;
 - (void)_statusBarFrameDidChange:(id)arg1;
@@ -63,9 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
-- (void)failedToEnterPictureInPicture;
-- (void)didEnterPictureInPicture;
-- (void)willEnterPictureInPicture;
+- (void)setAnimatingViewAlpha:(double)arg1;
 - (void)videoControlsManagerDidChange;
 - (void)hideUI;
 - (void)showUI;

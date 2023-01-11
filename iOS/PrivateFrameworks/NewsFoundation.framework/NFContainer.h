@@ -20,11 +20,11 @@
     NSMutableDictionary *_privateContainers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *privateContainers; // @synthesize privateContainers=_privateContainers;
 @property(retain, nonatomic) NFCallbackStore *callbackStore; // @synthesize callbackStore=_callbackStore;
 @property(retain, nonatomic) NFContainerPool *pool; // @synthesize pool=_pool;
 @property(retain, nonatomic) NSMutableDictionary *definitions; // @synthesize definitions=_definitions;
-- (void).cxx_destruct;
 - (void)validateDefinitionsWithProxyResolver:(id)arg1;
 - (id)register:(id)arg1 createDefinitionBlock:(CDUnknownBlockType)arg2;
 - (id)definitionForKey:(id)arg1;
@@ -38,11 +38,8 @@
 - (id)registerClass:(Class)arg1 factory:(CDUnknownBlockType)arg2;
 @property(readonly, copy) NSString *debugDescription;
 - (id)initAsPrivateContainer;
+- (id)initWithBundleAssemblies:(id)arg1 assemblies:(id)arg2 singletonPool:(id)arg3 bridgedContainer:(id)arg4;
 - (id)initWithBundleAssemblies:(id)arg1 assemblies:(id)arg2;
-- (id)initWithBundleAssemblies:(id)arg1;
-- (id)initWithFrameworkAssemblies:(id)arg1 assemblies:(id)arg2;
-- (id)initWithFrameworkAssemblies:(id)arg1;
-- (id)initWithAssemblies:(id)arg1;
 - (id)init;
 
 // Remaining properties

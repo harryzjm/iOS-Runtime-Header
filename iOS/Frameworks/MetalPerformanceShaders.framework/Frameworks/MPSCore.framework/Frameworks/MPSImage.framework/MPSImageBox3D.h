@@ -12,10 +12,11 @@
     unsigned long long _kernelHeight;
     unsigned long long _kernelDepth;
     MPSImageBox *_boxFilter;
+    _Bool _supportsReadWriteTextures;
 }
 
 + (id)supportedPixelFormats;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) unsigned long long kernelDepth; // @synthesize kernelDepth=_kernelDepth;
 @property(readonly, nonatomic) unsigned long long kernelWidth; // @synthesize kernelWidth=_kernelWidth;
 @property(readonly, nonatomic) unsigned long long kernelHeight; // @synthesize kernelHeight=_kernelHeight;

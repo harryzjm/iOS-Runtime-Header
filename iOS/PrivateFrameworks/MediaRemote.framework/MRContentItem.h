@@ -4,26 +4,55 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MRContentItemMetadata;
+#import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
-@interface MRContentItem
+#import <MediaRemote/NSCopying-Protocol.h>
+
+@class MRArtwork, MRContentItemMetadata, NSArray, NSData, NSDictionary, NSString, _MRContentItemProtobuf;
+
+@interface MRContentItem : NSObject <NSCopying>
 {
+    NSString *_identifier;
+    MRContentItemMetadata *_metadata;
+    NSString *_info;
+    NSArray *_availableLanguageOptions;
+    NSArray *_currentLanguageOptions;
+    NSArray *_sections;
+    NSString *_parentIdentifier;
+    NSString *_ancestorIdentifier;
+    NSString *_queueIdentifier;
+    NSString *_requestIdentifier;
+    MRArtwork *_artwork;
 }
 
-+ (void)initialize;
-- (id)customDictionaryRepresentation;
-@property(readonly, nonatomic) _Bool hasAvailableLanguageOptions;
-@property(readonly, nonatomic) _Bool hasCurrentLanguageOptions;
-- (void)setCurrentLanguageOptions:(id)arg1;
-- (void)setAvailableLanguageOptions:(id)arg1;
-- (void)setSections:(id)arg1;
-- (void)setArtworkData:(id)arg1;
-- (void)setInfo:(id)arg1;
-- (void)setLyrics:(id)arg1;
-@property(readonly, nonatomic) MRContentItemMetadata *itemMetadata;
++ (id)mergeContentItems:(id)arg1;
++ (id)extractedIdentifierFromNowPlayingInfo:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) MRArtwork *artwork; // @synthesize artwork=_artwork;
+@property(copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property(copy, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
+@property(copy, nonatomic) NSString *ancestorIdentifier; // @synthesize ancestorIdentifier=_ancestorIdentifier;
+@property(copy, nonatomic) NSString *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
+@property(copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property(copy, nonatomic) NSArray *currentLanguageOptions; // @synthesize currentLanguageOptions=_currentLanguageOptions;
+@property(copy, nonatomic) NSArray *availableLanguageOptions; // @synthesize availableLanguageOptions=_availableLanguageOptions;
+@property(copy, nonatomic) NSString *info; // @synthesize info=_info;
+@property(copy, nonatomic) MRContentItemMetadata *metadata; // @synthesize metadata=_metadata;
+@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) MRContentItem *skeleton;
+- (void)mergeFrom:(id)arg1;
+- (void)setNowPlayingInfo:(id)arg1 policy:(unsigned char)arg2 request:(id)arg3;
+@property(readonly, copy, nonatomic) NSDictionary *nowPlayingInfo;
+@property(readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(readonly, copy, nonatomic) NSData *data;
+@property(readonly, nonatomic) _MRContentItemProtobuf *protobuf;
 - (id)initWithData:(id)arg1;
-- (id)init;
+- (id)initWithProtobuf:(id)arg1;
+- (id)initWithNowPlayingInfo:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 
 @end
 

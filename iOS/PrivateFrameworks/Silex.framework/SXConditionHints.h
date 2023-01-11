@@ -13,47 +13,51 @@
 }
 
 + (id)jsonPropertyNameForObjCPropertyName:(id)arg1;
-- (_Bool)BOOLValueForJSONValue:(id)arg1 type:(int)arg2;
-- (_Bool)preferredColorSchemeWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)testingWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)subscriptionStatusWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)verticalSizeClassWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)horizontalSizeClassWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)maxSpecVersionWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)minSpecVersionWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)viewLocationWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)platformWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)maxColumnsWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)minColumnsWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)maxContentSizeCategoryWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)minContentSizeCategoryWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)maxViewportAspectRatioWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)minViewportAspectRatioWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)maxViewportWidthWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)minViewportWidthWithValue:(id)arg1 withType:(int)arg2;
+- (long long)ternaryValueForJSONValue:(id)arg1 type:(int)arg2;
+- (long long)configurationKeyWithValue:(id)arg1 withType:(int)arg2;
+- (long long)newsletterWithValue:(id)arg1 withType:(int)arg2;
+- (long long)preferredColorSchemeWithValue:(id)arg1 withType:(int)arg2;
+- (long long)testingWithValue:(id)arg1 withType:(int)arg2;
+- (long long)subscriptionStatusWithValue:(id)arg1 withType:(int)arg2;
+- (long long)verticalSizeClassWithValue:(id)arg1 withType:(int)arg2;
+- (long long)horizontalSizeClassWithValue:(id)arg1 withType:(int)arg2;
+- (long long)maxSpecVersionWithValue:(id)arg1 withType:(int)arg2;
+- (long long)minSpecVersionWithValue:(id)arg1 withType:(int)arg2;
+- (long long)viewLocationWithValue:(id)arg1 withType:(int)arg2;
+- (long long)platformWithValue:(id)arg1 withType:(int)arg2;
+- (long long)maxColumnsWithValue:(id)arg1 withType:(int)arg2;
+- (long long)minColumnsWithValue:(id)arg1 withType:(int)arg2;
+- (long long)maxContentSizeCategoryWithValue:(id)arg1 withType:(int)arg2;
+- (long long)minContentSizeCategoryWithValue:(id)arg1 withType:(int)arg2;
+- (long long)maxViewportAspectRatioWithValue:(id)arg1 withType:(int)arg2;
+- (long long)minViewportAspectRatioWithValue:(id)arg1 withType:(int)arg2;
+- (long long)maxViewportWidthWithValue:(id)arg1 withType:(int)arg2;
+- (long long)minViewportWidthWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) long long configurationKey; // @dynamic configurationKey;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) _Bool horizontalSizeClass; // @dynamic horizontalSizeClass;
-@property(readonly, nonatomic) _Bool maxColumns; // @dynamic maxColumns;
-@property(readonly, nonatomic) _Bool maxContentSizeCategory; // @dynamic maxContentSizeCategory;
-@property(readonly, nonatomic) _Bool maxSpecVersion; // @dynamic maxSpecVersion;
-@property(readonly, nonatomic) _Bool maxViewportAspectRatio; // @dynamic maxViewportAspectRatio;
-@property(readonly, nonatomic) _Bool maxViewportWidth; // @dynamic maxViewportWidth;
-@property(readonly, nonatomic) _Bool minColumns; // @dynamic minColumns;
-@property(readonly, nonatomic) _Bool minContentSizeCategory; // @dynamic minContentSizeCategory;
-@property(readonly, nonatomic) _Bool minSpecVersion; // @dynamic minSpecVersion;
-@property(readonly, nonatomic) _Bool minViewportAspectRatio; // @dynamic minViewportAspectRatio;
-@property(readonly, nonatomic) _Bool minViewportWidth; // @dynamic minViewportWidth;
-@property(readonly, nonatomic) _Bool platform; // @dynamic platform;
-@property(readonly, nonatomic) _Bool preferredColorScheme; // @dynamic preferredColorScheme;
-@property(readonly, nonatomic) _Bool subscriptionStatus; // @dynamic subscriptionStatus;
+@property(readonly, nonatomic) long long horizontalSizeClass; // @dynamic horizontalSizeClass;
+@property(readonly, nonatomic) long long maxColumns; // @dynamic maxColumns;
+@property(readonly, nonatomic) long long maxContentSizeCategory; // @dynamic maxContentSizeCategory;
+@property(readonly, nonatomic) long long maxSpecVersion; // @dynamic maxSpecVersion;
+@property(readonly, nonatomic) long long maxViewportAspectRatio; // @dynamic maxViewportAspectRatio;
+@property(readonly, nonatomic) long long maxViewportWidth; // @dynamic maxViewportWidth;
+@property(readonly, nonatomic) long long minColumns; // @dynamic minColumns;
+@property(readonly, nonatomic) long long minContentSizeCategory; // @dynamic minContentSizeCategory;
+@property(readonly, nonatomic) long long minSpecVersion; // @dynamic minSpecVersion;
+@property(readonly, nonatomic) long long minViewportAspectRatio; // @dynamic minViewportAspectRatio;
+@property(readonly, nonatomic) long long minViewportWidth; // @dynamic minViewportWidth;
+@property(readonly, nonatomic) long long newsletter; // @dynamic newsletter;
+@property(readonly, nonatomic) long long platform; // @dynamic platform;
+@property(readonly, nonatomic) long long preferredColorScheme; // @dynamic preferredColorScheme;
+@property(readonly, nonatomic) long long subscriptionStatus; // @dynamic subscriptionStatus;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool testing; // @dynamic testing;
-@property(readonly, nonatomic) _Bool verticalSizeClass; // @dynamic verticalSizeClass;
-@property(readonly, nonatomic) _Bool viewLocation; // @dynamic viewLocation;
+@property(readonly, nonatomic) long long testing; // @dynamic testing;
+@property(readonly, nonatomic) long long verticalSizeClass; // @dynamic verticalSizeClass;
+@property(readonly, nonatomic) long long viewLocation; // @dynamic viewLocation;
 
 @end
 

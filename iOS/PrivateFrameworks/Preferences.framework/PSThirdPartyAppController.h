@@ -4,25 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PSSystemPolicyForApp;
+#import <Preferences/PSSystemPolicyForAppDelegate-Protocol.h>
 
-@interface PSThirdPartyAppController
+@class NSString, PSSystemPolicyForApp;
+
+@interface PSThirdPartyAppController <PSSystemPolicyForAppDelegate>
 {
     PSSystemPolicyForApp *_systemPolicy;
+    PSSystemPolicyForApp *_appPolicy;
 }
 
-@property(retain, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PSSystemPolicyForApp *appPolicy; // @synthesize appPolicy=_appPolicy;
+@property(retain, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 - (id)bundle;
 - (id)loadSpecifiers;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)setPreferenceValue:(id)arg1 specifier:(id)arg2;
 - (void)postThirdPartySettingDidChangeNotificationForSpecifier:(id)arg1;
+- (void)showController:(id)arg1 animate:(_Bool)arg2;
 - (void)showPrivacyControllerForSpecifier:(id)arg1;
 - (void)_setToggleSwitchSpecifierValue:(id)arg1 specifier:(id)arg2;
 - (id)_readToggleSwitchSpecifierValue:(id)arg1;
 - (id)_valueFromUIValue:(id)arg1 specifier:(id)arg2;
 - (id)_uiValueFromValue:(id)arg1 specifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

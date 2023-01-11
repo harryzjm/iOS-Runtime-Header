@@ -28,6 +28,7 @@
     NSMutableArray *_balloonControllerPool;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *balloonControllerPool; // @synthesize balloonControllerPool=_balloonControllerPool;
 @property(retain, nonatomic) Class entryClass; // @synthesize entryClass=_entryClass;
 @property(retain, nonatomic) Class customTypingIndicatorLayerClass; // @synthesize customTypingIndicatorLayerClass=_customTypingIndicatorLayerClass;
@@ -43,7 +44,6 @@
 @property(nonatomic) long long browserGroup; // @synthesize browserGroup=_browserGroup;
 @property(retain, nonatomic) NSString *browserImagePath; // @synthesize browserImagePath=_browserImagePath;
 @property(retain, nonatomic) NSString *browserImageName; // @synthesize browserImageName=_browserImageName;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long presentationContexts;
 - (void)setIdentifier:(id)arg1;
 @property(readonly, retain, nonatomic) NSBundle *pluginBundle;
@@ -60,12 +60,14 @@
 - (id)dataSourceForPluginPayload:(id)arg1;
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
 - (id)existingDataSourceForMessageGUID:(id)arg1;
+- (_Bool)shouldShowForRecipients:(id)arg1;
 - (_Bool)supportsControllerReuse;
-- (void)removeController:(id)arg1 forChatItem:(id)arg2;
-- (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2;
-- (id)balloonControllerForChatItem:(id)arg1;
-- (id)existingBalloonControllerWithMessageGUID:(id)arg1;
-- (id)_getControllerFromReusePoolForChatItem:(id)arg1;
+- (void)removeController:(id)arg1 forChatItem:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
+- (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
+- (id)balloonControllerForChatItem:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
+- (id)existingBalloonControllerWithMessageGUID:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
+- (id)balloonControllerKeyForMessageGUID:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
+- (id)_getControllerFromReusePoolForChatItem:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
 - (void)unloadBundle;
 - (void)dealloc;
 - (id)initWithBundle:(id)arg1 app:(id)arg2;

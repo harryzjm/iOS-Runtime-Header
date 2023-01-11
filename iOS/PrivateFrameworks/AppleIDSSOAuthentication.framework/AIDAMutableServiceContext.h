@@ -5,7 +5,7 @@
 //
 
 @class NSDictionary, UIViewController;
-@protocol CDPStateUIProvider;
+@protocol AASignInFlowControllerDelegate, AASignOutFlowControllerDelegate, CDPStateUIProvider;
 
 @interface AIDAMutableServiceContext
 {
@@ -13,10 +13,15 @@
 
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(retain, nonatomic) UIViewController *viewController; // @dynamic viewController;
-@property(nonatomic) __weak id <CDPStateUIProvider> cdpUiProvider; // @dynamic cdpUiProvider;
-@property(nonatomic) _Bool shouldForceOperation; // @dynamic shouldForceOperation;
-@property(copy, nonatomic) NSDictionary *authenticationResults; // @dynamic authenticationResults;
+@property(retain, nonatomic) UIViewController *viewController;
+@property(nonatomic) __weak id <CDPStateUIProvider> cdpUiProvider;
+@property(retain, nonatomic) id <AASignOutFlowControllerDelegate> aaSignOutFlowControllerDelegate;
+@property(retain, nonatomic) id <AASignInFlowControllerDelegate> aaSignInFlowControllerDelegate;
+@property(retain, nonatomic) NSDictionary *signOutContexts;
+@property(retain, nonatomic) NSDictionary *signInContexts;
+@property(nonatomic) long long operationUIPermissions;
+@property(nonatomic) _Bool shouldForceOperation;
+@property(copy, nonatomic) NSDictionary *authenticationResults;
 
 @end
 

@@ -16,28 +16,23 @@
 @interface BSServiceConnection : NSObject <BSServiceConnectionContext, BSXPCServiceConnectionMessaging, BSInvalidatable>
 {
     BSXPCServiceConnection *_connection;
-    NSString *_service;
-    NSString *_instance;
     id <NSCopying> _userInfo;
     struct os_unfair_lock_s _lock;
     _BSServiceConnectionConfiguration *_lock_config;
     BSAtomicSignal *_lock_activatedSignal;
     _Bool _lock_invalidated;
     _Bool _lock_noAssertInvalidatedOnDealloc;
+    NSString *_service;
+    NSString *_instance;
 }
 
-+ (id)_connectionFromIncomingConnection:(id)arg1;
-+ (id)_connectionWithEndpoint:(id)arg1 clientContextBuilder:(CDUnknownBlockType)arg2;
 + (id)connectionWithEndpoint:(id)arg1 clientContextBuilder:(CDUnknownBlockType)arg2;
 + (id)connectionWithEndpoint:(id)arg1;
 + (id)currentContext;
-+ (id)_nameForService:(id)arg1 instance:(id)arg2 host:(_Bool)arg3;
-+ (id)_currentConnection;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *instance; // @synthesize instance=_instance;
 @property(readonly, copy, nonatomic) NSString *service; // @synthesize service=_service;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
-- (id)_clientContext;
 - (void)_configureConnection:(CDUnknownBlockType)arg1;
 - (id)createMessageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)createMessage;
@@ -48,7 +43,6 @@
 @property(readonly, nonatomic) id <NSCopying> userInfo;
 @property(readonly, nonatomic) BSProcessHandle *remoteProcess;
 - (void)dealloc;
-- (id)_initWithConnection:(id)arg1 service:(id)arg2 instance:(id)arg3 clientContext:(id)arg4;
 - (id)init;
 
 // Remaining properties

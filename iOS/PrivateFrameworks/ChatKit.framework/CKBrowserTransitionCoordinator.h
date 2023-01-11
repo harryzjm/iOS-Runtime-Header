@@ -32,6 +32,7 @@
     struct CGRect _cachedCompactFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *currentModalBrowser; // @synthesize currentModalBrowser=_currentModalBrowser;
 @property(retain, nonatomic) UINavigationController *presentedModalBrowserNavigationController; // @synthesize presentedModalBrowserNavigationController=_presentedModalBrowserNavigationController;
 @property(retain, nonatomic) UIWindow *modalAppWindow; // @synthesize modalAppWindow=_modalAppWindow;
@@ -49,7 +50,6 @@
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) long long currentConsumer; // @synthesize currentConsumer=_currentConsumer;
 @property(nonatomic) __weak id <CKBrowserTransitionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)setExpanded:(_Bool)arg1 withReason:(long long)arg2;
 - (id)appIconOverride;
 - (id)appTitleOverride;
@@ -64,6 +64,7 @@
 - (void)fullscreenAppViewControllerWantsToCollapse:(id)arg1;
 - (void)dismissCurrentFullScreenModalAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic, getter=isPresentingFullScreenModal) _Bool presentingFullScreenModal;
+- (void)presentPluginFullScreenModal:(id)arg1 datasource:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentPluginFullScreenModal:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissCurrentFullscreenBrowserAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transitionCurrentBrowserToCollapsedPresentationAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -72,6 +73,8 @@
 - (id)requestOwnershipOfBrowserForConsumer:(long long)arg1;
 - (_Bool)updateBrowserSessionForPlugin:(id)arg1 datasource:(id)arg2;
 - (id)transitionViewController;
+- (id)modalPresentationViewController;
+- (_Bool)shouldPresentModalFromPresentingViewController;
 - (_Bool)usePresentationWindowDuringTransition;
 - (_Bool)isHostingRemoteKeyboardView;
 @property(readonly, nonatomic) _Bool wasCurrentBrowserExpanded;

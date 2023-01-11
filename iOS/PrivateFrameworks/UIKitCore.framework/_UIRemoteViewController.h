@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 #import <UIKitCore/_UIRemoteViewController_ViewControllerOperatorInterface-Protocol.h>
 
-@class BKSTouchDeliveryPolicyAssertion, FBSDisplayIdentity, NSArray, NSError, NSString, UIAlertController, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
+@class BKSTouchDeliveryPolicyAssertion, FBSDisplayIdentity, NSArray, NSError, NSString, UIAlertController, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISheetPresentationControllerConfiguration, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
 @protocol BSInvalidatable;
 
-@interface _UIRemoteViewController <_UIRemoteViewController_ViewControllerOperatorInterface>
+@interface _UIRemoteViewController <UIDimmingViewDelegate, _UIRemoteViewController_ViewControllerOperatorInterface>
 {
     int __automatic_invalidation_retainCount;
     _Bool __automatic_invalidation_invalidated;
@@ -65,12 +66,17 @@
     long long _preferredAdaptivityStyle;
     unsigned long long _preferredScreenEdgesDeferringSystemGestures;
     _Bool _prefersHomeIndicatorAutoHidden;
+    _Bool _prefersPointerLocked;
+    NSArray *_multitaskingDragExclusionRects;
     _Bool _isUnderlappingStatusBar;
     _Bool __shouldUpdateRemoteTextEffectsWindow;
     long long _preferredUserInterfaceStyle;
     _Bool _isUpdatingSize;
+    _Bool _isUpdatingSizeInHost;
     _Bool _serviceViewShouldShareTouchesWithHost;
+    _Bool __viewClipsToBounds;
     BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
+    _UISheetPresentationControllerConfiguration *__sheetConfiguration;
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
@@ -85,10 +91,13 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 + (_Bool)shouldPropagateAppearanceCustomizations;
+- (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setSheetConfiguration:) _UISheetPresentationControllerConfiguration *_sheetConfiguration; // @synthesize _sheetConfiguration=__sheetConfiguration;
+@property(nonatomic, setter=_setViewClipsToBounds:) _Bool _viewClipsToBounds; // @synthesize _viewClipsToBounds=__viewClipsToBounds;
 @property(nonatomic) _Bool serviceViewShouldShareTouchesWithHost; // @synthesize serviceViewShouldShareTouchesWithHost=_serviceViewShouldShareTouchesWithHost;
+@property(nonatomic, setter=_setIsUpdatingSizeInHost:) _Bool _isUpdatingSizeInHost; // @synthesize _isUpdatingSizeInHost;
 @property(nonatomic, setter=_setIsUpdatingSize:) _Bool _isUpdatingSize; // @synthesize _isUpdatingSize;
 @property(retain, nonatomic, setter=_setTouchDeliveryPolicyAssertion:) BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion; // @synthesize _touchDeliveryPolicyAssertion;
-- (void).cxx_destruct;
 - (void)__handleFocusMovementAction:(id)arg1;
 - (void)__trampolineButtonPressData:(id)arg1 canceled:(_Bool)arg2;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
@@ -111,10 +120,7 @@
 - (void)_appearanceInvocationsDidChange:(id)arg1;
 - (_Bool)shouldPropagateAppearanceCustomizations;
 - (id)_appearanceSource;
-- (void)__viewServiceCompleteInteractiveSheetTransitionInHost:(_Bool)arg1 immediately:(_Bool)arg2 offset:(double)arg3 duration:(double)arg4 timingCurve:(id)arg5;
-- (void)__viewServiceUpdateInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
-- (void)__viewServiceStartInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
-- (void)_setSheetConfiguration:(id)arg1;
+- (void)__viewServiceSheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(_Bool)arg2 dismissible:(_Bool)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id)arg6;
 - (id)_sheetPresentationController;
 - (void)viewDidInvalidateIntrinsicContentSize;
 - (struct CGSize)intrinsicContentSizeForServiceSize:(struct CGSize)arg1;
@@ -122,17 +128,22 @@
 - (void)__viewServicePreferredContentSizeDidChange:(struct CGSize)arg1 fence:(id)arg2;
 - (void)__viewServicePopoverDidSetUseToolbarShine:(_Bool)arg1;
 - (void)__viewServicePopoverDidChangeContentSize:(struct CGSize)arg1 animated:(_Bool)arg2 fence:(id)arg3 withReplyHandler:(CDUnknownBlockType)arg4;
+- (void)__viewServiceDidChangeKeyWindow:(_Bool)arg1;
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(_Bool)arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_traitCollectionDidChange:(id)arg1;
+- (void)__viewServiceDidUpdateMultitaskingDragExclusionRects:(id)arg1;
+- (id)_multitaskingDragExclusionRects;
+- (void)__viewServiceDidUpdatePrefersPointerLocked:(_Bool)arg1;
+- (_Bool)prefersPointerLocked;
 - (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (long long)preferredUserInterfaceStyle;
 - (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(_Bool)arg1;
 - (_Bool)prefersHomeIndicatorAutoHidden;
-- (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(long long)arg1;
+- (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(unsigned long long)arg1;
 - (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(id)arg2;
 - (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 preferredStatusBarVisibility:(int)arg2 updateAnimation:(long long)arg3 currentAnimationSettings:(id)arg4;
@@ -154,6 +165,8 @@
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
+- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
+- (void)_configureSizeViewConstraintsForWindow:(id)arg1 interfaceOrientation:(long long)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -190,23 +203,29 @@
 - (void)_applicationWillAddDeactivationReason:(id)arg1;
 - (void)_applicationWillDeactivate:(id)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;
+- (void)_removeTextEffectsRemoteViews;
 - (void)_snapshotAndRemoveTextEffectsRemoteView;
 - (void)_restoreTextEffectsRemoteView;
 - (id)textEffectsWindowForServiceScreen;
 - (void)_applicationDidFinishSuspendSnapshot:(id)arg1;
 - (void)_windowDidDetachContext:(id)arg1;
+- (void)_hostSceneDidEnterBackground:(id)arg1;
 - (void)_hostDidEnterBackground:(id)arg1;
 - (void)_configureFocusDeferralForEnteringBackground;
+- (void)_sceneDidEnterBackground:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_windowDidAttachContext:(id)arg1;
+- (void)_hostSceneWillEnterForeground:(id)arg1;
 - (void)_hostWillEnterForeground:(id)arg1;
 - (void)_configureFocusDeferralForEnteringForeground;
+- (void)_sceneWillEnterForeground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_statusBarHeightDidChange:(id)arg1;
 - (void)_statusBarOrientationDidChange:(id)arg1;
 - (long long)__getPreferredInterfaceOrientation;
 @property(nonatomic, setter=_setShouldUpdateRemoteTextEffectsWindow:) _Bool _shouldUpdateRemoteTextEffectsWindow;
 - (_Bool)__shouldRemoteViewControllerFenceOperations;
+- (void)__setMediaOverridePID:(int)arg1;
 - (id)_addAutoAllowedNotifications:(id)arg1;
 - (id)forbiddenNotifications;
 - (id)allowedNotifications;
@@ -232,6 +251,12 @@
 - (oneway void)release;
 - (id)retain;
 - (int)__automatic_invalidation_logic;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

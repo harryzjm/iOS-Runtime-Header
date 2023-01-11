@@ -33,7 +33,7 @@
 - (id)orderedSourceIDsForObjectType:(id)arg1 bundleIdentifierMapping:(id)arg2 userOrdered:(_Bool *)arg3 error:(id *)arg4;
 - (id)orderedSourcesForObjectType:(id)arg1 error:(id *)arg2;
 - (_Bool)createSourceOrdersWithCodables:(id)arg1 error:(id *)arg2;
-- (void)resetCacheInDatabase:(id)arg1;
+- (void)resetCacheWithTransaction:(id)arg1;
 - (_Bool)resetCacheWithError:(id *)arg1;
 - (id)initWithProfile:(id)arg1;
 

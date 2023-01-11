@@ -12,7 +12,7 @@
 @interface GKFriendRequestComposeViewController : UINavigationController
 {
     unsigned int _rid;
-    id <GKFriendRequestComposeViewControllerDelegate> _composeViewDelegateWeak;
+    id <GKFriendRequestComposeViewControllerDelegate> _composeViewDelegate;
     NSString *_message;
     unsigned long long _recipientCount;
     UIAlertController *_alertController;
@@ -20,9 +20,11 @@
 
 + (unsigned long long)maxNumberOfRecipients;
 + (_Bool)_preventsAppearanceProxyCustomization;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(nonatomic) unsigned long long recipientCount; // @synthesize recipientCount=_recipientCount;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property(nonatomic) __weak id <GKFriendRequestComposeViewControllerDelegate> composeViewDelegate; // @synthesize composeViewDelegate=_composeViewDelegate;
 - (void)sendFinishedMessageToDelegateCancelled:(_Bool)arg1;
 - (void)addRecipientsWithEmailAddresses:(id)arg1;
 - (void)addRecipientsWithPlayerIDs:(id)arg1;
@@ -30,7 +32,6 @@
 - (void)_addRecipientInternals:(id)arg1;
 - (void)prepareForNewRecipients:(id)arg1;
 @property(nonatomic) unsigned int rid; // @synthesize rid=_rid;
-@property(nonatomic) id <GKFriendRequestComposeViewControllerDelegate> composeViewDelegate; // @synthesize composeViewDelegate=_composeViewDelegateWeak;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (_Bool)shouldAutomaticallyForwardRotationMethods;
 - (_Bool)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
@@ -39,7 +40,6 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
+- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

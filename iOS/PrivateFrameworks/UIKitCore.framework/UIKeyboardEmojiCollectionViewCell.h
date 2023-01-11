@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIKeyboardEmoji, UILabel;
+@class UIKeyboardEmoji, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCollectionViewCell
@@ -13,13 +13,16 @@ __attribute__((visibility("hidden")))
     _Bool _unreleasedHighlight;
     UILabel *_unreleasedBanner;
     UIKeyboardEmoji *_emoji;
+    UIView *_navigationHighlightView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *navigationHighlightView; // @synthesize navigationHighlightView=_navigationHighlightView;
 @property(nonatomic) _Bool unreleasedHighlight; // @synthesize unreleasedHighlight=_unreleasedHighlight;
 @property(copy, nonatomic) UIKeyboardEmoji *emoji; // @synthesize emoji=_emoji;
 @property(retain, nonatomic) UILabel *unreleasedBanner; // @synthesize unreleasedBanner=_unreleasedBanner;
-- (void).cxx_destruct;
 - (id)debugDescription;
+- (void)setSelected:(_Bool)arg1;
 @property(nonatomic) long long emojiFontSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 

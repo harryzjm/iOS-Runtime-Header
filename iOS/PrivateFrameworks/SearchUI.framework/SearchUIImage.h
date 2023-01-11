@@ -16,14 +16,13 @@
     SFImage *_sfImage;
 }
 
-+ (id)imageForSuggestionCardSectionType:(int)arg1;
 + (id)imageWithSFImage:(id)arg1 variantForAppIcon:(unsigned long long)arg2;
 + (id)imageWithSFImage:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool needsTinting; // @synthesize needsTinting=_needsTinting;
 @property(nonatomic) _Bool useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
-@property(retain, nonatomic) SFImage *sfImage; // @synthesize sfImage=_sfImage;
+@property(readonly, nonatomic) SFImage *sfImage; // @synthesize sfImage=_sfImage;
 @property(retain, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)imageData;
@@ -34,6 +33,8 @@
 - (struct CGSize)size;
 - (id)loadImage;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) int defaultCornerRoundingStyle;
+- (int)cornerRoundingStyle;
 - (id)initWithImage:(id)arg1;
 - (id)initWithSFImage:(id)arg1;
 

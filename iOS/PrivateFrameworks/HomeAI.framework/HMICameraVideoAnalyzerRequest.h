@@ -6,63 +6,92 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMICameraVideoAnalyzer, HMICameraVideoAnalyzerRequestLog, HMICameraVideoAssetReader, HMICameraVideoEncoderSession, HMICameraVideoFragment, HMICameraVideoFrameSelector, HMICameraVideoPosterFrameGenerator, HMICameraVideoResourceAttributes, NSDate, NSMutableArray;
+#import <HomeAI/HMFLogging-Protocol.h>
+#import <HomeAI/HMICameraVideoFrameSelectorDelegate-Protocol.h>
+#import <HomeAI/HMIVideoEncoderDelegate-Protocol.h>
+#import <HomeAI/HMIVideoFrameSamplerDelegate-Protocol.h>
+#import <HomeAI/HMIVideoRetimerDelegate-Protocol.h>
 
-@interface HMICameraVideoAnalyzerRequest : HMFObject
+@class HMICameraVideoAnalyzer, HMICameraVideoAssetReader, HMICameraVideoFragment, HMICameraVideoFrameSelector, HMICameraVideoPosterFrameGenerator, HMICameraVideoResourceAttributes, HMIVideoAssetWriter, HMIVideoEncoder, HMIVideoFrameSampler, HMIVideoRetimer, NSArray, NSDate, NSMutableArray, NSString;
+
+@interface HMICameraVideoAnalyzerRequest : HMFObject <HMIVideoEncoderDelegate, HMIVideoRetimerDelegate, HMIVideoFrameSamplerDelegate, HMICameraVideoFrameSelectorDelegate, HMFLogging>
 {
-    _Bool _skipAnalysis;
-    _Bool _failAnalysis;
     NSDate *_analysisSubmissionTime;
     NSDate *_analysisStartTime;
     double _maxAnalysisFPS;
+    double _analysisFPS;
     HMICameraVideoFragment *_fragment;
     HMICameraVideoResourceAttributes *_attributes;
-    HMICameraVideoEncoderSession *_encoderSession;
+    HMIVideoEncoder *_encoder;
+    HMIVideoRetimer *_retimer;
+    HMIVideoFrameSampler *_frameSampler;
+    NSMutableArray *_audioSamples;
+    HMIVideoAssetWriter *_assetWriter;
     HMICameraVideoPosterFrameGenerator *_posterFrameGenerator;
     HMICameraVideoFrameSelector *_frameSelector;
     HMICameraVideoAssetReader *_assetReader;
     HMICameraVideoAnalyzer *_analyzer;
-    long long _events;
     long long _eventTypes;
     NSMutableArray *_videoFrameResults;
-    HMICameraVideoAnalyzerRequestLog *_log;
+    NSMutableArray *_significantEventsInternal;
     long long _phase;
+    long long _flag;
 }
 
 + (id)logCategory;
-+ (id)videoAnnotationScoresForFrameResult:(id)arg1;
+- (void).cxx_destruct;
+@property long long flag; // @synthesize flag=_flag;
 @property long long phase; // @synthesize phase=_phase;
-@property(readonly) HMICameraVideoAnalyzerRequestLog *log; // @synthesize log=_log;
-@property(getter=shouldFailAnalysis) _Bool failAnalysis; // @synthesize failAnalysis=_failAnalysis;
-@property(getter=shouldSkipAnalysis) _Bool skipAnalysis; // @synthesize skipAnalysis=_skipAnalysis;
+@property(readonly) NSMutableArray *significantEventsInternal; // @synthesize significantEventsInternal=_significantEventsInternal;
 @property(retain) NSMutableArray *videoFrameResults; // @synthesize videoFrameResults=_videoFrameResults;
 @property(readonly) long long eventTypes; // @synthesize eventTypes=_eventTypes;
-@property long long events; // @synthesize events=_events;
 @property(readonly) HMICameraVideoAnalyzer *analyzer; // @synthesize analyzer=_analyzer;
 @property(readonly) HMICameraVideoAssetReader *assetReader; // @synthesize assetReader=_assetReader;
 @property(readonly) HMICameraVideoFrameSelector *frameSelector; // @synthesize frameSelector=_frameSelector;
 @property(readonly) HMICameraVideoPosterFrameGenerator *posterFrameGenerator; // @synthesize posterFrameGenerator=_posterFrameGenerator;
-@property(readonly) HMICameraVideoEncoderSession *encoderSession; // @synthesize encoderSession=_encoderSession;
+@property(readonly) HMIVideoAssetWriter *assetWriter; // @synthesize assetWriter=_assetWriter;
+@property(readonly) NSMutableArray *audioSamples; // @synthesize audioSamples=_audioSamples;
+@property(readonly) HMIVideoFrameSampler *frameSampler; // @synthesize frameSampler=_frameSampler;
+@property(readonly) HMIVideoRetimer *retimer; // @synthesize retimer=_retimer;
+@property(readonly) HMIVideoEncoder *encoder; // @synthesize encoder=_encoder;
 @property(readonly) HMICameraVideoResourceAttributes *attributes; // @synthesize attributes=_attributes;
 @property(readonly) HMICameraVideoFragment *fragment; // @synthesize fragment=_fragment;
+@property(readonly) double analysisFPS; // @synthesize analysisFPS=_analysisFPS;
 @property(readonly) double maxAnalysisFPS; // @synthesize maxAnalysisFPS=_maxAnalysisFPS;
 @property(readonly) NSDate *analysisStartTime; // @synthesize analysisStartTime=_analysisStartTime;
 @property(readonly) NSDate *analysisSubmissionTime; // @synthesize analysisSubmissionTime=_analysisSubmissionTime;
-- (void).cxx_destruct;
+- (id)logIdentifier;
 - (void)cancel;
 @property(readonly) double timeSinceAnalysisSubmission;
 @property(readonly) double timeSinceAnalysisStart;
 - (id)makeDidNotAnalyzeResultWithResultCode:(long long)arg1;
 - (id)makeDidAnalyzeResult;
+- (void)encoder:(id)arg1 didFailWithError:(id)arg2;
+- (void)encoder:(id)arg1 didEncodeSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
+- (void)retimer:(id)arg1 didRetimeSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
+- (void)frameSampler:(id)arg1 didSampleFrame:(struct opaqueCMSampleBuffer *)arg2;
 - (id)finishEncoderSession;
+- (void)selector:(id)arg1 didDetectMotion:(id)arg2 atSessionPTS:(CDStruct_1b6d18a9)arg3 frameDimensions:(struct CGSize)arg4;
+- (void)selector:(id)arg1 maySelectFrame:(id)arg2;
 - (_Bool)startFrameSelector;
 - (_Bool)startAssetReaderWithWorkQueue:(id)arg1 logIdentifier:(id)arg2;
 - (_Bool)startPosterFrameGeneratorWithInterval:(unsigned long long)arg1 frameHeight:(unsigned long long)arg2;
-- (_Bool)startEncodingSessionWithError:(id *)arg1;
+- (_Bool)startEncodingSessionForAsset:(id)arg1 error:(id *)arg2;
 - (void)startAnalysis;
 - (void)loadAttributes;
 - (id)loadAttributesFromVideoFragment:(id)arg1;
+@property(readonly) _Bool shouldFailAnalysis;
+@property(readonly) _Bool shouldSkipAnalysis;
+- (void)markForPrediction;
+@property(readonly) NSArray *significantEvents;
+- (void)addSignificantEvent:(id)arg1;
 - (id)initWithVideoFragment:(id)arg1 analyzer:(id)arg2 maxAnalysisFPS:(double)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

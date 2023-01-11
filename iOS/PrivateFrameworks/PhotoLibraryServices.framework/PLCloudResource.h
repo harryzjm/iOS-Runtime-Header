@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotoLibraryServices/PLCloudResourceCommon-Protocol.h>
-#import <PhotoLibraryServices/PLResourceAvailabilityMarking-Protocol.h>
+@class CPLScopedIdentifier, NSDate, NSString, PLCloudMaster, PLManagedAsset;
 
-@class CPLScopedIdentifier, NSDate, NSManagedObjectID, NSString, PLCloudMaster, PLManagedAsset;
-
-@interface PLCloudResource <PLCloudResourceCommon, PLResourceAvailabilityMarking>
+@interface PLCloudResource
 {
 }
 
@@ -22,12 +19,14 @@
 + (id)nonLocalResourcesInManagedObjectContext:(id)arg1 forAssetUUIDs:(id)arg2 cplResourceTypes:(id)arg3;
 + (id)duplicateCloudResource:(id)arg1 forAsset:(id)arg2 withFilePath:(id)arg3 inManagedObjectContext:(id)arg4;
 + (id)insertIntoPhotoLibrary:(id)arg1 forAsset:(id)arg2 withCPLResource:(id)arg3 adjusted:(_Bool)arg4 withCreationDate:(id)arg5;
-- (void)markAsNotLocallyAvailable;
-- (void)markAsLocallyAvailableWithFilePath:(id)arg1;
-@property(readonly, nonatomic) unsigned int resourceRecipeID;
-@property(readonly, retain, nonatomic) NSString *utiString;
-@property(readonly, nonatomic) unsigned long long sourceCplType;
-@property(readonly, nonatomic) unsigned long long cplType;
++ (id)validatedExternalResourcesUsingLegacyCloudResourcesFromAssetWithCloudMaster:(id)arg1;
++ (id)validatedExternalResourceFromCloudResource:(id)arg1 asset:(id)arg2;
++ (id)cloudResourcesForResourceType:(unsigned long long)arg1 forCloudMaster:(id)arg2;
++ (id)assetUUIDToCloudResourcesForCloudMaster:(id)arg1;
++ (id)cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2 forCloudMaster:(id)arg3;
++ (_Bool)legacyCreateNewResourcesIn:(id)arg1 inManagedObjectContext:(id)arg2 forAsset:(id)arg3;
++ (void)_copyResourceFileFrom:(id)arg1 to:(id)arg2;
++ (id)legacyCloudResourceForResourceType:(unsigned long long)arg1 forAsset:(id)arg2;
 - (void)prepareForDeletion;
 @property(retain, nonatomic) NSDate *prunedAt; // @dynamic prunedAt;
 @property(nonatomic) short prefetchCount; // @dynamic prefetchCount;
@@ -37,7 +36,8 @@
 @property(readonly, nonatomic) CPLScopedIdentifier *scopedIdentifier;
 - (void)_duplicatePropertiesFromCloudResource:(id)arg1 withFilePath:(id)arg2 forAssetUuid:(id)arg3;
 - (void)applyPropertiesFromCloudResource:(id)arg1;
-@property(readonly, copy) NSString *description;
+- (id)description;
+- (void)repairCloudPlaceholderKindForVideoAsset:(id)arg1;
 
 // Remaining properties
 @property(retain, nonatomic) PLManagedAsset *asset; // @dynamic asset;
@@ -45,18 +45,14 @@
 @property(nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property(retain, nonatomic) PLCloudMaster *cloudMaster; // @dynamic cloudMaster;
 @property(retain, nonatomic) NSDate *dateCreated; // @dynamic dateCreated;
-@property(readonly, copy) NSString *debugDescription;
 @property(retain, nonatomic) NSString *filePath; // @dynamic filePath;
 @property(nonatomic) unsigned long long fileSize; // @dynamic fileSize;
 @property(retain, nonatomic) NSString *fingerprint; // @dynamic fingerprint;
-@property(readonly) unsigned long long hash;
 @property(nonatomic) long long height; // @dynamic height;
 @property(nonatomic) _Bool isAvailable; // @dynamic isAvailable;
 @property(retain, nonatomic) NSString *itemIdentifier; // @dynamic itemIdentifier;
 @property(retain, nonatomic) NSDate *lastOnDemandDownloadDate; // @dynamic lastOnDemandDownloadDate;
-@property(readonly, nonatomic) NSManagedObjectID *objectID;
 @property(nonatomic) int sourceType; // @dynamic sourceType;
-@property(readonly) Class superclass;
 @property(nonatomic) int type; // @dynamic type;
 @property(retain, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
 @property(nonatomic) long long width; // @dynamic width;

@@ -15,10 +15,12 @@
 + (id)confidenceScoresWithDictionary:(id)arg1 context:(id)arg2;
 + (id)confidenceScores;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *userIdentityClassification;
 @property(copy, nonatomic) NSString *thresholdType;
 @property(copy, nonatomic) NSNumber *scoringSchemeVersion;
 @property(copy, nonatomic) NSArray *scores;
 @property(nonatomic) long long processedAudioDurationMilliseconds;
+@property(copy, nonatomic) NSString *classifiedUser;
 @property(copy, nonatomic) NSString *assetVersion;
 - (id)encodedClassName;
 - (id)groupIdentifier;

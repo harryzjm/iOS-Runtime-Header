@@ -7,6 +7,7 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (LPExtras)
+- (long long)_lp_symbolWeight;
 - (id)_lp_CSSFontWeight;
 @end
 

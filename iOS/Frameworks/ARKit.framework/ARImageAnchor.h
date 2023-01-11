@@ -10,29 +10,22 @@
 
 @interface ARImageAnchor <ARTrackable>
 {
-    _Bool _detectionOnly;
-    _Bool _isTracked;
+    _Bool isTracked;
     ARReferenceImage *_referenceImage;
     double _estimatedScaleFactor;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) _Bool isTracked; // @synthesize isTracked=_isTracked;
-@property(nonatomic, getter=isDetectionOnly) _Bool detectionOnly; // @synthesize detectionOnly=_detectionOnly;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double estimatedScaleFactor; // @synthesize estimatedScaleFactor=_estimatedScaleFactor;
 @property(readonly, nonatomic) ARReferenceImage *referenceImage; // @synthesize referenceImage=_referenceImage;
-- (void).cxx_destruct;
-- (void)setEstimatedScaleFactor:(double)arg1;
+@property(readonly, nonatomic) _Bool isTracked; // @synthesize isTracked;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAnchor:(id)arg1;
-- (id)copyWithTrackedState:(_Bool)arg1;
-@property(readonly, copy) NSString *description;
-- (id)name;
-- (id)initWithReferenceImage:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 detectionOnly:(_Bool)arg3 tracked:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

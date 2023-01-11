@@ -4,16 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface RTVisitStore
+#import <coreroutine/RTEnumerableStore-Protocol.h>
+
+@class NSString;
+
+@interface RTVisitStore <RTEnumerableStore>
 {
 }
 
+- (id)fetchRequestFromOptions:(id)arg1 offset:(unsigned long long)arg2 error:(id *)arg3;
 - (void)purgeVisitsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_purgeVisitsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_storeVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchVisitsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchVisitsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

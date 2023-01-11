@@ -21,6 +21,7 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)invalidateCachedSize;
 - (void)setImageView:(id)arg1 placement:(unsigned long long)arg2 padding:(double)arg3;
 @property(nonatomic) __weak UIView *imageView;

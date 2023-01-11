@@ -13,6 +13,9 @@
 
 @interface __CFN_ConnectionMetrics : NSObject <NSSecureCoding>
 {
+    struct os_unfair_lock_s connectionLock;
+    _Bool _needsCachedTCPInfoAtEnd;
+    _Bool _needsCachedSubflowCounts;
     _Bool _TLSConfigured;
     _Bool _proxyConfigured;
     _Bool _cellular;
@@ -22,72 +25,35 @@
     _Bool _usedTFO;
     _Bool _usedByTransaction;
     _Bool _coalesced;
-    _Bool _needsCachedTCPInfoAtEnd;
-    _Bool _needsCachedSubflowCounts;
     unsigned short _negotiatedTLSProtocolVersion;
     unsigned short _negotiatedTLSCipherSuite;
+    NSObject<OS_nw_connection> *_connection;
+    __CFN_SessionMetrics *_sessionMetrics;
+    NSDictionary *_cachedTCPInfoAtEnd;
+    NSDictionary *_cachedSubflowCounts;
     NSUUID *_UUID;
     unsigned long long _identifier;
     NSUUID *_initiatingTransactionID;
     double _beginTime;
     double _establishTime;
+    double _firstByteReceivedTime;
     double _endTime;
     NSObject<OS_nw_endpoint> *_endpoint;
+    long long _http3DiscoveryStatus;
     NSObject<OS_nw_endpoint> *_localEndpoint;
     NSObject<OS_nw_endpoint> *_remoteEndpoint;
     NSString *_interfaceName;
     NSString *_networkProtocolName;
     NSObject<OS_nw_establishment_report> *_establishmentReport;
-    NSObject<OS_nw_connection> *_connection;
-    __CFN_SessionMetrics *_sessionMetrics;
-    NSDictionary *_cachedTCPInfoAtEnd;
-    NSDictionary *_cachedSubflowCounts;
-    weak_ptr_905febf0 _transportConnection;
+    struct weak_ptr<TransportConnection> _transportConnection;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSDictionary *cachedSubflowCounts; // @synthesize cachedSubflowCounts=_cachedSubflowCounts;
-@property(nonatomic) _Bool needsCachedSubflowCounts; // @synthesize needsCachedSubflowCounts=_needsCachedSubflowCounts;
-@property(retain, nonatomic) NSDictionary *cachedTCPInfoAtEnd; // @synthesize cachedTCPInfoAtEnd=_cachedTCPInfoAtEnd;
-@property(nonatomic) _Bool needsCachedTCPInfoAtEnd; // @synthesize needsCachedTCPInfoAtEnd=_needsCachedTCPInfoAtEnd;
-@property(retain, nonatomic) __CFN_SessionMetrics *sessionMetrics; // @synthesize sessionMetrics=_sessionMetrics;
-@property(retain, nonatomic) NSObject<OS_nw_connection> *connection; // @synthesize connection=_connection;
-@property(nonatomic) weak_ptr_905febf0 transportConnection; // @synthesize transportConnection=_transportConnection;
-@property(nonatomic, getter=isCoalesced) _Bool coalesced; // @synthesize coalesced=_coalesced;
-@property(nonatomic) _Bool usedByTransaction; // @synthesize usedByTransaction=_usedByTransaction;
-@property(retain, nonatomic) NSObject<OS_nw_establishment_report> *establishmentReport; // @synthesize establishmentReport=_establishmentReport;
-@property(nonatomic) unsigned short negotiatedTLSCipherSuite; // @synthesize negotiatedTLSCipherSuite=_negotiatedTLSCipherSuite;
-@property(nonatomic) unsigned short negotiatedTLSProtocolVersion; // @synthesize negotiatedTLSProtocolVersion=_negotiatedTLSProtocolVersion;
-@property(copy, nonatomic) NSString *networkProtocolName; // @synthesize networkProtocolName=_networkProtocolName;
-@property(nonatomic) _Bool usedTFO; // @synthesize usedTFO=_usedTFO;
-@property(nonatomic, getter=isMultipath) _Bool multipath; // @synthesize multipath=_multipath;
-@property(nonatomic, getter=isConstrained) _Bool constrained; // @synthesize constrained=_constrained;
-@property(nonatomic, getter=isExpensive) _Bool expensive; // @synthesize expensive=_expensive;
-@property(nonatomic, getter=isCellular) _Bool cellular; // @synthesize cellular=_cellular;
-@property(copy, nonatomic) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
-@property(retain, nonatomic) NSObject<OS_nw_endpoint> *remoteEndpoint; // @synthesize remoteEndpoint=_remoteEndpoint;
-@property(retain, nonatomic) NSObject<OS_nw_endpoint> *localEndpoint; // @synthesize localEndpoint=_localEndpoint;
-@property(nonatomic, getter=isProxyConfigured) _Bool proxyConfigured; // @synthesize proxyConfigured=_proxyConfigured;
-@property(nonatomic, getter=isTLSConfigured) _Bool TLSConfigured; // @synthesize TLSConfigured=_TLSConfigured;
-@property(retain, nonatomic) NSObject<OS_nw_endpoint> *endpoint; // @synthesize endpoint=_endpoint;
-@property(nonatomic) double endTime; // @synthesize endTime=_endTime;
-@property(nonatomic) double establishTime; // @synthesize establishTime=_establishTime;
-@property(nonatomic) double beginTime; // @synthesize beginTime=_beginTime;
-@property(retain, nonatomic) NSUUID *initiatingTransactionID; // @synthesize initiatingTransactionID=_initiatingTransactionID;
-@property(nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)subflowCounts;
-- (id)tcpInfo;
-- (void)end;
-- (void)establish;
-- (void)wait;
-- (void)begin;
-- (void)linkWithTransaction:(id)arg1 sessionMetrics:(id)arg2;
-- (id)initWithConnection:(shared_ptr_8da4e70b)arg1;
+@property(copy, nonatomic) NSString *_daemon_interfaceName;
 
 @end
 

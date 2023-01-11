@@ -11,8 +11,8 @@
     CKTranscriptPluginChatItem *_previousPluginChatItem;
 }
 
-@property(retain, nonatomic) CKTranscriptPluginChatItem *previousPluginChatItem; // @synthesize previousPluginChatItem=_previousPluginChatItem;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKTranscriptPluginChatItem *previousPluginChatItem; // @synthesize previousPluginChatItem=_previousPluginChatItem;
 - (unsigned long long)_breadcrumbOptionFlags;
 - (_Bool)_wantsIconImage;
 - (_Bool)_wantsCenteredOrientation;
@@ -22,6 +22,8 @@
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)loadTranscriptText;
 - (BOOL)transcriptOrientation;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (unsigned long long)layoutType;
 
 // Remaining properties
 @property(readonly, nonatomic) IMTranscriptPluginBreadcrumbChatItem *IMChatItem; // @dynamic IMChatItem;

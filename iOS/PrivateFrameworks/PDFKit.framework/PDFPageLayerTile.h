@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
     int generationID;
     _Atomic _Bool isWorking;
     struct CGRect originalFrame;
+    struct CGRect _rootViewFrame;
 }
 
 - (void).cxx_destruct;
+@property struct CGRect rootViewFrame; // @synthesize rootViewFrame=_rootViewFrame;
 - (void)recievePDFTileSurface:(id)arg1;
 - (_Bool)isWorking;
 - (void)hasStartedWork;

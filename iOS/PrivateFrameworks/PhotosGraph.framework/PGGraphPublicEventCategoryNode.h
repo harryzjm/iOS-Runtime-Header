@@ -11,16 +11,26 @@
 
 @interface PGGraphPublicEventCategoryNode <PGGraphLocalizable, PGGraphSynonymSupport>
 {
+    NSString *_label;
+    NSString *_localizedName;
 }
 
++ (id)filter;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+- (id)label;
 - (id)associatedNodesForRemoval;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
-@property(readonly, nonatomic) NSString *localizedName;
-@property(readonly, nonatomic) unsigned long long level;
+- (unsigned short)domain;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

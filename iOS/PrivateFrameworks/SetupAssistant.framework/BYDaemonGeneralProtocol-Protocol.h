@@ -6,7 +6,12 @@
 
 #import <SetupAssistant/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol BYDaemonGeneralProtocol <NSObject>
+- (void)cancelInternalSkipInfo:(void (^)(void))arg1;
+- (void)getInternalSkipInfo:(void (^)(_Bool, NSArray *))arg1;
+- (void)setInternalShouldSkipFlows:(_Bool)arg1 skipExceptions:(NSArray *)arg2 completion:(void (^)(void))arg3;
 - (void)cancelDataMigratorDeferredExit:(void (^)(void))arg1;
 - (void)deferDataMigratorExit:(void (^)(void))arg1;
 - (void)performSilentICDPUpgrade:(void (^)(void))arg1;

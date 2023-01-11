@@ -11,7 +11,7 @@
 #import <DiagnosticExtensionsDaemon/DEDXPCConnectorDaemonDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
 
-@class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSString, NSXPCConnection;
+@class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
 @interface DEDController : NSObject <DEDXPCConnectorDaemonDelegate, DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
@@ -35,7 +35,7 @@
     NSMutableDictionary *_sessionDidStartBlocks;
     DEDIDSConnection *__idsConnection;
     DEDSharingConnection *__sharingConnection;
-    double _sessionStartTimeout;
+    NSMutableSet *_recentlyFinishedSessions;
     NSObject<OS_dispatch_queue> *_replyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_os_log> *_log;
@@ -45,13 +45,14 @@
 }
 
 + (id)archivedClasses;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
 @property(retain) NSMutableDictionary *devices; // @synthesize devices=_devices;
 @property(copy) CDUnknownBlockType didCancelCompletion; // @synthesize didCancelCompletion=_didCancelCompletion;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(retain) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain) NSObject<OS_dispatch_queue> *replyQueue; // @synthesize replyQueue=_replyQueue;
-@property double sessionStartTimeout; // @synthesize sessionStartTimeout=_sessionStartTimeout;
+@property(retain) NSMutableSet *recentlyFinishedSessions; // @synthesize recentlyFinishedSessions=_recentlyFinishedSessions;
 @property(retain) DEDSharingConnection *_sharingConnection; // @synthesize _sharingConnection=__sharingConnection;
 @property(retain) DEDIDSConnection *_idsConnection; // @synthesize _idsConnection=__idsConnection;
 @property(retain) NSMutableDictionary *sessionDidStartBlocks; // @synthesize sessionDidStartBlocks=_sessionDidStartBlocks;
@@ -71,14 +72,16 @@
 @property(retain) DEDXPCInbound *xpcInbound; // @synthesize xpcInbound=_xpcInbound;
 @property(retain) DEDXPCConnector *xpcConnector; // @synthesize xpcConnector=_xpcConnector;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *bugSessionCallbackQueue; // @synthesize bugSessionCallbackQueue=_bugSessionCallbackQueue;
-- (void).cxx_destruct;
 - (void)connector:(id)arg1 didLooseConnectionToProcessWithPid:(int)arg2;
 - (id)sharingConnection;
 - (id)idsConnection;
+- (void)logDeviceCounts;
 - (void)addDevice:(id)arg1;
 - (id)persistence;
-- (id)purgeStaleSessions:(id)arg1;
+- (void)purgeStaleSessions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)induceTimeOutIfNeededAndReturnCanProceedWithDevice:(id)arg1 sessionId:(id)arg2;
+- (void)didFinishSessionWithIdentifier:(id)arg1;
+- (_Bool)hasRecentlyFinishedSessionWithIdentifier:(id)arg1;
 - (void)hasActiveSession:(id)arg1;
 - (void)sessionWithIdentifier:(id)arg1 isActive:(_Bool)arg2;
 - (void)didStartBugSessionWithInfo:(id)arg1;
@@ -124,7 +127,7 @@
 - (void)_timeOutSessionStartBlockWithIdentifier:(id)arg1 timeout:(double)arg2;
 - (_Bool)hasCompletionBlockWithIdentifier:(id)arg1;
 - (CDUnknownBlockType)popSessionStartCompletionWithIdentifier:(id)arg1;
-- (void)addSessionStartCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
+- (void)addSessionStartCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2 configuration:(id)arg3;
 - (CDUnknownBlockType)popDidStartSessionCompletionWithIdentifier:(id)arg1;
 - (void)addDidStartSessionCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
 

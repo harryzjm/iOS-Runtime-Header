@@ -19,7 +19,7 @@
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2;
 - (void)vcSessionParticipantDidChangeActualNetworkBitrateAudio:(VCSessionParticipant *)arg1;
 - (void)vcSessionParticipantDidChangeActualNetworkBitrateVideo:(VCSessionParticipant *)arg1;
-- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didChangeProminence:(unsigned char)arg2 description:(NSString *)arg3;
+- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didChangeMediaPriority:(unsigned char)arg2 description:(NSString *)arg3;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 remoteVideoPausedDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 remoteAudioPausedDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 videoPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;

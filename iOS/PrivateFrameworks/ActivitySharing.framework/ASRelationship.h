@@ -18,6 +18,7 @@
     _Bool _hasIncomingInviteRequest;
     _Bool _hasOutgoingInviteRequest;
     _Bool _isAwaitingInviteResponse;
+    _Bool _sentInviteResponse;
     _Bool _hasIncomingCompetitionRequest;
     _Bool _hasOutgoingCompetitionRequest;
     _Bool _hasIgnoredCompetitionRequest;
@@ -25,7 +26,6 @@
     _Bool _isCompetitionActive;
     _Bool _hasCompletedCompetition;
     _Bool _isHidingActivityData;
-    _Bool _sentInviteResponse;
     unsigned int _supportedPhoneFeatures;
     unsigned int _supportedWatchFeatures;
     long long _version;
@@ -45,6 +45,7 @@
     NSDate *_dateForLatestIncomingCompetitionRequest;
     NSDate *_dateForLatestIgnoredCompetitionRequest;
     NSDate *_dateForLatestDataHidden;
+    NSDate *_dateForLatestIncomingInviteRequest;
     NSDate *_dateForLatestOutgoingInviteRequest;
     NSDate *_dateForLatestRelationshipStart;
     NSDate *_dateActivityDataInitiallyBecameVisible;
@@ -54,10 +55,11 @@
 + (id)relationshipWithCodableRelationship:(id)arg1 version:(long long)arg2;
 + (void)_relationshipWithRecord:(id)arg1 relationshipEventRecords:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)relationshipWithCodableRelationshipContainer:(id)arg1;
-@property(nonatomic) _Bool sentInviteResponse; // @synthesize sentInviteResponse=_sentInviteResponse;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *dateActivityDataInitiallyBecameVisible; // @synthesize dateActivityDataInitiallyBecameVisible=_dateActivityDataInitiallyBecameVisible;
 @property(retain, nonatomic) NSDate *dateForLatestRelationshipStart; // @synthesize dateForLatestRelationshipStart=_dateForLatestRelationshipStart;
 @property(retain, nonatomic) NSDate *dateForLatestOutgoingInviteRequest; // @synthesize dateForLatestOutgoingInviteRequest=_dateForLatestOutgoingInviteRequest;
+@property(retain, nonatomic) NSDate *dateForLatestIncomingInviteRequest; // @synthesize dateForLatestIncomingInviteRequest=_dateForLatestIncomingInviteRequest;
 @property(retain, nonatomic) NSDate *dateForLatestDataHidden; // @synthesize dateForLatestDataHidden=_dateForLatestDataHidden;
 @property(readonly, nonatomic) _Bool isHidingActivityData; // @synthesize isHidingActivityData=_isHidingActivityData;
 @property(retain, nonatomic) NSDate *dateForLatestIgnoredCompetitionRequest; // @synthesize dateForLatestIgnoredCompetitionRequest=_dateForLatestIgnoredCompetitionRequest;
@@ -69,6 +71,7 @@
 @property(nonatomic) _Bool hasIgnoredCompetitionRequest; // @synthesize hasIgnoredCompetitionRequest=_hasIgnoredCompetitionRequest;
 @property(nonatomic) _Bool hasOutgoingCompetitionRequest; // @synthesize hasOutgoingCompetitionRequest=_hasOutgoingCompetitionRequest;
 @property(nonatomic) _Bool hasIncomingCompetitionRequest; // @synthesize hasIncomingCompetitionRequest=_hasIncomingCompetitionRequest;
+@property(nonatomic) _Bool sentInviteResponse; // @synthesize sentInviteResponse=_sentInviteResponse;
 @property(nonatomic) _Bool isAwaitingInviteResponse; // @synthesize isAwaitingInviteResponse=_isAwaitingInviteResponse;
 @property(nonatomic) _Bool hasOutgoingInviteRequest; // @synthesize hasOutgoingInviteRequest=_hasOutgoingInviteRequest;
 @property(nonatomic) _Bool hasIncomingInviteRequest; // @synthesize hasIncomingInviteRequest=_hasIncomingInviteRequest;
@@ -89,7 +92,6 @@
 @property(retain, nonatomic) NSString *incomingHandshakeToken; // @synthesize incomingHandshakeToken=_incomingHandshakeToken;
 @property(copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property(nonatomic) long long version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (void)_updateCurrentRelationshipState;
 - (void)_updateDateFriendshipBeganWithDate:(id)arg1;
 - (void)_updateDateActivityDataBecameVisibleWithDate:(id)arg1;
@@ -102,6 +104,7 @@
 - (id)relationshipSnapshotForDate:(id)arg1;
 @property(readonly, nonatomic) NSDate *timestampForMostRecentRelationshipEvent;
 - (void)insertEvents:(id)arg1;
+- (void)insertEventWithType:(unsigned short)arg1 timestamp:(id)arg2;
 - (void)insertEventWithType:(unsigned short)arg1;
 @property(readonly, nonatomic) _Bool isActivityDataVisible;
 @property(readonly, copy) NSString *description;

@@ -4,23 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, SXMutableComponents;
+@class NSMutableDictionary, SXMetadata, SXMutableComponents, SXMutableDOMAnalysis;
 @protocol SXAutoPlacement, SXDocumentStyle;
 
 @interface SXMutableDOM
 {
 }
 
-- (id)debugDescription;
+@property(copy, nonatomic) SXMutableDOMAnalysis *analysis;
 @property(retain, nonatomic) id <SXDocumentStyle> documentStyle;
 @property(retain, nonatomic) id <SXAutoPlacement> autoPlacement;
-- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7 documentStyle:(id)arg8;
+- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7 documentStyle:(id)arg8 analysis:(id)arg9 metadata:(id)arg10;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSMutableDictionary *componentLayouts;
 @property(readonly, copy, nonatomic) NSMutableDictionary *componentStyles;
 @property(readonly, copy, nonatomic) NSMutableDictionary *componentTextStyles;
 @property(readonly, copy, nonatomic) SXMutableComponents *components;
+@property(readonly, copy, nonatomic) SXMetadata *metadata;
 @property(readonly, copy, nonatomic) NSMutableDictionary *resources;
 @property(readonly, copy, nonatomic) NSMutableDictionary *textStyles;
 

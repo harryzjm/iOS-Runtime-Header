@@ -19,6 +19,7 @@
 - (void)commonInit;
 - (id)initWithActionDictionary:(struct CGPDFDictionary *)arg1 forDocument:(id)arg2 forPage:(id)arg3;
 - (id)description;
+@property(readonly, nonatomic, getter=isSuspiciousURL) _Bool suspiciousURL;
 @property(copy, nonatomic) NSURL *URL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithURL:(id)arg1;

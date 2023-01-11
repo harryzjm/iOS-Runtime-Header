@@ -33,7 +33,6 @@
     GKLoadableContentStateMachine *_loadingMachine;
     UICollectionViewLayout *_defaultLayout;
     UIActivityIndicatorView *_loadingIndicatorView;
-    long long _gkFocusBubbleType;
     long long _previousOrientation;
     long long _appearCount;
     NSMapTable *_reusableViewsIHaveSeen;
@@ -55,7 +54,6 @@
 @property _Bool hasViewFactories; // @synthesize hasViewFactories=_hasViewFactories;
 @property _Bool active; // @synthesize active=_active;
 @property(nonatomic) long long previousOrientation; // @synthesize previousOrientation=_previousOrientation;
-@property(nonatomic) long long gkFocusBubbleType; // @synthesize gkFocusBubbleType=_gkFocusBubbleType;
 @property(retain, nonatomic) UIActivityIndicatorView *loadingIndicatorView; // @synthesize loadingIndicatorView=_loadingIndicatorView;
 @property(retain, nonatomic) UICollectionViewLayout *defaultLayout; // @synthesize defaultLayout=_defaultLayout;
 @property(retain, nonatomic) GKLoadableContentStateMachine *loadingMachine; // @synthesize loadingMachine=_loadingMachine;
@@ -81,7 +79,6 @@
 - (void)completeWhenReadyToDisplayData:(CDUnknownBlockType)arg1;
 - (void)didBecomeReadyToDisplayData;
 - (void)setIsReadyToDisplayData:(_Bool)arg1;
-- (void)viewDidDisappearAnimated:(_Bool)arg1 bubbleFlow:(_Bool)arg2;
 - (void)stopLoadingIndicator;
 - (void)stopLoadingIndicatorWithoutAnimation;
 - (void)startLoadingIndicator;
@@ -117,6 +114,7 @@
 - (void)dataSource:(id)arg1 didMoveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (void)dataSource:(id)arg1 didRemoveSections:(id)arg2;
 - (void)dataSource:(id)arg1 didInsertSections:(id)arg2;
+- (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2 animated:(_Bool)arg3;
 - (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2;
 - (void)dataSource:(id)arg1 didRemoveItemsAtIndexPaths:(id)arg2;
 - (void)dataSource:(id)arg1 didInsertItemsAtIndexPaths:(id)arg2;
@@ -145,7 +143,8 @@
 - (void)configureDataSource;
 - (void)updateDynamicColumnCountsForViewSize:(struct CGSize)arg1;
 - (void)updateMetrics;
-- (void)_systemContentSizeSettingDidChange:(id)arg1;
+- (void)_systemContentSizeSettingDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;

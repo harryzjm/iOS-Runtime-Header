@@ -4,20 +4,52 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKMessageView;
+#import <SearchUI/CKAudioControllerDelegate-Protocol.h>
+#import <SearchUI/CKBalloonViewDelegate-Protocol.h>
 
-@interface SearchUIMessageCardSectionView
+@class CKAudioController, CKBalloonView, CKVibrantBalloonContainerView, NSString, NUIContainerBoxView;
+
+@interface SearchUIMessageCardSectionView <CKBalloonViewDelegate, CKAudioControllerDelegate>
 {
+    CKBalloonView *_balloonView;
+    CKVibrantBalloonContainerView *_vibrantBalloon;
+    CKAudioController *_audioController;
 }
 
 + (_Bool)supportsRecyclingForCardSection:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKAudioController *audioController; // @synthesize audioController=_audioController;
+@property(retain, nonatomic) CKVibrantBalloonContainerView *vibrantBalloon; // @synthesize vibrantBalloon=_vibrantBalloon;
+@property(retain, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
+- (void)audioController:(id)arg1 mediaObjectProgressDidChange:(id)arg2 currentTime:(double)arg3 duration:(double)arg4;
+- (void)audioController:(id)arg1 mediaObjectDidFinishPlaying:(id)arg2;
+- (void)balloonViewShouldCopyToPasteboard:(id)arg1;
+- (void)balloonView:(id)arg1 userDidDragOutsideBalloonWithPoint:(struct CGPoint)arg2;
+- (void)balloonViewSelected:(id)arg1 toggleSelection:(_Bool)arg2;
+- (void)balloonViewRequestsDeselection:(id)arg1;
+- (void)balloonViewTextViewDidChangeSelection:(id)arg1 selectedText:(id)arg2 textView:(id)arg3;
+- (void)balloonViewTapped:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)balloonViewShowInlineReply:(id)arg1;
+- (void)balloonViewSelected:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
+- (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
+- (void)liveBalloonTouched:(id)arg1;
+- (void)balloonViewLongTouched:(id)arg1;
+- (void)balloonViewDoubleTapped:(id)arg1;
+- (id)audioBalloonViewWithFileURL:(id)arg1;
+- (id)textBalloonView;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)updateWithRowModel:(id)arg1;
-- (unsigned long long *)messageStatusForSearchUIMessageStatus:(int)arg1;
-- (unsigned long long *)messageServiceTypeForSearchUIMessageServiceType:(int)arg1;
 - (id)setupContentView;
 
 // Remaining properties
-@property(retain, nonatomic) TLKMessageView *contentView; // @dynamic contentView;
+@property(retain, nonatomic) NUIContainerBoxView *contentView; // @dynamic contentView;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

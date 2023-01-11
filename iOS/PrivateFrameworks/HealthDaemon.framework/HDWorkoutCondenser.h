@@ -18,6 +18,7 @@
     HDAssertion *_preparedDatabaseAccessibilityAssertion;
     long long _minimumSeriesSize;
     long long _maximumSeriesSize;
+    long long _deletedSamplesThreshold;
     HDProfile *_profile;
     _HDWorkoutCondenserAnalyticsAccumulator *_analyticsAccumulator;
 }
@@ -46,9 +47,9 @@
 + (id)_workoutEntitiesRequiringCondensationWithProfile:(id)arg1 limit:(long long)arg2 allowRecondensation:(_Bool)arg3 analyticsAccumulator:(id)arg4 error:(id *)arg5;
 + (id)seriesSyncIdentifierForEntity:(id)arg1 workout:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 + (id)workoutEntitiesRequiringCondensationWithProfile:(id)arg1 limit:(long long)arg2 allowRecondensation:(_Bool)arg3 error:(id *)arg4;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _HDWorkoutCondenserAnalyticsAccumulator *analyticsAccumulator; // @synthesize analyticsAccumulator=_analyticsAccumulator;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (void)_queue_submitAnalyticEventForReason:(long long)arg1 batchSize:(long long)arg2 success:(_Bool)arg3 duration:(double)arg4 analyticsAccumulator:(id)arg5 error:(id)arg6;
@@ -56,6 +57,7 @@
 - (_Bool)_queue_condenseWorkoutsWithAccessibilityAssertion:(id)arg1 batchLimit:(long long)arg2 analyticsAccumulator:(id)arg3 error:(id *)arg4;
 - (_Bool)_queue_condenseWorkoutsWithBatchLimit:(long long)arg1 analyticsAccumulator:(id)arg2 error:(id *)arg3;
 - (void)_queue_didPerformCondensationForReason:(long long)arg1 success:(_Bool)arg2 error:(id)arg3;
+- (void)setDeletedSamplesThreshold:(long long)arg1;
 - (void)setMaximumSeriesSize:(long long)arg1;
 - (void)setMinimumSeriesSize:(long long)arg1;
 - (id)condensableWorkoutsWithError:(id *)arg1;

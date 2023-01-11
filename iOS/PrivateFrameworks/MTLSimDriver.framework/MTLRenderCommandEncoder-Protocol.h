@@ -6,11 +6,12 @@
 
 #import <MTLSimDriver/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture;
+@protocol MTLBuffer, MTLCounterSampleBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture;
 
 @protocol MTLRenderCommandEncoder <MTLCommandEncoder>
 @property(readonly) unsigned long long tileHeight;
 @property(readonly) unsigned long long tileWidth;
+- (void)sampleCountersInBuffer:(id <MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id <MTLIndirectCommandBuffer>)arg1 indirectBuffer:(id <MTLBuffer>)arg2 indirectBufferOffset:(unsigned long long)arg3;

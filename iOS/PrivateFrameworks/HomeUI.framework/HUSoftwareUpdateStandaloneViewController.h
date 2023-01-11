@@ -11,13 +11,18 @@
 
 @interface HUSoftwareUpdateStandaloneViewController <HUSoftwareUpdateItemModuleControllerDelegate, HUSwitchCellDelegate>
 {
+    _Bool _showDoneButtonInNavBar;
+    _Bool _allowRefresh;
     HUSoftwareUpdateItemModuleController *_softwareUpdateModule;
     NAFuture *_softwareUpdateFetchFuture;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool allowRefresh; // @synthesize allowRefresh=_allowRefresh;
 @property(retain, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
 @property(retain, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateModule; // @synthesize softwareUpdateModule=_softwareUpdateModule;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool showDoneButtonInNavBar; // @synthesize showDoneButtonInNavBar=_showDoneButtonInNavBar;
+- (id)keyCommands;
 - (void)_kickoffSoftwareUpdate;
 - (void)_triggerRefresh:(id)arg1;
 - (void)_setupRefreshControl;
@@ -26,8 +31,10 @@
 - (id)softwareUpdateModuleController:(id)arg1 dismissViewController:(id)arg2;
 - (id)softwareUpdateModuleController:(id)arg1 presentViewController:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
+- (void)doneButtonPressed:(id)arg1;
 - (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
+- (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)itemModuleControllers;
 - (void)viewWillAppear:(_Bool)arg1;

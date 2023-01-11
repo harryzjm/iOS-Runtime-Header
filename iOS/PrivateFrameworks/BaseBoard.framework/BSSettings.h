@@ -17,25 +17,18 @@
 
 @interface BSSettings : NSObject <NSCopying, NSMutableCopying, BSXPCCoding, NSSecureCoding, BSDescriptionProviding>
 {
-    id <BSSettingDescriptionProvider> _descriptionProvider;
     BSMutableIntegerMap *_settingToFlagMap;
     BSMutableIntegerMap *_settingToObjectMap;
+    id <BSSettingDescriptionProvider> _descriptionProvider;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) __weak id <BSSettingDescriptionProvider> descriptionProvider; // @synthesize descriptionProvider=_descriptionProvider;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <BSSettingDescriptionProvider> descriptionProvider; // @synthesize descriptionProvider=_descriptionProvider;
 - (id)basicDescriptionWithPrefix:(id)arg1;
 - (id)_valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3 multilinePrefix:(id)arg4;
 - (id)_keyDescriptionForSetting:(unsigned long long)arg1;
 - (void)_removeAllSettings;
-- (void)_setObject:(id)arg1 forSetting:(unsigned long long)arg2;
-- (void)_setFlag:(long long)arg1 forSetting:(unsigned long long)arg2;
-- (void)_applyToSettings:(id)arg1;
-- (void)_enumerateSettingsInMap:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)_newMapTable;
-- (void)_enumerateSettingsForObjectsWithBlock:(CDUnknownBlockType)arg1;
-- (void)_enumerateSettingsForFlagsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;

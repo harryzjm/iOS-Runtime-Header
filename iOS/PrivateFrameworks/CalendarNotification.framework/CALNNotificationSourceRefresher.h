@@ -7,23 +7,26 @@
 #import <objc/NSObject.h>
 
 @class CALNInboxNotificationMonitor, NSArray;
-@protocol CALNNotificationManager, CALNNotificationSource;
+@protocol CALNNotificationManager, CALNNotificationSource, OS_dispatch_queue;
 
 @interface CALNNotificationSourceRefresher : NSObject
 {
+    _Bool _needsRefreshOnNotificationsLoaded;
+    NSObject<OS_dispatch_queue> *_refreshQueue;
     NSArray<CALNNotificationSource> *_sources;
     CALNInboxNotificationMonitor *_inboxNotificationMonitor;
     id <CALNNotificationManager> _notificationManager;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <CALNNotificationManager> notificationManager; // @synthesize notificationManager=_notificationManager;
 @property(readonly, nonatomic) CALNInboxNotificationMonitor *inboxNotificationMonitor; // @synthesize inboxNotificationMonitor=_inboxNotificationMonitor;
 @property(readonly, copy, nonatomic) NSArray<CALNNotificationSource> *sources; // @synthesize sources=_sources;
-- (void).cxx_destruct;
 - (void)_withdrawExpiredNotificationsForSource:(id)arg1;
-- (void)refreshNotifications:(id)arg1;
+- (void)_refreshNotifications:(id)arg1;
 - (void)refreshNotifications;
 - (void)handleNotificationsChangedNotification:(id)arg1;
+- (void)handleNotificationsLoadedNotification;
 - (id)initWithSources:(id)arg1 notificationMonitor:(id)arg2 notificationManager:(id)arg3;
 
 @end

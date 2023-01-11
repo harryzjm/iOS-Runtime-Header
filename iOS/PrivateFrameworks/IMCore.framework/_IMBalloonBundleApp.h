@@ -11,10 +11,10 @@
     Class _dataSourceClass;
 }
 
+- (void).cxx_destruct;
 - (void)setDataSourceClass:(Class)arg1;
 - (void)setBrowserClass:(Class)arg1;
 - (void)setBubbleClass:(Class)arg1;
-- (void).cxx_destruct;
 - (Class)dataSourceClass;
 - (Class)browserClass;
 - (Class)bubbleClass;

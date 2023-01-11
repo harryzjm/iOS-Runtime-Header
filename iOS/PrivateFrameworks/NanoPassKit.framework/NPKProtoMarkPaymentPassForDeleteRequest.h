@@ -8,15 +8,18 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface NPKProtoMarkPaymentPassForDeleteRequest : PBRequest <NSCopying>
 {
     NSString *_passID;
+    NSMutableArray *_paymentApplicationAIDs;
 }
 
-@property(retain, nonatomic) NSString *passID; // @synthesize passID=_passID;
++ (Class)paymentApplicationAIDsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *paymentApplicationAIDs; // @synthesize paymentApplicationAIDs=_paymentApplicationAIDs;
+@property(retain, nonatomic) NSString *passID; // @synthesize passID=_passID;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -26,6 +29,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)paymentApplicationAIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)paymentApplicationAIDsCount;
+- (void)addPaymentApplicationAIDs:(id)arg1;
+- (void)clearPaymentApplicationAIDs;
 
 @end
 

@@ -14,12 +14,9 @@
 - (id)_formattedStringWithValue:(double)arg1 unit:(id)arg2 showUnit:(_Bool)arg3;
 - (id)_minorAttributes;
 - (id)_majorAttributes;
-- (id)_formatAudioMin:(double)arg1 max:(double)arg2;
-- (id)_formattedAnnotationForChartData:(id)arg1;
 - (id)_attributedCurrentAudioExposureClassificationForChartData:(id)arg1;
 - (id)_formattedCurrentValueForChartData:(id)arg1;
-- (id)_formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
-- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1;
+- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
 
 @end
 

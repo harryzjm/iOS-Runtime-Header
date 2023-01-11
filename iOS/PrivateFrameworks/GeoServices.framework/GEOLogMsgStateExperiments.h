@@ -13,20 +13,19 @@
 @interface GEOLogMsgStateExperiments : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOAbAssignInfo *_abAssignInfo;
     GEOABClientConfig *_clientAbExperimentAssignment;
     GEOPDDatasetABStatus *_datasetAbStatus;
     GEOABExperimentAssignment *_tilesAbExperimentAssignment;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_abAssignInfo:1;
         unsigned int read_clientAbExperimentAssignment:1;
         unsigned int read_datasetAbStatus:1;
         unsigned int read_tilesAbExperimentAssignment:1;
-        unsigned int wrote_abAssignInfo:1;
-        unsigned int wrote_clientAbExperimentAssignment:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_tilesAbExperimentAssignment:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,20 +39,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOAbAssignInfo *abAssignInfo;
 @property(readonly, nonatomic) _Bool hasAbAssignInfo;
-- (void)_readAbAssignInfo;
 @property(retain, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
 @property(readonly, nonatomic) _Bool hasDatasetAbStatus;
-- (void)_readDatasetAbStatus;
 @property(retain, nonatomic) GEOABClientConfig *clientAbExperimentAssignment;
 @property(readonly, nonatomic) _Bool hasClientAbExperimentAssignment;
-- (void)_readClientAbExperimentAssignment;
 @property(retain, nonatomic) GEOABExperimentAssignment *tilesAbExperimentAssignment;
 @property(readonly, nonatomic) _Bool hasTilesAbExperimentAssignment;
-- (void)_readTilesAbExperimentAssignment;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

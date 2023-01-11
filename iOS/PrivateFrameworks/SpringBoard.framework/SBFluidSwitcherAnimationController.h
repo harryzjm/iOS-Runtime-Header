@@ -13,8 +13,8 @@
     CDUnknownBlockType _animationCompletion;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType animationCompletion; // @synthesize animationCompletion=_animationCompletion;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType animationCompletion; // @synthesize animationCompletion=_animationCompletion;
 - (void)animationControllerDidFinishAnimation:(id)arg1;
 - (_Bool)isFluidSwitcherAnimationController;
 - (id)initWithWorkspaceTransitionRequest:(id)arg1 animationSettings:(id)arg2 animationBlock:(CDUnknownBlockType)arg3;

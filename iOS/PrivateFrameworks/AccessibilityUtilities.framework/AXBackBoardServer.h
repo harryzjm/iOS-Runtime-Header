@@ -15,6 +15,7 @@
 
 + (id)server;
 - (void).cxx_destruct;
+- (void)setIsSpeakScreenHighlightVisible:(_Bool)arg1;
 - (struct AXBColorFilterDescription)colorFilterFromLastUpdate;
 - (void)resetAccessibilityFeatures;
 - (_Bool)loadGAXBundleForUnmanagedASAM;
@@ -29,10 +30,12 @@
 - (unsigned long long)currentGuidedAccessModeAndSessionApp:(id *)arg1;
 - (id)guidedAccessIgnoredRegions;
 - (void)toggleGuidedAccess;
+- (_Bool)isRestrictedForAAC;
 - (_Bool)isGuidedAccessUnmanagedSelfLocked;
 - (_Bool)isGuidedAccessSelfLockedToApp:(id)arg1;
 - (void)requestGuidedAccessSessionEndWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestGuidedAccessSessionStartWithConfigurationDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sendRequestGuidedAccessSessionMessage:(id)arg1 numberOfRetryAttempts:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)guidedAccessAvailability;
 - (id)performGuidedAccessAutomationCommand:(id)arg1 error:(id *)arg2;
 - (void)guidedAccessEffectiveAppBundleIdentifier:(CDUnknownBlockType)arg1;
@@ -51,6 +54,8 @@
 - (void)setHearingAidControlIsVisible:(_Bool)arg1;
 - (void)setCapsLockLightOn:(_Bool)arg1;
 - (void)userEventOccurred;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 toContextId:(unsigned int)arg3;
@@ -66,8 +71,12 @@
 @property(nonatomic) _Bool inPreboardMode;
 - (id)backboardServiceInstance;
 - (_Bool)_shouldDispatchLocally;
+- (void)registerHearingAidServerPID:(int)arg1;
+- (int)hearingAidServerPID;
 - (void)registerAccessibilityUIServicePID:(int)arg1;
+- (void)registerFullKeyboardAccessDaemonPID:(int)arg1;
 - (int)accessibilityUIServicePID;
+- (int)accessibilityFullKeyboardAccessDaemonPID;
 - (int)accessibilityAssistiveTouchPID;
 - (void)registerSiriViewServicePID:(int)arg1;
 - (void)setLockScreenDimTimerEnabled:(_Bool)arg1;

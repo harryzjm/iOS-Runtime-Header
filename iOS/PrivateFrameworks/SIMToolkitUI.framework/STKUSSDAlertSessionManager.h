@@ -14,7 +14,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     struct __CTServerConnection *_serverConnection;
-    CoreTelephonyClient *_coreTelephonyClient;
+    CoreTelephonyClient *_telephonyClient;
     NSMutableArray *_activeUSSDSessions;
     NSMutableArray *_finishedUSSDSessions;
     STKUSSDAlertSession *_coalescingUSSDSession;
@@ -23,8 +23,8 @@
     STKCarrierSubscriptionMonitor *_subscriptionMonitor;
 }
 
-@property(readonly, nonatomic) STKCarrierSubscriptionMonitor *subscriptionMonitor; // @synthesize subscriptionMonitor=_subscriptionMonitor;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) STKCarrierSubscriptionMonitor *subscriptionMonitor; // @synthesize subscriptionMonitor=_subscriptionMonitor;
 - (void)_queue_startListening;
 - (id)_supplementaryServicesResponder;
 - (void)_queue_handleUSSDEvent:(long long)arg1 responder:(id)arg2 userInfo:(id)arg3;

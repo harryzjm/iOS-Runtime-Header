@@ -5,7 +5,7 @@
 //
 
 @class HAPAccessoryServer, HAPAccessoryServerBrowserRelay, HMDMediaBrowser, HMDUnassociatedAccessory, HMDUnpairedHAPAccessory, HMDUnpairedHAPAccessoryConfiguration, HMFMessageTransport, HMSetupAccessoryDescription, NSArray, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSUUID;
-@protocol HMDAccessoryBrowserDelegate, HMDAccessoryBrowserHapProtocol, OS_dispatch_queue;
+@protocol HMDAccessoryBrowserDelegate, HMDAccessoryBrowserHapProtocol, NSObject, OS_dispatch_queue;
 
 @protocol HMDAccessoryBrowserProtocol
 @property(readonly, nonatomic) HMDMediaBrowser *mediaBrowser;
@@ -19,7 +19,6 @@
 - (id <HMDAccessoryBrowserHapProtocol>)acessoryBrowserHapProtocol;
 - (void)handleStartDiscoveringAssociatedMediaAccessories:(_Bool)arg1 forTransport:(HMFMessageTransport *)arg2 completionHandler:(void (^)(NSError *, NSDictionary *))arg3;
 - (void)handleNewlyPairedAccessory:(NSString *)arg1 linkType:(long long)arg2;
-- (void)tearDownSessionForAccesoryServer:(HAPAccessoryServer *)arg1 completion:(void (^)(void))arg2;
 - (_Bool)isBrowsingAllowed;
 - (void)discoverAccessoryServer:(NSString *)arg1 linkType:(long long)arg2 errorHandler:(void (^)(NSError *))arg3;
 - (void)discoverAccessories:(HAPAccessoryServer *)arg1;
@@ -36,21 +35,21 @@
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(NSArray *)arg1;
 - (void)btleAccessoryReachabilityProbeTimer:(_Bool)arg1;
 - (void)deregisterPairedAccessory:(NSString *)arg1;
-- (void)registerPairedAccessory:(NSString *)arg1 btleTransport:(_Bool)arg2 airPlay:(_Bool)arg3;
+- (void)registerPairedAccessory:(NSString *)arg1 transports:(unsigned long long)arg2 setupHash:(NSData *)arg3 delegate:(id <HMDAccessoryBrowserDelegate>)arg4;
 - (void)resetConfiguration;
 - (void)cancelPairingWithAccessoryDescription:(HMSetupAccessoryDescription *)arg1 error:(NSError *)arg2;
 - (void)cancelPairingWithAccessory:(HMDUnpairedHAPAccessory *)arg1 error:(NSError *)arg2;
 - (void)handleSetupCodeAvailable:(HMDUnpairedHAPAccessory *)arg1;
 - (void)didReceiveUserConsentResponseForSetupAccessoryDetail:(HMSetupAccessoryDescription *)arg1 consent:(_Bool)arg2;
-- (void)pairAccessoryWithDescription:(HMSetupAccessoryDescription *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 progressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg3 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, NSError *))arg4;
-- (void)pairAccessory:(HMDUnpairedHAPAccessory *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, NSError *))arg3;
+- (void)pairAccessoryWithDescription:(HMSetupAccessoryDescription *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 progressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg3 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, _Bool, _Bool, NSError *))arg4;
+- (void)pairAccessory:(HMDUnpairedHAPAccessory *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, _Bool, _Bool, NSError *))arg3;
 - (void)registerProgressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg1 unpairedAccessoryUUID:(NSUUID *)arg2;
-- (void)removeDelegate:(id <HMDAccessoryBrowserDelegate>)arg1;
-- (void)addDelegate:(id <HMDAccessoryBrowserDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
 - (void)startDiscoveringAccessoriesNeedingReprovisioning;
 - (void)startDiscoveringPairedAccessories;
 - (void)stopDiscoveringAccessories;
 - (void)startDiscoveringAccessories;
+- (void)endActiveAssertion:(id <NSObject>)arg1;
+- (id <NSObject>)beginActiveAssertionWithReason:(NSString *)arg1;
 - (HMDUnpairedHAPAccessory *)unpairedAccessoryWithUUID:(NSUUID *)arg1;
 - (void)activate:(_Bool)arg1;
 - (void)setQOS:(long long)arg1;

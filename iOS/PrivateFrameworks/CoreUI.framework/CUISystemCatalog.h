@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)hasStylePresetWithName:(id)arg1;
 - (_Bool)hasStylePresetWithName:(id)arg1 styleConfiguration:(id)arg2;
-- (id)newShapeEffectPresetForStylePresetName:(id)arg1 styleConfiguration:(id)arg2;
 
 @end
 

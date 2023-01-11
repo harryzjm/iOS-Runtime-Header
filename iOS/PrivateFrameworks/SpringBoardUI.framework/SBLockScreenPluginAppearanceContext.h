@@ -25,23 +25,15 @@
     struct CGRect presentationRegion;
 }
 
-- (void)setPresentationRegion:(struct CGRect)arg1;
-@property(readonly, nonatomic) struct CGRect presentationRegion;
-- (void)setElementOverrides:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *elementOverrides;
-- (void)setLegibilitySettings:(id)arg1;
-@property(readonly, retain, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings;
-- (void)setNotificationBehavior:(long long)arg1;
-@property(readonly, nonatomic) long long notificationBehavior;
-- (void)setPresentationStyle:(long long)arg1;
-@property(readonly, nonatomic) long long presentationStyle;
-- (void)setBackgroundStyle:(long long)arg1;
-@property(readonly, nonatomic) long long backgroundStyle;
-- (void)setRestrictedCapabilities:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long restrictedCapabilities;
-- (void)setHidden:(_Bool)arg1;
-@property(readonly, nonatomic, getter=isHidden) _Bool hidden;
 - (void).cxx_destruct;
+@property(nonatomic) struct CGRect presentationRegion; // @synthesize presentationRegion;
+@property(copy, nonatomic) NSArray *elementOverrides; // @synthesize elementOverrides;
+@property(retain, nonatomic) SBLockScreenLegibilitySettings *legibilitySettings; // @synthesize legibilitySettings;
+@property(nonatomic) long long notificationBehavior; // @synthesize notificationBehavior;
+@property(nonatomic) long long presentationStyle; // @synthesize presentationStyle;
+@property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle;
+@property(nonatomic) unsigned long long restrictedCapabilities; // @synthesize restrictedCapabilities;
+@property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

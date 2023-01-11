@@ -11,7 +11,7 @@
 
 @property(nonatomic) unsigned int recipeID; // @synthesize recipeID=_recipeID;
 - (id)description;
-- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 conversionClient:(id)arg3 progress:(id *)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 progress:(id *)arg5 reason:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)chooseIngredientsFrom:(id)arg1 version:(unsigned int)arg2;
 - (id)supportedVersionsForLocalResourceGeneration;
 - (id)colorSpaceGivenSourceColorSpace:(id)arg1 inContext:(id)arg2;

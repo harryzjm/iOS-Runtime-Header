@@ -4,16 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 __attribute__((visibility("hidden")))
 @interface CNContactToggleBlockCallerAction
 {
+    NSNumber *_isBlockedCachedValue;
 }
 
-- (void)unblock;
-- (void)block;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *isBlockedCachedValue; // @synthesize isBlockedCachedValue=_isBlockedCachedValue;
+- (void)setContactBlocked:(_Bool)arg1;
 - (id)allNumbersAndEmails;
 - (void)performActionWithSender:(id)arg1;
-@property(readonly, nonatomic) _Bool isBlocked;
+- (id)checkIsContactBlocked;
+- (_Bool)isContactBlockedPreservingChanges:(_Bool)arg1;
 
 @end
 

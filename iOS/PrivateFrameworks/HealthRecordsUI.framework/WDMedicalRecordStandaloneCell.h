@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView, UILabel;
+@class NSString, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface WDMedicalRecordStandaloneCell
 {
     UILabel *_titleLabel;
-    UIImageView *_disclosureChevronView;
+    UIView *_chevronView;
 }
 
 + (double)_titleLabelLastBaselineToBottom;
 + (double)_titleLabelTopToFirstBaseline;
 + (id)_titleLabelFont;
-@property(retain, nonatomic) UIImageView *disclosureChevronView; // @synthesize disclosureChevronView=_disclosureChevronView;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *chevronView; // @synthesize chevronView=_chevronView;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(copy, nonatomic) NSString *title;
 - (void)setupSubviews;
 

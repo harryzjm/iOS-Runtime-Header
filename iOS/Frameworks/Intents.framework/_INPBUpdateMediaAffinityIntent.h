@@ -10,28 +10,28 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBUpdateMediaAffinityIntent-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaSearch;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaSearch, _INPBPrivateUpdateMediaAffinityIntentData;
 
 @interface _INPBUpdateMediaAffinityIntent : PBCodable <_INPBUpdateMediaAffinityIntent, NSSecureCoding, NSCopying>
 {
     struct {
         unsigned int affinityType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _affinityType;
     _INPBIntentMetadata *_intentMetadata;
     NSArray *_mediaItems;
     _INPBMediaSearch *_mediaSearch;
+    _INPBPrivateUpdateMediaAffinityIntentData *_privateUpdateMediaAffinityIntentData;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)mediaItemsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
+@property(retain, nonatomic) _INPBPrivateUpdateMediaAffinityIntentData *privateUpdateMediaAffinityIntentData; // @synthesize privateUpdateMediaAffinityIntentData=_privateUpdateMediaAffinityIntentData;
 @property(retain, nonatomic) _INPBMediaSearch *mediaSearch; // @synthesize mediaSearch=_mediaSearch;
 @property(copy, nonatomic) NSArray *mediaItems; // @synthesize mediaItems=_mediaItems;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) int affinityType; // @synthesize affinityType=_affinityType;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -40,6 +40,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(readonly, nonatomic) _Bool hasPrivateUpdateMediaAffinityIntentData;
 @property(readonly, nonatomic) _Bool hasMediaSearch;
 - (id)mediaItemsAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long mediaItemsCount;

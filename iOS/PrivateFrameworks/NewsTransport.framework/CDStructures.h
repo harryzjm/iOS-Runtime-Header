@@ -58,6 +58,7 @@ typedef struct {
     unsigned int groupLocation:1;
     unsigned int groupPresentationReason:1;
     unsigned int groupType:1;
+    unsigned int heroArticleType:1;
     unsigned int loadFailureReason:1;
     unsigned int maxActiveTimeSpent:1;
     unsigned int maxVerticalScrollPositionEnding:1;
@@ -85,6 +86,8 @@ typedef struct {
     unsigned int didBounce:1;
     unsigned int didExpandDuringView:1;
     unsigned int didOpenInSafari:1;
+    unsigned int isAudioEligible:1;
+    unsigned int isAudioEngaged:1;
     unsigned int isBreakingNewsArticle:1;
     unsigned int isCoverArticle:1;
     unsigned int isDigitalReplicaAd:1;
@@ -103,7 +106,7 @@ typedef struct {
     unsigned int isVideoInFeed:1;
     unsigned int subscriptionOnlyArticle:1;
     unsigned int viewFromNotificationDirectOpen:1;
-} CDStruct_803929fe;
+} CDStruct_5b8c9b53;
 
 // Ambiguous groups
 typedef struct {
@@ -126,15 +129,17 @@ typedef struct {
 } CDStruct_2a523a1a;
 
 typedef struct {
+    unsigned int contentFetchDate:1;
     unsigned int widgetArticleCount:1;
     unsigned int widgetArticleCountInSection:1;
     unsigned int widgetArticleRank:1;
     unsigned int widgetArticleRankInSection:1;
     unsigned int widgetContentType:1;
+    unsigned int widgetDisplayMode:1;
     unsigned int widgetEngagementType:1;
     unsigned int widgetSectionDisplayRank:1;
     unsigned int widgetVideoPresentationReason:1;
-} CDStruct_de6d94e7;
+} CDStruct_7b5281db;
 
 typedef struct {
     unsigned int isEligibleForGrouping:1;
@@ -176,6 +181,10 @@ typedef struct {
 typedef struct {
     unsigned int moduloForHashing:1;
 } CDStruct_3f5c4e18;
+
+typedef struct {
+    unsigned int purchaseType:1;
+} CDStruct_53d4ade2;
 
 typedef struct {
     unsigned int type:1;

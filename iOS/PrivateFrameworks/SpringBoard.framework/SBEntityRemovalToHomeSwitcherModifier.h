@@ -14,14 +14,12 @@
 }
 
 - (void).cxx_destruct;
-- (id)cornerRadiusSettingsForIndex:(unsigned long long)arg1;
 - (long long)dockUpdateMode;
-- (long long)layoutUpdateMode;
-- (double)dimmingAlpha;
+- (double)homeScreenDimmingAlpha;
 - (double)homeScreenAlpha;
-- (double)backdropBlurProgress;
+- (double)homeScreenBackdropBlurProgress;
 - (long long)wallpaperStyle;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (_Bool)shouldFireTransitionCompletionInDefaultRunLoopMode;
@@ -36,7 +34,9 @@
 - (double)wallpaperScale;
 - (double)homeScreenScale;
 - (double)dockProgress;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)_cornerRadiusSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (id)handleTimerEvent:(id)arg1;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;

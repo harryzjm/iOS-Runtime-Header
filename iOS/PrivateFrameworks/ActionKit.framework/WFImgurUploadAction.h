@@ -10,8 +10,10 @@
 {
 }
 
+- (id)targetContentAttribution;
 - (void)uploadInput:(id)arg1 withAccount:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 
 @end
 

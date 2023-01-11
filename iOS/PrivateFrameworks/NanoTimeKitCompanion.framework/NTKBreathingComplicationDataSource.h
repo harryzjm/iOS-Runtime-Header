@@ -15,7 +15,6 @@
 - (id)lockedTemplate;
 - (id)currentSwitcherTemplate;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 
 @end

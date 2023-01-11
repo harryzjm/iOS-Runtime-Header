@@ -7,18 +7,21 @@
 #import <UIKit/UIControl.h>
 
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteTool-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
-@class NSDictionary, NSLayoutConstraint, NSString, UIImageView, UIView, UIViewController;
+@class NSDictionary, NSLayoutConstraint, NSString, PKPaletteAttributeViewController, UIImageView, UIView;
+@protocol PKPaletteErasingTool, PKPaletteInkingTool, PKPaletteTool;
 
-@interface PKPaletteToolView : UIControl <PKEdgeLocatable, PKPaletteViewSizeScaling>
+@interface PKPaletteToolView : UIControl <PKPaletteTool, PKEdgeLocatable, PKPaletteViewSizeScaling>
 {
+    NSString *_toolIdentifier;
     unsigned long long _edgeLocation;
     double _scalingFactor;
-    NSString *_toolIdentifier;
-    UIViewController *_attributeViewController;
+    PKPaletteAttributeViewController *_attributeViewController;
     NSDictionary *_toolProperties;
-    UIView *_toolLargeShadowView;
+    long long _colorUserInterfaceStyle;
+    UIView *_toolShadowView;
     NSLayoutConstraint *_imageViewTopAnchorConstraint;
     NSLayoutConstraint *_imageViewBottomAnchorConstraint;
     NSLayoutConstraint *_imageViewLeftAnchorConstraint;
@@ -29,6 +32,13 @@
 }
 
 + (id)toolViewWithIdentifier:(id)arg1;
++ (_Bool)_isHandwritingToolIdentfier:(id)arg1;
++ (_Bool)_toolIdentifierIsObjectEraser:(id)arg1;
++ (_Bool)_toolIdentifierIsBitmapEraser:(id)arg1;
++ (_Bool)_toolIdentifierIsEraser:(id)arg1;
++ (_Bool)_toolIdentifierIsRuler:(id)arg1;
++ (id)_toolIdentifierFromInk:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewHeigthAnchorConstraint; // @synthesize imageViewHeigthAnchorConstraint=_imageViewHeigthAnchorConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewWidthAnchorConstraint; // @synthesize imageViewWidthAnchorConstraint=_imageViewWidthAnchorConstraint;
@@ -36,13 +46,13 @@
 @property(retain, nonatomic) NSLayoutConstraint *imageViewLeftAnchorConstraint; // @synthesize imageViewLeftAnchorConstraint=_imageViewLeftAnchorConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewBottomAnchorConstraint; // @synthesize imageViewBottomAnchorConstraint=_imageViewBottomAnchorConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewTopAnchorConstraint; // @synthesize imageViewTopAnchorConstraint=_imageViewTopAnchorConstraint;
-@property(retain, nonatomic) UIView *toolLargeShadowView; // @synthesize toolLargeShadowView=_toolLargeShadowView;
+@property(retain, nonatomic) UIView *toolShadowView; // @synthesize toolShadowView=_toolShadowView;
+@property(nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property(copy, nonatomic) NSDictionary *toolProperties; // @synthesize toolProperties=_toolProperties;
-@property(readonly, nonatomic) UIViewController *attributeViewController; // @synthesize attributeViewController=_attributeViewController;
-@property(readonly, nonatomic) NSString *toolIdentifier; // @synthesize toolIdentifier=_toolIdentifier;
+@property(readonly, nonatomic) PKPaletteAttributeViewController *attributeViewController; // @synthesize attributeViewController=_attributeViewController;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property(nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *toolIdentifier; // @synthesize toolIdentifier=_toolIdentifier;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -50,11 +60,16 @@
 - (void)updateConstraints;
 - (void)_reloadToolImage;
 - (void)_reloadToolImageSizeConstraints;
-- (struct CGSize)_largeShadowOffset;
-- (struct CGSize)_smallShadowOffset;
-- (void)_updateToolImageShadows;
+- (void)_updateToolShadowView;
 @property(readonly, nonatomic) NSString *toolName;
-- (void)layoutSubviews;
+- (_Bool)isHandwritingTool;
+- (_Bool)isLassoTool;
+@property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
+- (_Bool)isErasingTool;
+- (_Bool)isRulerTool;
+@property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
+- (_Bool)isInkingTool;
+@property(readonly, nonatomic) id <PKPaletteTool> tool;
 - (id)initWithToolIdentifier:(id)arg1;
 - (id)initWithToolIdentifier:(id)arg1 toolProperties:(id)arg2;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class QLThumbnailHostContext;
+@class NSDictionary, QLThumbnailHostContext;
 @protocol QLTExtensionThumbnailItem;
 
 __attribute__((visibility("hidden")))
@@ -17,9 +17,12 @@ __attribute__((visibility("hidden")))
     double _minimumSize;
     double _scale;
     unsigned long long _badgeType;
+    NSDictionary *_generatorData;
     struct CGSize _size;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *generatorData; // @synthesize generatorData=_generatorData;
 @property(nonatomic) unsigned long long badgeType; // @synthesize badgeType=_badgeType;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(nonatomic) double minimumSize; // @synthesize minimumSize=_minimumSize;
@@ -28,10 +31,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) CDUnknownBlockType serviceErrorHandler; // @synthesize serviceErrorHandler=_serviceErrorHandler;
 @property(retain, nonatomic) QLThumbnailHostContext *hostContext; // @synthesize hostContext=_hostContext;
-- (void).cxx_destruct;
 - (void)finish;
 - (void)main;
-- (id)initWithThumbnailHostContext:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 badgeType:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7 serviceErrorHandler:(CDUnknownBlockType)arg8;
+- (id)initWithThumbnailHostContext:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 badgeType:(unsigned long long)arg6 generatorData:(id)arg7 completionHandler:(CDUnknownBlockType)arg8 serviceErrorHandler:(CDUnknownBlockType)arg9;
 
 @end
 

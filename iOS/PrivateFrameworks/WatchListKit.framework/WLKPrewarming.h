@@ -18,6 +18,9 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_connection;
+- (void)prewarmDeviceAndNetwork;
+- (void)_onQueue_prewarmDevice;
+- (void)prewarmDevice;
 - (void)prewarm;
 - (id)_init;
 - (id)init;

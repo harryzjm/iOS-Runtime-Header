@@ -12,11 +12,11 @@
 @interface WebCoreNSURLSession : NSObject
 {
     struct RefPtr<WebCore::PlatformMediaResourceLoader, WTF::DumbPtrTraits<WebCore::PlatformMediaResourceLoader>> _loader;
-    struct RetainPtr<id<NSURLSessionDelegate>> _delegate;
+    struct WeakObjCPtr<id<NSURLSessionDelegate>> _delegate;
     struct RetainPtr<NSOperationQueue> _queue;
     struct RetainPtr<NSString> _sessionDescription;
-    struct HashSet<WTF::RetainPtr<const void *>, WTF::PtrHash<WTF::RetainPtr<const void *>>, WTF::HashTraits<WTF::RetainPtr<const void *>>> _dataTasks;
-    struct HashSet<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>, WTF::PtrHash<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>> _origins;
+    struct HashSet<WTF::RetainPtr<WebCoreNSURLSessionDataTask>, WTF::DefaultHash<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>, WTF::HashTraits<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>> _dataTasks;
+    struct HashSet<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>, WTF::DefaultHash<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>> _origins;
     struct Lock _dataTasksLock;
     _Bool _invalidated;
     unsigned long long _nextTaskIdentifier;
@@ -35,6 +35,7 @@
 - (id)uploadTaskWithStreamedRequest:(id)arg1;
 - (id)uploadTaskWithRequest:(id)arg1 fromData:(id)arg2;
 - (id)uploadTaskWithRequest:(id)arg1 fromFile:(id)arg2;
+- (void)sendH2Ping:(id)arg1 pongHandler:(CDUnknownBlockType)arg2;
 - (id)dataTaskWithURL:(id)arg1;
 - (id)dataTaskWithRequest:(id)arg1;
 - (void)getAllTasksWithCompletionHandler:(CDUnknownBlockType)arg1;

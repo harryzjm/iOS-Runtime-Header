@@ -4,22 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IMTranscriptPluginChatItem, NSString, UIView, UIViewController;
+@class IMTranscriptPluginChatItem, NSArray, NSString, UIView, UIViewController;
 @protocol CKTranscriptBalloonPluginController, CKTranscriptPluginView;
 
 @interface CKTranscriptPluginChatItem
 {
     _Bool _isAppearing;
     _Bool _isHandwriting;
+    _Bool _isBusiness;
     id <CKTranscriptBalloonPluginController> _balloonController;
     IMTranscriptPluginChatItem *_imTranscriptPluginChatItem;
+    NSString *_conversationID;
+    NSArray *_recipients;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isBusiness; // @synthesize isBusiness=_isBusiness;
+@property(retain, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
+@property(retain, nonatomic) NSString *conversationID; // @synthesize conversationID=_conversationID;
 @property(readonly, nonatomic) _Bool isHandwriting; // @synthesize isHandwriting=_isHandwriting;
 @property(retain, nonatomic) IMTranscriptPluginChatItem *imTranscriptPluginChatItem; // @synthesize imTranscriptPluginChatItem=_imTranscriptPluginChatItem;
 @property(nonatomic) __weak id <CKTranscriptBalloonPluginController> balloonController; // @synthesize balloonController=_balloonController;
 @property(nonatomic) _Bool isAppearing; // @synthesize isAppearing=_isAppearing;
-- (void).cxx_destruct;
 - (void)performHostAppResume;
 - (void)releaseBalloonControllerIfNeeded;
 - (void)relinquishBalloonController;
@@ -46,19 +52,26 @@
 - (id)cellIdentifier;
 - (id)contact;
 - (id)sender;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)pasteboardItems;
 - (id)pluginDisplayContainer;
 - (id)message;
 - (id)menuTitle;
+- (_Bool)canInlineReply;
 - (_Bool)canForward;
 - (_Bool)canCopy;
 @property(readonly, nonatomic) NSString *bundleIdentifier;
 - (_Bool)handlePresentationAction;
+- (void)_cacheConversationID:(id)arg1 recipients:(id)arg2 isBusiness:(_Bool)arg3;
+- (void)_configureBalloonController:(id)arg1 conversationID:(id)arg2 recipients:(id)arg3 isBusiness:(_Bool)arg4;
 - (void)configureWithConversationID:(id)arg1 recipients:(id)arg2 isBusiness:(_Bool)arg3;
 @property(readonly, nonatomic) UIViewController *contentViewController;
 @property(readonly, nonatomic) UIViewController *extensibleViewController;
 @property(readonly, nonatomic) UIView<CKTranscriptPluginView> *extensableView;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (unsigned long long)layoutType;
 - (id)composition;
 
 // Remaining properties

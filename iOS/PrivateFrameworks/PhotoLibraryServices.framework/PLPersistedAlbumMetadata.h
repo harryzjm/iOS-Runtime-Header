@@ -12,6 +12,7 @@
 {
     _Bool _isFolder;
     _Bool _pinned;
+    _Bool _prototype;
     _Bool _inTrash;
     _Bool _customSortAscending;
     _Bool _allowsOverwrite;
@@ -24,14 +25,17 @@
     NSMutableOrderedSet *_assetUUIDs;
     NSString *_importSessionID;
     NSData *_userQueryData;
+    NSString *_projectDocumentType;
     PLGenericAlbum *_genericAlbum;
     NSURL *_metadataURL;
 }
 
 + (_Bool)isValidPath:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property(retain, nonatomic) PLGenericAlbum *genericAlbum; // @synthesize genericAlbum=_genericAlbum;
 @property(nonatomic) _Bool allowsOverwrite; // @synthesize allowsOverwrite=_allowsOverwrite;
+@property(retain, nonatomic) NSString *projectDocumentType; // @synthesize projectDocumentType=_projectDocumentType;
 @property(retain, nonatomic) NSData *userQueryData; // @synthesize userQueryData=_userQueryData;
 @property(retain, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property(retain, nonatomic) NSMutableOrderedSet *assetUUIDs; // @synthesize assetUUIDs=_assetUUIDs;
@@ -39,14 +43,15 @@
 @property(nonatomic) int customSortKey; // @synthesize customSortKey=_customSortKey;
 @property(nonatomic) _Bool customSortAscending; // @synthesize customSortAscending=_customSortAscending;
 @property(nonatomic, getter=isInTrash) _Bool inTrash; // @synthesize inTrash=_inTrash;
+@property(nonatomic, getter=isPrototype) _Bool prototype; // @synthesize prototype=_prototype;
 @property(nonatomic, getter=isPinned) _Bool pinned; // @synthesize pinned=_pinned;
 @property(readonly, nonatomic) _Bool isFolder; // @synthesize isFolder=_isFolder;
 @property(retain, nonatomic) NSNumber *kind; // @synthesize kind=_kind;
 @property(retain, nonatomic) NSString *cloudGUID; // @synthesize cloudGUID=_cloudGUID;
 @property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (void)_saveMetadata;
+- (id)_fetchChildUUIDs;
 - (_Bool)_readMetadata;
 - (id)description;
 - (void)updateChildrenOrderingInAlbum:(id)arg1 includePendingAssetChanges:(_Bool)arg2;

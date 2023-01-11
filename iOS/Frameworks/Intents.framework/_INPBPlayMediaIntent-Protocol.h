@@ -6,12 +6,14 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBDataString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch, _INPBString, _INPBTimestamp;
+@class NSArray, NSString, _INPBDataString, _INPBIntentMetadata, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBPrivatePlayMediaIntentData, _INPBString, _INPBTimestamp;
 
 @protocol _INPBPlayMediaIntent <NSObject>
 + (Class)mediaItemsType;
 + (Class)hashedRouteUIDsType;
 + (Class)bucketType;
++ (Class)audioSearchResultsType;
++ (Class)alternativeResultsType;
 @property(readonly, nonatomic) _Bool hasShowTitle;
 @property(retain, nonatomic) _INPBString *showTitle;
 @property(nonatomic) _Bool hasResumePlayback;
@@ -20,6 +22,8 @@
 @property(copy, nonatomic) NSString *recoID;
 @property(readonly, nonatomic) _Bool hasProxiedBundleIdentifier;
 @property(copy, nonatomic) NSString *proxiedBundleIdentifier;
+@property(readonly, nonatomic) _Bool hasPrivatePlayMediaIntentData;
+@property(retain, nonatomic) _INPBPrivatePlayMediaIntentData *privatePlayMediaIntentData;
 @property(readonly, nonatomic) _Bool hasPlaylistTitle;
 @property(retain, nonatomic) _INPBString *playlistTitle;
 @property(nonatomic) _Bool hasPlaybackSpeed;
@@ -30,6 +34,8 @@
 @property(nonatomic) int playbackQueueLocation;
 @property(nonatomic) _Bool hasPlayShuffled;
 @property(nonatomic) _Bool playShuffled;
+@property(nonatomic) _Bool hasParsecCategory;
+@property(nonatomic) int parsecCategory;
 @property(readonly, nonatomic) _Bool hasMusicArtistName;
 @property(retain, nonatomic) _INPBString *musicArtistName;
 @property(readonly, nonatomic) _Bool hasMediaUserContext;
@@ -52,10 +58,16 @@
 @property(retain, nonatomic) _INPBString *audiobookTitle;
 @property(readonly, nonatomic) _Bool hasAudiobookAuthor;
 @property(retain, nonatomic) _INPBString *audiobookAuthor;
+@property(readonly, nonatomic) unsigned long long audioSearchResultsCount;
+@property(copy, nonatomic) NSArray *audioSearchResults;
+@property(readonly, nonatomic) unsigned long long alternativeResultsCount;
+@property(copy, nonatomic) NSArray *alternativeResults;
 - (int)StringAsPlaybackRepeatMode:(NSString *)arg1;
 - (NSString *)playbackRepeatModeAsString:(int)arg1;
 - (int)StringAsPlaybackQueueLocation:(NSString *)arg1;
 - (NSString *)playbackQueueLocationAsString:(int)arg1;
+- (int)StringAsParsecCategory:(NSString *)arg1;
+- (NSString *)parsecCategoryAsString:(int)arg1;
 - (_INPBMediaItemValue *)mediaItemsAtIndex:(unsigned long long)arg1;
 - (void)addMediaItems:(_INPBMediaItemValue *)arg1;
 - (void)clearMediaItems;
@@ -65,5 +77,11 @@
 - (_INPBDataString *)bucketAtIndex:(unsigned long long)arg1;
 - (void)addBucket:(_INPBDataString *)arg1;
 - (void)clearBuckets;
+- (_INPBMediaItemGroup *)audioSearchResultsAtIndex:(unsigned long long)arg1;
+- (void)addAudioSearchResults:(_INPBMediaItemGroup *)arg1;
+- (void)clearAudioSearchResults;
+- (_INPBMediaItemGroup *)alternativeResultsAtIndex:(unsigned long long)arg1;
+- (void)addAlternativeResults:(_INPBMediaItemGroup *)arg1;
+- (void)clearAlternativeResults;
 @end
 

@@ -17,15 +17,16 @@
     NSArray *_collectedSessions;
 }
 
-@property(readonly) NSArray *collectedSessions; // @synthesize collectedSessions=_collectedSessions;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *collectedSessions; // @synthesize collectedSessions=_collectedSessions;
 - (void)clearCollectedSessions;
 - (void)setSourceRecoverer:(CDUnknownBlockType)arg1;
 - (void)updateLastTrainingFeaturizationForModel:(id)arg1 andData:(id)arg2;
 - (id)lastTrainingFeaturizationForModelName:(id)arg1 andLocale:(id)arg2;
 - (void)updateSessionsAndLabelForModel:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)planReceivedWithRecipe:(id)arg1 attachments:(id)arg2 error:(id *)arg3;
 - (id)planReceivedWithPayload:(id)arg1 error:(id *)arg2;
-- (void)trimDb;
+- (void)trimDbWithDeferralBlock:(CDUnknownBlockType)arg1;
 - (void)deleteSessionsWithBundleID:(id)arg1;
 - (void)deleteSessionsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)deleteSessionsWithIdentifiers:(id)arg1 bundleID:(id)arg2;

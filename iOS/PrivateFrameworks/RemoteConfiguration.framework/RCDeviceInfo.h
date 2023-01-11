@@ -18,20 +18,24 @@
     long long _dstOffset;
     NSString *_appVersion;
     NSString *_osVersion;
+    NSString *_countryCode;
 }
 
++ (id)defaultDeviceInfoWithAppVersion:(id)arg1;
 + (id)defaultDeviceInfo;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(readonly, copy, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property(readonly, copy, nonatomic) NSString *appVersion; // @synthesize appVersion=_appVersion;
 @property(readonly, nonatomic) long long dstOffset; // @synthesize dstOffset=_dstOffset;
 @property(readonly, nonatomic) long long utcOffset; // @synthesize utcOffset=_utcOffset;
 @property(readonly, copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
 @property(readonly, copy, nonatomic) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6 countryCode:(id)arg7;
 - (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6;
 
 // Remaining properties

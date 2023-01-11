@@ -16,15 +16,16 @@
 
 + (id)orderedComponentClasses;
 + (id)genesisSlotsForSlots:(id)arg1;
-+ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 locales:(id)arg3 languageDirections:(id)arg4 luminositySlots:(id)arg5;
-+ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 locales:(id)arg3 languageDirections:(id)arg4 luminositySlots:(id)arg5;
++ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 includeLocales:(_Bool)arg3 languageDirections:(id)arg4 luminositySlots:(id)arg5;
++ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 includeLocales:(_Bool)arg3 languageDirections:(id)arg4 luminositySlots:(id)arg5;
 + (Class)assetRepClass;
 + (Class)assetSetClass;
+- (void).cxx_destruct;
 @property(readonly) IBICLuminosityAppearance *luminosityAppearance; // @synthesize luminosityAppearance=_luminosityAppearance;
 @property(readonly) IBICLocale *locale; // @synthesize locale=_locale;
 @property(readonly) IBICLanguageDirection *languageDirection; // @synthesize languageDirection=_languageDirection;
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
-- (void).cxx_destruct;
+- (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;
 - (_Bool)hasUnspecifiedLocale;
 - (_Bool)hasUnspecifiedAppearance;
 - (id)detailAreaPath;

@@ -8,30 +8,30 @@
 
 #import <SpringBoardHome/SBIconAccessoryView-Protocol.h>
 
-@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBIconAccessoryImage, UIImageView;
+@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBHIconAccessoryCountedMapImageTuple, UIImageView;
 @protocol SBIconListLayout;
 
 @interface SBIconContinuityBadgeView : UIView <SBIconAccessoryView>
 {
     id <SBIconListLayout> _listLayout;
     long long _badgeType;
-    SBIconAccessoryImage *_backgroundImage;
-    SBIconAccessoryImage *_foregroundImage;
+    SBHIconAccessoryCountedMapImageTuple *_backgroundImageTuple;
+    SBHIconAccessoryCountedMapImageTuple *_foregroundImageTuple;
     SBDarkeningImageView *_backgroundView;
     UIImageView *_foregroundView;
 }
 
 + (id)_checkoutImageForContinuityBadgeType:(long long)arg1 highlighted:(_Bool)arg2;
 + (id)backgroundImageCache;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImageView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property(readonly, nonatomic) SBDarkeningImageView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property(retain, nonatomic) SBIconAccessoryImage *foregroundImage; // @synthesize foregroundImage=_foregroundImage;
-@property(readonly, nonatomic) SBIconAccessoryImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
+@property(retain, nonatomic) SBHIconAccessoryCountedMapImageTuple *foregroundImageTuple; // @synthesize foregroundImageTuple=_foregroundImageTuple;
+@property(readonly, nonatomic) SBHIconAccessoryCountedMapImageTuple *backgroundImageTuple; // @synthesize backgroundImageTuple=_backgroundImageTuple;
 @property(nonatomic) long long badgeType; // @synthesize badgeType=_badgeType;
 @property(retain, nonatomic) id <SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
-- (void).cxx_destruct;
 - (void)_clearIcon;
-- (id)_checkoutBackgroundImage;
+- (id)_checkoutBackgroundImageTuple;
 - (void)setAccessoryBrightness:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -40,6 +40,7 @@
 - (_Bool)displayingAccessory;
 - (void)configureForIcon:(id)arg1 infoProvider:(id)arg2;
 - (void)configureAnimatedForIcon:(id)arg1 infoProvider:(id)arg2 animator:(id)arg3;
+- (double)badgeContentScale;
 - (void)layoutSubviews;
 - (struct CGSize)badgeSize;
 - (struct CGPoint)layoutOffset;

@@ -28,11 +28,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMMutableArray *currentSymptoms; // @synthesize currentSymptoms=_currentSymptoms;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSHashTable *fixSessions; // @synthesize fixSessions=_fixSessions;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_callFixSessionAvailabilityUpdatedDelegate;
@@ -48,12 +48,13 @@
 - (void)_handleSymptomsUpdated:(id)arg1;
 - (void)initiateFixWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)newFixSessionForSymptom:(id)arg1;
-- (void)registerForMessages;
-@property(readonly) long long fixState;
-@property(readonly) _Bool canInitiateFix;
+- (void)_registerForMessages;
 @property(copy, setter=setSFDeviceIdentifier:) NSUUID *sfDeviceIdentifier; // @synthesize sfDeviceIdentifier=_sfDeviceIdentifier;
 @property __weak id <HMSymptomsHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy) NSSet *symptoms;
+- (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1;
 - (id)initWithUUID:(id)arg1;
 - (id)init;

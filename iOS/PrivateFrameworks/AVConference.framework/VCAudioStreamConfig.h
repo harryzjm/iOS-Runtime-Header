@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _ptime;
     unsigned long long _maxPtime;
     long long _audioStreamMode;
-    _Bool _latencySensitiveMode;
     NSMutableDictionary *_codecConfigurations;
     _Bool _redEnabled;
     unsigned char _numRedundantPayloads;
@@ -20,15 +19,16 @@ __attribute__((visibility("hidden")))
     _Bool _enableMaxBitrateOnNoChangeCMR;
     _Bool _forceEVSWideBand;
     float _volume;
+    _Bool _shouldApplyRedAsBoolean;
 }
 
+@property(nonatomic) _Bool shouldApplyRedAsBoolean; // @synthesize shouldApplyRedAsBoolean=_shouldApplyRedAsBoolean;
 @property(nonatomic) float volume; // @synthesize volume=_volume;
 @property(nonatomic) _Bool forceEVSWideBand; // @synthesize forceEVSWideBand=_forceEVSWideBand;
 @property(nonatomic) _Bool enableMaxBitrateOnNoChangeCMR; // @synthesize enableMaxBitrateOnNoChangeCMR=_enableMaxBitrateOnNoChangeCMR;
 @property(nonatomic) unsigned char numRedundantPayloads; // @synthesize numRedundantPayloads=_numRedundantPayloads;
 @property(readonly, nonatomic, getter=isRedEnabled) _Bool redEnabled; // @synthesize redEnabled=_redEnabled;
 @property(readonly, nonatomic) NSDictionary *codecConfigurations; // @synthesize codecConfigurations=_codecConfigurations;
-@property(nonatomic, getter=isLatencySensitiveMode) _Bool latencySensitiveMode; // @synthesize latencySensitiveMode=_latencySensitiveMode;
 @property(nonatomic) unsigned long long maxPtime; // @synthesize maxPtime=_maxPtime;
 @property(nonatomic) unsigned long long ptime; // @synthesize ptime=_ptime;
 @property(nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;

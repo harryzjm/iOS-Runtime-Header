@@ -14,21 +14,23 @@
 + (_Bool)supportsSecureCoding;
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
 + (id)_allCities;
-@property(readonly, nonatomic) WorldClockCity *city; // @synthesize city=_city;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WorldClockCity *city; // @synthesize city=_city;
+- (void)_handleAddedFromFaceSharing;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (void)_addKeysToJSONDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
 - (_Bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (_Bool)appearsInDailySnapshotForFamily:(long long)arg1;
 - (id)description;
 - (id)localizedDetailText;
+- (id)localizedRichKeylineLabelText;
+- (id)localizedKeylineLabelText;
 - (id)localizedRichDetailText;
+- (id)_generateUniqueIdentifier;
 
 @end
 

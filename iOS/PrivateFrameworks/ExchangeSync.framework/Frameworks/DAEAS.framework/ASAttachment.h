@@ -30,6 +30,7 @@
 + (_Bool)parsingWithSubItems;
 + (_Bool)parsingLeafNode;
 + (_Bool)acceptsTopLevelLeaves;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSURL *localPath; // @synthesize localPath=_localPath;
 @property(copy, nonatomic) NSString *clientId; // @synthesize clientId=_clientId;
 @property(copy, nonatomic) NSNumber *hasBase64Transfer; // @synthesize hasBase64Transfer=_hasBase64Transfer;
@@ -40,7 +41,6 @@
 @property(copy, nonatomic) NSNumber *method; // @synthesize method=_method;
 @property(copy, nonatomic) NSNumber *size; // @synthesize size=_size;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (void)appendActiveSyncDataForTask:(id)arg1 toData:(id)arg2;
 - (_Bool)isMostDefinitelyBase64ed;
 - (void)encodeWithCoder:(id)arg1;

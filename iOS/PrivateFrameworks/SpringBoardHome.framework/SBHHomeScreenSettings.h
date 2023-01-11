@@ -6,30 +6,35 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBHFolderSettings, SBHIconAnimationRootSettings, SBHIconSettings, SBHRootFolderSettings;
+@class SBHAppLibrarySettings, SBHFolderSettings, SBHHomePullToSearchSettings, SBHIconAnimationRootSettings, SBHIconEditingSettings, SBHIconSettings, SBHRootFolderSettings, SBHWidgetSettings;
 
 @interface SBHHomeScreenSettings : PTSettings
 {
     _Bool _usesMinimumViableHomeScreen;
     _Bool _showPopOvers;
-    _Bool _showWidgets;
-    double _defaultDragInteractionLiftDelay;
     SBHIconAnimationRootSettings *_iconAnimationSettings;
     SBHIconSettings *_iconSettings;
     SBHFolderSettings *_folderSettings;
     SBHRootFolderSettings *_rootFolderSettings;
+    SBHIconEditingSettings *_iconEditingSettings;
+    SBHWidgetSettings *_widgetSettings;
+    SBHAppLibrarySettings *_appLibrarySettings;
+    SBHHomePullToSearchSettings *_pullToSearchSettings;
 }
 
 + (id)settingsControllerModule;
++ (id)homeScreenDefaults;
+- (void).cxx_destruct;
+@property(retain, nonatomic) SBHHomePullToSearchSettings *pullToSearchSettings; // @synthesize pullToSearchSettings=_pullToSearchSettings;
+@property(retain, nonatomic) SBHAppLibrarySettings *appLibrarySettings; // @synthesize appLibrarySettings=_appLibrarySettings;
+@property(retain, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;
+@property(retain, nonatomic) SBHIconEditingSettings *iconEditingSettings; // @synthesize iconEditingSettings=_iconEditingSettings;
 @property(retain, nonatomic) SBHRootFolderSettings *rootFolderSettings; // @synthesize rootFolderSettings=_rootFolderSettings;
 @property(retain, nonatomic) SBHFolderSettings *folderSettings; // @synthesize folderSettings=_folderSettings;
 @property(retain, nonatomic) SBHIconSettings *iconSettings; // @synthesize iconSettings=_iconSettings;
 @property(retain, nonatomic) SBHIconAnimationRootSettings *iconAnimationSettings; // @synthesize iconAnimationSettings=_iconAnimationSettings;
-@property(nonatomic) double defaultDragInteractionLiftDelay; // @synthesize defaultDragInteractionLiftDelay=_defaultDragInteractionLiftDelay;
-@property(nonatomic) _Bool showWidgets; // @synthesize showWidgets=_showWidgets;
 @property(nonatomic) _Bool showPopOvers; // @synthesize showPopOvers=_showPopOvers;
 @property(nonatomic) _Bool usesMinimumViableHomeScreen; // @synthesize usesMinimumViableHomeScreen=_usesMinimumViableHomeScreen;
-- (void).cxx_destruct;
 - (void)setDefaultValues;
 
 @end

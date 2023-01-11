@@ -17,10 +17,9 @@
 + (id)logCategory;
 + (id)actionWithDictionaryRepresentation:(id)arg1 home:(id)arg2 actionSet:(id)arg3;
 + (id)actionWithDictionaryRepresentation:(id)arg1 home:(id)arg2;
-+ (void)initialize;
+- (void).cxx_destruct;
 @property(readonly) WFHomeWorkflowController *controller; // @synthesize controller=_controller;
 @property(readonly) WFHomeWorkflow *shortcut; // @synthesize shortcut=_shortcut;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -28,15 +27,17 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (Class)modelClass;
 - (id)initWithModelObject:(id)arg1 parent:(id)arg2 error:(id *)arg3;
+- (id)associatedAccessories;
+- (_Bool)isAssociatedWithAccessory:(id)arg1;
 - (unsigned long long)entitlementsForNotification;
 - (_Bool)requiresDeviceUnlock;
-- (void)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)executeWithSource:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)stateDump;
 - (id)dictionaryRepresentation;
 - (unsigned long long)type;
 - (void)dealloc;
 - (id)removeShortcut;
-- (id)initWithSerializedShortcut:(id)arg1 actionSet:(id)arg2;
+- (id)initWithSerializedShortcut:(id)arg1 uuid:(id)arg2 actionSet:(id)arg3;
 
 @end
 

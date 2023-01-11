@@ -10,10 +10,20 @@
 
 @interface IDSEndpointCapabilities : NSObject <NSSecureCoding>
 {
+    BOOL _supportsKeySharing;
+    BOOL _supportsHarmony;
+    BOOL _supportsFMDV2;
+    BOOL _supportsFMFenceV1;
+    BOOL _supportsLocationSharing;
+    BOOL _supportsScreenTimeV2;
+    BOOL _supportsIncomingFindMyV1;
+    BOOL _ecVersion;
+    BOOL _isC2KEquipment;
     BOOL _showPeerErrors;
+    BOOL _nicknamesVersion;
+    BOOL _optionallyReceiveTypingIndicator;
     BOOL _supportsInlineAttachments;
     BOOL _supportsKeepReceipts;
-    BOOL _supportsLocationSharing;
     BOOL _supportsStickersV1;
     BOOL _supportsChatAppsV1;
     BOOL _supportsBubbleEditingV1;
@@ -21,30 +31,29 @@
     BOOL _supportsFullScreenMomentsV1;
     BOOL _supportsFullScreenMomentsV2;
     BOOL _supportsFullScreenMomentsV3;
-    BOOL _supportsScreenTimeV2;
-    BOOL _supportsIncomingFindMyV1;
     BOOL _supportsInvisibleInkV1;
     BOOL _supportsImpactEffectsV1;
     BOOL _supportsUpdateAttachmentsV1;
     BOOL _supportsAutoloopVideoV1;
     BOOL _supportsMediaV2;
-    BOOL _supportsActivitySharing;
-    BOOL _optionallyReceiveTypingIndicator;
-    BOOL _isC2KEquipment;
     BOOL _supportsPhotosExtensionV1;
     BOOL _supportsAudioMessagingV2;
     BOOL _supportsAnimojiV2;
     BOOL _supportsCertifiedDeliveryV1;
     BOOL _supportsOriginalTimestampOrderingV1;
-    BOOL _nicknamesVersion;
-    BOOL _ecVersion;
+    BOOL _supportsProtobufPayloadDataV2;
+    BOOL _supportsHEIFEncoding;
+    BOOL _supportsHDRVideo;
+    BOOL _prefersSDRVideo;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)allowedCapabilities;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqualToEndpointCapabilites:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)debugDescription;
 - (id)description;
 - (long long)valueForCapability:(id)arg1;
 - (id)initWithCapabilitiesMap:(id)arg1;

@@ -30,6 +30,7 @@
 + (id)backgroundJobName;
 + (double)backgroundJobTimeout;
 + (_Bool)supportsBackgroundJob;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long numberOfAssetClustersRevGeocoded; // @synthesize numberOfAssetClustersRevGeocoded=_numberOfAssetClustersRevGeocoded;
 @property(readonly, nonatomic) unsigned long long numberOfMomentsRevGeocoded; // @synthesize numberOfMomentsRevGeocoded=_numberOfMomentsRevGeocoded;
 @property(readonly, nonatomic) double numberOfAssetClusters100mPlusFromCenter; // @synthesize numberOfAssetClusters100mPlusFromCenter=_numberOfAssetClusters100mPlusFromCenter;
@@ -42,7 +43,7 @@
 @property(readonly, nonatomic) double sumSquareNumberOfAssetClustersPerMoment; // @synthesize sumSquareNumberOfAssetClustersPerMoment=_sumSquareNumberOfAssetClustersPerMoment;
 @property(readonly, nonatomic) double sumNumberOfAssetClustersPerMoment; // @synthesize sumNumberOfAssetClustersPerMoment=_sumNumberOfAssetClustersPerMoment;
 @property(retain, nonatomic) NSArray *homeLocations; // @synthesize homeLocations=_homeLocations;
-- (void).cxx_destruct;
+- (_Bool)_allowReverseGeocodingWithUpdateType:(long long)arg1;
 - (_Bool)_regionIsHome:(id)arg1;
 - (_Bool)_setRevGeoLocationData:(id)arg1 onAssets:(id)arg2 withPhotoLibrary:(id)arg3;
 - (id)_revGeoLocationDataForRegion:(id)arg1 manager:(id)arg2;
@@ -52,11 +53,11 @@
 - (_Bool)_revGeocodeAssetClusters:(id)arg1 manager:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (_Bool)revGeocodeAssets:(id)arg1 manager:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)_clusterAssetsInMoment:(id)arg1 assetsWithInvalidLocationInMoment:(id *)arg2 withPhotoLibrary:(id)arg3;
-- (id)_momentsRequiringRevGeocodingWithIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2 defaultToAllAssets:(_Bool)arg3;
+- (id)_momentsRequiringRevGeocodingWithIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2 defaultToAllAssets:(_Bool)arg3 manager:(id)arg4;
 - (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (void)invalidateReverseLocationDataForRevGeoProviderChangeUsingManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (void)setCurrentGeoProviderForPhotoLibrary:(id)arg1;
-- (_Bool)revGeoProviderDidChangeForPhotoLibrary:(id)arg1;
+- (void)setCurrentGeoProviderInGraphApplicationDataURL:(id)arg1;
+- (_Bool)revGeoProviderDidChangeForGraphApplicationDataURL:(id)arg1;
 - (id)init;
 
 // Remaining properties

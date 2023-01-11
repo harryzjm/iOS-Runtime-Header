@@ -11,6 +11,7 @@
 }
 
 + (id)sharedPhoneCallObserver;
+- (void)startObserving;
 - (_Bool)hasActiveCalls;
 
 @end

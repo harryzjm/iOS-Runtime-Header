@@ -15,6 +15,7 @@
 
 @interface CEKDiscreteSlider : UIControl <UIScrollViewDelegate, CEKSliderTickMarksDelegate, CEKAbstractSlider>
 {
+    _Bool _useTextLegibilityBackgrounds;
     _Bool _useTextLegibilityShadows;
     _Bool __needsUpdateContentOffset;
     _Bool __overscrolling;
@@ -46,6 +47,7 @@
     CDStruct_ae5a35ae _gradientInsets;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property(nonatomic) unsigned long long colorHighlight; // @synthesize colorHighlight=_colorHighlight;
 @property(nonatomic) double tickMarksHeight; // @synthesize tickMarksHeight=_tickMarksHeight;
@@ -68,6 +70,7 @@
 @property(readonly, nonatomic) UIView *_levelIndicatorView; // @synthesize _levelIndicatorView=__levelIndicatorView;
 @property(readonly, nonatomic) UIScrollView *_contentScrollView; // @synthesize _contentScrollView=__contentScrollView;
 @property(nonatomic) _Bool useTextLegibilityShadows; // @synthesize useTextLegibilityShadows=_useTextLegibilityShadows;
+@property(nonatomic) _Bool useTextLegibilityBackgrounds; // @synthesize useTextLegibilityBackgrounds=_useTextLegibilityBackgrounds;
 @property(nonatomic) unsigned long long fontStyle; // @synthesize fontStyle=_fontStyle;
 @property(nonatomic) long long titleAlignment; // @synthesize titleAlignment=_titleAlignment;
 @property(nonatomic) long long textOrientation; // @synthesize textOrientation=_textOrientation;
@@ -75,7 +78,6 @@
 @property(nonatomic) double sliderVerticalOffset; // @synthesize sliderVerticalOffset=_sliderVerticalOffset;
 @property(nonatomic) long long sliderVerticalAlignment; // @synthesize sliderVerticalAlignment=_sliderVerticalAlignment;
 @property(nonatomic) double labelVerticalPadding; // @synthesize labelVerticalPadding=_labelVerticalPadding;
-- (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *gradientColor;
 @property(nonatomic) _Bool useLegibilityBackgrounds;
 @property(nonatomic) _Bool useLegibilityShadows;

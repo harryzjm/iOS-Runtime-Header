@@ -11,8 +11,8 @@
     RTScenarioTrigger *_scenarioTrigger;
 }
 
-@property(readonly, nonatomic) RTScenarioTrigger *scenarioTrigger; // @synthesize scenarioTrigger=_scenarioTrigger;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) RTScenarioTrigger *scenarioTrigger; // @synthesize scenarioTrigger=_scenarioTrigger;
 - (id)initWithScenarioTrigger:(id)arg1;
 
 @end

@@ -15,15 +15,19 @@
 }
 
 + (_Bool)fileExistsAtURL:(id)arg1;
++ (_Bool)writeData:(id)arg1 toURL:(id)arg2 atomically:(_Bool)arg3 error:(id *)arg4;
++ (_Bool)copyURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (_Bool)moveURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (_Bool)createEmptyURL:(id)arg1 error:(id *)arg2;
 + (_Bool)removeURL:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) __weak PLJournal *journal; // @synthesize journal=_journal;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (_Bool)fileExists;
-@property(readonly, nonatomic) unsigned long long allocatedFileSize;
-@property(readonly, nonatomic) unsigned long long fileSize;
+- (_Bool)_fileSize:(unsigned long long *)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (_Bool)allocatedFileSize:(unsigned long long *)arg1 error:(id *)arg2;
+- (_Bool)fileSize:(unsigned long long *)arg1 error:(id *)arg2;
+- (_Bool)copyToURL:(id)arg1 error:(id *)arg2;
 - (_Bool)moveToURL:(id)arg1 error:(id *)arg2;
 - (_Bool)createEmptyFileWithError:(id *)arg1;
 - (_Bool)removeFileWithError:(id *)arg1;

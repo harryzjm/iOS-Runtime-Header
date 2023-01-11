@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardUI/SBUIKeyboardHomeAffordanceAssertion.h>
-
 #import <SpringBoard/PLKeyboardHomeAffordanceAssertion-Protocol.h>
 
 @class NSString;
 
-@interface SBNotificationKeyboardHomeAffordanceAssertion : SBUIKeyboardHomeAffordanceAssertion <PLKeyboardHomeAffordanceAssertion>
+@interface SBNotificationKeyboardHomeAffordanceAssertion <PLKeyboardHomeAffordanceAssertion>
 {
 }
 

@@ -10,6 +10,8 @@
 @protocol PXDisplayAsset;
 
 @protocol PUSharingHeaderDataProvider <NSObject>
+@property(readonly, nonatomic) _Bool excludeAccessibilityDescription;
+@property(readonly, nonatomic) _Bool excludeCaption;
 @property(readonly, nonatomic) _Bool sendAsOriginals;
 @property(readonly, nonatomic) _Bool excludeLocation;
 @property(readonly, nonatomic) _Bool excludeLiveness;
@@ -18,7 +20,7 @@
 @property(readonly, nonatomic) struct PXAssetMediaTypeCount assetTypeCount;
 @property(readonly, copy, nonatomic) NSOrderedSet *orderedSelectedAssets;
 @property(readonly, copy, nonatomic) id <PXDisplayAsset> keyAsset;
-@property(readonly, nonatomic) unsigned long long sourceOrigin;
+@property(readonly, nonatomic) long long sourceOrigin;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
 @end

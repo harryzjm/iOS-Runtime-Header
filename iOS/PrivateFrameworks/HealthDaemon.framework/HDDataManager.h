@@ -30,9 +30,9 @@
     HDProfile *_profile;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) HDQuantitySeriesManager *quantitySeriesManager; // @synthesize quantitySeriesManager=_quantitySeriesManager;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (void)setBackgroundObserverFrequency:(id)arg1 forDataType:(id)arg2 frequency:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)synchronouslyCloseObserverTransactionAndNotify;
@@ -58,7 +58,7 @@
 - (void)_notificationQueue_notifyObserversSamplesWithTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)_notifyObserversSamplesWithTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (_Bool)_deleteObjectsWithTypes:(id)arg1 sourceEntities:(id)arg2 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (_Bool)deleteSamplesWithUUIDs:(id)arg1 generateDeletedObjects:(_Bool)arg2 database:(id)arg3 error:(id *)arg4;
+- (_Bool)deleteSamplesWithUUIDs:(id)arg1 generateDeletedObjects:(_Bool)arg2 transaction:(id)arg3 error:(id *)arg4;
 - (_Bool)deleteSamplesWithUUIDs:(id)arg1 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (_Bool)deleteSamplesWithSourceEntities:(id)arg1 error:(id *)arg2;
 - (_Bool)deleteSamplesWithTypes:(id)arg1 sourceEntities:(id)arg2 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
@@ -74,7 +74,8 @@
 - (void)shouldNotifyForDeletedSamplesOfTypes:(id)arg1 transaction:(id)arg2 anchor:(id)arg3;
 - (void)shouldNotifyForDataObjects:(id)arg1 provenance:(id)arg2 database:(id)arg3 anchor:(id)arg4;
 - (_Bool)_insertDataObjects:(id)arg1 transaction:(id)arg2 insertionContext:(id)arg3 updateSourceOrder:(_Bool)arg4 error:(id *)arg5;
-- (_Bool)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 skipInsertionFilter:(_Bool)arg4 updateSourceOrder:(_Bool)arg5 error:(id *)arg6;
+- (_Bool)associateObjectUUIDs:(id)arg1 objectUUID:(id)arg2 error:(id *)arg3;
+- (_Bool)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 skipInsertionFilter:(_Bool)arg4 updateSourceOrder:(_Bool)arg5 resolveAssociations:(_Bool)arg6 error:(id *)arg7;
 - (_Bool)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 skipInsertionFilter:(_Bool)arg4 error:(id *)arg5;
 - (_Bool)insertDataObjects:(id)arg1 withProvenance:(id)arg2 creationDate:(double)arg3 error:(id *)arg4;
 - (_Bool)insertDataObjects:(id)arg1 error:(id *)arg2;

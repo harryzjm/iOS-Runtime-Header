@@ -8,7 +8,7 @@
 
 #import <RemoteUI/UIWebViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, RUIBarButtonItem, RUIElement, RUIObjectModel, RUIPageElement, RUIPasscodeView, RUISpinnerView, RUIStyle, RUITableView, RUIWebView, UIBarButtonItem, UILabel, UIToolbar, UIView;
+@class NSArray, NSDictionary, NSMutableArray, NSString, RUIBarButtonItem, RUIElement, RUIMultiChoiceElement, RUIObjectModel, RUIPageElement, RUIPasscodeView, RUISpinnerView, RUIStyle, RUITableView, RUIWebView, UIBarButtonItem, UILabel, UIToolbar, UIView;
 @protocol RUITopLevelPageElement;
 
 @interface RUIPage : UIViewController <UIWebViewDelegate>
@@ -21,6 +21,7 @@
     RUISpinnerView *_spinnerViewOM;
     NSString *_validationFunction;
     NSString *_navTitle;
+    NSString *_navSubTitle;
     _Bool _hidesBackButton;
     UIToolbar *_toolbar;
     UIBarButtonItem *_leftToolbarItem;
@@ -35,6 +36,7 @@
     NSDictionary *_attributes;
     RUIPageElement *_pageElement;
     RUIElement<RUITopLevelPageElement> *_primaryElement;
+    RUIMultiChoiceElement *_multiChoiceElement;
     RUIStyle *_style;
     NSString *_backButtonTitle;
     RUIBarButtonItem *_rightNavigationBarButtonItem;
@@ -49,6 +51,7 @@
     struct UIEdgeInsets _customEdgeInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(copy, nonatomic) NSString *loadingTitle; // @synthesize loadingTitle=_loadingTitle;
 @property(nonatomic) struct UIEdgeInsets customEdgeInsets; // @synthesize customEdgeInsets=_customEdgeInsets;
@@ -68,15 +71,17 @@
 @property(nonatomic) _Bool hidesBackButton; // @synthesize hidesBackButton=_hidesBackButton;
 @property(nonatomic) _Bool showsTitlesAsHeaderViews; // @synthesize showsTitlesAsHeaderViews=_showsTitlesAsHeaderViews;
 @property(copy, nonatomic) NSString *backButtonTitle; // @synthesize backButtonTitle=_backButtonTitle;
+@property(copy, nonatomic) NSString *navSubTitle; // @synthesize navSubTitle=_navSubTitle;
 @property(copy, nonatomic) NSString *navTitle; // @synthesize navTitle=_navTitle;
 @property(copy, nonatomic) NSString *validationFunction; // @synthesize validationFunction=_validationFunction;
 @property(retain, nonatomic) RUIStyle *style; // @synthesize style=_style;
+@property(retain, nonatomic) RUIMultiChoiceElement *multiChoiceElement; // @synthesize multiChoiceElement=_multiChoiceElement;
 @property(retain, nonatomic) RUIElement<RUITopLevelPageElement> *primaryElement; // @synthesize primaryElement=_primaryElement;
 @property(retain, nonatomic) RUIPageElement *pageElement; // @synthesize pageElement=_pageElement;
 @property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(copy, nonatomic) NSString *pageID; // @synthesize pageID=_pageID;
 @property(copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
-- (void).cxx_destruct;
+- (_Bool)_shouldShowMultiChoiceElement;
 - (void)addDidAppearBlock:(CDUnknownBlockType)arg1;
 - (id)preferredFocusEnvironments;
 - (void)viewDidLayoutSubviews;
@@ -97,9 +102,12 @@
 @property(readonly, nonatomic) RUIPasscodeView *passcodeViewOM;
 - (_Bool)hasWebView;
 @property(readonly, nonatomic) RUIWebView *webViewOM;
+- (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)hasTableView;
 @property(readonly, nonatomic) RUITableView *tableViewOM;
 - (id)elementsWithName:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
+- (id)_childElements;
 - (id)subElementWithID:(id)arg1;
 - (void)_updateParentPage;
 - (void)_updateWithCompletedChild:(id)arg1;
@@ -133,7 +141,9 @@
 @property(nonatomic) struct UIEdgeInsets titleLabelPadding;
 @property(readonly, nonatomic) UILabel *titleLabel;
 - (void)_updateLoadingUI;
+@property(readonly, nonatomic) _Bool navBarIndicatorHidesLeftButton;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSString *activityIndicatorStyle;
 - (id)init;
 - (id)initWithAttributes:(id)arg1;
 

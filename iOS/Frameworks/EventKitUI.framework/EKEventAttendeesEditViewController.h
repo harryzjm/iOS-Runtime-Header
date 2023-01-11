@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKEvent, EKEventAttendeePicker, NSArray;
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 
-@interface EKEventAttendeesEditViewController
+@class EKEvent, EKEventAttendeePicker, NSArray, NSString;
+
+@interface EKEventAttendeesEditViewController <EKUIManagedViewController>
 {
     EKEventAttendeePicker *_picker;
     EKEvent *_event;
@@ -16,9 +18,11 @@
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool appendOnly; // @synthesize appendOnly=_appendOnly;
 @property(nonatomic) _Bool disableShowingButtons; // @synthesize disableShowingButtons=_disableShowingButtons;
-- (void).cxx_destruct;
+- (_Bool)canManagePresentationStyle;
+- (_Bool)wantsManagement;
 - (_Bool)editItemShouldBeAskedForInjectableViewController;
 - (_Bool)presentModally;
 @property(copy, nonatomic) NSArray *attendees;
@@ -36,6 +40,12 @@
 - (_Bool)prefersToBePresentedFromUINavigationController;
 - (void)setSearchAccountID:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

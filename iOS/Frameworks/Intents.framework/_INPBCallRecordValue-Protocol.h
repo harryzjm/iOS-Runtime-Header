@@ -11,6 +11,10 @@
 @protocol _INPBCallRecordValue <NSObject>
 @property(nonatomic) _Bool hasUnseen;
 @property(nonatomic) _Bool unseen;
+@property(readonly, nonatomic) _Bool hasProviderId;
+@property(copy, nonatomic) NSString *providerId;
+@property(nonatomic) _Bool hasPreferredCallProvider;
+@property(nonatomic) int preferredCallProvider;
 @property(readonly, nonatomic) _Bool hasNumberOfCalls;
 @property(retain, nonatomic) _INPBInteger *numberOfCalls;
 @property(readonly, nonatomic) _Bool hasIdentifier;
@@ -25,6 +29,8 @@
 @property(retain, nonatomic) _INPBCallMetrics *callMetrics;
 @property(nonatomic) _Bool hasCallCapability;
 @property(nonatomic) int callCapability;
+- (int)StringAsPreferredCallProvider:(NSString *)arg1;
+- (NSString *)preferredCallProviderAsString:(int)arg1;
 - (int)StringAsCallType:(NSString *)arg1;
 - (NSString *)callTypeAsString:(int)arg1;
 - (int)StringAsCallCapability:(NSString *)arg1;

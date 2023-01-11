@@ -6,15 +6,12 @@
 
 #import <TextInputCore/NSObject-Protocol.h>
 
-@class NSString, SRSensorWriter;
+@class SRSensorWriter;
 
 @protocol SRSensorWriterDelegate <NSObject>
 
 @optional
 - (void)sensorWriterDidStopMonitoring:(SRSensorWriter *)arg1;
 - (void)sensorWriterWillStartMonitoring:(SRSensorWriter *)arg1;
-- (NSString *)exportingClassNameForSensor:(NSString *)arg1;
-- (NSString *)classNameForSensorIdentifier:(NSString *)arg1;
-- (Class)classForSensorIdentifier:(NSString *)arg1;
 @end
 

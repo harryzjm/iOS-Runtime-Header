@@ -12,8 +12,10 @@
 
 @interface _PSPredictionContext : NSObject <NSSecureCoding>
 {
+    _Bool _showPotentialFamilyMembers;
     NSDate *_suggestionDate;
     NSUUID *_locationUUID;
+    NSArray *_locationUUIDs;
     long long _locationType;
     NSString *_bundleID;
     NSString *_accountIdentifier;
@@ -21,9 +23,13 @@
     NSArray *_candidateShareExtensionBundleIds;
     NSDictionary *_appBundleIdsToShareExtensionBundleIdsMapping;
     NSArray *_attachments;
+    NSArray *_photoSuggestedPeople;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool showPotentialFamilyMembers; // @synthesize showPotentialFamilyMembers=_showPotentialFamilyMembers;
+@property(copy, nonatomic) NSArray *photoSuggestedPeople; // @synthesize photoSuggestedPeople=_photoSuggestedPeople;
 @property(retain, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property(copy, nonatomic) NSDictionary *appBundleIdsToShareExtensionBundleIdsMapping; // @synthesize appBundleIdsToShareExtensionBundleIdsMapping=_appBundleIdsToShareExtensionBundleIdsMapping;
 @property(copy, nonatomic) NSArray *candidateShareExtensionBundleIds; // @synthesize candidateShareExtensionBundleIds=_candidateShareExtensionBundleIds;
@@ -31,9 +37,9 @@
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(nonatomic) long long locationType; // @synthesize locationType=_locationType;
+@property(copy, nonatomic) NSArray *locationUUIDs; // @synthesize locationUUIDs=_locationUUIDs;
 @property(copy, nonatomic) NSUUID *locationUUID; // @synthesize locationUUID=_locationUUID;
 @property(copy, nonatomic) NSDate *suggestionDate; // @synthesize suggestionDate=_suggestionDate;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

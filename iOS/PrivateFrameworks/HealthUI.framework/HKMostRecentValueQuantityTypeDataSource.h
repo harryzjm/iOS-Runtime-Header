@@ -13,6 +13,7 @@
 - (id)_dataSourceValueFromStatisticsCollection:(id)arg1 statisticsInterval:(id)arg2;
 - (id)_dataSourceValueFromMostRecentQuantity:(id)arg1 quantityDateInterval:(id)arg2 statisticsInterval:(id)arg3;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 - (id)initWithUnitController:(id)arg1 displayType:(id)arg2 healthStore:(id)arg3;
 
 @end

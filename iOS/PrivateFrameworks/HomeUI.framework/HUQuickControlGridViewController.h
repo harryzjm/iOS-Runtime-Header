@@ -12,10 +12,11 @@
 }
 
 + (id)controlItemPredicate;
-@property(readonly, nonatomic) HUQuickControlCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HUQuickControlCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 - (void)_subclass_configureQuickControlViewController:(id)arg1;
 - (id)childQuickControlContentViewControllers;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
 - (id)hu_preloadContent;
 - (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;

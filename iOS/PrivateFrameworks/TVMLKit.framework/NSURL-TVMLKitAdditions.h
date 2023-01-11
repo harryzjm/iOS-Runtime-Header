@@ -9,7 +9,9 @@
 @interface NSURL (TVMLKitAdditions)
 - (long long)tv_imageURLType;
 - (_Bool)tv_isAppIconURL;
+- (id)tv_symbolName;
 - (id)tv_resourceName;
+- (_Bool)tv_isSymbolURL;
 - (_Bool)tv_isResourceURL;
 @end
 

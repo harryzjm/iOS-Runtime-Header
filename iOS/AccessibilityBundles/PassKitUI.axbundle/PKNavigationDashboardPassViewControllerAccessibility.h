@@ -11,8 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)initWithPassGroupView:(id)arg1 groupViewReceiver:(id)arg2 context:(id)arg3;
+- (id)initWithPassGroupView:(id)arg1 groupsController:(id)arg2 groupViewReceiver:(id)arg3 context:(id)arg4;
 - (void)didMoveToWindow;
+- (_Bool)accessibilityPerformEscape;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

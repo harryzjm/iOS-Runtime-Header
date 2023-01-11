@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardScrollModifierSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
+@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardRemoteContentSettings, CSDashBoardScrollModifierSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
 
 @interface CSLockScreenSettings : PTSettings
 {
@@ -21,6 +21,14 @@
     _Bool _showRegionsDebugView;
     _Bool _alwaysPutPluginsBelowScrollView;
     _Bool _killsInsecureDrawingApps;
+    _Bool _prewarmsCameraHardwareOnSwipe;
+    _Bool _prewarmsCameraHardwareOnTap;
+    _Bool _prelaunchesCameraAppOnSwipe;
+    _Bool _prelaunchesCameraAppOnTap;
+    double _minTouchIDDuration;
+    double _idleUntilShimmerDuration;
+    double _restToOpenDuration;
+    double _restToOpenIdleDuration;
     PTOutlet *_addNotificationOutlet;
     CSBounceSettings *_verticalBounceSettings;
     CSBounceSettings *_horizontalBounceSettings;
@@ -32,6 +40,7 @@
     CSDashBoardScrollModifierSettings *_dashBoardScrollModifierSettings;
     CSDashBoardNotificationVersusPagingScrollSettings *_dashBoardNotificationScrollSettings;
     CSDashBoardQuickActionsButtonSettings *_dashBoardQuickActionButtonSettings;
+    CSDashBoardRemoteContentSettings *_dashBoardRemoteContentSettings;
     CSCoverSheetDismissGestureSettings *_coverSheetDismissGestureSettings;
     SBFAnimationSettings *_unlockToPhoneWallpaperOutSettings;
     SBFAnimationSettings *_unlockToPhoneWallpaperInSettings;
@@ -53,9 +62,22 @@
     double _lockJiggleHapticDelay;
     double _lockJiggleAnimationDelay;
     double _unlockSwipeWallpaperAlpha;
+    double _cameraPrewarmThresholdOnSwipe;
+    double _cameraPrelaunchThresholdOnSwipe;
+    double _cameraPrewarmDebounceTimeInterval;
+    double _cameraPrewarmAutoCancelTimeInterval;
 }
 
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
+@property double cameraPrewarmAutoCancelTimeInterval; // @synthesize cameraPrewarmAutoCancelTimeInterval=_cameraPrewarmAutoCancelTimeInterval;
+@property double cameraPrewarmDebounceTimeInterval; // @synthesize cameraPrewarmDebounceTimeInterval=_cameraPrewarmDebounceTimeInterval;
+@property double cameraPrelaunchThresholdOnSwipe; // @synthesize cameraPrelaunchThresholdOnSwipe=_cameraPrelaunchThresholdOnSwipe;
+@property double cameraPrewarmThresholdOnSwipe; // @synthesize cameraPrewarmThresholdOnSwipe=_cameraPrewarmThresholdOnSwipe;
+@property _Bool prelaunchesCameraAppOnTap; // @synthesize prelaunchesCameraAppOnTap=_prelaunchesCameraAppOnTap;
+@property _Bool prelaunchesCameraAppOnSwipe; // @synthesize prelaunchesCameraAppOnSwipe=_prelaunchesCameraAppOnSwipe;
+@property _Bool prewarmsCameraHardwareOnTap; // @synthesize prewarmsCameraHardwareOnTap=_prewarmsCameraHardwareOnTap;
+@property _Bool prewarmsCameraHardwareOnSwipe; // @synthesize prewarmsCameraHardwareOnSwipe=_prewarmsCameraHardwareOnSwipe;
 @property _Bool killsInsecureDrawingApps; // @synthesize killsInsecureDrawingApps=_killsInsecureDrawingApps;
 @property _Bool alwaysPutPluginsBelowScrollView; // @synthesize alwaysPutPluginsBelowScrollView=_alwaysPutPluginsBelowScrollView;
 @property double unlockSwipeWallpaperAlpha; // @synthesize unlockSwipeWallpaperAlpha=_unlockSwipeWallpaperAlpha;
@@ -79,6 +101,7 @@
 @property(retain) SBFAnimationSettings *unlockToPhoneWallpaperInSettings; // @synthesize unlockToPhoneWallpaperInSettings=_unlockToPhoneWallpaperInSettings;
 @property(retain) SBFAnimationSettings *unlockToPhoneWallpaperOutSettings; // @synthesize unlockToPhoneWallpaperOutSettings=_unlockToPhoneWallpaperOutSettings;
 @property(retain) CSCoverSheetDismissGestureSettings *coverSheetDismissGestureSettings; // @synthesize coverSheetDismissGestureSettings=_coverSheetDismissGestureSettings;
+@property(retain) CSDashBoardRemoteContentSettings *dashBoardRemoteContentSettings; // @synthesize dashBoardRemoteContentSettings=_dashBoardRemoteContentSettings;
 @property(retain) CSDashBoardQuickActionsButtonSettings *dashBoardQuickActionButtonSettings; // @synthesize dashBoardQuickActionButtonSettings=_dashBoardQuickActionButtonSettings;
 @property(retain) CSDashBoardNotificationVersusPagingScrollSettings *dashBoardNotificationScrollSettings; // @synthesize dashBoardNotificationScrollSettings=_dashBoardNotificationScrollSettings;
 @property(retain) CSDashBoardScrollModifierSettings *dashBoardScrollModifierSettings; // @synthesize dashBoardScrollModifierSettings=_dashBoardScrollModifierSettings;
@@ -99,7 +122,10 @@
 @property _Bool showUserPicture; // @synthesize showUserPicture=_showUserPicture;
 @property _Bool showNowPlaying; // @synthesize showNowPlaying=_showNowPlaying;
 @property _Bool autoDismissUnlockedLockScreen; // @synthesize autoDismissUnlockedLockScreen=_autoDismissUnlockedLockScreen;
-- (void).cxx_destruct;
+@property double restToOpenIdleDuration; // @synthesize restToOpenIdleDuration=_restToOpenIdleDuration;
+@property double restToOpenDuration; // @synthesize restToOpenDuration=_restToOpenDuration;
+@property double idleUntilShimmerDuration; // @synthesize idleUntilShimmerDuration=_idleUntilShimmerDuration;
+@property double minTouchIDDuration; // @synthesize minTouchIDDuration=_minTouchIDDuration;
 - (void)setDefaultValues;
 
 @end

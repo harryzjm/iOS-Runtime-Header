@@ -22,12 +22,12 @@
 }
 
 + (id)groupForContact:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool addSpacerFromPreviousGroup; // @synthesize addSpacerFromPreviousGroup=_addSpacerFromPreviousGroup;
 @property(nonatomic) _Bool useSplitActions; // @synthesize useSplitActions=_useSplitActions;
 @property(readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-- (void).cxx_destruct;
 - (id)_loadActionItems;
 - (id)description;
 - (void)removeAllActions;
@@ -35,9 +35,11 @@
 - (SEL)unwrappedSelectorForAction:(id)arg1;
 - (id)unwrappedTargetForAction:(id)arg1;
 - (void)removeActionWithTarget:(id)arg1 selector:(SEL)arg2;
+- (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 glyphColor:(id)arg4 transportType:(long long)arg5;
 - (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 transportType:(long long)arg4;
 - (id)addActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (id)addActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3 destructive:(_Bool)arg4;
+- (void)addAction:(id)arg1 withTitle:(id)arg2 wrapTitle:(_Bool)arg3;
 - (void)addAction:(id)arg1 withTitle:(id)arg2;
 @property(readonly, nonatomic) NSArray *actionItems;
 @property(readonly, nonatomic) NSArray *editingItems;

@@ -74,7 +74,9 @@
 + (id)itemWithItemName:(id)arg1;
 + (id)itemWithContentsOfPath:(id)arg1 results:(id)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (_Bool)populateNamedAssetImportInfo:(id)arg1 withIdiom:(id)arg2 options:(id)arg3 isIcon:(_Bool)arg4 error:(id *)arg5;
 + (id)createDefaultInstancesForUnitTesting;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *compressionType; // @synthesize compressionType=_compressionType;
 @property(copy, nonatomic) NSSet *explicitTags; // @synthesize explicitTags=_explicitTags;
 @property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren; // @synthesize intrinsicallyOrderedChildren=_intrinsicallyOrderedChildren;
@@ -87,7 +89,6 @@
 @property(copy, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
 @property long long descendantChangeCount; // @synthesize descendantChangeCount=_descendantChangeCount;
 @property long long changeCount; // @synthesize changeCount=_changeCount;
-- (void).cxx_destruct;
 - (id)verifyExistenceInCompiledBundle:(id)arg1 forPlatform:(id)arg2;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (long long)effectiveCompressionType;
@@ -156,6 +157,7 @@
 @property(readonly, copy) NSString *debugDescription;
 - (id)descriptionWithIndent:(long long)arg1 includeChildren:(_Bool)arg2;
 - (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
+- (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1 filter:(CDUnknownBlockType)arg2;
 - (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1;
 - (void)removeAllChildren;
 - (void)removeFromParent;
@@ -168,6 +170,7 @@
 - (void)addChild:(id)arg1;
 - (void)insertChild:(id)arg1 atIndex:(id)arg2;
 @property(readonly, nonatomic) long long childOrdering;
+- (id)fullyQualifiedRuntimeNameForCARCompiler;
 - (id)fullyQualifiedRuntimeNameProvidingItemForCARCompiler;
 - (id)fullyQualifiedRuntimeName;
 - (id)fullyQualifiedRuntimeNameWithSeparator:(id)arg1;
@@ -218,10 +221,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
-- (void)populateLocaleImportInfo:(id)arg1 forLocale:(id)arg2 withDevelopmentLanguage:(id)arg3;
-- (void)populateAppearanceImportInfo:(id)arg1 withOptions:(id)arg2 forLuminosityAppearance:(id)arg3 vibrancyAppearance:(id)arg4 contrastAppearance:(id)arg5;
 - (_Bool)populateNamedAssetImportInfo:(id)arg1 allCompiledItems:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
-- (id)fullyQualifiedRuntimeNameWithOptions:(id)arg1;
 - (Class)manifestArchivist:(id)arg1 childClassForChildEntry:(id)arg2 results:(id)arg3;
 - (void)manifestArchivist:(id)arg1 finishCreatingChildren:(CDStruct_dbbaf529 *)arg2;
 - (long long)manifestArchivist:(id)arg1 orderChildrenForSlotConflictResolutionByComparing:(id)arg2 to:(id)arg3;
@@ -231,7 +231,7 @@
 - (void)manifestArchivist:(id)arg1 populateManifestEntry:(id)arg2 forChild:(id)arg3;
 - (_Bool)manifestArchivist:(id)arg1 childHasDataToRecordInManifest:(id)arg2;
 - (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
-- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2;
+- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2 manifestFileData:(id)arg3;
 - (_Bool)manifestArchivist:(id)arg1 validateManifest:(id)arg2 results:(id)arg3;
 - (CDStruct_39925896)manifestArchivistCompatibilityVersionInfo:(id)arg1;
 - (void)manifestArchivist:(id)arg1 setConflictState:(unsigned long long)arg2 forChild:(id)arg3;

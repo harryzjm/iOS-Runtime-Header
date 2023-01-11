@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_currentDropInsertionShadowUpdateIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int sessionKind; // @synthesize sessionKind=_sessionKind;
 @property(retain, nonatomic) NSUUID *currentDropInsertionShadowUpdateIdentifier; // @synthesize currentDropInsertionShadowUpdateIdentifier=_currentDropInsertionShadowUpdateIdentifier;
 @property(retain, nonatomic) _UIDropAnimationHandlers *defaultAnimationHandlers; // @synthesize defaultAnimationHandlers=_defaultAnimationHandlers;
@@ -48,7 +49,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *_reorderedItems; // @synthesize _reorderedItems=__reorderedItems;
 @property(retain, nonatomic) _UICollectionViewDragSourceController *sourceController; // @synthesize sourceController=_sourceController;
 @property(retain, nonatomic) _UICollectionViewDragDestinationController *destinationController; // @synthesize destinationController=_destinationController;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) id <UIDropSession> dropSession;
 @property(readonly, nonatomic) id <UIDropSession> session;
 @property(readonly, nonatomic) UICollectionViewDropProposal *dropProposal;
@@ -142,7 +142,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasShadowUpdates;
 - (void)transferOwnershipOfCellForDeferredReuseAfterDropAnimations:(id)arg1;
 - (_Bool)cellShouldRemainInHierarchy:(id)arg1 indexPath:(id)arg2;
-- (void)updateAppearanceForCell:(id)arg1 withAppearance:(long long)arg2;
 - (void)updateAppearanceForCell:(id)arg1 atIndexPath:(id)arg2;
 - (CDUnknownBlockType)endReordering;
 - (CDUnknownBlockType)cancelReordering;

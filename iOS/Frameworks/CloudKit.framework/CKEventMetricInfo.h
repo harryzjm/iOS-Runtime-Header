@@ -10,7 +10,6 @@
 
 @class NSDate, NSDictionary, NSMutableDictionary, NSString, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface CKEventMetricInfo : NSObject <NSSecureCoding>
 {
     _Bool _isCKInternalMetric;
@@ -18,6 +17,9 @@ __attribute__((visibility("hidden")))
     _Bool _allowsCellularAccess;
     _Bool _preferAnonymousRequests;
     NSUUID *_metricUUID;
+    NSString *_deviceIdentifier;
+    NSString *_sourceApplicationBundleIdentifier;
+    NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_eventName;
     NSDate *_startTime;
     NSDate *_endTime;
@@ -27,18 +29,21 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *associatedOperationGroups; // @synthesize associatedOperationGroups=_associatedOperationGroups;
 @property(readonly, nonatomic) NSMutableDictionary *associatedOperations; // @synthesize associatedOperations=_associatedOperations;
 @property(readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property(readonly, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
 @property(readonly, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
+@property(readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
+@property(readonly, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property(readonly, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property(readonly, nonatomic) _Bool preferAnonymousRequests; // @synthesize preferAnonymousRequests=_preferAnonymousRequests;
 @property(readonly, nonatomic) _Bool allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property(readonly, nonatomic) _Bool isPushTriggerFired; // @synthesize isPushTriggerFired=_isPushTriggerFired;
 @property(readonly, nonatomic) _Bool isCKInternalMetric; // @synthesize isCKInternalMetric=_isCKInternalMetric;
 @property(readonly, nonatomic) NSUUID *metricUUID; // @synthesize metricUUID=_metricUUID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithEventMetric:(id)arg1;

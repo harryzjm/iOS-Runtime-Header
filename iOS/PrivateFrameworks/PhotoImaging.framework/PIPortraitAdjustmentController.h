@@ -19,6 +19,7 @@
 - (_Bool)canRenderPortraitEffect;
 @property(copy, nonatomic) NSDictionary *portraitInfo;
 @property(copy, nonatomic) NSString *kind;
+- (_Bool)isSettingEqual:(id)arg1 forKey:(id)arg2;
 - (id)initWithAdjustment:(id)arg1;
 
 @end

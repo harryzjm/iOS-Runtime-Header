@@ -24,6 +24,7 @@
     NSString *_deviceManufacturer;
     NSString *_deviceModel;
     ASCodableCloudKitSample *_sample;
+    NSString *_scwi;
     _Bool _isIndoorWorkout;
     _Bool _isWatchWorkout;
     struct {
@@ -40,6 +41,8 @@
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *scwi; // @synthesize scwi=_scwi;
 @property(nonatomic) long long amm; // @synthesize amm=_amm;
 @property(retain, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property(retain, nonatomic) NSString *deviceManufacturer; // @synthesize deviceManufacturer=_deviceManufacturer;
@@ -54,7 +57,6 @@
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) ASCodableCloudKitSample *sample; // @synthesize sample=_sample;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -64,6 +66,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasScwi;
 @property(nonatomic) _Bool hasAmm;
 @property(readonly, nonatomic) _Bool hasDeviceModel;
 @property(readonly, nonatomic) _Bool hasDeviceManufacturer;

@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString, NSURL, UIImage;
+@class NSArray, NSDictionary, NSString, WFImage;
 
 @interface WFFileType
 {
     NSString *_string;
-    struct __CFString *_utType;
+    const struct __CFString *_utType;
     NSString *_pboardType;
     NSString *_OSType;
 }
 
-+ (id)typesForTagClass:(struct __CFString *)arg1 tag:(struct __CFString *)arg2 conformingToType:(struct __CFString *)arg3;
-+ (id)typeForTagClass:(struct __CFString *)arg1 tag:(struct __CFString *)arg2;
++ (id)typesForTagClass:(const struct __CFString *)arg1 tag:(const struct __CFString *)arg2 conformingToType:(const struct __CFString *)arg3;
++ (id)typeForTagClass:(const struct __CFString *)arg1 tag:(const struct __CFString *)arg2;
 + (id)typesFromUTTypes:(id)arg1;
 + (id)typesFromUTTypes:(id)arg1 excludingType:(id)arg2;
 + (_Bool)supportsSecureCoding;
@@ -23,20 +23,20 @@
 + (id)typeFromMIMEType:(id)arg1;
 + (id)typeFromFileExtension:(id)arg1;
 + (id)typeFromFilename:(id)arg1;
-+ (id)typeWithUTType:(struct __CFString *)arg1 string:(id)arg2;
-+ (id)typeWithUTType:(struct __CFString *)arg1;
++ (id)typeWithUTType:(const struct __CFString *)arg1 string:(id)arg2;
++ (id)typeWithUTType:(const struct __CFString *)arg1;
 + (id)typeWithString:(id)arg1;
-+ (id)cachedFileTypeForUTType:(struct __CFString *)arg1;
++ (id)cachedFileTypeForUTType:(const struct __CFString *)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *OSType; // @synthesize OSType=_OSType;
 @property(readonly, nonatomic) NSString *pboardType; // @synthesize pboardType=_pboardType;
-- (id)conformingTypesWithTagClass:(struct __CFString *)arg1 tag:(id)arg2;
-- (id)preferredTagWithClass:(struct __CFString *)arg1;
+- (id)conformingTypesWithTagClass:(const struct __CFString *)arg1 tag:(id)arg2;
+- (id)preferredTagWithClass:(const struct __CFString *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *MIMEType;
 @property(readonly, nonatomic) NSString *fileExtension;
 @property(readonly, nonatomic) NSArray *typesConformedTo;
-@property(readonly, nonatomic) NSURL *declaringBundleURL;
 @property(readonly, nonatomic) NSDictionary *typeDeclaration;
 @property(readonly, nonatomic) NSString *typeDescription;
 @property(readonly, nonatomic, getter=isDynamic) _Bool dynamic;
@@ -44,20 +44,19 @@
 - (id)conformingTypesWithMIMEType:(id)arg1;
 - (id)conformingTypesWithFileExtension:(id)arg1;
 - (_Bool)conformsToUTTypes:(id)arg1;
-- (_Bool)conformsToUTType:(struct __CFString *)arg1;
+- (_Bool)conformsToUTType:(const struct __CFString *)arg1;
 - (_Bool)conformsToType:(id)arg1;
-- (_Bool)isEqualToUTType:(struct __CFString *)arg1;
+- (_Bool)isEqualToUTType:(const struct __CFString *)arg1;
 - (_Bool)isEqualToString:(id)arg1;
 - (_Bool)isEqualToType:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic) NSString *string; // @synthesize string=_string;
-@property(readonly, nonatomic) struct __CFString *utType;
+@property(readonly, copy, nonatomic) NSString *string; // @synthesize string=_string;
+@property(readonly, nonatomic) const struct __CFString *utType; // @synthesize utType=_utType;
 - (void)dealloc;
-- (id)initWithUTType:(struct __CFString *)arg1 string:(id)arg2;
-- (id)initWithUTType:(struct __CFString *)arg1;
-@property(readonly, nonatomic) UIImage *documentIcon;
-@property(readonly, nonatomic) UIImage *icon;
+- (id)initWithUTType:(const struct __CFString *)arg1 string:(id)arg2;
+- (id)initWithUTType:(const struct __CFString *)arg1;
+@property(readonly, nonatomic) WFImage *documentIcon;
 
 @end
 

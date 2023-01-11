@@ -9,6 +9,8 @@
 @class CKMediaObject, CKMessageEntryContentView, IMPluginPayload, NSArray, NSString;
 
 @protocol CKMessageEntryContentViewDelegate <UIScrollViewDelegate>
+- (void)messageEntryContentViewDidTapMention:(CKMessageEntryContentView *)arg1 characterIndex:(double)arg2;
+- (_Bool)messageEntryContentViewWillChangeText:(CKMessageEntryContentView *)arg1 inRange:(struct _NSRange)arg2 withReplacementText:(NSString *)arg3;
 - (void)messageEntryContentViewCancelWasTapped:(CKMessageEntryContentView *)arg1 shelfPluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryContentViewDidTapHandwritingKey:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didPasteURL:(NSString *)arg2;
@@ -20,6 +22,7 @@
 - (void)messageEntryContentViewDidBeginEditing:(CKMessageEntryContentView *)arg1 wasAlreadyActive:(_Bool)arg2;
 - (_Bool)messageEntryContentViewShouldBeginEditing:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewShelfDidChange:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewDidChangeSelection:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidChange:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidReturn:(CKMessageEntryContentView *)arg1;
 @end

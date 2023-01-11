@@ -52,13 +52,13 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (struct NeuronInfo)neuronInfo;
 - (void)setNeuronToPReLUWithParametersA:(id)arg1;
 - (void)setBatchNormalizationParametersForInferenceWithMean:(const float *)arg1 variance:(const float *)arg2 gamma:(const float *)arg3 beta:(const float *)arg4 epsilon:(float)arg5;
 - (id)initWithKernelWidth:(unsigned long long)arg1 kernelHeight:(unsigned long long)arg2 inputFeatureChannels:(unsigned long long)arg3 outputFeatureChannels:(unsigned long long)arg4;
 - (id)init;
 - (_Bool)hasBatchNormData;
 - (id)initWithKernelWidth:(unsigned long long)arg1 kernelHeight:(unsigned long long)arg2 inputFeatureChannels:(unsigned long long)arg3 outputFeatureChannels:(unsigned long long)arg4 neuronFilter:(id)arg5;
+- (struct NeuronInfo)neuronInfo;
 - (void)setNeuronType:(int)arg1 parameterA:(float)arg2 parameterB:(float)arg3 parameterC:(float)arg4;
 - (void)setNeuronType:(int)arg1 parameterA:(float)arg2 parameterB:(float)arg3;
 - (float)neuronParameterC;

@@ -12,9 +12,9 @@
     NSMutableArray *_trackedPageHistory;
 }
 
-@property(retain, nonatomic) NSMutableArray *trackedPageHistory; // @synthesize trackedPageHistory=_trackedPageHistory;
 - (void).cxx_destruct;
-- (id)metricsDataWithCallerSuppliedFields:(id)arg1;
+@property(retain, nonatomic) NSMutableArray *trackedPageHistory; // @synthesize trackedPageHistory=_trackedPageHistory;
+- (void)didCreateMetricsData:(id)arg1;
 - (void)updatePageHistoryWithPage:(id)arg1;
 - (id)pageHistory:(id)arg1;
 - (id)eventVersion:(id)arg1;

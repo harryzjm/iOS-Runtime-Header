@@ -13,12 +13,12 @@
     NSString *_inviteeShortName;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *inviteeShortName; // @synthesize inviteeShortName=_inviteeShortName;
 @property(copy, nonatomic) NSString *inviteeCompositeName; // @synthesize inviteeCompositeName=_inviteeCompositeName;
 @property(copy, nonatomic) NSString *inviteeEmail; // @synthesize inviteeEmail=_inviteeEmail;
-- (void).cxx_destruct;
-- (id)urlRequest;
-- (id)url;
+- (id)_queryString;
+- (id)_endpoint;
 - (_Bool)isUserInitiated;
 
 @end

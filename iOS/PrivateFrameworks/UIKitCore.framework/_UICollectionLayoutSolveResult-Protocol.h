@@ -10,6 +10,7 @@
 @protocol _UICollectionLayoutAuxillaryOffsets;
 
 @protocol _UICollectionLayoutSolveResult <NSObject>
+@property(readonly, nonatomic) struct CGPoint contentOffsetAdjustment;
 @property(readonly, nonatomic) NSSet *invalidatedAuxillaryKinds;
 @property(readonly, nonatomic) NSIndexSet *invalidatedIndexes;
 - (id <_UICollectionLayoutAuxillaryOffsets>)invalidatedAuxillaryOffsets;

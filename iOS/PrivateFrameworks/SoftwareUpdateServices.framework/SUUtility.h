@@ -10,6 +10,7 @@
 {
 }
 
++ (id)bootTime;
 + (_Bool)deleteKeepAliveFile;
 + (_Bool)writeKeepAliveFile;
 + (id)systemContainerURL;
@@ -25,6 +26,7 @@
 + (_Bool)freeCachedSpaceSynchronous:(unsigned long long)arg1 timeout:(double)arg2;
 + (_Bool)appDemotionIsEnabled;
 + (void)enableAppDemotion:(_Bool)arg1;
++ (unsigned long long)systemPartitionGrowth:(id)arg1;
 + (long long)demoteApps:(unsigned long long)arg1 withError:(id *)arg2;
 + (long long)cacheDelete:(id)arg1;
 + (unsigned long long)totalPurgeableSpace:(id)arg1;
@@ -37,14 +39,17 @@
 + (void)postFailureNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4;
 + (void)postAutoUpdateInformationalNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 + (id)internalRecoveryStringForErrorCode:(long long)arg1;
++ (id)autoDownloadExpiredError:(_Bool)arg1;
 + (long long)MADownloadErrorCodeToSUDownloadErrorCode:(long long)arg1;
 + (long long)translateErrorCodeFromError:(id)arg1;
 + (id)translateError:(id)arg1 withAddedUserInfo:(id)arg2;
 + (id)translateError:(id)arg1;
 + (void)assignError:(id *)arg1 withError:(id)arg2 translate:(_Bool)arg3;
 + (void)assignError:(id *)arg1 withCode:(long long)arg2;
++ (id)errorRemovingUserInfoKey:(id)arg1 originalError:(id)arg2;
 + (id)errorWithCode:(long long)arg1 originalError:(id)arg2;
 + (id)errorWithCode:(long long)arg1;
++ (int)randomIntWithMinVal:(unsigned int)arg1 maxVal:(unsigned int)arg2;
 + (_Bool)alarmSetBeforeDate:(id)arg1;
 + (_Bool)isProductionFused;
 + (_Bool)currentReleaseTypeIsInternal;
@@ -61,6 +66,8 @@
 + (_Bool)isWiFiCapable;
 + (_Bool)isDaemon;
 + (void)setIsDaemon:(_Bool)arg1;
++ (id)fastWorkQueue;
++ (id)mainWorkQueue;
 + (id)appDemotionSettingQueue;
 + (id)taskQueue;
 

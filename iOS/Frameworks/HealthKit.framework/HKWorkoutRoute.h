@@ -11,14 +11,15 @@
     HDCodableLocationSeries *__codableWorkoutRoute;
 }
 
++ (_Bool)_isConcreteObjectClass;
 + (id)_workoutRouteWithDevice:(id)arg1 metadata:(id)arg2;
-@property(retain, nonatomic, setter=_setCodableWorkoutRoute:) HDCodableLocationSeries *_codableWorkoutRoute; // @synthesize _codableWorkoutRoute=__codableWorkoutRoute;
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setCodableWorkoutRoute:) HDCodableLocationSeries *_codableWorkoutRoute; // @synthesize _codableWorkoutRoute=__codableWorkoutRoute;
 - (_Bool)_isSmoothed;
 - (_Bool)_requiresPrivateEntitlementForQueries;
 - (id)_valueDescription;
 - (id)_validateSample;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 
 @end
 

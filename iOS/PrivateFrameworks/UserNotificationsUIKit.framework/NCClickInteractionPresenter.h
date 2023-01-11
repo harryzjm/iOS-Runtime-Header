@@ -30,6 +30,7 @@
     struct CGRect _sourceViewVisibleRect;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_isHinting, setter=_setHinting:) _Bool hinting; // @synthesize hinting=_hinting;
 @property(readonly, nonatomic, getter=_backgroundMaterialView) MTMaterialView *backgroundMaterialView; // @synthesize backgroundMaterialView=_backgroundMaterialView;
 @property(readonly, nonatomic, getter=_presentedControl) NCClickInteractionPresentedControl *presentedControl; // @synthesize presentedControl=_presentedControl;
@@ -44,8 +45,6 @@
 @property(copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property(nonatomic) struct CGRect sourceViewVisibleRect; // @synthesize sourceViewVisibleRect=_sourceViewVisibleRect;
 @property(readonly, nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
-- (void).cxx_destruct;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_handleEatenTouch:(id)arg1;
 - (void)_tearDown;
 - (void)_performCancel;
@@ -64,15 +63,17 @@
 - (void)_configureBackgroundMaterialViewIfNecessary;
 - (void)_setUpContainerView;
 - (void)_configureContainerViewIfNecessary;
+- (void)_setUpPresentationIfNecessary;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)clickInteractionDidEnd:(id)arg1;
 - (void)clickInteractionDidClickUp:(id)arg1;
 - (id)highlightEffectForClickInteraction:(id)arg1;
 - (_Bool)clickInteractionShouldBegin:(id)arg1;
+- (void)contentSizeCategoryDidChange;
+- (void)presentModalFullScreen;
 - (_Bool)dismissModalFullScreenIfNeeded;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 @property(readonly, copy, nonatomic) NSString *title;
-- (void)dealloc;
 - (id)initWithTitle:(id)arg1 sourceView:(id)arg2 materialRecipe:(long long)arg3;
 
 // Remaining properties

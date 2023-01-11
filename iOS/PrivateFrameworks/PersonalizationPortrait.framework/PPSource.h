@@ -6,14 +6,18 @@
 
 #import <ProactiveSupport/_PASZonedObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, PPSourceMetadata;
+@class NSArray, NSDate, NSSet, NSString, PPSourceMetadata;
 
-@interface PPSource : _PASZonedObject <NSCopying, NSSecureCoding>
+@interface PPSource : _PASZonedObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     PPSourceMetadata *_metadata;
+    NSDate *_relevanceDate;
+    NSArray *_contactHandles;
+    NSString *_language;
     NSString *_bundleId;
     NSString *_groupId;
     NSString *_documentId;
@@ -21,19 +25,25 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *contactHandles; // @synthesize contactHandles=_contactHandles;
+@property(readonly, nonatomic) NSString *language; // @synthesize language=_language;
+@property(readonly, nonatomic) NSDate *relevanceDate; // @synthesize relevanceDate=_relevanceDate;
 @property(readonly, nonatomic) PPSourceMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) NSString *documentId; // @synthesize documentId=_documentId;
 @property(readonly, nonatomic) NSString *groupId; // @synthesize groupId=_groupId;
 @property(readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
-- (void).cxx_destruct;
+- (id)featureValueForName:(id)arg1;
+@property(readonly, nonatomic) NSSet *featureNames;
+- (id)sha256;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToSource:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4 metadata:(id)arg5;
+- (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4 relevanceDate:(id)arg5 contactHandles:(id)arg6 language:(id)arg7 metadata:(id)arg8;
 - (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4;
 
 @end

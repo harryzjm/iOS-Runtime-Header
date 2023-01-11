@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (CKUtilities)
+- (void)__ck_makeEdgesEqualTo:(id)arg1;
 - (struct CGSize)__ck_frameSizeForAlignmentRectSize:(struct CGSize)arg1;
 - (struct CGSize)__ck_alignmentRectSizeForFrameSize:(struct CGSize)arg1;
 - (_Bool)__ck_containsFirstResponder;

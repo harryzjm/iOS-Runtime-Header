@@ -8,7 +8,8 @@
 {
 }
 
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (long long)compareForReplacmentWithObject:(id)arg1 existingObject:(id)arg2;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (_Bool)addCodableObject:(id)arg1 toCollection:(id)arg2;
 + (id)codableObjectsFromObjectCollection:(id)arg1;
 + (id)joinClausesForProperty:(id)arg1;

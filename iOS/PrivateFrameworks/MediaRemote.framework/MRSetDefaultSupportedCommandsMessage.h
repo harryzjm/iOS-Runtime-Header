@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class MRNowPlayingState, NSArray, NSString;
 
 @interface MRSetDefaultSupportedCommandsMessage
 {
+    MRNowPlayingState *_state;
 }
 
+- (void).cxx_destruct;
 - (unsigned long long)type;
 @property(readonly, nonatomic) NSString *bundleID;
 @property(readonly, nonatomic) NSArray *supportedCommands;
-- (id)initWithDefaultSupportedCommands:(id)arg1 forClient:(id)arg2;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
+- (id)initWithDefaultSupportedCommands:(id)arg1 forPlayerPath:(id)arg2;
 
 @end
 

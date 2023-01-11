@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     struct VideoFullscreenInterfaceAVKit *_fullscreenInterface;
     struct RetainPtr<UIViewController> _presentingViewController;
     struct RetainPtr<AVPlayerViewController> _avPlayerViewController;
+    struct RetainPtr<NSTimer> _startPictureInPictureTimer;
+    struct RetainPtr<AVObservationController> _avPlayerViewControllerObservationController;
     id <AVPlayerViewControllerDelegate_WebKitOnly> _delegate;
 }
 
@@ -36,10 +38,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)isPictureInPicturePossible;
 - (void)stopPictureInPicture;
 - (void)startPictureInPicture;
+- (void)tryToStartPictureInPicture;
 - (void)exitFullScreenAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enterFullScreenAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setWebKitOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;
 - (_Bool)playerViewControllerShouldHandleDoneButtonTap:(id)arg1;
+- (void)dealloc;
 - (id)initWithFullscreenInterface:(struct VideoFullscreenInterfaceAVKit *)arg1;
 
 // Remaining properties

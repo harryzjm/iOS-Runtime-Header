@@ -15,16 +15,7 @@
     NSMutableDictionary *_mainDocumentTaskMimeTypes;
 }
 
-@property(retain, nonatomic) NSMutableDictionary *_mainDocumentTaskMimeTypes; // @synthesize _mainDocumentTaskMimeTypes;
-@property(retain, nonatomic) NSMutableDictionary *_mainDocumentTaskURLs; // @synthesize _mainDocumentTaskURLs;
-@property(retain, nonatomic) NSNumber *_streamID; // @synthesize _streamID;
-- (_Bool)isEmpty;
-- (void)removeStreamWithStreamID:(id)arg1 requestURLString:(id)arg2;
-- (int)parentStreamIDForMimeType:(id)arg1;
-- (int)parentStreamIDForURLString:(id)arg1;
-- (void)addNewStreamID:(id)arg1 requestURLString:(id)arg2;
 - (void)dealloc;
-- (id)initWithStreamID:(id)arg1 requestURLString:(id)arg2 dependencyInfo:(id)arg3;
 - (id)init;
 
 @end

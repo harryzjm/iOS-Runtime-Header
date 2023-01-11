@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)hideLockOutForURL:(id)arg1;
-- (id)showLockOutForURL:(id)arg1;
+- (void)hideBlockingViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)showBlockingViewControllerForURL:(id)arg1 withPolicy:(long long)arg2 animated:(_Bool)arg3;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)_axHideWebView:(_Bool)arg1;

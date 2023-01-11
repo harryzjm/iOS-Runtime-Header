@@ -8,6 +8,7 @@
 
 @class MPMediaItemArtwork, NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPNowPlayingInfoCenterArtworkContext : NSObject
 {
     NSString *_artworkIdentifier;
@@ -15,10 +16,10 @@
     NSData *_artworkData;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *artworkData; // @synthesize artworkData=_artworkData;
 @property(retain, nonatomic) MPMediaItemArtwork *artwork; // @synthesize artwork=_artwork;
 @property(copy, nonatomic) NSString *artworkIdentifier; // @synthesize artworkIdentifier=_artworkIdentifier;
-- (void).cxx_destruct;
 
 @end
 

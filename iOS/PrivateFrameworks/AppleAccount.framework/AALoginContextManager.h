@@ -14,6 +14,7 @@
     struct os_unfair_lock_s _stashedContextLock;
 }
 
++ (void)stashLoginResponseWithAuthenticationResults:(id)arg1 cloudKitToken:(id)arg2;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)persistStashedContext;

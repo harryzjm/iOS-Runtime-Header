@@ -8,21 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEODestinationInfo, GEOTransitOptions, GEOWalkingOptions, NSString, PBDataReader, PBUnknownFields;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEODestinationInfo, GEOTransitOptions, GEOWalkingOptions, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORouteAttributes : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _additionalTransportTypes;
     CDStruct_95bda58d _uiContexts;
     struct GEOTimepoint _timepoint;
     GEOAutomobileOptions *_automobileOptions;
+    GEOCyclingOptions *_cyclingOptions;
     GEODestinationInfo *_destinationInfo;
     NSString *_phoneticLocaleIdentifier;
     GEOTransitOptions *_transitOptions;
     GEOWalkingOptions *_walkingOptions;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _basicPointsToBeIncluded;
     int _destinationType;
     int _mainTransportType;
@@ -65,37 +68,12 @@
         unsigned int read_additionalTransportTypes:1;
         unsigned int read_uiContexts:1;
         unsigned int read_automobileOptions:1;
+        unsigned int read_cyclingOptions:1;
         unsigned int read_destinationInfo:1;
         unsigned int read_phoneticLocaleIdentifier:1;
         unsigned int read_transitOptions:1;
         unsigned int read_walkingOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_additionalTransportTypes:1;
-        unsigned int wrote_uiContexts:1;
-        unsigned int wrote_timepoint:1;
-        unsigned int wrote_automobileOptions:1;
-        unsigned int wrote_destinationInfo:1;
-        unsigned int wrote_phoneticLocaleIdentifier:1;
-        unsigned int wrote_transitOptions:1;
-        unsigned int wrote_walkingOptions:1;
-        unsigned int wrote_basicPointsToBeIncluded:1;
-        unsigned int wrote_destinationType:1;
-        unsigned int wrote_mainTransportType:1;
-        unsigned int wrote_trafficType:1;
-        unsigned int wrote_walkingLimitMeters:1;
-        unsigned int wrote_directZilchByLaneFlowlines:1;
-        unsigned int wrote_enableExperimentalMode:1;
-        unsigned int wrote_includeContingencyRoutes:1;
-        unsigned int wrote_includeHistoricTravelTime:1;
-        unsigned int wrote_includeLaneGuidance:1;
-        unsigned int wrote_includeManeuverIcons:1;
-        unsigned int wrote_includePhonetics:1;
-        unsigned int wrote_includeTrafficAlongRoute:1;
-        unsigned int wrote_includeTrafficIncidents:1;
-        unsigned int wrote_includeZilchPoints:1;
-        unsigned int wrote_includeCrossLanguagePhonetics:1;
-        unsigned int wrote_includeLaneWidths:1;
-        unsigned int wrote_useMetricThreshold:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -112,6 +90,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIncludeLaneWidths;
@@ -126,7 +107,6 @@
 @property(nonatomic) int destinationType;
 @property(retain, nonatomic) GEODestinationInfo *destinationInfo;
 @property(readonly, nonatomic) _Bool hasDestinationInfo;
-- (void)_readDestinationInfo;
 @property(nonatomic) _Bool hasEnableExperimentalMode;
 @property(nonatomic) _Bool enableExperimentalMode;
 @property(nonatomic) _Bool hasUseMetricThreshold;
@@ -135,31 +115,26 @@
 - (id)uiContextsAsString:(int)arg1;
 - (void)setUiContexts:(int *)arg1 count:(unsigned long long)arg2;
 - (int)uiContextAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsUiContext:(int)arg1;
 - (void)addUiContext:(int)arg1;
 - (void)clearUiContexts;
 @property(readonly, nonatomic) int *uiContexts;
 @property(readonly, nonatomic) unsigned long long uiContextsCount;
-- (void)_readUiContexts;
 @property(retain, nonatomic) GEOWalkingOptions *walkingOptions;
 @property(readonly, nonatomic) _Bool hasWalkingOptions;
-- (void)_readWalkingOptions;
 @property(retain, nonatomic) GEOTransitOptions *transitOptions;
 @property(readonly, nonatomic) _Bool hasTransitOptions;
-- (void)_readTransitOptions;
+@property(retain, nonatomic) GEOCyclingOptions *cyclingOptions;
+@property(readonly, nonatomic) _Bool hasCyclingOptions;
 @property(retain, nonatomic) GEOAutomobileOptions *automobileOptions;
 @property(readonly, nonatomic) _Bool hasAutomobileOptions;
-- (void)_readAutomobileOptions;
 - (int)StringAsAdditionalTransportTypes:(id)arg1;
 - (id)additionalTransportTypesAsString:(int)arg1;
 - (void)setAdditionalTransportTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)additionalTransportTypeAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsAdditionalTransportType:(int)arg1;
 - (void)addAdditionalTransportType:(int)arg1;
 - (void)clearAdditionalTransportTypes;
 @property(readonly, nonatomic) int *additionalTransportTypes;
 @property(readonly, nonatomic) unsigned long long additionalTransportTypesCount;
-- (void)_readAdditionalTransportTypes;
 @property(nonatomic) _Bool hasWalkingLimitMeters;
 @property(nonatomic) unsigned int walkingLimitMeters;
 @property(nonatomic) _Bool hasIncludeTrafficIncidents;
@@ -172,7 +147,6 @@
 @property(nonatomic) _Bool includeTrafficAlongRoute;
 @property(retain, nonatomic) NSString *phoneticLocaleIdentifier;
 @property(readonly, nonatomic) _Bool hasPhoneticLocaleIdentifier;
-- (void)_readPhoneticLocaleIdentifier;
 - (int)StringAsTrafficType:(id)arg1;
 - (id)trafficTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasTrafficType;
@@ -196,6 +170,11 @@
 @property(nonatomic) _Bool hasMainTransportType;
 @property(nonatomic) int mainTransportType;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
+- (_Bool)shouldRetryForError:(id)arg1;
+- (void)buildRouteAttributesForETAUpdateRequest:(id)arg1 queue:(id)arg2 result:(CDUnknownBlockType)arg3;
+- (void)buildRouteAttributes:(id)arg1 result:(CDUnknownBlockType)arg2;
 
 @end
 

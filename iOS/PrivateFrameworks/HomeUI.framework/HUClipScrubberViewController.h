@@ -6,24 +6,21 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeUI/HFCameraClipFeedbackObserving-Protocol.h>
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 #import <HomeUI/HUCameraPlayerScrubbing-Protocol.h>
 #import <HomeUI/HUFeedbackConsentViewControllerDelegate-Protocol.h>
 #import <HomeUI/NSURLSessionDelegate-Protocol.h>
+#import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, HFCameraPlaybackEngine, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, HULegibilityLabel, NSLayoutConstraint, NSString, NSTimer, UIButton, UIView;
+@class CADisplayLink, HFCameraAnalyticsCameraClipExportSessionEvent, HFCameraPlaybackEngine, HMCameraClipFetchVideoAssetContextOperation, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, NSLayoutConstraint, NSString, UIButton, UITapGestureRecognizer, UIView;
 
-@interface HUClipScrubberViewController : UIViewController <NSURLSessionDelegate, HUFeedbackConsentViewControllerDelegate, HUCameraPlayerScrubbing, HFCameraClipFeedbackObserving, HFCameraPlaybackEngineObserver>
+@interface HUClipScrubberViewController : UIViewController <NSURLSessionDelegate, UIGestureRecognizerDelegate, HUFeedbackConsentViewControllerDelegate, HUCameraPlayerScrubbing, HFCameraPlaybackEngineObserver>
 {
     _Bool _isVisible;
     CDUnknownBlockType _accessoryButtonHandler;
     CDUnknownBlockType _beginEditingHandler;
     CDUnknownBlockType _endEditingHandler;
-    CDUnknownBlockType _deletionHandler;
     HFCameraPlaybackEngine *_playbackEngine;
-    HULegibilityLabel *_dayLabel;
-    HULegibilityLabel *_timeLabel;
     HUClipScrubberView *_scrubberView;
     UIButton *_selectionButton;
     UIButton *_nearbyAccessoriesButton;
@@ -38,14 +35,22 @@
     NSLayoutConstraint *_feedbackPlatterTopAnchorConstraint;
     NSLayoutConstraint *_nearbyAccessoriesPlatterTopAnchorConstraint;
     NSLayoutConstraint *_selectionPlatterTopAnchorConstraint;
-    NSTimer *_liveTimer;
     CADisplayLink *_scrubberUpdateDisplayLink;
+    unsigned long long _lastEngineMode;
+    HMCameraClipFetchVideoAssetContextOperation *_exportDownloadOperation;
+    UITapGestureRecognizer *_singleTapGestureRecognizer;
+    UITapGestureRecognizer *_doubleTapGestureRecognizer;
+    HFCameraAnalyticsCameraClipExportSessionEvent *_exportSessionEvent;
 }
 
-+ (id)_legibilityLabelFactory;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HFCameraAnalyticsCameraClipExportSessionEvent *exportSessionEvent; // @synthesize exportSessionEvent=_exportSessionEvent;
+@property(retain, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
+@property(retain, nonatomic) UITapGestureRecognizer *singleTapGestureRecognizer; // @synthesize singleTapGestureRecognizer=_singleTapGestureRecognizer;
+@property(nonatomic) __weak HMCameraClipFetchVideoAssetContextOperation *exportDownloadOperation; // @synthesize exportDownloadOperation=_exportDownloadOperation;
+@property(nonatomic) unsigned long long lastEngineMode; // @synthesize lastEngineMode=_lastEngineMode;
 @property(nonatomic) _Bool isVisible; // @synthesize isVisible=_isVisible;
 @property(retain, nonatomic) CADisplayLink *scrubberUpdateDisplayLink; // @synthesize scrubberUpdateDisplayLink=_scrubberUpdateDisplayLink;
-@property(retain, nonatomic) NSTimer *liveTimer; // @synthesize liveTimer=_liveTimer;
 @property(retain, nonatomic) NSLayoutConstraint *selectionPlatterTopAnchorConstraint; // @synthesize selectionPlatterTopAnchorConstraint=_selectionPlatterTopAnchorConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *nearbyAccessoriesPlatterTopAnchorConstraint; // @synthesize nearbyAccessoriesPlatterTopAnchorConstraint=_nearbyAccessoriesPlatterTopAnchorConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *feedbackPlatterTopAnchorConstraint; // @synthesize feedbackPlatterTopAnchorConstraint=_feedbackPlatterTopAnchorConstraint;
@@ -60,18 +65,12 @@
 @property(retain, nonatomic) UIButton *nearbyAccessoriesButton; // @synthesize nearbyAccessoriesButton=_nearbyAccessoriesButton;
 @property(retain, nonatomic) UIButton *selectionButton; // @synthesize selectionButton=_selectionButton;
 @property(retain, nonatomic) HUClipScrubberView *scrubberView; // @synthesize scrubberView=_scrubberView;
-@property(retain, nonatomic) HULegibilityLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
-@property(retain, nonatomic) HULegibilityLabel *dayLabel; // @synthesize dayLabel=_dayLabel;
 @property(nonatomic) __weak HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-@property(copy, nonatomic) CDUnknownBlockType deletionHandler; // @synthesize deletionHandler=_deletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType endEditingHandler; // @synthesize endEditingHandler=_endEditingHandler;
 @property(copy, nonatomic) CDUnknownBlockType beginEditingHandler; // @synthesize beginEditingHandler=_beginEditingHandler;
 @property(copy, nonatomic) CDUnknownBlockType accessoryButtonHandler; // @synthesize accessoryButtonHandler=_accessoryButtonHandler;
-- (void).cxx_destruct;
-- (void)manager:(id)arg1 failedToSubmitClipWithIdentifier:(id)arg2 error:(id)arg3;
-- (void)manager:(id)arg1 didSubmitCameraClips:(id)arg2;
-- (void)manager:(id)arg1 didSubmitCameraClip:(id)arg2;
-- (void)submitAllUnsubmittedClips;
+- (void)donateAllClips;
+- (void)donateClip:(id)arg1;
 - (void)verifySubmitAllClips;
 - (void)submitCurrentClip;
 - (id)_feedbackClip;
@@ -81,10 +80,10 @@
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2;
 - (void)showEditInterface;
 - (void)dismissEditInterface;
-- (void)updateTimelineState:(unsigned long long)arg1;
 - (void)removeLiveButtonHighlighting;
 - (void)showDeleteInterface;
 - (void)deleteClip;
+- (void)updateSelectionPlatterDisplay;
 - (id)_displayableURLForCameraClipURL:(id)arg1;
 - (id)outputURLForClip:(id)arg1;
 - (id)uploadURLCameraClip:(id)arg1;
@@ -95,28 +94,30 @@
 - (unsigned long long)displayMode;
 - (_Bool)_cellBoundsContainsPlayhead:(id)arg1;
 - (id)platterWithView:(id)arg1;
-- (void)didSelectLeftActionButton:(id)arg1;
 - (void)didSelectRightActionButton:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (void)didDoubleTap:(id)arg1;
 - (void)didTap:(id)arg1;
 - (void)didPinch:(id)arg1;
 - (_Bool)userIsScrubbing;
 - (void)_updatePlaybackPosition:(id)arg1 animated:(_Bool)arg2;
+- (void)updateAccessoryViews;
 - (void)_scrubberDisplayLinkTick:(id)arg1;
-- (void)_updateScrubberDisplayLinkState;
+- (void)updateScrubberDisplayLinkState;
 @property(readonly, nonatomic) double currentScrubberResolution;
+- (void)playbackEngine:(id)arg1 didRemoveEvents:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateTimelineState:(unsigned long long)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackError:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
-- (void)playbackEngine:(id)arg1 didUpdateClipManager:(id)arg2;
 - (void)showAssociatedAccessories;
-- (void)cancelLiveTimer;
-- (void)startLiveTimer;
 - (void)updateDisplayForLiveMode;
-- (void)_updateTimeLabel;
 - (void)changeToLiveMode;
 - (void)togglePlayPause;
 - (void)_addConstraints;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)updateScrubberViewAndAssociatedConstraints;

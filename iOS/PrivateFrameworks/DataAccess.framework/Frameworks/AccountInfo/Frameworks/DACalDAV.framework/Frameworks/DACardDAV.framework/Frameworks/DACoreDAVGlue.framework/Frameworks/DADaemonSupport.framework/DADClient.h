@@ -6,7 +6,7 @@
 
 #import <DataAccessExpress/DADisableableObject.h>
 
-@class NSMutableDictionary, NSObject, NSString;
+@class NSCountedSet, NSMutableDictionary, NSObject, NSString;
 @protocol OS_xpc_object;
 
 @interface DADClient : DADisableableObject
@@ -15,9 +15,11 @@
     _Bool _hasReminderAccess;
     _Bool _hasContactsAccess;
     _Bool _isInternalTool;
+    _Bool _isAccountsDaemon;
     _Bool _persistent;
     int _numOutstandingBlockingClientCalls;
     int _numOutstandingRefreshPriorityClientCalls;
+    int _clientPID;
     NSString *_clientBundleID;
     NSString *_clientUniqueID;
     NSObject<OS_xpc_object> *_conn;
@@ -28,11 +30,16 @@
     NSMutableDictionary *_actionDelegatesById;
     NSString *_clientName;
     NSMutableDictionary *_agentMonitoringTokens;
+    NSCountedSet *_simulatedCalDAVHostnames;
 }
 
 + (unsigned long long)permissionsForMessage:(id)arg1;
++ (_Bool)_shouldReloadAgentsForAccountChange:(id)arg1;
 + (id)clientsToInterrogate;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSCountedSet *simulatedCalDAVHostnames; // @synthesize simulatedCalDAVHostnames=_simulatedCalDAVHostnames;
 @property(retain, nonatomic) NSMutableDictionary *agentMonitoringTokens; // @synthesize agentMonitoringTokens=_agentMonitoringTokens;
+@property(nonatomic) int clientPID; // @synthesize clientPID=_clientPID;
 @property(retain, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property(retain, nonatomic) NSMutableDictionary *actionDelegatesById; // @synthesize actionDelegatesById=_actionDelegatesById;
 @property(retain, nonatomic) NSMutableDictionary *accountTimers; // @synthesize accountTimers=_accountTimers;
@@ -45,7 +52,7 @@
 @property(retain, nonatomic) NSString *clientUniqueID; // @synthesize clientUniqueID=_clientUniqueID;
 @property(retain, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property(readonly, nonatomic) _Bool persistent; // @synthesize persistent=_persistent;
-- (void).cxx_destruct;
+- (_Bool)_isAccountsDaemon;
 - (_Bool)_isInternalTool;
 - (_Bool)_hasContactsAccess;
 - (_Bool)_hasReminderAccess;
@@ -57,6 +64,8 @@
 - (void)_clientDiedWithReason:(id)arg1;
 - (void)_sendInvalidAccountIDReplyToMessage:(id)arg1 withAccountID:(id)arg2;
 - (_Bool)_checkAccountId:(id)arg1;
+- (void)_endAllServerSimulations;
+- (void)_manageCalDAVServerSimulatorWithHostname:(id)arg1 action:(id)arg2;
 - (void)applyClientStatusReportToAggregator:(id)arg1;
 - (void)_agentsStopped:(id)arg1;
 - (void)_foldersUpdated:(id)arg1;
@@ -70,8 +79,13 @@
 - (void)_requestGrantedDelegatesList:(id)arg1 eventDict:(id)arg2;
 - (void)_cancelCalendarAvailabilityRequest:(id)arg1 eventDict:(id)arg2;
 - (void)_requestCalendarAvailability:(id)arg1 eventDict:(id)arg2;
+- (void)_setUserNameAndPasswordForSubscribedCalendar:(id)arg1 eventDict:(id)arg2;
+- (void)_cancelDownloadingSubscribedCalendar:(id)arg1 eventDict:(id)arg2;
+- (void)_downloadSubscribedCalendar:(id)arg1 eventDict:(id)arg2;
 - (void)_checkIsOofSettingsSupported:(id)arg1;
 - (void)_openServerOofSettingsRequest:(id)arg1;
+- (void)_setOfficeHoursEvent:(id)arg1 eventDict:(id)arg2;
+- (void)_fetchOfficeHoursEvent:(id)arg1 eventDict:(id)arg2;
 - (void)_reportSharedCalendarAsJunkEvent:(id)arg1 eventDict:(id)arg2;
 - (void)_respondToSharedCalendarEvent:(id)arg1 eventDict:(id)arg2;
 - (void)_cancelDownloadingAttachmentEvent:(id)arg1 eventDict:(id)arg2;
@@ -98,10 +112,14 @@
 - (id)timersForAccountWithID:(id)arg1;
 - (void)_requestPolicyUpdate:(id)arg1;
 - (void)_getCurrentPolicyKey:(id)arg1;
-- (void)_removeStoresForAccountWithID:(id)arg1;
+- (void)_handleAccountChange:(id)arg1;
 - (void)_stopMonitoringAgents:(id)arg1;
 - (void)_startMonitoringAgents:(id)arg1;
+@property(readonly, nonatomic) unsigned long long outstandingStopMonitoringAgentRequests;
 - (void)_clearAllStopMonitoringAgentsTokens;
+- (void)_cancelRestartingAgentsDueToTimeout;
+- (void)_restartAgentsDueToTimeout;
+- (void)_startTimeoutWithClientToken:(unsigned long long)arg1;
 - (void)_startMonitoringAgentsWithServerToken:(unsigned long long)arg1;
 - (void)_startMonitoringAgentsWithClientToken:(unsigned long long)arg1;
 - (void)_stopMonitoringAgentsWithClientToken:(unsigned long long)arg1;
@@ -121,7 +139,6 @@
 - (void)disable;
 - (void)_removeWatchedFolderIDs:(id)arg1 forAccountWithID:(id)arg2;
 - (void)_removeBusyFolderIDs:(id)arg1 forAccountWithID:(id)arg2;
-- (id)_clientName;
 - (void)dealloc;
 - (void)reconnectWithConnection:(id)arg1;
 - (id)initWithClientID:(id)arg1;

@@ -6,67 +6,104 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <GameCenterUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <GameCenterUI/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <GameCenterUI/UIScrollViewDelegate-Protocol.h>
 
-@class GKBubbleFlowContainerView, NSMutableDictionary, NSString, OBBoldTrayButton, OBPrivacyLinkController, UILabel, UIView;
-@protocol GKOnboardingFlowDelegate;
+@class GKLabel, NSLayoutConstraint, NSString, OBBoldTrayButton, OBPrivacyLinkController, UIImageView, UILabel, UIScrollView, UIStackView, UIView;
 
-@interface GKOnboardingViewController : UIViewController <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
+@interface GKOnboardingViewController : UIViewController <UIScrollViewDelegate>
 {
-    _Bool _presenting;
-    id <GKOnboardingFlowDelegate> _delegate;
-    NSString *_lastPersonalizationVersionDisplayed;
-    unsigned long long _lastPrivacyNoticeVersionDisplayed;
-    NSMutableDictionary *_analyticsPayload;
     UIView *_privacyContainer;
-    UIView *_bubblePlaceholder;
+    NSLayoutConstraint *_topConstraint;
     UIView *_buttonContainer;
+    UIView *_privacyContainerInScrollView;
+    UIView *_continueButtonContainerInScrollView;
+    NSLayoutConstraint *_welcomeStackViewTrailingConstraint;
+    NSLayoutConstraint *_welcomeStackViewLeadingConstraint;
+    NSLayoutConstraint *_whatsnewStackViewTrailingConstraint;
+    NSLayoutConstraint *_whatsnewStackViewLeadingConstraint;
+    NSLayoutConstraint *_privacyContainerInScrollViewHeightConstraint;
+    NSLayoutConstraint *_bottomStackViewTopConstraint;
+    NSLayoutConstraint *_continueButtonContainerWidthConstraint;
+    NSLayoutConstraint *_bottomStackViewBottomConstraint;
+    NSLayoutConstraint *_continueButtonContainerInScrollViewHeightConstraint;
+    NSLayoutConstraint *_scrollViewToBottomContainerConstraint;
+    NSLayoutConstraint *_scrollViewToBottomSafeAreaConstraint;
+    UIImageView *_bubbleImageView;
+    UIView *_bottomContainerView;
     OBBoldTrayButton *_nextButton;
-    GKBubbleFlowContainerView *_bubblesContainerView;
-    UIView *_bubblesAnchorView;
+    UIScrollView *_scrollView;
+    UIStackView *_welcomeStackView;
+    UIStackView *_whatsNewStackView;
+    UIImageView *_addFriendsImage;
+    GKLabel *_addFriendsTitle;
+    GKLabel *_addFriendsSubtitle;
+    UIImageView *_achievementImage;
+    GKLabel *_achievementTitle;
+    GKLabel *_achievementSubtitle;
+    UIImageView *_multiplayerImage;
+    GKLabel *_multiplayerTitle;
+    GKLabel *_multiplayerSubtitle;
+    UIView *_addFriendsContainer;
+    UIView *_achievementContainer;
+    UIView *_multiplayerContainer;
     UILabel *_mainTitle;
     UILabel *_subTitle;
     OBPrivacyLinkController *_privacyLink;
-    double _transitionDuration;
 }
 
-@property(nonatomic) double transitionDuration; // @synthesize transitionDuration=_transitionDuration;
-@property(nonatomic, getter=isPresenting) _Bool presenting; // @synthesize presenting=_presenting;
+- (void).cxx_destruct;
 @property(retain, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
 @property(retain, nonatomic) UILabel *subTitle; // @synthesize subTitle=_subTitle;
 @property(retain, nonatomic) UILabel *mainTitle; // @synthesize mainTitle=_mainTitle;
-@property(retain, nonatomic) UIView *bubblesAnchorView; // @synthesize bubblesAnchorView=_bubblesAnchorView;
-@property(retain, nonatomic) GKBubbleFlowContainerView *bubblesContainerView; // @synthesize bubblesContainerView=_bubblesContainerView;
+@property UIView *multiplayerContainer; // @synthesize multiplayerContainer=_multiplayerContainer;
+@property UIView *achievementContainer; // @synthesize achievementContainer=_achievementContainer;
+@property UIView *addFriendsContainer; // @synthesize addFriendsContainer=_addFriendsContainer;
+@property(retain, nonatomic) GKLabel *multiplayerSubtitle; // @synthesize multiplayerSubtitle=_multiplayerSubtitle;
+@property(retain, nonatomic) GKLabel *multiplayerTitle; // @synthesize multiplayerTitle=_multiplayerTitle;
+@property(retain, nonatomic) UIImageView *multiplayerImage; // @synthesize multiplayerImage=_multiplayerImage;
+@property(retain, nonatomic) GKLabel *achievementSubtitle; // @synthesize achievementSubtitle=_achievementSubtitle;
+@property(retain, nonatomic) GKLabel *achievementTitle; // @synthesize achievementTitle=_achievementTitle;
+@property(retain, nonatomic) UIImageView *achievementImage; // @synthesize achievementImage=_achievementImage;
+@property(retain, nonatomic) GKLabel *addFriendsSubtitle; // @synthesize addFriendsSubtitle=_addFriendsSubtitle;
+@property(retain, nonatomic) GKLabel *addFriendsTitle; // @synthesize addFriendsTitle=_addFriendsTitle;
+@property(retain, nonatomic) UIImageView *addFriendsImage; // @synthesize addFriendsImage=_addFriendsImage;
+@property(retain, nonatomic) UIStackView *whatsNewStackView; // @synthesize whatsNewStackView=_whatsNewStackView;
+@property(retain, nonatomic) UIStackView *welcomeStackView; // @synthesize welcomeStackView=_welcomeStackView;
+@property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) OBBoldTrayButton *nextButton; // @synthesize nextButton=_nextButton;
+@property(retain, nonatomic) UIView *bottomContainerView; // @synthesize bottomContainerView=_bottomContainerView;
+@property(retain, nonatomic) UIImageView *bubbleImageView; // @synthesize bubbleImageView=_bubbleImageView;
+@property(retain, nonatomic) NSLayoutConstraint *scrollViewToBottomSafeAreaConstraint; // @synthesize scrollViewToBottomSafeAreaConstraint=_scrollViewToBottomSafeAreaConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *scrollViewToBottomContainerConstraint; // @synthesize scrollViewToBottomContainerConstraint=_scrollViewToBottomContainerConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *continueButtonContainerInScrollViewHeightConstraint; // @synthesize continueButtonContainerInScrollViewHeightConstraint=_continueButtonContainerInScrollViewHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *bottomStackViewBottomConstraint; // @synthesize bottomStackViewBottomConstraint=_bottomStackViewBottomConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *continueButtonContainerWidthConstraint; // @synthesize continueButtonContainerWidthConstraint=_continueButtonContainerWidthConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *bottomStackViewTopConstraint; // @synthesize bottomStackViewTopConstraint=_bottomStackViewTopConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *privacyContainerInScrollViewHeightConstraint; // @synthesize privacyContainerInScrollViewHeightConstraint=_privacyContainerInScrollViewHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *whatsnewStackViewLeadingConstraint; // @synthesize whatsnewStackViewLeadingConstraint=_whatsnewStackViewLeadingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *whatsnewStackViewTrailingConstraint; // @synthesize whatsnewStackViewTrailingConstraint=_whatsnewStackViewTrailingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *welcomeStackViewLeadingConstraint; // @synthesize welcomeStackViewLeadingConstraint=_welcomeStackViewLeadingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *welcomeStackViewTrailingConstraint; // @synthesize welcomeStackViewTrailingConstraint=_welcomeStackViewTrailingConstraint;
+@property(retain, nonatomic) UIView *continueButtonContainerInScrollView; // @synthesize continueButtonContainerInScrollView=_continueButtonContainerInScrollView;
+@property(retain, nonatomic) UIView *privacyContainerInScrollView; // @synthesize privacyContainerInScrollView=_privacyContainerInScrollView;
 @property(retain, nonatomic) UIView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
-@property(retain, nonatomic) UIView *bubblePlaceholder; // @synthesize bubblePlaceholder=_bubblePlaceholder;
+@property(retain, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
 @property(retain, nonatomic) UIView *privacyContainer; // @synthesize privacyContainer=_privacyContainer;
-@property(retain, nonatomic) NSMutableDictionary *analyticsPayload; // @synthesize analyticsPayload=_analyticsPayload;
-@property(nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
-@property(retain, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
-@property(nonatomic) __weak id <GKOnboardingFlowDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)removeConstraintsForView:(id)arg1;
-- (id)basicAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
-- (void)animateTransition:(id)arg1;
-- (double)transitionDuration:(id)arg1;
-- (void)animationEnded:(_Bool)arg1;
-- (id)animationControllerForDismissedController:(id)arg1;
-- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (void)updateBubbleRectsWithScale:(double)arg1;
-- (void)viewDidLayoutSubviews;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)viewWillLayoutSubviews;
-- (void)viewDidAppear:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)reparentGDPRToNewParent:(id)arg1;
+- (void)reparentView:(id)arg1 toSuperview:(id)arg2;
+- (void)updateUIBasedOnTraitCollection;
 - (void)viewWillAppear:(_Bool)arg1;
-- (_Bool)didDisplayPrivacyNotice;
 - (void)viewSafeAreaInsetsDidChange;
+- (void)setupNavigationBar;
 - (void)showSignOutAlert;
-- (void)presentPersonalizationScreen;
-- (_Bool)shouldPresentPersonalizationScreen;
 - (void)nextPressed:(id)arg1;
 - (void)signOutPressed:(id)arg1;
+- (void)constrainTextInView:(id)arg1 toFontSize:(double)arg2;
 - (void)addPrivacyLink;
+- (void)configureWhatsNewList;
 - (void)viewDidLoad;
 
 // Remaining properties

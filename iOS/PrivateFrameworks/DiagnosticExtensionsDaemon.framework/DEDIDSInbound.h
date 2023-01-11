@@ -18,9 +18,9 @@
 }
 
 + (id)archivedClasses;
+- (void).cxx_destruct;
 @property __weak DEDController *delegate; // @synthesize delegate=_delegate;
 @property __weak DEDIDSConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(CDUnknownBlockType)arg3;
 - (void)serviceAllowedTrafficClassifiersDidReset:(id)arg1;
 - (void)serviceSpaceDidBecomeAvailable:(id)arg1;
@@ -53,6 +53,8 @@
 - (void)did_get_session_status:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)sync_session_status:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)get_session_status:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
+- (void)did_get_session_state:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
+- (void)get_session_state:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)terminate_diagnostic_with_identifier:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)remote_device_query_request:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)finished_diagnostic_with_identifier:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;

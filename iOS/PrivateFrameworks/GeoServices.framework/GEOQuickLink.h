@@ -14,6 +14,8 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long type;
+@property(readonly, nonatomic) NSString *bundleID;
 @property(readonly, nonatomic) NSString *appAdamID;
 @property(readonly, nonatomic) NSString *URLString;
 @property(readonly, nonatomic) NSString *title;

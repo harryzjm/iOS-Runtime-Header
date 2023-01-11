@@ -13,6 +13,7 @@
     MISSING_TYPE *deviceName;
     MISSING_TYPE *ownerFirstName;
     MISSING_TYPE *ownerLastName;
+    MISSING_TYPE *$__lazy_storage_$_syncAnchor;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -21,6 +22,7 @@
 @property(nonatomic, readonly) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(nonatomic, readonly) long long hash;
+@property(nonatomic, copy) NSString *syncAnchor;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithDeviceName:(id)arg1 ownerFirstName:(id)arg2 ownerLastName:(id)arg3;

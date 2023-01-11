@@ -8,7 +8,7 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class AWDNWL2Report, NSMutableArray, NSString;
+@class AWDNWDeviceReport, AWDNWL2Report, NSMutableArray, NSString;
 
 @interface AWDNWConnectionReport : PBCodable <NSCopying>
 {
@@ -50,16 +50,22 @@
     NSMutableArray *_activities;
     int _appleApp;
     int _appleHost;
+    NSString *_bundleID;
     int _connectedAddressFamily;
     int _connectedInterfaceType;
     int _connectionMode;
     NSString *_connectionUUID;
+    AWDNWDeviceReport *_deviceReport;
+    int _dnsProtocol;
+    int _dnsProvider;
+    NSString *_effectiveBundleID;
     int _failureReason;
     int _firstAddressFamily;
     AWDNWL2Report *_l2Report;
     NSString *_processName;
     int _stackLevel;
     int _tlsVersion;
+    int _transportProtocol;
     int _usedProxyType;
     _Bool _customProxyConfigured;
     _Bool _fallbackEligible;
@@ -125,10 +131,13 @@
         unsigned int connectedAddressFamily:1;
         unsigned int connectedInterfaceType:1;
         unsigned int connectionMode:1;
+        unsigned int dnsProtocol:1;
+        unsigned int dnsProvider:1;
         unsigned int failureReason:1;
         unsigned int firstAddressFamily:1;
         unsigned int stackLevel:1;
         unsigned int tlsVersion:1;
+        unsigned int transportProtocol:1;
         unsigned int usedProxyType:1;
         unsigned int customProxyConfigured:1;
         unsigned int fallbackEligible:1;
@@ -157,6 +166,9 @@
 }
 
 + (Class)activitiesType;
+@property(retain, nonatomic) NSString *effectiveBundleID; // @synthesize effectiveBundleID=_effectiveBundleID;
+@property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(retain, nonatomic) AWDNWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property(retain, nonatomic) AWDNWL2Report *l2Report; // @synthesize l2Report=_l2Report;
 @property(nonatomic) _Bool prohibitsConstrained; // @synthesize prohibitsConstrained=_prohibitsConstrained;
 @property(nonatomic) _Bool prohibitsExpensive; // @synthesize prohibitsExpensive=_prohibitsExpensive;
@@ -228,6 +240,21 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasEffectiveBundleID;
+@property(readonly, nonatomic) _Bool hasBundleID;
+- (int)StringAsDnsProvider:(id)arg1;
+- (id)dnsProviderAsString:(int)arg1;
+@property(nonatomic) _Bool hasDnsProvider;
+@property(nonatomic) int dnsProvider; // @synthesize dnsProvider=_dnsProvider;
+- (int)StringAsDnsProtocol:(id)arg1;
+- (id)dnsProtocolAsString:(int)arg1;
+@property(nonatomic) _Bool hasDnsProtocol;
+@property(nonatomic) int dnsProtocol; // @synthesize dnsProtocol=_dnsProtocol;
+- (int)StringAsTransportProtocol:(id)arg1;
+- (id)transportProtocolAsString:(int)arg1;
+@property(nonatomic) _Bool hasTransportProtocol;
+@property(nonatomic) int transportProtocol; // @synthesize transportProtocol=_transportProtocol;
+@property(readonly, nonatomic) _Bool hasDeviceReport;
 @property(readonly, nonatomic) _Bool hasL2Report;
 @property(nonatomic) _Bool hasProhibitsConstrained;
 @property(nonatomic) _Bool hasProhibitsExpensive;

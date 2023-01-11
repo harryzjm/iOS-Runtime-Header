@@ -9,6 +9,7 @@
 @interface MTLDebugParallelRenderCommandEncoder
 {
     unsigned int _unknownStoreActions;
+    struct atomic<unsigned long long> _attachmentWriteMask;
     MTLRenderPassDescriptor *_descriptor;
 }
 
@@ -24,7 +25,8 @@
 - (void)setDepthStoreAction:(unsigned long long)arg1;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (id)renderCommandEncoder;
-- (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
+- (id)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
+- (void)mergeAttachmentWriteMask:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithBaseRenderPass:(id)arg1 commandBuffer:(id)arg2 descriptor:(id)arg3;
 

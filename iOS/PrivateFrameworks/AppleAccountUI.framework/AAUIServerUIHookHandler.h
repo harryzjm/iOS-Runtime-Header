@@ -18,9 +18,9 @@
     NSArray *_serverHooks;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *serverHooks; // @synthesize serverHooks=_serverHooks;
 @property(retain, nonatomic) UIViewController *presentingControllerOverride; // @synthesize presentingControllerOverride=_presentingControllerOverride;
-- (void).cxx_destruct;
 - (id)_refreshRequestWithInfo:(id)arg1 initiatingObjectModel:(id)arg2 attributes:(id)arg3;
 - (void)_reloadUIWithInfo:(id)arg1 attributes:(id)arg2 initiatingObjectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)refreshWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -30,6 +30,7 @@
 - (id)currentPresenter;
 - (void)processServerResponse:(id)arg1;
 - (void)processObjectModel:(id)arg1 isModal:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleResponseForHook:(id)arg1 success:(_Bool)arg2 error:(id)arg3 attributes:(id)arg4 objectModel:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)processObjectModel:(id)arg1 isModal:(_Bool)arg2;
 - (void)_rebuildServerHookHandlers;
 - (id)initWithRemoteUIController:(id)arg1 hooks:(id)arg2;

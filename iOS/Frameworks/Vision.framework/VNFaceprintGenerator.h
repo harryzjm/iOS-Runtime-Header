@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface VNFaceprintGenerator
 {
@@ -22,20 +20,17 @@ __attribute__((visibility("hidden")))
 + (_Bool)shouldDumpDebugIntermediates;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (CDUnknownFunctionPointerType)getFaceJunkClassifier;
-+ (MISSING_TYPE *)frontalizer;
-+ (struct __CVBuffer *)cropFaceBoundingBoxFrom:(id)arg1 cropBounds:(struct CGRect)arg2 error:(id *)arg3;
 + (struct CGRect)faceBoundingBox:(id)arg1;
 + (CDUnknownFunctionPointerType)faceDescriptorCreator;
 + (id)configurationOptionKeysForDetectorKey;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
-@property(readonly, nonatomic) unsigned long long length; // @synthesize length=_length;
-@property(readonly, nonatomic) _Bool useLowPriorityMode; // @synthesize useLowPriorityMode=_useLowPriorityMode;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long length; // @synthesize length=_length;
+@property(readonly, nonatomic) _Bool useLowPriorityMode; // @synthesize useLowPriorityMode=_useLowPriorityMode;
 - (void)printDebugInfoFor:(struct __CVBuffer *)arg1 imageBuffer:(id)arg2 originalImageLumaCrop:(struct vImage_Buffer)arg3 faceBBoxInLumaCropCoordinates:(struct CGRect)arg4 magnifiedBBoxInLumaCropCoordinates:(struct _Geometry2D_rect2D_)arg5;
-- (_Bool)isFaceprinterCompatibleWithFaceprinterCreatedWithOptions:(id)arg1;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) unsigned long long metalContextPriority;
 
 @end

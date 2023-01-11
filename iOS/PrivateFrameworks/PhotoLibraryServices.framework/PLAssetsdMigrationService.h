@@ -12,9 +12,9 @@
 @interface PLAssetsdMigrationService <PLAssetsdMigrationServiceProtocol>
 {
     NSObject<OS_dispatch_queue> *_backgroundQueue;
+    NSObject<OS_dispatch_queue> *_dataMigratordQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
 - (void).cxx_destruct;
 - (void)moveiPhotoLibraryMediaWithReply:(CDUnknownBlockType)arg1;
 - (void)dataMigrationWillFinishWithReply:(CDUnknownBlockType)arg1;

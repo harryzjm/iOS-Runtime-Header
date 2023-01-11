@@ -7,14 +7,16 @@
 __attribute__((visibility("hidden")))
 @interface _UISearchControllerView
 {
-    _Bool __disableSearchBarContainerViewOrdering;
+    _Bool __ensureSystemInputViewAboveSearchBarContainerView;
 }
 
-@property(nonatomic) _Bool _disableSearchBarContainerViewOrdering; // @synthesize _disableSearchBarContainerViewOrdering=__disableSearchBarContainerViewOrdering;
+@property(nonatomic) _Bool _ensureSystemInputViewAboveSearchBarContainerView; // @synthesize _ensureSystemInputViewAboveSearchBarContainerView=__ensureSystemInputViewAboveSearchBarContainerView;
 - (void)sendSubviewToBack:(id)arg1;
 - (void)bringSubviewToFront:(id)arg1;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
+- (void)_ensureCarPlayLimitedUIIsOnTop;
 - (void)_ensureContainerIsOnTop;
+- (void)_ensureViewOfClassIsOnTop:(Class)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end

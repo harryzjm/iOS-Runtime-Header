@@ -6,26 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
+@class NSDate, NSHashTable;
 
 @interface HFExecutionEnvironment : NSObject
 {
     _Bool _active;
     unsigned long long _runningState;
     NSHashTable *_observers;
+    NSDate *_appForegroundStartTime;
 }
 
 + (id)stringForHFExecutionEnvironmentRunningState:(unsigned long long)arg1;
++ (_Bool)isSettings;
++ (_Bool)isCarousel;
++ (_Bool)isSpringBoard;
++ (_Bool)isHomeControlService;
++ (_Bool)isHomeUIService;
++ (_Bool)isWatchApp;
++ (_Bool)isHomeApp;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *appForegroundStartTime; // @synthesize appForegroundStartTime=_appForegroundStartTime;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) unsigned long long runningState; // @synthesize runningState=_runningState;
-- (void).cxx_destruct;
 - (void)dispatchMessageToObserversWithBlock:(CDUnknownBlockType)arg1;
+- (void)_recordMetricsForAppRunningState;
 - (void)executionEnvironmentDidEnterBackground;
 - (void)executionEnvironmentWillResignActive;
 - (void)executionEnvironmentDidBecomeActive;
 - (void)executionEnvironmentWillEnterForeground;
+@property(readonly, nonatomic) long long hostProcess;
 - (void)setRunningState:(unsigned long long)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

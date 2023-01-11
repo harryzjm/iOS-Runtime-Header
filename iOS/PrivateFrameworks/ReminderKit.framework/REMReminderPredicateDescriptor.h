@@ -8,7 +8,7 @@
 
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, REMObjectID;
+@class NSArray, NSDate, NSString, REMObjectID;
 
 @interface REMReminderPredicateDescriptor : NSObject <NSSecureCoding>
 {
@@ -20,9 +20,15 @@
     NSDate *_startingDueDate;
     NSDate *_endingDueDate;
     NSArray *_descriptors;
+    NSString *_text;
+    long long _textMatching;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)predicateDescriptorForRemindersWithTitleEndsWith:(id)arg1;
++ (id)predicateDescriptorForRemindersWithTitleBeginsWith:(id)arg1;
++ (id)predicateDescriptorForRemindersWithTitleContains:(id)arg1;
++ (id)predicateDescriptorForRemindersWithTitleEquals:(id)arg1;
 + (id)predicateDescriptorForRemindersWithCompleted:(_Bool)arg1;
 + (id)predicateDescriptorForRemindersWithDueDateBetween:(id)arg1 and:(id)arg2;
 + (id)predicateDescriptorForRemindersWithDueDateOnOrAfter:(id)arg1;
@@ -32,6 +38,9 @@
 + (id)predicateDescriptorForRemindersWithListID:(id)arg1;
 + (id)orPredicateDescriptorWithDescriptors:(id)arg1;
 + (id)andPredicateDescriptorWithDescriptors:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) long long textMatching; // @synthesize textMatching=_textMatching;
+@property(retain, nonatomic) NSString *text; // @synthesize text=_text;
 @property(retain, nonatomic) NSArray *descriptors; // @synthesize descriptors=_descriptors;
 @property(nonatomic) _Bool completed; // @synthesize completed=_completed;
 @property(retain, nonatomic) NSDate *endingDueDate; // @synthesize endingDueDate=_endingDueDate;
@@ -40,7 +49,6 @@
 @property(retain, nonatomic) REMObjectID *parentReminderID; // @synthesize parentReminderID=_parentReminderID;
 @property(retain, nonatomic) REMObjectID *listID; // @synthesize listID=_listID;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

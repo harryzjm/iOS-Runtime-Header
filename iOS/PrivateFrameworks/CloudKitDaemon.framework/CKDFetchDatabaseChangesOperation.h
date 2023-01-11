@@ -7,7 +7,7 @@
 #import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
 
 @class CKServerChangeToken, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol CKFetchDatabaseChangesOperationCallbacks, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchDatabaseChangesOperation <CKDOperationPipelining>
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_requestInfos;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *fetchZonesGroup; // @synthesize fetchZonesGroup=_fetchZonesGroup;
 @property(nonatomic) unsigned long long numRequestsSent; // @synthesize numRequestsSent=_numRequestsSent;
@@ -38,13 +39,11 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasPurgedBlock; // @synthesize recordZoneWithIDWasPurgedBlock=_recordZoneWithIDWasPurgedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasDeletedBlock; // @synthesize recordZoneWithIDWasDeletedBlock=_recordZoneWithIDWasDeletedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDChangedBlock; // @synthesize recordZoneWithIDChangedBlock=_recordZoneWithIDChangedBlock;
-- (void).cxx_destruct;
 - (id)analyticsPayload;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)fillOutOperationResult:(id)arg1;
-- (Class)operationResultClass;
 - (void)main;
 - (void)_sendFetchDatabaseChangesRequestWithChangeToken:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
+- (int)operationType;
 - (void)_handleFetchDatabaseChangesRequestFinishedWithSchedulerInfo:(id)arg1;
 - (id)activityCreate;
 @property(readonly, nonatomic) NSString *pipeliningDescription;
@@ -52,6 +51,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
+@property(retain, nonatomic) id <CKFetchDatabaseChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

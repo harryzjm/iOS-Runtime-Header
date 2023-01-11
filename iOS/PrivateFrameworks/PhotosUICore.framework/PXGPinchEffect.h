@@ -12,7 +12,7 @@
 @property(nonatomic) double scale;
 @property(nonatomic) struct CGPoint normalizedCenter;
 - (int)shaderFlags;
-- (int)type;
+- (unsigned short)type;
 - (id)initWithMetadataStore:(id)arg1;
 
 @end

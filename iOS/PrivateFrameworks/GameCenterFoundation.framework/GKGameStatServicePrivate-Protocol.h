@@ -6,9 +6,12 @@
 
 #import <GameCenterFoundation/GKGameStatService-Protocol.h>
 
-@class GKGameDescriptor, GKLeaderboardScoreRequest, NSArray;
+@class GKGameDescriptor, GKLeaderboardScoreRequest, NSArray, NSSet, NSString;
 
 @protocol GKGameStatServicePrivate <GKGameStatService>
+- (oneway void)getReengagementAchievements:(void (^)(GKAchievementInternal *, GKGameInternal *, NSError *))arg1;
+- (oneway void)getReengagementAchievement:(void (^)(GKAchievementInternal *, GKGameInternal *, NSError *))arg1;
+- (oneway void)getGamesFriendsPlayed:(long long)arg1 type:(NSString *)arg2 withinSecs:(long long)arg3 matchingBundleIDs:(NSSet *)arg4 handler:(void (^)(NSArray *, NSError *))arg5;
 - (oneway void)getHypotheticalLeaderboardRanksForScores:(NSArray *)arg1 forGameDescriptor:(GKGameDescriptor *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)getAchievementLeaderboardForRequest:(GKLeaderboardScoreRequest *)arg1 handler:(void (^)(GKLeaderboardInternal *, NSError *))arg2;
 @end

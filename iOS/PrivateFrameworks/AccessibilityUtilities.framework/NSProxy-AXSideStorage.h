@@ -18,5 +18,6 @@
 - (long long)_accessibilityIntegerValueForKey:(id)arg1;
 - (_Bool)_accessibilityBoolValueForKey:(id)arg1;
 - (id)_accessibilityValueForKey:(id)arg1;
+- (id)_axDictionaryQueue;
 @end
 

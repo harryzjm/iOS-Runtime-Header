@@ -12,13 +12,13 @@
     SXSolidBorderView *_borderView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SXSolidBorderView *borderView; // @synthesize borderView=_borderView;
 @property(retain, nonatomic) CALayer *strokeLayer; // @synthesize strokeLayer=_strokeLayer;
-- (void).cxx_destruct;
 - (_Bool)userInteractable;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)loadComponent:(id)arg1;
 
 @end

@@ -13,10 +13,12 @@
 @interface GEOArrivalParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_arrivalMapRegions;
     NSMutableArray *_arrivalPoints;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _arrivalParametersEndOfRouteDistanceThreshold;
     unsigned int _endOfRouteDistanceThreshold;
     struct {
@@ -25,11 +27,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_arrivalMapRegions:1;
         unsigned int read_arrivalPoints:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_arrivalMapRegions:1;
-        unsigned int wrote_arrivalPoints:1;
-        unsigned int wrote_arrivalParametersEndOfRouteDistanceThreshold:1;
-        unsigned int wrote_endOfRouteDistanceThreshold:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,26 +45,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasArrivalParametersEndOfRouteDistanceThreshold;
 @property(nonatomic) unsigned int arrivalParametersEndOfRouteDistanceThreshold;
 - (id)arrivalMapRegionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)arrivalMapRegionsCount;
-- (void)_addNoFlagsArrivalMapRegions:(id)arg1;
 - (void)addArrivalMapRegions:(id)arg1;
 - (void)clearArrivalMapRegions;
 @property(retain, nonatomic) NSMutableArray *arrivalMapRegions;
-- (void)_readArrivalMapRegions;
 - (id)arrivalPointsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)arrivalPointsCount;
-- (void)_addNoFlagsArrivalPoints:(id)arg1;
 - (void)addArrivalPoints:(id)arg1;
 - (void)clearArrivalPoints;
 @property(retain, nonatomic) NSMutableArray *arrivalPoints;
-- (void)_readArrivalPoints;
 @property(nonatomic) _Bool hasEndOfRouteDistanceThreshold;
 @property(nonatomic) unsigned int endOfRouteDistanceThreshold;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

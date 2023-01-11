@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBSuggestionCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBColor, _SFPBRichText;
+@class NSArray, NSData, NSString, _SFPBColor, _SFPBImage, _SFPBRichText;
 
 @interface _SFPBSuggestionCardSection : PBCodable <_SFPBSuggestionCardSection, NSSecureCoding>
 {
@@ -26,8 +26,13 @@
     _SFPBColor *_backgroundColor;
     _SFPBRichText *_suggestionText;
     NSString *_scopedSearchSectionBundleIdentifier;
+    _SFPBRichText *_detailText;
+    _SFPBImage *_thumbnail;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBImage *thumbnail; // @synthesize thumbnail=_thumbnail;
+@property(retain, nonatomic) _SFPBRichText *detailText; // @synthesize detailText=_detailText;
 @property(nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 @property(copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier; // @synthesize scopedSearchSectionBundleIdentifier=_scopedSearchSectionBundleIdentifier;
 @property(nonatomic) _Bool isContact; // @synthesize isContact=_isContact;
@@ -41,7 +46,6 @@
 @property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

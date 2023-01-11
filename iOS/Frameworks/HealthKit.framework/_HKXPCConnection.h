@@ -18,14 +18,15 @@
     CDUnknownBlockType _invalidationHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property(nonatomic) __weak id <_HKXPCExportable> exportedObject; // @synthesize exportedObject=_exportedObject;
-- (void).cxx_destruct;
 - (id)_loggingPrefix;
 - (void)unitTest_interrupt;
 - (void)invalidate;
+- (void)resumeWithExportedInterface:(id)arg1 remoteInterface:(id)arg2;
 - (void)resume;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

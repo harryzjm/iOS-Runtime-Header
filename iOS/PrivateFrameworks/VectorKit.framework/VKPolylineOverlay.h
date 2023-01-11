@@ -27,6 +27,8 @@
     GEOComposedRouteTraffic *_traffic;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showTraffic; // @synthesize showTraffic=_showTraffic;
 @property(nonatomic) _Bool hasFocus; // @synthesize hasFocus=_hasFocus;
 @property(nonatomic) _Bool selected; // @synthesize selected=_selected;
@@ -35,12 +37,11 @@
 @property(readonly, nonatomic) double trafficTimeStamp; // @synthesize trafficTimeStamp=_trafficTimeStamp;
 @property(readonly, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
 @property(readonly, nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)composedRoute:(id)arg1 appliedTransitRouteUpdates:(id)arg2;
-- (void)composedRoute:(id)arg1 changedSelectedRideInClusteredLeg:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
+- (void)composedRoute:(id)arg1 changedSelectedRideInClusteredSegment:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)composedRoute:(id)arg1 selectedSections:(id)arg2 deselectedSections:(id)arg3;
 - (void)composedRouteUpdatedSnappedPaths:(id)arg1;
+- (struct DebugTreeNode)createDebugNode;
 - (_Bool)isSnappingForSceneTiles;
 - (id)getPathsForRenderRegion:(id)arg1 shouldSnapToRoads:(_Bool)arg2 verifySnapping:(_Bool)arg3 observer:(id)arg4;
 - (void)clearSnappedPathsForObserver:(id)arg1;

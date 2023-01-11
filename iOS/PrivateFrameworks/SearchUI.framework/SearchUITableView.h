@@ -6,12 +6,20 @@
 
 #import <UIKit/UITableView.h>
 
+@protocol SearchUITableViewSizingDelegate;
+
 @interface SearchUITableView : UITableView
 {
+    id <SearchUITableViewSizingDelegate> _sizingDelegate;
 }
 
-- (_Bool)allowsHeaderViewsToFloat;
+- (void).cxx_destruct;
+@property __weak id <SearchUITableViewSizingDelegate> sizingDelegate; // @synthesize sizingDelegate=_sizingDelegate;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)safeAreaInsetsDidChange;
+- (void)setContentSize:(struct CGSize)arg1;
 - (id)init;
 
 @end

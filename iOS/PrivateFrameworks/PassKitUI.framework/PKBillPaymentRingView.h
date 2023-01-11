@@ -33,7 +33,6 @@
     NSDecimalNumber *_pinnedAmount;
     double _pinnedAmountAngle;
     unsigned long long _pinnedAmountAngleIndex;
-    unsigned long long _screenType;
     PKRenderLoop *_renderLoop;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     UITapGestureRecognizer *_tapRecognizer;
@@ -63,17 +62,18 @@
     UILabel *_interestLabel;
     PKCurvedTextLabel *_topCurvedTextLabel;
     PKCurvedTextLabel *_bottomCurvedTextLabel;
+    _Bool _userSelectedAngleChange;
     _Bool _enabled;
     _Bool _isSmall;
     id <PKBillPaymentRingViewDelegate> _delegate;
     id <PKBillPaymentRingViewDataSource> _dataSource;
 }
 
-@property(nonatomic) _Bool isSmall; // @synthesize isSmall=_isSmall;
-@property(nonatomic) id <PKBillPaymentRingViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(nonatomic) id <PKBillPaymentRingViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isSmall; // @synthesize isSmall=_isSmall;
+@property(nonatomic) __weak id <PKBillPaymentRingViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(nonatomic) __weak id <PKBillPaymentRingViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)_createSuggestedAmountRingColorStops;
 - (void)_createStandardColors;
 - (void)_createSuggestedAmountAngles;

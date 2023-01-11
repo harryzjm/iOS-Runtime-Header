@@ -14,9 +14,9 @@
     unsigned long long _elementCount;
 }
 
-@property(readonly, nonatomic) unsigned long long elementCount; // @synthesize elementCount=_elementCount;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long elementCount; // @synthesize elementCount=_elementCount;
 - (unsigned long long)getDouble4x4Array:(CDStruct_14d5dc5e *)arg1 maxCount:(unsigned long long)arg2;
 - (unsigned long long)getFloat4x4Array:(CDStruct_14d5dc5e *)arg1 maxCount:(unsigned long long)arg2;
 - (void)setDouble4x4Array:(const CDStruct_14d5dc5e *)arg1 count:(unsigned long long)arg2;

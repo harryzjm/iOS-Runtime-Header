@@ -14,8 +14,8 @@
 @interface _BCULayerRendererOperation : NSObject <BCUOperation>
 {
     _Atomic long long _operationId;
-    unsigned int _cancelled:1;
-    unsigned int _configuring:1;
+    _Bool _cancelled;
+    _Bool _configuring;
     _Bool _waitForCPUSynchronization;
     float _priority;
     BCULayerRenderer *_renderer;
@@ -25,13 +25,13 @@
     id <BCUPurgeableImage> _result;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool waitForCPUSynchronization; // @synthesize waitForCPUSynchronization=_waitForCPUSynchronization;
 @property(retain, nonatomic) id <BCUPurgeableImage> result; // @synthesize result=_result;
 @property(retain, nonatomic) CALayer *layer; // @synthesize layer=_layer;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(copy, nonatomic) CDUnknownBlockType layerBlock; // @synthesize layerBlock=_layerBlock;
 @property(retain, nonatomic) BCULayerRenderer *renderer; // @synthesize renderer=_renderer;
-- (void).cxx_destruct;
 - (long long)_compareHoldingStateLock:(id)arg1;
 - (void)dealloc;
 - (void)completeWithImage:(id)arg1;

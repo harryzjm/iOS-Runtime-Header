@@ -8,13 +8,16 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227EmailSignupDetectionManager : NSObject
 {
+    MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *appLaunchUpsellManager;
     MISSING_TYPE *delegate;
-    MISSING_TYPE *kMaxCount;
-    MISSING_TYPE *kEmailSignUpAppLaunchCurrentCount;
+    MISSING_TYPE *appStartup;
     MISSING_TYPE *appleAccount;
+    MISSING_TYPE *userInfo;
+    MISSING_TYPE *newsletterManager;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 - (void).cxx_destruct;

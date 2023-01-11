@@ -17,12 +17,12 @@
     id <PRGenericRangingSessionDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <PRGenericRangingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PRGenericRangingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)stopCompanionRanging:(id)arg1 error:(id *)arg2;
 - (_Bool)startCompanionRanging:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)configureForCompanionRanging:(id)arg1 options:(id)arg2;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
 - (void)remoteDevice:(id)arg1 didChangeState:(long long)arg2;
 - (void)didReceiveNewSolutions:(id)arg1;

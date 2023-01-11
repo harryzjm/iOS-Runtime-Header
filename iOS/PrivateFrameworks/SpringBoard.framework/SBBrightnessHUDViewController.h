@@ -8,6 +8,7 @@
 {
 }
 
+- (_Bool)_canShowWhileLocked;
 - (_Bool)displaysLabel;
 - (id)init;
 

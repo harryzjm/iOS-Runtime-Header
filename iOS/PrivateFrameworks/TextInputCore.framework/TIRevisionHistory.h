@@ -12,6 +12,8 @@
 @interface TIRevisionHistory : NSObject
 {
     _Bool _shouldReportRevisionToDP;
+    _Bool _isDeletingBackwards;
+    _Bool _isRapidDeleteActive;
     id <TIRevisionHistoryDelegate> _delegate;
     TILRUDictionary *_recentAutocorrections;
     NSString *_documentText;
@@ -22,6 +24,10 @@
     struct _TIRevisionHistoryTokenIterator _currentTokenIterator;
 }
 
++ (id)documentStateTrimmedToSentenceForState:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isRapidDeleteActive; // @synthesize isRapidDeleteActive=_isRapidDeleteActive;
+@property(nonatomic) _Bool isDeletingBackwards; // @synthesize isDeletingBackwards=_isDeletingBackwards;
 @property(nonatomic) _Bool shouldReportRevisionToDP; // @synthesize shouldReportRevisionToDP=_shouldReportRevisionToDP;
 @property(retain, nonatomic) TIRevisionHistoryToken *lastRejectedToken; // @synthesize lastRejectedToken=_lastRejectedToken;
 @property(readonly, nonatomic) void *tokenizer; // @synthesize tokenizer=_tokenizer;
@@ -31,7 +37,6 @@
 @property(copy, nonatomic) NSString *documentText; // @synthesize documentText=_documentText;
 @property(retain, nonatomic) TILRUDictionary *recentAutocorrections; // @synthesize recentAutocorrections=_recentAutocorrections;
 @property(nonatomic) id <TIRevisionHistoryDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)currentUserTyping;
 - (id)currentWord;
 - (void)enumerateSentenceStemUsingBlock:(CDUnknownBlockType)arg1;
@@ -46,7 +51,7 @@
 - (void)rejectCandidate:(id)arg1 forInput:(id)arg2;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
-- (_Bool)deletingBackwardEqualsDocumentState:(id)arg1;
+- (struct _NSRange)deletionRangeToObtainDocumentState:(id)arg1;
 - (id)documentState;
 - (id)wordTokenContainingSelection;
 - (_Bool)isWordToken:(struct _TIRevisionHistoryTokenIterator)arg1;
@@ -77,9 +82,9 @@
 - (void)migrateUserTypingFromDeletedTokens:(id)arg1 toInsertedTokens:(id)arg2 withUsageLearningMask:(unsigned int)arg3 usageTrackingMask:(unsigned int)arg4;
 - (void)rejectTokensInRange:(struct _NSRange)arg1 negativeLearningHint:(int)arg2 newRevision:(id)arg3;
 - (void)acceptTokensInRange:(struct _NSRange)arg1;
-- (unsigned long long)fillTokenBuffer:(struct TITokenID *)arg1 withContextForTokenAtIndex:(unsigned long long)arg2;
-- (void)rejectToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 negativeLearningHint:(int)arg4 withRevisedToken:(id)arg5;
-- (void)acceptToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 saveToDifferentialPrivacy:(int)arg4;
+- (unsigned long long)fillTokenIDBuffer:(struct TITokenID *)arg1 withContextForTokenAtIndex:(unsigned long long)arg2 contextStringsBuffer:(id)arg3;
+- (void)rejectToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 contextStringTokens:(id)arg4 negativeLearningHint:(int)arg5 withRevisedToken:(id)arg6;
+- (void)acceptToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 saveToDifferentialPrivacy:(int)arg4 contextStringTokens:(id)arg5;
 - (id)initWithLocale:(id)arg1;
 - (id)init;
 - (void)dealloc;

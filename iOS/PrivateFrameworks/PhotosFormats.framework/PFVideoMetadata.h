@@ -10,6 +10,8 @@
 {
 }
 
++ (unsigned int)videoCodecFourCharCodeNumberForAVAsset:(id)arg1;
++ (void)enumerateVideoTrackFormatDescriptionsInAsset:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (_Bool)videoAssetIsPlayable:(id)arg1;
 + (_Bool)videoAssetIsDecodable:(id)arg1;
 + (id)arrayByRemovingMetadataItemOfType:(unsigned char)arg1 fromArray:(id)arg2 error:(id *)arg3;
@@ -19,6 +21,7 @@
 + (id)quickTimeMetadataItemsWithKey:(id)arg1 value:(id)arg2;
 + (id)quickTimeMetadataItemValueFromAsset:(id)arg1 withKey:(id)arg2;
 + (_Bool)hasValidMetadataForLoopingVideoAsset:(id)arg1;
++ (id)firstVideoTrackFormatDebugDescriptionForAsset:(id)arg1;
 + (id)metadataItemValueFromAsset:(id)arg1 withKey:(id)arg2 keySpace:(id)arg3;
 
 @end

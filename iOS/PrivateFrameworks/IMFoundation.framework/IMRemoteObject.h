@@ -27,13 +27,14 @@
 @property(nonatomic) int pid;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *connection;
 - (void)forwardInvocation:(id)arg1;
-- (unsigned long long)forwardXPCObject:(id)arg1 messageContext:(id)arg2;
+- (unsigned long long)forwardXPCObject:(id)arg1 messageContext:(id)arg2 locked:(_Bool)arg3;
+- (void)blockUntilSendQueueIsEmpty;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)_systemShutdown:(id)arg1;
 @property(readonly, nonatomic) _Bool isValid;
 - (void)_portDidBecomeInvalid;
 - (void)dealloc;
-- (void)_cleanupMachBitsCanPost:(_Bool)arg1;
+- (void)_cleanupMachBitsCanPost:(_Bool)arg1 locked:(_Bool)arg2;
 - (id)initWithConnection:(id)arg1 protocol:(id)arg2 alreadyConfigured:(_Bool)arg3;
 - (id)initWithConnection:(id)arg1 protocol:(id)arg2 alreadyConfigured:(_Bool)arg3 forceSecureCoding:(_Bool)arg4;
 - (id)initWithPortName:(id)arg1 protocol:(id)arg2;

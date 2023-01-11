@@ -15,20 +15,16 @@
     NSDictionary *_mappedComponentNodes;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *mappedComponentNodes; // @synthesize mappedComponentNodes=_mappedComponentNodes;
 @property(readonly, nonatomic) NSMutableArray *componentNodes; // @synthesize componentNodes=_componentNodes;
 @property(readonly, nonatomic) NSArray *solvedComponentNodes; // @synthesize solvedComponentNodes=_solvedComponentNodes;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)createComponentNodesForComponentIdentifiers:(id)arg1;
 - (void)reset;
 - (void)resolveStack:(id)arg1 withSolvedNodes:(id)arg2;
 - (id)solvedOrderForComponentNodes:(id)arg1;
-- (id)componentNodesDependentOnComponentNode:(id)arg1;
-- (id)componentNodeForComponentIdentifier:(id)arg1 andAttribute:(long long)arg2;
-- (id)solvableOrder;
 - (void)addComponentNode:(id)arg1;
-- (void)addDependency:(id)arg1;
 - (id)initWithComponentIdentifiers:(id)arg1;
 
 @end

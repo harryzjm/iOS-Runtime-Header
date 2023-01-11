@@ -15,6 +15,11 @@
     _Bool _hasInteractivePreview;
     _Bool _preventPreviewRasterization;
     _Bool _reversesActionOrderWhenAttachedToTop;
+    _Bool _previewOverlapsMenu;
+    _Bool __allowsImmediateSelection;
+    _Bool __shouldAvoidInputViews;
+    _Bool __inheritTraitsFromPresentingViewController;
+    _Bool __prefersActualContentSize;
     UIWindow *_containerWindow;
     UIView *_containerView;
     unsigned long long _preferredLayout;
@@ -22,12 +27,20 @@
     NSArray *_preferredBackgroundEffects;
     struct UIEdgeInsets _preferredEdgeInsets;
     struct UIEdgeInsets _preferredBackgroundInsets;
+    CDStruct_a36705e8 __preferredAnchor;
 }
 
 + (id)defaultStyle;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setPrefersActualContentSize:) _Bool _prefersActualContentSize; // @synthesize _prefersActualContentSize=__prefersActualContentSize;
+@property(nonatomic, getter=_inheritTraitsFromPresentingViewController) _Bool _inheritTraitsFromPresentingViewController; // @synthesize _inheritTraitsFromPresentingViewController=__inheritTraitsFromPresentingViewController;
+@property(nonatomic, getter=_shouldAvoidInputViews) _Bool _shouldAvoidInputViews; // @synthesize _shouldAvoidInputViews=__shouldAvoidInputViews;
+@property(nonatomic, getter=_allowsImmediateSelection) _Bool _allowsImmediateSelection; // @synthesize _allowsImmediateSelection=__allowsImmediateSelection;
+@property(nonatomic, getter=_preferredAnchor) CDStruct_a36705e8 _preferredAnchor; // @synthesize _preferredAnchor=__preferredAnchor;
 @property(nonatomic) struct UIEdgeInsets preferredBackgroundInsets; // @synthesize preferredBackgroundInsets=_preferredBackgroundInsets;
 @property(retain, nonatomic) NSArray *preferredBackgroundEffects; // @synthesize preferredBackgroundEffects=_preferredBackgroundEffects;
 @property(retain, nonatomic) UITraitCollection *preferredTraitCollection; // @synthesize preferredTraitCollection=_preferredTraitCollection;
+@property(nonatomic) _Bool previewOverlapsMenu; // @synthesize previewOverlapsMenu=_previewOverlapsMenu;
 @property(nonatomic) _Bool reversesActionOrderWhenAttachedToTop; // @synthesize reversesActionOrderWhenAttachedToTop=_reversesActionOrderWhenAttachedToTop;
 @property(nonatomic) _Bool preventPreviewRasterization; // @synthesize preventPreviewRasterization=_preventPreviewRasterization;
 @property(nonatomic) _Bool hasInteractivePreview; // @synthesize hasInteractivePreview=_hasInteractivePreview;
@@ -35,7 +48,8 @@
 @property(nonatomic) unsigned long long preferredLayout; // @synthesize preferredLayout=_preferredLayout;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) UIWindow *containerWindow; // @synthesize containerWindow=_containerWindow;
-- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_layoutAllowsMenu) _Bool _layoutAllowsMenu;
+@property(readonly, nonatomic, getter=_layoutAllowsPreview) _Bool _layoutAllowsPreview;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

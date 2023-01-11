@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (double)lastReceivedVideoRTPPacketTime;
 - (void)stopVideo;
 - (void)startVideo;
+- (void)cleanUpDisplayLink;
+- (_Bool)initializeDisplayLink;
 - (void)setEnableCVO:(_Bool)arg1 cvoExtensionID:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithConfig:(struct tagVCVideoReceiverConfig *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 statisticsCollector:(id)arg4 transmitterHandle:(struct tagHANDLE *)arg5;

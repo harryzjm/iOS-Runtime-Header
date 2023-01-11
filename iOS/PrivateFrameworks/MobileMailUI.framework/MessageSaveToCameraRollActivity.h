@@ -6,21 +6,21 @@
 
 #import <UIKit/UISaveToCameraRollActivity.h>
 
-@protocol MFAttachmentHandlingDelegate;
+@protocol ContentRepresentationHandlingDelegate;
 
 @interface MessageSaveToCameraRollActivity : UISaveToCameraRollActivity
 {
-    id <MFAttachmentHandlingDelegate> _attachmentHandlingDelegate;
+    id <ContentRepresentationHandlingDelegate> _delegate;
     long long _context;
 }
 
-@property(nonatomic) long long context; // @synthesize context=_context;
-@property(nonatomic) __weak id <MFAttachmentHandlingDelegate> attachmentHandlingDelegate; // @synthesize attachmentHandlingDelegate=_attachmentHandlingDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) long long context; // @synthesize context=_context;
+@property(nonatomic) __weak id <ContentRepresentationHandlingDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)prepareWithActivityItems:(id)arg1;
 - (void)_prepareWithActivityItems:(id)arg1;
 - (id)_beforeActivity;
-- (id)_activityImage;
+- (id)activityImage;
 - (id)activityType;
 - (id)initWithAttachmentHandlingDelegate:(id)arg1 context:(long long)arg2;
 - (id)init;

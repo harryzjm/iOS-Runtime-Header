@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPPlaybackArchiveDisplayProperties, NSData, NSString;
+@class MPPlaybackArchiveDisplayProperties, NSData, NSMutableDictionary, NSString;
 
 @interface MPPlaybackArchive : NSObject <NSSecureCoding>
 {
@@ -17,30 +17,33 @@
     unsigned long long _supportedOptions;
     unsigned long long _copyOptions;
     unsigned long long _queueControlOptions;
+    NSMutableDictionary *_storage;
+    long long _type;
     NSString *_playbackSessionIdentifier;
     NSString *_playbackSessionType;
     NSData *_playbackSessionData;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (void)createPlaybackArchiveForPlayerID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSData *playbackSessionData; // @synthesize playbackSessionData=_playbackSessionData;
 @property(readonly, copy, nonatomic) NSString *playbackSessionType; // @synthesize playbackSessionType=_playbackSessionType;
 @property(readonly, copy, nonatomic) NSString *playbackSessionIdentifier; // @synthesize playbackSessionIdentifier=_playbackSessionIdentifier;
+@property(readonly, nonatomic) long long type; // @synthesize type=_type;
+@property(retain, nonatomic) NSMutableDictionary *storage; // @synthesize storage=_storage;
 @property(nonatomic) unsigned long long queueControlOptions; // @synthesize queueControlOptions=_queueControlOptions;
 @property(nonatomic) unsigned long long copyOptions; // @synthesize copyOptions=_copyOptions;
 @property(readonly, nonatomic) unsigned long long supportedOptions; // @synthesize supportedOptions=_supportedOptions;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) MPPlaybackArchiveDisplayProperties *displayProperties; // @synthesize displayProperties=_displayProperties;
-- (void).cxx_destruct;
-- (id)initWithPlaybackSessionIdentifier:(id)arg1 playbackSessionData:(id)arg2 playbackSessionType:(id)arg3 bundleIdentifier:(id)arg4 displayProperties:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)copyWithOptions:(unsigned long long)arg1;
 - (_Bool)boolValueForOption:(long long)arg1;
 - (void)setBOOLValue:(_Bool)arg1 forOption:(long long)arg2;
-- (id)initWithPlaybackSessionIdentifier:(id)arg1 playbackSessionData:(id)arg2 playbackSessionType:(id)arg3 bundleIdentifier:(id)arg4 supportedOptions:(unsigned long long)arg5 displayProperties:(id)arg6;
+- (id)initWithType:(long long)arg1 sessionIdentifier:(id)arg2 data:(id)arg3 dataType:(id)arg4 bundleIdentifier:(id)arg5 supportedOptions:(unsigned long long)arg6 displayProperties:(id)arg7;
 
 @end
 

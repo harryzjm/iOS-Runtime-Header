@@ -31,7 +31,9 @@
 
 + (_Bool)_orderFeedTopKEnabled;
 + (id)feedRequestContentEnvironmentTokenWithContext:(id)arg1;
++ (void)prewarm;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCHeldRecords *resultHeldIssueRecords; // @synthesize resultHeldIssueRecords=_resultHeldIssueRecords;
 @property(retain, nonatomic) FCHeldRecords *resultHeldTagRecords; // @synthesize resultHeldTagRecords=_resultHeldTagRecords;
 @property(retain, nonatomic) FCHeldRecords *resultHeldArticleRecords; // @synthesize resultHeldArticleRecords=_resultHeldArticleRecords;
@@ -50,7 +52,6 @@
 @property(retain, nonatomic) FCFeedDatabase *feedDatabase; // @synthesize feedDatabase=_feedDatabase;
 @property(retain, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (id)_additionalHTTPHeadersForOrderFeedRequest;
 - (_Bool)_countOfDroppedFeeds;
 - (unsigned long long)_orderFeedTopKFromBin:(long long)arg1 timeInterval:(double)arg2;

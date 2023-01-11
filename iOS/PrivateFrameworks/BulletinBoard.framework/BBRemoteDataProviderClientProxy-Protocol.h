@@ -6,14 +6,11 @@
 
 #import <BulletinBoard/NSObject-Protocol.h>
 
-@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBThumbnailSizeConstraints, NSDate, NSDictionary, NSSet, NSString, NSUUID;
+@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, NSDate, NSDictionary, NSSet, NSString;
 
 @protocol BBRemoteDataProviderClientProxy <NSObject>
 - (void)deliverMessageWithName:(NSString *)arg1 userInfo:(NSDictionary *)arg2;
 - (void)noteSectionInfoDidChange:(BBSectionInfo *)arg1;
-- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(_Bool)arg3 withHandler:(void (^)(float, NSError *))arg4;
-- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(_Bool)arg3 sizeConstraints:(BBThumbnailSizeConstraints *)arg4 withHandler:(void (^)(NSData *, NSError *))arg5;
-- (void)getDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 isPrimary:(_Bool)arg3 withHandler:(void (^)(NSData *, NSError *))arg4;
 - (void)deliverBulletinActionResponse:(BBActionResponse *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)clearedInfoForClearingBulletinsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 lastClearedInfo:(BBSectionInfo *)arg3 completion:(void (^)(id, NSError *))arg4;
 - (void)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(BBSectionInfo *)arg1 completion:(void (^)(id, NSError *))arg2;

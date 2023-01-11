@@ -11,8 +11,8 @@
     NSMutableDictionary *_mutableResults;
 }
 
-@property(retain, nonatomic) NSMutableDictionary *mutableResults; // @synthesize mutableResults=_mutableResults;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *mutableResults; // @synthesize mutableResults=_mutableResults;
 - (void)removeObjectForKey:(id)arg1;
 - (void)removeObjectsForKeys:(id)arg1;
 - (void)addResultsFromDictionary:(id)arg1;

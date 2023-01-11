@@ -25,10 +25,10 @@
 + (id)builderWithObject:(id)arg1;
 + (id)nameObjectSeparator;
 + (id)componentSeparator;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool useDebugDescription; // @synthesize useDebugDescription=_useDebugDescription;
 @property(retain, nonatomic) NSString *activeMultilinePrefix; // @synthesize activeMultilinePrefix=_activePrefix;
 @property(nonatomic) int activeComponent; // @synthesize activeComponent=_activeComponent;
-- (void).cxx_destruct;
 - (id)build;
 - (id)appendFormat:(id)arg1;
 - (id)appendString:(id)arg1;
@@ -45,7 +45,7 @@
 - (void)tryAppendKey:(id)arg1;
 - (id)appendKeys:(id)arg1;
 - (id)appendKey:(id)arg1;
-- (id)appendObjectsAndNames:(id)arg1 args:(struct __va_list_tag [1])arg2;
+- (id)appendObjectsAndNames:(id)arg1 args:(char *)arg2;
 - (id)appendObjectsAndNames:(id)arg1;
 - (id)appendClass:(Class)arg1 withName:(id)arg2;
 - (id)appendQueue:(id)arg1 withName:(id)arg2;

@@ -14,21 +14,17 @@
     _Bool _wasStatusBarVisible;
     id <HUStatusBarVisibilityHandling> _statusBarVisibilityHandler;
     NSHashTable *_statusBarHidingRequesters;
-    NSHashTable *_networkActivityIndicatorRequesters;
     NSHashTable *_idleTimerDisabledRequesters;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool wasStatusBarVisible; // @synthesize wasStatusBarVisible=_wasStatusBarVisible;
 @property(retain, nonatomic) NSHashTable *idleTimerDisabledRequesters; // @synthesize idleTimerDisabledRequesters=_idleTimerDisabledRequesters;
-@property(retain, nonatomic) NSHashTable *networkActivityIndicatorRequesters; // @synthesize networkActivityIndicatorRequesters=_networkActivityIndicatorRequesters;
 @property(retain, nonatomic) NSHashTable *statusBarHidingRequesters; // @synthesize statusBarHidingRequesters=_statusBarHidingRequesters;
 @property(retain, nonatomic) id <HUStatusBarVisibilityHandling> statusBarVisibilityHandler; // @synthesize statusBarVisibilityHandler=_statusBarVisibilityHandler;
-- (void).cxx_destruct;
 - (void)setIdleTimerDisabled:(_Bool)arg1 forRequester:(id)arg2;
 - (_Bool)isIdleTimerDisabled;
-- (void)setNetworkActivityIndicatorVisible:(_Bool)arg1 forRequester:(id)arg2;
-- (_Bool)isNetworkActivityIndicatorVisible;
 - (void)setStatusBarHidden:(_Bool)arg1 forRequester:(id)arg2 withAnimationSettings:(id)arg3;
 - (void)setStatusBarHidden:(_Bool)arg1 forRequester:(id)arg2;
 @property(readonly, nonatomic, getter=isStatusBarHidden) _Bool statusBarHidden;

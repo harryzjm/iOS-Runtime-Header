@@ -11,9 +11,12 @@
 }
 
 + (id)_representationForNode:(id)arg1 inModel:(id)arg2;
++ (void)_addValuesForCustomIconElement:(id)arg1 toRepresentation:(id)arg2;
++ (id)_representationForCustomIcon:(id)arg1 inModel:(id)arg2;
 + (id)iconStateRepresentationForFolder:(id)arg1 inModel:(id)arg2;
 + (id)_representationForFolder:(id)arg1 inModel:(id)arg2;
 + (id)_folderTypeForFolder:(id)arg1;
++ (id)_metadataForList:(id)arg1 inModel:(id)arg2;
 + (id)_representationForList:(id)arg1 inModel:(id)arg2;
 + (id)_representationsForIcon:(id)arg1 inModel:(id)arg2;
 + (_Bool)_iconContainsMultipleRepresentations:(id)arg1;

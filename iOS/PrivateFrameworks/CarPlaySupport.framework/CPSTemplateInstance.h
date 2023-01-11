@@ -6,77 +6,123 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPBannerDelegate-Protocol.h>
+#import <CarPlaySupport/CPDashboardProviding-Protocol.h>
+#import <CarPlaySupport/CPSNavigatorObserving-Protocol.h>
 #import <CarPlaySupport/CPSSafeAreaDelegate-Protocol.h>
 #import <CarPlaySupport/CPSTemplateViewControllerDelegate-Protocol.h>
 #import <CarPlaySupport/CPTemplateProviding-Protocol.h>
 #import <CarPlaySupport/NSXPCListenerDelegate-Protocol.h>
 #import <CarPlaySupport/UINavigationControllerDelegate-Protocol.h>
 
-@class CPSApplicationStateMonitor, CPSBannerSourceProxy, CPSMapTemplateViewController, CPSOverlayViewController, FBScene, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener;
-@protocol CPSTemplateInstanceDelegate, CPTemplateServiceClientInterface;
+@class CPSApplicationStateMonitor, CPSBannerSource, CPSDashboardEstimatesViewController, CPSDashboardGuidanceViewController, CPSNowPlayingViewController, CPSOverlayViewController, CPSTabBarViewController, CPSTemplateEnvironment, FBScene, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, SiriDirectActionSource, UIViewController, UIWindowScene;
+@protocol CPDashboardClientInterface, CPTemplateServiceClientInterface;
 
-@interface CPSTemplateInstance : NSObject <NSXPCListenerDelegate, CPTemplateProviding, UINavigationControllerDelegate, CPSTemplateViewControllerDelegate, CPSSafeAreaDelegate, CPBannerDelegate>
+@interface CPSTemplateInstance : NSObject <NSXPCListenerDelegate, UINavigationControllerDelegate, CPSTemplateViewControllerDelegate, CPSSafeAreaDelegate, CPBannerDelegate, CPDashboardProviding, CPSNavigatorObserving, CPTemplateProviding, BSInvalidatable>
 {
     NSString *_sceneIdentifier;
     CPSOverlayViewController *_overlayViewController;
-    id <CPSTemplateInstanceDelegate> _delegate;
     FBScene *_scene;
-    NSXPCListener *_listener;
+    UIWindowScene *_windowSceneForTemplateApplicationScene;
+    UIWindowScene *_windowSceneForMapWidgetScene;
+    UIWindowScene *_windowSceneForGuidanceWidgetScene;
+    FBScene *_mapWidgetScene;
+    CPSDashboardGuidanceViewController *_dashboardGuidanceViewController;
+    CPSDashboardEstimatesViewController *_dashboardEstimatesViewController;
+    NSXPCListener *_interfaceControllerListener;
+    NSXPCConnection *_interfaceControllerConnection;
+    id <CPTemplateServiceClientInterface> _interfaceControllerRemoteObjectProxy;
+    NSXPCListener *_dashboardControllerListener;
+    NSXPCConnection *_dashboardControllerConnection;
+    id <CPDashboardClientInterface> _dashboardControllerRemoteObjectProxy;
     NSMutableDictionary *_identifierToViewControllerDictionary;
-    CPSBannerSourceProxy *_bannerSourceProxy;
-    CPSMapTemplateViewController *_rootMapController;
-    id <CPTemplateServiceClientInterface> _remoteObjectProxy;
+    CPSBannerSource *_bannerSource;
+    UIViewController *_rootViewController;
     CPSApplicationStateMonitor *_applicationStateMonitor;
-    NSXPCConnection *_connection;
     NSUUID *_actionSheetIdentifier;
+    CPSTabBarViewController *_tabBarViewController;
+    CPSNowPlayingViewController *_nowPlayingViewController;
+    CPSTemplateEnvironment *_templateEnvironment;
+    SiriDirectActionSource *_siriActivationSource;
+    struct UIEdgeInsets _currentSafeAreaInsets;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) SiriDirectActionSource *siriActivationSource; // @synthesize siriActivationSource=_siriActivationSource;
+@property(retain, nonatomic) CPSTemplateEnvironment *templateEnvironment; // @synthesize templateEnvironment=_templateEnvironment;
+@property(retain, nonatomic) CPSNowPlayingViewController *nowPlayingViewController; // @synthesize nowPlayingViewController=_nowPlayingViewController;
+@property(retain, nonatomic) CPSTabBarViewController *tabBarViewController; // @synthesize tabBarViewController=_tabBarViewController;
 @property(copy, nonatomic) NSUUID *actionSheetIdentifier; // @synthesize actionSheetIdentifier=_actionSheetIdentifier;
-@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) CPSApplicationStateMonitor *applicationStateMonitor; // @synthesize applicationStateMonitor=_applicationStateMonitor;
-@property(retain, nonatomic) id <CPTemplateServiceClientInterface> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
-@property(retain, nonatomic) CPSMapTemplateViewController *rootMapController; // @synthesize rootMapController=_rootMapController;
-@property(retain, nonatomic) CPSBannerSourceProxy *bannerSourceProxy; // @synthesize bannerSourceProxy=_bannerSourceProxy;
+@property(retain, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
+@property(retain, nonatomic) CPSBannerSource *bannerSource; // @synthesize bannerSource=_bannerSource;
 @property(retain, nonatomic) NSMutableDictionary *identifierToViewControllerDictionary; // @synthesize identifierToViewControllerDictionary=_identifierToViewControllerDictionary;
-@property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
+@property(retain, nonatomic) id <CPDashboardClientInterface> dashboardControllerRemoteObjectProxy; // @synthesize dashboardControllerRemoteObjectProxy=_dashboardControllerRemoteObjectProxy;
+@property(retain, nonatomic) NSXPCConnection *dashboardControllerConnection; // @synthesize dashboardControllerConnection=_dashboardControllerConnection;
+@property(retain, nonatomic) NSXPCListener *dashboardControllerListener; // @synthesize dashboardControllerListener=_dashboardControllerListener;
+@property(retain, nonatomic) id <CPTemplateServiceClientInterface> interfaceControllerRemoteObjectProxy; // @synthesize interfaceControllerRemoteObjectProxy=_interfaceControllerRemoteObjectProxy;
+@property(retain, nonatomic) NSXPCConnection *interfaceControllerConnection; // @synthesize interfaceControllerConnection=_interfaceControllerConnection;
+@property(retain, nonatomic) NSXPCListener *interfaceControllerListener; // @synthesize interfaceControllerListener=_interfaceControllerListener;
+@property(nonatomic) struct UIEdgeInsets currentSafeAreaInsets; // @synthesize currentSafeAreaInsets=_currentSafeAreaInsets;
+@property(readonly, nonatomic) CPSDashboardEstimatesViewController *dashboardEstimatesViewController; // @synthesize dashboardEstimatesViewController=_dashboardEstimatesViewController;
+@property(readonly, nonatomic) CPSDashboardGuidanceViewController *dashboardGuidanceViewController; // @synthesize dashboardGuidanceViewController=_dashboardGuidanceViewController;
+@property(nonatomic) __weak FBScene *mapWidgetScene; // @synthesize mapWidgetScene=_mapWidgetScene;
+@property(nonatomic) __weak UIWindowScene *windowSceneForGuidanceWidgetScene; // @synthesize windowSceneForGuidanceWidgetScene=_windowSceneForGuidanceWidgetScene;
+@property(nonatomic) __weak UIWindowScene *windowSceneForMapWidgetScene; // @synthesize windowSceneForMapWidgetScene=_windowSceneForMapWidgetScene;
+@property(nonatomic) __weak UIWindowScene *windowSceneForTemplateApplicationScene; // @synthesize windowSceneForTemplateApplicationScene=_windowSceneForTemplateApplicationScene;
 @property(nonatomic) __weak FBScene *scene; // @synthesize scene=_scene;
-@property(readonly, nonatomic) __weak id <CPSTemplateInstanceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) CPSOverlayViewController *overlayViewController; // @synthesize overlayViewController=_overlayViewController;
 @property(readonly, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
-- (void).cxx_destruct;
+- (void)didCreateNavigator:(id)arg1;
+- (void)hostSetShortcutButtons:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateInterestingInsets:(struct UIEdgeInsets)arg1;
-- (void)updateSafeAreaInsets:(struct UIEdgeInsets)arg1;
+- (void)viewController:(id)arg1 didUpdateSafeAreaInsets:(struct UIEdgeInsets)arg2;
+- (void)templateViewController:(id)arg1 shouldActivateSiriWithDirectActionContext:(id)arg2;
 - (void)templateViewControllerDidDismiss:(id)arg1;
 - (void)templateViewControllerDidPop:(id)arg1;
+- (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)whitelistClassesForBaseTemplateProvider:(id)arg1;
+- (void)_dashboardConnectionInvalidationHandler;
+- (_Bool)_handleDashboardConnection:(id)arg1;
+- (void)invalidate;
+- (void)_appViewConnectionInvalidationHandler;
+- (_Bool)_handleAppViewConnection:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)getPresentedTemplateWithReply:(CDUnknownBlockType)arg1;
 - (void)getTemplatesWithReply:(CDUnknownBlockType)arg1;
 - (void)getTopTemplateWithReply:(CDUnknownBlockType)arg1;
-- (void)dismissTemplateAnimated:(id)arg1;
-- (void)popTemplateAnimated:(id)arg1;
-- (void)popToRootTemplateAnimated:(id)arg1;
-- (void)popToTemplate:(id)arg1 animated:(id)arg2;
+- (void)dismissTemplateAnimated:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)clientRequestNowPlayingTemplateAnimated:(_Bool)arg1;
+- (void)popTemplateAnimated:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)popToRootTemplateAnimated:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)popToTemplate:(id)arg1 animated:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)containsTemplate:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)pushEntityTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)updateTabBarTemplate:(id)arg1;
+- (void)setTabBarTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3 animated:(id)arg4;
 - (void)presentVoiceTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)pushSearchTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)pushNowPlayingTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)pushListTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)requestNavigationProviderForMapTemplate:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)pushMapTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)pushInformationTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)pushGridTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
-- (void)dismissAlertAnimated:(_Bool)arg1;
 - (void)requestBannerProviderWithReply:(CDUnknownBlockType)arg1;
-- (void)presentAlertTemplate:(id)arg1 withProxyDelegate:(id)arg2;
-- (void)presentActionSheetTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3;
+- (void)presentAlertTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)presentActionSheetTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setHostPrefersDarkUserInterfaceStyle:(_Bool)arg1;
 - (void)bannerDidDisappearWithIdentifier:(id)arg1;
 - (void)bannerDidAppearWithIdentifier:(id)arg1;
 - (void)bannerTappedWithIdentifier:(id)arg1;
+- (void)_applicationDidThrottleAudioUpdates:(id)arg1;
+- (_Bool)_templateIsValidForCurrentEntitlement:(id)arg1;
+- (id)dashboardEndpoint;
 - (id)endpoint;
 - (void)dealloc;
-- (id)initWithSceneIdentifier:(id)arg1 delegate:(id)arg2;
-- (id)initWithWindowScene:(id)arg1;
+- (id)initWithBundleIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,28 +10,40 @@
 #import <WorkflowUI/UICollectionViewDelegate-Protocol.h>
 #import <WorkflowUI/WFGlyphPickerTabBarDelegate-Protocol.h>
 
-@class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, WFGlyphPickerTabBar;
+@class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, UISegmentedControl, WFGlyphPickerTabBar;
 @protocol WFGlyphPickerDelegate;
 
 @interface WFGlyphPicker : UIView <UICollectionViewDelegate, UICollectionViewDataSource, WFGlyphPickerTabBarDelegate>
 {
+    _Bool _useOutlineGlyphsOnly;
     unsigned short _selectedGlyphCharacter;
     id <WFGlyphPickerDelegate> _delegate;
+    UISegmentedControl *_segmentedControl;
+    double _glyphDimension;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_collectionViewLayout;
     NSArray *_glyphSections;
+    long long _control;
     WFGlyphPickerTabBar *_tabBar;
+    struct UIEdgeInsets _sectionInset;
 }
 
 + (unsigned long long)numberOfSections;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useOutlineGlyphsOnly; // @synthesize useOutlineGlyphsOnly=_useOutlineGlyphsOnly;
 @property(nonatomic) __weak WFGlyphPickerTabBar *tabBar; // @synthesize tabBar=_tabBar;
+@property(nonatomic) long long control; // @synthesize control=_control;
 @property(copy, nonatomic) NSArray *glyphSections; // @synthesize glyphSections=_glyphSections;
 @property(nonatomic) __weak UICollectionViewFlowLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(nonatomic) double glyphDimension; // @synthesize glyphDimension=_glyphDimension;
+@property(nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
+@property(retain, nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 @property(nonatomic) unsigned short selectedGlyphCharacter; // @synthesize selectedGlyphCharacter=_selectedGlyphCharacter;
 @property(nonatomic) __weak id <WFGlyphPickerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)scrollToSection:(long long)arg1;
 - (void)glyphPickerTabBar:(id)arg1 didSelectTabAtIndex:(unsigned long long)arg2;
+- (void)pickedSegment:(id)arg1;
 - (id)indexPathForGlyphCharacter:(unsigned short)arg1;
 - (unsigned short)glyphCharacterAtIndexPath:(id)arg1;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
@@ -40,9 +52,10 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)safeAreaInsetsDidChange;
-- (struct CGSize)intrinsicContentSize;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithControl:(long long)arg1 glyphDimension:(double)arg2 sectionInset:(struct UIEdgeInsets)arg3 useSystemGlyphsOnly:(_Bool)arg4 useOutlineGlyphsOnly:(_Bool)arg5;
+- (id)initWithControl:(long long)arg1 glyphDimension:(double)arg2 sectionInset:(struct UIEdgeInsets)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

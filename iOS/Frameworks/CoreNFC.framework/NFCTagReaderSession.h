@@ -13,13 +13,13 @@
 }
 
 + (_Bool)readingAvailable;
+- (void).cxx_destruct;
 - (void)didDetectTags:(id)arg1;
 - (void)_callbackDidBecomeActive;
 - (void)_callbackDidInvalidateWithError:(id)arg1;
 - (void)connectToTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)restartPolling;
 @property(readonly, retain, nonatomic) id <NFCTag> connectedTag;
-- (void)dealloc;
 - (id)initWithPollingOption:(long long)arg1 swiftDelegate:(id)arg2 queue:(id)arg3;
 - (id)initWithPollingOption:(long long)arg1 delegate:(id)arg2 queue:(id)arg3;
 - (id)initWithPollingOption:(long long)arg1 delegate:(id)arg2 delegateType:(long long)arg3 queue:(id)arg4;

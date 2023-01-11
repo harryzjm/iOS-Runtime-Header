@@ -13,6 +13,7 @@
 {
 }
 
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
 @property(readonly) unsigned long long tileHeight;
@@ -100,14 +101,14 @@
 - (void)setCommandDataCorruptModeSPI:(unsigned long long)arg1;
 - (void)setDepthClipModeSPI:(unsigned long long)arg1;
 - (void)setDepthClipMode:(unsigned long long)arg1;
-- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_c0454aff *)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
-- (void)setScissorRect:(CDStruct_5f3a0cd7)arg1;
+- (void)setScissorRect:(CDStruct_33dcf794)arg1;
 - (void)setDepthBias:(float)arg1 slopeScale:(float)arg2 clamp:(float)arg3;
 - (void)setCullMode:(unsigned long long)arg1;
 - (void)setFrontFacingWinding:(unsigned long long)arg1;
-- (void)setScissorRects:(const CDStruct_5f3a0cd7 *)arg1 count:(unsigned long long)arg2;
+- (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;
 - (void)setViewports:(const CDStruct_8727d297 *)arg1 count:(unsigned long long)arg2;
 - (void)setViewport:(CDStruct_8727d297)arg1;
 - (void)setVertexSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
@@ -125,7 +126,6 @@
 - (void)setVertexBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setRenderPipelineState:(id)arg1;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
-- (void)acceptVisitor:(id)arg1;
 - (id)initWithRenderCommandEncoder:(id)arg1 parent:(id)arg2 descriptor:(id)arg3;
 
 // Remaining properties

@@ -18,16 +18,16 @@
     NUColorSpace *_colorSpace;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(readonly, nonatomic) NUPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;
-- (void).cxx_destruct;
 - (void)_updateDisplay:(id)arg1;
 - (void)_updateDisplayWithIdentifier:(id)arg1;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 - (void)reset:(id)arg1;
 - (void)draw:(id)arg1;
 - (void)_drawInTexture:(id)arg1 context:(id)arg2;
-- (void)_ensureDrawingStorageOfSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
+- (void)_ensureDrawingStorageOfSize:(CDStruct_f261e59c)arg1 format:(id)arg2;
 - (void)display;
 - (_Bool)contentsAreFlipped;
 - (void)_resetContents;

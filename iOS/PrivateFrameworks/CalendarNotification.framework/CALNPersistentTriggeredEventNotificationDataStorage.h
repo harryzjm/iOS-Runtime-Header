@@ -13,17 +13,18 @@
 
 @interface CALNPersistentTriggeredEventNotificationDataStorage : NSObject <CALNTriggeredEventNotificationDataStorage>
 {
+    _Bool _protected;
     NSString *_path;
     CALNInMemoryTriggeredEventNotificationDataStorage *_inMemoryStorage;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 + (id)notificationDataFromPersistentStorageWithPath:(id)arg1 error:(id *)arg2;
-+ (id)persistentStorageWithPath:(id)arg1 error:(id *)arg2;
++ (id)persistentStorageWithPath:(id)arg1 isProtectedStorage:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) CALNInMemoryTriggeredEventNotificationDataStorage *inMemoryStorage; // @synthesize inMemoryStorage=_inMemoryStorage;
 @property(readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
-- (void).cxx_destruct;
 - (_Bool)_saveDataWithError:(id *)arg1;
 - (_Bool)_loadDataWithError:(id *)arg1;
 - (void)_removeData;
@@ -34,7 +35,7 @@
 - (id)notificationDataWithIdentifier:(id)arg1;
 - (void)addNotificationData:(id)arg1 withIdentifier:(id)arg2;
 - (id)notificationData;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 isProtectedStorage:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

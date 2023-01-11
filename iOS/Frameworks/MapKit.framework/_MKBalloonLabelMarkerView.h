@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     double _smallBalloonScaleFactor;
 }
 
-+ (Class)calloutViewClass;
 - (void).cxx_destruct;
 - (void)_configureBalloonForDataIconImageKeys:(id)arg1 scale:(double)arg2;
 - (_Bool)updateCalloutViewIfNeededAnimated:(_Bool)arg1;
@@ -41,6 +40,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic, getter=_balloonCalloutShouldCenterWhenOffscreen) _Bool balloonCalloutShouldCenterWhenOffscreen;
+@property(readonly, nonatomic, getter=_balloonCalloutShouldShowArrow) _Bool balloonCalloutShouldShowArrow;
+@property(readonly, nonatomic, getter=_balloonImageTintColor) UIColor *balloonImageTintColor;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

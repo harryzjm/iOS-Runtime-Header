@@ -23,6 +23,7 @@
     AVAsset *_movieAsset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool applyToEmission; // @synthesize applyToEmission=_applyToEmission;
 @property(retain, nonatomic) AVAsset *movieAsset; // @synthesize movieAsset=_movieAsset;
 @property(retain, nonatomic) NSURL *movieURL; // @synthesize movieURL=_movieURL;
@@ -31,8 +32,7 @@
 @property(retain, nonatomic) AVPlayer *player; // @synthesize player=_player;
 @property(retain, nonatomic) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
 @property(nonatomic) _Bool enableLoop; // @synthesize enableLoop=_enableLoop;
-- (void).cxx_destruct;
-- (struct opaqueCMSampleBuffer *)copySampleBufferAtTime:(CDStruct_1b6d18a9)arg1;
+- (struct opaqueCMSampleBuffer *)copySampleBufferAtTime:(CDStruct_198678f7)arg1;
 - (void)stickerGenerationDidEnd;
 - (void)stickerGenerationWillBegin;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

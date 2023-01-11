@@ -8,32 +8,34 @@
 
 #import <CoreSpeech/CSAudioStreamProvidingDelegate-Protocol.h>
 
-@class CSAudioStreamRequest, NSString, NSUUID;
+@class CSAudioStartStreamOption, CSAudioStreamRequest, NSString, NSUUID;
 @protocol CSAudioStreamProviding, CSAudioStreamProvidingDelegate;
 
 @interface CSAudioStream : NSObject <CSAudioStreamProvidingDelegate>
 {
     _Bool _scheduledFutureSample;
     _Bool _streaming;
+    id <CSAudioStreamProviding> _streamProvider;
     id <CSAudioStreamProvidingDelegate> _delegate;
     unsigned long long _lastForwardedSampleCount;
     NSString *_name;
     CSAudioStreamRequest *_streamRequest;
     NSString *_UUID;
-    id <CSAudioStreamProviding> _streamProvider;
+    CSAudioStartStreamOption *_startStreamOption;
     NSUUID *_streamingUUID;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSUUID *streamingUUID; // @synthesize streamingUUID=_streamingUUID;
 @property _Bool streaming; // @synthesize streaming=_streaming;
-@property(nonatomic) __weak id <CSAudioStreamProviding> streamProvider; // @synthesize streamProvider=_streamProvider;
+@property(retain, nonatomic) CSAudioStartStreamOption *startStreamOption; // @synthesize startStreamOption=_startStreamOption;
 @property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property(retain, nonatomic) CSAudioStreamRequest *streamRequest; // @synthesize streamRequest=_streamRequest;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) _Bool scheduledFutureSample; // @synthesize scheduledFutureSample=_scheduledFutureSample;
 @property(nonatomic) unsigned long long lastForwardedSampleCount; // @synthesize lastForwardedSampleCount=_lastForwardedSampleCount;
 @property(nonatomic) __weak id <CSAudioStreamProvidingDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <CSAudioStreamProviding> streamProvider; // @synthesize streamProvider=_streamProvider;
 - (void)audioStreamProvider:(id)arg1 didHardwareConfigurationChange:(long long)arg2;
 - (void)audioStreamProvider:(id)arg1 audioChunkForTVAvailable:(id)arg2;
 - (void)audioStreamProvider:(id)arg1 audioBufferAvailable:(id)arg2;

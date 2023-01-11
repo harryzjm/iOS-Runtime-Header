@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <Navigation/NSCopying-Protocol.h>
 #import <Navigation/NSSecureCoding-Protocol.h>
 
 @class GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, MNTraceRecordingData, NSArray, NSDictionary, NSString;
 
-@interface MNStartNavigationDetails : NSObject <NSSecureCoding>
+@interface MNStartNavigationDetails : NSObject <NSCopying, NSSecureCoding>
 {
     int _navigationType;
     _Bool _fullGuidance;
     NSString *_tracePlaybackPath;
     MNTraceRecordingData *_traceRecordingData;
-    _Bool _shouldSimulateLocations;
+    long long _simulationType;
     NSString *_traceRecordingNameOverride;
-    _Bool _copyTraceToCrashReporter;
     GEORouteAttributes *_routeAttributes;
     GEODirectionsRequest *_directionsRequest;
     GEODirectionsResponse *_directionsResponse;
@@ -30,11 +30,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) _Bool copyTraceToCrashReporter; // @synthesize copyTraceToCrashReporter=_copyTraceToCrashReporter;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *traceRecordingNameOverride; // @synthesize traceRecordingNameOverride=_traceRecordingNameOverride;
-@property(nonatomic) _Bool shouldSimulateLocations; // @synthesize shouldSimulateLocations=_shouldSimulateLocations;
+@property(nonatomic) long long simulationType; // @synthesize simulationType=_simulationType;
 @property(retain, nonatomic) MNTraceRecordingData *traceRecordingData; // @synthesize traceRecordingData=_traceRecordingData;
 @property(copy, nonatomic) NSString *tracePlaybackPath; // @synthesize tracePlaybackPath=_tracePlaybackPath;
+@property(nonatomic) _Bool isReconnecting; // @synthesize isReconnecting=_isReconnecting;
 @property(copy, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
 @property(nonatomic) unsigned long long selectedRouteIndex; // @synthesize selectedRouteIndex=_selectedRouteIndex;
 @property(copy, nonatomic) NSDictionary *traffic; // @synthesize traffic=_traffic;
@@ -44,13 +45,12 @@
 @property(copy, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property(nonatomic) _Bool fullGuidance; // @synthesize fullGuidance=_fullGuidance;
 @property(nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *fullDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-@property(nonatomic) _Bool isReconnecting;
 
 @end
 

@@ -42,6 +42,7 @@
     int _callRelaySupport;
     float _localMeterLevel;
     float _remoteMeterLevel;
+    int _originatingUIType;
     NSString *_callUUID;
     TUHandle *_handle;
     NSString *_isoCountryCode;
@@ -80,6 +81,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)proxyCallWithCall:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize remoteScreenLandscapeAspectRatio; // @synthesize remoteScreenLandscapeAspectRatio=_remoteScreenLandscapeAspectRatio;
 @property(nonatomic) struct CGSize remoteScreenPortraitAspectRatio; // @synthesize remoteScreenPortraitAspectRatio=_remoteScreenPortraitAspectRatio;
 @property(retain, nonatomic) NSMutableDictionary *localVideoModeToLayer; // @synthesize localVideoModeToLayer=_localVideoModeToLayer;
@@ -87,6 +89,7 @@
 @property(retain, nonatomic) id <TURemoteVideoClient> remoteVideo; // @synthesize remoteVideo=_remoteVideo;
 @property(retain, nonatomic) id <TURemoteVideoClient> localVideo; // @synthesize localVideo=_localVideo;
 @property(nonatomic) __weak id <TUCallServicesProxyCallActions> proxyCallActionsDelegate; // @synthesize proxyCallActionsDelegate=_proxyCallActionsDelegate;
+@property(nonatomic) int originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property(nonatomic) _Bool wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
 @property(nonatomic, getter=isMutuallyExclusiveCall) _Bool mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
 @property(nonatomic) _Bool shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
@@ -144,7 +147,6 @@
 @property(nonatomic, getter=isHostedOnCurrentDevice) _Bool hostedOnCurrentDevice; // @synthesize hostedOnCurrentDevice=_hostedOnCurrentDevice;
 @property(nonatomic) int callStatus; // @synthesize callStatus=_callStatus;
 @property(copy, nonatomic) NSString *callUUID; // @synthesize callUUID=_callUUID;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (long long)_orientationForVideoAttributesOrientation:(int)arg1;
@@ -171,9 +173,9 @@
 - (void)sendHardPauseDigits;
 - (void)setCallDisconnectedDueToComponentCrash;
 - (void)updateProxyCallWithDaemon;
+- (void)setIsSendingVideo:(_Bool)arg1;
 - (void)setDownlinkMuted:(_Bool)arg1;
 - (void)setUplinkMuted:(_Bool)arg1;
-- (void)setIsSendingVideo:(_Bool)arg1;
 - (void)setTransitionStatus:(int)arg1;
 - (void)setEndpointOnCurrentDevice:(_Bool)arg1;
 - (void)setWantsHoldMusic:(_Bool)arg1;

@@ -9,8 +9,7 @@
 #import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
 #import <UIKitCore/_UIDynamicReferenceSystem-Protocol.h>
 
-@class NSArray, NSIndexSet, NSMutableDictionary, NSString, UITraitCollection, _UICollectionCompositionalLayoutDynamicAnimator, _UICollectionCompositionalLayoutSolverOptions, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutDynamicsConfiguration, _UICollectionLayoutSectionGeometryTranslator, _UICollectionPreferredSizes, _UIDataSourceSnapshotter, _UIRTree;
-@protocol NSCollectionLayoutContainer;
+@class NSArray, NSIndexSet, NSMutableDictionary, NSString, UITraitCollection, _UICollectionCompositionalLayoutDynamicAnimator, _UICollectionCompositionalLayoutSolverOptions, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutContainer, _UICollectionLayoutDynamicsConfiguration, _UICollectionLayoutSectionGeometryTranslator, _UICollectionPreferredSizes, _UIDataSourceSnapshotter, _UIRTree;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionCompositionalLayoutSolver : NSObject <_UICollectionLayoutAuxillaryHosting, _UIDynamicReferenceSystem>
@@ -20,9 +19,12 @@ __attribute__((visibility("hidden")))
     _Bool _shouldPerformPhysicalRTLTransforms;
     _Bool _roundsToScreenScale;
     _Bool _layoutRTL;
-    int _layoutAxis;
-    id <NSCollectionLayoutContainer> _container;
+    CDUnknownBlockType _cellLayoutAttributesTransformer;
+    CDUnknownBlockType _sectionDecorationLayoutAttributesTransformer;
+    CDUnknownBlockType _sectionSupplementaryLayoutAttributesTransformer;
+    _UICollectionLayoutContainer *_container;
     UITraitCollection *_traitCollection;
+    unsigned long long _layoutAxis;
     _UIDataSourceSnapshotter *_dataSourceSnapshot;
     double _interSectionSpacing;
     NSIndexSet *_orthogonalScrollingSectionIndexes;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _actualContentSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long numberOfSectionsWithTransformVisibleItemsHandler; // @synthesize numberOfSectionsWithTransformVisibleItemsHandler=_numberOfSectionsWithTransformVisibleItemsHandler;
 @property(retain, nonatomic) _UICollectionPreferredSizes *globalSupplementaryPreferredSizes; // @synthesize globalSupplementaryPreferredSizes=_globalSupplementaryPreferredSizes;
 @property(retain, nonatomic) _UICollectionLayoutAuxillaryItemSolver *globalSupplementarySolver; // @synthesize globalSupplementarySolver=_globalSupplementarySolver;
@@ -78,22 +81,27 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool estimatesSizes; // @synthesize estimatesSizes=_estimatesSizes;
 @property(readonly, nonatomic) double interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
 @property(retain, nonatomic) _UIDataSourceSnapshotter *dataSourceSnapshot; // @synthesize dataSourceSnapshot=_dataSourceSnapshot;
-@property(nonatomic) int layoutAxis; // @synthesize layoutAxis=_layoutAxis;
+@property(nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property(readonly, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
-@property(retain, nonatomic) id <NSCollectionLayoutContainer> container; // @synthesize container=_container;
-- (void).cxx_destruct;
-- (struct CGRect)bounds;
+@property(retain, nonatomic) _UICollectionLayoutContainer *container; // @synthesize container=_container;
+@property(copy, nonatomic) CDUnknownBlockType sectionSupplementaryLayoutAttributesTransformer; // @synthesize sectionSupplementaryLayoutAttributesTransformer=_sectionSupplementaryLayoutAttributesTransformer;
+@property(copy, nonatomic) CDUnknownBlockType sectionDecorationLayoutAttributesTransformer; // @synthesize sectionDecorationLayoutAttributesTransformer=_sectionDecorationLayoutAttributesTransformer;
+@property(copy, nonatomic) CDUnknownBlockType cellLayoutAttributesTransformer; // @synthesize cellLayoutAttributesTransformer=_cellLayoutAttributesTransformer;
+@property(readonly, nonatomic) struct CGRect bounds;
 - (struct CGRect)_dynamicReferenceBounds;
 - (id)auxillaryHostPreferredSizes;
 - (id)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (_Bool)auxillaryHostShouldLayoutRTL;
 - (id)auxillaryHostAuxillaryItems;
 - (id)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (struct CGSize)auxillaryHostContentSize;
+- (void)_updateResultNotingInsertedItemAndSectionAuxillaries:(id)arg1 forVisibleGroupAuxillaryAttributesBeforeResolve:(id)arg2 withUpdate:(id)arg3;
+- (id)_updateResultsNotingDeletedItemAndSectionAuxillaries:(id)arg1 returningStartingGroupAuxillariesForUpdate:(id)arg2;
 - (_Bool)_canResolveWithoutQueryingSectionDefintionsForContainerChange;
+- (id)_existingSectionDefinitionForSectionIndex:(unsigned long long)arg1;
 - (id)_queryClientForSectionDefintionForSectionIndex:(long long)arg1;
 - (id)_resolveOptionallyQueryingForSectionDefintions:(_Bool)arg1 retainPreferredSizing:(_Bool)arg2;
 - (id)_resolveOptionallyQueryingForSectionDefintions:(_Bool)arg1;
@@ -106,32 +114,32 @@ __attribute__((visibility("hidden")))
 - (void)_updateBookmarkOffsetsForGlobalSupplementariesIfNeeded;
 - (void)_updateSectionIndexer:(id)arg1 frame:(struct CGRect)arg2 solution:(id)arg3 section:(long long)arg4;
 - (void)_updateGeometryTranslator;
-- (void)_diffNonItemSupplementariesForUpdate:(id)arg1 resolveResult:(id)arg2 initialSupplementaryKeysSectionDict:(id)arg3;
-- (id)_computeInitialSupplementaryKeysSectionDictForUpdate:(id)arg1;
-- (void)_computeDeletedItemsAffectingSupplementariesForUpdate:(id)arg1 resolveResult:(id)arg2;
 - (id)_rebasedSectionLayoutsWithDataSourceTranslator:(id)arg1;
-- (id)_rebasedPreferredSizesWithDataSourceTranslator:(id)arg1;
+- (id)_rebasedPreferredSizesWithUpdate:(id)arg1;
 - (struct CGSize)_adjustedContentSizeIncludingContainerInsetsForSize:(struct CGSize)arg1;
-- (struct CGSize)_clampedSolutionSizeForSolution:(id)arg1 layoutAxis:(int)arg2 scrollsOrthogonally:(_Bool)arg3;
+- (struct CGSize)_clampedSolutionSizeForSolution:(id)arg1 layoutAxis:(unsigned long long)arg2 scrollsOrthogonally:(_Bool)arg3;
 - (struct CGRect)_globalFrameForSolutionFrame:(struct CGRect)arg1 bookmark:(id)arg2;
 - (void)_recomputeSolutionBookmarksAndContentSize;
 - (void)_invalidateAllAttributes;
 - (void)_invalidateAttributes:(id)arg1;
 - (struct CGRect)_attributesQueryRectForRect:(struct CGRect)arg1;
 - (struct CGPoint)_attributesOffsetFromContainer;
+- (struct CGPoint)_globalSupplementaryFrameOffset;
 - (void)_layoutAttributesForElementsInRect:(struct CGRect)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setCachedDecorationAttributesForElementKind:(id)arg1 indexPath:(id)arg2 attributes:(id)arg3;
 - (id)_cachedDecorationAttributesForElementKind:(id)arg1 indexPath:(id)arg2;
 - (void)_setCachedSupplementaryAttributesForElementKind:(id)arg1 indexPath:(id)arg2 attributes:(id)arg3;
 - (id)_cachedSupplementaryAttributesForElementKind:(id)arg1 indexPath:(id)arg2;
+- (void)_applyPreferredSizingCustomizationsToLayoutAttributes:(id)arg1 atIndexPath:(id)arg2;
 - (id)_createAndCacheLayoutAttributesForDecorationItemAtIndexPath:(id)arg1 elementKind:(id)arg2 frame:(struct CGRect)arg3 additionalContentInset:(struct NSDirectionalEdgeInsets)arg4 zIndex:(long long)arg5;
 - (id)_createAndCacheLayoutAttributesForSupplementaryItemAtIndexPath:(id)arg1 elementKind:(id)arg2 frame:(struct CGRect)arg3 zIndex:(long long)arg4;
 - (id)_createAndCacheLayoutAttributesForItemAtIndexPath:(id)arg1 frame:(struct CGRect)arg2 zIndex:(long long)arg3;
-- (void)_enrichLayoutAttributes:(id)arg1 inSection:(id)arg2;
 - (void)_solveWithSectionLayouts:(id)arg1 preferredSizesDict:(id)arg2 dataSourceSnapshot:(id)arg3 update:(id)arg4;
 - (void)_solve;
+- (double)_rootGroupDimensionForOrthogonalSection:(long long)arg1;
 - (id)_attributesQueryRectsForQueryRect:(struct CGRect)arg1;
 - (_Bool)elementShouldAppearAbove:(id)arg1;
+- (id)orthogonalSectionStateForSection:(long long)arg1;
 - (struct CGRect)orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(id)arg1 frame:(struct CGRect)arg2;
 - (_Bool)orthogonalScrollingSectionDecorationShouldScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
 - (_Bool)orthogonalScrollingSectionSupplementaryShouldScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
@@ -150,9 +158,17 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)layoutRectForSection:(long long)arg1;
 @property(readonly, nonatomic) struct CGSize contentSize;
 - (id)visualDescription;
-- (id)resolveForInvalidatedPreferredAttributes:(id)arg1;
+- (void)_didEndSwiping;
+- (void)_willBeginSwiping;
+- (id)_trailingSwipeActionsConfigurationForIndexPath:(id)arg1;
+- (id)_leadingSwipeActionsConfigurationForIndexPath:(id)arg1;
+- (_Bool)_supportsSwipeActionsForIndexPath:(id)arg1;
+- (_Bool)_wantsSwipeActions;
+- (id)resolveForInvalidatedPreferredAttributes:(id)arg1 scrollOffset:(struct CGPoint)arg2 visibleRect:(struct CGRect)arg3;
 - (_Bool)updatePreferredSizeIfNeededForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (_Bool)shouldInvalidateForNewTraitCollection:(id)arg1;
+- (id)restorableState;
+- (id)resolveForEndInteractiveReorderingForTargetIndexPaths:(id)arg1;
 - (id)resolveForUpdatedGlobalSupplementaries:(id)arg1;
 - (id)resolveForMarginsChange:(id)arg1;
 - (id)resolveForContainerChange:(id)arg1;
@@ -163,6 +179,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldTransformVisibleItemsDuringContentOffsetChanges;
 @property(readonly, nonatomic) NSArray *layoutAttributesForPinnedSupplementaryItems;
 @property(readonly, nonatomic) _Bool hasPinnedSupplementaryItems;
+- (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 withIndexPath:(id)arg2;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 withIndexPath:(id)arg2;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
@@ -175,7 +192,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateCachedSupplementaryAttributesForElementKind:(id)arg1 atIndexPaths:(id)arg2;
 - (_Bool)updateVisibleBoundsForDynamicAnimator:(struct CGRect)arg1 previousVisibleBounds:(struct CGRect)arg2;
 - (id)updatePinnedSectionSupplementaryItemsForVisibleBounds:(struct CGRect)arg1;
-- (id)initWithContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 dataSourceSnapshot:(id)arg4 options:(id)arg5 sectionProvider:(CDUnknownBlockType)arg6;
+- (id)initWithContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 dataSourceSnapshot:(id)arg4 options:(id)arg5 sectionProvider:(CDUnknownBlockType)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

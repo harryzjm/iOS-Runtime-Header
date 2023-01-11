@@ -8,11 +8,10 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray;
 
 @interface GEORPDebugSettings : PBCodable <NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     NSMutableArray *_keywords;
     int _mode;
     struct {
@@ -23,8 +22,6 @@
 + (_Bool)isValid:(id)arg1;
 + (Class)keywordsType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -33,6 +30,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)keywordsAtIndex:(unsigned long long)arg1;

@@ -20,7 +20,7 @@
 + (void)tccServiceMotionAccessWithLabel:(id)arg1;
 + (_Bool)hasEntitlement:(id)arg1;
 + (_Bool)isMotionActivityEntitled;
-+ (_Bool)sendMessageSync:(shared_ptr_bdcc6d0f)arg1 onConnection:(struct CLConnectionClient *)arg2 timeoutAfter:(double)arg3 withReplyHandler:(CDUnknownBlockType)arg4;
++ (shared_ptr_bdcc6d0f)sendMessageSync:(shared_ptr_bdcc6d0f)arg1;
 + (id)sendMessage:(shared_ptr_bdcc6d0f)arg1 withReplyClassesSync:(id)arg2;
 + (void)sendMessage:(shared_ptr_bdcc6d0f)arg1 withReplyClasses:(id)arg2 callback:(CDUnknownBlockType)arg3;
 + (id)logDirectory;

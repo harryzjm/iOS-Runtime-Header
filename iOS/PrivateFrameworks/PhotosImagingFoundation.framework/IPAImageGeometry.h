@@ -19,12 +19,12 @@
     struct Quad2d _imageQuad;
 }
 
-+ (id)inputGeometryWithImageSize:(struct CGSize)arg1;
 + (void)addLineFromP0:(struct CGPoint)arg1 P1:(struct CGPoint)arg2 withLabel:(id)arg3 toScene:(id)arg4;
 + (void)addPoint:(struct CGPoint)arg1 radius:(double)arg2 withLabel:(id)arg3 toScene:(id)arg4;
 + (void)addQuadV0:(struct CGPoint)arg1 V1:(struct CGPoint)arg2 V2:(struct CGPoint)arg3 V3:(struct CGPoint)arg4 withLabel:(id)arg5 toScene:(id)arg6;
 + (void)addRect:(struct CGRect)arg1 withLabel:(id)arg2 toScene:(id)arg3;
 + (void)clearScene:(id)arg1;
++ (id)inputGeometryWithImageSize:(struct CGSize)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;

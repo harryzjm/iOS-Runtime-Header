@@ -11,9 +11,12 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
+- (id)accessibilityHint;
+- (_Bool)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (_Bool)_axMissingData;
+- (_Bool)_axSummaryIsCollapsed;
 - (id)_basicInfoElements;
 
 @end

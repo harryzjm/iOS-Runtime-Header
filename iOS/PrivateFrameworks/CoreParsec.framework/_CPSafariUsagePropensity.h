@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPSafariUsagePropensity-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, _CPEngagementShareRatio, _CPEngagementTriggerRatio;
 
 @interface _CPSafariUsagePropensity : PBCodable <_CPSafariUsagePropensity, NSSecureCoding>
 {
@@ -22,10 +22,33 @@
     float _thirdPartyCompletionOrRecentSearch;
     float _goToSite;
     float _other;
+    float _parsecWeb;
+    float _parsecAppStore;
+    float _parsecMaps;
+    float _parsecWiki;
+    float _parsecNews;
+    float _parsecStocks;
+    float _parsecWeather;
+    float _parsecOther;
     int _totalEngagements;
+    int _totalTopHitEngagements;
+    _CPEngagementTriggerRatio *_topHitTriggerRatio;
+    _CPEngagementShareRatio *_engagementShareRatio;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) _CPEngagementShareRatio *engagementShareRatio; // @synthesize engagementShareRatio=_engagementShareRatio;
+@property(nonatomic) int totalTopHitEngagements; // @synthesize totalTopHitEngagements=_totalTopHitEngagements;
+@property(retain, nonatomic) _CPEngagementTriggerRatio *topHitTriggerRatio; // @synthesize topHitTriggerRatio=_topHitTriggerRatio;
 @property(nonatomic) int totalEngagements; // @synthesize totalEngagements=_totalEngagements;
+@property(nonatomic) float parsecOther; // @synthesize parsecOther=_parsecOther;
+@property(nonatomic) float parsecWeather; // @synthesize parsecWeather=_parsecWeather;
+@property(nonatomic) float parsecStocks; // @synthesize parsecStocks=_parsecStocks;
+@property(nonatomic) float parsecNews; // @synthesize parsecNews=_parsecNews;
+@property(nonatomic) float parsecWiki; // @synthesize parsecWiki=_parsecWiki;
+@property(nonatomic) float parsecMaps; // @synthesize parsecMaps=_parsecMaps;
+@property(nonatomic) float parsecAppStore; // @synthesize parsecAppStore=_parsecAppStore;
+@property(nonatomic) float parsecWeb; // @synthesize parsecWeb=_parsecWeb;
 @property(nonatomic) float other; // @synthesize other=_other;
 @property(nonatomic) float goToSite; // @synthesize goToSite=_goToSite;
 @property(nonatomic) float thirdPartyCompletionOrRecentSearch; // @synthesize thirdPartyCompletionOrRecentSearch=_thirdPartyCompletionOrRecentSearch;

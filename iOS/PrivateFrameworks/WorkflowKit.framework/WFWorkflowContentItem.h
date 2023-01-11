@@ -8,23 +8,28 @@
 
 #import <WorkflowKit/WFContentItemClass-Protocol.h>
 
-@class WFWorkflowRecord;
+@class WFWorkflowReference;
 
 @interface WFWorkflowContentItem : WFGenericFileContentItem <WFContentItemClass>
 {
 }
 
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (id)propertyBuilders;
 - (_Bool)getListThumbnail:(CDUnknownBlockType)arg1 forSize:(struct CGSize)arg2;
 - (_Bool)getListSubtitle:(CDUnknownBlockType)arg1;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
-@property(readonly, nonatomic) WFWorkflowRecord *workflowRecord;
+- (id)folderName;
+- (id)actionCount;
+- (id)workflowIcon;
+@property(readonly, nonatomic) WFWorkflowReference *workflowReference;
 
 @end
 

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDResultSnippet : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_category;
     NSMutableArray *_childItems;
@@ -23,6 +22,9 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     GEOPDPriceDescription *_priceDescription;
     GEOPDRating *_priceRange;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _distanceDisplayThreshold;
     struct {
         unsigned int has_distanceDisplayThreshold:1;
@@ -34,15 +36,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_name:1;
         unsigned int read_priceDescription:1;
         unsigned int read_priceRange:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_category:1;
-        unsigned int wrote_childItems:1;
-        unsigned int wrote_childPlaces:1;
-        unsigned int wrote_locationString:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_priceDescription:1;
-        unsigned int wrote_priceRange:1;
-        unsigned int wrote_distanceDisplayThreshold:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -61,39 +55,35 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)childItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)childItemsCount;
-- (void)_addNoFlagsChildItem:(id)arg1;
 - (void)addChildItem:(id)arg1;
 - (void)clearChildItems;
 @property(retain, nonatomic) NSMutableArray *childItems;
-- (void)_readChildItems;
 @property(retain, nonatomic) GEOPDPriceDescription *priceDescription;
 @property(readonly, nonatomic) _Bool hasPriceDescription;
-- (void)_readPriceDescription;
 - (id)childPlaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)childPlacesCount;
-- (void)_addNoFlagsChildPlace:(id)arg1;
 - (void)addChildPlace:(id)arg1;
 - (void)clearChildPlaces;
 @property(retain, nonatomic) NSMutableArray *childPlaces;
-- (void)_readChildPlaces;
 @property(nonatomic) _Bool hasDistanceDisplayThreshold;
 @property(nonatomic) unsigned int distanceDisplayThreshold;
 @property(retain, nonatomic) NSString *locationString;
 @property(readonly, nonatomic) _Bool hasLocationString;
-- (void)_readLocationString;
 @property(retain, nonatomic) GEOPDRating *priceRange;
 @property(readonly, nonatomic) _Bool hasPriceRange;
-- (void)_readPriceRange;
 @property(retain, nonatomic) NSString *category;
 @property(readonly, nonatomic) _Bool hasCategory;
-- (void)_readCategory;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

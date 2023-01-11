@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 - (struct nw_protocol *)getProtocolStructure;
 - (void)dealloc;
-- (id)initWithProtocol:(struct nw_protocol *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

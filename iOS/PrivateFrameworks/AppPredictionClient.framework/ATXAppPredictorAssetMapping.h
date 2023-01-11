@@ -15,7 +15,7 @@
 
 + (id)getFullCachePathWithBaseCachePath:(id)arg1 cacheFileBaseName:(id)arg2 subScoreName:(id)arg3;
 + (id)sharedInstanceWithMobileAssets;
-+ (id)initWithCachedAssets;
++ (id)assetMappingWithCachedAssets;
 - (void).cxx_destruct;
 - (id)getAtxToolDescription;
 - (id)getFullCachePathWithBaseCachePath:(id)arg1 consumerSubType:(unsigned char)arg2;

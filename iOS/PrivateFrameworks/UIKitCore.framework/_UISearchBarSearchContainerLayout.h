@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasLeftButton:1;
         unsigned int allowSearchFieldShrinkage:1;
         unsigned int searchFieldUsesCustomBackgroundImage:1;
+        unsigned int searchFieldEffectivelySupportsDynamicType:1;
         unsigned int searchFieldRespectsReadableWidth:1;
         unsigned int searchFieldWidthIsReduced:1;
     } _searchContainerLayoutFlags;
@@ -28,6 +29,8 @@ __attribute__((visibility("hidden")))
     UIView *_leftButton;
     double _searchBarReadableWidth;
     CDUnknownBlockType _delegateSearchFieldFrameForProposedFrame;
+    CDUnknownBlockType _layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback;
+    double _additionalPaddingForCancelButtonAtLeadingEdge;
     struct UIOffset _searchFieldBackgroundPositionAdjustment;
     struct CGRect _searchFieldLayoutFrame;
     struct CGRect _cancelButtonLayoutFrame;
@@ -36,6 +39,9 @@ __attribute__((visibility("hidden")))
     struct CGRect _visibleCancelButtonSearchFieldLayoutFrame;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge; // @synthesize additionalPaddingForCancelButtonAtLeadingEdge=_additionalPaddingForCancelButtonAtLeadingEdge;
+@property(copy, nonatomic) CDUnknownBlockType layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback; // @synthesize layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback=_layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback;
 @property(copy, nonatomic) CDUnknownBlockType delegateSearchFieldFrameForProposedFrame; // @synthesize delegateSearchFieldFrameForProposedFrame=_delegateSearchFieldFrameForProposedFrame;
 @property(nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment; // @synthesize searchFieldBackgroundPositionAdjustment=_searchFieldBackgroundPositionAdjustment;
 @property(nonatomic) double searchBarReadableWidth; // @synthesize searchBarReadableWidth=_searchBarReadableWidth;
@@ -44,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) UISearchBarTextField *searchField; // @synthesize searchField=_searchField;
 @property(nonatomic) __weak id <_UISearchBarContainerSublayoutDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)sendWillLayoutSubviewsForSearchFieldContainerView:(id)arg1;
 - (void)applyLayout;
 - (void)updateLayout;
 - (double)searchFieldHeightUpdatingShrinkageAndFadeAlphas;
@@ -52,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double naturalBarHeight;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) _Bool searchFieldRespectsReadableWidth;
+@property(nonatomic) _Bool searchFieldEffectivelySupportsDynamicType;
 @property(nonatomic) _Bool searchFieldUsesCustomBackgroundImage;
 @property(nonatomic) _Bool allowSearchFieldShrinkage;
 @property(nonatomic) _Bool hasLeftButton;

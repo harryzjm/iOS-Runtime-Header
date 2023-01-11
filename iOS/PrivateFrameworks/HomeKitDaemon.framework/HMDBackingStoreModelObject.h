@@ -7,11 +7,12 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class CKRecord, HMFVersion, NSMutableDictionary, NSSet, NSString, NSUUID;
 @protocol HMDBackingStoreObjectProtocol;
 
-@interface HMDBackingStoreModelObject : HMFObject <HMFLogging>
+@interface HMDBackingStoreModelObject : HMFObject <HMFLogging, NSCopying>
 {
     NSMutableDictionary *_reserved;
     _Bool _bsoDataVersionOverride;
@@ -40,6 +41,7 @@
 + (id)schemaHashRoot;
 + (id)properties;
 + (Class)backedObjectClass;
+- (void).cxx_destruct;
 @property _Bool bsoDataVersionOverride; // @synthesize bsoDataVersionOverride=_bsoDataVersionOverride;
 @property(retain, nonatomic) CKRecord *bsoRecord; // @synthesize bsoRecord=_bsoRecord;
 @property(nonatomic) unsigned long long objectChangeType; // @synthesize objectChangeType=_objectChangeType;
@@ -49,7 +51,7 @@
 @property(nonatomic) __weak id <HMDBackingStoreObjectProtocol> bsoDelegate; // @synthesize bsoDelegate=_bsoDelegate;
 @property(retain, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)logIdentifier;
 - (void)dumpDebug;
 - (void)dumpDebug:(id)arg1;
@@ -59,6 +61,7 @@
 - (id)defaultValueForPropertyNamed:(id)arg1 isSet:(_Bool *)arg2;
 - (void)setPropertyIfNotNil:(id)arg1 named:(id)arg2;
 - (_Bool)diff:(id)arg1 differingFields:(id *)arg2;
+- (_Bool)merge:(id)arg1 error:(id *)arg2;
 - (id)merge:(id)arg1;
 - (id)merge:(id)arg1 from:(unsigned long long)arg2;
 - (_Bool)validForStorage;

@@ -6,7 +6,7 @@
 
 #import <Metal/MTLLibrarySPI-Protocol.h>
 
-@class NSArray, NSData, NSMutableDictionary, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 @protocol MTLDevice;
 
 @interface _MTLLibrary <MTLLibrarySPI>
@@ -24,20 +24,28 @@
 @property(readonly, copy) NSString *description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
+@property(readonly) NSString *installName;
+@property(readonly) long long type; // @dynamic type;
 - (id)initWithLibraryContainer:(struct MTLLibraryContainer *)arg1 device:(id)arg2;
+- (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (void)newIntersectionFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 specializedName:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 error:(id *)arg4;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
-- (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
+- (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 specializedName:(id)arg4 error:(id *)arg5;
 - (id)newFunctionWithName:(id)arg1;
 - (id)newExternFunctionWithName:(id)arg1;
 - (id)newFunctionWithNameInternal:(id)arg1;
 @property(readonly, retain) NSArray *externFunctionNames; // @dynamic externFunctionNames;
 @property(readonly, retain) NSArray *functionNames; // @dynamic functionNames;
 @property(copy) NSString *overrideTriple; // @dynamic overrideTriple;
-@property(readonly, copy) NSData *libraryDataContents;
+- (id)libraryDataContents;
+@property(readonly) NSArray *variableList;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

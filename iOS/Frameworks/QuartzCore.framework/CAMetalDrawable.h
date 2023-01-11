@@ -7,35 +7,33 @@
 #import <objc/NSObject.h>
 
 #import <QuartzCore/CAMetalDrawable-Protocol.h>
+#import <QuartzCore/CAMetalDrawableSPI-Protocol.h>
 #import <QuartzCore/MTLDrawableSPI-Protocol.h>
 
 @class CAMetalLayer, IOSurfaceSharedEvent, NSMutableArray, NSString;
 @protocol MTLTexture;
 
-@interface CAMetalDrawable : NSObject <CAMetalDrawable, MTLDrawableSPI>
+@interface CAMetalDrawable : NSObject <CAMetalDrawable, CAMetalDrawableSPI, MTLDrawableSPI>
 {
     struct _CAMetalDrawablePrivate *_priv;
     id <MTLTexture> _cachedTexture;
     CAMetalLayer *_layer;
+    struct CGRect _dirtyRect;
     unsigned long long _drawableID;
     IOSurfaceSharedEvent *_sharedEvent;
     unsigned int _insertSeed;
-    NSMutableArray *_presentedHandlers;
-    unsigned long long _status;
-    double _presentedTime;
     _Bool _presentScheduledInsertSeedValid;
     unsigned int _presentScheduledInsertSeed;
     NSMutableArray *_presentScheduledHandlers;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int presentScheduledInsertSeed; // @synthesize presentScheduledInsertSeed=_presentScheduledInsertSeed;
 @property(nonatomic) _Bool presentScheduledInsertSeedValid; // @synthesize presentScheduledInsertSeedValid=_presentScheduledInsertSeedValid;
-@property(nonatomic) double presentedTime; // @synthesize presentedTime=_presentedTime;
-@property(nonatomic) unsigned long long status; // @synthesize status=_status;
 @property(nonatomic) unsigned int insertSeed; // @synthesize insertSeed=_insertSeed;
-@property(nonatomic) IOSurfaceSharedEvent *sharedEvent; // @synthesize sharedEvent=_sharedEvent;
+@property(retain, nonatomic) IOSurfaceSharedEvent *sharedEvent; // @synthesize sharedEvent=_sharedEvent;
 @property(nonatomic) unsigned long long drawableID; // @synthesize drawableID=_drawableID;
-- (void).cxx_destruct;
+@property(nonatomic) struct CGRect dirtyRect; // @synthesize dirtyRect=_dirtyRect;
 @property(readonly) CAMetalLayer *layer;
 - (void)presentAtTime:(double)arg1;
 - (void)present;
@@ -47,10 +45,6 @@
 - (id)initWithDrawablePrivate:(struct _CAMetalDrawablePrivate *)arg1 layer:(id)arg2;
 - (void)didScheduledPresent;
 - (void)addPresentScheduledHandler:(CDUnknownBlockType)arg1;
-- (_Bool)hasPresentedHandlers;
-- (void)addPresentedHandler:(CDUnknownBlockType)arg1;
-- (void)presentAfterMinimumDuration:(double)arg1;
-- (void)didPresentAtTime:(double)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

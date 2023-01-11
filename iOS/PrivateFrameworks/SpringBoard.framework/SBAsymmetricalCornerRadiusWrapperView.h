@@ -15,10 +15,9 @@
     UIView *_trailingCornersMaskingView;
 }
 
-@property(retain, nonatomic) UIView *trailingCornersMaskingView; // @synthesize trailingCornersMaskingView=_trailingCornersMaskingView;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property(retain, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration; // @synthesize cornerRadiusConfiguration=_cornerRadiusConfiguration;
-- (void).cxx_destruct;
 - (void)_updateMaskedCorners;
 - (void)_updateCornerRadius;
 - (void)sendContentViewToBack:(id)arg1;

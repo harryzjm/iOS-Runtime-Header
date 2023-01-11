@@ -23,11 +23,13 @@
 - (id)exportedInterface;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
+- (void)_synchronousPerformWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_performWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)optInDataForFHIRDocumentWithRequest:(id)arg1 redactor:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)executeFHIRExtractionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)executeFHIRReferenceExtractionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)rulesVersionForFHIRDocumentExtractionWithCompletion:(CDUnknownBlockType)arg1;
+- (id)supportedFHIRConfigurationWithError:(id *)arg1;
+- (id)rulesVersionForFHIRDocumentExtractionWithError:(id *)arg1;
 - (void)dealloc;
 - (id)initWithListenerEndpoint:(id)arg1;
 - (id)init;

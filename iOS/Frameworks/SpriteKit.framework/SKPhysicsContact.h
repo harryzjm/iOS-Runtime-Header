@@ -17,14 +17,13 @@
     struct CGVector _contactNormal;
 }
 
-+ (id)copyWithZone:(struct _NSZone *)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double collisionImpulse; // @synthesize collisionImpulse=_collisionImpulse;
 @property(readonly, nonatomic) struct CGVector contactNormal; // @synthesize contactNormal=_contactNormal;
 @property(readonly, nonatomic) struct CGPoint contactPoint; // @synthesize contactPoint=_contactPoint;
 @property(readonly, nonatomic) SKPhysicsBody *bodyB; // @synthesize bodyB=_bodyB;
 @property(readonly, nonatomic) SKPhysicsBody *bodyA; // @synthesize bodyA=_bodyA;
-- (void).cxx_destruct;
 
 @end
 

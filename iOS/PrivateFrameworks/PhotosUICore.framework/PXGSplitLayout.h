@@ -13,6 +13,7 @@
     _Bool _settingSublayouts;
     _Bool _isUpdatingSublayouts;
     _Bool _isPerformingAdditionalUpdate;
+    _Bool _floatingModesRespectSafeArea;
     _Bool _shouldExcludeTopAndBottomPaddingFromReferenceSize;
     PXGLayout *_firstSublayout;
     PXGLayout *_secondSublayout;
@@ -22,29 +23,33 @@
     struct UIEdgeInsets _presentedPadding;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct UIEdgeInsets presentedPadding; // @synthesize presentedPadding=_presentedPadding;
 @property(nonatomic) _Bool shouldExcludeTopAndBottomPaddingFromReferenceSize; // @synthesize shouldExcludeTopAndBottomPaddingFromReferenceSize=_shouldExcludeTopAndBottomPaddingFromReferenceSize;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(nonatomic) double interlayoutSpacing; // @synthesize interlayoutSpacing=_interlayoutSpacing;
+@property(nonatomic) _Bool floatingModesRespectSafeArea; // @synthesize floatingModesRespectSafeArea=_floatingModesRespectSafeArea;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) PXGLayout *secondSublayout; // @synthesize secondSublayout=_secondSublayout;
 @property(retain, nonatomic) PXGLayout *firstSublayout; // @synthesize firstSublayout=_firstSublayout;
-- (void).cxx_destruct;
-- (void)willRemoveSublayout:(id)arg1;
-- (void)didAddSublayout:(id)arg1;
+- (void)willRemoveSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
+- (void)didAddSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 - (void)didChangeSublayoutOrigins;
 - (void)sublayoutDidChangeLastBaseline:(id)arg1;
 - (void)sublayoutDidChangeContentSize:(id)arg1;
 - (void)sublayoutNeedsUpdate:(id)arg1;
 - (void)userInterfaceDirectionDidChange;
+- (void)scrollSpeedRegimeDidChange;
 - (void)screenScaleDidChange;
 - (void)safeAreaInsetsDidChange;
-- (void)containingScrollViewDidScroll:(struct CGPoint)arg1;
 - (void)visibleRectDidChange;
 - (void)referenceSizeDidChange;
 - (void)viewEnvironmentDidChange;
 - (void)_updateSublayoutGeometries;
 - (void)update;
+- (void)removeSublayoutsInRange:(struct _NSRange)arg1;
+@property(readonly, nonatomic) long long secondSublayoutIndex;
+@property(readonly, nonatomic) long long firstSublayoutIndex;
 - (void)_replaceSublayout:(id)arg1 withSublayout:(id)arg2 atIndex:(long long)arg3;
 
 @end

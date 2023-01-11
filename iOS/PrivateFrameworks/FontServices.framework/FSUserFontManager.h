@@ -10,19 +10,22 @@
 {
 }
 
++ (void)synchronizeFontAssets:(CDUnknownBlockType)arg1;
 + (void)_removeAllUserFonts;
++ (void)reset;
 + (id)identifierFromDirectoryName:(id)arg1;
 + (void)synchronizeFontProviders;
 + (id)knownFontProviders;
 + (id)suspendedFontProviders;
 + (void)suspendFontProvider:(id)arg1;
 + (id)resumeSuspendedFontFiles;
-+ (id)fontProvidersSubscriptionSupportInfo;
++ (id)fontProvidersSubscriptionSupportInfoAndFontFamiliesInstalled:(unsigned long long *)arg1 andRemovedCount:(unsigned long long *)arg2 andProfileFontsCount:(unsigned long long *)arg3;
 + (double)secondsSinceLastAccessed:(id)arg1;
 + (id)directoryNameFromIdentifier:(id)arg1;
++ (id)profileFontsInfo;
 + (id)userFontsInfo;
 + (void)enableOrDisablePersistentURLs:(id)arg1 enabled:(_Bool)arg2;
-+ (void)unregisterAndRemoveFontFilesForIdentifier:(id)arg1 ignoringError:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)unregisterAndRemoveFontFilesForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)deleteAppDialogWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)registeredFamiliesForIdentifier:(id)arg1 enabled:(_Bool)arg2;
 + (id)registeredFontsForIdentifier:(id)arg1 enabled:(_Bool)arg2;
@@ -30,6 +33,7 @@
 + (void)uninstallFonts:(id)arg1 forIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)installFonts:(id)arg1 forIdentifier:(id)arg2 enabled:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)_UserFontManagerConnection;
++ (id)xpcInterface;
 
 @end
 

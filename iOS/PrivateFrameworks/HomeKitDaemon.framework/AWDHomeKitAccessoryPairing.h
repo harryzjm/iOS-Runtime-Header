@@ -8,23 +8,35 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class AWDHomeKitVendorInformation;
+@class AWDHomeKitVendorInformation, NSString;
 
 @interface AWDHomeKitAccessoryPairing : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    NSString *_appIdentifier;
     int _certified;
     int _credentialType;
     unsigned int _duration;
     int _errorCode;
+    NSString *_errorDomain;
+    unsigned int _noeCapabilities;
+    unsigned int _noeOnboardDuration;
+    int _noeOnboardErrorCode;
+    NSString *_noeOnboardErrorDomain;
+    unsigned int _noeStatus;
     unsigned int _retryCount;
     int _transportType;
     AWDHomeKitVendorInformation *_vendorDetails;
     _Bool _isAdd;
     _Bool _isAddWithOwnershipProof;
     _Bool _isAddedViaWAC;
+    _Bool _isBTOnboard;
+    _Bool _isFirstHAPAccessoryInAnyHome;
+    _Bool _isFirstHAPAccessoryInHome;
     _Bool _isNetworkRouterAdd;
     _Bool _isNetworkRouterReplace;
+    _Bool _isNoeAccessory;
+    _Bool _isNoeOnboard;
     _Bool _isSecureWAC;
     struct {
         unsigned int timestamp:1;
@@ -32,17 +44,39 @@
         unsigned int credentialType:1;
         unsigned int duration:1;
         unsigned int errorCode:1;
+        unsigned int noeCapabilities:1;
+        unsigned int noeOnboardDuration:1;
+        unsigned int noeOnboardErrorCode:1;
+        unsigned int noeStatus:1;
         unsigned int retryCount:1;
         unsigned int transportType:1;
         unsigned int isAdd:1;
         unsigned int isAddWithOwnershipProof:1;
         unsigned int isAddedViaWAC:1;
+        unsigned int isBTOnboard:1;
+        unsigned int isFirstHAPAccessoryInAnyHome:1;
+        unsigned int isFirstHAPAccessoryInHome:1;
         unsigned int isNetworkRouterAdd:1;
         unsigned int isNetworkRouterReplace:1;
+        unsigned int isNoeAccessory:1;
+        unsigned int isNoeOnboard:1;
         unsigned int isSecureWAC:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
+@property(retain, nonatomic) NSString *noeOnboardErrorDomain; // @synthesize noeOnboardErrorDomain=_noeOnboardErrorDomain;
+@property(nonatomic) int noeOnboardErrorCode; // @synthesize noeOnboardErrorCode=_noeOnboardErrorCode;
+@property(nonatomic) unsigned int noeOnboardDuration; // @synthesize noeOnboardDuration=_noeOnboardDuration;
+@property(nonatomic) _Bool isNoeOnboard; // @synthesize isNoeOnboard=_isNoeOnboard;
+@property(nonatomic) _Bool isBTOnboard; // @synthesize isBTOnboard=_isBTOnboard;
+@property(nonatomic) unsigned int noeStatus; // @synthesize noeStatus=_noeStatus;
+@property(nonatomic) unsigned int noeCapabilities; // @synthesize noeCapabilities=_noeCapabilities;
+@property(nonatomic) _Bool isNoeAccessory; // @synthesize isNoeAccessory=_isNoeAccessory;
+@property(nonatomic) _Bool isFirstHAPAccessoryInHome; // @synthesize isFirstHAPAccessoryInHome=_isFirstHAPAccessoryInHome;
+@property(nonatomic) _Bool isFirstHAPAccessoryInAnyHome; // @synthesize isFirstHAPAccessoryInAnyHome=_isFirstHAPAccessoryInAnyHome;
+@property(retain, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property(nonatomic) _Bool isNetworkRouterReplace; // @synthesize isNetworkRouterReplace=_isNetworkRouterReplace;
 @property(nonatomic) _Bool isNetworkRouterAdd; // @synthesize isNetworkRouterAdd=_isNetworkRouterAdd;
 @property(nonatomic) _Bool isAddWithOwnershipProof; // @synthesize isAddWithOwnershipProof=_isAddWithOwnershipProof;
@@ -54,7 +88,6 @@
 @property(nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
 @property(nonatomic) unsigned int duration; // @synthesize duration=_duration;
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -64,6 +97,18 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasErrorDomain;
+@property(readonly, nonatomic) _Bool hasNoeOnboardErrorDomain;
+@property(nonatomic) _Bool hasNoeOnboardErrorCode;
+@property(nonatomic) _Bool hasNoeOnboardDuration;
+@property(nonatomic) _Bool hasIsNoeOnboard;
+@property(nonatomic) _Bool hasIsBTOnboard;
+@property(nonatomic) _Bool hasNoeStatus;
+@property(nonatomic) _Bool hasNoeCapabilities;
+@property(nonatomic) _Bool hasIsNoeAccessory;
+@property(nonatomic) _Bool hasIsFirstHAPAccessoryInHome;
+@property(nonatomic) _Bool hasIsFirstHAPAccessoryInAnyHome;
+@property(readonly, nonatomic) _Bool hasAppIdentifier;
 @property(nonatomic) _Bool hasIsNetworkRouterReplace;
 @property(nonatomic) _Bool hasIsNetworkRouterAdd;
 @property(nonatomic) _Bool hasIsAddWithOwnershipProof;

@@ -7,6 +7,7 @@
 #import <Foundation/NSObject-Protocol.h>
 
 @protocol _NSKVOCompatibilityShim <NSObject>
++ (_Bool)_releasesObservationBlockOnInvalidation;
 + (void)_noteProcessHasUsedKVOSwiftOverlay;
 @end
 

@@ -8,29 +8,29 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
-
 @interface GEORPFeedbackLayoutFieldName : PBCodable <NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     int _addressFieldName;
+    int _curatedCollectionFieldName;
     int _groundviewFieldName;
+    int _incidentType;
     int _otherFieldName;
     int _poiFieldName;
+    int _poiImageCorrectionType;
     int _workflowFieldName;
     struct {
         unsigned int has_addressFieldName:1;
+        unsigned int has_curatedCollectionFieldName:1;
         unsigned int has_groundviewFieldName:1;
+        unsigned int has_incidentType:1;
         unsigned int has_otherFieldName:1;
         unsigned int has_poiFieldName:1;
+        unsigned int has_poiImageCorrectionType:1;
         unsigned int has_workflowFieldName:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
-- (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -39,8 +39,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsCuratedCollectionFieldName:(id)arg1;
+- (id)curatedCollectionFieldNameAsString:(int)arg1;
+@property(nonatomic) _Bool hasCuratedCollectionFieldName;
+@property(nonatomic) int curatedCollectionFieldName;
+- (int)StringAsPoiImageCorrectionType:(id)arg1;
+- (id)poiImageCorrectionTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasPoiImageCorrectionType;
+@property(nonatomic) int poiImageCorrectionType;
+- (int)StringAsIncidentType:(id)arg1;
+- (id)incidentTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasIncidentType;
+@property(nonatomic) int incidentType;
 - (int)StringAsGroundviewFieldName:(id)arg1;
 - (id)groundviewFieldNameAsString:(int)arg1;
 @property(nonatomic) _Bool hasGroundviewFieldName;

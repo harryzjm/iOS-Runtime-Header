@@ -15,6 +15,7 @@
     unsigned long long _intent;
     CDUnknownBlockType _passwordEntryCompletionHandler;
     CDUnknownBlockType _passwordEntryFailedAttemptHandler;
+    unsigned long long _mode;
     UIImageView *_lockImage;
     UILabel *_titleLabel;
     UIButton *_unlockButton;
@@ -26,6 +27,7 @@
     NSString *_contentSizeCategory;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(nonatomic) __weak NSLayoutConstraint *titleLabelBottomConstraintForAXLargerTextSizes; // @synthesize titleLabelBottomConstraintForAXLargerTextSizes=_titleLabelBottomConstraintForAXLargerTextSizes;
 @property(nonatomic) __weak NSLayoutConstraint *titleLabelBaselineConstraint; // @synthesize titleLabelBaselineConstraint=_titleLabelBaselineConstraint;
@@ -35,12 +37,13 @@
 @property(nonatomic) __weak UIButton *unlockButton; // @synthesize unlockButton=_unlockButton;
 @property(nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) __weak UIImageView *lockImage; // @synthesize lockImage=_lockImage;
+@property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(copy, nonatomic) CDUnknownBlockType passwordEntryFailedAttemptHandler; // @synthesize passwordEntryFailedAttemptHandler=_passwordEntryFailedAttemptHandler;
 @property(copy, nonatomic) CDUnknownBlockType passwordEntryCompletionHandler; // @synthesize passwordEntryCompletionHandler=_passwordEntryCompletionHandler;
 @property(nonatomic) _Bool isAnimatingOut; // @synthesize isAnimatingOut=_isAnimatingOut;
 @property(nonatomic) unsigned long long intent; // @synthesize intent=_intent;
 @property(retain, nonatomic) ICNote *note; // @synthesize note=_note;
-- (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (void)updateforAccessibilityDarkerSystemColors;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)unlockPasswordButtonPressed:(id)arg1;
@@ -49,7 +52,9 @@
 - (void)updateConstraintsForContentSizeCategoryIfNecessary;
 - (void)updateTitleLabelPreferredMaxLayoutWidth;
 - (void)contentSizeCategoryDidChange:(id)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (void)applyEntryViewMode;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2 note:(id)arg3 intent:(unsigned long long)arg4;
 

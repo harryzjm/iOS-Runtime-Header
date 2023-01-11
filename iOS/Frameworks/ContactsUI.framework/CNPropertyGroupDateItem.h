@@ -9,15 +9,21 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)isEmptyDateComponents:(id)arg1;
 + (id)initialValueForLabel:(id)arg1 group:(id)arg2;
 + (id)emptyValueForLabel:(id)arg1;
++ (id)calendarForLabel:(id)arg1;
 + (void)initialize;
+- (id)valueForDisplayString:(id)arg1;
+- (id)placeholderString;
 - (id)displayStringForValue:(id)arg1;
+- (id)localeAndCalendarPairFromDateComponents:(id)arg1;
 - (id)bestValue:(id)arg1;
 - (_Bool)isEquivalentToItem:(id)arg1;
 - (id)defaultActionURL;
 - (id)normalizedValue;
 - (_Bool)isValidValue:(id)arg1;
+- (_Bool)isEmpty;
 
 @end
 

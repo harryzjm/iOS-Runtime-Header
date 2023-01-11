@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDDisplayHeaderSubstitute : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_interpretedQuery;
     GEOPDRelatedSearchSuggestion *_relatedSearchSuggestion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _substituteType;
     struct {
         unsigned int has_substituteType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_interpretedQuery:1;
         unsigned int read_relatedSearchSuggestion:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_interpretedQuery:1;
-        unsigned int wrote_relatedSearchSuggestion:1;
-        unsigned int wrote_substituteType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,18 +42,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDRelatedSearchSuggestion *relatedSearchSuggestion;
 @property(readonly, nonatomic) _Bool hasRelatedSearchSuggestion;
-- (void)_readRelatedSearchSuggestion;
 @property(retain, nonatomic) NSString *interpretedQuery;
 @property(readonly, nonatomic) _Bool hasInterpretedQuery;
-- (void)_readInterpretedQuery;
 - (int)StringAsSubstituteType:(id)arg1;
 - (id)substituteTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasSubstituteType;
 @property(nonatomic) int substituteType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

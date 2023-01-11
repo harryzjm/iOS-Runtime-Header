@@ -44,6 +44,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)stringGUID;
 + (Class)classForMessageItemDictionary:(id)arg1;
 + (Class)classForIMItemType:(long long)arg1;
 @property(copy, nonatomic) NSString *srCloudKitRecordChangeTag; // @synthesize srCloudKitRecordChangeTag=_srCloudKitRecordChangeTag;
@@ -76,6 +77,7 @@
 @property(readonly, nonatomic) _Bool isLastMessageCandidate;
 @property(readonly, nonatomic) _Bool isFirstMessageCandidate;
 - (unsigned long long)hash;
+- (_Bool)isReply;
 - (_Bool)unsentIsFromMeItem;
 - (_Bool)isOlderThanItem:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

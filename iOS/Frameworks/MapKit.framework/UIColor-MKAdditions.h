@@ -7,6 +7,8 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (MKAdditions)
++ (id)_mapkit_colorNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
++ (id)_mapkit_colorNamed:(id)arg1;
 + (id)_mapkit_userLocationAccuracyRingFillColor;
 + (id)_mapkit_userLocationAccuracyRingStrokeColorSatellite;
 + (id)_mapkit_userLocationAccuracyRingStrokeColor;

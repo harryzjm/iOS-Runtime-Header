@@ -26,8 +26,11 @@
     UIColor *_backgroundColor;
     NSNumber *_minimumHeight;
     LPInlineMediaPlaybackInformation *_inlinePlaybackInformation;
+    NSString *_domainNameForIndicator;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *domainNameForIndicator; // @synthesize domainNameForIndicator=_domainNameForIndicator;
 @property(retain, nonatomic) LPInlineMediaPlaybackInformation *inlinePlaybackInformation; // @synthesize inlinePlaybackInformation=_inlinePlaybackInformation;
 @property(retain, nonatomic) NSNumber *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -42,7 +45,6 @@
 @property(retain, nonatomic) LPCaptionBarPresentationProperties *captionBar; // @synthesize captionBar=_captionBar;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic, getter=isPreliminary) _Bool preliminary; // @synthesize preliminary=_preliminary;
-- (void).cxx_destruct;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

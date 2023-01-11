@@ -6,27 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSString;
+@class NSString, _PASLock;
+@protocol OS_dispatch_queue;
 
 @interface PPNotificationHandler : NSObject
 {
-    struct atomic_flag _isFiring;
-    struct atomic_flag _hasWaiter;
+    _PASLock *_lock;
+    NSObject<OS_dispatch_queue> *_waiterQueue;
     double _waitSeconds;
-    NSMapTable *_blockMap;
     NSString *_name;
 }
 
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-@property(retain, nonatomic) NSMapTable *blockMap; // @synthesize blockMap=_blockMap;
-@property(nonatomic) double waitSeconds; // @synthesize waitSeconds=_waitSeconds;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) double waitSeconds; // @synthesize waitSeconds=_waitSeconds;
 - (id)description;
 - (void)addObserverBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
-- (void)fire;
-- (void)_clearFlags;
-- (void)_executeBlocks;
+- (void)fireWithObjects:(id)arg1;
+- (void)_delayedExecutionAfterSeconds:(double)arg1;
+- (void)_executeBlocksWithGuardedData:(id)arg1;
 - (id)initWithName:(id)arg1 waitSeconds:(double)arg2;
+- (void)waitOnQueueToDrain;
 
 @end
 

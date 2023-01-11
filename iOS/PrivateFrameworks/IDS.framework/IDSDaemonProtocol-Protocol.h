@@ -22,7 +22,7 @@
 - (void)homeKitGetAdminAccessTokensWithServiceUserID:(NSString *)arg1 accessoryID:(NSString *)arg2 pairingToken:(NSData *)arg3;
 - (void)homeKitGetServiceUserIDs;
 - (void)reportiMessageSpamCheckUnknown:(NSString *)arg1 count:(NSNumber *)arg2 requestID:(NSString *)arg3;
-- (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 messageServerTimestamp:(NSNumber *)arg3 toURI:(NSString *)arg4;
+- (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 isBlackholed:(_Bool)arg3 messageServerTimestamp:(NSNumber *)arg4 toURI:(NSString *)arg5;
 - (void)reportiMessageSpam:(NSArray *)arg1 toURI:(NSString *)arg2;
 - (void)continuityStopTrackingPeer:(NSString *)arg1 forType:(long long)arg2;
 - (void)continuityStartTrackingPeer:(NSString *)arg1 forType:(long long)arg2;
@@ -97,6 +97,7 @@
 - (void)incomingAccountSyncMessage:(NSDictionary *)arg1;
 - (void)setPairedDeviceInfo:(NSDictionary *)arg1;
 - (void)updateSubServices:(NSArray *)arg1 forService:(NSString *)arg2 deviceUniqueID:(NSString *)arg3;
+- (void)clearIDSState;
 - (void)reunionSyncCompletedForServices:(NSArray *)arg1 requestID:(NSString *)arg2;
 - (void)reunionSyncStartedForServices:(NSArray *)arg1 requestID:(NSString *)arg2;
 - (void)dropAllMessagesWithoutAnyAllowedClassifier;
@@ -135,6 +136,7 @@
 - (void)hardDeregister;
 - (void)deactivateAndPurgeIdentifyForAccount:(NSString *)arg1;
 - (void)_reregisterAndReidentify:(NSNumber *)arg1 account:(NSString *)arg2;
+- (void)forceRemoveAccount:(NSString *)arg1;
 - (void)unregisterAccount:(NSString *)arg1;
 - (void)registerAccount:(NSString *)arg1;
 - (void)deactivateAlias:(NSString *)arg1 onAccount:(NSString *)arg2;

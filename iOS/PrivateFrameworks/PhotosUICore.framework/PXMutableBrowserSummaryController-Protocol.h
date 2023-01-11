@@ -12,6 +12,7 @@
 @property(copy, nonatomic) NSDictionary *selectionAttributes;
 @property(copy, nonatomic) NSDictionary *emphasizedAttributes;
 @property(copy, nonatomic) NSDictionary *defaultAttributes;
+@property(nonatomic) unsigned long long containerDateFormatGranularity;
 @property(nonatomic) _Bool shouldShowLocationNames;
 @property(nonatomic) _Bool shouldUseAbbreviatedDates;
 @property(nonatomic) _Bool shouldUseNavigationTitle;

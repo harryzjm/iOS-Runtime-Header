@@ -33,11 +33,11 @@
 }
 
 + (void)_contentForCell:(id)arg1 shouldHide:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) long long prominentSectionIndex; // @synthesize prominentSectionIndex=_prominentSectionIndex;
 @property(nonatomic, getter=isCentered) _Bool centered; // @synthesize centered=_centered;
 @property(nonatomic) unsigned long long speedBumpEdges; // @synthesize speedBumpEdges=_speedBumpEdges;
 @property(nonatomic) __weak id <__TVShelfViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)updateWithViewElement:(id)arg1;
 - (void)_didSettleOnItemAtIndexPath:(id)arg1;
 - (void)_delayedUpdatePreview;
@@ -55,11 +55,7 @@
 - (_Bool)contentFlowsVertically;
 - (id)makeCollectionViewWithFrame:(struct CGRect)arg1;
 - (void)updateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (void)_snapTargetContentOffset:(inout struct CGPoint *)arg1 toItemIndexPath:(id)arg2 atItemOffset:(struct CGPoint)arg3;
-- (id)_findSnappingItemFromContentOffset:(inout struct CGPoint *)arg1 withVelocity:(struct CGPoint)arg2;
-- (void)_ensureScrollViewSnaps;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (id)preferredFocusEnvironments;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

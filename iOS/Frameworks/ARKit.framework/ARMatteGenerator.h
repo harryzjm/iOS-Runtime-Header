@@ -8,19 +8,11 @@
 
 @interface ARMatteGenerator : NSObject
 {
-    unsigned long long _uncertaintyRadius;
-    unsigned long long _erodeRadius;
-    unsigned long long _dilationRadius;
 }
 
-@property(nonatomic) unsigned long long dilationRadius; // @synthesize dilationRadius=_dilationRadius;
-@property(nonatomic) unsigned long long erosionRadius; // @synthesize erosionRadius=_erodeRadius;
-@property(nonatomic) unsigned long long uncertaintyRadius; // @synthesize uncertaintyRadius=_uncertaintyRadius;
 - (id)generateDilatedDepthFromFrame:(id)arg1 commandBuffer:(id)arg2;
 - (id)generateMatteFromFrame:(id)arg1 commandBuffer:(id)arg2;
-- (void)_commonInitWithDevice:(id)arg1 matteResolution:(long long)arg2 useSmoothing:(_Bool)arg3;
 - (id)initWithDevice:(id)arg1 matteResolution:(long long)arg2;
-- (id)initWithDevice:(id)arg1 matteResolution:(long long)arg2 useSmoothing:(_Bool)arg3;
 
 @end
 

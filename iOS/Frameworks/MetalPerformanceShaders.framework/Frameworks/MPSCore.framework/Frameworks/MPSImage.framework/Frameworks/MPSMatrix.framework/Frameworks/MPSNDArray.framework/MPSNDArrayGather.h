@@ -11,7 +11,7 @@
     unsigned long long _axis;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long axis; // @synthesize axis=_axis;
 - (MISSING_TYPE *)dimensionsNotToBeBroadcast;
 - (id)encodeToCommandBuffer:(id)arg1 primarySourceArray:(id)arg2 secondarySourceArray:(id)arg3;

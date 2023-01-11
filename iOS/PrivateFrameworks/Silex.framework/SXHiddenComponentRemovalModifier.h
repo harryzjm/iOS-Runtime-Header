@@ -14,7 +14,6 @@
 {
 }
 
-- (void)removeHiddenComponents:(id)arg1;
 - (void)modifyDOM:(id)arg1 context:(id)arg2;
 
 // Remaining properties

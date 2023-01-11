@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (id)renderResourceForMeshElement:(struct __C3DMeshElement *)arg1;
 - (id)renderResourceForMeshSource:(struct __C3DMeshSource *)arg1;
 - (id)_bufferForData:(struct __CFData *)arg1 bytesPerIndex:(unsigned long long)arg2;
+- (id)_bufferForMTLBuffer:(void *)arg1;
 - (id)renderResourceForRasterizerState:(struct __C3DRasterizerStates *)arg1 reverseZ:(_Bool)arg2;
 - (void)resetRasterizerStates;
 - (void)removeAllShaders;
@@ -90,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)_passWillDie:(id)arg1;
 - (void)_programWillDie:(id)arg1;
 - (void)_removeMatchingProgram:(struct __C3DFXProgram *)arg1 pass:(struct __C3DFXPass *)arg2;
+- (void)_rasterizerStateDidDie:(const void *)arg1;
 - (void)_imageProxyWillDie:(id)arg1;
 - (void)_imageWillDie:(id)arg1;
 - (void)_skinWillDie:(id)arg1;

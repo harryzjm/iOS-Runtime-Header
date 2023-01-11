@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UIIdentifierDiffer-Protocol.h>
 
-@class NSIndexSet, NSOrderedSet, NSSet, NSString;
+@class NSIndexSet, NSOrderedCollectionDifference, NSOrderedSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UIIdentifierDiffer : NSObject <_UIIdentifierDiffer>
@@ -19,12 +19,15 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_deletedIndexes;
     NSSet *_movePairs;
     _Bool _identifiersAreUnique;
+    NSOrderedCollectionDifference *_collectionDifference;
 }
 
 - (void).cxx_destruct;
+- (void)_prepareDiffResultsFromCollectionDifference:(id)arg1;
 - (void)_performFoundationDiffWithOptions:(long long)arg1;
 - (void)_performHeckelDiffWithOptions:(long long)arg1;
 - (void)_performDiffWithOptions:(long long)arg1;
+@property(readonly, nonatomic) NSOrderedCollectionDifference *collectionDifference;
 @property(readonly, nonatomic) _Bool hasChanges;
 @property(readonly, nonatomic) NSSet *movePairs;
 @property(readonly, nonatomic) NSIndexSet *deletedIndexes;
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)performDiff;
 @property(readonly, copy) NSString *description;
 - (id)initWithBeforeIdentifiers:(id)arg1 afterIdentifiers:(id)arg2;
+- (id)initWithBeforeIdentifiers:(id)arg1 afterIdentifiers:(id)arg2 collectionDifference:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

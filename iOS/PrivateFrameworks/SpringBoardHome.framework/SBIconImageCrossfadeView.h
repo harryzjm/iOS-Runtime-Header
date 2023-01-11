@@ -6,39 +6,49 @@
 
 #import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
-@class SBIconImageView, UIView;
+@class UIView;
+@protocol SBCrossfadingIconImageSource;
 
 @interface SBIconImageCrossfadeView : SBFTouchPassThroughView
 {
-    UIView *_containerView;
-    UIView *_crossfadeContainerView;
-    SBIconImageView *_iconImageView;
-    UIView *_crossfadeView;
     double _containerScaleX;
     double _containerScaleY;
-    double _morphFraction;
     _Bool _masksCorners;
     _Bool _performsTrueCrossfade;
+    unsigned long long _crossfadeStyle;
+    UIView *_containerView;
+    id <SBCrossfadingIconImageSource> _iconImageSource;
+    UIView *_iconImageView;
+    UIView *_crossfadeView;
+    UIView *_crossfadeContainerView;
+    double _morphFraction;
     struct CGPoint _stretchAnchorPoint;
 }
 
++ (Class)_containerViewClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double morphFraction; // @synthesize morphFraction=_morphFraction;
+@property(readonly, nonatomic) UIView *crossfadeContainerView; // @synthesize crossfadeContainerView=_crossfadeContainerView;
+@property(readonly, nonatomic) UIView *crossfadeView; // @synthesize crossfadeView=_crossfadeView;
+@property(readonly, nonatomic) UIView *iconImageView; // @synthesize iconImageView=_iconImageView;
+@property(readonly, nonatomic) id <SBCrossfadingIconImageSource> iconImageSource; // @synthesize iconImageSource=_iconImageSource;
 @property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property(nonatomic) unsigned long long crossfadeStyle; // @synthesize crossfadeStyle=_crossfadeStyle;
 @property(nonatomic) struct CGPoint stretchAnchorPoint; // @synthesize stretchAnchorPoint=_stretchAnchorPoint;
 @property(nonatomic) _Bool performsTrueCrossfade; // @synthesize performsTrueCrossfade=_performsTrueCrossfade;
 @property(nonatomic) _Bool masksCorners; // @synthesize masksCorners=_masksCorners;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) UIView *crossfadeView;
-@property(readonly, nonatomic) SBIconImageView *iconImageView;
-- (void)applyCornerRadius:(double)arg1;
-- (void)setCornerRadiusEnabled:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool reparentsSourceView;
+- (void)_applyCornerRadius:(double)arg1;
+- (void)_setCornerRadiusEnabled:(_Bool)arg1;
 - (void)_updateCornerMask;
+- (void)_applyCrossfadeScaleX:(double)arg1 scaleY:(double)arg2;
 - (void)cleanup;
 - (void)setMorphFraction:(double)arg1;
 - (void)setAppSnapshotCornerRadius:(double)arg1;
 - (void)setCrossfadeFraction:(double)arg1;
 - (void)layoutSubviews;
 - (void)prepareGeometry;
-- (id)initWithImageView:(id)arg1 crossfadeView:(id)arg2;
+- (id)initWithSource:(id)arg1 crossfadeView:(id)arg2;
 
 @end
 

@@ -10,21 +10,19 @@
 
 @interface NRTermsEvent <NSSecureCoding>
 {
+    _Bool _flaggedForSend;
     _Bool _writable;
     NSString *_termsDigest;
 }
 
 + (id)eventWithProtobuf:(id)arg1;
-+ (_Bool)shouldAllowArchivingOfTermsTextToFile;
 + (id)loadTermsWithPath:(id)arg1;
 + (id)digestFromData:(id)arg1;
-+ (id)stringForEventType:(unsigned long long)arg1;
-+ (id)pathToTermsWithDigest:(id)arg1;
-+ (id)pathToTermsCache;
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) _Bool writable; // @synthesize writable=_writable;
-@property(retain, nonatomic) NSString *termsDigest; // @synthesize termsDigest=_termsDigest;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool writable; // @synthesize writable=_writable;
+@property(nonatomic) _Bool flaggedForSend; // @synthesize flaggedForSend=_flaggedForSend;
+@property(retain, nonatomic) NSString *termsDigest; // @synthesize termsDigest=_termsDigest;
 - (void)_setLoggingProcessName:(id)arg1;
 - (void)setLoggingProcessName:(id)arg1;
 - (void)updateEventDate;
@@ -44,6 +42,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)saveTerms;
 - (id)termsText;
+- (_Bool)isTermsAlreadyArchived;
 - (id)description;
 
 @end

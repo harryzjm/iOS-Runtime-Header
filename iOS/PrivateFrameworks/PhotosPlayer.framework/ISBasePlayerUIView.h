@@ -9,7 +9,7 @@
 #import <PhotosPlayer/ISBasePlayerOutput-Protocol.h>
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 
-@class ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, ISWrappedAVAudioSession, NSObject, NSString, UIImage, UIImageView;
+@class CAMeshTransform, ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, ISWrappedAVAudioSession, NSObject, NSString, UIImage, UIImageView;
 @protocol ISBasePlayerUIViewChangeObserver, OS_dispatch_queue;
 
 @interface ISBasePlayerUIView : UIView <ISChangeObserver, ISBasePlayerOutput>
@@ -22,27 +22,35 @@
     ISBasePlayer *_player;
     UIView *_customPhotoView;
     UIImage *_overrideImage;
-    UIImageView *__photoView;
-    ISVideoPlayerUIView *__videoView;
-    UIView *__containerView;
+    CDUnknownBlockType _videoLayerReadyForDisplayChangeHandler;
+    CAMeshTransform *_videoTransform;
+    UIView *_containerView;
+    UIView *_videoContainerView;
     ISWrappedAVAudioSession *_wrappedAudioSession;
     id <ISBasePlayerUIViewChangeObserver> __changeObserver;
+    ISVideoPlayerUIView *_videoBlurView;
+    UIImageView *_photoView;
+    ISVideoPlayerUIView *_videoView;
     struct CGPoint _scaleAnchorOffset;
     struct CGRect _contentsRect;
 }
 
 + (Class)playerClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) ISVideoPlayerUIView *videoView; // @synthesize videoView=_videoView;
+@property(readonly, nonatomic) UIImageView *photoView; // @synthesize photoView=_photoView;
+@property(readonly, nonatomic) ISVideoPlayerUIView *videoBlurView; // @synthesize videoBlurView=_videoBlurView;
 @property(nonatomic, setter=_setChangeObserver:) __weak id <ISBasePlayerUIViewChangeObserver> _changeObserver; // @synthesize _changeObserver=__changeObserver;
 @property(retain, nonatomic, setter=_setWrappedAudioSession:) ISWrappedAVAudioSession *wrappedAudioSession; // @synthesize wrappedAudioSession=_wrappedAudioSession;
-@property(readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
-@property(readonly, nonatomic) ISVideoPlayerUIView *_videoView; // @synthesize _videoView=__videoView;
-@property(readonly, nonatomic) UIImageView *_photoView; // @synthesize _photoView=__photoView;
+@property(readonly, nonatomic) UIView *videoContainerView; // @synthesize videoContainerView=_videoContainerView;
+@property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property(copy, nonatomic) CAMeshTransform *videoTransform; // @synthesize videoTransform=_videoTransform;
+@property(copy, nonatomic) CDUnknownBlockType videoLayerReadyForDisplayChangeHandler; // @synthesize videoLayerReadyForDisplayChangeHandler=_videoLayerReadyForDisplayChangeHandler;
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property(retain, nonatomic) UIImage *overrideImage; // @synthesize overrideImage=_overrideImage;
 @property(retain, nonatomic) UIView *customPhotoView; // @synthesize customPhotoView=_customPhotoView;
 @property(nonatomic) struct CGPoint scaleAnchorOffset; // @synthesize scaleAnchorOffset=_scaleAnchorOffset;
 @property(retain, nonatomic) ISBasePlayer *player; // @synthesize player=_player;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updatePhotoView;
 - (void)contentDidChange;
@@ -54,12 +62,14 @@
 - (void)_signalChange:(unsigned long long)arg1 withAnimationDuration:(double)arg2;
 - (void)_updatePlayerAudioSession;
 - (void)playerDidChange;
-- (void)_performCommonInitialization;
+- (void)_videoViewReadyForDisplayDidChange;
+@property(readonly, nonatomic) _Bool isVideoReadyForDisplay;
 - (void)audioSessionDidChange;
 - (void)setContentMode:(long long)arg1;
 - (void)layoutSubviews;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)registerChangeObserver:(id)arg1;
+- (void)_performCommonInitialization;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -11,7 +11,6 @@
 
 @protocol PLSyncContext <NSObject>
 @property(copy, nonatomic) NSArray *personUUIDsToDedupe;
-@property(readonly, nonatomic) _Bool serverSupportsSuggestion;
 @property(readonly, nonatomic) _Bool serverSupportsGraphHome;
 @property(readonly, nonatomic) _Bool serverSupportsVision;
 - (NSDictionary *)assetAdjustmentStateForCloudIdentifier:(NSString *)arg1;

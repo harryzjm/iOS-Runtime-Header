@@ -13,6 +13,6 @@
 @property(readonly) NSArray *parameterCurves;
 @property(readonly) NSArray *parameters;
 @property(readonly) NSArray *events;
-- (_Bool)resolveExternalResources:(CHHapticEngine *)arg1 error:(id *)arg2;
+- (NSArray *)resolveExternalResources:(CHHapticEngine *)arg1 error:(id *)arg2;
 @end
 

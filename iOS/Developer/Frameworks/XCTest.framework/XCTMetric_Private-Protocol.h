@@ -6,11 +6,12 @@
 
 #import <XCTest/XCTMetric-Protocol.h>
 
-@class XCTMeasureOptions, XCTPerformanceMeasurementTimestamp;
+@class NSString, XCTMeasureOptions, XCTPerformanceMeasurementTimestamp;
 
 @protocol XCTMetric_Private <XCTMetric>
 
 @optional
+@property(readonly, nonatomic) NSString *instrumentationName;
 - (void)didStopMeasuringAtTimestamp:(XCTPerformanceMeasurementTimestamp *)arg1;
 - (void)didStartMeasuringAtTimestamp:(XCTPerformanceMeasurementTimestamp *)arg1;
 - (void)willBeginMeasuringAtEstimatedTimestamp:(XCTPerformanceMeasurementTimestamp *)arg1;

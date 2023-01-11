@@ -17,27 +17,28 @@
     _Bool _includeHiddenViews;
     _Bool _includeWindowlessViews;
     _Bool _sorted;
-    _Bool _ignoreObscuresScreen;
-    _Bool _includeDirectDescendantsOnly;
     _Bool _includeAncestorsOfSelfInSiblingMatch;
     _Bool _forSpeakScreen;
     _Bool _shouldIncludeStatusBarWindow;
     long long _direction;
     CDUnknownBlockType _leafNodePredicate;
     NSArray *_allowedViewsForTraversal;
+    CDUnknownBlockType _alternateViewChildrenHandler;
 }
 
 + (id)defaultSpeakScreenOptions;
 + (id)defaultSwitchControlOptions;
 + (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(_Bool)arg1;
++ (id)defaultVoiceOverOptionsHonoringGroupsForContainer:(id)arg1;
 + (id)defaultVoiceOverOptions;
++ (id)optionsHonoringGroupsForContainer:(id)arg1;
 + (id)options;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType alternateViewChildrenHandler; // @synthesize alternateViewChildrenHandler=_alternateViewChildrenHandler;
 @property(nonatomic) _Bool shouldIncludeStatusBarWindow; // @synthesize shouldIncludeStatusBarWindow=_shouldIncludeStatusBarWindow;
 @property(nonatomic) _Bool forSpeakScreen; // @synthesize forSpeakScreen=_forSpeakScreen;
 @property(retain, nonatomic) NSArray *allowedViewsForTraversal; // @synthesize allowedViewsForTraversal=_allowedViewsForTraversal;
 @property(nonatomic) _Bool includeAncestorsOfSelfInSiblingMatch; // @synthesize includeAncestorsOfSelfInSiblingMatch=_includeAncestorsOfSelfInSiblingMatch;
-@property(nonatomic) _Bool includeDirectDescendantsOnly; // @synthesize includeDirectDescendantsOnly=_includeDirectDescendantsOnly;
-@property(nonatomic) _Bool ignoreObscuresScreen; // @synthesize ignoreObscuresScreen=_ignoreObscuresScreen;
 @property(nonatomic) _Bool sorted; // @synthesize sorted=_sorted;
 @property(nonatomic) _Bool includeWindowlessViews; // @synthesize includeWindowlessViews=_includeWindowlessViews;
 @property(nonatomic) _Bool includeHiddenViews; // @synthesize includeHiddenViews=_includeHiddenViews;
@@ -47,7 +48,6 @@
 @property(copy, nonatomic) CDUnknownBlockType leafNodePredicate; // @synthesize leafNodePredicate=_leafNodePredicate;
 @property(nonatomic) long long direction; // @synthesize direction=_direction;
 @property(nonatomic) _Bool shouldReturnScannerGroups; // @synthesize shouldReturnScannerGroups=_shouldReturnScannerGroups;
-- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

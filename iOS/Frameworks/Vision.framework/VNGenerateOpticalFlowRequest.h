@@ -6,7 +6,9 @@
 
 @interface VNGenerateOpticalFlowRequest
 {
+    unsigned long long _computationAccuracy;
     _Bool _enableFiltering;
+    unsigned int _outputPixelFormat;
     float _filterLumaWeight;
     float _filterChromaWeight;
     float _filterOcclusionWeight;
@@ -16,6 +18,8 @@
     unsigned long long _filterSamplingDensity;
 }
 
+@property(nonatomic) unsigned long long levelCount; // @synthesize levelCount=_levelCount;
+@property(nonatomic) unsigned int outputPixelFormat; // @synthesize outputPixelFormat=_outputPixelFormat;
 @property(nonatomic) float filterOcclusionWeight; // @synthesize filterOcclusionWeight=_filterOcclusionWeight;
 @property(nonatomic) float filterChromaWeight; // @synthesize filterChromaWeight=_filterChromaWeight;
 @property(nonatomic) float filterLumaWeight; // @synthesize filterLumaWeight=_filterLumaWeight;
@@ -23,17 +27,15 @@
 @property(nonatomic) unsigned long long filterSize; // @synthesize filterSize=_filterSize;
 @property(nonatomic) _Bool enableFiltering; // @synthesize enableFiltering=_enableFiltering;
 @property(nonatomic) unsigned long long warpCount; // @synthesize warpCount=_warpCount;
-@property(nonatomic) unsigned long long levelCount; // @synthesize levelCount=_levelCount;
-- (_Bool)_validateParameters:(id *)arg1;
+@property(nonatomic) unsigned long long computationAccuracy;
+@property(nonatomic) unsigned long long generateLevel;
+- (id)_createGeneratorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2 images:(id)arg3 previousTargetImageIsCurrentRefImage:(_Bool)arg4 previousObservation:(id)arg5;
+- (_Bool)_internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 previousObservation:(id)arg3 error:(id *)arg4;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)wantsSequencedRequestObservationsRecording;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)allowsCachingOfResults;
-- (_Bool)_calculateLKTVectorResult:(struct __CVBuffer *)arg1 fromPixelBuffer:(struct __CVBuffer *)arg2 toPixelBuffer:(struct __CVBuffer *)arg3 ofWidth:(unsigned long long)arg4 height:(unsigned long long)arg5 error:(id *)arg6;
-- (id)_initializedLKTMetalContextAndReturnError:(id *)arg1;
-- (struct __CVBuffer *)_createLKTVectorResultPixelBufferForImageWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 error:(id *)arg3;
-- (struct __CVBuffer *)_createLKTPixelBufferFromPixelRegionOfInterest:(struct CGRect)arg1 inImageBuffer:(id)arg2 error:(id *)arg3;
-- (id)initWithTargetedImageSpecifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithTargetedImageBuffer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

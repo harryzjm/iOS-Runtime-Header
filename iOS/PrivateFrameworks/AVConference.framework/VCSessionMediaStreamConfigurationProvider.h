@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     _Bool _isEncodingSqaures;
 }
 
++ (_Bool)isVideoStreamOnDemand:(struct _VCMediaStreamConfigurationProviderVideo *)arg1;
++ (_Bool)isAudioStreamOnDemand:(struct _VCMediaStreamConfigurationProviderAudio *)arg1;
 + (void)computeMaxNetworkBitrate:(unsigned int *)arg1 maxMediaBitrate:(unsigned int *)arg2 maxPacketsPerSecond:(float *)arg3 audioStreamIndex:(unsigned int)arg4;
 @property(readonly, nonatomic) _Bool isEncodingSqaures; // @synthesize isEncodingSqaures=_isEncodingSqaures;
 @property(readonly, nonatomic) long long highestEncodingResolution; // @synthesize highestEncodingResolution=_highestEncodingResolution;

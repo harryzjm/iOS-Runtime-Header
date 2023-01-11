@@ -8,7 +8,7 @@
 
 #import <CoreLocationProtobuf/NSCopying-Protocol.h>
 
-@class CLPMotionActivity, CLPPipelineDiagnosticReport, CLPSatelliteReport, NSMutableArray;
+@class CLPBaroCalibrationIndication, CLPMotionActivity, CLPPipelineDiagnosticReport, CLPSatelliteReport, NSMutableArray;
 
 @interface CLPLocation : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     double _timestamp;
     float _altitude;
     NSMutableArray *_appBundleIdIndices;
+    CLPBaroCalibrationIndication *_baroCalibrationIndication;
     int _context;
     float _course;
     float _courseAccuracy;
@@ -63,6 +64,8 @@
 }
 
 + (Class)appBundleIdIndicesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CLPBaroCalibrationIndication *baroCalibrationIndication; // @synthesize baroCalibrationIndication=_baroCalibrationIndication;
 @property(retain, nonatomic) CLPPipelineDiagnosticReport *pipelineDiagnosticReport; // @synthesize pipelineDiagnosticReport=_pipelineDiagnosticReport;
 @property(nonatomic) _Bool isFromLocationController; // @synthesize isFromLocationController=_isFromLocationController;
 @property(retain, nonatomic) CLPSatelliteReport *satReport; // @synthesize satReport=_satReport;
@@ -90,7 +93,6 @@
 @property(nonatomic) float horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property(nonatomic) double longitude; // @synthesize longitude=_longitude;
 @property(nonatomic) double latitude; // @synthesize latitude=_latitude;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -100,6 +102,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasBaroCalibrationIndication;
 @property(readonly, nonatomic) _Bool hasPipelineDiagnosticReport;
 @property(nonatomic) _Bool hasIsFromLocationController;
 @property(readonly, nonatomic) _Bool hasSatReport;

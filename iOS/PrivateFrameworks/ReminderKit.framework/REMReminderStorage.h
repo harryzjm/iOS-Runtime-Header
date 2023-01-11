@@ -11,10 +11,14 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDateComponents, NSSet, NSString, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMObjectID, REMResolutionTokenMap, REMUserActivity;
+@class NSArray, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMObjectID, REMResolutionTokenMap, REMUserActivity;
 
 @interface REMReminderStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
 {
+    _Bool _hasDeserializedTitleDocument;
+    _Bool _hasDeserializedNotesDocument;
+    REMCRMergeableStringDocument *_deserializedTitleDocumentCache;
+    REMCRMergeableStringDocument *_deserializedNotesDocumentCache;
     unsigned long long _storeGeneration;
     unsigned long long _copyGeneration;
     _Bool _completed;
@@ -27,9 +31,11 @@
     REMObjectID *_objectID;
     REMObjectID *_listID;
     REMObjectID *_parentReminderID;
-    REMCRMergeableStringDocument *_titleDocument;
-    NSDate *_completionDate;
+    NSData *_titleDocumentData;
+    NSData *_notesDocumentData;
     REMResolutionTokenMap *_resolutionTokenMap;
+    NSData *_resolutionTokenMapData;
+    NSDate *_completionDate;
     NSSet *_subtaskIDsToUndelete;
     unsigned long long _priority;
     NSDateComponents *_startDateComponents;
@@ -38,11 +44,11 @@
     NSDate *_creationDate;
     NSDate *_lastModifiedDate;
     NSArray *_recurrenceRules;
-    REMCRMergeableStringDocument *_notesDocument;
     NSArray *_attachments;
     NSArray *_alarms;
     REMContactRepresentation *_contactHandles;
     unsigned long long _icsDisplayOrder;
+    NSURL *_icsUrl;
     NSData *_importedICSData;
     NSString *_daCalendarItemUniqueIdentifier;
     REMUserActivity *_userActivity;
@@ -50,6 +56,7 @@
     long long _siriFoundInAppsUserConfirmation;
     NSDate *_lastBannerPresentationDate;
     long long _flagged;
+    NSSet *_assignments;
     REMDisplayDate *_displayDate;
 }
 
@@ -60,7 +67,9 @@
 + (id)objectIDWithUUID:(id)arg1;
 + (id)newObjectID;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) REMDisplayDate *displayDate; // @synthesize displayDate=_displayDate;
+@property(retain, nonatomic) NSSet *assignments; // @synthesize assignments=_assignments;
 @property(nonatomic) long long flagged; // @synthesize flagged=_flagged;
 @property(copy, nonatomic) NSDate *lastBannerPresentationDate; // @synthesize lastBannerPresentationDate=_lastBannerPresentationDate;
 @property(nonatomic) long long siriFoundInAppsUserConfirmation; // @synthesize siriFoundInAppsUserConfirmation=_siriFoundInAppsUserConfirmation;
@@ -68,11 +77,11 @@
 @property(copy, nonatomic) REMUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 @property(copy, nonatomic) NSString *daCalendarItemUniqueIdentifier; // @synthesize daCalendarItemUniqueIdentifier=_daCalendarItemUniqueIdentifier;
 @property(retain, nonatomic) NSData *importedICSData; // @synthesize importedICSData=_importedICSData;
+@property(copy, nonatomic) NSURL *icsUrl; // @synthesize icsUrl=_icsUrl;
 @property(nonatomic) unsigned long long icsDisplayOrder; // @synthesize icsDisplayOrder=_icsDisplayOrder;
 @property(retain, nonatomic) REMContactRepresentation *contactHandles; // @synthesize contactHandles=_contactHandles;
 @property(retain, nonatomic) NSArray *alarms; // @synthesize alarms=_alarms;
 @property(retain, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
-@property(retain, nonatomic) REMCRMergeableStringDocument *notesDocument; // @synthesize notesDocument=_notesDocument;
 @property(retain, nonatomic) NSArray *recurrenceRules; // @synthesize recurrenceRules=_recurrenceRules;
 @property(copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
@@ -82,10 +91,12 @@
 @property(copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
 @property(nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) NSSet *subtaskIDsToUndelete; // @synthesize subtaskIDsToUndelete=_subtaskIDsToUndelete;
-@property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
 @property(copy, nonatomic) NSDate *completionDate; // @synthesize completionDate=_completionDate;
 @property(nonatomic, getter=isCompleted) _Bool completed; // @synthesize completed=_completed;
-@property(retain, nonatomic) REMCRMergeableStringDocument *titleDocument; // @synthesize titleDocument=_titleDocument;
+@property(retain, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
+@property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
+@property(retain, nonatomic) NSData *notesDocumentData; // @synthesize notesDocumentData=_notesDocumentData;
+@property(retain, nonatomic) NSData *titleDocumentData; // @synthesize titleDocumentData=_titleDocumentData;
 @property(retain, nonatomic) REMObjectID *parentReminderID; // @synthesize parentReminderID=_parentReminderID;
 @property(retain, nonatomic) REMObjectID *listID; // @synthesize listID=_listID;
 @property(retain, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
@@ -94,16 +105,22 @@
 @property(copy, nonatomic) NSString *daSyncToken; // @synthesize daSyncToken;
 @property(copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property(copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;
-- (void).cxx_destruct;
-- (_Bool)isOverdue;
+@property(readonly, nonatomic) _Bool isRecurrent;
+@property(readonly, nonatomic) _Bool isOverdue;
 - (void)updateDisplayDate;
 - (id)notesReplicaIDSource;
 - (id)titleReplicaIDSource;
+- (id)cdKeyToStorageKeyMap;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, copy, nonatomic) NSString *legacyNotificationIdentifier;
+- (void)setNotesDocument:(id)arg1;
+- (id)notesDocument;
+- (void)setTitleDocument:(id)arg1;
+- (id)titleDocument;
 - (void)setStoreGenerationIfNeeded:(unsigned long long)arg1;
 - (unsigned long long)storeGeneration;
 - (void)encodeWithCoder:(id)arg1;
+- (id)datesDebugDescriptionInTimeZone:(id)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)initWithCoder:(id)arg1;

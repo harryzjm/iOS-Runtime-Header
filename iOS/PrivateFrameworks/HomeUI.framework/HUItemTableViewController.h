@@ -9,11 +9,12 @@
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
+#import <HomeUI/UITextViewDelegate-Protocol.h>
 
 @class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NACancelable;
 
-@interface HUItemTableViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
+@interface HUItemTableViewController <HFExecutionEnvironmentObserver, UITextViewDelegate, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     _Bool _wantsPreferredContentSize;
     _Bool _viewHasAppeared;
@@ -35,6 +36,7 @@
 
 + (unsigned long long)updateMode;
 + (_Bool)adoptsDefaultGridLayoutMargins;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldUseAlternateCellColor; // @synthesize shouldUseAlternateCellColor=_shouldUseAlternateCellColor;
 @property(retain, nonatomic) HUGridLayoutOptions *gridLayoutOptions; // @synthesize gridLayoutOptions=_gridLayoutOptions;
 @property(readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
@@ -51,10 +53,11 @@
 @property(nonatomic) _Bool viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 @property(nonatomic) unsigned long long appearState; // @synthesize appearState=_appearState;
 @property(nonatomic) _Bool wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
-- (void).cxx_destruct;
+- (void)reloadCellForItems:(id)arg1;
 - (id)presentingViewControllerForModuleController:(id)arg1;
 - (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
+- (void)_transformViewControllerForRequest:(id)arg1;
 - (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (void)recursivelyDisableItemUpdates:(_Bool)arg1 withReason:(id)arg2;
 @property(readonly, nonatomic) HFItem *hu_presentedItem;
@@ -68,10 +71,10 @@
 - (void)scrollToItem:(id)arg1 animated:(_Bool)arg2;
 - (void)highlightItemAnimated:(id)arg1 duration:(double)arg2;
 - (void)highlightItemAnimated:(id)arg1;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
 - (void)itemManager:(id)arg1 didUpdateItemModules:(id)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
-- (void)itemManager:(id)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
 - (void)itemManager:(id)arg1 didMoveSection:(long long)arg2 toSection:(long long)arg3;
 - (void)itemManager:(id)arg1 didInsertSections:(id)arg2;
 - (void)itemManager:(id)arg1 didRemoveSections:(id)arg2;
@@ -82,6 +85,8 @@
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (long long)_rowAnimationForOperationType:(unsigned long long)arg1 item:(id)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 leadingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
@@ -97,6 +102,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)_scrollToDestination:(id)arg1;
+- (void)_updateHeadersAndFootersIfNeededAfterPerformingRequest:(id)arg1;
 - (void)_updatePreferredContentSizeIfNecessary;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
 - (_Bool)_shouldHideFooterForSection:(long long)arg1;
@@ -110,6 +116,8 @@
 @property(readonly, copy) NSString *description;
 - (id)textFieldForVisibleItem:(id)arg1;
 - (id)moduleControllerForItem:(id)arg1;
+- (id)trailingSwipeActionsForItem:(id)arg1;
+- (id)leadingSwipeActionsForItem:(id)arg1;
 - (id)childViewControllersToPreload;
 - (id)itemTableFooterView;
 - (id)itemTableHeaderView;
@@ -128,6 +136,7 @@
 - (_Bool)shouldManageTextFieldForItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (Class)mappableCellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)buildItemModuleControllerForModule:(id)arg1;
 - (id)itemModuleControllers;

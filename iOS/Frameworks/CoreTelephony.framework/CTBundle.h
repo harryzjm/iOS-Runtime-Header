@@ -15,7 +15,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (unsigned char)convertBundleType:(id)arg1;
 @property(nonatomic) long long type; // @synthesize type=_type;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

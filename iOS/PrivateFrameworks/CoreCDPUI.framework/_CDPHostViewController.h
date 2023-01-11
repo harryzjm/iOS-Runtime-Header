@@ -8,15 +8,23 @@
 
 #import <CoreCDPUI/CDPHostInterface-Protocol.h>
 
+@class NSExtension;
+@protocol NSCopying;
+
 @interface _CDPHostViewController : _UIRemoteViewController <CDPHostInterface>
 {
+    id <NSCopying> _request;
+    NSExtension *_weakExtension;
     CDUnknownBlockType _viewServiceTerminationBlock;
 }
 
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
-@property(copy, nonatomic) CDUnknownBlockType viewServiceTerminationBlock; // @synthesize viewServiceTerminationBlock=_viewServiceTerminationBlock;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType viewServiceTerminationBlock; // @synthesize viewServiceTerminationBlock=_viewServiceTerminationBlock;
+@property(nonatomic) __weak NSExtension *weakExtension; // @synthesize weakExtension=_weakExtension;
+@property(retain, nonatomic) id <NSCopying> request; // @synthesize request=_request;
+- (void)dealloc;
 - (double)_keyboardHeightOffset;
 - (void)hostKeyboardOffset:(CDUnknownBlockType)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;

@@ -10,7 +10,7 @@
 {
 }
 
-+ (void)savePassword:(id)arg1;
++ (id)savePassword:(id)arg1;
 + (_Bool)canSavePasswordWithoutConflict:(id)arg1;
 
 @end

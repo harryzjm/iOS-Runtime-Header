@@ -10,7 +10,6 @@
 @class NSData, _INPBIntentResponse;
 
 @protocol INIntentResponseExport <NSObject, JSExport>
-@property(readonly, nonatomic) long long code;
 @property(readonly, copy, nonatomic) _INPBIntentResponse *backingStore;
 - (long long)_intentHandlingStatus;
 - (void)_setPayloadResponseMessageData:(NSData *)arg1;

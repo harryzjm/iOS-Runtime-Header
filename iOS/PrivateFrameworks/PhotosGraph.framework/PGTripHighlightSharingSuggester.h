@@ -20,6 +20,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool lastSuggestionWasColliding;
 @property(readonly) Class superclass;
 
 @end

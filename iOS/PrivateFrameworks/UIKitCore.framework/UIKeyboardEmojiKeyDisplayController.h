@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)writeEmojiDefaultsAndReleaseActiveInputView;
-+ (Class)classForCategoryControl;
-+ (Class)classForInputView;
++ (Class)classForCategoryControl:(long long)arg1;
++ (Class)classForInputView:(long long)arg1;
 @property(retain, nonatomic) UIKeyboardEmojiKeyView *categoryView; // @synthesize categoryView=_categoryView;
 @property(retain, nonatomic) UIKeyboardEmojiKeyView *inputView; // @synthesize inputView=_inputView;
 - (long long)lastVisibleFirstEmojiIndexforCategory:(id)arg1;

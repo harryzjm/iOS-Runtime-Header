@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ClassroomKit/CRKInternetDateFetching-Protocol.h>
-
-@protocol CRKScreenshotServiceInterface <CRKInternetDateFetching>
-- (void)fetchScreenshotDataWithMaximumSize:(struct CGSize)arg1 usePixels:(_Bool)arg2 withCompletion:(void (^)(NSData *, NSError *))arg3;
+@protocol CRKScreenshotServiceInterface
+- (void)fetchScreenshotDataWithMaximumSizeInPixels:(struct CGSize)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 @end
 

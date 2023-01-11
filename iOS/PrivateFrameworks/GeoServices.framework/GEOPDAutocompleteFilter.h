@@ -14,17 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteFilter : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _placeTypeFilters;
     CDStruct_95bda58d _requestedEntryTypes;
     GEOPDPoiIconCategoryFilter *_poiIconCategoryFilter;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_placeTypeFilters:1;
         unsigned int read_requestedEntryTypes:1;
         unsigned int read_poiIconCategoryFilter:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_requestedEntryTypes:1;
-        unsigned int wrote_poiIconCategoryFilter:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,22 +42,32 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsPlaceTypeFilters:(id)arg1;
+- (id)placeTypeFiltersAsString:(int)arg1;
+- (void)setPlaceTypeFilters:(int *)arg1 count:(unsigned long long)arg2;
+- (int)placeTypeFilterAtIndex:(unsigned long long)arg1;
+- (void)addPlaceTypeFilter:(int)arg1;
+- (void)clearPlaceTypeFilters;
+@property(readonly, nonatomic) int *placeTypeFilters;
+@property(readonly, nonatomic) unsigned long long placeTypeFiltersCount;
 @property(retain, nonatomic) GEOPDPoiIconCategoryFilter *poiIconCategoryFilter;
 @property(readonly, nonatomic) _Bool hasPoiIconCategoryFilter;
-- (void)_readPoiIconCategoryFilter;
 - (int)StringAsRequestedEntryTypes:(id)arg1;
 - (id)requestedEntryTypesAsString:(int)arg1;
 - (void)setRequestedEntryTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)requestedEntryTypeAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsRequestedEntryType:(int)arg1;
 - (void)addRequestedEntryType:(int)arg1;
 - (void)clearRequestedEntryTypes;
 @property(readonly, nonatomic) int *requestedEntryTypes;
 @property(readonly, nonatomic) unsigned long long requestedEntryTypesCount;
-- (void)_readRequestedEntryTypes;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

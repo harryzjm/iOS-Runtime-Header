@@ -8,16 +8,17 @@
 
 #import <SpringBoard/SBScenePlaceholderContentViewProvider-Protocol.h>
 
-@class NSString;
+@class NSString, UIUserInterfaceStyleArbiter;
 @protocol SBScenePlaceholderContentViewProviderDelegate;
 
 @interface SBDeviceApplicationSceneViewPlaceholderContentViewProvider : NSObject <SBScenePlaceholderContentViewProvider>
 {
+    UIUserInterfaceStyleArbiter *_userInterfaceStyleArbiter;
     id <SBScenePlaceholderContentViewProviderDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBScenePlaceholderContentViewProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBScenePlaceholderContentViewProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (unsigned long long)_contentTypeToSearchFromSceneHandle:(id)arg1 withContext:(id)arg2;
 - (id)_loadLiveXIBViewForApplication:(id)arg1;
 - (struct CGSize)_naturalSizeForOrientation:(long long)arg1 referenceSize:(struct CGSize)arg2;
@@ -27,6 +28,7 @@
 - (void)_snapshotsDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithApplication:(id)arg1;
+- (id)_initWithApplication:(id)arg1 userInterfaceStyleArbiter:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

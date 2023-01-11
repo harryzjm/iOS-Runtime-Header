@@ -7,12 +7,13 @@
 #import <UIKitCore/UIKBFocusGuideDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardImplGeometryDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, UITextInputTraits, UIView;
+@class NSMutableDictionary, NSString, UITextCursorAssertionController, UITextInputTraits, UIView, _UIKeyboardPasscodeObscuringInteraction;
 
 @interface UIKeyboard <UIKBFocusGuideDelegate, UIKeyboardImplGeometryDelegate>
 {
     UIView *m_snapshot;
     UITextInputTraits *m_defaultTraits;
+    UITextInputTraits *m_overrideTraits;
     _Bool m_typingDisabled;
     _Bool m_minimized;
     _Bool m_respondingToImplGeometryChange;
@@ -23,6 +24,8 @@
     _Bool m_useRecentsAlert;
     NSMutableDictionary *m_focusGuides;
     struct UIEdgeInsets m_unfocusedFocusGuideOutsets;
+    _UIKeyboardPasscodeObscuringInteraction *_passcodeObscuringInteraction;
+    struct CGRect _forcedFrame;
     _Bool _hasImpendingCursorLocation;
     unsigned long long _impendingCursorLocation;
     unsigned long long _requestedInteractionModel;
@@ -33,8 +36,10 @@
 + (struct CGSize)keyboardSizeForInterfaceOrientation:(long long)arg1;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(_Bool)arg2;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1;
++ (_Bool)shouldSuppressSoftwareKeyboardForResponder:(id)arg1;
 + (void)setSuppressionPolicyDelegate:(id)arg1;
 + (id)suppressionPolicyDelegate;
++ (_Bool)hasInputOrAssistantViewsOnScreen;
 + (_Bool)shouldMinimizeForHardwareKeyboard;
 + (_Bool)respondsToProxGesture;
 + (_Bool)isOnScreen;
@@ -43,6 +48,7 @@
 + (struct CGSize)defaultSize;
 + (void)removeAllDynamicDictionaries;
 + (void)initImplementationNow;
++ (struct UIEdgeInsets)_keyboardFocusGuideMargins;
 + (void)clearActiveForScreen:(id)arg1;
 + (void)makeKeyboardActive:(id)arg1 forScreen:(id)arg2;
 + (id)activeKeyboardForScreen:(id)arg1;
@@ -60,6 +66,7 @@
 @property(nonatomic) _Bool hasImpendingCursorLocation; // @synthesize hasImpendingCursorLocation=_hasImpendingCursorLocation;
 @property(nonatomic) long long keyboardIdiom; // @synthesize keyboardIdiom=m_idiom;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
+- (void)_didChangeCandidateList;
 @property(nonatomic) _Bool showsCandidatesInline;
 - (_Bool)canDismiss;
 - (void)implBoundsHeightChangeDone:(double)arg1 suppressNotification:(_Bool)arg2;
@@ -73,6 +80,7 @@
 - (_Bool)_useRecentsAlert;
 - (void)_setDisableTouchInput:(_Bool)arg1;
 - (_Bool)_disableTouchInput;
+- (void)_setDisableUpdateMaskForSecureTextEntry:(_Bool)arg1;
 - (void)_setPasscodeOutlineAlpha:(double)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (id)targetWindow;
@@ -92,6 +100,7 @@
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1;
 - (struct UIEdgeInsets)unfocusedFocusGuideOutsets;
 - (void)didFocusGuideWithHeading:(unsigned long long)arg1;
+- (void)_didChangeCursorLocation;
 - (void)updateKeyFocusGuides;
 - (void)setupKeyFocusGuides;
 - (void)setCursorLocation:(unsigned long long)arg1;
@@ -99,6 +108,7 @@
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (_Bool)allowExternalChangeForFocusHeading:(unsigned long long)arg1 cursorLocation:(unsigned long long)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (struct CGRect)_globalFocusCastingFrameForHeading:(unsigned long long)arg1;
 - (long long)_focusedSound;
 - (long long)_focusTouchSensitivityStyle;
 - (_Bool)_mayRemainFocused;
@@ -127,12 +137,15 @@
 - (void)takeSnapshot;
 - (void)clearSnapshot;
 - (id)delegate;
+- (void)set_overrideTextInputTraits:(id)arg1;
+- (id)_overrideTextInputTraits;
 - (void)setDefaultTextInputTraits:(id)arg1;
 - (id)defaultTextInputTraits;
 - (void)setReturnKeyEnabled:(_Bool)arg1;
 - (_Bool)returnKeyEnabled;
 @property(nonatomic) _Bool caretVisible;
 @property(nonatomic) _Bool caretBlinks;
+@property(readonly, nonatomic) UITextCursorAssertionController *_activeAssertionController;
 - (_Bool)hasAutocorrectPrompt;
 - (void)acceptAutocorrection;
 - (void)removeAutocorrectPrompt;
@@ -146,6 +159,7 @@
 - (long long)interfaceOrientation;
 - (void)updateLayout;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)didMoveToWindow;

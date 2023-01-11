@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)colorButtonWithColor:(id)arg1;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
+- (void)dealloc;
 
 @end
 

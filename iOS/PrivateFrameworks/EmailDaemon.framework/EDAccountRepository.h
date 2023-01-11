@@ -22,10 +22,10 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(nonatomic) __weak EDPersistenceHookRegistry *hookRegistry; // @synthesize hookRegistry=_hookRegistry;
 @property(retain, nonatomic) id <EDAccountsProvider> accountsProvider; // @synthesize accountsProvider=_accountsProvider;
 @property(retain, nonatomic) EDAccountECAccountTransformer *transformer; // @synthesize transformer=_transformer;
-- (void).cxx_destruct;
 - (void)accountsChanged:(id)arg1;
 - (void)accountsRemoved:(id)arg1;
 - (void)accountsAdded:(id)arg1;
@@ -33,7 +33,6 @@
 - (void)allAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)registerObserver:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)allAccounts;
-- (void)dealloc;
 - (id)initWithAccountsProvider:(id)arg1 hookRegistry:(id)arg2;
 
 // Remaining properties

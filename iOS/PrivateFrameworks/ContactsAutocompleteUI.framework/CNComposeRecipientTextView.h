@@ -7,12 +7,13 @@
 #import <ContactsAutocompleteUI/CNComposeRecipientAtomDelegate-Protocol.h>
 #import <ContactsAutocompleteUI/CNRecipientDraggingDelegate-Protocol.h>
 #import <ContactsAutocompleteUI/NSLayoutManagerDelegate-Protocol.h>
+#import <ContactsAutocompleteUI/UIContextMenuInteractionDelegate-Protocol.h>
 #import <ContactsAutocompleteUI/UITextViewDelegate-Protocol.h>
 
 @class CNComposeDragSource, CNComposeDropTarget, NSArray, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSUndoManager, UIButton, UIColor, UIFont, UITextView, UIView, _CNAtomTextAttachment, _CNAtomTextView;
 @protocol CNComposeRecipientTextViewDelegate;
 
-@interface CNComposeRecipientTextView <UITextViewDelegate, NSLayoutManagerDelegate, CNComposeRecipientAtomDelegate, CNRecipientDraggingDelegate>
+@interface CNComposeRecipientTextView <UIContextMenuInteractionDelegate, UITextViewDelegate, NSLayoutManagerDelegate, CNComposeRecipientAtomDelegate, CNRecipientDraggingDelegate>
 {
     _CNAtomTextView *_textView;
     UITextView *_inactiveTextView;
@@ -35,12 +36,14 @@
     NSMutableArray *_recipientsBeingRemoved;
     NSUndoManager *_undoManager;
     struct CGRect _addButtonFrame;
-    _Bool _editable;
+    _Bool _usingActiveAppearance;
     _Bool _separatorHidden;
     _Bool _expanded;
     _Bool _didIgnoreFirstResponderResign;
     _Bool _showsAddButtonWhenExpanded;
     _Bool _expandRecipientsInNamedGroups;
+    _Bool _editable;
+    _Bool _enabled;
     int _hideLastAtomComma;
     UIFont *_baseFont;
     long long _maxRecipients;
@@ -52,8 +55,11 @@
 }
 
 + (id)defaultFont;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) UIView *atomContainerView; // @synthesize atomContainerView=_atomContainerView;
 @property(retain, nonatomic) _CNAtomTextAttachment *placeholderAttachment; // @synthesize placeholderAttachment=_placeholderAttachment;
+@property(nonatomic) _Bool editable; // @synthesize editable=_editable;
 @property(nonatomic) int hideLastAtomComma; // @synthesize hideLastAtomComma=_hideLastAtomComma;
 @property(nonatomic) double trailingButtonMidlineInsetFromLayoutMargin; // @synthesize trailingButtonMidlineInsetFromLayoutMargin=_trailingButtonMidlineInsetFromLayoutMargin;
 @property(retain, nonatomic) UIColor *typingTextColor; // @synthesize typingTextColor=_typingTextColor;
@@ -64,9 +70,8 @@
 @property(readonly, nonatomic) _Bool didIgnoreFirstResponderResign; // @synthesize didIgnoreFirstResponderResign=_didIgnoreFirstResponderResign;
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic, getter=isSeparatorHidden) _Bool separatorHidden; // @synthesize separatorHidden=_separatorHidden;
-@property(nonatomic) _Bool editable; // @synthesize editable=_editable;
+@property(nonatomic) _Bool usingActiveAppearance; // @synthesize usingActiveAppearance=_usingActiveAppearance;
 @property(nonatomic) _Bool indicatesUnsafeRecipientsWhenCollapsed; // @synthesize indicatesUnsafeRecipientsWhenCollapsed=_indicatesUnsafeRecipientsWhenCollapsed;
-- (void).cxx_destruct;
 - (void)composeRecipientAtomSelectNext:(id)arg1;
 - (void)composeRecipientAtomSelectPrevious:(id)arg1;
 - (void)composeRecipientAtomShowPersonCard:(id)arg1;
@@ -80,6 +85,9 @@
 - (id)dragPreviewForDraggedItem:(id)arg1 withContainer:(id)arg2;
 - (struct _NSRange)_placeholderAttachmentRange;
 - (id)_placeholderAttachmentWithStaticWidth;
+- (void)deselectAllAtoms;
+- (void)selectAtom:(id)arg1;
+- (void)selectAtomForRecipient:(id)arg1;
 - (void)_notifyDelegateOfSizeChange;
 - (void)_notifyDelegateOfNewSize:(struct CGSize)arg1;
 - (_Bool)_delegateRespondsToSizeChange;
@@ -102,6 +110,7 @@
 - (_Bool)_canAddAdditionalAtoms;
 - (void)_longPressGestureRecognized:(id)arg1;
 - (void)_tapGestureRecognized:(id)arg1;
+- (_Bool)_recipientAtomHitInView:(id)arg1 atLocation:(struct CGPoint)arg2;
 - (void)_setAddButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)_isAddButtonVisible;
 - (void)_ensureAddButton;
@@ -145,9 +154,12 @@
 @property(readonly, nonatomic) UITextView *textView;
 @property(readonly, nonatomic) NSString *text;
 - (id)_userEnteredTextWithRange:(struct _NSRange *)arg1;
+- (_Bool)_hasRecipientsWithPresentationOptions:(unsigned long long)arg1;
+- (_Bool)_hasDowntimeBlockedRecipients;
 - (_Bool)_hasUnsafeRecipients;
 - (void)_updateAddButtonVisibility;
 - (void)setEditable:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setUsingActiveAppearance:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSArray *uncommentedAddresses;
 @property(copy, nonatomic) NSArray *addresses;
 - (void)_addButtonTapped:(id)arg1;
@@ -166,7 +178,8 @@
 - (void)refreshPreferredContentSize;
 - (_Bool)_shouldEmbedLabelInTextView;
 - (void)layoutSubviews;
-- (void)settrailingButtonMidlineInsetFromLayoutMargin:(double)arg1;
+- (id)menuConfigurationForAtomView:(id)arg1;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 dragDropDelegate:(id)arg2;
 - (void)dealloc;

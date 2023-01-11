@@ -10,6 +10,7 @@
 @protocol SecuritydXPCCallbackProtocol;
 
 @protocol SecuritydXPCProtocol <NSObject>
+- (void)secItemDeleteForAppClipApplicationIdentifier:(NSString *)arg1 completion:(void (^)(int))arg2;
 - (void)secItemVerifyBackupIntegrity:(_Bool)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)secKeychainDeleteMultiuser:(NSData *)arg1 complete:(void (^)(_Bool, NSError *))arg2;
 - (void)secItemDigest:(NSString *)arg1 accessGroup:(NSString *)arg2 complete:(void (^)(NSArray *, NSError *))arg3;

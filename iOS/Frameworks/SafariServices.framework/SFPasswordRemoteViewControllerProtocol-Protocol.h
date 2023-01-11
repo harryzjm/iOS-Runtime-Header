@@ -6,7 +6,13 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
+@class ASCredentialServiceIdentifier, ASPasswordCredential;
+
 @protocol SFPasswordRemoteViewControllerProtocol <NSObject>
 - (void)willDismissServiceViewController;
+
+@optional
+- (void)performUpgradeToStrongPasswordForCredential:(ASPasswordCredential *)arg1 serviceIdentifier:(ASCredentialServiceIdentifier *)arg2;
+- (void)performUpgradeToSignInWithAppleForCredential:(ASPasswordCredential *)arg1 serviceIdentifier:(ASCredentialServiceIdentifier *)arg2;
 @end
 

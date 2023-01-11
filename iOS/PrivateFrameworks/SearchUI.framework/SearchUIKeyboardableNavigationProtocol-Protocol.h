@@ -6,8 +6,13 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
+@class SFCardSection, SFSearchResult;
+
 @protocol SearchUIKeyboardableNavigationProtocol <NSObject>
+- (SFCardSection *)keyboardCardSectionForFocus;
+- (SFSearchResult *)keyboardResultForFocus;
 - (void)removeKeyboardHandler;
+- (void)tabKeyPressed;
 - (_Bool)navigateKeyboardDown;
 - (_Bool)navigateKeyboardUp;
 - (_Bool)navigateKeyboardLeft;

@@ -11,7 +11,7 @@
 - (id)_hk_formatMetadataValueForMetadataKey:(id)arg1 object:(id)arg2 unitPreferenceController:(id)arg3;
 - (id)hk_formatSecondaryMetadataValueForObject:(id)arg1 unitPreferencesController:(id)arg2;
 - (id)hk_formatPrimaryMetadataValueForObject:(id)arg1 unitPreferencesController:(id)arg2;
-- (id)hk_metadataValueDisplayType;
+- (id)hk_metadataValueDisplayTypeInStore:(id)arg1;
 - (id)hk_secondaryMetadataKey;
 - (id)hk_primaryMetadataKey;
 - (Class)hk_valueFormatterClass;

@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsToday/FCFeedTransformationItem-Protocol.h>
+#import <NewsToday/NTFeedTransformationItem-Protocol.h>
 #import <NewsToday/NTHeadlineProviding-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBFeedItem, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
+@protocol FCChannelProviding, FCFeedTransformationItem;
 
-@interface NTHeadline : NSObject <NTHeadlineProviding>
+@interface NTHeadline : NSObject <NTFeedTransformationItem, FCFeedTransformationItem, NTHeadlineProviding>
 {
+    _Bool _needsPlaceholderThumbnail;
     _Bool _needsSeenStateTracking;
-    _Bool _displaysWithLeadingCellAppearance;
     _Bool _supportsSavingForLater;
-    _Bool _boundToContext;
-    _Bool _hiddenFromFeeds;
     _Bool _hiddenFromAutoFavorites;
     NSString *_title;
     NSString *_titleCompact;
@@ -37,8 +38,6 @@
     NSString *_storyType;
     NSArray *_topicIDs;
     SFSearchResult *_searchResult;
-    NSURL *_videoURL;
-    double _videoDuration;
     NTPBHeadlineAnalyticsElement *_analyticsElement;
     NTPBHeadlineAdElement *_adElement;
     NTHeadlinePersonalizationMetadata *_personalizationMetadata;
@@ -51,6 +50,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSURL *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property(copy, nonatomic) NSURL *videoCallToActionURL; // @synthesize videoCallToActionURL=_videoCallToActionURL;
@@ -60,18 +60,14 @@
 @property(copy, nonatomic) NTPBHeadlineAdElement *adElement; // @synthesize adElement=_adElement;
 @property(copy, nonatomic) NTPBHeadlineAnalyticsElement *analyticsElement; // @synthesize analyticsElement=_analyticsElement;
 @property(nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites; // @synthesize hiddenFromAutoFavorites=_hiddenFromAutoFavorites;
-@property(nonatomic, getter=isHiddenFromFeeds) _Bool hiddenFromFeeds; // @synthesize hiddenFromFeeds=_hiddenFromFeeds;
-@property(nonatomic, getter=isBoundToContext) _Bool boundToContext; // @synthesize boundToContext=_boundToContext;
 @property(nonatomic) _Bool supportsSavingForLater; // @synthesize supportsSavingForLater=_supportsSavingForLater;
-@property(nonatomic) _Bool displaysWithLeadingCellAppearance; // @synthesize displaysWithLeadingCellAppearance=_displaysWithLeadingCellAppearance;
 @property(nonatomic) _Bool needsSeenStateTracking; // @synthesize needsSeenStateTracking=_needsSeenStateTracking;
-@property(nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
-@property(copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property(copy, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property(copy, nonatomic) NSArray *topicIDs; // @synthesize topicIDs=_topicIDs;
 @property(copy, nonatomic) NSString *storyType; // @synthesize storyType=_storyType;
 @property(copy, nonatomic) NSURL *NewsURL; // @synthesize NewsURL=_NewsURL;
 @property(copy, nonatomic) NSURL *webURL; // @synthesize webURL=_webURL;
+@property(nonatomic) _Bool needsPlaceholderThumbnail; // @synthesize needsPlaceholderThumbnail=_needsPlaceholderThumbnail;
 @property(nonatomic) struct CGRect thumbnailFocalFrame; // @synthesize thumbnailFocalFrame=_thumbnailFocalFrame;
 @property(nonatomic) unsigned long long thumbnailSizePreset; // @synthesize thumbnailSizePreset=_thumbnailSizePreset;
 @property(copy, nonatomic) NSString *thumbnailIdentifier; // @synthesize thumbnailIdentifier=_thumbnailIdentifier;
@@ -87,7 +83,6 @@
 @property(copy, nonatomic) NSString *shortExcerpt; // @synthesize shortExcerpt=_shortExcerpt;
 @property(copy, nonatomic) NSString *titleCompact; // @synthesize titleCompact=_titleCompact;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -97,9 +92,54 @@
 @property(readonly, nonatomic) unsigned long long itemType;
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
+- (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property(readonly, nonatomic) _Bool hasVideo;
+@property(readonly, nonatomic, getter=isPaid) _Bool paid;
+@property(readonly, nonatomic, getter=isANF) _Bool anf;
+@property(readonly, nonatomic) _Bool hasGlobalUserFeedback;
+@property(readonly, copy, nonatomic) NSString *publisherID;
+@property(readonly, nonatomic) unsigned long long halfLife;
+@property(readonly, copy, nonatomic) NSDate *publishDate;
+@property(readonly, copy, nonatomic) NSString *itemID;
+@property(readonly, copy, nonatomic) NSString *sourceFeedID;
+@property(readonly, nonatomic) _Bool canBePurchased;
+@property(readonly, nonatomic) long long publisherArticleVersion;
+@property(readonly, nonatomic) long long minimumNewsVersion;
+@property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
+@property(readonly, nonatomic, getter=isFromBlockedStorefront) _Bool fromBlockedStorefront;
+@property(readonly, nonatomic) double globalUserFeedback;
+@property(readonly, nonatomic) unsigned long long feedHalfLifeMilliseconds;
+@property(readonly, nonatomic) unsigned long long publishDateMilliseconds;
+@property(readonly, copy, nonatomic) NSString *sourceChannelID;
+@property(readonly, nonatomic) unsigned long long order;
+@property(readonly, nonatomic) unsigned long long contentType;
+@property(readonly, copy, nonatomic) NSString *articleID;
+@property(readonly, copy, nonatomic) NSString *feedID;
+- (id)protoitemWithFetchedFeedItemHeadline:(id)arg1;
+@property(readonly, nonatomic) _Bool usesDynamicSlotAllocation;
+@property(readonly, nonatomic) unsigned long long todayItemType;
+@property(readonly, nonatomic) _Bool needsFeedItemHeadlinesFetch;
+@property(readonly, nonatomic) id <FCFeedTransformationItem> feedTransformationItem;
+@property(readonly, copy, nonatomic) NTPBFeedItem *feedItemForHeadlineFetch;
+@property(readonly, copy, nonatomic) NSString *clusterID;
+@property(readonly, copy, nonatomic) NSDate *cacheExpirationDate;
+@property(readonly, copy, nonatomic) NSDate *cacheCutoffTimeRelativeDate;
 
 // Remaining properties
+@property(readonly, nonatomic) long long bodyTextLength;
+@property(readonly, nonatomic, getter=isBundlePaid) _Bool bundlePaid;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) _Bool hasAudioTrack;
+@property(readonly, nonatomic) _Bool isFeatured;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
+@property(readonly, nonatomic) unsigned long long preferredDynamicSlotAllocation;
+@property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @property(readonly) Class superclass;
 
 @end

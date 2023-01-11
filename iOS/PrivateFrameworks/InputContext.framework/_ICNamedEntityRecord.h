@@ -26,20 +26,20 @@
 }
 
 + (id)namedEntityRecordWithName:(id)arg1 phoneticName:(id)arg2 type:(unsigned char)arg3 languageIdentifier:(id)arg4 contentCreationDate:(id)arg5 detectionDate:(id)arg6 score:(double)arg7 source:(unsigned char)arg8 sourceIdentifier:(id)arg9 donorBundleIdentifier:(id)arg10 detectionAlgorithm:(unsigned long long)arg11;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long detectionAlgorithm; // @synthesize detectionAlgorithm=_detectionAlgorithm;
 @property(readonly, nonatomic) NSString *donorBundleIdentifier; // @synthesize donorBundleIdentifier=_donorBundleIdentifier;
-@property(retain, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
+@property(readonly, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(readonly, nonatomic) NSDate *detectionDate; // @synthesize detectionDate=_detectionDate;
 @property(readonly, nonatomic) NSDate *contentCreationDate; // @synthesize contentCreationDate=_contentCreationDate;
 @property(readonly, nonatomic) NSString *languageIdentifier; // @synthesize languageIdentifier=_languageIdentifier;
 @property(nonatomic) double score; // @synthesize score=_score;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) unsigned char changeType; // @synthesize changeType=_changeType;
 @property(readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 @property(readonly, nonatomic) unsigned char source; // @synthesize source=_source;
 @property(readonly, nonatomic) NSString *phoneticName; // @synthesize phoneticName=_phoneticName;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)initWithName:(id)arg1 phoneticName:(id)arg2 type:(unsigned char)arg3 languageIdentifier:(id)arg4 contentCreationDate:(id)arg5 detectionDate:(id)arg6 score:(double)arg7 source:(unsigned char)arg8 sourceIdentifier:(id)arg9 donorBundleIdentifier:(id)arg10 detectionAlgorithm:(unsigned long long)arg11;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToNamedEntityRecord:(id)arg1;

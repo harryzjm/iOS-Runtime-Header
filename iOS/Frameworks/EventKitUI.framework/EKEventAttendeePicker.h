@@ -7,14 +7,16 @@
 #import <UIKit/UIViewController.h>
 
 #import <EventKitUI/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
+#import <EventKitUI/CNAutocompleteSearchConsumer-Protocol.h>
 #import <EventKitUI/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <EventKitUI/CNContactPickerDelegate-Protocol.h>
+#import <EventKitUI/CNContactViewControllerPrivateDelegate-Protocol.h>
 
-@class CNAutocompleteFetchContext, CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipientTextView, EKEvent, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
+@class CNAutocompleteFetchContext, CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipient, CNComposeRecipientTextView, EKEvent, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
 @protocol EKEventAttendeePickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeePicker : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate>
+@interface EKEventAttendeePicker : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate, CNContactViewControllerPrivateDelegate, CNAutocompleteSearchConsumer>
 {
     NSArray *_recipients;
     CNComposeRecipientTextView *_composeRecipientView;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_searchResults;
     CNAutocompleteResultsTableViewController *_autocompleteTableViewController;
     CNAutocompleteFetchContext *_fetchContext;
+    CNComposeRecipient *_displayedRecipient;
     _Bool _hasChanges;
     NSString *_searchAccountID;
     id <EKEventAttendeePickerDelegate> _addressValidationDelegate;
@@ -44,15 +47,16 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)_participantHasResponded:(id)arg1;
 + (id)_addressForRecipient:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasChanges; // @synthesize hasChanges=_hasChanges;
 @property(nonatomic) __weak id <EKEventAttendeePickerDelegate> addressValidationDelegate; // @synthesize addressValidationDelegate=_addressValidationDelegate;
 @property(copy, nonatomic) NSString *searchAccountID; // @synthesize searchAccountID=_searchAccountID;
-- (void).cxx_destruct;
 - (Class)_CNContactPickerViewController;
 - (Class)_CNContactViewController;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
+- (void)contactViewControllerDidExecuteClearRecentsDataAction:(id)arg1;
 - (void)_updateFetchContextChosenAddresses;
 - (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
@@ -71,8 +75,6 @@ __attribute__((visibility("hidden")))
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
 - (void)searchForCorecipients;
 - (void)searchWithText:(id)arg1;
-- (void)endedNetworkActivity;
-- (void)beganNetworkActivity;
 - (void)_refreshSearchResults;
 - (void)finishedTaskWithID:(id)arg1;
 - (void)finishedSearchingForCorecipients;
@@ -97,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)commitRemainingText;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewLayoutMarginsDidChange;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;

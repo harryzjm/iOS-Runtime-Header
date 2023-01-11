@@ -6,25 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-@class AVBackdropView, AVButton, AVObservationController, AVPlaybackControlsRoutePickerView, AVPlayerViewControllerCustomControlsView, AVScrubber, AVStyleSheet, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSLayoutConstraint, NSUUID, NSValue, UIViewPropertyAnimator;
+@class AVButton, AVLayoutView, AVObservationController, AVPlaybackControlsRoutePickerView, AVPlayerViewControllerCustomControlsView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSUUID, NSValue, UIViewPropertyAnimator;
+@protocol AVPlaybackControlsViewVisibilityDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVPlaybackControlsView : UIView
 {
     _Bool _fullScreen;
+    _Bool _prefersVolumeSliderExpandedAutomatically;
+    _Bool _showsPlaybackControls;
+    _Bool _showsAudioControls;
     _Bool _doubleRowLayoutEnabled;
     _Bool _needsIntialLayout;
     _Bool _topAreaLayoutGuideExpanded;
+    _Bool _prefersDoneButtonIncluded;
+    _Bool _prefersVideoGravityButtonIncluded;
+    _Bool _prefersFullScreenButtonIncluded;
+    _Bool _prefersPiPButtonIncluded;
     AVPlayerViewControllerCustomControlsView *_customControlsView;
     AVStyleSheet *_styleSheet;
     long long _preferredUnobscuredArea;
     long long _includedContainers;
-    UIView *_volumeControlsContainer;
-    UIView *_playbackControlsContainer;
-    AVBackdropView *_screenModeControls;
-    AVBackdropView *_volumeControls;
-    AVBackdropView *_prominentPlayButtonBackdropView;
-    AVBackdropView *_miniPlayPauseButtonBackdropView;
+    AVTouchIgnoringView *_volumeControlsContainer;
+    AVTouchIgnoringView *_playbackControlsContainer;
+    AVLayoutView *_screenModeControls;
+    AVLayoutView *_volumeControls;
+    AVLayoutView *_prominentPlayButtonContainerView;
     AVView *_transportControlsContainerView;
     AVButton *_doneButton;
     AVButton *_fullScreenButton;
@@ -35,7 +42,6 @@ __attribute__((visibility("hidden")))
     AVVolumeSlider *_volumeSlider;
     NSArray *_customAudioItems;
     AVButton *_prominentPlayButton;
-    AVButton *_miniPlayPauseButton;
     AVTransportControlsView *_transportControlsView;
     AVButton *_standardPlayPauseButton;
     AVButton *_skipForwardButton;
@@ -47,30 +53,28 @@ __attribute__((visibility("hidden")))
     AVButton *_mediaSelectionButton;
     NSArray *_customMediaItems;
     NSArray *_customControlItems;
+    id <AVPlaybackControlsViewVisibilityDelegate> _visibilityDelegate;
     NSValue *_overrideLayoutMarginsWhenEmbeddedInline;
     AVObservationController *_observationController;
     NSArray *_defaultAudioControls;
     NSArray *_defaultDisplayModeControls;
     double _keyboardHeight;
     UIViewPropertyAnimator *_keyboardUIAvoidanceAnimator;
-    NSLayoutConstraint *_volumeButtonBottomToLayoutMarginsGuideBottomConstraint;
-    NSLayoutConstraint *_volumeTopToLayoutGuideTopConstraint;
-    NSLayoutConstraint *_volumeTopToViewTopConstraint;
-    NSLayoutConstraint *_screenModeControlsToVolumeControlsSpacingConstraint;
     UIViewPropertyAnimator *_playbackControlsVisibilityAnimator;
     NSUUID *_mostRecentAnimationCompletionsID;
     struct CGAffineTransform _overrideTransformForProminentPlayButton;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool prefersPiPButtonIncluded; // @synthesize prefersPiPButtonIncluded=_prefersPiPButtonIncluded;
+@property(nonatomic) _Bool prefersFullScreenButtonIncluded; // @synthesize prefersFullScreenButtonIncluded=_prefersFullScreenButtonIncluded;
+@property(nonatomic) _Bool prefersVideoGravityButtonIncluded; // @synthesize prefersVideoGravityButtonIncluded=_prefersVideoGravityButtonIncluded;
+@property(nonatomic) _Bool prefersDoneButtonIncluded; // @synthesize prefersDoneButtonIncluded=_prefersDoneButtonIncluded;
 @property(nonatomic, getter=isTopAreaLayoutGuideExpanded) _Bool topAreaLayoutGuideExpanded; // @synthesize topAreaLayoutGuideExpanded=_topAreaLayoutGuideExpanded;
 @property(retain, nonatomic) NSUUID *mostRecentAnimationCompletionsID; // @synthesize mostRecentAnimationCompletionsID=_mostRecentAnimationCompletionsID;
 @property(retain, nonatomic) UIViewPropertyAnimator *playbackControlsVisibilityAnimator; // @synthesize playbackControlsVisibilityAnimator=_playbackControlsVisibilityAnimator;
 @property(nonatomic) _Bool needsIntialLayout; // @synthesize needsIntialLayout=_needsIntialLayout;
 @property(nonatomic, getter=isDoubleRowLayoutEnabled) _Bool doubleRowLayoutEnabled; // @synthesize doubleRowLayoutEnabled=_doubleRowLayoutEnabled;
-@property(readonly, nonatomic) NSLayoutConstraint *screenModeControlsToVolumeControlsSpacingConstraint; // @synthesize screenModeControlsToVolumeControlsSpacingConstraint=_screenModeControlsToVolumeControlsSpacingConstraint;
-@property(readonly, nonatomic) NSLayoutConstraint *volumeTopToViewTopConstraint; // @synthesize volumeTopToViewTopConstraint=_volumeTopToViewTopConstraint;
-@property(readonly, nonatomic) NSLayoutConstraint *volumeTopToLayoutGuideTopConstraint; // @synthesize volumeTopToLayoutGuideTopConstraint=_volumeTopToLayoutGuideTopConstraint;
-@property(readonly, nonatomic) NSLayoutConstraint *volumeButtonBottomToLayoutMarginsGuideBottomConstraint; // @synthesize volumeButtonBottomToLayoutMarginsGuideBottomConstraint=_volumeButtonBottomToLayoutMarginsGuideBottomConstraint;
 @property(readonly, nonatomic) UIViewPropertyAnimator *keyboardUIAvoidanceAnimator; // @synthesize keyboardUIAvoidanceAnimator=_keyboardUIAvoidanceAnimator;
 @property(nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
 @property(readonly, nonatomic) NSArray *defaultDisplayModeControls; // @synthesize defaultDisplayModeControls=_defaultDisplayModeControls;
@@ -78,6 +82,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property(retain, nonatomic) NSValue *overrideLayoutMarginsWhenEmbeddedInline; // @synthesize overrideLayoutMarginsWhenEmbeddedInline=_overrideLayoutMarginsWhenEmbeddedInline;
 @property(nonatomic) struct CGAffineTransform overrideTransformForProminentPlayButton; // @synthesize overrideTransformForProminentPlayButton=_overrideTransformForProminentPlayButton;
+@property(nonatomic) _Bool showsAudioControls; // @synthesize showsAudioControls=_showsAudioControls;
+@property(nonatomic) __weak id <AVPlaybackControlsViewVisibilityDelegate> visibilityDelegate; // @synthesize visibilityDelegate=_visibilityDelegate;
+@property(nonatomic) _Bool showsPlaybackControls; // @synthesize showsPlaybackControls=_showsPlaybackControls;
+@property(nonatomic) _Bool prefersVolumeSliderExpandedAutomatically; // @synthesize prefersVolumeSliderExpandedAutomatically=_prefersVolumeSliderExpandedAutomatically;
 @property(readonly, copy, nonatomic) NSArray *customControlItems; // @synthesize customControlItems=_customControlItems;
 @property(readonly, copy, nonatomic) NSArray *customMediaItems; // @synthesize customMediaItems=_customMediaItems;
 @property(readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
@@ -89,7 +97,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVButton *skipForwardButton; // @synthesize skipForwardButton=_skipForwardButton;
 @property(readonly, nonatomic) AVButton *standardPlayPauseButton; // @synthesize standardPlayPauseButton=_standardPlayPauseButton;
 @property(readonly, nonatomic) AVTransportControlsView *transportControlsView; // @synthesize transportControlsView=_transportControlsView;
-@property(readonly, nonatomic) AVButton *miniPlayPauseButton; // @synthesize miniPlayPauseButton=_miniPlayPauseButton;
 @property(readonly, nonatomic) AVButton *prominentPlayButton; // @synthesize prominentPlayButton=_prominentPlayButton;
 @property(readonly, copy, nonatomic) NSArray *customAudioItems; // @synthesize customAudioItems=_customAudioItems;
 @property(readonly, nonatomic) AVVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
@@ -100,17 +107,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVButton *fullScreenButton; // @synthesize fullScreenButton=_fullScreenButton;
 @property(readonly, nonatomic) AVButton *doneButton; // @synthesize doneButton=_doneButton;
 @property(readonly, nonatomic) AVView *transportControlsContainerView; // @synthesize transportControlsContainerView=_transportControlsContainerView;
-@property(readonly, nonatomic) AVBackdropView *miniPlayPauseButtonBackdropView; // @synthesize miniPlayPauseButtonBackdropView=_miniPlayPauseButtonBackdropView;
-@property(readonly, nonatomic) AVBackdropView *prominentPlayButtonBackdropView; // @synthesize prominentPlayButtonBackdropView=_prominentPlayButtonBackdropView;
-@property(readonly, nonatomic) AVBackdropView *volumeControls; // @synthesize volumeControls=_volumeControls;
-@property(readonly, nonatomic) AVBackdropView *screenModeControls; // @synthesize screenModeControls=_screenModeControls;
-@property(readonly, nonatomic) UIView *playbackControlsContainer; // @synthesize playbackControlsContainer=_playbackControlsContainer;
-@property(readonly, nonatomic) UIView *volumeControlsContainer; // @synthesize volumeControlsContainer=_volumeControlsContainer;
+@property(readonly, nonatomic) AVLayoutView *prominentPlayButtonContainerView; // @synthesize prominentPlayButtonContainerView=_prominentPlayButtonContainerView;
+@property(readonly, nonatomic) AVLayoutView *volumeControls; // @synthesize volumeControls=_volumeControls;
+@property(readonly, nonatomic) AVLayoutView *screenModeControls; // @synthesize screenModeControls=_screenModeControls;
+@property(readonly, nonatomic) AVTouchIgnoringView *playbackControlsContainer; // @synthesize playbackControlsContainer=_playbackControlsContainer;
+@property(readonly, nonatomic) AVTouchIgnoringView *volumeControlsContainer; // @synthesize volumeControlsContainer=_volumeControlsContainer;
 @property(readonly, nonatomic) long long includedContainers; // @synthesize includedContainers=_includedContainers;
 @property(nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
 @property(nonatomic, getter=isFullScreen) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;
 @property(retain, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
-- (void).cxx_destruct;
 - (id)_customControlsViewIfLoaded;
 - (id)_playbackControlsViewsForControlItems:(id)arg1 withType:(long long)arg2;
 - (id)_playbackControlsViewItems;
@@ -119,19 +124,28 @@ __attribute__((visibility("hidden")))
 - (void)_setupInitialLayout;
 - (void)_updateDoubleRowLayoutEnabled;
 - (void)_updateAreVolumeAndTransportControlsVisible;
-- (void)_updatePlaybackControlsContainerVisibility:(CDUnknownBlockType)arg1;
-- (void)_remove:(_Bool)arg1 view:(id)arg2;
-- (void)_remove:(_Bool)arg1 views:(id)arg2;
+- (void)reevaluateHiddenStateForContainersAndSubviews;
+- (void)_updatePlaybackControlsContainerVisibilityAnimated:(_Bool)arg1 additionalActions:(CDUnknownBlockType)arg2;
+- (void)updateDisplayControlsVisibilityIncludedButtons:(id)arg1;
+- (void)_collapse:(_Bool)arg1 view:(id)arg2;
+- (void)_collapse:(_Bool)arg1 views:(id)arg2;
 - (id)_displayModeViewsToRemoveDuringAnimation;
 - (id)_audioViewsToRemoveDuringAnimation;
 - (id)_currentArrangedDisplayModeViews;
 - (id)_currentArrangedAudioModeViews;
 - (id)_preferredArrangedDisplayModeViews;
 - (id)_preferredArrangedAudioModeViews;
+- (void)_updateVolumeControlsWithSize:(struct CGSize)arg1;
+- (void)_updateTransportControlsFrame;
+- (void)_showPlaybackControlsAnimated:(_Bool)arg1;
 - (void)layoutSubviews;
+- (void)avkit_sizeWasInvalidatedNeedingLayoutIfNeeded:(id)arg1;
+- (void)avkit_reevaluateHiddenStateOfItem:(id)arg1;
 - (void)safeAreaInsetsDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setPrefersVolumeSliderExpanded:(_Bool)arg1 prefersVolumeButtonIncluded:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)showPlaybackControls:(_Bool)arg1 immediately:(_Bool)arg2;
 - (void)updateLayoutForChangedControlsVisibility;
 @property(readonly, nonatomic) _Bool hasVisibleSubview;
 - (void)animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg1 appearingViews:(id)arg2 disappearingViews:(id)arg3;

@@ -13,11 +13,12 @@
     LSApplicationProxy *_applicationProxy;
 }
 
-@property(readonly, nonatomic) LSApplicationProxy *applicationProxy; // @synthesize applicationProxy=_applicationProxy;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) LSApplicationProxy *applicationProxy; // @synthesize applicationProxy=_applicationProxy;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithApplicationProxy:(id)arg1 associatedAccessories:(id)arg2;
 - (id)initWithApplicationProxy:(id)arg1;
 - (id)init;
 

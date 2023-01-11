@@ -8,54 +8,67 @@
 
 #import <CalendarNotification/CADModule-Protocol.h>
 
-@class CALNCalendarAppBadgeUpdater, CALNInboxNotificationMonitor, CALNNotificationServer, CALNNotificationSourceRefresher, CALNNotificationStorageWrapper, NSArray, NSString;
+@class CALNCalendarAppBadgeUpdater, CALNInboxNotificationMonitor, CALNNotificationIconCache, CALNNotificationServer, CALNNotificationSourceRefresher, CALNNotificationStorageWrapper, CALNTriggeredEventNotificationSource, EKEphemeralCacheEventStoreProvider, EKEventStore, NSArray, NSString;
+@protocol CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider;
 
 @interface CALNNotificationServerModule : NSObject <CADModule>
 {
+    EKEphemeralCacheEventStoreProvider *_eventStoreProvider;
+    EKEventStore *_lastCreatedEventStore;
     CALNInboxNotificationMonitor *_inboxNotificationMonitor;
     CALNNotificationServer *_calendarNotificationServer;
     CALNNotificationSourceRefresher *_notificationSourceRefresher;
     CALNCalendarAppBadgeUpdater *_calendarAppBadgeUpdater;
     CALNNotificationStorageWrapper *_calendarStorageWrapper;
-    CALNNotificationStorageWrapper *_remindersStorageWrapper;
+    CALNTriggeredEventNotificationSource *_triggeredEventNotificationSource;
+    CALNNotificationIconCache *_iconCache;
+    id <CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider> _iconProvider;
     NSArray *_modules;
 }
 
++ (void)_migrateNotificationFilesFromDirectory:(id)arg1 toDirectory:(id)arg2;
++ (id)_filesToMigrate;
++ (void)_migrateNotificationFiles;
 + (id)_createTimeToLeaveRefreshStorageAtPath:(id)arg1;
 + (id)_timeToLeaveRefreshStoragePathWithName:(id)arg1;
 + (id)_timeToLeaveRefreshStorage;
-+ (id)_createTriggeredEventNotificationDataStorageAtPath:(id)arg1;
++ (id)_createTriggeredEventNotificationDataStorageAtPath:(id)arg1 protected:(_Bool)arg2;
 + (id)_triggeredEventNotificationDataStoragePathWithName:(id)arg1;
-+ (id)_triggeredEventNotificationDataStorage;
++ (id)_protectedTriggeredEventNotificationDataStorage;
++ (id)_unprotectedTriggeredEventNotificationDataStorage;
 + (id)_protectedCalendarNotificationStorage;
 + (id)_unprotectedCalendarNotificationStorage;
 + (void)_setProtectedClassForStorageAtPath:(id)arg1;
-+ (id)_createNotificationStorageAtPath:(id)arg1;
++ (id)_createNotificationStorageAtPath:(id)arg1 protected:(_Bool)arg2;
 + (id)_notificationStoragePathWithName:(id)arg1;
-+ (id)_createNotificationSourcesWithNotificationManager:(id)arg1 eventStoreProvider:(id)arg2 inboxNotificationProvider:(id)arg3 alarmEngineMonitor:(id)arg4 travelEngine:(id)arg5 timeToLeaveRefreshMonitor:(id)arg6 timeToLeaveRefreshStorage:(id)arg7;
-+ (id)_createNotificationServerWithUserNotificationCenter:(id)arg1 storage:(id)arg2 eventStoreProvider:(id)arg3 inboxNotificationProvider:(id)arg4 alarmEngineMonitor:(id)arg5 travelEngine:(id)arg6 timeToLeaveRefreshMonitor:(id)arg7 timeToLeaveRefreshStorage:(id)arg8;
-+ (id)_createCalendarNotificationServerWithUserNotificationCenterFactory:(id)arg1 storage:(id)arg2 eventStoreProvider:(id)arg3 inboxNotificationProvider:(id)arg4 alarmEngineMonitor:(id)arg5 travelEngine:(id)arg6 timeToLeaveRefreshMonitor:(id)arg7 timeToLeaveRefreshStorage:(id)arg8;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *modules; // @synthesize modules=_modules;
-@property(readonly, nonatomic) CALNNotificationStorageWrapper *remindersStorageWrapper; // @synthesize remindersStorageWrapper=_remindersStorageWrapper;
+@property(readonly, nonatomic) id <CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider> iconProvider; // @synthesize iconProvider=_iconProvider;
+@property(readonly, nonatomic) CALNNotificationIconCache *iconCache; // @synthesize iconCache=_iconCache;
+@property(readonly, nonatomic) CALNTriggeredEventNotificationSource *triggeredEventNotificationSource; // @synthesize triggeredEventNotificationSource=_triggeredEventNotificationSource;
 @property(readonly, nonatomic) CALNNotificationStorageWrapper *calendarStorageWrapper; // @synthesize calendarStorageWrapper=_calendarStorageWrapper;
 @property(readonly, nonatomic) CALNCalendarAppBadgeUpdater *calendarAppBadgeUpdater; // @synthesize calendarAppBadgeUpdater=_calendarAppBadgeUpdater;
 @property(readonly, nonatomic) CALNNotificationSourceRefresher *notificationSourceRefresher; // @synthesize notificationSourceRefresher=_notificationSourceRefresher;
 @property(readonly, nonatomic) CALNNotificationServer *calendarNotificationServer; // @synthesize calendarNotificationServer=_calendarNotificationServer;
 @property(readonly, nonatomic) CALNInboxNotificationMonitor *inboxNotificationMonitor; // @synthesize inboxNotificationMonitor=_inboxNotificationMonitor;
-- (void).cxx_destruct;
 - (void)_removeNotificationsFromUnprotectedStorage:(id)arg1;
 - (void)_reloadNotificationRecords:(id)arg1 forNotificationServer:(id)arg2;
+- (void)_updateSourceClientIdentifiersIfNeeded;
 - (void)protectedDataDidBecomeAvailable;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (void)didRegisterForBackgroundTaskAgentJobs;
 - (void)receivedAlarmNamed:(id)arg1;
 - (void)didRegisterForAlarms;
 - (void)_reloadNotificationsFromUnprotectedStorage:(id)arg1 intoProtectedStorage:(id)arg2 withStorageWrapper:(id)arg3 forNotificationServer:(id)arg4;
 - (void)_reloadNotificationsAfterFirstUnlock;
+- (void)_reloadTriggeredEventNotificationData;
 - (void)_registerSettingsCaptureHandlers;
+- (void)refreshEventStoreInResponseToDatabaseChangeNotification:(id)arg1;
 - (void)receivedNotificationNamed:(id)arg1;
 - (void)deactivate;
 - (void)activate;
+- (id)_createNotificationSourcesWithNotificationManager:(id)arg1 eventStoreProvider:(id)arg2 inboxNotificationProvider:(id)arg3 alarmEngineMonitor:(id)arg4 travelEngine:(id)arg5 timeToLeaveRefreshMonitor:(id)arg6 timeToLeaveRefreshStorage:(id)arg7;
+- (id)_createNotificationServerWithUserNotificationCenter:(id)arg1 storage:(id)arg2 eventStoreProvider:(id)arg3 alarmEngineMonitor:(id)arg4 travelEngine:(id)arg5 timeToLeaveRefreshMonitor:(id)arg6 timeToLeaveRefreshStorage:(id)arg7;
+- (id)_createCalendarNotificationServerWithUserNotificationCenterFactory:(id)arg1 storage:(id)arg2 eventStoreProvider:(id)arg3 alarmEngineMonitor:(id)arg4 travelEngine:(id)arg5 timeToLeaveRefreshMonitor:(id)arg6 timeToLeaveRefreshStorage:(id)arg7;
+- (void)updateIconsToNewVersionIfNeeded;
 - (id)init;
 
 // Remaining properties

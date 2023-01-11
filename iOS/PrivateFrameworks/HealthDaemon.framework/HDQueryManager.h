@@ -26,16 +26,17 @@
     id <HDQueryManagerUnitTestDelegate> _unitTest_delegate;
 }
 
+- (void).cxx_destruct;
 @property __weak id <HDQueryManagerUnitTestDelegate> unitTest_delegate; // @synthesize unitTest_delegate=_unitTest_delegate;
 @property(retain) NSObject<OS_dispatch_queue> *unitTest_delegateQueue; // @synthesize unitTest_delegateQueue=_unitTest_delegateQueue;
 @property(readonly, nonatomic) __weak HDDaemon *daemon; // @synthesize daemon=_daemon;
-- (void).cxx_destruct;
 - (void)_performAsyncWithUnitTestDelegate:(CDUnknownBlockType)arg1;
 - (void)unitTest_suspendWithCount:(unsigned long long)arg1;
 - (void)logDiagnostics;
 - (id)diagnosticDescription;
 - (void)_lock_handleClientStateChangeWithQueryCollection:(id)arg1;
 - (void)processWithBundleIdentifier:(id)arg1 didTransitionFromState:(unsigned int)arg2 toState:(unsigned int)arg3;
+- (id)_monitoringIdentifierForProcess:(id)arg1;
 - (void)_logQueryActivationWithServer:(id)arg1;
 - (id)_lock_foregroundBundleIdentifiers;
 - (id)_lock_queryCollectionForBundleIdentifier:(id)arg1 createIfNecessary:(_Bool)arg2;

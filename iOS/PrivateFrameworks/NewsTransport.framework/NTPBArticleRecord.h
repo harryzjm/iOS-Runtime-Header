@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBArticleRecord : PBCodable <NSCopying>
 {
@@ -32,6 +32,7 @@
     NSData *_articleRecirculationConfiguration;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_channelConversionStats;
     NSString *_clusterID;
     int _contentType;
     NSString *_contentURL;
@@ -41,6 +42,7 @@
     NSString *_flintDocumentURL;
     NSMutableArray *_flintFontResourceIDs;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
     NSMutableArray *_iAdSectionIDs;
@@ -48,7 +50,15 @@
     NSMutableArray *_linkedArticleIDs;
     NSMutableArray *_linkedIssueIDs;
     NSMutableArray *_moreFromPublisherArticleIDs;
+    NSString *_narrativeTrackFullURL;
+    NSString *_narrativeTrackMetadata;
+    NSString *_narrativeTrackSampleURL;
+    NSString *_narrativeTrackTextRanges;
     NSString *_parentIssueID;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
+    NSString *_personalizationVectorAltFullURL;
+    NSString *_personalizationVectorFullURL;
     NSString *_primaryAudience;
     NTPBDate *_publishDate;
     NSMutableArray *_publisherSpecifiedArticleIds;
@@ -127,6 +137,16 @@
 + (Class)iAdKeywordsType;
 + (Class)iAdCategoriesType;
 + (Class)flintFontResourceIDsType;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats; // @synthesize globalConversionStats=_globalConversionStats;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *channelConversionStats; // @synthesize channelConversionStats=_channelConversionStats;
+@property(retain, nonatomic) NSString *narrativeTrackTextRanges; // @synthesize narrativeTrackTextRanges=_narrativeTrackTextRanges;
+@property(retain, nonatomic) NSString *narrativeTrackSampleURL; // @synthesize narrativeTrackSampleURL=_narrativeTrackSampleURL;
+@property(retain, nonatomic) NSString *narrativeTrackFullURL; // @synthesize narrativeTrackFullURL=_narrativeTrackFullURL;
+@property(retain, nonatomic) NSString *narrativeTrackMetadata; // @synthesize narrativeTrackMetadata=_narrativeTrackMetadata;
+@property(retain, nonatomic) NSString *personalizationVectorAltFullURL; // @synthesize personalizationVectorAltFullURL=_personalizationVectorAltFullURL;
+@property(retain, nonatomic) NSString *personalizationVectorFullURL; // @synthesize personalizationVectorFullURL=_personalizationVectorFullURL;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt; // @synthesize personalizationVectorAlt=_personalizationVectorAlt;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector; // @synthesize personalizationVector=_personalizationVector;
 @property(nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
 @property(nonatomic) _Bool isIssueOnly; // @synthesize isIssueOnly=_isIssueOnly;
 @property(retain, nonatomic) NSMutableArray *linkedIssueIDs; // @synthesize linkedIssueIDs=_linkedIssueIDs;
@@ -206,6 +226,16 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasGlobalConversionStats;
+@property(readonly, nonatomic) _Bool hasChannelConversionStats;
+@property(readonly, nonatomic) _Bool hasNarrativeTrackTextRanges;
+@property(readonly, nonatomic) _Bool hasNarrativeTrackSampleURL;
+@property(readonly, nonatomic) _Bool hasNarrativeTrackFullURL;
+@property(readonly, nonatomic) _Bool hasNarrativeTrackMetadata;
+@property(readonly, nonatomic) _Bool hasPersonalizationVectorAltFullURL;
+@property(readonly, nonatomic) _Bool hasPersonalizationVectorFullURL;
+@property(readonly, nonatomic) _Bool hasPersonalizationVectorAlt;
+@property(readonly, nonatomic) _Bool hasPersonalizationVector;
 @property(nonatomic) _Bool hasBodyTextLength;
 @property(nonatomic) _Bool hasIsIssueOnly;
 - (id)linkedIssueIDsAtIndex:(unsigned long long)arg1;

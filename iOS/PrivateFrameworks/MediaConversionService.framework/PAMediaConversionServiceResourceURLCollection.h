@@ -13,10 +13,12 @@
     NSMutableDictionary *_urlReferencesByRole;
 }
 
++ (id)filenameSummaryStringForDictionaryRepresentation:(id)arg1;
++ (_Bool)getSignatureString:(id *)arg1 filenameSummary:(id *)arg2 forDictionaryRepresentation:(id)arg3;
 + (id)collectionForBookmarkDataDictionaryRepresentation:(id)arg1 error:(id *)arg2;
 + (id)collectionWithMainResourceURL:(id)arg1;
-@property(retain) NSMutableDictionary *urlReferencesByRole; // @synthesize urlReferencesByRole=_urlReferencesByRole;
 - (void).cxx_destruct;
+@property(retain) NSMutableDictionary *urlReferencesByRole; // @synthesize urlReferencesByRole=_urlReferencesByRole;
 - (_Bool)copyURL:(id)arg1 forRole:(id)arg2 toDirectory:(id)arg3 error:(id *)arg4;
 - (id)urlForDebugDumpWithDirectoryName:(id)arg1 inExistingParentDirectory:(id)arg2 error:(id *)arg3;
 @property(readonly) unsigned long long urlCount;

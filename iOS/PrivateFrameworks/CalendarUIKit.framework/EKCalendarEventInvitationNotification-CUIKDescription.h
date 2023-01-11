@@ -11,13 +11,15 @@
 - (id)_locationString:(unsigned long long)arg1;
 - (id)_dateString:(unsigned long long)arg1;
 - (id)_errorString:(unsigned long long)arg1;
-- (id)_attendeeReplyStringWithOptions:(unsigned long long)arg1;
+- (id)_attendeeReplyStringWithOptions:(unsigned long long)arg1 descriptions:(id)arg2;
 - (id)_attendeeString:(unsigned long long)arg1;
 - (id)_organizerString:(unsigned long long)arg1;
+- (id)_identityStringWithOptions:(unsigned long long)arg1;
 - (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
 - (id)importantDescriptionStringWithOptions:(unsigned long long)arg1;
 - (id)senderStringWithOptions:(unsigned long long)arg1;
-- (id)_allDescriptionStringsRankedByImportance:(_Bool)arg1 options:(unsigned long long)arg2;
+- (id)descriptionStrings:(unsigned long long)arg1;
+- (id)_allDescriptionStringsDictionaryWithStyle:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (_Bool)supportsDisplay;
 @end
 

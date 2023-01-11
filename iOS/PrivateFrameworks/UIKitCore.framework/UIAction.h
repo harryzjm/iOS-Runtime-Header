@@ -10,27 +10,33 @@
 
 @interface UIAction <_UIMenuLeaf>
 {
+    _Bool _requiresAuthenticatedInput;
     NSString *_discoverabilityTitle;
     NSString *_identifier;
     unsigned long long _attributes;
     long long _state;
+    id _sender;
     CDUnknownBlockType _handler;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)actionWithHandler:(CDUnknownBlockType)arg1;
 + (id)actionWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property(readonly, nonatomic) id sender; // @synthesize sender=_sender;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *discoverabilityTitle; // @synthesize discoverabilityTitle=_discoverabilityTitle;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool requiresAuthenticatedInput; // @synthesize requiresAuthenticatedInput=_requiresAuthenticatedInput;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_validatedLeafWithAlternate:(id)arg1 target:(id)arg2 validation:(id)arg3;
 - (id)_resolvedTargetFromFirstTarget:(id)arg1;
 - (void)_performWithTarget:(id)arg1;
-- (void)_performAction;
+- (void)_performActionWithSender:(id)arg1;
+- (_Bool)_isDefaultCommand;
 - (long long)_leafKeyModifierFlags;
 - (id)_leafKeyInput;
 - (id)_leafAlternates;
@@ -38,7 +44,7 @@
 - (_Bool)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
 - (_Bool)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
-- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
+- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3 deferredElementVisit:(CDUnknownBlockType)arg4;
 @property(copy, nonatomic) UIImage *image; // @dynamic image;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(readonly) unsigned long long hash;
@@ -47,6 +53,7 @@
 - (id)initWithAction:(id)arg1;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3 discoverabilityTitle:(id)arg4 attributes:(unsigned long long)arg5 state:(long long)arg6 handler:(CDUnknownBlockType)arg7;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isLeaf;
 - (id)_spiRepresentation;
 
 // Remaining properties

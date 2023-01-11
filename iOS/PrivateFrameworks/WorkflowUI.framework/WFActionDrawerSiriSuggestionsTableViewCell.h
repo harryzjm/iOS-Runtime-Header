@@ -8,17 +8,16 @@
 
 #import <WorkflowUI/WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate-Protocol.h>
 
-@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIImageView, UILabel, UIViewController, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager;
-@protocol WFActionDrawerSiriSuggestionsTableViewCellDelegate;
+@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIViewController, WFActionDrawerCoordinator, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager, WFModuleTitleView;
+@protocol WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate;
 
 @interface WFActionDrawerSiriSuggestionsTableViewCell : UITableViewCell <WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate>
 {
-    _Bool _configuredForDailyRoutines;
     WFActionDrawerSection *_section;
-    id <WFActionDrawerSiriSuggestionsTableViewCellDelegate> _delegate;
-    UIViewController *_containingViewController;
-    UIImageView *_iconImageView;
-    UILabel *_titleLabel;
+    WFActionDrawerCoordinator *_coordinator;
+    UIViewController *_viewController;
+    id <WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate> _dailyRoutineDelegate;
+    WFModuleTitleView *_titleView;
     UIButton *_infoButton;
     UICollectionView *_donationsCollectionView;
     INIntent *_intent;
@@ -27,25 +26,27 @@
     NSLayoutConstraint *_collectionViewHeightConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *collectionViewHeightConstraint; // @synthesize collectionViewHeightConstraint=_collectionViewHeightConstraint;
 @property(retain, nonatomic) WFActionDrawerSiriSuggestionsCollectionViewManager *donationsCollectionViewManager; // @synthesize donationsCollectionViewManager=_donationsCollectionViewManager;
 @property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property(retain, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 @property(nonatomic) __weak UICollectionView *donationsCollectionView; // @synthesize donationsCollectionView=_donationsCollectionView;
 @property(nonatomic) __weak UIButton *infoButton; // @synthesize infoButton=_infoButton;
-@property(nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) __weak UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
-@property(nonatomic) _Bool configuredForDailyRoutines; // @synthesize configuredForDailyRoutines=_configuredForDailyRoutines;
-@property(nonatomic) __weak UIViewController *containingViewController; // @synthesize containingViewController=_containingViewController;
-@property(nonatomic) __weak id <WFActionDrawerSiriSuggestionsTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) WFActionDrawerSection *section; // @synthesize section=_section;
-- (void).cxx_destruct;
+@property(nonatomic) __weak WFModuleTitleView *titleView; // @synthesize titleView=_titleView;
+@property(nonatomic) __weak id <WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate> dailyRoutineDelegate; // @synthesize dailyRoutineDelegate=_dailyRoutineDelegate;
+@property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
+@property(nonatomic) __weak WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
+@property(readonly, nonatomic) WFActionDrawerSection *section; // @synthesize section=_section;
 - (void)infoButtonPressed;
 - (void)siriSuggestionsCollectionViewManager:(id)arg1 showViewController:(id)arg2;
 - (void)siriSuggestionsCollectionViewManager:(id)arg1 didSelectAction:(id)arg2;
-- (void)configureLoading;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)configureWithActionDrawerSection:(id)arg1;
+- (void)configureLoading;
+- (void)configureWithActionDrawerSection:(id)arg1 dailyRoutineDelegate:(id)arg2 viewController:(id)arg3;
+- (void)configureWithActionDrawerSection:(id)arg1 coordinator:(id)arg2 viewController:(id)arg3;
+- (void)configureForDailyRoutines:(_Bool)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

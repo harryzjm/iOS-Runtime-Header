@@ -20,7 +20,6 @@
 - (id)coreUIOptions;
 - (void)_initializeCoreUIOptions:(id)arg1;
 - (id)_rendererInitializationDictionary;
-- (id)initWithCoreUIOptions:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
 - (id)initWithCoreUIOptions:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 
 @end

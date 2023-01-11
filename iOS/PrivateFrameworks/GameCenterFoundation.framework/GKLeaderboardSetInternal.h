@@ -16,14 +16,14 @@
 }
 
 + (id)secureCodedPropertyKeys;
-@property(retain, nonatomic) NSDictionary *leaderboardIdentifiers; // @synthesize leaderboardIdentifiers=_leaderboardIdentifiers;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *icons; // @synthesize icons=_icons;
+@property(retain, nonatomic) NSDictionary *leaderboardIdentifiers; // @synthesize leaderboardIdentifiers=_leaderboardIdentifiers;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 @property(retain, nonatomic) NSString *setIdentifier;
 
 @end

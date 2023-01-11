@@ -15,7 +15,10 @@
     _Bool _shouldAccept;
     _Bool _shouldInsertSpaceAfterSelection;
     unsigned int _usageTrackingMask;
+    unsigned int _sourceMask;
     int _confidence;
+    int _dynamicUsageCount;
+    int _dynamicPenaltyCount;
     unsigned long long _wordOriginFeedbackID;
     TIProactiveTrigger *_proactiveTrigger;
     NSString *_responseKitCategory;
@@ -24,10 +27,19 @@
     double _excessPathRatio;
     _ICPredictedItem *_proactivePredictedItem;
     NSString *_label;
+    double _geometryScore;
+    double _wordScore;
+    NSString *_lexiconLocale;
 }
 
 + (int)type;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) int dynamicPenaltyCount; // @synthesize dynamicPenaltyCount=_dynamicPenaltyCount;
+@property(nonatomic) int dynamicUsageCount; // @synthesize dynamicUsageCount=_dynamicUsageCount;
+@property(nonatomic) NSString *lexiconLocale; // @synthesize lexiconLocale=_lexiconLocale;
+@property(nonatomic) double wordScore; // @synthesize wordScore=_wordScore;
+@property(nonatomic) double geometryScore; // @synthesize geometryScore=_geometryScore;
 @property(nonatomic, getter=confidence) int confidence; // @synthesize confidence=_confidence;
 @property(nonatomic, getter=shouldInsertSpaceAfterSelection) _Bool shouldInsertSpaceAfterSelection; // @synthesize shouldInsertSpaceAfterSelection=_shouldInsertSpaceAfterSelection;
 @property(nonatomic, getter=shouldAccept) _Bool shouldAccept; // @synthesize shouldAccept=_shouldAccept;
@@ -41,10 +53,11 @@
 - (_Bool)isSecureContentCandidate;
 @property(nonatomic) _Bool isFromTextChecker; // @synthesize isFromTextChecker=_isFromTextChecker;
 @property(nonatomic) _Bool isFromPhraseDictionary; // @synthesize isFromPhraseDictionary=_isFromPhraseDictionary;
+- (unsigned int)sourceMask;
 - (unsigned int)usageTrackingMask;
-- (void).cxx_destruct;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)candidateByReplacingWithCandidate:(id)arg1 input:(id)arg2 label:(id)arg3;
@@ -52,9 +65,9 @@
 - (_Bool)isAutocorrection;
 - (unsigned long long)wordOriginFeedbackID;
 - (id)initWithCandidate:(id)arg1 responseKitCategory:(id)arg2;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(_Bool)arg5 proactiveTrigger:(id)arg6 proactivePredictedItem:(id)arg7;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(_Bool)arg5 proactiveTrigger:(id)arg6 proactivePredictedItem:(id)arg7 responseKitCategory:(id)arg8;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 sourceMask:(unsigned int)arg5 secureContentCandidate:(_Bool)arg6 proactiveTrigger:(id)arg7 proactivePredictedItem:(id)arg8;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 sourceMask:(unsigned int)arg5 secureContentCandidate:(_Bool)arg6 proactiveTrigger:(id)arg7 proactivePredictedItem:(id)arg8 responseKitCategory:(id)arg9;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 sourceMask:(unsigned int)arg5;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 

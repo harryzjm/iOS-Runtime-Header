@@ -11,7 +11,7 @@
 
 @protocol NTTodayProtoitem <NFCopying>
 @property(readonly, copy, nonatomic) NSString *identifier;
-- (id <NTTodayItem>)itemWithContentContext:(id <FCContentContext>)arg1 operationInfo:(id <NTTodayResultOperationInfoProviding>)arg2 sectionDescriptor:(id <NTSectionDescriptor>)arg3 todayData:(id <FCTodayPrivateData>)arg4 assetFileURLsByRemoteURL:(NSMutableDictionary *)arg5 forLeadingCellAppearance:(_Bool)arg6 preferredDynamicSlotAllocation:(unsigned long long)arg7;
-- (NSArray *)assetHandlesWithOperationInfo:(id <NTTodayResultOperationInfoProviding>)arg1 forLeadingCellAppearance:(_Bool)arg2;
+- (id <NTTodayItem>)itemWithContentContext:(id <FCContentContext>)arg1 operationInfo:(id <NTTodayResultOperationInfoProviding>)arg2 sectionDescriptor:(id <NTSectionDescriptor>)arg3 todayData:(id <FCTodayPrivateData>)arg4 assetFileURLsByRemoteURL:(NSMutableDictionary *)arg5 preferredDynamicSlotAllocation:(unsigned long long)arg6;
+- (NSArray *)assetHandlesWithOperationInfo:(id <NTTodayResultOperationInfoProviding>)arg1;
 @end
 

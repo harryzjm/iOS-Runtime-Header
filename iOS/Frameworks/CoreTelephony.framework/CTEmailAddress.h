@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)emailAddress:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) NSString *address; // @synthesize address=_address;
 - (id)canonicalFormat;
 - (id)encodedString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithAddress:(id)arg1;
 
 @end

@@ -77,13 +77,9 @@
 - (_Bool)distillLocalizationss;
 - (_Bool)distillThemeAppearances;
 - (_Bool)distillRenditions;
-- (_Bool)_recordRenditionEntryFromRendition:(id)arg1;
 - (id)_productionForRenditionSpec:(id)arg1;
-- (_Bool)sortAndStoreRenditions;
-- (_Bool)_storeRenditions;
 - (unsigned long long)_removeRenditionsWithKeySpecs:(id)arg1;
-- (_Bool)_sortRenditionEntries;
-- (void)setAsset:(id)arg1 withKey:(const struct _renditionkeytoken *)arg2 fromRenditionSpec:(id)arg3;
+- (_Bool)setAsset:(id)arg1 withKey:(const struct _renditionkeytoken *)arg2 fromRenditionSpec:(id)arg3;
 - (id)_renditionsFromProductions:(id)arg1 error:(id *)arg2;
 - (id)_renditionsWithError:(id *)arg1;
 - (id)_textureFaceExclusionPredicate;

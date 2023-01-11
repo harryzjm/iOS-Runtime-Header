@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MTLDebugCommandBuffer;
 @protocol MTLComputePipelineState;
 
 @interface MTLDebugComputeCommandEncoder
@@ -13,7 +14,7 @@
     CDStruct_0f4bf8df _samplers[16];
     CDStruct_0f4bf8df _threadgroupMemoryLengths[31];
     CDStruct_da2e99ad _imageBlockSize;
-    const CDStruct_886a8514 *_limits;
+    MTLDebugCommandBuffer *_commandBuffer;
     _Bool canDealloc;
     _Bool canEndEncoding;
     _Bool canSetComputePipelineState;
@@ -22,13 +23,21 @@
     _Bool hasSetStageInRegion;
     CDStruct_1e3be3a8 stageInRegion;
     _Bool hasIndirectSetStageInRegion;
+    _Bool allowsNullBufferBinds;
     struct deque<id, std::__1::allocator<id>> updatedFences;
     id <MTLComputePipelineState> _computePipelineState;
 }
 
-@property(readonly, nonatomic) id <MTLComputePipelineState> computePipelineState; // @synthesize computePipelineState=_computePipelineState;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <MTLComputePipelineState> computePipelineState; // @synthesize computePipelineState=_computePipelineState;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)enableNullBufferBinds:(_Bool)arg1;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
@@ -42,7 +51,6 @@
 - (void)enumerateTexturesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateBuffersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)filterCounterRangeWithFirstBatch:(unsigned int)arg1 lastBatch:(unsigned int)arg2 filterIndex:(unsigned int)arg3;
-- (void)_resourceTrackingRecordDispatchAccesses;
 - (void)endEncoding;
 - (void)waitForFence:(id)arg1;
 - (void)updateFence:(id)arg1;

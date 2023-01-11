@@ -8,12 +8,13 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, PKColor, PKDiscoveryMedia;
+@class NSArray, NSDictionary, NSSet, NSString, PKColor, PKDiscoveryMedia;
 
 @interface PKDiscoveryCallToAction : NSObject <NSSecureCoding>
 {
+    NSArray *_paymentNetworks;
     NSSet *_allowedFeatureIdentifiers;
-    NSString *_transitNetworkIdentifier;
+    NSSet *_transitNetworkIdentifiers;
     NSString *_referrerIdentifier;
     _Bool _foregroundContentModeIsSet;
     _Bool _roundIcon;
@@ -31,6 +32,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *localizedButtonText; // @synthesize localizedButtonText=_localizedButtonText;
 @property(retain, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property(retain, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
@@ -43,14 +45,16 @@
 @property(readonly, nonatomic) NSString *buttonTextKey; // @synthesize buttonTextKey=_buttonTextKey;
 @property(readonly, nonatomic) NSString *subtitleKey; // @synthesize subtitleKey=_subtitleKey;
 @property(readonly, nonatomic) NSString *titleKey; // @synthesize titleKey=_titleKey;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *transitNetworkIdentifier;
-@property(readonly, nonatomic) NSSet *allowedFeatureIdentifiers;
-@property(readonly, nonatomic) long long paymentSetupMode;
-@property(readonly, nonatomic) NSString *referrerIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) NSSet *transitNetworkIdentifiers;
+@property(readonly, nonatomic) NSSet *allowedFeatureIdentifiers;
+@property(readonly, nonatomic) NSArray *paymentNetworks;
+@property(readonly, nonatomic) long long paymentSetupMode;
+@property(readonly, nonatomic) NSString *referrerIdentifier;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)localizeWithBundle:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

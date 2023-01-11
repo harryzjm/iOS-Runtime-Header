@@ -14,31 +14,30 @@
 
 @interface REElement : NSObject <REAutomaticExportedInterface, NSCopying, NSCoding>
 {
-    NSString *_bundleIdentifier;
     NSString *_identifier;
     unsigned long long _privacyBehavior;
     REContent *_content;
     REContent *_idealizedContent;
     NSArray *_relevanceProviders;
     REElementAction *_action;
+    NSString *_bundleIdentifier;
 }
 
 + (id)_supportedDictionaryEncodingKeys;
+- (void).cxx_destruct;
+@property(retain) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) REElementAction *action; // @synthesize action=_action;
 @property(readonly, nonatomic) NSArray *relevanceProviders; // @synthesize relevanceProviders=_relevanceProviders;
 @property(readonly, nonatomic) REContent *idealizedContent; // @synthesize idealizedContent=_idealizedContent;
 @property(readonly, nonatomic) REContent *content; // @synthesize content=_content;
 @property(readonly, nonatomic) unsigned long long privacyBehavior; // @synthesize privacyBehavior=_privacyBehavior;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)_relevanceProvidersEqualToElement:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
 - (void)_updateIdentifier:(id)arg1;
 - (_Bool)isNoContentElement;
-- (void)setBundleIdentifier:(id)arg1;
-- (id)bundleIdentifier;
 - (id)shallowCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

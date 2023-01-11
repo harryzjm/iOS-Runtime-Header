@@ -6,9 +6,11 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
+@class NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentWebServiceContext, PKRemoteRegistrationRequest;
 
 @protocol PDPeerPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)sendAppleCashCapabilitiesRequestForHandle:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (void)remoteRegistrationRequest:(PKRemoteRegistrationRequest *)arg1 forHandle:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)checkTLKsMissingWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(void (^)(_Bool, NSError *))arg1;
@@ -26,15 +28,19 @@
 - (void)presentIdentityVerificationFlowWithResponseData:(NSData *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)registrationStatusWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)unregisterDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)registerDeviceWithRegistrationURL:(NSURL *)arg1 pushToken:(NSString *)arg2 forceReregister:(_Bool)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)registerDeviceWithForceReregister:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)registerDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)setPreferences:(PKPeerPaymentPreferences *)arg1 completion:(void (^)(PKPeerPaymentPreferences *, NSError *))arg2;
+- (void)deletePreferencesWithCompletion:(void (^)(void))arg1;
+- (void)updatePreferencesWithCompletion:(void (^)(PKPeerPaymentPreferences *))arg1;
+- (void)preferencesWithCompletion:(void (^)(PKPeerPaymentPreferences *))arg1;
 - (void)deleteAccountWithCompletion:(void (^)(void))arg1;
+- (void)updateAccountAndAssociatedAccountsWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
+- (void)updateAssociatedAccountsWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (void)updateAccountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (void)accountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (void)setSharedPeerPaymentWebServiceContext:(PKPeerPaymentWebServiceContext *)arg1 handler:(void (^)(void))arg2;
 - (void)sharedPeerPaymentWebServiceContextWithHandler:(void (^)(PKPeerPaymentWebServiceContext *))arg1;
-
-@optional
-- (void)initalizeCloudStoreIfNecessaryWithCompletion:(void (^)(_Bool))arg1;
 @end
 

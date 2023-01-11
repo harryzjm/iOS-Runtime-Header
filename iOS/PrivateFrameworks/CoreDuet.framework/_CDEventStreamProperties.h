@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL, _DKObjectType;
+@class NSNumber, NSString, NSURL, _DKObjectType;
 
 @interface _CDEventStreamProperties : NSObject
 {
@@ -17,6 +17,7 @@
     _Bool isHistorical;
     _Bool shouldSaveCurrentEventOnShutdown;
     NSString *name;
+    NSString *formattedName;
     NSString *knowledgeBaseName;
     NSString *knowledgeBaseMetadataClass;
     NSString *descriptionString;
@@ -30,10 +31,21 @@
     double period;
     long long eventsPerPeriod;
     long long pollingPeriod;
+    NSObject *_dataCollectionObject;
+    NSNumber *_dataCollectionEnabledNum;
+    NSObject *_platformObject;
+    NSNumber *_isAvailableNum;
+    NSNumber *_domainAvailabilityNum;
 }
 
 + (id)eventStreamPropertiesFromDictionary:(id)arg1 defaultProperties:(id)arg2;
 + (id)eventStreamPropertiesFromDictionary:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *domainAvailabilityNum; // @synthesize domainAvailabilityNum=_domainAvailabilityNum;
+@property(readonly, nonatomic) NSNumber *isAvailableNum; // @synthesize isAvailableNum=_isAvailableNum;
+@property(readonly, nonatomic) NSObject *platformObject; // @synthesize platformObject=_platformObject;
+@property(readonly, nonatomic) NSNumber *dataCollectionEnabledNum; // @synthesize dataCollectionEnabledNum=_dataCollectionEnabledNum;
+@property(readonly, nonatomic) NSObject *dataCollectionObject; // @synthesize dataCollectionObject=_dataCollectionObject;
 @property(readonly, nonatomic) long long pollingPeriod; // @synthesize pollingPeriod;
 @property(readonly, nonatomic) _Bool shouldSaveCurrentEventOnShutdown; // @synthesize shouldSaveCurrentEventOnShutdown;
 @property(readonly, nonatomic) _Bool isHistorical; // @synthesize isHistorical;
@@ -47,15 +59,15 @@
 @property(readonly, nonatomic) _DKObjectType *valueType; // @synthesize valueType;
 @property(readonly, nonatomic) NSURL *contentProviderBundleURL; // @synthesize contentProviderBundleURL;
 @property(readonly, nonatomic) NSString *monitorClass; // @synthesize monitorClass;
-@property(readonly, nonatomic) _Bool dataCollectionEnabled; // @synthesize dataCollectionEnabled;
-@property(readonly, nonatomic) unsigned long long domainAvailability; // @synthesize domainAvailability;
-@property(readonly, nonatomic) _Bool isAvailable; // @synthesize isAvailable;
 @property(readonly, nonatomic) NSString *descriptionString; // @synthesize descriptionString;
 @property(readonly, nonatomic) NSString *knowledgeBaseMetadataClass; // @synthesize knowledgeBaseMetadataClass;
 @property(readonly, nonatomic) NSString *knowledgeBaseName; // @synthesize knowledgeBaseName;
+@property(readonly, nonatomic) NSString *formattedName; // @synthesize formattedName;
 @property(readonly, nonatomic) NSString *name; // @synthesize name;
-- (void).cxx_destruct;
 - (id)initFromDictionary:(id)arg1 defaultProperties:(id)arg2;
+@property(readonly, nonatomic) _Bool dataCollectionEnabled; // @synthesize dataCollectionEnabled;
+@property(readonly, nonatomic) unsigned long long domainAvailability; // @synthesize domainAvailability;
+@property(readonly, nonatomic) _Bool isAvailable; // @synthesize isAvailable;
 - (id)description;
 
 @end

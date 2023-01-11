@@ -11,8 +11,8 @@
 @protocol SFContactImage <SFImage>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSString *appIconBadgeBundleIdentifier;
 @property(nonatomic) _Bool threeDTouchEnabled;
 @property(copy, nonatomic) NSArray *contactIdentifiers;
-@property(copy, nonatomic) NSString *contactIdentifier;
 @end
 

@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)queryStringForMountPoint:(id)arg1;
+- (id)name;
 
 @end
 

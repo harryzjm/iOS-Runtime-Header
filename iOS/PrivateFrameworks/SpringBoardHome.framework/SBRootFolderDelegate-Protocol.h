@@ -6,10 +6,14 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBIcon, SBRootFolder;
+@class SBFolder, SBIcon, SBIconListModel, SBRootFolder;
 
 @protocol SBRootFolderDelegate <NSObject>
+- (_Bool)rootFolder:(SBRootFolder *)arg1 canAddIcon:(SBIcon *)arg2 toIconList:(SBIconListModel *)arg3 inFolder:(SBFolder *)arg4;
 - (_Bool)rootFolder:(SBRootFolder *)arg1 canBounceIcon:(SBIcon *)arg2;
 - (_Bool)rootFolder:(SBRootFolder *)arg1 shouldAllowBadgingForIcon:(SBIcon *)arg2;
+
+@optional
+- (void)rootFolder:(SBRootFolder *)arg1 wantsToDoPageHidingEducationWithCompletion:(void (^)(_Bool))arg2;
 @end
 

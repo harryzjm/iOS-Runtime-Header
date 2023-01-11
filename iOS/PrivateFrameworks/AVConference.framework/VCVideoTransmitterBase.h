@@ -42,6 +42,9 @@ __attribute__((visibility("hidden")))
 @property unsigned int lastRTPTimestamp; // @synthesize lastRTPTimestamp=_timestamp;
 @property CDStruct_1b6d18a9 lastFrameTime; // @synthesize lastFrameTime=_latestSampleBufferTimestamp;
 - (void)handleActiveConnectionChange:(id)arg1;
+- (_Bool)setEncodingMode:(int)arg1;
+- (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
+- (void)setFECRedundancyVector:(const CDStruct_cd7ddd1c *)arg1;
 - (void)setFECRatio:(double)arg1;
 - (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
 - (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
@@ -50,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)generateKeyFrame;
 - (void)stopVideo;
 - (void)startVideo;
-- (_Bool)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (_Bool)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;
 

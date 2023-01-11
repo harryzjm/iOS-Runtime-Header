@@ -14,9 +14,9 @@
     NSURL *_historyTokenURL;
 }
 
++ (id)_objectEnumeratorForJournal:(id)arg1 usingManagedObjectContext:(id)arg2 error:(id *)arg3;
++ (_Bool)appendSnapshotWithJournal:(id)arg1 usingManagedObjectContext:(id)arg2 changedKeys:(id)arg3 error:(id *)arg4;
 + (_Bool)createSnapshotWithJournal:(id)arg1 usingManagedObjectContext:(id)arg2 error:(id *)arg3;
-+ (id)populateRelationshipKeyPathsForPrefetching:(id)arg1 forPayloadClass:(Class)arg2;
-+ (id)_populateRelationshipKeyPathsForPrefetching:(id)arg1 currentKeyPath:(id)arg2 usingModelProperties:(id)arg3;
 + (void)validatePayloadClassesForManagedObjectModel:(id)arg1;
 + (id)payloadClasses;
 - (void).cxx_destruct;

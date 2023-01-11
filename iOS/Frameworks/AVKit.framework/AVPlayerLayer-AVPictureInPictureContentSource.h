@@ -16,6 +16,9 @@
 @property(readonly, nonatomic) struct CGRect avkit_videoRectInWindow;
 @property(readonly, nonatomic) UIWindow *avkit_window;
 @property(readonly, nonatomic) _Bool avkit_isVisible;
+- (void)avkit_willBeginStoppingPictureInPictureForPictureInPictureViewController:(id)arg1;
+- (void)avkit_endReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
+- (void)avkit_beginReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
 - (void)avkit_stopRoutingVideoToPictureInPictureViewController:(id)arg1;
 - (void)avkit_startRoutingVideoToPictureInPictureViewController:(id)arg1;
 - (id)avkit_makePlayerControllerIfNeeded:(id)arg1;

@@ -24,6 +24,7 @@
     HKQuantitySeriesSampleEditor *_editor;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasSubsamplesToRemove; // @synthesize hasSubsamplesToRemove=_hasSubsamplesToRemove;
 @property(retain, nonatomic) HKQuantitySeriesSampleEditor *editor; // @synthesize editor=_editor;
 @property(retain, nonatomic) NSMutableArray *quantities; // @synthesize quantities=_quantities;
@@ -32,7 +33,6 @@
 @property(retain, nonatomic) id <HKQuantitySeriesDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property(retain, nonatomic) HKDisplayTypeController *displayTypeController; // @synthesize displayTypeController=_displayTypeController;
-- (void).cxx_destruct;
 - (void)commitDeletionsIfNeeded;
 - (void)deleteQuantity:(id)arg1;
 - (void)queryForSubsamples:(CDUnknownBlockType)arg1;
@@ -41,7 +41,6 @@
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)textForQuantity:(id)arg1;
 - (id)initWithSample:(id)arg1 healthStore:(id)arg2;

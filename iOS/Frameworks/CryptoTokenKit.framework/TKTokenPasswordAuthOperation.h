@@ -9,11 +9,15 @@
 @interface TKTokenPasswordAuthOperation
 {
     NSString *_password;
+    NSString *_localizedPasswordLabel;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy) NSString *password; // @synthesize password=_password;
 - (void).cxx_destruct;
+@property(copy) NSString *localizedPasswordLabel; // @synthesize localizedPasswordLabel=_localizedPasswordLabel;
+@property(copy) NSString *password; // @synthesize password=_password;
+- (void)importOperation:(id)arg1;
+- (Class)baseClassForUI;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

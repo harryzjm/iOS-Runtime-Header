@@ -13,9 +13,18 @@
     CDStruct_c3b9c2ee *_points;
     unsigned long long _pointCount;
     CDStruct_02837cd9 _boundingRect;
+    struct GEOOnce_s _calculatedMapPointsLength;
+    double _mapPointsLength;
+    struct GEOOnce_s _calculatedSelfIntersecting;
+    _Bool _selfIntersecting;
 }
 
 @property(readonly, nonatomic) unsigned long long pointCount; // @synthesize pointCount=_pointCount;
+- (id)locationsAtPointIndexes:(id)arg1;
+- (double)locationAtPointIndex:(unsigned long long)arg1;
+- (_Bool)_determineSelfIntersecting;
+- (_Bool)_isSelfIntersecting;
+- (double)_mapPointsLength;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)intersectsMapRect:(CDStruct_02837cd9)arg1;

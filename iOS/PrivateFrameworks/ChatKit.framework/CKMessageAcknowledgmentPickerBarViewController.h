@@ -17,13 +17,14 @@
     CKMessagePartChatItem *_chatItem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKMessagePartChatItem *chatItem; // @synthesize chatItem=_chatItem;
 @property(nonatomic) __weak id <CKMessageAcknowledgmentPickerBarDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)performCancelAnimation:(CDUnknownBlockType)arg1;
 - (void)performSendAnimation:(CDUnknownBlockType)arg1;
 - (void)performShowAnimation:(CDUnknownBlockType)arg1;
 - (struct CGRect)calculateFrameRelativeToSiblingViewFrame:(struct CGRect)arg1 withinBounds:(struct CGRect)arg2;
+- (void)adjustTailRelativeSiblingViewFrame:(struct CGRect)arg1 pickerFrame:(struct CGRect)arg2;
 - (void)adjustTailRelativeSiblingViewFrame:(struct CGRect)arg1;
 - (void)pickerBarItemViewSelectionDidChange:(id)arg1;
 - (void)loadView;

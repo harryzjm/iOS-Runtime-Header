@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 @class BSServiceDomainSpecification, BSXPCServiceConnectionListener, NSDictionary, NSMutableArray, NSString;
-@protocol OS_xpc_object;
 
 @interface BSServiceDomain : NSObject
 {
@@ -20,13 +19,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_disableLaunchWhitelist;
-- (id)registerListener:(id)arg1;
-@property(readonly, nonatomic) NSString *listenerEndpointDescription;
-@property(readonly, nonatomic) _Bool listenerEndpointIsNonLaunching;
-@property(readonly, nonatomic) NSObject<OS_xpc_object> *listenerEndpoint;
-@property(readonly, copy, nonatomic) NSString *identifier;
-- (id)_initWithSpecification:(id)arg1;
 - (id)init;
 
 @end

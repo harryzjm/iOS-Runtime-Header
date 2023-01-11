@@ -7,6 +7,9 @@
 #import <SearchUI/NSObject-Protocol.h>
 
 @protocol TLKDescriptionViewDelegate <NSObject>
+
+@optional
+- (void)didPressTrailingFootnoteButton;
 - (void)didPressFootnoteButton;
 - (void)didPressMoreButton;
 @end

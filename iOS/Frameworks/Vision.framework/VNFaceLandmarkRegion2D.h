@@ -9,19 +9,21 @@
 @interface VNFaceLandmarkRegion2D
 {
     NSMutableDictionary *_sizedPointsCache;
+    struct os_unfair_lock_s _pointsCalculatorLock;
     MISSING_TYPE **_points;
     NSArray *_precisionEstimatesPerPoint;
     NSArray *_occlusionFlagsPerPoint;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly) NSArray *occlusionFlagsPerPoint; // @synthesize occlusionFlagsPerPoint=_occlusionFlagsPerPoint;
 @property(readonly) NSArray *precisionEstimatesPerPoint; // @synthesize precisionEstimatesPerPoint=_precisionEstimatesPerPoint;
 @property(readonly) const MISSING_TYPE **points; // @synthesize points=_points;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
+- (void)_initLocks;
 - (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2 points:(MISSING_TYPE **)arg3 pointCount:(unsigned long long)arg4 precisionEstimatesPerPoint:(id)arg5 occlusionFlagsPerPoint:(id)arg6;
 - (const struct CGPoint *)pointsInImageOfSize:(struct CGSize)arg1;
 @property(readonly) const struct CGPoint *normalizedPoints;

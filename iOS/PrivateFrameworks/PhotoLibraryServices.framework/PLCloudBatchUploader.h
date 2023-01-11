@@ -18,24 +18,27 @@
     _Bool _shouldGenerateDerivatives;
     NSMutableDictionary *_recordsToDelete;
     NSString *_recordsToDeletePlistPath;
+    NSMutableSet *_momentSharesNeedingForceSync;
 }
 
+- (void).cxx_destruct;
 @property _Bool shouldGenerateDerivatives; // @synthesize shouldGenerateDerivatives=_shouldGenerateDerivatives;
 @property _Bool initialUpload; // @synthesize initialUpload=_initialUpload;
-- (void).cxx_destruct;
+- (void)processMomentSharesNeedingForceSync;
+- (void)recordMomentSharesNeedingForceSync:(id)arg1;
 - (id)processCommitError:(id)arg1 andFinalizeError:(id)arg2 forUploadBatchContainer:(id)arg3 withUploadTracker:(id)arg4;
 - (void)_clearSuccessfullyPushedDeletedRecords:(id)arg1;
 - (_Bool)_updateDeletionRecordListForKey:(id)arg1 removingRecordID:(id)arg2;
 - (_Bool)_processRepushAlbumError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processGenerateDerivativesCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
-- (void)tryToFixCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)tryToFixCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3 uploadTracker:(id)arg4;
 - (void)_addLocalResourcesToRecord:(id)arg1;
 - (void)_processInvalidExpungeableResourceTypesCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processInvalidResourceCopySourceCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processInvalidScopeCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
-- (void)_processQuarantineRecordsCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
-- (void)_quarantineObject:(id)arg1;
-- (void)quarantineRecord:(id)arg1;
+- (void)_processQuarantineRecordsCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3 uploadTracker:(id)arg4;
+- (void)_quarantineObject:(id)arg1 uploadTracker:(id)arg2;
+- (void)quarantineRecord:(id)arg1 uploadTracker:(id)arg2;
 - (void)_processIncludeMasterCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processChangeToFullRecordCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (id)_getLocalRecordFromCPLRecord:(id)arg1;
@@ -58,9 +61,10 @@
 - (void)_addAsset:(id)arg1 toAssetChanges:(id)arg2 isInsert:(_Bool)arg3 seenAssetUuid:(id)arg4;
 - (id)_syncDescriptionForObject:(id)arg1;
 - (void)_promptToFileRadarWithTitle:(id)arg1 description:(id)arg2;
-- (_Bool)_validate:(id)arg1 onRelatedObject:(id)arg2;
+- (_Bool)_validateAsset:(id)arg1 onRelatedObject:(id)arg2;
+- (_Bool)_validateAdditionalAssetAttributes:(id)arg1 onRelatedObject:(id)arg2;
 - (void)_sortData:(id)arg1 isInsert:(_Bool)arg2 forUploadChanges:(id)arg3 shouldTriggerPrefetch:(_Bool *)arg4 inManagedObjectContext:(id)arg5;
-- (void)_sortRelationshipData:(id)arg1 forRelationshipUpdate:(id)arg2 inManagedObjectContext:(id)arg3;
+- (void)_sortRelationshipData:(id)arg1 forUploadChanges:(id)arg2 inManagedObjectContext:(id)arg3;
 - (void)recordDeletions:(id)arg1;
 - (void)_pushBatches:(id)arg1;
 - (void)_push:(id)arg1;

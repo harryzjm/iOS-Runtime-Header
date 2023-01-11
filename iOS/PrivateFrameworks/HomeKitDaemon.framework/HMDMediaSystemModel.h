@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)modelWithMessage:(id)arg1 home:(id)arg2 changetype:(unsigned long long)arg3 outError:(id *)arg4;
 + (id)properties;
 + (id)schemaHashRoot;
 - (id)dependentUUIDs;

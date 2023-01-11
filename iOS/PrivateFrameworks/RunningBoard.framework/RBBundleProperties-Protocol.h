@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSString, NSURL;
 
 @protocol RBBundleProperties <RBSProcessBundleDataSource>
+@property(readonly, nonatomic) int platform;
 @property(readonly, nonatomic) _Bool isExtension;
 @property(readonly, nonatomic) _Bool hasPreferredJetsamBand;
 @property(readonly, nonatomic) int preferredJetsamBand;

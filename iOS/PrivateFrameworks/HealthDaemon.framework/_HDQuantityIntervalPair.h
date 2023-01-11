@@ -6,15 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSUUID;
+
+__attribute__((visibility("hidden")))
 @interface _HDQuantityIntervalPair : NSObject
 {
     double _startInterval;
     double _endInterval;
+    NSUUID *_uuid;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly, nonatomic) double endInterval; // @synthesize endInterval=_endInterval;
 @property(readonly, nonatomic) double startInterval; // @synthesize startInterval=_startInterval;
-- (id)initWithStartInterval:(double)arg1 endInterval:(double)arg2;
+- (id)initWithStartInterval:(double)arg1 endInterval:(double)arg2 uuid:(id)arg3;
 
 @end
 

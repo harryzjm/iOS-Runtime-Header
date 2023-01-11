@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class QLThumbnailGenerationRequest, SFSearchResult;
 
 @interface SearchUIQuickLookThumbnailImage
 {
-    NSURL *_url;
+    _Bool _isCompact;
+    SFSearchResult *_result;
+    QLThumbnailGenerationRequest *_request;
 }
 
-+ (id)quickLookThumbnailQueue;
-@property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 - (void).cxx_destruct;
+@property _Bool isCompact; // @synthesize isCompact=_isCompact;
+@property __weak QLThumbnailGenerationRequest *request; // @synthesize request=_request;
+@property(retain, nonatomic) SFSearchResult *result; // @synthesize result=_result;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (Class)classForCoder;
-- (id)initWithURL:(id)arg1;
+- (id)url;
+- (void)dealloc;
+- (id)initWithResult:(id)arg1 isCompact:(_Bool)arg2;
 
 @end
 

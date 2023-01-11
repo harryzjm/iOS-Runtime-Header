@@ -15,10 +15,12 @@
     _Bool _debugBlurredCells;
     _Bool _showContactSuggestions;
     _Bool _showMaybeContact;
+    _Bool _enableBlocking;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool enableBlocking; // @synthesize enableBlocking=_enableBlocking;
 @property(nonatomic, getter=shouldShowMaybeContact) _Bool showMaybeContact; // @synthesize showMaybeContact=_showMaybeContact;
 @property(nonatomic, getter=shouldShowContactSuggestions) _Bool showContactSuggestions; // @synthesize showContactSuggestions=_showContactSuggestions;
 @property(nonatomic, getter=shouldDebugBlurredCells) _Bool debugBlurredCells; // @synthesize debugBlurredCells=_debugBlurredCells;

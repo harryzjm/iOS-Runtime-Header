@@ -7,6 +7,8 @@
 #import <UIKit/UIEvent.h>
 
 @interface UIEvent (PKAdditions)
+- (unsigned long long)PK_activeInputPropertiesForTouch:(id)arg1;
+- (_Bool)PK_isEventFromCrayon;
 - (_Bool)PK_isEventFromPencil;
 @end
 

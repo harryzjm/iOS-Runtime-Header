@@ -15,9 +15,9 @@
 
 + (double)defaultHeight;
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKLabel *label; // @synthesize label=_label;
 @property(retain, nonatomic) NSString *text;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

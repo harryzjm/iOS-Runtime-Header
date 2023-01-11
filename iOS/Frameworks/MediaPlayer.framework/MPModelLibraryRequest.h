@@ -16,20 +16,22 @@
     NSArray *_allowedSectionIdentifiers;
     NSArray *_scopedContainers;
     unsigned long long _filteringOptions;
+    NSString *_filterText;
     MPMediaQuery *_legacyMediaQuery;
     struct _NSRange _contentRange;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) MPMediaQuery *legacyMediaQuery; // @synthesize legacyMediaQuery=_legacyMediaQuery;
 @property(nonatomic) _Bool wantsDetailedKeepLocalRequestableResponse; // @synthesize wantsDetailedKeepLocalRequestableResponse=_wantsDetailedKeepLocalRequestableResponse;
 @property(nonatomic) struct _NSRange contentRange; // @synthesize contentRange=_contentRange;
+@property(copy, nonatomic) NSString *filterText; // @synthesize filterText=_filterText;
 @property(nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property(copy, nonatomic) NSArray *scopedContainers; // @synthesize scopedContainers=_scopedContainers;
 @property(copy, nonatomic) NSArray *allowedSectionIdentifiers; // @synthesize allowedSectionIdentifiers=_allowedSectionIdentifiers;
 @property(copy, nonatomic) NSArray *allowedItemIdentifiers; // @synthesize allowedItemIdentifiers=_allowedItemIdentifiers;
 @property(retain, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
-- (void).cxx_destruct;
 - (id)sectionTranslationContext;
 - (id)itemTranslationContext;
 - (void)performWithResponseHandler:(CDUnknownBlockType)arg1;

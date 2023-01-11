@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)main;
+- (void)performAfterUnsharingParentShareTurdIfNecessary:(CDUnknownBlockType)arg1;
 - (id)createActivity;
 - (id)initWithShare:(id)arg1 zone:(id)arg2;
 

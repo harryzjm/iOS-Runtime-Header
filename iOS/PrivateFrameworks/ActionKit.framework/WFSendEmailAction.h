@@ -6,36 +6,32 @@
 
 #import <WorkflowKit/WFHandleCustomIntentAction.h>
 
-#import <ActionKit/MFMailComposeViewControllerDelegate-Protocol.h>
-
-@class NSString;
-
-@interface WFSendEmailAction : WFHandleCustomIntentAction <MFMailComposeViewControllerDelegate>
+@interface WFSendEmailAction : WFHandleCustomIntentAction
 {
+    _Bool _contentManaged;
 }
 
++ (id)userInterfaceProtocol;
+@property(nonatomic, getter=isContentManaged) _Bool contentManaged; // @synthesize contentManaged=_contentManaged;
+- (id)targetContentAttribution;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;
-- (void)sendTextViaMailtoURL:(id)arg1 withUserInterface:(id)arg2;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
-- (void)generateBodyFromCollection:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)generateEmailFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)generateEmailHeaderFromParameters:(CDUnknownBlockType)arg1;
 - (void)generateFilesFromCollection:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)generateContentForIntents:(CDUnknownBlockType)arg1;
-- (void)getRecipientsFromParameterKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRecipientsFromParameterValue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (_Bool)requiresRemoteExecution;
+- (id)prioritizedParameterKeysForRemoteExecution;
+- (_Bool)parameterCombinationForIntentSupportsBackgroundExecution:(id)arg1;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
-- (void)runWithUIKitWidgetUserInterface:(id)arg1 input:(id)arg2;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
+- (void)handleWatchResponse:(id)arg1;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)generateBodyFromCollection:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)checkManagementLevel:(id)arg1 error:(id *)arg2;
+- (void)prepareEmailContentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)generatedAccessResource;
 - (_Bool)populatesInputFromInputParameter;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)requiredResourcesForIntentAvailableResource;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <ScreenshotServices/SSDittoHostViewControllerDelegate-Protocol.h>
 
 @class NSObject, SSActiveInterfaceOrientationObserver, SSScreenshotsWindowRootViewController;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, SSScreenshotsWindowDelegate;
 
 @interface SSScreenshotsWindow : UIWindow <SSDittoHostViewControllerDelegate, SSActiveInterfaceOrientationObserverDelegate>
 {
@@ -20,10 +20,12 @@
     NSObject<OS_dispatch_queue> *_notifyQueue;
     int _lockNotificationToken;
     int _backlightNotificationToken;
+    id <SSScreenshotsWindowDelegate> _delegate;
 }
 
 + (_Bool)_isSecure;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SSScreenshotsWindowDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_deviceBacklightChanged:(unsigned long long)arg1;
 - (void)_deviceLockStateChanged:(unsigned long long)arg1;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;

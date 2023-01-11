@@ -13,8 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axChatItemForIndex:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)closeButton;
-- (void)viewDidAppear:(_Bool)arg1;
 
 @end
 

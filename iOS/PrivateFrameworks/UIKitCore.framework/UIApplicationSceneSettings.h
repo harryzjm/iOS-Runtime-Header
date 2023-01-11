@@ -19,7 +19,11 @@
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-@property(nonatomic) unsigned long long artworkSubtype;
+@property(readonly, nonatomic) long long pointerLockStatus;
+@property(readonly, nonatomic) long long accessibilityContrast;
+@property(readonly, nonatomic) unsigned long long scenePresenterRenderIdentifierForSnapshotting;
+@property(readonly, nonatomic) unsigned int hostContextIdentifierForSnapshotting;
+@property(readonly, nonatomic) unsigned long long artworkSubtype;
 @property(readonly, nonatomic) long long deviceOrientation;
 @property(readonly, nonatomic) _Bool statusBarDisabled;
 @property(readonly, nonatomic) _Bool idleModeEnabled;
@@ -48,7 +52,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(retain, nonatomic) FBSDisplayConfiguration *displayConfiguration;
+@property(readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

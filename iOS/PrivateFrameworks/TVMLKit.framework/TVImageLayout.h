@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKColor, IKFourTuple, NSShadow, NSString, UIColor;
+@class IKColor, IKFourTuple, NSShadow, NSString, UIColor, UIImageSymbolConfiguration;
 
 @interface TVImageLayout
 {
@@ -20,6 +20,7 @@
     NSShadow *_shadow;
     NSString *_placeholderArtworkName;
     NSString *_cropCode;
+    UIImageSymbolConfiguration *_imageSymbolConfiguration;
     NSString *_imageTreatment;
     IKFourTuple *_ikBorderRadius;
     NSString *_inlineTitle;
@@ -29,11 +30,13 @@
 }
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool useInSearchPartial; // @synthesize useInSearchPartial=_useInSearchPartial;
 @property(nonatomic) _Bool allowsNonOpaqueShadows; // @synthesize allowsNonOpaqueShadows=_allowsNonOpaqueShadows;
 @property(copy, nonatomic) NSString *inlineTitle; // @synthesize inlineTitle=_inlineTitle;
 @property(retain, nonatomic) IKFourTuple *ikBorderRadius; // @synthesize ikBorderRadius=_ikBorderRadius;
 @property(copy, nonatomic) NSString *imageTreatment; // @synthesize imageTreatment=_imageTreatment;
+@property(retain, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
 @property(copy, nonatomic) NSString *cropCode; // @synthesize cropCode=_cropCode;
 @property(copy, nonatomic) NSString *placeholderArtworkName; // @synthesize placeholderArtworkName=_placeholderArtworkName;
 @property(retain, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
@@ -47,12 +50,11 @@
 @property(nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property(nonatomic) double upscaleFactor; // @synthesize upscaleFactor=_upscaleFactor;
 @property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-- (void).cxx_destruct;
 - (struct CGSize)_aspectFitToSize:(struct CGSize)arg1 scaleToSize:(struct CGSize)arg2 aspectRatio:(double)arg3;
-- (double)focusSizeIncrease;
 @property(readonly, nonatomic) struct CGSize decoratorSize;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+- (double)defaultFocusSizeIncrease;
 
 @end
 

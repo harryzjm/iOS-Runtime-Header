@@ -18,20 +18,22 @@
     CDUnknownBlockType _pixelBufferDidChangeHandler;
 }
 
-+ (id)_videoSessionQueue;
++ (id)videoSessionQueue;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType pixelBufferDidChangeHandler; // @synthesize pixelBufferDidChangeHandler=_pixelBufferDidChangeHandler;
 - (long long)desiredPlayState;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) struct CGAffineTransform videoRotationTransform;
+@property(readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property(readonly, nonatomic) struct __CVBuffer *currentPixelBuffer;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_configureVideoSession:(id)arg1;
-- (void)_relinquishVideoSession;
-- (void)_createVideoSessionIfNeeded;
-- (void)_ensureVideoSession;
+- (void)_videoQueue_relinquishVideoSession;
+- (void)_videoQueue_ensureVideoSession;
+- (void)prepareForOneUpVisible;
 - (void)prepareForInvisible;
 - (void)prepareForVisible;
+- (_Bool)isPlaying;
 - (void)setDesiredPlayState:(long long)arg1;
+@property(readonly, nonatomic) NSString *videoStatusDescription;
 - (void)dealloc;
 - (id)initWithDisplayAsset:(id)arg1 mediaProvider:(id)arg2 spriteReference:(id)arg3;
 

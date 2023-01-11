@@ -16,7 +16,6 @@
 {
     CDStruct_95bda58d _attributes;
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBStringList *_content;
     _INPBStringList *_conversationIdentifier;
     _INPBDateTimeRange *_dateTimeRange;
@@ -31,7 +30,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDataStringList *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
 @property(retain, nonatomic) _INPBContactList *sender; // @synthesize sender=_sender;
 @property(retain, nonatomic) _INPBStringList *searchTerm; // @synthesize searchTerm=_searchTerm;
@@ -43,7 +42,6 @@
 @property(retain, nonatomic) _INPBDateTimeRange *dateTimeRange; // @synthesize dateTimeRange=_dateTimeRange;
 @property(retain, nonatomic) _INPBStringList *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property(retain, nonatomic) _INPBStringList *content; // @synthesize content=_content;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

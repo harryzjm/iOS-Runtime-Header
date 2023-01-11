@@ -14,7 +14,8 @@
 + (id)px_localizedNameFromContact:(id)arg1;
 + (void)px_loadRepresentativeFacesForPersons:(id)arg1;
 + (id)px_fetchPersonsForSuggestion:(id)arg1 options:(id)arg2;
-@property(readonly) NSString *px_displayName;
+- (id)_px_localizedNameWithStyle:(long long)arg1;
+@property(readonly) NSString *px_longStyleLocalizedName;
 @property(readonly) NSString *px_localizedName;
 @property(readonly) NSDate *px_keyPhotoDate;
 @property(readonly) _Bool isPersonModel;

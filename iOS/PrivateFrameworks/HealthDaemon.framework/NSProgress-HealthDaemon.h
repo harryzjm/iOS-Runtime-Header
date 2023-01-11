@@ -7,6 +7,7 @@
 #import <Foundation/NSProgress.h>
 
 @interface NSProgress (HealthDaemon)
++ (id)hk_finishedDiscreteProgressWithTotalUnitCount:(long long)arg1;
 + (id)hd_progressMirroringProgress:(id)arg1;
 @end
 

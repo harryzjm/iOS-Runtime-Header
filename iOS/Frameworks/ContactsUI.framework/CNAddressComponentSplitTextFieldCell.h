@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNRepeatingGradientSeparatorView, UITextField;
+#import <ContactsUI/NUIContainerViewDelegate-Protocol.h>
+
+@class CNRepeatingGradientSeparatorView, NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface CNAddressComponentSplitTextFieldCell
+@interface CNAddressComponentSplitTextFieldCell <NUIContainerViewDelegate>
 {
     UITextField *_textFieldLeft;
     UITextField *_textFieldRight;
@@ -15,16 +17,24 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)cellIdentifier;
++ (Class)containerViewClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNRepeatingGradientSeparatorView *separator; // @synthesize separator=_separator;
 @property(retain, nonatomic) UITextField *textFieldRight; // @synthesize textFieldRight=_textFieldRight;
 @property(retain, nonatomic) UITextField *textFieldLeft; // @synthesize textFieldLeft=_textFieldLeft;
-- (void).cxx_destruct;
 - (id)textAttributes;
 - (void)setTextAttributes:(id)arg1;
 - (id)textFields;
-- (id)currentConstraintsForMetrics:(id)arg1;
-- (void)prepareForReuse;
 - (void)setupTextFields;
+- (id)newSeparatorView;
+- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

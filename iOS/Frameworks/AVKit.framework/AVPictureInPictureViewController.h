@@ -15,25 +15,24 @@ __attribute__((visibility("hidden")))
 @interface AVPictureInPictureViewController : UIViewController <PGPictureInPictureViewController>
 {
     _Bool _shouldShowAlternateActionButtonImage;
-    AVPlayerController *_playerController;
     AVPictureInPicturePlayerLayerView *_pictureInPicturePlayerLayerView;
+    AVPlayerController *_playerController;
     id <AVPictureInPictureViewControllerDelegate> _delegate;
+    AVPictureInPictureViewController *_contentViewController;
 }
 
-+ (id)keyPathsForValuesAffectingShouldShowLoadingIndicator;
+- (void).cxx_destruct;
+@property(retain, nonatomic) AVPictureInPictureViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(nonatomic) __weak id <AVPictureInPictureViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool shouldShowAlternateActionButtonImage; // @synthesize shouldShowAlternateActionButtonImage=_shouldShowAlternateActionButtonImage;
-@property(readonly, nonatomic) AVPictureInPicturePlayerLayerView *pictureInPicturePlayerLayerView; // @synthesize pictureInPicturePlayerLayerView=_pictureInPicturePlayerLayerView;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) AVPictureInPicturePlayerLayerView *pictureInPicturePlayerLayerView; // @synthesize pictureInPicturePlayerLayerView=_pictureInPicturePlayerLayerView;
 - (void)loadView;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithPictureInPicturePlayerLayerView:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)init;
-@property(readonly, nonatomic) _Bool shouldShowLoadingIndicator;
-- (void)actionButtonTapped;
 - (void)didAnimatePictureInPictureStop;
 - (void)willAnimatePictureInPictureStart;
 
@@ -41,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool shouldShowLoadingIndicator;
 @property(readonly) Class superclass;
 
 @end

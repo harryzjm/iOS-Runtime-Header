@@ -24,6 +24,7 @@
     id <HFHomeKitSettingsVendor> _homeKitSettingsVendor;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <HFHomeKitSettingsVendor> homeKitSettingsVendor; // @synthesize homeKitSettingsVendor=_homeKitSettingsVendor;
 @property(retain, nonatomic) NSSet *groupItemsToBeDisplayed; // @synthesize groupItemsToBeDisplayed=_groupItemsToBeDisplayed;
 @property(retain, nonatomic) NSSet *settingItemsToBeDisplayed; // @synthesize settingItemsToBeDisplayed=_settingItemsToBeDisplayed;
@@ -33,13 +34,15 @@
 @property(readonly, nonatomic) HMSettings *settings; // @synthesize settings=_settings;
 @property(readonly, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) HFAccessorySettingsItemProvider *accessorySettingsItemProvider; // @synthesize accessorySettingsItemProvider=_accessorySettingsItemProvider;
-- (void).cxx_destruct;
+- (_Bool)checkSoftwareVersionForAccessories:(id)arg1 neededSoftwareVersion:(id)arg2;
+- (id)getAllHomePodFromItem:(id)arg1;
 - (void)settingsDidUpdate:(id)arg1;
 - (void)settings:(id)arg1 didUpdateSetting:(id)arg2;
 - (void)mediaObject:(id)arg1 didUpdateSettings:(id)arg2;
 - (void)_resetIfNeeded;
 - (id)_itemSectionForGroup:(id)arg1 entity:(id)arg2 settingItems:(id)arg3 groupItems:(id)arg4;
 - (id)_itemSectionsForGroupKeyPaths:(id)arg1;
+- (id)_itemSectionsForShowInSeperateSectionItems:(id)arg1;
 - (id)_itemSectionsForParentGroupWithItems;
 - (id)_itemSectionWithEntity:(id)arg1 items:(id)arg2;
 - (void)_unregisterForAccessorySettingsUpdates;

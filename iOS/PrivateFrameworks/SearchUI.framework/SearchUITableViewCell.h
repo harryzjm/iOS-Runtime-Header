@@ -8,32 +8,39 @@
 
 #import <SearchUI/SearchUIKeyboardableNavigationProtocol-Protocol.h>
 
-@class NSArray, NSString, SearchUIDragSource, SearchUIRowModel, UIView, UIViewController;
-@protocol SearchUIFeedbackDelegateInternal, SearchUIResultShortLook;
+@class NSArray, NSString, SearchUIDragSource, SearchUIRowModel, UIView;
+@protocol SearchUIFeedbackDelegateInternal;
 
 @interface SearchUITableViewCell : UITableViewCell <SearchUIKeyboardableNavigationProtocol>
 {
     _Bool _isExpanded;
+    int _sfSeparatorStyle;
     SearchUIRowModel *_rowModel;
     UIView *_platterView;
     id <SearchUIFeedbackDelegateInternal> _delegate;
     UIView *_sizingContainer;
     SearchUIDragSource *_dragSource;
-    UIViewController<SearchUIResultShortLook> *_shortLookViewController;
+    UIView *_leadingView;
+    UIView *_leadingTextView;
 }
 
 + (double)distanceToTopOfAppIconsForMultiResultCell;
 + (_Bool)canCellExpandWithResults:(id)arg1 forView:(id)arg2;
 + (id)reuseIdentifierForResult:(id)arg1;
 + (id)cellViewForRowModel:(id)arg1 feedbackDelegate:(id)arg2;
-@property(nonatomic) __weak UIViewController<SearchUIResultShortLook> *shortLookViewController; // @synthesize shortLookViewController=_shortLookViewController;
+- (void).cxx_destruct;
+@property(nonatomic) int sfSeparatorStyle; // @synthesize sfSeparatorStyle=_sfSeparatorStyle;
+@property(readonly, nonatomic) UIView *leadingTextView; // @synthesize leadingTextView=_leadingTextView;
+@property(readonly, nonatomic) UIView *leadingView; // @synthesize leadingView=_leadingView;
 @property(retain, nonatomic) SearchUIDragSource *dragSource; // @synthesize dragSource=_dragSource;
 @property(retain, nonatomic) UIView *sizingContainer; // @synthesize sizingContainer=_sizingContainer;
 @property(nonatomic) __weak id <SearchUIFeedbackDelegateInternal> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool isExpanded; // @synthesize isExpanded=_isExpanded;
 @property(retain, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
 @property(retain, nonatomic) SearchUIRowModel *rowModel; // @synthesize rowModel=_rowModel;
-- (void).cxx_destruct;
+- (id)keyboardCardSectionForFocus;
+- (id)keyboardResultForFocus;
+- (void)tabKeyPressed;
 - (void)removeKeyboardHandler;
 - (_Bool)navigateKeyboardDown;
 - (_Bool)navigateKeyboardUp;
@@ -52,12 +59,14 @@
 - (_Bool)supportsRecycling;
 - (void)updateExpanded:(_Bool)arg1;
 - (void)updateWithResults:(id)arg1;
+- (void)_setAnimating:(_Bool)arg1 clippingAdjacentCells:(_Bool)arg2;
 - (void)_updateHighlightColorsForView:(id)arg1 highlighted:(_Bool)arg2;
 - (void)_setSeparatorDrawsInVibrantLightMode:(_Bool)arg1;
 - (void)_setSeparatorBackdropOverlayBlendMode:(long long)arg1;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)willMoveToWindow:(id)arg1;
 @property(readonly) NSArray *visibleResults;
 - (void)updateWithRowModel:(id)arg1;
 - (void)updateWithResult:(id)arg1;

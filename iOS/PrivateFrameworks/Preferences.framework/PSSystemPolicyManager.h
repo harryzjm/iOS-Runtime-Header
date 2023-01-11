@@ -10,6 +10,8 @@
 {
 }
 
++ (_Bool)_languageSettingNeededForBundleID:(id)arg1;
++ (_Bool)_defaultAppSettingsNeededForBundleID:(id)arg1;
 + (_Bool)_documentSettingsNeededForBundleID:(id)arg1;
 + (_Bool)_notificationSettingsNeededForBundleID:(id)arg1;
 + (void)_populateBBSectionIDs;
@@ -23,8 +25,10 @@
 + (id)_thirdPartyApplicationProxyForBundleID:(id)arg1;
 + (id)thirdPartyApplicationProxyForBundleID:(id)arg1;
 + (id)_thirdPartyApplicationProxies;
++ (_Bool)hasAnyAppClip;
 + (id)thirdPartyApplicationProxies;
 + (id)thirdPartyApplicationForBundleID:(id)arg1;
++ (id)thirdPartyApplicationsIncludingAppClips:(_Bool)arg1;
 + (id)thirdPartyApplications;
 
 @end

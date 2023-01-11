@@ -19,6 +19,7 @@
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2;
 @property(nonatomic) long long numberOfLines;
 - (void)setURL:(id)arg1;
+- (id)accessibilityValue;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

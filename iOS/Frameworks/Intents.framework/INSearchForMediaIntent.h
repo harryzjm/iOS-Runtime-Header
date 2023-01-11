@@ -6,7 +6,7 @@
 
 #import <Intents/INSearchForMediaIntentExport-Protocol.h>
 
-@class INMediaSearch, NSArray, NSString;
+@class INMediaSearch, INPrivateSearchForMediaIntentData, NSArray, NSString;
 
 @interface INSearchForMediaIntent <INSearchForMediaIntentExport>
 {
@@ -20,6 +20,7 @@
 - (id)domain;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
+@property(copy, nonatomic) INPrivateSearchForMediaIntentData *privateSearchForMediaIntentData;
 - (void)setMediaSearch:(id)arg1;
 @property(readonly, copy, nonatomic) INMediaSearch *mediaSearch;
 - (void)setMediaItems:(id)arg1;
@@ -28,6 +29,7 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_metadata;
 - (id)_typedBackingStore;
+- (_Bool)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

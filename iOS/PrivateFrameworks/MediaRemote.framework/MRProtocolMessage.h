@@ -17,20 +17,22 @@
     _Bool _isReply;
     PBCodable *_underlyingCodableMessage;
     NSError *_error;
-    NSString *_identifier;
+    NSString *_replyIdentifier;
+    NSString *_uniqueIdentifier;
     unsigned long long _timestamp;
     MRProtocolClientConnection *_clientConnection;
 }
 
-+ (id)protocolMessageWithProtobufData:(id)arg1;
++ (id)protocolMessageWithProtobufData:(id)arg1 error:(id *)arg2;
 + (unsigned long long)currentProtocolVersion;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isReply; // @synthesize isReply=_isReply;
 @property(nonatomic) __weak MRProtocolClientConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(copy, nonatomic) NSString *replyIdentifier; // @synthesize replyIdentifier=_replyIdentifier;
 @property(copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) PBCodable *underlyingCodableMessage; // @synthesize underlyingCodableMessage=_underlyingCodableMessage;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *protobufData;
 - (_Bool)replyWithMessage:(id)arg1;
 - (_Bool)reply;

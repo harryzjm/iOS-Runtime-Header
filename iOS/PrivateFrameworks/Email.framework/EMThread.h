@@ -10,7 +10,7 @@
 #import <Email/NSCopying-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EFQuery, EMMailboxScope, EMMessage, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
+@class ECMessageFlags, ECSubject, EFFuture, EFQuery, EMMailboxScope, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
 @protocol EMCollectionItemID, EMMailboxTypeResolver;
 
 @interface EMThread <EMThreadBuilder, EFLoggable, NSCopying, NSSecureCoding, EMMessageListItem>
@@ -45,54 +45,36 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)log;
-@property(readonly, nonatomic) EFQuery *originatingQuery; // @synthesize originatingQuery=_originatingQuery;
-- (void)setIsCCMe:(_Bool)arg1;
-@property(readonly) _Bool isCCMe;
-- (void)setIsToMe:(_Bool)arg1;
-@property(readonly) _Bool isToMe;
-- (void)setDisplayMessageItemID:(id)arg1;
-@property(readonly) id <EMCollectionItemID> displayMessageItemID;
-- (void)setCount:(unsigned long long)arg1;
-@property(readonly) unsigned long long count;
-- (void)setConversationNotificationLevel:(long long)arg1;
-@property(readonly) long long conversationNotificationLevel;
-- (void)setHasAttachments:(_Bool)arg1;
-@property(readonly) _Bool hasAttachments;
-- (void)setIsBlocked:(_Bool)arg1;
-@property(readonly) _Bool isBlocked;
-- (void)setIsVIP:(_Bool)arg1;
-@property(readonly) _Bool isVIP;
-- (void)setFlagColors:(id)arg1;
-@property(readonly, copy) NSIndexSet *flagColors;
-- (void)setHasUnflagged:(_Bool)arg1;
-@property(readonly) _Bool hasUnflagged;
-- (void)setFlags:(id)arg1;
-@property(readonly) ECMessageFlags *flags;
-- (void)setCcList:(id)arg1;
-@property(readonly, copy) NSArray *ccList;
-- (void)setToList:(id)arg1;
-@property(readonly, copy) NSArray *toList;
-- (void)setSenderList:(id)arg1;
-@property(readonly, copy) NSArray *senderList;
-- (void)setSummary:(id)arg1;
-@property(readonly, copy) NSString *summary;
-- (void)setSubject:(id)arg1;
-@property(readonly) ECSubject *subject;
-- (void)setDate:(id)arg1;
-@property(readonly) NSDate *date;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) EFQuery *originatingQuery; // @synthesize originatingQuery=_originatingQuery;
+@property _Bool isCCMe; // @synthesize isCCMe=_isCCMe;
+@property _Bool isToMe; // @synthesize isToMe=_isToMe;
+@property(retain) id <EMCollectionItemID> displayMessageItemID; // @synthesize displayMessageItemID=_displayMessageItemID;
+@property unsigned long long count; // @synthesize count=_count;
+@property long long conversationNotificationLevel; // @synthesize conversationNotificationLevel=_conversationNotificationLevel;
+@property _Bool hasAttachments; // @synthesize hasAttachments=_hasAttachments;
+@property _Bool isBlocked; // @synthesize isBlocked=_isBocked;
+@property _Bool isVIP; // @synthesize isVIP=_isVIP;
+@property(copy) NSIndexSet *flagColors; // @synthesize flagColors=_flagColors;
+@property _Bool hasUnflagged; // @synthesize hasUnflagged=_hasUnflagged;
+@property(retain) ECMessageFlags *flags; // @synthesize flags=_flags;
+@property(copy) NSArray *ccList; // @synthesize ccList=_ccList;
+@property(copy) NSArray *toList; // @synthesize toList=_toList;
+@property(copy) NSArray *senderList; // @synthesize senderList=_senderList;
+@property(copy) NSString *summary; // @synthesize summary=_summary;
+@property(retain) ECSubject *subject; // @synthesize subject=_subject;
+@property(retain) NSDate *date; // @synthesize date=_date;
+- (void)notifyChangeObserversAboutChangesByItemIDs:(id)arg1;
 @property(readonly) _Bool isEditable;
 @property(readonly) _Bool shouldArchiveByDefault;
 @property(readonly) _Bool supportsArchiving;
 @property(readonly) _Bool deleteMovesToTrash;
-@property(readonly) EMMessage *displayMessage;
+@property(readonly) EFFuture *displayMessage;
 @property(readonly) EMObjectID *displayMessageObjectID;
-- (void)setMailboxes:(id)arg1;
-@property(readonly, copy) NSArray *mailboxes;
-- (void)setMailboxObjectIDs:(id)arg1;
-@property(readonly, copy) NSArray *mailboxObjectIDs;
-- (void)setConversationID:(long long)arg1;
-@property(readonly) long long conversationID;
+@property(copy) NSArray *mailboxes;
+@property long long _internalID;
+@property(copy) NSArray *mailboxObjectIDs; // @synthesize mailboxObjectIDs=_mailboxObjectIDs;
+@property long long conversationID;
 @property(readonly, nonatomic) id <EMCollectionItemID> itemID;
 - (_Bool)objectIDBelongsToCollection:(id)arg1;
 - (id)itemIDForObjectID:(id)arg1;

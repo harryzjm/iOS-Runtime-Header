@@ -7,20 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <Photos/PHAssetResourceRequest-Protocol.h>
-#import <Photos/PHResourceAvailabilityChangeRequestDelegate-Protocol.h>
 
-@class NSDictionary, NSProgress, NSString, PHAssetResource, PHAssetResourceRequestOptions, PHResourceAvailabilityJob;
+@class NSDictionary, NSProgress, NSString, PHAssetResource, PHAssetResourceRequestOptions, PLProgressFollower;
 @protocol PHAssetResourceRequestDelegate;
 
-@interface PHAssetResourceRequest : NSObject <PHResourceAvailabilityChangeRequestDelegate, PHAssetResourceRequest>
+@interface PHAssetResourceRequest : NSObject <PHAssetResourceRequest>
 {
-    PHResourceAvailabilityJob *_availabilityJob;
     struct os_unfair_lock_s _lock;
     _Bool _cancelled;
     NSProgress *_availabilityProgress;
+    long long _availabilityPendingCount;
     NSProgress *_fileStreamProgress;
+    long long _fileStreamPendingCount;
     NSProgress *_totalProgress;
+    PLProgressFollower *_progressFollower;
     _Bool _loadURLOnly;
+    _Bool _synchronous;
     int _requestID;
     PHAssetResource *_assetResource;
     PHAssetResourceRequestOptions *_options;
@@ -33,7 +35,9 @@
 }
 
 + (id)_globalFileIOQueue;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dataHandler; // @synthesize dataHandler=_dataHandler;
+@property(nonatomic, getter=isSynchronous) _Bool synchronous; // @synthesize synchronous=_synchronous;
 @property(nonatomic) _Bool loadURLOnly; // @synthesize loadURLOnly=_loadURLOnly;
 @property(copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property(readonly, nonatomic) NSDictionary *info; // @synthesize info=_info;
@@ -43,14 +47,13 @@
 @property(readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
 @property(readonly, nonatomic) PHAssetResourceRequestOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) PHAssetResource *assetResource; // @synthesize assetResource=_assetResource;
-- (void).cxx_destruct;
-- (void)resourceAvailabilityChangeRequest:(id)arg1 didFinishWithSuccess:(_Bool)arg2 url:(id)arg3 data:(id)arg4 info:(id)arg5 error:(id)arg6;
-- (void)resourceAvailabilityChangeRequest:(id)arg1 didReportProgress:(double)arg2 completed:(_Bool)arg3 error:(id)arg4;
 - (void)_updateAssetResourceWithLocallyAvailable:(_Bool)arg1 fileURL:(id)arg2;
-- (void)_streamDataAtURL:(id)arg1 dataHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_finishAsyncWithLocallyAvailableResourceAtURL:(id)arg1;
-- (void)_reportProgress;
-- (void)_setupProgressIfNeeded;
+- (long long)_streamDataAtURL:(id)arg1 error:(id *)arg2 dataHandler:(CDUnknownBlockType)arg3;
+- (void)_finishAsyncWithFileURL:(id)arg1 error:(id)arg2;
+- (void)_finishWithFileURL:(id)arg1 error:(id)arg2;
+- (void)_setupFilestreamProgressIfNeeded;
+- (void)_addAvailabilityProgressIfNeeded:(id)arg1;
+- (void)_setupTotalProgressIfNeeded;
 - (id)_initialValidationError;
 - (void)startRequest;
 - (void)cancel;

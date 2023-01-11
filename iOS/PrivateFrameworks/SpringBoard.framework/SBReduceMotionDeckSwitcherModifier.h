@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol SBFluidSwitcherScrollProvidingDelegate;
-
 @interface SBReduceMotionDeckSwitcherModifier
 {
-    id <SBFluidSwitcherScrollProvidingDelegate> _scrollDelegate;
 }
 
-- (void)setScrollDelegate:(id)arg1;
-- (id)scrollDelegate;
-- (void).cxx_destruct;
+- (double)_switcherCardScale;
 - (double)_cardWidth;
 - (double)leadingOffsetForIndex:(unsigned long long)arg1 displayItemsCount:(unsigned long long)arg2 scrollProgress:(double)arg3;
+- (unsigned long long)indexForScrollProgress:(double)arg1 displayItemsCount:(unsigned long long)arg2 frameOrigin:(double)arg3;
 - (double)scrollProgressForIndex:(unsigned long long)arg1 displayItemsCount:(unsigned long long)arg2 frameOrigin:(double)arg3;
 - (double)scrollProgressForIndex:(unsigned long long)arg1;
 - (double)depthForIndex:(unsigned long long)arg1 displayItemsCount:(unsigned long long)arg2 scrollProgress:(double)arg3;
@@ -23,9 +19,9 @@
 - (double)titleOpacityForIndex:(unsigned long long)arg1 scrollProgress:(double)arg2;
 - (void)resetAdjustedScrollingState;
 - (struct CGPoint)adjustedOffsetForOffset:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 startPoint:(struct CGPoint)arg3 locationInView:(struct CGPoint)arg4 horizontalVelocity:(inout double *)arg5 verticalVelocity:(inout double *)arg6;
-- (struct CGPoint)pagingOrigin;
-- (struct CGSize)interpageSpacingForPaging;
-- (_Bool)scrollViewPagingEnabled;
+- (struct CGPoint)_pagingOrigin;
+- (struct CGSize)_interpageSpacingForPaging;
+- (id)scrollViewAttributes;
 - (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
 - (double)wallpaperScale;
 - (double)homeScreenScale;

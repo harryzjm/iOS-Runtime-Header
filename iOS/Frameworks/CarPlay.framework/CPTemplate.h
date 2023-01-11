@@ -12,13 +12,18 @@
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class CPBarButton, NAFuture, NSArray, NSString, NSUUID;
+@class CPBarButton, NAFuture, NSArray, NSString, NSUUID, UIImage;
 @protocol CPBaseTemplateProviding, CPTemplateDelegate;
 
 @interface CPTemplate : NSObject <CPBarButtonDelegate, CPBarButtonProviding, CPControlDelegate, CPTemplateDelegate, NSSecureCoding>
 {
+    _Bool _showsTabBadge;
+    _Bool _needsUpdate;
     CPBarButton *_backButton;
     id _userInfo;
+    NSString *_tabTitle;
+    UIImage *_tabImage;
+    long long _tabSystemItem;
     id <CPBaseTemplateProviding> _templateProvider;
     NAFuture *_templateProviderFuture;
     NSUUID *_identifier;
@@ -28,17 +33,25 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *internalTrailingBarButtons; // @synthesize internalTrailingBarButtons=_internalTrailingBarButtons;
 @property(retain, nonatomic) NSArray *internalLeadingBarButtons; // @synthesize internalLeadingBarButtons=_internalLeadingBarButtons;
 @property(nonatomic) __weak id <CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NAFuture *templateProviderFuture; // @synthesize templateProviderFuture=_templateProviderFuture;
+@property(nonatomic) _Bool needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property(retain, nonatomic) id <CPBaseTemplateProviding> templateProvider; // @synthesize templateProvider=_templateProvider;
+@property(nonatomic) _Bool showsTabBadge; // @synthesize showsTabBadge=_showsTabBadge;
+@property(nonatomic) long long tabSystemItem; // @synthesize tabSystemItem=_tabSystemItem;
+@property(retain, nonatomic) UIImage *tabImage; // @synthesize tabImage=_tabImage;
+@property(copy, nonatomic) NSString *tabTitle; // @synthesize tabTitle=_tabTitle;
 @property(retain, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 @property(retain, nonatomic) CPBarButton *backButton; // @synthesize backButton=_backButton;
-- (void).cxx_destruct;
+- (void)performUpdate;
+- (void)setNeedsUpdate;
 - (_Bool)barButton:(id)arg1 setTitle:(id)arg2;
 - (_Bool)barButton:(id)arg1 setImage:(id)arg2;
+- (_Bool)control:(id)arg1 setSelected:(_Bool)arg2;
 - (_Bool)control:(id)arg1 setEnabled:(_Bool)arg2;
 - (void)templateDidDisappear:(id)arg1 animated:(_Bool)arg2;
 - (void)templateDidAppear:(id)arg1 animated:(_Bool)arg2;
@@ -49,6 +62,8 @@
 @property(retain, nonatomic) NSArray *leadingNavigationBarButtons;
 - (void)invalidateTemplateProvider;
 - (void)connectTemplateProvider:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -56,7 +71,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

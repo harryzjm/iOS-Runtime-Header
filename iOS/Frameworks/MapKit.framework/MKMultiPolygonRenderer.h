@@ -11,6 +11,8 @@
     const struct CGPath **_paths;
     unsigned long long _pathsCount;
     VKVectorOverlayPolygonGroup *_vectorData;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 + (Class)_mapkitLeafClass;
@@ -26,10 +28,14 @@
 - (void)setMiterLimit:(double)arg1;
 - (void)setLineJoin:(int)arg1;
 - (void)setLineWidth:(double)arg1;
+@property(nonatomic, getter=_strokeEnd, setter=_setStrokeEnd:) double strokeEnd;
+@property(nonatomic, getter=_strokeStart, setter=_setStrokeStart:) double strokeStart;
+- (void)strokePath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)fillPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)createPath;
 @property(readonly, nonatomic) MKMultiPolygon *multiPolygon;
 - (void)dealloc;
+- (void)_performInitialConfiguration;
 - (id)initWithMultiPolygon:(id)arg1;
 
 @end

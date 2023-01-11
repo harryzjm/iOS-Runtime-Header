@@ -12,6 +12,7 @@
     NSURL *_queryURI;
     NSURL *_consistencyProofURI;
     NSURL *_publicKeysURI;
+    NSURL *_revisionLogProofURI;
     double _expirationTime;
 }
 
@@ -19,23 +20,29 @@
 + (id)formatEventName:(id)arg1 application:(id)arg2 state:(id)arg3;
 + (id)formatEventName:(id)arg1 state:(id)arg2;
 + (id)configBagURL;
+- (void).cxx_destruct;
 @property double expirationTime; // @synthesize expirationTime=_expirationTime;
-@property _Bool configured; // @synthesize configured=_configured;
+@property(retain) NSURL *revisionLogProofURI; // @synthesize revisionLogProofURI=_revisionLogProofURI;
 @property(retain) NSURL *publicKeysURI; // @synthesize publicKeysURI=_publicKeysURI;
 @property(retain) NSURL *consistencyProofURI; // @synthesize consistencyProofURI=_consistencyProofURI;
 @property(retain) NSURL *queryURI; // @synthesize queryURI=_queryURI;
-- (void).cxx_destruct;
-- (void)downloadConsistencyProof:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)downloadQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property _Bool configured; // @synthesize configured=_configured;
 - (void)downloadPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)handleQueryResponseData:(id)arg1 fetchError:(id)arg2 application:(id)arg3 error:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)downloadRevisionLogInclusionProof:(id)arg1 uuid:(id)arg2 retry:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)downloadConsistencyProof:(id)arg1 uuid:(id)arg2 retry:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)downloadQuery:(id)arg1 uuid:(id)arg2 retry:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)downloadMessage:(id)arg1 uri:(id)arg2 uuid:(id)arg3 application:(id)arg4 retry:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)fetchQuery:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)handleQueryResponse:(id)arg1 fetchError:(id)arg2 application:(id)arg3 error:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)createGETRequestForURL:(id)arg1 timeout:(double)arg2 error:(id *)arg3;
-- (id)createPOSTRequestForURL:(id)arg1 timeout:(double)arg2 contents:(id)arg3 error:(id *)arg4;
 - (void)configure:(CDUnknownBlockType)arg1;
+- (_Bool)configureWithDisk:(id *)arg1;
+- (_Bool)writeConfigToDisk:(id)arg1 error:(id *)arg2;
+- (id)readConfigFromDisk:(id *)arg1;
 - (_Bool)configurationExpired;
-- (_Bool)configureFromBag:(id)arg1 error:(id *)arg2;
+- (_Bool)configureFromNetworkBag:(id)arg1 error:(id *)arg2;
+- (void)clearState:(id *)arg1;
+- (id)copyConfigurationBag:(id *)arg1;
 - (_Bool)validateConfigBagEntries:(id)arg1 error:(id *)arg2;
 - (_Bool)validateConfigBagSignature:(id)arg1 error:(id *)arg2;
 - (_Bool)validateConfigBagCertificates:(id)arg1 error:(id *)arg2;

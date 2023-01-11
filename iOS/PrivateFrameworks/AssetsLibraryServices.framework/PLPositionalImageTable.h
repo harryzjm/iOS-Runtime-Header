@@ -15,6 +15,7 @@
     struct tagPLImageTableMemoryPool *_pool;
     struct os_unfair_lock_s _expansionLock;
     _Bool _isReadOnly;
+    _Bool _flushAfterWrite;
     _Bool _formatIsCropped;
     _Bool _readOnly;
     int _formatSideLen;
@@ -25,6 +26,7 @@
     long long _entryCapacity;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long entryCapacity; // @synthesize entryCapacity=_entryCapacity;
 @property(nonatomic) int descriptor; // @synthesize descriptor=_descriptor;
 @property(readonly, nonatomic) PLImageFormat *format; // @synthesize format=_format;
@@ -32,8 +34,9 @@
 @property(nonatomic) _Bool formatIsCropped; // @synthesize formatIsCropped=_formatIsCropped;
 @property(nonatomic) int formatSideLen; // @synthesize formatSideLen=_formatSideLen;
 @property(nonatomic) unsigned long long entryLength; // @synthesize entryLength=_entryLength;
+@property(nonatomic) _Bool flushAfterWrite; // @synthesize flushAfterWrite=_flushAfterWrite;
 @property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
-- (void).cxx_destruct;
+- (void)flush;
 - (void)endThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(id)arg1 withToken:(id)arg2;
 - (id)beginThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(id)arg1;
 - (void)deleteEntryWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 uuid:(id)arg3;
@@ -43,7 +46,7 @@
 - (_Bool)writeEntryData:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)preheatDataForThumbnailIndexes:(id)arg1;
 - (id)imageDataWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 dataOffset:(int *)arg8;
-- (struct CGImage *)createImageWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 decodeSession:(void *)arg3;
+- (struct CGImage *)createImageWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2;
 - (id)_debugDescription;
 - (long long)fileLength;
 - (void)dealloc;

@@ -4,27 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LSAppLink, LSApplicationProxy, NSURL;
+@class LSAppLink, LSApplicationRecord, NSURL;
 @protocol BCSCodePayload;
 
 __attribute__((visibility("hidden")))
 @interface BCSURLActionPickerItem
 {
     NSURL *_url;
-    LSApplicationProxy *_applicationProxy;
+    LSApplicationRecord *_applicationRecord;
     LSAppLink *_appLink;
     id <BCSCodePayload> _codePayload;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <BCSCodePayload> codePayload; // @synthesize codePayload=_codePayload;
 @property(readonly, nonatomic) LSAppLink *appLink; // @synthesize appLink=_appLink;
-- (void).cxx_destruct;
 - (id)actionURL;
 - (id)targetApplicationBundleIdentifier;
 - (void)performAction;
 - (void)performActionWithFBOptions:(id)arg1;
+- (id)icon;
 - (id)initWithLabel:(id)arg1 action:(id)arg2 appLink:(id)arg3 codePayload:(id)arg4;
-- (id)initWithLabel:(id)arg1 action:(id)arg2 url:(id)arg3 applicationProxy:(id)arg4;
+- (id)initWithLabel:(id)arg1 action:(id)arg2 url:(id)arg3 applicationRecord:(id)arg4;
 
 @end
 

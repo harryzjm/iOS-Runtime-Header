@@ -14,14 +14,15 @@
     NSString *_issueListID;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *issueListID; // @synthesize issueListID=_issueListID;
 @property(readonly, nonatomic) NSString *articleListID; // @synthesize articleListID=_articleListID;
 @property(readonly, nonatomic) id <FCChannelProviding> channel; // @synthesize channel=_channel;
-- (void).cxx_destruct;
 - (id)backingChannel;
 - (long long)feedType;
 - (id)name;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)allEmitterClasses;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)initWithChannel:(id)arg1 articleListID:(id)arg2 issueListID:(id)arg3;
 
 @end

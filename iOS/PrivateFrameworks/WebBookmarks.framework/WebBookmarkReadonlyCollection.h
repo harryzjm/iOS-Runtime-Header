@@ -16,9 +16,15 @@
 }
 
 - (void).cxx_destruct;
+- (id)leafChildCountForFoldersInFolderWithID:(int)arg1;
+- (unsigned long long)leafChildCountForBookmarksInFolderWithID:(int)arg1;
 - (id)databaseHealthInformation;
+- (id)bookmarkWithID:(int)arg1;
 - (id)readingListBookmarksMatchingString:(id)arg1 maxResults:(unsigned int)arg2 onlyArchivedBookmarks:(_Bool)arg3;
+- (id)readingListWithUnreadOnly:(_Bool)arg1 filteredUsingString:(id)arg2;
+- (id)bookmarksMatchingString:(id)arg1;
 - (void)enumerateBookmarks:(_Bool)arg1 andReadingListItems:(_Bool)arg2 matchingString:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (id)_collection;
 - (id)initReadonlySafariBookmarkCollection;
 
 // Remaining properties

@@ -8,6 +8,7 @@
 
 #import <MTLSimDriver/MTLSerializerAllocator-Protocol.h>
 
+@class NSString;
 @protocol OS_dispatch_data;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +20,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSObject<OS_dispatch_data> *data; // @synthesize data=_data;
 - (char *)allocateOperationBytes:(unsigned long long)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

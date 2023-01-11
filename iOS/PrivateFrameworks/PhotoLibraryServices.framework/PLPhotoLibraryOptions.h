@@ -6,18 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@interface PLPhotoLibraryOptions : NSObject
+#import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
+
+@interface PLPhotoLibraryOptions : NSObject <NSSecureCoding>
 {
     _Bool _automaticallyMergesContext;
     _Bool _preventsWaitingForRequiredState;
-    int _libraryRole;
     long long _requiredState;
+    unsigned long long _libraryRole;
+    unsigned long long _libraryInitiator;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic) unsigned long long libraryInitiator; // @synthesize libraryInitiator=_libraryInitiator;
 @property(nonatomic) _Bool preventsWaitingForRequiredState; // @synthesize preventsWaitingForRequiredState=_preventsWaitingForRequiredState;
-@property(nonatomic) int libraryRole; // @synthesize libraryRole=_libraryRole;
+@property(nonatomic) unsigned long long libraryRole; // @synthesize libraryRole=_libraryRole;
 @property(nonatomic) long long requiredState; // @synthesize requiredState=_requiredState;
 @property(nonatomic) _Bool automaticallyMergesContext; // @synthesize automaticallyMergesContext=_automaticallyMergesContext;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 
 @end
 

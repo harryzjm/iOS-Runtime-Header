@@ -9,13 +9,14 @@
 #import <HealthKit/HKSeriesBuilderClientInterface-Protocol.h>
 #import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, HKSeriesBuilderConfiguration, HKTaskServerProxyProvider, NSString, NSUUID;
+@class HKHealthStore, HKRetryableOperation, HKSeriesBuilderConfiguration, HKTaskServerProxyProvider, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HKSeriesBuilder : NSObject <_HKXPCExportable, HKSeriesBuilderClientInterface>
 {
     _Atomic int _state;
     HKTaskServerProxyProvider *_proxyProvider;
+    HKRetryableOperation *_retryableOperation;
     NSUUID *_identifier;
     HKSeriesBuilderConfiguration *_configuration;
     HKHealthStore *_store;
@@ -28,17 +29,18 @@
 + (id)serverInterface;
 + (id)clientInterface;
 + (id)taskServerIdentifier;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(readonly, nonatomic) HKHealthStore *store; // @synthesize store=_store;
 @property(readonly, copy, nonatomic) HKSeriesBuilderConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) HKRetryableOperation *retryableOperation; // @synthesize retryableOperation=_retryableOperation;
 @property(retain, nonatomic) HKTaskServerProxyProvider *proxyProvider; // @synthesize proxyProvider=_proxyProvider;
-- (void).cxx_destruct;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
-- (void)clientRemote_didChangeToState:(long long)arg1;
+- (void)clientRemote_didChangeToState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 @property long long state;
 - (void)_resourceQueue_discardWithHandler:(CDUnknownBlockType)arg1;
 - (void)_resourceQueue_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;

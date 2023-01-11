@@ -21,7 +21,8 @@
 - (long long)currentFinalDestination;
 - (void)_updateForGestureDidBeginOrChangeWithEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
-- (long long)layoutUpdateMode;
+- (id)appLayoutsToResignActive;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (_Bool)isFloatingDockGesturePossible;
 - (struct CGRect)containerViewBounds;
 - (void)didMoveToParentModifier:(id)arg1;

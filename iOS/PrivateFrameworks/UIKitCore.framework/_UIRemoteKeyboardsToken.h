@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _UIRemoteKeyboardsToken : NSObject
 {
     int _identifier;
-    NSString *canvasIdentifier;
+    NSString *sceneIdentityString;
 }
 
 + (id)uniqueToken;
-@property(copy, nonatomic) NSString *canvasIdentifier; // @synthesize canvasIdentifier;
+@property(copy, nonatomic) NSString *sceneIdentityString; // @synthesize sceneIdentityString;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;

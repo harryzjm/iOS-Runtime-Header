@@ -7,10 +7,11 @@
 #import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoardHome/SBFolderBackgroundViewDelegate-Protocol.h>
 #import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
+#import <SpringBoardHome/UIScribbleInteractionDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSString, SBFloatyFolderBackgroundClipView, SBHFolderSettings, SBIconView, UILongPressGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer;
+@class NSMapTable, NSMutableArray, NSString, SBFloatyFolderBackgroundClipView, SBHFolderSettings, UILongPressGestureRecognizer, UIPinchGestureRecognizer, UIScribbleInteraction, UITapGestureRecognizer;
 
-@interface SBFloatyFolderView <UIGestureRecognizerDelegate, PTSettingsKeyObserver, SBFolderBackgroundViewDelegate>
+@interface SBFloatyFolderView <UIGestureRecognizerDelegate, PTSettingsKeyObserver, SBFolderBackgroundViewDelegate, UIScribbleInteractionDelegate>
 {
     SBFloatyFolderBackgroundClipView *_scrollClipView;
     NSMutableArray *_pageBackgroundViews;
@@ -20,25 +21,27 @@
     UIPinchGestureRecognizer *_pinchGesture;
     UILongPressGestureRecognizer *_longPressGesture;
     SBHFolderSettings *_folderSettings;
-    SBIconView *_cachedHiddenIconView;
     _Bool _displayingMultipleIconLists;
     _Bool _displaysMultipleIconListsInLandscapeOrientation;
     _Bool _convertingIconListStyle;
     _Bool _animatingRotation;
     unsigned long long _backgroundEffect;
+    UIScribbleInteraction *_titleScribbleInteraction;
 }
 
 + (unsigned long long)countOfAdditionalPagesToKeepVisibleInOneDirection;
 + (double)defaultCornerRadius;
 + (id)defaultIconLocation;
 + (Class)_scrollViewClass;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIScribbleInteraction *titleScribbleInteraction; // @synthesize titleScribbleInteraction=_titleScribbleInteraction;
 @property(nonatomic, getter=isAnimatingRotation) _Bool animatingRotation; // @synthesize animatingRotation=_animatingRotation;
 @property(nonatomic, getter=isConvertingIconListStyle) _Bool convertingIconListStyle; // @synthesize convertingIconListStyle=_convertingIconListStyle;
 @property(readonly, nonatomic) _Bool displaysMultipleIconListsInLandscapeOrientation; // @synthesize displaysMultipleIconListsInLandscapeOrientation=_displaysMultipleIconListsInLandscapeOrientation;
 @property(nonatomic, getter=isDisplayingMultipleIconLists) _Bool displayingMultipleIconLists; // @synthesize displayingMultipleIconLists=_displayingMultipleIconLists;
 @property(nonatomic) unsigned long long backgroundEffect; // @synthesize backgroundEffect=_backgroundEffect;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (_Bool)scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
 - (id)accessibilityTintColorForBackgroundView:(id)arg1;
 - (void)accessibilityReduceTransparencyDidChange:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
@@ -51,8 +54,9 @@
 - (void)_configureGestures;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)findHiddenIconView;
+- (_Bool)_shouldManageScrolledHiddenClippedIconView;
 - (void)_updateScrollingState:(_Bool)arg1;
+- (void)_setScrollViewNeedsToClipCorners:(_Bool)arg1;
 - (void)_convertToSingleIconListAnimated:(_Bool)arg1;
 - (void)_convertToMultipleIconListsAnimated:(_Bool)arg1;
 - (void)fadeContentForMinificationFraction:(double)arg1;
@@ -61,14 +65,12 @@
 - (id)borrowScalingView;
 - (void)didTransitionAnimated:(_Bool)arg1;
 - (void)willTransitionAnimated:(_Bool)arg1 withSettings:(id)arg2;
-- (double)_titleVerticalOffsetForOrientation:(long long)arg1;
 - (double)_titleFontSize;
 - (double)_rubberBandIntervalForOverscroll;
 - (_Bool)_showsTitle;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)iconListViewAtPoint:(struct CGPoint)arg1;
 - (_Bool)locationCountsAsInsideFolder:(struct CGPoint)arg1;
-- (double)_offsetToCenterPageControlInSpaceForPageControl;
 - (void)_updateScalingViewFrame;
 - (struct CGRect)_frameForScalingView;
 - (void)_updateScalingViewLocation;
@@ -84,8 +86,8 @@
 - (void)transitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_orientationDidChange:(long long)arg1;
 - (_Bool)_shouldConvertToMultipleIconListsInLandscapeOrientation;
-- (void)_removeIconListView:(id)arg1;
-- (void)_addIconListView:(id)arg1;
+- (void)_didRemoveIconListView:(id)arg1;
+- (void)_didAddIconListView:(id)arg1;
 - (id)_newPageBackgroundView;
 - (void)updateAccessibilityTintColors;
 - (id)legibilitySettingsForIconListViews;

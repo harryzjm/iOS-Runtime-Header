@@ -4,24 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Silex/SWReachabilityObserver-Protocol.h>
 #import <Silex/SXFullscreenVideoPlaybackCandidate-Protocol.h>
 #import <Silex/SXMediaPlaybackDelegate-Protocol.h>
-#import <Silex/SXReachabilityObserver-Protocol.h>
-#import <Silex/SXVideoAdProviderDataSource-Protocol.h>
 #import <Silex/SXVideoPlayerViewControllerDataSource-Protocol.h>
 #import <Silex/SXVideoPlayerViewControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class ADBannerView, NSString, SVVolumeProvider, SXAdController, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager;
-@protocol SXAppStateMonitor, SXBookmarkManager, SXReachabilityProvider, SXResourceDataSource, SXScrollObserverManager;
+@class NSString, SVVolumeProvider, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager;
+@protocol SWReachabilityProvider, SXAppStateMonitor, SXBookmarkManager, SXResourceDataSource, SXScrollObserverManager, SXVideoAdProviderFactory;
 
-@interface SXVideoComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SXVideoAdProviderDataSource, SXReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
+@interface SXVideoComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SWReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
 {
     _Bool _isReceivingViewportDynamicBoundsChanges;
     SXVideoPlayerViewController *_videoPlayerViewController;
-    SXAdController *_adController;
     id <SXResourceDataSource> _resourceDataSource;
-    id <SXReachabilityProvider> _reachabilityProvider;
+    id <SWReachabilityProvider> _reachabilityProvider;
     id <SXAppStateMonitor> _appStateMonitor;
     SXPosterFrameView *_posterFrame;
     CDUnknownBlockType _thumbnailRequestCancelHandler;
@@ -31,12 +29,13 @@
     SVVolumeProvider *_volumeProvider;
     SXVideoPlayerViewControllerManager *_videoPlayerViewControllerManager;
     id <SXBookmarkManager> _bookmarkManager;
-    ADBannerView *_bannerView;
     CDUnknownBlockType _presentationBlock;
+    id <SXVideoAdProviderFactory> _prerollAdFactory;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <SXVideoAdProviderFactory> prerollAdFactory; // @synthesize prerollAdFactory=_prerollAdFactory;
 @property(copy, nonatomic) CDUnknownBlockType presentationBlock; // @synthesize presentationBlock=_presentationBlock;
-@property(nonatomic) __weak ADBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property(readonly, nonatomic) id <SXBookmarkManager> bookmarkManager; // @synthesize bookmarkManager=_bookmarkManager;
 @property(readonly, nonatomic) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager; // @synthesize videoPlayerViewControllerManager=_videoPlayerViewControllerManager;
 @property(readonly, nonatomic) SVVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
@@ -47,11 +46,9 @@
 @property(retain, nonatomic) SXPosterFrameView *posterFrame; // @synthesize posterFrame=_posterFrame;
 @property(nonatomic) _Bool isReceivingViewportDynamicBoundsChanges; // @synthesize isReceivingViewportDynamicBoundsChanges=_isReceivingViewportDynamicBoundsChanges;
 @property(readonly, nonatomic) id <SXAppStateMonitor> appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
-@property(readonly, nonatomic) id <SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
+@property(readonly, nonatomic) id <SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property(readonly, nonatomic) id <SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
-@property(readonly, nonatomic) SXAdController *adController; // @synthesize adController=_adController;
 @property(retain, nonatomic) SXVideoPlayerViewController *videoPlayerViewController; // @synthesize videoPlayerViewController=_videoPlayerViewController;
-- (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
 - (void)reachabilityChanged:(_Bool)arg1;
 - (unsigned long long)analyticsVideoType;
@@ -72,7 +69,8 @@
 - (void)registerForViewportDynamicBoundsChanges;
 - (void)pauseMediaPlayback;
 - (void)registerAsMediaPlaybackDelegate;
-- (CDUnknownBlockType)videoAdWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)videoPlayerViewControllerWillExitFullscreen:(id)arg1;
+- (void)videoPlayerViewControllerWillEnterFullscreen:(id)arg1;
 - (_Bool)videoPlayerViewControllerShouldStartPlayback:(id)arg1;
 - (void)videoPlayerViewController:(id)arg1 resumedPlaybackOfVideo:(id)arg2;
 - (void)videoPlayerViewController:(id)arg1 startedPlaybackOfVideo:(id)arg2;
@@ -86,9 +84,9 @@
 - (void)showPosterFrame;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)loadComponent:(id)arg1;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 reachabilityProvider:(id)arg8 adController:(id)arg9 scrollObserverManager:(id)arg10 volumeProvider:(id)arg11 videoPlayerViewControllerManager:(id)arg12 bookmarkManager:(id)arg13;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 reachabilityProvider:(id)arg8 scrollObserverManager:(id)arg9 volumeProvider:(id)arg10 videoPlayerViewControllerManager:(id)arg11 bookmarkManager:(id)arg12 prerollAdFactory:(id)arg13;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

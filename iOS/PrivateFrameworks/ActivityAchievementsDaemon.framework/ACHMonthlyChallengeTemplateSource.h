@@ -23,13 +23,13 @@
     ACHSyncingMonthlyChallengeTemplateCache *_templateCache;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isAppleWatch; // @synthesize isAppleWatch=_isAppleWatch;
 @property(retain, nonatomic) ACHSyncingMonthlyChallengeTemplateCache *templateCache; // @synthesize templateCache=_templateCache;
 @property(retain, nonatomic) ACHMonthlyChallengeTemplateDataProvider *templateDataProvider; // @synthesize templateDataProvider=_templateDataProvider;
 @property(retain, nonatomic) ACHMonthlyChallengeDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
 @property(retain, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
-- (void).cxx_destruct;
 - (_Bool)subObjectsHaveDatabaseAssertions;
 - (void)setCurrentCalendarOverride:(id)arg1;
 - (void)setCurrentDateOverride:(id)arg1;
@@ -50,7 +50,7 @@
 - (_Bool)isMonthlyChallengeOfTypeAvailable:(unsigned long long)arg1;
 - (_Bool)isGoalValueForMonthlyChallengeTypeValid:(unsigned long long)arg1;
 - (id)customPlaceholderValuesForTemplate:(id)arg1;
-- (id)_monthStringFromTemplateName:(id)arg1;
+- (id)_yearMonthStringFromTemplateName:(id)arg1;
 - (id)_modelsDirectoryBasePathForTemplate:(id)arg1;
 - (id)_monthlyAchievementsAssetsDirectoryBasePath;
 - (id)stickerBundleURLForTemplate:(id)arg1;
@@ -62,6 +62,7 @@
 - (void)_removeMonthlyChallengeTemplate:(id)arg1 monthlyChallengeTemplates:(id *)arg2 templatesToRemove:(id *)arg3;
 - (_Bool)_createMonthlyChallengeWithMonthDateInterval:(id)arg1 monthlyChallengeTemplates:(id *)arg2 error:(id *)arg3;
 - (void)templatesForDate:(id)arg1 databaseContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)_monthlyChallengeTemplateSourceActionForDate:(id)arg1 existingTemplate:(id)arg2;
 - (void)templatesForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)sourceShouldRunForDate:(id)arg1;
 @property(readonly, nonatomic) long long runCadence;

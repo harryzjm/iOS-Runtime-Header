@@ -8,12 +8,12 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/_HMFCFHTTPServerDelegate-Protocol.h>
 
-@class HMFMutableNetService, HMFUnfairLock, NSArray, NSMutableArray, NSObject, NSString, _HMFCFHTTPServer;
+@class HMFMutableNetService, NSArray, NSMutableArray, NSObject, NSString, _HMFCFHTTPServer;
 @protocol HMFHTTPServerDelegate, OS_dispatch_queue;
 
 @interface HMFHTTPServer <_HMFCFHTTPServerDelegate, HMFHTTPClientConnectionDelegate, HMFLogging>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_connections;
     NSMutableArray *_requestHandlers;
     unsigned long long _port;
@@ -28,13 +28,13 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, nonatomic) HMFMutableNetService *netService; // @synthesize netService=_netService;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property __weak id <HMFHTTPServerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)connection:(id)arg1 didReceiveRequest:(id)arg2;
 - (id)logIdentifier;
 - (void)server:(id)arg1 didCloseConnection:(id)arg2;

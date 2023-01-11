@@ -9,7 +9,8 @@
 @class PKPaletteToolPickerView;
 
 @protocol PKPaletteToolPickerViewDelegate <NSObject>
+- (void)toolPickerViewDidChangeTraitCollectionSizeClass:(PKPaletteToolPickerView *)arg1;
 - (void)toolPickerDidToggleRulerTool:(PKPaletteToolPickerView *)arg1;
-- (void)toolPickerDidChangeSelectedToolInk:(PKPaletteToolPickerView *)arg1;
+- (void)toolPickerDidChangeSelectedTool:(PKPaletteToolPickerView *)arg1;
 @end
 

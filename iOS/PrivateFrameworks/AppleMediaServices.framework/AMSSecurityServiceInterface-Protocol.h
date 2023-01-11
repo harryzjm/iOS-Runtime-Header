@@ -6,9 +6,14 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, NSDictionary;
+@class ACAccount, AMSBuyParams, AMSProcessInfo, NSDictionary, NSURLRequest, NSURLResponse;
 
 @protocol AMSSecurityServiceInterface <NSObject>
-- (void)performBiometricTokenUpdateWithAccount:(ACAccount *)arg1 clientInfo:(AMSProcessInfo *)arg2 additionalDialogMetrics:(NSDictionary *)arg3 shouldRequestConfirmation:(_Bool)arg4 completion:(void (^)(_Bool, NSError *))arg5;
+- (void)signedHeadersForRequest:(NSURLRequest *)arg1 buyParams:(AMSBuyParams *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)saveIdentityMapWithCompletion:(void (^)(NSError *))arg1;
+- (void)performBiometricTokenUpdateWithAccount:(ACAccount *)arg1 clientInfo:(AMSProcessInfo *)arg2 additionalDialogMetrics:(NSDictionary *)arg3 shouldGenerateKeysOnly:(_Bool)arg4 shouldRequestConfirmation:(_Bool)arg5 completion:(void (^)(_Bool, NSError *))arg6;
+- (void)isIdentityMapValidWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)isBiometricsAvailableForAccount:(ACAccount *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)handleResponse:(NSURLResponse *)arg1 completion:(void (^)(AMSURLAction *))arg2;
 @end
 

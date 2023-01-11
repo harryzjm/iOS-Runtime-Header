@@ -28,6 +28,7 @@
 + (void)initialize;
 + (id)defaultTextAttributes;
 + (id)defaultFont;
+- (void).cxx_destruct;
 @property __weak AKController *controller; // @synthesize controller=_controller;
 @property(nonatomic) long long highlightStyle; // @synthesize highlightStyle=_highlightStyle;
 @property(retain) NSDictionary *textAttributes; // @synthesize textAttributes=_textAttributes;
@@ -41,7 +42,6 @@
 @property(retain) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property(retain, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property(retain, nonatomic) AKPageModelController *modelControllerToObserveForSelections; // @synthesize modelControllerToObserveForSelections;
-- (void).cxx_destruct;
 - (void)_updateStateOnSenderFromSelf:(id)arg1 segment:(long long)arg2;
 - (_Bool)_updateStateOnSender:(id)arg1 segment:(long long)arg2 fromSelectedAnnotations:(id)arg3;
 - (void)_allAnnotations:(id)arg1 all:(_Bool *)arg2 atLeastOneShare:(_Bool *)arg3 attributeFromTag:(long long)arg4;
@@ -54,9 +54,6 @@
 - (void)_restorePersistedAttributes;
 - (void)_persistCurrentAttributes;
 - (void)_updateInk;
-- (void)_disableInkPicker:(_Bool)arg1;
-- (void)didEndOrCancelStroke;
-- (void)beganDrawingStroke;
 - (void)updateInkIfNeeded:(id)arg1;
 - (void)resetToLastDrawingInk;
 - (void)setDefaultInk;
@@ -65,9 +62,9 @@
 - (void)updateAttributeSenderState:(id)arg1 segment:(long long)arg2 enabled:(_Bool)arg3;
 - (_Bool)isAttributeSenderEnabled:(id)arg1 segment:(long long)arg2;
 - (void)performAttributeActionForSender:(id)arg1 segment:(long long)arg2;
-- (void)annotationEditingDidEnd;
-- (void)forceHideRuler;
+- (void)annotationEditingDidEndWithCompletion:(CDUnknownBlockType)arg1;
 - (void)toggleRuler;
+- (void)forceHideRuler;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)initWithController:(id)arg1;
 

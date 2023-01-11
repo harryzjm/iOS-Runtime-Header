@@ -37,13 +37,14 @@
     id <MFMailComposeViewControllerDelegate> _mailComposeDelegate;
 }
 
-@property(nonatomic) __weak id <MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
 - (id)remoteViewController;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
 - (void)requestFramesForAttachmentsWithIdentifiers:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_setCompositionValue:(id)arg1 forKey:(id)arg2;
 - (void)finalizeCompositionValues;
+- (id)addAttachmentItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentFileURL:(id)arg1 mimeType:(id)arg2;
 @property(copy, nonatomic) NSString *shareSheetSessionID;

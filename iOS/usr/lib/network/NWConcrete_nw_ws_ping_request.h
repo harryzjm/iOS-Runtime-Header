@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithContents:(id)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

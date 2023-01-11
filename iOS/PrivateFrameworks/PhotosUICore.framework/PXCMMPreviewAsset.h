@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSData, NSDate, NSString, PHAsset, PHMomentShare, UIImage;
+@class NSData, NSDate, NSNumber, NSString, PHAsset, PHMomentShare, UIImage;
 
 @interface PXCMMPreviewAsset : NSObject <PXDisplayAsset>
 {
@@ -17,9 +17,9 @@
     PHAsset *_underlyingAsset;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHAsset *underlyingAsset; // @synthesize underlyingAsset=_underlyingAsset;
 @property(readonly, nonatomic) PHMomentShare *momentShare; // @synthesize momentShare=_momentShare;
-- (void).cxx_destruct;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 @property(readonly, nonatomic) double aspectRatio;
 - (struct CGSize)size;
@@ -52,8 +52,9 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) double duration;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;

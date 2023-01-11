@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     _Bool _maySuppressUpAction;
     int _initialKeyState;
     long long _continuousPathState;
+    _Bool _delayed;
 }
 
 @property(nonatomic) unsigned long long processedTouchCount; // @synthesize processedTouchCount=_processedTouchCount;
 @property(nonatomic) long long continuousPathState; // @synthesize continuousPathState=_continuousPathState;
 @property(nonatomic) int fingerID; // @synthesize fingerID=_fingerID;
 @property(nonatomic) int initialKeyState; // @synthesize initialKeyState=_initialKeyState;
+@property(nonatomic) _Bool delayed; // @synthesize delayed=_delayed;
 @property(nonatomic) _Bool maySuppressUpAction; // @synthesize maySuppressUpAction=_maySuppressUpAction;
 @property(nonatomic) _Bool dragged; // @synthesize dragged=_dragged;
 @property(nonatomic) struct CGPoint initialDragPoint; // @synthesize initialDragPoint=_initialDragPoint;

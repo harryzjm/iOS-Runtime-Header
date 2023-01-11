@@ -8,6 +8,9 @@
 
 @interface HMDTimerTrigger
 {
+    struct os_unfair_lock_s _lock;
+    NSDate *currentFireDate;
+    NSDate *_currentFireDate;
     NSDate *_fireDate;
     NSTimeZone *_fireDateTimeZone;
     NSString *_significantEvent;
@@ -15,7 +18,6 @@
     NSDateComponents *_fireRepeatInterval;
     NSArray *_recurrences;
     NSString *_timerID;
-    NSDate *_currentFireDate;
     NSTimer *_timer;
 }
 
@@ -27,8 +29,8 @@
 + (id)validateSignificantOffset:(id)arg1;
 + (id)validateRecurrence:(id)arg1 calendar:(id)arg2 fireDate:(id)arg3;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
-@property(retain, nonatomic) NSDate *currentFireDate; // @synthesize currentFireDate=_currentFireDate;
 @property(retain, nonatomic) NSString *timerID; // @synthesize timerID=_timerID;
 @property(copy, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
 @property(copy, nonatomic) NSDateComponents *fireRepeatInterval; // @synthesize fireRepeatInterval=_fireRepeatInterval;
@@ -36,7 +38,6 @@
 @property(copy, nonatomic) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
 @property(copy, nonatomic) NSTimeZone *fireDateTimeZone; // @synthesize fireDateTimeZone=_fireDateTimeZone;
 @property(copy, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
-- (void).cxx_destruct;
 - (void)timerFired:(id)arg1;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
@@ -73,6 +74,8 @@
 - (void)dealloc;
 - (void)completeConfiguration;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
+- (void)setCurrentFireDate:(id)arg1;
+@property(readonly) NSDate *currentFireDate; // @synthesize currentFireDate=_currentFireDate;
 - (unsigned long long)triggerType;
 - (id)dumpState;
 - (id)description;

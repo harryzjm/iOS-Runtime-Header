@@ -16,7 +16,7 @@
 - (id)description;
 - (id)mostRelevantRecord;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithName:(id)arg1 category:(unsigned long long)arg2 language:(id)arg3 mostRelevantRecord:(id)arg4;
+- (id)initWithName:(id)arg1 category:(unsigned long long)arg2 dynamicCategory:(id)arg3 language:(id)arg4 mostRelevantRecord:(id)arg5;
 
 @end
 

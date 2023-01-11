@@ -7,7 +7,11 @@
 #import <Foundation/NSIndexSet.h>
 
 @interface NSIndexSet (ContactsFoundation)
+- (id)_cn_shortDescription;
+- (id)_cn_mapRanges:(CDUnknownBlockType)arg1;
 - (id)_cn_map:(CDUnknownBlockType)arg1;
+- (id)_cn_flatMap:(CDUnknownBlockType)arg1;
+- (id)_cn_filter:(CDUnknownBlockType)arg1;
 - (void)_cn_each:(CDUnknownBlockType)arg1;
 - (_Bool)_cn_any:(CDUnknownBlockType)arg1;
 - (_Bool)_cn_all:(CDUnknownBlockType)arg1;

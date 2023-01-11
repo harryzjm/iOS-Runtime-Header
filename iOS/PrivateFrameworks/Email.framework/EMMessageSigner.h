@@ -8,28 +8,26 @@
 
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class EMCertificateTrustInformation, NSError, NSString;
+@class EMCertificateTrustInformation, NSError;
 
 @interface EMMessageSigner : NSObject <NSSecureCoding>
 {
     EMCertificateTrustInformation *_signingCertificateTrustInfo;
     EMCertificateTrustInformation *_encryptionCertificateTrustInfo;
-    NSString *_emailAddress;
     NSError *_error;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property(retain, nonatomic) EMCertificateTrustInformation *encryptionCertificateTrustInfo; // @synthesize encryptionCertificateTrustInfo=_encryptionCertificateTrustInfo;
 @property(retain, nonatomic) EMCertificateTrustInformation *signingCertificateTrustInfo; // @synthesize signingCertificateTrustInfo=_signingCertificateTrustInfo;
-- (void).cxx_destruct;
 - (void)reevaluateTrustWithNetworkAccessAllowed;
 - (void)evaluateTrustsWithOptions:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool hasSeparateSigningAndEncryptionCertificates;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEmailAddress:(id)arg1 signingTrust:(id)arg2 encryptionTrust:(id)arg3;
+- (id)initWithSigningTrust:(id)arg1 encryptionTrust:(id)arg2;
 
 @end
 

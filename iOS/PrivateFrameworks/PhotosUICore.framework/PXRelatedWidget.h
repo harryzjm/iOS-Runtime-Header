@@ -15,7 +15,7 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 
 @class NSDictionary, NSString, PXBasicTileAnimator, PXPhotosDetailsContext, PXRelatedDataSource, PXRelatedDataSourceManager, PXRelatedSpecManager, PXRelatedTilingLayout, PXSectionedObjectReference, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXRelatedWidget : NSObject <PXRelatedDataSourceManagerObserver, PXTilingControllerTransitionDelegate, PXTilingControllerScrollDelegate, PXRelatedTilingLayoutDelegate, PXTileSource, PXChangeObserver, PXWidget>
 {
@@ -52,6 +52,7 @@
     struct PXSimpleIndexPath __anchorIndexPath;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXSectionedObjectReference *focusedObjectReference; // @synthesize focusedObjectReference=_focusedObjectReference;
 @property(retain, nonatomic) PXSectionedObjectReference *highlightedObjectReference; // @synthesize highlightedObjectReference=_highlightedObjectReference;
 @property(retain, nonatomic, setter=_setPrefetchedDataSourceByRelatedEntry:) NSDictionary *_prefetchedDataSourceByRelatedEntry; // @synthesize _prefetchedDataSourceByRelatedEntry=__prefetchedDataSourceByRelatedEntry;
@@ -72,7 +73,6 @@
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate; // @synthesize widgetUnlockDelegate=_widgetUnlockDelegate;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
-- (void).cxx_destruct;
 - (struct CGRect)relatedTilingLayout:(id)arg1 contentsRectForItemAtIndexPath:(struct PXSimpleIndexPath)arg2 forAspectRatio:(double)arg3;
 - (id)relatedTilingLayout:(id)arg1 titleFontNameForEntryAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (_Bool)relatedTilingLayout:(id)arg1 isPlaceholderEntryAtIndexPath:(struct PXSimpleIndexPath)arg2;
@@ -136,10 +136,13 @@
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property(retain, nonatomic) PXWidgetSpec *spec;
@@ -147,6 +150,8 @@
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 
 @end
 

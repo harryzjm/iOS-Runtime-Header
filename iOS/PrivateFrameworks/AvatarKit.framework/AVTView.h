@@ -6,8 +6,7 @@
 
 #import <SceneKit/SCNView.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTFaceTracker, AVTHUDView, NSLock, NSTimer, SCNNode;
-@protocol AVTViewFaceTrackingDelegate;
+@class AVTAvatar, AVTAvatarEnvironment, AVTHUDView, NSLock, NSString, NSTimer, SCNNode;
 
 @interface AVTView : SCNView
 {
@@ -16,14 +15,7 @@
     SCNNode *_avatarNode;
     _Bool _lockLookAt;
     AVTAvatarEnvironment *_environment;
-    AVTFaceTracker *_faceTracker;
-    _Bool _enableFaceTracking;
-    _Bool _faceIsTracked;
-    _Bool _captureImageIsTooDark;
-    _Bool _isSensorCovered;
-    _Bool _directRetargetingMode;
-    id <AVTViewFaceTrackingDelegate> _faceTrackingDelegate;
-    _Bool _arMode;
+    NSString *_framingMode;
     unsigned long long _lastTrackingUpdateTimestamp;
     unsigned long long _noTrackingFrameCount;
     double _currentlyRenderedTrackingDate;
@@ -31,7 +23,7 @@
         struct os_unfair_lock_s lock;
         struct *head;
         int current;
-        int capacity;
+        unsigned int capacity;
         _Bool reached_max_capacity;
     } _perfTimes;
     double _perfPacketUpdateTimestamp;
@@ -43,11 +35,8 @@
     AVTHUDView *_debugView;
     NSLock *_lock;
     AVTAvatar *_lastRenderedAvatar;
-    _Bool _faceTrackingPaused;
 }
 
-@property(nonatomic, getter=faceTrackingIsPaused) _Bool faceTrackingPaused; // @synthesize faceTrackingPaused=_faceTrackingPaused;
-@property(nonatomic) _Bool enableReticle; // @synthesize enableReticle=_enableReticle;
 - (void).cxx_destruct;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
@@ -59,34 +48,14 @@
 - (_Bool)showPerfHUD;
 - (double)currentlyRenderedTrackingDate;
 - (void)_renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
-- (struct UIImage *)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2;
-- (struct UIImage *)snapshotWithSize:(struct CGSize)arg1;
-- (id)transitionTexture;
+- (id)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2 options:(id)arg3;
+- (id)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2;
+- (id)snapshotWithSize:(struct CGSize)arg1;
+- (void)setFramingMode:(id)arg1;
+- (id)framingMode;
 - (void)warmupMemoji;
-- (void)setDirectRetargetingMode:(_Bool)arg1;
-- (_Bool)directRetargetingMode;
-@property(nonatomic) _Bool enableFaceTracking;
-@property(readonly, nonatomic, getter=isSensorCovered) _Bool sensorCovered;
-- (void)setSensorCovered:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool captureImageIsTooDark;
-- (void)setCaptureImageIsTooDark:(_Bool)arg1;
-- (void)setFaceTrackingDelegate:(id)arg1;
-- (id)faceTrackingDelegate;
-- (_Bool)faceIsFullyActive;
-- (void)updateForChangedFaceTrackingPaused;
-- (void)setFaceIsTracked:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool faceIsTracked; // @synthesize faceIsTracked=_faceIsTracked;
-- (void)setFaceTracker:(id)arg1;
-- (id)faceTracker;
 - (void)_resetFaceToRandomPosition;
-- (id)arSession;
-- (void)faceTracker:(id)arg1 sessionInterruptionEnded:(id)arg2;
-- (void)faceTracker:(id)arg1 sessionWasInterrupted:(id)arg2;
-- (void)faceTracker:(id)arg1 session:(id)arg2 didFailWithError:(id)arg3;
-- (void)faceTrackerDidUpdate:(id)arg1 trackingInfo:(id)arg2;
-- (void)_cancelDelayedtrackingLoss;
-- (void)_delayedTrackingLoss;
-- (void)_fireTrackingLoss;
+- (_Bool)faceIsFullyActive;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
 - (void)updateInterfaceOrientation;
 - (void)setupOrientation;
@@ -103,11 +72,8 @@
 - (void)_willRecord;
 - (void)willUpdateAvatarWithNewFaceTrackingData:(double)arg1;
 - (void)didLostTrackingForAWhile;
-- (void)_animateToNoTrackingState:(_Bool)arg1;
 - (void)_enablePhysics:(_Bool)arg1;
 - (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-@property(nonatomic) _Bool arMode;
-- (void)_updateAvatarForARMode:(_Bool)arg1;
 - (void)_updateFocal;
 - (void)unlockAvatar;
 - (void)lockAvatar;

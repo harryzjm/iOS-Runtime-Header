@@ -20,12 +20,14 @@
     _Bool _needsAddingToLayout;
     UIView<_UIStatusBarDisplayable> *_view;
     _UIStatusBarAction *_action;
+    _UIStatusBarAction *_hoverAction;
     _UIStatusBarIdentifier *_identifier;
     _UIStatusBarItem *_item;
     UIView *_highlightView;
     double _alpha;
     double _viewAlpha;
     double _baselineOffset;
+    double _centerOffset;
     _UIStatusBarStyleAttributes *_overriddenStyleAttributes;
     long long _overriddenVerticalAlignment;
     _UIStatusBarRegion *_region;
@@ -33,10 +35,12 @@
     id <UILayoutItem> _layoutItem;
     _UIStatusBarDisplayItemPlacement *_placement;
     struct UIEdgeInsets _actionInsets;
+    struct NSDirectionalEdgeInsets _extendedHoverInsets;
     struct CGAffineTransform _transform;
     struct CGAffineTransform _viewTransform;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool needsAddingToLayout; // @synthesize needsAddingToLayout=_needsAddingToLayout;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *placement; // @synthesize placement=_placement;
 @property(retain, nonatomic) id <UILayoutItem> layoutItem; // @synthesize layoutItem=_layoutItem;
@@ -45,6 +49,7 @@
 @property(nonatomic) __weak _UIStatusBarRegion *region; // @synthesize region=_region;
 @property(nonatomic) long long overriddenVerticalAlignment; // @synthesize overriddenVerticalAlignment=_overriddenVerticalAlignment;
 @property(retain, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
+@property(nonatomic) double centerOffset; // @synthesize centerOffset=_centerOffset;
 @property(nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property(nonatomic) struct CGAffineTransform viewTransform; // @synthesize viewTransform=_viewTransform;
 @property(nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
@@ -55,9 +60,10 @@
 @property(retain, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property(readonly, nonatomic) __weak _UIStatusBarItem *item; // @synthesize item=_item;
 @property(readonly, copy, nonatomic) _UIStatusBarIdentifier *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets; // @synthesize extendedHoverInsets=_extendedHoverInsets;
+@property(retain, nonatomic) _UIStatusBarAction *hoverAction; // @synthesize hoverAction=_hoverAction;
 @property(nonatomic) struct UIEdgeInsets actionInsets; // @synthesize actionInsets=_actionInsets;
 @property(retain, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
-- (void).cxx_destruct;
 - (void)applyStyleAttributes:(id)arg1;
 @property(readonly, nonatomic) long long priority;
 @property(nonatomic) struct CGRect absoluteFrame;
@@ -67,6 +73,9 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <_UIStatusBarDisplayable> displayable;
 @property(readonly, nonatomic) UIView<_UIStatusBarDisplayable> *view; // @synthesize view=_view;
+@property(readonly, nonatomic) struct CGRect absoluteHoverFrame;
+@property(readonly, nonatomic) _Bool hoverHighlightsAsRegion;
+@property(readonly, nonatomic) UIView *hoverView;
 - (id)initWithIdentifier:(id)arg1 item:(id)arg2;
 
 // Remaining properties

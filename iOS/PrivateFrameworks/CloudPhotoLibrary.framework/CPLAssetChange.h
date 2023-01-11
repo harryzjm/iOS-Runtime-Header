@@ -18,12 +18,13 @@
     NSArray *_resources;
     NSString *_caption;
     NSString *_extendedDescription;
+    NSString *_accessibilityDescription;
     long long _orientation;
     long long _duration;
     CLLocation *_location;
     NSArray *_keywords;
-    NSString *_mediaMetaDataType;
-    NSData *_mediaMetaData;
+    NSString *_adjustedMediaMetaDataType;
+    NSData *_adjustedMediaMetaData;
     NSString *_timeZoneName;
     NSNumber *_timeZoneOffset;
     NSString *_momentIdentifier;
@@ -59,6 +60,7 @@
 + (_Bool)cplShouldIgnorePropertyForCoding:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (_Bool)serverSupportsVision;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSData *facesData; // @synthesize facesData=_facesData;
 @property(nonatomic) long long viewCount; // @synthesize viewCount=_viewCount;
 @property(nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
@@ -87,13 +89,14 @@
 @property(copy, nonatomic) NSNumber *timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
 @property(copy, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
-@property(retain, nonatomic) NSData *mediaMetaData; // @synthesize mediaMetaData=_mediaMetaData;
-@property(copy, nonatomic) NSString *mediaMetaDataType; // @synthesize mediaMetaDataType=_mediaMetaDataType;
+@property(retain, nonatomic) NSData *adjustedMediaMetaData; // @synthesize adjustedMediaMetaData=_adjustedMediaMetaData;
+@property(copy, nonatomic) NSString *adjustedMediaMetaDataType; // @synthesize adjustedMediaMetaDataType=_adjustedMediaMetaDataType;
 @property(copy, nonatomic) NSArray *keywords; // @synthesize keywords=_keywords;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property(nonatomic) long long duration; // @synthesize duration=_duration;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
+@property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(copy, nonatomic) NSString *extendedDescription; // @synthesize extendedDescription=_extendedDescription;
 @property(copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
 @property(copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
@@ -101,7 +104,6 @@
 @property(copy, nonatomic) NSDate *addedDate; // @synthesize addedDate=_addedDate;
 @property(copy, nonatomic) NSDate *lastSharedDate; // @synthesize lastSharedDate=_lastSharedDate;
 @property(copy, nonatomic) NSString *masterIdentifier; // @synthesize masterIdentifier=_masterIdentifier;
-- (void).cxx_destruct;
 - (_Bool)isAssetChange;
 - (id)scopeIdentifiersForQuarantine;
 - (unsigned long long)fullChangeTypeForFullRecord;
@@ -111,6 +113,7 @@
 - (_Bool)validateFullRecord;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (_Bool)supportsDeletion;
+- (_Bool)supportsResourceType:(unsigned long long)arg1;
 - (_Bool)supportsResources;
 - (id)allRelatedScopedIdentifiers;
 - (long long)dequeueOrder;
@@ -127,8 +130,8 @@
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)scopedIdentifiersForMapping;
+- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(_Bool)arg2 fullRecord:(id)arg3 usingStorageView:(id)arg4;
 - (_Bool)validateRecordForTracker:(id)arg1;
-- (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(_Bool)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
 
 @end
 

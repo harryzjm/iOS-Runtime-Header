@@ -19,6 +19,7 @@
 - (id)accessibilityCustomActions;
 - (id)_axServiceStateString;
 - (id)accessibilityValue;
+- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 
 @end

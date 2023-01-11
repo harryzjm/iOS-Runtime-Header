@@ -13,6 +13,8 @@
     _Bool _preventUnnecessaryImplicitTokenization;
     _Bool _exactMatchIgnoreUntokenizedCharacters;
     _Bool _lastImplicitTokenAllowsWordEmbeddings;
+    _Bool _newSearchUIEnabled;
+    _Bool _forceIndexingFooter;
     unsigned long long _maxNumberOfSuggestionsToShow;
     unsigned long long _maxNumberOfTopAssetColumns;
     unsigned long long _maxNumberOfResultColumns;
@@ -21,6 +23,8 @@
 }
 
 + (id)sharedInstance;
+@property(nonatomic) _Bool forceIndexingFooter; // @synthesize forceIndexingFooter=_forceIndexingFooter;
+@property(nonatomic, getter=isNewSearchUIEnabled) _Bool newSearchUIEnabled; // @synthesize newSearchUIEnabled=_newSearchUIEnabled;
 @property(nonatomic) unsigned long long standardNumberOfTopAssetRows; // @synthesize standardNumberOfTopAssetRows=_standardNumberOfTopAssetRows;
 @property(nonatomic) unsigned long long maxNumberOfTopAssetRows; // @synthesize maxNumberOfTopAssetRows=_maxNumberOfTopAssetRows;
 @property(nonatomic) unsigned long long maxNumberOfResultColumns; // @synthesize maxNumberOfResultColumns=_maxNumberOfResultColumns;

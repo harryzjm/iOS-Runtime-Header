@@ -6,17 +6,15 @@
 
 #import <MetalTools/MTLIndirectCommandBufferSPI-Protocol.h>
 
-@class MTLToolsPointerArray, NSString;
+@class NSString;
 @protocol MTLDevice, MTLHeap;
 
 @interface MTLToolsIndirectCommandBuffer <MTLIndirectCommandBufferSPI>
 {
-    MTLToolsPointerArray *_indirectComputeCommand;
-    MTLToolsPointerArray *_indirectRenderCommand;
 }
 
-@property(readonly, nonatomic) MTLToolsPointerArray *indirectRenderCommand; // @synthesize indirectRenderCommand=_indirectRenderCommand;
-@property(readonly, nonatomic) MTLToolsPointerArray *indirectComputeCommand; // @synthesize indirectComputeCommand=_indirectComputeCommand;
+@property(readonly, nonatomic) unsigned long long resourceIndex; // @dynamic resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly) unsigned long long uniqueIdentifier;
 - (void)resetWithRange:(struct _NSRange)arg1;
 - (void)getHeader:(void **)arg1 headerSize:(unsigned long long *)arg2;
@@ -24,9 +22,6 @@
 @property(readonly) unsigned long long size;
 - (id)indirectRenderCommandAtIndex:(unsigned long long)arg1;
 - (id)indirectComputeCommandAtIndex:(unsigned long long)arg1;
-- (void)dealloc;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
-- (void)acceptVisitor:(id)arg1;
 
 // Remaining properties
 @property(readonly) unsigned long long allocatedSize;
@@ -39,7 +34,6 @@
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) unsigned long long heapOffset;
 @property(copy) NSString *label;
-@property(nonatomic) unsigned long long resourceIndex; // @dynamic resourceIndex;
 @property(readonly) unsigned long long resourceOptions;
 @property(readonly) Class superclass;
 

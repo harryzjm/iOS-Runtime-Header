@@ -8,6 +8,7 @@
 {
 }
 
+- (id)queue;
 - (struct _NSRange)textRangeReferencingEvening:(id)arg1;
 - (struct _NSRange)textRangeReferencingAfternoon:(id)arg1;
 - (struct _NSRange)textRangeReferencingNoon:(id)arg1;

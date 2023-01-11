@@ -7,11 +7,12 @@
 #import <AVConference/VCMomentTransportDelegate-Protocol.h>
 #import <AVConference/VCSessionUplinkVideoStreamControllerDelegate-Protocol.h>
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
+#import <AVConference/VCVideoSink-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, VCAudioPowerSpectrumSource, VCMoments, VCSessionUplinkBandwidthAllocator, VCSessionUplinkVideoStreamController, VCVideoRule;
 
 __attribute__((visibility("hidden")))
-@interface VCSessionParticipantLocal <VCVideoCaptureClient, VCSessionUplinkVideoStreamControllerDelegate, VCMomentTransportDelegate>
+@interface VCSessionParticipantLocal <VCVideoSink, VCVideoCaptureClient, VCSessionUplinkVideoStreamControllerDelegate, VCMomentTransportDelegate>
 {
     VCSessionUplinkBandwidthAllocator *_uplinkBandwidthAllocator;
     NSMutableDictionary *_activeUplinkAudioStreams;
@@ -25,16 +26,17 @@ __attribute__((visibility("hidden")))
     unsigned int _lastSentAudioSampleTime;
     double _lastSentAudioHostTime;
     struct _opaque_pthread_rwlock_t _audioTimestampRWLock;
-    unsigned char _audioPriority;
+    unsigned char _lastAudioPriority;
+    unsigned char _lastVideoPriority;
     unsigned short _connectionStatsStreamID;
     VCSessionUplinkVideoStreamController *_uplinkVideoStreamController;
-    struct tagVCMediaQueue *_mediaQueue;
     unsigned int _uplinkBitrateCapWifi;
     unsigned int _uplinkBitrateCapCell;
     struct tagVCMemoryPool *_audioStreamUpdatePool;
-    struct tagVCMemoryPool *_redundancyPool;
+    struct tagVCMemoryPool *_audioRedundancyEventPool;
     struct tagVCMemoryPool *_videoRedundancyPool;
     _Atomic unsigned char _videoPriority;
+    _Bool _videoPriorityEnabled;
     _Bool _shouldResize;
     _Bool _enableRedundancy;
     _Bool _enableVADFiltering;
@@ -59,6 +61,11 @@ __attribute__((visibility("hidden")))
     unsigned int _currentUplinkTotalBitrateAudio;
     VCMoments *_moments;
     VCAudioPowerSpectrumSource *_powerSpectrumSource;
+    int _currentVideoCaptureFrameRate;
+    int _maxSupportedMultiwayFrameRate;
+    long long _maxSupportedMultiwayVideoResolution;
+    _Bool _oneToOneModeEnabled;
+    struct _VCSessionParticipantLocalOneToOneSettings _oneToOneSettings;
 }
 
 @property(readonly, nonatomic) VCMoments *moments; // @synthesize moments=_moments;
@@ -70,37 +77,44 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool enableVADFiltering; // @synthesize enableVADFiltering=_enableVADFiltering;
 @property(nonatomic) unsigned int uplinkBitrateCapCell; // @synthesize uplinkBitrateCapCell=_uplinkBitrateCapCell;
 @property(nonatomic) unsigned int uplinkBitrateCapWifi; // @synthesize uplinkBitrateCapWifi=_uplinkBitrateCapWifi;
-@property(nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property(readonly, nonatomic) unsigned short connectionStatsStreamID; // @synthesize connectionStatsStreamID=_connectionStatsStreamID;
 @property(nonatomic) _Bool encryptionInfoReceived; // @synthesize encryptionInfoReceived=_encryptionInfoReceived;
+- (void)didReceiveCustomReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (void)didReceiveReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
 - (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)controller:(id)arg1 didChangeActiveVideoStreams:(id)arg2;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
-- (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (void)frameRateIsBeingThrottled:(int)arg1 thermalLevelDidChange:(_Bool)arg2 powerLevelDidChange:(_Bool)arg3;
+- (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 - (id)clientCaptureRule;
 - (void)avConferencePreviewError:(id)arg1;
-- (_Bool)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
-- (void)generateKeyFrameForStreamsWithNewCompoundStreamIDsWithActiveVideoStreams:(id)arg1;
-- (void)updateStreamIDsWithActiveVideoStreams:(id)arg1;
+- (void)sourceFrameRateDidChange:(unsigned int)arg1;
+- (_Bool)onVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 attribute:(CDStruct_51555cf6)arg3;
+- (void)updateVideoStreamAndProcessFrame:(id)arg1 sampleBuffer:(struct opaqueCMSampleBuffer *)arg2 lastSentAudioHostTime:(double)arg3 lastSentAudioSampleTime:(unsigned int)arg4 frameTime:(CDStruct_1b6d18a9)arg5 attribute:(CDStruct_51555cf6)arg6;
+- (void)updateVideoOneToOneBitrate;
+- (void)dispatchedUpdateUplinkMediaStreamsWithTargetBitrate:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
+- (void)updateTargetBitrateOneToOne:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
+- (void)updateStreamIDCompoundingWithActiveStreamIds:(id)arg1 streamIds:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)updateActiveAudioStreams:(id)arg1 allStreamIds:(id)arg2;
 - (void)updateActiveAudioStreamWithTargetBitrate:(unsigned int)arg1;
+- (void)updateActiveVideoStreamWithTargetBitrateForMultiway:(unsigned int)arg1;
 - (void)updateActiveVideoStreamWithTargetBitrate:(unsigned int)arg1;
 - (void)dispatchedUpdateUplinkMediaStreamsWithTargetBitrate:(unsigned int)arg1;
 - (void)updateUplinkTargetBitrate:(unsigned int)arg1;
+- (void)redundancyController:(id)arg1 redundancyVectorDidChange:(CDStruct_cd7ddd1c)arg2;
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
+- (void)processVideoPriority;
 - (void)flushVideoRedundancyEventQueue;
 - (void)processVideoEventQueue;
-- (void)enableRedundancy:(_Bool)arg1;
+- (_Bool)enableRedundancy:(_Bool)arg1;
 - (_Bool)checkSubscribedStreamsConsistency:(id)arg1;
-- (void)updateUplinkStreamsForPeerSubscribedStreams:(id)arg1;
+- (_Bool)updateUplinkStreamsForPeerSubscribedStreams:(id)arg1;
 - (void)generateKeyFrameWithStreamID:(unsigned short)arg1;
 - (void)setupEncodingModeWithVideoStreamConfig:(id)arg1;
 - (_Bool)setupVideoStreamWithConfiguration:(id)arg1 idsDestination:(id)arg2;
-- (void)setupVideoStreamConfig:(id)arg1 initialConfiguration:(id)arg2;
 - (id)getAudioDumpName;
 - (void)updateAudioPriorityWithSampleBuffer:(struct opaqueVCAudioBufferList *)arg1;
 - (void)stopVoiceActivityDetection;
@@ -124,6 +138,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)containsStreamWithSSRC:(unsigned int)arg1;
 - (void)updateSupportedAudioRules:(id)arg1;
 - (id)supportedAudioRules;
+- (id)newVideoStreamOneToOneConfiguration;
+- (id)newAudioStreamOneToOneConfiguration;
+- (_Bool)configureWithOneToOneParticipantConfig:(id)arg1;
+- (int)negotiateOneToOne:(id)arg1;
+- (void)applyOneToOneVideoRedundancyPercentage:(unsigned int)arg1;
+- (_Bool)setupOneToOneRedundancyControllers;
+- (void)setupOneToOneVideoRedundancyController;
+- (void)setupOneToOneAudioRedundancyController;
+- (void)setupOneToOneSwitchManager;
 - (void)updatePayloadTypesWithConfigProvider:(id)arg1;
 - (_Bool)initializeMediaNegotiator;
 - (id)newMediaNegotiatorAudioConfiguration;
@@ -138,22 +161,30 @@ __attribute__((visibility("hidden")))
 - (_Bool)setupAudioStreamsWithConfigProvider:(id)arg1;
 - (_Bool)setupAudioStreamsWithConfigProvider:(id)arg1 mediaNegotiatorConfig:(id)arg2;
 - (_Bool)applyCachedMediaStreams:(id)arg1 toMultiwayConfig:(id)arg2;
+- (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
 - (_Bool)configureAudioIOWithDeviceRole:(int)arg1;
 - (void)updateMomentsCapabillities:(unsigned int)arg1 imageType:(int)arg2 videoCodec:(int)arg3;
 - (void)updateMediaSettingsWithConfig:(id)arg1;
 - (unsigned int)calculateUplinkTotalBitrateForMediaStreams:(id)arg1;
+@property(readonly, nonatomic) struct __CFString *activeStreamKeys;
 - (void)collectAudioChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (void)collectVideoChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (void)stopAudioIOCompletion;
 - (_Bool)setState:(unsigned int)arg1;
+@property(nonatomic, getter=isOneToOneModeEnabled) _Bool oneToOneModeEnabled;
 - (void)deregisterForVideoCapture;
-- (void)registerForVideoCapture;
+- (void)registerForVideoCapture:(int)arg1;
+- (struct CGSize)getCaptureEncodingSize;
+@property(nonatomic) int currentVideoCaptureFrameRate;
 - (void)updateActiveVoiceOnly;
 - (void)updateVideoPaused:(_Bool)arg1;
 - (void)applyVideoEnabledSetting:(_Bool)arg1;
+- (int)setupMaxCaptureFrameRate;
+- (long long)setupMaxCaptureResolution;
 - (void)stop;
 - (void)start;
 - (void)dealloc;
+- (id)initWithIDSDestination:(id)arg1 negotiationData:(id)arg2 delegate:(id)arg3 processId:(int)arg4 sessionUUID:(id)arg5 oneToOneModeEnabled:(_Bool)arg6 isGKVoiceChat:(_Bool)arg7;
 - (id)initWithIDSDestination:(id)arg1 negotiationData:(id)arg2 delegate:(id)arg3 processId:(int)arg4 sessionUUID:(id)arg5;
 
 // Remaining properties

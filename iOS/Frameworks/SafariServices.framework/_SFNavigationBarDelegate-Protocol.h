@@ -17,7 +17,9 @@
 - (void)compressedNavigationBarWasTapped:(_SFNavigationBar *)arg1;
 
 @optional
+- (void)navigationBarDidLayoutSubviews:(_SFNavigationBar *)arg1;
 - (void)navigationBar:(_SFNavigationBar *)arg1 didCreateLeadingToolbar:(UIToolbar *)arg2 trailingToolbar:(UIToolbar *)arg3;
+- (void)navigationBarTranslateButtonWasTapped:(_SFNavigationBar *)arg1;
 - (NSUUID *)currentContentUUIDForNavigationBar:(_SFNavigationBar *)arg1;
 - (long long)dataOwnerForNavigationBar:(_SFNavigationBar *)arg1;
 - (NSItemProvider *)itemProviderForNavigationBar:(_SFNavigationBar *)arg1;
@@ -26,9 +28,9 @@
 - (void)navigationBarFormatMenuButtonStartedInteraction:(_SFNavigationBar *)arg1;
 - (void)navigationBarFormatMenuButtonBecameUnavailable:(_SFNavigationBar *)arg1;
 - (void)navigationBarFormatMenuButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)navigationBarMediaCaptureMuteButtonWasTapped:(_SFNavigationBar *)arg1;
+- (void)navigationBarMediaStateMuteButtonWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarDoneButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)navigationBarURLWasTapped:(_SFNavigationBar *)arg1;
+- (void)navigationBarURLWasTapped:(_SFNavigationBar *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)navigationBarMetricsDidChange:(_SFNavigationBar *)arg1;
 @end
 

@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTextBlock : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_text;
     NSString *_title;
-    CDStruct_3e4cc335 _flags;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    CDStruct_e54d7a96 _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -34,14 +36,17 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *text;
 @property(readonly, nonatomic) _Bool hasText;
-- (void)_readText;
 @property(retain, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (void)_readTitle;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

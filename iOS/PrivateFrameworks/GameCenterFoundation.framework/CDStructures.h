@@ -19,14 +19,12 @@ struct GKGameInfo {
     _Bool _field4;
     _Bool _field5;
     _Bool _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
+    _Bool _field7;
+    _Bool _field8;
     unsigned long long _field9;
     unsigned long long _field10;
-};
-
-struct NSDictionary {
-    Class _field1;
+    unsigned long long _field11;
+    unsigned long long _field12;
 };
 
 struct _NSRange {

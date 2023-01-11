@@ -20,15 +20,6 @@ __attribute__((visibility("hidden")))
     NSPointerArray *_immortalBundles;
 }
 
-+ (id)bundleTables;
-- (id)loadedBundles;
-- (id)allBundles;
-- (id)allFrameworks;
-- (id)bundleForClass:(Class)arg1;
-- (void)addStaticFrameworkBundles:(id)arg1;
-- (id)addBundle:(id)arg1 forPath:(id)arg2 withType:(unsigned long long)arg3 forClass:(Class)arg4 isImmortal:(_Bool)arg5;
-- (id)bundleForPath:(id)arg1;
-- (void)removeBundle:(id)arg1 forPath:(id)arg2 type:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)init;
 

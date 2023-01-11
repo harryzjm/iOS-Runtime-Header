@@ -14,6 +14,9 @@
 }
 
 - (void).cxx_destruct;
+- (void)_updateCacheLimit;
+- (void)releaseCachedResources;
+- (void)lowMemoryModeDidChange;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue;
 - (void)invalidateCache;
 - (void)cacheAdditionalInfo:(id)arg1 withKey:(id)arg2;

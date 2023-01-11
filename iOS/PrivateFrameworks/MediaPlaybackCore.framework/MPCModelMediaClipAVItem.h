@@ -13,13 +13,12 @@
 @interface MPCModelMediaClipAVItem : MPAVItem <MPRTCReportingItemSessionCreating>
 {
     MPModelGenericObject *_modelGenericObject;
-    id _rtcReportingParentHierarchyToken;
     MPModelMediaClip *_mediaClip;
 }
 
 + (id)requiredMediaClipProperties;
-@property(readonly, nonatomic) MPModelMediaClip *mediaClip; // @synthesize mediaClip=_mediaClip;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MPModelMediaClip *mediaClip; // @synthesize mediaClip=_mediaClip;
 - (_Bool)_isVideoAsset;
 - (id)_currentPreferredStaticAsset;
 - (void)_applyLoudnessInfo;

@@ -6,29 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDDatabaseDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMBCloudDatabase, NSString;
 
-@interface HMDCameraClipsQuotaManager : NSObject <HMFLogging>
+@interface HMDCameraClipsQuotaManager : NSObject <HMDDatabaseDelegate, HMFLogging>
 {
-    _Bool _enabled;
     HMBCloudDatabase *_cloudDatabase;
 }
 
 + (id)logCategory;
 + (id)_quotaErrorFromServerError:(id)arg1;
-+ (id)_underlyingQuotaServerErrorFromServerError:(id)arg1;
++ (id)_quotaServerErrorFromServerError:(id)arg1;
 + (id)defaultManager;
-@property(readonly, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
-@property(readonly) HMBCloudDatabase *cloudDatabase; // @synthesize cloudDatabase=_cloudDatabase;
 - (void).cxx_destruct;
+@property(readonly) HMBCloudDatabase *cloudDatabase; // @synthesize cloudDatabase=_cloudDatabase;
 - (id)logIdentifier;
-- (id)_addFunctionInvokeOperationWithFunctionName:(id)arg1 serializedRequest:(id)arg2;
+- (id)database:(id)arg1 willRemoveZoneWithName:(id)arg2 isPrivate:(_Bool)arg3;
+- (id)_addCodeOperationWithFunctionName:(id)arg1 request:(id)arg2 responseClass:(Class)arg3;
 - (id)disableCloudStorageForZoneWithName:(id)arg1;
 - (id)enableCloudStorageForZoneWithName:(id)arg1;
-- (id)initWithCloudDatabase:(id)arg1 isEnabled:(_Bool)arg2;
-- (id)initWithCloudDatabase:(id)arg1;
+- (id)initWithDatabase:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

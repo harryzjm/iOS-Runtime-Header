@@ -32,6 +32,7 @@
 + (id)localizedStringFormatterForExpression:(id)arg1;
 + (id)nameForFaceExpression:(long long)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) double poseConfidence; // @synthesize poseConfidence=_poseConfidence;
 @property(nonatomic) CDStruct_14d5dc5e pose; // @synthesize pose=_pose;
 @property(nonatomic) double landmarksConfidence; // @synthesize landmarksConfidence=_landmarksConfidence;
@@ -46,7 +47,6 @@
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(nonatomic) unsigned long long faceId; // @synthesize faceId=_faceId;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (long long)_expressionForString:(id)arg1;
 - (id)descriptionForExpression:(long long)arg1;
 @property(readonly, nonatomic) long long likelyExpression;

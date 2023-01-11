@@ -25,6 +25,7 @@
         unsigned int titleNoWrap:1;
         unsigned int thumbnailCropCircle:1;
         unsigned int playActionAlign:1;
+        unsigned int subtitleIsEmphasized:1;
     } _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
@@ -34,6 +35,7 @@
     _Bool _hideVerticalDivider;
     _Bool _titleNoWrap;
     _Bool _thumbnailCropCircle;
+    _Bool _subtitleIsEmphasized;
     int _separatorStyle;
     int _auxiliaryBottomTextColor;
     int _titleAlign;
@@ -66,6 +68,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool subtitleIsEmphasized; // @synthesize subtitleIsEmphasized=_subtitleIsEmphasized;
 @property(retain, nonatomic) SFRichText *richSubtitle; // @synthesize richSubtitle=_richSubtitle;
 @property(copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property(copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
@@ -89,26 +93,26 @@
 @property(copy, nonatomic) NSString *ratingText; // @synthesize ratingText=_ratingText;
 @property(copy, nonatomic) NSNumber *rating; // @synthesize rating=_rating;
 @property(copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
-@property(nonatomic) _Bool isCentered;
+@property(nonatomic) _Bool isCentered; // @synthesize isCentered=_isCentered;
 @property(retain, nonatomic) SFImage *titleImage; // @synthesize titleImage=_titleImage;
 @property(copy, nonatomic) NSString *contentAdvisory; // @synthesize contentAdvisory=_contentAdvisory;
-@property(copy, nonatomic) NSString *subtitle;
-@property(copy, nonatomic) NSString *title;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
-@property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(retain, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property(nonatomic) _Bool hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property(nonatomic) _Bool hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
+@property(nonatomic) _Bool canBeHidden; // @synthesize canBeHidden=_canBeHidden;
+@property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
+@property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasSubtitleIsEmphasized;
 - (_Bool)hasPlayActionAlign;
 - (_Bool)hasThumbnailCropCircle;
 - (_Bool)hasTitleNoWrap;

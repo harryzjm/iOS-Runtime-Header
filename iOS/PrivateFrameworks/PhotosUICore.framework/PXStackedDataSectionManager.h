@@ -4,14 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PXStackedDataSectionManager
+#import <PhotosUICore/PXDataSectionManagerEnabling-Protocol.h>
+
+@class NSString;
+
+@interface PXStackedDataSectionManager <PXDataSectionManagerEnabling>
 {
+    _Bool _enabled;
+    _Bool _alwaysContainsObjects;
+    id _additionalStorage;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) id additionalStorage; // @synthesize additionalStorage=_additionalStorage;
+@property(nonatomic) _Bool alwaysContainsObjects; // @synthesize alwaysContainsObjects=_alwaysContainsObjects;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+- (id)auxiliaryObjectForKey:(id)arg1 dataSectionObject:(id)arg2 hintIndex:(long long)arg3;
 - (id)changeDetailsForChangedChildDataSectionManager:(id)arg1 childChangeDetails:(id)arg2;
 - (id)changeDetailsForChildDataSectionManagersChangeDetails:(id)arg1;
+- (_Bool)isDataSectionEmpty;
 - (id)createDataSection;
+- (_Bool)_updateDataSectionIfNecessary;
 - (id)childDataSectionManagerForObjectAtIndex:(long long)arg1 localIndex:(long long *)arg2;
+- (id)initWithChildDataSectionManagers:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

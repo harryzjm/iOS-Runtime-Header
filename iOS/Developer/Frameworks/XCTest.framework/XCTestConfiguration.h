@@ -9,7 +9,7 @@
 #import <XCTest/NSCopying-Protocol.h>
 #import <XCTest/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, XCTAggregateSuiteRunStatistics;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, XCTAggregateSuiteRunStatistics, XCTCapabilities;
 
 @interface XCTestConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -22,6 +22,7 @@
     _Bool _initializeForUITesting;
     _Bool _gatherLocalizableStringsData;
     _Bool _emitOSLogs;
+    _Bool _testTimeoutsEnabled;
     NSString *_absolutePath;
     NSString *_testBundleRelativePath;
     NSURL *_testBundleURL;
@@ -35,6 +36,8 @@
     NSDictionary *_testApplicationDependencies;
     NSDictionary *_testApplicationUserOverrides;
     NSString *_productModuleName;
+    NSNumber *_traceCollectionEnabled;
+    NSDictionary *_performanceTestConfiguration;
     NSDictionary *_targetApplicationEnvironment;
     NSArray *_targetApplicationArguments;
     XCTAggregateSuiteRunStatistics *_aggregateStatisticsBeforeCrash;
@@ -43,12 +46,20 @@
     long long _userAttachmentLifetime;
     long long _testExecutionOrdering;
     NSNumber *_randomExecutionOrderingSeed;
+    NSNumber *_defaultTestExecutionTimeAllowance;
+    NSNumber *_maximumTestExecutionTimeAllowance;
+    XCTCapabilities *_IDECapabilities;
 }
 
 + (id)configurationWithContentsOfFile:(id)arg1;
 + (id)activeTestConfiguration;
 + (void)setActiveTestConfiguration:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain) XCTCapabilities *IDECapabilities; // @synthesize IDECapabilities=_IDECapabilities;
+@property(copy, nonatomic) NSNumber *maximumTestExecutionTimeAllowance; // @synthesize maximumTestExecutionTimeAllowance=_maximumTestExecutionTimeAllowance;
+@property(copy, nonatomic) NSNumber *defaultTestExecutionTimeAllowance; // @synthesize defaultTestExecutionTimeAllowance=_defaultTestExecutionTimeAllowance;
+@property _Bool testTimeoutsEnabled; // @synthesize testTimeoutsEnabled=_testTimeoutsEnabled;
 @property(retain) NSNumber *randomExecutionOrderingSeed; // @synthesize randomExecutionOrderingSeed=_randomExecutionOrderingSeed;
 @property long long testExecutionOrdering; // @synthesize testExecutionOrdering=_testExecutionOrdering;
 @property long long userAttachmentLifetime; // @synthesize userAttachmentLifetime=_userAttachmentLifetime;
@@ -59,6 +70,8 @@
 @property(copy) NSArray *targetApplicationArguments; // @synthesize targetApplicationArguments=_targetApplicationArguments;
 @property(copy) NSDictionary *targetApplicationEnvironment; // @synthesize targetApplicationEnvironment=_targetApplicationEnvironment;
 @property _Bool gatherLocalizableStringsData; // @synthesize gatherLocalizableStringsData=_gatherLocalizableStringsData;
+@property(copy) NSDictionary *performanceTestConfiguration; // @synthesize performanceTestConfiguration=_performanceTestConfiguration;
+@property(copy) NSNumber *traceCollectionEnabled; // @synthesize traceCollectionEnabled=_traceCollectionEnabled;
 @property _Bool initializeForUITesting; // @synthesize initializeForUITesting=_initializeForUITesting;
 @property _Bool testsMustRunOnMainThread; // @synthesize testsMustRunOnMainThread=_testsMustRunOnMainThread;
 @property _Bool reportActivities; // @synthesize reportActivities=_reportActivities;
@@ -79,7 +92,7 @@
 @property(copy, nonatomic) NSURL *testBundleURL; // @synthesize testBundleURL=_testBundleURL;
 @property(copy) NSString *testBundleRelativePath; // @synthesize testBundleRelativePath=_testBundleRelativePath;
 @property(copy) NSString *absolutePath; // @synthesize absolutePath=_absolutePath;
-- (void).cxx_destruct;
+- (void)clearXcodeReportingConfiguration;
 @property(readonly) long long testMode;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

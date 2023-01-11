@@ -14,6 +14,7 @@
 }
 
 + (id)colorMatrixBiasKernel;
++ (id)kernelNamesFromMetalLibraryData:(id)arg1;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 constants:(id)arg3 error:(id *)arg4;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 outputGroupSize:(struct CGSize)arg3 error:(id *)arg4;
@@ -44,7 +45,7 @@
 @property(nonatomic) _Bool canReduceOutputChannels;
 @property(nonatomic) _Bool preservesRange;
 @property(nonatomic) _Bool perservesAlpha;
-- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2 constantTypes:(id)arg3;
 - (id)_initWithReflection:(struct CIKernelReflection)arg1;
 - (id)initWithString:(id)arg1;
 - (id)_initWithString:(id)arg1 usingCruftCompatibility:(_Bool)arg2;

@@ -8,12 +8,12 @@
 
 #import <CFNetwork/__NSURLSessionTaskGroupForConfiguration-Protocol.h>
 
-@class NSString, NSURLSession, NSURLSessionConfiguration, __NSCFURLSession;
+@class NSString, NSURLSession, NSURLSessionConfiguration;
 
 @interface __NSCFURLSessionTaskGroup : NSObject <__NSURLSessionTaskGroupForConfiguration>
 {
     NSURLSessionConfiguration *_groupConfiguration_ivar;
-    __NSCFURLSession *_groupSession_ivar;
+    NSURLSession *_groupSession_ivar;
 }
 
 - (id)uploadTaskWithStreamedRequest:(id)arg1;
@@ -23,7 +23,6 @@
 - (void)dealloc;
 @property(readonly) __weak NSURLSession *_groupSession; // @dynamic _groupSession;
 @property(readonly) __weak NSURLSessionConfiguration *_groupConfiguration; // @dynamic _groupConfiguration;
-- (id)_initWithTarget:(id)arg1 configuration:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

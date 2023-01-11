@@ -8,7 +8,7 @@
 
 #import <AppleAccountUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface AAUIDeviceToDeviceEncryptionHook : NSObject <AAUIServerHook>
@@ -18,10 +18,10 @@
     NSString *_context;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate;
-- (void).cxx_destruct;
 - (void)_performHSAUpgradeWithAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)shouldMatchModel:(id)arg1;
 - (_Bool)shouldMatchElement:(id)arg1;
@@ -33,6 +33,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) RUIObjectModel *objectModel;
 @property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property(readonly) Class superclass;
 

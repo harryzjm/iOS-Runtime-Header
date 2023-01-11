@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) _Bool allowsFocus; // @synthesize allowsFocus=_allowsFocus;
+- (void)_updateBackgroundAndHighlightColor;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)prepareForReuse;
 - (_Bool)canBecomeFocused;

@@ -15,6 +15,8 @@
 + (id)fc_arrayByAddingUniqueObjectsFromArray:(id)arg1 toArray:(id)arg2;
 + (id)fc_arrayByAddingObjectsFromArray:(id)arg1 toArray:(id)arg2 inRelativeOrder:(unsigned long long)arg3;
 + (id)fc_arrayByAddingObjectsFromArray:(id)arg1 toArray:(id)arg2;
+- (double)fc_cosineDistanceToArray:(id)arg1;
+- (double)fc_euclideanDistanceToArray:(id)arg1;
 - (_Bool)fc_isEqualToArray:(id)arg1;
 - (_Bool)fc_isEqualToArray:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)fc_rotateElementsFromTheIndexOfSelectedItem:(unsigned long long)arg1;
@@ -45,6 +47,7 @@
 - (id)fc_subarrayUpToIndex:(unsigned long long)arg1 inclusive:(_Bool)arg2;
 - (id)fc_subarrayUpToCountInclusive:(unsigned long long)arg1;
 - (id)fc_arrayByAddingNonContainedObjectsFromArray:(id)arg1;
+- (id)fc_setByCollectingObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_arrayByCollectingObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_indexesOfObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_indexesOfObjectsIdenticalTo:(id)arg1;
@@ -70,6 +73,8 @@
 - (id)fc_setOfObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_setByTransformingWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_arrayByTransformingWithBlock:(CDUnknownBlockType)arg1;
+- (id)fc_objectsOfMinValueWithValueBlock:(CDUnknownBlockType)arg1 comparator:(CDUnknownBlockType)arg2;
+- (id)fc_objectsOfMaxValueWithValueBlock:(CDUnknownBlockType)arg1 comparator:(CDUnknownBlockType)arg2;
 - (id)fc_arrayByTransformingWithBlockWithIndex:(CDUnknownBlockType)arg1;
 - (_Bool)fc_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (_Bool)fc_containsObjectsWithValue:(id)arg1 forKey:(id)arg2;
@@ -77,6 +82,7 @@
 - (_Bool)fc_containsObjectsAtFront:(id)arg1;
 - (_Bool)fc_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_randomObject;
+- (id)fc_firstObjectOfClass:(Class)arg1;
 - (id)fc_firstObjectWithValue:(id)arg1 forKey:(id)arg2;
 - (id)fc_firstObjectFromIndex:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)fc_firstObjectPassingTest:(CDUnknownBlockType)arg1;

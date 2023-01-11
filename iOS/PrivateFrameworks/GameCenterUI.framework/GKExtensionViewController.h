@@ -27,11 +27,12 @@
     NSLayoutConstraint *_effectTopConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *effectTopConstraint; // @synthesize effectTopConstraint=_effectTopConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *effectBottomConstraint; // @synthesize effectBottomConstraint=_effectBottomConstraint;
 @property(nonatomic) _Bool hasInitialData; // @synthesize hasInitialData=_hasInitialData;
 @property(nonatomic) _Bool adjustTopConstraint; // @synthesize adjustTopConstraint=_adjustTopConstraint;
-@property(nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
+@property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property(nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 @property(retain, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
@@ -65,6 +66,7 @@
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)setupVisualEffects;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (void)didBecomeActive:(id)arg1;

@@ -8,31 +8,29 @@
 
 @interface HUClipScrubberTimeController : NSObject
 {
+    _Bool _portraitMode;
+    _Bool _userControlled;
     double _timeScale;
     double _minimumDuration;
     double _maximumDuration;
 }
 
-+ (id)attributedLiveStringFromDate:(id)arg1;
-+ (id)attributedTimeStringFromDate:(id)arg1;
-+ (_Bool)_shouldUseTwentyFourHourTime;
-+ (id)attributedStringFromDateString:(id)arg1;
-+ (id)attributedStringFromTwentyFourHourDateString:(id)arg1;
-+ (id)twentyFourHourLiveStringFromDate:(id)arg1;
-+ (id)liveStringFromDate:(id)arg1;
-+ (id)dayNameStringFromDate:(id)arg1;
-+ (id)twelveHourTimeStringFromDate:(id)arg1;
-+ (id)twentyFourHourTimeStringFromDate:(id)arg1;
 @property(nonatomic) double maximumDuration; // @synthesize maximumDuration=_maximumDuration;
+@property(nonatomic) _Bool userControlled; // @synthesize userControlled=_userControlled;
+@property(nonatomic) _Bool portraitMode; // @synthesize portraitMode=_portraitMode;
 @property(nonatomic) double minimumDuration; // @synthesize minimumDuration=_minimumDuration;
 @property(nonatomic) double timeScale; // @synthesize timeScale=_timeScale;
+- (void)shrinkTimelineToMinimumZoom;
+- (void)expandTimelineToMaximumZoom;
 - (_Bool)isAtMinimumZoom;
-- (double)suggestedWidthForClip:(id)arg1;
+- (double)posterFrameWidthFromCameraLiveSource;
+- (double)posterFrameWidthForEvent:(id)arg1;
+- (double)timelineWidthForEvent:(id)arg1;
 - (double)timeScaleForGestureScale:(double)arg1;
 - (double)timeScaleForGestureScale:(double)arg1 maxDuration:(double)arg2;
 @property(readonly, nonatomic) double maximumGestureScale;
 - (void)updateTimeScaleIfNeeded;
-- (void)reloadClips:(id)arg1;
+- (void)reloadEvents:(id)arg1;
 - (id)init;
 
 @end

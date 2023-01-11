@@ -12,7 +12,6 @@
 
 @interface IMAccount : NSObject <IMSystemMonitorListener>
 {
-    IMServiceImpl *_service;
     IMPeople *_buddyList;
     NSRecursiveLock *_lock;
     NSMapTable *_imHandles;
@@ -72,6 +71,7 @@
     _Bool _needToCheckForWatchedIMHandles;
     _Bool _iconChecked;
     _Bool _hasBeenRemoved;
+    IMServiceImpl *_service;
     id _smallImage;
     id _accountImage;
     _Bool _asleep;
@@ -87,6 +87,7 @@
 + (void)removePasswordForAccount:(id)arg1 forServiceName:(id)arg2;
 + (void)setPassword:(id)arg1 forAccount:(id)arg2 forAuthID:(id)arg3 forServiceName:(id)arg4;
 + (id)passwordForAccount:(id)arg1 forServiceName:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool justLoggedIn; // @synthesize justLoggedIn=_justLoggedIn;
 @property(readonly, nonatomic) IMPeople *buddyList; // @synthesize buddyList=_buddyList;
 @property(readonly, nonatomic) id loginIMHandle; // @synthesize loginIMHandle=_loginIMHandle;
@@ -105,7 +106,6 @@
 @property(readonly, nonatomic) __weak IMServiceImpl *service; // @synthesize service=_service;
 @property(readonly, nonatomic) NSString *strippedLogin; // @synthesize strippedLogin=_strippedLogin;
 @property(retain, nonatomic) NSString *login; // @synthesize login=_loginID;
-- (void).cxx_destruct;
 - (void)_handleIncomingCommand:(id)arg1 withProperties:(id)arg2 fromBuddyInfo:(id)arg3;
 - (void)_handleDeliveredCommand:(id)arg1 withProperties:(id)arg2 fromBuddyInfo:(id)arg3;
 - (_Bool)_updateDisplayName:(id)arg1;
@@ -211,15 +211,10 @@
 - (void)startWatchingIMHandle:(id)arg1;
 - (void)watchBuddiesIfNecessary;
 - (void)_watchBuddiesIfNecessary;
-- (_Bool)removeIMHandle:(id)arg1 fromIMPerson:(id)arg2;
-- (_Bool)addIMHandle:(id)arg1 toIMPerson:(id)arg2;
-- (id)imHandlesForIMPerson:(id)arg1;
+- (id)handlesForCNContact:(id)arg1;
 - (void)requestBuddyListAuthorizationFromIMHandle:(id)arg1;
 - (void)setBuddyListAuthorization:(_Bool)arg1 forIMHandle:(id)arg2;
 - (unsigned long long)sortOrderForIMHandle:(id)arg1 inGroup:(id)arg2;
-- (id)personSibsForIMHandle:(id)arg1;
-- (id)personForIMHandle:(id)arg1 identifier:(int *)arg2;
-- (id)personForIMHandle:(id)arg1;
 - (id)imHandleWithID:(id)arg1;
 - (id)existingIMHandleWithID:(id)arg1 countryCode:(id)arg2;
 - (id)imHandleWithID:(id)arg1 countryCode:(id)arg2;
@@ -311,8 +306,6 @@
 - (void)setCachedBlockList:(id)arg1;
 - (void)setCachedAllowList:(id)arg1;
 @property(readonly, nonatomic) NSArray *emailDomains;
-@property(readonly, nonatomic) NSString *addressBookProperty;
-@property(readonly, nonatomic) NSArray *addressBookProperties;
 @property(readonly, nonatomic) NSDictionary *dictionary;
 - (void)loadFromDictionary:(id)arg1;
 - (void)_loadFromDictionary:(id)arg1 force:(_Bool)arg2;

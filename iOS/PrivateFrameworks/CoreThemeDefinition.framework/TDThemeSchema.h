@@ -25,7 +25,6 @@
 - (void)loadEffectConstants;
 - (void)loadMetafontSizes;
 - (void)loadMetafontSelectors;
-- (void)loadArtworkDraftTypes;
 - (void)loadColorStatuses;
 - (void)loadColorNames;
 - (void)loadRenditionSubtypes;
@@ -56,8 +55,8 @@
 - (void)_sanityCheckEffectRenditionsAndUpdateIfNecessary;
 - (void)_sanityCheckSchemaDefinitionsAndUpdateIfNecessary;
 - (void)_sanityCheckSchemaCategoriesAndUpdateIfNecessary;
-- (void)_addSchemaPartDefinitionsForStandardElement:(const CDStruct_e3362728 *)arg1 withElement:(id)arg2;
-- (void)_sanityCheckSchemaPartDefinitionsForStandardElement:(const CDStruct_e3362728 *)arg1 withElement:(id)arg2;
+- (void)_addSchemaPartDefinitionsForStandardElement:(const CDStruct_22c2ae3f *)arg1 withElement:(id)arg2;
+- (void)_sanityCheckSchemaPartDefinitionsForStandardElement:(const CDStruct_22c2ae3f *)arg1 withElement:(id)arg2;
 - (void)_sanityCheckColorNamesAndUpdateIfNecessary;
 - (void)_sanityCheckMetafontSizeSelectorsAndUpdateIfNecessary;
 - (void)_sanityCheckObjectsWithEntityName:(id)arg1 globalDescriptor:(void *)arg2 matchIdentifierOnly:(_Bool)arg3;

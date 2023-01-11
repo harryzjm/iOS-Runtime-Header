@@ -8,6 +8,7 @@
 
 @interface EMAccount
 {
+    _Bool _primaryiCloudAccount;
     NSString *_name;
     NSString *_username;
     NSString *_hostname;
@@ -17,10 +18,11 @@
 + (id)sortDescriptorForNameAscending:(_Bool)arg1;
 + (id)predicateForDeliveryAccounts;
 + (id)predicateForReceivingAccounts;
+- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isPrimaryiCloudAccount) _Bool primaryiCloudAccount; // @synthesize primaryiCloudAccount=_primaryiCloudAccount;
 @property(readonly, copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property(readonly, copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)ef_publicDescription;
 

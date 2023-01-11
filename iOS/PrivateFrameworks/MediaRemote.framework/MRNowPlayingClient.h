@@ -8,29 +8,36 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray, _MRNowPlayingClientProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRNowPlayingPlayerProtobuf;
-@protocol OS_dispatch_queue;
+@class MRClient, MRPlayer, MRPlayerPath, NSArray, NSMutableArray;
 
 @interface MRNowPlayingClient : NSObject <MRNowPlayingClientState>
 {
-    _MRNowPlayingPlayerProtobuf *_activePlayer;
-    NSObject<OS_dispatch_queue> *_serialQueue;
+    MRPlayer *_activePlayer;
     NSMutableArray *_playerClients;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    _Bool _isForeground;
+    _Bool _useMediaRemoteActivePlayerHeuristic;
+    MRPlayerPath *_playerPath;
 }
 
-@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useMediaRemoteActivePlayerHeuristic; // @synthesize useMediaRemoteActivePlayerHeuristic=_useMediaRemoteActivePlayerHeuristic;
+@property(retain, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 - (id)debugDescription;
 - (id)description;
 - (void)restoreNowPlayingClientState;
 @property(readonly, nonatomic) NSArray *playerClients;
 - (void)removePlayer:(id)arg1;
 - (id)nowPlayingPlayerClientForPlayerPath:(id)arg1;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *activePlayerPath;
-- (_Bool)updateActivePlayerPath:(id)arg1;
+@property(readonly, nonatomic) MRPlayerPath *activePlayerPath;
+- (void)applicationDidEnterBackground;
+- (void)applicationWillEnterForeground;
+- (void)reevaluateActivePlayerWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setActivePlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateActivePlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestActiveForPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mergeClient:(id)arg1;
-@property(retain, nonatomic) _MRNowPlayingClientProtobuf *client;
+@property(retain, nonatomic) MRClient *client;
+- (void)dealloc;
 - (id)initWithPlayerPath:(id)arg1;
 
 @end

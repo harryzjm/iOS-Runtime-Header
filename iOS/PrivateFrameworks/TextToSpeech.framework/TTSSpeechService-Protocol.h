@@ -10,7 +10,6 @@
 @protocol OS_dispatch_queue;
 
 @protocol TTSSpeechService <NSObject>
-@property(nonatomic) NSObject<OS_dispatch_queue> *serviceQueue;
 - (_Bool)isVoiceValid:(TTSSpeechVoice *)arg1;
 - (NSString *)speechMarkupStringForType:(long long)arg1 voice:(TTSSpeechVoice *)arg2 string:(NSString *)arg3;
 - (NSSet *)supportedIPAPhonemeLanguages;
@@ -20,10 +19,14 @@
 - (oneway void)continueSpeechRequest:(TTSSpeechRequest *)arg1;
 - (oneway void)pauseSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
 - (oneway void)startSpeechRequest:(TTSSpeechRequest *)arg1;
+- (void)setServiceQueue:(NSObject<OS_dispatch_queue> *)arg1 forSynthesizerInstanceID:(unsigned long long)arg2;
 - (void)synthesizerInstanceDestroyed:(unsigned long long)arg1;
 - (void)initializeSpeechServerInstance:(unsigned long long)arg1;
 
 @optional
+- (_Bool)isNashvilleService;
+- (_Bool)isSiriService;
+- (NSString *)serviceIdentifier;
 - (NSDictionary *)audioFileSettingsForVoice:(TTSSpeechVoice *)arg1;
 - (NSString *)embeddedVolumeMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 volume:(double)arg3;
 - (NSString *)embeddedPitchMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 pitch:(double)arg3;
@@ -35,5 +38,6 @@
 - (NSString *)phonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
 - (NSString *)lhPhonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
 - (_Bool)employSpeechMarkupForType:(long long)arg1 language:(NSString *)arg2;
+- (oneway void)getVoicesForLanguage:(NSString *)arg1 queryingMobileAssets:(_Bool)arg2 reply:(void (^)(NSArray *))arg3;
 @end
 

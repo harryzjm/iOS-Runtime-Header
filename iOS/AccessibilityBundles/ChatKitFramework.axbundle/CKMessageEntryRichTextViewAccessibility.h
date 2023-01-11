@@ -11,7 +11,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityPath;
+- (void)paste:(id)arg1;
+- (void)setAttributedText:(id)arg1;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
+- (id)accessibilityCustomRotors;
+- (void)_setAXMentionElements:(id)arg1;
+- (id)_axMentionElements;
+- (void)_setAXMentionRotor:(id)arg1;
+- (id)_axMentionRotor;
 - (_Bool)isAccessibilityElement;
 
 @end

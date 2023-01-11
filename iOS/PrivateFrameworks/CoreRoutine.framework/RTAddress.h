@@ -15,6 +15,7 @@
 {
     _Bool _isIsland;
     NSUUID *_identifier;
+    NSArray *_subPremises;
     NSString *_subThoroughfare;
     NSString *_thoroughfare;
     NSString *_subLocality;
@@ -28,13 +29,18 @@
     NSString *_inlandWater;
     NSString *_ocean;
     NSArray *_areasOfInterest;
+    NSString *_iso3166CountryCode;
+    NSString *_iso3166SubdivisionCode;
     NSDate *_creationDate;
     NSDate *_expirationDate;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(readonly, copy, nonatomic) NSString *iso3166SubdivisionCode; // @synthesize iso3166SubdivisionCode=_iso3166SubdivisionCode;
+@property(readonly, copy, nonatomic) NSString *iso3166CountryCode; // @synthesize iso3166CountryCode=_iso3166CountryCode;
 @property(readonly, nonatomic) _Bool isIsland; // @synthesize isIsland=_isIsland;
 @property(readonly, nonatomic) NSArray *areasOfInterest; // @synthesize areasOfInterest=_areasOfInterest;
 @property(readonly, copy, nonatomic) NSString *ocean; // @synthesize ocean=_ocean;
@@ -49,8 +55,8 @@
 @property(readonly, copy, nonatomic) NSString *subLocality; // @synthesize subLocality=_subLocality;
 @property(readonly, copy, nonatomic) NSString *thoroughfare; // @synthesize thoroughfare=_thoroughfare;
 @property(readonly, copy, nonatomic) NSString *subThoroughfare; // @synthesize subThoroughfare=_subThoroughfare;
+@property(readonly, nonatomic) NSArray *subPremises; // @synthesize subPremises=_subPremises;
 @property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *mergedThoroughfare;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -59,9 +65,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(_Bool)arg15 creationDate:(id)arg16 expirationDate:(id)arg17;
-- (id)initWithThoroughfare:(id)arg1 subLocality:(id)arg2 locality:(id)arg3 subAdministrativeArea:(id)arg4 administrativeArea:(id)arg5 postalCode:(id)arg6 country:(id)arg7 countryCode:(id)arg8;
-- (id)initWithThoroughfare:(id)arg1 locality:(id)arg2 administrativeArea:(id)arg3 postalCode:(id)arg4 country:(id)arg5 countryCode:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 subPremises:(id)arg2 subThoroughfare:(id)arg3 thoroughfare:(id)arg4 subLocality:(id)arg5 locality:(id)arg6 subAdministrativeArea:(id)arg7 administrativeArea:(id)arg8 administrativeAreaCode:(id)arg9 postalCode:(id)arg10 country:(id)arg11 countryCode:(id)arg12 inlandWater:(id)arg13 ocean:(id)arg14 areasOfInterest:(id)arg15 isIsland:(_Bool)arg16 creationDate:(id)arg17 expirationDate:(id)arg18 iso3166CountryCode:(id)arg19 iso3166SubdivisionCode:(id)arg20;
 - (id)init;
 
 @end

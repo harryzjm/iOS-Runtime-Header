@@ -16,7 +16,7 @@
     int _arithmeticType;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float maximumValue; // @synthesize maximumValue=_maximumValue;
 @property(nonatomic) float minimumValue; // @synthesize minimumValue=_minimumValue;
 @property(nonatomic) CDStruct_14f26992 secondaryStrideInPixels; // @synthesize secondaryStrideInPixels=_secondaryStrideInPixels;

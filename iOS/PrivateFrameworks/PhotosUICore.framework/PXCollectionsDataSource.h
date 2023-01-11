@@ -9,8 +9,9 @@
     id _content;
 }
 
-@property(readonly, nonatomic) id content; // @synthesize content=_content;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id content; // @synthesize content=_content;
+- (id)existingAssetsFetchResultAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)countForCollection:(id)arg1;
 - (id)collectionListForSection:(long long)arg1;
 - (id)collectionAtIndexPath:(id)arg1;

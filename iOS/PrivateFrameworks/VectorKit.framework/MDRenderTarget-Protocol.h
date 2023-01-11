@@ -10,18 +10,21 @@
 @protocol GGLRenderQueueSource;
 
 @protocol MDRenderTarget <NSObject>
+@property(readonly, nonatomic) struct RenderTarget *linearRenderTarget;
+@property(readonly, nonatomic) const struct RenderTargetFormat *linearFormat;
 @property(readonly, nonatomic) struct RenderTarget *finalRenderTarget;
 @property(readonly, nonatomic) struct CGSize sizeInPixels;
 @property(readonly, nonatomic) _Bool shouldRasterize;
 @property(readonly, nonatomic) struct Renderer *renderer;
 @property(readonly, nonatomic) const struct RenderTargetFormat *format;
+@property(readonly, nonatomic) _Bool supportsFramebufferFetch;
 @property(readonly, nonatomic) _Bool multiSample;
 @property(nonatomic) id <GGLRenderQueueSource> renderSource;
 @property(nonatomic) struct CGRect bounds;
 @property(nonatomic) double contentScale;
 @property(nonatomic) struct CGSize size;
 - (shared_ptr_fa6aa836)bitmapData;
-- (void)renderWithTimestamp:(double)arg1 completion:(function_d3afe2e2)arg2;
+- (void)renderWithTimestamp:(double)arg1 completion:(function_84aba934)arg2;
 - (_Bool)hasRenderTarget;
 - (void)destroyRenderTarget;
 - (void)createRenderTarget;

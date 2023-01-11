@@ -21,14 +21,15 @@
 }
 
 + (id)loadingScreen;
-@property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 - (void)didRotate:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 templateImage:(id)arg2;
 - (double)hideAnimationDuration;
 - (_Bool)isVisible;
 - (void)hide;
 - (void)timeout;
+- (void)showOverKeyWindowWithSpinnerOnly:(_Bool)arg1;
 - (void)showOverKeyWindow;
 - (void)setLoadingDelay:(double)arg1;
 - (void)setTimeout:(double)arg1;

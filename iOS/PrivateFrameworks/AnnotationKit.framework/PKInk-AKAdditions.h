@@ -11,6 +11,6 @@
 + (id)akInkFromInk:(id)arg1 color:(id)arg2 strokeWidth:(double)arg3;
 + (id)akInkFromInk:(id)arg1 strokeWidth:(double)arg2;
 + (id)akDefaultInkWithIdentifier:(id)arg1 color:(id)arg2 strokeWidth:(double)arg3;
-+ (id)akDefaultInkWithIdentifier:(id)arg1;
++ (id)akDefaultInkWithHighVisibility:(_Bool)arg1;
 @end
 

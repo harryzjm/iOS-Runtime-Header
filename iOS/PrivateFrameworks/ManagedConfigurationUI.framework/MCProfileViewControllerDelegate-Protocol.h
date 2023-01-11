@@ -9,9 +9,10 @@
 @class MCProfileViewController;
 
 @protocol MCProfileViewControllerDelegate <NSObject>
+- (void)profileViewControllerDidSelectRemoveProfile:(MCProfileViewController *)arg1;
+- (_Bool)profileViewControllerIsProfileInstalled;
 
 @optional
 - (void)profileViewControllerDidSelectUpdateProfile:(MCProfileViewController *)arg1;
-- (void)profileViewControllerDidSelectRemoveProfile:(MCProfileViewController *)arg1;
 @end
 

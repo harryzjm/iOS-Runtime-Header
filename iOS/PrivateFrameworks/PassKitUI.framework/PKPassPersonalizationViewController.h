@@ -7,17 +7,15 @@
 #import <UIKit/UITableViewController.h>
 
 #import <PassKitUI/PKPassPersonalizationCellDelegate-Protocol.h>
-#import <PassKitUI/PKPassPersonalizationFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPassPersonalizationTermsViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, PKContact, PKPass, PKPassPersonalizationFooterView, PKPassPersonalizationHeaderView, UIBarButtonItem, UIButton;
+@class NSArray, NSString, OBPrivacyLinkController, PKContact, PKPass, PKPassPersonalizationHeaderView, UIBarButtonItem, UIButton;
 @protocol PKPassPersonalizationViewControllerDelegate;
 
-@interface PKPassPersonalizationViewController : UITableViewController <PKPassPersonalizationCellDelegate, PKPassPersonalizationFooterViewDelegate, PKPassPersonalizationTermsViewControllerDelegate, PKPaymentSetupViewControllerDelegate>
+@interface PKPassPersonalizationViewController : UITableViewController <PKPassPersonalizationCellDelegate, PKPassPersonalizationTermsViewControllerDelegate, PKPaymentSetupViewControllerDelegate>
 {
     PKPassPersonalizationHeaderView *_headerView;
-    PKPassPersonalizationFooterView *_footerView;
     UIBarButtonItem *_personalizeNowButton;
     UIButton *_personalizeLaterButton;
     PKPass *_pass;
@@ -27,15 +25,15 @@
     unsigned long long _personalizationSource;
     _Bool _hasScrolledToCells;
     _Bool _termsAndConditionsAccepted;
+    OBPrivacyLinkController *_privacyController;
     id <PKPassPersonalizationViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) id <PKPassPersonalizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPassPersonalizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_presentPersonalizationErrorAlert;
 - (id)_nextCellForIndexPath:(id)arg1;
 - (void)_positionFooterView;
-- (void)_configureFooterView;
 - (void)_configureHeaderViewForState:(unsigned long long)arg1;
 - (void)_scrollToCellsIfNeeded;
 - (_Bool)_contactReadyForPersonalization;
@@ -45,7 +43,6 @@
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)passPersonalizationTermsViewControllerDidDeclineTerms:(id)arg1;
 - (void)passPersonalizationTermsViewControllerDidAcceptTerms:(id)arg1;
-- (void)passPersonalizationFooterViewPrivacyLinkPressed:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (_Bool)personalizationCellShouldReturn:(id)arg1;
 - (void)personalizationCellDidChangeValue:(id)arg1;

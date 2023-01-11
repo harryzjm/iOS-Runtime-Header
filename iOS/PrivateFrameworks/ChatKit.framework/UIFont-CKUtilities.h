@@ -7,6 +7,8 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (CKUtilities)
++ (id)__ck_fontForStyle:(id)arg1 weight:(double)arg2;
++ (id)__ck_emphasizedFontFromFont:(id)arg1;
 + (id)__ck_shortEmphasizedPreferredFontForTextStyle:(id)arg1;
 + (id)__ck_emphasizedPreferredFontForTextStyle:(id)arg1;
 + (id)__ck_shortDefaultFontForTextStyle:(id)arg1;
@@ -22,5 +24,6 @@
 + (id)ck_cui_cameraFontForContentSize:(id)arg1;
 + (double)_interpolatedAdditionalFontSizeForMainScreen;
 + (id)ck_cui_cameraFontOfSize:(double)arg1;
+- (id)__ck_fontScaledByUserPreference;
 @end
 

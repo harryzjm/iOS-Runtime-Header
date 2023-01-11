@@ -16,17 +16,15 @@
 {
     CDStruct_95bda58d _warnings;
     struct _has;
-    _Bool __encodeLegacyGloryData;
     NSArray *_addedTasks;
     _INPBTaskList *_modifiedTaskList;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)addedTasksType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBTaskList *modifiedTaskList; // @synthesize modifiedTaskList=_modifiedTaskList;
 @property(copy, nonatomic) NSArray *addedTasks; // @synthesize addedTasks=_addedTasks;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

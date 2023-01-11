@@ -10,13 +10,14 @@
 #import <Pasteboard/NSXPCListenerDelegate-Protocol.h>
 #import <Pasteboard/PBItemDataTransferDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
 @protocol PBItemCollectionDataTransferDelegate;
 
 @interface PBItemCollection : NSObject <NSXPCListenerDelegate, PBItemDataTransferDelegate, NSSecureCoding>
 {
     _Bool _itemQueue_isDataProvider;
     _Bool _itemQueue_deviceLockedPasteboard;
+    _Bool _itemQueue_isOrWasRemote;
     NSDate *_creationDate;
     NSXPCListener *_itemQueue_dataConsumersListener;
     NSXPCListenerEndpoint *_itemQueue_remoteDataProviderEndpoint;
@@ -25,21 +26,33 @@
     NSDictionary *_itemQueue_metadata;
     NSDictionary *_itemQueue_privateMetadata;
     NSUUID *_itemQueue_UUID;
+    NSUUID *_itemQueue_saveBootSession;
+    unsigned long long _itemQueue_saveTimestamp;
+    NSData *_itemQueue_originatorPersistentID;
     NSString *_itemQueue_originatorBundleID;
     NSString *_itemQueue_originatorTeamID;
+    NSString *_itemQueue_originatorLocalizedName;
     long long _itemQueue_originatorDataOwner;
+    NSString *_itemQueue_remoteDeviceName;
     long long _itemQueue_remotePasteboardState;
     id <PBItemCollectionDataTransferDelegate> _itemQueue_dataTransferDelegate;
 }
 
 + (id)allowedClassesForSecureCoding;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PBItemCollectionDataTransferDelegate> itemQueue_dataTransferDelegate; // @synthesize itemQueue_dataTransferDelegate=_itemQueue_dataTransferDelegate;
 @property(nonatomic) long long itemQueue_remotePasteboardState; // @synthesize itemQueue_remotePasteboardState=_itemQueue_remotePasteboardState;
+@property(copy, nonatomic) NSString *itemQueue_remoteDeviceName; // @synthesize itemQueue_remoteDeviceName=_itemQueue_remoteDeviceName;
+@property(nonatomic) _Bool itemQueue_isOrWasRemote; // @synthesize itemQueue_isOrWasRemote=_itemQueue_isOrWasRemote;
 @property(nonatomic, getter=itemQueue_isDeviceLockedPasteboard) _Bool itemQueue_deviceLockedPasteboard; // @synthesize itemQueue_deviceLockedPasteboard=_itemQueue_deviceLockedPasteboard;
 @property(nonatomic) long long itemQueue_originatorDataOwner; // @synthesize itemQueue_originatorDataOwner=_itemQueue_originatorDataOwner;
+@property(copy, nonatomic) NSString *itemQueue_originatorLocalizedName; // @synthesize itemQueue_originatorLocalizedName=_itemQueue_originatorLocalizedName;
 @property(copy, nonatomic) NSString *itemQueue_originatorTeamID; // @synthesize itemQueue_originatorTeamID=_itemQueue_originatorTeamID;
 @property(copy, nonatomic) NSString *itemQueue_originatorBundleID; // @synthesize itemQueue_originatorBundleID=_itemQueue_originatorBundleID;
+@property(copy, nonatomic) NSData *itemQueue_originatorPersistentID; // @synthesize itemQueue_originatorPersistentID=_itemQueue_originatorPersistentID;
+@property(nonatomic) unsigned long long itemQueue_saveTimestamp; // @synthesize itemQueue_saveTimestamp=_itemQueue_saveTimestamp;
+@property(copy, nonatomic) NSUUID *itemQueue_saveBootSession; // @synthesize itemQueue_saveBootSession=_itemQueue_saveBootSession;
 @property(nonatomic) _Bool itemQueue_isDataProvider; // @synthesize itemQueue_isDataProvider=_itemQueue_isDataProvider;
 @property(retain, nonatomic) NSUUID *itemQueue_UUID; // @synthesize itemQueue_UUID=_itemQueue_UUID;
 @property(retain, nonatomic) NSDictionary *itemQueue_privateMetadata; // @synthesize itemQueue_privateMetadata=_itemQueue_privateMetadata;
@@ -49,7 +62,6 @@
 @property(retain, nonatomic) NSXPCListenerEndpoint *itemQueue_remoteDataProviderEndpoint; // @synthesize itemQueue_remoteDataProviderEndpoint=_itemQueue_remoteDataProviderEndpoint;
 @property(retain, nonatomic) NSXPCListener *itemQueue_dataConsumersListener; // @synthesize itemQueue_dataConsumersListener=_itemQueue_dataConsumersListener;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)item:(id)arg1 representationFinishedDataTransfer:(id)arg2;
 - (void)item:(id)arg1 representation:(id)arg2 beganDataTransferWithProgress:(id)arg3;
@@ -59,7 +71,7 @@
 - (void)setRemoteMetadataLoaded;
 @property(readonly, nonatomic, getter=isRemoteMetadataLoaded) _Bool remoteMetadataLoaded;
 @property(nonatomic) _Bool isRemote;
-- (void)setUsesServerConnectionToLoadData;
+- (void)setUsesServerConnectionToLoadDataWithAuthenticationBlock:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)availableRepresentationTypes;
@@ -79,12 +91,20 @@
 - (void)setDataProviderEndpoint:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)dataConsumersListener;
+@property(copy, nonatomic) NSString *remoteDeviceName;
+@property(nonatomic) _Bool isOrWasRemote;
 @property(nonatomic, getter=isDeviceLockedPasteboard) _Bool deviceLockedPasteboard; // @dynamic deviceLockedPasteboard;
 @property(nonatomic) long long originatorDataOwner; // @dynamic originatorDataOwner;
+- (void)setOriginatorLocalizedName:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *originatorLocalizedName; // @dynamic originatorLocalizedName;
 - (void)setOriginatorTeamID:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *originatorTeamID; // @dynamic originatorTeamID;
 - (void)setOriginatorBundleID:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *originatorBundleID; // @dynamic originatorBundleID;
+- (void)setOriginatorPersistentID:(id)arg1;
+@property(readonly, copy, nonatomic) NSData *originatorPersistentID;
+@property(nonatomic) unsigned long long saveTimestamp; // @dynamic saveTimestamp;
+@property(copy, nonatomic) NSUUID *saveBootSession; // @dynamic saveBootSession;
 @property(readonly, nonatomic) _Bool isDataProvider; // @dynamic isDataProvider;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *dataConsumersEndpoint; // @dynamic dataConsumersEndpoint;
 @property(readonly, nonatomic) NSUUID *UUID; // @dynamic UUID;

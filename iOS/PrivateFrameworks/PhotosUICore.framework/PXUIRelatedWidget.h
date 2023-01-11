@@ -13,7 +13,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableSet, NSObject, NSString, PXOneUpPresentation, PXPhotoKitUIMediaProvider, PXPhotosDetailsContext, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUITapGestureRecognizer, PXWidgetSpec, _PXUIRelatedPreviewOrbContext;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXUIRelatedWidget <PXReusableObjectPoolDelegate, UIGestureRecognizerDelegate, PXScrollViewControllerObserver, PXTilingControllerZoomAnimationCoordinatorDelegate, PXTilingControllerPreheatHandler, PXUIWidget, PXDiagnosticsEnvironment>
 {
@@ -26,6 +26,7 @@
     _PXUIRelatedPreviewOrbContext *__previewOrbContext;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setPreviewOrbContext:) _PXUIRelatedPreviewOrbContext *_previewOrbContext; // @synthesize _previewOrbContext=__previewOrbContext;
 @property(readonly, nonatomic) PXTouchingUIGestureRecognizer *_touchGestureRecognizer; // @synthesize _touchGestureRecognizer=__touchGestureRecognizer;
 @property(readonly, nonatomic) PXUITapGestureRecognizer *_tapGestureRecognizer; // @synthesize _tapGestureRecognizer=__tapGestureRecognizer;
@@ -33,7 +34,6 @@
 @property(readonly, nonatomic) NSMutableSet *_tilesInUse; // @synthesize _tilesInUse=__tilesInUse;
 @property(readonly, nonatomic) PXReusableObjectPool *_tileReusePool; // @synthesize _tileReusePool=__tileReusePool;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
-- (void).cxx_destruct;
 - (id)_assetsBySizeWithTileIdentifiers:(const struct PXTileIdentifier *)arg1 withGeometries:(const struct PXTileGeometry *)arg2 count:(unsigned long long)arg3;
 - (void)stopPreheatingTilesForIdentifiers:(const struct PXTileIdentifier *)arg1 withGeometries:(const struct PXTileGeometry *)arg2 count:(unsigned long long)arg3 context:(void *)arg4;
 - (void)startPreheatingTilesForIdentifiers:(const struct PXTileIdentifier *)arg1 withGeometries:(const struct PXTileGeometry *)arg2 count:(unsigned long long)arg3 context:(void *)arg4;
@@ -64,7 +64,7 @@
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (id)_scrollViewController;
 - (void)commitPreviewViewController:(id)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (void)_registerTileClass:(Class)arg1 forReuseIdentifier:(long long)arg2;
 - (id)extendedTraitCollection;
 - (id)createTileAnimator;
@@ -78,16 +78,20 @@
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(retain, nonatomic) PXPhotosDetailsContext *context;
+@property(readonly, nonatomic) _Bool cursorInteractionEnabled;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool hasContentForCurrentInput;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(retain, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
@@ -95,7 +99,9 @@
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
+@property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

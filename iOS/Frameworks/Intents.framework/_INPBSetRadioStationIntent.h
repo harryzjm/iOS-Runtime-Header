@@ -17,7 +17,6 @@
     struct {
         unsigned int radioType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _radioType;
     _INPBString *_channel;
     _INPBDouble *_frequency;
@@ -27,14 +26,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBString *stationName; // @synthesize stationName=_stationName;
 @property(nonatomic) int radioType; // @synthesize radioType=_radioType;
 @property(retain, nonatomic) _INPBInteger *presetNumber; // @synthesize presetNumber=_presetNumber;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBDouble *frequency; // @synthesize frequency=_frequency;
 @property(retain, nonatomic) _INPBString *channel; // @synthesize channel=_channel;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

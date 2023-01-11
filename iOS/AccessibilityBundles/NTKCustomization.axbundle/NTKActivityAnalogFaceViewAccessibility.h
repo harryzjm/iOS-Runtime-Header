@@ -11,8 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityUpdateLabel:(id)arg1 percentageValue:(double)arg2 prefix:(id)arg3 unit:(id)arg4;
-- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(_Bool)arg3 animated:(_Bool)arg4;
+- (_Bool)_accessibilityIntegerValue:(long long *)arg1 fromLabel:(id)arg2;
+- (void)_accessibilityApplyAttributesWithModel:(id)arg1;
+- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(_Bool)arg3 ignoreScreenBlanked:(_Bool)arg4 animated:(_Bool)arg5;
 - (void)_addOrRemoveChronoViewsIfNecessary;
 - (void)_loadSnapshotContentViews;
 - (void)_accessibilityLoadAccessibilityInformation;

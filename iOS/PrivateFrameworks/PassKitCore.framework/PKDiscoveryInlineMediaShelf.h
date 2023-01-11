@@ -15,14 +15,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *localizedCaption; // @synthesize localizedCaption=_localizedCaption;
 @property(readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property(readonly, nonatomic) NSString *captionKey; // @synthesize captionKey=_captionKey;
 @property(readonly, nonatomic) PKDiscoveryMedia *media; // @synthesize media=_media;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)localizeWithBundle:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

@@ -17,11 +17,14 @@
     NSString *_deviceName;
     CTUserLabel *_planLabel;
     NSString *_phoneNumber;
+    NSString *_countryCode;
     long long _status;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) long long status; // @synthesize status=_status;
+@property(retain, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(retain, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(retain, nonatomic) CTUserLabel *planLabel; // @synthesize planLabel=_planLabel;
 @property(retain, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
@@ -29,7 +32,6 @@
 @property(retain, nonatomic) NSString *sourceIccid; // @synthesize sourceIccid=_sourceIccid;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 

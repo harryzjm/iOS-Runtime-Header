@@ -11,10 +11,12 @@
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)length;
-- (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
+- (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(char *)arg3;
 - (id)initWithCStringNoCopy:(char *)arg1 length:(unsigned long long)arg2 freeWhenDone:(_Bool)arg3;
 - (id)initWithCString:(const char *)arg1 encoding:(unsigned long long)arg2;
+- (id)initWithCharactersNoCopy:(unsigned short *)arg1 length:(unsigned long long)arg2 deallocator:(CDUnknownBlockType)arg3;
 - (id)initWithCharactersNoCopy:(unsigned short *)arg1 length:(unsigned long long)arg2 freeWhenDone:(_Bool)arg3;
+- (id)initWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)initWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3 freeWhenDone:(_Bool)arg4;
 - (id)initWithUTF8String:(const char *)arg1;
 - (id)initWithBytes:(const void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3;

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (float)desiredRowHeight;
++ (float)estimatedRowHeight;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (id)_scriptingInfo;
 - (void)layoutSubviews;

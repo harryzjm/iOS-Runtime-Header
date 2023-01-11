@@ -6,21 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class SiriUISashView;
+@class SiriUISashView, SiriUISnippetViewController, UIButton;
 @protocol SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate;
 
 @interface SiriUICardSnippetView : UIView
 {
     UIView *_cardView;
     SiriUISashView *_sashView;
+    _Bool _shouldClipTopOfCard;
+    SiriUISnippetViewController *_backingViewController;
     id <SiriUICardSnippetViewDataSource> _dataSource;
     id <SiriUICardSnippetViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SiriUICardSnippetViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <SiriUICardSnippetViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
+@property(nonatomic) __weak SiriUISnippetViewController *backingViewController; // @synthesize backingViewController=_backingViewController;
+@property(nonatomic) _Bool shouldClipTopOfCard; // @synthesize shouldClipTopOfCard=_shouldClipTopOfCard;
 - (void)_sashViewRecognizedTapGestureWithGestureRecognizer:(id)arg1;
+@property(readonly, nonatomic) UIButton *backNavigationButton;
+@property(nonatomic, getter=isNavigating) _Bool navigating;
 - (void)reloadData;
 - (void)setCardView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

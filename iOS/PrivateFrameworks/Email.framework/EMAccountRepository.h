@@ -7,7 +7,7 @@
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/EMAccountRepositoryObserver-Protocol.h>
 
-@class EMRemoteConnection, NSMutableDictionary, NSString;
+@class EMRemoteConnection, NSArray, NSMutableDictionary, NSString;
 @protocol EFCancelable, EFScheduler;
 
 @interface EMAccountRepository <EFLoggable, EMAccountRepositoryObserver>
@@ -31,14 +31,15 @@
 - (void)didBeginObserving;
 - (id)accountForAccountIdentifier:(id)arg1;
 - (id)accountForIdentifier:(id)arg1;
-- (id)deliveryAccounts;
-- (id)receivingAccounts;
-- (id)allAccounts;
+@property(readonly, nonatomic) NSArray *deliveryAccounts;
+@property(readonly, nonatomic) NSArray *receivingAccounts;
+@property(readonly, nonatomic) NSArray *allAccounts;
 - (id)_currentAccountsByObjectIDMap;
 - (void)_fetchAccountsAndObserveChanges;
+- (void)requestAccounts;
 - (void)dealloc;
 - (id)initWithRemoteConnection:(id)arg1;
-- (id)_init;
+- (id)initInternal;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

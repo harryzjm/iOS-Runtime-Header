@@ -21,6 +21,7 @@
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double bufferedAudioDuration;
 - (void)_detachFromRecognizer;
 - (void)_setUnderlyingBuffer:(shared_ptr_809f9c31)arg1;
 - (void)cancelRecognition;

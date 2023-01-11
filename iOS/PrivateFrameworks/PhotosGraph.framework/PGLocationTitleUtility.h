@@ -11,7 +11,7 @@
 }
 
 + (id)_peopleLocationFromAddressNode:(id)arg1;
-+ (id)beautifiedLocationNodeStringWithLocationNode:(id)arg1;
++ (id)beautifiedLocationNodeStringWithPlaceNode:(id)arg1;
 + (id)_twoPartLocationTitleWithFirstPartTitle:(id)arg1 withDimension:(unsigned long long)arg2 usedFirstPartLocationNode:(id)arg3 addressNode:(id)arg4;
 + (id)_titleWithLineBreakBehavior:(unsigned long long)arg1 forTitle:(id)arg2 titleComponents:(id)arg3;
 + (id)_sortedComponentsFromComponents:(id)arg1;
@@ -24,7 +24,7 @@
 + (id)_commonCityTitleComponentsFromMomentNodes:(id)arg1 remainingAddressNodes:(id)arg2 ignoredAddressNodes:(id)arg3 incompleteLocationResolver:(id)arg4;
 + (id)_filteredAOINodeCombinationsForCombinations:(id)arg1 minSize:(unsigned long long)arg2 maxSize:(unsigned long long)arg3 maxTitleLength:(unsigned long long)arg4 minNumberOfAssets:(unsigned long long)arg5 aoiNodesToAddressNodesMapTable:(id)arg6 assetCountByAddressNodeIdentifier:(id)arg7;
 + (id)_sortedAOINodeCombinationsForCombinations:(id)arg1 aoiNodesToAddressNodesMapTable:(id)arg2 assetCountByAddressNodeIdentifier:(id)arg3;
-+ (float)_weightForAOINode:(id)arg1 withAddressNodes:(id)arg2;
++ (float)_weightForAreaNode:(id)arg1 withAddressNodes:(id)arg2;
 + (id)_aoiSubsetsFromAOI:(id)arg1 maxSubsetSize:(unsigned long long)arg2;
 + (id)_aoiSubsetsFromAOI:(id)arg1 idx:(unsigned long long)arg2 currentSubset:(id)arg3 subsetSize:(unsigned long long)arg4;
 + (id)_commonAOIComponentsForMomentNodes:(id)arg1 addressNodes:(id)arg2 aoiDisplayType:(unsigned long long)arg3 containsAmusementParkPOI:(_Bool)arg4;

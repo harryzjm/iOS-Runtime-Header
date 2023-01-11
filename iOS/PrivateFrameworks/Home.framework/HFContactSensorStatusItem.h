@@ -8,10 +8,8 @@
 {
 }
 
-- (CDUnknownBlockType)_isOpenTest;
-- (id)_formatStringTypeComponent;
-- (id)_isOpenCharacteristicType;
-- (id)_serviceType;
+- (id)_subclass_updateWithOptions:(id)arg1;
+- (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;
 
 @end
 

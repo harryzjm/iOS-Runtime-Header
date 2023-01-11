@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, REMChangeSet, REMChangeToken, REMChangeTracking, REMObjectID, REMStore;
+@class NSMutableDictionary, NSString, REMChangeSet, REMChangeToken, REMChangeTracking, REMChangeTrackingState, REMObjectID, REMStore;
 @protocol REMDAAccountProviding;
 
 @interface REMDAChangeTrackingHelper : NSObject
 {
+    NSString *_entityName;
+    NSString *_clientName;
     id <REMDAAccountProviding> _account;
     REMChangeSet *_changeSet;
     REMChangeToken *_sinceToken;
@@ -20,9 +22,14 @@
     REMObjectID *_cached_remAccountObjectID;
     NSMutableDictionary *_cached_insertedModelObjectResultsByModelClassName;
     NSMutableDictionary *_cached_updatedModelObjectResultsByModelClassName;
+    REMChangeToken *_cached_currentChangeToken;
+    REMChangeTrackingState *_cached_currentTrackingState;
 }
 
 + (_Bool)shouldIgnoreChangeOfModelClassProperties:(Class)arg1 withChangeObject:(id)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) REMChangeTrackingState *cached_currentTrackingState; // @synthesize cached_currentTrackingState=_cached_currentTrackingState;
+@property(retain, nonatomic) REMChangeToken *cached_currentChangeToken; // @synthesize cached_currentChangeToken=_cached_currentChangeToken;
 @property(retain, nonatomic) NSMutableDictionary *cached_updatedModelObjectResultsByModelClassName; // @synthesize cached_updatedModelObjectResultsByModelClassName=_cached_updatedModelObjectResultsByModelClassName;
 @property(retain, nonatomic) NSMutableDictionary *cached_insertedModelObjectResultsByModelClassName; // @synthesize cached_insertedModelObjectResultsByModelClassName=_cached_insertedModelObjectResultsByModelClassName;
 @property(retain, nonatomic) REMObjectID *cached_remAccountObjectID; // @synthesize cached_remAccountObjectID=_cached_remAccountObjectID;
@@ -32,24 +39,29 @@
 @property(retain, nonatomic) REMChangeToken *sinceToken; // @synthesize sinceToken=_sinceToken;
 @property(retain, nonatomic) REMChangeSet *changeSet; // @synthesize changeSet=_changeSet;
 @property(readonly, nonatomic) id <REMDAAccountProviding> account; // @synthesize account=_account;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
+@property(retain, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
 - (id)_rem_accountObjectID;
-- (id)_rem_changeTracking;
-- (id)_rem_changeTrackingClientName;
+- (id)_rem_changeTracking:(id)arg1;
 - (void)clearCachedModelObjectResultsForModelClass:(Class)arg1;
 - (void)_setCachedModeObjectResults:(id)arg1 forModelClass:(Class)arg2 changeType:(long long)arg3;
 - (id)_cachedModeObjectResultsForModelClass:(Class)arg1 changeType:(long long)arg2;
 - (long long)_changeTypeMaskFromChangeType:(long long)arg1;
 - (id)_fetchModelObjectsOfClass:(Class)arg1 withObjectIDs:(id)arg2;
-- (id)_fetchModelObjectOfClass:(Class)arg1 withObjectID:(id)arg2 includeMarkedForDelete:(_Bool)arg3;
+- (id)_fetchModelObjectOfClass:(Class)arg1 withObjectID:(id)arg2 includeLazyDeleteObjects:(_Bool)arg3;
 - (void)_handleLazyDeletionChange:(id)arg1 ofModelClass:(Class)arg2 forClientID:(id)arg3 deleteHandler:(CDUnknownBlockType)arg4 undeleteHandler:(CDUnknownBlockType)arg5;
 - (id)_changedModelObjectsOfClass:(Class)arg1 ofChangeTypes:(long long)arg2;
 - (id)changedIdentifiersOfModelClass:(Class)arg1 ofChangeType:(long long)arg2;
 - (id)changedModelObjectsOfModelClass:(Class)arg1 ofChangeType:(long long)arg2;
+- (void)markChangesConsumed:(_Bool)arg1;
 - (void)markChangesConsumed;
 - (id)fetchChangesSinceLastConsumed;
+- (_Bool)compareCurrentChangeTokenToLastConsumedWithResult:(long long *)arg1 error:(id *)arg2;
 - (id)fetchAndInitializeChangeTrackingStateIfNeeded;
-- (id)initWithREMDAAccount:(id)arg1 withREMStore:(id)arg2;
+- (id)currentChangeTokenWithError:(id *)arg1;
+- (id)initWithREMDAAccount:(id)arg1 clientName:(id)arg2 withREMStore:(id)arg3 entityName:(id)arg4;
+- (id)initWithREMDAAccount:(id)arg1 clientName:(id)arg2 withREMStore:(id)arg3;
+- (void)_debug_resetCaches;
 
 @end
 

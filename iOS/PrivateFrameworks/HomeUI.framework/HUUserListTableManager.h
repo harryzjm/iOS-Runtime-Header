@@ -28,6 +28,7 @@
     CNContactStore *_contactStore;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(retain, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
@@ -38,7 +39,6 @@
 @property(retain, nonatomic) NSArray *invitations; // @synthesize invitations=_invitations;
 @property(retain, nonatomic) NSArray *users; // @synthesize users=_users;
 @property(nonatomic) __weak id <HUUserListManagerTableDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)updateEditingRows;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
@@ -56,7 +56,7 @@
 - (void)home:(id)arg1 didAddUser:(id)arg2;
 - (void)addPeopleViewController:(id)arg1 didSendInvitations:(id)arg2;
 - (void)addPeopleViewControllerDidCancel:(id)arg1;
-- (void)_configurePersonViewController:(id)arg1 invitation:(id)arg2;
+- (void)_configurePersonViewController:(id)arg1 invitation:(id)arg2 isRemovable:(_Bool)arg3;
 - (id)_personViewControllerForUser:(id)arg1 invitation:(id)arg2;
 - (id)_monogramForUser:(id)arg1;
 - (id)_stringForInvitationState:(long long)arg1;

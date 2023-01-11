@@ -20,10 +20,11 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)acquireHideFrontMostStatusBarAssertionForReason:(id)arg1;
-- (_Bool)isFrontMostStatusBarHidden;
+- (id)acquireHideFrontmostStatusBarAssertionForReason:(id)arg1;
+- (_Bool)isFrontmostStatusBarPartHidden:(long long)arg1;
+- (_Bool)isFrontmostStatusBarHidden;
 - (id)trailingStatusBarStyleRequest;
-- (id)frontMostStatusBarStyleRequest;
+- (id)frontmostStatusBarStyleRequest;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

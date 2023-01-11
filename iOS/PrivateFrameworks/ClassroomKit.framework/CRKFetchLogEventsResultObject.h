@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskResultObject.h"
+#import <DeviceManagement/CATTaskResultObject.h>
 
 @class CRKEventLog, NSDate, NSString;
 
@@ -16,10 +16,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *sessionToken; // @synthesize sessionToken=_sessionToken;
 @property(retain, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
 @property(retain, nonatomic) CRKEventLog *eventLog; // @synthesize eventLog=_eventLog;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

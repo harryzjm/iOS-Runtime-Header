@@ -8,6 +8,7 @@
 
 @class TKKeyPathObserver, UINavigationItem;
 
+__attribute__((visibility("hidden")))
 @interface TKContainerViewController : UIViewController
 {
     TKKeyPathObserver *_observer;
@@ -16,11 +17,10 @@
     UIViewController *_childViewController;
 }
 
-@property(retain, nonatomic) UIViewController *childViewController; // @synthesize childViewController=_childViewController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIViewController *childViewController; // @synthesize childViewController=_childViewController;
 - (void)updateInternals:(id)arg1;
 - (void)observeChild;
-- (_Bool)automaticallyAdjustsScrollViewInsets;
 - (unsigned long long)edgesForExtendedLayout;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

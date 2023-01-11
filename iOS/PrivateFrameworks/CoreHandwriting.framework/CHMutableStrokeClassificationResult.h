@@ -15,6 +15,7 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)updateByAddingClutterStroke:(id)arg1;
+- (void)updateByAddingNonClutterStroke:(id)arg1 withClassification:(long long)arg2;
 - (void)updateByAddingNonClutterStroke:(id)arg1 withAllStrokes:(id)arg2 forceText:(_Bool)arg3;
 - (void)updateByTransitionedClutterStrokeIdentifier:(id)arg1 withRemovedAndClutterStrokeIDs:(id)arg2;
 - (void)updateByRemovingStrokeIdentifier:(id)arg1 withRemovedAndClutterStrokeIDs:(id)arg2;

@@ -28,6 +28,7 @@
 + (id)database;
 + (id)pushHistory;
 + (id)daemon;
++ (id)topicManagerOversized;
 + (id)topicManager;
 + (id)telemetry;
 

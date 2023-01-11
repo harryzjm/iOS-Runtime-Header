@@ -8,11 +8,13 @@
 
 @class CKDAccount, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSIdentityManager : NSObject
 {
     _Bool _isSiloed;
     _Bool _forceEnableReadOnlyManatee;
+    _Bool _forceSecurityErrorOnIdentityValidation;
+    _Bool _forceManateeUnavailableForUnitTests;
+    _Bool _serviceIsManateeForUnitTests;
     NSString *_serviceName;
     CKDAccount *_account;
     NSString *_cachedAccountDSID;
@@ -20,9 +22,14 @@ __attribute__((visibility("hidden")))
     struct _PCSIdentityData *_debugIdentity;
 }
 
++ (id)overrideKeys;
 + (struct _PCSIdentitySetData *)_getTestAccountIdentitySetForService:(id)arg1 forBackingFakeAccount:(id)arg2 withError:(id *)arg3;
 + (id)sharedFakeIdentitySetsByServiceByUsername;
 + (struct _PCSIdentitySetData *)_copyStingrayIdentitiesForService:(id)arg1 forBackingFakeAccount:(id)arg2 withError:(id *)arg3;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool serviceIsManateeForUnitTests; // @synthesize serviceIsManateeForUnitTests=_serviceIsManateeForUnitTests;
+@property(nonatomic) _Bool forceManateeUnavailableForUnitTests; // @synthesize forceManateeUnavailableForUnitTests=_forceManateeUnavailableForUnitTests;
+@property(nonatomic) _Bool forceSecurityErrorOnIdentityValidation; // @synthesize forceSecurityErrorOnIdentityValidation=_forceSecurityErrorOnIdentityValidation;
 @property(nonatomic) struct _PCSIdentityData *debugIdentity; // @synthesize debugIdentity=_debugIdentity;
 @property(retain) NSMutableDictionary *PCSIdentityWrappersByServiceName; // @synthesize PCSIdentityWrappersByServiceName=_PCSIdentityWrappersByServiceName;
 @property(retain) NSString *cachedAccountDSID; // @synthesize cachedAccountDSID=_cachedAccountDSID;
@@ -30,7 +37,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isSiloed; // @synthesize isSiloed=_isSiloed;
 @property(retain) CKDAccount *account; // @synthesize account=_account;
 @property(readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
-- (void).cxx_destruct;
+- (_Bool)_checkAndClearPCSTestOverrideForKey:(id)arg1;
+- (void)setOverride:(id)arg1 value:(id)arg2;
+- (void)clearOverrides;
 - (id)PCSServiceStringFromCKServiceType:(unsigned long long)arg1;
 - (id)internalServicesToCombineWithLiverpoolKey;
 - (_Bool)_hasCurrentKeyForService:(id)arg1 inIdentitySet:(struct _PCSIdentitySetData *)arg2 withError:(id *)arg3;
@@ -41,6 +50,9 @@ __attribute__((visibility("hidden")))
 - (struct _PCSIdentityData *)createRandomSharingIdentityWithError:(id *)arg1;
 - (struct _PCSPublicIdentityData *)createPublicSharingIdentityFromPublicKey:(id)arg1 error:(id *)arg2;
 - (struct _PCSIdentityData *)debugSharingIdentity;
+- (_Bool)serviceIsManatee:(id)arg1;
+@property(readonly, nonatomic) _Bool currentServiceIsManatee;
+- (_Bool)manateeIsAvailableWithError:(id *)arg1;
 - (struct _PCSIdentitySetData *)_copyTestAccountIdentitySetForService:(id)arg1 forBackingFakeAccount:(id)arg2 withError:(id *)arg3;
 - (struct _PCSIdentitySetData *)_createSpecialInMemorySetCombiningLiverpoolWithServiceNamed:(id)arg1 dsid:(id)arg2 error:(id *)arg3;
 - (id)_addIdentitiesFromServiceNamed:(id)arg1 dsid:(id)arg2 toMutableSet:(struct _PCSIdentitySetData *)arg3;

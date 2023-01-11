@@ -15,9 +15,13 @@
 }
 
 + (id)pictureInPictureApplicationWithProcessIdentifier:(int)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
-- (void).cxx_destruct;
+- (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToPGPictureInPictureApplication:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithProcessIdentifier:(int)arg1;

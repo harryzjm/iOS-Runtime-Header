@@ -9,7 +9,9 @@
 @interface PXNavigationListCollectionListItem
 {
     _Bool _draggable;
+    _Bool _reorderable;
     _Bool _renamable;
+    _Bool _deletable;
     _Bool _expandable;
     _Bool _expanded;
     NSString *_glyphImageName;
@@ -17,19 +19,21 @@
     long long _indentationLevel;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
 @property(readonly, nonatomic) PHCollectionList *collection; // @synthesize collection=_collection;
 - (_Bool)isExpandable;
+- (_Bool)isDeletable;
 - (_Bool)isRenamable;
+- (_Bool)isReorderable;
 - (_Bool)isDraggable;
 - (id)glyphImageName;
-- (void).cxx_destruct;
 - (id)representedObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCollectionList:(id)arg1 itemCount:(long long)arg2;
-- (const struct __CFString *)aggregateDictionaryKey;
-- (id)viewControllerForCollectionWithGridPresentation:(id)arg1;
+- (id)cpAnalyticsEventName;
+- (id)viewControllerForCollectionWithGridPresentation:(id)arg1 existingAssetsFetchResult:(id)arg2;
 
 @end
 

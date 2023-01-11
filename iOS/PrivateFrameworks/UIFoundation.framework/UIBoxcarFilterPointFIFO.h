@@ -13,7 +13,7 @@
     _UIPointVector *_prevPoints;
 }
 
-@property(nonatomic) _UIPointVector *prevPoints; // @synthesize prevPoints=_prevPoints;
+@property(retain, nonatomic) _UIPointVector *prevPoints; // @synthesize prevPoints=_prevPoints;
 @property(nonatomic) float spacing; // @synthesize spacing=_spacing;
 @property(nonatomic) unsigned long long width; // @synthesize width=_width;
 - (void)dealloc;

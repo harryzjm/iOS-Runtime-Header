@@ -21,10 +21,10 @@
 + (id)clockNameForClockIdentifier:(unsigned long long)arg1;
 + (id)diagnosticInfoForClockIdentifier:(unsigned long long)arg1;
 + (unsigned long long)_mach_absolute_time;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *propertyUpdateQueue; // @synthesize propertyUpdateQueue=_propertyUpdateQueue;
 @property(nonatomic) int lockState; // @synthesize lockState=_lockState;
 @property(nonatomic) unsigned long long clockIdentifier; // @synthesize clockIdentifier=_clockIdentifier;
-- (void)dealloc;
 @property(readonly, copy, nonatomic) NSString *clockName; // @dynamic clockName;
 @property(readonly, nonatomic) double hostRateRatio; // @dynamic hostRateRatio;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @dynamic notificationQueue;

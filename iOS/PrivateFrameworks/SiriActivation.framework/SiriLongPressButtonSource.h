@@ -14,24 +14,28 @@
     long long _buttonIdentifier;
     NSMutableArray *_lock_activityAssertions;
     SiriLongPressButtonContext *_context;
+    CDUnknownBlockType _currentTimeGenerator;
 }
 
 + (id)new;
 + (id)longPressButtonForIdentifier:(long long)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType currentTimeGenerator; // @synthesize currentTimeGenerator=_currentTimeGenerator;
 @property(retain, nonatomic) SiriLongPressButtonContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSMutableArray *lock_activityAssertions; // @synthesize lock_activityAssertions=_lock_activityAssertions;
 @property(nonatomic) long long buttonIdentifier; // @synthesize buttonIdentifier=_buttonIdentifier;
 @property(nonatomic) double longPressInterval; // @synthesize longPressInterval=_longPressInterval;
-- (void).cxx_destruct;
+- (double)_timestampForSpeechInteractionActivityWithTimestamp:(double)arg1;
+- (_Bool)_shouldReplaceSpeechInteractionActivityTimestampWithPrewarmTimestamp;
+- (id)_deviceIdentifier;
 - (void)didRecognizeLongPress;
 - (void)didRecognizeButtonSinglePressUp;
 - (id)speechInteractionActivityWithTimestamp:(double)arg1;
 - (id)prepareForActivation;
+- (id)prepareForActivationWithTimestamp:(double)arg1;
 - (void)configureConnection;
 - (id)_initWithButtonIdentifier:(long long)arg1;
 - (id)init;
-- (void)overrideConnectedToCarPlay:(_Bool)arg1;
-- (void)overrideConnectedToTrustedCarPlay:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

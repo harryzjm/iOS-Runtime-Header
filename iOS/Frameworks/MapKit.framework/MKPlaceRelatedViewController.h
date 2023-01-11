@@ -14,19 +14,21 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_fetchedMapItems;
     NSArray *_cells;
-    MKMapItem *_mapItem;
+    _Bool _isExpanded;
     id <MKPlaceRelatedViewControllerDelegate> _delegate;
     id <_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
+    MKMapItem *_mapItem;
 }
 
-+ (id)placeRelatedViewControllerFor:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property(nonatomic) __weak id <MKPlaceRelatedViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
-- (void).cxx_destruct;
 - (void)_captureSeeAllAction;
 - (void)_captureTapActionWithMapItem:(id)arg1;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
+- (unsigned long long)maxItems;
+- (void)_setExpanded:(_Bool)arg1;
 - (void)_seeAllAction:(id)arg1;
 - (id)_moduleTitle;
 - (void)_updateTitle;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_reloadRelatedMapItems:(id)arg1;
 - (void)fetchPOIs;
 - (void)viewDidLoad;
+- (id)initWithMapItem:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 
 // Remaining properties

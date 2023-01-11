@@ -6,14 +6,15 @@
 
 #import <MediaPlayer/MPPlaybackContext.h>
 
+#import <MediaPlaybackCore/MPCModelPlaybackRequestEnvironmentConsuming-Protocol.h>
 #import <MediaPlaybackCore/MPCPlaybackContextPrivateListeningOverridable-Protocol.h>
 #import <MediaPlaybackCore/MPCPlaybackContextUserIdentityConsuming-Protocol.h>
 
-@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, NSDictionary, NSString;
+@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, NSDictionary, NSNumber, NSString;
 
-@interface MPCModelPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable>
+@interface MPCModelPlaybackContext : MPPlaybackContext <MPCModelPlaybackRequestEnvironmentConsuming, MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable>
 {
-    ICUserIdentity *_userIdentity;
+    _Bool _skipEncodingMediaLibraryUniqueID;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     MPModelRequest *_request;
     MPIdentifierSet *_startItemIdentifiers;
@@ -25,8 +26,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)supportsAutoPlay;
 + (Class)queueFeederClass;
 + (id)requiredPropertiesForStaticMediaClips;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool skipEncodingMediaLibraryUniqueID; // @synthesize skipEncodingMediaLibraryUniqueID=_skipEncodingMediaLibraryUniqueID;
 @property(readonly, copy, nonatomic) NSString *encodedMediaLibraryUniqueID; // @synthesize encodedMediaLibraryUniqueID=_encodedMediaLibraryUniqueID;
 @property(copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 @property(copy, nonatomic) NSDictionary *assetStoreFronts; // @synthesize assetStoreFronts=_assetStoreFronts;
@@ -35,13 +39,14 @@
 @property(copy, nonatomic) MPIdentifierSet *startItemIdentifiers; // @synthesize startItemIdentifiers=_startItemIdentifiers;
 @property(copy, nonatomic) MPModelRequest *request; // @synthesize request=_request;
 @property(copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
-@property(copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
-- (void).cxx_destruct;
-- (void)setPrivateListeningOverride:(id)arg1;
+@property(copy, nonatomic) NSNumber *privateListeningOverride;
+@property(copy, nonatomic) ICUserIdentity *userIdentity;
+- (void)updateRequestPlaybackEnvironment;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)clearStartItem;
 - (_Bool)isSupported;
-- (_Bool)containsTransportableContent;
 - (_Bool)containsRestorableContent;
 - (id)descriptionComponents;
 - (id)init;

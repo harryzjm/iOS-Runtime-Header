@@ -6,11 +6,13 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSArray, VUILabel, VUITextLayout, _TVImageView;
+#import <VideosUI/UIContextMenuInteractionDelegate-Protocol.h>
+
+@class NSArray, NSString, VUILabel, VUITextLayout, _TVImageView;
 @protocol VUISeasonPickerButtonDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUISeasonPickerButton : UIControl
+@interface VUISeasonPickerButton : UIControl <UIContextMenuInteractionDelegate>
 {
     NSArray *_seasonTitles;
     id <VUISeasonPickerButtonDelegate> _delegate;
@@ -19,9 +21,12 @@ __attribute__((visibility("hidden")))
     VUILabel *_altLabel;
     _TVImageView *_chevronDownImageView;
     VUITextLayout *_buttonTextLayout;
+    NSArray *_actions;
 }
 
 + (id)configureWithExistingView:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(retain, nonatomic) VUITextLayout *buttonTextLayout; // @synthesize buttonTextLayout=_buttonTextLayout;
 @property(retain, nonatomic) _TVImageView *chevronDownImageView; // @synthesize chevronDownImageView=_chevronDownImageView;
 @property(retain, nonatomic) VUILabel *altLabel; // @synthesize altLabel=_altLabel;
@@ -29,14 +34,22 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long currentIndex; // @synthesize currentIndex=_currentIndex;
 @property(nonatomic) __weak id <VUISeasonPickerButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSArray *seasonTitles; // @synthesize seasonTitles=_seasonTitles;
-- (void).cxx_destruct;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)switchToIndex:(unsigned long long)arg1;
 - (void)_updateLabelsWithSeasonTitles:(id)arg1;
-- (void)_buttonTapped:(id)arg1;
 - (struct CGSize)_layoutWithSize:(struct CGSize)arg1 metricsOnly:(_Bool)arg2;
+- (void)_setActionsWithSeasonTitles:(id)arg1;
+- (_Bool)_contextMenuDropDownIsEnabled;
+- (void)_buttonTapped:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

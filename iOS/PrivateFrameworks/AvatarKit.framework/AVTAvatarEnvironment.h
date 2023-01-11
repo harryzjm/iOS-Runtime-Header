@@ -22,17 +22,16 @@
     SCNNode *_defaultLightingNode;
 }
 
-+ (void)triggerCrossFadeFromImage:(id)arg1 withScene:(id)arg2 pointOfView:(id)arg3 device:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool faceIsFullyVisible;
-- (id)transitionTextureWithSize:(struct CGSize)arg1 renderer:(id)arg2;
 @property(nonatomic) float fadeFactor;
 - (void)didSnapshot;
 - (void)willSnapshot;
 - (void)hideTrackingLossIndicator;
 - (void)showTrackingLossIndicator;
 - (void)hideReticle;
-@property(nonatomic) _Bool showReticle;
+- (_Bool)showReticle;
+- (void)setShowReticle:(_Bool)arg1;
 - (void)updateARMode:(_Bool)arg1;
 - (void)updateSpecializedLighting;
 - (void)avatarDidChange:(id)arg1 arMode:(_Bool)arg2;

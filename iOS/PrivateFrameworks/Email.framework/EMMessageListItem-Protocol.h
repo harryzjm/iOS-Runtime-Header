@@ -7,7 +7,7 @@
 #import <Email/EMCollectionItem-Protocol.h>
 #import <Email/EMObject-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EMMessage, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
+@class ECMessageFlags, ECSubject, EFFuture, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
 @protocol EMCollectionItemID;
 
 @protocol EMMessageListItem <EMCollectionItem, EMObject>
@@ -15,7 +15,7 @@
 @property(readonly) _Bool shouldArchiveByDefault;
 @property(readonly) _Bool supportsArchiving;
 @property(readonly) _Bool deleteMovesToTrash;
-@property(readonly) EMMessage *displayMessage;
+@property(readonly) EFFuture *displayMessage;
 @property(readonly) EMObjectID *displayMessageObjectID;
 @property(readonly) id <EMCollectionItemID> displayMessageItemID;
 @property(readonly, copy) NSArray *mailboxes;

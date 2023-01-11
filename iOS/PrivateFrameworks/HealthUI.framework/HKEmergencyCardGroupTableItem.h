@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, NSString;
 
 @interface HKEmergencyCardGroupTableItem
 {
     NSMutableArray *_cumulativeRowOffsets;
+    NSArray *_allSubItems;
     NSArray *_subitems;
+    NSString *_titleForHeader;
 }
 
-@property(retain, nonatomic) NSArray *subitems; // @synthesize subitems=_subitems;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *titleForHeader; // @synthesize titleForHeader=_titleForHeader;
+@property(retain, nonatomic) NSArray *subitems; // @synthesize subitems=_subitems;
 - (void)commitEditing;
 - (void)didCommitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
 - (long long)commitEditingStyle:(long long)arg1 forRowAtIndex:(long long)arg2;
@@ -27,6 +30,7 @@
 - (long long)numberOfRows;
 - (_Bool)hasPresentableData;
 - (void)setOwningViewController:(id)arg1;
+- (void)setProfileFirstName:(id)arg1;
 - (void)setData:(id)arg1;
 - (void)_getSubitem:(id *)arg1 andSubitemRow:(long long *)arg2 forTableViewRow:(long long)arg3;
 

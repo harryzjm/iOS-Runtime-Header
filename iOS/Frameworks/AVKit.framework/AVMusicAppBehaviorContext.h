@@ -21,21 +21,22 @@
     _Bool _scrubbing;
     AVPlayerViewController *_playerViewController;
     AVMusicAppBehavior *_behavior;
+    NSNumber *_seekTargetTime;
     AVObservationController *_observationController;
     AVPlayerController *_playerController;
-    NSNumber *_seekTargetTime;
 }
 
-@property(retain, nonatomic) NSNumber *seekTargetTime; // @synthesize seekTargetTime=_seekTargetTime;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property(readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property(nonatomic, getter=isScrubbing) _Bool scrubbing; // @synthesize scrubbing=_scrubbing;
+@property(retain, nonatomic) NSNumber *seekTargetTime; // @synthesize seekTargetTime=_seekTargetTime;
 @property(nonatomic, getter=isSkipToNextItemButtonEnabled) _Bool skipToNextItemButtonEnabled; // @synthesize skipToNextItemButtonEnabled=_skipToNextItemButtonEnabled;
 @property(nonatomic, getter=isSkipToPreviousItemButtonEnabled) _Bool skipToPreviousItemButtonEnabled; // @synthesize skipToPreviousItemButtonEnabled=_skipToPreviousItemButtonEnabled;
 @property(nonatomic) _Bool showsSkipItemButtons; // @synthesize showsSkipItemButtons=_showsSkipItemButtons;
 @property(nonatomic) __weak AVMusicAppBehavior *behavior; // @synthesize behavior=_behavior;
 @property(readonly, nonatomic) __weak AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
-- (void).cxx_destruct;
+- (void)_updatePlaybackControlsInclusion;
 - (void)_updateSkipItemButtonsEnabled;
 - (void)playerViewController:(id)arg1 didCollectMetricsEvent:(long long)arg2;
 - (void)viewDidLoad;

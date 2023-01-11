@@ -14,6 +14,5 @@
 - (void)exitEmergencyDialerAnimated:(_Bool)arg1;
 - (void)launchEmergencyDialerAnimated:(_Bool)arg1;
 - (void)launchEmergencyDialer;
-- (void)launchInCallAlert;
 @end
 

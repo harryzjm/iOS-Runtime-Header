@@ -72,6 +72,7 @@
     id _extraData;
     NSTextContainer *_cachedTextContainer;
     _Bool _cachedTextContainerIsVertical;
+    _Bool _delegateIsWeakValue;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -96,6 +97,8 @@
 - (void)enumerateEnclosingRectsForCharacterRange:(struct _NSRange)arg1 withinSelectedCharacterRange:(struct _NSRange)arg2 inTextContainer:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateEnclosingRectsForGlyphRange:(struct _NSRange)arg1 withinSelectedGlyphRange:(struct _NSRange)arg2 inTextContainer:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateLineFragmentsForGlyphRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)setDidCompleteLayoutObserverBlock:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)didCompleteLayoutObserverBlock;
 - (void)setSynchronizesAlignmentToDirection:(_Bool)arg1;
 - (_Bool)synchronizesAlignmentToDirection;
 @property(nonatomic) _Bool usesFontLeading;
@@ -211,6 +214,8 @@
 @property _Bool usesDefaultHyphenation;
 - (double)hyphenationFactor;
 - (void)setHyphenationFactor:(double)arg1;
+- (double)_hyphenationFactor;
+- (void)_setHyphenationFactor:(double)arg1;
 @property(nonatomic) _Bool showsControlCharacters;
 @property(nonatomic) _Bool showsInvisibleCharacters;
 - (void)setUsesScreenFonts:(_Bool)arg1;
@@ -353,6 +358,7 @@
 - (void)_markSelfAsDirtyForBackgroundLayout:(id)arg1;
 - (struct _NSRange)_primitiveGlyphRangeForCharacterRange:(struct _NSRange)arg1;
 - (struct _NSRange)_primitiveCharacterRangeForGlyphRange:(struct _NSRange)arg1;
+- (struct _NSRange)_exactGlyphRangeForCharacterRange:(struct _NSRange)arg1;
 - (struct _NSRange)_glyphRangeForCharacterRange:(struct _NSRange)arg1 actualCharacterRange:(struct _NSRange *)arg2 okToFillHoles:(_Bool)arg3;
 - (unsigned long long)_glyphIndexForCharacterIndex:(unsigned long long)arg1 startOfRange:(_Bool)arg2 okToFillHoles:(_Bool)arg3 considerNulls:(_Bool)arg4;
 - (unsigned long long)_glyphIndexForCharacterIndex:(unsigned long long)arg1 startOfRange:(_Bool)arg2 okToFillHoles:(_Bool)arg3;
@@ -379,6 +385,7 @@
 - (void)_mergeLayoutHoles;
 - (void)_mergeGlyphHoles;
 - (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
+- (id)_stringForLoggingLineFragmentForGlyphAtIndex:(long long)arg1;
 - (void)coordinateAccess:(CDUnknownBlockType)arg1;
 - (id)layoutFragmentsForReplacingCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2 rect:(struct CGRect)arg3 textContainer:(id)arg4;
 - (id)destinationTextContainerForRange:(struct _NSRange)arg1 inTextContainer:(id)arg2;

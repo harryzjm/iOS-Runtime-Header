@@ -15,14 +15,13 @@
 }
 
 + (Class)replyClass;
-+ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(retain, nonatomic) NSString *reason; // @synthesize reason=_reason;
-- (void).cxx_destruct;
 - (_Bool)expectsReply;
 - (_Bool)isValid;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

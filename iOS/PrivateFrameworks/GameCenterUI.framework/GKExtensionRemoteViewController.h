@@ -23,10 +23,12 @@
 + (id)initialItemsForExtension;
 + (void)viewControllerForExtension:(id)arg1 inputItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)setupCallbackBlocksForExtension:(id)arg1 withParentViewController:(id)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) id requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 - (void)messageFromExtension:(id)arg1;
+- (void)tearDownExtensionWithReply:(CDUnknownBlockType)arg1;
 - (void)hostApp:(id)arg1 grantingAccessExtensionSandbox:(id)arg2 replyWithEndpoint:(CDUnknownBlockType)arg3;
 - (void)setInitialState:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)messageFromClient:(id)arg1;

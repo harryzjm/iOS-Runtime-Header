@@ -6,12 +6,22 @@
 
 #import <UIKit/UIViewController.h>
 
+@class SBIsolatedSceneOrientationFollowingWrapperViewController, UIView;
+
 @interface SBSceneOrientationFollowingWindowRootViewController : UIViewController
 {
+    SBIsolatedSceneOrientationFollowingWrapperViewController *_hostingViewController;
+    UIView *_overlayContentView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *overlayContentView; // @synthesize overlayContentView=_overlayContentView;
+@property(nonatomic) __weak SBIsolatedSceneOrientationFollowingWrapperViewController *hostingViewController; // @synthesize hostingViewController=_hostingViewController;
+- (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(_Bool *)arg2;
+- (_Bool)_canShowWhileLocked;
 - (void)viewWillLayoutSubviews;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
+- (id)initWithHostingViewController:(id)arg1;
 
 @end
 

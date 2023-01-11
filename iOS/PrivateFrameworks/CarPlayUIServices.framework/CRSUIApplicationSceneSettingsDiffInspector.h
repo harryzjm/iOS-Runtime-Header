@@ -10,6 +10,7 @@
 {
 }
 
+- (void)observeMapStyleWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeBannerFrameWithBlock:(CDUnknownBlockType)arg1;
 
 @end

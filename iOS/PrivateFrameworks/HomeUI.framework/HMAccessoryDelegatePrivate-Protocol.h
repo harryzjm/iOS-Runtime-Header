@@ -6,13 +6,20 @@
 
 #import <HomeUI/HMAccessoryDelegate-Protocol.h>
 
-@class ACAccount, HMAccessory, HMAccessorySettings, HMCharacteristic, HMFPairingIdentity, HMFSoftwareVersion, HMService, HMSymptomsHandler, NSString;
+@class ACAccount, HMAccessory, HMAccessorySettings, HMCharacteristic, HMDevice, HMFPairingIdentity, HMFSoftwareVersion, HMService, HMSymptomsHandler, NSString;
 
 @protocol HMAccessoryDelegatePrivate <HMAccessoryDelegate>
 
 @optional
+- (void)accessoryDidSetHasOnboardedForNaturalLighting:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateDiagnosticsTransferSupport:(HMAccessory *)arg1;
+- (void)accessory:(HMAccessory *)arg1 didUpdateDevice:(HMDevice *)arg2;
 - (void)accessoryDidUpdateReachableTransports:(HMAccessory *)arg1;
+- (void)accessory:(HMAccessory *)arg1 didUpdateLastKnownOperatingStateResponseForService:(HMService *)arg2;
 - (void)accessory:(HMAccessory *)arg1 didUpdateLastKnownSleepDiscoveryModeForService:(HMService *)arg2;
+- (void)accessoryDidUpdateSupportsDoorbellChime:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsThirdPartyMusic:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsCompanionInitiatedRestart:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateMultiUserSupport:(HMAccessory *)arg1;
 - (void)accessoryDidRemoveSymptomsHandler:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didAddSymptomsHandler:(HMSymptomsHandler *)arg2;

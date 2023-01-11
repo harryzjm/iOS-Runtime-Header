@@ -6,12 +6,13 @@
 
 #import <UIKit/UIControl.h>
 
+#import <HearingUI/BCBatteryDeviceObserving-Protocol.h>
 #import <HearingUI/HACCContentModule-Protocol.h>
 
-@class BCBatteryDevice, HACCBatteryGroupView, NSNumberFormatter, NSString, UIImageView, UILabel;
+@class BCBatteryDevice, BCBatteryDeviceController, HACCBatteryGroupView, NSNumberFormatter, NSString, UIImageView, UILabel;
 @protocol HACCContentModuleDelegate;
 
-@interface HACCStatusView : UIControl <HACCContentModule>
+@interface HACCStatusView : UIControl <BCBatteryDeviceObserving, HACCContentModule>
 {
     NSNumberFormatter *_numberFormatter;
     unsigned long long module;
@@ -20,15 +21,18 @@
     UIImageView *_iconView;
     HACCBatteryGroupView *_batteryView;
     BCBatteryDevice *_batteryDevice;
+    BCBatteryDeviceController *_batteryController;
 }
 
++ (id)_backgroundUpdateQueue;
+- (void).cxx_destruct;
+@property(retain, nonatomic) BCBatteryDeviceController *batteryController; // @synthesize batteryController=_batteryController;
 @property(retain, nonatomic) BCBatteryDevice *batteryDevice; // @synthesize batteryDevice=_batteryDevice;
 @property(retain, nonatomic) HACCBatteryGroupView *batteryView; // @synthesize batteryView=_batteryView;
 @property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) __weak id <HACCContentModuleDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) unsigned long long module; // @synthesize module;
-- (void).cxx_destruct;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
@@ -39,6 +43,7 @@
 - (id)liveListenImageName:(id)arg1;
 - (id)_productIdentifierForBTDevice:(id)arg1;
 - (void)updateConstraints;
+- (void)connectedDevicesDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

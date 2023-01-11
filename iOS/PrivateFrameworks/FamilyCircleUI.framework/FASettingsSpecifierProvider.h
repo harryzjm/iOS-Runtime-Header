@@ -11,12 +11,12 @@
 #import <FamilyCircleUI/FASetupDelegate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAFamilyDetailsResponse, AAFamilyEligibilityResponse, AAGrandSlamSigner, AIDAAccountManager, FACircleContext, FAFamilyMemberDetailsPageSurrogate, FAFamilyNotificationObserver, FARequestConfigurator, NSArray, NSMutableArray, NSOperationQueue, NSString, PSListController, PSSpecifier;
+@class AAFamilyEligibilityResponse, AAGrandSlamSigner, AIDAAccountManager, FACircleContext, FAFamilyCircle, FAFamilyNotificationObserver, FAProfilePictureStore, FARequestConfigurator, FATableViewDecorator, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, PSListController, PSSpecifier;
 @protocol AAUISpecifierProviderDelegate;
 
 @interface FASettingsSpecifierProvider : NSObject <FASetupDelegate, FAFamilySettingsViewControllerDelegate, RemoteUIControllerDelegate, AAUISpecifierProvider>
 {
-    FAFamilyMemberDetailsPageSurrogate *_profileSurrogate;
+    FATableViewDecorator *_remoteUIDecorator;
     FAFamilyNotificationObserver *_familyNotificationObserver;
     PSListController *_presenter;
     PSSpecifier *_familyCellSpecifier;
@@ -24,7 +24,7 @@
     _Bool _isLoadingFamilyDetails;
     _Bool _didFailToGetFamilyDetails;
     NSMutableArray *_pendingFamilyDetailsCompletionBlocks;
-    AAFamilyDetailsResponse *_familyDetailsResponse;
+    FAFamilyCircle *_familyCircle;
     AAFamilyEligibilityResponse *_familyEligibilityResponse;
     NSMutableArray *_pendingInvites;
     NSString *_familyStatusSummary;
@@ -37,12 +37,14 @@
     FARequestConfigurator *_requestConfigurator;
     FACircleContext *_context;
     _Bool _delayedEnterInitiateFlow;
+    FAProfilePictureStore *_familyPictureStore;
+    NSDictionary *_cachedResourceDictionary;
     id <AAUISpecifierProviderDelegate> _delegate;
     NSArray *_specifiers;
 }
 
-@property(nonatomic) __weak id <AAUISpecifierProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <AAUISpecifierProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
 - (void)_handleObjectModelChangeForController:(id)arg1 objectModel:(id)arg2 isModal:(_Bool)arg3;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(_Bool)arg3;
@@ -64,7 +66,8 @@
 - (void)reloadSpecifiers;
 - (void)_handleFamilyEligibilityResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadFamilyEligibilityWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_viewFamilySpecifierWasTapped:(id)arg1;
+- (void)_viewFamilyWithResourceDictionary:(id)arg1;
+- (void)_viewFamilySpecifierWasTapped;
 - (id)_valueForFamilySpecifier:(id)arg1;
 - (void)_presentPendingInvitesRemoteUI;
 - (void)_pendingInvitationsSpecifierWasTapped:(id)arg1;
@@ -76,8 +79,9 @@
 - (void)_initiateFamily;
 - (void)_reloadFamily;
 - (void)_setUpFamilySpecifierWasTapped:(id)arg1;
-- (void)_handleFamilyDetailsResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleFamilyDetailsResponse:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_loadFamilyDetailsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_familyBaseSpecifierWithState:(unsigned long long)arg1;
 - (id)_familySpecifier;
 - (id)_invitationsCellSpecifier;
 - (unsigned long long)_familyState;

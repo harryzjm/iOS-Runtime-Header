@@ -19,6 +19,7 @@
     SearchUIWatchListCardsManager *_manager;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SearchUIWatchListCardsManager *manager; // @synthesize manager=_manager;
 @property(nonatomic) _Bool hasError; // @synthesize hasError=_hasError;
 @property(retain, nonatomic) SFPunchout *punchout; // @synthesize punchout=_punchout;
@@ -27,8 +28,10 @@
 @property(retain, nonatomic) NSString *text; // @synthesize text=_text;
 @property(nonatomic) _Bool hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property __weak id <SearchUIWatchListCardRowModelDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (int)separatorStyle;
+- (_Bool)isDraggable;
+- (_Bool)isTappable;
+- (id)punchouts;
 - (void)toggleAddToUpNextWithFeedbackDelegate:(id)arg1;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2 image:(id)arg3 punchout:(id)arg4;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2;

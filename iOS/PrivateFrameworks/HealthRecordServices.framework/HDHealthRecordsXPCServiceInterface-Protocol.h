@@ -10,6 +10,7 @@
 - (void)remote_optInDataForFHIRDocumentWithRequest:(HDExtractionRequest *)arg1 redactor:(HDPIIRedactor *)arg2 completion:(void (^)(HDClinicalDataCollectionExtractionResult *, NSError *))arg3;
 - (void)remote_executeFHIRExtractionRequest:(HDExtractionRequest *)arg1 completion:(void (^)(HDExtractionResult *, NSError *))arg2;
 - (void)remote_executeFHIRReferenceExtractionRequest:(HDReferenceExtractionRequest *)arg1 completion:(void (^)(HDReferenceExtractionResult *, NSError *))arg2;
+- (void)remote_supportedFHIRConfigurationWithCompletion:(void (^)(HRSSupportedFHIRConfiguration *, NSError *))arg1;
 - (void)remote_rulesVersionForFHIRDocumentExtractionWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 @end
 

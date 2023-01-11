@@ -11,6 +11,7 @@
     id _target;
 }
 
+- (void).cxx_destruct;
 @property(retain) id target; // @synthesize target=_target;
 - (void)forwardInvocation:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;

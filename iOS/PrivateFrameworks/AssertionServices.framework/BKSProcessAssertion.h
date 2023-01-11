@@ -14,10 +14,11 @@
 }
 
 + (id)NameForReason:(unsigned int)arg1;
-@property(readonly, nonatomic) unsigned int reason; // @synthesize reason=_reason;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned int reason; // @synthesize reason=_reason;
 - (unsigned long long)_legacyFlagsForFlags:(unsigned int)arg1;
 - (unsigned long long)_legacyReasonForReason:(unsigned int)arg1;
+- (void)dealloc;
 - (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
 - (void)invalidate;
 - (_Bool)acquire;

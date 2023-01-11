@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)textFieldDidEndEditing:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (_Bool)textFieldShouldClear:(id)arg1;
-- (_Bool)textFieldShouldStartEditing:(id)arg1;
+- (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (void)_setTokenized:(_Bool)arg1;
 - (void)refreshFromCalendarItemAndStore;
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;

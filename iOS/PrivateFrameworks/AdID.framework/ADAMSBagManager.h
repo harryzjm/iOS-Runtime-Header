@@ -14,6 +14,7 @@
 {
 }
 
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;

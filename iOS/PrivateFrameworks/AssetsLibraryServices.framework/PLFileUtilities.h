@@ -10,6 +10,8 @@
 {
 }
 
++ (id)redactedDescriptionForPath:(id)arg1;
++ (id)redactedDescriptionForFileURL:(id)arg1;
 + (_Bool)URLIsInTrash:(id)arg1;
 + (_Bool)filePath:(id)arg1 isEqualToFilePath:(id)arg2;
 + (_Bool)filePath:(id)arg1 hasPrefix:(id)arg2;
@@ -21,29 +23,24 @@
 + (_Bool)changeFileOwnerToMobileAtPath:(id)arg1 error:(id *)arg2 usingFileManager:(id)arg3;
 + (_Bool)createDirectoryAtPath:(id)arg1 error:(id *)arg2;
 + (_Bool)createDirectoryAtPath:(id)arg1 error:(id *)arg2 usingFileManager:(id)arg3;
-+ (_Bool)_isFileExistsError:(id)arg1;
++ (_Bool)isFileExistsError:(id)arg1;
 + (_Bool)hasDiskSpaceToCopyFileAtURL:(id)arg1;
 + (_Bool)stripExtendedAttributesFromFileAtURL:(id)arg1 inDomain:(id)arg2 error:(id *)arg3;
-+ (_Bool)ingestItemAtURL:(id)arg1 toURL:(id)arg2 type:(long long)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
++ (_Bool)ingestItemAtURL:(id)arg1 toURL:(id)arg2 type:(long long)arg3 options:(unsigned long long)arg4 capabilities:(id)arg5 error:(id *)arg6;
 + (id)descriptionForFileIngestionType:(long long)arg1;
 + (_Bool)removeDisconnectedSQLiteDatabaseFileWithPath:(id)arg1 error:(id *)arg2;
 + (_Bool)removeFilesInDirectoryAtURL:(id)arg1 withPrefix:(id)arg2 error:(id *)arg3 progress:(CDUnknownBlockType)arg4;
 + (long long)directoryEntryCountAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)copyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (_Bool)cloneFileAtPath:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
-+ (_Bool)secureMoveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
++ (_Bool)secureMoveItemAtURL:(id)arg1 toURL:(id)arg2 capabilities:(id)arg3 error:(id *)arg4;
 + (id)fileManager;
-+ (_Bool)isAPFSForFileSystemAtURL:(id)arg1;
-+ (_Bool)canEnableCloudPhotoLibraryForFileSystemAtURL:(id)arg1 isLocal:(out _Bool *)arg2;
-+ (_Bool)isInternalVolumeAtURL:(id)arg1;
-+ (_Bool)isLocalFileSystemAtURL:(id)arg1;
-+ (_Bool)_getFileSystemType:(unsigned int *)arg1 subType:(unsigned int *)arg2 typeName:(id *)arg3 forURL:(id)arg4;
-+ (_Bool)supportsClone;
 + (_Bool)setPhotoLibraryBasePath:(id)arg1;
-+ (id)_relocateLibraryPath;
-+ (id)relocateLibraryIndicatorFilePath;
++ (id)_defaultSystemLibraryPath;
 + (id)systemLibraryURL;
 + (id)defaultSystemLibraryURL;
++ (id)proxyLockCoordinatingFilePathForDatabaseDirectory:(id)arg1 databaseName:(id)arg2;
++ (id)proxyLockFilePathForDatabasePath:(id)arg1;
 + (id)defaultSystemPhotoDCIMDirectory;
 + (id)defaultSystemPhotoDataMiscDirectory;
 + (id)defaultSystemPhotoDataCPLDirectory;

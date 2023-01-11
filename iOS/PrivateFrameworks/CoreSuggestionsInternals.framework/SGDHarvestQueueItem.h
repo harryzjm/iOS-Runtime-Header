@@ -13,16 +13,18 @@
     long long _itemId;
     CSSearchableItem *_item;
     unsigned long long _fails;
+    unsigned char _customPriorityCriteria;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned char customPriorityCriteria; // @synthesize customPriorityCriteria=_customPriorityCriteria;
 @property(readonly, nonatomic) unsigned long long fails; // @synthesize fails=_fails;
 @property(readonly) CSSearchableItem *item; // @synthesize item=_item;
 @property(readonly, nonatomic) long long itemId; // @synthesize itemId=_itemId;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool highPriority;
 - (void)markAsFailed;
 - (void)finish;
-- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3;
+- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3 customPriorityCriteria:(unsigned char)arg4;
 
 @end
 

@@ -12,14 +12,19 @@
     HMCameraUserSettings *_cameraUserSettings;
 }
 
++ (id)personFamiliarityOptionsInPredicate:(id)arg1;
++ (id)significantEventTypesInPredicate:(id)arg1;
 + (id)predicateForCameraSignificantEvent:(unsigned long long)arg1;
-+ (id)notificationEventTriggersInPredicate:(id)arg1;
-@property __weak HMCameraUserSettings *cameraUserSettings; // @synthesize cameraUserSettings=_cameraUserSettings;
++ (id)predicateForSignificantEventTypes:(unsigned long long)arg1 personFamiliarityOptions:(unsigned long long)arg2;
 - (void).cxx_destruct;
+@property __weak HMCameraUserSettings *cameraUserSettings; // @synthesize cameraUserSettings=_cameraUserSettings;
 - (id)targetUUID;
-- (void)commitWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(readonly) unsigned long long notificationEventTriggers;
 - (void)__configureWithContext:(id)arg1 cameraUserSettings:(id)arg2;
+@property(readonly) unsigned long long notificationEventTriggers;
+- (void)commitWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly) unsigned long long personFamiliarityOptions;
+@property(readonly) unsigned long long significantEventTypes;
+- (id)description;
 - (id)initWithBulletinBoardNotification:(id)arg1;
 
 @end

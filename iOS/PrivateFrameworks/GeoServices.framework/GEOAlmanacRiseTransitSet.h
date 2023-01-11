@@ -6,29 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class GEOCelestialRiseTransitSet, NSDate;
+@class NSDate;
 
 __attribute__((visibility("hidden")))
 @interface GEOAlmanacRiseTransitSet : NSObject
 {
-    GEOCelestialRiseTransitSet *_celestialRiseTransitSet;
-    unsigned long long _firstEventType;
-    unsigned long long _lastEventType;
+    struct CAARiseTransitSetDetails2 _rise;
+    struct CAARiseTransitSetDetails2 _transit;
+    struct CAARiseTransitSetDetails2 _set;
 }
 
-- (void).cxx_destruct;
-- (_Bool)isCompatibleWith:(id)arg1;
-- (long long)compareToDate:(id)arg1;
-@property(readonly, nonatomic) NSDate *lastEventDate;
-@property(readonly, nonatomic) NSDate *firstEventDate;
-@property(readonly, nonatomic) unsigned long long lastEventType;
-@property(readonly, nonatomic) unsigned long long firstEventType;
-- (void)_calculateFirstAndLastEvents;
-@property(readonly, nonatomic) struct CAARiseTransitSetDetails riseTransitSet;
+- (id).cxx_construct;
+@property(readonly, nonatomic) struct CAARiseTransitSetDetails2 lastItem;
+@property(readonly, nonatomic) struct CAARiseTransitSetDetails2 firstItem;
+@property(readonly, nonatomic) _Bool isIdeal;
+- (id)description;
 @property(readonly, nonatomic) NSDate *set;
+@property(readonly, nonatomic) _Bool transitIsAboveHorizon;
 @property(readonly, nonatomic) NSDate *transit;
 @property(readonly, nonatomic) NSDate *rise;
-- (id)initWith:(id)arg1;
+- (id)initWithRise:(const struct CAARiseTransitSetDetails2 *)arg1 transit:(const struct CAARiseTransitSetDetails2 *)arg2 set:(const struct CAARiseTransitSetDetails2 *)arg3;
 
 @end
 

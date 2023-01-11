@@ -24,6 +24,7 @@
 - (id)_main_applicationInitializationContext;
 - (id)_main_persistenceIDs;
 - (id)_main_displayContext;
+- (unsigned long long)_main_effectiveScreenType;
 - (id)_main_deviceContext;
 - (long long)_main_effectiveClassicMode;
 @property(readonly, nonatomic) UISApplicationInitializationContext *applicationInitializationContext;

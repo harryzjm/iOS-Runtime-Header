@@ -15,6 +15,7 @@
 {
     _Bool _offsetable;
     _UIStatusBarAction *_action;
+    _UIStatusBarAction *_hoverAction;
     NSString *_identifier;
     _UIStatusBar *_statusBar;
     id <_UIStatusBarRegionLayout> _layout;
@@ -35,8 +36,10 @@
     UIView *_frozenView;
     struct UIOffset _offset;
     struct UIEdgeInsets _actionInsets;
+    struct NSDirectionalEdgeInsets _extendedHoverInsets;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *frozenView; // @synthesize frozenView=_frozenView;
 @property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) NSLayoutConstraint *centerYConstraint; // @synthesize centerYConstraint=_centerYConstraint;
@@ -57,9 +60,10 @@
 @property(retain, nonatomic) id <_UIStatusBarRegionLayout> layout; // @synthesize layout=_layout;
 @property(nonatomic) __weak _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets; // @synthesize extendedHoverInsets=_extendedHoverInsets;
+@property(retain, nonatomic) _UIStatusBarAction *hoverAction; // @synthesize hoverAction=_hoverAction;
 @property(nonatomic) struct UIEdgeInsets actionInsets; // @synthesize actionInsets=_actionInsets;
 @property(retain, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
-- (void).cxx_destruct;
 - (id)displayItemForHUDAtLocation:(struct CGPoint)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *displayItemAbsoluteFrames;
 @property(readonly, nonatomic) _UIStatusBarDisplayItem *overflowedDisplayItem;
@@ -74,6 +78,9 @@
 - (void)setIdentifier:(id)arg1;
 @property(readonly, nonatomic) id <UILayoutItem> containerItem;
 @property(readonly, nonatomic) id <UILayoutItem> layoutItem;
+@property(readonly, nonatomic) struct CGRect absoluteHoverFrame;
+@property(readonly, nonatomic) _Bool hoverHighlightsAsRegion;
+@property(readonly, nonatomic) UIView *hoverView;
 @property(readonly, copy) NSString *description;
 - (id)initWithIdentifier:(id)arg1;
 

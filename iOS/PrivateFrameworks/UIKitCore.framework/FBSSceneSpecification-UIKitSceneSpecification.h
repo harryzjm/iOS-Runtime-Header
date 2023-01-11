@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSString;
 
 @interface FBSSceneSpecification (UIKitSceneSpecification)
+@property(readonly, nonatomic) _Bool affectsAppLifecycleIfInternal;
 @property(readonly, nonatomic) _Bool isInternal;
 @property(readonly, nonatomic) Class uiSceneMinimumClass;
 @property(readonly, nonatomic) Class sceneSubstrateClass;

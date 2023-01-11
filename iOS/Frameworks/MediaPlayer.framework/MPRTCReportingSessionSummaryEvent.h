@@ -6,6 +6,7 @@
 
 @class NSError, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingSessionSummaryEvent
 {
     _Bool _hadBlockingTracklistLoad;
@@ -27,6 +28,7 @@
     NSString *_siriSessionIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *siriSessionIdentifier; // @synthesize siriSessionIdentifier=_siriSessionIdentifier;
 @property(copy, nonatomic) NSNumber *perceivedTotalStartupTime; // @synthesize perceivedTotalStartupTime=_perceivedTotalStartupTime;
 @property(nonatomic) long long startInterfaceType; // @synthesize startInterfaceType=_startInterfaceType;
@@ -44,7 +46,6 @@
 @property(nonatomic) long long blockingSecureKeyLoadCount; // @synthesize blockingSecureKeyLoadCount=_blockingSecureKeyLoadCount;
 @property(nonatomic) double assetLoadDuration; // @synthesize assetLoadDuration=_assetLoadDuration;
 @property(copy, nonatomic) NSError *assetLoadError; // @synthesize assetLoadError=_assetLoadError;
-- (void).cxx_destruct;
 - (id)newRTCReportingPayloadDictionary;
 - (unsigned short)rtcReportingCategory;
 

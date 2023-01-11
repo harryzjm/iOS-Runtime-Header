@@ -29,6 +29,7 @@
 - (struct __C3DRendererContext *)rendererContextForTextureSourceWithEngineContext:(struct __C3DEngineContext *)arg1;
 - (_Bool)prefersGL3;
 - (_Bool)supportsMetal;
+- (_Bool)shouldFlip;
 - (void)dealloc;
 - (void)setSize: /* Error: Ran out of types for this method. */;
 

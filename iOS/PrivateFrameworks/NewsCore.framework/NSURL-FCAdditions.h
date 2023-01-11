@@ -7,12 +7,17 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (FCAdditions)
-+ (id)fc_fileURLForWidgetReferralItemWithName:(id)arg1;
++ (id)fc_NewsURLWithPathComponents:(id)arg1;
++ (id)fc_NewsURLForArticleID:(id)arg1 hardPaywall:(_Bool)arg2;
++ (id)fc_NewsURLForTagID:(id)arg1;
 + (id)fc_safeURLWithString:(id)arg1;
 + (id)fc_URLWithResourceID:(id)arg1;
 - (id)fc_URLByAddingQueryItem:(id)arg1;
 - (id)fc_URLByDeletingFragment;
 - (id)fc_URLByDeletingQuery;
+- (_Bool)fc_isStoreURL;
+- (_Bool)fc_isHTTPScheme;
+- (_Bool)fc_isWebArchiveURL;
 - (_Bool)_isFeldsparOldChannelURL;
 - (_Bool)_isFeldsparOldTopicURL;
 - (_Bool)fc_isEqualToURL:(id)arg1;
@@ -22,6 +27,7 @@
 - (_Bool)_isFeldsparOldArticleURL;
 - (_Bool)fc_isNewsURL;
 - (id)fc_NewsIssueID;
+- (id)fc_NewsArticleIDs;
 - (id)fc_NewsArticleID;
 - (_Bool)fc_isHardPaywallNewsArticleURL:(out id *)arg1;
 - (_Bool)fc_isNewsIssueURL;

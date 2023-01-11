@@ -4,25 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DAMailAccount, NSString;
+#import <Message/EFLoggable-Protocol.h>
 
-@interface MFDADelivery
+@class DAMailAccount, MFMessageLibrary, NSString;
+
+@interface MFDADelivery <EFLoggable>
 {
     DAMailAccount *_DAMailAccount;
-    NSString *_folderId;
-    NSString *_accountId;
-    NSString *_repliedMessageId;
-    NSString *_forwardedMessageId;
-    NSString *_repliedLongId;
-    NSString *_forwardedLongId;
+    MFMessageLibrary *_library;
+    NSString *_folderID;
+    NSString *_accountID;
+    NSString *_originalMessageID;
+    NSString *_originalLongID;
 }
 
++ (id)log;
 - (void).cxx_destruct;
+- (void)_updateBasedOnOriginalMessage:(id)arg1;
 - (id)deliverSynchronously;
 - (id)newMessageWriter;
 - (void)setDAMailAccount:(id)arg1;
-- (id)initWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;
-- (id)initWithHeaders:(id)arg1 mixedContent:(id)arg2 textPartsAreHTML:(_Bool)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -25,10 +25,6 @@ struct CGSize {
     double _field2;
 };
 
-struct NSObject {
-    Class _field1;
-};
-
 struct PXSimpleIndexPath {
     unsigned long long dataSourceIdentifier;
     long long section;
@@ -39,6 +35,11 @@ struct PXSimpleIndexPath {
 struct PXTileIdentifier {
     unsigned long long _field1;
     unsigned long long _field2[10];
+};
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures

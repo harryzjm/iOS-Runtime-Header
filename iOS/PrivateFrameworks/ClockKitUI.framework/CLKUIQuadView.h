@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CLKUIQuadViewDisplayLink, NSArray, NSMutableArray, NSString;
+@class CLKUIQuadViewDisplayLink, NSArray, NSCountedSet, NSMutableArray, NSString;
 @protocol CLKUIQuadViewDelegate;
 
 @interface CLKUIQuadView : UIView
@@ -18,6 +18,8 @@
     } _delegateRespondsTo;
     unsigned long long _frameNum;
     unsigned int _debugId;
+    NSCountedSet *_disabledRenderingReasons;
+    _Bool _singleBufferMode;
     id <CLKUIQuadViewDelegate> _delegate;
     NSString *_debugIdentifier;
 }
@@ -25,13 +27,13 @@
 + (id)quadViewWithFrame:(struct CGRect)arg1;
 + (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 + (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2 colorSpace:(long long)arg3;
-@property(retain, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
-@property(nonatomic) __weak id <CLKUIQuadViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
+@property(nonatomic) _Bool singleBufferMode; // @synthesize singleBufferMode=_singleBufferMode;
+@property(nonatomic) __weak id <CLKUIQuadViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)discardContents;
 - (void)_handleQuadArrayChange:(id)arg1;
-- (_Bool)_displayAndCheckForDrawable:(_Bool)arg1 WithCompletion:(CDUnknownBlockType)arg2;
-- (id)_snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
+- (_Bool)_displayAndCheckForDrawable:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
 - (void)_prerenderForTime:(double)arg1;
 - (void)removeAllQuads;
@@ -43,8 +45,10 @@
 @property(nonatomic, getter=isPaused) _Bool paused;
 @property(nonatomic) long long preferredFramesPerSecond;
 - (_Bool)_prepareAndRenderForTime:(double)arg1 inGroup:(id)arg2 checkForDrawable:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)removeDisabledRenderingReason:(id)arg1;
+- (void)addDisabledRenderingReason:(id)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (_Bool)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
 

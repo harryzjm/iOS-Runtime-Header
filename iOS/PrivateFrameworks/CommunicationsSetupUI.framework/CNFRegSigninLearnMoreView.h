@@ -14,31 +14,31 @@
 {
     long long _serviceType;
     PSSpecifier *_specifier;
-    UIButton *_learnMoreButton;
-    UIImageView *_splashImageView;
-    UILabel *_titleLabel;
-    UILabel *_verbiageLabel;
-    UIView *_authKitSignInView;
     UILabel *_signingInLabel;
     UIActivityIndicatorView *_signingInSpinner;
     CNFRegSplashSignInController *_controller;
+    UIImageView *_splashImageView;
+    UILabel *_titleLabel;
+    UILabel *_verbiageLabel;
+    UIButton *_learnMoreButton;
+    UIView *_authKitSignInView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *authKitSignInView; // @synthesize authKitSignInView=_authKitSignInView;
+@property(retain, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property(retain, nonatomic) UILabel *verbiageLabel; // @synthesize verbiageLabel=_verbiageLabel;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIImageView *splashImageView; // @synthesize splashImageView=_splashImageView;
 @property(nonatomic) CNFRegSplashSignInController *controller; // @synthesize controller=_controller;
 @property(nonatomic) long long serviceType; // @synthesize serviceType=_serviceType;
-- (void).cxx_destruct;
 - (void)_learnMorePressed:(id)arg1;
 - (double)preferredHeightForWidth:(double)arg1;
 - (void)layoutSubviews;
 - (id)signingInSpinner;
 - (id)signingInLabel;
-- (id)verbiageLabel;
-- (id)titleLabel;
-- (id)splashImageView;
-- (id)learnMoreButton;
 - (id)_splashImage;
 - (void)setSigningIn:(_Bool)arg1;
-- (void)setAuthKitSignInView:(id)arg1;
 - (id)initWithSpecifier:(id)arg1;
 
 @end

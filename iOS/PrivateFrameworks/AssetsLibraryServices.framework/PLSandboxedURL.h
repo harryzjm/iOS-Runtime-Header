@@ -21,7 +21,9 @@
 - (void)dealloc;
 - (void)_commonPLSandboxedURLInitialize;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initFileURLWithPath:(id)arg1 sandboxExtensionToken:(id)arg2 consume:(_Bool)arg3;
 - (id)initWithURL:(id)arg1 sandboxExtensionToken:(id)arg2 consume:(_Bool)arg3;
+- (id)_sharedInitWithSandboxExtensionToken:(id)arg1 consume:(_Bool)arg2;
 
 @end
 

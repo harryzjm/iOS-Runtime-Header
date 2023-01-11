@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainer, CKSchedulerActivity, NSDictionary, NSString;
+@class CKContainer, CKSchedulerActivity, NSDictionary, NSMutableDictionary, NSNumber, NSString;
 @protocol OS_xpc_object;
 
 @interface CKOperationConfiguration : NSObject <NSSecureCoding, NSCopying>
@@ -21,8 +21,8 @@
     _Bool _xpcActivityAutomaticallyDefer;
     _Bool _discretionarySchedulingForEntireOperation;
     _Bool _allowsBackgroundNetworking;
-    _Bool _shouldSkipZonePCSUpdate;
     _Bool _isCloudKitSupportOperation;
+    _Bool _hasQualityOfService;
     _Bool _hasContainer;
     _Bool _hasAllowsCellularAccess;
     _Bool _hasLongLived;
@@ -38,10 +38,11 @@
     _Bool _hasAllowsBackgroundNetworking;
     _Bool _hasSourceApplicationBundleIdentifier;
     _Bool _hasSourceApplicationSecondaryIdentifier;
+    _Bool _hasApplicationBundleIdentifierOverrideForContainerAccess;
+    _Bool _hasApplicationBundleIdentifierOverrideForNetworkAttribution;
     _Bool _hasAdditionalRequestHTTPHeaders;
-    _Bool _hasShouldSkipZonePCSUpdate;
     _Bool _hasIsCloudKitSupportOperation;
-    _Bool _hasQualityOfService;
+    _Bool _hasCacheDeleteAvailableSpaceClass;
     CKContainer *_container;
     long long _qualityOfService;
     double _timeoutIntervalForRequest;
@@ -50,16 +51,23 @@
     NSObject<OS_xpc_object> *_xpcActivity;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
+    NSString *_applicationBundleIdentifierOverrideForContainerAccess;
+    NSString *_applicationBundleIdentifierOverrideForNetworkAttribution;
     NSDictionary *_additionalRequestHTTPHeaders;
+    NSNumber *_cacheDeleteAvailableSpaceClass;
+    NSMutableDictionary *_unitTestOverrides;
     CKSchedulerActivity *_schedulerActivity;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) _Bool hasQualityOfService; // @synthesize hasQualityOfService=_hasQualityOfService;
-@property(retain, nonatomic) CKSchedulerActivity *schedulerActivity; // @synthesize schedulerActivity=_schedulerActivity;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CKSchedulerActivity *schedulerActivity; // @synthesize schedulerActivity=_schedulerActivity;
+@property(retain, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
+@property(nonatomic) _Bool hasCacheDeleteAvailableSpaceClass; // @synthesize hasCacheDeleteAvailableSpaceClass=_hasCacheDeleteAvailableSpaceClass;
 @property(nonatomic) _Bool hasIsCloudKitSupportOperation; // @synthesize hasIsCloudKitSupportOperation=_hasIsCloudKitSupportOperation;
-@property(nonatomic) _Bool hasShouldSkipZonePCSUpdate; // @synthesize hasShouldSkipZonePCSUpdate=_hasShouldSkipZonePCSUpdate;
 @property(nonatomic) _Bool hasAdditionalRequestHTTPHeaders; // @synthesize hasAdditionalRequestHTTPHeaders=_hasAdditionalRequestHTTPHeaders;
+@property(nonatomic) _Bool hasApplicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize hasApplicationBundleIdentifierOverrideForNetworkAttribution=_hasApplicationBundleIdentifierOverrideForNetworkAttribution;
+@property(nonatomic) _Bool hasApplicationBundleIdentifierOverrideForContainerAccess; // @synthesize hasApplicationBundleIdentifierOverrideForContainerAccess=_hasApplicationBundleIdentifierOverrideForContainerAccess;
 @property(nonatomic) _Bool hasSourceApplicationSecondaryIdentifier; // @synthesize hasSourceApplicationSecondaryIdentifier=_hasSourceApplicationSecondaryIdentifier;
 @property(nonatomic) _Bool hasSourceApplicationBundleIdentifier; // @synthesize hasSourceApplicationBundleIdentifier=_hasSourceApplicationBundleIdentifier;
 @property(nonatomic) _Bool hasAllowsBackgroundNetworking; // @synthesize hasAllowsBackgroundNetworking=_hasAllowsBackgroundNetworking;
@@ -75,19 +83,23 @@
 @property(nonatomic) _Bool hasLongLived; // @synthesize hasLongLived=_hasLongLived;
 @property(nonatomic) _Bool hasAllowsCellularAccess; // @synthesize hasAllowsCellularAccess=_hasAllowsCellularAccess;
 @property(nonatomic) _Bool hasContainer; // @synthesize hasContainer=_hasContainer;
+@property(nonatomic) _Bool hasQualityOfService; // @synthesize hasQualityOfService=_hasQualityOfService;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
-- (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(retain, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
-@property(retain, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
-@property(retain, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property(copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
+- (void)setApplicationBundleIdentifierOverride:(id)arg1;
+@property(copy, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
+@property(copy, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
+@property(copy, nonatomic) NSString *_sourceApplicationSecondaryIdentifier; // @synthesize _sourceApplicationSecondaryIdentifier;
+@property(copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
+@property(copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property(nonatomic) _Bool allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
+@property(copy, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass; // @synthesize cacheDeleteAvailableSpaceClass=_cacheDeleteAvailableSpaceClass;
 @property(nonatomic) _Bool isCloudKitSupportOperation; // @synthesize isCloudKitSupportOperation=_isCloudKitSupportOperation;
-@property(nonatomic) _Bool shouldSkipZonePCSUpdate; // @synthesize shouldSkipZonePCSUpdate=_shouldSkipZonePCSUpdate;
 @property(nonatomic) _Bool preferAnonymousRequests; // @synthesize preferAnonymousRequests=_preferAnonymousRequests;
 @property(nonatomic) _Bool discretionarySchedulingForEntireOperation; // @synthesize discretionarySchedulingForEntireOperation=_discretionarySchedulingForEntireOperation;
 @property(nonatomic) _Bool xpcActivityAutomaticallyDefer; // @synthesize xpcActivityAutomaticallyDefer=_xpcActivityAutomaticallyDefer;

@@ -35,9 +35,11 @@
 - (void)didAdoptFilesWithError:(NSError *)arg1 forSession:(NSString *)arg2;
 - (void)adoptFiles:(NSArray *)arg1 forSession:(NSString *)arg2;
 - (void)hasCollected:(NSArray *)arg1 isCollecting:(NSArray *)arg2 withIdentifiers:(NSArray *)arg3 inSession:(NSString *)arg4;
+- (void)didGetState:(long long)arg1 info:(NSDictionary *)arg2 sessionID:(NSString *)arg3;
 - (void)hasCollected:(NSArray *)arg1 isCollecting:(NSArray *)arg2 inSession:(NSString *)arg3;
 - (void)syncSessionStatusWithSession:(NSString *)arg1;
 - (void)getSessionStatusWithSession:(NSString *)arg1;
+- (void)getSessionStateWithSession:(NSString *)arg1;
 - (void)terminateExtension:(NSString *)arg1 info:(NSDictionary *)arg2 session:(NSString *)arg3;
 - (void)finishedDiagnosticWithIdentifier:(NSString *)arg1 result:(NSDictionary *)arg2 session:(NSString *)arg3;
 - (void)startDiagnosticWithIdentifier:(NSString *)arg1 parameters:(NSDictionary *)arg2 deferRunUntil:(NSDate *)arg3 session:(NSString *)arg4;

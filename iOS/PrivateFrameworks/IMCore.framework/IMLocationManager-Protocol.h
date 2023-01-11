@@ -11,9 +11,10 @@
 @protocol IMLocationManager <NSObject>
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) CLLocation *location;
+@property(readonly, nonatomic) _Bool preciseLocationAuthorized;
 @property(readonly, nonatomic) _Bool locationAuthorizationDenied;
 @property(readonly, nonatomic) _Bool locationAuthorizationDetermined;
-- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(NSString *)arg1 updateHandler:(void (^)(CLLocation *, NSError *))arg2;
-- (void)startUpdatingCurrentLocationWithHandler:(void (^)(CLLocation *, NSError *))arg1;
+- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(NSString *)arg1 withAuthorizedHandler:(void (^)(void))arg2 updateHandler:(void (^)(CLLocation *, NSError *))arg3;
+- (void)startUpdatingCurrentLocationWithAuthorizedHandler:(void (^)(void))arg1 updateHandler:(void (^)(CLLocation *, NSError *))arg2;
 @end
 

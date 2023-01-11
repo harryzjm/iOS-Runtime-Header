@@ -10,20 +10,22 @@
 
 @interface DMFiCloudPolicyMonitor : NSObject
 {
-    long long _iCloudLogoutPolicy;
     NSArray *_policyTypes;
     NSUUID *_identifier;
+    long long _iCloudLogoutPolicy;
 }
 
-+ (_Bool)automaticallyNotifiesObserversOfICloudLogoutPolicy;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
-@property(nonatomic) long long iCloudLogoutPolicy; // @synthesize iCloudLogoutPolicy=_iCloudLogoutPolicy;
++ (id)new;
++ (id)iCloudLogoutPolicyForPoliciesByType:(id)arg1;
 - (void).cxx_destruct;
-- (void)_updateiCloudLogoutFromPolicies:(id)arg1;
-- (void)_updateiCloudLogout;
-- (void)dealloc;
+@property(nonatomic) long long iCloudLogoutPolicy; // @synthesize iCloudLogoutPolicy=_iCloudLogoutPolicy;
+@property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 - (id)init;
+- (void)requestiCloudLogoutPolicyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)requestiCloudLogoutPolicyWithError:(id *)arg1;
+- (void)dealloc;
+- (id)initWithPolicyChangeHandler:(CDUnknownBlockType)arg1;
 
 @end
 

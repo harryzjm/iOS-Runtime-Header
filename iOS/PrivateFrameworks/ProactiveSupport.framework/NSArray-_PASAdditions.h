@@ -7,6 +7,19 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (_PASAdditions)
++ (id)_pas_proxyArrayWithObject:(id)arg1 repetitions:(unsigned long long)arg2;
++ (id)_pas_proxyArrayUsingObjectAtIndexBlock:(CDUnknownBlockType)arg1 andCountBlock:(CDUnknownBlockType)arg2;
+- (id)_pas_unproxy;
+- (id)_pas_proxyArrayReversed;
+- (id)_pas_proxyArrayRevivingStrings;
+- (id)_pas_proxyArrayDistillingStrings;
+- (id)_pas_proxyArrayWithRepetitions:(unsigned long long)arg1;
+- (id)_pas_proxyArrayByAppendingArray:(id)arg1;
+- (id)_pas_proxyArrayWithMapping:(CDUnknownBlockType)arg1;
+- (id)_pas_proxyArrayWithObjectsAtIndexes:(id)arg1;
+- (id)_pas_proxySubarrayWithRange:(struct _NSRange)arg1;
+- (id)_pas_ensureImmutable;
+- (id)_pas_proxyComponentsJoinedByString:(id)arg1;
 - (void)_pas_enumerateChunksOfSize:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_pas_shuffledArrayUsingRng:(id)arg1;
 - (id)_pas_rightFoldWithInitialObject:(id)arg1 accumulate:(CDUnknownBlockType)arg2;

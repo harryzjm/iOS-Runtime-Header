@@ -18,11 +18,14 @@
 
 + (id)placemarkWithGEOMapItem:(id)arg1;
 + (_Bool)supportsSecureCoding;
++ (unsigned long long)_cLMapItemSourceFromRLMapItemSource:(unsigned long long)arg1;
 - (id)description;
+- (id)_geoMapItemHandle;
 - (id)_geoMapItem;
 @property(readonly, copy, nonatomic) NSString *ocean;
 @property(readonly, copy, nonatomic) NSString *inlandWater;
 @property(readonly, copy, nonatomic) NSArray *areasOfInterest;
+- (void)fetchFormattedAddress:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)formattedAddressLines;
 - (id)fullThoroughfare;
 @property(readonly, copy, nonatomic) NSString *country;
@@ -36,6 +39,7 @@
 @property(readonly, copy, nonatomic) NSString *thoroughfare;
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, copy, nonatomic) NSDictionary *addressDictionary;
+- (id)mecardAddress;
 @property(readonly, copy, nonatomic) NSTimeZone *timeZone;
 @property(readonly, copy, nonatomic) CLRegion *region;
 @property(readonly, copy, nonatomic) CLLocation *location;
@@ -44,8 +48,10 @@
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithPlacemark:(id)arg1;
+- (id)initWithLocation:(id)arg1 addressDictionary:(id)arg2 region:(id)arg3 areasOfInterest:(id)arg4 mapItemSource:(unsigned long long)arg5 geoMapItemHandle:(id)arg6 meCardAddress:(id)arg7;
 - (id)initWithLocation:(id)arg1 addressDictionary:(id)arg2 region:(id)arg3 areasOfInterest:(id)arg4;
 - (id)_initWithGeoMapItem:(id)arg1;
+- (id)_initWithRTMapItem:(id)arg1 location:(id)arg2;
 @property(readonly, nonatomic) CNPostalAddress *postalAddress;
 
 @end

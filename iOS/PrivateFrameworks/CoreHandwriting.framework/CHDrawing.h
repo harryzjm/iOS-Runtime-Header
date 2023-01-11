@@ -15,9 +15,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) struct CHDrawingStrokes drawing; // @synthesize drawing=_drawing;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) struct CHDrawingStrokes drawing; // @synthesize drawing=_drawing;
 - (id)debugQuickLookObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)averageCharacterHeightEstimation:(double)arg1 minChunkHeight:(double)arg2;
@@ -30,6 +30,7 @@
 - (void)setLineHeight:(double)arg1;
 - (vector_afed86a5)strokeIndicesSortedByMinXCoordinate;
 - (id)drawingSpatiallyResampled:(double)arg1 outputPointMap:(vector_1dba4e4e *)arg2;
+- (id)drawingTransformedWithTranslation:(struct CGVector)arg1 scaleFactor:(double)arg2;
 - (id)drawingScaledByFactor:(double)arg1;
 - (id)sortedDrawingUsingMinXCoordinate;
 - (Matrix_273a43f8)orientationRepresentationForSampling:(unsigned long long)arg1 convolutionWidth:(unsigned long long)arg2;
@@ -43,8 +44,11 @@
 - (void)clear;
 - (void)endStroke;
 - (void)addPoint:(struct CGPoint)arg1;
+- (float)distanceBetweenFirstAndLastPoint;
+- (float)cumulativePointToPointDistance;
 - (struct CGRect)bounds;
 - (struct CGRect)strokeBoundsAtIndex:(unsigned long long)arg1;
+- (struct CGPoint)centroidForStrokeIndexes:(id)arg1;
 - (id)drawingWithStrokesFromIndexSet:(id)arg1;
 - (id)indexesOfStrokesSmallerThanSize:(struct CGSize)arg1;
 - (unsigned long long)strokeCount;

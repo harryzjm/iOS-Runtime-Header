@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
 @class AMSDialogAction, AMSMetricsEvent, NSArray, NSDictionary, NSString, NSURL;
 
-@interface AMSDialogRequest : NSObject <NSSecureCoding>
+@interface AMSDialogRequest : NSObject <NSSecureCoding, NSCopying>
 {
     NSArray *_buttonActions;
     AMSDialogAction *_defaultAction;
@@ -27,6 +28,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)requestWithTitle:(id)arg1 message:(id)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSArray *textFields; // @synthesize textFields=_textFields;
@@ -38,14 +40,16 @@
 @property(copy, nonatomic) NSURL *iconBundleURL; // @synthesize iconBundleURL=_iconBundleURL;
 @property(retain, nonatomic) AMSDialogAction *defaultAction; // @synthesize defaultAction=_defaultAction;
 @property(copy, nonatomic) NSArray *buttonActions; // @synthesize buttonActions=_buttonActions;
-- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)replaceAction:(id)arg1;
 - (id)locateActionWithIdentifier:(id)arg1;
 - (void)addTextField:(id)arg1;
 - (void)addButtonAction:(id)arg1;
 - (id)description;
 - (id)initWithTitle:(id)arg1 message:(id)arg2;
+- (id)initWithError:(id)arg1;
 - (id)init;
 
 @end

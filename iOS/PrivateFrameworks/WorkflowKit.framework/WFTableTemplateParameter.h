@@ -9,9 +9,9 @@
     Class _contentItemClass;
 }
 
-@property(readonly, nonatomic) Class contentItemClass; // @synthesize contentItemClass=_contentItemClass;
 - (void).cxx_destruct;
-- (_Bool)supportsImportQuestions;
+@property(readonly, nonatomic) Class contentItemClass; // @synthesize contentItemClass=_contentItemClass;
+- (id)importQuestionBehavior;
 @property(readonly, copy, nonatomic) id additionalRowSerializedRepresentation;
 - (id)defaultSerializedRepresentation;
 - (id)defaultSupportedVariableTypes;

@@ -22,6 +22,8 @@
 - (void).cxx_destruct;
 - (void)settingsService:(id)arg1 didUpdateNotificationSystemSettings:(id)arg2;
 - (void)settingsService:(id)arg1 didUpdateNotificationSourcesForBundleIdentifiers:(id)arg2;
+- (void)_handleClientConnectionInvalidated:(id)arg1;
+- (void)_handleClientConnectionInterrupted:(id)arg1;
 - (id)_currentConnection;
 - (void)setNotificationSystemSettings:(id)arg1;
 - (void)getNotificationSystemSettingsWithCompletionHandler:(CDUnknownBlockType)arg1;

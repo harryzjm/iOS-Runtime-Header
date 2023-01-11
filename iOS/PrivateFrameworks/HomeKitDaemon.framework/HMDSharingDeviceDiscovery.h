@@ -8,15 +8,16 @@
 
 #import <HomeKitDaemon/HMDSharingDeviceDiscovery-Protocol.h>
 
-@class NSString, SFDeviceDiscovery;
+@class NSObject, NSString, SFDeviceDiscovery;
+@protocol OS_dispatch_queue;
 
 @interface HMDSharingDeviceDiscovery : HMFObject <HMDSharingDeviceDiscovery>
 {
     SFDeviceDiscovery *_deviceDiscovery;
 }
 
-@property(retain, nonatomic) SFDeviceDiscovery *deviceDiscovery; // @synthesize deviceDiscovery=_deviceDiscovery;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFDeviceDiscovery *deviceDiscovery; // @synthesize deviceDiscovery=_deviceDiscovery;
 - (void)repairDevice:(id)arg1 flags:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stop;
 - (void)start;
@@ -24,6 +25,7 @@
 @property(copy, nonatomic) CDUnknownBlockType deviceChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceFoundHandler;
 @property(nonatomic) unsigned long long discoveryFlags;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 - (void)dealloc;
 
 // Remaining properties

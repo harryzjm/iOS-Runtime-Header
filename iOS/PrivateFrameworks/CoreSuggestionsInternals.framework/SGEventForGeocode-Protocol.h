@@ -10,6 +10,7 @@
 
 @protocol SGEventForGeocode <NSObject>
 - (id)geocodedEventWithStartDate:(NSDate *)arg1 startTimeZone:(NSTimeZone *)arg2 endDate:(NSDate *)arg3 endTimeZone:(NSTimeZone *)arg4 locations:(NSArray *)arg5;
+- (NSString *)loggingIdentifier;
 - (NSArray *)geocodeLocations;
 - (NSTimeZone *)geocodeEndTimeZone;
 - (NSDate *)geocodeEndDate;

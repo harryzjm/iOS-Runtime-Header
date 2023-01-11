@@ -7,61 +7,25 @@
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UIPickerViewScrollTesting-Protocol.h>
 
-@class NSCalendar, NSDate, NSLocale, NSTimeZone, UIColor, _UIDatePickerView;
+@class NSCalendar, NSDate, NSLocale, NSString, NSTimeZone, UIColor, UIView, _UIDatePickerDataModel;
+@protocol _UIDatePickerViewComponent;
 
 @interface UIDatePicker <UIPickerViewScrollTesting, NSCoding>
 {
-    _UIDatePickerView *_pickerView;
+    UIView<_UIDatePickerViewComponent> *_pickerView;
+    _UIDatePickerDataModel *_data;
     _Bool _useCurrentDateDuringDecoding;
-    _Bool shouldAnimateSetDateCall;
+    long long _preferredDatePickerStyle;
 }
 
-@property(nonatomic, getter=_shouldAnimateSetDateCall, setter=_setShouldAnimateSetDateCall:) _Bool shouldAnimateSetDateCall; // @synthesize shouldAnimateSetDateCall;
 - (void).cxx_destruct;
-- (void)didReceiveBindingsUpdate;
-- (void)willReceiveBindingsUpdate;
-- (void)_emitValueChanged;
-- (unsigned long long)_controlEventsForActionTriggered;
-- (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
-- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)invalidateIntrinsicContentSize;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
-- (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
-- (void)setDate:(id)arg1 animated:(_Bool)arg2;
-@property(nonatomic) long long minuteInterval; // @dynamic minuteInterval;
-@property(nonatomic) double countDownDuration; // @dynamic countDownDuration;
-@property(retain, nonatomic) NSDate *maximumDate; // @dynamic maximumDate;
-@property(retain, nonatomic) NSDate *minimumDate; // @dynamic minimumDate;
-@property(retain, nonatomic) NSDate *date; // @dynamic date;
-@property(copy, nonatomic) NSCalendar *calendar; // @dynamic calendar;
-@property(retain, nonatomic) NSTimeZone *timeZone; // @dynamic timeZone;
-@property(retain, nonatomic) NSLocale *locale; // @dynamic locale;
-- (void)_setLocale:(id)arg1;
-- (id)_locale;
-@property(nonatomic) long long datePickerMode; // @dynamic datePickerMode;
-- (void)_setUpInitialValues;
-- (void)encodeWithCoder:(id)arg1;
-- (void)_populateArchivedSubviews:(id)arg1;
-- (void)awakeFromNib;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)_installPickerView:(id)arg1;
-- (void)setEnabled:(_Bool)arg1;
-- (void)setBounds:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)setDate:(id)arg1 animate:(_Bool)arg2;
-- (void)setBackgroundColor:(id)arg1;
-- (int)second;
-- (int)minute;
-- (int)hour;
-- (void)setHighlightsToday:(_Bool)arg1;
-- (void)setStaggerTimeIntervals:(_Bool)arg1;
-- (void)setDateComponents:(id)arg1;
-- (id)dateComponents;
-- (void)setDelegate:(id)arg1;
+@property(nonatomic) long long preferredDatePickerStyle; // @synthesize preferredDatePickerStyle=_preferredDatePickerStyle;
+- (id)_lastSelectedDateComponents;
+- (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
+- (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
+@property(nonatomic) double timeInterval; // @dynamic timeInterval;
+@property(readonly, nonatomic) long long datePickerStyle;
+- (void)_updatePickerViewIfNecessary;
 @property(nonatomic, getter=_useCurrentDateDuringDecoding, setter=_setUseCurrentDateDuringDecoding:) _Bool useCurrentDateDuringDecoding;
 @property(retain, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor;
 @property(retain, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
@@ -76,10 +40,59 @@
 - (void)_setHighlightsToday:(_Bool)arg1;
 @property(readonly, nonatomic, getter=_contentWidth) double contentWidth; // @dynamic contentWidth;
 @property(readonly, nonatomic, getter=_isTimeIntervalMode) _Bool isTimeIntervalMode; // @dynamic isTimeIntervalMode;
-- (id)_lastSelectedDateComponents;
-- (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
-- (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
-@property(nonatomic) double timeInterval; // @dynamic timeInterval;
+- (void)setEnabled:(_Bool)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setDate:(id)arg1 animate:(_Bool)arg2;
+- (void)setBackgroundColor:(id)arg1;
+- (int)second;
+- (int)minute;
+- (int)hour;
+- (void)setHighlightsToday:(_Bool)arg1;
+- (void)setStaggerTimeIntervals:(_Bool)arg1;
+- (void)setDateComponents:(id)arg1;
+- (id)dateComponents;
+- (void)setDelegate:(id)arg1;
+- (void)_workaround66574039_updateLayoutMargins;
+- (void)layoutMarginsDidChange;
+- (_Bool)resignFirstResponder;
+- (_Bool)becomeFirstResponder;
+- (id)_systemDefaultFocusGroupDescriptor;
+- (void)_emitEndEditing;
+- (void)_emitValueChanged;
+- (void)_emitBeginEditing;
+- (unsigned long long)_controlEventsForActionTriggered;
+- (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)invalidateIntrinsicContentSize;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
+- (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
+@property(retain, nonatomic, getter=_customFontDesign, setter=_setCustomFontDesign:) NSString *customFontDesign;
+- (void)setDate:(id)arg1 animated:(_Bool)arg2;
+@property(nonatomic) long long minuteInterval; // @dynamic minuteInterval;
+@property(nonatomic) double countDownDuration; // @dynamic countDownDuration;
+@property(retain, nonatomic) NSDate *maximumDate; // @dynamic maximumDate;
+@property(retain, nonatomic) NSDate *minimumDate; // @dynamic minimumDate;
+@property(retain, nonatomic) NSDate *date; // @dynamic date;
+@property(copy, nonatomic) NSCalendar *calendar; // @dynamic calendar;
+@property(retain, nonatomic) NSTimeZone *timeZone; // @dynamic timeZone;
+@property(retain, nonatomic) NSLocale *locale; // @dynamic locale;
+- (void)_setLocale:(id)arg1;
+- (id)_locale;
+@property(nonatomic) long long datePickerMode; // @dynamic datePickerMode;
+- (void)_todayChanged:(id)arg1;
+- (void)_datePickerReset:(id)arg1;
+- (void)_registerObservers;
+- (void)_setUpInitialValues;
+- (void)encodeWithCoder:(id)arg1;
+- (void)_populateArchivedSubviews:(id)arg1;
+- (void)awakeFromNib;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)_installPickerView:(id)arg1 updatingSize:(_Bool)arg2;
 
 @end
 

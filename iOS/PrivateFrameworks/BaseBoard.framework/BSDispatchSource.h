@@ -21,13 +21,9 @@
     CDUnknownBlockType _cancelHandler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
-@property(copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
 - (void).cxx_destruct;
 - (void)invalidate;
-- (void)resume;
 - (void)dealloc;
-- (id)initWithType:(struct dispatch_source_type_s *)arg1 handle:(unsigned long long)arg2 mask:(unsigned long long)arg3 queue:(id)arg4 configureSourceBlock:(CDUnknownBlockType)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

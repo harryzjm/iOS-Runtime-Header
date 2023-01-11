@@ -6,38 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <SystemStatusServer/STStatusDomainPublisherClientHandle-Protocol.h>
 #import <SystemStatusServer/STStatusDomainPublisherXPCServer-Protocol.h>
 
-@class BSMutableIntegerMap, NSSet, NSString, NSXPCConnection;
+@class BSMutableIntegerMap, NSMutableSet, NSSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, STStatusDomainPublisherServerHandle;
 
-@interface STStatusDomainPublisherXPCClientHandle : NSObject <STStatusDomainPublisherXPCServer>
+@interface STStatusDomainPublisherXPCClientHandle : NSObject <STStatusDomainPublisherXPCServer, STStatusDomainPublisherClientHandle>
 {
     id <STStatusDomainPublisherServerHandle> _serverHandle;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSXPCConnection *_clientXPCConnection;
     BSMutableIntegerMap *_dataByDomain;
+    BSMutableIntegerMap *_volatileDataByDomain;
     NSSet *_entitledDomains;
+    NSMutableSet *_publishingDomains;
 }
 
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSMutableSet *publishingDomains; // @synthesize publishingDomains=_publishingDomains;
 @property(readonly, copy, nonatomic) NSSet *entitledDomains; // @synthesize entitledDomains=_entitledDomains;
+@property(readonly, nonatomic) BSMutableIntegerMap *volatileDataByDomain; // @synthesize volatileDataByDomain=_volatileDataByDomain;
 @property(readonly, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
 @property(readonly, nonatomic) NSXPCConnection *clientXPCConnection; // @synthesize clientXPCConnection=_clientXPCConnection;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(readonly, nonatomic) __weak id <STStatusDomainPublisherServerHandle> serverHandle; // @synthesize serverHandle=_serverHandle;
-- (void).cxx_destruct;
-- (id)_newEmptyDataForDomain:(unsigned long long)arg1;
-- (id)_internalQueue_dataForDomainCreatingIfNecessary:(unsigned long long)arg1;
-- (void)_publishDataDiff:(id)arg1 forDomain:(unsigned long long)arg2;
-- (void)_publishData:(id)arg1 forDomain:(unsigned long long)arg2;
-- (void)publishWifiDataDiff:(id)arg1;
-- (void)publishWifiData:(id)arg1;
-- (void)publishVoiceControlDataDiff:(id)arg1;
-- (void)publishVoiceControlData:(id)arg1;
-- (void)publishTelephonyDataDiff:(id)arg1;
-- (void)publishTelephonyData:(id)arg1;
-- (void)publishBatteryDataDiff:(id)arg1;
-- (void)publishBatteryData:(id)arg1;
+- (void)_internalQueue_unregisterFromPublishingDomains:(id)arg1;
+- (id)_internalQueue_volatileDataForDomain:(unsigned long long)arg1;
+- (id)_internalQueue_dataForDomain:(unsigned long long)arg1;
+- (void)handleUserInteraction:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)publishDiff:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)publishData:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)unregisterFromPublishingDomains:(id)arg1;
+- (void)registerToPublishDomains:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1 serverHandle:(id)arg2;
 
 // Remaining properties

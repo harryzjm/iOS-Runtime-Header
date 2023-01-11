@@ -12,10 +12,10 @@
     NSDictionary *_imageProperties;
 }
 
-+ (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *imageProperties; // @synthesize imageProperties=_imageProperties;
 @property(copy, nonatomic) NSString *burstFrameIdentifier; // @synthesize burstFrameIdentifier=_burstFrameIdentifier;
-- (void).cxx_destruct;
 - (_Bool)internalPerformInContext:(id)arg1 error:(id *)arg2;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (id)sequencedRequestPreviousObservationsKey;
@@ -31,7 +31,7 @@
 - (id)initWithTargetedCGImage:(struct CGImage *)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithTargetedCVPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2;
 - (id)initWithTargetedCVPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -5,11 +5,13 @@
 //
 
 #import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
+#import <UIKitCore/_UIStatusBarFixedWidthVisualProvider-Protocol.h>
 
-@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UILayoutGuide, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
+@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UILayoutGuide, _UIStatusBar, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
 
-@interface _UIStatusBarVisualProvider_Split <_UIStatusBarCellularItemTypeStringProvider>
+@interface _UIStatusBarVisualProvider_Split <_UIStatusBarCellularItemTypeStringProvider, _UIStatusBarFixedWidthVisualProvider>
 {
+    _Bool _delayedSystemUpdateData;
     NSDictionary *_orderedDisplayItemPlacements;
     _UIStatusBarDisplayItemPlacement *_serviceNamePlacement;
     _UIStatusBarDisplayItemPlacement *_dualServiceNamePlacement;
@@ -31,11 +33,17 @@
 + (struct NSDirectionalEdgeInsets)trailingEdgeInsets;
 + (struct NSDirectionalEdgeInsets)leadingEdgeInsets;
 + (struct NSDirectionalEdgeInsets)_edgeInsetsFromCenteringEdgeInset:(double)arg1 trailing:(_Bool)arg2;
-+ (double)baseIconScale;
++ (long long)expandedIconSize;
++ (long long)normalIconSize;
++ (double)expandedIconScale;
++ (double)normalIconScale;
 + (double)bottomLeadingTopOffset;
++ (double)bottomLeadingBaseline;
++ (double)bottomLeadingSpace;
 + (double)bottomLeadingWidth;
 + (double)lowerExpandedBaselineOffset;
 + (double)baselineBottomInset;
++ (id)systemUpdateFont;
 + (id)pillSmallFont;
 + (id)pillFont;
 + (id)smallFont;
@@ -56,9 +64,13 @@
 + (struct CGSize)notchSize;
 + (double)referenceScale;
 + (double)referenceWidth;
++ (double)nativeDisplayWidth;
 + (double)cornerRadius;
 + (double)height;
-+ (Class)visualProviderSubclassForScreen:(id)arg1;
++ (Class)defaultFallbackVisualProviderSubclass;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool delayedSystemUpdateData; // @synthesize delayedSystemUpdateData=_delayedSystemUpdateData;
 @property(retain, nonatomic) NSTimer *airplaneModeIgnoreChangesTimer; // @synthesize airplaneModeIgnoreChangesTimer=_airplaneModeIgnoreChangesTimer;
 @property(retain, nonatomic) NSTimer *batteryExpansionTimer; // @synthesize batteryExpansionTimer=_batteryExpansionTimer;
 @property(retain, nonatomic) NSTimer *systemUpdatesTimer; // @synthesize systemUpdatesTimer=_systemUpdatesTimer;
@@ -72,7 +84,6 @@
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *dualServiceNamePlacement; // @synthesize dualServiceNamePlacement=_dualServiceNamePlacement;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *serviceNamePlacement; // @synthesize serviceNamePlacement=_serviceNamePlacement;
 @property(retain, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
-- (void).cxx_destruct;
 - (void)setExpanded:(_Bool)arg1;
 - (id)defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (void)_updateExpandedTrailingRegion;
@@ -98,11 +109,15 @@
 - (void)_updateSystemNavigationWithData:(id)arg1;
 - (void)updateDataForSystemNavigation:(id)arg1;
 - (void)updateDataForService:(id)arg1;
-- (_Bool)canFixupDisplayItemAttributes;
+@property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;
 - (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (void)dealloc;
+- (void)_resumeSystemUpdateData;
+- (void)_delaySystemUpdateData;
+- (id)_systemUpdateDelayedDataIdentifiers;
 - (void)statusBarRegionsUpdated;
 - (void)dataUpdated:(id)arg1;
 - (void)styleUpdatedFromStyle:(long long)arg1;
@@ -121,7 +136,9 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak _UIStatusBar *statusBar;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 
 @end
 

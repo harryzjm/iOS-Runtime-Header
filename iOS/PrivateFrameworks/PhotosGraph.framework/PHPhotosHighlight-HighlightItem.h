@@ -12,6 +12,7 @@
 @class NSArray, NSDate, NSString, PHAsset, PHAssetCollection;
 
 @interface PHPhotosHighlight (HighlightItem) <PGHighlightItem, PGHighlightModel>
++ (id)fetchParentDayGroupHighlightsForDayHighlights:(id)arg1;
 @property(readonly, nonatomic) NSArray *extendedCuratedAssets;
 @property(readonly, nonatomic) PHAsset *keyAsset;
 @property(readonly, nonatomic) id modelObject;

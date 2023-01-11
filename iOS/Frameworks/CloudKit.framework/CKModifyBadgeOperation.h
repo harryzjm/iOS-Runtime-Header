@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CKModifyBadgeOperationInfo;
+
 @interface CKModifyBadgeOperation
 {
     CDUnknownBlockType _modifyBadgeCompletionBlock;
     unsigned long long _badgeValue;
 }
 
-@property(nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
@@ -21,6 +23,9 @@
 @property(copy, nonatomic) CDUnknownBlockType modifyBadgeCompletionBlock; // @synthesize modifyBadgeCompletionBlock=_modifyBadgeCompletionBlock;
 - (id)initWithBadgeValue:(unsigned long long)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) CKModifyBadgeOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

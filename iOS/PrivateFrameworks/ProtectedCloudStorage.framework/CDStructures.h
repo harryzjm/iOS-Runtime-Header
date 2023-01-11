@@ -10,10 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct NSString {
-    Class _field1;
-};
-
 struct PCSAttributes {
     unsigned int _field1;
     struct PCSTypeValue *_field2;
@@ -47,7 +43,8 @@ struct _OpaquePCSShareProtection {
     struct _PCSPublicIdentityData *_field20;
     struct _PCSIdentityData *_field21;
     struct _PCSIdentityData *_field22;
-    int _field23;
+    unsigned int _field23;
+    int _field24;
     struct {
         _Bool _field1;
         _Bool _field2;
@@ -56,8 +53,8 @@ struct _OpaquePCSShareProtection {
         _Bool _field5;
         _Bool _field6;
         _Bool _field7;
-    } _field24;
-    unsigned int _field25;
+    } _field25;
+    unsigned int _field26;
 };
 
 struct _PCSIdentityData;

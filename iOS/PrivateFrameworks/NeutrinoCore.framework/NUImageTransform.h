@@ -16,6 +16,7 @@
 - (unsigned long long)hash;
 - (id)description;
 - (struct CGRect)transformRect:(struct CGRect)arg1;
+- (_Bool)isIdentityImageTransform;
 - (struct CGPoint)transformPoint:(struct CGPoint)arg1;
 - (id)inverseTransform;
 

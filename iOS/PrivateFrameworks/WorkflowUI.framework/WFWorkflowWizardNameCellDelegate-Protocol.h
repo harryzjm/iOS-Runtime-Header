@@ -9,10 +9,10 @@
 @class NSString, WFWorkflowWizardNameCell;
 
 @protocol WFWorkflowWizardNameCellDelegate <NSObject>
-- (void)workflowWizardNameCellDidSelectEditIcon:(WFWorkflowWizardNameCell *)arg1;
 - (void)workflowWizardNameCell:(WFWorkflowWizardNameCell *)arg1 didUpdateName:(NSString *)arg2;
 
 @optional
+- (void)workflowWizardNameCellDidSelectEditIcon:(WFWorkflowWizardNameCell *)arg1;
 - (void)workflowWizardNameCellDidFinishEditing:(WFWorkflowWizardNameCell *)arg1;
 @end
 

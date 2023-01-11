@@ -4,20 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISIntentForwardingAction.h>
 
-@class INIntent;
-
-@interface UIIntentForwardingAction : BSAction
+@interface UIIntentForwardingAction : UISIntentForwardingAction
 {
-    INIntent *_cachedIntent;
 }
-
-- (void).cxx_destruct;
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
-- (long long)UIActionType;
-@property(readonly, nonatomic) INIntent *intent;
-- (id)initWithIntent:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end
 

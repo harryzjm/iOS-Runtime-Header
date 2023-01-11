@@ -21,12 +21,12 @@
     _Bool _localizeRoadNames;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_auditToken, setter=_setAuditToken:) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(readonly, nonatomic) __weak MNNavigationSession *navigationSession; // @synthesize navigationSession=_navigationSession;
 @property(readonly, nonatomic) MNObserverHashTable *safeDelegate; // @synthesize safeDelegate=_safeDelegate;
 @property(readonly, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
 @property(nonatomic, setter=_setState:) int state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (id)userLocationForUpdateManager:(id)arg1;
 - (id)routeInfoForUpdateManager:(id)arg1;
 - (_Bool)wantsETAUpdates;
@@ -41,7 +41,7 @@
 - (void)updateManager:(id)arg1 willSendTransitUpdateRequests:(id)arg2;
 - (void)_defaultsDidChange;
 - (void)_updateShouldLocalizeRoadNames;
-- (void)_roadFeaturesForFeature:(CDStruct_123780e2 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
+- (void)_roadFeaturesForFeature:(CDStruct_66740237 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
 - (void)_updateMatchedLocation:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (void)_setIsNavigatingInLowGuidance:(_Bool)arg1;

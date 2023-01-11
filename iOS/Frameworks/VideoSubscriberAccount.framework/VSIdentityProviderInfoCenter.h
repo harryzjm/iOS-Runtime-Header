@@ -20,16 +20,17 @@
 }
 
 + (id)sharedCenter;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *cachedDesignatedAppBundleIdentifier; // @synthesize cachedDesignatedAppBundleIdentifier=_cachedDesignatedAppBundleIdentifier;
 @property(retain, nonatomic) VSIdentityProvider *cachedIdentityProvider; // @synthesize cachedIdentityProvider=_cachedIdentityProvider;
 @property(retain, nonatomic) VSAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
-- (void).cxx_destruct;
 - (id)_value:(id)arg1 withDefault:(id)arg2;
 - (void)_accountStoreDidChange;
 - (void)_updateCachedBundleInfoWithAdamID:(id)arg1;
+- (void)enqueueIdentityProviderAppsQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueSetTopBoxProfileProviderQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueInfoQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;

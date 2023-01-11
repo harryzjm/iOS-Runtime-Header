@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDBounds : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapRegion *_displayMapRegion;
     GEOMapRegion *_mapRegion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     float _maxZoom;
     float _minZoom;
     struct {
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_displayMapRegion:1;
         unsigned int read_mapRegion:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayMapRegion:1;
-        unsigned int wrote_mapRegion:1;
-        unsigned int wrote_maxZoom:1;
-        unsigned int wrote_minZoom:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasMaxZoom;
@@ -55,10 +56,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float minZoom;
 @property(retain, nonatomic) GEOMapRegion *displayMapRegion;
 @property(readonly, nonatomic) _Bool hasDisplayMapRegion;
-- (void)_readDisplayMapRegion;
 @property(retain, nonatomic) GEOMapRegion *mapRegion;
 @property(readonly, nonatomic) _Bool hasMapRegion;
-- (void)_readMapRegion;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -38,6 +38,7 @@
     NSTimer *_timeMarkerTimer;
     struct CGPoint _lastPinchDistance;
     struct CGPoint _lastPinchPoint1;
+    double _lastPinchScale;
     _Bool _pinching;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
@@ -67,6 +68,7 @@
     double _hourScale;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double hourScale; // @synthesize hourScale=_hourScale;
 @property(nonatomic) double scrollAnimationDurationOverride; // @synthesize scrollAnimationDurationOverride=_scrollAnimationDurationOverride;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -91,7 +93,6 @@
 @property(copy, nonatomic) NSDateComponents *displayDate; // @synthesize displayDate=_displayDate;
 @property(nonatomic) __weak id <EKDayViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <EKDayViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (void)addViewToScroller:(id)arg1 isAllDay:(_Bool)arg2;
 - (_Bool)isAllDayLabelHighlighted;
@@ -115,13 +116,17 @@
 - (double)minimumHourScale;
 - (struct CGPoint)_pinchDistanceForGestureRecognizer:(id)arg1;
 - (void)_doubleTap:(id)arg1;
+- (id)dayViewContent:(id)arg1 selectedCopyViewForOccurrenceView:(id)arg2;
 - (void)_timeViewTapped:(id)arg1;
+- (_Bool)_viewContentShouldDrawSynchronously;
+- (_Bool)dayViewContentShouldDrawSynchronously:(id)arg1;
 - (void)dayViewContentDidCompleteAsyncLoadAndLayout:(id)arg1;
 - (void)dayViewContent:(id)arg1 didTapPinnedOccurrence:(id)arg2;
 - (void)dayViewContent:(id)arg1 didTapInEmptySpaceOnDay:(double)arg2;
 - (void)dayViewContent:(id)arg1 didSelectEvent:(id)arg2;
 - (void)dayViewContent:(id)arg1 didCreateOccurrenceViews:(id)arg2;
 - (void)occurrencePressed:(id)arg1 onDay:(double)arg2;
+- (_Bool)allDayViewContentShouldDrawSynchronously:(id)arg1;
 - (void)allDayViewDidLayoutSubviews:(id)arg1;
 - (void)allDayView:(id)arg1 didSelectEvent:(id)arg2;
 - (void)resetOccurrenceViewColors;
@@ -163,6 +168,7 @@
 - (void)bringEventToFront:(id)arg1;
 @property(readonly, nonatomic) NSArray *allOccurrenceViews;
 @property(readonly, nonatomic) NSArray *occurrenceViews;
+- (id)allDayViewRequestsCurrentDisplayDate:(id)arg1;
 - (void)dayAllDayView:(id)arg1 occurrenceViewClicked:(id)arg2;
 - (void)dayContentView:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)scrollToNowAnimated:(_Bool)arg1 whenFinished:(CDUnknownBlockType)arg2;

@@ -12,6 +12,7 @@
 
 @interface PXWidgetCompositionViewElement <PXTileSource, PXTilingControllerTransitionDelegate, PXTilingControllerScrollDelegate>
 {
+    _Bool _isCheckingInTile;
     PXBasicTileAnimator *__tileAnimator;
     PXWidgetCompositionViewElementLayout *__layout;
     NSMutableSet *__tilesInUse;
@@ -19,12 +20,13 @@
     struct CGPoint __anchorOffset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setAnchorOffset:) struct CGPoint _anchorOffset; // @synthesize _anchorOffset=__anchorOffset;
 @property(readonly, nonatomic) PXTilingController *_tilingController; // @synthesize _tilingController=__tilingController;
 @property(readonly, nonatomic) NSMutableSet *_tilesInUse; // @synthesize _tilesInUse=__tilesInUse;
 @property(readonly, nonatomic) PXWidgetCompositionViewElementLayout *_layout; // @synthesize _layout=__layout;
 @property(readonly, nonatomic) PXBasicTileAnimator *_tileAnimator; // @synthesize _tileAnimator=__tileAnimator;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool isCheckingInTile; // @synthesize isCheckingInTile=_isCheckingInTile;
 - (struct CGPoint)tilingController:(id)arg1 initialVisibleOriginForLayout:(id)arg2;
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;
 - (void)tilingController:(id)arg1 prepareForChange:(id)arg2;

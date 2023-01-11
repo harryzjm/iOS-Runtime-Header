@@ -15,7 +15,6 @@
     CBCentralManager *_bluetoothManager;
     NSLock *_centralRequestsLock;
     _Bool _isScanning;
-    _Bool _isResetting;
     _Bool _centralIsOn;
     NSObject<OS_dispatch_queue> *_bluetoothCentralQueue;
     NSMutableArray *_availableSearchBlocks;
@@ -35,6 +34,7 @@
 }
 
 + (id)sharedController;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldActiveScan; // @synthesize shouldActiveScan=_shouldActiveScan;
 @property(retain, nonatomic) NSMutableArray *persistentDevices; // @synthesize persistentDevices=_persistentDevices;
 @property(retain, nonatomic) NSMutableArray *updateDeviceBlocks; // @synthesize updateDeviceBlocks=_updateDeviceBlocks;
@@ -44,7 +44,7 @@
 @property(retain, nonatomic) NSMutableArray *connectedDevices; // @synthesize connectedDevices=_connectedDevices;
 @property(retain) NSMutableArray *loadedDevices; // @synthesize loadedDevices=_loadedDevices;
 @property(retain, nonatomic) NSMutableArray *availablePeripherals; // @synthesize availablePeripherals=_availablePeripherals;
-- (void).cxx_destruct;
+- (_Bool)representsLocalDevices;
 - (id)valueForProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
 - (void)pairedHearingAidsDidChange;
 - (void)persistPairedHearingAids;
@@ -64,6 +64,7 @@
 - (void)forgetDevice:(id)arg1;
 - (void)deviceDidFinishLoading:(id)arg1;
 - (void)mergeDevice:(id)arg1 withDevice:(id)arg2;
+- (void)replaceDevice:(id)arg1 withDevice:(id)arg2;
 - (void)clearConnectedDevices;
 - (void)removeConnectedDevice:(id)arg1;
 - (void)addConnectedDevice:(id)arg1;

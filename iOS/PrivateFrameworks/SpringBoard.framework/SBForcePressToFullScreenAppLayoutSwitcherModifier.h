@@ -4,28 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBAppLayout;
+@class SBAppLayout, SBSwitcherModifier;
 
 @interface SBForcePressToFullScreenAppLayoutSwitcherModifier
 {
     SBAppLayout *_fromAppLayout;
     SBAppLayout *_toAppLayout;
+    SBSwitcherModifier *_multitaskingModifier;
     long long _startingEnvironmentMode;
 }
 
 - (void).cxx_destruct;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (_Bool)isContainerStatusBarVisible;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
-- (_Bool)asynchronouslyRendersUntilDelay:(inout double *)arg1;
+- (id)visibleAppLayouts;
+- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 effectiveStartingEnvironmentMode:(long long)arg4;
 
 @end

@@ -9,24 +9,22 @@
 #import <UserNotificationsKit/NCNotificationAlertDestination-Protocol.h>
 #import <UserNotificationsKit/NCNotificationAlertDestinationDelegate-Protocol.h>
 
-@class BSServiceConnectionEndpoint, NCNotificationCollapsingQueue, NCNotificationDestinationsRegistry, NCNotificationRequest, NCNotificationStore, NSString;
-@protocol NCNotificationAlertDestinationDelegate, NCNotificationDestinationDelegate;
+@class BSServiceConnectionEndpoint, NCNotificationCollapsingQueue, NCNotificationDestinationsRegistry, NCNotificationRequest, NSString;
+@protocol NCNotificationAlertDestinationDelegate;
 
 @interface NCNotificationAlertQueue : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationAlertDestination>
 {
     id <NCNotificationAlertDestinationDelegate> _delegate;
     NCNotificationDestinationsRegistry *_destinationsRegistry;
     NCNotificationCollapsingQueue *_queue;
-    NCNotificationStore *_store;
     NCNotificationRequest *_coalescingRequest;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NCNotificationRequest *coalescingRequest; // @synthesize coalescingRequest=_coalescingRequest;
-@property(retain, nonatomic) NCNotificationStore *store; // @synthesize store=_store;
 @property(retain, nonatomic) NCNotificationCollapsingQueue *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NCNotificationDestinationsRegistry *destinationsRegistry; // @synthesize destinationsRegistry=_destinationsRegistry;
-@property(nonatomic) __weak id <NCNotificationDestinationDelegate> delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <NCNotificationAlertDestinationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_prepareDestinationsToReceiveCriticalNotificationRequest:(id)arg1;
 - (_Bool)_readyToReceiveForNotificationRequest:(id)arg1;
 - (_Bool)_destinations:(id)arg1 canReceiveNotificationRequest:(id)arg2;
@@ -61,13 +59,13 @@
 - (_Bool)canReceiveNotificationRequest:(id)arg1;
 @property(readonly, nonatomic) BSServiceConnectionEndpoint *endpoint;
 @property(readonly, nonatomic) NSString *identifier;
+@property(readonly, nonatomic, getter=isAlertDestination) _Bool alertDestination;
 - (void)setDestination:(id)arg1 ready:(_Bool)arg2;
 - (id)destinationsForRequestDestinations:(id)arg1;
 - (_Bool)isRegisteredDestination:(id)arg1;
 - (void)setDestination:(id)arg1 enabled:(_Bool)arg2;
 - (void)unregisterDestination:(id)arg1;
 - (void)registerDestination:(id)arg1;
-- (id)initWithNotificationStore:(id)arg1;
 - (id)init;
 
 // Remaining properties

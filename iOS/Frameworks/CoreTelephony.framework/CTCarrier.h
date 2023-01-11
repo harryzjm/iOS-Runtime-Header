@@ -17,13 +17,13 @@
     _Bool _allowsVOIP;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsVOIP; // @synthesize allowsVOIP=_allowsVOIP;
 @property(retain, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property(retain, nonatomic) NSString *mobileNetworkCode; // @synthesize mobileNetworkCode=_mobileNetworkCode;
 @property(retain, nonatomic) NSString *mobileCountryCode; // @synthesize mobileCountryCode=_mobileCountryCode;
 @property(retain, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)description;
 

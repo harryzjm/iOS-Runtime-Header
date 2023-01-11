@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface CKDPCSMemoryCache : NSObject
 {
     _Bool _memoryStatusChanged;
+    int _fakeMemoryWarningToken;
     unsigned long long _maxEntries;
     double _minAge;
     NSMutableDictionary *_cacheEntries;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 + (void)registerEvictionTimer;
 + (id)globalEvictQueue;
+- (void).cxx_destruct;
 @property unsigned long long memoryCacheEvictCount; // @synthesize memoryCacheEvictCount=_memoryCacheEvictCount;
 @property unsigned long long memoryCacheUpdateCount; // @synthesize memoryCacheUpdateCount=_memoryCacheUpdateCount;
 @property unsigned long long memoryCacheDeleteCount; // @synthesize memoryCacheDeleteCount=_memoryCacheDeleteCount;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long memoryCacheHitCount; // @synthesize memoryCacheHitCount=_memoryCacheHitCount;
 @property unsigned long long memoryCacheRequestCount; // @synthesize memoryCacheRequestCount=_memoryCacheRequestCount;
 @property double oldestCacheEntry; // @synthesize oldestCacheEntry=_oldestCacheEntry;
+@property int fakeMemoryWarningToken; // @synthesize fakeMemoryWarningToken=_fakeMemoryWarningToken;
 @property(retain, nonatomic) id <NSObject> memoryCacheEvictNotificationObserver; // @synthesize memoryCacheEvictNotificationObserver=_memoryCacheEvictNotificationObserver;
 @property _Bool memoryStatusChanged; // @synthesize memoryStatusChanged=_memoryStatusChanged;
 @property unsigned long long memoryStatus; // @synthesize memoryStatus=_memoryStatus;
@@ -46,7 +49,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *cacheEntries; // @synthesize cacheEntries=_cacheEntries;
 @property(nonatomic) double minAge; // @synthesize minAge=_minAge;
 @property(nonatomic) unsigned long long maxEntries; // @synthesize maxEntries=_maxEntries;
-- (void).cxx_destruct;
 - (id)CKStatusReportArray;
 - (_Bool)hasStatusToReport;
 - (unsigned long long)_cacheCount;

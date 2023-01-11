@@ -10,15 +10,9 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct NSCache {
-    Class _field1;
-    id _field2;
-    void *_field3[5];
-    void *_field4;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
+struct CGSize {
+    double _field1;
+    double _field2;
 };
 
 struct _NSRange {
@@ -26,18 +20,15 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
+    unsigned int val[8];
+} CDStruct_4c969caf;
 
 typedef struct {
     int *list;
@@ -98,8 +89,16 @@ typedef struct {
 } CDStruct_032f6352;
 
 typedef struct {
+    unsigned int isRemoval:1;
+} CDStruct_0d3d9f76;
+
+typedef struct {
     unsigned int locked:1;
 } CDStruct_b1e20226;
+
+typedef struct {
+    unsigned int operation:1;
+} CDStruct_ae16c3b5;
 
 typedef struct {
     unsigned int score:1;

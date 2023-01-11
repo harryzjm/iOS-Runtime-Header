@@ -13,14 +13,14 @@
 
 @interface STStatusDomain : NSObject <STStatusDomainClientHandle>
 {
-    id <STStatusDomainServerHandle> _serverHandle;
     CDUnknownBlockType _dataChangedBlock;
+    id <STStatusDomainServerHandle> _serverHandle;
 }
 
 + (unsigned long long)statusDomainName;
-@property(copy, nonatomic) CDUnknownBlockType dataChangedBlock; // @synthesize dataChangedBlock=_dataChangedBlock;
-@property(readonly, nonatomic) __weak id <STStatusDomainServerHandle> serverHandle; // @synthesize serverHandle=_serverHandle;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <STStatusDomainServerHandle> serverHandle; // @synthesize serverHandle=_serverHandle;
+@property(copy, nonatomic) CDUnknownBlockType dataChangedBlock; // @synthesize dataChangedBlock=_dataChangedBlock;
 - (void)observeData:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)observeDataWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) id <STStatusDomainData> data;

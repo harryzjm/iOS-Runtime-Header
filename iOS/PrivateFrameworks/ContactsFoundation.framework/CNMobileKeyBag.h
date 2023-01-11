@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isDevicePasscodeProtected;
 + (const char *)firstUnlockNotificationID;
 + (_Bool)isDeviceUnlockedSinceBoot;
 

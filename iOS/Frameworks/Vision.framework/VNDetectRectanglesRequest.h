@@ -25,7 +25,7 @@
 - (void)setSortedResults:(id)arg1;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (long long)dependencyProcessingOrdinality;
 

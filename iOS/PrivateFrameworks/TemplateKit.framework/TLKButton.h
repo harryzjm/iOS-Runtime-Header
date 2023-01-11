@@ -20,22 +20,26 @@
     CAShapeLayer *_innerProgressLayer;
     double _progress;
     TLKImageView *_imageView;
+    UIView *_backgroundView;
+    struct CGSize _fixedSize;
 }
 
 + (CDStruct_afa449f9)_calculateStatistics:(struct CGImage *)arg1 withSize:(struct CGSize)arg2;
 + (id)blurColorForColor:(id)arg1;
 + (id)blurColorForImage:(id)arg1 forButtonSize:(struct CGSize)arg2 withOffsetRight:(float)arg3 withOffsetBottom:(float)arg4;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(retain, nonatomic) CAShapeLayer *innerProgressLayer; // @synthesize innerProgressLayer=_innerProgressLayer;
 @property(retain, nonatomic) CAShapeLayer *outerProgressLayer; // @synthesize outerProgressLayer=_outerProgressLayer;
 @property(retain, nonatomic) TLKTapContainerButton *button; // @synthesize button=_button;
 @property(readonly, nonatomic, getter=isIndeterminate) _Bool indeterminate; // @synthesize indeterminate=_indeterminate;
+@property(nonatomic) struct CGSize fixedSize; // @synthesize fixedSize=_fixedSize;
 @property(retain, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
 @property(retain, nonatomic) UIImage *toggledImage; // @synthesize toggledImage=_toggledImage;
 @property(retain, nonatomic) UIImage *untoggledImage; // @synthesize untoggledImage=_untoggledImage;
 @property(nonatomic, getter=isToggled) _Bool toggled; // @synthesize toggled=_toggled;
-- (void).cxx_destruct;
 @property(readonly) UIView *hitView;
 - (void)addTarget:(id)arg1 forAction:(SEL)arg2;
 - (id)_newShapeViewWithBounds:(struct CGRect)arg1 lineWidth:(double)arg2;

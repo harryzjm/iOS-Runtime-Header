@@ -14,9 +14,10 @@
     EDCategorySubsystem *_categorySubsystem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) EDCategorySubsystem *categorySubsystem; // @synthesize categorySubsystem=_categorySubsystem;
 @property(readonly, nonatomic) EDPersistence *persistence; // @synthesize persistence=_persistence;
-- (void).cxx_destruct;
+- (id)newClientResumerWithClientState:(id)arg1;
 - (id)newActivityRegistry;
 - (id)newVIPManagerInterface;
 - (id)sharedDonationController;
@@ -24,9 +25,10 @@
 - (id)newSearchableIndex;
 - (id)newOutgoingMessageRepository;
 - (id)newFetchController;
-- (id)newMessageRepository;
+- (id)newMessageRepositoryWithResumable:(id)arg1;
 - (id)newMailboxRepository;
 - (id)newAccountRepository;
+- (void)test_tearDown;
 - (id)initWithPersistence:(id)arg1 categorySubsystem:(id)arg2;
 
 @end

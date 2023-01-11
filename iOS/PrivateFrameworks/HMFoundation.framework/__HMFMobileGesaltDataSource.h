@@ -12,16 +12,17 @@
 #import <HMFoundation/HMFSystemInfoSoftwareVersionDataSource-Protocol.h>
 #import <HMFoundation/HMFSystemInfoWiFiDataSource-Protocol.h>
 
-@class HMFMACAddress, HMFSoftwareVersion, HMFUnfairLock, NSObject, NSString;
+@class HMFMACAddress, HMFSoftwareVersion, NSObject, NSString;
 @protocol HMFSystemInfoNameDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface __HMFMobileGesaltDataSource <HMFSystemInfoNameDataSource, HMFSystemInfoMarketingInformationDataSource, HMFSystemInfoSerialNumberDataSource, HMFSystemInfoProductInfoDataSource, HMFSystemInfoSoftwareVersionDataSource, HMFSystemInfoWiFiDataSource, HMFSystemInfoBluetoothLEDataSource>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     _Bool _supportsBLE;
     id <HMFSystemInfoNameDataSourceDelegate> _delegate;
     NSString *_name;
+    NSString *_modelIdentifier;
     NSString *_model;
     NSString *_regionInfo;
     NSString *_serialNumber;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     struct MGNotificationTokenStruct *_notificationToken;
 }
 
+- (void).cxx_destruct;
 @property(readonly) struct MGNotificationTokenStruct *notificationToken; // @synthesize notificationToken=_notificationToken;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) _Bool supportsBLE; // @synthesize supportsBLE=_supportsBLE;
@@ -45,8 +47,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(readonly, copy, nonatomic) NSString *regionInfo; // @synthesize regionInfo=_regionInfo;
 @property(readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
+@property(readonly, copy, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property __weak id <HMFSystemInfoNameDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)dealloc;
 - (id)init;

@@ -4,25 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXFeedSectionInfosManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXForYouRankable-Protocol.h>
-#import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 
 @class NSDate, NSString, PXFeedSectionInfosManager, PXInboxAggregateDataSourceManager;
 
-@interface PXSharedAlbumActivityHorizontalGadgetProvider <PXFeedSectionInfosManagerDelegate, PXChangeObserver, PXSectionedDataSourceManagerObserver, PXForYouRankable>
+@interface PXSharedAlbumActivityHorizontalGadgetProvider <PXFeedSectionInfosManagerDelegate, PXForYouRankable>
 {
     PXFeedSectionInfosManager *_feedSectionInfosManager;
     PXInboxAggregateDataSourceManager *_inboxDataSourceManager;
     NSDate *_cachedPriorityDate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *cachedPriorityDate; // @synthesize cachedPriorityDate=_cachedPriorityDate;
 @property(retain, nonatomic) PXInboxAggregateDataSourceManager *inboxDataSourceManager; // @synthesize inboxDataSourceManager=_inboxDataSourceManager;
 @property(retain, nonatomic) PXFeedSectionInfosManager *feedSectionInfosManager; // @synthesize feedSectionInfosManager=_feedSectionInfosManager;
-- (void).cxx_destruct;
-- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)_currentGadgetOfType:(unsigned long long)arg1;
 - (void)_updateGadgets;
 - (long long)_countOfSectionInfosToDisplay:(unsigned long long)arg1;

@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <XCTAutomationSupport/NSObject-Protocol.h>
+#import <XCTAutomationSupport/XCTMacCatalystStatusProviding-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, XCAccessibilityElement;
 
-@protocol XCTElementSnapshotAttributeDataSource <NSObject>
+@protocol XCTElementSnapshotAttributeDataSource <XCTMacCatalystStatusProviding>
+@property(readonly) _Bool providesValuesForPrivilegedAttributes;
+@property(readonly) _Bool hasBannerNotificationIsStickyAttribute;
 @property(readonly) _Bool usePointTransformationsForFrameConversions;
 @property(readonly) _Bool supportsHostedViewCoordinateTransformations;
 @property(readonly) _Bool allowsRemoteAccess;
 - (id)parameterizedAttribute:(NSString *)arg1 forElement:(XCAccessibilityElement *)arg2 parameter:(id)arg3 error:(id *)arg4;
+- (NSDictionary *)valuesForPrivilegedAttributes:(NSArray *)arg1 forElement:(XCAccessibilityElement *)arg2 error:(id *)arg3;
 - (NSDictionary *)attributesForElement:(XCAccessibilityElement *)arg1 attributes:(NSArray *)arg2 error:(id *)arg3;
 @end
 

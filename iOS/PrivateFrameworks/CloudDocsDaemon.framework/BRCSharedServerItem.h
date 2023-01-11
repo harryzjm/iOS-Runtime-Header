@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (id)asSharedItem;
 - (_Bool)isSharedToMeChildItem;
 - (_Bool)isSharedToMeTopLevelItem;
-- (_Bool)isSharedItem;
 
 @end
 

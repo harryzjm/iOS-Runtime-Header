@@ -16,13 +16,24 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)decodeIdentifier:(id)arg1 manufacturerCode:(unsigned long long *)arg2 serialNumber:(id *)arg3;
 + (id)reverseByteOrder:(id)arg1;
+- (void)sendRequestWithFlag:(long long)arg1 commandCode:(long long)arg2 data:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)extendedFastReadMultipleBlocksWithRequestFlag:(unsigned char)arg1 blockRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)extendedGetMultipleBlockSecurityStatusWithRequestFlag:(unsigned char)arg1 blockRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)readBufferWithRequestFlags:(unsigned char)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)challengeWithRequestFlags:(unsigned char)arg1 cryptoSuiteIdentifier:(long long)arg2 message:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)keyUpdateWithRequestFlags:(unsigned char)arg1 keyIdentifier:(long long)arg2 message:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)authenticateWithRequestFlags:(unsigned char)arg1 cryptoSuiteIdentifier:(long long)arg2 message:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)extendedWriteMultipleBlocksWithRequestFlags:(unsigned char)arg1 blockRange:(struct _NSRange)arg2 dataBlocks:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)extendedReadMultipleBlocksWithRequestFlags:(unsigned char)arg1 blockRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extendedLockBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extendedWriteSingleBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(long long)arg2 dataBlock:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)extendedReadSingleBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)customCommandWithRequestFlag:(unsigned char)arg1 customCommandCode:(long long)arg2 customRequestParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fastReadMultipleBlocksWithRequestFlag:(unsigned char)arg1 blockRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getMultipleBlockSecurityStatusWithRequestFlag:(unsigned char)arg1 blockRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getSystemInfoAndUIDWithRequestFlag:(unsigned char)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSystemInfoWithRequestFlag:(unsigned char)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)lockDSFIDWithRequestFlag:(unsigned char)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)lockDFSIDWithRequestFlag:(unsigned char)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)writeDSFIDWithRequestFlag:(unsigned char)arg1 dsfid:(unsigned char)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)lockAFIWithRequestFlag:(unsigned char)arg1 completionHandler:(CDUnknownBlockType)arg2;

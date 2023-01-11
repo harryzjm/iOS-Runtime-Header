@@ -13,7 +13,7 @@
 }
 
 + (id)descriptor;
-- (_Bool)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
 - (id)copyManagedObjectWithError:(id *)arg1;
 - (id)parsedMutationWithError:(id *)arg1;
 @property(retain) NSString *application;

@@ -8,28 +8,32 @@
 
 #import <AccessibilityUtilities/AXDeviceMonitorDelegate-Protocol.h>
 
-@class AXDeviceMonitor, AXEventProcessor, NSArray, NSString;
-@protocol AXMouseEventListenerDelegate;
+@class AXDeviceMonitor, AXEventProcessor, NSHashTable, NSSet, NSString;
 
 @interface AXMouseEventListener : NSObject <AXDeviceMonitorDelegate>
 {
     AXDeviceMonitor *_deviceMonitor;
     AXEventProcessor *_eventProcessor;
-    NSArray *_cachedMouseDevices;
-    id <AXMouseEventListenerDelegate> _delegate;
+    struct os_unfair_lock_s _cachedMouseDevicesLock;
+    NSSet *_cachedMouseDevices;
+    struct os_unfair_lock_s _observerLock;
+    NSHashTable *_observers;
 }
 
 + (id)sharedInstance;
 + (id)_mouseMatching;
-@property(nonatomic) __weak id <AXMouseEventListenerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)_handleMouseButtonEvent:(id)arg1;
 - (void)deviceMonitorDidDetectDeviceEvent:(id)arg1;
+- (void)mouseSettingsDidChange;
+@property(readonly, nonatomic) _Bool currentDevicesHaveAssistiveTouchCustomActions;
 - (void)endFilteringEvents;
 - (void)beginFilteringEvents;
 - (id)discoveredMouseDevices;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)_init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

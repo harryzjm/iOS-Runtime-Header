@@ -19,6 +19,9 @@
     HKQuantity *_lastProcessedTodayMoveValue;
     HKQuantity *_previousProcessedTodayMoveValue;
     HKQuantity *_lastTodayMoveGoal;
+    HKQuantity *_lastProcessedTodayMoveTimeValue;
+    HKQuantity *_previousProcessedTodayMoveTimeValue;
+    HKQuantity *_lastTodayMoveTimeGoal;
     long long _lastCheckedIndexForExercise;
     HKQuantity *_lastProcessedTodayExerciseValue;
     HKQuantity *_previousProcessedTodayExerciseValue;
@@ -33,6 +36,7 @@
     HKQuantity *_lastTodayDistanceValue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKQuantity *lastTodayDistanceValue; // @synthesize lastTodayDistanceValue=_lastTodayDistanceValue;
 @property(readonly, nonatomic) HKQuantity *todayDistanceValue; // @synthesize todayDistanceValue=_todayDistanceValue;
 @property(nonatomic) long long lastCheckedIndexForDistance; // @synthesize lastCheckedIndexForDistance=_lastCheckedIndexForDistance;
@@ -45,6 +49,9 @@
 @property(retain, nonatomic) HKQuantity *previousProcessedTodayExerciseValue; // @synthesize previousProcessedTodayExerciseValue=_previousProcessedTodayExerciseValue;
 @property(retain, nonatomic) HKQuantity *lastProcessedTodayExerciseValue; // @synthesize lastProcessedTodayExerciseValue=_lastProcessedTodayExerciseValue;
 @property(nonatomic) long long lastCheckedIndexForExercise; // @synthesize lastCheckedIndexForExercise=_lastCheckedIndexForExercise;
+@property(retain, nonatomic) HKQuantity *lastTodayMoveTimeGoal; // @synthesize lastTodayMoveTimeGoal=_lastTodayMoveTimeGoal;
+@property(retain, nonatomic) HKQuantity *previousProcessedTodayMoveTimeValue; // @synthesize previousProcessedTodayMoveTimeValue=_previousProcessedTodayMoveTimeValue;
+@property(retain, nonatomic) HKQuantity *lastProcessedTodayMoveTimeValue; // @synthesize lastProcessedTodayMoveTimeValue=_lastProcessedTodayMoveTimeValue;
 @property(retain, nonatomic) HKQuantity *lastTodayMoveGoal; // @synthesize lastTodayMoveGoal=_lastTodayMoveGoal;
 @property(retain, nonatomic) HKQuantity *previousProcessedTodayMoveValue; // @synthesize previousProcessedTodayMoveValue=_previousProcessedTodayMoveValue;
 @property(retain, nonatomic) HKQuantity *lastProcessedTodayMoveValue; // @synthesize lastProcessedTodayMoveValue=_lastProcessedTodayMoveValue;
@@ -52,7 +59,6 @@
 @property(readonly, nonatomic) ACHDataStoreActivityProperties *properties; // @synthesize properties=_properties;
 @property(retain, nonatomic) HKActivitySummary *yesterdayActivitySummary; // @synthesize yesterdayActivitySummary=_yesterdayActivitySummary;
 @property(retain, nonatomic) HKActivitySummary *todayActivitySummary; // @synthesize todayActivitySummary=_todayActivitySummary;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) HKQuantity *yesterdayStandGoal;
 @property(readonly, nonatomic) HKQuantity *todayStandGoal;
 @property(readonly, nonatomic) HKQuantity *yesterdayStandValue;
@@ -61,21 +67,27 @@
 @property(readonly, nonatomic) HKQuantity *todayExerciseGoal;
 @property(readonly, nonatomic) HKQuantity *yesterdayExerciseValue;
 @property(readonly, nonatomic) HKQuantity *todayExerciseValue;
+@property(readonly, nonatomic) HKQuantity *yesterdayMoveTimeGoal;
+@property(readonly, nonatomic) HKQuantity *todayMoveTimeGoal;
+@property(readonly, nonatomic) HKQuantity *yesterdayMoveTimeValue;
+@property(readonly, nonatomic) HKQuantity *todayMoveTimeValue;
 @property(readonly, nonatomic) HKQuantity *yesterdayMoveGoal;
 @property(readonly, nonatomic) HKQuantity *todayMoveGoal;
 @property(readonly, nonatomic) HKQuantity *yesterdayMoveValue;
 @property(readonly, nonatomic) HKQuantity *todayMoveValue;
 - (_Bool)allGoalsMetToday;
-- (void)setNewStandState:(CDStruct_c642f51a)arg1;
-- (void)setNewExerciseState:(CDStruct_c642f51a)arg1;
-- (void)_setBaseMoveState:(CDStruct_c642f51a)arg1;
-- (void)setNewMoveState:(CDStruct_c642f51a)arg1;
-- (CDStruct_c642f51a)currentStandState;
-- (CDStruct_c642f51a)currentExerciseState;
-- (CDStruct_c642f51a)_baseMoveState;
-- (CDStruct_c642f51a)currentMoveState;
-- (void)setNewState:(CDStruct_c642f51a)arg1 forGoalType:(long long)arg2;
-- (CDStruct_c642f51a)currentStateForGoalType:(long long)arg1;
+- (void)setNewStandState:(CDStruct_bd1b3a42)arg1;
+- (void)setNewExerciseState:(CDStruct_bd1b3a42)arg1;
+- (void)_setBaseMoveState:(CDStruct_bd1b3a42)arg1;
+- (void)setNewMoveTimeState:(CDStruct_bd1b3a42)arg1;
+- (void)setNewMoveState:(CDStruct_bd1b3a42)arg1;
+- (CDStruct_bd1b3a42)currentStandState;
+- (CDStruct_bd1b3a42)currentExerciseState;
+- (CDStruct_bd1b3a42)_baseMoveState;
+- (CDStruct_bd1b3a42)currentMoveTimeState;
+- (CDStruct_bd1b3a42)currentMoveState;
+- (void)setNewState:(CDStruct_bd1b3a42)arg1 forGoalType:(long long)arg2;
+- (CDStruct_bd1b3a42)currentStateForGoalType:(long long)arg1;
 @property(readonly, nonatomic) long long todayIndex;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setLastCheckedIndex:(long long)arg1;

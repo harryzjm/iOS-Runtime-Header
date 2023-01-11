@@ -10,5 +10,13 @@
 - (void)pushSessionData:(id)arg1 submitEventQueues:(_Bool)arg2;
 - (void)pushSessionData:(id)arg1 traits:(id)arg2;
 - (void)pushSessionData:(id)arg1;
+- (void)endSessionWithEndDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)endSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)endSession;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2 identifier:(id)arg3 startDate:(id)arg4;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2 startDate:(id)arg3;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2 identifier:(id)arg3;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2;
+- (void)flushWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

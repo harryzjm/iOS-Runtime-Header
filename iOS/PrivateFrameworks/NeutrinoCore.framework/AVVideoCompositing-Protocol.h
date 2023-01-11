@@ -15,6 +15,7 @@
 - (void)renderContextChanged:(AVVideoCompositionRenderContext *)arg1;
 
 @optional
+@property(readonly, nonatomic) _Bool supportsHDRSourceFrames;
 @property(readonly, nonatomic) _Bool supportsWideColorSourceFrames;
 - (void)prerollForRenderingUsingHint:(AVVideoCompositionRenderHint *)arg1;
 - (void)anticipateRenderingUsingHint:(AVVideoCompositionRenderHint *)arg1;

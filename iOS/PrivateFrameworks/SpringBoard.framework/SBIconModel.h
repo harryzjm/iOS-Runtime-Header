@@ -16,9 +16,10 @@
     _Bool _allowsWebClips;
 }
 
++ (id)migratedIdentifierForLeafIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsWebClips; // @synthesize allowsWebClips=_allowsWebClips;
 @property(readonly, nonatomic) id <SBIconModelApplicationDataSource> applicationDataSource; // @synthesize applicationDataSource=_applicationDataSource;
-- (void).cxx_destruct;
 - (id)modernizeRootArchive:(id)arg1;
 - (_Bool)importState:(id)arg1;
 - (id)exportFlattenedState:(_Bool)arg1 includeMissingIcons:(_Bool)arg2;
@@ -27,6 +28,7 @@
 - (id)forecastedLayoutForIconState:(id)arg1 includeMissingIcons:(_Bool)arg2;
 - (id)description;
 - (void)willLayout;
+- (_Bool)_shouldSkipAddingIcon:(id)arg1 toRootFolder:(id)arg2;
 - (void)_replaceAppIconsWithDownloadingIcons:(id)arg1;
 - (void)_noteApplicationIconImageChanged:(id)arg1;
 - (void)_replaceAppIconsWithDownloadingIcons;
@@ -35,14 +37,14 @@
 - (id)placeholdersByDisplayID;
 - (id)applicationWithBundleIdentifier:(id)arg1;
 - (id)applicationIconForBundleIdentifier:(id)arg1;
-- (_Bool)isMasqueradedLeafIdentifier:(id)arg1;
 - (id)expectedIconForDisplayIdentifier:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (id)expectedIconForDisplayIdentifier:(id)arg1;
 - (id)_applicationIcons;
 - (void)loadAllIcons;
 - (_Bool)shouldAvoidCreatingIconForApplication:(id)arg1;
-- (void)addIconForApplication:(id)arg1 force:(_Bool)arg2;
-- (void)addIconForApplication:(id)arg1;
+- (id)addIconForApplication:(id)arg1 force:(_Bool)arg2;
+- (id)addIconForApplication:(id)arg1;
+- (void)updateExistingBookmarkIcon:(id)arg1 forUpdatedWebClip:(id)arg2;
 - (id)addBookmarkIconForWebClip:(id)arg1;
 - (id)bookmarkIconForWebClipIdentifier:(id)arg1;
 - (id)addDownloadingIconForDownload:(id)arg1;

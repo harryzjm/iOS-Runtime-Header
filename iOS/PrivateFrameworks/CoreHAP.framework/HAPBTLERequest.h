@@ -23,6 +23,7 @@
     HMFTimer *_responseTimer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFTimer *responseTimer; // @synthesize responseTimer=_responseTimer;
 @property(retain, nonatomic) HAPBTLEControlOutputStream *controlOutputStream; // @synthesize controlOutputStream=_controlOutputStream;
 @property(nonatomic) __weak HMFBlockOperation *operation; // @synthesize operation=_operation;
@@ -34,7 +35,6 @@
 @property(readonly, nonatomic) HAPService *service; // @synthesize service=_service;
 @property(readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 @property(readonly, nonatomic) HAPBTLETransactionIdentifier *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)_serializeHeader;
 - (id)serialize;
 - (void)cancelWithError:(id)arg1;
@@ -42,7 +42,9 @@
 - (id)debugDescription;
 - (id)descriptionWithPointer:(_Bool)arg1;
 - (id)shortDescription;
+- (id)initWithRequestType:(unsigned char)arg1 bodyData:(id)arg2 shouldEncrypt:(_Bool)arg3 timeoutInterval:(double)arg4;
 - (id)initWithCharacteristic:(id)arg1 requestType:(unsigned char)arg2 bodyData:(id)arg3 shouldEncrypt:(_Bool)arg4 timeoutInterval:(double)arg5;
+- (id)_initWithCharacteristic:(id)arg1 requestType:(unsigned char)arg2 bodyData:(id)arg3 shouldEncrypt:(_Bool)arg4 timeoutInterval:(double)arg5;
 - (id)init;
 
 @end

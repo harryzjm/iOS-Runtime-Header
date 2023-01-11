@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, WKFrameInfo, WKWebView;
+@class NSString, WKContentWorld, WKFrameInfo, WKWebView;
 
 @interface WKScriptMessage : NSObject
 {
@@ -14,15 +14,17 @@
     struct WeakObjCPtr<WKWebView> _webView;
     struct RetainPtr<WKFrameInfo> _frameInfo;
     struct RetainPtr<NSString> _name;
+    struct RetainPtr<WKContentWorld> _world;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WKContentWorld *world;
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, copy, nonatomic) WKFrameInfo *frameInfo;
 @property(readonly, nonatomic) __weak WKWebView *webView;
 @property(readonly, copy, nonatomic) id body;
-- (id)_initWithBody:(id)arg1 webView:(id)arg2 frameInfo:(id)arg3 name:(id)arg4;
+- (id)_initWithBody:(id)arg1 webView:(id)arg2 frameInfo:(id)arg3 name:(id)arg4 world:(id)arg5;
 
 @end
 

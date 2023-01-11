@@ -23,16 +23,6 @@ __attribute__((visibility("hidden")))
     id <CNObserver> _observer;
 }
 
-+ (id)makeSerialFetchSchedulerUsingSchedulerProvider:(id)arg1;
-+ (id)schedulerForIdentifier:(id)arg1 provider:(id)arg2;
-+ (id)observableWithPredicates:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4 environment:(id)arg5;
-@property(retain, nonatomic) id <CNObserver> observer; // @synthesize observer=_observer;
-@property(readonly, nonatomic) CNCancelationToken *cancelationToken; // @synthesize cancelationToken=_cancelationToken;
-@property(readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
-@property(readonly, nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
-@property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(readonly, nonatomic) unsigned int sortOrdering; // @synthesize sortOrdering=_sortOrdering;
-@property(readonly, nonatomic) ABPredicate *predicate; // @synthesize predicate=_predicate;
 - (void).cxx_destruct;
 - (_Bool)predicateShouldContinue:(id)arg1 afterFindingRecord:(void *)arg2 moreComing:(_Bool)arg3;
 - (_Bool)predicateShouldContinue:(id)arg1 afterFindingRecord:(void *)arg2 metadata:(id)arg3;
@@ -40,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)predicateShouldContinue:(id)arg1;
 - (id)subscribe:(id)arg1;
 - (void)dealloc;
-- (id)initWithPredicate:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4 environment:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

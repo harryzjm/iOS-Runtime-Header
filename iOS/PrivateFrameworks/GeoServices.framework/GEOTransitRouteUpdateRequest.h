@@ -13,7 +13,6 @@
 @interface GEOTransitRouteUpdateRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDABClientDatasetMetadata *_abClientMetadata;
     NSData *_directionsResponseId;
@@ -24,6 +23,9 @@
     NSString *_requestingAppId;
     NSMutableArray *_routeIdentifiers;
     NSMutableArray *_serviceTags;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_abClientMetadata:1;
@@ -35,16 +37,7 @@
         unsigned int read_requestingAppId:1;
         unsigned int read_routeIdentifiers:1;
         unsigned int read_serviceTags:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_abClientMetadata:1;
-        unsigned int wrote_directionsResponseId:1;
-        unsigned int wrote_originalAdditionalEnabledMarkets:1;
-        unsigned int wrote_originalClientCapabilities:1;
-        unsigned int wrote_originalRouteAttributes:1;
-        unsigned int wrote_originalWaypoints:1;
-        unsigned int wrote_requestingAppId:1;
-        unsigned int wrote_routeIdentifiers:1;
-        unsigned int wrote_serviceTags:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -70,47 +63,40 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)serviceTagAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceTagsCount;
-- (void)_addNoFlagsServiceTag:(id)arg1;
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 @property(retain, nonatomic) NSMutableArray *serviceTags;
-- (void)_readServiceTags;
 @property(retain, nonatomic) NSString *requestingAppId;
 @property(readonly, nonatomic) _Bool hasRequestingAppId;
-- (void)_readRequestingAppId;
 @property(retain, nonatomic) NSData *directionsResponseId;
 @property(readonly, nonatomic) _Bool hasDirectionsResponseId;
-- (void)_readDirectionsResponseId;
 @property(retain, nonatomic) GEOAdditionalEnabledMarkets *originalAdditionalEnabledMarkets;
 @property(readonly, nonatomic) _Bool hasOriginalAdditionalEnabledMarkets;
-- (void)_readOriginalAdditionalEnabledMarkets;
 @property(retain, nonatomic) GEORouteAttributes *originalRouteAttributes;
 @property(readonly, nonatomic) _Bool hasOriginalRouteAttributes;
-- (void)_readOriginalRouteAttributes;
 - (id)originalWaypointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)originalWaypointsCount;
-- (void)_addNoFlagsOriginalWaypoint:(id)arg1;
 - (void)addOriginalWaypoint:(id)arg1;
 - (void)clearOriginalWaypoints;
 @property(retain, nonatomic) NSMutableArray *originalWaypoints;
-- (void)_readOriginalWaypoints;
 @property(retain, nonatomic) GEOPDABClientDatasetMetadata *abClientMetadata;
 @property(readonly, nonatomic) _Bool hasAbClientMetadata;
-- (void)_readAbClientMetadata;
 @property(retain, nonatomic) GEOClientCapabilities *originalClientCapabilities;
 @property(readonly, nonatomic) _Bool hasOriginalClientCapabilities;
-- (void)_readOriginalClientCapabilities;
 - (id)routeIdentifierAtIndex:(unsigned long long)arg1;
 - (unsigned long long)routeIdentifiersCount;
-- (void)_addNoFlagsRouteIdentifier:(id)arg1;
 - (void)addRouteIdentifier:(id)arg1;
 - (void)clearRouteIdentifiers;
 @property(retain, nonatomic) NSMutableArray *routeIdentifiers;
-- (void)_readRouteIdentifiers;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSArray *allClientRouteIDs;
 @property(readonly, nonatomic) NSUUID *clientRouteID;
 

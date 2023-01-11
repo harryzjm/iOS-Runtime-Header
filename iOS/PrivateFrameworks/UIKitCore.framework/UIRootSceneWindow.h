@@ -6,22 +6,20 @@
 
 #import <UIKitCore/UIMutableTransformerDelegate-Protocol.h>
 
-@class CALayer, FBSDisplayConfiguration, NSString, UIMutableTransformer, UIView;
+@class FBSDisplayConfiguration, NSString, UIMutableTransformer, UIView;
 
 @interface UIRootSceneWindow <UIMutableTransformerDelegate>
 {
     FBSDisplayConfiguration *_displayConfiguration;
     UIView *_sceneContainerView;
     UIMutableTransformer *_sceneTransformer;
-    CALayer *_bezelLayer;
-    CALayer *_maskLayer;
 }
 
 + (_Bool)_isSecure;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *_sceneContainerView; // @synthesize _sceneContainerView;
 @property(readonly, nonatomic) UIMutableTransformer *sceneTransformer; // @synthesize sceneTransformer=_sceneTransformer;
 @property(readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
-- (void).cxx_destruct;
 - (void)_updateTransforms;
 - (void)transformsDidChange:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;

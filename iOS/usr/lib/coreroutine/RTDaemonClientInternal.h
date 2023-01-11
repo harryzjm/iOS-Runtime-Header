@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <coreroutine/NSXPCConnectionDelegate-Protocol.h>
 #import <coreroutine/RTDaemonInternalProtocol-Protocol.h>
 
-@class NSString, NSXPCConnection, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTDeviceLocationPredictor, RTDiagnostics, RTEventModelProvider, RTFingerprintManager, RTHintManager, RTLearnedLocationManager, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMotionActivityManager, RTPersistenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager;
+@class NSString, NSXPCConnection, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTDeviceLocationPredictor, RTDiagnostics, RTEntitlementProvider, RTEventModelProvider, RTFingerprintManager, RTHintManager, RTLearnedLocationManager, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMotionActivityManager, RTPersistenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager;
 @protocol OS_dispatch_queue;
 
-@interface RTDaemonClientInternal : NSObject <RTDaemonInternalProtocol>
+@interface RTDaemonClientInternal : NSObject <RTDaemonInternalProtocol, NSXPCConnectionDelegate>
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_queue;
+    RTEntitlementProvider *_entitlementProvider;
     RTAccountManager *_accountManager;
     RTAssetManager *_assetManager;
     RTAuthorizationManager *_authorizationManager;
@@ -35,6 +37,7 @@
     RTVisitManager *_visitManager;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
 @property(retain, nonatomic) RTVehicleLocationProvider *vehicleLocationProvider; // @synthesize vehicleLocationProvider=_vehicleLocationProvider;
 @property(retain, nonatomic) RTScenarioTriggerManager *scenarioTriggerManager; // @synthesize scenarioTriggerManager=_scenarioTriggerManager;
@@ -53,9 +56,11 @@
 @property(retain, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property(retain, nonatomic) RTAssetManager *assetManager; // @synthesize assetManager=_assetManager;
 @property(retain, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
+@property(retain, nonatomic) RTEntitlementProvider *entitlementProvider; // @synthesize entitlementProvider=_entitlementProvider;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-- (void).cxx_destruct;
+- (void)extendLifetimeOfVisitsWithIdentifiers:(id)arg1 toExpireOn:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)expireLifetimeOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)submitMetrics:(id)arg1 metricName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchMotionActivitiesFromStartDate:(id)arg1 endDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchFMCEnabledWithReply:(CDUnknownBlockType)arg1;
@@ -74,12 +79,14 @@
 - (void)fetchInferredMapItemForVisitIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchFusionCandidatesForVisitIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)submitHintAtLocation:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)injectRealtimeVisit:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchVisitsBetweenStartDate:(id)arg1 endDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)simulateVisit:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)reconstructTransitionsWithReply:(CDUnknownBlockType)arg1;
 - (void)updateTransitionWithIdentifier:(id)arg1 modeOfTransportation:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)clearAllLocationsOfInterestWithReply:(CDUnknownBlockType)arg1;
 - (void)injectSignalForSignalGeneratorOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)storeHints:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)injectLocations:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)forceEventModelRefreshWithReply:(CDUnknownBlockType)arg1;
 - (void)updateAssetServerURL:(id)arg1 assetType:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -95,7 +102,7 @@
 - (void)fetchAllLocationsOfInterestWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchPathToBackupWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchDataVaultPath:(CDUnknownBlockType)arg1;
-- (_Bool)hasEntitlement:(id)arg1;
+- (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (id)initWithQueue:(id)arg1 accountManager:(id)arg2 assetManager:(id)arg3 authorizationManager:(id)arg4 deviceLocationPredictor:(id)arg5 diagnostics:(id)arg6 eventModelProvider:(id)arg7 fingerprintManager:(id)arg8 hintManager:(id)arg9 learnedLocationManager:(id)arg10 learnedLocationStore:(id)arg11 locationManager:(id)arg12 locationStore:(id)arg13 motionActivityManager:(id)arg14 persistenceManager:(id)arg15 purgeManager:(id)arg16 scenarioTriggerManager:(id)arg17 vehicleLocationProvider:(id)arg18 visitManager:(id)arg19;
 - (id)init;
 

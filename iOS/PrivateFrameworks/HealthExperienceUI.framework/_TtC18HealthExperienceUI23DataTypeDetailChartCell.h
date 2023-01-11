@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC18HealthExperienceUI23DataTypeDetailChartCell : UICollectionViewCell
 {
@@ -18,9 +18,9 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, readonly) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)awakeFromNib;
 
 @end
 

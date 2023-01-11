@@ -6,14 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@interface TICoreAnalyticsEventDispatcher : NSObject
+#import <TextInputCore/TITypingSessionAggregatedEventObserver-Protocol.h>
+
+@class NSString;
+
+@interface TICoreAnalyticsEventDispatcher : NSObject <TITypingSessionAggregatedEventObserver>
 {
 }
 
-+ (void)dispatchLiveConversionUsageEvent:(id)arg1;
-+ (void)dispatchContinuousPathCorrectionsEvents:(id)arg1 userModel:(id)arg2;
-+ (void)dispatchContinuousPathUsageEvents:(id)arg1 userModel:(id)arg2;
-+ (void)dispatchKeyboardFeatureUsageEvent:(id)arg1 userModel:(id)arg2;
+- (void)sessionDidEnd:(id)arg1 aligned:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

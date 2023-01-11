@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
 - (void)webView:(id)arg1 addMessageToConsole:(id)arg2 withSource:(id)arg3;
 - (void)webViewDidDrawTiles:(id)arg1;
 - (void)webView:(id)arg1 willAddPlugInView:(id)arg2;
-- (_Bool)isUnperturbedDictationResultMarker:(id)arg1;
 - (long long)getPasteboardChangeCount;
 - (_Bool)performTwoStepDrop:(id)arg1 atDestination:(id)arg2 isMove:(_Bool)arg3;
 - (_Bool)performsTwoStepPaste:(id)arg1;
 - (_Bool)hasRichlyEditableSelection;
+- (_Bool)shouldSuppressPasswordEcho;
 - (int)deviceOrientation;
 - (void)showPlaybackTargetPicker:(_Bool)arg1 fromRect:(struct CGRect)arg2;
+- (_Bool)shouldRevealCurrentSelectionAfterInsertion;
 - (struct CGPoint)interactionLocation;
 - (id)supportedPasteboardTypesForCurrentSelection;
 - (long long)getPasteboardItemsCount;

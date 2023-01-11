@@ -14,6 +14,8 @@
 @interface TUISystemInputAssistantPageView : UIView <UIScrollViewDelegate>
 {
     unsigned long long _currentChevronStyle;
+    _Bool _secondaryViewInitialized;
+    _Bool _layoutIsDirty;
     _Bool _hidesExpandButton;
     _Bool _secondaryViewVisible;
     UIView *_primaryView;
@@ -21,10 +23,13 @@
     TUIPredictionCellButton *_expandButton;
     id <TUISystemInputAssistantPageViewDelegate> _pageViewDelegate;
     UIView *_clipView;
+    UIView *_primaryContainerView;
     UIScrollView *_scrollView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(retain, nonatomic) UIView *primaryContainerView; // @synthesize primaryContainerView=_primaryContainerView;
 @property(retain, nonatomic) UIView *clipView; // @synthesize clipView=_clipView;
 @property(nonatomic) _Bool secondaryViewVisible; // @synthesize secondaryViewVisible=_secondaryViewVisible;
 @property(nonatomic) __weak id <TUISystemInputAssistantPageViewDelegate> pageViewDelegate; // @synthesize pageViewDelegate=_pageViewDelegate;
@@ -32,12 +37,15 @@
 @property(nonatomic) _Bool hidesExpandButton; // @synthesize hidesExpandButton=_hidesExpandButton;
 @property(retain, nonatomic) UIView *secondaryView; // @synthesize secondaryView=_secondaryView;
 @property(retain, nonatomic) UIView *primaryView; // @synthesize primaryView=_primaryView;
-- (void).cxx_destruct;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)layoutSubviews;
+- (void)didMoveToWindow;
+- (void)setNeedsLayout;
 - (struct CGSize)_contentSize;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)_checkOldBounds:(struct CGRect)arg1 forContentOffsetChangeWithNewBounds:(struct CGRect)arg2;
+- (void)setSecondaryViewVisible:(_Bool)arg1 force:(_Bool)arg2 withAnimationType:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setSecondaryViewVisible:(_Bool)arg1 withAnimationType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSecondaryViewVisible:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_createExpandButtonIfNecessary;

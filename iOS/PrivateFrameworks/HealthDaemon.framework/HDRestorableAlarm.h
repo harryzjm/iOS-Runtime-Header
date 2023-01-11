@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class HDRestorableAlarmScheduler, NSMutableSet, NSString;
+@class HDRestorableAlarmScheduler, HDXPCAlarm, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDRestorableAlarm : NSObject <HDDiagnosticObject>
@@ -21,9 +21,9 @@
     NSString *_clientIdentifier;
 }
 
-@property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 - (void).cxx_destruct;
-- (id)systemScheduler;
+@property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property(readonly, nonatomic) HDXPCAlarm *systemScheduler;
 - (id)diagnosticDescription;
 - (void)eventsDidFire:(id)arg1;
 - (void)checkForDueEventsWithCompletion:(CDUnknownBlockType)arg1;

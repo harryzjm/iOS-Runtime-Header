@@ -6,27 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, WKWallpaperBundleImporter;
+@class NSDictionary, WKWallpaperBundle, WKWallpaperCollection, WKWallpaperCollectionsManager;
 
 @interface WKDefaultWallpaperManager : NSObject
 {
     NSDictionary *__defaultWallpaperLookup;
-    WKWallpaperBundleImporter *__defaultWallpaperBundleImporter;
+    WKWallpaperCollectionsManager *__collectionsManager;
+    WKWallpaperCollection *__defaultWallpaperCollection;
+    WKWallpaperBundle *__defaultWallpaperBundle;
 }
 
-+ (id)deviceEnclosureColor;
-+ (id)deviceColor;
-+ (id)deviceLogicalScreenClass;
-+ (id)deviceProductType;
 + (id)defaultWallpaperLookupURL;
-+ (id)_pathForStillWallpapers;
 + (id)defaultWallpaperManager;
-@property(retain, nonatomic) WKWallpaperBundleImporter *_defaultWallpaperBundleImporter; // @synthesize _defaultWallpaperBundleImporter=__defaultWallpaperBundleImporter;
-@property(retain, nonatomic) NSDictionary *_defaultWallpaperLookup; // @synthesize _defaultWallpaperLookup=__defaultWallpaperLookup;
 - (void).cxx_destruct;
+@property(retain, nonatomic) WKWallpaperBundle *_defaultWallpaperBundle; // @synthesize _defaultWallpaperBundle=__defaultWallpaperBundle;
+@property(retain, nonatomic) WKWallpaperCollection *_defaultWallpaperCollection; // @synthesize _defaultWallpaperCollection=__defaultWallpaperCollection;
+@property(retain, nonatomic) WKWallpaperCollectionsManager *_collectionsManager; // @synthesize _collectionsManager=__collectionsManager;
+@property(retain, nonatomic) NSDictionary *_defaultWallpaperLookup; // @synthesize _defaultWallpaperLookup=__defaultWallpaperLookup;
+- (id)deviceEnclosureColor;
+- (id)deviceColor;
+- (id)deviceLogicalScreenClass;
+- (id)deviceProductType;
+- (id)defaultWallpaperCollection;
 - (id)defaultWallpaperBundle;
+- (void)_loadDefaultWallpaperInformation;
 - (void)_loadDefaultWallpaperFile;
-- (id)init;
+- (id)initWithCollectionsManager:(id)arg1;
 
 @end
 

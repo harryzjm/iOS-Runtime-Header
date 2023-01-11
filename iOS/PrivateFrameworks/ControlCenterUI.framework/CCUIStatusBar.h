@@ -13,18 +13,24 @@
 {
     UIStatusBar_Modern *_compactTrailingStatusBar;
     UIStatusBar_Modern *_expandedStatusBar;
+    _Bool _needsUpdatedMetrics;
     double _trailingMarginDelta;
     double _verticalBatteryAlignmentDelta;
+    _Bool _alignCompactAndExpandedStatusBars;
     id <CCUIStatusBarDelegate> _delegate;
     unsigned long long _leadingState;
     unsigned long long _trailingState;
     double _maxCompactScaleFactor;
     double _verticalSecondaryServiceDelta;
+    double _expandedStatusBarTranslation;
     struct UIEdgeInsets _compactEdgeInsets;
     struct UIEdgeInsets _expandedEdgeInsets;
     struct CGAffineTransform _compactScaleTransform;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool alignCompactAndExpandedStatusBars; // @synthesize alignCompactAndExpandedStatusBars=_alignCompactAndExpandedStatusBars;
+@property(nonatomic) double expandedStatusBarTranslation; // @synthesize expandedStatusBarTranslation=_expandedStatusBarTranslation;
 @property(readonly, nonatomic) double verticalSecondaryServiceDelta; // @synthesize verticalSecondaryServiceDelta=_verticalSecondaryServiceDelta;
 @property(readonly, nonatomic) double maxCompactScaleFactor; // @synthesize maxCompactScaleFactor=_maxCompactScaleFactor;
 @property(nonatomic) struct UIEdgeInsets expandedEdgeInsets; // @synthesize expandedEdgeInsets=_expandedEdgeInsets;
@@ -32,7 +38,6 @@
 @property(nonatomic) unsigned long long trailingState; // @synthesize trailingState=_trailingState;
 @property(nonatomic) unsigned long long leadingState; // @synthesize leadingState=_leadingState;
 @property(nonatomic) __weak id <CCUIStatusBarDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_updateCompactTrailingStatusBarStyleRequestAndAvoidanceFrame;
 - (void)controlCenterApplyPrimaryContentShadow;
 - (void)_updateShadow;

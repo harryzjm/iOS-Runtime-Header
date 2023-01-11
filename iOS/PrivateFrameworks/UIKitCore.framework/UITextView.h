@@ -26,7 +26,7 @@
 #import <UIKitCore/_UITextViewContentPaddingDelegate-Protocol.h>
 #import <UIKitCore/_UIViewBaselineSpacing-Protocol.h>
 
-@class CUICatalog, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UIImage, UIInputContextHistory, UILabel, UILayoutManagerBasedDraggableGeometry, UIPasteConfiguration, UITextInputController, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UITextContainerView, _UITextItemDiscoverer, _UITextSizeCache, _UITextViewContentPadding, _UITextViewRestorableScrollPosition, _UITextViewVisualStyle;
+@class CUICatalog, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UIImage, UIInputContextHistory, UILabel, UILayoutManagerBasedDraggableGeometry, UIPasteConfiguration, UITextInputController, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UITextContainerView, _UITextItemDiscoverer, _UITextLayoutView, _UITextSizeCache, _UITextViewContentPadding, _UITextViewRestorableScrollPosition, _UITextViewVisualStyle;
 @protocol UICoordinateSpace, UITextDragDelegate, UITextDragDropSupport, UITextDropDelegate, UITextInputDelegate, UITextInputTokenizer, UITextPasteDelegate, UITextViewDelegate;
 
 @interface UITextView <_UIViewBaselineSpacing, _UITextContainerViewDelegate, _UITextViewContentPaddingDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UIViewGhostedRangeSupporting, _UITextItemInteracting, UITextPasteConfigurationSupporting_Internal, UITextDragSupporting, UITextDropSupporting, _UITextContent, _UITextItemDiscoverable, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, UIContentSizeCategoryAdjusting>
@@ -35,6 +35,7 @@
     NSTextContainer *_textContainer;
     NSLayoutManager *_layoutManager;
     _UITextContainerView *_containerView;
+    _UITextLayoutView *_layoutView;
     id _inputDelegate;
     id <UITextInputTokenizer> _tokenizer;
     UITextInputController *_inputController;
@@ -62,6 +63,8 @@
     unsigned long long _dataDetectorTypes;
     double _preferredMaxLayoutWidth;
     UILabel *_placeholderLabel;
+    NSAttributedString *_overriddenPlaceholder;
+    long long _overriddenPlaceholderAlignment;
     UIView *_inputAccessoryView;
     NSDictionary *_linkTextAttributes;
     _UICharacterStreamingManager *_characterStreamingManager;
@@ -95,6 +98,7 @@
 
 + (id)_defaultTextColor;
 + (_Bool)_isCompatibilityTextView;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UITextViewVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 @property(readonly, nonatomic) NSTextStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property(readonly, nonatomic) NSLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
@@ -107,7 +111,6 @@
 - (double)_multilineContextWidth;
 @property(nonatomic) __weak id <UITextPasteDelegate> pasteDelegate; // @synthesize pasteDelegate=_pasteDelegate;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-- (void).cxx_destruct;
 - (id)_getDelegateZoomView;
 - (void)droppingFinished;
 - (void)droppingStarted;
@@ -124,17 +127,19 @@
 @property(readonly, nonatomic) UIDropInteraction *textDropInteraction;
 @property(readonly, nonatomic) UIDragInteraction *textDragInteraction;
 - (_Bool)_allowHighlightForTextInteractableItem:(id)arg1;
-- (id)_textInteractableItemAtPoint:(struct CGPoint)arg1;
+- (_Bool)_interactionPossibleWithAttachment:(id)arg1;
+- (id)_textInteractableItemAtPoint:(struct CGPoint)arg1 precision:(unsigned long long)arg2;
+- (id)_anyTextItemConstrainedToLineAtPoint:(struct CGPoint)arg1;
 - (void)validateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)startInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (_Bool)willInteractWithLinkAtPoint:(struct CGPoint)arg1;
-- (_Bool)_presentActionsForTextInteractableItem:(id)arg1;
 - (_Bool)_mightHaveInteractableItems;
 - (_Bool)_allowInteraction:(long long)arg1 forTextInteractableItem:(id)arg2;
+- (_Bool)_delegatesAllowingTextItemInteractions;
 - (void)_setDefaultTextPreviewOptions:(long long)arg1;
 - (long long)_defaultTextPreviewOptions;
-- (id)_targetedPreviewForTextInteractableItem:(id)arg1;
+- (id)_targetedPreviewForTextInteractableItem:(id)arg1 dismissing:(_Bool)arg2;
 - (void)_applyOptionsToGeometry;
 - (id)_textGeometry;
 - (void)_updateSelectionGestures;
@@ -262,6 +267,7 @@
 @property(retain, nonatomic) UIFont *font;
 - (id)initWithFrame:(struct CGRect)arg1 font:(id)arg2;
 - (void)textInputDidChangeSelection:(id)arg1;
+- (_Bool)textInputShouldExtendCaretHeight:(id)arg1;
 - (void)textInputDidChange:(id)arg1;
 - (void)setContinuousSpellCheckingEnabled:(_Bool)arg1;
 - (void)_setTypingAttributesTextColor:(id)arg1;
@@ -273,6 +279,7 @@
 @property(readonly, nonatomic) id insertDictationResultPlaceholder;
 - (void)removeTextPlaceholder:(id)arg1;
 - (id)insertTextPlaceholderWithSize:(struct CGSize)arg1;
+- (_Bool)_isSystemAttachment:(id)arg1;
 - (_Bool)_shouldSuppressSelectionCommands;
 - (void)_updateSelectableInteractions;
 @property(nonatomic, getter=isSelectable) _Bool selectable;
@@ -315,6 +322,7 @@
 - (void)insertAttributedText:(id)arg1;
 - (id)textInRange:(id)arg1;
 - (id)selectedText;
+- (struct CGRect)_rectToScrollToVisibleInCellInWindow:(id)arg1;
 - (struct CGPoint)_contentOffsetForScrollingToRect:(struct CGRect)arg1;
 - (void)scrollSelectionToVisible:(_Bool)arg1;
 - (void)scrollRangeToVisible:(struct _NSRange)arg1;
@@ -342,6 +350,8 @@
 - (struct CGPoint)_contentOffsetForScrollToVisible:(struct _NSRange)arg1;
 - (struct CGRect)_rectForScrollToVisible:(struct _NSRange)arg1;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
+- (id)_systemDefaultFocusGroupDescriptor;
+- (struct CGRect)accessibilityFrame;
 - (_Bool)canBecomeFocused;
 - (void)endFloatingCursor;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
@@ -364,6 +374,7 @@
 - (void)_layoutPlaceholder;
 - (_Bool)_isTextSizeCacheEnabled;
 - (void)_setTextSizeCacheEnabled:(_Bool)arg1;
+- (void)_setOverridePlaceholder:(id)arg1 alignment:(long long)arg2;
 - (id)attributedPlaceholder;
 - (void)setAttributedPlaceholder:(id)arg1;
 - (void)setShouldPresentSheetsInAWindowLayeredAboveTheKeyboard:(_Bool)arg1;
@@ -405,12 +416,14 @@
 - (double)_currentPreferredMaxLayoutWidth;
 - (id)_layoutDebuggingTitle;
 - (struct CGSize)intrinsicContentSize;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (struct CGSize)_containerSizeForBoundsSize:(struct CGSize)arg1 allowingOverflow:(_Bool)arg2;
 - (void)_performLayoutCalculation:(CDUnknownBlockType)arg1 inSize:(struct CGSize)arg2;
-- (void)_baselineOffsetDidChange;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
+- (_Bool)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (_Bool)_hasBaseline;
 - (double)_baselineOffsetFromBottom;
 - (double)_firstBaselineOffsetFromTop;
@@ -429,6 +442,9 @@
 - (void)_scrollToCaretIfNeeded;
 - (void)_invalidateContainerViewSize;
 - (void)layoutSubviews;
+- (void)_layoutText;
+- (void)_setNeedsTextLayout;
+- (void)setNeedsLayout;
 - (void)adjustedContentInsetDidChange;
 - (void)_resyncContainerFrameForNonAutolayoutDeferringSizeToFit:(_Bool)arg1;
 - (void)_resyncContainerFrameForNonAutolayout;
@@ -459,6 +475,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonInitWithTextContainer:(id)arg1 isDecoding:(_Bool)arg2 isEditable:(_Bool)arg3 isSelectable:(_Bool)arg4 isDraggable:(_Bool)arg5;
+- (id)_activityItemsConfigurationAtLocation:(struct CGPoint)arg1;
 - (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
 - (_Bool)isAccessibilityElementByDefault;
 - (void)drawRect:(struct CGRect)arg1 forViewPrintFormatter:(id)arg2;
@@ -483,6 +500,7 @@
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
@@ -519,6 +537,7 @@
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(copy, nonatomic) UIPasteConfiguration *pasteConfiguration; // @dynamic pasteConfiguration;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;

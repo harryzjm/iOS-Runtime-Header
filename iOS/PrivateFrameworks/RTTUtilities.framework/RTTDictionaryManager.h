@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSCondition;
+@class NSArray;
 
 @interface RTTDictionaryManager : NSObject
 {
-    NSCondition *_condition;
     NSArray *_availableDictionaries;
 }
 
-+ (id)availableDictionaryAssetsUsingRemoteInfo:(_Bool)arg1;
-@property(retain, nonatomic) NSArray *availableDictionaries; // @synthesize availableDictionaries=_availableDictionaries;
++ (id)_availableDictionaryAssetsUsingRemoteInfo:(_Bool)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *availableDictionaries; // @synthesize availableDictionaries=_availableDictionaries;
 - (id)_ttyDictionaryAsset;
-- (_Bool)_isStalledAutoDownloadAsset:(id)arg1;
-- (_Bool)downloadAsset:(id)arg1 withError:(id *)arg2;
+- (void)_downloadAsset:(id)arg1;
 - (void)deleteIfNeeded;
 - (void)downloadIfNeeded;
 - (void)dealloc;

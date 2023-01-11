@@ -12,14 +12,13 @@
 }
 
 + (id)attributeWithTag:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *tag; // @synthesize tag=_tag;
 - (void).cxx_destruct;
-- (id)_initWithTag:(id)arg1;
-- (id)succinctDescriptionBuilder;
+@property(readonly, copy, nonatomic) NSString *tag; // @synthesize tag=_tag;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 
 @end
 

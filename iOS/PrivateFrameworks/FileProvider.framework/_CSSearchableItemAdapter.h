@@ -8,7 +8,7 @@
 
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 
-@class CSSearchableItem, CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@class CSSearchableItem, CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
 @protocol NSFileProviderItemFlags;
 
 __attribute__((visibility("hidden")))
@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)fp_queryFetchAttributes;
-@property(readonly, nonatomic) CSSearchableItem *item; // @synthesize item=_item;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CSSearchableItem *item; // @synthesize item=_item;
 @property(readonly, copy) NSString *fp_cloudContainerIdentifier;
 @property(readonly) _Bool fp_isContainerPristine;
 @property(readonly) _Bool fp_isContainer;
-- (id)appContainerBundleIdentifier;
+- (id)fp_appContainerBundleIdentifier;
 - (id)sharingCurrentUserPermissions;
 @property(readonly, nonatomic, getter=isMostRecentVersionDownloaded) _Bool mostRecentVersionDownloaded;
 - (_Bool)isDataless;
@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSData *tagData;
 - (id)tags;
 @property(readonly, nonatomic) NSDictionary *userInfo;
-@property(readonly, copy) NSURL *fileURL;
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
 @property(readonly, nonatomic) unsigned long long capabilities;
 @property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
@@ -67,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSDate *lastUsedDate;
 @property(readonly, copy, nonatomic) NSDate *contentModificationDate;
 @property(readonly, copy, nonatomic) NSDate *creationDate;
+@property(readonly, copy, nonatomic) UTType *contentType;
 @property(readonly, copy, nonatomic) NSString *typeIdentifier;
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, copy, nonatomic) NSString *parentItemIdentifier;
@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
 @property(readonly, nonatomic) NSDictionary *extendedAttributes;
 @property(readonly, copy) NSString *fileSystemFilename;
+@property(readonly, copy) NSURL *fileURL;
 @property(readonly, nonatomic) id <NSFileProviderItemFlags> flags;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
 @property(readonly, copy) NSNumber *hasUnresolvedConflicts;

@@ -18,13 +18,15 @@
     id <NDNewsService> _daemon;
 }
 
-@property(retain, nonatomic) id <NDNewsService> daemon; // @synthesize daemon=_daemon;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <NDNewsService> daemon; // @synthesize daemon=_daemon;
 - (id)_queue;
 - (void)markAnalyticsElement:(id)arg1 asReadAtDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)markAnalyticsElements:(id)arg1 asSeenAtDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 @property(copy, nonatomic) CDUnknownBlockType updateResultsHandler; // @synthesize updateResultsHandler=_updateResultsHandler;
+- (void)fetchPlaceholderResultsWithOperationInfo:(id)arg1 syncCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchLatestResultsWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchModuleDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)serviceHasNewTodayResults;
 - (id)init;
 

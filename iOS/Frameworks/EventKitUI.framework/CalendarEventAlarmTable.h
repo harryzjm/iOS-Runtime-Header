@@ -26,8 +26,11 @@
     _Bool _eventHasTravelTime;
     id <CalendarEventAlarmTableDelegate> _alarmTableDelegate;
     id <EKStyleProvider> _styleProvider;
+    unsigned long long _timeToLeaveLocationStatus;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long timeToLeaveLocationStatus; // @synthesize timeToLeaveLocationStatus=_timeToLeaveLocationStatus;
 @property(nonatomic) _Bool eventHasTravelTime; // @synthesize eventHasTravelTime=_eventHasTravelTime;
 @property(nonatomic) _Bool leaveNowAlarmSelected; // @synthesize leaveNowAlarmSelected=_leaveNowAlarmSelected;
 @property(nonatomic) _Bool shouldShowLeaveNowOption; // @synthesize shouldShowLeaveNowOption=_shouldShowLeaveNowOption;
@@ -36,13 +39,13 @@
 @property(nonatomic) _Bool useAllDayAlarms; // @synthesize useAllDayAlarms=_useAllDayAlarms;
 @property(retain, nonatomic) id <EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) __weak id <CalendarEventAlarmTableDelegate> alarmTableDelegate; // @synthesize alarmTableDelegate=_alarmTableDelegate;
-- (void).cxx_destruct;
 - (long long)presetIdentifierAtIndex:(unsigned long long)arg1;
 - (unsigned long long)countOfPresets;
 - (int)intervalForPresetIdentifier:(long long)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (_Bool)timeToLeaveAlarmIsEffectivelyDisabled;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

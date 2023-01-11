@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSCopying-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
@@ -13,25 +14,23 @@
 @class BSMutableSettings, NSMutableSet, NSString;
 @protocol BSSettingDescriptionProvider;
 
-@interface BSSettingsDiff : NSObject <NSCopying, NSSecureCoding, BSXPCCoding>
+@interface BSSettingsDiff : NSObject <BSDescriptionProviding, NSCopying, NSSecureCoding, BSXPCCoding>
 {
-    id <BSSettingDescriptionProvider> _descriptionProvider;
     BSMutableSettings *_changes;
     NSMutableSet *_flagRemovals;
     NSMutableSet *_objectRemovals;
+    id <BSSettingDescriptionProvider> _descriptionProvider;
 }
 
-+ (_Bool)_isValidRemovalsSet:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)diffFromSettings:(id)arg1 toSettings:(id)arg2;
-@property(nonatomic) __weak id <BSSettingDescriptionProvider> descriptionProvider; // @synthesize descriptionProvider=_descriptionProvider;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <BSSettingDescriptionProvider> descriptionProvider; // @synthesize descriptionProvider=_descriptionProvider;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (unsigned long long)_diffTypesForSetting:(unsigned long long)arg1;
-- (id)allSettings;
-- (void)_enumerateSettingsInSet:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)inspectChangesWithBlock:(CDUnknownBlockType)arg1;
 - (void)applyToSettings:(id)arg1;
 @property(readonly, nonatomic) _Bool isEmpty;
@@ -41,7 +40,6 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)_initWithChanges:(id)arg1 flagRemovals:(id)arg2 objectRemovals:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,6 +7,7 @@
 #import <SpringBoardFoundation/SBFTouchPassThroughViewController.h>
 
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
+#import <SpringBoardHome/SBFloatingDockViewDelegate-Protocol.h>
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 #import <SpringBoardHome/SBFolderPresentingViewControllerDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconListModelObserver-Protocol.h>
@@ -19,7 +20,7 @@
 @class NSArray, NSHashTable, NSMutableArray, NSSet, NSString, SBFTouchPassThroughView, SBFloatingDockView, SBFolderController, SBFolderPresentingViewController, SBHFloatingDockStyleConfiguration, SBHIconManager, SBHIconModel, SBHomeScreenIconTransitionAnimator, SBIconListModel, SBIconListView, UIView, UIViewController, UIWindow, _UILegibilitySettings;
 @protocol SBFloatingDockSuggestionsViewProviding, SBFloatingDockViewControllerDelegate, SBIconViewProviding;
 
-@interface SBFloatingDockViewController : SBFTouchPassThroughViewController <SBIconListViewDragDelegate, SBIconListModelObserver, SBFolderControllerDelegate, SBFolderPresentingViewControllerDelegate, SBScaleIconZoomAnimationContaining, SBIconViewProviding, SBIconViewQuerying, SBIconLocationPresenting, BSDescriptionProviding>
+@interface SBFloatingDockViewController : SBFTouchPassThroughViewController <SBIconListViewDragDelegate, SBIconListModelObserver, SBFolderControllerDelegate, SBFolderPresentingViewControllerDelegate, SBScaleIconZoomAnimationContaining, SBIconViewProviding, SBFloatingDockViewDelegate, SBIconViewQuerying, SBIconLocationPresenting, BSDescriptionProviding>
 {
     SBFloatingDockView *_dockView;
     _UILegibilitySettings *_legibilitySettings;
@@ -44,6 +45,7 @@
     SBHFloatingDockStyleConfiguration *_transitionTargetUnderlyingPresentationStyleConfiguration;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) SBHFloatingDockStyleConfiguration *transitionTargetUnderlyingPresentationStyleConfiguration; // @synthesize transitionTargetUnderlyingPresentationStyleConfiguration=_transitionTargetUnderlyingPresentationStyleConfiguration;
 @property(nonatomic, getter=isTransitioningUnderlyingBackgroundStyle) _Bool transitioningUnderlyingPresentationStyleConfiguration; // @synthesize transitioningUnderlyingPresentationStyleConfiguration=_transitioningUnderlyingPresentationStyleConfiguration;
 @property(copy, nonatomic) SBHFloatingDockStyleConfiguration *underlyingPresentationStyleConfiguration; // @synthesize underlyingPresentationStyleConfiguration=_underlyingPresentationStyleConfiguration;
@@ -61,16 +63,17 @@
 @property(nonatomic) double dockOffscreenProgress; // @synthesize dockOffscreenProgress=_dockOffscreenProgress;
 @property(retain, nonatomic) UIViewController<SBFloatingDockSuggestionsViewProviding> *suggestionsViewController; // @synthesize suggestionsViewController=_suggestionsViewController;
 @property(nonatomic) __weak id <SBFloatingDockViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)folderController:(id)arg1 accessibilityTintColorForScreenRect:(struct CGRect)arg2;
+- (id)folderController:(id)arg1 iconListView:(id)arg2 customSpringAnimationBehaviorForDroppingItem:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(id)arg3;
 - (_Bool)folderController:(id)arg1 iconListView:(id)arg2 shouldAllowSpringLoadedInteractionForIconDropSession:(id)arg3 onIconView:(id)arg4;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDragItem:(id)arg3 willAnimateDropWithAnimator:(id)arg4;
 - (id)folderController:(id)arg1 iconListView:(id)arg2 previewForDroppingIconDragItem:(id)arg3 proposedPreview:(id)arg4;
+- (void)folderController:(id)arg1 iconListView:(id)arg2 willUseIconView:(id)arg3 forDroppingIconDragItem:(id)arg4;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 performIconDrop:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDropSessionDidExit:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDropSession:(id)arg3 didPauseAtLocation:(struct CGPoint)arg4;
@@ -78,9 +81,11 @@
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDropSessionDidEnter:(id)arg3;
 - (_Bool)folderController:(id)arg1 iconListView:(id)arg2 canHandleIconDropSession:(id)arg3;
 - (void)folderControllerDidEndScrolling:(id)arg1;
+- (void)folderController:(id)arg1 didEndEditingTitle:(id)arg2;
+- (void)folderController:(id)arg1 didBeginEditingTitle:(id)arg2;
 - (void)folderControllerWillBeginScrolling:(id)arg1;
 - (void)folderControllerShouldEndEditing:(id)arg1;
-- (void)folderControllerShouldBeginEditing:(id)arg1;
+- (void)folderControllerShouldBeginEditing:(id)arg1 withHaptic:(_Bool)arg2;
 - (void)folderControllerDidClose:(id)arg1;
 - (void)folderControllerWillClose:(id)arg1;
 - (void)folderControllerDidOpen:(id)arg1;
@@ -89,9 +94,10 @@
 - (void)folderController:(id)arg1 draggedIconShouldDropFromListView:(id)arg2;
 - (_Bool)folderController:(id)arg1 canChangeCurrentPageIndexToIndex:(long long)arg2;
 - (Class)controllerClassForFolder:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *extraViews;
+@property(readonly, nonatomic) _Bool shouldAnimateFirstTwoViewsAsOne;
 @property(readonly, nonatomic) _Bool shouldAnimateLastTwoViewsAsOne;
-@property(readonly, nonatomic) UIView *extraViewsContainer;
+@property(readonly, copy, nonatomic) NSArray *extraViews;
+@property(readonly, copy, nonatomic) NSArray *extraViewsContainers;
 - (id)targetIconContainerView;
 - (void)returnScalingView;
 - (id)borrowScalingView;
@@ -103,7 +109,6 @@
 @property(readonly, nonatomic) UIView *containerView;
 - (id)folderPresentationController:(id)arg1 sourceViewForPresentingViewController:(id)arg2;
 - (double)minimumHomeScreenScaleForFolderPresentationController:(id)arg1;
-- (double)statusBarHeightForFolderPresentationController:(id)arg1;
 - (void)folderPresentationController:(id)arg1 willPerformTransitionWithFolder:(id)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id)arg4;
 - (id)folderPresentationController:(id)arg1 animationControllerForTransitionWithFolder:(id)arg2 presenting:(_Bool)arg3 animated:(_Bool)arg4;
 - (void)_presentFolderForIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
@@ -116,20 +121,21 @@
 - (id)dequeueReusableIconViewOfClass:(Class)arg1;
 @property(readonly, copy, nonatomic) NSSet *presentedIconLocations;
 - (_Bool)isPresentingIconLocation:(id)arg1;
-- (void)iconList:(id)arg1 didMoveIcon:(id)arg2;
 - (void)iconList:(id)arg1 didRemoveIcon:(id)arg2;
-- (void)iconList:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (void)iconList:(id)arg1 didAddIcon:(id)arg2;
+- (id)iconListView:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (void)iconListView:(id)arg1 springLoadedInteractionForIconDragDidCompleteOnIconView:(id)arg2;
 - (_Bool)iconListView:(id)arg1 shouldAllowSpringLoadedInteractionForIconDropSession:(id)arg2 onIconView:(id)arg3;
 - (void)iconListView:(id)arg1 iconDragItem:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (id)iconListView:(id)arg1 previewForDroppingIconDragItem:(id)arg2 proposedPreview:(id)arg3;
+- (void)iconListView:(id)arg1 willUseIconView:(id)arg2 forDroppingIconDragItem:(id)arg3;
 - (void)iconListView:(id)arg1 performIconDrop:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSessionDidExit:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSession:(id)arg2 didPauseAtLocation:(struct CGPoint)arg3;
 - (id)iconListView:(id)arg1 iconDropSessionDidUpdate:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSessionDidEnter:(id)arg2;
 - (_Bool)iconListView:(id)arg1 canHandleIconDropSession:(id)arg2;
+- (void)floatingDockViewMainPlatterDidChangeFrame:(id)arg1;
 - (void)_sizeCategoryDidChange:(id)arg1;
 - (void)reduceTransparencyEnabledStateDidChange:(id)arg1;
 - (void)iconDraggingDidChange:(id)arg1;
@@ -181,6 +187,7 @@
 @property(readonly, nonatomic) double maximumDockContinuousCornerRadius;
 @property(readonly, nonatomic) double translationFromFullyPresentedFrame;
 - (double)minimumVerticalMarginForFrame:(struct CGRect)arg1;
+@property(nonatomic) double requestedVerticalMargin;
 @property(readonly, nonatomic) double preferredVerticalMargin;
 - (double)contentHeightForFrame:(struct CGRect)arg1;
 @property(readonly, nonatomic) double contentHeight;

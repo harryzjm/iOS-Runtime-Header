@@ -27,12 +27,12 @@
 + (id)documentProxyForURL:(id)arg1;
 + (id)documentProxyForName:(id)arg1 type:(id)arg2 MIMEType:(id)arg3 isContentManaged:(_Bool)arg4 sourceAuditToken:(const CDStruct_4c969caf *)arg5;
 + (id)documentProxyForURL:(id)arg1 isContentManaged:(_Bool)arg2 sourceAuditToken:(const CDStruct_4c969caf *)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *MIMEType; // @synthesize MIMEType=_MIMEType;
 @property(readonly, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, nonatomic, getter=isContentManaged) _Bool contentManaged; // @synthesize contentManaged=_isContentManaged;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) const CDStruct_4c969caf *managedSourceAuditToken;
 @property(readonly, nonatomic) _Bool sourceIsManaged;
 - (id)debugDescription;
@@ -44,14 +44,19 @@
 - (id)applicationsAvailableForOpeningFromAirDropWithError:(id *)arg1;
 - (id)applicationsAvailableForOpeningWithError:(id *)arg1;
 - (id)applicationsAvailableForOpeningWithHandlerRanks:(id)arg1 error:(id *)arg2;
+- (id)availableClaimBindingsForMode:(unsigned char)arg1 handlerRank:(id)arg2 error:(id *)arg3;
+- (id)availableClaimBindingsForMode:(unsigned char)arg1 error:(id *)arg2;
+- (id)availableClaimBindingsReturningError:(id *)arg1;
 @property(readonly, nonatomic) const CDStruct_4c969caf *sourceAuditToken; // @dynamic sourceAuditToken;
 @property(readonly, nonatomic) NSString *containerOwnerApplicationIdentifier;
 @property(readonly, getter=isImageOrVideo) _Bool imageOrVideo;
 - (id)initWithURL:(id)arg1 name:(id)arg2 type:(id)arg3 MIMEType:(id)arg4 isContentManaged:(_Bool)arg5 sourceAuditToken:(const CDStruct_4c969caf *)arg6;
 - (id)iconDataForVariant:(int)arg1 withOptions:(int)arg2;
+- (id)claimBindingsAvailableForOpeningWithStyle:(unsigned char)arg1 handlerRank:(id)arg2 limit:(unsigned long long)arg3 XPCConnection:(id)arg4 error:(id *)arg5;
 - (id)applicationsAvailableForOpeningWithStyle:(unsigned char)arg1 limit:(unsigned long long)arg2 XPCConnection:(id)arg3 error:(id *)arg4;
+- (id)applicationsOrClaimBindings:(_Bool)arg1 availableForOpeningWithStyle:(unsigned char)arg2 handlerRank:(id)arg3 limit:(unsigned long long)arg4 XPCConnection:(id)arg5 error:(id *)arg6;
 - (id)_boundIconInfo;
-- (optional_59acb226)_bindingEvaluatorWithAuditToken:(const CDStruct_4c969caf *)arg1;
+- (optional_4acbcc83)_bindingEvaluatorWithAuditToken:(const CDStruct_4c969caf *)arg1;
 
 @end
 

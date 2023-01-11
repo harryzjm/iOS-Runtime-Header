@@ -6,8 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class MPChangeDetails, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, MPStoreItemMetadataResponse, NSArray, NSDictionary, NSSet;
+@class ICUserIdentity, MPChangeDetails, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, MPStoreItemMetadataResponse, NSArray, NSDictionary, NSSet;
 
+__attribute__((visibility("hidden")))
 @interface MPModelStoreBrowseResponseParser : NSObject
 {
     MPSectionedCollection *_additionalContentIdentifiers;
@@ -16,6 +17,7 @@
     MPSectionedCollection *_results;
     NSDictionary *_storePlatformDataResults;
     NSSet *_unavailableContentIdentifiers;
+    ICUserIdentity *_userIdentity;
     CDStruct_d2d88407 _options;
     id _rawResponseOutput;
     MPModelStoreBrowseResponseParser *_previousParser;
@@ -25,6 +27,7 @@
     MPChangeDetails *_changeDetails;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MPChangeDetails *changeDetails; // @synthesize changeDetails=_changeDetails;
 @property(readonly, nonatomic) MPModelStoreBrowseContentItemBuilder *contentItemBuilder; // @synthesize contentItemBuilder=_contentItemBuilder;
 @property(readonly, nonatomic) MPModelStoreBrowseSectionBuilder *sectionBuilder; // @synthesize sectionBuilder=_sectionBuilder;
@@ -32,7 +35,6 @@
 @property(readonly, nonatomic) MPModelStoreBrowseResponseParser *previousParser; // @synthesize previousParser=_previousParser;
 @property(readonly, nonatomic) CDStruct_d2d88407 options; // @synthesize options=_options;
 @property(readonly, nonatomic) id rawResponseOutput; // @synthesize rawResponseOutput=_rawResponseOutput;
-- (void).cxx_destruct;
 - (_Bool)_storeItemMetadataIsAvailableForContentIdentifier:(id)arg1;
 - (id)_storeItemMetadataForContentIdentifier:(id)arg1;
 - (void)_populateUnavailableContentIdentifiersFromPageDataDictionary:(id)arg1;
@@ -45,8 +47,8 @@
 @property(readonly, nonatomic) NSArray *allAdditionalContentIdentifiersNeedingLookup;
 @property(readonly, nonatomic) MPSectionedCollection *additionalContentIdentifiers;
 @property(readonly, nonatomic) MPSectionedCollection *results;
-- (id)initWithPreviousParser:(id)arg1 additionalStoreItemMetadataResponse:(id)arg2 options:(CDStruct_d2d88407)arg3 sectionBuilder:(id)arg4 contentItemBuilder:(id)arg5;
-- (id)initWithRawResponseOutput:(id)arg1 options:(CDStruct_d2d88407)arg2 sectionBuilder:(id)arg3 contentItemBuilder:(id)arg4;
+- (id)initWithPreviousParser:(id)arg1 additionalStoreItemMetadataResponse:(id)arg2 options:(CDStruct_d2d88407)arg3 sectionBuilder:(id)arg4 contentItemBuilder:(id)arg5 userIdentity:(id)arg6;
+- (id)initWithRawResponseOutput:(id)arg1 options:(CDStruct_d2d88407)arg2 sectionBuilder:(id)arg3 contentItemBuilder:(id)arg4 userIdentity:(id)arg5;
 
 @end
 

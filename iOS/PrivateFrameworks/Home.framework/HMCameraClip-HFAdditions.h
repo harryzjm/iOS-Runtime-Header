@@ -6,15 +6,30 @@
 
 #import <HomeKit/HMCameraClip.h>
 
-@class NSDate, NSDateInterval, NSNumber;
+#import <Home/HFCameraRecordingEvent-Protocol.h>
 
-@interface HMCameraClip (HFAdditions)
-+ (_Bool)clipSpansMultipleDays:(id)arg1;
-@property(readonly, nonatomic) _Bool hf_isPlayable;
-@property(readonly, nonatomic) double hf_duration;
-@property(readonly, nonatomic) double hf_elapsedTimeSinceMidnight;
-@property(readonly, nonatomic) NSNumber *hf_percentageOfDurationUntilNextDay;
-@property(readonly, copy, nonatomic) NSDateInterval *hf_dateInterval;
-@property(readonly, copy, nonatomic) NSDate *hf_endDate;
+@class NSArray, NSDate, NSString, NSUUID;
+
+@interface HMCameraClip (HFAdditions) <HFCameraRecordingEvent>
+- (unsigned long long)containerType;
+- (void)dealloc;
+- (id)hf_familiarFaceEventAtOffset:(double)arg1;
+- (id)hf_faceCropNamesAtOffset:(double)arg1;
+- (id)hf_faceCropNameAtOffset:(double)arg1;
+- (id)hf_allEventsContainingPeopleInClip;
+- (void)hf_sortSignificantEvents;
+@property(readonly, copy, nonatomic) NSArray *hf_sortedSignificantEvents;
+- (_Bool)hf_isPlayable;
+- (double)hf_duration;
+- (id)hf_dateInterval;
+- (id)hf_endDate;
+
+// Remaining properties
+@property(readonly, copy) NSDate *dateOfOccurrence;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(readonly, copy) NSUUID *uniqueIdentifier;
 @end
 

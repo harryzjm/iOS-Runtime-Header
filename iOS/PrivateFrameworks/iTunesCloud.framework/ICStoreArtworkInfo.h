@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/NSCopying-Protocol.h>
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICStoreArtworkSizeInfo, NSArray, NSDictionary, NSURL;
+@class ICStoreArtworkSizeInfo, NSArray, NSDictionary, NSString, NSURL;
 
-@interface ICStoreArtworkInfo : NSObject <NSCopying>
+@interface ICStoreArtworkInfo : NSObject <NSCopying, NSSecureCoding>
 {
     ICStoreArtworkSizeInfo *_sizeInfo;
     NSURL *_artworkURL;
@@ -20,21 +21,26 @@
     NSDictionary *_responseDictionary;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property(readonly, copy, nonatomic) NSArray *responseArray; // @synthesize responseArray=_responseArray;
 @property(copy, nonatomic) NSArray *sortedSupportedSizesArray; // @synthesize sortedSupportedSizesArray=_sortedSupportedSizesArray;
 @property(copy, nonatomic) NSArray *sortedResponseArray; // @synthesize sortedResponseArray=_sortedResponseArray;
-- (void).cxx_destruct;
 - (_Bool)_hasOriginalSize;
 - (void)_sortSupportedSizesArray;
 - (void)_sortResponseArray;
+@property(readonly, copy, nonatomic) NSString *stringRepresentation;
 @property(readonly, nonatomic) struct CGSize originalSize;
 - (struct CGColor *)copyColorWithKind:(id)arg1;
 - (id)artworkURLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3 preferP3ColorSpace:(_Bool)arg4;
 - (id)artworkURLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3;
 @property(readonly, copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property(readonly, nonatomic) ICStoreArtworkSizeInfo *sizeInfo; // @synthesize sizeInfo=_sizeInfo;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithArtworkResponseValue:(id)arg1;
 - (id)initWithArtworkURL:(id)arg1;
 - (id)initWithArtworkResponseDictionary:(id)arg1;

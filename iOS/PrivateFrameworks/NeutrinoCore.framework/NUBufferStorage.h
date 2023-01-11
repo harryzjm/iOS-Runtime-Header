@@ -17,6 +17,7 @@
     long long _rowBytes;
     void *_bytes;
     _Bool _purgeable;
+    _Atomic int _useCount;
 }
 
 @property(readonly, nonatomic) long long rowBytes; // @synthesize rowBytes=_rowBytes;
@@ -35,6 +36,11 @@
 - (int)_purgeLevelToOSValue:(long long)arg1;
 - (id)_purgeStateDescription;
 - (int)_fetchPurgeState:(int *)arg1;
+- (int)useCount;
+- (_Bool)decrementUseCount;
+- (void)incrementUseCount;
+- (_Bool)isInUse;
+- (_Bool)isShared;
 - (_Bool)isPurgeable;
 - (_Bool)isPurged;
 - (void)_deallocateMemory;

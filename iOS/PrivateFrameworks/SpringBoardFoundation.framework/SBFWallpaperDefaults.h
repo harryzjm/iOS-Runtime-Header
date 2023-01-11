@@ -16,10 +16,10 @@
 }
 
 + (id)defaults;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *homeScreenDefaultsStoreWrapper; // @synthesize homeScreenDefaultsStoreWrapper=_homeScreenDefaultsStoreWrapper;
 @property(readonly, nonatomic) NSMutableDictionary *lockScreenDefaultsStoreWrapper; // @synthesize lockScreenDefaultsStoreWrapper=_lockScreenDefaultsStoreWrapper;
 @property(readonly, nonatomic) SBWallpaperDefaults *defaultsStore; // @synthesize defaultsStore=_defaultsStore;
-- (void).cxx_destruct;
 - (_Bool)proceduralUserSetForVariant:(long long)arg1;
 - (void)setProceduralUserSet:(_Bool)arg1 forLocations:(long long)arg2;
 - (id)proceduralOptionsForVariant:(long long)arg1;
@@ -63,6 +63,9 @@
 - (double)parallaxFactorForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (void)setParallaxFactor:(double)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
 - (void)resetParallaxFactorDefaults;
+- (id)wallpaperKitDataForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (void)setWallpaperKitData:(id)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)resetWallpaperKitDataDefaults;
 - (id)_keyForWallpaperMode:(long long)arg1;
 - (void)_setDefaultsWithDictionary:(id)arg1 variant:(long long)arg2 wallpaperMode:(long long)arg3;
 - (id)_defaultsWrapperForVariant:(long long)arg1 wallpaperMode:(long long)arg2;

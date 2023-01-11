@@ -21,6 +21,7 @@
 }
 
 + (void)sanityCheckMapItemProviders:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long placeInferencesLimit; // @synthesize placeInferencesLimit=_placeInferencesLimit;
 @property(readonly, nonatomic) NSDictionary *mapItemProviders; // @synthesize mapItemProviders=_mapItemProviders;
 @property(readonly, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
@@ -28,12 +29,14 @@
 @property(readonly, nonatomic) RTInferredMapItemFuser *inferredMapItemFuser; // @synthesize inferredMapItemFuser=_inferredMapItemFuser;
 @property(readonly, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (void)sendPlaceInferenceMetrics:(id)arg1 inferredMapItems:(id)arg2 fusedMapItems:(id)arg3 fallbackInferredMapItems:(id)arg4 finalPlaceInferences:(id)arg5;
+- (id)_loiIdentifierForInferredMapItem:(id)arg1;
 - (id)_placeInferenceFromInferredMapItem:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
-- (unsigned long long)_inferUserSpecificPlaceTypeForInferredMapItem:(id)arg1 error:(id *)arg2;
-- (unsigned long long)_learnedPlaceTypeForInferredMapItem:(id)arg1 error:(id *)arg2;
+- (_Bool)_inferUserSpecificPlaceTypeForInferredMapItem:(id)arg1 userSpecificPlaceType:(unsigned long long *)arg2 userSpecificPlaceTypeSource:(unsigned long long *)arg3 error:(id *)arg4;
+- (_Bool)_learnedPlaceTypeForInferredMapItem:(id)arg1 placeType:(unsigned long long *)arg2 placeTypeSource:(unsigned long long *)arg3 error:(id *)arg4;
+- (unsigned long long)_userSpecificPlaceTypeSourceFromLearnedPlaceTypeSource:(unsigned long long)arg1;
 - (unsigned long long)_userSpecificPlaceTypeFromLearnedPlaceType:(unsigned long long)arg1;
+- (unsigned long long)_learnedPlaceTypeSourceFromUserSpecificPlaceTypeSource:(unsigned long long)arg1;
 - (unsigned long long)_learnedPlaceTypeFromUserSpecificPlaceType:(unsigned long long)arg1;
 - (void)_addMapItemProviderFromArray:(id)arg1 toSet:(id)arg2;
 - (id)_selectMapItemProvidersForOptions:(id)arg1 targetProvider:(unsigned long long)arg2;

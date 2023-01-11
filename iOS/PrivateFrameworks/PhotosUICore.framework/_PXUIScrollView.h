@@ -6,19 +6,25 @@
 
 #import <UIKit/UIScrollView.h>
 
-@protocol PXUIScrollViewDelegate;
+@protocol PXUIScrollViewDelegate, _PXUIScrollViewFocusItemProvider;
 
 @interface _PXUIScrollView : UIScrollView
 {
     _Bool _deferContentOffsetUpdates;
+    _Bool _respectsContentZOrder;
     id <PXUIScrollViewDelegate> _px_delegate;
+    id <_PXUIScrollViewFocusItemProvider> _focusItemProvider;
     struct CGPoint _pagingOriginOffset;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool respectsContentZOrder; // @synthesize respectsContentZOrder=_respectsContentZOrder;
 @property(nonatomic) _Bool deferContentOffsetUpdates; // @synthesize deferContentOffsetUpdates=_deferContentOffsetUpdates;
 @property(nonatomic) struct CGPoint pagingOriginOffset; // @synthesize pagingOriginOffset=_pagingOriginOffset;
+@property(nonatomic) __weak id <_PXUIScrollViewFocusItemProvider> focusItemProvider; // @synthesize focusItemProvider=_focusItemProvider;
 @property(nonatomic, setter=px_setDelegate:) __weak id <PXUIScrollViewDelegate> px_delegate; // @synthesize px_delegate=_px_delegate;
-- (void).cxx_destruct;
+- (id)focusItemsInRect:(struct CGRect)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)_updatePagingOrigin;
 - (void)scrollRectToVisible:(struct CGRect)arg1 animated:(_Bool)arg2;

@@ -23,6 +23,8 @@
     _Bool _usesSmallText;
     _Bool _isProposedTime;
     _Bool _isLoadingAsync;
+    _Bool _hasPrecedingDuration;
+    _Bool _hasTrailingDuration;
     EKEvent *_event;
     unsigned long long _eventIndex;
     EKDayOccurrenceView *_view;
@@ -35,7 +37,10 @@
 }
 
 + (double)barToBarHorizontalDistanceIncludingBarWidth;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) EKDayOccurrenceState *currentState; // @synthesize currentState=_currentState;
+@property(nonatomic) _Bool hasTrailingDuration; // @synthesize hasTrailingDuration=_hasTrailingDuration;
+@property(nonatomic) _Bool hasPrecedingDuration; // @synthesize hasPrecedingDuration=_hasPrecedingDuration;
 @property(nonatomic) double bottomPinningProximity; // @synthesize bottomPinningProximity=_bottomPinningProximity;
 @property(nonatomic) double topPinningProximity; // @synthesize topPinningProximity=_topPinningProximity;
 @property(nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
@@ -47,9 +52,8 @@
 @property(nonatomic) _Bool isProposedTime; // @synthesize isProposedTime=_isProposedTime;
 @property(nonatomic) _Bool usesSmallText; // @synthesize usesSmallText=_usesSmallText;
 @property(retain, nonatomic) EKEvent *event; // @synthesize event=_event;
-- (void).cxx_destruct;
 - (void)_updateWithPayload:(id)arg1;
-- (void)_requestPayload:(_Bool)arg1;
+- (void)_requestPayloadAnimated:(_Bool)arg1 drawSynchronously:(_Bool)arg2;
 @property(nonatomic) double travelTimeHeight;
 @property(nonatomic) double visibleHeight;
 @property(readonly) _Bool visibleHeightLocked;

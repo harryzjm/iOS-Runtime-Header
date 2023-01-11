@@ -13,11 +13,18 @@
     ASDServiceBroker *_serviceBroker;
     int _newsCacheUpdatedNotificationToken;
     int _appStoreCacheUpdatedNotificationToken;
+    int _appStoreArcadeSubscriptionBagUpdatedNotificationToken;
+    int _musicCacheUpdatedNotificationToken;
+    int _tvCacheUpdatedNotificationToken;
+    int _iCloudCacheUpdatedNotificationToken;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)getAppStoreConsumedIntroOfferFamilyIdsWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)getCachedSubscriptionEntitlementsForSegment:(unsigned long long)arg1 withResultHandler:(CDUnknownBlockType)arg2;
+- (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(_Bool)arg2 requestingBundleId:(id)arg3 withCacheInfoResultHandler:(CDUnknownBlockType)arg4;
+- (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(_Bool)arg2 withCacheInfoResultHandler:(CDUnknownBlockType)arg3;
 - (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(_Bool)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 - (void)getSubscriptionEntitlementsIgnoreCaches:(_Bool)arg1 forActiveAccountWithResultAndExpiryHandler:(CDUnknownBlockType)arg2;
 - (void)getSubscriptionEntitlementsIgnoreCaches:(_Bool)arg1 forActiveAccountWithResultHandler:(CDUnknownBlockType)arg2;

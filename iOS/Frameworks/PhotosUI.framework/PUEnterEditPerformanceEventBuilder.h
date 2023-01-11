@@ -10,6 +10,8 @@
 
 @interface PUEnterEditPerformanceEventBuilder : NSObject
 {
+    _Bool _firstSinceBoot;
+    _Bool _firstSinceLaunch;
     _Bool _editingWithRaw;
     id <PUEditableAsset> _asset;
     double _enterEditDuration;
@@ -19,14 +21,16 @@
     double _autoCalcDuration;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double autoCalcDuration; // @synthesize autoCalcDuration=_autoCalcDuration;
 @property(nonatomic) double resourceLoadingDuration; // @synthesize resourceLoadingDuration=_resourceLoadingDuration;
 @property(nonatomic) double resourceDownloadDuration; // @synthesize resourceDownloadDuration=_resourceDownloadDuration;
 @property(nonatomic) double resourceCheckingDuration; // @synthesize resourceCheckingDuration=_resourceCheckingDuration;
 @property(nonatomic) double enterEditDuration; // @synthesize enterEditDuration=_enterEditDuration;
 @property(nonatomic, getter=isEditingWithRaw) _Bool editingWithRaw; // @synthesize editingWithRaw=_editingWithRaw;
+@property(nonatomic, getter=isFirstSinceLaunch) _Bool firstSinceLaunch; // @synthesize firstSinceLaunch=_firstSinceLaunch;
+@property(nonatomic, getter=isFirstSinceBoot) _Bool firstSinceBoot; // @synthesize firstSinceBoot=_firstSinceBoot;
 @property(retain, nonatomic) id <PUEditableAsset> asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
 - (id)buildEvent;
 
 @end

@@ -24,11 +24,12 @@ __attribute__((visibility("hidden")))
 + (_Bool)getViewController:(CDUnknownBlockType)arg1;
 + (id)contextForIdentifier:(id)arg1;
 + (id)contactViewExtension;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(retain, nonatomic) id <NSCopying> currentRequestIdentifier; // @synthesize currentRequestIdentifier=_currentRequestIdentifier;
 @property(nonatomic) __weak id <CNContactViewControllerPPTDelegate> pptDelegate; // @synthesize pptDelegate=_pptDelegate;
 @property(nonatomic) __weak id <CNContactViewHostProtocol> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)presentCancelConfirmationAlert;
 - (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)didExecuteClearRecentsDataAction;
 - (void)viewDidAppear;
@@ -41,8 +42,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)performConfirmedCancel;
 - (void)toggleEditing;
 - (void)editCancel;
+- (void)didChangeToShowTitle:(_Bool)arg1;
 - (void)didChangeToEditMode:(_Bool)arg1;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
 - (id)protocolContext;

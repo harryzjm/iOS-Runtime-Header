@@ -30,16 +30,16 @@
     MKMapItem *_mapItem;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldShowBorders; // @synthesize shouldShowBorders=_shouldShowBorders;
 @property(readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(nonatomic) _Bool shouldResolveMapItem; // @synthesize shouldResolveMapItem=_shouldResolveMapItem;
-- (void).cxx_destruct;
+- (_Bool)shouldHideMuninForParsec;
 - (void)dealloc;
 - (void)triggerAnimation;
 - (void)_resetMuninContainerViewState;
 - (void)_resetState;
 - (void)cancel;
-- (void)_cropImage;
 - (void)_callCompletionHandler;
 - (void)_renderMapItem;
 - (void)_takeSnapshotCompleted;
@@ -52,12 +52,15 @@
 - (void)_handleTapOnMuninView:(id)arg1;
 - (void)_handleTapOnSnapshot:(id)arg1;
 - (id)_annotationView;
-- (id)_deriveSnapshotOptions:(_Bool)arg1 isReload:(_Bool)arg2;
+- (id)_customAnnotation;
+- (id)_deriveSnapshotOptions:(_Bool)arg1;
 - (void)layoutSubviews;
 - (void)_takeSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1 isReload:(_Bool)arg2;
 - (void)_fetchMuninViewforMapItem:(id)arg1;
 - (void)_getParentItem;
 - (CDStruct_c3b9c2ee)_clampCoordinateSpan:(CDStruct_c3b9c2ee)arg1;
+- (void)_callCompletionHandlerWithInvalidBoundsError;
+- (_Bool)_areBoundsValid;
 - (void)loadMapItem:(id)arg1 coordinateSpan:(CDStruct_c3b9c2ee)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateBorders;
 - (void)infoCardThemeChanged;

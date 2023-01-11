@@ -11,6 +11,7 @@
 
 @protocol FBSceneHost <NSObject>
 @property(readonly, copy, nonatomic) FBSSceneSpecification *specification;
+@property(readonly, copy, nonatomic) NSString *group;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (void)clientWillInvalidate:(id <FBSceneClient>)arg1;
 - (void)client:(id <FBSceneClient>)arg1 didReceiveActions:(NSSet *)arg2;

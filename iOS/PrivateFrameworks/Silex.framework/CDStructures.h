@@ -10,6 +10,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGAffineTransform {
+    double a;
+    double b;
+    double c;
+    double d;
+    double tx;
+    double ty;
+};
+
 struct CGPoint {
     double x;
     double y;
@@ -64,7 +73,8 @@ struct os_unfair_lock_s {
 typedef struct {
     _Bool size;
     _Bool position;
-} CDStruct_1cc9d0d0;
+    _Bool state;
+} CDStruct_12a35e6e;
 
 typedef struct {
     unsigned long long rowIndex;

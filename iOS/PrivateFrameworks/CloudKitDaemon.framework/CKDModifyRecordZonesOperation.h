@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+@class CKDPCSKeySyncCoreAnalytics, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifyRecordZonesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyRecordZonesOperation
@@ -22,9 +23,12 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_retryableErrorsByZoneID;
     long long _maxZoneSaveAttempts;
     NSMutableArray *_zonesWaitingOnKeyRegistrySync;
+    CKDPCSKeySyncCoreAnalytics *_keySyncAnalytics;
 }
 
 + (long long)isPredominatelyDownload;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKDPCSKeySyncCoreAnalytics *keySyncAnalytics; // @synthesize keySyncAnalytics=_keySyncAnalytics;
 @property(retain, nonatomic) NSMutableArray *zonesWaitingOnKeyRegistrySync; // @synthesize zonesWaitingOnKeyRegistrySync=_zonesWaitingOnKeyRegistrySync;
 @property(nonatomic) _Bool didSynchronizeUserKeyRegistry; // @synthesize didSynchronizeUserKeyRegistry=_didSynchronizeUserKeyRegistry;
 @property(nonatomic) _Bool dontFetchFromServer; // @synthesize dontFetchFromServer=_dontFetchFromServer;
@@ -38,22 +42,28 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *recordZonesToSave; // @synthesize recordZonesToSave=_recordZonesToSave;
 @property(copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_checkAndPrepareZones;
 - (void)_fetchPCSDataForZonesFromServer:(_Bool)arg1;
 - (void)_fetchPCSDataForZone:(id)arg1 fromServer:(_Bool)arg2;
 - (void)_createNewPCSForZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (int)operationType;
 - (_Bool)_saveZonesToServer;
 - (void)_handleRecordZoneDeleted:(id)arg1 responseCode:(id)arg2;
 - (void)_handleRecordZoneSaved:(id)arg1 responseCode:(id)arg2 serverCapabilities:(unsigned long long)arg3;
 - (void)_sendErrorForFailedZones;
+- (void)_sendCoreAnalyticsEventForKeySync;
 - (void)_sychronizeUserKeyRegistryIfNeeded;
+- (id)relevantZoneIDs;
 - (id)nameForState:(unsigned long long)arg1;
 - (id)activityCreate;
 - (_Bool)makeStateTransition;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKModifyRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

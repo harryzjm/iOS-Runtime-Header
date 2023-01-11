@@ -21,7 +21,6 @@
         unsigned int recordTypeForRedialing:1;
         unsigned int ttyType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _audioRoute;
     int _destinationType;
     int _preferredCallProvider;
@@ -35,7 +34,7 @@
 + (_Bool)supportsSecureCoding;
 + (Class)targetContactsType;
 + (Class)contactType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property(copy, nonatomic) NSArray *targetContacts; // @synthesize targetContacts=_targetContacts;
 @property(nonatomic) int recordTypeForRedialing; // @synthesize recordTypeForRedialing=_recordTypeForRedialing;
@@ -44,7 +43,6 @@
 @property(nonatomic) int destinationType; // @synthesize destinationType=_destinationType;
 @property(copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property(nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

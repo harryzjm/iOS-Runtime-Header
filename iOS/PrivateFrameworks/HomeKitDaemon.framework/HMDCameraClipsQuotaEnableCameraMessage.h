@@ -6,27 +6,32 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HomeKitDaemon/CKCodeOperationMessageMutation-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface HMDCameraClipsQuotaEnableCameraMessage : PBCodable <NSCopying>
+@interface HMDCameraClipsQuotaEnableCameraMessage : PBCodable <CKCodeOperationMessageMutation, NSCopying>
 {
     NSString *_zoneName;
 }
 
-@property(retain, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 - (void)mergeFrom:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)description;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool hasZoneName;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

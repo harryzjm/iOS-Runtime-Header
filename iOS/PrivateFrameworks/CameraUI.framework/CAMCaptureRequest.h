@@ -9,7 +9,7 @@
 #import <CameraUI/CAMDistinctPersistenceCopying-Protocol.h>
 #import <CameraUI/NSCopying-Protocol.h>
 
-@class CLHeading, CLLocation, NSString, NSURL;
+@class CAMAnalyticsCaptureEvent, CLHeading, CLLocation, NSString, NSURL;
 
 @interface CAMCaptureRequest : NSObject <NSCopying, CAMDistinctPersistenceCopying>
 {
@@ -32,11 +32,14 @@
     long long _captureDevice;
     long long _captureMode;
     long long _captureOrientation;
+    _Bool _captureMirrored;
     long long _pressType;
+    CAMAnalyticsCaptureEvent *_analyticsEvent;
     long long _type;
 }
 
 + (_Bool)shouldPersistToIncomingDirectoryWithPersistenceOptions:(long long)arg1 temporaryPersistenceOptions:(long long)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldDelayRemotePersistence; // @synthesize shouldDelayRemotePersistence=_shouldDelayRemotePersistence;
 @property(readonly, nonatomic) _Bool shouldPersistDiagnosticsToSidecar; // @synthesize shouldPersistDiagnosticsToSidecar=_shouldPersistDiagnosticsToSidecar;
 @property(readonly, nonatomic) _Bool shouldExtractDiagnosticsFromMetadata; // @synthesize shouldExtractDiagnosticsFromMetadata=_shouldExtractDiagnosticsFromMetadata;
@@ -52,13 +55,14 @@
 @property(readonly, nonatomic) long long origin; // @synthesize origin=_origin;
 @property(readonly, nonatomic) long long photoEncodingBehavior; // @synthesize photoEncodingBehavior=_photoEncodingBehavior;
 @property(readonly, nonatomic) long long videoEncodingBehavior; // @synthesize videoEncodingBehavior=_videoEncodingBehavior;
+@property(readonly, nonatomic) CAMAnalyticsCaptureEvent *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
 @property(readonly, nonatomic) unsigned short sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, nonatomic) long long pressType; // @synthesize pressType=_pressType;
 @property(readonly, nonatomic) long long captureMode; // @synthesize captureMode=_captureMode;
 @property(readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
+@property(readonly, nonatomic, getter=isCaptureMirrored) _Bool captureMirrored; // @synthesize captureMirrored=_captureMirrored;
 @property(readonly, nonatomic) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldProtectPersistenceForVideo;
 @property(readonly, nonatomic) _Bool shouldProtectPersistence;
 @property(readonly, nonatomic) _Bool shouldPersistToIncomingDirectory;

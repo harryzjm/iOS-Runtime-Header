@@ -4,20 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDate, NSString;
+@class CNContainer, NSData, NSDate, NSString;
 
 @interface CNMutableContainer
 {
 }
 
-- (id)freezeWithSelfAsSnapshot;
-- (id)freeze;
-- (void)adoptValuesFromAndSetSnapshot:(id)arg1;
-- (void)setSnapshot:(id)arg1;
+@property(copy, nonatomic) CNContainer *snapshot; // @dynamic snapshot;
 @property(copy, nonatomic) NSDate *lastSyncDate;
 - (void)setGuardianRestricted:(_Bool)arg1 shouldPushChangeToServer:(_Bool)arg2;
 @property(nonatomic, getter=isGuardianStateDirty) _Bool guardianStateDirty;
-- (void)setParentallyManaged:(_Bool)arg1;
 @property(nonatomic, getter=isGuardianRestricted) _Bool guardianRestricted;
 @property(nonatomic) unsigned long long restrictions; // @dynamic restrictions;
 @property(copy, nonatomic) NSString *meIdentifier; // @dynamic meIdentifier;

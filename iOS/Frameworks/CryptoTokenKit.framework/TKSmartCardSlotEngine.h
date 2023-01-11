@@ -10,7 +10,7 @@
 #import <CryptoTokenKit/TKProtocolSmartCardSlot-Protocol.h>
 
 @class NSHashTable, NSMapTable, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint, TKPowerMonitor, TKSmartCardATR, TKSmartCardSessionEngine;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_log, TKSmartCardSlotDelegate;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_log, TKSmartCardSlotEngineDelegate;
 
 @interface TKSmartCardSlotEngine : NSObject <TKProtocolSmartCardSlot, NSXPCListenerDelegate>
 {
@@ -25,35 +25,34 @@
     NSXPCListener *_listener;
     NSHashTable *_clients;
     NSMutableArray *_sessionRequests;
-    NSMutableArray *_powerRequests;
     NSMapTable *_reservations;
     TKPowerMonitor *_powerMonitor;
     NSObject<OS_os_log> *_log;
     _Bool _securePINVerificationSupported;
     _Bool _securePINChangeSupported;
-    _Bool _synchronousSetup;
     _Bool _apduSentSinceLastReset;
     long long _maxInputLength;
     long long _maxOutputLength;
     NSXPCListenerEndpoint *_serverEndpoint;
-    id <TKSmartCardSlotDelegate> _delegate;
+    id <TKSmartCardSlotEngineDelegate> _delegate;
     NSString *_name;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_powerRequestsQueue;
     TKSmartCardSessionEngine *_session;
 }
 
+- (void).cxx_destruct;
 @property __weak TKSmartCardSessionEngine *session; // @synthesize session=_session;
 @property _Bool apduSentSinceLastReset; // @synthesize apduSentSinceLastReset=_apduSentSinceLastReset;
+@property(retain) NSObject<OS_dispatch_queue> *powerRequestsQueue; // @synthesize powerRequestsQueue=_powerRequestsQueue;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) NSString *name; // @synthesize name=_name;
-@property __weak id <TKSmartCardSlotDelegate> delegate; // @synthesize delegate=_delegate;
-@property _Bool synchronousSetup; // @synthesize synchronousSetup=_synchronousSetup;
+@property __weak id <TKSmartCardSlotEngineDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain) NSXPCListenerEndpoint *serverEndpoint; // @synthesize serverEndpoint=_serverEndpoint;
 @property _Bool securePINChangeSupported; // @synthesize securePINChangeSupported=_securePINChangeSupported;
 @property _Bool securePINVerificationSupported; // @synthesize securePINVerificationSupported=_securePINVerificationSupported;
 @property long long maxOutputLength; // @synthesize maxOutputLength=_maxOutputLength;
 @property long long maxInputLength; // @synthesize maxInputLength=_maxInputLength;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (void)terminate;
 - (void)runUserInteraction:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -64,23 +63,21 @@
 - (id)_getReservationId;
 - (id)_findReservation:(id)arg1 connection:(id)arg2;
 - (void)sessionWithParameters:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)leaveSession:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)connectCardSessionWithParameters:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)leaveSession:(id)arg1;
+- (_Bool)connectCardSessionWithParameters:(id)arg1;
 - (void)setupSlotWithReply:(CDUnknownBlockType)arg1;
 - (void)cardPresent:(_Bool)arg1;
 - (void)scheduleIdlePowerDown;
-- (void)powerDownWithEject:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)setProtocol:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)resetWithReply:(CDUnknownBlockType)arg1;
-- (void)powerRequestFinished;
-- (void)schedulePowerRequest:(CDUnknownBlockType)arg1;
+- (void)powerDownWithEject:(_Bool)arg1;
+- (_Bool)setProtocol:(unsigned long long)arg1;
+- (_Bool)reset;
 - (void)changeStateTo:(long long)arg1 powerState:(long long)arg2;
 - (id)dictionaryForState:(long long)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)_setupWithName:(id)arg1 delegate:(id)arg2 firstPass:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (_Bool)_setupWithName:(id)arg1 delegate:(id)arg2;
 - (id)slotRegistryWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)setupWithName:(id)arg1 delegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (_Bool)setupWithName:(id)arg1 delegate:(id)arg2;
 - (void)logWithBytes:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
 

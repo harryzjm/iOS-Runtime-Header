@@ -13,9 +13,11 @@
 }
 
 - (long long)UIActionType;
+@property(readonly, nonatomic) struct CGRect focusedFrame;
 @property(readonly, nonatomic) _Bool shouldPerformHapticFeedback;
 @property(readonly, nonatomic) _UIFocusInputDeviceInfo *inputDeviceInfo;
 @property(readonly, nonatomic) _UIFocusMovementInfo *focusMovementInfo;
+- (id)initWithFocusMovementInfo:(id)arg1 inputDeviceInfo:(id)arg2 shouldPerformHapticFeedback:(_Bool)arg3 focusedFrameInSceneCoordinateSpace:(struct CGRect)arg4;
 - (id)initWithFocusMovementInfo:(id)arg1 inputDeviceInfo:(id)arg2 shouldPerformHapticFeedback:(_Bool)arg3;
 - (id)initWithFocusMovementInfo:(id)arg1;
 

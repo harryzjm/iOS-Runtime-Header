@@ -13,20 +13,19 @@
 @interface GEOMatchedToken : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _geoIds;
     NSString *_matchedToken;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _geoType;
     struct {
         unsigned int has_geoType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_geoIds:1;
         unsigned int read_matchedToken:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_geoIds:1;
-        unsigned int wrote_matchedToken:1;
-        unsigned int wrote_geoType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,21 +41,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setGeoIds:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)geoIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsGeoId:(unsigned long long)arg1;
 - (void)addGeoId:(unsigned long long)arg1;
 - (void)clearGeoIds;
 @property(readonly, nonatomic) unsigned long long *geoIds;
 @property(readonly, nonatomic) unsigned long long geoIdsCount;
-- (void)_readGeoIds;
 @property(nonatomic) _Bool hasGeoType;
 @property(nonatomic) int geoType;
 @property(retain, nonatomic) NSString *matchedToken;
-- (void)_readMatchedToken;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -18,9 +18,6 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType block;
 }
 
-+ (void)forgetObserver:(id)arg1;
-+ (_Bool)isAnObserver:(id)arg1;
-+ (id)observerWithCenter:(id)arg1 queue:(id)arg2 name:(id)arg3 object:(id)arg4 block:(CDUnknownBlockType)arg5;
 - (void)_doit:(id)arg1;
 - (id)object;
 - (id)name;

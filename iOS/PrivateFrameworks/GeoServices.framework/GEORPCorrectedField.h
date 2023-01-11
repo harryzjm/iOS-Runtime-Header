@@ -13,10 +13,12 @@
 @interface GEORPCorrectedField : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_correctedValue;
     NSString *_fieldName;
     NSString *_originalValue;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _field;
     _Bool _isMarkedIncorrect;
     struct {
@@ -25,11 +27,7 @@
         unsigned int read_correctedValue:1;
         unsigned int read_fieldName:1;
         unsigned int read_originalValue:1;
-        unsigned int wrote_correctedValue:1;
-        unsigned int wrote_fieldName:1;
-        unsigned int wrote_originalValue:1;
-        unsigned int wrote_field:1;
-        unsigned int wrote_isMarkedIncorrect:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,23 +41,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIsMarkedIncorrect;
 @property(nonatomic) _Bool isMarkedIncorrect;
 @property(retain, nonatomic) NSString *correctedValue;
 @property(readonly, nonatomic) _Bool hasCorrectedValue;
-- (void)_readCorrectedValue;
 @property(retain, nonatomic) NSString *originalValue;
 @property(readonly, nonatomic) _Bool hasOriginalValue;
-- (void)_readOriginalValue;
 @property(retain, nonatomic) NSString *fieldName;
 @property(readonly, nonatomic) _Bool hasFieldName;
-- (void)_readFieldName;
 - (int)StringAsField:(id)arg1;
 - (id)fieldAsString:(int)arg1;
 @property(nonatomic) _Bool hasField;
 @property(nonatomic) int field;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

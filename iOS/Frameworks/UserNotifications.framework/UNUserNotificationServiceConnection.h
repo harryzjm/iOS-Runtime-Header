@@ -21,11 +21,11 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callOutQueue; // @synthesize callOutQueue=_callOutQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSMutableDictionary *observersByBundleIdentifier; // @synthesize observersByBundleIdentifier=_observersByBundleIdentifier;
-- (void).cxx_destruct;
 - (void)_queue_removeObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_addObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
@@ -34,6 +34,8 @@
 - (id)_queue_ensureConnection;
 - (void)_invalidate;
 - (void)didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)performBlockOnConnectionQueue:(CDUnknownBlockType)arg1;
+- (id)clearedInfoForBundleIdentifier:(id)arg1;
 - (id)notificationSettingsForTopicsWithBundleIdentifier:(id)arg1;
 - (void)getNotificationSettingsForTopicsWithBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)notificationTopicsForBundleIdentifier:(id)arg1;
@@ -43,13 +45,13 @@
 - (void)setBadgeNumber:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)getBadgeNumberForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)badgeNumberForBundleIdentifier:(id)arg1;
-- (void)removeAllDeliveredNotificationsForBundleIdentifier:(id)arg1;
-- (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)removeAllDeliveredNotificationsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1 forBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getDeliveredNotificationsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)deliveredNotificationsForBundleIdentifier:(id)arg1;
-- (void)removeAllPendingNotificationRequestsForBundleIdentifier:(id)arg1;
-- (void)removeSimilarNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)removePendingNotificationRequestsWithIdentifiers:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)removeAllPendingNotificationRequestsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeSimilarNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)removePendingNotificationRequestsWithIdentifiers:(id)arg1 forBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getPendingNotificationRequestsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)pendingNotificationRequestsForBundleIdentifier:(id)arg1;
 - (void)setNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2;
@@ -60,6 +62,7 @@
 - (void)setNotificationCategories:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)getNotificationSettingsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)notificationSettingsForBundleIdentifier:(id)arg1;
+- (void)requestRemoveAuthorizationForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 forBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setObservingUserNotifications:(_Bool)arg1 forBundleIdentifier:(id)arg2;
 - (void)removeObserver:(id)arg1 forBundleIdentifier:(id)arg2;

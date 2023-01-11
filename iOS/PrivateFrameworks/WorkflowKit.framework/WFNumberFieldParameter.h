@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface WFNumberFieldParameter
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
+
+@class NSString;
+
+@interface WFNumberFieldParameter <WFParameterDialogProvider>
 {
     _Bool _allowsDecimalNumbers;
     _Bool _allowsNegativeNumbers;
@@ -16,10 +20,18 @@
 @property(readonly, nonatomic) _Bool allowsNegativeNumbers; // @synthesize allowsNegativeNumbers=_allowsNegativeNumbers;
 @property(readonly, nonatomic) _Bool allowsDecimalNumbers; // @synthesize allowsDecimalNumbers=_allowsDecimalNumbers;
 @property(readonly, nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
+- (id)parameterStateFromDialogResponse:(id)arg1;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)shouldAlignLabels;
 - (id)defaultSupportedVariableTypes;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

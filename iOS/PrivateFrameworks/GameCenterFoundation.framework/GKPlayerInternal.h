@@ -19,14 +19,21 @@
     NSNumber *_friendBiDirectional;
     NSNumber *_friendPlayedWith;
     NSNumber *_friendPlayedNearby;
+    NSNumber *_acceptedGameInviteFromThisFriend;
+    NSNumber *_initiatedGameInviteToThisFriend;
+    NSNumber *_automatchedTogether;
     NSString *_lastPersonalizationVersionDisplayed;
     unsigned long long _lastPrivacyNoticeVersionDisplayed;
+    NSString *_lastProfilePrivacyVersionDisplayed;
     unsigned short _numberOfFriends;
     unsigned short _numberOfGames;
     unsigned short _numberOfFriendsInCommon;
     unsigned short _numberOfGamesInCommon;
     unsigned int _numberOfAchievements;
     unsigned int _numberOfAchievementPoints;
+    int _achievementsVisibility;
+    int _friendsVisibility;
+    int _gamesPlayedVisibility;
     union {
         struct {
             unsigned int _unused:8;
@@ -35,6 +42,7 @@
             unsigned int _photoPending:1;
             unsigned int _findable:1;
             unsigned int _defaultNickname:1;
+            unsigned int _defaultPrivacyVisibility:1;
             unsigned int _reserved:18;
         } ;
         unsigned int _value;
@@ -48,8 +56,15 @@
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) NSArray *monogramComponents; // @synthesize monogramComponents=_monogramComponents;
+@property(nonatomic) int friendsVisibility; // @synthesize friendsVisibility=_friendsVisibility;
+@property(nonatomic) int gamesPlayedVisibility; // @synthesize gamesPlayedVisibility=_gamesPlayedVisibility;
+@property(nonatomic) int achievementsVisibility; // @synthesize achievementsVisibility=_achievementsVisibility;
+@property(retain, nonatomic) NSString *lastProfilePrivacyVersionDisplayed; // @synthesize lastProfilePrivacyVersionDisplayed=_lastProfilePrivacyVersionDisplayed;
 @property(nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
 @property(retain, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
+@property(retain, nonatomic) NSNumber *automatchedTogether; // @synthesize automatchedTogether=_automatchedTogether;
+@property(retain, nonatomic) NSNumber *initiatedGameInviteToThisFriend; // @synthesize initiatedGameInviteToThisFriend=_initiatedGameInviteToThisFriend;
+@property(retain, nonatomic) NSNumber *acceptedGameInviteFromThisFriend; // @synthesize acceptedGameInviteFromThisFriend=_acceptedGameInviteFromThisFriend;
 @property(retain, nonatomic) NSNumber *friendPlayedNearby; // @synthesize friendPlayedNearby=_friendPlayedNearby;
 @property(retain, nonatomic) NSNumber *friendPlayedWith; // @synthesize friendPlayedWith=_friendPlayedWith;
 @property(retain, nonatomic) NSNumber *friendBiDirectional; // @synthesize friendBiDirectional=_friendBiDirectional;
@@ -67,6 +82,7 @@
 @property(retain, nonatomic) NSString *teamPlayerID; // @synthesize teamPlayerID=_teamPlayerID;
 @property(retain, nonatomic) NSString *gamePlayerID; // @synthesize gamePlayerID=_gamePlayerID;
 @property(retain, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
+- (id)debugDescription;
 @property(retain, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
 @property(nonatomic) unsigned short numberOfChallenges; // @dynamic numberOfChallenges;
 @property(nonatomic) unsigned short numberOfTurns; // @dynamic numberOfTurns;
@@ -76,6 +92,7 @@
 @property(nonatomic, getter=isPhotoPending) _Bool photoPending; // @dynamic photoPending;
 @property(nonatomic, getter=isFindable) _Bool findable; // @dynamic findable;
 @property(nonatomic, getter=isUnderage) _Bool underage; // @dynamic underage;
+@property(nonatomic, getter=isDefaultPrivacyVisibility) _Bool defaultPrivacyVisibility; // @dynamic defaultPrivacyVisibility;
 @property(nonatomic, getter=isDefaultNickname) _Bool defaultNickname; // @dynamic defaultNickname;
 @property(nonatomic, getter=isPurpleBuddyAccount) _Bool purpleBuddyAccount; // @dynamic purpleBuddyAccount;
 @property(retain, nonatomic) NSNumber *iCloudUserID; // @dynamic iCloudUserID;

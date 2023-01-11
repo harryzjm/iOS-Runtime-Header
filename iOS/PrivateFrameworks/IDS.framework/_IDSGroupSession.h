@@ -52,12 +52,15 @@
     NSError *_joinLeaveError;
     NSNumber *_qrReason;
     NSNumber *_previousError;
+    unsigned long long _localParticipantID;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long localParticipantID; // @synthesize localParticipantID=_localParticipantID;
 @property(retain, nonatomic) id boostContext; // @synthesize boostContext=_boostContext;
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
+- (void)session:(id)arg1 didReceivePluginAllocationInfo:(id)arg2;
 - (void)session:(id)arg1 didReceiveActiveParticipants:(id)arg2 success:(_Bool)arg3;
 - (void)session:(id)arg1 participantDidLeaveGroupWithInfo:(id)arg2;
 - (void)session:(id)arg1 participantDidJoinGroupWithInfo:(id)arg2;

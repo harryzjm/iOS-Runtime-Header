@@ -9,12 +9,12 @@
 @interface PGMeaningfulEventMatchingCriteria
 {
     _Bool _interestingForMeaningInference;
-    PGGraphMomentNode *_moment;
+    PGGraphMomentNode *_momentNode;
 }
 
-@property(nonatomic) _Bool interestingForMeaningInference; // @synthesize interestingForMeaningInference=_interestingForMeaningInference;
-@property(readonly, nonatomic) PGGraphMomentNode *moment; // @synthesize moment=_moment;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool interestingForMeaningInference; // @synthesize interestingForMeaningInference=_interestingForMeaningInference;
+@property(readonly, nonatomic) PGGraphMomentNode *momentNode; // @synthesize momentNode=_momentNode;
 - (id)debugDescription;
 - (double)_calculateMatchingScoreForPartOfDayWithMatchingTrait:(id)arg1 requiredTrait:(id)arg2 requiresStrictMatching:(_Bool)arg3;
 - (void)_calculateMatchingScoreForLocationsWithMatchingTrait:(id)arg1 requiredTrait:(id)arg2 result:(CDUnknownBlockType)arg3;

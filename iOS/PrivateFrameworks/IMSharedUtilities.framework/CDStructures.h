@@ -44,14 +44,6 @@ struct IMRequirementFailed_t {
     unsigned char _field4;
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
-};
-
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
@@ -60,4 +52,10 @@ struct _NSRange {
 struct _TidyDoc {
     int _field1;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int version:1;
+} CDStruct_f20694ce;
 

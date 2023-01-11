@@ -12,7 +12,7 @@
 {
     TPSCallForwardingController *_callForwardingController;
     PSSpecifier *_conditionalServiceSwitchSpecifier;
-    PSSpecifier *_masterSwitchSpecifier;
+    PSSpecifier *_mainSwitchSpecifier;
 }
 
 - (void).cxx_destruct;
@@ -30,12 +30,12 @@
 - (id)conditionalServiceUnansweredPhoneNumber:(id)arg1;
 - (void)setConditionalServiceBusyPhoneNumber:(id)arg1 specifier:(id)arg2;
 - (id)conditionalServiceBusyPhoneNumber:(id)arg1;
-- (void)setMasterSwitchOn:(id)arg1 specifier:(id)arg2;
-- (id)masterSwitchOn:(id)arg1;
+- (void)setMainSwitchOn:(id)arg1 specifier:(id)arg2;
+- (id)mainSwitchOn:(id)arg1;
 - (id)unconditionalServiceTypeSpecifiers;
 - (id)conditionalServiceTypeSpecifiers;
 @property(readonly, nonatomic) PSSpecifier *conditionalServiceSwitchSpecifier; // @synthesize conditionalServiceSwitchSpecifier=_conditionalServiceSwitchSpecifier;
-@property(readonly, nonatomic) PSSpecifier *masterSwitchSpecifier; // @synthesize masterSwitchSpecifier=_masterSwitchSpecifier;
+@property(readonly, nonatomic) PSSpecifier *mainSwitchSpecifier; // @synthesize mainSwitchSpecifier=_mainSwitchSpecifier;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)specifiers;
 @property(readonly, nonatomic) TPSCallForwardingController *callForwardingController; // @synthesize callForwardingController=_callForwardingController;

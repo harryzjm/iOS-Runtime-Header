@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/UIDynamicItem-Protocol.h>
 
-@class NSIndexPath, NSString, UIBezierPath;
+@class NSIndexPath, NSMutableDictionary, NSString, UIBezierPath;
 
 @interface UICollectionViewLayoutAttributes : NSObject <NSCopying, UIDynamicItem>
 {
@@ -22,30 +22,37 @@
     double _alpha;
     long long _zPosition;
     struct CATransform3D _transform;
-    NSString *_isCloneString;
+    struct CGRect _maskViewFrame;
+    NSMutableDictionary *_customAttributes;
     struct {
         unsigned int isCellKind:1;
         unsigned int isDecorationView:1;
         unsigned int isHidden:1;
         unsigned int isClone:1;
+        unsigned int masksToBounds:1;
+        unsigned int maskedCorners:4;
+        unsigned int hasDefaultLayoutMargins:1;
+        unsigned int removeMaskViewAfterAnimation:1;
     } _layoutFlags;
+    _Bool _hasMaskViewFrame;
     long long _zIndex;
-    unsigned long long _maskedCorners;
+    unsigned long long _selectionGrouping;
+    double _cornerRadius;
     struct UIEdgeInsets _defaultLayoutMargins;
 }
 
 + (id)layoutAttributesForDecorationViewOfKind:(id)arg1 withIndexPath:(id)arg2;
 + (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 withIndexPath:(id)arg2;
 + (id)layoutAttributesForCellWithIndexPath:(id)arg1;
-@property(nonatomic, getter=_defaultLayoutMargins, setter=_setDefaultLayoutMargins:) struct UIEdgeInsets defaultLayoutMargins; // @synthesize defaultLayoutMargins=_defaultLayoutMargins;
-@property(nonatomic, getter=_maskedCorners, setter=_setMaskedCorners:) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
+- (void).cxx_destruct;
+@property(nonatomic, getter=_hasMaskViewFrame) _Bool hasMaskViewFrame; // @synthesize hasMaskViewFrame=_hasMaskViewFrame;
+@property(nonatomic, getter=_cornerRadius, setter=_setCornerRadius:) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property(nonatomic) long long zIndex; // @synthesize zIndex=_zIndex;
 @property(nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property(nonatomic) struct CATransform3D transform3D; // @synthesize transform3D=_transform;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic) struct CGPoint center; // @synthesize center=_center;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *representedElementKind;
 @property(readonly, nonatomic) unsigned long long representedElementCategory;
 - (_Bool)_isSupplementaryView;
@@ -62,6 +69,16 @@
 @property(nonatomic) struct CGRect bounds;
 - (id)initialLayoutAttributesForInsertedDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_valueForCustomAttribute:(id)arg1;
+- (void)_setValue:(id)arg1 forCustomAttribute:(id)arg2;
+@property(nonatomic, getter=_selectionGrouping, setter=_setSelectionGrouping:) unsigned long long selectionGrouping; // @synthesize selectionGrouping=_selectionGrouping;
+@property(nonatomic, getter=_defaultLayoutMargins, setter=_setDefaultLayoutMargins:) struct UIEdgeInsets defaultLayoutMargins; // @synthesize defaultLayoutMargins=_defaultLayoutMargins;
+@property(readonly, nonatomic, getter=_hasDefaultLayoutMargins) _Bool hasDefaultLayoutMargins;
+@property(readonly, nonatomic, getter=_removeMaskViewAfterAnimation) _Bool removeMaskViewAfterAnimation;
+@property(readonly, nonatomic, getter=_maskViewFrame) struct CGRect maskViewFrame;
+- (void)_setMaskViewFrame:(struct CGRect)arg1 removeAfterAnimation:(_Bool)arg2;
+@property(nonatomic, getter=_maskedCorners, setter=_setMaskedCorners:) unsigned long long maskedCorners;
+@property(nonatomic, getter=_masksToBounds, setter=_setMasksToBounds:) _Bool masksToBounds;
 - (id)_reuseIdentifier;
 - (void)_setReuseIdentifier:(id)arg1;
 - (id)_elementKind;

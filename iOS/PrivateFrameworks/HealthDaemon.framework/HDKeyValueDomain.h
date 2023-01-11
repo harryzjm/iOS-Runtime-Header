@@ -17,10 +17,11 @@
 }
 
 + (id)healthAppUserDefaultsDomainWithProfile:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
 @property(readonly, nonatomic) long long category; // @synthesize category=_category;
-- (void).cxx_destruct;
 - (_Bool)removeValuesForKeys:(id)arg1 error:(id *)arg2;
+- (_Bool)setValueForAllKeys:(id)arg1 error:(id *)arg2;
 - (_Bool)setValuesWithDictionary:(id)arg1 error:(id *)arg2;
 - (_Bool)setPropertyListValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (_Bool)setString:(id)arg1 forKey:(id)arg2 error:(id *)arg3;

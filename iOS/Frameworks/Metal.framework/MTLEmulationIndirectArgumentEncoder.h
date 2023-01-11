@@ -9,7 +9,6 @@
 @class MTLEmulationIndirectArgumentBufferLayout, NSString, _MTLIndirectArgumentBufferLayout;
 @protocol MTLDevice;
 
-__attribute__((visibility("hidden")))
 @interface MTLEmulationIndirectArgumentEncoder <MTLArgumentEncoderSPI>
 {
     char *_destination;
@@ -33,6 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)setComputePipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setRenderPipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setRenderPipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setFunctionPointers:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setFunctionPointer:(id)arg1 atIndex:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

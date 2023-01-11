@@ -53,6 +53,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldUseWALJournalMode; // @synthesize shouldUseWALJournalMode=_shouldUseWALJournalMode;
 @property(nonatomic) int batchTransactionType; // @synthesize batchTransactionType=_batchTransactionType;
 @property(nonatomic) _Bool crashIfUsedAfterClose; // @synthesize crashIfUsedAfterClose=_crashIfUsedAfterClose;
@@ -71,25 +72,24 @@
 @property(copy, nonatomic) CDUnknownBlockType lockedHandler; // @synthesize lockedHandler=_lockedHandler;
 @property(readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (_Bool)incrementalVacuum:(long long)arg1;
 - (long long)autovacuumableSpaceInBytes;
 - (_Bool)setUserVersion:(long long)arg1;
 - (id)userVersion;
 - (id)fetchObject:(CDUnknownBlockType)arg1 sql:(id)arg2;
-- (id)fetchObject:(CDUnknownBlockType)arg1 sql:(id)arg2 args:(struct __va_list_tag [1])arg3;
+- (id)fetchObject:(CDUnknownBlockType)arg1 sql:(id)arg2 args:(char *)arg3;
 - (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2;
-- (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2 args:(struct __va_list_tag [1])arg3;
+- (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2 args:(char *)arg3;
 - (id)fetchObjectOfClass:(Class)arg1 initializer:(SEL)arg2 sql:(id)arg3;
-- (id)fetchObjectOfClass:(Class)arg1 initializer:(SEL)arg2 sql:(id)arg3 args:(struct __va_list_tag [1])arg4;
-- (id)fetch:(id)arg1 args:(struct __va_list_tag [1])arg2;
+- (id)fetchObjectOfClass:(Class)arg1 initializer:(SEL)arg2 sql:(id)arg3 args:(char *)arg4;
+- (id)fetch:(id)arg1 args:(char *)arg2;
 - (id)fetch:(id)arg1;
 - (_Bool)executeRaw:(id)arg1;
-- (_Bool)execute:(id)arg1 args:(struct __va_list_tag [1])arg2;
+- (_Bool)execute:(id)arg1 args:(char *)arg2;
 - (_Bool)execute:(id)arg1;
-- (_Bool)_execute:(id)arg1 mustSucceed:(_Bool)arg2 bindings:(struct __va_list_tag [1])arg3;
+- (_Bool)_execute:(id)arg1 mustSucceed:(_Bool)arg2 bindings:(char *)arg3;
 - (_Bool)_executeStmt:(id)arg1 mustSucceed:(_Bool)arg2;
-- (id)_newStatementForFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
+- (id)_newStatementForFormat:(id)arg1 arguments:(char *)arg2;
 @property(readonly, nonatomic) long long changes;
 @property(nonatomic) unsigned long long synchronousMode;
 @property(readonly, nonatomic) long long lastInsertedRowID;

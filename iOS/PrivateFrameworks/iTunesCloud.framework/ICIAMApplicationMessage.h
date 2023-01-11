@@ -8,18 +8,23 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class ICIAMMessageRule, NSMutableArray, NSString;
+@class ICIAMLocalNotification, ICIAMMessageRule, ICIAMMetricEvent, NSMutableArray, NSString;
 
 @interface ICIAMApplicationMessage : PBCodable <NSCopying>
 {
     double _endDate;
     double _startDate;
+    int _assetPrefetchStrategy;
     NSMutableArray *_contentPages;
     int _globalPresentationPolicyGroup;
+    ICIAMMetricEvent *_holdoutEvent;
     NSString *_identifier;
+    ICIAMMetricEvent *_impressionEvent;
+    ICIAMLocalNotification *_localNotification;
     int _maximumDisplays;
     int _messageType;
     int _modalPresentationStyle;
+    NSMutableArray *_presentationTriggers;
     int _priority;
     ICIAMMessageRule *_rule;
     NSMutableArray *_targets;
@@ -30,6 +35,7 @@
     struct {
         unsigned int endDate:1;
         unsigned int startDate:1;
+        unsigned int assetPrefetchStrategy:1;
         unsigned int globalPresentationPolicyGroup:1;
         unsigned int maximumDisplays:1;
         unsigned int messageType:1;
@@ -40,8 +46,14 @@
     } _has;
 }
 
++ (Class)presentationTriggersType;
 + (Class)contentPagesType;
 + (Class)targetType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *presentationTriggers; // @synthesize presentationTriggers=_presentationTriggers;
+@property(retain, nonatomic) ICIAMMetricEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
+@property(retain, nonatomic) ICIAMLocalNotification *localNotification; // @synthesize localNotification=_localNotification;
+@property(retain, nonatomic) ICIAMMetricEvent *holdoutEvent; // @synthesize holdoutEvent=_holdoutEvent;
 @property(retain, nonatomic) NSString *webArchiveURL; // @synthesize webArchiveURL=_webArchiveURL;
 @property(retain, nonatomic) ICIAMMessageRule *rule; // @synthesize rule=_rule;
 @property(retain, nonatomic) NSMutableArray *contentPages; // @synthesize contentPages=_contentPages;
@@ -52,7 +64,6 @@
 @property(nonatomic) int priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) NSMutableArray *targets; // @synthesize targets=_targets;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -62,6 +73,17 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)presentationTriggersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)presentationTriggersCount;
+- (void)addPresentationTriggers:(id)arg1;
+- (void)clearPresentationTriggers;
+@property(readonly, nonatomic) _Bool hasImpressionEvent;
+@property(readonly, nonatomic) _Bool hasLocalNotification;
+@property(readonly, nonatomic) _Bool hasHoldoutEvent;
+- (int)StringAsAssetPrefetchStrategy:(id)arg1;
+- (id)assetPrefetchStrategyAsString:(int)arg1;
+@property(nonatomic) _Bool hasAssetPrefetchStrategy;
+@property(nonatomic) int assetPrefetchStrategy; // @synthesize assetPrefetchStrategy=_assetPrefetchStrategy;
 - (int)StringAsGlobalPresentationPolicyGroup:(id)arg1;
 - (id)globalPresentationPolicyGroupAsString:(int)arg1;
 @property(nonatomic) _Bool hasGlobalPresentationPolicyGroup;

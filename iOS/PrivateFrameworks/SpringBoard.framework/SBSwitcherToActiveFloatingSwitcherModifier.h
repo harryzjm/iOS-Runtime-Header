@@ -4,18 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBAppLayout, SBSwitcherModifier;
+
 @interface SBSwitcherToActiveFloatingSwitcherModifier
 {
+    long long _direction;
+    SBAppLayout *_fullScreenAppLayout;
+    SBSwitcherModifier *_floatingDeckModifier;
 }
 
-- (id)layoutSettings;
-- (_Bool)wantsMinificationFilter;
-- (_Bool)wantsAsynchronousRenderingAssertion;
+- (void).cxx_destruct;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (long long)transitionLiveContentRasterizationStyle;
+- (id)appLayoutsToCacheSnapshots;
 - (id)appLayoutToScrollToBeforeTransitioning;
-- (long long)backdropBlurType;
+- (_Bool)wantsSwitcherDimmingView;
+- (long long)switcherBackdropBlurType;
+- (_Bool)wantsSwitcherBackdropBlur;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
-- (id)appLayoutToScrollToDuringTransition;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
+- (id)transitionWillBegin;
+- (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 floatingDeckModifier:(id)arg4;
 
 @end
 

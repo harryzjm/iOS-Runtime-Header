@@ -29,7 +29,7 @@
     unsigned long long _numberOfCalendarSignalRegistrations;
     unsigned long long _numberOfFaceTimeSignalRegistrations;
     unsigned long long _numberOfContactFaceprintSignalRegistrations;
-    unsigned long long _numberOfGenderSignalRegistrations;
+    unsigned long long _numberOfBiologicalSexSignalRegistrations;
     unsigned long long _numberOfSocialGroupSignalRegistrations;
     unsigned long long _numberOfRelationshipSignalRegistrations;
     double _precisionAddressSignal;
@@ -41,7 +41,7 @@
     double _precisionCalendarSignal;
     double _precisionFaceTimeSignal;
     double _precisionContactFaceprintSignal;
-    double _precisionGenderSignal;
+    double _precisionBiologicalSexSignal;
     double _precisionSocialGroupSignal;
     double _precisionRelationshipSignal;
     unsigned long long _truePositiveAddressSignal;
@@ -62,20 +62,21 @@
     unsigned long long _falsePositiveFaceTimeSignal;
     unsigned long long _truePositiveContactFaceprintSignal;
     unsigned long long _falsePositiveContactFaceprintSignal;
-    unsigned long long _truePositiveGenderSignal;
-    unsigned long long _falsePositiveGenderSignal;
+    unsigned long long _truePositiveBiologicalSexSignal;
+    unsigned long long _falsePositiveBiologicalSexSignal;
     unsigned long long _truePositiveSocialGroupSignal;
     unsigned long long _falsePositiveSocialGroupSignal;
     unsigned long long _truePositiveRelationshipSignal;
     unsigned long long _falsePositiveRelationshipSignal;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long falsePositiveRelationshipSignal; // @synthesize falsePositiveRelationshipSignal=_falsePositiveRelationshipSignal;
 @property(nonatomic) unsigned long long truePositiveRelationshipSignal; // @synthesize truePositiveRelationshipSignal=_truePositiveRelationshipSignal;
 @property(nonatomic) unsigned long long falsePositiveSocialGroupSignal; // @synthesize falsePositiveSocialGroupSignal=_falsePositiveSocialGroupSignal;
 @property(nonatomic) unsigned long long truePositiveSocialGroupSignal; // @synthesize truePositiveSocialGroupSignal=_truePositiveSocialGroupSignal;
-@property(nonatomic) unsigned long long falsePositiveGenderSignal; // @synthesize falsePositiveGenderSignal=_falsePositiveGenderSignal;
-@property(nonatomic) unsigned long long truePositiveGenderSignal; // @synthesize truePositiveGenderSignal=_truePositiveGenderSignal;
+@property(nonatomic) unsigned long long falsePositiveBiologicalSexSignal; // @synthesize falsePositiveBiologicalSexSignal=_falsePositiveBiologicalSexSignal;
+@property(nonatomic) unsigned long long truePositiveBiologicalSexSignal; // @synthesize truePositiveBiologicalSexSignal=_truePositiveBiologicalSexSignal;
 @property(nonatomic) unsigned long long falsePositiveContactFaceprintSignal; // @synthesize falsePositiveContactFaceprintSignal=_falsePositiveContactFaceprintSignal;
 @property(nonatomic) unsigned long long truePositiveContactFaceprintSignal; // @synthesize truePositiveContactFaceprintSignal=_truePositiveContactFaceprintSignal;
 @property(nonatomic) unsigned long long falsePositiveFaceTimeSignal; // @synthesize falsePositiveFaceTimeSignal=_falsePositiveFaceTimeSignal;
@@ -96,7 +97,7 @@
 @property(nonatomic) unsigned long long truePositiveAddressSignal; // @synthesize truePositiveAddressSignal=_truePositiveAddressSignal;
 @property(nonatomic) double precisionRelationshipSignal; // @synthesize precisionRelationshipSignal=_precisionRelationshipSignal;
 @property(nonatomic) double precisionSocialGroupSignal; // @synthesize precisionSocialGroupSignal=_precisionSocialGroupSignal;
-@property(nonatomic) double precisionGenderSignal; // @synthesize precisionGenderSignal=_precisionGenderSignal;
+@property(nonatomic) double precisionBiologicalSexSignal; // @synthesize precisionBiologicalSexSignal=_precisionBiologicalSexSignal;
 @property(nonatomic) double precisionContactFaceprintSignal; // @synthesize precisionContactFaceprintSignal=_precisionContactFaceprintSignal;
 @property(nonatomic) double precisionFaceTimeSignal; // @synthesize precisionFaceTimeSignal=_precisionFaceTimeSignal;
 @property(nonatomic) double precisionCalendarSignal; // @synthesize precisionCalendarSignal=_precisionCalendarSignal;
@@ -108,7 +109,7 @@
 @property(nonatomic) double precisionAddressSignal; // @synthesize precisionAddressSignal=_precisionAddressSignal;
 @property(nonatomic) unsigned long long numberOfRelationshipSignalRegistrations; // @synthesize numberOfRelationshipSignalRegistrations=_numberOfRelationshipSignalRegistrations;
 @property(nonatomic) unsigned long long numberOfSocialGroupSignalRegistrations; // @synthesize numberOfSocialGroupSignalRegistrations=_numberOfSocialGroupSignalRegistrations;
-@property(nonatomic) unsigned long long numberOfGenderSignalRegistrations; // @synthesize numberOfGenderSignalRegistrations=_numberOfGenderSignalRegistrations;
+@property(nonatomic) unsigned long long numberOfBiologicalSexSignalRegistrations; // @synthesize numberOfBiologicalSexSignalRegistrations=_numberOfBiologicalSexSignalRegistrations;
 @property(nonatomic) unsigned long long numberOfContactFaceprintSignalRegistrations; // @synthesize numberOfContactFaceprintSignalRegistrations=_numberOfContactFaceprintSignalRegistrations;
 @property(nonatomic) unsigned long long numberOfFaceTimeSignalRegistrations; // @synthesize numberOfFaceTimeSignalRegistrations=_numberOfFaceTimeSignalRegistrations;
 @property(nonatomic) unsigned long long numberOfCalendarSignalRegistrations; // @synthesize numberOfCalendarSignalRegistrations=_numberOfCalendarSignalRegistrations;
@@ -125,7 +126,6 @@
 @property(nonatomic) double precisionContactSuggestionTop1; // @synthesize precisionContactSuggestionTop1=_precisionContactSuggestionTop1;
 @property(retain, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (double)_precisionFromTruePositivesCount:(unsigned long long)arg1 falsePositivesCount:(unsigned long long)arg2;
 - (id)_peopleIdentitiesSignals;

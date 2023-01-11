@@ -26,10 +26,10 @@
 }
 
 + (id)errorWithCode:(long long)arg1 request:(id)arg2 additionalUserInfo:(id)arg3;
-+ (void)generateThumbnailOfMaximumSize:(struct CGSize)arg1 scale:(double)arg2 forURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)sharedGenerator;
 + (void)initialize;
 + (id)debugDescriptionForErrorCode:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialResponseQueue; // @synthesize serialResponseQueue=_serialResponseQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *requestPreparationQueue; // @synthesize requestPreparationQueue=_requestPreparationQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -40,7 +40,6 @@
 @property(retain, nonatomic) NSMutableDictionary *pendingCancelledRequests; // @synthesize pendingCancelledRequests=_pendingCancelledRequests;
 @property(nonatomic) unsigned long long batchingCount; // @synthesize batchingCount=_batchingCount;
 @property(retain, nonatomic) NSMutableDictionary *requests; // @synthesize requests=_requests;
-- (void).cxx_destruct;
 - (_Bool)_requestRepresentationTypeIsMoreRepresentative:(id)arg1 thanType:(long long)arg2;
 - (void)_createSyncThumbnailServiceProxy;
 - (void)_createThumbnailServiceProxy;

@@ -29,14 +29,14 @@
     NSString *_businessChatIntentName;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *businessChatIntentName; // @synthesize businessChatIntentName=_businessChatIntentName;
 @property(copy, nonatomic) NSString *businessChatIdentifier; // @synthesize businessChatIdentifier=_businessChatIdentifier;
 @property(copy, nonatomic) NSString *businessChatButtonTitle; // @synthesize businessChatButtonTitle=_businessChatButtonTitle;
 @property(copy, nonatomic) NSString *detailBody; // @synthesize detailBody=_detailBody;
 @property(copy, nonatomic) NSString *detailSubtitle; // @synthesize detailSubtitle=_detailSubtitle;
 @property(copy, nonatomic) NSString *detailTitle; // @synthesize detailTitle=_detailTitle;
-@property(nonatomic) id <PKPaymentMoreInformationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPaymentMoreInformationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (_Bool)_shouldShowBusinessChatButton;
 - (void)_businessChatButtonTapped;

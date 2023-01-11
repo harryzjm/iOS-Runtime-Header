@@ -9,21 +9,22 @@
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSAttributedString, NSString;
+@class NSAttributedString, NSString, _HMDocument;
 
 @interface HMHTMLDocument : NSObject <NSCopying, NSSecureCoding>
 {
-    NSString *_stringValue;
+    _HMDocument *_document;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy) NSString *stringValue; // @synthesize stringValue=_stringValue;
 - (void).cxx_destruct;
+@property(readonly) _HMDocument *document; // @synthesize document=_document;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)validateAndReturnError:(id *)arg1;
 @property(readonly, copy) NSAttributedString *attributedString;
+@property(readonly, copy) NSString *stringValue;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

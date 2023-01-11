@@ -7,11 +7,12 @@
 #import <SpringBoard/UIDragInteractionDelegate-Protocol.h>
 
 @class NSArray, UIDragInteraction, UIDragItem, UIGestureRecognizer, UIView;
-@protocol UIDragSession;
+@protocol UIDragSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol UIDragInteractionDelegate_Private <UIDragInteractionDelegate>
 
 @optional
+- (id <UIViewSpringAnimationBehaviorDescribing>)_dragInteraction:(UIDragInteraction *)arg1 customSpringAnimationBehaviorForCancellingItem:(UIDragItem *)arg2;
 - (_Bool)_dragInteraction:(UIDragInteraction *)arg1 sessionSupportsSystemDrag:(id <UIDragSession>)arg2;
 - (long long)_dragInteraction:(UIDragInteraction *)arg1 dataOwnerForAddingToSession:(id <UIDragSession>)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(UIDragInteraction *)arg1 dataOwnerForSession:(id <UIDragSession>)arg2;

@@ -22,6 +22,7 @@
     NSArray *_accentViews;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *accentViews; // @synthesize accentViews=_accentViews;
 @property(retain, nonatomic) NSArray *flatViews; // @synthesize flatViews=_flatViews;
 @property(retain, nonatomic) NTKWellnessRichComplicationChartView *chartView; // @synthesize chartView=_chartView;
@@ -34,12 +35,12 @@
 @property(retain, nonatomic) NTKColoringLabel *moveLabel; // @synthesize moveLabel=_moveLabel;
 @property(retain, nonatomic) NTKColoringLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIView *chartTitleView; // @synthesize chartTitleView=_chartTitleView;
-- (void).cxx_destruct;
 - (void)_setAccentViewsVisibility:(_Bool)arg1;
 - (void)_updateViews:(id)arg1 withFilter:(id)arg2;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)setNeedsLayout;
 - (void)_setupViews;
 - (id)init;
 

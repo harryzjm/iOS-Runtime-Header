@@ -13,7 +13,7 @@
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UISwitch, UITableView, UITextField;
+@class NSArray, NSIndexPath, NSString, PKContactFormatValidator, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UISwitch, UITableView, UITextField;
 
 @interface PKPaymentPreferencesViewController : UIViewController <CNContactPickerDelegate, UITextFieldDelegate, PKAddressSearcherViewControllerDelegate, PKAddressEditorViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -25,6 +25,11 @@
     PKPaymentPass *_currentlySelectedPaymentPass;
     UISwitch *_peerPaymentAccountPaymentSwitch;
     NSArray *_latestPreferences;
+    _Bool _keyboardVisible;
+    unsigned short _layoutRecursionCounter;
+    _Bool _preferredContentSizeUpdateDeferred;
+    PKContactFormatValidator *_contactFormatValidator;
+    _Bool _isEditingFieldThatWasOriginallyInvalid;
     NSArray *_preferences;
     long long _style;
     UITableView *_tableView;
@@ -33,13 +38,13 @@
     CDUnknownBlockType _pickedContactHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType pickedContactHandler; // @synthesize pickedContactHandler=_pickedContactHandler;
 @property(copy, nonatomic) CDUnknownBlockType pickedContactPropertyHandler; // @synthesize pickedContactPropertyHandler=_pickedContactPropertyHandler;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) NSArray *preferences; // @synthesize preferences=_preferences;
-- (void).cxx_destruct;
 - (id)_requiredKeysForPreference:(id)arg1 contact:(id)arg2;
 - (_Bool)_isPaymentStyle;
 - (void)addressEditorViewControllerDidCancel:(id)arg1;
@@ -57,10 +62,12 @@
 - (void)_savePickedContact:(id)arg1 inPreference:(id)arg2;
 - (_Bool)_saveUpdatedContact:(id)arg1 contactKey:(id)arg2 preference:(id)arg3 atIndex:(long long)arg4;
 - (void)_updateContactAndForceSelection:(_Bool)arg1;
+- (void)_checkFormatOfTextField:(id)arg1 forBeginEditing:(_Bool)arg2;
 - (void)hideTextField:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (_Bool)textFieldShouldEndEditing:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
+- (void)textDidChange:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)tableViewDidFinishReload:(id)arg1;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -98,6 +105,8 @@
 - (void)_keyboardDidShow:(id)arg1;
 - (void)_updateNavigationBarButtons;
 - (void)_updatePreferredContentSize;
+- (_Bool)_shouldUpdatePreferredContentSize;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
@@ -106,7 +115,7 @@
 - (void)viewDidLoad;
 - (_Bool)_isViewTranslucent;
 - (void)dealloc;
-- (id)initWithStyle:(long long)arg1 preferences:(id)arg2 title:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)initWithStyle:(long long)arg1 preferences:(id)arg2 title:(id)arg3 handler:(CDUnknownBlockType)arg4 contactFormatValidator:(id)arg5;
 - (id)pk_childrenForAppearance;
 
 // Remaining properties

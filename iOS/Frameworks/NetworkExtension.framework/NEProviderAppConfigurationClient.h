@@ -6,7 +6,7 @@
 
 #import <NetworkExtension/NSXPCListenerDelegate-Protocol.h>
 
-@class NEDNSProxyManager, NEFilterManager, NEVPNManager, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
+@class NEDNSProxyManager, NEDNSSettingsManager, NEFilterManager, NEVPNManager, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
 @protocol NEConfigurationCommandHandling;
 
 @interface NEProviderAppConfigurationClient <NSXPCListenerDelegate>
@@ -16,6 +16,7 @@
     NEVPNManager *_currentManager;
     NEFilterManager *_filterManager;
     NEDNSProxyManager *_dnsProxyManager;
+    NEDNSSettingsManager *_dnsSettingsManager;
     NSMutableArray *_createdManagers;
     NSMutableArray *_currentManagers;
     NSString *_targetAppBundleID;
@@ -23,17 +24,18 @@
     id <NEConfigurationCommandHandling> _remoteObject;
 }
 
+- (void).cxx_destruct;
 @property(retain) id <NEConfigurationCommandHandling> remoteObject; // @synthesize remoteObject=_remoteObject;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property _Bool isServerMode; // @synthesize isServerMode=_isServerMode;
 @property(retain) NSString *targetAppBundleID; // @synthesize targetAppBundleID=_targetAppBundleID;
 @property(retain) NSMutableArray *currentManagers; // @synthesize currentManagers=_currentManagers;
 @property(retain) NSMutableArray *createdManagers; // @synthesize createdManagers=_createdManagers;
+@property(retain) NEDNSSettingsManager *dnsSettingsManager; // @synthesize dnsSettingsManager=_dnsSettingsManager;
 @property(retain) NEDNSProxyManager *dnsProxyManager; // @synthesize dnsProxyManager=_dnsProxyManager;
 @property(retain) NEFilterManager *filterManager; // @synthesize filterManager=_filterManager;
 @property(retain) NEVPNManager *currentManager; // @synthesize currentManager=_currentManager;
 @property(readonly) NSXPCListener *listener; // @synthesize listener=_listener;
-- (void).cxx_destruct;
 - (void)handleCommand:(int)arg1 forConfigWithName:(id)arg2 withParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)loadConfigurationWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadAllWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -46,6 +48,7 @@
 - (int)setKeychainItemData:(id)arg1 withName:(id)arg2 persistentReference:(id *)arg3;
 - (_Bool)setProtocolWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)createConfigurationWithParameters:(id)arg1 errorStr:(id *)arg2;
+- (id)dnsSettingsBundle;
 - (id)dnsProxyConfiguration;
 - (id)filterConfiguration;
 - (id)protocolForParameters:(id)arg1;

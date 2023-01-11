@@ -14,6 +14,7 @@
 
 + (id)sharedInstance;
 @property(readonly, nonatomic) _Bool _nonWifiFaceTimeEntitled;
+@property(nonatomic) _Bool isDeviceInManualPhoneSelectionMode;
 @property(nonatomic) _Bool isDeviceInDualPhoneIdentityMode;
 @property(readonly, copy, nonatomic) NSNumber *selectedPhoneNumberRegistrationSubscriptionNumber;
 - (void)silentlySetSelectedPhoneNumberRegistrationSubscriptionLabels:(id)arg1;

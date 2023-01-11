@@ -10,7 +10,6 @@
 
 - (_Bool)isAppExtension;
 - (_Bool)isWatchOS;
-- (_Bool)isMemoryConstrained;
 
 @end
 

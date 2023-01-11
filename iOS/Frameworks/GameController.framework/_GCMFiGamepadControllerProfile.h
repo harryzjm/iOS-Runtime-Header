@@ -4,28 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameController/_GCACHomeButtonDelegate-Protocol.h>
-
-@class NSString, _GCACHomeButton;
-
-@interface _GCMFiGamepadControllerProfile <_GCACHomeButtonDelegate>
+__attribute__((visibility("hidden")))
+@interface _GCMFiGamepadControllerProfile
 {
-    _GCACHomeButton *_acHome;
 }
 
-- (void).cxx_destruct;
-- (id)menuButton;
-- (void)toggleSuspendResume;
 - (void)setPlayerIndex:(long long)arg1;
 - (id)name;
-- (id)initWithController:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -34,14 +34,18 @@
     NSString *_secondaryName;
     NSString *_model;
     NSString *_transportBundleID;
-    NSSet *_handles;
+    NSSet *_formattedHandles;
+    NSSet *_actualHandles;
     NSUUID *_nodeIdentifier;
     CURangingMeasurement *_rangingMeasurement;
     NSNumber *_suggestionIndex;
+    NSSet *_contactIDs;
+    NSString *_derivedIntentIdentifier;
     long long _selectionReason;
 }
 
 + (id)nodeWithSFNode:(struct __SFNode *)arg1;
+- (void).cxx_destruct;
 @property(readonly) _Bool supportsMixedTypes; // @synthesize supportsMixedTypes=_supportsMixedTypes;
 @property(readonly) _Bool supportsPasses; // @synthesize supportsPasses=_supportsPasses;
 @property(readonly) _Bool supportsFMF; // @synthesize supportsFMF=_supportsFMF;
@@ -56,10 +60,13 @@
 @property(getter=isUnknown) _Bool unknown; // @synthesize unknown=_unknown;
 @property(getter=isMe) _Bool me; // @synthesize me=_me;
 @property(getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
+@property(copy, nonatomic) NSString *derivedIntentIdentifier; // @synthesize derivedIntentIdentifier=_derivedIntentIdentifier;
+@property(retain, nonatomic) NSSet *contactIDs; // @synthesize contactIDs=_contactIDs;
 @property(retain) NSNumber *suggestionIndex; // @synthesize suggestionIndex=_suggestionIndex;
 @property(retain, nonatomic) CURangingMeasurement *rangingMeasurement; // @synthesize rangingMeasurement=_rangingMeasurement;
 @property(retain) NSUUID *nodeIdentifier; // @synthesize nodeIdentifier=_nodeIdentifier;
-@property(retain) NSSet *handles; // @synthesize handles=_handles;
+@property(retain) NSSet *actualHandles; // @synthesize actualHandles=_actualHandles;
+@property(retain) NSSet *formattedHandles; // @synthesize formattedHandles=_formattedHandles;
 @property(retain) NSString *transportBundleID; // @synthesize transportBundleID=_transportBundleID;
 @property(retain) NSString *model; // @synthesize model=_model;
 @property(retain) NSString *secondaryName; // @synthesize secondaryName=_secondaryName;
@@ -69,7 +76,6 @@
 @property(retain) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property(retain) id node; // @synthesize node=_node;
 @property(readonly) NSDate *discoveryDate; // @synthesize discoveryDate=_discoveryDate;
-- (void).cxx_destruct;
 - (void)handleOperationCallback:(struct __SFOperation *)arg1 event:(long long)arg2 withResults:(id)arg3;
 - (void)cancelSend;
 - (void)startSendForBundleID:(id)arg1 sessionID:(id)arg2 items:(id)arg3 description:(id)arg4 previewImage:(struct CGImage *)arg5;

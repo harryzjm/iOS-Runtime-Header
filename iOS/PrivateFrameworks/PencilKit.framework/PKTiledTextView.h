@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKAttachmentView, UIButton;
+#import <PencilKit/UITextInteractionDelegate-Protocol.h>
+#import <PencilKit/_UICursorInteractionDelegate-Protocol.h>
 
-@interface PKTiledTextView
+@class NSString, PKAttachmentView, UIButton;
+
+@interface PKTiledTextView <UITextInteractionDelegate, _UICursorInteractionDelegate>
 {
     PKAttachmentView *_standInEndAttachmentView;
     UIButton *_tapToRadarButton;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIButton *tapToRadarButton; // @synthesize tapToRadarButton=_tapToRadarButton;
 @property(retain, nonatomic) PKAttachmentView *standInEndAttachmentView; // @synthesize standInEndAttachmentView=_standInEndAttachmentView;
-- (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (id)saveTempData:(id)arg1 name:(id)arg2;
 - (void)appendPath:(id)arg1 attachmentString:(id)arg2;
 - (void)_tapToRadarButtonTapped:(id)arg1;
 - (void)_setupTapToRadarButton;
+- (_Bool)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)frameOfEndAttachment;
 - (_Bool)insertAttachmentIfInBlankSpace:(struct CGPoint)arg1;
@@ -32,10 +37,19 @@
 - (_Bool)canAddStroke;
 - (id)standInAttachmentView;
 - (_Bool)_shouldUpdateHeightOfAttachments;
+- (id)_textView;
 - (void)textDidEndEditing:(id)arg1;
 - (void)textDidBeginEditing:(id)arg1;
 - (void)textDidChange:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
 - (id)initInScrollView:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

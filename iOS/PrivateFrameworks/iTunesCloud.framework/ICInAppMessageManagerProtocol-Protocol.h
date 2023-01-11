@@ -6,7 +6,7 @@
 
 #import <iTunesCloud/NSObject-Protocol.h>
 
-@class ICInAppMessageEntry, ICInAppMessageMetadataEntry, NSDictionary, NSString;
+@class ICInAppMessageEntry, ICInAppMessageMetadataEntry, NSDictionary, NSSet, NSString;
 
 @protocol ICInAppMessageManagerProtocol <NSObject>
 - (void)setProperty:(id)arg1 forKey:(NSString *)arg2 bundleIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
@@ -15,7 +15,7 @@
 - (void)getGlobalPropertyForKey:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (void)removeMetadataForMessageIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)updateMetadata:(ICInAppMessageMetadataEntry *)arg1 messageIdentifier:(NSString *)arg2 bundleIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
-- (void)getAllMetadataForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getAllMetadataForBundleIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getMetadataForMessageIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(ICInAppMessageMetadataEntry *, NSError *))arg3;
 - (void)clearCachedResourcesForMessageWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)downloadResourcesForMessageWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
@@ -27,7 +27,9 @@
 - (void)removeMessageEntryWithIdentifier:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)updateMessageEntry:(ICInAppMessageEntry *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)addMessageEntry:(ICInAppMessageEntry *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)messageEntryWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(ICInAppMessageEntry *, NSError *))arg3;
 - (void)messageEntriesForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)messageEntriesForBundleIdentifiers:(NSSet *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)allMessageEntriesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 @end
 

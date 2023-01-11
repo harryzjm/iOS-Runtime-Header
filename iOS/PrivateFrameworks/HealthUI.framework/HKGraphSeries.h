@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthUI/HKChartCachePriorityDelegate-Protocol.h>
 #import <HealthUI/HKGraphSeriesDataSourceDelegate-Protocol.h>
 
 @class HKAxis, HKGraphSeriesDataSource, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMutableDictionary, NSString, NSUUID, UIColor, UIView;
 @protocol HKAxisAccessoryViewDelegate, HKGraphSeriesAxisAnnotation, HKGraphSeriesAxisScalingRule, HKSeriesDelegate;
 
-@interface HKGraphSeries : NSObject <HKGraphSeriesDataSourceDelegate>
+@interface HKGraphSeries : NSObject <HKGraphSeriesDataSourceDelegate, HKChartCachePriorityDelegate>
 {
     _Bool _dirty;
     CDStruct_f3788345 _selectedPathRange;
@@ -43,6 +44,7 @@
 
 + (void)drawInnerDotMarkerInContext:(struct CGContext *)arg1 outColor:(struct CGColor *)arg2 inColor:(struct CGColor *)arg3 x:(double)arg4 y:(double)arg5 radius:(double)arg6;
 + (void)drawFilledMarkerInContext:(struct CGContext *)arg1 color:(struct CGColor *)arg2 x:(double)arg3 y:(double)arg4 radius:(double)arg5;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *offScreenIndicatorColor; // @synthesize offScreenIndicatorColor=_offScreenIndicatorColor;
 @property(retain, nonatomic) UIView *cachedYAxisAccessoryView; // @synthesize cachedYAxisAccessoryView=_cachedYAxisAccessoryView;
 @property(retain, nonatomic) id <HKGraphSeriesAxisScalingRule> axisScalingRule; // @synthesize axisScalingRule=_axisScalingRule;
@@ -62,7 +64,6 @@
 @property(retain, nonatomic) NSArray *detailLegendEntries; // @synthesize detailLegendEntries=_detailLegendEntries;
 @property(retain, nonatomic) NSArray *titleLegendEntries; // @synthesize titleLegendEntries=_titleLegendEntries;
 @property(retain, nonatomic) HKGraphSeriesDataSource *dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (struct CGRect)backgroundRectFromStringRect:(struct CGRect)arg1 forFont:(id)arg2;
 - (void)drawRoundedRect:(struct CGRect)arg1 color:(id)arg2 context:(struct CGContext *)arg3;
 - (struct CGRect)adjustRect:(struct CGRect)arg1 forFont:(id)arg2;
@@ -84,6 +85,8 @@
 - (_Bool)supportsMultiTouchSelection;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
+- (void)clearCaches;
+- (_Bool)isRangeHighPriority:(id)arg1;
 - (id)_dataBlockForBlockPath:(CDStruct_6ca94699)arg1;
 - (id)_coordinatesForBlockPath:(CDStruct_6ca94699)arg1 xAxis:(id)arg2;
 - (void)_cacheCoordinates:(id)arg1 forBlockPath:(CDStruct_6ca94699)arg2;
@@ -111,6 +114,7 @@
 - (double)xAxisDistanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (double)distanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (struct UIEdgeInsets)virtualMarginInsets;
+- (id)_clipYAxisValueRangeIfNecessary:(id)arg1;
 - (id)valueRangeForYAxisWithXAxisRange:(id)arg1 dateZoom:(long long)arg2 chartRect:(struct CGRect)arg3;
 - (id)_expandYRange:(id)arg1 withXRange:(id)arg2 dateZoom:(long long)arg3 chartRect:(struct CGRect)arg4;
 - (void)cancelInFlightAutoscale;

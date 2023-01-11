@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Message/CXCallObserverDelegate-Protocol.h>
-#import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
 @class AWDMailNetworkDiagnosticsReport, CXCallObserver, CoreTelephonyClient, EFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, RadiosPreferences;
-@protocol OS_dispatch_queue;
+@protocol EFCancelable, OS_dispatch_queue;
 
-@interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate, CXCallObserverDelegate>
+@interface MFNetworkController : NSObject <RadiosPreferencesDelegate, CXCallObserverDelegate>
 {
     NSLock *_lock;
     struct __CFRunLoop *_rl;
@@ -34,6 +33,7 @@
     CoreTelephonyClient *_ctc;
     NSObject<OS_dispatch_queue> *_dataStatusQueue;
     _Bool _cellularDataAvailable;
+    id <EFCancelable> _stateCancelable;
     struct __SCNetworkReachability *_reachability;
     struct __SCDynamicStore *_store;
     struct __CFRunLoopSource *_store_source;
@@ -43,10 +43,10 @@
 
 + (id)networkAssertionWithIdentifier:(id)arg1;
 + (id)sharedInstance;
-@property(readonly) int dataIndicator; // @synthesize dataIndicator=_dataIndicator;
 - (void).cxx_destruct;
+@property(readonly) int dataIndicator; // @synthesize dataIndicator=_dataIndicator;
+- (void)_registerStateCaptureHandler;
 @property(readonly, nonatomic) AWDMailNetworkDiagnosticsReport *awdNetworkDiagnosticReport;
-- (id)copyDiagnosticInformation;
 - (void)airplaneModeChanged;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)_updateActiveCalls;

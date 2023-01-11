@@ -4,56 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <ContextKitExtraction/CKContextDonationItem.h>
 
-#import <ContextKit/NSSecureCoding-Protocol.h>
+@class CKContextClient, NSArray, NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString;
 
-@class CKContextClient, NSDictionary, NSNumber, NSString;
-
-@interface CKContextRequest : NSObject <NSSecureCoding>
+@interface CKContextRequest : CKContextDonationItem
 {
     CKContextClient *_client;
     _Bool _textIsRaw;
     _Bool _includeHigherLevelTopics;
-    _Bool _prepareOnly;
-    _Bool _debug;
     _Bool _dontSkip;
     _Bool _timing;
+    _Bool _overrideEnableCoreNLPTagging;
     _Bool _incPending;
+    _Bool _debug;
+    _Bool _includeRequestInResponse;
     int _overrideConstellationMinCount;
     int _overrideConstellationMinWeight;
     unsigned int _topk;
-    NSString *_text;
-    NSString *_title;
-    NSString *_contentDescription;
-    NSString *_contentKeywords;
-    NSString *_contentAuthor;
+    unsigned long long _type;
     NSString *_url;
-    NSString *_languageTag;
     NSDictionary *_itemIds;
     long long _maxConstellationTopics;
+    NSSet *_allowedTopicTypeTags;
     NSNumber *_overrideBlendAlpha;
     NSNumber *_overrideBlendBeta;
     NSNumber *_overrideBlendGamma;
-    unsigned long long _type;
+    NSOrderedSet *_desiredLanguageTags;
+    NSArray *_donorBundleIdentifiers;
 }
 
-+ (id)frameworkStartDate;
 + (id)requestServiceSemaphore;
 + (void)logTransactionSuccessfulForResponseId:(id)arg1 inputLength:(unsigned long long)arg2 completionLength:(unsigned long long)arg3 requestType:(unsigned long long)arg4 logType:(unsigned long long)arg5;
 + (void)logEngagementForResponseId:(id)arg1 result:(id)arg2 rank:(unsigned long long)arg3 inputLength:(unsigned long long)arg4 completionLength:(unsigned long long)arg5 requestType:(unsigned long long)arg6 logType:(unsigned long long)arg7;
-+ (void)logResultsShownForResponseId:(id)arg1 shown:(unsigned long long)arg2 couldHaveShown:(unsigned long long)arg3 serverOverride:(_Bool)arg4 inputLength:(unsigned long long)arg5 requestType:(unsigned long long)arg6 logType:(unsigned long long)arg7;
++ (void)logResultsShownForResponseId:(id)arg1 shown:(unsigned long long)arg2 couldHaveShown:(unsigned long long)arg3 topicIds:(id)arg4 serverOverride:(_Bool)arg5 inputLength:(unsigned long long)arg6 requestType:(unsigned long long)arg7 logType:(unsigned long long)arg8;
 + (_Bool)shutdownService;
 + (_Bool)pingService;
 + (id)requestWithText:(id)arg1;
-+ (id)trimTextToSize:(id)arg1;
 + (_Bool)supportsSecureCoding;
-+ (id)_newXpcConnection;
-+ (id)_xpcConnection;
-+ (void)portraitBlacklistWithReply:(CDUnknownBlockType)arg1;
 + (void)statusWithReply:(CDUnknownBlockType)arg1;
-+ (void)findResponseByID:(id)arg1 withReply:(CDUnknownBlockType)arg2;
-+ (void)prepareRequestForText:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 + (void)warmUpForRequestType:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 + (void)runOffMainThread:(CDUnknownBlockType)arg1;
 + (void)findResultsForText:(id)arg1 languageTag:(id)arg2 requestType:(unsigned long long)arg3 withReply:(CDUnknownBlockType)arg4;
@@ -62,8 +51,13 @@
 + (void)setDefaultRequestType:(unsigned long long)arg1;
 + (void)initialize;
 + (id)new;
-@property(nonatomic) unsigned long long type; // @synthesize type=_type;
+- (void).cxx_destruct;
+@property(nonatomic) __weak NSArray *donorBundleIdentifiers; // @synthesize donorBundleIdentifiers=_donorBundleIdentifiers;
+@property(retain, nonatomic) NSOrderedSet *desiredLanguageTags; // @synthesize desiredLanguageTags=_desiredLanguageTags;
+@property(nonatomic) _Bool includeRequestInResponse; // @synthesize includeRequestInResponse=_includeRequestInResponse;
+@property(nonatomic) _Bool debug; // @synthesize debug=_debug;
 @property(nonatomic) _Bool incPending; // @synthesize incPending=_incPending;
+@property(nonatomic) _Bool overrideEnableCoreNLPTagging; // @synthesize overrideEnableCoreNLPTagging=_overrideEnableCoreNLPTagging;
 @property(nonatomic) unsigned int topk; // @synthesize topk=_topk;
 @property(nonatomic) int overrideConstellationMinWeight; // @synthesize overrideConstellationMinWeight=_overrideConstellationMinWeight;
 @property(nonatomic) int overrideConstellationMinCount; // @synthesize overrideConstellationMinCount=_overrideConstellationMinCount;
@@ -72,29 +66,27 @@
 @property(retain, nonatomic) NSNumber *overrideBlendAlpha; // @synthesize overrideBlendAlpha=_overrideBlendAlpha;
 @property(nonatomic) _Bool timing; // @synthesize timing=_timing;
 @property(nonatomic) _Bool dontSkip; // @synthesize dontSkip=_dontSkip;
-@property(nonatomic) _Bool debug; // @synthesize debug=_debug;
-@property(nonatomic) _Bool prepareOnly; // @synthesize prepareOnly=_prepareOnly;
+@property(retain, nonatomic) NSSet *allowedTopicTypeTags; // @synthesize allowedTopicTypeTags=_allowedTopicTypeTags;
 @property(nonatomic) long long maxConstellationTopics; // @synthesize maxConstellationTopics=_maxConstellationTopics;
 @property(retain, nonatomic) NSDictionary *itemIds; // @synthesize itemIds=_itemIds;
 @property(nonatomic) _Bool includeHigherLevelTopics; // @synthesize includeHigherLevelTopics=_includeHigherLevelTopics;
-@property(retain, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
 @property(retain, nonatomic) NSString *url; // @synthesize url=_url;
-@property(retain, nonatomic, setter=setContentAuthor:) NSString *contentAuthor; // @synthesize contentAuthor=_contentAuthor;
-@property(retain, nonatomic, setter=setContentKeywords:) NSString *contentKeywords; // @synthesize contentKeywords=_contentKeywords;
-@property(retain, nonatomic, setter=setContentDescription:) NSString *contentDescription; // @synthesize contentDescription=_contentDescription;
-@property(retain, nonatomic, setter=setTitle:) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool textIsRaw; // @synthesize textIsRaw=_textIsRaw;
-@property(retain, nonatomic, setter=setText:) NSString *text; // @synthesize text=_text;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(readonly, nonatomic, getter=isRequestingContentFromActiveApplications) _Bool requestingContentFromActiveApplications;
+- (void)setText:(id)arg1;
 - (void)_executeWithReply:(CDUnknownBlockType)arg1;
 - (void)_postProcessResponse:(id)arg1;
 - (id)execute;
 - (void)executeWithReply:(CDUnknownBlockType)arg1;
 - (id)initForClient:(id)arg1;
 - (id)initWithText:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)capabilitiesWithReply:(CDUnknownBlockType)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 @end

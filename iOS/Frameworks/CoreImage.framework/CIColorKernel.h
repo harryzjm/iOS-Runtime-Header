@@ -20,7 +20,7 @@
 - (void)setPreservesRange:(_Bool)arg1;
 - (_Bool)preservesRange;
 @property(nonatomic) _Bool perservesAlpha;
-- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2 constantTypes:(id)arg3;
 - (id)initWithString:(id)arg1;
 
 @end

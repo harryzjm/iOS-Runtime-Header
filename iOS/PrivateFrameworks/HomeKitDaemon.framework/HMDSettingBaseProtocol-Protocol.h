@@ -10,8 +10,8 @@
 @class NSString, NSUUID;
 
 @protocol HMDSettingBaseProtocol <NSObject, NSSecureCoding>
-@property(readonly) NSString *name;
-@property(readonly) NSUUID *identifier;
-@property(readonly) NSUUID *parentIdentifier;
+@property(readonly, copy) NSString *name;
+@property(readonly, copy) NSUUID *identifier;
+@property(readonly, copy) NSUUID *parentIdentifier;
 @end
 

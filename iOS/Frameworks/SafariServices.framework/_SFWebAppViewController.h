@@ -19,9 +19,15 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
-@property(nonatomic) __weak id <_SFWebAppViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_SFWebAppViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_sf_sceneWillResignActive:(id)arg1;
+- (void)_sf_sceneDidBecomeActive:(id)arg1;
+- (void)_sf_sceneDidEnterBackground:(id)arg1;
+- (void)_sf_sceneWillEnterForeground:(id)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (void)willOpenCurrentPageInBrowser;
+- (void)didDecideShouldShowLinkPreviews:(_Bool)arg1;
 - (void)didResolveRedirectionWithURL:(id)arg1 appLink:(id)arg2;
 - (void)didChangeFullScreen:(_Bool)arg1;
 - (void)initialLoadDidRedirectToURL:(id)arg1;

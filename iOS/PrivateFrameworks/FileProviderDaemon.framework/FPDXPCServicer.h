@@ -20,9 +20,9 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_connection;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak FPDServer *server; // @synthesize server=_server;
-- (void).cxx_destruct;
 - (void)_test_simulateUninstallOfBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_simulateInstallOfBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_callRemoveTrashedItemsOlderThanDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)scheduleActionOperationWithInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsForBundleIDs:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getSyncedRootsURLs:(CDUnknownBlockType)arg1;
 - (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -75,14 +75,17 @@ __attribute__((visibility("hidden")))
 - (void)forceIngestionForItemIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)forceIngestionForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_forceIngestionForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)documentURLFromItemID:(id)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)documentURLFromBookmarkableString:(id)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)providerDomainForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)providerDomainForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)providerDomainsCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unpinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDownloadPolicy:(unsigned long long)arg1 forItemWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)evictItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)evictItemAtURL:(id)arg1 evenIfEnumeratingFP:(_Bool)arg2 andClearACLForConsumer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)startDownloadingItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startProvidingItemAtURL:(id)arg1 fromProviderID:(id)arg2 forConsumerID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)extendSandboxForFileURL:(id)arg1 fromProviderID:(id)arg2 toConsumerID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)extendBookmarkForFileURL:(id)arg1 toConsumerID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

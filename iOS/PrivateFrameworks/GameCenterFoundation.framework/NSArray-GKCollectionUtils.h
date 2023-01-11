@@ -19,7 +19,7 @@
 - (id)_gkMapWithBlock:(CDUnknownBlockType)arg1;
 - (id)_gkMapConcurrentlyWithBlock:(CDUnknownBlockType)arg1;
 - (id)_gkOrderedSet;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)_gkValidatePlayersForReturnFromAPI;
 - (id)_gkInternalsFromPlayers;
 - (id)_gkPlayersFromInternals;

@@ -8,14 +8,14 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKNotificationID, CKRecordID, NSArray, NSNumber, NSString;
+@class CKContainerID, CKNotificationID, CKRecordID, NSArray, NSNumber, NSString;
 
 @interface CKNotification : NSObject <NSSecureCoding>
 {
     _Bool _isPruned;
     long long _notificationType;
     CKNotificationID *_notificationID;
-    NSString *_containerIdentifier;
+    CKRecordID *_subscriptionOwnerUserRecordID;
     NSString *_alertBody;
     NSString *_alertLocalizationKey;
     NSArray *_alertLocalizationArgs;
@@ -31,15 +31,16 @@
     NSString *_soundName;
     NSString *_subscriptionID;
     NSString *_category;
-    CKRecordID *_subscriptionOwnerUserRecordID;
+    CKContainerID *_containerID;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)notificationFromRemoteNotificationDictionary:(id)arg1;
 + (id)_realNotificationFromRemoteNotificationDictionary:(id)arg1;
-@property(copy, nonatomic) CKRecordID *subscriptionOwnerUserRecordID; // @synthesize subscriptionOwnerUserRecordID=_subscriptionOwnerUserRecordID;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property(copy, nonatomic) NSString *category; // @synthesize category=_category;
-@property(copy, nonatomic) NSString *subscriptionID; // @synthesize subscriptionID=_subscriptionID;
+@property(readonly, copy, nonatomic) NSString *subscriptionID; // @synthesize subscriptionID=_subscriptionID;
 @property(copy, nonatomic) NSString *soundName; // @synthesize soundName=_soundName;
 @property(copy, nonatomic) NSNumber *badge; // @synthesize badge=_badge;
 @property(copy, nonatomic) NSString *alertLaunchImage; // @synthesize alertLaunchImage=_alertLaunchImage;
@@ -54,12 +55,14 @@
 @property(copy, nonatomic) NSString *alertLocalizationKey; // @synthesize alertLocalizationKey=_alertLocalizationKey;
 @property(copy, nonatomic) NSString *alertBody; // @synthesize alertBody=_alertBody;
 @property(nonatomic) _Bool isPruned; // @synthesize isPruned=_isPruned;
-@property(copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
+@property(copy, nonatomic) CKRecordID *subscriptionOwnerUserRecordID; // @synthesize subscriptionOwnerUserRecordID=_subscriptionOwnerUserRecordID;
 @property(copy, nonatomic) CKNotificationID *notificationID; // @synthesize notificationID=_notificationID;
 @property(nonatomic) long long notificationType; // @synthesize notificationType=_notificationType;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)setSubscriptionID:(id)arg1;
+- (void)setContainerIdentifier:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *containerIdentifier;
 - (_Bool)isRead;
 - (id)description;
 - (id)CKPropertiesDescription;

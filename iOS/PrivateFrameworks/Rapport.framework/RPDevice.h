@@ -23,6 +23,7 @@
     unsigned int _systemPairState;
     unsigned int _wifiDeviceIEFlags;
     NSString *_accountID;
+    NSData *_bleAuthTag;
     NSString *_contactID;
     NSString *_identifier;
     NSString *_idsDeviceIdentifier;
@@ -50,6 +51,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *wifiSSID; // @synthesize wifiSSID=_wifiSSID;
 @property(retain, nonatomic) id wifiPlatformObject; // @synthesize wifiPlatformObject=_wifiPlatformObject;
 @property(copy, nonatomic) NSData *wifiIEData; // @synthesize wifiIEData=_wifiIEData;
@@ -83,9 +85,9 @@
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property(readonly, copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
+@property(readonly, copy, nonatomic) NSData *bleAuthTag; // @synthesize bleAuthTag=_bleAuthTag;
 @property(readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;
 @property(readonly, copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
-- (void).cxx_destruct;
 - (void)updateWithWiFiDevice:(id)arg1 changes:(unsigned int)arg2;
 - (void)updateWithSystemInfo:(id)arg1;
 - (unsigned int)updateWithSFDevice:(id)arg1 changes:(unsigned int)arg2;

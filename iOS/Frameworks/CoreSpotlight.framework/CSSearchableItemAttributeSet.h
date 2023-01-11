@@ -14,6 +14,7 @@
 @interface CSSearchableItemAttributeSet : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _hasCodedCustomAttributes;
+    _Bool _hasKnownKeysDictionary;
     NSDictionary *_attributes;
     NSMutableDictionary *_mutableAttributes;
     NSMutableDictionary *_customAttributes;
@@ -29,6 +30,8 @@
 + (id)_allKeys;
 + (_Bool)supportsSecureCoding;
 + (id)_requiredAttributesForContentType:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasKnownKeysDictionary; // @synthesize hasKnownKeysDictionary=_hasKnownKeysDictionary;
 @property(readonly, nonatomic) _Bool hasCodedCustomAttributes; // @synthesize hasCodedCustomAttributes=_hasCodedCustomAttributes;
 @property(readonly, nonatomic) CDStruct_b7fac349 contentObj; // @synthesize contentObj=_contentObj;
 @property(readonly, nonatomic) CDStruct_b7fac349 codedCustomAttributes; // @synthesize codedCustomAttributes=_codedCustomAttributes;
@@ -36,7 +39,6 @@
 @property(readonly, nonatomic) CSDecoder *contentDecoder; // @synthesize contentDecoder=_contentDecoder;
 @property(readonly, nonatomic) CSDecoder *decoder; // @synthesize decoder=_decoder;
 @property long long searchableItemFlags; // @synthesize searchableItemFlags=_searchableItemFlags;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;
@@ -78,7 +80,9 @@
 @property(readonly) NSMutableDictionary *customAttributes; // @synthesize customAttributes=_customAttributes;
 @property(readonly) NSMutableDictionary *mutableAttributes; // @synthesize mutableAttributes=_mutableAttributes;
 - (id)initWithAttributes:(id)arg1;
+- (id)initWithContentType:(id)arg1;
 - (id)initWithItemContentType:(id)arg1;
+- (id)initWithKnownKeysDictionary:(id)arg1;
 - (id)initWithMutableDictionary:(id)arg1;
 - (id)initWithAttributeSet:(id)arg1;
 - (id)init;
@@ -511,6 +515,7 @@
 - (void)setAttachmentTypes:(id)arg1;
 - (id)attachmentNames;
 - (void)setAttachmentNames:(id)arg1;
+@property(copy) NSArray *autocompleteTriggers;
 @property(copy) NSString *textContentDataSource;
 @property(retain, nonatomic, getter=isReaderView) NSNumber *readerView;
 - (void)_standardizeMarkAs;
@@ -566,8 +571,10 @@
 @property(copy) NSString *ownerIdentifier;
 @property(copy) NSString *ownerName;
 @property(copy) NSString *parentFileItemID;
+@property(copy) NSString *FPFilename;
 @property(copy) NSString *fileItemID;
 @property(copy) NSString *fileProviderID;
+@property(retain) NSNumber *shortcutAvailability;
 @property(copy) NSString *punchoutLabel;
 @property(retain) NSNumber *backgroundRunnable;
 @property(copy) NSString *suggestedInvocationPhrase;

@@ -27,6 +27,7 @@
 @property(nonatomic) _Bool isResponse; // @dynamic isResponse;
 @property(retain, nonatomic) NSSet *keywords; // @dynamic keywords;
 @property(retain, nonatomic) NSString *locationUUID; // @dynamic locationUUID;
+@property(nonatomic) _Bool mailShareSheetDeletionCandidate; // @dynamic mailShareSheetDeletionCandidate;
 @property(nonatomic) long long mechanism; // @dynamic mechanism;
 @property(nonatomic) long long recipientCount; // @dynamic recipientCount;
 @property(retain, nonatomic) NSSet *recipients; // @dynamic recipients;

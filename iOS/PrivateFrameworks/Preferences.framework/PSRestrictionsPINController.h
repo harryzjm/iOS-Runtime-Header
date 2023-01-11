@@ -21,6 +21,8 @@
 - (id)stringsBundle;
 - (_Bool)validatePIN:(id)arg1;
 - (int)pinLength;
+- (id)title;
+- (id)pinInstructionsPrompt;
 - (id)init;
 
 @end

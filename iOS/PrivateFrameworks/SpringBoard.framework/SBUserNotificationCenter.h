@@ -10,9 +10,9 @@
 {
 }
 
-+ (void)_userNotificationDone:(id)arg1;
 + (void)startUserNotificationCenter;
-+ (void)dispatchUserNotificationFromMachMessage:(CDStruct_a54b61c1 *)arg1 auditToken:(const CDStruct_6ad76789 *)arg2;
++ (void)dispatchUserNotification:(id)arg1 flags:(int)arg2 replyPort:(unsigned int)arg3 auditToken:(id)arg4;
++ (void)_userNotificationDone:(id)arg1;
 
 @end
 

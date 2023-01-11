@@ -15,8 +15,10 @@
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributes;
     unsigned int _offset;
+    unsigned int _zilchPathIndex;
     struct {
         unsigned int has_offset:1;
+        unsigned int has_zilchPathIndex:1;
     } _flags;
 }
 
@@ -33,8 +35,13 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasZilchPathIndex;
+@property(nonatomic) unsigned int zilchPathIndex;
 @property(nonatomic) _Bool hasOffset;
 @property(nonatomic) unsigned int offset;
 - (id)attributeAtIndex:(unsigned long long)arg1;

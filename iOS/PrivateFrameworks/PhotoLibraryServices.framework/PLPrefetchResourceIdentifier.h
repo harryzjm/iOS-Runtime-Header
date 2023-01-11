@@ -17,10 +17,11 @@
     unsigned long long _cplType;
 }
 
++ (id)resourceDescriptionWithAssetUuid:(id)arg1 resourceVersion:(unsigned int)arg2 cplType:(unsigned long long)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long cplType; // @synthesize cplType=_cplType;
 @property(readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 @property(readonly, nonatomic) NSString *assetUuid; // @synthesize assetUuid=_assetUuid;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

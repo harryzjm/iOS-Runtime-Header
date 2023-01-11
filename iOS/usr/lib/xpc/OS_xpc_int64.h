@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)load;
 - (unsigned long long)retainCount;
 - (_Bool)allowsWeakReference;
 - (_Bool)retainWeakReference;

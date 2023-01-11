@@ -10,6 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)accessibilityContainerType;
 - (void)assistFormNode:(id)arg1;
 
 @end

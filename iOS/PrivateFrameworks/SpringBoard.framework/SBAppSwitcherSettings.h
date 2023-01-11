@@ -40,12 +40,21 @@
     double _mDarkening;
     double _bDarkening;
     double _maxDarkening;
-    long long _selectionHighlightStyle;
-    double _highlightSquishyScale;
-    double _highlightDimOpacity;
+    double _tetheredInsertionRemovalInsetForDeterminingVisibility;
+    double _switcherCardScaleWhileTouched;
+    double _switcherCardScaleWhileCursorHovered;
     double _switcherCardShadowRadius;
     double _switcherCardShadowOpacity;
-    double _switcherCardShadowOffset;
+    double _switcherCardShadowOffsetHorizontal;
+    double _switcherCardShadowOffsetVertical;
+    double _switcherCenterYOffsetPercentOfScreenHeight;
+    double _switcherCardShadowRadiusWhileTouched;
+    double _switcherCardShadowOpacityWhileTouched;
+    double _switcherCardShadowOffsetHorizontalWhileTouched;
+    double _switcherCardShadowOffsetVerticalWhileTouched;
+    double _cursorHoverShadowRadiusInterpolationAmount;
+    double _cursorHoverShadowOpacityInterpolationAmount;
+    double _cursorHoverShadowOffsetInterpolationAmount;
     double _appExposeNonFloatingSingleRowScale;
     double _appExposeNonFloatingDoubleRowScale;
     double _appExposeFloatingDoubleRowScale;
@@ -89,6 +98,7 @@
 }
 
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
 @property _Bool showFloats; // @synthesize showFloats=_showFloats;
 @property _Bool simplicityOptionNoSnapshotBkg; // @synthesize simplicityOptionNoSnapshotBkg=_simplicityOptionNoSnapshotBkg;
 @property _Bool simplicityOptionNoControlCenter; // @synthesize simplicityOptionNoControlCenter=_simplicityOptionNoControlCenter;
@@ -143,12 +153,21 @@
 @property double appExposeFloatingDoubleRowScale; // @synthesize appExposeFloatingDoubleRowScale=_appExposeFloatingDoubleRowScale;
 @property double appExposeNonFloatingDoubleRowScale; // @synthesize appExposeNonFloatingDoubleRowScale=_appExposeNonFloatingDoubleRowScale;
 @property double appExposeNonFloatingSingleRowScale; // @synthesize appExposeNonFloatingSingleRowScale=_appExposeNonFloatingSingleRowScale;
-@property double switcherCardShadowOffset; // @synthesize switcherCardShadowOffset=_switcherCardShadowOffset;
+@property double cursorHoverShadowOffsetInterpolationAmount; // @synthesize cursorHoverShadowOffsetInterpolationAmount=_cursorHoverShadowOffsetInterpolationAmount;
+@property double cursorHoverShadowOpacityInterpolationAmount; // @synthesize cursorHoverShadowOpacityInterpolationAmount=_cursorHoverShadowOpacityInterpolationAmount;
+@property double cursorHoverShadowRadiusInterpolationAmount; // @synthesize cursorHoverShadowRadiusInterpolationAmount=_cursorHoverShadowRadiusInterpolationAmount;
+@property double switcherCardShadowOffsetVerticalWhileTouched; // @synthesize switcherCardShadowOffsetVerticalWhileTouched=_switcherCardShadowOffsetVerticalWhileTouched;
+@property double switcherCardShadowOffsetHorizontalWhileTouched; // @synthesize switcherCardShadowOffsetHorizontalWhileTouched=_switcherCardShadowOffsetHorizontalWhileTouched;
+@property double switcherCardShadowOpacityWhileTouched; // @synthesize switcherCardShadowOpacityWhileTouched=_switcherCardShadowOpacityWhileTouched;
+@property double switcherCardShadowRadiusWhileTouched; // @synthesize switcherCardShadowRadiusWhileTouched=_switcherCardShadowRadiusWhileTouched;
+@property double switcherCenterYOffsetPercentOfScreenHeight; // @synthesize switcherCenterYOffsetPercentOfScreenHeight=_switcherCenterYOffsetPercentOfScreenHeight;
+@property double switcherCardShadowOffsetVertical; // @synthesize switcherCardShadowOffsetVertical=_switcherCardShadowOffsetVertical;
+@property double switcherCardShadowOffsetHorizontal; // @synthesize switcherCardShadowOffsetHorizontal=_switcherCardShadowOffsetHorizontal;
 @property double switcherCardShadowOpacity; // @synthesize switcherCardShadowOpacity=_switcherCardShadowOpacity;
 @property double switcherCardShadowRadius; // @synthesize switcherCardShadowRadius=_switcherCardShadowRadius;
-@property double highlightDimOpacity; // @synthesize highlightDimOpacity=_highlightDimOpacity;
-@property double highlightSquishyScale; // @synthesize highlightSquishyScale=_highlightSquishyScale;
-@property long long selectionHighlightStyle; // @synthesize selectionHighlightStyle=_selectionHighlightStyle;
+@property double switcherCardScaleWhileCursorHovered; // @synthesize switcherCardScaleWhileCursorHovered=_switcherCardScaleWhileCursorHovered;
+@property double switcherCardScaleWhileTouched; // @synthesize switcherCardScaleWhileTouched=_switcherCardScaleWhileTouched;
+@property double tetheredInsertionRemovalInsetForDeterminingVisibility; // @synthesize tetheredInsertionRemovalInsetForDeterminingVisibility=_tetheredInsertionRemovalInsetForDeterminingVisibility;
 @property double maxDarkening; // @synthesize maxDarkening=_maxDarkening;
 @property double bDarkening; // @synthesize bDarkening=_bDarkening;
 @property double mDarkening; // @synthesize mDarkening=_mDarkening;
@@ -164,7 +183,7 @@
 @property _Bool shouldRoundCornersDuringSwipeUp; // @synthesize shouldRoundCornersDuringSwipeUp=_shouldRoundCornersDuringSwipeUp;
 @property _Bool useAsynchronousRendering; // @synthesize useAsynchronousRendering=_useAsynchronousRendering;
 @property long long switcherStyle; // @synthesize switcherStyle=_switcherStyle;
-- (void).cxx_destruct;
+- (double)_spacingBetweenLeadingEdgeAndIcon;
 - (long long)effectiveSwitcherStyle;
 - (_Bool)shouldSimplifyForOptions:(long long)arg1;
 @property long long simplicityOptions; // @dynamic simplicityOptions;

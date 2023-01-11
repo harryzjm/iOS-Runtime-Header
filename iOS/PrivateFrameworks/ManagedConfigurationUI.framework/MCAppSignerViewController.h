@@ -4,27 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
-
-@class MCUIAppSigner, NSObject, UIAlertController;
+@class MCUIAppSigner, NSObject;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface MCAppSignerViewController : UITableViewController
+@interface MCAppSignerViewController
 {
     _Bool _isNetworkReachable;
     MCUIAppSigner *_appSigner;
-    UIAlertController *_activeAlertController;
     NSObject<OS_dispatch_group> *_trustActionGroup;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *trustActionGroup; // @synthesize trustActionGroup=_trustActionGroup;
 @property(nonatomic) _Bool isNetworkReachable; // @synthesize isNetworkReachable=_isNetworkReachable;
-@property(retain, nonatomic) UIAlertController *activeAlertController; // @synthesize activeAlertController=_activeAlertController;
 @property(retain, nonatomic) MCUIAppSigner *appSigner; // @synthesize appSigner=_appSigner;
-- (void).cxx_destruct;
-- (void)contentSizeCategoryDidChangeNotification:(id)arg1;
-- (void)_cancelActiveAlertController:(_Bool)arg1;
 - (void)_presentAppRemovalAlert;
 - (void)_presentNetworkRequiredAlert;
 - (void)_presentVerifyAppAlert;
@@ -47,12 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)networkReachabilityChanged:(id)arg1;
 - (void)effectiveSettingsChanged:(id)arg1;
 - (void)appSignerApplicationsChanged:(id)arg1;
-- (_Bool)canBeShownFromSuspendedState;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)didReceiveMemoryWarning;
-- (void)viewDidLoad;
 - (void)dealloc;
 - (void)_setup;
 - (id)initWithStyle:(long long)arg1;

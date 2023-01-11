@@ -12,10 +12,11 @@
     id _observedObject;
     CDUnknownBlockType _handlerBlock;
     NSString *_keyPath;
+    id _strongSelf;
 }
 
-@property(retain) id owner; // @synthesize owner=_owner;
 - (void).cxx_destruct;
+@property(retain) id owner; // @synthesize owner=_owner;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setHandlerBlock:(CDUnknownBlockType)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3;
 - (void)_tearDownObserving;
@@ -24,6 +25,8 @@
 - (void)_primitiveCancelObservation;
 - (void)cancel;
 - (id)initWithObservedObject:(id)arg1 owner:(id)arg2 creationBacktrace:(id)arg3;
+- (id)observedKeyPath;
+- (Class)observedObjectClass;
 
 @end
 

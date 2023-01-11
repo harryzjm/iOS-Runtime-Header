@@ -12,6 +12,7 @@
 {
     _Bool _allowLocalEquivalencies;
     _Bool _shouldIgnoreCache;
+    _Bool _shouldIgnoreExpiration;
     _Bool _shouldRequireCachedResults;
     unsigned long long _reason;
     NSArray *_itemIdentifiers;
@@ -26,7 +27,7 @@
     ICUserIdentityStore *_userIdentityStore;
 }
 
-+ (id)itemIdentifiersForModelObjects:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) ICUserIdentityStore *userIdentityStore; // @synthesize userIdentityStore=_userIdentityStore;
 @property(copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property(copy, nonatomic) ICUserIdentity *delegatedUserIdentity; // @synthesize delegatedUserIdentity=_delegatedUserIdentity;
@@ -34,6 +35,7 @@
 @property(nonatomic) long long personalizationStyle; // @synthesize personalizationStyle=_personalizationStyle;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(nonatomic) _Bool shouldRequireCachedResults; // @synthesize shouldRequireCachedResults=_shouldRequireCachedResults;
+@property(nonatomic) _Bool shouldIgnoreExpiration; // @synthesize shouldIgnoreExpiration=_shouldIgnoreExpiration;
 @property(nonatomic) _Bool shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property(nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
 @property(copy, nonatomic) NSString *platform; // @synthesize platform=_platform;
@@ -41,7 +43,6 @@
 @property(copy, nonatomic) NSArray *itemIdentifiers; // @synthesize itemIdentifiers=_itemIdentifiers;
 @property(nonatomic) unsigned long long reason; // @synthesize reason=_reason;
 @property(nonatomic) _Bool allowLocalEquivalencies; // @synthesize allowLocalEquivalencies=_allowLocalEquivalencies;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) ICStorePlatformRequest *storePlatformRequest;
 @property(copy, nonatomic) NSString *requestingBundleVersion;
 @property(copy, nonatomic) NSString *requestingBundleIdentifier;

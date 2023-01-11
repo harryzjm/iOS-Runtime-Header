@@ -6,13 +6,14 @@
 
 #import <WebKit/PDFHostViewControllerDelegate-Protocol.h>
 #import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
+#import <WebKit/WKShareSheetDelegate-Protocol.h>
 #import <WebKit/WKWebViewContentProvider-Protocol.h>
 #import <WebKit/_WKWebViewPrintProvider-Protocol.h>
 
 @class NSData, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface WKPDFView <_WKWebViewPrintProvider, PDFHostViewControllerDelegate, WKActionSheetAssistantDelegate, WKWebViewContentProvider>
+@interface WKPDFView <_WKWebViewPrintProvider, PDFHostViewControllerDelegate, WKActionSheetAssistantDelegate, WKShareSheetDelegate, WKWebViewContentProvider>
 {
     struct RetainPtr<WKActionSheetAssistant> _actionSheetAssistant;
     struct RetainPtr<NSData> _data;
@@ -21,29 +22,31 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSString> _findString;
     unsigned long long _findStringCount;
     unsigned long long _findStringMaxCount;
-    struct RetainPtr<UIView> _fixedOverlayView;
+    RetainPtr_1ac284e4 _fixedOverlayView;
     struct Optional<unsigned long> _focusedSearchResultIndex;
     long long _focusedSearchResultPendingOffset;
     struct RetainPtr<PDFHostViewController> _hostViewController;
     struct CGSize _overlaidAccessoryViewsInset;
-    struct RetainPtr<UIView> _pageNumberIndicator;
+    RetainPtr_1ac284e4 _pageNumberIndicator;
     struct CString _passwordForPrinting;
     struct InteractionInformationAtPosition _positionInformation;
     struct RetainPtr<NSString> _suggestedFilename;
     struct WeakObjCPtr<WKWebView> _webView;
     struct RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
+    struct RetainPtr<WKShareSheet> _shareSheet;
 }
 
 + (_Bool)web_requiresCustomSnapshotting;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)dataDetectionContextForActionSheetAssistant:(id)arg1;
+- (id)dataDetectionContextForActionSheetAssistant:(id)arg1 positionInformation:(const struct InteractionInformationAtPosition *)arg2;
 - (RetainPtr_f649c0c3)actionSheetAssistant:(id)arg1 decideActionsForElement:(id)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (_Bool)actionSheetAssistant:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
+- (void)shareSheetDidDismiss:(id)arg1;
 - (void)actionSheetAssistant:(id)arg1 shareElementWithURL:(id)arg2 rect:(struct CGRect)arg3;
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
-- (void)actionSheetAssistant:(id)arg1 performAction:(int)arg2;
-- (Optional_2b0652bb)positionInformationForActionSheetAssistant:(id)arg1;
+- (void)actionSheetAssistant:(id)arg1 performAction:(_Bool)arg2;
+- (Optional_b5290310)positionInformationForActionSheetAssistant:(id)arg1;
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
 - (void)pdfHostViewController:(id)arg1 didLongPressPageIndex:(long long)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;
 - (void)pdfHostViewController:(id)arg1 didLongPressURL:(id)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;

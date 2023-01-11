@@ -14,8 +14,8 @@
 }
 
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
-+ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollection:(id)arg2 person:(id)arg3;
-+ (_Bool)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
++ (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 - (void).cxx_destruct;
 - (void)completeUserInteractionTaskWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;

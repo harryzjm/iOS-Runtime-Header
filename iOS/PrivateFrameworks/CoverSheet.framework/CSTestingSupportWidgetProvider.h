@@ -17,6 +17,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)newWidgetListViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
 - (id)newWidgetGroupViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
 - (id)init;
 

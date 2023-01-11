@@ -15,14 +15,15 @@
 
 + (id)managerForUser:(unsigned int)arg1;
 + (id)defaultManager;
-@property(retain) PKDaemonClient *client; // @synthesize client=_client;
 - (void).cxx_destruct;
+@property(retain) PKDaemonClient *client; // @synthesize client=_client;
 - (void)updateExtensionStatesForPlugIns:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (_Bool)releaseHold:(id)arg1 withError:(id *)arg2;
 - (void)releaseHold:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)releaseHold:(id)arg1;
 - (void)holdRequest:(id)arg1 flags:(unsigned long long)arg2 result:(CDUnknownBlockType)arg3;
 - (id)terminatePlugInsInApplication:(id)arg1 options:(long long)arg2 withError:(id *)arg3;
+- (_Bool)terminatePlugInAtURL:(id)arg1 withError:(id *)arg2;
 - (id)forceHoldPlugIn:(id)arg1 withError:(id *)arg2;
 - (id)holdPlugInsInApplication:(id)arg1 withError:(id *)arg2;
 - (void)terminatePlugInsInApplication:(id)arg1 options:(long long)arg2 result:(CDUnknownBlockType)arg3;

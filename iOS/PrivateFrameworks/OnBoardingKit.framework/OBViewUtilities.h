@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (long long)interfaceOrientationForKeyWindow;
 + (_Bool)shouldUseAccessibilityLayout;
 + (id)pointImageOfColor:(id)arg1;
 + (_Bool)_navigationBarTitleShouldShowForHeaderView:(id)arg1 inScrollView:(id)arg2;

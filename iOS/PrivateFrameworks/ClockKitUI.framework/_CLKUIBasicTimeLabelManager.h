@@ -29,21 +29,33 @@
     _Bool _cachedOpticalEdgeInsetsIsValid;
     _Bool _showSeconds;
     UIColor *_textColor;
+    NSAttributedString *_minutesBlinkerAttributedText;
+    NSAttributedString *_secondsBlinkerAttributedText;
+    struct _NSRange _minutesBlinkerRange;
+    struct _NSRange _secondsBlinkerRange;
+    struct CGRect _boundingRectOfMinutesBlinkerAttributedText;
+    struct CGRect _boundingRectOfSecondsBlinkerAttributedText;
     _Bool _animationsPaused;
     _Bool _showsBlinker;
     _Bool _showsNumbers;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showsNumbers; // @synthesize showsNumbers=_showsNumbers;
 @property(nonatomic) _Bool showsBlinker; // @synthesize showsBlinker=_showsBlinker;
 @property(nonatomic) _Bool showSeconds; // @synthesize showSeconds=_showSeconds;
 @property(nonatomic) _Bool animationsPaused; // @synthesize animationsPaused=_animationsPaused;
-- (void).cxx_destruct;
 - (id)_attributedTextShowingBlinker:(_Bool)arg1 numbers:(_Bool)arg2;
+- (struct CGRect)_boundingRectOfSecondsBlinker;
+- (struct CGRect)_boundingRectOfMinutesBlinker;
+- (struct CGRect)_boundingRectOfBlinkerAtRange:(struct _NSRange)arg1;
+- (id)secondsDesignatorAttributedText;
+- (id)minutesDesignatorAttributedText;
 - (void)_updateAttributedText;
 - (void)enumerateUnderlyingLabelsWithBlock:(CDUnknownBlockType)arg1;
 @property(retain, nonatomic) UIColor *textColor;
 @property(readonly, nonatomic) struct UIEdgeInsets opticalInsets;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)sizeViewToFit;
 - (struct CGSize)sizeThatFits;
 @property(readonly, nonatomic) struct CGSize intrinsicSize;

@@ -20,22 +20,26 @@
     NSString *_setupCode;
     NSString *_setupID;
     NSNumber *_categoryNumber;
-    NSNumber *_flags;
+    NSString *_productData;
+    NSString *_productNumber;
     NSURL *_setupPayloadURL;
+    NSNumber *_flags;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSURL *setupPayloadURL; // @synthesize setupPayloadURL=_setupPayloadURL;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *flags; // @synthesize flags=_flags;
+@property(retain, nonatomic) NSURL *setupPayloadURL; // @synthesize setupPayloadURL=_setupPayloadURL;
 @property(nonatomic) _Bool paired; // @synthesize paired=_paired;
 @property(nonatomic) _Bool supportsBTLE; // @synthesize supportsBTLE=_supportsBTLE;
 @property(nonatomic) _Bool supportsWAC; // @synthesize supportsWAC=_supportsWAC;
 @property(nonatomic) _Bool supportsIP; // @synthesize supportsIP=_supportsIP;
+@property(retain, nonatomic) NSString *productNumber; // @synthesize productNumber=_productNumber;
+@property(retain, nonatomic) NSString *productData; // @synthesize productData=_productData;
 @property(retain, nonatomic) NSNumber *categoryNumber; // @synthesize categoryNumber=_categoryNumber;
 @property(retain, nonatomic) NSString *setupID; // @synthesize setupID=_setupID;
 @property(retain, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
 @property(retain, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

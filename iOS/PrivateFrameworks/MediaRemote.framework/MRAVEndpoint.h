@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVOutputDevice, MRExternalDevice, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf, _MROriginProtobuf;
+@class MRAVOutputDevice, MRExternalDevice, MROrigin, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf;
 
 @interface MRAVEndpoint : NSObject
 {
@@ -15,30 +15,22 @@
     _Bool _registeredForConnectionStateDidChangeNotifications;
     NSTimer *_connectionTimeoutTimer;
     _Bool _outputDevicesDidChangeNotificationScheduled;
-    _Bool _proxyGroupPlayer;
     long long _connectionType;
     NSString *_localizedName;
     NSString *_uniqueIdentifier;
 }
 
-+ (void)_modifyOutputDevices:(id)arg1 inGroup:(id)arg2 queue:(id)arg3 modifyDevices:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
-+ (id)_notificationSerialQueue;
-+ (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(retain, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
-@property(nonatomic, getter=isProxyGroupPlayer) _Bool proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
 @property(readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
-- (void).cxx_destruct;
-- (id)_initiatorStringWithInitiator:(id)arg1 uid:(id)arg2;
-- (void)_callAllCompletionHandlersWithError:(id)arg1;
 - (void)_externalDeviceConnectionStateDidChangeNotification:(id)arg1;
-- (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 settingDevices:(id)arg3 replyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (_Bool)containsOutputDeviceWithUID:(id)arg1;
 - (_Bool)effectivelyEqual:(id)arg1;
 - (id)outputDeviceUIDsMatchingPredicate:(CDUnknownBlockType)arg1;
 - (id)outputDevicesMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scheduleEndpointOutputDevicesDidChangeNotification;
-- (void)_prepareToMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)canMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)migrateToEndpoint:(id)arg1 request:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)migrateToLogicalOutputDevice:(id)arg1 request:(id)arg2 initiator:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -51,16 +43,17 @@
 - (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)connectToExternalDeviceWithUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic, getter=isCompanionEndpoint) _Bool companionEndpoint;
 @property(readonly, nonatomic, getter=isLocalEndpoint) _Bool localEndpoint;
-@property(readonly, nonatomic) _MROriginProtobuf *origin;
+@property(readonly, nonatomic) MROrigin *origin;
 @property(readonly, nonatomic) NSDictionary *jsonEncodableDictionaryRepresentation;
 @property(readonly, nonatomic) NSString *shortDescription;
-- (_Bool)isVolumeControlAvailable;
+@property(readonly, nonatomic, getter=isProxyGroupPlayer) _Bool proxyGroupPlayer;
 @property(readonly, nonatomic) _Bool canModifyGroupMembership;
 @property(readonly, nonatomic) NSString *debugName;
 @property(readonly, nonatomic) MRAVOutputDevice *designatedGroupLeader;
-@property(readonly, nonatomic) MRExternalDevice *externalDevice;
+@property(retain, nonatomic) MRExternalDevice *externalDevice;
 @property(readonly, nonatomic) unsigned long long logicalOutputDeviceCount;
 @property(readonly, nonatomic) NSArray *outputDeviceUIDs;
 @property(readonly, nonatomic) NSArray *personalOutputDevices;

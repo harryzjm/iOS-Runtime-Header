@@ -16,6 +16,7 @@
 @property(retain, nonatomic) NSString *importSessionID;
 @property(readonly, nonatomic) _Bool shouldDeleteWhenEmpty;
 @property(readonly, nonatomic) _Bool canContributeToCloudSharedAlbum;
+@property(readonly, nonatomic) _Bool isProjectAlbum;
 @property(readonly, nonatomic) _Bool isUserLibraryAlbum;
 @property(readonly, nonatomic) _Bool isRecentlyAddedAlbum;
 @property(readonly, nonatomic) _Bool isMultipleContributorCloudSharedAlbum;
@@ -32,7 +33,6 @@
 @property(readonly, nonatomic) _Bool isLibrary;
 @property(readonly, retain, nonatomic) NSObject *posterImage;
 @property(nonatomic) _Bool hasUnseenContentBoolValue;
-@property(readonly, retain, nonatomic) NSMutableOrderedSet *mutableAssets;
 @property(readonly, nonatomic) int kindValue;
 @property(readonly, retain, nonatomic) NSNumber *kind;
 @property(readonly, nonatomic) PLPhotoLibrary *photoLibrary;
@@ -42,6 +42,7 @@
 @optional
 @property(nonatomic) unsigned long long batchSize;
 @property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, retain, nonatomic) NSMutableOrderedSet *mutableAssets;
 - (void)setUINotificationsEnabled:(_Bool)arg1;
 - (NSMutableIndexSet *)filteredIndexesForPredicate:(NSPredicate *)arg1;
 @end

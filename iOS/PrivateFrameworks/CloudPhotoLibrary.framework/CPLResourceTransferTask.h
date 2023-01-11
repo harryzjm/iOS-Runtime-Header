@@ -14,25 +14,33 @@
 {
     _Bool _highPriority;
     _Bool _cancelled;
-    NSString *_taskIdentifier;
     CPLResource *_resource;
+    NSString *_taskIdentifier;
+    unsigned long long _intent;
 }
 
++ (_Bool)isHighPriorityForIntent:(unsigned long long)arg1;
++ (id)intentsToBackgroundDownload;
++ (id)descriptionForIntent:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
-@property(nonatomic, getter=isHighPriority) _Bool highPriority; // @synthesize highPriority=_highPriority;
-@property(retain, nonatomic) CPLResource *resource; // @synthesize resource=_resource;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(nonatomic) unsigned long long intent; // @synthesize intent=_intent;
+@property(nonatomic, getter=isHighPriority) _Bool highPriority; // @synthesize highPriority=_highPriority;
+@property(readonly, copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
+@property(readonly, nonatomic) CPLResource *resource; // @synthesize resource=_resource;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)cancelTask;
 - (void)launch;
-@property(copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
+- (void)setTaskIdentifier:(id)arg1;
+- (void)setResource:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (Class)classForKeyedArchiver;
 - (Class)classForCoder;
+- (id)initWithResource:(id)arg1 taskIdentifier:(id)arg2;
 
 @end
 

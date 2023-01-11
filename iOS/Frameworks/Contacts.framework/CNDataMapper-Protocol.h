@@ -6,7 +6,7 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
+@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
 @protocol CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
@@ -43,6 +43,7 @@
 - (_Bool)setDefaultAccountIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)writeFavoritesPropertyListData:(NSData *)arg1 toPath:(NSString *)arg2 error:(id *)arg3;
 - (NSArray *)favoritesEntryDictionariesAtPath:(NSString *)arg1 error:(id *)arg2;
+- (CNResult *)currentHistoryAnchor;
 - (NSData *)currentHistoryToken;
 - (_Bool)executeChangeHistoryClearRequest:(CNChangeHistoryClearRequest *)arg1 error:(id *)arg2;
 - (CNChangeHistoryResult *)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 error:(id *)arg2;

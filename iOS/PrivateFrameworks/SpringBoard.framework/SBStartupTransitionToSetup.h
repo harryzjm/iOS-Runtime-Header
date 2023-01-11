@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBApplicationController, SBBulletinWindowController, SBFUserAuthenticationController, SBInitialRestartState, SBLockScreenManager, SBSetupManager;
+@class SBApplicationController, SBBannerManager, SBFUserAuthenticationController, SBInitialRestartState, SBLockScreenManager, SBSetupManager;
 
 @interface SBStartupTransitionToSetup
 {
-    SBBulletinWindowController *_bulletinWindowController;
+    SBBannerManager *_bannerManager;
     SBFUserAuthenticationController *_authController;
     SBApplicationController *_appController;
     SBSetupManager *_setupManager;

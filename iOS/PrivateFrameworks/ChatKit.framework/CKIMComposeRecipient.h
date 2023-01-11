@@ -15,8 +15,9 @@
     IMHandle *_handle;
 }
 
-@property(readonly, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
 - (void)setIdentifier:(int)arg1;
 - (_Bool)isRemovableFromSearchResults;
 - (id)objectForDragType:(id)arg1;
@@ -28,10 +29,11 @@
 - (id)compositeName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)unlocalizedLabel;
-- (int)identifier;
 - (id)commentedAddress;
 - (id)address;
 - (void)releaseIMReferences;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithHandle:(id)arg1;
 
 // Remaining properties

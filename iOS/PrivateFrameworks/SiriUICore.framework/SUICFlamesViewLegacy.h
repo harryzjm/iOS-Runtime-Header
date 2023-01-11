@@ -58,7 +58,7 @@
     _Bool _showAura;
     _Bool _freezesAura;
     _Bool _renderInBackground;
-    _Bool _paused;
+    _Bool _flamesPaused;
     _Bool _accelerateTransitions;
     _Bool _reduceFrameRate;
     _Bool _reduceThinkingFramerate;
@@ -80,10 +80,10 @@
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2;
 + (_Bool)_supportsAdaptiveFramerate;
 + (Class)layerClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool reduceThinkingFramerate; // @synthesize reduceThinkingFramerate=_reduceThinkingFramerate;
 @property(nonatomic) _Bool reduceFrameRate; // @synthesize reduceFrameRate=_reduceFrameRate;
 @property(nonatomic) _Bool accelerateTransitions; // @synthesize accelerateTransitions=_accelerateTransitions;
-@property(nonatomic) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic) _Bool renderInBackground; // @synthesize renderInBackground=_renderInBackground;
 @property(retain, nonatomic) UIColor *dictationColor; // @synthesize dictationColor=_dictationColor;
 @property(nonatomic) __weak id <SUICFlamesViewProvidingDelegate> flamesDelegate; // @synthesize flamesDelegate=_flamesDelegate;
@@ -94,7 +94,6 @@
 @property(nonatomic) struct CGRect activeFrame; // @synthesize activeFrame=_activeFrame;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (float)_currentMicPowerLevel;
 - (void)_didFinishTransition;
@@ -129,6 +128,7 @@
 - (void)resetAndReinitialize:(_Bool)arg1;
 - (void)_prewarmShaders;
 - (void)prewarmShadersForCurrentMode;
+@property(nonatomic) _Bool flamesPaused; // @synthesize flamesPaused=_flamesPaused;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(_Bool)arg1;

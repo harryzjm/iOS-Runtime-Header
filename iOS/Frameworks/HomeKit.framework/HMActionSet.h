@@ -33,12 +33,12 @@
 + (id)allowedActionClasses;
 + (_Bool)supportsSecureCoding;
 + (id)shortcutsComponentActionSet;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) HMMutableArray *currentActions; // @synthesize currentActions=_currentActions;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
 @property(nonatomic) _Bool executionInProgress; // @synthesize executionInProgress=_executionInProgress;
-- (void).cxx_destruct;
 - (id)encodeAsProtoBuf;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
@@ -63,8 +63,7 @@
 - (void)addAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setApplicationData:(id)arg1;
-@property(readonly, nonatomic) HMApplicationData *applicationData;
+@property(retain, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (_Bool)requiresDeviceUnlock;
@@ -73,10 +72,10 @@
 - (void)setLastExecutionDate:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *lastExecutionDate; // @synthesize lastExecutionDate=_lastExecutionDate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)_invalidate;
-- (void)_unconfigure;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (id)initWithName:(id)arg1 type:(id)arg2 uuid:(id)arg3;
 - (id)init;
 - (id)initWithShortcutsDictionaryRepresentation:(id)arg1 home:(id)arg2;

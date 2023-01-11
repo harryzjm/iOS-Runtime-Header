@@ -6,7 +6,7 @@
 
 #import <Preferences/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSError, NSHTTPURLResponse, NSMutableURLRequest, NSString, NSURLAuthenticationChallenge, NSURLResponse, RUIElement, RUIObjectModel, RUIPage, RemoteUIController, UINavigationController;
+@class NSArray, NSDictionary, NSError, NSHTTPURLResponse, NSMutableURLRequest, NSString, NSURLAuthenticationChallenge, NSURLRequest, NSURLResponse, RUIElement, RUIObjectModel, RUIPage, RemoteUIController, UINavigationController;
 
 @protocol RemoteUIControllerDelegate <NSObject>
 
@@ -17,12 +17,15 @@
 - (void)remoteUIControllerDidDismiss:(RemoteUIController *)arg1;
 - (void)remoteUIController:(RemoteUIController *)arg1 didDismissModalNavigationWithObjectModels:(NSArray *)arg2;
 - (void)remoteUIController:(RemoteUIController *)arg1 willPresentModalNavigationController:(UINavigationController *)arg2;
+- (void)remoteUIController:(RemoteUIController *)arg1 loadResourcesForObjectModel:(RUIObjectModel *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)remoteUIController:(RemoteUIController *)arg1 didRemoveObjectModel:(RUIObjectModel *)arg2;
 - (void)remoteUIController:(RemoteUIController *)arg1 didRefreshObjectModel:(RUIObjectModel *)arg2;
 - (void)remoteUIController:(RemoteUIController *)arg1 didPresentObjectModel:(RUIObjectModel *)arg2 modally:(_Bool)arg3;
 - (void)remoteUIController:(RemoteUIController *)arg1 willPresentObjectModel:(RUIObjectModel *)arg2 modally:(_Bool)arg3;
 - (void)remoteUIController:(RemoteUIController *)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 completionHandler:(void (^)(long long, NSURLCredential *))arg3;
+- (void)remoteUIController:(RemoteUIController *)arg1 didReceiveHTTPResponse:(NSHTTPURLResponse *)arg2 forRequest:(NSURLRequest *)arg3;
 - (void)remoteUIController:(RemoteUIController *)arg1 didReceiveHTTPResponse:(NSHTTPURLResponse *)arg2;
+- (void)remoteUIController:(RemoteUIController *)arg1 didFinishLoadWithError:(NSError *)arg2 forRequest:(NSURLRequest *)arg3;
 - (void)remoteUIController:(RemoteUIController *)arg1 didFinishLoadWithError:(NSError *)arg2;
 - (_Bool)remoteUIController:(RemoteUIController *)arg1 objectModel:(RUIObjectModel *)arg2 shouldDisplayNamedElement:(RUIElement *)arg3 page:(RUIPage *)arg4;
 - (void)remoteUIController:(RemoteUIController *)arg1 shouldLoadRequest:(NSMutableURLRequest *)arg2 redirectResponse:(NSURLResponse *)arg3 withCompletionHandler:(void (^)(_Bool, NSError *))arg4;

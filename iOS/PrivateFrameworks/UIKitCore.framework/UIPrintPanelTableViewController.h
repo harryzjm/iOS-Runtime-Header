@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UITextFieldDelegate-Protocol.h>
 
-@class NSString, UIPrintPanelViewController, UIPrintPreviewViewController, UIPrinterBrowserViewController, _UIPrintMessageAndSpinnerView;
+@class NSString, UIPrintPanelViewController, UIPrintPreviewViewController, UIPrinterAttributesService, UIPrinterBrowserViewController, _UIPrintMessageAndSpinnerView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintPanelTableViewController <UITextFieldDelegate>
@@ -21,12 +21,14 @@ __attribute__((visibility("hidden")))
     long long _punchRow;
     long long _paperRow;
     long long _jobAccountIDRow;
+    long long _annotationsRow;
     long long _settingsSection;
     _Bool _contactingPrinter;
-    _Bool _printerWarningWasShown;
+    NSString *_printerWarning;
+    UIPrinterAttributesService *_printerAttributesService;
     _Bool _settingsExpanded;
+    struct CGRect _savedViewFrame;
     UIPrintPreviewViewController *_printPreviewViewController;
-    long long _previousPageIndexInCenterOfPreview;
     UIPrinterBrowserViewController *_browserController;
     _UIPrintMessageAndSpinnerView *_messageAndSpinner;
 }
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)jobAccountTextField;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)updateJobAccountID:(id)arg1;
+- (void)updateAnnotations:(id)arg1;
 - (void)updatePunch:(id)arg1;
 - (void)updateStaple:(id)arg1;
 - (void)updateGrayscale:(id)arg1;
@@ -56,16 +59,20 @@ __attribute__((visibility("hidden")))
 - (double)heightOfPreviewView;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)stopPrinterWarningPolling;
+- (void)startPrinterWarningPoll;
 - (void)moreButtonPushed:(id)arg1;
 - (id)keyCommands;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)clearPrintPanelViewController;
 - (id)pdfFileURL;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setPdfFileURL:(id)arg1 destinationPaper:(id)arg2 pdfPassword:(id)arg3;
 - (void)setShowPreviewGenerating:(_Bool)arg1;
@@ -75,8 +82,8 @@ __attribute__((visibility("hidden")))
 - (void)showContacting;
 - (void)showCancelButton;
 - (id)initWithPrintPanelViewController:(id)arg1;
-- (void)_updateSize;
-- (void)_update:(_Bool)arg1;
+- (void)_updateTableFooterViewSize;
+- (void)_updatePrintTableView;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

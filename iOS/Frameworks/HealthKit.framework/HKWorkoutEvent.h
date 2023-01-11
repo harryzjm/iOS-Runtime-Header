@@ -23,17 +23,17 @@
 + (id)workoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
 + (id)workoutEventWithType:(long long)arg1 date:(id)arg2 metadata:(id)arg3;
 + (id)workoutEventWithType:(long long)arg1 date:(id)arg2;
++ (id)_unvalidatedWorkoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
 + (id)_workoutEventWithInternalEvent:(id)arg1;
 + (id)_workoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
 + (id)_workoutEventWithType:(long long)arg1 date:(id)arg2 metadata:(id)arg3;
 + (id)_newWorkoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, copy) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(readonly, copy) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
-- (void).cxx_destruct;
-- (id)awakeAfterUsingCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (void)_assertPropertiesValid;
 @property(readonly, copy, nonatomic) NSError *error;
 @property(readonly, copy, nonatomic) NSUUID *sessionUUID;
@@ -43,6 +43,7 @@
 - (id)initWithWorkoutEventType:(long long)arg1 sessionUUID:(id)arg2 dateInterval:(id)arg3 metadata:(id)arg4 error:(id)arg5;
 - (id)init;
 - (id)_init;
+- (void)_setWorkoutEventMetadata:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

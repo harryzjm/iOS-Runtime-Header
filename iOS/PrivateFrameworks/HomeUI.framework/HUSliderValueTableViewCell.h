@@ -6,27 +6,35 @@
 
 #import <UIKit/UITableViewCell.h>
 
+#import <HomeUI/HUCellProtocol-Protocol.h>
 #import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
-@class NSArray, NSString, UIImage, UILabel, UISlider;
-@protocol HUSliderValueTableViewCellDelegate;
+@class HFItem, NSArray, NSString, UIImage, UILabel, UISlider;
+@protocol HUResizableCellDelegate, HUSliderValueTableViewCellDelegate;
 
-@interface HUSliderValueTableViewCell : UITableViewCell <HUDisableableCellProtocol>
+@interface HUSliderValueTableViewCell : UITableViewCell <HUDisableableCellProtocol, HUCellProtocol>
 {
     _Bool _showValue;
+    _Bool _useLargeCell;
+    HFItem *_item;
     id <HUSliderValueTableViewCellDelegate> _delegate;
+    NSString *_title;
     UISlider *_slider;
     UILabel *_valueLabel;
     NSArray *_constraints;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property(retain, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 @property(retain, nonatomic) UISlider *slider; // @synthesize slider=_slider;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) _Bool useLargeCell; // @synthesize useLargeCell=_useLargeCell;
 @property(nonatomic) _Bool showValue; // @synthesize showValue=_showValue;
 @property(nonatomic) __weak id <HUSliderValueTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 - (void)_setupAutoLayoutConstraints;
+- (void)updateUIWithAnimation:(_Bool)arg1;
 @property(nonatomic, getter=isDisabled) _Bool disabled;
 @property(retain, nonatomic) UIImage *maximumValueImage;
 @property(retain, nonatomic) UIImage *minimumValueImage;
@@ -44,6 +52,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate;
 @property(readonly) Class superclass;
 
 @end

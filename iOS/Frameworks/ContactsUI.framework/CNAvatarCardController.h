@@ -11,7 +11,7 @@
 #import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ContactsUI/_UIClickPresentationInteractionDelegate-Protocol.h>
 
-@class CNAvatarCardViewController, CNAvatarView, CNContact, CNContactOrbHeaderView, NSArray, NSString, UIAlertController, UIGestureRecognizer, UITapGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
+@class CNAvatarCardViewController, CNAvatarView, CNContact, CNContactOrbHeaderView, NSArray, NSData, NSString, UIAlertController, UIGestureRecognizer, UITapGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
 @protocol CNAvatarCardControllerDelegate;
 
 @interface CNAvatarCardController : NSObject <_UIClickPresentationInteractionDelegate, CNAvatarCardViewControllerDelegate, CNAvatarCardControllerOrbTransitionDelegate, UIGestureRecognizerDelegate>
@@ -31,6 +31,7 @@
     NSArray *_cardControllerConstraints;
     UITapGestureRecognizer *_tapGestureRecognizer;
     UIVisualEffectView *_backgroundVisualEffectView;
+    NSData *_overrideImageData;
     CNAvatarView *_avatarView;
     CNContactOrbHeaderView *_headerView;
     UIGestureRecognizer *_rolloverGestureRecognizer;
@@ -41,11 +42,13 @@
 + (id)descriptorForRequiredKeysIncludingAvatarViewDescriptors:(_Bool)arg1;
 + (id)descriptorForRequiredKeys;
 + (_Bool)avatarCardEnabledForTraitCollection:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool bypassActionValidation; // @synthesize bypassActionValidation=_bypassActionValidation;
 @property(nonatomic) _Bool actionsNeedRefresh; // @synthesize actionsNeedRefresh=_actionsNeedRefresh;
 @property(retain, nonatomic) UIGestureRecognizer *rolloverGestureRecognizer; // @synthesize rolloverGestureRecognizer=_rolloverGestureRecognizer;
 @property(retain, nonatomic) CNContactOrbHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(nonatomic) __weak CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property(retain, nonatomic) NSData *overrideImageData; // @synthesize overrideImageData=_overrideImageData;
 @property(retain, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(retain, nonatomic) NSArray *cardControllerConstraints; // @synthesize cardControllerConstraints=_cardControllerConstraints;
@@ -60,7 +63,6 @@
 @property(nonatomic) __weak id <CNAvatarCardControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSArray *actionCategories; // @synthesize actionCategories=_actionCategories;
 @property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
-- (void).cxx_destruct;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)preparedViewControllerForPresentationWithGestureRecognizer:(id)arg1;
 - (_Bool)clickPresentationInteractionShouldPresent:(id)arg1;
@@ -86,10 +88,12 @@
 - (void)showContact;
 @property(copy, nonatomic) NSString *message;
 @property(copy, nonatomic) NSString *name;
+- (void)cleanupAfterDisplay;
 - (void)prepareForDisplay;
 - (_Bool)hasActions;
 - (id)refetchContactsMatching:(id)arg1 storeProvider:(CDUnknownBlockType)arg2;
 - (_Bool)readyForContactsMatching:(id)arg1;
+- (void)prepareWithOverrideImageData:(id)arg1;
 - (void)prepareWithContacts:(id)arg1 storeProvider:(CDUnknownBlockType)arg2;
 - (void)prepareWithContacts:(id)arg1 store:(id)arg2;
 @property(retain, nonatomic) CNContact *contact;

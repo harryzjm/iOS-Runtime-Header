@@ -9,7 +9,7 @@
     CDStruct_ce7c4229 filterInfo;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) const float *transform;
 @property(readonly, nonatomic) float maximumValue;
 @property(readonly, nonatomic) float thresholdValue;

@@ -8,6 +8,8 @@
 {
 }
 
+- (void)replaceItemsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)replaceSectionsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)removeAllObjects;
 - (void)appendItems:(id)arg1;
 - (void)appendItem:(id)arg1;

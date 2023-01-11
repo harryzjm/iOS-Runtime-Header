@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
+
 @class NSCalendar, NSDate, NSNumberFormatter, NSString;
 
-@interface NSDateComponentsFormatter
+@interface NSDateComponentsFormatter <NSObservable, NSObserver>
 {
     struct _opaque_pthread_mutex_t _lock;
     void *_fmt;
@@ -59,6 +62,13 @@
 - (void)dealloc;
 - (id)init;
 - (void)_NSDateComponentsFormatter_commonInit;
+- (void)receiveObservedValue:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

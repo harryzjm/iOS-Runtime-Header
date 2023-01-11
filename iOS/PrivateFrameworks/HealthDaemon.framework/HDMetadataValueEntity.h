@@ -10,8 +10,8 @@
 
 + (id)_predicateForEntityWithObjectID:(id)arg1;
 + (id)_predicateForEntityWithKeyID:(id)arg1;
-+ (id)_insertMetadataValueWithKeyID:(id)arg1 objectID:(id)arg2 value:(id)arg3 database:(id)arg4 error:(id *)arg5;
-+ (id)deleteStatementForObjectMetadataWithDatabase:(id)arg1;
++ (_Bool)_insertMetadataValueWithKeyID:(long long)arg1 objectID:(long long)arg2 value:(id)arg3 database:(id)arg4 error:(id *)arg5;
++ (id)deleteStatementForObjectMetadataWithTransaction:(id)arg1;
 + (long long)protectionClass;
 + (id)indices;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;

@@ -21,14 +21,15 @@
     NSArray *_preferredFocusEnvironments;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_automaticallyDisableWhenIntersectingFocus, setter=_setAutomaticallyDisableWhenIntersectingFocus:) _Bool automaticallyDisableWhenIntersectingFocus; // @synthesize automaticallyDisableWhenIntersectingFocus=_automaticallyDisableWhenIntersectingFocus;
 @property(nonatomic, getter=_automaticallyPreferOwningView, setter=_setAutomaticallyPreferOwningView:) _Bool automaticallyPreferOwningView; // @synthesize automaticallyPreferOwningView=_automaticallyPreferOwningView;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
-- (void).cxx_destruct;
 - (_Bool)_uili_isFocusGuide;
 - (void)focusGuideRegion:(id)arg1 willParticipateAsDestinationRegionInFocusUpdate:(id)arg2;
 - (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovementRequest:(id)arg2;
 @property(readonly, nonatomic) id <UIFocusItem> focusItemForSorting;
+- (_Bool)_isUnoccludable;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (id)_preferredFocusRegionCoordinateSpace;
@@ -63,6 +64,7 @@
 @property(nonatomic) _Bool areChildrenFocused;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;

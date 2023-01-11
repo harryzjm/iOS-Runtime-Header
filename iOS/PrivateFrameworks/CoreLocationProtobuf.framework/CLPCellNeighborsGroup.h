@@ -15,18 +15,21 @@
     NSMutableArray *_cdmaNeighbors;
     NSMutableArray *_gsmNeighbors;
     NSMutableArray *_lteNeighbors;
+    NSMutableArray *_nrNeighbors;
     NSMutableArray *_scdmaNeighbors;
 }
 
++ (Class)nrNeighborsType;
 + (Class)lteNeighborsType;
 + (Class)cdmaNeighborsType;
 + (Class)scdmaNeighborsType;
 + (Class)gsmNeighborsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *nrNeighbors; // @synthesize nrNeighbors=_nrNeighbors;
 @property(retain, nonatomic) NSMutableArray *lteNeighbors; // @synthesize lteNeighbors=_lteNeighbors;
 @property(retain, nonatomic) NSMutableArray *cdmaNeighbors; // @synthesize cdmaNeighbors=_cdmaNeighbors;
 @property(retain, nonatomic) NSMutableArray *scdmaNeighbors; // @synthesize scdmaNeighbors=_scdmaNeighbors;
 @property(retain, nonatomic) NSMutableArray *gsmNeighbors; // @synthesize gsmNeighbors=_gsmNeighbors;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -36,6 +39,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)nrNeighborsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)nrNeighborsCount;
+- (void)addNrNeighbors:(id)arg1;
+- (void)clearNrNeighbors;
 - (id)lteNeighborsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lteNeighborsCount;
 - (void)addLteNeighbors:(id)arg1;

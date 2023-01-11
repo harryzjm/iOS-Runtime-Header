@@ -13,19 +13,18 @@
     SBSwitcherAppSuggestionViewController *_appSuggestionController;
 }
 
-@property(retain, nonatomic) SBSwitcherAppSuggestionViewController *appSuggestionController; // @synthesize appSuggestionController=_appSuggestionController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBSwitcherAppSuggestionViewController *appSuggestionController; // @synthesize appSuggestionController=_appSuggestionController;
 - (long long)orientationForSuggestionViewController:(id)arg1;
 - (void)suggestionViewController:(id)arg1 activatedSuggestion:(id)arg2;
 - (void)_setBestAppSuggestion:(id)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)setBestAppSuggestion:(id)arg1;
 - (id)bestAppSuggestion;
-- (id)handleGestureDidBegin:(id)arg1;
+- (void)handleGestureDidBegin:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
-- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 alongsideAnimationHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewWillLayoutSubviews;
-- (_Bool)hasInteractiveContentAtBottomOfScreen;
 - (id)initWithRootModifier:(id)arg1 liveContentOverlayCoordinator:(id)arg2 debugName:(id)arg3;
 
 // Remaining properties

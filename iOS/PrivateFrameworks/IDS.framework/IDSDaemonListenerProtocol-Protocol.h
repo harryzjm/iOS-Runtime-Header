@@ -52,6 +52,7 @@
 - (void)allocationDone:(NSString *)arg1 sessionInfo:(NSDictionary *)arg2;
 - (void)receivedGroupSessionParticipantDataUpdate:(NSDictionary *)arg1 forTopic:(NSString *)arg2 toIdentifier:(NSString *)arg3 fromID:(NSString *)arg4;
 - (void)receivedGroupSessionParticipantUpdate:(NSDictionary *)arg1 forTopic:(NSString *)arg2 toIdentifier:(NSString *)arg3 fromID:(NSString *)arg4;
+- (void)session:(NSString *)arg1 didReceivePluginAllocationInfo:(NSDictionary *)arg2;
 - (void)session:(NSString *)arg1 didReceiveActiveParticipants:(NSArray *)arg2 success:(_Bool)arg3;
 - (void)session:(NSString *)arg1 participantDidLeaveGroupWithInfo:(NSDictionary *)arg2;
 - (void)session:(NSString *)arg1 participantDidJoinGroupWithInfo:(NSDictionary *)arg2;
@@ -80,6 +81,10 @@
 - (void)didRequestCarrierTokenString:(NSString *)arg1 requestUUID:(NSString *)arg2 error:(NSError *)arg3;
 - (void)didGeneratePhoneAuthenticationSignature:(NSData *)arg1 nonce:(NSData *)arg2 certificates:(NSArray *)arg3 labelIDs:(NSArray *)arg4 inputData:(NSData *)arg5 requestUUID:(NSString *)arg6 error:(NSError *)arg7;
 - (void)didAuthenticatePhoneWithAuthenticationCertificateData:(NSData *)arg1 requestUUID:(NSString *)arg2 error:(NSError *)arg3;
+- (void)service:(NSString *)arg1 linkedDevicesUpdated:(NSArray *)arg2;
+- (void)service:(NSString *)arg1 tinkerDeviceUpdated:(NSDictionary *)arg2;
+- (void)service:(NSString *)arg1 tinkerDeviceRemoved:(NSDictionary *)arg2;
+- (void)service:(NSString *)arg1 tinkerDeviceAdded:(NSDictionary *)arg2;
 - (void)account:(NSString *)arg1 localDeviceRemoved:(NSDictionary *)arg2;
 - (void)account:(NSString *)arg1 localDeviceAdded:(NSDictionary *)arg2;
 - (void)account:(NSString *)arg1 dependentDevicesUpdatedUponReconnect:(NSArray *)arg2;
@@ -119,6 +124,6 @@
 - (void)daemonDisconnected;
 - (void)daemonConnected;
 - (void)setupCompleteWithInfo:(NSDictionary *)arg1;
-- (void)connectionComplete:(_Bool)arg1;
+- (void)connectionComplete:(_Bool)arg1 withResponse:(NSDictionary *)arg2;
 @end
 

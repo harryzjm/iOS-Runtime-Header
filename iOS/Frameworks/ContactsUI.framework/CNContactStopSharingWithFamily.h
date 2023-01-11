@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 - (void)performActionWithSender:(id)arg1;
 - (_Bool)canPerformAction;
 - (_Bool)isDestructive;
+- (_Bool)wrapTitle;
 - (id)title;
 
 @end

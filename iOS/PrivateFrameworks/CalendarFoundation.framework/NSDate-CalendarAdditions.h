@@ -107,6 +107,10 @@
 - (id)roundSecondsAndMinutesUpInCalendar:(id)arg1;
 - (id)roundSecondsAndMinutesDownInCalendar:(id)arg1;
 - (id)roundSecondsDownInCalendar:(id)arg1;
+- (id)CalDateByComponentwiseAddingComponents:(id)arg1 inCalendar:(id)arg2;
+- (id)CalDateByComponentwiseAddingHours:(long long)arg1 inCalendar:(id)arg2;
+- (id)CalDateByComponentwiseAddingMinutes:(long long)arg1 inCalendar:(id)arg2;
+- (id)CalDateByComponentwiseAddingSeconds:(long long)arg1 inCalendar:(id)arg2;
 - (id)dateByAddingYears:(long long)arg1 inCalendar:(id)arg2;
 - (id)dateByAddingMonths:(long long)arg1 inCalendar:(id)arg2;
 - (id)dateByAddingWeeks:(long long)arg1 inCalendar:(id)arg2;

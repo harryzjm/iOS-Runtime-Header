@@ -6,30 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class AMSBiometricsSignatureResult, AMSPaymentSheetMetricsEvent, NSError, NSString;
+@class AMSBiometricsSignatureResult, NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _PaymentSheetState : NSObject
 {
     _Bool _didAuthorizePayment;
-    _Bool _didBiometricLockout;
+    _Bool _didBiometricsLockout;
     _Bool _didPresent;
     NSError *_error;
-    AMSPaymentSheetMetricsEvent *_event;
+    unsigned long long _cancellationType;
     NSString *_passwordEquivalentToken;
     NSString *_paymentToken;
     AMSBiometricsSignatureResult *_signatureResult;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) AMSBiometricsSignatureResult *signatureResult; // @synthesize signatureResult=_signatureResult;
 @property(retain, nonatomic) NSString *paymentToken; // @synthesize paymentToken=_paymentToken;
 @property(retain, nonatomic) NSString *passwordEquivalentToken; // @synthesize passwordEquivalentToken=_passwordEquivalentToken;
-@property(retain, nonatomic) AMSPaymentSheetMetricsEvent *event; // @synthesize event=_event;
 @property(nonatomic) _Bool didPresent; // @synthesize didPresent=_didPresent;
-@property(nonatomic) _Bool didBiometricLockout; // @synthesize didBiometricLockout=_didBiometricLockout;
+@property(nonatomic) unsigned long long cancellationType; // @synthesize cancellationType=_cancellationType;
+@property(nonatomic) _Bool didBiometricsLockout; // @synthesize didBiometricsLockout=_didBiometricsLockout;
 @property(nonatomic) _Bool didAuthorizePayment; // @synthesize didAuthorizePayment=_didAuthorizePayment;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

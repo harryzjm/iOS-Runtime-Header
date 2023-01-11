@@ -24,11 +24,11 @@
 }
 
 + (id)_sharedCollectionViewController;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isHostedInTestApp) _Bool hostedInTestApp; // @synthesize hostedInTestApp=_hostedInTestApp;
 @property(readonly, nonatomic) CCUIStatusLabelViewController *statusLabelViewController; // @synthesize statusLabelViewController=_statusLabelViewController;
 @property(readonly, nonatomic) CCUIModuleInstanceManager *moduleInstanceManager; // @synthesize moduleInstanceManager=_moduleInstanceManager;
 @property(nonatomic) __weak id <CCUIModularControlCenterViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_reparentCollectionViewController;
 - (id)_safeModuleCollectionViewContainerView;
 - (id)_moduleCollectionViewContainerView;
@@ -41,6 +41,7 @@
 - (void)requestExpandModuleForContentModuleContext:(id)arg1;
 - (void)contentModuleContext:(id)arg1 enqueueStatusUpdate:(id)arg2;
 - (void)contentModuleContext:(id)arg1 didUpdateHomeGestureDismissalAllowed:(_Bool)arg2;
+- (void)moduleCollectionViewControllerDidUpdateModules:(id)arg1;
 - (void)moduleCollectionViewController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 willRemoveModuleContainerViewController:(id)arg2;

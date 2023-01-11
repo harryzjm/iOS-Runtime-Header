@@ -9,7 +9,6 @@
 @class NSDictionary, NSString;
 
 @protocol MFComposeBodyFieldController <MSComposeBodyFieldController>
-- (void)clearSelection;
 - (void)setDirty:(_Bool)arg1 completionHandler:(void (^)(void))arg2;
 - (void)placeCaretAtStartOfBody;
 - (void)htmlStringsAttachmentURLsAndPlainTextAlternativeRemovingSignature:(_Bool)arg1 attachmentInfoByIdentifier:(NSDictionary *)arg2 completion:(void (^)(ECHTMLStringAndMIMECharset *, NSArray *, NSArray *))arg3;
@@ -26,7 +25,7 @@
 - (void)setFileName:(NSString *)arg1 forImageWithContentID:(NSString *)arg2;
 - (void)replaceImagesIfNecessary;
 - (void)setReplacementFilenamesByContentID:(NSDictionary *)arg1;
-- (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(_Bool)arg1;
+- (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(_Bool)arg1 shouldQuote:(_Bool)arg2;
 - (void)appendOrReplace:(NSString *)arg1 withMarkupString:(NSString *)arg2 quote:(_Bool)arg3 composeType:(int)arg4 attachmentInfoByURL:(NSDictionary *)arg5 completionHandler:(void (^)(NSDictionary *))arg6;
 - (void)addMarkupString:(NSString *)arg1 quote:(_Bool)arg2 emptyFirst:(_Bool)arg3 prepended:(_Bool)arg4 composeType:(int)arg5 attachmentInfoByURL:(NSDictionary *)arg6;
 - (void)prependPreamble:(NSString *)arg1 quote:(_Bool)arg2 layoutDirection:(long long)arg3;

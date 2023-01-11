@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKPaymentPass;
+@class NSString;
 
 @interface PKPaymentNonceRequest
 {
-    PKPaymentPass *_pass;
+    _Bool _useLegacyGetAPI;
+    NSString *_merchantIdentifier;
 }
 
-@property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
-- (id)initWithPaymentPass:(id)arg1;
+@property(nonatomic) _Bool useLegacyGetAPI; // @synthesize useLegacyGetAPI=_useLegacyGetAPI;
+@property(copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
+- (id)bodyDictionary;
+- (id)endpointName;
+- (id)_legacyGetURLRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSMutableArray, NSMutableDictionary;
+@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet;
 @protocol UIEventFetcherSink;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_incomingHIDEvents;
     NSMutableArray *_incomingHIDEventsFiltered;
     struct __CFRunLoop *_cfRunLoop;
-    struct __CFRunLoopSource *_triggerHandOffEventsRunLoopSource;
     CDUnknownBlockType _receiveBlock;
     CDUnknownBlockType _addToFilteredEventsBlock;
     CDUnknownBlockType _gameControllerEventFilterGenerator;
@@ -24,46 +23,32 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_eventFilters;
     int _displayLinkIdleTicks;
     CADisplayLink *_displayLink;
-    long long _countOfDigitizerEventsReceivedSinceLastDisplayLinkCallback;
-    long long _countOfDigitizerEventsReceivedInPreviousFrame;
+    long long _countOfEventsReceivedSinceLastDisplayLinkCallback;
+    long long _countOfEventsReceivedInPreviousFrame;
     _Bool _didSignalOneMoveEventSinceLastDisplayLinkCallback;
     double _lastImportantEventTimestamp;
     double _lastSignalTimestamp;
+    double _lastSignalEventTimestamp;
+    double _lastFilteredEventTimestamp;
     double _estimatedDisplayLinkDrift;
     long long _lastSignalType;
     unsigned long long _lastSignalReason;
     _Bool _needsSignalOnDisplayLink;
-    id <UIEventFetcherSink> _eventFetcherSink;
     double _commitTimeForTouchEvents;
+    double _beginTimeForTouchEvents;
+    double _deadlineTimeForTouchEvents;
     NSMutableDictionary *_latestMoveDragEventsBySessionID;
     double _latestMoveDragEventTimestamp;
     double _latestMoveDragEventResendTimestamp;
+    NSMutableSet *_contextIDsNeedingHoverEventResend;
+    NSMutableDictionary *_latestHoverEventsByContextID;
+    id <UIEventFetcherSink> _eventFetcherSink;
 }
 
-@property(nonatomic) double latestMoveDragEventResendTimestamp; // @synthesize latestMoveDragEventResendTimestamp=_latestMoveDragEventResendTimestamp;
-@property(nonatomic) double latestMoveDragEventTimestamp; // @synthesize latestMoveDragEventTimestamp=_latestMoveDragEventTimestamp;
-@property(retain, nonatomic) NSMutableDictionary *latestMoveDragEventsBySessionID; // @synthesize latestMoveDragEventsBySessionID=_latestMoveDragEventsBySessionID;
-@property(nonatomic) double commitTimeForTouchEvents; // @synthesize commitTimeForTouchEvents=_commitTimeForTouchEvents;
-@property(nonatomic) _Bool needsSignalOnDisplayLink; // @synthesize needsSignalOnDisplayLink=_needsSignalOnDisplayLink;
-@property(retain, nonatomic) id <UIEventFetcherSink> eventFetcherSink; // @synthesize eventFetcherSink=_eventFetcherSink;
 - (void).cxx_destruct;
-- (void)_removeHIDGameControllerEventObserver;
-- (void)_setHIDGameControllerEventObserver:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
-- (void)_removeHIDEventObserver;
-- (void)_setHIDEventObserver:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
-- (void)signalEventsAvailableWithReason:(unsigned long long)arg1 filteredEventCount:(long long)arg2;
-- (void)filterEvents;
-- (void)drainEventsIntoEnvironment:(id)arg1;
-- (void)_receiveHIDEventInternal:(struct __IOHIDEvent *)arg1;
 - (void)_receiveHIDEvent:(struct __IOHIDEvent *)arg1;
-@property(readonly, nonatomic) struct __CFRunLoop *_eventFetchRunLoop;
-- (void)setupThreadAndRun;
 - (void)threadMain;
 - (void)displayLinkDidFire:(id)arg1;
-- (void)setupForRunLoop:(id)arg1;
-- (void)_setupFilterChain;
-- (void)_removeHIDEventFilter:(CDUnknownBlockType)arg1;
-- (void)_addHIDEventFilter:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

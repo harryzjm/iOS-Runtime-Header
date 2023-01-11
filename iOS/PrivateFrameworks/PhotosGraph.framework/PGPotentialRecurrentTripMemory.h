@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet;
+@class NSArray, NSSet;
 
 @interface PGPotentialRecurrentTripMemory
 {
-    NSSet *_tripLocationNodes;
+    NSArray *_tripNodes;
+    NSSet *_locationNodes;
 }
 
-@property(readonly) NSSet *tripLocationNodes; // @synthesize tripLocationNodes=_tripLocationNodes;
 - (void).cxx_destruct;
-- (id)initWithTripLocationNodes:(id)arg1 momentNodes:(id)arg2;
+@property(readonly) NSSet *locationNodes; // @synthesize locationNodes=_locationNodes;
+@property(readonly) NSArray *tripNodes; // @synthesize tripNodes=_tripNodes;
+- (id)initWithTripNodes:(id)arg1 locationNodes:(id)arg2 momentNodes:(id)arg3;
 
 @end
 

@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIColor;
+@class NSAttributedString;
 
 @interface _HKGraphViewAnnotationEntry : NSObject
 {
-    NSString *_annotation;
-    UIColor *_textColor;
+    NSAttributedString *_annotation;
     id _modelCoordinate;
 }
 
-@property(retain, nonatomic) id modelCoordinate; // @synthesize modelCoordinate=_modelCoordinate;
-@property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
-@property(retain, nonatomic) NSString *annotation; // @synthesize annotation=_annotation;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id modelCoordinate; // @synthesize modelCoordinate=_modelCoordinate;
+@property(retain, nonatomic) NSAttributedString *annotation; // @synthesize annotation=_annotation;
 
 @end
 

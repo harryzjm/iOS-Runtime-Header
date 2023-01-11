@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     GEORouteTrafficDetail *_routeTrafficDetail;
     unsigned int _distance;
     unsigned int _historicTravelTime;
+    int _licensePlateRestrictionImpact;
     unsigned int _time;
     int _transportType;
     struct {
         unsigned int has_distance:1;
         unsigned int has_historicTravelTime:1;
+        unsigned int has_licensePlateRestrictionImpact:1;
         unsigned int has_time:1;
         unsigned int has_transportType:1;
     } _flags;
@@ -39,8 +41,15 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsLicensePlateRestrictionImpact:(id)arg1;
+- (id)licensePlateRestrictionImpactAsString:(int)arg1;
+@property(nonatomic) _Bool hasLicensePlateRestrictionImpact;
+@property(nonatomic) int licensePlateRestrictionImpact;
 @property(retain, nonatomic) GEORouteTrafficDetail *routeTrafficDetail;
 @property(readonly, nonatomic) _Bool hasRouteTrafficDetail;
 @property(nonatomic) _Bool hasHistoricTravelTime;

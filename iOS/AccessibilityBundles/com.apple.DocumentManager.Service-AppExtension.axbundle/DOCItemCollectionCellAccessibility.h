@@ -13,11 +13,14 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)accessibilityScrollToVisible;
 - (id)_accessibilityItemCollectionViewController;
+- (id)_axRenameTextView;
 - (_Bool)_accessibilityPerformDocumentAction:(id)arg1;
 - (id)accessibilityCustomActions;
 - (unsigned long long)accessibilityTraits;
 - (id)_axAttrTitle;
+- (id)accessibilityElements;
 - (id)accessibilityIdentifier;
+- (_Bool)isAccessibilityElement;
 
 @end
 

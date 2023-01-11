@@ -4,19 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData;
+#import <objc/NSObject.h>
 
-@interface EMOutgoingMessage
+#import <Email/EFPubliclyDescribable-Protocol.h>
+#import <Email/EMOutgoingMessageBuilder-Protocol.h>
+#import <Email/NSSecureCoding-Protocol.h>
+
+@class EMMessageObjectID, NSData, NSString;
+
+@interface EMOutgoingMessage : NSObject <EMOutgoingMessageBuilder, NSSecureCoding, EFPubliclyDescribable>
 {
+    _Bool _shouldSign;
+    _Bool _shouldEncrypt;
     NSData *_messageData;
+    long long _action;
+    EMMessageObjectID *_originalMessageID;
+    long long _conversationNotificationLevel;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSData *messageData; // @synthesize messageData=_messageData;
 - (void).cxx_destruct;
+@property(nonatomic) long long conversationNotificationLevel; // @synthesize conversationNotificationLevel=_conversationNotificationLevel;
+@property(nonatomic) _Bool shouldEncrypt; // @synthesize shouldEncrypt=_shouldEncrypt;
+@property(nonatomic) _Bool shouldSign; // @synthesize shouldSign=_shouldSign;
+@property(retain, nonatomic) EMMessageObjectID *originalMessageID; // @synthesize originalMessageID=_originalMessageID;
+@property(nonatomic) long long action; // @synthesize action=_action;
+@property(copy, nonatomic) NSData *messageData; // @synthesize messageData=_messageData;
+@property(readonly, copy, nonatomic) NSString *ef_publicDescription;
+@property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithBuilder:(CDUnknownBlockType)arg1;
 - (id)initWithMessageData:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

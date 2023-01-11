@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)cancel;
 - (id)description;
-- (id)initWithProtocol:(struct nw_protocol *)arg1 delegate:(id)arg2;
 
 @end
 

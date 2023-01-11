@@ -6,8 +6,8 @@
 
 #import <MetalTools/MTLCommandBuffer-Protocol.h>
 
-@class MTLRenderPassDescriptor, NSDictionary, NSMutableDictionary;
-@protocol MTLComputeCommandEncoder, MTLDebugCommandEncoder, MTLEvent, MTLFragmentRenderCommandEncoder, MTLHeap, MTLRenderCommandEncoder, MTLResource;
+@class MTLComputePassDescriptor, MTLRenderPassDescriptor, NSDictionary, NSMutableDictionary;
+@protocol MTLComputeCommandEncoder, MTLDebugCommandEncoder, MTLEvent, MTLHeap, MTLRenderCommandEncoder, MTLResource;
 
 @protocol MTLCommandBufferSPI <MTLCommandBuffer>
 @property(readonly, nonatomic) NSMutableDictionary *userDictionary;
@@ -18,7 +18,7 @@
 
 @optional
 @property(readonly) unsigned long long globalTraceObjectID;
-@property(nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property(readonly, nonatomic, getter=getListIndex) unsigned long long listIndex;
 - (void)encodeCacheHintFinalize:(unsigned long long)arg1 resourceGroups:(const id *)arg2 count:(unsigned long long)arg3;
 - (void)encodeCacheHintTag:(unsigned long long)arg1 resourceGroups:(const id *)arg2 count:(unsigned long long)arg3;
 - (void)dropResourceGroups:(const id *)arg1 count:(unsigned long long)arg2;
@@ -28,12 +28,11 @@
 - (void)setProtectionOptions:(unsigned long long)arg1;
 - (_Bool)commitAndWaitUntilSubmitted;
 - (void)commitAndHold;
-- (id <MTLFragmentRenderCommandEncoder>)sampledFragmentRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id <MTLFragmentRenderCommandEncoder>)fragmentRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (id <MTLDebugCommandEncoder>)debugCommandEncoder;
-- (id <MTLComputeCommandEncoder>)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
-- (id <MTLComputeCommandEncoder>)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
-- (id <MTLRenderCommandEncoder>)sampledRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1 programInfoBuffer:(CDStruct_4af8c268 *)arg2 capacity:(unsigned long long)arg3;
+- (id <MTLComputeCommandEncoder>)sampledComputeCommandEncoderWithDescriptor:(MTLComputePassDescriptor *)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id <MTLComputeCommandEncoder>)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id <MTLComputeCommandEncoder>)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
+- (id <MTLRenderCommandEncoder>)sampledRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
 @end
 

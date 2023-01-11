@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_setControls:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)handleRightArrowButton:(id)arg1;
 - (void)_handleDeleteButtonTap;
 - (void)handleDeleteButtonTap:(id)arg1;

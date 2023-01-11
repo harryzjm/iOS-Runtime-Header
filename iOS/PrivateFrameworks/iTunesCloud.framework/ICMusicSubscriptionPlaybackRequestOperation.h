@@ -12,6 +12,7 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     ICStoreURLRequest *_activeURLRequest;
     _Bool _delegatedPlayback;
+    _Bool _followUp;
     NSString *_assetSourceStorefrontID;
     long long _requestType;
     CDUnknownBlockType _willBeginExecutionHandler;
@@ -23,6 +24,8 @@
     NSString *_cloudUniversalLibraryID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, getter=isFollowUp) _Bool followUp; // @synthesize followUp=_followUp;
 @property(copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
 @property(nonatomic) long long storePurchasedAdamID; // @synthesize storePurchasedAdamID=_storePurchasedAdamID;
 @property(nonatomic) long long storeSubscriptionAdamID; // @synthesize storeSubscriptionAdamID=_storeSubscriptionAdamID;
@@ -33,7 +36,6 @@
 @property(nonatomic) long long requestType; // @synthesize requestType=_requestType;
 @property(nonatomic, getter=isDelegatedPlayback) _Bool delegatedPlayback; // @synthesize delegatedPlayback=_delegatedPlayback;
 @property(copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
-- (void).cxx_destruct;
 - (void)start;
 - (void)cancel;
 - (id)init;

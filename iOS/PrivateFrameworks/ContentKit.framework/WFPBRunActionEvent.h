@@ -13,22 +13,27 @@
 __attribute__((visibility("hidden")))
 @interface WFPBRunActionEvent : PBCodable <NSCopying>
 {
-    NSString *_actionName;
+    NSString *_actionIdentifier;
+    NSString *_automationType;
     NSString *_key;
     NSString *_runSource;
-    int _source;
+    NSString *_shortcutSource;
     _Bool _completed;
+    _Bool _didRunRemotely;
     struct {
-        unsigned int source:1;
         unsigned int completed:1;
+        unsigned int didRunRemotely:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
+@property(retain, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
+@property(retain, nonatomic) NSString *shortcutSource; // @synthesize shortcutSource=_shortcutSource;
+@property(retain, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property(nonatomic) _Bool completed; // @synthesize completed=_completed;
-@property(retain, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
 @property(retain, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -38,13 +43,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDidRunRemotely;
+@property(readonly, nonatomic) _Bool hasAutomationType;
+@property(readonly, nonatomic) _Bool hasShortcutSource;
+@property(readonly, nonatomic) _Bool hasActionIdentifier;
 @property(nonatomic) _Bool hasCompleted;
-@property(readonly, nonatomic) _Bool hasActionName;
 @property(readonly, nonatomic) _Bool hasRunSource;
-- (int)StringAsSource:(id)arg1;
-- (id)sourceAsString:(int)arg1;
-@property(nonatomic) _Bool hasSource;
-@property(nonatomic) int source; // @synthesize source=_source;
 @property(readonly, nonatomic) _Bool hasKey;
 
 @end

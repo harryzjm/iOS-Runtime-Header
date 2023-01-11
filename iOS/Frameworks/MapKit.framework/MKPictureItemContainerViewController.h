@@ -6,32 +6,42 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MapKit/MKPlacePhotosViewDelegate-Protocol.h>
+#import <MapKit/MKPhotoGalleryTransitionAnimator-Protocol.h>
+#import <MapKit/MKPlacePhotoGalleryViewControllerDelegate-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
+#import <MapKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class GEOMapItemAttribution, NSString, UIScrollView, UIStackView;
-@protocol GEOPictureItemContainer, MKPictureItemContainerAnalyticsDelegate;
+@class GEOMapItemAttribution, NSString, UIImageView, UIScrollView, UIStackView;
+@protocol GEOPictureItemContainer, MKPictureItemContainerAnalyticsDelegate, MKPlaceViewControllerPresentingProtocol;
 
 __attribute__((visibility("hidden")))
-@interface MKPictureItemContainerViewController : UIViewController <UIScrollViewDelegate, MKPlacePhotosViewDelegate>
+@interface MKPictureItemContainerViewController : UIViewController <UIScrollViewDelegate, MKPlacePhotoGalleryViewControllerDelegate, UIViewControllerTransitioningDelegate, MKPhotoGalleryTransitionAnimator>
 {
     id <MKPictureItemContainerAnalyticsDelegate> _analyticsDelegate;
+    id <MKPlaceViewControllerPresentingProtocol> _presentingProtocol;
     id <GEOPictureItemContainer> _pictureItemContainer;
     GEOMapItemAttribution *_attribution;
     UIScrollView *_scrollView;
     UIStackView *_stackView;
+    UIImageView *_imageViewForTransition;
     struct CGPoint _beginAnalyticsScrollingPoint;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *imageViewForTransition; // @synthesize imageViewForTransition=_imageViewForTransition;
 @property(nonatomic) struct CGPoint beginAnalyticsScrollingPoint; // @synthesize beginAnalyticsScrollingPoint=_beginAnalyticsScrollingPoint;
 @property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(readonly, nonatomic) GEOMapItemAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) id <GEOPictureItemContainer> pictureItemContainer; // @synthesize pictureItemContainer=_pictureItemContainer;
+@property(nonatomic) __weak id <MKPlaceViewControllerPresentingProtocol> presentingProtocol; // @synthesize presentingProtocol=_presentingProtocol;
 @property(nonatomic) __weak id <MKPictureItemContainerAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
-- (void).cxx_destruct;
-- (void)placePhotoViewerAttributionTappedForPhotoAtIndex:(unsigned long long)arg1 photo:(id)arg2;
-- (id)placePhotoViewerViewForPhotoAtIndex:(unsigned long long)arg1;
+- (void)photoGalleryTransitionAnimatorDidFinishAnimation;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (void)placePhotoGalleryDidFinishDismissing:(id)arg1;
+- (void)placePhotoGallery:(id)arg1 willCloseAtIndex:(unsigned long long)arg2;
+- (id)placePhotoGalleryImageViewForPhotoAtIndex:(unsigned long long)arg1;
 - (void)updateUIForTheme:(id)arg1;
 - (void)infoCardThemeChanged;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
@@ -43,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)initWithPictureItemContainer:(id)arg1 attribution:(id)arg2;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

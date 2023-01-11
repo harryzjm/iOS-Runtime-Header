@@ -10,6 +10,7 @@
 
 + (id)sharedRemoteContainer;
 + (id)sharedLocalContainer;
+- (void)deDuplicateFavoritesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)transiteLinesQueryWithDelegate:(id)arg1;
 - (id)placesQueryWithDelegate:(id)arg1;
 - (id)queryWithDelegate:(id)arg1;

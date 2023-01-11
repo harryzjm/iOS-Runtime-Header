@@ -16,12 +16,14 @@
     NSArray *_suggestions;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool dryRun; // @synthesize dryRun=_dryRun;
 @property(readonly, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property(readonly, nonatomic) _PSMapsPredictionContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) _PSMapsFeedbackAction *action; // @synthesize action=_action;
-- (void).cxx_destruct;
 - (id)knowledgeEvent;
+- (id)feedbackPayload;
+- (id)getTrialID;
 @property(readonly, nonatomic) unsigned long long indexOfEngagedSuggestion;
 - (id)initWithFeedbackAction:(id)arg1 predictionContext:(id)arg2 suggestions:(id)arg3;
 

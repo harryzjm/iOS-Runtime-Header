@@ -14,13 +14,15 @@
     WFWorkflowRecord *_record;
     NSString *_identifier;
     unsigned long long _location;
+    NSString *_collectionIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
 @property(nonatomic) _Bool deleted; // @synthesize deleted=_deleted;
 @property(nonatomic) unsigned long long location; // @synthesize location=_location;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) WFWorkflowRecord *record; // @synthesize record=_record;
-- (void).cxx_destruct;
 - (id)initWithRecord:(id)arg1;
 - (id)init;
 

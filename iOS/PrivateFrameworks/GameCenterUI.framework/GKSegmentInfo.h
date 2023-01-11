@@ -19,17 +19,17 @@
     GKPlaceholderContentStateMachine *_loadingMatchine;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKPlaceholderContentStateMachine *loadingMatchine; // @synthesize loadingMatchine=_loadingMatchine;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) GKCollectionViewDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(nonatomic) __weak id <GKSegmentInfoDelegagte> delegate; // @synthesize delegate=_delegateWeak;
 - (void)didEnterErrorState;
 - (void)didEnterNoContentState;
 - (void)didExitLoadingState;
 - (void)didEnterLoadingState;
 @property(retain, nonatomic) NSString *loadingState;
-@property(nonatomic) id <GKSegmentInfoDelegagte> delegate; // @synthesize delegate=_delegateWeak;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithDataSource:(id)arg1;
 
 // Remaining properties

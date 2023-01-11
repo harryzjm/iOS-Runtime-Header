@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIMutableApplicationSceneSettings.h>
+#import <UIKit/UIMutableCarPlayApplicationSceneSettings.h>
 
 #import <CarPlayUIServices/CRSUIDashboardWidgetSceneSettings-Protocol.h>
+#import <CarPlayUIServices/CRSUIMutableMapStyleProviding-Protocol.h>
 
 @class NSObject, NSString;
 @protocol OS_xpc_object;
 
-@interface CRSUIMutableDashboardWidgetSceneSettings : UIMutableApplicationSceneSettings <CRSUIDashboardWidgetSceneSettings>
+@interface CRSUIMutableDashboardWidgetSceneSettings : UIMutableCarPlayApplicationSceneSettings <CRSUIDashboardWidgetSceneSettings, CRSUIMutableMapStyleProviding>
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setMapStyle:(long long)arg1;
+@property(readonly, nonatomic) long long mapStyle;
 @property(nonatomic) unsigned long long widgetStyle;
 @property(copy, nonatomic) NSObject<OS_xpc_object> *endpoint;
 

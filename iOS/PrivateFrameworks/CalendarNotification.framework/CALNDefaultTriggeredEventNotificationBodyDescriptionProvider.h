@@ -9,20 +9,22 @@
 #import <CalendarNotification/CALNTriggeredEventNotificationBodyDescriptionProvider-Protocol.h>
 
 @class NSString;
-@protocol CALNTravelAdvisoryDescriptionGenerator;
+@protocol CALNTravelAdvisoryDescriptionGenerator, CalDateProvider;
 
 @interface CALNDefaultTriggeredEventNotificationBodyDescriptionProvider : NSObject <CALNTriggeredEventNotificationBodyDescriptionProvider>
 {
     id <CALNTravelAdvisoryDescriptionGenerator> _travelAdvisoryDescriptionGenerator;
+    id <CalDateProvider> _dateProvider;
 }
 
-@property(readonly, nonatomic) id <CALNTravelAdvisoryDescriptionGenerator> travelAdvisoryDescriptionGenerator; // @synthesize travelAdvisoryDescriptionGenerator=_travelAdvisoryDescriptionGenerator;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <CalDateProvider> dateProvider; // @synthesize dateProvider=_dateProvider;
+@property(readonly, nonatomic) id <CALNTravelAdvisoryDescriptionGenerator> travelAdvisoryDescriptionGenerator; // @synthesize travelAdvisoryDescriptionGenerator=_travelAdvisoryDescriptionGenerator;
 - (id)_ttlDescriptionTypeNumberForTravelAdvisoryTimelinessPeriod:(unsigned long long)arg1;
 - (id)_bodyWithoutTravelAdvisoryForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2;
 - (id)_bodyWithTravelAdvisoryForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2;
-- (id)bodyForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2;
-- (id)initWithTravelAdvisoryDescriptionGenerator:(id)arg1;
+- (id)bodyForSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2 bodyContainsTravelAdvice:(_Bool *)arg3;
+- (id)initWithTravelAdvisoryDescriptionGenerator:(id)arg1 dateProvider:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

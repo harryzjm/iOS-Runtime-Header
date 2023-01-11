@@ -10,15 +10,16 @@
 
 @class MPModelResponse, NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPModelShimRequestMiddleware : NSObject <MPMiddleware>
 {
     NSArray *_invalidationObservers;
     MPModelResponse *_modelResponse;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) MPModelResponse *modelResponse; // @synthesize modelResponse=_modelResponse;
 @property(retain, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
-- (void).cxx_destruct;
 - (id)operationsForRequest:(id)arg1;
 
 // Remaining properties

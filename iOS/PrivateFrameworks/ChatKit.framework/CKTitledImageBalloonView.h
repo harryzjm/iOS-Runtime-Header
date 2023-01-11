@@ -13,9 +13,9 @@
     UILabel *_titleLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
-- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *title;
 - (void)setOrientation:(BOOL)arg1;
 - (void)tapGestureRecognized:(id)arg1;
@@ -23,7 +23,7 @@
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(_Bool)arg4;
 - (void)configureForLocatingChatItem:(id)arg1;
 
 // Remaining properties

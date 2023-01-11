@@ -16,8 +16,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSDictionary *persistentHistoryTokens; // @synthesize persistentHistoryTokens=_persistentHistoryTokens;
++ (id)fetchResultTokenFromDataRepresentation:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *persistentHistoryTokens; // @synthesize persistentHistoryTokens=_persistentHistoryTokens;
+- (id)dataRepresentationWithError:(id *)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

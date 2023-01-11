@@ -4,34 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDSettingTransactionReceiverProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDSettingsControllerProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDSettingsMessageController-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSArray, NSMapTable, NSString;
-@protocol HMDSettingGroupOwnerProtocol, HMDSettingsControllerDelegate, HMDSettingsControllerDependency, HMDSettingsMessageHandlerProtocol;
+@class HMDSettingGroup, NSArray, NSMapTable, NSString;
+@protocol HMDSettingsControllerDelegate, HMDSettingsControllerDependency, HMDSettingsMessageHandlerProtocol;
 
-@interface HMDSettingsController : NSObject <HMFLogging, HMDSettingsControllerProtocol, HMDSettingsMessageController, HMDSettingTransactionReceiverProtocol>
+@interface HMDSettingsController : HMFObject <HMFLogging, HMDSettingsControllerProtocol, HMDSettingsMessageController, HMDSettingTransactionReceiverProtocol>
 {
     id <HMDSettingsMessageHandlerProtocol> _messageHandler;
     id <HMDSettingsControllerDependency> _dependency;
     id <HMDSettingsControllerDelegate> _delegate;
-    id <HMDSettingGroupOwnerProtocol> _rootGroup;
+    HMDSettingGroup *_rootGroup;
     NSMapTable *_groupsMap;
     NSMapTable *_settingsMap;
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain) NSMapTable *settingsMap; // @synthesize settingsMap=_settingsMap;
 @property(retain) NSMapTable *groupsMap; // @synthesize groupsMap=_groupsMap;
-@property(retain) id <HMDSettingGroupOwnerProtocol> rootGroup; // @synthesize rootGroup=_rootGroup;
+@property(retain) HMDSettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
 @property(readonly) __weak id <HMDSettingsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) id <HMDSettingsControllerDependency> dependency; // @synthesize dependency=_dependency;
 @property(readonly) id <HMDSettingsMessageHandlerProtocol> messageHandler; // @synthesize messageHandler=_messageHandler;
-- (void).cxx_destruct;
 - (void)transactionSettingConstraintModelRemoved:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transactionSettingConstraintModelUpdated:(id)arg1 previousModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)transactionSettingModelRemoved:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -54,6 +54,8 @@
 - (void)resetupMessageHandlersWithAddedGroups:(id)arg1 removedGroups:(id)arg2 addedSettings:(id)arg3 removedSettings:(id)arg4;
 - (void)handleAddedConstraintModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedConstraintModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_flattenedSettingControllerRoot:(id)arg1 withCurrentPath:(id)arg2 andReturnDictionary:(id)arg3;
+- (id)settingValuesByKeyPathWithPrefix:(id)arg1;
 - (void)handleAddedSettingModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedSettingModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleAddedGroupModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -62,6 +64,7 @@
 - (void)updateWithValue:(id)arg1 onSetting:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateWithValue:(id)arg1 onSettingIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateWithEncodedValue:(id)arg1 onSettingIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)settingForKeyPath:(id)arg1;
 - (id)settingForIdentifier:(id)arg1;
 - (id)settingGroupForIdentifier:(id)arg1;
 @property(readonly) NSArray *allObjectIdentifiers;
@@ -70,9 +73,13 @@
 - (id)initWithDependency:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *privateDescription;
+@property(readonly, copy) NSString *propertyDescription;
+@property(readonly, copy) NSString *shortDescription;
 @property(readonly) Class superclass;
 
 @end

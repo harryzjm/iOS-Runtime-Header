@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPSCNNAdd, MPSCNNLoss, MPSCNNNeuron, MPSCNNNeuronGradient, MPSNNSlice, NSData, NSObject;
+@class MPSCNNLoss, MPSImage, MPSMatrix, NSData, NSObject;
 @protocol OS_dispatch_semaphore;
 
 @interface MPSCNNYOLOLoss
@@ -14,10 +14,7 @@
     MPSCNNLoss *_lossConfidence;
     MPSCNNLoss *_lossClasses;
     int _reductionType;
-    MPSCNNNeuron *_sigmoid;
-    MPSCNNNeuronGradient *_sigmoidGradient;
-    MPSCNNAdd *_add;
-    MPSNNSlice *_slice;
+    _Bool _reduceAcrossBatch;
     _Bool _rescore;
     float _scaleXY;
     float _scaleWH;
@@ -30,27 +27,30 @@
     NSObject<OS_dispatch_semaphore> *_encodingSemaphore;
     NSData *_anchorBoxes;
     unsigned long long _numberOfAnchorBoxes;
+    MPSMatrix *_reductionBuffer;
+    MPSImage *_firstLossTexture;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
-@property(readonly, nonatomic) unsigned long long numberOfAnchorBoxes; // @synthesize numberOfAnchorBoxes=_numberOfAnchorBoxes;
-@property(readonly, retain, nonatomic) NSData *anchorBoxes; // @synthesize anchorBoxes=_anchorBoxes;
-@property(readonly, nonatomic) float maxIOUForObjectAbsence; // @synthesize maxIOUForObjectAbsence=_maxIOUForObjectAbsence;
-@property(readonly, nonatomic) float minIOUForObjectPresence; // @synthesize minIOUForObjectPresence=_minIOUForObjectPresence;
-@property(readonly, nonatomic) float scaleClass; // @synthesize scaleClass=_scaleClass;
-@property(readonly, nonatomic) float scaleObject; // @synthesize scaleObject=_scaleObject;
-@property(readonly, nonatomic) float scaleNoObject; // @synthesize scaleNoObject=_scaleNoObject;
-@property(readonly, nonatomic) float scaleWH; // @synthesize scaleWH=_scaleWH;
-@property(readonly, nonatomic) float scaleXY; // @synthesize scaleXY=_scaleXY;
-@property(readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+@property(nonatomic) unsigned long long numberOfAnchorBoxes; // @synthesize numberOfAnchorBoxes=_numberOfAnchorBoxes;
+@property(retain, nonatomic) NSData *anchorBoxes; // @synthesize anchorBoxes=_anchorBoxes;
+@property(nonatomic) float maxIOUForObjectAbsence; // @synthesize maxIOUForObjectAbsence=_maxIOUForObjectAbsence;
+@property(nonatomic) float minIOUForObjectPresence; // @synthesize minIOUForObjectPresence=_minIOUForObjectPresence;
+@property(nonatomic) float scaleClass; // @synthesize scaleClass=_scaleClass;
+@property(nonatomic) float scaleObject; // @synthesize scaleObject=_scaleObject;
+@property(nonatomic) float scaleNoObject; // @synthesize scaleNoObject=_scaleNoObject;
+@property(nonatomic) float scaleWH; // @synthesize scaleWH=_scaleWH;
+@property(nonatomic) float scaleXY; // @synthesize scaleXY=_scaleXY;
+@property(nonatomic) _Bool reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
+@property(nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property(readonly, retain, nonatomic) MPSCNNLoss *lossClasses; // @synthesize lossClasses=_lossClasses;
 @property(readonly, retain, nonatomic) MPSCNNLoss *lossConfidence; // @synthesize lossConfidence=_lossConfidence;
 @property(readonly, retain, nonatomic) MPSCNNLoss *lossWH; // @synthesize lossWH=_lossWH;
 @property(readonly, retain, nonatomic) MPSCNNLoss *lossXY; // @synthesize lossXY=_lossXY;
 - (unsigned long long)maxBatchSize;
-- (float)countPresetobjectsSourceImages:(struct NSArray *)arg1 labels:(struct NSArray *)arg2;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 labels:(struct NSArray *)arg3;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 labels:(struct NSArray *)arg3 destinationImages:(struct NSArray *)arg4;
+- (float)countPresetobjectsSourceImages:(id)arg1 labels:(id)arg2;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 labels:(id)arg3;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 labels:(id)arg3 destinationImages:(id)arg4;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 labels:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 labels:(id)arg3 destinationImage:(id)arg4;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3;

@@ -16,10 +16,9 @@
     UIView *_backgroundView;
 }
 
-+ (id)dynamicBackgroundColor;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) long long direction; // @synthesize direction=_direction;
-- (void).cxx_destruct;
 - (void)_setupPanImages;
 - (void)_updateColors;
 - (void)traitCollectionDidChange:(id)arg1;

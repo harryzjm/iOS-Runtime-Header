@@ -12,9 +12,11 @@
 
 @interface HUGridFlowLayout : UICollectionViewFlowLayout <HUControllableCollectionViewLayout>
 {
+    _Bool _shouldFlipForRTL;
     HUGridLayoutOptions *_layoutOptions;
     HUWallpaperView *_wallpaperView;
     HFWallpaperSlice *_blurredWallpaperSlice;
+    HFWallpaperSlice *_darkModeBlurredWallpaperSlice;
     NSMutableDictionary *_indexPathsByItems;
     NSMutableDictionary *_overrideAttributesByIndexPath;
     NSHashTable *_childGridLayouts;
@@ -22,14 +24,16 @@
 }
 
 + (Class)layoutAttributesClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldFlipForRTL; // @synthesize shouldFlipForRTL=_shouldFlipForRTL;
 @property(nonatomic) __weak HUGridFlowLayout *parentGridLayout; // @synthesize parentGridLayout=_parentGridLayout;
 @property(retain, nonatomic) NSHashTable *childGridLayouts; // @synthesize childGridLayouts=_childGridLayouts;
 @property(readonly, nonatomic) NSMutableDictionary *overrideAttributesByIndexPath; // @synthesize overrideAttributesByIndexPath=_overrideAttributesByIndexPath;
 @property(readonly, nonatomic) NSMutableDictionary *indexPathsByItems; // @synthesize indexPathsByItems=_indexPathsByItems;
+@property(retain, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice; // @synthesize darkModeBlurredWallpaperSlice=_darkModeBlurredWallpaperSlice;
 @property(retain, nonatomic) HFWallpaperSlice *blurredWallpaperSlice; // @synthesize blurredWallpaperSlice=_blurredWallpaperSlice;
 @property(nonatomic) __weak HUWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
 @property(retain, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
-- (void).cxx_destruct;
 - (id)_modifiedLayoutAttributesForAttributes:(id)arg1;
 - (void)unregisterChildGridLayout:(id)arg1;
 - (void)registerChildGridLayout:(id)arg1;
@@ -42,7 +46,9 @@
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
+- (_Bool)flipsHorizontallyInOppositeLayoutDirection;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (id)initForRTL:(_Bool)arg1;
 - (id)init;
 
 // Remaining properties

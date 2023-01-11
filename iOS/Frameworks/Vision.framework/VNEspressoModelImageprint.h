@@ -29,6 +29,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)confidenceTypeForRevision:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property long long distanceMode; // @synthesize distanceMode=_distanceMode;
 @property(copy) NSString *version; // @synthesize version=_version;
 @property(readonly, nonatomic) unsigned long long confidenceScoreType; // @synthesize confidenceScoreType=_confidenceScoreType;
@@ -36,15 +37,16 @@
 @property unsigned long long lengthInBytes; // @synthesize lengthInBytes=_lengthInBytes;
 @property unsigned long long elementCount; // @synthesize elementCount=_elementCount;
 @property(retain) NSData *descriptorData; // @synthesize descriptorData=_descriptorData;
-- (void).cxx_destruct;
 - (id)computeDistance:(id)arg1 withDistanceFunction:(unsigned long long)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)hasEquivalentDescriptorToImageprint:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithState:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
 - (id)initWithState:(id)arg1 error:(id *)arg2;
 - (id)serializeStateAndReturnError:(id *)arg1;
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (unsigned long long)_VNEspressoModelImageprintSerializedLength;
 @property(readonly, nonatomic) unsigned long long serializedLength;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 forCodingVersion:(unsigned int)arg2;

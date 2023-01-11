@@ -18,10 +18,13 @@
     id <XCTMetric> _metric;
 }
 
-@property(retain, nonatomic) id <XCTMetric> metric; // @synthesize metric=_metric;
++ (void)addMetricToMeasurements:(id)arg1 sampleTag:(id)arg2 identifier:(id)arg3 displayName:(id)arg4 measurements:(id)arg5 skipConversion:(_Bool)arg6 polarity:(long long)arg7;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <XCTMetric> metric; // @synthesize metric=_metric;
 - (_Bool)harvestData:(id *)arg1 error:(id *)arg2;
+- (void)didStopAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 stopDate:(id)arg3;
 - (void)didStopAtTime:(unsigned long long)arg1 stopDate:(id)arg2;
+- (void)didStartAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 startDate:(id)arg3;
 - (void)didStartAtTime:(unsigned long long)arg1 startDate:(id)arg2;
 - (void)willStartAtEstimatedTime:(unsigned long long)arg1;
 - (_Bool)prepareWithOptions:(id)arg1 error:(id *)arg2;

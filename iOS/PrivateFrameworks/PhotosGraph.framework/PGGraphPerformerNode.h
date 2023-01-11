@@ -10,14 +10,25 @@
 
 @interface PGGraphPerformerNode <PGGraphPortraitNamedEntity>
 {
+    NSString *_name;
+    NSString *_uuid;
 }
 
-@property(readonly, nonatomic) NSString *name;
+- (void).cxx_destruct;
+@property(readonly) NSString *uuid; // @synthesize uuid=_uuid;
+@property(readonly) NSString *name; // @synthesize name=_name;
+- (unsigned short)domain;
+- (id)label;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 @property(readonly, nonatomic) PPNamedEntity *pg_namedEntity;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

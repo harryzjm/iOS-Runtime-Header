@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
     NSArray *_items;
 }
 
-@property(retain, nonatomic) NSArray *items; // @synthesize items=_items;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *items; // @synthesize items=_items;
 - (void)layoutSubviews;
 - (void)_createConstraints;
 - (void)_updateFontAndTextColor:(id)arg1;

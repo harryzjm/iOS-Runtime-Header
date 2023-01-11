@@ -16,13 +16,14 @@
     SBTouchHistory *_touchHistory;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBTouchHistory *touchHistory; // @synthesize touchHistory=_touchHistory;
 @property(nonatomic) _Bool installedAsSystemGesture; // @synthesize installedAsSystemGesture=_installedAsSystemGesture;
 @property(nonatomic) __weak SBFluidSwitcherViewController *switcherViewController; // @synthesize switcherViewController=_switcherViewController;
-- (void).cxx_destruct;
 - (double)peakSpeed;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (void)reset;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

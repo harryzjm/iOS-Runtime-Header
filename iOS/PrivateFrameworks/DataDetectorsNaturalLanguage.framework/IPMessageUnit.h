@@ -20,7 +20,7 @@
     NSIndexSet *_proposalAndAcceptationRanges;
     NSIndexSet *_neutralRanges;
     NSString *_bestLanguage;
-    NSString *_lowercaseText;
+    NSString *_lowercaseTextTruncated;
     NSString *_text;
     IPMessageUnit *_previous;
     IPMessage *_originalMessage;
@@ -28,6 +28,7 @@
     struct _NSRange _interactedDateRange;
 }
 
+- (void).cxx_destruct;
 @property struct _NSRange interactedDateRange; // @synthesize interactedDateRange=_interactedDateRange;
 @property(readonly) long long indexInOriginalMessage; // @synthesize indexInOriginalMessage=_indexInOriginalMessage;
 @property(readonly) __weak IPMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
@@ -36,14 +37,13 @@
 @property(readonly) NSArray *sentenceFeatures; // @synthesize sentenceFeatures=_sentenceFeatures;
 @property(readonly) __weak IPMessageUnit *previous; // @synthesize previous=_previous;
 @property(readonly, copy) NSString *text; // @synthesize text=_text;
-- (void).cxx_destruct;
 - (id)description;
 - (id)bestLanguageID;
 - (id)proposalAndAcceptationRanges;
 - (id)neutralRanges;
 - (id)rejectionRanges;
 @property(readonly) NSArray *features; // @synthesize features=_features;
-@property(readonly, copy) NSString *lowercaseText;
+@property(readonly, copy) NSString *lowercaseTextTruncated;
 - (void)setKeywordFeatures:(id)arg1;
 - (void)setDataFeatures:(id)arg1;
 - (void)setSentenceFeatures:(id)arg1;

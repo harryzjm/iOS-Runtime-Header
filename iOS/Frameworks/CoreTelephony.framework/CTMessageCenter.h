@@ -11,6 +11,8 @@
 }
 
 + (id)sharedMessageCenter;
+- (void)emergencySessionIntentEnd:(id)arg1;
+- (void)emergencySessionIntentStart:(id)arg1;
 - (_Bool)sendBinarySMS:(id)arg1 trackingID:(unsigned int *)arg2;
 - (_Bool)simulateDeferredMessage;
 - (_Bool)simulateSmsReceived:(id)arg1;
@@ -32,7 +34,6 @@
 - (CDStruct_1ef3fb1f)isDeliveryReportsEnabled:(_Bool *)arg1;
 - (id)decodeMessage:(id)arg1;
 - (id)encodeMessage:(id)arg1;
-- (id)statusOfOutgoingMessages;
 - (id)deferredMessageWithId:(unsigned int)arg1;
 - (id)incomingMessageWithId:(unsigned int)arg1;
 - (void)acknowledgeOutgoingMessageWithId:(unsigned int)arg1;

@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <BusinessChat/BCDictionaryImageSerializable-Protocol.h>
+#import <BusinessChat/BSDescriptionProviding-Protocol.h>
 
 @class NSDictionary, NSString, UIImage;
 
-@interface BCMessageInfo : NSObject <BCDictionaryImageSerializable>
+@interface BCMessageInfo : NSObject <BSDescriptionProviding, BCDictionaryImageSerializable>
 {
     NSString *_title;
     NSString *_subtitle;
@@ -21,6 +22,7 @@
     NSString *__style;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) NSString *_style; // @synthesize _style=__style;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) NSString *imageDescription; // @synthesize imageDescription=_imageDescription;
@@ -28,12 +30,21 @@
 @property(retain, nonatomic) NSString *alternateTitle; // @synthesize alternateTitle=_alternateTitle;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *style;
 @property(readonly, nonatomic) NSDictionary *dictionaryValue;
 - (id)initWithDictionary:(id)arg1 imageDictionary:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 style:(id)arg3 alternateTitle:(id)arg4 imageIdentifier:(id)arg5 imageDescription:(id)arg6;
+
+// Remaining properties
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

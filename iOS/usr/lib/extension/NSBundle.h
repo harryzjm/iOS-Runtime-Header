@@ -11,7 +11,7 @@
 @interface NSBundle : NSObject
 {
     unsigned long long _flags;
-    id _cfBundle;
+    _Atomic struct __CFBundle *_cfBundle;
     unsigned long long _reserved2;
     Class _principalClass;
     id _initialPath;
@@ -39,6 +39,8 @@
 + (id)pathForResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
 + (id)findBundleResourceURLsCallingMethod:(SEL)arg1 baseURL:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 + (id)findBundleResources:(id)arg1 callingMethod:(SEL)arg2 directory:(id)arg3 languages:(id)arg4 name:(id)arg5 types:(id)arg6 limit:(unsigned long long)arg7;
+- (id)localizedAttributedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 locale:(id)arg4;
+- (id)localizedAttributedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 @property(readonly, copy) NSArray *executableArchitectures;
 - (_Bool)preflightAndReturnError:(id *)arg1;
 @property(readonly, copy) NSString *developmentLocalization;
@@ -70,6 +72,8 @@
 @property(readonly, copy) NSString *privateFrameworksPath;
 - (id)URLForAuxiliaryExecutable:(id)arg1;
 - (id)pathForAuxiliaryExecutable:(id)arg1;
+- (id)_wrapperContainerURL;
+- (id)_wrappedBundleURL;
 @property(readonly, copy) NSURL *appStoreReceiptURL;
 @property(readonly, copy) NSURL *executableURL;
 @property(readonly, copy) NSString *executablePath;

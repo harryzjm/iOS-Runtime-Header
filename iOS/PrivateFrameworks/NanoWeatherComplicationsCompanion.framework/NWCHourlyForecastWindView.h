@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)applyStyle;
-- (void)applyConditions:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
+- (void)applyEntryModel:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
 
 @end
 

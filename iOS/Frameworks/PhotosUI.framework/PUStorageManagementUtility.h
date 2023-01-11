@@ -28,10 +28,10 @@
 + (id)sizeForRecentlyDeletedItems;
 + (id)_assetsInTrash;
 + (_Bool)shouldHideCPL;
++ (_Bool)isCPLInExitMode;
 + (_Bool)isCPLEnabled;
-+ (id)_sizeForLibraryKind:(unsigned long long)arg1;
-+ (id)originalSizeInLibrary;
-+ (id)purgeableSizeInLibrary;
++ (id)systemPhotoLibrary;
++ (void)purgeableSizeAndOriginalsInLibrary:(CDUnknownBlockType)arg1;
 
 @end
 

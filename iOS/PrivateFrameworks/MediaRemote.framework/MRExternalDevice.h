@@ -6,19 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class MRSupportedProtocolMessages, NSString, _MRDeviceInfoMessageProtobuf, _MROriginProtobuf;
+@class MRDeviceInfo, MROrigin, MRSupportedProtocolMessages, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MRExternalDevice : NSObject
 {
+    _Bool _wantsEndpointChangeNotifications;
     _Bool _valid;
     _Bool _usingSystemPairing;
     unsigned int _connectionState;
+    NSArray *_personalOutputDevices;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isUsingSystemPairing) _Bool usingSystemPairing; // @synthesize usingSystemPairing=_usingSystemPairing;
 @property(readonly, nonatomic) unsigned int connectionState; // @synthesize connectionState=_connectionState;
 @property(readonly, nonatomic, getter=isValid) _Bool valid; // @synthesize valid=_valid;
+@property(nonatomic) _Bool wantsEndpointChangeNotifications; // @synthesize wantsEndpointChangeNotifications=_wantsEndpointChangeNotifications;
+@property(readonly, nonatomic) NSArray *personalOutputDevices; // @synthesize personalOutputDevices=_personalOutputDevices;
+- (void)connectWithOptions:(unsigned int)arg1;
 - (void)sendClientUpdatesConfigMessage;
 - (id)currentClientUpdatesConfigMessage;
 - (id)errorForCurrentState;
@@ -37,15 +43,16 @@ __attribute__((visibility("hidden")))
 - (void)setPairingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)unpair;
 - (void)disconnect:(id)arg1;
-- (void)connectWithOptions:(unsigned int)arg1;
+- (void)connectWithOptions:(unsigned int)arg1 userInfo:(id)arg2;
 @property(readonly, nonatomic, getter=isPaired) _Bool paired;
+@property(nonatomic) _Bool wantsSystemEndpointNotifications;
 @property(nonatomic) _Bool wantsOutputDeviceNotifications;
 @property(nonatomic) _Bool wantsVolumeNotifications;
 @property(nonatomic) _Bool wantsNowPlayingArtworkNotifications;
 @property(nonatomic) _Bool wantsNowPlayingNotifications;
 @property(readonly, nonatomic) MRSupportedProtocolMessages *supportedMessages;
-@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
-@property(readonly, nonatomic) _MROriginProtobuf *customOrigin;
+@property(readonly, nonatomic) MRDeviceInfo *deviceInfo;
+@property(readonly, nonatomic) MROrigin *customOrigin;
 @property(readonly, nonatomic) long long port;
 @property(readonly, nonatomic) NSString *hostName;
 @property(readonly, nonatomic) NSString *name;

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)knownIdentityKeysForComparison;
 + (Class)frozenClass;
 @property(copy, nonatomic) NSData *externalRepresentation;
 @property(copy, nonatomic) NSString *externalModificationTag;

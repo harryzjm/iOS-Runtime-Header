@@ -36,8 +36,12 @@
 - (id)fontDescriptorWithDesign:(id)arg1;
 - (id)fontDescriptorWithFamily:(id)arg1;
 - (id)fontDescriptorWithFace:(id)arg1;
-- (id)fontDescriptorWithMatrix:(struct CGAffineTransform)arg1;
 - (id)fontDescriptorWithSize:(double)arg1;
+@property(readonly, nonatomic) struct CGAffineTransform matrix;
+- (id)fontDescriptorWithMatrix:(struct CGAffineTransform)arg1;
+- (id)_NSAffineTransform;
+- (struct CGAffineTransform)_matrix;
+- (id)_fontDescriptorWithMatrix:(struct CGAffineTransform)arg1;
 - (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1;
 - (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1 mask:(unsigned int)arg2;
 - (id)fontDescriptorByAddingAttributes:(id)arg1;
@@ -45,7 +49,6 @@
 - (id)matchingFontDescriptorsWithMandatoryKeys:(id)arg1;
 - (id)objectForKey:(id)arg1;
 @property(readonly, nonatomic) unsigned int symbolicTraits;
-@property(readonly, nonatomic) struct CGAffineTransform matrix;
 @property(readonly, nonatomic) double pointSize;
 @property(readonly, nonatomic) NSString *postscriptName;
 - (void)encodeWithCoder:(id)arg1;

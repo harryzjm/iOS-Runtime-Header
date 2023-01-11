@@ -7,14 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <AssistantUI/AFQueueDelegate-Protocol.h>
+#import <AssistantUI/AFUIPowerLevelListenerDelegate-Protocol.h>
 #import <AssistantUI/AFUISpeechSynthesis-Protocol.h>
 #import <AssistantUI/AFUISpeechSynthesisElementDelegate-Protocol.h>
 #import <AssistantUI/VSSpeechSynthesizerDelegate-Protocol.h>
 
-@class AFQueue, AFSiriClientStateManager, AFVoiceInfo, NSMutableArray, NSMutableDictionary, NSString, VSSpeechSynthesizer;
+@class AFQueue, AFSiriClientStateManager, AFUIPowerLevelListener, AFVoiceInfo, NSMutableArray, NSMutableDictionary, NSString, VSSpeechSynthesizer;
 @protocol AFUISpeechSynthesisDelegate, AFUISpeechSynthesisLocalDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface AFUISpeechSynthesis : NSObject <AFQueueDelegate, AFUISpeechSynthesisElementDelegate, VSSpeechSynthesizerDelegate, AFUISpeechSynthesis>
+@interface AFUISpeechSynthesis : NSObject <AFQueueDelegate, AFUIPowerLevelListenerDelegate, AFUISpeechSynthesisElementDelegate, VSSpeechSynthesizerDelegate, AFUISpeechSynthesis>
 {
     VSSpeechSynthesizer *_synthesizer;
     AFSiriClientStateManager *_siriClientStateManager;
@@ -26,17 +27,19 @@
     NSObject<OS_dispatch_group> *_pendingElementsGroup;
     id <AFUISpeechSynthesisDelegate> _delegate;
     id <AFUISpeechSynthesisLocalDelegate> _localDelegate;
+    AFUIPowerLevelListener *_powerLevelListener;
     AFQueue *_elementQueue;
     NSMutableArray *_activeElements;
     NSMutableDictionary *_delayedElements;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_delayedElements) NSMutableDictionary *delayedElements; // @synthesize delayedElements=_delayedElements;
 @property(readonly, nonatomic, getter=_activeElements) NSMutableArray *activeElements; // @synthesize activeElements=_activeElements;
 @property(readonly, nonatomic, getter=_elementQueue) AFQueue *elementQueue; // @synthesize elementQueue=_elementQueue;
 @property(retain, nonatomic) id <AFUISpeechSynthesisDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <AFUISpeechSynthesisLocalDelegate> localDelegate; // @synthesize localDelegate=_localDelegate;
-- (void).cxx_destruct;
+- (void)powerLevelListener:(id)arg1 powerLevelDidUpdateTo:(float)arg2;
 - (void)_setSiriClientStateManager:(id)arg1;
 - (void)_setSynthesizer:(id)arg1;
 - (void)_processProvisionalElements;

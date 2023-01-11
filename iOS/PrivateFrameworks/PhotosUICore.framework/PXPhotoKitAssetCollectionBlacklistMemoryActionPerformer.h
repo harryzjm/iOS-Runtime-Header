@@ -9,14 +9,16 @@
 }
 
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
-+ (id)systemImageNameForAssetCollection:(id)arg1 person:(id)arg2;
-+ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollection:(id)arg2 person:(id)arg3;
++ (id)systemImageNameForAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
 + (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
-+ (_Bool)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
++ (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 - (void)performBackgroundTask;
 - (_Bool)_didUserConfirmDeleteOfMemory;
 - (void)performUserInteractionTask;
-- (void)confirmDeleteMemoryUserAction:(id)arg1;
+- (id)_disambiguationActionsForAlert:(_Bool)arg1 withActionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)_doesUserActionRequireDisambiguation:(id)arg1 outResolvedAction:(id *)arg2 outAlertActionsForDisambiguation:(id *)arg3 alertActionHandler:(CDUnknownBlockType)arg4;
+- (id)disambiguationMenuForUseCase:(unsigned long long)arg1 withMenuActionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

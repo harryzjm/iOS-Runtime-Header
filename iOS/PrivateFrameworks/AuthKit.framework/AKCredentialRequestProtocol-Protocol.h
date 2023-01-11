@@ -11,6 +11,7 @@
 @class NSString, NSUUID;
 
 @protocol AKCredentialRequestProtocol <NSObject, NSSecureCoding, NSCopying>
+@property(readonly, copy, nonatomic) NSUUID *transactionID;
 @property(readonly, copy, nonatomic) NSUUID *requestIdentifier;
 @property(readonly, copy, nonatomic) NSString *altDSID;
 @property(copy, nonatomic) NSString *userIdentifier;

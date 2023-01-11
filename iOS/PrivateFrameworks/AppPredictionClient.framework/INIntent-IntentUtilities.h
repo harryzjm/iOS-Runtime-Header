@@ -7,6 +7,10 @@
 #import <Intents/INIntent.h>
 
 @interface INIntent (IntentUtilities)
+- (_Bool)_atx_matchesParameterIdentifiersWithIntent:(id)arg1;
+- (id)_atx_intentsForAllParameterCombinations;
+- (_Bool)atx_isValidSuggestionIntentForWidgetIntent:(id)arg1;
+- (_Bool)atx_isEqualToIntent:(id)arg1;
 - (id)atx_hashApproximately;
 - (id)atx_nonNilParametersByName;
 @end

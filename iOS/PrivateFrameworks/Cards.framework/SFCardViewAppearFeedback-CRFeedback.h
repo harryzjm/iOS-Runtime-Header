@@ -8,10 +8,10 @@
 
 #import <Cards/CRCardViewAppearanceFeedback-Protocol.h>
 
-@class NSString, SFFeedback;
+@class NSString;
 
 @interface SFCardViewAppearFeedback (CRFeedback) <CRCardViewAppearanceFeedback>
-@property(readonly, nonatomic) SFFeedback *backingFeedback;
+@property(readonly, nonatomic) SFCardViewAppearFeedback *backingFeedback;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

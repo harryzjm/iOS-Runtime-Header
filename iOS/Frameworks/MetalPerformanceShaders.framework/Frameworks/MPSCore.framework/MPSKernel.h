@@ -26,7 +26,7 @@
     unsigned int _privateOptions;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool enableConcurrency; // @synthesize enableConcurrency=_enableConcurrency;
 @property(nonatomic) CDUnion_cbb8185c fileVersion; // @synthesize fileVersion=_fileVersion;

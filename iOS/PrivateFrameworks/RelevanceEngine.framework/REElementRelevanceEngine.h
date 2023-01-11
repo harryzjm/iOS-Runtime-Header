@@ -35,8 +35,8 @@
     id <REElementRelevanceEngineDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <REElementRelevanceEngineDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <REElementRelevanceEngineDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) RERelevanceProviderEnvironment *providerEnvironment;
 @property(readonly, nonatomic) REPredictorManager *predictorManager;
 @property(readonly, nonatomic) NSDictionary *sectionsMap;
@@ -67,6 +67,7 @@
 - (id)sectionForElement:(id)arg1;
 - (id)pathForElement:(id)arg1;
 - (void)removeElement:(id)arg1;
+- (void)reloadElement:(id)arg1 withElement:(id)arg2;
 - (void)addElement:(id)arg1 section:(id)arg2;
 - (void)modelManagerDidUpdateModel:(id)arg1;
 - (void)_enumerateAndGenerateSectionComparators:(CDUnknownBlockType)arg1;

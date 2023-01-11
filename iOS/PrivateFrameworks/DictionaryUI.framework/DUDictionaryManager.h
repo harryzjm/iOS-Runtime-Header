@@ -15,12 +15,13 @@
 }
 
 + (id)assetManager;
-@property(readonly) NSArray *availableDefinitionDictionaries; // @synthesize availableDefinitionDictionaries=_availableDefinitionDictionaries;
 - (void).cxx_destruct;
+@property(readonly) NSArray *availableDefinitionDictionaries; // @synthesize availableDefinitionDictionaries=_availableDefinitionDictionaries;
 - (void)_migrateInstalledStateForNewDictionaries:(id)arg1;
+- (long long)_compareOrderOfDictionary:(id)arg1 withDictionary:(id)arg2;
 - (id)_allAvailableDefinitionDictionaries;
 - (id)_availableDictionaryAssets;
-- (void)_downloadDictionaryAssetCatalog:(CDUnknownBlockType)arg1;
+- (void)_downloadDictionaryAssetCatalogWithTimeout:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_dictionaryAssetType;
 - (id)_definitionValuesForTerm:(id)arg1;
 - (_Bool)_hasDefinitionForTerm:(id)arg1;

@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)layoutSubviews;
 - (void)_setupUI;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

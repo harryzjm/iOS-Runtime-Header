@@ -21,14 +21,16 @@
 }
 
 + (id)_formattedStringsCache;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _MKMultiPartLabelMetrics *data; // @synthesize data=_data;
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(retain, nonatomic) MKMultiPartAttributedString *multiPartString; // @synthesize multiPartString=_multiPartString;
-- (void).cxx_destruct;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
+- (struct CGSize)intrinsicContentSize;
 - (void)setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;
 - (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

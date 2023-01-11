@@ -14,9 +14,9 @@
     NSXPCConnection *_serviceConnection;
 }
 
++ (id)defaultBroker;
 + (id)_storeKitServiceInterface;
 + (id)_storeKitClientInterface;
-+ (id)defaultBroker;
 - (void).cxx_destruct;
 - (void)_serviceConnectionInvalidated;
 - (id)_serviceConnection;

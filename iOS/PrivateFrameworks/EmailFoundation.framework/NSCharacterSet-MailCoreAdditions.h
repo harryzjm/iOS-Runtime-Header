@@ -7,6 +7,7 @@
 #import <Foundation/NSCharacterSet.h>
 
 @interface NSCharacterSet (MailCoreAdditions)
++ (id)ef_rfc6376WhitespaceCharacterSet;
 + (id)ef_asciiAlphaNumericCharacterSet;
 + (id)ef_unsafeAddressLocalPartCharacterSet;
 + (id)ef_unsafeDomainNameCharacterSet;

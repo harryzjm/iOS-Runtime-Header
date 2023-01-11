@@ -12,14 +12,17 @@
 #import <HomeKit/HMSettingsContainer-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMSettings, HMSettingsController, NSString, NSUUID, _HMContext;
+@class HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMPhotosPersonManager, HMPhotosPersonManagerSettings, HMSettings, HMSettingsController, IDSURI, NSString, NSUUID, _HMContext;
 @protocol HMUserDelegatePrivate, OS_dispatch_queue;
 
 @interface HMUser : NSObject <HMFLogging, HMFMessageReceiver, HMSettingsContainer, NSSecureCoding, HMObjectMerge>
 {
     HMFUnfairLock *_lock;
     HMMutableArray *_pendingAccessoryInvitations;
+    NSString *_senderCorrelationIdentifier;
     _Bool _currentUser;
+    _Bool _needsiTunesMultiUserRepair;
+    _Bool _settingsInitialized;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHomeAccessControl *_homeAccessControl;
@@ -30,21 +33,25 @@
     HMFPairingIdentity *_pairingIdentity;
     HMSettings *_settings;
     HMSettings *_privateSettings;
-    _HMContext *_context;
+    HMPhotosPersonManager *_photosPersonManager;
+    HMPhotosPersonManagerSettings *_photosPersonManagerSettings;
     id <HMUserDelegatePrivate> _delegate;
     HMSettingsController *_settingsController;
     HMSettingsController *_privateSettingsController;
     NSUUID *_uuid;
+    _HMContext *_context;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
+- (void).cxx_destruct;
+@property(retain) _HMContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly) HMSettingsController *privateSettingsController; // @synthesize privateSettingsController=_privateSettingsController;
 @property(readonly) HMSettingsController *settingsController; // @synthesize settingsController=_settingsController;
 @property __weak id <HMUserDelegatePrivate> delegate; // @synthesize delegate=_delegate;
-@property(retain) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
+@property(readonly) _Bool settingsInitialized; // @synthesize settingsInitialized=_settingsInitialized;
+@property _Bool needsiTunesMultiUserRepair; // @synthesize needsiTunesMultiUserRepair=_needsiTunesMultiUserRepair;
 @property(readonly) HMSettings *privateSettings; // @synthesize privateSettings=_privateSettings;
 @property(readonly) HMSettings *settings; // @synthesize settings=_settings;
 - (id)userSettingsForHome:(id)arg1;
@@ -56,6 +63,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)logIdentifier;
+@property(copy) HMPhotosPersonManagerSettings *photosPersonManagerSettings; // @synthesize photosPersonManagerSettings=_photosPersonManagerSettings;
+@property(retain) HMPhotosPersonManager *photosPersonManager; // @synthesize photosPersonManager=_photosPersonManager;
+- (void)setNeedsiTunesMultiUserRepair:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendClientShareRepairRequest:(id)arg1 containerID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendClientShareURL:(id)arg1 shareToken:(id)arg2 containerID:(id)arg3 fromUser:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)fetchShareLookupInfo:(CDUnknownBlockType)arg1;
 - (void)pairingIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -65,8 +76,10 @@
 - (void)setPendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1;
 - (id)_filterAccessoryInvitationsFromOutgoingInvitation:(id)arg1;
 - (id)pendingAccessoryInvitations;
+- (id)senderCorrelationIdentifier;
 @property(nonatomic, getter=isCurrentUser) _Bool currentUser; // @synthesize currentUser=_currentUser;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
+@property(readonly, copy, nonatomic) IDSURI *userIDSURI;
 @property(copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
 - (void)updateMediaContentProfileAccessControl:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)mediaContentProfileAccessControlForHome:(id)arg1;
@@ -82,12 +95,18 @@
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)_registerNotificationHandlers;
-- (void)_unconfigure;
-- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4 homeAccessControl:(id)arg5;
 - (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4;
 - (id)init;
+- (void)updatePhotosPersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)configurePhotosPersonManagerWithSettings:(id)arg1;
+- (void)updatePersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchPersonManagerSettingsWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, copy) HMPhotosPersonManagerSettings *personManagerSettings;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

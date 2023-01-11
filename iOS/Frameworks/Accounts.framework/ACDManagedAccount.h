@@ -12,6 +12,7 @@
 {
 }
 
+- (id)description;
 
 // Remaining properties
 @property(retain, nonatomic) NSString *accountDescription; // @dynamic accountDescription;
@@ -27,11 +28,14 @@
 @property(retain, nonatomic) NSSet *enabledDataclasses; // @dynamic enabledDataclasses;
 @property(retain, nonatomic) NSString *identifier; // @dynamic identifier;
 @property(retain, nonatomic) NSDate *lastCredentialRenewalRejectionDate; // @dynamic lastCredentialRenewalRejectionDate;
+@property(retain, nonatomic) NSString *modificationID; // @dynamic modificationID;
 @property(retain, nonatomic) NSString *owningBundleID; // @dynamic owningBundleID;
 @property(retain, nonatomic) ACDManagedAccount *parentAccount; // @dynamic parentAccount;
 @property(retain, nonatomic) NSSet *provisionedDataclasses; // @dynamic provisionedDataclasses;
 @property(retain, nonatomic) NSNumber *supportsAuthentication; // @dynamic supportsAuthentication;
 @property(retain, nonatomic) NSString *username; // @dynamic username;
 @property(retain, nonatomic) NSNumber *visible; // @dynamic visible;
+@property(retain, nonatomic) NSNumber *warmingUp; // @dynamic warmingUp;
+
 @end
 

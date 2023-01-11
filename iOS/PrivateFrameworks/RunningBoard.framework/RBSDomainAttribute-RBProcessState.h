@@ -7,8 +7,6 @@
 #import <RunningBoardServices/RBSDomainAttribute.h>
 
 @interface RBSDomainAttribute (RBProcessState)
-- (_Bool)_areOriginatorEntitlementsValidForContext:(id)arg1 withError:(id *)arg2;
-- (_Bool)_contextContainsRequiredEndowment:(id)arg1 requiresEndowment:(out _Bool *)arg2;
 - (_Bool)isValidForContext:(id)arg1 withError:(id *)arg2;
 - (id)effectiveAttributesWithContext:(id)arg1;
 - (void)applyToSystemState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;

@@ -21,12 +21,16 @@
     NSArray *_keysToFetch;
     long long _sortOrder;
     unsigned long long _batchSize;
+    unsigned long long _serialNumber;
 }
 
 + (_Bool)supportsSecureCoding;
++ (unsigned long long)makeSerialNumber;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldFailIfAccountNotYetSynced; // @synthesize shouldFailIfAccountNotYetSynced=_shouldFailIfAccountNotYetSynced;
 @property(nonatomic) _Bool allowsBatching; // @synthesize allowsBatching=_allowsBatching;
 @property(nonatomic) _Bool onlyMainStore; // @synthesize onlyMainStore=_onlyMainStore;
+@property(readonly) unsigned long long serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property(nonatomic) _Bool disallowsEncodedFetch; // @synthesize disallowsEncodedFetch=_disallowsEncodedFetch;
 @property(nonatomic) long long sortOrder; // @synthesize sortOrder=_sortOrder;
@@ -35,15 +39,14 @@
 @property(copy, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 @property(copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(nonatomic) _Bool rankSort; // @synthesize rankSort=_rankSort;
-- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (_Bool)requiresMeContactAuthorization;
 - (id)effectiveKeysToFetch;
 - (id)effectivePredicate;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithKeysToFetch:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)init;
 
 @end

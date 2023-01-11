@@ -12,8 +12,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithCollectionViewLayout:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

@@ -14,16 +14,18 @@
     unsigned long long _messageCount;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long messageCount; // @synthesize messageCount=_messageCount;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-- (void).cxx_destruct;
 - (void)invokeCompletionWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)incrementMessageCount;
 - (id)changeSetWithChanges:(id)arg1 statusCode:(int)arg2 error:(id)arg3;
+- (_Bool)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (id)syncPredicate;
 - (id)_syncPredicate;
 - (id)_intervalForSecondsSinceDaysAgo:(unsigned long long)arg1;
-- (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 @property(readonly, nonatomic) HDNanoSyncStore *nanoSyncStore;
 @property(readonly, nonatomic, getter=isLastChance) _Bool lastChance;

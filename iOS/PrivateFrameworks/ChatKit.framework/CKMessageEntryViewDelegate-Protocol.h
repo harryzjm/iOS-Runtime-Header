@@ -23,8 +23,11 @@
 - (void)messageEntryViewDidChange:(CKMessageEntryView *)arg1;
 
 @optional
+- (void)messageEntryViewPopulateNextSentMessage:(CKMessageEntryView *)arg1;
+- (void)messageEntryViewPopulatePreviousSentMessage:(CKMessageEntryView *)arg1;
 - (void)sendCurrentLocationMessage:(CKMessageEntryView *)arg1;
 - (UITextView *)textViewOnscreenWithEntryView;
+- (void)messageEntryViewWantsEffectPicker:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSwipeDownGestureRecognized:(CKMessageEntryView *)arg1;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 shouldShowAppStrip:(_Bool)arg2 animated:(_Bool)arg3;
 - (_Bool)shouldMessageEntryViewReportBrowserButtonHitToInputDelegate:(CKMessageEntryView *)arg1;

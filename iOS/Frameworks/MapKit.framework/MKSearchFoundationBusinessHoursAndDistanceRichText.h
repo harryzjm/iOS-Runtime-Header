@@ -4,18 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString, UIColor;
+
 __attribute__((visibility("hidden")))
 @interface MKSearchFoundationBusinessHoursAndDistanceRichText
 {
     _Bool _businessHoursResolved;
     _Bool _distanceResolved;
+    NSString *_hoursString;
+    UIColor *_hoursColor;
 }
 
+- (void).cxx_destruct;
+@property(retain) UIColor *hoursColor; // @synthesize hoursColor=_hoursColor;
+@property(retain) NSString *hoursString; // @synthesize hoursString=_hoursString;
 @property(getter=isDistanceResolved) _Bool distanceResolved; // @synthesize distanceResolved=_distanceResolved;
 @property(getter=isBusinessHoursResolved) _Bool businessHoursResolved; // @synthesize businessHoursResolved=_businessHoursResolved;
 - (_Bool)isRichTextResolved;
 - (void)resolveDistanceNotFound;
 - (void)resolveDistanceString:(id)arg1 lines:(id)arg2;
+- (void)updateFormattedTextForLines:(id)arg1;
 - (void)resolveBusinessHoursByMapItem:(id)arg1 lines:(id)arg2;
 
 @end

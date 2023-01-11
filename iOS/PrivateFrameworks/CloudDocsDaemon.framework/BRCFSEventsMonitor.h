@@ -20,7 +20,6 @@
     _Atomic int _resetCount;
     BRCFSEventsPersistedState *_persistedState;
     NSString *_devicePath;
-    NSString *_rootPathRelativeToDevice;
     NSObject<OS_dispatch_source> *_rootVnodeWatcher;
     struct __FSEventStream *_stream;
     NSObject<OS_dispatch_queue> *_streamQueue;
@@ -41,11 +40,11 @@
     PQLConnection *_db;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=setDB:) PQLConnection *db; // @synthesize db=_db;
 @property __weak id <BRCFSEventsDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) BRCRelativePath *root; // @synthesize root=_root;
 @property(readonly, nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
-- (void).cxx_destruct;
 - (void)cancel;
 - (void)_cancel;
 - (void)resume;

@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
     NSArray *_contactStores;
 }
 
-@property(copy, nonatomic) NSArray *contactStores; // @synthesize contactStores=_contactStores;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *contactStores; // @synthesize contactStores=_contactStores;
 - (_Bool)executeChangeHistoryClearRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
+- (id)currentHistoryAnchor;
+- (id)currentHistoryToken;
 - (id)enumeratorForChangeHistoryFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)enumeratorForContactFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

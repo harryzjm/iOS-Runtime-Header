@@ -12,6 +12,7 @@
 - (void)transferGestureState:(id <VKGesturingCameraController>)arg1;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopRotatingWithFocusPoint:(struct CGPoint)arg1;

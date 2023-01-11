@@ -8,24 +8,30 @@
 
 #import <AvatarUI/AVTAvatarAttributeEditorLayout-Protocol.h>
 
-@class NSString, UIColor;
+@class NSString;
 
 @interface AVTAvatarAttributeEditorLayout : NSObject <AVTAvatarAttributeEditorLayout>
 {
+    _Bool _showSideGroupPicker;
+    _Bool _RTL;
     double _screenScale;
     NSString *_contentSizeCategory;
     struct CGSize _containerSize;
     struct UIEdgeInsets _edgeInsets;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool RTL; // @synthesize RTL=_RTL;
+@property(readonly, nonatomic) _Bool showSideGroupPicker; // @synthesize showSideGroupPicker=_showSideGroupPicker;
 @property(readonly, copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(readonly, nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property(readonly, nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property(readonly, nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
-- (void).cxx_destruct;
 - (void)raiseExceptionForPropertyString:(id)arg1;
+@property(readonly, nonatomic) struct CGRect sideGroupContainerFrame;
+@property(readonly, nonatomic) struct CGRect groupDialContainerFrame;
 @property(readonly, nonatomic) unsigned long long supportedLayoutOrientation;
-@property(readonly, nonatomic) UIColor *backgroundColor;
+- (id)backgroundColor;
 @property(readonly, nonatomic) struct UIEdgeInsets attributesContentViewScrollIndicatorInsets;
 @property(readonly, nonatomic) struct UIEdgeInsets attributesContentViewInsets;
 @property(readonly, nonatomic) struct CGRect verticalRuleFrame;
@@ -34,9 +40,9 @@
 @property(readonly, nonatomic) double headerMaskingViewAlpha;
 @property(readonly, nonatomic) struct CGRect userInfoFrame;
 @property(readonly, nonatomic) struct CGRect attributesContentViewFrame;
-@property(readonly, nonatomic) struct CGRect groupDialContainerFrame;
+@property(readonly, nonatomic) double avatarContainerAlpha;
 @property(readonly, nonatomic) struct CGRect avatarContainerFrame;
-- (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3;
+- (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3 RTL:(_Bool)arg4 showSideGroupPicker:(_Bool)arg5;
 
 @end
 

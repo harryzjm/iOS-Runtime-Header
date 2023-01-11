@@ -21,9 +21,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMHomeInvitationData *invitationData; // @synthesize invitationData=_invitationData;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 invitationData:(id)arg2;
@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (void)_unconfigureContext;
 - (id)initWithInvitationData:(id)arg1 home:(id)arg2;
 
 // Remaining properties

@@ -31,6 +31,7 @@
     struct CGSize _viewportSizeOnAdRequest;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didUnloadBannerView; // @synthesize didUnloadBannerView=_didUnloadBannerView;
 @property(nonatomic) _Bool isDisplayingBannerView; // @synthesize isDisplayingBannerView=_isDisplayingBannerView;
 @property(retain, nonatomic) NSString *generatedOpportunityIdentifier; // @synthesize generatedOpportunityIdentifier=_generatedOpportunityIdentifier;
@@ -46,7 +47,6 @@
 @property(readonly, nonatomic) id <SXAnalyticsReporting> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 @property(readonly, nonatomic) id <SXLayoutInvalidator> layoutInvalidator; // @synthesize layoutInvalidator=_layoutInvalidator;
 @property(readonly, nonatomic) __weak SXAdController *adController; // @synthesize adController=_adController;
-- (void).cxx_destruct;
 - (void)sendOpportunityEvent;
 - (_Bool)shouldSendOpportunityEvent;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
@@ -67,9 +67,9 @@
 - (_Bool)shouldRegisterForViewportChanges;
 - (void)registerForViewportChanges;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
-- (void)applicationDidBecomeActive:(id)arg1;
-- (void)applicationDidEnterBackground:(id)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
+- (void)sceneDidActivate:(id)arg1;
+- (void)sceneDidEnterBackground:(id)arg1;
 - (void)adSheetDisconnectedNotification:(id)arg1;
 - (void)loadComponent:(id)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 adController:(id)arg5 layoutInvalidator:(id)arg6 analyticsReporting:(id)arg7 host:(id)arg8;

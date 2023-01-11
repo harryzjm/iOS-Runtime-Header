@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)dill;
 + (id)timing;
 + (id)signInController;
 + (id)watchPairing;

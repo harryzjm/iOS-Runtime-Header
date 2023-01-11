@@ -16,10 +16,10 @@
     _Bool _usingRealTableViewCell;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool usingRealTableViewCell; // @synthesize usingRealTableViewCell=_usingRealTableViewCell;
 @property(retain, nonatomic) UITableViewCell *tableViewCell; // @synthesize tableViewCell=_tableViewCell;
 @property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
-- (void).cxx_destruct;
 - (id)_accessibilityCapturedImages;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
@@ -61,6 +61,7 @@
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (_Bool)accessibilityScrollToVisibleWithChild:(id)arg1;
 - (_Bool)_accessibilityIsOutsideParentBounds;
+- (id)_accessibilityUserTestingProxyView;
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (_Bool)_accessibilityUserTestingIsPreferredButton;
 - (_Bool)_accessibilityUserTestingIsDestructiveButton;
@@ -89,11 +90,13 @@
 - (struct CGRect)accessibilityFrame;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
 - (_Bool)_accessibilityIsInTableCell;
+- (_Bool)_accessibilityImplementsDefaultRowRange;
 - (struct _NSRange)accessibilityRowRange;
 - (id)accessibilityHint;
 - (_Bool)_accessibilityIsAwayAlertElement;
 - (id)accessibilityHeaderElements;
 - (struct CGPoint)accessibilityActivationPoint;
+- (void)_accessibilityMarkElementForVisiblePointHitTest:(_Bool)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityIdentifier;
 - (id)accessibilityValue;

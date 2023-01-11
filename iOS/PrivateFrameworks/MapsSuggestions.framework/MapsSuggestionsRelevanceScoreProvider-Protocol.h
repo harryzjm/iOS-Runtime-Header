@@ -10,6 +10,6 @@
 
 @protocol MapsSuggestionsRelevanceScoreProvider <MapsSuggestionsObject>
 - (void)preLoad;
-- (_Bool)relevanceScoreForNames:(NSArray *)arg1 addresses:(NSArray *)arg2 mapItems:(NSArray *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
+- (BOOL)relevanceScoreForNames:(NSArray *)arg1 addresses:(NSArray *)arg2 mapItems:(NSArray *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 @end
 

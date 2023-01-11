@@ -6,34 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSpeech/CSAlarmMonitorDelegate-Protocol.h>
-#import <CoreSpeech/CSSmartSiriVolumeDelegate-Protocol.h>
-#import <CoreSpeech/CSTimerMonitorDelegate-Protocol.h>
-#import <CoreSpeech/CSVolumeMonitorDelegate-Protocol.h>
+#import <CoreSpeech/CSSmartSiriVolumeClientDelegate-Protocol.h>
 
-@class CSXPCClient, NSString;
+@class CSSmartSiriVolumeClient, NSString;
 @protocol CSSmartSiriVolumeControllerDelegate, OS_dispatch_queue;
 
-@interface CSSmartSiriVolumeController : NSObject <CSAlarmMonitorDelegate, CSTimerMonitorDelegate, CSVolumeMonitorDelegate, CSSmartSiriVolumeDelegate>
+@interface CSSmartSiriVolumeController : NSObject <CSSmartSiriVolumeClientDelegate>
 {
     id <CSSmartSiriVolumeControllerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
-    CSXPCClient *_xpcClient;
+    CSSmartSiriVolumeClient *_ssvClient;
 }
 
-@property(retain, nonatomic) CSXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CSSmartSiriVolumeClient *ssvClient; // @synthesize ssvClient=_ssvClient;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <CSSmartSiriVolumeControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)_createXPCClientConnectionIfNeeded;
-- (void)CSSmartSiriVolumeDidReceiveTimerChanged:(long long)arg1;
-- (void)CSSmartSiriVolumeDidReceiveAlarmChanged:(long long)arg1;
-- (void)CSSmartSiriVolumeDidReceiveMusicVolumeChanged:(float)arg1;
-- (void)CSVolumeMonitor:(id)arg1 didReceiveAlarmVolumeChanged:(float)arg2;
-- (void)CSVolumeMonitor:(id)arg1 didReceiveMusicVolumeChanged:(float)arg2;
-- (void)CSTimerMonitor:(id)arg1 didReceiveTimerChanged:(long long)arg2;
-- (void)CSAlarmMonitor:(id)arg1 didReceiveAlarmChanged:(long long)arg2;
-- (float)getEstimatedTTSVolume;
+- (void)didSmartSiriVolumeChangeForReason:(unsigned long long)arg1;
+- (void)_createSSVClientConnectionIfNeeded;
+- (id)getVolumeForTTSType:(unsigned long long)arg1 withContext:(id)arg2;
 - (id)init;
 
 // Remaining properties

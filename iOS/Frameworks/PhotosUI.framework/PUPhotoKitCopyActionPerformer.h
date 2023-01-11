@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
+- (void)_performCopy;
 - (void)performUserInteractionTask;
 
 @end

@@ -6,15 +6,20 @@
 
 @interface SBMoveFloatingConfigurationFloatingSwitcherModifier
 {
+    long long _fromFloatingConfiguration;
+    long long _toFloatingConfiguration;
 }
 
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (_Bool)wantsResignActiveAssertion;
-- (id)layoutSettings;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
+- (_Bool)shouldPerformCrossfadeForReduceMotion;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (id)transitionWillBegin;
+- (id)initWithTransitionID:(id)arg1 fromFloatingConfiguration:(long long)arg2 toFloatingConfiguration:(long long)arg3;
 
 @end
 

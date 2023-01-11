@@ -6,28 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSString, NSThread;
+@class CPLEngineWriteTransactionBlocker, CPLTransaction, NSError, NSMutableArray, NSString, NSThread;
 
 @interface CPLEngineStoreTransaction : NSObject
 {
     NSThread *_currentThread;
     _Bool _forWrite;
+    NSMutableArray *_cleanupBlocks;
+    CPLTransaction *_dirty;
     NSError *_error;
     NSString *_name;
+    CPLEngineWriteTransactionBlocker *_blocker;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CPLEngineWriteTransactionBlocker *blocker; // @synthesize blocker=_blocker;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSError *error; // @synthesize error=_error;
-- (void).cxx_destruct;
 - (id)redactedDescription;
 - (id)description;
 - (_Bool)canRead;
 - (_Bool)canWrite;
+- (void)addCleanupBlock:(CDUnknownBlockType)arg1;
+- (void)_releaseDirty;
+- (void)dealloc;
 - (void)_transactionDidFinish;
 - (void)_transactionWillBeginOnThread:(id)arg1;
 - (_Bool)do:(CDUnknownBlockType)arg1;
 - (_Bool)_forWrite;
-- (id)initForWrite:(_Bool)arg1;
+- (id)initForWrite:(_Bool)arg1 identifier:(id)arg2 description:(id)arg3;
 
 @end
 

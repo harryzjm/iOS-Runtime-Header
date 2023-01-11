@@ -16,17 +16,20 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _presentationCompletionHandler;
     _Bool _presentAnimated;
     _SFActivityItemCustomizationController *_customizationController;
+    UIViewController *_presentedViewController;
     _Bool _supportsDownloads;
 }
 
-@property(nonatomic) _Bool supportsDownloads; // @synthesize supportsDownloads=_supportsDownloads;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool supportsDownloads; // @synthesize supportsDownloads=_supportsDownloads;
+- (_Bool)saveToFilesOperationShouldDismissViewControllerAfterCompletion:(id)arg1;
 - (id)customizationControllerForSaveToFilesOperation:(id)arg1;
 - (_Bool)saveToFilesOperationSupportsDownloads:(id)arg1;
 - (void)saveToFilesOperation:(id)arg1 didFinishWithSuccess:(_Bool)arg2;
 - (void)saveToFilesOperation:(id)arg1 presentViewController:(id)arg2;
+- (_Bool)_dismissActivityFromViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)activityViewController;
+- (_Bool)_managesOwnPresentation;
 - (id)activityType;
 - (id)initWithActivityItemProviderCollection:(id)arg1 customizationController:(id)arg2;
 

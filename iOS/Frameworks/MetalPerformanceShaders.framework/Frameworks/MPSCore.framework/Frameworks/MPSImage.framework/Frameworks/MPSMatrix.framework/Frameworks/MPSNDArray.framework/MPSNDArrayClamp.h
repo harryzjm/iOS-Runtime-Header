@@ -8,7 +8,7 @@
 {
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)initWithDevice:(id)arg1;
 
 @end

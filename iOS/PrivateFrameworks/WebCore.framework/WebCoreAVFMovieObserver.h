@@ -7,26 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <WebCore/AVPlayerItemLegibleOutputPushDelegate-Protocol.h>
+#import <WebCore/AVPlayerItemMetadataCollectorPushDelegate-Protocol.h>
+#import <WebCore/AVPlayerItemMetadataOutputPushDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreAVFMovieObserver : NSObject <AVPlayerItemLegibleOutputPushDelegate>
+@interface WebCoreAVFMovieObserver : NSObject <AVPlayerItemLegibleOutputPushDelegate, AVPlayerItemMetadataOutputPushDelegate, AVPlayerItemMetadataCollectorPushDelegate>
 {
-    WeakPtr_1a409454 m_player;
+    WeakPtr_be5c5e1c m_player;
     struct GenericTaskQueue<WebCore::Timer> m_taskQueue;
     int m_delayCallbacks;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)metadataCollector:(id)arg1 didCollectDateRangeMetadataGroups:(id)arg2 indexesOfNewGroups:(id)arg3 indexesOfModifiedGroups:(id)arg4;
+- (void)metadataOutput:(id)arg1 didOutputTimedMetadataGroups:(id)arg2 fromPlayerItemTrack:(id)arg3;
 - (void)outputSequenceWasFlushed:(id)arg1;
 - (void)legibleOutput:(id)arg1 didOutputAttributedStrings:(id)arg2 nativeSampleBuffers:(id)arg3 forItemTime:(CDStruct_198678f7)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(int)arg4;
 - (void)didEnd:(id)arg1;
 - (void)metadataLoaded;
 - (void)disconnect;
-- (id)initWithPlayer:(WeakPtr_1a409454 *)arg1;
+- (id)initWithPlayer:(WeakPtr_be5c5e1c *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

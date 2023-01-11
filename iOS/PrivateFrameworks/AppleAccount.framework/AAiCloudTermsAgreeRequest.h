@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount, ACAccountStore;
+@class ACAccount;
 
 @interface AAiCloudTermsAgreeRequest
 {
     ACAccount *_account;
-    ACAccountStore *_accountStore;
     _Bool _preferPassword;
 }
 
++ (Class)responseClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool preferPassword; // @synthesize preferPassword=_preferPassword;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
+- (void)performRequestWithHandler:(CDUnknownBlockType)arg1;
 - (id)urlRequest;
 - (id)initWithURLString:(id)arg1 account:(id)arg2;
 

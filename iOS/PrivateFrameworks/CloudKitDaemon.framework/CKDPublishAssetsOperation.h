@@ -5,6 +5,7 @@
 //
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSOperation;
+@protocol CKPublishAssetsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDPublishAssetsOperation
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_fetchedRecordsByID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *fetchedRecordsByID; // @synthesize fetchedRecordsByID=_fetchedRecordsByID;
 @property(retain) NSOperation *fetchRecordsOperation; // @synthesize fetchRecordsOperation=_fetchRecordsOperation;
 @property(nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
@@ -25,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
 @property(retain, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property(copy, nonatomic) CDUnknownBlockType assetPublishedBlock; // @synthesize assetPublishedBlock=_assetPublishedBlock;
-- (void).cxx_destruct;
 - (void)cancel;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
@@ -36,6 +37,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKPublishAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

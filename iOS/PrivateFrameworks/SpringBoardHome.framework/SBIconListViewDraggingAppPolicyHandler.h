@@ -8,20 +8,23 @@
 
 #import <SpringBoardHome/SBIconListViewDraggingPolicyHandling-Protocol.h>
 
-@class NSMapTable, NSString, SBIconListViewDraggingDestinationDelegate;
+@class NSMapTable, NSString, SBHIconEditingSettings, SBIconListViewDraggingDestinationDelegate;
 
 @interface SBIconListViewDraggingAppPolicyHandler : NSObject <SBIconListViewDraggingPolicyHandling>
 {
     NSMapTable *_dragContexts;
     SBIconListViewDraggingDestinationDelegate *_draggingDestinationDelegate;
+    SBHIconEditingSettings *_iconEditingSettings;
 }
 
-@property(nonatomic) __weak SBIconListViewDraggingDestinationDelegate *draggingDestinationDelegate; // @synthesize draggingDestinationDelegate=_draggingDestinationDelegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBHIconEditingSettings *iconEditingSettings; // @synthesize iconEditingSettings=_iconEditingSettings;
+@property(nonatomic) __weak SBIconListViewDraggingDestinationDelegate *draggingDestinationDelegate; // @synthesize draggingDestinationDelegate=_draggingDestinationDelegate;
+- (id)_dropInteraction:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
 - (id)_destinationFolderIconViewForDragItem:(id)arg1 iconIndexPath:(id *)arg2 folderRelativeIconIndexPath:(id *)arg3;
-- (id)_iconViewForDragItem:(id)arg1;
+- (id)_iconViewForDragItem:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (id)_iconForDragItem:(id)arg1;
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -31,11 +34,13 @@
 - (_Bool)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)handleSpringLoadOnIconView:(id)arg1;
 - (_Bool)allowsSpringLoadForSession:(id)arg1 onIconView:(id)arg2;
+- (long long)dragPlacementForDropSession:(id)arg1 iconListView:(id)arg2 point:(struct CGPoint)arg3 icon:(id)arg4 options:(unsigned long long)arg5;
 - (void)_updateDragPauseForDropSession:(id)arg1;
 - (void)_dragPauseTimerFired:(id)arg1;
 - (void)_resetDragPauseTimerForPoint:(struct CGPoint)arg1 dropSession:(id)arg2;
 - (void)_cancelDragPauseTimerForDropSession:(id)arg1;
 - (void)_cancelDragPauseTimers;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

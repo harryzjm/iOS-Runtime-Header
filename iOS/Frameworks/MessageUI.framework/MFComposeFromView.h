@@ -4,28 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UILabel, UIView;
+#import <MessageUI/MFPopupButtonDelegate-Protocol.h>
 
-@interface MFComposeFromView
+@class MFPopupButton, NSArray, NSString;
+@protocol ECEmailAddressConvertible, MFComposeFromViewDelegate;
+
+@interface MFComposeFromView <MFPopupButtonDelegate>
 {
-    UILabel *_accountLabel;
-    UIView *_background;
-    _Bool _accountHasUnsafeDomain;
+    MFPopupButton *_popupButton;
 }
 
-@property(nonatomic) _Bool accountHasUnsafeDomain; // @synthesize accountHasUnsafeDomain=_accountHasUnsafeDomain;
 - (void).cxx_destruct;
-- (void)setLabelHighlighted:(_Bool)arg1;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)_setBackgroundVisible:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)setAccountLabel:(id)arg1;
-- (struct CGRect)accountLabelRect;
+@property(retain, nonatomic) MFPopupButton *popupButton; // @synthesize popupButton=_popupButton;
+- (void)popupButtonWillPresentMenu:(id)arg1 animator:(id)arg2;
+- (void)popupButton:(id)arg1 didSelectItem:(id)arg2;
+@property(retain, nonatomic) NSArray *availableAddresses;
+@property(copy, nonatomic) NSString<ECEmailAddressConvertible> *selectedAddress;
 - (void)refreshPreferredContentSize;
-- (void)layoutSubviews;
-- (id)_accountLabel;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <MFComposeFromViewDelegate> delegate; // @dynamic delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

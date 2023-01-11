@@ -12,6 +12,8 @@
 
 @interface BLTPBSectionInfo : PBCodable <NSCopying>
 {
+    double _authorizationExpirationDate;
+    double _lastUserGrantedAuthorizationDate;
     unsigned int _alertType;
     int _authorizationStatus;
     NSString *_displayName;
@@ -46,6 +48,8 @@
     _Bool _showsOnExternalDevices;
     _Bool _suppressFromSettings;
     struct {
+        unsigned int authorizationExpirationDate:1;
+        unsigned int lastUserGrantedAuthorizationDate:1;
         unsigned int alertType:1;
         unsigned int authorizationStatus:1;
         unsigned int groupingSetting:1;
@@ -75,6 +79,9 @@
 }
 
 + (Class)subsectionsType;
+- (void).cxx_destruct;
+@property(nonatomic) double lastUserGrantedAuthorizationDate; // @synthesize lastUserGrantedAuthorizationDate=_lastUserGrantedAuthorizationDate;
+@property(nonatomic) double authorizationExpirationDate; // @synthesize authorizationExpirationDate=_authorizationExpirationDate;
 @property(retain, nonatomic) NSString *watchSectionID; // @synthesize watchSectionID=_watchSectionID;
 @property(nonatomic) int phoneAuthorizationStatus; // @synthesize phoneAuthorizationStatus=_phoneAuthorizationStatus;
 @property(nonatomic) int authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
@@ -104,7 +111,6 @@
 @property(nonatomic) int sectionType; // @synthesize sectionType=_sectionType;
 @property(retain, nonatomic) NSString *subsectionID; // @synthesize subsectionID=_subsectionID;
 @property(retain, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -114,6 +120,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasLastUserGrantedAuthorizationDate;
+@property(nonatomic) _Bool hasAuthorizationExpirationDate;
 @property(readonly, nonatomic) _Bool hasWatchSectionID;
 - (int)StringAsSpokenNotificationSetting:(id)arg1;
 - (id)spokenNotificationSettingAsString:(int)arg1;

@@ -4,21 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, WFTrigger;
+#import <VoiceShortcutClient/WFDatabaseObjectDescriptor.h>
 
-@interface WFConfiguredTrigger
+@class NSData, NSString, WFTrigger;
+
+@interface WFConfiguredTrigger : WFDatabaseObjectDescriptor
 {
     _Bool _shouldPrompt;
     _Bool _enabled;
+    int _source;
     NSString *_workflowID;
     WFTrigger *_trigger;
+    NSData *_suggestionData;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSData *suggestionData; // @synthesize suggestionData=_suggestionData;
+@property(readonly, nonatomic) int source; // @synthesize source=_source;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) _Bool shouldPrompt; // @synthesize shouldPrompt=_shouldPrompt;
 @property(readonly, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
 @property(readonly, nonatomic) NSString *workflowID; // @synthesize workflowID=_workflowID;
-- (void).cxx_destruct;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 workflowID:(id)arg2 trigger:(id)arg3 shouldPrompt:(_Bool)arg4 enabled:(_Bool)arg5 triggerSource:(int)arg6 suggestionData:(id)arg7;
 - (id)initWithIdentifier:(id)arg1 workflowID:(id)arg2 trigger:(id)arg3 shouldPrompt:(_Bool)arg4 enabled:(_Bool)arg5;
 
 @end

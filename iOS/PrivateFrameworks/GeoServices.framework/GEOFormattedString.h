@@ -9,31 +9,30 @@
 #import <GeoServices/GEOServerFormattedString-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOConditionalFormattedString, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOConditionalFormattedString, GEOFormattedStringMetaData, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOFormattedString : PBCodable <GEOServerFormattedString, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOConditionalFormattedString *_alternativeString;
     NSMutableArray *_formatArguments;
     NSMutableArray *_formatStrings;
     NSMutableArray *_formatStyles;
+    GEOFormattedStringMetaData *_metaData;
     NSMutableArray *_separators;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_alternativeString:1;
         unsigned int read_formatArguments:1;
         unsigned int read_formatStrings:1;
         unsigned int read_formatStyles:1;
+        unsigned int read_metaData:1;
         unsigned int read_separators:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_alternativeString:1;
-        unsigned int wrote_formatArguments:1;
-        unsigned int wrote_formatStrings:1;
-        unsigned int wrote_formatStyles:1;
-        unsigned int wrote_separators:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,39 +52,37 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) GEOFormattedStringMetaData *metaData;
+@property(readonly, nonatomic) _Bool hasMetaData;
 @property(retain, nonatomic) GEOConditionalFormattedString *alternativeString;
 @property(readonly, nonatomic) _Bool hasAlternativeString;
-- (void)_readAlternativeString;
 - (id)formatStyleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formatStylesCount;
-- (void)_addNoFlagsFormatStyle:(id)arg1;
 - (void)addFormatStyle:(id)arg1;
 - (void)clearFormatStyles;
 @property(retain, nonatomic) NSMutableArray *formatStyles;
-- (void)_readFormatStyles;
 - (id)separatorAtIndex:(unsigned long long)arg1;
 - (unsigned long long)separatorsCount;
-- (void)_addNoFlagsSeparator:(id)arg1;
 - (void)addSeparator:(id)arg1;
 - (void)clearSeparators;
 @property(retain, nonatomic) NSMutableArray *separators;
-- (void)_readSeparators;
 - (id)formatArgumentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formatArgumentsCount;
-- (void)_addNoFlagsFormatArgument:(id)arg1;
 - (void)addFormatArgument:(id)arg1;
 - (void)clearFormatArguments;
 @property(retain, nonatomic) NSMutableArray *formatArguments;
-- (void)_readFormatArguments;
 - (id)formatStringAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formatStringsCount;
-- (void)_addNoFlagsFormatString:(id)arg1;
 - (void)addFormatString:(id)arg1;
 - (void)clearFormatStrings;
 @property(retain, nonatomic) NSMutableArray *formatStrings;
-- (void)_readFormatStrings;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithString:(id)arg1;
 @property(readonly, nonatomic) NSArray *formatTokens;
 

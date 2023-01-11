@@ -17,15 +17,17 @@
     NSDictionary *_routesByUniqueIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *routesByUniqueIdentifier; // @synthesize routesByUniqueIdentifier=_routesByUniqueIdentifier;
 @property(readonly, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property(readonly, nonatomic) __weak id <TURouteControllerActions> actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (void)handleServerDisconnect;
 - (void)handleServerReconnect;
 - (void)handleRoutesByUniqueIdentifierUpdated:(id)arg1;
+- (id)routeWithSourceIdentifier:(id)arg1;
 - (void)requeryRoutes;
+- (void)pickRouteWhenAvailableWithUniqueIdentifier:(id)arg1;
 - (void)pickRouteWithUniqueIdentifier:(id)arg1;
 - (void)pickRoute:(id)arg1;
 - (void)removeDelegate:(id)arg1;

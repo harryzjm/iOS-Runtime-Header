@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 #import <PassKitCore/NSXPCListenerDelegate-Protocol.h>
 #import <PassKitCore/PKUsageNotificationServerExportedInterface-Protocol.h>
 
 @class NSMutableSet, NSString, NSXPCListener;
 
-@interface PKUsageNotificationServer <NSXPCListenerDelegate, PKUsageNotificationServerExportedInterface>
+@interface PKUsageNotificationServer : NSObject <NSXPCListenerDelegate, PKUsageNotificationServerExportedInterface>
 {
+    struct os_unfair_lock_s _lock;
     NSXPCListener *_listener;
     NSMutableSet *_connections;
 }
 
 - (void).cxx_destruct;
+- (void)serviceSuspended;
+- (void)serviceResumed;
 - (void)notifyPaymentPassIdentifierUsed:(id)arg1 withTransactionInfo:(id)arg2;
 - (void)notifyPassUsed:(id)arg1 fromSource:(long long)arg2;
 - (void)initializeUsageNotificationServer;

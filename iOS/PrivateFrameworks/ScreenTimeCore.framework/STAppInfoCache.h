@@ -20,21 +20,21 @@
 }
 
 + (id)sharedCache;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSOperationQueue *completionHandlerQueue; // @synthesize completionHandlerQueue=_completionHandlerQueue;
 @property(readonly, nonatomic) NSMutableSet *bundleIdentifiersWithPendingRequests; // @synthesize bundleIdentifiersWithPendingRequests=_bundleIdentifiersWithPendingRequests;
 @property(readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *lookupQueue; // @synthesize lookupQueue=_lookupQueue;
 @property(readonly, nonatomic) NSCache *appInfoByBundleIdentifier; // @synthesize appInfoByBundleIdentifier=_appInfoByBundleIdentifier;
 @property(retain) NSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
-- (void).cxx_destruct;
 - (id)_localAppNameForBundleIdentifier:(id)arg1;
 - (id)_placeholderAppInfoWithBundleIdentifier:(id)arg1;
 - (id)_preloadedAppInfoWithBundleIdentifier:(id)arg1;
 - (void)_finishedFetchingAppInfoByBundleIdentifier:(id)arg1;
 - (id)_fetchSyncedInstalledAppInfoForBundleIdentifier:(id)arg1;
 - (void)_handleiTunesResponseForBundleIdentifiers:(id)arg1 response:(id)arg2 data:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_fetchAppInfoAndNotifyWithBundleIdentifiers:(id)arg1 timeoutInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_fetchAppInfoAndNotifyWithBundleIdentifiers:(id)arg1;
+- (void)_fetchAppStoreInfoAndNotifyWithBundleIdentifiers:(id)arg1 timeoutInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchAppStoreInfoAndNotifyWithBundleIdentifiers:(id)arg1;
 - (id)_fetchAppInfoFromLaunchServicesWithBundleIdentifier:(id)arg1;
 - (id)_appInfoForBundleIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1 bundleIdentifier:(id)arg2;

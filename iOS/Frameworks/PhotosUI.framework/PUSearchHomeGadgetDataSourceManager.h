@@ -6,28 +6,34 @@
 
 #import <PhotosUICore/PXGadgetDataSourceManager.h>
 
+#import <PhotosUI/PUSearchZeroKeywordChangeDelegate-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 
-@class NSString, PUSearchZeroKeywordGadgetProvider;
+@class NSArray, NSString, PUSearchZeroKeywordDataSource, PXTapToRadarGadgetProvider;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PXSettingsKeyObserver>
+@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PXSettingsKeyObserver, PUSearchZeroKeywordChangeDelegate>
 {
-    PUSearchZeroKeywordGadgetProvider *_zeroKeywordGadgetProvider;
+    NSArray *_gadgetProviders;
+    PUSearchZeroKeywordDataSource *_zeroKeywordDataSource;
+    NSArray *_zeroKeywordGadgetProviders;
+    PXTapToRadarGadgetProvider *_tapToRadarProvider;
     long long _filteringState;
 }
 
-@property(nonatomic) long long filteringState; // @synthesize filteringState=_filteringState;
-@property(retain, nonatomic) PUSearchZeroKeywordGadgetProvider *zeroKeywordGadgetProvider; // @synthesize zeroKeywordGadgetProvider=_zeroKeywordGadgetProvider;
 - (void).cxx_destruct;
+@property(nonatomic) long long filteringState; // @synthesize filteringState=_filteringState;
+@property(retain, nonatomic) PXTapToRadarGadgetProvider *tapToRadarProvider; // @synthesize tapToRadarProvider=_tapToRadarProvider;
+@property(retain, nonatomic) NSArray *zeroKeywordGadgetProviders; // @synthesize zeroKeywordGadgetProviders=_zeroKeywordGadgetProviders;
+@property(readonly, nonatomic) PUSearchZeroKeywordDataSource *zeroKeywordDataSource; // @synthesize zeroKeywordDataSource=_zeroKeywordDataSource;
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (id)_sortingRankForGadget:(id)arg1;
+- (void)didUpdateSections:(id)arg1;
 - (void)refreshData;
-- (CDUnknownBlockType)gadgetSortComparator;
 - (void)_waitForFirstDisplayTimedOut;
-- (id)filteredUndisplayedGadgets:(id)arg1;
+- (id)hiddenGadgetProviders;
 @property(readonly, nonatomic) _Bool isExpectedToLoadNonEmptyDataSourceSoon;
+- (_Bool)_zeroKeywordDataSourceHasZeroKeywords;
 - (id)gadgetProviders;
 - (id)init;
 

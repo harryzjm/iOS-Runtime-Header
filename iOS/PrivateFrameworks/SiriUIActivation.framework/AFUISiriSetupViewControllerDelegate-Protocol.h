@@ -9,10 +9,12 @@
 @class AFUISiriSetupViewController, NSURL;
 
 @protocol AFUISiriSetupViewControllerDelegate <NSObject>
-- (void)siriSetupViewControllerDidChangeVisibility:(AFUISiriSetupViewController *)arg1;
 - (void)openSiriRequestedBySiriSetupViewController:(AFUISiriSetupViewController *)arg1;
 - (void)disableSiriActivationRequestedBySiriSetupViewController:(AFUISiriSetupViewController *)arg1;
 - (_Bool)siriSetupViewController:(AFUISiriSetupViewController *)arg1 openURL:(NSURL *)arg2;
 - (void)dismissSiriSetupViewController:(AFUISiriSetupViewController *)arg1;
+
+@optional
+- (void)updateHomeGestureSharingForSiriSetup:(_Bool)arg1;
 @end
 

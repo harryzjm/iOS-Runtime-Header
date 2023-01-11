@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
+#import <MediaPlayer/_MPActiveUserChangeMonitorDelegate-Protocol.h>
 
-@class ICUserIdentity, ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
+@class ICUserIdentity, ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache, _MPActiveUserChangeMonitor;
 @protocol MPMediaLibraryDataProviderPrivate, OS_dispatch_queue;
 
-@interface MPMediaLibrary : NSObject <NSSecureCoding>
+@interface MPMediaLibrary : NSObject <_MPActiveUserChangeMonitorDelegate, NSSecureCoding>
 {
     id <MPMediaLibraryDataProviderPrivate> _libraryDataProvider;
-    long long _libraryChangeObservers;
     NSObject<OS_dispatch_queue> *_entityCacheQueue;
     NSObject<OS_dispatch_queue> *_fixedQueue;
     NSArray *_notificationObservers;
@@ -79,12 +79,14 @@
     _Bool _determinedHasVideoPodcasts;
     unsigned char _originalCellNetworkFlags;
     unsigned char _originalWiFiNetworkFlags;
+    struct os_unfair_lock_s __MLCoreStorageLock;
     id __MLCoreStorage;
-    NSObject<OS_dispatch_queue> *_accessQueue;
     ICUserIdentity *_userIdentity;
+    long long _libraryChangeObservers;
+    _MPActiveUserChangeMonitor *_activeUserChangeMonitor;
+    struct os_unfair_lock_s *__MLCoreStorageLockPointer;
 }
 
-+ (_Bool)companionDeviceActiveStoreAccountIsSubscriber;
 + (void)libraryPathDidChangeForDataProvider:(id)arg1;
 + (void)uniqueIdentifierDidChangeForLibraryDataProvider:(id)arg1;
 + (void)syncGenerationDidChangeForLibraryDataProvider:(id)arg1;
@@ -114,14 +116,17 @@
 + (void)_postNotificationName:(id)arg1 library:(id)arg2 userInfo:(id)arg3;
 + (void)_postNotificationName:(id)arg1 library:(id)arg2;
 + (_Bool)supportsSecureCoding;
-+ (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 isSingletonLibrary:(_Bool)arg2 createIfRequired:(_Bool)arg3;
++ (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 createIfRequired:(_Bool)arg2;
 + (id)deviceMediaLibraryWithUserIdentity:(id)arg1;
 + (id)deviceMediaLibrary;
 + (void)setDefaultMediaLibrary:(id)arg1;
 + (id)defaultMediaLibrary;
 + (void)initialize;
-@property(readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct os_unfair_lock_s *_MLCoreStorageLockPointer; // @synthesize _MLCoreStorageLockPointer=__MLCoreStorageLockPointer;
+@property(retain, nonatomic) _MPActiveUserChangeMonitor *activeUserChangeMonitor; // @synthesize activeUserChangeMonitor=_activeUserChangeMonitor;
+@property(readonly, nonatomic) struct os_unfair_lock_s _MLCoreStorageLock; // @synthesize _MLCoreStorageLock=__MLCoreStorageLock;
+@property(retain, nonatomic, setter=_setMLCoreStorage:) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
 - (_Bool)recordPlayEventForPlaylistPersistentID:(long long)arg1;
 - (_Bool)recordPlayEventForAlbumPersistentID:(long long)arg1;
 - (void)addNonLibraryOwnedPlaylistsWithGlobalIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -133,7 +138,6 @@
 - (void)addPlaylistStoreItemsWithMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getPlaylistWithUUID:(id)arg1 creationMetadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)performStoreItemLibraryImport:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)addAdvertisementItemWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addStoreItemIDs:(id)arg1 referralObject:(id)arg2 andAddTracksToCloudLibrary:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)addStoreItemIDs:(id)arg1 andAddTracksToCloudLibrary:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)addStoreItem:(long long)arg1 andAddTracksToCloudLibrary:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -141,15 +145,15 @@
 - (id)artworkDataSource;
 - (id)libraryDataProvider;
 - (id)_initWithLibraryDataProvider:(id)arg1;
-@property(retain, nonatomic, setter=_setMLCoreStorage:) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property(readonly, nonatomic) long long libraryChangeObservers; // @synthesize libraryChangeObservers=_libraryChangeObservers;
+@property(readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property(readonly, nonatomic) ML3MusicLibrary *ml3Library;
 - (void)_tearDownNotifications;
 - (void)_setupNotifications;
 - (void)_disconnect;
 - (void)_removeConnectionAssertion:(id)arg1;
 - (id)_collectionsForQueryCriteria:(id)arg1;
-- (void)setLibraryFilterPredicates;
+- (void)_setLibraryFilterPredicates;
 - (long long)cloudFilteringType;
 - (void)setCloudFilteringType:(long long)arg1;
 - (void)_clearPendingDisconnection;
@@ -167,6 +171,9 @@
 - (_Bool)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (_Bool)collectionExistsWithName:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (_Bool)collectionExistsContainedWithinPersistentIDs:(const unsigned long long *)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long *)arg4;
+- (void)_performBlockOnLibraryHandlingTheSameAccount:(CDUnknownBlockType)arg1;
+- (_Bool)_handlesSameAccountAs:(id)arg1;
+- (void)activeUserChangeDidFinish;
 - (unsigned long long)_persistentIDForAssetURL:(id)arg1;
 - (id)pathForAssetURL:(id)arg1;
 - (_Bool)isValidAssetURL:(id)arg1;
@@ -266,14 +273,14 @@
 - (unsigned long long)currentEntityRevision;
 - (void)addItemWithProductID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSDate *lastModifiedDate;
-- (void)endGeneratingLibraryChangeNotifications;
 - (void)disconnect;
 - (void)connectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)endGeneratingLibraryChangeNotifications;
 - (void)beginGeneratingLibraryChangeNotifications;
 - (void)_displayValuesDidChangeNotification:(id)arg1;
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (void)_canShowCloudTracksDidChangeNotification:(id)arg1;
-- (void)_activeUserDidChangeForDeviceMediaLibrary:(id)arg1;
+- (void)_activeUserDidChangeNotification:(id)arg1;
 - (void)_reloadLibraryForPathChange;
 - (void)_reloadLibraryForInvisiblePropertyChangeWithNotificationInfo:(id)arg1;
 - (void)_reloadLibraryForDynamicPropertyChangeWithNotificationInfo:(id)arg1;
@@ -284,11 +291,11 @@
 - (void)_clearCachedEntitiesIncludingResultSets:(_Bool)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)_initWithUserIdentity:(id)arg1 isSingletonLibrary:(_Bool)arg2;
+- (id)_initWithUserIdentity:(id)arg1;
 - (id)init;
 @property(readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;
 @property(readonly, nonatomic) NSURL *protectedContentSupportStorageURL;
@@ -309,6 +316,10 @@
 @property(copy, nonatomic) NSDate *sagaLastItemPlayDataUploadDate;
 @property(copy, nonatomic) NSNumber *sagaAccountID;
 - (unsigned long long)filterAvailableContentGroups:(unsigned long long)arg1 withOptions:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

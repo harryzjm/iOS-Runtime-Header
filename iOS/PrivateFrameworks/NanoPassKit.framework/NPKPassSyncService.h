@@ -24,6 +24,7 @@
     NPKPassSyncServiceSyncStatus *_passSyncStatus;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NPKPassSyncServiceSyncStatus *passSyncStatus; // @synthesize passSyncStatus=_passSyncStatus;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *passSyncEngineSyncTimer; // @synthesize passSyncEngineSyncTimer=_passSyncEngineSyncTimer;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *passSyncEngineArchiveTimer; // @synthesize passSyncEngineArchiveTimer=_passSyncEngineArchiveTimer;
@@ -31,7 +32,6 @@
 @property(retain, nonatomic) IDSService *passSyncService; // @synthesize passSyncService=_passSyncService;
 @property(retain, nonatomic) NPKPassSyncEngine *passSyncEngine; // @synthesize passSyncEngine=_passSyncEngine;
 @property(nonatomic) _Bool dropAllMessages; // @synthesize dropAllMessages=_dropAllMessages;
-- (void).cxx_destruct;
 - (id)_archivedPassSyncEngine;
 - (void)_syncTimerFired;
 - (void)_ensureSyncTimerIsSet;
@@ -59,13 +59,14 @@
 - (void)reconciledStateUnrecognized:(id)arg1;
 - (void)syncStateChangeProcessed:(id)arg1;
 - (void)syncStateChanged:(id)arg1;
-- (id)catalogToSend;
-- (void)handleIncomingCatalog:(id)arg1;
+- (id)watchCatalogToSendWithStateChange;
+- (id)companionCatalogToSendWithStateChange;
+- (void)handleIncomingCompanionCatalog:(id)arg1 watchCatalog:(id)arg2;
 - (void)handleIncomingPassSettings:(unsigned long long)arg1 forPassWithUniqueID:(id)arg2;
 - (unsigned long long)settingsForPassWithUniqueID:(id)arg1;
 - (id)currentLibraryPassSyncStateWithReconciledState:(id)arg1;
 - (void)suggestSync;
-- (void)handleCatalogChanged:(id)arg1;
+- (void)handleCatalogChangeWithCompanionCatalog:(id)arg1 watchCatalog:(id)arg2;
 - (void)handleSettingsChanged:(unsigned long long)arg1 forPassWithUniqueID:(id)arg2;
 - (void)handlePassLibraryChanged;
 - (void)start;

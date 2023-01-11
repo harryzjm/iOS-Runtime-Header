@@ -17,6 +17,7 @@
     _Bool _msaaRendering;
     _Bool _renderOnPaper;
     _Bool _needRenderMask;
+    _Bool _isRestartingForSimulator;
     id <MTLCommandQueue> _commandQueue;
     id <MTLCommandBuffer> _commandBuffer;
     id <MTLCommandBuffer> _computeCommandBuffer;
@@ -31,7 +32,9 @@
 }
 
 + (void)renderTargetBarrierForRenderEncoder:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_5f3a0cd7 scissorRect; // @synthesize scissorRect=_scissorRect;
+@property(nonatomic) _Bool isRestartingForSimulator; // @synthesize isRestartingForSimulator=_isRestartingForSimulator;
 @property(nonatomic) _Bool needRenderMask; // @synthesize needRenderMask=_needRenderMask;
 @property(nonatomic) _Bool renderOnPaper; // @synthesize renderOnPaper=_renderOnPaper;
 @property(nonatomic) _Bool msaaRendering; // @synthesize msaaRendering=_msaaRendering;
@@ -47,7 +50,6 @@
 @property(readonly, nonatomic) id <MTLCommandBuffer> computeCommandBuffer; // @synthesize computeCommandBuffer=_computeCommandBuffer;
 @property(readonly, nonatomic) id <MTLCommandBuffer> commandBuffer; // @synthesize commandBuffer=_commandBuffer;
 @property(readonly, nonatomic) id <MTLCommandQueue> commandQueue; // @synthesize commandQueue=_commandQueue;
-- (void).cxx_destruct;
 - (void)renderTargetBarrier;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;

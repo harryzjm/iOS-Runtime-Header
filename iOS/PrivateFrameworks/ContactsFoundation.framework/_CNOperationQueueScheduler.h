@@ -27,6 +27,7 @@
 - (void)_enqueueBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1;
+@property(readonly, copy) NSString *description;
 - (id)initWithMaxConcurrentOperationCount:(long long)arg1 qualityOfService:(unsigned long long)arg2;
 - (id)initWithQualityOfService:(unsigned long long)arg1;
 - (id)initWithMaxConcurrentOperationCount:(long long)arg1;
@@ -34,7 +35,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

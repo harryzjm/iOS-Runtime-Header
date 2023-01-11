@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class GKLeaderboardInternal, GKScore, NSArray, NSString;
+@class GKLeaderboardInternal, GKScore, NSArray, NSDate, NSString;
 @protocol GKLeaderboardDelegate;
 
 @interface GKLeaderboard : NSObject
 {
-    int _loadingCount;
     struct os_unfair_lock_s _lock;
-    long long _timeScope;
-    long long _playerScope;
+    int _loadingCount;
     NSArray *_players;
     NSArray *_scores;
-    GKScore *_localPlayerScore;
-    id <GKLeaderboardDelegate> _weakDelegate;
+    long long _timeScope;
+    long long _playerScope;
     GKLeaderboardInternal *_internal;
+    id <GKLeaderboardDelegate> _delegate;
+    GKScore *_localPlayerScore;
     struct _NSRange _range;
 }
 
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
++ (void)loadHighlightsWithPlayerScope:(long long)arg1 timeScope:(long long)arg2 handler:(CDUnknownBlockType)arg3;
++ (void)submitScore:(long long)arg1 context:(unsigned long long)arg2 player:(id)arg3 leaderboardIDs:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
++ (void)loadLeaderboardsWithIDs:(id)arg1 setIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)loadLeaderboardsWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)setDefaultLeaderboard:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadLeaderboardsForGame:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadLeaderboardsForGame:(id)arg1 withPlayer:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -32,48 +36,63 @@
 + (void)loadLeaderboardsForGame:(id)arg1 forSet:(id)arg2 withPlayer:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 + (void)loadLeaderboardsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)loadCategoriesWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
+- (void).cxx_destruct;
 @property(nonatomic) int loadingCount; // @synthesize loadingCount=_loadingCount;
-@property(retain) GKLeaderboardInternal *internal; // @synthesize internal=_internal;
 @property(retain, nonatomic) GKScore *localPlayerScore; // @synthesize localPlayerScore=_localPlayerScore;
-@property(retain, nonatomic) NSArray *scores; // @synthesize scores=_scores;
-@property(retain, nonatomic) NSArray *players; // @synthesize players=_players;
+@property(nonatomic) __weak id <GKLeaderboardDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain) GKLeaderboardInternal *internal; // @synthesize internal=_internal;
 @property(nonatomic) long long playerScope; // @synthesize playerScope=_playerScope;
 @property(nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
+@property(retain, nonatomic) NSArray *scores; // @synthesize scores=_scores;
+@property(nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
+@property(retain, nonatomic) NSArray *players; // @synthesize players=_players;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)valueForUndefinedKey:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (void)deleteWithHandler:(CDUnknownBlockType)arg1;
+- (void)endWithHandler:(CDUnknownBlockType)arg1;
+- (void)startWithHandler:(CDUnknownBlockType)arg1;
+- (id)creator;
+- (void)loadSummaryWithTimeScope:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadEntriesForPlayers:(id)arg1 timeScope:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)loadEntriesWithGameDescriptor:(id)arg1 playerScope:(long long)arg2 timeScope:(long long)arg3 range:(struct _NSRange)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)loadEntriesForPlayerScope:(long long)arg1 timeScope:(long long)arg2 range:(struct _NSRange)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)submitScore:(long long)arg1 context:(unsigned long long)arg2 player:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)loadPreviousOccurrenceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)decrementLoadingCountAtomically;
 - (void)incrementLoadingCountAtomically;
 - (void)loadScoresForGame:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadScoresForRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)scoreRequestForGame:(id)arg1;
 - (void)loadScoresWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(readonly, getter=isLoading) _Bool loading; // @dynamic loading;
+@property(readonly, getter=isLoading) _Bool loading;
 @property(nonatomic) struct _NSRange range; // @synthesize range=_range;
-@property(nonatomic) id <GKLeaderboardDelegate> delegate; // @synthesize delegate=_weakDelegate;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithPlayerIDs:(id)arg1;
 - (id)initWithPlayers:(id)arg1;
 - (id)init;
 - (id)initWithInternalRepresentation:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) NSString *baseLeaderboardID; // @dynamic baseLeaderboardID;
 @property(copy, nonatomic) NSString *category; // @dynamic category;
+@property(readonly, nonatomic) double duration; // @dynamic duration;
 @property(readonly, nonatomic) long long friendRank; // @dynamic friendRank;
 @property(readonly, nonatomic) long long friendRankCount; // @dynamic friendRankCount;
-@property(readonly, retain, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
+@property(readonly, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
-@property(readonly, retain, nonatomic) NSString *localizedTitle; // @dynamic localizedTitle;
+@property(readonly, nonatomic) NSString *localizedTitle; // @dynamic localizedTitle;
 @property(readonly, nonatomic) unsigned long long maxRange; // @dynamic maxRange;
+@property(readonly, nonatomic) NSDate *nextStartDate; // @dynamic nextStartDate;
 @property(readonly, nonatomic) long long overallRank; // @dynamic overallRank;
 @property(readonly, nonatomic) long long overallRankCount; // @dynamic overallRankCount;
+@property(readonly, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property(readonly, copy, nonatomic) NSString *title; // @dynamic title;
+@property(readonly, nonatomic) long long type; // @dynamic type;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPModelAlbum, MPModelArtist, MPModelPlaylist, MPModelRadioStation, NSDate;
+@class MPModelAlbum, MPModelArtist, MPModelPlaylist, MPModelRadioStation, NSDate, NSString;
 
 @interface MPModelPlayEvent
 {
@@ -15,7 +15,9 @@
 + (id)__artist_KEY;
 + (id)__album_KEY;
 + (id)__datePlayed_KEY;
+- (id)genericObjectRepresentation;
 - (long long)itemType;
+@property(readonly, copy, nonatomic) NSString *title;
 - (id)contentItemCollectionInfo;
 
 // Remaining properties

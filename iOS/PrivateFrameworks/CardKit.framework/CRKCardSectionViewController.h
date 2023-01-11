@@ -30,13 +30,13 @@
 + (void)registerCardSectionViewController;
 + (id)cardSectionClasses;
 + (id)cardSectionViewControllerForCardSection:(id)arg1;
-@property(retain, nonatomic) CRKCardSectionViewConfiguration *viewConfiguration; // @synthesize viewConfiguration=_viewConfiguration;
+- (void).cxx_destruct;
+@property(nonatomic) __weak CRKCardSectionViewConfiguration *viewConfiguration; // @synthesize viewConfiguration=_viewConfiguration;
 @property(readonly, nonatomic) INUIRemoteViewController *_remoteViewController; // @synthesize _remoteViewController=__remoteViewController;
 @property(retain, nonatomic, getter=_extraCommands, setter=_setExtraCommands:) NSArray *extraCommands; // @synthesize extraCommands=_extraCommands;
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(retain, nonatomic) id <CRCardSection> cardSection; // @synthesize cardSection=_cardSection;
 @property(nonatomic) __weak id <CRKCardSectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)cardSectionViewDidInvalidateSizeForCardSection:(id)arg1;
 - (void)controllerForCard:(id)arg1 didReceiveAsyncCard:(id)arg2 withAsyncCardReceiptFeedback:(id)arg3;
 - (void)controllerForCard:(id)arg1 didRequestAsyncCard:(id)arg2 withAsyncCardRequestFeedback:(id)arg3;
@@ -55,6 +55,7 @@
 - (void)cardSectionViewDidInvalidateSize:(id)arg1;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1 animate:(_Bool)arg2;
 - (void)didEngageCardSection:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

@@ -16,9 +16,9 @@
     id <PKPassPersonalizationTermsViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) id <PKPassPersonalizationTermsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) NSString *termsAndConditions; // @synthesize termsAndConditions=_termsAndConditions;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPassPersonalizationTermsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) NSString *termsAndConditions; // @synthesize termsAndConditions=_termsAndConditions;
 - (void)_acceptButtonPressed:(id)arg1;
 - (void)_declineButtonPressed:(id)arg1;
 - (void)_applyTermsAndConditions;

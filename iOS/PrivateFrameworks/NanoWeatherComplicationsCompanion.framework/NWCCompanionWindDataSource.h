@@ -10,7 +10,7 @@
 
 + (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (id)bundleIdentifier;
-- (id)_complicationTemplate;
+- (id)sampleTemplate;
 
 @end
 

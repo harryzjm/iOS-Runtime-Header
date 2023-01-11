@@ -7,21 +7,38 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/PHMediaRequestLiveRenderingOptions-Protocol.h>
+#import <Photos/PHMediaRequestThreadingOptions-Protocol.h>
 
-@interface PHLivePhotoRequestOptions : NSObject <NSCopying>
+@class NSString;
+
+@interface PHLivePhotoRequestOptions : NSObject <PHMediaRequestLiveRenderingOptions, PHMediaRequestThreadingOptions, NSCopying>
 {
     _Bool _networkAccessAllowed;
+    _Bool _liveRenderVideoIfNeeded;
     long long _version;
     long long _deliveryMode;
     CDUnknownBlockType _progressHandler;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool liveRenderVideoIfNeeded; // @synthesize liveRenderVideoIfNeeded=_liveRenderVideoIfNeeded;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property(nonatomic) long long version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)renderResultHandlerQueue;
+- (_Bool)liveRenderAndOnDemandRenderVideoConcurrently;
+- (_Bool)isCurrentVersion;
+- (id)resultHandlerQueue;
+- (_Bool)isSynchronous;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

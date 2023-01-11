@@ -6,28 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSDictionary;
 
 @interface XCTMeasureOptions : NSObject
 {
-    NSMutableDictionary *_instrumentOptions;
+    _Bool _enableParallelizedSampling;
+    _Bool _scheduleKickOffOnNewThread;
+    _Bool _allowContinuousSampling;
+    _Bool _discardTraceIteration;
     _Bool _discardFirstIteration;
-    unsigned long long _instrumentAutomatic;
-    unsigned long long _metricPerferredSampleMode;
+    _Bool _traceCollectionEnabled;
+    unsigned long long _invocationOptions;
+    unsigned long long _iterationCount;
+    NSDictionary *_performanceTestConfiguration;
+    double _quiesceCpuIdlePercent;
+    double _quiesceCpuIdleTimeLimit;
 }
 
 + (id)defaultOptions;
-@property(nonatomic) _Bool discardFirstIteration; // @synthesize discardFirstIteration=_discardFirstIteration;
-@property(readonly, nonatomic) unsigned long long metricPerferredSampleMode; // @synthesize metricPerferredSampleMode=_metricPerferredSampleMode;
-@property(readonly, nonatomic) unsigned long long instrumentAutomatic; // @synthesize instrumentAutomatic=_instrumentAutomatic;
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithInstrumentOptionsDictionary:(id)arg1;
-@property(nonatomic) unsigned long long iterationCount;
-@property(nonatomic) unsigned long long invocationOptions;
-@property(nonatomic) _Bool allowContinuousSampling;
+@property(nonatomic) double quiesceCpuIdleTimeLimit; // @synthesize quiesceCpuIdleTimeLimit=_quiesceCpuIdleTimeLimit;
+@property(nonatomic) double quiesceCpuIdlePercent; // @synthesize quiesceCpuIdlePercent=_quiesceCpuIdlePercent;
+@property(nonatomic) _Bool traceCollectionEnabled; // @synthesize traceCollectionEnabled=_traceCollectionEnabled;
+@property(nonatomic) _Bool discardFirstIteration; // @synthesize discardFirstIteration=_discardFirstIteration;
+@property(retain, nonatomic) NSDictionary *performanceTestConfiguration; // @synthesize performanceTestConfiguration=_performanceTestConfiguration;
+@property(nonatomic) _Bool discardTraceIteration; // @synthesize discardTraceIteration=_discardTraceIteration;
+@property(nonatomic) _Bool allowContinuousSampling; // @synthesize allowContinuousSampling=_allowContinuousSampling;
+@property(nonatomic) unsigned long long iterationCount; // @synthesize iterationCount=_iterationCount;
+@property(nonatomic) unsigned long long invocationOptions; // @synthesize invocationOptions=_invocationOptions;
+@property(readonly, nonatomic) unsigned long long instrumentAutomatic;
 @property(nonatomic) _Bool allowConcurrentIterations;
+- (void)applyPerformanceTestConfiguration;
 @property(readonly, nonatomic) NSDictionary *instrumentOptions;
+- (id)initWithInstrumentOptionsDictionary:(id)arg1;
+- (id)init;
 
 @end
 

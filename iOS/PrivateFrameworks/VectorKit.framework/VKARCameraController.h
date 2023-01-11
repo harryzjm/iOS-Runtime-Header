@@ -34,13 +34,13 @@ __attribute__((visibility("hidden")))
     Unit_57582783 _fieldOfView;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) Unit_57582783 fieldOfView; // @synthesize fieldOfView=_fieldOfView;
 @property(nonatomic) RigidTransform_b9386d13 offsetTransform; // @synthesize offsetTransform=_offsetTransform;
 @property(nonatomic) _Bool overrideARFieldOfView; // @synthesize overrideARFieldOfView=_overrideARFieldOfView;
 @property(nonatomic) struct MapEngine *mapEngine; // @synthesize mapEngine=_mapEngine;
 @property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)arSessionWasInterrupted:(unsigned long long)arg1;
 - (void)updateCameraFrameFromARTransform;
 @property(readonly, nonatomic) float heightScale;
@@ -70,6 +70,8 @@ __attribute__((visibility("hidden")))
 - (Matrix_6e1d3589)_intersectAndResolveWorldCollision:(const RigidTransform_b9386d13 *)arg1;
 - (void)setYaw:(double)arg1 animated:(_Bool)arg2;
 - (double)presentationYaw;
+- (double)maxPitch;
+- (double)minPitch;
 - (_Bool)isFullyPitched;
 - (_Bool)isPitched;
 - (Geocentric_d8fde6f2)cameraPosition;

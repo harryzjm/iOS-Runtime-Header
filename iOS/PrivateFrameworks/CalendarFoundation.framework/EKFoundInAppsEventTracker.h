@@ -10,10 +10,6 @@
 {
 }
 
-+ (id)pseudoEventInitialTimeToLeaveFiredTracker;
-+ (id)pseudoEventExpiredTracker;
-+ (id)pseudoEventDetailsOpenedTracker;
-+ (id)pseudoEventDateChangedTracker;
 + (void)trackPseudoEventInitialTimeToLeaveFired;
 + (void)trackPseudoEventsExpired:(int)arg1;
 + (void)trackPseudoEventDetailsOpened;

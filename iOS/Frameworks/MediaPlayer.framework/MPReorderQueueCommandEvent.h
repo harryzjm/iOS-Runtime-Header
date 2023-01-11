@@ -8,13 +8,15 @@
 
 @interface MPReorderQueueCommandEvent
 {
+    NSString *_insertBeforeContextItemID;
     NSString *_insertAfterContextItemID;
     long long _destinationOffset;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long destinationOffset; // @synthesize destinationOffset=_destinationOffset;
 @property(readonly, nonatomic) NSString *insertAfterContextItemID; // @synthesize insertAfterContextItemID=_insertAfterContextItemID;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *insertBeforeContextItemID; // @synthesize insertBeforeContextItemID=_insertBeforeContextItemID;
 - (id)initWithCommand:(id)arg1 mediaRemoteType:(unsigned int)arg2 options:(id)arg3;
 
 @end

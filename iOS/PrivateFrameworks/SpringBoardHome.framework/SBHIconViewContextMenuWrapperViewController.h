@@ -9,7 +9,7 @@
 #import <SpringBoardHome/SBHRecentsDocumentExtensionProviderDelegate-Protocol.h>
 #import <SpringBoardHome/WGWidgetViewControllerDelegate-Protocol.h>
 
-@class MTMaterialView, NSArray, NSString, UIContextMenuInteraction;
+@class MTMaterialView, NSArray, NSString;
 
 @interface SBHIconViewContextMenuWrapperViewController : UIViewController <WGWidgetViewControllerDelegate, SBHRecentsDocumentExtensionProviderDelegate>
 {
@@ -18,14 +18,15 @@
     UIViewController *_contentViewController;
     NSString *_groupNameBase;
     double _backgroundScale;
-    UIContextMenuInteraction *_contextMenuInteraction;
+    double _continuousCornerRadius;
 }
 
-@property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
+- (void).cxx_destruct;
+@property(nonatomic) double continuousCornerRadius; // @synthesize continuousCornerRadius=_continuousCornerRadius;
 @property(nonatomic) double backgroundScale; // @synthesize backgroundScale=_backgroundScale;
 @property(copy, nonatomic) NSString *groupNameBase; // @synthesize groupNameBase=_groupNameBase;
 @property(retain, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
-- (void).cxx_destruct;
+- (void)_applyContinuousCornerRadius;
 - (void)_applyPreferredContentSizeChange:(struct CGSize)arg1;
 - (void)recentsDocumentExtensionViewControllerRequestsDismiss:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidgetViewController:(id)arg1;

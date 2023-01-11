@@ -24,6 +24,7 @@
     struct {
         _Bool visibleContentSnapshot;
         _Bool topmostAssetCollection;
+        _Bool shouldUpdateImmediately;
     } _dataSourceRespondsTo;
     struct {
         _Bool setTitle;
@@ -39,12 +40,13 @@
     id <PXDisplayAssetCollection> _topmostAssetCollection;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setTopmostAssetCollection:) id <PXDisplayAssetCollection> topmostAssetCollection; // @synthesize topmostAssetCollection=_topmostAssetCollection;
 @property(readonly, nonatomic) PXBrowserSummaryController *summaryController; // @synthesize summaryController=_summaryController;
 @property(nonatomic) _Bool shouldUseAbbreviatedDates; // @synthesize shouldUseAbbreviatedDates=_shouldUseAbbreviatedDates;
 @property(nonatomic) __weak id <PXLibrarySummaryOutputPresenter> outputPresenter; // @synthesize outputPresenter=_outputPresenter;
 @property(nonatomic) __weak id <PXLibrarySummaryDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
+- (_Bool)browserSummaryControllerShouldUpdateImmediately:(id)arg1;
 - (id)visibleContentSnapshotForBrowserSummaryController:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateTopmostAssetCollection;

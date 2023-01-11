@@ -16,8 +16,8 @@
 }
 
 + (id)sharedFormatter;
-@property(retain, nonatomic) NSNumberFormatter *indexNumberFormatter; // @synthesize indexNumberFormatter=_indexNumberFormatter;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumberFormatter *indexNumberFormatter; // @synthesize indexNumberFormatter=_indexNumberFormatter;
 - (id)_localizedIndexForConditions:(id)arg1;
 - (id)switcherTemplateWithFamily:(long long)arg1;
 - (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
@@ -27,7 +27,9 @@
 - (id)modularSmallTemplateForLocation:(id)arg1 conditions:(id)arg2;
 - (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(_Bool)arg2 conditions:(id)arg3;
 - (id)graphicCornerTemplateForConditions:(id)arg1 location:(id)arg2;
+- (id)graphicExtraLargeTemplateForConditions:(id)arg1 location:(id)arg2;
 - (id)graphicCircularTemplateForConditions:(id)arg1 location:(id)arg2;
+- (id)_richCircularTemplateForComplicationFamily:(long long)arg1 conditions:(id)arg2 location:(id)arg3;
 - (id)graphicBezelTemplateForConditions:(id)arg1 location:(id)arg2;
 - (id)extraLargeTemplateForConditions:(id)arg1;
 - (id)circularMediumTemplateForConditions:(id)arg1;

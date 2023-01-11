@@ -10,7 +10,6 @@
 
 @interface GKPeerPickerViewController : UIViewController
 {
-    id _delegate;
     NSMutableDictionary *_sessionMap;
     GKContentView *_btView;
     GKContentView *_listView;
@@ -34,8 +33,10 @@
     NSMutableArray *_peers;
     NSString *_pendingPeer;
     _Bool _alertCancelled;
+    id _delegate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *invitationWaitTimer; // @synthesize invitationWaitTimer=_invitationWaitTimer;
 @property(nonatomic) _Bool updating; // @synthesize updating=_updating;
 @property(nonatomic) int pendingState; // @synthesize pendingState=_pendingState;
@@ -58,7 +59,7 @@
 @property(retain, nonatomic) GKContentView *listView; // @synthesize listView=_listView;
 @property(retain, nonatomic) GKContentView *btView; // @synthesize btView=_btView;
 @property(retain, nonatomic) NSMutableDictionary *sessionMap; // @synthesize sessionMap=_sessionMap;
-@property id delegate; // @synthesize delegate=_delegate;
+@property __weak id delegate; // @synthesize delegate=_delegate;
 - (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)didPresentAlertView:(id)arg1;

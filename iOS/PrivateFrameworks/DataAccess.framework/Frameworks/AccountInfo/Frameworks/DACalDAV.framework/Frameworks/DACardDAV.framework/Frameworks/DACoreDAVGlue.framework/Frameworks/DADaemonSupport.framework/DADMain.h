@@ -20,16 +20,18 @@
 }
 
 + (id)sharedMain;
-@property(retain, nonatomic) NSArray *userSwitchTasks; // @synthesize userSwitchTasks=_userSwitchTasks;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *userSwitchTasks; // @synthesize userSwitchTasks=_userSwitchTasks;
+- (void)evaluateConnectedStartupActivityStatus;
+- (void)agentsStarted;
+- (void)xpc_checkin;
 - (void)dealloc;
 - (id)init;
-- (void)_configureAggdLogging;
+- (void)_configureAnalyticsLogging;
 - (void)disable;
 - (void)_setRunLoopStopped:(_Bool)arg1;
 - (void)setRunLoopStoppedRef:(_Bool *)arg1;
 - (void)waitForSystemAvailability;
-- (void)_shutdownNotification:(id)arg1;
 - (void)shutdownDAD;
 - (void)addLanguageChangeHandler;
 - (void)addSignalHandler;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, VCSessionBandwidthAllocationTable;
+@class NSArray, NSDictionary, VCSessionBandwidthAllocationTable;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionUplinkBandwidthAllocator
@@ -13,20 +13,24 @@ __attribute__((visibility("hidden")))
     NSDictionary *_currentTable;
     _Bool _videoEnabled;
     _Bool _redundancyEnabled;
+    _Bool _redundancyEnabledFor720Stream;
 }
 
-- (void)_assignCurrentTables;
+@property(readonly, nonatomic, getter=getBitrateToStreamTable) NSDictionary *bitrateToStreamTable;
+- (void)_recomputeCurrentTable;
 - (id)audioRepairStreamIDsForStreamIDs;
 - (id)videoRepairStreamIDsForStreamIDs;
-- (id)videoRepairStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(_Bool)arg2;
-- (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(_Bool)arg2;
-- (id)videoMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(_Bool)arg2;
+- (id)videoStreamIDsforTargetBitrateCap:(unsigned int)arg1;
+- (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1;
+@property(readonly, nonatomic) NSArray *videoRepairStreamIDs;
+@property(readonly, nonatomic) NSArray *videoStreamIDs;
+- (id)videoMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1;
 - (id)audioRepairStreamIDsforTargetBitrate:(unsigned int)arg1;
 - (id)audioStreamIDsforTargetBitrate:(unsigned int)arg1;
-- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(_Bool)arg2 remainingBitrate:(unsigned int *)arg3;
-- (_Bool)_isAvailableStreamConfiguration:(id)arg1;
-- (_Bool)enableVideoStream:(_Bool)arg1 streamID:(unsigned short)arg2;
+- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 remainingBitrate:(unsigned int *)arg2;
+- (_Bool)peerSubscription:(_Bool)arg1 streamID:(unsigned short)arg2;
 - (id)_audioEntriesForTargetBitrate:(unsigned int)arg1;
+@property(nonatomic, getter=isRedundancyEnabledFor720Stream) _Bool redundancyEnabledFor720Stream;
 @property(nonatomic, getter=isRedundancyEnabled) _Bool redundancyEnabled;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 - (void)addBandwidthAllocationTableEntry:(id)arg1 updateNow:(_Bool)arg2;

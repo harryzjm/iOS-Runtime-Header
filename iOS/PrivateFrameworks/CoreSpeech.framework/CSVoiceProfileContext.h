@@ -17,10 +17,9 @@
     unsigned long long _onboardType;
     NSString *_homeId;
     NSString *_userName;
-    NSString *_siriDebugProfileId;
 }
 
-@property(retain, nonatomic) NSString *siriDebugProfileId; // @synthesize siriDebugProfileId=_siriDebugProfileId;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property(retain, nonatomic) NSString *homeId; // @synthesize homeId=_homeId;
 @property(nonatomic) unsigned long long onboardType; // @synthesize onboardType=_onboardType;
@@ -28,7 +27,6 @@
 @property(retain, nonatomic) NSString *productCategory; // @synthesize productCategory=_productCategory;
 @property(retain, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property(retain, nonatomic) NSString *profileId; // @synthesize profileId=_profileId;
-- (void).cxx_destruct;
 - (id)description;
 - (id)initWithSharedSiriId:(id)arg1 languageCode:(id)arg2 productCategory:(id)arg3 version:(id)arg4 sharedHomeId:(id)arg5 userName:(id)arg6;
 

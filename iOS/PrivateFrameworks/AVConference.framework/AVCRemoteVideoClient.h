@@ -46,9 +46,12 @@
 @property(nonatomic) _Bool hasReceivedLastFrame; // @synthesize hasReceivedLastFrame=_hasReceivedLastFrame;
 @property(nonatomic) _Bool hasReceivedFirstFrame; // @synthesize hasReceivedFirstFrame=_hasReceivedFirstFrame;
 @property(readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
+- (id)findInfoSubLayerFromLayer:(id)arg1;
 - (void)drawText:(id)arg1 inSubLayer:(id)arg2;
 - (void)updateConnectionInfoWithLocalInterfaceType:(id)arg1 remoteInterfaceType:(id)arg2;
 - (void)insertInfoSubLayerIntoLayer:(id)arg1 videoMode:(int)arg2;
+- (void)adjustInfoSubLayerBounds:(struct CGRect)arg1 forSuperLayer:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)terminateConnection;
 - (void)cleanupSubLayerForMode:(int)arg1;
 - (void)setActiveVideoLayerForMode:(int)arg1;

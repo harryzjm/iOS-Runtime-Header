@@ -23,27 +23,25 @@ __attribute__((visibility("hidden")))
     MKTransitDeparturesDataSource *_dataSource;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MKTransitDeparturesDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly, nonatomic) _Bool isInSiri; // @synthesize isInSiri=_isInSiri;
 @property(nonatomic) __weak id <MKTransitDepaturesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
-- (void).cxx_destruct;
 - (int)currentTransitCategory;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 @property(readonly, nonatomic) _Bool requiresPreferredContentSizeInStackingView;
 - (void)transitDeparturesDataSource:(id)arg1 didSelectConnectionInformation:(id)arg2;
+- (_Bool)transitDeparturesDataSource:(id)arg1 canSelectDepartureSequence:(id)arg2 transitStationMapItem:(id)arg3 transitLine:(id)arg4 fromCell:(id)arg5;
 - (void)transitDeparturesDataSource:(id)arg1 didSelectDepartureSequence:(id)arg2 transitStationMapItem:(id)arg3 transitLine:(id)arg4 fromCell:(id)arg5;
 - (void)transitDeparturesDataSource:(id)arg1 didSelectTransitLine:(id)arg2 fromCell:(id)arg3;
 - (void)transitDeparturesDataSource:(id)arg1 showIncidents:(id)arg2;
 - (void)transitDeparturesDataSourceDidReload:(id)arg1;
+- (void)transitDeparturesDataSourceDidToggleHiddenSystem:(id)arg1;
 - (id)separatorColorForTransitDeparturesDataSource:(id)arg1;
 - (struct UIEdgeInsets)separatorInsetsForTransitDeparturesDataSource:(id)arg1;
 - (id)traitsForTransitDeparturesDataSource:(id)arg1;
-- (_Bool)_isCompressedWidthTraits:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)infoCardThemeChanged;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;

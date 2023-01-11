@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableSet, PGGraphNode;
+@class NSArray, NSMutableSet, PGGraphPersonNode;
 
 @interface PGPotentialHobbyMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    NSArray *_hobbyAssets;
-    PGGraphNode *_person;
+    NSArray *_hobbyAssetLocalIdentifiers;
+    PGGraphPersonNode *_personNode;
     long long _year;
     long long _hobbyType;
 }
 
+- (void).cxx_destruct;
 @property(readonly) long long hobbyType; // @synthesize hobbyType=_hobbyType;
 @property(readonly) long long year; // @synthesize year=_year;
-@property(readonly) PGGraphNode *person; // @synthesize person=_person;
-@property(retain) NSArray *hobbyAssets; // @synthesize hobbyAssets=_hobbyAssets;
-- (void).cxx_destruct;
+@property(readonly) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
+@property(retain) NSArray *hobbyAssetLocalIdentifiers; // @synthesize hobbyAssetLocalIdentifiers=_hobbyAssetLocalIdentifiers;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithPerson:(id)arg1 year:(long long)arg2 hobbyType:(long long)arg3;
 

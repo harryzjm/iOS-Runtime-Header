@@ -19,14 +19,7 @@
     _Bool startedResolving;
 }
 
-@property _Bool startedResolving; // @synthesize startedResolving;
-@property(retain, nonatomic) NSString *thingToResolve; // @synthesize thingToResolve;
-@property(nonatomic) int resolveType; // @synthesize resolveType;
-@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
-@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *cacheAccessQueue;
-@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *resolveQueue;
 - (void)dealloc;
-- (void)cleanup;
 - (id)init;
 
 @end

@@ -6,30 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDNetworkRouterLANRule-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterAdvertisementProtocol, HMDNetworkRouterDynamicPortRuleDirection, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterServiceType, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterAdvertisementProtocol, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterRuleDirection, HMDNetworkRouterServiceType, NSString;
 
-@interface HMDNetworkRouterDynamicPortRule : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterDynamicPortRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HAPTLVProtocol>
 {
-    HMDNetworkRouterDynamicPortRuleDirection *_direction;
+    HMDNetworkRouterRuleDirection *_direction;
     HMDNetworkRouterLANIdentifierList *_lanIdentifierList;
     HMDNetworkRouterProtocol *_protocol;
     HMDNetworkRouterAdvertisementProtocol *_advertisementProtocol;
-    HMDTLVUnsignedNumberValue *_flags;
+    HAPTLVUnsignedNumberValue *_flags;
     HMDNetworkRouterServiceType *_serviceType;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 + (id)ruleFromFirewallRuleLAN:(id)arg1;
++ (id)ruleForHAP;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMDNetworkRouterServiceType *serviceType; // @synthesize serviceType=_serviceType;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *flags; // @synthesize flags=_flags;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *flags; // @synthesize flags=_flags;
 @property(retain, nonatomic) HMDNetworkRouterAdvertisementProtocol *advertisementProtocol; // @synthesize advertisementProtocol=_advertisementProtocol;
 @property(retain, nonatomic) HMDNetworkRouterProtocol *protocol; // @synthesize protocol=_protocol;
 @property(retain, nonatomic) HMDNetworkRouterLANIdentifierList *lanIdentifierList; // @synthesize lanIdentifierList=_lanIdentifierList;
-@property(retain, nonatomic) HMDNetworkRouterDynamicPortRuleDirection *direction; // @synthesize direction=_direction;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HMDNetworkRouterRuleDirection *direction; // @synthesize direction=_direction;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -37,6 +39,7 @@
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
 - (id)initWithDirection:(id)arg1 lanIdentifierList:(id)arg2 protocol:(id)arg3 advertisementProtocol:(id)arg4 flags:(id)arg5 serviceType:(id)arg6;
 - (id)init;
+- (void)addTo:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

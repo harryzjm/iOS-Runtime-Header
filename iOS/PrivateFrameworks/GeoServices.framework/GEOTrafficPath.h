@@ -14,26 +14,25 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficPath : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _continuingRoadIds;
     CDStruct_5df41632 _roadIds;
     NSMutableArray *_geometrys;
     NSData *_openlr;
+    long long _pathletId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     float _endOffset;
     float _startOffset;
     struct {
+        unsigned int has_pathletId:1;
         unsigned int has_endOffset:1;
         unsigned int has_startOffset:1;
         unsigned int read_continuingRoadIds:1;
         unsigned int read_roadIds:1;
         unsigned int read_geometrys:1;
         unsigned int read_openlr:1;
-        unsigned int wrote_continuingRoadIds:1;
-        unsigned int wrote_roadIds:1;
-        unsigned int wrote_geometrys:1;
-        unsigned int wrote_openlr:1;
-        unsigned int wrote_endOffset:1;
-        unsigned int wrote_startOffset:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,39 +47,39 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)geometryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)geometrysCount;
-- (void)_addNoFlagsGeometry:(id)arg1;
 - (void)addGeometry:(id)arg1;
 - (void)clearGeometrys;
 @property(retain, nonatomic) NSMutableArray *geometrys;
-- (void)_readGeometrys;
+@property(nonatomic) _Bool hasPathletId;
+@property(nonatomic) long long pathletId;
 - (void)setContinuingRoadIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (long long)continuingRoadIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsContinuingRoadId:(long long)arg1;
 - (void)addContinuingRoadId:(long long)arg1;
 - (void)clearContinuingRoadIds;
 @property(readonly, nonatomic) long long *continuingRoadIds;
 @property(readonly, nonatomic) unsigned long long continuingRoadIdsCount;
-- (void)_readContinuingRoadIds;
 @property(nonatomic) _Bool hasEndOffset;
 @property(nonatomic) float endOffset;
 @property(nonatomic) _Bool hasStartOffset;
 @property(nonatomic) float startOffset;
 - (void)setRoadIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (long long)roadIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsRoadId:(long long)arg1;
 - (void)addRoadId:(long long)arg1;
 - (void)clearRoadIds;
 @property(readonly, nonatomic) long long *roadIds;
 @property(readonly, nonatomic) unsigned long long roadIdsCount;
-- (void)_readRoadIds;
 @property(retain, nonatomic) NSData *openlr;
 @property(readonly, nonatomic) _Bool hasOpenlr;
-- (void)_readOpenlr;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

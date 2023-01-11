@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)deleteImageRecentsMetadataRequestFailed:(id)arg1;
 - (void)setContactImageDataZeroCropRect:(id)arg1 format:(const char *)arg2;
 - (void)setContactImageData:(id)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;
 - (void)removeContactImageData;
@@ -41,8 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)fetchContactsMatchingPredicate:(id)arg1 unifyResults:(_Bool)arg2 keysToFetch:(id)arg3;
 - (void)noAccessToContactsWithError:(id)arg1;
 - (void)contactsAccessWasGranted:(_Bool)arg1;
-- (void)tccAccessRequestWasDenied;
-- (void)tccAccessPreflightWasDenied;
+- (void)requestAuthorizationWasDenied;
+- (void)accessAuthorizationStatusWasDenied;
 - (void)postingNotification:(CDUnknownBlockType)arg1;
 - (void)servicingContactsRequest:(CDUnknownBlockType)arg1;
 - (void)settingDefaultAccount:(CDUnknownBlockType)arg1;

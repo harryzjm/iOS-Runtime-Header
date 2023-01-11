@@ -13,13 +13,15 @@
 @interface GEOTransitSection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _actionSheetArtworkIndexs;
     CDStruct_9f2792e4 _routeDetailsArtworkIndexs;
     CDStruct_9f2792e4 _stepIndexs;
     NSString *_actionSheetName;
     NSMutableArray *_ticketingSegments;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _nextOptionsIndex;
     _Bool _disableAlightNotifications;
     struct {
@@ -31,14 +33,7 @@
         unsigned int read_stepIndexs:1;
         unsigned int read_actionSheetName:1;
         unsigned int read_ticketingSegments:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_actionSheetArtworkIndexs:1;
-        unsigned int wrote_routeDetailsArtworkIndexs:1;
-        unsigned int wrote_stepIndexs:1;
-        unsigned int wrote_actionSheetName:1;
-        unsigned int wrote_ticketingSegments:1;
-        unsigned int wrote_nextOptionsIndex:1;
-        unsigned int wrote_disableAlightNotifications:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -55,47 +50,43 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)ticketingSegmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)ticketingSegmentsCount;
-- (void)_addNoFlagsTicketingSegment:(id)arg1;
 - (void)addTicketingSegment:(id)arg1;
 - (void)clearTicketingSegments;
 @property(retain, nonatomic) NSMutableArray *ticketingSegments;
-- (void)_readTicketingSegments;
 @property(nonatomic) _Bool hasDisableAlightNotifications;
 @property(nonatomic) _Bool disableAlightNotifications;
 - (void)setRouteDetailsArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)routeDetailsArtworkIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsRouteDetailsArtworkIndex:(unsigned int)arg1;
 - (void)addRouteDetailsArtworkIndex:(unsigned int)arg1;
 - (void)clearRouteDetailsArtworkIndexs;
 @property(readonly, nonatomic) unsigned int *routeDetailsArtworkIndexs;
 @property(readonly, nonatomic) unsigned long long routeDetailsArtworkIndexsCount;
-- (void)_readRouteDetailsArtworkIndexs;
 - (void)setActionSheetArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)actionSheetArtworkIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsActionSheetArtworkIndex:(unsigned int)arg1;
 - (void)addActionSheetArtworkIndex:(unsigned int)arg1;
 - (void)clearActionSheetArtworkIndexs;
 @property(readonly, nonatomic) unsigned int *actionSheetArtworkIndexs;
 @property(readonly, nonatomic) unsigned long long actionSheetArtworkIndexsCount;
-- (void)_readActionSheetArtworkIndexs;
 @property(retain, nonatomic) NSString *actionSheetName;
 @property(readonly, nonatomic) _Bool hasActionSheetName;
-- (void)_readActionSheetName;
 @property(nonatomic) _Bool hasNextOptionsIndex;
 @property(nonatomic) int nextOptionsIndex;
 - (void)setStepIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)stepIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsStepIndex:(unsigned int)arg1;
 - (void)addStepIndex:(unsigned int)arg1;
 - (void)clearStepIndexs;
 @property(readonly, nonatomic) unsigned int *stepIndexs;
 @property(readonly, nonatomic) unsigned long long stepIndexsCount;
-- (void)_readStepIndexs;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

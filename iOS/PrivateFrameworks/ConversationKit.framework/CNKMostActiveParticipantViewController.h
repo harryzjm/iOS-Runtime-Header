@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLayoutSubviews;
 - (id)initWithCoder:(id)arg1;
 

@@ -13,6 +13,7 @@
 @interface HMDAccessorySettingMetadata : HMFObject <HMFObject>
 {
     NSString *_name;
+    NSString *_keyPath;
     long long _type;
     unsigned long long _properties;
     HMDAccessorySettingMergeStrategy *_mergeStrategy;
@@ -21,19 +22,20 @@
 }
 
 + (id)valueWithType:(long long)arg1 constraints:(id)arg2 representation:(id)arg3;
-+ (id)settingWithDictonaryRepresentation:(id)arg1;
-+ (id)settingsWithArrayRepresenation:(id)arg1;
++ (id)settingWithDictonaryRepresentation:(id)arg1 parentKeyPath:(id)arg2;
++ (id)settingsWithArrayRepresenation:(id)arg1 parentKeyPath:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly) id value; // @synthesize value=_value;
 @property(readonly, copy) NSArray *constraints; // @synthesize constraints=_constraints;
 @property(readonly) HMDAccessorySettingMergeStrategy *mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property(readonly) unsigned long long properties; // @synthesize properties=_properties;
 @property(readonly) long long type; // @synthesize type=_type;
+@property(readonly, copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)modelWithParentIdentifier:(id)arg1;
 - (id)modelsWithParentIdentifier:(id)arg1;
 @property(readonly, copy) NSString *propertyDescription;
-- (id)initWithName:(id)arg1 type:(long long)arg2 properties:(unsigned long long)arg3 constraints:(id)arg4 mergeStrategy:(id)arg5 value:(id)arg6;
+- (id)initWithName:(id)arg1 type:(long long)arg2 properties:(unsigned long long)arg3 constraints:(id)arg4 mergeStrategy:(id)arg5 value:(id)arg6 parentKeyPath:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSArray *attributeDescriptions;

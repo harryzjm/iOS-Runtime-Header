@@ -6,29 +6,55 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _MRContentItemProtobuf, _MRPlaybackSessionMigrateRequestProtobuf;
+#import <MediaRemote/NSCopying-Protocol.h>
 
-@interface MRPlaybackSessionMigrateRequest : NSObject
+@class MRContentItem, MRPlaybackSessionRequest, NSError, NSString, _MRPlaybackSessionMigrateRequestProtobuf;
+
+@interface MRPlaybackSessionMigrateRequest : NSObject <NSCopying>
 {
-    _MRPlaybackSessionMigrateRequestProtobuf *_descriptor;
+    _MRPlaybackSessionMigrateRequestProtobuf *_protobuf;
+    NSError *_migrateError;
+    NSError *_fallbackError;
+    unsigned int _originatorType;
+    unsigned int _destinationTypes;
+    NSString *_appBundleIdentifier;
+    NSString *_initiator;
+    unsigned long long _requestType;
+    unsigned long long _fallbackReason;
+    long long _playbackSessionSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int destinationTypes; // @synthesize destinationTypes=_destinationTypes;
+@property(nonatomic) unsigned int originatorType; // @synthesize originatorType=_originatorType;
+@property(nonatomic) long long playbackSessionSize; // @synthesize playbackSessionSize=_playbackSessionSize;
+@property(nonatomic) unsigned long long fallbackReason; // @synthesize fallbackReason=_fallbackReason;
+@property(nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
+@property(retain, nonatomic) NSString *initiator; // @synthesize initiator=_initiator;
+@property(retain, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 - (void)merge:(id)arg1;
 @property(readonly, nonatomic) double duration;
+- (void)addDestinationTypesFromDevices:(id)arg1;
+- (void)addDestinationType:(unsigned int)arg1;
+- (void)setOriginatorTypeFromDevice:(id)arg1;
+- (void)finalize;
 - (void)endEvent:(id)arg1 withError:(id)arg2;
 - (void)endEvent:(id)arg1;
 - (void)startEvent:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 @property(readonly, nonatomic) NSString *report;
-@property(readonly, nonatomic) _MRPlaybackSessionMigrateRequestProtobuf *descriptor;
-@property(retain, nonatomic) _MRContentItemProtobuf *contentItem;
+@property(readonly, nonatomic) _MRPlaybackSessionMigrateRequestProtobuf *protobuf;
+@property(retain, nonatomic) MRPlaybackSessionRequest *playbackSessionRequest;
+@property(retain, nonatomic) MRContentItem *contentItem;
+@property(nonatomic) double playbackRate;
 @property(nonatomic) double playbackPosition;
 @property(nonatomic) unsigned int playbackState;
 @property(nonatomic) long long endpointOptions;
 @property(nonatomic) long long playerOptions;
 @property(retain, nonatomic) NSString *requestID;
-- (id)initWithDescriptor:(id)arg1;
+- (id)initWithData:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (id)init;
 
 @end

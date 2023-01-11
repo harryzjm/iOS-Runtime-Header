@@ -23,10 +23,10 @@
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType installationEventRepPost; // @synthesize installationEventRepPost=_installationEventRepPost;
 @property(copy, nonatomic) CDUnknownBlockType installationHIDCallback; // @synthesize installationHIDCallback=_installationHIDCallback;
 @property(copy, nonatomic) CDUnknownBlockType installationGSCallback; // @synthesize installationGSCallback=_installationGSCallback;
-- (void).cxx_destruct;
 - (void)_runMatchingServiceHandler:(id)arg1;
 - (void)runMatchingServiceHandlerForEventTap:(id)arg1;
 - (void)_removeHIDEventTapFilter:(id)arg1;
@@ -41,6 +41,7 @@
 - (void)_setEventTapPriority:(id)arg1 priority:(int)arg2;
 - (void)_passivelyPeakAtHIDEventWithTarget:(void *)arg1 tapPair:(id)arg2 sender:(void *)arg3 event:(struct __IOHIDEvent *)arg4 axEventRep:(id)arg5 didHandle:(_Bool)arg6;
 - (void)setEventTapPriority:(id)arg1 priority:(int)arg2;
+- (void)setFailedToProcessInTimeCallback:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_reorderEventTaps;
 - (_Bool)_processGSEvent:(CDStruct_7f3c0925 *)arg1;
 - (_Bool)_processHIDEvent:(struct __IOHIDEvent *)arg1 taskPort:(unsigned int)arg2 bundleId:(id)arg3;

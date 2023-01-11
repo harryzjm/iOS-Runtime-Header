@@ -20,8 +20,7 @@
 - (void)performAsync:(CDUnknownBlockType)arg1 withHandoff:(id)arg2;
 - (void)performAsync:(CDUnknownBlockType)arg1;
 - (id)backingQueueIfExists;
-- (void)assertOnQueue;
-- (id)initWithQueue:(id)arg1;
+- (void)assertBarrierOnQueue;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)arrivalUpdaterDidArrive:(id)arg1;
+- (void)arrivalUpdaterDidArrive:(id)arg1 atEndOfLegAtIndex:(unsigned long long)arg2;
 - (void)updateLocation:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (void)stopTracking;

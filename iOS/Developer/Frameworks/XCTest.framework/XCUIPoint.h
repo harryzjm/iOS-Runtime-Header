@@ -12,6 +12,7 @@
 }
 
 @property(readonly) struct CGPoint point; // @synthesize point=_point;
+- (id)description;
 - (id)initWithPoint:(struct CGPoint)arg1;
 
 @end

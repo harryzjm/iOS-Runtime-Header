@@ -14,6 +14,7 @@
 - (void).cxx_destruct;
 - (void)setDisplay:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)applyParameters:(id)arg1;
 - (void)updateClientSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 @property(copy, nonatomic, setter=_setSpecification:) FBSSceneSpecification *specification; // @dynamic specification;

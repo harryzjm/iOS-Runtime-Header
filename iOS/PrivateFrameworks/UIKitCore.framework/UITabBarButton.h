@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_defaultLabelColor;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *carplayConstraints; // @synthesize carplayConstraints=_carplayConstraints;
 @property(readonly, nonatomic) __weak UITabBar *tabBar; // @synthesize tabBar=_tabBar;
 @property(retain, nonatomic) UIVibrancyEffect *itemVibrantEffect; // @synthesize itemVibrantEffect=_itemVibrantEffect;
@@ -47,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property(retain, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
 @property(nonatomic, setter=_setShowsHighlightedState:) _Bool _showsHighlightedState; // @synthesize _showsHighlightedState;
-- (void).cxx_destruct;
 - (void)set_info:(id)arg1;
 - (id)_info;
 @property(readonly, nonatomic) UIColor *_defaultUnselectedLabelTintColor;
@@ -71,7 +71,10 @@ __attribute__((visibility("hidden")))
 - (id)badgeTextAttributesForState:(long long)arg1;
 - (id)badgeBackgroundColorForState:(long long)arg1;
 - (struct UIOffset)badgePositionAdjustmentForState:(long long)arg1;
+- (_Bool)isDefaultColor:(id)arg1 forState:(long long)arg2;
 - (id)iconColorForState:(long long)arg1;
+- (long long)defaultCompositingModeForState:(long long)arg1;
+- (double)defaultAlphaForState:(long long)arg1;
 - (id)defaultColorForState:(long long)arg1;
 - (struct UIOffset)titlePositionAdjustmentForState:(long long)arg1;
 - (id)titleTextAttributesForState:(long long)arg1;
@@ -118,12 +121,16 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_tabBarHitRect;
 - (void)_setTabBarHitRect:(struct CGRect)arg1;
 - (void)setImage:(id)arg1;
+- (void)_reducedTransparencyDidChange:(id)arg1;
 - (void)_updateVibrancyEffectView;
+- (void)_updateAfterTraitCollectionOrAccessibilityDidChangeTV;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (id)initWithImage:(id)arg1 selectedImage:(id)arg2 label:(id)arg3 withInsets:(struct UIEdgeInsets)arg4 tabBar:(id)arg5;
 - (id)initWithImage:(id)arg1 landscapeImage:(id)arg2 selectedImage:(id)arg3 landscapeSelectedImage:(id)arg4 label:(id)arg5 withInsets:(struct UIEdgeInsets)arg6 landscapeInsets:(struct UIEdgeInsets)arg7 tabBar:(id)arg8;
 - (id)_selectedIndicatorView;
+@property(readonly, nonatomic, getter=isDefaultTVLayout) _Bool _defaultTVLayout;
+@property(readonly, nonatomic) struct CGRect _contentRect;
 @property(nonatomic, getter=isSpringLoaded) _Bool springLoaded;
 
 // Remaining properties

@@ -24,17 +24,15 @@
 + (id)verticalContainerStackViewWithArrangedSubviews:(id)arg1;
 + (id)horizontalContainerStackViewWithArrangedSubviews:(id)arg1;
 + (id)containerStackViewWithAxis:(long long)arg1 arrangedSubviews:(id)arg2;
-@property(nonatomic) double spacing; // @synthesize spacing=_spacing;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) double spacing; // @synthesize spacing=_spacing;
 - (id)debugDictionary;
 - (id)arrangedDescription;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
-- (struct CGSize)_calculateArrangedSizeFittingSize:(struct CGSize)arg1 forLayout:(_Bool)arg2;
 - (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
 - (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
-- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1;
 - (_Bool)setNeedsInvalidation:(long long)arg1;
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)setSpacing:(double)arg1 afterArrangedSubviewAtIndex:(long long)arg2;
@@ -46,7 +44,6 @@
 - (void)setBaselineRelativeArrangement:(_Bool)arg1;
 - (id)calculateViewForLastBaselineLayout;
 - (id)calculateViewForFirstBaselineLayout;
-- (id)_baselineViewVendForFirstBaseline:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithArrangedSubviews:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

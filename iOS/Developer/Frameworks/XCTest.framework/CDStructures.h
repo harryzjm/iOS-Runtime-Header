@@ -31,20 +31,13 @@ struct CGVector {
 };
 
 struct _CSTypeRef {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long _opaque_1;
+    unsigned long long _opaque_2;
 };
 
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
-};
-
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
 };
 
 struct atomic_flag {
@@ -57,6 +50,17 @@ struct time_value {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    CDUnknownFunctionPointerType symbolicatorCreateWithTask;
+    CDUnknownFunctionPointerType symbolicatorGetSymbolOwnerWithAddressAtTime;
+    CDUnknownFunctionPointerType symbolOwnerGetName;
+    CDUnknownFunctionPointerType symbolOwnerGetSymbolWithAddress;
+    CDUnknownFunctionPointerType symbolOwnerGetSourceInfoWithAddress;
+    CDUnknownFunctionPointerType symbolGetName;
+    CDUnknownFunctionPointerType sourceInfoGetPath;
+    CDUnknownFunctionPointerType sourceInfoGetLineNumber;
+} CDStruct_7da0dd4a;
 
 typedef struct {
     long long _field1;

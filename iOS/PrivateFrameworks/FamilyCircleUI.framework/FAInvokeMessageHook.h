@@ -8,22 +8,28 @@
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface FAInvokeMessageHook : NSObject <AAUIServerHook>
 {
     CDUnknownBlockType _completion;
+    RUIObjectModel *_objectModel;
     id <AAUIServerHookDelegate> _delegate;
     AAUIServerHookResponse *_serverHookResponse;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse; // @synthesize serverHookResponse=_serverHookResponse;
 @property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)_presentMessagesInviteWithServerAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(retain, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
+- (void)inviteControllerDidEndAsyncLoading:(id)arg1;
+- (void)inviteControllerDidStartAsyncLoading:(id)arg1;
+- (id)_stringForCompletionStatus:(unsigned long long)arg1;
+- (void)_presentMessagesInviteWithServerAttributes:(id)arg1 transport:(long long)arg2 sourceView:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (long long)transportWithActionString:(id)arg1;
 - (_Bool)shouldMatchModel:(id)arg1;
 - (_Bool)shouldMatchElement:(id)arg1;
 

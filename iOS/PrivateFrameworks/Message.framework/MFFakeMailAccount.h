@@ -15,15 +15,15 @@
     DeliveryAccount *_deliveryAccount;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) DeliveryAccount *deliveryAccount; // @synthesize deliveryAccount=_deliveryAccount;
 @property(nonatomic, getter=isManaged) _Bool managed; // @synthesize managed=_managed;
-- (void).cxx_destruct;
 - (Class)storeClass;
 - (_Bool)_shouldConfigureMailboxCache;
 - (_Bool)shouldFetchAgainWithError:(id)arg1 foregroundRequest:(_Bool)arg2;
 - (id)flagChangesForMailboxPath:(id)arg1 UID:(unsigned int)arg2 connectTime:(double)arg3;
 - (void)invalidate;
-- (id)connectionForStore:(id)arg1 delegate:(id)arg2 options:(int)arg3;
+- (id)connectionForStore:(id)arg1 delegate:(id)arg2 options:(int)arg3 failedToSelectMailbox:(_Bool *)arg4;
 - (void)setCachedConnection:(id)arg1;
 - (int)cachePolicy;
 - (unsigned int)minID;

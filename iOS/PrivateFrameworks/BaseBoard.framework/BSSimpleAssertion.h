@@ -14,23 +14,23 @@
 
 @interface BSSimpleAssertion : NSObject <BSInvalidatable, BSDescriptionProviding>
 {
-    NSString *_identifier;
-    NSString *_reason;
     BSAtomicSignal *_invalidated;
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _invalidationBlock;
+    NSString *_identifier;
+    NSString *_reason;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (void)invalidate;
-@property(readonly, nonatomic, getter=isValid) _Bool valid; // @dynamic valid;
+@property(readonly, nonatomic, getter=isValid) _Bool valid;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1 forReason:(id)arg2 invalidationBlock:(CDUnknownBlockType)arg3;
 - (id)initWithIdentifier:(id)arg1 forReason:(id)arg2 queue:(id)arg3 invalidationBlock:(CDUnknownBlockType)arg4;

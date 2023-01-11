@@ -8,20 +8,21 @@
 
 #import <ClassroomKit/CRKConfigurationSource-Protocol.h>
 
-@class NSString;
+@class CRKNonCatalystStudentDaemonProxy, NSString;
 @protocol CRKConfigurationSource, OS_dispatch_queue;
 
 @interface CRKStudentdXPCProfileConfigurationSource : NSObject <CRKConfigurationSource>
 {
     NSObject<OS_dispatch_queue> *mCallbackQueue;
     id <CRKConfigurationSource> mPlaceholderFileConfigurationSource;
+    CRKNonCatalystStudentDaemonProxy *_studentDaemonProxy;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CRKNonCatalystStudentDaemonProxy *studentDaemonProxy; // @synthesize studentDaemonProxy=_studentDaemonProxy;
 - (void)setConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchConfiguration:(CDUnknownBlockType)arg1;
 - (_Bool)isStudentdInstalled;
-- (id)studentDaemonConnection;
 - (id)initWithCallbackQueue:(id)arg1;
 - (id)init;
 

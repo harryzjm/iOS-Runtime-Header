@@ -10,6 +10,7 @@
 
 @interface _TtC15ConversationKit18InCallControlsView : UIView
 {
+    MISSING_TYPE *dataSource;
     MISSING_TYPE *effectsButton;
     MISSING_TYPE *muteButton;
     MISSING_TYPE *flipCameraButton;

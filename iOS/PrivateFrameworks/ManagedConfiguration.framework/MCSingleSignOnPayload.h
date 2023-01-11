@@ -15,13 +15,13 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(retain, nonatomic) MCSingleSignOnPayloadKerberosInfo *kerberosInfo; // @synthesize kerberosInfo=_kerberosInfo;
 @property(retain, nonatomic) NSString *humanReadableName; // @synthesize humanReadableName=_humanReadableName;
-- (void).cxx_destruct;
 - (id)payloadDescriptionKeyValueSections;
 - (id)title;
 - (id)stubDictionary;
-- (id)description;
+- (id)verboseDescription;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 
 @end

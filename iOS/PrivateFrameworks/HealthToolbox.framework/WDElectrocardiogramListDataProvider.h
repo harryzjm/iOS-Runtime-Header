@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)customLoadingCellForRowAtIndexPath:(id)arg1 tableView:(id)arg2;
 - (id)placeholderCellAtIndexPath:(id)arg1 tableView:(id)arg2;
 - (id)customCellForObject:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3;
-- (id)_cellForSample:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3;
+- (id)_cellForSample:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3 activeAlgorithmVersion:(long long)arg4;
 - (double)customEstimatedCellHeight;
 - (double)customCellHeight;
 - (void)customizeTableView:(id)arg1;

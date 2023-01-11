@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, _CFXNotificationRegistrationBase;
+@class NSMutableArray;
 
 #pragma mark Function Pointers and Blocks
 
@@ -19,6 +19,12 @@ struct Block_byref {
     struct Block_byref *_field2;
     int _field3;
     unsigned int _field4;
+};
+
+struct CFMethodSignatureROMEntry {
+    struct NSMethodFrameDescriptor *_field1;
+    char *_field2;
+    unsigned long long _field3;
 };
 
 struct NSMethodFrameArgInfo {
@@ -48,6 +54,13 @@ struct NSMethodFrameArgInfo {
     unsigned int :1;
     unsigned char _field9;
     char _field10[0];
+};
+
+struct NSMethodFrameDescriptor {
+    struct NSMethodFrameArgInfo *_field1;
+    struct NSMethodFrameArgInfo *_field2;
+    unsigned int _field3;
+    unsigned int _field4;
 };
 
 struct _NSRange {
@@ -105,13 +118,6 @@ struct __cfobservers_t {
     struct __cfobservers_t *next;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct _opaque_pthread_mutex_t {
     long long __sig;
     char __opaque[56];
@@ -143,26 +149,10 @@ typedef struct {
 } CDStruct_58648341;
 
 typedef struct {
-    id *_field1;
-    long long _field2;
-    unsigned long long _field3;
-    _Bool _field4;
-} CDStruct_78c06135;
-
-typedef struct {
     int _field1;
     long long _field2;
     long long _field3;
 } CDStruct_b6748e3c;
-
-typedef struct {
-    long long _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    CDUnknownFunctionPointerType _field5;
-    CDUnknownFunctionPointerType _field6;
-} CDStruct_90be15af;
 
 typedef struct {
     long long version;
@@ -176,13 +166,6 @@ typedef struct {
     long long _field1;
     long long _field2;
 } CDStruct_912cb5d2;
-
-typedef struct {
-    struct NSMethodFrameArgInfo *retInfo;
-    struct NSMethodFrameArgInfo *argInfo;
-    unsigned int numArgs;
-    unsigned int frameSize;
-} CDStruct_b48d777a;
 
 typedef struct {
     struct __CFBasicHash *set;
@@ -201,21 +184,6 @@ typedef struct {
     long long _field2;
     struct __CFArray *_field3;
 } CDStruct_6ea78fe2;
-
-typedef struct {
-    CDStruct_78c06135 _field1;
-    CDStruct_78c06135 _field2;
-} CDStruct_3de10e06;
-
-typedef struct {
-    union {
-        struct __CFNull *empty;
-        _CFXNotificationRegistrationBase *child;
-        struct __CFDictionary *children;
-    } elements;
-    void *singleChildKey;
-    struct *callbacks;
-} CDStruct_a86bd46d;
 
 typedef struct {
     id *objs;

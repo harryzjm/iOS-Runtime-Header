@@ -7,38 +7,45 @@
 #import <CoverSheet/CSCombinedListViewControllerDelegate-Protocol.h>
 #import <CoverSheet/CSNotificationDestination-Protocol.h>
 #import <CoverSheet/CSPageViewControllerProtocol-Protocol.h>
+#import <CoverSheet/CSUserPresenceMonitorObserver-Protocol.h>
 #import <CoverSheet/PTSettingsKeyObserver-Protocol.h>
 
-@class CSAppearance, CSBehavior, CSCombinedListViewController, CSLayoutStrategy, CSLockScreenSettings, CSLogoutButtonViewController, CSPresentation, CSUserPictureViewController, NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
-@protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, CSNotificationDispatcher, CSTouchEnvironmentStatusProviding, CSUserSessionControlling, CSWallpaperColorProvider, CSWallpaperViewProviding, SBFAuthenticationStatusProvider, UICoordinateSpace;
+@class CSAppearance, CSBehavior, CSCombinedListViewController, CSLayoutStrategy, CSLockScreenSettings, CSLogoutButtonViewController, CSPresentation, CSUserPictureViewController, CSUserPresenceMonitor, NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
+@protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, CSMainPageContentViewControllerNotificationObserver, CSNotificationDispatcher, CSTouchEnvironmentStatusProviding, CSUserSessionControlling, CSWallpaperColorProvider, CSWallpaperViewProviding, SBFAuthenticationStatusProvider, UICoordinateSpace;
 
-@interface CSMainPageContentViewController <PTSettingsKeyObserver, CSCombinedListViewControllerDelegate, CSNotificationDestination, CSPageViewControllerProtocol>
+@interface CSMainPageContentViewController <PTSettingsKeyObserver, CSCombinedListViewControllerDelegate, CSUserPresenceMonitorObserver, CSNotificationDestination, CSPageViewControllerProtocol>
 {
     CSUserPictureViewController *_userPictureViewController;
     CSCombinedListViewController *_combinedListViewController;
+    CSUserPresenceMonitor *_userPresenceMontior;
     CSLogoutButtonViewController *_logoutButtonViewController;
     id <SBFAuthenticationStatusProvider> _authenticationProvider;
     CSLockScreenSettings *_testSettings;
+    long long _smoothestPermittedStrategy;
     _Bool _useFakeBlur;
     CSLayoutStrategy *_layoutStrategy;
     id <CSWallpaperColorProvider> _wallpaperColorProvider;
+    CSUserPresenceMonitor *_userPresenceMonitor;
     id <CSTouchEnvironmentStatusProviding> _touchEnvironmentStatusProvider;
     id <CSUserSessionControlling> _userSessionController;
     id <CSWallpaperViewProviding> _wallpaperViewProvider;
+    id <CSMainPageContentViewControllerNotificationObserver> _notificationObserver;
 }
 
 + (double)_phoneListWidth;
 + (_Bool)isAvailableForConfiguration;
 + (unsigned long long)requiredCapabilities;
 + (Class)viewClass;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <CSMainPageContentViewControllerNotificationObserver> notificationObserver; // @synthesize notificationObserver=_notificationObserver;
 @property(nonatomic) __weak id <CSWallpaperViewProviding> wallpaperViewProvider; // @synthesize wallpaperViewProvider=_wallpaperViewProvider;
 @property(nonatomic) __weak id <CSUserSessionControlling> userSessionController; // @synthesize userSessionController=_userSessionController;
 @property(nonatomic) __weak id <CSTouchEnvironmentStatusProviding> touchEnvironmentStatusProvider; // @synthesize touchEnvironmentStatusProvider=_touchEnvironmentStatusProvider;
+@property(retain, nonatomic) CSUserPresenceMonitor *userPresenceMonitor; // @synthesize userPresenceMonitor=_userPresenceMonitor;
 @property(nonatomic) _Bool useFakeBlur; // @synthesize useFakeBlur=_useFakeBlur;
 @property(nonatomic) __weak id <CSWallpaperColorProvider> wallpaperColorProvider; // @synthesize wallpaperColorProvider=_wallpaperColorProvider;
 @property(retain, nonatomic) CSLayoutStrategy *layoutStrategy; // @synthesize layoutStrategy=_layoutStrategy;
 @property(readonly, nonatomic) CSCombinedListViewController *combinedListViewController; // @synthesize combinedListViewController=_combinedListViewController;
-- (void).cxx_destruct;
 - (void)_addOrRemoveViewsAsAppropriate;
 - (void)_addOrRemoveNotificationsListIfNecessaryAnimated:(_Bool)arg1;
 - (void)_addOrRemoveLogoutButtonViewController;
@@ -53,12 +60,16 @@
 - (double)minimumDateToListSpacing;
 - (double)dateTimeInsetX;
 - (unsigned long long)dateTimeLayout;
+- (void)_updateSmoothestPermittedPagingStrategy;
+- (_Bool)_pagingStyleRequiresUserPresenceDetection;
+- (void)userPresenceDetectedSinceWakeDidChange:(id)arg1;
 - (id)notificationSectionSettingsForCombinedListViewController:(id)arg1;
 - (void)combinedListViewController:(id)arg1 hasContent:(_Bool)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (_Bool)dismissNotificationInLongLookAnimated:(_Bool)arg1;
 - (_Bool)isPresentingNotificationInLongLook;
 - (_Bool)isNotificationContentExtensionVisible:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)withdrawNotificationRequest:(id)arg1;
 - (void)updateNotificationRequest:(id)arg1;

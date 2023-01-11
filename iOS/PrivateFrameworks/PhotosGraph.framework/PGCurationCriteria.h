@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PGCurationContentOrAestheticScoreTrait, PGCurationIndexSetTrait, PGCurationPartOfDayTrait, PGCurationSetTrait, PGGraph;
+@class NSString, PGCurationContentOrAestheticScoreTrait, PGCurationCropScoreTrait, PGCurationIndexSetTrait, PGCurationPartOfDayTrait, PGCurationSetTrait, PGGraph;
 
 @interface PGCurationCriteria : NSObject
 {
@@ -19,11 +19,14 @@
     unsigned long long _faceFilter;
     PGCurationSetTrait *_peopleTrait;
     PGCurationContentOrAestheticScoreTrait *_contentOrAestheticScoreTrait;
+    PGCurationCropScoreTrait *_cropScoreTrait;
     unsigned long long _client;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long client; // @synthesize client=_client;
 @property(nonatomic) _Bool filterUtilityAssets; // @synthesize filterUtilityAssets=_filterUtilityAssets;
+@property(retain, nonatomic) PGCurationCropScoreTrait *cropScoreTrait; // @synthesize cropScoreTrait=_cropScoreTrait;
 @property(retain, nonatomic) PGCurationContentOrAestheticScoreTrait *contentOrAestheticScoreTrait; // @synthesize contentOrAestheticScoreTrait=_contentOrAestheticScoreTrait;
 @property(retain, nonatomic) PGCurationSetTrait *peopleTrait; // @synthesize peopleTrait=_peopleTrait;
 @property(nonatomic) unsigned long long faceFilter; // @synthesize faceFilter=_faceFilter;
@@ -32,11 +35,10 @@
 @property(retain, nonatomic) PGCurationIndexSetTrait *scenesTrait; // @synthesize scenesTrait=_scenesTrait;
 @property(retain, nonatomic) PGCurationIndexSetTrait *compulsoryScenesTrait; // @synthesize compulsoryScenesTrait=_compulsoryScenesTrait;
 @property(nonatomic) double minimumAssetsRatio; // @synthesize minimumAssetsRatio=_minimumAssetsRatio;
-- (void).cxx_destruct;
 - (id)peopleTraitString;
 @property(readonly) NSString *niceDescription;
 - (double)_scoreForSceneClassifications:(id)arg1 withScenesTrait:(id)arg2 traitFailed:(_Bool *)arg3;
-- (_Bool)passesForAsset:(id)arg1 score:(double *)arg2 reasonString:(id *)arg3;
+- (_Bool)passesForItem:(id)arg1 score:(double *)arg2 reasonString:(id *)arg3;
 - (_Bool)isPassingForAsset:(id)arg1 score:(double *)arg2;
 - (id)initWithGraph:(id)arg1 minimumAssetsRatio:(double)arg2 client:(unsigned long long)arg3;
 

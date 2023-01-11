@@ -8,15 +8,16 @@
 
 @class HDCodableStartWorkoutAppRequest;
 
+__attribute__((visibility("hidden")))
 @interface HDRemoteStartWorkoutAppRequestContext : NSObject
 {
     HDCodableStartWorkoutAppRequest *_request;
     CDUnknownBlockType _completion;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(retain, nonatomic) HDCodableStartWorkoutAppRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 
 @end
 

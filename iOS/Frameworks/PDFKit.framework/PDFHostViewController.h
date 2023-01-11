@@ -27,9 +27,14 @@
 - (void)_endPDFViewRotationAnimated:(_Bool)arg1 withUpdate:(_Bool)arg2;
 - (void)endPDFViewRotation;
 - (void)beginPDFViewRotation;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)completePointerInteractionRegionForRequest:(id)arg1;
+- (void)_pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_isTouchingLollipopAtLocationOfFirstTouch:(struct CGPoint)arg1;
 - (unsigned long long)_typeForGestureRecognizer:(id)arg1;
 - (void)handleGesture:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)_gestureInit;
 - (void)didLongPressPageIndex:(long long)arg1 atLocation:(struct CGPoint)arg2 withAnnotationRect:(struct CGRect)arg3;
@@ -62,7 +67,6 @@
 - (void)recievedSnapshotViewRect:(id)arg1;
 - (void)snapshotViewRect:(struct CGRect)arg1 snapshotWidth:(id)arg2 afterScreenUpdates:(_Bool)arg3 withResult:(CDUnknownBlockType)arg4;
 - (id)pageNumberIndicator;
-- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updatePDFViewLayout;
 - (double)_hostScrollViewZoomScale;

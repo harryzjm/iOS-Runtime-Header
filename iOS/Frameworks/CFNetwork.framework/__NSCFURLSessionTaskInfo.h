@@ -20,12 +20,15 @@
     _Bool _establishedConnection;
     _Bool _disablesRetry;
     _Bool _shouldCancelOnDisconnect;
+    _Bool _basePrioritySetExplicitly;
     _Bool _discretionary;
     _Bool _mayBeDemotedToDiscretionary;
     _Bool __hasSZExtractor;
     _Bool __doesSZExtractorConsumeExtractedData;
     _Bool _startedUserInitiated;
     _Bool _initializedWithAVAsset;
+    unsigned short __TLSMinimumSupportedProtocolVersion;
+    unsigned short __TLSMaximumSupportedProtocolVersion;
     unsigned int _qos;
     unsigned long long _identifier;
     unsigned long long _taskKind;
@@ -78,6 +81,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) __CFN_TaskMetrics *taskMetrics; // @synthesize taskMetrics=_taskMetrics;
 @property(copy) NSDictionary *additionalProperties; // @synthesize additionalProperties=_additionalProperties;
 @property(retain) NSDictionary *_backgroundTrailers; // @synthesize _backgroundTrailers=__backgroundTrailers;
@@ -101,6 +105,8 @@
 @property(nonatomic) _Bool _doesSZExtractorConsumeExtractedData; // @synthesize _doesSZExtractorConsumeExtractedData=__doesSZExtractorConsumeExtractedData;
 @property(nonatomic) _Bool _hasSZExtractor; // @synthesize _hasSZExtractor=__hasSZExtractor;
 @property(retain, nonatomic) id <SZExtractor> _extractor; // @synthesize _extractor=__extractor;
+@property unsigned short _TLSMaximumSupportedProtocolVersion; // @synthesize _TLSMaximumSupportedProtocolVersion=__TLSMaximumSupportedProtocolVersion;
+@property unsigned short _TLSMinimumSupportedProtocolVersion; // @synthesize _TLSMinimumSupportedProtocolVersion=__TLSMinimumSupportedProtocolVersion;
 @property double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 @property(copy) NSString *pathToDownloadTaskFile; // @synthesize pathToDownloadTaskFile=_pathToDownloadTaskFile;
 @property _Bool mayBeDemotedToDiscretionary; // @synthesize mayBeDemotedToDiscretionary=_mayBeDemotedToDiscretionary;
@@ -113,6 +119,7 @@
 @property unsigned int qos; // @synthesize qos=_qos;
 @property long long discretionaryOverride; // @synthesize discretionaryOverride=_discretionaryOverride;
 @property(getter=isDiscretionary) _Bool discretionary; // @synthesize discretionary=_discretionary;
+@property _Bool basePrioritySetExplicitly; // @synthesize basePrioritySetExplicitly=_basePrioritySetExplicitly;
 @property long long basePriority; // @synthesize basePriority=_basePriority;
 @property _Bool shouldCancelOnDisconnect; // @synthesize shouldCancelOnDisconnect=_shouldCancelOnDisconnect;
 @property _Bool disablesRetry; // @synthesize disablesRetry=_disablesRetry;
@@ -140,17 +147,16 @@
 @property double creationTime; // @synthesize creationTime=_creationTime;
 @property unsigned long long taskKind; // @synthesize taskKind=_taskKind;
 @property unsigned long long identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAVAggregateAssetDownloadChildDownloadSessionIdentifier:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4 taskIdentifier:(unsigned long long)arg5 uniqueIdentifier:(id)arg6 bundleID:(id)arg7 sessionID:(id)arg8;
+- (id)initWithAVAggregateDownloadTaskNoChildTaskKindWithURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 uniqueIdentifier:(id)arg7 bundleID:(id)arg8 sessionID:(id)arg9;
 - (id)initWithAVAssetDownloadURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 uniqueIdentifier:(id)arg7 bundleID:(id)arg8 sessionID:(id)arg9;
 - (id)initWithDownloadTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
 - (id)initWithUploadTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
 - (id)initWithDataTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
 - (void)_logTaskUUIDMapping;
 - (id)_loggableDescription;
-- (id)initWithTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
 
 @end
 

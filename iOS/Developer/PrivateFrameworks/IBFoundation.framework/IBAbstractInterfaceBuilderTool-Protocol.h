@@ -9,7 +9,7 @@
 @class IBMarshallingResult, NSArray;
 
 @protocol IBAbstractInterfaceBuilderTool <IBAbstractPlatformTool>
-- (IBMarshallingResult *)renderImagesForRequests:(NSArray *)arg1;
+- (IBMarshallingResult *)renderImageAndLayoutInfosForRequests:(NSArray *)arg1;
 - (IBMarshallingResult *)loadBuiltLiveViewBundleInstances:(NSArray *)arg1;
 @end
 

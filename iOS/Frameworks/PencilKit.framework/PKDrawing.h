@@ -7,23 +7,25 @@
 #import <objc/NSObject.h>
 
 #import <PencilKit/CHQueryDelegate-Protocol.h>
-#import <PencilKit/CHRecognitionSessionDataSource-Protocol.h>
 #import <PencilKit/NSCopying-Protocol.h>
 #import <PencilKit/NSSecureCoding-Protocol.h>
 
-@class CHRecognitionSession, NSArray, NSMapTable, NSMutableArray, NSString, NSUUID, PKVectorTimestamp, PKVisualizationManager;
+@class CHRecognitionSession, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, NSUUID, PKRecognitionSessionManager, PKVectorTimestamp, PKVisualizationManager;
 
-@interface PKDrawing : NSObject <CHRecognitionSessionDataSource, CHQueryDelegate, NSCopying, NSSecureCoding>
+@interface PKDrawing : NSObject <CHQueryDelegate, NSCopying, NSSecureCoding>
 {
     struct CGRect __canvasBounds;
     struct CGRect __bounds;
     struct shared_ptr<PKProtobufUnknownFields> _unknownFields;
     NSMutableArray *_visibleStrokes;
+    NSMutableDictionary *_visibleStrokesIdentifierMap;
     _Bool _recognitionEnabled;
     NSArray *_forcedRecognitionLocales;
+    NSUUID *_listenerID;
     NSUUID *_uuid;
     NSUUID *_replicaUUID;
     NSMutableArray *_allStrokes;
+    PKRecognitionSessionManager *_recognitionManager;
     PKVectorTimestamp *_version;
     CHRecognitionSession *_recognitionSession;
     NSMapTable *_ongoingQueries;
@@ -31,7 +33,7 @@
     struct _PKStrokeID _boundsVersion;
 }
 
-+ (id)_enabledLocales;
++ (id)_uuidDescriptionForStrokes:(id)arg1;
 + (struct _PKStrokeID)newStrokeIDGreaterThan:(struct _PKStrokeID)arg1 forUUID:(id)arg2;
 + (id)visibleStrokesFromStrokes:(id)arg1 inDrawing:(id)arg2;
 + (void)sortStrokes:(id)arg1;
@@ -39,24 +41,25 @@
 + (id)_upgradeDrawingData:(id)arg1 queue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)_defaultConversionQueue;
 + (struct CGAffineTransform)_orientationTransform:(long long)arg1 size:(struct CGSize)arg2;
++ (id)_otherStrokesCloseToLeft:(_Bool)arg1 forStrokes:(id)arg2 withClosestStroke:(id)arg3;
++ (id)_findLeftmostStrokes:(id)arg1;
++ (id)_findRightmostStrokes:(id)arg1;
++ (struct CGRect)_boundingBoxForStrokeArray:(id)arg1;
++ (struct CGRect)_boundingBoxForStrokes:(id)arg1;
 + (long long)_currentSerializationVersion;
 + (id)drawingWithData:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PKVisualizationManager *visualizationManager; // @synthesize visualizationManager=_visualizationManager;
 @property(retain, nonatomic) NSMapTable *ongoingQueries; // @synthesize ongoingQueries=_ongoingQueries;
 @property(retain, nonatomic) CHRecognitionSession *recognitionSession; // @synthesize recognitionSession=_recognitionSession;
 @property(nonatomic) struct _PKStrokeID boundsVersion; // @synthesize boundsVersion=_boundsVersion;
 @property(retain, nonatomic) PKVectorTimestamp *version; // @synthesize version=_version;
+@property(retain, nonatomic) PKRecognitionSessionManager *recognitionManager; // @synthesize recognitionManager=_recognitionManager;
 @property(retain, nonatomic) NSMutableArray *_allStrokes; // @synthesize _allStrokes;
 @property(retain, nonatomic, setter=_setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)didMergeWithDrawing:(id)arg1;
 - (void)willMergeWithDrawing:(id)arg1;
-- (id)strokeIdentifierFromData:(id)arg1;
-- (id)dataRepresentationForStrokeIdentifier:(id)arg1;
-- (id)strokeProviderVersionFromData:(id)arg1;
-- (id)dataRepresentationForStrokeProviderVersion:(id)arg1;
-- (id)strokeProviderSnapshot;
 - (_Bool *)_newAsciiBitfield;
 - (id)_ascii;
 @property(readonly, copy) NSString *description;
@@ -65,7 +68,7 @@
 - (id)indexableContent;
 - (void)cancelOngoingRecognitionRequests;
 - (void)setNeedsRecognitionUpdate;
-- (id)strokeForIdentifier:(id)arg1;
+- (id)_visibleStrokeForIdentifier:(id)arg1;
 - (void)_updateRecognitionSession;
 - (void)_teardownRecognitionObjects;
 - (void)setForcedRecognitionLocales:(id)arg1;
@@ -81,10 +84,6 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)CHDrawing;
-- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 minThreshold:(double)arg3 transform:(struct CGAffineTransform)arg4 onscreenVisibleStrokes:(id)arg5;
-- (struct CGRect)_eraserStrokeBounds;
-- (id)_strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 transform:(struct CGAffineTransform)arg3;
-- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 onscreenVisibleStrokes:(id)arg3;
 - (unsigned long long)mergeWithDrawing:(id)arg1;
 - (void)_mergeStroke:(id)arg1;
 - (void)updateStrokes:(CDUnknownBlockType)arg1;
@@ -100,7 +99,7 @@
 - (void)setStrokes:(id)arg1 transform:(struct CGAffineTransform)arg2 concat:(_Bool)arg3;
 - (void)setStrokes:(id)arg1 hidden:(_Bool)arg2;
 - (void)_updateStrokes:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;
-- (id)_copyAndAddStroke:(id)arg1 transform:(struct CGAffineTransform)arg2 ink:(id)arg3 isSequentialCopy:(_Bool)arg4;
+- (id)_copyAndAddStroke:(id)arg1 transform:(struct CGAffineTransform)arg2 ink:(id)arg3 newParent:(id *)arg4;
 - (id)_copyAndAddStroke:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)copyAndAddStroke:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (void)_removeStroke:(id)arg1;
@@ -122,23 +121,30 @@
 @property(readonly, nonatomic) struct CGRect bounds;
 - (struct CGRect)_bounds;
 - (struct CGRect)calculateStrokeBounds;
+- (id)_visibleStrokesIdentifierMap;
 - (id)_visibleStrokes;
-- (id)visibleStrokes;
 - (id)_strokes;
-- (id)strokes;
+- (id)visibleStrokes;
+@property(readonly, nonatomic) NSArray *strokes;
+- (id)drawingByAppendingStrokes:(id)arg1;
 - (id)drawingByAppendingDrawing:(id)arg1;
 - (id)drawingByApplyingTransform:(struct CGAffineTransform)arg1;
+- (void)_copyAndAddStrokes:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)imageFromRect:(struct CGRect)arg1 scale:(double)arg2;
 - (void)_imageInRect:(struct CGRect)arg1 scale:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)copyWithoutInternalStrokes;
+- (_Bool)containsInternalStrokes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithStrokes:(id)arg1 fromDrawing:(id)arg2;
+- (id)initWithStrokes:(id)arg1;
 - (id)initWithDrawing:(id)arg1;
 - (id)init;
 @property(readonly, nonatomic) _Bool _hasReplicaUUID;
 @property(readonly, nonatomic) NSUUID *replicaUUID; // @synthesize replicaUUID=_replicaUUID;
+- (id)_clipStroke:(id)arg1 againstPaths:(const vector_acef39cc *)arg2;
 - (id)_clipAgainstLegacyCanvas:(id)arg1;
 - (id)_clipStroke:(id)arg1;
 - (id)_unclippedStroke:(id)arg1;
@@ -147,12 +153,19 @@
 - (struct CGSize)_unscaledOrientedDrawingSize;
 - (double)_conversionScaleFactor;
 - (struct CGAffineTransform)_transformForImageWithSize:(struct CGSize)arg1;
-- (id)_upgradeOnQueue:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (CDStruct_5f3a0cd7)_drawingStrokeInfo;
+- (id)_upgradeOnQueue:(id)arg1 isLegacyDrawing:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (CDStruct_5f3a0cd7)_drawingStrokeInfoIsLegacyDrawing:(_Bool)arg1;
 - (void)_removeInvisibleStrokes;
 - (void)_removeHiddenAndEraserStrokes;
 @property(nonatomic) long long _orientation;
 - (id)sliceWithEraseStroke:(id)arg1;
+- (void)fetchIntersectedStrokesBetweenPoint:(struct CGPoint)arg1 otherPoint:(struct CGPoint)arg2 visibleOnscreenStrokes:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)intersectedStrokesAtPoint:(struct CGPoint)arg1 selectionType:(long long)arg2 inputType:(long long)arg3 visibleOnscreenStrokes:(id)arg4;
+- (struct CGRect)_eraserStrokeBounds;
+- (id)intersectedStrokesFromStroke:(id)arg1 visibleOnscreenStrokes:(id)arg2;
+- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 minThreshold:(double)arg3 transform:(struct CGAffineTransform)arg4 onscreenVisibleStrokes:(id)arg5;
+- (id)_strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 transform:(struct CGAffineTransform)arg3;
+- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 onscreenVisibleStrokes:(id)arg3;
 - (id)v1SerializeWithPathData:(_Bool)arg1 toVersion:(unsigned int *)arg2;
 - (id)v1SerializeWithPathData:(_Bool)arg1;
 - (unsigned int)saveToV1Archive:(Drawing_54c0d626 *)arg1 withPathData:(_Bool)arg2;

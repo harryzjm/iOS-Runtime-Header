@@ -4,37 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBBaseWelcomeController.h>
+#import <OnBoardingKit/OBSetupAssistantSpinnerController.h>
 
 #import <SetupAssistantUI/BFFFlowItem-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UILabel;
+@class NSString;
 @protocol BFFFlowItemDelegate;
 
-@interface BFFSpinnerController : OBBaseWelcomeController <BFFFlowItem>
+@interface BFFSpinnerController : OBSetupAssistantSpinnerController <BFFFlowItem>
 {
     id <BFFFlowItemDelegate> _delegate;
-    UILabel *_label;
-    UIActivityIndicatorView *_activityIndicator;
 }
 
 + (id)cloudConfigSkipKey;
-@property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
-@property(nonatomic) __weak id <BFFFlowItemDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <BFFFlowItemDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)shouldAllowStartOver;
 - (_Bool)isEphemeral;
 - (_Bool)shouldSuppressExtendedInitializationActivityIndicator;
-- (_Bool)_useAccessibilityLayout;
-- (long long)_activityIndicatorViewStyle;
-- (void)_updateLayout;
-- (id)_textStyle;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
-- (id)initWithSpinnerText:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

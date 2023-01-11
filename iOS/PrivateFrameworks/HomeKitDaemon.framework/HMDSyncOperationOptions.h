@@ -11,16 +11,19 @@
 @interface HMDSyncOperationOptions : HMFObject
 {
     _Bool _cloudConflict;
+    _Bool _delayRespected;
+    unsigned long long _operationType;
     NSString *_zoneName;
 }
 
-+ (id)defaultPushOptions:(id)arg1;
-+ (id)defaultFetchOptions:(id)arg1 cloudConflict:(_Bool)arg2;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isDelayRespected) _Bool delayRespected; // @synthesize delayRespected=_delayRespected;
 @property(nonatomic, getter=isCloudConflict) _Bool cloudConflict; // @synthesize cloudConflict=_cloudConflict;
 @property(readonly, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long operationType; // @synthesize operationType=_operationType;
 - (id)description;
-- (id)_initWithZone:(id)arg1 cloudConflict:(_Bool)arg2;
+- (id)initWithOperationType:(unsigned long long)arg1 zoneName:(id)arg2 delayRespected:(_Bool)arg3;
+- (id)initWithOperationType:(unsigned long long)arg1 zoneName:(id)arg2 cloudConflict:(_Bool)arg3 delayRespected:(_Bool)arg4;
 
 @end
 

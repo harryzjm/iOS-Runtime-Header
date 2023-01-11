@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, WBSPasswordPatternMatch;
 
 @interface WBSPasswordEvaluation : NSObject
 {
@@ -16,15 +16,17 @@
     long long _evaluationType;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long evaluationType; // @synthesize evaluationType=_evaluationType;
 @property(readonly, copy, nonatomic) NSArray *patternMatches; // @synthesize patternMatches=_patternMatches;
 @property(readonly, copy, nonatomic) NSString *password; // @synthesize password=_password;
-- (void).cxx_destruct;
 - (id)compactDescriptionWithPasswordColumnWidth:(unsigned long long)arg1 includePatternMatches:(_Bool)arg2;
 @property(readonly, nonatomic) NSString *userFeedbackString;
-- (id)_passwordFeedbackStrings;
+- (id)_passwordFeedbackString;
 - (_Bool)_shouldShowUserFeedbackStringsForWordListPatternMatch:(id)arg1;
 - (id)_bestPatternMatchOfType:(unsigned long long)arg1;
+@property(readonly, nonatomic) WBSPasswordPatternMatch *bestPatternMatchForUserFeedback;
+- (unsigned long long)_userFeedbackLengthScoreForPatternMatch:(id)arg1;
 @property(readonly, nonatomic) double guessesRequired; // @synthesize guessesRequired=_guessesRequired;
 @property(readonly, nonatomic) _Bool userShouldBeShownActiveWarning;
 @property(readonly, nonatomic) _Bool userShouldBeShownPassiveWarning;

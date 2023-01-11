@@ -19,9 +19,8 @@
 + (id)saltProviderFromKeyChain;
 + (id)saltProviderWithString:(id)arg1;
 + (id)log;
-@property(nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
-@property(retain, nonatomic) NSData *salt; // @synthesize salt=_salt;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *salt; // @synthesize salt=_salt;
 - (_Bool)migrateAccessClass;
 - (void)_deleteSalt;
 - (id)_createSalt;

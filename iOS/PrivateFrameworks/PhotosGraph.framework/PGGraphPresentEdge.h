@@ -6,9 +6,22 @@
 
 @interface PGGraphPresentEdge
 {
+    unsigned int _numberOfAssets:32;
+    float _weight;
 }
 
-@property(readonly, nonatomic) unsigned long long numberOfAssets;
++ (id)filter;
+@property(readonly, nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
+- (void)setWeight:(float)arg1;
+- (float)weight;
+- (unsigned short)domain;
+- (id)label;
+- (id)edgeDescription;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initFromPersonNode:(id)arg1 toMomentNode:(id)arg2 weight:(float)arg3;
 
 @end
 

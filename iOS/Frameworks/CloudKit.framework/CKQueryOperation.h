@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray, NSDictionary;
+#import <CloudKit/CKQueryOperationCallbacks-Protocol.h>
 
-@interface CKQueryOperation
+@class CKQuery, CKQueryCursor, CKQueryOperationInfo, CKRecordZoneID, NSArray, NSDictionary;
+@protocol CKQueryOperationCallbacks;
+
+@interface CKQueryOperation <CKQueryOperationCallbacks>
 {
     _Bool _shouldFetchAssetContent;
     _Bool _fetchAllResults;
@@ -22,24 +25,27 @@
     NSDictionary *_assetTransferOptionsByKey;
 }
 
-@property(retain, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
++ (SEL)daemonCallbackCompletionSelector;
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
 @property(nonatomic) _Bool fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
-@property(retain, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
+@property(copy, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 @property(copy, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property(copy, nonatomic) CKQuery *query; // @synthesize query=_query;
-- (void).cxx_destruct;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
+- (void)handleOperationDidCompleteWithCursor:(id)arg1 metrics:(id)arg2 error:(id)arg3;
+- (void)handleQueryDidFetchCursor:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)handleQueryDidFetchRecord:(id)arg1;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType queryCursorFetchedBlock; // @synthesize queryCursorFetchedBlock=_queryCursorFetchedBlock;
 @property(copy, nonatomic) CDUnknownBlockType queryCompletionBlock; // @synthesize queryCompletionBlock=_queryCompletionBlock;
@@ -47,6 +53,10 @@
 - (id)initWithCursor:(id)arg1;
 - (id)initWithQuery:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKQueryOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKQueryOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

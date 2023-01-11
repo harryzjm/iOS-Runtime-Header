@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (_Bool)playerViewControllerShouldMuteVolumeForFullScreenDismissalTransition:(id)arg1;
+- (void)didCompleteDismissal;
 - (void)playerViewController:(id)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id)arg2;
 - (void)playerViewController:(id)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id)arg2;
 - (void)dismiss;

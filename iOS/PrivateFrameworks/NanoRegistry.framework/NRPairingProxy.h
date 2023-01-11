@@ -42,6 +42,7 @@
 - (void)xpcResumePairingClientCrashMonitoring:(CDUnknownBlockType)arg1;
 - (void)xpcSuspendPairingClientCrashMonitoring:(CDUnknownBlockType)arg1;
 - (void)xpcPairingClientDidEnterPhase:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)xpcSubmitRTCPairingMetricForMetricID:(id)arg1 withSuccess:(CDUnknownBlockType)arg2;
 - (void)xpcSubmitAlbertPairingReport:(CDUnknownBlockType)arg1;
 - (void)xpcTriggerVersion4Workaround;
 - (void)xpcEndDiscoveryWithBlock:(CDUnknownBlockType)arg1;
@@ -57,13 +58,15 @@
 - (void)xpcAbortPairingReason:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)xpcBeginMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)xpcBeginMigrationWithDeviceID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)xpcSetWatchNeedsGraduation:(CDUnknownBlockType)arg1;
+- (void)xpcClearWatchNeedsGraduation:(CDUnknownBlockType)arg1;
+- (void)xpcWatchNeedsGraduation:(CDUnknownBlockType)arg1;
+- (void)xpcPairingClientSetPairingParentName:(id)arg1 pairingParentAltDSID:(id)arg2 forPairingID:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)xpcPairingClientSetAltAccountName:(id)arg1 altDSID:(id)arg2 forPairingID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)xpcGizmoPasscodeAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
 - (void)xpcGizmoOOBAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
 - (void)xpcCompanionPasscodePairWithDeviceID:(id)arg1 withOptions:(id)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
 - (void)xpcCompanionOOBDiscoverAndPairWithName:(id)arg1 withOutOfBandPairingKey:(id)arg2 withOptions:(id)arg3 operationHasBegun:(CDUnknownBlockType)arg4;
-- (id)pairingQueue;
-- (id)pairingDelegate;
-- (id)pairingServicesDelegate;
 
 @end
 

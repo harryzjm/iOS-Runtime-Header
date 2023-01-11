@@ -4,12 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HMHome, NSMutableSet;
+
 @interface HFNetworkConfigurationGroupItemProvider
 {
+    HMHome *_home;
+    NSMutableSet *_groupItems;
 }
 
-- (id)_profileGroupItemForProfiles:(id)arg1 groupIdentifier:(id)arg2;
-- (id)_supportedProfileClasses;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *groupItems; // @synthesize groupItems=_groupItems;
+@property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+- (id)invalidationReasons;
+- (id)items;
+- (id)reloadItems;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithHome:(id)arg1;
 
 @end

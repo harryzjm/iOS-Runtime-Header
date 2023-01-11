@@ -19,12 +19,12 @@
 + (struct CGColor *)sampleSHAt:(id)arg1 usingCoefficients:(unsigned long long)arg2 withLevel: /* Error: Ran out of types for this method. */;
 + (MISSING_TYPE *)calculateIrradianceGradientUsingSamples:(MISSING_TYPE **)arg1 ofSize:(unsigned long long)arg2 fromSH:(id)arg3 withLevel:(unsigned long long)arg4;
 + (id)lightProbeWithTextureSize:(long long)arg1 forLocation:(id)arg2 lightsToConsider:(id)arg3 objectsToConsider:(id)arg4 reflectiveCubemap:(id)arg5 irradianceCubemap:(id)arg6;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long sphericalHarmonicsLevel; // @synthesize sphericalHarmonicsLevel=_sphericalHarmonicsLevel;
 @property(readonly, retain, nonatomic) MDLTexture *irradianceTexture; // @synthesize irradianceTexture=_irradianceTexture;
 @property(readonly, retain, nonatomic) MDLTexture *reflectiveTexture; // @synthesize reflectiveTexture=_reflectiveTexture;
 - (void)setTransform:(id)arg1;
 - (id)transform;
-- (void).cxx_destruct;
 - (void)generateSphericalHarmonicsFromIrradiance:(unsigned long long)arg1;
 - (void)generateIrradianceTextureFromReflective;
 - (id)initWithReflectiveTexture:(id)arg1 irradianceTexture:(id)arg2;

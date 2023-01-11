@@ -38,7 +38,8 @@
 }
 
 + (id)bootDateForTurboLibraryRegistration;
-+ (void)registerEmptyBackgroundActivity;
++ (void)unregisterBackgroundActivities;
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_xpc_object> *backgroundAnalysisActivity; // @synthesize backgroundAnalysisActivity=_backgroundAnalysisActivity;
 @property(retain) NSObject<OS_dispatch_source> *backgroundAnalysisMonitorTimer; // @synthesize backgroundAnalysisMonitorTimer=_backgroundAnalysisMonitorTimer;
 @property long long countOfCoordinatorsRunningBackgroundAnalysis; // @synthesize countOfCoordinatorsRunningBackgroundAnalysis=_countOfCoordinatorsRunningBackgroundAnalysis;
@@ -48,7 +49,6 @@
 @property(retain) NSMutableDictionary *managersByLibraryPath; // @synthesize managersByLibraryPath=_managersByLibraryPath;
 @property(retain) NSMutableSet *clients; // @synthesize clients=_clients;
 @property(readonly) PHAActivityLog *activityLog; // @synthesize activityLog=_activityLog;
-- (void).cxx_destruct;
 - (void)_registerTurboActivity;
 - (void)_runTurboProcessing:(id)arg1;
 - (void)_cleanupAfterBackgroundActivityFinishedForDefer:(_Bool)arg1 skipActivityStateCheck:(_Bool)arg2;
@@ -67,6 +67,7 @@
 - (void)writeQALog:(id)arg1;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_localeDidChangeNotification:(id)arg1;
+- (void)setupAnalyticsEnvironment;
 - (void)dispatchAsyncToExecutiveStateQueue:(CDUnknownBlockType)arg1;
 - (void)terminateManagerIfQuiescentAndNoConnectedClients:(id)arg1;
 - (void)removeClientHandler:(id)arg1;

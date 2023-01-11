@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class EFSQLInsertStatement, EFSQLUpdateStatement, NSArray, NSString;
-@protocol EFSQLExpressable, EFSQLInsertStatementValue, EFSQLUpdateStatementValue;
+@protocol EFSQLInsertStatementValue, EFSQLUpdateStatementValue, EFSQLValueExpressable;
 
 @interface EFSQLUpsertStatement : NSObject
 {
@@ -16,9 +16,6 @@
     NSArray *_conflictTarget;
 }
 
-@property(readonly, nonatomic) NSArray *conflictTarget; // @synthesize conflictTarget=_conflictTarget;
-@property(readonly, nonatomic) EFSQLUpdateStatement *updateStatement; // @synthesize updateStatement=_updateStatement;
-@property(readonly, nonatomic) EFSQLInsertStatement *insertStatement; // @synthesize insertStatement=_insertStatement;
 - (void).cxx_destruct;
 - (id)excludedColumnExpressionForColumnName:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *queryString;
@@ -26,7 +23,7 @@
 - (void)enumerateBindingNamesAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
-@property(retain, nonatomic) id <EFSQLExpressable> whereClause;
+@property(retain, nonatomic) id <EFSQLValueExpressable> whereClause;
 @property(readonly, nonatomic) id <EFSQLUpdateStatementValue> updateValue;
 @property(readonly, nonatomic) id <EFSQLInsertStatementValue> insertValue;
 - (id)initWithTable:(id)arg1 conflictTarget:(id)arg2;

@@ -19,15 +19,14 @@
 + (id)_deleteRequestsForObjects:(id)arg1;
 + (id)deleteRequestsForObjects:(id)arg1 ofType:(Class)arg2 forSelector:(SEL)arg3;
 + (id)deleteRequestForObject:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled; // @synthesize clientEntitled=_clientEntitled;
 @property(readonly, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 - (id)uuid;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *managedEntityName;
 - (void)deleteManagedObject:(id)arg1 photoLibrary:(id)arg2;
 - (_Bool)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)init;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
@@ -36,7 +35,7 @@
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 
 // Remaining properties
-@property(readonly, nonatomic) NSString *clientName;
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

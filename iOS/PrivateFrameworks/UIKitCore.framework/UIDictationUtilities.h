@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (unsigned long long)maxLoggableLengthOfInsertionBySubstitution:(id)arg1;
++ (unsigned long long)maxLoggableLengthOfInsertionWithDeletion:(id)arg1;
++ (unsigned long long)maxLoggableLengthOfInsertionWithoutDeletion:(id)arg1;
++ (void)attributedString:(id)arg1 withIdentifiersBlock:(CDUnknownBlockType)arg2;
 + (void)logSpeechAlternativeReplacement:(id)arg1 originalText:(id)arg2 replacementText:(id)arg3 index:(unsigned long long)arg4;
 + (void)trackSubstitution:(id)arg1 originalText:(id)arg2 originalTextRange:(struct _NSRange)arg3 replacementText:(id)arg4 replacementTextRange:(struct _NSRange)arg5;
 + (void)trackDeletion:(id)arg1 text:(id)arg2 range:(struct _NSRange)arg3;
@@ -24,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)characterInsertionCount:(id)arg1;
 + (id)_properNameForString:(id)arg1;
 + (_Bool)needsTrailingSpaceForPhrases:(id)arg1 secureInput:(_Bool)arg2;
++ (_Bool)needsLeadingSpaceForText:(id)arg1 secureInput:(_Bool)arg2;
 + (_Bool)needsLeadingSpaceForPhrases:(id)arg1 secureInput:(_Bool)arg2;
 + (id)metadataDictionaryForCorrectionIdentifier:(id)arg1;
 + (id)attributedStringForDictationResult:(id)arg1 andCorrectionIdentifier:(id)arg2;

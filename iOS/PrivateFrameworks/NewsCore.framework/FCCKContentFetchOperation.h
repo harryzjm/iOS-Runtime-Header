@@ -9,6 +9,7 @@
 @interface FCCKContentFetchOperation
 {
     _Bool _getPermanentAssetURLs;
+    int _networkEventType;
     FCCKContentDatabase *_database;
     NSArray *_recordIDs;
     NSDictionary *_recordIDsToETags;
@@ -16,12 +17,12 @@
     CDUnknownBlockType _perRecordCompletionBlock;
     CDUnknownBlockType _fetchRecordsCompletionBlock;
     NSArray *_requestUUIDs;
-    long long _networkEventType;
     NSDictionary *_resultRecordsByRecordID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *resultRecordsByRecordID; // @synthesize resultRecordsByRecordID=_resultRecordsByRecordID;
-@property(nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
+@property(nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
 @property(copy, nonatomic) NSArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property(copy, nonatomic) CDUnknownBlockType fetchRecordsCompletionBlock; // @synthesize fetchRecordsCompletionBlock=_fetchRecordsCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
@@ -30,7 +31,6 @@
 @property(retain, nonatomic) NSDictionary *recordIDsToETags; // @synthesize recordIDsToETags=_recordIDsToETags;
 @property(copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
 - (id)_operationForRecordID:(id)arg1;
 - (id)throttleGroup;
 - (void)operationWillFinishWithError:(id)arg1;

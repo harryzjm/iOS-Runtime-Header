@@ -8,19 +8,21 @@
 
 #import <GeoServices/GEOSearchResultSection-Protocol.h>
 
-@class NSString;
+@class GEOStyleAttributes, NSString;
 
 @interface GEOSearchResultSection : NSObject <GEOSearchResultSection>
 {
     long long _cellType;
     NSString *_headerDisplayName;
     NSString *_subHeaderDisplayName;
+    GEOStyleAttributes *_styleAttributes;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property(copy, nonatomic) NSString *subHeaderDisplayName; // @synthesize subHeaderDisplayName=_subHeaderDisplayName;
 @property(copy, nonatomic) NSString *headerDisplayName; // @synthesize headerDisplayName=_headerDisplayName;
 @property(nonatomic) long long cellType; // @synthesize cellType=_cellType;
-- (void).cxx_destruct;
 - (id)initWithSearchResultSection:(id)arg1;
 - (id)init;
 

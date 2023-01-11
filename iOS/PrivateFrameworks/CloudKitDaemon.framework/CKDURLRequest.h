@@ -10,15 +10,15 @@
 #import <CloudKitDaemon/CKDFlowControllable-Protocol.h>
 #import <CloudKitDaemon/CKDZoneGatekeeperWaiter-Protocol.h>
 
-@class C2RequestOptions, CKDOperation, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTapToRadarRequest, CKDTrafficLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, NSURLRequest, NSURLSession, NSURLSessionDataTask;
+@class C2RequestOptions, CKDFlowControlManager, CKDOperation, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTapToRadarRequest, CKDTrafficLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, NSURLRequest, NSURLSession, NSURLSessionDataTask;
 @protocol CKDAccountAccessInfoProvider, CKDAccountInfoProvider, CKDContextInfoProvider, CKDURLRequestAuthRetryDelegate, CKDURLRequestMetricsDelegate, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
-__attribute__((visibility("hidden")))
 @interface CKDURLRequest : NSObject <C2RequestDelegate, CKDZoneGatekeeperWaiter, CKDFlowControllable>
 {
     id <CKDAccountInfoProvider> _accountInfoProvider;
     id <CKDContextInfoProvider> _contextInfoProvider;
     id <CKDAccountAccessInfoProvider> _accountAccessInfoProvider;
+    CKDFlowControlManager *_cachedFlowControlManager;
     long long _responseStatusCode;
     NSString *_requestUUID;
     _Bool _didSendRequest;
@@ -43,16 +43,18 @@ __attribute__((visibility("hidden")))
     _Bool _haveCachedServerType;
     _Bool _haveCachedPartitionType;
     _Bool _didReceiveResponseBodyData;
+    _Bool _didFetchNilAuthToken;
     NSDictionary *_requestProperties;
     NSArray *_requestOperations;
+    CKDOperation *_operation;
     id <CKDURLRequestMetricsDelegate> _metricsDelegate;
     id <CKDURLRequestAuthRetryDelegate> _authRetryDelegate;
     CKDProtocolTranslator *_translator;
     NSString *_automatedDeviceGroup;
+    NSDictionary *_unitTestOverrides;
     NSDictionary *_clientProvidedAdditionalHeaderValues;
     NSDictionary *_fakeResponseOperationResultByItemID;
     NSError *_error;
-    CKDOperation *_operation;
     NSObject<OS_dispatch_queue> *_lifecycleQueue;
     NSURLSessionDataTask *_urlSessionTask;
     C2RequestOptions *_c2RequestOptions;
@@ -79,6 +81,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_redirectHistory;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didFetchNilAuthToken; // @synthesize didFetchNilAuthToken=_didFetchNilAuthToken;
 @property(retain, nonatomic) NSMutableArray *redirectHistory; // @synthesize redirectHistory=_redirectHistory;
 @property(retain, nonatomic) NSMutableDictionary *overriddenHeaders; // @synthesize overriddenHeaders=_overriddenHeaders;
 @property(retain, nonatomic) NSMutableDictionary *countsByRequestOperationType; // @synthesize countsByRequestOperationType=_countsByRequestOperationType;
@@ -108,17 +112,18 @@ __attribute__((visibility("hidden")))
 @property(retain) C2RequestOptions *c2RequestOptions; // @synthesize c2RequestOptions=_c2RequestOptions;
 @property(retain) NSURLSessionDataTask *urlSessionTask; // @synthesize urlSessionTask=_urlSessionTask;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *lifecycleQueue; // @synthesize lifecycleQueue=_lifecycleQueue;
-@property(nonatomic) __weak CKDOperation *operation; // @synthesize operation=_operation;
 @property _Bool isHandlingAuthRetry; // @synthesize isHandlingAuthRetry=_isHandlingAuthRetry;
 @property _Bool isWaitingOnAuthRenew; // @synthesize isWaitingOnAuthRenew=_isWaitingOnAuthRenew;
 @property _Bool needsAuthRetry; // @synthesize needsAuthRetry=_needsAuthRetry;
 @property(retain) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSDictionary *fakeResponseOperationResultByItemID; // @synthesize fakeResponseOperationResultByItemID=_fakeResponseOperationResultByItemID;
 @property(retain, nonatomic) NSDictionary *clientProvidedAdditionalHeaderValues; // @synthesize clientProvidedAdditionalHeaderValues=_clientProvidedAdditionalHeaderValues;
+@property(retain, nonatomic) NSDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
 @property(retain, nonatomic) NSString *automatedDeviceGroup; // @synthesize automatedDeviceGroup=_automatedDeviceGroup;
 @property(retain, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property(nonatomic) __weak id <CKDURLRequestAuthRetryDelegate> authRetryDelegate; // @synthesize authRetryDelegate=_authRetryDelegate;
 @property(nonatomic) __weak id <CKDURLRequestMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
+@property(nonatomic) __weak CKDOperation *operation; // @synthesize operation=_operation;
 @property(readonly, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
 @property(retain, nonatomic) NSDictionary *requestProperties; // @synthesize requestProperties=_requestProperties;
 @property(nonatomic) _Bool allowAutomaticRedirects; // @synthesize allowAutomaticRedirects=_allowAutomaticRedirects;
@@ -128,9 +133,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property(retain, nonatomic) CKDResponseBodyParser *responseBodyParser; // @synthesize responseBodyParser=_responseBodyParser;
 @property(retain, nonatomic) id <CKDContextInfoProvider> contextInfoProvider; // @synthesize contextInfoProvider=_contextInfoProvider;
+@property(retain, nonatomic) CKDFlowControlManager *cachedFlowControlManager; // @synthesize cachedFlowControlManager=_cachedFlowControlManager;
 @property(retain, nonatomic) id <CKDAccountAccessInfoProvider> accountAccessInfoProvider; // @synthesize accountAccessInfoProvider=_accountAccessInfoProvider;
 @property(retain, nonatomic) id <CKDAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
-- (void).cxx_destruct;
 - (id)createAssetAuthorizeGetRequestOptionsHeaderInfoWithKey:(id)arg1 value:(id)arg2;
 - (id)statusReportWithIndent:(unsigned long long)arg1;
 - (id)_CFNetworkTaskIdentifierString;
@@ -138,7 +143,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int isolationLevel;
 @property(readonly, nonatomic) NSURL *lastRedirectURL;
 @property(readonly, nonatomic) NSDictionary *responseHeaders;
-- (id)_errorFromHTTPResponse:(id)arg1;
 - (void)URLSession:(id)arg1 _willRetryBackgroundDataTask:(id)arg2 withError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _conditionalRequirementsChanged:(_Bool)arg3;
 - (void)URLSession:(id)arg1 _taskIsWaitingForConnection:(id)arg2;
@@ -152,7 +156,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)performASyncOnLifecycleQueueIfNotFinished:(CDUnknownBlockType)arg1;
 - (void)performOnLifecycleQueueIfNotFinished:(CDUnknownBlockType)arg1;
-- (void)tearDownResourcesAndReleaseTheZoneLocks;
+- (void)tearDownResourcesAndReleaseTheZoneLocks:(_Bool)arg1;
 - (void)tearDownResources;
 - (void)_tearDownStreamWriter;
 - (_Bool)markAsFinished;
@@ -206,10 +210,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long duetPreClearedMode;
 @property(readonly, nonatomic) unsigned long long resolvedDiscretionaryNetworkBehavior;
 @property(readonly, nonatomic) _Bool resolvedAutomaticallyRetryNetworkFailures;
+- (_Bool)expectDelayBeforeRequestBegins;
 @property(readonly, nonatomic) _Bool usesBackgroundSession;
 @property(readonly, nonatomic) NSString *authPromptReason;
 @property(readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
-@property(readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifierForNetworkAttribution;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifierForContainerAccess;
 @property(readonly, nonatomic) _Bool allowsCellularAccess;
 @property(readonly, nonatomic) long long qualityOfService;
 @property(readonly, nonatomic) _Bool requestGETPreAuth;
@@ -262,7 +268,7 @@ __attribute__((visibility("hidden")))
 - (id)ckShortDescription;
 - (_Bool)_onLifecycleQueue;
 - (void)dealloc;
-- (id)init;
+- (id)initWithOperation:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

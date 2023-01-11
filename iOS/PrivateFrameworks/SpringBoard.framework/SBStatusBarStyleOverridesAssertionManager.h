@@ -8,16 +8,18 @@
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/NSXPCListenerDelegate-Protocol.h>
+#import <SpringBoard/SBAppStatusBarAssertionManagerObserver-Protocol.h>
 #import <SpringBoard/SBStatusBarStyleOverridesAssertionServer-Protocol.h>
 
-@class FBWorkspaceEventQueue, NSMapTable, NSMutableArray, NSString, NSXPCListener, SBStatusBarTapManager;
+@class FBWorkspaceEventQueue, NSMapTable, NSMutableArray, NSString, NSXPCListener, SBAppStatusBarAssertionManager, SBStatusBarTapManager;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface SBStatusBarStyleOverridesAssertionManager : NSObject <NSXPCListenerDelegate, SBStatusBarStyleOverridesAssertionServer, BSDescriptionProviding>
+@interface SBStatusBarStyleOverridesAssertionManager : NSObject <NSXPCListenerDelegate, SBAppStatusBarAssertionManagerObserver, SBStatusBarStyleOverridesAssertionServer, BSDescriptionProviding>
 {
     NSMutableArray *_runningUpdateTransactions;
     int _statusBarStyleOverrides;
     int _exclusiveStatusBarStyleOverrides;
+    SBAppStatusBarAssertionManager *_appStatusBarAssertionManager;
     NSXPCListener *_xpcListener;
     NSMapTable *_assertionsByIdentifierByClientConnection;
     NSMapTable *_assertionsByStyleOverride;
@@ -29,6 +31,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SBStatusBarTapManager *statusBarTapManager; // @synthesize statusBarTapManager=_statusBarTapManager;
 @property(retain, nonatomic) FBWorkspaceEventQueue *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *assertionTimerSource; // @synthesize assertionTimerSource=_assertionTimerSource;
@@ -39,7 +42,7 @@
 @property(retain, nonatomic) NSMapTable *assertionsByStyleOverride; // @synthesize assertionsByStyleOverride=_assertionsByStyleOverride;
 @property(retain, nonatomic) NSMapTable *assertionsByIdentifierByClientConnection; // @synthesize assertionsByIdentifierByClientConnection=_assertionsByIdentifierByClientConnection;
 @property(retain, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
-- (void).cxx_destruct;
+@property(retain, nonatomic) SBAppStatusBarAssertionManager *appStatusBarAssertionManager; // @synthesize appStatusBarAssertionManager=_appStatusBarAssertionManager;
 - (void)_postStatusStringsByStyle:(id)arg1;
 - (id)_statusStringsByStyleForActiveAssertionsByStyleOverride:(id)arg1 inactiveAssertionsByStyleOverride:(id)arg2;
 - (void)_updateAppSceneSettingsForForegroundAppsAndPostAddedStyleOverrides:(int)arg1 removedStyleOverrides:(int)arg2;
@@ -62,6 +65,7 @@
 - (void)setStatusString:(id)arg1 forAssertionWithIdentifier:(id)arg2;
 - (void)deactivateStatusBarStyleOverridesAssertionsWithIdentifiers:(id)arg1;
 - (void)activateStatusBarStyleOverridesAssertions:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)statusBarAssertionManager:(id)arg1 statusBarSettingsDidChange:(id)arg2;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)updateForegroundApplicationSceneHandles:(id)arg1 withOptions:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)invalidateStatusBarStyleOverridesAssertions:(id)arg1;

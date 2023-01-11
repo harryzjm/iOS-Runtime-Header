@@ -7,7 +7,9 @@
 #import <EventKit/EKCalendarSharedCalendarNotification.h>
 
 @interface EKCalendarSharedCalendarNotification (CUIKDescription)
+- (id)descriptionStrings:(unsigned long long)arg1;
 - (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
+- (id)_actionStringWithOptions:(unsigned long long)arg1;
 - (id)senderStringWithOptions:(unsigned long long)arg1;
 - (id)titleStringWithOptions:(unsigned long long)arg1;
 - (_Bool)supportsDisplay;

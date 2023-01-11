@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKEditOptionPickerView, NTKNumeralsHourViewsManager, NTKUtilityComplicationFactory;
+@class CLKClockTimerToken, NTKEditOptionPickerView, NTKNumeralsHourViewsManager, NTKUtilityComplicationFactory;
 
 @interface NTKNumeralsAnalogFaceView
 {
@@ -16,7 +16,7 @@
     NTKEditOptionPickerView *_stylePickerView;
     NTKNumeralsHourViewsManager *_hourViewsManager;
     unsigned long long _selectedStyle;
-    struct NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
 }
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
@@ -50,12 +50,13 @@
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(_Bool)arg2;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;

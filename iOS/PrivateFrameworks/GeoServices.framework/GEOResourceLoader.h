@@ -22,7 +22,9 @@
     _Bool _canceled;
     _Bool _requiresWiFi;
     NSURL *_baseURL;
+    NSArray *_alternateURLs;
     NSURL *_proxyURL;
+    _Bool _forceUpdateCheck;
     unsigned long long _maxConcurrentLoads;
     NSArray *_resourceInfos;
     NSMutableArray *_loadedResources;
@@ -40,20 +42,20 @@
 }
 
 + (Class)resourceLoadOperationClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool preferDirectNetworking; // @synthesize preferDirectNetworking=_preferDirectNetworking;
 @property(nonatomic) _Bool requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
 @property(retain, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
-- (void).cxx_destruct;
 - (void)cancel;
 - (_Bool)_copyResource:(id)arg1 fromPath:(id)arg2 allowCreatingHardLink:(_Bool)arg3 error:(id *)arg4;
-- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 callbackQueue:(id)arg5;
+- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 eTag:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
 - (void)_loadNextResourceFromNetwork;
 - (void)_loadResourcesFromDisk;
 - (_Bool)_establishHardLinkIfPossibleForResource:(id)arg1 toResource:(id)arg2 error:(id *)arg3;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 - (void)_cleanup;
 @property(readonly) NSProgress *progress;
-- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 proxyURL:(id)arg3 resources:(id)arg4 maximumConcurrentLoads:(unsigned long long)arg5 additionalDirectoryToConsider:(id)arg6 log:(id)arg7 signpostID:(unsigned long long)arg8;
+- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 alternateURLs:(id)arg3 proxyURL:(id)arg4 resources:(id)arg5 forceUpdateCheck:(_Bool)arg6 maximumConcurrentLoads:(unsigned long long)arg7 additionalDirectoryToConsider:(id)arg8 log:(id)arg9 signpostID:(unsigned long long)arg10;
 - (id)init;
 
 // Remaining properties

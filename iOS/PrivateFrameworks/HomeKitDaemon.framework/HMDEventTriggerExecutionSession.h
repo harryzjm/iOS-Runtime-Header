@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDEventTriggerUserConfirmationSession, HMDPredicateUtilities, HMDTriggerConfirmationTimer, HMFTimer, HomeKitEventTriggerExecutionSessionEvent, NSArray, NSMapTable, NSMutableArray, NSPredicate, NSString;
+@class HMDEventTriggerUserConfirmationSession, HMDPredicateUtilities, HMDTriggerConfirmationTimer, HMFTimer, HomeKitEventTriggerExecutionSessionLogEvent, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSPredicate, NSString;
 
 @interface HMDEventTriggerExecutionSession <HMFDumpState, HMFLogging, HMDEventDelegate, HMFTimerDelegate>
 {
@@ -28,13 +28,16 @@
     HMDEventTriggerUserConfirmationSession *_userConfirmationSession;
     HMDTriggerConfirmationTimer *_secureTriggerConfirmationTimer;
     HMFTimer *_startCharacteristicsMonitorTimer;
-    HomeKitEventTriggerExecutionSessionEvent *_metricEvent;
+    HomeKitEventTriggerExecutionSessionLogEvent *_analyticsEvent;
     NSMapTable *_writeRequests;
+    NSMutableSet *_mediaProfiles;
 }
 
 + (id)logCategory;
-@property(retain, nonatomic) NSMapTable *writeRequests; // @synthesize writeRequests=_writeRequests;
-@property(readonly, nonatomic) HomeKitEventTriggerExecutionSessionEvent *metricEvent; // @synthesize metricEvent=_metricEvent;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableSet *mediaProfiles; // @synthesize mediaProfiles=_mediaProfiles;
+@property(readonly, nonatomic) NSMapTable *writeRequests; // @synthesize writeRequests=_writeRequests;
+@property(readonly, nonatomic) HomeKitEventTriggerExecutionSessionLogEvent *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
 @property(nonatomic) _Bool executionCompleteCalled; // @synthesize executionCompleteCalled=_executionCompleteCalled;
 @property(nonatomic) _Bool restoreInProgress; // @synthesize restoreInProgress=_restoreInProgress;
 @property(nonatomic) _Bool actionSetExecutionInProgress; // @synthesize actionSetExecutionInProgress=_actionSetExecutionInProgress;
@@ -50,14 +53,15 @@
 @property(readonly, nonatomic) NSArray *endEvents; // @synthesize endEvents=_endEvents;
 @property(readonly, nonatomic) NSMutableArray *causingDevices; // @synthesize causingDevices=_causingDevices;
 @property(readonly, nonatomic) NSMutableArray *triggerEvents; // @synthesize triggerEvents=_triggerEvents;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (id)didOccurEvent:(id)arg1 causingDevice:(id)arg2;
+- (void)_callExecutionCompleteIfNoMoreOutstandingRequests;
+- (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
 - (void)_handleMonitoringEvent:(id)arg1;
 - (void)_restoreState;
 - (void)_removeUserDialog;
 - (void)_callExecutionComplete:(id)arg1;
-- (void)_submitMetric:(id)arg1;
+- (void)_submitAnalyticsData:(id)arg1;
 - (void)_callExecutionComplete:(id)arg1 callDelegate:(_Bool)arg2;
 - (id)valueInActionSetWriteResponse:(id)arg1 actionSetUUID:(id)arg2 accUUID:(id)arg3 serviceID:(id)arg4 characteristicID:(id)arg5;
 - (id)_createMonitoringEvents:(id)arg1;

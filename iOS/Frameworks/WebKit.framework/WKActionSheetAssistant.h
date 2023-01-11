@@ -7,29 +7,41 @@
 #import <objc/NSObject.h>
 
 #import <WebKit/DDDetectionControllerInteractionDelegate-Protocol.h>
+#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <WebKit/WKActionSheetDelegate-Protocol.h>
 
 @class NSString;
 @protocol WKActionSheetAssistantDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKActionSheetAssistant : NSObject <WKActionSheetDelegate, DDDetectionControllerInteractionDelegate>
+@interface WKActionSheetAssistant : NSObject <WKActionSheetDelegate, DDDetectionControllerInteractionDelegate, UIContextMenuInteractionDelegate>
 {
     struct WeakObjCPtr<id<WKActionSheetAssistantDelegate>> _delegate;
     struct RetainPtr<WKActionSheet> _interactionSheet;
     RetainPtr_5a40b48a _elementInfo;
-    Optional_2b0652bb _positionInformation;
+    Optional_b5290310 _positionInformation;
+    struct RetainPtr<UIContextMenuInteraction> _dataDetectorContextMenuInteraction;
     struct WeakObjCPtr<UIView> _view;
     _Bool _needsLinkIndicator;
     _Bool _isPresentingDDUserInterface;
     _Bool _hasPendingActionSheet;
 }
 
-@property(nonatomic) _Bool needsLinkIndicator; // @synthesize needsLinkIndicator=_needsLinkIndicator;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool needsLinkIndicator; // @synthesize needsLinkIndicator=_needsLinkIndicator;
 - (void)cleanupSheet;
-- (void)showDataDetectorsSheet;
+- (void)handleElementActionWithType:(long long)arg1 element:(id)arg2 needsInteraction:(_Bool)arg3;
+- (id)_contextMenuInteraction:(id)arg1 overrideSuggestedActionsForConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)suggestedActionsForContextMenuWithPositionInformation:(const struct InteractionInformationAtPosition *)arg1;
+- (void)showDataDetectorsUIForPositionInformation:(const struct InteractionInformationAtPosition *)arg1;
+- (_Bool)hasContextMenuInteraction;
+- (void)ensureContextMenuInteraction;
+- (void)removeContextMenuInteraction;
 - (void)showLinkSheet;
 - (RetainPtr_c682c8da)defaultActionsForImageSheet:(id)arg1;
 - (RetainPtr_c682c8da)defaultActionsForLinkSheet:(id)arg1;
@@ -38,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (long long)_presentationStyleForPositionInfo:(const struct InteractionInformationAtPosition *)arg1 elementInfo:(id)arg2;
 - (void)showImageSheet;
 - (void)_createSheetWithElementActions:(id)arg1 defaultTitle:(id)arg2 showLinkTitle:(_Bool)arg3;
-- (Optional_2b0652bb)currentPositionInformation;
+- (Optional_b5290310)currentPositionInformation;
 - (id)currentAvailableActionTitles;
 - (void)interactionDidStartWithPositionInformation:(const struct InteractionInformationAtPosition *)arg1;
 - (_Bool)isShowingSheet;

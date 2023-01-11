@@ -13,21 +13,24 @@
 @interface GEORegionalResourceTileData : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributions;
+    NSMutableArray *_filenames;
     NSMutableArray *_icons;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_attributions:1;
+        unsigned int read_filenames:1;
         unsigned int read_icons:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_attributions:1;
-        unsigned int wrote_icons:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)filenameType;
 + (Class)attributionType;
 + (Class)iconType;
 - (void).cxx_destruct;
@@ -41,22 +44,28 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)filenameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)filenamesCount;
+- (void)addFilename:(id)arg1;
+- (void)clearFilenames;
+@property(retain, nonatomic) NSMutableArray *filenames;
 - (id)attributionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionsCount;
-- (void)_addNoFlagsAttribution:(id)arg1;
 - (void)addAttribution:(id)arg1;
 - (void)clearAttributions;
 @property(retain, nonatomic) NSMutableArray *attributions;
-- (void)_readAttributions;
 - (id)iconAtIndex:(unsigned long long)arg1;
 - (unsigned long long)iconsCount;
-- (void)_addNoFlagsIcon:(id)arg1;
 - (void)addIcon:(id)arg1;
 - (void)clearIcons;
 @property(retain, nonatomic) NSMutableArray *icons;
-- (void)_readIcons;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

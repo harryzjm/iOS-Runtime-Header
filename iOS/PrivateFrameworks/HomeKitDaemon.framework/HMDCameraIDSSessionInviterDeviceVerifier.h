@@ -6,19 +6,19 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDCameraSessionID, HMDDevice;
+@class HMDDevice, NSString;
 
 @interface HMDCameraIDSSessionInviterDeviceVerifier : HMFObject
 {
-    HMDCameraSessionID *_session;
+    NSString *_sessionID;
     HMDDevice *_expectedInviter;
 }
 
-@property(readonly, nonatomic) HMDDevice *expectedInviter; // @synthesize expectedInviter=_expectedInviter;
-@property(readonly, nonatomic) HMDCameraSessionID *session; // @synthesize session=_session;
 - (void).cxx_destruct;
+@property(readonly) HMDDevice *expectedInviter; // @synthesize expectedInviter=_expectedInviter;
+@property(readonly) NSString *sessionID; // @synthesize sessionID=_sessionID;
 - (_Bool)canAcceptInvitationFromDeviceWithHandle:(id)arg1 forSessionWithIdentifier:(id)arg2;
-- (id)initWithSession:(id)arg1 expectedInviter:(id)arg2;
+- (id)initWithSessionID:(id)arg1 expectedInviter:(id)arg2;
 
 @end
 

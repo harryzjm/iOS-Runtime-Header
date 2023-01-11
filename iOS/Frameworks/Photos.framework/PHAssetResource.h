@@ -31,13 +31,18 @@
     id <PLResourceIdentity> _backingResourceIdentity;
     NSManagedObjectID *_assetObjectID;
     unsigned long long _cplResourceType;
+    NSString *_libraryID;
 }
 
 + (id)assetResourcesForLivePhoto:(id)arg1;
 + (id)assetResourcesForAsset:(id)arg1;
++ (id)_assetResourcesFromPLResources:(id)arg1 includeMetadata:(_Bool)arg2 mediaMetadataVirtualResources:(id)arg3 asset:(id)arg4 assetHasAdjustments:(_Bool)arg5 includeDerivatives:(_Bool)arg6 includeAdjustmentOverflowDataBlob:(_Bool)arg7;
 + (id)assetResourceForAsset:(id)arg1 qualityClass:(id)arg2;
++ (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(_Bool)arg2 includeMetadata:(_Bool)arg3 includeAdjustmentOverflowDataBlob:(_Bool)arg4;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(_Bool)arg2 includeMetadata:(_Bool)arg3;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(_Bool)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
 @property(readonly, nonatomic, getter=isCurrent) _Bool current; // @synthesize current=_current;
 @property(retain, nonatomic) NSURL *privateFileURL; // @synthesize privateFileURL=_privateFileURL;
 @property(nonatomic, getter=isLocallyAvailable) _Bool locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;
@@ -49,11 +54,10 @@
 @property(readonly, copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property(readonly, copy, nonatomic) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (id)initWithType:(long long)arg1 livePhoto:(id)arg2;
-- (id)initWithResource:(id)arg1 asset:(id)arg2;
+- (id)initWithResource:(id)arg1 asset:(id)arg2 hasAdjustments:(_Bool)arg3;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
 @property(readonly, nonatomic) unsigned long long fileSize;
 @property(readonly, nonatomic) long long analysisType;

@@ -17,6 +17,7 @@
 - (_Bool)isEditing;
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;
 - (_Bool)isTextControl;
+- (_Bool)isSingleLineDocument;
 - (id)textInputTraits;
 @end
 

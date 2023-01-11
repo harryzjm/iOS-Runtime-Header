@@ -37,6 +37,7 @@
     TUISystemInputAssistantLayoutStandard *_defaultLayout;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TUISystemInputAssistantLayoutStandard *defaultLayout; // @synthesize defaultLayout=_defaultLayout;
 @property(retain, nonatomic) TUISystemInputAssistantPageView *centerPageView; // @synthesize centerPageView=_centerPageView;
 @property(retain, nonatomic) TUIAssistantButtonBarView *unifiedButtonBar; // @synthesize unifiedButtonBar=_unifiedButtonBar;
@@ -55,7 +56,6 @@
 @property(nonatomic) __weak id <TUISystemInputAssistantViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIKBVisualEffectView *backdropView; // @synthesize backdropView=_backdropView;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
-- (void).cxx_destruct;
 - (id)_hostedCenterView;
 - (void)_exchangeCenterViewIfNecessaryForCompatibility;
 - (_Bool)_shouldHostCenterViewOutsidePageView;
@@ -63,6 +63,7 @@
 - (void)assistantPageView:(id)arg1 didSwitchToSecondaryViewVisible:(_Bool)arg2;
 - (void)assistantButtonBarView:(id)arg1 wantsToShowCollapsedItemGroup:(id)arg2 fromButton:(id)arg3;
 - (void)layoutSubviews;
+- (_Bool)shouldSkipValidation;
 - (void)validateIfNeeded;
 - (void)setNeedsValidation;
 - (void)_setRenderConfig:(id)arg1;

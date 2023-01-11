@@ -4,33 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContactVCardSummary, UIImage;
+@class CNContactVCardSummary, NSDictionary, UIImage;
 
 @interface CKContactMediaObject
 {
     _Bool _vCardParsingFailed;
+    NSDictionary *_contactMediaInfo;
+    unsigned long long _oopPreviewRequestCount;
     CNContactVCardSummary *_vCardSummary;
     UIImage *_vCardImage;
 }
 
 + (_Bool)shouldUseTranscoderGeneratedPreviewSize;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (id)UTITypes;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *vCardImage; // @synthesize vCardImage=_vCardImage;
 @property(nonatomic) _Bool vCardParsingFailed; // @synthesize vCardParsingFailed=_vCardParsingFailed;
 @property(retain, nonatomic) CNContactVCardSummary *vCardSummary; // @synthesize vCardSummary=_vCardSummary;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long oopPreviewRequestCount; // @synthesize oopPreviewRequestCount=_oopPreviewRequestCount;
+@property(retain, nonatomic) NSDictionary *contactMediaInfo; // @synthesize contactMediaInfo=_contactMediaInfo;
 - (id)vCardImageOfSize:(struct CGSize)arg1;
+- (void)generateOOPPreview;
+- (id)_transcodeControllerSharedInstance;
+- (id)previewDispatchCache;
+- (id)previewCacheKey;
+- (id)contactCardPayloadFileURL:(id)arg1;
+- (id)previewItemTitle;
+- (id)previewItemURL;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
 - (struct CGSize)bbSize;
 - (id)subtitle;
 - (id)icon;
 - (id)title;
+- (_Bool)supportsBlastDoor;
 - (Class)coloredBalloonViewClass;
 - (Class)previewBalloonViewClass;
 - (int)mediaType;
 - (_Bool)generatePreviewOutOfProcess;
+- (id)attachmentSummary:(unsigned long long)arg1;
+- (id)metricsCollectorMediaType;
 
 @end
 

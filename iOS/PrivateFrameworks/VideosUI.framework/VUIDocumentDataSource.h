@@ -12,22 +12,24 @@
 {
     _Bool _shouldLoadPageImmediately;
     NSString *_documentRef;
+    NSString *_documentType;
+    NSString *_controllerRef;
     VUIDocumentContextData *_contextData;
     VUIDocumentPreFetchedData *_prefetchData;
     VUIDocumentUIConfiguration *_uiConfiguration;
 }
 
++ (_Bool)isCanonicalDocumentRef:(id)arg1;
 + (id)documentDataSourceWithDictionary:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldLoadPageImmediately; // @synthesize shouldLoadPageImmediately=_shouldLoadPageImmediately;
 @property(retain, nonatomic) VUIDocumentUIConfiguration *uiConfiguration; // @synthesize uiConfiguration=_uiConfiguration;
 @property(retain, nonatomic) VUIDocumentPreFetchedData *prefetchData; // @synthesize prefetchData=_prefetchData;
 @property(retain, nonatomic) VUIDocumentContextData *contextData; // @synthesize contextData=_contextData;
+@property(retain, nonatomic) NSString *controllerRef; // @synthesize controllerRef=_controllerRef;
+@property(retain, nonatomic) NSString *documentType; // @synthesize documentType=_documentType;
 @property(retain, nonatomic) NSString *documentRef; // @synthesize documentRef=_documentRef;
-- (void).cxx_destruct;
 - (id)jsonData;
-- (id)viewControllerWithAppContext:(id)arg1 viewElement:(id)arg2 documentOptions:(id)arg3;
-- (id)viewControllerWithAppContext:(id)arg1 documentOptions:(id)arg2;
-- (id)viewControllerWithAppContext:(id)arg1;
 - (id)initWithDataSourceDict:(id)arg1;
 - (id)initWithDocumentRef:(id)arg1;
 

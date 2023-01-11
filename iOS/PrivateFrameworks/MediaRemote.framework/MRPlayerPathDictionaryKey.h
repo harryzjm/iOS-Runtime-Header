@@ -8,17 +8,17 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath;
 
 __attribute__((visibility("hidden")))
 @interface MRPlayerPathDictionaryKey : NSObject <NSCopying>
 {
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MRPlayerPath *_playerPath;
 }
 
 + (id)dictionaryKeyWithPlayerPath:(id)arg1;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

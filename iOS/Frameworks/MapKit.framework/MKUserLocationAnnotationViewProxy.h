@@ -10,22 +10,23 @@
 #import <MapKit/VKRouteMatchedAnnotationPresentation-Protocol.h>
 #import <MapKit/VKTrackableAnnotationPresentation-Protocol.h>
 
-@class GEORouteMatch, MKAnnotationView, NSHashTable, NSString;
+@class GEORouteMatch, MKAnnotationView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MKUserLocationAnnotationViewProxy : NSObject <VKPuckAnimatorTarget, VKTrackableAnnotationPresentation, VKRouteMatchedAnnotationPresentation>
 {
     MKAnnotationView *_annotationView;
-    NSHashTable *_presentationCoordinateObservers;
 }
 
-@property(nonatomic) __weak MKAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
 - (void).cxx_destruct;
-- (void)removePresentationCoordinateChangedObserver:(id)arg1;
-- (void)addPresentationCoordinateChangedObserver:(id)arg1;
+@property(nonatomic) __weak MKAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
+@property(readonly, nonatomic) struct VKEdgeInsets annotationTrackingEdgeInsets;
 @property(retain, nonatomic) GEORouteMatch *routeMatch;
 @property(nonatomic) _Bool tracking;
+@property(readonly, nonatomic) double minimumAccuracy;
 - (void)setAnimatingToCoordinate:(_Bool)arg1;
+@property(nonatomic, getter=isAnimatingAccuracy) _Bool animatingAccuracy;
+@property(nonatomic) double presentationAccuracy;
 @property(nonatomic) double presentationCourse;
 @property(nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
 

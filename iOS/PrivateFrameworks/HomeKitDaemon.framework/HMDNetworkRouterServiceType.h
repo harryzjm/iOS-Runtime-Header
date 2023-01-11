@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface HMDNetworkRouterServiceType : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterServiceType : NSObject <NSCopying, HAPTLVProtocol>
 {
     NSString *_name;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

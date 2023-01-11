@@ -22,6 +22,7 @@
 + (id)genericApplicationIcon;
 + (id)applicationIcon;
 + (id)layerUpdateQueue;
++ (struct _LIIconVariantInfo)variantInfoForVariant:(int)arg1;
 + (id)sizesFromSet:(unsigned long long)arg1;
 + (int)findVariantFromSet:(unsigned long long)arg1 deviceIdiom:(unsigned long long)arg2 size:(struct CGSize)arg3 scale:(double)arg4;
 + (struct _LIIconVariantInfo *)variantInfoForSet:(unsigned long long)arg1 count:(unsigned long long *)arg2;

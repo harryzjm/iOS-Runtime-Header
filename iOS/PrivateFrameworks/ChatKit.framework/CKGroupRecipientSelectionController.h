@@ -13,9 +13,13 @@
     UIBarButtonItem *_doneButton;
 }
 
-@property(retain, nonatomic) UIBarButtonItem *doneButton; // @synthesize doneButton=_doneButton;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIBarButtonItem *doneButton; // @synthesize doneButton=_doneButton;
+- (void)composeRecipientViewReturnPressed:(id)arg1;
+- (id)handlesForScreenTimePolicyCheck;
 - (void)_frecencySearch;
+- (_Bool)_enableRecipientsAdditionBasedOnAvailability;
+- (void)_checkAvailabilityAndAddToken;
 - (void)_updateNavigationButton;
 - (double)topInsetForNavBar;
 - (struct UIEdgeInsets)navigationBarInsetsForRecipientSelectionController:(id)arg1;
@@ -24,9 +28,11 @@
 - (void)recipientSelectionControllerRequestDismissKeyboard:(id)arg1;
 - (void)recipientSelectionController:(id)arg1 textDidChange:(id)arg2;
 - (void)recipientSelectionControllerSearchListDidShowOrHide:(id)arg1;
+- (void)recipientSelectionControllerTabPressed:(id)arg1;
 - (void)recipientSelectionControllerReturnPressed:(id)arg1;
 - (void)recipientSelectionControllerDidChangeSize:(id)arg1;
 - (void)recipientSelectionControllerDidBecomeFirstResponder:(id)arg1;
+- (_Bool)isBeingPresentedInMacDetailsView;
 - (_Bool)alwaysShowSearchResultsTable;
 - (_Bool)shouldSuppressSearchResultsTable;
 - (_Bool)homogenizePreferredServiceForiMessage;

@@ -13,6 +13,7 @@
     _Bool _canPunchout;
     _Bool _hidden;
     _Bool _isDefault;
+    _Bool _requestsExtraPadding;
     NSString *_title;
     UIImage *_image;
     UIColor *_backgroundColor;
@@ -24,6 +25,8 @@
 + (void)_setLanguageCode:(id)arg1;
 + (id)_languageCode;
 + (id)defaultSashItem;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool requestsExtraPadding; // @synthesize requestsExtraPadding=_requestsExtraPadding;
 @property(nonatomic, setter=_setDefault:) _Bool isDefault; // @synthesize isDefault=_isDefault;
 @property(copy, nonatomic) NSArray *commands; // @synthesize commands=_commands;
 @property(readonly, copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
@@ -32,7 +35,6 @@
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool canPunchout; // @synthesize canPunchout=_canPunchout;
 - (_Bool)isEqual:(id)arg1;
 - (id)init;

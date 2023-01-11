@@ -13,17 +13,17 @@
 @interface GEOTimeCheckpoints : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _distToNextCheckpoints;
     CDStruct_9f2792e4 _timeToNextCheckpoints;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_distToNextCheckpoints:1;
         unsigned int read_timeToNextCheckpoints:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_distToNextCheckpoints:1;
-        unsigned int wrote_timeToNextCheckpoints:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,25 +39,26 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setTimeToNextCheckpoints:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)timeToNextCheckpointAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsTimeToNextCheckpoint:(unsigned int)arg1;
 - (void)addTimeToNextCheckpoint:(unsigned int)arg1;
 - (void)clearTimeToNextCheckpoints;
 @property(readonly, nonatomic) unsigned int *timeToNextCheckpoints;
 @property(readonly, nonatomic) unsigned long long timeToNextCheckpointsCount;
-- (void)_readTimeToNextCheckpoints;
 - (void)setDistToNextCheckpoints:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)distToNextCheckpointAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsDistToNextCheckpoint:(unsigned int)arg1;
 - (void)addDistToNextCheckpoint:(unsigned int)arg1;
 - (void)clearDistToNextCheckpoints;
 @property(readonly, nonatomic) unsigned int *distToNextCheckpoints;
 @property(readonly, nonatomic) unsigned long long distToNextCheckpointsCount;
-- (void)_readDistToNextCheckpoints;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

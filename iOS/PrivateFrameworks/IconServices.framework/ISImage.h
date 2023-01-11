@@ -15,10 +15,11 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (struct CGColorSpace *)srgbColorSpace;
-@property(readonly) NSData *bitmapData; // @synthesize bitmapData=_bitmapData;
 - (void).cxx_destruct;
+@property(readonly) NSData *bitmapData; // @synthesize bitmapData=_bitmapData;
 @property(retain) NSUUID *uuid; // @dynamic uuid;
 - (id)debugDescription;
+- (id)description;
 @property(readonly) struct CGImage *CGImage; // @dynamic CGImage;
 @property(readonly) struct CGSize pixelSize;
 - (id)_init;

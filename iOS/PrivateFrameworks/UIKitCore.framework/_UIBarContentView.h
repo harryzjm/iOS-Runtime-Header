@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface _UIBarContentView <_UIButtonBarAppearanceDelegate>
 {
-    _Bool _barWantsLetterpress;
     _Bool _barIsBlack;
     _Bool _centerTextButtons;
     Class _appearanceGuideClass;
@@ -19,13 +18,12 @@ __attribute__((visibility("hidden")))
     UIImage *_backIndicatorMaskImage;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *backIndicatorMaskImage; // @synthesize backIndicatorMaskImage=_backIndicatorMaskImage;
 @property(readonly, nonatomic) _UIBarButtonItemAppearanceStorage *appearanceStorage; // @synthesize appearanceStorage=_appearanceStorage;
 @property(nonatomic) _Bool centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
 @property(retain, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
 @property(nonatomic) _Bool barIsBlack; // @synthesize barIsBlack=_barIsBlack;
-@property(nonatomic) _Bool barWantsLetterpress; // @synthesize barWantsLetterpress=_barWantsLetterpress;
-- (void).cxx_destruct;
 - (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
 @property(retain, nonatomic) UIImage *backIndicatorImage;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
@@ -60,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) struct CGRect bounds;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

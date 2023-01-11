@@ -7,7 +7,7 @@
 #import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
 
 @class NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol CKFetchArchivedRecordsOperationCallbacks, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchArchivedRecordsOperation <CKDOperationPipelining>
@@ -16,17 +16,18 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _serverChangeTokenUpdatedBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType serverChangeTokenUpdatedBlock; // @synthesize serverChangeTokenUpdatedBlock=_serverChangeTokenUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_noteOperationFinishedBlockEnd;
 - (void)_noteOperationEnding;
 - (void)_noteOperationBeginning;
 - (id)_createAndConfigureURLRequestForZoneIDs:(id)arg1 optionsByZoneID:(id)arg2;
+- (int)operationType;
 - (id)_optionsForZonesWithPendingChangesAfterRequest:(id)arg1;
 - (void)_noteDeletedRecordWithID:(id)arg1 recordType:(id)arg2;
-- (void)_noteChangedRecordWithID:(id)arg1 recordType:(id)arg2 record:(id)arg3 error:(id)arg4;
+- (void)_noteChangedRecordWithID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)_noteCompletedURLRequest:(id)arg1 withSchedulerInfo:(id)arg2;
 - (id)activityCreate;
 @property(readonly, nonatomic) NSString *pipeliningDescription;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
+@property(retain, nonatomic) id <CKFetchArchivedRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

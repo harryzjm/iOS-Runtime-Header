@@ -7,28 +7,35 @@
 #import <objc/NSObject.h>
 
 #import <BehaviorMiner/NSCopying-Protocol.h>
+#import <BehaviorMiner/NSSecureCoding-Protocol.h>
 
 @class BMItemType, NSString;
 
-@interface BMItem : NSObject <NSCopying>
+@interface BMItem : NSObject <NSCopying, NSSecureCoding>
 {
     BMItemType *_type;
     NSString *_normalizedValue;
+    unsigned long long _absoluteSupport;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)itemWithType:(id)arg1 UUIDValue:(id)arg2;
 + (id)itemWithType:(id)arg1 numberValue:(id)arg2;
 + (id)itemWithType:(id)arg1 stringValue:(id)arg2;
-@property(copy, nonatomic) NSString *normalizedValue; // @synthesize normalizedValue=_normalizedValue;
-@property(retain, nonatomic) BMItemType *type; // @synthesize type=_type;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long absoluteSupport; // @synthesize absoluteSupport=_absoluteSupport;
+@property(readonly, copy, nonatomic) NSString *normalizedValue; // @synthesize normalizedValue=_normalizedValue;
+@property(readonly, nonatomic) BMItemType *type; // @synthesize type=_type;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)uniformIdentifier;
+@property(readonly, copy, nonatomic) NSString *uniformIdentifier;
 @property(readonly, copy, nonatomic) id value;
 - (id)initWithType:(id)arg1 normalizedValue:(id)arg2;
+- (id)initWithType:(id)arg1 value:(id)arg2 absoluteSupport:(unsigned long long)arg3;
 - (id)initWithType:(id)arg1 value:(id)arg2;
 
 @end

@@ -14,19 +14,16 @@
     NSMutableSet *_failingAPIVersionsSet;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *failingAPIVersionsSet; // @synthesize failingAPIVersionsSet=_failingAPIVersionsSet;
 @property(readonly, nonatomic) NSMutableDictionary *failTrackerDict; // @synthesize failTrackerDict=_failTrackerDict;
-- (void).cxx_destruct;
 - (double)lastFailTimeInSecondsForAPIVersion:(id)arg1;
 - (int)consecutiveFailsForAPIVersion:(id)arg1;
 @property(readonly, nonatomic) NSArray *failingAPIVersions;
 @property(readonly, nonatomic) NSArray *apiVersions;
 - (_Bool)defaultAPIVersionIsFailingForSettings:(id)arg1 failTracker:(id)arg2;
-- (void)requestFailureForAPIVersion:(id)arg1 aggregateDictionary:(id)arg2 error:(id)arg3;
 - (void)requestFailureForAPIVersion:(id)arg1 error:(id)arg2;
-- (void)requestSuccessForAPIVersion:(id)arg1 aggregateDictionary:(id)arg2;
 - (void)requestSuccessForAPIVersion:(id)arg1;
-- (id)apiVersionForSettings:(id)arg1 aggregateDictionary:(id)arg2;
 - (id)apiVersionForSettings:(id)arg1;
 - (id)init;
 

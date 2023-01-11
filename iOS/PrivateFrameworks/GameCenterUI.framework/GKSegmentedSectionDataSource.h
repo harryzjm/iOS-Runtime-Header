@@ -26,6 +26,7 @@
     GKCollectionViewDataSource *_rootDataSource;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKCollectionViewDataSource *rootDataSource; // @synthesize rootDataSource=_rootDataSource;
 @property(nonatomic) _Bool waitingForAnimation; // @synthesize waitingForAnimation=_waitingForAnimation;
 @property(retain, nonatomic) GKSegmentInfo *selectedSegmentInfo; // @synthesize selectedSegmentInfo=_selectedSegmentInfo;
@@ -86,9 +87,8 @@
 @property(readonly, nonatomic) NSArray *dataSources;
 - (id)infoForDataSource:(id)arg1;
 - (id)infoForSegment:(long long)arg1;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)initWithDataSources:(id)arg1 rootDataSource:(id)arg2;
 - (id)initWithDataSources:(id)arg1;
 

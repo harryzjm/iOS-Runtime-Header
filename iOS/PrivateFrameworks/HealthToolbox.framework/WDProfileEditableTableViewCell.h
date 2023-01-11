@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface WDProfileEditableTableViewCell
 {
 }
 
-+ (double)notEditingRightEdgeMargin;
++ (double)notEditingTrailingEdgeMargin;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (void)_textFieldDidChange:(id)arg1;

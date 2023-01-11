@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _pendingDictationCommand;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType pendingDictationCommand; // @synthesize pendingDictationCommand=_pendingDictationCommand;
 @property(nonatomic) struct __CFString *transform; // @synthesize transform=_transform;
-- (void)dealloc;
 
 @end
 

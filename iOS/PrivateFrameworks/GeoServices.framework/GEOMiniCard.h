@@ -13,23 +13,23 @@
 @interface GEOMiniCard : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_buttonText;
     GEOFormattedString *_detail;
+    GEOFormattedString *_metadata;
     GEOFormattedString *_title;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _shouldEmphasize;
     struct {
         unsigned int has_shouldEmphasize:1;
         unsigned int read_unknownFields:1;
         unsigned int read_buttonText:1;
         unsigned int read_detail:1;
+        unsigned int read_metadata:1;
         unsigned int read_title:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_buttonText:1;
-        unsigned int wrote_detail:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_shouldEmphasize:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,19 +45,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOFormattedString *metadata;
+@property(readonly, nonatomic) _Bool hasMetadata;
 @property(nonatomic) _Bool hasShouldEmphasize;
 @property(nonatomic) _Bool shouldEmphasize;
 @property(retain, nonatomic) NSString *buttonText;
 @property(readonly, nonatomic) _Bool hasButtonText;
-- (void)_readButtonText;
 @property(retain, nonatomic) GEOFormattedString *detail;
 @property(readonly, nonatomic) _Bool hasDetail;
-- (void)_readDetail;
 @property(retain, nonatomic) GEOFormattedString *title;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (void)_readTitle;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

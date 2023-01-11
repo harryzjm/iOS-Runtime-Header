@@ -13,13 +13,15 @@
 @interface GEORPAddressCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPAccessPointCorrections *_accessPoint;
     GEORPFeedbackAddressFields *_addressFields;
     GEORPCorrectedCoordinate *_coordinate;
     GEORPMapLocation *_mapLocation;
     GEORPFeedbackAddressFields *_originalAddressFields;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_accessPoint:1;
@@ -27,12 +29,7 @@
         unsigned int read_coordinate:1;
         unsigned int read_mapLocation:1;
         unsigned int read_originalAddressFields:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_accessPoint:1;
-        unsigned int wrote_addressFields:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_mapLocation:1;
-        unsigned int wrote_originalAddressFields:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,23 +45,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPFeedbackAddressFields *originalAddressFields;
 @property(readonly, nonatomic) _Bool hasOriginalAddressFields;
-- (void)_readOriginalAddressFields;
 @property(retain, nonatomic) GEORPAccessPointCorrections *accessPoint;
 @property(readonly, nonatomic) _Bool hasAccessPoint;
-- (void)_readAccessPoint;
 @property(retain, nonatomic) GEORPMapLocation *mapLocation;
 @property(readonly, nonatomic) _Bool hasMapLocation;
-- (void)_readMapLocation;
 @property(retain, nonatomic) GEORPCorrectedCoordinate *coordinate;
 @property(readonly, nonatomic) _Bool hasCoordinate;
-- (void)_readCoordinate;
 @property(retain, nonatomic) GEORPFeedbackAddressFields *addressFields;
 @property(readonly, nonatomic) _Bool hasAddressFields;
-- (void)_readAddressFields;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

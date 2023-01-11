@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, STFamilyOrganization;
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
+#import <ScreenTimeCore/STVersionVectorable-Protocol.h>
 
-@interface STFamilyOrganizationSettings
+@class NSData, NSString, STFamilyOrganization;
+
+@interface STFamilyOrganizationSettings <STSerializableMappedObject, STVersionVectorable>
 {
 }
 
++ (id)serializableClassName;
 - (id)redactedDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)dictionaryRepresentation;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
 - (void)setPasscode:(id)arg1;
@@ -20,9 +24,12 @@
 - (void)didChangeValueForKey:(id)arg1;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool isDirty; // @dynamic isDirty;
 @property(retain, nonatomic) STFamilyOrganization *organization; // @dynamic organization;
 @property(nonatomic) _Bool shareWebUsage; // @dynamic shareWebUsage;
+@property(readonly) Class superclass;
 @property(copy, nonatomic) NSData *versionVector; // @dynamic versionVector;
 
 @end

@@ -19,15 +19,15 @@
     NSDateComponents *_statisticsInterval;
 }
 
-@property(readonly, nonatomic) NSDateComponents *statisticsInterval; // @synthesize statisticsInterval=_statisticsInterval;
-@property(readonly, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
 - (void).cxx_destruct;
-- (id)_statisticsPeriodAndIndex:(long long *)arg1 forDate:(id)arg2;
+@property(readonly, copy, nonatomic) NSDateComponents *statisticsInterval; // @synthesize statisticsInterval=_statisticsInterval;
+@property(readonly, copy, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
+- (id)_statisticsDateIntervalAtIndex:(long long)arg1;
+- (id)_statisticsDateIntervalAndIndex:(long long *)arg1 forDate:(id)arg2;
 - (void)_enumerateStatisticsIndexesFromDate:(id)arg1 toDate:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)_timePeriodForStatisticsAtIndex:(long long)arg1 startDate:(id *)arg2 endDate:(id *)arg3;
 - (id)_statisticsForIndex:(long long)arg1;
 - (id)_statisticsForLastIndex;
-- (id)_timePeriodForDate:(id)arg1;
 - (void)_enumerateTimePeriodsFromDate:(id)arg1 toDate:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)_resetStatistics:(id)arg1;
 - (_Bool)_insertStatistics:(id)arg1;

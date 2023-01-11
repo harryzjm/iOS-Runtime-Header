@@ -17,6 +17,7 @@
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSString *status;
 @property(nonatomic) double speed;
+@property(copy, nonatomic) NSNumber *preciseLocationEnabled;
 @property(nonatomic) double direction;
 @property(copy, nonatomic) NSString *desiredAccuracy;
 @property(nonatomic) double altitude;

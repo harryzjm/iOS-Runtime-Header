@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VNImageSpecifier;
+@class VNImageBuffer;
 
 @interface VNTargetedImageRequest
 {
-    VNImageSpecifier *_targetedImageSpecifier;
+    VNImageBuffer *_targetedImageBuffer;
 }
 
 - (void).cxx_destruct;
@@ -16,8 +16,12 @@
 - (id)sequencedRequestPreviousObservationsKey;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)allowsCachingOfResults;
-- (id)requiredTargetedImageSpecifierReturningError:(id *)arg1;
-- (id)targetedImageSpecifier;
+- (id)requiredTargetedImageBufferReturningError:(id *)arg1;
+- (id)targetedImageBuffer;
+- (id)initWithTargetedCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 orientation:(unsigned int)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithTargetedCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
+- (id)initWithTargetedCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithTargetedCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 options:(id)arg2;
 - (id)initWithTargetedImageData:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)initWithTargetedImageData:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithTargetedImageData:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -48,7 +52,7 @@
 - (id)initWithTargetedCVPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2;
 - (id)initWithTargetedCVPixelBuffer:(struct __CVBuffer *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithTargetedCVPixelBuffer:(struct __CVBuffer *)arg1;
-- (id)initWithTargetedImageSpecifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithTargetedImageBuffer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

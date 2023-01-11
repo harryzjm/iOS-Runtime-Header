@@ -17,13 +17,14 @@
     UIView *_customView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *customView; // @synthesize customView=_customView;
 @property(retain, nonatomic) _UIButtonBarButton *barButtonView; // @synthesize barButtonView=_barButtonView;
 @property(retain, nonatomic) UIBarButtonItemGroup *associatedGroup; // @synthesize associatedGroup=_associatedGroup;
 @property(retain, nonatomic) UIBarButtonItem *associatedItem; // @synthesize associatedItem=_associatedItem;
 @property(nonatomic, getter=isCollapsedItem) _Bool collapsedItem; // @synthesize collapsedItem=_collapsedItem;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
+- (_Bool)_isPad;
 @property(readonly, nonatomic) UIView *contentView;
 
 @end

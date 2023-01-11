@@ -5,17 +5,20 @@
 //
 
 #import <VoiceMemos/NSFetchRequestResult-Protocol.h>
-#import <VoiceMemos/UIActivityItemSource-Protocol.h>
 
 @class AVAsset, CLLocation, NSDate, NSString, NSURL;
+@protocol RCFolder;
 
-@protocol RCRecording <NSFetchRequestResult, UIActivityItemSource>
+@protocol RCRecording <NSFetchRequestResult>
 @property(readonly, nonatomic) AVAsset *avAsset;
 @property(readonly, nonatomic) _Bool uploaded;
+@property(readonly, nonatomic) _Bool musicMemo;
+@property(readonly, nonatomic) _Bool watchOS;
+@property(readonly, nonatomic) _Bool enhanced;
+@property(readonly, nonatomic) _Bool favorite;
 @property(nonatomic) _Bool recordedOnWatch;
 @property(readonly, nonatomic) _Bool downloading;
-@property(readonly, nonatomic) _Bool evicted;
-@property(readonly, nonatomic) _Bool editing;
+@property(readonly, nonatomic) _Bool deleted;
 @property(readonly, nonatomic) _Bool manuallyRenamed;
 @property(readonly, nonatomic) _Bool playable;
 @property(readonly, nonatomic) _Bool pendingRestore;
@@ -33,5 +36,10 @@
 @property(readonly, copy, nonatomic) NSDate *evictionDate;
 @property(readonly, copy, nonatomic) NSDate *date;
 @property(readonly, nonatomic) _Bool isContentBeingModified;
+- (id)itemForActivityType:(NSString *)arg1;
+- (NSString *)subjectForActivityType:(NSString *)arg1;
+
+@optional
+@property(readonly, nonatomic) id <RCFolder> folder;
 @end
 

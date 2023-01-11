@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CalPreferences, NSArray, NSString;
+@class CalPreferences, NSArray, NSDateComponents, NSString;
 
 @interface CalFoundationPreferences : NSObject
 {
@@ -15,10 +15,12 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDateComponents *stopTimeDemoModeComponents;
+@property(readonly, nonatomic) _Bool stopTimeDemoModeActive;
+@property(retain, nonatomic) NSString *stopTimeDemoMode;
 @property(nonatomic) double simulatedDateForNowOffset;
 @property(readonly, nonatomic) NSArray *logSimpleConfiguration;
 @property(readonly, nonatomic) NSString *logFilePath;
-@property(readonly, nonatomic) _Bool logEmitUserNotifications;
 @property(readonly, nonatomic) _Bool logAutoFlush;
 - (id)init;
 

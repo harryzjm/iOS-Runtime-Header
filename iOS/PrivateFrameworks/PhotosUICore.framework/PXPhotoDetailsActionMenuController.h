@@ -8,20 +8,26 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
 @class NSString, PHFetchResult, PXCMMSendBackSuggestionSource, PXPhotoKitAssetCollectionActionManager;
+@protocol PXPhotosDetailsActionMenuDelegate;
 
 @interface PXPhotoDetailsActionMenuController <PXChangeObserver, PXAssetCollectionActionPerformerDelegate>
 {
+    id <PXPhotosDetailsActionMenuDelegate> _delegate;
     PXCMMSendBackSuggestionSource *_sendBackSuggestionSource;
     PHFetchResult *_people;
     PXPhotoKitAssetCollectionActionManager *_assetActionManager;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PXPhotoKitAssetCollectionActionManager *assetActionManager; // @synthesize assetActionManager=_assetActionManager;
 @property(retain, nonatomic) PHFetchResult *people; // @synthesize people=_people;
 @property(retain, nonatomic) PXCMMSendBackSuggestionSource *sendBackSuggestionSource; // @synthesize sendBackSuggestionSource=_sendBackSuggestionSource;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <PXPhotosDetailsActionMenuDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)assetCollectionActionPerformer:(id)arg1 playMovieForAssetCollection:(id)arg2;
+- (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (_Bool)shouldAllowPerformanceOfActionType:(id)arg1;
 - (id)availableActionTypes;
 - (id)assetCollectionActionManager;

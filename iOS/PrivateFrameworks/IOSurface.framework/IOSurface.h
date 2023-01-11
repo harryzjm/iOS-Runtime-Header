@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (unsigned long long)traceID;
 - (unsigned long long)registryID;
 - (unsigned long long)timestampAtIndex:(unsigned long long)arg1;
 - (void)setTimestamp:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;

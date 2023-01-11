@@ -28,6 +28,7 @@
     TLAlert *_alertForAudioEnvironmentSetup;
     NSString *_previousAudioCategory;
     unsigned long long _previousAudioCategoryOptions;
+    NSString *_previousAudioMode;
     _Bool _isBypassingRingerSwitchPolicy;
     _Bool _isAudioSessionActive;
     unsigned long long _audioSessionDeactivationPreventionRequestsCount;
@@ -43,6 +44,7 @@
 + (_Bool)_shouldHandleAudioSessionActivationForAlert:(id)arg1;
 + (_Bool)_shouldBypassRingerSwitchPolicyForAlert:(id)arg1;
 + (id)_celestialAudioCategoryForAudioSessionCategory:(id)arg1;
++ (id)_audioModeForAlert:(id)arg1 audioCategory:(id)arg2;
 + (id)_audioCategoryForAlert:(id)arg1;
 + (long long)_clientPriorityForAlert:(id)arg1;
 + (id)_clientNameForAlert:(id)arg1;
@@ -84,11 +86,11 @@
 - (_Bool)_canPlayToneAsset:(id)arg1;
 - (void)_handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(_Bool)arg2;
 - (void)_updateAudioVolumeDynamicallyForAlert:(id)arg1 toValue:(float)arg2;
-- (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(_Bool)arg2;
 - (void)updateAudioVolumeDynamicallyForAlert:(id)arg1 toValue:(float)arg2;
-- (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_assertRunningOnAudioEventQueue;
 - (void)_performBlockOnAudioEventQueue:(CDUnknownBlockType)arg1;

@@ -13,9 +13,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)modelForSoundIdentifier:(id)arg1;
-- (id)initWithSoundIdentifier:(id)arg1;
++ (id)detectorHeadConfigurationForSoundIdentifier:(id)arg1 analysisPassStrategy:(long long)arg2;
++ (id)detectorConfigurationWithLogMelBasedFeatureExtractor:(id)arg1 detectorHead:(id)arg2 soundIdentifier:(id)arg3;
++ (id)soundPrint100kDetectorConfigurationWithSoundIdentifier:(id)arg1;
++ (id)vggishDetectorConfigurationWithSoundIdentifier:(id)arg1;
 - (id)initWithVGGishBasedMLModel:(id)arg1 soundIdentifier:(id)arg2;
+- (id)initWithSoundIdentifier:(id)arg1 analysisPassStrategy:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

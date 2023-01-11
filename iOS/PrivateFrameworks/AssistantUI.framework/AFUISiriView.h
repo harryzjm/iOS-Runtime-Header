@@ -6,23 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <AssistantUI/AFUISiriRemoteViewHosting-Protocol.h>
+#import <AssistantUI/AFUISiriContent-Protocol.h>
 #import <AssistantUI/SiriUISiriStatusViewDelegate-Protocol.h>
 
-@class AFUIStarkGradientView, NSString, SiriUIAudioRoutePickerButton, SiriUIConfiguration, SiriUIContentButton, SiriUIHelpButton, SiriUIVisualEffectView, UIImageView, UILabel, _UIBackdropView, _UIVisualEffectBackdropView;
+@class NSString, SiriUIAudioRoutePickerButton, SiriUIConfiguration, SiriUIContentButton, SiriUIHelpButton, SiriUIVisualEffectView, UIImageView, UILabel, _UIBackdropView;
 @protocol AFUISiriViewDataSource, AFUISiriViewDelegate, SiriUISiriStatusViewProtocol;
 
-@interface AFUISiriView : UIView <SiriUISiriStatusViewDelegate, AFUISiriRemoteViewHosting>
+@interface AFUISiriView : UIView <SiriUISiriStatusViewDelegate, AFUISiriContent>
 {
     _UIBackdropView *_backdropView;
     _Bool _backdropViewVisible;
-    UIView *_carPlayContainerView;
-    UIView *_carPlayBackgroundView;
-    UIImageView *_carPlayAuraView;
-    AFUIStarkGradientView *_carPlayGradientView;
-    _UIVisualEffectBackdropView *_carPlayGatekeeperBackdropView;
-    _Bool _carPlayGatekeeperBackdropViewVisible;
-    UIView *_carPlaySystemBackgroundView;
     struct UIEdgeInsets _suspendedSafeAreaInsets;
     _Bool _safeAreaInsetsSuspended;
     UIView *_dimmingAndLockContainer;
@@ -30,54 +23,47 @@
     SiriUIAudioRoutePickerButton *_audioRoutePickerButton;
     SiriUIHelpButton *_helpButton;
     SiriUIContentButton *_reportBugButton;
+    UIView *_voiceActivationMaskView;
     SiriUIConfiguration *_configuration;
-    UIView *_lockView;
-    unsigned long long _unlockAttemptCount;
-    CDUnknownBlockType _unlockCompletion;
+    UIView *_lockContainerView;
     _Bool _inShowUnlockViewAnimation;
-    _Bool _inHideUnlockViewanimation;
+    _Bool _inHideUnlockViewAnimation;
     _Bool _remoteContentViewHidden;
     _Bool _lockViewHidden;
+    _Bool _flamesViewDeferred;
+    _Bool _helpButtonDeferred;
+    _Bool _inFluidDismissal;
+    _Bool _statusViewHidden;
+    _Bool _flamesViewPaused;
+    _Bool _keepStatusViewHidden;
     SiriUIVisualEffectView *_eyesFreeEffectView;
     UIImageView *_eyesFreeLogoView;
     UILabel *_assistantVersionLabel;
     SiriUIVisualEffectView *_assistantVersionVisualEffectView;
-    _Bool _disabled;
-    _Bool _statusViewHidden;
-    _Bool _keepStatusViewHidden;
-    _Bool _flamesViewDeferred;
-    _Bool _helpButtonDeferred;
-    _Bool _carDisplaySnippetVisible;
-    _Bool _inFluidDismissal;
-    UIView *_remoteContentView;
     UIView *_foregroundView;
     UIView *_foregroundContainerView;
-    id <AFUISiriViewDataSource> _dataSource;
-    id <AFUISiriViewDelegate> _delegate;
-    long long _carDisplaySnippetMode;
+    _UIBackdropView *_backgroundBlurView;
     long long _siriSessionState;
     long long _mode;
+    double _statusViewHeight;
     UIView<SiriUISiriStatusViewProtocol> *_siriStatusView;
+    _Bool _disabled;
+    UIView *_remoteContentView;
+    id <AFUISiriViewDataSource> _dataSource;
+    id <AFUISiriViewDelegate> _delegate;
 }
 
 + (void)_animateView:(id)arg1 fromYPosition:(double)arg2 toYPosition:(double)arg3 fade:(long long)arg4 completion:(CDUnknownBlockType)arg5;
-@property(retain, nonatomic) UIView<SiriUISiriStatusViewProtocol> *siriStatusView; // @synthesize siriStatusView=_siriStatusView;
-@property(nonatomic) long long mode; // @synthesize mode=_mode;
-@property(nonatomic) long long siriSessionState; // @synthesize siriSessionState=_siriSessionState;
-@property(nonatomic, getter=isInFluidDismissal) _Bool inFluidDismissal; // @synthesize inFluidDismissal=_inFluidDismissal;
-@property(nonatomic) long long carDisplaySnippetMode; // @synthesize carDisplaySnippetMode=_carDisplaySnippetMode;
-@property(nonatomic) _Bool carDisplaySnippetVisible; // @synthesize carDisplaySnippetVisible=_carDisplaySnippetVisible;
-@property(nonatomic) _Bool helpButtonDeferred; // @synthesize helpButtonDeferred=_helpButtonDeferred;
-@property(nonatomic) _Bool flamesViewDeferred; // @synthesize flamesViewDeferred=_flamesViewDeferred;
-@property(nonatomic) _Bool keepStatusViewHidden; // @synthesize keepStatusViewHidden=_keepStatusViewHidden;
-@property(nonatomic) _Bool statusViewHidden; // @synthesize statusViewHidden=_statusViewHidden;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *foregroundContainerView; // @synthesize foregroundContainerView=_foregroundContainerView;
+@property(readonly, nonatomic) UIView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property(nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) __weak id <AFUISiriViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <AFUISiriViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(readonly, nonatomic) UIView *foregroundContainerView; // @synthesize foregroundContainerView=_foregroundContainerView;
-@property(readonly, nonatomic) UIView *foregroundView; // @synthesize foregroundView=_foregroundView;
+@property(nonatomic) long long mode; // @synthesize mode=_mode;
+@property(nonatomic) long long siriSessionState; // @synthesize siriSessionState=_siriSessionState;
 @property(retain, nonatomic) UIView *remoteContentView; // @synthesize remoteContentView=_remoteContentView;
-- (void).cxx_destruct;
+- (void)setContentViewsAlpha:(double)arg1;
 - (void)siriDidActivateFromSource:(long long)arg1;
 - (_Bool)_isTextInputEnabled;
 - (struct UIEdgeInsets)safeAreaInsetsForSiriStatusView:(id)arg1;
@@ -86,10 +72,11 @@
 - (void)siriStatusViewWasTapped:(id)arg1;
 - (float)audioLevelForSiriStatusView:(id)arg1;
 - (void)cancelShowingPasscodeUnlock;
-- (void)showPasscodeUnlockWithStatusText:(id)arg1 subTitle:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 unlockCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)showPasscodeUnlockWithStatusText:(id)arg1 subtitle:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 unlockCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)_configureEyesFreeLogo;
 - (_Bool)_helpButtonIsVisible;
 - (void)pulseHelpButton;
+- (void)setHelpButtonDeferred:(_Bool)arg1;
 - (void)setHelpButtonEmphasized:(_Bool)arg1;
 - (void)_helpButtonTapped:(id)arg1;
 - (void)_configureHelpButton;
@@ -111,20 +98,26 @@
 - (struct CGRect)_lockViewFrame;
 - (void)updateForPercentageRevealed:(double)arg1;
 - (struct CGRect)_remoteContentViewFrame;
+- (void)_setupVoiceActivationMaskView;
+- (void)setVoiceActivationMaskViewVisible:(_Bool)arg1;
+- (void)_placeRemoteContentView;
 - (id)dimBackdropSettings;
 - (void)setBackdropShouldRasterize:(_Bool)arg1;
 - (void)setBackdropVisible:(_Bool)arg1;
-- (void)setCarPlayGatekeeperBackdropVisible:(_Bool)arg1;
 @property(readonly, nonatomic) _UIBackdropView *backgroundBlurView;
 - (void)reloadData;
 - (void)fadeOutCurrentAura;
 - (void)setupOrbIfNeeded;
-@property(nonatomic, getter=isInUITrackingMode) _Bool inUITrackingMode;
+- (void)setInUITrackingMode:(_Bool)arg1;
 - (void)teardownStatusView;
-@property(nonatomic) _Bool flamesViewPaused;
+- (void)setFlamesViewPaused:(_Bool)arg1;
+- (_Bool)flamesViewPaused;
+- (void)setFlamesViewDeferred:(_Bool)arg1;
 - (void)setStatusViewUserInteractionEnabled:(_Bool)arg1;
 - (void)_animateButtonsHidden:(_Bool)arg1;
 - (void)_updateControlsAppearance;
+- (void)setStatusViewHidden:(_Bool)arg1;
+- (void)setInFluidDismissal:(_Bool)arg1;
 - (void)_setSafeAreaInsetsSuspended:(_Bool)arg1;
 - (void)safeAreaInsetsDidChange;
 - (struct UIEdgeInsets)safeAreaInsets;
@@ -132,11 +125,13 @@
 - (void)_layoutReportBugButton;
 - (void)layoutSubviews;
 - (void)dealloc;
-- (_Bool)isCarPlayMode;
+- (_Bool)_wantsBackdropView:(long long)arg1;
 - (void)_destroyAssistantVersionLabelIfNecessary;
 - (void)_createAssistantVersionLabelIfNecessary;
 - (void)_setupButtonsIfNecessary;
+- (void)_updateSiriStatusViewForMode:(long long)arg1;
 - (_Bool)_reducesMotionEffects;
+- (void)_setupContentViews;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 

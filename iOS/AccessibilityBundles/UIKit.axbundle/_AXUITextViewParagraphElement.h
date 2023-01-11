@@ -12,20 +12,27 @@
 
 @interface _AXUITextViewParagraphElement : UIAccessibilityElement <UIAccessibilityElementDelegate>
 {
+    NSString *__accessibilityContent;
     NSArray *_links;
     struct _NSRange _textRange;
 }
 
-@property(readonly, nonatomic) NSArray *links; // @synthesize links=_links;
-@property(readonly, nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *links; // @synthesize links=_links;
+@property(retain, nonatomic) NSString *_accessibilityContent; // @synthesize _accessibilityContent=__accessibilityContent;
+@property(readonly, nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 - (_Bool)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)accessibilityElements;
 - (id)_accessibilityUserTestingChildren;
 - (id)accessibilityHint;
-- (id)accessibilityLabel:(id)arg1;
-- (struct CGRect)accessibilityFrame:(id)arg1;
+- (struct CGPoint)accessibilityActivationPoint:(id)arg1;
 - (_Bool)accessibilityRespondsToUserInteraction;
+- (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
+- (struct _NSRange)_accessibilitySelectedTextRange;
+- (id)accessibilityValue;
+- (id)accessibilityLabel;
 - (id)initWithAccessibilityContainer:(id)arg1 textRange:(struct _NSRange)arg2 links:(id)arg3;
 
 // Remaining properties

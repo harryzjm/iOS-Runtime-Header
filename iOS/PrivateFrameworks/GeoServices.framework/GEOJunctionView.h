@@ -10,7 +10,6 @@
 
 @class NSMutableArray, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOJunctionView : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -30,6 +29,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)imageIdAtIndex:(unsigned long long)arg1;

@@ -6,33 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController, _SFSettingsAlertItem;
+#import <SafariServices/_SFPageFormatMenuItemControllerDelegate-Protocol.h>
+
+@class NSArray, NSString, UIViewController, _SFSettingsAlertItem;
 @protocol _SFBrowserContentController;
 
-@interface _SFPageFormatMenuController : NSObject
+@interface _SFPageFormatMenuController : NSObject <_SFPageFormatMenuItemControllerDelegate>
 {
     _SFSettingsAlertItem *_readerAlertItem;
+    NSArray *_translationAlertItems;
     id <_SFBrowserContentController> _browserContentController;
     UIViewController *_viewController;
 }
 
-@property(readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-@property(readonly, nonatomic) __weak id <_SFBrowserContentController> browserContentController; // @synthesize browserContentController=_browserContentController;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
+@property(readonly, nonatomic) __weak id <_SFBrowserContentController> browserContentController; // @synthesize browserContentController=_browserContentController;
+- (id)viewControllerForPresentationForItemController:(id)arg1;
 - (id)_sitePreferencesAlertItem;
 - (id)_contentBlockersToggleAlertItem;
+- (_Bool)_hasStartedTranslation;
 - (_Bool)_canHideToolbar;
 - (_Bool)_canToggleContentBlockers;
 - (id)_readerFontAlertItem;
 - (id)_readerThemeAlertItem;
 - (id)_readerTextSizeAlertItem;
 - (id)_pageZoomAlertItem;
+- (void)_translationAvailabilityDidChange:(id)arg1;
+- (id)_internalTapToRadarTranslationAlertItem;
+- (id)_exitTranslationAlertItem;
+- (id)_translateAlertItemForLocaleIdentifier:(id)arg1;
+- (void)_buildTranslationAlertItemsWithSourceInfo:(id)arg1;
+- (void)_anchorInWindowCoordinatesForAlert:(id)arg1;
 - (id)_fullScreenAlertItem;
-- (id)_desktopMobileToggleAlertItem;
+- (id)_desktopMobileToggleAlertItemWithOrientation:(long long)arg1;
 - (id)_readerAlertItem;
 - (void)_readerAvailabilityDidChange:(id)arg1;
 - (void)presentMenuFromViewController:(id)arg1 withSourceInfo:(id)arg2;
 - (id)initWithBrowserContentController:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

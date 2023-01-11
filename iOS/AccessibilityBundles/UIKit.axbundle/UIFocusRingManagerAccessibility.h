@@ -10,7 +10,7 @@
 
 + (void)removeRingFromFocusItem:(id)arg1 forClient:(id)arg2;
 + (void)moveRingToFocusItem:(id)arg1 forClient:(id)arg2;
-+ (Class)shapeLayerClassForClient:(id)arg1;
++ (Class)shapeLayerClassForItem:(id)arg1 client:(id)arg2;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;

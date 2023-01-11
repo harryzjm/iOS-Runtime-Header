@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKModifyWebSharingOperationCallbacks-Protocol.h>
 
-@interface CKModifyWebSharingOperation
+@class CKModifyWebSharingOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifyWebSharingOperationCallbacks;
+
+@interface CKModifyWebSharingOperation <CKModifyWebSharingOperationCallbacks>
 {
     CDUnknownBlockType _recordSharedBlock;
     CDUnknownBlockType _recordUnsharedBlock;
@@ -19,15 +22,17 @@
     NSMutableArray *_unsharedRecordIDs;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *unsharedRecordIDs; // @synthesize unsharedRecordIDs=_unsharedRecordIDs;
 @property(retain, nonatomic) NSMutableArray *sharedRecordIDs; // @synthesize sharedRecordIDs=_sharedRecordIDs;
 @property(retain, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property(retain, nonatomic) NSArray *recordIDsToUnshare; // @synthesize recordIDsToUnshare=_recordIDsToUnshare;
 @property(retain, nonatomic) NSArray *recordIDsToShare; // @synthesize recordIDsToShare=_recordIDsToShare;
-@property(retain, nonatomic) NSArray *recordIDsToShareReadWrite; // @synthesize recordIDsToShareReadWrite=_recordIDsToShareReadWrite;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *recordIDsToShareReadWrite; // @synthesize recordIDsToShareReadWrite=_recordIDsToShareReadWrite;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleWebSharingRevocationForRecordID:(id)arg1 error:(id)arg2;
+- (void)handleWebSharingInitiationForRecordID:(id)arg1 sharingKey:(id)arg2 baseSharingToken:(id)arg3 error:(id)arg4;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -38,6 +43,10 @@
 @property(copy, nonatomic) CDUnknownBlockType recordUnsharedBlock; // @synthesize recordUnsharedBlock=_recordUnsharedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordSharedBlock; // @synthesize recordSharedBlock=_recordSharedBlock;
 - (id)initWithRecordIDsToWebShare:(id)arg1 recordIDsToUnshare:(id)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKModifyWebSharingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKModifyWebSharingOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

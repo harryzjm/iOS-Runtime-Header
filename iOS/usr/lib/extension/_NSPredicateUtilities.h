@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
 + (id)_expressionClassesForSecureCoding;
 + (id)_compoundPredicateClassesForSecureCoding;
 + (id)_predicateClassesForSecureCoding;
-+ (id)_parserableCollectionDescription:(id)arg1;
-+ (id)_parserableDateDescription:(id)arg1;
-+ (id)_parserableStringDescription:(id)arg1;
 + (_Bool)_isReservedWordInParser:(id)arg1;
 + (id)inverseOrderKey:(id)arg1;
 + (id)distinct:(id)arg1;
@@ -38,14 +35,10 @@ __attribute__((visibility("hidden")))
 + (id)randomn:(id)arg1;
 + (id)random;
 + (id)castObject:(id)arg1 toType:(id)arg2;
-+ (id)_convertStringToNumber:(id)arg1;
 + (id)length:(id)arg1;
 + (id)lowercase:(id)arg1;
 + (id)uppercase:(id)arg1;
 + (id)tokenize:(id)arg1 using:(id)arg2;
-+ (id)_collapseAndTokenize:(id)arg1 flags:(unsigned long long)arg2 locale:(id)arg3;
-+ (id)_processAndTokenize:(id)arg1 flags:(unsigned long long)arg2 locale:(id)arg3;
-+ (id)_doTokenization:(id)arg1 locale:(id)arg2;
 + (id)trunc:(id)arg1;
 + (id)abs:(id)arg1;
 + (id)ceiling:(id)arg1;
@@ -68,8 +61,6 @@ __attribute__((visibility("hidden")))
 + (id)min:(id)arg1;
 + (id)count:(id)arg1;
 + (id)sum:(id)arg1;
-+ (unsigned long long)_getCommonTypeFor:(id)arg1;
-+ (unsigned long long)_getITypeFor:(const char *)arg1;
 - (double)distanceFromLocation:(id)arg1;
 
 @end

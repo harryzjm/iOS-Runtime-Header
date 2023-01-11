@@ -19,7 +19,7 @@
 + (_Bool)_isSiriAuthorizationRestricted;
 + (long long)_rawSiriAuthorizationStatusForAppID:(id)arg1;
 + (long long)_siriAuthorizationStatusForAppID:(id)arg1;
-+ (void)_requestSiriAuthorization:(CDUnknownBlockType)arg1 auditToken:(CDStruct_6ad76789)arg2;
++ (void)_requestSiriAuthorization:(CDUnknownBlockType)arg1 auditToken:(CDStruct_4c969caf)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -21,6 +21,7 @@
 - (NSString *)venueLabel:(long long)arg1;
 - (NSString *)venueLabel;
 - (NSString *)parkingDisplayName;
+- (NSString *)weatherLocationName;
 - (NSString *)weatherDisplayName;
 - (NSString *)cityDisplayNameWithFallback:(_Bool)arg1;
 - (NSString *)shortAddress;

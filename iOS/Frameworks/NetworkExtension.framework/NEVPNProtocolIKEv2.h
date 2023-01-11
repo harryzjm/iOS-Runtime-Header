@@ -29,6 +29,7 @@
     NEVPNIKEv2SecurityAssociationParameters *_childSecurityAssociationParameters;
     long long _minimumTLSVersion;
     long long _maximumTLSVersion;
+    unsigned long long _mtu;
     NSString *_pluginType;
     NSArray *_IKESecurityAssociationParametersArray;
     NSArray *_childSecurityAssociationParametersArray;
@@ -37,6 +38,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property _Bool disableInitialContact; // @synthesize disableInitialContact=_disableInitialContact;
 @property long long tunnelKind; // @synthesize tunnelKind=_tunnelKind;
 @property _Bool opportunisticPFS; // @synthesize opportunisticPFS=_opportunisticPFS;
@@ -48,6 +50,7 @@
 @property(retain) NSArray *IKESecurityAssociationParametersArray; // @synthesize IKESecurityAssociationParametersArray=_IKESecurityAssociationParametersArray;
 @property(readonly) NSString *pluginType; // @synthesize pluginType=_pluginType;
 @property _Bool wakeForRekey; // @synthesize wakeForRekey=_wakeForRekey;
+@property unsigned long long mtu; // @synthesize mtu=_mtu;
 @property _Bool enableFallback; // @synthesize enableFallback=_enableFallback;
 @property long long maximumTLSVersion; // @synthesize maximumTLSVersion=_maximumTLSVersion;
 @property long long minimumTLSVersion; // @synthesize minimumTLSVersion=_minimumTLSVersion;
@@ -63,7 +66,6 @@
 @property(copy) NSString *serverCertificateCommonName; // @synthesize serverCertificateCommonName=_serverCertificateCommonName;
 @property(copy) NSString *serverCertificateIssuerCommonName; // @synthesize serverCertificateIssuerCommonName=_serverCertificateIssuerCommonName;
 @property long long deadPeerDetectionRate; // @synthesize deadPeerDetectionRate=_deadPeerDetectionRate;
-- (void).cxx_destruct;
 - (id)copyLegacyDictionary;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (_Bool)checkValidityAndCollectErrors:(id)arg1;

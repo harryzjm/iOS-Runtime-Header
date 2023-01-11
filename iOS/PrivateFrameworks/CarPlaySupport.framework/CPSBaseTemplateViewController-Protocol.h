@@ -13,5 +13,6 @@
 @property(readonly, nonatomic) NAFuture *templateProviderFuture;
 @property(retain, nonatomic) id <CPTemplateDelegate> templateDelegate;
 @property(retain, nonatomic) CPTemplate *associatedTemplate;
+- (void)invalidate;
 @end
 

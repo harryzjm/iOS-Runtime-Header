@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutConstraint, UIButton, UIFont;
+#import <EventKitUI/_UICursorInteractionDelegate-Protocol.h>
+
+@class NSArray, NSLayoutConstraint, NSString, UIButton, UIFont;
 @protocol EKUIEventStatusButtonsViewDelegate;
 
-@interface EKUIEventStatusButtonsView : UIView
+@interface EKUIEventStatusButtonsView : UIView <_UICursorInteractionDelegate>
 {
     NSArray *_buttons;
     NSArray *_actions;
@@ -19,6 +21,7 @@
     NSLayoutConstraint *_trailingMarginConstraint;
     double _baselineFromBoundsTop;
     _Bool _forcesSingleButtonToCenter;
+    _Bool _inboxStyle;
     NSArray *_currentConstraints;
     _Bool _disableButtonHighlights;
     _Bool _shouldUseVerticalLayout;
@@ -31,6 +34,7 @@
 + (_Bool)isActionDestructive:(long long)arg1;
 + (id)imageForAction:(long long)arg1 selected:(_Bool)arg2;
 + (id)buttonTitleForAction:(long long)arg1 orb:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldUseVerticalLayout; // @synthesize shouldUseVerticalLayout=_shouldUseVerticalLayout;
 @property(nonatomic) _Bool disableButtonHighlights; // @synthesize disableButtonHighlights=_disableButtonHighlights;
 @property(nonatomic) long long textSizeMode; // @synthesize textSizeMode=_textSizeMode;
@@ -38,21 +42,25 @@
 @property(retain, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(nonatomic) long long selectedAction; // @synthesize selectedAction=_selectedAction;
 @property(nonatomic) __weak id <EKUIEventStatusButtonsViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)updateFonts;
 - (void)updateForMiniBarState:(_Bool)arg1;
 @property(readonly, nonatomic) UIFont *font;
 - (double)baselineFromBoundsTop;
 - (void)layoutSubviews;
 - (void)updateConstraints;
-- (double)_updateFontSizesFromDelegate;
-- (double)_minimumFontSize;
+- (double)_updateFontFromDelegate;
 - (id)_fontWithSize:(double)arg1 selected:(_Bool)arg2;
+- (double)_minimumFontSize;
 - (double)_defaultFontSizeForButtons;
+- (void)_updateButtonFonts:(id)arg1;
 - (void)_updateButtonFontsWithSize:(double)arg1;
 - (_Bool)_shouldCenterButton;
+@property(readonly, nonatomic) UIButton *trailingButton;
 @property(readonly, nonatomic) UIButton *centerButton;
-- (id)_buttonForAction:(long long)arg1;
+@property(readonly, nonatomic) UIButton *leadingButton;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)buttonForAction:(long long)arg1;
 - (long long)_buttonIndexForAction:(long long)arg1;
 - (long long)_actionForButton:(id)arg1;
 - (void)_updateSelectionToButton:(id)arg1;
@@ -60,9 +68,17 @@
 - (id)_horizontalConstraintStringForMiddleButtonsStartingAt:(unsigned long long)arg1 endingAt:(unsigned long long)arg2 resultingViews:(id)arg3;
 - (void)_setupConstraints;
 - (void)_setupButtons;
+- (void)findCursorInteractionWithButton:(id)arg1 actions:(CDUnknownBlockType)arg2;
+- (id)_newButtonDivider;
 - (id)_newToolbarButton;
-- (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3 centerSingleButton:(_Bool)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3 options:(unsigned long long)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

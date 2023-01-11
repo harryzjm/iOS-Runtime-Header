@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _MRSetStateMessageProtobuf;
+@class MRNowPlayingState;
 
 @interface MRSetStateMessage
 {
+    MRNowPlayingState *_state;
 }
 
+- (void).cxx_destruct;
+- (unsigned long long)priority;
 - (unsigned long long)type;
-@property(readonly, nonatomic) _MRSetStateMessageProtobuf *state;
+@property(readonly, nonatomic) MRNowPlayingState *state;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
 - (id)initWithNowPlayingState:(id)arg1;
 
 @end

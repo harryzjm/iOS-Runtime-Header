@@ -16,7 +16,6 @@
 - (void)resetEvaluationCriteriaWithVariableSource:(id)arg1;
 - (id)outputIcon;
 - (id)icon;
-- (id)inputSourceInWorkflow:(id)arg1;
 - (id)inheritedOutputContentClassesInWorkflow:(id)arg1 context:(id)arg2;
 - (id)outputContentClasses;
 - (_Bool)hasChildren;
@@ -26,6 +25,7 @@
 - (_Bool)inputPassthrough;
 - (id)iconName;
 - (id)shortName;
+- (_Bool)displaysParameterSummary;
 - (id)createAccompanyingActionWithMode:(long long)arg1;
 - (id)serializedParameters;
 - (void)generateGroupingIdentifierIfNecessary;

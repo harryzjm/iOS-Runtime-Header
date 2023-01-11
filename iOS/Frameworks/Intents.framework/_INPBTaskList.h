@@ -15,7 +15,6 @@
 @interface _INPBTaskList : PBCodable <_INPBTaskList, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBDateTime *_createdDateTime;
     _INPBDataString *_groupName;
     NSString *_identifier;
@@ -26,14 +25,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)tasksType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSArray *tasks; // @synthesize tasks=_tasks;
 @property(retain, nonatomic) _INPBDateTime *modifiedDateTime; // @synthesize modifiedDateTime=_modifiedDateTime;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
 @property(retain, nonatomic) _INPBDateTime *createdDateTime; // @synthesize createdDateTime=_createdDateTime;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

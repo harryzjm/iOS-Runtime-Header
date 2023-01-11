@@ -8,24 +8,28 @@
 
 #import <GeoServices/GEOMapItemPhoto-Protocol.h>
 
-@class GEOPDCaptionedPhoto, GEOPDPhoto, NSArray, NSString, NSURL;
+@class GEOPDCaptionedPhoto, GEOPDPhoto, NSString, NSURL;
+@protocol GEOPhotoInfoSource;
 
 @interface _GEOPlaceDataPhoto : NSObject <GEOMapItemPhoto>
 {
     GEOPDPhoto *_photo;
     GEOPDCaptionedPhoto *_captionedPhoto;
-    NSArray *_sortedPhotoInfos;
+    id <GEOPhotoInfoSource> _photoInfoSource;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *backgroundJoeColor;
 @property(readonly, nonatomic) _Bool businessProvided;
 @property(readonly, nonatomic) _Bool highQuality;
 @property(readonly, nonatomic) double sizeRatio;
+- (id)bestPhotoForSize:(struct CGSize)arg1 options:(id)arg2;
+- (id)bestPhotoForFrameSize:(struct CGSize)arg1 displayScale:(double)arg2 options:(id)arg3;
 - (id)bestPhotoForSize:(struct CGSize)arg1 allowSmaller:(_Bool)arg2;
 - (id)largestPhoto;
 @property(readonly, nonatomic) NSString *uid;
 @property(readonly, nonatomic) _Bool useGallery;
-@property(readonly, nonatomic) _Bool displayFullPhotoInline;
+@property(readonly, nonatomic) _Bool displayFullScreenPhotoGallery;
 @property(readonly, nonatomic) NSURL *licenseURL;
 @property(readonly, nonatomic) NSString *licenseDescription;
 @property(readonly, nonatomic) NSString *caption;

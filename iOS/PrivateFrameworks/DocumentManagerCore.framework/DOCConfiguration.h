@@ -18,6 +18,7 @@
     _Bool _forPickingDocuments;
     _Bool _forPickingFolders;
     _Bool _supportsRemovableFileProviders;
+    _Bool _forPickingDownloadsFolder;
     _Bool _isContentManaged;
     _Bool _neverCreateBookmarkForOpenInPlace;
     _Bool _pickingItemsShouldBumpLastOpenDate;
@@ -58,6 +59,7 @@
 + (id)configurationForExportingDocumentsToURLs:(id)arg1 mode:(unsigned long long)arg2;
 + (id)configurationForImportingDocumentsWithContentTypes:(id)arg1 mode:(unsigned long long)arg2;
 + (id)configurationForOpeningDocumentsOfApplicationWithBundleIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
 @property double thumbnailFetchingTimeOut; // @synthesize thumbnailFetchingTimeOut=_thumbnailFetchingTimeOut;
 @property(copy) NSArray *forbiddenActionIdentifiers; // @synthesize forbiddenActionIdentifiers=_forbiddenActionIdentifiers;
@@ -84,6 +86,7 @@
 @property _Bool pickingItemsShouldBumpLastOpenDate; // @synthesize pickingItemsShouldBumpLastOpenDate=_pickingItemsShouldBumpLastOpenDate;
 @property _Bool neverCreateBookmarkForOpenInPlace; // @synthesize neverCreateBookmarkForOpenInPlace=_neverCreateBookmarkForOpenInPlace;
 @property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
+@property _Bool forPickingDownloadsFolder; // @synthesize forPickingDownloadsFolder=_forPickingDownloadsFolder;
 @property _Bool supportsRemovableFileProviders; // @synthesize supportsRemovableFileProviders=_supportsRemovableFileProviders;
 @property _Bool forPickingFolders; // @synthesize forPickingFolders=_forPickingFolders;
 @property _Bool forPickingDocuments; // @synthesize forPickingDocuments=_forPickingDocuments;
@@ -96,8 +99,8 @@
 @property _Bool shouldIgnoreInteractionMode; // @synthesize shouldIgnoreInteractionMode=_shouldIgnoreInteractionMode;
 @property unsigned long long interactionMode; // @synthesize interactionMode=_interactionMode;
 @property(retain) DOCConcreteLocation *defaultLocation; // @synthesize defaultLocation=_defaultLocation;
-- (void).cxx_destruct;
 - (unsigned long long)interactionModeForPreparing;
+@property(readonly) _Bool canLongPressInitiateSidebarReordering;
 @property(readonly) _Bool isPopoverOrWidget;
 @property(readonly) _Bool isWidget;
 @property(readonly) _Bool isPopover;

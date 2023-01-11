@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <ContentKit/NSSecureCoding-Protocol.h>
-#import <ContentKit/UIActivityItemSource-Protocol.h>
 #import <ContentKit/WFContentItemClass-Protocol.h>
 #import <ContentKit/WFCopying-Protocol.h>
 
-@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, UIImage, WFRepresentation, WFType;
+@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, WFContentAttributionSet, WFImage, WFRepresentation, WFType;
 
-@interface WFContentItem : NSObject <UIActivityItemSource, WFContentItemClass, WFCopying, NSSecureCoding>
+@interface WFContentItem : NSObject <WFContentItemClass, WFCopying, NSSecureCoding>
 {
+    WFContentAttributionSet *_attributionSet;
     NSMutableDictionary *_representationsByType;
     NSMutableDictionary *_subItemsByClass;
     WFType *_internalRepresentationType;
@@ -42,6 +42,7 @@
 + (id)allProperties;
 + (id)properties;
 + (id)propertyBuilders;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (_Bool)canLowercaseTypeDescription;
 + (id)countDescription;
 + (id)localizedPluralFilterDescription;
@@ -56,17 +57,24 @@
 + (id)ownedPasteboardTypes;
 + (id)ownedTypes;
 + (_Bool)isAvailableOnPlatform:(long long)arg1;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3;
-+ (id)itemFromSerializedItem:(id)arg1 withItemClass:(Class)arg2 forType:(id)arg3 nameIfKnown:(id)arg4 sourceName:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
++ (id)itemFromSerializedItem:(id)arg1 withItemClass:(Class)arg2 forType:(id)arg3 nameIfKnown:(id)arg4 sourceName:(id)arg5 attributionSet:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (void)getContentItemFromSerializedItem:(id)arg1 sourceName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)supportsSecureCoding;
 + (_Bool)hasFileOutput;
 + (_Bool)hasStringOutput;
 + (_Bool)isContentItemSubclass;
++ (id)itemWithFile:(id)arg1 attributionSet:(id)arg2;
 + (id)itemWithFile:(id)arg1;
++ (id)itemWithRepresentation:(id)arg1 attributionSet:(id)arg2 includesDefaultAttributionSet:(_Bool)arg3;
++ (id)itemWithRepresentation:(id)arg1 attributionSet:(id)arg2;
 + (id)itemWithRepresentation:(id)arg1;
++ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(_Bool)arg4;
++ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3;
 + (id)itemWithRepresentation:(id)arg1 forType:(id)arg2;
++ (id)itemWithObject:(id)arg1 named:(id)arg2 attributionSet:(id)arg3;
 + (id)itemWithObject:(id)arg1 named:(id)arg2;
++ (id)itemWithObject:(id)arg1 attributionSet:(id)arg2;
 + (id)itemWithObject:(id)arg1;
 + (id)badCoercionErrorForObjectClass:(Class)arg1;
 + (id)badCoercionErrorForType:(id)arg1;
@@ -76,11 +84,11 @@
 + (id)badCoercionErrorWithReasonString:(id)arg1;
 + (_Bool)errorIsBadCoercionError:(id)arg1;
 + (id)pasteboardValueClasses;
-+ (id)activityItemClasses;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) WFType *internalRepresentationType; // @synthesize internalRepresentationType=_internalRepresentationType;
 @property(retain, nonatomic) NSMutableDictionary *subItemsByClass; // @synthesize subItemsByClass=_subItemsByClass;
 @property(retain, nonatomic) NSMutableDictionary *representationsByType; // @synthesize representationsByType=_representationsByType;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) WFContentAttributionSet *attributionSet; // @synthesize attributionSet=_attributionSet;
 - (id)subItemForClass:(Class)arg1;
 - (id)subItemsForClass:(Class)arg1;
 - (void)setSubItems:(id)arg1 forClass:(Class)arg2;
@@ -95,8 +103,10 @@
 - (void)setRepresentations:(id)arg1 forType:(id)arg2;
 - (id)representationForType:(id)arg1;
 - (id)representationsForType:(id)arg1;
-- (id)initWithRepresentation:(id)arg1 forType:(id)arg2;
-@property(readonly, copy) NSString *description;
+- (id)initWithRepresentationsByType:(id)arg1 forType:(id)arg2 subItemsByClass:(id)arg3 attributionSet:(id)arg4 includesDefaultAttributionSet:(_Bool)arg5;
+- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(_Bool)arg4;
+- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3;
+- (id)description;
 - (id)allSupportedItemClasses;
 - (id)supportedItemClasses;
 - (id)allSupportedTypes;
@@ -108,10 +118,11 @@
 - (id)ownedTypes;
 - (void)getPreferredFileSize:(CDUnknownBlockType)arg1;
 - (void)getPreferredFileExtension:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) UIImage *icon;
+@property(readonly, nonatomic) WFImage *icon;
 - (id)preferredFileType;
 - (id)preferredObjectType;
 - (id)preferredTypeOfClass:(Class)arg1;
+- (id)allowedClassesForDecodingInternalRepresentations;
 - (_Bool)includesFileRepresentationInSerializedItem;
 - (id)additionalRepresentationsForSerialization;
 - (id)metadataForSerialization;
@@ -126,6 +137,7 @@
 - (_Bool)canPerformCoercion:(id)arg1;
 - (void)performCoercion:(id)arg1;
 - (id)typeForCoercionRequest:(id)arg1;
+- (id)contentItemByMergingAttributionSet:(id)arg1;
 - (id)generateSubItemsForItemClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)generateSubItemsForItemClasses:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)generateFirstLevelSubItemsForItemClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
@@ -137,7 +149,7 @@
 - (id)copyWithName:(id)arg1;
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)internalRepresentationForCopying;
+- (id)internalRepresentationForCopyingWithName:(id)arg1;
 - (_Bool)hasStringOutput;
 - (id)internalName;
 - (void)getTitle:(CDUnknownBlockType)arg1;
@@ -176,17 +188,6 @@
 - (void)getFileRepresentations:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)getFileRepresentation:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)getObjectRepresentation:(CDUnknownBlockType)arg1 forClass:(Class)arg2;
-- (void)prepareForActivityItemPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (_Bool)shouldUseObjectRepresentation;
-- (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
-- (id)activityViewControllerPlaceholderItem:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

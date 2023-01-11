@@ -6,23 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface DAEASOAuthIdentity : NSObject
 {
     NSString *_username;
     NSString *_displayName;
-    NSString *_token;
+    NSString *_accessToken;
     NSString *_refreshToken;
+    NSString *_oauthURI;
     NSString *_tokenRequestURI;
+    NSData *_jwksData;
+    NSString *_jwksURI;
+    NSString *_issuer;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *issuer; // @synthesize issuer=_issuer;
+@property(copy, nonatomic) NSString *jwksURI; // @synthesize jwksURI=_jwksURI;
+@property(copy, nonatomic) NSData *jwksData; // @synthesize jwksData=_jwksData;
 @property(copy, nonatomic) NSString *tokenRequestURI; // @synthesize tokenRequestURI=_tokenRequestURI;
+@property(copy, nonatomic) NSString *oauthURI; // @synthesize oauthURI=_oauthURI;
 @property(copy, nonatomic) NSString *refreshToken; // @synthesize refreshToken=_refreshToken;
-@property(copy, nonatomic) NSString *token; // @synthesize token=_token;
+@property(copy, nonatomic) NSString *accessToken; // @synthesize accessToken=_accessToken;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
-- (void).cxx_destruct;
 
 @end
 

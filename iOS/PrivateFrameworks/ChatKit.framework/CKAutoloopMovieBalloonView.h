@@ -15,10 +15,10 @@
     _Bool _isMuted;
     _Bool _isListeningToVideoPlayer;
     CKMovieMediaObject *_mediaObject;
+    UIImageView *_muteButton;
     ISVideoPlayerUIView *_videoPlayer;
     ISWrappedAVPlayer *_avPlayer;
     ISWrappedAVAudioSession *_audioSession;
-    UIImageView *_muteButton;
     UIView *_snapshotView;
 }
 
@@ -27,16 +27,16 @@
 + (Class)VideoPlayerUIViewClass;
 + (Class)AVPlayerLayerClass;
 + (Class)AVPlayerClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isListeningToVideoPlayer; // @synthesize isListeningToVideoPlayer=_isListeningToVideoPlayer;
 @property(retain, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property(nonatomic) _Bool isMuted; // @synthesize isMuted=_isMuted;
-@property(retain, nonatomic) UIImageView *muteButton; // @synthesize muteButton=_muteButton;
 @property(retain, nonatomic) ISWrappedAVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
 @property(retain, nonatomic) ISWrappedAVPlayer *avPlayer; // @synthesize avPlayer=_avPlayer;
 @property(retain, nonatomic) ISVideoPlayerUIView *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
+@property(retain, nonatomic) UIImageView *muteButton; // @synthesize muteButton=_muteButton;
 @property(nonatomic) _Bool isJellyfishVideo; // @synthesize isJellyfishVideo=_isJellyfishVideo;
 @property(retain, nonatomic) CKMovieMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
-- (void).cxx_destruct;
 - (void)previewDidChange:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)avPlayerDidDeallocate;
@@ -49,6 +49,8 @@
 - (_Bool)_thermalStateAcceptableForLooping;
 - (void)tapGestureRecognized:(id)arg1;
 - (void)didMoveToWindow;
+- (void)prepareForAcknowledgementDismissal;
+- (void)prepareForAcknowledgementDisplay;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -58,7 +60,7 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

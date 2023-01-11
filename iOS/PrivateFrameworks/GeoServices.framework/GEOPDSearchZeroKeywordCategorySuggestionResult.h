@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSearchZeroKeywordCategorySuggestionResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_categorys;
     NSMutableArray *_zeroKeywordEntrys;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_categorys:1;
         unsigned int read_zeroKeywordEntrys:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_categorys:1;
-        unsigned int wrote_zeroKeywordEntrys:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,22 +42,23 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)zeroKeywordEntryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)zeroKeywordEntrysCount;
-- (void)_addNoFlagsZeroKeywordEntry:(id)arg1;
 - (void)addZeroKeywordEntry:(id)arg1;
 - (void)clearZeroKeywordEntrys;
 @property(retain, nonatomic) NSMutableArray *zeroKeywordEntrys;
-- (void)_readZeroKeywordEntrys;
 - (id)categoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categorysCount;
-- (void)_addNoFlagsCategory:(id)arg1;
 - (void)addCategory:(id)arg1;
 - (void)clearCategorys;
 @property(retain, nonatomic) NSMutableArray *categorys;
-- (void)_readCategorys;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -7,12 +7,12 @@
 #import <ActionKit/NSObject-Protocol.h>
 
 @class NSError, WFAction, WFContentCollection, WFWorkflowController, WFWorkflowControllerState;
-@protocol WFActionParameterInputProvider, WFUserInterface;
+@protocol WFActionParameterInputProvider, WFUserInterfaceHost;
 
 @protocol WFWorkflowControllerDelegate <NSObject>
 
 @optional
-- (id <WFUserInterface>)workflowController:(WFWorkflowController *)arg1 userInterfaceForAction:(WFAction *)arg2;
+- (id <WFUserInterfaceHost>)workflowController:(WFWorkflowController *)arg1 userInterfaceForAction:(WFAction *)arg2;
 - (id <WFActionParameterInputProvider>)workflowController:(WFWorkflowController *)arg1 parameterInputProviderForAction:(WFAction *)arg2;
 - (_Bool)workflowController:(WFWorkflowController *)arg1 handleUnsupportedEnvironmentForAction:(WFAction *)arg2 currentState:(WFWorkflowControllerState *)arg3 completionHandler:(void (^)(WFContentCollection *, NSError *))arg4;
 - (_Bool)workflowController:(WFWorkflowController *)arg1 handleUnsupportedUserInterfaceForAction:(WFAction *)arg2 currentState:(WFWorkflowControllerState *)arg3 completionHandler:(void (^)(void))arg4;

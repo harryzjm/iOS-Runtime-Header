@@ -4,21 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHFetchResult, PXDisplayTitleInfo;
-@protocol PXDisplayAssetCollection;
+@class PHFetchResult, PXAssetCollectionReference, PXAssetReference, PXAssetsDataSource, PXDisplayTitleInfo;
+@protocol PXDisplayAssetCollection, UIDragSession, UIDropSession;
 
 @interface PXAssetCollectionActionPerformer
 {
-    id <PXDisplayAssetCollection> _assetCollection;
+    PXAssetCollectionReference *_assetCollectionReference;
     PXDisplayTitleInfo *_displayTitleInfo;
     PHFetchResult *_people;
+    PXAssetReference *_dropTargetAssetReference;
+    id <UIDragSession> _dragSession;
+    id <UIDropSession> _dropSession;
+    PXAssetsDataSource *_assetsDataSource;
+    PHFetchResult *_assetsFetchResult;
 }
 
-@property(readonly, nonatomic) PHFetchResult *people; // @synthesize people=_people;
-@property(readonly, nonatomic) PXDisplayTitleInfo *displayTitleInfo; // @synthesize displayTitleInfo=_displayTitleInfo;
-@property(readonly, nonatomic) id <PXDisplayAssetCollection> assetCollection; // @synthesize assetCollection=_assetCollection;
 - (void).cxx_destruct;
-- (id)initWithActionType:(id)arg1 assetCollection:(id)arg2 displayTitleInfo:(id)arg3 people:(id)arg4;
+@property(retain, nonatomic) PHFetchResult *assetsFetchResult; // @synthesize assetsFetchResult=_assetsFetchResult;
+@property(retain, nonatomic) PXAssetsDataSource *assetsDataSource; // @synthesize assetsDataSource=_assetsDataSource;
+@property(retain, nonatomic) id <UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
+@property(retain, nonatomic) id <UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
+@property(retain, nonatomic) PXAssetReference *dropTargetAssetReference; // @synthesize dropTargetAssetReference=_dropTargetAssetReference;
+@property(retain, nonatomic) PHFetchResult *people; // @synthesize people=_people;
+@property(readonly, nonatomic) PXDisplayTitleInfo *displayTitleInfo; // @synthesize displayTitleInfo=_displayTitleInfo;
+@property(readonly, nonatomic) PXAssetCollectionReference *assetCollectionReference; // @synthesize assetCollectionReference=_assetCollectionReference;
+@property(readonly, nonatomic) id <PXDisplayAssetCollection> assetCollection;
+- (id)initWithActionType:(id)arg1 assetCollectionReference:(id)arg2 displayTitleInfo:(id)arg3;
 - (id)initWithActionType:(id)arg1;
 
 @end

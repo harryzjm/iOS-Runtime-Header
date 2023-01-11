@@ -14,16 +14,16 @@
     NSObject<OS_xpc_object> *_conn;
     NSObject<OS_dispatch_queue> *_eventQueue;
     _Bool _ownsQueue;
+    NSString *_bundleID;
     CDUnknownBlockType _messageHandler;
     CDUnknownBlockType _disconnectHandler;
     id _context;
-    NSString *_bundleID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType disconnectHandler; // @synthesize disconnectHandler=_disconnectHandler;
 @property(copy, nonatomic) CDUnknownBlockType messageHandler; // @synthesize messageHandler=_messageHandler;
-- (void).cxx_destruct;
 - (void)_setEventHandlerOnConnection:(id)arg1;
 - (void)_handleXPCMessage:(id)arg1;
 - (void)shutdown;

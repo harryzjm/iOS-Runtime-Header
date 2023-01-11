@@ -54,6 +54,7 @@
     unsigned int _leftPresetBitmask;
     unsigned int _rightPresetBitmask;
     int _availableInputEars;
+    int _earsSupportingWatch;
     NSString *leftUUID;
     NSString *rightUUID;
     NSString *name;
@@ -95,9 +96,12 @@
     NSDate *_rightBatteryLowDate;
 }
 
++ (id)deviceIDFromLeftID:(id)arg1 andRightID:(id)arg2;
 + (id)characteristicsUUIDs;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool rightPeripheralPaired; // @synthesize rightPeripheralPaired=_rightPeripheralPaired;
 @property(nonatomic) _Bool leftPeripheralPaired; // @synthesize leftPeripheralPaired=_leftPeripheralPaired;
+@property(nonatomic) int earsSupportingWatch; // @synthesize earsSupportingWatch=_earsSupportingWatch;
 @property(nonatomic) int availableInputEars; // @synthesize availableInputEars=_availableInputEars;
 @property(retain, nonatomic) NSDate *rightBatteryLowDate; // @synthesize rightBatteryLowDate=_rightBatteryLowDate;
 @property(retain, nonatomic) NSDate *leftBatteryLowDate; // @synthesize leftBatteryLowDate=_leftBatteryLowDate;
@@ -166,12 +170,12 @@
 @property(retain, nonatomic) NSString *name; // @synthesize name;
 @property(retain, nonatomic) NSString *rightUUID; // @synthesize rightUUID;
 @property(retain, nonatomic) NSString *leftUUID; // @synthesize leftUUID;
-- (void).cxx_destruct;
 - (unsigned long long)deviceType;
 - (unsigned long long)requiredProperties;
 - (id)serviceUUID;
 - (_Bool)isFakeDevice;
 - (id)persistentRepresentation;
+- (_Bool)addPeripheral:(id)arg1 asLeft:(_Bool)arg2;
 - (_Bool)addPeripheral:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)checkPairingStatusWithCompletion:(CDUnknownBlockType)arg1;

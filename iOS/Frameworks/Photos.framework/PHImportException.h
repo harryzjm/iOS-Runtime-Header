@@ -10,33 +10,24 @@
 
 @interface PHImportException : NSObject
 {
-    NSString *_message;
-    unsigned long long _importance;
+    NSDate *_createDate;
+    long long _type;
     NSString *_path;
     NSString *_sourceCodeFile;
     unsigned long long _lineNumber;
-    NSError *_nsError;
-    NSDate *_createDate;
+    NSError *_underlyingError;
 }
 
 + (id)logForAllExceptions:(id)arg1;
-+ (id)logForTerminalExceptionsForRecorder:(id)arg1;
-+ (id)logForMostImportantException:(id)arg1;
-+ (id)mostImportantException:(id)arg1;
-+ (id)exceptionWithMessage:(id)arg1 path:(id)arg2 importance:(unsigned long long)arg3 nsError:(id)arg4 file:(char *)arg5 line:(unsigned long long)arg6;
-@property(readonly, nonatomic) NSDate *createDate; // @synthesize createDate=_createDate;
-@property(readonly, nonatomic) NSError *nsError; // @synthesize nsError=_nsError;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSError *underlyingError; // @synthesize underlyingError=_underlyingError;
 @property(readonly, nonatomic) unsigned long long lineNumber; // @synthesize lineNumber=_lineNumber;
 @property(readonly, nonatomic) NSString *sourceCodeFile; // @synthesize sourceCodeFile=_sourceCodeFile;
 @property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
-@property(readonly, nonatomic) unsigned long long importance; // @synthesize importance=_importance;
-@property(readonly, nonatomic) NSString *message; // @synthesize message=_message;
-- (void).cxx_destruct;
-- (id)logWithPrefix:(id)arg1;
+@property(readonly, nonatomic) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSDate *createDate; // @synthesize createDate=_createDate;
 - (id)description;
-@property(readonly, nonatomic) _Bool isTerminal;
-- (_Bool)isCritical;
-- (id)initWithMessage:(id)arg1 path:(id)arg2 importance:(unsigned long long)arg3 nsError:(id)arg4 file:(char *)arg5 line:(unsigned long long)arg6;
+- (id)initWithType:(long long)arg1 path:(id)arg2 underlyingError:(id)arg3 file:(char *)arg4 line:(unsigned long long)arg5;
 
 @end
 

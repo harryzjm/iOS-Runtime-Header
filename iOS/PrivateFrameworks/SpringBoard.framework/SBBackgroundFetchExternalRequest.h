@@ -14,11 +14,8 @@
     UIFetchContentInBackgroundAction *_action;
 }
 
-@property(readonly, nonatomic) UIFetchContentInBackgroundAction *action; // @synthesize action=_action;
 - (void).cxx_destruct;
-- (void)execute;
 - (void)dealloc;
-- (id)initForBundleID:(id)arg1;
 
 @end
 

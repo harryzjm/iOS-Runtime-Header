@@ -16,7 +16,6 @@
 }
 
 + (Class)simpleRequesterClass;
-+ (_Bool)skipNetworkForKeysWhenPreloading:(id)arg1;
 + (CDStruct_e4886f83 *)newExpiringTilesets;
 + (unsigned long long)expiringTilesetsCount;
 + (unsigned char)tileProviderIdentifier;
@@ -24,7 +23,6 @@
 - (void)tileRequesterFinished:(id)arg1;
 - (void)tileRequester:(id)arg1 receivedError:(id)arg2 forKey:(struct _GEOTileKey)arg3;
 - (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSetDB:(unsigned int)arg4 tileSet:(id)arg5 etag:(id)arg6 forKey:(struct _GEOTileKey)arg7 userInfo:(id)arg8;
-- (void)tryFinish;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;
 - (void)cancelKey:(const struct _GEOTileKey *)arg1;
 - (void)cancel;

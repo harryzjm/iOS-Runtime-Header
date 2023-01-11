@@ -6,10 +6,12 @@
 
 #import <Metal/MTLIndirectComputeCommand-Protocol.h>
 
-@class _MTLIndirectDispatchThreadgroupsArguments, _MTLIndirectDispatchThreadsArguments;
+@class _MTLImageBlockArguments, _MTLIndirectDispatchThreadgroupsArguments, _MTLIndirectDispatchThreadsArguments;
 
 @protocol MTLIndirectComputeCommandSPI <MTLIndirectComputeCommand>
 - (unsigned long long)getPipelineStateUniqueIdentifier;
+- (unsigned long long)getOptimizedStatus;
+- (_MTLImageBlockArguments *)getImageBlockSize;
 - (_Bool)hasBarrier;
 - (CDStruct_caaed6bc)getStageInRegion;
 - (unsigned long long)getThreadgroupMemoryLengthAtIndex:(unsigned long long)arg1;

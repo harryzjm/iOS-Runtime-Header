@@ -50,7 +50,7 @@
 - (id)bitmapByRenderingSimulatedMetricsContext:(id)arg1 forRequest:(id)arg2 scaleFactor:(double)arg3;
 - (id)updateScenesWithSceneUpdateRequests:(id)arg1;
 - (void)applyGlobalAndAdditionalSimulatedMetricsIfNeededWithContext:(id)arg1 during:(CDUnknownBlockType)arg2;
-- (id)renderImagesForRequests:(id)arg1;
+- (id)renderImageAndLayoutInfosForRequests:(id)arg1;
 - (_Bool)connectToRenderServerIfNeeded;
 
 // Remaining properties

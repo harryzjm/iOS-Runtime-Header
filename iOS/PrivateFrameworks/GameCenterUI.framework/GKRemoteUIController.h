@@ -21,11 +21,11 @@
     _Bool _complete;
     _Bool _isServerAuthenticated;
     int _layoutStyle;
-    UINavigationController *_navigationControllerWeak;
     NSString *_appleID;
     CDUnknownBlockType _completionHandler;
     NSError *_error;
     NSMutableArray *_objectModels;
+    UINavigationController *_navigationController;
     NSArray *_staticViewControllers;
     RUILoader *_loader;
     GKRemoteUIController *_presentedRemoteUIController;
@@ -43,6 +43,7 @@
 }
 
 + (id)remoteUIController;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKLocalPlayer *playerForRemoteUI; // @synthesize playerForRemoteUI=_playerForRemoteUI;
 @property(nonatomic) _Bool isServerAuthenticated; // @synthesize isServerAuthenticated=_isServerAuthenticated;
 @property(retain, nonatomic) NSString *alias; // @synthesize alias=_alias;
@@ -62,12 +63,12 @@
 @property(retain, nonatomic) GKRemoteUIController *presentedRemoteUIController; // @synthesize presentedRemoteUIController=_presentedRemoteUIController;
 @property(retain, nonatomic) RUILoader *loader; // @synthesize loader=_loader;
 @property(retain, nonatomic) NSArray *staticViewControllers; // @synthesize staticViewControllers=_staticViewControllers;
+@property(nonatomic) __weak UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property(retain, nonatomic) NSMutableArray *objectModels; // @synthesize objectModels=_objectModels;
 @property(nonatomic) _Bool shouldApplyGameCenterTheme; // @synthesize shouldApplyGameCenterTheme=_shouldApplyGameCenterTheme;
 @property(nonatomic) _Bool loading; // @synthesize loading=_loading;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-- (void).cxx_destruct;
 - (void)auxiliaryView:(id)arg1 pressedLink:(id)arg2 attributes:(id)arg3;
 - (void)auxiliaryView:(id)arg1 pressedButton:(id)arg2 attributes:(id)arg3;
 - (id)objectModel:(id)arg1 tableFooterViewForAttributes:(id)arg2 page:(id)arg3;
@@ -116,7 +117,6 @@
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
 - (void)updateAccountAndMarkComplete:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
-@property(nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationControllerWeak;
 - (id)init;
 - (id)initWithObjectModel:(id)arg1;
 

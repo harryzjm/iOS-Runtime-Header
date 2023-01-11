@@ -12,6 +12,8 @@
 @interface NEVPNConnection : NSObject
 {
     _Bool _initialized;
+    _Bool _installed;
+    _Bool _installNotify;
     int _sessionType;
     long long _status;
     NSDate *_connectedDate;
@@ -23,9 +25,13 @@
     NSError *_lastDisconnectError;
 }
 
++ (id)createConnectionForEnabledEnterpriseConfigurationWithName:(id)arg1;
 + (id)createConnectionForEnabledEnterpriseConfiguration;
 + (id)createDisconnectErrorWithDomain:(id)arg1 code:(unsigned int)arg2;
+- (void).cxx_destruct;
 @property(readonly) NSError *lastDisconnectError; // @synthesize lastDisconnectError=_lastDisconnectError;
+@property(nonatomic) _Bool installNotify; // @synthesize installNotify=_installNotify;
+@property(nonatomic) _Bool installed; // @synthesize installed=_installed;
 @property(nonatomic) _Bool initialized; // @synthesize initialized=_initialized;
 @property __weak NEVPNManager *weakmanager; // @synthesize weakmanager=_weakmanager;
 @property(readonly, nonatomic) int sessionType; // @synthesize sessionType=_sessionType;
@@ -35,7 +41,6 @@
 @property(readonly, nonatomic) NEConfigurationManager *configManager; // @synthesize configManager=_configManager;
 @property(readonly) NSDate *connectedDate; // @synthesize connectedDate=_connectedDate;
 @property(readonly) long long status; // @synthesize status=_status;
-- (void).cxx_destruct;
 - (void)resetLastDisconnectError:(id)arg1;
 - (void)reload;
 @property(readonly) NEVPNManager *manager;
@@ -47,7 +52,7 @@
 - (_Bool)startVPNTunnelWithOptions:(id)arg1 andReturnError:(id *)arg2;
 - (_Bool)startVPNTunnelAndReturnError:(id *)arg1;
 - (void)dealloc;
-- (id)initHeadless;
+- (id)initHeadlessWithName:(id)arg1;
 - (id)initWithType:(int)arg1;
 
 @end

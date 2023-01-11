@@ -13,10 +13,12 @@
 @interface GEOBusinessOptions : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributeKeys;
     NSMutableArray *_photoOptions;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _maxBusinessResults;
     _Bool _includeBusinessHours;
     _Bool _includeCenter;
@@ -27,12 +29,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_attributeKeys:1;
         unsigned int read_photoOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_attributeKeys:1;
-        unsigned int wrote_photoOptions:1;
-        unsigned int wrote_maxBusinessResults:1;
-        unsigned int wrote_includeBusinessHours:1;
-        unsigned int wrote_includeCenter:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -50,6 +47,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIncludeCenter;
@@ -60,18 +60,16 @@
 @property(nonatomic) _Bool includeBusinessHours;
 - (id)attributeKeyAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributeKeysCount;
-- (void)_addNoFlagsAttributeKey:(id)arg1;
 - (void)addAttributeKey:(id)arg1;
 - (void)clearAttributeKeys;
 @property(retain, nonatomic) NSMutableArray *attributeKeys;
-- (void)_readAttributeKeys;
 - (id)photoOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoOptionsCount;
-- (void)_addNoFlagsPhotoOptions:(id)arg1;
 - (void)addPhotoOptions:(id)arg1;
 - (void)clearPhotoOptions;
 @property(retain, nonatomic) NSMutableArray *photoOptions;
-- (void)_readPhotoOptions;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

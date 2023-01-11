@@ -4,29 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSArray.h>
-
 #import <ProactiveSupport/NSFastEnumeration-Protocol.h>
 
-@class _PASLazyPlist;
+@class _PASLPArrayContext;
+@protocol _PASLPReaderProtocol;
 
-@interface _PASLPArray : NSArray <NSFastEnumeration>
+@interface _PASLPArray <NSFastEnumeration>
 {
-    _PASLazyPlist *_lazyPlist;
-    const unsigned int *_storage;
-    unsigned long long _count;
+    id <_PASLPReaderProtocol> _reader;
+    _PASLPArrayContext *_context;
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjects:(const id *)arg1 count:(unsigned long long)arg2;
-- (id)initWithLazyPlist:(id)arg1 storage:(const unsigned int *)arg2 count:(unsigned long long)arg3;
+- (id)initWithLazyPlistReader:(id)arg1 context:(id)arg2;
 
 @end
 

@@ -14,7 +14,9 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestQueue;
 @property(readonly, nonatomic) _Bool supportsTextureAtlas;
 @property(readonly, nonatomic) PXGImageTexture *transparentTexture;
+@property(nonatomic) _Bool lowMemoryMode;
 @property(readonly, nonatomic) int presentationType;
+- (PXGImageTexture *)createAtlasForTextureAtlasManager:(id <PXGTextureAtlasManager>)arg1;
 - (id <PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_1b544862)arg1;
 - (PXGPayloadTexture *)createPayloadTextureFromPayload:(id <NSCopying>)arg1;
 - (PXGImageTexture *)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(struct CGAffineTransform)arg2;

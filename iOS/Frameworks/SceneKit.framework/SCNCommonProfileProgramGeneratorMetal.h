@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *_lightingInjectionPointRanges;
 }
 
+- (void)collectShaderForProgram:(struct __C3DFXMetalProgram *)arg1 newVertexFunctionName:(id)arg2 newFragmentFunctionName:(id)arg3 sourceCodeBlock:(CDUnknownBlockType)arg4 additionalFileBlock:(CDUnknownBlockType)arg5;
 - (struct __C3DFXProgram *)_newProgramWithHashCode:(struct __C3DProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 introspectionDataPtr:(void *)arg3;
 - (struct __C3DFXProgram *)_newProgramWithHashCodeWithFunctionConstants:(struct __C3DProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 introspectionDataPtr:(void *)arg3;
 - (void)dealloc;

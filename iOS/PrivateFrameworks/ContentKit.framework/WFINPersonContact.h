@@ -11,10 +11,14 @@
     INPerson *_person;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 + (id)contactWithPerson:(id)arg1;
-@property(retain, nonatomic) INPerson *person; // @synthesize person=_person;
 - (void).cxx_destruct;
+@property(retain, nonatomic) INPerson *person; // @synthesize person=_person;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (Class)classForCoder;
 - (id)wfSerializedRepresentation;
 - (id)inPerson;
 - (id)wfName;

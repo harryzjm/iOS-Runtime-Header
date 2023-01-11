@@ -14,8 +14,10 @@
 __attribute__((visibility("hidden")))
 @interface _TempToken : NSObject <GEOServerFormatToken>
 {
+    _Bool _shouldScaleUnits;
     unsigned int _value1;
     unsigned int _value2;
+    float _percentageValue;
     long long _type;
     NSString *_token;
     NSArray *_value3s;
@@ -26,17 +28,19 @@ __attribute__((visibility("hidden")))
     id <GEOServerFormatTokenCountdownValue> _countdownValue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <GEOServerFormatTokenCountdownValue> countdownValue; // @synthesize countdownValue=_countdownValue;
 @property(retain, nonatomic) NSArray *timeStampValues; // @synthesize timeStampValues=_timeStampValues;
 @property(retain, nonatomic) id <GEOTransitArtworkDataSource> artworkValue; // @synthesize artworkValue=_artworkValue;
 @property(retain, nonatomic) id <GEOServerFormatTokenPriceValue> priceValue; // @synthesize priceValue=_priceValue;
+@property(readonly, nonatomic) _Bool shouldScaleUnits; // @synthesize shouldScaleUnits=_shouldScaleUnits;
+@property(nonatomic) float percentageValue; // @synthesize percentageValue=_percentageValue;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
-@property(readonly, nonatomic) NSArray *value3s; // @synthesize value3s=_value3s;
+@property(retain, nonatomic) NSArray *value3s; // @synthesize value3s=_value3s;
 @property(nonatomic) unsigned int value2; // @synthesize value2=_value2;
 @property(nonatomic) unsigned int value1; // @synthesize value1=_value1;
 @property(retain, nonatomic) NSString *token; // @synthesize token=_token;
 @property(nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)initWithToken:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

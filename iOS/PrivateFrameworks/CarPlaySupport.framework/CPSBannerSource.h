@@ -6,58 +6,54 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPBannerProviding-Protocol.h>
 #import <CarPlaySupport/CPSApplicationStateObserving-Protocol.h>
 #import <CarPlaySupport/CPSBannerItemDelegate-Protocol.h>
-#import <CarPlaySupport/SBUIBannerSource-Protocol.h>
-#import <CarPlaySupport/SBUIBannerTargetManagerObserver-Protocol.h>
+#import <CarPlaySupport/CPSBannerViewControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, NSTimer, NSUUID, UIView;
-@protocol CPSBannerSourceDelegate, SBUIBannerTarget, SBUIBannerView;
+@class BNBannerSource, CPSApplicationStateMonitor, CPSBannerViewController, NSString, NSTimer, NSUUID;
+@protocol CPBannerDelegate;
 
-@interface CPSBannerSource : NSObject <CPSBannerItemDelegate, SBUIBannerTargetManagerObserver, CPBannerProviding, SBUIBannerSource, CPSApplicationStateObserving>
+@interface CPSBannerSource : NSObject <CPSBannerItemDelegate, CPSBannerViewControllerDelegate, BSInvalidatable, CPBannerProviding, CPSApplicationStateObserving>
 {
-    _Bool _applicationActive;
     _Bool _rateLimited;
-    id <CPSBannerSourceDelegate> _delegate;
-    NSMutableArray *_queuedItems;
-    id <SBUIBannerTarget> _bannerTarget;
-    UIView<SBUIBannerView> *_displayedBannerView;
+    NSString *_bundleIdentifier;
+    id <CPBannerDelegate> _delegate;
+    CPSApplicationStateMonitor *_applicationStateMonitor;
+    BNBannerSource *_bannerKitSource;
+    CPSBannerViewController *_presentedBannerViewController;
     NSTimer *_dimissTimer;
     NSUUID *_lastUserDismissedIdentifier;
     NSTimer *_lastUserDismissedIdentifierResetTimer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *lastUserDismissedIdentifierResetTimer; // @synthesize lastUserDismissedIdentifierResetTimer=_lastUserDismissedIdentifierResetTimer;
 @property(retain, nonatomic) NSUUID *lastUserDismissedIdentifier; // @synthesize lastUserDismissedIdentifier=_lastUserDismissedIdentifier;
 @property(nonatomic, getter=isRateLimited) _Bool rateLimited; // @synthesize rateLimited=_rateLimited;
-@property(nonatomic, getter=isApplicationActive) _Bool applicationActive; // @synthesize applicationActive=_applicationActive;
 @property(retain, nonatomic) NSTimer *dimissTimer; // @synthesize dimissTimer=_dimissTimer;
-@property(nonatomic) __weak UIView<SBUIBannerView> *displayedBannerView; // @synthesize displayedBannerView=_displayedBannerView;
-@property(nonatomic) __weak id <SBUIBannerTarget> bannerTarget; // @synthesize bannerTarget=_bannerTarget;
-@property(retain, nonatomic) NSMutableArray *queuedItems; // @synthesize queuedItems=_queuedItems;
-@property(nonatomic) __weak id <CPSBannerSourceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)sceneActivationStateChangedTo:(id)arg1;
+@property(retain, nonatomic) CPSBannerViewController *presentedBannerViewController; // @synthesize presentedBannerViewController=_presentedBannerViewController;
+@property(retain, nonatomic) BNBannerSource *bannerKitSource; // @synthesize bannerKitSource=_bannerKitSource;
+@property(retain, nonatomic) CPSApplicationStateMonitor *applicationStateMonitor; // @synthesize applicationStateMonitor=_applicationStateMonitor;
+@property(nonatomic) __weak id <CPBannerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (void)_resetLastUserDismissedIdentifierTimerFired:(id)arg1;
 - (void)_resetLastUserDismissedIdentifierTimer;
 - (void)_dismissTimerFired:(id)arg1;
 - (void)_resetDismissTimer;
-- (void)bannerViewDidDismiss:(id)arg1 forReason:(int)arg2;
-- (void)bannerViewWillDismiss:(id)arg1 forReason:(int)arg2;
-- (void)bannerViewDidAppear:(id)arg1;
-- (void)bannerViewWillAppear:(id)arg1;
-- (id)newBannerViewForContext:(id)arg1;
-- (id)dequeueNextBannerItemForTarget:(id)arg1;
-- (id)peekNextBannerItemForTarget:(id)arg1;
-- (void)bannerTargetManager:(id)arg1 didRemoveTarget:(id)arg2;
-- (void)bannerTargetManager:(id)arg1 didAddTarget:(id)arg2;
-- (void)bannerTappedWithIdentifier:(id)arg1;
 - (void)_flushQueue;
+- (void)_revokePresentedBannerWithReason:(id)arg1;
+- (void)_postBannerRequestForBannerItem:(id)arg1;
 - (void)_enqueueBannerItem:(id)arg1;
+- (void)bannerViewController:(id)arg1 requestsDismissalWithReason:(id)arg2;
+- (void)bannerTappedWithIdentifier:(id)arg1;
+- (void)sceneActivationStateChangedTo:(id)arg1;
 - (void)postBannerForNavigationAlert:(id)arg1;
 - (void)postBannerForManeuver:(id)arg1 travelEstimates:(id)arg2;
-- (id)initWithDelegate:(id)arg1;
+- (void)applicationStateMonitor:(id)arg1 didBecomeActive:(_Bool)arg2;
+- (void)invalidate;
+- (id)initWithBundleIdentifier:(id)arg1 delegate:(id)arg2 applicationStateMonitor:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

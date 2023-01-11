@@ -8,6 +8,7 @@
 
 @protocol IDSXPCDaemon
 - (void)interalTestingCollaboratorWithCompletion:(void (^)(id <IDSXPCInternalTesting>, NSError *))arg1;
+- (void)activityMonitorCollaboratorWithCompletion:(void (^)(id <IDSXPCActivityMonitor>, NSError *))arg1;
 - (void)registrationCollaboratorWithCompletion:(void (^)(id <IDSXPCRegistration>, NSError *))arg1;
 - (void)opportunisticCollaboratorWithCompletion:(void (^)(id <IDSXPCOpportunistic>, NSError *))arg1;
 - (void)reunionSyncCollaboratorForClientProcessName:(NSString *)arg1 withCompletion:(void (^)(id <IDSXPCReunionSync>, NSError *))arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSUserDefaults;
+@class NSArray, NSString, NSUserDefaults;
 
 @interface MRUserSettings : NSObject
 {
@@ -15,12 +15,13 @@
 }
 
 + (id)currentSettings;
-@property(nonatomic, getter=isExternalDevicePairingAllowed) _Bool externalDevicePairingAllowed; // @synthesize externalDevicePairingAllowed=_externalDevicePairingAllowed;
 - (void).cxx_destruct;
-- (void)_removeValueForKey:(id)arg1;
-- (long long)_integerValueForKey:(id)arg1 usingDefaultValue:(long long)arg2;
-- (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(double)arg2;
-- (_Bool)_boolValueForKey:(id)arg1 usingDefaultValue:(_Bool)arg2;
+@property(nonatomic, getter=isExternalDevicePairingAllowed) _Bool externalDevicePairingAllowed; // @synthesize externalDevicePairingAllowed=_externalDevicePairingAllowed;
+@property(readonly, nonatomic) _Bool useClusterDevices;
+@property(readonly, nonatomic) _Bool useOutputDeviceTransport;
+@property(readonly, nonatomic) _Bool useAPSyncAPI;
+@property(readonly, nonatomic) _Bool supportNanoLinkAgent;
+@property(retain, nonatomic) NSString *lastBootUUID;
 - (void)setLocalLastPlayingDate:(id)arg1;
 - (id)localLastPlayingDate;
 - (void)setLocalPlaybackState:(unsigned int)arg1;
@@ -36,6 +37,9 @@
 @property(readonly, nonatomic) _Bool supportLastPlayingDevice;
 @property(readonly, nonatomic) _Bool supportMigration;
 @property(readonly, nonatomic) _Bool supportProximityMigration;
+@property(readonly, nonatomic) NSArray *remoteControlDiscoveryWhitelist;
+@property(readonly, nonatomic) NSArray *remoteControlDiscoveryBlacklist;
+@property(readonly, nonatomic) NSArray *jsonClientUIDs;
 @property(readonly, nonatomic) double launchApplicationTimeoutInterval;
 @property(readonly, nonatomic) double endpointRecentlyUserSelectedInterval;
 @property(readonly, nonatomic) double mediaRecentlyPlayedInterval;
@@ -50,7 +54,8 @@
 @property(readonly, nonatomic) _Bool computeNowPlayingApplication;
 @property(readonly, nonatomic) double nowPlayingApplicationTimeout;
 @property(readonly, nonatomic) double queuedCommandsTimeoutInterval;
-@property(retain, nonatomic) NSArray *connectedClientPIDs;
+@property(retain, nonatomic) NSArray *expectedClientAuditTokens;
+@property(retain, nonatomic) NSArray *connectedClientAuditTokens;
 @property(readonly, nonatomic) _Bool useGenericTransportForHostedEndpoints;
 @property(readonly, nonatomic) _Bool useSystemAudioContextForAirPlayTransport;
 @property(readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
@@ -69,6 +74,8 @@
 @property(readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property(readonly, nonatomic) long long externalDeviceSocketQOSLevel;
 @property(readonly, nonatomic) _Bool hasExternalDeviceSocketQOSLevelSet;
+@property(readonly, nonatomic) _Bool shouldWakeDeviceForRemoteControlCommands;
+@property(readonly, nonatomic) _Bool verboseProtocolMessageLogging;
 @property(readonly, nonatomic) _Bool shouldLogArtwork;
 @property(readonly, nonatomic) _Bool shouldLogPairingSetupCode;
 @property(readonly, nonatomic) _Bool shouldInitializeRapportService;

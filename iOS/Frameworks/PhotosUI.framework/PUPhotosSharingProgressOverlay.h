@@ -6,15 +6,19 @@
 
 #import <UIKit/UIView.h>
 
+@class UIWindow;
+
 __attribute__((visibility("hidden")))
 @interface PUPhotosSharingProgressOverlay : UIView
 {
     _Bool _isShowing;
     UIView *_progressView;
+    UIWindow *_cachedMainWindow;
 }
 
-@property(retain, nonatomic) UIView *progressView; // @synthesize progressView=_progressView;
 - (void).cxx_destruct;
+@property(nonatomic) __weak UIWindow *cachedMainWindow; // @synthesize cachedMainWindow=_cachedMainWindow;
+@property(retain, nonatomic) UIView *progressView; // @synthesize progressView=_progressView;
 - (void)willRemoveSubview:(id)arg1;
 - (void)setShowing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)addProgressView:(id)arg1;
@@ -23,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)_grayScaleImageFromImage:(id)arg1;
 - (id)_screenshotImage;
 - (void)_installInStatusBarWindow;
-- (id)_statusBarWindow;
+- (id)_mainWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

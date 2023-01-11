@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)updateOperationsUntilUnlock;
++ (void)setOperationsUntilUnlock:(int)arg1;
++ (id)popDecryptRefKeyFailure;
++ (void)failNextDecryptRefKey:(id)arg1;
 + (void)unlockAllClasses;
 + (void)lockClassA_C;
 + (void)lockClassA;

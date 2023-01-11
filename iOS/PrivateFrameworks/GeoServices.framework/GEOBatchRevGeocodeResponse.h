@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOBatchRevGeocodeResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_batchPlaceResults;
     NSMutableArray *_clusters;
     double _timestamp;
     NSMutableArray *_versionDomains;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _statusCode;
     unsigned int _ttl;
     unsigned int _version;
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_batchPlaceResults:1;
         unsigned int read_clusters:1;
         unsigned int read_versionDomains:1;
-        unsigned int wrote_batchPlaceResults:1;
-        unsigned int wrote_clusters:1;
-        unsigned int wrote_timestamp:1;
-        unsigned int wrote_versionDomains:1;
-        unsigned int wrote_statusCode:1;
-        unsigned int wrote_ttl:1;
-        unsigned int wrote_version:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,6 +50,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasTimestamp;
@@ -62,31 +61,27 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int version;
 - (id)versionDomainAtIndex:(unsigned long long)arg1;
 - (unsigned long long)versionDomainsCount;
-- (void)_addNoFlagsVersionDomain:(id)arg1;
 - (void)addVersionDomain:(id)arg1;
 - (void)clearVersionDomains;
 @property(retain, nonatomic) NSMutableArray *versionDomains;
-- (void)_readVersionDomains;
 @property(nonatomic) _Bool hasTtl;
 @property(nonatomic) unsigned int ttl;
 - (id)batchPlaceResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)batchPlaceResultsCount;
-- (void)_addNoFlagsBatchPlaceResult:(id)arg1;
 - (void)addBatchPlaceResult:(id)arg1;
 - (void)clearBatchPlaceResults;
 @property(retain, nonatomic) NSMutableArray *batchPlaceResults;
-- (void)_readBatchPlaceResults;
 - (id)clusterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clustersCount;
-- (void)_addNoFlagsCluster:(id)arg1;
 - (void)addCluster:(id)arg1;
 - (void)clearClusters;
 @property(retain, nonatomic) NSMutableArray *clusters;
-- (void)_readClusters;
 - (int)StringAsStatusCode:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatusCode;
 @property(nonatomic) int statusCode;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

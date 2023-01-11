@@ -20,11 +20,11 @@
     NSString *_headerSubtitle;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;
 @property(copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property(copy, nonatomic) NSString *buttonText; // @synthesize buttonText=_buttonText;
 @property(nonatomic) _Bool canSelectMultiplePasses; // @synthesize canSelectMultiplePasses=_canSelectMultiplePasses;
-- (void).cxx_destruct;
 - (void)_setNavigationBarEnabled:(_Bool)arg1;
 - (void)_setViewEnabledState:(_Bool)arg1;
 - (void)_continuousButtonPressed;
@@ -39,6 +39,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)willMoveToParentViewController:(id)arg1;
 - (id)initWithStyle:(long long)arg1 context:(long long)arg2;
 - (id)initWithPaymentPasses:(id)arg1 context:(long long)arg2 delegate:(id)arg3 peerPaymentAccount:(id)arg4;
 

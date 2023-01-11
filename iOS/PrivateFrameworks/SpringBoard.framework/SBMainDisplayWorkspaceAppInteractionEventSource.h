@@ -20,13 +20,14 @@
 }
 
 + (id)sharedInstance;
-@property(copy, nonatomic) NSString *currentFocusedBundleID; // @synthesize currentFocusedBundleID=_currentFocusedBundleID;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *currentFocusedBundleID; // @synthesize currentFocusedBundleID=_currentFocusedBundleID;
 - (id)_bundleIDsForIcons:(id)arg1;
 - (void)_iconVisibilityDidChange:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (void)_notifyTransition:(id)arg1 beginning:(_Bool)arg2;
+- (void)_webBookmarkUninstalled:(id)arg1;
 - (void)_userRemovedSuggestion:(id)arg1;
 - (void)applicationRestrictionController:(id)arg1 didUpdateVisibleTags:(id)arg2 hiddenTags:(id)arg3;
 - (void)_userQuitApplication:(id)arg1;

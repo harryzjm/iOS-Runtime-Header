@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
 @interface GEOSpatialLookupRequest : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _categorys;
     GEOLatLng *_center;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _maxResults;
     int _radius;
     struct {
@@ -24,10 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_radius:1;
         unsigned int read_categorys:1;
         unsigned int read_center:1;
-        unsigned int wrote_categorys:1;
-        unsigned int wrote_center:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_radius:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,25 +40,27 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsCategorys:(id)arg1;
 - (id)categorysAsString:(int)arg1;
 - (void)setCategorys:(int *)arg1 count:(unsigned long long)arg2;
 - (int)categoryAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsCategory:(int)arg1;
 - (void)addCategory:(int)arg1;
 - (void)clearCategorys;
 @property(readonly, nonatomic) int *categorys;
 @property(readonly, nonatomic) unsigned long long categorysCount;
-- (void)_readCategorys;
 @property(nonatomic) _Bool hasMaxResults;
 @property(nonatomic) int maxResults;
 @property(nonatomic) _Bool hasRadius;
 @property(nonatomic) int radius;
 @property(retain, nonatomic) GEOLatLng *center;
-- (void)_readCenter;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

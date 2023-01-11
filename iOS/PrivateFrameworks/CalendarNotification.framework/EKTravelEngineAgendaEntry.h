@@ -31,12 +31,8 @@
     NSString *_agendaEntryIdentifier;
 }
 
-+ (void)_accountForHypothesizerNeverHavingSentHypothesis;
-+ (void)_accountForHypothesizerSendingHypothesis;
-+ (void)_accountForGeocodingFailureWithError:(id)arg1;
-+ (void)_accountForLocationEnhancementSuccess;
-+ (void)_accountForNoLocationEnhancementNeeded;
 + (double)fuzzyMaximumInitialUpdateIntervalBeforeStartDate;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *agendaEntryIdentifier; // @synthesize agendaEntryIdentifier=_agendaEntryIdentifier;
 @property(nonatomic) double maximumTravelDurationEncountered; // @synthesize maximumTravelDurationEncountered=_maximumTravelDurationEncountered;
 @property(nonatomic) long long travelTimeThresholdExceededState; // @synthesize travelTimeThresholdExceededState=_travelTimeThresholdExceededState;
@@ -55,7 +51,6 @@
 @property(nonatomic) _Bool dismissed; // @synthesize dismissed=_dismissed;
 @property(copy, nonatomic) CDUnknownBlockType entrySignificantlyChangedBlock; // @synthesize entrySignificantlyChangedBlock=_entrySignificantlyChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
-- (void).cxx_destruct;
 - (void)_updateWithHypothesis:(id)arg1;
 - (void)_createHypothesizerForDestination:(id)arg1;
 - (id)_createSyntheticHypothesis;
@@ -64,13 +59,11 @@
 - (void)_enhanceLocation;
 - (void)_clearEverything;
 - (void)_sendFeedbackToHypothesizerForPostingNotification:(unsigned long long)arg1;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (id)emissionHypothesisRefreshBTAJobName;
-- (id)requestHypothesisRefreshBTAJobName;
+- (void)receivedAlarmNamed:(id)arg1;
+- (id)emissionHypothesisRefreshAlarmName;
+- (id)requestHypothesisRefreshAlarmName;
 - (void)_performAnalyticsPostProcessing;
 - (void)_updateTravelTimeExceededThresholdStateUsingExceededValue:(_Bool)arg1;
-- (void)_accountForTravelDurationThresholdExceededState;
-- (void)_accountForMaximumTravelDuration;
 - (void)_trackTTLCandidateEvent:(id)arg1;
 - (void)_accountForGeocodedEventEncounter;
 - (void)sendFeedbackForPostingLeaveNowNotification;
@@ -81,13 +74,13 @@
 - (void)_createEmissionHypothesisRefreshTimerWithDate:(id)arg1;
 - (void)_uninstallRequestHypothesisRefreshTimer;
 - (void)_createHypothesisRequestRefreshTimerWithDate:(id)arg1;
-- (void)removeBTAJobWithName:(id)arg1;
-- (void)createBTAJobWithName:(id)arg1 atDate:(id)arg2;
+- (void)removeAlarmWithName:(id)arg1;
+- (void)createAlarmWithName:(id)arg1 atDate:(id)arg2;
 - (void)cancelEmissionHypothesisRefresh;
 - (void)cancelHypothesisRefreshRequest;
 - (void)requestHypothesisRefreshAtDate:(id)arg1;
 - (void)_emissionHypothesisRefreshTimerFired;
-- (void)_requestHypothesisRefreshTimerFired:(id)arg1;
+- (void)_requestHypothesisRefreshTimerFired;
 - (void)_hypothesisRefreshTimerFired;
 - (void)updateWithOriginalEvent:(id)arg1;
 - (void)dealloc;

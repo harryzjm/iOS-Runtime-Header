@@ -10,6 +10,7 @@
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
+@protocol OS_xpc_object;
 
 @interface CSSearchContext : NSObject <NSSecureCoding, NSCopying>
 {
@@ -23,6 +24,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly) unsigned long long markedTextStart; // @synthesize markedTextStart=_markedTextStart;
 @property(readonly) NSString *markedText; // @synthesize markedText=_markedText;
 @property(readonly) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
@@ -30,11 +32,12 @@
 @property(readonly) unsigned long long maxItemsCount; // @synthesize maxItemsCount=_maxItemsCount;
 @property(readonly) NSString *userQuery; // @synthesize userQuery=_userQuery;
 @property(readonly) unsigned long long queryID; // @synthesize queryID=_queryID;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithXPCDictionary:(id)arg1;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *xpc_dictionary;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithQueryID:(unsigned long long)arg1 userQuery:(id)arg2 maxItemsCount:(unsigned long long)arg3 keyboardLanguage:(id)arg4 preferredLanguages:(id)arg5 markedText:(id)arg6 markedTextStart:(unsigned long long)arg7;

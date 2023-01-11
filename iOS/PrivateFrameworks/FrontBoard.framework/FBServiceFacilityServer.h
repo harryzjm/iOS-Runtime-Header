@@ -10,25 +10,23 @@
 #import <FrontBoard/FBSServiceFacilityManaging-Protocol.h>
 
 @class BSServiceConnectionListener, BSServiceDomainSpecification, NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
 
 @interface FBServiceFacilityServer : NSObject <BSServiceConnectionListenerDelegate, FBSServiceFacilityManaging>
 {
+    struct os_unfair_lock_s _lock;
     BSServiceDomainSpecification *_domain;
-    NSObject<OS_dispatch_queue> *_queue;
     BSServiceConnectionListener *_serviceListener;
-    NSMutableDictionary *_facilitiesByIdentifier;
-    NSMutableSet *_completedMilestones;
-    NSMutableDictionary *_suspendedFacilitiesByIdentifier;
-    NSMutableSet *_pendingConnects;
+    NSMutableDictionary *_lock_facilitiesByIdentifier;
+    NSMutableSet *_lock_completedMilestones;
+    NSMutableDictionary *_lock_suspendedFacilitiesByIdentifier;
+    NSMutableSet *_lock_pendingConnects;
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) BSServiceDomainSpecification *domain; // @synthesize domain=_domain;
 - (void).cxx_destruct;
-- (void)_queue_evaluateSuspendedFacility:(id)arg1;
-- (void)_queue_evaluateSuspendedFacilities;
-- (_Bool)_queue_areFacilityPrerequisitesSatisfied:(id)arg1;
+@property(readonly, nonatomic) BSServiceDomainSpecification *domain; // @synthesize domain=_domain;
+- (void)_lock_evaluateSuspendedFacility:(id)arg1;
+- (_Bool)_lock_areFacilityPrerequisitesSatisfied:(id)arg1;
 - (void)_facilityQueue_facility:(id)arg1 handleMessage:(id)arg2 client:(id)arg3;
 - (void)noteMilestoneReached:(id)arg1;
 - (void)removeFacility:(id)arg1;

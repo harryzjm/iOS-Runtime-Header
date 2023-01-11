@@ -11,7 +11,6 @@
     UABestAppSuggestion *_appSuggestion;
 }
 
-@property(readonly, nonatomic) UABestAppSuggestion *appSuggestion; // @synthesize appSuggestion=_appSuggestion;
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -28,7 +27,6 @@
 - (id)activityType;
 - (id)bundleIdentifier;
 - (id)uniqueIdentifier;
-- (id)initWithAppSuggestion:(id)arg1;
 
 @end
 

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _deallocator;
     unsigned long long _length;
     struct __IOSurface *_iosurface;
+    unsigned long long _gpuAddress;
 }
 
 @property(readonly) struct __IOSurface *iosurface; // @synthesize iosurface=_iosurface;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3;
 - (id)newRemoteBufferViewForDevice:(id)arg1;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
 - (id)formattedDescription:(unsigned long long)arg1;
 @property(readonly) unsigned int bufferRef;
 @property(readonly) unsigned long long length; // @dynamic length;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly) unsigned long long allocatedSize;
+@property(readonly) unsigned long long allocationID;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) id <MTLDevice> device;
@@ -47,11 +50,14 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) unsigned long long heapOffset;
 @property(copy) NSString *label;
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly) unsigned long long protectionOptions;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) unsigned long long resourceOptions;
-@property(readonly) unsigned int resourceRef;
+@property int responsibleProcess;
+@property(readonly) unsigned int serializerResourceRef;
 @property(readonly) unsigned long long storageMode;
 @property(readonly) Class superclass;
+@property(readonly) unsigned long long unfilteredResourceOptions;
 
 @end
 

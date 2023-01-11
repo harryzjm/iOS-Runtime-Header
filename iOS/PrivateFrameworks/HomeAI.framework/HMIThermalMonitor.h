@@ -6,20 +6,26 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFUnfairLock, NSMutableDictionary;
+@class HMFUnfairLock, NSMutableDictionary, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface HMIThermalMonitor : HMFObject
 {
     struct __IOHIDEventSystemClient *_client;
+    int _thermalLevelNotificationToken;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
+    unsigned long long _thermalLevel;
     NSMutableDictionary *_services;
     HMFUnfairLock *_lock;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly) NSMutableDictionary *services; // @synthesize services=_services;
-- (void).cxx_destruct;
+@property(readonly) unsigned long long thermalLevel; // @synthesize thermalLevel=_thermalLevel;
 - (void)dealloc;
+- (void)_updateThermalLevel;
 - (_Bool)readMaxValue:(double *)arg1;
 - (_Bool)readValueFromSensor:(int)arg1 value:(double *)arg2;
 - (id)init;

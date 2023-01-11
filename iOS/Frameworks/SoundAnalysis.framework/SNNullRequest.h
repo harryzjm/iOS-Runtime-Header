@@ -6,30 +6,42 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
 @class NSString, SNNullDetector;
-@protocol SNAnalyzing;
 
-@interface SNNullRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNNullRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
     SNNullDetector *_detector;
+    _Bool _graphIsDeadEnded;
+    _Bool _shouldThrowException;
+    unsigned int _blockSize;
+    double _sampleRate;
+    double _computationalDutyCycle;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool shouldThrowException;
-@property(nonatomic) _Bool graphIsDeadEnded;
-@property(nonatomic) double computationalDutyCycle;
-@property(readonly, nonatomic) __weak id <SNAnalyzing> analyzer;
-@property(nonatomic) unsigned int blockSize;
-@property(nonatomic) double sampleRate;
+@property(nonatomic) _Bool shouldThrowException; // @synthesize shouldThrowException=_shouldThrowException;
+@property(nonatomic) _Bool graphIsDeadEnded; // @synthesize graphIsDeadEnded=_graphIsDeadEnded;
+@property(nonatomic) double computationalDutyCycle; // @synthesize computationalDutyCycle=_computationalDutyCycle;
+@property(nonatomic) unsigned int blockSize; // @synthesize blockSize=_blockSize;
+@property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToNullRequest:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

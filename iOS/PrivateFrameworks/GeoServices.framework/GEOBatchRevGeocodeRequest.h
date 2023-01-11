@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOBatchRevGeocodeRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _additionalPlaceTypes;
     NSString *_deviceCountryCode;
     NSString *_deviceSku;
     NSString *_displayRegion;
     NSMutableArray *_locations;
     NSMutableArray *_serviceTags;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_additionalPlaceTypes:1;
         unsigned int read_deviceCountryCode:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_displayRegion:1;
         unsigned int read_locations:1;
         unsigned int read_serviceTags:1;
-        unsigned int wrote_additionalPlaceTypes:1;
-        unsigned int wrote_deviceCountryCode:1;
-        unsigned int wrote_deviceSku:1;
-        unsigned int wrote_displayRegion:1;
-        unsigned int wrote_locations:1;
-        unsigned int wrote_serviceTags:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,42 +49,38 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)serviceTagAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceTagsCount;
-- (void)_addNoFlagsServiceTag:(id)arg1;
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 @property(retain, nonatomic) NSMutableArray *serviceTags;
-- (void)_readServiceTags;
 @property(retain, nonatomic) NSString *deviceSku;
 @property(readonly, nonatomic) _Bool hasDeviceSku;
-- (void)_readDeviceSku;
 @property(retain, nonatomic) NSString *displayRegion;
 @property(readonly, nonatomic) _Bool hasDisplayRegion;
-- (void)_readDisplayRegion;
 @property(retain, nonatomic) NSString *deviceCountryCode;
 @property(readonly, nonatomic) _Bool hasDeviceCountryCode;
-- (void)_readDeviceCountryCode;
 - (int)StringAsAdditionalPlaceTypes:(id)arg1;
 - (id)additionalPlaceTypesAsString:(int)arg1;
 - (void)setAdditionalPlaceTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)additionalPlaceTypeAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsAdditionalPlaceType:(int)arg1;
 - (void)addAdditionalPlaceType:(int)arg1;
 - (void)clearAdditionalPlaceTypes;
 @property(readonly, nonatomic) int *additionalPlaceTypes;
 @property(readonly, nonatomic) unsigned long long additionalPlaceTypesCount;
-- (void)_readAdditionalPlaceTypes;
 - (id)locationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationsCount;
-- (void)_addNoFlagsLocation:(id)arg1;
 - (void)addLocation:(id)arg1;
 - (void)clearLocations;
 @property(retain, nonatomic) NSMutableArray *locations;
-- (void)_readLocations;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

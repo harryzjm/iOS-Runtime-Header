@@ -9,57 +9,65 @@
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 #import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSourcePrivate-Protocol.h>
 
-@class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
+@class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSArray, NSString, NSUserDefaults;
 
 @interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPCPlaybackEngineEventObserving>
 {
     MPLibraryAddStatusObserver *_libraryAddStatusObserver;
     NSString *_lastContextID;
-    _Bool _allowsSubscriptionPlayback;
-    _Bool _isSubscriptionEnabled;
-    NSString *_hashedDSID;
+    NSArray *_accounts;
+    _Bool _activeAccountAllowsSubscriptionPlayback;
+    NSString *_activeAccountStoreFrontIdentifier;
+    NSUserDefaults *_ipodDefaults;
+    _Bool _hasBeganFastForward;
+    _Bool _hasBeganRewind;
     _Bool _initializedSupportedCommands;
     _Bool _engineRestoringState;
+    _Bool _mediaServerAvailable;
     MPCPlaybackEngine *_playbackEngine;
     MPNowPlayingInfoCenter *_infoCenter;
     MPRemoteCommandCenter *_commandCenter;
 }
 
-@property(readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isMediaServerAvailable) _Bool mediaServerAvailable; // @synthesize mediaServerAvailable=_mediaServerAvailable;
 @property(nonatomic, getter=isEngineRestoringState) _Bool engineRestoringState; // @synthesize engineRestoringState=_engineRestoringState;
+@property(readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
 @property(readonly, nonatomic) MPNowPlayingInfoCenter *infoCenter; // @synthesize infoCenter=_infoCenter;
 @property(nonatomic, getter=hasInitializedSupportedCommands) _Bool initializedSupportedCommands; // @synthesize initializedSupportedCommands=_initializedSupportedCommands;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-- (void).cxx_destruct;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateSupportedCommands;
-- (void)_updateSubscriptionStatus;
+- (_Bool)_playbackStateIsIdle:(long long)arg1;
 - (void)_updateLaunchCommands;
 - (id)_supportedSessionTypes;
+- (id)_exportableSessionTypes;
 - (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_becomeActiveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_userIdentityStoreChangedNotification:(id)arg1;
-- (void)_subscriptionStatusChangedNotification:(id)arg1;
-- (void)_cloudLibraryEnabledDidChangeNotification:(id)arg1;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndLyricsEvent:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didBeginLyricsEvent:(id)arg2;
+- (void)engineDidResetMediaServices:(id)arg1;
+- (void)engineDidLoseMediaServices:(id)arg1;
+- (void)engine:(id)arg1 didChangeAccounts:(id)arg2;
 - (void)engineDidEndStateRestoration:(id)arg1;
 - (void)engineWillBeginStateRestoration:(id)arg1;
+- (void)engine:(id)arg1 didChangeActionAtQueueEnd:(long long)arg2;
 - (void)engine:(id)arg1 didChangeShuffleType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engine:(id)arg1 didChangeToItem:(id)arg2;
-- (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
-- (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
+- (void)getShouldRestoreStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)reportUserBackgroundedApplication;
 - (void)publishIfNeeded;
 @property(readonly, nonatomic) MPCPlayerPath *playerPath;
 - (void)becomeActive;
-- (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
+- (void)nowPlayingInfoCenter:(id)arg1 didEndMigrationWithIdentifier:(id)arg2 error:(id)arg3;
+- (void)nowPlayingInfoCenter:(id)arg1 willBeginSessionMigrationWithIdentifier:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 getTransportablePlaybackSessionRepresentationForRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)nowPlayingInfoCenter:(id)arg1 artworkCatalogForContentItem:(id)arg2;

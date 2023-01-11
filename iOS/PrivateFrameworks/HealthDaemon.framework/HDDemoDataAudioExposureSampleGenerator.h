@@ -17,13 +17,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *lastHeadphoneSampleEndDate; // @synthesize lastHeadphoneSampleEndDate=_lastHeadphoneSampleEndDate;
 @property(nonatomic) _Bool didGenerateHeadphoneAudioExposureSamples; // @synthesize didGenerateHeadphoneAudioExposureSamples=_didGenerateHeadphoneAudioExposureSamples;
 @property(nonatomic) double nextHeadphoneAudioExposureSampleTime; // @synthesize nextHeadphoneAudioExposureSampleTime=_nextHeadphoneAudioExposureSampleTime;
 @property(retain, nonatomic) NSDate *lastEnvironmentalSampleEndDate; // @synthesize lastEnvironmentalSampleEndDate=_lastEnvironmentalSampleEndDate;
 @property(nonatomic) _Bool didGenerateEnvironmentalAudioExposureSamples; // @synthesize didGenerateEnvironmentalAudioExposureSamples=_didGenerateEnvironmentalAudioExposureSamples;
 @property(nonatomic) double nextEnvironmentalAudioExposureSampleTime; // @synthesize nextEnvironmentalAudioExposureSampleTime=_nextEnvironmentalAudioExposureSampleTime;
-- (void).cxx_destruct;
 - (id)_headphoneAudioExposureMetadata;
 - (id)_makeUnknownHeadphones;
 - (id)_makeBeatsHeadphones;
@@ -38,8 +38,7 @@
 - (id)_makeHeadphoneSamplesWithType:(id)arg1 rawSampleValues:(id)arg2 sampleUnit:(id)arg3 initialSampleDate:(id)arg4 sampleDuration:(double)arg5 distanceBetweenSamples:(double)arg6 demoPerson:(id)arg7;
 - (double)_randomlySelectedGaussianWithMean:(double)arg1 deviation:(double)arg2;
 - (id)_randomlySelectedAudioExposureLevelFromPossibleValues:(id)arg1;
-- (id)_makeNormallyDistributedAudioExposureLevelsWithCount:(unsigned long long)arg1 headphones:(_Bool)arg2;
-- (id)_makeEvenlyDistributedAudioExposureLevelsWithCount:(unsigned long long)arg1 headphones:(_Bool)arg2;
+- (id)_makeNormallyDistributedAudioExposureLevelsWithCount:(unsigned long long)arg1 headphones:(_Bool)arg2 loudData:(_Bool)arg3;
 - (id)_allPossibleAudioExposureLevels;
 - (void)_generateHeadphoneAudioExposureSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
 - (void)_generateEnvironmentalAudioExposureSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;

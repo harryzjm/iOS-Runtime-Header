@@ -8,6 +8,7 @@
 
 @interface NSUserDefaults (SafariServicesExtras)
 + (id)_sf_safariDefaults;
+- (_Bool)_sf_passwordManagerIsInDemoMode;
 - (void)_sf_setShouldAutomaticallyDownloadReadingListItems:(_Bool)arg1;
 - (_Bool)_sf_shouldAutomaticallyDownloadReadingListItems;
 - (_Bool)_sf_warnAboutFraudulentWebsites;

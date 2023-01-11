@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskResultObject.h"
+#import <DeviceManagement/CATTaskResultObject.h>
 
 @class NSDictionary;
 
@@ -13,8 +13,8 @@
     NSDictionary *_certificatesByPersonLinkID;
 }
 
-@property(copy, nonatomic) NSDictionary *certificatesByPersonLinkID; // @synthesize certificatesByPersonLinkID=_certificatesByPersonLinkID;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *certificatesByPersonLinkID; // @synthesize certificatesByPersonLinkID=_certificatesByPersonLinkID;
 
 @end
 

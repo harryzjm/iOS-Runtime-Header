@@ -4,62 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIDelayedAction, UIKBUndoControl, UIKBUndoStyling, UIStackView, UIView, UIVisualEffectView;
+@class UIKBUndoControl, UIKBUndoStyling, UILabel, UIView, UIVisualEffectView;
 @protocol UIInteractiveUndoHUDActionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIKBUndoInteractionHUD
 {
+    id <UIInteractiveUndoHUDActionDelegate> _actionDelegate;
+    long long _mode;
     UIKBUndoControl *_leftButtonView;
     UIKBUndoControl *_rightButtonView;
     UIKBUndoControl *_aCutButtonView;
     UIKBUndoControl *_aCopyButtonView;
     UIKBUndoControl *_aPasteButtonView;
-    double _optimizedHUDWidth;
-    id <UIInteractiveUndoHUDActionDelegate> _actionDelegate;
-    long long _mode;
     UIVisualEffectView *_backgroundEffectView;
-    UIStackView *_undoItems;
     UIVisualEffectView *_shadowView;
     UIView *_containerView;
-    UIView *_centerView;
-    UIView *_grabber;
-    NSLayoutConstraint *_grabberPositionConstraint;
-    UIDelayedAction *_dismissGrabberTimer;
-    long long _currentUndoElementIndex;
     UIKBUndoStyling *_style;
-    double _grabberStartXLocation;
-    long long _currentCheckpointCovered;
+    UILabel *_instructionalLabel;
 }
 
-@property(nonatomic) long long currentCheckpointCovered; // @synthesize currentCheckpointCovered=_currentCheckpointCovered;
-@property(nonatomic) double grabberStartXLocation; // @synthesize grabberStartXLocation=_grabberStartXLocation;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *instructionalLabel; // @synthesize instructionalLabel=_instructionalLabel;
 @property(retain, nonatomic) UIKBUndoStyling *style; // @synthesize style=_style;
-@property(nonatomic) long long currentUndoElementIndex; // @synthesize currentUndoElementIndex=_currentUndoElementIndex;
-@property(retain, nonatomic) UIDelayedAction *dismissGrabberTimer; // @synthesize dismissGrabberTimer=_dismissGrabberTimer;
-@property(retain, nonatomic) NSLayoutConstraint *grabberPositionConstraint; // @synthesize grabberPositionConstraint=_grabberPositionConstraint;
-@property(retain, nonatomic) UIView *grabber; // @synthesize grabber=_grabber;
-@property(retain, nonatomic) UIView *centerView; // @synthesize centerView=_centerView;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) UIVisualEffectView *shadowView; // @synthesize shadowView=_shadowView;
-@property(retain, nonatomic) UIStackView *undoItems; // @synthesize undoItems=_undoItems;
 @property(retain, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
-@property(nonatomic) long long mode; // @synthesize mode=_mode;
-@property(nonatomic) __weak id <UIInteractiveUndoHUDActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
-@property(nonatomic) double optimizedHUDWidth; // @synthesize optimizedHUDWidth=_optimizedHUDWidth;
 @property(retain, nonatomic) UIKBUndoControl *aPasteButtonView; // @synthesize aPasteButtonView=_aPasteButtonView;
 @property(retain, nonatomic) UIKBUndoControl *aCopyButtonView; // @synthesize aCopyButtonView=_aCopyButtonView;
 @property(retain, nonatomic) UIKBUndoControl *aCutButtonView; // @synthesize aCutButtonView=_aCutButtonView;
 @property(retain, nonatomic) UIKBUndoControl *rightButtonView; // @synthesize rightButtonView=_rightButtonView;
 @property(retain, nonatomic) UIKBUndoControl *leftButtonView; // @synthesize leftButtonView=_leftButtonView;
-- (void).cxx_destruct;
+@property(nonatomic) long long mode; // @synthesize mode=_mode;
+@property(nonatomic) __weak id <UIInteractiveUndoHUDActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 - (void)updateControlWithDirection:(long long)arg1 travelProgress:(double)arg2 isRTL:(_Bool)arg3;
 - (void)controlActionUpOutside:(id)arg1;
 - (void)controlActionUpInside:(id)arg1;
 - (void)controlActionDown:(id)arg1;
 - (void)performDelegateRedoAndUpdateHUDIfNeeded;
 - (void)performDelegateUndoAndUpdateHUDIfNeeded;
-- (void)layoutSubviews;
 - (void)updateHUDControlState;
 - (_Bool)availableOfControl:(id)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

@@ -20,15 +20,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSCalendar *recurrenceCalendar; // @synthesize recurrenceCalendar=_recurrenceCalendar;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSCalendar *recurrenceCalendar; // @synthesize recurrenceCalendar=_recurrenceCalendar;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)_registerNotificationHandlers;
 - (void)_handleTriggerFired:(id)arg1;
-- (void)_handleScheduleChangedNotification:(id)arg1;
+- (void)_updateTimerTriggerPropertiesFromResponse:(id)arg1;
 - (id)_serializeForAdd;
+- (void)_updateTimerTriggerWithResponse:(CDUnknownBlockType)arg1 payloadToSend:(id)arg2;
 - (void)_updateRecurrences:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRecurrences:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateRecurrence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

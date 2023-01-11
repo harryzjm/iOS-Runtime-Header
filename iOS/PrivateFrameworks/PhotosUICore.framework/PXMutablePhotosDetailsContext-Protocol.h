@@ -11,7 +11,7 @@
 @protocol PXMutablePhotosDetailsContext <NSObject>
 @property(retain, nonatomic) PXPhotosDataSource *photosDataSource;
 @property(retain, nonatomic) PXPhotosDetailsViewModel *viewModel;
-@property(nonatomic) unsigned long long viewSourceOrigin;
+@property(nonatomic) long long viewSourceOrigin;
 @property(nonatomic) _Bool hasLocation;
 @property(nonatomic) _Bool shouldShowMovieHeader;
 @property(copy, nonatomic) NSString *titleFontName;

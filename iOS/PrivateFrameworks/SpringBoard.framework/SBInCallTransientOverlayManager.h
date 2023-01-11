@@ -14,7 +14,6 @@
 - (id)_newAlertDefinition;
 - (void)presentTransientOverlayForUILock;
 - (void)presentTransientOverlayForActivityContinuationWithActivityIdentifier:(id)arg1;
-- (void)presentTransientOverlayFromLockScreen;
 - (void)presentTransientOverlay;
 
 @end

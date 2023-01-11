@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskRequest.h"
+#import <DeviceManagement/CATTaskRequest.h>
 
 @class CRKCourseInvitation;
 
@@ -14,8 +14,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) CRKCourseInvitation *invitation; // @synthesize invitation=_invitation;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CRKCourseInvitation *invitation; // @synthesize invitation=_invitation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

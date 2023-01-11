@@ -16,6 +16,7 @@
     _Bool _inTransition;
     id <WFDrawerControllerDelegate> _delegate;
     NSArray *_viewControllers;
+    double _bottomInset;
     NSArray *_paneContainers;
     NSMapTable *_paneContainersByViewControllers;
     UIViewController *_initializationViewController;
@@ -23,14 +24,15 @@
     unsigned long long _previousVisibilityOfCoveredPaneContainer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool inTransition; // @synthesize inTransition=_inTransition;
 @property(readonly, nonatomic) unsigned long long previousVisibilityOfCoveredPaneContainer; // @synthesize previousVisibilityOfCoveredPaneContainer=_previousVisibilityOfCoveredPaneContainer;
 @property(readonly, nonatomic) NSString *drawerGroup; // @synthesize drawerGroup=_drawerGroup;
 @property(readonly, nonatomic) UIViewController *initializationViewController; // @synthesize initializationViewController=_initializationViewController;
 @property(readonly, nonatomic) NSMapTable *paneContainersByViewControllers; // @synthesize paneContainersByViewControllers=_paneContainersByViewControllers;
 @property(readonly, nonatomic) NSArray *paneContainers; // @synthesize paneContainers=_paneContainers;
+@property(nonatomic) double bottomInset; // @synthesize bottomInset=_bottomInset;
 @property(nonatomic) __weak id <WFDrawerControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (double)heightForVisibility:(unsigned long long)arg1;
 - (void)transitionToVisibility:(unsigned long long)arg1 withDimming:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)transitionToVisibility:(unsigned long long)arg1 withDimming:(unsigned long long)arg2 animated:(_Bool)arg3;
@@ -44,6 +46,7 @@
 - (id)mutablePaneControllers;
 - (id)drawerPaneWithViewController:(id)arg1;
 - (void)drawerPaneContainer:(id)arg1 didTransitionToVisibility:(unsigned long long)arg2;
+- (double)bottomInsetForPaneContainer:(id)arg1;
 - (void)drawerPaneContainer:(id)arg1 willTransitionToVisibility:(unsigned long long)arg2;
 - (id)scrollViewOccludingDrawerPaneInsideContainer:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;

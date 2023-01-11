@@ -13,7 +13,11 @@
 + (NSString *)MACAddressString;
 @property(readonly, copy, nonatomic) NSString *currentNetworkSSID;
 @property(nonatomic, getter=isWoWAsserted, setter=setWoWAsserted:) _Bool wowAsserted;
+@property(readonly) unsigned long long assertionOptions;
+@property(readonly, getter=isAssertionActive) _Bool assertionActive;
 @property(nonatomic) __weak id <HMFWiFiManagerDataSourceDelegate> delegate;
 - (void)performBlockAfterWoWReassertionDelay:(void (^)(void))arg1;
+- (void)deactivate;
+- (void)activateWithOptions:(unsigned long long)arg1;
 @end
 

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTNetwork, CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSDictionary, NSString;
+@class CTBandInfo, CTNetwork, CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSDictionary, NSString;
 
 @protocol CTXPCServiceRegistrationInterface
+- (void)getCurrentRat:(CTServiceDescriptor *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getPublicSignalStrength:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)getSignalStrengthMeasurementsAsync:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getSignalStrengthMeasurements:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getEncryptionStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTEncryptionStatusInfo *, NSError *))arg2;
 - (void)isNetworkReselectionNeeded:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
@@ -31,8 +33,11 @@
 - (void)getEnhancedVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTEnhancedLinkQualityMetric *, NSError *))arg2;
 - (void)getVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTVoiceLinkQualityMetric *, NSError *))arg2;
 - (void)getSignalStrengthInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
+- (void)setActiveBandInfo:(CTXPCServiceSubscriptionContext *)arg1 bands:(CTBandInfo *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getBandInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTBandInfo *, NSError *))arg2;
 - (void)setBandInfo:(CTXPCServiceSubscriptionContext *)arg1 bands:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)copyBandInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getRatSelectionMask:(CTServiceDescriptor *)arg1 completion:(void (^)(CTRatSelection *, NSError *))arg2;
 - (void)setRatSelection:(CTXPCServiceSubscriptionContext *)arg1 selection:(NSString *)arg2 preferred:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)getRatSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)copyAbbreviatedOperatorName:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

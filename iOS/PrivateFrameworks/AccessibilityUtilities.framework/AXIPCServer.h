@@ -27,12 +27,12 @@
     NSMutableDictionary *_handlers;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool perPidService; // @synthesize perPidService=_perPidService;
 @property(readonly, nonatomic) unsigned int machPort; // @synthesize machPort=_serverPort;
 @property(retain, nonatomic) NSMutableDictionary *handlers; // @synthesize handlers=_handlers;
 @property(retain, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
-- (void).cxx_destruct;
 - (id)_clientIdentificationForAuditToken:(CDStruct_4c969caf)arg1;
 - (_Bool)_handleErrorWithMessage:(id)arg1 outError:(id *)arg2;
 - (void)_handleIncomingMessage:(id)arg1 securityToken:(CDStruct_52eb0d21)arg2 auditToken:(CDStruct_4c969caf)arg3 clientPort:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
@@ -51,7 +51,7 @@
 - (void)setHandlerWithTarget:(id)arg1 selector:(SEL)arg2 forKey:(int)arg3 possibleRequiredEntitlements:(id)arg4;
 - (void)setHandlerWithTarget:(id)arg1 selector:(SEL)arg2 async:(_Bool)arg3 forKey:(int)arg4;
 - (void)setHandlerWithTarget:(id)arg1 selector:(SEL)arg2 forKey:(int)arg3;
-- (void)_addPossibleRequiredEntitlementsToMessageWithKey:(int)arg1 first:(id)arg2 vothers:(struct __va_list_tag [1])arg3;
+- (void)_addPossibleRequiredEntitlementsToMessageWithKey:(int)arg1 first:(id)arg2 vothers:(char *)arg3;
 - (void)_registerContext:(id)arg1 forKey:(int)arg2;
 - (void)removeHandlerForKey:(int)arg1;
 - (void)setHandler:(CDUnknownBlockType)arg1 forKey:(int)arg2;

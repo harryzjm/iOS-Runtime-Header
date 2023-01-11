@@ -11,7 +11,6 @@
 @protocol GCNamedProfile <NSObject>
 @property(retain) GCMotion *_motion;
 @property(readonly) NSString *name;
-- (_Bool)isBluetoothAndUSBMirrored;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
 - (NSString *)productCategory;
 - (void (^)(id, GCControllerElement *))valueChangedHandler;
@@ -26,5 +25,6 @@
 - (void)appDidBecomeActive;
 - (void)appWillResignActive;
 - (unsigned int)sampleRate;
+- (_Bool)isBluetoothAndUSBMirrored;
 @end
 

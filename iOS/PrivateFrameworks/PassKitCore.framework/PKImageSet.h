@@ -26,13 +26,14 @@
 + (id)_createXPCContainerForImageSetWithType:(long long)arg1 displayProfile:(id)arg2 screenScale:(double)arg3 screenSize:(struct CGSize)arg4 suffix:(id)arg5 fileURL:(id)arg6 cacheURL:(id)arg7 imageSetOut:(id *)arg8;
 + (id)createXPCContainerForImageSet:(id)arg1 screenScale:(double)arg2 screenSize:(struct CGSize)arg3 cacheURL:(id)arg4;
 + (id)createXPCContainerForImageSetWithType:(long long)arg1 displayProfile:(id)arg2 screenScale:(double)arg3 screenSize:(struct CGSize)arg4 suffix:(id)arg5 fileURL:(id)arg6 cacheURL:(id)arg7;
++ (id)cachedXPCContainerForImageSetWithType:(long long)arg1 displayProfile:(id)arg2 displayTraits:(id)arg3 cacheURL:(id)arg4;
 + (_Bool)shouldCache;
-+ (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 fileURL:(id)arg5 cacheURL:(id)arg6;
-+ (id)imageSetForType:(long long)arg1 displayProfile:(id)arg2 fileURL:(id)arg3 cacheURL:(id)arg4;
++ (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 fileURL:(id)arg5;
 + (Class)classForDisplayProfile:(id)arg1 imageSetType:(long long)arg2;
++ (_Bool)shouldCacheForDisplayProfile:(id)arg1 imageSetType:(long long)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) long long version; // @synthesize version=_version;
 @property(copy, nonatomic) NSURL *originCacheURL; // @synthesize originCacheURL=_originCacheURL;
-- (void).cxx_destruct;
 - (void)preheatImages;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -4,39 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDateComponents, NSLocale, NSString, WFLocation;
+@class NSData, NSDate, NSDateComponents, NSLocale, NSString, WFLocation;
 
 @interface WFForecastRequest
 {
     _Bool _attachRawAPIData;
     WFLocation *_location;
-    NSDateComponents *_date;
+    NSDate *_onDate;
     CDUnknownBlockType _completionHandler;
+    NSDateComponents *_date;
     unsigned long long _forecastType;
     NSData *_rawAPIData;
     NSLocale *_locale;
     NSString *_trackingParameter;
 }
 
-+ (id)forecastRequestForLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)forecastRequestForLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)forecastRequestForLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)forecastRequestForLocation:(id)arg1 onDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
 @property(nonatomic) _Bool attachRawAPIData; // @synthesize attachRawAPIData=_attachRawAPIData;
 @property(nonatomic) unsigned long long forecastType; // @synthesize forecastType=_forecastType;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) NSDateComponents *date; // @synthesize date=_date;
+@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(readonly, nonatomic) NSDate *onDate; // @synthesize onDate=_onDate;
 @property(copy, nonatomic) WFLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
-- (id)editLinksForForecast:(id)arg1;
+- (id)initWithLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)cleanup;
 - (void)handleCancellation;
 - (void)handleResponse:(id)arg1;
 - (void)startWithService:(id)arg1;
 - (id)description;
+- (id)initWithLocation:(id)arg1 onDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

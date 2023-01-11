@@ -25,11 +25,10 @@
 #import <PhotosUI/UICollectionViewDragSource-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
 
 @class NSDictionary, NSIndexPath, NSMutableArray, NSMutableSet, NSString, PHCachingImageManager, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAlbumList, PLManagedAsset, PUAlbumStreamActivity, PUFeedViewControllerRestorableState, PUFeedViewControllerSpec, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUScrollViewSpeedometer, PXFeedAssetContainerList, PXFeedDateFormatter, PXFeedSectionInfosManager, UIBarButtonItem, UICollectionView, UITapGestureRecognizer, _UIContentUnavailableView;
 
-@interface PUFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, PUFeedCollectionViewLayoutDelegate, PXFeedSectionInfosManagerDelegate, PUPhotoBrowserZoomTransitionDelegate, PUFeedImageCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUFeedInvitationCellDelegate, PUFeedCaptionCellDelegate, UIGestureRecognizerDelegate, PUAlbumStreamActivityDelegate, _UISettingsKeyObserver, PUScrollViewSpeedometerDelegate, PUOneUpPresentationHelperDelegate, PXSettingsKeyObserver, UICollectionViewDragSource, PLCloudFeedNavigating, PXNavigableCloudFeedViewController>
+@interface PUFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, PUFeedCollectionViewLayoutDelegate, PXFeedSectionInfosManagerDelegate, PUPhotoBrowserZoomTransitionDelegate, PUFeedImageCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUFeedInvitationCellDelegate, PUFeedCaptionCellDelegate, UIGestureRecognizerDelegate, PUAlbumStreamActivityDelegate, PUScrollViewSpeedometerDelegate, PUOneUpPresentationHelperDelegate, PXSettingsKeyObserver, UICollectionViewDragSource, PLCloudFeedNavigating, PXNavigableCloudFeedViewController>
 {
     _Bool __flowDirectionReversed;
     _Bool __collectionViewScrolledToNewest;
@@ -93,6 +92,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType onNextViewLayout; // @synthesize onNextViewLayout=_onNextViewLayout;
 @property(readonly, nonatomic) NSMutableSet *imageCellsPlayingVideo; // @synthesize imageCellsPlayingVideo=_imageCellsPlayingVideo;
 @property(nonatomic) _Bool observingPopoverContentSizeChange; // @synthesize observingPopoverContentSizeChange=_observingPopoverContentSizeChange;
@@ -151,7 +151,6 @@
 @property(readonly, nonatomic) PHCachingImageManager *_cachingImageManager; // @synthesize _cachingImageManager=__cachingImageManager;
 @property(readonly, nonatomic) PXFeedSectionInfosManager *_feedSectionInfosManager; // @synthesize _feedSectionInfosManager=__feedSectionInfosManager;
 @property(readonly, nonatomic) long long contentType; // @synthesize contentType=_contentType;
-- (void).cxx_destruct;
 - (id)_collectionView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)_collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (id)_dragItemsForIndexPath:(id)arg1;
@@ -179,7 +178,7 @@
 - (void)_handleTap:(id)arg1;
 - (void)_openiCloudSettings;
 - (void)_showOutOfNetworkInvitationMessageForSharedAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_navigateToRevealPhoto:(id)arg1 inAlbum:(struct NSObject *)arg2 animated:(_Bool)arg3;
+- (void)_navigateToRevealPhoto:(id)arg1 inAlbum:(id)arg2 animated:(_Bool)arg3;
 - (void)_restoreScrollPositionInCollectionView:(id)arg1 fromRestorableState:(id)arg2;
 - (void)_enumerateCenterAssetsInRestorableState:(id)arg1 inCollectionView:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)_currentRestorableState;
@@ -202,6 +201,9 @@
 - (void)didTapFeedCell:(id)arg1;
 - (_Bool)pu_scrollToInitialPositionAnimated:(_Bool)arg1;
 - (_Bool)prepareForDismissingForced:(_Bool)arg1;
+- (id)px_navigationDestination;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)_endPlayingVideoInCellIfNeeded:(id)arg1;
 - (void)_handleVideoRequestResult:(id)arg1 forCellAtIndexPath:(id)arg2 withTag:(long long)arg3;
 - (void)_handleVideoRequestID:(int)arg1 forCellAtIndexPath:(id)arg2 withTag:(long long)arg3;
@@ -270,7 +272,7 @@
 - (_Bool)collectionView:(id)arg1 layout:(id)arg2 shouldHideSection:(long long)arg3;
 - (_Bool)_shouldHideSectionInfo:(id)arg1 forCollectionView:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

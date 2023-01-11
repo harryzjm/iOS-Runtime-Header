@@ -61,6 +61,8 @@
     NSArray *_allowedStorefrontIDs;
     NSArray *_relatedArticleIDs;
     NSArray *_moreFromPublisherArticleIDs;
+    NSArray *_publisherSpecifiedArticleIDs;
+    NSString *_articleRecirculationConfigJSON;
     unsigned long long _storyType;
     FCTopStoriesStyleConfiguration *_storyStyle;
     long long _minimumNewsVersion;
@@ -76,6 +78,7 @@
     struct CGRect _thumbnailFocalFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *changeEtag; // @synthesize changeEtag=_changeEtag;
 @property(retain, nonatomic) NSArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
 @property(retain, nonatomic) NSData *flintDocumentPrefetchedData; // @synthesize flintDocumentPrefetchedData=_flintDocumentPrefetchedData;
@@ -105,6 +108,8 @@
 - (id)storyStyle;
 - (void)setStoryType:(unsigned long long)arg1;
 - (unsigned long long)storyType;
+- (id)articleRecirculationConfigJSON;
+- (id)publisherSpecifiedArticleIDs;
 - (id)moreFromPublisherArticleIDs;
 - (id)relatedArticleIDs;
 - (_Bool)isFeatureCandidate;
@@ -166,12 +171,11 @@
 - (void)setIdentifier:(id)arg1;
 - (id)identifier;
 - (id)versionIdentifier;
-- (void).cxx_destruct;
 - (id)generateFlintDocumentAssetHandleForUrlString:(id)arg1 prefetchedData:(id)arg2 withAssetManager:(id)arg3;
 - (id)generateThumbnailAssetHandleForUrlString:(id)arg1 withAssetManager:(id)arg2;
 - (_Bool)isValid;
 - (id)contentManifestWithContext:(id)arg1;
-- (id)initWithArticlePayload:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3 rapidUpdatesTimeout:(long long)arg4;
+- (id)initWithArticlePayload:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
 
 @end
 

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKFetchShareMetadataOperationCallbacks-Protocol.h>
 
-@interface CKFetchShareMetadataOperation
+@class CKFetchShareMetadataOperationInfo, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchShareMetadataOperationCallbacks;
+
+@interface CKFetchShareMetadataOperation <CKFetchShareMetadataOperationCallbacks>
 {
     _Bool _shouldFetchRootRecord;
     CDUnknownBlockType _perShareMetadataBlock;
@@ -18,16 +21,17 @@
     NSDictionary *_shareInvitationTokensByShareURL;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *shareInvitationTokensByShareURL; // @synthesize shareInvitationTokensByShareURL=_shareInvitationTokensByShareURL;
 @property(retain, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property(retain, nonatomic) NSMutableDictionary *errorsByURL; // @synthesize errorsByURL=_errorsByURL;
 @property(copy, nonatomic) NSArray *rootRecordDesiredKeys; // @synthesize rootRecordDesiredKeys=_rootRecordDesiredKeys;
 @property(nonatomic) _Bool shouldFetchRootRecord; // @synthesize shouldFetchRootRecord=_shouldFetchRootRecord;
 @property(copy, nonatomic) NSArray *shareURLs; // @synthesize shareURLs=_shareURLs;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleShareMetadataFetchForURL:(id)arg1 shareMetadata:(id)arg2 error:(id)arg3;
 - (_Bool)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
@@ -39,6 +43,10 @@
 - (id)initWithShareURLs:(id)arg1 invitationTokensByShareURL:(id)arg2;
 - (id)initWithShareURLs:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchShareMetadataOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKFetchShareMetadataOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

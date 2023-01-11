@@ -14,9 +14,9 @@
     _Bool _killActivity;
     _Bool _simulateInCallStatusBar;
     SBSStatusBarStyleOverridesAssertion *_inCallStatusBarStyleOverrideAssertion;
-    _Bool _itemIsDisabled[42];
-    _Bool _itemWasDisabled[42];
-    NSCountedSet *_itemDisabledRequests[42];
+    _Bool _itemIsDisabled[43];
+    _Bool _itemWasDisabled[43];
+    NSCountedSet *_itemDisabledRequests[43];
     NSCountedSet *_dataUpdateAnimationsDisabledRequests;
     _Bool _timeEnabled;
     _Bool _statusBarTimeRequiresUpdate;
@@ -27,16 +27,16 @@
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) NSHashTable *contentAssertions; // @synthesize contentAssertions=_contentAssertions;
 - (void).cxx_destruct;
-- (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_0942cde0 *)arg2 withActions:(int)arg3;
+@property(retain, nonatomic) NSHashTable *contentAssertions; // @synthesize contentAssertions=_contentAssertions;
+- (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_3fd7985f *)arg2 withActions:(int)arg3;
 - (id)_identifierForStateAggregator:(id)arg1;
 - (void)statusBarStateAggregatorDidStopRequestingImmediateUpdates:(id)arg1;
 - (void)statusBarStateAggregatorDidRequestImmediateUpdates:(id)arg1;
 - (void)_toggleSimulatesInCallStatusBar;
 - (void)_removeInCallStatusBarOverrideAssertion;
-- (void)_composePostDataFromAggregatorData:(CDStruct_0942cde0 *)arg1;
-- (_Bool)_shouldPostForVisitedItem:(int)arg1 withUpdates:(_Bool)arg2 toAggregatorData:(const CDStruct_0942cde0 *)arg3 lastPost:(const CDStruct_0942cde0 *)arg4;
+- (void)_composePostDataFromAggregatorData:(CDStruct_3fd7985f *)arg1;
+- (_Bool)_shouldPostForVisitedItem:(int)arg1 withUpdates:(_Bool)arg2 toAggregatorData:(const CDStruct_3fd7985f *)arg3 lastPost:(const CDStruct_3fd7985f *)arg4;
 - (void)forceUpdateLocalStatusBarData;
 - (void)stopDisablingDataUpdateAnimationsForRequestor:(id)arg1;
 - (void)disableDataUpdateAnimationsForRequestor:(id)arg1;

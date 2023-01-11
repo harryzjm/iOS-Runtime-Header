@@ -21,12 +21,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *deleteAfterUseURL; // @synthesize deleteAfterUseURL=_deleteAfterUseURL;
 @property(readonly, nonatomic) FPItem *fpItem; // @synthesize fpItem=_fpItem;
 @property(readonly, nonatomic, getter=isBackedByFileProvider) _Bool backedByFileProvider; // @synthesize backedByFileProvider=_backedByFileProvider;
 @property(readonly, nonatomic, getter=isReadonly) _Bool readonly; // @synthesize readonly=_readonly;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
@@ -34,6 +34,8 @@
 - (void)deleteTemporaryFilesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)nsURLWrapper;
 - (id)initWithNSURLWrapper:(id)arg1;
+- (id)initWithURL:(id)arg1 issueExtension:(_Bool)arg2 readonly:(_Bool)arg3 extensionClass:(id)arg4;
+- (id)initWithURLWithoutIssuingExtension:(id)arg1;
 - (id)initWithURL:(id)arg1 readonly:(_Bool)arg2 extensionClass:(id)arg3;
 - (id)initWithURL:(id)arg1 readonly:(_Bool)arg2;
 - (id)initWithURL:(id)arg1;

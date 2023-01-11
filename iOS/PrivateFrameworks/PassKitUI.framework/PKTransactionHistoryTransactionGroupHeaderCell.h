@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView, UILabel;
+@class NSString, UIImage, UIImageView, UILabel, UIView;
 
 @interface PKTransactionHistoryTransactionGroupHeaderCell
 {
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     _Bool _isTemplateLayout;
+    UIImage *_image;
     UIImageView *_imageView;
+    UIView *_imageBackgroundView;
+    _Bool _useShadows;
 }
 
-@property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useShadows; // @synthesize useShadows=_useShadows;
+- (void)_setupImageView;
+- (void)setImage:(id)arg1 animated:(_Bool)arg2;
 @property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
 - (void)_dynamicUserInterfaceTraitDidChange;
@@ -23,6 +28,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -15,10 +15,6 @@ struct HDSyncAnchorRange {
     long long _field2;
 };
 
-struct NSObject {
-    Class _field1;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -51,8 +47,9 @@ typedef struct {
     long long _field11;
     double _field12;
     double _field13;
-    _Bool _field14;
+    double _field14;
     _Bool _field15;
-    double _field16;
-} CDStruct_c642f51a;
+    _Bool _field16;
+    double _field17;
+} CDStruct_bd1b3a42;
 

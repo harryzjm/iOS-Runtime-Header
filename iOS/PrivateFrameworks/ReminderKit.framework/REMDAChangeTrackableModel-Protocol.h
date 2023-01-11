@@ -5,5 +5,6 @@
 //
 
 @protocol REMDAChangeTrackableModel
++ (_Bool)isChangeTrackableModel;
 @end
 

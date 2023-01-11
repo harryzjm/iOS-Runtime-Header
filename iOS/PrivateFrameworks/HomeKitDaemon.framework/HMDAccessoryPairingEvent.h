@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
-@class HMDAccessory, NSString;
+@class HMDAccessory, HMDHome, NSString, NSUUID;
 
 @interface HMDAccessoryPairingEvent <HMDAWDLogEvent>
 {
@@ -15,19 +15,42 @@
     _Bool _wacLegacy;
     _Bool _usedWiFiPPSK;
     _Bool _usedOwnershipProof;
+    _Bool _networkRouterAdd;
+    _Bool _networkRouterReplace;
+    _Bool _firstHAPAccessoryInHome;
+    _Bool _firstHAPAccessoryInAnyHome;
     HMDAccessory *_pairedAccessory;
     long long _linkType;
     long long _certificationStatus;
     unsigned long long _authMethod;
     NSString *_identifier;
+    HMDHome *_home;
+    NSUUID *_accessoryUUID;
+    NSString *_appIdentifier;
+    NSString *_accessoryModel;
+    NSString *_accessoryManufacturer;
+    NSString *_accessoryCategory;
+    NSString *_primaryServiceType;
 }
 
 + (id)removingAccessory:(id)arg1 hapAccessory:(id)arg2;
-+ (id)pairingAccessory:(id)arg1;
-+ (id)pairingAccessoryWithDescription:(id)arg1;
++ (id)pairingAccessory:(id)arg1 home:(id)arg2;
++ (id)pairingAccessoryWithDescription:(id)arg1 home:(id)arg2;
 + (id)uuid;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isFirstHAPAccessoryInAnyHome) _Bool firstHAPAccessoryInAnyHome; // @synthesize firstHAPAccessoryInAnyHome=_firstHAPAccessoryInAnyHome;
+@property(nonatomic, getter=isFirstHAPAccessoryInHome) _Bool firstHAPAccessoryInHome; // @synthesize firstHAPAccessoryInHome=_firstHAPAccessoryInHome;
+@property(copy, nonatomic) NSString *primaryServiceType; // @synthesize primaryServiceType=_primaryServiceType;
+@property(copy, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
+@property(copy, nonatomic) NSString *accessoryManufacturer; // @synthesize accessoryManufacturer=_accessoryManufacturer;
+@property(copy, nonatomic) NSString *accessoryModel; // @synthesize accessoryModel=_accessoryModel;
+@property(copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property(copy, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+@property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic, getter=isNetworkRouterReplace) _Bool networkRouterReplace; // @synthesize networkRouterReplace=_networkRouterReplace;
+@property(nonatomic, getter=isNetworkRouterAdd) _Bool networkRouterAdd; // @synthesize networkRouterAdd=_networkRouterAdd;
 @property(nonatomic, getter=isUsedOwnershipProof) _Bool usedOwnershipProof; // @synthesize usedOwnershipProof=_usedOwnershipProof;
 @property(nonatomic, getter=isUsedWiFiPPSK) _Bool usedWiFiPPSK; // @synthesize usedWiFiPPSK=_usedWiFiPPSK;
 @property(nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
@@ -37,14 +60,14 @@
 @property(readonly, nonatomic, getter=isAddOperation) _Bool addOperation; // @synthesize addOperation=_addOperation;
 @property(nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property(retain, nonatomic) HMDAccessory *pairedAccessory; // @synthesize pairedAccessory=_pairedAccessory;
-- (void).cxx_destruct;
 - (void)pairedAccessory:(id)arg1;
-- (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;
+- (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2 addedViaWAC:(_Bool)arg3 legacyWAC:(_Bool)arg4;
 - (void)setAuthenticationMethod:(unsigned long long)arg1;
 - (void)setAddedViaWAC:(_Bool)arg1;
-- (id)initWithAccessoryDescription:(id)arg1;
-- (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 isAddOperation:(_Bool)arg4;
+- (id)initWithAccessoryDescription:(id)arg1 home:(id)arg2;
+- (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 home:(id)arg4 isAddOperation:(_Bool)arg5;
 - (id)metricForAWD;
+- (id)vendorDetails;
 - (unsigned int)AWDMessageType;
 
 // Remaining properties

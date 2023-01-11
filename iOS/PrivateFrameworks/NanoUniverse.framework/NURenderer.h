@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (void)_asyncDeallocInstance;
 - (void)_initPrograms;
-- (void)_createPipelineForProgramType:(unsigned long long)arg1 fromLibrary:(id)arg2;
+- (void)_createPipelineForProgramType:(unsigned long long)arg1 fromLibrary:(id)arg2 librarySPI:(id)arg3;
 - (void)renderWithScene:(id)arg1 viewport:(struct NUViewport)arg2 resources:(id)arg3 encoder:(id)arg4;
 - (void)drawSpriteWithEncoder:(id)arg1 state:(const struct NURendererState *)arg2 spheroid:(id)arg3 resources:(id)arg4;
 - (void)draw3DWithEncoder:(id)arg1 state:(const struct NURendererState *)arg2 spheroid:(id)arg3 resources:(id)arg4;

@@ -8,14 +8,18 @@
 
 @class NSDateComponents, NSNumber, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface WFAskForInputIntent : INIntent
 {
 }
 
 
 // Remaining properties
+@property(copy, nonatomic) NSNumber *allowsDecimalNumbers; // @dynamic allowsDecimalNumbers;
+@property(copy, nonatomic) NSNumber *allowsNegativeNumbers; // @dynamic allowsNegativeNumbers;
 @property(copy, nonatomic) NSDateComponents *dateAndTimeAnswer; // @dynamic dateAndTimeAnswer;
 @property(copy, nonatomic) NSDateComponents *dateAnswer; // @dynamic dateAnswer;
+@property(copy, nonatomic) NSString *defaultURLAnswer; // @dynamic defaultURLAnswer;
 @property(copy, nonatomic) NSNumber *numberAnswer; // @dynamic numberAnswer;
 @property(copy, nonatomic) NSString *question; // @dynamic question;
 @property(copy, nonatomic) NSString *stringAnswer; // @dynamic stringAnswer;

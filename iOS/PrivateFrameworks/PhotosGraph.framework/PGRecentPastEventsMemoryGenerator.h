@@ -12,15 +12,15 @@
     NSDate *_localDate;
 }
 
-@property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 - (id)_potentialMemoriesForDryTesting;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
 - (id)generateMemories:(unsigned long long)arg1;
 - (void)_computePotentialMemories;
 - (id)_computePotentialMemoriesForSubcategory:(unsigned long long)arg1 withLocalStartDate:(id)arg2 localEndDate:(id)arg3;
-- (id)_computePotentialMemoriesForPeopleNodes:(id)arg1;
+- (id)_computePotentialMemoriesForPersonNodes:(id)arg1;
 - (id)_peopleSeenInPreviousWeekButNotInPreviousThreeMonthsWithLocalDate:(id)arg1;
 - (id)initWithController:(id)arg1;
 

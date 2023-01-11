@@ -15,14 +15,16 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_assetAuthorizationResponses;
     CKCDPError *_error;
+    NSData *_routingToken;
     NSData *_serializedResult;
 }
 
 + (Class)assetAuthorizationResponsesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSData *routingToken; // @synthesize routingToken=_routingToken;
 @property(retain, nonatomic) NSMutableArray *assetAuthorizationResponses; // @synthesize assetAuthorizationResponses=_assetAuthorizationResponses;
 @property(retain, nonatomic) CKCDPError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSData *serializedResult; // @synthesize serializedResult=_serializedResult;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasRoutingToken;
 - (id)assetAuthorizationResponsesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)assetAuthorizationResponsesCount;
 - (void)addAssetAuthorizationResponses:(id)arg1;

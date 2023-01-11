@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFAction.h>
+#import <WorkflowKit/WFHandleCustomIntentAction.h>
 
-@interface WFDeletePhotosAction : WFAction
+@interface WFDeletePhotosAction : WFHandleCustomIntentAction
 {
 }
 
-- (void)runAsynchronouslyWithInput:(id)arg1;
+- (_Bool)inputPassthrough;
+- (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

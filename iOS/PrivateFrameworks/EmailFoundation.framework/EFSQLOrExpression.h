@@ -15,8 +15,11 @@
     NSArray *_expressions;
 }
 
-@property(readonly, copy, nonatomic) NSArray *expressions; // @synthesize expressions=_expressions;
++ (id)combined:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *expressions; // @synthesize expressions=_expressions;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 - (id)initWithExpressions:(id)arg1;
 

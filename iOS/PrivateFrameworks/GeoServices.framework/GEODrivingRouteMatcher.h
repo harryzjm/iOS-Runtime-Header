@@ -9,6 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)_courseFromLocation:(id)arg1;
+- (CDStruct_c3b9c2ee)_coordinateFromLocation:(id)arg1;
 - (_Bool)_supportsSnapping;
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 - (id)_startStepForPreviousRouteMatch:(id)arg1;

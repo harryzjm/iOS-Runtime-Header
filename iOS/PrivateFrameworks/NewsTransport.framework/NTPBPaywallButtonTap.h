@@ -19,6 +19,7 @@
     int _paidSubscriptionConversionPointType;
     int _parentFeedType;
     NSString *_purchaseId;
+    int _purchaseType;
     NSString *_sectionId;
     NSString *_sourceChannelId;
     int _subscriptionButtonTargetType;
@@ -26,17 +27,18 @@
         unsigned int groupType:1;
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
+        unsigned int purchaseType:1;
         unsigned int subscriptionButtonTargetType:1;
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
 @property(retain, nonatomic) NSString *purchaseId; // @synthesize purchaseId=_purchaseId;
 @property(retain, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property(retain, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property(retain, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property(retain, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -45,6 +47,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsPurchaseType:(id)arg1;
+- (id)purchaseTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasPurchaseType;
+@property(nonatomic) int purchaseType; // @synthesize purchaseType=_purchaseType;
 @property(readonly, nonatomic) _Bool hasIssueData;
 - (int)StringAsSubscriptionButtonTargetType:(id)arg1;
 - (id)subscriptionButtonTargetTypeAsString:(int)arg1;

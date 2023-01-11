@@ -6,10 +6,14 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
+@class UIColor;
+
 @protocol PXMutableBarAppearance <NSObject>
+@property(copy, nonatomic) UIColor *navigationBarTintColor;
 @property(nonatomic) _Bool prefersTabBarVisible;
 @property(nonatomic) _Bool prefersToolbarVisible;
 @property(nonatomic) _Bool prefersNavigationBarVisible;
+@property(nonatomic) long long barAppearancePreferredStatusBarStyle;
 @property(nonatomic) _Bool prefersStatusBarVisible;
 @end
 

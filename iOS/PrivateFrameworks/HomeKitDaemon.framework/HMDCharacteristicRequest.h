@@ -6,21 +6,30 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDCharacteristic;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@interface HMDCharacteristicRequest : HMFObject
+@class HMDCharacteristic, NSString;
+
+@interface HMDCharacteristicRequest : HMFObject <HMFLogging>
 {
     HMDCharacteristic *_characteristic;
     id _previousValue;
 }
 
++ (id)logCategory;
 + (id)requestWithCharacteristic:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id previousValue; // @synthesize previousValue=_previousValue;
 @property(readonly, nonatomic) HMDCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+- (id)attributeDescriptions;
 - (id)initWithCharacteristic:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

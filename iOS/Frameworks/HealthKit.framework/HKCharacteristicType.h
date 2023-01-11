@@ -12,7 +12,9 @@
 - (id)_relatedCategoryType;
 - (id)_relatedQuantityType;
 - (id)_canoncialUnit;
+- (_Bool)_validateActivityMoveMode:(id)arg1 error:(id *)arg2;
 - (_Bool)_validateQuantity:(id)arg1 withCompatibleUnit:(id)arg2 error:(id *)arg3;
+- (_Bool)_validateCardioFitnessMedicationsUse:(id)arg1 error:(id *)arg2;
 - (_Bool)_validateWheelchairUse:(id)arg1 error:(id *)arg2;
 - (_Bool)_validateFitzpatrickSkinType:(id)arg1 error:(id *)arg2;
 - (_Bool)_validateBloodType:(id)arg1 error:(id *)arg2;

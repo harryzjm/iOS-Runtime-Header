@@ -8,43 +8,41 @@
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
 
-@class HMDCameraIDSSessionInviterDeviceVerifier, HMDSnapshotFile, IDSSession, NSMutableData, NSObject, NSString;
-@protocol HMDCameraSnapshotIDSRelayReceiverDelegate, OS_dispatch_queue, OS_dispatch_source;
+@class HMDCameraIDSSessionInviterDeviceVerifier, HMFActivity, IDSSession, NSMutableData, NSObject, NSString, NSUUID;
+@protocol HMDCameraSnapshotIDSRelayReceiverDelegate, OS_dispatch_source;
 
 @interface HMDCameraSnapshotIDSRelayReceiver <IDSServiceDelegate, IDSSessionDelegate, HMFLogging>
 {
-    HMDSnapshotFile *_snapshotFile;
+    HMFActivity *_activity;
+    IDSSession *_idsSession;
+    id <HMDCameraSnapshotIDSRelayReceiverDelegate> _delegate;
+    HMDCameraIDSSessionInviterDeviceVerifier *_sessionInviterDeviceVerifier;
+    NSUUID *_machOUUID;
     NSMutableData *_relayData;
     unsigned long long _bytesToReceive;
     unsigned long long _bytesSoFar;
     NSObject<OS_dispatch_source> *_socketSource;
-    IDSSession *_idsSession;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
-    id <HMDCameraSnapshotIDSRelayReceiverDelegate> _delegate;
-    HMDCameraIDSSessionInviterDeviceVerifier *_sessionInviterDeviceVerifier;
 }
 
 + (id)logCategory;
-@property(readonly, nonatomic) HMDCameraIDSSessionInviterDeviceVerifier *sessionInviterDeviceVerifier; // @synthesize sessionInviterDeviceVerifier=_sessionInviterDeviceVerifier;
-@property(readonly, nonatomic) __weak id <HMDCameraSnapshotIDSRelayReceiverDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(retain, nonatomic) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *socketSource; // @synthesize socketSource=_socketSource;
-@property(nonatomic) unsigned long long bytesSoFar; // @synthesize bytesSoFar=_bytesSoFar;
-@property(nonatomic) unsigned long long bytesToReceive; // @synthesize bytesToReceive=_bytesToReceive;
-@property(retain, nonatomic) NSMutableData *relayData; // @synthesize relayData=_relayData;
-@property(readonly, nonatomic) HMDSnapshotFile *snapshotFile; // @synthesize snapshotFile=_snapshotFile;
 - (void).cxx_destruct;
+@property(retain) NSObject<OS_dispatch_source> *socketSource; // @synthesize socketSource=_socketSource;
+@property unsigned long long bytesSoFar; // @synthesize bytesSoFar=_bytesSoFar;
+@property unsigned long long bytesToReceive; // @synthesize bytesToReceive=_bytesToReceive;
+@property(retain) NSMutableData *relayData; // @synthesize relayData=_relayData;
+@property(readonly) NSUUID *machOUUID; // @synthesize machOUUID=_machOUUID;
+@property(readonly) HMDCameraIDSSessionInviterDeviceVerifier *sessionInviterDeviceVerifier; // @synthesize sessionInviterDeviceVerifier=_sessionInviterDeviceVerifier;
+@property(readonly) __weak id <HMDCameraSnapshotIDSRelayReceiverDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
 - (void)sessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
 - (void)sessionStarted:(id)arg1;
 - (void)service:(id)arg1 account:(id)arg2 inviteReceivedForSession:(id)arg3 fromID:(id)arg4 withContext:(id)arg5;
-- (void)_callFileReceived:(id)arg1;
+- (void)_didReceiveData:(id)arg1 error:(id)arg2;
 - (void)dealloc;
-- (id)_postProcessFileData;
 - (void)_handleDataFromSocket:(id)arg1;
-- (void)_startFileReceive;
+- (void)_startDataReceive;
 - (id)logIdentifier;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 sessionInviterDeviceVerifier:(id)arg3 snapshotFile:(id)arg4 delegate:(id)arg5 delegateQueue:(id)arg6;
+- (id)initWithSessionID:(id)arg1 logIdentifier:(id)arg2 machOUUID:(id)arg3 workQueue:(id)arg4 sessionInviterDeviceVerifier:(id)arg5 delegate:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

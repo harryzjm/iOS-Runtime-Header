@@ -20,13 +20,13 @@
     MISSING_TYPE *_initializationValue;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) MISSING_TYPE *initializationValue; // @synthesize initializationValue=_initializationValue;
 @property(nonatomic) double time; // @synthesize time=_time;
 @property(nonatomic) unsigned long long bufferIndex; // @synthesize bufferIndex=_bufferIndex;
 @property(nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(nonatomic) unsigned long long format; // @synthesize format=_format;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

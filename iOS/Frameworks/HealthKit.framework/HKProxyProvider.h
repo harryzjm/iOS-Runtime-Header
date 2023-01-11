@@ -6,33 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, NSMutableArray, NSString, _HKXPCConnection;
+@class HKHealthStore, NSMutableArray, NSString, NSXPCInterface, _HKXPCConnection;
 @protocol OS_dispatch_queue, _HKXPCExportable;
 
 @interface HKProxyProvider : NSObject
 {
+    HKHealthStore *_strongHealthStore;
+    HKHealthStore *_weakHealthStore;
     _HKXPCConnection *_connection;
+    NSString *_daemonLaunchNotificationName;
+    NSXPCInterface *_exportedInterface;
+    NSXPCInterface *_remoteInterface;
     long long _connectionGeneration;
     _Bool _invalidated;
     CDUnknownBlockType _lock_automaticProxyReconnectionHandler;
     struct os_unfair_lock_s _lock;
-    NSObject<OS_dispatch_queue> *_clientQueue;
     int _notifyToken;
     NSMutableArray *_pendingFetchContinuations;
     _Bool _shouldRetryOnInterruption;
-    HKHealthStore *_healthStore;
+    NSObject<OS_dispatch_queue> *_clientQueue;
     NSString *_proxyIdentifier;
     id <_HKXPCExportable> _exportedObject;
 }
 
 + (id)_relaunchQueue;
+- (void).cxx_destruct;
 @property _Bool shouldRetryOnInterruption; // @synthesize shouldRetryOnInterruption=_shouldRetryOnInterruption;
 @property(readonly, nonatomic) __weak id <_HKXPCExportable> exportedObject; // @synthesize exportedObject=_exportedObject;
-@property(readonly, nonatomic) NSString *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
-@property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-- (void).cxx_destruct;
-- (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 endpointHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+@property(readonly, copy, nonatomic) NSString *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+- (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 healthStore:(id)arg2 endpointHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (id)description;
+- (CDUnknownBlockType)clientQueueProgressHandlerWithHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)clientQueueDoubleObjectHandlerWithCompletion:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)clientQueueObjectHandlerWithCompletion:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)clientQueueActionHandlerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_lock_flushContinuationsWithConnection:(id)arg1 error:(id)arg2;
 - (void)_lock_setUpConnectionWithEndpoint:(id)arg1;
 - (void)_lock_fetchEndpointAndConnectionWithContinuation:(CDUnknownBlockType)arg1;
@@ -47,7 +55,10 @@
 - (void)invalidate;
 - (void)_serverDidFinishLaunching;
 @property(copy) CDUnknownBlockType automaticProxyReconnectionHandler;
+- (void)getHealthStoreWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)referenceHealthStoreWeakly;
 - (void)dealloc;
+- (id)initWithHealthStore:(id)arg1 proxyIdentifier:(id)arg2 exportedObject:(id)arg3 exportedInterface:(id)arg4 remoteInterface:(id)arg5;
 - (id)initWithHealthStore:(id)arg1 proxyIdentifier:(id)arg2 exportedObject:(id)arg3;
 
 @end

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary, NSSet, UIColor, UIVisualEffect, _UICollectionCompositionalLayoutSolver, _UICollectionCompositionalLayoutSolverUpdate, _UICollectionViewListLayoutVisualProvider, _UICollectionViewListSeparatorDiff, _UICollectionViewListSnapshotter, _UIUpdateVisibleCellsContext;
+#import <UIKitCore/_UICollectionViewLayoutInteractionStateModuleHost-Protocol.h>
+
+@class NSArray, NSMutableDictionary, NSSet, NSString, UIColor, UIVisualEffect, _UICollectionCompositionalLayoutSolver, _UICollectionCompositionalLayoutSolverUpdate, _UICollectionViewLayoutInteractionStateModule, _UICollectionViewListLayoutVisualProvider, _UICollectionViewListSeparatorDiff, _UICollectionViewListSnapshotter, _UIUpdateVisibleCellsContext;
 @protocol UICollectionViewDataSource, UITableConstants, _UICollectionCompositionalLayoutSolverResolveResult, _UICollectionViewDelegateListLayout;
 
-@interface _UICollectionViewListLayout
+@interface _UICollectionViewListLayout <_UICollectionViewLayoutInteractionStateModuleHost>
 {
     struct {
         unsigned int prepareSnapshotNeeded:1;
@@ -26,8 +28,8 @@
     _UICollectionViewListSeparatorDiff *_currentUpdateDiff;
     _UICollectionCompositionalLayoutSolverUpdate *_currentUpdate;
     id <_UICollectionCompositionalLayoutSolverResolveResult> _currentResolveResult;
+    _UICollectionViewLayoutInteractionStateModule *_interactionStateModule;
     _UIUpdateVisibleCellsContext *_updateVisibleCellsContext;
-    _Bool _shouldDrawAdditionalSeparators;
     _Bool _cellLayoutMarginsFollowReadableWidth;
     _Bool _insetsContentViewsToSafeArea;
     _Bool _separatorInsetIsRelativeToCellEdges;
@@ -53,6 +55,7 @@
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_insetTopAndBottomSeparator) _Bool insetTopAndBottomSeparator; // @synthesize insetTopAndBottomSeparator=_insetTopAndBottomSeparator;
 @property(readonly, nonatomic, getter=_layoutSections) NSMutableDictionary *layoutSections; // @synthesize layoutSections=_layoutSections;
 @property(retain, nonatomic, getter=_solver, setter=_setSolver:) _UICollectionCompositionalLayoutSolver *solver; // @synthesize solver=_solver;
@@ -68,14 +71,16 @@
 @property(nonatomic) double globalHeaderHeight; // @synthesize globalHeaderHeight=_globalHeaderHeight;
 @property(nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
 @property(retain, nonatomic, getter=_constants) id <UITableConstants> constants; // @synthesize constants=_constants;
-@property(nonatomic, getter=_shouldDrawAdditionalSeparators, setter=_setShouldDrawAdditionalSeparators:) _Bool shouldDrawAdditionalSeparators; // @synthesize shouldDrawAdditionalSeparators=_shouldDrawAdditionalSeparators;
 @property(nonatomic) double estimatedSectionFooterHeight; // @synthesize estimatedSectionFooterHeight=_estimatedSectionFooterHeight;
 @property(nonatomic) double estimatedSectionHeaderHeight; // @synthesize estimatedSectionHeaderHeight=_estimatedSectionHeaderHeight;
 @property(nonatomic) double estimatedRowHeight; // @synthesize estimatedRowHeight=_estimatedRowHeight;
 @property(nonatomic) double sectionFooterHeight; // @synthesize sectionFooterHeight=_sectionFooterHeight;
 @property(nonatomic) double sectionHeaderHeight; // @synthesize sectionHeaderHeight=_sectionHeaderHeight;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
-- (void).cxx_destruct;
+- (void)_postProcessPreferredAttributes:(id)arg1 forView:(id)arg2;
+- (void)_transformSupplementaryLayoutAttributes:(id)arg1;
+- (void)_transformDecorationLayoutAttributes:(id)arg1;
+- (void)_transformCellLayoutAttributes:(id)arg1;
 - (double)_effectiveEstimatedGlobalFooterHeight;
 - (double)_effectiveEstimatedGlobalHeaderHeight;
 - (double)_defaultGlobalFooterHeight;
@@ -130,9 +135,11 @@
 - (id)_updatePinnedSectionSupplementaryItemsForCurrentVisibleBounds;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_prepareForPreferredAttributesQueryForView:(id)arg1 withLayoutAttributes:(id)arg2;
-- (void)_didPerformUpdateVisibleCellsPass;
+- (void)_didPerformUpdateVisibleCellsPassWithLayoutOffset:(struct CGPoint)arg1;
 - (void)_willPerformUpdateVisibleCellsPass;
 - (_Bool)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
+- (double)_interactionStateModule:(id)arg1 spacingAfterLayoutSection:(long long)arg2;
+- (id)_interactionStateModule:(id)arg1 layoutSectionForIndex:(long long)arg2;
 - (id)_globalSupplementaryItems;
 - (id)_actualLayoutSectionAtIndex:(long long)arg1;
 - (id)_preferredLayoutSectionForLayoutSection:(id)arg1 atIndex:(long long)arg2;
@@ -159,6 +166,12 @@
 - (void)dealloc;
 - (id)initWithAppearanceStyle:(long long)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

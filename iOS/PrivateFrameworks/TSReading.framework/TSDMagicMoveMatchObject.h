@@ -35,6 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithRep:(id)arg1 position:(struct CGPoint)arg2 stringValue:(id)arg3 stringRange:(struct _NSRange)arg4;
+- (id)init;
 
 @end
 

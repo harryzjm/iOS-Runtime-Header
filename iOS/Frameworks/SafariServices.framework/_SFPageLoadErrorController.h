@@ -8,14 +8,15 @@
 
 #import <SafariServices/WBSCertificateWarningPageHandler-Protocol.h>
 
-@class NSString, NSTimer, NSURL, NSURLRequest, UINavigationController, WKWebView, _WKRemoteObjectInterface;
-@protocol WBSCertificateWarningPagePresenter, _SFDialogPresenting, _SFPageLoadErrorControllerDelegate;
+@class NSString, NSTimer, NSURL, NSURLRequest, UINavigationController, WBSCertificateWarningPageContext, WKWebView, _WKRemoteObjectInterface;
+@protocol OS_dispatch_queue, WBSCertificateWarningPagePresenter, _SFDialogPresenting, _SFPageLoadErrorControllerDelegate;
 
 @interface _SFPageLoadErrorController : NSObject <WBSCertificateWarningPageHandler>
 {
     _Bool _reloadAfterResume;
     WKWebView *_webView;
     NSTimer *_crashCountResetTimer;
+    NSObject<OS_dispatch_queue> *_certManagerQueue;
     id <WBSCertificateWarningPagePresenter> _certificateWarningPagePresenterProxy;
     _WKRemoteObjectInterface *_certificateWarningPageHandlerInterface;
     _Bool _certificateWarningPageHandlerInterfaceInvalidated;
@@ -23,6 +24,8 @@
     CDUnknownBlockType _certificateRecoveryAttempter;
     NSURL *_certificateFailingURL;
     UINavigationController *_certificateNavigationViewController;
+    WBSCertificateWarningPageContext *_legacyTLSWarningPageContext;
+    NSURL *_clickThroughURL;
     _Bool _reloadingFailedRequest;
     id <_SFPageLoadErrorControllerDelegate> _delegate;
     NSURLRequest *_failedRequest;
@@ -30,12 +33,12 @@
     id <_SFDialogPresenting> _dialogPresenter;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 @property(readonly, nonatomic) unsigned long long crashesSinceLastSuccessfulLoad; // @synthesize crashesSinceLastSuccessfulLoad=_crashesSinceLastSuccessfulLoad;
 @property(readonly, nonatomic) NSURLRequest *failedRequest; // @synthesize failedRequest=_failedRequest;
 @property(readonly, nonatomic) _Bool reloadingFailedRequest; // @synthesize reloadingFailedRequest=_reloadingFailedRequest;
 @property(nonatomic) __weak id <_SFPageLoadErrorControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)openClockSettings;
 - (void)_dismissCertificateViewButtonTapped;
 - (void)showCertificateInformation;
@@ -52,6 +55,7 @@
 - (void)addInvalidProfileAlert;
 - (void)addInvalidURLAlert;
 - (void)handleClientCertificateAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)handleLegacyTLSWithFailingURL:(id)arg1 clickThroughURL:(id)arg2 authenticationChallenge:(id)arg3;
 - (void)handleSubframeCertificateError:(id)arg1;
 - (void)handleFrameLoadError:(id)arg1;
 - (void)reloadAfterError;
@@ -62,7 +66,7 @@
 - (id)_titleForError:(id)arg1;
 - (void)_setFailedRequest:(id)arg1;
 - (void)_reachabilityChanged:(id)arg1;
-- (_Bool)_handleCertificateError:(id)arg1 forURL:(id)arg2 isMainFrame:(_Bool)arg3 recoveryAttempter:(CDUnknownBlockType)arg4;
+- (void)_handleCertificateError:(id)arg1 forURL:(id)arg2 isMainFrame:(_Bool)arg3 recoveryAttempter:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_loadCertificateWarningPageForContext:(id)arg1;
 - (id)_certificateWarningPagePresenterProxy;
 - (void)showErrorPageWithTitle:(id)arg1 bodyText:(id)arg2 forError:(id)arg3;

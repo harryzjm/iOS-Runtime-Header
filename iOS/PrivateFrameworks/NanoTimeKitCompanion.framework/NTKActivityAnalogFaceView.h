@@ -61,7 +61,7 @@
 - (void)_performWristRaiseAnimation;
 - (void)_prepareWristRaiseAnimation;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
@@ -79,8 +79,8 @@
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_unloadSnapshotContentViews;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
-- (void)screenWillTurnOn;
-- (void)screenDidTurnOff;
+- (void)screenWillTurnOnAnimated:(_Bool)arg1;
+- (void)screenDidTurnOffAnimated:(_Bool)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (struct CGPoint)_contentCenterOffset;
 - (void)_addOrRemoveChronoViewsIfNecessary;
@@ -95,7 +95,7 @@
 - (void)_loadLayoutRules;
 - (void)layoutSubviews;
 - (_Bool)slotUsesCurvedText:(id)arg1;
-- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(_Bool)arg3 animated:(_Bool)arg4;
+- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(_Bool)arg3 ignoreScreenBlanked:(_Bool)arg4 animated:(_Bool)arg5;
 - (void)_applyCurrentEntryModelByFraction:(double)arg1 updateLabels:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)_applyCurrentEntryModelAnimated:(_Bool)arg1;
 - (void)applyEntryModelWithUnfilledRings:(id)arg1;

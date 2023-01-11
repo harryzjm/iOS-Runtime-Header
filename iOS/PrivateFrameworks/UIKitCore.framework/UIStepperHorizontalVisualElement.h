@@ -5,12 +5,13 @@
 //
 
 #import <UIKitCore/UIStepperVisualElement-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSTimer, UIButton, UIImageView, UIViewPropertyAnimator;
 @protocol UIStepperControl;
 
 __attribute__((visibility("hidden")))
-@interface UIStepperHorizontalVisualElement <UIStepperVisualElement>
+@interface UIStepperHorizontalVisualElement <_UICursorInteractionDelegate, UIStepperVisualElement>
 {
     _Bool _isRtoL;
     UIImageView *_leftBackground;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 + (struct UIEdgeInsets)initialAlignmentRectInsets;
 + (struct CGSize)initialIntrinsicSize;
 + (struct CGSize)initialSize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool wraps; // @synthesize wraps=_wraps;
 @property(nonatomic) double stepValue; // @synthesize stepValue=_stepValue;
 @property(nonatomic) __weak id <UIStepperControl> stepperControl; // @synthesize stepperControl=_stepperControl;
@@ -52,7 +54,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minimumValue; // @synthesize minimumValue=_minimumValue;
 @property(nonatomic) double maximumValue; // @synthesize maximumValue=_maximumValue;
 @property(nonatomic) double value; // @synthesize value=_value;
-- (void).cxx_destruct;
 - (void)setTintColor:(id)arg1;
 - (id)decrementImageForState:(unsigned long long)arg1;
 - (void)setDecrementImage:(id)arg1 forState:(unsigned long long)arg2;
@@ -63,6 +64,10 @@ __attribute__((visibility("hidden")))
 - (id)backgroundImageForState:(unsigned long long)arg1;
 - (void)setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)layoutSubviews;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (void)_updateCount:(id)arg1;
 - (void)_stopTimer;
 - (void)_startTimer;

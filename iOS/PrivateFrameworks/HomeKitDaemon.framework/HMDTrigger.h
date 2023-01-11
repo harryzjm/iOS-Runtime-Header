@@ -8,6 +8,7 @@
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
@@ -16,16 +17,17 @@
 @class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol>
+@interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDDevicePreferenceDataSource, HMDBackingStoreObjectProtocol>
 {
+    struct os_unfair_lock_s _lock;
     _Bool _active;
     NSString *_name;
     NSUUID *_uuid;
     HMDHome *_home;
     HMDUser *_owner;
     HMDDevice *_owningDevice;
-    NSMutableArray *_actionSetUUIDs;
     NSMutableDictionary *_actionSetMappings;
+    NSMutableArray *_actionSetUUIDs;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     unsigned long long _triggerType;
@@ -35,19 +37,22 @@
 + (_Bool)hasMessageReceiverChildren;
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDate *mostRecentFireDate; // @synthesize mostRecentFireDate=_mostRecentFireDate;
 @property(nonatomic) unsigned long long triggerType; // @synthesize triggerType=_triggerType;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain, nonatomic) NSMutableDictionary *actionSetMappings; // @synthesize actionSetMappings=_actionSetMappings;
 @property(retain, nonatomic) NSMutableArray *actionSetUUIDs; // @synthesize actionSetUUIDs=_actionSetUUIDs;
+@property(retain, nonatomic) NSMutableDictionary *actionSetMappings; // @synthesize actionSetMappings=_actionSetMappings;
 @property(retain, nonatomic) HMDDevice *owningDevice; // @synthesize owningDevice=_owningDevice;
 @property(retain, nonatomic) HMDUser *owner; // @synthesize owner=_owner;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
+- (void)_addActionSet:(id)arg1;
+- (_Bool)supportsDeviceWithCapabilities:(id)arg1;
+- (void)confirmResident;
 - (id)updateEventTriggerMessage:(int)arg1 message:(id)arg2 relay:(_Bool)arg3;
 - (void)timerFired:(id)arg1;
 - (id)emptyModelObject;
@@ -94,21 +99,29 @@
 @property(readonly, nonatomic, getter=isOwnedByThisDevice) _Bool ownedByThisDevice;
 - (void)invalidate;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
+- (_Bool)isAssociatedWithAccessory:(id)arg1;
 - (_Bool)_isTriggerFiredNotificationEntitled;
 - (void)sendTriggerFiredNotification:(id)arg1;
 - (void)_recentFireDateUpdated:(id)arg1;
 - (void)triggerFired;
-- (void)reEvaluate;
+- (void)reEvaluate:(unsigned long long)arg1;
 - (void)fixupForReplacementAccessory:(id)arg1;
 - (void)removeCharacteristic:(id)arg1;
 - (void)removeService:(id)arg1;
 - (void)removeAccessory:(id)arg1;
 - (void)removeActionSet:(id)arg1 postUpdate:(_Bool)arg2;
-- (void)checkForNoActions;
+- (void)_forceEvaluate;
+- (void)_checkForNoActions;
+- (_Bool)hasNoActions;
 - (void)setEnabled:(_Bool)arg1 message:(id)arg2;
 - (_Bool)compatible:(id)arg1 user:(id)arg2;
 @property(readonly, nonatomic) _Bool requiresDataVersion4;
-@property(readonly, nonatomic) NSArray *actionSets;
+@property(readonly, copy) NSArray *actionSets;
+- (id)actionSetMapKeys;
+- (void)removeAllActionSets;
+- (void)removeActionSetForKey:(id)arg1;
+- (id)actionSetForKey:(id)arg1;
+- (void)setActionSetForKey:(id)arg1 value:(id)arg2;
 - (id)dumpState;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;

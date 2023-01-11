@@ -11,18 +11,18 @@
     PGGraphLocationNode *_supersetLocationNode;
     NSDateInterval *_supersetDateInterval;
     NSSet *_interestingMomentNodes;
-    NSArray *_interestingAssetsInSuperset;
-    NSArray *_assetsInSuperset;
+    NSArray *_interestingAssetLocalIdentifiersInSuperset;
+    NSArray *_assetLocalIdentifiersInSuperset;
     NSSet *_supersetLocationNodes;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSSet *supersetLocationNodes; // @synthesize supersetLocationNodes=_supersetLocationNodes;
-@property(retain) NSArray *assetsInSuperset; // @synthesize assetsInSuperset=_assetsInSuperset;
-@property(retain) NSArray *interestingAssetsInSuperset; // @synthesize interestingAssetsInSuperset=_interestingAssetsInSuperset;
+@property(retain) NSArray *assetLocalIdentifiersInSuperset; // @synthesize assetLocalIdentifiersInSuperset=_assetLocalIdentifiersInSuperset;
+@property(retain) NSArray *interestingAssetLocalIdentifiersInSuperset; // @synthesize interestingAssetLocalIdentifiersInSuperset=_interestingAssetLocalIdentifiersInSuperset;
 @property(readonly) NSSet *interestingMomentNodes; // @synthesize interestingMomentNodes=_interestingMomentNodes;
 @property(readonly) NSDateInterval *supersetDateInterval; // @synthesize supersetDateInterval=_supersetDateInterval;
 @property(readonly) PGGraphLocationNode *supersetLocationNode; // @synthesize supersetLocationNode=_supersetLocationNode;
-- (void).cxx_destruct;
 - (id)initWithSupersetLocationNode:(id)arg1 supersetDateInterval:(id)arg2 interestingMomentNodes:(id)arg3 momentNodes:(id)arg4;
 
 @end

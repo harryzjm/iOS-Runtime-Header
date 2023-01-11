@@ -13,9 +13,6 @@
     NSData *_mappedSurfaceData;
 }
 
-+ (id)mappedSurfaceImageFromPath:(id)arg1 loadEagerly:(_Bool)arg2;
-+ (_Bool)writeSurfaceImage:(id)arg1 toFileDescriptor:(int)arg2;
-@property(retain, nonatomic, getter=_mappedSurfaceData, setter=_setMappedSurfaceData:) NSData *_mappedSurfaceData; // @synthesize _mappedSurfaceData;
 - (void).cxx_destruct;
 
 @end

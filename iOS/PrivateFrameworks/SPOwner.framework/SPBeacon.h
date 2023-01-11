@@ -22,14 +22,23 @@
     SPLostModeInfo *_lostModeInfo;
     NSSet *_shares;
     NSDictionary *_taskInformation;
+    NSString *_systemVersion;
+    long long _vendorId;
+    long long _productId;
     NSString *_stableIdentifier;
     NSDate *_pairingDate;
+    NSString *_correlationIdentifier;
 }
 
 + (id)SPOwner;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *correlationIdentifier; // @synthesize correlationIdentifier=_correlationIdentifier;
 @property(copy, nonatomic) NSDate *pairingDate; // @synthesize pairingDate=_pairingDate;
 @property(copy, nonatomic) NSString *stableIdentifier; // @synthesize stableIdentifier=_stableIdentifier;
+@property(nonatomic) long long productId; // @synthesize productId=_productId;
+@property(nonatomic) long long vendorId; // @synthesize vendorId=_vendorId;
+@property(copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property(copy, nonatomic) NSDictionary *taskInformation; // @synthesize taskInformation=_taskInformation;
 @property(copy, nonatomic) NSSet *shares; // @synthesize shares=_shares;
 @property(copy, nonatomic) SPLostModeInfo *lostModeInfo; // @synthesize lostModeInfo=_lostModeInfo;
@@ -39,7 +48,6 @@
 @property(nonatomic) _Bool accepted; // @synthesize accepted=_accepted;
 @property(copy, nonatomic) SPHandle *owner; // @synthesize owner=_owner;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

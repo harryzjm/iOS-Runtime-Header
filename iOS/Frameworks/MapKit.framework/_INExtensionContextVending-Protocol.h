@@ -18,9 +18,10 @@
 - (oneway void)resolveIntentSlots:(NSArray *)arg1 forIntent:(INIntent *)arg2 completionBlock:(void (^)(_Bool, INIntent *, NSDictionary *))arg3;
 - (oneway void)resolveIntentSlot:(NSString *)arg1 forIntent:(INIntent *)arg2 completionBlock:(void (^)(NSData *))arg3;
 - (oneway void)getIntentParameterDefaultValue:(NSString *)arg1 forIntent:(INIntent *)arg2 completionBlock:(void (^)(NSData *, NSError *))arg3;
-- (oneway void)getIntentParameterOptions:(NSString *)arg1 forIntent:(INIntent *)arg2 completionBlock:(void (^)(NSData *, NSError *))arg3;
+- (oneway void)getIntentParameterOptions:(NSString *)arg1 forIntent:(INIntent *)arg2 searchTerm:(NSString *)arg3 completionBlock:(void (^)(NSData *, NSError *))arg4;
 
 @optional
+- (oneway void)getIntentParameterOptions:(NSString *)arg1 forIntent:(INIntent *)arg2 completionBlock:(void (^)(NSData *, NSError *))arg3;
 - (oneway void)cancelTransactionDueToTimeout;
 - (oneway void)completeTransaction;
 - (oneway void)handleIntent:(INIntent *)arg1 completionHandler:(void (^)(INIntentResponse *, NSData *, NSError *))arg2;

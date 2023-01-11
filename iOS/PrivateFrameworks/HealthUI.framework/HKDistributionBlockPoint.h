@@ -19,20 +19,20 @@
     struct CGPoint _maxPoint;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <HKGraphSeriesBlockCoordinateInfo> userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, nonatomic) NSArray *distributionSegments; // @synthesize distributionSegments=_distributionSegments;
 @property(readonly, nonatomic) struct CGPoint maxPoint; // @synthesize maxPoint=_maxPoint;
 @property(readonly, nonatomic) struct CGPoint minPoint; // @synthesize minPoint=_minPoint;
-- (void).cxx_destruct;
 - (id)_applyTransformToSegments:(id)arg1 transform:(struct CGAffineTransform)arg2;
-- (id)_segmentsFromChartPoint:(id)arg1 forX:(double)arg2 minY:(double)arg3 maxY:(double)arg4;
+- (id)_segmentsFromChartPoint:(id)arg1 forX:(double)arg2 minY:(double)arg3 maxY:(double)arg4 zeroCountForGap:(long long)arg5;
 @property(readonly, copy) NSString *description;
 - (id)_quickDate:(id)arg1;
 @property(readonly, nonatomic) double endXValue;
 @property(readonly, nonatomic) double startXValue;
 - (id)copyWithTransform:(struct CGAffineTransform)arg1 roundToViewScale:(_Bool)arg2;
 - (id)initWithTransform:(struct CGAffineTransform)arg1 blockPoint:(id)arg2;
-- (id)initWithChartPoint:(id)arg1 xAxisTransform:(id)arg2 yAxisTransform:(id)arg3;
+- (id)initWithChartPoint:(id)arg1 xAxisTransform:(id)arg2 yAxisTransform:(id)arg3 gapZeroCount:(long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

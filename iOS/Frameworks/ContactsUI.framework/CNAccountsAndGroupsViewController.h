@@ -4,46 +4,53 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKit/UIViewController.h>
 
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
+#import <ContactsUI/UICollectionViewDelegate-Protocol.h>
 
-@class CNAccountsAndGroupsDataSource, CNContactListStyleApplier, NSString;
+@class CNAccountsAndGroupsDataSource, NSString, UIButton, UICollectionView, UICollectionViewDiffableDataSource, _UIDiffableDataSourceOutlineSectionController;
 @protocol CNAccountsAndGroupsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNAccountsAndGroupsViewController : UITableViewController <UITableViewDelegate>
+@interface CNAccountsAndGroupsViewController : UIViewController <UICollectionViewDelegate>
 {
     _Bool _needsReload;
     _Bool _tableViewNeedsReloadAfterResume;
-    CNContactListStyleApplier *_contactListStyleApplier;
     CNAccountsAndGroupsDataSource *_dataSource;
     id <CNAccountsAndGroupsViewControllerDelegate> _delegate;
+    UICollectionView *_collectionView;
+    _UIDiffableDataSourceOutlineSectionController *_sectionController;
+    UICollectionViewDiffableDataSource *_diffableDataSource;
+    UIButton *_showAllButton;
 }
 
+- (void).cxx_destruct;
+@property(retain) UIButton *showAllButton; // @synthesize showAllButton=_showAllButton;
+@property(retain) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
+@property(retain) _UIDiffableDataSourceOutlineSectionController *sectionController; // @synthesize sectionController=_sectionController;
+@property(retain) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) _Bool tableViewNeedsReloadAfterResume; // @synthesize tableViewNeedsReloadAfterResume=_tableViewNeedsReloadAfterResume;
 @property(nonatomic) _Bool needsReload; // @synthesize needsReload=_needsReload;
 @property(nonatomic) __weak id <CNAccountsAndGroupsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) CNAccountsAndGroupsDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property(retain, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
-- (void).cxx_destruct;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)toggleSelectionOfItem:(id)arg1;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)done:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)applicationDidResume;
-- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
-- (void)loadView;
-- (void)applyStyle;
-- (void)contentSizeCategoryDidChange:(id)arg1;
-- (void)contactStoreDidChangeWithNotification:(id)arg1;
-- (void)reloadData;
+- (void)configureDataSource;
+- (id)layout;
+- (id)groupsStyle;
 - (void)dealloc;
-- (id)initWithStyle:(long long)arg1;
+- (void)contentSizeCategoryDidChange:(id)arg1;
+- (void)contactStoreDidChange:(id)arg1;
+- (void)reloadData;
+- (id)doneButtonItem;
+- (void)showAllButtonTapped;
+- (void)resetShowButtonFont;
+- (void)viewDidLoad;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

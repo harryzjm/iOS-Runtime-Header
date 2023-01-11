@@ -8,7 +8,5 @@
 {
 }
 
-- (struct SBIconCoordinate)iconCoordinateForIndex:(unsigned long long)arg1 forOrientation:(long long)arg2 inList:(id)arg3;
-
 @end
 

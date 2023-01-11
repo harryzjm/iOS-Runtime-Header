@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUTrimToolControllerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSMutableArray, NSString, PUTrimToolController, UIButton, UILabel, UIView, _UIBackdropView;
+@class NSLayoutConstraint, NSMutableArray, NSString, PLRoundProgressView, PUTrimToolController, PXUIButton, UIButton, UILabel, UIView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditLivePhotoVideoToolController <PUTrimToolControllerDelegate>
@@ -19,12 +19,15 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_trailingWidthConstraint;
     NSMutableArray *_constraints;
     PUTrimToolController *_trimController;
-    UIButton *_muteLivePhotoButton;
-    UIButton *_livePhotoButton;
+    PXUIButton *_muteLivePhotoButton;
+    PXUIButton *_livePhotoButton;
     UILabel *_videoLabelView;
+    UIButton *_stabilizeButton;
+    PLRoundProgressView *_stabilizeProgressView;
     _Bool _trimControllerVisible;
     _Bool _viewHasAppeared;
     _Bool _trimControllerScrubberNeedsVisualUpdate;
+    _Bool _stabilizationInProgress;
     CDStruct_1b6d18a9 _originalStillImageTime;
     _Bool _useTranslucentBackground;
     long long _layoutType;
@@ -34,16 +37,21 @@ __attribute__((visibility("hidden")))
     double _verticalButtonOffset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool useTranslucentBackground; // @synthesize useTranslucentBackground=_useTranslucentBackground;
 @property(nonatomic) double verticalButtonOffset; // @synthesize verticalButtonOffset=_verticalButtonOffset;
 @property(readonly, nonatomic) double horizontalPrimaryViewPaddingOffset; // @synthesize horizontalPrimaryViewPaddingOffset=_horizontalPrimaryViewPaddingOffset;
 @property(nonatomic) double horizontalControlPadding; // @synthesize horizontalControlPadding=_horizontalControlPadding;
 @property(retain, nonatomic) UIView *primaryView; // @synthesize primaryView=_primaryView;
 @property(nonatomic) long long layoutType; // @synthesize layoutType=_layoutType;
-- (void).cxx_destruct;
 - (void)trimToolControllerDidChange:(id)arg1 state:(unsigned long long)arg2;
 - (void)_updateLivePhotoButton:(id)arg1;
 - (void)_handleLivePhotoButton:(id)arg1;
+- (void)_handleStabilizeButton:(id)arg1;
+- (void)_updateStabilizationInProgress:(_Bool)arg1;
+- (void)_reportStabilizeProgress:(double)arg1;
+- (void)_updateStabilizeProgressViewAnimated:(_Bool)arg1;
+- (void)_updateStabilizeButtonAnimated:(_Bool)arg1;
 - (void)_updateMuteButtonAnimated:(_Bool)arg1;
 - (void)_updateLivePhotoButtonAnimated:(_Bool)arg1;
 - (void)updateToolbarButtonsAnimated:(_Bool)arg1;

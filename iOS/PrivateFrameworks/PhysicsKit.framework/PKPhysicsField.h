@@ -19,9 +19,9 @@
     _Bool _override;
 }
 
-@property(nonatomic, getter=isOverride) _Bool override; // @synthesize override=_override;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isOverride) _Bool override; // @synthesize override=_override;
 @property(nonatomic) float minimumRadius;
 @property(nonatomic) MISSING_TYPE *scale;
 @property(nonatomic) float rotation;

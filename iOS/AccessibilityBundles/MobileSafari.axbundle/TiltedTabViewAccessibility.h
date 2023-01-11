@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityFocusRingTintColor;
 - (void)_axUpdateScrollViewInfo;
 - (void)_layoutItemsWithTransition:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

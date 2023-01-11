@@ -7,21 +7,24 @@
 #import <UIKit/UIViewController.h>
 
 #import <EventKitUI/EKEventAttendeePickerDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 
 @class EKCalendarShareePicker, NSArray, NSString;
 @protocol EKShareePickerViewControllerDelegate;
 
-@interface EKShareePickerViewController : UIViewController <EKEventAttendeePickerDelegate>
+@interface EKShareePickerViewController : UIViewController <EKEventAttendeePickerDelegate, EKUIManagedViewController>
 {
     EKCalendarShareePicker *_picker;
     id <EKShareePickerViewControllerDelegate> _delegate;
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
-@property(nonatomic) __weak id <EKShareePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <EKShareePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (unsigned long long)eventAttendeePicker:(id)arg1 getValidationStatusForAddress:(id)arg2;
 - (void)eventAttendeePicker:(id)arg1 cacheValidationStatus:(unsigned long long)arg2 forAddress:(id)arg3;
+- (_Bool)canManagePresentationStyle;
+- (_Bool)wantsManagement;
 - (struct CGSize)preferredContentSize;
 - (void)setSharees:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *sharees;

@@ -76,6 +76,7 @@
 @property(readonly, nonatomic) NSString *loginOrCreateDelegatesURL;
 @property(readonly, nonatomic) NSString *createDelegatesURL;
 @property(readonly, nonatomic) NSString *loginDelegatesURL;
+@property(readonly, nonatomic) NSString *loginAccountURL;
 @property(readonly, nonatomic) NSString *syncMachineURL;
 @property(readonly, nonatomic) NSString *finishProvisioningURL;
 @property(readonly, nonatomic) NSString *existingAppleIDTermsUIURL;

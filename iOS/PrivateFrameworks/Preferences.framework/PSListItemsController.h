@@ -26,13 +26,16 @@
 - (void)listItemSelected:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)prepareSpecifiersMetadata;
+- (void)willEnterForeground;
 - (void)didLock;
 - (void)suspend;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)setValueForSpecifier:(id)arg1 defaultValue:(id)arg2;
 - (void)setRowToSelect;
 - (void)scrollToSelectedCell;
+- (void)dealloc;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 
 @end
 

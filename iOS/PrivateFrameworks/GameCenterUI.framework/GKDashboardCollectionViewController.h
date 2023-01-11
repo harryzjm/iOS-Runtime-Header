@@ -5,18 +5,20 @@
 //
 
 #import <GameCenterUI/NSPopoverDelegate-Protocol.h>
+#import <GameCenterUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <GameCenterUI/UICollectionViewDataSource-Protocol.h>
 #import <GameCenterUI/UICollectionViewDelegate-Protocol.h>
 
 @class GKCollectionDataSource, GKNoContentView, NSLayoutConstraint, NSMutableIndexSet, NSString, UICollectionView, UIView;
 
-@interface GKDashboardCollectionViewController <NSPopoverDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface GKDashboardCollectionViewController <NSPopoverDelegate, UIAdaptivePresentationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 {
     _Bool _autoWidthUsesTwoColumnsWhenSpace;
     UICollectionView *_collectionView;
     GKCollectionDataSource *_dataSource;
     NSMutableIndexSet *_sectionsToReload;
     GKNoContentView *_noContentView;
+    CDUnknownBlockType _dismissHandler;
     NSLayoutConstraint *_keyboardConstraint;
     double _keyboardConstraintDefaultConstant;
     UIView *_keyboardAdjustedView;
@@ -25,18 +27,20 @@
     struct UIEdgeInsets _scrollInsetsBeforeKeyboard;
 }
 
-@property(nonatomic) UIView *collectionContainerView; // @synthesize collectionContainerView=_collectionContainerView;
-@property(nonatomic) UIView *keyboardAdjustedView; // @synthesize keyboardAdjustedView=_keyboardAdjustedView;
+- (void).cxx_destruct;
+@property(nonatomic) __weak UIView *collectionContainerView; // @synthesize collectionContainerView=_collectionContainerView;
+@property(nonatomic) __weak UIView *keyboardAdjustedView; // @synthesize keyboardAdjustedView=_keyboardAdjustedView;
 @property(nonatomic) double keyboardConstraintDefaultConstant; // @synthesize keyboardConstraintDefaultConstant=_keyboardConstraintDefaultConstant;
-@property(nonatomic) NSLayoutConstraint *keyboardConstraint; // @synthesize keyboardConstraint=_keyboardConstraint;
+@property(nonatomic) __weak NSLayoutConstraint *keyboardConstraint; // @synthesize keyboardConstraint=_keyboardConstraint;
 @property(nonatomic) struct UIEdgeInsets scrollInsetsBeforeKeyboard; // @synthesize scrollInsetsBeforeKeyboard=_scrollInsetsBeforeKeyboard;
 @property(nonatomic) struct UIEdgeInsets contentInsetsBeforeKeyboard; // @synthesize contentInsetsBeforeKeyboard=_contentInsetsBeforeKeyboard;
+@property(copy, nonatomic) CDUnknownBlockType dismissHandler; // @synthesize dismissHandler=_dismissHandler;
 @property(retain, nonatomic) GKNoContentView *noContentView; // @synthesize noContentView=_noContentView;
 @property(retain, nonatomic) NSMutableIndexSet *sectionsToReload; // @synthesize sectionsToReload=_sectionsToReload;
 @property(nonatomic) _Bool autoWidthUsesTwoColumnsWhenSpace; // @synthesize autoWidthUsesTwoColumnsWhenSpace=_autoWidthUsesTwoColumnsWhenSpace;
 @property(retain, nonatomic) GKCollectionDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-- (void).cxx_destruct;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)collectionView:(id)arg1 didFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didUnfocusItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;

@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFInterchangeAction.h>
-
 @class NSString;
 
-@interface WFSocialAction : WFInterchangeAction
+@interface WFSocialAction
 {
 }
 
++ (id)userInterfaceProtocol;
 @property(readonly, nonatomic) NSString *postPrefix;
 - (void)convertAnimatedImagesToVideoWithInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)runWithoutUserInterfaceWithInput:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (_Bool)convertsAnimatedImagesToVideo;
 

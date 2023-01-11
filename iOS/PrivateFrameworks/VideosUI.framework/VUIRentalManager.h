@@ -9,19 +9,25 @@
 #import <VideosUI/MPStoreDownloadManagerObserver-Protocol.h>
 
 @class NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface VUIRentalManager : NSObject <MPStoreDownloadManagerObserver>
 {
     _Bool _needToSendPlaybackStartDatesToServer;
-    NSMutableSet *_rentalContextsNeedingCheckin;
+    _Bool _initialized;
+    _Bool _initialRentalsFetched;
+    NSMutableSet *_deferredRentalCheckinContexts;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) NSMutableSet *rentalContextsNeedingCheckin; // @synthesize rentalContextsNeedingCheckin=_rentalContextsNeedingCheckin;
-@property(nonatomic) _Bool needToSendPlaybackStartDatesToServer; // @synthesize needToSendPlaybackStartDatesToServer=_needToSendPlaybackStartDatesToServer;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(nonatomic) _Bool initialRentalsFetched; // @synthesize initialRentalsFetched=_initialRentalsFetched;
+@property(nonatomic) _Bool initialized; // @synthesize initialized=_initialized;
+@property(retain, nonatomic) NSMutableSet *deferredRentalCheckinContexts; // @synthesize deferredRentalCheckinContexts=_deferredRentalCheckinContexts;
+@property(nonatomic) _Bool needToSendPlaybackStartDatesToServer; // @synthesize needToSendPlaybackStartDatesToServer=_needToSendPlaybackStartDatesToServer;
 - (void)_didFetchInitialDownloads:(id)arg1;
-- (void)_checkInRentalsNeedingCheckInAtAppLaunch;
 - (void)_checkInRentalsNeedingCheckIn;
 - (void)_sendPlaybackStartDatesToServerIfNecessary;
 - (void)_activeAccountDidChange:(id)arg1;

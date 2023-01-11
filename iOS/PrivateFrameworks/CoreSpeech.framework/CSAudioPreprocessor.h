@@ -22,18 +22,19 @@
     CSAudioZeroCounter *_zeroCounter;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CSAudioZeroCounter *zeroCounter; // @synthesize zeroCounter=_zeroCounter;
 @property(retain, nonatomic) CSBeepCanceller *beepCanceller; // @synthesize beepCanceller=_beepCanceller;
 @property(retain, nonatomic) CSVoiceTriggerAwareZeroFilter *zeroFilter; // @synthesize zeroFilter=_zeroFilter;
 @property(retain, nonatomic) CSAudioSampleRateConverter *upsampler; // @synthesize upsampler=_upsampler;
 @property(nonatomic) float sampleRate; // @synthesize sampleRate=_sampleRate;
 @property(nonatomic) __weak id <CSAudioPreprocessorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)beepCancellerDidCancelSamples:(id)arg1 buffer:(id)arg2 timestamp:(unsigned long long)arg3;
 - (void)zeroFilter:(id)arg1 zeroFilteredBufferAvailable:(id)arg2 atHostTime:(unsigned long long)arg3;
 - (_Bool)_isNarrowBand:(float)arg1;
 - (void)_reportMetrics;
-- (void)willBeep;
+- (_Bool)_isHeadphoneDeviceWithRecordRoute:(id)arg1 playbackRoute:(id)arg2;
+- (void)willBeepWithRecordRoute:(id)arg1 playbackRoute:(id)arg2;
 - (void)flush;
 - (void)processBuffer:(id)arg1 atTime:(unsigned long long)arg2;
 - (void)resetWithSampleRate:(float)arg1 containsVoiceTrigger:(_Bool)arg2 voiceTriggerInfo:(id)arg3;

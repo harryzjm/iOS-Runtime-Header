@@ -8,19 +8,20 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonActivatedObserver-Protocol.h>
 
 @class HDProfile, NSString;
-@protocol HDPeriodicActivityDelegate, OS_dispatch_queue, OS_os_log, OS_xpc_object;
+@protocol HDPeriodicActivityDelegate, OS_os_log, OS_xpc_object;
 
-@interface HDPeriodicActivity : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDiagnosticObject>
+@interface HDPeriodicActivity : NSObject <HDHealthDaemonActivatedObserver, HDDatabaseProtectedDataObserver, HDDiagnosticObject>
 {
     HDProfile *_profile;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
     NSString *_lastSuccessfulRunDateUserDefaultsKey;
     CDUnknownBlockType _waitingActivityCompletion;
     NSString *_errorCountUserDefaultsKey;
     NSString *_minimumIntervalDefaultsKey;
+    _Bool _unitTest_shouldDeferOverride;
     NSString *_name;
     NSObject<OS_os_log> *_loggingCategory;
     double _interval;
@@ -30,38 +31,45 @@
 
 + (id)_userDefaultsKeyForName:(id)arg1 key:(id)arg2;
 + (void)registerDisabledPeriodicActivityWithName:(id)arg1 loggingCategory:(id)arg2;
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_xpc_object> *currentActivity; // @synthesize currentActivity=_currentActivity;
 @property(readonly, nonatomic) __weak id <HDPeriodicActivityDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double interval; // @synthesize interval=_interval;
 @property(readonly, nonatomic) NSObject<OS_os_log> *loggingCategory; // @synthesize loggingCategory=_loggingCategory;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (id)_dateForDefaultsKey:(id)arg1;
-- (id)_queue_criteriaForInterval:(double)arg1;
-- (void)_queue_setLastSuccessfulRunDate:(id)arg1;
-- (void)_queue_incrementErrorCount;
-- (long long)_queue_errorCount;
-- (double)_queue_currentInterval;
-- (void)_queue_unitTest_activityFiredButRunDeclined;
-- (void)_queue_activityFinishedWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
-- (void)_queue_performActivityWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_performActivityIfPossibleWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_performActivityIfWaiting;
-- (void)_queue_updateCriteriaForActivity:(id)arg1;
+- (void)_lock_setLastSuccessfulRunDate:(id)arg1;
+- (void)_lock_incrementErrorCount;
+- (long long)_lock_errorCount;
+- (double)_lock_currentInterval;
+- (void)_unitTest_activityFiredButRunDeclined;
+- (void)_lock_activityFinishedWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
+- (void)_performActivityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performActivityIfPossibleWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performActivityIfWaiting;
 - (void)_performActivity:(id)arg1;
-- (void)_handleXPCActivityCallback:(id)arg1;
-- (void)_registerActivity;
+- (void)_finishActivity:(id)arg1 result:(long long)arg2;
+- (id)_criteriaForInterval:(double)arg1;
+- (void)_updateCriteriaForActivity:(id)arg1;
 - (_Bool)_requiresProtectedData;
+- (double)_currentInterval;
+- (void)_handleXPCActivityCallback:(id)arg1;
+- (void)_registerActivityWithCriteria:(id)arg1;
+@property(readonly, copy) NSString *description;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)daemonReady:(id)arg1;
-- (_Bool)isWaitingToRun;
+- (void)daemonActivated:(id)arg1;
+- (void)unitTest_setShouldDefer:(_Bool)arg1;
 - (void)synthesizeActivityFire;
 - (void)reset;
-@property(readonly, copy) NSString *description;
+- (void)resetInterval;
+- (id)currentCriteria;
+- (void)updateCriteria;
+- (id)lastSuccessfulRunDate;
+- (_Bool)isWaitingToRun;
+@property(readonly, nonatomic) _Bool shouldDefer;
 @property(readonly, nonatomic) long long errorCount;
 - (void)didPerformActivityWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
-- (id)lastSuccessfulRunDate;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 name:(id)arg2 interval:(double)arg3 delegate:(id)arg4 loggingCategory:(id)arg5;
 

@@ -15,11 +15,20 @@
 
 @interface BSAnimationSettings : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, BSXPCCoding>
 {
-    double _duration;
-    double _delay;
-    double _frameInterval;
-    CAMediaTimingFunction *_timingFunction;
-    float _speed;
+    struct os_unfair_lock_s _lock;
+    float _lock_speed;
+    double _lock_storedDuration;
+    double _lock_delay;
+    double _lock_frameInterval;
+    CAMediaTimingFunction *_lock_timingFunction;
+    double _lock_mass;
+    double _lock_stiffness;
+    double _lock_damping;
+    double _lock_epsilon;
+    double _lock_initialVelocity;
+    _Bool _lock_storedDurationIsDirty;
+    _Bool _mutable;
+    _Bool _isSpring;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -31,26 +40,25 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)_setSpeed:(float)arg1;
-- (void)_setFrameInterval:(double)arg1;
-- (void)_setTimingFunction:(id)arg1;
-- (void)_setDelay:(double)arg1;
-- (void)_setDuration:(double)arg1;
 - (_Bool)isSpringAnimation;
+- (void)applyToCAAnimation:(id)arg1;
 @property(readonly, nonatomic) float speed;
 @property(readonly, nonatomic) double frameInterval;
 @property(readonly, nonatomic) CAMediaTimingFunction *timingFunction;
 @property(readonly, nonatomic) double delay;
 @property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) double initialVelocity;
+@property(readonly, nonatomic) double epsilon;
+@property(readonly, nonatomic) double damping;
+@property(readonly, nonatomic) double stiffness;
+@property(readonly, nonatomic) double mass;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)applyToCAAnimation:(id)arg1;
 - (id)init;
-- (id)_initWithDuration:(double)arg1 delay:(double)arg2 frameInterval:(double)arg3 timingFunction:(id)arg4 speed:(float)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

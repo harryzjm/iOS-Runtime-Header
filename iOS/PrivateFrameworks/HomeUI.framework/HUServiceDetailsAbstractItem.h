@@ -15,12 +15,16 @@
     HMHome *_home;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) HFItem<HFServiceLikeItem> *sourceServiceItem; // @synthesize sourceServiceItem=_sourceServiceItem;
-- (void).cxx_destruct;
+- (_Bool)canShowAsIndividualTiles;
+- (_Bool)isSensorService;
 - (_Bool)isNetworkRouterSatellite;
 - (_Bool)isNetworkRouter;
 - (_Bool)isContainedInAParent;
+- (_Bool)isAccessoryDisplayedAsIndividualTiles;
+- (_Bool)isVisibleAsBridge;
 - (_Bool)isBridge;
 - (_Bool)isNotificationSupportedCamera;
 - (_Bool)isCamera;
@@ -28,6 +32,7 @@
 - (_Bool)isMediaAccessory;
 - (_Bool)isService;
 - (_Bool)isMultiServiceAccessory;
+- (id)sourceAccessory;
 - (_Bool)isAccessory;
 - (_Bool)isContainedWithinItemGroup;
 - (_Bool)isItemGroup;

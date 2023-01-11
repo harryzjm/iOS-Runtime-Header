@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCCloudContext, FCSpotlightOperationResult, FCVideoArticlesOperationResult, NSArray, NSError;
+@class FCCloudContext, FCSpotlightOperationResult, NSArray, NSError;
 @protocol FCCoreConfiguration;
 
 @interface FCEditorialOperation
@@ -12,24 +12,20 @@
     id <FCCoreConfiguration> _configuration;
     FCCloudContext *_context;
     NSArray *_trendingHeadlines;
-    FCVideoArticlesOperationResult *_topVideosResult;
-    FCVideoArticlesOperationResult *_moreVideosResult;
     FCSpotlightOperationResult *_spotlightResult;
     NSError *_error;
     CDUnknownBlockType _catchUpCompletionHandler;
     NSArray *_editorialSectionGroups;
 }
 
+- (void).cxx_destruct;
 @property(copy) NSArray *editorialSectionGroups; // @synthesize editorialSectionGroups=_editorialSectionGroups;
 @property(copy) CDUnknownBlockType catchUpCompletionHandler; // @synthesize catchUpCompletionHandler=_catchUpCompletionHandler;
 @property(retain) NSError *error; // @synthesize error=_error;
 @property(retain) FCSpotlightOperationResult *spotlightResult; // @synthesize spotlightResult=_spotlightResult;
-@property(retain) FCVideoArticlesOperationResult *moreVideosResult; // @synthesize moreVideosResult=_moreVideosResult;
-@property(retain) FCVideoArticlesOperationResult *topVideosResult; // @synthesize topVideosResult=_topVideosResult;
 @property(copy) NSArray *trendingHeadlines; // @synthesize trendingHeadlines=_trendingHeadlines;
 @property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

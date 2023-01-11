@@ -64,6 +64,7 @@
 + (void)_invalidateWidth;
 + (void)_registerForInvalidation;
 + (void)_invalidateCachedValues;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <EKDayTimeViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double hourHeight; // @synthesize hourHeight=_hourHeight;
 @property(nonatomic) double hourHeightScale; // @synthesize hourHeightScale=_hourHeightScale;
@@ -73,7 +74,6 @@
 @property(nonatomic) _Bool usesLightText; // @synthesize usesLightText=_usesLightText;
 @property(nonatomic) _Bool showsTimeMarkerExtension; // @synthesize showsTimeMarkerExtension=_showsTimeMarkerExtension;
 @property(nonatomic) _Bool showsTimeMarker; // @synthesize showsTimeMarker=_showsTimeMarker;
-- (void).cxx_destruct;
 - (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;
 - (void)tintColorDidChange;
 - (double)_positionOfSecond:(int)arg1;
@@ -91,6 +91,7 @@
 @property(nonatomic) _Bool showsRightBorder;
 @property(nonatomic) _Bool showsLeftBorder;
 - (void)setOpaque:(_Bool)arg1;
+- (void)updateHourHeight;
 - (double)scaledHourHeight;
 - (double)_timeWidth;
 - (void)_invalidateTimeWidth;

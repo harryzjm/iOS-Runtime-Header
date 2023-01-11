@@ -16,15 +16,24 @@
 
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) unsigned long long uniqueIdentifier;
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
 @property(readonly) unsigned long long staticThreadgroupMemoryLength;
 @property(readonly) unsigned long long threadExecutionWidth;
 @property(readonly) unsigned long long maxTotalThreadsPerThreadgroup;
+@property(readonly) long long textureWriteRoundingMode;
 @property(readonly) _Bool supportIndirectCommandBuffers;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1;
+- (id)functionHandleWithFunction:(id)arg1;
+- (id)functionHandleToToolsFunctionHandle:(id)arg1 parentFunction:(id)arg2;
+- (id)functionPointerHandlesWithFunctions:(id)arg1 range:(struct _NSRange)arg2;
+- (id)functionPointerHandleWithFunction:(id)arg1;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSString *label;
-- (void)acceptVisitor:(id)arg1;
 - (void)dealloc;
 
 // Remaining properties

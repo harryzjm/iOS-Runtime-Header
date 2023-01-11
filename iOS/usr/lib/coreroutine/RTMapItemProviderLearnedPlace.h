@@ -14,9 +14,10 @@
     RTMapItemProviderLearnedPlaceParameters *_parameters;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) RTMapItemProviderLearnedPlaceParameters *parameters; // @synthesize parameters=_parameters;
 @property(retain, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
-- (void).cxx_destruct;
+- (id)adjustConfidenceAndCollectMetrics:(id)arg1 learnedPlace:(id)arg2 maxConfidence:(double)arg3;
 - (double)confidenceForPlaceType:(unsigned long long)arg1;
 - (unsigned long long)coalescedMapItemSourceForPlace:(id)arg1;
 - (id)learnedPlaceForInferredMapItem:(id)arg1 error:(id *)arg2;

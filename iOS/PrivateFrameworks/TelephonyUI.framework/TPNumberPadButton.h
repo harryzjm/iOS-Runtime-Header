@@ -12,7 +12,7 @@
 
 @interface TPNumberPadButton : UIControl <TPNumberPadButtonProtocol>
 {
-    unsigned int character;
+    long long character;
     UIColor *_color;
     CALayer *_glyphLayer;
     CALayer *_highlightedGlyphLayer;
@@ -21,7 +21,7 @@
     TPRevealingRingView *_revealingRingView;
 }
 
-+ (id)disabledImageForCharacter:(unsigned int)arg1;
++ (id)disabledImageForCharacter:(long long)arg1;
 + (double)highlightedCircleViewAlpha;
 + (double)unhighlightedCircleViewAlpha;
 + (double)horizontalPadding;
@@ -30,27 +30,27 @@
 + (id)scriptKey;
 + (void)resetLocaleIfNeeded;
 + (void)loadNumberPadKeyPrototypeView;
-+ (id)imageForCharacter:(unsigned int)arg1 highlighted:(_Bool)arg2 whiteVersion:(_Bool)arg3;
-+ (id)localizedLettersForCharacter:(unsigned int)arg1;
++ (id)imageForCharacter:(long long)arg1 highlighted:(_Bool)arg2 whiteVersion:(_Bool)arg3;
++ (id)localizedLettersForCharacter:(long long)arg1;
 + (_Bool)isCarPlay;
 + (_Bool)usesBoldAssets;
 + (_Bool)usesButtonSaturationFilters;
 + (_Bool)usesTelephonyGlyphsWhereAvailable;
-+ (id)imageForCharacter:(unsigned int)arg1 highlighted:(_Bool)arg2;
-+ (id)imageForCharacter:(unsigned int)arg1;
++ (id)imageForCharacter:(long long)arg1 highlighted:(_Bool)arg2;
++ (id)imageForCharacter:(long long)arg1;
 + (struct UIEdgeInsets)paddingOutsideRing;
 + (_Bool)useLargeFont;
 + (double)outerCircleDiameter;
 + (struct CGRect)circleBounds;
 + (struct CGSize)defaultSize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) TPRevealingRingView *revealingRingView; // @synthesize revealingRingView=_revealingRingView;
 @property(readonly, nonatomic) UIColor *buttonColor; // @synthesize buttonColor=_buttonColor;
 @property(retain) UIView *circleView; // @synthesize circleView=_circleView;
 @property(retain) CALayer *highlightedGlyphLayer; // @synthesize highlightedGlyphLayer=_highlightedGlyphLayer;
 @property(retain) CALayer *glyphLayer; // @synthesize glyphLayer=_glyphLayer;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
-@property unsigned int character; // @synthesize character;
-- (void).cxx_destruct;
+@property long long character; // @synthesize character;
 - (void)touchCancelled;
 - (void)touchUp;
 - (void)touchDown;
@@ -60,7 +60,7 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setGreyedOut:(_Bool)arg1;
 - (void)reloadImagesForCurrentCharacter;
-- (id)initForCharacter:(unsigned int)arg1;
+- (id)initForCharacter:(long long)arg1;
 @property(readonly, nonatomic) UIColor *highlightedButtonColor;
 
 // Remaining properties

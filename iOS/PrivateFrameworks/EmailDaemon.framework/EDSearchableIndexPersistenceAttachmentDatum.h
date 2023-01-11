@@ -14,13 +14,15 @@
     NSString *_messagePersistentID;
     NSString *_attachmentID;
     NSString *_name;
+    long long _mailboxID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long mailboxID; // @synthesize mailboxID=_mailboxID;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *attachmentID; // @synthesize attachmentID=_attachmentID;
 @property(copy, nonatomic) NSString *messagePersistentID; // @synthesize messagePersistentID=_messagePersistentID;
 @property(copy, nonatomic) NSString *attachmentPersistentID; // @synthesize attachmentPersistentID=_attachmentPersistentID;
-- (void).cxx_destruct;
 
 @end
 

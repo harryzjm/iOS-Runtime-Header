@@ -46,7 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)didSendMessageForReportingClient:(id)arg1 event:(id)arg2;
 - (void)reportQR:(id)arg1;
 - (void)report:(id)arg1 segmentDirection:(int)arg2;
+- (unsigned short)reportingSegmentMethodForClientType:(int)arg1;
 - (void)dealloc;
+- (void)finalizeAggregation;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
 - (id)aggregatorForClientType:(int)arg1;
 - (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2 parentHierarchyToken:(id)arg3;

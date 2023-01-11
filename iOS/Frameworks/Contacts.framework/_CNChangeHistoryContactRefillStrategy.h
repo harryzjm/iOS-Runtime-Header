@@ -18,15 +18,9 @@ __attribute__((visibility("hidden")))
     CNContactStore *_contactStore;
 }
 
-@property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
-@property(readonly, nonatomic) _Bool unifyResults; // @synthesize unifyResults=_unifyResults;
-@property(readonly, copy, nonatomic) NSArray *keys; // @synthesize keys=_keys;
 - (void).cxx_destruct;
-- (id)updateChanges:(id)arg1 withFetchedContacts:(id)arg2;
-- (id)fetchContactsWithIdentifiers:(id)arg1;
 - (id)objectsRepresentedByBatch:(id)arg1;
 - (id)batchesToRepresentObjects:(id)arg1 suggestedBatchSize:(unsigned long long)arg2;
-- (id)initWithKeysToFetch:(id)arg1 unifyResults:(_Bool)arg2 contactStore:(id)arg3;
 
 @end
 

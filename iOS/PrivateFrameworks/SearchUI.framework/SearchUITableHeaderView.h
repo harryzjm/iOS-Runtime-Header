@@ -8,58 +8,46 @@
 
 #import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, SFResultSection, TLKLabel, TLKStackView, TLKTextButton, UIView;
+@class NSString, SFResultSection, TLKLabel, TLKStackView, TLKTextButton;
 @protocol SFFeedbackListener, SearchUITableHeaderViewDelegate;
 
 @interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerViewDelegate>
 {
     _Bool _shouldUseInsetRoundedSections;
-    _Bool _shouldUseStandardSectionInsets;
-    _Bool _useShorterHeaders;
-    _Bool _usesInsetRoundedSections;
+    _Bool _isExpanded;
     id <SearchUITableHeaderViewDelegate> _delegate;
     id <SFFeedbackListener> _feedbackListener;
     unsigned long long _headerType;
     SFResultSection *_section;
     TLKLabel *_titleLabel;
-    UIView *_bannerView;
     TLKTextButton *_headerOptionButton;
     TLKStackView *_stackView;
 }
 
 + (id)reuseIdentifier;
-@property(nonatomic) _Bool usesInsetRoundedSections; // @synthesize usesInsetRoundedSections=_usesInsetRoundedSections;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isExpanded; // @synthesize isExpanded=_isExpanded;
 @property(retain, nonatomic) TLKStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) TLKTextButton *headerOptionButton; // @synthesize headerOptionButton=_headerOptionButton;
-@property(retain, nonatomic) UIView *bannerView; // @synthesize bannerView=_bannerView;
 @property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) _Bool useShorterHeaders; // @synthesize useShorterHeaders=_useShorterHeaders;
-@property(nonatomic) _Bool shouldUseStandardSectionInsets; // @synthesize shouldUseStandardSectionInsets=_shouldUseStandardSectionInsets;
 @property(nonatomic) _Bool shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
 @property(retain, nonatomic) SFResultSection *section; // @synthesize section=_section;
 @property(nonatomic) unsigned long long headerType; // @synthesize headerType=_headerType;
 @property(nonatomic) __weak id <SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
 @property(nonatomic) __weak id <SearchUITableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly) NSString *title;
 - (void)setFloating:(_Bool)arg1;
 - (void)moreButtonPressed;
-- (void)headerOptionButtonPressed;
 - (_Bool)supportsShowMoreInApp;
-- (void)_dynamicUserInterfaceTraitDidChange;
-- (void)didMoveToWindow;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)updateHeaderButtonVisibility;
+- (_Bool)isSuggestedAppsHeader;
+- (void)updateHeaderButtonVisibilityAnimated:(_Bool)arg1;
 - (id)moreResultsPunchout;
-- (void)updateSectionTitle;
 - (void)updateWithSection:(id)arg1 isExpanded:(_Bool)arg2 usesInsetRoundedSection:(_Bool)arg3;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
-- (struct CGSize)intrinsicContentSize;
-- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (void)updateAlignmentRectInsets;
 - (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)init;
 
 // Remaining properties

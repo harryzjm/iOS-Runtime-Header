@@ -28,8 +28,8 @@
 + (id)defaultVoiceLanguageWithSource:(long long *)arg1;
 + (id)localizedStringForKey:(id)arg1;
 + (id)sharedInstance;
-@property(readonly, nonatomic) _Bool deviceMuted; // @synthesize deviceMuted=_deviceMuted;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool deviceMuted; // @synthesize deviceMuted=_deviceMuted;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)_setMaintainInactivePersistentConnection:(_Bool)arg1;
@@ -45,7 +45,7 @@
 - (void)clearAllEvents;
 - (void)stop;
 - (void)speak:(id)arg1 fallbackPrompt:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)exactDurationToSpeak:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)cacheAnnouncement:(id)arg1;
 - (double)_estimateDurationToSpeak:(id)arg1;
 - (double)durationToSpeak:(id)arg1;
 - (void)_setGender;

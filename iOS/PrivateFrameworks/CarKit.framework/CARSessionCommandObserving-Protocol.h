@@ -11,6 +11,9 @@
 @protocol CARSessionCommandObserving <NSObject>
 
 @optional
+- (void)session:(CARSession *)arg1 didUpdateMapAppearanceStyle:(long long)arg2 forScreenUUID:(NSString *)arg3;
+- (void)session:(CARSession *)arg1 didUpdateAppearanceStyle:(long long)arg2 forScreenUUID:(NSString *)arg3;
+- (void)session:(CARSession *)arg1 didUpdateNightMode:(_Bool)arg2 forScreenUUID:(NSString *)arg3;
 - (void)session:(CARSession *)arg1 receivedUnhandledRemoteEvent:(NSString *)arg2 withPayload:(NSDictionary *)arg3;
 - (void)session:(CARSession *)arg1 stopUIForScreenInfo:(CARScreenInfo *)arg2;
 - (void)session:(CARSession *)arg1 showUIForScreenInfo:(CARScreenInfo *)arg2 withURL:(NSURL *)arg3;

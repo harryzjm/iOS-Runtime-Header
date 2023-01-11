@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLArgument, NSArray, NSDictionary;
+@class MTLArgument, NSArray, NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MTLRenderPipelineReflectionInternal
@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     MTLArgument *_imageBlockDataReturn;
     NSDictionary *_performanceStatistics;
     unsigned int _traceBufferIndex;
+    NSData *_vertexPluginReturnData;
+    NSData *_fragmentPluginReturnData;
     NSArray *_constantSamplerUniqueIdentifiers;
     NSArray *_constantSamplerDescriptors;
 }
@@ -40,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)setConstantSamplerUniqueIdentifiers:(id)arg1;
 - (id)constantSamplerDescriptors;
 - (id)constantSamplerUniqueIdentifiers;
+- (id)fragmentPluginReturnData;
+- (id)vertexPluginReturnData;
 - (unsigned int)traceBufferIndex;
 - (id)performanceStatistics;
 - (void)setPerformanceStatistics:(id)arg1;

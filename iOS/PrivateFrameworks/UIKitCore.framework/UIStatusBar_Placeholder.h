@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(_Bool)arg3;
++ (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(_Bool)arg3 inWindow:(id)arg4;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_setHidden:(_Bool)arg1 animationParameters:(id)arg2;
 - (double)defaultDoubleHeight;

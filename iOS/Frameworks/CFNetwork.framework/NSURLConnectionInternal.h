@@ -29,18 +29,9 @@
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;
-- (void)_withConnectionAndDelegate:(CDUnknownBlockType)arg1;
-- (void)_withActiveConnectionAndDelegate:(CDUnknownBlockType)arg1;
-- (void)_withConnectionAndDelegate:(CDUnknownBlockType)arg1 onlyActive:(_Bool)arg2;
 - (void)invokeForDelegate:(CDUnknownBlockType)arg1;
-- (void)_withConnectionDisconnectFromConnection;
 - (void)_invalidate;
-- (_Bool)isConnectionActive;
-- (void)setConnectionActive:(_Bool)arg1;
 - (void)_setDelegateQueue:(id)arg1;
-- (id)currentRequest;
-- (id)originalRequest;
-- (id)_connectionProperties;
 - (void)dealloc;
 - (id)initWithInfo:(const struct InternalInit *)arg1;
 

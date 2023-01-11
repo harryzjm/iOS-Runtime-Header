@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSMutableArray, NSMutableDictionary, NSProgress, NSString, NSURL, PLAssetsdCrashRecoverySupport, PLBackgroundJobService, PLChangeHandlingContainer, PLClientServerTransaction, PLCloudPhotoLibraryManager, PLDatabaseContext, PLDupeManager, PLImageWriter, PLJournalManager, PLKeywordManager, PLLazyObject, PLLibraryServicesStateNode, PLModelMigrator, PLMomentGenerationDataManager, PLPairing, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryPathManager, PLQuickActionManager, PLReframeService, PLRelationshipOrderKeyManager, PLSearchIndexManager;
-@protocol OS_dispatch_queue, PLLibraryServicesDelegate;
+@class NSError, NSMutableArray, NSMutableDictionary, NSProgress, NSString, NSURL, PLAssetsdCrashRecoverySupport, PLBackgroundJobService, PLCameraPreviewWellManager, PLCameraProcessingAdjustmentService, PLChangeHandlingContainer, PLClientServerTransaction, PLCloudPhotoLibraryManager, PLDatabaseContext, PLDupeManager, PLImageWriter, PLJournalManager, PLKeywordManager, PLLazyObject, PLLibraryServicesCPLReadiness, PLLibraryServicesStateNode, PLModelMigrator, PLMomentGenerationDataManager, PLPairing, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryPathManager, PLQuickActionManager, PLRelationshipOrderKeyManager, PLSearchIndexManager, PLTrackableRequestManager;
+@protocol OS_dispatch_queue, PLLibraryServicesDelegate, PLMigrationServiceProtocol;
 
 @interface PLLibraryServicesManager : NSObject
 {
     PLPhotoLibraryBundle *_libraryBundle;
     PLPhotoLibraryPathManager *_pathManager;
+    _Bool _isCreateMode;
     PLLazyObject *_lazyPhotoLibrary;
     PLLazyObject *_lazyImageWriter;
     PLLazyObject *_lazyModelMigrator;
@@ -28,20 +29,26 @@
     PLLazyObject *_lazyCloudPhotoLibraryManager;
     PLLazyObject *_lazyCrashRecoverySupport;
     PLLazyObject *_lazyPairingManager;
-    PLLazyObject *_lazyReframeService;
+    PLLazyObject *_lazyCameraProcessingAdjustmentService;
+    PLLazyObject *_lazyCPLReadiness;
+    PLLazyObject *_lazyCameraPreviewWellManager;
+    PLLazyObject *_lazyIsSystemPhotoLibrary;
     PLClientServerTransaction *_serverTransaction;
     NSObject<OS_dispatch_queue> *_albumCountQueue;
     NSMutableDictionary *_externalWaiterCompletionBlocksByState;
     unsigned int _maxWaiterQoS;
-    _Bool _createMode;
     _Bool _active;
     _Bool _finalizing;
+    struct os_unfair_lock_s _importMutex;
+    struct os_unfair_lock_s _localeUpdateLock;
     id <PLLibraryServicesDelegate> _libraryServicesDelegate;
     NSError *_invalidationError;
     PLBackgroundJobService *_backgroundJobService;
+    PLTrackableRequestManager *_trackableRequestManager;
     NSProgress *_preRunningProgress;
     NSProgress *_postRunningProgress;
     NSString *_upgradeClient;
+    id <PLMigrationServiceProtocol> _migrationServiceProxy;
     PLLibraryServicesStateNode *_currentStateNode;
     id _operationCountObservee;
     NSMutableArray *_mutablePendingOperations;
@@ -55,6 +62,9 @@
 + (long long)_initialState;
 + (Class)libraryServicesDelegateClass;
 + (void)setLibraryServicesDelegateClass:(Class)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) struct os_unfair_lock_s localeUpdateLock; // @synthesize localeUpdateLock=_localeUpdateLock;
+@property(nonatomic) struct os_unfair_lock_s importMutex; // @synthesize importMutex=_importMutex;
 @property(nonatomic, getter=isFinalizing) _Bool finalizing; // @synthesize finalizing=_finalizing;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *helperQueue; // @synthesize helperQueue=_helperQueue;
@@ -62,20 +72,22 @@
 @property(readonly, nonatomic) NSMutableArray *mutablePendingOperations; // @synthesize mutablePendingOperations=_mutablePendingOperations;
 @property(retain, nonatomic) id operationCountObservee; // @synthesize operationCountObservee=_operationCountObservee;
 @property(retain, nonatomic, setter=_setCurrentStateNode:) PLLibraryServicesStateNode *currentStateNode; // @synthesize currentStateNode=_currentStateNode;
+@property __weak id <PLMigrationServiceProtocol> migrationServiceProxy; // @synthesize migrationServiceProxy=_migrationServiceProxy;
 @property(copy) NSString *upgradeClient; // @synthesize upgradeClient=_upgradeClient;
-@property(getter=isCreateMode) _Bool createMode; // @synthesize createMode=_createMode;
 @property(retain, nonatomic) NSProgress *postRunningProgress; // @synthesize postRunningProgress=_postRunningProgress;
 @property(retain, nonatomic) NSProgress *preRunningProgress; // @synthesize preRunningProgress=_preRunningProgress;
+@property(readonly) PLTrackableRequestManager *trackableRequestManager; // @synthesize trackableRequestManager=_trackableRequestManager;
 @property(readonly) PLBackgroundJobService *backgroundJobService; // @synthesize backgroundJobService=_backgroundJobService;
 @property(readonly) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
 @property(readonly, nonatomic) NSError *invalidationError; // @synthesize invalidationError=_invalidationError;
 @property(retain) id <PLLibraryServicesDelegate> libraryServicesDelegate; // @synthesize libraryServicesDelegate=_libraryServicesDelegate;
 @property(readonly) __weak PLPhotoLibraryBundle *libraryBundle; // @synthesize libraryBundle=_libraryBundle;
-- (void).cxx_destruct;
+- (void)didRemainSystemPhotoLibrary;
+- (void)didBecomeNonSystemPhotoLibrary;
+- (_Bool)willBecomeNonSystemPhotoLibrary:(id *)arg1;
 - (void)setICloudPhotosEnabledInternal:(_Bool)arg1;
 - (void)_setCameraRollCountedInQuota:(_Bool)arg1;
-- (_Bool)isReadyForCloudPhotoLibrary;
-- (_Bool)hasCompletedDataMigratorPrerequisitesForTrackingRestoreFromCloud;
+- (void)performBlockWithImportMutex:(CDUnknownBlockType)arg1;
 - (void)_cancelPendingOperations;
 - (void)_addPendingOperationsForStateNode:(id)arg1;
 - (long long)_state;
@@ -104,11 +116,13 @@
 - (_Bool)_enqueueOperation:(id)arg1 error:(id *)arg2;
 - (void)_resetStateQueueQoS;
 - (void)_increaseStateQueueQoSIfNeeded;
+- (void)shutdownLibraryWithDescription:(id)arg1;
 - (_Bool)enqueueOperation:(id)arg1 error:(id *)arg2;
 - (id)_libraryServicesStateNodeWithState:(long long)arg1;
 - (void)initializeConstraintsDirector;
 @property(readonly) PLChangeHandlingContainer *changeHandlingContainer;
 - (void)initializeChangeHandling;
+@property(readonly) PLCameraPreviewWellManager *cameraPreviewWellManager;
 @property(readonly) PLPairing *pairingManager;
 @property(readonly) PLKeywordManager *keywordManager;
 @property(readonly) PLQuickActionManager *quickActionManager;
@@ -117,6 +131,8 @@
 @property(readonly) PLDupeManager *dupeManager;
 @property(readonly) PLMomentGenerationDataManager *momentGenerationDataManager;
 @property(readonly) PLRelationshipOrderKeyManager *relationshipOrderKeyManager;
+- (void)_invalidateCameraPreviewWellManager;
+- (void)_invalidateCPLReadiness;
 - (void)_invalidateBackgroundJobService;
 - (void)_invalidateReframeService;
 - (void)_invalidateCrashRecoverySupport;
@@ -134,7 +150,8 @@
 - (void)_invalidateSearchIndexManager;
 - (void)_invalidateJournalManager;
 - (void)_invalidateMomentGenerationDataManager;
-@property(readonly) PLReframeService *reframeService;
+@property(readonly) PLLibraryServicesCPLReadiness *cplReadiness;
+@property(readonly) PLCameraProcessingAdjustmentService *cameraProcessingAdjustmentService;
 - (id)newMomentGenerationDataManager;
 - (id)newSearchIndexManager;
 @property(readonly) PLAssetsdCrashRecoverySupport *crashRecoverySupport;
@@ -147,14 +164,25 @@
 @property(readonly) PLImageWriter *imageWriter;
 - (id)newPhotoLibrary;
 - (id)newAlbumCountCoalescer:(id)arg1;
+- (void)_initCloudPhotoLibraryManager;
+- (void)_invalidateSystemPhotoLibrarySpecificServices;
+- (void)_initSystemPhotoLibrarySpecificServices;
 - (_Bool)_isSystemPhotoLibrary;
 - (void)refreshAlbumCountForAlbumIDs:(id)arg1;
+- (void)setCreateMode:(_Bool)arg1 options:(id)arg2;
+@property(readonly, getter=isCreateMode) _Bool createMode;
+- (unsigned long long)createOptions;
 @property(readonly, getter=isCloudPhotoLibraryEnabled) _Bool cloudPhotoLibraryEnabled;
 @property(readonly) PLPhotoLibrary *photoLibrary;
 @property(readonly, copy) NSURL *libraryURL;
-- (void)currentLocaleDidChange:(id)arg1;
+- (void)invalidateReverseLocationDataOnAllAssets;
+- (_Bool)updateSavedLocaleIfNeeded;
+- (void)currentLocaleDidChangeNotification:(id)arg1;
+- (void)_initLazyIsSystemPhotoLibrary;
+- (void)dealloc;
 - (id)initWithLibraryBundle:(id)arg1 backgroundJobService:(id)arg2 delegateClass:(Class)arg3;
 - (id)statusDescription;
+- (id)description;
 
 @end
 

@@ -11,11 +11,10 @@
 - (GEOURLWithHeaders *)urlForTileKey:(const struct _GEOTileKey *)arg1;
 
 @optional
-- (GEOTileData *)processTileData:(GEOTileData *)arg1 error:(id *)arg2;
+- (GEOTileData *)processTileData:(GEOTileData *)arg1 forKey:(const struct _GEOTileKey *)arg2 error:(id *)arg3;
 - (void)failedLoadingTileForKey:(struct _GEOTileKey)arg1 baseOperation:(_GEOSimpleTileRequesterOperation *)arg2 error:(NSError *)arg3;
 - (void)finishedLoadingTileForKey:(struct _GEOTileKey)arg1 baseOperation:(_GEOSimpleTileRequesterOperation *)arg2;
 - (_Bool)downloadsDataToDisk;
-- (_Bool)allowsCookies;
 - (_Bool)tileDataIsCacheableForTileKey:(const struct _GEOTileKey *)arg1;
 - (NSString *)mergeBaseTileEtag:(NSString *)arg1 withLocalizationTileEtag:(NSString *)arg2;
 - (NSData *)mergeBaseTile:(NSData *)arg1 withLocalizationTile:(NSData *)arg2;

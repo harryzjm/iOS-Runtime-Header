@@ -8,12 +8,16 @@
 
 @interface NSObject (CKPropertiesDescription)
 + (id)CKSQLiteClassName;
-- (id)hashedDescription;
+- (id)CKSingleLineDescription;
+- (id)CKHashedDescription;
+- (id)_CKDescriptionWithExpansion:(_Bool)arg1;
+- (id)CKExpandedDescription;
 - (id)CKDescription;
 - (id)CKPropertiesDescriptionStringFromProperties:(id)arg1;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)CKPropertiesDescription;
 - (void)CKAssignToContainerWithID:(id)arg1;
 - (id)CKStatusReport;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 @end
 

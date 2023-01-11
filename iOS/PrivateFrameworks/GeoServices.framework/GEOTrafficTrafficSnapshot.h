@@ -14,27 +14,28 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficTrafficSnapshot : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_colors;
     NSMutableArray *_incidents;
+    NSMutableArray *_predictedPaces;
     unsigned long long _receivedTime;
     GEOTrafficSnapshotMetaData *_snapshotMetaData;
     NSMutableArray *_speeds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_receivedTime:1;
         unsigned int read_colors:1;
         unsigned int read_incidents:1;
+        unsigned int read_predictedPaces:1;
         unsigned int read_snapshotMetaData:1;
         unsigned int read_speeds:1;
-        unsigned int wrote_colors:1;
-        unsigned int wrote_incidents:1;
-        unsigned int wrote_receivedTime:1;
-        unsigned int wrote_snapshotMetaData:1;
-        unsigned int wrote_speeds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)predictedPacesType;
 + (Class)colorsType;
 + (Class)incidentsType;
 + (Class)speedsType;
@@ -47,34 +48,37 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)predictedPacesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)predictedPacesCount;
+- (void)addPredictedPaces:(id)arg1;
+- (void)clearPredictedPaces;
+@property(retain, nonatomic) NSMutableArray *predictedPaces;
 @property(nonatomic) _Bool hasReceivedTime;
 @property(nonatomic) unsigned long long receivedTime;
 - (id)colorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)colorsCount;
-- (void)_addNoFlagsColors:(id)arg1;
 - (void)addColors:(id)arg1;
 - (void)clearColors;
 @property(retain, nonatomic) NSMutableArray *colors;
-- (void)_readColors;
 - (id)incidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)incidentsCount;
-- (void)_addNoFlagsIncidents:(id)arg1;
 - (void)addIncidents:(id)arg1;
 - (void)clearIncidents;
 @property(retain, nonatomic) NSMutableArray *incidents;
-- (void)_readIncidents;
 - (id)speedsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)speedsCount;
-- (void)_addNoFlagsSpeeds:(id)arg1;
 - (void)addSpeeds:(id)arg1;
 - (void)clearSpeeds;
 @property(retain, nonatomic) NSMutableArray *speeds;
-- (void)_readSpeeds;
 @property(retain, nonatomic) GEOTrafficSnapshotMetaData *snapshotMetaData;
 @property(readonly, nonatomic) _Bool hasSnapshotMetaData;
-- (void)_readSnapshotMetaData;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

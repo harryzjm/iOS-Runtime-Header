@@ -14,6 +14,7 @@
     CDStruct_8e0628e6 _homography;
 }
 
++ (id)keyframesFromDictionaryRepresentations:(id)arg1;
 @property(readonly, nonatomic) CDStruct_8e0628e6 homography; // @synthesize homography=_homography;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;

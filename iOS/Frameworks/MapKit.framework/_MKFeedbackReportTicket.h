@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 - (void)cancel;
+- (void)submitWithCallbackQueue:(id)arg1 handler:(CDUnknownBlockType)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 - (id)initWithFeedbackReportTicket:(id)arg1;
 

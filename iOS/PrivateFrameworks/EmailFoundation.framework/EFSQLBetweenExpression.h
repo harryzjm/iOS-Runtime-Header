@@ -5,21 +5,23 @@
 //
 
 #import <EmailFoundation/EFSQLBitExpressable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSString;
 @protocol EFSQLExpressable;
 
-@interface EFSQLBetweenExpression <EFSQLBitExpressable, EFSQLExpressable>
+@interface EFSQLBetweenExpression <EFSQLBitExpressable, EFSQLValueExpressable>
 {
     _Bool _between;
     id <EFSQLExpressable> _left;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool between; // @synthesize between=_between;
 @property(readonly, nonatomic) id <EFSQLExpressable> left; // @synthesize left=_left;
-- (void).cxx_destruct;
 - (void)setColumnExpression:(id)arg1;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 - (id)initWithLeft:(id)arg1 firstValue:(id)arg2 secondValue:(id)arg3 between:(_Bool)arg4;
 

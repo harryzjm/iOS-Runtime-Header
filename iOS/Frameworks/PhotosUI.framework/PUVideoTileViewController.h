@@ -7,14 +7,16 @@
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerTimeObserver-Protocol.h>
+#import <PhotosUI/PUBrowsingVideoPlayerVideoOutput-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
+#import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUI/PXVideoSessionUIViewDelegate-Protocol.h>
 
 @class NSString, PUAssetViewModel, PUBrowsingVideoPlayer, PUMediaProvider, PXVideoSession, PXVideoSessionUIView, UIImage, UIImageView, UIView;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
-@interface PUVideoTileViewController <PUAssetViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver, PXVideoSessionUIViewDelegate, PXChangeObserver, PUBrowsingVideoPlayerTimeObserver>
+@interface PUVideoTileViewController <PUAssetViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver, PXVideoSessionUIViewDelegate, PXChangeObserver, PUBrowsingVideoPlayerTimeObserver, PUBrowsingVideoPlayerVideoOutput, PXSettingsKeyObserver>
 {
     UIView *_view;
     UIImageView *_placeholderImageView;
@@ -25,7 +27,10 @@ __attribute__((visibility("hidden")))
     _Bool _playerIsSeeking;
     _Bool _playerDidPlayToEnd;
     _Bool _placeholderVisible;
+    _Bool _currentImageIsPlaceholder;
+    _Bool _placeholderIsAnimatingToHidden;
     int __currentImageRequestID;
+    CDUnknownBlockType _readyForDisplayChangeHandler;
     PUAssetViewModel *_assetViewModel;
     PUMediaProvider *_mediaProvider;
     PXVideoSession *_videoSession;
@@ -35,8 +40,12 @@ __attribute__((visibility("hidden")))
     long long __thumbnailRequestNumber;
     CDUnknownBlockType __readyForDisplayCompletionHandler;
     struct CGSize __targetSize;
+    struct CGSize _requestedImageTargetSize;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool placeholderIsAnimatingToHidden; // @synthesize placeholderIsAnimatingToHidden=_placeholderIsAnimatingToHidden;
+@property(nonatomic) _Bool currentImageIsPlaceholder; // @synthesize currentImageIsPlaceholder=_currentImageIsPlaceholder;
 @property(nonatomic) _Bool placeholderVisible; // @synthesize placeholderVisible=_placeholderVisible;
 @property(nonatomic) _Bool playerDidPlayToEnd; // @synthesize playerDidPlayToEnd=_playerDidPlayToEnd;
 @property(nonatomic) _Bool playerIsSeeking; // @synthesize playerIsSeeking=_playerIsSeeking;
@@ -44,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setDisplayingFullQualityImage:) _Bool _isDisplayingFullQualityImage; // @synthesize _isDisplayingFullQualityImage=__isDisplayingFullQualityImage;
 @property(nonatomic, setter=_setThumbnailRequestNumber:) long long _thumbnailRequestNumber; // @synthesize _thumbnailRequestNumber=__thumbnailRequestNumber;
 @property(retain, nonatomic, setter=_setBrowsingVideoPlayer:) PUBrowsingVideoPlayer *_browsingVideoPlayer; // @synthesize _browsingVideoPlayer=__browsingVideoPlayer;
+@property(nonatomic) struct CGSize requestedImageTargetSize; // @synthesize requestedImageTargetSize=_requestedImageTargetSize;
 @property(nonatomic, setter=_setTargetSize:) struct CGSize _targetSize; // @synthesize _targetSize=__targetSize;
 @property(nonatomic, setter=_setCurrentImageRequestID:) int _currentImageRequestID; // @synthesize _currentImageRequestID=__currentImageRequestID;
 @property(retain, nonatomic, setter=_setAsset:) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
@@ -52,29 +62,35 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool canPlayVideo; // @synthesize canPlayVideo=_canPlayVideo;
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
-- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType readyForDisplayChangeHandler; // @synthesize readyForDisplayChangeHandler=_readyForDisplayChangeHandler;
+- (void)_updatePlaceholderVisibility;
+@property(readonly, nonatomic) _Bool _isDisplayingVideo;
+- (void)_updateVideo;
+- (void)_handleImageResult:(id)arg1 info:(id)arg2 synchronous:(_Bool)arg3;
+- (void)_updateImage;
+- (void)_updateTargetSize;
 - (void)_updateReadyForDisplay;
-- (_Bool)adoptAssetTransitionInfo:(id)arg1;
-- (id)generateAssetTransitionInfo;
 - (void)_handleBrowsingVideoPlayer:(id)arg1 didChange:(id)arg2;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
+- (void)_callReadyToDisplayChangeHandler;
+- (void)setPlaceholderVisible:(_Bool)arg1 animated:(_Bool)arg2 animationDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_updateDebugBorders;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+@property(readonly, nonatomic) _Bool videoOutputIsReadyForDisplay;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)videoSessionViewPlaceholderVisibilityChanged:(id)arg1;
 - (void)videoPlayer:(id)arg1 currentTimeDidChange:(CDStruct_1b6d18a9)arg2;
 - (void)videoPlayer:(id)arg1 desiredSeekTimeDidChange:(CDStruct_1b6d18a9)arg2;
-- (void)_updatePlaceholderVisibility;
-@property(readonly, nonatomic) _Bool _isDisplayingVideo;
-- (void)_updateVideo;
-- (void)_handleImageResult:(id)arg1 info:(id)arg2 requestID:(int)arg3;
-- (void)_updateImage;
-- (void)setPlaceholderVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)dealloc;
-- (void)setEdgeAntialiasingEnabled:(_Bool)arg1;
+- (_Bool)adoptAssetTransitionInfo:(id)arg1;
+- (id)generateAssetTransitionInfo;
 - (void)setPreloadedImage:(id)arg1;
+- (void)didChangeActive;
 - (void)didChangeAnimating;
 - (void)removeAllAnimations;
 - (void)becomeReusable;
+- (void)setEdgeAntialiasingEnabled:(_Bool)arg1;
 - (void)applyLayoutInfo:(id)arg1;
 - (id)loadView;
 - (id)initWithReuseIdentifier:(id)arg1;

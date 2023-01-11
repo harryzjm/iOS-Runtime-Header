@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 @class CATRemoteTaskOperation, NSSet;
 @protocol CRKExpiredCoursesInteractionDelegate, CRKRequestPerformingProtocol;
@@ -19,10 +19,10 @@
 }
 
 + (id)new;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <CRKRequestPerformingProtocol> studentDaemonProxy; // @synthesize studentDaemonProxy=_studentDaemonProxy;
 @property(readonly, nonatomic) id <CRKExpiredCoursesInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSSet *courses; // @synthesize courses=_courses;
-- (void).cxx_destruct;
 - (void)leaveControlGroupsOperationDidFinish:(id)arg1;
 - (void)removeCourses:(id)arg1;
 - (void)main;

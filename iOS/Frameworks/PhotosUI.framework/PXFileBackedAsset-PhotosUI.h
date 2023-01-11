@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) _Bool isTemporaryPlaceholder;
 @property(readonly, nonatomic) _Bool isPhotoIrisPlaceholder;
 @property(readonly, nonatomic, getter=isLivePhoto) _Bool livePhoto;
+@property(readonly, nonatomic, getter=isHidden) _Bool hidden;
 @property(readonly, nonatomic) NSDate *modificationDate;
 @property(readonly, nonatomic) unsigned long long originalFilesize;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
@@ -31,6 +32,7 @@
 @property(readonly, nonatomic) _Bool canPlayPhotoIris;
 @property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
 @property(readonly) unsigned long long hash;
@@ -39,6 +41,7 @@
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType;
+@property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) long long playbackVariation;
 @property(readonly) Class superclass;

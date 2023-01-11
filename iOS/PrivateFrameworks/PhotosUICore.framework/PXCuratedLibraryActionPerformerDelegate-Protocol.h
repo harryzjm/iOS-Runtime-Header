@@ -6,12 +6,13 @@
 
 #import <PhotosUICore/PXAssetCollectionActionPerformerDelegate-Protocol.h>
 
-@class PHFetchResult, PXActivitySharingContext, PXCuratedLibraryActionPerformer;
+@class PXActivitySharingContext, PXContentFilterState, PXCuratedLibraryActionPerformer;
 
 @protocol PXCuratedLibraryActionPerformerDelegate <PXAssetCollectionActionPerformerDelegate>
 
 @optional
+- (void)curatedLibraryActionPerformer:(PXCuratedLibraryActionPerformer *)arg1 filterStateChanged:(PXContentFilterState *)arg2;
+- (void)curatedLibraryActionPerformer:(PXCuratedLibraryActionPerformer *)arg1 showFilterPopoverWithInsets:(struct UIEdgeInsets)arg2;
 - (void)curatedLibraryActionPerformer:(PXCuratedLibraryActionPerformer *)arg1 presentShareSheetWithSharingContext:(PXActivitySharingContext *)arg2;
-- (void)curatedLibraryActionPerformer:(PXCuratedLibraryActionPerformer *)arg1 showMapWithAssetsFetchResult:(PHFetchResult *)arg2;
 @end
 

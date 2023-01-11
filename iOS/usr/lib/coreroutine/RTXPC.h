@@ -12,10 +12,7 @@
 
 + (id)signingIdentifierOfConnection:(id)arg1;
 + (id)executablePathOfConnection:(id)arg1;
-+ (_Bool)xpcConnection:(id)arg1 hasEntitlement:(id)arg2;
-+ (_Bool)checkClientCodeSigning:(id)arg1 error:(id *)arg2;
-+ (id)allowInternalFrameworkAccessForConnection:(id)arg1;
-+ (id)checkClientConnection:(id)arg1 forEntitlements:(id)arg2;
++ (_Bool)clientCodeSignatureIsValid:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -8,25 +8,32 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class AWDNWL2Report, NSString;
+@class AWDNWDeviceReport, AWDNWL2Report, NSString;
 
 @interface AWDNWActivity : PBCodable <NSCopying>
 {
     unsigned long long _activityDomain;
     unsigned long long _activityLabel;
+    unsigned long long _investigationID;
     unsigned long long _timestamp;
     NSString *_activityUUID;
+    NSString *_bundleID;
+    AWDNWDeviceReport *_deviceReport;
     AWDNWL2Report *_l2Report;
     NSString *_parentActivityUUID;
     _Bool _isRetry;
     struct {
         unsigned int activityDomain:1;
         unsigned int activityLabel:1;
+        unsigned int investigationID:1;
         unsigned int timestamp:1;
         unsigned int isRetry:1;
     } _has;
 }
 
+@property(nonatomic) unsigned long long investigationID; // @synthesize investigationID=_investigationID;
+@property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(retain, nonatomic) AWDNWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property(retain, nonatomic) AWDNWL2Report *l2Report; // @synthesize l2Report=_l2Report;
 @property(nonatomic) _Bool isRetry; // @synthesize isRetry=_isRetry;
 @property(retain, nonatomic) NSString *parentActivityUUID; // @synthesize parentActivityUUID=_parentActivityUUID;
@@ -43,6 +50,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasInvestigationID;
+@property(readonly, nonatomic) _Bool hasBundleID;
+@property(readonly, nonatomic) _Bool hasDeviceReport;
 @property(readonly, nonatomic) _Bool hasL2Report;
 @property(nonatomic) _Bool hasIsRetry;
 @property(readonly, nonatomic) _Bool hasParentActivityUUID;

@@ -6,37 +6,46 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
-#import <PhotosUICore/UITableViewDataSource-Protocol.h>
-#import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
-@class NSString, PXRecipientSearchDataSource, PXRecipientSearchDataSourceManager, UITableView, UIView;
+@class CNAutocompleteResultsTableViewController, CNComposeRecipient, CNContactViewController, NSString, PXRecipientSearchDataSource, PXRecipientSearchDataSourceManager, UIView;
 @protocol PXSearchRecipientControllerDelegate;
 
-@interface PXSearchRecipientController : NSObject <UITableViewDelegate, UITableViewDataSource, PXSectionedDataSourceManagerObserver>
+@interface PXSearchRecipientController : NSObject <CNAutocompleteResultsTableViewControllerDelegate, PXSectionedDataSourceManagerObserver>
 {
     struct {
         _Bool didSelectRecipient;
+        _Bool searchStateDidChange;
+        _Bool numberOfSearchRecipientsDidChange;
     } _delegateRespondsTo;
     id <PXSearchRecipientControllerDelegate> _delegate;
     PXRecipientSearchDataSourceManager *_searchDataSourceManager;
+    long long _searchState;
+    unsigned long long _numberOfSearchRecipients;
     PXRecipientSearchDataSource *__searchDataSource;
-    UITableView *__searchResultsTableView;
+    CNAutocompleteResultsTableViewController *__searchResultsTableViewController;
+    CNComposeRecipient *_suggestedRecipientBeingViewed;
+    CNContactViewController *__contactViewController;
 }
 
-@property(readonly, nonatomic) UITableView *_searchResultsTableView; // @synthesize _searchResultsTableView=__searchResultsTableView;
+- (void).cxx_destruct;
+@property(nonatomic) __weak CNContactViewController *_contactViewController; // @synthesize _contactViewController=__contactViewController;
+@property(retain, nonatomic) CNComposeRecipient *suggestedRecipientBeingViewed; // @synthesize suggestedRecipientBeingViewed=_suggestedRecipientBeingViewed;
+@property(readonly, nonatomic) CNAutocompleteResultsTableViewController *_searchResultsTableViewController; // @synthesize _searchResultsTableViewController=__searchResultsTableViewController;
 @property(retain, nonatomic, setter=_setSearchDataSource:) PXRecipientSearchDataSource *_searchDataSource; // @synthesize _searchDataSource=__searchDataSource;
+@property(nonatomic) unsigned long long numberOfSearchRecipients; // @synthesize numberOfSearchRecipients=_numberOfSearchRecipients;
+@property(nonatomic) long long searchState; // @synthesize searchState=_searchState;
 @property(readonly, nonatomic) PXRecipientSearchDataSourceManager *searchDataSourceManager; // @synthesize searchDataSourceManager=_searchDataSourceManager;
 @property(nonatomic) __weak id <PXSearchRecipientControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)_removeRecent;
+- (id)_contactViewControllerForRecipient:(id)arg1;
+- (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
+- (void)autocompleteResultsController:(id)arg1 tintColorForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_validationTextColorForSearchResult:(id)arg1;
+- (void)disambiguateRecipient:(id)arg1;
 @property(readonly, nonatomic) _Bool _searchHasNoResultsFound;
 @property(readonly, nonatomic) UIView *searchResultsView;
 - (id)init;

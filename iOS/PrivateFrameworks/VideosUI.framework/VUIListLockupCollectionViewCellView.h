@@ -6,12 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class TVImageLayout, VUIButton, VUIFocusableTextView, VUILabel, VUIListLockupCollectionViewCellLayout, VUISeparatorView, _TVImageView, _TVMonogramView;
+@class TVImageLayout, VUIButton, VUIFocusableTextView, VUILabel, VUISeparatorView, _TVImageView, _TVMonogramView;
 
 __attribute__((visibility("hidden")))
 @interface VUIListLockupCollectionViewCellView : UIView
 {
-    VUIListLockupCollectionViewCellLayout *_layout;
     _TVImageView *_imageView;
     _TVMonogramView *_monogramView;
     TVImageLayout *_imageLayout;
@@ -20,10 +19,15 @@ __attribute__((visibility("hidden")))
     VUIFocusableTextView *_descriptionTextView;
     VUIButton *_primaryButton;
     VUIButton *_secondaryButton;
+    long long _imagePosition;
+    TVImageLayout *_monogramImageLayout;
     VUISeparatorView *_separatorView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
+@property(retain, nonatomic) TVImageLayout *monogramImageLayout; // @synthesize monogramImageLayout=_monogramImageLayout;
+@property(nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
 @property(retain, nonatomic) VUIButton *secondaryButton; // @synthesize secondaryButton=_secondaryButton;
 @property(retain, nonatomic) VUIButton *primaryButton; // @synthesize primaryButton=_primaryButton;
 @property(retain, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
@@ -32,8 +36,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property(retain, nonatomic) _TVMonogramView *monogramView; // @synthesize monogramView=_monogramView;
 @property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
-@property(retain, nonatomic) VUIListLockupCollectionViewCellLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
 - (void)prepareForCellReuse;
 - (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

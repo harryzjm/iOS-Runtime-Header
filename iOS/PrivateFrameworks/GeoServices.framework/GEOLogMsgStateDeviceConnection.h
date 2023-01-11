@@ -13,9 +13,11 @@
 @interface GEOLogMsgStateDeviceConnection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_deviceCarrierName;
     NSString *_deviceCountryCode;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _cellularDataState;
     int _deviceNetworkConnectivity;
     struct {
@@ -23,10 +25,7 @@
         unsigned int has_deviceNetworkConnectivity:1;
         unsigned int read_deviceCarrierName:1;
         unsigned int read_deviceCountryCode:1;
-        unsigned int wrote_deviceCarrierName:1;
-        unsigned int wrote_deviceCountryCode:1;
-        unsigned int wrote_cellularDataState:1;
-        unsigned int wrote_deviceNetworkConnectivity:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,6 +39,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsCellularDataState:(id)arg1;
@@ -48,14 +50,14 @@
 @property(nonatomic) int cellularDataState;
 @property(retain, nonatomic) NSString *deviceCarrierName;
 @property(readonly, nonatomic) _Bool hasDeviceCarrierName;
-- (void)_readDeviceCarrierName;
 @property(retain, nonatomic) NSString *deviceCountryCode;
 @property(readonly, nonatomic) _Bool hasDeviceCountryCode;
-- (void)_readDeviceCountryCode;
 - (int)StringAsDeviceNetworkConnectivity:(id)arg1;
 - (id)deviceNetworkConnectivityAsString:(int)arg1;
 @property(nonatomic) _Bool hasDeviceNetworkConnectivity;
 @property(nonatomic) int deviceNetworkConnectivity;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

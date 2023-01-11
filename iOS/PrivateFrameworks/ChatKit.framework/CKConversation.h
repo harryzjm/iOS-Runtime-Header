@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CKComposition, CKEntity, IMChat, IMService, NSArray, NSAttributedString, NSDate, NSNumber, NSSet, NSString, STConversationContext;
+#import <ChatKit/NSItemProviderWriting-Protocol.h>
 
-@interface CKConversation : NSObject
+@class CKComposition, CKEntity, CNGroupIdentity, IMChat, IMService, NSArray, NSAttributedString, NSDate, NSNumber, NSSet, NSString;
+
+@interface CKConversation : NSObject <NSItemProviderWriting>
 {
     NSArray *_recipients;
     NSString *_name;
@@ -18,25 +20,38 @@
         unsigned int ignoringTypingUpdates:1;
     } _conversationFlags;
     _Bool _needsReload;
+    _Bool _shouldShowGroupPhotoUpdateBanner;
+    _Bool _shouldShowGroupNameUpdateBanner;
     _Bool _hasLoadedAllMessages;
     _Bool _isReportedAsSpam;
+    _Bool _wasKnownSender;
+    _Bool _hasSetWasKnownSender;
+    _Bool _holdWasKnownSenderUpdates;
+    _Bool _needsUpdatedContactsForVisualIdentity;
+    _Bool _needsUpdatedGroupPhotoForVisualIdentity;
+    _Bool _needsUpdatedGroupNameForVisualIdentity;
     int _wasDetectedAsSMSSpam;
+    int _wasDetectedAsSMSCategory;
     int _wasDetectedAsiMessageSpam;
     NSArray *_pendingHandles;
+    NSString *_conversationListCollectionViewPinnedItemIdentifier;
+    NSString *_conversationListCollectionViewListItemIdentifier;
     NSString *_selectedLastAddressedHandle;
     NSString *_selectedLastAddressedSIMID;
     NSSet *_pendingRecipients;
     NSAttributedString *_groupName;
-    STConversationContext *_screenTimeConversationContext;
+    NSString *_groupIdentityUpdateHandleID;
     NSString *_previewText;
     NSNumber *_businessConversation;
     NSDate *_dateLastViewed;
+    CNGroupIdentity *__conversationVisualIdentity;
 }
 
 + (_Bool)isSMSSpamFilteringEnabled;
-+ (_Bool)pinnedConversationsEnabled;
++ (id)conversationForContacts:(id)arg1 candidateConversation:(id)arg2;
 + (id)conversationForAddresses:(id)arg1 allowRetargeting:(_Bool)arg2 candidateConversation:(id)arg3;
 + (id)newPendingConversation;
++ (id)writableTypeIdentifiersForItemProvider;
 + (double)_iMessage_maxTrimDurationForMediaType:(int)arg1;
 + (unsigned long long)_iMessage_maxTransferFileSizeForWiFi:(_Bool)arg1;
 + (id)_iMessage_localizedErrorForReason:(long long)arg1;
@@ -54,13 +69,23 @@
 + (_Bool)_sms_canSendMessageWithMediaObjectTypes:(int *)arg1 phoneNumber:(id)arg2 simID:(id)arg3 errorCode:(long long *)arg4;
 + (long long)_sms_maxAttachmentCountForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (_Bool)_sms_mediaObjectPassesRestriction:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool needsUpdatedGroupNameForVisualIdentity; // @synthesize needsUpdatedGroupNameForVisualIdentity=_needsUpdatedGroupNameForVisualIdentity;
+@property(nonatomic) _Bool needsUpdatedGroupPhotoForVisualIdentity; // @synthesize needsUpdatedGroupPhotoForVisualIdentity=_needsUpdatedGroupPhotoForVisualIdentity;
+@property(nonatomic) _Bool needsUpdatedContactsForVisualIdentity; // @synthesize needsUpdatedContactsForVisualIdentity=_needsUpdatedContactsForVisualIdentity;
+@property(retain, nonatomic) CNGroupIdentity *_conversationVisualIdentity; // @synthesize _conversationVisualIdentity=__conversationVisualIdentity;
+@property(nonatomic) _Bool holdWasKnownSenderUpdates; // @synthesize holdWasKnownSenderUpdates=_holdWasKnownSenderUpdates;
+@property(nonatomic) _Bool hasSetWasKnownSender; // @synthesize hasSetWasKnownSender=_hasSetWasKnownSender;
+@property(nonatomic) _Bool wasKnownSender; // @synthesize wasKnownSender=_wasKnownSender;
 @property(retain, nonatomic) NSDate *dateLastViewed; // @synthesize dateLastViewed=_dateLastViewed;
 @property(retain, nonatomic) NSNumber *businessConversation; // @synthesize businessConversation=_businessConversation;
 @property(nonatomic) _Bool isReportedAsSpam; // @synthesize isReportedAsSpam=_isReportedAsSpam;
 @property(nonatomic) _Bool hasLoadedAllMessages; // @synthesize hasLoadedAllMessages=_hasLoadedAllMessages;
 @property(copy, nonatomic) NSString *previewText; // @synthesize previewText=_previewText;
 @property(retain, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
-@property(nonatomic) __weak STConversationContext *screenTimeConversationContext; // @synthesize screenTimeConversationContext=_screenTimeConversationContext;
+@property(retain, nonatomic) NSString *groupIdentityUpdateHandleID; // @synthesize groupIdentityUpdateHandleID=_groupIdentityUpdateHandleID;
+@property(nonatomic) _Bool shouldShowGroupNameUpdateBanner; // @synthesize shouldShowGroupNameUpdateBanner=_shouldShowGroupNameUpdateBanner;
+@property(nonatomic) _Bool shouldShowGroupPhotoUpdateBanner; // @synthesize shouldShowGroupPhotoUpdateBanner=_shouldShowGroupPhotoUpdateBanner;
 @property(readonly, nonatomic) NSAttributedString *groupName; // @synthesize groupName=_groupName;
 @property(retain, nonatomic) NSSet *pendingRecipients; // @synthesize pendingRecipients=_pendingRecipients;
 @property(retain, nonatomic) NSString *selectedLastAddressedSIMID; // @synthesize selectedLastAddressedSIMID=_selectedLastAddressedSIMID;
@@ -69,21 +94,31 @@
 @property(nonatomic) unsigned int limitToLoad; // @synthesize limitToLoad=_limitToLoad;
 @property(retain, nonatomic) IMChat *chat; // @synthesize chat=_chat;
 @property(copy, nonatomic) NSArray *pendingHandles; // @synthesize pendingHandles=_pendingHandles;
-- (void).cxx_destruct;
+- (id)contactNameByHandle;
+- (id)_conversationList;
+- (_Bool)isBlockedByCommunicationLimits;
+@property(readonly, nonatomic) NSString *conversationListCollectionViewListItemIdentifier; // @synthesize conversationListCollectionViewListItemIdentifier=_conversationListCollectionViewListItemIdentifier;
+@property(readonly, nonatomic) NSString *conversationListCollectionViewPinnedItemIdentifier; // @synthesize conversationListCollectionViewPinnedItemIdentifier=_conversationListCollectionViewPinnedItemIdentifier;
+- (_Bool)_unknownFilteringEnabled;
+- (void)updateWasKnownSender;
+- (_Bool)isKnownSender;
 - (id)copyForPendingConversation;
-- (id)displayNameForMediaObjects:(id)arg1 subject:(id)arg2;
+- (id)displayNameForMediaObjects:(id)arg1 subject:(id)arg2 shouldListParticipants:(_Bool)arg3;
 - (id)_headerTitleForPendingMediaObjects:(id)arg1 subject:(id)arg2 onService:(id)arg3;
-- (id)_headerTitleForService:(id)arg1;
+- (id)_headerTitleForService:(id)arg1 shouldListParticipants:(_Bool)arg2;
 - (id)_nameForHandle:(id)arg1;
 @property(readonly, nonatomic) NSString *serviceDisplayName;
 - (BOOL)outgoingBubbleColor;
 @property(readonly, nonatomic) BOOL buttonColor;
-@property(nonatomic, getter=isPinned) _Bool pinned;
+@property(readonly, nonatomic) _Bool isPinned;
+@property(readonly, nonatomic) NSSet *mergedPinningIdentifiers;
 @property(readonly, nonatomic) _Bool isPreviewTextForAttachment;
 - (id)fastPreviewTextIgnoringPluginContent;
 @property(nonatomic) NSString *displayName;
 @property(readonly, nonatomic) _Bool hasDisplayName;
+- (id)nameWithRawAddresses:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *name; // @dynamic name;
+@property(readonly, nonatomic) NSString *rawAddressedName;
 - (void)fetchSuggestedNameIfNecessary;
 @property(readonly, nonatomic) unsigned long long disclosureAtomStyle; // @dynamic disclosureAtomStyle;
 @property(readonly, nonatomic) _Bool shouldShowCharacterCount;
@@ -103,6 +138,7 @@
 - (double)maxTrimDurationForMediaType:(int)arg1;
 - (_Bool)canSendToRecipients:(id)arg1 alertIfUnable:(_Bool)arg2;
 - (_Bool)canSendComposition:(id)arg1 error:(id *)arg2;
+- (_Bool)_allowedByScreenTime;
 - (_Bool)canAcceptMediaObjectType:(int)arg1 givenMediaObjects:(id)arg2;
 @property(readonly, nonatomic, getter=isPending) _Bool pending;
 @property(readonly, copy, nonatomic) NSArray *recipientStrings;
@@ -110,7 +146,7 @@
 - (void)setPendingComposeRecipients:(id)arg1;
 - (long long)compareBySequenceNumberAndDateDescending:(id)arg1;
 - (id)shortDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)isPlaceholder;
 - (void)updateLastViewedDate;
 - (void)markAllMessagesAsRead;
@@ -135,9 +171,12 @@
 @property(readonly, nonatomic) _Bool isToEmailAddress;
 @property(readonly, nonatomic) unsigned long long recipientCount;
 - (id)uniqueIdentifier;
+@property(readonly, nonatomic) long long spamCategory;
+@property(readonly, nonatomic) int wasDetectedAsSMSCategory; // @synthesize wasDetectedAsSMSCategory=_wasDetectedAsSMSCategory;
 @property(readonly, nonatomic) int wasDetectedAsSMSSpam; // @synthesize wasDetectedAsSMSSpam=_wasDetectedAsSMSSpam;
 @property(readonly, nonatomic) int wasDetectedAsiMessageSpam; // @synthesize wasDetectedAsiMessageSpam=_wasDetectedAsiMessageSpam;
 @property(readonly, nonatomic) int wasDetectedAsSpam;
+@property(readonly, nonatomic) NSString *pinningIdentifier;
 @property(readonly, nonatomic) NSString *deviceIndependentID;
 @property(readonly, nonatomic) NSString *groupID; // @dynamic groupID;
 - (_Bool)noAvailableServices;
@@ -152,6 +191,7 @@
 - (id)orderedContactsForAvatar3DTouchUIWithKeysToFetch:(id)arg1;
 - (id)orderedContactsForAvatarView;
 - (void)updateDisplayNameIfSMSSpam;
+- (id)entityMatchingHandle:(id)arg1;
 - (void)removeRecipientHandles:(id)arg1;
 - (void)addRecipientHandles:(id)arg1;
 - (void)setSendReadReceipts:(_Bool)arg1;
@@ -166,6 +206,7 @@
 @property(readonly, nonatomic, getter=isMuted) _Bool muted;
 - (_Bool)canInsertMoreRecipients;
 - (long long)maximumRecipientsForSendingService;
+- (_Bool)isAdHocGroupConversation;
 @property(readonly, nonatomic) _Bool supportsMutatingGroupMembers;
 @property(readonly, nonatomic, getter=hasLeftGroupChat) _Bool leftGroupChat;
 @property(readonly, nonatomic, getter=hasLeft) _Bool left;
@@ -175,6 +216,7 @@
 @property(nonatomic, getter=isIgnoringTypingUpdates) _Bool ignoringTypingUpdates; // @dynamic ignoringTypingUpdates;
 - (_Bool)isDowngraded;
 @property(retain, nonatomic) CKComposition *unsentComposition; // @dynamic unsentComposition;
+- (void)updateUnsentCompositionByAppendingComposition:(id)arg1;
 - (void)_handleEngroupFinishedUpdating:(id)arg1;
 - (void)_handleChatJoinStateDidChange:(id)arg1;
 - (void)_handleChatParticipantsDidChange:(id)arg1;
@@ -191,17 +233,39 @@
 @property(readonly, nonatomic) NSString *lastAddressedSIMID;
 @property(readonly, nonatomic) NSString *lastAddressedHandle;
 - (void)didBecomeActive;
+- (id)_groupPhotoFileURL;
+- (id)groupPhotoData;
+- (void)_updateGroupNameForVisualIdentity;
+- (void)updateConversationVisualIdentityDisplayNameWithSender:(id)arg1;
+- (void)updateConversationVisualIdentityGroupPhotoWithSender:(id)arg1;
+- (void)_updateGroupPhotoForVisualIdentity;
+- (void)_updateContactsForVisualIdentityWithKeys:(id)arg1 numberOfContacts:(unsigned long long)arg2;
+- (_Bool)_contactsForVisualIdentityHaveKeys:(id)arg1;
+- (id)_contactsForVisualIdentityWithKeys:(id)arg1 numberOfContacts:(unsigned long long)arg2;
+- (void)setNeedsUpdatedGroupNameForVisualIdentity;
+- (void)setNeedsUpdatedGroupPhotoForVisualIdentity;
+- (void)setNeedsUpdatedContactOrderForVisualIdentity;
+- (id)conversationVisualIdentityWithKeys:(id)arg1 requestedNumberOfContactsToFetch:(unsigned long long)arg2;
+- (void)_createConversationVisualIdentityWithKeys:(id)arg1 numberOfContacts:(unsigned long long)arg2;
 - (void)willBecomeInactive;
 - (id)initWithChat:(id)arg1;
 - (id)init;
 - (void)dealloc;
-- (id)summaryTextForBlockedConversation;
+- (id)pinnedConversationDisplayNamePreferringShortName:(_Bool)arg1;
+- (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_iMessage_canSendToRecipients:(id)arg1 alertIfUnable:(_Bool)arg2;
 - (_Bool)_iMessage_supportsCharacterCountForAddresses:(id)arg1;
 - (_Bool)_sms_canSendToRecipients:(id)arg1 alertIfUnable:(_Bool)arg2;
 - (_Bool)_sms_supportsCharacterCountForAddresses:(id)arg1;
 - (_Bool)_sms_willSendMMSByDefaultForAddresses:(id)arg1;
 - (_Bool)supportsSurf;
+- (id)activityForNewScene;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
 @end
 

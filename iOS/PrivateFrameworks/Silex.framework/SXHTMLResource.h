@@ -12,7 +12,6 @@
 {
 }
 
-- (id)baseURLWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *HTML; // @dynamic HTML;
@@ -23,6 +22,5 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *identifier;
 @property(readonly) Class superclass;
-
 @end
 

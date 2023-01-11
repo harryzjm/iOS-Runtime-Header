@@ -12,6 +12,8 @@
 {
     NSString *_familyName;
     NSString *_styleName;
+    NSString *_localizedFamilyName;
+    NSString *_localizedStyleName;
     double _lineHeight;
     UIFontDescriptor *_fontDescriptor;
     NSAttributedString *_attributedString;
@@ -23,10 +25,10 @@
 
 + (id)infoWithFontDescriptor:(struct __CTFontDescriptor *)arg1;
 + (id)infoWithFamilyName:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) NSString *postscriptName; // @synthesize postscriptName=_postscriptName;
 @property(readonly) NSString *styleName; // @synthesize styleName=_styleName;
 @property(readonly) NSString *familyName; // @synthesize familyName=_familyName;
-- (void).cxx_destruct;
 - (id)description;
 - (id)faceMatchingDescriptor:(id)arg1;
 - (_Bool)matchesFontDescriptor:(id)arg1;
@@ -43,6 +45,8 @@
 - (id)_fontStringForTraitCollection:(id)arg1;
 @property(readonly) NSString *localizedFamilyName;
 @property(readonly) NSString *localizedName;
+- (void)_populateLocalizedNamesIfNecessary;
+@property(readonly, getter=isFontFamilyAvailable) _Bool fontFamilyAvailable;
 @property(readonly) UIFontDescriptor *fontDescriptor;
 @property(readonly) NSArray *faces;
 - (id)_sortedFacesByWeight;

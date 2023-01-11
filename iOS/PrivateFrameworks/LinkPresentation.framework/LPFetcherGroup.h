@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_tasks;
     _Bool _doneAddingFetchers;
     _Bool _done;
+    _Bool _cancelled;
     unsigned int _loggingID;
 }
 
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)prependFetcher:(id)arg1;
 - (void)appendFetcher:(id)arg1;
 - (void)_addFetcher:(id)arg1 atIndex:(unsigned long long)arg2;
-- (id)initWithPolicy:(long long)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithPolicy:(long long)arg1 configuration:(id)arg2 description:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

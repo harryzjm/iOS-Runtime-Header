@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIView, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext;
+@class NSArray, NSDictionary, NSString, UIView, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext, _UIPointerInteractionAssistant;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarLargeTitleView <_UINavigationBarTransitionContextParticipant>
+@interface _UINavigationBarLargeTitleView <UIPointerInteractionDelegate, _UINavigationBarTransitionContextParticipant>
 {
     _UINavigationBarTransitionContext *_transitionContext;
     NSArray *_titleCandidates;
     NSString *__effectiveTitle;
     _Bool _providesExtraSpaceForExcessiveLineHeights;
     _Bool _alignAccessoryViewToTitleBaseline;
+    NSDictionary *_effectiveTitleAttributes;
+    _UIPointerInteractionAssistant *_assistant;
     long long _titleType;
     NSString *_title;
     NSArray *_alternateTitles;
@@ -26,6 +29,7 @@ __attribute__((visibility("hidden")))
     _UINavigationBarLargeTitleViewLayout *_layout;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _UINavigationBarLargeTitleViewLayout *layout; // @synthesize layout=_layout;
 @property(nonatomic) unsigned long long accessoryViewHorizontalAlignment; // @synthesize accessoryViewHorizontalAlignment=_accessoryViewHorizontalAlignment;
 @property(nonatomic) _Bool alignAccessoryViewToTitleBaseline; // @synthesize alignAccessoryViewToTitleBaseline=_alignAccessoryViewToTitleBaseline;
@@ -36,7 +40,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *alternateTitles; // @synthesize alternateTitles=_alternateTitles;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) long long titleType; // @synthesize titleType=_titleType;
-- (void).cxx_destruct;
+@property(nonatomic) __weak _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+- (void)adoptNewLayout;
 - (void)adoptLayout:(id)arg1;
 - (void)clearTransitionContext;
 - (void)finalizeStateFromTransition:(id)arg1;
@@ -44,6 +49,12 @@ __attribute__((visibility("hidden")))
 - (void)recordToStateForTransition:(id)arg1;
 - (void)prepareToRecordToState:(id)arg1;
 - (void)recordFromStateForTransition:(id)arg1;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (void)_clearAssistants;
+- (void)_setAssistants;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContent;
 - (void)_updateContentAndInvalidate:(_Bool)arg1;
@@ -55,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 @property(readonly, nonatomic) double restingHeightOfTitleView;
 - (id)_layoutForMeasurement;
+@property(readonly, nonatomic) NSDictionary *effectiveTitleAttributes; // @synthesize effectiveTitleAttributes=_effectiveTitleAttributes;
 @property(readonly, nonatomic) UIView *accessibilityTitleView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)_newLayout;

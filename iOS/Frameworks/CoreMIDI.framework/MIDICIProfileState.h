@@ -12,18 +12,24 @@
 
 @interface MIDICIProfileState : NSObject <NSSecureCoding>
 {
+    unsigned char midiChannel;
     NSArray *enabledProfiles;
     NSArray *disabledProfiles;
 }
 
++ (id)description;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *disabledProfiles; // @synthesize disabledProfiles;
 @property(readonly, nonatomic) NSArray *enabledProfiles; // @synthesize enabledProfiles;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned char midiChannel; // @synthesize midiChannel;
+- (id)bytesWithChannel:(unsigned char)arg1;
 - (void)updateWithEnabledProfiles:(id)arg1 disabledProfiles:(id)arg2;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+- (id)initWithChannel:(unsigned char)arg1 enabledProfiles:(id)arg2 disabledProfiles:(id)arg3;
 - (id)initWithEnabledProfiles:(id)arg1 disabledProfiles:(id)arg2;
 
 @end

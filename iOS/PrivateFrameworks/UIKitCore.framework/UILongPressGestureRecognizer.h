@@ -19,7 +19,10 @@
     struct CGPoint _lastCentroidScreen;
     UIHeldAction *_enoughTimeElapsed;
     UIDelayedAction *_tooMuchTimeElapsed;
+    UIDelayedAction *_multitouchTimer;
     UITapRecognizer *_imp;
+    UILongPressGestureVelocitySample *_velocitySample;
+    UILongPressGestureVelocitySample *_previousVelocitySample;
     NSObservation *_touchForceObservation;
     long long _impulseObservations;
     double _currentImpulse;
@@ -33,28 +36,28 @@
     _Bool _requiresQuietImpulse;
     _Bool _requiresQuietImpulseForCurrentTouchSequence;
     _Bool __prefersToBeExclusiveWithCompetingLongPressGestureRecognizers;
+    _Bool __shouldAlwaysEnableMultitouchTimerAtTouchesBegin;
     long long _buttonType;
-    UILongPressGestureVelocitySample *_velocitySample;
-    UILongPressGestureVelocitySample *_previousVelocitySample;
+    double _allowableElapsedTimeForAllRequiredTouches;
     double _lastTouchTime;
     struct CGPoint _lastSceneReferenceLocation;
     struct CGPoint _lastUnadjustedSceneReferenceLocation;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setShouldAlwaysEnableMultitouchTimerAtTouchesBegin:) _Bool _shouldAlwaysEnableMultitouchTimerAtTouchesBegin; // @synthesize _shouldAlwaysEnableMultitouchTimerAtTouchesBegin=__shouldAlwaysEnableMultitouchTimerAtTouchesBegin;
 @property(nonatomic) _Bool _prefersToBeExclusiveWithCompetingLongPressGestureRecognizers; // @synthesize _prefersToBeExclusiveWithCompetingLongPressGestureRecognizers=__prefersToBeExclusiveWithCompetingLongPressGestureRecognizers;
 @property(nonatomic) double lastTouchTime; // @synthesize lastTouchTime=_lastTouchTime;
 @property(nonatomic) struct CGPoint lastUnadjustedSceneReferenceLocation; // @synthesize lastUnadjustedSceneReferenceLocation=_lastUnadjustedSceneReferenceLocation;
 @property(nonatomic) struct CGPoint lastSceneReferenceLocation; // @synthesize lastSceneReferenceLocation=_lastSceneReferenceLocation;
-@property(readonly, getter=_previousVelocitySample) UILongPressGestureVelocitySample *_previousVelocitySample; // @synthesize _previousVelocitySample;
-@property(readonly, getter=_velocitySample) UILongPressGestureVelocitySample *_velocitySample; // @synthesize _velocitySample;
-@property(nonatomic, setter=_setRequiresQuietImpulseForCurrentTouchSequence:) _Bool _requiresQuietImpulseForCurrentTouchSequence; // @synthesize _requiresQuietImpulseForCurrentTouchSequence;
+@property(nonatomic, setter=_setAllowableElapsedTimeForAllRequiredTouches:) double _allowableElapsedTimeForAllRequiredTouches; // @synthesize _allowableElapsedTimeForAllRequiredTouches;
 @property(nonatomic, setter=_setRequiresQuietImpulse:) _Bool _requiresQuietImpulse; // @synthesize _requiresQuietImpulse;
 @property(nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property(nonatomic) double delay; // @synthesize delay=_minimumPressDuration;
 @property(nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
 @property(retain, nonatomic) NSArray *touches; // @synthesize touches=_touches;
-- (void).cxx_destruct;
+- (_Bool)_isGestureType:(long long)arg1;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
 - (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2 physicalTouch:(id)arg3;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
@@ -87,6 +90,7 @@
 @property(readonly, nonatomic) struct CGPoint _centroidScreen;
 @property(readonly, nonatomic) struct CGPoint centroid;
 - (struct CGPoint)_centroidInView:(id)arg1;
+- (void)_appendSubclassDescription:(id)arg1;
 - (long long)_finalStateForRecognition;
 - (void)_interactionsEndedWithValidTouches:(_Bool)arg1;
 - (void)_resetImpulseQuietness;
@@ -97,6 +101,7 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_changeTouchesListTo:(id)arg1;
+- (void)_startMultitouchTimer;
 - (void)_startTapFinishedTimer;
 - (void)startTimer;
 - (_Bool)_touchesMayBeRecognizedByForcePreviewingRevealGestureRecognizerWhichShouldDelayTimer:(id)arg1;
@@ -114,6 +119,8 @@
 - (_Bool)_allowsDynamicTouchesList;
 @property(nonatomic) _Bool cancelPastAllowableMovement;
 @property(nonatomic) double minimumPressDuration;
+- (void)setButtonMaskRequired:(long long)arg1;
+- (long long)buttonMaskRequired;
 @property(nonatomic) unsigned long long numberOfTapsRequired;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -6,8 +6,8 @@
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIImageView, UILongPressGestureRecognizer;
-@protocol _UICollectionViewListCellReorderControlDelegate;
+@class NSString, UIColor, UIImageView, UILongPressGestureRecognizer;
+@protocol UITableConstants, _UICollectionViewListCellReorderControlDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewListCellReorderControl <UIGestureRecognizerDelegate>
@@ -15,21 +15,27 @@ __attribute__((visibility("hidden")))
     UIImageView *_imageView;
     UILongPressGestureRecognizer *_reorderRecognizer;
     _Bool _tracking;
+    _Bool _needsImageViewUpdate;
     id <_UICollectionViewListCellReorderControlDelegate> _delegate;
-    CDUnknownBlockType _grabberImageProvider;
+    id <UITableConstants> _constants;
+    UIColor *_accessoryTintColor;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType grabberImageProvider; // @synthesize grabberImageProvider=_grabberImageProvider;
-@property(nonatomic) __weak id <_UICollectionViewListCellReorderControlDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
+@property(retain, nonatomic) id <UITableConstants> constants; // @synthesize constants=_constants;
+@property(nonatomic) __weak id <_UICollectionViewListCellReorderControlDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)endReordering:(_Bool)arg1;
-- (void)moveToPoint:(struct CGPoint)arg1;
+- (void)gestureMovedToPoint:(struct CGPoint)arg1;
 - (void)beginReordering;
 - (void)pan:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1 grabberImageProvider:(CDUnknownBlockType)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)_updateImageViewIfNeeded;
+- (void)_setNeedsImageViewUpdate;
+- (id)initWithDelegate:(id)arg1 constants:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

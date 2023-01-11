@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSSet, NSString;
 
-@interface RBSInheritanceChangeSet : NSObject <BSXPCSecureCoding>
+@interface RBSInheritanceChangeSet : NSObject <RBSXPCSecureCoding>
 {
     NSSet *_gainedInheritances;
     NSSet *_lostInheritances;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSSet *lostInheritances; // @synthesize lostInheritances=_lostInheritances;
 @property(readonly, copy, nonatomic) NSSet *gainedInheritances; // @synthesize gainedInheritances=_gainedInheritances;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithGainedInheritances:(id)arg1 lostInheritances:(id)arg2;
 

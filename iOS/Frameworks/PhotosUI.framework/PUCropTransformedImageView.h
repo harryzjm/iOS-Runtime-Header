@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NUComposition, PHLivePhoto, UIImage;
+@class NUComposition, NUMediaView, PHLivePhoto, UIImage;
 @protocol PUCropTransformedImageViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _decelerating;
     UIImage *_image;
     PHLivePhoto *_livePhoto;
+    NUMediaView *_videoMediaView;
     NUComposition *_autoloopComposition;
     NUComposition *_videoComposition;
     id <PUCropTransformedImageViewDelegate> _delegate;
@@ -23,11 +24,13 @@ __attribute__((visibility("hidden")))
     double _pitchAngle;
     double _yawAngle;
     long long _orientation;
-    CDStruct_910f5d27 _imageModulationOptions;
+    struct CGSize _imageSize;
+    CDStruct_0b004a15 _imageModulationOptions;
     struct CGRect _cropRect;
     struct CGRect _canvasFrame;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isDecelerating) _Bool decelerating; // @synthesize decelerating=_decelerating;
 @property(readonly, nonatomic, getter=isTracking) _Bool tracking; // @synthesize tracking=_tracking;
 @property(nonatomic) struct CGRect canvasFrame; // @synthesize canvasFrame=_canvasFrame;
@@ -37,12 +40,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double pitchAngle; // @synthesize pitchAngle=_pitchAngle;
 @property(nonatomic) double straightenAngle; // @synthesize straightenAngle=_straightenAngle;
 @property(nonatomic) __weak id <PUCropTransformedImageViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) CDStruct_910f5d27 imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
+@property(nonatomic) CDStruct_0b004a15 imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
 @property(readonly, nonatomic) NUComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
 @property(retain, nonatomic) NUComposition *autoloopComposition; // @synthesize autoloopComposition=_autoloopComposition;
+@property(retain, nonatomic) NUMediaView *videoMediaView; // @synthesize videoMediaView=_videoMediaView;
 @property(retain, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
+@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
-- (void).cxx_destruct;
 - (void)setVideoComposition:(id)arg1 withSeekTime:(CDStruct_1b6d18a9)arg2;
 - (void)setNeedsLayerTransformsUpdateAnimated:(_Bool)arg1;
 - (void)setImageCropRectFromViewCropRect:(struct CGRect)arg1 animated:(_Bool)arg2;

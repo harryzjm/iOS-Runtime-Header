@@ -17,7 +17,7 @@
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (id)getStatus;
 - (int)getAvailableHAPConnections;
-- (void)cleanupWithError:(id *)arg1;
+- (_Bool)cleanupWithError:(id *)arg1;
 - (id)initWithCentralManager:(id)arg1 Queue:(id)arg2 Error:(id *)arg3;
 
 // Remaining properties

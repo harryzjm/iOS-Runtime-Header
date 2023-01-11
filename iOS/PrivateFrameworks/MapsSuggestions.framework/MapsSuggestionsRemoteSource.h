@@ -15,6 +15,7 @@
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _started;
+    CDUnknownBlockType _oneShotCallback;
 }
 
 + (unsigned long long)disposition;
@@ -27,14 +28,12 @@
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (_Bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)canProduceEntriesOfType:(long long)arg1;
-- (double)updateSuggestionEntriesOfType:(long long)arg1;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
 - (void)start;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
-- (void)_closeConnection;
-- (_Bool)_openConnectionIfNecessary;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

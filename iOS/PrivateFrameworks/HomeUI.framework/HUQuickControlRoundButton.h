@@ -6,10 +6,15 @@
 
 #import <UIKit/UIButton.h>
 
+@class UIView;
+
 @interface HUQuickControlRoundButton : UIButton
 {
+    UIView *_controlCenterMaterialView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *controlCenterMaterialView; // @synthesize controlCenterMaterialView=_controlCenterMaterialView;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

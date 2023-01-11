@@ -7,25 +7,20 @@
 #import <MapsSuggestions/CLLocationManagerDelegate-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsLocationUpdater-Protocol.h>
 
-@class CLLocationManager, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class CLLocationManager, NSString;
 
 @interface MapsSuggestionsDefaultLocationUpdater <CLLocationManagerDelegate, MapsSuggestionsLocationUpdater>
 {
     CLLocationManager *_locationManager;
-    _Bool _running;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
+- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
-- (void)stopImplementation;
-- (void)startImplemention;
-- (void)_startImplemention;
-- (void)_deinitLocationManager;
-- (void)_initLocationManagers;
-- (void)dealloc;
+- (void)onStopImplementation;
+- (void)onStartImplementation;
 - (id)init;
 
 // Remaining properties

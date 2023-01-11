@@ -19,6 +19,7 @@
     NSHashTable *_bulletPointBodyLabels;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSHashTable *bulletPointBodyLabels; // @synthesize bulletPointBodyLabels=_bulletPointBodyLabels;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) UIView *lastBulletPointView; // @synthesize lastBulletPointView=_lastBulletPointView;
@@ -26,7 +27,6 @@
 @property(retain, nonatomic) UIStackView *bulletPointsView; // @synthesize bulletPointsView=_bulletPointsView;
 @property(retain, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
 - (double)_cannotDoHeaderLastBaselineToCannotDoBodyFirstBaseline;
 - (id)_boldSubheadlineFont;
 - (id)_subheadlineFont;

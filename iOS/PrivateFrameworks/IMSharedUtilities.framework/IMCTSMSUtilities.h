@@ -33,6 +33,7 @@
 + (int)IMMMSMaximumSlideCountForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (_Bool)IMMMSSupportedAndConfiguredForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (unsigned long long)IMReadAttachmentPreviewTranscodingQualitySizeCarrierValueForPhoneNumber:(id)arg1 simID:(id)arg2;
++ (_Bool)IMReadDisablePreviewTranscodingQualityOnWiFiCarrierValueForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (_Bool)IMReadEnablePreviewTranscodingQualityCarrierValueForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (_Bool)IMMMSEnabledForPhoneNumber:(id)arg1 simID:(id)arg2;
 + (id)IMPhoneNumbersEnabledForMultipleSubscriptionDevice;

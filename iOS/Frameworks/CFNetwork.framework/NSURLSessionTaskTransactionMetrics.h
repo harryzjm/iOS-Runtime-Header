@@ -20,12 +20,11 @@
 
 + (id)new;
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) _Bool _forCache; // @synthesize _forCache=__forCache;
-@property(readonly, nonatomic) __CFN_TransactionMetrics *_metrics; // @synthesize _metrics=__metrics;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool _connectionTimingCached; // @synthesize _connectionTimingCached=__connectionTimingCached;
 @property(nonatomic) CDStruct_c0a2f610 _connectionTiming; // @synthesize _connectionTiming=__connectionTiming;
-- (void).cxx_destruct;
 - (id)description;
+@property(readonly) long long domainResolutionProtocol;
 @property(readonly, getter=isMultipath) _Bool multipath;
 @property(readonly, getter=isConstrained) _Bool constrained;
 @property(readonly, getter=isExpensive) _Bool expensive;
@@ -59,11 +58,11 @@
 @property(readonly, copy) NSDate *fetchStartDate;
 @property(readonly, copy) NSURLResponse *response;
 @property(readonly, copy) NSURLRequest *request;
-- (void)translateConnectionTiming;
-- (id)initWithMetrics:(id)arg1 forCache:(_Bool)arg2;
 - (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, copy) NSString *_interfaceName;
+@property(readonly, copy) NSDate *_firstByteReceivedDate;
 @property(readonly) _Bool _usesMultipath;
 @property(readonly) unsigned short _negotiatedTLSCipher;
 @property(readonly) int _negotiatedTLSProtocol;

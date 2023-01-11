@@ -17,6 +17,7 @@
 
 + (id)alloc;
 + (Class)__class;
+- (void).cxx_destruct;
 @property(readonly) NSString *category; // @synthesize category=_category;
 @property(readonly) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property(readonly) NSString *string; // @synthesize string=_string;

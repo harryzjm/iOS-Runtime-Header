@@ -10,15 +10,15 @@
 
 @interface _TtC15ConversationKit23InCallControlsTitleCell : UITableViewCell
 {
-    MISSING_TYPE *summaryLabel;
+    MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *messagesButton;
     MISSING_TYPE *isAccessiblityConstraintsEnabled;
-    MISSING_TYPE *subtitleLabelFirstBaselineLayoutConstraint;
-    MISSING_TYPE *titleLabelFirstBaselineLayoutConstraint;
-    MISSING_TYPE *titleLabelLastBaselineLayoutConstraint;
-    MISSING_TYPE *titleLabelFirstBaselineTopLayoutConstraint;
-    MISSING_TYPE *titleLabelLastBaselineBottomLayoutConstraint;
+    MISSING_TYPE *singleLabelTopConstraint;
+    MISSING_TYPE *singleLabelBottomConstraint;
+    MISSING_TYPE *dualLabelTopConstraint;
+    MISSING_TYPE *dualLabelBottomConstraint;
+    MISSING_TYPE *interLabelConstraint;
     MISSING_TYPE *trailingTextLayoutGuide;
     MISSING_TYPE *trailingTextShowingButtonLayoutConstraint;
     MISSING_TYPE *trailingTextHidingButtonLayoutConstraint;

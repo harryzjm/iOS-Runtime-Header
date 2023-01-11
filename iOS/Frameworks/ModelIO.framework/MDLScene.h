@@ -17,9 +17,9 @@
     int _signature;
 }
 
-@property(readonly, retain, nonatomic) NSArray *objects; // @synthesize objects=_objects;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, retain, nonatomic) NSArray *objects; // @synthesize objects=_objects;
 - (id)raytraceSceneWithCamera:(const struct RTCamera *)arg1 reflection:(id)arg2 irradiance:(id)arg3 size: /* Error: Ran out of types for this method. */;
 - (void)clear;
 - (void)addObject:(id)arg1;

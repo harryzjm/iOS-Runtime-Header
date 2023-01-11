@@ -8,5 +8,6 @@
 
 @interface NSLinguisticTagger (RKPrivate)
 - (id)languageOfRange:(struct _NSRange)arg1 withAdditionalContext:(id)arg2 withPreferredLanguages:(id)arg3;
+- (_Bool)containsAsianCharacters;
 @end
 

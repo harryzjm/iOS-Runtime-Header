@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 - (void *)mutableBytes;
 - (const void *)bytes;
-- (void)_pb_growCapacityBy:(unsigned long long)arg1;
 - (void)setLength:(unsigned long long)arg1;
 - (unsigned long long)length;
 - (void)dealloc;

@@ -15,8 +15,8 @@
     NSXPCConnection *_connection;
 }
 
-@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)getValueSimulateDeviceOutOfSpaceWithReply:(CDUnknownBlockType)arg1;
 - (void)setValueSimulateDeviceOutOfSpace:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)resetAllCrashSimulationOverridesWithReply:(CDUnknownBlockType)arg1;
@@ -25,10 +25,17 @@
 - (void)setValueSimulateCrashAtInstallDuringUnzip:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)setValueSimulateCrashAtInstallDuringDecrypt:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)setValueSimulateCrashAtInstallStart:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)reloadFromServerWithReply:(CDUnknownBlockType)arg1;
+- (void)setAutomaticDownloadEnabled:(_Bool)arg1 uiHostProxy:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)processAutomaticDownloadsWithReply:(CDUnknownBlockType)arg1;
+- (void)flushMetricsWithReply:(CDUnknownBlockType)arg1;
+- (void)requestDownloadsWithManifestRequest:(id)arg1 uiHostProxy:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)requestDownloadsWithRestoreContentRequestItems:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestDownloadsWithMetadata:(id)arg1 areRestore:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestDownloadWithMetadata:(id)arg1 isRestore:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestDownloadWithParameters:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)downloadWithPermlink:(id)arg1 title:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)purchaseWithRequest:(id)arg1 uiHostProxy:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)purchaseWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)cancelAllActiveDownloadsWithReply:(CDUnknownBlockType)arg1;
 - (void)cancelDownloadWithID:(id)arg1 withReply:(CDUnknownBlockType)arg2;

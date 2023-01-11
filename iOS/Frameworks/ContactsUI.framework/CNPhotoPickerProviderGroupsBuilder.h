@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactViewCache, CNMutableContact, CNUIContactsEnvironment;
+@class CNContactViewCache, CNUIContactsEnvironment, CNVisualIdentity;
 @protocol AVTAvatarStore;
 
 __attribute__((visibility("hidden")))
@@ -14,37 +14,48 @@ __attribute__((visibility("hidden")))
 {
     _Bool _includeContactImage;
     _Bool _includeUnifiedContactImages;
-    _Bool _includeAddPhotoItem;
+    _Bool _includeTakePhotoItem;
+    _Bool _includePhotoFromLibraryItem;
     _Bool _includeMonograms;
     _Bool _includeFaces;
     _Bool _includeAnimoji;
     _Bool _includeAddAnimojiItem;
     _Bool _includeRecents;
-    CNMutableContact *_contact;
+    _Bool _shouldOrderEmojiBeforeAnimoji;
+    _Bool _includesEmojiContent;
+    _Bool _includeAddEmojiItem;
+    CNVisualIdentity *_visualIdentity;
     id <AVTAvatarStore> _avatarStore;
     CNContactViewCache *_contactViewCache;
     CNUIContactsEnvironment *_environment;
 }
 
-+ (id)builderWithContact:(id)arg1 avatarStore:(id)arg2 environment:(id)arg3 contactViewCache:(id)arg4 photoPickerConfiguration:(id)arg5;
++ (id)builderWithVisualIdentity:(id)arg1 avatarStore:(id)arg2 environment:(id)arg3 contactViewCache:(id)arg4 photoPickerConfiguration:(id)arg5;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) CNContactViewCache *contactViewCache; // @synthesize contactViewCache=_contactViewCache;
 @property(readonly, nonatomic) id <AVTAvatarStore> avatarStore; // @synthesize avatarStore=_avatarStore;
-@property(readonly, nonatomic) CNMutableContact *contact; // @synthesize contact=_contact;
+@property(readonly, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
+@property(nonatomic) _Bool includeAddEmojiItem; // @synthesize includeAddEmojiItem=_includeAddEmojiItem;
+@property(nonatomic) _Bool includesEmojiContent; // @synthesize includesEmojiContent=_includesEmojiContent;
+@property(nonatomic) _Bool shouldOrderEmojiBeforeAnimoji; // @synthesize shouldOrderEmojiBeforeAnimoji=_shouldOrderEmojiBeforeAnimoji;
 @property(nonatomic) _Bool includeRecents; // @synthesize includeRecents=_includeRecents;
 @property(nonatomic) _Bool includeAddAnimojiItem; // @synthesize includeAddAnimojiItem=_includeAddAnimojiItem;
 @property(nonatomic) _Bool includeAnimoji; // @synthesize includeAnimoji=_includeAnimoji;
 @property(nonatomic) _Bool includeFaces; // @synthesize includeFaces=_includeFaces;
 @property(nonatomic) _Bool includeMonograms; // @synthesize includeMonograms=_includeMonograms;
-@property(nonatomic) _Bool includeAddPhotoItem; // @synthesize includeAddPhotoItem=_includeAddPhotoItem;
+@property(nonatomic) _Bool includePhotoFromLibraryItem; // @synthesize includePhotoFromLibraryItem=_includePhotoFromLibraryItem;
+@property(nonatomic) _Bool includeTakePhotoItem; // @synthesize includeTakePhotoItem=_includeTakePhotoItem;
 @property(nonatomic) _Bool includeUnifiedContactImages; // @synthesize includeUnifiedContactImages=_includeUnifiedContactImages;
 @property(nonatomic) _Bool includeContactImage; // @synthesize includeContactImage=_includeContactImage;
-- (void).cxx_destruct;
 - (id)build;
+- (id)emojiContentGroup;
 - (id)animojiContentGroup;
 - (id)photoContentGroup;
+- (id)injectedItemsGroup;
+- (id)addItemsContentGroup;
 @property(readonly, nonatomic) _Bool includesAnyPhotoContent;
-- (id)initWithContact:(id)arg1 avatarStore:(id)arg2 environment:(id)arg3 contactViewCache:(id)arg4;
+- (id)initWithVisualIdentity:(id)arg1 avatarStore:(id)arg2 environment:(id)arg3 contactViewCache:(id)arg4;
 
 @end
 

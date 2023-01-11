@@ -14,11 +14,14 @@ __attribute__((visibility("hidden")))
 @interface CKDPResponseOperationHeader : PBCodable <NSCopying>
 {
     NSMutableArray *_assetAuthorizationResponses;
+    NSMutableArray *_throttleConfigs;
 }
 
++ (Class)throttleConfigType;
 + (Class)assetAuthorizationResponsesType;
-@property(retain, nonatomic) NSMutableArray *assetAuthorizationResponses; // @synthesize assetAuthorizationResponses=_assetAuthorizationResponses;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *throttleConfigs; // @synthesize throttleConfigs=_throttleConfigs;
+@property(retain, nonatomic) NSMutableArray *assetAuthorizationResponses; // @synthesize assetAuthorizationResponses=_assetAuthorizationResponses;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -28,6 +31,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)throttleConfigAtIndex:(unsigned long long)arg1;
+- (unsigned long long)throttleConfigsCount;
+- (void)addThrottleConfig:(id)arg1;
+- (void)clearThrottleConfigs;
 - (id)assetAuthorizationResponsesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)assetAuthorizationResponsesCount;
 - (void)addAssetAuthorizationResponses:(id)arg1;

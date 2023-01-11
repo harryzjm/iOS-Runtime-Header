@@ -38,8 +38,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)unslicedSize;
 - (int)pixelFormat;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
-- (struct CGImage *)newImageFromCSIDataSlice:(struct _slice)arg1 ofBitmap:(struct _csibitmap *)arg2 usingColorspace:(struct CGColorSpace *)arg3;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 
 @end
 

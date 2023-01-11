@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_recordByRequestID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *recordByRequestID; // @synthesize recordByRequestID=_recordByRequestID;
 @property(retain, nonatomic) NSMutableDictionary *recordIDByRequestID; // @synthesize recordIDByRequestID=_recordIDByRequestID;
 @property(retain, nonatomic) NSDictionary *requestedFieldsByRecordID; // @synthesize requestedFieldsByRecordID=_requestedFieldsByRecordID;
@@ -41,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
 @property(retain, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property(retain, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
@@ -49,8 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 - (_Bool)allowsAnonymousAccount;
-- (int)operationType;
-- (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(_Bool)arg3 sendAllFields:(_Bool)arg4 clientChangeTokenData:(id)arg5 requestedFieldsByRecordId:(id)arg6;
+- (id)initWithOperation:(id)arg1 recordsToSave:(id)arg2 recordIDsToDelete:(id)arg3 oplock:(_Bool)arg4 sendAllFields:(_Bool)arg5 clientChangeTokenData:(id)arg6 requestedFieldsByRecordId:(id)arg7;
 
 @end
 

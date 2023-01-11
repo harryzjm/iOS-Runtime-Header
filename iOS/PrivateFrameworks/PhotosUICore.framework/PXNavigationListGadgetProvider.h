@@ -5,34 +5,45 @@
 //
 
 #import <PhotosUICore/PXNavigationListDataSectionManagerObserver-Protocol.h>
+#import <PhotosUICore/PXPreferencesObserver-Protocol.h>
 
-@class NSString, PXExtendedTraitCollection, PXNavigationListDataSectionManager;
+@class NSNumber, NSPredicate, NSString, PXExtendedTraitCollection, PXNavigationListDataSectionManager;
 
-@interface PXNavigationListGadgetProvider <PXNavigationListDataSectionManagerObserver>
+@interface PXNavigationListGadgetProvider <PXNavigationListDataSectionManagerObserver, PXPreferencesObserver>
 {
     _Bool _shouldShowNavigationListOnIpad;
     _Bool _isPresentedInPicker;
+    _Bool _backgroundFetchingIsActive;
     unsigned long long _type;
     PXExtendedTraitCollection *_traitCollection;
     PXNavigationListDataSectionManager *_dataSourceManager;
+    NSPredicate *_assetsFilterPredicate;
+    NSNumber *_hiddenAlbumVisibleCache;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool backgroundFetchingIsActive; // @synthesize backgroundFetchingIsActive=_backgroundFetchingIsActive;
+@property(retain, nonatomic) NSNumber *hiddenAlbumVisibleCache; // @synthesize hiddenAlbumVisibleCache=_hiddenAlbumVisibleCache;
+@property(readonly, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property(readonly, nonatomic) _Bool isPresentedInPicker; // @synthesize isPresentedInPicker=_isPresentedInPicker;
 @property(retain, nonatomic) PXNavigationListDataSectionManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) PXExtendedTraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool shouldShowNavigationListOnIpad; // @synthesize shouldShowNavigationListOnIpad=_shouldShowNavigationListOnIpad;
-- (void).cxx_destruct;
+- (_Bool)_shouldHiddenAlbumBeVisible;
 - (void)_initializeDataSourceManagerIfNeeded;
 @property(readonly, nonatomic) _Bool shouldShowNavigationListForDeviceAndLayoutClass;
 - (void)_updateGadgets;
+- (void)preferencesDidChange;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)pauseLoadingRemainingData;
 - (void)startLoadingRemainingData;
 - (void)generateGadgets;
 - (void)loadDataForGadgets;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)dealloc;
-- (id)initWithType:(unsigned long long)arg1 extendedTraitCollection:(id)arg2 isPresentedInPicker:(_Bool)arg3;
+- (id)initWithType:(unsigned long long)arg1 extendedTraitCollection:(id)arg2 isPresentedInPicker:(_Bool)arg3 assetsFilterPredicate:(id)arg4;
+- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 
 // Remaining properties

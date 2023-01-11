@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSString *_sessionId;
     NSString *_participantId;
-    unsigned long long _idsParticipantID;
+    unsigned long long _remoteIDSParticipantID;
     unsigned int _ssrc;
     unsigned int _maxNetworkBitrate;
     unsigned int _maxMediaBitrate;
@@ -23,12 +23,22 @@ __attribute__((visibility("hidden")))
     unsigned int _maxIDSStreamIdCount;
     unsigned short _repairedStreamID;
     unsigned int _repairedMaxNetworkBitrate;
-    _Bool _hasRepairedStreamID;
     _Bool _startOnDemand;
+    _Bool _isOneToOne;
+    struct {
+        unsigned int maxNetworkBitrate:1;
+        unsigned int maxMediaBitrate:1;
+        unsigned int maxPacketsPerSecond:1;
+        unsigned int idsStreamID:1;
+        unsigned int qualityIndex:1;
+        unsigned int maxIDSStreamIdCount:1;
+        unsigned int repairedStreamID:1;
+        unsigned int repairedMaxNetworkBitrate:1;
+    } _has;
 }
 
+@property(nonatomic) _Bool isOneToOne; // @synthesize isOneToOne=_isOneToOne;
 @property(nonatomic) _Bool startOnDemand; // @synthesize startOnDemand=_startOnDemand;
-@property(nonatomic) _Bool hasRepairedStreamID; // @synthesize hasRepairedStreamID=_hasRepairedStreamID;
 @property(nonatomic) unsigned int repairedMaxNetworkBitrate; // @synthesize repairedMaxNetworkBitrate=_repairedMaxNetworkBitrate;
 @property(nonatomic) unsigned short repairedStreamID; // @synthesize repairedStreamID=_repairedStreamID;
 @property(nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
@@ -38,9 +48,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int maxMediaBitrate; // @synthesize maxMediaBitrate=_maxMediaBitrate;
 @property(nonatomic) unsigned int maxNetworkBitrate; // @synthesize maxNetworkBitrate=_maxNetworkBitrate;
 @property(nonatomic) unsigned int ssrc; // @synthesize ssrc=_ssrc;
-@property(nonatomic) unsigned long long idsParticipantID; // @synthesize idsParticipantID=_idsParticipantID;
+@property(nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
 @property(retain, nonatomic) NSString *participantId; // @synthesize participantId=_participantId;
 @property(retain, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
+@property(readonly, nonatomic) _Bool hasRepairedMaxNetworkBitrate;
+@property(readonly, nonatomic) _Bool hasRepairedStreamID;
+@property(readonly, nonatomic) _Bool hasMaxIDSStreamIdCount;
+@property(readonly, nonatomic) _Bool hasQualityIndex;
+@property(readonly, nonatomic) _Bool hasIdsStreamID;
+@property(readonly, nonatomic) _Bool hasMaxPacketsPerSecond;
+@property(readonly, nonatomic) _Bool hasMaxMediaBitrate;
+@property(readonly, nonatomic) _Bool hasMaxNetworkBitrate;
 @property(readonly, nonatomic) NSArray *streamIds;
 - (void)dealloc;
 

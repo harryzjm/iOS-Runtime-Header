@@ -6,10 +6,29 @@
 
 #import <UIKit/UIView.h>
 
+@class NSString, UIColor, UIImageView;
+
 @interface WFCircularGlyphView : UIView
 {
+    double _imagePointSize;
+    NSString *_glyphName;
+    UIColor *_glyphColor;
+    UIColor *_glyphBackgroundColor;
+    UIImageView *_glyphImageView;
+    UIView *_backgroundColorView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *backgroundColorView; // @synthesize backgroundColorView=_backgroundColorView;
+@property(retain, nonatomic) UIImageView *glyphImageView; // @synthesize glyphImageView=_glyphImageView;
+@property(retain, nonatomic) UIColor *glyphBackgroundColor; // @synthesize glyphBackgroundColor=_glyphBackgroundColor;
+@property(retain, nonatomic) UIColor *glyphColor; // @synthesize glyphColor=_glyphColor;
+@property(retain, nonatomic) NSString *glyphName; // @synthesize glyphName=_glyphName;
+@property(nonatomic) double imagePointSize; // @synthesize imagePointSize=_imagePointSize;
+- (void)configureBackgroundColorView;
+- (void)configureGlyphImageView;
+- (id)glyphImage;
+- (void)configureViews;
 - (id)initWithName:(id)arg1 glyphColor:(id)arg2 backgroundColor:(id)arg3;
 
 @end

@@ -26,12 +26,13 @@
 + (_Bool)deleteFromLibrary:(id)arg1 deletionType:(int)arg2 persistentIDs:(const long long *)arg3 count:(unsigned long long)arg4;
 + (void)deleteAutoCreatedBuiltInSmartPlaylistsPIDs:(id)arg1 inLibrary:(id)arg2;
 + (id)autoCreatedBuiltInSmartPlaylistsPIDs:(id)arg1;
-+ (_Bool)updateBuiltInSmartPlaylistNamesForCurrentLanguage:(id)arg1;
++ (_Bool)updateBuiltInSmartPlaylistNamesForCurrentLanguageInLibrary:(id)arg1 usingConnection:(id)arg2;
 + (id)predicateForCriteriaList:(struct SearchCriteriaList *)arg1 parentMatchedAny:(_Bool)arg2;
 + (_Bool)hasCriterionInCriteriaList:(struct SearchCriteriaList *)arg1 forITDBTrackField:(int)arg2;
 + (void)populateSortOrdersOfPropertyValues:(id)arg1 inLibrary:(id)arg2 cachedNameOrders:(id)arg3;
 + (_Bool)smartCriteriaCanBeEvaluated:(id)arg1;
 + (id)nextFilepathForPlaylistType:(int)arg1 withPersistentID:(unsigned long long)arg2 inLibrary:(id)arg3;
++ (_Bool)assistantLibraryContentsChangeForProperty:(id)arg1;
 + (_Bool)libraryContentsChangeForProperty:(id)arg1;
 + (_Bool)libraryDynamicChangeForProperty:(id)arg1;
 + (id)defaultFilterPredicates;

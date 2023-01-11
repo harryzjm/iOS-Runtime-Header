@@ -10,12 +10,3 @@ typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameter
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Named Structures
-
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-

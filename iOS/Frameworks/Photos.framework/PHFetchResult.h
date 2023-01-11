@@ -9,13 +9,14 @@
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSFastEnumeration-Protocol.h>
 
-@class NSArray, NSFetchRequest, NSNumber, NSSet, NSString, PHBatchFetchingArray, PHFetchOptions, PHPhotoLibrary, PHQuery, _PHFetchRequestWrapper;
+@class NSArray, NSDictionary, NSError, NSFetchRequest, NSNumber, NSSet, NSString, PHBatchFetchingArray, PHFetchOptions, PHPhotoLibrary, PHQuery, _PHFetchRequestWrapper;
 @protocol OS_dispatch_queue;
 
 @interface PHFetchResult : NSObject <NSCopying, NSFastEnumeration>
 {
     PHBatchFetchingArray *_fetchedObjects;
-    PHBatchFetchingArray *_thumbnailAssets;
+    NSArray *_thumbnailAssets;
+    NSDictionary *_fetchedPropertySetsCache;
     NSArray *_seedOIDs;
     NSObject<OS_dispatch_queue> *_isolationQueue;
     _Bool _registeredForChangeNotificationDeltas;
@@ -29,6 +30,7 @@
     unsigned long long _audiosCount;
     NSNumber *_prefetchCount;
     _PHFetchRequestWrapper *_fetchRequestWrapper;
+    NSError *_fetchError;
     _Bool _preventsClearingOIDCache;
     PHQuery *_query;
     long long _chunkSizeForFetch;
@@ -47,12 +49,12 @@
 + (id)pl_filterPredicateForAssetContainer:(id)arg1;
 + (id)pl_fetchResultContainingAssetContainer:(id)arg1 photoLibrary:(id)arg2 includeTrash:(_Bool)arg3;
 + (id)pl_fetchResultContainingAssetContainer:(id)arg1 photoLibrary:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool preventsClearingOIDCache; // @synthesize preventsClearingOIDCache=_preventsClearingOIDCache;
 @property long long chunkSizeForFetch; // @synthesize chunkSizeForFetch=_chunkSizeForFetch;
 @property(readonly) NSSet *fetchPropertySets; // @synthesize fetchPropertySets=_fetchPropertySets;
 @property(readonly) NSString *fetchType; // @synthesize fetchType=_fetchType;
 @property(readonly) PHQuery *query; // @synthesize query=_query;
-- (void).cxx_destruct;
 - (id)description;
 - (id)localIdentifiers;
 - (_Bool)isFullyBackedByObjectIDs;
@@ -78,10 +80,15 @@
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
 - (unsigned long long)possibleChangesForChange:(id)arg1;
+- (unsigned long long)_possibleChangesFromDetectionCriteriaForChange:(id)arg1;
 - (void)setRegisteredForChangeNotificationDeltas:(_Bool)arg1;
 - (_Bool)isRegisteredForChangeNotificationDeltas;
 - (void)updateRegistrationForChangeNotificationDeltas;
+- (id)_createFetchedPropertyObjectsWithClass:(Class)arg1 fetchedObjectIDs:(id)arg2;
+- (_Bool)_canCreateFetchedPropertyObjectsWithClass:(Class)arg1;
 @property(readonly) NSArray *thumbnailAssets;
+- (id)fetchPropertiesForPropertySetClass:(Class)arg1 forObjectsAtIndexes:(id)arg2;
+- (id)fetchedPropertiesForPropertySetClass:(Class)arg1;
 - (id)objectIDAtIndex:(unsigned long long)arg1;
 @property(readonly) NSSet *fetchedObjectIDsSet;
 - (id)objectIDs;
@@ -91,6 +98,8 @@
 - (id)fetchedObjectsUsingManagedObjectContext:(id)arg1;
 @property(readonly, nonatomic) PHFetchOptions *fetchOptions;
 @property(readonly) NSArray *fetchedObjects;
+@property(readonly) NSError *fetchError;
+@property(readonly) NSArray *fetchSortDescriptors;
 @property(readonly) NSFetchRequest *fetchRequest;
 - (id)changeHandlingValueUsingSeedOids:(id)arg1 withChange:(id)arg2 usingManagedObjectContext:(id)arg3;
 - (id)changeHandlingKey;

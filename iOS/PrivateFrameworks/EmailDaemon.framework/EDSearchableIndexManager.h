@@ -13,13 +13,17 @@
 
 @interface EDSearchableIndexManager : NSObject <EFLoggable, EDMessageChangeHookResponder>
 {
+    _Bool _needsReindex;
+    _Bool _needsToScheduleRecurringActivity;
     EDPersistenceDatabase *_database;
 }
 
 + (id)log;
-@property(readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
 - (void).cxx_destruct;
-- (id)_filterInMessagesWithValidPersistentIDsFromMessages:(id)arg1;
+@property(readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
+@property(nonatomic) _Bool needsToScheduleRecurringActivity; // @synthesize needsToScheduleRecurringActivity=_needsToScheduleRecurringActivity;
+@property(nonatomic) _Bool needsReindex; // @synthesize needsReindex=_needsReindex;
+- (void)_removeItemsForPersistedMessages:(id)arg1;
 - (void)persistenceDidAddLabels:(id)arg1 removeLabels:(id)arg2 messages:(id)arg3 generationWindow:(id)arg4;
 - (void)persistenceDidChangeFlags:(id)arg1 messages:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidDeleteMessages:(id)arg1 generationWindow:(id)arg2;
@@ -27,11 +31,16 @@
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidFinishUpdates;
 - (void)persistenceWillBeginUpdates;
-- (void)removeAllItemsFromIndexAndWait:(_Bool)arg1;
+- (void)setNeedsReindex;
+- (void)removeAllItemsFromIndexAndWait:(_Bool)arg1 skipInvalidation:(_Bool)arg2;
+- (void)_removeAllItemsFromIndexAndWait:(_Bool)arg1 options:(unsigned long long)arg2;
+- (void)enableIndexingAndBeginScheduling:(_Bool)arg1 budgetConfiguration:(id)arg2;
 - (void)enableIndexingAndBeginScheduling:(_Bool)arg1;
 @property(readonly, nonatomic) EDSearchableIndexScheduler *scheduler;
 @property(readonly, nonatomic) EDSearchableIndexPersistence *persistence;
 @property(readonly, nonatomic) EDSearchableIndex *index;
+- (void)scheduleRecurringActivity;
+- (void)test_tearDown;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
 
 // Remaining properties

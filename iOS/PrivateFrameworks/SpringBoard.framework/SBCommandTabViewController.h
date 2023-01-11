@@ -8,12 +8,12 @@
 
 #import <SpringBoard/SBIconViewDelegate-Protocol.h>
 
-@class MTMaterialShadowView, NSLayoutConstraint, NSMutableArray, NSOrderedSet, NSString, SBIconController, SBIconModel, SBIconView, UILabel, UIPanGestureRecognizer, UIStackView, UIView;
+@class MTMaterialShadowView, NSLayoutConstraint, NSMutableArray, NSMutableOrderedSet, NSString, SBIconController, SBIconModel, SBIconView, UIHoverGestureRecognizer, UILabel, UIPanGestureRecognizer, UIStackView, UITapGestureRecognizer, UIView;
 @protocol SBCommandTabViewControllerDelegate;
 
 @interface SBCommandTabViewController : UIViewController <SBIconViewDelegate>
 {
-    NSOrderedSet *_recentDisplayItems;
+    NSMutableOrderedSet *_recentDisplayItems;
     unsigned long long _selectedIndex;
     SBIconController *_iconController;
     SBIconModel *_iconModel;
@@ -29,15 +29,20 @@
     UIStackView *_stackView;
     SBIconView *_homeIconView;
     UIPanGestureRecognizer *_panGestureRecognizer;
+    UITapGestureRecognizer *_tapDismissGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
+    struct CGPoint _lastHoverLocation;
     _Bool _isTouchDown;
     _Bool _isIconSelected;
     id <SBCommandTabViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBCommandTabViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
++ (_Bool)canActivateWithRecentDisplayItems:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBCommandTabViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateForUserInterfaceStyle;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_handleTapDismissGesture:(id)arg1;
 - (void)_handleUIGesture:(id)arg1;
 - (void)_handleShiftCommandTab:(id)arg1;
 - (void)_handleCommandTab:(id)arg1;
@@ -51,6 +56,7 @@
 - (void)iconTouchBegan:(id)arg1;
 - (void)iconModelDidChange:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
+- (void)removeDisplayItem:(id)arg1;
 - (id)selectedApplicationDisplayItem;
 - (void)previous;
 - (void)next;

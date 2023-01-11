@@ -14,6 +14,7 @@
     NSString *_identifier;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;

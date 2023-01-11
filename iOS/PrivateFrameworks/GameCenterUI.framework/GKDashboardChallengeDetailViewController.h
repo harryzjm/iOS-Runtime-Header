@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GKAchievementIconView, GKChallenge, GKPlayerWithSpeechBalloonView, NSLayoutConstraint, UIButton, UILabel;
+@class GKAchievementIconView, GKChallenge, NSLayoutConstraint, UIButton, UILabel;
 
 @interface GKDashboardChallengeDetailViewController
 {
@@ -17,18 +17,17 @@
     UILabel *_fromLabel;
     UIButton *_playButton;
     UIButton *_declineButton;
-    GKPlayerWithSpeechBalloonView *_playerSpeechView;
     NSLayoutConstraint *_topConstraint;
     double _topMargin;
     NSLayoutConstraint *_iconHeightConstraint;
     NSLayoutConstraint *_speechToFromConstraint;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) NSLayoutConstraint *speechToFromConstraint; // @synthesize speechToFromConstraint=_speechToFromConstraint;
 @property(nonatomic) NSLayoutConstraint *iconHeightConstraint; // @synthesize iconHeightConstraint=_iconHeightConstraint;
 @property(nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
 @property(nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
-@property(nonatomic) GKPlayerWithSpeechBalloonView *playerSpeechView; // @synthesize playerSpeechView=_playerSpeechView;
 @property(nonatomic) UIButton *declineButton; // @synthesize declineButton=_declineButton;
 @property(nonatomic) UIButton *playButton; // @synthesize playButton=_playButton;
 @property(nonatomic) UILabel *fromLabel; // @synthesize fromLabel=_fromLabel;
@@ -37,7 +36,7 @@
 @property(nonatomic) GKAchievementIconView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) GKChallenge *challenge; // @synthesize challenge=_challenge;
 @property(nonatomic) _Bool shouldShowPlay; // @synthesize shouldShowPlay=_shouldShowPlay;
-@property(nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
 - (void)decline:(id)arg1;
 - (void)challengeOK:(id)arg1;
 - (void)play:(id)arg1;

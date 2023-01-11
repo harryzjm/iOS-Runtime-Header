@@ -12,7 +12,7 @@
 }
 
 - (id)initWithDivisions:(float)arg1 name:(id)arg2 dimensions:(int)arg3 channelCount:(long long)arg4 channelEncoding:(struct CGColor *)arg5 color1:(struct CGColor *)arg6 color2: /* Error: Ran out of types for this method. */;
-- (id)generateDataAtLevel:(long long)arg1;
+- (id)generateDataAtLevel:(long long)arg1 selector:(SEL)arg2;
 @property(nonatomic) struct CGColor *color2;
 @property(nonatomic) struct CGColor *color1;
 @property(nonatomic) float divisions;

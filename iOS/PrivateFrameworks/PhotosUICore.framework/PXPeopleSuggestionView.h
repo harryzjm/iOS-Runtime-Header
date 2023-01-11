@@ -22,6 +22,7 @@
     struct CGRect _faceRect;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 @property(retain, nonatomic) PXPersonImageRequest *imageRequest; // @synthesize imageRequest=_imageRequest;
@@ -33,7 +34,6 @@
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) struct CGRect faceRect; // @synthesize faceRect=_faceRect;
 @property(readonly, nonatomic) id <PXPerson> suggestion; // @synthesize suggestion=_suggestion;
-- (void).cxx_destruct;
 - (double)_faceScale;
 - (struct CGRect)_scaledFaceRect;
 - (void)_updateDateFieldWithSuggestion:(id)arg1;

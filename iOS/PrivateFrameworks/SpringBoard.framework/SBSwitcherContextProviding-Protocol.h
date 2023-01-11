@@ -6,9 +6,12 @@
 
 #import <SpringBoard/SBChainableModifierContext-Protocol.h>
 
-@class NSArray, NSString, SBAppLayout, SBAppSwitcherSettings, SBEntityRemovalAnimationSettings, SBHomeGestureSettings, SBMedusaSettings, SBSwitcherModifier;
+@class NSArray, NSString, SBAppLayout, SBAppSwitcherSettings, SBEntityRemovalAnimationSettings, SBHomeGestureSettings, SBMainTransitionSwitcherModifierEvent, SBMedusaSettings, SBSwitcherModifier;
+@protocol SBSwitcherLayoutElementProviding;
 
 @protocol SBSwitcherContextProviding <SBChainableModifierContext>
+- (struct CGPoint)scrollableQueryModifier:(SBSwitcherModifier *)arg1 convertScrollViewPointToContainerViewCoordinateSpace:(struct CGPoint)arg2;
+- (struct CGPoint)scrollableQueryModifier:(SBSwitcherModifier *)arg1 contentOffsetVelocityConsideringNextContentOffset:(struct CGPoint)arg2;
 - (struct CGPoint)gestureHandlingModifier:(SBSwitcherModifier *)arg1 averageVelocityOverDuration:(double)arg2;
 - (void)gestureHandlingModifierRequestsUpdate:(SBSwitcherModifier *)arg1;
 - (double)morphToPiPSourceAlpha;
@@ -17,13 +20,15 @@
 - (double)floatingDockWindowLevel;
 - (double)switcherWindowLevel;
 - (struct CGRect)floatingApplicationFrameInInterfaceOrientation:(long long)arg1 floatingConfiguration:(long long)arg2;
-- (_Bool)isAppLayoutHigherPriorityInTetheredSwitcher:(SBAppLayout *)arg1;
 - (_Bool)itemContainerForAppLayoutOverlapsFloatingDock:(SBAppLayout *)arg1;
+- (unsigned long long)homeScreenIconGridSizeClassForAppLayout:(SBAppLayout *)arg1;
 - (NSString *)homeScreenIconLocationForAppLayout:(SBAppLayout *)arg1;
 - (double)homeScreenIconCornerRadiusForAppLayout:(SBAppLayout *)arg1;
 - (double)homeScreenIconScaleForAppLayout:(SBAppLayout *)arg1;
 - (struct CGRect)homeScreenIconFrameForAppLayout:(SBAppLayout *)arg1;
+- (NSArray *)appLayoutsToEnsureExistForMainTransitionEvent:(SBMainTransitionSwitcherModifierEvent *)arg1;
 - (_Bool)isStudyLogEnabled;
+- (_Bool)isFloatingDockSupported;
 - (_Bool)isRTLEnabled;
 - (_Bool)isReduceMotionEnabled;
 - (_Bool)hasHomeButton;
@@ -34,22 +39,29 @@
 - (SBMedusaSettings *)medusaSettings;
 - (SBHomeGestureSettings *)homeGestureSettings;
 - (SBAppSwitcherSettings *)switcherSettings;
+- (id)currentVelocityValueForVisibleAppLayout:(SBAppLayout *)arg1 key:(NSString *)arg2;
+- (_Bool)isAppLayoutVisibleInSwitcherBounds:(SBAppLayout *)arg1;
 - (_Bool)isHomeScreenSidebarVisible;
 - (_Bool)isShowingSpotlightOrTodayView;
 - (_Bool)homeScreenHasOpenFolderInLocation:(NSString *)arg1;
+- (_Bool)homeScreenHasWidgetCenterOrLibraryOpen;
 - (_Bool)homeScreenHasOpenFolder;
 - (_Bool)isFloatingDockGesturePossible;
 - (_Bool)isFloatingDockFullyPresented;
 - (double)floatingDockViewTopMargin;
 - (double)floatingDockHeight;
 - (double)displayCornerRadius;
-- (double)distanceToTetheredLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreen;
-- (struct CGSize)tetheredScrollViewContentSize;
 - (struct CGPoint)scrollViewContentOffset;
+- (id <SBSwitcherLayoutElementProviding>)genericSwitcherAccessoryLayoutElement;
+- (id <SBSwitcherLayoutElementProviding>)switcherBackdropLayoutElement;
+- (id <SBSwitcherLayoutElementProviding>)switcherDimmingViewLayoutElement;
+- (_Bool)isAppLayoutMostRecentRepresentationOfDisplayItems:(SBAppLayout *)arg1;
+- (long long)homeScreenInterfaceOrientation;
 - (long long)switcherInterfaceOrientation;
 - (struct CGRect)switcherViewBounds;
 - (struct CGRect)containerViewBounds;
-- (unsigned long long)numberOfTetheredAppLayouts;
+- (unsigned long long)newAppLayoutsGenCount;
+- (unsigned long long)appLayoutsGenerationCount;
 - (NSArray *)appLayouts;
 @end
 

@@ -19,27 +19,30 @@
     double _level;
     long long _interfaceOrientation;
     _Bool _foreground;
+    long long _interruptionPolicy;
     BSSettings *_otherSettings;
     BSSettings *_transientLocalSettings;
     _Bool _prefersProcessTaskSuspensionWhileSceneForeground;
     long long _isOccluded;
     _Bool _occluded;
-    _Bool _occludedHasBeenCalculated;
     NSSet *_ignoreOcclusionReasons;
-    NSArray *_occlusions;
 }
 
 + (_Bool)_isMutable;
 + (id)settings;
-@property(readonly, copy, nonatomic) NSArray *occlusions; // @synthesize occlusions=_occlusions;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) long long interruptionPolicy; // @synthesize interruptionPolicy=_interruptionPolicy;
 @property(readonly, nonatomic, getter=isForeground) _Bool foreground; // @synthesize foreground=_foreground;
 @property(readonly, nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(readonly, nonatomic) double level; // @synthesize level=_level;
 @property(readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(readonly, copy, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
-- (void).cxx_destruct;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+- (_Bool)appendDescriptionToBuilder:(id)arg1 forFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
+- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
+- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
+- (_Bool)settings:(id)arg1 appendDescriptionToBuilder:(id)arg2 forFlag:(long long)arg3 object:(id)arg4 ofSetting:(unsigned long long)arg5;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 debug:(_Bool)arg2;
@@ -59,6 +62,7 @@
 - (id)ignoreOcclusionReasons;
 - (id)otherSettings;
 - (_Bool)isOccluded;
+@property(readonly, copy, nonatomic) NSArray *occlusions;
 @property(readonly, nonatomic, getter=isBackgrounded) _Bool backgrounded;
 - (struct CGRect)bounds;
 @property(readonly, copy, nonatomic) FBSDisplayIdentity *displayIdentity;

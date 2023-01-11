@@ -13,7 +13,7 @@
 + (long long)codeForType:(id)arg1;
 + (id)makeTypeForCode:(long long)arg1;
 + (id)iconForType:(id)arg1;
-+ (id)displayNameForType:(id)arg1;
++ (id)displayNameForType:(id)arg1 inHealthStore:(id)arg2;
 + (id)categoryStringForIdentifier:(long long)arg1;
 + (long long)categoryIdentifierForString:(id)arg1;
 + (id)categoryIdentifiersForType:(id)arg1;

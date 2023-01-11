@@ -10,9 +10,10 @@
 @protocol OS_dispatch_queue;
 
 @interface ICAttachmentInlineDrawingModel (UI)
++ (_Bool)handwritingRecognitionSupported;
 + (void)generatePreviewsForAttachment:(id)arg1 fromDrawing:(id)arg2;
-+ (struct UIImage *)generateImageForAttachment:(id)arg1 fromDrawing:(id)arg2 fullResolution:(_Bool)arg3 appearanceInfo:(id)arg4;
-+ (struct UIImage *)previewImageFromDrawing:(id)arg1 fullImage:(struct CGImage *)arg2 scale:(double)arg3;
++ (id)generateImageForAttachment:(id)arg1 fromDrawing:(id)arg2 fullResolution:(_Bool)arg3 appearanceInfo:(id)arg4;
++ (id)previewImageFromDrawing:(id)arg1 fullImage:(struct CGImage *)arg2 scale:(double)arg3;
 + (unsigned short)drawingPreviewVersion;
 - (void)drawPreviewInRect:(struct CGRect)arg1;
 - (void)titleQuery:(id)arg1 didUpdateWithItem:(id)arg2;
@@ -20,6 +21,7 @@
 - (void)setTitleQuery:(id)arg1;
 - (id)titleQuery;
 @property(nonatomic, getter=isTitleQueryEnabled) _Bool titleQueryEnabled;
+- (void)setHandwritingRecognitionDrawingQueue:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *handwritingRecognitionDrawingQueue;
 - (void)setHandwritingRecognitionDrawing:(id)arg1;
 @property(readonly, nonatomic) PKDrawing *handwritingRecognitionDrawing;

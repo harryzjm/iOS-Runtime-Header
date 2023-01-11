@@ -6,11 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
-@class NSString;
-
-@interface RBProcessCPUMinimumLimits : NSObject <BSDescriptionProviding>
+@interface RBProcessCPUMinimumLimits : NSObject
 {
     unsigned long long _percentage;
     unsigned long long _duration;
@@ -18,19 +14,11 @@
 
 @property(readonly, nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic) unsigned long long percentage; // @synthesize percentage=_percentage;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
+- (id)description;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)unionLimit:(id)arg1;
 - (id)initWithPercentage:(unsigned long long)arg1 duration:(unsigned long long)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) Class superclass;
 
 @end
 

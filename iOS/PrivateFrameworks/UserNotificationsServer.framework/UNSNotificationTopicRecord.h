@@ -18,6 +18,14 @@
     _Bool _supportsCarPlay;
     _Bool _supportsSpoken;
     _Bool _supportsCriticalAlerts;
+    _Bool _enablesAlerts;
+    _Bool _enablesBadges;
+    _Bool _enablesSounds;
+    _Bool _enablesLockScreen;
+    _Bool _enablesNotificationCenter;
+    _Bool _enablesCarPlay;
+    _Bool _enablesSpoken;
+    _Bool _enablesCriticalAlerts;
     _Bool _modalAlertStyle;
     NSString *_identifier;
     NSString *_displayName;
@@ -26,7 +34,16 @@
     NSString *_sortIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool modalAlertStyle; // @synthesize modalAlertStyle=_modalAlertStyle;
+@property(nonatomic) _Bool enablesCriticalAlerts; // @synthesize enablesCriticalAlerts=_enablesCriticalAlerts;
+@property(nonatomic) _Bool enablesSpoken; // @synthesize enablesSpoken=_enablesSpoken;
+@property(nonatomic) _Bool enablesCarPlay; // @synthesize enablesCarPlay=_enablesCarPlay;
+@property(nonatomic) _Bool enablesNotificationCenter; // @synthesize enablesNotificationCenter=_enablesNotificationCenter;
+@property(nonatomic) _Bool enablesLockScreen; // @synthesize enablesLockScreen=_enablesLockScreen;
+@property(nonatomic) _Bool enablesSounds; // @synthesize enablesSounds=_enablesSounds;
+@property(nonatomic) _Bool enablesBadges; // @synthesize enablesBadges=_enablesBadges;
+@property(nonatomic) _Bool enablesAlerts; // @synthesize enablesAlerts=_enablesAlerts;
 @property(nonatomic) _Bool supportsCriticalAlerts; // @synthesize supportsCriticalAlerts=_supportsCriticalAlerts;
 @property(nonatomic) _Bool supportsSpoken; // @synthesize supportsSpoken=_supportsSpoken;
 @property(nonatomic) _Bool supportsCarPlay; // @synthesize supportsCarPlay=_supportsCarPlay;
@@ -40,7 +57,6 @@
 @property(copy, nonatomic) NSString *displayNameLocalizationKey; // @synthesize displayNameLocalizationKey=_displayNameLocalizationKey;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

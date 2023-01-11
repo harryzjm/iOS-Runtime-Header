@@ -14,5 +14,6 @@
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
+- (void)conformsToCSAppearanceProviding;
 @end
 

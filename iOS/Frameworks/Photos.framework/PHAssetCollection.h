@@ -53,6 +53,8 @@
 }
 
 + (id)descriptionOfTitleCategory:(long long)arg1;
++ (id)descriptionForSubtype:(long long)arg1;
++ (id)descriptionForType:(long long)arg1;
 + (unsigned long long)titleFontNameHashFromHash:(unsigned long long)arg1 andHash:(unsigned long long)arg2;
 + (unsigned long long)titleFontNameHashFromString:(id)arg1;
 + (unsigned long long)titleFontNameHashFromDate:(id)arg1;
@@ -63,6 +65,7 @@
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2 identifier:(id)arg3 photoLibrary:(id)arg4;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 subtype:(long long)arg2;
++ (id)transientAssetCollectionWithFetchOptions:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4 identifier:(id)arg5;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2;
@@ -76,7 +79,6 @@
 + (id)fetchSuggestedContributionsForAssetsMetadata:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForFileURLs:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsFetchResult:(id)arg1 options:(id)arg2;
-+ (id)fetchSuggestedContributionsForCMMPhotoLibrary:(id)arg1 options:(id)arg2;
 + (id)fetchUserLibraryAlbumWithOptions:(id)arg1;
 + (id)fetchAssetCollectionsWithObjectIDs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithALAssetGroupURLs:(id)arg1 options:(id)arg2;
@@ -99,6 +101,7 @@
 + (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 photoLibrary:(id)arg2 includeTrash:(_Bool)arg3;
 + (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 photoLibrary:(id)arg2;
 + (id)fetchAssetCollectionsForReferences:(id)arg1 photoLibrary:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
 @property(readonly, nonatomic) _Bool canContributeToCloudSharedAlbum; // @synthesize canContributeToCloudSharedAlbum=_canContributeToCloudSharedAlbum;
 @property(readonly, nonatomic) _Bool hasUnseenContentBoolValue; // @synthesize hasUnseenContentBoolValue=_hasUnseenContentBoolValue;
@@ -134,14 +137,15 @@
 @property(readonly, nonatomic) PHQuery *query; // @synthesize query=_query;
 @property(readonly, nonatomic) long long assetCollectionSubtype; // @synthesize assetCollectionSubtype=_assetCollectionSubtype;
 @property(readonly, nonatomic) long long assetCollectionType; // @synthesize assetCollectionType=_assetCollectionType;
-- (void).cxx_destruct;
 - (id)description;
 @property(readonly, nonatomic) unsigned long long titleFontNameHash;
 @property(readonly, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
+- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 orQuery:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleFontName:(id)arg6 identifier:(id)arg7 albumKind:(int)arg8 subtype:(long long)arg9 photoLibrary:(id)arg10;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleFontName:(id)arg5 identifier:(id)arg6 albumKind:(int)arg7 subtype:(long long)arg8 photoLibrary:(id)arg9;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5 subtype:(long long)arg6;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4;
+- (_Bool)startsAtEnd;
 - (_Bool)hasLocationInfo;
 @property(readonly, nonatomic) _Bool keyAssetsAtEnd;
 @property(readonly, nonatomic) _Bool canContainCustomKeyAssets;

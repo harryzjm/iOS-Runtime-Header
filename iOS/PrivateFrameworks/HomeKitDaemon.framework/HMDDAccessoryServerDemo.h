@@ -17,13 +17,13 @@
     HMDDAccessoryServerBrowserDemo *_browser;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool _hasPairings; // @synthesize _hasPairings=__hasPairings;
 @property(nonatomic) _Bool _paired; // @synthesize _paired=__paired;
 @property(nonatomic) __weak HMDDAccessoryServerBrowserDemo *browser; // @synthesize browser=_browser;
 @property(retain, nonatomic) NSDictionary *accessoryInfo; // @synthesize accessoryInfo=_accessoryInfo;
 - (void)setCategory:(id)arg1;
 - (id)category;
-- (void).cxx_destruct;
 - (_Bool)_delegateRespondsToSelector:(SEL)arg1;
 - (void)handleUpdatesForCharacteristics:(id)arg1;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;

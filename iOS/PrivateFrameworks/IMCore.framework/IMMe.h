@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, IMHandle, IMPerson, NSArray, NSMutableArray, NSString;
+@class CNContact, IMHandle, NSArray, NSMutableArray, NSString;
 
 @interface IMMe : NSObject
 {
-    IMPerson *_person;
     CNContact *_cnContact;
-    NSString *_abNickname;
-    NSString *_abFirstName;
-    NSString *_abFullName;
-    NSString *_abLastName;
-    NSArray *_abEmails;
-    NSMutableArray *_abIMHandles;
+    NSString *_cnNickname;
+    NSString *_cnFirstName;
+    NSString *_cnFullName;
+    NSString *_cnLastName;
+    NSArray *_cnEmails;
+    NSMutableArray *_cnIMHandles;
     NSMutableArray *_loginIMHandles;
 }
 
@@ -26,8 +25,8 @@
 + (id)lastNameFromFallbackUserName;
 + (id)firstNameFromFallbackUserName;
 + (id)fallbackUserName;
-@property(readonly, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
 - (id)description;
 - (void)myPictureChanged;
 @property(readonly, nonatomic) NSArray *imHandles;
@@ -38,7 +37,6 @@
 @property(readonly, nonatomic) NSArray *emails;
 @property(readonly, nonatomic) NSString *firstName;
 @property(readonly, nonatomic) NSString *nickname;
-- (void)setFirstName:(id)arg1 lastName:(id)arg2;
 - (_Bool)removeIMHandle:(id)arg1;
 - (_Bool)isIMHandleLoginIMHandle:(id)arg1;
 - (_Bool)addIMHandle:(id)arg1;
@@ -46,8 +44,6 @@
 - (_Bool)removeLoginIMHandle:(id)arg1;
 - (_Bool)addLoginIMHandle:(id)arg1;
 - (void)setCNContact:(id)arg1;
-@property(readonly, nonatomic) IMPerson *person;
-- (void)setIMPerson:(id)arg1;
 - (void)resetABPerson;
 - (void)rebuildIMHandles;
 - (id)_imHandlesWithIDs:(id)arg1 onAccount:(id)arg2;

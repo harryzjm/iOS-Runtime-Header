@@ -16,10 +16,10 @@
     NSMutableArray *_pendingInvocations;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool valid; // @synthesize valid=_valid;
 @property(retain, nonatomic) NSMutableArray *pendingInvocations; // @synthesize pendingInvocations=_pendingInvocations;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (_Bool)invocationsPending;
 - (unsigned long long)countOfPendingInvocations;
 - (void)removeAllPendingInvocations;
@@ -29,6 +29,7 @@
 - (void)enqueueBlock:(CDUnknownBlockType)arg1 description:(id)arg2;
 - (void)shutdown;
 - (id)initWithQueue:(id)arg1;
+- (id)init;
 
 @end
 

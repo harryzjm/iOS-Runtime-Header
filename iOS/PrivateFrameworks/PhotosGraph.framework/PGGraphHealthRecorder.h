@@ -14,13 +14,11 @@
 {
 }
 
-- (void)recordNumberOfHighlightEnrichmentTimeouts:(unsigned long long)arg1;
-- (void)recordNumberOfHighlightEnrichmentsCancelled:(unsigned long long)arg1;
+- (void)recordHighlightEnrichmentsCancellation;
 - (void)recordTimeBetweenHighlightEnrichmentsWithLastEnrichmentDate:(id)arg1 currentEnrichmentDate:(id)arg2;
-- (void)recordNumberOfGraphRebuildsCancelled:(unsigned long long)arg1;
-- (void)recordNumberOfUnscheduledRebuilds:(unsigned long long)arg1;
-- (void)recordNumberOfGraphRebuildTimeouts:(unsigned long long)arg1;
-- (void)recordNumberOfGraphRebuildFailures:(unsigned long long)arg1;
+- (void)recordGraphRebuildsCancellation;
+- (void)recordGraphRebuildTimeout;
+- (void)recordGraphRebuildFailure;
 - (void)recordTimeBetweenGraphRebuildsWithLastRebuildDate:(id)arg1 currentRebuildDate:(id)arg2;
 
 // Remaining properties

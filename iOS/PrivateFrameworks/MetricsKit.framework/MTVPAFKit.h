@@ -10,7 +10,6 @@
 
 - (id)trackerWithPlayList:(id)arg1 eventData:(id)arg2;
 - (id)trackerWithPlayList:(id)arg1;
-- (id)initWithTopic:(id)arg1;
 
 @end
 

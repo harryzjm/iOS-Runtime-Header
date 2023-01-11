@@ -9,7 +9,8 @@
 @class UISwitch;
 
 @protocol WFWorkflowSettingsViewDataSourceDelegate <WFWorkflowWizardNameCellDelegate>
-- (void)toggledWidgetSwitch:(UISwitch *)arg1;
+- (void)toggledBedSheetSwitch:(UISwitch *)arg1;
+- (void)toggledWatchSwitch:(UISwitch *)arg1;
 - (void)toggledActionExtensionSwitch:(UISwitch *)arg1;
 @end
 

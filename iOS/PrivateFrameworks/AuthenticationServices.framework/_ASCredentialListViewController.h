@@ -4,19 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <AuthenticationServices/_ASCredentialProviderExtensionHostContextDelegate-Protocol.h>
+
+@class NSString, _ASIncomingCallObserver;
 @protocol _ASCredentialListViewControllerDelegate;
 
-@interface _ASCredentialListViewController
+@interface _ASCredentialListViewController <_ASCredentialProviderExtensionHostContextDelegate>
 {
+    _ASIncomingCallObserver *_callObserver;
     id <_ASCredentialListViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <_ASCredentialListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_ASCredentialListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)prepareToCompleteRequestWithHostContext:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_finishWithCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_requestDidFailWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithExtension:(id)arg1 serviceIdentifiers:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

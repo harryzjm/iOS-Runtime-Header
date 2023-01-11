@@ -8,7 +8,8 @@
 
 #import <UIKitCore/_UIVisualEffectViewSubviewMonitoring-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, _UIVisualEffectBackdropView, _UIVisualEffectDescriptor, _UIVisualEffectSubview, _UIVisualEffectViewBackdropCaptureGroup;
+@class NSArray, NSMutableArray, NSString, UIView, _UIVisualEffectBackdropView, _UIVisualEffectDescriptor, _UIVisualEffectViewBackdropCaptureGroup;
+@protocol _UIVisualEffectViewParticipating;
 
 __attribute__((visibility("hidden")))
 @interface _UIVisualEffectHost : NSObject <_UIVisualEffectViewSubviewMonitoring>
@@ -16,21 +17,21 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_views;
     _Bool _autosetSubviewLabelTintColor;
     _Bool _contentViewRequired;
-    _UIVisualEffectSubview *_contentView;
+    UIView<_UIVisualEffectViewParticipating> *_contentView;
     _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
     _UIVisualEffectBackdropView *_captureView;
     _UIVisualEffectDescriptor *_currentEffectDescriptor;
     _UIVisualEffectDescriptor *_transitionEffectDescriptor;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _UIVisualEffectDescriptor *transitionEffectDescriptor; // @synthesize transitionEffectDescriptor=_transitionEffectDescriptor;
 @property(retain, nonatomic) _UIVisualEffectDescriptor *currentEffectDescriptor; // @synthesize currentEffectDescriptor=_currentEffectDescriptor;
 @property(nonatomic) __weak _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
 @property(retain, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *primaryCaptureGroup; // @synthesize primaryCaptureGroup=_primaryCaptureGroup;
 @property(readonly, nonatomic) NSArray *views; // @synthesize views=_views;
 @property(nonatomic) _Bool contentViewRequired; // @synthesize contentViewRequired=_contentViewRequired;
-@property(readonly, nonatomic) _UIVisualEffectSubview *contentView; // @synthesize contentView=_contentView;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) UIView<_UIVisualEffectViewParticipating> *contentView; // @synthesize contentView=_contentView;
 @property(readonly, copy) NSString *description;
 - (void)_view:(id)arg1 willLoseDescendent:(id)arg2;
 - (void)_view:(id)arg1 willGainDescendent:(id)arg2;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareToTransitionToEffectDescriptor:(id)arg1;
 - (void)_updateAdjustTintColors;
 - (void)_updateView:(id)arg1 shouldDrawWithTintColor:(_Bool)arg2;
+- (void)monitorSubviewsOf:(id)arg1;
 - (id)initWithContentView:(id)arg1;
 
 // Remaining properties

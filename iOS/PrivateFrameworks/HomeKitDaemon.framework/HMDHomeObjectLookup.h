@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDObjectLookupScanProtocol-Protocol.h>
+@class HMDHome;
 
-@class HMDHome, NSString;
-
-@interface HMDHomeObjectLookup <HMDObjectLookupScanProtocol>
+@interface HMDHomeObjectLookup
 {
     HMDHome *_home;
 }
 
 + (id)logCategory;
-@property(readonly, nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 - (void).cxx_destruct;
-- (void)lookupAndApplyObjectChange:(id)arg1 previous:(id)arg2 result:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+@property __weak HMDHome *home; // @synthesize home=_home;
+- (id)logIdentifier;
 - (void)_scanUsers;
 - (void)_scanMediaSystems;
 - (void)_scanResidentDevices;
@@ -25,18 +23,10 @@
 - (void)_scanActionSets;
 - (void)_scanZones;
 - (void)_scanRooms;
-- (void)_scanSetting:(id)arg1;
-- (void)_scanSettingGroup:(id)arg1;
+- (void)_scanSettings:(id)arg1;
 - (void)_scanAccessoriesAndServices;
 - (void)scanObjects;
-- (id)logIdentifier;
 - (id)initWithHome:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

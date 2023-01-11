@@ -11,7 +11,6 @@
 }
 
 @property(readonly, nonatomic) struct CGSize size;
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) NSURL *URL; // @dynamic URL;

@@ -18,11 +18,13 @@
 
 + (id)shortDescription;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *additionalMACAddresses; // @synthesize additionalMACAddresses=_additionalMACAddresses;
 @property(readonly, nonatomic) NSData *primaryMACAddress; // @synthesize primaryMACAddress=_primaryMACAddress;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithPrimaryIdentifier:(id)arg1 wifiIdentifiers:(id)arg2;
 
 @end

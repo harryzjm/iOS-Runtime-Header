@@ -7,12 +7,13 @@
 #import <MessageUI/UIScrollViewDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionReusableView, UICollectionView, UICollectionViewCell, UICollectionViewFocusUpdateContext, UICollectionViewLayout, UICollectionViewTransitionLayout, UIContextMenuConfiguration, UIFocusAnimationCoordinator, UITargetedPreview;
-@protocol UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
+@protocol UIContextMenuInteractionAnimating, UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
 
 @protocol UICollectionViewDelegate <UIScrollViewDelegate>
 
 @optional
-- (void)collectionView:(UICollectionView *)arg1 willCommitMenuWithAnimator:(id <UIContextMenuInteractionCommitAnimating>)arg2;
+- (void)collectionView:(UICollectionView *)arg1 willEndContextMenuInteractionWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
+- (void)collectionView:(UICollectionView *)arg1 willDisplayContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
 - (void)collectionView:(UICollectionView *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionCommitAnimating>)arg3;
 - (UITargetedPreview *)collectionView:(UICollectionView *)arg1 previewForDismissingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (UITargetedPreview *)collectionView:(UICollectionView *)arg1 previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
@@ -21,6 +22,7 @@
 - (void)collectionView:(UICollectionView *)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg2;
 - (_Bool)collectionView:(UICollectionView *)arg1 shouldBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg2;
 - (_Bool)collectionView:(UICollectionView *)arg1 shouldSpringLoadItemAtIndexPath:(NSIndexPath *)arg2 withContext:(id <UISpringLoadedInteractionContext>)arg3;
+- (_Bool)collectionView:(UICollectionView *)arg1 canEditItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGPoint)collectionView:(UICollectionView *)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;
 - (NSIndexPath *)collectionView:(UICollectionView *)arg1 targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)arg2 toProposedIndexPath:(NSIndexPath *)arg3;
 - (NSIndexPath *)indexPathForPreferredFocusedViewInCollectionView:(UICollectionView *)arg1;

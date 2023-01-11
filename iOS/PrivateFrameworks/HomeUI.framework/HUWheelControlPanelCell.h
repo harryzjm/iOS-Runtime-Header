@@ -6,7 +6,7 @@
 
 #import <HomeUI/HUWheelControlViewDelegate-Protocol.h>
 
-@class HUWheelControlView, NSArray, NSString, UILabel, UIView;
+@class HUWheelControlPopUpButton, HUWheelControlView, NSArray, NSFormatter, NSNumber, NSString, UILabel, UIView;
 
 @interface HUWheelControlPanelCell <HUWheelControlViewDelegate>
 {
@@ -17,9 +17,22 @@
     UIView *_separatorView;
     NSArray *_staticConstraints;
     NSArray *_dynamicConstraints;
+    HUWheelControlPopUpButton *_wheelButton;
+    NSNumber *_minValue;
+    NSNumber *_maxValue;
+    NSNumber *_stepValue;
+    NSFormatter *_valueFormatter;
+    NSArray *_wheelValues;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *wheelValues; // @synthesize wheelValues=_wheelValues;
+@property(retain, nonatomic) NSFormatter *valueFormatter; // @synthesize valueFormatter=_valueFormatter;
+@property(retain, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
+@property(retain, nonatomic) NSNumber *maxValue; // @synthesize maxValue=_maxValue;
+@property(retain, nonatomic) NSNumber *minValue; // @synthesize minValue=_minValue;
+@property(retain, nonatomic) HUWheelControlPopUpButton *wheelButton; // @synthesize wheelButton=_wheelButton;
 @property(retain, nonatomic) NSArray *dynamicConstraints; // @synthesize dynamicConstraints=_dynamicConstraints;
 @property(retain, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
 @property(readonly, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
@@ -27,8 +40,13 @@
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) _Bool wheelViewVisible; // @synthesize wheelViewVisible=_wheelViewVisible;
 @property(retain, nonatomic) HUWheelControlView *wheelView; // @synthesize wheelView=_wheelView;
-- (void).cxx_destruct;
+- (id)_defaultStepValue;
+- (id)_defaultMinValue;
+- (id)_defaultMaxValue;
+- (id)_defaultValueFormatter;
+- (void)_generateWheelValuesWithMinValue:(double)arg1 maxValue:(double)arg2 stepValue:(double)arg3;
 - (void)wheelControlView:(id)arg1 didUpdateValue:(id)arg2;
+- (void)updateUIWithAnimation:(_Bool)arg1;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (void)updateConstraints;

@@ -23,6 +23,7 @@
     NSString *_bundleID;
     NSString *_device_type;
     NSDictionary *_searchThroughCEPData;
+    NSDictionary *_roundTripFeatures;
     MISSING_TYPE *_indexScore;
 }
 
@@ -30,6 +31,8 @@
 + (id)contextWithFeatureOrder:(id)arg1 withInflation:(unsigned long long)arg2 withInflatedIndexToSize:(id)arg3;
 + (struct __CFSet *)getL2FeatureSet;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *roundTripFeatures; // @synthesize roundTripFeatures=_roundTripFeatures;
 @property(nonatomic) MISSING_TYPE *indexScore; // @synthesize indexScore=_indexScore;
 @property(retain, nonatomic) NSDictionary *searchThroughCEPData; // @synthesize searchThroughCEPData=_searchThroughCEPData;
 @property(retain, nonatomic) NSString *device_type; // @synthesize device_type=_device_type;
@@ -37,17 +40,17 @@
 @property(nonatomic) float withinBundleScore; // @synthesize withinBundleScore=_withinBundleScore;
 @property(nonatomic) float experimentalScore; // @synthesize experimentalScore=_experimentalScore;
 @property(nonatomic) float originalL2Score; // @synthesize originalL2Score=_originalL2Score;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)cleanup;
-- (_Bool)serializeToJSON:(void *)arg1 valuesOnly:(_Bool)arg2 ignoreDefaultValues:(_Bool)arg3;
+- (_Bool)serializeToJSON:(void *)arg1 options:(long long)arg2;
+- (void)restoreFromJazzkonHacks:(float *)arg1;
 - (id)dictionaryRepresentationWithoutDefaultValues;
 - (id)_dictionaryRepresentationWithoutDefaultValues:(_Bool)arg1;
 - (id)dictionaryRepresentation;
 - (void)setScores:(float *)arg1 forFeatures:(unsigned short *)arg2 count:(unsigned long long)arg3;
-- (float *)getAllScores:(float [1235])arg1;
+- (float *)getAllScores:(float [1542])arg1;
 - (float)scoreForFeature:(unsigned short)arg1;
 @property(readonly, nonatomic) _Bool receiverIsVip;
 @property(readonly, nonatomic) _Bool senderIsVip;

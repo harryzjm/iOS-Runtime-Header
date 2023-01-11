@@ -20,8 +20,6 @@
 @property(readonly, nonatomic) struct __CFArray *images;
 @property(readonly, nonatomic) struct CGImage *image;
 - (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 withContents:(id)arg3 contentsFromCatalog:(id)arg4 fromTheme:(unsigned long long)arg5 withSourceThemeRef:(unsigned long long)arg6;
-- (_Bool)_dimension1ExistsInKeyFormatForThemeRef:(unsigned long long)arg1;
-- (id)_renditionForKey:(id)arg1 inThemeRef:(unsigned long long)arg2;
 - (void)dealloc;
 
 @end

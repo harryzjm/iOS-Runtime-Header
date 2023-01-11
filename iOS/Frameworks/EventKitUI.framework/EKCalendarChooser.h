@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKUIAccountRefresherDelegate-Protocol.h>
 
-@class EKCalendar, EKCalendarEditor, EKEventStore, EKSource, EKUIAccountRefresher, NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, UIBarButtonItem, UIRefreshControl, UITableView, _UIAccessDeniedView;
+@class EKCalendar, EKCalendarEditor, EKEvent, EKEventStore, EKSource, EKUIAccountRefresher, NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, UIBarButtonItem, UIRefreshControl, UITableView, UITableViewCell, _UIAccessDeniedView;
 @protocol EKCalendarChooserDelegate, EKStyleProvider;
 
 @interface EKCalendarChooser : UIViewController <EKUIAccountRefresherDelegate>
@@ -18,10 +18,15 @@
     NSArray *_delegateSources;
     _Bool _showDelegateCalendarsCell;
     NSSet *_currentKnownCalendarIds;
+    long long _displayStyle;
+    UITableViewCell *_showDeclinedEventsCell;
+    UIBarButtonItem *_addCalendarButton;
+    _Bool _updatingHeaderHeight;
     _Bool _canShowIdentityChooser;
     _Bool _disableCalendarEditing;
     _Bool _showsDeclinedEventsSetting;
     _Bool _showAccountStatus;
+    _Bool _onlyShowUnmanagedAccounts;
     _Bool _showDetailAccessories;
     _Bool _allowsEdit;
     CDStruct_424d6339 _flags;
@@ -32,6 +37,7 @@
     id <EKCalendarChooserDelegate> _delegate;
     unsigned long long _entityType;
     long long _lastAuthorizationStatus;
+    EKEvent *_event;
     UITableView *_tableView;
     UIBarButtonItem *_showAllButton;
     NSMutableArray *_groups;
@@ -51,8 +57,10 @@
 + (id)delegatesString;
 + (id)hideAllString;
 + (id)showAllString;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsEdit; // @synthesize allowsEdit=_allowsEdit;
 @property(nonatomic) _Bool showDetailAccessories; // @synthesize showDetailAccessories=_showDetailAccessories;
+@property(nonatomic) _Bool onlyShowUnmanagedAccounts; // @synthesize onlyShowUnmanagedAccounts=_onlyShowUnmanagedAccounts;
 @property(nonatomic) _Bool showAccountStatus; // @synthesize showAccountStatus=_showAccountStatus;
 @property(nonatomic) int explanatoryTextMode; // @synthesize explanatoryTextMode=_explanatoryTextMode;
 @property(retain, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
@@ -72,16 +80,16 @@
 @property(retain, nonatomic) NSMutableArray *groups; // @synthesize groups=_groups;
 @property(retain, nonatomic) UIBarButtonItem *showAllButton; // @synthesize showAllButton=_showAllButton;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property(retain, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property(nonatomic) long long lastAuthorizationStatus; // @synthesize lastAuthorizationStatus=_lastAuthorizationStatus;
 @property(nonatomic) unsigned long long entityType; // @synthesize entityType=_entityType;
 @property(nonatomic) __weak id <EKCalendarChooserDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSMutableSet *selectedCalendarSet; // @synthesize selectedCalendarSet=_selectedCalendars;
 @property(nonatomic) long long selectionStyle; // @synthesize selectionStyle=_style;
-- (void).cxx_destruct;
 - (void)_insertStoreIntoByGroupArray:(id)arg1;
 - (void)calendarEditor:(id)arg1 didCompleteWithAction:(int)arg2;
 - (void)_sendAnalyticsEvent:(unsigned long long)arg1 forGroup:(id)arg2;
-- (void)verifyAccountForGroup:(id)arg1;
+- (void)presentAccountErrorAlertForGroup:(id)arg1;
 - (double)marginForTableView:(id)arg1;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -91,13 +99,16 @@
 - (void)_selectAllCalendarsAndStores:(_Bool)arg1;
 - (void)_selectCalendar:(id)arg1 selected:(_Bool)arg2;
 - (void)_selectGroup:(id)arg1 selected:(_Bool)arg2;
+- (void)groupHeaderChangedHeight:(id)arg1;
 - (void)groupShowAllTapped:(id)arg1;
 - (int)_numSelectedGroups;
-- (void)_delegateSelectionDidChange;
+- (void)_delegateSelectionDidChange:(_Bool)arg1;
+- (void)identityChanged:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)_cellIdentifierWithSubtitle:(_Bool)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (void)declinedEventsSwitchChanged:(id)arg1;
+- (void)declinedEventsChanged;
+- (void)updateDeclinedEventsCell:(_Bool)arg1;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
@@ -114,11 +125,16 @@
 - (_Bool)_isDeclinedEventsSwitchSection:(long long)arg1;
 - (_Bool)_shouldShowGroupNameInSection:(long long)arg1;
 - (id)_stringForSharedCalendar:(id)arg1;
-- (_Bool)_tableShouldDisplayVerifyAccountCellForGroup:(id)arg1;
+- (_Bool)_tableShouldDisplayAccountErrorActionCellForGroup:(id)arg1;
 - (long long)_tableSectionRow:(long long)arg1 toCalendarIndexInGroup:(id)arg2;
 - (long long)_tableSectionRowToDelegateSourceIndex:(long long)arg1;
 - (long long)_calendarRowOffsetForGroup:(id)arg1;
-- (long long)_verifyAccountIndexForGroup:(id)arg1;
+- (long long)_accountErrorActionIndexForGroup:(id)arg1;
+- (void)_presentEditor:(id)arg1 withIndexPath:(id)arg2 barButtonItem:(id)arg3 permittedArrowDirections:(unsigned long long)arg4 animated:(_Bool)arg5;
+- (void)redisplayEditor:(id)arg1;
+- (id)displayedEditor;
+- (void)centerOnCalendar:(id)arg1;
+- (id)centeredCalendar;
 - (id)_indexPathForCalendar:(id)arg1;
 @property(copy, nonatomic) NSSet *selectedCalendars;
 @property(retain, nonatomic) EKCalendar *selectedCalendar;
@@ -161,6 +177,7 @@
 @property(nonatomic) _Bool allowsRotation;
 - (void)setShowAll:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
+- (void)viewDidLayoutSubviews;
 - (id)_tableHeaderView;
 - (id)_viewModeTitle;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -170,15 +187,16 @@
 - (void)_updateViewControllerTitle;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)addCalendarButtonPressed;
+- (void)addCalendarButtonPressed:(id)arg1;
 - (void)setAllSelected:(_Bool)arg1;
 - (void)showAllButtonPressed;
 - (_Bool)hasAccountThatCanCreateCalendars;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)loadView;
+- (void)dealloc;
 - (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 eventStore:(id)arg3;
 - (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 entityType:(unsigned long long)arg3 eventStore:(id)arg4;
-- (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 entityType:(unsigned long long)arg3 eventStore:(id)arg4 limitedToSource:(id)arg5 showIdentityChooser:(_Bool)arg6 showAccountStatus:(_Bool)arg7;
+- (id)initWithSelectionStyle:(long long)arg1 displayStyle:(long long)arg2 entityType:(unsigned long long)arg3 forEvent:(id)arg4 eventStore:(id)arg5 limitedToSource:(id)arg6 showIdentityChooser:(_Bool)arg7 showAccountStatus:(_Bool)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

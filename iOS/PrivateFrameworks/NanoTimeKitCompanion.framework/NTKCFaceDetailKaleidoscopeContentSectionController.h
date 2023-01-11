@@ -13,6 +13,7 @@
 {
     NTKCompanionKaleidoscopeEditor *_editor;
     UIImagePickerController *_presentedPicker;
+    unsigned long long _currentAsset;
     _Bool _externalAssetSet;
     id <NTKCFaceDetailEditOptionSectionDelegate> delegate;
     UIViewController *_parentViewController;
@@ -20,10 +21,10 @@
 
 + (_Bool)supressesSectionForExternalAssets:(id)arg1;
 + (_Bool)hasSectionForFace:(id)arg1 forEditMode:(long long)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 - (void)setDelegate:(id)arg1;
 - (id)delegate;
-- (void).cxx_destruct;
 - (void)_finalizeEditor;
 - (void)_setRawPhoto:(id)arg1;
 - (void)_setPhotoFromAsset:(id)arg1;

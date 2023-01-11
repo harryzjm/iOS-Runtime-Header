@@ -14,7 +14,9 @@
 + (id)dc_queryStringWithQueryDictionary:(id)arg1 addingPercentEscapes:(_Bool)arg2;
 + (id)dc_queryStringWithQueryDictionary:(id)arg1;
 + (id)dc_dictionaryFromQueryString:(id)arg1;
++ (id)dc_queryItemsFromQueryDictionary:(id)arg1;
 + (id)dc_queryItemsFromQueryString:(id)arg1;
++ (id)wf_savedShortcutStatesURL;
 + (id)wf_shortcutsDirectoryURL;
 + (id)rootVolumeURL;
 + (id)realLibraryDirectoryURL;

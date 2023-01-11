@@ -19,8 +19,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)cacheImage;
-- (void)submitWorkBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 

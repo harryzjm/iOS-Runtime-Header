@@ -10,6 +10,7 @@
 
 @interface EMReceivingAccount <EMReceivingAccountBuilder>
 {
+    _Bool _primaryiCloudAccount;
     _Bool _sourceIsManaged;
     _Bool _shouldArchiveByDefault;
     NSString *_name;
@@ -21,15 +22,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *statisticsKind; // @synthesize statisticsKind=_statisticsKind;
 @property(nonatomic) _Bool shouldArchiveByDefault; // @synthesize shouldArchiveByDefault=_shouldArchiveByDefault;
 @property(nonatomic) _Bool sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property(retain, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
 @property(retain, nonatomic) EMDeliveryAccount *deliveryAccount; // @synthesize deliveryAccount=_deliveryAccount;
+@property(nonatomic, getter=isPrimaryiCloudAccount) _Bool primaryiCloudAccount; // @synthesize primaryiCloudAccount=_primaryiCloudAccount;
 @property(copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 - (id)name;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_commonInitName:(id)arg1 hostname:(id)arg2 builder:(CDUnknownBlockType)arg3;

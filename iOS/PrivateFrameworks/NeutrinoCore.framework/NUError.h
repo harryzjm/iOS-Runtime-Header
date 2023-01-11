@@ -14,6 +14,7 @@
 
 + (id)errorWithCode:(long long)arg1 reason:(id)arg2 object:(id)arg3 underlyingError:(id)arg4;
 + (id)errorWithCode:(long long)arg1 reason:(id)arg2 object:(id)arg3;
++ (id)resourceUnavailableError:(id)arg1 object:(id)arg2;
 + (id)timeoutError:(id)arg1 object:(id)arg2;
 + (id)canceledError:(id)arg1 object:(id)arg2;
 + (id)unsupportedError:(id)arg1 object:(id)arg2;

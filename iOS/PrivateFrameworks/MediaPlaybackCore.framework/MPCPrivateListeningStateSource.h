@@ -11,6 +11,7 @@
 
 @class NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface MPCPrivateListeningStateSource : NSObject <NSCopying, NSSecureCoding>
 {
     NSNumber *_overrideValue;
@@ -21,13 +22,13 @@
 + (id)sourceWithUserIdentity:(id)arg1;
 + (id)staticSourceWithValue:(id)arg1;
 + (id)localDeviceSource;
-@property(readonly, copy, nonatomic) NSNumber *currentValue; // @synthesize currentValue=_currentValue;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSNumber *currentValue; // @synthesize currentValue=_currentValue;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly, copy, nonatomic) NSNumber *overrideValue; // @synthesize overrideValue=_overrideValue;
-- (void)setOverrideValue:(id)arg1;
+@property(readonly, nonatomic) long long sourceType;
+@property(copy, nonatomic) NSNumber *overrideValue; // @synthesize overrideValue=_overrideValue;
 - (id)_init;
 
 @end

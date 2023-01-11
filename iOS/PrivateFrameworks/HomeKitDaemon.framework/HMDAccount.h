@@ -13,7 +13,7 @@
 #import <HomeKitDaemon/NSFastEnumeration-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CNContact, HMDAccountHandle, HMDAccountIdentifier, HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
+@class CNContact, HMDAccountHandle, HMDAccountIdentifier, HMDDevice, HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDAccountManager, OS_dispatch_queue;
 
 @interface HMDAccount : HMFObject <HMFLogging, HMFMerging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, NSFastEnumeration, NSSecureCoding>
@@ -30,13 +30,11 @@
 + (id)logCategory;
 + (id)accountWithHandle:(id)arg1;
 + (id)accountWithDestination:(id)arg1;
+- (void).cxx_destruct;
 @property __weak id <HMDAccountManager> manager; // @synthesize manager=_manager;
 @property(readonly, copy) HMDAccountIdentifier *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)modelBackedObjects;
 - (id)currentDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
-- (id)locallyTrackedDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
-- (id)locallyTrackedAccountHandleModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 @property(readonly, copy, nonatomic) NSUUID *modelParentIdentifier;
@@ -50,7 +48,6 @@
 - (_Bool)shouldMergeObject:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)logIdentifier;
-- (void)__notifyDelegateUpdatedDevice:(id)arg1;
 - (void)removeDevice:(id)arg1;
 - (void)addDevice:(id)arg1;
 - (id)deviceWithModelIdentifier:(id)arg1;
@@ -64,6 +61,7 @@
 - (void)setHandles:(id)arg1;
 @property(readonly, copy) HMDAccountHandle *primaryHandle;
 @property(readonly, copy) NSArray *handles;
+@property(readonly, copy) NSString *senderCorrelationIdentifier;
 @property(readonly, copy) CNContact *contact;
 @property(readonly, copy) NSString *name;
 @property(readonly) _Bool shouldCache;
@@ -77,7 +75,7 @@
 - (id)initWithObjectModel:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 handles:(id)arg2 devices:(id)arg3;
 - (id)init;
-- (id)currentDevice;
+@property(readonly) HMDDevice *currentDevice;
 @property(readonly, getter=isCurrentAccount) _Bool currentAccount;
 @property(readonly, copy) NSArray *identities;
 

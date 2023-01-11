@@ -29,9 +29,9 @@
     MPPropertySet *_requestedProperties;
 }
 
-@property(readonly, copy, nonatomic) MPPropertySet *requestedProperties; // @synthesize requestedProperties=_requestedProperties;
 - (void).cxx_destruct;
-- (id)genericObjectForRadioStationTrack:(id)arg1 containerUniqueID:(id)arg2;
+@property(readonly, copy, nonatomic) MPPropertySet *requestedProperties; // @synthesize requestedProperties=_requestedProperties;
+- (id)genericObjectForRadioStationTrack:(id)arg1 containerUniqueID:(id)arg2 userIdentity:(id)arg3;
 - (id)initWithRequestedProperties:(id)arg1;
 
 @end

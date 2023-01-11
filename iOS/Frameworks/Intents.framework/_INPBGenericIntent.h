@@ -15,7 +15,6 @@
 @interface _INPBGenericIntent : PBCodable <_INPBGenericIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     NSString *_domain;
     _INPBIntentMetadata *_metadata;
     NSArray *_parameters;
@@ -24,12 +23,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)parametersType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *verb; // @synthesize verb=_verb;
 @property(copy, nonatomic) NSArray *parameters; // @synthesize parameters=_parameters;
 @property(retain, nonatomic) _INPBIntentMetadata *metadata; // @synthesize metadata=_metadata;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

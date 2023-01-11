@@ -11,6 +11,7 @@
 @class CNContact, NSArray, NSString, SGContact, SGOrigin, SGRecordId;
 
 @protocol SGSuggestionsServiceContactsProtocol <_SGSuggestionsServiceBaseProtocol, _SGSuggestionsServiceContactsConfirmRejectProtocol, _SGSuggestionsServiceContactsObserverProtocol>
+- (void)allContactsWithSnippets:(_Bool)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
 - (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (SGOrigin *)originFromRecordId:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)originFromRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(SGOrigin *, NSError *))arg2;
@@ -24,8 +25,6 @@
 - (void)contactMatchesWithContact:(CNContact *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
 - (SGContact *)contactFromRecordID:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)contactFromRecordID:(SGRecordId *)arg1 withCompletion:(void (^)(SGContact *, NSError *))arg2;
-- (void)contactMatchesOrLookupIdByEmailAddress:(NSString *)arg1 withCompletion:(void (^)(SGContactMatchArrayOption *, NSError *))arg2;
-- (void)contactMatchesOrLookupIdByPhoneNumber:(NSString *)arg1 withCompletion:(void (^)(SGContactMatchArrayOption *, NSError *))arg2;
 - (NSArray *)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 error:(id *)arg4;
 - (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
 - (NSArray *)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 onlySignificant:(_Bool)arg4 error:(id *)arg5;

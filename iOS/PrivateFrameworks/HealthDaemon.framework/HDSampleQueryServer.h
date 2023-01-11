@@ -10,6 +10,7 @@
 {
     _Bool _suspended;
     _Bool _includeAutomaticTimeZones;
+    _Bool _includeContributorInformation;
     unsigned long long _limit;
     NSArray *_sortDescriptors;
 }
@@ -17,10 +18,11 @@
 + (_Bool)supportsAnchorBasedAuthorization;
 + (id)requiredEntitlements;
 + (Class)queryClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property(readonly, nonatomic) _Bool includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property(readonly, copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property(readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
-- (void).cxx_destruct;
 - (void)_queue_start;
 - (_Bool)validateConfiguration:(id *)arg1;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;

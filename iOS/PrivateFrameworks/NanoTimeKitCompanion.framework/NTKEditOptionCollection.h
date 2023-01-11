@@ -14,17 +14,20 @@
     NSString *_localizedName;
     NSArray *_options;
     unsigned long long _collectionType;
+    NSString *_slot;
 }
 
 + (id)editOptionCollectionWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *slot; // @synthesize slot=_slot;
 @property(nonatomic) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
 @property(copy, nonatomic) NSArray *options; // @synthesize options=_options;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
-- (id)filteredCollectionForOSVersion:(unsigned int)arg1;
+- (id)filteredCollectionForDevice:(id)arg1;
 - (id)filteredCollectionWithObjectsPassingTest:(CDUnknownBlockType)arg1;
+- (id)initWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4 slot:(id)arg5;
 - (id)initWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4;
 @property(readonly, nonatomic) NSString *optionsDescription;
 @property(readonly, nonatomic) long long swatchStyle;

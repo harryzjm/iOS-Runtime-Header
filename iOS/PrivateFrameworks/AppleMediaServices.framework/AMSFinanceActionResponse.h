@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinanceActionHandling-Protocol.h>
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
 
 @class ACAccount, AMSURLTaskInfo, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceActionResponse : NSObject <AMSFinanceActionHandling>
+@interface AMSFinanceActionResponse : NSObject <AMSFinancePerformable>
 {
     ACAccount *_account;
     NSString *_creditString;
@@ -22,17 +22,24 @@ __attribute__((visibility("hidden")))
 
 + (id)actionWithUpdatedCreditString:(id)arg1 account:(id)arg2 taskInfo:(id)arg3;
 + (id)actionWithActionDictionary:(id)arg1 taskInfo:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(retain, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 @property(nonatomic) long long kind; // @synthesize kind=_kind;
 @property(retain, nonatomic) NSString *creditString; // @synthesize creditString=_creditString;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
-- (id)_performOpenURL;
+- (id)_performOpenAppURL;
+- (id)_performOpenStandardURL;
 - (id)_performGotoURL;
 - (id)_performCreditDisplayUpdate;
-- (id)runAction;
+- (id)performWithTaskInfo:(id)arg1;
 - (id)initWithTaskInfo:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

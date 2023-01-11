@@ -12,13 +12,14 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class CNPostalAddress, NSArray, NSString, PKAddressSearchModel, UISearchBar, UITableView, _UINavigationControllerPalette;
+@class CNPostalAddress, NSArray, NSString, PKAddressSearchModel, PKContactFormatValidator, UISearchBar, UITableView, _UINavigationControllerPalette;
 @protocol PKAddressSearcherViewControllerDelegate;
 
 @interface PKAddressSearcherViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, PKAddressSearchModelDelegate, PKAddressEditorViewControllerDelegate>
 {
     id <PKAddressSearcherViewControllerDelegate> _delegate;
     NSArray *_requiredKeys;
+    PKContactFormatValidator *_contactFormatValidator;
     UISearchBar *_searchBar;
     UITableView *_tableView;
     _UINavigationControllerPalette *_palette;
@@ -29,6 +30,7 @@
     NSArray *_contactsSearchResults;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *contactsSearchResults; // @synthesize contactsSearchResults=_contactsSearchResults;
 @property(retain, nonatomic) NSArray *completionSearchResults; // @synthesize completionSearchResults=_completionSearchResults;
 @property(retain, nonatomic) CNPostalAddress *selectedAddress; // @synthesize selectedAddress=_selectedAddress;
@@ -37,9 +39,9 @@
 @property(retain, nonatomic) _UINavigationControllerPalette *palette; // @synthesize palette=_palette;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
+@property(retain, nonatomic) PKContactFormatValidator *contactFormatValidator; // @synthesize contactFormatValidator=_contactFormatValidator;
 @property(retain, nonatomic) NSArray *requiredKeys; // @synthesize requiredKeys=_requiredKeys;
-@property(nonatomic) id <PKAddressSearcherViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <PKAddressSearcherViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)addressEditorViewControllerDidCancel:(id)arg1;
 - (void)addressEditorViewController:(id)arg1 selectedContact:(id)arg2;
 - (void)selectedAddress:(id)arg1 withError:(id)arg2;
@@ -53,7 +55,7 @@
 - (_Bool)tableView:(id)arg1 wantsHeaderForSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)_showAddressEditorWithContact:(id)arg1;
+- (void)_showAddressEditorWithContact:(id)arg1 withContactErrors:(id)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;

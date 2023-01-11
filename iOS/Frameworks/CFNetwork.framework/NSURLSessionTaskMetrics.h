@@ -17,13 +17,11 @@
 
 + (id)new;
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) __CFN_TaskMetrics *_metrics; // @synthesize _metrics=__metrics;
 - (void).cxx_destruct;
 - (id)description;
 @property(readonly) unsigned long long redirectCount;
 @property(readonly, copy) NSDateInterval *taskInterval;
 @property(readonly, copy) NSArray *transactionMetrics;
-- (id)initWithMetrics:(id)arg1;
 - (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

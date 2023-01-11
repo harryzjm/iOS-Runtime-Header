@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIBlurEffect, UIColor, UIVibrancyEffect;
+@class UIBlurEffect, UIColor, UIFont, UIVibrancyEffect;
 
 __attribute__((visibility("hidden")))
 @interface UIKBUndoStyling : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _undoRedoIconOnly;
     _Bool _isRTL;
     _Bool _cutCopyPasteIconOnly;
+    _Bool _tooSmallForInstructionalText;
     UIBlurEffect *_backgroundBlurEffect;
     UIVibrancyEffect *_backgroundVibrancyEffect;
     UIColor *_HUDbackgroundColor;
@@ -23,9 +24,13 @@ __attribute__((visibility("hidden")))
     UIColor *_buttonGlyphColorDisabled;
     UIColor *_elementBackgroundColor;
     UIColor *_elementCoverColor;
+    long long _appearance;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool tooSmallForInstructionalText; // @synthesize tooSmallForInstructionalText=_tooSmallForInstructionalText;
 @property(nonatomic) _Bool cutCopyPasteIconOnly; // @synthesize cutCopyPasteIconOnly=_cutCopyPasteIconOnly;
+@property(nonatomic) long long appearance; // @synthesize appearance=_appearance;
 @property(nonatomic) _Bool isRTL; // @synthesize isRTL=_isRTL;
 @property(nonatomic) _Bool undoRedoIconOnly; // @synthesize undoRedoIconOnly=_undoRedoIconOnly;
 @property(retain, nonatomic) UIColor *elementCoverColor; // @synthesize elementCoverColor=_elementCoverColor;
@@ -37,8 +42,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *HUDbackgroundColor; // @synthesize HUDbackgroundColor=_HUDbackgroundColor;
 @property(retain, nonatomic) UIVibrancyEffect *backgroundVibrancyEffect; // @synthesize backgroundVibrancyEffect=_backgroundVibrancyEffect;
 @property(retain, nonatomic) UIBlurEffect *backgroundBlurEffect; // @synthesize backgroundBlurEffect=_backgroundBlurEffect;
-- (void).cxx_destruct;
-- (void)updateBackgroundForAppearance:(long long)arg1;
+@property(readonly, nonatomic) UIFont *undoStateControlUnavailableLabelFont;
+@property(readonly, nonatomic) UIFont *undoStateControlLabelFont;
+@property(readonly, nonatomic) UIFont *undoInteractiveControlLabelFont;
+- (void)createDynamicColors;
 - (id)vibrancyEffectForBlur:(id)arg1;
 - (id)initWithKeyboardAppearance:(long long)arg1 isRTL:(_Bool)arg2;
 

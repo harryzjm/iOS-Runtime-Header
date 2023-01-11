@@ -13,6 +13,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)accessibilityElementDidLoseFocus;
 - (_Bool)accessibilityPerformMagicTap;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
+- (struct CGRect)_defaultFocusRegionFrame;
+- (_Bool)_accessibilityInTopLevelTabLoop;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)isAccessibilityElement;
 - (void)setMode:(long long)arg1;

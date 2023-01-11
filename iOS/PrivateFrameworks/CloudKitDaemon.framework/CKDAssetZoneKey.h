@@ -15,18 +15,23 @@ __attribute__((visibility("hidden")))
 {
     CKRecordZoneID *_destinationZoneID;
     CKRecordZoneID *_sourceZoneID;
+    long long _sourceDatabaseScope;
+    long long _destinationDatabaseScope;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long destinationDatabaseScope; // @synthesize destinationDatabaseScope=_destinationDatabaseScope;
+@property(nonatomic) long long sourceDatabaseScope; // @synthesize sourceDatabaseScope=_sourceDatabaseScope;
 @property(retain, nonatomic) CKRecordZoneID *sourceZoneID; // @synthesize sourceZoneID=_sourceZoneID;
 @property(retain, nonatomic) CKRecordZoneID *destinationZoneID; // @synthesize destinationZoneID=_destinationZoneID;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)CKPropertiesDescription;
-- (id)initWithDestinationZoneID:(id)arg1 sourceZoneID:(id)arg2;
-- (id)initWithDestinationZoneID:(id)arg1;
+@property(readonly, nonatomic) _Bool isCrossOwner;
+- (id)initWithDestinationZoneID:(id)arg1 destinationDatabaseScope:(long long)arg2 sourceZoneID:(id)arg3 sourceDatabaseScope:(long long)arg4;
+- (id)initWithDestinationZoneID:(id)arg1 destinationDatabaseScope:(long long)arg2;
 
 @end
 

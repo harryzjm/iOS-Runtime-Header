@@ -23,7 +23,6 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)_accessibilityAutoReaderAction:(id)arg1;
 - (void)setExpanded:(_Bool)arg1 textFieldSelectionRange:(struct _NSRange)arg2;
-- (void)_updateReaderButtonVisibilityAnimated:(_Bool)arg1 showAvailabilityText:(_Bool)arg2 adjustURLLabels:(_Bool)arg3;
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
 - (void)_updateNotSecureWarningsVisibility;
 - (void)_formatToggleButtonTapped:(id)arg1;

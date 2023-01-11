@@ -6,7 +6,6 @@
 
 @class CKPublicKey, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDSignedServerPublicKeyURLRequest
 {
     CKPublicKey *_verifiedPublicKey;
@@ -20,10 +19,10 @@ __attribute__((visibility("hidden")))
 + (id)nearestExpirationInCertificateList:(id)arg1;
 + (id)certificateListServerPlist:(id)arg1;
 + (_Bool)serverResponseIsComplete:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct __SecPolicy *certificateTrustPolicy; // @synthesize certificateTrustPolicy=_certificateTrustPolicy;
 @property(readonly, nonatomic) NSURL *plistURL; // @synthesize plistURL=_plistURL;
 @property(retain) CKPublicKey *verifiedPublicKey; // @synthesize verifiedPublicKey=_verifiedPublicKey;
-- (void).cxx_destruct;
 - (_Bool)canVerifySignedPlistValues:(id)arg1 withKey:(struct __SecKey *)arg2;
 - (void)requestDidParsePlistObject:(id)arg1;
 - (id)url;
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)requiresDeviceID;
 - (_Bool)requiresConfiguration;
 - (void)dealloc;
-- (id)initWithPlistURL:(id)arg1 verifyWithPolicy:(struct __SecPolicy *)arg2;
+- (id)initWithOperation:(id)arg1 plistURL:(id)arg2 verifyWithPolicy:(struct __SecPolicy *)arg3;
 
 @end
 

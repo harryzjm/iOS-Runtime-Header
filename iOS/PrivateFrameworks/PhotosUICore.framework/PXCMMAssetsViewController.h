@@ -9,19 +9,20 @@
 #import <PhotosUICore/PXCMMBannerTileControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMEngineDrivenLayoutDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMFooterViewModelActionDelegate-Protocol.h>
-#import <PhotosUICore/PXCMMProgressBannerViewLayoutDelegate-Protocol.h>
+#import <PhotosUICore/PXCMMProgressBannerViewDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXContextualNotificationDelegate-Protocol.h>
 #import <PhotosUICore/PXOneUpPresentationDelegate-Protocol.h>
 #import <PhotosUICore/PXPhotosGlobalFooterViewDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
+#import <PhotosUICore/PXStatusViewDelegate-Protocol.h>
 #import <PhotosUICore/PXSwipeSelectionManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXTileSource-Protocol.h>
 
-@class NSArray, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicTileAnimator, PXCMMBannerTileController, PXCMMFooterViewModel, PXCMMProgressBannerView, PXCMMSendBackBannerView, PXCMMSendBackSuggestionSource, PXCMMSpec, PXCMMSpecManager, PXContextualNotification, PXLayoutGenerator, PXMomentShareStatusPresentation, PXOneUpPresentation, PXPhotosGlobalFooterView, PXSectionedLayoutEngine, PXSwipeSelectionManager, PXTilingController, PXUIAssetsScene, PXUIScrollViewController, PXUITapGestureRecognizer, PXUpdater, UILongPressGestureRecognizer;
+@class NSArray, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicTileAnimator, PXCMMBannerTileController, PXCMMFooterViewModel, PXCMMProgressBannerView, PXCMMSendBackBannerView, PXCMMSendBackSuggestionSource, PXCMMSpec, PXCMMSpecManager, PXCMMStatusController, PXContextualNotification, PXLayoutGenerator, PXMomentShareStatusPresentation, PXOneUpPresentation, PXPhotosGlobalFooterView, PXSectionedLayoutEngine, PXSwipeSelectionManager, PXTilingController, PXUIAssetsScene, PXUIScrollViewController, PXUITapGestureRecognizer, PXUpdater, UILongPressGestureRecognizer;
 @protocol PXCMMAssetsViewControllerDelegate;
 
-@interface PXCMMAssetsViewController <PXAssetsSceneDelegate, PXTileSource, PXCMMEngineDrivenLayoutDelegate, PXSwipeSelectionManagerDelegate, PXChangeObserver, PXOneUpPresentationDelegate, PXCMMBannerTileControllerDelegate, PXScrollViewControllerObserver, PXPhotosGlobalFooterViewDelegate, PXCMMFooterViewModelActionDelegate, PXContextualNotificationDelegate, PXActionPerformerDelegate, PXCMMProgressBannerViewLayoutDelegate>
+@interface PXCMMAssetsViewController <PXActionPerformerDelegate, PXAssetsSceneDelegate, PXCMMBannerTileControllerDelegate, PXCMMEngineDrivenLayoutDelegate, PXCMMFooterViewModelActionDelegate, PXCMMProgressBannerViewDelegate, PXChangeObserver, PXContextualNotificationDelegate, PXOneUpPresentationDelegate, PXPhotosGlobalFooterViewDelegate, PXScrollViewControllerObserver, PXStatusViewDelegate, PXSwipeSelectionManagerDelegate, PXTileSource>
 {
     PXUpdater *_updater;
     PXLayoutGenerator *_layoutGenerator;
@@ -33,6 +34,7 @@
     PXUIAssetsScene *_sceneController;
     PXCMMProgressBannerView *_progressBannerView;
     NSArray *_progressBannerViewConstraints;
+    PXCMMStatusController *_statusController;
     PXUITapGestureRecognizer *_tapSelectionGesture;
     PXSwipeSelectionManager *_swipeSelectionManager;
     PXUITapGestureRecognizer *_layoutTransitionGesture;
@@ -71,15 +73,15 @@
     struct UIEdgeInsets _contentInset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool userSelectionEnabled; // @synthesize userSelectionEnabled=_userSelectionEnabled;
 @property(retain, nonatomic) NSSet *_hiddenAssetReferences; // @synthesize _hiddenAssetReferences=__hiddenAssetReferences;
 @property(nonatomic) long long _layoutType; // @synthesize _layoutType=__layoutType;
 @property(nonatomic, getter=isActionInProgress) _Bool actionInProgress; // @synthesize actionInProgress=_actionInProgress;
 @property(nonatomic) __weak id <PXCMMAssetsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
-- (void).cxx_destruct;
-- (_Bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)contextualNotificationDidDisappear:(id)arg1;
 - (void)contextualNotificationDidAppear:(id)arg1;
@@ -91,6 +93,11 @@
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (void)didTapActionButtonInBannerTileController:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)statusView:(id)arg1 dismissViewController:(id)arg2;
+- (void)statusView:(id)arg1 presentViewController:(id)arg2;
+- (_Bool)_shouldShowStatusPlaceholder;
+- (void)progressBannerView:(id)arg1 dismissViewController:(id)arg2;
+- (void)progressBannerView:(id)arg1 presentViewController:(id)arg2;
 - (void)progressBannerViewLayoutHeightDidChange:(id)arg1;
 - (void)_updateProgressBannerViewConstraints;
 - (void)_updateProgressBannerViewVisibility;
@@ -125,18 +132,24 @@
 - (unsigned long long)_additionalTileCount;
 - (void)_performTilingChangeWithoutAnimationTransition:(CDUnknownBlockType)arg1;
 - (void)_setLayoutType:(long long)arg1;
+- (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (void)oneUpPresentation:(id)arg1 setHiddenAssetReferences:(id)arg2;
+- (id)oneUpPresentation:(id)arg1 currentImageForAssetReference:(id)arg2;
 - (void)oneUpPresentation:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (id)oneUpPresentation:(id)arg1 regionOfInterestForAssetReference:(id)arg2;
 - (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (id)oneUpPresentationImportStatusManager:(id)arg1;
+- (_Bool)oneUpPresentation:(id)arg1 allowsActionsForContextMenuInteraction:(id)arg2;
+- (_Bool)oneUpPresentation:(id)arg1 canStartPreviewingForContextMenuInteraction:(id)arg2;
 - (id)oneUpPresentationActionManagerForPreviewing:(id)arg1;
 - (id)oneUpPresentationActionManager:(id)arg1;
+- (id)_assetActionManagerWithSelectionManager:(id)arg1;
+- (id)_createSelectionManagerWithAssetReference:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (long long)oneUpPresentationActionContext:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
-- (_Bool)_shouldShowOneUpActions;
+- (_Bool)_shouldShowDefaultOneUpActions;
 @property(readonly, nonatomic) PXOneUpPresentation *_oneUpPresentation;
 - (void)_updateSelectionIfNeeded;
 - (void)_updatePlaceholder;
@@ -163,7 +176,8 @@
 - (id)_indexPathsForAssetReferences:(id)arg1 inDataSource:(id)arg2;
 - (void)_setHiddenAssetReferences:(id)arg1;
 - (id)_createOverlayTileView;
-- (id)_createStatusTileView;
+- (id)_createStatusBadgeTileView;
+- (id)_createStatusPlaceholderTileView;
 - (id)_createSectionHeaderController;
 - (id)_createAddButton;
 - (id)_createBannerTileController;
@@ -181,7 +195,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillLayoutSubviews;
+- (void)viewDidLayoutSubviews;
 - (void)_scheduleLayout;
 - (void)_deselectAllAssets;
 - (void)_selectAllAssets;

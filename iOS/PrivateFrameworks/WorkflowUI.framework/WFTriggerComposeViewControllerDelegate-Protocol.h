@@ -9,6 +9,7 @@
 @class WFTriggerComposeViewController, WFWorkflow;
 
 @protocol WFTriggerComposeViewControllerDelegate <WFComposeViewControllerDelegate>
+- (void)triggerComposeViewControllerDidCancel:(WFTriggerComposeViewController *)arg1;
 - (void)triggerComposeViewController:(WFTriggerComposeViewController *)arg1 didFinishWithWorkflow:(WFWorkflow *)arg2;
 @end
 

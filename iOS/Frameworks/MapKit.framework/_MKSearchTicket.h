@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property(readonly, nonatomic, getter=isChainResultSet) _Bool chainResultSet;
 @property(readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
+@property(readonly, nonatomic) NSArray *collectionResults;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property(readonly, copy) NSString *description;
@@ -31,7 +32,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) NSArray *exactMapItems;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSArray *publisherResults;
 @property(readonly, nonatomic) NSArray *refinedMapItems;
+@property(readonly, nonatomic) NSArray *relatedEntitySections;
 @property(readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property(readonly, nonatomic) double requestResponseTime;
 @property(readonly, nonatomic) NSString *resultDisplayHeader;

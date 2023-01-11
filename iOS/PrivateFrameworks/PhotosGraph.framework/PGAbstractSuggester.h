@@ -12,18 +12,26 @@
 
 @interface PGAbstractSuggester : NSObject <PGSuggester>
 {
+    _Bool _lastSuggestionWasColliding;
     PGSuggestionSession *_session;
 }
 
-+ (id)assetCollectionFilteringSharedAssetsForAssetCollection:(id)arg1 loggingConnection:(id)arg2;
 + (id)suggestedPersonLocalIdentifiersFromSharingSuggestionResults:(id)arg1 forMomentNodes:(id)arg2 containsUnverifiedPersons:(_Bool *)arg3;
 + (id)sharingSuggestionResultsForMomentNodes:(id)arg1;
++ (id)internalPredicateForProcessedAssetsWithMinimumSceneAnalysisVersion:(unsigned long long)arg1;
++ (_Bool)processedAssetIsValidForSuggesting:(id)arg1;
++ (_Bool)assetIsValidForSuggesting:(id)arg1;
++ (id)noVideoPredicate;
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
++ (void)setLastSuggestionWasColliding:(_Bool)arg1;
++ (_Bool)lastSuggestionWasColliding;
 + (id)suggesterWithSession:(id)arg1;
-@property(nonatomic) __weak PGSuggestionSession *session; // @synthesize session=_session;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool lastSuggestionWasColliding; // @synthesize lastSuggestionWasColliding=_lastSuggestionWasColliding;
+@property(nonatomic) __weak PGSuggestionSession *session; // @synthesize session=_session;
 - (id)reasonsForSuggestion:(id)arg1;
+- (_Bool)canGenerateSuggestionWithAsset:(id)arg1 onDate:(id)arg2;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)initWithSession:(id)arg1;
 

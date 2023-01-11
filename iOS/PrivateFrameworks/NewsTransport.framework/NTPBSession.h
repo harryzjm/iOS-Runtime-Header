@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface NTPBSession : PBCodable <NSCopying>
 {
@@ -21,6 +21,9 @@
     long long _userStartDate;
     int _ageBracket;
     float _ageBracketConfidenceLevel;
+    NSString *_amsCampaignId;
+    NSString *_amsPurchaseId;
+    NSString *_appBuildNumber;
     NSData *_appProcessLifetimeId;
     NSString *_appVersion;
     NSString *_browserLanguage;
@@ -48,11 +51,13 @@
     NSString *_originatingCreativeId;
     int _osInstallVariant;
     NSString *_osVersion;
+    int _paywallConfigType;
     NSString *_personalizationPortraitVariantName;
     NSString *_previousAppVersion;
     NSString *_previousOsVersion;
     NSString *_productType;
     int _reachabilityStatus;
+    NSMutableArray *_regionIds;
     NSData *_sessionId;
     NSData *_sessionIdWatch;
     int _textSize;
@@ -105,6 +110,7 @@
         unsigned int incomeBracketConfidenceLevel:1;
         unsigned int newsWidgetModeGroup:1;
         unsigned int osInstallVariant:1;
+        unsigned int paywallConfigType:1;
         unsigned int reachabilityStatus:1;
         unsigned int textSize:1;
         unsigned int utcOffset:1;
@@ -136,6 +142,12 @@
     } _has;
 }
 
++ (Class)regionIdsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *amsCampaignId; // @synthesize amsCampaignId=_amsCampaignId;
+@property(retain, nonatomic) NSString *amsPurchaseId; // @synthesize amsPurchaseId=_amsPurchaseId;
+@property(retain, nonatomic) NSString *appBuildNumber; // @synthesize appBuildNumber=_appBuildNumber;
+@property(retain, nonatomic) NSMutableArray *regionIds; // @synthesize regionIds=_regionIds;
 @property(nonatomic) _Bool isDiagnosticsUsageEnabled; // @synthesize isDiagnosticsUsageEnabled=_isDiagnosticsUsageEnabled;
 @property(nonatomic) _Bool isStoreDemoModeEnabled; // @synthesize isStoreDemoModeEnabled=_isStoreDemoModeEnabled;
 @property(nonatomic) _Bool signedIntoITunes; // @synthesize signedIntoITunes=_signedIntoITunes;
@@ -201,7 +213,6 @@
 @property(retain, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property(retain, nonatomic) NSString *devicePlatform; // @synthesize devicePlatform=_devicePlatform;
 @property(retain, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -210,6 +221,17 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsPaywallConfigType:(id)arg1;
+- (id)paywallConfigTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasPaywallConfigType;
+@property(nonatomic) int paywallConfigType; // @synthesize paywallConfigType=_paywallConfigType;
+@property(readonly, nonatomic) _Bool hasAmsCampaignId;
+@property(readonly, nonatomic) _Bool hasAmsPurchaseId;
+@property(readonly, nonatomic) _Bool hasAppBuildNumber;
+- (id)regionIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)regionIdsCount;
+- (void)addRegionIds:(id)arg1;
+- (void)clearRegionIds;
 @property(nonatomic) _Bool hasIsDiagnosticsUsageEnabled;
 @property(nonatomic) _Bool hasIsStoreDemoModeEnabled;
 @property(nonatomic) _Bool hasSignedIntoITunes;

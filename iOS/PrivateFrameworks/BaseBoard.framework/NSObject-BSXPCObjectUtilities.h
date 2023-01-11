@@ -17,7 +17,6 @@
 + (id)bs_objectFromData:(id)arg1;
 + (id)bs_dataFromObject:(id)arg1;
 + (_Bool)supportsBSXPCSecureCoding;
-- (_Bool)bs_isXPCObject;
 - (id)bs_secureEncoded;
 - (_Bool)bs_isPlistableType;
 - (id)bs_encoded;

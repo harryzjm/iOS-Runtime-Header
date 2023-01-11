@@ -14,15 +14,15 @@
     MFMailMessageLibrary *_library;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak MFMailMessageLibrary *library; // @synthesize library=_library;
 @property(readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
 - (void)serverCountsForMailboxScope:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)renameMailbox:(id)arg1 newName:(id)arg2;
 - (_Bool)moveMailbox:(id)arg1 newParentMailboxID:(id)arg2;
 - (_Bool)deleteMailbox:(id)arg1;
 - (_Bool)createMailbox:(id)arg1 parentMailboxID:(id)arg2;
-- (id)mailboxDatabaseIDsForMailboxObjectIDs:(id)arg1;
+- (id)mailboxDatabaseIDsForMailboxObjectIDs:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (id)initWithMailboxProvider:(id)arg1 database:(id)arg2 library:(id)arg3;
 
 // Remaining properties

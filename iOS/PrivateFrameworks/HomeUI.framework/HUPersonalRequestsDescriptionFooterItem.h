@@ -13,12 +13,11 @@
     HULocationDeviceManager *_locationDeviceManager;
 }
 
-@property(readonly, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
 - (id)_locationDeviceTextForDeviceNameString:(id)arg1;
 - (id)_itemUpdateOutcomeForLocationDeviceText:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (id)initWithLocationDeviceManager:(id)arg1;
 - (id)init;
 
 @end

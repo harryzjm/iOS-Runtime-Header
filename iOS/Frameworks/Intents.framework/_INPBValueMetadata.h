@@ -19,7 +19,6 @@
         unsigned int confirmed:1;
     } _has;
     _Bool _confirmed;
-    _Bool __encodeLegacyGloryData;
     NSString *_canonicalValue;
     _INPBConfidenceScore *_confidenceScore;
     NSString *_input;
@@ -29,7 +28,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(copy, nonatomic) NSString *sourceAppBundleIdentifier; // @synthesize sourceAppBundleIdentifier=_sourceAppBundleIdentifier;
 @property(copy, nonatomic) NSString *source; // @synthesize source=_source;
@@ -37,7 +36,6 @@
 @property(nonatomic) _Bool confirmed; // @synthesize confirmed=_confirmed;
 @property(retain, nonatomic) _INPBConfidenceScore *confidenceScore; // @synthesize confidenceScore=_confidenceScore;
 @property(copy, nonatomic) NSString *canonicalValue; // @synthesize canonicalValue=_canonicalValue;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

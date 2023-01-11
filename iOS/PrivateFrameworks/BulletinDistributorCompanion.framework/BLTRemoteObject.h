@@ -8,7 +8,7 @@
 
 #import <BulletinDistributorCompanion/IDSServiceDelegate-Protocol.h>
 
-@class BLTPBProtobufSequenceNumberManager, NSLock, NSMutableDictionary, NSString;
+@class BLTPBProtobufSequenceNumberManager, BLTSimpleCache, NSLock, NSMutableDictionary, NSString;
 @protocol BLTAbstractIDSDevice, BLTAbstractIDSService, OS_dispatch_queue;
 
 @interface BLTRemoteObject : NSObject <IDSServiceDelegate>
@@ -23,6 +23,7 @@
     NSMutableDictionary *_idsRequestMessageTypeToSelector;
     NSLock *_sequenceNumberSendLock;
     NSObject<OS_dispatch_queue> *_connectionStatusQueue;
+    unsigned long long _stateHandler;
     unsigned long long _simConnectionState;
     id _simConnectionStateHandlerToken;
     _Bool _pairedDeviceReady;
@@ -30,14 +31,18 @@
     unsigned long long _lastKnownConnectionStatus;
     id <BLTAbstractIDSService> _service;
     BLTPBProtobufSequenceNumberManager *_sequenceNumberManager;
+    BLTSimpleCache *_mruCacheOfSends;
+    BLTSimpleCache *_mruCacheOfReceives;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) BLTSimpleCache *mruCacheOfReceives; // @synthesize mruCacheOfReceives=_mruCacheOfReceives;
+@property(retain, nonatomic) BLTSimpleCache *mruCacheOfSends; // @synthesize mruCacheOfSends=_mruCacheOfSends;
 @property(readonly, nonatomic) BLTPBProtobufSequenceNumberManager *sequenceNumberManager; // @synthesize sequenceNumberManager=_sequenceNumberManager;
 @property(readonly, nonatomic) id <BLTAbstractIDSService> service; // @synthesize service=_service;
 @property(getter=isPairedDeviceReady) _Bool pairedDeviceReady; // @synthesize pairedDeviceReady=_pairedDeviceReady;
 @property(nonatomic) unsigned long long lastKnownConnectionStatus; // @synthesize lastKnownConnectionStatus=_lastKnownConnectionStatus;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-- (void).cxx_destruct;
 - (void)handleFileURL:(id)arg1 extraMetadata:(id)arg2;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (_Bool)_callSendCompletionHandlerWithSuccess:(_Bool)arg1 identifier:(id)arg2 error:(id)arg3;
@@ -50,7 +55,7 @@
 - (void)sendFileURL:(id)arg1 withTimeout:(id)arg2 extraMetadata:(id)arg3 responseHandlers:(id)arg4 didSend:(CDUnknownBlockType)arg5 didQueue:(CDUnknownBlockType)arg6;
 - (void)_queueSendRequest:(id)arg1;
 - (id)_wrapError:(id)arg1 identifier:(id)arg2;
-- (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 allowCloudDelivery:(_Bool)arg7 didSend:(CDUnknownBlockType)arg8 andResponse:(CDUnknownBlockType)arg9;
+- (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 allowCloudDelivery:(_Bool)arg7 nonWaking:(_Bool)arg8 didSend:(CDUnknownBlockType)arg9 andResponse:(CDUnknownBlockType)arg10;
 - (void)sendRequest:(id)arg1;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 didSend:(CDUnknownBlockType)arg4 didQueue:(CDUnknownBlockType)arg5;
 - (void)sendResponse:(id)arg1 type:(unsigned short)arg2 withRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7;
@@ -79,13 +84,13 @@
 - (void)handleIDSProtobuf:(id)arg1;
 - (_Bool)_sequenceErrorDidHappenAndHandled:(long long)arg1 service:(id)arg2 incomingIdentifier:(id)arg3;
 - (void)_handleNewSessionState:(unsigned long long)arg1;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithServiceName:(id)arg1 idsQueueName:(char *)arg2 andClientQueue:(id)arg3;
 - (id)initWithServiceName:(id)arg1 idsQueueName:(char *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

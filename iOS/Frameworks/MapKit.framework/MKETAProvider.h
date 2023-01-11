@@ -11,7 +11,7 @@
 #import <MapKit/MKQuickRouteManagerDelegate-Protocol.h>
 #import <MapKit/MKQuickRouteTransportTypeFinding-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, GEOTransitOptions, MKMapItem, NSHashTable, NSLock, NSNumber, NSString, NSTimer, _MKQuickRouteManager;
+@class CLLocation, GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKMapItem, NSHashTable, NSLock, NSNumber, NSString, NSTimer, _MKQuickRouteManager;
 @protocol GEOTransitLineItem, MKETAProviderDelegate, _MKPlaceItem;
 
 @interface MKETAProvider : NSObject <MKLocationManagerObserver, MKQuickRouteManagerDelegate, MKQuickRouteConfigurableView, MKQuickRouteTransportTypeFinding>
@@ -24,26 +24,30 @@
     unsigned long long _etaTransportType;
     double _etaTravelTime;
     _Bool _active;
+    _Bool _paused;
+    _Bool _inactiveInBackground;
     NSTimer *_refreshTimer;
     CLLocation *_currentLocation;
     id <MKETAProviderDelegate> _delegate;
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
+    GEOCyclingOptions *_cyclingOptions;
     id <_MKPlaceItem> _placeItem;
     id <GEOTransitLineItem> _lineItem;
     NSHashTable *_observers;
     NSLock *_observersLock;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLock *observersLock; // @synthesize observersLock=_observersLock;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(readonly, nonatomic) id <GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
 @property(readonly, nonatomic) id <_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
+@property(retain, nonatomic) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property(retain, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property(retain, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property(nonatomic) __weak id <MKETAProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
-- (void).cxx_destruct;
 - (void)findDirectionsTypeForOriginCoordinate:(struct CLLocationCoordinate2D)arg1 destinationCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)quickRouteShouldOnlyUseAutomobile;
 - (_Bool)quickRouteShouldIncludeTransitWhenNotPreferredTransportType;
@@ -75,7 +79,11 @@
 - (void)_cancelTimer;
 - (void)_startTimer;
 - (void)_refreshTimer;
+- (void)_willEnterForeground;
+- (void)_didEnterBackground;
 - (void)cancel;
+- (void)pause;
+- (void)restart;
 - (void)start;
 - (void)_commonInit;
 - (void)dealloc;

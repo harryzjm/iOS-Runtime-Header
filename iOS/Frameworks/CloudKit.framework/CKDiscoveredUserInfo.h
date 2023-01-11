@@ -6,31 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/NSCopying-Protocol.h>
-#import <CloudKit/NSSecureCoding-Protocol.h>
-
-@class CKRecordID, CNContact, NSString;
-
-@interface CKDiscoveredUserInfo : NSObject <NSSecureCoding, NSCopying>
+@interface CKDiscoveredUserInfo : NSObject
 {
-    CKRecordID *_userRecordID;
-    CNContact *_displayContact;
 }
 
-+ (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) CNContact *displayContact; // @synthesize displayContact=_displayContact;
-@property(readonly, copy, nonatomic) CKRecordID *userRecordID; // @synthesize userRecordID=_userRecordID;
-- (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *lastName;
-@property(readonly, copy, nonatomic) NSString *firstName;
-- (id)description;
-- (id)CKPropertiesDescription;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithUserRecordID:(id)arg1 displayContact:(id)arg2;
+- (id)lastName;
+- (id)firstName;
+- (id)displayContact;
+- (id)userRecordID;
 
 @end
 

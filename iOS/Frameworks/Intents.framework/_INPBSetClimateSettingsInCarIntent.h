@@ -28,7 +28,6 @@
     _Bool _enableAutoMode;
     _Bool _enableClimateControl;
     _Bool _enableFan;
-    _Bool __encodeLegacyGloryData;
     int _airCirculationMode;
     int _climateZone;
     int _relativeFanSpeedSetting;
@@ -41,7 +40,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBTemperature *temperature; // @synthesize temperature=_temperature;
 @property(nonatomic) int relativeTemperatureSetting; // @synthesize relativeTemperatureSetting=_relativeTemperatureSetting;
 @property(nonatomic) int relativeFanSpeedSetting; // @synthesize relativeFanSpeedSetting=_relativeFanSpeedSetting;
@@ -55,7 +54,6 @@
 @property(nonatomic) int climateZone; // @synthesize climateZone=_climateZone;
 @property(retain, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
 @property(nonatomic) int airCirculationMode; // @synthesize airCirculationMode=_airCirculationMode;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

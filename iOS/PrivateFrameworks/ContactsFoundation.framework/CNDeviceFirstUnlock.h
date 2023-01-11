@@ -17,12 +17,13 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNFuture *firstUnlockFuture; // @synthesize firstUnlockFuture=_firstUnlockFuture;
 @property(retain, nonatomic) NSOperationQueue *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSMutableDictionary *unlockHandlers; // @synthesize unlockHandlers=_unlockHandlers;
 @property(retain, nonatomic) CNUnfairLock *handlersLock; // @synthesize handlersLock=_handlersLock;
-- (void).cxx_destruct;
 - (long long)countOfUnlockHandlers;
+- (void)waitForAllOperationsToFinish;
 - (void)withHandlersLock_cancelExistingOperationWithIdentifier:(id)arg1;
 - (void)removeUnlockHandlerWithIdentifier:(id)arg1;
 - (void)withHandlersLock_registerForDeviceFirstUnlock;

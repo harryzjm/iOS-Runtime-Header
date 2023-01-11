@@ -20,6 +20,8 @@
 + (void)setPDFDocumentAppendModeActiveForThisThread:(_Bool)arg1;
 - (void).cxx_destruct;
 - (void)setPageChangeDelegate:(id)arg1;
+- (void)decrementRedactionCount;
+- (void)incrementRedactionCount;
 - (void)setDocumentHasBurnInAnnotations:(_Bool)arg1;
 - (Class)annotationSubclassForType:(id)arg1;
 - (id)findPageWithCGPDFDictionaryPageRef:(struct CGPDFDictionary *)arg1;
@@ -33,7 +35,8 @@
 - (void)coreFindStrings:(id)arg1;
 - (void)coreFindString:(id)arg1;
 - (void)normalizeFindOptions:(unsigned long long)arg1;
-- (void)enqueueLayoutThreadForPage:(id)arg1;
+- (id)displayListCreationQueue;
+- (id)textExtractionQueue;
 - (id)selectionFromPage:(id)arg1 atPoint:(struct CGPoint)arg2 toPage:(id)arg3 atPoint:(struct CGPoint)arg4 type:(int)arg5;
 - (_Bool)viewPreferenceRightToLeft;
 - (void)resetPageAnnotationChanges;
@@ -111,9 +114,15 @@
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setDocument:(struct CGPDFDocument *)arg1;
+- (void)_createDocumentWithDataProvider:(struct CGDataProvider *)arg1;
+- (id)initWithProvider:(struct CGDataProvider *)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)init;
+- (void)preloadDataOfPagesInRange:(struct _NSRange)arg1 onQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setHasHighLatencyDataProvider:(_Bool)arg1;
+- (_Bool)hasHighLatencyDataProvider;
+- (_Bool)isLinearized;
 - (void)enableDocumentMRUMode:(_Bool)arg1;
 - (id)akDocumentAdaptor;
 - (struct __CFData *)newXMPFromData:(id)arg1 preserveExistingXMPMetadata:(_Bool)arg2;

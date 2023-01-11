@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariShared/WBSFormDataController.h>
+#import "WBSFormDataController.h"
 
 #import <WebUI/MCProfileConnectionObserver-Protocol.h>
 #import <WebUI/WBSFormAutoFillCorrectionManagerDelegate-Protocol.h>
@@ -43,18 +43,19 @@
 - (_Bool)_shouldTryToSaveCredentialsFromLastForm:(id)arg1 currentFormMetadata:(id)arg2 frame:(id)arg3;
 - (_Bool)webView:(id)arg1 frame:(id)arg2 willNavigateFromForm:(id)arg3 bySubmitting:(_Bool)arg4 processMetadataCorrections:(_Bool)arg5 uniqueIDsOfControlsThatWereAutoFilled:(id)arg6 submissionHandler:(CDUnknownBlockType)arg7;
 - (_Bool)_webView:(id)arg1 willSubmitLoginFormWithMetadata:(id)arg2 formSubmission:(_Bool)arg3 fromFrame:(id)arg4 submissionHandler:(CDUnknownBlockType)arg5;
+- (id)_titleTextForWarning:(id)arg1;
 - (void)_warnAboutWeakPasswordIfNecessaryWithWebView:(id)arg1 credential:(id)arg2 protectionSpace:(id)arg3;
 - (_Bool)_webView:(id)arg1 saveCredentialsForURL:(id)arg2 formSubmission:(_Bool)arg3 formWithMetadata:(id)arg4 fromFrame:(id)arg5 username:(id)arg6 password:(id)arg7 submissionHandler:(CDUnknownBlockType)arg8;
 - (id)_relatedCredentialMatchesToUpdateForUser:(id)arg1 protectionSpace:(id)arg2 oldCredential:(id *)arg3 matchesForCurrentHost:(id *)arg4 matchesForAssociatedDomains:(id *)arg5 haveExistingCredentialWithSameUsernameAndDifferentPassword:(_Bool *)arg6;
 - (id)_relatedCredentialMatchesToUpdateForUser:(id)arg1 protectionSpace:(id)arg2 oldCredential:(id *)arg3 matchesForCurrentHost:(id *)arg4 matchesForAssociatedDomains:(id *)arg5;
 - (void)_showPasswordPromptForWebView:(id)arg1 formType:(unsigned long long)arg2 username:(id)arg3 host:(id)arg4 hasCredentialForCurrentHost:(_Bool)arg5 existingCredentialMatchesForCurrentHost:(id)arg6 otherSubdomainCredentialMatches:(id)arg7 haveExistingCredentialWithSameUsernameAndDifferentPassword:(_Bool)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (_Bool)_webView:(id)arg1 willSubmitStandardFormWithMetadata:(id)arg2 fromFrame:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)_webView:(id)arg1 formSubmission:(_Bool)arg2 willSubmitNewAccountOrChangePasswordFormWithMetadata:(id)arg3 fromFrame:(id)arg4 submissionHandler:(CDUnknownBlockType)arg5;
-- (_Bool)_webView:(id)arg1 saveUsernameAndPasswordFromForm:(id)arg2 inFrame:(id)arg3 confirmOverwritingCurrentPassword:(_Bool)arg4 submissionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)_webView:(id)arg1 formSubmission:(_Bool)arg2 willSubmitNewAccountOrChangePasswordFormWithMetadata:(id)arg3 shouldPreferAnnotatedCredentials:(_Bool)arg4 fromFrame:(id)arg5 submissionHandler:(CDUnknownBlockType)arg6;
+- (_Bool)_webView:(id)arg1 saveUsernameAndPasswordFromForm:(id)arg2 inFrame:(id)arg3 confirmOverwritingCurrentPassword:(_Bool)arg4 shouldPreferAnnotatedCredentials:(_Bool)arg5 submissionHandler:(CDUnknownBlockType)arg6;
 - (void)didFillFieldWithGeneratedPassword:(id)arg1 inFrame:(id)arg2 webView:(id)arg3;
 - (void)saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 andPromptToUpdateRelatedCredentialsWithWebView:(id)arg4;
 - (_Bool)_saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 formType:(unsigned long long)arg4 promptingPolicy:(long long)arg5 webView:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
-- (_Bool)_webView:(id)arg1 saveUsernameAndPasswordForURL:(id)arg2 fromForm:(id)arg3 inFrame:(id)arg4 username:(id)arg5 password:(id)arg6 isGeneratedPassword:(_Bool)arg7 confirmOverwritingCurrentPassword:(_Bool)arg8 submissionHandler:(CDUnknownBlockType)arg9;
+- (_Bool)_webView:(id)arg1 saveUsernameAndPasswordForURL:(id)arg2 formType:(unsigned long long)arg3 inFrame:(id)arg4 username:(id)arg5 password:(id)arg6 isGeneratedPassword:(_Bool)arg7 confirmOverwritingCurrentPassword:(_Bool)arg8 submissionHandler:(CDUnknownBlockType)arg9;
 - (id)_credentialMatchesEligibleForUpdateForURL:(id)arg1 username:(id)arg2 oldPassword:(id)arg3;
 - (_Bool)_webView:(id)arg1 willSubmitFormContainingCreditCardData:(id)arg2 fromFrame:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
 - (void)_showCreditCardPromptForWebView:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -6,15 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@interface WBSPair : NSObject
+#import <SafariCore/NSCopying-Protocol.h>
+
+@interface WBSPair : NSObject <NSCopying>
 {
     id _first;
     id _second;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id second; // @synthesize second=_second;
 @property(readonly, nonatomic) id first; // @synthesize first=_first;
-- (void).cxx_destruct;
+- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)getFirst:(id *)arg1 second:(id *)arg2;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;

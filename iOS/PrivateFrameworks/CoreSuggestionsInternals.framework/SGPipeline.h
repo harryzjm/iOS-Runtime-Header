@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 @class NSDictionary;
 
-@interface SGPipeline
+@interface SGPipeline : NSObject
 {
     NSDictionary *_dissectorsAndDependencies;
 }
 
++ (id)deliveriesTestingPipeline;
 + (id)remindersTestingPipelineWithCustomReminderDissector:(id)arg1;
 + (id)remindersTestingPipeline;
 + (id)portraitTestingPipeline;
 + (id)retrainingPipeline;
-+ (id)quotedRegionPipelineForIpsosTesting;
-+ (id)quotedRegionPipeline;
 + (id)fullPipeline;
 + (id)emptyPipeline;
 + (id)customPipeline:(id)arg1;
@@ -42,9 +43,15 @@
 - (id)storeOperation:(id)arg1 spotlightBundleIdentifier:(id)arg2 spotlightUniqueIdentifier:(id)arg3 spotlightDomainIdentifier:(id)arg4 withStore:(id)arg5 dependencies:(id)arg6;
 - (id)storeOperation:(id)arg1 withStore:(id)arg2 dependencies:(id)arg3 originalEnrichmentCount:(unsigned long long)arg4;
 - (id)storeOperation:(id)arg1 withStore:(id)arg2 dependencies:(id)arg3;
+- (id)verificationOperation:(id)arg1 withDependencies:(id)arg2;
+- (void)logDKIMStatus:(long long)arg1 forPipelineEntity:(id)arg2;
+- (id)verificationOperation:(id)arg1 overrideVerificationStatus:(id)arg2 withDependencies:(id)arg3;
 - (id)geocodeOperation:(id)arg1 withDependencies:(id)arg2;
-- (id)dissectOperations:(id)arg1;
-- (id)dissectOperations:(id)arg1 inContext:(id)arg2;
+- (id)_dissectOperations:(id)arg1 inContext:(id)arg2;
+- (id)dissectOperationsForInteraction:(id)arg1 entity:(id)arg2 inContext:(id)arg3;
+- (id)dissectOperationsForTextMessage:(id)arg1 entity:(id)arg2 inContext:(id)arg3;
+- (id)dissectOperationsForMailMessage:(id)arg1 entity:(id)arg2 inContext:(id)arg3;
+- (id)_dissectOperations:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 @end
 

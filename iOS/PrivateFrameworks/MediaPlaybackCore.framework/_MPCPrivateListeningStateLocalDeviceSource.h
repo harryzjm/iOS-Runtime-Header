@@ -8,6 +8,7 @@
 {
 }
 
+- (long long)sourceType;
 - (id)currentValue;
 
 @end

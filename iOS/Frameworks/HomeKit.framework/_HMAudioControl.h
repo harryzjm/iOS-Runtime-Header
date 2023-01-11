@@ -24,10 +24,10 @@ __attribute__((visibility("hidden")))
     _HMContext *_context;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property __weak id <_HMAudioControlDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak HMMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
-- (void).cxx_destruct;
 - (void)_handleAudioControlUpdated:(id)arg1;
 - (void)updateMuted:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateVolume:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -38,6 +38,9 @@ __attribute__((visibility("hidden")))
 @property(getter=isMuted) _Bool muted; // @synthesize muted=_muted;
 @property float volume; // @synthesize volume=_volume;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+- (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (id)initWithMediaSession:(id)arg1;

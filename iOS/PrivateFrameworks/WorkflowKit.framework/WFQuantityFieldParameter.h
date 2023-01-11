@@ -13,8 +13,11 @@
 
 + (_Bool)defaultAllowsNegativeNumbers;
 + (_Bool)defaultAllowsDecimalNumbers;
-@property(copy, nonatomic) NSArray *possibleUnits; // @synthesize possibleUnits=_possibleUnits;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *possibleUnits; // @synthesize possibleUnits=_possibleUnits;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)defaultSerializedRepresentation;
+- (id)defaultUnit;
 - (id)localizedLabelForPossibleUnit:(id)arg1 magnitude:(id)arg2 style:(unsigned long long)arg3;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;

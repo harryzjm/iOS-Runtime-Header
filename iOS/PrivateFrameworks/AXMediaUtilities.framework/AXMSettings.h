@@ -18,6 +18,7 @@
 
 + (id)settings;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useANODModelForAXElementVision; // @dynamic useANODModelForAXElementVision;
 @property(nonatomic) _Bool writeOutScreenCaptures; // @dynamic writeOutScreenCaptures;
 @property(nonatomic) _Bool writeOutOCRInputImages; // @dynamic writeOutOCRInputImages;
 @property(nonatomic) _Bool writeOutInputImages; // @dynamic writeOutInputImages;

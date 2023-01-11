@@ -15,18 +15,24 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _customVideoHeight;
     unsigned int _customVideoWidth;
+    unsigned int _pixelFormats;
     unsigned int _rtpSSRC;
     unsigned int _tilesPerFrame;
     NSMutableArray *_videoPayloadCollections;
     _Bool _allowRTCPFB;
+    _Bool _ltrpEnabled;
     struct {
         unsigned int customVideoHeight:1;
         unsigned int customVideoWidth:1;
+        unsigned int pixelFormats:1;
         unsigned int tilesPerFrame:1;
+        unsigned int ltrpEnabled:1;
     } _has;
 }
 
 + (Class)videoPayloadCollectionsType;
++ (unsigned int)storePixelFormatsInBitMap:(id)arg1;
+@property(nonatomic) unsigned int pixelFormats; // @synthesize pixelFormats=_pixelFormats;
 @property(retain, nonatomic) NSMutableArray *videoPayloadCollections; // @synthesize videoPayloadCollections=_videoPayloadCollections;
 @property(nonatomic) _Bool allowRTCPFB; // @synthesize allowRTCPFB=_allowRTCPFB;
 @property(nonatomic) unsigned int rtpSSRC; // @synthesize rtpSSRC=_rtpSSRC;
@@ -39,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasPixelFormats;
+@property(nonatomic) _Bool hasLtrpEnabled;
+@property(nonatomic) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
 @property(nonatomic) _Bool hasTilesPerFrame;
 @property(nonatomic) unsigned int tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
 @property(nonatomic) _Bool hasCustomVideoHeight;
@@ -52,13 +61,14 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)printScreenWithLogFile:(void *)arg1;
 - (void)printVideoWithLogFile:(void *)arg1;
+- (void)prepareFormatString:(id)arg1 format:(id)arg2 formatIndex:(unsigned int)arg3 preferredFormat:(unsigned int)arg4;
 - (id)parameterSetStringFromPayloadSettings:(id)arg1;
 - (id)newFeatureStrings;
 - (id)newVideoRuleCollectionsForScreen:(_Bool)arg1 isCellular16x9Capable:(_Bool)arg2 isLocalConfig:(_Bool)arg3;
 - (void)checkAndInsertRuleWithWidth:(unsigned int)arg1 height:(unsigned int)arg2 framerate:(int)arg3 payload:(int)arg4 priority:(double)arg5 negotiationBitfield:(unsigned int *)arg6 negotiationBit:(unsigned int)arg7 rules:(id)arg8 isCellular16x9Capable:(_Bool)arg9;
 - (_Bool)setVideoRuleCollections:(id)arg1 featureStrings:(id)arg2 isScreen:(_Bool)arg3 isCellular16x9Capable:(_Bool)arg4;
 - (id)getPayloadSettingsForPayload:(int)arg1;
-- (id)initWithScreenSSRC:(unsigned int)arg1 allowRTCPFB:(_Bool)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(_Bool)arg5 customVideoWidth:(unsigned int)arg6 customVideoHeight:(unsigned int)arg7 tilesPerFrame:(unsigned int)arg8;
+- (id)initWithScreenSSRC:(unsigned int)arg1 allowRTCPFB:(_Bool)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(_Bool)arg5 customVideoWidth:(unsigned int)arg6 customVideoHeight:(unsigned int)arg7 tilesPerFrame:(unsigned int)arg8 ltrpEnabled:(_Bool)arg9 pixelFormats:(id)arg10;
 - (id)initWithSSRC:(unsigned int)arg1 allowRTCPFB:(_Bool)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(_Bool)arg5;
 
 @end

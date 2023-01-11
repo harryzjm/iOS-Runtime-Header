@@ -34,11 +34,8 @@
 + (id)userActiveEnergyUnit;
 + (id)prelaunchApplicationIdentifiers;
 + (void)prewarmForDevice:(id)arg1;
-+ (void)_purgeGLContexts;
-+ (void)unregisterRingsView:(id)arg1;
-+ (void)registerRingsView:(id)arg1;
-+ (id)registeredRingsViews;
-+ (void)initialize;
++ (id)sharedRingsViewRenderer;
+- (void).cxx_destruct;
 @property(nonatomic) long long dataMode; // @synthesize dataMode=_dataMode;
 @property(nonatomic) __weak id <NTKActivityFaceViewFactoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool showsLockedContent; // @synthesize showsLockedContent=_showsLockedContent;
@@ -48,7 +45,6 @@
 @property(retain, nonatomic) NTKUtilityComplicationFactory *complicationFactory; // @synthesize complicationFactory=_complicationFactory;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(readonly, nonatomic) _Bool analog; // @synthesize analog=_analog;
-- (void).cxx_destruct;
 - (id)debugStringForEntry:(id)arg1;
 - (id)_complicationSlots;
 - (id)_colorComplicationSlots;
@@ -58,10 +54,15 @@
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (void)_configureComplicationFactory:(id)arg1;
 - (void)launchActivityApp;
+- (id)newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (unsigned long long)faceView:(id)arg1 keylineLabelAlignmentForComplicationSlot:(id)arg2;
+- (void)loadLayoutRules;
+- (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
 - (double)faceView:(id)arg1 keylineCornerRadiusForComplicationSlot:(id)arg2;
 - (id)keylineViewForComplicationSlot:(id)arg1;
-- (unsigned long long)faceView:(id)arg1 keylineLabelAlignmentForComplicationSlot:(id)arg2;
+- (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (long long)faceView:(id)arg1 legacyLayoutOverrideforComplicationType:(unsigned long long)arg2 slot:(id)arg3;
 - (void)faceView:(id)arg1 configureComplicationView:(id)arg2 forSlot:(id)arg3;
 - (id)faceView:(id)arg1 newLegacyViewForComplication:(id)arg2 family:(long long)arg3 slot:(id)arg4;

@@ -10,6 +10,7 @@
 {
     NSNumberFormatter *_currencyFormatter;
     NSNumberFormatter *_amountFormatter;
+    NSMutableCharacterSet *_allowedCharacters;
     _Bool _secureText;
     _Bool _secureVisibleText;
     _Bool _numeric;
@@ -19,12 +20,11 @@
     unsigned long long _maxLength;
     NSString *_currencyCode;
     NSString *_displayFormatPlaceholder;
-    NSMutableCharacterSet *_allowedCharacters;
     NSArray *_paddingCharacters;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *paddingCharacters; // @synthesize paddingCharacters=_paddingCharacters;
-@property(retain, nonatomic) NSMutableCharacterSet *allowedCharacters; // @synthesize allowedCharacters=_allowedCharacters;
 @property(copy, nonatomic) NSString *displayFormatPlaceholder; // @synthesize displayFormatPlaceholder=_displayFormatPlaceholder;
 @property(nonatomic) _Bool keepPaddingCharactersForSubmission; // @synthesize keepPaddingCharactersForSubmission=_keepPaddingCharactersForSubmission;
 @property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
@@ -34,9 +34,9 @@
 @property(nonatomic, getter=isSecureText) _Bool secureText; // @synthesize secureText=_secureText;
 @property(nonatomic) unsigned long long maxLength; // @synthesize maxLength=_maxLength;
 @property(nonatomic) unsigned long long minLength; // @synthesize minLength=_minLength;
-- (void).cxx_destruct;
 - (unsigned long long)fieldType;
 - (void)updateWithConfiguration:(id)arg1;
+@property(copy, nonatomic) NSMutableCharacterSet *allowedCharacters;
 - (void)updateDisplayFormat:(id)arg1;
 - (id)displayFormatPaddingCharacters;
 - (id)stringByApplyingDisplayFormat:(id)arg1;
@@ -44,6 +44,7 @@
 - (_Bool)submissionStringMeetsAllRequirements;
 - (id)_submissionStringForValue:(id)arg1;
 - (id)displayString;
+- (void)setDefaultValue:(id)arg1;
 - (void)setCurrentValue:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 

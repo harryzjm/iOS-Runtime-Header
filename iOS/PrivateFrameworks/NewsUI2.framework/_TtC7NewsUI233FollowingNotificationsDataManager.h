@@ -8,13 +8,14 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI233FollowingNotificationsDataManager : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *tagService;
     MISSING_TYPE *userNotificationCenter;
+    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *newsletterManager;
 }
 
 - (void).cxx_destruct;

@@ -12,9 +12,7 @@
     _Bool fDone;
 }
 
-- (void)doit;
 - (void)dealloc;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

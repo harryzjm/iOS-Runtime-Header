@@ -7,6 +7,7 @@
 @class PKPassHeaderView;
 
 @protocol PKPassHeaderViewDelegate
+- (void)passHeaderViewPassWasDeleted:(PKPassHeaderView *)arg1;
 - (void)passHeaderViewDidChangePass:(PKPassHeaderView *)arg1;
 @end
 

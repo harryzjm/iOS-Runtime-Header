@@ -18,10 +18,10 @@
     id <TTSSpeechService> _speechService;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <TTSSpeechService> speechService; // @synthesize speechService=_speechService;
 @property(readonly, nonatomic) TTSSpeechRequest *request; // @synthesize request=_request;
 @property(nonatomic) __weak id <TTSSpeechConnectionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (oneway void)speechRequest:(id)arg1 didSynthesizeSilentlyToURL:(id)arg2;
 - (oneway void)speechRequest:(id)arg1 didStopWithSuccess:(_Bool)arg2 phonemesSpoken:(id)arg3 forService:(id)arg4 error:(id)arg5;
 - (oneway void)speechRequest:(id)arg1 withMark:(long long)arg2 didStartForRange:(struct _NSRange)arg3 forService:(id)arg4;
@@ -33,7 +33,7 @@
 - (void)stopCurrentSpeechRequestAtMark:(long long)arg1 waitUntilStopped:(_Bool)arg2;
 - (void)startSpeechRequest:(id)arg1;
 - (_Bool)isSystemSpeakingOnBehalfOfCurrentConnection;
-- (id)availableVoicesForLanguageCode:(id)arg1;
+- (id)availableVoicesForLanguageCode:(id)arg1 queryingMobileAssets:(_Bool)arg2;
 - (void)_setRequest:(id)arg1;
 - (void)dealloc;
 - (id)init;

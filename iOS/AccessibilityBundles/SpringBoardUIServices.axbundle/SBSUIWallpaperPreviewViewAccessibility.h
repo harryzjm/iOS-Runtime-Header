@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperView:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 wallpaperView:(id)arg2 disableParallax:(_Bool)arg3;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

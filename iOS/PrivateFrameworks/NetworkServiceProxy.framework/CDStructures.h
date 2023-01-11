@@ -13,7 +13,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 struct networkParameters {
     _Bool _field1;
     _Bool _field2;
-    _Bool _field3;
 };
 
 struct nw_frame;

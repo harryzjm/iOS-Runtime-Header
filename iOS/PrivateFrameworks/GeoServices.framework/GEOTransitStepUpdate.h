@@ -13,23 +13,21 @@
 @interface GEOTransitStepUpdate : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOInstructionSet *_instructions;
     GEOTransitScheduleInfo *_scheduleInfo;
     NSData *_updateIdentifier;
     GEOTransitVehiclePositionInfo *_vehiclePositionInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_instructions:1;
         unsigned int read_scheduleInfo:1;
         unsigned int read_updateIdentifier:1;
         unsigned int read_vehiclePositionInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_instructions:1;
-        unsigned int wrote_scheduleInfo:1;
-        unsigned int wrote_updateIdentifier:1;
-        unsigned int wrote_vehiclePositionInfo:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,20 +43,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOTransitScheduleInfo *scheduleInfo;
 @property(readonly, nonatomic) _Bool hasScheduleInfo;
-- (void)_readScheduleInfo;
 @property(retain, nonatomic) GEOTransitVehiclePositionInfo *vehiclePositionInfo;
 @property(readonly, nonatomic) _Bool hasVehiclePositionInfo;
-- (void)_readVehiclePositionInfo;
 @property(retain, nonatomic) GEOInstructionSet *instructions;
 @property(readonly, nonatomic) _Bool hasInstructions;
-- (void)_readInstructions;
 @property(retain, nonatomic) NSData *updateIdentifier;
 @property(readonly, nonatomic) _Bool hasUpdateIdentifier;
-- (void)_readUpdateIdentifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

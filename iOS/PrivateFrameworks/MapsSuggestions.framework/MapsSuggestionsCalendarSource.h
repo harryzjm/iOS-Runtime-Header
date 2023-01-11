@@ -4,55 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MapsSuggestions/MapsSuggestionsEventKitObserver-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsPreloadableSource-Protocol.h>
 
-@class EKCalendarVisibilityManager, EKEventStore, MapsSuggestionsCanKicker, MapsSuggestionsNetworkRequester, NSMutableDictionary, NSObject, NSSet, NSString;
+@class MapsSuggestionsEventKit, NSObject, NSString;
 @protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue;
 
-@interface MapsSuggestionsCalendarSource <MapsSuggestionsPreloadableSource>
+@interface MapsSuggestionsCalendarSource <MapsSuggestionsEventKitObserver, MapsSuggestionsPreloadableSource>
 {
-    _Bool _suspended;
-    EKEventStore *_eventStore;
-    EKCalendarVisibilityManager *_calVisibilityManager;
-    NSObject<OS_dispatch_queue> *_fimQueue;
-    NSMutableDictionary *_handleToGEOMapItemMapping;
-    NSString *_siriFoundThisString;
-    MapsSuggestionsNetworkRequester *_requester;
-    NSSet *_setOfEventReservationSubtypes;
-    MapsSuggestionsCanKicker *_changedNotificationCanKicker;
+    MapsSuggestionsEventKit *_eventKit;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (unsigned long long)disposition;
 + (_Bool)isEnabled;
-@property(retain, nonatomic) MapsSuggestionsCanKicker *changedNotificationCanKicker; // @synthesize changedNotificationCanKicker=_changedNotificationCanKicker;
-@property(retain, nonatomic) NSSet *setOfEventReservationSubtypes; // @synthesize setOfEventReservationSubtypes=_setOfEventReservationSubtypes;
-@property(retain, nonatomic) MapsSuggestionsNetworkRequester *requester; // @synthesize requester=_requester;
-@property(retain, nonatomic) NSString *siriFoundThisString; // @synthesize siriFoundThisString=_siriFoundThisString;
-@property(retain, nonatomic) NSMutableDictionary *handleToGEOMapItemMapping; // @synthesize handleToGEOMapItemMapping=_handleToGEOMapItemMapping;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *fimQueue; // @synthesize fimQueue=_fimQueue;
-@property(retain, nonatomic) EKCalendarVisibilityManager *calVisibilityManager; // @synthesize calVisibilityManager=_calVisibilityManager;
-@property(retain, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
-@property _Bool suspended; // @synthesize suspended=_suspended;
 - (void).cxx_destruct;
-- (void)dealloc;
+- (void)eventKitDidChange:(id)arg1;
 - (_Bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)canProduceEntriesOfType:(long long)arg1;
-- (id)_predicateForPeriod:(struct NSDateInterval *)arg1;
-- (long long)_entryTypeFromSchema:(id)arg1;
-- (_Bool)_addRestaurantReservationFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
-- (_Bool)_addCalendarEventFieldsToEntry:(id)arg1 event:(id)arg2;
-- (_Bool)_addTicketedEventFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
-- (_Bool)_addCarRentalFieldsToEntry:(id)arg1 event:(id)arg2;
-- (_Bool)_addHotelFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
-- (_Bool)_addTravelFlightFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
-- (_Bool)_createEntriesWithinPeriod:(struct NSDateInterval *)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (_Bool)suggestionsEntriesAtLocation:(id)arg1 period:(struct NSDateInterval *)arg2 handler:(CDUnknownBlockType)arg3;
-- (double)updateSuggestionEntries;
+- (_Bool)suggestionsEntriesAtLocation:(id)arg1 period:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
-- (void)_callUpdateSuggestionEntries;
 - (void)start;
-- (void)eventStoreDidChange:(id)arg1;
-- (id)initWithDelegate:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
+- (id)initWithDelegate:(id)arg1 eventKit:(id)arg2 name:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

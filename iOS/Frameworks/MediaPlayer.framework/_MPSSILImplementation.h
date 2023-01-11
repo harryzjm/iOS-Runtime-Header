@@ -7,6 +7,7 @@
 @class MPRandomDistribution, NSMutableArray;
 @protocol _MPSSILDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _MPSSILImplementation
 {
     MPRandomDistribution *_randomDistribution;
@@ -14,9 +15,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *candidateItems; // @synthesize candidateItems=_candidateItems;
 @property(readonly, nonatomic) MPRandomDistribution *randomDistribution; // @synthesize randomDistribution=_randomDistribution;
-- (void).cxx_destruct;
 - (void)_dequeueCandidatesWithQuota:(long long)arg1 withExclusiveAccessToken:(id)arg2;
 - (id)_createShuffleCloneForItem:(id)arg1 inSection:(id)arg2 withExclusiveAccessToken:(id)arg3;
 - (void)_appendShuffledItems:(id)arg1 withExclusiveAccessToken:(id)arg2;
@@ -34,7 +35,6 @@
 - (void)addDataSource:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3 afterTailOfSection:(id)arg4;
 - (void)addDataSource:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3 afterItem:(id)arg4 inSection:(id)arg5;
 - (void)addDataSourceAtStart:(id)arg1 section:(id)arg2 sequentially:(_Bool)arg3;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtItem:(id)arg2 inSection:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (void)safelyReshuffleAfterItem:(id)arg1 inSection:(id)arg2;
 - (void)dequeueCandidatesWithQuota:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1 withExclusiveAccessToken:(id)arg2;

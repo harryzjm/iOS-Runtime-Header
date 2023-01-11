@@ -24,6 +24,7 @@
     unsigned int _totalPacketsSentOnLink;
     unsigned int _totalPacketsReceivedOnLink;
     _Bool _hbStarted;
+    double _hbStartTime;
     unsigned short _hbCounter;
     unsigned char _statsIntervalInSeconds;
     BOOL _linkID;
@@ -81,14 +82,19 @@
     unsigned int _testOptions;
     _Bool _isDisconnecting;
     double _triggeredCheckTime;
+    NSObject<OS_dispatch_source> *_probingTimer;
+    _Bool _isRealloc;
+    NSObject<OS_dispatch_source> *_allocbindFailoverTimer;
 }
 
 + (id)candidatePairWithLocalCandidate:(id)arg1 remoteCandidate:(id)arg2 sessionID:(id)arg3 delegate:(id)arg4 sendMsgBlock:(CDUnknownBlockType)arg5;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool serverIsDegraded; // @synthesize serverIsDegraded=_serverIsDegraded;
 @property(readonly) NSDictionary *participantIDMap; // @synthesize participantIDMap=_participantIDMap;
 @property(readonly) NSData *hmacKey; // @synthesize hmacKey=_hmacKey;
 @property(readonly) NSData *decKey; // @synthesize decKey=_decKey;
 @property(readonly) NSData *encKey; // @synthesize encKey=_encKey;
+@property(nonatomic) _Bool isRealloc; // @synthesize isRealloc=_isRealloc;
 @property(nonatomic) _Bool sentSKEData; // @synthesize sentSKEData=_sentSKEData;
 @property(nonatomic) _Bool recvSKEData; // @synthesize recvSKEData=_recvSKEData;
 @property(readonly, nonatomic) unsigned int sessionInfoReqCount; // @synthesize sessionInfoReqCount=_sessionInfoReqCount;
@@ -105,8 +111,10 @@
 @property(nonatomic) unsigned short channelNumber; // @synthesize channelNumber=_channelNumber;
 @property(readonly) NSDictionary *sessionInfoDict; // @synthesize sessionInfoDict=_sessionInfoDict;
 @property(readonly) IDSQuickRelaySessionInfo *relaySessionInfo; // @synthesize relaySessionInfo=_relaySessionInfo;
+@property(retain) NSObject<OS_dispatch_source> *allocbindFailoverTimer; // @synthesize allocbindFailoverTimer=_allocbindFailoverTimer;
 @property(copy) NSUUID *linkUUID; // @synthesize linkUUID=_linkUUID;
 @property(readonly, nonatomic) unsigned char statsIntervalInSeconds; // @synthesize statsIntervalInSeconds=_statsIntervalInSeconds;
+@property(nonatomic) double hbStartTime; // @synthesize hbStartTime=_hbStartTime;
 @property(nonatomic) unsigned int totalPacketsReceivedOnLink; // @synthesize totalPacketsReceivedOnLink=_totalPacketsReceivedOnLink;
 @property(nonatomic) unsigned int totalPacketsSentOnLink; // @synthesize totalPacketsSentOnLink=_totalPacketsSentOnLink;
 @property(nonatomic) double lastOutgoingPacketTime; // @synthesize lastOutgoingPacketTime=_lastOutgoingPacketTime;
@@ -140,7 +148,6 @@
 @property(readonly) IDSStunCandidate *remote; // @synthesize remote=_remote;
 @property(readonly) IDSStunCandidate *local; // @synthesize local=_local;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (void)_notifyQREventAdded:(id)arg1;
 - (void)_notifySessionStreamInfoReceived:(id)arg1 withParticipants:(id)arg2 sentBytes:(unsigned long long)arg3 receivedBytes:(unsigned long long)arg4 offlineRequest:(_Bool)arg5 streamInfoRequest:(_Bool)arg6 success:(_Bool)arg7;
 - (void)processSessionInfoRequestTimeout:(id)arg1;
@@ -153,6 +160,9 @@
 - (_Bool)processInfoResponse:(id)arg1 packetBuffer:(CDStruct_12676517 *)arg2 headerOverhead:(unsigned long long)arg3;
 - (_Bool)_optionallyCheckEncMarker:(id)arg1;
 - (_Bool)processStatsResponse:(id)arg1 arrivalTime:(double)arg2;
+- (void)stopLinkProbingTimer;
+- (void)startLinkProbingTimer:(unsigned int)arg1;
+- (void)_handleLinkProbingTimer;
 - (void)sendTestRequest:(id)arg1;
 - (void)sendSessionInfoRequest:(id)arg1 options:(id)arg2;
 - (void)sendInfoRequest:(id)arg1;
@@ -171,6 +181,7 @@
 - (void)setProtocolVersion:(unsigned char)arg1 isInitiator:(_Bool)arg2 enableSKE:(_Bool)arg3;
 - (void)setRelayLinkID:(unsigned short)arg1;
 - (_Bool)hasValidCapabilityFlags;
+- (_Bool)hasNoSessionStateTestOptions;
 - (void)setTestOptionsFromUserDefaults;
 - (void)setChannelSettings:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned short hbCounter; // @synthesize hbCounter=_hbCounter;

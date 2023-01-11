@@ -15,6 +15,7 @@
 - (id)tiltedTabView:(id)arg1 snapshotViewForItemAtIndex:(unsigned long long)arg2;
 - (id)tiltedTabView:(id)arg1 contentViewForItemAtIndex:(unsigned long long)arg2;
 - (void)tiltedTabViewDidDismiss:(id)arg1;
+- (void)dismiss;
 - (void)tiltedTabViewDidPresent:(id)arg1;
 - (void)_axPrepareDockedLabelForIndex:(long long)arg1;
 

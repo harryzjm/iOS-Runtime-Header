@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class RLMRealm;
+@class RLMFastEnumerator, RLMRealm;
 
 @protocol RLMFastEnumerable
 @property(readonly, nonatomic) unsigned long long count;
 @property(readonly, nonatomic) struct RLMClassInfo *objectInfo;
 @property(readonly, nonatomic) RLMRealm *realm;
+- (RLMFastEnumerator *)fastEnumerator;
 - (struct TableView)tableView;
-- (unsigned long long)indexInSource:(unsigned long long)arg1;
 @end
 

@@ -8,23 +8,25 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSMutableDictionary, NSSet;
 @protocol PKCloudStoreCoding;
 
 @interface PKCloudRecordObject : NSObject <NSSecureCoding>
 {
-    NSArray *_records;
+    NSMutableDictionary *_recordIDToRecord;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *records; // @synthesize records=_records;
 - (void).cxx_destruct;
+- (id)primaryIdentifier;
+- (void)applyCloudRecordObject:(id)arg1;
 - (id)_descriptionWithDetailedOutput:(_Bool)arg1;
 - (id)description;
 - (id)descriptionWithItem:(_Bool)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSObject<PKCloudStoreCoding> *item;
+@property(readonly, nonatomic) NSSet *records;
 - (id)initWithRecords:(id)arg1;
 
 @end

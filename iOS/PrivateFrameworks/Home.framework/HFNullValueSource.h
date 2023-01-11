@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFLightProfileValueSource-Protocol.h>
 #import <Home/HFMediaValueSource-Protocol.h>
 
 @class NSString;
 @protocol HFCharacteristicOperationContextProviding;
 
-@interface HFNullValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
+@interface HFNullValueSource : NSObject <HFLightProfileValueSource, HFCharacteristicValueSource, HFMediaValueSource>
 {
 }
 
 + (id)na_identity;
+- (void)clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(_Bool)arg2;
 - (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
 - (_Bool)hasPendingWritesForRouteID:(id)arg1;
 - (id)writePlaybackState:(long long)arg1 playbackArchive:(id)arg2 forRouteID:(id)arg3;
@@ -30,6 +32,10 @@
 - (id)writeValuesForCharacteristics:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
+- (void)fetchNaturalLightColorTemperatureForBrightness:(long long)arg1 lightProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)writeNaturalLightEnabledState:(_Bool)arg1 forProfile:(id)arg2;
+- (_Bool)isNaturalLightingEnabledForProfile:(id)arg1;
+- (_Bool)isNaturalLightingSupportedForProfile:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) id <HFCharacteristicOperationContextProviding> contextProvider;

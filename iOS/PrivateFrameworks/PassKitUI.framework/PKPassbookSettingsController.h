@@ -11,19 +11,19 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentVerificationControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
+#import <PassKitUI/PKSubcredentialProvisioningFlowControllerDelegate-Protocol.h>
 #import <PassKitUI/PKSwitchSpinnerTableCellDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PKAccountService, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
+@class NSArray, NSMutableDictionary, NSString, PKAccountService, PKContactFormatValidator, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDelegate, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
 
-@interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKPaymentVerificationControllerDelegate, PKPaymentPassTableCellDelegate>
+@interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKSubcredentialProvisioningFlowControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentPassTableCellDelegate>
 {
     id <PKPassbookSettingsDataSource> _dataSource;
     id <PKPassLibraryDataProvider> _passLibraryDataProvider;
     id <PKPaymentDataProvider> _paymentDataProvider;
     id <PKPaymentOptionsProtocol> _optionsDelegate;
     long long _context;
-    PKPaymentSetupAboutViewController *_privacyController;
     PKPaymentPreferencesViewController *_defaultCardsController;
     PKPaymentPreference *_availableCards;
     PKPaymentPreferenceCard *_unavailableCards;
@@ -51,6 +51,7 @@
     id <PKPassbookPeerPaymentSettingsDelegate> _peerPaymentDelegate;
     PKPeerPaymentWebService *_peerPaymentWebService;
     PSSpecifier *_peerPaymentSwitchSpecifier;
+    PSSpecifier *_peerPaymentTinkerSetupButton;
     PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     PKPeerPaymentAccount *_peerPaymentAccount;
     _Bool _registeringForPeerPayment;
@@ -64,11 +65,16 @@
     NSMutableDictionary *_latestTransitBalanceModel;
     id <PKPaymentDataProvider> _companionPaymentDataProvider;
     int _notifyToken;
+    PKContactFormatValidator *_contactFormatValidator;
+    _Bool _ownerCredentialSharingAllowed;
+    _Bool _canAcceptCredentialInvitations;
     id <PKPassbookSettingsDelegate> _delegate;
 }
 
-@property(nonatomic) id <PKPassbookSettingsDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPassbookSettingsDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)userCanceledPairingWithSubcredentialProvisioningFlowController:(id)arg1;
+- (void)subcredentialProvisioningFlowController:(id)arg1 didFinishWithPass:(id)arg2 error:(id)arg3;
 - (void)_updateCardSpecifier:(id)arg1 withAccountStateForPaymentPass:(id)arg2;
 - (void)_updateBalancesWithServerBalances:(id)arg1 transitPassProperties:(id)arg2 forPassWithUniqueIdentifier:(id)arg3;
 - (void)_fetchBalancesAndTransitPassPropertiesForPass:(id)arg1 withDataProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -78,6 +84,9 @@
 - (void)_setCardAddProvisioningButtonEnabled:(_Bool)arg1 forPaymentPass:(id)arg2;
 - (void)_requestDelegatePresentViewController:(id)arg1;
 - (void)_handleProvisioningError:(id)arg1 viewController:(id)arg2;
+- (void)_presentCredentialSetupViewControllerForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_credentialPairingContextForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_matchingInvitationForPass:(id)arg1 withInvitations:(id)arg2;
 - (void)_presentPaymentSetupViewController:(id)arg1 paymentPass:(id)arg2;
 - (void)verifyButtonPressedForPaymentPass:(id)arg1;
 - (void)addButtonPressedForPaymentPass:(id)arg1;
@@ -92,6 +101,8 @@
 - (id)_peerPaymentSwitchSpecifier;
 - (void)_checkPairedDeviceSupportOfHiddenPassesAndRefreshUIIfNecessary;
 - (void)_accountServiceAccountDidChangeNotification:(id)arg1;
+- (void)setupPeerPaymentTinkerButtonTapped;
+- (id)_peerPaymentTinkerGroupSpecifiers;
 - (id)_peerPaymentGroupSpecifiers;
 - (void)_unregisterForPeerPaymentWithSpecifier:(id)arg1;
 - (void)_presentPeerPaymentSetupFlowWithAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -107,6 +118,7 @@
 - (void)_peerPaymentWebServiceDidChangeNotification:(id)arg1;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
+- (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
 - (id)_displayableStringForLabeledValue:(id)arg1;
 - (id)_getDefaultContactPhone;
 - (id)_getDefaultContactEmail;
@@ -139,6 +151,8 @@
 - (id)_passSpecifiersForPasses:(id)arg1 peerPaymentPassUniqueID:(id)arg2 showPeerPaymentSetup:(_Bool)arg3;
 - (id)_passSpecifiersForPasses:(id)arg1;
 - (void)openPaymentSetupWithMode:(long long)arg1 referrerIdentifier:(id)arg2 allowedFeatureIdentifiers:(id)arg3;
+- (_Bool)canShareCompanionPass:(id)arg1;
+- (id)watchPassReaderIdentifiers;
 - (long long)_paymentPreferencesStyle;
 - (void)openPeerPaymentSetupWithCurrenyAmount:(id)arg1 state:(unsigned long long)arg2 senderAddress:(id)arg3;
 - (void)addCardTappedForPaymentPassWithUniqueID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -159,6 +173,7 @@
 - (id)_restrictedModeSpecifier;
 - (id)_settingsSpecifiers;
 - (id)_bridgeSpecifiers;
+- (void)_refreshCompanionGroupSpecififiers;
 - (void)_updateCompanionGroupSpecifier;
 - (void)_updateCardsGroupSpecifier;
 - (void)_updateAddButtonSpecifier;

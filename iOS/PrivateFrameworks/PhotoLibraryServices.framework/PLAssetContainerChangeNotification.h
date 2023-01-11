@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSObject;
+@class NSDictionary, NSObject, PLManagedObject;
 @protocol PLAlbumProtocol, PLAssetContainer;
 
 @interface PLAssetContainerChangeNotification
@@ -19,12 +19,12 @@
 - (void)_calculateDiffs;
 - (_Bool)_getOldSet:(id *)arg1 newSet:(id *)arg2;
 - (id)_contentRelationshipName;
-- (id)assetContainer;
+@property(readonly, nonatomic) id <PLAssetContainer> assetContainer;
 - (_Bool)hasDeletes;
 @property(readonly, nonatomic) _Bool keyAssetDidChange;
 @property(readonly, nonatomic) _Bool titleDidChange;
 @property(readonly, nonatomic) NSObject<PLAlbumProtocol> *album;
-@property(readonly, nonatomic) id <PLAssetContainer> container;
+@property(readonly, nonatomic) PLManagedObject *container;
 - (id)description;
 - (id)userInfo;
 - (id)name;

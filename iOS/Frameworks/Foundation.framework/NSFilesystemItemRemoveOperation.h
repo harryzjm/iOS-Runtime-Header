@@ -4,29 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSString;
+@class NSError, NSFileManager, NSString;
 
 __attribute__((visibility("hidden")))
 @interface NSFilesystemItemRemoveOperation
 {
-    id _delegate;
+    NSFileManager *_fm;
     NSString *_removePath;
     NSError *_error;
     void *_state;
-    _Bool _filterUnderbars;
 }
 
-+ (id)filesystemItemRemoveOperationWithPath:(id)arg1;
++ (id)filesystemItemRemoveOperationWithPath:(id)arg1 fileManager:(id)arg2;
 + (id)_errorWithErrno:(int)arg1 atPath:(id)arg2;
+@property(readonly) NSFileManager *fileManager; // @synthesize fileManager=_fm;
 - (void)dealloc;
 - (void)main;
-- (id)initWithPath:(id)arg1;
-- (_Bool)_filtersUnderbars;
-- (void)_setFilterUnderbars:(_Bool)arg1;
+- (id)initWithPath:(id)arg1 fileManager:(id)arg2;
+- (_Bool)_delegateSaysProceedAfterError:(id)arg1 removingItemAtPath:(id)arg2;
+- (_Bool)_delegateSaysShouldRemoveItemAtPath:(id)arg1;
 - (void)_setError:(id)arg1;
 - (id)error;
-- (void)setDelegate:(id)arg1;
-- (id)delegate;
 
 @end
 

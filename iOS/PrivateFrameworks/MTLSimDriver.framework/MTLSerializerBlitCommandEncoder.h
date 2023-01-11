@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
+- (void)resolveCounters:(id)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4;
 - (void)resetTextureAccessCounters:(id)arg1 region:(CDStruct_caaed6bc)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4;
 - (void)getTextureAccessCounters:(id)arg1 region:(CDStruct_caaed6bc)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4 resetCounters:(_Bool)arg5 countersBuffer:(id)arg6 countersBufferOffset:(unsigned long long)arg7;
 - (void)copyFromTexture:(id)arg1 toTexture:(id)arg2;

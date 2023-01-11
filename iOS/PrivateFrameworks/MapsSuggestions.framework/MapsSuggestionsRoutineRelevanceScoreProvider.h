@@ -8,23 +8,20 @@
 
 #import <MapsSuggestions/MapsSuggestionsRelevanceScoreProvider-Protocol.h>
 
-@class MapsSuggestionsRoutine, NSDate, NSString;
+@class MapsSuggestionsRoutine, NSArray, NSDate, NSString;
 
 @interface MapsSuggestionsRoutineRelevanceScoreProvider : NSObject <MapsSuggestionsRelevanceScoreProvider>
 {
     NSDate *_fetchEntriesFromDate;
     struct Queue _queue;
     MapsSuggestionsRoutine *_routine;
-    struct NSArray *_routineLocations;
+    NSArray *_routineLocations;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (_Bool)_fetchLOIsWithCallback:(CDUnknownBlockType)arg1;
-- (id)_confidencesForMapItem:(id)arg1;
-- (id)_confidencesForMapItems:(id)arg1;
 - (void)preLoad;
-- (_Bool)relevanceScoreForNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)relevanceScoreForNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithRoutine:(id)arg1;
 @property(readonly, nonatomic) NSString *uniqueName;
 

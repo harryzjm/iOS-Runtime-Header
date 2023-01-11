@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFAccessoryInfoItem, HMAccessory, HMHome, NSMutableSet;
+@class HFAccessoryInfoItem, HFAccessoryNetworkInfoItem, HMAccessory, HMHome, NSMutableSet;
 @protocol HFCharacteristicValueSource;
 
 @interface HFAccessoryInfoDetailsItemProvider
@@ -15,20 +15,20 @@
     HMAccessory *_accessory;
     HFAccessoryInfoItem *_firmwareItem;
     HFAccessoryInfoItem *_softwareItem;
-    HFAccessoryInfoItem *_wifiItem;
+    HFAccessoryNetworkInfoItem *_networkItem;
 }
 
 + (id)_displayValueForCachedValue:(id)arg1 characteristicType:(id)arg2 accessoryInfoService:(id)arg3;
 + (CDUnknownBlockType)accessoryInfoServiceDetailComparator;
 + (id)preferredCharacteristicOrderArray;
-@property(readonly, nonatomic) HFAccessoryInfoItem *wifiItem; // @synthesize wifiItem=_wifiItem;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) HFAccessoryNetworkInfoItem *networkItem; // @synthesize networkItem=_networkItem;
 @property(readonly, nonatomic) HFAccessoryInfoItem *softwareItem; // @synthesize softwareItem=_softwareItem;
 @property(readonly, nonatomic) HFAccessoryInfoItem *firmwareItem; // @synthesize firmwareItem=_firmwareItem;
 @property(retain, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property(retain, nonatomic) NSMutableSet *accessoryInfoDetailItems; // @synthesize accessoryInfoDetailItems=_accessoryInfoDetailItems;
 @property(retain, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

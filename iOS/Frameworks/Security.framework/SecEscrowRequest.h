@@ -16,8 +16,8 @@
 }
 
 + (id)request:(id *)arg1;
-@property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
+@property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (_Bool)pendingEscrowUpload:(id *)arg1;
 - (unsigned long long)storePrerecordsInEscrow:(id *)arg1;
 - (_Bool)resetAllRequests:(id *)arg1;
@@ -26,6 +26,7 @@
 - (id)fetchPrerecord:(id)arg1 error:(id *)arg2;
 - (_Bool)cachePrerecord:(id)arg1 serializedPrerecord:(id)arg2 error:(id *)arg3;
 - (_Bool)triggerEscrowUpdate:(id)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (id)initWithConnection:(id)arg1;
 
 // Remaining properties

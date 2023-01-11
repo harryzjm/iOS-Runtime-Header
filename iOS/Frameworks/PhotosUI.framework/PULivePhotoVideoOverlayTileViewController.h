@@ -9,7 +9,7 @@
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class ISWrappedAVPlayer, NSArray, NSString, PHLivePhotoView, PUAssetReference, PUBrowsingViewModel, PUMergedLivePhotosVideo, PUModelTileTransform, PUOneUpMergedVideoProvider, PXImageLayerModulator, PXImageModulationManager, UIImpactFeedbackGenerator, UIView;
+@class ISWrappedAVPlayer, NSArray, NSString, PHLivePhotoView, PUAssetReference, PUBrowsingViewModel, PUMergedLivePhotosVideo, PUModelTileTransform, PUOneUpMergedVideoProvider, PXImageModulationManager, PXLivePhotoViewModulator, UIImpactFeedbackGenerator, UIView;
 @protocol PULivePhotoVideoOverlayTileViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -29,13 +29,14 @@ __attribute__((visibility("hidden")))
     ISWrappedAVPlayer *_videoPlayer;
     id _videoPlayerTimeObserver;
     PUModelTileTransform *_modelTileTransform;
-    PXImageLayerModulator *_imageLayerModulator;
+    PXLivePhotoViewModulator *_livePhotoViewModulator;
     PUAssetReference *_playbackAssetReference;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool willEndCurrentPlayback; // @synthesize willEndCurrentPlayback=_willEndCurrentPlayback;
 @property(retain, nonatomic) PUAssetReference *playbackAssetReference; // @synthesize playbackAssetReference=_playbackAssetReference;
-@property(retain, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
+@property(retain, nonatomic) PXLivePhotoViewModulator *livePhotoViewModulator; // @synthesize livePhotoViewModulator=_livePhotoViewModulator;
 @property(retain, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
 @property(retain, nonatomic) id videoPlayerTimeObserver; // @synthesize videoPlayerTimeObserver=_videoPlayerTimeObserver;
 @property(retain, nonatomic) ISWrappedAVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
@@ -49,12 +50,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isPresentedForSecondScreen; // @synthesize isPresentedForSecondScreen=_isPresentedForSecondScreen;
 @property(retain, nonatomic) PUOneUpMergedVideoProvider *mergedVideoProvider; // @synthesize mergedVideoProvider=_mergedVideoProvider;
 @property(retain, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
-- (void).cxx_destruct;
 - (void)_updatePlaybackEnabled;
 - (void)_videoCurrentTimeDidChange:(CDStruct_1b6d18a9)arg1;
 - (void)_updateMergedVideo;
-- (void)_updateImageLayerModulatorInput;
-- (void)_updateImageLayerModulator;
+- (void)_updateLivePhotoViewModulatorInput;
+- (void)_updateLivePhotoViewModulator;
 - (void)_updateLivePhotoViewPhoto;
 - (void)_updateLivePhotoViewFrame;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;

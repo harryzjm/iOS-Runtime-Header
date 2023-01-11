@@ -21,9 +21,6 @@
     _Bool _pad;
 }
 
-+ (id)MIMEType;
-+ (_Bool)canDecodeDownloadHeaderData:(id)arg1;
-+ (_Bool)decodeDownloadHeader:(id)arg1 headerLength:(int *)arg2 modificationTime:(unsigned long long *)arg3 filename:(id *)arg4;
 - (id)filenameWithOriginalFilename:(id)arg1;
 - (id)fileAttributes;
 - (_Bool)finishDownloadDecoding;

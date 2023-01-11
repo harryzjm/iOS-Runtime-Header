@@ -23,6 +23,7 @@
     EFObservable<EFObserver> *_observableObserver;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) EFObservable<EFObserver> *observableObserver; // @synthesize observableObserver=_observableObserver;
 @property(retain, nonatomic) MFAddressAtomStatusManager *atomManager; // @synthesize atomManager=_atomManager;
 @property(copy, nonatomic) NSArray *bccList; // @synthesize bccList=_bccList;
@@ -32,7 +33,8 @@
 @property(copy, nonatomic) MFMailboxUid *mailbox; // @synthesize mailbox=_mailbox;
 @property(copy, nonatomic) ECSubject *subject; // @synthesize subject=_subject;
 @property(copy, nonatomic) NSDate *dateSent; // @synthesize dateSent=_dateSent;
-- (void).cxx_destruct;
+- (_Bool)_flagsChangedInModel:(id)arg1;
+- (id)updatedModelWithMessage:(id)arg1;
 - (id)updatedFlagsModelWithBuilder:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) EFObservable *modelObservable;
 - (id)copyWithZone:(struct _NSZone *)arg1;

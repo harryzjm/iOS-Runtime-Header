@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSHashTable;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface AFNowPlayingObserver : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_group> *_playbackStateGroup;
+    long long _playbackStateGroupDepth;
     long long _playbackState;
     NSHashTable *_listeners;
     _Bool _isObserving;
@@ -19,13 +21,17 @@
 
 + (id)defaultObserver;
 - (void).cxx_destruct;
-- (void)_fetchNowPlayingAppPlaybackState;
+- (void)_fetchNowPlayingAppPlaybackStateForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleNowPlayingApplicationPlaybackStateChange:(long long)arg1;
+- (void)nowPlayingInfoDidChange:(id)arg1;
 - (void)nowPlayingApplicationPlaybackStateChanged:(id)arg1;
 - (void)_stopObservingNowPlayingAppPlaybackState;
 - (void)_startObservingNowPlayingAppPlaybackState;
+- (void)_endGroup;
+- (void)_beginGroup;
 - (void)removeListener:(id)arg1;
 - (void)addListener:(id)arg1;
+- (void)getNowPlayingInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPlaybackStateWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) long long playbackState;
 - (void)dealloc;

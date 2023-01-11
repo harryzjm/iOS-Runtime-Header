@@ -13,9 +13,10 @@
 
 @interface GKNicknameController : NSObject <UITextFieldDelegate>
 {
+    _Bool _nicknameWasEdited;
     _Bool _nicknameChangeWasCommitted;
     _Bool _shouldShakeTextFieldOnError;
-    _Bool _nicknameWasEdited;
+    _Bool _shouldUseSuggestedNicknameOnDefaultNickname;
     UITextField *_nickname;
     UIActivityIndicatorView *_activityIndicator;
     id <GKNicknameControllerDelegate> _delegate;
@@ -23,15 +24,17 @@
     NSArray *_suggestedNicknames;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *suggestedNicknames; // @synthesize suggestedNicknames=_suggestedNicknames;
 @property(retain, nonatomic) GKReachability *reachability; // @synthesize reachability=_reachability;
-@property(nonatomic) _Bool nicknameWasEdited; // @synthesize nicknameWasEdited=_nicknameWasEdited;
 @property __weak id <GKNicknameControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property(nonatomic) _Bool shouldUseSuggestedNicknameOnDefaultNickname; // @synthesize shouldUseSuggestedNicknameOnDefaultNickname=_shouldUseSuggestedNicknameOnDefaultNickname;
 @property(nonatomic) _Bool shouldShakeTextFieldOnError; // @synthesize shouldShakeTextFieldOnError=_shouldShakeTextFieldOnError;
 @property(nonatomic) _Bool nicknameChangeWasCommitted; // @synthesize nicknameChangeWasCommitted=_nicknameChangeWasCommitted;
+@property(nonatomic) _Bool nicknameWasEdited; // @synthesize nicknameWasEdited=_nicknameWasEdited;
 @property(retain, nonatomic) UITextField *nickname; // @synthesize nickname=_nickname;
-- (void).cxx_destruct;
+- (void)loadSuggestedNicknames:(CDUnknownBlockType)arg1;
 - (void)textFieldDidResignFirstResponder:(id)arg1;
 - (void)textFieldDidBecomeFirstResponder:(id)arg1;
 - (void)keyboardWillHide:(id)arg1;
@@ -39,10 +42,12 @@
 - (void)shakeNicknameTextFieldWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)nicknameTextChanged:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
+- (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (void)reset;
 - (void)didSelectSuggestion:(id)arg1;
 - (void)displayNicknameSuggestions;
 - (_Bool)textFieldShouldReturn:(id)arg1;
+- (void)commitNicknameChanges:(CDUnknownBlockType)arg1;
 - (void)startObservingKeyboardEvents;
 - (void)stopObservingKeyboardEvents;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;

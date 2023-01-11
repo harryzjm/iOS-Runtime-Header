@@ -15,7 +15,7 @@
     id <MPSHandle> _handle;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_d6af7fc0 *)arg4;
 - (void)setEdgeMode:(unsigned long long)arg1;
 - (void)setLabel:(id)arg1;

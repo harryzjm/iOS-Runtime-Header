@@ -11,6 +11,7 @@
 + (id)notPredicateOperator;
 + (id)orPredicateOperator;
 + (id)andPredicateOperator;
++ (void)initialize;
 - (_Bool)evaluatePredicates:(id)arg1 withObject:(id)arg2 substitutionVariables:(id)arg3;
 - (_Bool)evaluatePredicates:(id)arg1 withObject:(id)arg2;
 - (id)symbol;

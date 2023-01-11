@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
+#import <UIKitCore/_UIPopoverDimmingViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIPopoverLayoutInfo, _UIPopoverView;
+@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, _UICutoutShadowView, _UIPopoverDimmingView, _UIPopoverLayoutInfo, _UIPopoverView;
 @protocol UIPopoverPresentationControllerDelegate;
 
-@interface UIPopoverPresentationController <UIDimmingViewDelegate, UIGestureRecognizerDelegatePrivate>
+@interface UIPopoverPresentationController <_UIPopoverDimmingViewDelegate, UIGestureRecognizerDelegatePrivate>
 {
     UIViewController *_contentViewController;
     _UIPopoverView *_popoverView;
-    UIDimmingView *_dimmingView;
-    UIVisualEffectView *_shadowView;
+    _UIPopoverDimmingView *_dimmingView;
+    _UICutoutShadowView *_shadowView;
     UIView *_layoutConstraintView;
     struct CGRect _targetRectInEmbeddingView;
     UIBarButtonItem *_targetBarButtonItem;
@@ -26,7 +26,6 @@
     _UIPopoverLayoutInfo *_preferredLayoutInfo;
     Class _popoverBackgroundViewClass;
     struct CGSize _popoverContentSize;
-    struct CGRect _targetRectInContainerView;
     struct CGRect _embeddedTargetRect;
     long long _popoverControllerStyle;
     _Bool _ignoresKeyboardNotifications;
@@ -58,6 +57,9 @@
         unsigned int embeddedPresentationBounces:1;
         unsigned int isRepositioningRectDisabled:1;
     } _popoverControllerFlags;
+    NSString *_sceneIdentifier;
+    UIPanGestureRecognizer *_detachGestureRecognizer;
+    _Bool _wasDetached;
     _Bool _isDismissingBecauseDimmingViewTapped;
     _Bool _dismissesOnRotation;
     _Bool _showsTargetRect;
@@ -68,6 +70,10 @@
     _Bool __shouldHideArrow;
     _Bool _shouldDisableInteractionDuringTransitions;
     _Bool __ignoreBarButtonItemSiblings;
+    _Bool __softAssertWhenNoSourceViewOrBarButtonItemSpecified;
+    _Bool __allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
+    _Bool _shouldPreserveFirstResponder;
+    _Bool _adaptivityEnabled;
     unsigned long long _permittedArrowDirections;
     unsigned long long _popoverArrowDirection;
     UIView *_sourceOverlayView;
@@ -75,6 +81,7 @@
     UIView *_targetRectView;
     UIPopoverPresentationController *_retainedSelf;
     double __dimmingViewTopEdgeInset;
+    long long __preferredHorizontalAlignment;
     struct UIEdgeInsets _popoverLayoutMargins;
 }
 
@@ -84,6 +91,12 @@
 + (struct UIEdgeInsets)_defaultPopoverLayoutMarginsForPopoverControllerStyle:(long long)arg1 andContentViewController:(id)arg2;
 + (Class)_popoverViewClass;
 + (_Bool)_showTargetRectPref;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setPreferredHorizontalAlignment:) long long _preferredHorizontalAlignment; // @synthesize _preferredHorizontalAlignment=__preferredHorizontalAlignment;
+@property(nonatomic, getter=_isAdaptivityEnabled, setter=_setAdaptivityEnabled:) _Bool adaptivityEnabled; // @synthesize adaptivityEnabled=_adaptivityEnabled;
+@property(nonatomic, getter=_shouldPreserveFirstResponder, setter=_setShouldPreserveFirstResponder:) _Bool shouldPreserveFirstResponder; // @synthesize shouldPreserveFirstResponder=_shouldPreserveFirstResponder;
+@property(nonatomic, setter=_setAllowsSourceViewInDifferentWindowThanInitialPresentationViewController:) _Bool _allowsSourceViewInDifferentWindowThanInitialPresentationViewController; // @synthesize _allowsSourceViewInDifferentWindowThanInitialPresentationViewController=__allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
+@property(nonatomic, setter=_setSoftAssertWhenNoSourceViewOrBarButtonItemSpecified:) _Bool _softAssertWhenNoSourceViewOrBarButtonItemSpecified; // @synthesize _softAssertWhenNoSourceViewOrBarButtonItemSpecified=__softAssertWhenNoSourceViewOrBarButtonItemSpecified;
 @property(nonatomic, setter=_setIgnoreBarButtonItemSiblings:) _Bool _ignoreBarButtonItemSiblings; // @synthesize _ignoreBarButtonItemSiblings=__ignoreBarButtonItemSiblings;
 @property(nonatomic, getter=_shouldDisableInteractionDuringTransitions, setter=_setShouldDisableInteractionDuringTransitions:) _Bool shouldDisableInteractionDuringTransitions; // @synthesize shouldDisableInteractionDuringTransitions=_shouldDisableInteractionDuringTransitions;
 @property(nonatomic, setter=_setDimmingViewTopEdgeInset:) double _dimmingViewTopEdgeInset; // @synthesize _dimmingViewTopEdgeInset=__dimmingViewTopEdgeInset;
@@ -106,7 +119,11 @@
 @property(nonatomic) struct UIEdgeInsets popoverLayoutMargins; // @synthesize popoverLayoutMargins=_popoverLayoutMargins;
 @property(nonatomic) _Bool dismissesOnRotation; // @synthesize dismissesOnRotation=_dismissesOnRotation;
 @property(retain, nonatomic) UIDimmingView *dimmingView; // @synthesize dimmingView=_dimmingView;
-- (void).cxx_destruct;
+- (void)_handlePan:(id)arg1;
+- (void)_closeScene;
+- (void)_convertToSceneFromPresentingViewController:(id)arg1;
+- (_Bool)_shouldConvertToScene;
+- (void)_realSourceViewGeometryDidChange;
 - (struct UIEdgeInsets)_additionalSafeAreaInsets;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)_setContentViewController:(id)arg1 animated:(_Bool)arg2;
@@ -115,12 +132,13 @@
 - (_Bool)_forcesPreferredAnimationControllers;
 - (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
 - (_Bool)_shouldKeepCurrentFirstResponder;
-- (void)containerViewDidLayoutSubviews;
+- (void)containerViewWillLayoutSubviews;
 - (void)_updateSourceOverlayViewConstraints;
 - (void)_updateShadowFrame;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_sendDelegateWillRepositionToRect;
 - (struct CGRect)_calculateContainingFrame;
+- (struct CGRect)_sourceRectInCoordinateSpace:(id)arg1;
 - (struct CGRect)_sourceRectInContainerView;
 - (void)_realSourceViewDidChangeFromView:(id)arg1 toView:(id)arg2;
 - (void)_transitionToDidEnd;
@@ -152,7 +170,6 @@
 - (void)_sendFallbackDidDismiss;
 - (void)_sendFallbackWillDismiss;
 - (_Bool)_fallbackShouldDismiss;
-- (void)_containedViewControllerModalStateChanged;
 - (void)_stopWatchingForNotifications;
 - (void)set_ignoreBarButtonItemSiblings:(_Bool)arg1;
 @property(nonatomic, setter=_setIgnoresKeyboardNotifications:) _Bool _ignoresKeyboardNotifications; // @dynamic _ignoresKeyboardNotifications;
@@ -170,8 +187,9 @@
 - (struct UIEdgeInsets)_effectivePopoverLayoutMargins;
 - (_Bool)_attemptsToAvoidKeyboard;
 - (void)_setGesturesEnabled:(_Bool)arg1;
-- (void)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
-- (void)dimmingViewWasTapped:(id)arg1;
+- (_Bool)popoverDimmingViewDidReceiveDismissalInteraction:(id)arg1;
+- (_Bool)popoverDimmingViewShouldAllowInteraction:(id)arg1;
+- (_Bool)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)_popoverIsDismissingBecauseDimmingViewWasTapped;
 - (void)_dismissPopoverAnimated:(_Bool)arg1 stateOnly:(_Bool)arg2 notifyDelegate:(_Bool)arg3;
 - (void)_postludeForDismissal;
@@ -193,7 +211,6 @@
 - (_Bool)_isShimmingPopoverControllerPresentation;
 - (id)_backgroundView;
 - (id)popoverView;
-- (void)_commonPresentPopoverFromRect:(struct CGRect)arg1 inView:(id)arg2 permittedArrowDirections:(unsigned long long)arg3 animated:(_Bool)arg4;
 - (struct CGPoint)_centerPointForScale:(double)arg1 frame:(struct CGRect)arg2 anchor:(struct CGPoint)arg3;
 - (void)_invalidateLayoutInfo;
 - (void)_resetSlideTransitionCount;
@@ -217,6 +234,7 @@
 - (struct CGSize)popoverContentSize;
 - (void)_setPopoverFrame:(struct CGRect)arg1 animated:(_Bool)arg2 coordinator:(id)arg3;
 - (void)setPopoverFrame:(struct CGRect)arg1 animated:(_Bool)arg2;
+- (_Bool)_useNSPopover;
 - (void)dealloc;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (id)init;

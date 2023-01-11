@@ -8,6 +8,7 @@
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKMultipleCTSubscriptionsController : PSListController
 {
     NSString *_defaultsKey;
@@ -16,11 +17,11 @@
     NSArray *_ctSubscriptions;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *ctSubscriptions; // @synthesize ctSubscriptions=_ctSubscriptions;
 @property(copy, nonatomic) NSString *controllerTitle; // @synthesize controllerTitle=_controllerTitle;
 @property(copy, nonatomic) NSString *headerKey; // @synthesize headerKey=_headerKey;
 @property(copy, nonatomic) NSString *defaultsKey; // @synthesize defaultsKey=_defaultsKey;
-- (void).cxx_destruct;
 - (id)specifiers;
 - (void)setEnabledForSubscription:(id)arg1 specifier:(id)arg2;
 - (id)isEnabledForSubscription:(id)arg1;

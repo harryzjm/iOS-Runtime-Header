@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSMutableIndexSet, NSObject, SYMessageStatusRecord, _SYCountedSemaphore;
+@class NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSObject, SYMessageStatusRecord, _SYCountedSemaphore;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
 @interface SYSendingSession
@@ -19,7 +19,7 @@
     NSMutableIndexSet *_ackedBatchIndices;
     NSObject<OS_os_activity> *_sessionActivity;
     double _sessionStartTime;
-    struct NSMutableDictionary *_batchObjectIDsByBatchIndex;
+    NSMutableDictionary *_batchObjectIDsByBatchIndex;
     SYMessageStatusRecord *_startMessageID;
     SYMessageStatusRecord *_endMessageID;
     NSMutableArray *_batchMessageIDs;
@@ -66,7 +66,7 @@
 - (void)_sendSyncRestart;
 - (void)_sendSyncCancelled;
 - (void)_sendSyncCompleteAndRunBlock:(CDUnknownBlockType)arg1;
-- (void)_sendSyncBatch:(id)arg1 nextState:(long long)arg2;
+- (void)_sendSyncBatch:(id)arg1 nextState:(unsigned int)arg2;
 - (void)_fetchNextBatch;
 - (void)_waitForMessageWindow;
 - (void)_setupChangeConcurrency;
@@ -89,9 +89,9 @@
 - (_Bool)canRollback;
 - (void)setCanRestart:(_Bool)arg1;
 - (_Bool)canRestart;
-- (void)_setStateQuietly:(long long)arg1;
-- (void)setState:(long long)arg1;
-- (long long)state;
+- (void)_setStateQuietly:(unsigned int)arg1;
+- (void)setState:(unsigned int)arg1;
+- (unsigned int)state;
 - (id)initWithService:(id)arg1 isReset:(_Bool)arg2;
 
 @end

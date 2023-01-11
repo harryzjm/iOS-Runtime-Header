@@ -8,13 +8,15 @@
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface WFChooseFromListIntent : INIntent
 {
 }
 
 
 // Remaining properties
-@property(copy, nonatomic) NSArray *items; // @dynamic items;
+@property(copy, nonatomic) NSArray *chosenItems; // @dynamic chosenItems;
+@property(copy, nonatomic) NSArray *originalItems; // @dynamic originalItems;
 @property(copy, nonatomic) NSString *prompt; // @dynamic prompt;
 @end
 

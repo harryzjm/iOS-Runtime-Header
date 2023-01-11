@@ -4,27 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKEventStore, SGAccountsAdapter, SGMEventICSOpportunity;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
 
-@interface SGCalendarAttachmentDissector
+@class NSString, SGAccountsAdapter, SGMEventICSOpportunity;
+
+@interface SGCalendarAttachmentDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
     SGMEventICSOpportunity *_icsOpportunityTracker;
     SGAccountsAdapter *_accountsAdapter;
-    EKEventStore *_ekStore;
 }
 
 + (id)splitAttachment:(id)arg1 intoEvents:(id)arg2 withTimezones:(id)arg3;
 + (long long)replaceTzid:(id)arg1 inDocument:(id)arg2 fromOriginal:(id)arg3 withBaseLength:(unsigned long long)arg4 withEventRange:(struct _NSRange)arg5;
 + (id)baseAttachmentFrom:(id)arg1 includingEvents:(id)arg2 withRanges:(id)arg3;
 - (void).cxx_destruct;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
-- (id)enrichmentsFromData:(id)arg1 inDocument:(id)arg2 withParentEntity:(id)arg3;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)_dissectMessage:(id)arg1 entity:(id)arg2;
+- (id)enrichmentsFromData:(id)arg1 inDocument:(id)arg2 parentMessage:(id)arg3 parentEntity:(id)arg4;
 - (struct SGMEventICSSourceType_)accountTypeFor:(id)arg1;
 - (_Bool)hasCalendarAccountForOneOf:(id)arg1;
 - (_Bool)isRequestFromSharedCalendarProvider:(id)arg1;
 - (_Bool)shouldIgnoreEntity:(id)arg1;
 - (id)downloadedCalendarAttachmentsFrom:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

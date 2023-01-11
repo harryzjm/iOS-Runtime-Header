@@ -8,14 +8,24 @@
 
 #import <SafariShared/WBSHistoryConnectionProtocol-Protocol.h>
 
-@class WBSHistoryService;
+@class WBSCloudHistory, WBSCloudHistoryConfiguration, WBSHistoryService, WBSHistoryServiceDatabase;
+@protocol OS_dispatch_queue;
 
 @interface WBSHistoryConnection : NSObject <WBSHistoryConnectionProtocol>
 {
     WBSHistoryService *_historyService;
+    NSObject<OS_dispatch_queue> *_internalQueue;
+    WBSHistoryServiceDatabase *_database;
+    WBSCloudHistory *_cloudHistory;
+    WBSCloudHistoryConfiguration *_cloudHistoryConfiguration;
 }
 
 - (void).cxx_destruct;
+- (void)releaseCloudHistory:(CDUnknownBlockType)arg1;
+- (void)initializeCloudHistoryWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)finishClearingHistoryIfNecessaryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)connectWithOptions:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)debugGetDatabaseURLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
 - (void)groupVisitsIntoSessionsBetweenStartDate:(id)arg1 endDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithStatus:(int)arg1 selectedProtocol:(const char *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

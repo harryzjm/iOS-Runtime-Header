@@ -7,13 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <HearingUtilities/HCHeardControllerProtocol-Protocol.h>
+#import <HearingUtilities/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class AXDispatchTimer, NSArray, NSDictionary, NSString;
 @protocol OS_xpc_object;
 
-@interface AXHeardController : NSObject <HCHeardControllerProtocol>
+@interface AXHeardController : NSObject <HCHeardControllerProtocol, UNUserNotificationCenterDelegate>
 {
+    AXDispatchTimer *_transparencyHysteresisTimer;
     NSObject<OS_xpc_object> *_service;
+    _Bool _finishedSetup;
     NSArray *_clients;
     NSDictionary *_handlers;
 }
@@ -24,6 +27,7 @@
 - (void)registerFakeClient:(id)arg1;
 - (void)handleMessage:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)addHandler:(id)arg1 andBlock:(CDUnknownBlockType)arg2 forMessageIdentifier:(unsigned long long)arg3;
+- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)countOfClientsListeningForIdentifier:(unsigned long long)arg1;
 - (void)sendClientsMessageWithPayload:(id)arg1 excluding:(id)arg2;
 - (void)sendUpdateMessage:(id)arg1 forIdentifier:(unsigned long long)arg2;
@@ -34,6 +38,8 @@
 - (_Bool)connection:(id)arg1 hasEntitlementForMessage:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)startServer;
+- (void)updatePersonalAudioSettingsOnAccessories;
+- (void)continueSetup;
 - (id)init;
 
 // Remaining properties

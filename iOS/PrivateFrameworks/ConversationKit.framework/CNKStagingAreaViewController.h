@@ -35,6 +35,7 @@
     MISSING_TYPE *stagingAreaDelegate;
     MISSING_TYPE *call;
     MISSING_TYPE *deviceOrientation;
+    MISSING_TYPE *isOnScreen;
 }
 
 - (void).cxx_destruct;
@@ -48,12 +49,12 @@
 - (_Bool)_canShowWhileLocked;
 - (void)updateViewConstraints;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithActiveCall:(id)arg1 hasJoined:(_Bool)arg2;
 - (id)initWithActiveCall:(id)arg1;
+@property(nonatomic) _Bool isOnScreen; // @synthesize isOnScreen;
 @property(nonatomic) long long deviceOrientation; // @synthesize deviceOrientation;
 @property(nonatomic, retain) TUCall *call; // @synthesize call;
 @property(nonatomic) __weak id <CNKStagingAreaViewControllerDelegate> stagingAreaDelegate; // @synthesize stagingAreaDelegate;

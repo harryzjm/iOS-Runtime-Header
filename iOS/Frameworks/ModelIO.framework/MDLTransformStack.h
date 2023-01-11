@@ -20,10 +20,10 @@
 
 + (CDStruct_14d5dc5e)globalTransformWithObject:(id)arg1 atTime:(double)arg2;
 + (CDStruct_14d5dc5e)localTransformWithObject:(id)arg1 atTime:(double)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *animatedValues; // @synthesize animatedValues=_animatedValues;
 @property(copy, nonatomic) NSMutableArray *transformOps; // @synthesize transformOps=_transformOps;
 @property(nonatomic) _Bool resetsTransform; // @synthesize resetsTransform=_resetsTransform;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) CAAnimation *transformAnimation;
 - (id)decomposedTransformAnimation;
 - (_Bool)isScaleRotateTransformOrder;

@@ -22,10 +22,10 @@
     id <CCUIModuleAlertViewControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CCUIModuleAlertViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *moduleIdentifier; // @synthesize moduleIdentifier=_moduleIdentifier;
 @property(readonly, copy, nonatomic) CCSModulePresentationOptions *presentationOptions; // @synthesize presentationOptions=_presentationOptions;
-- (void).cxx_destruct;
 - (void)contentModuleContainerViewControllerDismissPresentedContent:(id)arg1;
 - (void)contentModuleContainerViewController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 willPresentViewController:(id)arg2;
@@ -40,6 +40,7 @@
 - (void)dismissModulePresentedContentAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 @property(nonatomic) double backgroundViewWeighting; // @dynamic backgroundViewWeighting;
 @property(readonly, nonatomic) UIView *moduleAlertView; // @dynamic moduleAlertView;
+- (_Bool)_canShowWhileLocked;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;

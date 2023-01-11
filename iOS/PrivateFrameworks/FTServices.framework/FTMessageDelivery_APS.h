@@ -58,6 +58,7 @@
 - (void)_noteMessageACKd:(id)arg1 ftMessage:(id)arg2;
 - (void)_noteMessageSucceeded:(id)arg1 ftMessage:(id)arg2 error:(id)arg3 result:(id)arg4 resultCode:(long long)arg5;
 - (void)_noteMessageFailed:(id)arg1 ftMessage:(id)arg2 allowRetry:(_Bool)arg3 error:(id)arg4;
+- (_Bool)_shouldSendSOSForFailure:(id)arg1;
 - (_Bool)_fillMessageParameters:(id *)arg1 ftMessage:(id *)arg2;
 - (id)_apsOutgoingMessageForFTMessage:(id)arg1;
 - (id)_messageForAPSOutgoingMessage:(id)arg1;

@@ -39,6 +39,7 @@
     PUAssetExplorerReviewScreenViewController *_presentedReviewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PUAssetExplorerReviewScreenViewController *presentedReviewController; // @synthesize presentedReviewController=_presentedReviewController;
 @property(retain, nonatomic) UIColor *_roundedCornerOverlayFillColor; // @synthesize _roundedCornerOverlayFillColor=__roundedCornerOverlayFillColor;
 @property(nonatomic, setter=_setIndexToScrollTo:) long long _indexToScrollTo; // @synthesize _indexToScrollTo=__indexToScrollTo;
@@ -52,8 +53,7 @@
 @property(readonly, nonatomic) PXAssetsScene *_sceneController; // @synthesize _sceneController=__sceneController;
 @property(readonly, nonatomic) PXBasicUIViewTileAnimator *_tileAnimator; // @synthesize _tileAnimator=__tileAnimator;
 @property(readonly, nonatomic) PXTilingController *_tilingController; // @synthesize _tilingController=__tilingController;
-@property(nonatomic) __weak id <CKPluginEntryViewControllerDelegate> entryViewDelegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <CKPluginEntryViewControllerDelegate> entryViewDelegate; // @synthesize entryViewDelegate=_entryViewDelegate;
 - (id)_currentAssetsDataSource;
 - (void)_immediatelyGenerateAndStagePackageFromReviewAsset:(id)arg1 suppressLivePhoto:(_Bool)arg2 mediaOrigin:(long long)arg3;
 - (id)_traverseHierarchyForFillColorStartingWithView:(id)arg1;

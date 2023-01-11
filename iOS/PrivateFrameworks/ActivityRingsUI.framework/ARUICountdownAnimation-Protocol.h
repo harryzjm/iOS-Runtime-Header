@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARUICountdownView, CAMediaTimingFunction, NSString;
+@class ARUICountdownView, NSString;
 
 @protocol ARUICountdownAnimation
 + (NSString *)identifier;
 - (void)applyToCountdownView:(ARUICountdownView *)arg1 completion:(void (^)(void))arg2;
 - (NSString *)identifier;
 - (_Bool)cancelable;
-- (CAMediaTimingFunction *)timingFunction;
 - (double)duration;
 - (double)delay;
 

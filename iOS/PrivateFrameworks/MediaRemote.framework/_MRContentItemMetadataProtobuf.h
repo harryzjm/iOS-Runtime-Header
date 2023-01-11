@@ -26,6 +26,7 @@
     double _startTime;
     NSString *_albumArtistName;
     NSString *_albumName;
+    NSString *_albumYear;
     NSData *_appMetricsData;
     int _artworkDataHeightDeprecated;
     int _artworkDataWidthDeprecated;
@@ -146,7 +147,8 @@
     } _has;
 }
 
-+ (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *albumYear; // @synthesize albumYear=_albumYear;
 @property(retain, nonatomic) NSString *localizedDurationString; // @synthesize localizedDurationString=_localizedDurationString;
 @property(retain, nonatomic) NSString *brandIdentifier; // @synthesize brandIdentifier=_brandIdentifier;
 @property(retain, nonatomic) NSString *artworkFileURL; // @synthesize artworkFileURL=_artworkFileURL;
@@ -228,7 +230,6 @@
 @property(nonatomic) _Bool isContainer; // @synthesize isContainer=_isContainer;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -238,6 +239,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasAlbumYear;
 @property(readonly, nonatomic) _Bool hasLocalizedDurationString;
 @property(readonly, nonatomic) _Bool hasBrandIdentifier;
 @property(readonly, nonatomic) _Bool hasArtworkFileURL;
@@ -319,8 +321,6 @@
 @property(nonatomic) _Bool hasIsContainer;
 @property(readonly, nonatomic) _Bool hasSubtitle;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (id)_initWithData:(id)arg1;
-- (id)_init;
 
 @end
 

@@ -63,13 +63,6 @@ struct __SecKey {
     void *_field3;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct ccdigest_info {
     unsigned long long _field1;
     unsigned long long _field2;

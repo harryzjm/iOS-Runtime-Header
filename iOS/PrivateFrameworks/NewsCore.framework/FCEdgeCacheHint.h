@@ -16,19 +16,19 @@
     NSString *_cacheControlKey;
 }
 
++ (id)edgeCacheHintForLocalNews;
++ (id)edgeCacheHintForAudioContent;
 + (id)edgeCacheHintForMagazineContent;
 + (id)edgeCacheHintForSpotlight;
 + (id)edgeCacheHintForFeaturedArticles;
-+ (id)edgeCacheHintForVideos;
 + (id)edgeCacheHintForToday;
 + (id)edgeCacheHintForEditorial;
-+ (id)edgeCacheHintForCoverArticles;
 + (id)edgeCacheHintForTrending;
-+ (id)edgeCacheHintForBreaking;
++ (id)edgeCacheHintForForYouConfig;
 + (id)edgeCacheHintForTopStories;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *cacheControlKey; // @synthesize cacheControlKey=_cacheControlKey;
 @property(readonly, copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithGroupName:(id)arg1 cacheControlKey:(id)arg2;
 

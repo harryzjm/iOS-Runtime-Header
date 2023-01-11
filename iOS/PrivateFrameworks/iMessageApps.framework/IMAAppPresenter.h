@@ -30,12 +30,12 @@
 
 + (void)loadAppWithIdentifierIfNeeded:(id)arg1;
 + (void)disableAutomaticAppDiscovery;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKBrowserSwitcherViewController *switcherViewController; // @synthesize switcherViewController=_switcherViewController;
 @property(nonatomic) _Bool hidesCompactAppForStickerDrag; // @synthesize hidesCompactAppForStickerDrag=_hidesCompactAppForStickerDrag;
 @property(nonatomic) _Bool alwaysPresentAppsExpanded; // @synthesize alwaysPresentAppsExpanded=_alwaysPresentAppsExpanded;
 @property(nonatomic) double compactHeight; // @synthesize compactHeight=_compactHeight;
 @property(nonatomic) __weak id <IMAAppPresenterDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)switcherViewControllerShouldShowIconAndTitleWhenCompact:(id)arg1;
 - (void)switcherViewControllerDidCollapse:(id)arg1;
 - (void)switcherViewControllerDidFinishSwitching:(id)arg1 toViewController:(id)arg2;
@@ -57,6 +57,7 @@
 - (void)commitSticker:(id)arg1 withDragTarget:(id)arg2;
 - (void)commitSticker:(id)arg1;
 - (id)dragControllerTranscriptDelegate;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissToKeyboard:(_Bool)arg1;
 - (void)requestPresentationStyleFullScreenModalForPlugin:(id)arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1;

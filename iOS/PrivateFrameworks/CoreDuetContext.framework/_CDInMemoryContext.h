@@ -26,6 +26,7 @@
 
 + (id)contextWithDeviceID:(id)arg1;
 + (id)context;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _CDDevice *device; // @synthesize device=_device;
 @property(retain, nonatomic) _CDSystemTimeCallbackScheduler *systemTimeCallbackScheduler; // @synthesize systemTimeCallbackScheduler=_systemTimeCallbackScheduler;
 @property(retain, nonatomic) NSMutableDictionary *registrations; // @synthesize registrations=_registrations;
@@ -34,7 +35,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_workloop> *callbackWorkloop; // @synthesize callbackWorkloop=_callbackWorkloop;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property(retain, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
-- (void).cxx_destruct;
 - (id)description;
 - (id)allRegistrations;
 - (id)unsafe_evaluatedContextWithRegistration:(id)arg1 date:(id)arg2;
@@ -52,7 +52,10 @@
 - (_Bool)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (_Bool)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2;
 - (_Bool)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3;
+- (id)unsafe_addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 valueDidChange:(_Bool *)arg4;
 - (id)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 valueDidChange:(_Bool *)arg4;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2 removedObjects:(id *)arg3;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (_Bool)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)propertiesForContextualKeyPath:(id)arg1;

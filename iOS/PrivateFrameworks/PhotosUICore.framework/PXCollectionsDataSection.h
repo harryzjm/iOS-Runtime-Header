@@ -8,6 +8,7 @@
 {
 }
 
+- (id)existingAssetsFetchResultAtIndex:(long long)arg1;
 - (long long)countForCollection:(id)arg1;
 - (long long)indexOfCollection:(id)arg1;
 - (id)init;

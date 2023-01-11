@@ -14,22 +14,23 @@
 
 @interface HMDSignificantTimeEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
+    struct os_unfair_lock_s _lock;
     NSString *_significantEvent;
     NSDateComponents *_offset;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
-@property(retain, nonatomic) NSDateComponents *offset; // @synthesize offset=_offset;
-@property(retain, nonatomic) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
 - (void).cxx_destruct;
-- (id)metricData;
+- (id)analyticsTriggerEventData;
 - (id)_nextTimerDate;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(retain) NSDateComponents *offset; // @synthesize offset=_offset;
+@property(retain) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
 - (void)_handleUpdateRequest:(id)arg1;
 - (id)emptyModelObject;
 - (id)createPayload;

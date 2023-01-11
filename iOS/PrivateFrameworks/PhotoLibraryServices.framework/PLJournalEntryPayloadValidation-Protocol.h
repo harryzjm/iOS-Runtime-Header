@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSManagedObjectModel, NSMutableArray, NSSet;
+@class NSArray, NSDictionary, NSManagedObjectModel, NSMutableArray, NSSet, NSString;
 
 @protocol PLJournalEntryPayloadValidation
++ (NSArray *)relationshipKeyPathsForPrefetching;
++ (NSArray *)snapshotSortDescriptors;
++ (_Bool)shouldPersistForChangedKeys:(NSSet *)arg1 entityName:(NSString *)arg2;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (NSSet *)additionalEntityNames;
 + (_Bool)isValidForPersistenceWithObjectDictionary:(NSDictionary *)arg1;

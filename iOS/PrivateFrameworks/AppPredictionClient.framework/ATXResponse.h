@@ -9,21 +9,27 @@
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSData, NSError, NSUUID;
+@protocol OS_dispatch_queue;
 
 @interface ATXResponse : NSObject <NSSecureCoding>
 {
     NSData *_cacheFileData;
+    NSObject<OS_dispatch_queue> *_appClipQueue;
     NSUUID *_uuid;
     NSError *_error;
     NSArray *_predictions;
+    NSArray *_proactiveSuggestions;
+    NSUUID *_blendingModelUICacheUpdateUUID;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *cacheFileData; // @synthesize cacheFileData=_cacheFileData;
+@property(readonly, nonatomic) NSUUID *blendingModelUICacheUpdateUUID; // @synthesize blendingModelUICacheUpdateUUID=_blendingModelUICacheUpdateUUID;
+@property(readonly, nonatomic) NSArray *proactiveSuggestions; // @synthesize proactiveSuggestions=_proactiveSuggestions;
 @property(readonly, nonatomic) NSArray *predictions; // @synthesize predictions=_predictions;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)enumerateAtxSearchResults:(CDUnknownBlockType)arg1;
@@ -36,6 +42,7 @@
 - (id)description;
 @property(readonly, nonatomic) NSArray *predictedApps;
 - (id)init;
+- (id)initWithPredictions:(id)arg1 proactiveSuggestions:(id)arg2 uuid:(id)arg3 cacheFileData:(id)arg4 blendingUICacheUpdateUUID:(id)arg5 error:(id)arg6;
 - (id)initWithPredictions:(id)arg1 cacheFileData:(id)arg2 error:(id)arg3;
 
 @end

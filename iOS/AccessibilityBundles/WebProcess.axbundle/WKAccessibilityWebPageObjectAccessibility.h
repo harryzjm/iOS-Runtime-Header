@@ -18,6 +18,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityCategoryInstalled:(id)arg1;
 - (void)_axListenForRemoteElement;
+- (id)accessibilityContainer;
 - (void)_axRemoteElementRegistered:(id)arg1;
 - (id)accessibilityRemoteSubstituteChildren:(id)arg1;
 - (id)accessibilityElements;

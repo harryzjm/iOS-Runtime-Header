@@ -25,6 +25,7 @@
     CDStruct_1b6d18a9 _periodicTimeObservationInterval;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id periodicTimeObserver; // @synthesize periodicTimeObserver=_periodicTimeObserver;
 @property(nonatomic) CDStruct_1b6d18a9 periodicTimeObservationInterval; // @synthesize periodicTimeObservationInterval=_periodicTimeObservationInterval;
 @property(nonatomic) _Bool needsPlayerUpdate; // @synthesize needsPlayerUpdate=_needsPlayerUpdate;
@@ -32,7 +33,6 @@
 @property(retain, nonatomic) ISWrappedAVPlayer *wrappedAVPlayer; // @synthesize wrappedAVPlayer=_wrappedAVPlayer;
 @property(retain, nonatomic) ISVideoPlayerUIView *_videoPlayerView; // @synthesize _videoPlayerView;
 @property(nonatomic) __weak id <PXTrimToolPlayerObserver> playerObserver; // @synthesize playerObserver=_playerObserver;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)stopPeriodicTimeObserver;
 - (void)startPeriodicTimeObserver;
@@ -42,7 +42,8 @@
 @property(readonly, nonatomic, getter=isReadyToPlay) _Bool readyToPlay;
 - (void)invalidateComposition;
 - (void)applyTrimTimeRange:(CDStruct_e83c9415)arg1;
-- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2;
+@property(readonly, nonatomic) CDStruct_e83c9415 trimRange;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
 - (void)requestPlayerItemWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) UIView *loupePlayerView; // @synthesize loupePlayerView=_loupePlayerView;

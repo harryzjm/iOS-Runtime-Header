@@ -12,7 +12,9 @@
 - (double)_minuteHandDotDiameter;
 - (void)applySecondHandTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
 - (void)applyHourMinuteHandsTransitionFraction:(double)arg1 fromStrokeColor:(id)arg2 fromFillColor:(id)arg3 toStrokeColor:(id)arg4 toFillColor:(id)arg5;
-- (id)initForDevice:(id)arg1;
+- (id)createSecondHandView;
+- (id)createMinuteHandView;
+- (id)createHourHandView;
 
 @end
 

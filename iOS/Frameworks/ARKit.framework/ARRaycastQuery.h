@@ -20,8 +20,6 @@
 @property(readonly, nonatomic) long long target; // @synthesize target=_target;
 @property(readonly, nonatomic) MISSING_TYPE *direction; // @synthesize direction=_direction;
 @property(readonly, nonatomic) MISSING_TYPE *origin; // @synthesize origin=_origin;
-- (id)description;
-- (_Bool)isEqual:(id)arg1;
 - (id)initWithOrigin:(long long)arg1 direction:(long long)arg2 allowingTarget:alignment: /* Error: Ran out of types for this method. */;
 
 @end

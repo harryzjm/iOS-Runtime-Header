@@ -13,7 +13,6 @@
 }
 
 - (void)dealloc;
-@property __weak id delegate;
 
 @end
 

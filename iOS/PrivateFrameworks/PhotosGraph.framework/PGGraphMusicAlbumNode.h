@@ -8,9 +8,19 @@
 
 @interface PGGraphMusicAlbumNode
 {
+    NSString *_title;
 }
 
-@property(readonly, nonatomic) NSString *title;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
+- (unsigned short)domain;
+- (id)label;
+- (id)description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 @end
 

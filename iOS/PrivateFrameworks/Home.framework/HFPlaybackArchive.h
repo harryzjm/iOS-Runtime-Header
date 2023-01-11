@@ -10,13 +10,17 @@
 
 @interface HFPlaybackArchive : NSObject
 {
+    _Bool _autoPlayEnabled;
     MPPlaybackArchive *_mediaPlayerPlaybackArchive;
 }
 
-@property(retain, nonatomic) MPPlaybackArchive *mediaPlayerPlaybackArchive; // @synthesize mediaPlayerPlaybackArchive=_mediaPlayerPlaybackArchive;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isAutoPlayEnabled) _Bool autoPlayEnabled; // @synthesize autoPlayEnabled=_autoPlayEnabled;
+@property(retain, nonatomic) MPPlaybackArchive *mediaPlayerPlaybackArchive; // @synthesize mediaPlayerPlaybackArchive=_mediaPlayerPlaybackArchive;
 @property(nonatomic, getter=isRepeatEnabled) _Bool repeatEnabled;
+@property(readonly, nonatomic) _Bool isRepeatSupported;
 @property(nonatomic, getter=isShuffleEnabled) _Bool shuffleEnabled;
+@property(readonly, nonatomic) _Bool isShuffleSupported;
 @property(nonatomic) unsigned long long targetOptions;
 - (id)initWithMediaPlayerPlaybackArchive:(id)arg1;
 

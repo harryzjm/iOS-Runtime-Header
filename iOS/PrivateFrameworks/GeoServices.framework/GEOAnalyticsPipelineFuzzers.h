@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface GEOAnalyticsPipelineFuzzers : NSObject
 {
 }
 
++ (unsigned int)fuzzCount:(unsigned int)arg1 forDailyUsageType:(unsigned int)arg2;
++ (double)dayResolution:(double)arg1;
++ (id)twoDecimalLocation:(id)arg1;
 + (double)fuzzParkedCarTimestamp:(double)arg1;
 + (double)fuzzTime:(double)arg1 bySeconds:(unsigned int)arg2;
 

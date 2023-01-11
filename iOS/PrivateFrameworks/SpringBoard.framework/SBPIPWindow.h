@@ -12,7 +12,9 @@
 
 - (_Bool)isActive;
 - (id)_pipWindowRootVC;
+- (void)updateActiveInterfaceOrientationForManualPictureInPictureStart;
 - (long long)interfaceOrientationForContainerViewController:(id)arg1;
+- (id)containerViewControllerForPictureInPictureViewController:(id)arg1;
 - (void)removeContainerViewController:(id)arg1;
 - (void)addContainerViewController:(id)arg1;
 @property(readonly, nonatomic) NSArray *containerViewControllers;

@@ -37,6 +37,8 @@
 + (id)imageForMapItem:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 format:(int)arg4;
 + (id)imageForMapItem:(id)arg1 forScale:(double)arg2 fallbackToBundleIcon:(_Bool)arg3;
 + (id)imageForMapItem:(id)arg1 forScale:(double)arg2;
++ (id)imageForIconID:(unsigned int)arg1 contentScale:(double)arg2 sizeGroup:(unsigned long long)arg3 nightMode:(_Bool)arg4;
++ (id)imageForRouteAnnotationStyle:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3;
 + (id)imageForTrafficIncidentType:(long long)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 nightMode:(_Bool)arg4;
 + (id)imageForTrafficIncidentType:(long long)arg1 size:(unsigned long long)arg2 forScale:(double)arg3;
 + (id)imageForTrafficCamera:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 nightMode:(_Bool)arg4;

@@ -4,26 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
-
 @interface PXSampleGadgetProvider
 {
-    _Bool _includeHorizontal;
     _Bool _hasLoadedData;
-    NSArray *_sampleGadgets;
+    unsigned long long _sampleGadgetType;
     double _minimumHeight;
 }
 
++ (id)defaultSampleGadgetProviders;
 @property(nonatomic) _Bool hasLoadedData; // @synthesize hasLoadedData=_hasLoadedData;
 @property(nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
-@property(retain, nonatomic) NSArray *sampleGadgets; // @synthesize sampleGadgets=_sampleGadgets;
-@property(readonly, nonatomic) _Bool includeHorizontal; // @synthesize includeHorizontal=_includeHorizontal;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long sampleGadgetType; // @synthesize sampleGadgetType=_sampleGadgetType;
 - (void)generateGadgets;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)loadDataForGadgets;
 - (id)init;
-- (id)initWithMinimumHeight:(double)arg1;
+- (id)initWithIdentifier:(id)arg1;
+- (id)initWithSampleGadgetType:(unsigned long long)arg1;
+- (id)initWithSampleGadgetType:(unsigned long long)arg1 minimumHeight:(double)arg2;
 
 @end
 

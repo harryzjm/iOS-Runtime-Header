@@ -35,6 +35,7 @@
         _Bool respondsToPreferredPresentationOrientation;
         _Bool respondsToEnableFreezeLayoutOnOrientationChange;
         _Bool respondsToAdditionalOptions;
+        _Bool respondsToWantsShowInLibraryButton;
     } _delegateFlags;
     struct {
         _Bool respondsToCurrentImageForAssetReference;
@@ -73,6 +74,7 @@
     long long __presentationOrigin;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long _presentationOrigin; // @synthesize _presentationOrigin=__presentationOrigin;
 @property(nonatomic, setter=_setIsPerformingNonAnimatedPush:) _Bool _isPerformingNonAnimatedPush; // @synthesize _isPerformingNonAnimatedPush=__isPerformingNonAnimatedPush;
 @property(retain, nonatomic, setter=_setPanDirectionValueFilter:) PUChangeDirectionValueFilter *_panDirectionValueFilter; // @synthesize _panDirectionValueFilter=__panDirectionValueFilter;
@@ -97,7 +99,6 @@
 @property(nonatomic) __weak id <PUOneUpPresentationHelperDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property(retain, nonatomic, setter=_setBrowsingSession:) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
-- (void).cxx_destruct;
 - (void)tilingViewDidEndAnimatingTileControllers:(id)arg1;
 - (void)tilingViewDidUpdateTileControllers:(id)arg1;
 - (void)tilingView:(id)arg1 didStopUsingTileController:(id)arg2;
@@ -122,7 +123,7 @@
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)photosPreviewPresentationController:(id)arg1 willPresentPreviewViewController:(id)arg2;
 - (_Bool)_shouldAutoplayOnNavigation;
-- (void)navigateToAssetAtIndexPath:(id)arg1;
+- (void)_navigateToAssetAtIndexPath:(id)arg1 inBrowsingSession:(id)arg2;
 - (id)cameraPreviewTransitionDelegateWithSourceRect:(struct CGRect)arg1 sourceImage:(id)arg2;
 - (id)previewPresentationTransitioningDelegateForPosition:(struct CGPoint)arg1 inSourceView:(id)arg2;
 - (_Bool)shouldStartPreviewingSimultaneouslyWithGestureRecognizer:(id)arg1;
@@ -172,6 +173,7 @@
 @property(readonly, nonatomic) long long transitionType; // @synthesize transitionType=_transitionType;
 @property(readonly, nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(readonly, nonatomic) _Bool isOneUpPresented;
+- (id)_createBrowsingSession;
 - (id)browsingSessionCreateIfNeeded:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithPhotosDataSource:(id)arg1;

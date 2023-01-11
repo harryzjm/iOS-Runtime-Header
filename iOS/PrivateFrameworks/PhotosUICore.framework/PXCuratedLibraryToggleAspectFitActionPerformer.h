@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXGLayout;
-
 @interface PXCuratedLibraryToggleAspectFitActionPerformer
 {
-    PXGLayout *_layout;
 }
 
-@property(readonly, nonatomic) __weak PXGLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
 - (void)performActionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithActionType:(id)arg1 viewModel:(id)arg2;
-- (id)initWithViewModel:(id)arg1 layout:(id)arg2;
+- (_Bool)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
+- (id)activitySystemImageName;
+- (id)activityType;
+- (id)initWithViewModel:(id)arg1;
 
 @end
 

@@ -8,6 +8,7 @@
 {
 }
 
++ (unsigned long long)expectedVirtualSourceCount;
 - (void)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4 destinationArray:(id)arg5;
 - (id)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;

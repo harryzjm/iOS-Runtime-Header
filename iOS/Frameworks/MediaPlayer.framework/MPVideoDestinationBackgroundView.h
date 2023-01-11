@@ -8,6 +8,7 @@
 
 @class NSString, UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface MPVideoDestinationBackgroundView : UIView
 {
     NSString *_destinationName;
@@ -17,9 +18,9 @@
     UIImageView *_videosImageView;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *destinationName; // @synthesize destinationName=_destinationName;
 @property(nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

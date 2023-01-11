@@ -16,7 +16,11 @@
 @property(nonatomic) unsigned long long lastAggTimeFalseWakeUp; // @synthesize lastAggTimeFalseWakeUp=_lastAggTimeFalseWakeUp;
 @property(nonatomic) unsigned long long numFalseWakeUp; // @synthesize numFalseWakeUp=_numFalseWakeUp;
 - (void)_borealisPowerlog:(id)arg1;
+- (void)logAudioZeroRun:(float)arg1;
+- (void)logTriggerLengthSampleCountStatistics:(unsigned long long)arg1 withFirstPassDeterministicTriggerLengthSampleCount:(unsigned long long)arg2;
 - (void)logFalseWakeUp:(_Bool)arg1;
+- (void)logSecondPassResult:(int)arg1 eventInfo:(id)arg2 triggerAPWakeUp:(_Bool)arg3;
+- (void)logAOPFirstPassTriggerWakeupLatency:(float)arg1;
 - (void)powerLogVoiceTriggerStop;
 - (void)powerLogVoiceTriggerStart;
 - (id)init;

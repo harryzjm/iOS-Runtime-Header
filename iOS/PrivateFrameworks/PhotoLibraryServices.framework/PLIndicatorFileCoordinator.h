@@ -18,6 +18,7 @@
 + (_Bool)systemLibraryAvailableIndicatorState;
 + (void)setSystemLibraryAvailableIndicatorState:(_Bool)arg1;
 - (void).cxx_destruct;
+- (void)logCloudServiceEnableEvent:(_Bool)arg1 serviceName:(id)arg2 reason:(id)arg3;
 - (_Bool)isRebuildingPersons;
 - (void)setIsRebuildingPersons:(_Bool)arg1;
 - (id)_rebuildingPersonsIndicatorFilePath;

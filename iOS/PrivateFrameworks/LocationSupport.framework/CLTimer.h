@@ -19,9 +19,9 @@
     double _fireInterval;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double fireInterval; // @synthesize fireInterval=_fireInterval;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
-- (void).cxx_destruct;
 - (void)shouldFire;
 - (void)invalidate;
 - (double)nextFireDelayRaw;
@@ -29,6 +29,7 @@
 - (void)setNextFireDelay:(double)arg1 interval:(double)arg2;
 - (id)initInSilo:(id)arg1 withScheduler:(id)arg2;
 - (void)updateScheduler;
+- (void)dbgAssertInside;
 - (void)setNextFireTime:(double)arg1 interval:(double)arg2;
 @property(nonatomic) double nextFireTime; // @dynamic nextFireTime;
 

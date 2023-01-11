@@ -16,13 +16,13 @@
     NSMutableDictionary *_identifiersToItems;
     NSMutableSet *_pendingActions;
     _Bool _suspended;
-    id <SBFActionProviding> _contentActionProvider;
     id <CSAdjunctListModelDelegate> _delegate;
+    id <SBFActionProviding> _contentActionProvider;
 }
 
-@property(nonatomic) __weak id <CSAdjunctListModelDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) __weak id <SBFActionProviding> contentActionProvider; // @synthesize contentActionProvider=_contentActionProvider;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBFActionProviding> contentActionProvider; // @synthesize contentActionProvider=_contentActionProvider;
+@property(nonatomic) __weak id <CSAdjunctListModelDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_replayPendingChanges;
 - (void)_removeItemForAction:(id)arg1;
 - (id)_createItemForAction:(id)arg1;

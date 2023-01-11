@@ -14,15 +14,16 @@
 @interface NTKDateRichComplicationFullColorImageView : UIView <CLKFullColorImageView>
 {
     CLKDevice *_device;
+    long long _family;
     NTKColoringLabel *_weekdayLabel;
     NTKColoringLabel *_dayLabel;
     id <CLKMonochromeFilterProvider> _filterProvider;
     NSDate *_overrideDate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_updateDate;
@@ -35,6 +36,7 @@
 - (void)resumeLiveFullColorImageView;
 - (void)pauseLiveFullColorImageView;
 - (id)initFullColorImageViewWithDevice:(id)arg1;
+- (id)initFullColorImageViewWithDevice:(id)arg1 family:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

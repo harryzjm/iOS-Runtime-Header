@@ -21,6 +21,7 @@
     NSString *_firmwareRevisionPending;
     NSString *_hardwareRevision;
     NSString *_dockType;
+    long long _transportType;
     NSString *_macAddress;
     NSString *_preferredApp;
     NSData *_certSerial;
@@ -62,7 +63,6 @@
 @property(nonatomic) int locationSentenceTypesMask; // @synthesize locationSentenceTypesMask=_locationSentenceTypesMask;
 @property(copy, nonatomic) NSString *coreAccessoryPrimaryUUID; // @synthesize coreAccessoryPrimaryUUID=_coreAccessoryPrimaryUUID;
 @property(copy, nonatomic) NSDictionary *protocolDetails; // @synthesize protocolDetails=_protocolDetails;
-@property(copy, nonatomic) NSString *ppid; // @synthesize ppid=_ppid;
 @property unsigned long long destinationSharingOptions; // @synthesize destinationSharingOptions=_destinationSharingOptions;
 @property(retain, nonatomic) NSMutableArray *enqueuedNMEASentences; // @synthesize enqueuedNMEASentences=_enqueuedNMEASentences;
 @property _Bool pointOfInterestHandoffEnabled; // @synthesize pointOfInterestHandoffEnabled=_pointOfInterestHandoffEnabled;
@@ -77,10 +77,12 @@
 @property(nonatomic) unsigned int capabilities; // @synthesize capabilities=_capabilities;
 @property(retain, nonatomic) NSDictionary *audioPorts; // @synthesize audioPorts=_audioPorts;
 @property(nonatomic) int classType; // @synthesize classType=_classType;
+@property(copy, nonatomic) NSString *ppid; // @synthesize ppid=_ppid;
 @property(copy, nonatomic) NSData *certData; // @synthesize certData=_certData;
 @property(copy, nonatomic) NSData *certSerial; // @synthesize certSerial=_certSerial;
 @property(copy, nonatomic) NSString *preferredApp; // @synthesize preferredApp=_preferredApp;
 @property(copy, nonatomic) NSString *macAddress; // @synthesize macAddress=_macAddress;
+@property(nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property(copy, nonatomic) NSString *dockType; // @synthesize dockType=_dockType;
 @property(copy, nonatomic) NSString *hardwareRevision; // @synthesize hardwareRevision=_hardwareRevision;
 @property(copy, nonatomic) NSString *firmwareRevisionPending; // @synthesize firmwareRevisionPending=_firmwareRevisionPending;

@@ -4,16 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PLLazyObject;
+
 @interface PLClientPhotoLibraryBundle
 {
+    PLLazyObject *_lazyClientSandboxExtensionCache;
 }
 
-- (void)shutdownWithReason:(id)arg1;
+- (void).cxx_destruct;
+- (void)setPhotoStreamEnabled:(_Bool)arg1;
+- (void)setSharedAlbumEnabled:(_Bool)arg1;
+- (void)setCloudPhotoLibraryEnabled:(_Bool)arg1;
+- (void)resetClientSandboxExtensionCache;
+- (void)_invalidateClientSandboxExtensionCache;
+- (id)clientSandboxExtensionCache;
+- (void)_initClientSandboxExtensionCache;
 - (void)close;
 - (id)newBoundAssetsdServicesTable;
 - (id)newLibraryServicesManager;
 - (id)newChangePublisher;
 - (id)newAssetsdClient;
+- (id)initWithLibraryURL:(id)arg1 bundleController:(id)arg2;
 
 @end
 

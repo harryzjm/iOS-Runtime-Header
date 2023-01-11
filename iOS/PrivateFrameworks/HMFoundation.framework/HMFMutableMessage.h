@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFActivity, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFLogEventSession, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMutableMessage
 {
@@ -25,6 +25,7 @@
 // Remaining properties
 @property(retain, nonatomic) HMFMessageDestination *destination; // @dynamic destination;
 @property(copy, nonatomic) NSUUID *identifier; // @dynamic identifier;
+@property(retain, nonatomic) HMFLogEventSession *logEventSession; // @dynamic logEventSession;
 @property(copy, nonatomic) NSDictionary *messagePayload; // @dynamic messagePayload;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @dynamic responseHandler;
 

@@ -16,6 +16,7 @@
 - (unsigned long long)traits;
 - (_Bool)enablePrerollWithValue:(id)arg1 withType:(int)arg2;
 - (double)aspectRatioWithValue:(id)arg1 withType:(int)arg2;
+- (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *accessibilityCaption; // @dynamic accessibilityCaption;
@@ -26,6 +27,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool enablePreroll; // @dynamic enablePreroll;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSString *prerollPlacementIdentifier; // @dynamic prerollPlacementIdentifier;
 @property(readonly, nonatomic) NSString *resourceIdentifier; // @dynamic resourceIdentifier;
 @property(readonly, nonatomic) NSString *stillImageIdentifier; // @dynamic stillImageIdentifier;
 @property(readonly) Class superclass;

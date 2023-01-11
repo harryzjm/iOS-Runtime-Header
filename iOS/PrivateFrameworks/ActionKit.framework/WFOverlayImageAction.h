@@ -10,10 +10,12 @@
 {
 }
 
++ (id)userInterfaceXPCInterface;
++ (id)userInterfaceProtocol;
 - (void)getImageInputs:(CDUnknownBlockType)arg1 withInput:(id)arg2;
 - (void)runWithNoUserInterface:(id)arg1;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
-- (void)runWithUIKitWidgetUserInterface:(id)arg1 input:(id)arg2;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
+- (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end
 

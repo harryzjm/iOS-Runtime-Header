@@ -11,6 +11,11 @@
 }
 
 + (void)getNoteContentFromInput:(id)arg1 includingImages:(_Bool)arg2 actionName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (id)userInterfaceProtocol;
+- (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;
+- (id)targetContentAttribution;
+- (_Bool)requiresRemoteExecution;
+- (id)prioritizedParameterKeysForRemoteExecution;
 - (id)localizedKeyParameterDisplayName;
 - (void)selectedAppDidChange;
 - (void)initializeParameters;

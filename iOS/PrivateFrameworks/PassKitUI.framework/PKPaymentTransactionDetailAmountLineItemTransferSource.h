@@ -17,13 +17,13 @@
     _Bool _hasTrailingLineSeperator;
 }
 
-@property(nonatomic) _Bool hasTrailingLineSeperator; // @synthesize hasTrailingLineSeperator=_hasTrailingLineSeperator;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasTrailingLineSeperator; // @synthesize hasTrailingLineSeperator=_hasTrailingLineSeperator;
 @property(readonly, nonatomic) unsigned long long lineItemType;
 @property(readonly, nonatomic) _Bool isEmphasized;
 @property(readonly, nonatomic) NSString *value;
 @property(readonly, nonatomic) NSString *label;
-- (id)initWithAmount:(id)arg1 paymentPass:(id)arg2;
+- (id)initWithAmount:(id)arg1 transactionSource:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

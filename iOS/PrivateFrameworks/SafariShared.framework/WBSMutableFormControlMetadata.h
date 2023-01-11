@@ -10,6 +10,7 @@
 {
 }
 
+@property(copy, nonatomic) NSArray *ancestorFrameURLs; // @dynamic ancestorFrameURLs;
 @property(copy, nonatomic) NSArray *selectElementInfo; // @dynamic selectElementInfo;
 @property(copy, nonatomic) NSArray *autocompleteTokens; // @dynamic autocompleteTokens;
 @property(copy, nonatomic) NSDictionary *radioButtonInfo; // @dynamic radioButtonInfo;

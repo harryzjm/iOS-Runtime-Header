@@ -13,18 +13,24 @@
 __attribute__((visibility("hidden")))
 @interface WFPBTriggeredAutomationEvent : PBCodable <NSCopying>
 {
+    unsigned int _batchCount;
+    unsigned int _batchDroppedCount;
     NSString *_key;
     NSString *_triggerType;
     _Bool _requiredRuntimeConfirmation;
     struct {
+        unsigned int batchCount:1;
+        unsigned int batchDroppedCount:1;
         unsigned int requiredRuntimeConfirmation:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned int batchDroppedCount; // @synthesize batchDroppedCount=_batchDroppedCount;
+@property(nonatomic) unsigned int batchCount; // @synthesize batchCount=_batchCount;
 @property(nonatomic) _Bool requiredRuntimeConfirmation; // @synthesize requiredRuntimeConfirmation=_requiredRuntimeConfirmation;
 @property(retain, nonatomic) NSString *triggerType; // @synthesize triggerType=_triggerType;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -34,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasBatchDroppedCount;
+@property(nonatomic) _Bool hasBatchCount;
 @property(nonatomic) _Bool hasRequiredRuntimeConfirmation;
 @property(readonly, nonatomic) _Bool hasTriggerType;
 @property(readonly, nonatomic) _Bool hasKey;

@@ -9,14 +9,14 @@
 @interface PGPotentialPersonOverTimeMemory
 {
     PGGraphPersonNode *_personNode;
-    NSArray *_curatedAssets;
-    NSArray *_facedAssets;
+    NSArray *_bestAssetLocalIdentifiers;
+    NSArray *_facedAssetLocalIdentifiers;
 }
 
-@property(retain) NSArray *facedAssets; // @synthesize facedAssets=_facedAssets;
-@property(retain) NSArray *curatedAssets; // @synthesize curatedAssets=_curatedAssets;
-@property(readonly) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 - (void).cxx_destruct;
+@property(retain) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
+@property(retain) NSArray *bestAssetLocalIdentifiers; // @synthesize bestAssetLocalIdentifiers=_bestAssetLocalIdentifiers;
+@property(readonly) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 - (id)uuid;
 - (id)initWithPersonNode:(id)arg1 momentNodes:(id)arg2;
 

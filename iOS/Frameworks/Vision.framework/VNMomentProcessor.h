@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sortImageDescriptorsChronologically:(id)arg1;
-@property(retain, nonatomic) VNMPContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
+@property(retain, nonatomic) VNMPContext *context; // @synthesize context=_context;
 - (id)getKey:(id)arg1 fromDictionary:(id)arg2 withDefault:(id)arg3;
 - (id)computeNaturalClusteringForClusteringTree:(id)arg1 error:(id *)arg2;
 - (id)computeClusteringForClusteringTree:(id)arg1 usingThreshold:(float)arg2 error:(id *)arg3;
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (id)computeClusteringTreeForImageDescriptors:(id)arg1 error:(id *)arg2;
 - (id)computeNaturalClusteringOfImageDescriptors:(id)arg1 error:(id *)arg2;
 - (id)computeClusteringOfImageDescriptors:(id)arg1 intoKGroups:(int)arg2 error:(id *)arg3;
-- (id)processImagesFromDataProvider:(id)arg1 error:(id *)arg2;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 
 @end

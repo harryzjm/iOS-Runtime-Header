@@ -4,30 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface SGSignatureDissector
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+
+@class NSNumber, NSString;
+
+@interface SGSignatureDissector <SGMailMessageProcessing>
 {
+    NSNumber *_ignoreDataDetectorsForTesting;
 }
 
 + (id)singleLineSignatureLeadingCharacterSet;
-- (_Bool)shouldIgnoreSignature:(id)arg1;
+- (void).cxx_destruct;
+- (_Bool)shouldIgnoreSignature:(id)arg1 signatureRange:(struct _NSRange *)arg2 isInhuman:(_Bool *)arg3;
 - (_Bool)_paragraphWithContent:(id)arg1 range:(struct _NSRange)arg2 exceedsLineLimit:(unsigned long long)arg3 orCharacterLimit:(unsigned long long)arg4;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (struct _NSRange)rangeOfSenderNameComponents:(id)arg1 withFullname:(id)arg2 inSubstring:(id)arg3;
-- (struct _NSRange)rangeOfSenderName:(id)arg1 inRange:(struct _NSRange)arg2 restrictLength:(_Bool)arg3 forEntity:(id)arg4;
+- (struct _NSRange)rangeOfSenderName:(id)arg1 inRange:(struct _NSRange)arg2 restrictLength:(_Bool)arg3 forMessage:(id)arg4;
 - (id)authorFirstname:(id)arg1;
 - (id)authorName:(id)arg1;
 - (struct _NSRange)trailingSenderNameLineRange:(id)arg1;
 - (struct _NSRange)miniSignatureRange:(id)arg1;
-- (struct _NSRange)sigHtmlBlockRange:(id)arg1;
 - (struct _NSRange)hmmSignatureRangeWithContent:(id)arg1 detectedData:(id)arg2 quotedRegions:(id)arg3 authorName:(id)arg4;
 - (struct _NSRange)hmmSignatureRange:(id)arg1;
 - (struct _NSRange)hmmPlausibleSignatureRange:(id)arg1;
 - (struct _NSRange)findSignaturePrefix:(id)arg1;
 - (id)findRejectSig:(id)arg1;
 - (struct _NSRange)findValediction:(id)arg1;
-- (id)findSignaturePrefixesInEntity:(id)arg1 withSignaturePrefixes:(id)arg2;
+- (id)findSignaturePrefixesInMessage:(id)arg1 withSignaturePrefixes:(id)arg2;
 - (id)findValedictionCommencedSignatureRanges:(id)arg1;
 - (struct _NSRange)signatureRange:(id)arg1;
+- (id)initIgnoringDataDetectors;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

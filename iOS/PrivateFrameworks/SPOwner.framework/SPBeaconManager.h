@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SPOwner/SPBLEStateMonitorDelegate-Protocol.h>
 #import <SPOwner/SPMonitorsWrapperDelegate-Protocol.h>
 
-@class FMXPCServiceDescription, FMXPCSession, FMXPCTimer, NSString, SPMonitorsWrapper;
+@class FMXPCServiceDescription, FMXPCSession, FMXPCTimer, NSString, SPBLEStateMonitor, SPMonitorsWrapper;
 @protocol OS_dispatch_queue, OS_dispatch_source, SPBeaconManagerXPCProtocol;
 
-@interface SPBeaconManager : NSObject <SPMonitorsWrapperDelegate>
+@interface SPBeaconManager : NSObject <SPMonitorsWrapperDelegate, SPBLEStateMonitorDelegate>
 {
     _Bool _currentBeaconingState;
     _Bool _forceBeaconingOff;
@@ -33,16 +34,19 @@
     FMXPCTimer *_periodicActionXpcTimer;
     NSObject<OS_dispatch_source> *_periodicActionDispatchTimer;
     SPMonitorsWrapper *_monitorWrapper;
+    SPBLEStateMonitor *_bleMonitor;
     long long _cachedLocalBeaconManagerState;
 }
 
 + (id)scheduleDateInterval:(id)arg1;
 + (void)afterFirstUnlock:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool initialStateChangeSent; // @synthesize initialStateChangeSent=_initialStateChangeSent;
 @property(nonatomic) long long cachedLocalBeaconManagerState; // @synthesize cachedLocalBeaconManagerState=_cachedLocalBeaconManagerState;
 @property(nonatomic) unsigned char currentStatus; // @synthesize currentStatus=_currentStatus;
 @property(nonatomic) _Bool forceBeaconingOff; // @synthesize forceBeaconingOff=_forceBeaconingOff;
 @property(nonatomic) _Bool currentBeaconingState; // @synthesize currentBeaconingState=_currentBeaconingState;
+@property(retain, nonatomic) SPBLEStateMonitor *bleMonitor; // @synthesize bleMonitor=_bleMonitor;
 @property(retain, nonatomic) SPMonitorsWrapper *monitorWrapper; // @synthesize monitorWrapper=_monitorWrapper;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *periodicActionDispatchTimer; // @synthesize periodicActionDispatchTimer=_periodicActionDispatchTimer;
 @property(retain, nonatomic) FMXPCTimer *periodicActionXpcTimer; // @synthesize periodicActionXpcTimer=_periodicActionXpcTimer;
@@ -59,11 +63,12 @@
 @property(copy, nonatomic) CDUnknownBlockType statusChangedBlock; // @synthesize statusChangedBlock=_statusChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType stateChangedBlockWithCompletion; // @synthesize stateChangedBlockWithCompletion=_stateChangedBlockWithCompletion;
 @property(copy, nonatomic) CDUnknownBlockType stateChangedBlock; // @synthesize stateChangedBlock=_stateChangedBlock;
-- (void).cxx_destruct;
+- (void)bleMonitor:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)stateDidChange:(_Bool)arg1 powerState:(unsigned long long)arg2;
 - (_Bool)isBeaconing;
 - (void)beaconingKeysForUUID:(id)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)unacceptedBeaconsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)allBeaconsOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)allBeaconsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)notificationBeaconForSubscriptionId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beaconForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;

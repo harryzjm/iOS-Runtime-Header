@@ -6,24 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet, PGManager;
+@class NSArray, NSSet, PGManager, PGMoodGenerationContext;
 @protocol OS_dispatch_group;
 
 @interface PGHighlightTailor : NSObject
 {
     NSObject<OS_dispatch_group> *_enrichmentCommitGroup;
+    PGMoodGenerationContext *_moodGenerationContext;
     PGManager *_manager;
     NSArray *_enrichmentProfiles;
     NSSet *_verifiedPersonLocalIdentifiers;
 }
 
 + (_Bool)itemScoreIsAutoplayable:(double)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *enrichmentProfiles; // @synthesize enrichmentProfiles=_enrichmentProfiles;
 @property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-- (void).cxx_destruct;
 - (id)sortedCurationOfType:(unsigned short)arg1 fromHighlight:(id)arg2;
 - (id)keyAssetFromHighlight:(id)arg1;
 - (id)bestEnrichmentProfileForHighlight:(id)arg1 options:(unsigned long long)arg2;
+- (_Bool)enrichDayHighlights:(id)arg1 dayGroupHighlights:(id)arg2 withOptions:(unsigned long long)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (_Bool)enrichAllHighlightsWithOptions:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)enrichHighlights:(id)arg1 options:(unsigned long long)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)allHighlightModelsNeedingEnrichmentForHighlightSubtype:(long long)arg1 options:(unsigned long long)arg2;

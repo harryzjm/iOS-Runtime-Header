@@ -4,20 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSActionResponse.h>
+#import <UIKitServices/UISIntentForwardingActionResponse.h>
 
-@class INIntentResponse;
-
-@interface UIIntentForwardingActionResponse : BSActionResponse
+@interface UIIntentForwardingActionResponse : UISIntentForwardingActionResponse
 {
-    INIntentResponse *_cachedIntentResponse;
 }
-
-+ (id)responseWithIntentResponse:(id)arg1;
-- (void).cxx_destruct;
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
-@property(readonly, nonatomic) INIntentResponse *intentResponse;
-- (id)initWithIntentResponse:(id)arg1;
 
 @end
 

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INRunVoiceCommandIntentExport-Protocol.h>
 
 @class INIntentExecutionResult, INSpeakableString, INVoiceCommandDeviceInformation, NSString;
 
-@interface INRunVoiceCommandIntent <INRunVoiceCommandIntentExport>
+@interface INRunVoiceCommandIntent <INEnumerable, INRunVoiceCommandIntentExport>
 {
 }
 
@@ -34,6 +35,7 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_metadata;
 - (id)_typedBackingStore;
+- (_Bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

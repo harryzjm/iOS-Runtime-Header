@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) PKPaymentApplication *paymentApplication;
 @property(readonly, nonatomic) PKRemotePaymentInstrument *remotePaymentInstrument;
 @property(readonly, nonatomic) PKRemoteDevice *remoteDevice;
+- (id)paymentContactFormatErrors;
 - (id)errors;
 
 @end

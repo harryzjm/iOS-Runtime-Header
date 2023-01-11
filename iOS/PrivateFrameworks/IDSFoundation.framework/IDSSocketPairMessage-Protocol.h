@@ -12,6 +12,7 @@
 @property(retain, nonatomic) NSDate *expiryDate;
 @property(readonly, nonatomic) NSString *messageUUID;
 @property(readonly, nonatomic) NSString *peerResponseIdentifier;
+@property(readonly, nonatomic) _Bool didWakeHint;
 @property(readonly, nonatomic) _Bool expectsPeerResponse;
 @property(readonly, nonatomic) _Bool wantsAppAck;
 @property(readonly, nonatomic) NSData *data;

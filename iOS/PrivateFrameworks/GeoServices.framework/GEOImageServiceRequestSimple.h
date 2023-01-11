@@ -15,14 +15,13 @@
 }
 
 + (Class)replyClass;
-+ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) GEOImageServiceRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 - (_Bool)expectsReply;
 - (_Bool)isValid;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,22 +7,24 @@
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class NSString, OBTrayButton;
+@class HMHome, NSString, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUUpgradeMultiUserDevicesViewController <HUConfigurationViewController, HUPreloadableViewController>
 {
     id <HUConfigurationViewControllerDelegate> _delegate;
+    HMHome *_home;
     OBTrayButton *_continueButton;
 }
 
-@property(retain, nonatomic) OBTrayButton *continueButton; // @synthesize continueButton=_continueButton;
-@property(nonatomic) __weak id <HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) OBTrayButton *continueButton; // @synthesize continueButton=_continueButton;
+@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
+@property(nonatomic) __weak id <HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)viewDidLoad;
 - (id)hu_preloadContent;
 - (void)_continueButtonTapped:(id)arg1;
-- (id)initWithUpgradeRequirements:(unsigned long long)arg1;
+- (id)initWithUpgradeRequirements:(unsigned long long)arg1 home:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

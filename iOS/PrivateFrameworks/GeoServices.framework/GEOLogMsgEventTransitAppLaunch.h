@@ -13,12 +13,14 @@
 @interface GEOLogMsgEventTransitAppLaunch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_bundleIdentifier;
     GEOLatLng *_destination;
     GEOLatLng *_source;
     double _timestamp;
-    CDStruct_ea2c3af7 _flags;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    CDStruct_2aceabc6 _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -31,19 +33,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) double timestamp;
 @property(retain, nonatomic) GEOLatLng *destination;
 @property(readonly, nonatomic) _Bool hasDestination;
-- (void)_readDestination;
 @property(retain, nonatomic) GEOLatLng *source;
 @property(readonly, nonatomic) _Bool hasSource;
-- (void)_readSource;
 @property(retain, nonatomic) NSString *bundleIdentifier;
 @property(readonly, nonatomic) _Bool hasBundleIdentifier;
-- (void)_readBundleIdentifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

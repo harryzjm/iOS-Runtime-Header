@@ -28,8 +28,6 @@
 - (void)enqueueReadWithBlock:(CDUnknownBlockType)arg1 bypassSuspend:(_Bool)arg2 async:(_Bool)arg3;
 - (void)enqueueReadWithBlockAsync:(CDUnknownBlockType)arg1 bypassSuspend:(_Bool)arg2;
 - (void)enqueueReadWithBlock:(CDUnknownBlockType)arg1 bypassSuspend:(_Bool)arg2;
-- (void)_resumeReaders;
-- (void)_suspendReadersAndWaitForDrain;
 - (id)initWithNumberOfReaders:(unsigned long long)arg1;
 
 @end

@@ -16,6 +16,7 @@
 + (id)settingsWithDictionary:(id)arg1;
 @property(retain, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_internal;
 - (_Bool)isEqual:(id)arg1;
+- (id)arrayForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)stringForKey:(id)arg1 defaultValue:(id)arg2;
 - (double)doubleForKey:(id)arg1 defaultValue:(double)arg2;
 - (float)floatForKey:(id)arg1 defaultValue:(float)arg2;

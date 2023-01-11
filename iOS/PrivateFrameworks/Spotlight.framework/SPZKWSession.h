@@ -10,8 +10,7 @@
 {
 }
 
-+ (id)cachedZKWAppBundleIDs;
-- (id)queryWithContext:(id)arg1;
+- (id)queryTaskWithContext:(id)arg1;
 
 @end
 

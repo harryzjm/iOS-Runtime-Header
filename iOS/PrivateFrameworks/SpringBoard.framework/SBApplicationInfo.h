@@ -20,7 +20,6 @@
     NSString *_launchInterfaceFileName;
     NSSet *_urlSchemes;
     NSSet *_supportedContentTypes;
-    NSString *_iconMasqueradeIdentifier;
     NSURL *_restorationArchiveContainerURL;
     NSURL *_dataContainerURLOverride;
     NSUserDefaults *_lazy_userDefaults;
@@ -35,7 +34,7 @@
     unsigned long long _allowedNKNotificationsPerDay;
     long long _forcedUserInterfaceStyle;
     int _networkUsageTypes;
-    int _supportedTypes;
+    unsigned long long _supportedTypes;
     int _ignoredStatusBarStyleOverrides;
     _Bool _isLaunchableDuringSetup;
     _Bool _usesSplashBoard;
@@ -48,6 +47,7 @@
     _Bool _isPeaceBLinked;
     _Bool _isYukonLinked;
     _Bool _isYukonELinked;
+    _Bool _isAzulLinked;
     _Bool _prefersSavedSnapshots;
     _Bool _wantsLaunchWithoutPNG;
     _Bool _wantsFullScreen;
@@ -65,33 +65,44 @@
     _Bool _usesRLNDataProvider;
     _Bool _shouldSkipCrossfadeToLive;
     _Bool _supports64Bit;
+    _Bool _supportsMultiwindow;
     _Bool _isNewsstand;
     _Bool _canChangeBackgroundStyle;
     _Bool _allowNonDefaultBackgroundStyle;
     _Bool _supportsDirectToAirplay;
-    _Bool _ocelotApplication;
+    _Bool _alwaysReceivesOpenURLSource;
+    _Bool _alwaysDeliversOpenURLActionsUsingWorkspace;
+    _Bool _arcadeApplication;
+    _Bool _appClip;
     _Bool _shouldLaunchWithLiveContentASAP;
     _Bool _cloudDemoted;
     _Bool _wantsExclusiveForeground;
     NSURL *_documentInboxURL;
+    NSArray *_iTunesCategoriesOrderedByRelevancy;
     XBSnapshotContainerIdentity *_manifestContainerIdentity;
+    NSString *_vendorName;
 }
 
-+ (int)_calculateApplicationSupportedTypesFromProxy:(id)arg1;
-+ (unsigned long long)_visibilityOverrideFromInfo:(id)arg1 entitlements:(id)arg2;
++ (id)_directToAirPlayBundleIDs;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 @property(readonly, nonatomic) _Bool wantsExclusiveForeground; // @synthesize wantsExclusiveForeground=_wantsExclusiveForeground;
 @property(readonly, nonatomic, getter=isCloudDemoted) _Bool cloudDemoted; // @synthesize cloudDemoted=_cloudDemoted;
 @property(readonly, nonatomic) XBSnapshotContainerIdentity *manifestContainerIdentity; // @synthesize manifestContainerIdentity=_manifestContainerIdentity;
 @property(readonly, nonatomic) _Bool shouldLaunchWithLiveContentASAP; // @synthesize shouldLaunchWithLiveContentASAP=_shouldLaunchWithLiveContentASAP;
+@property(readonly, copy, nonatomic) NSArray *iTunesCategoriesOrderedByRelevancy; // @synthesize iTunesCategoriesOrderedByRelevancy=_iTunesCategoriesOrderedByRelevancy;
 @property(readonly, nonatomic) unsigned long long applicationSizeInBytes; // @synthesize applicationSizeInBytes=_applicationSizeInBytes;
-@property(readonly, nonatomic, getter=isOcelotApplication) _Bool ocelotApplication; // @synthesize ocelotApplication=_ocelotApplication;
+@property(readonly, nonatomic, getter=isAppClip) _Bool appClip; // @synthesize appClip=_appClip;
+@property(readonly, nonatomic, getter=isArcadeApplication) _Bool arcadeApplication; // @synthesize arcadeApplication=_arcadeApplication;
+@property(readonly, nonatomic) _Bool alwaysDeliversOpenURLActionsUsingWorkspace; // @synthesize alwaysDeliversOpenURLActionsUsingWorkspace=_alwaysDeliversOpenURLActionsUsingWorkspace;
+@property(readonly, nonatomic) _Bool alwaysReceivesOpenURLSource; // @synthesize alwaysReceivesOpenURLSource=_alwaysReceivesOpenURLSource;
 @property(readonly, nonatomic) _Bool supportsDirectToAirplay; // @synthesize supportsDirectToAirplay=_supportsDirectToAirplay;
 @property(readonly, nonatomic, getter=isNewsstand) _Bool newsstand; // @synthesize newsstand=_isNewsstand;
+@property(readonly, nonatomic) _Bool supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 @property(readonly, nonatomic) _Bool supports64Bit; // @synthesize supports64Bit=_supports64Bit;
 @property(readonly, nonatomic) _Bool shouldSkipCrossfadeToLive; // @synthesize shouldSkipCrossfadeToLive=_shouldSkipCrossfadeToLive;
 @property(readonly, nonatomic) _Bool usesRLNDataProvider; // @synthesize usesRLNDataProvider=_usesRLNDataProvider;
 @property(readonly, nonatomic) _Bool hasHiddenTag; // @synthesize hasHiddenTag=_hasHiddenTag;
-@property(readonly, copy, nonatomic) NSString *iconMasqueradeIdentifier; // @synthesize iconMasqueradeIdentifier=_iconMasqueradeIdentifier;
 @property(readonly, nonatomic) unsigned long long allowedNKNotificationsPerDay; // @synthesize allowedNKNotificationsPerDay=_allowedNKNotificationsPerDay;
 @property(readonly, nonatomic) _Bool disallowsControlCenter; // @synthesize disallowsControlCenter=_disallowsControlCenter;
 @property(readonly, nonatomic) _Bool disallowsNotificationCenter; // @synthesize disallowsNotificationCenter=_disallowsNotificationCenter;
@@ -102,7 +113,7 @@
 @property(readonly, nonatomic) NSArray *launchImageInfo; // @synthesize launchImageInfo=_launchImageInfo;
 @property(readonly, nonatomic) NSArray *domainsToPreheat; // @synthesize domainsToPreheat=_domainsToPreheat;
 @property(readonly, nonatomic, getter=isStatusBarLegacy) _Bool statusBarIsLegacy; // @synthesize statusBarIsLegacy=_statusBarIsLegacy;
-@property(readonly, nonatomic) int supportedTypes; // @synthesize supportedTypes=_supportedTypes;
+@property(readonly, nonatomic) unsigned long long supportedTypes; // @synthesize supportedTypes=_supportedTypes;
 @property(readonly, nonatomic) CRCarPlayAppDeclaration *carPlayDeclaration; // @synthesize carPlayDeclaration=_carPlayDeclaration;
 @property(readonly, nonatomic) unsigned long long voipClass; // @synthesize voipClass=_voipClass;
 @property(readonly, nonatomic) unsigned long long uninstallCapability; // @synthesize uninstallCapability=_uninstallCapability;
@@ -128,6 +139,7 @@
 @property(readonly, nonatomic) unsigned long long dynamicApplicationShortcutItemsVersion; // @synthesize dynamicApplicationShortcutItemsVersion=_dynamicApplicationShortcutItemsVersion;
 @property(readonly, copy, nonatomic) NSString *applicationShortcutWidgetBundleIdentifier; // @synthesize applicationShortcutWidgetBundleIdentifier=_applicationShortcutWidgetBundleIdentifier;
 @property(readonly, nonatomic) _Bool representsWebApplication; // @synthesize representsWebApplication=_representsWebApplication;
+@property(readonly, nonatomic, getter=isAzulLinked) _Bool azulLinked; // @synthesize azulLinked=_isAzulLinked;
 @property(readonly, nonatomic, getter=isYukonELinked) _Bool yukonELinked; // @synthesize yukonELinked=_isYukonELinked;
 @property(readonly, nonatomic, getter=isYukonLinked) _Bool yukonLinked; // @synthesize yukonLinked=_isYukonLinked;
 @property(readonly, nonatomic, getter=isPeaceBLinked) _Bool peaceBLinked; // @synthesize peaceBLinked=_isPeaceBLinked;
@@ -135,10 +147,6 @@
 @property(readonly, nonatomic, getter=isTigrisLinked) _Bool tigrisLinked; // @synthesize tigrisLinked=_isTigrisLinked;
 @property(readonly, nonatomic, getter=isMonarchLinked) _Bool monarchLinked; // @synthesize monarchLinked=_isMonarchLinked;
 @property(readonly, nonatomic) NSString *installInstanceID; // @synthesize installInstanceID=_installInstanceID;
-- (void).cxx_destruct;
-- (unsigned long long)_calculateVoipClassWithEntitlements:(id)arg1;
-- (_Bool)_supportsApplicationType:(int)arg1;
-- (id)_configureTags:(id)arg1 hasVisibilityOverride:(_Bool)arg2;
 - (void)_loadFromProxy:(id)arg1;
 - (long long)backgroundStyle;
 - (_Bool)canChangeBackgroundStyle;
@@ -156,7 +164,7 @@
 @property(readonly, nonatomic, getter=isAppleApplication) _Bool appleApplication;
 @property(readonly, nonatomic, getter=isInternalApplication) _Bool internalApplication;
 @property(readonly, nonatomic, getter=isSystemApplication) _Bool systemApplication;
-@property(readonly, nonatomic) _Bool supportsDirectToAirplayOrIsWhitelisted;
+@property(readonly, nonatomic) _Bool supportsDirectToAirplayOrIsAllowListed;
 
 @end
 

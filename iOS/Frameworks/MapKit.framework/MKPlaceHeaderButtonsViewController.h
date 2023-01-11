@@ -8,33 +8,35 @@
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 
-@class MKPlaceHeaderButton, MKPlaceSectionRowView, NSArray, NSAttributedString, NSString, _MKPlaceActionButtonController;
-@protocol GEOTransitLineItem, MKPlaceHeaderButtonsViewControllerDelegate, _MKPlaceItem;
+@class MKPlaceSectionRowView, NSArray, NSMutableAttributedString, NSString, UIButton, _MKPlaceActionButtonController;
+@protocol GEOTransitLineItem, MKPlaceHeaderButtonsViewControllerDelegate, _MKPlaceActionControlledButton, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceHeaderButtonsViewController <MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware, MKETAProviderObserver>
 {
     MKPlaceSectionRowView *_buttonsContainerView;
     NSArray *_constraints;
-    MKPlaceHeaderButton *_primaryButton;
-    MKPlaceHeaderButton *_secondaryButton;
-    NSAttributedString *_primaryAttributedString;
-    NSString *_currentETAString;
+    UIButton<_MKPlaceActionControlledButton> *_primaryButton;
+    UIButton<_MKPlaceActionControlledButton> *_alternatePrimaryButton;
+    UIButton<_MKPlaceActionControlledButton> *_secondaryButton;
+    NSMutableAttributedString *_currentETAString;
     _Bool _resizableViewsDisabled;
     id <_MKPlaceItem> _placeItem;
     id <GEOTransitLineItem> _lineItem;
     id <MKPlaceHeaderButtonsViewControllerDelegate> _delegate;
     unsigned long long _primaryButtonType;
+    _MKPlaceActionButtonController *_alternatePrimaryButtonController;
     _MKPlaceActionButtonController *_secondaryButtonController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _MKPlaceActionButtonController *secondaryButtonController; // @synthesize secondaryButtonController=_secondaryButtonController;
+@property(retain, nonatomic) _MKPlaceActionButtonController *alternatePrimaryButtonController; // @synthesize alternatePrimaryButtonController=_alternatePrimaryButtonController;
 @property(nonatomic) unsigned long long primaryButtonType; // @synthesize primaryButtonType=_primaryButtonType;
 @property(nonatomic) __weak id <MKPlaceHeaderButtonsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) id <GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
 @property(retain, nonatomic) id <_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
 @property(nonatomic) _Bool resizableViewsDisabled; // @synthesize resizableViewsDisabled=_resizableViewsDisabled;
-- (void).cxx_destruct;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 - (id)updateButton:(id)arg1 withController:(id)arg2;

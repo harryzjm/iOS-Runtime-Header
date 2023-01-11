@@ -6,24 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <WebKit/WKFormControl-Protocol.h>
 
 @class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKDateTimePicker : NSObject <WKFormControl>
+@interface WKDateTimePicker : NSObject <WKFormControl, UIContextMenuInteractionDelegate>
 {
     struct RetainPtr<UIDatePicker> _datePicker;
     NSString *_formatString;
+    NSString *_initialValue;
+    double _initialValueAsNumber;
     _Bool _shouldRemoveTimeZoneInformation;
     _Bool _isTimeInput;
     WKContentView *_view;
+    struct CGPoint _interactionPoint;
+    struct RetainPtr<WKDateTimeContextMenuViewController> _viewController;
+    struct RetainPtr<UIContextMenuInteraction> _dateTimeContextMenuInteraction;
+    _Bool _presenting;
+    _Bool _preservingFocus;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)controlEndEditing;
+- (id)viewController;
+- (void)setHour:(long long)arg1 minute:(long long)arg2;
 - (void)controlBeginEditing;
+- (void)setDateTimePickerToInitialValue;
 - (void)_dateChangeHandler:(id)arg1;
 - (void)_dateChanged;
 - (void)_dateChangedSetAsString;
@@ -34,9 +45,27 @@ __attribute__((visibility("hidden")))
 - (id)controlView;
 - (_Bool)shouldPresentGregorianCalendar:(const struct FocusedElementInformation *)arg1;
 - (void)dealloc;
-- (id)calendarType;
+@property(readonly, nonatomic) double minute;
+@property(readonly, nonatomic) double hour;
+@property(readonly, nonatomic) NSString *calendarType;
+- (void)ok:(id)arg1;
+- (void)reset:(id)arg1;
+- (void)showDateTimePicker;
+- (void)ensureContextMenuInteraction;
+- (void)removeContextMenuInteraction;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)initWithView:(id)arg1 datePickerMode:(long long)arg2;
-- (id)datePicker;
+- (long long)datePickerStyle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

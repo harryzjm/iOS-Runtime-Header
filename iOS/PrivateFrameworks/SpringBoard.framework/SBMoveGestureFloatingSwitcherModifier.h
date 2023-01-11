@@ -14,19 +14,20 @@
 @property(nonatomic) struct CGPoint translation; // @synthesize translation=_translation;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(nonatomic) long long initialFloatingConfiguration; // @synthesize initialFloatingConfiguration=_initialFloatingConfiguration;
-- (id)topMostAppLayouts;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (id)layoutSettings;
+- (id)topMostLayoutElements;
+- (id)appLayoutsToCacheSnapshots;
 - (double)shadowOffsetForIndex:(unsigned long long)arg1;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (struct CGRect)containerViewBounds;
 - (id)_updateForGestureDidEndWithEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
+- (id)handleMainTransitionEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1 initialFloatingConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3;
 
 @end

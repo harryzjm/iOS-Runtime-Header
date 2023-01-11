@@ -15,16 +15,15 @@
     CDStruct_996ac03c _stabCropRect;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(readonly, nonatomic) CDStruct_996ac03c stabCropRect; // @synthesize stabCropRect=_stabCropRect;
 @property(readonly, copy, nonatomic) NSArray *keyframes; // @synthesize keyframes=_keyframes;
-- (void).cxx_destruct;
 - (id)result;
 - (_Bool)_createKeyframesFromReframer:(id)arg1 videoTrack:(id)arg2 viewRect:(CDStruct_996ac03c)arg3 timedMetadata:(id)arg4 error:(out id *)arg5;
 - (_Bool)_createStabilizedKeyframesFromReframer:(id)arg1 videoTrack:(id)arg2 viewRect:(CDStruct_996ac03c)arg3 timedMetadata:(id)arg4 error:(out id *)arg5;
 - (void)_writeDiagnosticFilesForReframer:(id)arg1 metadata:(id)arg2;
 - (_Bool)prepare:(out id *)arg1;
-- (id)videoReframeRequest;
 - (id)scalePolicy;
 - (_Bool)wantsOutputVideo;
 - (_Bool)wantsCompleteStage;

@@ -15,6 +15,7 @@
 + (id)ownedTypes;
 + (id)itemWithItems:(id)arg1 named:(id)arg2;
 + (id)itemWithObjects:(id)arg1 named:(id)arg2;
+- (id)allowedClassesForDecodingInternalRepresentations;
 - (_Bool)getListSubtitle:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *items;
 

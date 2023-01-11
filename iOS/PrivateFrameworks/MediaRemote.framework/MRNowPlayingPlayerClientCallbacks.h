@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSVMultiCallback, NSArray, NSMutableDictionary, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, MSVMultiCallback, NSArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_serialQueue;
     MSVMultiCallback *_createPlaybackQueueForRequestCallbacks;
     MSVMultiCallback *_createItemForOffsetCallbacks;
+    MSVMultiCallback *_createItemForIdentifierCallbacks;
     MSVMultiCallback *_createChildItemCallbacks;
     MSVMultiCallback *_metadataCallbacks;
     MSVMultiCallback *_languageOptionsCallbacks;
@@ -22,6 +23,8 @@ __attribute__((visibility("hidden")))
     MSVMultiCallback *_lyricsCallbacks;
     MSVMultiCallback *_artworkCallbacks;
     CDUnknownBlockType _playbackSessionCallback;
+    CDUnknownBlockType _playbackSessionMigrateBeginCallback;
+    CDUnknownBlockType _playbackSessionMigrateEndCallback;
     CDUnknownBlockType _playbackSessionMigrateRequestCallback;
     CDUnknownBlockType _beginLyricsEventCallback;
     CDUnknownBlockType _endLyricsEventCallback;
@@ -29,22 +32,24 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _audioAmplitudeSamplesCallback;
     NSMutableDictionary *_commandHandlerBlocks;
     MSVMultiCallback *_createItemToken;
+    MSVMultiCallback *_createItemForIdentifierToken;
     MSVMultiCallback *_metadataToken;
     MSVMultiCallback *_languageToken;
     MSVMultiCallback *_artworkToken;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MRPlayerPath *_playerPath;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MSVMultiCallback *artworkCallbacks; // @synthesize artworkCallbacks=_artworkCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *lyricsCallbacks; // @synthesize lyricsCallbacks=_lyricsCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *infoCallbacks; // @synthesize infoCallbacks=_infoCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *languageOptionsCallbacks; // @synthesize languageOptionsCallbacks=_languageOptionsCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *metadataCallbacks; // @synthesize metadataCallbacks=_metadataCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *createChildItemCallbacks; // @synthesize createChildItemCallbacks=_createChildItemCallbacks;
+@property(readonly, nonatomic) MSVMultiCallback *createItemForIdentifierCallbacks; // @synthesize createItemForIdentifierCallbacks=_createItemForIdentifierCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *createItemForOffsetCallbacks; // @synthesize createItemForOffsetCallbacks=_createItemForOffsetCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *createPlaybackQueueForRequestCallbacks; // @synthesize createPlaybackQueueForRequestCallbacks=_createPlaybackQueueForRequestCallbacks;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 - (void)registerNowPlayingInfoArtworkAssetCallback:(id)arg1;
 - (void)registerNowPlayingInfoAssetCallbacks:(id)arg1;
 - (void)registerNowPlayingInfoCallbacks:(id)arg1;
@@ -58,6 +63,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;
 @property(copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
 @property(copy, nonatomic) CDUnknownBlockType playbackSessionMigrateRequestCallback;
+@property(copy, nonatomic) CDUnknownBlockType playbackSessionMigrateEndCallback;
+@property(copy, nonatomic) CDUnknownBlockType playbackSessionMigrateBeginCallback;
 @property(copy, nonatomic) CDUnknownBlockType playbackSessionCallback;
 @property(copy, nonatomic) CDUnknownBlockType audioAmplitudeSamplesCallback;
 @property(copy, nonatomic) CDUnknownBlockType videoThumbnailsCallback;

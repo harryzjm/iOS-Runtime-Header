@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)configurePredictionCell:(id)arg1 forCandidate:(id)arg2 animated:(_Bool)arg3;
 - (void)_reloadCellsAnimated:(_Bool)arg1;
+- (void)_accessibilitySendCandidateNotificationIfNecessary:(_Bool)arg1;
 - (id)accessibilityLabel;
 - (unsigned long long)_accessibilityScannerGroupTraits;
 - (long long)accessibilityNavigationStyle;

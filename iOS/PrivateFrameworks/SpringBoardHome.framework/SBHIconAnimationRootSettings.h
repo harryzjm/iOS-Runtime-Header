@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBHCenterAcceleratedAppSuspendSettings, SBHCenterAppLaunchSettings, SBHCenterAppSuspendSettings, SBHCrossfadeAcceleratedAppSuspendSettings, SBHCrossfadeAppLaunchSettings, SBHCrossfadeAppSuspendSettings, SBHFolderCloseSettings, SBHFolderOpenSettings, SBHReducedMotionFadeSettings, SBHUnlockSettings;
+@class SBHCenterAcceleratedAppSuspendSettings, SBHCenterAppLaunchSettings, SBHCenterAppSuspendSettings, SBHCrossfadeAcceleratedAppSuspendSettings, SBHCrossfadeAppLaunchSettings, SBHCrossfadeAppSuspendSettings, SBHFolderCloseSettings, SBHFolderOpenSettings, SBHLibraryPodCloseSettings, SBHLibraryPodOpenSettings, SBHReducedMotionFadeSettings, SBHUnlockSettings;
 
 @interface SBHIconAnimationRootSettings : PTSettings
 {
@@ -23,9 +23,14 @@
     SBHFolderOpenSettings *_folderOpenSettings;
     SBHFolderCloseSettings *_folderCloseSettings;
     double _maxFolderCloseHintProgress;
+    SBHLibraryPodOpenSettings *_libraryPodOpenSettings;
+    SBHLibraryPodCloseSettings *_libraryPodCloseSettings;
 }
 
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
+@property(retain, nonatomic) SBHLibraryPodCloseSettings *libraryPodCloseSettings; // @synthesize libraryPodCloseSettings=_libraryPodCloseSettings;
+@property(retain, nonatomic) SBHLibraryPodOpenSettings *libraryPodOpenSettings; // @synthesize libraryPodOpenSettings=_libraryPodOpenSettings;
 @property(nonatomic) double maxFolderCloseHintProgress; // @synthesize maxFolderCloseHintProgress=_maxFolderCloseHintProgress;
 @property(retain, nonatomic) SBHFolderCloseSettings *folderCloseSettings; // @synthesize folderCloseSettings=_folderCloseSettings;
 @property(retain, nonatomic) SBHFolderOpenSettings *folderOpenSettings; // @synthesize folderOpenSettings=_folderOpenSettings;
@@ -39,7 +44,6 @@
 @property(retain, nonatomic) SBHCenterAppLaunchSettings *centerLaunchSettings; // @synthesize centerLaunchSettings=_centerLaunchSettings;
 @property(retain, nonatomic) SBHUnlockSettings *unlockSettings; // @synthesize unlockSettings=_unlockSettings;
 @property(retain, nonatomic) SBHReducedMotionFadeSettings *reducedMotionSettings; // @synthesize reducedMotionSettings=_reducedMotionSettings;
-- (void).cxx_destruct;
 - (void)setDefaultValues;
 
 @end

@@ -12,8 +12,8 @@
     _Bool _immediateForMatchingThread;
 }
 
+- (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
-- (void)dealloc;
 - (id)initWithTarget:(id)arg1 thread:(id)arg2 immediateForMatchingThread:(_Bool)arg3;
 
 @end

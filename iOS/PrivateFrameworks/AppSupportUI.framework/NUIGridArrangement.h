@@ -35,7 +35,6 @@
 - (struct CGRect)unionFrameForItemsInColumns:(struct _NSRange)arg1 rows:(struct _NSRange)arg2 inBounds:(struct CGRect)arg3;
 - (void)positionItemsInColumns:(struct _NSRange)arg1 rows:(struct _NSRange)arg2 inBounds:(struct CGRect)arg3 block:(CDUnknownBlockType)arg4;
 - (void)positionItemsInBounds:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_cacheDisplayScaleIfNeeded;
 - (struct CGSize)layoutSizeFittingSize:(struct CGSize)arg1;
 - (void)reloadData;
 @property(nonatomic) long long verticalDistribution;

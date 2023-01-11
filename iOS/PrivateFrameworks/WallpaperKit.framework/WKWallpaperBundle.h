@@ -6,40 +6,49 @@
 
 #import <objc/NSObject.h>
 
+#import <WallpaperKit/NAIdentifiable-Protocol.h>
+#import <WallpaperKit/WKWallpaperRepresenting-Protocol.h>
+
 @class NSMutableDictionary, NSString, NSURL;
 
-@interface WKWallpaperBundle : NSObject
+@interface WKWallpaperBundle : NSObject <NAIdentifiable, WKWallpaperRepresenting>
 {
     _Bool _appearanceAware;
-    _Bool _distintWallpapersForLocations;
+    _Bool _distinctWallpapersForLocations;
     _Bool _dynamicWallpaperBundle;
-    unsigned long long _version;
-    unsigned long long _identifier;
+    NSURL *_thumbnailImageURL;
+    long long _version;
+    long long _identifier;
     NSString *_name;
     NSString *_family;
-    NSURL *_thumbnailImageURL;
-    NSURL *__bundleURL;
     NSMutableDictionary *__defaultAppearanceWallpapers;
     NSMutableDictionary *__darkAppearanceWallpapers;
+    NSURL *__bundleURL;
 }
 
++ (id)createTemporaryWallpaperBundleWithImages:(id)arg1 videoAssetURLs:(id)arg2 wallpaperOptions:(id)arg3 error:(id *)arg4;
++ (id)na_identity;
 + (_Bool)shouldLoadWallpaperBundleAtURL:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *_bundleURL; // @synthesize _bundleURL=__bundleURL;
 @property(retain, nonatomic) NSMutableDictionary *_darkAppearanceWallpapers; // @synthesize _darkAppearanceWallpapers=__darkAppearanceWallpapers;
 @property(retain, nonatomic) NSMutableDictionary *_defaultAppearanceWallpapers; // @synthesize _defaultAppearanceWallpapers=__defaultAppearanceWallpapers;
-@property(retain, nonatomic) NSURL *_bundleURL; // @synthesize _bundleURL=__bundleURL;
-@property(readonly, nonatomic, getter=isDynamicWallpaperBundle) _Bool dynamicWallpaperBundle; // @synthesize dynamicWallpaperBundle=_dynamicWallpaperBundle;
-@property(readonly, nonatomic, getter=hasDistintWallpapersForLocations) _Bool distintWallpapersForLocations; // @synthesize distintWallpapersForLocations=_distintWallpapersForLocations;
-@property(readonly, nonatomic, getter=isAppearanceAware) _Bool appearanceAware; // @synthesize appearanceAware=_appearanceAware;
-@property(readonly, copy, nonatomic) NSURL *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
 @property(readonly, copy, nonatomic) NSString *family; // @synthesize family=_family;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) long long version; // @synthesize version=_version;
+@property(readonly, nonatomic, getter=isDynamicWallpaperBundle) _Bool dynamicWallpaperBundle; // @synthesize dynamicWallpaperBundle=_dynamicWallpaperBundle;
+@property(readonly, nonatomic, getter=hasDistinctWallpapersForLocations) _Bool distinctWallpapersForLocations; // @synthesize distinctWallpapersForLocations=_distinctWallpapersForLocations;
+@property(readonly, nonatomic, getter=isAppearanceAware) _Bool appearanceAware; // @synthesize appearanceAware=_appearanceAware;
+@property(readonly, copy, nonatomic) NSURL *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (id)_liveWallpaperWithMetadataDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
 - (id)_stillWallpaperWithMetadataDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
 - (id)_processCommonFileBackedWallpaperMetadataWithDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
 - (void)_raiseInvalidMetadataExceptionForMetadataKeypath:(id)arg1;
+@property(readonly, nonatomic) unsigned long long contentSource;
+@property(readonly, copy, nonatomic) NSString *identifierString;
 - (id)valueBasedWallpaperForLocation:(id)arg1 andAppearance:(id)arg2;
 - (id)valueBasedWallpaperForLocation:(id)arg1;
 - (id)fileBasedWallpaperForLocation:(id)arg1 andAppearance:(id)arg2;
@@ -48,8 +57,13 @@
 - (void)_processAssetDictionary:(id)arg1 forLocation:(id)arg2;
 - (void)_loadBundle;
 - (void)_loadDynamicWallpaper:(id)arg1;
-- (id)initWithDynamicDictionary:(id)arg1 identifier:(unsigned long long)arg2;
+- (id)initWithDynamicDictionary:(id)arg1 identifier:(long long)arg2;
 - (id)initWithURL:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

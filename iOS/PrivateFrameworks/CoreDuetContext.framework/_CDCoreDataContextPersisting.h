@@ -20,22 +20,24 @@
 
 + (id)persistenceWithStorage:(id)arg1;
 + (id)persistenceWithDirectory:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSCountedSet *keyPathRegistrationCount; // @synthesize keyPathRegistrationCount=_keyPathRegistrationCount;
 @property(readonly, nonatomic) _DKCoreDataStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (id)loadRegistrations;
 - (id)loadValues;
 - (void)deleteDataCreatedBefore:(id)arg1;
 - (void)deleteAllData;
 - (void)deleteRegistration:(id)arg1;
 - (void)saveRegistration:(id)arg1;
-- (void)deleteKeyPaths:(id)arg1;
+- (void)_deleteKeyPaths:(id)arg1;
 - (void)saveValue:(id)arg1 forKeyPath:(id)arg2;
 - (id)uniqunessPredicateForRegistration:(id)arg1;
 - (id)uniquenessPredicateForKeyPath:(id)arg1;
 - (_Bool)fromEntityWithName:(id)arg1 fetchAllObjectsMatchingPredicate:(id)arg2 handlingMOs:(CDUnknownBlockType)arg3;
 - (_Bool)fromEntityWithName:(id)arg1 deleteObjectsMatching:(id)arg2;
+- (_Bool)_withMOFromEntityWithName:(id)arg1 andUniqunessPredicate:(id)arg2 insert:(_Bool)arg3 update:(CDUnknownBlockType)arg4;
+- (_Bool)withMOFromEntityWithName:(id)arg1 andUniqunessPredicate:(id)arg2 update:(CDUnknownBlockType)arg3;
 - (_Bool)withMOFromEntityWithName:(id)arg1 andUniqunessPredicate:(id)arg2 insertOrUpdate:(CDUnknownBlockType)arg3;
 - (id)getMOC;
 - (id)initWithStorage:(id)arg1;

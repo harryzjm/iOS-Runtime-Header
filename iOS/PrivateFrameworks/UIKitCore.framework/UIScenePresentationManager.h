@@ -10,11 +10,12 @@
 #import <UIKitCore/FBSceneObserver-Protocol.h>
 #import <UIKitCore/_UIScenePresenterOwnerDelegate-Protocol.h>
 
-@class FBScene, NSMapTable, NSString, UIScenePresentationContext, _UIScenePresenterOwner;
+@class FBScene, NSMapTable, NSString, UIScenePresentationContext, _UISceneKeyboardProxyLayerForwardingManager, _UIScenePresenterOwner;
 @protocol UIScenePresentationManagerDelegate;
 
 @interface UIScenePresentationManager : NSObject <BSDescriptionProviding, _UIScenePresenterOwnerDelegate, FBSceneObserver>
 {
+    _UISceneKeyboardProxyLayerForwardingManager *_keyboardProxyLayerManager;
     FBScene *_scene;
     _UIScenePresenterOwner *_scenePresenterOwner;
     NSMapTable *_mapLayersToPresenterOwners;
@@ -26,10 +27,10 @@
     } _delegateFlags;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) UIScenePresentationContext *defaultPresentationContext; // @synthesize defaultPresentationContext=_defaultScenePresentationContext;
 @property(nonatomic) __weak id <UIScenePresentationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak FBScene *scene; // @synthesize scene=_scene;
-- (void).cxx_destruct;
 - (_Bool)_hasPresenterWithIdentifier:(id)arg1;
 - (long long)_defaultPresentationPriority;
 - (id)_presenterWithIdentifier:(id)arg1;
@@ -50,6 +51,7 @@
 - (id)createPresenterWithIdentifier:(id)arg1;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
 - (void)modifyDefaultPresentationContext:(CDUnknownBlockType)arg1;
+- (id)_initWithScene:(id)arg1 keyboardProxyLayerManager:(id)arg2;
 - (id)_initWithScene:(id)arg1;
 - (id)init;
 

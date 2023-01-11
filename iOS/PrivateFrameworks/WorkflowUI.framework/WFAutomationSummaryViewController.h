@@ -16,6 +16,7 @@
 {
     id <WFAutomationSummaryViewControllerDelegate> _delegate;
     WFConfiguredTriggerRecord *_triggerRecord;
+    NSString *_triggerIdentifier;
     WFTrigger *_trigger;
     WFWorkflow *_workflow;
     unsigned long long _mode;
@@ -24,15 +25,16 @@
     UITableView *_tableView;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) NSArray *actionIcons; // @synthesize actionIcons=_actionIcons;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(readonly, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
+@property(readonly, copy, nonatomic) NSString *triggerIdentifier; // @synthesize triggerIdentifier=_triggerIdentifier;
 @property(readonly, nonatomic) WFConfiguredTriggerRecord *triggerRecord; // @synthesize triggerRecord=_triggerRecord;
 @property(nonatomic) __weak id <WFAutomationSummaryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)didTapDone:(id)arg1;
 - (void)promptSwitchChanged:(id)arg1;
 - (void)enabledSwitchChanged:(id)arg1;
@@ -49,7 +51,7 @@
 - (void)loadView;
 - (_Bool)isModalInPresentation;
 - (void)updateUI;
-- (id)initWithTrigger:(id)arg1 workflow:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 triggerIdentifier:(id)arg2 workflow:(id)arg3 mode:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -26,12 +26,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 @property(copy) NSDictionary *_userInfo; // @synthesize _userInfo;
-@property double _timeout; // @synthesize _timeout;
-@property(readonly, copy) CDUnknownBlockType _errorBlock; // @synthesize _errorBlock;
-@property(retain) NSXPCInterface *_remoteInterface; // @synthesize _remoteInterface;
 @property(readonly, retain) NSXPCConnection *_connection; // @synthesize _connection;
-@property(readonly) unsigned long long _generationCount; // @synthesize _generationCount;
-@property(readonly) unsigned long long _proxyNumber; // @synthesize _proxyNumber;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithTimeout:(double)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)remoteObjectProxyWithUserInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
@@ -45,9 +40,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)conformsToProtocol:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(readonly) _Bool _sync;
-@property(readonly) _Bool _noImportance;
-@property(readonly) _Bool _exported;
 - (void)dealloc;
 - (id)_initWithConnection:(id)arg1 exportedObject:(id)arg2 interface:(id)arg3;
 - (id)_initWithConnection:(id)arg1 proxyNumber:(unsigned long long)arg2 generationCount:(unsigned long long)arg3 interface:(id)arg4 options:(unsigned long long)arg5 error:(CDUnknownBlockType)arg6;

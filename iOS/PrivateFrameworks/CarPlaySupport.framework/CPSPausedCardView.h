@@ -4,22 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIActivityIndicatorView, UILabel;
+#import <UIKit/UIView.h>
 
-@interface CPSPausedCardView
+#import <CarPlaySupport/CPSCardPlatterProviding-Protocol.h>
+
+@class CPSCardPlatterView, NSString, UIActivityIndicatorView, UILabel;
+
+@interface CPSPausedCardView : UIView <CPSCardPlatterProviding>
 {
+    CPSCardPlatterView *_cardPlatterView;
     UILabel *_title;
     UIActivityIndicatorView *_spinner;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property(readonly, nonatomic) UILabel *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+@property(retain, nonatomic) CPSCardPlatterView *cardPlatterView; // @synthesize cardPlatterView=_cardPlatterView;
 - (struct CGSize)intrinsicContentSize;
-- (id)initWithTitle:(id)arg1 showsSpinner:(_Bool)arg2 backgroundColor:(id)arg3;
-- (void)backgroundColorDidChange;
-- (void)traitCollectionDidChange:(id)arg1;
-- (id)backgroundColor;
+- (id)initWithReason:(unsigned long long)arg1 title:(id)arg2 backgroundColor:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

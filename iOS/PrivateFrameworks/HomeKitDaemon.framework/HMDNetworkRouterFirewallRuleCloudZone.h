@@ -17,14 +17,24 @@
     NSArray *_signatureVerificationPublicKeys;
 }
 
++ (_Bool)verifyNetworkDeclarationsFromRecord:(id)arg1 signatureVerificationPublicKeys:(id)arg2 error:(id *)arg3;
++ (_Bool)verifyNetworkDeclarationsFromRecord:(id)arg1 signatureVerificationPublicKeys:(id)arg2 baseAccessoryIdentifier:(id *)arg3 data:(id *)arg4 error:(id *)arg5;
++ (_Bool)__verifyDataFromRecord:(id)arg1 signatureVerificationPublicKeys:(id)arg2 dataKey:(id)arg3 dataAssetKey:(id)arg4 maxDataSize:(unsigned long long)arg5 signatureKey:(id)arg6 signatureAssetKey:(id)arg7 maxSignatureSize:(unsigned long long)arg8 baseAccessoryIdentifier:(id *)arg9 data:(id *)arg10 error:(id *)arg11;
++ (id)__getDataFromRecord:(id)arg1 dataKey:(id)arg2 dataAssetKey:(id)arg3 maxDataSize:(unsigned long long)arg4 error:(id *)arg5;
++ (_Bool)__verifyDigestDataAgainstSignatureFromRecord:(id)arg1 digestData:(id)arg2 signatureData:(id)arg3 signatureVerificationPublicKeys:(id)arg4 error:(id *)arg5;
++ (id)__getSignatureDataFromRecord:(id)arg1 signatureKey:(id)arg2 signatureAssetKey:(id)arg3 maxSignatureSize:(unsigned long long)arg4 error:(id *)arg5;
++ (id)__calculateDigestDataFromRecord:(id)arg1 dataKey:(id)arg2 dataAssetKey:(id)arg3 maxDataSize:(unsigned long long)arg4 error:(id *)arg5;
++ (id)__createBaseAccessoryIdentifierFromRecord:(id)arg1 error:(id *)arg2;
 + (unsigned long long)__maxSizeForCKRecordString;
++ (unsigned long long)__maxSizeForCKRecordPairedMetadataSignature;
++ (unsigned long long)__maxSizeForCKRecordPairedMetadata;
 + (unsigned long long)__maxSizeForCKRecordNetworkDeclarationsSignature;
 + (unsigned long long)__maxSizeForCKRecordNetworkDeclarations;
 + (unsigned long long)__maxSizeFromPreferenceWithKey:(id)arg1 defaultValue:(unsigned long long)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *signatureVerificationPublicKeys; // @synthesize signatureVerificationPublicKeys=_signatureVerificationPublicKeys;
 @property(readonly, nonatomic) NSSet *watchedRecordIDs; // @synthesize watchedRecordIDs=_watchedRecordIDs;
 @property(readonly, nonatomic) _Bool useAnonymousRequests; // @synthesize useAnonymousRequests=_useAnonymousRequests;
-- (void).cxx_destruct;
 - (void)__retryFetchWithFetchInfo:(id)arg1;
 - (_Bool)__canRecoverFromError:(id)arg1 fetchInfo:(id)arg2;
 - (_Bool)__commitLocalChanges:(id)arg1 error:(id *)arg2;
@@ -42,13 +52,7 @@
 @property(retain, nonatomic) NSSet *modifiedRecordIDsFromLastPull; // @synthesize modifiedRecordIDsFromLastPull=_modifiedRecordIDsFromLastPull;
 - (id)attributeDescriptions;
 - (id)initWithCloudDatabase:(id)arg1 state:(id)arg2 useAnonymousRequests:(_Bool)arg3 watchedRecordIDs:(id)arg4 signatureVerificationPublicKeys:(id)arg5;
-- (id)decodeModelFrom:(id)arg1 fullyPopulatedRecord:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)__verifyNetworkDeclarationsFromRecord:(id)arg1 baseAccessoryIdentifier:(id *)arg2 networkDeclarationsData:(id *)arg3 error:(id *)arg4;
-- (id)__getNetworkDeclarationsDataFromRecord:(id)arg1 error:(id *)arg2;
-- (_Bool)__verifyNetworkDeclarationsDigestAgainstSignatureFromRecord:(id)arg1 digestData:(id)arg2 signatureData:(id)arg3 error:(id *)arg4;
-- (id)__getNetworkDeclarationsSignatureDataFromRecord:(id)arg1 error:(id *)arg2;
-- (id)__calculateNetworkDeclarationsDigestFromRecord:(id)arg1 error:(id *)arg2;
-- (id)__createBaseAccessoryIdentifierFromRecord:(id)arg1 error:(id *)arg2;
+- (id)decodeModelFrom:(id)arg1 recordSource:(unsigned long long)arg2 error:(id *)arg3;
 
 @end
 

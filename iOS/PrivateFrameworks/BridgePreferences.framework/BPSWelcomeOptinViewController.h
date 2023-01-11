@@ -8,38 +8,42 @@
 
 #import <BridgePreferences/BPSBuddyController-Protocol.h>
 
-@class BPSWatchView, NSString, OBTrayButton;
+@class BPSWatchView, NSString, NSUserActivity, OBHeaderAccessoryButton, OBTrayButton;
 @protocol BPSBuddyControllerDelegate;
 
 @interface BPSWelcomeOptinViewController : OBWelcomeController <BPSBuddyController>
 {
+    _Bool _isDisplayingInSkippedMiniFlow;
     _Bool _showSuggestedButton;
     _Bool _showAlternateButton;
     _Bool _showOkayButton;
-    _Bool _showLearnMoreButton;
     _Bool _hasFinishedLoadingView;
+    _Bool _hasDetailText;
     unsigned long long _style;
     BPSWatchView *_watchView;
     id <BPSBuddyControllerDelegate> _delegate;
     OBTrayButton *_suggestedChoiceButton;
     OBTrayButton *_alternateChoiceButton;
     OBTrayButton *_okayButton;
-    OBTrayButton *_learnMoreButton;
+    OBHeaderAccessoryButton *_learnMoreButton;
+    NSUserActivity *_tapToRadarActivity;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSUserActivity *tapToRadarActivity; // @synthesize tapToRadarActivity=_tapToRadarActivity;
+@property(nonatomic) _Bool hasDetailText; // @synthesize hasDetailText=_hasDetailText;
 @property(nonatomic) _Bool hasFinishedLoadingView; // @synthesize hasFinishedLoadingView=_hasFinishedLoadingView;
-@property(nonatomic) _Bool showLearnMoreButton; // @synthesize showLearnMoreButton=_showLearnMoreButton;
 @property(nonatomic) _Bool showOkayButton; // @synthesize showOkayButton=_showOkayButton;
 @property(nonatomic) _Bool showAlternateButton; // @synthesize showAlternateButton=_showAlternateButton;
 @property(nonatomic) _Bool showSuggestedButton; // @synthesize showSuggestedButton=_showSuggestedButton;
-@property(retain, nonatomic) OBTrayButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property(retain, nonatomic) OBHeaderAccessoryButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property(retain, nonatomic) OBTrayButton *okayButton; // @synthesize okayButton=_okayButton;
 @property(retain, nonatomic) OBTrayButton *alternateChoiceButton; // @synthesize alternateChoiceButton=_alternateChoiceButton;
 @property(retain, nonatomic) OBTrayButton *suggestedChoiceButton; // @synthesize suggestedChoiceButton=_suggestedChoiceButton;
+@property(nonatomic) _Bool isDisplayingInSkippedMiniFlow; // @synthesize isDisplayingInSkippedMiniFlow=_isDisplayingInSkippedMiniFlow;
 @property(nonatomic) __weak id <BPSBuddyControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) BPSWatchView *watchView; // @synthesize watchView=_watchView;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (_Bool)wantsOkayPillButton;
 - (_Bool)wantsToShowWatchHW;
 - (_Bool)wantsLearnMoreButton;
@@ -47,6 +51,11 @@
 - (_Bool)wantsAlternateChoicePillButton;
 - (_Bool)wantsSuggestedChoicePillButton;
 - (void)_didTapPrivacyAccept:(id)arg1;
+- (void)_endTapToRadarActivity;
+- (void)_startTapToRadarActivity;
+- (void)openTapToRadar;
+- (id)tapToRadarMetadata;
+- (void)markPaneAsSkipped;
 - (void)removeFollowupForPageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addFollowUpForPageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addFollowUpForPageAndDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -66,6 +75,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_removeButtonObservers;
 - (void)_addButtonObservers;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)refreshViews;
 - (void)viewDidLoad;
 - (id)privacyBundles;
@@ -77,6 +88,7 @@
 - (id)detailTitleString;
 - (id)titleAttributedString;
 - (id)titleString;
+- (_Bool)wantsInternalFPOLabel;
 - (void)okayButtonPressed:(id)arg1;
 - (void)learnMoreButtonPressed:(id)arg1;
 - (void)alternateButtonPressed:(id)arg1;

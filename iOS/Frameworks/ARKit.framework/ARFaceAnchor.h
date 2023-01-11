@@ -6,42 +6,31 @@
 
 #import <ARKit/ARTrackable-Protocol.h>
 
-@class ARFaceGeometry, ARFaceTrackingData, MISSING_TYPE, NSDictionary, NSError, NSString;
+@class ARFaceGeometry, MISSING_TYPE, NSDictionary, NSString;
 
 @interface ARFaceAnchor <ARTrackable>
 {
-    NSDictionary *_blendShapeCoefficientsDictionary;
-    _Bool _isTracked;
+    _Bool isTracked;
     ARFaceGeometry *_geometry;
-    ARFaceTrackingData *_trackingData;
-    NSError *_trackingError;
+    NSDictionary *_blendShapes;
+    MISSING_TYPE *_lookAtPoint;
+    CDStruct_14d5dc5e _leftEyeTransform;
+    CDStruct_14d5dc5e _rightEyeTransform;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)blendShapeToMirroredBlendShapeMapping;
-+ (id)mirroredBlendShapeMapping;
-+ (id)blendShapeMapping;
-+ (void)initialize;
-@property(retain, nonatomic) NSError *trackingError; // @synthesize trackingError=_trackingError;
-@property(nonatomic) _Bool isTracked; // @synthesize isTracked=_isTracked;
-@property(retain, nonatomic) ARFaceTrackingData *trackingData; // @synthesize trackingData=_trackingData;
-@property(readonly, nonatomic) ARFaceGeometry *geometry; // @synthesize geometry=_geometry;
 - (void).cxx_destruct;
-- (_Bool)isEqualToFaceAnchor:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *blendShapes; // @synthesize blendShapes=_blendShapes;
+@property(readonly, nonatomic) MISSING_TYPE *lookAtPoint; // @synthesize lookAtPoint=_lookAtPoint;
+@property(readonly, nonatomic) CDStruct_14d5dc5e rightEyeTransform; // @synthesize rightEyeTransform=_rightEyeTransform;
+@property(readonly, nonatomic) CDStruct_14d5dc5e leftEyeTransform; // @synthesize leftEyeTransform=_leftEyeTransform;
+@property(readonly, nonatomic) ARFaceGeometry *geometry; // @synthesize geometry=_geometry;
+@property(readonly, nonatomic) _Bool isTracked; // @synthesize isTracked;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly, copy) NSString *debugDescription;
-- (id)initWithAnchor:(id)arg1;
-- (MISSING_TYPE *)gazePoint;
-@property(readonly, nonatomic) MISSING_TYPE *lookAtPoint;
-@property(readonly, nonatomic) CDStruct_14d5dc5e rightEyeTransform;
-@property(readonly, nonatomic) CDStruct_14d5dc5e leftEyeTransform;
-- (const MISSING_TYPE **)imageVertices;
-@property(readonly, nonatomic) NSDictionary *blendShapes;
-- (id)initWithExistingFaceAnchor:(id)arg1 tracked:(_Bool)arg2 trackingError:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 trackingData:(id)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

@@ -21,7 +21,7 @@
 - (void)mergePropertiesFrom:(id)arg1;
 - (id)serverRepresentation;
 - (id)description;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)descriptionSubstitutionMap;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

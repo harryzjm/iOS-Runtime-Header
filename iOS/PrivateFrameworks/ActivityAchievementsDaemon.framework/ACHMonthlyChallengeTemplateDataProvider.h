@@ -19,15 +19,17 @@
     NSDate *_currentDate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
 @property(retain, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
 @property(nonatomic) __weak ACHActivitySummaryUtility *activitySummaryUtility; // @synthesize activitySummaryUtility=_activitySummaryUtility;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(nonatomic) __weak ACHAchievementStore *achievementStore; // @synthesize achievementStore=_achievementStore;
-- (void).cxx_destruct;
 - (void)setCurrentCalendarOverride:(id)arg1;
 - (void)setCurrentDateOverride:(id)arg1;
 - (_Bool)hasMinimumActiveDays;
+- (unsigned long long)currentExperienceType;
+- (long long)currentActivityMoveMode;
 - (_Bool)isWheelchairUser;
 - (_Bool)isDate:(id)arg1 betweenStartDate:(id)arg2 andEndDate:(id)arg3;
 - (_Bool)monthlyChallengeExistsForMonth:(id)arg1;

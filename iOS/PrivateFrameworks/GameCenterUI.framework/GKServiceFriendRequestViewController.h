@@ -6,7 +6,7 @@
 
 #import <GameCenterUI/MFMessageComposeViewControllerInternalDelegate-Protocol.h>
 
-@class MFMessageComposeViewController, NSString;
+@class MFMessageComposeViewController, NSArray, NSString;
 
 @interface GKServiceFriendRequestViewController <MFMessageComposeViewControllerInternalDelegate>
 {
@@ -14,18 +14,24 @@
     MFMessageComposeViewController *_composeController;
     NSString *_friendCode;
     NSString *_friendSupportPageURL;
+    NSArray *_recipients;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool messageComposeSent; // @synthesize messageComposeSent=_messageComposeSent;
+@property(retain, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(retain, nonatomic) NSString *friendSupportPageURL; // @synthesize friendSupportPageURL=_friendSupportPageURL;
 @property(retain, nonatomic) NSString *friendCode; // @synthesize friendCode=_friendCode;
 @property(retain, nonatomic) MFMessageComposeViewController *composeController; // @synthesize composeController=_composeController;
-- (void).cxx_destruct;
 - (void)displayAlertWithTitle:(id)arg1 andMessage:(id)arg2;
 - (void)messageComposeViewController:(id)arg1 shouldSendMessage:(id)arg2 toRecipients:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (void)constructPrivateViewController;
+- (_Bool)shouldAnimatePresentationForPrivateViewController:(id)arg1;
 - (void)setInitialState:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (_Bool)_useBackdropViewForWindowBackground;
 - (id)init;
 
 // Remaining properties

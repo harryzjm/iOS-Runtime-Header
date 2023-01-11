@@ -17,7 +17,6 @@
     struct {
         unsigned int objectType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _objectType;
     _INPBIntentMetadata *_intentMetadata;
     _INPBDateTimeRange *_recordDate;
@@ -29,14 +28,13 @@
 + (_Bool)supportsSecureCoding;
 + (Class)valuesType;
 + (Class)sampleMetadataType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *values; // @synthesize values=_values;
 @property(retain, nonatomic) _INPBWellnessUnitType *unit; // @synthesize unit=_unit;
 @property(copy, nonatomic) NSArray *sampleMetadatas; // @synthesize sampleMetadatas=_sampleMetadatas;
 @property(retain, nonatomic) _INPBDateTimeRange *recordDate; // @synthesize recordDate=_recordDate;
 @property(nonatomic) int objectType; // @synthesize objectType=_objectType;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

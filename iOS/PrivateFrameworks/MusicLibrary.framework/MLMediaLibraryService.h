@@ -26,10 +26,9 @@
 - (id)_serviceConnection;
 - (void)importOperationWithIdentifier:(id)arg1 didUpdateWithProgress:(float)arg2;
 - (void)serviceTerminatedTransactionWithIdentifier:(id)arg1 error:(id)arg2;
+- (id)clientImportServiceListenerEndpointWithError:(id *)arg1;
 - (id)mediaLibraryResourcesServiceListenerEndpointWithError:(id *)arg1;
 - (void)performMaintenanceTasksForDatabaseAtPath:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)performRestoreOfLatestBackupForDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)performBackupOfDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)updateSpotlightIndexMetadataForItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)updateSpotlightIndexForBundleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getLanguageResourcesWithCompletion:(CDUnknownBlockType)arg1;

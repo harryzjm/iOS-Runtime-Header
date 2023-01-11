@@ -9,18 +9,20 @@
 #import <UIKitServices/BSInvalidatable-Protocol.h>
 
 @class BSServiceConnection, NSString;
+@protocol OS_dispatch_queue;
 
 @interface UISApplicationSupportClient : NSObject <BSInvalidatable>
 {
-    struct os_unfair_lock_s _lock;
-    BSServiceConnection *_lock_connection;
-    _Bool _lock_invalidated;
+    NSObject<OS_dispatch_queue> *_queue;
+    _Bool _queue_invalidated;
+    BSServiceConnection *_queue_connection;
 }
 
 - (void).cxx_destruct;
+- (id)_applicationSupportServiceEndpoint;
 - (id)_remoteTarget;
 - (void)destroyScenesWithPersistentIdentifiers:(id)arg1 animationType:(unsigned long long)arg2 destroySessions:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)applicationInitializationContext;
+- (id)applicationInitializationContextWithParameters:(id)arg1;
 - (void)requestPasscodeUnlockUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (void)dealloc;

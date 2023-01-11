@@ -11,15 +11,22 @@
 @interface ARUISpriteSheetFactory : NSObject
 {
     ARUISpriteTexture *_defaultSpriteTexture;
+    ARUISpriteTexture *_wheelchairSpriteTexture;
     ARUISpriteTexture *_sharingSpriteTexture;
+    ARUISpriteTexture *_wheelchairSharingSpriteTexture;
 }
 
++ (id)wheelchairSharingSpriteSheet;
 + (id)sharingSpriteSheet;
++ (id)wheelchairSpriteSheetForRingType:(long long)arg1;
++ (id)wheelchairSpriteSheet;
 + (id)spriteSheetForRingType:(long long)arg1;
 + (id)defaultSpriteSheet;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)wheelchairSharingSpriteTexture;
 - (id)sharingSpriteTexture;
+- (id)wheelchairSpriteTexture;
 - (id)defaultSpriteTexture;
 
 @end

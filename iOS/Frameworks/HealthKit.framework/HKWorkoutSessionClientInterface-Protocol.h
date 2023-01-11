@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSError;
+@class HKWorkoutConfiguration, NSArray, NSDate, NSError;
 
 @protocol HKWorkoutSessionClientInterface
+- (void)client_didUpdateWorkoutConfiguration:(HKWorkoutConfiguration *)arg1;
 - (void)client_synchronizeWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)client_didFailWithError:(NSError *)arg1;
 - (void)client_didGenerateEvents:(NSArray *)arg1;

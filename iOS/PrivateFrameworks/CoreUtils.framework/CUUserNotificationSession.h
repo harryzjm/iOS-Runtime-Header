@@ -8,11 +8,13 @@
 
 #import <CoreUtils/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class NSArray, NSError, NSString, UNUserNotificationCenter;
-@protocol OS_dispatch_queue;
+@class NSArray, NSError, NSMutableDictionary, NSString, UNUserNotificationCenter;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUUserNotificationSession : NSObject <UNUserNotificationCenterDelegate>
 {
+    NSMutableDictionary *_actions;
+    _Bool _actionsChanged;
     _Bool _activateCalled;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
@@ -20,6 +22,7 @@
     int _state;
     NSError *_stepError;
     int _stepState;
+    NSObject<OS_dispatch_source> *_timer;
     UNUserNotificationCenter *_unCenter;
     struct LogCategory *_ucat;
     unsigned int _flags;
@@ -30,22 +33,31 @@
     NSString *_categoryID;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_header;
+    NSString *_iconAppIdentifier;
+    NSString *_iconName;
+    NSString *_iconPath;
     NSString *_identifier;
     NSString *_label;
     long long _soundAlertType;
     NSString *_subtitleKey;
     NSArray *_subtitleArguments;
+    double _timeoutSeconds;
     NSString *_titleKey;
     NSArray *_titleArguments;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *titleArguments; // @synthesize titleArguments=_titleArguments;
 @property(copy, nonatomic) NSString *titleKey; // @synthesize titleKey=_titleKey;
+@property(nonatomic) double timeoutSeconds; // @synthesize timeoutSeconds=_timeoutSeconds;
 @property(copy, nonatomic) NSArray *subtitleArguments; // @synthesize subtitleArguments=_subtitleArguments;
 @property(copy, nonatomic) NSString *subtitleKey; // @synthesize subtitleKey=_subtitleKey;
 @property(nonatomic) long long soundAlertType; // @synthesize soundAlertType=_soundAlertType;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSString *iconPath; // @synthesize iconPath=_iconPath;
+@property(copy, nonatomic) NSString *iconName; // @synthesize iconName=_iconName;
+@property(copy, nonatomic) NSString *iconAppIdentifier; // @synthesize iconAppIdentifier=_iconAppIdentifier;
 @property(copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property(nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -54,7 +66,6 @@
 @property(copy, nonatomic) NSArray *bodyArguments; // @synthesize bodyArguments=_bodyArguments;
 @property(copy, nonatomic) NSString *bodyKey; // @synthesize bodyKey=_bodyKey;
 @property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
-- (void).cxx_destruct;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_runResponse:(id)arg1 error:(id *)arg2;
 - (_Bool)_runRequestAddStart:(id *)arg1;
@@ -62,7 +73,12 @@
 - (void)_runAuthorizeCheckStart;
 - (_Bool)_runInit:(id *)arg1;
 - (void)_run;
+- (void)_reportTimeout;
 - (void)_reportError:(id)arg1;
+- (void)_updateActionCategories;
+- (void)removeAllActions;
+- (void)removeActionWithIdentifier:(id)arg1;
+- (void)addActionWithIdentifier:(id)arg1 title:(id)arg2 flags:(unsigned int)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_invalidated;
 - (void)_invalidate;
 - (void)invalidate;

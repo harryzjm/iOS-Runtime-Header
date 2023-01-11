@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPModelAlbum, MPModelForYouRecommendationGroup, MPModelPlaylist;
+@class MPModelAlbum, MPModelForYouRecommendationGroup, MPModelPlaylist, MPModelRadioStation, NSURL;
 
 @interface MPModelForYouRecommendationItem
 {
@@ -14,8 +14,10 @@
 + (id)__subgroupIndex_KEY;
 + (id)__parentGroup_KEY;
 + (id)__backedByStoreItemMetadata_KEY;
++ (id)__radioStation_KEY;
 + (id)__playlist_KEY;
 + (id)__album_KEY;
++ (id)__url_KEY;
 + (id)__itemType_KEY;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;
@@ -28,7 +30,9 @@
 @property(nonatomic) unsigned long long itemType; // @dynamic itemType;
 @property(nonatomic) __weak MPModelForYouRecommendationGroup *parentGroup; // @dynamic parentGroup;
 @property(retain, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
+@property(retain, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
 @property(nonatomic) long long subgroupIndex; // @dynamic subgroupIndex;
+@property(copy, nonatomic) NSURL *url; // @dynamic url;
 
 @end
 

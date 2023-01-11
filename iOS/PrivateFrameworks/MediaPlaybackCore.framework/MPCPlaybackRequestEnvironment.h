@@ -26,6 +26,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)requestEnvironmentWithUserIdentity:(id)arg1;
 + (id)activeAccountRequestEnvironment;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property(readonly, copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property(readonly, copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
@@ -33,13 +34,14 @@
 @property(readonly, copy, nonatomic) MPCPlaybackDelegationProperties *delegationProperties; // @synthesize delegationProperties=_delegationProperties;
 @property(readonly, copy, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void).cxx_destruct;
 - (id)_copyWithPlaybackRequestEnvironmentClass:(Class)arg1;
+- (id)rectifiedPlaybackRequestEnvironmentForAccountManager:(id)arg1 reasons:(id *)arg2;
 - (id)_createStoreRequestContext;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)description;
 - (id)init;
 - (id)initWithUserIdentity:(id)arg1;
 

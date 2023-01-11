@@ -17,9 +17,10 @@
     id <_UIRotatingAlertControllerDelegate> _rotatingSheetDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long arrowDirections; // @synthesize arrowDirections=_arrowDirections;
 @property(nonatomic) __weak id <_UIRotatingAlertControllerDelegate> rotatingSheetDelegate; // @synthesize rotatingSheetDelegate=_rotatingSheetDelegate;
-- (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (void)didRotate:(id)arg1;
 - (void)_didRotateAndLayout;
 - (void)_updateSheetPositionAfterRotation;

@@ -15,7 +15,6 @@
 @interface HMDHomeInvitation : HMFObject <HMFTimerDelegate, NSSecureCoding>
 {
     long long _invitationState;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDHome *_home;
     HMHomeInvitationData *_invitationData;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -26,6 +25,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *operations; // @synthesize operations=_operations;
 @property(retain, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
 @property(copy, nonatomic) CDUnknownBlockType expirationHandler; // @synthesize expirationHandler=_expirationHandler;
@@ -33,9 +33,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(retain, nonatomic) HMHomeInvitationData *invitationData; // @synthesize invitationData=_invitationData;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(nonatomic) long long invitationState; // @synthesize invitationState=_invitationState;
-- (void).cxx_destruct;
 - (id)describeWithFormat;
 - (void)_resolve:(_Bool)arg1;
 - (void)_clearTimer;

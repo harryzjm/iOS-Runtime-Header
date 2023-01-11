@@ -6,12 +6,13 @@
 
 #import <NotesUI/PLPhotoAnalysisGraphServiceProtocol-Protocol.h>
 #import <NotesUI/PLPhotoAnalysisJobServiceProtocol-Protocol.h>
+#import <NotesUI/PLPhotoAnalysisPresentationServiceProtocol-Protocol.h>
 #import <NotesUI/PLPhotoAnalysisVisionServiceFaceProcessingProtocol-Protocol.h>
 #import <NotesUI/PLPhotoAnalysisVisionServiceTaxonomyProtocol-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, NSURL;
 
-@protocol PLPhotoAnalysisServiceProtocol <PLPhotoAnalysisJobServiceProtocol, PLPhotoAnalysisGraphServiceProtocol, PLPhotoAnalysisVisionServiceTaxonomyProtocol, PLPhotoAnalysisVisionServiceFaceProcessingProtocol>
+@protocol PLPhotoAnalysisServiceProtocol <PLPhotoAnalysisJobServiceProtocol, PLPhotoAnalysisGraphServiceProtocol, PLPhotoAnalysisVisionServiceTaxonomyProtocol, PLPhotoAnalysisVisionServiceFaceProcessingProtocol, PLPhotoAnalysisPresentationServiceProtocol>
 - (void)writeQALog:(NSString *)arg1;
 - (void)notifyLibraryAvailableAtURL:(NSURL *)arg1;
 - (void)cancelOperationsWithIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;

@@ -24,6 +24,7 @@
     PHAdjustmentData *_originalAdjustmentData;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PHAdjustmentData *originalAdjustmentData; // @synthesize originalAdjustmentData=_originalAdjustmentData;
 @property(copy, nonatomic) NSURL *backSwappingVideoRenderURL; // @synthesize backSwappingVideoRenderURL=_backSwappingVideoRenderURL;
 @property(copy, nonatomic) NSURL *frontSwappingVideoRenderURL; // @synthesize frontSwappingVideoRenderURL=_frontSwappingVideoRenderURL;
@@ -33,7 +34,6 @@
 @property(retain, nonatomic) NSURL *overCapturePhotoURL; // @synthesize overCapturePhotoURL=_overCapturePhotoURL;
 @property(retain, nonatomic) NSNumber *baseVersionNeeded; // @synthesize baseVersionNeeded=_baseVersionNeeded;
 @property(nonatomic) _Bool canHandleAdjustmentData; // @synthesize canHandleAdjustmentData=_canHandleAdjustmentData;
-- (void).cxx_destruct;
 - (id)description;
 - (void)addFlipVideoURL:(id)arg1 forAssetResourceType:(long long)arg2;
 - (void)addFlipImageURL:(id)arg1 forAssetResourceType:(long long)arg2;
@@ -46,21 +46,20 @@
 - (void)mergeInfoDictionaryFromResult:(id)arg1;
 - (id)videoSandboxExtensionToken;
 - (id)imageSandboxExtensionToken;
-- (_Bool)isCancelled;
-- (void)setCancelled:(_Bool)arg1;
 - (id)error;
 - (void)setError:(id)arg1;
-- (_Bool)isInCloud;
-- (void)setIsInCloud:(_Bool)arg1;
 - (id)imagePropertiesLoadIfNeeded:(_Bool)arg1;
+- (id)uniformTypeIdentifier;
 - (id)videoAdjustmentData;
 - (id)videoURL;
 - (id)exifOrientation;
-- (id)imageUTI;
 - (id)imageData;
 - (id)imageURL;
 - (struct CGImage *)imageRef;
 - (id)adjustmentData;
+- (id)inCloudInfoKey;
+- (id)cancelledInfoKey;
+- (id)errorInfoKey;
 - (_Bool)containsValidData;
 
 @end

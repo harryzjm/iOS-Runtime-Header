@@ -15,9 +15,9 @@
 
 + (id)_compositePromiseWithPromises:(id)arg1 resolvingResultFromPromise:(id)arg2;
 + (id)_metricsDataApplyingWhitelisting:(id)arg1 usingRecorder:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *eventListeners; // @synthesize eventListeners=_eventListeners;
 @property(nonatomic) __weak id <MTEventRecorderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_recordEvent:(id)arg1 toTopic:(id)arg2 usingRecorder:(id)arg3;
 - (id)_recordEvent:(id)arg1 usingRecorder:(id)arg2;
 - (id)_flushUnreportedEventsUsingRecorder:(id)arg1;
@@ -28,6 +28,10 @@
 - (id)flushUnreportedEvents;
 - (void)removeEventListener:(id)arg1;
 - (void)addEventListener:(id)arg1;
+- (void)dealloc;
+- (void)maybeSubscribeToFlushNotification;
+- (id)initWithMetricsKit:(id)arg1;
+- (id)init;
 - (id)_amsDelegate;
 @property(nonatomic) _Bool monitorsLifecycleEvents;
 

@@ -17,10 +17,13 @@
 + (Class)assetSetClass;
 + (id)slotWithIdiom:(id)arg1 role:(id)arg2 size:(id)arg3;
 + (id)orderedComponentClasses;
++ (id)genesisSlotsForSlots:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) IBICSize *size; // @synthesize size=_size;
 @property(readonly) IBICRole *role; // @synthesize role=_role;
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
-- (void).cxx_destruct;
+- (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;
+- (id)detailAreaPath;
 - (long long)compareDisplayOrder:(id)arg1;
 - (id)shortDisplayNameConsideringCounterparts:(id)arg1;
 - (void)captureComponents;

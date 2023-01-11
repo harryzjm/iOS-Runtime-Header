@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)scheduleDeepScanForContainer:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)checkIfItemIsShareableWithInode:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(id)arg1 toNewParent:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)moveBRSecurityBookmarkAtURL:(id)arg1 toURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)currentSyncedRootURLsWithReply:(CDUnknownBlockType)arg1;
@@ -23,32 +24,9 @@ __attribute__((visibility("hidden")))
 - (void)lookupMinFileSizeForThumbnailTransferWithReply:(CDUnknownBlockType)arg1;
 - (void)lookupExcludedExtensionsForLogoutWithReply:(CDUnknownBlockType)arg1;
 - (void)lookupExcludedFilenamesForLogoutWithReply:(CDUnknownBlockType)arg1;
-- (void)_t_removePackageExtension:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_addPackageExtension:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_getPerfValuesWithReply:(CDUnknownBlockType)arg1;
-- (void)_t_isAutomaticallyEvictable:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_copyItemIDFromItemAtURL:(id)arg1 toItemAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)_t_migrateAllZonesToClouddocsWithReset:(_Bool)arg1 onlyPrepare:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)_retryCZMigrationWithRetryCount:(int)arg1 syncContext:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (id)_crossZoneMoveOperationForReset:(_Bool)arg1;
-- (void)_t_noopWithReply:(CDUnknownBlockType)arg1;
-- (void)_t_waitForLostScanToFinishWithReply:(CDUnknownBlockType)arg1;
-- (void)_t_copyGlobalProgressInfoWithReply:(CDUnknownBlockType)arg1;
-- (void)_t_resumeDownloadsForContainerID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_suspendDownloadsForContainerID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_resumeUploadsForContainerID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_suspendUploadsForContainerID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_getPCSChainStateAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_resetAllZonesWithReply:(CDUnknownBlockType)arg1;
-- (void)_t_resetZoneForContainerID:(id)arg1 waitUntilIdle:(_Bool)arg2 includingSharedZones:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)_t_setFSEventProcessingState:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_resumeSyncUpOfContainer:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_pauseSyncUpOfContainer:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_resumeSyncDownOfContainer:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_pauseSyncDownOfContainer:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_removeAllSyncUpBlockingForContainerID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_blockSyncForContainerID:(id)arg1 withPendingUpgradeToOSName:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)_t_blockSyncUpOfItemWithID:(id)arg1 containerID:(id)arg2 withPendingUpgradeToOSName:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_t_extractMetadataForAllContainersWithReply:(CDUnknownBlockType)arg1;
+- (void)_t_getEntitledContainerIDsForBundleID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_t_getEntitlementsForBundleID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)boostFilePresenterAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)trashItemAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)removeItemFromDisk:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -56,9 +34,12 @@ __attribute__((visibility("hidden")))
 - (oneway void)willAcceptShareAtURL:(id)arg1;
 - (void)_presentAcceptDialogsWithMetadata:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)presentAcceptDialogsForShareMetadata:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getURLForItemIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getShareOptionsOfItemIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getCreatorNameComponentsForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)startOperation:(id)arg1 toCopyShareURLForShare:(id)arg2 appName:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)copyBulkShareIDsAtURLs:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)startOperation:(id)arg1 toCleanShareSubitemsAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)startOperation:(id)arg1 toProcessSubitemsAtURL:(id)arg2 maxSubsharesFailures:(unsigned long long)arg3 processType:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)startOperation:(id)arg1 toPrepFolderForSharingAt:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCopyEtagAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCopyShortTokenAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -110,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)currentAccountLogoutWithReply:(CDUnknownBlockType)arg1;
 - (void)_unregisterPrematurely;
 - (void)currentAccountCreateWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)launchTelemetryConsistencyChecksAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)readerThrottleBackoffForDocumentAtPath:(id)arg1 containerID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)dropSpotlightIndexWithReply:(CDUnknownBlockType)arg1;
 - (void)reclaimAmount:(long long)arg1 withUrgency:(int)arg2 reply:(CDUnknownBlockType)arg3;
@@ -119,7 +101,6 @@ __attribute__((visibility("hidden")))
 - (void)waitForFileSystemChangeProcessingWithReply:(CDUnknownBlockType)arg1;
 - (void)iWorkForceSyncContainerID:(id)arg1 ownedByMe:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)forceSyncContainerID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_t_waitUntilIdle:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)refreshSharingStateForItemIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)forceSyncWithBarrierContainerID:(id)arg1 timeout:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)forceSyncZoneHealthWithBarrierWithTimeout:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;

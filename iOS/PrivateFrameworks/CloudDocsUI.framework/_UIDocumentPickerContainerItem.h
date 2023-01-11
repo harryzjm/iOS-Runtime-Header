@@ -34,12 +34,12 @@
 + (id)_blockingIconForDocumentProxy:(id)arg1 withSize:(struct CGSize)arg2;
 + (id)_blockingIconForURL:(id)arg1 withSize:(struct CGSize)arg2;
 + (id)_blockingThumbnailForItem:(id)arg1 documentProxy:(id)arg2 withSize:(struct CGSize)arg3 scale:(double)arg4 wantsBorder:(_Bool *)arg5 generatedThumbnail:(_Bool *)arg6;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *pickabilityReason; // @synthesize pickabilityReason=_pickabilityReason;
 @property(nonatomic) __weak _UIDocumentPickerContainerModel *parentModel; // @synthesize parentModel=_parentModel;
 @property(retain, nonatomic) NSMapTable *thumbnailsBySize; // @synthesize thumbnailsBySize=_thumbnailsBySize;
 @property(nonatomic) _Bool pickable; // @synthesize pickable=_pickable;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSURL *urlInLocalContainer;
 - (id)contentType;
 @property(readonly, nonatomic) _Bool renameable;

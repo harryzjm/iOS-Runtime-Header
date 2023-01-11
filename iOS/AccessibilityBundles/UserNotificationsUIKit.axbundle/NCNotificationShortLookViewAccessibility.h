@@ -11,19 +11,26 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityIsBannerNotificationElement;
 - (void)_axPerformBlockOnNotificationController:(CDUnknownBlockType)arg1;
 - (_Bool)_axIsGrouped;
+- (_Bool)accessibilityScroll:(long long)arg1;
 - (id)_axNCNotificationViewController;
+- (_Bool)_accessibilityResetBannerTimer;
+- (void)accessibilityElementDidLoseFocus;
+- (void)accessibilityElementDidBecomeFocused;
 - (_Bool)accessibilityPerformEscape;
 - (id)accessibilityCustomActions;
 - (_Bool)_axDismissAction:(id)arg1;
 - (_Bool)_axDismiss;
 - (_Bool)_axMore:(id)arg1;
+- (_Bool)_axShowLongLook;
 - (id)accessibilityIdentifier;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (_Bool)_accessibilityBannerIsSticky;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

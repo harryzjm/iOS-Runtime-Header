@@ -18,18 +18,26 @@ __attribute__((visibility("hidden")))
     NSArray *_allDemoResults;
     HKHostingAreaLayoutView *_pickerInputView;
     UIPickerView *_resultPicker;
+    NSArray *_allAlgorithmVersions;
+    HKHostingAreaLayoutView *_algorithmVersionPickerInputView;
+    UIPickerView *_algorithmVersionPicker;
     NPSManager *_syncManager;
     NSArray *_demoResultKeys;
     HKHealthStore *_healthStore;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isDeletingSamples) _Bool deletingSamples; // @synthesize deletingSamples=_deletingSamples;
 @property(readonly, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(retain, nonatomic) NSArray *demoResultKeys; // @synthesize demoResultKeys=_demoResultKeys;
 @property(readonly, nonatomic) NPSManager *syncManager; // @synthesize syncManager=_syncManager;
-- (void).cxx_destruct;
+@property(retain, nonatomic) UIPickerView *algorithmVersionPicker; // @synthesize algorithmVersionPicker=_algorithmVersionPicker;
+@property(retain, nonatomic) HKHostingAreaLayoutView *algorithmVersionPickerInputView; // @synthesize algorithmVersionPickerInputView=_algorithmVersionPickerInputView;
+@property(readonly, nonatomic) NSArray *allAlgorithmVersions; // @synthesize allAlgorithmVersions=_allAlgorithmVersions;
+- (unsigned long long)_overrideAlgorithmVersion;
+- (void)_saveOverrideAlgorithmVersion:(long long)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
@@ -46,9 +54,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)_styleValue1CellForTableView:(id)arg1 inputView:(id)arg2;
 - (id)_buttonCellForTableView:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)_versionForAlgorithmVersionText:(id)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *allDemoResults; // @synthesize allDemoResults=_allDemoResults;
 @property(readonly, nonatomic) HKHostingAreaLayoutView *pickerInputView; // @synthesize pickerInputView=_pickerInputView;

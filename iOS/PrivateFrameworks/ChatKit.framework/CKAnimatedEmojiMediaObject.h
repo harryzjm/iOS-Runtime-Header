@@ -10,10 +10,10 @@
 
 + (_Bool)shouldShadePreview;
 + (_Bool)shouldScaleUpPreview;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)UTITypes;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (Class)previewBalloonViewClass;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (id)icon;
 - (id)backgroundColorOverride;
 - (id)previewItemTitle;

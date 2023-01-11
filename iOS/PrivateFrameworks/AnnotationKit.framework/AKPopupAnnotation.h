@@ -11,7 +11,7 @@
 
 @interface AKPopupAnnotation <AKRectangularAnnotationProtocol, AKChildAnnotationProtocol>
 {
-    unsigned long long _visualStyle;
+    long long _visualStyle;
     AKAnnotation *_parentAnnotation;
     NSString *_contents;
     struct CGRect _rectangle;
@@ -21,12 +21,12 @@
 + (_Bool)supportsSecureCoding;
 + (id)displayNameForUndoablePropertyChangeWithKey:(id)arg1;
 + (id)keyPathsForValuesAffectingHitTestBounds;
+- (void).cxx_destruct;
 @property(copy) NSString *contents; // @synthesize contents=_contents;
 @property __weak AKAnnotation *parentAnnotation; // @synthesize parentAnnotation=_parentAnnotation;
 @property struct CGRect openRectangle; // @synthesize openRectangle=_openRectangle;
 @property struct CGRect rectangle; // @synthesize rectangle=_rectangle;
-@property unsigned long long visualStyle; // @synthesize visualStyle=_visualStyle;
-- (void).cxx_destruct;
+@property long long visualStyle; // @synthesize visualStyle=_visualStyle;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)translateBy:(struct CGPoint)arg1;

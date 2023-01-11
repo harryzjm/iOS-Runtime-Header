@@ -66,8 +66,8 @@
 + (id)legacyPathForAccountIdentifier:(id)arg1 withHostname:(id)arg2 username:(id)arg3;
 + (id)accountTypeString;
 + (Class)_accountConduitClass;
-@property(retain, nonatomic) MFMailboxUid *virtualAllSearchMailbox; // @synthesize virtualAllSearchMailbox=_virtualAllSearchMailbox;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MFMailboxUid *virtualAllSearchMailbox; // @synthesize virtualAllSearchMailbox=_virtualAllSearchMailbox;
 - (_Bool)moveSupportedFromMailboxURL:(id)arg1 toURL:(id)arg2;
 - (id)messageDataForMessage:(id)arg1;
 - (id)_remoteIDsForFlagChangeAction:(id)arg1;
@@ -137,9 +137,10 @@
 - (id)_relativePathSpecialMailboxUidWithType:(int)arg1 create:(_Bool)arg2;
 - (id)_relativePathForType:(int)arg1;
 - (_Bool)performRequests:(id)arg1 mailbox:(id)arg2;
-- (void)processRequests:(id)arg1 mailbox:(id)arg2;
-- (void)addRequests:(id)arg1 mailbox:(id)arg2;
-- (void)addRequest:(id)arg1 consumer:(id)arg2 mailbox:(id)arg3;
+- (_Bool)processRequests:(id)arg1 mailbox:(id)arg2;
+- (_Bool)addRequests:(id)arg1 mailbox:(id)arg2 combine:(_Bool)arg3;
+- (_Bool)addRequests:(id)arg1 mailbox:(id)arg2;
+- (_Bool)addRequest:(id)arg1 consumer:(id)arg2 mailbox:(id)arg3;
 - (id)mailboxUidForInfo:(id)arg1;
 - (id)mailboxForFolderID:(id)arg1;
 - (id)_infoForMatchingURL:(id)arg1;

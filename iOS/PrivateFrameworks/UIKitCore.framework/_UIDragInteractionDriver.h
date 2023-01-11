@@ -8,15 +8,15 @@
 
 #import <UIKitCore/_UIDragInteractionDriving-Protocol.h>
 
-@class NSArray, NSString, UIView, _UIDragInteractionDriverStateMachine;
+@class NSArray, NSString, UIView;
 @protocol _UIDragInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIDragInteractionDriver : NSObject <_UIDragInteractionDriving>
 {
+    struct _UIDragInteractionDriverStateMachine _stateMachine;
     _Bool _enabled;
     _Bool _additionalTouchesCancelLift;
-    _Bool _acceleratedDragGestureEnabled;
     _Bool _allowsSimultaneousRecognitionDuringLift;
     _Bool _shouldAnimateLift;
     _Bool _cancellationTimerEnabled;
@@ -29,11 +29,10 @@ __attribute__((visibility("hidden")))
     double _competingLongPressDelay;
     double _liftMoveHysteresis;
     NSArray *_allowedTouchTypes;
-    _UIDragInteractionDriverStateMachine *_stateMachine;
     struct CGPoint _initialLocationInWindow;
 }
 
-@property(readonly, nonatomic) _UIDragInteractionDriverStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *allowedTouchTypes; // @synthesize allowedTouchTypes=_allowedTouchTypes;
 @property(nonatomic) _Bool automaticallyAddsFailureRelationships; // @synthesize automaticallyAddsFailureRelationships=_automaticallyAddsFailureRelationships;
 @property(nonatomic) double liftMoveHysteresis; // @synthesize liftMoveHysteresis=_liftMoveHysteresis;
@@ -45,19 +44,19 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldAnimateLift; // @synthesize shouldAnimateLift=_shouldAnimateLift;
 @property(nonatomic) struct CGPoint initialLocationInWindow; // @synthesize initialLocationInWindow=_initialLocationInWindow;
 @property(nonatomic) _Bool allowsSimultaneousRecognitionDuringLift; // @synthesize allowsSimultaneousRecognitionDuringLift=_allowsSimultaneousRecognitionDuringLift;
-@property(nonatomic, getter=isAcceleratedDragGestureEnabled) _Bool acceleratedDragGestureEnabled; // @synthesize acceleratedDragGestureEnabled=_acceleratedDragGestureEnabled;
 @property(nonatomic) _Bool additionalTouchesCancelLift; // @synthesize additionalTouchesCancelLift=_additionalTouchesCancelLift;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <_UIDragInteractionDriverDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)detachFromView:(id)arg1;
 - (void)attachToView:(id)arg1;
 - (void)didTransitionToInactiveState;
 - (void)didTransitionToBeginState;
 - (void)didTransitionToCancelState;
 - (void)didTransitionToInflightState;
+- (void)didTransitionToDeferred;
 - (void)didTransitionToPreparing;
+@property(readonly, nonatomic, getter=isActive) _Bool active;
 - (_Bool)isGestureRecognizerForDragInitiation:(id)arg1;
 - (void)cancel;
 - (id)init;

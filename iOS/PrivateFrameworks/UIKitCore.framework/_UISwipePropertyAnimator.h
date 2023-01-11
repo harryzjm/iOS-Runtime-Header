@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSHashTable;
+
 __attribute__((visibility("hidden")))
 @interface _UISwipePropertyAnimator
 {
+    NSHashTable *_viewsToAnimateAdditively;
 }
 
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)addViewsToAnimateAdditively:(id)arg1;
 - (_Bool)_shouldAnimateAdditivelyForView:(id)arg1 withKeyPath:(id)arg2;
 
 @end

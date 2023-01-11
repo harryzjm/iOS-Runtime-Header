@@ -10,20 +10,30 @@
 #import <BulletinBoard/NSMutableCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class NSURL, NSUUID;
+@class NSDictionary, NSString, NSURL, NSUUID;
 
 @interface BBAttachmentMetadata : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
-    NSUUID *_UUID;
     long long _type;
     NSURL *_URL;
+    NSString *_identifier;
+    NSString *_uniformType;
+    NSDictionary *_thumbnailGeneratorUserInfo;
+    _Bool _thumbnailHidden;
+    _Bool _hiddenFromDefaultExpandedView;
+    NSUUID *_UUID;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property(readonly, nonatomic) _Bool hiddenFromDefaultExpandedView; // @synthesize hiddenFromDefaultExpandedView=_hiddenFromDefaultExpandedView;
+@property(readonly, nonatomic) _Bool thumbnailHidden; // @synthesize thumbnailHidden=_thumbnailHidden;
+@property(readonly, copy, nonatomic) NSDictionary *thumbnailGeneratorUserInfo; // @synthesize thumbnailGeneratorUserInfo=_thumbnailGeneratorUserInfo;
+@property(readonly, copy, nonatomic) NSString *uniformType; // @synthesize uniformType=_uniformType;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-@property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -32,7 +42,7 @@
 - (_Bool)hasContentModificationsRelativeTo:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_initWithUUID:(id)arg1 type:(long long)arg2 URL:(id)arg3;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 identifier:(id)arg3 uniformType:(id)arg4 thumbnailGeneratorUserInfo:(id)arg5 thumbnailHidden:(_Bool)arg6 hiddenFromDefaultExpandedView:(_Bool)arg7;
 - (id)init;
 
 @end

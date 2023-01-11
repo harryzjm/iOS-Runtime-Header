@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TimingCollection, VCConnectionManager;
+@class NSMutableArray, NSString, TimingCollection, VCConnectionManager;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,12 +20,18 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     NSObject *_connectionSetupPiggybackBlob;
+    NSString *_localFrameworkVersion;
+    NSString *_remoteFrameworkVersion;
     struct opaqueRTCReporting *_reportingAgent;
     TimingCollection *_perfTimings;
     VCConnectionManager *_connectionManager;
     CDUnknownBlockType _eventHandler;
+    NSMutableArray *_streams;
+    struct _opaque_pthread_mutex_t _stateLock;
 }
 
++ (int)vtpPacketTypeForStreamType:(unsigned int)arg1;
++ (unsigned int)trafficClassForStreamType:(unsigned int)arg1;
 @property(retain, nonatomic) NSObject *connectionSetupPiggybackBlob; // @synthesize connectionSetupPiggybackBlob=_connectionSetupPiggybackBlob;
 @property(readonly, nonatomic) unsigned int basebandNotificationRegistrationToken; // @synthesize basebandNotificationRegistrationToken=_basebandNotificationRegistrationToken;
 @property(retain, nonatomic) TimingCollection *perfTimings; // @synthesize perfTimings=_perfTimings;
@@ -33,6 +39,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool useCompressedConnectionData; // @synthesize useCompressedConnectionData=_useCompressedConnectionData;
 @property(readonly, nonatomic) VCConnectionManager *connectionManager; // @synthesize connectionManager=_connectionManager;
 @property(copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
+@property(readonly) _Bool isIPv6;
+@property(readonly) unsigned int networkMTU;
+@property(readonly) int networkInterfaceType;
 - (void)reportNetworkConditionsDegraded;
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;
@@ -41,7 +50,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isRemoteOSPreLion;
 @property(readonly, nonatomic) _Bool isHandoverSupported;
 @property(readonly, nonatomic) int detailedErrorCode;
+- (void)setConnectionSelectionVersionWithLocalFrameworkVersion:(id)arg1 remoteFrameworkVersion:(id)arg2;
 @property(nonatomic, setter=setCallActive:) _Bool isCallActive;
+- (int)deregisterNotificationForTransportStream:(struct OpaqueVCTransportStream *)arg1;
+- (int)createVFD:(int *)arg1 forStreamType:(unsigned int)arg2;
+- (int)createTransportStream:(struct OpaqueVCTransportStream **)arg1 withType:(unsigned int)arg2 options:(id)arg3;
+- (void)handleTransportStreamDeactivated:(struct OpaqueVCTransportStream *)arg1;
 - (void)callEventHandlerWithEvent:(unsigned int)arg1 info:(id)arg2;
 - (void)stop;
 - (void)start;

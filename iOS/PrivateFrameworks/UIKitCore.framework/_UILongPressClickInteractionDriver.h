@@ -9,21 +9,22 @@
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 #import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIView, _UIStateMachine, _UITouchDurationObservingGestureRecognizer;
+@class NSString, UIGestureRecognizer, UIView, _UITouchDurationObservingGestureRecognizer;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UILongPressClickInteractionDriver : NSObject <UIGestureRecognizerDelegatePrivate, _UIClickInteractionDriving>
 {
+    unsigned long long _currentState;
     struct {
         _Bool didUpdateHighlightProgress;
         _Bool shouldDelayGesture;
     } _delegateImplements;
+    unsigned long long _behavior;
     _Bool _cancelsTouchesInView;
     _Bool _reachedClickDownThreshold;
     id <_UIClickInteractionDriverDelegate> _delegate;
     UIView *_view;
-    _UIStateMachine *_stateMachine;
     _UITouchDurationObservingGestureRecognizer *_gestureRecognizer;
     double _clickDownDuration;
     double _forceMultiplier;
@@ -31,32 +32,34 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)prefersCancelsTouchesInView;
 + (_Bool)requiresForceCapability;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool reachedClickDownThreshold; // @synthesize reachedClickDownThreshold=_reachedClickDownThreshold;
 @property(nonatomic) double forceMultiplier; // @synthesize forceMultiplier=_forceMultiplier;
 @property(nonatomic) double clickDownDuration; // @synthesize clickDownDuration=_clickDownDuration;
 @property(retain, nonatomic) _UITouchDurationObservingGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
-@property(retain, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(nonatomic) _Bool cancelsTouchesInView; // @synthesize cancelsTouchesInView=_cancelsTouchesInView;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <_UIClickInteractionDriverDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_notifyDelegateOfUpdatedClickDownProgress:(double)arg1 forceAdjustedClickDownDuration:(double)arg2;
 - (void)_updateForActiveGestureRecognizer;
 - (void)_asyncGestureBegan;
 - (void)_handleGestureRecognizer:(id)arg1;
 @property(readonly, nonatomic) double clickTimeoutDuration;
+@property(nonatomic) unsigned long long behavior;
+@property(readonly, nonatomic) unsigned long long inputPrecision;
 - (struct CGPoint)locationInCoordinateSpace:(id)arg1;
 - (void)cancelInteraction;
 @property(readonly, nonatomic) _Bool isCurrentlyAcceleratedByForce;
 @property(readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
+@property(readonly, nonatomic) _Bool hasExceededAllowableMovement;
 @property(readonly, nonatomic) double touchDuration;
 @property(readonly, nonatomic) double maximumEffectProgress;
 @property(readonly, nonatomic) _Bool clicksUpAutomaticallyAfterTimeout;
-- (void)_prepareStateMachine;
 @property(nonatomic) double allowableMovement;
 - (id)init;
 

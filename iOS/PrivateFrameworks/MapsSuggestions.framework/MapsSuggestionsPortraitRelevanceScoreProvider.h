@@ -8,25 +8,24 @@
 
 #import <MapsSuggestions/MapsSuggestionsRelevanceScoreProvider-Protocol.h>
 
-@class NSDate, NSLocale, NSMutableArray, NSString;
+@class MapsSuggestionsPortrait, NSArray, NSDate, NSLocale, NSString;
 
 @interface MapsSuggestionsPortraitRelevanceScoreProvider : NSObject <MapsSuggestionsRelevanceScoreProvider>
 {
     NSDate *_fetchEntriesFromDate;
-    NSMutableArray *_portraitStrings;
+    NSArray *_portraitStrings;
     struct Queue _queue;
     NSLocale *_currentLocale;
     NSString *_languageCode;
     NSString *_currentCountryCode;
+    MapsSuggestionsPortrait *_portrait;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_fetchStringsFromPortrait;
-- (_Bool)_searchForName:(id)arg1;
 - (void)preLoad;
-- (_Bool)relevanceScoreForNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)init;
+- (BOOL)relevanceScoreForNames:(id)arg1 addresses:(id)arg2 mapItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithPortrait:(id)arg1;
 @property(readonly, nonatomic) NSString *uniqueName;
 
 // Remaining properties

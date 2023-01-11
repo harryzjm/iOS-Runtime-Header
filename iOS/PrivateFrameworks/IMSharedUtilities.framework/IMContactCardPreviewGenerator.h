@@ -11,7 +11,15 @@
 {
 }
 
-+ (struct CGImage *)monogramForData:(id)arg1 constraints:(struct IMPreviewConstraints)arg2;
++ (struct CGImage *)newContactCardPreviewFrom:(id)arg1 previewURL:(id)arg2 withPreviewConstraints:(struct IMPreviewConstraints)arg3 error:(id *)arg4;
++ (id)generateContactPlistFrom:(id)arg1 previewURL:(id)arg2 error:(id *)arg3;
++ (struct CGImage *)monogramForFirstName:(id)arg1 lastName:(id)arg2;
++ (double)contactMonogramDiameter;
++ (id)contactCardPreviewPayloadFileURLFrom:(id)arg1 previewURL:(id)arg2 withFileExtension:(id)arg3;
++ (id)contactCardPreviewPayloadsDirectoryFrom:(id)arg1 previewURL:(id)arg2;
++ (struct CGImage *)newPreviewFromSourceURL:(id)arg1 previewURL:(id)arg2 withPreviewConstraints:(struct IMPreviewConstraints)arg3 error:(id *)arg4;
++ (_Bool)supportsBlastDoor;
++ (struct CGImage *)newMonogramImageForData:(id)arg1 constraints:(struct IMPreviewConstraints)arg2;
 + (id)vCardDataForURL:(id)arg1;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (id)UTITypes;

@@ -14,8 +14,8 @@
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *underlineView; // @synthesize underlineView=_underlineView;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

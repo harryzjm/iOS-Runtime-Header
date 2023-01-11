@@ -9,26 +9,30 @@
 #import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class ICStoreArtworkInfo, ICStoreVideoArtworkInfo, NSString, NSURL;
 
 @interface MPStoreArtworkRequestToken : NSObject <NSSecureCoding, MPArtworkDataSourceVisualIdenticality>
 {
-    _Bool _shouldIgnoreImage;
-    NSURL *_artworkURL;
-    NSArray *_lookupItemArtworks;
-    NSArray *_artworkInfoEntries;
+    long long _artworkInfoType;
+    ICStoreArtworkInfo *_imageArtworkInfo;
+    ICStoreVideoArtworkInfo *_videoArtworkInfo;
     NSString *_cropStyle;
+    NSString *_format;
     NSString *_sourceEditorialArtworkKind;
+    NSURL *_artworkURL;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSString *sourceEditorialArtworkKind; // @synthesize sourceEditorialArtworkKind=_sourceEditorialArtworkKind;
-@property(nonatomic) _Bool shouldIgnoreImage; // @synthesize shouldIgnoreImage=_shouldIgnoreImage;
-@property(copy, nonatomic) NSString *cropStyle; // @synthesize cropStyle=_cropStyle;
-@property(copy, nonatomic) NSArray *artworkInfoEntries; // @synthesize artworkInfoEntries=_artworkInfoEntries;
-@property(copy, nonatomic) NSArray *lookupItemArtworks; // @synthesize lookupItemArtworks=_lookupItemArtworks;
-@property(copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
++ (id)tokenWithVideoArtworkInfo:(id)arg1;
++ (id)tokenWithImageArtworkInfo:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
+@property(copy, nonatomic) NSString *sourceEditorialArtworkKind; // @synthesize sourceEditorialArtworkKind=_sourceEditorialArtworkKind;
+@property(copy, nonatomic) NSString *format; // @synthesize format=_format;
+@property(copy, nonatomic) NSString *cropStyle; // @synthesize cropStyle=_cropStyle;
+@property(copy, nonatomic) ICStoreVideoArtworkInfo *videoArtworkInfo; // @synthesize videoArtworkInfo=_videoArtworkInfo;
+@property(copy, nonatomic) ICStoreArtworkInfo *imageArtworkInfo; // @synthesize imageArtworkInfo=_imageArtworkInfo;
+@property(nonatomic) long long artworkInfoType; // @synthesize artworkInfoType=_artworkInfoType;
 - (id)stringRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;

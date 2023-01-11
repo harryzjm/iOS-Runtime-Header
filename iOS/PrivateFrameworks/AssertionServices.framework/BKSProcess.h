@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssertionServices/BSDescriptionProviding-Protocol.h>
-
-@class BKSLaunchdJobSpecification, BKSProcessAssertion, BKSProcessExitContext, BSProcessHandle, NSString, RBSAssertion, RBSProcessHandle, RBSProcessIdentity, RBSProcessMonitor;
+@class BKSLaunchdJobSpecification, BKSProcessAssertion, BKSProcessExitContext, BSProcessHandle, RBSAssertion, RBSProcessHandle, RBSProcessIdentity, RBSProcessMonitor;
 @protocol BKSProcessDelegate;
 
-@interface BKSProcess : NSObject <BSDescriptionProviding>
+@interface BKSProcess : NSObject
 {
     struct os_unfair_lock_s _lock;
     _Bool _bootstrapped;
@@ -39,6 +37,7 @@
 + (id)busyExtensionInstances:(id)arg1;
 + (double)backgroundTimeRemaining;
 + (id)currentProcess;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool recordingAudio; // @synthesize recordingAudio=_recordingAudio;
 @property(nonatomic) _Bool nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
 @property(nonatomic) _Bool connectedToExternalAccessories; // @synthesize connectedToExternalAccessories=_connectedToExternalAccessories;
@@ -46,12 +45,7 @@
 @property(readonly, nonatomic) BSProcessHandle *handle; // @synthesize handle=_handle;
 @property(nonatomic) long long terminationReason; // @synthesize terminationReason=_terminationReason;
 @property(nonatomic) long long visibility; // @synthesize visibility=_visibility;
-- (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-@property(readonly, copy) NSString *description;
+- (id)description;
 - (_Bool)_bootstrapWithError:(out id *)arg1;
 - (void)_lock_configureMonitor;
 - (void)_lock_updateVisibility;
@@ -67,11 +61,6 @@
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)init;
 - (void)bootstrapCurrentProcess;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

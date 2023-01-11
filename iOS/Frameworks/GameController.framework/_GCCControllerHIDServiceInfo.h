@@ -6,25 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSNumber, NSString;
+#import <GameController/NSCopying-Protocol.h>
+#import <GameController/_GCImplicitIPCObject-Protocol.h>
 
-@interface _GCCControllerHIDServiceInfo : NSObject
+@class NSData, NSNumber, NSString;
+@protocol NSObject><NSCopying><NSSecureCoding;
+
+@interface _GCCControllerHIDServiceInfo : NSObject <_GCImplicitIPCObject, NSCopying>
 {
     struct __IOHIDServiceClient *_service;
     NSNumber *_registryID;
-    NSString *_name;
-    _Bool _isPreallocatedSiriRemote;
     NSData *_inputData;
+    _Bool _isPreallocatedSiriRemote;
 }
 
-@property(nonatomic) _Bool isPreallocatedSiriRemote; // @synthesize isPreallocatedSiriRemote=_isPreallocatedSiriRemote;
-@property(retain, nonatomic) NSData *inputData; // @synthesize inputData=_inputData;
 - (void).cxx_destruct;
-- (id)name;
-- (id)registryID;
-@property(readonly, nonatomic) struct __IOHIDServiceClient *service;
+@property(readonly, nonatomic) NSNumber *registryID; // @synthesize registryID=_registryID;
+@property(readonly, nonatomic) struct __IOHIDServiceClient *service; // @synthesize service=_service;
+@property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier;
+@property(readonly, copy) NSString *debugDescription;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToHIDServiceInfo:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)init;
 - (id)initWithService:(struct __IOHIDServiceClient *)arg1;
+- (id)name;
+@property(nonatomic) _Bool isPreallocatedSiriRemote;
+@property(retain, nonatomic) NSData *inputData;
+
+// Remaining properties
+@property(readonly) Class superclass;
 
 @end
 

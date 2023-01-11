@@ -11,14 +11,16 @@
     _Bool _isInteger;
     NSNumber *_minValue;
     NSNumber *_maxValue;
+    NSNumber *_significantDigits;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *significantDigits; // @synthesize significantDigits=_significantDigits;
 @property(readonly, nonatomic) NSNumber *maxValue; // @synthesize maxValue=_maxValue;
 @property(readonly, nonatomic) NSNumber *minValue; // @synthesize minValue=_minValue;
 @property(readonly, nonatomic) _Bool isInteger; // @synthesize isInteger=_isInteger;
-- (void).cxx_destruct;
 - (_Bool)validate:(id)arg1 error:(id *)arg2;
-- (id)initWithName:(id)arg1 isInteger:(_Bool)arg2 minValue:(id)arg3 maxValue:(id)arg4;
+- (id)initWithName:(id)arg1 isInteger:(_Bool)arg2 minValue:(id)arg3 maxValue:(id)arg4 significantDigits:(id)arg5;
 
 @end
 

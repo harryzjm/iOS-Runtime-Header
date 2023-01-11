@@ -14,24 +14,21 @@
     NSUserDefaults *_underlyingUserDefaults;
 }
 
-+ (void)migrateUserDefaultKeyIfNecessary:(id)arg1 hasMigratedKey:(id)arg2 fromUserDefaults:(id)arg3 toUserDefaults:(id)arg4;
-+ (void)migrateUserDefaultKeysIfNecessary:(id)arg1 fromUIKitDefaultsToUserDefaults:(id)arg2;
++ (void)_migrateUserActivityOrderforKey:(id)arg1 userDefaults:(id)arg2 defaultOrder:(id)arg3;
++ (void)migrateUserActivityOrderIfNecessary;
 + (id)updatedActivityIdentifiersUserOrderWithPreviousOrder:(id)arg1 someSortedActivityIdentifiers:(id)arg2;
 + (id)builtinActivityOrder;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUserDefaults *underlyingUserDefaults; // @synthesize underlyingUserDefaults=_underlyingUserDefaults;
 @property(copy, nonatomic) NSString *activityDefaultsKey; // @synthesize activityDefaultsKey=_activityDefaultsKey;
-- (void).cxx_destruct;
-- (id)_userDefaultsDictionary;
-- (void)_setUserDefaultsDictionary:(id)arg1;
 - (id)applicationExtensionForActivity:(id)arg1;
 - (id)identifierForActivity:(id)arg1;
 - (void)postActivityUserDefaultsDidChangeNotification;
-- (void)setDefaultsValue:(id)arg1 forKey:(id)arg2 activity:(id)arg3;
-- (id)defaultsValueForKey:(id)arg1 activity:(id)arg2;
 - (id)mutableActivityIdentifiersArrayForActivitiesArray:(id)arg1;
+- (void)_userEditedActivityDefaults;
+- (_Bool)hasUserEditedActivityOrder;
 - (void)setActivityIdentifiersInUserOrder:(id)arg1;
 - (id)activityIdentifiersInUserOrder;
-- (void)replaceUserActivityOrderIfNecessaryWithSystemDefaultOrder:(id)arg1;
 - (void)removeActivityTypeFromDefaults:(id)arg1;
 - (void)updateUserActivityOrderWithOrderedPartialActivities:(id)arg1;
 - (id)activitiesOrderedByUserActivityOrderForActivities:(id)arg1;

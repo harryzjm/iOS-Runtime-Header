@@ -20,8 +20,10 @@
 - (void).cxx_destruct;
 - (id)thumbnailAssetAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) long long count;
+- (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
 - (_Bool)containsObject:(id)arg1;
+@property(readonly, nonatomic) id <PXDisplayAsset> lastObject;
 @property(readonly, nonatomic) id <PXDisplayAsset> firstObject;
 - (id)objectsAtIndexes:(id)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;

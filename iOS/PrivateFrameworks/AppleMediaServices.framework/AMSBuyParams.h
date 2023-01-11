@@ -7,25 +7,33 @@
 #import <objc/NSObject.h>
 
 #import <AppleMediaServices/NSCopying-Protocol.h>
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSMutableDictionary;
 
-@interface AMSBuyParams : NSObject <NSCopying>
+@interface AMSBuyParams : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_backingDictionary;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)buyParamsWithString:(id)arg1;
 - (void).cxx_destruct;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)_parseBuyParams:(id)arg1;
+- (id)_normalizedDictionary;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)stringValue;
+- (id)requestDataWithError:(id *)arg1;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
 - (id)propertyForKey:(id)arg1;
 - (void)importURLEncodedBuyParams:(id)arg1;
 @property(readonly) NSDictionary *dictionary;
+@property(readonly, nonatomic) double price;
 - (void)clear;
+- (id)buyParametersForRequest;
 - (id)initWithString:(id)arg1;
 - (id)init;
 

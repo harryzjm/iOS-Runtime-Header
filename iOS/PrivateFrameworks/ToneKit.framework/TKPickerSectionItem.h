@@ -12,9 +12,9 @@
     NSString *_footerText;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setFooterText:) NSString *footerText; // @synthesize footerText=_footerText;
 @property(copy, nonatomic, setter=_setText:) NSString *text; // @synthesize text=_text;
-- (void).cxx_destruct;
 - (void)_appendDescriptionOfAttributesToString:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, MKMapItem, _MKRouteETAFetcher;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKMapItem, _MKRouteETAFetcher;
 @protocol MKAllRouteETAsManagerDelegate;
 
 @interface MKAllRouteETAsManager : NSObject
@@ -15,10 +15,11 @@
     id <MKAllRouteETAsManagerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <MKAllRouteETAsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MKAllRouteETAsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)updateETA;
 - (id)routeETAForTransportType:(unsigned long long)arg1;
+@property(copy, nonatomic) GEOCyclingOptions *cyclingOptions;
 @property(copy, nonatomic) GEOTransitOptions *transitOptions;
 @property(copy, nonatomic) GEOAutomobileOptions *automobileOptions;
 @property(retain, nonatomic) MKMapItem *originMapItem;

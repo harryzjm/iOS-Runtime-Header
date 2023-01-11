@@ -6,7 +6,6 @@
 
 @interface CAMLevelViewModel
 {
-    _Bool _monitoringDevice;
     long long _currentIndicatorMode;
     double _currentIndicatorAlpha;
     double _desiredUpdateInterval;
@@ -17,7 +16,6 @@
 
 @property(nonatomic, setter=_setDesiredModeBeganTime:) double _desiredModeBeganTime; // @synthesize _desiredModeBeganTime=__desiredModeBeganTime;
 @property(nonatomic, setter=_setDesiredIndicatorMode:) long long _desiredIndicatorMode; // @synthesize _desiredIndicatorMode=__desiredIndicatorMode;
-@property(nonatomic, getter=isMonitoringDevice) _Bool monitoringDevice; // @synthesize monitoringDevice=_monitoringDevice;
 @property(nonatomic, setter=_setDesiredUpdateInterval:) double desiredUpdateInterval; // @synthesize desiredUpdateInterval=_desiredUpdateInterval;
 @property(nonatomic, setter=_setCurrentIndicatorOffset:) struct UIOffset currentIndicatorOffset; // @synthesize currentIndicatorOffset=_currentIndicatorOffset;
 @property(nonatomic, setter=_setCurrentIndicatorAlpha:) double currentIndicatorAlpha; // @synthesize currentIndicatorAlpha=_currentIndicatorAlpha;

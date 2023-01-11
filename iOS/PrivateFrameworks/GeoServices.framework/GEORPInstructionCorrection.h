@@ -13,12 +13,14 @@
 @interface GEORPInstructionCorrection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_comments;
     NSString *_photoId;
     GEORPPhotoWithMetadata *_photo;
     NSData *_routeStepScreenshotImageData;
     NSString *_routeStepScreenshotImageId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _routeStepIndex;
     unsigned int _routeStepSubstepIndex;
     struct {
@@ -29,13 +31,7 @@
         unsigned int read_photo:1;
         unsigned int read_routeStepScreenshotImageData:1;
         unsigned int read_routeStepScreenshotImageId:1;
-        unsigned int wrote_comments:1;
-        unsigned int wrote_photoId:1;
-        unsigned int wrote_photo:1;
-        unsigned int wrote_routeStepScreenshotImageData:1;
-        unsigned int wrote_routeStepScreenshotImageId:1;
-        unsigned int wrote_routeStepIndex:1;
-        unsigned int wrote_routeStepSubstepIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,27 +45,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *routeStepScreenshotImageId;
 @property(readonly, nonatomic) _Bool hasRouteStepScreenshotImageId;
-- (void)_readRouteStepScreenshotImageId;
 @property(retain, nonatomic) NSString *photoId;
 @property(readonly, nonatomic) _Bool hasPhotoId;
-- (void)_readPhotoId;
 @property(retain, nonatomic) NSData *routeStepScreenshotImageData;
 @property(readonly, nonatomic) _Bool hasRouteStepScreenshotImageData;
-- (void)_readRouteStepScreenshotImageData;
 @property(nonatomic) _Bool hasRouteStepSubstepIndex;
 @property(nonatomic) unsigned int routeStepSubstepIndex;
 @property(retain, nonatomic) GEORPPhotoWithMetadata *photo;
 @property(readonly, nonatomic) _Bool hasPhoto;
-- (void)_readPhoto;
 @property(retain, nonatomic) NSString *comments;
 @property(readonly, nonatomic) _Bool hasComments;
-- (void)_readComments;
 @property(nonatomic) _Bool hasRouteStepIndex;
 @property(nonatomic) unsigned int routeStepIndex;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

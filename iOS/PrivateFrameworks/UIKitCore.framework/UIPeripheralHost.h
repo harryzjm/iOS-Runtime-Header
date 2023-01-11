@@ -72,7 +72,7 @@
     double _ambiguousControlCenterActivationMargin;
     UIResponder *_responderWithoutAutomaticAppearanceEnabled;
     int _hostedAnimationToggleCount;
-    CDUnknownBlockType _deferredTransitionTask;
+    NSMutableDictionary *_deferredTransitionTasks;
     double _lastKeyplaneResize;
     _Bool _preservingInputViews;
     int _currentState;
@@ -82,16 +82,14 @@
     UIKBRenderConfig *_restorableRenderConfig;
 }
 
++ (void)setKeyboardOnScreenNotifyKey:(_Bool)arg1;
 + (void)_releaseSharedInstance;
 + (id)activeInstance;
 + (id)sharedInstance;
 + (struct CGRect)screenBoundsInAppOrientation;
-+ (id)endPlacementForInputViewSet:(id)arg1;
++ (id)endPlacementForInputViewSet:(id)arg1 windowScene:(id)arg2;
 + (id)passthroughViews;
 + (double)gridViewRubberBandValueForValue:(double)arg1 target:(double)arg2 timeInterval:(double)arg3 velocity:(double *)arg4;
-+ (void)prepareToShowFloatingIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-+ (void)prepareToHideFloatingIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-+ (void)deactivateFloatingWithCompletion:(CDUnknownBlockType)arg1;
 + (void)setFloating:(_Bool)arg1 onCompletion:(CDUnknownBlockType)arg2;
 + (struct CGPoint)defaultUndockedOffset;
 + (void)adjustFloatingPersistentOffsetForKeyboardSize:(struct CGSize)arg1;
@@ -296,9 +294,12 @@
 - (_Bool)pinningPreventsInputViews:(id)arg1;
 - (id)containerTextEffectsWindowAboveStatusBar;
 - (id)containerTextEffectsWindow;
+- (void)flushDelayedTasksForKey:(id)arg1;
 - (void)flushDelayedTasks;
+- (void)queueDelayedTask:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (void)queueDelayedTask:(CDUnknownBlockType)arg1;
 - (id)transformedContainerView;
+- (id)existingContainerRootController;
 - (id)containerRootController;
 - (id)containerWindow;
 - (id)_screenForFirstResponder:(id)arg1;

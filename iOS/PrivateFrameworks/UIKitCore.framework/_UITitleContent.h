@@ -16,11 +16,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)contentWithTitle:(id)arg1 attributes:(id)arg2 button:(id)arg3;
-@property(readonly, nonatomic) double width; // @synthesize width=_width;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double width; // @synthesize width=_width;
 - (id)description;
 @property(readonly, copy, nonatomic) NSString *title;
 - (void)updateWithButton:(id)arg1;
+- (void)updateWithTitleAttributes:(id)arg1 button:(id)arg2;
 
 @end
 

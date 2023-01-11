@@ -11,7 +11,7 @@
 #import <SpringBoard/CSExternalEventHandling-Protocol.h>
 #import <SpringBoard/SBLockScreenApplicationLaunching-Protocol.h>
 
-@class CSCoverSheetViewController, NSString, SBInProcessSecureAppAction;
+@class CSCoverSheetViewController, NSString, SBInProcessSecureAppAction, SBSecureAppManager;
 
 @interface SBDashBoardApplicationLauncher : NSObject <CSExternalEventHandling, SBLockScreenApplicationLaunching, CSApplicationLaunching, CSCameraPrewarming>
 {
@@ -19,10 +19,12 @@
     _Bool _cameraIsPrewarming;
     _Bool _cameraPrewarmSucceeded;
     CSCoverSheetViewController *_coverSheetViewController;
+    SBSecureAppManager *_secureAppManager;
 }
 
-@property(retain, nonatomic) CSCoverSheetViewController *coverSheetViewController; // @synthesize coverSheetViewController=_coverSheetViewController;
 - (void).cxx_destruct;
+@property(nonatomic) __weak SBSecureAppManager *secureAppManager; // @synthesize secureAppManager=_secureAppManager;
+@property(retain, nonatomic) CSCoverSheetViewController *coverSheetViewController; // @synthesize coverSheetViewController=_coverSheetViewController;
 - (_Bool)_backgroundLaunchCamera;
 - (void)_coolCameraIfNecessary;
 - (void)_prewarmCamera;
@@ -35,6 +37,7 @@
 - (_Bool)_canHandleTransitionRequest:(id)arg1 outActivatingSceneEntity:(id *)arg2;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (void)conformsToCSEventHandling;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (void)notePrewarmRequestEnded;

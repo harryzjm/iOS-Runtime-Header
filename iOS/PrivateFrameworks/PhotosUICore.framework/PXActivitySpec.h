@@ -26,12 +26,13 @@
 + (id)activityCaptionTextAttributes;
 + (id)invitationReportJunkLinkAttributes;
 + (id)invitationReportJunkTextAttributes;
++ (id)invitationSubscriberInfoTextAttributes;
 + (id)invitationAlbumTitleTextAttributes;
 + (id)invitationInfoTextAttributes;
 + (id)invitationSubtitleTextAttributes;
 + (id)invitationTextAttributes;
 + (id)invitationHeaderImage;
-+ (id)activityMiniChevronImage;
++ (id)activityChevronImage;
 + (double)activityCaptionCellTopToLikeButtonTopDynamicDistance;
 + (double)activityCaptionSubtitleBaselineToCellBottomDynamicDistance2;
 + (double)activityCaptionSubtitleBaselineToCellBottomDynamicDistance;
@@ -39,6 +40,7 @@
 + (double)activityCaptionCellTopToTitleBaselineDynamicDistance;
 + (double)invitationJunkBottomDynamicDistance;
 + (double)invitationButtonToJunkBaselineDynamicDistance;
++ (double)invitationSubscriberInfoToButtonsDynamicDistance;
 + (double)invitationAlbumTitleBottomDynamicDistance;
 + (double)invitationTextToAlbumTitleBaselineDynamicDistance;
 + (double)invitationAvatarToTextBaselineDynamicDistance;

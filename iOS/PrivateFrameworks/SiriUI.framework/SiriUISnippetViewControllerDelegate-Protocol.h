@@ -10,6 +10,7 @@
 @protocol SiriUIViewController;
 
 @protocol SiriUISnippetViewControllerDelegate <SiriUIAceObjectViewControllerDelegate>
+- (double)boundingWidthForSnippetViewController:(SiriUISnippetViewController *)arg1;
 - (void)siriSnippetViewController:(SiriUISnippetViewController *)arg1 requestPasscodeUnlockWithCompletion:(void (^)(long long))arg2;
 - (_Bool)siriSnippetViewControllerIsVisible:(id <SiriUIViewController>)arg1;
 - (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 didShowGuideStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3;
@@ -21,8 +22,8 @@
 - (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 pushSirilandSnippets:(NSArray *)arg2;
 
 @optional
+- (void)userTouchedSnippet;
 - (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
-- (double)boundingWidthForSnippetViewController:(SiriUISnippetViewController *)arg1;
 - (unsigned long long)navigationIndexOfSnippetViewController:(SiriUISnippetViewController *)arg1;
 - (NSSet *)siriEnabledAppListForSiriViewController:(id <SiriUIViewController>)arg1;
 - (unsigned long long)siriDeviceLockStateForSnippetViewController:(id <SiriUIViewController>)arg1;

@@ -18,16 +18,13 @@
 - (void).cxx_destruct;
 - (void)_reloadMonogramText;
 - (void)_handleMonogramTextReload;
-- (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineEndDateWithHandler:(CDUnknownBlockType)arg1;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (id)_currentTimelineEntry;
 - (id)currentSwitcherTemplate;
 - (void)dealloc;
 - (void)stopListeningForMonogramNotifications;
 - (void)startListeningForMonogramNotifications;
+- (_Bool)supportsTapAction;
 - (void)pause;
 - (void)resume;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;

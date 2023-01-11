@@ -17,8 +17,8 @@
 + (id)sharedManager;
 + (void)initializeAccessibilityMonitor;
 + (void)updateAccessibilitySettings;
-@property(nonatomic) _Bool accelerometerDisabled; // @synthesize accelerometerDisabled=_accelerometerDisabled;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool accelerometerDisabled; // @synthesize accelerometerDisabled=_accelerometerDisabled;
 - (_Bool)_accessibilityEventTapCallback:(id)arg1;
 - (void)_undoContextShiftedPoints:(id)arg1;
 - (_Bool)_screenReaderCapture:(id)arg1;
@@ -31,10 +31,11 @@
 - (_Bool)_accessibilityDisplayRequiresRotateForPoints:(id)arg1;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
-- (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1 element:(id)arg2;
 - (void)simulatePressAtPoint:(struct CGPoint)arg1 withContextId:(unsigned int)arg2 withDelay:(float)arg3 withForce:(double)arg4;
 - (void)_sendPressFingerEvent:(_Bool)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
+- (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGPoint)_accessibilityViewPointFromHostedViewContext:(struct CGPoint)arg1 displayId:(unsigned int)arg2;
 - (struct CGPoint)_accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
@@ -65,8 +66,11 @@
 - (void)observerClientDied;
 - (void)resetAssistiveTouchHitPort;
 - (void)resetAccessibilityUIHitPort;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1;
+- (_Bool)_showingBootUI;
 - (void)disableAccessibility;
 - (void)initializeAccessibility;
+- (id)_axElementForUID:(CDStruct_4bcfbbae)arg1;
 - (id)init;
 
 @end

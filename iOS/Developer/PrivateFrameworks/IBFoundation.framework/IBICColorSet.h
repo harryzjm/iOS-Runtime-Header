@@ -24,7 +24,7 @@
 - (void)updateIdentifierOfIncomingChildToBeUnique:(id)arg1;
 - (CDStruct_2a4d9400)taggingSupport;
 - (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
-- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2;
+- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2 manifestFileData:(id)arg3;
 - (_Bool)manifestArchivist:(id)arg1 validateManifest:(id)arg2 results:(id)arg3;
 - (void)manifestArchivist:(id)arg1 populateManifestEntry:(id)arg2 forChild:(id)arg3;
 - (_Bool)manifestArchivist:(id)arg1 childHasDataToRecordInManifest:(id)arg2;
@@ -37,6 +37,7 @@
 - (id)assetRepForIdentifier:(id)arg1;
 - (id)conflictFreeChildForSlot:(id)arg1;
 - (id)assetRepMatchingVariant:(id)arg1 forPlatform:(id)arg2;
+- (id)slotForChild:(id)arg1;
 - (id)assetRepForSlot:(id)arg1;
 
 @end

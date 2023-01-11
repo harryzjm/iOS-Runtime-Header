@@ -32,6 +32,7 @@
     double __timestampBeganShowing;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setTimestampBeganShowing:) double _timestampBeganShowing; // @synthesize _timestampBeganShowing=__timestampBeganShowing;
 @property(nonatomic, setter=_setCurrentState:) long long _currentState; // @synthesize _currentState=__currentState;
 @property(nonatomic) _Bool showsBackground; // @synthesize showsBackground=_showsBackground;
@@ -39,12 +40,14 @@
 @property(copy, nonatomic) NSString *localizedMessage; // @synthesize localizedMessage=_localizedMessage;
 @property(nonatomic) double currentProgress; // @synthesize currentProgress=_currentProgress;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
+@property(readonly) _Bool isStyleDark;
+@property(readonly) _Bool isStyleCompactBackground;
 - (void)_endShowingProgressIfReady;
 - (void)endShowingProgressImmediately:(_Bool)arg1 animated:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleBeginShowingAnimated:(_Bool)arg1 wasImmediate:(_Bool)arg2;
 - (void)beginShowingProgressWithDelay:(double)arg1 animated:(_Bool)arg2;
 - (void)beginShowingProgressImmediately:(_Bool)arg1 animated:(_Bool)arg2;
+@property(readonly) double defaultProgressIndicatorDelay;
 @property(readonly, nonatomic, getter=isShowingProgress) _Bool showingProgress;
 - (void)_updateSubviewsOrdering;
 - (void)_updatePieProgress;

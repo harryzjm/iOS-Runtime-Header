@@ -10,42 +10,37 @@
 #import <SystemStatus/STStatusDomainServerHandle-Protocol.h>
 #import <SystemStatus/STStatusDomainXPCClient-Protocol.h>
 
-@class BSMutableIntegerMap, NSMutableDictionary, NSString, NSXPCConnection;
+@class BSMutableIntegerMap, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface STStatusDomainXPCServerHandle : NSObject <STStatusDomainXPCClient, BSDescriptionProviding, STStatusDomainServerHandle>
 {
     BSMutableIntegerMap *_dataByDomain;
-    NSMutableDictionary *_clientsByDomain;
+    BSMutableIntegerMap *_clientsByDomain;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    NSObject<OS_dispatch_queue> *_clientQueue;
     NSXPCConnection *_serverXPCConnection;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) NSXPCConnection *serverXPCConnection; // @synthesize serverXPCConnection=_serverXPCConnection;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
-@property(retain, nonatomic) NSMutableDictionary *clientsByDomain; // @synthesize clientsByDomain=_clientsByDomain;
-@property(retain, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *serverXPCConnection; // @synthesize serverXPCConnection=_serverXPCConnection;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property(readonly, copy, nonatomic) BSMutableIntegerMap *clientsByDomain; // @synthesize clientsByDomain=_clientsByDomain;
+@property(readonly, copy, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
 - (void)_tearDownXPCConnection;
 - (void)_reregisterForDomains;
 - (void)_internalQueue_setupXPCConnectionIfNecessary;
 - (id)_internalQueue_dataForDomain:(unsigned long long)arg1;
-- (void)_observeDataDiff:(id)arg1 forDomain:(unsigned long long)arg2;
-- (void)_observeData:(id)arg1 forDomain:(unsigned long long)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
-- (void)observeWifiDataDiff:(id)arg1;
-- (void)observeWifiData:(id)arg1;
-- (void)observeVoiceControlDataDiff:(id)arg1;
-- (void)observeVoiceControlData:(id)arg1;
-- (void)observeTelephonyDataDiff:(id)arg1;
-- (void)observeTelephonyData:(id)arg1;
-- (void)observeBatteryDataDiff:(id)arg1;
-- (void)observeBatteryData:(id)arg1;
+- (void)observeDiff:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)observeData:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)reportUserInteraction:(id)arg1 forClient:(id)arg2 domain:(unsigned long long)arg3;
 - (void)removeClient:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)registerClient:(id)arg1 forDomain:(unsigned long long)arg2;
 - (id)dataForDomain:(unsigned long long)arg1;

@@ -59,11 +59,12 @@
 + (void)setSpeechJobStartedUnitTestBlock:(CDUnknownBlockType)arg1;
 + (void)setSpeechJobFinishedUnitTestBlock:(CDUnknownBlockType)arg1;
 + (id)availableLanguageCodes;
-+ (id)availableVoicesForLanguageCode:(id)arg1;
++ (id)availableVoicesForLanguageCode:(id)arg1 queryingMobileAssets:(_Bool)arg2;
++ (void)setTestingAvailableVoicesForLanguageCode:(id)arg1;
 + (id)voiceAccessQueue;
 + (id)allAvailableVoices;
-+ (void)refreshAllAvailableVoices:(_Bool)arg1;
-+ (void)refreshAllAvailableVoices;
++ (id)refreshAllAvailableVoices:(_Bool)arg1;
++ (id)refreshAllAvailableVoices;
 + (id)synthesizerForSynthesizerID:(unsigned long long)arg1;
 + (id)voiceAssetsForTesting;
 + (void)setVoiceAssetsForTesting:(id)arg1;
@@ -74,6 +75,7 @@
 + (id)availableVoices;
 + (void)_initializeServers;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool synthesizeSilently; // @synthesize synthesizeSilently=_synthesizeSilently;
 @property(nonatomic) _Bool ignoreSubstitutions; // @synthesize ignoreSubstitutions=_ignoreSubstitutions;
 @property(copy, nonatomic) CDUnknownBlockType audioBufferCallback; // @synthesize audioBufferCallback=_audioBufferCallback;
@@ -89,7 +91,6 @@
 @property(nonatomic) float volume; // @synthesize volume=_volume;
 @property(nonatomic) float pitch; // @synthesize pitch=_pitch;
 @property(nonatomic) float rate; // @synthesize rate=_rate;
-- (void).cxx_destruct;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 willSpeakMark:(long long)arg3 inRange:(struct _NSRange)arg4;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 didSynthesizeSilentlyToURL:(id)arg3;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 didStopAtEnd:(_Bool)arg3 phonemesSpoken:(id)arg4 error:(id)arg5;
@@ -129,9 +130,10 @@
 - (_Bool)_stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)_startSpeakingString:(id)arg1 orAttributedString:(id)arg2 toURL:(id)arg3 withLanguageCode:(id)arg4 request:(id *)arg5 error:(id *)arg6;
 - (unsigned long long)synthesizerInstanceID;
-- (id)_applySubstitution:(id)arg1 toText:(id)arg2 wordRange:(struct _NSRange)arg3 request:(id)arg4 phonemes:(id *)arg5;
+- (id)_determineSubstitution:(id)arg1 text:(id)arg2 wordRange:(struct _NSRange)arg3 request:(id)arg4;
 - (void)_processUserSubstitutions:(id)arg1 toText:(id)arg2 request:(id)arg3 bundleIdentifier:(id)arg4 voice:(id)arg5;
 - (_Bool)_skipSubstition:(id)arg1 language:(id)arg2 bundleIdentifier:(id)arg3 voice:(id)arg4;
+- (_Bool)_substitutionLanguageMatchesSpecialCase:(id)arg1 withLanguage:(id)arg2;
 - (id)_preprocessText:(id)arg1 languageCode:(id)arg2;
 - (id)resolvedVoiceIdentifierForLanguageCode:(id)arg1;
 @property(readonly, nonatomic) NSString *resolvedVoiceIdentifier;

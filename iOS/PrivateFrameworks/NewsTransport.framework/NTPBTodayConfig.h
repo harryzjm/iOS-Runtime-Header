@@ -8,31 +8,22 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface NTPBTodayConfig : PBCodable <NSCopying>
 {
-    unsigned long long _backgroundForYouMinimumUpdateInterval;
-    unsigned long long _backgroundTrendingByParsecMinimumUpdateInterval;
-    unsigned long long _foregroundForYouMinimumUpdateInterval;
-    unsigned long long _foregroundTrendingByParsecMinimumUpdateInterval;
-    unsigned long long _widgetSlotsLimit;
+    NSString *_audioIndicatorColor;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSMutableArray *_todayQueueConfigs;
-    struct {
-        unsigned int backgroundForYouMinimumUpdateInterval:1;
-        unsigned int backgroundTrendingByParsecMinimumUpdateInterval:1;
-        unsigned int foregroundForYouMinimumUpdateInterval:1;
-        unsigned int foregroundTrendingByParsecMinimumUpdateInterval:1;
-        unsigned int widgetSlotsLimit:1;
-    } _has;
+    NSString *_widgetIdentifier;
 }
 
 + (Class)todayQueueConfigsType;
-@property(nonatomic) unsigned long long backgroundTrendingByParsecMinimumUpdateInterval; // @synthesize backgroundTrendingByParsecMinimumUpdateInterval=_backgroundTrendingByParsecMinimumUpdateInterval;
-@property(nonatomic) unsigned long long foregroundTrendingByParsecMinimumUpdateInterval; // @synthesize foregroundTrendingByParsecMinimumUpdateInterval=_foregroundTrendingByParsecMinimumUpdateInterval;
-@property(nonatomic) unsigned long long backgroundForYouMinimumUpdateInterval; // @synthesize backgroundForYouMinimumUpdateInterval=_backgroundForYouMinimumUpdateInterval;
-@property(nonatomic) unsigned long long foregroundForYouMinimumUpdateInterval; // @synthesize foregroundForYouMinimumUpdateInterval=_foregroundForYouMinimumUpdateInterval;
-@property(nonatomic) unsigned long long widgetSlotsLimit; // @synthesize widgetSlotsLimit=_widgetSlotsLimit;
+@property(retain, nonatomic) NSString *audioIndicatorColor; // @synthesize audioIndicatorColor=_audioIndicatorColor;
+@property(retain, nonatomic) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
+@property(retain, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property(retain, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
 @property(retain, nonatomic) NSMutableArray *todayQueueConfigs; // @synthesize todayQueueConfigs=_todayQueueConfigs;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -42,11 +33,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasBackgroundTrendingByParsecMinimumUpdateInterval;
-@property(nonatomic) _Bool hasForegroundTrendingByParsecMinimumUpdateInterval;
-@property(nonatomic) _Bool hasBackgroundForYouMinimumUpdateInterval;
-@property(nonatomic) _Bool hasForegroundForYouMinimumUpdateInterval;
-@property(nonatomic) _Bool hasWidgetSlotsLimit;
+@property(readonly, nonatomic) _Bool hasAudioIndicatorColor;
+@property(readonly, nonatomic) _Bool hasWidgetIdentifier;
+@property(readonly, nonatomic) _Bool hasBackgroundColorDark;
+@property(readonly, nonatomic) _Bool hasBackgroundColorLight;
 - (id)todayQueueConfigsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)todayQueueConfigsCount;
 - (void)addTodayQueueConfigs:(id)arg1;

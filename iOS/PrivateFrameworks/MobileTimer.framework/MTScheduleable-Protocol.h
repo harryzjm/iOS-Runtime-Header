@@ -7,11 +7,18 @@
 #import <MobileTimer/NAEquatable-Protocol.h>
 #import <MobileTimer/NSCopying-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class MTScheduledObject, NSArray, NSCalendar, NSDate, NSString;
 
 @protocol MTScheduleable <NAEquatable, NSCopying>
 - (NSArray *)upcomingTriggersAfterDate:(NSDate *)arg1;
 - (_Bool)shouldBeScheduled;
 - (NSString *)identifier;
+
+@optional
+- (_Bool)overridesScheduledObject:(MTScheduledObject *)arg1 calendar:(NSCalendar *)arg2;
+- (void)scheduleOverridenForDate:(NSDate *)arg1;
+- (_Bool)isItemEnabled;
+- (_Bool)isSleepItem;
+- (_Bool)isSingleTime;
 @end
 

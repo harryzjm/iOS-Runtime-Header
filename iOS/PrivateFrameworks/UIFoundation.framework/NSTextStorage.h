@@ -9,7 +9,7 @@
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray;
-@protocol NSTextStorageController, NSTextStorageDelegate;
+@protocol NSTextStorageControllerPrivate, NSTextStorageDelegate;
 
 @interface NSTextStorage : NSMutableAttributedString <NSSecureCoding>
 {
@@ -24,12 +24,14 @@
     } _flags;
     NSMutableArray *_layoutManagers;
     id _sideData;
-    id <NSTextStorageController> _textStorageController;
+    id <NSTextStorageControllerPrivate> _textStorageController;
+    _Bool _ensuresFixingAttributes;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
+@property _Bool ensuresFixingAttributes; // @synthesize ensuresFixingAttributes=_ensuresFixingAttributes;
 - (_Bool)_usesSimpleTextEffects;
 - (void)_setUsesSimpleTextEffects:(_Bool)arg1;
 - (id)cuiStyleEffects;

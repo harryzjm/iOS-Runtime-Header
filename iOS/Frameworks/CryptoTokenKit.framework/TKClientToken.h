@@ -12,19 +12,22 @@
 {
     NSXPCListenerEndpoint *_serverEndpoint;
     NSXPCConnection *_serverConnection;
+    _Bool _namedConnection;
     NSNumber *_targetUID;
     long long _connectionIdentifier;
     NSString *_tokenID;
     NSXPCConnection *_tokenConnection;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSXPCConnection *tokenConnection; // @synthesize tokenConnection=_tokenConnection;
 @property(readonly, nonatomic) NSString *tokenID; // @synthesize tokenID=_tokenID;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (id)sessionWithLAContext:(id)arg1 error:(id *)arg2;
 - (id)withError:(id *)arg1 invoke:(CDUnknownBlockType)arg2;
-- (_Bool)connectWithError:(id *)arg1;
+- (_Bool)ensureConnectionWithError:(id *)arg1;
+@property(readonly, nonatomic) NSXPCListenerEndpoint *watcherEndpoint;
+@property(readonly, nonatomic) NSXPCListenerEndpoint *configurationEndpoint;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
 @property(readonly, nonatomic) NSXPCConnection *serverConnection;
 - (id)initWithTokenID:(id)arg1;

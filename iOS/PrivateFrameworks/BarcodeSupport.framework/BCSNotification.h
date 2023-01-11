@@ -20,8 +20,8 @@
 + (id)_tlAlertConfiguration;
 + (id)tempVCardFileURL;
 + (id)notificationForAction:(id)arg1;
-@property(nonatomic) int requestingProcessID; // @synthesize requestingProcessID=_requestingProcessID;
 - (void).cxx_destruct;
+@property(nonatomic) int requestingProcessID; // @synthesize requestingProcessID=_requestingProcessID;
 - (id)_orderAppLinkActionsByRecency:(id)arg1;
 - (void)_showAppPickerAlertWithFBOptions:(id)arg1;
 - (id)_pickerLabelForURLActionPickerItem:(id)arg1;
@@ -48,6 +48,7 @@
 - (id)_actionDescriptionString;
 - (id)_actionTypeStringForQRCode;
 - (id)_actionTypeStringForNFC;
+@property(readonly, nonatomic) _Bool shouldSkipBanner;
 - (id)_title;
 @property(readonly, nonatomic) long long codeType;
 @property(readonly, nonatomic) NSString *identifier;

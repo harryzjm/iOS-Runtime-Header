@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
-@protocol OS_dispatch_queue;
+@class C2RequestOptions, CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
+@protocol CKModifyRecordsOperationCallbacks, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyRecordsOperation
@@ -48,10 +48,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_assetUUIDToExpectedProperties;
     NSDictionary *_packageUUIDToExpectedProperties;
     NSArray *_userPublicKeys;
+    C2RequestOptions *_streamingAssetRequestOptions;
 }
 
 + (long long)isPredominatelyDownload;
 + (_Bool)_claimPackagesInRecord:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
+@property(copy, nonatomic) C2RequestOptions *streamingAssetRequestOptions; // @synthesize streamingAssetRequestOptions=_streamingAssetRequestOptions;
 @property(retain, nonatomic) NSArray *userPublicKeys; // @synthesize userPublicKeys=_userPublicKeys;
 @property(nonatomic) _Bool requestNeedsUserPublicKeys; // @synthesize requestNeedsUserPublicKeys=_requestNeedsUserPublicKeys;
 @property(nonatomic) _Bool markAsParticipantNeedsNewInvitationToken; // @synthesize markAsParticipantNeedsNewInvitationToken=_markAsParticipantNeedsNewInvitationToken;
@@ -89,7 +92,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool trustProtectionData; // @synthesize trustProtectionData=_trustProtectionData;
 @property(nonatomic) _Bool canSetPreviousProtectionEtag; // @synthesize canSetPreviousProtectionEtag=_canSetPreviousProtectionEtag;
 @property(nonatomic) _Bool retryPCSFailures; // @synthesize retryPCSFailures=_retryPCSFailures;
-- (void).cxx_destruct;
+- (_Bool)supportsClearAssetEncryption;
 - (id)analyticsPayload;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)finishWithError:(id)arg1;
@@ -120,7 +123,6 @@ __attribute__((visibility("hidden")))
 - (void)_fetchShareParticipants;
 - (_Bool)_topoSortRecords;
 - (_Bool)_shouldToposortInContainerID:(id)arg1;
-- (id)_containerIDsNotToTopoSort;
 - (id)_topoSortRecordsForHandlers:(id)arg1;
 - (void)_applySideEffects;
 - (void)_fetchContainerScopedUserID;
@@ -136,10 +138,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 @property(readonly, nonatomic) _Bool hasDecryptOperation;
 @property(readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
+- (int)operationType;
 - (void)_enumerateHandlersInState:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_hasHandlerInState:(unsigned long long)arg1;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKModifyRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

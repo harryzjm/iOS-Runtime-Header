@@ -6,49 +6,56 @@
 
 #import <objc/NSObject.h>
 
+#import <XCTest/XCDebugLogDelegate-Protocol.h>
 #import <XCTest/XCTTestRunSessionDelegate-Protocol.h>
 #import <XCTest/XCTestDriverInterface-Protocol.h>
-#import <XCTest/XCTestObservation-Protocol.h>
 #import <XCTest/XCUIXcodeApplicationManaging-Protocol.h>
+#import <XCTest/_XCTestObservationInternal-Protocol.h>
 
-@class DTXConnection, NSString, XCTestRun;
-@protocol OS_dispatch_queue, XCTRunnerIDESessionDelegate, XCTTestWorker, XCTestManager_IDEInterface><NSObject, XCUIApplicationMonitor;
+@class DTXConnection, NSString, XCTCapabilities, XCTFuture, XCTPromise, XCTestRun;
+@protocol OS_dispatch_queue, XCTRunnerIDESessionDelegate, XCTestManager_IDEInterface><NSObject, XCUIApplicationMonitor;
 
-@interface XCTRunnerIDESession : NSObject <XCTestObservation, XCTestDriverInterface, XCTTestRunSessionDelegate, XCUIXcodeApplicationManaging>
+@interface XCTRunnerIDESession : NSObject <_XCTestObservationInternal, XCTestDriverInterface, XCTTestRunSessionDelegate, XCUIXcodeApplicationManaging, XCDebugLogDelegate>
 {
+    XCTCapabilities *_IDECapabilities;
+    XCTFuture *_readyForTestingFuture;
+    XCTFuture *_testConfigurationFuture;
+    id <XCTRunnerIDESessionDelegate> _delegate;
+    id <XCUIApplicationMonitor> _applicationMonitor;
     NSObject<OS_dispatch_queue> *_queue;
     DTXConnection *_IDEConnection;
     id <XCTestManager_IDEInterface><NSObject> _IDEProxy;
-    long long _IDEProtocolVersion;
-    id <XCTRunnerIDESessionDelegate> _delegate;
-    id <XCUIApplicationMonitor> _applicationMonitor;
-    id <XCTTestWorker> _testWorker;
+    XCTPromise *_readyForTestingPromise;
     XCTestRun *_currentTestRun;
     CDUnknownBlockType _readinessReply;
 }
 
-+ (id)daemonMediatedSessionForSessionIdentifier:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
++ (id)IDECapabilitiesForLegacyProtocolVersion:(unsigned long long)arg1;
++ (id)exportedCapabilities;
++ (void)daemonMediatedSessionForSessionIdentifier:(id)arg1 daemonSession:(id)arg2 delegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (double)IDEConnectionTimeout;
 + (void)setSharedSession:(id)arg1;
 + (id)sharedSession;
 + (id)sharedSessionQueue;
-@property __weak id <XCTTestWorker> testWorker; // @synthesize testWorker=_testWorker;
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType readinessReply; // @synthesize readinessReply=_readinessReply;
+@property(retain) XCTestRun *currentTestRun; // @synthesize currentTestRun=_currentTestRun;
+@property(retain) XCTPromise *readyForTestingPromise; // @synthesize readyForTestingPromise=_readyForTestingPromise;
 @property(retain) id <XCTestManager_IDEInterface><NSObject> IDEProxy; // @synthesize IDEProxy=_IDEProxy;
 @property(retain) DTXConnection *IDEConnection; // @synthesize IDEConnection=_IDEConnection;
+@property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property __weak id <XCUIApplicationMonitor> applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
 @property __weak id <XCTRunnerIDESessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (void)testBundleDidFinish:(id)arg1;
-- (void)_testCase:(id)arg1 didFinishActivity:(id)arg2;
-- (void)_testCase:(id)arg1 willStartActivity:(id)arg2;
+- (void)_context:(id)arg1 didFinishActivity:(id)arg2;
+- (void)_context:(id)arg1 willStartActivity:(id)arg2;
 - (void)_testCase:(id)arg1 didMeasureValues:(id)arg2 forPerformanceMetricID:(id)arg3 name:(id)arg4 unitsOfMeasurement:(id)arg5 baselineName:(id)arg6 baselineAverage:(id)arg7 maxPercentRegression:(id)arg8 maxPercentRelativeStandardDeviation:(id)arg9 maxRegression:(id)arg10 maxStandardDeviation:(id)arg11 file:(id)arg12 line:(unsigned long long)arg13;
-- (void)testCase:(id)arg1 didFailWithDescription:(id)arg2 inFile:(id)arg3 atLine:(unsigned long long)arg4;
+- (void)testCase:(id)arg1 didRecordIssue:(id)arg2;
 - (void)testCaseDidFinish:(id)arg1;
+- (void)testCase:(id)arg1 wasSkippedWithDescription:(id)arg2 inFile:(id)arg3 atLine:(unsigned long long)arg4;
 - (void)testCaseWillStart:(id)arg1;
 - (void)testSuiteDidFinish:(id)arg1;
-- (void)testSuite:(id)arg1 didFailWithDescription:(id)arg2 inFile:(id)arg3 atLine:(unsigned long long)arg4;
+- (void)testSuite:(id)arg1 didRecordIssue:(id)arg2;
 - (void)testSuiteWillStart:(id)arg1;
 - (void)testBundleWillStart:(id)arg1;
 - (id)_IDE_processWithToken:(id)arg1 exitedWithStatus:(id)arg2;
@@ -68,11 +75,15 @@
 - (id)_IDE_executeTestIdentifiers:(id)arg1 skippingTestIdentifiers:(id)arg2;
 - (id)_IDE_fetchDiscoveredTestClasses;
 - (id)_IDE_startExecutingTestPlanWithProtocolVersion:(id)arg1;
+- (void)reportTestWithIdentifier:(id)arg1 didExceedExecutionTimeAllowance:(double)arg2;
 - (void)reportBootstrappingFailure:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)requestReadinessForTesting:(CDUnknownBlockType)arg1;
-@property(readonly) _Bool supportsVariableScreenshotFormats;
-@property(readonly) _Bool reportsCrashes;
-@property long long IDEProtocolVersion; // @synthesize IDEProtocolVersion=_IDEProtocolVersion;
+@property(readonly) XCTFuture *readyForTestingFuture; // @synthesize readyForTestingFuture=_readyForTestingFuture;
+- (id)_queue_makeReadyForTestingFuture;
+@property(readonly) XCTFuture *testConfigurationFuture; // @synthesize testConfigurationFuture=_testConfigurationFuture;
+- (id)_queue_testConfigurationFuture;
+- (id)_queue_makeTestConfigurationFuture;
+- (void)patchUpRelativePathsInTestConfiguration:(id)arg1;
+@property(retain) XCTCapabilities *IDECapabilities; // @synthesize IDECapabilities=_IDECapabilities;
 - (id)initWithTransport:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties

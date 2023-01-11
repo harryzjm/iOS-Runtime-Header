@@ -65,7 +65,6 @@
     struct CGSize _imageSize;
 }
 
-+ (id)importAssetFromAssetBundleAtURL:(id)arg1 withImportSource:(id)arg2;
 + (_Bool)isOriginalAdjustmentData:(id)arg1;
 + (void)determineIfTIFFIsRAW:(id)arg1 url:(id)arg2;
 + (id)loadDatesForAssets:(id)arg1 atEnd:(CDUnknownBlockType)arg2;
@@ -74,6 +73,7 @@
 + (id)assetFileForURL:(id)arg1 source:(id)arg2;
 + (id)assetFileForURL:(id)arg1 source:(id)arg2 withUuid:(id)arg3;
 + (_Bool)isValidAsSidecar:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *sidecarAssetsByType; // @synthesize sidecarAssetsByType=_sidecarAssetsByType;
 @property(nonatomic) unsigned short resourceSubType; // @synthesize resourceSubType=_resourceSubType;
 @property(nonatomic) long long resourceType; // @synthesize resourceType=_resourceType;
@@ -117,7 +117,6 @@
 @property(retain, nonatomic) NSMutableArray *relatedBurstAssets; // @synthesize relatedBurstAssets=_relatedBurstAssets;
 @property unsigned char duplicateStateConfidence; // @synthesize duplicateStateConfidence=_duplicateStateConfidence;
 @property(retain, nonatomic) id uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (_Bool)isEqualToImportAsset:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -130,12 +129,14 @@
 @property(readonly) id sizeKey;
 @property(readonly) NSDate *dateKey;
 @property(readonly) id nameKey;
+@property(readonly, nonatomic) NSString *accessibilityDescription;
 @property(readonly, nonatomic) NSString *assetDescription;
+@property(readonly, nonatomic) NSSet *keywordTitles;
 @property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSTimeZone *exifTimeZone;
 - (id)timezoneCorrectedExifImageDate;
 @property(readonly) id originatingAssetID;
-- (void)downloadToPathAsync:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)copyToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)copyFromURL:(id)arg1 toURL:(id)arg2;
 - (void)_addRelatedRecordsToRecord:(id)arg1 primaryRecord:(id)arg2;
 - (id)importRecordForPrimaryAsset;
@@ -157,7 +158,6 @@
 @property(retain, nonatomic) IPAMetadata *metadata; // @synthesize metadata=_metadata;
 - (void)loadMetadataAsync:(CDUnknownBlockType)arg1;
 - (void)loadMetadataSync;
-- (void)informDelegateOfAssetUpdates;
 - (void)addBurstAsset:(id)arg1;
 - (_Bool)isAppropriateForUI;
 - (id)xmpSidecar;
@@ -247,7 +247,7 @@
 @property(readonly, copy) NSString *description;
 - (id)initWithSource:(id)arg1 url:(id)arg2 uti:(id)arg3 supportedType:(unsigned char)arg4;
 - (id)initWithSource:(id)arg1;
-- (_Bool)configureWithUTI:(id)arg1 supportedType:(unsigned char)arg2 error:(id *)arg3;
+- (_Bool)configureWithUTI:(id)arg1 supportedType:(unsigned char)arg2;
 - (void)updateIsRAW:(_Bool)arg1 uti:(id)arg2;
 
 // Remaining properties

@@ -20,8 +20,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)fakeBookmarkMatchDataWithURLString:(id)arg1 title:(id)arg2;
-- (void)enumerateMatchDataForTypedStringHint:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (id)fakeBookmarkMatchDataWithURLString:(id)arg1 title:(id)arg2 shouldPreload:(_Bool)arg3;
+- (void)enumerateMatchDataForTypedStringHint:(id)arg1 options:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_matchSnapshotForCompletionMatch:(id)arg1;
 - (id)initWithItems:(unique_ptr_91c700ae)arg1;

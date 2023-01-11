@@ -10,13 +10,15 @@
 #import <PlatterKit/PLExpandedPlatter-Protocol.h>
 #import <PlatterKit/PLTitled-Protocol.h>
 #import <PlatterKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <PlatterKit/UIPointerInteractionDelegate-Protocol.h>
 #import <PlatterKit/UIScrollViewDelegate-Protocol.h>
 
 @class MTMaterialView, NSArray, NSDate, NSString, NSTimeZone, PLInterfaceActionGroupView, PLPlatterHeaderContentView, UIButton, UIControl, UIScrollView;
 @protocol PLExpandedPlatterViewDelegate;
 
-@interface PLExpandedPlatterView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, PLExpandedPlatter, PLTitled, PLContentSizeCategoryAdjusting>
+@interface PLExpandedPlatterView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, UIPointerInteractionDelegate, PLExpandedPlatter, PLTitled, PLContentSizeCategoryAdjusting>
 {
+    UIView *_headerContainerView;
     UIView *_headerBackgroundView;
     UIView *_headerKeyLineView;
     UIView *_headerTintView;
@@ -37,6 +39,7 @@
     struct CGSize _customContentSize;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_mainContentView) UIView *mainContentView; // @synthesize mainContentView=_mainContentView;
 @property(nonatomic) __weak id <PLExpandedPlatterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long dismissControlPosition; // @synthesize dismissControlPosition=_dismissControlPosition;
@@ -44,7 +47,8 @@
 @property(nonatomic) _Bool clipsVisibleContentToBounds; // @synthesize clipsVisibleContentToBounds=_clipsVisibleContentToBounds;
 @property(nonatomic) struct CGSize customContentSize; // @synthesize customContentSize=_customContentSize;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-- (void).cxx_destruct;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)adjustForContentSizeCategoryChange;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
@@ -57,19 +61,26 @@
 - (void)_layoutScrollViewContentView;
 - (void)_layoutTopRubberbandingView;
 - (void)_layoutScrollView;
-- (struct UIEdgeInsets)_scrollViewContentInset;
-- (void)_layoutHeader;
+- (struct CGRect)_scrollViewContentViewFrame;
+- (void)_layoutHeaderBackgroundViewsWithFrame:(struct CGRect)arg1;
+- (void)_layoutHeaderContentViewWithFrame:(struct CGRect)arg1;
+- (void)_layoutHeaderContainerViewWithFrame:(struct CGRect)arg1;
+- (struct CGRect)_headerFrame;
 - (void)_layoutDismissControl;
 - (void)_configureActionViewIfNecessaryWithActions:(id)arg1;
 - (void)_configureActionsBackgroundViewIfNecessaryWithActions:(id)arg1;
 - (void)_configureCustomContentViewIfNecessary;
 - (void)_configureScrollViewContentViewIfNecessary;
 - (void)_configureScrollViewIfNecessary;
-- (void)_configureHeaderViewsIfNecessary;
+- (void)_configureHeaderContentViewIfNecessary;
+- (void)_configureHeaderBackgroundViewsIfCanScroll;
+- (void)_invalidateHeaderBackgroundViews;
+- (void)_configureHeaderBackgroundViewsIfNecessary;
 - (void)_configureHeaderBackgroundForReduceTransparencyIfNecessary;
-- (void)_updateHeaderKeyLineAlphaIfNecessary;
+- (void)_updateHeaderKeyLineAlphaIfNecessaryAnimated:(_Bool)arg1;
 - (double)_headerKeyLineAlphaForContentOffset;
 - (void)_configureHeaderBackgroundDefaultIfNecessary;
+- (void)_configureHeaderContainerViewIfNecessary;
 - (void)_configureDismissControlIfNecessary;
 @property(readonly, nonatomic) UIView *customContentView; // @synthesize customContentView=_customContentView;
 - (struct CGSize)_actionsSizeThatFits:(struct CGSize)arg1 includingPadding:(_Bool)arg2;
@@ -77,7 +88,7 @@
 - (struct CGRect)_boundsInsetHorizontallyFromDismissControlIfNecessary;
 - (struct UIEdgeInsets)_dismissControlTotalOutset;
 @property(retain, nonatomic) NSArray *interfaceActions;
-- (struct CGRect)_scrollViewContentViewFrame;
+- (struct UIEdgeInsets)minimumScrollViewContentInsets;
 - (struct CGRect)scrollViewFrame;
 - (struct CGRect)platterFrameForFrame:(struct CGRect)arg1;
 - (struct CGRect)frameForPlatterFrame:(struct CGRect)arg1;

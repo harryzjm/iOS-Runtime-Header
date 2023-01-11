@@ -7,11 +7,8 @@
 #import <MapKit/VKTrackableAnnotationPresentation-Protocol.h>
 
 @class GEORouteMatch;
-@protocol VKRouteMatchedAnnotationPresentationObserver;
 
 @protocol VKRouteMatchedAnnotationPresentation <VKTrackableAnnotationPresentation>
 @property(retain, nonatomic) GEORouteMatch *routeMatch;
-- (void)removePresentationCoordinateChangedObserver:(id <VKRouteMatchedAnnotationPresentationObserver>)arg1;
-- (void)addPresentationCoordinateChangedObserver:(id <VKRouteMatchedAnnotationPresentationObserver>)arg1;
 @end
 

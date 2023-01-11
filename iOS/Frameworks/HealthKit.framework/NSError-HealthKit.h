@@ -10,13 +10,19 @@
 + (_Bool)hk_assignError:(id *)arg1 code:(long long)arg2 format:(id)arg3;
 + (_Bool)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3 underlyingError:(id)arg4;
 + (_Bool)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3;
++ (id)hk_transactionInterruptedError;
++ (id)hk_databaseSchemaRolledBackError;
++ (id)hk_healthStoreUnavailableError;
 + (id)hk_invalidProfileError;
 + (id)hk_featureUnavailableForProfileError;
 + (id)hk_protectedDataInaccessibilityError;
++ (id)hk_databaseInaccessibleBeforeFirstUnlockError;
 + (id)hk_healthDataUnavailableError;
 + (id)hk_error:(long long)arg1 format:(id)arg2;
 + (id)hk_error:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)hk_error:(long long)arg1 description:(id)arg2;
++ (id)hk_HTTPErrorWithHTTPStatusCode:(long long)arg1 URLResponse:(id)arg2;
++ (id)hk_HTTPErrorRepresentingResponse:(id)arg1 request:(id)arg2;
 + (id)_hk_OAuth2_errorFromResponseData:(id)arg1 defaultError:(id)arg2 parseError:(out id *)arg3;
 + (id)_hk_OAuth2_errorForBadRequestStatusWithResponse:(id)arg1 data:(id)arg2;
 + (id)_hk_OAuth2_errorForUnauthorizedStatusWithRequest:(id)arg1 response:(id)arg2;
@@ -30,6 +36,7 @@
 - (id)hk_errorByAddingEntriesToUserInfo:(id)arg1;
 - (id)hk_sanitizedError;
 - (id)hk_underlyingErrorWithDomain:(id)arg1;
+- (_Bool)hk_isErrorInDomain:(id)arg1 code:(long long)arg2;
 - (_Bool)hk_isXPCConnectionInterruptedError;
 - (_Bool)hk_isXPCConnectionError;
 - (_Bool)hk_isCocoaNoSuchFileError;
@@ -42,6 +49,8 @@
 - (_Bool)hk_isAuthorizationNotDeterminedError;
 - (_Bool)hk_isAuthorizationDeniedError;
 - (_Bool)hk_isServiceDeviceNotFoundError;
+- (_Bool)hk_isTransactionInterruptedError;
+- (_Bool)hk_isDatabaseSchemaRolledBackError;
 - (_Bool)hk_isDatabaseTransactionError;
 - (_Bool)hk_isDatabaseAccessibilityError;
 - (_Bool)hk_isHealthKitErrorWithCode:(long long)arg1;

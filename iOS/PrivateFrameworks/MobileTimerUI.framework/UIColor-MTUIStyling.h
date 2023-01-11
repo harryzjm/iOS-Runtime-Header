@@ -25,6 +25,7 @@
 + (id)mtui_secondaryTextColor;
 + (id)mtui_primaryTextColor;
 + (id)mtui_worldClockMapLandColor;
++ (id)mtui_buttonBackgroundColor;
 + (id)mtui_switchTintColor;
 + (id)mtui_cellAccessoryColor;
 + (id)mtui_cellSeparatorColor;

@@ -10,6 +10,7 @@
 
 - (id)recipientSearchResultAtSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)recipientSearchResultAtIndexPath:(id)arg1;
+- (id)recipientSearchResultsInSection:(unsigned long long)arg1;
 
 @end
 

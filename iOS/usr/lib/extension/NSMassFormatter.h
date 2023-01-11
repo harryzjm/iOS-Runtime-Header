@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumberFormatter;
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
 
-@interface NSMassFormatter
+@class NSNumberFormatter, NSString;
+
+@interface NSMassFormatter <NSObservable, NSObserver>
 {
     void *_formatter;
     _Bool _isForPersonMassUse;
@@ -29,6 +32,13 @@
 - (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
 - (id)stringForObjectValue:(id)arg1;
 - (_Bool)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
+- (void)receiveObservedValue:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

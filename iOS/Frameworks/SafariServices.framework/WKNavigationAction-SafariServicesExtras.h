@@ -7,6 +7,7 @@
 #import <WebKit/WKNavigationAction.h>
 
 @interface WKNavigationAction (SafariServicesExtras)
+@property(nonatomic, setter=_sf_setAllowsExternalRedirectWithoutPrompting:) _Bool _sf_allowsExternalRedirectWithoutPrompting;
 @property(readonly, nonatomic) _Bool _sf_shouldPerformDownload;
 @property(readonly, nonatomic) _Bool _sf_shouldAskAboutInsecureFormSubmission;
 @end

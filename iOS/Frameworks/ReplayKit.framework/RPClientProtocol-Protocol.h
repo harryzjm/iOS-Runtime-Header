@@ -11,7 +11,7 @@
 @protocol RPClientProtocol <NSObject>
 - (oneway void)recordingTimerDidUpdate:(NSString *)arg1;
 - (oneway void)recordingDidPause;
-- (oneway void)recordingShouldResume;
+- (oneway void)shouldResumeSessionType:(NSString *)arg1;
 - (oneway void)recordingLockInterrupted:(NSError *)arg1;
 - (oneway void)recordingDidStopWithError:(NSError *)arg1 movieURL:(NSURL *)arg2;
 - (oneway void)captureHandlerWithAudioSample:(NSDictionary *)arg1 bufferType:(long long)arg2;

@@ -17,8 +17,9 @@
 + (id)ic_objectIDsFromObjects:(id)arg1;
 + (id)ic_objectsFromObjectIDs:(id)arg1 context:(id)arg2;
 + (id)ic_objectsFromObjectIDs:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 context:(id)arg3;
-+ (id)ic_objectFromObjectID:(id)arg1 context:(id)arg2;
++ (id)ic_existingObjectWithID:(id)arg1 context:(id)arg2;
 + (_Bool)ic_containsFaultingManagedObjects:(id)arg1;
+- (id)ic_persistentStore;
 - (id)ic_postNotificationOnMainThreadAfterSaveWithName:(id)arg1;
 - (void)ic_postNotificationOnMainThreadWithName:(id)arg1;
 - (id)ic_permanentObjectID;

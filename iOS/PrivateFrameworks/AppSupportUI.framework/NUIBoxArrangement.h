@@ -28,12 +28,9 @@
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (void)positionItemsInBounds:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_cacheDisplayScaleIfNeeded;
 - (struct CGSize)layoutSizeFittingSize:(struct CGSize)arg1;
 - (void)populateBoxArrangementCells:(vector_eb457d57 *)arg1;
 - (void)reloadData;
-- (void)setBaselineRelativeArrangement:(_Bool)arg1;
-- (_Bool)isBaselineRelativeArrangement;
 @property(readonly, nonatomic) __weak id <NUIBoxArrangementDataSource> dataSource;
 @property(readonly, nonatomic) __weak id <NUIArrangementContainer> container;
 - (void)dealloc;

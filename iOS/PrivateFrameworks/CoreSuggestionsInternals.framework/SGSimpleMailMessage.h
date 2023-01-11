@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSNumber, NSString, SGSimpleNamedEmailAddress;
+@class NSArray, NSIndexSet, NSNumber, NSString, SGCachedResult, SGHtmlParser, SGSimpleNamedEmailAddress;
 
 @interface SGSimpleMailMessage
 {
-    _Bool _isInhuman;
+    SGCachedResult *_htmlParserCached;
+    SGCachedResult *_quotedRegionsCached;
+    SGCachedResult *_hasHumanHeadersCached;
+    SGCachedResult *_authorCached;
+    _Bool _hasInhumanHeaders;
     _Bool _isPartiallyDownloaded;
     SGSimpleNamedEmailAddress *_from;
     SGSimpleNamedEmailAddress *_replyTo;
@@ -22,16 +26,31 @@
     SGSimpleNamedEmailAddress *_mailingList;
 }
 
++ (id)subjectByCleaningPrefixesInSubject:(id)arg1;
 + (_Bool)headersContainInhumanOnes:(id)arg1 keys:(id)arg2;
 + (_Bool)supportsSecureCoding;
-+ (id)fromMFMailMessage:(id)arg1;
++ (id)parseRfc822:(id)arg1 attachmentCallback:(CDUnknownBlockType)arg2;
++ (id)parseRfc822:(id)arg1;
++ (id)htmlBodyFromRfc822:(id)arg1 headers:(id)arg2 attachmentCallback:(CDUnknownBlockType)arg3;
++ (id)parseParameterizedHeaderValue:(id)arg1;
++ (id)formatFlowed:(id)arg1 delSp:(_Bool)arg2;
++ (id)stripTrailingASCIIHSpace:(id)arg1;
++ (id)uudecode:(id)arg1;
++ (struct _NSRange)rangeOfHeadersFromRfc822:(id)arg1;
++ (struct _NSRange)rangeOfBodyFromRfc822:(id)arg1;
++ (id)parseRfc822Headers:(id)arg1 htmlContent:(id)arg2 source:(id)arg3;
 + (id)parseRfc822Headers:(id)arg1 htmlContent:(id)arg2;
-+ (id)simpleMailMessageFromHeadersOfMessage:(id)arg1;
-+ (id)subjectByCleaningPrefixesInSubject:(id)arg1;
++ (id)parseHeaders:(id)arg1;
++ (id)decodeEncodedWordsIn:(id)arg1;
++ (id)decodeQuotedPrintable:(id)arg1 charset:(unsigned long long)arg2 rfc2047UnderscoreAsSpace:(_Bool)arg3;
++ (id)dateFromEmailString:(id)arg1;
++ (id)addressItemsFromEmailString:(id)arg1;
++ (id)simpleMailMessageFromHeaders:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) SGSimpleNamedEmailAddress *mailingList; // @synthesize mailingList=_mailingList;
-@property(readonly, nonatomic) NSArray *headers; // @synthesize headers=_headers;
+@property(copy, nonatomic) NSArray *headers; // @synthesize headers=_headers;
 @property(nonatomic) _Bool isPartiallyDownloaded; // @synthesize isPartiallyDownloaded=_isPartiallyDownloaded;
-@property(nonatomic) _Bool isInhuman; // @synthesize isInhuman=_isInhuman;
+@property(nonatomic) _Bool hasInhumanHeaders; // @synthesize hasInhumanHeaders=_hasInhumanHeaders;
 @property(copy, nonatomic) NSNumber *received; // @synthesize received=_received;
 @property(copy, nonatomic) NSString *htmlBody; // @synthesize htmlBody=_htmlBody;
 @property(copy, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
@@ -40,11 +59,13 @@
 @property(copy, nonatomic) NSArray *to; // @synthesize to=_to;
 @property(copy, nonatomic) SGSimpleNamedEmailAddress *replyTo; // @synthesize replyTo=_replyTo;
 @property(copy, nonatomic) SGSimpleNamedEmailAddress *from; // @synthesize from=_from;
-- (void).cxx_destruct;
+- (id)createNewSearchableItem;
+- (id)createNewSearchableItemWithSource:(id)arg1 uniqueIdentifier:(id)arg2 domainIdentifier:(id)arg3;
 - (id)spotlightUniqueIdentifier;
 - (id)spotlightBundleIdentifier;
+- (_Bool)hasRecipientFromSameDomainAsSender;
+- (id)senderDomain;
 - (id)allRecipients;
-- (unsigned long long)contentLength;
 - (id)initWithSearchableItem:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -54,15 +75,18 @@
 - (_Bool)isEqualToSimpleMailMessage:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)uniqueIdentifier;
-@property(copy, nonatomic) NSString *body; // @dynamic body;
+- (id)author;
+- (id)body;
 - (id)textContent;
-- (id)rfc822Data;
+- (id)dataDetectorMatchesWithSignature;
+@property(readonly, nonatomic) _Bool hasHumanHeaders;
+- (_Bool)isInhumanContentNoncached;
+@property(readonly, nonatomic) NSIndexSet *quotedRegions;
+@property(readonly, nonatomic) SGHtmlParser *htmlParser;
 - (id)headersDictionary;
 - (id)asDictionary;
 - (id)initWithDictionary:(id)arg1;
-- (id)searchableItem;
-- (id)searchableItemWithSource:(id)arg1;
-- (void)setHeaders:(id)arg1;
+- (id)initForBuilding;
 
 @end
 

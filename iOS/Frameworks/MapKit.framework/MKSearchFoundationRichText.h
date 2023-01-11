@@ -12,10 +12,11 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandlers;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 - (_Bool)isRichTextResolved;
 - (void)_invokeCompletionHandlers;
+- (void)setFormattedTextPieces:(id)arg1;
 - (void)setText:(id)arg1;
 - (void)loadRichTextWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initRichTextTitleWithMapItem:(id)arg1 resultsType:(unsigned long long)arg2;

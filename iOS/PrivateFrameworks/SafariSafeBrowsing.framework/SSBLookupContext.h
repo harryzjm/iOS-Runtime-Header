@@ -20,9 +20,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (void)_lookUpURL:(id)arg1 ignoreEnableState:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)lookUpURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
+- (void)_forceLookUpURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getSafeBrowsingEnabledState:(CDUnknownBlockType)arg1;
 - (void)_setSafeBrowsingEnabledStateNeedsUpdate;
 - (void)_lookUpURLs:(id)arg1 forProtectionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_getLastDatabaseUpdateTimeWithCompletionHandler:(CDUnknownBlockType)arg1;

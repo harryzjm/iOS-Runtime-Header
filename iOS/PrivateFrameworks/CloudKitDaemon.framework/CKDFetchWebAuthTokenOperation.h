@@ -5,6 +5,7 @@
 //
 
 @class NSString;
+@protocol CKFetchWebAuthTokenOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchWebAuthTokenOperation
@@ -13,14 +14,16 @@ __attribute__((visibility("hidden")))
     NSString *_APIToken;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *APIToken; // @synthesize APIToken=_APIToken;
 @property(copy, nonatomic) NSString *webAuthToken; // @synthesize webAuthToken=_webAuthToken;
-- (void).cxx_destruct;
-- (void)fillOutOperationResult:(id)arg1;
-- (Class)operationResultClass;
 - (void)main;
+- (int)operationType;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKFetchWebAuthTokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

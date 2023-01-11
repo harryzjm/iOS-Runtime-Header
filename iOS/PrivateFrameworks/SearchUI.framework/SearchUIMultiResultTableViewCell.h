@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SearchUIAppIconsRowView, TLKAuxilliaryTextView, UIView;
+@class NSArray, SearchUIAppIconsRowView, TLKAuxilliaryTextView;
 
 @interface SearchUIMultiResultTableViewCell
 {
@@ -13,17 +13,17 @@
     NSArray *_results;
     long long _indexOfSelectedKeyboardIcon;
     TLKAuxilliaryTextView *_folderLabelView;
-    UIView *_highlightBackgroundView;
 }
 
 + (unsigned long long)numberOfColumnsForCurrentOrientation;
-@property(retain, nonatomic) UIView *highlightBackgroundView; // @synthesize highlightBackgroundView=_highlightBackgroundView;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKAuxilliaryTextView *folderLabelView; // @synthesize folderLabelView=_folderLabelView;
 @property(nonatomic) long long indexOfSelectedKeyboardIcon; // @synthesize indexOfSelectedKeyboardIcon=_indexOfSelectedKeyboardIcon;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(retain, nonatomic) SearchUIAppIconsRowView *bottomRow; // @synthesize bottomRow=_bottomRow;
 @property(retain, nonatomic) SearchUIAppIconsRowView *topRow; // @synthesize topRow=_topRow;
-- (void).cxx_destruct;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)keyboardResultForFocus;
 - (void)removeKeyboardHandler;
 - (_Bool)navigateKeyboardUp;
 - (_Bool)navigateKeyboardDown;
@@ -32,14 +32,14 @@
 - (_Bool)navigateKeyboardRight;
 - (void)setupKeyboardHandler;
 - (_Bool)canSetupKeyboardHandler;
+- (id)viewForHighlightedIndex:(long long)arg1;
 - (void)removeHighlightedIconState;
 - (unsigned long long)numberOfVisibleResults;
 - (id)visibleResults;
 - (void)updateExpanded:(_Bool)arg1;
 - (_Bool)isExpandable;
 - (void)layoutSubviews;
-- (double)appRowSpacing;
-- (double)topAndBottomPadding;
+- (double)appRowVerticalSpacingForTopRowSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateWithRowModel:(id)arg1;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;

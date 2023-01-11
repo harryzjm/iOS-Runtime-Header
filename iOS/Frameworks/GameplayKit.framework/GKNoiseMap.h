@@ -20,12 +20,12 @@
 
 + (id)noiseMapWithNoise:(id)arg1 size:(_Bool)arg2 origin:sampleCount:seamless: /* Error: Ran out of types for this method. */;
 + (id)noiseMapWithNoise:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *gradientColors; // @synthesize gradientColors=_gradientColors;
 @property(readonly, nonatomic, getter=isSeamless) _Bool seamless; // @synthesize seamless=_seamless;
 @property(readonly, nonatomic) MISSING_TYPE *sampleCount; // @synthesize sampleCount=_sampleCount;
 @property(readonly, nonatomic) MISSING_TYPE *origin; // @synthesize origin=_origin;
 @property(readonly, nonatomic) MISSING_TYPE *size; // @synthesize size=_size;
-- (void).cxx_destruct;
 - (void)setValue:(float)arg1 atPosition: /* Error: Ran out of types for this method. */;
 - (float)interpolatedValueAtPosition: /* Error: Ran out of types for this method. */;
 - (float)valueAtPosition: /* Error: Ran out of types for this method. */;

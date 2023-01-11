@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)enabledTextColor;
 - (id)highlightedTextColor;
 - (id)highlightedVariantKeyColor;
+- (id)variantKeyBackgroundColor;
 - (id)variantKeyColor;
 - (id)highlightedKeyColor;
 - (id)displayContentsForKey:(id)arg1;

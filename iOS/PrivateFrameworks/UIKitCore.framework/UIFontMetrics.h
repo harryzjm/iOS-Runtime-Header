@@ -13,6 +13,7 @@
     NSString *_textStyle;
 }
 
++ (double)scaledValueForValue:(double)arg1 withTextStyle:(id)arg2 bodyLeading:(double)arg3 compatibleWithTraitCollection:(id)arg4;
 + (id)metricsForTextStyle:(id)arg1;
 + (id)defaultMetrics;
 - (void).cxx_destruct;

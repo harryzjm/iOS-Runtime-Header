@@ -4,65 +4,108 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/SBGridLayoutSwitcherModifierDelegate-Protocol.h>
-#import <SpringBoard/SBGridSwitcherScrollProviding-Protocol.h>
+@class NSString, SBAppLayout, SBSwitcherModifier;
 
-@class NSString, SBGridLayoutSwitcherModifier, SBSwitcherModifier;
-@protocol SBFluidSwitcherScrollProviding, SBFluidSwitcherScrollProvidingDelegate;
-
-@interface SBAppExposeGridSwitcherModifier <SBGridLayoutSwitcherModifierDelegate, SBGridSwitcherScrollProviding>
+@interface SBAppExposeGridSwitcherModifier
 {
-    SBGridLayoutSwitcherModifier *_gridLayoutModifier;
-    unsigned long long _initialNumberOfRows;
-    double _initialCardScale;
-    _Bool _didPresentFromHomeScreen;
-    _Bool _isTethered;
-    id <SBFluidSwitcherScrollProvidingDelegate> _scrollDelegate;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
-    NSString *_appExposeBundleID;
+    struct CGPoint _previousContentOffset;
+    _Bool _isScrollingForward;
+    SBSwitcherModifier *_gridModifier;
+    unsigned long long _numberOfHiddenAppLayouts;
+    _Bool _isShowingReopenClosedWindowsButton;
+    SBAppLayout *_activeAppLayoutInSwitcher;
+    _Bool _hasForegroundFullScreenApp;
+    _Bool _reversesFloatingCardDirection;
+    _Bool _disableFullScreenCardScaleRounding;
+    NSString *_bundleIdentifier;
+    struct CGSize _fullScreenCardSize;
+    struct CGSize _floatingCardSize;
 }
 
-@property(readonly, copy, nonatomic) NSString *appExposeBundleID; // @synthesize appExposeBundleID=_appExposeBundleID;
-@property(readonly, nonatomic) SBSwitcherModifier<SBFluidSwitcherScrollProviding> *multitaskingModifier; // @synthesize multitaskingModifier=_multitaskingModifier;
-@property(readonly, nonatomic) _Bool isTethered; // @synthesize isTethered=_isTethered;
-@property(nonatomic) __weak id <SBFluidSwitcherScrollProvidingDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
 - (void).cxx_destruct;
-- (_Bool)_isGridified;
-- (double)_gridLayoutScale;
-- (unsigned long long)_gridLayoutNumberOfRows;
-- (double)trailingPadding;
-- (double)leadingPadding;
+@property(nonatomic) _Bool disableFullScreenCardScaleRounding; // @synthesize disableFullScreenCardScaleRounding=_disableFullScreenCardScaleRounding;
+@property(nonatomic) _Bool reversesFloatingCardDirection; // @synthesize reversesFloatingCardDirection=_reversesFloatingCardDirection;
+@property(readonly, nonatomic) struct CGSize floatingCardSize; // @synthesize floatingCardSize=_floatingCardSize;
+@property(readonly, nonatomic) struct CGSize fullScreenCardSize; // @synthesize fullScreenCardSize=_fullScreenCardSize;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+- (unsigned long long)_subtreeIndexForIndex:(unsigned long long)arg1 indexOfFirstMainAppLayout:(unsigned long long)arg2;
+- (unsigned long long)_indexOfFirstMainAppLayoutFromAppLayouts:(id)arg1;
+- (_Bool)_isIndexFullScreen:(unsigned long long)arg1;
+- (double)_cardHeaderHeight;
+- (struct CGRect)_unpaddedCoplanarFrameForIndex:(unsigned long long)arg1 doubleStack:(_Bool)arg2 count:(unsigned long long)arg3 cardSize:(struct CGSize)arg4 scale:(double)arg5 contentWidth:(double)arg6;
+- (struct CGRect)_frameForIndex:(unsigned long long)arg1 applyScrollViewContentOffset:(_Bool)arg2;
+- (_Bool)_isDoubleStackingFullScreenCards;
+- (struct CGSize)_scaledCardSizeForIndex:(unsigned long long)arg1;
+- (double)_floatingCardScale;
+- (double)_fullScreenCardScale;
+- (unsigned long long)_numberOfFloatingColumns;
+- (unsigned long long)_numberOfFullScreenColumns;
+- (unsigned long long)_numberOfFullScreenRows;
+- (unsigned long long)_numberOfFloatingAppLayouts;
+- (unsigned long long)_numberOfFullScreenAppLayouts;
+- (double)_horizontalSpacing;
+- (double)_verticalSpacing;
+- (id)_updateReopenClosedWindowsButtonPresence;
+- (_Bool)_canShowReopenClosedWindowsButton;
+- (void)resetAdjustedScrollingState;
+- (struct CGPoint)adjustedOffsetForOffset:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 startPoint:(struct CGPoint)arg3 locationInView:(struct CGPoint)arg4 horizontalVelocity:(inout double *)arg5 verticalVelocity:(inout double *)arg6;
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1;
-- (struct CGSize)contentSize;
-- (id)forwardingTargetForSelector:(SEL)arg1;
-- (_Bool)respondsToSelector:(SEL)arg1;
-@property(readonly, nonatomic) double effectiveHorizontalSpacing;
-@property(readonly, nonatomic) unsigned long long numberOfRows;
-- (unsigned long long)insertionStyle;
-- (struct _NSRange)fullSizeSnapshotsRange;
-- (_Bool)wantsDockBehaviorAssertion;
-- (long long)backdropBlurType;
-- (double)dimmingAlpha;
-- (double)backdropBlurProgress;
-- (_Bool)isScrollEnabled;
-- (_Bool)isTetheredScrollingEnabled;
-- (id)handleTetheredInsertionEvent:(id)arg1;
+- (struct CGPoint)restingOffsetForScrollOffset:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (unsigned long long)_numberOfOffScreenTrailingFloatingCardsForContentOffset:(struct CGPoint)arg1;
+- (unsigned long long)_numberOfOffScreenTrailingFullScreenCardsForContentOffset:(struct CGPoint)arg1;
+- (_Bool)_isIndexVisible:(unsigned long long)arg1;
+- (struct _NSRange)_visibleAppLayoutRangeForContentOffset:(struct CGPoint)arg1 lastVisibleIndex:(unsigned long long)arg2;
+- (struct _NSRange)_visibleAppLayoutRangeForContentOffset:(struct CGPoint)arg1;
+- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 centered:(_Bool)arg2;
+- (struct CGSize)_fittedFloatingContentSize;
+- (struct CGSize)_fittedFullScreenContentSize;
+- (struct CGSize)_fittedContentSize;
+- (struct CGSize)_contentSize;
+- (double)minimumTranslationToKillIndex:(unsigned long long)arg1;
+- (double)_cardCornerRadiusInSwitcher;
+- (id)scrollViewAttributes;
+- (double)contentPageViewScaleForAppLayout:(id)arg1;
+- (double)snapshotScaleForAppLayout:(id)arg1;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (unsigned long long)_indexOfLeadingCard;
+- (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
+- (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
+- (id)appLayoutToScrollToBeforeReopeningClosedWindows;
+- (_Bool)shouldBringCardToFrontDuringInsertionOrRemoval;
+- (_Bool)shouldAnimateInsertionOrRemovalAtIndex:(unsigned long long)arg1;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
+- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (double)shadowOffsetForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForIndex:(unsigned long long)arg1;
+- (double)titleOpacityForIndex:(unsigned long long)arg1;
+- (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
+- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
+- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
+- (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
+- (struct CGRect)fullyPresentedFrameForAppLayout:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (double)contentViewScale;
+- (id)visibleAppLayouts;
+- (double)scaleForIndex:(unsigned long long)arg1;
+- (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (long long)plusButtonStyle;
+- (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
+- (double)reopenClosedWindowsButtonScale;
+- (double)reopenClosedWindowsButtonAlpha;
+- (double)plusButtonAlpha;
+- (id)appExposeAccessoryButtonsBundleIdentifier;
+- (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
+- (id)responseForProposedChildResponse:(id)arg1 childModifier:(id)arg2 event:(id)arg3;
+- (id)handleTimerEvent:(id)arg1;
 - (id)handleInsertionEvent:(id)arg1;
-- (id)handleTetheredRemovalEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
-- (id)handleTapOutsideToDismissEvent:(id)arg1;
-- (id)handleTapAppLayoutEvent:(id)arg1;
-@property(readonly, nonatomic) double cardScale;
+- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleScrollEvent:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
-- (id)initWithTetheredMode:(_Bool)arg1 multitaskingModifier:(id)arg2 appExposeBundleID:(id)arg3 initialNumberOfRows:(unsigned long long)arg4 initialCardScale:(double)arg5;
-- (id)initWithTetheredMode:(_Bool)arg1 multitaskingModifier:(id)arg2 appExposeBundleID:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithBundleIdentifier:(id)arg1 fullScreenCardSize:(struct CGSize)arg2 floatingCardSize:(struct CGSize)arg3;
 
 @end
 

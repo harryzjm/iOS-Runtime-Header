@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, MPSMatrixMultiplication;
 
 @interface MPSNDArrayMatrixMultiplication
 {
+    MPSMatrixMultiplication *_mmul;
     double _alpha;
     double _beta;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (unsigned long long)expectedVirtualSourceCount;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) double beta; // @synthesize beta=_beta;
 @property(nonatomic) double alpha; // @synthesize alpha=_alpha;
+- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;

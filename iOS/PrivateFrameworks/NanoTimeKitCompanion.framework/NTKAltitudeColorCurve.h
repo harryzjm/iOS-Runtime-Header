@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 @interface NTKAltitudeColorCurve
 {
 }
 
+- (MISSING_TYPE *)rgbfColorForAltitude:(CDStruct_869f9c67)arg1;
 - (id)colorForAltitude:(CDStruct_869f9c67)arg1;
 
 @end

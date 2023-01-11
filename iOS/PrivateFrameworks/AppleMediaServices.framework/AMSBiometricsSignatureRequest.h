@@ -7,12 +7,15 @@
 #import <objc/NSObject.h>
 
 @class ACAccount, AMSKeychainOptions, AMSProcessInfo, LAContext, NSDictionary, NSString;
+@protocol AMSBagProtocol;
 
 __attribute__((visibility("hidden")))
 @interface AMSBiometricsSignatureRequest : NSObject
 {
+    _Bool _dualAction;
     struct __SecAccessControl *_localAuthAccessControlRef;
     ACAccount *_account;
+    id <AMSBagProtocol> _bag;
     NSString *_challenge;
     AMSProcessInfo *_clientInfo;
     AMSKeychainOptions *_keychainOptions;
@@ -20,13 +23,15 @@ __attribute__((visibility("hidden")))
     NSDictionary *_localAuthOptions;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *localAuthOptions; // @synthesize localAuthOptions=_localAuthOptions;
 @property(readonly, nonatomic) LAContext *localAuthContext; // @synthesize localAuthContext=_localAuthContext;
 @property(readonly, nonatomic) AMSKeychainOptions *keychainOptions; // @synthesize keychainOptions=_keychainOptions;
+@property(nonatomic, getter=isDualAction) _Bool dualAction; // @synthesize dualAction=_dualAction;
 @property(readonly, copy, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(readonly, copy, nonatomic) NSString *challenge; // @synthesize challenge=_challenge;
+@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(readonly, copy, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (id)_localAuthOptions;
 - (void)dealloc;
 - (void)setLocalAuthAccessControlRef:(struct __SecAccessControl *)arg1;

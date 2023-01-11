@@ -6,10 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-@class AFVoiceInfo, AssistantVoiceViewModel, NSArray, NSDate, PSSpecifier, SUICAssistantVoiceSettingsConnection, VSVoiceAsset;
+@class AFVoiceInfo, AssistantSettingsSignalEmitter, AssistantVoiceViewModel, NSArray, NSDate, PSSpecifier, SUICAssistantVoiceSettingsConnection, VSVoiceAsset;
 
 @interface AssistantVoiceController : PSListController
 {
+    AssistantSettingsSignalEmitter *_signalEmitter;
     _Bool _ignoreNextVoiceChangeNotification;
     SUICAssistantVoiceSettingsConnection *_settingsConnection;
     PSSpecifier *_languageGroupSpecifier;
@@ -18,6 +19,7 @@
     PSSpecifier *_genderGroupSpecifier;
     PSSpecifier *_maleSpecifier;
     PSSpecifier *_femaleSpecifier;
+    NSArray *_cellularUpdatesSpecifiers;
     VSVoiceAsset *_downloadingAsset;
     NSArray *_genderGroupSpecifierTemplate;
     NSDate *_startDate;
@@ -26,8 +28,8 @@
     AssistantVoiceViewModel *_currentViewModel;
 }
 
-+ (_Bool)selectedLanguageHasGryphonAssets;
 + (id)bundle;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AssistantVoiceViewModel *currentViewModel; // @synthesize currentViewModel=_currentViewModel;
 @property(nonatomic) _Bool ignoreNextVoiceChangeNotification; // @synthesize ignoreNextVoiceChangeNotification=_ignoreNextVoiceChangeNotification;
 @property(retain, nonatomic) AFVoiceInfo *currentVoice; // @synthesize currentVoice=_currentVoice;
@@ -35,6 +37,7 @@
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(retain, nonatomic) NSArray *genderGroupSpecifierTemplate; // @synthesize genderGroupSpecifierTemplate=_genderGroupSpecifierTemplate;
 @property(retain, nonatomic) VSVoiceAsset *downloadingAsset; // @synthesize downloadingAsset=_downloadingAsset;
+@property(retain, nonatomic) NSArray *cellularUpdatesSpecifiers; // @synthesize cellularUpdatesSpecifiers=_cellularUpdatesSpecifiers;
 @property(retain, nonatomic) PSSpecifier *femaleSpecifier; // @synthesize femaleSpecifier=_femaleSpecifier;
 @property(retain, nonatomic) PSSpecifier *maleSpecifier; // @synthesize maleSpecifier=_maleSpecifier;
 @property(retain, nonatomic) PSSpecifier *genderGroupSpecifier; // @synthesize genderGroupSpecifier=_genderGroupSpecifier;
@@ -42,17 +45,16 @@
 @property(retain, nonatomic) PSSpecifier *languageProto; // @synthesize languageProto=_languageProto;
 @property(retain, nonatomic) PSSpecifier *languageGroupSpecifier; // @synthesize languageGroupSpecifier=_languageGroupSpecifier;
 @property(retain, nonatomic) SUICAssistantVoiceSettingsConnection *settingsConnection; // @synthesize settingsConnection=_settingsConnection;
-- (void).cxx_destruct;
-- (_Bool)hasNonWWANNetworkConnection;
-- (_Bool)isVocalizerVoiceDownloading:(id)arg1;
-- (_Bool)isVocalizerVoiceInstalled:(id)arg1;
-- (_Bool)isVoiceDownloading:(id)arg1 gender:(long long)arg2;
 - (_Bool)isVoiceInstalled:(id)arg1 gender:(long long)arg2;
-- (id)vocalizerVoicesForLanguage:(id)arg1;
-- (id)voicesForLanguage:(id)arg1 gender:(long long)arg2;
 - (void)updateFooterText:(id)arg1 forSpecifier:(id)arg2;
+- (void)_signalDidSelectVoice;
 - (void)stopAllDownload;
 - (void)downloadVoice:(id)arg1 gender:(long long)arg2;
+- (void)presentVoiceDownloadDisabledNoWifiAlert;
+- (void)presentVoiceDownloadDisabledNoInternetAlert;
+- (id)voiceSettingsForLanguageCode:(id)arg1 gender:(long long)arg2;
+- (void)playVoicePreview:(id)arg1;
+- (void)selectVoice:(id)arg1 inProgressVoice:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)setInProgressVoicePreference:(id)arg1;
 - (void)setAssistantInProgressVoice:(id)arg1;
@@ -72,6 +74,8 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)setParentController:(id)arg1;
+- (void)resetMetrics;
+- (id)init;
 
 @end
 

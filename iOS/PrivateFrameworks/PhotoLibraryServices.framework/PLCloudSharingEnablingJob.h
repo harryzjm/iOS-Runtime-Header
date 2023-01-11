@@ -10,7 +10,8 @@
 }
 
 + (void)deleteAllLocalSharedAlbumsInLibrary:(id)arg1 keepPendingAlbums:(_Bool)arg2 withReason:(id)arg3;
-+ (void)enableCloudSharing:(_Bool)arg1;
++ (void)disableCloudSharingWithLibraryServicesManager:(id)arg1;
++ (void)enableCloudSharing:(_Bool)arg1 withPathManager:(id)arg2;
 @property(nonatomic) _Bool enableSharing; // @synthesize enableSharing=_enableSharing;
 - (void)runDaemonSide;
 - (_Bool)shouldArchiveXPCToDisk;

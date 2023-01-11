@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, PARBag, PRSRankingServerKnobs, SSPlistDataReader;
+@class GEOUserSessionEntity, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, PARBag, SSPlistDataReader;
 @protocol OS_dispatch_group, OS_dispatch_queue, PRSSessionController;
 
 @interface PRSBagHandler : NSObject
@@ -22,13 +22,13 @@
     _Bool _collectAnonymousData;
     _Bool _collectScores;
     _Bool _use2LayerRanking;
+    _Bool _bagEnabled;
     _Bool _resourceMetadataNeedsWrite;
     id <PRSSessionController> _client;
     long long _status;
     double _searchRenderTimeout;
     double _suggestionsRenderTimeout;
     SSPlistDataReader *_cep_server_values;
-    PRSRankingServerKnobs *_ranking_server_knobs;
     NSSet *_appBlacklist;
     NSArray *_enabledDomains;
     NSArray *_anonymousMetadataUndesiredBundleIDs;
@@ -47,11 +47,13 @@
 
 + (id)sharedHandler;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *resourceFetchQueue; // @synthesize resourceFetchQueue=_resourceFetchQueue;
 @property(retain, nonatomic) NSString *resourceMetadataPath; // @synthesize resourceMetadataPath=_resourceMetadataPath;
 @property(nonatomic) _Bool resourceMetadataNeedsWrite; // @synthesize resourceMetadataNeedsWrite=_resourceMetadataNeedsWrite;
 @property(retain, nonatomic) NSMutableDictionary *resourceMetadata; // @synthesize resourceMetadata=_resourceMetadata;
 @property(readonly) GEOUserSessionEntity *geoUserSessionEntity; // @synthesize geoUserSessionEntity=_geoUserSessionEntity;
+@property(readonly, nonatomic, getter=isBagEnabled) _Bool bagEnabled; // @synthesize bagEnabled=_bagEnabled;
 @property(readonly, nonatomic) NSString *lookupFirstUseLearnMore; // @synthesize lookupFirstUseLearnMore=_lookupFirstUseLearnMore;
 @property(readonly, nonatomic) NSString *lookupFirstUseDescription2; // @synthesize lookupFirstUseDescription2=_lookupFirstUseDescription2;
 @property(readonly, nonatomic) NSString *lookupFirstUseDescription1; // @synthesize lookupFirstUseDescription1=_lookupFirstUseDescription1;
@@ -66,14 +68,12 @@
 @property(nonatomic) _Bool disableAsTypedSuggestion; // @synthesize disableAsTypedSuggestion=_disableAsTypedSuggestion;
 @property(retain, nonatomic) NSArray *enabledDomains; // @synthesize enabledDomains=_enabledDomains;
 @property(retain, nonatomic) NSSet *appBlacklist; // @synthesize appBlacklist=_appBlacklist;
-@property(retain) PRSRankingServerKnobs *ranking_server_knobs; // @synthesize ranking_server_knobs=_ranking_server_knobs;
 @property(retain) SSPlistDataReader *cep_server_values; // @synthesize cep_server_values=_cep_server_values;
 @property double suggestionsRenderTimeout; // @synthesize suggestionsRenderTimeout=_suggestionsRenderTimeout;
 @property double searchRenderTimeout; // @synthesize searchRenderTimeout=_searchRenderTimeout;
 @property(nonatomic) long long status; // @synthesize status=_status;
 @property __weak id <PRSSessionController> client; // @synthesize client=_client;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
-- (void).cxx_destruct;
 - (void)refreshGUID;
 - (void)getFTEStringsWithReply:(CDUnknownBlockType)arg1;
 - (void)triggerTaskWhenReady:(id)arg1;
@@ -92,7 +92,6 @@
 - (id)userId;
 - (id)applicationNameForUserAgent;
 - (_Bool)isEnabled;
-- (void)updateWithDictionary:(id)arg1;
 - (void)parseCEPFromData:(id)arg1 forClient:(id)arg2;
 - (void)_processQIFeatures:(id)arg1 forClient:(id)arg2;
 - (id)_base64CEPDataNoCopyFromFeatureData:(id)arg1;

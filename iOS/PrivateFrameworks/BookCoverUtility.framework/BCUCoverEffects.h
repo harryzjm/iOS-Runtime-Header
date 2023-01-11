@@ -16,9 +16,11 @@
     NSArray *_templateImageFilters;
 }
 
++ (struct CGImage *)restrictedImageFrom:(struct CGImage *)arg1 size:(struct CGSize)arg2;
 + (id)_effectIdentifierForEffectIndex:(unsigned long long)arg1;
 + (id)effectIdentifierForFilterInfo:(id)arg1;
 + (id)effectIdentifierForAsset:(id)arg1 withEnvironment:(id)arg2;
++ (id)effectIdentifierWithRTL:(_Bool)arg1 style:(unsigned long long)arg2 content:(unsigned long long)arg3 nightMode:(_Bool)arg4;
 - (void).cxx_destruct;
 - (id)welcomeScreenBookCoverEffectFilters;
 - (id)templateImageFilters;

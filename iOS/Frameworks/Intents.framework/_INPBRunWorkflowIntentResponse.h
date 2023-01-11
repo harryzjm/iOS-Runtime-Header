@@ -22,7 +22,6 @@
     _Bool _continueRunning;
     _Bool _requestsIntentExecution;
     _Bool _waitingForResume;
-    _Bool __encodeLegacyGloryData;
     NSArray *_steps;
     _INPBArchivedObject *_underlyingIntent;
     _INPBArchivedObject *_underlyingIntentResponse;
@@ -31,7 +30,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)stepType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool waitingForResume; // @synthesize waitingForResume=_waitingForResume;
 @property(copy, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
 @property(retain, nonatomic) _INPBArchivedObject *underlyingIntentResponse; // @synthesize underlyingIntentResponse=_underlyingIntentResponse;
@@ -39,7 +38,6 @@
 @property(copy, nonatomic) NSArray *steps; // @synthesize steps=_steps;
 @property(nonatomic) _Bool requestsIntentExecution; // @synthesize requestsIntentExecution=_requestsIntentExecution;
 @property(nonatomic) _Bool continueRunning; // @synthesize continueRunning=_continueRunning;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

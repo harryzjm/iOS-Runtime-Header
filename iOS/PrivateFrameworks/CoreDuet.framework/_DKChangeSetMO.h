@@ -12,8 +12,6 @@
 {
 }
 
-+ (id)fetchDeletionChangeSetRequest;
-+ (id)fetchAdditionChangeSetRequest;
 
 // Remaining properties
 @property(retain, nonatomic) NSData *changeSet; // @dynamic changeSet;
@@ -25,6 +23,5 @@
 @property(copy, nonatomic) NSNumber *sequenceNumber; // @dynamic sequenceNumber;
 @property(copy, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property(copy, nonatomic) NSNumber *version; // @dynamic version;
-
 @end
 

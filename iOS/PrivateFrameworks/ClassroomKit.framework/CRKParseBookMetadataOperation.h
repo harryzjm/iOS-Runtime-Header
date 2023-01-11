@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 @class CRKBook;
 
@@ -14,8 +14,8 @@
     CRKBook *_book;
 }
 
-@property(readonly, nonatomic) CRKBook *book; // @synthesize book=_book;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CRKBook *book; // @synthesize book=_book;
 - (void)parseBookContentsOperationDidFinish:(id)arg1;
 - (void)parseContentsFilePathOperationDidFinish:(id)arg1;
 - (void)main;

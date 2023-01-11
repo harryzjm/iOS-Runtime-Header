@@ -24,7 +24,7 @@
 - (void)_createURLRequest:(CDUnknownBlockType)arg1;
 - (void)accountPendingRelease;
 - (void)accountCancelled;
-- (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5 state:(id)arg6;
+- (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 srcIccid:(id)arg5 alternateSDMP:(id)arg6 state:(id)arg7;
 - (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5;
 - (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;

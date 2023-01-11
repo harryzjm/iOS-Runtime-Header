@@ -6,26 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class NSString, SNSoundClassifier;
-@protocol SNAnalyzing;
+@class MLModel, NSString;
 
-@interface SNClassifySoundRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNClassifySoundRequest : NSObject <SNAnalyzerCreating, SNRequest>
 {
-    SNSoundClassifier *_classifier;
+    MLModel *_model;
+    double _overlapFactor;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property double overlapFactor;
-@property(readonly, nonatomic) __weak id <SNAnalyzing> analyzer;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToClassifySoundRequest:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+@property double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 - (id)initWithMLModel:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

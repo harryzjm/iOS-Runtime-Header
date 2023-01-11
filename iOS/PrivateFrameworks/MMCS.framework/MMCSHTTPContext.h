@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     struct os_activity_s *_activityMarker;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct os_activity_s *activityMarker; // @synthesize activityMarker=_activityMarker;
 @property(nonatomic) _Bool isHandlingError; // @synthesize isHandlingError=_isHandlingError;
 @property(nonatomic) _Bool requestIsStreamed; // @synthesize requestIsStreamed=_requestIsStreamed;
@@ -45,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
 @property(retain, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property(nonatomic) struct mmcs_http_context *hc; // @synthesize hc=_hc;
-- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 _willRetryBackgroundDataTask:(id)arg2 withError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _conditionalRequirementsChanged:(_Bool)arg3;
 - (void)URLSession:(id)arg1 _taskIsWaitingForConnection:(id)arg2;

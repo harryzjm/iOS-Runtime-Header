@@ -12,13 +12,15 @@
     PKPaymentApplication *_paymentApplication;
     PKWrappedPayment *_wrappedPayment;
     NSData *_applicationData;
+    long long _cryptogramType;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long cryptogramType; // @synthesize cryptogramType=_cryptogramType;
 @property(copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property(retain, nonatomic) PKWrappedPayment *wrappedPayment; // @synthesize wrappedPayment=_wrappedPayment;
 @property(retain, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
-- (void).cxx_destruct;
 - (id)bodyDictionary;
 @property(readonly, nonatomic) NSString *endpointName;
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 rewrapData:(id)arg3 appleAccountInformation:(id)arg4;

@@ -7,11 +7,12 @@
 #import <HeartRhythmUI/HRLinkTextViewDelegate-Protocol.h>
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
-@class HKElectrocardiogram, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
+@class HKElectrocardiogram, HKHealthStore, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
 
 @interface HROnboardingElectrocardiogramPossibleResultsViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate>
 {
     HKElectrocardiogram *_electrocardiogram;
+    HKHealthStore *_healthStore;
     UILabel *_titleLabel;
     HROnboardingElectrocardiogramResultView *_sinusRhythmResultReview;
     HROnboardingElectrocardiogramResultView *_atrialFibrillationResultView;
@@ -26,6 +27,7 @@
     NSLayoutConstraint *_disclaimerLabelTopConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *disclaimerLabelTopConstraint; // @synthesize disclaimerLabelTopConstraint=_disclaimerLabelTopConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) NSLayoutAnchor *viewTopAnchor; // @synthesize viewTopAnchor=_viewTopAnchor;
@@ -38,8 +40,8 @@
 @property(retain, nonatomic) HROnboardingElectrocardiogramResultView *atrialFibrillationResultView; // @synthesize atrialFibrillationResultView=_atrialFibrillationResultView;
 @property(retain, nonatomic) HROnboardingElectrocardiogramResultView *sinusRhythmResultReview; // @synthesize sinusRhythmResultReview=_sinusRhythmResultReview;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(retain, nonatomic) HKElectrocardiogram *electrocardiogram; // @synthesize electrocardiogram=_electrocardiogram;
-- (void).cxx_destruct;
 - (void)_pauseResultViewVideos;
 - (void)_playResultViewVideos;
 - (void)_adjustStackedButtonViewLocationForViewContentHeight;
@@ -52,7 +54,7 @@
 - (void)_setUpAllResultViews;
 - (void)_setUpOnlyResultViewConstraints;
 - (void)_setUpOnlyResultView;
-- (id)_resultViewForSample:(id)arg1;
+- (id)_resultViewForSample:(id)arg1 activeAlgorithmVersion:(long long)arg2;
 - (void)_setUpTitleConstraints;
 - (void)_setUpTitle;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
@@ -65,6 +67,8 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (id)algorithmVersion;
+- (id)initWithHealthStore:(id)arg1 onboarding:(_Bool)arg2;
 - (id)initWithSample:(id)arg1;
 - (id)initForOnboarding:(_Bool)arg1;
 

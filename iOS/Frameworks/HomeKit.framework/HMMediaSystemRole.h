@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)roleFromDictionary:(id)arg1 roleOutput:(unsigned long long *)arg2;
 + (id)rightRole;
 + (id)leftRole;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;

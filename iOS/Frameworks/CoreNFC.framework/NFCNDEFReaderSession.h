@@ -19,7 +19,6 @@
 - (void)_callbackDidInvalidateWithError:(id)arg1;
 - (void)connectToTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)restartPolling;
-- (void)dealloc;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 invalidateAfterFirstRead:(_Bool)arg3;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pollMethod:(unsigned long long)arg3;
 - (void)didDetectNDEFMessages:(id)arg1 fromTags:(id)arg2 updateUICallback:(CDUnknownBlockType)arg3;

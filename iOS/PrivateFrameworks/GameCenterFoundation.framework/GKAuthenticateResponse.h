@@ -11,15 +11,26 @@
     _Bool _loginDisabled;
     _Bool _passwordChangeRequired;
     _Bool _shouldShowLinkAccountsUI;
+    _Bool _useNewDashboardUI;
+    _Bool _accessPointIsOnAutomatically;
+    _Bool _accessPointShowHighlights;
     GKPlayerCredential *_credential;
     NSURL *_passwordChangeURL;
     NSString *_alertTitle;
     NSString *_alertMessage;
     NSString *_lastPersonalizationVersionDisplayed;
     unsigned long long _lastPrivacyNoticeVersionDisplayed;
+    NSString *_lastProfilePrivacyVersionDisplayed;
+    long long _accessPointLocation;
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
+@property(nonatomic) long long accessPointLocation; // @synthesize accessPointLocation=_accessPointLocation;
+@property(nonatomic) _Bool accessPointShowHighlights; // @synthesize accessPointShowHighlights=_accessPointShowHighlights;
+@property(nonatomic) _Bool accessPointIsOnAutomatically; // @synthesize accessPointIsOnAutomatically=_accessPointIsOnAutomatically;
+@property(nonatomic) _Bool useNewDashboardUI; // @synthesize useNewDashboardUI=_useNewDashboardUI;
+@property(retain, nonatomic) NSString *lastProfilePrivacyVersionDisplayed; // @synthesize lastProfilePrivacyVersionDisplayed=_lastProfilePrivacyVersionDisplayed;
 @property(nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
 @property(retain, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
 @property(retain, nonatomic) NSString *alertMessage; // @synthesize alertMessage=_alertMessage;
@@ -29,7 +40,7 @@
 @property(nonatomic) _Bool passwordChangeRequired; // @synthesize passwordChangeRequired=_passwordChangeRequired;
 @property(nonatomic) _Bool loginDisabled; // @synthesize loginDisabled=_loginDisabled;
 @property(retain, nonatomic) GKPlayerCredential *credential; // @synthesize credential=_credential;
-- (void).cxx_destruct;
+- (id)init;
 
 @end
 

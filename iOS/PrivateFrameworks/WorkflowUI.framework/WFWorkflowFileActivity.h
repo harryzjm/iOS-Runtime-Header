@@ -19,17 +19,17 @@
 }
 
 + (id)activityType;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property(retain, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(copy, nonatomic) NSArray *activityItems; // @synthesize activityItems=_activityItems;
 @property(nonatomic) unsigned long long arrowDirection; // @synthesize arrowDirection=_arrowDirection;
-- (void).cxx_destruct;
 - (id)activityViewController;
 @property(readonly, nonatomic) WFFileRepresentation *workflowFile; // @synthesize workflowFile=_workflowFile;
 - (void)prepareWithActivityItems:(id)arg1;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (id)initWithSourceView:(id)arg1 sourceRect:(struct CGRect)arg2 barButtonItem:(id)arg3;

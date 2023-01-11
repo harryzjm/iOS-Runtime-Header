@@ -12,12 +12,13 @@
 #import <UIKitCore/_UIClickInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIPreviewInteractionImpl-Protocol.h>
 
-@class NSString, UIDragInteraction, UIPreviewInteraction, UIView, _UIClickInteraction, _UIPreviewInteractionHighlighter, _UIPreviewInteractionPresentationAssistant, _UIRelationshipGestureRecognizer, _UIStateMachine;
+@class NSString, UIDragInteraction, UIPreviewInteraction, UIView, _UIClickInteraction, _UIPreviewInteractionHighlighter, _UIPreviewInteractionPresentationAssistant, _UIRelationshipGestureRecognizer;
 @protocol UIInteractionEffect, UIPreviewInteractionDelegate, UIPreviewInteractionDelegatePrivate, _UIPreviewInteractionTouchForceProviding;
 
 __attribute__((visibility("hidden")))
 @interface _UIPreviewInteractionClickImpl : NSObject <_UIClickInteractionDelegate, UIInteraction_Private, UIGestureRecognizerDelegate, _UIPreviewInteractionImpl, UIInteraction>
 {
+    unsigned long long _currentState;
     struct {
         _Bool shouldBegin;
         _Bool didUpdateCommitTransition;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
     id <_UIPreviewInteractionTouchForceProviding> _touchForceProvider;
     UIPreviewInteraction *_previewInteraction;
     id <UIInteractionEffect> _interactionEffect;
-    _UIStateMachine *_stateMachine;
     _UIClickInteraction *_previewClickInteraction;
     _UIClickInteraction *_commitClickInteraction;
     _UIRelationshipGestureRecognizer *_exclusionRelationshipGestureRecognizer;
@@ -42,37 +42,22 @@ __attribute__((visibility("hidden")))
     UIDragInteraction *_associatedDragInteraction;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIDragInteraction *associatedDragInteraction; // @synthesize associatedDragInteraction=_associatedDragInteraction;
 @property(retain, nonatomic) _UIPreviewInteractionHighlighter *highlighter; // @synthesize highlighter=_highlighter;
 @property(retain, nonatomic) _UIPreviewInteractionPresentationAssistant *presentationAssistant; // @synthesize presentationAssistant=_presentationAssistant;
 @property(retain, nonatomic) _UIRelationshipGestureRecognizer *exclusionRelationshipGestureRecognizer; // @synthesize exclusionRelationshipGestureRecognizer=_exclusionRelationshipGestureRecognizer;
 @property(retain, nonatomic) _UIClickInteraction *commitClickInteraction; // @synthesize commitClickInteraction=_commitClickInteraction;
 @property(retain, nonatomic) _UIClickInteraction *previewClickInteraction; // @synthesize previewClickInteraction=_previewClickInteraction;
-@property(retain, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(retain, nonatomic) id <UIInteractionEffect> interactionEffect; // @synthesize interactionEffect=_interactionEffect;
 @property(nonatomic) __weak UIPreviewInteraction *previewInteraction; // @synthesize previewInteraction=_previewInteraction;
 @property(retain, nonatomic) id <_UIPreviewInteractionTouchForceProviding> touchForceProvider; // @synthesize touchForceProvider=_touchForceProvider;
 @property(readonly, nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <UIPreviewInteractionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)_gestureRecognizerForExclusionRelationship;
-- (void)_toBeRemoved_CallHighlighterCompletion;
-- (void)_toBeRemoved_CreateHighlighterIfPossible;
-- (void)_delegateUpdateCommitTransitionWithProgress:(double)arg1 ended:(_Bool)arg2;
-- (void)_delegateUpdatePreviewTransitionWithProgress:(double)arg1 ended:(_Bool)arg2;
 - (void)_endInteractionEffectIfNeeded;
 - (void)_prepareInteractionEffect;
-- (void)_endInteractionDidComplete:(_Bool)arg1 wasCancelledByClient:(_Bool)arg2;
-- (unsigned long long)_handleTransitionToPossibleByEndingWithContext:(id)arg1;
-- (unsigned long long)_handleTransitionToPossibleByCommitting;
-- (void)_handleDidTransitionToPreview;
-- (unsigned long long)_handleTransitionToPreview;
-- (unsigned long long)_handleTransitionToHighlight;
-- (unsigned long long)_handleTransitionToActive;
-- (_Bool)_isPaused;
-@property(readonly, nonatomic) unsigned long long currentState;
-- (void)_prepareStateMachine;
 - (void)clickInteractionDidClickUp:(id)arg1;
 - (void)clickInteractionDidClickDown:(id)arg1;
 - (id)highlightEffectForClickInteraction:(id)arg1;

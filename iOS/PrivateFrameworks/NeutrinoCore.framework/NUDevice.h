@@ -15,6 +15,8 @@
 {
     NURenderer *_renderer;
     NURenderer *_lowPriorityRenderer;
+    NURenderer *_noIntermediatesRenderer;
+    NURenderer *_lowPriorityNoIntermediatesRenderer;
     NSObject<OS_dispatch_queue> *_queue;
     long long _defaultSampleMode;
     NSString *_name;
@@ -22,18 +24,26 @@
     id <MTLDevice> _metalDevice;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
+@property(readonly, nonatomic) id <NURenderer> lowPriorityRenderer; // @synthesize lowPriorityRenderer=_lowPriorityRenderer;
+@property(readonly, nonatomic) id <NURenderer> renderer; // @synthesize renderer=_renderer;
 @property(readonly, nonatomic) NSString *model; // @synthesize model=_model;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (void)clearCaches;
-- (id)_newLowPriorityRenderer;
-- (id)_lowPriorityRenderer;
-@property(readonly, nonatomic) id <NURenderer> lowPriorityRenderer;
-- (id)_newRenderer;
+- (id)_newLowPriorityNoIntermediatesRenderer:(out id *)arg1;
+- (id)_lowPriorityRendererWithoutIntermediateCaching:(out id *)arg1;
+- (id)lowPriorityRendererWithoutIntermediateCaching:(out id *)arg1;
+- (id)_newNoIntermediatesRenderer:(out id *)arg1;
+- (id)_rendererWithoutIntermediateCaching:(out id *)arg1;
+- (id)rendererWithoutIntermediateCaching:(out id *)arg1;
+- (id)_newLowPriorityRenderer:(out id *)arg1;
+- (id)_lowPriorityRenderer:(out id *)arg1;
+- (id)lowPriorityRenderer:(out id *)arg1;
+- (id)_newRenderer:(out id *)arg1;
+- (id)_renderer:(out id *)arg1;
+- (id)renderer:(out id *)arg1;
 - (_Bool)shouldLogRendererUsed;
-- (id)_renderer;
-@property(readonly, nonatomic) id <NURenderer> renderer;
 @property(readonly, nonatomic) _Bool shouldRenderUsingOpenGL;
 @property(readonly, nonatomic) _Bool shouldRenderUsingMetal;
 - (long long)_preferredSampleMode;

@@ -15,6 +15,9 @@
 - (id)accessibilityValue;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (id)_axComposedString;
+- (id)_axServiceIconDescription;
+- (id)_axServiceNameComponents;
 
 @end
 

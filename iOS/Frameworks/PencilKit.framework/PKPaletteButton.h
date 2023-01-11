@@ -6,21 +6,54 @@
 
 #import <UIKit/UIControl.h>
 
-@class UIButton;
+#import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
-@interface PKPaletteButton : UIControl
+@class NSHashTable, NSString, UIButton;
+
+@interface PKPaletteButton : UIControl <PKPaletteViewSizeScaling>
 {
-    long long _buttonType;
+    _Bool _useCompactLayout;
+    double _scalingFactor;
     UIButton *_button;
+    NSHashTable *_observers;
 }
 
-@property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
-@property(nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
++ (_Bool)_preventsAppearanceProxyCustomization;
++ (id)returnKeyButton;
++ (id)emojiKeyboardButton;
++ (id)keyboardButton;
++ (id)UCBButton;
++ (id)plusButton;
++ (id)ellipsisButton;
++ (id)redoButton;
++ (id)undoButton;
 - (void).cxx_destruct;
-@property(nonatomic, getter=isEnabled) _Bool enabled;
+@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
+@property(nonatomic) _Bool useCompactLayout; // @synthesize useCompactLayout=_useCompactLayout;
+@property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
+- (void)traitCollectionDidChange:(id)arg1;
+- (struct CGAffineTransform)_buttonTransform;
+- (void)_updateUI;
+- (void)setSelected:(_Bool)arg1;
+- (void)setHighlighted:(_Bool)arg1;
+- (void)setEnabled:(_Bool)arg1;
+- (void)setHidden:(_Bool)arg1;
+- (id)_backgroundColor;
+- (id)_tintColorForCurrentState;
 - (void)layoutSubviews;
-- (id)initWithType:(long long)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)_notifyIntrinsicContentSizeDidChange;
+- (void)removeIntrinsicContentSizeObserver:(id)arg1;
+- (void)addIntrinsicContentSizeObserver:(id)arg1;
+- (id)initWithImage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,11 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class BMMiningTaskConfig;
+
 @interface BMEventExtractor : NSObject
 {
+    _Bool _shouldStop;
+    BMMiningTaskConfig *_bmMiningTaskConfig;
 }
 
-- (id)extractEventsFilteredByTypes:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
+@property(retain) BMMiningTaskConfig *bmMiningTaskConfig; // @synthesize bmMiningTaskConfig=_bmMiningTaskConfig;
+@property _Bool shouldStop; // @synthesize shouldStop=_shouldStop;
+- (id)extractEventsFilteredByTypes:(id)arg1 taskSpecificEventProviders:(id)arg2 error:(id *)arg3;
+- (void)terminateEarly;
+- (id)initWithBMMiningTaskConfig:(id)arg1;
+- (id)init;
 
 @end
 

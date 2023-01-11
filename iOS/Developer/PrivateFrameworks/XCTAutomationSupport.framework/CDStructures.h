@@ -25,14 +25,16 @@ struct CGSize {
     double height;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct atomic_flag {
     _Atomic _Bool _Value;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 

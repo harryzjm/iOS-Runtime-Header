@@ -18,22 +18,22 @@
 
 + (id)resultsWithExceptions:(id)arg1;
 + (id)resultsWithException:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *pmrInfo; // @synthesize pmrInfo=_pmrInfo;
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(readonly) unsigned char result; // @synthesize result=_result;
 @property(retain, nonatomic) NSMutableArray *importRecords; // @synthesize importRecords=_importRecords;
 @property(readonly) PHImportSource *importSource; // @synthesize importSource=_importSource;
-- (void).cxx_destruct;
 - (void)logPMR;
 - (void)log:(id)arg1 activity:(id)arg2 description:(id)arg3 digits:(unsigned long long)arg4;
 - (void)verifyGroups:(id)arg1;
 - (void)insertStart:(id)arg1 end:(id)arg2 intoGroups:(id)arg3 ofType:(unsigned long long)arg4;
 - (id)generatePMRInfo;
 - (double)runTime;
-- (id)importRecordExceptionsOfImportance:(unsigned long long)arg1;
-- (id)criticalExceptions;
 @property(readonly) NSError *error;
+- (id)exceptions;
+- (id)importRecordExceptions;
 @property(readonly) unsigned long long failedToImportCount;
 @property(readonly) unsigned long long importedCount;
 - (void)addImportRecord:(id)arg1;

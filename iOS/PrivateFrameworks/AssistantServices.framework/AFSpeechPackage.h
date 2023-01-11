@@ -17,16 +17,19 @@
     AFSpeechRecognition *_recognition;
     AFSpeechRecognition *_rawRecognition;
     AFSpeechAudioAnalytics *_audioAnalytics;
+    double _utteranceStart;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double utteranceStart; // @synthesize utteranceStart=_utteranceStart;
 @property(readonly, nonatomic) _Bool isFinal; // @synthesize isFinal=_isFinal;
 @property(readonly, nonatomic) AFSpeechAudioAnalytics *audioAnalytics; // @synthesize audioAnalytics=_audioAnalytics;
 @property(readonly, nonatomic) AFSpeechRecognition *rawRecognition; // @synthesize rawRecognition=_rawRecognition;
 @property(readonly, nonatomic) AFSpeechRecognition *recognition; // @synthesize recognition=_recognition;
-- (void).cxx_destruct;
+- (id)dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithRecognition:(id)arg1 rawRecognition:(id)arg2 audioAnalytics:(id)arg3 isFinal:(_Bool)arg4;
+- (id)initWithRecognition:(id)arg1 rawRecognition:(id)arg2 audioAnalytics:(id)arg3 isFinal:(_Bool)arg4 utteranceStart:(double)arg5;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

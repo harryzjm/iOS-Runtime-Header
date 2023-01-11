@@ -10,19 +10,12 @@
 
 @interface XCTElementDisclosedChildRowsTransformer <XCTCapabilitiesProviding>
 {
-    _Bool _stopsOnFirstMatch;
-    NSString *_transformationDescription;
 }
 
 + (void)provideCapabilitiesToBuilder:(id)arg1;
-- (void)setStopsOnFirstMatch:(_Bool)arg1;
-- (_Bool)stopsOnFirstMatch;
-- (void)setTransformationDescription:(id)arg1;
-- (id)transformationDescription;
-- (void).cxx_destruct;
+- (id)elementTypes;
 - (id)requiredKeyPathsOrError:(id *)arg1;
 - (_Bool)supportsAttributeKeyPathAnalysis;
-- (_Bool)supportsRemoteEvaluation;
 - (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (id)iteratorForInput:(id)arg1;
 - (id)transform:(id)arg1 relatedElements:(id *)arg2;

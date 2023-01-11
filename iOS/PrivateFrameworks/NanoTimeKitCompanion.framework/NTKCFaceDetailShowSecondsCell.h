@@ -13,9 +13,9 @@
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property(readonly, nonatomic) NTKEditOptionCollection *collection; // @synthesize collection=_collection;
-- (void).cxx_destruct;
 - (id)initWithCollection:(id)arg1;
 
 @end

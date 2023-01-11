@@ -22,6 +22,7 @@
 + (MISSING_TYPE *)skewForRollPitch: /* Error: Ran out of types for this method. */;
 + (CDStruct_14d5dc5e)rotationMatrixForRollPitch: /* Error: Ran out of types for this method. */;
 + (MISSING_TYPE *)staticRollPitch;
+- (void).cxx_destruct;
 @property(nonatomic) MISSING_TYPE *currentRollPitch; // @synthesize currentRollPitch=_currentRollPitch;
 @property(nonatomic) MISSING_TYPE *currentSkew; // @synthesize currentSkew=_currentSkew;
 @property(nonatomic) CDStruct_14d5dc5e currentRotationMatrix; // @synthesize currentRotationMatrix=_currentRotationMatrix;
@@ -29,7 +30,6 @@
 @property(retain, nonatomic) SCNNode *textContainerNode; // @synthesize textContainerNode=_textContainerNode;
 @property(retain, nonatomic) SCNNode *cameraNode; // @synthesize cameraNode=_cameraNode;
 @property(retain, nonatomic) SCNNode *lightNode; // @synthesize lightNode=_lightNode;
-- (void).cxx_destruct;
 - (void)resetScene;
 - (id)init;
 

@@ -6,10 +6,14 @@
 
 #import <Notes/ICSearchIndexable-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSSet, NSString;
 
 @protocol ICSearchIndexableNote <ICSearchIndexable>
-@property(readonly, nonatomic) NSArray *noteCellKeyPaths;
+@property(readonly, nonatomic) long long currentStatus;
+@property(readonly, nonatomic) _Bool isPinned;
+@property(readonly, nonatomic) _Bool isDeletedOrInTrash;
+@property(readonly, nonatomic) _Bool hasUnreadChanges;
+@property(readonly, nonatomic) NSSet *noteCellKeyPaths;
 @property(readonly, nonatomic) _Bool isModernNote;
 - (NSString *)identifier;
 - (NSString *)accountName;
@@ -18,7 +22,6 @@
 - (_Bool)isSharedReadOnly;
 - (_Bool)isSharedViaICloudFolder;
 - (_Bool)isSharedViaICloud;
-- (NSDate *)dateForCurrentSortType;
 - (NSString *)contentInfoText;
 - (NSString *)noteAsPlainTextWithoutTitle;
 - (NSString *)trimmedTitle;

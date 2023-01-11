@@ -17,18 +17,17 @@
     unsigned long long _mode;
     double _desiredAccuracy;
     MNCoreLocationProvider *_coreLocationProvider;
-    unsigned long long _activeServices;
-    _Bool _shouldNotifyDelegate;
     id <MNLocationProviderDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)locationProvider:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationProvider:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
 - (void)locationProviderDidPauseLocationUpdates:(id)arg1;
 - (_Bool)locationProviderShouldPauseLocationUpdates:(id)arg1;
+- (void)locationProvider:(id)arg1 didChangeCoarseMode:(_Bool)arg2;
 - (void)locationProviderDidChangeAuthorizationStatus:(id)arg1;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
@@ -38,7 +37,7 @@
 @property(readonly, nonatomic) _Bool isTracePlayer;
 @property(readonly, nonatomic) _Bool isSimulation;
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
-@property(nonatomic) long long activityType;
+@property(readonly, nonatomic) _Bool coarseModeEnabled;
 @property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 - (void)requestWhenInUseAuthorizationWithPrompt;
@@ -62,9 +61,7 @@
 - (void)startUpdatingLocation;
 - (id)leechedLocationProvider;
 - (id)coreLocationProvider;
-- (void)_unsubscribeFromService:(unsigned long long)arg1;
-- (void)_subscribeToService:(unsigned long long)arg1;
-- (_Bool)_isSubscribedToService:(unsigned long long)arg1;
+- (void)_setEffectiveAccuracy:(double)arg1;
 - (void)_sharedInit;
 @property(nonatomic) unsigned long long mode;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1;

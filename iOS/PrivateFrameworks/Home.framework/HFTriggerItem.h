@@ -6,19 +6,24 @@
 
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
 
-@class HMHome, HMTrigger, NSString;
+@class HFServiceActionItemProvider, HMHome, HMTrigger, NSString;
 @protocol HFHomeKitObject;
 
 @interface HFTriggerItem <HFHomeKitItemProtocol>
 {
+    _Bool _usesRichIconDescriptors;
     HMHome *_home;
     HMTrigger *_trigger;
+    HFServiceActionItemProvider *_serviceActionItemProvider;
 }
 
-+ (id)iconDescriptorForTriggerType:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HFServiceActionItemProvider *serviceActionItemProvider; // @synthesize serviceActionItemProvider=_serviceActionItemProvider;
+@property(nonatomic) _Bool usesRichIconDescriptors; // @synthesize usesRichIconDescriptors=_usesRichIconDescriptors;
 @property(readonly, nonatomic) HMTrigger *trigger; // @synthesize trigger=_trigger;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
+- (id)translateToRichIconDescriptors:(id)arg1 basedOnActionItems:(id)arg2;
+- (id)createRichIconDescriptors:(id)arg1 options:(id)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 - (id)init;

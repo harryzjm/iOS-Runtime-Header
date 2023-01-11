@@ -11,13 +11,14 @@ __attribute__((visibility("hidden")))
 {
     struct WeakObjCPtr<WKWebView> _webViewToTrack;
     struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
-    _Bool _lastObservedStateWasBackground;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *_contentView;
 @property(readonly, nonatomic) _Bool isBackground;
+- (void)_didCompleteSnapshotSequence;
+- (void)_willBeginSnapshotSequence;
 - (void)_applicationWillEnterForeground;
 - (void)_applicationDidFinishSnapshottingAfterEnteringBackground;
 - (void)_applicationDidEnterBackground;

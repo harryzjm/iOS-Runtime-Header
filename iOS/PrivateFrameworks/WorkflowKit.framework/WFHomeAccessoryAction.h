@@ -4,20 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFTriggerActionSetsBuilder;
+#import <WorkflowKit/WFHomeManagerEventObserver-Protocol.h>
 
-@interface WFHomeAccessoryAction
+@class HFTriggerActionSetsBuilder, NSString;
+
+@interface WFHomeAccessoryAction <WFHomeManagerEventObserver>
 {
 }
 
 + (id)homeAccessoryActionWithHome:(id)arg1;
 + (id)homeAccessoryActionWithTriggerActionSetsBuilder:(id)arg1;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
+- (id)localizedSummaryText;
+- (void)localizedParameterSummaryWithCompletion:(CDUnknownBlockType)arg1;
+- (id)parameterSummaryString;
 - (id)homeName;
 - (id)localizedAttribution;
 - (id)localizedDescriptionSummary;
 - (id)localizedName;
+- (void)_performHomeAccessoryAction;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 @property(readonly, nonatomic) HFTriggerActionSetsBuilder *triggerActionSetsBuilder;
+- (void)dealloc;
+- (void)initializeParameters;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

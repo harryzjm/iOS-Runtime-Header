@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/UIPrintPanelAppearanceDelegate-Protocol.h>
 #import <UIKitCore/UIPrinterBrowserOwner-Protocol.h>
 
 @class NSArray, NSString, PKPrinter, UINavigationController, UIPopoverController, UIPrintInteractionController, UIPrintPanelTableViewController, UIPrintPaper, UIViewController, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface UIPrintPanelViewController : NSObject <UIPrinterBrowserOwner>
+@interface UIPrintPanelViewController : NSObject <UIPrinterBrowserOwner, UIPrintPanelAppearanceDelegate>
 {
     UIPrintInteractionController *_printInteractionController;
     int _lastUsedPrinterIndex;
@@ -30,10 +31,10 @@ __attribute__((visibility("hidden")))
     NSArray *_lastUsedPrinterArray;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSArray *lastUsedPrinterArray; // @synthesize lastUsedPrinterArray=_lastUsedPrinterArray;
 @property(readonly, nonatomic) _Bool contentLargerThanRollPaper; // @synthesize contentLargerThanRollPaper=_contentLargerThanRollPaper;
 @property(retain, nonatomic) PKPrinter *printer; // @synthesize printer=_printer;
-- (void).cxx_destruct;
 - (void)lookupLastUsedPrinter;
 - (id)localizedPageRangeText;
 - (_Bool)filtersPrinters;
@@ -47,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool showMoreOptions;
 @property(readonly, nonatomic) _Bool showPreview;
 @property(readonly, nonatomic) _Bool showPaperSelection;
-@property(readonly, nonatomic) _Bool showPrinterWarning;
 @property(readonly, nonatomic) _Bool showPaper;
 @property(readonly, nonatomic) _Bool showCopies;
 @property(readonly, nonatomic) _Bool showPageRange;
@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long pageCount;
 @property(nonatomic) _Bool grayscale;
 @property(nonatomic) _Bool duplex;
+- (id)printInfo;
 - (void)printMoreOptionsViewDidDisappear;
 - (void)printRangeViewDidDisappear;
 - (void)printPaperViewDidDisappear;

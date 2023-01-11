@@ -16,6 +16,7 @@
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSNumber *minute;
 @property(copy, nonatomic) NSString *label;
+@property(copy, nonatomic) NSNumber *includesSleepAlarms;
 @property(copy, nonatomic) NSURL *identifier;
 @property(copy, nonatomic) NSNumber *hour;
 @property(copy, nonatomic) NSArray *frequency;

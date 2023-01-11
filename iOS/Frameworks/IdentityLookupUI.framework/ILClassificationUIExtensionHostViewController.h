@@ -9,8 +9,8 @@
 #import <IdentityLookupUI/ILClassificationExtensionShellViewControllerDelegate-Protocol.h>
 #import <IdentityLookupUI/ILClassificationUIExtensionHostContextDelegate-Protocol.h>
 
-@class ILClassificationExtensionShellViewController, ILClassificationReportingController, ILClassificationRequest, ILClassificationResponse, ILClassificationUIExtensionHostContext, NSExtension, NSObject, NSString, NSUUID, UINavigationController;
-@protocol ILClassificationUIExtensionHostViewControllerDelegate, OS_dispatch_queue;
+@class ILClassificationExtensionShellViewController, ILClassificationReportingController, ILClassificationRequest, ILClassificationResponse, ILClassificationUIExtensionHostContext, NSExtension, NSObject, NSString, UINavigationController;
+@protocol ILClassificationUIExtensionHostViewControllerDelegate, NSCopying, OS_dispatch_queue;
 
 @interface ILClassificationUIExtensionHostViewController : UIViewController <ILClassificationUIExtensionHostContextDelegate, ILClassificationExtensionShellViewControllerDelegate>
 {
@@ -21,18 +21,19 @@
     NSString *_sender;
     NSString *_isoCountryCode;
     NSExtension *_extension;
-    NSUUID *_extensionRequestIdentifier;
+    id <NSCopying> _extensionRequestIdentifier;
     UINavigationController *_navigationController;
     ILClassificationExtensionShellViewController *_shellViewController;
     ILClassificationUIExtensionHostContext *_extensionHostContext;
     ILClassificationReportingController *_reportingController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) ILClassificationReportingController *reportingController; // @synthesize reportingController=_reportingController;
 @property(retain, nonatomic) ILClassificationUIExtensionHostContext *extensionHostContext; // @synthesize extensionHostContext=_extensionHostContext;
 @property(retain, nonatomic) ILClassificationExtensionShellViewController *shellViewController; // @synthesize shellViewController=_shellViewController;
 @property(retain, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
-@property(retain, nonatomic) NSUUID *extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
+@property(retain, nonatomic) id <NSCopying> extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property(copy, nonatomic) NSString *sender; // @synthesize sender=_sender;
@@ -40,7 +41,6 @@
 @property(readonly, nonatomic) ILClassificationRequest *classificationRequest; // @synthesize classificationRequest=_classificationRequest;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <ILClassificationUIExtensionHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)logErrorWithMessage:(id)arg1;
 - (void)blockNumber:(id)arg1 withCountryCode:(id)arg2;
 - (void)launchSettings;

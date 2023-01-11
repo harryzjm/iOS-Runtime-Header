@@ -4,26 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNDetectorIdealImageSizeProviding-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface VNRectangleDetector <VNDetectorIdealImageSizeProviding>
+@interface VNRectangleDetector
 {
     float *_perMeshPtr;
 }
 
-+ (id)supportedImageSizeSetForOptions:(id)arg1;
++ (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (_Bool)needsMetalContext;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 
 @end
 

@@ -4,27 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SBAppLayout;
+@class SBAppLayout, SBSwitcherModifier;
 
 @interface SBGestureRootSwitcherModifier
 {
-    _Bool _shouldVerifyModifierStackCoherencyCheckAfterHandlingEvent;
-    NSString *_activeTransitionKey;
+    SBSwitcherModifier *_transitionModifierBeforeHandlingEvent;
+    SBSwitcherModifier *_gestureModifierBeforeHandlingEvent;
     SBAppLayout *_selectedAppLayout;
     long long _currentEnvironmentMode;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long currentEnvironmentMode; // @synthesize currentEnvironmentMode=_currentEnvironmentMode;
 @property(readonly, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
-- (void).cxx_destruct;
 - (id)_transitionModifier;
 - (id)_gestureModifier;
-- (void)_performModifierStackCoherencyCheckIfNeededAfterHandlingEvent:(id)arg1;
-- (id)_forwardEventAndUpdateInternalState:(id)arg1;
 - (id)transitionChildModifierForMainTransitionEvent:(id)arg1 activeGestureModifier:(id)arg2;
 - (id)gestureChildModifierForGestureEvent:(id)arg1 activeTransitionModifier:(id)arg2;
+- (id)handleRemovalEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleEvent:(id)arg1;
+- (_Bool)completesWhenChildrenComplete;
 - (long long)gestureType;
 - (id)initWithStartingEnvironmentMode:(long long)arg1;
 

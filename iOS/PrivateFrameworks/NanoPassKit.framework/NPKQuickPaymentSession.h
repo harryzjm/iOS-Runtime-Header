@@ -15,8 +15,11 @@
 {
     NSData *_credential;
     _Bool _deferAuthorization;
+    _Bool _requireFirstInQueue;
     _Bool _inServiceMode;
+    _Bool _endSessionWhenAuthorizationIsConsumed;
     _Bool _confirmed;
+    _Bool _performedFirstActivation;
     _Bool _deactivating;
     _Bool _deactivated;
     PKPass *_currentPass;
@@ -36,10 +39,13 @@
 + (void)_handleNewContactlessSession:(id)arg1;
 + (_Bool)hasOutstandingSessions;
 + (id)_outstandingSessionHashTable;
++ (id)sessionWithQueue:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PKFieldDetector *fieldDetector; // @synthesize fieldDetector=_fieldDetector;
 @property(retain, nonatomic) NSMutableArray *deactivationCompletionBlocks; // @synthesize deactivationCompletionBlocks=_deactivationCompletionBlocks;
 @property(nonatomic, getter=isDeactivated) _Bool deactivated; // @synthesize deactivated=_deactivated;
 @property(nonatomic, getter=isDeactivating) _Bool deactivating; // @synthesize deactivating=_deactivating;
+@property(nonatomic, getter=hasPerformedFirstActivation) _Bool performedFirstActivation; // @synthesize performedFirstActivation=_performedFirstActivation;
 @property(nonatomic, getter=isConfirmed) _Bool confirmed; // @synthesize confirmed=_confirmed;
 @property(nonatomic) unsigned long long authorizationValidity; // @synthesize authorizationValidity=_authorizationValidity;
 @property(nonatomic) unsigned long long contactlessValidity; // @synthesize contactlessValidity=_contactlessValidity;
@@ -48,10 +54,12 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *paymentSessionQueue; // @synthesize paymentSessionQueue=_paymentSessionQueue;
+@property(nonatomic) _Bool endSessionWhenAuthorizationIsConsumed; // @synthesize endSessionWhenAuthorizationIsConsumed=_endSessionWhenAuthorizationIsConsumed;
 @property(nonatomic) _Bool inServiceMode; // @synthesize inServiceMode=_inServiceMode;
+@property(nonatomic) _Bool requireFirstInQueue; // @synthesize requireFirstInQueue=_requireFirstInQueue;
 @property(nonatomic) __weak id <NPKQuickPaymentSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_internalQueue_invokeDeactivationCompletionBlocks;
+- (void)_callbackQueue_invokeDidCompleteForReason:(unsigned long long)arg1 withTransactionContext:(id)arg2;
 - (void)_loyaltyEngineConfigurationChanged:(id)arg1;
 - (void)_handleConventionalTransactionWithContext:(id)arg1;
 - (void)_handleTransitTransactionWithContext:(id)arg1;
@@ -82,9 +90,11 @@
 - (void)_internalQueue_updateContactlessSessionForPass:(id)arg1 vasPasses:(id)arg2;
 - (void)_internalQueue_deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)confirmOrRenewSession;
+- (void)_updateSessionWithCredentialAndActivate;
+@property(readonly, nonatomic) _Bool sessionStarted;
 @property(nonatomic) _Bool deferAuthorization; // @synthesize deferAuthorization=_deferAuthorization;
 @property(retain, nonatomic) NSDictionary *vasPasses; // @synthesize vasPasses=_vasPasses;
+- (void)confirmSessionExpectingCredential:(_Bool)arg1;
 - (void)setCredential:(id)arg1;
 @property(retain, nonatomic) PKPass *currentPass; // @synthesize currentPass=_currentPass;
 - (_Bool)startSession;

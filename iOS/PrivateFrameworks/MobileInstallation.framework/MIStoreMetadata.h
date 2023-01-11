@@ -21,6 +21,7 @@
     _Bool _isAutoDownload;
     _Bool _sideLoadedDeviceBasedVPP;
     _Bool _deviceBasedVPP;
+    _Bool _factoryInstall;
     NSString *_iAdAttribution;
     NSString *_iAdConversionDate;
     NSString *_iAdImpressionDate;
@@ -43,6 +44,7 @@
     NSString *_ratingLabel;
     NSNumber *_ratingRank;
     NSString *_releaseDate;
+    NSString *_assetToken;
     NSString *_softwareVersionBundleID;
     NSNumber *_softwareVersionExternalIdentifier;
     NSString *_sourceApp;
@@ -52,17 +54,22 @@
     NSString *_genre;
     NSNumber *_genreID;
     NSArray *_subGenres;
+    NSArray *_categories;
     NSString *_referrerURL;
     NSString *_referrerApp;
     NSString *_enterpriseInstallURL;
     NSString *_redownloadParams;
     NSDictionary *_nameTranscriptions;
+    NSString *_md5;
 }
 
 + (id)metadataFromDictionary:(id)arg1;
 + (id)metadataFromPlistAtURL:(id)arg1 error:(id *)arg2;
 + (id)metadataFromPlistData:(id)arg1 error:(id *)arg2;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *md5; // @synthesize md5=_md5;
+@property(nonatomic, getter=isFactoryInstall) _Bool factoryInstall; // @synthesize factoryInstall=_factoryInstall;
 @property(copy, nonatomic) NSDictionary *nameTranscriptions; // @synthesize nameTranscriptions=_nameTranscriptions;
 @property(copy, nonatomic) NSString *redownloadParams; // @synthesize redownloadParams=_redownloadParams;
 @property(copy, nonatomic) NSString *enterpriseInstallURL; // @synthesize enterpriseInstallURL=_enterpriseInstallURL;
@@ -73,6 +80,7 @@
 @property(nonatomic) _Bool isAutoDownload; // @synthesize isAutoDownload=_isAutoDownload;
 @property(nonatomic) _Bool gameCenterEverEnabled; // @synthesize gameCenterEverEnabled=_gameCenterEverEnabled;
 @property(nonatomic, getter=isGameCenterEnabled) _Bool gameCenterEnabled; // @synthesize gameCenterEnabled=_gameCenterEnabled;
+@property(copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property(copy, nonatomic) NSArray *subGenres; // @synthesize subGenres=_subGenres;
 @property(retain, nonatomic) NSNumber *genreID; // @synthesize genreID=_genreID;
 @property(copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
@@ -82,6 +90,7 @@
 @property(copy, nonatomic) NSString *sourceApp; // @synthesize sourceApp=_sourceApp;
 @property(retain, nonatomic) NSNumber *softwareVersionExternalIdentifier; // @synthesize softwareVersionExternalIdentifier=_softwareVersionExternalIdentifier;
 @property(copy, nonatomic) NSString *softwareVersionBundleID; // @synthesize softwareVersionBundleID=_softwareVersionBundleID;
+@property(copy, nonatomic) NSString *assetToken; // @synthesize assetToken=_assetToken;
 @property(copy, nonatomic) NSString *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(retain, nonatomic) NSNumber *ratingRank; // @synthesize ratingRank=_ratingRank;
 @property(copy, nonatomic) NSString *ratingLabel; // @synthesize ratingLabel=_ratingLabel;
@@ -107,7 +116,6 @@
 @property(copy, nonatomic) NSString *iAdImpressionDate; // @synthesize iAdImpressionDate=_iAdImpressionDate;
 @property(copy, nonatomic) NSString *iAdConversionDate; // @synthesize iAdConversionDate=_iAdConversionDate;
 @property(copy, nonatomic) NSString *iAdAttribution; // @synthesize iAdAttribution=_iAdAttribution;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)dictionaryRepresentation;

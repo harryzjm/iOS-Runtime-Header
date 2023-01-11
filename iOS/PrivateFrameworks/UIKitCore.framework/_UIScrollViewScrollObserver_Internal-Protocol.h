@@ -11,6 +11,7 @@
 @protocol _UIScrollViewScrollObserver_Internal <_UIScrollViewScrollObserver>
 
 @optional
+- (void)_observeScrollViewAlignedContentMarginDidChange:(UIScrollView *)arg1;
 - (void)_observeScrollView:(UIScrollView *)arg1 didBeginTransitionToDeferredContentOffset:(struct CGPoint)arg2;
 - (void)_didScroll;
 - (void)_observeScrollViewDidEndDecelerating:(UIScrollView *)arg1;

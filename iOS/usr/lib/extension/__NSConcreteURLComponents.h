@@ -64,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (struct __CFURLComponents *)__cfComponents;
 
 @end
 

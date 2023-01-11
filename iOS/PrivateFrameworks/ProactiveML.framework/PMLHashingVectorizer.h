@@ -27,13 +27,14 @@
 + (id)withBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 localeForNonwordTokens:(id)arg6 tokenizeNewlines:(_Bool)arg7 withIntercept:(_Bool)arg8;
 + (id)withBucketSize:(int)arg1 ngrams:(int)arg2 localeForNonwordTokens:(id)arg3 tokenizeNewlines:(_Bool)arg4 andIntercept:(_Bool)arg5;
 + (id)withBucketSize:(int)arg1 andNgrams:(int)arg2;
-@property(nonatomic) _Bool normalize; // @synthesize normalize=_normalize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool normalize; // @synthesize normalize=_normalize;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToHashingVectorizer:(id)arg1;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
+- (id)transformBatch:(id)arg1;
 - (id)transform:(id)arg1;
 - (id)init;
 - (id)initWithBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 localeForNonwordTokens:(id)arg6 tokenizeNewlines:(_Bool)arg7 withIntercept:(_Bool)arg8;

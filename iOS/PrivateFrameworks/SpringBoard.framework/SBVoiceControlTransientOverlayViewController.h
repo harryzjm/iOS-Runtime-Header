@@ -17,8 +17,8 @@
     id <SBVoiceControlTransientOverlayViewControllerDelegate> _voiceControlDelegate;
 }
 
-@property(nonatomic) __weak id <SBVoiceControlTransientOverlayViewControllerDelegate> voiceControlDelegate; // @synthesize voiceControlDelegate=_voiceControlDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBVoiceControlTransientOverlayViewControllerDelegate> voiceControlDelegate; // @synthesize voiceControlDelegate=_voiceControlDelegate;
 - (void)resetSessionWithSource:(id)arg1;
 - (void)handleHeadsetButtonUpFromButtonDownSource:(_Bool)arg1;
 @property(nonatomic) _Bool shouldDisableVoiceControlForBluetoothRequests;
@@ -37,6 +37,8 @@
 @property(readonly, nonatomic) long long scrollingStrategy;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
+- (void)conformsToCSExternalBehaviorProviding;
+- (void)conformsToCSBehaviorProviding;
 - (_Bool)shouldDisableOrientationUpdates;
 - (void)setContainerOrientation:(long long)arg1;
 - (_Bool)prefersProximityDetectionEnabled;
@@ -44,6 +46,7 @@
 - (long long)preferredLockedGestureDismissalStyle;
 - (id)newTransientOverlayPresentationTransitionCoordinator;
 - (id)newTransientOverlayDismissalTransitionCoordinator;
+- (void)handleGestureDismissal;
 - (_Bool)handleHomeButtonPress;
 - (void)endIgnoringAppearanceUpdates;
 - (void)beginIgnoringAppearanceUpdates;

@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOSuggestionEntryList : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_localizedSectionHeader;
     NSMutableArray *_suggestionEntries;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_localizedSectionHeader:1;
         unsigned int read_suggestionEntries:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_localizedSectionHeader:1;
-        unsigned int wrote_suggestionEntries:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,18 +41,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *localizedSectionHeader;
 @property(readonly, nonatomic) _Bool hasLocalizedSectionHeader;
-- (void)_readLocalizedSectionHeader;
 - (id)suggestionEntriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)suggestionEntriesCount;
-- (void)_addNoFlagsSuggestionEntries:(id)arg1;
 - (void)addSuggestionEntries:(id)arg1;
 - (void)clearSuggestionEntries;
 @property(retain, nonatomic) NSMutableArray *suggestionEntries;
-- (void)_readSuggestionEntries;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <PhotosPlayer/ISAnimatedImagePlayerDestination-Protocol.h>
 
-@class ISAnimatedImage, ISAnimatedImagePlayer, NSString, UIImageView;
+@class ISAnimatedImagePlayer, NSString, PFAnimatedImage, UIImageView;
 
 @interface ISAnimatedImageView : UIView <ISAnimatedImagePlayerDestination>
 {
@@ -16,13 +16,13 @@
     ISAnimatedImagePlayer *_player;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ISAnimatedImagePlayer *player; // @synthesize player=_player;
 @property(nonatomic) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
-- (void).cxx_destruct;
 - (void)displayLayer:(id)arg1;
 @property(nonatomic) unsigned long long displayedFrameIndex;
 @property(nonatomic, getter=isPlaying) _Bool playing;
-@property(retain, nonatomic) ISAnimatedImage *image;
+@property(retain, nonatomic) PFAnimatedImage *image;
 - (void)didBeginAnimating;
 - (_Bool)isReadyToDisplay;
 - (void)frameDidChange;

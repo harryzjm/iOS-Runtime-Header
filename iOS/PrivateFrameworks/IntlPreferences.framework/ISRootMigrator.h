@@ -6,13 +6,18 @@
 
 @interface ISRootMigrator
 {
+    _Bool _isErase;
+    _Bool _isRestoreFromBackup;
 }
 
+@property(nonatomic) _Bool isRestoreFromBackup; // @synthesize isRestoreFromBackup=_isRestoreFromBackup;
+@property(nonatomic) _Bool isErase; // @synthesize isErase=_isErase;
 - (id)importPreferredLanguages_macOS_10_9_forPreferences:(id)arg1;
 - (id)importPreferredLanguagesForPreferences:(id)arg1;
 - (id)appendRegionalVariantsToLanguageIdentifiers:(id)arg1 regionCode:(id)arg2;
 - (id)performMigrationForPreferences:(id)arg1;
 - (id)performMigrationForUserPreferences:(id)arg1 systemPreferences:(id)arg2;
+- (void)updateAppleLanguagesSchemaVersionToCurrent;
 - (_Bool)performMigration;
 
 @end

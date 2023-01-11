@@ -27,8 +27,6 @@ __attribute__((visibility("hidden")))
 + (id)recentsInputViewItemSelectedCount;
 + (id)recentsInputViewNumberOfItems;
 + (id)recentsInputViewPresentationCount;
-+ (id)scrollViewVerticalVelocityInteractive;
-+ (id)scrollViewVerticalVelocityNoninteractive;
 + (id)feedbackGeneratorPlayCountWithSuffix:(id)arg1;
 + (id)feedbackGeneratorPreparationCountWithSuffix:(id)arg1;
 + (id)feedbackGeneratorActivationTimeOutCountWithSuffix:(id)arg1;
@@ -56,8 +54,8 @@ __attribute__((visibility("hidden")))
 + (id)previewInteractionPopCount;
 + (id)previewInteractionPeekDuration;
 + (id)previewInteractionPeekCount;
-@property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 - (void).cxx_destruct;
+@property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 - (id)description;
 - (void)_incrementValueBy:(long long)arg1;
 - (void)_setValue:(long long)arg1;

@@ -8,12 +8,13 @@
 
 #import <ChatKit/CKMessageEntryRichTextViewDelegate-Protocol.h>
 #import <ChatKit/CKMessageEntryViewStyleProtocol-Protocol.h>
+#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSString, UIButton, UIView, UIViewController;
+@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSDictionary, NSString, UIButton, UIView, UIViewController;
 @protocol CKPluginEntryViewController;
 
-@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, CKMessageEntryViewStyleProtocol>
+@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate>
 {
     _Bool _shouldShowSubject;
     _Bool _needsTextLayout;
@@ -40,11 +41,14 @@
     UIButton *_clearPluginButton;
     NSString *_requestedPlaceholderText;
     NSString *_overridePlaceholderText;
+    NSDictionary *_bizIntent;
 }
 
 + (id)_createSubjectView;
 + (id)_createTextView;
 + (void)prewarmTextView;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property(nonatomic) _Bool pendingShelfPayloadWillAnimateIn; // @synthesize pendingShelfPayloadWillAnimateIn=_pendingShelfPayloadWillAnimateIn;
 @property(retain, nonatomic) NSString *overridePlaceholderText; // @synthesize overridePlaceholderText=_overridePlaceholderText;
 @property(retain, nonatomic) NSString *requestedPlaceholderText; // @synthesize requestedPlaceholderText=_requestedPlaceholderText;
@@ -69,7 +73,6 @@
 @property(retain, nonatomic) CKMessageEntryTextView *subjectView; // @synthesize subjectView=_subjectView;
 @property(nonatomic) _Bool shouldShowSubject; // @synthesize shouldShowSubject=_shouldShowSubject;
 @property(nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (void)clearPluginButtonTapped:(id)arg1;
 - (_Bool)shouldLayoutPluginEdgeToEdge;
 - (_Bool)shouldShowClearButton;
@@ -82,6 +85,8 @@
 - (double)_calcuateIdealMaxPluginHeight:(_Bool)arg1;
 - (void)plugingPayloadDidLoad:(id)arg1;
 - (void)pluginPayloadWantsResize:(id)arg1;
+- (void)messageEntryRichTextViewDidTapMention:(id)arg1 characterIndex:(double)arg2;
+- (_Bool)messageEntryRichTextView:(id)arg1 shouldRecognizeGesture:(id)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(id)arg1;
 - (void)messageEntryRichTextView:(id)arg1 pastedURL:(id)arg2;
 - (void)messageEntryRichTextViewWasTapped:(id)arg1 isLongPress:(_Bool)arg2;
@@ -89,11 +94,13 @@
 - (_Bool)messageEntryRichTextView:(id)arg1 shouldPasteMediaObjects:(id)arg2;
 - (double)_maxWidthForTextView;
 - (double)maxWidthForPreviewImagesInMessageEntryRichTextView:(id)arg1;
+- (void)textViewDidChangeSelection:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (_Bool)textViewShouldBeginEditing:(id)arg1;
+- (void)collapseTextFieldsIfInPencilMode;
 - (void)didFinishAnimatedBoundsChange;
 - (void)willAnimateBoundsChange;
 - (void)acceptAutocorrection;

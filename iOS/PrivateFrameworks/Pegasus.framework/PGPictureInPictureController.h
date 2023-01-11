@@ -10,7 +10,7 @@
 #import <Pegasus/PGPictureInPictureRemoteObjectDelegate-Protocol.h>
 
 @class NSMutableSet, NSSet, NSString, NSXPCListener, PGPictureInPictureApplication, PGPictureInPictureRemoteObject;
-@protocol OS_dispatch_queue, PGPictureInPictureControllerDelegate;
+@protocol OS_dispatch_queue, PGPictureInPictureAnalyticsDelegate, PGPictureInPictureControllerDelegate;
 
 @interface PGPictureInPictureController : NSObject <NSXPCListenerDelegate, PGPictureInPictureRemoteObjectDelegate>
 {
@@ -28,40 +28,54 @@
         unsigned int pictureInPictureController_didHidePictureInPictureViewController:1;
         unsigned int pictureInPictureController_shouldCancelPictureInPictureForApplication_whenStartingPictureInPictureForApplication:1;
         unsigned int pictureInPictureController_shouldDenyNewConnection:1;
+        unsigned int pictureInPictureController_didRequestStopForPictureInPictureViewController_sourceSceneSessionIdentifier_animated:1;
     } _delegateRespondsTo;
     _Bool _pictureInPictureActive;
     NSSet *_pictureInPictureApplications;
     PGPictureInPictureApplication *_activePictureInPictureApplication;
+    id <PGPictureInPictureAnalyticsDelegate> _analyticsDelegate;
 }
 
 + (_Bool)isPictureInPictureSupported;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <PGPictureInPictureAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property(readonly, nonatomic) PGPictureInPictureApplication *activePictureInPictureApplication; // @synthesize activePictureInPictureApplication=_activePictureInPictureApplication;
 @property(readonly, nonatomic) NSSet *pictureInPictureApplications; // @synthesize pictureInPictureApplications=_pictureInPictureApplications;
 @property(readonly, nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
-- (void).cxx_destruct;
 - (void)pictureInPictureRemoteObject:(id)arg1 willDestroyPictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 didHidePictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 willHidePictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 didShowPictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 willShowPictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 didCreatePictureInPictureViewController:(id)arg2;
+- (void)pictureInPictureRemoteObject:(id)arg1 didRequestPictureInPictureStopForViewController:(id)arg2 sourceSceneSessionIdentifier:(id)arg3 animated:(_Bool)arg4;
 - (_Bool)pictureInPictureRemoteObjectShouldCancelActivePictureInPictureOnStart:(id)arg1;
 - (_Bool)pictureInPictureRemoteObjectShouldUpdateCancellationPolicyOnStart:(id)arg1;
 - (_Bool)pictureInPictureRemoteObjectShouldAcceptSetupRequest:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (_Bool)_pictureInPictureRemoteObjectIsFaceTime:(id)arg1;
+- (id)_remoteObjectThatCanEndTwoStageStopPictureInPictureApplication:(id)arg1 error:(id *)arg2;
 - (id)_remoteObjectThatCanCancelPictureInPictureApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2 error:(id *)arg3;
 - (id)_remoteObjectThatCanStopPictureInPictureApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2 error:(id *)arg3;
 - (id)_remoteObjectThatShouldStartPictureInPictureEnteringBackgroundForPictureInPictureApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2 error:(id *)arg3;
+- (id)_remoteObjectForPictureInPictureApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2 error:(id *)arg3;
 - (id)_remoteObjectForPictureInPictureApplication:(id)arg1 passingTest:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)_remoteObjectsForPictureInPictureApplication:(id)arg1;
+- (id)existingPictureInPictureApplicationForBundleIdentifier:(id)arg1;
+- (void)pictureInPictureInterruptionEndedWithReason:(long long)arg1;
 - (void)pictureInPictureInterruptionEnded;
+- (void)pictureInPictureInterruptionBeganWithReason:(long long)arg1;
 - (void)pictureInPictureInterruptionBegan;
+- (void)stopPictureInPictureResourcesUsageReductionForApplication:(id)arg1 requestingViewController:(id)arg2;
+- (void)startPictureInPictureResourcesUsageReductionForApplication:(id)arg1 requestingViewController:(id)arg2;
 - (void)cancelPictureInPictureForApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2;
+- (void)endTwoStageStopPictureInPictureForApplication:(id)arg1 withSceneSessionPersistentIdentifier:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)beginTwoStageStopPictureInPictureForApplication:(id)arg1 withSceneSessionPersistentIdentifier:(id)arg2 animated:(_Bool)arg3 byRestoringUserInterfaceWithCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)stopPictureInPictureForApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)startPictureInPictureForApplicationEnteringBackground:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)shouldStartPictureInPictureForApplicationEnteringBackground:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2;
-- (struct CGSize)preferredContentSizeForInteractivePictureInPictureAnimationEnteringBackgroundForApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2;
+- (struct CGSize)preferredContentSizeForActivePictureInPictureWithApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2;
+- (struct CGSize)preferredContentSizeForInteractivelyEnteringBackgroundForApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2;
 - (struct CGRect)initialFrameForInteractivePictureInPictureAnimationEnteringBackgroundForApplication:(id)arg1 sceneSessionPersistentIdentifier:(id)arg2;
 - (void)cancelPictureInPictureForApplication:(id)arg1;
 - (void)stopPictureInPictureForApplication:(id)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -70,7 +84,6 @@
 - (struct CGSize)preferredContentSizeForInteractivePictureInPictureAnimationEnteringBackgroundForApplication:(id)arg1;
 - (struct CGRect)initialFrameForInteractivePictureInPictureAnimationEnteringBackgroundForApplication:(id)arg1;
 @property(nonatomic) __weak id <PGPictureInPictureControllerDelegate> delegate;
-@property(readonly, nonatomic) _Bool isStoppingPictureInPictureForAlert;
 @property(readonly, nonatomic) _Bool isStartingStoppingOrCancellingPictureInPicture;
 - (void)dealloc;
 - (id)init;

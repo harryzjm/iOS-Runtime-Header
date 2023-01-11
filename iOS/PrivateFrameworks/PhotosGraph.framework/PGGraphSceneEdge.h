@@ -6,14 +6,29 @@
 
 @interface PGGraphSceneEdge
 {
+    unsigned int _numberOfAssets:32;
+    unsigned int _numberOfHighConfidenceAssets:32;
+    unsigned int _numberOfSearchConfidenceAssets:32;
+    unsigned int _isReliable:1;
+    float _weight;
 }
 
++ (id)filter;
+@property(readonly, nonatomic) unsigned long long numberOfSearchConfidenceAssets; // @synthesize numberOfSearchConfidenceAssets=_numberOfSearchConfidenceAssets;
+@property(readonly, nonatomic) unsigned long long numberOfHighConfidenceAssets; // @synthesize numberOfHighConfidenceAssets=_numberOfHighConfidenceAssets;
+@property(readonly, nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
+@property(readonly, nonatomic) _Bool isReliable; // @synthesize isReliable=_isReliable;
+@property(nonatomic) float weight; // @synthesize weight=_weight;
+- (unsigned short)domain;
+- (id)label;
 - (id)debugDescription;
-@property(readonly, nonatomic) unsigned long long numberOfSearchConfidenceAssets;
-@property(readonly, nonatomic) unsigned long long numberOfHighConfidenceAssets;
-@property(readonly, nonatomic) unsigned long long numberOfAssets;
 @property(readonly, nonatomic) _Bool isSearchableForEvent;
-@property(readonly, nonatomic) _Bool isReliable;
+- (id)edgeDescription;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initFromMomentNode:(id)arg1 toSceneNode:(id)arg2 weight:(float)arg3;
 
 @end
 

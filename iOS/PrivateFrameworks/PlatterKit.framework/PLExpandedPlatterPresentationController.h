@@ -39,26 +39,26 @@
     UIPanGestureRecognizer *_homeAffordancePanGesture;
     double _additionalHomeAffordanceSpacing;
     id <PLKeyboardHomeAffordanceAssertion> _keyboardHomeAffordance;
+    struct CGPoint _additionalContentTranslation;
     struct CGRect _keyboardFrame;
 }
 
 + (struct CGSize)_sizeOfExpandedPlatter:(id)arg1 withPreferredContentSize:(struct CGSize)arg2 inContainerViewWithBounds:(struct CGRect)arg3;
 + (struct CGRect)useableContainerViewBoundsForExpandedPlatter:(id)arg1 inContainerViewWithBounds:(struct CGRect)arg2;
 + (struct CGSize)_sizeOfViewWithPreferredContentSize:(struct CGSize)arg1 inUseableContainerViewBounds:(struct CGRect)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_keyboardHomeAffordance, setter=_setKeyboardHomeAffordance:) id <PLKeyboardHomeAffordanceAssertion> keyboardHomeAffordance; // @synthesize keyboardHomeAffordance=_keyboardHomeAffordance;
 @property(nonatomic, getter=_keyboardFrame, setter=_setKeyboardFrame:) struct CGRect keyboardFrame; // @synthesize keyboardFrame=_keyboardFrame;
+@property(nonatomic) struct CGPoint additionalContentTranslation; // @synthesize additionalContentTranslation=_additionalContentTranslation;
 @property(nonatomic) double additionalHomeAffordanceSpacing; // @synthesize additionalHomeAffordanceSpacing=_additionalHomeAffordanceSpacing;
 @property(retain, nonatomic) UIPanGestureRecognizer *homeAffordancePanGesture; // @synthesize homeAffordancePanGesture=_homeAffordancePanGesture;
 @property(nonatomic, getter=isHomeAffordanceVisible) _Bool homeAffordanceVisible; // @synthesize homeAffordanceVisible=_homeAffordanceVisible;
 @property(nonatomic) __weak id <PLExpandedPlatterPresentationControllerDelegate> presentationControllerDelegate; // @synthesize presentationControllerDelegate=_presentationControllerDelegate;
-- (void).cxx_destruct;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
-- (void)viewControllerAnimatorDidFinishFirstResponderChanges:(id)arg1;
 - (void)viewControllerAnimator:(id)arg1 willBeginDismissalAnimationWithTransitionContext:(id)arg2;
 - (void)viewControllerAnimator:(id)arg1 willBeginPresentationAnimationWithTransitionContext:(id)arg2;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2 superBlock:(CDUnknownBlockType)arg3;
-- (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (_Bool)_shouldDisableInteractionDuringTransitions;
 - (_Bool)_shouldMakePresentedViewControllerFirstResponder;

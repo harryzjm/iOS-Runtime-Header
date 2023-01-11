@@ -10,6 +10,7 @@
 {
 }
 
+- (_Bool)affectsAppLifecycleIfInternal;
 - (_Bool)isInternal;
 - (Class)uiSceneMinimumClass;
 - (Class)sceneSubstrateClass;

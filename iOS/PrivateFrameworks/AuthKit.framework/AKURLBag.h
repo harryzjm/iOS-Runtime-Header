@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, NSURL;
+@class NSArray, NSSet, NSString, NSURL;
 @protocol AKURLBagDictionaryProvider;
 
 @interface AKURLBag : NSObject
 {
+    NSString *_altDSID;
     id <AKURLBagDictionaryProvider> _bagProvider;
 }
 
@@ -19,9 +20,13 @@
 + (unsigned long long)IDMSEnvironmentFromBag:(id)arg1;
 + (_Bool)looksLikeiForgotURLKey:(id)arg1;
 + (id)keyForEscapeHatchURL;
++ (id)_currentBags;
 + (id)sharedBag;
-@property(retain, nonatomic) id <AKURLBagDictionaryProvider> bagProvider; // @synthesize bagProvider=_bagProvider;
++ (id)bagForAltDSID:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <AKURLBagDictionaryProvider> bagProvider; // @synthesize bagProvider=_bagProvider;
+@property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
+- (void)forceUpdateBagWithUrlSwitchData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_urlBagFromCache:(_Bool)arg1 withError:(id *)arg2;
 - (id)_configurationsFromCache:(_Bool)arg1 withError:(id *)arg2;
@@ -34,12 +39,16 @@
 - (id)configurationAtKey:(id)arg1 fromCache:(_Bool)arg2;
 - (id)configurationAtKey:(id)arg1;
 @property(readonly, nonatomic) unsigned long long lastKnownIDMSEnvironment;
+@property(readonly, nonatomic) NSArray *securityUpgradeServiceNames;
+@property(readonly, nonatomic) NSString *continuationHeaderPrefix;
 @property(readonly, nonatomic, getter=IsInlineFlowSupportedConfig) _Bool inlineFlowSupportedConfig;
 @property(readonly, nonatomic) unsigned long long IDMSEnvironment;
 @property(readonly, nonatomic) NSString *APSEnvironment;
+@property(readonly, nonatomic) NSURL *createChildAccountURL;
 @property(readonly, nonatomic) NSURL *appleIDAuthorizeHTMLResponseURL;
 @property(readonly, nonatomic) NSSet *appleIDAuthorizationURLs;
 @property(readonly, nonatomic) NSSet *appleOwnedDomains;
+@property(readonly, nonatomic) NSURL *deleteAuthorizedAppURL;
 @property(readonly, nonatomic) NSURL *userVerificationURL;
 @property(readonly, nonatomic) NSURL *repairURL;
 @property(readonly, nonatomic) NSURL *acsURL;
@@ -75,6 +84,7 @@
 @property(readonly, nonatomic) NSURL *endProvisioningURL;
 @property(readonly, nonatomic) NSURL *startProvisioningURL;
 @property(readonly, nonatomic) NSURL *basicAuthURL;
+- (id)initWithAltDSID:(id)arg1;
 
 @end
 

@@ -6,11 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HKChartDataCacheController, HKDateCache, HKDisplayCategoryController, HKDisplayTypeController, HKHealthStore, HKSampleTypeDateRangeController, HKSampleTypeUpdateController, HKSelectedTimeScopeController, HKUnitPreferenceController, NSDictionary, _HKWheelchairUseCharacteristicCache;
+#import <HealthUI/HKSleepDataSourceProvider-Protocol.h>
 
-@interface HKHealthChartFactory : NSObject
+@class HKChartDataCacheController, HKDateCache, HKDisplayCategoryController, HKDisplayTypeController, HKHealthStore, HKInteractiveChartDataFormatter, HKSampleTypeDateRangeController, HKSampleTypeUpdateController, HKSelectedTimeScopeController, HKUnitPreferenceController, NSDictionary, _HKWheelchairUseCharacteristicCache;
+@protocol HKSleepDataSourceProvider;
+
+@interface HKHealthChartFactory : NSObject <HKSleepDataSourceProvider>
 {
     HKHealthStore *_healthStore;
+    id <HKSleepDataSourceProvider> _sleepDataSourceProvider;
+    HKInteractiveChartDataFormatter *_sleepChartFormatter;
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitPreferenceController;
     HKDisplayCategoryController *_displayCategoryController;
@@ -24,6 +29,7 @@
 }
 
 + (id)_standardIdentifierMappings;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *identifierToDisplayTypeMapping; // @synthesize identifierToDisplayTypeMapping=_identifierToDisplayTypeMapping;
 @property(readonly, nonatomic) HKSampleTypeDateRangeController *sampleTypeDateRangeController; // @synthesize sampleTypeDateRangeController=_sampleTypeDateRangeController;
 @property(readonly, nonatomic) _HKWheelchairUseCharacteristicCache *wheelchairUseCharacteristicCache; // @synthesize wheelchairUseCharacteristicCache=_wheelchairUseCharacteristicCache;
@@ -34,14 +40,20 @@
 @property(readonly, nonatomic) HKDisplayCategoryController *displayCategoryController; // @synthesize displayCategoryController=_displayCategoryController;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitPreferenceController; // @synthesize unitPreferenceController=_unitPreferenceController;
 @property(readonly, nonatomic) HKDisplayTypeController *displayTypeController; // @synthesize displayTypeController=_displayTypeController;
+@property(retain, nonatomic) HKInteractiveChartDataFormatter *sleepChartFormatter; // @synthesize sleepChartFormatter=_sleepChartFormatter;
+@property(retain, nonatomic) id <HKSleepDataSourceProvider> sleepDataSourceProvider; // @synthesize sleepDataSourceProvider=_sleepDataSourceProvider;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-- (void).cxx_destruct;
 - (id)_mapTypeIdentifierToDisplayType:(id)arg1;
-- (id)_customTypeIdentifierController:(id)arg1 displayDate:(id)arg2 secondaryIdentifier:(id)arg3;
+- (id)standardSleepChartFormatter;
+- (id)makeSleepDataSourceFromHealthStore:(id)arg1 representativeDisplayType:(id)arg2;
+- (id)_customTypeIdentifierController:(id)arg1 displayDate:(id)arg2 preferredOverlay:(long long)arg3;
 - (id)CHRRoomApplicationItems;
 - (id)_displayTypeForTypeIdentifier:(id)arg1;
 - (long long)_resolvedTimeScopeForTypeIdentifier:(id)arg1 displayDateInterval:(id)arg2;
-- (id)interactiveChartForTypeIdentifier:(id)arg1 secondaryTypeIdentifier:(id)arg2 displayDateInterval:(id)arg3;
+- (id)supportedTypeIdentifiers;
+- (id)activityChartForActivityMoveMode:(long long)arg1 displayDate:(id)arg2;
+- (id)activityChartForDisplayDate:(id)arg1;
+- (id)interactiveChartForTypeIdentifier:(id)arg1 preferredOverlay:(long long)arg2 displayDateInterval:(id)arg3;
 - (id)chartForTypeIdentifier:(id)arg1 dateRange:(id)arg2 minimumSize:(struct CGSize)arg3 disableXAxis:(_Bool)arg4;
 - (id)chartForTypeIdentifier:(id)arg1 dateRange:(id)arg2 minimumSize:(struct CGSize)arg3;
 - (id)initWithHealthStore:(id)arg1;

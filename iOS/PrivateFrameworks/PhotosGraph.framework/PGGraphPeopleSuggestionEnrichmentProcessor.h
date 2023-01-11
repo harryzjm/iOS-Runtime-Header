@@ -17,6 +17,8 @@
 + (double)backgroundJobTimeout;
 + (id)backgroundJobName;
 + (_Bool)supportsBackgroundJob;
+- (void)_performPeopleSuggestionForHomeWithManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (void)_performPeopleSuggestionLearningWithManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 
 // Remaining properties

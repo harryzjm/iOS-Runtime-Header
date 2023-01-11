@@ -9,8 +9,8 @@
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBSnapshotContainerIdentity, XBStatusBarSettings;
-@protocol XBSnapshotManifestStore;
+@class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBDisplayEdgeInsetsWrapper, XBSnapshotContainerIdentity, XBStatusBarSettings;
+@protocol OS_os_transaction, XBSnapshotManifestStore;
 
 @interface XBApplicationSnapshot : NSObject <NSSecureCoding, BSDescriptionProviding>
 {
@@ -18,7 +18,6 @@
     id <XBSnapshotManifestStore> _store;
     NSMutableDictionary *_variantsByID;
     NSString *_identifier;
-    NSString *_logIdentifier;
     NSString *_groupID;
     NSString *_variantID;
     NSString *_launchInterfaceIdentifier;
@@ -55,6 +54,11 @@
     _Bool _keepImageAccessForPreHeat;
     _Bool _hasProtectedContent;
     struct os_unfair_lock_s _loadImageLock;
+    NSString *_baseLogIdentifier;
+    NSString *_logIdentifier;
+    _Bool _logContainerIdentifierDirty;
+    NSObject<OS_os_transaction> *_cachedImageTransaction;
+    XBDisplayEdgeInsetsWrapper *_customSafeAreaInsets;
     CDUnknownBlockType _imageGenerator;
     struct CGAffineTransform _imageTransform;
 }
@@ -67,13 +71,13 @@
 + (void)setSecureCodableCustomExtendedDataClasses:(id)arg1;
 + (id)secureCodableCustomExtendedDataClasses;
 + (id)normalizeSnapshotName:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGAffineTransform imageTransform; // @synthesize imageTransform=_imageTransform;
 @property(nonatomic) long long fileLocation; // @synthesize fileLocation=_fileLocation;
 @property(copy, nonatomic, getter=_relativePath, setter=_setRelativePath:) NSString *relativePath; // @synthesize relativePath=_relativePath;
 @property(nonatomic) long long imageOrientation; // @synthesize imageOrientation=_imageOrientation;
 @property(nonatomic, getter=isImageOpaque) _Bool imageOpaque; // @synthesize imageOpaque=_imageOpaque;
 @property(nonatomic) double imageScale; // @synthesize imageScale=_imageScale;
-@property(readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property(copy) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property(readonly, nonatomic, getter=_store) id <XBSnapshotManifestStore> store; // @synthesize store=_store;
 @property(copy) NSDictionary *extendedData; // @synthesize extendedData=_extendedData;
@@ -82,6 +86,7 @@
 @property(nonatomic) long long compatibilityMode; // @synthesize compatibilityMode=_compatibilityMode;
 @property(nonatomic) long long classicMode; // @synthesize classicMode=_classicMode;
 @property(copy, nonatomic) XBStatusBarSettings *statusBarSettings; // @synthesize statusBarSettings=_statusBarSettings;
+@property(retain, nonatomic) XBDisplayEdgeInsetsWrapper *customSafeAreaInsets; // @synthesize customSafeAreaInsets=_customSafeAreaInsets;
 @property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
@@ -91,7 +96,6 @@
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) long long fileFormat; // @synthesize fileFormat=_fileFormat;
 @property(copy, nonatomic, getter=filename, setter=_setFilename:) NSString *filename; // @synthesize filename=_filename;
-@property(copy, nonatomic, setter=_setPath:) NSString *path; // @synthesize path=_path;
 @property(copy, nonatomic) NSString *requiredOSVersion; // @synthesize requiredOSVersion=_requiredOSVersion;
 @property(copy, nonatomic) NSString *scheme; // @synthesize scheme=_scheme;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -99,17 +103,18 @@
 @property(copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 @property(readonly, copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 includeVariants:(_Bool)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
+- (id)descriptionForStateCaptureWithMultilinePrefix:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_purgeCachedImageIfAppropriate:(_Bool)arg1;
-- (_Bool)_shouldDeleteFileOnPurge;
+- (_Bool)_shouldDeleteFileOnPurge:(id *)arg1;
 - (void)_setHasProtectedContent:(_Bool)arg1;
+- (_Bool)_generateImageIfPossible;
 - (void)_cacheImage:(id)arg1;
 - (id)_cachedImage;
 - (void)_configureWithPath:(id)arg1;
@@ -125,19 +130,23 @@
 @property(copy, nonatomic) CDUnknownBlockType imageGenerator; // @synthesize imageGenerator=_imageGenerator;
 - (void)_manifestQueueDecode_setStore:(id)arg1;
 - (id)descriptionWithoutVariants;
+- (_Bool)isValidWithReason:(id *)arg1;
 - (_Bool)isValid;
 - (void)_endPreHeatImageAccess;
 - (void)_beginPreHeatImageAccess;
 - (void)endImageAccess;
 - (void)beginImageAccess;
-- (void)_snynchronized_evaluateImageAccessUntilExpirationEnablingIfNecessary:(_Bool)arg1;
+- (void)_synchronized_evaluateImageAccessUntilExpirationEnablingIfNecessary:(_Bool)arg1;
 - (_Bool)_synchronized_isExpired;
 - (void)beginImageAccessUntilExpiration;
 - (void)purgeImage;
+- (_Bool)_synchronized_hasCachedImage:(id *)arg1;
 - (_Bool)hasCachedImage;
+- (void)loadImageWithGenerationOptions:(unsigned long long)arg1;
 - (void)loadImage;
 - (void)loadImageForPreHeat;
 - (id)cachedImageForInterfaceOrientation:(long long)arg1;
+- (id)imageForInterfaceOrientation:(long long)arg1 generationOptions:(unsigned long long)arg2;
 - (id)imageForInterfaceOrientation:(long long)arg1;
 - (id)variantWithIdentifier:(id)arg1;
 - (id)variants;
@@ -147,6 +156,8 @@
 @property(readonly, nonatomic) _Bool hasProtectedContent;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
 @property(readonly, nonatomic) _Bool fileExists;
+@property(copy, nonatomic, setter=_setPath:) NSString *path; // @synthesize path=_path;
+- (id)_sanitizedPathForPath:(id)arg1;
 @property(retain, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 - (void)_setFileLocation:(long long)arg1;
 - (long long)_fileLocation;
@@ -157,6 +168,7 @@
 - (id)_initWithContainerIdentity:(id)arg1 store:(id)arg2 groupID:(id)arg3 generationContext:(id)arg4;
 - (id)init;
 - (void)_commonInitWithIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSString *logIdentifier;
 @property(readonly, nonatomic) unsigned long long _contentTypeMask;
 @property(readonly, nonatomic) unsigned long long _interfaceOrientationMask;
 @property(readonly, retain, nonatomic) XBStatusBarSettings *_sortableStatusBarSettings;

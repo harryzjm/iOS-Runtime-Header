@@ -8,5 +8,7 @@
 
 @interface UILabel (GKDashboardUtils)
 - (void)_gkUpdateShadowForFocusChange:(_Bool)arg1;
+@property(nonatomic, readonly) double lastBaselineFromBottom;
+@property(nonatomic, readonly) double firstBaselineFromTop;
 @end
 

@@ -13,10 +13,15 @@
 }
 
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (Class)configurationClass;
++ (const CDStruct_7d93034e *)revisionAvailability;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedFaceQuality:(id)arg3;
 - (long long)dependencyProcessingOrdinality;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

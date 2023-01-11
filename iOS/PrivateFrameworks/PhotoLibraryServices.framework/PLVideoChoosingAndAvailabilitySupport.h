@@ -16,13 +16,13 @@
     struct CGSize _size;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(readonly, nonatomic) id <PLVideoChoosingOptions> options; // @synthesize options=_options;
 @property(readonly, nonatomic) id <PLVideoChoosingAssetInformation> assetInformation; // @synthesize assetInformation=_assetInformation;
 @property(readonly, nonatomic) id <PLVideoResourceContext> context; // @synthesize context=_context;
-- (void).cxx_destruct;
-- (id)chooseResourceDownloadRequired:(_Bool *)arg1 renderRequired:(_Bool *)arg2;
-- (id)_chooseResourceDownloadRequired:(_Bool *)arg1 renderRequired:(_Bool *)arg2;
+- (id)chooseResourceDownloadRequired:(_Bool *)arg1;
+- (id)_chooseResourceDownloadRequired:(_Bool *)arg1;
 - (unsigned int)_videoQualityLevelForRequest;
 - (id)_acceptableResourceVersions;
 - (id)initWithContext:(id)arg1 assetInformation:(id)arg2 options:(id)arg3 size:(struct CGSize)arg4;

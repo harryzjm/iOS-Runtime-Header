@@ -28,13 +28,13 @@
 + (id)clientInterface;
 + (id)daemonInterface;
 + (void)initialize;
+- (void).cxx_destruct;
 @property unsigned long long reconnectRetryCount; // @synthesize reconnectRetryCount=_reconnectRetryCount;
 @property _Bool reconnectFailed; // @synthesize reconnectFailed=_reconnectFailed;
 @property _Bool connectionInvalidated; // @synthesize connectionInvalidated=_connectionInvalidated;
 @property int listenerResumedToken; // @synthesize listenerResumedToken=_listenerResumedToken;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property __weak NSObject<WCXPCManagerDelegate> *delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)handleActiveDeviceSwitchStarted;
 - (void)handleSessionStateChanged:(id)arg1;
 - (void)handleUserInfoResultWithPairingID:(id)arg1;
@@ -61,6 +61,7 @@
 - (void)sessionReadyForInitialStateForClientPairingID:(id)arg1 supportsActiveDeviceSwitch:(_Bool)arg2 withErrorHandler:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (void)handleInterruptedConnection;
+- (void)interruptionHandler;
 - (void)onqueue_reconnect;
 - (void)onqueue_retryConnectIfNecessary;
 - (void)setupConnection;

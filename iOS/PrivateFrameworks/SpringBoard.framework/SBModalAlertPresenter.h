@@ -22,9 +22,11 @@
     NSHashTable *_visibleAlertAssertions;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) FBSceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
+@property(retain, nonatomic) SBModalAlertPresentationCoordinator *modalAlertPresentationCoordinator; // @synthesize modalAlertPresentationCoordinator=_modalAlertPresentationCoordinator;
 @property(nonatomic) unsigned long long visibleModalAlertCount; // @synthesize visibleModalAlertCount=_visibleModalAlertCount;
 @property(retain, nonatomic, setter=_setScene:) FBScene *scene; // @synthesize scene=_scene;
-- (void).cxx_destruct;
 - (void)_addOrRemoveModalAlertPresenterIfNecessaryWithForegroundState:(_Bool)arg1 fromOrToTerminalState:(_Bool)arg2;
 - (void)_addOrRemoveModalAlertPresenterIfNecessary;
 - (void)sceneManager:(id)arg1 willUpdateScene:(id)arg2 withSettings:(id)arg3 transitionContext:(id)arg4;

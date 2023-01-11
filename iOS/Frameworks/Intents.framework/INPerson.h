@@ -25,7 +25,7 @@
     NSString *_userInput;
     NSArray *_aliases;
     long long _suggestionType;
-    NSArray *_alternatives;
+    NSArray *_scoredAlternatives;
     _Bool _isMe;
     NSString *_sourceAppBundleIdentifier;
     INPersonHandle *_personHandle;
@@ -33,11 +33,15 @@
     NSString *_contactIdentifier;
     NSString *_customIdentifier;
     NSString *_relationship;
+    NSString *_phonemeData;
 }
 
++ (id)toNilScoredPersons:(id)arg1;
 + (id)expectedCNContactKeys;
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *phonemeData; // @synthesize phonemeData=_phonemeData;
+@property(copy, nonatomic) NSArray *scoredAlternatives; // @synthesize scoredAlternatives=_scoredAlternatives;
 @property(nonatomic) _Bool isMe; // @synthesize isMe=_isMe;
 @property(nonatomic) long long suggestionType; // @synthesize suggestionType=_suggestionType;
 @property(copy, nonatomic) NSArray *aliases; // @synthesize aliases=_aliases;
@@ -47,11 +51,13 @@
 @property(copy, nonatomic) INImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSPersonNameComponents *nameComponents; // @synthesize nameComponents=_nameComponents;
 @property(copy, nonatomic) INPersonHandle *personHandle; // @synthesize personHandle=_personHandle;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *alternativeSiriMatches;
 - (id)_dictionaryRepresentation;
 - (id)initWithContact:(id)arg1;
+- (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(_Bool)arg11 scoredAlternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13 phonemeData:(id)arg14;
+- (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(_Bool)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13 phonemeData:(id)arg14;
 - (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(_Bool)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13;
+@property(copy, nonatomic) NSArray *alternatives;
 - (id)_sourceAppBundleIdentifier;
 - (id)_aliases;
 - (id)_userInput;
@@ -68,6 +74,7 @@
 - (id)initWithHandle:(id)arg1 displayName:(id)arg2 contactIdentifier:(id)arg3;
 - (id)initWithHandle:(id)arg1 nameComponents:(id)arg2 contactIdentifier:(id)arg3;
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 isMe:(_Bool)arg7;
+- (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 relationship:(id)arg7;
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6;
 @property(readonly, copy, nonatomic) NSString *fullName;
 @property(readonly, copy, nonatomic) NSString *userURIString;
@@ -77,7 +84,7 @@
 @property(readonly, copy, nonatomic) NSString *firstName;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_intents_cacheableObjects;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 aliases:(id)arg7 suggestionType:(long long)arg8;

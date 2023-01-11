@@ -25,9 +25,8 @@
 @property(readonly, nonatomic) _Bool bu_isReadError;
 - (_Bool)bu_isErrorPassingTest:(CDUnknownBlockType)arg1;
 - (void)bu_enumerateErrorUsingBlock:(CDUnknownBlockType)arg1;
-- (_Bool)bu_isErrorPassingTest:(CDUnknownBlockType)arg1;
-- (void)bu_enumerateErrorUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool bu_isNoPermissionError;
+@property(readonly, nonatomic) _Bool bu_isFileExistsError;
 @property(readonly, nonatomic) _Bool bu_isNoSuchFileError;
 @property(readonly, nonatomic) _Bool bu_isCancelError;
 @property(readonly, nonatomic) _Bool bu_isOutOfSpaceError;

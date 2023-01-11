@@ -38,6 +38,7 @@
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) int emptyContentReturnKeyType;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(nonatomic) long long forceDictationKeyboardType;
 @property(nonatomic) _Bool forceDefaultDictationInfo;
 @property(nonatomic) _Bool forceDisableDictation;
@@ -45,6 +46,7 @@
 @property(nonatomic) _Bool showDictationButton;
 @property(nonatomic) _Bool useAutomaticEndpointing;
 @property(nonatomic) _Bool acceptsDictationSearchResults;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool hasDefaultContents;

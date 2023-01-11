@@ -6,32 +6,47 @@
 
 #import <HealthUI/HKTableViewController.h>
 
+#import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
 #import <HealthToolbox/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKDisplayCategory, HKDisplayType, HKHealthStore, HKTitledIconHeaderView, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, WDProfile, WDSourceOrderController;
+@class HKAuthorizationStore, HKDisplayCategory, HKDisplayType, HKHealthStore, HKProfileStore, HKSourceListDataSource, HKTitledIconHeaderView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, WDProfile, WDSourceOrderController;
 
 __attribute__((visibility("hidden")))
-@interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate>
+@interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate, HKSourceListDataSourceObserver>
 {
     _Bool _isLoaded;
     HKDisplayCategory *_displayCategory;
     HKDisplayType *_displayType;
     WDProfile *_profile;
     HKHealthStore *_healthStore;
+    HKProfileStore *_profileStore;
+    HKAuthorizationStore *_authorizationStore;
     WDSourceOrderController *_sourceOrderController;
     NSMutableSet *_dataSources;
-    NSMutableArray *_orderedDataSources;
     NSArray *_preEditSourcesOrdered;
-    NSMutableArray *_readerAppSources;
+    NSArray *_readerAppSources;
+    NSArray *_readerResearchStudySources;
     NSMutableDictionary *_authorizationRecordsBySource;
     HKTitledIconHeaderView *_headerView;
     NSMutableSet *_sourcesPendingToggleOff;
     NSMutableSet *_sourcesPendingToggleOn;
+    NSArray *_sectionIdentifiers;
     _Bool _shouldInsetSectionContentForDataSourceDataList;
+    HKSourceListDataSource *_sourceListDataSource;
+    NSArray *_loadedOrderedDataSources;
+    NSMutableArray *_orderedDataSources;
+    NSSet *_loadedAllDataSources;
+    NSDictionary *_loadedAuthorizationRecordsBySource;
 }
 
-@property(nonatomic) _Bool shouldInsetSectionContentForDataSourceDataList; // @synthesize shouldInsetSectionContentForDataSourceDataList=_shouldInsetSectionContentForDataSourceDataList;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *loadedAuthorizationRecordsBySource; // @synthesize loadedAuthorizationRecordsBySource=_loadedAuthorizationRecordsBySource;
+@property(copy, nonatomic) NSSet *loadedAllDataSources; // @synthesize loadedAllDataSources=_loadedAllDataSources;
+@property(retain, nonatomic) NSMutableArray *orderedDataSources; // @synthesize orderedDataSources=_orderedDataSources;
+@property(copy, nonatomic) NSArray *loadedOrderedDataSources; // @synthesize loadedOrderedDataSources=_loadedOrderedDataSources;
+@property(retain, nonatomic) HKSourceListDataSource *sourceListDataSource; // @synthesize sourceListDataSource=_sourceListDataSource;
+@property(nonatomic) _Bool shouldInsetSectionContentForDataSourceDataList; // @synthesize shouldInsetSectionContentForDataSourceDataList=_shouldInsetSectionContentForDataSourceDataList;
+- (void)sourceListDataSourceDidUpdate:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(_Bool)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
@@ -44,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (id)_noneTableViewCell;
 - (id)_dataSourceCellForTableView:(id)arg1 row:(unsigned long long)arg2;
 - (id)_readerSourceCellForTableView:(id)arg1 sourceArray:(id)arg2 row:(unsigned long long)arg3;
@@ -55,7 +71,6 @@ __attribute__((visibility("hidden")))
 - (void)_willEnableSource:(id)arg1;
 - (void)_willDisableSource:(id)arg1;
 - (_Bool)_sourceIsEnabled:(id)arg1;
-- (void)_addSources:(id)arg1 toSortedSources:(id)arg2;
 - (void)_addDataSources:(id)arg1;
 - (void)_updateOrderedSources;
 - (void)_sortDataSources;
@@ -63,13 +78,16 @@ __attribute__((visibility("hidden")))
 - (void)_fetchAuthorizationRecordsBySourceForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchDataSourcesForSampleType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchOrderedSourcesForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_loadDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_loadDataSource;
 - (_Bool)_canEditDataSources;
-- (void)_gatherDataAndRefreshUI;
-- (void)applicationDidBecomeActive:(id)arg1;
+- (void)_refreshUI;
+- (void)_gatherDataFromDataSource:(id)arg1;
+- (long long)sectionForSectionIdentifier:(long long)arg1;
+- (long long)sectionIdentifierForSection:(long long)arg1;
+- (_Bool)showReadOnlyDataSourcesOnly;
+- (id)createSectionIdentifiers;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1;

@@ -22,16 +22,12 @@
 
 + (id)sharedPredictor;
 - (void).cxx_destruct;
-- (void)_unscheduleCloseConnection;
-- (void)_scheduleCloseConnection;
-- (void)_initCloseTimerIfNecessary;
-- (void)_closeConnection;
-- (_Bool)_openConnectionIfNecessary;
 @property(readonly, nonatomic) NSString *uniqueName;
 - (void)cancelCapturingAnalytics;
 - (void)capturePredictedTransportationMode:(int)arg1;
-- (void)captureActualTransportationMode:(int)arg1 withMapItem:(struct GEOMapItemStorage *)arg2;
-- (_Bool)predictedTransportModeForDestinationMapItem:(struct GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)captureActualTransportationMode:(int)arg1 originMapItem:(id)arg2 destinationMapItem:(id)arg3;
+- (_Bool)predictedTransportModeForDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)storeSignalPack:(id)arg1 forMapItem:(id)arg2 andEntry:(id)arg3;
 - (_Bool)predictedTransportModeForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;

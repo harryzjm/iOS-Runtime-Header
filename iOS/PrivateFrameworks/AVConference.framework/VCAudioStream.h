@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
     AVTelephonyInterface *_telephonyInterface;
     _Bool isValid;
     int deviceRole;
-    void *_audioMediaControlInfoGenerator;
     id syncSourceDelegate;
     VCAudioIO *_audioIO;
     _Bool _isMuted;
@@ -91,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (struct __CFString *)getReportingClientName;
 - (int)getReportingClientType;
 - (struct __CFDictionary *)getClientSpecificUserInfo:(id)arg1;
+- (void)setupReportingAgent:(id)arg1;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
 - (double)rtcpHeartbeatLeeway;
 - (void)onSendRTCPPacket;
@@ -105,11 +105,14 @@ __attribute__((visibility("hidden")))
 - (id)streamIDsFromTransport;
 - (void)cleanupBeforeReconfigure:(id)arg1;
 - (void)createReportSSRCListWithStreamConfigs:(id)arg1;
-- (id)createTransport;
+- (id)createTransportWithStreamConfig:(id)arg1;
 - (_Bool)setupSourceTransport:(id)arg1;
 - (_Bool)validateAudioStreamConfigurations:(id)arg1;
 - (void)onCallIDChanged;
 - (id)supportedPayloads;
+@property(readonly, nonatomic) unsigned int actualAudioSendingBitrate;
+- (void)setTargetBitrate:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
+- (void)setVCStatistics:(CDStruct_56e8fa21)arg1;
 @property(readonly, nonatomic) void *realtimeSourceContext;
 @property(nonatomic) float volume;
 @property(nonatomic, getter=isRemoteMuted) _Bool remoteMuted;

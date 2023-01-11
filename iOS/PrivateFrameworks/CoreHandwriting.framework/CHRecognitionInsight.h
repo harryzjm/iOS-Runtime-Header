@@ -12,6 +12,7 @@
 {
     int _recognizerRecognitionMode;
     int _recognizerContentType;
+    int _autoCapitalizationMode;
     CHRecognitionInsightRequest *_insightRequest;
     NSLocale *_recognizerLocale;
     NSCharacterSet *_recognizerActiveCharacterSet;
@@ -38,10 +39,12 @@
 @property(nonatomic) unsigned long long recognizerMaxRecognitionResultCount; // @synthesize recognizerMaxRecognitionResultCount=_recognizerMaxRecognitionResultCount;
 @property(copy, nonatomic) NSDictionary *recognizerOptions; // @synthesize recognizerOptions=_recognizerOptions;
 @property(copy, nonatomic) NSCharacterSet *recognizerActiveCharacterSet; // @synthesize recognizerActiveCharacterSet=_recognizerActiveCharacterSet;
+@property(nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property(nonatomic) int recognizerContentType; // @synthesize recognizerContentType=_recognizerContentType;
 @property(nonatomic) int recognizerRecognitionMode; // @synthesize recognizerRecognitionMode=_recognizerRecognitionMode;
 @property(copy, nonatomic) NSLocale *recognizerLocale; // @synthesize recognizerLocale=_recognizerLocale;
 @property(retain, nonatomic) CHRecognitionInsightRequest *insightRequest; // @synthesize insightRequest=_insightRequest;
+@property(readonly, nonatomic) NSString *autoCapitalizationModeDescription;
 @property(readonly, nonatomic) NSString *recognizerContentTypeDescription;
 @property(readonly, nonatomic) NSString *recognizerRecognitionModeDescription;
 - (void)dealloc;

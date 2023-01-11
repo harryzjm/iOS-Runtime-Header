@@ -26,11 +26,10 @@
 + (id)phoneNumberWithTextCheckingResult:(id)arg1;
 + (_Bool)stringContainsPhoneNumbers:(id)arg1;
 + (id)phoneNumbersInString:(id)arg1 error:(id *)arg2;
-+ (id)phoneNumberUtil;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) NSString *contactName; // @synthesize contactName=_contactName;
 @property(readonly, nonatomic) NSString *string; // @synthesize string=_string;
-- (void).cxx_destruct;
 - (id)wfSerializedRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -40,7 +39,6 @@
 @property(readonly, copy, nonatomic) NSString *wfName;
 @property(readonly, nonatomic) NSString *normalizedPhoneNumber;
 @property(readonly, nonatomic) NSString *formattedPhoneNumber;
-- (id)region;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)compare:(id)arg1;
 - (id)initWithPhoneNumberString:(id)arg1 contactName:(id)arg2 label:(id)arg3;

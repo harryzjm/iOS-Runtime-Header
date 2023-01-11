@@ -16,6 +16,8 @@
 - (void)resetStorageWithReply:(void (^)(void))arg1;
 - (void)setTLSSessionCachePrefix:(NSString *)arg1;
 - (void)setDiscretionaryOverride:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
+- (void)setTLSMaximumSupportedProtocolVersion:(unsigned short)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
+- (void)setTLSMinimumSupportedProtocolVersion:(unsigned short)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setExpectedProgressTarget:(unsigned long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setBytesPerSecondLimit:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setLoadingPoolPriority:(double)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
@@ -29,5 +31,6 @@
 - (void)dataTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 identifier:(unsigned long long)arg3 uniqueIdentifier:(NSUUID *)arg4 reply:(void (^)(_Bool))arg5;
 - (void)uploadTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 fromFile:(NSURL *)arg3 sandboxExtensionData:(NSData *)arg4 identifier:(unsigned long long)arg5 uniqueIdentifier:(NSUUID *)arg6 potentialCredentials:(NSDictionary *)arg7 reply:(void (^)(_Bool))arg8;
 - (void)downloadTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 downloadFilePath:(NSString *)arg3 identifier:(unsigned long long)arg4 uniqueIdentifier:(NSUUID *)arg5 reply:(void (^)(_Bool))arg6;
+- (void)pingForXPCObjectValidityWithReply:(void (^)(void))arg1;
 @end
 

@@ -8,15 +8,14 @@
 
 @class _HKAuthorizationRecord;
 
-__attribute__((visibility("hidden")))
 @interface WDAuthorizationRecord : NSObject
 {
     _HKAuthorizationRecord *_internalAuthorizationRecord;
     long long _status;
 }
 
-@property long long status; // @synthesize status=_status;
 - (void).cxx_destruct;
+@property long long status; // @synthesize status=_status;
 - (_Bool)requestedReading;
 - (_Bool)requestedSharing;
 - (id)init;

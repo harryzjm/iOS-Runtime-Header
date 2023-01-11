@@ -14,12 +14,11 @@
 }
 
 + (Class)replyClass;
-+ (_Bool)supportsSecureCoding;
 @property(nonatomic) unsigned long long targetSize; // @synthesize targetSize=_targetSize;
 - (_Bool)expectsReply;
 - (_Bool)isValid;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

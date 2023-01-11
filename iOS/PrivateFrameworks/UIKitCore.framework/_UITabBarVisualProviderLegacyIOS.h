@@ -5,12 +5,14 @@
 //
 
 #import <UIKitCore/_UIBarAppearanceChangeObserver-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSString, UIView, _UIBarBackground, _UIBarBackgroundLayout;
+@class NSString, UIView, _UIBarBackground, _UIBarBackgroundLayout, _UICursorInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UITabBarVisualProviderLegacyIOS <_UIBarAppearanceChangeObserver>
+@interface _UITabBarVisualProviderLegacyIOS <_UIBarAppearanceChangeObserver, _UICursorInteractionDelegate>
 {
+    _UICursorInteraction *_cursorInteraction;
     _UIBarBackground *_backgroundView;
     _UIBarBackgroundLayout *_backgroundViewLayout;
     UIView *_customBackgroundView;
@@ -21,6 +23,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (id)_focusedItemHighlightView;
 - (double)_shim_heightForCustomizingItems;

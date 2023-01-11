@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString, NSURL, PHImageDecoderAsyncDecodeRequestHandle, PHImageDisplaySpec, PHImageRequestBehaviorSpec, PHImageResourceChooser, PHImageResult;
+@class NSObject, NSString, NSURL, PHImageDecoderAsyncDecodeRequestHandle, PHImageDisplaySpec, PHImageRequestBehaviorSpec, PHImageResourceChooser, PHImageResult, PLProgressFollower;
 @protocol OS_dispatch_semaphore, PHImageRequestDelegate;
 
 @interface PHImageRequest
@@ -19,24 +19,27 @@
     NSURL *_configuredImageURL;
     NSString *_configuredImageUTI;
     long long _configuredExifOrientation;
+    PLProgressFollower *_progressFollower;
     id <PHImageRequestDelegate> _delegate;
     PHImageDisplaySpec *_displaySpec;
     PHImageRequestBehaviorSpec *_behaviorSpec;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PHImageRequestBehaviorSpec *behaviorSpec; // @synthesize behaviorSpec=_behaviorSpec;
 @property(retain, nonatomic) PHImageDisplaySpec *displaySpec; // @synthesize displaySpec=_displaySpec;
 @property(readonly, nonatomic) __weak id <PHImageRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) struct CGSize desiredImageSize; // @synthesize desiredImageSize=_desiredImageSize;
-- (void).cxx_destruct;
 - (id)description;
 - (void)configureWithURL:(id)arg1;
 - (void)configureWithURL:(id)arg1 uniformTypeIdentifier:(id)arg2 exifOrientation:(int)arg3;
 - (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
 - (void)startRequest;
 - (void)cancel;
+- (long long)downloadIntent;
+- (_Bool)isNetworkAccessAllowed;
 - (_Bool)isSynchronous;
-- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 displaySpec:(id)arg6 behaviorSepc:(id)arg7 chooser:(id)arg8 delegate:(id)arg9;
+- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 displaySpec:(id)arg6 behaviorSpec:(id)arg7 chooser:(id)arg8 delegate:(id)arg9;
 - (void)_decodeImageConfiguredWithURL:(id)arg1 isPrimaryFormat:(_Bool)arg2 exifOrientation:(long long)arg3;
 
 @end

@@ -19,6 +19,8 @@
     long long _floatingConfiguration;
     long long _floatingSwitcherVisible;
     long long _dismissInlineAppExpose;
+    long long _animationDisabled;
+    long long _source;
 }
 
 + (id)requestForDismissingInlineSwitcher;
@@ -28,6 +30,9 @@
 + (id)requestForActivatingAppSwitcher;
 + (id)requestForActivatingHomeScreen;
 + (id)requestForActivatingAppLayout:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) long long source; // @synthesize source=_source;
+@property(nonatomic) long long animationDisabled; // @synthesize animationDisabled=_animationDisabled;
 @property(nonatomic) long long dismissInlineAppExpose; // @synthesize dismissInlineAppExpose=_dismissInlineAppExpose;
 @property(nonatomic) long long floatingSwitcherVisible; // @synthesize floatingSwitcherVisible=_floatingSwitcherVisible;
 @property(nonatomic) long long floatingConfiguration; // @synthesize floatingConfiguration=_floatingConfiguration;
@@ -35,7 +40,6 @@
 @property(nonatomic) long long unlockedEnvironmentMode; // @synthesize unlockedEnvironmentMode=_unlockedEnvironmentMode;
 @property(nonatomic) long long appLayoutEnvironment; // @synthesize appLayoutEnvironment=_appLayoutEnvironment;
 @property(retain, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

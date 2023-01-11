@@ -4,13 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface DiagnosticDataController
+#import <Preferences/UISearchResultsUpdating-Protocol.h>
+
+@class NSArray, NSString, UISearchController;
+
+@interface DiagnosticDataController <UISearchResultsUpdating>
 {
+    NSArray *_allSpecifiers;
+    UISearchController *_searchController;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
+- (void)updateSearchResultsForSearchController:(id)arg1;
 - (id)specifiers;
 - (void)viewDidLoad;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

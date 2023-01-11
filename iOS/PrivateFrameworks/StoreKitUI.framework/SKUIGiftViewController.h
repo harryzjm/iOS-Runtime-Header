@@ -21,10 +21,10 @@
     SKUIGiftComposeViewController *_rootViewController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SKUIGiftViewControllerDelegate> giftDelegate; // @synthesize giftDelegate=_giftDelegate;
 @property(readonly, copy, nonatomic) SKUIGift *gift; // @synthesize gift=_gift;
 @property(retain, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
-- (void).cxx_destruct;
 - (id)_localizedString:(id)arg1;
 - (void)_loadGiftConfiguration;
 - (void)_finishGiftingWithResult:(_Bool)arg1;
@@ -33,7 +33,7 @@
 - (void)_clientContextDidLoadWithContext:(id)arg1 error:(id)arg2;
 - (void)_cancelButtonAction:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)viewDidAppear:(_Bool)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (struct CGSize)preferredContentSize;

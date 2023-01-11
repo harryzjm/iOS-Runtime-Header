@@ -5,22 +5,30 @@
 //
 
 #import <ChatKit/CKBalloonTextViewInteractionDelegate-Protocol.h>
+#import <ChatKit/CKBalloonVibrancy-Protocol.h>
+#import <ChatKit/UITextViewDelegate-Protocol.h>
 
 @class CKBalloonTextView, NSAttributedString, NSString;
 
-@interface CKTextBalloonView <CKBalloonTextViewInteractionDelegate>
+@interface CKTextBalloonView <CKBalloonTextViewInteractionDelegate, UITextViewDelegate, CKBalloonVibrancy>
 {
-    _Bool _centerTextWhenSkinny;
     _Bool _containsExcessiveLineHeightCharacters;
+    _Bool _ignoreSelectionEvent;
     CKBalloonTextView *_textView;
     NSAttributedString *_attributedText;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool ignoreSelectionEvent; // @synthesize ignoreSelectionEvent=_ignoreSelectionEvent;
 @property(nonatomic) _Bool containsExcessiveLineHeightCharacters; // @synthesize containsExcessiveLineHeightCharacters=_containsExcessiveLineHeightCharacters;
-@property(nonatomic) _Bool centerTextWhenSkinny; // @synthesize centerTextWhenSkinny=_centerTextWhenSkinny;
 @property(copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property(retain, nonatomic) CKBalloonTextView *textView; // @synthesize textView=_textView;
-- (void).cxx_destruct;
+- (void)addOverlaySubview:(id)arg1;
+- (id)updateTextSelectionState:(id)arg1 forTextSelectionArea:(long long)arg2;
+- (void)vibrantContainerWillReparentNonVibrantSubviews:(id)arg1;
+- (id)nonVibrantSubViews;
+- (_Bool)isSelected;
+- (void)setSelected:(_Bool)arg1 withSelectionState:(id)arg2;
 - (void)restoreFromLargeTextTruncation;
 - (void)truncateForLargeText;
 - (void)detachInvisibleInkEffectView;
@@ -29,11 +37,18 @@
 - (Class)invisibleInkEffectViewClass;
 - (void)cullSubviewsWithVisibleBounds:(struct CGRect)arg1;
 - (double)textViewWidthForWidth:(double)arg1;
+- (void)interactionTextView:(id)arg1 userDidDragOutsideViewWithPoint:(struct CGPoint)arg2;
+- (void)tapGestureRecognized:(id)arg1;
+- (void)interactionTextViewShouldCopyToPasteboard:(id)arg1;
+- (void)textViewDidChangeSelection:(id)arg1;
+- (void)interactionStartedTapInTextView:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)interactionStartedLongPressInTextView:(id)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInTextView:(id)arg1;
 - (void)interactionStartedFromPreviewItemControllerInTextView:(id)arg1;
 - (void)updateRasterizationForInvisibleInkEffect;
 - (void)addFilter:(id)arg1;
 - (void)clearFilters;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2 isSingleLine:(_Bool *)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (void)prepareForReuse;
 - (void)prepareForDisplay;

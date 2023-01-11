@@ -10,10 +10,12 @@
 #import <HomeKitDaemon/NSFastEnumeration-Protocol.h>
 
 @class HMDAppleAccountManager, HMDRemoteAccountManager, NSArray, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDAccountRegistry : HMFObject <HMFLogging, NSFastEnumeration>
 {
+    id <HMFLocking> _lock;
+    _Bool _started;
     NSObject<OS_dispatch_queue> *_clientQueue;
     HMDAppleAccountManager *_appleAccountManager;
     HMDRemoteAccountManager *_remoteAccountManager;
@@ -21,10 +23,11 @@
 
 + (id)logCategory;
 + (id)sharedRegistry;
++ (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) HMDRemoteAccountManager *remoteAccountManager; // @synthesize remoteAccountManager=_remoteAccountManager;
 @property(readonly) HMDAppleAccountManager *appleAccountManager; // @synthesize appleAccountManager=_appleAccountManager;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-- (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)_resolveAccountForHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)__handleRemovedRemoteAccount:(id)arg1;
@@ -32,6 +35,7 @@
 - (void)__handleAppleAccountDeviceAdded:(id)arg1;
 - (void)__handleAppleAccountHandlesUpdated:(id)arg1;
 - (void)__handleAppleAccountUpdate:(id)arg1;
+- (id)deviceForPushToken:(id)arg1;
 - (id)deviceForDevice:(id)arg1 exists:(_Bool *)arg2;
 - (id)deviceForDevice:(id)arg1;
 - (_Bool)deviceExistsForDevice:(id)arg1;
@@ -46,6 +50,7 @@
 - (void)reset;
 - (void)stop;
 - (void)start;
+@property(readonly) _Bool started; // @synthesize started=_started;
 - (id)attributeDescriptions;
 - (id)initWithAppleAccountManager:(id)arg1 remoteAccountManager:(id)arg2;
 - (id)init;

@@ -11,6 +11,8 @@
 + (unsigned long long)_vs_countPhoneticSyllables_xsampa:(id)arg1;
 + (unsigned long long)_vs_countPhoneticSyllables_lhp:(id)arg1;
 + (id)vs_markerStringForContext:(id)arg1;
++ (id)vs_stringFrom4CC:(int)arg1;
+- (id)vs_convertToSSML;
 - (_Bool)vs_hasCJKCharacter;
 - (id)vs_removeSpeechTags;
 - (id)vs_removePhonetics;
@@ -21,5 +23,6 @@
 - (id)vs_textifyEmojiWithLanguage:(id)arg1;
 - (id)preinstalledAudioHashForLanguage:(id)arg1 gender:(long long)arg2;
 - (id)md5hash;
+- (id)sha256hex;
 @end
 

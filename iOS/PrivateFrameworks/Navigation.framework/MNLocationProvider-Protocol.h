@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class NSBundle, NSString;
+@class MNLocationProviderCLParameters, NSBundle, NSString;
 @protocol MNLocationProviderDelegate;
 
 @protocol MNLocationProvider <NSObject>
@@ -15,7 +15,7 @@
 @property(readonly, nonatomic) _Bool isTracePlayer;
 @property(readonly, nonatomic) _Bool isSimulation;
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
-@property(nonatomic) long long activityType;
+@property(readonly, nonatomic) _Bool coarseModeEnabled;
 @property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 @property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
@@ -40,6 +40,7 @@
 - (void)startUpdatingLocation;
 
 @optional
+- (void)setCLParameters:(MNLocationProviderCLParameters *)arg1;
 - (id)initWithEffectiveBundleIdentifier:(NSString *)arg1;
 - (id)initWithEffectiveBundle:(NSBundle *)arg1;
 @end

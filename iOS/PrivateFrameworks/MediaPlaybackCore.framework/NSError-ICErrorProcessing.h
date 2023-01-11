@@ -6,11 +6,29 @@
 
 #import <Foundation/NSError.h>
 
-@interface NSError (ICErrorProcessing)
+#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
+
+@class NSString;
+
+@interface NSError (ICErrorProcessing) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
 + (_Bool)_isAgeVerificationError:(id)arg1;
 + (id)errorForICError:(id)arg1 response:(id)arg2;
-+ (id)_MPCErrorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescriptionFormat:(id)arg4 arguments:(struct __va_list_tag [1])arg5;
++ (id)_MPCErrorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescriptionFormat:(id)arg4 arguments:(char *)arg5;
 + (id)MPCErrorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescription:(id)arg4;
 + (id)MPCErrorWithDomain:(id)arg1 code:(long long)arg2 debugDescription:(id)arg3;
++ (id)payloadValueFromJSONValue:(id)arg1;
+@property(readonly, nonatomic) _Bool mpc_isUnrecoverableAssetLoadingError;
+@property(readonly, nonatomic) _Bool mpc_isAssetUnavailableFailure;
+@property(readonly, nonatomic) _Bool mpc_isQueueLoadingFailure;
+@property(readonly, nonatomic) _Bool mpc_isAirplayStreamingNotSupportedError;
+@property(readonly, nonatomic) _Bool mpc_isRentalContentRequiresDownloadError;
+@property(readonly, nonatomic) _Bool mpc_isAirplayDeviceBusyError;
+- (id)mpc_jsonValue;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

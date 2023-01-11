@@ -6,6 +6,7 @@
 
 @class NSArray, NSString, NSTimer, PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegEmailController
 {
     PSSpecifier *_emailSpecifier;
@@ -17,8 +18,8 @@
     _Bool _validating;
 }
 
-@property(copy, nonatomic) NSString *pendingAlias; // @synthesize pendingAlias=_pendingAlias;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *pendingAlias; // @synthesize pendingAlias=_pendingAlias;
 - (void)_setupEventHandlers;
 - (void)_buildSpecifierCache:(id)arg1;
 - (void)_buildCheckMailSpecifierCache:(id)arg1;

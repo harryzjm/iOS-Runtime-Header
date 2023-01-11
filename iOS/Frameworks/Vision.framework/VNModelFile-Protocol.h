@@ -14,6 +14,7 @@
 - (void)advise:(long long)arg1;
 
 @optional
+@property(readonly, nonatomic) struct __sFILE *ptrFile;
 @property(retain, nonatomic) NSString *resourcePath;
 @end
 

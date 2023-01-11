@@ -10,7 +10,7 @@
 {
 }
 
-+ (int)separatorStyleForCardSection:(id)arg1;
++ (_Bool)fillsBackgroundWithContentForCardSection:(id)arg1;
 + (_Bool)supportsRecyclingForCardSection:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;
 - (id)setupContentView;

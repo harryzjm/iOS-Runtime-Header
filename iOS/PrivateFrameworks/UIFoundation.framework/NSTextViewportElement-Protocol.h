@@ -7,11 +7,13 @@
 #import <UIFoundation/NSObject-Protocol.h>
 
 @class NSTextRange;
+@protocol NSTextLocation;
 
 @protocol NSTextViewportElement <NSObject>
 @property struct CGPoint layoutPoint;
 @property(readonly) struct CGSize layoutSize;
 @property(readonly) NSTextRange *representedRange;
+- (double)verticalOffsetOfTextLocation:(id <NSTextLocation>)arg1 withAffinity:(long long)arg2;
 - (NSTextRange *)representedRangeAtPoint:(struct CGPoint)arg1;
 - (void)drawAtPoint:(struct CGPoint)arg1 context:(struct CGContext *)arg2;
 @end

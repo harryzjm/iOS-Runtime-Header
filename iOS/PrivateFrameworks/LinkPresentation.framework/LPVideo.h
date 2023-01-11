@@ -21,6 +21,7 @@
     LPVideo *_videoLoadedFromItemProvider;
     NSObject<OS_dispatch_group> *_itemProviderLoadGroup;
     struct CGSize _intrinsicSize;
+    _Bool _startedFetchingIntrinsicSize;
     AVURLAsset *_asset;
     id _mediaServicesResetNotificationHandler;
     LPVideoProperties *_properties;
@@ -31,11 +32,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, copy, nonatomic) NSString *MIMEType; // @synthesize MIMEType=_MIMEType;
 @property(readonly, retain, nonatomic) NSURL *youTubeURL; // @synthesize youTubeURL=_youTubeURL;
 @property(readonly, retain, nonatomic) NSURL *streamingURL; // @synthesize streamingURL=_streamingURL;
-- (void).cxx_destruct;
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 - (void)_uninstallMediaServicesResetNotificationHandler;
 - (void)_installMediaServicesResetNotificationHandler;
@@ -43,13 +44,15 @@
 @property(readonly, retain, nonatomic) NSItemProvider *_itemProvider;
 - (void)loadAsynchronouslyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)needsAsynchronousLoad;
-@property(readonly, nonatomic) struct CGSize _intrinsicSize;
+- (void)_intrinsicSizeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (struct CGSize)_intrinsicSizeIfKnown;
 - (_Bool)_shouldEncodeData;
 - (void)_mapDataFromFileURL;
 @property(readonly, copy, nonatomic) LPVideoProperties *properties;
 @property(readonly, nonatomic) _Bool hasAudio;
 @property(readonly, copy, nonatomic) NSData *data;
 @property(readonly, nonatomic) unsigned long long _encodedSize;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;

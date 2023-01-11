@@ -4,34 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthDaemon/HDHealthServicesServerInterface-Protocol.h>
+#import <HealthDaemon/HKHealthServicesServerInterface-Protocol.h>
 
-@class HDHealthServiceManager, HDIdentifierTable, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
-@protocol HKHealthStoreClientInterface;
+@class HDHealthServiceManager, HDIdentifierTable, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HDHealthServicesServer <HDHealthServicesServerInterface>
+@interface HDHealthServicesServer <HKHealthServicesServerInterface>
 {
     HDHealthServiceManager *_healthServiceManager;
+    NSObject<OS_dispatch_queue> *_queue;
     HDIdentifierTable *_healthServiceDiscoveryServerIDs;
     NSMutableDictionary *_healthServiceDiscoveryClientIDs;
     HDIdentifierTable *_healthDeviceSessionServerIDs;
     NSMutableDictionary *_healthServiceSessionClientIDs;
     NSMutableSet *_healthServiceClosedSessionServerIDs;
     NSMutableSet *_healthServiceClosedSessionClientIDs;
-    NSUUID *_subserverUUID;
-    id <HKHealthStoreClientInterface> _clientRemoteObjectProxy;
 }
 
-@property(retain, nonatomic) id <HKHealthStoreClientInterface> clientRemoteObjectProxy; // @synthesize clientRemoteObjectProxy=_clientRemoteObjectProxy;
-@property(retain, nonatomic) NSUUID *subserverUUID; // @synthesize subserverUUID=_subserverUUID;
++ (id)taskIdentifier;
++ (id)requiredEntitlements;
++ (id)createTaskServerWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4 error:(id *)arg5;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *healthServiceClosedSessionClientIDs; // @synthesize healthServiceClosedSessionClientIDs=_healthServiceClosedSessionClientIDs;
 @property(retain, nonatomic) NSMutableSet *healthServiceClosedSessionServerIDs; // @synthesize healthServiceClosedSessionServerIDs=_healthServiceClosedSessionServerIDs;
 @property(retain, nonatomic) NSMutableDictionary *healthServiceSessionClientIDs; // @synthesize healthServiceSessionClientIDs=_healthServiceSessionClientIDs;
 @property(retain, nonatomic) HDIdentifierTable *healthDeviceSessionServerIDs; // @synthesize healthDeviceSessionServerIDs=_healthDeviceSessionServerIDs;
 @property(retain, nonatomic) NSMutableDictionary *healthServiceDiscoveryClientIDs; // @synthesize healthServiceDiscoveryClientIDs=_healthServiceDiscoveryClientIDs;
 @property(retain, nonatomic) HDIdentifierTable *healthServiceDiscoveryServerIDs; // @synthesize healthServiceDiscoveryServerIDs=_healthServiceDiscoveryServerIDs;
-@property(retain, nonatomic) HDHealthServiceManager *healthServiceManager; // @synthesize healthServiceManager=_healthServiceManager;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) HDHealthServiceManager *healthServiceManager; // @synthesize healthServiceManager=_healthServiceManager;
+- (id)remoteInterface;
+- (id)exportedInterface;
+- (void)connectionInterrupted;
 - (_Bool)_isClientSessionValid:(unsigned long long)arg1;
 - (_Bool)_isServerSessionValid:(unsigned long long)arg1;
 - (void)_closeSessionBetweenServer:(unsigned long long)arg1 andClient:(unsigned long long)arg2;
@@ -53,14 +57,14 @@
 - (id)_filterOnlyUserManageablePeripheralsFromServices:(id)arg1;
 - (void)remote_getHealthPeripheralsWithFilter:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)remote_endHealthServiceSession:(unsigned long long)arg1;
-- (void)remote_startHealthServiceSession:(id)arg1 client:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)remote_startHealthServiceSession:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_endHealthServiceDiscovery:(unsigned long long)arg1;
-- (void)remote_startHealthServiceDiscovery:(long long)arg1 client:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)remote_startHealthServiceDiscovery:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchSupportedServiceIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_endBluetoothStatusUpdates;
-- (void)remote_beginBluetoothStatusUpdates:(CDUnknownBlockType)arg1 client:(id)arg2;
+- (void)remote_beginBluetoothStatusUpdates:(CDUnknownBlockType)arg1;
 - (void)invalidate;
-- (id)initWithParentServer:(id)arg1;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

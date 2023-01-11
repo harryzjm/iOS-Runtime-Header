@@ -9,21 +9,24 @@
 #import <ClockKitUI/CLKTimeFormatterObserver-Protocol.h>
 #import <ClockKitUI/_CLKUITimeLabelManager-Protocol.h>
 
-@class CLKTimeFormatter, NSString, UIColor, _CLKUIBasicTimeLabelManager;
+@class CLKClockTimerToken, CLKTimeFormatter, NSString, UIColor, UILabel, _CLKUIBasicTimeLabelManager;
 
 @interface _CLKUIBlinkingTimeLabelManager : UIView <_CLKUITimeLabelManager, CLKTimeFormatterObserver>
 {
     CLKTimeFormatter *_timeFormatter;
     _CLKUIBasicTimeLabelManager *_numbersLabelManager;
     _CLKUIBasicTimeLabelManager *_blinkerLabelManager;
-    struct NSNumber *_blinkTimerToken;
+    CLKClockTimerToken *_blinkTimerToken;
+    _Bool _usesIsolatedBlinkerLabel;
+    UILabel *_minutesBlinkerLabel;
+    UILabel *_secondsBlinkerLabel;
     _Bool _animationsPaused;
     _Bool _showSeconds;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showSeconds; // @synthesize showSeconds=_showSeconds;
 @property(nonatomic) _Bool animationsPaused; // @synthesize animationsPaused=_animationsPaused;
-- (void).cxx_destruct;
 - (void)_updateBlinkerAlphaForSecondFraction:(double)arg1;
 - (void)_startOrStopBlinking;
 - (void)_stopBlinking;
@@ -41,6 +44,7 @@
 - (void)setStyle:(id)arg1;
 - (void)setMaxWidth:(double)arg1;
 @property(readonly, nonatomic) struct UIEdgeInsets opticalInsets;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)sizeViewToFit;
 - (struct CGSize)sizeThatFits;
 @property(readonly, nonatomic) struct CGSize intrinsicSize;

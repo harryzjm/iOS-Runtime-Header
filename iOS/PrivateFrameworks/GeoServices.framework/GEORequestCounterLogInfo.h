@@ -23,7 +23,7 @@
 - (id)_formattedString;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) double oldestTimestamp;
-@property(readonly, nonatomic) unsigned char requestType;
+@property(readonly, nonatomic) CDStruct_d1a7ebee requestType;
 - (unsigned long long)recvBytes;
 - (unsigned long long)xmitBytes;
 - (long long)compare:(id)arg1;

@@ -22,11 +22,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *formattedTextPieces; // @synthesize formattedTextPieces=_formattedTextPieces;
 @property(copy, nonatomic) NSArray *icons; // @synthesize icons=_icons;
 @property(copy, nonatomic) NSString *contentAdvisory; // @synthesize contentAdvisory=_contentAdvisory;
 @property(nonatomic) double starRating; // @synthesize starRating=_starRating;
-- (void).cxx_destruct;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -39,7 +41,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(nonatomic) unsigned long long maxLines;
 @property(readonly) Class superclass;
 @property(copy) NSString *text;

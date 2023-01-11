@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTransitScheduleFilter : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDDeparturePredicate *_departurePredicateCountdown;
     GEOPDDeparturePredicate *_departurePredicateStamp;
     struct GEOPDTimeRange _operatingHoursRange;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _includeRealTimeDepartures;
-    CDStruct_34971647 _flags;
+    CDStruct_dc7e0232 _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -35,6 +37,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIncludeRealTimeDepartures;
@@ -43,10 +48,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct GEOPDTimeRange operatingHoursRange;
 @property(retain, nonatomic) GEOPDDeparturePredicate *departurePredicateStamp;
 @property(readonly, nonatomic) _Bool hasDeparturePredicateStamp;
-- (void)_readDeparturePredicateStamp;
 @property(retain, nonatomic) GEOPDDeparturePredicate *departurePredicateCountdown;
 @property(readonly, nonatomic) _Bool hasDeparturePredicateCountdown;
-- (void)_readDeparturePredicateCountdown;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

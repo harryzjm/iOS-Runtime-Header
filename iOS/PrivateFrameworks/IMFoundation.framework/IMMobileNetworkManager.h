@@ -21,6 +21,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isDataContextUsable; // @synthesize isDataContextUsable=_isDataContextUsable;
 @property(nonatomic) _Bool isDataIndicatorNone; // @synthesize isDataIndicatorNone=_isDataIndicatorNone;
 @property(nonatomic) _Bool isDataContextActive; // @synthesize isDataContextActive=_isDataContextActive;

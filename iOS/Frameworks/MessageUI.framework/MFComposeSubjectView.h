@@ -7,30 +7,24 @@
 #import <MessageUI/NSLayoutManagerDelegate-Protocol.h>
 #import <MessageUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, UIButton, UITextView;
+@class MFConfirmationButton, NSString, UITextView;
 @protocol MFComposeSubjectViewDelegate;
 
 @interface MFComposeSubjectView <NSLayoutManagerDelegate, UITextViewDelegate>
 {
     unsigned int _delegateRespondsToTextChange:1;
     unsigned int _delegateRespondsToWillRemoveContent:1;
-    unsigned int _notifyButtonSelected:1;
-    unsigned int _showNotifyButton:1;
-    unsigned int _showContentVariationButton:1;
-    unsigned int _contentVariationButtonSelected:1;
     _Bool _needsExclusionPathUpdate;
+    _Bool _allowsNotifyOption;
     UITextView *_textView;
-    UIButton *_notifyButton;
-    UIButton *_contentVariationButton;
+    MFConfirmationButton *_notifyButton;
     double _trailingButtonMidlineInsetFromLayoutMargin;
 }
 
-@property(nonatomic, getter=isContentVariationButtonSelected) _Bool contentVariationButtonSelected; // @synthesize contentVariationButtonSelected=_contentVariationButtonSelected;
-@property(nonatomic) double trailingButtonMidlineInsetFromLayoutMargin; // @synthesize trailingButtonMidlineInsetFromLayoutMargin=_trailingButtonMidlineInsetFromLayoutMargin;
-@property(readonly, nonatomic) UIButton *contentVariationButton; // @synthesize contentVariationButton=_contentVariationButton;
-@property(readonly, nonatomic) UIButton *notifyButton; // @synthesize notifyButton=_notifyButton;
-@property(readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 - (void).cxx_destruct;
+@property(nonatomic) double trailingButtonMidlineInsetFromLayoutMargin; // @synthesize trailingButtonMidlineInsetFromLayoutMargin=_trailingButtonMidlineInsetFromLayoutMargin;
+@property(nonatomic) _Bool allowsNotifyOption; // @synthesize allowsNotifyOption=_allowsNotifyOption;
+@property(readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 - (void)_textInputDidChange:(id)arg1;
 - (_Bool)_canBecomeFirstResponder;
 - (_Bool)endEditing:(_Bool)arg1;
@@ -43,22 +37,20 @@
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(_Bool)arg3;
 - (void)displayMetricsDidChange;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (id)_textContainerExclusionPathsWithNotifyButton:(_Bool)arg1 withContentVariationButton:(_Bool)arg2;
+- (id)_textContainerExclusionPathsWithNotifyButton:(_Bool)arg1;
 - (void)_updateTextContainerInsets;
 - (void)refreshPreferredContentSize;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;
 - (_Bool)becomeFirstResponder;
-- (void)contentVariationButtonTapped:(id)arg1;
-- (void)notifyButtonClicked:(id)arg1;
 - (void)_updateExclusionPathsIfNeeded;
-- (void)updateContentVariationButton;
-- (_Bool)isContentVariationSelected;
-- (void)setShowContentVariationButton:(_Bool)arg1;
-- (void)updateNotifyButton;
-@property(nonatomic, getter=isNotifyButtonSelected) _Bool notifyButtonSelected;
-- (void)setShowNotifyButton:(_Bool)arg1;
+- (void)setNeedsExclusionPathUpdate;
+@property(nonatomic, getter=isNotifyOptionSelected) _Bool notifyOptionSelected;
+- (void)_configureNotifyGlyphs;
+@property(readonly, nonatomic) MFConfirmationButton *notifyButton; // @synthesize notifyButton=_notifyButton;
+- (void)_showNotifyButtonIfNeeded;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

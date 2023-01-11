@@ -7,12 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (EmailAddressingAdditions)
-+ (id)ea_partialSurnames;
-+ (id)ea_nameExtensions;
-+ (void)__ea_extractFirstName:(id *)arg1 middleName:(id *)arg2 lastName:(id *)arg3 extension:(id *)arg4 fromString:(id)arg5;
 - (_Bool)ea_isEqualToEmailAddress:(id)arg1;
-- (id)ea_trimCommasSpacesQuotes;
-- (_Bool)ea_appearsToBeAnInitial;
 - (id)ea_personNameComponents;
 - (_Bool)ea_isLegalCommentedEmailAddress;
 - (id)ea_addressComment;

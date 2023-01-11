@@ -6,7 +6,10 @@
 
 #import <CryptoTokenKit/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol TKTokenDriverHostProtocol <NSObject>
+- (void)auditAuthOperation:(NSString *)arg1 auditToken:(CDStruct_4c969caf)arg2 success:(_Bool)arg3 reply:(void (^)(void))arg4;
 - (void)getTokenConfigurationEndpointWithReply:(void (^)(NSXPCListenerEndpoint *))arg1;
 @end
 

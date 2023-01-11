@@ -8,18 +8,30 @@
 
 @interface MPModelForYouRecommendationsRequest
 {
+    _Bool _withSocial;
+    _Bool _withPlainEditorialNotes;
+    _Bool _withRecentlyPlayed;
     long long _filteringPolicy;
     long long _requestEndpoint;
+    long long _mode;
+    long long _types;
+    long long _displayFilterKinds;
     NSURL *_customForYouURL;
 }
 
 + (id)allSupportedSectionProperties;
 + (id)allSupportedItemProperties;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSURL *customForYouURL; // @synthesize customForYouURL=_customForYouURL;
+@property(nonatomic) _Bool withRecentlyPlayed; // @synthesize withRecentlyPlayed=_withRecentlyPlayed;
+@property(nonatomic) long long displayFilterKinds; // @synthesize displayFilterKinds=_displayFilterKinds;
+@property(nonatomic) _Bool withPlainEditorialNotes; // @synthesize withPlainEditorialNotes=_withPlainEditorialNotes;
+@property(nonatomic) _Bool withSocial; // @synthesize withSocial=_withSocial;
+@property(nonatomic) long long types; // @synthesize types=_types;
+@property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(nonatomic) long long requestEndpoint; // @synthesize requestEndpoint=_requestEndpoint;
 @property(nonatomic) long long filteringPolicy; // @synthesize filteringPolicy=_filteringPolicy;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

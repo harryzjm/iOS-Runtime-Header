@@ -21,13 +21,13 @@
     long long _entityType;
     unsigned long long _libraryID;
     long long _artworkType;
-    ML3MusicLibrary *_library;
     MPMediaLibraryArtwork *_libraryArtwork;
+    ML3MusicLibrary *_library;
     ICUserIdentity *_userIdentity;
 }
 
-@property(readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 - (void)_onQueue_updateTokens;
 - (void)promoteFetchableArtworkTokenIfNeeded;
 - (void)clearFailedFetchableToken;
@@ -46,6 +46,7 @@
 @property(copy, nonatomic) NSString *availableArtworkToken; // @synthesize availableArtworkToken=_availableArtworkToken;
 @property(readonly, nonatomic) unsigned long long mediaType;
 - (id)initWithML3Library:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4;
+- (id)initWithIdentifier:(unsigned long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3;
 - (id)initWithLibrary:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4 mediaType:(unsigned long long)arg5;
 - (id)initWithLibrary:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4;
 

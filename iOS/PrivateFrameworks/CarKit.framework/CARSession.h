@@ -6,31 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class CARInputDeviceManager, CARObserverHashTable, CARSessionConfiguration, NSDictionary, NSNumber, NSString;
+@class CARInputDeviceManager, CARObserverHashTable, CARSessionConfiguration, NSNumber, NSString;
 
 @interface CARSession : NSObject
 {
     struct OpaqueFigEndpoint *_endpoint;
     _Bool _isPaired;
     _Bool _authenticated;
+    _Bool _clientIsCarPlayShell;
     CARSessionConfiguration *_configuration;
-    NSDictionary *_APEndPointInfo;
     NSString *_sourceVersion;
     CARInputDeviceManager *_inputDeviceManager;
+    NSNumber *_systemNightMode;
     CARObserverHashTable *_observers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CARObserverHashTable *observers; // @synthesize observers=_observers;
+@property(retain, nonatomic) NSNumber *systemNightMode; // @synthesize systemNightMode=_systemNightMode;
+@property(readonly, nonatomic) _Bool clientIsCarPlayShell; // @synthesize clientIsCarPlayShell=_clientIsCarPlayShell;
 @property(retain, nonatomic) CARInputDeviceManager *inputDeviceManager; // @synthesize inputDeviceManager=_inputDeviceManager;
 @property(readonly, nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
 @property(readonly, copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
-@property(readonly, copy, nonatomic) NSDictionary *APEndPointInfo; // @synthesize APEndPointInfo=_APEndPointInfo;
 @property(readonly, nonatomic) _Bool isPaired; // @synthesize isPaired=_isPaired;
 @property(readonly, nonatomic) CARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)_newObserverAdded:(id)arg1;
+- (long long)mapInterfaceStyleForScreenUUID:(id)arg1;
+- (long long)userInterfaceStyleForScreenUUID:(id)arg1;
 - (void)sendCommand:(id)arg1 withParameters:(id)arg2;
 - (void)_updateConfiguration;
 - (void)_fetchAuthenticationStatus;
@@ -49,14 +53,13 @@
 - (void)requestCarUIForURL:(id)arg1;
 - (void)requestCarUI;
 - (id)lastNavigatingBundleIdentifier;
-- (id)systemNightMode;
 - (id)MFiCertificateSerialNumber;
 - (void)setInputMode:(unsigned long long)arg1 forInputDevice:(id)arg2;
 @property(readonly, copy, nonatomic) NSNumber *electronicTollCollectionAvailable;
 @property(readonly, copy, nonatomic) NSNumber *limitUserInterfaces;
 @property(readonly, copy, nonatomic) NSNumber *nightMode;
 - (id)_fig_safe_description;
-- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
+- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 clientIsCarPlayShell:(_Bool)arg2;
 
 @end
 

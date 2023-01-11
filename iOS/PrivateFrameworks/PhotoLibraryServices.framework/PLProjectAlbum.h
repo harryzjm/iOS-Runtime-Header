@@ -10,10 +10,12 @@
 {
 }
 
-+ (_Bool)cleanupOrphanedProjectPreviewImagesInLibrary:(id)arg1 error:(id *)arg2;
 + (id)validKindsForPersistence;
++ (id)albumSupportsAssetOrderKeysPredicate;
++ (_Bool)cleanupOrphanedProjectPreviewImagesInLibrary:(id)arg1 error:(id *)arg2;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 documentType:(id)arg3 projectExtensionIdentifier:(id)arg4;
 + (id)entityName;
+- (_Bool)supportsAssetOrderKeys;
 - (id)_previewImageFilename;
 - (_Bool)setProjectPreviewImageData:(id)arg1 error:(id *)arg2;
 - (id)duplicateProjectPreviewImageData:(id)arg1 error:(id *)arg2;

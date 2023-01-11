@@ -8,7 +8,7 @@
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXAssetImportStatusObserver-Protocol.h>
 
-@class NSDate, NSMutableSet, NSString, PUAssetReference, PUAssetViewModel, PUAssetsDataSource, PUCachedMapTable, PUMediaProvider, PUReviewScreenBarsModel;
+@class NSDate, NSMutableSet, NSString, PUAssetActionManager, PUAssetReference, PUAssetViewModel, PUAssetsDataSource, PUCachedMapTable, PUMediaProvider, PUPhotoPickerResizeTaskDescriptorViewModel, PUReviewScreenBarsModel;
 @protocol PXAssetImportStatusManager;
 
 @interface PUBrowsingViewModel <PUAssetViewModelChangeObserver, PUAssetSharedViewModelChangeObserver, PXAssetImportStatusObserver>
@@ -31,6 +31,7 @@
     _Bool _accessoryViewsDefaultVisibility;
     _Bool _isChromeVisible;
     _Bool _presentingOverOneUp;
+    _Bool _lowMemoryMode;
     PUAssetsDataSource *_assetsDataSource;
     double _currentAssetTransitionProgress;
     NSString *_transitionDriverIdentifier;
@@ -38,14 +39,18 @@
     long long _videoOverlayPlayState;
     long long _lastChromeVisibilityChangeReason;
     id _lastChromeVisibilityChangeContext;
+    NSDate *_lastChromeVisibilityChangeDate;
     PUAssetReference *_trailingAssetReference;
     PUAssetReference *_leadingAssetReference;
+    NSString *_navigationBarTitle;
     PUReviewScreenBarsModel *_reviewScreenBarsModel;
+    PUPhotoPickerResizeTaskDescriptorViewModel *_resizeTaskDescriptorViewModel;
     long long __userNavigationDistance;
     long long __scrubbingSessionDistance;
     NSMutableSet *__animatingTransitionIdentifiers;
     NSMutableSet *__videoDisallowedReasons;
     PUMediaProvider *_mediaProvider;
+    PUAssetActionManager *_actionManager;
     id <PXAssetImportStatusManager> _importStatusManager;
     struct CGSize _secondScreenSize;
 }
@@ -54,17 +59,23 @@
 + (void)setAutoplayVideoMuted:(_Bool)arg1;
 + (void)_handleWillResignActiveNotification:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <PXAssetImportStatusManager> importStatusManager; // @synthesize importStatusManager=_importStatusManager;
+@property(retain, nonatomic) PUAssetActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(retain, nonatomic, setter=_setVideoDisallowedReasons:) NSMutableSet *_videoDisallowedReasons; // @synthesize _videoDisallowedReasons=__videoDisallowedReasons;
 @property(retain, nonatomic, setter=_setAnimatingTransitionIdentifiers:) NSMutableSet *_animatingTransitionIdentifiers; // @synthesize _animatingTransitionIdentifiers=__animatingTransitionIdentifiers;
 @property(nonatomic, setter=_setScrubbingSessionDistance:) long long _scrubbingSessionDistance; // @synthesize _scrubbingSessionDistance=__scrubbingSessionDistance;
 @property(nonatomic, setter=_setUserNavigationDistance:) long long _userNavigationDistance; // @synthesize _userNavigationDistance=__userNavigationDistance;
+@property(readonly, nonatomic) _Bool lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
+@property(retain, nonatomic) PUPhotoPickerResizeTaskDescriptorViewModel *resizeTaskDescriptorViewModel; // @synthesize resizeTaskDescriptorViewModel=_resizeTaskDescriptorViewModel;
 @property(retain, nonatomic) PUReviewScreenBarsModel *reviewScreenBarsModel; // @synthesize reviewScreenBarsModel=_reviewScreenBarsModel;
+@property(copy, nonatomic) NSString *navigationBarTitle; // @synthesize navigationBarTitle=_navigationBarTitle;
 @property(retain, nonatomic, setter=_setLeadingAssetReference:) PUAssetReference *leadingAssetReference; // @synthesize leadingAssetReference=_leadingAssetReference;
 @property(retain, nonatomic, setter=_setTrailingAssetReference:) PUAssetReference *trailingAssetReference; // @synthesize trailingAssetReference=_trailingAssetReference;
 @property(nonatomic) struct CGSize secondScreenSize; // @synthesize secondScreenSize=_secondScreenSize;
 @property(nonatomic, getter=isPresentingOverOneUp) _Bool presentingOverOneUp; // @synthesize presentingOverOneUp=_presentingOverOneUp;
+@property(readonly, nonatomic) NSDate *lastChromeVisibilityChangeDate; // @synthesize lastChromeVisibilityChangeDate=_lastChromeVisibilityChangeDate;
 @property(retain, nonatomic, setter=_setLastChromeVisibilityChangeContext:) id lastChromeVisibilityChangeContext; // @synthesize lastChromeVisibilityChangeContext=_lastChromeVisibilityChangeContext;
 @property(nonatomic, setter=_setLastChromeVisibilityChangeReason:) long long lastChromeVisibilityChangeReason; // @synthesize lastChromeVisibilityChangeReason=_lastChromeVisibilityChangeReason;
 @property(nonatomic, setter=setChromeVisible:) _Bool isChromeVisible; // @synthesize isChromeVisible=_isChromeVisible;
@@ -78,7 +89,6 @@
 @property(readonly, copy, nonatomic) NSString *transitionDriverIdentifier; // @synthesize transitionDriverIdentifier=_transitionDriverIdentifier;
 @property(readonly, nonatomic) double currentAssetTransitionProgress; // @synthesize currentAssetTransitionProgress=_currentAssetTransitionProgress;
 @property(retain, nonatomic) PUAssetsDataSource *assetsDataSource; // @synthesize assetsDataSource=_assetsDataSource;
-- (void).cxx_destruct;
 - (id)debugDetailedDescription;
 - (void)assetImportStatusManager:(id)arg1 didChangeStatusForAssetReference:(id)arg2;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
@@ -86,13 +96,14 @@
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAutoplayMutedDidChangeNotification:(id)arg1;
 - (long long)_importStateForAssetReference:(id)arg1;
+- (id)_filteredAllowedBadges:(id)arg1 forAssetReference:(id)arg2;
 - (id)_badgeInfoPromiseForAssetReference:(id)arg1;
 - (double)_focusValueForAsset:(id)arg1;
 - (void)_updateNeighboringAssetReferences;
 - (void)_updateAssetViewModel:(id)arg1;
 - (void)_updateAssetViewModelsIfNeeded;
 - (void)_invalidateAssetViewModel:(id)arg1;
-- (void)_invalidateNeighboringAssetViewModels;
+- (void)_invalidateCurrentAndNeighboringAssetViewModels;
 - (void)_invalidateAllAssetViewModels;
 - (void)_handleAsyncBrowsingSpeedRegimeInvalidation;
 - (void)_invalidateBrowsingSpeedRegimeAfterMaximumDelay:(double)arg1;
@@ -100,6 +111,7 @@
 - (void)_invalidateBrowsingSpeedRegime;
 - (void)_updateIfNeeded;
 - (_Bool)_needsUpdate;
+- (void)signalReviewScreenSelectionChanged;
 - (id)_assetSharedViewModelForAsset:(id)arg1 createIfNeeded:(_Bool)arg2;
 - (id)assetSharedViewModelForAsset:(id)arg1;
 - (_Bool)isTogglingCTMForAsset:(id)arg1;
@@ -126,6 +138,7 @@
 - (id)currentChange;
 - (id)newViewModelChange;
 - (id)init;
+- (id)initWithLowMemoryMode:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

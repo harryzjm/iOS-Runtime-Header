@@ -13,7 +13,9 @@
 @interface NTPBGroupViewExposure : PBCodable <NSCopying>
 {
     NSData *_articleViewingSessionId;
+    NSString *_curatedBatchId;
     int _curatedContentType;
+    NSString *_curatedSubtype;
     int _feedAutoSubscribeType;
     NSData *_feedViewExposureId;
     int _groupArticleCountInForYou;
@@ -30,7 +32,9 @@
     NSData *_groupViewExposureId;
     NSMutableArray *_groupedArticleIds;
     NSMutableArray *_groupedIssueIds;
+    NSMutableArray *_layoutIds;
     int _screenfulsFromTop;
+    NSMutableArray *_sectionIds;
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
     _Bool _isIssueContext;
@@ -56,8 +60,15 @@
     } _has;
 }
 
++ (Class)layoutIdsType;
++ (Class)sectionIdsType;
 + (Class)groupedIssueIdsType;
 + (Class)groupedArticleIdsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *layoutIds; // @synthesize layoutIds=_layoutIds;
+@property(retain, nonatomic) NSString *curatedBatchId; // @synthesize curatedBatchId=_curatedBatchId;
+@property(retain, nonatomic) NSString *curatedSubtype; // @synthesize curatedSubtype=_curatedSubtype;
+@property(retain, nonatomic) NSMutableArray *sectionIds; // @synthesize sectionIds=_sectionIds;
 @property(nonatomic) _Bool isIssueContext; // @synthesize isIssueContext=_isIssueContext;
 @property(retain, nonatomic) NSMutableArray *groupedIssueIds; // @synthesize groupedIssueIds=_groupedIssueIds;
 @property(nonatomic) int screenfulsFromTop; // @synthesize screenfulsFromTop=_screenfulsFromTop;
@@ -74,7 +85,6 @@
 @property(nonatomic) int groupDisplayRankInForYou; // @synthesize groupDisplayRankInForYou=_groupDisplayRankInForYou;
 @property(retain, nonatomic) NSMutableArray *groupedArticleIds; // @synthesize groupedArticleIds=_groupedArticleIds;
 @property(retain, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -83,6 +93,16 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)layoutIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)layoutIdsCount;
+- (void)addLayoutIds:(id)arg1;
+- (void)clearLayoutIds;
+@property(readonly, nonatomic) _Bool hasCuratedBatchId;
+@property(readonly, nonatomic) _Bool hasCuratedSubtype;
+- (id)sectionIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sectionIdsCount;
+- (void)addSectionIds:(id)arg1;
+- (void)clearSectionIds;
 @property(nonatomic) _Bool hasIsIssueContext;
 - (id)groupedIssueIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)groupedIssueIdsCount;

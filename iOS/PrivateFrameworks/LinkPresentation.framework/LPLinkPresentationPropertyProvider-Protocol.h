@@ -11,6 +11,7 @@
 @protocol LPLinkPresentationPropertyProvider <NSObject>
 
 @optional
+- (NSString *)domainNameForIndicator;
 - (LPInlineMediaPlaybackInformation *)inlinePlaybackInformation;
 - (NSNumber *)minimumHeight;
 - (UIColor *)backgroundColor;

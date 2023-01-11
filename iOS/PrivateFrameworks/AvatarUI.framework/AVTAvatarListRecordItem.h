@@ -8,16 +8,18 @@
 
 #import <AvatarUI/AVTAvatarListItem-Protocol.h>
 
-@class NSString;
+@class NSString, UIImage;
 @protocol AVTAvatarRecord;
 
 @interface AVTAvatarListRecordItem : NSObject <AVTAvatarListItem>
 {
     id <AVTAvatarRecord> _avatar;
+    UIImage *_cachedImage;
 }
 
-@property(readonly, nonatomic) id <AVTAvatarRecord> avatar; // @synthesize avatar=_avatar;
 - (void).cxx_destruct;
+@property(nonatomic) __weak UIImage *cachedImage; // @synthesize cachedImage=_cachedImage;
+@property(readonly, nonatomic) id <AVTAvatarRecord> avatar; // @synthesize avatar=_avatar;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)downcastWithRecordHandler:(CDUnknownBlockType)arg1 imageHandler:(CDUnknownBlockType)arg2 viewHandler:(CDUnknownBlockType)arg3;

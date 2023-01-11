@@ -10,7 +10,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKDevice, HKSource, HKSourceRevision, NSDate, NSDictionary, NSString, NSUUID;
+@class HKContributor, HKDevice, HKSource, HKSourceRevision, NSDate, NSDictionary, NSString, NSUUID;
 
 @interface HKObject : NSObject <HKUUIDProvider, NSCopying, NSSecureCoding>
 {
@@ -21,19 +21,21 @@
     long long _provenanceID;
     NSString *_sourceBundleIdentifier;
     double _creationTimestamp;
+    HKContributor *_contributor;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)_isConcreteObjectClass;
-+ (id)_objectWithUUID:(id)arg1 metadata:(id)arg2 sourceBundleIdentifier:(id)arg3 creationDate:(double)arg4;
 + (id)_newDataObjectWithMetadata:(id)arg1 device:(id)arg2 config:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) HKContributor *contributor; // @synthesize contributor=_contributor;
 @property(nonatomic, getter=_creationTimestamp, setter=_setCreationTimestamp:) double creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property(copy, nonatomic, getter=_sourceBundleIdentifier, setter=_setSourceBundleIdentifier:) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property(readonly) HKDevice *device; // @synthesize device=_device;
 @property(readonly) HKSourceRevision *sourceRevision; // @synthesize sourceRevision=_sourceRevision;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic, getter=_timeZoneName) NSString *timeZoneName;
 @property(copy, nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate;
+- (void)_setContributor:(id)arg1;
 - (void)_setDevice:(id)arg1;
 - (void)_setSourceRevision:(id)arg1;
 - (id)_source;
@@ -53,7 +55,7 @@
 - (_Bool)_shouldNotifyOnInsert;
 - (id)_validateConfigurationAllowingPrivateMetadata:(_Bool)arg1 applicationSDKVersion:(unsigned int)arg2;
 - (id)_validateConfiguration;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (_Bool)prepareForDelivery:(id *)arg1;
 - (_Bool)prepareForSaving:(id *)arg1;
 - (_Bool)_validateForSavingWithClientEntitlements:(id)arg1 applicationSDKVersion:(unsigned int)arg2 error:(id *)arg3;

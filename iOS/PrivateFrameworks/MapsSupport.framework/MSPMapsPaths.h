@@ -29,7 +29,7 @@
     NSString *_failedGeoSearchesSettingsPath;
     NSString *_failedDirectionsSettingsPath;
     NSString *_failedGeoDirectionsSettingsPath;
-    NSString *_transitAppRankerPath;
+    NSString *_routingAppLaunchRecordPath;
     NSString *_directionsCachePath;
     NSString *_pinsSettingsPath;
     NSString *_reportAProblemDirectionsRecordingsPath;
@@ -46,7 +46,7 @@
 + (id)reportAProblemDirectionsRecordingsPath;
 + (id)pinsSettingsPath;
 + (id)directionsCachePath;
-+ (id)transitAppRankerPath;
++ (id)routingAppLaunchRecordPath;
 + (id)failedGeoDirectionsSettingsPath;
 + (id)failedDirectionsSettingsPath;
 + (id)failedGeoSearchesSettingsPath;
@@ -82,7 +82,7 @@
 @property(readonly, nonatomic) NSString *reportAProblemDirectionsRecordingsPath; // @synthesize reportAProblemDirectionsRecordingsPath=_reportAProblemDirectionsRecordingsPath;
 @property(readonly, nonatomic) NSString *pinsSettingsPath; // @synthesize pinsSettingsPath=_pinsSettingsPath;
 @property(readonly, nonatomic) NSString *directionsCachePath; // @synthesize directionsCachePath=_directionsCachePath;
-@property(readonly, nonatomic) NSString *transitAppRankerPath; // @synthesize transitAppRankerPath=_transitAppRankerPath;
+@property(readonly, nonatomic) NSString *routingAppLaunchRecordPath; // @synthesize routingAppLaunchRecordPath=_routingAppLaunchRecordPath;
 @property(readonly, nonatomic) NSString *failedGeoDirectionsSettingsPath; // @synthesize failedGeoDirectionsSettingsPath=_failedGeoDirectionsSettingsPath;
 @property(readonly, nonatomic) NSString *failedDirectionsSettingsPath; // @synthesize failedDirectionsSettingsPath=_failedDirectionsSettingsPath;
 @property(readonly, nonatomic) NSString *failedGeoSearchesSettingsPath; // @synthesize failedGeoSearchesSettingsPath=_failedGeoSearchesSettingsPath;

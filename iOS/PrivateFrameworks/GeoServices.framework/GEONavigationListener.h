@@ -28,15 +28,14 @@
     CDUnknownBlockType _positionFromSignUpdatedHandler;
     CDUnknownBlockType _positionFromManeuverUpdatedHandler;
     CDUnknownBlockType _positionFromDestinationUpdatedHandler;
-    CDUnknownBlockType _trafficIncidentAlertDetailsDataUpdatedHandler;
     CDUnknownBlockType _navigationVoiceVolumeUpdatedHandler;
     unsigned long long _navigationState;
     int _transportType;
     NSString *_currentRoadName;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType navigationVoiceVolumeUpdatedHandler; // @synthesize navigationVoiceVolumeUpdatedHandler=_navigationVoiceVolumeUpdatedHandler;
-@property(copy, nonatomic) CDUnknownBlockType trafficIncidentAlertDetailsDataUpdatedHandler; // @synthesize trafficIncidentAlertDetailsDataUpdatedHandler=_trafficIncidentAlertDetailsDataUpdatedHandler;
 @property(copy, nonatomic) CDUnknownBlockType positionFromDestinationUpdatedHandler; // @synthesize positionFromDestinationUpdatedHandler=_positionFromDestinationUpdatedHandler;
 @property(copy, nonatomic) CDUnknownBlockType positionFromManeuverUpdatedHandler; // @synthesize positionFromManeuverUpdatedHandler=_positionFromManeuverUpdatedHandler;
 @property(copy, nonatomic) CDUnknownBlockType positionFromSignUpdatedHandler; // @synthesize positionFromSignUpdatedHandler=_positionFromSignUpdatedHandler;
@@ -49,10 +48,8 @@
 @property(readonly, nonatomic) NSString *currentRoadName; // @synthesize currentRoadName=_currentRoadName;
 @property(readonly, nonatomic) unsigned long long navigationState; // @synthesize navigationState=_navigationState;
 @property(nonatomic) __weak id <GEONavigationListenerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (unsigned long long)_listenerStateForSessionState:(unsigned long long)arg1;
 - (void)_notifyWithNavigationVoiceVolume:(int)arg1;
-- (void)_notifyWithTrafficIncidentDetailsData:(id)arg1;
 - (void)_notifyWithPositionFromDestination:(CDStruct_c3b9c2ee)arg1;
 - (void)_notifyWithPositionFromManeuver:(CDStruct_c3b9c2ee)arg1;
 - (void)_notifyWithPositionFromSign:(CDStruct_c3b9c2ee)arg1;
@@ -65,7 +62,6 @@
 - (void)_notifyWithRouteSummary:(id)arg1;
 - (void)currentRoadNameUpdated:(id)arg1;
 - (void)navigationUpdatedWithVoiceVolumeData:(id)arg1;
-- (void)routeSummaryUpdatedWithTrafficIncidentAlertDetailsData:(id)arg1;
 - (void)routeSummaryUpdatedWithRideSelectionData:(id)arg1;
 - (void)routeSummaryUpdatedWithPositionFromDestinationData:(id)arg1;
 - (void)routeSummaryUpdatedWithPositionFromManeuverData:(id)arg1;
@@ -81,7 +77,6 @@
 - (void)_close;
 - (void)_open;
 - (void)requestNavigationVoiceVolume;
-- (void)requestTrafficIncidentDetailsData;
 - (void)requestPositionFromDestination;
 - (void)requestPositionFromManeuver;
 - (void)requestPositionFromSign;

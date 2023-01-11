@@ -16,8 +16,8 @@
     NSObject<OS_os_log> *_log;
 }
 
-@property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 - (void)deleteImageRecentsMetadataRequestFailed:(id)arg1;
 - (void)setContactImageDataZeroCropRect:(id)arg1 format:(const char *)arg2;
 - (void)setContactImageData:(id)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;
@@ -46,8 +46,8 @@
 - (void)_commonFetchContactsMatchingPredicate:(id)arg1 fetchType:(const char *)arg2 unifyResults:(_Bool)arg3 keysToFetch:(id)arg4;
 - (void)noAccessToContactsWithError:(id)arg1;
 - (void)contactsAccessWasGranted:(_Bool)arg1;
-- (void)tccAccessRequestWasDenied;
-- (void)tccAccessPreflightWasDenied;
+- (void)requestAuthorizationWasDenied;
+- (void)accessAuthorizationStatusWasDenied;
 - (void)postingNotification:(CDUnknownBlockType)arg1;
 - (void)servicingContactsRequest:(CDUnknownBlockType)arg1;
 - (void)settingDefaultAccount:(CDUnknownBlockType)arg1;

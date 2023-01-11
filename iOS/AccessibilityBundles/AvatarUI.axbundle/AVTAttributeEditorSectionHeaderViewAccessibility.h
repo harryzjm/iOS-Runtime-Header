@@ -11,10 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)createAccessoryButtonIfNeeded;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

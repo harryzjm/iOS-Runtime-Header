@@ -39,6 +39,7 @@
 - (_Bool)enumerateAssociatedSampleValuesOfType:(id)arg1 interval:(id)arg2 profile:(id)arg3 error:(id *)arg4 sampleHandler:(CDUnknownBlockType)arg5;
 - (_Bool)enumerateAssociatedUUIDsWithTransaction:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (long long)associateObject:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (_Bool)setWorkoutConfiguration:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (_Bool)setDeviceEntity:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)metadataWithTransaction:(id)arg1 error:(id *)arg2;
 - (_Bool)setMetadata:(id)arg1 transaction:(id)arg2 error:(id *)arg3;

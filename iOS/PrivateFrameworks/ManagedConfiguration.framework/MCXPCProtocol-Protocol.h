@@ -6,9 +6,10 @@
 
 #import <ManagedConfiguration/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
 
 @protocol MCXPCProtocol <NSObject>
+- (void)debugRescheduleBackgroundActivity:(long long)arg1 startDate:(NSDate *)arg2 gracePeriod:(NSNumber *)arg3 repeatingInterval:(NSNumber *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)managingOrganizationInformationWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)createMDMUnlockTokenIfNeededWithPasscode:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)isPasscodeCompliantWithNamedPolicy:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
@@ -22,13 +23,6 @@
 - (void)setupAssistantDidFinishCompletion:(void (^)(NSError *))arg1;
 - (void)hasMailAccountsWithFilteringEnabled:(_Bool)arg1 sourceAccountManagement:(int)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)allowedKeyboardBundleIDsAfterApplyingFilterToBundleIDs:(NSArray *)arg1 hostAppBundleID:(NSString *)arg2 accountIsManaged:(_Bool)arg3 completion:(void (^)(NSArray *))arg4;
-- (void)unstashWhitelistURLStringsWithCompletion:(void (^)(NSError *))arg1;
-- (void)stashWhitelistURLStringsWithCompletion:(void (^)(NSError *))arg1;
-- (void)unstashBlacklistURLStringsWithCompletion:(void (^)(NSError *))arg1;
-- (void)stashBlacklistURLStringsWithCompletion:(void (^)(NSError *))arg1;
-- (void)removeWebContentFilterUserBlacklistedURLString:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)unstashUserBookmarksFromLabel:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)stashUserBookmarks:(NSArray *)arg1 withLabel:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setUserBookmarks:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)storeActivationRecord:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)createActivationLockBypassCodeWithCompletion:(void (^)(NSString *, NSError *))arg1;
@@ -46,8 +40,8 @@
 - (void)recomputeUserComplianceWarningWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyHaveSeenComplianceMessageWithLastLockDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyStartComplianceTimer:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)removeProvisioningProfileWithUUID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)installProvisioningProfileData:(NSData *)arg1 managingProfileIdentifer:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)removeProvisioningProfileWithUUID:(NSString *)arg1 managingProfileIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)installProvisioningProfileData:(NSData *)arg1 managingProfileIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)storeCertificateData:(NSData *)arg1 forIPCUIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)openSensitiveURL:(NSString *)arg1 unlock:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeValueSetting:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -76,8 +70,6 @@
 - (void)notifyDeviceUnlockedWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyDeviceUnlockedAndPasscodeRequiredWithCompletion:(void (^)(NSError *))arg1;
 - (void)waitForMigrationIncludingPostRestoreMigration:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
-- (void)addBookmark:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)addAllowedURLString:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setAllowedURLStrings:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setSpellCheckAllowed:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setKeyboardShortcutsAllowed:(_Bool)arg1 completion:(void (^)(NSError *))arg2;

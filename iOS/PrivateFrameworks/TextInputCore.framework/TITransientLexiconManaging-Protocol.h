@@ -11,12 +11,13 @@
 @protocol TITransientLexiconManaging <TIKeyboardActivityObserving>
 @property(readonly, nonatomic) const struct _LXLexicon *namedEntityPhraseLexicon;
 @property(readonly, nonatomic) const struct _LXLexicon *namedEntityLexicon;
+- (void)provideFeedbackForString:(NSString *)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)debugLogEntities;
-- (void)getOnce:(void (^)(struct NSDictionary *))arg1;
+- (void)getOnce:(void (^)(NSDictionary *))arg1;
 - (_Bool)searchForWordCaseInsensitive:(NSString *)arg1;
 - (_Bool)searchForWord:(NSString *)arg1;
-- (void)removeContactObserver:(void (^)(struct NSDictionary *))arg1;
-- (void (^)(struct NSDictionary *))addContactObserver:(void (^)(struct NSDictionary *))arg1;
+- (void)removeContactObserver:(void (^)(NSDictionary *))arg1;
+- (void (^)(NSDictionary *))addContactObserver:(void (^)(NSDictionary *))arg1;
 - (void)loadLexicons;
 @end
 

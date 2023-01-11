@@ -20,6 +20,7 @@
     unsigned long long _animationFrameOffset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long animationFrameOffset; // @synthesize animationFrameOffset=_animationFrameOffset;
 @property(copy, nonatomic) NSArray *frames; // @synthesize frames=_frames;
 @property(retain, nonatomic) UIImageView *irisBadgeView; // @synthesize irisBadgeView=_irisBadgeView;
@@ -28,7 +29,6 @@
 @property(retain, nonatomic) CKBalloonImageView *outlineMask; // @synthesize outlineMask=_outlineMask;
 @property(retain, nonatomic) CKBalloonImageView *tailMask; // @synthesize tailMask=_tailMask;
 @property(retain, nonatomic) CKAnimatedImage *animatedImage; // @synthesize animatedImage=_animatedImage;
-- (void).cxx_destruct;
 - (void)clearFilters;
 - (void)addFilter:(id)arg1;
 - (void)updateAnimationTimerObserving;
@@ -52,6 +52,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(_Bool)arg4;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
 - (void)configureForComposition:(id)arg1;
 - (void)configureForTranscriptPlugin:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKNumericalResultView;
+@class TLKHeaderView;
 
 @interface SearchUICenteredResultTableViewCell
 {
@@ -14,7 +14,7 @@
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 
 // Remaining properties
-@property(retain, nonatomic) TLKNumericalResultView *sizingContainer; // @dynamic sizingContainer;
+@property(retain, nonatomic) TLKHeaderView *sizingContainer; // @dynamic sizingContainer;
 
 @end
 

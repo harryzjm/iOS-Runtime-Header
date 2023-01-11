@@ -6,32 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, RTCReporting, TVPPlayer;
+@class RTCReporting, TVPPlayer;
 
 __attribute__((visibility("hidden")))
 @interface TVPPlayerReporter : NSObject
 {
     TVPPlayer *_player;
     RTCReporting *_rtcAgent;
-    NSString *_optFlag;
-    double _timeWatched;
-    double _timeWatchedStart;
     id _reportingHierarchyToken;
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
-@property double timeWatchedStart; // @synthesize timeWatchedStart=_timeWatchedStart;
-@property double timeWatched; // @synthesize timeWatched=_timeWatched;
-@property(retain) NSString *optFlag; // @synthesize optFlag=_optFlag;
 @property(retain) RTCReporting *rtcAgent; // @synthesize rtcAgent=_rtcAgent;
 @property(nonatomic) __weak TVPPlayer *player; // @synthesize player=_player;
-- (void).cxx_destruct;
 - (id)_rtcAgentUserInfo;
-- (void)_sendSessionSummaryIfNecessary;
 - (void)_sendPlaybackStartupEventsIfNecessary;
 - (void)_sendRTCEvent:(id)arg1 withCategory:(unsigned short)arg2 type:(unsigned short)arg3 values:(id)arg4;
-- (id)_gatherSessionSummary;
 - (void)_playerCurrentMediaItemDidChange:(id)arg1;
 - (void)_playerCurrentMediaItemWillChange:(id)arg1;
 - (void)_tearDownRTCAgent;

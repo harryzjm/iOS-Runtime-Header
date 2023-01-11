@@ -33,6 +33,7 @@
     ASVRubberBand *_rubberBand;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) float scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(nonatomic) float scaleOvershoot; // @synthesize scaleOvershoot=_scaleOvershoot;
 @property(retain, nonatomic) ASVRubberBand *rubberBand; // @synthesize rubberBand=_rubberBand;
@@ -55,7 +56,6 @@
 @property(nonatomic) MISSING_TYPE *initialFirstTouchLocation; // @synthesize initialFirstTouchLocation=_initialFirstTouchLocation;
 @property(retain, nonatomic) id <ASVTouch> secondTouch; // @synthesize secondTouch=_secondTouch;
 @property(retain, nonatomic) id <ASVTouch> firstTouch; // @synthesize firstTouch=_firstTouch;
-- (void).cxx_destruct;
 - (void)finishGesture;
 - (void)updateScalingWithSpan: /* Error: Ran out of types for this method. */;
 - (_Bool)scaleIsWithinSnapRange:(float)arg1 snapTarget:(float)arg2;

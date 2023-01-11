@@ -16,23 +16,28 @@
     PGManager *_graphManager;
     NSObject<OS_os_log> *_loggingConnection;
     NSArray *_existingSuggestions;
-    NSArray *_existingMemories;
+    NSArray *_collidableMemories;
     PGSuggestionNotificationProfile *_notificationProfile;
+    NSArray *_deniedSuggestions;
 }
 
 + (id)availableSuggestionTypeInfosWithProfile:(unsigned char)arg1;
-+ (id)suggesterClassesWithProfile:(unsigned char)arg1;
++ (id)suggestionSubtypesWithProfile:(unsigned char)arg1;
 + (id)suggestionTypesWithProfile:(unsigned char)arg1;
++ (id)suggesterClassesWithProfile:(unsigned char)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *deniedSuggestions; // @synthesize deniedSuggestions=_deniedSuggestions;
 @property(readonly, nonatomic) PGSuggestionNotificationProfile *notificationProfile; // @synthesize notificationProfile=_notificationProfile;
-@property(retain, nonatomic) NSArray *existingMemories; // @synthesize existingMemories=_existingMemories;
+@property(retain, nonatomic) NSArray *collidableMemories; // @synthesize collidableMemories=_collidableMemories;
 @property(retain, nonatomic) NSArray *existingSuggestions; // @synthesize existingSuggestions=_existingSuggestions;
 @property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property(readonly, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
 @property(readonly, nonatomic) unsigned char profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
+- (id)existingSuggestionsWithState:(unsigned short)arg1 count:(unsigned long long)arg2;
 - (id)infosWithSuggestions:(id)arg1;
 - (id)infoWithSuggestion:(id)arg1;
 - (_Bool)suggestion:(id)arg1 isEqualToSuggestion:(id)arg2;
+- (_Bool)_suggestionIsColliding:(id)arg1 relaxCollisionRules:(_Bool)arg2;
 - (id)uncoordinatedSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)coordinatedSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)activeSuggestersWithOptions:(id)arg1;
@@ -45,10 +50,10 @@
 - (id)suggestionsByCollisionReasonCollidingWithSuggestion:(id)arg1 inSuggestions:(id)arg2 relaxCollisionRules:(_Bool)arg3;
 - (id)anySuggestionCollidingWithSuggestion:(id)arg1 inSuggestions:(id)arg2 relaxCollisionRules:(_Bool)arg3 collisionReason:(unsigned long long *)arg4;
 - (_Bool)supportsRelaxedCollisionRulesForSuggester:(id)arg1;
+- (unsigned long long)deniedSuggestion:(id)arg1 collidesWithSuggestion:(id)arg2;
 - (unsigned long long)outstanderSuggestion:(id)arg1 collidesWithSuggestion:(id)arg2 relaxCollisionRules:(_Bool)arg3;
 - (unsigned long long)singleAssetSuggestion:(id)arg1 collidesWithSuggestion:(id)arg2;
 - (unsigned long long)reasonForSuggestion:(id)arg1 collidingWithSuggestion:(id)arg2 relaxCollisionRules:(_Bool)arg3;
-@property(readonly, nonatomic) NSArray *assetPropertySetsForCuration;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
 - (id)initWithProfile:(unsigned char)arg1 graphManager:(id)arg2;
 

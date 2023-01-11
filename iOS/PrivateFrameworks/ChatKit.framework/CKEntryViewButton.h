@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIVisualEffectView;
+#import <ChatKit/_UICursorInteractionDelegate-Protocol.h>
 
-@interface CKEntryViewButton : UIView
+@class NSString, UIButton, UIVisualEffectView;
+
+@interface CKEntryViewButton : UIView <_UICursorInteractionDelegate>
 {
     BOOL _ckTintColor;
     _Bool _wantsVibrancy;
@@ -25,18 +27,26 @@
 + (id)imageNameForEntryViewButtonType:(long long)arg1;
 + (id)entryViewButtonOfType:(long long)arg1;
 + (id)entryViewButtonOfType:(long long)arg1 wantsVibrancy:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffectView *vibrancyView; // @synthesize vibrancyView=_vibrancyView;
 @property(nonatomic) long long entryViewButtonType; // @synthesize entryViewButtonType=_entryViewButtonType;
 @property(nonatomic) _Bool wantsVibrancy; // @synthesize wantsVibrancy=_wantsVibrancy;
 @property(nonatomic) BOOL ckTintColor; // @synthesize ckTintColor=_ckTintColor;
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
-- (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (void)setTintedImageForButtonType:(long long)arg1 tintColor:(BOOL)arg2;
 - (void)setDefaultImage;
 - (_Bool)isEnabled;
 - (void)setEnabled:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 wantsVibrancy:(_Bool)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_recordIDByRequestID;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isDeleted; // @synthesize isDeleted=_isDeleted;
 @property(retain, nonatomic) NSMutableDictionary *recordIDByRequestID; // @synthesize recordIDByRequestID=_recordIDByRequestID;
 @property(retain, nonatomic) NSString *minimumVersionETag; // @synthesize minimumVersionETag=_minimumVersionETag;
@@ -25,14 +26,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property(copy, nonatomic) CDUnknownBlockType recordVersionsFetchedBlock; // @synthesize recordVersionsFetchedBlock=_recordVersionsFetchedBlock;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
-- (int)operationType;
-- (id)initWithRecordIDs:(id)arg1 desiredKeys:(id)arg2 minimumVersionETag:(id)arg3;
+- (id)initWithOperation:(id)arg1 recordIDs:(id)arg2 desiredKeys:(id)arg3 minimumVersionETag:(id)arg4;
 
 @end
 

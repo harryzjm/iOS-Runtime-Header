@@ -8,7 +8,7 @@
 
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIViewPropertyAnimator, UIVisualEffectView;
+@class AVLayoutItemAttributes, AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIViewPropertyAnimator, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface AVButton : UIButton <AVPlaybackControlsViewItem>
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     _Bool _disablesHighlightWhenLongPressed;
     _Bool _clampsHitRectInsetsWhenContainedInScrollableView;
     _Bool _wasForcePressTriggered;
+    AVLayoutItemAttributes *_layoutAttributes;
     long long _tintEffectStyle;
     double _forceThreshold;
     double _force;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)buttonWithAccessibilityIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property(retain, nonatomic) AVUserInteractionObserverGestureRecognizer *userInteractionGestureRecognizer; // @synthesize userInteractionGestureRecognizer=_userInteractionGestureRecognizer;
 @property(nonatomic) __weak NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
@@ -74,22 +76,25 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long tintEffectStyle; // @synthesize tintEffectStyle=_tintEffectStyle;
 @property(nonatomic) _Bool treatsForcePressAsLongPress; // @synthesize treatsForcePressAsLongPress=_treatsForcePressAsLongPress;
 @property(nonatomic) _Bool wasLongPressed; // @synthesize wasLongPressed=_wasLongPressed;
+@property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property(nonatomic) _Bool hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property(nonatomic) _Bool hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
 @property(nonatomic, getter=isIncluded) _Bool included; // @synthesize included=_included;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 @property(nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
-- (void).cxx_destruct;
+@property(readonly, copy) NSString *debugDescription;
 - (double)_imageViewAlpha;
 - (id)_preferredImageName;
 - (void)_updateBackgroundEffectViewIsHidden;
 - (void)_updateEdgeInsets;
-- (void)_updateIsHiddenAndAlpha;
+- (void)_updateTintColorIfNeeded;
 - (void)_updateImageIfNeeded;
+- (void)_updateLayoutItem;
 - (void)_resetTrackedState;
 - (void)_handleUserInteractionGestureRecognizer:(id)arg1;
 - (struct CGSize)_preferredLayoutSize;
+- (void)layoutAttributesDidChange;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -104,11 +109,10 @@ __attribute__((visibility("hidden")))
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)willMoveToWindow:(id)arg1;
+- (struct CGSize)minimumSize;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
-- (void)setHidden:(_Bool)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

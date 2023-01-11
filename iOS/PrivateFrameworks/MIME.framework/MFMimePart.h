@@ -120,6 +120,7 @@
 - (void)_clearNextAndSibling;
 - (void)dealloc;
 - (void)_setObjectInOtherIvars:(id)arg1 forKey:(id)arg2;
+- (_Bool)parseMimeBodyFromHeaderData:(id)arg1 bodyData:(id)arg2 isPartial:(_Bool)arg3;
 - (_Bool)parseMimeBodyDownloadIfNecessary:(_Bool)arg1;
 - (_Bool)parseMimeBody;
 - (id)partNumber;

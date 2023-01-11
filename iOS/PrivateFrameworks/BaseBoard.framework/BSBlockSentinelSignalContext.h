@@ -17,12 +17,9 @@
     id _context;
 }
 
-+ (id)failureContext;
-+ (id)context;
-@property(nonatomic, getter=isFailed) _Bool failed; // @synthesize failed=_failed;
-@property(nonatomic, getter=isComplete) _Bool complete; // @synthesize complete=_complete;
-@property(nonatomic) __weak id context; // @synthesize context=_context;
-- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isFailed) _Bool failed; // @synthesize failed=_failed;
+@property(readonly, nonatomic, getter=isComplete) _Bool complete; // @synthesize complete=_complete;
+@property(readonly, nonatomic) id context; // @synthesize context=_context;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

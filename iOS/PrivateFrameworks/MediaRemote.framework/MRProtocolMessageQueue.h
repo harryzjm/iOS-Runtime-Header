@@ -19,10 +19,9 @@
 }
 
 - (void).cxx_destruct;
-- (id)_dataForMessage:(id)arg1;
 - (_Bool)reply:(id)arg1;
 - (void)flush;
-- (void)enqueueMessage:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
+- (void)enqueueMessage:(id)arg1 expectedMessage:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3 queue:(id)arg4;
 @property(nonatomic) __weak id <MRProtocolMessageQueueDelegate> delegate;
 @property(nonatomic) __weak id <MRProtocolMessageQueueDataSource> datasource;
 - (void)dealloc;

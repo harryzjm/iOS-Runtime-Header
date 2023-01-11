@@ -15,8 +15,14 @@
     __UIDiffableDataSourceSnapshot *_impl;
 }
 
-@property(readonly, nonatomic) __UIDiffableDataSourceSnapshot *impl; // @synthesize impl=_impl;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __UIDiffableDataSourceSnapshot *impl; // @synthesize impl=_impl;
+- (id)state;
+- (id)_identifierAfterIdentifier:(id)arg1;
+- (id)_identifierBeforeIdentifier:(id)arg1;
+- (struct _NSRange)sectionGlobalItemRangeForSection:(long long)arg1;
+- (id)indexPathForIdentifier:(id)arg1;
+- (id)identifierForIndexPath:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reloadSectionsWithIdentifiers:(id)arg1;
@@ -46,6 +52,7 @@
 @property(readonly, nonatomic) long long numberOfItems;
 - (id)description;
 - (id)init;
+- (id)initWithState:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
 
 @end

@@ -42,6 +42,7 @@
 - (void)requestImagesForLeaderboardSetsWithHandler:(CDUnknownBlockType)arg1;
 - (void)requestDashboardLogoImageWithHandler:(CDUnknownBlockType)arg1;
 - (void)dashboardDidChangeToLeaderboardIdentifier:(id)arg1;
+- (void)dashboardDidChangeToLeaderboardPlayerScope:(long long)arg1;
 - (void)dashboardDidChangeToLeaderboardTimeScope:(long long)arg1;
 - (void)dashboardDidChangeToViewState:(long long)arg1;
 - (void)quitTurnBasedMatch:(id)arg1;
@@ -56,6 +57,7 @@
 - (void)resetPrivateViewController;
 - (void)constructPrivateViewController;
 - (void)presentInitialViewController:(id)arg1;
+- (_Bool)shouldAnimatePresentationForPrivateViewController:(id)arg1;
 - (void)messageFromClient:(id)arg1;
 - (void)nudge;
 - (void)serviceViewControllerCreated:(id)arg1;

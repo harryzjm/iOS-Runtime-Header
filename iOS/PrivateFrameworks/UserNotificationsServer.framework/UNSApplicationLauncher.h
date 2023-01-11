@@ -22,7 +22,7 @@
 - (void)_queue_removeProcessAssertionsHavingReason:(unsigned int)arg1 forBundleID:(id)arg2 invalidate:(_Bool)arg3;
 - (void)_queue_removeProcessAssertion:(id)arg1 forBundleID:(id)arg2 invalidate:(_Bool)arg3;
 - (void)_queue_addProcessAssertion:(id)arg1 forBundleID:(id)arg2;
-- (id)_queue_newProcessAssertionForBundleID:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 watchdogInterval:(double)arg5 acquisitionHandler:(CDUnknownBlockType)arg6 invalidationHandler:(CDUnknownBlockType)arg7;
+- (id)_queue_newProcessAssertionForBundleID:(id)arg1 PID:(int)arg2 flags:(unsigned int)arg3 reason:(unsigned int)arg4 name:(id)arg5 watchdogInterval:(double)arg6 acquisitionHandler:(CDUnknownBlockType)arg7 invalidationHandler:(CDUnknownBlockType)arg8;
 - (void)_queue_willPresentNotification:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)willPresentNotification:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)_queue_actionForNotificationResponse:(id)arg1 bundleIdentifier:(id)arg2 withHandler:(CDUnknownBlockType)arg3;

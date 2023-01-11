@@ -16,6 +16,7 @@
     MISSING_TYPE *initialZoomFactor;
 }
 
++ (_Bool)isZoomSupported;
 - (id)init;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SSVPlayActivityEnqueuerProperties;
+@class ICPlayActivityEnqueuerProperties, NSString;
 
 @interface MPCReportingIdentityProperties : NSObject
 {
@@ -14,15 +14,15 @@
     NSString *_householdID;
     unsigned long long _storeAccountID;
     NSString *_storeFrontID;
-    SSVPlayActivityEnqueuerProperties *_enqueuerProperties;
+    ICPlayActivityEnqueuerProperties *_enqueuerProperties;
 }
 
-@property(copy, nonatomic) SSVPlayActivityEnqueuerProperties *enqueuerProperties; // @synthesize enqueuerProperties=_enqueuerProperties;
+- (void).cxx_destruct;
+@property(copy, nonatomic) ICPlayActivityEnqueuerProperties *enqueuerProperties; // @synthesize enqueuerProperties=_enqueuerProperties;
 @property(nonatomic) _Bool hasSubscriptionPlaybackCapability; // @synthesize hasSubscriptionPlaybackCapability=_hasSubscriptionPlaybackCapability;
 @property(copy, nonatomic) NSString *storeFrontID; // @synthesize storeFrontID=_storeFrontID;
 @property(nonatomic) unsigned long long storeAccountID; // @synthesize storeAccountID=_storeAccountID;
 @property(copy, nonatomic) NSString *householdID; // @synthesize householdID=_householdID;
-- (void).cxx_destruct;
 
 @end
 

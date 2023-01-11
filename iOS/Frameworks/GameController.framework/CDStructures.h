@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class NSObject;
 
 #pragma mark Blocks
 
@@ -17,16 +17,19 @@ struct CGPoint {
     double y;
 };
 
-struct GCExtendedGamepadElementInitInfo {
-    _Bool _field1;
-    _Bool _field2;
+struct CGRect {
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
-struct GCExtendedGamepadInitWithControllerInitInfo {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    struct GCExtendedGamepadElementInitInfo _field4[16];
+struct CGSize {
+    double width;
+    double height;
+};
+
+struct FixedParam {
+    unsigned int _field1;
+    float _field2;
 };
 
 struct GCQuaternion {
@@ -36,15 +39,91 @@ struct GCQuaternion {
     double w;
 };
 
+struct HapticCommand {
+    struct MessageHeader _field1;
+    unsigned int _field2;
+    double _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    union u _field6;
+};
+
+struct HapticSharedMemory {
+    CDUnknownFunctionPointerType *_vptr$SharableMemoryBase;
+    _Bool mIsOwner;
+    _Bool mWasMapped;
+    unsigned long long mSize;
+    void *mBuffer;
+    unsigned int mPort;
+    int mFileDesc;
+    int mSerial;
+    NSObject *mXPCObject;
+};
+
+struct ItemList<FixedParam, 8> {
+    unsigned int _field1;
+    struct FixedParam _field2[8];
+};
+
+struct ItemList<ParamPoint, 16> {
+    unsigned int _field1;
+    struct ParamPoint _field2[16];
+};
+
+struct MessageHeader {
+    unsigned short _field1;
+    unsigned short _field2;
+};
+
+struct ParamPoint {
+    float _field1;
+    float _field2;
+};
+
+struct SequenceChannelParam {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    float _field3;
+};
+
+struct SequenceParam {
+    unsigned short _field1;
+    float _field2;
+};
+
+struct TokenAndParams {
+    unsigned long long _field1;
+    struct ItemList<FixedParam, 8> _field2;
+};
+
+struct UsagePage_Usage_Pair {
+    long long usagePage;
+    long long usage;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct pair<bool, float> {
+    _Bool _field1;
+    float _field2;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    MISSING_TYPE *vector;
-} CDStruct_0e8a9a91;
+    unsigned long long mask;
+    float buttons[41];
+} CDStruct_5be5f302;
 
 typedef struct {
     float _field1[4];
 } CDStruct_212a8bf9;
+
+typedef struct {
+    unsigned int val[8];
+} CDStruct_4c969caf;
 
 typedef struct {
     int _field1;
@@ -64,6 +143,35 @@ typedef struct {
     int _field15;
 } CDStruct_6ad99454;
 
+typedef struct {
+    id _field1;
+    _Bool _field2;
+    _Bool _field3;
+    union {
+        struct {
+            int _field1;
+            _Bool _field2;
+            float _field3;
+        } _field1;
+        struct {
+            int _field1;
+            int _field2;
+            int _field3;
+            int _field4;
+        } _field2;
+    } _field4;
+    int _field5;
+    _Bool _field6;
+    _Bool _field7;
+    _Bool _field8;
+    id _field9;
+    id _field10;
+} CDStruct_e11ff636;
+
+typedef struct {
+    CDStruct_e11ff636 _field1[16];
+} CDStruct_8de101df;
+
 // Ambiguous groups
 typedef struct {
     double _field1;
@@ -82,4 +190,20 @@ typedef struct {
     double y;
     double z;
 } CDStruct_31142d93;
+
+typedef struct pair<bool, float> {
+    _Bool _field1;
+    float _field2;
+} pair_218a80e9;
+
+#pragma mark Named Unions
+
+union u {
+    struct TokenAndParams _field1;
+    struct SequenceChannelParam _field2;
+    struct SequenceParam _field3;
+    float _field4;
+    double _field5;
+    struct ItemList<ParamPoint, 16> _field6;
+};
 

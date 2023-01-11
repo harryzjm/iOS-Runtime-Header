@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString;
+@class NSString, SBFCARendererImageRepresentation, UIColor;
 
 @protocol SBRendererServiceProtocol
-- (void)service_applyMaterialRecipe:(NSData *)arg1 recipeName:(NSString *)arg2 weighting:(double)arg3 downsampleFactor:(double)arg4 withReply:(void (^)(IOSurface *))arg5;
-- (void)service_applyWallpaperTreatment:(NSData *)arg1 needsLumaTreatment:(_Bool)arg2 needsDimmingTreatment:(_Bool)arg3 downsampleFactor:(double)arg4 withReply:(void (^)(IOSurface *))arg5;
+- (void)service_warmup:(void (^)(_Bool))arg1;
+- (void)service_applyMaterialRecipe:(SBFCARendererImageRepresentation *)arg1 recipeName:(NSString *)arg2 containingBundleIdentifier:(NSString *)arg3 weighting:(double)arg4 downsampleFactor:(double)arg5 withReply:(void (^)(IOSurface *))arg6;
+- (void)service_applyWallpaperTreatment:(SBFCARendererImageRepresentation *)arg1 needsLumaTreatment:(_Bool)arg2 needsDimmingTreatment:(_Bool)arg3 downsampleFactor:(double)arg4 averageColor:(UIColor *)arg5 withReply:(void (^)(IOSurface *))arg6;
 @end
 

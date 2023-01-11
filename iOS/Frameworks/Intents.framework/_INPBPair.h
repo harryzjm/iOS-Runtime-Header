@@ -18,7 +18,6 @@
         unsigned int repeated:1;
     } _has;
     _Bool _repeated;
-    _Bool __encodeLegacyGloryData;
     NSString *_key;
     NSArray *_pairCurrencyAmountValues;
     NSArray *_pairCustomObjects;
@@ -49,7 +48,7 @@
 + (Class)pairDataStringType;
 + (Class)pairCustomObjectType;
 + (Class)pairCurrencyAmountValueType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool repeated; // @synthesize repeated=_repeated;
 @property(copy, nonatomic) NSArray *pairUrlValues; // @synthesize pairUrlValues=_pairUrlValues;
 @property(copy, nonatomic) NSArray *pairTemperatureValues; // @synthesize pairTemperatureValues=_pairTemperatureValues;
@@ -65,7 +64,6 @@
 @property(copy, nonatomic) NSArray *pairCustomObjects; // @synthesize pairCustomObjects=_pairCustomObjects;
 @property(copy, nonatomic) NSArray *pairCurrencyAmountValues; // @synthesize pairCurrencyAmountValues=_pairCurrencyAmountValues;
 @property(copy, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

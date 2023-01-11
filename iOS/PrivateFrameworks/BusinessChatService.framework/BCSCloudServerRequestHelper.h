@@ -15,14 +15,21 @@ __attribute__((visibility("hidden")))
     id <BCSCloudServerBodyProvider> _cloudServerBodyProvider;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <BCSCloudServerBodyProvider> cloudServerBodyProvider; // @synthesize cloudServerBodyProvider=_cloudServerBodyProvider;
 @property(retain, nonatomic) id <BCSCloudServerRouteProvider> cloudServerRouteProvider; // @synthesize cloudServerRouteProvider=_cloudServerRouteProvider;
-- (void).cxx_destruct;
-- (id)baseBusinessItemJSONPostRequestWithTimeout:(double)arg1 cloudServerRequestType:(long long)arg2;
-- (void)addEdgeCachingToRequest:(id)arg1 requestType:(id)arg2 requestIdentifier:(id)arg3;
-- (id)bloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2 timeout:(double)arg3;
-- (id)configItemRequestWithTimeout:(double)arg1;
-- (id)businessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2 timeout:(double)arg3;
+- (id)baseBusinessItemJSONPostRequestWithTimeout:(double)arg1 cloudServerRequestType:(long long)arg2 itemType:(long long)arg3;
+- (id)_bloomFilterRecordTypeForType:(long long)arg1;
+- (id)_configRecordTypeForType:(long long)arg1;
+- (id)_itemRecordTypeForType:(long long)arg1;
+- (_Bool)_skipEdgeCachingWithType:(long long)arg1;
+- (id)_edgeCacheBloomFilterRequestTypeForType:(long long)arg1;
+- (id)_edgeCacheConfigRequestTypeForType:(long long)arg1;
+- (id)_edgeCacheItemRequestTypeForType:(long long)arg1;
+- (void)_addEdgeCachingToRequest:(id)arg1 requestType:(id)arg2 itemType:(long long)arg3 requestIdentifier:(id)arg4;
+- (id)shardRequestForShardIdentifier:(id)arg1 timeout:(double)arg2;
+- (id)configItemRequestWithType:(long long)arg1 timeout:(double)arg2;
+- (id)itemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2 type:(long long)arg3 timeout:(double)arg4;
 - (id)businessItemRequestWithBizID:(id)arg1 timeout:(double)arg2;
 - (id)initWithRouteProvider:(unsigned long long)arg1 bodyProvider:(unsigned long long)arg2;
 

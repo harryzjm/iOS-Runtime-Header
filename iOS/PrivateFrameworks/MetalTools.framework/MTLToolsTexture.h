@@ -6,19 +6,17 @@
 
 #import <MetalTools/MTLTextureImplementation-Protocol.h>
 
-@class MTLResourceAllocationInfo, MTLToolsPointerArray, NSString;
+@class NSString;
 @protocol MTLBuffer, MTLDevice, MTLHeap, MTLResource, MTLTexture;
 
 @interface MTLToolsTexture <MTLTextureImplementation>
 {
-    MTLToolsPointerArray *_views;
     id <MTLTexture> _parentTexture;
     id <MTLBuffer> _buffer;
 }
 
 @property(readonly) id <MTLBuffer> buffer; // @synthesize buffer=_buffer;
 @property(readonly) id <MTLTexture> parentTexture; // @synthesize parentTexture=_parentTexture;
-@property(readonly, nonatomic) MTLToolsPointerArray *views; // @synthesize views=_views;
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly) _Bool isDrawable;
 @property(readonly) unsigned long long numFaces;
@@ -29,10 +27,11 @@
 - (_Bool)canGenerateMipmapLevels;
 - (id)newCompressedTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 level:(unsigned long long)arg3 slice:(unsigned long long)arg4;
 - (id)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 swizzle:(CDStruct_a06f635e)arg5;
+- (id)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 swizzle:(CDStruct_a06f635e)arg5 resourceIndex:(unsigned long long)arg6;
 - (id)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4;
 - (id)newTextureViewWithPixelFormat:(unsigned long long)arg1;
-- (void)getBytes:(void *)arg1 bytesPerRow:(unsigned long long)arg2 bytesPerImage:(unsigned long long)arg3 fromRegion:(CDStruct_1e3be3a8)arg4 mipmapLevel:(unsigned long long)arg5 slice:(unsigned long long)arg6 options:(unsigned long long)arg7;
-- (void)replaceRegion:(CDStruct_1e3be3a8)arg1 mipmapLevel:(unsigned long long)arg2 slice:(unsigned long long)arg3 withBytes:(const void *)arg4 bytesPerRow:(unsigned long long)arg5 bytesPerImage:(unsigned long long)arg6 options:(unsigned long long)arg7;
+- (id)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 resourceIndex:(unsigned long long)arg5;
+- (id)newTextureViewWithPixelFormat:(unsigned long long)arg1 resourceIndex:(unsigned long long)arg2;
 - (void)replaceRegion:(CDStruct_1e3be3a8)arg1 mipmapLevel:(unsigned long long)arg2 slice:(unsigned long long)arg3 withBytes:(const void *)arg4 bytesPerRow:(unsigned long long)arg5 bytesPerImage:(unsigned long long)arg6;
 - (void)getBytes:(void *)arg1 bytesPerRow:(unsigned long long)arg2 bytesPerImage:(unsigned long long)arg3 fromRegion:(CDStruct_1e3be3a8)arg4 mipmapLevel:(unsigned long long)arg5 slice:(unsigned long long)arg6;
 @property(readonly) _Bool allowGPUOptimizedContents;
@@ -57,7 +56,8 @@
 - (void)copyFromSlice:(unsigned long long)arg1 mipmapLevel:(unsigned long long)arg2 origin:(CDStruct_14f26992)arg3 size:(CDStruct_14f26992)arg4 toPixels:(void *)arg5 rowBytes:(unsigned long long)arg6 imageBytes:(unsigned long long)arg7;
 @property(readonly) long long compressionFeedback;
 @property(readonly) _Bool isCompressed;
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) unsigned int swizzleKey;
 @property(readonly, nonatomic) CDStruct_a06f635e swizzle;
 @property(readonly) unsigned long long bufferBytesPerRow;
@@ -66,16 +66,14 @@
 @property(readonly) unsigned long long parentRelativeLevel;
 @property(readonly) id <MTLResource> rootResource;
 - (id)realRootResource;
-- (void)acceptVisitor:(id)arg1;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2 buffer:(id)arg3;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2 parentTexture:(id)arg3;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
 
 // Remaining properties
 @property(readonly) unsigned long long allocatedSize;
-@property(readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
+@property(readonly) unsigned long long allocationID;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -88,7 +86,6 @@
 @property(readonly) unsigned long long protectionOptions;
 @property(readonly) unsigned long long resourceOptions;
 @property int responsibleProcess;
-@property(readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
 @property(readonly) unsigned long long storageMode;
 @property(readonly) Class superclass;
 @property(readonly) unsigned long long unfilteredResourceOptions;

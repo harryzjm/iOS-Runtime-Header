@@ -9,11 +9,12 @@
 #import <NanoTimeKitCompanion/NTKFaceViewComplicationFactory-Protocol.h>
 
 @class CLKDevice, CLKFont, NSString, NTKFaceView;
-@protocol NTKUtilityComplicationFactoryDelegate, NTKUtilityFlatComplicationViewDelegate;
+@protocol NTKUtilityComplicationFactoryDelegate;
 
 @interface NTKUtilityComplicationFactory : NSObject <NTKFaceViewComplicationFactory>
 {
     _Bool _accommodatesTwoTopComplications;
+    _Bool _includesDateComplicationLayoutRules;
     CLKDevice *_device;
     id <NTKUtilityComplicationFactoryDelegate> _delegate;
     double _normalSidePadding;
@@ -33,7 +34,7 @@
     double _bezelLabelTopPadding;
     double _bezelKeylineInnerCircleOffset;
     double _dialDiameter;
-    NTKFaceView<NTKUtilityFlatComplicationViewDelegate> *_faceView;
+    NTKFaceView *_faceView;
     double _dateKeylineMaxWidth;
     double _dateHorizontalCenterOffset;
     double _dateVerticalCenterOffset;
@@ -44,11 +45,13 @@
 
 + (void)curvedCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(long long)arg6 forDevice:(id)arg7;
 + (unsigned long long)placementForSlot:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long bottomCenterLayout; // @synthesize bottomCenterLayout=_bottomCenterLayout;
+@property(nonatomic) _Bool includesDateComplicationLayoutRules; // @synthesize includesDateComplicationLayoutRules=_includesDateComplicationLayoutRules;
 @property(nonatomic) double dateVerticalCenterOffset; // @synthesize dateVerticalCenterOffset=_dateVerticalCenterOffset;
 @property(nonatomic) double dateHorizontalCenterOffset; // @synthesize dateHorizontalCenterOffset=_dateHorizontalCenterOffset;
 @property(nonatomic) double dateKeylineMaxWidth; // @synthesize dateKeylineMaxWidth=_dateKeylineMaxWidth;
-@property(nonatomic) __weak NTKFaceView<NTKUtilityFlatComplicationViewDelegate> *faceView; // @synthesize faceView=_faceView;
+@property(nonatomic) __weak NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property(nonatomic) double dialDiameter; // @synthesize dialDiameter=_dialDiameter;
 @property(nonatomic) double bezelKeylineInnerCircleOffset; // @synthesize bezelKeylineInnerCircleOffset=_bezelKeylineInnerCircleOffset;
 @property(nonatomic) double bezelLabelTopPadding; // @synthesize bezelLabelTopPadding=_bezelLabelTopPadding;
@@ -71,13 +74,13 @@
 @property(nonatomic) _Bool accommodatesTwoTopComplications; // @synthesize accommodatesTwoTopComplications=_accommodatesTwoTopComplications;
 @property(nonatomic) __weak id <NTKUtilityComplicationFactoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (id)newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)loadLayoutRules;
 - (void)curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
 - (_Bool)slotSupportsCurvedText:(id)arg1;
 - (long long)legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (id)keylineViewForComplicationSlot:(id)arg1;
 - (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (id)pickerMaskForSlot:(id)arg1;

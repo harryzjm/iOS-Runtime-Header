@@ -8,7 +8,7 @@
 
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 
-@class CAMediaTimingFunction, NSString, UIViewFloatAnimatableProperty;
+@class CAMediaTimingFunction, NSString, UIPageControl, UIViewFloatAnimatableProperty;
 
 @interface SBCoverSheetIconFlyInAnimator : SBCenterIconZoomAnimator <PTSettingsKeyObserver>
 {
@@ -17,11 +17,13 @@
     double _distanceExponent;
     UIViewFloatAnimatableProperty *_labelAlphaDrivingProgressAnimatableProperty;
     CAMediaTimingFunction *_timingFunction;
+    UIPageControl *_pageControl;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property(retain, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=_timingFunction;
 @property(retain, nonatomic) UIViewFloatAnimatableProperty *labelAlphaDrivingProgressAnimatableProperty; // @synthesize labelAlphaDrivingProgressAnimatableProperty=_labelAlphaDrivingProgressAnimatableProperty;
-- (void).cxx_destruct;
 - (double)_functionWithProgress:(double)arg1 distance:(double)arg2;
 - (void)_updateWithSettings:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
@@ -33,6 +35,7 @@
 - (double)_zPositionForView:(id)arg1 center:(struct CGPoint)arg2 andFraction:(double)arg3;
 - (void)_updateDockForFraction:(double)arg1;
 - (void)_setAnimationFraction:(double)arg1 withCenter:(struct CGPoint)arg2;
+- (void)_prepareAnimation;
 - (id)initWithFolderController:(id)arg1;
 
 // Remaining properties

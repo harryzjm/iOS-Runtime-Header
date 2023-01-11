@@ -13,6 +13,7 @@
 
 @interface PKPGSVSectionHeaderView : UIView <PKPGSVSectionHeaderView>
 {
+    _Bool _sizesDirty;
     UILabel *_titleView;
     UILabel *_environmentLabel;
     UIButton *_actionButton;
@@ -23,9 +24,9 @@
     unsigned long long _passType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
 @property(readonly, nonatomic) unsigned long long passType; // @synthesize passType=_passType;
-- (void).cxx_destruct;
 - (_Bool)needsUpdate;
 - (id)trailingView;
 - (id)leadingView;
@@ -33,6 +34,7 @@
 - (void)_addTapped;
 - (void)addTapped;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithPassType:(unsigned long long)arg1 delegate:(id)arg2;
 - (id)init;
 

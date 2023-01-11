@@ -6,34 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKit/SKProductsRequestDelegate-Protocol.h>
-
-@class NSMutableArray, NSString;
-@protocol OS_dispatch_queue;
-
-@interface SKProductStorePromotionController : NSObject <SKProductsRequestDelegate>
+@interface SKProductStorePromotionController : NSObject
 {
-    NSMutableArray *_fetchOrderProductsRequests;
-    NSMutableArray *_fetchOrderCompletions;
-    NSMutableArray *_fetchOrderOrders;
-    NSObject<OS_dispatch_queue> *_fetchOrderQueue;
 }
 
 + (id)defaultController;
-- (void).cxx_destruct;
-- (void)request:(id)arg1 didFailWithError:(id)arg2;
-- (void)productsRequest:(id)arg1 didReceiveResponse:(id)arg2;
+- (void)_fetchProductsForPromotionOrder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateStorePromotionOrder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchStorePromotionOrderWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateStorePromotionVisibility:(long long)arg1 forProduct:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchStorePromotionVisibilityForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

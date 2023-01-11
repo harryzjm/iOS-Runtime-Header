@@ -19,12 +19,12 @@
 + (_Bool)_validateRecords:(id)arg1 fromOriginal:(id)arg2;
 + (id)ndefMessageWithData:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *records; // @synthesize records=_records;
 - (id)_getURLsFromNDEFMessage:(id)arg1;
 @property(readonly, nonatomic) unsigned long long length;
 - (id)asData;
 - (id)description;
-- (void)dealloc;
 - (id)initWithEmptyNdefMessage;
 - (id)initWithNFNdefMessage:(id)arg1;
 - (id)_initWithRecords:(id)arg1;

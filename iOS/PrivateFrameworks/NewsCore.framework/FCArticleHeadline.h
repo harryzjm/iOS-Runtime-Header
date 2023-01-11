@@ -7,7 +7,7 @@
 #import <NewsCore/FCArticleAccessCheckable-Protocol.h>
 #import <NewsCore/FCHeadlineStocksFields-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
 @protocol FCChannelProviding;
 
 @interface FCArticleHeadline <FCHeadlineStocksFields, FCArticleAccessCheckable>
@@ -63,6 +63,8 @@
     NSArray *_topicIDs;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_publisherCohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_publisherConversionStats;
     NSURL *_videoURL;
     double _videoDuration;
     NSArray *_iAdCategories;
@@ -85,18 +87,30 @@
     NSArray *_linkedArticleIDs;
     NSArray *_linkedIssueIDs;
     long long _bodyTextLength;
+    FCArticleAudioTrack *_narrativeTrack;
+    FCArticleAudioTrack *_narrativeTrackSample;
+    NSString *_narrativeTrackTextRanges;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
     NTPBArticleRecord *_articleRecord;
     FCInterestToken *_articleInterestToken;
     long long _behaviorFlags;
     struct CGRect _thumbnailFocalFrame;
 }
 
++ (id)_tempOverrideMIMETypeForURL:(id)arg1;
 + (_Bool)_fakeArticlesTimestamp;
 + (_Bool)_simulateTopStoriesBadges;
 + (_Bool)_forceArticlesToBeShownAsSponsored;
+- (void).cxx_destruct;
 @property(nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property(retain, nonatomic) FCInterestToken *articleInterestToken; // @synthesize articleInterestToken=_articleInterestToken;
 @property(retain, nonatomic) NTPBArticleRecord *articleRecord; // @synthesize articleRecord=_articleRecord;
+- (id)personalizationVectorAlt;
+- (id)personalizationVector;
+- (id)narrativeTrackTextRanges;
+- (id)narrativeTrackSample;
+- (id)narrativeTrack;
 - (long long)bodyTextLength;
 - (id)linkedIssueIDs;
 - (id)linkedArticleIDs;
@@ -143,6 +157,8 @@
 - (_Bool)isSponsored;
 - (double)videoDuration;
 - (id)videoURL;
+- (id)publisherConversionStats;
+- (id)globalConversionStats;
 - (id)publisherCohorts;
 - (id)globalCohorts;
 - (void)setTopicIDs:(id)arg1;
@@ -193,7 +209,8 @@
 - (id)articleID;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)versionIdentifier;
-- (void).cxx_destruct;
+- (void)_adoptNarrativeTrackFromArticleRecord:(id)arg1 assetManager:(id)arg2;
+- (_Bool)hasAudioTrack;
 - (id)publisherID;
 @property(readonly, copy, nonatomic) NSString *stocksScoresJSON;
 @property(readonly, copy, nonatomic) NSString *stocksMetadataJSON;
@@ -209,6 +226,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool isBlockedExplicitContent;
+@property(readonly, copy, nonatomic) NSString *sourceChannelID;
 
 @end
 

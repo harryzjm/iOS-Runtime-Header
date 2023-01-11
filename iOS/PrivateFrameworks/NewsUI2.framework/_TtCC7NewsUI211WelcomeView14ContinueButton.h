@@ -6,15 +6,10 @@
 
 #import <UIKit/UIButton.h>
 
-@class MISSING_TYPE;
-
-__attribute__((visibility("hidden")))
 @interface _TtCC7NewsUI211WelcomeView14ContinueButton : UIButton
 {
-    MISSING_TYPE *onTap;
 }
 
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(nonatomic) _Bool highlighted;

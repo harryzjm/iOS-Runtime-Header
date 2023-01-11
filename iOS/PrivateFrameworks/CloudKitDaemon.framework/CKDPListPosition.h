@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 @property(nonatomic) _Bool hasIsReversed;
 @property(nonatomic) _Bool hasIndex;
+- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 
 @end
 

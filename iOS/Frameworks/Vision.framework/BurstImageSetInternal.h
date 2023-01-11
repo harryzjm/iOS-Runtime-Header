@@ -23,28 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _enableDumpYUV;
     _Bool _isAction;
     _Bool _isPortrait;
-    struct __sFILE {
-        char *_field1;
-        int _field2;
-        int _field3;
-        short _field4;
-        short _field5;
-        struct __sbuf _field6;
-        int _field7;
-        void *_field8;
-        CDUnknownFunctionPointerType _field9;
-        CDUnknownFunctionPointerType _field10;
-        CDUnknownFunctionPointerType _field11;
-        CDUnknownFunctionPointerType _field12;
-        struct __sbuf _field13;
-        struct __sFILEX *_field14;
-        int _field15;
-        unsigned char _field16[3];
-        unsigned char _field17[1];
-        struct __sbuf _field18;
-        int _field19;
-        long long _field20;
-    } *_burstLogFileHandle;
+    struct __sFILE *_burstLogFileHandle;
     int _currentClusterIndexToProcess;
     NSMutableArray *_clusterArray;
     BurstImageFaceAnalysisContext *_faceAnalysisContext;
@@ -65,6 +44,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultVersionString;
+- (void).cxx_destruct;
 @property int version; // @synthesize version=_version;
 @property(retain) NSString *versionString; // @synthesize versionString=_versionString;
 @property(retain) NSArray *bestImageIdentifiersArray; // @synthesize bestImageIdentifiersArray=_bestImageIdentifiersArray;
@@ -87,7 +67,6 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableArray *clusterArray; // @synthesize clusterArray=_clusterArray;
 @property(retain) BurstImageFaceAnalysisContext *faceAnalysisContext; // @synthesize faceAnalysisContext=_faceAnalysisContext;
 @property(retain) NSCountedSet *faceIDCounts; // @synthesize faceIDCounts=_faceIDCounts;
-- (void).cxx_destruct;
 - (double)secondsSinceStart;
 - (_Bool)isAction;
 - (_Bool)isPortrait;

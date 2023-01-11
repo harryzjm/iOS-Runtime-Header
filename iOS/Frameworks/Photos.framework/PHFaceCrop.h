@@ -13,6 +13,9 @@
     NSData *_resourceData;
 }
 
++ (id)fetchFaceCropByFaceLocalIdentifierForFaces:(id)arg1 fetchOptions:(id)arg2;
++ (id)_trainingFaceCropByUUIDForPerson:(id)arg1 options:(id)arg2;
++ (id)fetchTransientTrainingFaceCropsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchFaceCropsNeedingFaceDetectionWithOptions:(id)arg1;
 + (id)fetchFaceCropsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchFaceCropsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
@@ -23,10 +26,10 @@
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyMap;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) short type; // @synthesize type=_type;
 @property(readonly, nonatomic) short state; // @synthesize state=_state;
 @property(readonly, nonatomic) NSData *resourceData; // @synthesize resourceData=_resourceData;
-- (void).cxx_destruct;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (Class)changeRequestClass;
 

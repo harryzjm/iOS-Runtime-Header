@@ -38,6 +38,7 @@
 
 + (void)_deallocInstanceForDevice:(id)arg1;
 + (id)sharedInstanceForDevice:(id)arg1 withPixelFormat:(unsigned long long)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long bufferOffsetFlower; // @synthesize bufferOffsetFlower=_bufferOffsetFlower;
 @property(readonly, nonatomic) unsigned long long bufferOffsetSkirt; // @synthesize bufferOffsetSkirt=_bufferOffsetSkirt;
 @property(readonly, nonatomic) unsigned long long bufferOffsetHead; // @synthesize bufferOffsetHead=_bufferOffsetHead;
@@ -47,7 +48,6 @@
 @property(readonly, nonatomic) unsigned long long bufferOffsetBody; // @synthesize bufferOffsetBody=_bufferOffsetBody;
 @property(readonly, nonatomic) unsigned long long bufferOffsetBackground; // @synthesize bufferOffsetBackground=_bufferOffsetBackground;
 @property(readonly, nonatomic) id <MTLBuffer> mtlBuffer; // @synthesize mtlBuffer=_mtlBuffer;
-- (void).cxx_destruct;
 - (id)getMTLTexture:(id)arg1;
 - (id)textureWithName:(id)arg1;
 - (id)textureWithName:(id)arg1 prefix:(id)arg2;
@@ -58,7 +58,7 @@
 - (id)_loadBank:(id)arg1 toArrays:(unsigned long long)arg2 allowNewKeys:(_Bool)arg3;
 - (id)getPipelineForProgramType:(unsigned long long)arg1;
 - (void)_loadPrograms;
-- (void)_setupPipelineForType:(unsigned long long)arg1 vertex:(id)arg2 fragment:(id)arg3 blending:(_Bool)arg4 inLibrary:(id)arg5;
+- (void)_setupPipelineForType:(unsigned long long)arg1 vertex:(id)arg2 fragment:(id)arg3 blending:(_Bool)arg4 inLibrary:(id)arg5 librarySPI:(id)arg6;
 - (void)_loadMTLBufferData;
 - (void)removeClient;
 - (void)addClient;

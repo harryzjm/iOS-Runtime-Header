@@ -4,13 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKExtraLargeFace
+#import <NanoTimeKitCompanion/NTKFaceComplicationPreviewable-Protocol.h>
+
+@class NSString;
+
+@interface NTKExtraLargeFace <NTKFaceComplicationPreviewable>
 {
 }
 
 + (id)_orderedComplicationSlots;
 + (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
++ (id)_richComplicationSlotsForDevice:(id)arg1;
 + (id)_complicationSlotDescriptors;
+- (void)applyPreviewConfigurationWithFamily:(long long)arg1 faceColor:(long long)arg2;
 - (_Bool)_complication:(id)arg1 appearsInDailySnapshotForSlot:(id)arg2;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
 - (_Bool)_snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
@@ -21,6 +27,12 @@
 - (id)_customEditModes;
 - (id)_localizedNameForComplicationSlot:(id)arg1;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

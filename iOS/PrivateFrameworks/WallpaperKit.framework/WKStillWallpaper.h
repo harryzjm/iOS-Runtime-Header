@@ -12,20 +12,27 @@
 {
     NSURL *_fullsizeImageURL;
     NSURL *_thumbnailImageURL;
+    NSURL *_renderedImageURL;
 }
 
++ (id)na_identity;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *renderedImageURL; // @synthesize renderedImageURL=_renderedImageURL;
 @property(copy, nonatomic) NSURL *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
 @property(copy, nonatomic) NSURL *fullsizeImageURL; // @synthesize fullsizeImageURL=_fullsizeImageURL;
-- (void).cxx_destruct;
+- (CDUnknownBlockType)descriptionBuilderBlock;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) double stillTimeInVideo;
+- (id)renderedVideoAssetURL;
 @property(readonly, copy, nonatomic) NSURL *videoAssetURL;
+@property(readonly, nonatomic) unsigned long long backingType;
 @property(readonly, nonatomic) unsigned long long type;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2 thumbnailImageURL:(id)arg3 fullsizeImageURL:(id)arg4;
-- (id)initWithIdentifier:(unsigned long long)arg1 name:(id)arg2;
+- (id)initWithIdentifier:(long long)arg1 name:(id)arg2 thumbnailImageURL:(id)arg3 fullsizeImageURL:(id)arg4 renderedImageURL:(id)arg5;
 
 // Remaining properties
-@property(readonly, nonatomic) unsigned long long identifier;
+@property(readonly, nonatomic) long long identifier;
 @property(readonly, copy, nonatomic) NSString *name;
 
 @end

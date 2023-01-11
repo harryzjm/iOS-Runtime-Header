@@ -13,6 +13,7 @@
 - (id)hd_systemBuildVersion;
 - (id)hd_productType;
 - (id)hd_name;
+- (_Bool)hd_isAltAccount;
 - (_Bool)hd_isActive;
 - (id)hd_pairingID;
 @end

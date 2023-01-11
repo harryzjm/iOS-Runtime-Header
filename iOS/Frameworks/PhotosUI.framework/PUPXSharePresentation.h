@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)createActivitySharingControllerWithContext:(id)arg1;
-- (id)createShareViewControllerWithFetchResult:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

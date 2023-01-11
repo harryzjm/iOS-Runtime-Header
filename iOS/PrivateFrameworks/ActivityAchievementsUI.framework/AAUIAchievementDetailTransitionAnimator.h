@@ -13,6 +13,7 @@
 
 @interface AAUIAchievementDetailTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 {
+    _Bool _shouldAdjustForInset;
     _Bool _shouldPlayFlipInAnimation;
     _Bool _shouldDismissGracefullyForTextSizeChange;
     _Bool _reduceMotion;
@@ -31,6 +32,7 @@
     struct CGAffineTransform _finalPresentingVCTransform;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool reduceMotion; // @synthesize reduceMotion=_reduceMotion;
 @property(nonatomic) _Bool shouldDismissGracefullyForTextSizeChange; // @synthesize shouldDismissGracefullyForTextSizeChange=_shouldDismissGracefullyForTextSizeChange;
 @property(nonatomic) _Bool shouldPlayFlipInAnimation; // @synthesize shouldPlayFlipInAnimation=_shouldPlayFlipInAnimation;
@@ -47,7 +49,7 @@
 @property(retain, nonatomic) UIView *conversionView; // @synthesize conversionView=_conversionView;
 @property(retain, nonatomic) id <AnimatorDetailViewController> detailViewController; // @synthesize detailViewController=_detailViewController;
 @property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldAdjustForInset; // @synthesize shouldAdjustForInset=_shouldAdjustForInset;
 - (void)animateDismissalWithContext:(id)arg1;
 - (void)reducedMotionAnimateDismissalWithContext:(id)arg1;
 - (void)animatePresentationWithContext:(id)arg1;

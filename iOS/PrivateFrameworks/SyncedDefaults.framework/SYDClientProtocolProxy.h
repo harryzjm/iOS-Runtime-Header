@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     id <SYDClientProtocol> _target;
 }
 
-@property(nonatomic) __weak id <SYDClientProtocol> target; // @synthesize target=_target;
 - (void).cxx_destruct;
-- (void)storeDidChangeWithIdentifier:(id)arg1 type:(long long)arg2 changeDictionary:(id)arg3 reply:(CDUnknownBlockType)arg4;
+@property(nonatomic) __weak id <SYDClientProtocol> target; // @synthesize target=_target;
+- (void)storeDidChangeWithConfiguration:(id)arg1 changeDictionary:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithTarget:(id)arg1;
 
 @end

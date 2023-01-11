@@ -6,11 +6,12 @@
 
 #import <GeoServices/GEOProactiveTileDownloaderDelegate-Protocol.h>
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
+#import <GeoServices/GEOTileDBDelegate-Protocol.h>
 
 @class GEOProactiveTileDownloader, GEOTileDB, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface GEOTileServerLocalProxy <GEOProactiveTileDownloaderDelegate, GEOResourceManifestTileGroupObserver>
+@interface GEOTileServerLocalProxy <GEOProactiveTileDownloaderDelegate, GEOResourceManifestTileGroupObserver, GEOTileDBDelegate>
 {
     GEOTileDB *_tileCache;
     NSString *_cacheLocation;
@@ -24,6 +25,7 @@
 
 + (void)enableCDSObserversIfNecessary;
 - (void).cxx_destruct;
+- (void)tileDBDidDeleteExternalResource:(id)arg1;
 - (void)proactiveTileDownloaderDidFinish:(id)arg1;
 - (void)_initiateDataSaverPreloadIfPossible;
 - (void)_forceDataSaverPreload:(id)arg1;
@@ -31,12 +33,12 @@
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (void)generateRequestedFromTileLoaderEndSignpost:(unsigned long long)arg1;
 - (void)generateRequestedFromTileLoaderBeginSignpost:(unsigned long long)arg1 tileKey:(const struct _GEOTileKey *)arg2 options:(unsigned long long)arg3;
+- (void)_deleteLocationSensitiveInformation:(id)arg1;
 - (void)flushPendingWrites;
-- (_Bool)skipNetworkForKeysWhenPreloading:(id)arg1;
 - (void)endPreloadSession;
-- (void)beginPreloadSessionOfSize:(unsigned long long)arg1 exclusive:(_Bool)arg2;
+- (void)beginPreloadSessionOfSize:(unsigned long long)arg1;
 - (unsigned long long)shrinkDiskCacheToSizeSync:(unsigned long long)arg1;
-- (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
+- (void)shrinkDiskCacheToSize:(unsigned long long)arg1 callbackQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)calculateFreeableSizeSync;
 - (void)calculateFreeableSize;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;

@@ -4,15 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PICompositionExporterVideoOptions
 {
     _Bool _increaseBitRateIfNecessary;
+    _Bool _preserveSourceColorSpace;
+    _Bool _bypassOutputSettingsIfNoComposition;
+    _Bool _applyVideoOrientationAsMetadata;
+    _Bool _requireHardwareEncoder;
     CDUnknownBlockType _metadataProcessor;
+    NSString *_videoCodecType;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool requireHardwareEncoder; // @synthesize requireHardwareEncoder=_requireHardwareEncoder;
+@property(nonatomic) _Bool applyVideoOrientationAsMetadata; // @synthesize applyVideoOrientationAsMetadata=_applyVideoOrientationAsMetadata;
+@property(nonatomic) _Bool bypassOutputSettingsIfNoComposition; // @synthesize bypassOutputSettingsIfNoComposition=_bypassOutputSettingsIfNoComposition;
+@property(nonatomic) _Bool preserveSourceColorSpace; // @synthesize preserveSourceColorSpace=_preserveSourceColorSpace;
+@property(copy, nonatomic) NSString *videoCodecType; // @synthesize videoCodecType=_videoCodecType;
 @property(nonatomic) _Bool increaseBitRateIfNecessary; // @synthesize increaseBitRateIfNecessary=_increaseBitRateIfNecessary;
 @property(copy) CDUnknownBlockType metadataProcessor; // @synthesize metadataProcessor=_metadataProcessor;
-- (void).cxx_destruct;
+- (id)description;
+- (id)init;
 
 @end
 

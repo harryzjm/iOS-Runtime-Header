@@ -21,9 +21,9 @@
     NTKCircularAnalogDialView *_dialView;
 }
 
-+ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
-+ (long long)uiSensitivity;
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NTKCircularAnalogDialView *dialView; // @synthesize dialView=_dialView;
 @property(retain, nonatomic) UIImageView *editingNotchBackgroundView; // @synthesize editingNotchBackgroundView=_editingNotchBackgroundView;
 @property(retain, nonatomic) NTKCaliforniaColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
@@ -33,7 +33,6 @@
 @property(retain, nonatomic) NTKRoundedCornerOverlayView *cornerView; // @synthesize cornerView=_cornerView;
 @property(retain, nonatomic) NTKCaliforniaContentView *californiaContentView; // @synthesize californiaContentView=_californiaContentView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-- (void).cxx_destruct;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (double)_editSpeedForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -46,6 +45,7 @@
 - (double)_dialAlphaForEditMode:(long long)arg1;
 - (double)_bezelUtilityComplicationAlphaForEditMode:(long long)arg1;
 - (id)_simpleTextComplicationColorForEditMode:(long long)arg1;
+- (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (double)_complicationAlphaForEditMode:(long long)arg1;
 - (double)alphaForFullscreenEditingNotchWithEditMode:(long long)arg1;
 - (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
@@ -73,8 +73,8 @@
 - (void)setCircularMaskForCircularDialFraction:(double)arg1 circleDiameter:(double)arg2;
 - (void)updateCircularMask;
 - (void)_updateDialBezelComplicationColor:(id)arg1;
+- (void)updateWorldClockComplicationColors:(id)arg1 fromPalette:(id)arg2 toPalette:(id)arg3 fraction:(double)arg4;
 - (_Bool)shouldFlipColorsForSubDialRichComplicationView:(id)arg1;
-- (void)_updateRichCornerComplicationsInnerColor:(id)arg1 outerColor:(id)arg2;
 - (void)_updateSubDialRichComplicationsColor:(id)arg1 alternateColor:(id)arg2;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (double)californiaContentViewScale;
@@ -88,7 +88,6 @@
 - (void)_loadSnapshotContentViews;
 - (void)_prepareForStatusChange:(_Bool)arg1;
 - (double)_verticalPaddingForStatusBar;
-- (_Bool)_wantsStatusBarIconShadow;
 - (_Bool)_needsForegroundContainerView;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 

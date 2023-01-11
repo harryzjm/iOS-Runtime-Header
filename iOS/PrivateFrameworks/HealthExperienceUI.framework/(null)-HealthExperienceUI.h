@@ -4,12 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthExperienceUI/UITableViewDataSource-Protocol.h>
-
-@interface (null) (HealthExperienceUI) <UITableViewDataSource>
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
+@interface (null) (HealthExperienceUI)
+- (void)didSelectCell:(id)arg1 in:(id)arg2;
 @end
 

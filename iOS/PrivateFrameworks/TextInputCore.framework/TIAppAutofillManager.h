@@ -6,32 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class IMOneTimeCodeAccelerator, LAContext, NSDictionary, NSString, NSUUID, TIKeyboardSecureCandidateRenderer;
-@protocol OS_dispatch_queue;
+@class LAContext, NSDictionary, NSString, NSUUID, TIKeyboardSecureCandidateRenderer;
 
 @interface TIAppAutofillManager : NSObject
 {
     TIKeyboardSecureCandidateRenderer *_secureCandidateRenderer;
-    NSDictionary *_currentOneTimeCode;
+    id _oneTimeCodeProvider;
     NSUUID *_documentIdentifierForLastAutofillGeneration;
     NSString *_clientIdentifierForLastAutofillGeneration;
     NSString *_clientIdentifierForLastKeyboardSync;
     NSDictionary *_queuedCustomInfo;
+    NSDictionary *_queuedUnauthenticatedCustomInfo;
     LAContext *_laContext;
-    NSObject<OS_dispatch_queue> *_oneTimeCodeAcceleratorQueue;
-    IMOneTimeCodeAccelerator *_oneTimeCodeAccelerator;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) IMOneTimeCodeAccelerator *oneTimeCodeAccelerator; // @synthesize oneTimeCodeAccelerator=_oneTimeCodeAccelerator;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *oneTimeCodeAcceleratorQueue; // @synthesize oneTimeCodeAcceleratorQueue=_oneTimeCodeAcceleratorQueue;
+- (void).cxx_destruct;
 @property(retain, nonatomic) LAContext *laContext; // @synthesize laContext=_laContext;
+@property(retain, nonatomic) NSDictionary *queuedUnauthenticatedCustomInfo; // @synthesize queuedUnauthenticatedCustomInfo=_queuedUnauthenticatedCustomInfo;
 @property(retain, nonatomic) NSDictionary *queuedCustomInfo; // @synthesize queuedCustomInfo=_queuedCustomInfo;
 @property(retain, nonatomic) NSString *clientIdentifierForLastKeyboardSync; // @synthesize clientIdentifierForLastKeyboardSync=_clientIdentifierForLastKeyboardSync;
 @property(retain, nonatomic) NSString *clientIdentifierForLastAutofillGeneration; // @synthesize clientIdentifierForLastAutofillGeneration=_clientIdentifierForLastAutofillGeneration;
 @property(retain, nonatomic) NSUUID *documentIdentifierForLastAutofillGeneration; // @synthesize documentIdentifierForLastAutofillGeneration=_documentIdentifierForLastAutofillGeneration;
-@property(retain, nonatomic) NSDictionary *currentOneTimeCode; // @synthesize currentOneTimeCode=_currentOneTimeCode;
-- (void).cxx_destruct;
+- (void)appAutoFillOneTimeCodeProviderReceivedOneTimeCode:(id)arg1;
 - (void)shouldAcceptOneTimeCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)shouldAcceptAutofill:(id)arg1 withPayload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)shouldAuthenticateToAcceptAutofill;
@@ -45,7 +42,7 @@
 - (id)customInfoFromCredential:(id)arg1;
 - (_Bool)isValidedString:(id)arg1;
 - (void)pushQueuedCredentialIfNecessaryForKeyboardState:(id)arg1;
-- (void)obtainOneTimeCodeCredential:(id)arg1;
+@property(readonly, nonatomic) _Bool hasOneTimeCode;
 - (void)obtainCredential:(id)arg1;
 @property(readonly, nonatomic) TIKeyboardSecureCandidateRenderer *secureCandidateRenderer;
 - (id)initPrivate;

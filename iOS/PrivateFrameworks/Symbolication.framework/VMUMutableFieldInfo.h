@@ -22,7 +22,7 @@
 - (void)setSize:(unsigned int)arg1;
 - (void)setOffset:(unsigned int)arg1;
 @property(nonatomic) unsigned int scanType; // @dynamic scanType;
-- (void)setTypeName:(id)arg1;
+@property(copy, nonatomic) NSString *typeName; // @dynamic typeName;
 @property(copy, nonatomic) NSString *ivarName; // @dynamic ivarName;
 
 @end

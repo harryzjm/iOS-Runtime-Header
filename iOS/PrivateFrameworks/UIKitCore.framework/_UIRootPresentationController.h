@@ -15,12 +15,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_allowsDeferredTransitions;
-@property(readonly, nonatomic) __weak UIWindow *presentingWindow; // @synthesize presentingWindow=_presentingWindow;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak UIWindow *presentingWindow; // @synthesize presentingWindow=_presentingWindow;
 @property(readonly, nonatomic) long long preferredStatusBarUpdateAnimation;
 @property(readonly, nonatomic, getter=_preferredStatusBarHideAnimationParameters) UIStatusBarHideAnimationParameters *preferredStatusBarHideAnimationParameters;
 @property(readonly, nonatomic, getter=_preferredStatusBarStyleAnimationParameters) UIStatusBarStyleAnimationParameters *preferredStatusBarStyleAnimationParameters;
-- (_Bool)_inheritsPresentingViewControllerThemeLevel;
 - (_Bool)_mayChildGrabPresentedViewControllerView;
 - (_Bool)_isRootPresentation;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;

@@ -11,17 +11,28 @@
 
 @interface CKQuerySubscription <NSSecureCoding, NSCopying>
 {
+    NSPredicate *_predicate;
+    CKRecordZoneID *_zoneID;
+    unsigned long long _querySubscriptionOptions;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long querySubscriptionOptions; // @synthesize querySubscriptionOptions=_querySubscriptionOptions;
+@property(copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+@property(copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) unsigned long long querySubscriptionOptions;
+- (id)CKPropertiesDescription;
+- (void)setRecordType:(id)arg1;
+- (void)_validateQuerySubscriptionOptions:(unsigned long long)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 subscriptionID:(id)arg3 options:(unsigned long long)arg4;
 
 // Remaining properties
-@property(readonly, copy, nonatomic) NSPredicate *predicate; // @dynamic predicate;
 @property(readonly, copy, nonatomic) NSString *recordType; // @dynamic recordType;
-@property(copy, nonatomic) CKRecordZoneID *zoneID; // @dynamic zoneID;
 
 @end
 

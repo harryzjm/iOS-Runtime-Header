@@ -13,7 +13,7 @@
 @property(readonly) NSArray *unknownProperties;
 @property(readonly) NSString *preferredApplePersonaIdentifier;
 @property(readonly) NSString *preferredLikenessSource;
-@property(readonly) NSString *downtimeWhitelist;
+@property(readonly) int downtimeWhitelistAuthorization;
 @property(readonly) NSString *phonemeData;
 @property(readonly) NSString *uid;
 @property(readonly) NSString *cardDAVUID;
@@ -23,6 +23,8 @@
 @property(readonly) NSArray *otherDateComponents;
 @property(readonly) NSDateComponents *alternateBirthdayComponents;
 @property(readonly) NSDateComponents *birthdayComponents;
+@property(readonly) NSData *imageHash;
+@property(readonly) NSString *imageType;
 @property(readonly) NSData *imageData;
 @property(readonly) NSData *largeImageData;
 @property(readonly) NSDictionary *largeImageCropRects;

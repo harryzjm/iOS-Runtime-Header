@@ -10,6 +10,9 @@
 
 @interface CBRFCOMMChannel : NSObject
 {
+    unsigned char _channelID;
+    _Bool _isIncoming;
+    unsigned short _mtu;
     int _socketFD;
     CBClassicPeer *_peer;
     NSInputStream *_inputStream;
@@ -17,12 +20,17 @@
     CBUUID *_serviceUUID;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isIncoming; // @synthesize isIncoming=_isIncoming;
+@property(readonly, nonatomic) unsigned short mtu; // @synthesize mtu=_mtu;
+@property(readonly, nonatomic) unsigned char channelID; // @synthesize channelID=_channelID;
 @property(readonly, nonatomic) CBUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
 @property(readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
 @property(readonly, nonatomic) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
 @property(readonly, nonatomic) CBClassicPeer *peer; // @synthesize peer=_peer;
 @property(readonly, nonatomic) int socketFD; // @synthesize socketFD=_socketFD;
-- (void).cxx_destruct;
+- (id)description;
+- (void)dealloc;
 - (id)initWithPeer:(id)arg1 info:(id)arg2;
 
 @end

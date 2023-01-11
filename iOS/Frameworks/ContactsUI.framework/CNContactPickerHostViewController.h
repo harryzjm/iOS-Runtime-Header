@@ -9,7 +9,7 @@
 #import <ContactsUI/CNContactPickerContentViewController-Protocol.h>
 #import <ContactsUI/CNContactPickerHostProtocol-Protocol.h>
 
-@class NSExtension, NSString, UINavigationController;
+@class NSExtension, NSString, UIBarButtonItem, UINavigationController;
 @protocol CNContactPickerContentDelegate, NSCopying;
 
 __attribute__((visibility("hidden")))
@@ -23,10 +23,10 @@ __attribute__((visibility("hidden")))
 + (_Bool)getViewController:(CDUnknownBlockType)arg1;
 + (id)contextForIdentifier:(id)arg1;
 + (id)contactPickerExtension;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(retain, nonatomic) id <NSCopying> currentRequestIdentifier; // @synthesize currentRequestIdentifier=_currentRequestIdentifier;
 @property(nonatomic) __weak id <CNContactPickerContentDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)pickerDidCancel;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (void)invalidateSelectionAnimated:(_Bool)arg1;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) UIBarButtonItem *addContactBarButtonItem;
 @property(readonly, nonatomic) UINavigationController *navigationController;
 
 // Remaining properties

@@ -44,7 +44,6 @@
 - (id)interface;
 - (void)setServiceQuality:(id)arg1;
 - (void)setName:(id)arg1;
-- (id)initWithLock:(struct os_unfair_lock_s *)arg1 clientContext:(id)arg2;
 
 @end
 

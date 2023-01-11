@@ -19,10 +19,6 @@
     unsigned long long _largeMessageSize;
     NSString *_connectionPortName;
     unsigned int _connectionPort;
-    _Bool _portNameIsBundleId;
-    NSArray *_enabledTopics;
-    NSArray *_ignoredTopics;
-    NSArray *_opportunisticTopics;
     _Bool _enableCriticalReliability;
     _Bool _enableStatusNotifications;
     _Bool _isConnected;
@@ -41,8 +37,13 @@
     _Bool _isDisconnected;
     _Bool _isShutdown;
     _Bool _isDeallocing;
+    NSArray *_enabledTopics;
+    NSArray *_ignoredTopics;
+    NSArray *_opportunisticTopics;
+    NSArray *_nonWakingTopics;
 }
 
++ (id)_createXPCConnectionWithQueueName:(const char *)arg1;
 + (void)notifySafeToSendFilter;
 + (void)_setTokenState;
 + (id)connectionsDebuggingState;
@@ -56,10 +57,10 @@
 + (struct __SecIdentity *)copyIdentity;
 + (void)_safelyCancelAndReleaseConnection:(id)arg1;
 + (_Bool)isValidEnvironment:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isShutdown; // @synthesize isShutdown=_isShutdown;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *ivarQueue; // @synthesize ivarQueue=_ivarQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-- (void).cxx_destruct;
 - (void)confirmReceiptForMessage:(id)arg1;
 - (void)requestKeepAlive;
 - (void)invalidateTokenForTopic:(id)arg1 identifier:(id)arg2;
@@ -93,17 +94,22 @@
 @property(nonatomic) unsigned long long messageSize;
 @property(readonly, retain, nonatomic) NSData *publicToken;
 - (void)moveTopic:(id)arg1 fromList:(unsigned long long)arg2 toList:(unsigned long long)arg3;
+- (id)_topicListNameForLogging:(unsigned long long)arg1;
 - (id)_listForIdentifierOnIvarQueue:(unsigned long long)arg1;
-- (id)opportunisticTopics;
-- (id)ignoredTopics;
-- (id)enabledTopics;
+@property(retain, nonatomic, setter=_setNonWakingTopics:) NSArray *nonWakingTopics; // @synthesize nonWakingTopics=_nonWakingTopics;
+@property(retain, nonatomic, setter=_setOpportunisticTopics:) NSArray *opportunisticTopics; // @synthesize opportunisticTopics=_opportunisticTopics;
+@property(retain, nonatomic, setter=_setIgnoredTopics:) NSArray *ignoredTopics; // @synthesize ignoredTopics=_ignoredTopics;
+@property(retain, nonatomic, setter=_setEnabledTopics:) NSArray *enabledTopics; // @synthesize enabledTopics=_enabledTopics;
+- (void)setNonWakingTopics:(id)arg1;
 - (void)setIgnoredTopics:(id)arg1;
 - (void)setOpportunisticTopics:(id)arg1;
 - (void)setEnabledTopics:(id)arg1;
 - (void)setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2;
 - (void)setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3;
-- (void)_setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 sendToDaemon:(_Bool)arg4;
-- (void)_onIvarQueue_setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 sendToDaemon:(_Bool)arg4;
+- (void)setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 nonWakingTopics:(id)arg4;
+- (void)setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 nonWakingTopics:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 nonWakingTopics:(id)arg4 sendToDaemon:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_onIvarQueue_setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 nonWakingTopics:(id)arg4 sendToDaemon:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)removeFromRunLoop;
 - (void)scheduleInRunLoop:(id)arg1;
 - (void)_disconnectFromDealloc;
@@ -116,15 +122,15 @@
 - (void)_reconnectIfNecessaryOnIvarQueueAfterDelay;
 - (void)_handleEvent:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_noteDisconnectedFromDaemonOnIvarQueue;
-- (void)_callDelegateOnIvarQueueWithBlock:(CDUnknownBlockType)arg1;
+- (void)_asyncOnDelegateQueueWithBlock:(CDUnknownBlockType)arg1;
 @property(nonatomic) id <APSConnectionDelegate> delegate;
 - (void)dealloc;
 - (void)_shutdownFromDealloc;
 - (void)shutdown;
 - (void)_shutdownOnIvarQueue;
+- (id)_initWithEnvironmentName:(id)arg1 namedDelegatePort:(id)arg2 enablePushDuringSleep:(_Bool)arg3 queue:(id)arg4;
 - (id)initWithEnvironmentName:(id)arg1 namedDelegatePort:(id)arg2 queue:(id)arg3;
 - (id)initWithEnvironmentName:(id)arg1 queue:(id)arg2;
-- (id)initWithEnvironmentName:(id)arg1 launchBundleIdOnDemand:(id)arg2 queue:(id)arg3;
 - (id)initWithEnvironmentName:(id)arg1 namedDelegatePort:(id)arg2;
 - (id)initWithEnvironmentName:(id)arg1;
 

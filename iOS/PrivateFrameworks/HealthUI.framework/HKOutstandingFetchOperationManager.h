@@ -13,19 +13,22 @@
 @interface HKOutstandingFetchOperationManager : NSObject <HKFetchOperationDelegate>
 {
     _Bool _needsRebalanceFetchOperations;
-    NSMutableArray *_pendingFetchOperations;
+    NSMutableArray *_pendingNormalPriorityFetchOperations;
+    NSMutableArray *_pendingHighPriorityFetchOperations;
     NSMutableArray *_activeFetchOperations;
     long long _maxConcurrentFetchOperations;
 }
 
 + (id)sharedOperationManager;
 + (void)setSharedOperationManager:(id)arg1;
-@property(nonatomic) long long maxConcurrentFetchOperations; // @synthesize maxConcurrentFetchOperations=_maxConcurrentFetchOperations;
 - (void).cxx_destruct;
+@property(nonatomic) long long maxConcurrentFetchOperations; // @synthesize maxConcurrentFetchOperations=_maxConcurrentFetchOperations;
 - (void)fetchOperationDidUpdatePriority:(id)arg1;
+- (void)_logOperationCompletion:(id)arg1;
+- (void)_logOperationStart:(id)arg1;
 - (void)_executeFetchOperation:(id)arg1;
+- (_Bool)_noHighPriorityActiveOperations;
 - (void)_fillActiveFetchOperations;
-- (void)_sortPendingFetchOperations;
 - (void)_rebalanceFetchOperations;
 - (void)_setNeedsRebalanceFetchOperations;
 - (_Bool)_removeFetchOperationFromActiveOperations:(id)arg1;

@@ -11,13 +11,11 @@
 @interface MTMetrics : NSObject
 {
     id <NAScheduler> _serializer;
-    unsigned long long _operationStartTime;
 }
 
 + (id)_sharedPublicMetrics;
-@property(nonatomic) unsigned long long operationStartTime; // @synthesize operationStartTime=_operationStartTime;
-@property(retain, nonatomic) id <NAScheduler> serializer; // @synthesize serializer=_serializer;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <NAScheduler> serializer; // @synthesize serializer=_serializer;
 - (void)logSyncFailedWithError:(id)arg1;
 - (void)logSyncCompleted;
 - (void)logTimerRepeated;

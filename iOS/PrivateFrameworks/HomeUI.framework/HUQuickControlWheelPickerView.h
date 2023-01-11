@@ -10,7 +10,7 @@
 #import <HomeUI/UIPickerViewDataSource-Protocol.h>
 #import <HomeUI/UIPickerViewDelegate-Protocol.h>
 
-@class HUQuickControlWheelPickerViewProfile, NSArray, NSNumber, NSString, UIPickerView;
+@class HUQuickControlWheelPickerViewProfile, NSArray, NSNumber, NSString, UIImpactFeedbackGenerator, UIPickerView, UISelectionFeedbackGenerator;
 @protocol HUQuickControlViewInteractionDelegate;
 
 @interface HUQuickControlWheelPickerView : UIView <UIPickerViewDelegate, UIPickerViewDataSource, HUQuickControlInteractiveView>
@@ -26,9 +26,14 @@
     UIView *_selectedRowSurroundingView;
     NSNumber *_selectedRow;
     double _maxTextWidth;
+    UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
+    UIImpactFeedbackGenerator *_impactFeedbackGenerator;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
+@property(retain, nonatomic) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
 @property(nonatomic) double maxTextWidth; // @synthesize maxTextWidth=_maxTextWidth;
 @property(retain, nonatomic) NSNumber *selectedRow; // @synthesize selectedRow=_selectedRow;
 @property(retain, nonatomic) UIView *selectedRowSurroundingView; // @synthesize selectedRowSurroundingView=_selectedRowSurroundingView;
@@ -40,7 +45,8 @@
 @property(copy, nonatomic) HUQuickControlWheelPickerViewProfile *profile; // @synthesize profile=_profile;
 @property(nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property(nonatomic) __weak id <HUQuickControlViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-- (void).cxx_destruct;
+- (void)_actuateSelectionTapticFeedback;
+- (void)_prepareForTapticFeedback;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 @property(retain, nonatomic) id value;

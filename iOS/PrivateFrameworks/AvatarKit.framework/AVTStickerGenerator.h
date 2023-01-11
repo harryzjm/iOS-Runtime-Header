@@ -16,7 +16,6 @@
 {
     _Bool _async;
     AVTAvatar *_avatar;
-    NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     SCNScene *_scene;
     SCNRenderer *_renderer;
@@ -31,11 +30,13 @@
 + (id)createPropsParentNodeIfNeededInScene:(id)arg1;
 + (id)findNodesNamed:(id)arg1 inAvatar:(id)arg2;
 + (id)addCamera:(id)arg1 inScene:(id)arg2;
-+ (void)addProps:(id)arg1 toScene:(id)arg2 forAvatar:(id)arg3 withCamera:(id)arg4 forExport:(_Bool)arg5 async:(_Bool)arg6 workQueue:(id)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
-+ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 defaultCamera:(id)arg4 forExport:(_Bool)arg5 async:(_Bool)arg6 workQueue:(id)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
++ (void)addProps:(id)arg1 toScene:(id)arg2 forAvatar:(id)arg3 withCamera:(id)arg4 forExport:(_Bool)arg5 async:(_Bool)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
++ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 defaultCamera:(id)arg4 forExport:(_Bool)arg5 async:(_Bool)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
 + (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 defaultCamera:(id)arg4 forExport:(_Bool)arg5 completion:(CDUnknownBlockType)arg6 async:(_Bool)arg7;
 + (void)removeConfiguration:(id)arg1 fromScene:(id)arg2 withAvatar:(id)arg3 appliedShaderModifier:(id)arg4;
 + (void)removeConfiguration:(id)arg1 fromScene:(id)arg2 withAvatar:(id)arg3;
++ (id)workQueue;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *appliedShaderModifiers; // @synthesize appliedShaderModifiers=_appliedShaderModifiers;
 @property(retain, nonatomic) NSArray *overridenPresets; // @synthesize overridenPresets=_overridenPresets;
 @property(retain, nonatomic) NSArray *overridenMorphers; // @synthesize overridenMorphers=_overridenMorphers;
@@ -44,18 +45,17 @@
 @property(retain, nonatomic) SCNRenderer *renderer; // @synthesize renderer=_renderer;
 @property(retain, nonatomic) SCNScene *scene; // @synthesize scene=_scene;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) _Bool async; // @synthesize async=_async;
 @property(retain, nonatomic) AVTAvatar *avatar; // @synthesize avatar=_avatar;
-- (void).cxx_destruct;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
 - (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
+- (void)stickerImageWithConfiguration:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stickerImageWithConfiguration:(id)arg1 correctClipping:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stickerImageWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rendererWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearPreviousConfigurationBeforeNewConfiguration:(id)arg1;
-- (struct UIImage *)snapshotAtTime:(double)arg1 withRenderer:(id)arg2 configuration:(id)arg3 correctClipping:(_Bool)arg4;
+- (id)snapshotAtTime:(double)arg1 withRenderer:(id)arg2 configuration:(id)arg3 options:(id)arg4;
 - (void)setupRendererWithAvatar:(id)arg1;
 - (void)setupAvatar:(id)arg1;
 - (id)initWithAvatar:(id)arg1;

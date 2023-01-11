@@ -8,7 +8,7 @@
 
 #import <IMDaemonCore/INSpeakable-Protocol.h>
 
-@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
+@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
 
 @interface IMDChat : NSObject <INSpeakable>
 {
@@ -34,13 +34,13 @@
     NSString *_originalGroupID;
     NSString *_serverChangeToken;
     long long _lastReadMessageTimeStamp;
-    NSDate *_lastSentMessageDate;
     long long _lastMessageTimeStampOnLoad;
     unsigned char _style;
     _Bool _createEngramGroupOnMessageSend;
     _Bool _pendingENGroupParticipantUpdate;
     _Bool _isArchived;
-    _Bool _isFiltered;
+    long long _isFiltered;
+    _Bool _isBlackholed;
     _Bool _hasHadSuccessfulQuery;
     _Bool _wasReportedAsJunk;
     _Bool _meCardUpdated;
@@ -76,18 +76,32 @@
 - (id)_personIdentity;
 - (void)_persistMergedIDMergedChatsIfNeeded:(id)arg1;
 - (id)_chatRegistry;
+- (void)updateGroupPhotoUploadFailureCount:(id)arg1;
+- (id)groupPhotoUploadFailureCount;
+- (void)updateGroupPhotoGuid:(id)arg1;
+- (id)groupPhotoGuid;
 - (void)updateHasHadSuccessfulQuery:(_Bool)arg1;
 - (void)updateLastSeenMessageGuidIfNeeded:(id)arg1;
 - (id)lastSeenMessageGUID;
+- (int)messageHandshakeState;
+- (int)smsHandshakeState;
+- (_Bool)receivedBlackholeError;
+- (id)lastSentMessageDate;
 - (int)getNumberOfTimesRespondedToThread;
 - (_Bool)isSMSSpam;
 - (_Bool)isiMessageSpam;
+- (void)updateMessageHandshakeState:(int)arg1;
+- (void)updateSMSHandshakeState:(int)arg1;
+- (void)updateReceivedBlackholeError:(_Bool)arg1;
+- (void)setLastSentMessageDate:(id)arg1;
 - (void)updateSMSSpamExtensionNameChatProperty:(id)arg1;
 - (void)updateShouldForceToSMS:(_Bool)arg1;
-- (void)updateIsSMSSpamChatProperty:(_Bool)arg1;
+- (void)updateSMSCategory:(long long)arg1;
 - (void)updateIsiMessageSpam:(_Bool)arg1;
 - (void)updateNumberOfTimesRespondedToThread;
-- (void)updateIsFiltered:(_Bool)arg1;
+- (void)updateIsBlackholed:(_Bool)arg1;
+- (void)updateIsFiltered:(long long)arg1;
+- (void)updateDisplayName:(id)arg1 sender:(id)arg2;
 - (void)updateDisplayName:(id)arg1;
 - (void)updateLastAddressedSIMID:(id)arg1;
 - (void)updateLastAddressedHandle:(id)arg1 forceUpdate:(_Bool)arg2;
@@ -117,22 +131,29 @@
 - (long long)compareBySequenceNumberAndDateDescending:(id)arg1;
 - (_Bool)isNewerThan:(id)arg1;
 - (_Bool)isOlderThan:(id)arg1;
+- (id)_sortedParticipantIDHashForParticipants:(id)arg1 usesPersonCentricID:(_Bool)arg2;
+- (id)_sortedParticipantIDHashForParticipants:(id)arg1;
+@property(readonly, nonatomic) NSString *pinningIdentifier;
+@property(readonly, nonatomic) NSString *deviceIndependentID;
+@property(readonly, nonatomic) NSString *persistentID;
+- (_Bool)isSMS;
+- (_Bool)isGroupChat;
 - (long long)engroupCreationDate;
 @property(readonly, retain) IMDServiceSession *serviceSession;
 @property(readonly, retain) IMDService *service;
 @property(readonly, retain) IMDAccount *account;
 @property(copy) NSString *accountID;
+- (void)resetParticipants:(id)arg1;
 - (void)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;
 - (void)addParticipant:(id)arg1;
 - (void)addParticipants:(id)arg1;
 - (void)_updateCachedParticipants;
 @property long long lastMessageTimeStampOnLoad;
-- (void)setLastSentMessageDate:(id)arg1;
-@property(readonly, retain) NSDate *lastSentMessageDate;
 @property _Bool hasHadSuccessfulQuery;
-@property _Bool isFiltered;
+@property long long isFiltered;
 @property(setter=_setRowID:) long long rowID;
+@property _Bool isBlackholed;
 @property(readonly) _Bool isArchived;
 @property(setter=_setUnreadCount:) unsigned long long unreadCount;
 @property long long state;
@@ -155,11 +176,12 @@
 @property(copy) NSString *chatIdentifier;
 @property(copy) NSString *guid;
 - (void)dealloc;
-- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(_Bool)arg14 hasHadSuccessfulQuery:(_Bool)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 srServerChangeToken:(id)arg22 srCloudKitSyncState:(long long)arg23 cloudKitRecordID:(id)arg24 srCloudKitRecordID:(id)arg25;
+- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(long long)arg14 hasHadSuccessfulQuery:(_Bool)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 srServerChangeToken:(id)arg22 srCloudKitSyncState:(long long)arg23 cloudKitRecordID:(id)arg24 srCloudKitRecordID:(id)arg25 isBlackholed:(_Bool)arg26;
 @property(readonly, nonatomic) NSArray *alternativeSpeakableMatches;
 @property(readonly, nonatomic) NSString *vocabularyIdentifier;
 @property(readonly, nonatomic) NSString *pronunciationHint;
 @property(readonly, nonatomic) NSString *spokenPhrase;
+- (unsigned long long)powerLogConversationType;
 - (_Bool)applyChangesUsingCKRecord:(id)arg1 isUsingStingRay:(_Bool)arg2;
 - (id)initWithCKRecord:(id)arg1 isUsingStingRay:(_Bool)arg2;
 - (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2 isUsingStingRay:(_Bool)arg3;

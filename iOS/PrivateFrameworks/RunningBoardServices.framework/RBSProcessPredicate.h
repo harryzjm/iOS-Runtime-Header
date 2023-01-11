@@ -6,39 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/RBSProcessMatching-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSProcessIdentity, RBSProcessPredicateImpl;
 
-@interface RBSProcessPredicate : NSObject <BSXPCSecureCoding, RBSProcessMatching>
+@interface RBSProcessPredicate : NSObject <RBSXPCSecureCoding, RBSProcessMatching>
 {
     RBSProcessPredicateImpl *_predicate;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (id)predicateMatchingPredicates:(id)arg1;
 + (id)predicateMatching:(id)arg1;
 + (id)predicate;
 + (id)predicatePowerLogProcesses;
 + (id)predicateMatchingEuid:(unsigned int)arg1;
++ (id)predicateMatchingPlatform:(int)arg1;
++ (id)predicateMatchingBeforeTranslocationBundlePath:(id)arg1;
 + (id)predicateMatchingExtensionPoint:(id)arg1;
 + (id)predicateMatchingBundleIdentifier:(id)arg1;
 + (id)predicateMatchingHandle:(id)arg1;
 + (id)predicateMatchingIdentifier:(id)arg1;
++ (id)predicateMatchingLaunchServicesProcesses;
++ (id)predicateMatchingSuspendableProcesses;
 + (id)predicateMatchingTarget:(id)arg1;
 + (id)predicateMatchingIdentity:(id)arg1;
 + (id)predicateMatchingServiceName:(id)arg1;
 + (id)predicateMatchingJobLabel:(id)arg1;
-@property(readonly, nonatomic) RBSProcessPredicateImpl *predicate; // @synthesize predicate=_predicate;
 - (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+@property(readonly, nonatomic) RBSProcessPredicateImpl *predicate; // @synthesize predicate=_predicate;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -46,6 +46,7 @@
 - (_Bool)matchesProcess:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
 @property(readonly, nonatomic) unsigned int euid;
+@property(readonly, copy, nonatomic) NSString *beforeTranslocationBundlePath;
 @property(readonly, copy, nonatomic) NSString *extensionPoint;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;
 - (id)processIdentifier;

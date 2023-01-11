@@ -24,7 +24,6 @@
 }
 
 + (void)_enableLogging;
-+ (id)sharedDownloadManagerForMediaKind:(id)arg1 persistenceIdentifier:(id)arg2;
 - (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;
 - (void)performDefaultHandlingForAuthenticationChallenge:(id)arg1;
 - (void)cancelAuthenticationChallenge:(id)arg1;
@@ -32,27 +31,16 @@
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;
 - (void)_updateDownloadState:(id)arg1;
 - (long long)_getDownloadIdent;
-- (void)_updateClientWithCurrentWrites:(id)arg1;
 - (void)downloadHandler:(id)arg1 handleAuthenticationSession:(id)arg2;
 - (_Bool)downloadHandler:(id)arg1 pauseSession:(id)arg2;
 - (void)downloadHandler:(id)arg1 cancelSession:(id)arg2;
 - (void)downloadHandlerDidDisconnect:(id)arg1;
-- (void)setDelegateQueue:(id)arg1;
 - (void)unscheduleFromRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;
-- (void)_sourcePerform;
 - (void)cancel;
 - (void)start;
-- (void)_createNewDownload;
-- (void)setHandlerForDownload:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_managerFailedToStartInTime;
 - (void)dealloc;
 - (void)_invalidate;
-- (void)_sendTerminalDidFinishToDelegate:(id)arg1;
-- (void)_sendTerminalErrorToDelegate:(id)arg1;
-- (void)_postTerminalInvocation:(id)arg1;
-- (void)_preTerminalInvocation:(id)arg1;
-- (void)_invokeInvocation:(id)arg1 withConnection:(id)arg2;
 - (void)invokeForDelegate:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *description;
 - (id)initWithInfo:(const struct InternalInit *)arg1;

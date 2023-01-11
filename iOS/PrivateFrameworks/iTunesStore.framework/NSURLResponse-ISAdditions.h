@@ -7,8 +7,8 @@
 #import <Foundation/NSURLResponse.h>
 
 @interface NSURLResponse (ISAdditions)
-- (id)allHeaderFields;
-- (int)statusCode;
-- (long long)maxExpectedContentLength;
+- (id)itunes_allHeaderFields;
+- (long long)itunes_statusCode;
+- (long long)itunes_maxExpectedContentLength;
 @end
 

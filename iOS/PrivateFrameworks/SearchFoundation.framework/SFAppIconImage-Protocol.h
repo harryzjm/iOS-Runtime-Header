@@ -11,6 +11,7 @@
 @protocol SFAppIconImage <SFImage>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int iconType;
 @property(copy, nonatomic) NSString *bundleIdentifier;
 @end
 

@@ -6,24 +6,29 @@
 
 #import <MessageUI/CNComposeHeaderViewDelegate-Protocol.h>
 
-@class CNComposeRecipient, CNComposeRecipientAtom, CNComposeRecipientTextView, CNContact, NSArray, NSString;
+@class CNComposeRecipient, CNComposeRecipientAtom, CNComposeRecipientTextView, CNContact, NSArray, NSString, UIContextMenuConfiguration;
 
 @protocol CNComposeRecipientTextViewDelegate <CNComposeHeaderViewDelegate>
 
 @optional
 - (_Bool)chooseSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
+- (_Bool)chooseSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1 context:(unsigned long long)arg2;
 - (void)selectPreviousSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
+- (_Bool)collapseSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
+- (_Bool)expandSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (void)selectNextSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (void)dismissSearchResultsForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (_Bool)presentSearchResultsForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (_Bool)composeRecipientViewShowingSearchResults:(CNComposeRecipientTextView *)arg1;
 - (void)composeRecipientViewDidBecomeFirstResponder:(CNComposeRecipientTextView *)arg1;
 - (void)composeRecipientViewReturnPressed:(CNComposeRecipientTextView *)arg1;
+- (void)composeRecipientViewTabPressed:(CNComposeRecipientTextView *)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(CNComposeRecipient *)arg1;
 - (CNComposeRecipient *)composeRecipientView:(CNComposeRecipientTextView *)arg1 composeRecipientForContact:(CNContact *)arg2;
 - (CNComposeRecipient *)composeRecipientView:(CNComposeRecipientTextView *)arg1 composeRecipientForAddress:(NSString *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 showCorecipients:(NSArray *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 showPersonCardForRecipient:(CNComposeRecipient *)arg2;
+- (UIContextMenuConfiguration *)composeRecipientView:(CNComposeRecipientTextView *)arg1 contextMenuConfigurationForAtom:(CNComposeRecipientAtom *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 disambiguateRecipientForAtom:(CNComposeRecipientAtom *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 showPersonCardForAtom:(CNComposeRecipientAtom *)arg2;
 - (void)composeRecipientViewDidFinishPickingRecipient:(CNComposeRecipientTextView *)arg1;

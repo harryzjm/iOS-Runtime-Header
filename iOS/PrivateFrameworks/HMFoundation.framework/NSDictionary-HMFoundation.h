@@ -12,6 +12,7 @@
 
 @interface NSDictionary (HMFoundation) <HMFObject>
 + (id)shortDescription;
+- (id)hmf_unarchivedObjectForKey:(id)arg1 ofClasses:(id)arg2;
 - (id)hmf_valueForKey:(id)arg1;
 - (id)hmf_UUIDForKey:(id)arg1;
 - (id)hmf_URLForKey:(id)arg1;

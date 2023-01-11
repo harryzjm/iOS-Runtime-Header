@@ -19,19 +19,18 @@
 + (id)_bodyFont;
 + (id)_headingBodyFont;
 + (id)_bodyFontTextStyle;
-+ (id)_learnMoreListLabelWithLocalizationKey:(id)arg1 URLIdentifier:(long long)arg2 delegate:(id)arg3;
++ (id)_learnMoreListLabelWithLocalizedText:(id)arg1 URLIdentifier:(long long)arg2 delegate:(id)arg3;
 + (id)_bulletedTextViewWithLocalizationKey:(id)arg1;
-+ (id)_listLabelWithLocalizationKey:(id)arg1;
-+ (id)_headingLabelWithLocalizationKey:(id)arg1;
-+ (id)_bodyLabelWithLocalizationKey:(id)arg1;
++ (id)_listLabelWithLocalizedText:(id)arg1;
++ (id)_headingLabelWithLocalizedText:(id)arg1;
++ (id)_bodyLabelWithLocalizedText:(id)arg1;
++ (id)_makeViewWithContentItem:(id)arg1;
++ (id)_spacingBetweenItems:(id)arg1;
 + (id)_listLabelWithAtrialFibrillationLocalizationKey:(id)arg1;
 + (id)_headingLabelWithAtrialFibrillationLocalizationKey:(id)arg1;
 + (id)_bodyLabelWithAtrialFibrillationLocalizationKey:(id)arg1;
 + (id)learnMoreAboutAtrialFibrillationExpandedView;
-+ (id)inconclusiveExpandedViewWithDelegate:(id)arg1;
-+ (id)highOrLowHeartRateExpandedView;
-+ (id)atrialFibrillationExpandedView;
-+ (id)sinusRhythmExpandedView;
++ (id)viewWithItems:(id)arg1;
 @property(nonatomic) long long currentUserInterfaceStyle; // @synthesize currentUserInterfaceStyle=_currentUserInterfaceStyle;
 
 @end

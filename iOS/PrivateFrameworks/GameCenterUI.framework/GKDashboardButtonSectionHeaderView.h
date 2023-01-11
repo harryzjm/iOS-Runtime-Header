@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, NSString, UIButton;
+@class NSAttributedString, NSLayoutConstraint, NSString, UIButton, UIMenu, UIStackView, UIView;
 
 @interface GKDashboardButtonSectionHeaderView
 {
+    _Bool _buttonHidden;
+    NSAttributedString *_attributedButtonTitle;
     id _buttonTarget;
     SEL _buttonAction;
+    UIView *_backgroundPlatterView;
     UIButton *_button;
-    NSLayoutConstraint *_titleToButtonConstraint;
+    UIStackView *_stackView;
     NSLayoutConstraint *_rightMarginConstraint;
 }
 
@@ -19,14 +22,20 @@
 + (double)widthForTitle:(id)arg1 buttonTitle:(id)arg2;
 + (struct CGSize)platformSizeForTitle:(id)arg1;
 + (double)widthForTitle:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) NSLayoutConstraint *rightMarginConstraint; // @synthesize rightMarginConstraint=_rightMarginConstraint;
-@property(nonatomic) NSLayoutConstraint *titleToButtonConstraint; // @synthesize titleToButtonConstraint=_titleToButtonConstraint;
+@property(nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(nonatomic) UIButton *button; // @synthesize button=_button;
+@property(nonatomic) UIView *backgroundPlatterView; // @synthesize backgroundPlatterView=_backgroundPlatterView;
+@property(nonatomic, getter=isButtonHidden) _Bool buttonHidden; // @synthesize buttonHidden=_buttonHidden;
 @property(nonatomic) SEL buttonAction; // @synthesize buttonAction=_buttonAction;
 @property(nonatomic) id buttonTarget; // @synthesize buttonTarget=_buttonTarget;
+@property(copy, nonatomic) NSAttributedString *attributedButtonTitle; // @synthesize attributedButtonTitle=_attributedButtonTitle;
+- (void)prepareForReuse;
 - (void)buttonPressed:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 @property(copy, nonatomic) NSString *buttonTitle; // @dynamic buttonTitle;
+@property(nonatomic) UIMenu *buttonMenu;
 - (void)awakeFromNib;
 
 @end

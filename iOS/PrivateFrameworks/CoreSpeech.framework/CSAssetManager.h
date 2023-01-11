@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/CSAdBlockerMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSAssetControllerDelegate-Protocol.h>
 #import <CoreSpeech/CSLanguageCodeUpdateMonitorDelegate-Protocol.h>
+#import <CoreSpeech/CSSpeakerRecognitionAssetMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSpeechEndpointAssetMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerAssetMetaUpdateMonitorDelegate-Protocol.h>
 
 @class CSAssetDownloadingOption, CSPolicy, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface CSAssetManager : NSObject <CSVoiceTriggerAssetMetaUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSAssetControllerDelegate, CSLanguageCodeUpdateMonitorDelegate>
+@interface CSAssetManager : NSObject <CSVoiceTriggerAssetMetaUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSAdBlockerMetaUpdateMonitorDelegate, CSAssetControllerDelegate, CSSpeakerRecognitionAssetMetaUpdateMonitorDelegate, CSLanguageCodeUpdateMonitorDelegate>
 {
     CSPolicy *_enablePolicy;
     NSString *_currentLanguageCode;
@@ -26,13 +28,15 @@
 }
 
 + (id)sharedManager;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)_stopPeriodicalDownload;
 - (void)_startPeriodicalDownload;
 - (void)_createPeriodicalDownloadTimer;
 - (void)CSAssetController:(id)arg1 didDownloadNewAssetForType:(unsigned long long)arg2;
 - (void)CSSpeechEndpointAssetMetaUpdateMonitor:(id)arg1 didReceiveNewSpeechEndpointAssetMetaData:(_Bool)arg2;
+- (void)CSSpeakerRecognitionAssetMetaUpdateMonitor:(id)arg1 didReceiveNewSpeakerRecognitionAssetMetaData:(_Bool)arg2;
+- (void)CSAdBlockerMetaUpdateMonitor:(id)arg1 didReceiveNewAdBlockerAssetMetaData:(_Bool)arg2;
 - (void)CSVoiceTriggerAssetMetaUpdateMonitor:(id)arg1 didReceiveNewVoiceTriggerAssetMetaData:(_Bool)arg2;
 - (void)removeObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
 - (void)addObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
@@ -40,6 +44,7 @@
 @property(readonly, nonatomic) NSString *currentLanguageCode;
 - (_Bool)_canFetchRemoteAsset:(unsigned long long)arg1;
 - (void)_fetchRemoteMetaData;
+- (void)assetOfType:(unsigned long long)arg1 providerType:(unsigned long long)arg2 language:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;

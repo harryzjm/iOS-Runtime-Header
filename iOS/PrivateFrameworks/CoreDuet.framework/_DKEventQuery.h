@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_defaultQueue;
     _Bool _readMetadata;
     _Bool _deduplicateValues;
+    _Bool _returnsDistinctResults;
     NSPredicate *_predicate;
     NSArray *_eventStreams;
     NSArray *_sortDescriptors;
@@ -24,6 +25,7 @@
     long long _resultType;
     NSArray *_groupByProperties;
     CDUnknownBlockType _resultsHandler;
+    NSArray *_excludedMetadataKeys;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -33,6 +35,9 @@
 + (id)eventQueryWithPredicate:(id)arg1 eventStreams:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 sortDescriptors:(id)arg5;
 + (id)eventQueryWithPredicate:(id)arg1 eventStreams:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 sortDescriptors:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 + (void)load;
+- (void).cxx_destruct;
+@property(retain) NSArray *excludedMetadataKeys; // @synthesize excludedMetadataKeys=_excludedMetadataKeys;
+@property _Bool returnsDistinctResults; // @synthesize returnsDistinctResults=_returnsDistinctResults;
 @property(copy) CDUnknownBlockType resultsHandler; // @synthesize resultsHandler=_resultsHandler;
 @property(retain) NSArray *groupByProperties; // @synthesize groupByProperties=_groupByProperties;
 @property long long resultType; // @synthesize resultType=_resultType;
@@ -44,7 +49,6 @@
 @property(retain) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property(retain) NSArray *eventStreams; // @synthesize eventStreams=_eventStreams;
 @property(retain) NSPredicate *predicate; // @synthesize predicate=_predicate;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

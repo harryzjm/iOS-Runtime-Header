@@ -7,21 +7,25 @@
 #import <objc/NSObject.h>
 
 #import <CoreUtils/CXCallObserverDelegate-Protocol.h>
+#import <CoreUtils/CoreTelephonyClientDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, NSArray, NSData, NSMutableArray, NSString;
+@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, RTRoutineManager, TUCallCenter;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate>
+@interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate, CoreTelephonyClientDelegate>
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
-    struct NSMutableSet *_monitors;
+    NSMutableSet *_monitors;
     CDStruct_83abfce7 _bluetoothAddress48;
     NSData *_bluetoothAddressData;
     CUBluetoothClient *_bluetoothClient;
+    TUCallCenter *_callCenter;
     CXCallObserver *_callObserver;
     int _activeCallCount;
+    unsigned int _callFlags;
+    _Bool _callStatusObserving;
     int _connectedCallCount;
     int _familyBuddyToken;
     _Bool _familyFailed;
@@ -51,6 +55,14 @@ __attribute__((visibility("hidden")))
     _Bool _primaryAppleIDIsHSA2;
     int _primaryAppleIDNotifyToken;
     _Bool _primaryAppleIDObserving;
+    CoreTelephonyClient *_regionCTClient;
+    struct __CTServerConnection *_regionCTServerCnx;
+    NSString *_regionISOCountryCode;
+    NSString *_regionMobileCountryCode;
+    RTRoutineManager *_regionRoutineManager;
+    NSString *_regionRoutineCountry;
+    int _regionRoutineNotifyToken;
+    NSString *_regionRoutineState;
     CDStruct_83abfce7 _rotatingIdentifier48;
     NSData *_rotatingIdentifierData;
     NSObject<OS_dispatch_source> *_rotatingIdentifierTimer;
@@ -63,7 +75,10 @@ __attribute__((visibility("hidden")))
     struct __SCDynamicStore *_scDynamicStore;
     NSMutableArray *_scInitialKeys;
     NSString *_scKeySystemName;
+    NSString *_scPatternNetInterfaceIPv4;
+    NSString *_scPatternNetInterfaceIPv6;
     NSArray *_scNotificationKeys;
+    NSArray *_scNotificationPatterns;
     NSString *_systemName;
     CUWiFiManager *_wifiManager;
     unsigned int _wifiFlags;
@@ -77,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)_firstUnlockMonitorStop;
 - (void)_firstUnlockMonitorStart;
 - (void)_systemConfigSystemNameChanged:(_Bool)arg1;
+- (void)_systemConfigNetInterfaceChanged:(id)arg1 initial:(_Bool)arg2;
 - (void)_systemConfigChanged:(id)arg1 initial:(_Bool)arg2;
 - (void)_systemConfigUpdateNotifications;
 - (void)_systemConfigUpdateKeyPtr:(id *)arg1 name:(id)arg2 enabled:(_Bool)arg3 creator:(CDUnknownBlockType)arg4;
@@ -91,6 +107,14 @@ __attribute__((visibility("hidden")))
 - (void)_rotatingIdentifierTimerFired;
 - (void)_rotatingIdentifierMonitorStop;
 - (void)_rotatingIdentifierMonitorStart;
+- (void)_locationsOfInterestDidChange:(_Bool)arg1;
+- (void)cellMonitorUpdate:(id)arg1 info:(id)arg2;
+- (void)_regionMonitorUpdateMCC:(id)arg1;
+- (void)_regionMonitorUpdateLocationsOfInterest:(id)arg1;
+- (void)_regionMonitorGet;
+- (void)_regionMonitorStop;
+- (void)_regionMonitorStart;
+- (void)_primaryAppleIDChanged2:(_Bool)arg1;
 - (void)_primaryAppleIDChanged:(id)arg1;
 - (id)_primaryAppleIDAccount;
 - (void)_primaryAppleIDMonitorStop;
@@ -112,8 +136,11 @@ __attribute__((visibility("hidden")))
 - (void)_familyMonitorStop;
 - (void)_familyMonitorStart;
 - (int)_connectedCallCountUnached;
+- (unsigned int)_callFlagsUncached;
 - (int)_activeCallCountUnached;
+- (void)_callInfoChanged;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
+- (void)_callCenterStatusChanged:(id)arg1;
 - (void)_callMonitorStop;
 - (void)_callMonitorStart;
 - (void)_bluetoothAddressMonitorStop;

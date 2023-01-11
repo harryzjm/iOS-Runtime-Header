@@ -22,15 +22,17 @@ __attribute__((visibility("hidden")))
     UIResponder *_selectedResponder;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIResponder *selectedResponder; // @synthesize selectedResponder=_selectedResponder;
 @property(retain, nonatomic) id <EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) __weak id <EKCalendarItemEditItemDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)tableViewDidScroll;
 - (id)trailingSwipeActionsConfigurationForRowAtIndex:(long long)arg1;
 - (id)viewForActionSheet;
 - (_Bool)shouldPinKeyboard;
 - (_Bool)isInline;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
+- (id)editItemEventToDetach;
 - (_Bool)editItemViewControllerShouldShowDetachAlert;
 - (void)editItemViewControllerWantsKeyboardPinned:(_Bool)arg1;
 - (_Bool)editItemViewControllerSave:(id)arg1;
@@ -46,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)editorDidScroll:(id)arg1;
 - (_Bool)editor:(id)arg1 shouldClearSelectionFromSubitem:(unsigned long long)arg2;
 - (void)editor:(id)arg1 didDeselectSubitem:(unsigned long long)arg2;
-- (void)_showViewController:(id)arg1 editor:(id)arg2 animated:(_Bool)arg3;
+- (void)showViewController:(id)arg1 editor:(id)arg2 animated:(_Bool)arg3;
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (void)editor:(id)arg1 requestsInjectableViewControllerToBeShownForSubitem:(unsigned long long)arg2;
 - (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
@@ -56,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (double)footerHeightForWidth:(double)arg1;
 - (id)injectableViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (id)cellForSubitemAtIndex:(unsigned long long)arg1 inEditor:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)addStylingToCell:(id)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
@@ -66,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)forceRefreshLocationItemOnSave;
 - (_Bool)forceRefreshInviteesItemOnSave;
 - (_Bool)forceRefreshStartAndEndDatesOnSave;
+- (_Bool)prefersTargettedTableReloadOnSave;
 - (_Bool)forceTableReloadOnSave;
 - (_Bool)requiresReconfigurationOnSave;
 - (_Bool)canBeConfiguredForCalendarConstraints:(id)arg1;

@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)getLabels;
 - (_Bool)_calculateImageDescriptors:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 canceller:(id)arg4 descriptorBuffer:(shared_ptr_0a6daad2 *)arg5 debugIntermediatesDumpPath:(id)arg6 outputDebugDictionary:(id)arg7 error:(id *)arg8;
 - (id)calculateImageDescriptors:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 canceller:(id)arg4 error:(id *)arg5;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end
 

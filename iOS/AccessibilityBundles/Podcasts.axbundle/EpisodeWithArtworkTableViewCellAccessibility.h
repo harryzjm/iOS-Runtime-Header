@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityUserTestingChildren;
 - (id)accessibilityCustomActions;
+- (_Bool)accessibilityActivate;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (id)_axEpisodeView;

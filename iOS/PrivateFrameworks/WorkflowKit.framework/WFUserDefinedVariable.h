@@ -12,13 +12,14 @@
     id <WFVariableProvider> _variableProvider;
 }
 
-- (id)variableProvider;
 - (void).cxx_destruct;
+- (id)variableProvider;
 - (void)variableProvider:(id)arg1 variableNameDidChangeTo:(id)arg2;
 - (void)retrieveContentCollectionWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)possibleContentClassesWithContext:(id)arg1;
 @property(readonly, nonatomic) NSString *name;
 - (id)UUID;
+- (id)icon;
 - (_Bool)requiresModernVariableSupport;
 - (_Bool)isAvailable;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;

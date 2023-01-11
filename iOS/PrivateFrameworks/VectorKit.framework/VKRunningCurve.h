@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface VKRunningCurve : NSObject
 {
-    CDStruct_a199e3d1 _p0;
+    CDStruct_44038c2d _p0;
     double _t0;
-    CDStruct_a199e3d1 _p1;
+    CDStruct_44038c2d _p1;
     double _t1;
-    CDStruct_a199e3d1 _pu;
+    CDStruct_44038c2d _pu;
     double _tu;
     struct {
         double mb[4][3];
@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
-- (CDStruct_a199e3d1)stateAtTime:(double)arg1;
+- (void).cxx_destruct;
+- (CDStruct_44038c2d)stateAtTime:(double)arg1;
 - (_Bool)hasStateAtTime:(double)arg1;
 - (void)appendPosition:(Matrix_6e1d3589)arg1 atTime:(double)arg2;
 - (void)dealloc;

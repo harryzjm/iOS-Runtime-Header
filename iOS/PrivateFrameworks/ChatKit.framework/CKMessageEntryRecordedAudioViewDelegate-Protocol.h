@@ -9,6 +9,9 @@
 @class CKMediaObject, CKMessageEntryRecordedAudioView;
 
 @protocol CKMessageEntryRecordedAudioViewDelegate <NSObject>
+- (void)messageEntryRecordedAudioViewPressedPause:(CKMessageEntryRecordedAudioView *)arg1;
+- (void)messageEntryRecordedAudioViewPressedPlay:(CKMessageEntryRecordedAudioView *)arg1;
+- (void)messageEntryRecordedAudioViewPressedDelete:(CKMessageEntryRecordedAudioView *)arg1;
 - (void)messageEntryRecordedAudioView:(CKMessageEntryRecordedAudioView *)arg1 mediaObjectDidFinishPlaying:(CKMediaObject *)arg2;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSNumber, NSString, RTMapItemMO;
+@class NSArray, NSData, NSDate, NSNumber, NSString, NSUUID, RTDeviceMO, RTMapItemMO;
 
 @interface RTAddressMO
 {
@@ -18,16 +18,26 @@
 @property(copy, nonatomic) NSString *administrativeArea; // @dynamic administrativeArea;
 @property(copy, nonatomic) NSString *administrativeAreaCode; // @dynamic administrativeAreaCode;
 @property(retain, nonatomic) NSArray *areasOfInterest; // @dynamic areasOfInterest;
+@property(copy, nonatomic) NSString *ckRecordID; // @dynamic ckRecordID;
+@property(retain, nonatomic) NSData *ckRecordSystemFields; // @dynamic ckRecordSystemFields;
 @property(copy, nonatomic) NSString *country; // @dynamic country;
 @property(copy, nonatomic) NSString *countryCode; // @dynamic countryCode;
+@property(copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property(retain, nonatomic) RTDeviceMO *device; // @dynamic device;
+@property(copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
+@property(nonatomic) long long flags; // @dynamic flags;
+@property(retain, nonatomic) NSUUID *identifier; // @dynamic identifier;
 @property(copy, nonatomic) NSString *inlandWater; // @dynamic inlandWater;
 @property(copy, nonatomic) NSNumber *island; // @dynamic island;
+@property(copy, nonatomic) NSString *iso3166CountryCode; // @dynamic iso3166CountryCode;
+@property(copy, nonatomic) NSString *iso3166SubdivisionCode; // @dynamic iso3166SubdivisionCode;
 @property(copy, nonatomic) NSString *locality; // @dynamic locality;
 @property(retain, nonatomic) RTMapItemMO *mapItem; // @dynamic mapItem;
 @property(copy, nonatomic) NSString *ocean; // @dynamic ocean;
 @property(copy, nonatomic) NSString *postalCode; // @dynamic postalCode;
 @property(copy, nonatomic) NSString *subAdministrativeArea; // @dynamic subAdministrativeArea;
 @property(copy, nonatomic) NSString *subLocality; // @dynamic subLocality;
+@property(retain, nonatomic) NSArray *subPremises; // @dynamic subPremises;
 @property(copy, nonatomic) NSString *subThoroughfare; // @dynamic subThoroughfare;
 @property(copy, nonatomic) NSString *thoroughfare; // @dynamic thoroughfare;
 

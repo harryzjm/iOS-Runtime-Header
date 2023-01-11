@@ -15,6 +15,9 @@
 - (void)enumerateSubrequests:(CDUnknownBlockType)arg1;
 - (void)enqueueSubrequestsOnConversionManager:(id)arg1;
 - (id)compositeRequestCommonInitWithError:(id *)arg1;
+- (_Bool)requiresAccessibilityDescriptionMetadataChange;
+- (_Bool)requiresCaptionMetadataChange;
+- (_Bool)requiresCreationDateMetadataChange;
 - (_Bool)requiresLocationMetadataChange;
 - (_Bool)requiresFormatConversion;
 - (_Bool)areAllSubrequestsPreflighted;

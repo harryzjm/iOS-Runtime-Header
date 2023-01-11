@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
+#import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
 @class NSMutableSet, NSSet, NSString;
 
-@interface SUScanOptions : NSObject <NSSecureCoding>
+@interface SUScanOptions <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     _Bool _forced;
     NSMutableSet *_types;
     NSString *_requestedPMV;
     _Bool _MDMUseDelayPeriod;
+    NSString *_sessionID;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(nonatomic) _Bool MDMUseDelayPeriod; // @synthesize MDMUseDelayPeriod=_MDMUseDelayPeriod;
 @property(retain, nonatomic) NSString *requestedPMV; // @synthesize requestedPMV=_requestedPMV;
 @property(retain, nonatomic) NSSet *types; // @synthesize types=_types;
@@ -31,6 +32,7 @@
 - (_Bool)containsType:(int)arg1;
 - (void)removeType:(int)arg1;
 - (void)addType:(int)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

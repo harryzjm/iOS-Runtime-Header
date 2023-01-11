@@ -19,9 +19,9 @@
 
 + (id)sortOperations:(id)arg1 withOrdering:(id)arg2;
 + (unsigned long long)insertIndexForOperationWithIdentifier:(id)arg1 inArray:(id)arg2 withOrdering:(id)arg3;
++ (id)presetifyAdjustmentStack:(id)arg1;
 + (_Bool)containsValidOperations:(id)arg1;
 + (Class)expectedOperationClass;
-+ (id)presetifyAdjustmentStack:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -51,12 +51,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_init;
 - (id)init;
+- (id)archivalRepresentation;
 - (unsigned long long)sortOrderForOperationWithIdentifier:(id)arg1;
 - (id)_debugDescriptionSuffix;
 - (id)_operations;
 - (id)_operationAtIndex:(unsigned long long)arg1;
 - (id)initWithOperations:(id)arg1;
-- (id)archivalRepresentation;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

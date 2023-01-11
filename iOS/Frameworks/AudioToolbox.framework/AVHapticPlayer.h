@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class HapticClient, NSArray, NSMutableArray;
+@class AVHapticClient, NSArray, NSMutableArray;
 
 @interface AVHapticPlayer : NSObject
 {
-    HapticClient *_client;
+    AVHapticClient *_client;
     _Bool _resourcesAllocated;
     unsigned long long _behavior;
     NSMutableArray *_channelArray;
@@ -19,11 +19,11 @@
 }
 
 + (_Bool)isSupported;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long behavior; // @synthesize behavior=_behavior;
 @property(readonly) _Bool resourcesAllocated; // @synthesize resourcesAllocated=_resourcesAllocated;
-@property(readonly) HapticClient *client; // @synthesize client=_client;
+@property(readonly) AVHapticClient *client; // @synthesize client=_client;
 @property(copy) CDUnknownBlockType stopRunningHandler; // @synthesize stopRunningHandler=_stopRunningHandler;
-- (void).cxx_destruct;
 - (void)detachHapticSequence:(unsigned long long)arg1;
 - (_Bool)clearSequenceEvents:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)setSequenceChannelParam:(unsigned long long)arg1 atTime:(double)arg2 channel:(unsigned long long)arg3 param:(unsigned long long)arg4 value:(float)arg5 error:(id *)arg6;
@@ -46,7 +46,8 @@
 - (_Bool)loadAndPrepareHapticSequenceFromVibePattern:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)loadAndPrepareHapticSequenceFromEvents:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)loadAndPrepareHapticSequenceFromData:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (_Bool)removeCustomAudioEvent:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (_Bool)releaseCustomAudioEvent:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (_Bool)referenceCustomAudioEvent:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)copyCustomAudioEvent:(unsigned long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (_Bool)createCustomAudioEvent:(id)arg1 format:(id)arg2 frames:(unsigned long long)arg3 options:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (_Bool)loadHapticEvent:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -62,11 +63,14 @@
 - (id)addChannel:(id *)arg1;
 - (_Bool)setNumberOfChannels:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)getBehavior;
+- (void)queryServerCapabilities:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (id)initWithOptions:(id)arg1 error:(id *)arg2;
 - (id)initWithSessionID:(unsigned int)arg1 sessionIsShared:(_Bool)arg2 error:(id *)arg3;
 - (id)initWithSessionID:(unsigned int)arg1 error:(id *)arg2;
 - (id)initAndReturnError:(id *)arg1;
-- (_Bool)doInitWithSessionID:(unsigned int)arg1 isShared:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)doInitWithOptions:(id)arg1 error:(id *)arg2;
+- (id)createOptionsFromAudioSessionID:(unsigned int)arg1 shared:(_Bool)arg2;
 
 @end
 

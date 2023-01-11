@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString;
+@class MapsSuggestionsEngineBuilder, MapsSuggestionsObservers, NSArray, NSDate, NSMutableArray, NSMutableSet, NSObject, NSString;
 
 #pragma mark Blocks
 
@@ -22,79 +22,19 @@ struct CLLocationCoordinate2D {
     double _field2;
 };
 
-struct GEOMapItemStorage {
-    Class _field1;
-    id _field2;
-    struct {
-        unsigned long long _field1;
-        unsigned long long _field2;
-    } _field3;
-    id _field4;
-    id _field5;
-    id _field6;
-    id _field7;
-    id _field8;
-    id _field9;
-    id _field10;
-    id _field11;
-    id _field12;
-    struct {
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-    } _field13;
+struct Duration {
+    struct duration<long long, std::__1::ratio<1, 1000000000>> _field1;
 };
 
-struct NSArray {
-    Class _field1;
+struct Notification {
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> darwinNotification;
+    int token;
+    unsigned long long state;
 };
 
-struct NSData {
-    Class _field1;
-};
+struct NotificationReceiver;
 
-struct NSDateInterval {
-    Class _field1;
-};
-
-struct NSDictionary {
-    Class _field1;
-};
-
-struct NSMutableArray {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
-};
-
-struct NSMutableSet {
-    Class _field1;
-};
-
-struct NSSet {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
-};
+struct NotificationSender;
 
 struct Queue {
     NSObject *_innerQueue;
@@ -110,8 +50,85 @@ struct SignalPack {
     struct unordered_map<MapsSuggestionsSignalType, MSg::Signal, std::__1::hash<MapsSuggestionsSignalType>, std::__1::equal_to<MapsSuggestionsSignalType>, std::__1::allocator<std::__1::pair<const MapsSuggestionsSignalType, MSg::Signal>>> dict_;
 };
 
+struct Timer {
+    struct Queue _queue;
+    NSString *_name;
+    NSObject *_timer;
+    struct {
+        NSDate *firesAt;
+    } _state;
+};
+
+struct _Config {
+    NSString *name;
+    MapsSuggestionsEngineBuilder *engineBuilder;
+    MapsSuggestionsObservers *observers;
+    double minRunTime;
+    double maxRunTime;
+    double minSleepTime;
+    double maxSleepTime;
+    double leewayRunTime;
+    double leewaySleepTime;
+    NSMutableArray *triggers;
+    NSMutableArray *runConditions;
+    NSMutableSet *filters;
+    unsigned long long maxEntries;
+    _Bool nilledWhenAsleep;
+};
+
+struct _RollingWindowBudgetRule;
+
+struct _State {
+    NSDate *minSilenceDate;
+    NSDate *earliestRunDate;
+    NSString *firedTriggerName;
+    NSString *failedRunConditionName;
+    id stopRunTimer;
+    id wakeUpTimer;
+    NSArray *entries;
+};
+
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MapsSuggestionsSignalType, MSg::Signal>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MapsSuggestionsSignalType, MSg::Signal>, void *>*> *__next_;
+};
+
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
+                } __l;
+                struct __short {
+                    char __data_[23];
+                    struct {
+                        unsigned char __size_;
+                    } ;
+                } __s;
+                struct __raw {
+                    unsigned long long __words[3];
+                } __r;
+            } ;
+        } __value_;
+    } __r_;
+};
+
+struct duration<long long, std::__1::ratio<1, 1000000000>> {
+    long long _field1;
+};
+
+struct unique_ptr<MSg::NotificationReceiver, std::__1::default_delete<MSg::NotificationReceiver>> {
+    struct __compressed_pair<MSg::NotificationReceiver *, std::__1::default_delete<MSg::NotificationReceiver>> {
+        struct NotificationReceiver *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<MSg::NotificationSender, std::__1::default_delete<MSg::NotificationSender>> {
+    struct __compressed_pair<MSg::NotificationSender *, std::__1::default_delete<MSg::NotificationSender>> {
+        struct NotificationSender *__value_;
+    } __ptr_;
 };
 
 struct unique_ptr<MSg::Queue, std::__1::default_delete<MSg::Queue>> {
@@ -144,6 +161,14 @@ struct unordered_map<MapsSuggestionsSignalType, MSg::Signal, std::__1::hash<Maps
             float __value_;
         } __p3_;
     } __table_;
+};
+
+struct vector<MSg::_RollingWindowBudgetRule, std::__1::allocator<MSg::_RollingWindowBudgetRule>> {
+    struct _RollingWindowBudgetRule *__begin_;
+    struct _RollingWindowBudgetRule *__end_;
+    struct __compressed_pair<MSg::_RollingWindowBudgetRule *, std::__1::allocator<MSg::_RollingWindowBudgetRule>> {
+        struct _RollingWindowBudgetRule *__value_;
+    } __end_cap_;
 };
 
 struct vector<MapsSuggestionsEntryType, std::__1::allocator<MapsSuggestionsEntryType>> {

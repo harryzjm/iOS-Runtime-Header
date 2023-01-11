@@ -25,6 +25,7 @@
 }
 
 + (id)defaultVerticalAxis;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKLollipopController *lollipopController; // @synthesize lollipopController=_lollipopController;
 @property(retain, nonatomic) HKHistogramAnnotationViewDataSource *annotationViewDataSource; // @synthesize annotationViewDataSource=_annotationViewDataSource;
 @property(retain, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
@@ -35,7 +36,6 @@
 @property(retain, nonatomic) UILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 @property(nonatomic) double minimumGraphViewHeight; // @synthesize minimumGraphViewHeight=_minimumGraphViewHeight;
 @property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-- (void).cxx_destruct;
 - (void)graphViewDidTapYAxis:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
 - (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3;

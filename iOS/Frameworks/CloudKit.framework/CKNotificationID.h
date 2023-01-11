@@ -18,8 +18,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSString *notificationUUID; // @synthesize notificationUUID=_notificationUUID;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *notificationUUID; // @synthesize notificationUUID=_notificationUUID;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -27,6 +27,7 @@
 - (id)CKPropertiesDescription;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithNotificationUUID:(id)arg1;
 - (id)CKXPCSuitableString;
 
 @end

@@ -6,10 +6,18 @@
 
 @interface HUGridServiceCellLayoutOptions
 {
+    _Bool _showIconOnly;
+    _Bool _showDescription;
+    _Bool _showAccessoryView;
     double _lineSpacing;
+    double _iconToTitleSpacing;
 }
 
 + (id)defaultOptionsForCellSizeSubclass:(long long)arg1;
+@property(nonatomic, getter=shouldShowAccessoryView) _Bool showAccessoryView; // @synthesize showAccessoryView=_showAccessoryView;
+@property(nonatomic, getter=shouldShowDescription) _Bool showDescription; // @synthesize showDescription=_showDescription;
+@property(nonatomic, getter=shouldShowIconOnly) _Bool showIconOnly; // @synthesize showIconOnly=_showIconOnly;
+@property(nonatomic) double iconToTitleSpacing; // @synthesize iconToTitleSpacing=_iconToTitleSpacing;
 @property(nonatomic) double lineSpacing; // @synthesize lineSpacing=_lineSpacing;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

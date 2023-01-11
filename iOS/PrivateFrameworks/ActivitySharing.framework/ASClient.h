@@ -8,7 +8,7 @@
 
 #import <ActivitySharing/_HKXPCExportable-Protocol.h>
 
-@class HKPluginProxyProvider, NSString;
+@class HKProxyProvider, NSString;
 @protocol ASServerInterface, OS_dispatch_queue;
 
 @interface ASClient : NSObject <_HKXPCExportable>
@@ -16,12 +16,14 @@
     NSObject<OS_dispatch_queue> *_serverQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     id <ASServerInterface> _serverProxy;
-    HKPluginProxyProvider *_pluginProxyProvider;
+    HKProxyProvider *_proxyProvider;
 }
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_clientQueueSuccessCompletion:(CDUnknownBlockType)arg1;
-- (void)_remoteProxy:(CDUnknownBlockType)arg1;
+- (void)_remoteProxy:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)queryAppBadgeCountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleNotificationResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)friendWithRemoteUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)expireChangeTokenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAreMultipleDevicesSharingDataForSnapshotIndex:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

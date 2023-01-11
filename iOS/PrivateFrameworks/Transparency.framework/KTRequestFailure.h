@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class KTRequest, NSData;
+@class KTRequest, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface KTRequestFailure : NSManagedObject
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(nonatomic) long long errorCode; // @dynamic errorCode;
+@property(copy, nonatomic) NSString *errorDomain; // @dynamic errorDomain;
 @property(retain, nonatomic) NSData *proofOfFailure; // @dynamic proofOfFailure;
 @property(retain, nonatomic) KTRequest *request; // @dynamic request;
 

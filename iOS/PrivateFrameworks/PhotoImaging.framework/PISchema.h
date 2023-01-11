@@ -15,6 +15,9 @@
 + (id)registeredPhotosSchemaIdentifier;
 + (id)photosCompositionSchema;
 + (id)photosSchema;
++ (id)debugSchema;
++ (id)videoCrossfadeLoopSchema;
++ (id)videoStabilizeSchema;
 + (id)videoReframeSchema;
 + (id)selectiveColorSchema;
 + (id)curvesSchema;

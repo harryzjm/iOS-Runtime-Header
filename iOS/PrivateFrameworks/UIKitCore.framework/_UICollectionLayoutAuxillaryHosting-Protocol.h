@@ -6,14 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol NSCollectionLayoutContainer, _UICollectionLayoutSupplementaryEnrolling, _UICollectionPreferredSizes;
 
 @protocol _UICollectionLayoutAuxillaryHosting <NSObject>
 - (id <_UICollectionPreferredSizes>)auxillaryHostPreferredSizes;
 - (id <_UICollectionLayoutSupplementaryEnrolling>)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (_Bool)auxillaryHostShouldLayoutRTL;
 - (NSArray *)auxillaryHostAuxillaryItems;
 - (id <NSCollectionLayoutContainer>)auxillaryHostContainer;
@@ -21,6 +21,7 @@
 - (struct CGSize)auxillaryHostContentSize;
 
 @optional
+- (struct NSDirectionalEdgeInsets)auxillaryHostEdgeInsetsForAuxillaryOfKind:(NSString *)arg1;
 - (struct CGPoint)auxillaryHostAdditionalFrameOffset;
 @end
 

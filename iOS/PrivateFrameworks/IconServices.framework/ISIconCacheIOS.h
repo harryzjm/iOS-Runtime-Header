@@ -21,12 +21,12 @@
 + (id)cacheContainerURL;
 + (id)UUIDStringForString:(id)arg1;
 + (id)xpcInterface;
+- (void).cxx_destruct;
 @property(retain) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
 @property(copy) NSString *cacheKeySalt; // @synthesize cacheKeySalt=_cacheKeySalt;
 @property(readonly) _Bool initialized; // @synthesize initialized=_initialized;
-- (void).cxx_destruct;
 - (id)iconDataForKey:(id)arg1 ignoreCache:(_Bool)arg2 generatorBlock:(CDUnknownBlockType)arg3;
-- (id)cacheKeyFromBundleIdentifier:(id)arg1 iconDictionary:(id)arg2 preferedIconName:(id)arg3;
+- (id)cacheKeyFromResourceURL:(id)arg1 bundleIdentifier:(id)arg2 iconDictionary:(id)arg3 preferedIconName:(id)arg4;
 - (id)bundleCacheKeyForBundleIdentifier:(id)arg1 cacheKey:(id)arg2 variant:(int)arg3 options:(int)arg4;
 - (id)bundleCacheKeyPrefixForBundleIdentifier:(id)arg1;
 - (id)initWithCacheURL:(id)arg1 salt:(id)arg2;

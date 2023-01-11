@@ -11,10 +11,10 @@
     GKLeaderboardSet *_leaderboardSet;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKLeaderboardSet *leaderboardSet; // @synthesize leaderboardSet=_leaderboardSet;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1 leaderboardSet:(id)arg2;
 
 @end

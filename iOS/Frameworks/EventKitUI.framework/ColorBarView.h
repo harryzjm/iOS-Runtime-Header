@@ -11,14 +11,13 @@
 @interface ColorBarView : UIView
 {
     _Bool _hasRoundedCorners;
-    _Bool _dashedLines;
     UIColor *_color;
 }
 
-@property(nonatomic) _Bool dashedLines; // @synthesize dashedLines=_dashedLines;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
-- (void).cxx_destruct;
+- (void)setHasRoundedCorners:(_Bool)arg1 cornerRadius:(double)arg2;
 
 @end
 

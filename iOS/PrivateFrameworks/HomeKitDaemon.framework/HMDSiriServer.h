@@ -25,13 +25,13 @@
 
 + (id)logCategory;
 + (id)sharedSiriServer;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int targetControlIdentifier; // @synthesize targetControlIdentifier=_targetControlIdentifier;
 @property(retain, nonatomic) HMDSiriSession *siriUISession; // @synthesize siriUISession=_siriUISession;
 @property(retain, nonatomic) HMDSiriAccessoryMonitor *siriAccessoryMonitor; // @synthesize siriAccessoryMonitor=_siriAccessoryMonitor;
 @property(retain, nonatomic) HMDSiriRemoteInputServer *siriInputServer; // @synthesize siriInputServer=_siriInputServer;
 @property(readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (void)accessoryDidCloseDataStream:(id)arg1;
 - (void)accessoryDidStartListening:(id)arg1;
 - (void)accessory:(id)arg1 didReceiveBulkSessionCandidate:(id)arg2;
@@ -39,17 +39,19 @@
 - (void)monitor:(id)arg1 willNotAllowAccessoryForDragonSiri:(id)arg2;
 - (void)monitor:(id)arg1 willAllowAccessoryForDragonSiri:(id)arg2;
 - (void)monitor:(id)arg1 needsSiriCapabilityForAccessory:(id)arg2;
+- (id)_getSiriSessionForAccessory:(id)arg1;
+- (void)_removeDataStreamListenerForAccessory:(id)arg1;
 - (_Bool)_isAudioCodecSupported:(id)arg1;
 - (id)_getBestAudioCodecConfiguration:(id)arg1;
-- (_Bool)_doesAccessorySupportDragonSiri:(id)arg1 siriAudioConfiguration:(id)arg2;
+- (_Bool)_isSiriInputType:(long long)arg1 supportedOnAccessory:(id)arg2 siriAudioConfiguration:(id)arg3;
 - (void)_checkSiriSupportByAccessory:(id)arg1;
 - (void)_tearDownSiriUIContext;
 - (void)_setupSiriUIContext;
-- (void)_tearDownSiriPlugin;
+- (void)_maybeTearDownSiriPlugin;
 - (void)_setupSiriPlugin;
 - (void)handleAccessoryRemoved:(id)arg1;
-- (void)handleAccessoryIsNotReachable:(id)arg1;
-- (void)handleAccessoryIsReachable:(id)arg1;
+- (void)handleAccessoryDisconnected:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
 - (void)handleAccessoryHasBulkSendDataStream:(id)arg1;
 - (void)registerForMessages;
 - (void)setTargetableAccessory:(id)arg1 withControllers:(id)arg2;

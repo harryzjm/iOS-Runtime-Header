@@ -26,6 +26,7 @@
     unsigned long long _pulsePeriod;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int pulseOffset; // @synthesize pulseOffset=_pulseOffset;
 @property(nonatomic) unsigned long long pulsePeriod; // @synthesize pulsePeriod=_pulsePeriod;
 @property(nonatomic) _Bool useRealtimePriority; // @synthesize useRealtimePriority=_useRealtimePriority;

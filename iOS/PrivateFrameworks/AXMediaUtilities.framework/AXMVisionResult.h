@@ -8,7 +8,7 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMDiagnostics, AXMLanguage, AXMVisionFeature, CIImage, NSArray, NSNumber, NSSet, NSString;
+@class AXMVisionFeature, AXMetricSession, CIImage, NSArray, NSData, NSDictionary, NSNumber, NSSet, NSString;
 @protocol NSSecureCoding;
 
 @interface AXMVisionResult : NSObject <NSSecureCoding>
@@ -17,41 +17,51 @@
     NSArray *_features;
     NSSet *_evaluatedFeatureTypes;
     NSNumber *_appliedImageOrientation;
-    AXMDiagnostics *_diagnostics;
+    NSArray *_effectiveTextDetectionLocales;
+    AXMetricSession *_metricSession;
     long long _imageRegistrationState;
     NSObject<NSSecureCoding> *_userContext;
-    NSString *_detectedFeatureDescription;
+    NSData *_equivalenceToken;
     NSString *_detectedTextDescription;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 diagnostics:(id)arg4 userContext:(id)arg5;
-+ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 diagnostics:(id)arg4;
++ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 metricSession:(id)arg4 userContext:(id)arg5;
++ (id)resultWithImage:(id)arg1 features:(id)arg2 orientation:(id)arg3 metricSession:(id)arg4;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *detectedTextDescription; // @synthesize detectedTextDescription=_detectedTextDescription;
-@property(retain, nonatomic) NSString *detectedFeatureDescription; // @synthesize detectedFeatureDescription=_detectedFeatureDescription;
+@property(retain, nonatomic) NSData *equivalenceToken; // @synthesize equivalenceToken=_equivalenceToken;
 @property(retain, nonatomic) NSObject<NSSecureCoding> *userContext; // @synthesize userContext=_userContext;
 @property(nonatomic) long long imageRegistrationState; // @synthesize imageRegistrationState=_imageRegistrationState;
-@property(retain, nonatomic) AXMDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
+@property(retain, nonatomic) AXMetricSession *metricSession; // @synthesize metricSession=_metricSession;
+@property(retain, nonatomic) NSArray *effectiveTextDetectionLocales; // @synthesize effectiveTextDetectionLocales=_effectiveTextDetectionLocales;
 @property(retain, nonatomic) NSNumber *appliedImageOrientation; // @synthesize appliedImageOrientation=_appliedImageOrientation;
 @property(retain, nonatomic) NSSet *evaluatedFeatureTypes; // @synthesize evaluatedFeatureTypes=_evaluatedFeatureTypes;
 @property(retain, nonatomic) NSArray *features; // @synthesize features=_features;
 @property(retain, nonatomic) CIImage *image; // @synthesize image=_image;
-- (void).cxx_destruct;
 - (id)description;
+@property(readonly, nonatomic) NSDictionary *featureGates;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *localizedDetectedIconHint;
+- (id)detectedFeatureDescriptionWithOptions:(id)arg1;
 @property(readonly, nonatomic) NSString *localizedDetectedTextHint;
-@property(readonly, nonatomic) AXMLanguage *detectedTextLanguage;
 @property(readonly, nonatomic) AXMVisionFeature *assetMetadataFeature;
 @property(readonly, nonatomic) AXMVisionFeature *colorInfoFeature;
 - (id)sortedFeatures;
+- (unsigned long long)hash;
+- (_Bool)isEqualToAXMVisionResult:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)_init;
+@property(readonly, nonatomic) _Bool captionMayContainSensitiveContent;
+@property(readonly, nonatomic) NSArray *sensitiveContentForCaptionFeatures;
+- (id)sensitiveContentFeatures;
 @property(readonly, nonatomic) NSArray *iconClassFeatures;
 @property(readonly, nonatomic) NSArray *brightnessFeatures;
 @property(readonly, nonatomic) NSArray *blurFeatures;
 @property(readonly, nonatomic) NSArray *ocrFeatures;
 @property(readonly, nonatomic) NSArray *modelClassificationFeatures;
+@property(readonly, nonatomic) _Bool includesNSFWFeatures;
 @property(readonly, nonatomic) NSArray *captionFeatures;
 @property(readonly, nonatomic) NSArray *objectClassificationFeatures;
 @property(readonly, nonatomic) NSArray *sceneClassificationFeatures;

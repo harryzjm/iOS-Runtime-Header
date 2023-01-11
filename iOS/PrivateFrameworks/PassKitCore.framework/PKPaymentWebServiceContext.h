@@ -14,7 +14,7 @@
     NSDictionary *_regions;
     NSObject<OS_dispatch_queue> *_queue;
     struct os_unfair_lock_s _cacheLock;
-    NSMutableDictionary *_featureSupportedLangaugeCache;
+    NSMutableDictionary *_featureSupportedLanguageCache;
     _Bool _devSigned;
     _Bool _transactionServiceDisabled;
     _Bool _messageServiceDisabled;
@@ -23,6 +23,7 @@
     NSString *_deviceID;
     NSString *_secureElementID;
     NSString *_pushToken;
+    NSString *_nextPushToken;
     NSString *_companionSerialNumber;
     NSDate *_registrationDate;
     NSDate *_configurationDate;
@@ -37,6 +38,7 @@
 + (void)_migrateContext:(id)arg1;
 + (id)contextWithArchive:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property(copy) NSArray *certificates; // @synthesize certificates=_certificates;
 @property long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
@@ -49,16 +51,17 @@
 @property(copy) NSDate *registrationDate; // @synthesize registrationDate=_registrationDate;
 @property _Bool devSigned; // @synthesize devSigned=_devSigned;
 @property(copy) NSString *companionSerialNumber; // @synthesize companionSerialNumber=_companionSerialNumber;
+@property(copy) NSString *nextPushToken; // @synthesize nextPushToken=_nextPushToken;
 @property(copy) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property(copy) NSString *secureElementID; // @synthesize secureElementID=_secureElementID;
 @property(copy) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property long long version; // @synthesize version=_version;
-- (void).cxx_destruct;
-- (id)applyServicePreferredLangaugeForFeatureIdentifier:(unsigned long long)arg1;
-- (id)applyServiceLocalizationBundleForfeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServicePreferredLanguageForFeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServiceLocalizationBundleForFeatureIdentifier:(unsigned long long)arg1;
 - (id)applyServiceFeaturesForRegionMeetingEnablementThreshold:(id)arg1;
 - (double)_contextProvisioningEnablementValue;
 - (id)betaPaymentNetworksForRegion:(id)arg1;
+- (_Bool)contextMeetsDeviceUpgradeTasksEnablementThresholdForRegion:(id)arg1;
 - (_Bool)contextMeetsMarketGeoNotificationThresholdForRegion:(id)arg1 paymentNetwork:(long long)arg2;
 - (_Bool)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
 - (id)_regionWithPeerPaymentServiceURL;

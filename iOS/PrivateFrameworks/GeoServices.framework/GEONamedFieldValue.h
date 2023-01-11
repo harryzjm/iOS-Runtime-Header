@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEONamedFieldValue : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _doubleValue;
     long long _intValue;
     GEONamedField *_mapValue;
     NSString *_stringValue;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _boolValue;
     struct {
         unsigned int has_doubleValue:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_mapValue:1;
         unsigned int read_stringValue:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_doubleValue:1;
-        unsigned int wrote_intValue:1;
-        unsigned int wrote_mapValue:1;
-        unsigned int wrote_stringValue:1;
-        unsigned int wrote_boolValue:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,20 +46,23 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEONamedField *mapValue;
 @property(readonly, nonatomic) _Bool hasMapValue;
-- (void)_readMapValue;
 @property(nonatomic) _Bool hasBoolValue;
 @property(nonatomic) _Bool boolValue;
 @property(nonatomic) _Bool hasIntValue;
 @property(nonatomic) long long intValue;
 @property(retain, nonatomic) NSString *stringValue;
 @property(readonly, nonatomic) _Bool hasStringValue;
-- (void)_readStringValue;
 @property(nonatomic) _Bool hasDoubleValue;
 @property(nonatomic) double doubleValue;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

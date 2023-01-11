@@ -20,10 +20,11 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *isoCountryCodesDict; // @synthesize isoCountryCodesDict=_isoCountryCodesDict;
 @property(retain) NSMutableDictionary *mobileEquipmentInfoDict; // @synthesize mobileEquipmentInfoDict=_mobileEquipmentInfoDict;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
-- (void).cxx_destruct;
+- (void)prlVersionDidChange:(id)arg1 version:(id)arg2;
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (id)shortLabel:(id)arg1;
 - (id)isoCountryCode:(id)arg1;

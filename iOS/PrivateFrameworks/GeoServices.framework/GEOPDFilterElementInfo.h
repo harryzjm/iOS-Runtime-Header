@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDFilterElementInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_filterIds;
     GEOPDVenueLabel *_label;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_filterIds:1;
         unsigned int read_label:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_filterIds:1;
-        unsigned int wrote_label:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,18 +41,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDVenueLabel *label;
 @property(readonly, nonatomic) _Bool hasLabel;
-- (void)_readLabel;
 - (id)filterIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)filterIdsCount;
-- (void)_addNoFlagsFilterId:(id)arg1;
 - (void)addFilterId:(id)arg1;
 - (void)clearFilterIds;
 @property(retain, nonatomic) NSMutableArray *filterIds;
-- (void)_readFilterIds;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

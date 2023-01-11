@@ -6,6 +6,7 @@
 
 @class HDDataOriginProvenance, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface _HDDeletedSampleInsertionJournalEntry
 {
     NSArray *_samples;
@@ -14,9 +15,9 @@
 
 + (_Bool)supportsSecureCoding;
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) HDDataOriginProvenance *provenance; // @synthesize provenance=_provenance;
 @property(readonly, copy, nonatomic) NSArray *samples; // @synthesize samples=_samples;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCodableDeletedSamples:(id)arg1 provenance:(id)arg2;

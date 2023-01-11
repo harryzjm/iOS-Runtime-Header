@@ -9,7 +9,7 @@
 #import <FrontBoardServices/FBSSceneUpdater-Protocol.h>
 #import <FrontBoardServices/FBSWorkspaceScenesSource-Protocol.h>
 
-@class BSServiceConnection, BSServiceConnectionEndpoint, FBSSerialQueue, FBSWorkspace, NSMutableArray, NSMutableDictionary, NSString;
+@class BSServiceConnection, BSServiceConnectionEndpoint, FBSSerialQueue, FBSWorkspace, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol FBSWorkspaceDelegate, NSCopying, OS_dispatch_queue;
 
 @interface FBSWorkspaceScenesClient : NSObject <FBSSceneUpdater, FBSWorkspaceScenesSource>
@@ -21,6 +21,8 @@
     BSServiceConnection *_connection;
     BSServiceConnectionEndpoint *_endpoint;
     NSMutableDictionary *_scenesByIdentifier;
+    NSMutableDictionary *_clientSettingsByIdentifier;
+    NSHashTable *_reconnectingScenes;
     NSMutableArray *_pendedSendBlocks;
     struct os_unfair_lock_s _reportingLock;
     NSMutableDictionary *_reportingLock_scenesByIdentifier;
@@ -29,14 +31,19 @@
 + (id)serviceQuality;
 - (void).cxx_destruct;
 - (void)_queue_invalidateScene:(id)arg1 withTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_updateScene:(id)arg1 withSettings:(id)arg2 diff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_queue_connectedSceneWithIdentifier:(id)arg1;
+- (id)_reportedSceneWithIdentifier:(id)arg1;
+- (void)_configureReceivedActions:(id)arg1 forScene:(id)arg2;
 - (id)_remoteTarget;
 - (oneway void)sceneID:(id)arg1 sendMessage:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)sceneID:(id)arg1 sendActions:(id)arg2;
 - (oneway void)sendActions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)sceneID:(id)arg1 destroyWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)sceneID:(id)arg1 updateWithSettingsDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (oneway void)sceneID:(id)arg1 createWithParameters:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (oneway void)willTerminateWithTransitionContext:(id)arg1 withAcknowledgement:(CDUnknownBlockType)arg2;
+- (oneway void)reconnectWithSceneID:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (oneway void)createWithSceneID:(id)arg1 groupID:(id)arg2 parameters:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (oneway void)willTerminateWithTransitionContext:(id)arg1;
 - (void)scene:(id)arg1 sendMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;

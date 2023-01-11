@@ -15,20 +15,22 @@
 @interface AKToolsListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     _Bool _supportsOpacityEditing;
+    _Bool _isDeviceLocked;
     id <AKToolsListViewControllerDelegate> _delegate;
     UITableView *_tableView;
     NSArray *_cellItemTypes;
 }
 
 + (id)defaultCellItemTypes;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isDeviceLocked; // @synthesize isDeviceLocked=_isDeviceLocked;
 @property(copy, nonatomic) NSArray *cellItemTypes; // @synthesize cellItemTypes=_cellItemTypes;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(nonatomic) _Bool supportsOpacityEditing; // @synthesize supportsOpacityEditing=_supportsOpacityEditing;
 @property(nonatomic) __weak id <AKToolsListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (long long)_shapesCellIndexRow;
 - (void)_reloadCellItemTypes;
-- (id)_buttonViewWithImage:(id)arg1 title:(id)arg2;
+- (id)_buttonViewWithImage:(id)arg1 title:(id)arg2 tintColor:(id)arg3;
 - (void)addRowView:(id)arg1 toCellView:(id)arg2;
 - (id)_buttonViewForOpacity;
 - (id)_buttonViewForShapes;
@@ -43,6 +45,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)_canShowWhileLocked;
 - (void)_shapeButtonPressed:(id)arg1;
+- (void)_updateDeviceLocked;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;

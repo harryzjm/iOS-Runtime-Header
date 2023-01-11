@@ -16,6 +16,7 @@
     NSString *_campaignId;
     NSString *_campaignType;
     NSMutableArray *_channelResultFeedIds;
+    NSString *_completedSearchString;
     NSString *_creativeId;
     int _searchExecutionMethod;
     int _searchLocation;
@@ -37,6 +38,8 @@
 + (Class)articleResultIdsType;
 + (Class)channelResultFeedIdsType;
 + (Class)topicResultFeedIdsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *completedSearchString; // @synthesize completedSearchString=_completedSearchString;
 @property(retain, nonatomic) NSMutableArray *articleResultIds; // @synthesize articleResultIds=_articleResultIds;
 @property(retain, nonatomic) NSString *topResultTopicId; // @synthesize topResultTopicId=_topResultTopicId;
 @property(retain, nonatomic) NSString *topResultChannelId; // @synthesize topResultChannelId=_topResultChannelId;
@@ -50,7 +53,6 @@
 @property(retain, nonatomic) NSString *topResultFeedId; // @synthesize topResultFeedId=_topResultFeedId;
 @property(nonatomic) int totalResults; // @synthesize totalResults=_totalResults;
 @property(retain, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -59,6 +61,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCompletedSearchString;
 - (id)articleResultIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)articleResultIdsCount;
 - (void)addArticleResultIds:(id)arg1;

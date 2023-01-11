@@ -10,6 +10,10 @@
 
 @interface NSURLSessionTaskDependencyDescription : NSObject
 {
+    _Bool _exclusive;
+    float _priority;
+    __NSURLSessionTaskDependencyResourceIdentifier *_dependent;
+    __NSURLSessionTaskDependencyResourceIdentifier *_parent;
     NSString *_dependentURLPath;
     NSString *_dependentMimeType;
     NSString *_parentURLPath;
@@ -26,12 +30,10 @@
 @property(readonly) NSString *parentURLPath; // @synthesize parentURLPath=_parentURLPath;
 @property(readonly) NSString *dependentMimeType; // @synthesize dependentMimeType=_dependentMimeType;
 @property(readonly) NSString *dependentURLPath; // @synthesize dependentURLPath=_dependentURLPath;
-
-// Remaining properties
-@property(retain, nonatomic) __NSURLSessionTaskDependencyResourceIdentifier *_dependent; // @dynamic _dependent;
-@property(retain, nonatomic) __NSURLSessionTaskDependencyResourceIdentifier *_parent; // @dynamic _parent;
-@property(nonatomic) _Bool exclusive; // @dynamic exclusive;
-@property(nonatomic) float priority; // @dynamic priority;
+@property(nonatomic) _Bool exclusive; // @synthesize exclusive=_exclusive;
+@property(nonatomic) float priority; // @synthesize priority=_priority;
+- (id)description;
+- (void)dealloc;
 
 @end
 

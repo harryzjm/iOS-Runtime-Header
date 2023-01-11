@@ -14,6 +14,8 @@
 
 + (id)valueForPreferenceKey:(id)arg1 domain:(id)arg2;
 + (id)sharedPreferencesController;
+- (_Bool)defaultGlobeAsEmojiKeySetting;
+- (_Bool)useHardwareGlobeKeyAsEmojiKey;
 - (_Bool)isPasswordAutoFillAllowed;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
@@ -21,6 +23,7 @@
 - (_Bool)isPreferenceKeyLockedDown:(id)arg1;
 - (void)setLastUsedDictationLanguages:(id)arg1;
 - (void)setEnabledDictationLanguages:(id)arg1;
+@property long long visceral;
 - (void)performedFirstReachableKeyboardInteraction;
 - (_Bool)isFirstReachableKeyboardInteraction;
 @property long long handBias;

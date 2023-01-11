@@ -6,26 +6,35 @@
 
 #import <UIKit/UIView.h>
 
-@class AXPIPinchChainView, NSMutableArray;
+#import <AccessibilityPhysicalInteraction/_UILumaTrackingBackdropViewDelegate-Protocol.h>
+
+@class AXPIPinchChainView, NSMutableArray, _UILumaTrackingBackdropView;
 @protocol AXPIFingerAppearanceDelegate;
 
-@interface AXPIFingerContainerView : UIView
+@interface AXPIFingerContainerView : UIView <_UILumaTrackingBackdropViewDelegate>
 {
     NSMutableArray *_fingerViews;
     UIView *_viewForAnimatingAlpha;
     AXPIPinchChainView *_pinchChainView;
+    _UILumaTrackingBackdropView *_pointerLumaMeasurementView;
     _Bool _shouldAnimatePress;
+    _Bool _shouldSuppressFingerVisuals;
     id <AXPIFingerAppearanceDelegate> _appearanceDelegate;
 }
 
-@property(nonatomic) __weak id <AXPIFingerAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
-@property(nonatomic) _Bool shouldAnimatePress; // @synthesize shouldAnimatePress=_shouldAnimatePress;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <AXPIFingerAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
+@property(nonatomic) _Bool shouldSuppressFingerVisuals; // @synthesize shouldSuppressFingerVisuals=_shouldSuppressFingerVisuals;
+@property(nonatomic) _Bool shouldAnimatePress; // @synthesize shouldAnimatePress=_shouldAnimatePress;
 - (void)animateToTapWithDuration:(double)arg1;
 - (void)cancelCircularProgressAnimation;
 - (void)performCircularProgressAnimationOnFingersWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGRect)rectForFingersAtPoints:(id)arg1;
 - (void)_updatePinchChainAppearance;
+- (void)backgroundLumaView:(id)arg1 didTransitionToLevel:(unsigned long long)arg2;
+- (void)_updateLumaMeasurementViewFrame;
+- (void)_updateSystemFiltersWithBackgroundLuminanceLevel:(unsigned long long)arg1;
+- (void)setPressedState:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)updateWithFingerModel:(id)arg1 forFingerAtIndex:(unsigned long long)arg2;
 - (unsigned long long)indexOfFingerAtPoint:(struct CGPoint)arg1;
 - (void)clearAllFingersAnimated:(_Bool)arg1 endPointForAnimation:(struct CGPoint)arg2;

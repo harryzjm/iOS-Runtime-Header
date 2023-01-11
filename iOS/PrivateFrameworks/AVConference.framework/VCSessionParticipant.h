@@ -12,7 +12,7 @@
 #import <AVConference/VCRedundancyControllerDelegate-Protocol.h>
 #import <AVConference/VCSecurityEventHandler-Protocol.h>
 
-@class AVCBasebandCongestionDetector, AVCStatisticsCollector, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, VCAudioIO, VCAudioRuleCollection, VCCallInfoBlob, VCMediaNegotiator, VCRedundancyControllerAudio, VCRedundancyControllerVideo;
+@class AVCBasebandCongestionDetector, AVCStatisticsCollector, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, VCAudioIO, VCAudioRuleCollection, VCCallInfoBlob, VCMediaNegotiator, VCRedundancyControllerAudio, VCRedundancyControllerVideo, VCSessionParticipantOneToOneConfig;
 @protocol OS_dispatch_queue, VCSessionParticipantDelegate, VCSessionParticipantStreamDelegate;
 
 __attribute__((visibility("hidden")))
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     unsigned int _transportSessionID;
     VCAudioRuleCollection *_supportedAudioRules;
     int _deviceRole;
+    long long _direction;
     NSMutableSet *_startingAudioStreams;
     NSMutableSet *_stoppingAudioStreams;
     NSMutableSet *_runningAudioStreams;
@@ -69,13 +70,20 @@ __attribute__((visibility("hidden")))
     _Bool _audioIOStateChangeInProgress;
     VCAudioIO *_audioIO;
     VCMediaNegotiator *_mediaNegotiator;
+    struct tagVCMediaQueue *_mediaQueue;
     _Bool _localOnWiFi;
     VCRedundancyControllerAudio *_audioRedundancyController;
     VCRedundancyControllerVideo *_videoRedundancyController;
     id _reportingAgentWeak;
+    VCSessionParticipantOneToOneConfig *_oneToOneConfig;
+    _Bool _supportsOneToOneMode;
+    _Bool _isGKVoiceChat;
 }
 
+@property(retain, nonatomic) VCSessionParticipantOneToOneConfig *oneToOneConfig; // @synthesize oneToOneConfig=_oneToOneConfig;
+@property(readonly, nonatomic) _Bool supportsOneToOneMode; // @synthesize supportsOneToOneMode=_supportsOneToOneMode;
 @property(readonly, nonatomic) unsigned long long spatialAudioSourceID; // @synthesize spatialAudioSourceID=_spatialAudioSourceID;
+@property(nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property(nonatomic, getter=isLocalOnWiFi) _Bool localOnWiFi; // @synthesize localOnWiFi=_localOnWiFi;
 @property(readonly, nonatomic) VCMediaNegotiator *mediaNegotiator; // @synthesize mediaNegotiator=_mediaNegotiator;
 @property(readonly, nonatomic) unsigned long long idsParticipantID; // @synthesize idsParticipantID=_idsParticipantID;
@@ -119,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setVolume:(float)arg1;
 @property(nonatomic, getter=isMuted) _Bool muted; // @synthesize muted=_isMuted;
 @property(readonly, nonatomic) NSArray *allParticipantStreamInfo;
+@property(readonly, nonatomic) _Bool hasVideoStreams;
 @property(readonly, nonatomic) NSArray *audioStreams;
 - (void)updateAudioSpectrumState;
 - (void)updateVideoPaused:(_Bool)arg1;
@@ -131,7 +140,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)setState:(unsigned int)arg1;
 - (void)dealloc;
 - (id)initWithIDSDestination:(id)arg1 delegate:(id)arg2 processId:(int)arg3 sessionUUID:(id)arg4;
-- (_Bool)configureWithDeviceRole:(int)arg1;
+- (_Bool)configureWithDeviceRole:(int)arg1 negotiatedVideoEnabled:(_Bool)arg2;
+- (_Bool)configureVideoWithDeviceRole:(int)arg1;
+- (_Bool)configureAudioWithDeviceRole:(int)arg1;
 - (_Bool)updateConfigurationWithDeviceRole:(int)arg1;
 - (_Bool)configureAudioIOWithDeviceRole:(int)arg1;
 - (void)completeStreamSetup:(id)arg1;
@@ -139,22 +150,27 @@ __attribute__((visibility("hidden")))
 - (void)stopAudioDump;
 - (void)startAudioDump;
 - (id)getAudioDumpName;
+- (id)newOneToOneVideoStreamConfigWithStreamDirection:(long long)arg1 streamSsrc:(unsigned int)arg2 encodingType:(unsigned char)arg3;
+- (void)applyVideoNegotiatedSettingsToStreamConfiguration:(id)arg1;
+- (id)newOneToOneAudioStreamConfigWithAudioSettings:(id)arg1 streamDirection:(long long)arg2 streamSsrc:(unsigned int)arg3;
+- (id)newOneToOneVideoStreamMultiwayConfiguration:(unsigned char)arg1;
+- (_Bool)setupAudioStreamConfiguration:(id)arg1 audioRules:(id)arg2;
 - (void)processPausedStream:(id)arg1 didPause:(_Bool)arg2;
 - (void)processResumedStream:(id)arg1 didResume:(_Bool)arg2;
 - (void)onDidResumeAudioStream:(id)arg1;
 - (void)processStoppedStream:(id)arg1;
 - (void)processStartedStream:(id)arg1 didStart:(_Bool)arg2;
-- (void)pauseVideoStreams;
-- (void)pauseAudioStreams;
+- (int)pauseVideoStreams;
+- (int)pauseAudioStreams;
 - (void)onPauseAudioStreams;
-- (void)resumeVideoStreams;
-- (void)resumeAudioStreams;
-- (void)stopVideoStreams;
-- (void)stopAudioStreams;
+- (int)resumeVideoStreams;
+- (int)resumeAudioStreams;
+- (int)stopVideoStreams;
+- (int)stopAudioStreams;
 - (void)stopAudioStreamsCompletion;
 - (void)stopAudioIOCompletion;
-- (void)startVideoStreams;
-- (void)startAudioStreams;
+- (int)startVideoStreams;
+- (int)startAudioStreams;
 - (void)startAudioIO;
 - (void)onStartAudioIO;
 - (_Bool)isVideoStream:(id)arg1;

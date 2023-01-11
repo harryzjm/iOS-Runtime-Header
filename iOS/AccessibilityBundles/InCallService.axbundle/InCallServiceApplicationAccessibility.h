@@ -10,6 +10,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axGetFirstCall;
+- (id)accessibilityLabel;
 - (_Bool)accessibilityStartStopToggle;
 
 @end

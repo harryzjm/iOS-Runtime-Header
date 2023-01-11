@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, NSArray;
 @protocol MRCryptoPairingSessionDelegate;
 
 @interface MRCryptoPairingSession : NSObject
 {
-    _MRDeviceInfoMessageProtobuf *_device;
+    MRDeviceInfo *_device;
     unsigned long long _role;
     id <MRCryptoPairingSessionDelegate> _delegate;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <MRCryptoPairingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
-@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *device; // @synthesize device=_device;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) MRDeviceInfo *device; // @synthesize device=_device;
 - (_Bool)deleteIdentityWithError:(id *)arg1;
 - (id)decryptData:(id)arg1 withError:(id *)arg2;
 - (id)encryptData:(id)arg1 withError:(id *)arg2;

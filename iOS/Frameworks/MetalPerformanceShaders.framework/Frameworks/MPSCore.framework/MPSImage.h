@@ -27,6 +27,8 @@
 }
 
 + (id)defaultAllocator;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long featureChannelFormat; // @synthesize featureChannelFormat=_featureChannelFormat;
 @property(readonly, retain, nonatomic) MPSImage *parent; // @synthesize parent=_parent;
 @property(readonly, nonatomic) unsigned long long featureChannelsLayout; // @synthesize featureChannelsLayout=_featureChannelsLayout;
@@ -35,8 +37,6 @@
 @property(readonly, nonatomic) unsigned long long featureChannels; // @synthesize featureChannels=_featureChannels;
 @property(readonly, nonatomic) unsigned long long height; // @synthesize height=_height;
 @property(readonly, nonatomic) unsigned long long width; // @synthesize width=_width;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (unsigned long long)resourceSize;
 - (void)synchronizeOnCommandBuffer:(id)arg1;
 - (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 imageIndex:(unsigned long long)arg3;
@@ -50,8 +50,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)debugQuickLookObject;
 - (id)debugDescription;
-- (struct NSArray *)batchRepresentationWithSubRange:(struct _NSRange)arg1;
-- (struct NSArray *)batchRepresentation;
+- (id)batchRepresentationWithSubRange:(struct _NSRange)arg1;
+- (id)batchRepresentation;
 - (id)subImageWithFeatureChannelRange:(struct _NSRange)arg1;
 - (id)initWithParentImage:(id)arg1 sliceRange:(struct _NSRange)arg2 featureChannels:(unsigned long long)arg3;
 - (id)initWithDevice:(id)arg1 imageDescriptor:(id)arg2;

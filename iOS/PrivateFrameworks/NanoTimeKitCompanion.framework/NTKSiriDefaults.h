@@ -17,8 +17,8 @@
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) _Bool hasMigratedDisabledDataSources; // @synthesize hasMigratedDisabledDataSources=_hasMigratedDisabledDataSources;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasMigratedDisabledDataSources; // @synthesize hasMigratedDisabledDataSources=_hasMigratedDisabledDataSources;
 - (void)_fetchNewFaceCollection;
 - (void)_thirdPartyDataSourcesDidChange;
 - (void)_disabledDataSourcesDidChange;
@@ -31,6 +31,7 @@
 @property(retain, nonatomic) NSSet *watchThirdPartyDataSources;
 @property(retain, nonatomic) NSSet *phoneThirdPartyDataSources;
 @property(nonatomic) _Bool watchHasMigratedAvailableDataSources;
+@property(readonly, nonatomic) _Bool isUpNextFaceCurrentlyActive;
 - (void)migrateIfNecessary;
 - (id)init;
 

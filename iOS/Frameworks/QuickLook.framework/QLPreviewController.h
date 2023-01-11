@@ -52,11 +52,13 @@
     _Bool _allowInteractiveTransitions;
     _Bool _canShowToolbar;
     _Bool _canShowNavBar;
-    _Bool _currentPreviewHasUnsavedEdits;
+    _Bool _currentPreviewHasRemoteUnsavedEdits;
     _Bool _isObtainingEditsFromServiceBeforeDismissing;
     _Bool _isContentManaged;
     _Bool _useCustomActionButton;
+    _Bool _alwaysDisplayPreviewItemTitle;
     _Bool _showActionAsDefaultButton;
+    _Bool _forceModalPresentation;
     long long _currentPreviewItemIndex;
     id <QLPreviewControllerDataSource> _dataSource;
     id <QLPrintingProtocol> _printer;
@@ -92,6 +94,8 @@
     NSArray *_additionalLeftBarButtonItems;
     NSArray *_additionalRightBarButtonItems;
     unsigned long long _presentationMode;
+    unsigned long long _forcedSupportedInterfaceOrientations;
+    NSString *_overrideParentApplicationDisplayIdentifier;
 }
 
 + (id)printPageRendererForItem:(id)arg1;
@@ -105,6 +109,9 @@
 + (id)contentTypeForPreviewItem:(id)arg1;
 + (void)logDeprecatedMessageForSelector:(SEL)arg1;
 + (void)logDeprecatedMessageForMethodName:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
+@property(nonatomic) unsigned long long forcedSupportedInterfaceOrientations; // @synthesize forcedSupportedInterfaceOrientations=_forcedSupportedInterfaceOrientations;
 @property(readonly, nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property(retain, nonatomic) UIColor *fullscreenBackgroundColor; // @synthesize fullscreenBackgroundColor=_fullscreenBackgroundColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -112,13 +119,15 @@
 @property(retain, nonatomic) UIColor *toolbarTintColor; // @synthesize toolbarTintColor=_toolbarTintColor;
 @property(retain) NSArray *additionalRightBarButtonItems; // @synthesize additionalRightBarButtonItems=_additionalRightBarButtonItems;
 @property(retain) NSArray *additionalLeftBarButtonItems; // @synthesize additionalLeftBarButtonItems=_additionalLeftBarButtonItems;
+@property(nonatomic) _Bool forceModalPresentation; // @synthesize forceModalPresentation=_forceModalPresentation;
 @property(nonatomic) _Bool showActionAsDefaultButton; // @synthesize showActionAsDefaultButton=_showActionAsDefaultButton;
+@property(nonatomic) _Bool alwaysDisplayPreviewItemTitle; // @synthesize alwaysDisplayPreviewItemTitle=_alwaysDisplayPreviewItemTitle;
 @property(nonatomic) _Bool useCustomActionButton; // @synthesize useCustomActionButton=_useCustomActionButton;
 @property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property(nonatomic) unsigned long long appearanceActions; // @synthesize appearanceActions=_appearanceActions;
 @property(nonatomic) unsigned long long quickLookVisibility; // @synthesize quickLookVisibility=_quickLookVisibility;
 @property(nonatomic) _Bool isObtainingEditsFromServiceBeforeDismissing; // @synthesize isObtainingEditsFromServiceBeforeDismissing=_isObtainingEditsFromServiceBeforeDismissing;
-@property(nonatomic) _Bool currentPreviewHasUnsavedEdits; // @synthesize currentPreviewHasUnsavedEdits=_currentPreviewHasUnsavedEdits;
+@property(nonatomic) _Bool currentPreviewHasRemoteUnsavedEdits; // @synthesize currentPreviewHasRemoteUnsavedEdits=_currentPreviewHasRemoteUnsavedEdits;
 @property _Bool canShowNavBar; // @synthesize canShowNavBar=_canShowNavBar;
 @property _Bool canShowToolbar; // @synthesize canShowToolbar=_canShowToolbar;
 @property(retain) QLTransitionController *currentAnimator; // @synthesize currentAnimator=_currentAnimator;
@@ -157,7 +166,6 @@
 @property(nonatomic) __weak id <QLPreviewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) id <QLPrintingProtocol> printer; // @synthesize printer=_printer;
 @property(nonatomic) __weak id <QLPreviewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (_Bool)prefersHomeIndicatorAutoHidden;
 - (long long)itemStore:(id)arg1 editingModeForPreviewItem:(id)arg2;
 - (unsigned long long)itemStore:(id)arg1 editedFileBehaviorForItem:(id)arg2;
@@ -194,6 +202,7 @@
 - (void)updatePreviewItemAtIndex:(unsigned long long)arg1 editedCopy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_shouldAllowInteractiveTransitions;
 - (void)_updateAllowInteractiveTransitionsIfNeeded;
+- (_Bool)currentPreviewHasUnsavedEdits;
 - (void)currentPreviewItemViewControllerHasUnsavedEdits:(_Bool)arg1;
 - (void)presentAlertControllerForScenario:(long long)arg1;
 - (void)expandContentOfItemAtIndex:(unsigned long long)arg1 withUUID:(id)arg2 unarchivedItemsURLWrapper:(id)arg3;
@@ -253,6 +262,7 @@
 - (_Bool)_basePreviewControllerIsBeingFullyDismissed;
 - (_Bool)_isBeingFullyDismissed;
 - (void)dealloc;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
@@ -262,7 +272,6 @@
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (void)_commontInit;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPreviewItems:(id)arg1;
 - (id)additionalActivitiesForDocumentInteractionController:(id)arg1;
@@ -271,7 +280,7 @@
 - (id)printInfoForDocumentInteractionController:(id)arg1;
 - (unsigned long long)_computePresentationMode;
 - (_Bool)_isInPickMode;
-- (void)fetchPDFRepresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)screenshotService:(id)arg1 generatePDFRepresentationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)unregisterFromScreenshotService;
 - (void)registerForScreenshotService;
 - (void)obtainAndUpdateEditedCopyOfCurrentPreviewItem:(CDUnknownBlockType)arg1;
@@ -308,6 +317,9 @@
 - (void)showShareSheetFromRemoteViewWithPopoverTracker:(id)arg1 customSharedURL:(id)arg2 dismissCompletion:(CDUnknownBlockType)arg3;
 - (void)_showShareSheetFromBarButton:(id)arg1;
 - (void)showShareSheetFromBarButton:(id)arg1;
+- (void)_performOpenInWithFileURL:(id)arg1 claimBinding:(id)arg2 additionalLaunchServicesOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_openInButtonTapped:(id)arg1;
+- (void)_copyToButtonTapped:(id)arg1;
 - (void)_actionButtonTapped:(id)arg1;
 - (void)_toolbarButtonPressed:(id)arg1;
 - (id)_navigationBarLeftButtonsWithTraitCollection:(id)arg1;
@@ -319,6 +331,7 @@
 - (id)_listButton;
 - (id)_actionButton;
 - (id)_doneButton;
+- (id)_openInButton;
 - (void)updateNavigationTitle;
 - (void)_updateCurrentPopoverButtonIfNeeded:(id)arg1 newNavigationLeftButtons:(id)arg2;
 - (id)_buttonWithAccessibilityIdentifierPointer:(id)arg1 inButtons:(id)arg2;
@@ -328,6 +341,7 @@
 - (void)updateRemoteOverlayIfNeeded;
 - (void)updateStatusBarAnimated:(_Bool)arg1;
 - (unsigned long long)_numberOfButtonsExcludingSpacersInButtons:(id)arg1 disappearingOnTap:(_Bool)arg2;
+- (_Bool)_toolbarButtonArray:(id)arg1 isEqualToArray:(id)arg2;
 - (void)_updateOverlayButtonsIfNeededWithTraitCollection:(id)arg1 animated:(_Bool)arg2 updatedToolbarButtons:(id *)arg3;
 - (void)updateOverlayAnimated:(_Bool)arg1 animatedButtons:(_Bool)arg2 forceRefresh:(_Bool)arg3 withTraitCollection:(id)arg4;
 - (void)updateOverlayAnimated:(_Bool)arg1 forceRefresh:(_Bool)arg2 withTraitCollection:(id)arg3;

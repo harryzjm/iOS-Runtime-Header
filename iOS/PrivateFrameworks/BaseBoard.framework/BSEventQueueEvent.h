@@ -10,17 +10,13 @@
 
 @interface BSEventQueueEvent : NSObject
 {
-    NSString *_name;
     CDUnknownBlockType _handler;
+    NSString *_name;
 }
 
 + (id)eventWithName:(id)arg1 handler:(CDUnknownBlockType)arg2;
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
-- (_Bool)isEqualToEvent:(id)arg1;
-- (void)_execute;
-- (void)executeFromEventQueue;
+@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)execute;
 - (id)description;
 

@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ProactiveML/PMLDictionarySerializableProtocol-Protocol.h>
 #import <ProactiveML/PMLPlistAndChunksSerializableProtocol-Protocol.h>
 
 @class NSString, PMLMutableDenseVector;
 
-@interface PMLModelWeights : NSObject <PMLDictionarySerializableProtocol, PMLPlistAndChunksSerializableProtocol>
+@interface PMLModelWeights : NSObject <PMLPlistAndChunksSerializableProtocol>
 {
     PMLMutableDenseVector *_data;
 }

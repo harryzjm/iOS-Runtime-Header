@@ -33,7 +33,7 @@
 - (void)endEventsGrouping;
 - (void)beginEventsGrouping;
 - (void)logInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnContext:(id)arg3;
-- (void)logInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(struct NSUUID *)arg3;
+- (void)logInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(id)arg3;
 - (void)logInstrumentation:(id)arg1 turnContext:(id)arg2;
 - (void)logEventWithType:(long long)arg1 contextResolver:(CDUnknownBlockType)arg2;
 - (void)logEventWithType:(long long)arg1 contextProvider:(CDUnknownBlockType)arg2 contextProvidingQueue:(id)arg3;
@@ -43,6 +43,7 @@
 - (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 context:(id)arg3;
 - (id)_init;
 - (id)init;
+- (void)logClientFeedbackPresented:(id)arg1 dialogIdentifierProvider:(id)arg2;
 - (void)logClientFeedbackPresented:(id)arg1;
 - (id)newTurnBasedInstrumentationContext;
 

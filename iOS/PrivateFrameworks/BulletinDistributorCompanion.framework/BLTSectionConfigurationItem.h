@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber;
+@class NSArray, NSMutableDictionary, NSNumber;
 
 @interface BLTSectionConfigurationItem : NSObject
 {
@@ -29,8 +29,11 @@
     NSNumber *_watchVersionThatUsesUserInfoForContext;
     NSArray *_additionalBridgeSectionIDs;
     NSNumber *_watchVersionThatUsesAttachmentURL;
+    NSMutableDictionary *_blacklistedCategoriesWithVersion;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *blacklistedCategoriesWithVersion; // @synthesize blacklistedCategoriesWithVersion=_blacklistedCategoriesWithVersion;
 @property(retain, nonatomic) NSNumber *watchVersionThatUsesAttachmentURL; // @synthesize watchVersionThatUsesAttachmentURL=_watchVersionThatUsesAttachmentURL;
 @property(nonatomic) _Bool overrideAppliesToCoordinationOptOut; // @synthesize overrideAppliesToCoordinationOptOut=_overrideAppliesToCoordinationOptOut;
 @property(nonatomic) _Bool optOutOfSettingsCoordination; // @synthesize optOutOfSettingsCoordination=_optOutOfSettingsCoordination;
@@ -50,7 +53,6 @@
 @property(nonatomic) _Bool alwaysSyncSettings; // @synthesize alwaysSyncSettings=_alwaysSyncSettings;
 @property(nonatomic) _Bool optOutOfAttachmentTransmission; // @synthesize optOutOfAttachmentTransmission=_optOutOfAttachmentTransmission;
 @property unsigned long long coordinationType; // @synthesize coordinationType=_coordinationType;
-- (void).cxx_destruct;
 - (_Bool)updateCoordinationType:(unsigned long long)arg1;
 - (_Bool)hasDisplayedCriticalBulletins;
 - (unsigned long long)coordinationTypeWithSubtype:(long long)arg1;

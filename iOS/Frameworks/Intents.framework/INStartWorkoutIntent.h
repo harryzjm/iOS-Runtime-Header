@@ -36,7 +36,11 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_metadata;
 - (id)_typedBackingStore;
-- (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
+- (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
+- (id)localizeValueOfSlotDescription:(id)arg1 withLocalizer:(id)arg2;
+- (id)_goalValueIntentSlotDescription;
+- (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
+- (_Bool)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

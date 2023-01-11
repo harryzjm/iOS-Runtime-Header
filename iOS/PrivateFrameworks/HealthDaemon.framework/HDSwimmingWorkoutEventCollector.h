@@ -18,6 +18,7 @@
 
 + (_Bool)isAvailableInCurrentHardware;
 - (void).cxx_destruct;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)_queue_errorOccurred:(id)arg1;
 - (void)_queue_addLapEventForSwimData:(id)arg1;
 - (void)_queue_addSegmentEventWithFallbackEndDate:(id)arg1;

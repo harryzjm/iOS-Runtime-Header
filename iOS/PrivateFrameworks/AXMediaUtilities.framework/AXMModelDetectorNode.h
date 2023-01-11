@@ -15,10 +15,10 @@
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property(retain, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
-- (void).cxx_destruct;
-- (void)evaluate:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (_Bool)preloadModelIfNeeded:(id *)arg1;
 - (_Bool)requiresVisionFramework;
 - (void)encodeWithCoder:(id)arg1;

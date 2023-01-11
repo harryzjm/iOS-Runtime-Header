@@ -15,8 +15,8 @@
     HMResidentDevice *_residentDevice;
 }
 
-@property(readonly, nonatomic) HMResidentDevice *residentDevice; // @synthesize residentDevice=_residentDevice;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMResidentDevice *residentDevice; // @synthesize residentDevice=_residentDevice;
 - (id)_subclass_updateWithOptions:(id)arg1;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 @property(readonly, copy) NSString *description;

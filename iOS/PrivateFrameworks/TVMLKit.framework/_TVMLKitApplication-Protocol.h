@@ -10,5 +10,6 @@
 
 @protocol _TVMLKitApplication <IKApplication>
 @property(readonly, nonatomic) __weak id <UITraitEnvironment> keyTraitEnvironment;
+@property(readonly, nonatomic) _Bool supportsPictureInPicturePlayback;
 @end
 

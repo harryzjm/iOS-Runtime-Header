@@ -15,13 +15,16 @@
 {
     id <CNUIPRLikenessProvider> _placeholderProvider;
     id <CNUIPRLikenessProvider> _loadingPlaceholderProvider;
+    id <CNUIPRLikenessProvider> _loadingGroupPlaceholderProvider;
     id <CNScheduler> _resourceLock;
     id <CNScheduler> _highPriorityLock;
 }
 
+- (void).cxx_destruct;
+@property(readonly) id <CNUIPRLikenessProvider> loadingGroupPlaceholderProvider; // @synthesize loadingGroupPlaceholderProvider=_loadingGroupPlaceholderProvider;
 @property(retain, nonatomic) id <CNScheduler> highPriorityLock; // @synthesize highPriorityLock=_highPriorityLock;
 @property(retain, nonatomic) id <CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
-- (void).cxx_destruct;
+- (id)loadingGroupPlaceholderProviderWithBackgroundStyle:(unsigned long long)arg1;
 @property(readonly) id <CNUIPRLikenessProvider> loadingPlaceholderProvider;
 @property(readonly) id <CNUIPRLikenessProvider> placeholderProvider;
 - (id)init;

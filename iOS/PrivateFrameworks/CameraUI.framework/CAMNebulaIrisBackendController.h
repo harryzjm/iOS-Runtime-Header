@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *__linkWorkQueue;
     CAMPersistenceController *__persistenceController;
     CAMNebulaKeepAliveController *__keepAliveController;
+    NSMutableDictionary *__transactionForPersistenceUUID;
     NSMutableDictionary *__pendingOrInFlightJobsByUniqueIdentifier;
     NSMutableArray *__pendingExportVideoJobs;
     AVAssetExportSession *__activeExportSession;
@@ -32,6 +33,7 @@
     NSHashTable *__clientConnections;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSHashTable *_clientConnections; // @synthesize _clientConnections=__clientConnections;
 @property(readonly, nonatomic) BKSApplicationStateMonitor *_applicationStateMonitor; // @synthesize _applicationStateMonitor=__applicationStateMonitor;
 @property(nonatomic, getter=_coordinationQueue_isCrashRecoveryNeeded, setter=_coordinationQueue_setCrashRecoveryNeeded:) _Bool _crashRecoveryNeeded; // @synthesize _crashRecoveryNeeded=__crashRecoveryNeeded;
@@ -39,6 +41,7 @@
 @property(retain, nonatomic, setter=_setActiveExportSession:) AVAssetExportSession *_activeExportSession; // @synthesize _activeExportSession=__activeExportSession;
 @property(readonly, nonatomic) NSMutableArray *_pendingExportVideoJobs; // @synthesize _pendingExportVideoJobs=__pendingExportVideoJobs;
 @property(readonly, nonatomic) NSMutableDictionary *_pendingOrInFlightJobsByUniqueIdentifier; // @synthesize _pendingOrInFlightJobsByUniqueIdentifier=__pendingOrInFlightJobsByUniqueIdentifier;
+@property(readonly, nonatomic) NSMutableDictionary *_transactionForPersistenceUUID; // @synthesize _transactionForPersistenceUUID=__transactionForPersistenceUUID;
 @property(nonatomic, getter=_coordinationQueue_shouldCheckMarkerFileForIOWorkSuspension, setter=_coordinationQueue_setShouldCheckMarkerFileForIOWorkSuspension:) _Bool _shouldCheckMarkerFileForIOWorkSuspension; // @synthesize _shouldCheckMarkerFileForIOWorkSuspension=__shouldCheckMarkerFileForIOWorkSuspension;
 @property(readonly, nonatomic) int _notifyRegisterTokenResumeIO; // @synthesize _notifyRegisterTokenResumeIO=__notifyRegisterTokenResumeIO;
 @property(readonly, nonatomic) int _notifyRegisterTokenSuspendIO; // @synthesize _notifyRegisterTokenSuspendIO=__notifyRegisterTokenSuspendIO;
@@ -46,7 +49,6 @@
 @property(readonly, nonatomic) CAMPersistenceController *_persistenceController; // @synthesize _persistenceController=__persistenceController;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_linkWorkQueue; // @synthesize _linkWorkQueue=__linkWorkQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_coordinationQueue; // @synthesize _coordinationQueue=__coordinationQueue;
-- (void).cxx_destruct;
 - (_Bool)_removeItemAtURL:(id)arg1;
 - (_Bool)_removeItemAtURL:(id)arg1 maxAttempts:(long long)arg2;
 - (void)_coordinationQueue_destroyApplicationStateMonitor;

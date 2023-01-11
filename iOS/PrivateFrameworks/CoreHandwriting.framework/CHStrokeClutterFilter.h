@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreHandwriting/NSCopying-Protocol.h>
+
 @class NSDictionary;
 
-@interface CHStrokeClutterFilter : NSObject
+@interface CHStrokeClutterFilter : NSObject <NSCopying>
 {
     struct CHCanvasHeatmap *_heatMap;
     NSDictionary *_CHStrokeID2HeatmapItemID;
     NSDictionary *_heatmapItemID2CHStrokeID;
 }
 
+- (id)strokeIDsWithinRectangleRegion:(struct CGRect *)arg1;
+- (_Bool)isEmpty;
 @property(readonly, nonatomic) long long highDensityStrokeCount;
 - (_Bool)isHighDensityStroke:(id)arg1;
 - (id)debugQuickLookObject;
 - (id)clutterFilterByAddingStrokes:(id)arg1 removingStrokeIdentifiers:(id)arg2 affectedStrokeIdentifiers:(id *)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCanvasHeatmap:(struct CHCanvasHeatmap *)arg1 stroke2ItemMapping:(id)arg2 item2StrokeMapping:(id)arg3;
 - (id)init;

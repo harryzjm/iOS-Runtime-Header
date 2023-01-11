@@ -7,19 +7,19 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 
-@class NSArray, WFParameter, WFVariable;
-@protocol WFVariableDataSource;
+@class NSArray, WFParameterStateProcessingContext, WFVariable;
+@protocol WFPropertyListObject;
 
 @protocol WFParameterState <NSCopying, WFVariableSerialization>
+- (void)processWithContext:(WFParameterStateProcessingContext *)arg1 userInputRequiredHandler:(void (^)(id <WFParameterState>))arg2 valueHandler:(void (^)(id <NSSecureCoding>, NSError *))arg3;
 - (NSArray *)containedVariables;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 
 @optional
++ (NSArray *)processingValueClasses;
 + (Class)processingValueClass;
+- (id <WFPropertyListObject>)legacySerializedRepresentation;
 - (id)initWithVariable:(WFVariable *)arg1;
-- (void)processWithVariableSource:(id <WFVariableDataSource>)arg1 parameter:(WFParameter *)arg2 isInputParameter:(_Bool)arg3 userInputRequiredHandler:(void (^)(id <WFParameterState>))arg4 valueHandler:(void (^)(id <NSSecureCoding>, NSError *))arg5;
-- (void)processWithVariableSource:(id <WFVariableDataSource>)arg1 parameter:(WFParameter *)arg2 environment:(long long)arg3 userInputRequiredHandler:(void (^)(id <WFParameterState>))arg4 valueHandler:(void (^)(id <NSSecureCoding>, NSError *))arg5;
-- (void)processWithVariableSource:(id <WFVariableDataSource>)arg1 parameter:(WFParameter *)arg2 userInputRequiredHandler:(void (^)(id <WFParameterState>))arg3 valueHandler:(void (^)(id <NSSecureCoding>, NSError *))arg4;
 @end
 

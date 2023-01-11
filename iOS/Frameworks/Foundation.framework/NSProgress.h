@@ -132,7 +132,6 @@
 - (id)init;
 - (void)acknowledge;
 - (void)handleAcknowledgementByAppWithBundleIdentifer:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_receiveProgressMessage:(id)arg1 forSequence:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

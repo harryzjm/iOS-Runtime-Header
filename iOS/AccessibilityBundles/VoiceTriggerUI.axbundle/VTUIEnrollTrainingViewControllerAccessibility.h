@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilitySetAccessibilityElementsIfNeeded;
 - (void)_axSuspendAudio:(_Bool)arg1;
 - (void)_axHandleSuspendAudioTimerFired:(id)arg1;
 - (void)_axHandleElementFocusedNotification:(id)arg1;
@@ -20,6 +21,8 @@
 - (void)_axHandleAnnouncementDidFinishNotification:(id)arg1;
 - (void)_axAnnounceString:(id)arg1;
 - (void)_axAnnounceInstructionWithNumber:(long long)arg1;
+- (void)_setLanguageOptionsAndContinue:(id)arg1;
+- (void)_startEnrollment;
 - (void)_continueFromIntro:(id)arg1;
 - (void)_showStatusMessage:(id)arg1 afterDelay:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_accessibilitySuperShowTrainingInstruction:(long long)arg1 afterDelay:(double)arg2 isRetry:(_Bool)arg3 animate:(_Bool)arg4;

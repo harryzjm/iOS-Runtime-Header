@@ -20,6 +20,12 @@
 + (id)pasteboardWithUniqueName;
 + (id)pasteboardWithName:(id)arg1 create:(_Bool)arg2;
 + (id)generalPasteboard;
+- (void)detectValuesForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectValuesForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)detectPatternsForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectPatternsForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_detectedPasteboardTypeStringsForTypes:(id)arg1;
+- (id)_detectedPasteboardTypesForTypes:(id)arg1;
 - (_Bool)canInstantiateObjectsOfClass:(Class)arg1;
 - (id)itemProvidersForInstantiatingObjectsOfClass:(Class)arg1;
 @property(copy, nonatomic) NSArray *itemProviders;

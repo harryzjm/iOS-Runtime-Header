@@ -12,12 +12,14 @@
 
 @interface CKFullscreenBrowserNavigationController : UINavigationController <CKAdaptivePresentedControllerProtocol>
 {
+    _Bool _wantsWindowedPresentation;
+    _Bool _preserveModalPresentationStyle;
 }
 
+@property(nonatomic) _Bool preserveModalPresentationStyle; // @synthesize preserveModalPresentationStyle=_preserveModalPresentationStyle;
+@property(nonatomic) _Bool wantsWindowedPresentation; // @synthesize wantsWindowedPresentation=_wantsWindowedPresentation;
 - (_Bool)forceWindowedPresentation;
 - (_Bool)constrainToPresentingVCBounds;
-- (_Bool)preserveModalPresentationStyle;
-- (_Bool)wantsWindowedPresentation;
 - (void)loadView;
 - (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
@@ -26,6 +28,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool shouldHidePresentingWindow;
 @property(readonly) Class superclass;
 
 @end

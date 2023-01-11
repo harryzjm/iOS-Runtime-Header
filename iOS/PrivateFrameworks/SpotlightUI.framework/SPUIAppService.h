@@ -18,6 +18,7 @@
     _Bool _activated;
 }
 
++ (id)sharedAppService;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)deactivate;

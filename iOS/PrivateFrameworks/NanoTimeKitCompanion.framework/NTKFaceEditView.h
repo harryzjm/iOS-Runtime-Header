@@ -13,15 +13,19 @@
 
 @interface NTKFaceEditView : UIView <NTKClockHardwareInput>
 {
+    _Bool _disableBreathingAnimationForComplications;
     UIViewController<NTKFaceViewCustomEditing> *_editingContentViewController;
     id <NTKFaceEditViewDelegate> _delegate;
     long long _editMode;
 }
 
++ (struct CGRect)screenBottomAlignedkeylineLabelFrameForText:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool disableBreathingAnimationForComplications; // @synthesize disableBreathingAnimationForComplications=_disableBreathingAnimationForComplications;
 @property(nonatomic) long long editMode; // @synthesize editMode=_editMode;
 @property(nonatomic) __weak id <NTKFaceEditViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIViewController<NTKFaceViewCustomEditing> *editingContentViewController; // @synthesize editingContentViewController=_editingContentViewController;
-- (void).cxx_destruct;
+- (struct CGRect)keylineFrameAtSlot:(id)arg1;
 - (_Bool)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (_Bool)_wheelChangedWithEvent:(id)arg1;
 - (_Bool)isTransitioningBetweenEditPages;
@@ -40,13 +44,17 @@
 - (void)addKeyline:(id)arg1 forKey:(id)arg2 tappable:(_Bool)arg3 editMode:(long long)arg4;
 - (void)setInfoText:(id)arg1 forEditMode:(long long)arg2;
 - (void)setBackgroundFillAlpha:(double)arg1;
+- (void)updateSelectionForKeylineAtSlot:(id)arg1 selected:(_Bool)arg2;
 - (void)deactivateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)willDeactivate;
 - (void)activate;
 - (void)willActivate;
+- (struct CGRect)colorPickerFrame;
+- (void)applyTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)applyTransformForCurrentPageView:(struct CGAffineTransform)arg1;
 - (struct CGPoint)pageOffsetFromCenter:(long long)arg1;
 - (void)setEditingContentViewController:(id)arg1 forEditMode:(long long)arg2;
-- (id)initWithEditModes:(id)arg1 forDevice:(id)arg2;
+- (id)initWithFace:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

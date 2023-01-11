@@ -8,30 +8,34 @@
 
 #import <SpringBoard/CAAnimationDelegate-Protocol.h>
 
-@class CSHomeAffordanceView, NSObject, NSString, SBUICallToActionLabel, SBUILegibilityLabel, UIButton, UILabel, _UILegibilitySettings;
+@class CSHomeAffordanceView, NSArray, NSObject, NSString, SBFTouchPassThroughView, SBUICallToActionLabel, SBUILegibilityLabel, UIButton, UILabel, _UILegibilitySettings;
 @protocol OS_dispatch_source;
 
 @interface SBDashBoardSetupView : UIView <CAAnimationDelegate>
 {
     UILabel *_titleLabel;
     UILabel *_storeRestrictedLabel;
-    UIView *_homeAffordanceContainer;
+    UILabel *_securityResearchDeviceTitleLabel;
+    UIView *_securityResearchDeviceContainer;
+    SBFTouchPassThroughView *_homeAffordanceContainer;
     CSHomeAffordanceView *_homeAffordanceView;
     UIView *_homeAffordanceCallToActionContainer;
     SBUILegibilityLabel *_homeAffordanceCallToActionLabel;
     SBUICallToActionLabel *_homeButtonCallToActionLabel;
     NSObject<OS_dispatch_source> *_homeButtonCallToActionTimer;
+    NSArray *_activationInfoViewConstraints;
     UIView *_activationInfoView;
     UIView *_regulatoryInfoView;
     _UILegibilitySettings *_legibilitySettings;
     UIButton *_infoButton;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(retain, nonatomic) UIView *regulatoryInfoView; // @synthesize regulatoryInfoView=_regulatoryInfoView;
 @property(retain, nonatomic) UIView *activationInfoView; // @synthesize activationInfoView=_activationInfoView;
-- (void).cxx_destruct;
+@property(retain, nonatomic) CSHomeAffordanceView *homeAffordanceView; // @synthesize homeAffordanceView=_homeAffordanceView;
 - (void)_updateLegibilitySettings;
 - (void)_adjustTitleVisibilityForInfoViews;
 - (void)_removeNormalAnimationForKeyPath:(id)arg1 onLayer:(id)arg2;
@@ -46,10 +50,12 @@
 - (void)_layoutHomeButtonCallToAction;
 - (void)_layoutActivationInfoView;
 - (void)_layoutRegulatoryInfo;
+- (void)_setupActivationInfoConstraintsIfNeeded;
 - (void)_setupConstraints;
 - (void)_addHomeAffordanceCallToAction;
 - (void)_addHomeAffordance;
 - (void)_addHomeButtonCallToAction;
+- (void)_addSecurityResearchLabels;
 - (void)_addStoreRestrictedLabel;
 - (void)_addTitleLabel;
 - (void)_addInfoButton;
@@ -61,7 +67,7 @@
 - (void)setStoreRestrictedString:(id)arg1 forLanguage:(id)arg2;
 - (void)setTitleString:(id)arg1 forLanguage:(id)arg2;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 usingHomeAffordance:(_Bool)arg2 isStoreRestricted:(_Bool)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 usingHomeAffordance:(_Bool)arg2 isStoreRestricted:(_Bool)arg3 isSecurityResearchDevice:(_Bool)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

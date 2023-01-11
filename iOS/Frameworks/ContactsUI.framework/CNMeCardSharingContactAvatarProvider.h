@@ -17,13 +17,14 @@
     CNAvatarImageRenderer *_renderer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CNAvatarImageRenderer *renderer; // @synthesize renderer=_renderer;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-- (void).cxx_destruct;
 - (void)generateAvatarImageOfSize:(struct CGSize)arg1 imageHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSData *thumbnailImageData;
 @property(readonly, nonatomic) struct CGRect cropRect;
 @property(readonly, nonatomic) NSData *imageData;
+- (id)initWithContact:(id)arg1 renderer:(id)arg2;
 - (id)initWithContact:(id)arg1;
 
 // Remaining properties

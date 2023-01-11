@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSURL (QueryParameters)
++ (id)faceTimeAnswerURLWithSourceIdentifier:(id)arg1;
 + (id)faceTimeShowInCallUIURL;
 + (id)faceTimeLaunchForOutgoingConversationURL;
 + (id)faceTimeLaunchForIncomingCallURL;
@@ -39,6 +40,8 @@
 - (id)URLBySettingQueryParameterValue:(id)arg1 forKey:(id)arg2;
 - (id)tuQueryParameters;
 - (id)queryParameters;
+- (id)answerRequestSourceIdentifier;
+- (_Bool)isAnswerRequestURL;
 - (_Bool)isShowInCallUIURL;
 - (_Bool)isLaunchForOutgoingConversationURL;
 - (_Bool)isLaunchForIncomingCallURL;

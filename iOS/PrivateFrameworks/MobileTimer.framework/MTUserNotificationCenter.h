@@ -23,7 +23,7 @@
 + (id)categoryForScheduledAlarm:(id)arg1;
 + (id)contentForScheduledTimer:(id)arg1;
 + (void)_setSnoozeCountdownTitleAndBody:(id)arg1 forSnoozeCountdownNotification:(id)arg2;
-+ (id)_wakeUpAlarmStringForAlarm:(id)arg1 bundle:(struct __CFBundle *)arg2;
++ (id)_wakeUpAlarmStringForAlarm:(id)arg1;
 + (void)_setGoToBedTitleAndBody:(id)arg1 forGoToBedNotification:(id)arg2;
 + (id)_timeFormatter;
 + (id)_durationComponentsFormatter;
@@ -37,20 +37,24 @@
 + (id)_snoozeCountdownIdentifier:(id)arg1;
 + (id)_goToBedIdentifier:(id)arg1;
 + (id)requestIdentifierForScheduledAlarm:(id)arg1;
++ (id)_allIdentifiersForAlarm:(id)arg1 includeMainIdentifier:(_Bool)arg2 includeSnooze:(_Bool)arg3;
 + (id)_allIdentifiersForAlarm:(id)arg1 includeMainIdentifier:(_Bool)arg2;
 + (id)_allIdentifiersForAlarm:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) MTUserNotificationActionDispatcher *actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(retain, nonatomic) NSDictionary *notificationCenters; // @synthesize notificationCenters=_notificationCenters;
-- (void).cxx_destruct;
 - (void)postBedtimeNotificationForAlarm:(id)arg1 date:(id)arg2;
 - (void)removeAllDeliveredNotifications;
 - (void)dismissNotificationsForTimer:(id)arg1;
 - (void)interruptAudioAndLockDeviceWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)_notificationCenterForScheduledTimer;
 - (void)postNotificationForScheduledTimer:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)tearDownNotificationsForEventIdentifiers:(id)arg1;
 - (void)dismissNotificationsWithIdentifiers:(id)arg1;
 - (void)dismissNotificationsForAlarm:(id)arg1 dismissAction:(unsigned long long)arg2;
+- (void)dismissNotificationsForAlarm:(id)arg1 includeMainIdentifier:(_Bool)arg2 includeSnooze:(_Bool)arg3;
 - (void)dismissNotificationsForAlarm:(id)arg1 includeMainIdentifier:(_Bool)arg2;
+- (void)dismissNotificationsForAlarm:(id)arg1 includeSnooze:(_Bool)arg2;
 - (void)dismissNotificationsForAlarm:(id)arg1;
 - (void)dismissRelatedNotificationsForScheduledAlarm:(id)arg1;
 - (void)postNotificationForScheduledAlarm:(id)arg1 content:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -61,7 +65,7 @@
 - (id)timerCategories;
 - (id)alarmCategories;
 - (void)registerActionHandler:(id)arg1;
-- (void)setupNotificationCenters;
+- (void)setupNotificationCenter;
 - (id)init;
 
 // Remaining properties

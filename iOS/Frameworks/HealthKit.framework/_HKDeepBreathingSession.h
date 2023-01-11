@@ -6,46 +6,49 @@
 
 #import <objc/NSObject.h>
 
-@class _HKDeepBreathingSessionConfiguration;
-@protocol NSXPCProxyCreating, OS_dispatch_queue, _HKDeepBreathingSessionDelegate, _HKDeepBreathingSessionLifecycleDelegate;
+#import <HealthKit/_HKDeepBreathingSessionClient-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@interface _HKDeepBreathingSession : NSObject
+@class HKTaskServerProxyProvider, NSString, _HKDeepBreathingSessionConfiguration;
+@protocol OS_dispatch_queue, _HKDeepBreathingSessionDelegate;
+
+@interface _HKDeepBreathingSession : NSObject <_HKXPCExportable, _HKDeepBreathingSessionClient>
 {
-    _HKDeepBreathingSessionConfiguration *_sessionConfiguration;
-    id <_HKDeepBreathingSessionLifecycleDelegate> _lifecycleDelegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     long long _serverState;
-    id <NSXPCProxyCreating> _server;
+    HKTaskServerProxyProvider *_proxyProvider;
     id <_HKDeepBreathingSessionDelegate> _delegate;
 }
 
-+ (id)_serverInterface;
-+ (id)_clientInterface;
-+ (id)sessionWithConfiguration:(id)arg1 lifecycleDelegate:(id)arg2;
-@property(readonly) _HKDeepBreathingSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
-@property __weak id <_HKDeepBreathingSessionDelegate> delegate; // @synthesize delegate=_delegate;
++ (id)taskIdentifier;
 - (void).cxx_destruct;
+@property __weak id <_HKDeepBreathingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_queue_alertDelegateDidEncounterError:(id)arg1;
 - (void)_queue_alertDelegateDidReceiveHeartRate:(double)arg1;
-- (void)sessionDidReceiveError:(id)arg1;
-- (void)sessionDidReceiveHeartRate:(double)arg1;
+- (void)clientRemote_sessionDidReceiveError:(id)arg1;
+- (void)clientRemote_sessionDidReceiveHeartRate:(double)arg1;
 - (_Bool)_queue_isServerAttached;
 - (_Bool)_isServerAttached;
 - (void)_connectionDidEncounterError:(id)arg1;
 - (void)_queue_transitionToServerState:(long long)arg1;
 @property(readonly) long long serverState;
-- (id)_serverProxy;
-- (id)_sessionConfiguration;
+@property(readonly, copy) _HKDeepBreathingSessionConfiguration *sessionConfiguration;
 - (void)_queue_deactivate;
-- (id)_serverWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)_attachServerWithClientQueue:(id)arg1 healthStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)endSessionWithEndReason:(long long)arg1;
 - (void)startGuiding;
 - (void)startSessionWithStartDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_lifecycleDelegate;
-- (id)description;
-- (id)_initWithSessionConfiguration:(id)arg1 lifecycleDelegate:(id)arg2;
+- (void)connectionInvalidated;
+- (id)remoteInterface;
+- (id)exportedInterface;
+@property(readonly, copy) NSString *description;
+- (id)initWithHealthStore:(id)arg1 configuration:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

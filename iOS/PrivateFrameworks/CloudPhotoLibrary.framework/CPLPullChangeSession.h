@@ -10,6 +10,7 @@
 
 @interface CPLPullChangeSession <CPLAbstractObject>
 {
+    double _sentBatchTimeInterval;
 }
 
 + (id)shortDescription;

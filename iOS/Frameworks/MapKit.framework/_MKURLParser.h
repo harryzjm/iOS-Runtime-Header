@@ -13,8 +13,12 @@
     GEOMapURLParser *parser;
 }
 
++ (_Bool)isAppleMapsGuidesURL:(id)arg1;
 + (_Bool)isValidMapURL:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly) _Bool showAllCuratedCollections;
+@property(readonly, nonatomic) unsigned long long publisherMUID;
+@property(readonly, nonatomic) unsigned long long curatedCollectionMUID;
 @property(readonly) _Bool showCarDestinations;
 @property(readonly, nonatomic) GEOMuninViewState *muninViewState;
 @property(readonly, nonatomic) GEOURLExtraStorage *extraStorage;

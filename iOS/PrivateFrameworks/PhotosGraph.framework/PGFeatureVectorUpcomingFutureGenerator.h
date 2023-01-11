@@ -11,9 +11,10 @@
     CLSHolidayCalendarEventService *_holidayService;
 }
 
-@property(retain, nonatomic) CLSHolidayCalendarEventService *holidayService; // @synthesize holidayService=_holidayService;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CLSHolidayCalendarEventService *holidayService; // @synthesize holidayService=_holidayService;
 - (void)enumerateFeatureVectorsByTypeUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)probabilityPassWithThreshold:(double)arg1;
 - (_Bool)_enumerateCalendarEventFeatureVectorFromLocalDate:(id)arg1 toLocalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (_Bool)_enumeratePeopleEventFeatureVectorFromLocalDate:(id)arg1 toLocalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (_Bool)_enumerateHolidayFeatureVectorsFromLocalDate:(id)arg1 toLocalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;

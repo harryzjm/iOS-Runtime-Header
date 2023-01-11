@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <SpringBoardHome/SBDateTimeOverrideObserver-Protocol.h>
 #import <SpringBoardHome/SBHLegibility-Protocol.h>
 
-@class NSLayoutConstraint, SBUILegibilityLabel, UIView, _UILegibilitySettings;
+@class NSLayoutConstraint, NSString, SBFDateTimeController, SBUILegibilityLabel, UIView, _UILegibilitySettings;
 @protocol SBFDateProviding;
 
-@interface SBHDateHeaderViewController : UIViewController <SBHLegibility>
+@interface SBHDateHeaderViewController : UIViewController <SBDateTimeOverrideObserver, SBHLegibility>
 {
     id _timerToken;
     unsigned long long _updateDisabledCount;
@@ -20,22 +21,27 @@
     SBUILegibilityLabel *_timeLabel;
     UIView *_timeContainer;
     SBUILegibilityLabel *_dateLabel;
+    SBFDateTimeController *_dateTimeController;
     NSLayoutConstraint *_timeLeadingConstraint;
 }
 
++ (double)_topMarginFromTimeFont;
 + (CDStruct_d2b197d1)dateFontMetrics;
 + (id)dateFont;
 + (CDStruct_d2b197d1)timeFontMetrics;
 + (id)timeFont;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSLayoutConstraint *timeLeadingConstraint; // @synthesize timeLeadingConstraint=_timeLeadingConstraint;
+@property(readonly, nonatomic) SBFDateTimeController *dateTimeController; // @synthesize dateTimeController=_dateTimeController;
 @property(readonly, nonatomic) SBUILegibilityLabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property(readonly, nonatomic) UIView *timeContainer; // @synthesize timeContainer=_timeContainer;
 @property(readonly, nonatomic) SBUILegibilityLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property(retain, nonatomic) id <SBFDateProviding> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-- (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct UIEdgeInsets)_cachedGlyphInsetsTimeFontForString:(id)arg1;
 - (struct UIEdgeInsets)_timeLabelInsetsForTimeString:(id)arg1;
+- (void)controller:(id)arg1 didChangeOverrideDateFromDate:(id)arg2;
 - (void)_startUpdateTimer;
 - (void)_stopUpdateTimer;
 - (void)_handleTimeZoneChange;
@@ -49,6 +55,12 @@
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,19 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAccountSession, BRCMetricEndpoint, NSMutableDictionary;
+@class BRCAccountSession, BRCItemGlobalID, BRCMetricEndpoint, BRCSyncHealthReport, NSData, NSMutableDictionary, NSNumber;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCAnalyticsReporter : NSObject
 {
     BRCAccountSession *_session;
+    long long _telemetryEventCount;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_waitOnIdleQueue;
     BRCMetricEndpoint *_metricEndpoint;
     NSMutableDictionary *_eventsByKind;
+    BRCSyncHealthReport *_syncHealthReport;
+    BRCItemGlobalID *_currentTelemetryItemGlobalID;
+    NSNumber *_currentTelemetryToken;
+    NSData *_lastSentTelemetryEvents;
+    BOOL _syncTelemetryState;
 }
 
 - (void).cxx_destruct;
+- (void)didApplyItemInsideSharedItemID:(id)arg1;
+- (void)deleteMissingErrorThrottles;
+- (void)dropAllSyncTelemetryEvents;
+- (void)submitSyncTelemetryEvent:(id)arg1;
+- (id)dequeueSyncTelemetryEvents;
+- (id)syncTelemetryEventsToSend;
+- (void)updateCurrentTelemetryToken:(id)arg1;
+- (id)currentTelemetryToken;
+- (void)_fetchTelemetryEventCountOrAdd:(long long)arg1;
 - (void)lookupUserDownloadEventByDocID:(id)arg1 accessor:(CDUnknownBlockType)arg2;
 - (void)lookupUserDownloadEventByOperationID:(id)arg1 accessor:(CDUnknownBlockType)arg2;
 - (void)createUserDownloadEventForOperationID:(id)arg1 isRecursive:(_Bool)arg2 isForBackup:(_Bool)arg3;
@@ -31,6 +47,10 @@ __attribute__((visibility("hidden")))
 - (void)_forgetEventMetrics:(id)arg1;
 - (void)forgetEventMetric:(id)arg1;
 - (void)submitEventMetric:(id)arg1;
+- (void)_reportSyncUpBackoffRatio;
+- (void)_gatherAppTelemetryEventsWithActivity:(id)arg1;
+- (void)_handleApplySchedulerTimeoutWithActivity:(id)arg1;
+- (void)_waitForApplySchedulerToBeIdleWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithSession:(id)arg1;
 
 @end

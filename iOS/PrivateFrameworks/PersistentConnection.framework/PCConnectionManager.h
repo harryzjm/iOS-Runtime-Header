@@ -9,7 +9,7 @@
 #import <PersistentConnection/PCCarrierBundleHelperDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceMonitorDelegate-Protocol.h>
 
-@class NSRunLoop, NSString, PCPersistentTimer;
+@class NSRunLoop, NSString, PCKeepAliveState, PCPersistentTimer;
 @protocol OS_dispatch_queue, OS_os_log, PCConnectionManagerDelegate, PCGrowthAlgorithm;
 
 @interface PCConnectionManager : NSObject <PCCarrierBundleHelperDelegate, PCInterfaceMonitorDelegate>
@@ -75,13 +75,13 @@
 + (id)_keepAliveCachePath;
 + (id)intervalCacheDictionaries;
 + (Class)growthAlgorithmClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool powerOptimizationsForExpensiveNetworkingDisabled; // @synthesize powerOptimizationsForExpensiveNetworkingDisabled=_powerOptimizationsForExpensiveNetworkingDisabled;
 @property(nonatomic) _Bool alwaysWantsInterfaceChangeCallbacks; // @synthesize alwaysWantsInterfaceChangeCallbacks=_alwaysWantsInterfaceChangeCallbacks;
 @property(nonatomic) double nonCellularEarlyFireConstantInterval; // @synthesize nonCellularEarlyFireConstantInterval=_nonCellularEarlyFireConstantInterval;
 @property(readonly, nonatomic) int lastProcessedAction; // @synthesize lastProcessedAction=_lastProcessedAction;
 @property(nonatomic) long long interfaceIdentifier; // @synthesize interfaceIdentifier=_interfaceIdentifier;
 @property(nonatomic) double keepAliveGracePeriod; // @synthesize keepAliveGracePeriod=_keepAliveGracePeriod;
-- (void).cxx_destruct;
 - (id)_stringForAddressFamily:(int)arg1;
 - (id)_stringForEvent:(int)arg1;
 - (id)_stringForAction:(int)arg1;
@@ -121,6 +121,7 @@
 - (void)setPollingIntervalOverride:(double)arg1;
 @property(readonly, nonatomic) double pollingInterval;
 - (_Bool)_isPushConnected;
+- (void)setKeepAliveOverrideOnInterface:(long long)arg1 interval:(double)arg2 timeout:(double)arg3;
 @property(nonatomic) _Bool usingServerStatsAggressively;
 @property(nonatomic) double serverStatsExpectedKeepAliveInterval;
 @property(nonatomic) double serverStatsMinKeepAliveInterval;
@@ -130,6 +131,7 @@
 - (void)_setMinimumKeepAliveInterval:(double)arg1 onInterface:(long long)arg2;
 @property(nonatomic) double minimumKeepAliveInterval;
 @property(readonly, nonatomic) double currentKeepAliveInterval;
+@property(readonly, nonatomic) PCKeepAliveState *currentKeepAliveState;
 @property(readonly, nonatomic) unsigned long long countOfGrowthActions;
 @property(readonly, nonatomic) _Bool isRunning;
 - (void)stopAndResetManager;

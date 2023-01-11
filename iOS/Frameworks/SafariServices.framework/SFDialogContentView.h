@@ -6,12 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <SafariServices/UITableViewDataSource-Protocol.h>
+#import <SafariServices/UITableViewDelegate-Protocol.h>
 #import <SafariServices/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, SFDialogTextField, SFDialogTextView, UIButton, UIStackView, _SFDialogView;
+@class NSArray, NSLayoutConstraint, NSString, SFDialogTextField, SFDialogTextView, UIButton, UIStackView, UITableView, _SFDialogView;
 
 __attribute__((visibility("hidden")))
-@interface SFDialogContentView : UIView <UITextFieldDelegate>
+@interface SFDialogContentView : UIView <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_actionButtons;
     UIStackView *_actionButtonsView;
@@ -28,13 +30,19 @@ __attribute__((visibility("hidden")))
     SFDialogTextField *_passwordTextField;
     NSLayoutConstraint *_actionButtonsLeadingConstraintForHorizontalStackAlignment;
     NSLayoutConstraint *_actionButtonsLeadingConstraintForVerticalStackAlignment;
+    UITableView *_tableView;
+    NSArray *_tableData;
+    CDUnknownBlockType _tableDidSelectRowAction;
+    long long _selectedRow;
+    NSArray *_layoutConstraintsWhenTableViewIsVisible;
+    NSLayoutConstraint *_tableViewHeightConstraint;
     _SFDialogView *_dialogView;
     NSArray *_actions;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(nonatomic) __weak _SFDialogView *dialogView; // @synthesize dialogView=_dialogView;
-- (void).cxx_destruct;
 - (void)_invokeDelegateWithSelectedIndex:(unsigned long long)arg1;
 - (void)_escapeAction:(id)arg1;
 - (void)_optionReturnAction:(id)arg1;
@@ -42,8 +50,12 @@ __attribute__((visibility("hidden")))
 - (void)_focusInputTextField:(id)arg1;
 - (void)_actionTriggered:(id)arg1;
 - (_Bool)_usesLoginFormAppearance;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)didAppear;
+- (void)setTableViewRows:(id)arg1 didSelectRowAction:(CDUnknownBlockType)arg2;
 - (void)_updateActionButtons;
 - (void)endEditing;
 - (void)_setText:(id)arg1 placeholder:(id)arg2 forTextField:(id)arg3;

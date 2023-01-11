@@ -11,7 +11,7 @@
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 #import <HealthDaemon/HDPeriodicActivityDelegate-Protocol.h>
 
-@class HDAudioExposureEventObserver, HDBTLEHeartRateDataCollector, HDDatabaseCoalescedWritePool, HDDemoManager, HDPeriodicActivity, HDProfile, NSDate, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class HDBTLEHeartRateDataCollector, HDDatabaseCoalescedWritePool, HDDemoManager, HDPeriodicActivity, HDProfile, HDSeriesQuantityEventObserver, NSDate, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDDataCollectionManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDAssertionObserver, HDPeriodicActivityDelegate>
@@ -26,10 +26,11 @@
     struct os_unfair_lock_s _collectorLock;
     NSMutableArray *_collectorLock_builtinCollectors;
     NSMutableDictionary *_collectorLock_dataCollectorsByType;
+    NSMutableDictionary *_lastFlushDateByType;
     struct os_unfair_lock_s _fakingLock;
     CDUnknownBlockType _unitTest_aggregatorConfigurationChangedHandler;
     NSSet *_collectibleTypes;
-    HDAudioExposureEventObserver *_audioExposureEventObserver;
+    HDSeriesQuantityEventObserver *_seriesQuantityEventObserver;
     HDProfile *_profile;
     NSMutableDictionary *_observersByType;
     HDBTLEHeartRateDataCollector *_blteHeartRateDataCollector;
@@ -39,6 +40,7 @@
     NSObject<OS_dispatch_queue> *_dataCollectionQueue;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dataCollectionQueue; // @synthesize dataCollectionQueue=_dataCollectionQueue;
 @property(retain, nonatomic) HDDemoManager *demoManager; // @synthesize demoManager=_demoManager;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *assertionQueue; // @synthesize assertionQueue=_assertionQueue;
@@ -46,7 +48,6 @@
 @property(retain, nonatomic) HDBTLEHeartRateDataCollector *blteHeartRateDataCollector; // @synthesize blteHeartRateDataCollector=_blteHeartRateDataCollector;
 @property(retain, nonatomic) NSMutableDictionary *observersByType; // @synthesize observersByType=_observersByType;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (id)_dataAggregatorsDiagnosticDescription;
 - (id)_dataCollectorsDiagnosticDescription;
@@ -70,16 +71,17 @@
 - (id)_fakingLock_demoManagerCreatingIfNecessary;
 - (_Bool)_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 error:(id *)arg3;
-- (void)sensorDataReceived:(id)arg1 deviceEntity:(id)arg2;
 - (void)_updateDataCollectorsWithPrivacySettings;
 @property(readonly, nonatomic) _Bool hasAccessToFitnessData;
 - (id)pluginDataCollectors;
+- (id)_dataCollectorBlacklist;
 - (void)_queue_setupUnprotectedDataDependantState;
 - (id)btleHeartRateDataCollector;
 - (void)_queue_createBuiltinCollectors;
 - (void)_registerCollectors:(id)arg1;
 - (void)_queue_addDataCollector:(id)arg1;
 - (void)_queue_alertCollectorsOfTypesWithObservers;
+- (id)_collectorForType:(id)arg1;
 - (_Bool)_typeIsCollectible:(id)arg1;
 - (id)collectibleTypes;
 - (void)_queue_adjustDataCollectionForType:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -89,11 +91,11 @@
 - (CDStruct_b3408c18)_queue_defaultCollectionStateForType:(id)arg1;
 - (id)_queue_observerMapForType:(id)arg1;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
+- (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 collectionIntervalsByType:(id)arg2 observerState:(id)arg3;
 - (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observerState:(id)arg3 collectionInterval:(double)arg4;
-- (void)_requestAggregationThroughDate:(id)arg1 type:(id)arg2 mode:(long long)arg3 freezeSeries:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 freezeSeries:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)requestAggregationForAllTypesThroughDate:(id)arg1 mode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 freezeSeries:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_requestAggregationThroughDate:(id)arg1 type:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (double)defaultCollectionIntervalForType:(id)arg1;
 - (void)dataCollectionObserver:(id)arg1 didChangeState:(id)arg2;
 - (void)removeDataCollectionObserver:(id)arg1;

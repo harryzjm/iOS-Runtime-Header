@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
     double _fractionOfScreenAboveFarClipPlaneAtCanonicalPitch;
     double _distanceToGroundAndFarClipPlaneIntersection;
     double _screenHeightOfGroundAndFarClipPlaneIntersection;
-    _Bool _allowDatelineWraparound;
     double _canonicalPitch;
     double _horizontalOffset;
     double _ndcZNear;
@@ -53,13 +52,14 @@ __attribute__((visibility("hidden")))
     optional_76e85d3d _maxDistanceToGroundRestriction;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) optional_76e85d3d maxDistanceToGroundRestriction; // @synthesize maxDistanceToGroundRestriction=_maxDistanceToGroundRestriction;
 @property(nonatomic) optional_76e85d3d minDistanceToGroundRestriction; // @synthesize minDistanceToGroundRestriction=_minDistanceToGroundRestriction;
 @property(retain, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 @property(nonatomic) double ndcZNear; // @synthesize ndcZNear=_ndcZNear;
 @property(nonatomic) double horizontalOffset; // @synthesize horizontalOffset=_horizontalOffset;
 @property(nonatomic) double canonicalPitch; // @synthesize canonicalPitch=_canonicalPitch;
-@property(nonatomic) _Bool allowDatelineWraparound; // @synthesize allowDatelineWraparound=_allowDatelineWraparound;
 @property(readonly, nonatomic) double screenHeightOfGroundAndFarClipPlaneIntersection; // @synthesize screenHeightOfGroundAndFarClipPlaneIntersection=_screenHeightOfGroundAndFarClipPlaneIntersection;
 @property(readonly, nonatomic) double distanceToGroundAndFarClipPlaneIntersection; // @synthesize distanceToGroundAndFarClipPlaneIntersection=_distanceToGroundAndFarClipPlaneIntersection;
 @property(nonatomic) double fractionOfScreenAboveFarClipPlaneAtCanonicalPitch; // @synthesize fractionOfScreenAboveFarClipPlaneAtCanonicalPitch=_fractionOfScreenAboveFarClipPlaneAtCanonicalPitch;
@@ -69,8 +69,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minHeight; // @synthesize minHeight=_minHeight;
 @property(nonatomic) double maxHeightNoPitch; // @synthesize maxHeightNoPitch=_maxHeightNoPitch;
 @property(nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (CameraFrame_406dbd31)cameraFrame;
 - (View_a667aa2f)view:(struct ViewSize)arg1;
 @property(readonly, nonatomic) const Matrix_08d701e4 *unscaledProjectionMatrix;
@@ -83,16 +81,14 @@ __attribute__((visibility("hidden")))
 - (float)zoomAtPoint:(struct CGPoint)arg1;
 - (double)depthForViewWidth:(double)arg1;
 - (double)widthOfViewAtDepth:(double)arg1;
-- (Matrix_6e1d3589)groundPointFromScreenPoint:(struct CGPoint)arg1 atGroundLevel:(double)arg2;
-- (Matrix_6e1d3589)groundPointFromScreenPoint:(struct CGPoint)arg1;
+- (struct CGPoint)screenPointFromGroundPoint:(const Mercator3_d8bb135c *)arg1;
+- (optional_67826ebe)groundPointFromScreenPoint:(struct CGPoint)arg1 atGroundLevel:(double)arg2;
+- (optional_67826ebe)groundPointFromScreenPoint:(struct CGPoint)arg1;
 - (void)updateIfNeeded;
 - (void)setNeedsUpdate;
 - (CDUnknownBlockType)annotationCoordinateTest;
 - (CDUnknownBlockType)annotationRectTest;
 - (Matrix_6e1d3589)groundPlaneIntersectionPoint;
-- (_Bool)isOuterWorldBoundsVisible;
-- (_Bool)isWorldSpaceRectVisible:(const Box_3d7e3c2c *)arg1;
-- (float)maximumStyleZForRect:(const Box_3d7e3c2c *)arg1;
 @property(nonatomic) struct VKCameraState cameraState;
 @property(readonly, nonatomic) double yaw;
 @property(readonly, nonatomic) double pitch;

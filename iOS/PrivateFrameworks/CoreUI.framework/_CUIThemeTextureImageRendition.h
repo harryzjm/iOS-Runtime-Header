@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 - (id)textureImages;
 - (void)dealloc;
+- (int)pixelFormat;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 
 @end

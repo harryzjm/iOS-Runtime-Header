@@ -8,10 +8,15 @@
 
 #import <PersonalizationPortraitInternals/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PPM2TopicUniqueItems : PBCodable <NSCopying>
 {
+    NSString *_activeTreatments;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -21,6 +26,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasActiveTreatments;
 
 @end
 

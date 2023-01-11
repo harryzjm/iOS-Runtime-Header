@@ -6,20 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutSolveResult-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSSet, NSString;
+@class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutSolveParameters : NSObject <_UICollectionLayoutSolveResult>
+@interface _UICollectionLayoutSolveParameters : NSObject <NSCopying>
 {
     NSMutableIndexSet *_invalidatedIndexes;
     NSMutableDictionary *_invalidatedAuxillaryDict;
     _Bool _isFullResolve;
+    struct CGPoint _scrollOffset;
+    struct CGRect _visibleBounds;
 }
 
 + (id)parametersForFullResolve;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
+@property(readonly, nonatomic) struct CGPoint scrollOffset; // @synthesize scrollOffset=_scrollOffset;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)invalidatedAuxillaryOffsets;
 - (void)addAuxillaryIndex:(long long)arg1 elementKind:(id)arg2;
 - (void)addItemIndex:(long long)arg1;
@@ -28,15 +34,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasInvalidatedItems;
 @property(readonly, nonatomic) _Bool isFullResolve;
 @property(readonly, nonatomic) NSIndexSet *invalidatedIndexes;
+- (id)copyWithScrollOffset:(struct CGPoint)arg1 visibleBounds:(struct CGRect)arg2;
 - (id)init;
 - (id)initWithInvalidatedIndexes:(id)arg1;
-- (id)initWithInvalidatedIndexes:(id)arg1 isFullResolve:(_Bool)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithInvalidatedIndexes:(id)arg1 scrollOffset:(struct CGPoint)arg2 visibleBounds:(struct CGRect)arg3;
+- (id)initWithInvalidatedIndexes:(id)arg1 invalidatedAuxillaryDict:(id)arg2 isFullResolve:(_Bool)arg3 scrollOffset:(struct CGPoint)arg4 visibleBounds:(struct CGRect)arg5;
 
 @end
 

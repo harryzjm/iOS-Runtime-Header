@@ -15,8 +15,8 @@
     NSURL *_URL;
 }
 
-@property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (id)initWithURL:(id)arg1;
 
 @end

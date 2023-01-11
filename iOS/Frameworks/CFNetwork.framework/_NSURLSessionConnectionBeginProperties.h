@@ -17,14 +17,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) __CFN_ConnectionMetrics *_metrics; // @synthesize _metrics=__metrics;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic, getter=isProxyConfigured) _Bool proxyConfigured;
 @property(readonly, nonatomic, getter=isTLSConfigured) _Bool TLSConfigured;
 @property(readonly, nonatomic) NSObject<OS_nw_endpoint> *endpoint;
-- (id)initWithMetrics:(id)arg1;
 
 @end
 

@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PLAssetsdPhotoKitClient
+#import <AssetsLibraryServices/PLAssetsdPhotoKitChangesRequestClient-Protocol.h>
+
+@interface PLAssetsdPhotoKitClient <PLAssetsdPhotoKitChangesRequestClient>
 {
 }
 
++ (_Bool)sendChangesRequest:(id)arg1 usingProxyFactory:(id)arg2 error:(id *)arg3;
++ (void)sendChangesRequest:(id)arg1 usingProxyFactory:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)setInTransactionProxy:(_Bool)arg1 queue:(id)arg2;
 + (_Bool)inTransactionProxy;
-- (void)clearSaveTokens:(id)arg1;
-- (void)requestUUIDWithCustomUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)getUUIDsForCloudIdentifiers:(id)arg1 error:(id *)arg2;
+- (_Bool)sendChangesRequest:(id)arg1 error:(id *)arg2;
 - (void)sendChangesRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)clientName;
 
 @end
 

@@ -10,9 +10,18 @@
 
 @interface PGGraphPublicEventNode <PGGraphPortraitNamedEntity>
 {
+    unsigned long long _muid;
+    NSString *_name;
+    long long _expectedAttendance;
 }
 
++ (id)categoryOfPublicEvent;
++ (id)unsupportedCategoriesForTitles;
 + (id)momentNodesForPublicEventNodes:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) long long expectedAttendance; // @synthesize expectedAttendance=_expectedAttendance;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 - (id)associatedNodesForRemoval;
 - (id)keywordDescription;
 - (void)enumeratePublicEventCategoryNodesUsingBlock:(CDUnknownBlockType)arg1;
@@ -20,19 +29,23 @@
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateLocalizedSubcategoryNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCategoryNodesUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) long long expectedAttendance;
 @property(readonly, nonatomic) NSSet *preciseLocalizedCategoryNames;
 @property(readonly, nonatomic) PGGraphBusinessNode *businessNode;
 @property(readonly, copy, nonatomic) NSSet *performers;
 @property(readonly, nonatomic) NSSet *localizedCategories;
 @property(readonly, nonatomic) NSSet *categories;
-@property(readonly, nonatomic) NSString *name;
-@property(readonly, nonatomic) unsigned long long muid;
+- (unsigned short)domain;
+- (id)label;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 @property(readonly, nonatomic) PPNamedEntity *pg_namedEntity;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

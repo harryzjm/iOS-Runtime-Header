@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class FBApplicationProcess, FBProcessState;
+#import <SpringBoard/BSDescriptionProviding-Protocol.h>
 
-@interface SBApplicationProcessState : NSObject
+@class FBApplicationProcess, FBProcessState, NSString;
+
+@interface SBApplicationProcessState : NSObject <BSDescriptionProviding>
 {
     FBApplicationProcess *_process;
     FBProcessState *_processState;
@@ -20,9 +22,9 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool isBeingDebugged;
 @property(readonly, nonatomic) long long visibility;
 @property(readonly, nonatomic) long long taskState;
@@ -30,6 +32,10 @@
 @property(readonly, nonatomic, getter=isRunning) _Bool running;
 @property(readonly, nonatomic) int pid;
 - (id)_initWithProcess:(id)arg1 stateSnapshot:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

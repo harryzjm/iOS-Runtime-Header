@@ -10,7 +10,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAssignmentContextChangeItem, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
 
 @interface REMReminderChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
 {
@@ -19,12 +19,13 @@
     REMChangedKeysObserver *_changedKeysObserver;
 }
 
++ (id)_deduplicateAlarms:(id)arg1;
 + (void)initialize;
 + (long long)hourForNextThirdsFromHour:(long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) REMChangedKeysObserver *changedKeysObserver; // @synthesize changedKeysObserver=_changedKeysObserver;
 @property(retain, nonatomic) REMReminderStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
-- (void).cxx_destruct;
 - (id)resolutionTokenKeyForChangedKey:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (_Bool)respondsToSelector:(SEL)arg1;
@@ -36,17 +37,21 @@
 - (id)removeFromParentReminderAllowingUndo;
 - (void)removeFromList;
 - (id)removeFromListAllowingUndo;
+@property(readonly, nonatomic) REMReminderAssignmentContextChangeItem *assignmentContext;
 @property(readonly, nonatomic) REMReminderFlaggedContextChangeItem *flaggedContext;
 @property(readonly, nonatomic) REMReminderAttachmentContextChangeItem *attachmentContext;
 @property(readonly, nonatomic) REMReminderSubtaskContextChangeItem *subtaskContext;
 - (_Bool)isSubtask;
+- (void)updateDisplayDate;
 - (void)removeAllAlarms;
+- (void)removeAlarm:(id)arg1 updateDisplayDate:(_Bool)arg2;
 - (void)removeAlarm:(id)arg1;
 - (void)setAlarms:(id)arg1;
+- (void)addAlarm:(id)arg1 updateDisplayDate:(_Bool)arg2;
 - (void)addAlarm:(id)arg1;
 - (id)addAlarmWithTrigger:(id)arg1;
 - (id)nextRecurrentDueDateComponentsAfter:(id)arg1;
-- (double)nextRecurrentAdvanceAmountAfter:(id)arg1;
+- (double)nextRecurrentAdvanceAmountForDateComponents:(id)arg1 afterDate:(id)arg2;
 - (void)removeAllRecurrenceRules;
 - (void)removeRecurrenceRule:(id)arg1;
 - (void)insertRecurrenceRule:(id)arg1 afterRecurrenceRule:(id)arg2;
@@ -68,7 +73,8 @@
 - (id)shallowCopyWithSaveRequest:(id)arg1;
 - (void)_copyAlarmsInto:(id)arg1;
 - (void)copyInto:(id)arg1;
-- (id)duplicateForRecurrence;
+- (id)duplicateForRecurrenceUsingReminderID:(id)arg1;
+- (id)datesDebugDescriptionInTimeZone:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) REMAccountCapabilities *accountCapabilities; // @dynamic accountCapabilities;
 - (id)initWithReminderChangeItem:(id)arg1 insertIntoParentReminderSubtaskContextChangeItem:(id)arg2;
@@ -93,6 +99,7 @@
 @property(retain, nonatomic) REMObjectID *accountID; // @dynamic accountID;
 @property(readonly, nonatomic) NSArray *alarms; // @dynamic alarms;
 @property(readonly, nonatomic) _Bool allDay; // @dynamic allDay;
+@property(retain, nonatomic) NSSet *assignments; // @dynamic assignments;
 @property(retain, nonatomic) NSArray *attachments; // @dynamic attachments;
 @property(copy, nonatomic) NSDate *completionDate; // @dynamic completionDate;
 @property(copy, nonatomic) REMContactRepresentation *contactHandles; // @dynamic contactHandles;
@@ -106,19 +113,23 @@
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(nonatomic) long long flagged; // @dynamic flagged;
 @property(readonly) unsigned long long hash;
+@property(copy, nonatomic) NSURL *icsUrl; // @dynamic icsUrl;
 @property(retain, nonatomic) NSData *importedICSData; // @dynamic importedICSData;
 @property(readonly, nonatomic) _Bool isOverdue; // @dynamic isOverdue;
+@property(readonly, nonatomic) _Bool isRecurrent; // @dynamic isRecurrent;
 @property(copy, nonatomic) NSDate *lastBannerPresentationDate; // @dynamic lastBannerPresentationDate;
 @property(copy, nonatomic) NSDate *lastModifiedDate; // @dynamic lastModifiedDate;
 @property(readonly, copy, nonatomic) NSString *legacyNotificationIdentifier; // @dynamic legacyNotificationIdentifier;
 @property(retain, nonatomic) REMObjectID *listID; // @dynamic listID;
 @property(retain, nonatomic) REMCRMergeableStringDocument *notesDocument; // @dynamic notesDocument;
+@property(retain, nonatomic) NSData *notesDocumentData; // @dynamic notesDocumentData;
 @property(retain, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property(retain, nonatomic) REMObjectID *parentReminderID; // @dynamic parentReminderID;
 @property(nonatomic) unsigned long long priority; // @dynamic priority;
 @property(retain, nonatomic) NSArray *recurrenceRules; // @dynamic recurrenceRules;
 @property(readonly, nonatomic) REMObjectID *remObjectID; // @dynamic remObjectID;
 @property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property(retain, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property(copy, nonatomic) NSData *siriFoundInAppsData; // @dynamic siriFoundInAppsData;
 @property(nonatomic) long long siriFoundInAppsUserConfirmation; // @dynamic siriFoundInAppsUserConfirmation;
 @property(copy, nonatomic) NSDateComponents *startDateComponents; // @dynamic startDateComponents;
@@ -126,6 +137,7 @@
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) NSString *timeZone; // @dynamic timeZone;
 @property(retain, nonatomic) REMCRMergeableStringDocument *titleDocument; // @dynamic titleDocument;
+@property(retain, nonatomic) NSData *titleDocumentData; // @dynamic titleDocumentData;
 @property(copy, nonatomic) REMUserActivity *userActivity; // @dynamic userActivity;
 
 @end

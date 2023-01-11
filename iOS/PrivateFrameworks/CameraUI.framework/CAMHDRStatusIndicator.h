@@ -12,11 +12,14 @@
 
 @property(nonatomic, getter=isAutoHDRAllowed) _Bool autoHDRAllowed; // @synthesize autoHDRAllowed=_autoHDRAllowed;
 @property(nonatomic, setter=setHDRMode:) long long hdrMode; // @synthesize hdrMode=_hdrMode;
+- (_Bool)shouldShowSlashForCurrentState;
+- (_Bool)shouldUseSlash;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
 - (_Bool)shouldUseActiveTintForCurrentState;
 - (struct CGSize)intrinsicContentSize;
 - (id)imageNameForCurrentState;
 - (void)setAllowAutoHDR:(_Bool)arg1;
+- (void)setHDRMode:(long long)arg1 animated:(_Bool)arg2;
 
 @end
 

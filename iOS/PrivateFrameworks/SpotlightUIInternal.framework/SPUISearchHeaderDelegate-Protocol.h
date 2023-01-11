@@ -9,6 +9,8 @@
 @class SPSearchQueryContext, SPUISearchHeader;
 
 @protocol SPUISearchHeaderDelegate <NSObject>
+- (void)removeCompletionAndHighlightAsTyped:(_Bool)arg1;
+- (void)performWebSearch;
 - (void)returnKeyPressed;
 - (void)cancelButtonPressed;
 - (void)dictationButtonPressed;

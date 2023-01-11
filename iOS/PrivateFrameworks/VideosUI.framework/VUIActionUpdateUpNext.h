@@ -9,13 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface VUIActionUpdateUpNext
 {
+    _Bool _confirmationShouldWaitCompletion;
     NSString *_state;
     NSString *_itemID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool confirmationShouldWaitCompletion; // @synthesize confirmationShouldWaitCompletion=_confirmationShouldWaitCompletion;
 @property(retain, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property(retain, nonatomic) NSString *state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (_Bool)isAccountRequired;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithContextData:(id)arg1;

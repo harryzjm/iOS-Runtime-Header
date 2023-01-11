@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
     NSUUID *_UUID;
 }
 
-@property(copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void)sendEndBlock:(CDUnknownBlockType)arg1;
-- (void)sendBeginBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 

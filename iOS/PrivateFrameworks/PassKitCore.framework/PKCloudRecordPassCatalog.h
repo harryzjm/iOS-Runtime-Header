@@ -12,8 +12,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) PKCatalog *catalog; // @synthesize catalog=_catalog;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKCatalog *catalog; // @synthesize catalog=_catalog;
+- (void)applyCloudRecordObject:(id)arg1;
 - (id)_descriptionWithIncludeItem:(_Bool)arg1;
 - (id)description;
 - (id)descriptionWithItem:(_Bool)arg1;

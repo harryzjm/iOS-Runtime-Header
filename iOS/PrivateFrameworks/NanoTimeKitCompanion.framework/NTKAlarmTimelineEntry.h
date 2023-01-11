@@ -14,11 +14,12 @@
     NSDate *_snoozeDate;
 }
 
++ (id)companionModel;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *snoozeDate; // @synthesize snoozeDate=_snoozeDate;
 @property(retain, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property(retain, nonatomic) NSString *alarmLabel; // @synthesize alarmLabel=_alarmLabel;
 @property(nonatomic) unsigned long long entryType; // @synthesize entryType=_entryType;
-- (void).cxx_destruct;
 - (id)description;
 - (id)_largeUtilityInactiveImageProvider;
 - (id)_extraLargeAlarmInactiveImageProvider;
@@ -28,14 +29,16 @@
 - (id)_activeStateTimeTextProvider;
 - (id)_newSignatureRectangularTemplate;
 - (id)_newSignatureBezelTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
 - (id)_newSignatureCircularTemplate;
+- (id)_richCircularMetadata;
 - (id)_newSignatureCornerTemplate;
 - (id)_newExtraLargeTemplate;
 - (id)_newLargeUtilityTemplate;
 - (id)_newSmallFlatUtilityTemplate;
 - (id)_newCircularMediumTemplate;
 - (id)_newCircularSmallTemplate;
-- (void)_makeAlarmStackTextTimeProvider:(id *)arg1 designatorProvider:(id *)arg2 designatorLeads:(_Bool *)arg3;
+- (void)_makeAlarmStackTextTimeProvider:(id *)arg1 designatorProvider:(id *)arg2 designatorExists:(_Bool *)arg3 designatorLeads:(_Bool *)arg4;
 - (id)_circularTemplateForAlarm:(_Bool)arg1;
 - (id)_newLargeModularTemplate;
 - (id)_newSmallModularTemplate;

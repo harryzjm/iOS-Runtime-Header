@@ -12,6 +12,7 @@
 
 @interface SGNameMappingTransformer : NSObject <PMLTransformerProtocol>
 {
+    _Bool _forNameDetector;
     NSDictionary *_nameMappings;
     NSString *_tokenToIgnore;
     int _minimumConfidence;
@@ -20,6 +21,7 @@
 
 + (id)withFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 minimumConfidence:(int)arg4 confidenceMapper:(CDUnknownBlockType)arg5 tokenToIgnore:(id)arg6 andPossessive:(id)arg7;
 + (id)withFullNameMapping:(id)arg1 firstNameMapping:(id)arg2 lastNameMapping:(id)arg3 andPossessive:(id)arg4;
++ (id)instanceForNameDetector;
 - (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -27,10 +29,9 @@
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
 - (_Bool)isPossessive:(id)arg1;
-- (id)detectNames:(id)arg1;
 - (id)transform:(id)arg1;
 - (id)nameMappingForToken:(id)arg1 withConfidence:(int *)arg2;
-- (id)initWithNameMappings:(id)arg1 minimumConfidence:(int)arg2 confidenceMapper:(CDUnknownBlockType)arg3 tokenToIgnore:(id)arg4;
+- (id)initWithNameMappings:(id)arg1 minimumConfidence:(int)arg2 confidenceMapper:(CDUnknownBlockType)arg3 tokenToIgnore:(id)arg4 forNameDetector:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

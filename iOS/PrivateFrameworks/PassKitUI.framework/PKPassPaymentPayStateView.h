@@ -16,34 +16,43 @@
     long long _style;
     double _glyphViewPadding;
     double _labelTopPadding;
+    _Bool _didLayout;
     _Bool _biometricsUnavailableHint;
-    _Bool _touchRecognizingHint;
+    _Bool _recognizingHint;
     _Bool _persistentEmulationHint;
     _Bool _accessPass;
     long long _state;
+    long long _layoutState;
     PKGlyphView *_glyph;
     UILabel *_label;
     UILabel *_debugLabel;
+    double _labelStateBottomInset;
     double _labelAlpha;
+    long long _userIntentStyle;
     id <PKPassPaymentPayStateViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool accessPass; // @synthesize accessPass=_accessPass;
 @property(nonatomic) _Bool persistentEmulationHint; // @synthesize persistentEmulationHint=_persistentEmulationHint;
-@property(nonatomic) _Bool touchRecognizingHint; // @synthesize touchRecognizingHint=_touchRecognizingHint;
-@property(nonatomic) _Bool biometricsUnavailableHint; // @synthesize biometricsUnavailableHint=_biometricsUnavailableHint;
+@property(nonatomic) long long userIntentStyle; // @synthesize userIntentStyle=_userIntentStyle;
+@property(nonatomic) _Bool recognizingHint; // @synthesize recognizingHint=_recognizingHint;
+@property(readonly, nonatomic) _Bool biometricsUnavailableHint; // @synthesize biometricsUnavailableHint=_biometricsUnavailableHint;
 @property(nonatomic) double labelAlpha; // @synthesize labelAlpha=_labelAlpha;
+@property(nonatomic) double labelStateBottomInset; // @synthesize labelStateBottomInset=_labelStateBottomInset;
 @property(readonly, nonatomic) UILabel *debugLabel; // @synthesize debugLabel=_debugLabel;
 @property(readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(readonly, nonatomic) PKGlyphView *glyph; // @synthesize glyph=_glyph;
+@property(readonly, nonatomic) long long layoutState; // @synthesize layoutState=_layoutState;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (void)glyphView:(id)arg1 revealingCheckmark:(_Bool)arg2;
 - (void)_configureLayoutMetrics;
 - (id)_attributedTextWithTitle:(id)arg1 subtitle:(id)arg2;
 - (id)_attributedTextWithTitle:(id)arg1;
+- (id)_titleForUserIntent;
 - (id)_textForState:(long long)arg1 textOverride:(id)arg2;
+- (void)setBiometricsUnavailableHint:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)_canEmphasizeState:(long long)arg1;
 - (void)updateDebugLabel:(id)arg1 isErrorState:(_Bool)arg2;
 - (void)emphasizeStateIfPossible:(long long)arg1 withOverrideText:(id)arg2;
@@ -54,6 +63,7 @@
 - (_Bool)_canPreserveGlyphForState:(long long)arg1;
 - (long long)_defaultGlyphStateForState:(long long)arg1;
 - (void)layoutSubviews;
+- (void)_resolveLayout;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1;
 

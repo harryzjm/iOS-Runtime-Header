@@ -23,8 +23,8 @@
 
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
-@property(readonly, nonatomic) HMFExponentialBackoffTimer *configurationRetryTimer; // @synthesize configurationRetryTimer=_configurationRetryTimer;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMFExponentialBackoffTimer *configurationRetryTimer; // @synthesize configurationRetryTimer=_configurationRetryTimer;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)timerDidFire:(id)arg1;
@@ -49,12 +49,13 @@
 - (void)handleUpdatedPassword:(id)arg1;
 - (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;
 - (_Bool)supportsMinimumUserPrivilege;
+- (id)messageSendPolicy;
 - (void)setReachable:(_Bool)arg1;
-- (void)handleUpdatedName:(id)arg1;
+- (void)_handleUpdatedName:(id)arg1;
 - (void)handleUpdatedAdvertisement:(id)arg1;
 - (void)setAdvertisement:(id)arg1;
 - (id)advertisement;
-- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3 initialConfiguration:(_Bool)arg4;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
 
 // Remaining properties

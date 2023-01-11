@@ -10,6 +10,8 @@
 @protocol NSObject><NSCopying;
 
 @protocol PXSectionedFetchResult <NSObject>
+@property(readonly, nonatomic) id <NSObject><NSCopying> lastObject;
+@property(readonly, nonatomic) id <NSObject><NSCopying> firstObject;
 @property(readonly, nonatomic) long long count;
 - (_Bool)containsObject:(id <NSObject><NSCopying>)arg1;
 - (NSArray *)objectsAtIndexes:(NSIndexSet *)arg1;

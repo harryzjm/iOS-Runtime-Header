@@ -6,6 +6,7 @@
 
 @class NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingPrepareInternalSessionOperation
 {
     int _clientType;
@@ -21,6 +22,7 @@
 + (id)RTCReportingFrameworkPath;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;
 + (_Bool)isRTCReportingSupported;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(nonatomic) long long sessionID; // @synthesize sessionID=_sessionID;
 @property(copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
@@ -29,7 +31,6 @@
 @property(nonatomic) int clientType; // @synthesize clientType=_clientType;
 @property(copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property(copy, nonatomic) NSDictionary *additionalUserInfo; // @synthesize additionalUserInfo=_additionalUserInfo;
-- (void).cxx_destruct;
 - (void)execute;
 
 @end

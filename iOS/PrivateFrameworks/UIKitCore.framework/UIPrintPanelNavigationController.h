@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol UIPrintPanelAppearanceDelegate;
+
 __attribute__((visibility("hidden")))
 @interface UIPrintPanelNavigationController
 {
+    id <UIPrintPanelAppearanceDelegate> _appearanceDelegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <UIPrintPanelAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
 - (void)_presentationControllerDidDismiss:(id)arg1;
 - (void)__viewWillLayoutSubviews;
 

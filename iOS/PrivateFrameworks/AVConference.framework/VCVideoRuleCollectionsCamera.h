@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (struct _VCBitrateConfiguration *)bitrateConfiguration;
-- (void)resetEncodingRulesForCameraIsHD:(_Bool)arg1 isWVGA:(_Bool)arg2;
-- (_Bool)getBestPreviewFrameWidth:(int *)arg1 frameHeight:(int *)arg2 frameRate:(float *)arg3;
+- (void)resetEncodingRulesForCameraIsHD:(_Bool)arg1 isWVGA:(_Bool)arg2 is1080:(_Bool)arg3;
+- (_Bool)getBestFrameWidth:(int *)arg1 frameHeight:(int *)arg2 frameRate:(float *)arg3;
 - (_Bool)useSoftFramerateSwitching;
 - (_Bool)isHiDefCapable;
 - (id)bestVideoRuleForEncodingType:(unsigned char)arg1 aspectRatio:(double)arg2;

@@ -13,9 +13,11 @@
 @interface GEOAttributionApp : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_appBundleIdentifier;
     NSMutableArray *_handledSchemes;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _restaurantReservationExtensionSupport;
     _Bool _supportsRestaurantQueueing;
     _Bool _supportsRestaurantReservations;
@@ -25,11 +27,7 @@
         unsigned int has_supportsRestaurantReservations:1;
         unsigned int read_appBundleIdentifier:1;
         unsigned int read_handledSchemes:1;
-        unsigned int wrote_appBundleIdentifier:1;
-        unsigned int wrote_handledSchemes:1;
-        unsigned int wrote_restaurantReservationExtensionSupport:1;
-        unsigned int wrote_supportsRestaurantQueueing:1;
-        unsigned int wrote_supportsRestaurantReservations:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,6 +42,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsRestaurantReservationExtensionSupport:(id)arg1;
@@ -56,13 +57,12 @@
 @property(nonatomic) _Bool supportsRestaurantReservations;
 - (id)handledSchemesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)handledSchemesCount;
-- (void)_addNoFlagsHandledSchemes:(id)arg1;
 - (void)addHandledSchemes:(id)arg1;
 - (void)clearHandledSchemes;
 @property(retain, nonatomic) NSMutableArray *handledSchemes;
-- (void)_readHandledSchemes;
 @property(retain, nonatomic) NSString *appBundleIdentifier;
-- (void)_readAppBundleIdentifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

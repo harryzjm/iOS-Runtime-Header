@@ -17,10 +17,11 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_executeByPerformingStoreRequestWithContext:(id)arg1;
+- (void)_executeByPerformingStoreRequestWithContext:(id)arg1 qualityOfService:(long long)arg2;
 - (void)execute;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)performRequestOnOperationQueue:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)performRequestWithResponseHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDeveloperToken:(id)arg1 clientInfo:(id)arg2 options:(unsigned long long)arg3;
 

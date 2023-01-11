@@ -12,7 +12,6 @@
 
 + (id)sharedInstance;
 - (void)triggerVoiceProfileRetrainingWithAsset:(id)arg1;
-- (void)analyzeImplicitUtterance:(id)arg1;
 
 @end
 

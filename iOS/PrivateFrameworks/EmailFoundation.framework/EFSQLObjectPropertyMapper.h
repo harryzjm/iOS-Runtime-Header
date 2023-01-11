@@ -9,7 +9,7 @@
 #import <EmailFoundation/EFObjectPropertyMapper-Protocol.h>
 
 @class EFSQLColumnSchema, EFSQLTableSchema, NSArray, NSDictionary, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLObjectPropertyMapper : NSObject <EFObjectPropertyMapper>
 {
@@ -17,19 +17,19 @@
     NSDictionary *_children;
     EFSQLTableSchema *_table;
     EFSQLColumnSchema *_sourceColumn;
-    id <EFSQLExpressable> _condition;
+    id <EFSQLValueExpressable> _condition;
     NSArray *_additionalColumns;
-    id <EFSQLExpressable> _bitExpression;
+    id <EFSQLValueExpressable> _bitExpression;
 }
 
-@property(readonly, nonatomic) id <EFSQLExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <EFSQLValueExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
 @property(nonatomic) _Bool isPlaceholder; // @synthesize isPlaceholder=_isPlaceholder;
 @property(readonly, nonatomic) NSArray *additionalColumns; // @synthesize additionalColumns=_additionalColumns;
-@property(readonly, nonatomic) id <EFSQLExpressable> condition; // @synthesize condition=_condition;
+@property(readonly, nonatomic) id <EFSQLValueExpressable> condition; // @synthesize condition=_condition;
 @property(readonly, nonatomic) EFSQLColumnSchema *sourceColumn; // @synthesize sourceColumn=_sourceColumn;
 @property(readonly, nonatomic) EFSQLTableSchema *table; // @synthesize table=_table;
 @property(copy, nonatomic) NSDictionary *children; // @synthesize children=_children;
-- (void).cxx_destruct;
 - (id)childForKey:(id)arg1;
 - (id)initPlaceholderMapperWithChildren:(id)arg1;
 - (id)initWithColumn:(id)arg1 condition:(id)arg2 additionalColumns:(id)arg3 bitExpression:(id)arg4;

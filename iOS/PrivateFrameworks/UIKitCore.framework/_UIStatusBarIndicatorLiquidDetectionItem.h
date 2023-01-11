@@ -7,11 +7,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarIndicatorLiquidDetectionItem
 {
+    _Bool _useFullColorIndicator;
 }
 
+@property(nonatomic) _Bool useFullColorIndicator; // @synthesize useFullColorIndicator=_useFullColorIndicator;
 - (id)imageNameForUpdate:(id)arg1;
 - (id)systemImageNameForUpdate:(id)arg1;
-- (_Bool)flipsForRightToLeftLayoutDirection;
+- (_Bool)isTemplateImage;
 - (id)indicatorEntryKey;
 
 @end

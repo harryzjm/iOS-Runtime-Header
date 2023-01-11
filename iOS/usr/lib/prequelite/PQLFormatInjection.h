@@ -16,7 +16,7 @@
 + (id)formatInjection:(id)arg1;
 - (void).cxx_destruct;
 - (int)bindWithStatement:(struct sqlite3_stmt *)arg1 startingAtIndex:(int)arg2;
-- (id)initWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
+- (id)initWithFormat:(id)arg1 arguments:(char *)arg2;
 @property(readonly, copy) NSString *description;
 - (id)bindValuesToKeepAlive;
 

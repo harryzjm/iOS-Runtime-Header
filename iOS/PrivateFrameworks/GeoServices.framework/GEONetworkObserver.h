@@ -20,7 +20,9 @@
 
 + (id)sharedNetworkObserver;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isWiFiConnection) _Bool wifiConnection;
 @property(readonly, nonatomic, getter=isCellConnection) _Bool cellConnection;
+- (_Bool)_isConnectionType:(int)arg1;
 - (void)removeNetworkReachableObserver:(id)arg1;
 - (void)addNetworkReachableObserver:(id)arg1 selector:(SEL)arg2;
 @property(readonly, nonatomic, getter=isNetworkConstrained) _Bool networkConstrained;

@@ -6,14 +6,19 @@
 
 #import <UIKit/UIButton.h>
 
+@class PXUIButtonConfiguration;
+
 @interface PXUIButton : UIButton
 {
-    _Bool _allowAnimatedHighlighting;
-    struct UIEdgeInsets _hitTestOutset;
+    PXUIButtonConfiguration *_configuration;
 }
 
-@property(nonatomic) _Bool allowAnimatedHighlighting; // @synthesize allowAnimatedHighlighting=_allowAnimatedHighlighting;
-@property(nonatomic) struct UIEdgeInsets hitTestOutset; // @synthesize hitTestOutset=_hitTestOutset;
++ (_Bool)_cursorInteractionEnabled;
+- (void).cxx_destruct;
+@property(copy, nonatomic) PXUIButtonConfiguration *configuration; // @synthesize configuration=_configuration;
+- (struct CGRect)_pointerRectForCurrentState;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)setHighlighted:(_Bool)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

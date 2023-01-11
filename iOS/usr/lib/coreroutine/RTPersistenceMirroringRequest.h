@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSCloudKitMirroringRequest, NSDate, NSMutableArray, NSUUID, RTPersistenceMirroringPolicy;
-@protocol OS_dispatch_queue, RTPersistenceMirroringRequestDelegate;
+@class NSCloudKitMirroringRequest, NSDate, NSMutableArray, NSUUID, RTPersistenceMirroringPolicy, RTPowerAssertion;
+@protocol OS_dispatch_queue, OS_os_transaction, RTPersistenceMirroringRequestDelegate;
 
 @interface RTPersistenceMirroringRequest : NSObject
 {
@@ -23,10 +23,15 @@
     unsigned long long _attemptCount;
     unsigned long long _maxRetryCount;
     RTPersistenceMirroringPolicy *_mirroringPolicy;
+    NSObject<OS_os_transaction> *_mirroringTransaction;
+    RTPowerAssertion *_mirroringAssertion;
     long long _requestType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long requestType; // @synthesize requestType=_requestType;
+@property(retain, nonatomic) RTPowerAssertion *mirroringAssertion; // @synthesize mirroringAssertion=_mirroringAssertion;
+@property(retain, nonatomic) NSObject<OS_os_transaction> *mirroringTransaction; // @synthesize mirroringTransaction=_mirroringTransaction;
 @property(retain, nonatomic) RTPersistenceMirroringPolicy *mirroringPolicy; // @synthesize mirroringPolicy=_mirroringPolicy;
 @property(nonatomic) unsigned long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property(nonatomic) unsigned long long attemptCount; // @synthesize attemptCount=_attemptCount;
@@ -37,7 +42,6 @@
 @property(readonly, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 @property(nonatomic) __weak id <RTPersistenceMirroringRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSCloudKitMirroringRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isReady) _Bool ready;
 - (id)requestTypeToString:(long long)arg1;
 - (id)description;

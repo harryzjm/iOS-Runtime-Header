@@ -17,11 +17,20 @@ __attribute__((visibility("hidden")))
     id <MTLSerializerTexture> textures[128];
     id <MTLSerializerSamplerState> samplers[16];
     id <MTLSerializerComputePipelineState> pipelineState;
+    _Bool _resourcesDirty;
+    _Bool needsWrites;
 }
 
+@property _Bool needsWrites; // @synthesize needsWrites;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (unsigned long long)getType;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
@@ -45,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)dispatchThreads:(CDStruct_da2e99ad)arg1 threadsPerThreadgroup:(CDStruct_da2e99ad)arg2;
 - (void)dispatchThreadgroupsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2 threadsPerThreadgroup:(CDStruct_da2e99ad)arg3;
 - (void)dispatchThreadgroups:(CDStruct_da2e99ad)arg1 threadsPerThreadgroup:(CDStruct_da2e99ad)arg2;
+- (void)flushWrites;
 - (_Bool)handleSplits;
 - (void)beginSegment:(_Bool)arg1;
 - (void)dealloc;

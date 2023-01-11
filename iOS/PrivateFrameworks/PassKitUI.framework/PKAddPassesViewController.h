@@ -24,7 +24,7 @@
 + (_Bool)_shouldForwardViewWillTransitionToSize;
 + (_Bool)canAddPasses;
 - (void).cxx_destruct;
-@property(nonatomic) id <PKAddPassesViewControllerDelegate> delegate;
+@property(nonatomic) __weak id <PKAddPassesViewControllerDelegate> delegate;
 - (void)_ingestionDidFinishWithResult:(unsigned long long)arg1;
 - (void)_applyRemoteViewController:(id)arg1;
 - (void)_requestRemoteViewController;

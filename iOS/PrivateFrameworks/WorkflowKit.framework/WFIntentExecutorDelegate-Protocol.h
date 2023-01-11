@@ -6,12 +6,16 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class INInteraction, WFIntentExecutor;
+@class INGetRideStatusIntentResponse, INIntent, INInteraction, NSError, WFIntentExecutor;
+@protocol WFIntentParameterDescription;
 
 @protocol WFIntentExecutorDelegate <NSObject>
 
 @optional
+- (void)intentExecutor:(WFIntentExecutor *)arg1 receivingRideStatusDidReceiveError:(NSError *)arg2;
+- (void)intentExecutor:(WFIntentExecutor *)arg1 receivingRideStatusDidReceiveUpdate:(INGetRideStatusIntentResponse *)arg2;
 - (void)intentExecutor:(WFIntentExecutor *)arg1 showConfirmationForInteraction:(INInteraction *)arg2 confirmationRequired:(_Bool)arg3 authenticationRequired:(_Bool)arg4 completionHandler:(void (^)(_Bool, NSError *))arg5;
+- (void)intentExecutor:(WFIntentExecutor *)arg1 showConfirmationForSlot:(id <WFIntentParameterDescription>)arg2 item:(id)arg3 intent:(INIntent *)arg4 completion:(void (^)(id))arg5;
 - (void)intentExecutorRequestsContinueInApp:(WFIntentExecutor *)arg1;
 @end
 

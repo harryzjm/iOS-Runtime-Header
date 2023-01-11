@@ -17,9 +17,9 @@
 
 + (id)sharedManifest;
 - (void).cxx_destruct;
-- (void)_adjustManifestForDevice:(unsigned long long)arg1 withIdentifier:(id)arg2 addingIdentifer:(_Bool)arg3;
+- (_Bool)_adjustManifestForDevice:(unsigned long long)arg1 withIdentifier:(id)arg2 addingIdentifer:(_Bool)arg3 outError:(id *)arg4;
 - (void)removeProfileDataWithIdentifier:(id)arg1 fromHoldingTankForDevice:(unsigned long long)arg2;
-- (void)addProfileData:(id)arg1 withIdentifier:(id)arg2 toHoldingTankForDevice:(unsigned long long)arg3;
+- (_Bool)addProfileData:(id)arg1 withIdentifier:(id)arg2 toHoldingTankForDevice:(unsigned long long)arg3 outError:(id *)arg4;
 - (id)uninstalledProfileDataWithIdentifier:(id)arg1 targetDevice:(unsigned long long)arg2;
 - (id)uninstalledProfileWithIdentifier:(id)arg1 targetDevice:(unsigned long long)arg2;
 - (id)uninstalledProfileIdentifiersForDevice:(unsigned long long)arg1;

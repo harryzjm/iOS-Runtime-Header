@@ -12,7 +12,7 @@
     float _outputOpacity;
     unsigned int _outputBlendMode;
     unsigned long long _hueSaturationCount;
-    CDStruct_2844c7c7 *_hueSaturation;
+    CDStruct_2a8bd0fe *_hueSaturation;
     unsigned long long _colorOverlayCount;
     CDStruct_073a3662 *_colorOverlay;
     unsigned long long _innerGradientCount;
@@ -79,7 +79,7 @@
 @property(nonatomic) unsigned long long innerGradientCount; // @synthesize innerGradientCount=_innerGradientCount;
 @property(readonly, nonatomic) CDStruct_073a3662 *colorOverlay; // @synthesize colorOverlay=_colorOverlay;
 @property(nonatomic) unsigned long long colorOverlayCount; // @synthesize colorOverlayCount=_colorOverlayCount;
-@property(readonly, nonatomic) CDStruct_2844c7c7 *hueSaturation; // @synthesize hueSaturation=_hueSaturation;
+@property(readonly, nonatomic) CDStruct_2a8bd0fe *hueSaturation; // @synthesize hueSaturation=_hueSaturation;
 @property(readonly, nonatomic) unsigned long long hueSaturationCount; // @synthesize hueSaturationCount=_hueSaturationCount;
 @property(readonly, nonatomic) float outputOpacity; // @synthesize outputOpacity=_outputOpacity;
 @property(readonly, nonatomic) float shapeOpacity; // @synthesize shapeOpacity=_shapeOpacity;
@@ -118,7 +118,7 @@
 - (id)imageWithEngraveShadowOfImage:(id)arg1 effect:(CDStruct_ca46f23f)arg2;
 - (id)imageWithOuterGlowOfImage:(id)arg1 effect:(CDStruct_265c7ca9)arg2;
 - (id)imageWithInteriorGradientFillOfImage:(id)arg1 effect:(CDStruct_bdea167c)arg2;
-- (id)imageWithHueSaturationOfImage:(id)arg1 effect:(CDStruct_2844c7c7)arg2;
+- (id)imageWithHueSaturationOfImage:(id)arg1 effect:(CDStruct_2a8bd0fe)arg2;
 - (id)imageWithColorOverlayOfImage:(id)arg1 effect:(CDStruct_073a3662)arg2;
 - (id)image:(id)arg1 withAdjustedOpacity:(float)arg2;
 - (id)imageWithInnerShadowOfImage:(id)arg1 effect:(CDStruct_a5d4af33)arg2;

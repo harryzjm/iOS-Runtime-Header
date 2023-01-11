@@ -12,10 +12,12 @@
 {
     struct __IOHIDEventSystemClient *_ioSystemPostBackClient;
     NSObject<OS_dispatch_queue> *_eventSendingQueue;
+    unsigned long long _senderID;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long senderID; // @synthesize senderID=_senderID;
 - (void)sendEventRepresentation:(id)arg1;
 - (id)init;
 

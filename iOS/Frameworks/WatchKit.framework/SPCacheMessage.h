@@ -8,6 +8,7 @@
 
 @class NSData, NSString, SPAssetCacheSyncData;
 
+__attribute__((visibility("hidden")))
 @interface SPCacheMessage : NSObject
 {
     int _messageType;
@@ -21,6 +22,7 @@
 
 + (id)fromProto:(id)arg1;
 + (id)toProto:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long error; // @synthesize error=_error;
 @property(retain, nonatomic) SPAssetCacheSyncData *syncData; // @synthesize syncData=_syncData;
 @property(retain, nonatomic) NSData *assetData; // @synthesize assetData=_assetData;
@@ -28,7 +30,6 @@
 @property(retain, nonatomic) NSString *assetKey; // @synthesize assetKey=_assetKey;
 @property(nonatomic) unsigned long long cacheType; // @synthesize cacheType=_cacheType;
 @property(nonatomic) int messageType; // @synthesize messageType=_messageType;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)init;
 

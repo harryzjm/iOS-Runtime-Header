@@ -13,6 +13,13 @@
 {
 }
 
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)enableNullBufferBinds:(_Bool)arg1;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1;
 @property(readonly) unsigned long long dispatchType;
@@ -29,6 +36,7 @@
 - (void)dispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dispatchThreadgroupsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2 threadsPerThreadgroup:(CDStruct_14f26992)arg3;
 - (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (void)setImageBlockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (void)setStageInRegionWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
 - (void)setStageInRegion:(CDStruct_1e3be3a8)arg1;
 - (void)dispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
@@ -44,7 +52,7 @@
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setComputePipelineState:(id)arg1;
-- (void)acceptVisitor:(id)arg1;
+- (id)initWithComputeCommandEncoder:(id)arg1 parent:(id)arg2 descriptor:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

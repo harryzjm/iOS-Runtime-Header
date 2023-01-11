@@ -6,10 +6,11 @@
 
 #import <UIKit/UITextView.h>
 
-@class PKTiledView;
+@class PKSelectionInteraction, PKTiledView;
 
 @interface UITextView (IC)
 @property(readonly, nonatomic) struct CGPoint ic_textContainerOrigin;
+@property(readonly, nonatomic) PKSelectionInteraction *ic_pkSelectionInteraction;
 @property(readonly, nonatomic) PKTiledView *ic_pkTiledView;
 - (id)ic_imageForRange:(struct _NSRange)arg1;
 - (struct CGRect)ic_rectForRange:(struct _NSRange)arg1;

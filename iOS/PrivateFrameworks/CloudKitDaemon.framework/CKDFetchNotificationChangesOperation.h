@@ -5,32 +5,35 @@
 //
 
 @class CKServerChangeToken;
+@protocol CKFetchNotificationChangesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchNotificationChangesOperation
 {
-    _Bool _wantsChanges;
     _Bool _moreComing;
+    _Bool _wantsChanges;
     CDUnknownBlockType _notificationChangedBlock;
+    CKServerChangeToken *_resultServerChangeToken;
     CKServerChangeToken *_previousServerChangeToken;
     unsigned long long _resultsLimit;
-    CKServerChangeToken *_resultServerChangeToken;
 }
 
-@property(nonatomic) _Bool moreComing; // @synthesize moreComing=_moreComing;
-@property(retain, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool wantsChanges; // @synthesize wantsChanges=_wantsChanges;
 @property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(retain, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
+@property(nonatomic) _Bool moreComing; // @synthesize moreComing=_moreComing;
+@property(retain, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
 @property(copy, nonatomic) CDUnknownBlockType notificationChangedBlock; // @synthesize notificationChangedBlock=_notificationChangedBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)fillOutOperationResult:(id)arg1;
-- (Class)operationResultClass;
 - (void)main;
+- (int)operationType;
 - (void)_handleFetchChangesRequestFinished:(id)arg1;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKFetchNotificationChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

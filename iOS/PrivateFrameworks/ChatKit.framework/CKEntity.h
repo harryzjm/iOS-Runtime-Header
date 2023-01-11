@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, IMAccount, IMHandle, NSString, UIImage;
+@class CNContact, IMAccount, IMChat, IMHandle, NSString, UIImage;
 
 @interface CKEntity : NSObject
 {
@@ -15,18 +15,21 @@
     UIImage *_transcriptDrawerContactImage;
     IMHandle *_handle;
     IMAccount *_chatAccount;
+    IMChat *_chat;
     CNContact *_cnContact;
 }
 
++ (id)entityForAddress:(id)arg1;
 + (id)copyEntityForAddressString:(id)arg1;
 + (id)_copyEntityForAddressString:(id)arg1 onAccount:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
+@property(retain, nonatomic) IMChat *chat; // @synthesize chat=_chat;
 @property(retain, nonatomic) IMAccount *chatAccount; // @synthesize chatAccount=_chatAccount;
 @property(retain, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
 @property(nonatomic) _Bool enlargedContactImage; // @synthesize enlargedContactImage=_enlargedContactImage;
 @property(readonly, nonatomic) UIImage *transcriptDrawerContactImage; // @synthesize transcriptDrawerContactImage=_transcriptDrawerContactImage;
 @property(readonly, nonatomic) UIImage *transcriptContactImage; // @synthesize transcriptContactImage=_transcriptContactImage;
-- (void).cxx_destruct;
 - (id)_croppedImageFromImageData:(id)arg1;
 @property(readonly, nonatomic) UIImage *locationShareBalloonContactImage;
 @property(readonly, nonatomic) UIImage *locationMapViewContactImage;
@@ -38,22 +41,28 @@
 @property(readonly, copy, nonatomic) NSString *IDSCanonicalAddress;
 @property(readonly, copy, nonatomic) NSString *originalAddress;
 @property(readonly, copy, nonatomic) NSString *rawAddress;
-@property(readonly, nonatomic) int propertyType;
-@property(readonly, nonatomic) int identifier;
-- (void)contactStoreDidChange:(id)arg1;
+@property(readonly, nonatomic) NSString *propertyType;
+- (void)_invalidatePartialContactStoreCache:(id)arg1;
+- (void)_invalidateContactStoreCache:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *abbreviatedDisplayName;
 @property(readonly, nonatomic) _Bool isMe;
+- (id)cnContactWithKeys:(id)arg1 shouldFetchSuggestedContact:(_Bool)arg2;
 - (id)cnContactWithKeys:(id)arg1;
-@property(readonly, nonatomic) void *abRecord;
+- (_Bool)_allowedByScreenTime;
 @property(readonly, nonatomic) IMHandle *defaultIMHandle;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)initWithChat:(id)arg1 imHandle:(id)arg2;
 - (id)initWithIMHandle:(id)arg1;
+- (id)displayNameMatchingInputText:(id)arg1;
+- (id)mentionsHandleID;
+- (void)addToken:(id)arg1 ifAvailableToTokens:(id)arg2;
+- (id)mentionTokens;
+- (_Bool)isMentionable;
 - (id)personViewControllerWithDelegate:(id)arg1 isUnknown:(_Bool *)arg2 contactStoreProvider:(id)arg3;
 - (id)personViewControllerWithDelegate:(id)arg1 isUnknown:(_Bool *)arg2;
+- (id)pinnedConversationContactItemIdentifier;
 
 @end
 

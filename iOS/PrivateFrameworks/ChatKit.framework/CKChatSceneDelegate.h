@@ -6,19 +6,27 @@
 
 #import <ChatKit/CKChatControllerDelegate-Protocol.h>
 
-@class CKCoreChatController, CKNavigationController, NSString;
+@class CKCoreChatController, CKDetailsNavigationController, CKNavigationController, NSString;
 
 @interface CKChatSceneDelegate <CKChatControllerDelegate>
 {
+    CKDetailsNavigationController *_detailsNavigationController;
     CKNavigationController *_navigationController;
     CKCoreChatController *_chatController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKCoreChatController *chatController; // @synthesize chatController=_chatController;
 @property(retain, nonatomic) CKNavigationController *navigationController; // @synthesize navigationController=_navigationController;
-- (void).cxx_destruct;
+@property(nonatomic) __weak CKDetailsNavigationController *detailsNavigationController; // @synthesize detailsNavigationController=_detailsNavigationController;
 - (id)canActivatePredicate;
 - (id)prefersToActivatePredicate;
+- (void)dismissAndReopenDetailsNavigationController;
+- (void)dismissDetailsNavigationController;
+- (void)presentDetailsNavigationController:(id)arg1;
+- (_Bool)isDetailsNavigationControllerDetached;
+- (_Bool)hasDetailsNavigationController;
+- (void)chatController:(id)arg1 didDetachDetailsNavigationController:(id)arg2;
 - (void)doneButtonPressedForChatController:(id)arg1;
 - (void)chatController:(id)arg1 willSendComposition:(id)arg2 inConversation:(id)arg3;
 - (void)chatController:(id)arg1 didSendCompositionInConversation:(id)arg2;

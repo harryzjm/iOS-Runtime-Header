@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSArray, NSSet, NSString, RBAssertionIntransientState, RBAssertionTransientState, RBConcreteTarget, RBInheritanceCollection, RBProcessState, RBSAssertionIdentifier, RBSProcessAssertionInfo, RBSProcessIdentifier, RBSystemState;
+@class NSArray, NSSet, NSString, RBAssertionIntransientState, RBAssertionTransientState, RBConcreteTarget, RBInheritanceCollection, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessAssertionInfo, RBSystemState;
 
-@interface RBAssertion : NSObject <BSDescriptionProviding, RBStateCapturing>
+@interface RBAssertion : NSObject <RBStateCapturing>
 {
     struct os_unfair_lock_s _lock;
     RBConcreteTarget *_target;
@@ -27,35 +26,29 @@
     unsigned long long _acquisitionCompletionPolicy;
     NSSet *_originatorInheritances;
     RBSProcessAssertionInfo *_assertionInfo;
+    id _plugInHoldToken;
     _Bool _suspended;
     _Bool _persistent;
     _Bool _active;
     _Bool _resolvedState;
-    RBSProcessIdentifier *_originator;
+    RBProcess *_originator;
     NSString *_description;
-    id _plugInHoldToken;
 }
 
 + (id)assertionWithIdentifier:(id)arg1 target:(id)arg2 explanation:(id)arg3 attributes:(id)arg4 originator:(id)arg5 context:(id)arg6;
 + (id)assertionWithDescriptor:(id)arg1 target:(id)arg2 originator:(id)arg3 context:(id)arg4;
-@property(retain, nonatomic) id plugInHoldToken; // @synthesize plugInHoldToken=_plugInHoldToken;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) RBAssertionIntransientState *intransientState; // @synthesize intransientState=_intransientState;
 @property(readonly, copy) NSString *description; // @synthesize description=_description;
 @property(readonly, nonatomic) double creationTime; // @synthesize creationTime=_creationTime;
 @property(readonly, copy, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
 @property(readonly, copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
 @property(readonly, copy, nonatomic) RBSAssertionIdentifier *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) RBSProcessIdentifier *originator; // @synthesize originator=_originator;
+@property(readonly, nonatomic) RBProcess *originator; // @synthesize originator=_originator;
 @property(readonly, copy, nonatomic) RBConcreteTarget *target; // @synthesize target=_target;
-- (void).cxx_destruct;
-- (id)_initWithTarget:(id)arg1 identifier:(id)arg2 explanation:(id)arg3 attributes:(id)arg4 originator:(id)arg5 context:(id)arg6;
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-- (_Bool)_lock_resolveStateWithContext:(id)arg1;
+@property(readonly, copy) NSString *debugDescription;
 - (void)applyToSystemState:(id)arg1 withAttributeContext:(id)arg2;
 - (void)applyToAssertionTransientState:(id)arg1 withAttributeContext:(id)arg2;
 - (void)applyToProcessState:(id)arg1 withAttributeContext:(id)arg2;
@@ -72,12 +65,14 @@
 @property(readonly, nonatomic) _Bool invalidatesSynchronously;
 @property(readonly, nonatomic) _Bool terminateTargetOnOriginatorExit;
 @property(readonly, nonatomic) double warningDuration;
+@property(readonly, nonatomic) unsigned long long runningReason;
 @property(readonly, nonatomic) unsigned long long legacyReason;
 @property(readonly, nonatomic) double invalidationDuration;
 @property(readonly, nonatomic) unsigned long long endPolicy;
 @property(readonly, nonatomic) unsigned long long startPolicy;
 - (unsigned long long)maxCPUUsageViolationPolicyForRole:(unsigned char)arg1;
 @property(nonatomic) unsigned long long invalidationReason;
+@property(retain, nonatomic) id plugInHoldToken;
 @property(readonly, nonatomic, getter=isValid) _Bool invalid;
 @property(readonly, nonatomic, getter=isSuspended) _Bool suspended;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
@@ -87,7 +82,6 @@
 - (void)activate;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

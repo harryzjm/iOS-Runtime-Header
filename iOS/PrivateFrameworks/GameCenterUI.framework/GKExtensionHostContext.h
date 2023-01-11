@@ -13,13 +13,13 @@
 @interface GKExtensionHostContext : NSExtensionContext <GKExtensionHostProtocol>
 {
     GKGame *_game;
-    GKExtensionRemoteViewController *_remoteViewControllerWeak;
+    GKExtensionRemoteViewController *_remoteViewController;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak GKExtensionRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 - (void)messageFromExtension:(id)arg1;
-@property(nonatomic) GKExtensionRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewControllerWeak;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

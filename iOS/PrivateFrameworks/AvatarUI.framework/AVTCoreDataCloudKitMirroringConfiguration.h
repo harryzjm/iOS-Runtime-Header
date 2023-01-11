@@ -10,6 +10,7 @@
 {
 }
 
++ (void)configureMirroringRequestOptions:(id)arg1 discretionary:(_Bool)arg2;
 + (void)configureMirroringRequestOptions:(id)arg1;
 + (id)managedModelAttributesRequiredForMirroring;
 + (id)createMirroringHandlerWithEnvironment:(id)arg1;

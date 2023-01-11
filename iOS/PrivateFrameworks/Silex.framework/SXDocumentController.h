@@ -8,7 +8,7 @@
 
 #import <Silex/SXDocumentShareURLProvider-Protocol.h>
 
-@class NSMutableDictionary, NSString, SXDocument, SXImageController, SXJSONObjectMerger, SXMetaData, UIColor;
+@class NSArray, NSMutableDictionary, NSString, SXDocument, SXImageController, SXJSONObjectMerger, SXMetadata, UIColor;
 
 @interface SXDocumentController : NSObject <SXDocumentShareURLProvider>
 {
@@ -19,21 +19,21 @@
     NSMutableDictionary *_componentStyles;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *componentStyles; // @synthesize componentStyles=_componentStyles;
 @property(retain, nonatomic) SXImageController *imageController; // @synthesize imageController=_imageController;
 @property(readonly, nonatomic) SXJSONObjectMerger *componentStyleMerger; // @synthesize componentStyleMerger=_componentStyleMerger;
 @property(readonly, nonatomic) SXDocument *document; // @synthesize document=_document;
 @property(readonly, nonatomic) NSString *shareURL; // @synthesize shareURL=_shareURL;
-- (void).cxx_destruct;
 - (id)mergedObjectsWithIdentifiers:(id)arg1 fromDictionary:(id)arg2 merger:(id)arg3;
 @property(readonly, nonatomic) UIColor *topBackgroundColor;
 @property(readonly, nonatomic) UIColor *documentBackgroundColor;
-@property(readonly, nonatomic) SXMetaData *metaData;
+@property(readonly, nonatomic) SXMetadata *metadata;
 - (id)componentIdentifierUsingThumbnailInComponents:(id)arg1;
 - (id)componentIdentifierUsingThumbnail;
 - (id)filterImageResources;
-- (id)requiredResourceURLs;
-- (id)allImageResources;
+@property(readonly, nonatomic) NSArray *requiredResourceURLs;
+@property(readonly, nonatomic) NSArray *allImageResources;
 - (id)imageResourceForIdentifier:(id)arg1;
 - (id)componentLayoutForIdentifier:(id)arg1;
 - (id)resourceForIdentifier:(id)arg1;

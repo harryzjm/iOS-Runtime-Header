@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCCKDatabaseOperationMiddleware-Protocol.h>
 #import <NewsCore/FCCKDatabaseRecordMiddleware-Protocol.h>
 
 @class FCCKPrivateDatabaseSchema, NSString;
 @protocol FCCKRecordNameCipher;
 
-@interface FCCKDatabaseEncryptionMiddleware : NSObject <FCCKDatabaseRecordMiddleware>
+@interface FCCKDatabaseEncryptionMiddleware : NSObject <FCCKDatabaseRecordMiddleware, FCCKDatabaseOperationMiddleware>
 {
     FCCKPrivateDatabaseSchema *_encryptionSchema;
     id <FCCKRecordNameCipher> _recordNameCipher;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <FCCKRecordNameCipher> recordNameCipher; // @synthesize recordNameCipher=_recordNameCipher;
 @property(retain, nonatomic) FCCKPrivateDatabaseSchema *encryptionSchema; // @synthesize encryptionSchema=_encryptionSchema;
-- (void).cxx_destruct;
 - (_Bool)_isEnabledForDatabase:(id)arg1;
 - (id)_encryptionKeyForServerRecordID:(id)arg1 inDatabase:(id)arg2;
 - (id)_encryptionKeyForClientRecordID:(id)arg1 inDatabase:(id)arg2;
@@ -41,6 +42,7 @@
 - (id)clientToServerRecordID:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
 - (id)serverToClientRecordZoneID:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
 - (id)clientToServerRecordZoneID:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
+- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2 error:(id *)arg3;
 - (id)initWithEncryptionSchema:(id)arg1;
 - (id)initWithEncryptionSchema:(id)arg1 recordNameCipher:(id)arg2;
 

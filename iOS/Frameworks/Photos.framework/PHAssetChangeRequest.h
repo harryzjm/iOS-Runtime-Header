@@ -6,7 +6,7 @@
 
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSIndexSet, NSManagedObjectID, NSMutableDictionary, NSSet, NSString, NSURL, PHAsset, PHContentEditingOutput, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class CLLocation, NSArray, NSData, NSDate, NSIndexSet, NSManagedObjectID, NSMutableDictionary, NSSet, NSString, NSURL, PHAsset, PHContentEditingOutput, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
 @interface PHAssetChangeRequest <PHUpdateChangeRequest>
 {
@@ -16,6 +16,7 @@
     NSURL *_editorBundleURL;
     CLLocation *_updatedLocation;
     NSString *_assetDescription;
+    NSString *_accessibilityDescription;
     NSString *_title;
     CDStruct_1b6d18a9 _bestKeyFrameTime;
     NSData *_bestKeyFrameJPEGData;
@@ -26,7 +27,6 @@
     short _sceneAnalysisVersion;
     NSDate *_sceneAnalysisTimestamp;
     NSData *_distanceIdentity;
-    NSMutableDictionary *_analysisStatesByWorkerType;
     _Bool _allowUnsafeSetProcessed;
     _Bool _incrementPlayCount;
     _Bool _incrementShareCount;
@@ -68,13 +68,16 @@
     _Bool _didUntrashAllSpatialOverCaptureResources;
     _Bool _didExpungeTrashedSpatialOverCaptureResources;
     _Bool _didSetReframeVariation;
-    _Bool _performReframe;
+    _Bool _performCameraProcessingAdjustment;
+    NSData *_objectSaliencyRectsData;
+    _Bool _didSetObjectSaliencyRectsData;
     _Bool _didSetTimeZone;
     NSString *_timeZoneName;
     long long _timeZoneOffsetValue;
     NSSet *_keywordTitles;
     _Bool _didSetKeywordTitles;
     PHRelationshipChangeRequestHelper *_keywordsHelper;
+    _Bool _didSetGpsHorizontalAccuracy;
     _Bool _didChangeAdjustments;
     _Bool _duplicateAllowsPrivateMetadata;
     _Bool _reverseLocationDataIsValid;
@@ -89,13 +92,14 @@
     unsigned long long _originalResourceChoice;
     PHContentEditingOutput *_contentEditingOutput;
     NSString *_editorBundleID;
-    NSString *_clientBundleID;
     NSIndexSet *_supportedEditOperations;
     NSURL *_videoURLForUpdate;
     NSString *_pairingIdentifier;
     PHRelationshipChangeRequestHelper *_facesHelper;
     NSDate *_alternateImportImageDate;
     unsigned long long _reframeVariation;
+    double _gpsHorizontalAccuracy;
+    NSArray *_objectSaliencyRects;
     NSDate *_mediaAnalysisTimeStamp;
     unsigned long long _mediaAnalysisVersion;
     unsigned long long _faceCount;
@@ -118,6 +122,7 @@
 + (id)creationRequestForAssetFromImageAtFileURL:(id)arg1;
 + (id)creationRequestForAssetFromImage:(id)arg1;
 + (id)_allAssetEditOperations;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *keywordTitles; // @synthesize keywordTitles=_keywordTitles;
 @property(retain, nonatomic) CLLocation *shiftedLocation; // @synthesize shiftedLocation=_shiftedLocation;
 @property(nonatomic) _Bool reverseLocationDataIsValid; // @synthesize reverseLocationDataIsValid=_reverseLocationDataIsValid;
@@ -133,6 +138,8 @@
 @property(nonatomic) CDStruct_e83c9415 bestVideoTimeRange; // @synthesize bestVideoTimeRange=_bestVideoTimeRange;
 @property(nonatomic) unsigned long long mediaAnalysisVersion; // @synthesize mediaAnalysisVersion=_mediaAnalysisVersion;
 @property(retain, nonatomic) NSDate *mediaAnalysisTimeStamp; // @synthesize mediaAnalysisTimeStamp=_mediaAnalysisTimeStamp;
+@property(retain, nonatomic) NSArray *objectSaliencyRects; // @synthesize objectSaliencyRects=_objectSaliencyRects;
+@property(nonatomic) double gpsHorizontalAccuracy; // @synthesize gpsHorizontalAccuracy=_gpsHorizontalAccuracy;
 @property(nonatomic) float testScore; // @synthesize testScore=_testScore;
 @property(nonatomic) CDStruct_1b6d18a9 imageDisplayTime; // @synthesize imageDisplayTime=_imageDisplayTime;
 @property(nonatomic) unsigned long long reframeVariation; // @synthesize reframeVariation=_reframeVariation;
@@ -143,13 +150,11 @@
 @property(retain, nonatomic) NSString *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
 @property(retain, nonatomic) NSURL *videoURLForUpdate; // @synthesize videoURLForUpdate=_videoURLForUpdate;
 @property(retain, nonatomic) NSIndexSet *supportedEditOperations; // @synthesize supportedEditOperations=_supportedEditOperations;
-@property(readonly, copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property(readonly, copy, nonatomic) NSString *editorBundleID; // @synthesize editorBundleID=_editorBundleID;
 @property(readonly, nonatomic) _Bool didChangeAdjustments; // @synthesize didChangeAdjustments=_didChangeAdjustments;
 @property(retain, nonatomic) PHContentEditingOutput *contentEditingOutput; // @synthesize contentEditingOutput=_contentEditingOutput;
 @property(nonatomic) unsigned long long originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
 @property(nonatomic) unsigned short photoIrisVisibilityState; // @synthesize photoIrisVisibilityState=_photoIrisVisibilityState;
-- (void).cxx_destruct;
 - (void)markDidChangeAdjustments;
 - (_Bool)isRevertingContentToOriginal;
 - (_Bool)isHiding;
@@ -161,6 +166,7 @@
 - (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSString *managedEntityName;
 - (_Bool)_validateAsyncContentEditingOutputPreviewRenderURLs:(id)arg1 error:(id *)arg2;
+- (_Bool)validateAccessibilityDescription:(id)arg1 error:(id *)arg2;
 - (_Bool)validateAssetDescription:(id)arg1 error:(id *)arg2;
 - (_Bool)validateAdjustmentDataForAssetMutation:(id)arg1 error:(id *)arg2;
 - (_Bool)validateVideoURLForAssetMutation:(id)arg1 error:(id *)arg2;
@@ -169,8 +175,6 @@
 - (void)setTimeZone:(id)arg1 withDate:(id)arg2;
 - (void)setBestPlaybackRectWithNormalizedRect:(struct CGRect)arg1;
 - (void)setBestKeyFrame:(struct CGImage *)arg1 time:(CDStruct_1b6d18a9)arg2;
-- (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4 allowUnsafeSetProcessed:(_Bool)arg5;
-- (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4;
 - (void)encodeToXPCDict:(id)arg1;
 - (void)revertAssetContentToOriginal;
 - (void)retryUpload;
@@ -199,13 +203,15 @@
 @property(retain, nonatomic) id faceAdjustmentVersion;
 - (void)removeFaces:(id)arg1;
 - (void)addFaces:(id)arg1;
+- (void)_validateObjectSaliencyRects:(id)arg1;
 - (void)setRectWithNormalizedRect:(struct CGRect)arg1 forPackedRect:(long long *)arg2 forSetFlag:(_Bool *)arg3;
 - (void)setAcceptableCropRectWithNormalizedRect:(struct CGRect)arg1;
 - (void)setPreferredCropRectWithNormalizedRect:(struct CGRect)arg1;
-- (void)performReframe;
+- (void)performCameraProcessingAdjustment;
 - (void)setSceneClassifications:(id)arg1 algorithmVersion:(long long)arg2 distanceIdentity:(id)arg3 adjustmentVersion:(id)arg4;
 - (void)setSceneClassifications:(id)arg1 algorithmVersion:(long long)arg2 adjustmentVersion:(id)arg3;
 @property(retain, nonatomic) NSString *title;
+@property(retain, nonatomic) NSString *accessibilityDescription;
 @property(retain, nonatomic) NSString *assetDescription;
 @property(nonatomic) float interactionScore;
 @property(nonatomic) float behavioralScore;
@@ -237,10 +243,10 @@
 @property(nonatomic) double curationScore;
 @property(nonatomic, getter=isHidden) _Bool hidden;
 @property(nonatomic, getter=isFavorite) _Bool favorite;
+@property(retain, nonatomic) NSDate *addedDate;
 @property(retain, nonatomic) NSDate *modificationDate;
 @property(retain, nonatomic) NSDate *creationDate;
 - (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 @property(readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedAsset;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
@@ -248,6 +254,7 @@
 - (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSString *clientName;
 @property(readonly, copy) NSString *debugDescription;

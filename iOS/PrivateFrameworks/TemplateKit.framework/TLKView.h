@@ -14,8 +14,9 @@
 
 @interface TLKView : UIView <TLKObserver, TLKObservable>
 {
-    _Bool inBatchUpdate;
     id <TLKObserver> observer;
+    long long batchUpdateCount;
+    UIView *_leadingTextView;
     UIView *_contentView;
     TLKAppearance *_tlkAppearance;
 }
@@ -24,16 +25,14 @@
 + (void)enableShadow:(_Bool)arg1 forView:(id)arg2;
 + (void)enableLightKeylineStroke:(_Bool)arg1 forView:(id)arg2;
 + (Class)layerClass;
-+ (struct UIEdgeInsets)defaultInsets;
++ (struct UIEdgeInsets)defaultLayoutMargins;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKAppearance *tlkAppearance; // @synthesize tlkAppearance=_tlkAppearance;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property _Bool inBatchUpdate; // @synthesize inBatchUpdate;
+@property(readonly) UIView *leadingTextView; // @synthesize leadingTextView=_leadingTextView;
+@property(nonatomic) long long batchUpdateCount; // @synthesize batchUpdateCount;
 @property __weak id <TLKObserver> observer; // @synthesize observer;
-- (void).cxx_destruct;
 - (struct CGSize)intrinsicContentSize;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
-- (struct CGSize)containerSizeForSize:(struct CGSize)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
@@ -43,8 +42,9 @@
 - (id)viewForFirstBaselineLayout;
 - (void)observedPropertiesChanged;
 - (void)layoutMarginsDidChange;
+- (struct UIEdgeInsets)defaultBaselineRelativeLayoutMargins;
 - (void)propertiesDidChange;
-@property(readonly) _Bool usesDefaultInsets;
+@property(readonly) _Bool usesDefaultLayoutMargins;
 - (id)setupContentView;
 - (id)init;
 

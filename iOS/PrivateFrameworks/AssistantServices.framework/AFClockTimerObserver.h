@@ -10,13 +10,15 @@
 #import <AssistantServices/AFInvalidating-Protocol.h>
 
 @class AFClockItemStorage, AFClockTimerSnapshot, NSHashTable, NSMutableOrderedSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface AFClockTimerObserver : NSObject <AFClockItemStorageDelegate, AFInvalidating>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSHashTable *_listeners;
     AFClockTimerSnapshot *_timerSnapshot;
+    NSObject<OS_dispatch_group> *_timerSnapshotGroup;
+    long long _timerSnapshotGroupDepth;
     AFClockItemStorage *_timerStorage;
     NSMutableOrderedSet *_notifiedFiringTimerIDs;
     NSUUID *_timersChangedToken;
@@ -24,12 +26,15 @@
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)_consolidateNotifiedFiringTimers;
 - (void)_enumerateListenersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_handleFetchTimersForReason:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchTimersForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_tearDown;
 - (void)_setUp;
 - (id)_timerSnapshot;
+- (void)_endGroup;
+- (void)_beginGroup;
 - (void)timersChanged:(id)arg1;
 - (void)stateReset:(id)arg1;
 - (void)firingTimerDismissed:(id)arg1;

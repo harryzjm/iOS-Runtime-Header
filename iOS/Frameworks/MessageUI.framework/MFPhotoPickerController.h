@@ -12,7 +12,7 @@
 #import <MessageUI/UIImagePickerControllerDelegate-Protocol.h>
 #import <MessageUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, PHAssetCollection, PHCachingImageManager, PHFetchResult, UIImagePickerController;
+@class MFPhotoPickerProgressManager, NSMutableSet, NSSet, NSString, PHCachingImageManager, PHFetchResult, UIImagePickerController;
 @protocol MFPhotoPickerControllerDelegate;
 
 @interface MFPhotoPickerController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFPreferredHeightProviding>
@@ -20,26 +20,29 @@
     NSMutableSet *_selectedAssetIdentifiers;
     struct {
         unsigned int delegateRespondsToPickerDidCancel:1;
-        unsigned int delegateRespondsToDidSelectAssetWithIdentifier:1;
+        unsigned int delegateRespondsToSystemPickerDidCancel:1;
         unsigned int delegateRespondsToDidDeselectAssetWithIdentifier:1;
+        unsigned int delegateRespondsToPresentingViewControllerForPhotoPicker:1;
     } _flags;
     id <MFPhotoPickerControllerDelegate> _pickerDelegate;
     PHFetchResult *_photosFetchResult;
-    PHAssetCollection *_photosCollection;
     PHCachingImageManager *_imageManager;
     double _availableWidth;
     UIImagePickerController *_systemImagePicker;
+    MFPhotoPickerProgressManager *_progressManager;
     struct CGSize _thumbnailSize;
 }
 
++ (id)log;
+- (void).cxx_destruct;
+@property(retain, nonatomic) MFPhotoPickerProgressManager *progressManager; // @synthesize progressManager=_progressManager;
 @property(retain, nonatomic) UIImagePickerController *systemImagePicker; // @synthesize systemImagePicker=_systemImagePicker;
 @property(nonatomic) double availableWidth; // @synthesize availableWidth=_availableWidth;
 @property(nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 @property(retain, nonatomic) PHCachingImageManager *imageManager; // @synthesize imageManager=_imageManager;
-@property(retain, nonatomic) PHAssetCollection *photosCollection; // @synthesize photosCollection=_photosCollection;
 @property(retain, nonatomic) PHFetchResult *photosFetchResult; // @synthesize photosFetchResult=_photosFetchResult;
 @property(nonatomic) __weak id <MFPhotoPickerControllerDelegate> pickerDelegate; // @synthesize pickerDelegate=_pickerDelegate;
-- (void).cxx_destruct;
+- (id)_visibleCellForIndexPath:(id)arg1 collectionView:(id)arg2;
 - (_Bool)_isPresentingInASheet;
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (void)removeAllSelectedAssetIdentifiers;
@@ -59,7 +62,7 @@
 - (void)viewDidLoad;
 - (void)loadView;
 @property(readonly, nonatomic) NSSet *selectedAssetIdentifiers;
-- (id)init;
+- (id)initWithPhotoPickerProgressManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

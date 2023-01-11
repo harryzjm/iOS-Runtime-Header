@@ -14,9 +14,11 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)accessibilityCustomContent;
 - (id)_accessibilityElementStoredUserLabel;
 - (_Bool)_accessibilitySavePhotoLabel:(id)arg1;
 - (id)accessibilityURL;
+- (_Bool)_accessibilitySkipImageTraitDescription;
 - (id)_axMainAssetURL;
 - (id)_axPHAsset;
 - (_Bool)isAccessibilityElement;

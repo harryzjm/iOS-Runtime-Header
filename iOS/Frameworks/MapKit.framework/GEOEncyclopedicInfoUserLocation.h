@@ -13,12 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface GEOEncyclopedicInfoUserLocation : NSObject <GEOEncyclopedicInfo>
 {
+    _Bool _isUserLocation;
     MKMapItem *_mapItem;
 }
 
-@property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 - (void).cxx_destruct;
-- (id)initWithMapItem:(id)arg1;
+@property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+- (id)initWithMapItem:(id)arg1 isUserLocation:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *factoids;
 @property(readonly, nonatomic) _Bool hasStandAloneFactoids;
 @property(readonly, nonatomic) _Bool hasPairOfFactoids;

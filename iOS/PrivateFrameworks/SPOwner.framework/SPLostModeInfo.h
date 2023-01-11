@@ -9,22 +9,24 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface SPLostModeInfo : NSObject <NSCopying, NSSecureCoding>
 {
+    NSDate *_timestamp;
     NSString *_message;
     NSString *_phoneNumber;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithMessage:(id)arg1 phoneNumber:(id)arg2;
+- (id)initWithMessage:(id)arg1 phoneNumber:(id)arg2 timestamp:(id)arg3;
 
 @end
 

@@ -13,30 +13,34 @@
 #import <EmailDaemon/EFSignpostable-Protocol.h>
 #import <EmailDaemon/EMSearchableIndexInterface-Protocol.h>
 
-@class CSSearchableIndex, EFCancelationToken, EFLazyCache, EFObservable, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
-@protocol EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFScheduler, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
+@class CSSearchableIndex, EFCancelationToken, EFFuture, EFLazyCache, EFObservable, EFStoppableScheduler, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
+@protocol EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFAssertableScheduler, EFCancelable, EFSuspendableScheduler><EFAssertableScheduler, OS_os_activity;
 
 @interface EDSearchableIndex : NSObject <CSSearchableIndexDelegate, EDSearchableIndexVerifierDataSource, EFLoggable, EFSignpostable, EDSearchableIndexSchedulable, EMSearchableIndexInterface>
 {
     NSString *_indexName;
     EFCancelationToken *_cancelationToken;
-    NSObject<OS_dispatch_queue> *_stateTransitionQueue;
-    NSObject<OS_dispatch_source> *_coalescingTimer;
+    EFStoppableScheduler<EFAssertableScheduler> *_stateTransitionScheduler;
+    id <EFCancelable> _coalescingTimer;
     long long _resumeCount;
     long long _transaction;
     unsigned long long _throttledIndexingBatchSize;
     unsigned long long _throttledDataSourceBatchSize;
     unsigned long long _currentMaximumBatchSize;
     NSObject<OS_os_activity> *_batchIndexingActivity;
+    NSMutableSet *_removedIdentifiers;
+    NSMutableArray *_preparingItems;
     NSMutableArray *_pendingItems;
     NSMutableArray *_preprocessingItems;
+    NSMutableArray *_processingItems;
     NSMutableSet *_pendingDomainRemovals;
     _EMSearchableIndexPendingRemovals *_pendingIdentifierRemovals;
-    NSObject<OS_dispatch_queue> *_indexingQueue;
-    NSObject<OS_dispatch_queue> *_dataSourceQueue;
-    id <EFScheduler> _preprocessingScheduler;
+    EFStoppableScheduler<EFSuspendableScheduler><EFAssertableScheduler> *_indexingScheduler;
+    EFStoppableScheduler *_dataSourceScheduler;
+    EFStoppableScheduler *_addIndexItemsScheduler;
+    EFStoppableScheduler *_preprocessingScheduler;
     struct os_unfair_lock_s _mainThreadAccessibleIvarLock;
-    id <EFScheduler> _indexingBatchScheduler;
+    EFStoppableScheduler *_indexingBatchScheduler;
     EFLazyCache *_searchResultsCache;
     _Bool _isActive;
     _Bool _needsRefresh;
@@ -58,6 +62,8 @@
     CSSearchableIndex *_csIndex;
     NSString *_searchableIndexBundleID;
     double _coalescingDelaySeconds;
+    double _dataSourceUpdateTimeLimit;
+    EFFuture *_delayDataSourceAssignmentFuture;
 }
 
 + (void)_saveLocalClientState:(id)arg1;
@@ -68,6 +74,9 @@
 + (_Bool)isValidTransaction:(long long)arg1;
 + (id)signpostLog;
 + (id)log;
+- (void).cxx_destruct;
+@property(retain, nonatomic) EFFuture *delayDataSourceAssignmentFuture; // @synthesize delayDataSourceAssignmentFuture=_delayDataSourceAssignmentFuture;
+@property(nonatomic) double dataSourceUpdateTimeLimit; // @synthesize dataSourceUpdateTimeLimit=_dataSourceUpdateTimeLimit;
 @property(nonatomic) double coalescingDelaySeconds; // @synthesize coalescingDelaySeconds=_coalescingDelaySeconds;
 @property(copy, nonatomic) NSString *searchableIndexBundleID; // @synthesize searchableIndexBundleID=_searchableIndexBundleID;
 @property(nonatomic) _Bool enableSpotlightVerification; // @synthesize enableSpotlightVerification=_enableSpotlightVerification;
@@ -78,8 +87,7 @@
 @property(nonatomic) __weak id <EDSearchableIndexReasonProvider> reasonProvider; // @synthesize reasonProvider=_reasonProvider;
 @property(nonatomic) __weak id <EDSearchableIndexDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic, getter=isDataSourceIndexingPermitted) _Bool dataSourceIndexingPermitted; // @synthesize dataSourceIndexingPermitted=_dataSourceIndexingPermitted;
-- (void).cxx_destruct;
-- (void)waitForAsynchronousWork;
+- (void)test_tearDown;
 - (id)currentReasons;
 - (id)exclusionReasons;
 - (id)purgeReasons;
@@ -93,6 +101,7 @@
 - (void)logPowerEventWithIdentifier:(id)arg1 eventData:(id)arg2;
 - (void)markMessagesAsPrinted:(id)arg1;
 - (void)indexMessages:(id)arg1 includeBody:(_Bool)arg2 indexingType:(long long)arg3;
+- (void)indexAttachmentsForMessageWithIdentifier:(id)arg1;
 - (void)removeMessages:(id)arg1;
 - (_Bool)_preprocessItemIfNecessary:(id)arg1 fromRefresh:(_Bool)arg2;
 - (id)identifiersMatchingCriterion:(id)arg1;
@@ -102,6 +111,7 @@
 - (void)removeItemsForDomainIdentifier:(id)arg1;
 - (void)removeItemsWithIdentifiers:(id)arg1 reasons:(id)arg2 fromRefresh:(_Bool)arg3;
 - (void)removeItemsWithIdentifiers:(id)arg1;
+- (void)_doIndexItems:(id)arg1 fromRefresh:(_Bool)arg2 immediately:(_Bool)arg3;
 - (void)_indexItems:(id)arg1 fromRefresh:(_Bool)arg2 immediately:(_Bool)arg3;
 - (void)indexItems:(id)arg1 fromRefresh:(_Bool)arg2 immediately:(_Bool)arg3;
 - (void)indexItems:(id)arg1 immediately:(_Bool)arg2;
@@ -109,6 +119,7 @@
 - (void)reindexAllItemsWithOptions:(unsigned long long)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
 - (void)reindexSearchableItemsWithIdentifiers:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
+- (void)_invalidateItemsInTransactions:(id)arg1;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
 - (id)indexedEmptySubjectIdentifers;
@@ -120,6 +131,8 @@
 - (id)_processDomainRemovals:(id)arg1;
 - (_Bool)_processIndexingBatch:(id)arg1 clientState:(id)arg2 itemsNotIndexed:(id)arg3;
 - (void)_getDomainRemovals:(id *)arg1 identifierRemovals:(id *)arg2;
+- (id)_identifiersStringForItems:(id)arg1 maxLength:(unsigned long long)arg2;
+- (id)_identifiersForItems:(id)arg1;
 - (id)_consumeBatchOfSize:(unsigned long long)arg1;
 @property(readonly, getter=isPerformingBlockAffectingDataSourceAndIndex) _Bool performingBlockAffectingDataSourceAndIndex;
 - (void)performBlockAffectingDataSourceAndIndex:(CDUnknownBlockType)arg1;
@@ -131,6 +144,8 @@
 - (void)_logSignpostForIndexingBatchAssignedUpdatesWithItemsIndexedCount:(unsigned long long)arg1;
 - (void)_logSignpostForIndexingBatchAssignedDomainRemovalCount:(unsigned long long)arg1;
 - (void)_logSignpostForIndexingBatchStartWithPendingItemsCount:(id)arg1;
+- (void)_resumeIndexingScheduler;
+- (void)_suspendIndexingScheduler;
 - (void)_queueTransitionActive:(_Bool)arg1 fromRefresh:(_Bool)arg2;
 - (unsigned long long)_countOfItemsInPendingQueues;
 - (void)_queueRefresh;
@@ -141,7 +156,8 @@
 - (void)_stopCoalescingTimer;
 - (void)_startCoalescingTimer;
 - (id)searchableIndexForSearchableIndexVerifier:(id)arg1;
-- (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2;
+- (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2 count:(unsigned long long)arg3 lastVerifiedMessageID:(long long)arg4;
+- (id)bundleIdentifierForSearchableIndexVerifier:(id)arg1;
 - (void)_dataSourcePrepareToIndexItems:(id)arg1 fromRefresh:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_dataSourceVerifyRepresentativeSampleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_dataSourceRequestNeededUpdatesExcludingIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -168,6 +184,7 @@
 - (void)applicationWillSuspend;
 - (void)setForeground:(_Bool)arg1;
 - (double)_throttleRequestedSize:(unsigned long long *)arg1 targetTime:(double)arg2 action:(CDUnknownBlockType)arg3;
+- (void)_handleFailingTransactionIDs:(id)arg1;
 - (void)_verifySpotlightIndex;
 - (void)_registerDistantFutureSpotlightVerification;
 - (void)_scheduleSpotlightVerificationOnIndexingQueueWithCompletion:(CDUnknownBlockType)arg1;
@@ -176,6 +193,7 @@
 @property(readonly, nonatomic) unsigned long long pendingIndexItemsCount;
 - (void)_powerStateChanged;
 @property(readonly, copy, nonatomic) NSString *copyDiagnosticInformation;
+- (void)scheduleRecurringActivity;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 dataSource:(id)arg2 reasonProvider:(id)arg3;
 @property(readonly) unsigned long long signpostID;

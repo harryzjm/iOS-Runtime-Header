@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXSelectionSnapshot;
+@class PXSectionedSelectionManager, PXSelectionSnapshot;
 
 @interface PXAssetActionPerformer
 {
     PXSelectionSnapshot *_selectionSnapshot;
+    PXSectionedSelectionManager *_selectionManager;
 }
 
-@property(retain, nonatomic) PXSelectionSnapshot *selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
+@property(retain, nonatomic) PXSelectionSnapshot *selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
 
 @end
 

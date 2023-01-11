@@ -6,47 +6,77 @@
 
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSMutableArray, NSString, NUIContainerStackView, TLKRichTextField, TLKTextButton, TLKTitleContainerView;
+@class NSArray, NSMutableArray, NSString, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKLabel, TLKRichText, TLKRichTextField, TLKStackView, TLKTextButton, TLKTitleContainerView;
 @protocol TLKTextAreaViewDelegate;
 
 @interface TLKTextAreaView <TLKTextAreaViewTesting>
 {
+    _Bool _truncateTitleMiddle;
+    _Bool _secondaryTitleIsDetached;
+    _Bool _useCompactMode;
     _Bool _disableAllObservers;
     id <TLKTextAreaViewDelegate> _buttonDelegate;
+    TLKRichText *_bannerText;
+    TLKRichText *_title;
+    TLKRichText *_secondaryTitle;
+    TLKImage *_secondaryTitleImage;
+    NSArray *_detailTexts;
+    TLKRichText *_footnote;
+    NSString *_footnoteButtonText;
+    TLKEmbossedLabel *_bannerBadgeView;
     TLKTitleContainerView *_titleContainer;
+    NUIContainerStackView *_detailFieldStackView;
     NSMutableArray *_detailsFields;
+    NSMutableArray *_bulletFields;
+    TLKLabel *_hyphenField;
     TLKRichTextField *_footnoteLabel;
     TLKTextButton *_footnoteButton;
     NUIContainerStackView *_footnoteContainer;
 }
 
 + (id)footNoteLabelFont;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool disableAllObservers; // @synthesize disableAllObservers=_disableAllObservers;
 @property(retain, nonatomic) NUIContainerStackView *footnoteContainer; // @synthesize footnoteContainer=_footnoteContainer;
 @property(retain, nonatomic) TLKTextButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
 @property(retain, nonatomic) TLKRichTextField *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
+@property(retain, nonatomic) TLKLabel *hyphenField; // @synthesize hyphenField=_hyphenField;
+@property(retain, nonatomic) NSMutableArray *bulletFields; // @synthesize bulletFields=_bulletFields;
 @property(retain, nonatomic) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
+@property(retain, nonatomic) NUIContainerStackView *detailFieldStackView; // @synthesize detailFieldStackView=_detailFieldStackView;
 @property(retain, nonatomic) TLKTitleContainerView *titleContainer; // @synthesize titleContainer=_titleContainer;
+@property(retain, nonatomic) TLKEmbossedLabel *bannerBadgeView; // @synthesize bannerBadgeView=_bannerBadgeView;
+@property(nonatomic) _Bool useCompactMode; // @synthesize useCompactMode=_useCompactMode;
+@property(retain, nonatomic) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
+@property(retain, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
+@property(retain, nonatomic) NSArray *detailTexts; // @synthesize detailTexts=_detailTexts;
+@property(nonatomic) _Bool secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
+@property(retain, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
+@property(retain, nonatomic) TLKRichText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
+@property(nonatomic) _Bool truncateTitleMiddle; // @synthesize truncateTitleMiddle=_truncateTitleMiddle;
+@property(retain, nonatomic) TLKRichText *title; // @synthesize title=_title;
+@property(retain, nonatomic) TLKRichText *bannerText; // @synthesize bannerText=_bannerText;
 @property __weak id <TLKTextAreaViewDelegate> buttonDelegate; // @synthesize buttonDelegate=_buttonDelegate;
-- (void).cxx_destruct;
 - (id)footnoteLabelString;
 - (id)secondaryTitleLabelString;
 - (id)titleLabelString;
-- (id)textAreaLabelStrings;
+- (id)detailsStrings;
 - (id)detailsViews;
 - (id)titleView;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (_Bool)noFootNote;
 - (_Bool)noRichTextFields;
-- (void)updateFootnote:(id)arg1 buttonText:(id)arg2;
+- (void)updateFootnote;
 - (void)internalTextFieldsInBatchUpdate:(_Bool)arg1;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
-- (void)updateDetails:(id)arg1;
-- (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(_Bool)arg4;
-- (id)init;
+- (void)updateDetails;
+- (void)updateBannerBadge;
+- (void)propertiesDidChange;
+- (id)setupContentView;
 
 // Remaining properties
+@property(retain, nonatomic) TLKStackView *contentView; // @dynamic contentView;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

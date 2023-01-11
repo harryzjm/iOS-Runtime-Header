@@ -7,12 +7,9 @@
 #import <TextInputCore/NSObject-Protocol.h>
 
 @class TITypingSession, TITypingSessionAligned;
-@protocol TIUserModeling;
 
 @protocol TITypingSessionAnalyzing <NSObject>
-@property(retain, nonatomic) TITypingSessionAligned *lastAlignmentAnalyzed;
-@property(retain, nonatomic) TITypingSession *lastSessionAnalyzed;
-@property(retain, nonatomic) id <TIUserModeling> userModel;
-- (_Bool)analyze:(TITypingSession *)arg1 alignedSession:(TITypingSessionAligned *)arg2;
+- (_Bool)analyzeSession:(TITypingSession *)arg1 alignedSession:(TITypingSessionAligned *)arg2 withConfidence:(unsigned long long)arg3;
+- (unsigned long long)evaluateConfidenceInSession:(TITypingSession *)arg1 alignedSession:(TITypingSessionAligned *)arg2;
 @end
 

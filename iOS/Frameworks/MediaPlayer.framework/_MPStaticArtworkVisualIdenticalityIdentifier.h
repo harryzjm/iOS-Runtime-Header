@@ -10,13 +10,16 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPStaticArtworkVisualIdenticalityIdentifier : NSObject <MPArtworkDataSourceVisualIdenticality>
 {
-    NSString *_artworkIdentifier;
+    NSString *_imageArtworkIdentifier;
+    NSString *_videoArtworkIdentifier;
 }
 
-@property(copy, nonatomic) NSString *artworkIdentifier; // @synthesize artworkIdentifier=_artworkIdentifier;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *videoArtworkIdentifier; // @synthesize videoArtworkIdentifier=_videoArtworkIdentifier;
+@property(copy, nonatomic) NSString *imageArtworkIdentifier; // @synthesize imageArtworkIdentifier=_imageArtworkIdentifier;
 - (id)stringRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

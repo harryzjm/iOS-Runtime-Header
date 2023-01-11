@@ -20,10 +20,10 @@
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 @property(nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
 @property(readonly, nonatomic) CoreTelephonyClient *telephonyClient; // @synthesize telephonyClient=_telephonyClient;
-- (void).cxx_destruct;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
 - (void)subscriptionInfoDidChange;
 - (id)systemCapabilitiesForSubscriptionContext:(id)arg1 error:(id *)arg2;
@@ -40,6 +40,7 @@
 @property(retain, nonatomic) CTXPCServiceSubscriptionInfo *subscriptionInfo; // @synthesize subscriptionInfo=_subscriptionInfo;
 @property(copy, nonatomic) NSOrderedSet *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property(copy, nonatomic) NSOrderedSet *activeSubscriptions; // @synthesize activeSubscriptions=_activeSubscriptions;
+- (_Bool)isSubscriptionOrderedSet:(id)arg1 equivalentToSubscriptionOrderedSet:(id)arg2;
 - (id)init;
 
 // Remaining properties

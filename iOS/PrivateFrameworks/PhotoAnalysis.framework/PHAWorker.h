@@ -27,10 +27,10 @@
 + (_Bool)runsExclusively;
 + (short)workerType;
 + (long long)applicationDataFolderIdentifier;
+- (void).cxx_destruct;
 @property(retain) PHAServiceCancelableOperation *currentOperation; // @synthesize currentOperation=_currentOperation;
 @property(retain, nonatomic) id <PHAAssetResourceDataLoading> dataLoader; // @synthesize dataLoader=_dataLoader;
 @property(nonatomic, getter=isWarmedUp) _Bool warmedUp; // @synthesize warmedUp=_warmedUp;
-- (void).cxx_destruct;
 - (void)pingWorkerWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 @property(readonly, getter=isQuiescent) _Bool quiescent;
 - (_Bool)canRunWhenGraphIsLoaded;
@@ -43,7 +43,7 @@
 - (void)operationWillStart:(id)arg1;
 - (void)shutdown;
 - (void)cooldown;
-- (void)warmup;
+- (void)warmupWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)startup;
 - (id)libraryScopedWorkerPreferencesURL;
 - (void)setLibraryScopedWorkerPreferencesValue:(id)arg1 forKey:(id)arg2;

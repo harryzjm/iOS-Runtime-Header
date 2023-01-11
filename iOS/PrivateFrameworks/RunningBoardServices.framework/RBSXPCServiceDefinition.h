@@ -6,36 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface RBSXPCServiceDefinition : NSObject <BSXPCSecureCoding, NSSecureCoding>
+@interface RBSXPCServiceDefinition : NSObject <RBSXPCSecureCoding, NSSecureCoding>
 {
     NSString *_identifier;
     long long _variant;
     long long _scope;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (_Bool)supportsSecureCoding;
 + (id)definitionWithIdentifier:(id)arg1 variant:(long long)arg2 scope:(long long)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long scope; // @synthesize scope=_scope;
 @property(readonly, nonatomic) long long variant; // @synthesize variant=_variant;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

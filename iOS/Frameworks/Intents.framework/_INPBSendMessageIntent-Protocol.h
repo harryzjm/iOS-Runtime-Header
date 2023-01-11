@@ -19,8 +19,8 @@
 @property(retain, nonatomic) _INPBContact *sender;
 @property(readonly, nonatomic) unsigned long long recipientsCount;
 @property(copy, nonatomic) NSArray *recipients;
-@property(nonatomic) _Bool hasMessageType;
-@property(nonatomic) int messageType;
+@property(nonatomic) _Bool hasOutgoingMessageType;
+@property(nonatomic) int outgoingMessageType;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property(readonly, nonatomic) _Bool hasGroupName;
@@ -36,8 +36,8 @@
 - (_INPBContact *)recipientAtIndex:(unsigned long long)arg1;
 - (void)addRecipient:(_INPBContact *)arg1;
 - (void)clearRecipients;
-- (int)StringAsMessageType:(NSString *)arg1;
-- (NSString *)messageTypeAsString:(int)arg1;
+- (int)StringAsOutgoingMessageType:(NSString *)arg1;
+- (NSString *)outgoingMessageTypeAsString:(int)arg1;
 - (int)StringAsEffect:(NSString *)arg1;
 - (NSString *)effectAsString:(int)arg1;
 - (_INPBSendMessageAttachment *)attachmentsAtIndex:(unsigned long long)arg1;

@@ -8,41 +8,43 @@
 
 #import <PersonalizationPortraitInternals/PPFeedbackProcessing-Protocol.h>
 
-@class PPLocalTopicStore, PPM2FeedbackPortraitRegistered, PPMFeedbackRegistered, PPMNamedEntitiesDonation, PPMObjectsDeletion, PPNamedEntityStorage, _PASLock, _PASNotificationToken;
+@class NSCache, NSObject, PPLocalContactStore, PPLocalTopicStore, PPNamedEntityStorage, PPTrialWrapper, _PASLock;
+@protocol OS_dispatch_queue;
 
 @interface PPLocalNamedEntityStore : PPNamedEntityStore <PPFeedbackProcessing>
 {
     _PASLock *_lock;
     PPLocalTopicStore *_topicStoreForNamedEntityMapping;
+    PPLocalContactStore *_contactStoreForMapsFeedback;
     _Atomic _Bool _isCacheInvalidated;
-    int _bundleIdBlacklistNotificationToken;
-    _PASNotificationToken *_assetUpdateNotificationToken;
-    PPMNamedEntitiesDonation *_donationTracker;
-    PPMObjectsDeletion *_deletionTracker;
-    PPMFeedbackRegistered *_feedbackTracker;
-    PPM2FeedbackPortraitRegistered *_feedbackTracker2;
+    int _bundleIdBlocklistNotificationToken;
+    NSObject<OS_dispatch_queue> *_mapsPrefetchQueue;
+    NSCache *_modelCache;
+    PPTrialWrapper *_trialWrapper;
     PPNamedEntityStorage *_storage;
 }
 
-+ (_Bool)_yesWithProbability:(double)arg1;
-+ (id)ppFeedbackItemToPPPBFeedbackItem:(id)arg1;
-+ (float)resolvedPerRecordDecayRateForRecord:(id)arg1 perRecordDecayRate:(float)arg2;
++ (float)resolvedPerRecordDecayRateForFeatureProvider:(id)arg1 perRecordDecayRate:(float)arg2;
 + (id)recordsForNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3;
-+ (void)_filterBlacklistedNamedEntityRecords:(id)arg1;
-+ (id)_loadScoreInterpreter;
 + (void)sortAndTruncate:(id)arg1 queryLimit:(unsigned long long)arg2;
-+ (struct PPScoredItem *)scoredEntityFromRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4 sourceStats:(id)arg5 scoreInterpreter:(id)arg6;
-+ (id)_aggregateRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4;
 + (id)defaultStore;
-@property(readonly, nonatomic) PPNamedEntityStorage *storage; // @synthesize storage=_storage;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PPNamedEntityStorage *storage; // @synthesize storage=_storage;
 - (id)_mapsSearchQueryResultWithError:(id *)arg1;
 - (void)_registerMapsQueryPrefetching;
-- (id)getScoredNamedEntityFeaturesWithNamedEntity:(id)arg1 excludingSourceBundleId:(id)arg2 decayRate:(double)arg3 error:(id *)arg4 strictFiltering:(_Bool)arg5 scoreInterpreter:(id)arg6;
+- (id)_getScoredNamedEntityFeaturesForCoreMLFromIdentifier:(id)arg1 excludingSourceBundleId:(id)arg2 decayedFeedbackCounts:(id)arg3 featurizer:(id)arg4 error:(id *)arg5;
+- (id)getScoredNamedEntityFeaturesWithNamedEntity:(id)arg1 excludingSourceBundleId:(id)arg2 decayRate:(double)arg3 error:(id *)arg4;
+- (id)getScoredNamedEntityFeaturesWithNamedEntity:(id)arg1 scoringDate:(id)arg2 excludingSourceBundleId:(id)arg3 decayRate:(double)arg4 error:(id *)arg5 strictFiltering:(_Bool)arg6 scoreInterpreter:(id)arg7;
 - (_Bool)_logFeedbackSessionsWithFeedback:(id)arg1 error:(id *)arg2;
+- (id)_getScoredItemWithFeaturesWithNamedEntity:(id)arg1 featureRedactor:(id)arg2 excludingSourceBundleId:(id)arg3 error:(id *)arg4;
+- (id)_getScoredItemWithFeaturesWithNamedEntity:(id)arg1 scoringDate:(id)arg2 excludingSourceBundleId:(id)arg3 scoreInterpreter:(id)arg4 error:(id *)arg5;
+- (_Bool)_extractDonationsForFeedback:(id)arg1 pbFeedbackLog:(id)arg2 namedEntity:(id)arg3 error:(id *)arg4;
+- (_Bool)filterExistingNamedEntitiesWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (id)_feedbackItemToNamedEntityMapForFeedback:(id)arg1 error:(id *)arg2;
 - (id)namedEntityToMatchedStringMappingForNamedEntities:(id)arg1 timestamp:(double)arg2 error:(id *)arg3;
-- (void)processFeedback:(id)arg1;
+- (void)processfeedbackItems:(id)arg1 scoringDate:(id)arg2 clientIdentifier:(id)arg3 clientBundleId:(id)arg4 mappingId:(id)arg5;
+- (id)_feedbackItemsByItemString:(id)arg1;
+- (id)_convertMapsContactFeedback:(id)arg1;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)disableSyncForBundleIds:(id)arg1;
 - (_Bool)donateLocationNamedEntities:(id)arg1 bundleId:(id)arg2 groupId:(id)arg3 error:(id *)arg4;
@@ -53,6 +55,8 @@
 - (_Bool)removeMapItemForPlaceName:(id)arg1 error:(id *)arg2;
 - (id)mapItemForPlaceName:(id)arg1 error:(id *)arg2;
 - (_Bool)donateMapItem:(id)arg1 forPlaceName:(id)arg2 error:(id *)arg3;
+- (_Bool)pruneOrphanedNamedEntityFeedbackCountsWithLimit:(long long)arg1 rowOffset:(unsigned long long)arg2 deletedCount:(unsigned long long *)arg3 isComplete:(_Bool *)arg4;
+- (_Bool)deleteAllNamedEntityFeedbackCountsOlderThanDate:(id)arg1;
 - (_Bool)deleteAllNamedEntitiesOlderThanDate:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
 - (_Bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThan:(id)arg3 deletedCount:(unsigned long long *)arg4 error:(id *)arg5;
 - (_Bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
@@ -63,13 +67,17 @@
 - (_Bool)_donateTopicsFromEntities:(id)arg1 source:(id)arg2 cloudSync:(_Bool)arg3 sentimentScore:(double)arg4 error:(id *)arg5;
 - (id)_filterOutInvalidNamesFromEntities:(id)arg1;
 - (_Bool)_shouldSuppressRepeatedImpressions:(id)arg1;
-- (id)_filterBlacklistedScoredNamedEntities:(id)arg1;
 - (id)_coalesceScoredNamedEntities:(id)arg1;
+- (id)_loadScoringMLModel;
+- (_Bool)_shouldUseScoringMLModel;
+- (id)_loadScoreInterpreter;
 - (id)rankedNamedEntitiesWithQuery:(id)arg1 error:(id *)arg2 clientProcessName:(id)arg3;
 - (id)rankedNamedEntitiesWithQuery:(id)arg1 error:(id *)arg2;
 - (void)_petLoggingForQuery:(id)arg1 resultCount:(unsigned long long)arg2 clientProcessName:(id)arg3 hasError:(_Bool)arg4;
 - (_Bool)_unlimitedNamedEntityRecordsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
-- (id)sourceStatsExcludedAlgorithms:(id)arg1;
+- (id)scoredEntityFromRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4 sourceStats:(id)arg5 decayedFeedbackCounts:(id)arg6 scoreInterpreter:(id)arg7 streamingScorer:(id *)arg8 mlModel:(id)arg9;
+- (id)_defaultScoredEntityFromRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4 sourceStats:(id)arg5 decayedFeedbackCounts:(id)arg6 scoreInterpreter:(id)arg7 streamingScorer:(id *)arg8;
+- (double)finalScoreFromRecordsUsingHybrid:(id)arg1 streamingScorer:(id)arg2 mlModel:(id)arg3;
 - (_Bool)iterRankedNamedEntitiesWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)monitorNamedEntityRecordChangesWithError:(id *)arg1 setup:(CDUnknownBlockType)arg2 handler:(CDUnknownBlockType)arg3 finish:(CDUnknownBlockType)arg4;
 - (id)namedEntityRecordsWithQuery:(id)arg1 error:(id *)arg2;
@@ -77,7 +85,7 @@
 - (_Bool)_shouldIgnoreHomeOrWorkAddress:(id)arg1;
 - (id)init;
 - (void)dealloc;
-- (id)initWithStorage:(id)arg1 topicStoreForNamedEntityMapping:(id)arg2;
+- (id)initWithStorage:(id)arg1 topicStoreForNamedEntityMapping:(id)arg2 contactStoreForMapsFeedback:(id)arg3 trialWrapper:(id)arg4;
 
 @end
 

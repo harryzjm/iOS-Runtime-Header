@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class WLKPlaybackReporter;
+@class VUIPostPlayConfig, WLKPlaybackReporter;
 
 @interface VUIPlaybackReporterUTS
 {
     WLKPlaybackReporter *_reporter;
+    VUIPostPlayConfig *_postPlayConfig;
 }
 
++ (void)_cachePlaybackResumeTime:(id)arg1 resumeTime:(id)arg2;
++ (_Bool)_shouldCacheResumeTimeForMediaType:(id)arg1;
 + (id)sharedInstance;
-@property(retain, nonatomic) WLKPlaybackReporter *reporter; // @synthesize reporter=_reporter;
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUIPostPlayConfig *postPlayConfig; // @synthesize postPlayConfig=_postPlayConfig;
+@property(retain, nonatomic) WLKPlaybackReporter *reporter; // @synthesize reporter=_reporter;
 - (id)_wlkPlaybackRateForState:(id)arg1 player:(id)arg2;
 - (long long)_wlkPlaybackStateForState:(id)arg1;
 - (void)_reportSummary:(id)arg1 sessionID:(id)arg2 completion:(CDUnknownBlockType)arg3;

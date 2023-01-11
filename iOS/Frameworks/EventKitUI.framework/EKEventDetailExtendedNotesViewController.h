@@ -15,12 +15,17 @@ __attribute__((visibility("hidden")))
 @interface EKEventDetailExtendedNotesViewController : UIViewController <EKEditItemViewControllerProtocol>
 {
     UITextView *_textView;
+    NSString *_notes;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *notes;
-- (id)_textView;
+@property(copy, nonatomic) NSString *notes; // @synthesize notes=_notes;
+- (void)updateTextView;
+- (void)loadTextView;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)_updateConstraints;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)viewDidLoad;
 - (void)loadView;
 - (id)init;
 

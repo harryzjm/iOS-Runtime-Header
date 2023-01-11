@@ -4,13 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, SignedLogHead;
+#import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@interface ConsistencyProofResponse_LogConsistencyResponse
+@class NSDictionary, NSMutableArray, NSNumber, SignedLogHead, TransparencyConsistencyProofVerifier, TransparencyManagedDataStore;
+
+@interface ConsistencyProofResponse_LogConsistencyResponse <TransparencyVerifiable>
 {
 }
 
 + (id)descriptor;
+- (unsigned long long)verifyWithError:(id *)arg1;
+- (void)setResult:(unsigned long long)arg1 treeHead:(id)arg2 error:(id)arg3;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
+- (void)setMetadata:(id)arg1;
+@property(readonly) NSDictionary *metadata;
+@property(retain) NSNumber *startRevision;
+@property(retain) TransparencyManagedDataStore *dataStore;
+@property(retain) TransparencyConsistencyProofVerifier *verifier;
 
 // Remaining properties
 @property(nonatomic) int application; // @dynamic application;

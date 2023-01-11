@@ -4,25 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBDismissSiriSwitcherModifier;
+
 @interface SBGridSwipeUpGestureSwitcherModifier
 {
     struct CGPoint _translation;
+    _Bool _isApplyingContentViewScaleToSwitcherViewBounds;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
 }
 
+- (void).cxx_destruct;
+- (void)_performBlockByApplyContentViewScaleToSwitcherViewBounds:(CDUnknownBlockType)arg1;
 - (void)_applyPrototypeSettings;
-- (long long)finalActionForGestureEvent:(id)arg1;
+- (long long)finalResponseForGestureEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
-- (struct _NSRange)fullSizeSnapshotsRange;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (long long)backdropBlurType;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (long long)homeScreenBackdropBlurType;
+- (id)visibleAppLayouts;
 - (double)contentViewScale;
+- (struct CGPoint)scrollViewContentOffset;
+- (struct CGRect)switcherViewBounds;
 - (void)didMoveToParentModifier:(id)arg1;
+- (id)initWithGestureID:(id)arg1;
 
 @end
 

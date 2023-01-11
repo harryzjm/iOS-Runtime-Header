@@ -6,38 +6,40 @@
 
 #import <objc/NSObject.h>
 
+#import <BaseBoard/BSDescriptionProviding-Protocol.h>
+
 @class NSBundle, NSString;
 
-@interface BSPluginBundle : NSObject
+@interface BSPluginBundle : NSObject <BSDescriptionProviding>
 {
-    NSString *_identifier;
     NSBundle *_bundle;
-    NSString *_name;
-    NSString *_type;
     NSString *_specifiedClassName;
     NSString *_requiredClassOrProtocolName;
+    NSString *_identifier;
+    NSString *_name;
+    NSString *_type;
     Class _principalClass;
 }
 
-+ (id)bundleWithPath:(id)arg1 availableSpecifications:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) Class principalClass; // @synthesize principalClass=_principalClass;
-@property(readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
-@property(copy, nonatomic) NSString *requiredClassOrProtocolName; // @synthesize requiredClassOrProtocolName=_requiredClassOrProtocolName;
-@property(copy, nonatomic) NSString *specifiedClassName; // @synthesize specifiedClassName=_specifiedClassName;
 @property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)loadPlugin:(CDUnknownBlockType)arg1;
 - (_Bool)loadPlugin;
-@property(readonly, nonatomic, getter=isLoaded) _Bool loaded; // @dynamic loaded;
-@property(readonly, nonatomic, getter=isValid) _Bool valid; // @dynamic valid;
-- (id)initWithBundle:(id)arg1;
+@property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
+@property(readonly, nonatomic, getter=isValid) _Bool valid;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

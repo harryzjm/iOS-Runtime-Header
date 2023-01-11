@@ -6,16 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray, NTKAltitudeColorCurve;
 
 @interface NTKSiderealColorManager : NSObject
 {
     NSMutableArray *_updateHandlers;
+    NTKAltitudeColorCurve *_dialBackground;
+    NSArray *_dayGradient;
+    NTKAltitudeColorCurve *_civilTwilight;
+    NTKAltitudeColorCurve *_nauticalTwilight;
+    NTKAltitudeColorCurve *_astronomicalTwilight;
+    NTKAltitudeColorCurve *_civilTwilightCurve_p3;
+    NTKAltitudeColorCurve *_nauticalTwilightCurve_p3;
+    NTKAltitudeColorCurve *_astronomicalTwilightCurve_p3;
+    NTKAltitudeColorCurve *_dialBackgroundCurve_p3;
+    NSArray *_dayGradientCurve_p3;
+    NTKAltitudeColorCurve *_innerComplication;
+    NTKAltitudeColorCurve *_outerComplication;
+    NTKAltitudeColorCurve *_dayDiskBloom;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)solarDiskGlowColorCurve;
+- (id)dayDiskBloomColorCurve;
 - (id)outerComplicationColorCurve;
 - (id)innerComplicationColorCurve;
 - (id)astronomicalTwilightColorCurve;
@@ -23,6 +36,12 @@
 - (id)civilTwilightColorCurve;
 - (id)dayGradientColorCurves;
 - (id)dialBackgroundColorCurve;
+- (id)dialBackgroundCurveP3;
+- (id)dayGradientCurveP3;
+- (id)astronomicalTwilightCurveP3;
+- (id)nauticalTwilightCurveP3;
+- (id)civilTwilightCurveP3;
+- (id)_createElementsFromDict:(id)arg1;
 - (void)_notifyHandlers;
 - (void)addColorUpdateHandler:(CDUnknownBlockType)arg1;
 - (void)setSunAltitude:(double)arg1;

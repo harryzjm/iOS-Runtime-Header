@@ -14,11 +14,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
-@property(copy, nonatomic, setter=_setSandboxExtensionData:) NSData *_sandboxExtensionData; // @synthesize _sandboxExtensionData;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)_setSandboxExtensionData:(id)arg1;
+- (id)_sandboxExtensionData;
 - (_Bool)_isSupportedForDonation;
 - (_Bool)_isEligibleForProxying;
 - (id)_initWithURLRepresentation:(id)arg1;

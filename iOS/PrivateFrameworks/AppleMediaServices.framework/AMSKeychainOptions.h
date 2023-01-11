@@ -13,6 +13,8 @@
 @interface AMSKeychainOptions : NSObject <NSCopying>
 {
     _Bool _regenerateKeys;
+    _Bool _authenticationFallbackVisible;
+    _Bool _displayAuthenticationReason;
     NSString *_clientCertLabel;
     NSString *_intermediateCertLabel;
     NSString *_label;
@@ -22,14 +24,16 @@
 }
 
 + (unsigned long long)preferredAttestationStyle;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property(nonatomic) _Bool displayAuthenticationReason; // @synthesize displayAuthenticationReason=_displayAuthenticationReason;
+@property(nonatomic) _Bool authenticationFallbackVisible; // @synthesize authenticationFallbackVisible=_authenticationFallbackVisible;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(nonatomic) _Bool regenerateKeys; // @synthesize regenerateKeys=_regenerateKeys;
 @property(nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *intermediateCertLabel; // @synthesize intermediateCertLabel=_intermediateCertLabel;
 @property(copy, nonatomic) NSString *clientCertLabel; // @synthesize clientCertLabel=_clientCertLabel;
-- (void).cxx_destruct;
 - (_Bool)_compareString:(id)arg1 withString:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

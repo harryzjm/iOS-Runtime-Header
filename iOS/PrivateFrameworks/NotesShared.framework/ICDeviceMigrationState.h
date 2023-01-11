@@ -12,12 +12,12 @@
 
 + (id)identifierForDeviceIdentifier:(id)arg1;
 + (id)stringFromMigrationState:(short)arg1;
-+ (id)allKnownDeviceMigrationStates;
++ (id)deviceMigrationStatesByAccountIDInContext:(id)arg1;
 + (id)allDeviceMigrationStatesInContext:(id)arg1;
-+ (id)currentDeviceMigrationStateCreateIfNecessary:(_Bool)arg1 context:(id)arg2;
-+ (id)currentDeviceMigrationStateCreateIfNecessary:(_Bool)arg1;
-+ (id)currentDeviceMigrationState;
++ (id)currentDeviceMigrationStateForAccount:(id)arg1 createIfNecessary:(_Bool)arg2;
++ (id)currentDeviceMigrationStateForAccount:(id)arg1;
 + (id)newDeviceMigrationStateWithDeviceIdentifier:(id)arg1 account:(id)arg2;
++ (id)deviceMigrationStateWithDeviceIdentifier:(id)arg1 account:(id)arg2;
 + (id)deviceMigrationStateWithDeviceIdentifier:(id)arg1 context:(id)arg2;
 + (id)deviceMigrationStatesMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;

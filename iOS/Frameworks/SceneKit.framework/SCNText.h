@@ -40,6 +40,7 @@
 @property(copy, nonatomic) NSString *truncationMode;
 @property(nonatomic) struct CGRect containerFrame;
 @property(retain, nonatomic) UIFont *font;
+- (id)patchFont:(id)arg1;
 @property(nonatomic, getter=isWrapped) _Bool wrapped;
 @property(copy, nonatomic) id string;
 - (void)setPrimitiveType:(long long)arg1;

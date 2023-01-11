@@ -9,12 +9,14 @@
 @interface _CUTStaticPromise
 {
     CUTResult *_result;
+    _Bool _safe;
 }
 
-@property(retain, nonatomic) CUTResult *result; // @synthesize result=_result;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CUTResult *result; // @synthesize result=_result;
+- (id)then:(CDUnknownBlockType)arg1;
 - (void)registerResultBlock:(CDUnknownBlockType)arg1;
-- (id)initWithResult:(id)arg1;
+- (id)initWithResult:(id)arg1 safe:(_Bool)arg2;
 
 @end
 

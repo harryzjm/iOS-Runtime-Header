@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PHPerson, PXOneUpPresentation, PXPeopleSuggestionDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UILabel, UIView;
-@protocol PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPeopleCandidateWidget : NSObject <PXChangeObserver, PXUIWidget>
 {
@@ -27,6 +27,7 @@
     NSLayoutConstraint *_notNowToTrailingConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *notNowToTrailingConstraint; // @synthesize notNowToTrailingConstraint=_notNowToTrailingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *avatarToLeadingConstraint; // @synthesize avatarToLeadingConstraint=_avatarToLeadingConstraint;
 @property(nonatomic) __weak UIButton *notNowButton; // @synthesize notNowButton=_notNowButton;
@@ -38,7 +39,6 @@
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
 @property(retain, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (void)_updateAndSetDescriptionFont;
 - (void)_dismissWithAnimation:(_Bool)arg1;
 - (void)_suggestionsDidFinish:(id)arg1;
@@ -59,15 +59,19 @@
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
+@property(readonly, nonatomic) _Bool cursorInteractionEnabled;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(retain, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
@@ -75,6 +79,8 @@
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

@@ -18,11 +18,12 @@
     NSUUID *_replicaID;
 }
 
++ (id)resolutionTokenWithJSONObject:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *replicaID; // @synthesize replicaID=_replicaID;
 @property(nonatomic) double modificationTime; // @synthesize modificationTime=_modificationTime;
 @property(nonatomic) long long counter; // @synthesize counter=_counter;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (long long)compare:(id)arg1;

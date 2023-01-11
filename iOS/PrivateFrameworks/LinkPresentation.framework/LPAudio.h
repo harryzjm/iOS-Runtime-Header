@@ -24,10 +24,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *MIMEType; // @synthesize MIMEType=_MIMEType;
 @property(readonly, retain, nonatomic) NSURL *streamingURL; // @synthesize streamingURL=_streamingURL;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-- (void).cxx_destruct;
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 @property(readonly, nonatomic) AVAsset *_asset; // @synthesize _asset;
 - (_Bool)_shouldEncodeData;
@@ -35,6 +35,7 @@
 @property(readonly, copy, nonatomic) LPAudioProperties *properties;
 @property(readonly, copy, nonatomic) NSData *data;
 @property(readonly, nonatomic) unsigned long long _encodedSize;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStreamingURL:(id)arg1 properties:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSAttributedString, NSDictionary, NSString;
 
 @interface ICTextStyle : NSObject
 {
@@ -33,12 +33,13 @@
 + (id)headingStyle;
 + (id)titleStyle;
 + (id)defaultTextStyles;
+- (void).cxx_destruct;
 @property unsigned int ttStyle; // @synthesize ttStyle=_ttStyle;
 @property(retain) NSString *name; // @synthesize name=_name;
 @property(retain) NSDictionary *attributes; // @synthesize attributes=_attributes;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *icaxStyleDescription;
 @property(readonly) _Bool isTextList;
+@property(readonly, copy, nonatomic) NSAttributedString *attributedName;
 
 @end
 

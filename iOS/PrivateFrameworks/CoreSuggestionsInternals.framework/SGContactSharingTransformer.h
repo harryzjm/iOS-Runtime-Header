@@ -15,20 +15,20 @@
     struct {
         unsigned long long s[2];
     } _rng;
-    NSString *_targetMapping;
     NSString *_language;
+    long long _windowLength;
 }
 
-@property(retain) NSString *language; // @synthesize language=_language;
-@property(retain) NSString *targetMapping; // @synthesize targetMapping=_targetMapping;
 - (void).cxx_destruct;
+@property long long windowLength; // @synthesize windowLength=_windowLength;
+@property(retain) NSString *language; // @synthesize language=_language;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToContactSharingTransformer:(id)arg1;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
 - (id)transform:(id)arg1;
-- (id)initWithTargetMapping:(id)arg1 language:(id)arg2;
+- (id)initWithLanguage:(id)arg1 windowLength:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

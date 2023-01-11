@@ -27,6 +27,9 @@
 - (void)clearManifestDataForBundleIdentifier:(id)arg1;
 - (void)persistManifestData:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)_storeForBundleIdentifier:(id)arg1;
+- (void)_removeBundleIdentifierFromLaunchInterfaceDenyList:(id)arg1;
+- (void)_addBundleIdentifierToLaunchInterfaceDenyList:(id)arg1;
+- (_Bool)_bundleIdentifierHasDeniedLaunchInterface:(id)arg1;
 - (id)_loadCompatibilityInfoForBundleIdentifier:(id)arg1;
 - (void)_clearCompatibilityInfoForBundleIdentifier:(id)arg1;
 - (void)_persistCompatibilityInfo:(id)arg1 forBundleIdentifier:(id)arg2;

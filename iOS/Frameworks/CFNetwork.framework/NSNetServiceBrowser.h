@@ -23,7 +23,6 @@
 - (void)stop;
 - (void)searchForServicesOfType:(id)arg1 inDomain:(id)arg2;
 - (void)_setIncludesAWDL:(_Bool)arg1;
-- (_Bool)_includesAWDL;
 - (void)searchForRegistrationDomains;
 - (void)searchForBrowsableDomains;
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;

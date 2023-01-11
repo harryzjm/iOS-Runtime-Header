@@ -7,35 +7,25 @@
 #import <UIKit/UIView.h>
 
 #import <ReplayKit/NSCoding-Protocol.h>
-#import <ReplayKit/RPSystemBroadcastPickerViewControllerDelegate-Protocol.h>
 
-@class NSString, RPBroadcastPickerStandaloneViewController, UIButton;
+@class NSString, UIButton;
 
-@interface RPSystemBroadcastPickerView : UIView <RPSystemBroadcastPickerViewControllerDelegate, NSCoding>
+@interface RPSystemBroadcastPickerView : UIView <NSCoding>
 {
     _Bool _showsMicrophoneButton;
     NSString *_preferredExtension;
-    RPBroadcastPickerStandaloneViewController *_broadcastPickerViewController;
     UIButton *_broadcastPickerButton;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIButton *broadcastPickerButton; // @synthesize broadcastPickerButton=_broadcastPickerButton;
-@property(retain, nonatomic) RPBroadcastPickerStandaloneViewController *broadcastPickerViewController; // @synthesize broadcastPickerViewController=_broadcastPickerViewController;
 @property(nonatomic) _Bool showsMicrophoneButton; // @synthesize showsMicrophoneButton=_showsMicrophoneButton;
 @property(retain, nonatomic) NSString *preferredExtension; // @synthesize preferredExtension=_preferredExtension;
-- (void).cxx_destruct;
-- (void)viewControllerDidFinish;
 - (void)buttonPressed:(id)arg1;
 - (void)screenCaptureChanged;
 - (void)addBroadcastPickerButton;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

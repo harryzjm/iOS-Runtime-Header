@@ -14,16 +14,19 @@
 }
 
 + (id)sharedInstance;
-@property(retain) NSSet *managedCellDataAppCache; // @synthesize managedCellDataAppCache=_managedCellDataAppCache;
 - (void).cxx_destruct;
+@property(retain) NSSet *managedCellDataAppCache; // @synthesize managedCellDataAppCache=_managedCellDataAppCache;
 - (_Bool)isManaged:(id)arg1;
 @property(readonly, nonatomic) _Bool hasManagedCellularData;
 - (id)managedCellDataAppBundleIDs;
 - (id)managedAppBundleIDs;
 @property(readonly, nonatomic) NSString *mdmName;
 @property(readonly, nonatomic) _Bool isGlobalDataModificationRestricted;
-- (id)init;
+- (void)managedConfigurationProfileListDidChange;
+- (void)managedConfigurationSettingsDidChange;
 - (void)willEnterForeground;
+- (void)clearCache;
+- (id)init;
 - (id)initPrivate;
 
 @end

@@ -7,13 +7,14 @@
 #import <HomeUI/HUCameraSettingsModule-Protocol.h>
 #import <HomeUI/ICQUpgradeFlowManagerDelegate-Protocol.h>
 
-@class HFItem, HFStaticItemProvider, HUCameraUsageOptionItemProvider, NSArray, NSSet, NSString, UIViewController;
+@class HFItem, HFStaticItemProvider, HMHome, HUCameraUsageOptionItemProvider, NSArray, NSSet, NSString, UIViewController;
 
 @interface HUCameraPresenceRecordingSettingsModule <ICQUpgradeFlowManagerDelegate, HUCameraSettingsModule>
 {
     _Bool _didCompleteCloudUpgradeOffer;
     NSSet *_itemProviders;
     HFItem *_showOptionsItem;
+    NSString *_longestCameraUsageOptionItemTitle;
     NSSet *_cameraProfiles;
     unsigned long long _presenceEventType;
     UIViewController *_presentingViewController;
@@ -21,8 +22,17 @@
     HFStaticItemProvider *_itemProvider;
     UIViewController *_viewController;
     NSArray *_optionItems;
+    unsigned long long _upgradeState;
+    unsigned long long _offerState;
+    unsigned long long _numCamerasSupportRecordingService;
+    HMHome *_home;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
+@property(nonatomic) unsigned long long numCamerasSupportRecordingService; // @synthesize numCamerasSupportRecordingService=_numCamerasSupportRecordingService;
+@property(nonatomic) unsigned long long offerState; // @synthesize offerState=_offerState;
+@property(nonatomic) unsigned long long upgradeState; // @synthesize upgradeState=_upgradeState;
 @property(nonatomic) _Bool didCompleteCloudUpgradeOffer; // @synthesize didCompleteCloudUpgradeOffer=_didCompleteCloudUpgradeOffer;
 @property(retain, nonatomic) NSArray *optionItems; // @synthesize optionItems=_optionItems;
 @property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
@@ -32,19 +42,23 @@
 @property(readonly, nonatomic) unsigned long long presenceEventType; // @synthesize presenceEventType=_presenceEventType;
 @property(readonly, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
 - (id)showOptionsItem;
-- (void).cxx_destruct;
+- (void)sendCAMetricInfo;
+- (unsigned long long)countCameraProfilesWithRecordingService;
 - (void)upgradeFlowManagerDidComplete:(id)arg1;
 - (void)upgradeFlowManagerDidCancel:(id)arg1;
+@property(readonly, nonatomic) NSString *longestCameraUsageOptionItemTitle; // @synthesize longestCameraUsageOptionItemTitle=_longestCameraUsageOptionItemTitle;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (void)_buildItemProvider;
 - (id)itemProviders;
 - (id)didSelectItem:(id)arg1;
 - (id)_titleString;
 - (void)_dispatchUpdateForCameraProfile:(id)arg1;
+- (void)_clearItemsUpdating;
 - (void)presentMissingSupportedHubAlert;
+- (void)presentGenericError;
 - (void)presentInsufficientPrivilegesAlert;
 - (void)presentCloudUpgradeFlowWithCameraCount:(unsigned long long)arg1;
-- (id)updateStreamingSetting:(unsigned long long)arg1;
+- (id)updateStreamingSetting:(unsigned long long)arg1 isRetry:(_Bool)arg2;
 @property(readonly, nonatomic) unsigned long long accessModeSetting;
 - (_Bool)isItemHeader:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1;

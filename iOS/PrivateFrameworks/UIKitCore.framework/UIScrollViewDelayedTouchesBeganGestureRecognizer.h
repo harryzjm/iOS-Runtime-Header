@@ -23,6 +23,7 @@
 - (void)_resetGestureRecognizer;
 - (void)dealloc;
 - (void)sendDelayedTouches;
+- (_Bool)_shouldMakeTimerForDelayedContentTouches:(id)arg1;
 - (void)sendTouchesShouldBeginForDelayedTouches:(id)arg1;
 - (void)sendTouchesShouldBeginForTouches:(id)arg1 withEvent:(id)arg2;
 - (void)clearTimer;

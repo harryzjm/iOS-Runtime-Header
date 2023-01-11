@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     int _pendingImageRequest;
     PHPhotoLibrary *_photoLibrary;
     PHFetchResult *_keyAssetFetch;
+    PHFetchResult *_anyAssetFetch;
     LPApplePhotosMomentMetadata *_metadata;
 }
 
@@ -22,7 +23,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)specialization;
 - (void).cxx_destruct;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)didFetchKeyAsset:(id)arg1;
+- (void)didFetchAsset:(id)arg1;
 - (void)completeWithMetadata:(id)arg1;
 - (void)fail;
 - (void)cancel;

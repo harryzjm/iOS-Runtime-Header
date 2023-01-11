@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class BKSProcessAssertion, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface PXPowerController : NSObject
@@ -16,20 +16,25 @@
     unsigned int _assertionID;
     NSMutableDictionary *_assertionReasonsByIdentifier;
     NSObject<OS_dispatch_queue> *_powerControllerQueue;
-    unsigned long long _backgroundTaskIdentifier;
+    BKSProcessAssertion *_backgroundProcessAssertion;
     double _powerAssertionStartTime;
 }
 
 + (id)sharedController;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isBackgrounded) _Bool backgrounded; // @synthesize backgrounded=_backgrounded;
 @property(nonatomic) double powerAssertionStartTime; // @synthesize powerAssertionStartTime=_powerAssertionStartTime;
 @property(nonatomic) unsigned int assertionID; // @synthesize assertionID=_assertionID;
-@property(nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
+@property(retain, nonatomic) BKSProcessAssertion *backgroundProcessAssertion; // @synthesize backgroundProcessAssertion=_backgroundProcessAssertion;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *powerControllerQueue; // @synthesize powerControllerQueue=_powerControllerQueue;
 @property(readonly, nonatomic) NSMutableDictionary *assertionReasonsByIdentifier; // @synthesize assertionReasonsByIdentifier=_assertionReasonsByIdentifier;
-- (void).cxx_destruct;
-- (void)startBackgroundTaskIfNeeded;
-- (void)endBackgroundTaskIfNeeded;
+@property(readonly, nonatomic) _Bool hasBackgroundAssertion;
+- (void)acquireBackgroundAssertion;
+- (void)invalidateBackgroundAssertion;
+- (void)acquireBackgroundAssertionIfNeeded;
+- (void)invalidateBackgroundAssertionIfNeeded;
+- (void)handleEnteringBackground;
+- (void)handleEnteringForeground;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
 @property(readonly, nonatomic) _Bool hasPowerAssertion;

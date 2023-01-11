@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)canBecomeFocused;
 - (id)accessibilityUserInputLabels;
+- (_Bool)_accessibilityRetainsFocusOnScreenChange;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (_Bool)accessibilityActivate;
@@ -21,6 +22,7 @@
 - (_Bool)isAccessibilityElement;
 - (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)accessibilityPath;
 - (struct CGRect)accessibilityFrame;
 - (void)setCurrentPage:(long long)arg1;
 - (void)_accessibilityCurrentPageDidChange;

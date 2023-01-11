@@ -10,6 +10,7 @@
 
 @class MPSectionedIdentifierList, NSArray, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPIdentifierListSectionProxy : NSObject <MPMutableIdentifierListSection>
 {
     NSString *_sectionIdentifier;
@@ -17,13 +18,14 @@
     NSMutableArray *_mutableItemIdentifiers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *mutableItemIdentifiers; // @synthesize mutableItemIdentifiers=_mutableItemIdentifiers;
 @property(readonly, nonatomic) __weak MPSectionedIdentifierList *sectionedIdentifierList; // @synthesize sectionedIdentifierList=_sectionedIdentifierList;
 @property(readonly, copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
-- (void).cxx_destruct;
 - (void)applyChanges:(id)arg1 itemLookupBlock:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSArray *itemIdentifiers;
 - (void)updateItem:(id)arg1;
+- (void)updateSection;
 - (void)removeItem:(id)arg1;
 - (void)moveItemToTail:(id)arg1;
 - (void)moveItem:(id)arg1 afterItem:(id)arg2;

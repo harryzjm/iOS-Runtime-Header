@@ -10,6 +10,9 @@
 @protocol UIContentContainer, UISplitViewControllerDelegate, UITraitEnvironment, UIViewControllerTransitionCoordinator;
 
 @protocol UISplitViewControllerImpl <NSObject>
+@property(readonly, nonatomic) _Bool inCollapsingToProposedTopColumnCallback;
+@property(readonly, nonatomic) _Bool lockedForDelegateCallback;
+@property(readonly, nonatomic) long long style;
 @property(nonatomic) long long primaryBackgroundStyle;
 @property(nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) _Bool usesExtraWidePrimaryColumn;
 @property(copy, nonatomic, setter=_setDisplayModeButtonItemTitle:) NSString *_displayModeButtonItemTitle;
@@ -31,6 +34,7 @@
 - (void)decodeRestorableStateWithCoder:(NSCoder *)arg1;
 - (void)encodeRestorableStateWithCoder:(NSCoder *)arg1;
 - (NSArray *)_allContainedViewControllers;
+- (UIResponder *)_deepestUnambiguousResponder;
 - (_Bool)_disableAutomaticKeyboardBehavior;
 - (UIResponder *)_primaryContentResponder;
 - (void)_didChangeToFirstResponder:(UIResponder *)arg1;
@@ -47,6 +51,7 @@
 - (_Bool)_optsOutOfPopoverControllerHierarchyCheck;
 - (_Bool)_shouldPersistViewWhenCoding;
 - (struct CGRect)_frameForChildContentContainer:(id <UIContentContainer>)arg1;
+- (NSArray *)_multitaskingDragExclusionRects;
 - (void)_didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (void)_didEndSnapshotSession;
 - (void)_willBeginSnapshotSession;
@@ -81,6 +86,9 @@
 - (void)_popoverController:(UIPopoverController *)arg1 didChangeFromVisible:(_Bool)arg2;
 - (void)_popoverController:(UIPopoverController *)arg1 willChangeToVisible:(_Bool)arg2;
 - (struct CGSize)_contentSizeForChildViewController:(UIViewController *)arg1 inPopoverController:(UIPopoverController *)arg2;
+- (double)_supplementaryDividerPosition;
+- (double)_primaryDividerPosition;
+- (_Bool)_isAnimating;
 - (_Bool)_isRotating;
 - (UIViewController *)detailViewController;
 - (UIViewController *)masterViewController;

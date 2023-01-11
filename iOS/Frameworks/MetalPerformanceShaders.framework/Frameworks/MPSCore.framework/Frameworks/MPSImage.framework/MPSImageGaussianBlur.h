@@ -17,7 +17,7 @@
     float _scale;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) float sigma; // @synthesize sigma=_sigma;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

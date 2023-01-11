@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSIndexSet;
+@class NSDate, NSDictionary, NSIndexSet;
 
 @interface PGSuggestionOptions : NSObject
 {
@@ -17,6 +17,7 @@
     _Bool _ignoreCollisionsWithSameBatchSuggestions;
     _Bool _generatesInvalidSuggestions;
     _Bool _computesReasons;
+    _Bool _clearFeaturedSuggestions;
     NSDate *_localToday;
     NSDate *_universalStartDate;
     NSDate *_universalEndDate;
@@ -26,8 +27,12 @@
     NSIndexSet *_suggestionSubtypeWhitelist;
     NSIndexSet *_suggestionTypeBlacklist;
     NSIndexSet *_suggestionSubtypeBlacklist;
+    NSDictionary *_additionalOptions;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool clearFeaturedSuggestions; // @synthesize clearFeaturedSuggestions=_clearFeaturedSuggestions;
+@property(retain, nonatomic) NSDictionary *additionalOptions; // @synthesize additionalOptions=_additionalOptions;
 @property(nonatomic) _Bool computeReasons; // @synthesize computeReasons=_computesReasons;
 @property(nonatomic) _Bool generateInvalidSuggestions; // @synthesize generateInvalidSuggestions=_generatesInvalidSuggestions;
 @property(retain, nonatomic) NSIndexSet *suggestionSubtypeBlacklist; // @synthesize suggestionSubtypeBlacklist=_suggestionSubtypeBlacklist;
@@ -44,7 +49,8 @@
 @property(retain, nonatomic) NSDate *universalEndDate; // @synthesize universalEndDate=_universalEndDate;
 @property(retain, nonatomic) NSDate *universalStartDate; // @synthesize universalStartDate=_universalStartDate;
 @property(retain, nonatomic) NSDate *localToday; // @synthesize localToday=_localToday;
-- (void).cxx_destruct;
+- (void)setDefaultStartAndEndDatesIfNeededWithNumberOfDays:(long long)arg1;
+- (void)setDefaultStartAndEndDatesIfNeeded;
 - (id)init;
 
 @end

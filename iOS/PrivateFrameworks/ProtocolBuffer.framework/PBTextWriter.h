@@ -16,16 +16,7 @@
     NSMutableDictionary *_cachedObjectTypes;
 }
 
-- (_Bool)_write:(id)arg1;
 - (_Bool)write:(id)arg1;
-- (void)_writeResult:(id)arg1 forProperty:(id)arg2 bracePrefix:(id)arg3;
-- (void)_writePropertyAndValue:(id)arg1 forObject:(id)arg2;
-- (void)_printNewlines;
-- (void)_printLine:(_Bool)arg1 format:(id)arg2;
-- (void)_closeBrace;
-- (void)_openBrace;
-- (void)_outdent;
-- (void)_indent;
 - (void)reset;
 - (id)string;
 - (void)dealloc;

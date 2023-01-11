@@ -12,9 +12,9 @@
     NSDictionary *_route;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *route; // @synthesize route=_route;
 @property(readonly, copy, nonatomic) NSString *avAudioRouteName; // @synthesize avAudioRouteName=_avAudioRouteName;
-- (void).cxx_destruct;
 - (id)identifiersOfOtherConnectedDevices;
 - (_Bool)_routeTypeEqualTo:(id)arg1;
 @property(readonly, nonatomic, getter=isHeadphoneJackConnected) _Bool headphoneJackConnected;
@@ -36,6 +36,7 @@
 - (_Bool)isReceiver;
 - (_Bool)isHandset;
 - (_Bool)isCurrentlyPicked;
+- (id)customDescription;
 - (id)initWithDictionary:(id)arg1;
 
 @end

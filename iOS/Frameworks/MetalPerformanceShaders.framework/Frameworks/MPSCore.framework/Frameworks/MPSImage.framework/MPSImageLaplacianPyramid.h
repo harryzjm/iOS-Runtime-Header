@@ -13,7 +13,7 @@
     // Error: parsing type: '{DerivedState="padHeight"Q"padWidth"Q"h_WeightsRawFull"@"NSMutableData""h_WeightsRawHalf"@"NSMutableData""d_WeightsRawFull"@"<MTLBuffer>""d_WeightsRawHalf"@"<MTLBuffer>""linearScaleFull"{LinearScale<float>="offset"f"factor"f}"linearScaleHalf"{LinearScale<__fp16>="offset" "factor" }}', name: _derivedState
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (struct MPSRegion)sourceRegionForDestinationSize:(CDStruct_14f26992)arg1;
 - (void)setOffset:(CDStruct_d6af7fc0)arg1;
 - (void)setClipRect:(CDStruct_1e3be3a8)arg1;

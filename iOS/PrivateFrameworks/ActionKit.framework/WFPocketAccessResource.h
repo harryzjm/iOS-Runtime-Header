@@ -16,9 +16,9 @@
     CDUnknownBlockType _loginHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType loginHandler; // @synthesize loginHandler=_loginHandler;
 @property(retain, nonatomic) PocketAPI *pocket; // @synthesize pocket=_pocket;
-- (void).cxx_destruct;
 - (void)logOut;
 - (_Bool)canLogOut;
 - (id)username;
@@ -26,6 +26,7 @@
 - (void)pocketAPI:(id)arg1 requestedOpenURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pocketAPI:(id)arg1 hadLoginError:(id)arg2;
 - (void)pocketAPILoggedIn:(id)arg1;
+- (void)refreshAvailabilityWithNotification:(_Bool)arg1;
 - (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)globalLevelStatus;
 - (id)pocketCallbackScheme;

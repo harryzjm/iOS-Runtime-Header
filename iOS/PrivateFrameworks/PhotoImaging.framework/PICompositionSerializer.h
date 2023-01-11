@@ -10,6 +10,7 @@
 {
 }
 
++ (id)adjustmentInformationForComposition:(id)arg1 error:(out id *)arg2;
 + (void)_sanitizeComposition:(id)arg1;
 + (id)deserializeDictionaryFromData:(id)arg1 error:(out id *)arg2;
 + (id)serializeDictionary:(id)arg1 error:(out id *)arg2;

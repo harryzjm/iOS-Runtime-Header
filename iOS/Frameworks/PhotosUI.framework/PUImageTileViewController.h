@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
     _Bool __needsUpdateImageView;
     _Bool __needsUpdateFullsizeImageMetadata;
     _Bool __needsUpdateFullsizeTiledLayer;
+    _Bool _needsUpdateTargetSize;
     _Bool __isDisplayingFullQualityImage;
+    _Bool _shouldUsePenultimateVersionForNextImageUpdate;
     _Bool _canUseFullsizeTiledLayer;
     PUAssetViewModel *_assetViewModel;
     id <PUDisplayAsset> _asset;
@@ -45,10 +47,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_supportedZoomImageFormats;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
 @property(retain, nonatomic, setter=_setImageRequester:) PUImageRequester *_imageRequester; // @synthesize _imageRequester=__imageRequester;
 @property(nonatomic) _Bool canUseFullsizeTiledLayer; // @synthesize canUseFullsizeTiledLayer=_canUseFullsizeTiledLayer;
+@property(nonatomic, setter=_setShouldUsePenultimateVersionForNextImageUpdate:) _Bool shouldUsePenultimateVersionForNextImageUpdate; // @synthesize shouldUsePenultimateVersionForNextImageUpdate=_shouldUsePenultimateVersionForNextImageUpdate;
 @property(retain, nonatomic, setter=_setAssetLoadingStartDate:) NSDate *_assetLoadingStartDate; // @synthesize _assetLoadingStartDate=__assetLoadingStartDate;
 @property(nonatomic, setter=_setAssetLoadingStage:) long long _assetLoadingStage; // @synthesize _assetLoadingStage=__assetLoadingStage;
 @property(nonatomic, setter=_setDisplayingFullQualityImage:) _Bool _isDisplayingFullQualityImage; // @synthesize _isDisplayingFullQualityImage=__isDisplayingFullQualityImage;
@@ -59,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setFullsizeImageURL:) NSURL *_fullsizeImageURL; // @synthesize _fullsizeImageURL=__fullsizeImageURL;
 @property(retain, nonatomic, setter=_setFullsizeImageData:) NSData *_fullsizeImageData; // @synthesize _fullsizeImageData=__fullsizeImageData;
 @property(readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property(nonatomic) _Bool needsUpdateTargetSize; // @synthesize needsUpdateTargetSize=_needsUpdateTargetSize;
 @property(nonatomic, setter=_setTargetSize:) struct CGSize _targetSize; // @synthesize _targetSize=__targetSize;
 @property(nonatomic, setter=_setNeedsUpdateFullsizeTiledLayer:) _Bool _needsUpdateFullsizeTiledLayer; // @synthesize _needsUpdateFullsizeTiledLayer=__needsUpdateFullsizeTiledLayer;
 @property(nonatomic, setter=_setNeedsUpdateFullsizeImageMetadata:) _Bool _needsUpdateFullsizeImageMetadata; // @synthesize _needsUpdateFullsizeImageMetadata=__needsUpdateFullsizeImageMetadata;
@@ -74,7 +79,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(retain, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
-- (void).cxx_destruct;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)_cancelAllImageRequests;
@@ -88,15 +92,20 @@ __attribute__((visibility("hidden")))
 - (void)_updateImageViewIfNeeded;
 - (void)_invalidateImageView;
 - (void)updateMutableImageLayerModulator:(id)arg1;
+- (void)updateModulatorInputs;
 - (void)_updateImageLayerModulatorInputIfNeeded;
 - (void)_invalidateImageLayerModulatorInput;
+- (void)updateModulator;
 - (void)_updateImageLayerModulatorIfNeeded;
 - (void)_invalidateImageLayerModulator;
 - (void)imageRequester:(id)arg1 didChange:(id)arg2;
 - (void)_updateImageIfNeeded;
 - (void)_invalidateImage;
+- (struct CGSize)targetSizeForProposedTargetSize:(struct CGSize)arg1;
+- (void)_updateTargetSizeIfNeeded;
+- (void)_invalidateTargetSize;
+- (void)_invalidate;
 - (void)_updateIfNeeded;
-- (void)_setNeedsUpdate;
 - (_Bool)_needsUpdate;
 - (_Bool)shouldAvoidInPlaceSnapshottedFadeOut;
 - (void)assetContentDidChange;
@@ -109,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)setEdgeAntialiasingEnabled:(_Bool)arg1;
 - (void)didChangeVisibleRect;
 - (_Bool)wantsVisibleRectChanges;
+- (void)_setAssetWithoutUpdateIfNeeded:(id)arg1;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;
 - (id)loadView;

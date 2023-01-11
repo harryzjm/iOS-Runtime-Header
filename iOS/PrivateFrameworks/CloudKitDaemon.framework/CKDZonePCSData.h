@@ -7,7 +7,7 @@
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 #import <CloudKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CKDSharePCSData, CKRecordID, CKRecordZoneID, NSData;
+@class CKDSharePCSData, CKRecordID, CKRecordZoneID, NSData, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface CKDZonePCSData <NSSecureCoding, NSCopying>
@@ -18,16 +18,18 @@ __attribute__((visibility("hidden")))
     NSData *_zoneishPublicKeyID;
     CKDSharePCSData *_sharePCSData;
     CKRecordID *_shareID;
+    NSDate *_zonePCSModificationDate;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)dataWithZone:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *zonePCSModificationDate; // @synthesize zonePCSModificationDate=_zonePCSModificationDate;
 @property(retain, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 @property(retain, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
 @property(retain, nonatomic) NSData *zoneishPublicKeyID; // @synthesize zoneishPublicKeyID=_zoneishPublicKeyID;
 @property(copy, nonatomic) NSData *zoneishPCSData; // @synthesize zoneishPCSData=_zoneishPCSData;
 @property(retain, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -12,6 +12,7 @@
     CDUnknownBlockType _getReportHandler;
     CDUnknownBlockType _setReportHandler;
     unsigned int _service;
+    CDUnknownBlockType _cancelHandler;
 }
 
 - (void).cxx_destruct;

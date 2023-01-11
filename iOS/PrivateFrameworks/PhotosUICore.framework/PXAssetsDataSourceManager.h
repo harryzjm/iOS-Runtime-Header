@@ -6,16 +6,41 @@
 
 #import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 
-@class NSString, PXAssetsDataSource;
+@class NSPredicate, NSString, PXAssetsDataSource;
 
 @interface PXAssetsDataSourceManager <PXMutableAssetsDataSourceManager>
 {
+    _Bool _isLoadingInitialDataSource;
+    _Bool _isBackgroundFetching;
+    _Bool _supportsFiltering;
+    NSString *_localizedEmptyPlaceholderTitle;
+    NSString *_localizedEmptyPlaceholderMessage;
+    NSString *_localizedLoadingInitialDataSourceMessage;
+    NSPredicate *_filterPredicate;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
+@property(readonly, nonatomic) _Bool supportsFiltering; // @synthesize supportsFiltering=_supportsFiltering;
+@property(readonly, nonatomic) _Bool isBackgroundFetching; // @synthesize isBackgroundFetching=_isBackgroundFetching;
+@property(readonly, nonatomic) _Bool isLoadingInitialDataSource; // @synthesize isLoadingInitialDataSource=_isLoadingInitialDataSource;
+@property(readonly, copy, nonatomic) NSString *localizedLoadingInitialDataSourceMessage; // @synthesize localizedLoadingInitialDataSourceMessage=_localizedLoadingInitialDataSourceMessage;
+@property(readonly, copy, nonatomic) NSString *localizedEmptyPlaceholderMessage; // @synthesize localizedEmptyPlaceholderMessage=_localizedEmptyPlaceholderMessage;
+@property(readonly, copy, nonatomic) NSString *localizedEmptyPlaceholderTitle; // @synthesize localizedEmptyPlaceholderTitle=_localizedEmptyPlaceholderTitle;
+- (void)setFilteringDisabled:(_Bool)arg1 forAssetCollection:(id)arg2;
+- (void)setFilterPredicate:(id)arg1 provideIncrementalChangeDetailsForAssetCollections:(id)arg2;
+- (void)waitForAvailabilityOfAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(nonatomic) long long backgroundFetchOriginSection;
+- (void)stopExcludingAssets:(id)arg1;
+- (void)excludeAssetsAtIndexPaths:(id)arg1;
+- (void)stopForceIncludingAllAssets;
+- (void)forceIncludeAssetsAtIndexPaths:(id)arg1;
 - (void)startBackgroundFetchIfNeeded;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
 - (id)pauseChangeDeliveryWithTimeout:(double)arg1;
+- (void)ensureStartingSectionHasContent;
+- (void)ensureLastSectionHasContent;
+- (void)refreshResultsForAssetCollection:(id)arg1;
 - (_Bool)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
 - (_Bool)forceAccurateSectionsIfNeeded:(id)arg1;
 - (_Bool)forceAccurateAllSectionsIfNeeded;

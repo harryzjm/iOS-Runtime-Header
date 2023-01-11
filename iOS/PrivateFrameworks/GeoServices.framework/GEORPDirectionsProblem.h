@@ -13,7 +13,6 @@
 @interface GEORPDirectionsProblem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_clientSuggestedRoutes;
     NSData *_directionsResponseId;
     GEORPUserSearchInput *_endWaypoint;
@@ -21,6 +20,9 @@
     NSData *_overviewScreenshotImageData;
     NSMutableArray *_problematicRouteIndexs;
     GEORPUserSearchInput *_startWaypoint;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _problematicLineIndex;
     unsigned int _problematicStepIndex;
     struct {
@@ -33,15 +35,7 @@
         unsigned int read_overviewScreenshotImageData:1;
         unsigned int read_problematicRouteIndexs:1;
         unsigned int read_startWaypoint:1;
-        unsigned int wrote_clientSuggestedRoutes:1;
-        unsigned int wrote_directionsResponseId:1;
-        unsigned int wrote_endWaypoint:1;
-        unsigned int wrote_instructionCorrections:1;
-        unsigned int wrote_overviewScreenshotImageData:1;
-        unsigned int wrote_problematicRouteIndexs:1;
-        unsigned int wrote_startWaypoint:1;
-        unsigned int wrote_problematicLineIndex:1;
-        unsigned int wrote_problematicStepIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,45 +52,40 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)instructionCorrectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)instructionCorrectionsCount;
-- (void)_addNoFlagsInstructionCorrection:(id)arg1;
 - (void)addInstructionCorrection:(id)arg1;
 - (void)clearInstructionCorrections;
 @property(retain, nonatomic) NSMutableArray *instructionCorrections;
-- (void)_readInstructionCorrections;
 @property(retain, nonatomic) GEORPUserSearchInput *endWaypoint;
 @property(readonly, nonatomic) _Bool hasEndWaypoint;
-- (void)_readEndWaypoint;
 @property(retain, nonatomic) GEORPUserSearchInput *startWaypoint;
 @property(readonly, nonatomic) _Bool hasStartWaypoint;
-- (void)_readStartWaypoint;
 @property(nonatomic) _Bool hasProblematicLineIndex;
 @property(nonatomic) unsigned int problematicLineIndex;
 - (id)problematicRouteIndexAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problematicRouteIndexsCount;
-- (void)_addNoFlagsProblematicRouteIndex:(id)arg1;
 - (void)addProblematicRouteIndex:(id)arg1;
 - (void)clearProblematicRouteIndexs;
 @property(retain, nonatomic) NSMutableArray *problematicRouteIndexs;
-- (void)_readProblematicRouteIndexs;
 - (id)clientSuggestedRouteAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clientSuggestedRoutesCount;
-- (void)_addNoFlagsClientSuggestedRoute:(id)arg1;
 - (void)addClientSuggestedRoute:(id)arg1;
 - (void)clearClientSuggestedRoutes;
 @property(retain, nonatomic) NSMutableArray *clientSuggestedRoutes;
-- (void)_readClientSuggestedRoutes;
 @property(nonatomic) _Bool hasProblematicStepIndex;
 @property(nonatomic) unsigned int problematicStepIndex;
 @property(retain, nonatomic) NSData *overviewScreenshotImageData;
 @property(readonly, nonatomic) _Bool hasOverviewScreenshotImageData;
-- (void)_readOverviewScreenshotImageData;
 @property(retain, nonatomic) NSData *directionsResponseId;
 @property(readonly, nonatomic) _Bool hasDirectionsResponseId;
-- (void)_readDirectionsResponseId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

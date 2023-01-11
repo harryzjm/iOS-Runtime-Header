@@ -21,6 +21,16 @@ struct AudioBufferList {
     struct AudioBuffer _field2[1];
 };
 
+struct CGPoint {
+    double _field1;
+    double _field2;
+};
+
+struct CGRect {
+    struct CGPoint _field1;
+    struct CGSize _field2;
+};
+
 struct CGSize {
     double _field1;
     double _field2;
@@ -39,10 +49,6 @@ struct MPCAudioSpectrumAnalyzerBand {
 struct MPCModelStorePlaybackItemsRequestAccumulatorResult {
     _Bool _field1;
     _Bool _field2;
-};
-
-struct NSMapTable {
-    Class _field1;
 };
 
 struct _MPCAudioSpectrumAnalyzerBandInternal {
@@ -68,13 +74,6 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -87,6 +86,14 @@ typedef struct {
     _Bool _field3;
     _Bool _field4;
 } CDStruct_8024420c;
+
+typedef struct {
+    unsigned long long flags;
+    unsigned long long machAbsoluteTime;
+    unsigned long long rawNanoSeconds;
+    unsigned long long timebase;
+    double userSecondsSinceReferenceDate;
+} CDStruct_aeb9a598;
 
 typedef struct {
     double snapshotTime;
@@ -106,6 +113,17 @@ typedef struct {
     unsigned int _field3;
     long long _field4;
 } CDStruct_198678f7;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    long long _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    long long _field8;
+} CDStruct_4a9aa5a8;
 
 typedef struct {
     long long reverseCount;

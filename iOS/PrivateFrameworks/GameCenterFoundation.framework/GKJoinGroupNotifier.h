@@ -16,11 +16,12 @@
     NSError *_error;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *updateQueue; // @synthesize updateQueue=_updateQueue;
 @property(retain) NSLock *lock; // @synthesize lock=_lock;
+@property(nonatomic) __weak GKJoinGroup *group; // @synthesize group=_group;
 - (void)setResult:(CDUnknownBlockType)arg1 error:(id)arg2;
 @property(retain) NSError *error; // @synthesize error=_error;
-@property(nonatomic) GKJoinGroup *group; // @synthesize group=_group;
 - (oneway void)release;
 - (id)retain;
 - (void)dealloc;

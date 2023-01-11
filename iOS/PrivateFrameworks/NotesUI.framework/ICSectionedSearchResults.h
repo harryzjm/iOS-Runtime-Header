@@ -15,9 +15,9 @@
 }
 
 + (id)newSearchResultsBySection;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *searchResultsBySection; // @synthesize searchResultsBySection=_searchResultsBySection;
 @property(nonatomic) _Bool disableAutomaticUpdates; // @synthesize disableAutomaticUpdates=_disableAutomaticUpdates;
-- (void).cxx_destruct;
 - (void)updateForSortTypeChange;
 - (_Bool)replaceSearchResultObject:(id)arg1 withObject:(id)arg2;
 - (id)indexPathOfObject:(id)arg1;
@@ -46,6 +46,7 @@
 - (_Bool)hasSearchResults;
 - (void)clear;
 @property(readonly, nonatomic) NSArray *allSearchResults;
+- (void)noteWillBeDeletedOrTrashed:(id)arg1;
 - (void)noteWillBeUndeletedOrUntrashed:(id)arg1;
 - (void)objectsDidChange:(id)arg1;
 - (id)description;

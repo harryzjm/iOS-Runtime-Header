@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NPSDomainAccessor, NPSManager, NSArray, NSString, WRReplyStoreInfo;
+@protocol OS_os_log;
 
 @interface WRCannedRepliesStore : NSObject
 {
@@ -18,9 +19,12 @@
     _Bool _didLocalizeDefaultReplies;
     _Bool _didMigrationCheck;
     NPSDomainAccessor *_domainAccessor;
+    NSObject<OS_os_log> *_log;
     NPSManager *_npsManager;
 }
 
++ (id)supportedLanguages;
++ (_Bool)isTinker;
 + (_Bool)supportsEnhancedEditing;
 - (void).cxx_destruct;
 - (void)handleStoreChange;

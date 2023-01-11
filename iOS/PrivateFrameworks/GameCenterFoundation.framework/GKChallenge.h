@@ -19,6 +19,7 @@
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (void)loadReceivedChallengesWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)loadReceivedPendingChallengesWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)loadChallengesForReceivingPlayer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadChallengesForGame:(id)arg1 receivingPlayer:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (void)getCountOfChallenges:(CDUnknownBlockType)arg1;
@@ -40,8 +41,8 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 @property(readonly, copy, nonatomic) GKPlayer *receivingPlayer; // @dynamic receivingPlayer;
 @property(readonly, copy, nonatomic) GKPlayer *issuingPlayer; // @dynamic issuingPlayer;
-@property(readonly, copy, nonatomic) NSString *receivingPlayerID;
-@property(readonly, copy, nonatomic) NSString *issuingPlayerID;
+- (id)receivingPlayerID;
+- (id)issuingPlayerID;
 @property(readonly, nonatomic) GKGame *game; // @dynamic game;
 - (void)decline;
 - (void)declineWithCompletionHandler:(CDUnknownBlockType)arg1;

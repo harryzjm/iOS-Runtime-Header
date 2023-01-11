@@ -9,6 +9,8 @@
 @class NSArray, NSDictionary, NSString;
 
 @protocol WBSSafariBookmarksSyncAgentProtocol <WBSCyclerCloudBookmarksAssistant>
+- (void)fetchCloudTabDevicesAndCloseRequests;
+- (void)getCloudTabContainerManateeStateWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1;
 - (void)getCloudTabDevicesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)deleteCloudTabCloseRequestsWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -19,7 +21,6 @@
 - (void)beginMigrationFromDAV;
 - (void)observeRemoteMigrationStateForSecondaryMigration;
 - (void)fetchRemoteMigrationStateWithCompletionHandler:(void (^)(long long, NSString *, NSError *))arg1;
-- (void)fetchUserIdentityWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)userAccountDidChange:(long long)arg1;
 - (void)userDidUpdateBookmarkDatabase;
 - (void)setUsesOpportunisticPushTopic:(_Bool)arg1;

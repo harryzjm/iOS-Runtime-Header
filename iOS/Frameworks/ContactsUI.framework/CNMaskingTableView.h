@@ -15,9 +15,12 @@ __attribute__((visibility("hidden")))
     UIView *_tableMaskView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *tableMaskView; // @synthesize tableMaskView=_tableMaskView;
 @property(nonatomic) double maskingInset; // @synthesize maskingInset=_maskingInset;
-- (void).cxx_destruct;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
 
 @end
 

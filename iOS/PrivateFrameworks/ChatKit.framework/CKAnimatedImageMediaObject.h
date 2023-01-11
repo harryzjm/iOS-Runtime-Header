@@ -10,6 +10,7 @@
 
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
+- (_Bool)validPreviewExistsAtURL:(id)arg1;
 - (_Bool)validatePreviewFormat;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (CDUnknownBlockType)imageEdgeEnhancementBlockIfNecessary;
@@ -23,6 +24,7 @@
 - (id)generateAndPersistAnimatedPreviewFromImageData:(id)arg1 forWidth:(double)arg2 withTransferGUID:(id)arg3 isSticker:(_Bool)arg4;
 - (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (id)metricsCollectorMediaType;
 - (id)animatedImageForWidth:(double)arg1;
 
 @end

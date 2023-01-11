@@ -14,10 +14,11 @@
 {
     _Bool _isAudiobook;
     _Bool _isRestore;
+    _Bool _canPause;
     _Bool _isSample;
     _Bool _isPurchase;
-    _Bool _canPause;
     NSNumber *_storeID;
+    NSNumber *_storePlaylistID;
     NSString *_permLink;
     NSString *_downloadID;
     NSNumber *_percentComplete;
@@ -31,15 +32,19 @@
     NSString *_artistName;
     NSString *_title;
     NSString *_subtitle;
+    NSString *_collectionArtistName;
+    NSString *_collectionTitle;
     NSString *_genre;
     NSString *_thumbnailImageURL;
     NSString *_assetKind;
 }
 
-@property(nonatomic) _Bool canPause; // @synthesize canPause=_canPause;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *assetKind; // @synthesize assetKind=_assetKind;
 @property(copy, nonatomic) NSString *thumbnailImageURL; // @synthesize thumbnailImageURL=_thumbnailImageURL;
 @property(copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
+@property(copy, nonatomic) NSString *collectionTitle; // @synthesize collectionTitle=_collectionTitle;
+@property(copy, nonatomic) NSString *collectionArtistName; // @synthesize collectionArtistName=_collectionArtistName;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
@@ -48,6 +53,7 @@
 @property(retain, nonatomic) NSDate *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
 @property(nonatomic) _Bool isPurchase; // @synthesize isPurchase=_isPurchase;
 @property(nonatomic) _Bool isSample; // @synthesize isSample=_isSample;
+@property(nonatomic) _Bool canPause; // @synthesize canPause=_canPause;
 @property(nonatomic) _Bool isRestore; // @synthesize isRestore=_isRestore;
 @property(nonatomic) _Bool isAudiobook; // @synthesize isAudiobook=_isAudiobook;
 @property(nonatomic) long long downloadPhase; // @synthesize downloadPhase=_downloadPhase;
@@ -57,8 +63,8 @@
 @property(retain, nonatomic) NSNumber *percentComplete; // @synthesize percentComplete=_percentComplete;
 @property(copy, nonatomic) NSString *downloadID; // @synthesize downloadID=_downloadID;
 @property(copy, nonatomic) NSString *permLink; // @synthesize permLink=_permLink;
+@property(retain, nonatomic) NSNumber *storePlaylistID; // @synthesize storePlaylistID=_storePlaylistID;
 @property(retain, nonatomic) NSNumber *storeID; // @synthesize storeID=_storeID;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

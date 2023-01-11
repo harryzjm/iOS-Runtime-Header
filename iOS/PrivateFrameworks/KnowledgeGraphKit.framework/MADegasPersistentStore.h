@@ -38,6 +38,8 @@
 + (_Bool)copyFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (id)errorForKGDBReturnCode:(int)arg1 description:(id)arg2;
 + (id)persistentStoreFileExtension;
++ (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *propertyNameByAttrId; // @synthesize propertyNameByAttrId=_propertyNameByAttrId;
 @property(retain, nonatomic) NSMutableDictionary *attrIdByPropertyName; // @synthesize attrIdByPropertyName=_attrIdByPropertyName;
 @property(retain, nonatomic) NSMutableDictionary *domainByDegasLabel; // @synthesize domainByDegasLabel=_domainByDegasLabel;
@@ -45,11 +47,11 @@
 @property(retain, nonatomic) NSMutableDictionary *labelNameByDegasLabel; // @synthesize labelNameByDegasLabel=_labelNameByDegasLabel;
 @property(retain, nonatomic) NSMutableDictionary *degasLabelByLabelName; // @synthesize degasLabelByLabelName=_degasLabelByLabelName;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasMarker;
 - (void)setMarker;
 - (void)deleteMarker;
 - (id)_markerFilePath;
+- (_Bool)copyToURL:(id)arg1 error:(id *)arg2;
 - (_Bool)migrateToURL:(id)arg1 error:(id *)arg2;
 - (void)removeModelEdgePropertyForKey:(id)arg1 andIdentifier:(long long)arg2;
 - (void)removeModelNodePropertyForKey:(id)arg1 andIdentifier:(long long)arg2;
@@ -57,6 +59,8 @@
 - (void)removeModelEdgePropertiesForIdentifier:(long long)arg1;
 - (void)removeModelNodesPropertiesForIdentifiers:(id)arg1;
 - (void)removeModelNodePropertiesForIdentifier:(long long)arg1;
+- (void)setEdgeWeight:(float)arg1 forIdentifier:(long long)arg2;
+- (void)setNodeWeight:(float)arg1 forIdentifier:(long long)arg2;
 - (void)setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
 - (void)_setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
 - (void)setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
@@ -65,8 +69,8 @@
 - (void)setModelNodeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(_Bool)arg3;
 - (void)enumerateModelEdgesPropertiesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateModelNodesPropertiesWithBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePropertiesForDataTypes:(map_d80ba52d *)arg1 usingCursors:(map_f5a6a24a *)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)appendPropertyValuesForElementId:(unsigned long long)arg1 cursors:(map_f5a6a24a *)arg2 dataTypes:(map_d80ba52d *)arg3 dictionary:(id)arg4;
+- (void)enumeratePropertiesForCursor:(struct AttributeValueCursor *)arg1 block:(CDUnknownBlockType)arg2;
+- (id)propertyValueForCursor:(struct AttributeValueCursor *)arg1;
 - (void)removeModelEdgesForIdentifiers:(id)arg1;
 - (void)removeModelEdgeForIdentifier:(unsigned long long)arg1;
 - (void)addEdge:(id)arg1 requiresTesting:(_Bool)arg2;
@@ -100,6 +104,7 @@
 - (void)leaveBatch;
 - (void)enterBatch;
 - (void)closePersistentStore;
+- (void)leaveTransactionWithRollback;
 - (void)leaveTransaction;
 - (void)beginTransactionIfNeeded;
 - (void)checkTransaction;
@@ -109,6 +114,7 @@
 - (void)save:(CDUnknownBlockType)arg1;
 - (id)initWithFileURL:(id)arg1 options:(long long)arg2;
 - (void)dealloc;
+- (struct Database *)database;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

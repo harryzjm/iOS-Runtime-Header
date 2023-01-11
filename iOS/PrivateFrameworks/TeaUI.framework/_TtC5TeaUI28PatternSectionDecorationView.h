@@ -6,15 +6,13 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-#import <TeaUI/TUGutterViewBoundsObserver-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC5TeaUI28PatternSectionDecorationView : UICollectionReusableView <TUGutterViewBoundsObserver>
+@interface _TtC5TeaUI28PatternSectionDecorationView : UICollectionReusableView
 {
     MISSING_TYPE *patternView;
-    MISSING_TYPE *gradientView;
-    MISSING_TYPE *currentAsset;
+    MISSING_TYPE *model;
+    MISSING_TYPE *token;
 }
 
 - (void).cxx_destruct;

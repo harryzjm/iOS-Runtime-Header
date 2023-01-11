@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 
-@class UIDimmingView, UIPresentationController, UIView;
+@class NSString, UIDimmingView, UIPresentationController, UIView;
 @protocol UIViewControllerTransitionCoordinator, _UISearchControllerPresenting;
 
 __attribute__((visibility("hidden")))
@@ -49,6 +49,12 @@ __attribute__((visibility("hidden")))
 - (id)_searchControllerPresenting;
 - (void)dealloc;
 - (id)initWithSearchPresentationController:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

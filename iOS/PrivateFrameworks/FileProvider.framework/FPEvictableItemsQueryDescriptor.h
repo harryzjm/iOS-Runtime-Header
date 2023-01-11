@@ -9,6 +9,7 @@
 }
 
 - (id)queryStringForMountPoint:(id)arg1;
+- (id)name;
 
 @end
 

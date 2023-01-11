@@ -13,7 +13,7 @@
 @property(retain, nonatomic) PPNamedEntityMetadata *metadata; // @dynamic metadata;
 @property(nonatomic) double sentimentScore; // @dynamic sentimentScore;
 @property(nonatomic) unsigned char changeType; // @dynamic changeType;
-@property(nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
+@property(nonatomic) unsigned int extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property(retain, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property(nonatomic) double decayRate; // @dynamic decayRate;
 @property(nonatomic) double initialScore; // @dynamic initialScore;

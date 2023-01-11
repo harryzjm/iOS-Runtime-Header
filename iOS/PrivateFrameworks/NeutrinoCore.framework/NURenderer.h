@@ -25,14 +25,14 @@
 + (id)defaultRenderContextOptions;
 + (id)rendererWithMetalDevice:(id)arg1 options:(id)arg2;
 + (id)rendererWithGLContext:(id)arg1 options:(id)arg2;
-@property(readonly, nonatomic) CIContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CIContext *context; // @synthesize context=_context;
 - (id)renderDestinationForSurface:(id)arg1 owner:(id)arg2;
 - (id)imageForSurface:(id)arg1 options:(id)arg2 owner:(id)arg3;
 - (id)renderImage:(id)arg1 rect:(CDStruct_996ac03c)arg2 toDestination:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4 error:(out id *)arg5;
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, copy) NSString *description;
-- (id)initWithCIContext:(id)arg1;
+- (id)initWithCIContext:(id)arg1 priority:(long long)arg2;
 - (id)init;
 
 // Remaining properties

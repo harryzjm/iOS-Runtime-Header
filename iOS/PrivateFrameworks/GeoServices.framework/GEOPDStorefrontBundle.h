@@ -13,20 +13,19 @@
 @interface GEOPDStorefrontBundle : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_faces;
     unsigned long long _identifier;
     unsigned long long _matchedMuid;
     GEOPDStorefrontPresentation *_presentation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_identifier:1;
         unsigned int has_matchedMuid:1;
         unsigned int read_faces:1;
         unsigned int read_presentation:1;
-        unsigned int wrote_faces:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_matchedMuid:1;
-        unsigned int wrote_presentation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,22 +40,24 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasMatchedMuid;
 @property(nonatomic) unsigned long long matchedMuid;
 - (id)faceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)facesCount;
-- (void)_addNoFlagsFace:(id)arg1;
 - (void)addFace:(id)arg1;
 - (void)clearFaces;
 @property(retain, nonatomic) NSMutableArray *faces;
-- (void)_readFaces;
 @property(retain, nonatomic) GEOPDStorefrontPresentation *presentation;
 @property(readonly, nonatomic) _Bool hasPresentation;
-- (void)_readPresentation;
 @property(nonatomic) _Bool hasIdentifier;
 @property(nonatomic) unsigned long long identifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

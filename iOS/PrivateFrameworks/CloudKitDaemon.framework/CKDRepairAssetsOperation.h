@@ -5,6 +5,7 @@
 //
 
 @class CKDOperation, CKUploadRequestConfiguration, NSArray, NSDictionary, NSMutableDictionary, NSSet;
+@protocol CKRepairAssetsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDRepairAssetsOperation
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSSet *_uploadedAssetOrPackageUUIDs;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *uploadedAssetOrPackageUUIDs; // @synthesize uploadedAssetOrPackageUUIDs=_uploadedAssetOrPackageUUIDs;
 @property(retain, nonatomic) NSDictionary *assetOrPackageUUIDToUploadError; // @synthesize assetOrPackageUUIDToUploadError=_assetOrPackageUUIDToUploadError;
 @property(retain, nonatomic) NSMutableDictionary *assetOrPackageUUIDToOriginalRecord; // @synthesize assetOrPackageUUIDToOriginalRecord=_assetOrPackageUUIDToOriginalRecord;
@@ -33,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *UUIDToAssetOrPackage; // @synthesize UUIDToAssetOrPackage=_UUIDToAssetOrPackage;
 @property(retain, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
 @property(copy, nonatomic) CDUnknownBlockType assetOrPackageRepairedBlock; // @synthesize assetOrPackageRepairedBlock=_assetOrPackageRepairedBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (id)assetOrPackageForMetadata:(id)arg1 inRecord:(id)arg2;
@@ -45,6 +46,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKRepairAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

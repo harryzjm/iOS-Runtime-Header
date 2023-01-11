@@ -13,12 +13,14 @@
 @interface GEORPProblemStatus : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     double _creationDate;
     GEORPDetails *_details;
     GEORPNotification *_notification;
     NSString *_problemId;
     GEORPResolution *_problemResolution;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _problemState;
     struct {
         unsigned int has_creationDate:1;
@@ -27,12 +29,7 @@
         unsigned int read_notification:1;
         unsigned int read_problemId:1;
         unsigned int read_problemResolution:1;
-        unsigned int wrote_creationDate:1;
-        unsigned int wrote_details:1;
-        unsigned int wrote_notification:1;
-        unsigned int wrote_problemId:1;
-        unsigned int wrote_problemResolution:1;
-        unsigned int wrote_problemState:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,17 +43,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPDetails *details;
 @property(readonly, nonatomic) _Bool hasDetails;
-- (void)_readDetails;
 @property(retain, nonatomic) GEORPNotification *notification;
 @property(readonly, nonatomic) _Bool hasNotification;
-- (void)_readNotification;
 @property(retain, nonatomic) GEORPResolution *problemResolution;
 @property(readonly, nonatomic) _Bool hasProblemResolution;
-- (void)_readProblemResolution;
 - (int)StringAsProblemState:(id)arg1;
 - (id)problemStateAsString:(int)arg1;
 @property(nonatomic) _Bool hasProblemState;
@@ -65,7 +62,8 @@
 @property(nonatomic) double creationDate;
 @property(retain, nonatomic) NSString *problemId;
 @property(readonly, nonatomic) _Bool hasProblemId;
-- (void)_readProblemId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

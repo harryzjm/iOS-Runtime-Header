@@ -9,7 +9,7 @@
 #import <ModelIO/NSCopying-Protocol.h>
 #import <ModelIO/NSFastEnumeration-Protocol.h>
 
-@class MDLVertexDescriptor, MISSING_TYPE, NSMapTable, NSMutableArray, NSURL, NSUnitLength;
+@class MDLAnimatedVector3Array, MDLVertexDescriptor, MISSING_TYPE, NSMapTable, NSMutableArray, NSURL, NSUnitLength;
 @protocol MDLAssetResolver, MDLMeshBufferAllocator, MDLObjectContainerComponent;
 
 @interface MDLAsset : NSObject <NSCopying, NSFastEnumeration>
@@ -31,6 +31,7 @@
     MDLVertexDescriptor *_vertexDescriptor;
     double __timeCodesPerSecond;
     NSUnitLength *_unitLength;
+    MDLAnimatedVector3Array *_extents;
 }
 
 + (_Bool)canImportFileExtension:(id)arg1;
@@ -39,6 +40,8 @@
 + (void)convertToUSDZ:(id)arg1 writeToURL:(id)arg2;
 + (_Bool)isValidUSDZResource:(id)arg1;
 + (void)convertToUSDZWithURL:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) MDLAnimatedVector3Array *extents; // @synthesize extents=_extents;
 @property(nonatomic) float metersPerUnit; // @synthesize metersPerUnit=_metersPerUnit;
 @property(retain, nonatomic) NSUnitLength *unitLength; // @synthesize unitLength=_unitLength;
 @property(nonatomic) double _timeCodesPerSecond; // @synthesize _timeCodesPerSecond=__timeCodesPerSecond;
@@ -50,7 +53,6 @@
 @property(retain, nonatomic) NSURL *_temporaryFolderURL; // @synthesize _temporaryFolderURL;
 @property(retain, nonatomic) id <MDLObjectContainerComponent> animations; // @synthesize animations=_animations;
 @property(retain, nonatomic) id <MDLObjectContainerComponent> masters; // @synthesize masters=_masters;
-- (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
@@ -67,6 +69,7 @@
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 vertexDescriptor:(id)arg2 bufferAllocator:(id)arg3 preserveTopology:(_Bool)arg4 error:(id *)arg5;
 - (id)initWithURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)initWithData:(id)arg1 name:(id)arg2 vertexDescriptor:(id)arg3 bufferAllocator:(id)arg4 preserveTopology:(_Bool)arg5 error:(id *)arg6;
 - (void)_conformVertexBuffers:(id)arg1 error:(id *)arg2;
 - (id)initWithBufferAllocator:(id)arg1;
 - (void)dealloc;

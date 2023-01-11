@@ -10,9 +10,13 @@
 {
     unsigned int _sceneIdentifier;
     double _confidence;
+    long long _packedBoundingBoxRect;
+    struct CGRect _boundingBox;
 }
 
 + (id)fetchSceneClassificationsGroupedByAssetLocalIdentifierForAssets:(id)arg1;
+@property(nonatomic) long long packedBoundingBoxRect; // @synthesize packedBoundingBoxRect=_packedBoundingBoxRect;
+@property(readonly, nonatomic) struct CGRect boundingBox; // @synthesize boundingBox=_boundingBox;
 @property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(readonly, nonatomic) unsigned int sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 - (id)description;
@@ -21,6 +25,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToSceneClassification:(id)arg1;
+- (id)initWithSceneIdentifier:(unsigned int)arg1 confidence:(double)arg2 boundingBox:(struct CGRect)arg3;
 - (id)initWithSceneIdentifier:(unsigned int)arg1 confidence:(double)arg2;
 
 @end

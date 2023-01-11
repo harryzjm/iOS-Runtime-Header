@@ -6,30 +6,30 @@
 
 #import <UIKit/UIButton.h>
 
-#import <MapKit/_MKPlaceActionButtonControllerProtocol-Protocol.h>
+#import <MapKit/_MKPlaceActionControlledButton-Protocol.h>
 
 @class MKVibrantView, NSLayoutConstraint, NSString, _MKPlaceActionButtonController;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceHeaderButton : UIButton <_MKPlaceActionButtonControllerProtocol>
+@interface MKPlaceHeaderButton : UIButton <_MKPlaceActionControlledButton>
 {
     unsigned long long _buttonType;
     _Bool _primary;
     NSLayoutConstraint *_heightConstraint;
     MKVibrantView *_vibrantView;
-    _Bool _highlighted;
+    _Bool _buttonHighlighted;
     _MKPlaceActionButtonController *_buttonController;
 }
 
-@property(nonatomic) __weak _MKPlaceActionButtonController *buttonController; // @synthesize buttonController=_buttonController;
-- (_Bool)isHighlighted;
 - (void).cxx_destruct;
-- (void)placeActionbuttonControllerTextDidChanged:(id)arg1;
-- (void)setAttributesWithTitle:(id)arg1 subTitle:(id)arg2;
+@property(nonatomic) __weak _MKPlaceActionButtonController *buttonController; // @synthesize buttonController=_buttonController;
+- (void)placeActionButtonControllerTextDidChange:(id)arg1;
+- (void)setPrimaryTitle:(id)arg1 subtitle:(id)arg2;
+- (void)updateButtonWithHighlighted:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_updateStyleNonPrimaryButton;
 - (void)_updateStylePrimaryButton;
-- (void)setPrimaryButtonTitle:(id)arg1;
+- (void)setPrimaryTitle:(id)arg1;
 - (id)_primaryButtonColor;
 - (id)_primaryButtonTextColor;
 - (_Bool)_isTintColorWhite;

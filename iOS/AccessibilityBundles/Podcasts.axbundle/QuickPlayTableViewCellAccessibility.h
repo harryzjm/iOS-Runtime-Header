@@ -12,13 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityUserTestingChildren;
+- (id)_accessibilitySupplementaryFooterViews;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
-- (_Bool)_accessibilityIsPlaying;
-- (id)_accessibilitySupplementaryFooterViews;
-- (id)_axSubscribeButton;
-- (id)_axContextActionButton;
-- (id)_axPlayButton;
 - (id)accessibilityLabel;
 - (id)_axEmbeddedView;
 - (_Bool)isAccessibilityElement;

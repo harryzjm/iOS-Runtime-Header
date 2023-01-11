@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 @class NSURL;
 
@@ -14,9 +14,9 @@
     NSURL *_destinationZipFileURL;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *destinationZipFileURL; // @synthesize destinationZipFileURL=_destinationZipFileURL;
 @property(readonly, nonatomic) NSURL *directoryURL; // @synthesize directoryURL=_directoryURL;
-- (void).cxx_destruct;
 - (id)errorFromArchive:(struct archive *)arg1;
 - (_Bool)writeDataFromFileDescriptor:(int)arg1 toArchive:(struct archive *)arg2 usingBuffer:(id)arg3 error:(id *)arg4;
 - (long long)lengthOfBufferForFileDescriptor:(int)arg1 stat:(struct stat)arg2;

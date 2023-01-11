@@ -8,11 +8,20 @@
 {
 }
 
-- (id)multipleAbnormalServicesFormatString;
-- (id)multipleAbnormalServicesWithRoomFormatString;
-- (id)oneAbnormalServiceWithRoomFormatString;
-- (id)oneAbnormalServiceFormatString;
-- (id)serviceTypes;
++ (id)serviceType;
+- (id)_formatStringTypeComponent;
+- (id)multipleUnknownServicesFormatString;
+- (id)oneUnknownServiceFormatString;
+- (id)multipleClosedServicesFormatString;
+- (id)oneClosedServiceFormatString;
+- (id)multipleClosingServicesFormatString;
+- (id)oneClosingServiceFormatString;
+- (id)multipleOpeningServicesFormatString;
+- (id)oneOpeningServiceFormatString;
+- (id)multipleOpenServicesFormatString;
+- (id)oneOpenServiceFormatString;
+- (id)multipleObstructedServicesFormatString;
+- (id)oneObstructedServiceFormatString;
 
 @end
 

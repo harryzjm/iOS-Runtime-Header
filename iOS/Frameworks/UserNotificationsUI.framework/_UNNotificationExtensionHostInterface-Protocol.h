@@ -7,11 +7,11 @@
 @class NSArray, NSString, UIColor, UNNotificationResponse;
 
 @protocol _UNNotificationExtensionHostInterface
-- (void)_extensionSetUserNotificationActions:(NSArray *)arg1;
-- (void)_extensionSetTitle:(NSString *)arg1;
+- (void)_extensionDidUpdateNotificationActions:(NSArray *)arg1;
+- (void)_extensionDidUpdateTitle:(NSString *)arg1;
 - (void)_extensionRequestsDismiss;
 - (void)_extensionRequestsDefaultAction;
-- (void)_extensionDidUpdateControls;
+- (void)_extensionDidUpdatePlayPauseMediaButton;
 - (void)_extensionMediaPlayingPaused;
 - (void)_extensionMediaPlayingStarted;
 - (void)_extensionSetPlayPauseMediaButtonColor:(UIColor *)arg1;

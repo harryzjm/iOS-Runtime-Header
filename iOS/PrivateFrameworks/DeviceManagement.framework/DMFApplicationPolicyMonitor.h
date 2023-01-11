@@ -11,18 +11,19 @@
 @interface DMFApplicationPolicyMonitor : NSObject
 {
     NSArray *_policyTypes;
-    DMFPolicyRegistration *_registration;
     NSUUID *_identifier;
+    DMFPolicyRegistration *_registration;
 }
 
++ (void)_fetchCategoriesForBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)_fetchCategoriesForBundleIdentifiers:(id)arg1 withError:(id *)arg2;
 + (void)createPolicyMonitorWithPolicyChangeHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) DMFPolicyRegistration *registration; // @synthesize registration=_registration;
-@property(copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 - (void).cxx_destruct;
-- (void)_fetchCategoriesIfNeededForBundleIdentifiers:(id)arg1 response:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) DMFPolicyRegistration *registration; // @synthesize registration=_registration;
+@property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 - (void)requestPoliciesForBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, getter=isEnabled) _Bool enabled;
+- (id)requestPoliciesForBundleIdentifiers:(id)arg1 withError:(id *)arg2;
 - (void)dealloc;
 - (id)_initWithPolicyChangeHandler:(CDUnknownBlockType)arg1 addingRegistration:(_Bool)arg2;
 - (id)initWithPolicyChangeHandler:(CDUnknownBlockType)arg1;

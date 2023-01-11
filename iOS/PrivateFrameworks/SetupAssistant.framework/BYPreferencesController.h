@@ -16,11 +16,13 @@
 
 + (void)flushEverything;
 + (void)persistEverything;
++ (id)buddyPreferencesInternal;
++ (id)buddyPreferencesEphemeral;
 + (id)buddyPreferencesExcludedFromBackup;
 + (id)buddyPreferences;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *preferences; // @synthesize preferences=_preferences;
 @property(retain, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (void).cxx_destruct;
 - (void)flush;
 - (void)persist;
 - (void)reset;
@@ -29,8 +31,10 @@
 - (void)setObject:(id)arg1 forKey:(id)arg2 persistImmediately:(_Bool)arg3;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (_Bool)boolForKey:(id)arg1;
+- (id)objectForKey:(id)arg1 includeCache:(_Bool)arg2;
 - (id)objectForKey:(id)arg1;
 - (id)initWithDomain:(id)arg1;
+- (id)init;
 
 @end
 

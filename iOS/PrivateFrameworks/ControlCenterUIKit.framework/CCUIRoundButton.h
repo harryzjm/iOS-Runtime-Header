@@ -7,10 +7,11 @@
 #import <UIKit/UIControl.h>
 
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <ControlCenterUIKit/UIPointerInteractionDelegate-Protocol.h>
 
 @class CCUICAPackageDescription, CCUICAPackageView, MTVisualStylingProvider, NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIView;
 
-@interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate>
+@interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate, UIPointerInteractionDelegate>
 {
     MTVisualStylingProvider *_visualStylingProvider;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
@@ -27,6 +28,7 @@
     CCUICAPackageView *_glyphPackageView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CCUICAPackageView *glyphPackageView; // @synthesize glyphPackageView=_glyphPackageView;
 @property(retain, nonatomic) UIImageView *selectedGlyphView; // @synthesize selectedGlyphView=_selectedGlyphView;
 @property(retain, nonatomic) UIImageView *glyphImageView; // @synthesize glyphImageView=_glyphImageView;
@@ -38,13 +40,14 @@
 @property(copy, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
 @property(retain, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property(retain, nonatomic) CCUICAPackageDescription *glyphPackageDescription; // @synthesize glyphPackageDescription=_glyphPackageDescription;
-- (void).cxx_destruct;
 - (void)_updateVisualStylingOfGlyphView:(id)arg1;
 - (void)_updateForStateChange;
 - (void)_deactivateReachability:(id)arg1;
 - (void)_primaryActionPerformed:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (double)_cornerRadius;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)didMoveToWindow;

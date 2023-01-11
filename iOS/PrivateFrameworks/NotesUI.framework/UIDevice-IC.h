@@ -7,6 +7,7 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (IC)
++ (_Bool)ic_isLocked;
 + (_Bool)ic_isLargeiPad;
 + (_Bool)ic_isPlusiPhone;
 + (_Bool)ic_isiPhone;

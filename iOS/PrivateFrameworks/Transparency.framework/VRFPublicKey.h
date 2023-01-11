@@ -11,6 +11,7 @@
 }
 
 + (id)descriptor;
+@property _Bool needsRefresh;
 
 // Remaining properties
 @property(nonatomic) int type; // @dynamic type;

@@ -15,7 +15,7 @@
 @property(nonatomic) long long type; // @synthesize type=_type;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -25,6 +25,12 @@
 - (Class)objectClass;
 - (long long)valueType;
 - (id)initWithPropertyName:(id)arg1 type:(long long)arg2;
+- (id)__INCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionTypeKey;
 
 @end
 

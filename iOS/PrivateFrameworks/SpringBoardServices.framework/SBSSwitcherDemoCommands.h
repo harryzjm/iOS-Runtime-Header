@@ -18,12 +18,13 @@
 }
 
 - (void).cxx_destruct;
+- (id)_standardizedAbsolutePathForPath:(id)arg1;
 - (void)_connectionQueue_invalidate;
 - (void)_connectionQueue_setupAndActivate;
 - (_Bool)updateHiddenApplicationBundleIDs:(id)arg1;
 - (_Bool)setShouldDisableSwitcherModelUpdates:(_Bool)arg1;
-- (_Bool)loadStashedSwitcherModelFromFilename:(id)arg1;
-- (_Bool)stashSwitcherModelToFilename:(id)arg1;
+- (_Bool)loadStashedSwitcherModelFromPath:(id)arg1;
+- (_Bool)stashSwitcherModelToPath:(id)arg1;
 - (void)invalidate;
 - (id)init;
 

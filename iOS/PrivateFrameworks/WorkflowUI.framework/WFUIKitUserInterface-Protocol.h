@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowUI/WFUserInterface-Protocol.h>
+#import <WorkflowUI/WFUserInterfaceHost-Protocol.h>
 
 @class UIView, UIViewController;
 
-@protocol WFUIKitUserInterface <WFUserInterface>
+@protocol WFUIKitUserInterface <WFUserInterfaceHost>
 @property(readonly, nonatomic) UIView *view;
 @property(readonly, nonatomic) UIViewController *viewController;
 @end

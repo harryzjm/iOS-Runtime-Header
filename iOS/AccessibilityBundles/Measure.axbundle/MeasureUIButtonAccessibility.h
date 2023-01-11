@@ -14,6 +14,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)_axIsDeleteButton;
+@property(nonatomic, setter=axSetIsActuallySelected:) _Bool axIsActuallySelected;
 
 @end
 

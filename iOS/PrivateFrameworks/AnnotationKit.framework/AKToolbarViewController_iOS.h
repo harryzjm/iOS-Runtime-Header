@@ -37,6 +37,7 @@
     NSLayoutConstraint *_attributeToolbarViewControllerConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *attributeToolbarViewControllerConstraint; // @synthesize attributeToolbarViewControllerConstraint=_attributeToolbarViewControllerConstraint;
 @property(retain, nonatomic) AKFloatingAttributePickerViewController *attributeToolbarViewController; // @synthesize attributeToolbarViewController=_attributeToolbarViewController;
 @property(retain, nonatomic) AKColorPickerViewController *colorPickerPopoverViewController; // @synthesize colorPickerPopoverViewController=_colorPickerPopoverViewController;
@@ -60,7 +61,6 @@
 @property(retain, nonatomic) UIView *floatingAttributeToolbarContainer; // @synthesize floatingAttributeToolbarContainer=_floatingAttributeToolbarContainer;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(retain, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
-- (void).cxx_destruct;
 - (void)_peripheralAvailabilityDidUpdate:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)signatureCreationControllerDidCreateSignature:(id)arg1;
@@ -69,7 +69,7 @@
 - (void)signaturesViewControllerContinueToManageSignatures:(id)arg1;
 - (void)signaturesViewControllerDidSelectSignature:(id)arg1;
 - (void)signaturesViewControllerDidCancel:(id)arg1;
-- (_Bool)popoverPresentationControllerShouldDismissPopover:(id)arg1;
+- (_Bool)presentationControllerShouldDismiss:(id)arg1;
 - (void)dismissAttributeToolbarImmediately;
 - (void)dismissAttributeToolbarForSelectedAnnotations;
 - (void)showAttributeToolbarForSelectedAnnotations:(id)arg1 andToolMode:(unsigned long long)arg2;

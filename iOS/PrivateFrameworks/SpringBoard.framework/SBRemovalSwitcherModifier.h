@@ -4,31 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBAppLayout, SBSwitcherModifier;
-@protocol SBFluidSwitcherScrollProviding;
+@class NSSet, SBAppLayout, SBSwitcherModifier;
 
 @interface SBRemovalSwitcherModifier
 {
     SBAppLayout *_appLayout;
     long long _reason;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
     _Bool _simulatingPostRemovalState;
     unsigned long long _indexToScrollToAfterRemoval;
     unsigned long long _indexOfAppLayoutPriorToRemoval;
+    NSSet *_visibleAppLayoutsPriorToRemoval;
     unsigned long long _phase;
 }
 
 - (void).cxx_destruct;
-- (id)topMostAppLayouts;
-- (id)appLayoutsForInsertionOrRemoval;
+- (id)topMostLayoutElements;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (void)_performBlockWhileSimulatingPostRemovalAppLayoutState:(CDUnknownBlockType)arg1;
-- (long long)layoutUpdateMode;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (struct CGPoint)scrollViewContentOffset;
-- (id)appLayouts;
+- (id)handleInsertionEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
-- (id)initWithAppLayout:(id)arg1 reason:(long long)arg2 multitaskingModifier:(id)arg3;
+- (id)initWithAppLayout:(id)arg1 reason:(long long)arg2;
 
 @end
 

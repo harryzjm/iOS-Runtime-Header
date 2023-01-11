@@ -18,24 +18,26 @@
     _Bool _isFocusRemovalRequest;
     _Bool _shouldPlayFocusSound;
     _Bool _allowsFocusingCurrentItem;
+    _Bool _allowsFocusRestoration;
     UIFocusAnimationCoordinator *_animationCoordinator;
     UIFocusSystem *_focusSystem;
     id <UIFocusEnvironment> _environment;
 }
 
 + (id)requestForRemovingFocusInFocusSystem:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool allowsFocusRestoration; // @synthesize allowsFocusRestoration=_allowsFocusRestoration;
 @property(nonatomic) _Bool allowsFocusingCurrentItem; // @synthesize allowsFocusingCurrentItem=_allowsFocusingCurrentItem;
 @property(nonatomic) _Bool shouldPlayFocusSound; // @synthesize shouldPlayFocusSound=_shouldPlayFocusSound;
 @property(readonly, nonatomic) _Bool isFocusRemovalRequest; // @synthesize isFocusRemovalRequest=_isFocusRemovalRequest;
 @property(nonatomic) _Bool allowsDeferral; // @synthesize allowsDeferral=_allowsDeferral;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) UIFocusAnimationCoordinator *animationCoordinator; // @synthesize animationCoordinator=_animationCoordinator;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _UIFocusInputDeviceInfo *inputDeviceInfo;
 @property(readonly, nonatomic) _Bool shouldPerformHapticFeedback;
-@property(readonly, nonatomic) _Bool allowsFocusRestoration;
 @property(readonly, nonatomic) _Bool requiresEnvironmentValidation;
 @property(readonly, nonatomic) _Bool requiresNextFocusedItem;
+@property(readonly, nonatomic, getter=isMovementRequest) _Bool movementRequest;
 - (_Bool)isValidInFocusSystem:(id)arg1;
 - (void)cacheCurrentFocusSystem;
 @property(readonly, nonatomic) __weak UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;

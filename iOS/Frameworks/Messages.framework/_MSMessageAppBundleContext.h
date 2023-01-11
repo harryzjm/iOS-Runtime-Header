@@ -22,19 +22,22 @@
     id <_MSMessageComposeHostImplProtocol> _hostContext;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <_MSMessageComposeHostImplProtocol> hostContext; // @synthesize hostContext=_hostContext;
 @property(nonatomic) unsigned long long presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(nonatomic) unsigned long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property(readonly, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
 @property(readonly, nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(retain, nonatomic) id <_MSMessageComposeExtensionImplProtocol> containingContext; // @synthesize containingContext=_containingContext;
-- (void).cxx_destruct;
 - (void)contentDidLoad;
 - (void)requestResize;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissAndPresentPhotosApp;
 - (void)dismiss;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1;
+- (void)dragMediaItemCanceled;
+- (void)dragMediaItemMoved:(id)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)startDragMediaItem:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stageAssetArchive:(id)arg1 skipShelf:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;

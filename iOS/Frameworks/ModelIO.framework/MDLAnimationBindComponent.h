@@ -20,11 +20,11 @@
     CDStruct_14d5dc5e _geometryBindTransform;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_14d5dc5e geometryBindTransform; // @synthesize geometryBindTransform=_geometryBindTransform;
 @property(retain, nonatomic) NSArray *jointPaths; // @synthesize jointPaths=_jointPaths;
 @property(retain, nonatomic) id <MDLJointAnimation> jointAnimation; // @synthesize jointAnimation=_jointAnimation;
 @property(retain, nonatomic) MDLSkeleton *skeleton; // @synthesize skeleton=_skeleton;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties

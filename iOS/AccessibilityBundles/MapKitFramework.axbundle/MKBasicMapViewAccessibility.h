@@ -14,6 +14,7 @@
 - (id)accessibilityCustomActions;
 - (id)accessibilityCustomRotors;
 - (id)accessibilityElements;
+- (id)accessibilityLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3;
 

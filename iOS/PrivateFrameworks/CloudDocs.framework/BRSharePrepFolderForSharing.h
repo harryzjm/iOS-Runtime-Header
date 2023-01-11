@@ -12,8 +12,8 @@
     CDUnknownBlockType _prepFolderSharingCompletionBlock;
 }
 
-@property(copy) CDUnknownBlockType prepFolderSharingCompletionBlock; // @synthesize prepFolderSharingCompletionBlock=_prepFolderSharingCompletionBlock;
 - (void).cxx_destruct;
+@property(copy) CDUnknownBlockType prepFolderSharingCompletionBlock; // @synthesize prepFolderSharingCompletionBlock=_prepFolderSharingCompletionBlock;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)main;
 - (id)initWithURL:(id)arg1;

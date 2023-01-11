@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)scopes;
 - (void)startMonitoringChanges;
 - (void)updateScopes;
-- (struct _UIArrayController *)_createObserver;
+- (id)_createObserver;
 - (id)displayTitle;
 - (_Bool)shouldShowTopLevelContainers;
 - (id)initWithURL:(id)arg1 pickableTypes:(id)arg2 mode:(unsigned long long)arg3;

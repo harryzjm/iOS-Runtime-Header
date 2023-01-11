@@ -62,7 +62,9 @@ __attribute__((visibility("hidden")))
     _Bool _springLoaded;
     _Bool _actionsReversed;
     _Bool _presentationContextPrefersCancelActionShown;
+    _Bool _actionScrubbingEnabled;
     _UIAlertControllerActionViewMetrics *_actionViewMetrics;
+    double _offset;
     NSLayoutConstraint *_foregroundViewWidthConstraint;
     NSLayoutConstraint *_contentViewTopConstraint;
     NSLayoutConstraint *_contentViewBottomConstraint;
@@ -108,6 +110,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)requiresConstraintBasedLayout;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain) NSLayoutConstraint *discreteCancelActionViewHeightConstraint; // @synthesize discreteCancelActionViewHeightConstraint=_discreteCancelActionViewHeightConstraint;
 @property(retain) NSLayoutConstraint *discreteCancelActionViewWidthConstraint; // @synthesize discreteCancelActionViewWidthConstraint=_discreteCancelActionViewWidthConstraint;
 @property(retain) NSLayoutConstraint *discreteCancelActionViewLeadingConstraint; // @synthesize discreteCancelActionViewLeadingConstraint=_discreteCancelActionViewLeadingConstraint;
@@ -148,6 +151,8 @@ __attribute__((visibility("hidden")))
 @property(retain) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain) NSLayoutConstraint *contentViewTopConstraint; // @synthesize contentViewTopConstraint=_contentViewTopConstraint;
 @property(retain) NSLayoutConstraint *foregroundViewWidthConstraint; // @synthesize foregroundViewWidthConstraint=_foregroundViewWidthConstraint;
+@property(nonatomic) double offset; // @synthesize offset=_offset;
+@property(nonatomic) _Bool actionScrubbingEnabled; // @synthesize actionScrubbingEnabled=_actionScrubbingEnabled;
 @property(nonatomic) _Bool presentationContextPrefersCancelActionShown; // @synthesize presentationContextPrefersCancelActionShown=_presentationContextPrefersCancelActionShown;
 @property(nonatomic, getter=_layoutSize, setter=_setLayoutSize:) struct CGSize layoutSize; // @synthesize layoutSize=_layoutSize;
 @property(nonatomic, getter=_actionsReversed, setter=_setActionsReversed:) _Bool actionsReversed; // @synthesize actionsReversed=_actionsReversed;
@@ -155,7 +160,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isSpringLoaded) _Bool springLoaded; // @synthesize springLoaded=_springLoaded;
 @property(readonly) UIView *_dimmingView; // @synthesize _dimmingView;
 @property(readonly) UIView *_contentView; // @synthesize _contentView;
-- (void).cxx_destruct;
 - (_Bool)_forceLayoutEngineSolutionInRationalEdges;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (id)preferredFocusedView;
@@ -178,9 +182,9 @@ __attribute__((visibility("hidden")))
 - (void)_removeSeparatedHeaderContentViewControllerFromHierarchy;
 - (void)_removeContentViewControllerViewFromHierarchy;
 - (void)_removeHeaderContentViewControllerViewFromHierarchy;
-- (void)_addSeparatedHeaderContentViewControllerToViewHierarchy;
-- (void)_addContentViewControllerToViewHierarchy;
-- (void)_addHeaderContentViewControllerToViewHierarchy;
+- (void)_addSeparatedHeaderContentViewControllerToViewHierarchyIfNecessary;
+- (void)_addContentViewControllerToViewHierarchyIfNecessary;
+- (void)_addHeaderContentViewControllerToViewHierarchyIfNecessary;
 @property _Bool alignsToKeyboard;
 @property _Bool shouldHaveBackdropView;
 @property _Bool cancelActionIsDiscrete;
@@ -220,6 +224,7 @@ __attribute__((visibility("hidden")))
 - (void)_setTitle:(id)arg1;
 - (void)_accessibilityColorsChanged;
 - (void)_contentSizeChanged;
+- (void)deselectAllActions;
 - (void)_updateTintColor;
 - (void)_updateConstraintConstants;
 - (void)_updateActionViewHeight;
@@ -273,6 +278,7 @@ __attribute__((visibility("hidden")))
 - (void)_actionLayoutDirectionChanged;
 - (void)_configureActionGroupViewToAllowHorizontalLayout:(_Bool)arg1;
 - (void)_recomputeAlertControllerWidth;
+- (void)_updateConstraintSpacingForExternalOffset;
 - (_Bool)_hasDiscreteCancelAction;
 - (id)_discreteCancelActionView;
 - (_Bool)_canLayOutActionsHorizontally;

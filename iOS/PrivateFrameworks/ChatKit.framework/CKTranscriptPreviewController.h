@@ -11,17 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface CKTranscriptPreviewController <CKTranscriptCollectionViewControllerDelegate>
 {
+    _Bool _isInitialLayout;
     CKConversation *_conversation;
     CKTranscriptCollectionView *_collectionView;
     double _transcriptWidth;
     struct UIEdgeInsets _layoutMargins;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isInitialLayout; // @synthesize isInitialLayout=_isInitialLayout;
 @property(nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property(nonatomic) double transcriptWidth; // @synthesize transcriptWidth=_transcriptWidth;
 @property(retain, nonatomic) CKTranscriptCollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
-- (void).cxx_destruct;
+- (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 showInlineReplyForItemWithIndexPath:(id)arg3;
+- (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 selectedItemAtIndexPath:(id)arg3;
 - (_Bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitSticker:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(_Bool)arg4 error:(id *)arg5;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestStartEditingPayload:(id)arg2 forPlugin:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitPayload:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(_Bool)arg4 error:(id *)arg5;
@@ -33,9 +37,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)transcriptCollectionViewControllerShouldLayoutFullscreenEffects:(id)arg1;
 - (_Bool)transcriptCollectionViewController:(id)arg1 shouldSetupFullscreenEffectUI:(id)arg2;
 - (_Bool)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(id)arg1;
+- (double)transcriptCollectionViewController:(id)arg1 targetAlphaForChatItem:(id)arg2;
 - (id)traitCollectionForTranscriptCollectionViewController:(id)arg1;
 - (void)transcriptCollectionViewControllerDidInsertAssociatedChatItem:(id)arg1;
+- (void)transcriptCollectionViewControllerRestingStateDidChange:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 collectionViewContentSizeDidChange:(struct CGSize)arg2;
+- (_Bool)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 shouldSelectChatItem:(id)arg3;
 - (_Bool)transcriptCollectionViewControllerShouldPlayAudio:(id)arg1;
 - (void)transcriptCollectionViewControllerWillDisplayLastBalloon:(id)arg1;
 - (void)transcriptCollectionViewControllerDisplaySMSSpamReporting:(id)arg1;

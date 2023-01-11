@@ -4,23 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <CloudKit/CKFetchWhitelistedBundleIDsOperationCallbacks-Protocol.h>
 
-@interface CKFetchWhitelistedBundleIDsOperation
+@class NSArray;
+@protocol CKFetchWhitelistedBundleIDsOperationCallbacks;
+
+@interface CKFetchWhitelistedBundleIDsOperation <CKFetchWhitelistedBundleIDsOperationCallbacks>
 {
     CDUnknownBlockType _fetchWhitelistedBundleIDsCompletionBlock;
     NSArray *_bundleIDs;
 }
 
-@property(copy, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
++ (SEL)daemonCallbackCompletionSelector;
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
+- (void)handleOperationDidCompleteWithBundleIDs:(id)arg1 metrics:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)hasCKOperationCallbacksSet;
-- (Class)operationInfoClass;
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType fetchWhitelistedBundleIDsCompletionBlock; // @synthesize fetchWhitelistedBundleIDsCompletionBlock=_fetchWhitelistedBundleIDsCompletionBlock;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchWhitelistedBundleIDsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

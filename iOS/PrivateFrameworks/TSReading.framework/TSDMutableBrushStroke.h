@@ -4,25 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, TSDStrokePattern, TSUColor;
+#import <TSReading/TSDMutableStroke-Protocol.h>
 
-@interface TSDMutableBrushStroke
+@class TSDStrokePattern, TSUColor;
+
+@interface TSDMutableBrushStroke <TSDMutableStroke>
 {
 }
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setPatternPropertiesFromStroke:(id)arg1;
 - (void)setPropertiesFromStroke:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-
-// Remaining properties
-@property(nonatomic) double actualWidth; // @dynamic actualWidth;
-@property(nonatomic) int cap; // @dynamic cap;
-@property(retain, nonatomic) TSUColor *color; // @dynamic color;
-@property(nonatomic) int join; // @dynamic join;
-@property(nonatomic) double miterLimit; // @dynamic miterLimit;
-@property(retain, nonatomic) TSDStrokePattern *pattern; // @dynamic pattern;
-@property(copy, nonatomic) NSString *strokeName; // @dynamic strokeName;
-@property(nonatomic) double width; // @dynamic width;
+@property(copy, nonatomic) TSDStrokePattern *pattern;
+@property(nonatomic) int join;
+@property(nonatomic) double miterLimit;
+@property(nonatomic) int cap;
+@property(nonatomic) double actualWidth;
+@property(nonatomic) double width;
+@property(copy, nonatomic) TSUColor *color;
 
 @end
 

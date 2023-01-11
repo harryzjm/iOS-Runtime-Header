@@ -9,5 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)_isGestureType:(long long)arg1;
+
 @end
 

@@ -6,14 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXPhotosDetailsContext, PXUIMediaProvider, UIScrollView, UIViewController;
+#import <PhotosUICore/UIContextMenuInteractionDelegate-Protocol.h>
+
+@class NSMapTable, NSString, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXPhotosDetailsContext, PXUIMediaProvider, UIContextMenuInteraction, UIScrollView, UITargetedPreview, UIViewController;
 @protocol PXAssetImportStatusManager, PXOneUpPresentationDelegate, PXOneUpPresentationImplementationDelegate;
 
-@interface PXOneUpPresentation : NSObject
+@interface PXOneUpPresentation : NSObject <UIContextMenuInteractionDelegate>
 {
     struct {
         _Bool respondsToPhotosDetailsContext;
         _Bool respondsToInitialAssetReference;
+        _Bool respondsToCanStartPreviewingForContextMenuInteraction;
+        _Bool respondsToAllowsActionsForContextMenuInteraction;
+        _Bool respondsToAllowsPreviewCommitingForContextMenuInteraction;
+        _Bool respondsToCommitPreviewForContextMenuInteraction;
+        _Bool respondsToWillStartPreviewingForContextMenuInteraction;
+        _Bool respondsToDidEndPreviewingForContextMenuInteraction;
         _Bool respondsToCurrentImageForAssetReference;
         _Bool respondsToRegionOfInterestForAssetReference;
         _Bool respondsToScrollAssetReferenceToVisible;
@@ -38,27 +46,43 @@
         _Bool respondsToInvalidatePresentingGeometry;
         _Bool respondsToHandlePresentingPinchGestureRecognizer;
     } _implementationDelegateFlags;
+    _Bool _isContextMenuInteractionActive;
     _Bool _enabled;
     id <PXOneUpPresentationImplementationDelegate> __implementationDelegate;
+    UIContextMenuInteraction *_contextMenuInteraction;
     id <PXOneUpPresentationDelegate> _delegate;
+    UIViewController *_currentPreviewViewController;
+    UITargetedPreview *_interactionTargetedPreview;
+    NSMapTable *_contextMenuStateByConfiguration;
     UIViewController *_presentingViewController;
     UIViewController *_originalPresentingViewController;
     id <PXOneUpPresentationImplementationDelegate> _implementationDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PXOneUpPresentationImplementationDelegate> implementationDelegate; // @synthesize implementationDelegate=_implementationDelegate;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
 @property(readonly, nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property(retain, nonatomic) NSMapTable *contextMenuStateByConfiguration; // @synthesize contextMenuStateByConfiguration=_contextMenuStateByConfiguration;
+@property(retain, nonatomic) UITargetedPreview *interactionTargetedPreview; // @synthesize interactionTargetedPreview=_interactionTargetedPreview;
+@property(retain, nonatomic) UIViewController *currentPreviewViewController; // @synthesize currentPreviewViewController=_currentPreviewViewController;
+@property(readonly, nonatomic) _Bool isContextMenuInteractionActive; // @synthesize isContextMenuInteractionActive=_isContextMenuInteractionActive;
 @property(nonatomic) __weak id <PXOneUpPresentationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, setter=_setImplementationDelegate:) __weak id <PXOneUpPresentationImplementationDelegate> _implementationDelegate; // @synthesize _implementationDelegate=__implementationDelegate;
-- (void).cxx_destruct;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+@property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
 - (void)_updateImplementationDelegate;
 @property(readonly, nonatomic) UIScrollView *scrollView;
 - (void)setHiddenAssetReferences:(id)arg1;
 - (void)scrollAssetReferenceToVisible:(id)arg1;
 - (id)regionOfInterestForAssetReference:(id)arg1;
 - (id)currentImageForAssetReference:(id)arg1;
+@property(readonly, nonatomic) _Bool wantsShowInLibraryButton;
 @property(readonly, nonatomic) _Bool preventShowInAllPhotosAction;
 @property(readonly, nonatomic) _Bool shouldAutoPlay;
 @property(readonly, nonatomic) id <PXAssetImportStatusManager> importStatusManager;
@@ -79,6 +103,7 @@
 - (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
 - (id)previewViewControllerAllowingActions:(_Bool)arg1;
 - (_Bool)startAnimated:(_Bool)arg1 interactiveMode:(long long)arg2;
+- (void)waitUntilPresentationCanStartWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool canStart;
 - (void)presentingViewControllerViewDidDisappear:(_Bool)arg1;
 - (void)presentingViewControllerViewWillDisappear:(_Bool)arg1;
@@ -86,6 +111,12 @@
 - (void)presentingViewControllerViewWillAppear:(_Bool)arg1;
 - (id)initWithPresentingViewController:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

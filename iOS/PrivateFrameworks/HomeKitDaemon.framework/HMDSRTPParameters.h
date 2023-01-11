@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <CoreHAP/HAPTLVBase.h>
+
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDSRTPCryptoSuite, NSData;
 
-@interface HMDSRTPParameters <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDSRTPParameters : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     HMDSRTPCryptoSuite *_srtpCryptoSuite;
     NSData *_srtpMasterKey;
@@ -17,10 +19,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSData *srtpMasterSalt; // @synthesize srtpMasterSalt=_srtpMasterSalt;
 @property(readonly, copy, nonatomic) NSData *srtpMasterKey; // @synthesize srtpMasterKey=_srtpMasterKey;
 @property(readonly, copy, nonatomic) HMDSRTPCryptoSuite *srtpCryptoSuite; // @synthesize srtpCryptoSuite=_srtpCryptoSuite;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;

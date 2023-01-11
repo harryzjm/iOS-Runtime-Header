@@ -6,18 +6,18 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class ICRadioGetTracksRequest, NSString, SSVPlayActivityController;
+@class ICPlayActivityController, ICRadioGetTracksRequest, NSString;
 
 @interface MPCModelRadioGetTracksOperation : MPAsyncOperation
 {
-    SSVPlayActivityController *_playActivityController;
+    ICPlayActivityController *_playActivityController;
     ICRadioGetTracksRequest *_request;
     NSString *_siriAssetInfo;
     CDUnknownBlockType _completionHandler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 - (void)_runStep:(id)arg1 withFinishHandler:(CDUnknownBlockType)arg2;
 - (id)_cacheTracksForStep:(id)arg1;
 - (void)execute;

@@ -26,12 +26,14 @@
     unsigned long long _matchType;
     unsigned char _version;
     NSString *_participantID;
+    _Bool _isMessageBasedInvite;
 }
 
 + (id)secureCodedPropertyKeys;
 + (id)nearbyInviteIDForPlayerID:(id)arg1 deviceID:(id)arg2 bundleID:(id)arg3;
 + (id)inviteFromNearbyPlayer:(id)arg1 participantID:(id)arg2 deviceID:(id)arg3 bundleID:(id)arg4 connectionData:(id)arg5;
 + (id)inviteWithBulletin:(id)arg1;
+@property(nonatomic) _Bool isMessageBasedInvite; // @synthesize isMessageBasedInvite=_isMessageBasedInvite;
 @property(retain, nonatomic) NSString *rid; // @synthesize rid=_rid;
 @property(nonatomic) unsigned int playerAttributes; // @synthesize playerAttributes=_playerAttributes;
 @property(retain, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;

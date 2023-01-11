@@ -8,7 +8,7 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class MapsSuggestionsFwdGeocodingRelevanceScoreProvider, MapsSuggestionsNetworkRequester, MapsSuggestionsPortraitRelevanceScoreProvider, MapsSuggestionsRelevanceScorer, MapsSuggestionsRoutine, MapsSuggestionsRoutineRelevanceScoreProvider, NSString, NSXPCConnection;
+@class MapsSuggestionsFwdGeocodingRelevanceScoreProvider, MapsSuggestionsPortraitRelevanceScoreProvider, MapsSuggestionsRelevanceScorer, MapsSuggestionsRoutineRelevanceScoreProvider, NSString, NSXPCConnection;
 @protocol OS_dispatch_source;
 
 @interface MapsSuggestionsInsights : NSObject <MapsSuggestionsObject>
@@ -16,37 +16,27 @@
     struct Queue _queue;
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_source> *_closeTimer;
-    MapsSuggestionsNetworkRequester *_networkRequester;
     MapsSuggestionsFwdGeocodingRelevanceScoreProvider *_fwdGeoCodingRoutineScoreProvider;
     MapsSuggestionsRoutineRelevanceScoreProvider *_routineScoreProvider;
     MapsSuggestionsPortraitRelevanceScoreProvider *_portraitScoreProvider;
     MapsSuggestionsRelevanceScorer *_relevanceScorer;
-    MapsSuggestionsRoutine *_routine;
 }
 
-+ (id)sharedInsights;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
-- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
-- (void)_unscheduleCloseConnection;
-- (void)_scheduleCloseConnection;
-- (void)_initCloseTimerIfNecessary;
-- (void)_closeConnection;
-- (_Bool)_openConnectionIfNecessary;
 @property(readonly, nonatomic) NSString *uniqueName;
 - (id)signalPackForHere;
 - (id)signalPackForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
-- (id)signalPackForDestinationMapItem:(struct GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
-- (_Bool)signalPackForHereWithHandler:(CDUnknownBlockType)arg1;
-- (_Bool)signalPackForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
-- (_Bool)signalPackForDestinationMapItem:(struct GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)signalPackForDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
+- (BOOL)signalPackForHereWithHandler:(CDUnknownBlockType)arg1;
+- (BOOL)signalPackForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)signalPackForDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)preload;
 - (double)isTouristHere;
 - (id)confidenceScoresForContacts:(id)arg1 addresses:(id)arg2;
 - (id)confidenceScoresForMapItems:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initFromResourceDepot:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

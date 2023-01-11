@@ -8,7 +8,7 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLPipelineBufferDescriptorArray, MTLStageInputOutputDescriptor, NSString;
+@class MTLLinkedFunctions, MTLPipelineBufferDescriptorArray, MTLStageInputOutputDescriptor, NSArray, NSString;
 @protocol MTLFunction;
 
 @interface MTLComputePipelineDescriptor : NSObject <NSCopying>
@@ -21,13 +21,18 @@
 - (void)reset;
 
 // Remaining properties
+@property(copy, nonatomic) NSArray *binaryArchives; // @dynamic binaryArchives;
 @property(readonly) MTLPipelineBufferDescriptorArray *buffers; // @dynamic buffers;
 @property(retain, nonatomic) id <MTLFunction> computeFunction; // @dynamic computeFunction;
 @property(nonatomic) _Bool forceResourceIndex; // @dynamic forceResourceIndex;
+@property(copy, nonatomic) NSArray *insertLibraries; // @dynamic insertLibraries;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
+@property(copy, nonatomic) MTLLinkedFunctions *linkedFunctions; // @dynamic linkedFunctions;
+@property(nonatomic) unsigned long long maxCallStackDepth; // @dynamic maxCallStackDepth;
 @property(nonatomic) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
 @property(nonatomic) unsigned long long resourceIndex; // @dynamic resourceIndex;
 @property(copy, nonatomic) MTLStageInputOutputDescriptor *stageInputDescriptor; // @dynamic stageInputDescriptor;
+@property(nonatomic) _Bool supportAddingBinaryFunctions; // @dynamic supportAddingBinaryFunctions;
 @property(nonatomic) _Bool supportIndirectCommandBuffers; // @dynamic supportIndirectCommandBuffers;
 @property(nonatomic) _Bool threadGroupSizeIsMultipleOfThreadExecutionWidth; // @dynamic threadGroupSizeIsMultipleOfThreadExecutionWidth;
 

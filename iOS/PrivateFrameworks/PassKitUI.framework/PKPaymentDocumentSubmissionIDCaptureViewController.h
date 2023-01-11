@@ -26,13 +26,11 @@
 
 - (void).cxx_destruct;
 - (id)onPresentationRemoveViewControllersAfterMarker;
-- (void)captureController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(_Bool)arg2;
-- (void)captureController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(_Bool)arg3;
-- (void)captureController:(id)arg1 requestsPushViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)captureController:(id)arg1 didChangeStateTo:(long long)arg2;
 - (void)captureController:(id)arg1 showLoading:(_Bool)arg2;
 - (void)updateUIWithState:(long long)arg1;
 - (void)cancel;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

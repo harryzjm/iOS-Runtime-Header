@@ -9,7 +9,7 @@
 #import <FileProvider/FPCollectionDataSourceDelegate-Protocol.h>
 #import <FileProvider/FPReachabilityObserver-Protocol.h>
 
-@class FPAppRegistry, FPPacer, NSArray, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
+@class FPAppRegistry, FPItemID, FPPacer, NSArray, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
 @protocol FPCollectionDataSource, FPItemCollectionIndexPathBasedDelegate, FPItemCollectionItemIDBasedDelegate, FPItemCollectionMinimalDelegate, OS_dispatch_queue;
 
 @interface FPItemCollection : NSObject <FPReachabilityObserver, FPCollectionDataSourceDelegate>
@@ -35,6 +35,8 @@
     _Bool _showHiddenFiles;
     _Bool _observing;
     id <FPItemCollectionMinimalDelegate> _delegate;
+    FPItemID *_enumeratedItemID;
+    NSMutableDictionary *_dsCopyProgressTokenMap;
     NSPredicate *_additionalItemFilteringPredicate;
     NSObject<OS_dispatch_queue> *_updateQueue;
     FPPacer *_updatePacer;
@@ -50,11 +52,14 @@
 + (id)activeCollections;
 + (id)_bouncedItem:(id)arg1 withinItems:(id)arg2;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FPPacer *updatePacer; // @synthesize updatePacer=_updatePacer;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
 @property(nonatomic) _Bool observing; // @synthesize observing=_observing;
 @property(retain, nonatomic) NSPredicate *additionalItemFilteringPredicate; // @synthesize additionalItemFilteringPredicate=_additionalItemFilteringPredicate;
+@property(retain, nonatomic) NSMutableDictionary *dsCopyProgressTokenMap; // @synthesize dsCopyProgressTokenMap=_dsCopyProgressTokenMap;
 @property(readonly, nonatomic) id <FPCollectionDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly) FPItemID *enumeratedItemID; // @synthesize enumeratedItemID=_enumeratedItemID;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workingQueue; // @synthesize workingQueue=_workingQueue;
 @property(readonly, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property(nonatomic) _Bool showHiddenFiles; // @synthesize showHiddenFiles=_showHiddenFiles;
@@ -62,7 +67,6 @@
 @property(readonly, nonatomic, getter=isImmutable) _Bool immutable; // @synthesize immutable=_immutable;
 @property(nonatomic) __weak id <FPItemCollectionMinimalDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isGathering) _Bool gathering; // @synthesize gathering=_gathering;
-- (void).cxx_destruct;
 - (void)_setObserving:(_Bool)arg1;
 - (void)_replaceContentsWithVendorItems:(id)arg1;
 @property(retain, nonatomic) NSPredicate *itemFilteringPredicate;
@@ -80,7 +84,8 @@
 - (id)_reorderWithPlaceholdersLast:(id)arg1;
 - (id)indexPathsFromIndexSet:(id)arg1;
 - (id)indexPathFromIndex:(long long)arg1;
-- (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 forceFlush:(_Bool)arg3;
+- (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 forceFlush:(_Bool)arg3 dropForReplacedPlaceholders:(_Bool)arg4;
+- (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 dropForReplacedPlaceholders:(_Bool)arg3;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
 - (void)receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
 - (void)receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 hasMoreChanges:(_Bool)arg3;
@@ -104,6 +109,7 @@
 - (void)resumeUpdates;
 - (void)suspendUpdates;
 - (void)stopObserving;
+- (_Bool)dataSourceShouldAlwaysReplaceContents:(id)arg1;
 - (void)dataSource:(id)arg1 wasInvalidatedWithError:(id)arg2;
 - (void)dataSource:(id)arg1 receivedUpdatedItems:(id)arg2 deletedItems:(id)arg3 hasMoreChanges:(_Bool)arg4;
 - (void)dataSource:(id)arg1 replaceContentsWithItems:(id)arg2 hasMoreChanges:(_Bool)arg3;

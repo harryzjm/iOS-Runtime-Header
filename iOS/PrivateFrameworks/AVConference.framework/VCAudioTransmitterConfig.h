@@ -39,6 +39,9 @@ __attribute__((visibility("hidden")))
     int _reportingParentID;
     VCTransportSession *_transportSession;
     _Bool _ignoreSilence;
+    _Bool _shouldCreateRedundancyController;
+    _Bool _useChannelDataFormat;
+    _Bool _shouldUseRedAsBoolean;
     unsigned int _maxIDSStreamIdCount;
     NSArray *_streamIDs;
     unsigned int _tierNetworkBitrate;
@@ -46,11 +49,19 @@ __attribute__((visibility("hidden")))
     _Bool _sendActiveVoiceOnly;
     _Bool _currentDTXEnable;
     unsigned char _mediaControlInfoVersion;
+    unsigned int _qualityIndex;
     _Bool _alwaysOnAudioRedundancyEnabled;
     _Bool _cellularAllowRedLowBitratesEnabled;
     _Bool _wifiAllowRedLowBitratesEnabled;
+    unsigned long long _remoteIDSParticipantID;
+    _Bool _shouldApplyRedAsBoolean;
 }
 
+@property(nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
+@property(nonatomic) _Bool shouldApplyRedAsBoolean; // @synthesize shouldApplyRedAsBoolean=_shouldApplyRedAsBoolean;
+@property(nonatomic) _Bool useChannelDataFormat; // @synthesize useChannelDataFormat=_useChannelDataFormat;
+@property(nonatomic) _Bool shouldCreateRedundancyController; // @synthesize shouldCreateRedundancyController=_shouldCreateRedundancyController;
+@property(nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
 @property(nonatomic) _Bool wifiAllowRedLowBitratesEnabled; // @synthesize wifiAllowRedLowBitratesEnabled=_wifiAllowRedLowBitratesEnabled;
 @property(nonatomic) _Bool cellularAllowRedLowBitratesEnabled; // @synthesize cellularAllowRedLowBitratesEnabled=_cellularAllowRedLowBitratesEnabled;
 @property(nonatomic) _Bool alwaysOnAudioRedundancyEnabled; // @synthesize alwaysOnAudioRedundancyEnabled=_alwaysOnAudioRedundancyEnabled;

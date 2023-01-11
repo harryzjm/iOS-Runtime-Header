@@ -42,7 +42,7 @@
 + (id)insertIntoPhotoLibrary:(id)arg1 withPersonUUID:(id)arg2 fullName:(id)arg3 verifiedType:(int)arg4;
 + (void)enumerateAssetUUIDsForSearchIndexingWithPersonUUID:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(CDUnknownBlockType)arg3;
 + (_Bool)person:(id)arg1 isBetterMergeTargetThanPerson:(id)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(_Bool)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 + (id)personsToPrefetchInManagedObjectContext:(id)arg1;
 + (id)personsToUploadInManagedObjectContext:(id)arg1 limit:(long long)arg2;
 + (id)_predicateForSupportedVerifiedTypesForUpload;
@@ -79,6 +79,7 @@
 - (id)mutableRejectedFaces;
 - (id)mutableFaces;
 - (void)willSave;
+- (void)disconnectFaceGroup;
 @property(readonly, copy) NSString *cloudUUIDForDeletion;
 @property(readonly) long long cloudDeletionType;
 - (void)prepareForDeletion;
@@ -132,6 +133,7 @@
 @property(nonatomic) short questionType; // @dynamic questionType;
 @property(retain, nonatomic) NSSet *rejectedFaces; // @dynamic rejectedFaces;
 @property(retain, nonatomic) NSSet *rejectedFacesNeedingFaceCrops; // @dynamic rejectedFacesNeedingFaceCrops;
+@property(nonatomic) unsigned short suggestedForClientType; // @dynamic suggestedForClientType;
 @property(readonly) Class superclass;
 @property(nonatomic) int type; // @dynamic type;
 @property(nonatomic) int verifiedType; // @dynamic verifiedType;

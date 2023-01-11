@@ -21,7 +21,7 @@
 + (id)keychainServiceForVersion:(unsigned long long)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)registrationWithServiceType:(id)arg1 accountType:(int)arg2 value:(id)arg3;
+- (id)registrationWithServiceType:(id)arg1 accountType:(int)arg2 isTemporary:(_Bool)arg3 value:(id)arg4;
 - (void)_reloadFromKeychainLocked;
 - (id)registrationData;
 - (void)_reloadFromDictionaryLocked:(id)arg1;

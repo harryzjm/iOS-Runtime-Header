@@ -42,6 +42,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsMapRegionSourceType:(id)arg1;
@@ -73,10 +76,12 @@
 - (id)initWithMapRect:(CDStruct_90e2a262)arg1;
 - (id)initWithCoordinateRegion:(CDStruct_90e2a262)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
+- (id)intersectionsOnPolyline:(id)arg1;
 - (_Bool)intersectsMapRect:(CDStruct_90e2a262)arg1;
 - (_Bool)containsMapRect:(CDStruct_90e2a262)arg1;
 - (_Bool)containsCoordinate:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;
 - (_Bool)containsCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (_Bool)intersectsRegion:(id)arg1;
 - (_Bool)containsRegion:(id)arg1;
 
 @end

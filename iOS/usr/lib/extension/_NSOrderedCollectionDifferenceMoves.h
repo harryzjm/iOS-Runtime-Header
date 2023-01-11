@@ -16,11 +16,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _firstRemove;
 }
 
-- (unsigned long long)associatedIndexForChangeWithType:(long long)arg1 index:(unsigned long long)arg2;
 - (void)dealloc;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithChanges:(id)arg1;
 
 @end
 

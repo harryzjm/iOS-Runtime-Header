@@ -20,6 +20,7 @@
     NTKFaceView *_faceView;
     NTKFace *_face;
     NSDictionary *_selectedOptions;
+    NSDictionary *_selectedSlotOptions;
     id <NTKCFaceDetailEditOptionCellDelegate> _delegate;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_layout;
@@ -27,15 +28,16 @@
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *optionsDescription; // @synthesize optionsDescription=_optionsDescription;
 @property(retain, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) __weak id <NTKCFaceDetailEditOptionCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) NSDictionary *selectedSlotOptions; // @synthesize selectedSlotOptions=_selectedSlotOptions;
 @property(retain, nonatomic) NSDictionary *selectedOptions; // @synthesize selectedOptions=_selectedOptions;
 @property(nonatomic) __weak NTKFace *face; // @synthesize face=_face;
 @property(nonatomic) __weak NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property(retain, nonatomic) NTKEditOptionCollection *collection; // @synthesize collection=_collection;
-- (void).cxx_destruct;
 - (void)ensureSelectedOptionVisible:(_Bool)arg1;
 - (void)ensureIndexVisible:(long long)arg1 animated:(_Bool)arg2;
 - (void)_ensureIndexPathVisible:(id)arg1 animated:(_Bool)arg2;

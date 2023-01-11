@@ -28,6 +28,7 @@
 @property(copy, nonatomic) NSString *groupName;
 @property(copy, nonatomic) NSString *effect;
 @property(copy, nonatomic) NSDate *dateSent;
+@property(copy, nonatomic) NSDate *dateReadingStarted;
 @property(copy, nonatomic) NSDate *dateLastMessageReadInThread;
 @property(copy, nonatomic) NSString *chatIdentifier;
 @property(copy, nonatomic) NSArray *attachments;

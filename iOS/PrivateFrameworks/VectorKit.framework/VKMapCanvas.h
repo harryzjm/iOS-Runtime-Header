@@ -24,17 +24,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsMapType:(int)arg1 scale:(int)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool trafficEnabled; // @synthesize trafficEnabled=_trafficEnabled;
 @property(nonatomic) double canonicalSkyHeight; // @synthesize canonicalSkyHeight=_canonicalSkyHeight;
 @property(nonatomic) id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) VKMapModel *map; // @synthesize map=_map;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)populateDebugNode:(struct DebugTreeNode *)arg1 withOptions:(const bitset_dc343b9a *)arg2;
 - (id)navigationPuck;
 - (long long)tileSize;
-- (float)currentRoadSignOffset;
-- (void)setNavCameraIsDetached:(_Bool)arg1;
 - (void)setCameraHorizontalOffset:(double)arg1 duration:(double)arg2 timingFunction:(id)arg3;
 - (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
 - (shared_ptr_430519ce)featureMarkerAtScreenPoint:(struct CGPoint)arg1;
@@ -63,8 +61,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
 - (void)updateCameraForFrameResize;
 - (optional_44235073)_zoomLevelForCanvasSize:(struct CGSize)arg1;
-- (void)updateWithTimestamp:(double)arg1;
-- (void)_updateViewTransform;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 - (id)consoleString:(_Bool)arg1;
 - (id)detailedDescription;
 - (void)dealloc;
@@ -72,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (void)transferStateFromCanvas:(id)arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)reloadStylesheet;
-- (void)requestStylesheetMapDisplayStyle:(struct DisplayStyle)arg1 animated:(_Bool)arg2;
 - (void)setMapType:(int)arg1 animated:(_Bool)arg2;
 - (void)setMapType:(int)arg1;
 - (id)attributionsForCurrentRegion;

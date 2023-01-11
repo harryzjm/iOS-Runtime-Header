@@ -11,15 +11,18 @@
 @interface SGOutput : NSObject
 {
     NSArray *_outputItems;
+    NSDictionary *_sourceMetadata;
     NSArray *_exceptionTemplates;
     NSDictionary *_jsMessageLogs;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *jsMessageLogs; // @synthesize jsMessageLogs=_jsMessageLogs;
 @property(readonly, nonatomic) NSArray *exceptionTemplates; // @synthesize exceptionTemplates=_exceptionTemplates;
+@property(readonly, nonatomic) NSDictionary *sourceMetadata; // @synthesize sourceMetadata=_sourceMetadata;
 @property(readonly, nonatomic) NSArray *outputItems; // @synthesize outputItems=_outputItems;
-- (void).cxx_destruct;
 - (id)initWithOutputItems:(id)arg1 exeptionTemplates:(id)arg2 jsMessageLogs:(id)arg3;
+- (id)initWithOutputItems:(id)arg1 sourceMetadata:(id)arg2 exeptionTemplates:(id)arg3 jsMessageLogs:(id)arg4;
 
 @end
 

@@ -10,8 +10,11 @@
 {
 }
 
-+ (id)imageIdentifier:(id)arg1;
++ (id)mediaIconDescriptorForMediaContainer:(id)arg1;
++ (_Bool)isDoorbellChimeEnabled:(id)arg1;
++ (_Bool)supportsDoorbellChime:(id)arg1;
 + (_Bool)isSiriDisabled:(id)arg1;
++ (_Bool)isAudioReceiver:(id)arg1;
 + (_Bool)isAirPortExpress:(id)arg1;
 + (_Bool)isAppleTV:(id)arg1;
 + (_Bool)isHomePod:(id)arg1;

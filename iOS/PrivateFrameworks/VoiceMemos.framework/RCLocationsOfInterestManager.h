@@ -9,7 +9,7 @@
 #import <VoiceMemos/CLLocationManagerDelegate-Protocol.h>
 
 @class CLLocation, CLLocationManager, NSArray, NSString;
-@protocol RCLocationsOfInterestDelegate;
+@protocol OS_dispatch_queue;
 
 @interface RCLocationsOfInterestManager : NSObject <CLLocationManagerDelegate>
 {
@@ -20,23 +20,21 @@
     _Bool _isFetchingPlacesOfInterest;
     _Bool _active;
     unsigned long long _placeInferencePolicy;
-    id <RCLocationsOfInterestDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (id)defaultManager;
-@property(readonly) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
-@property(readonly, nonatomic) _Bool active; // @synthesize active=_active;
-@property(nonatomic) __weak id <RCLocationsOfInterestDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)_didFetchPlaceInferences:(id)arg1 location:(id)arg2 error:(id)arg3;
-- (void)_requestPlaceInferences;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
-@property(readonly, nonatomic) _Bool authorized;
-@property(readonly, copy) NSArray *locationsOfInterest;
-- (void)stop;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
+- (void)_didFetchPlaceInferences:(id)arg1 location:(id)arg2 error:(id)arg3;
+- (void)_requestPlaceInferences;
 - (void)_startMonitoringLocation;
+@property(readonly, copy) NSArray *locationsOfInterest;
+@property(readonly) CLLocation *currentLocation;
+- (void)_stopMonitoringLocation;
+- (void)stop;
 - (void)start;
 - (id)init;
 

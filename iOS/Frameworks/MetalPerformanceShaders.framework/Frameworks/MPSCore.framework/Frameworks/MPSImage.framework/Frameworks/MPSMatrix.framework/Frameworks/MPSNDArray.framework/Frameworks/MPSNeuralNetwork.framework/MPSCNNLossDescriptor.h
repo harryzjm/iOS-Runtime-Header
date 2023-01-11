@@ -12,6 +12,7 @@
 {
     unsigned int _lossType;
     int _reductionType;
+    _Bool _reduceAcrossBatch;
     float _weight;
     float _labelSmoothing;
     unsigned long long _numberOfClasses;
@@ -25,6 +26,7 @@
 @property(nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;
 @property(nonatomic) float labelSmoothing; // @synthesize labelSmoothing=_labelSmoothing;
 @property(nonatomic) float weight; // @synthesize weight=_weight;
+@property(nonatomic) _Bool reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property(nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property(nonatomic) unsigned int lossType; // @synthesize lossType=_lossType;
 - (id)debugDescription;

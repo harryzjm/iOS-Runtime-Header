@@ -12,11 +12,13 @@
 {
 }
 
++ (Class)internalClassForSerializableClassName:(id)arg1;
 
 // Remaining properties
 @property(copy, nonatomic) NSSet *blueprints; // @dynamic blueprints;
 @property(retain, nonatomic) NSSet *enqueuedPayloads; // @dynamic enqueuedPayloads;
 @property(retain, nonatomic) NSSet *pendingPayloads; // @dynamic pendingPayloads;
 @property(retain, nonatomic) NSSet *recentPayloads; // @dynamic recentPayloads;
+
 @end
 

@@ -16,15 +16,19 @@
     double _conservativeTravelTime;
     NSString *_shortTrafficString;
     NSString *_longTrafficString;
+    NSString *_writtenRouteName;
+    NSString *_spokenRouteName;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *spokenRouteName; // @synthesize spokenRouteName=_spokenRouteName;
+@property(copy, nonatomic) NSString *writtenRouteName; // @synthesize writtenRouteName=_writtenRouteName;
 @property(copy, nonatomic) NSString *longTrafficString; // @synthesize longTrafficString=_longTrafficString;
 @property(copy, nonatomic) NSString *shortTrafficString; // @synthesize shortTrafficString=_shortTrafficString;
 @property(nonatomic) double conservativeTravelTime; // @synthesize conservativeTravelTime=_conservativeTravelTime;
 @property(nonatomic) double aggressiveTravelTime; // @synthesize aggressiveTravelTime=_aggressiveTravelTime;
 @property(nonatomic) double seconds; // @synthesize seconds=_seconds;
 @property(nonatomic) _Bool isSuccess; // @synthesize isSuccess=_isSuccess;
-- (void).cxx_destruct;
 
 @end
 

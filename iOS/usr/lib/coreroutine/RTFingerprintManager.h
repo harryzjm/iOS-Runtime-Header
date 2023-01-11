@@ -5,10 +5,11 @@
 //
 
 #import <coreroutine/RTPurgable-Protocol.h>
+#import <coreroutine/RTStoreManager-Protocol.h>
 
 @class NSDate, NSString, RTDefaultsManager, RTFingerprintStore, RTScenarioTriggerManager, RTWiFiManager;
 
-@interface RTFingerprintManager <RTPurgable>
+@interface RTFingerprintManager <RTPurgable, RTStoreManager>
 {
     _Bool _available;
     _Bool _fingerprintMonitoringEnabled;
@@ -22,6 +23,8 @@
     unsigned long long _settledState;
 }
 
++ (id)vendedClasses;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long settledState; // @synthesize settledState=_settledState;
 @property(retain, nonatomic) NSDate *startCollectAccessPoints; // @synthesize startCollectAccessPoints=_startCollectAccessPoints;
 @property(nonatomic) unsigned long long accessPointsCollectedPerFingerprint; // @synthesize accessPointsCollectedPerFingerprint=_accessPointsCollectedPerFingerprint;
@@ -32,7 +35,7 @@
 @property(readonly, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property(nonatomic, getter=isFingerprintMonitoringEnabled) _Bool fingerprintMonitoringEnabled; // @synthesize fingerprintMonitoringEnabled=_fingerprintMonitoringEnabled;
 @property(nonatomic) _Bool available; // @synthesize available=_available;
-- (void).cxx_destruct;
+- (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)injectWifiAccessPointsToLastFingerprint:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)injectFingerprints:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)onWiFiScanNotification:(id)arg1;

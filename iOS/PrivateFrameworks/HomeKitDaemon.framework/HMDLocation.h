@@ -7,12 +7,13 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDCLLocationManagerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMFMessageDispatcher, HMFTimer, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol HMDCLLocationManager, OS_dispatch_queue;
 
-@interface HMDLocation : HMFObject <HMFTimerDelegate, HMDCLLocationManagerDelegate>
+@interface HMDLocation : HMFObject <HMFLogging, HMFTimerDelegate, HMDCLLocationManagerDelegate>
 {
     _Bool _beingConfigured;
     int _locationAuthorized;
@@ -41,8 +42,10 @@
 + (id)findEvent:(id)arg1 withGeo:(id)arg2;
 + (id)_getAlmanacWithLocation:(id)arg1 date:(id)arg2;
 + (id)_getAlmanacWithLocation:(id)arg1;
++ (id)logCategory;
 + (id)bundleForLocationManager;
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(nonatomic) double batchLocationsFetchInterval; // @synthesize batchLocationsFetchInterval=_batchLocationsFetchInterval;
 @property(retain, nonatomic) NSDate *lastFetchBatchLocationsTime; // @synthesize lastFetchBatchLocationsTime=_lastFetchBatchLocationsTime;
 @property(retain, nonatomic) HMFTimer *extractBatchLocationsTimer; // @synthesize extractBatchLocationsTimer=_extractBatchLocationsTimer;
@@ -59,9 +62,8 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
 @property(nonatomic) int locationAuthorized; // @synthesize locationAuthorized=_locationAuthorized;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-- (void).cxx_destruct;
 - (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)beingConfigured:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

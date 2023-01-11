@@ -15,23 +15,27 @@
 @interface IAMWebMessagePresentationCoordinator : NSObject <IAMWebMessageControllerDelegate, IAMViewControllerMetricsDelegate>
 {
     NSURL *_webArchiveURL;
+    CDUnknownBlockType _modalViewControllerDismissedCompletion;
     _Bool _isPresenting;
     id <IAMWebMessagePresentationCoordinatorDelegate> _delegate;
     IAMWebMessageController *_webMessageController;
     ICInAppMessageEntry *_webMessageEntry;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ICInAppMessageEntry *webMessageEntry; // @synthesize webMessageEntry=_webMessageEntry;
 @property(retain, nonatomic) IAMWebMessageController *webMessageController; // @synthesize webMessageController=_webMessageController;
 @property(nonatomic) _Bool isPresenting; // @synthesize isPresenting=_isPresenting;
 @property(nonatomic) __weak id <IAMWebMessagePresentationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewController:(id)arg1 didReportDismissalAction:(long long)arg2;
-- (void)webMessageControllerWebViewDidRequestAction:(id)arg1 actionConfiguration:(id)arg2;
-- (void)webMessageControllerWebViewDidRequestOpenURL:(id)arg1 url:(id)arg2;
+- (void)webMessageControllerWebViewDidRequestAction:(id)arg1 actionConfiguration:(id)arg2 options:(id)arg3;
+- (void)webMessageControllerWebViewDidRequestOpenURL:(id)arg1 url:(id)arg2 options:(id)arg3;
 - (void)webMessageControllerWebViewDidReportEvent:(id)arg1 event:(id)arg2;
 - (void)webMessageControllerWebViewDidRequestClose:(id)arg1;
-- (void)_handleWebMessageClose;
+- (void)_dismissModalViewController:(CDUnknownBlockType)arg1;
+- (void)_handleOpenURL:(id)arg1;
+- (void)_handleWebMessageDismissed;
+- (void)_modalViewControllerDismissalTransitionDidEnd:(id)arg1;
 - (_Bool)present;
 - (void)load;
 - (id)presentingViewController;

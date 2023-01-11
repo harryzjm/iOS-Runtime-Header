@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)qrCodeIcon;
 - (void).cxx_destruct;
 - (id)_notificationIconDataURLForApp:(id)arg1 scale:(float)arg2;
-- (id)_notificationIconBaseURL;
+- (id)_clipIconURLForAction:(id)arg1 scale:(double)arg2;
 @property(readonly, copy, nonatomic) NSURL *imageURL;
 - (id)initWithAction:(id)arg1;
 

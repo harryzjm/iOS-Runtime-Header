@@ -11,16 +11,18 @@
 @interface XCTActivityRecordStack : NSObject
 {
     NSMutableArray *_storage;
-    NSMutableDictionary *_aggregationRecords;
+    NSMutableDictionary *_mutableAggregationRecords;
 }
 
-@property(readonly) NSDictionary *aggregationRecords; // @synthesize aggregationRecords=_aggregationRecords;
 - (void).cxx_destruct;
+@property(readonly) NSMutableDictionary *mutableAggregationRecords; // @synthesize mutableAggregationRecords=_mutableAggregationRecords;
+@property(readonly) NSMutableArray *storage; // @synthesize storage=_storage;
+@property(readonly) NSDictionary *aggregationRecords;
 - (id)topActivity;
 - (long long)depth;
-- (void)unwindRemainingActivitiesWithTestCase:(id)arg1 observationCenter:(id)arg2;
-- (void)didFinishActivity:(id)arg1 testCase:(id)arg2 observationCenter:(id)arg3;
-- (id)willStartActivityWithTitle:(id)arg1 type:(id)arg2 testCase:(id)arg3 observationCenter:(id)arg4;
+- (void)unwindRemainingActivitiesWithTestCase:(id)arg1;
+- (void)didFinishActivity:(id)arg1 testCase:(id)arg2;
+- (id)willStartActivityWithTitle:(id)arg1 type:(id)arg2 testCase:(id)arg3;
 - (id)init;
 
 @end

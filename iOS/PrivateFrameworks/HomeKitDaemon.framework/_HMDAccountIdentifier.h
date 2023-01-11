@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
 @interface _HMDAccountIdentifier : HMFObject <NSCopying, NSSecureCoding>
 {
@@ -17,11 +17,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSString *senderCorrelationIdentifier;
 @property(readonly, getter=isAuthenticated) _Bool authenticated;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface AMSHTTPArchiveController : NSObject
 {
 }
 
++ (void)_updateHarFileFilters;
 + (void)_updateMaxBufferSize;
++ (_Bool)_shouldAddRequest:(id)arg1;
++ (id)_harURLFilters;
 + (_Bool)_disabled;
 + (void)_writeHTTPArchivesToDiskCompressed:(_Bool)arg1;
 + (void)addHTTPArchive:(id)arg1;
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (void)setMaxBufferSizeOverride:(id)arg1;
 + (id)maxBufferSizeOverride;
 + (_Bool)isRemoveDisabled;
++ (id)harURLFilters;
 + (id)buffer;
 + (void)initialize;
 

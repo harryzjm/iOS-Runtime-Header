@@ -18,26 +18,15 @@
     _CDMutablePerfMetric *_perfMetric;
     struct _CDPerfEvent _perfEvent;
     NSArray *_streamNames;
-    _Bool _hadDeletions;
     NSDate *_now;
     _DKSyncHistory *_history;
     unsigned long long _batchNumber;
 }
 
-+ (void)_updateEventStatsWithTotal:(unsigned long long)arg1 transportType:(long long)arg2;
-+ (void)_updateEventStatsWithPreviousSyncDate:(id)arg1 transportType:(long long)arg2;
 - (void).cxx_destruct;
-- (void)endPerfMetrics;
-- (void)startPerfMetrics;
 - (void)endOperation;
-- (void)handleUpdateStorageWithStartDate:(id)arg1 endDate:(id)arg2 deletedEventIDsCount:(unsigned long long)arg3 orError:(id)arg4;
-- (void)performSyncUpHistoryDeletionsWithPreviousHighWaterMark:(id)arg1;
-- (void)performSyncUpHistoryDeletionsWithDeletionsHighWaterMark:(id)arg1 orError:(id)arg2;
-- (_Bool)existsAdditionsSyncHistory;
-- (void)performSyncUpHistoryDeletions;
 - (void)main;
 - (_Bool)isAsynchronous;
-- (id)initWithParent:(id)arg1 sibling:(id)arg2 localStorage:(id)arg3 transport:(id)arg4 peer:(id)arg5 policy:(id)arg6 type:(id)arg7;
 
 @end
 

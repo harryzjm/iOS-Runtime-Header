@@ -17,8 +17,8 @@
     long long _layoutAxis;
 }
 
-@property(nonatomic) long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 - (void).cxx_destruct;
+@property(nonatomic) long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_prepareLayoutIfNeeded;
 - (void)invalidate;

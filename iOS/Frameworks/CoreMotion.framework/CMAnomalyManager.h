@@ -20,6 +20,7 @@
     id <CMAnomalyDelegate> _delegate;
 }
 
++ (long long)getAnomalyFeatureEnablingStrategyForUserAge:(id)arg1;
 + (_Bool)isAnomalyDetectionAvailable;
 @property(nonatomic) id <CMAnomalyDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)resolveAnomalyEvent:(id)arg1 withResolution:(long long)arg2;

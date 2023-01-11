@@ -6,29 +6,37 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMetalLayer;
+@class CABackdropLayer, CAMetalLayer;
 
 @interface PKMetalView : UIView
 {
-    _Bool _isWideGamut;
+    CABackdropLayer *_backdropLayer;
+    CAMetalLayer *_metalLayer;
     _Bool _isFixedPixelSize;
     _Bool _doubleBuffered;
+    _Bool _useLuminanceColorFilter;
+    unsigned long long _pixelFormat;
     struct CGSize _fixedPixelSize;
 }
 
-+ (Class)layerClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property(nonatomic) _Bool useLuminanceColorFilter; // @synthesize useLuminanceColorFilter=_useLuminanceColorFilter;
 @property(nonatomic) _Bool doubleBuffered; // @synthesize doubleBuffered=_doubleBuffered;
 @property(readonly, nonatomic) struct CGSize fixedPixelSize; // @synthesize fixedPixelSize=_fixedPixelSize;
 @property(readonly, nonatomic) _Bool isFixedPixelSize; // @synthesize isFixedPixelSize=_isFixedPixelSize;
-@property(readonly, nonatomic) _Bool isWideGamut; // @synthesize isWideGamut=_isWideGamut;
+- (void)accessibilityInvertColorsStatusDidChange:(id)arg1;
 - (void)flushDrawables;
 - (void)resizeDrawableIfNecessary;
 - (void)setFixedPixelSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) _Bool isDrawableAvailable; // @dynamic isDrawableAvailable;
 @property(readonly, nonatomic) struct CGSize drawableSize;
+@property(nonatomic) _Bool presentsWithTransaction;
 @property(readonly, nonatomic) CAMetalLayer *metalLayer;
-- (id)initWithFrame:(struct CGRect)arg1 andPixelSize:(struct CGSize)arg2 isWideGamut:(_Bool)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 isWideGamut:(_Bool)arg2;
+- (void)installLuminanceColorFilter;
+- (struct CGImage *)newLuminanceMap;
+- (id)initWithFrame:(struct CGRect)arg1 andPixelSize:(struct CGSize)arg2 pixelFormat:(unsigned long long)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 pixelFormat:(unsigned long long)arg2;
 - (void)initLayer;
 
 @end

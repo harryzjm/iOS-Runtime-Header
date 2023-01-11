@@ -13,17 +13,17 @@
 @interface GEOTransitRouteIdentifier : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSData *_clientRouteHandle;
     NSData *_serverRouteHandle;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_clientRouteHandle:1;
         unsigned int read_serverRouteHandle:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientRouteHandle:1;
-        unsigned int wrote_serverRouteHandle:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,14 +40,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *clientRouteHandle;
 @property(readonly, nonatomic) _Bool hasClientRouteHandle;
-- (void)_readClientRouteHandle;
 @property(retain, nonatomic) NSData *serverRouteHandle;
 @property(readonly, nonatomic) _Bool hasServerRouteHandle;
-- (void)_readServerRouteHandle;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSUUID *clientRouteID;
 
 @end

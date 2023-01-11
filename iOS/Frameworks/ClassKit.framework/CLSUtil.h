@@ -10,18 +10,23 @@
 {
 }
 
++ (void)fetchInfoForAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)userDefaultsConfigurationDictionaryAndReturnError:(id *)arg1;
++ (void)postNotificationAsync:(char *)arg1;
++ (void)postNotification:(char *)arg1;
 + (id)hashArrayOfStrings:(id)arg1 lastHash:(id)arg2;
 + (id)hashData:(id)arg1 lastHashData:(id)arg2;
 + (id)hashData:(id)arg1 lastHash:(id)arg2;
 + (id)errorFromData:(id)arg1;
 + (id)dataFromError:(id)arg1;
 + (id)pathFromData:(id)arg1;
-+ (id)dataFromPath:(id)arg1 makeBackwardCompatible:(_Bool)arg2;
++ (id)dataFromPath:(id)arg1 makeBackwardCompatible:(_Bool)arg2 error:(id *)arg3;
 + (id)mediumDateFormatter;
 + (id)stringFromTimeInterval:(double)arg1;
 + (id)mediumStringFromDate:(id)arg1;
 + (id)percentNumberFormatter;
 + (id)percentageStringFromNumber:(id)arg1;
++ (_Bool)isSystemIntegrityEnabled;
 + (_Bool)isAppleInternalInstall;
 
 @end

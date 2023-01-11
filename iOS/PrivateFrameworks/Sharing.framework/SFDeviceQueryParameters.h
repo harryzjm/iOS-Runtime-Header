@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
     MAAssetQuery *_maQuery;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool fallback; // @synthesize fallback=_fallback;
 @property(readonly, nonatomic) _Bool imperfectMatch; // @synthesize imperfectMatch=_imperfectMatch;
 @property(readonly, nonatomic) _Bool installedOnly; // @synthesize installedOnly=_installedOnly;
 @property(readonly, nonatomic) MAAssetQuery *maQuery; // @synthesize maQuery=_maQuery;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *queryType;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

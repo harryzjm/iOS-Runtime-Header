@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axDrawFocusRingAroundFirstResponderAndMoveFocus:(_Bool)arg1;
 - (void)_axResetFKAFocusToFirstResponder;
+- (_Bool)_axShouldDrawFocusAroundFirstResponder;
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
 - (id)_accessibilityEndOfDocument;
@@ -21,7 +23,9 @@
 - (_Bool)_accessibilityHandlesTabKey;
 - (id)_accessibilityAlternativesForTextAtPosition:(unsigned long long)arg1;
 - (_Bool)_accessibilityInsertTextWithAlternatives:(id)arg1;
+- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 wantsSentences:(_Bool)arg2;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
+- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 string:(id)arg2 wantsSentences:(_Bool)arg3;
 - (id)_accessibilitySpeakThisString;
 - (unsigned long long)accessibilityTraits;
 - (struct _NSRange)_accessibilityRawRangeForUITextRange:(id)arg1;
@@ -35,6 +39,7 @@
 - (id)accessibilityValue;
 - (unsigned long long)_accessibilityPositionInDirection:(long long)arg1 offset:(unsigned long long)arg2 forPosition:(unsigned long long)arg3;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
+- (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;
 - (long long)_accessibilityLineEndPosition;
 - (long long)_accessibilityTextInputLinePosition:(_Bool)arg1;

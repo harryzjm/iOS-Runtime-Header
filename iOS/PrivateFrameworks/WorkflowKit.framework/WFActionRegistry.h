@@ -24,6 +24,7 @@
 }
 
 + (id)sharedRegistry;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *actionsByCategory; // @synthesize actionsByCategory=_actionsByCategory;
 @property(readonly, nonatomic) NSMapTable *actionsByActionProvider; // @synthesize actionsByActionProvider=_actionsByActionProvider;
 @property(readonly, nonatomic) NSDictionary *actionsByIdentifier; // @synthesize actionsByIdentifier=_actionsByIdentifier;
@@ -31,7 +32,6 @@
 @property(readonly, nonatomic) NSArray *actionProvidersForFilling; // @synthesize actionProvidersForFilling=_actionProvidersForFilling;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *cacheUpdateAndFillQueue; // @synthesize cacheUpdateAndFillQueue=_cacheUpdateAndFillQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)actionProviderDidChange:(id)arg1 updatedActions:(id)arg2 removedActions:(id)arg3 addedActions:(id)arg4;
 - (void)addActions:(id)arg1 fromActionProvider:(id)arg2;
@@ -45,6 +45,7 @@
 - (id)actionsForCategory:(id)arg1;
 @property(readonly, nonatomic) NSSet *categories;
 @property(readonly, nonatomic) NSSet *actions;
+- (id)replacementActionForActionIdentifier:(id)arg1 serializedParameters:(id)arg2;
 - (id)createActionsWithIdentifiers:(id)arg1 serializedParameterArray:(id)arg2;
 - (id)createActionWithIdentifier:(id)arg1 serializedParameters:(id)arg2;
 @property(readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -52,6 +53,7 @@
 - (id)createActionWithShortcut:(id)arg1 error:(id *)arg2;
 - (id)handleIntentActionForDonatedIntent:(id)arg1;
 - (id)createActionWithDonation:(id)arg1;
+@property(readonly, nonatomic) NSSet *identifiersOfActionsDisabledOnWatch;
 - (id)updatedActionForResidentCompatibility:(id)arg1 inHome:(id)arg2;
 - (id)residentCompatibleActionsFromActions:(id)arg1 inHome:(id)arg2;
 - (id)suggestionsForHome:(id)arg1 includingRelatedActions:(_Bool)arg2;

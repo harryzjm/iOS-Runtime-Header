@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/CBPeripheralDelegate-Protocol.h>
 
-@class CBPeripheral, HDHealthServiceManager, HDProfile, HKDevice, NSMutableDictionary, NSString, NSUUID, _HKExpiringCompletionTimer;
+@class CBPeripheral, HDHealthServiceManager, HDProfile, HKDevice, NSMutableDictionary, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDHealthPeripheral : NSObject <CBPeripheralDelegate>
@@ -22,16 +22,15 @@
     HDHealthServiceManager *_serviceManager;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_servicesQueue;
-    _HKExpiringCompletionTimer *_privateModeTimer;
     NSMutableDictionary *_serviceForProperty;
     NSMutableDictionary *_propertiesAwaiting;
 }
 
 + (id)implementedProperties;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *propertiesAwaiting; // @synthesize propertiesAwaiting=_propertiesAwaiting;
 @property(retain, nonatomic) NSMutableDictionary *serviceForProperty; // @synthesize serviceForProperty=_serviceForProperty;
 @property(nonatomic) _Bool discoveredServices; // @synthesize discoveredServices=_discoveredServices;
-@property(retain, nonatomic) _HKExpiringCompletionTimer *privateModeTimer; // @synthesize privateModeTimer=_privateModeTimer;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *servicesQueue; // @synthesize servicesQueue=_servicesQueue;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(nonatomic) __weak HDHealthServiceManager *serviceManager; // @synthesize serviceManager=_serviceManager;
@@ -39,7 +38,6 @@
 @property(readonly, nonatomic) HKDevice *deviceInformation; // @synthesize deviceInformation=_deviceInformation;
 @property(readonly) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) CBPeripheral *cbPeripheral; // @synthesize cbPeripheral=_cbPeripheral;
-- (void).cxx_destruct;
 - (void)peripheral:(id)arg1 didUpdateNotificationStateForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didWriteValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 error:(id)arg3;
@@ -48,10 +46,6 @@
 - (void)peripheral:(id)arg1 didReadRSSI:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didModifyServices:(id)arg2;
 - (void)_queue_setDeviceInformation:(id)arg1;
-- (void)extendPrivateModeLease;
-- (void)_queue_handleTimerExpiration;
-- (void)_queue_setupTimer;
-@property(nonatomic) _Bool privateMode;
 - (void)_queue_respond:(id)arg1 forProperty:(id)arg2 withError:(id)arg3;
 - (_Bool)_queue_addPropertyHandler:(CDUnknownBlockType)arg1 forProperty:(id)arg2;
 - (void)service:(id)arg1 didReadProperty:(id)arg2 value:(id)arg3 error:(id)arg4;

@@ -15,6 +15,7 @@
 - (id)na_setByIntersectingWithSet:(id)arg1;
 - (id)na_setByFlattening;
 - (void)na_each:(CDUnknownBlockType)arg1;
+- (_Bool)na_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (_Bool)na_all:(CDUnknownBlockType)arg1;
 - (_Bool)na_any:(CDUnknownBlockType)arg1;
 - (id)na_firstObjectPassingTest:(CDUnknownBlockType)arg1;

@@ -6,18 +6,20 @@
 
 #import <NotesShared/ICNoteContainer-Protocol.h>
 
-@class CROrderedSet, ICAccount, ICCRDTIdentifierOrderedSetVersionedDocument, ICFolderCustomNoteSortType, NSArray, NSData, NSManagedObjectContext, NSString;
+@class CROrderedSet, ICAccount, ICCRDTIdentifierOrderedSetVersionedDocument, ICFolderCustomNoteSortType, NSArray, NSData, NSManagedObjectContext, NSNumber, NSString;
 
 @interface ICNoteContainer <ICNoteContainer>
 {
     _Bool _subFolderOrderMergeableDataDirty;
     ICCRDTIdentifierOrderedSetVersionedDocument *_subFolderIdentifiersOrderedSetDocument;
+    NSNumber *transientNoteCount;
 }
 
 + (id)keyPathsForValuesAffectingCloudAccount;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *transientNoteCount; // @synthesize transientNoteCount;
 @property(nonatomic, getter=isSubFolderOrderMergeableDataDirty) _Bool subFolderOrderMergeableDataDirty; // @synthesize subFolderOrderMergeableDataDirty=_subFolderOrderMergeableDataDirty;
 @property(retain, nonatomic) ICCRDTIdentifierOrderedSetVersionedDocument *subFolderIdentifiersOrderedSetDocument; // @synthesize subFolderIdentifiersOrderedSetDocument=_subFolderIdentifiersOrderedSetDocument;
-- (void).cxx_destruct;
 - (void)updateSubFolderMergeableDataChangeCount;
 - (void)writeSubFolderMergeableData;
 - (_Bool)mergeWithSubFolderMergeableData:(id)arg1;
@@ -36,7 +38,6 @@
 - (id)accountName;
 - (id)cloudAccount;
 @property(readonly, nonatomic) ICAccount *noteContainerAccount;
-- (id)detailForTableViewCell;
 - (id)titleForTableViewCell;
 - (id)titleForNavigationBar;
 - (_Bool)noteIsVisible:(id)arg1;
@@ -45,6 +46,7 @@
 @property(readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 @property(readonly, nonatomic) _Bool isAllNotesContainer;
 @property(readonly, nonatomic) _Bool canBeSharedViaICloud;
+@property(readonly, nonatomic) _Bool isSharedReadOnly;
 @property(readonly, nonatomic) _Bool isSharedViaICloud;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;

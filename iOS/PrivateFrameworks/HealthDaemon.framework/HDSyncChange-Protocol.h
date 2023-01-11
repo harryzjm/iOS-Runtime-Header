@@ -10,6 +10,7 @@
 @protocol HDSyncAnchorMap;
 
 @protocol HDSyncChange <NSObject>
+@property(readonly, nonatomic) long long encodedByteCount;
 @property(readonly, nonatomic) _Bool done;
 @property(readonly, nonatomic) NSNumber *sequenceNumber;
 @property(readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;

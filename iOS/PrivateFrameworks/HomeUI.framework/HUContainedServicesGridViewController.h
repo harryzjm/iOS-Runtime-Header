@@ -20,18 +20,19 @@
     id <HUContainedServiceGridViewControllerDelegate> _serviceGridDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isPresentedModally) _Bool presentedModally; // @synthesize presentedModally=_presentedModally;
 @property(nonatomic) __weak id <HUContainedServiceGridViewControllerDelegate> serviceGridDelegate; // @synthesize serviceGridDelegate=_serviceGridDelegate;
 @property(readonly, copy, nonatomic) HFItem<HUServiceContainerItem><NSCopying> *serviceContainerItem; // @synthesize serviceContainerItem=_serviceContainerItem;
 @property(nonatomic) _Bool requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
 @property(nonatomic) __weak id <HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
-- (void).cxx_destruct;
 - (void)_updateRightBarButtons;
 - (id)finishPresentation:(id)arg1 animated:(_Bool)arg2;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)detailsViewControllerForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (_Bool)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (id)layoutOptionsForSection:(long long)arg1;
+- (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)_edit:(id)arg1;
 - (void)viewDidLoad;
 - (void)_done:(id)arg1;

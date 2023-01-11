@@ -6,37 +6,26 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <WorkflowUI/WFActionDrawerCategoriesCollectionViewManagerDelegate-Protocol.h>
+@class UICollectionView, UICollectionViewFlowLayout, WFActionDrawerCategoriesCollectionViewManager, WFActionDrawerCategoriesMetrics;
 
-@class NSString, UICollectionView, WFActionDrawerCategoriesCollectionViewManager;
-@protocol WFActionDrawerCategoriesTableViewCellDelegate;
-
-@interface WFActionDrawerCategoriesTableViewCell : UITableViewCell <WFActionDrawerCategoriesCollectionViewManagerDelegate>
+@interface WFActionDrawerCategoriesTableViewCell : UITableViewCell
 {
-    id <WFActionDrawerCategoriesTableViewCellDelegate> _delegate;
+    _Bool _shouldStackVertically;
     UICollectionView *_categoriesCollectionView;
+    UICollectionViewFlowLayout *_categoriesFlowLayout;
     WFActionDrawerCategoriesCollectionViewManager *_categoriesCollectionViewManager;
+    WFActionDrawerCategoriesMetrics *_metrics;
 }
 
-+ (double)preferredHeightForContentTypeCategories:(id)arg1;
-@property(retain, nonatomic) WFActionDrawerCategoriesCollectionViewManager *categoriesCollectionViewManager; // @synthesize categoriesCollectionViewManager=_categoriesCollectionViewManager;
-@property(nonatomic) __weak UICollectionView *categoriesCollectionView; // @synthesize categoriesCollectionView=_categoriesCollectionView;
-@property(nonatomic) __weak id <WFActionDrawerCategoriesTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)categoriesCollectionViewManager:(id)arg1 didSelectCategoryForContentType:(id)arg2;
-- (void)categoriesCollectionViewManagerDidSelectCategoryScripting:(id)arg1 title:(id)arg2;
-- (void)categoriesCollectionViewManagerDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;
-- (void)categoriesCollectionViewManagerDidSelectCategoryApps:(id)arg1 title:(id)arg2;
-- (void)categoriesCollectionViewManager:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)categoriesCollectionViewManager:(id)arg1 didSelectAction:(id)arg2;
-- (void)configureWithContentTypeCategories:(id)arg1;
+@property(nonatomic) __weak WFActionDrawerCategoriesMetrics *metrics; // @synthesize metrics=_metrics;
+@property(retain, nonatomic) WFActionDrawerCategoriesCollectionViewManager *categoriesCollectionViewManager; // @synthesize categoriesCollectionViewManager=_categoriesCollectionViewManager;
+@property(nonatomic) __weak UICollectionViewFlowLayout *categoriesFlowLayout; // @synthesize categoriesFlowLayout=_categoriesFlowLayout;
+@property(nonatomic) __weak UICollectionView *categoriesCollectionView; // @synthesize categoriesCollectionView=_categoriesCollectionView;
+@property(nonatomic) _Bool shouldStackVertically; // @synthesize shouldStackVertically=_shouldStackVertically;
+- (void)adjustForVerticalStacking;
+- (void)configureWithContentTypeCategories:(id)arg1 coordinator:(id)arg2 metrics:(id)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

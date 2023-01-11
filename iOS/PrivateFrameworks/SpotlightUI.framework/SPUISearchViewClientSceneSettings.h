@@ -17,6 +17,8 @@
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(long long)arg3;
 - (id)keyDescriptionForSetting:(long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+@property(readonly) unsigned int searchHeaderContextID;
+@property(readonly) unsigned long long searchHeaderLayerRenderID;
 @property(readonly) double distanceToTopOfIcons;
 
 // Remaining properties

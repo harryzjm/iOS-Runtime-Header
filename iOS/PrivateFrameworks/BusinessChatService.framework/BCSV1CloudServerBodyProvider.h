@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)bodyDictionaryForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2;
-- (id)bodyDictionaryForConfigItem;
-- (id)bodyDictionaryForBusinessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2;
+- (id)bodyDictionaryForChatSuggestBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2 type:(long long)arg3;
+- (id)bodyDictionaryForConfigItemWithType:(long long)arg1;
+- (id)bodyDictionaryForBusinessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2 type:(long long)arg3;
 - (id)bodyDictionaryForBusinessItemRequestWithBizID:(id)arg1;
 - (id)jsonDataForBodyDictionary:(id)arg1;
-- (id)bodyForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2;
-- (id)bodyForConfigItemRequest;
-- (id)bodyForBusinessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2;
+- (id)bodyForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2 type:(long long)arg3;
+- (id)bodyForConfigItemRequestWithType:(long long)arg1;
+- (id)bodyForItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2 type:(long long)arg3;
 - (id)bodyForBusinessItemRequestWithBizID:(id)arg1;
 
 // Remaining properties

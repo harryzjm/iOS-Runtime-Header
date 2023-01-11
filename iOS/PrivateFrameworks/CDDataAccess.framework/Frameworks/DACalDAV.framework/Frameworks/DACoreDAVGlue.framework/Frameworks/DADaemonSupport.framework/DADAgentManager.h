@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DADBuddyStateObserver, DADREMLocalDBWatcher, NSArray, NSMutableArray, NSMutableDictionary;
+@class DADBuddyStateObserver, DADREMLocalDBWatcher, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol DADREMStoreProvider, DADREMUserNotificationPresentingProvider, OS_dispatch_queue;
 
 @interface DADAgentManager : NSObject
@@ -20,6 +20,7 @@
     CDUnknownBlockType _startAgentsWhenSystemReadyBlock;
     NSObject<OS_dispatch_queue> *_CTCellularUsagePolicyNotificationQ;
     struct __CTServerConnection *_ctServerConnection;
+    NSDictionary *_wirelessPolicies;
     int _pendingAccountSetupCount;
     DADBuddyStateObserver *_buddyStateObserver;
     NSMutableArray *_subCalHandlers;
@@ -27,11 +28,12 @@
     NSMutableDictionary *_disableMonitoringAgentsTokens;
 }
 
++ (_Bool)wirelessPolicy:(id)arg1 isMorePermissiveThanPolicy:(id)arg2;
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *disableMonitoringAgentsTokens; // @synthesize disableMonitoringAgentsTokens=_disableMonitoringAgentsTokens;
 @property(nonatomic) unsigned long long nextDisableMonitoringAgentsToken; // @synthesize nextDisableMonitoringAgentsToken=_nextDisableMonitoringAgentsToken;
 @property(retain, nonatomic) NSMutableArray *subCalHandlers; // @synthesize subCalHandlers=_subCalHandlers;
-- (void).cxx_destruct;
 - (void)upgradeAccountsInSimulator;
 - (void)disableActiveSync;
 - (void)enableActiveSync;
@@ -55,7 +57,7 @@
 - (void)_stopMonitoringAndSaveAgents;
 - (void)unregisterForBuddy;
 - (void)registerForBuddy;
-- (void)_loadAndStartMonitoringAgents;
+- (void)_loadAndStartMonitoringAgents:(_Bool)arg1;
 - (void)_handleCellularDataUsageChangedNotification;
 - (void)_registerForCTDataUsageNotificaiton;
 - (void)_resetMonitoringRequestsAndLoadAgents;
@@ -70,7 +72,7 @@
 - (void)_deviceDidWake;
 - (void)_deviceWillSleep;
 - (void)saveAndReleaseAgents;
-- (void)loadAgents;
+- (void)loadAgents:(_Bool)arg1;
 - (id)_accountInfoPath;
 - (id)_configFileForAgent:(id)arg1;
 - (id)accountWithAccountID:(id)arg1 andClassName:(id)arg2;
@@ -80,6 +82,7 @@
 - (void)dealloc;
 - (id)init;
 @property(retain, nonatomic) DADREMLocalDBWatcher *rem_localDBWatcher;
+@property(copy, nonatomic) CDUnknownBlockType rem_xpcEventHandler;
 @property(retain, nonatomic) id <DADREMUserNotificationPresentingProvider> rem_userNotificationPresentingProvider;
 @property(retain, nonatomic) id <DADREMStoreProvider> rem_storeProvider;
 

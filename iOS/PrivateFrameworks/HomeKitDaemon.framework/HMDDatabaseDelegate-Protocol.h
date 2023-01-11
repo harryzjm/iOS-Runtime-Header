@@ -6,15 +6,15 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NAFuture, NSDictionary, NSString;
 @protocol HMDDatabase;
 
 @protocol HMDDatabaseDelegate <NSObject>
 
 @optional
 - (void)database:(id <HMDDatabase>)arg1 didReceiveMessageWithUserInfo:(NSDictionary *)arg2;
-- (void)database:(id <HMDDatabase>)arg1 didRemoveZoneWithName:(NSString *)arg2;
-- (void)database:(id <HMDDatabase>)arg1 didStartUpZoneWithName:(NSString *)arg2;
-- (void)database:(id <HMDDatabase>)arg1 didCreateZoneWithName:(NSString *)arg2;
+- (void)database:(id <HMDDatabase>)arg1 didRemoveZoneWithName:(NSString *)arg2 isPrivate:(_Bool)arg3;
+- (NAFuture *)database:(id <HMDDatabase>)arg1 willRemoveZoneWithName:(NSString *)arg2 isPrivate:(_Bool)arg3;
+- (void)database:(id <HMDDatabase>)arg1 didCreateZoneWithName:(NSString *)arg2 isPrivate:(_Bool)arg3;
 @end
 

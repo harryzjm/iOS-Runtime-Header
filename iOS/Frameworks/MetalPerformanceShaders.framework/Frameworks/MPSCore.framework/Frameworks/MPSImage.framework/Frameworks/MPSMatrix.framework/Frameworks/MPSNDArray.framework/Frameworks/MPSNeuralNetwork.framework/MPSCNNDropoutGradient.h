@@ -11,7 +11,7 @@
     CDStruct_da2e99ad _maskStrideInPixels;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) CDStruct_14f26992 maskStrideInPixels; // @synthesize maskStrideInPixels=_maskStrideInPixels;
 @property(readonly, nonatomic) unsigned long long seed; // @synthesize seed=_seed;
 @property(readonly, nonatomic) float keepProbability; // @synthesize keepProbability=_keepProbability;

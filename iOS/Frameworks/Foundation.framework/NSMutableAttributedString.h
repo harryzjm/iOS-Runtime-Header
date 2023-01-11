@@ -24,6 +24,7 @@
 - (id)mutableString;
 - (void)setAttributes:(id)arg1 range:(struct _NSRange)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
+- (void)_inflectWithReplacements:(id)arg1;
 
 @end
 

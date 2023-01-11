@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXGMetalSpriteTexture-Protocol.h>
 
 @class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSObject, NSString, PXGColorProgram;
-@protocol MTLDevice, MTLTexture, OS_dispatch_queue;
+@protocol MTLDevice, MTLTexture, OS_dispatch_queue, PXGMetalTextureAtlasDelegate;
 
 @interface PXGMetalTextureAtlas <PXGMetalSpriteTexture>
 {
@@ -40,10 +40,13 @@
     long long _renderPipelineIndex;
     NSIndexSet *_skipRenderSpriteIndexes;
     unsigned long long _pixelFormat;
+    id <PXGMetalTextureAtlasDelegate> _delegate;
     struct CGSize _thumbnailSize;
 }
 
 + (unsigned int)maxCapacityForThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <PXGMetalTextureAtlasDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned int capacity; // @synthesize capacity=_capacity;
 @property(readonly, nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 @property(readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
@@ -51,7 +54,6 @@
 @property(nonatomic) long long renderPipelineIndex; // @synthesize renderPipelineIndex=_renderPipelineIndex;
 @property(readonly, nonatomic) PXGColorProgram *colorProgram; // @synthesize colorProgram=_colorProgram;
 @property(readonly, nonatomic) id <MTLTexture> texture; // @synthesize texture=_texture;
-- (void).cxx_destruct;
 - (void)_syncQueue_checkinThumbnailIndex:(unsigned int)arg1;
 - (unsigned int)_syncQueue_checkoutNextThumbnailIndex;
 - (void)_syncQueue_resizeStorageIfNeeded;
@@ -86,11 +88,12 @@
 - (void)_invalidateRenderedSpriteIndexes;
 - (unsigned int)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(id)arg2 bytesPerRow:(unsigned long long)arg3 contentsRect:(struct CGRect)arg4;
 @property(readonly, copy, nonatomic) NSIndexSet *thumbnailIndexesUsedBySprites;
+@property(readonly) _Bool isUnused;
 @property(readonly, nonatomic) unsigned int count;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
-- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacity:(unsigned int)arg3 device:(id)arg4;
+- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacity:(unsigned int)arg3 colorProgram:(id)arg4 device:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

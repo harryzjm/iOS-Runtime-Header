@@ -14,6 +14,7 @@
 {
 }
 
+- (id)personNodesToAnalyzeInGraph:(id)arg1 forAppleInternal:(_Bool)arg2;
 - (id)_personNodesToAnalyzeInGraph:(id)arg1;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;

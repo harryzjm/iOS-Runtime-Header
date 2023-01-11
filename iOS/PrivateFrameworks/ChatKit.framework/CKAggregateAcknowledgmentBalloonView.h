@@ -17,12 +17,12 @@
     UIView<CKGradientReferenceView> *_gradientReferenceView;
 }
 
-+ (id)_middleBubbleSquareImage;
-+ (id)_topBubbleSquareImage;
++ (id)_middleBubbleSquareImageWithTraitCollection:(id)arg1;
++ (id)_topBubbleSquareImageWithTraitCollection:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL solidColor; // @synthesize solidColor=_solidColor;
 @property(nonatomic) BOOL gradientColor; // @synthesize gradientColor=_gradientColor;
 @property(nonatomic) __weak UIView<CKGradientReferenceView> *gradientReferenceView; // @synthesize gradientReferenceView=_gradientReferenceView;
-- (void).cxx_destruct;
 - (void)prepareForReuse;
 - (void)prepareForDisplay;
 - (void)layoutSubviews;

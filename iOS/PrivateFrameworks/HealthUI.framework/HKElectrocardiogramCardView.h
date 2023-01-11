@@ -13,8 +13,10 @@
 @interface HKElectrocardiogramCardView : UIView <HKDateCacheObserver>
 {
     _Bool _onboarding;
+    _Bool _isSampleInteractive;
     HKElectrocardiogram *_sample;
     HKDateCache *_dateCache;
+    long long _activeAlgorithmVersion;
     HKRoundedHeaderView *_headerView;
     UIView *_cellBackgroundView;
     UIImageView *_heartImageView;
@@ -41,6 +43,7 @@
 + (id)_averageHeartRateSymptomsTextStyle;
 + (id)_accessibilityContentSizeCategory;
 + (double)estimatedHeight;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *largeTextConstraints; // @synthesize largeTextConstraints=_largeTextConstraints;
 @property(retain, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
 @property(retain, nonatomic) NSLayoutConstraint *heartImageViewHeightConstraint; // @synthesize heartImageViewHeightConstraint=_heartImageViewHeightConstraint;
@@ -54,10 +57,11 @@
 @property(retain, nonatomic) UIImageView *heartImageView; // @synthesize heartImageView=_heartImageView;
 @property(retain, nonatomic) UIView *cellBackgroundView; // @synthesize cellBackgroundView=_cellBackgroundView;
 @property(retain, nonatomic) HKRoundedHeaderView *headerView; // @synthesize headerView=_headerView;
+@property(readonly, nonatomic) _Bool isSampleInteractive; // @synthesize isSampleInteractive=_isSampleInteractive;
+@property(nonatomic) long long activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
 @property(nonatomic, getter=isOnboarding) _Bool onboarding; // @synthesize onboarding=_onboarding;
 @property(nonatomic) __weak HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property(retain, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
-- (void).cxx_destruct;
 - (id)_graphBackgroundColor;
 - (id)_cardBackgroundColor;
 - (id)_chevronColor;
@@ -67,14 +71,14 @@
 - (void)_updateForCurrentSizeCategory;
 - (void)_updateGraphTopConstraint;
 - (void)_updateTextConstraints;
-- (void)_updateUI;
+- (void)updateUI;
 - (void)_setUpGraph;
 - (void)_setupConstraints;
 - (void)_setupUI;
 - (void)dealloc;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(_Bool)arg3;
+- (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(_Bool)arg3 activeAlgorithmVersion:(long long)arg4 isSampleInteractive:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

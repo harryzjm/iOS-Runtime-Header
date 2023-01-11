@@ -10,6 +10,7 @@
 
 @protocol IKJSRestrictions <JSExport>
 @property(readonly, nonatomic) _Bool allowsErotica;
+@property(readonly, nonatomic) _Bool allowsMusicVideos;
 @property(readonly, nonatomic) _Bool allowsExplicit;
 @property(readonly, nonatomic) long long maxTVShowRank;
 @property(readonly, nonatomic) long long maxMovieRank;

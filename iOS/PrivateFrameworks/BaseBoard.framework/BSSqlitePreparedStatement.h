@@ -13,12 +13,10 @@
     BSSqliteDatabaseConnection *_dbConnection;
 }
 
-+ (id)_newPreparedStatementForDatabaseConnection:(id)arg1 withSQLQuery:(id)arg2;
 - (void).cxx_destruct;
 - (_Bool)executeWithBindings:(id)arg1 resultRowHandler:(CDUnknownBlockType)arg2 error:(out id *)arg3;
 - (void)dealloc;
 - (id)init;
-- (id)_initWithDatabaseConnection:(id)arg1;
 
 @end
 

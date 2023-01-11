@@ -15,6 +15,7 @@
     unsigned long long _count;
 }
 
+- (void).cxx_destruct;
 @property(readonly) unsigned long long count; // @synthesize count=_count;
 @property(retain) IMDoubleLinkedListNode *last; // @synthesize last=_last;
 @property(retain) IMDoubleLinkedListNode *first; // @synthesize first=_first;

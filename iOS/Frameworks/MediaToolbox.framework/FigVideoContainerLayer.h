@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer;
+@class CALayer, NSString;
 
 @interface FigVideoContainerLayer
 {
     CALayer *_videoLayer;
+    NSString *_STSLabel;
     _Bool _shouldResizeVideoLayer;
     _Bool _isForScrubbingOnly;
+    CALayer *_STSLayer;
 }
 
 + (id)defaultActionForKey:(id)arg1;
+@property(retain, nonatomic) NSString *STSLabel; // @synthesize STSLabel=_STSLabel;
 @property(nonatomic, getter=isForScrubbingOnly) _Bool forScrubbingOnly; // @synthesize forScrubbingOnly=_isForScrubbingOnly;
 @property(nonatomic) _Bool shouldResizeVideoLayer; // @synthesize shouldResizeVideoLayer=_shouldResizeVideoLayer;
-@property(retain, nonatomic) CALayer *videoLayer; // @synthesize videoLayer=_videoLayer;
+- (void)setToneMapToStandardDynamicRange:(_Bool)arg1;
+@property(retain, nonatomic) CALayer *videoLayer;
 - (void)layoutSublayers;
 - (void)dealloc;
 - (id)actionForKey:(id)arg1;

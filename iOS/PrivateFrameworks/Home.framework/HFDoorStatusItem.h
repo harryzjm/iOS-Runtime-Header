@@ -8,10 +8,20 @@
 {
 }
 
-- (CDUnknownBlockType)_isOpenTest;
++ (id)serviceType;
 - (id)_formatStringTypeComponent;
-- (id)_isOpenCharacteristicType;
-- (id)_serviceType;
+- (id)multipleUnknownServicesFormatString;
+- (id)oneUnknownServiceFormatString;
+- (id)multipleClosedServicesFormatString;
+- (id)oneClosedServiceFormatString;
+- (id)multipleClosingServicesFormatString;
+- (id)oneClosingServiceFormatString;
+- (id)multipleOpeningServicesFormatString;
+- (id)oneOpeningServiceFormatString;
+- (id)multipleOpenServicesFormatString;
+- (id)oneOpenServiceFormatString;
+- (id)multipleObstructedServicesFormatString;
+- (id)oneObstructedServiceFormatString;
 
 @end
 

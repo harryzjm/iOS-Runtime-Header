@@ -13,7 +13,6 @@
 @interface GEOPDPhotoPosition : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_9f2792e4 _cameraMetadataIndexs;
     GEOPDGroundDataBuild *_build;
     NSMutableArray *_cameraMetadatas;
@@ -24,6 +23,9 @@
     GEOPDOrientedPosition *_position;
     GEOPDRigMetrics *_rigMetrics;
     GEOPDOrientedTilePosition *_tilePosition;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _buildTableIndex;
     int _revision;
     struct {
@@ -39,18 +41,7 @@
         unsigned int read_position:1;
         unsigned int read_rigMetrics:1;
         unsigned int read_tilePosition:1;
-        unsigned int wrote_cameraMetadataIndexs:1;
-        unsigned int wrote_build:1;
-        unsigned int wrote_cameraMetadatas:1;
-        unsigned int wrote_imageryTimestamp:1;
-        unsigned int wrote_imdataId:1;
-        unsigned int wrote_parentTile:1;
-        unsigned int wrote_positionGeo:1;
-        unsigned int wrote_position:1;
-        unsigned int wrote_rigMetrics:1;
-        unsigned int wrote_tilePosition:1;
-        unsigned int wrote_buildTableIndex:1;
-        unsigned int wrote_revision:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -65,50 +56,45 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDRigMetrics *rigMetrics;
 @property(readonly, nonatomic) _Bool hasRigMetrics;
-- (void)_readRigMetrics;
 @property(retain, nonatomic) GEOTileCoordinate *parentTile;
 @property(readonly, nonatomic) _Bool hasParentTile;
-- (void)_readParentTile;
 @property(retain, nonatomic) GEOPDOrientedTilePosition *tilePosition;
 @property(readonly, nonatomic) _Bool hasTilePosition;
-- (void)_readTilePosition;
 - (void)setCameraMetadataIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)cameraMetadataIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsCameraMetadataIndex:(unsigned int)arg1;
 - (void)addCameraMetadataIndex:(unsigned int)arg1;
 - (void)clearCameraMetadataIndexs;
 @property(readonly, nonatomic) unsigned int *cameraMetadataIndexs;
 @property(readonly, nonatomic) unsigned long long cameraMetadataIndexsCount;
-- (void)_readCameraMetadataIndexs;
 @property(retain, nonatomic) GEOPDGroundDataBuild *build;
 @property(readonly, nonatomic) _Bool hasBuild;
-- (void)_readBuild;
 @property(nonatomic) _Bool hasBuildTableIndex;
 @property(nonatomic) unsigned int buildTableIndex;
 @property(retain, nonatomic) GEOPDGeographicCoordinate *positionGeo;
 @property(readonly, nonatomic) _Bool hasPositionGeo;
-- (void)_readPositionGeo;
 @property(nonatomic) _Bool hasImageryTimestamp;
 @property(nonatomic) unsigned long long imageryTimestamp;
 @property(nonatomic) _Bool hasRevision;
 @property(nonatomic) int revision;
 @property(retain, nonatomic) GEOPDOrientedPosition *position;
 @property(readonly, nonatomic) _Bool hasPosition;
-- (void)_readPosition;
 - (id)cameraMetadataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cameraMetadatasCount;
-- (void)_addNoFlagsCameraMetadata:(id)arg1;
 - (void)addCameraMetadata:(id)arg1;
 - (void)clearCameraMetadatas;
 @property(retain, nonatomic) NSMutableArray *cameraMetadatas;
-- (void)_readCameraMetadatas;
 @property(nonatomic) _Bool hasImdataId;
 @property(nonatomic) unsigned long long imdataId;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

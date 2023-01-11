@@ -10,6 +10,7 @@
 
 @protocol HFTriggerBuilderContextProviding <NSObject>
 @property(readonly, copy, nonatomic) NSSet *unsupportedTriggers;
+@property(readonly, copy, nonatomic) NSString *doneButtonTitle;
 @property(readonly, copy, nonatomic) NSString *deleteConfirmationAlertMessage;
 @property(readonly, copy, nonatomic) NSString *deleteConfirmationAlertTitle;
 @property(readonly, copy, nonatomic) NSString *deleteInstructionDescription;
@@ -17,9 +18,11 @@
 @property(readonly, copy, nonatomic) NSString *actionEditorInstructionsDescription;
 @property(readonly, copy, nonatomic) NSString *serviceActionsInstructionDescription;
 @property(readonly, copy, nonatomic) NSString *testActionsInstructionDescription;
+@property(readonly, nonatomic) _Bool filtersEmptyActionSets;
 @property(readonly, nonatomic) _Bool allowDurationEditing;
 @property(readonly, nonatomic) _Bool showConditionTriggers;
 @property(readonly, nonatomic) _Bool showActionSetsInstructions;
+@property(readonly, nonatomic) _Bool showTriggerDeleteButton;
 @property(readonly, nonatomic) _Bool showTriggerEnableSwitch;
 @property(readonly, nonatomic) _Bool showTriggerSummary;
 @end

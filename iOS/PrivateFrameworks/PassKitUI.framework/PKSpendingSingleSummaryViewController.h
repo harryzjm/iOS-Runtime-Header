@@ -13,12 +13,12 @@
 #import <PassKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKPaymentPass, PKSpendingSummary, PKSpendingSummaryFooterView, PKSpendingSummaryLayout, PKSpendingSummaryPresenter, PKTransactionGroupItemPresenter, UIGestureRecognizer;
+@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKSpendingSummary, PKSpendingSummaryFooterView, PKSpendingSummaryLayout, PKSpendingSummaryPresenter, PKTransactionGroupItemPresenter, PKTransactionSource, UIGestureRecognizer;
 @protocol PKSpendingSingleSummaryViewControllerDelegate;
 
 @interface PKSpendingSingleSummaryViewController : UICollectionViewController <PKPaymentDataProviderDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, PKSpendingSummaryFooterViewDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKSpendingSummaryResponder>
 {
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
     PKAccountService *_accountService;
     unsigned long long _feature;
@@ -54,6 +54,7 @@
     struct UIEdgeInsets _contentInset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic) unsigned long long selectionType; // @synthesize selectionType=_selectionType;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
@@ -61,7 +62,6 @@
 @property(retain, nonatomic) UIGestureRecognizer *gestureRecognizerRequiredToFail; // @synthesize gestureRecognizerRequiredToFail=_gestureRecognizerRequiredToFail;
 @property(readonly, nonatomic) PKSpendingSummary *summary; // @synthesize summary=_summary;
 @property(nonatomic) __weak id <PKSpendingSingleSummaryViewControllerDelegate> scrollingDelegate; // @synthesize scrollingDelegate=_scrollingDelegate;
-- (void).cxx_destruct;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)buttonTappedInFooterView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -81,6 +81,9 @@
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)_applyMaskToCell:(id)arg1 firstInSection:(_Bool)arg2 lastInSection:(_Bool)arg3;
+- (id)_nonSpendingTransactionGroupForType:(unsigned long long)arg1;
+- (unsigned long long)_nonSpendingTransactionTypeForRow:(long long)arg1;
+- (long long)_numberOfNonSpendingTransactionTypeRowsEnabled;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -92,7 +95,7 @@
 - (void)setAlphaForTransition:(double)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithPaymentPass:(id)arg1 account:(id)arg2 transactionGroupPresenter:(id)arg3 summaryPresenter:(id)arg4 currentMonthTransactions:(id)arg5 upcomingScheduledPayments:(id)arg6;
+- (id)initWithTransationSource:(id)arg1 account:(id)arg2 transactionGroupPresenter:(id)arg3 summaryPresenter:(id)arg4 currentMonthTransactions:(id)arg5 upcomingScheduledPayments:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

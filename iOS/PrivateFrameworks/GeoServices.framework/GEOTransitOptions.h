@@ -13,23 +13,23 @@
 @interface GEOTransitOptions : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _avoidedModes;
     GEOFareOptions *_fareOptions;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _prioritization;
     int _routingBehavior;
+    _Bool _enableIncidents;
     struct {
         unsigned int has_prioritization:1;
         unsigned int has_routingBehavior:1;
+        unsigned int has_enableIncidents:1;
         unsigned int read_unknownFields:1;
         unsigned int read_avoidedModes:1;
         unsigned int read_fareOptions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_avoidedModes:1;
-        unsigned int wrote_fareOptions:1;
-        unsigned int wrote_prioritization:1;
-        unsigned int wrote_routingBehavior:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,15 +45,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasEnableIncidents;
+@property(nonatomic) _Bool enableIncidents;
 - (int)StringAsRoutingBehavior:(id)arg1;
 - (id)routingBehaviorAsString:(int)arg1;
 @property(nonatomic) _Bool hasRoutingBehavior;
 @property(nonatomic) int routingBehavior;
 @property(retain, nonatomic) GEOFareOptions *fareOptions;
 @property(readonly, nonatomic) _Bool hasFareOptions;
-- (void)_readFareOptions;
 - (int)StringAsPrioritization:(id)arg1;
 - (id)prioritizationAsString:(int)arg1;
 @property(nonatomic) _Bool hasPrioritization;
@@ -62,13 +66,13 @@
 - (id)avoidedModesAsString:(int)arg1;
 - (void)setAvoidedModes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsAvoidedMode:(int)arg1;
 - (void)addAvoidedMode:(int)arg1;
 - (void)clearAvoidedModes;
 @property(readonly, nonatomic) int *avoidedModes;
 @property(readonly, nonatomic) unsigned long long avoidedModesCount;
-- (void)_readAvoidedModes;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

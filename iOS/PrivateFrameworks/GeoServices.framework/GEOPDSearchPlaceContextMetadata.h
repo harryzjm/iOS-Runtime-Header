@@ -8,33 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchPlaceContextMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_alternateSearchableNames;
     NSString *_interpretedCategory;
+    NSString *_matchedDisplayNameLanguageCode;
     NSString *_matchedDisplayName;
     NSString *_normalizedQuery;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _isDefaultName;
     struct {
         unsigned int has_isDefaultName:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_alternateSearchableNames:1;
         unsigned int read_interpretedCategory:1;
+        unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
         unsigned int read_normalizedQuery:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_interpretedCategory:1;
-        unsigned int wrote_matchedDisplayName:1;
-        unsigned int wrote_normalizedQuery:1;
-        unsigned int wrote_isDefaultName:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)alternateSearchableNameType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -46,19 +49,28 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)alternateSearchableNameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternateSearchableNamesCount;
+- (void)addAlternateSearchableName:(id)arg1;
+- (void)clearAlternateSearchableNames;
+@property(retain, nonatomic) NSMutableArray *alternateSearchableNames;
+@property(retain, nonatomic) NSString *matchedDisplayNameLanguageCode;
+@property(readonly, nonatomic) _Bool hasMatchedDisplayNameLanguageCode;
 @property(retain, nonatomic) NSString *interpretedCategory;
 @property(readonly, nonatomic) _Bool hasInterpretedCategory;
-- (void)_readInterpretedCategory;
 @property(retain, nonatomic) NSString *normalizedQuery;
 @property(readonly, nonatomic) _Bool hasNormalizedQuery;
-- (void)_readNormalizedQuery;
 @property(nonatomic) _Bool hasIsDefaultName;
 @property(nonatomic) _Bool isDefaultName;
 @property(retain, nonatomic) NSString *matchedDisplayName;
 @property(readonly, nonatomic) _Bool hasMatchedDisplayName;
-- (void)_readMatchedDisplayName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

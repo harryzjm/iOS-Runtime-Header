@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GKDashboardChallengeDetailViewController;
+@class GKChallengeDetailViewController, GKDashboardChallengeDetailViewController;
 
 @protocol GKDashboardChallengeDetailViewControllerDelegate
+- (void)newDashboardUserDidSelectPlayChallenge:(GKChallengeDetailViewController *)arg1;
 - (void)userDidSelectPlay:(GKDashboardChallengeDetailViewController *)arg1;
 @end
 

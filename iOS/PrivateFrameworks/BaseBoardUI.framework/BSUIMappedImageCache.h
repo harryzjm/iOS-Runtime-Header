@@ -47,8 +47,6 @@
 - (id)imageForKey:(id)arg1 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)imageForKey:(id)arg1 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2;
 - (id)imageForKey:(id)arg1;
-- (void)_setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3 andCPBitmapReadFlags:(int)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)_imageForKey:(id)arg1 withCPBitmapReadFlags:(int)arg2 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)initWithUniqueIdentifier:(id)arg1 options:(id)arg2;
 - (id)initWithUniqueIdentifier:(id)arg1;

@@ -13,17 +13,17 @@
 @interface GEORPGroundViewFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPGroundViewFeedbackContext *_groundViewContext;
     GEORPGroundViewCorrections *_groundViewCorrections;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_groundViewContext:1;
         unsigned int read_groundViewCorrections:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_groundViewContext:1;
-        unsigned int wrote_groundViewCorrections:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,14 +39,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPGroundViewCorrections *groundViewCorrections;
 @property(readonly, nonatomic) _Bool hasGroundViewCorrections;
-- (void)_readGroundViewCorrections;
 @property(retain, nonatomic) GEORPGroundViewFeedbackContext *groundViewContext;
 @property(readonly, nonatomic) _Bool hasGroundViewContext;
-- (void)_readGroundViewContext;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

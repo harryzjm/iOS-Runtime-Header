@@ -4,19 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <Accounts/ACPluginLoader.h>
 
-@interface ACDPluginLoader : NSObject
+@interface ACDPluginLoader : ACPluginLoader
 {
 }
 
 + (id)pluginForIdentifier:(id)arg1 subpath:(id)arg2;
 + (id)_buildPluginCache;
 + (id)_currentSystemVersion;
-+ (id)pluginWithName:(id)arg1 inSubpath:(id)arg2;
-+ (id)pluginBundlesAtSubpath:(id)arg1;
-+ (id)_validatedBundleAtURL:(id)arg1;
-+ (id)_accountsPluginDirectoryURL:(id)arg1;
 
 @end
 

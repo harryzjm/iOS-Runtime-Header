@@ -16,13 +16,17 @@
     long long _lineJoin;
     double _miterLimit;
     double _alpha;
+    double _strokeStart;
+    double _strokeEnd;
     struct unfair_lock _propertiesLock;
 }
 
-@property(readonly, nonatomic, getter=_style) shared_ptr_e0acdecc style; // @synthesize style=_style;
-@property(readonly, nonatomic) NSArray *polygons; // @synthesize polygons=_polygons;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_style) shared_ptr_e0acdecc style; // @synthesize style=_style;
+@property(readonly, nonatomic) NSArray *polygons; // @synthesize polygons=_polygons;
+@property(nonatomic) double strokeEnd;
+@property(nonatomic) double strokeStart;
 @property(nonatomic) double alpha;
 @property(nonatomic) struct CGColor *strokeColor;
 @property(nonatomic) struct CGColor *fillColor;

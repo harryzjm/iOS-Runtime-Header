@@ -8,7 +8,7 @@
 
 #import <DocumentManagerExecutables/UIKeyInput-Protocol.h>
 
-@class MISSING_TYPE, UIView;
+@class MISSING_TYPE, UITextInputAssistantItem, UIView;
 
 @interface _TtC26DocumentManagerExecutables24DOCTypeToFocusController : UIResponder <UIKeyInput>
 {
@@ -26,6 +26,8 @@
 - (void)insertText:(id)arg1;
 - (void)dealloc;
 @property(nonatomic, readonly) _Bool hasText;
+@property(nonatomic, readonly) UITextInputAssistantItem *inputAssistantItem;
+@property(nonatomic) long long autocorrectionType;
 
 @end
 

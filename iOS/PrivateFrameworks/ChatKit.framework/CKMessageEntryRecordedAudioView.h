@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface CKMessageEntryRecordedAudioView : UIView <CKAudioControllerDelegate>
 {
     CKAudioMediaObject *_audioMediaObject;
-    UIButton *_deleteButton;
+    UIButton *_playPauseDeleteButton;
     id <CKMessageEntryRecordedAudioViewDelegate> _delegate;
     UIVisualEffectView *_blurView;
     UIImageView *_balloonImageView;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSString *_timeFormat;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *timeFormat; // @synthesize timeFormat=_timeFormat;
 @property(nonatomic) double time; // @synthesize time=_time;
 @property(retain, nonatomic) UIImageView *waveformImageView; // @synthesize waveformImageView=_waveformImageView;
@@ -36,21 +37,24 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImageView *balloonImageView; // @synthesize balloonImageView=_balloonImageView;
 @property(retain, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
 @property(nonatomic) __weak id <CKMessageEntryRecordedAudioViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIButton *deleteButton; // @synthesize deleteButton=_deleteButton;
+@property(retain, nonatomic) UIButton *playPauseDeleteButton; // @synthesize playPauseDeleteButton=_playPauseDeleteButton;
 @property(retain, nonatomic) CKAudioMediaObject *audioMediaObject; // @synthesize audioMediaObject=_audioMediaObject;
-- (void).cxx_destruct;
 - (void)audioControllerDidStop:(id)arg1;
 - (void)audioControllerDidPause:(id)arg1;
 - (void)audioController:(id)arg1 mediaObjectProgressDidChange:(id)arg2 currentTime:(double)arg3 duration:(double)arg4;
 - (void)audioController:(id)arg1 mediaObjectDidFinishPlaying:(id)arg2;
+- (void)audioControllerPlayingDidChange:(id)arg1;
 @property(readonly, nonatomic) _Bool isPlaying;
 - (void)pause;
 - (void)play;
 - (void)updateProgress;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)updateTimeString;
 - (void)dealloc;
+- (void)handlePlayPauseDelete:(id)arg1;
+- (void)updatePlayPauseDeleteButton;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

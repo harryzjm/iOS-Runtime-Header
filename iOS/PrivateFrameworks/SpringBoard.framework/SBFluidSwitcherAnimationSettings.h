@@ -10,7 +10,8 @@
 
 @interface SBFluidSwitcherAnimationSettings : PTSettings
 {
-    _Bool _animateAppSelectionDimming;
+    _Bool _allowIconZoomFromMediumWidgets;
+    _Bool _allowIconZoomFromLargeWidgets;
     SBFFluidBehaviorSettings *_layoutSettings;
     SBFFluidBehaviorSettings *_zoomUpSettings;
     SBFFluidBehaviorSettings *_iconZoomDownSettings;
@@ -35,6 +36,20 @@
     SBFFluidBehaviorSettings *_homeGestureBottomRowZoomDownLayoutSettings;
     SBFFluidBehaviorSettings *_homeGestureBottomRowZoomDownPositionSettings;
     SBFFluidBehaviorSettings *_homeGestureBottomRowZoomDownScaleSettings;
+    SBFFluidBehaviorSettings *_homeGestureSmallWidgetZoomDownLayoutSettings;
+    SBFFluidBehaviorSettings *_homeGestureSmallWidgetZoomDownPositionSettings;
+    SBFFluidBehaviorSettings *_homeGestureSmallWidgetZoomDownScaleSettings;
+    SBFFluidBehaviorSettings *_homeGestureMediumWidgetZoomDownLayoutSettings;
+    SBFFluidBehaviorSettings *_homeGestureMediumWidgetZoomDownPositionSettings;
+    SBFFluidBehaviorSettings *_homeGestureMediumWidgetZoomDownScaleSettings;
+    SBFFluidBehaviorSettings *_homeGestureLargeWidgetZoomDownLayoutSettings;
+    SBFFluidBehaviorSettings *_homeGestureLargeWidgetZoomDownPositionSettings;
+    SBFFluidBehaviorSettings *_homeGestureLargeWidgetZoomDownScaleSettings;
+    double _zoomDownWidgetScaleVelocityYMinimum;
+    double _zoomDownWidgetScaleVelocityYMaximum;
+    double _zoomDownWidgetScaleOvershootMinimumMultiplier;
+    double _zoomDownWidgetScaleOvershootMaximumMultiplier;
+    double _zoomDownWidgetScaleOvershootDuration;
     SBFFluidBehaviorSettings *_arcSwipeSettings;
     SBFFluidBehaviorSettings *_appToSwitcherCornerRadiusSettings;
     SBFFluidBehaviorSettings *_gestureInitiatedAppToSwitcherSettings;
@@ -61,6 +76,7 @@
     double _crossblurDosidoLargeScale;
     double _crossblurDosidoBlurRadius;
     double _crossblurRasterizationScale;
+    SBFFluidBehaviorSettings *_crossfadeDosidoSettings;
     SBFFluidBehaviorSettings *_backdropBlurSettings;
     SBFFluidBehaviorSettings *_homeScreenOpacitySettings;
     SBFFluidBehaviorSettings *_homeScreenScaleSettings;
@@ -68,7 +84,6 @@
     SBFFluidBehaviorSettings *_centerZoomOpacitySettings;
     SBFFluidBehaviorSettings *_wallpaperScaleSettings;
     SBFFluidBehaviorSettings *_appSelectionSquishSettings;
-    SBFFluidBehaviorSettings *_appSelectionDimSettings;
     SBFFluidBehaviorSettings *_statusBarFadeInSettings;
     SBFFluidBehaviorSettings *_statusBarFadeOutSettings;
     double _statusBarToApexBounceAnimationDuration;
@@ -85,6 +100,12 @@
     double _siriSwipeDismissHapticDelay;
     double _siriSwipeDismissZoomOutDelay;
     double _siriSwipeDismissClientAnimationsDelay;
+    SBFFluidBehaviorSettings *_reopenButtonScaleSettings;
+    double _reopenButtonInitialScale;
+    double _reopenButtonFadeInDelay;
+    SBFFluidBehaviorSettings *_bannerUnfurlSettings;
+    SBFFluidBehaviorSettings *_bannerUnfurlWallpaperAlphaSettings;
+    double _bannerUnfurlWallpaperAlphaDelay;
     double _disableAsyncRenderingTransitionPercentage;
     double _disallowAcceleratedHomeButtonPressTransitionPercentage;
     double _centerZoomScale;
@@ -107,6 +128,7 @@
 }
 
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
 @property(nonatomic) double emptySwitcherDismissDelay; // @synthesize emptySwitcherDismissDelay=_emptySwitcherDismissDelay;
 @property(nonatomic) double iconZoomFloatingDockFadeDelay; // @synthesize iconZoomFloatingDockFadeDelay=_iconZoomFloatingDockFadeDelay;
 @property(nonatomic) double reduceMotionCrossfadeDuration; // @synthesize reduceMotionCrossfadeDuration=_reduceMotionCrossfadeDuration;
@@ -126,6 +148,12 @@
 @property(nonatomic) double centerZoomScale; // @synthesize centerZoomScale=_centerZoomScale;
 @property(nonatomic) double disallowAcceleratedHomeButtonPressTransitionPercentage; // @synthesize disallowAcceleratedHomeButtonPressTransitionPercentage=_disallowAcceleratedHomeButtonPressTransitionPercentage;
 @property(nonatomic) double disableAsyncRenderingTransitionPercentage; // @synthesize disableAsyncRenderingTransitionPercentage=_disableAsyncRenderingTransitionPercentage;
+@property(nonatomic) double bannerUnfurlWallpaperAlphaDelay; // @synthesize bannerUnfurlWallpaperAlphaDelay=_bannerUnfurlWallpaperAlphaDelay;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *bannerUnfurlWallpaperAlphaSettings; // @synthesize bannerUnfurlWallpaperAlphaSettings=_bannerUnfurlWallpaperAlphaSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *bannerUnfurlSettings; // @synthesize bannerUnfurlSettings=_bannerUnfurlSettings;
+@property(nonatomic) double reopenButtonFadeInDelay; // @synthesize reopenButtonFadeInDelay=_reopenButtonFadeInDelay;
+@property(nonatomic) double reopenButtonInitialScale; // @synthesize reopenButtonInitialScale=_reopenButtonInitialScale;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *reopenButtonScaleSettings; // @synthesize reopenButtonScaleSettings=_reopenButtonScaleSettings;
 @property(nonatomic) double siriSwipeDismissClientAnimationsDelay; // @synthesize siriSwipeDismissClientAnimationsDelay=_siriSwipeDismissClientAnimationsDelay;
 @property(nonatomic) double siriSwipeDismissZoomOutDelay; // @synthesize siriSwipeDismissZoomOutDelay=_siriSwipeDismissZoomOutDelay;
 @property(nonatomic) double siriSwipeDismissHapticDelay; // @synthesize siriSwipeDismissHapticDelay=_siriSwipeDismissHapticDelay;
@@ -142,8 +170,6 @@
 @property(nonatomic) double statusBarToApexBounceAnimationDuration; // @synthesize statusBarToApexBounceAnimationDuration=_statusBarToApexBounceAnimationDuration;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *statusBarFadeOutSettings; // @synthesize statusBarFadeOutSettings=_statusBarFadeOutSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *statusBarFadeInSettings; // @synthesize statusBarFadeInSettings=_statusBarFadeInSettings;
-@property(retain, nonatomic) SBFFluidBehaviorSettings *appSelectionDimSettings; // @synthesize appSelectionDimSettings=_appSelectionDimSettings;
-@property(nonatomic) _Bool animateAppSelectionDimming; // @synthesize animateAppSelectionDimming=_animateAppSelectionDimming;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *appSelectionSquishSettings; // @synthesize appSelectionSquishSettings=_appSelectionSquishSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *wallpaperScaleSettings; // @synthesize wallpaperScaleSettings=_wallpaperScaleSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *centerZoomOpacitySettings; // @synthesize centerZoomOpacitySettings=_centerZoomOpacitySettings;
@@ -151,6 +177,7 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeScreenScaleSettings; // @synthesize homeScreenScaleSettings=_homeScreenScaleSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeScreenOpacitySettings; // @synthesize homeScreenOpacitySettings=_homeScreenOpacitySettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *backdropBlurSettings; // @synthesize backdropBlurSettings=_backdropBlurSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *crossfadeDosidoSettings; // @synthesize crossfadeDosidoSettings=_crossfadeDosidoSettings;
 @property(nonatomic) double crossblurRasterizationScale; // @synthesize crossblurRasterizationScale=_crossblurRasterizationScale;
 @property(nonatomic) double crossblurDosidoBlurRadius; // @synthesize crossblurDosidoBlurRadius=_crossblurDosidoBlurRadius;
 @property(nonatomic) double crossblurDosidoLargeScale; // @synthesize crossblurDosidoLargeScale=_crossblurDosidoLargeScale;
@@ -161,6 +188,8 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *dosidoScaleUpSettings; // @synthesize dosidoScaleUpSettings=_dosidoScaleUpSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *dosidoScaleDownSettings; // @synthesize dosidoScaleDownSettings=_dosidoScaleDownSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *dosidoSettings; // @synthesize dosidoSettings=_dosidoSettings;
+@property(nonatomic) _Bool allowIconZoomFromLargeWidgets; // @synthesize allowIconZoomFromLargeWidgets=_allowIconZoomFromLargeWidgets;
+@property(nonatomic) _Bool allowIconZoomFromMediumWidgets; // @synthesize allowIconZoomFromMediumWidgets=_allowIconZoomFromMediumWidgets;
 @property(nonatomic) double appToSwitcherTransitionMinCardScaleFactor; // @synthesize appToSwitcherTransitionMinCardScaleFactor=_appToSwitcherTransitionMinCardScaleFactor;
 @property(nonatomic) double zoomDownVelocityXPositionResponseMultiplier; // @synthesize zoomDownVelocityXPositionResponseMultiplier=_zoomDownVelocityXPositionResponseMultiplier;
 @property(nonatomic) double zoomDownVelocityXMaximum; // @synthesize zoomDownVelocityXMaximum=_zoomDownVelocityXMaximum;
@@ -177,6 +206,20 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *gestureInitiatedAppToSwitcherSettings; // @synthesize gestureInitiatedAppToSwitcherSettings=_gestureInitiatedAppToSwitcherSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *appToSwitcherCornerRadiusSettings; // @synthesize appToSwitcherCornerRadiusSettings=_appToSwitcherCornerRadiusSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *arcSwipeSettings; // @synthesize arcSwipeSettings=_arcSwipeSettings;
+@property(nonatomic) double zoomDownWidgetScaleOvershootDuration; // @synthesize zoomDownWidgetScaleOvershootDuration=_zoomDownWidgetScaleOvershootDuration;
+@property(nonatomic) double zoomDownWidgetScaleOvershootMaximumMultiplier; // @synthesize zoomDownWidgetScaleOvershootMaximumMultiplier=_zoomDownWidgetScaleOvershootMaximumMultiplier;
+@property(nonatomic) double zoomDownWidgetScaleOvershootMinimumMultiplier; // @synthesize zoomDownWidgetScaleOvershootMinimumMultiplier=_zoomDownWidgetScaleOvershootMinimumMultiplier;
+@property(nonatomic) double zoomDownWidgetScaleVelocityYMaximum; // @synthesize zoomDownWidgetScaleVelocityYMaximum=_zoomDownWidgetScaleVelocityYMaximum;
+@property(nonatomic) double zoomDownWidgetScaleVelocityYMinimum; // @synthesize zoomDownWidgetScaleVelocityYMinimum=_zoomDownWidgetScaleVelocityYMinimum;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureLargeWidgetZoomDownScaleSettings; // @synthesize homeGestureLargeWidgetZoomDownScaleSettings=_homeGestureLargeWidgetZoomDownScaleSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureLargeWidgetZoomDownPositionSettings; // @synthesize homeGestureLargeWidgetZoomDownPositionSettings=_homeGestureLargeWidgetZoomDownPositionSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureLargeWidgetZoomDownLayoutSettings; // @synthesize homeGestureLargeWidgetZoomDownLayoutSettings=_homeGestureLargeWidgetZoomDownLayoutSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureMediumWidgetZoomDownScaleSettings; // @synthesize homeGestureMediumWidgetZoomDownScaleSettings=_homeGestureMediumWidgetZoomDownScaleSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureMediumWidgetZoomDownPositionSettings; // @synthesize homeGestureMediumWidgetZoomDownPositionSettings=_homeGestureMediumWidgetZoomDownPositionSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureMediumWidgetZoomDownLayoutSettings; // @synthesize homeGestureMediumWidgetZoomDownLayoutSettings=_homeGestureMediumWidgetZoomDownLayoutSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureSmallWidgetZoomDownScaleSettings; // @synthesize homeGestureSmallWidgetZoomDownScaleSettings=_homeGestureSmallWidgetZoomDownScaleSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureSmallWidgetZoomDownPositionSettings; // @synthesize homeGestureSmallWidgetZoomDownPositionSettings=_homeGestureSmallWidgetZoomDownPositionSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureSmallWidgetZoomDownLayoutSettings; // @synthesize homeGestureSmallWidgetZoomDownLayoutSettings=_homeGestureSmallWidgetZoomDownLayoutSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureBottomRowZoomDownScaleSettings; // @synthesize homeGestureBottomRowZoomDownScaleSettings=_homeGestureBottomRowZoomDownScaleSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureBottomRowZoomDownPositionSettings; // @synthesize homeGestureBottomRowZoomDownPositionSettings=_homeGestureBottomRowZoomDownPositionSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureBottomRowZoomDownLayoutSettings; // @synthesize homeGestureBottomRowZoomDownLayoutSettings=_homeGestureBottomRowZoomDownLayoutSettings;
@@ -201,10 +244,9 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *iconZoomDownSettings; // @synthesize iconZoomDownSettings=_iconZoomDownSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *zoomUpSettings; // @synthesize zoomUpSettings=_zoomUpSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *layoutSettings; // @synthesize layoutSettings=_layoutSettings;
-- (void).cxx_destruct;
 - (void)_setHomeGestureAnimationDefaultValues;
 - (void)setDefaultValues;
-- (double)dimmingAlphaForMode:(long long)arg1;
+- (double)homeScreenDimmingAlphaForMode:(long long)arg1;
 - (double)wallpaperScaleForMode:(long long)arg1;
 - (double)homeScreenScaleForMode:(long long)arg1;
 - (double)homeScreenAlphaForMode:(long long)arg1;

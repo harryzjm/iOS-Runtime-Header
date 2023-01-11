@@ -18,7 +18,6 @@
     unsigned int _invalidationGeneration;
 }
 
-+ (id)_wrapXPCEndpoint:(id)arg1 withDescription:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

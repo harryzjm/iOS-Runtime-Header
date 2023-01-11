@@ -11,10 +11,10 @@
 }
 
 - (id)error;
-- (int)errorCode;
-- (id)initWithName:(id)arg1 format:(id)arg2 args:(struct __va_list_tag [1])arg3;
+@property(readonly, nonatomic) int errorCode;
+- (id)initWithName:(id)arg1 format:(id)arg2 args:(char *)arg3;
 - (id)initWithName:(id)arg1 format:(id)arg2;
-- (id)initWithCode:(int)arg1 format:(id)arg2 args:(struct __va_list_tag [1])arg3;
+- (id)initWithCode:(int)arg1 format:(id)arg2 args:(char *)arg3;
 - (id)initWithCode:(int)arg1 format:(id)arg2;
 
 @end

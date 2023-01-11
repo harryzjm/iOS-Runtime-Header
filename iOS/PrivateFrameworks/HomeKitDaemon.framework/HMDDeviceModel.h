@@ -11,6 +11,7 @@
 }
 
 + (id)properties;
++ (id)schemaHashRoot;
 - (_Bool)diff:(id)arg1 differingFields:(id *)arg2;
 @property(readonly, nonatomic) NSArray *deviceHandles;
 

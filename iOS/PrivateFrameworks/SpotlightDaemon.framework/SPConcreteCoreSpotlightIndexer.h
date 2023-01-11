@@ -13,8 +13,6 @@
 {
     _Atomic unsigned int _maintenanceOperations;
     int *_cancelPtr;
-    _Bool _suspended;
-    _Bool _softSuspended;
     _Bool _scheduledStringsCleanup;
     NSMapTable *_checkedInClients;
     NSMutableSet *_knownClients;
@@ -36,6 +34,7 @@
 
 + (id)_stateInfoAttributeNameWithClientStateName:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_os_transaction> *dirtyTransaction; // @synthesize dirtyTransaction=_dirtyTransaction;
 @property(readonly, nonatomic) NSMapTable *checkedInClients; // @synthesize checkedInClients=_checkedInClients;
 @property(readonly, nonatomic) NSMutableSet *knownClients; // @synthesize knownClients=_knownClients;
@@ -48,13 +47,12 @@
 @property(nonatomic) struct __SIResultQueue *resultQueue; // @synthesize resultQueue=_resultQueue;
 @property(nonatomic) struct __SI *index; // @synthesize index=_index;
 @property(nonatomic) __weak SPCoreSpotlightIndexer *owner; // @synthesize owner=_owner;
-- (void).cxx_destruct;
 - (void)_fetchAccumulatedStorageSizeForBundleId:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_startInternalQueryWithIndex:(struct __SI *)arg1 query:(id)arg2 fetchAttributes:(id)arg3 forBundleIds:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
 - (void)powerStateChanged;
 - (void)attributesForBundleId:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 includeParents:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 includeParents:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 forBundleID:(id)arg3;
 - (void)fetchLastClientStateForBundleID:(id)arg1 clientStateName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -79,14 +77,17 @@
 - (void)indexFromBundle:(id)arg1 personaID:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 clientState:(id)arg6 clientStateName:(id)arg7 deletes:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)_setClientState:(id)arg1 clientStateName:(id)arg2 forBundleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)preheat;
-- (void)suspendIndexForDeviceLock;
-- (void)ensureOpenIndexFiles;
 - (void)readyIndex:(_Bool)arg1;
 - (void)resumeIndex;
 - (void)closeIndex;
 - (_Bool)writeDiagnostic:(id)arg1 bundleID:(id)arg2 identifier:(id)arg3;
+- (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_appendRervseInfo:(id)arg1 dictionary:(id)arg2 key:(id)arg3 level:(unsigned long long)arg4;
+- (void)issueDuplicateOidCheck;
 - (void)issueConsistencyCheck;
 - (void)issueRepair;
+- (void)issueDefrag:(id)arg1;
 - (void)cleanupStringsWithActivity:(id)arg1 group:(id)arg2 shouldDefer:(_Bool *)arg3 flags:(int)arg4;
 - (void)cleanupStringsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)mergeWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -120,6 +121,7 @@
 - (void)_performXPCActivity:(id)arg1 name:(id)arg2;
 - (id)_indexPath;
 - (void)dirty;
+- (void)dirty:(_Bool)arg1;
 - (id)_cancelIdleTimer;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 protectionClass:(id)arg2 cancelPtr:(int *)arg3;

@@ -28,6 +28,7 @@
     unsigned long long _weekStart;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldPinMonthDays; // @synthesize shouldPinMonthDays=_shouldPinMonthDays;
 @property(nonatomic) unsigned long long weekStart; // @synthesize weekStart=_weekStart;
 @property(nonatomic) int frequency; // @synthesize frequency=_frequency;
@@ -43,19 +44,17 @@
 @property(copy, nonatomic) NSTimeZone *eventTimeZone; // @synthesize eventTimeZone=_eventTimeZone;
 @property(copy, nonatomic) NSDate *eventEndDate; // @synthesize eventEndDate=_eventEndDate;
 @property(copy, nonatomic) NSDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;
-- (void).cxx_destruct;
 - (id)_copyYearlyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
-- (_Bool)_validateCalDate:(CDStruct_b0fa4487)arg1 pinned:(_Bool)arg2;
+- (_Bool)_validateCalDate:(CDStruct_79f9e052)arg1 pinned:(_Bool)arg2;
 - (id)_copyMonthlyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
 - (id)_copyWeeklyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
 - (id)_copyDailyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
-- (id)copyOccurrenceDatesBetweenStartDate:(CDStruct_b0fa4487)arg1 endDate:(CDStruct_b0fa4487)arg2 timeZone:(id)arg3 limit:(long long)arg4;
+- (id)copyOccurrenceDatesBetweenStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 limit:(long long)arg4;
 - (double)_convertAbsoluteTime:(double)arg1 fromTimeZone:(id)arg2 toTimeZone:(id)arg3;
 - (double)duration;
 - (_Bool)_isSimpleYearlyRecurrence;
 - (id)computeRecurrenceEndDate:(unsigned long long)arg1;
 - (id)copyOccurrenceDatesWithInitialDate:(id)arg1 allDay:(_Bool)arg2 rangeStart:(id)arg3 rangeEnd:(id)arg4 timeZone:(id)arg5 limit:(long long)arg6;
-- (id)copyOccurrenceDatesWithInitialDate:(id)arg1 rangeStart:(id)arg2 rangeEnd:(id)arg3 timeZone:(id)arg4;
 - (id)init;
 
 @end

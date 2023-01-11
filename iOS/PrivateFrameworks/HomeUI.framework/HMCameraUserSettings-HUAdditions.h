@@ -7,6 +7,8 @@
 #import <HomeKit/HMCameraUserSettings.h>
 
 @interface HMCameraUserSettings (HUAdditions)
+- (id)hu_currentAccessModeDescription;
+- (id)hu_indicatorColorForLiveStreaming;
 - (id)hu_indicatorColorForCurrentAccessMode;
 @end
 

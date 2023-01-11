@@ -12,9 +12,9 @@
     NSXPCConnection *_connection;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)invalidate;
 - (_Bool)requiresProxyingAVAudioSessionState;
 - (id)hostProtocolDelegate;

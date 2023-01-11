@@ -11,14 +11,12 @@
 @protocol SXVideoEventTracker <NSObject>
 
 @optional
-- (void)tappedToToggleControls;
+@property(readonly, nonatomic) double impressionThreshold;
+- (void)playbackPassedQuartile:(unsigned long long)arg1;
+- (void)playbackPassedImpressionThreshold;
+- (void)tappedToToggleControlVisibility:(_Bool)arg1;
 - (void)exitedFullscreen;
 - (void)enteredFullscreen;
-- (void)tappedDiscoverMore;
-- (void)tappedAdvance;
-- (void)tappedReplay;
-- (void)tappedNowPlaying;
-- (void)tappedCallToAction;
 - (void)muteStateChanged:(_Bool)arg1;
 - (void)timeElapsed:(double)arg1 duration:(double)arg2;
 - (void)playbackFailedWithError:(NSError *)arg1;
@@ -26,6 +24,7 @@
 - (void)playbackResumed;
 - (void)playbackPaused;
 - (void)playbackStarted;
-- (void)playbackInitiated;
+- (void)playbackReadyToStart;
+- (void)playbackInitiatedWithButtonTapped:(_Bool)arg1;
 @end
 

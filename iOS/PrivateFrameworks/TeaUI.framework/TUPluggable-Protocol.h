@@ -9,6 +9,8 @@
 @protocol TUPluggable
 - (void)relayoutWithCompletion:(void (^)(struct CGSize))arg1;
 - (void)initializeWithCompletion:(void (^)(struct CGSize))arg1;
+@property(nonatomic, readonly) long long pluginVisibleItemCount;
+@property(nonatomic, readonly) long long pluginItemCount;
 @property(nonatomic) _Bool isBeingUsedAsPlugin;
 @property(nonatomic, retain) id <TUPluggableDelegate> pluggableDelegate;
 @end

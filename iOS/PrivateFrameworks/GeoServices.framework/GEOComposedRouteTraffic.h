@@ -8,40 +8,35 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSUUID;
+@class NSArray;
 
 @interface GEOComposedRouteTraffic : NSObject <NSSecureCoding>
 {
-    NSUUID *_routeID;
-    NSArray *_trafficIncidents;
-    NSArray *_trafficIncidentOffsets;
-    NSData *_trafficColors;
-    NSData *_trafficColorOffsets;
-    NSArray *_enrouteNotices;
+    NSArray *_trafficColors;
+    NSArray *_incidents;
 }
 
-+ (id)trafficForGEORoute:(id)arg1 routeInitializerData:(id)arg2 route:(id)arg3;
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
-@property(readonly, nonatomic) NSArray *trafficIncidentOffsets; // @synthesize trafficIncidentOffsets=_trafficIncidentOffsets;
-@property(readonly, nonatomic) NSArray *trafficIncidents; // @synthesize trafficIncidents=_trafficIncidents;
-@property(readonly, nonatomic) NSUUID *routeID; // @synthesize routeID=_routeID;
 - (void).cxx_destruct;
-- (id)_colorStringForIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSArray *routeIncidents; // @synthesize routeIncidents=_incidents;
+@property(readonly, nonatomic) NSArray *routeTrafficColors; // @synthesize routeTrafficColors=_trafficColors;
 - (id)description;
-- (id)enrouteNoticeWithIdentifier:(id)arg1;
-- (void)createTrafficIncidentsForRoute:(id)arg1 initializerData:(id)arg2;
-- (void)setEnrouteNotices:(id)arg1;
-- (void)setTrafficColorOffsets:(id)arg1;
-- (void)setTrafficColors:(id)arg1;
-- (void)setRoute:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)_incidentsForOldRoute:(id)arg1 etaRoute:(id)arg2;
+- (id)_incidentsForOldRoute:(id)arg1 geoIncidentsFromResponse:(id)arg2;
+- (id)_incidentsForRoute:(id)arg1 etaRoute:(id)arg2;
+- (id)_incidentsForRoute:(id)arg1;
+- (void)_buildIncidentsForRoute:(id)arg1 etaRoute:(id)arg2 initializerData:(id)arg3;
+- (id)_trafficColorInfosFromTrafficBuilder:(id)arg1 route:(id)arg2;
+- (id)initWithRoute:(id)arg1 etaRoute:(id)arg2;
+- (id)initWithRoute:(id)arg1 initializerData:(id)arg2;
 @property(readonly, nonatomic) unsigned long long trafficColorOffsetsCount;
 @property(readonly, nonatomic) unsigned int *trafficColorOffsets;
 @property(readonly, nonatomic) unsigned long long trafficColorsCount;
 @property(readonly, nonatomic) unsigned int *trafficColors;
-- (id)initWithRouteID:(id)arg1;
+@property(readonly, nonatomic) NSArray *trafficIncidentOffsets;
+@property(readonly, nonatomic) NSArray *trafficIncidents;
 
 @end
 

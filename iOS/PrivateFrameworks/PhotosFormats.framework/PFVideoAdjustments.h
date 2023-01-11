@@ -11,7 +11,7 @@
 }
 
 + (id)defaultVideoAdjustmentsURLForVideoURL:(id)arg1;
-+ (_Bool)isRecognizedFormatWithIdentifier:(id)arg1 version:(id)arg2;
++ (_Bool)isRecognizedSlowMotionFormatWithIdentifier:(id)arg1 version:(id)arg2;
 + (float)defaultSlowMotionRateForNominalFrameRate:(float)arg1;
 + (CDStruct_e83c9415)defaultSlowMotionTimeRangeForDuration:(CDStruct_1b6d18a9)arg1;
 + (id)defaultSlowMotionAdjustmentsForAsset:(id)arg1;
@@ -26,13 +26,13 @@
 - (_Bool)isRecognizedFormat;
 - (id)description;
 - (id)initWithPropertyListDictionary:(id)arg1;
-- (_Bool)hasSlowMotionAdjustments;
-- (_Bool)_isValidSlowMotionTimeRange:(CDStruct_e83c9415)arg1 rate:(float)arg2;
-- (id)initWithSlowMotionTimeRange:(CDStruct_e83c9415)arg1 rate:(float)arg2;
 - (CDStruct_1b6d18a9)convertToOriginalTimeFromScaledTime:(CDStruct_1b6d18a9)arg1 forExport:(_Bool)arg2;
 - (CDStruct_1b6d18a9)convertToScaledTimeFromOriginalTime:(CDStruct_1b6d18a9)arg1 forExport:(_Bool)arg2;
 @property(readonly, nonatomic) CDStruct_e83c9415 slowMotionRampOut;
 @property(readonly, nonatomic) CDStruct_e83c9415 slowMotionRampIn;
+- (_Bool)hasSlowMotionAdjustments;
+- (_Bool)_isValidSlowMotionTimeRange:(CDStruct_e83c9415)arg1 rate:(float)arg2;
+- (id)initWithSlowMotionTimeRange:(CDStruct_e83c9415)arg1 rate:(float)arg2;
 
 @end
 

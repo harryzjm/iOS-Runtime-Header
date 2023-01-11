@@ -15,6 +15,8 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+@property(readonly) _Bool has_privacyPaneHasBeenAcknowledgedVersion;
+@property(nonatomic, getter=get_privacyPaneHasBeenAcknowledgedVersion, setter=set_privacyPaneHasBeenAcknowledgedVersion:) long long privacyPaneHasBeenAcknowledgedVersion;
 @property(readonly) _Bool has_LastConfirmedSplashScreenVersionViewed;
 @property(nonatomic, getter=get_LastConfirmedSplashScreenVersionViewed, setter=set_LastConfirmedSplashScreenVersionViewed:) long long LastConfirmedSplashScreenVersionViewed;
 @property(readonly) _Bool has_kCalRemindersPreferredDaysToSyncKey;

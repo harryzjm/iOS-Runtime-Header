@@ -6,14 +6,19 @@
 
 #import <Preferences/PSListController.h>
 
-@class ASTLockScreenSuggestionSpecifier;
+@class ASTLockScreenSuggestionSpecifier, ASTLockScreenSuggestionsGlobalController, NSArray, PSSpecifier;
 
 @interface ASTLockScreenSuggestionsDetailListController : PSListController
 {
     ASTLockScreenSuggestionSpecifier *_lockScreenSpecifier;
+    PSSpecifier *_perAppGroup;
+    NSArray *_perAppSpecifiers;
+    ASTLockScreenSuggestionsGlobalController *_globalController;
+    PSSpecifier *_globalSpecifier;
 }
 
 - (void).cxx_destruct;
+- (void)_handleGlobalToggleChangeWithEnabled:(_Bool)arg1;
 - (id)specifiers;
 - (id)init;
 

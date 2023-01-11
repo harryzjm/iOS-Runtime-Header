@@ -11,11 +11,11 @@
 + (_Bool)_shouldUseBedtimeDismissedDateForAlarm:(id)arg1;
 + (_Bool)_trackingEnabledForSleepAlarm:(id)arg1;
 - (id)processedSessionForSession:(id)arg1;
-- (id)_createBedtimeSessionWithUserWakeTime:(id)arg1 endReason:(unsigned long long)arg2;
+- (id)_createSleepSessionWithUserWakeTime:(id)arg1 endReason:(unsigned long long)arg2;
 - (void)endSessionWithDate:(id)arg1 reason:(unsigned long long)arg2;
 - (void)startSession;
 - (Class)sessionClass;
-- (void)sleepCoordinator:(id)arg1 bedtimeDNDManuallyExited:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 sleepModeManuallyExited:(id)arg2 sleepAlarm:(id)arg3;
 
 @end
 

@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumberFormatter, PXImportController, UIViewController;
+@class NSNumberFormatter, NSString, PXImportController, UIAction, UIMenu, UIViewController;
 @protocol PUImportActionCoordinatorDelegate;
 
 @interface PUImportActionCoordinator : NSObject
 {
     _Bool _presentsAdditionalDeleteAllConfirmation;
     _Bool _ppt_alwaysImportDuplicatesNoPrompt;
-    _Bool _ppt_alwaysPreferSelected;
     id <PUImportActionCoordinatorDelegate> _delegate;
+    long long _loggingSource;
     UIViewController *_viewController;
     PXImportController *_importController;
+    NSString *_loggingPrefix;
+    UIAction *_importAllAction;
+    UIMenu *_importActionsMenu;
     NSNumberFormatter *_percentageNumberFormatter;
 }
 
@@ -24,14 +27,17 @@
 + (long long)importBehaviorForBatteryState:(long long)arg1 batteryLevel:(float)arg2;
 + (void)retrieveBatteryState:(long long *)arg1 batteryLevel:(float *)arg2;
 + (float)lowBatteryLevelThresholdForDevice;
-@property(nonatomic) _Bool ppt_alwaysPreferSelected; // @synthesize ppt_alwaysPreferSelected=_ppt_alwaysPreferSelected;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool ppt_alwaysImportDuplicatesNoPrompt; // @synthesize ppt_alwaysImportDuplicatesNoPrompt=_ppt_alwaysImportDuplicatesNoPrompt;
 @property(retain, nonatomic) NSNumberFormatter *percentageNumberFormatter; // @synthesize percentageNumberFormatter=_percentageNumberFormatter;
+@property(retain, nonatomic) UIMenu *importActionsMenu; // @synthesize importActionsMenu=_importActionsMenu;
+@property(retain, nonatomic) UIAction *importAllAction; // @synthesize importAllAction=_importAllAction;
+@property(retain, nonatomic) NSString *loggingPrefix; // @synthesize loggingPrefix=_loggingPrefix;
 @property(retain, nonatomic) PXImportController *importController; // @synthesize importController=_importController;
 @property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(nonatomic) _Bool presentsAdditionalDeleteAllConfirmation; // @synthesize presentsAdditionalDeleteAllConfirmation=_presentsAdditionalDeleteAllConfirmation;
+@property(readonly, nonatomic) long long loggingSource; // @synthesize loggingSource=_loggingSource;
 @property(nonatomic) __weak id <PUImportActionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_deleteItems:(id)arg1;
 - (void)deleteItemsWithoutConfirmation:(id)arg1;
 - (void)deleteItemsFromBarButtonItem:(id)arg1 withOneUpHintItems:(id)arg2;
@@ -41,9 +47,12 @@
 - (void)_importItems:(id)arg1 allowDuplicates:(_Bool)arg2;
 - (void)stopImport;
 - (void)checkBatteryLevelWithCompletion:(CDUnknownBlockType)arg1;
-- (void)importAllFromBarButtonItem:(id)arg1;
-- (void)beginImportFromBarButtonItem:(id)arg1;
-- (id)initWithViewController:(id)arg1 importController:(id)arg2;
+- (void)importAllFromBarButtonItem;
+- (void)ppt_beginImportFromBarButtonItem;
+- (_Bool)someItemsButNotAllAreSelected;
+- (id)actionMenuForImportButton;
+- (void)configureImportActionsForBarButtonItem:(id)arg1;
+- (id)initWithViewController:(id)arg1 importController:(id)arg2 loggingSource:(long long)arg3;
 
 @end
 

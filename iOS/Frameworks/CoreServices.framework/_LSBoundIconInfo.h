@@ -9,7 +9,7 @@
 #import <CoreServices/LSIconResourceLocator-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class LSBundleProxy, NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
+@class NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
 
 __attribute__((visibility("hidden")))
 @interface _LSBoundIconInfo : NSObject <LSIconResourceLocator, NSSecureCoding>
@@ -24,14 +24,13 @@ __attribute__((visibility("hidden")))
     _LSLazyPropertyList *_iconsDictionary;
     NSString *_cacheKey;
     NSArray *_fileNames;
-    LSBundleProxy *_typeOwner;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool documentAllowOverride; // @synthesize documentAllowOverride=_documentAllowOverride;
 @property(nonatomic, getter=isBadge) _Bool badge; // @synthesize badge=_badge;
 @property(nonatomic, getter=isPrerendered) _Bool prerendered; // @synthesize prerendered=_prerendered;
-@property(copy, nonatomic) LSBundleProxy *typeOwner; // @synthesize typeOwner=_typeOwner;
 @property(copy, nonatomic) NSArray *fileNames; // @synthesize fileNames=_fileNames;
 @property(copy, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
 @property(copy, nonatomic) _LSLazyPropertyList *iconsDictionary; // @synthesize iconsDictionary=_iconsDictionary;
@@ -39,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property(retain, nonatomic) NSURL *containerURL; // @synthesize containerURL=_containerURL;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-- (void).cxx_destruct;
 @property(readonly) NSDictionary *bundleIconsDictionary;
 - (_Bool)hasValidIconDictionary;
 - (_Bool)hasValidFileNames;

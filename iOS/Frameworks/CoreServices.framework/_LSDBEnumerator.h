@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
 - (_Bool)prepareIfNeeded;
+- (id)_initWithContext:(struct LSContext *)arg1;
 
 @end
 

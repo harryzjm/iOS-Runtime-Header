@@ -74,6 +74,10 @@ __attribute__((visibility("hidden")))
 @property _Bool isCaller; // @synthesize isCaller=_isCaller;
 @property(nonatomic) _Bool initialSecondaryRelaySetupDone; // @synthesize initialSecondaryRelaySetupDone;
 @property(nonatomic) int pendingRelayCount; // @synthesize pendingRelayCount;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
+- (void)queryProbingResultsWithOptions:(id)arg1;
+- (void)stopActiveProbingWithOptions:(id)arg1;
+- (void)startActiveProbingWithOptions:(id)arg1;
 - (void)setIdentity:(struct __SecIdentity *)arg1;
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
@@ -101,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)loopbackSocketTunnel:(id)arg1 receivedData:(id)arg2 from:(struct tagIPPORT *)arg3;
 - (void)deleteTCPTunnel;
 - (_Bool)createTCPTunnelForParticipantID:(id)arg1 relayDictionary:(id)arg2 didOriginateRequest:(_Bool)arg3 relayType:(unsigned char)arg4 error:(id *)arg5;
+- (void)handleRATChanged:(id)arg1;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;
 - (void)didEnableDuplication:(_Bool)arg1 activeConnection:(id)arg2;
 - (void)connectionCallback:(id)arg1 isInitialConnection:(_Bool)arg2;

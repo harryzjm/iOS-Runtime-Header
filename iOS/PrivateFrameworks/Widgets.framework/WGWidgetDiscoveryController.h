@@ -10,14 +10,13 @@
 #import <Widgets/WGWidgetDataSourceObserver-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDataSource-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDelegate-Protocol.h>
-#import <Widgets/WGWidgetViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, WGWidgetListEditViewController, WGWidgetPersistentStateController, WGWidgetStatsController;
 @protocol OS_dispatch_queue, WGWidgetDebugging, WGWidgetDiscoveryControllerDelegate;
 
-@interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate, LSApplicationWorkspaceObserverProtocol>
+@interface WGWidgetDiscoveryController : NSObject <WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate, LSApplicationWorkspaceObserverProtocol>
 {
-    struct NSMutableDictionary *_archive;
+    NSMutableDictionary *_archive;
     NSObject<OS_dispatch_queue> *_archiveWriteQueue;
     NSMutableSet *_defaultEnabledIDs;
     NSMutableDictionary *_identifiersToDataSources;
@@ -43,9 +42,8 @@
     NSMutableDictionary *_widgetIDsToPendingTestTearDowns;
 }
 
-+ (id)widgetViewControllerWithWidgetBundleID:(id)arg1 containingBundleID:(id)arg2 error:(id *)arg3;
-+ (_Bool)hasWidgetForBundleID:(id)arg1 containingBundleID:(id)arg2;
 + (long long)layoutModeForSize:(struct CGSize)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *widgetIDsToPendingTestTearDowns; // @synthesize widgetIDsToPendingTestTearDowns=_widgetIDsToPendingTestTearDowns;
 @property(retain, nonatomic) NSMutableDictionary *widgetIDsToPendingTestCompletions; // @synthesize widgetIDsToPendingTestCompletions=_widgetIDsToPendingTestCompletions;
 @property(retain, nonatomic, getter=_presentedEditViewControllerStatusBarAssertion, setter=_setPresentedEditViewControllerStatusBarAssertion:) id presentedEditViewControllerStatusBarAssertion; // @synthesize presentedEditViewControllerStatusBarAssertion=_presentedEditViewControllerStatusBarAssertion;
@@ -53,10 +51,11 @@
 @property(nonatomic) __weak id <WGWidgetDebugging> debuggingHandler; // @synthesize debuggingHandler=_debuggingHandler;
 @property(readonly, nonatomic, getter=_widgetIDsToWidgets) NSMutableDictionary *widgetIDsToWidgets; // @synthesize widgetIDsToWidgets=_widgetIDsToWidgets;
 @property(nonatomic) __weak id <WGWidgetDiscoveryControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)unregisterIdentifierForRefreshEvents:(id)arg1;
 - (void)registerIdentifierForRefreshEvents:(id)arg1;
 - (void)_updateFavoriteWidgetIDs:(id)arg1;
+- (void)removeWidgetIdentifiersFromToday:(id)arg1;
+- (id)todayWidgetIdentifiers;
 - (id)favoriteWidgetIdentifiers;
 @property(nonatomic) _Bool bootstrapFavoriteWidgets;
 - (void)debugWidgetWithBundleID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -162,7 +161,6 @@
 - (void)setWidgetLoggingEnabled:(_Bool)arg1;
 - (unsigned long long)visibleWidgetsCount;
 - (id)init;
-- (id)_widgetViewControllerWithBundleID:(id)arg1 containingBundleID:(id)arg2 didConnect:(CDUnknownBlockType)arg3 canTearDown:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

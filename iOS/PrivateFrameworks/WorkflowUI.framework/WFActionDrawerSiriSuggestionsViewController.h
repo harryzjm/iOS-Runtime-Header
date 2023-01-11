@@ -6,52 +6,42 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerActionTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerCategoriesTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
-@class NSArray, NSString, WFActionDrawerResultsController, WFActionDrawerState;
-@protocol NSObject, WFActionDrawerSuggestionsViewControllerDelegate;
+@class NSArray, NSString, WFActionDrawerCategoriesMetrics, WFActionDrawerState;
+@protocol NSObject;
 
-@interface WFActionDrawerSiriSuggestionsViewController <UITableViewDelegate, UITableViewDataSource, WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFActionDrawerCategoriesTableViewCellDelegate, WFActionDrawerActionTableViewCellDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
+@interface WFActionDrawerSiriSuggestionsViewController <UITableViewDelegate, UITableViewDataSource, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
-    id <WFActionDrawerSuggestionsViewControllerDelegate> _delegate;
-    WFActionDrawerResultsController *_actionDrawerResultsController;
+    _Bool _shouldDisplayCategoriesVertically;
     id <NSObject> _actionRegistryFilledNotificationObserver;
+    WFActionDrawerCategoriesMetrics *_categoriesMetrics;
 }
 
-@property(retain, nonatomic) id <NSObject> actionRegistryFilledNotificationObserver; // @synthesize actionRegistryFilledNotificationObserver=_actionRegistryFilledNotificationObserver;
-@property(readonly, nonatomic) WFActionDrawerResultsController *actionDrawerResultsController; // @synthesize actionDrawerResultsController=_actionDrawerResultsController;
-@property(nonatomic) __weak id <WFActionDrawerSuggestionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) WFActionDrawerCategoriesMetrics *categoriesMetrics; // @synthesize categoriesMetrics=_categoriesMetrics;
+@property(nonatomic) _Bool shouldDisplayCategoriesVertically; // @synthesize shouldDisplayCategoriesVertically=_shouldDisplayCategoriesVertically;
+@property(retain, nonatomic) id <NSObject> actionRegistryFilledNotificationObserver; // @synthesize actionRegistryFilledNotificationObserver=_actionRegistryFilledNotificationObserver;
 - (void)reloadCategoriesSection;
 - (_Bool)moveToState:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) WFActionDrawerState *state;
-- (void)categoriesTableViewCell:(id)arg1 didSelectCategoryForContentType:(id)arg2;
-- (void)categoriesTableViewCellDidSelectCategoryScripting:(id)arg1 title:(id)arg2;
-- (void)categoriesTableViewCellDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;
-- (void)categoriesTableViewCellDidSelectCategoryApps:(id)arg1 title:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 infoButtonTappedForSuggestion:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 didSelectAction:(id)arg2;
-- (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)viewWillLayoutSubviews;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)scrollToTop;
 @property(nonatomic) _Bool scrollsToTop;
 - (void)reloadViews;
-- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 @property(readonly, nonatomic) NSArray *contentTypeCategories;
 - (void)dealloc;
-- (id)initWithActionDrawerResultsController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,13 +8,13 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class MRPlaybackQueueSubscriptionController, NSArray, NSMutableArray, NSMutableDictionary, NSOperationQueue, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueProtobuf;
+@class MRPlaybackQueue, MRPlaybackQueueSubscriptionController, MRPlayerPath, NSArray, NSMutableArray, NSMutableDictionary, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MRNowPlayingPlayerClientRequests : NSObject <MRNowPlayingClientState>
 {
-    _MRPlaybackQueueProtobuf *_playbackQueue;
+    MRPlaybackQueue *_playbackQueue;
     unsigned int _playbackState;
     NSArray *_supportedCommands;
     NSObject<OS_dispatch_queue> *_serialQueue;
@@ -26,30 +26,25 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_transactions;
     NSOperationQueue *_enquedNowPlayingInfoRequests;
     NSOperationQueue *_enquedNowPlayingInfoAssetRequests;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MRPlayerPath *_playerPath;
     MRPlaybackQueueSubscriptionController *_subscriptionController;
 }
 
-@property(readonly, nonatomic) MRPlaybackQueueSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 - (void).cxx_destruct;
-- (void)_registerDefaultCallbacks;
-- (void)_handleTransactionPackets:(id)arg1 packets:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_transactionDestintationForName:(unsigned long long)arg1;
+@property(readonly, nonatomic) MRPlaybackQueueSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
+@property(readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 - (void)receiveTransaction:(unsigned long long)arg1 fromMessage:(id)arg2;
 - (void)restoreNowPlayingClientState;
 - (void)handlePlaybackStateRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleSupportedCommandsRequestWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_handleEnqueuedPlaybackQueueRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enqueuePlaybackQueueRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removePlaybackQueueCompletionForRequest:(id)arg1;
 - (void)addPlaybackQueueCompletion:(CDUnknownBlockType)arg1 forRequest:(id)arg2;
 - (id)transactionCallbacksForName:(unsigned long long)arg1;
 - (void)addTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
-- (void)updatePlaybackQueue:(id)arg1;
 - (void)updateContentItemArtwork:(id)arg1;
 - (void)updateContentItems:(id)arg1;
-@property(copy, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue;
+@property(copy, nonatomic) MRPlaybackQueue *playbackQueue;
 @property(retain, nonatomic) NSArray *supportedCommands;
 @property(nonatomic) unsigned int playbackState;
 - (id)debugDescription;

@@ -11,21 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface WKDataListSuggestionsControl : NSObject
 {
-    struct WebDataListSuggestionsDropdownIOS *_dropdown;
-    Vector_14ac4456 _suggestions;
+    struct WeakPtr<WebKit::WebDataListSuggestionsDropdownIOS, WTF::EmptyCounter> _dropdown;
+    struct Vector<WebCore::DataListSuggestion, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _suggestions;
     WKContentView *_view;
 }
 
-@property(nonatomic) __weak WKContentView *view; // @synthesize view=_view;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) __weak WKContentView *view; // @synthesize view=_view;
 - (long long)textAlignment;
 - (struct String)suggestionAtIndex:(long long)arg1;
 - (long long)suggestionsCount;
 - (id)textSuggestions;
 - (void)invalidate;
 - (void)didSelectOptionAtIndex:(long long)arg1;
-- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(int)arg2;
+- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(unsigned char)arg2;
 - (void)updateWithInformation:(struct DataListSuggestionInformation *)arg1;
 - (id)initWithInformation:(struct DataListSuggestionInformation *)arg1 inView:(id)arg2;
 

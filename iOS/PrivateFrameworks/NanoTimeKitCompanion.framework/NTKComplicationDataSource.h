@@ -15,6 +15,7 @@
 + (_Bool)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2 forDevice:(id)arg3;
 + (_Bool)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 + (Class)dataSourceClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
+- (id)sampleTemplate;
 - (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 

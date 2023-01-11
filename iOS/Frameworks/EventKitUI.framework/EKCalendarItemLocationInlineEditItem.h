@@ -7,14 +7,17 @@
 #import <EventKitUI/EKCalendarItemInlineEditItem-Protocol.h>
 #import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
 #import <EventKitUI/EKEventDetailPredictedLocationCellDelegate-Protocol.h>
+#import <EventKitUI/PKScribbleInteractionDelegate-Protocol.h>
+#import <EventKitUI/PKScribbleInteractionElementSource-Protocol.h>
 #import <EventKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class EKCalendarItemEditor, NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKCalendarItemLocationInlineEditItem <UITextFieldDelegate, EKEditItemViewControllerDelegate, EKEventDetailPredictedLocationCellDelegate, EKCalendarItemInlineEditItem>
+@interface EKCalendarItemLocationInlineEditItem <UITextFieldDelegate, EKEditItemViewControllerDelegate, EKEventDetailPredictedLocationCellDelegate, PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, EKCalendarItemInlineEditItem>
 {
     NSMutableArray *_locationsAndCells;
+    EKCalendarItemEditor *_editor;
     _Bool _sourceSupportsAvailabilityRequests;
     NSMutableDictionary *_conferenceRoomInfos;
 }
@@ -22,6 +25,12 @@ __attribute__((visibility("hidden")))
 + (id)_locationPlaceholder;
 + (id)conferenceRoomNameForLocation:(id)arg1;
 - (void).cxx_destruct;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_scribbleInteraction:(id)arg1 didFinishWritingInElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 willBeginWritingInElement:(id)arg2;
+- (_Bool)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;
 - (id)participantForConferenceRoomName:(id)arg1;
 - (_Bool)_showSuggestedLocation:(id)arg1;
 - (_Bool)_showConferenceLocation:(id)arg1;
@@ -51,9 +60,11 @@ __attribute__((visibility("hidden")))
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (_Bool)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
+- (void)_setEditor:(id)arg1 andAddScribbleInteractionToCellIfNecessary:(id)arg2;
+- (void)_updateCell:(id)arg1 index:(unsigned long long)arg2 location:(id)arg3;
+- (id)cellForSubitemAtIndex:(unsigned long long)arg1 inEditor:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (_Bool)isSaveable;
-- (id)_makeCell:(unsigned long long)arg1;
 - (void)addStylingToCell:(id)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (void)_contentSizeCategoryChanged:(id)arg1;
 - (unsigned long long)numberOfSubitems;

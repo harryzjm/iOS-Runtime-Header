@@ -10,23 +10,25 @@
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/EMVIPManager-Protocol.h>
 #import <Email/EMVIPManagerObserver-Protocol.h>
+#import <Email/EMVIPReader_Private-Protocol.h>
 
-@class EAEmailAddressSet, EFCancelationToken, EFPromise, EMRemoteConnection, NSSet, NSString;
+@class EAEmailAddressSet, EFCancelationToken, EFPromise, EMRemoteConnection, EMRemoteConnectionRecoveryAssertion, NSSet, NSString;
 
-@interface EMVIPManager : NSObject <EFFutureDelegate, EFLoggable, EMVIPManagerObserver, EMVIPManager>
+@interface EMVIPManager : NSObject <EFFutureDelegate, EFLoggable, EMVIPManagerObserver, EMVIPReader_Private, EMVIPManager>
 {
     struct os_unfair_lock_s _vipsLock;
     EAEmailAddressSet *_cachedEmailAddresses;
     EFCancelationToken *_observerCancelationToken;
+    EMRemoteConnectionRecoveryAssertion *_connectionRecoveryAssertion;
     EMRemoteConnection *_connection;
     EFPromise *_vipsByIdentifierPromise;
 }
 
 + (id)remoteInterface;
 + (id)log;
+- (void).cxx_destruct;
 @property(retain) EFPromise *vipsByIdentifierPromise; // @synthesize vipsByIdentifierPromise=_vipsByIdentifierPromise;
 @property(retain, nonatomic) EMRemoteConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)didFinishBlockingMainThreadForFuture:(id)arg1;
 - (void)didStartBlockingMainThreadForFuture:(id)arg1;
 - (void)observer:(id)arg1 updatedVIPs:(id)arg2 removedVIPs:(id)arg3;
@@ -36,6 +38,7 @@
 - (void)saveVIPs:(id)arg1;
 - (_Bool)isVIPAddress:(id)arg1;
 @property(readonly, copy, nonatomic) EAEmailAddressSet *allVIPEmailAddresses;
+@property(readonly, copy, nonatomic) NSSet *allVIPWaitForResult;
 @property(readonly, copy, nonatomic) NSSet *allVIPs;
 - (id)vipWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) _Bool hasVIPs;

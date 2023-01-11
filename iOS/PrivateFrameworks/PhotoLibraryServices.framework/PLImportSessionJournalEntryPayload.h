@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSOrderedSet;
+@class NSSet;
 
 @interface PLImportSessionJournalEntryPayload
 {
@@ -18,7 +18,7 @@
 - (_Bool)comparePayloadValue:(id)arg1 toObjectDictionaryValue:(id)arg2 forPayloadProperty:(id)arg3;
 - (void)updateAlbum:(id)arg1 includePendingChanges:(_Bool)arg2;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;
-@property(readonly, nonatomic) NSOrderedSet *assetUUIDs;
+@property(readonly, nonatomic) NSSet *assetUUIDs;
 - (void)updatePayloadAttributes:(id)arg1 withDecodedAttributes:(id)arg2 forPayloadProperty:(id)arg3;
 - (void)updateEncodableAttributes:(id)arg1 fromPayloadAttributes:(id)arg2 forPayloadProperty:(id)arg3;
 - (_Bool)updatePayloadAttributes:(id)arg1 withManagedObject:(id)arg2 forPayloadProperty:(id)arg3;

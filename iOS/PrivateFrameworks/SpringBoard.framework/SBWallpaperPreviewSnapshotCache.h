@@ -21,10 +21,12 @@
 }
 
 + (id)cacheKeyForVariant:(long long)arg1 options:(unsigned long long)arg2;
++ (id)cacheKeyForVariant:(long long)arg1 options:(unsigned long long)arg2 scalingWidth:(double)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)wallpaperDidChangeForVariant:(long long)arg1;
-- (id)_snapshotProviderForVariant:(long long)arg1 options:(unsigned long long)arg2 wallpaperImage:(id)arg3;
+- (long long)_orientationForOptions:(unsigned long long)arg1;
+- (id)snapshotProviderForVariant:(long long)arg1 options:(unsigned long long)arg2 wallpaperImage:(id)arg3;
 - (id)_lockScreenSnapshotProviderWithOptions:(unsigned long long)arg1 wallpaperImage:(id)arg2;
 - (id)_homeScreenSnapshotProviderWithOptions:(unsigned long long)arg1 wallpaperImage:(id)arg2;
 - (void)_backlightFadeFinished;
@@ -36,9 +38,8 @@
 - (void)_iconControllerDidChangeIconModel:(id)arg1;
 - (void)_switchToIconModel:(id)arg1;
 - (void)regenerateSnapshotsForLocations:(long long)arg1;
-- (id)snapshotForVariant:(long long)arg1 options:(unsigned long long)arg2 wallpaperImage:(id)arg3;
-- (id)homeScreenSnapshot;
-- (id)lockScreenSnapshot;
+- (id)mappedWallpaperPreviewForScaledSnapshot:(id)arg1 variant:(long long)arg2 cacheKey:(id)arg3;
+- (id)mappedWallpaperPreviewForKey:(id)arg1;
 - (void)invalidateSnapshotsForLocations:(long long)arg1;
 - (void)dealloc;
 - (id)init;

@@ -22,10 +22,13 @@
     long long _rawUpdateState;
     NSDate *_timestamp;
     long long _updateState;
+    _Bool _iOSBinaryMacOSCompatible;
     _Bool _downloaded;
+    long long _deviceFamilies;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) long long rawUpdateState; // @synthesize rawUpdateState=_rawUpdateState;
 @property(copy, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) long long updateState; // @synthesize updateState=_updateState;
@@ -34,9 +37,10 @@
 @property(nonatomic, getter=isProfileValidated) _Bool profileValidated; // @synthesize profileValidated=_profileValidated;
 @property(nonatomic, getter=isPerDevice) _Bool perDevice; // @synthesize perDevice=_perDevice;
 @property(nonatomic, getter=isDownloaded) _Bool downloaded; // @synthesize downloaded=_downloaded;
+@property(nonatomic, getter=isIOSBinaryMacOSCompatible) _Bool iOSBinaryMacOSCompatible; // @synthesize iOSBinaryMacOSCompatible=_iOSBinaryMacOSCompatible;
 @property(copy, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
+@property(readonly, nonatomic) long long deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property(copy, nonatomic) NSArray *blockedBy; // @synthesize blockedBy=_blockedBy;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -20,7 +20,6 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSError *_error;
     PBCodable *_response;
-    unsigned long long _taskIdentifier;
     unsigned int _requestTypeCode;
     CDStruct_d1a7ebee _requestKind;
     GEOApplicationAuditToken *_auditToken;
@@ -28,6 +27,7 @@
     GEODataRequestThrottlerToken *_throttleToken;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <GEOProtobufSessionTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak GEOProtobufSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) unsigned int requestTypeCode; // @synthesize requestTypeCode=_requestTypeCode;
@@ -37,8 +37,6 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(retain, nonatomic) id <GEODataSessionTask> dataTask; // @synthesize dataTask=_dataTask;
 @property(readonly, nonatomic) Class responseClass; // @synthesize responseClass=_responseClass;
-@property(readonly, nonatomic) unsigned long long taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool receivedRNFNotification;
 @property(readonly, nonatomic) _Bool mptcpNegotiated;
 @property(readonly, nonatomic) unsigned long long requestedMultipathServiceType;
@@ -50,7 +48,8 @@
 - (void)start;
 @property(readonly, nonatomic) CDStruct_d1a7ebee requestKind;
 @property(readonly, copy) NSString *debugDescription;
-- (id)initWithSession:(id)arg1 taskIdentifier:(unsigned long long)arg2 requestTypeCode:(unsigned int)arg3 responseClass:(Class)arg4 delegate:(id)arg5 delegateQueue:(id)arg6 requestKind:(CDStruct_d1a7ebee)arg7 auditToken:(id)arg8 throttleToken:(id)arg9;
+@property(readonly, copy) NSString *description;
+- (id)initWithSession:(id)arg1 requestTypeCode:(unsigned int)arg2 responseClass:(Class)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 requestKind:(CDStruct_d1a7ebee)arg6 auditToken:(id)arg7 throttleToken:(id)arg8;
 - (id)init;
 - (void)completeWithCancelled:(_Bool)arg1 error:(id)arg2 response:(id)arg3;
 - (void)completeWithErrorCode:(long long)arg1;
@@ -66,7 +65,6 @@
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
 
 // Remaining properties
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

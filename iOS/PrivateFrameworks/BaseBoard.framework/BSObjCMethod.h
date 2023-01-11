@@ -12,23 +12,20 @@
 
 @interface BSObjCMethod : NSObject <BSDescriptionProviding>
 {
+    long long _required;
     NSString *_name;
     NSString *_encoding;
     SEL _selector;
     NSArray *_arguments;
     BSObjCArgument *_returnValue;
-    long long _required;
 }
 
-+ (id)methodWithSelector:(SEL)arg1 typeEncoding:(const char *)arg2;
-+ (id)methodWithMethod:(struct objc_method *)arg1;
-@property(nonatomic) long long required; // @synthesize required=_required;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) BSObjCArgument *returnValue; // @synthesize returnValue=_returnValue;
 @property(readonly, retain, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
 @property(readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
 @property(readonly, copy, nonatomic) NSString *encoding; // @synthesize encoding=_encoding;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

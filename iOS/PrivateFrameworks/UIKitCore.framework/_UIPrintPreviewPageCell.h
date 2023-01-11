@@ -22,13 +22,15 @@ __attribute__((visibility("hidden")))
     UIView *_dimmingView;
     id <PageRangeDelegate> _delegate;
     long long _pageIndex;
+    struct CGSize _imageSize;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property(nonatomic) long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property(nonatomic) __weak id <PageRangeDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIView *dimmingView; // @synthesize dimmingView=_dimmingView;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-- (void).cxx_destruct;
 - (_Bool)accessibilityActivate;
 - (id)accessibilityHint;
 - (id)accessibilityValue;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)setStartPage:(id)arg1;
 - (void)setInRange:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)prepareForReuse;
+- (void)layoutSubviews;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

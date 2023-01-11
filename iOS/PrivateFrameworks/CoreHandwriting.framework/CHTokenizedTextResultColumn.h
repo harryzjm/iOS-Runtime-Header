@@ -23,6 +23,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToTokenizedTextResultColumn:(id)arg1;
 @property(readonly, nonatomic) NSIndexSet *strokeIndexes;
+- (_Bool)containsStartingTokenEquivalentToToken:(id)arg1;
 - (long long)indexOfEquivalentTokenRow:(id)arg1 tokenRange:(struct _NSRange)arg2;
 - (id)description;
 - (void)dealloc;

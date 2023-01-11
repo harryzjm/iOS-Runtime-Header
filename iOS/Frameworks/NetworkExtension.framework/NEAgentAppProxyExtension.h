@@ -16,7 +16,6 @@
 - (void)extension:(id)arg1 didRequestFlowDivertControlSocketWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setDelegateInterface:(unsigned int)arg1;
 - (void)connectWithParameters:(id)arg1;
-- (int)requiredEntitlement;
 - (id)driverInterface;
 - (id)managerInterface;
 

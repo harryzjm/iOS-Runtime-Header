@@ -6,9 +6,10 @@
 
 #import <FMF/FMFXPCServerProtocol-Protocol.h>
 
-@class FMFHandle, NSString;
+@class FMFHandle, NSNumber, NSString;
 
 @protocol FMFXPCInternalServerProtocol <FMFXPCServerProtocol>
+- (oneway void)showMeDeviceAlert;
 - (oneway void)showShareMyLocationiCloudSettingsOffAlert;
 - (oneway void)getDataForPerformanceRequest:(void (^)(NSData *, NSError *))arg1;
 - (oneway void)sessionHandleReport:(void (^)(NSDictionary *))arg1;
@@ -17,7 +18,7 @@
 - (oneway void)isIn5XXGracePeriodWithCompletion:(void (^)(_Bool))arg1;
 - (oneway void)exit5XXGracePeriod;
 - (oneway void)crashDaemon;
-- (oneway void)setSessionClientBundleId:(NSString *)arg1;
+- (oneway void)setSessionClientPid:(NSNumber *)arg1;
 - (oneway void)iCloudAccountNameWithCompletion:(void (^)(NSString *))arg1;
 @end
 

@@ -11,13 +11,13 @@
 + (_Bool)usesTelephonyGlyphsWhereAvailable;
 + (double)highlightedCircleViewAlpha;
 + (double)unhighlightedCircleViewAlpha;
-+ (id)imageForCharacter:(unsigned int)arg1 highlighted:(_Bool)arg2;
-+ (id)imageForCharacter:(unsigned int)arg1;
++ (id)imageForCharacter:(long long)arg1 highlighted:(_Bool)arg2;
++ (id)imageForCharacter:(long long)arg1;
 + (long long)currentStyle;
 - (void)updateCurrentStyleIfNecessaryFromStyle:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)buttonColor;
-- (id)initForCharacter:(unsigned int)arg1;
+- (id)initForCharacter:(long long)arg1;
 
 @end
 

@@ -14,9 +14,8 @@ __attribute__((visibility("hidden")))
     UIVisualEffectView *_visualEffectView;
 }
 
-@property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 - (void).cxx_destruct;
-- (void)prepareForReuse;
+@property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 - (void)layoutSubviews;
 
 @end

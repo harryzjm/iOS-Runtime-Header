@@ -15,18 +15,16 @@
 @interface _INPBUncompressFileIntent : PBCodable <_INPBUncompressFileIntent, NSSecureCoding, NSCopying>
 {
     CDStruct_032f6352 _has;
-    _Bool __encodeLegacyGloryData;
     int _entityType;
     _INPBString *_entityName;
     _INPBIntentMetadata *_intentMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property(retain, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

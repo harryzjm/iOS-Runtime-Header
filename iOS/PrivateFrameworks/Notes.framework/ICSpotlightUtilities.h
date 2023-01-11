@@ -12,6 +12,11 @@
 
 + (id)userActivityPersistentIdentifierForNote:(id)arg1;
 + (id)stringByEscapingSearchString:(id)arg1;
++ (id)rankingQueryFieldsForSorting;
++ (id)rankingQueryFieldsForWordSpecificHighlighting;
++ (id)rankingQueryFieldsForGenericHighlighting;
++ (unsigned long long)rankingQueryLimit;
++ (id)queryFields;
 
 @end
 

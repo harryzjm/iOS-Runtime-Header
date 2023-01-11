@@ -20,8 +20,12 @@
     VKTimedAnimation *_puckStyleAnimation;
     struct AnimationRunner *_animationRunner;
     struct NavigationPuck *_navigationPuck;
+    _Bool _animatingAccuracy;
+    double _presentationAccuracy;
 }
 
+@property(nonatomic) double presentationAccuracy; // @synthesize presentationAccuracy=_presentationAccuracy;
+@property(nonatomic, getter=isAnimatingAccuracy) _Bool animatingAccuracy; // @synthesize animatingAccuracy=_animatingAccuracy;
 @property(nonatomic) _Bool animatingToCoordinate; // @synthesize animatingToCoordinate=_animatingToCoordinate;
 @property(nonatomic) _Bool stale; // @synthesize stale=_stale;
 @property(retain, nonatomic) id <VKAnnotation> annotation; // @synthesize annotation=_annotation;
@@ -33,8 +37,10 @@
 @property(nonatomic) _Bool showCourse;
 @property(nonatomic) double presentationCourse;
 @property(nonatomic) int mode;
+@property(readonly, nonatomic) double minimumAccuracy;
 - (void)runAnimation:(id)arg1;
 - (void)destroyAnimationRunner;
+@property(readonly, nonatomic) struct VKEdgeInsets annotationTrackingEdgeInsets;
 - (void)dealloc;
 - (id)initWithAnimationRunner:(struct AnimationRunner *)arg1;
 

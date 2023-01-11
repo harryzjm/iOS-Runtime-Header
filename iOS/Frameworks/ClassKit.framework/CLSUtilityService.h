@@ -17,20 +17,34 @@
 
 + (id)sharedInstance;
 + (Class)endpointClass;
-@property(retain, nonatomic) CLSEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CLSEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
+- (void)setUserDefaultValue:(id)arg1 forDefaultNamed:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getUserDefaultForDefaultNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)userDefaultsConfigurationDictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)authorizationStatusForContextAtPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)statusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchReportsWithPredicate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)syncFetchWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncPushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncStatsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)syncSetClassKitCatalogEnvironment:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setClassKitCatalogEnvironment:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)syncGetClassKitCatalogEnvironmentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getClassKitCatalogEnvironmentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)syncSetDevMode:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDevMode:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)syncGetDevModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getDevModeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addDevModePerson:(id)arg1 role:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)syncRecreateDevelopmentDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recreateDevelopmentDatabaseWithCompletion:(CDUnknownBlockType)arg1;
+- (void)recreateDatabase:(_Bool)arg1 andTerminateDaemonWithCompletion:(CDUnknownBlockType)arg2;
 - (void)recreateDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)databasePathWithCompletion:(CDUnknownBlockType)arg1;
+- (id)syncUtilityServer:(CDUnknownBlockType)arg1;
 - (id)utilityServer:(CDUnknownBlockType)arg1;
 - (id)initWithEndpoint:(id)arg1;
 

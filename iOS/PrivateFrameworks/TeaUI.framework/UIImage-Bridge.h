@@ -7,7 +7,6 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (Bridge)
-+ (id)ts_systemCloseButton;
 + (id)ts_xmarkForHUD;
 + (id)ts_xmarkCircle;
 + (id)ts_xmark;
@@ -29,6 +28,7 @@
 + (id)ts_minusCircleFillWhite;
 + (id)ts_minusCircleFill;
 + (id)ts_minusCircle;
++ (id)ts_macSidebar;
 + (id)ts_link;
 + (id)ts_iCloudAndArrowDown;
 + (id)ts_heartFill;

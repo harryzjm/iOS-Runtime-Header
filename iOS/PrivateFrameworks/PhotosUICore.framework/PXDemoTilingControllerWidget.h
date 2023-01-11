@@ -12,7 +12,7 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 
 @class NSMutableSet, NSString, PXAssetsDataSourceManager, PXBasicUIViewTileAnimator, PXPhotoKitUIMediaProvider, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUIAssetsScene, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXDemoTilingControllerWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXWidget>
 {
@@ -27,6 +27,7 @@
     NSString *_localizedSubtitle;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setLocalizedSubtitle:) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property(readonly, nonatomic) PXUIAssetsScene *_scene; // @synthesize _scene=__scene;
 @property(readonly, nonatomic) NSMutableSet *_tilesInUse; // @synthesize _tilesInUse=__tilesInUse;
@@ -36,7 +37,6 @@
 @property(readonly, nonatomic) PXAssetsDataSourceManager *_dataSourceManager; // @synthesize _dataSourceManager=__dataSourceManager;
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
-- (void).cxx_destruct;
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;
 - (void)checkInTile:(void *)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
@@ -58,10 +58,13 @@
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedDisclosureTitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property(retain, nonatomic) PXWidgetSpec *spec;
@@ -69,6 +72,8 @@
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

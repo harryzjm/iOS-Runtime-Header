@@ -27,15 +27,15 @@ __attribute__((visibility("hidden")))
     NSString *_archivePath;
     NSDateFormatter *_xmlDateFormatter;
     NSDateFormatter *_cdaDateFormatter;
-    NSDictionary *_timePeriodsBySampleType;
+    NSDictionary *_dateIntervalsBySampleType;
     _Bool _exportInProgress;
     _Bool _exportFailed;
 }
 
 + (id)allSupportedMedicalTypes;
+- (void).cxx_destruct;
 @property _Bool exportFailed; // @synthesize exportFailed=_exportFailed;
 @property _Bool exportInProgress; // @synthesize exportInProgress=_exportInProgress;
-- (void).cxx_destruct;
 - (id)_formatTimeForBeatToBeatReading:(id)arg1;
 - (id)_formatBPMForBeatToBeatReading:(id)arg1;
 - (id)_preferredUnitForObjectType:(id)arg1;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_archiveExportDirectory:(id)arg1 toFile:(id)arg2;
 - (_Bool)_addSourceDirectory:(id)arg1 asPath:(id)arg2 archive:(id)arg3 fileManager:(id)arg4;
 - (void)_exportElectrocardiogramsWithName:(id)arg1 dateOfBirth:(id)arg2;
-- (_Bool)_writeElectrocardiogramsToDisk:(id)arg1 header:(id)arg2;
+- (_Bool)_writeElectrocardiogramsToDisk:(id)arg1 header:(id)arg2 version:(id)arg3;
 - (id)_electrocardiogramHeaderWithName:(id)arg1 dateOfBirth:(id)arg2;
 - (void)_exportHealthRecords;
 - (void)_writeHealthRecord:(id)arg1 documentDirectory:(id)arg2 fileNamesInUse:(id)arg3;
@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeCDAResultsHeader;
 - (void)_writeCDAVitalHeader;
 - (void)_writeCDAHeaderWithName:(id)arg1 birthData:(id)arg2 biologicalSex:(long long)arg3;
-- (void)_writeXMLPersonWithDateOfBirth:(id)arg1 biologicalSex:(long long)arg2 bloodType:(long long)arg3 skinType:(long long)arg4;
+- (void)_writeXMLPersonWithDateOfBirth:(id)arg1 biologicalSex:(long long)arg2 bloodType:(long long)arg3 skinType:(long long)arg4 cardioFitnessMedicationsUse:(id)arg5;
 - (void)_writeXMLMedicalRecordWithType:(id)arg1 identifier:(id)arg2 sourceName:(id)arg3 sourceURL:(id)arg4 fhirVersion:(id)arg5 receivedDate:(id)arg6 jsonFilePath:(id)arg7;
 - (void)_writeCDAEntryWithValue:(id)arg1 type:(id)arg2 sourceName:(id)arg3 sourceVersion:(id)arg4 device:(id)arg5 unit:(id)arg6 metadata:(id)arg7 startDate:(id)arg8 endDate:(id)arg9;
 - (void)_writeCDAOrganizerEnd;
@@ -69,6 +69,9 @@ __attribute__((visibility("hidden")))
 - (void)_writeXMLWorkoutEnd;
 - (void)_writeXMLWorkoutEventWithEventType:(id)arg1 date:(id)arg2 duration:(double)arg3 durationUnit:(id)arg4;
 - (void)_writeXMLWorkoutStartWithActivityType:(id)arg1 duration:(id)arg2 durationUnit:(id)arg3 totalDistance:(id)arg4 totalDistanceUnit:(id)arg5 totalEnergyBurned:(id)arg6 totalEnergyBurnedUnit:(id)arg7 sourceName:(id)arg8 sourceVersion:(id)arg9 device:(id)arg10 metadata:(id)arg11 creationDate:(id)arg12 startDate:(id)arg13 endDate:(id)arg14;
+- (void)_writeXMLAudiogramEnd;
+- (void)_writeXMLAudiogramSensitivityPoint:(id)arg1;
+- (void)_writeXMLAudiogramStartWithAudiogram:(id)arg1;
 - (void)_writeXMLCorrelationEnd;
 - (void)_writeXMLCorrelationStartWithType:(id)arg1 sourceName:(id)arg2 sourceVersion:(id)arg3 device:(id)arg4 metadata:(id)arg5 creationDate:(id)arg6 startDate:(id)arg7 endDate:(id)arg8;
 - (void)_writeXMLRecordWithType:(id)arg1 sourceName:(id)arg2 sourceVersion:(id)arg3 device:(id)arg4 unit:(id)arg5 metadata:(id)arg6 hrvMetadataList:(id)arg7 creationDate:(id)arg8 startDate:(id)arg9 endDate:(id)arg10 value:(id)arg11;
@@ -77,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeDataForActivitySummaries;
 - (void)_writeDataForWorkoutRoutes:(id)arg1 semaphore:(id)arg2;
 - (void)_writeDataForWorkoutType;
+- (void)_writeDataForAudiogramType;
 - (void)_writeDataForCorrelationType:(id)arg1;
 - (void)_writeDataForCategoryType:(id)arg1;
 - (void)_outputSerialQueue_finishWritingQuantityType:(id)arg1 count:(unsigned long long)arg2;
@@ -87,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeActivitySummaries;
 - (void)_writeWorkoutRouteForWorkout:(id)arg1 semaphore:(id)arg2;
 - (void)_writeWorkoutType;
+- (void)_writeAudiogramType;
 - (void)_writeCorrelationType:(id)arg1;
 - (void)_writeCategoryType:(id)arg1;
 - (void)_writeQuantityType:(id)arg1;

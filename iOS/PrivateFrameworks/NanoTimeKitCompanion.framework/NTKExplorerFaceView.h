@@ -23,9 +23,9 @@
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (Class)_timeViewClass;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long color; // @synthesize color=_color;
 @property(nonatomic) unsigned long long density; // @synthesize density=_density;
-- (void).cxx_destruct;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (double)_complicationAlphaForEditMode:(long long)arg1;
 - (double)_contentScaleForEditMode:(long long)arg1;
@@ -45,7 +45,7 @@
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterEditing;
 - (void)_prepareForEditing;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (id)_keylineViewForComplicationSlot:(id)arg1;

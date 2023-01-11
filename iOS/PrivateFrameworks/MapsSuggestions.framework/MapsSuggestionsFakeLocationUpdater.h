@@ -18,10 +18,11 @@
 @property(readonly, nonatomic) _Bool isRunning; // @synthesize isRunning=_isRunning;
 @property(readonly, nonatomic) unsigned long long calledStopImplementation; // @synthesize calledStopImplementation=_calledStopImplementation;
 @property(readonly, nonatomic) unsigned long long calledStartImplementation; // @synthesize calledStartImplementation=_calledStartImplementation;
-- (void)stopImplementation;
-- (void)startImplemention;
+- (void)onStopImplementation;
+- (void)onStartImplementation;
 - (void)sendVisit:(id)arg1;
 - (void)sendLocation:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

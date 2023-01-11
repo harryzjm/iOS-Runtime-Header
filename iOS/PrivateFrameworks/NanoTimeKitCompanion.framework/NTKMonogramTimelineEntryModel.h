@@ -11,8 +11,8 @@
     NSString *_monogram;
 }
 
-@property(copy, nonatomic) NSString *monogram; // @synthesize monogram=_monogram;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *monogram; // @synthesize monogram=_monogram;
 - (id)_newSimpleTextTemplate;
 - (id)templateForComplicationFamily:(long long)arg1;
 

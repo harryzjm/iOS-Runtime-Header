@@ -13,6 +13,8 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *fmipDsid;
+@property(readonly, nonatomic) NSString *fmipUrl;
 @property(readonly, nonatomic) NSString *fmipWipeToken;
 - (id)initWithHTTPResponse:(id)arg1 data:(id)arg2;
 

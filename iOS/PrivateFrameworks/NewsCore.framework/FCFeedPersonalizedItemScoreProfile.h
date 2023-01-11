@@ -11,34 +11,36 @@
 @interface FCFeedPersonalizedItemScoreProfile : NSObject
 {
     double _featureCtr;
-    double _paidNonpaidSubscriptionCtr;
     double _subscribedChannelCtr;
+    double _paidNonpaidSubscriptionCtr;
     double _autoSubscribeCtr;
     double _computedGlobalScoreCoefficient;
-    double _globalScore;
     double _userFeedbackScore;
-    double _agedUserFeedbackScore;
+    double _userConversionScore;
     double _personalizationScore;
     double _firstPassPersonalizationScore;
     double _agedPersonalizationScore;
     double _diversifiedPersonalizationScore;
     NSDictionary *_cohortMemberships;
+    NSDictionary *_articleCohortMemberships;
+    unsigned long long _groupingReason;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long groupingReason; // @synthesize groupingReason=_groupingReason;
+@property(retain, nonatomic) NSDictionary *articleCohortMemberships; // @synthesize articleCohortMemberships=_articleCohortMemberships;
 @property(retain, nonatomic) NSDictionary *cohortMemberships; // @synthesize cohortMemberships=_cohortMemberships;
 @property(nonatomic) double diversifiedPersonalizationScore; // @synthesize diversifiedPersonalizationScore=_diversifiedPersonalizationScore;
 @property(nonatomic) double agedPersonalizationScore; // @synthesize agedPersonalizationScore=_agedPersonalizationScore;
 @property(nonatomic) double firstPassPersonalizationScore; // @synthesize firstPassPersonalizationScore=_firstPassPersonalizationScore;
 @property(nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
-@property(nonatomic) double agedUserFeedbackScore; // @synthesize agedUserFeedbackScore=_agedUserFeedbackScore;
+@property(nonatomic) double userConversionScore; // @synthesize userConversionScore=_userConversionScore;
 @property(nonatomic) double userFeedbackScore; // @synthesize userFeedbackScore=_userFeedbackScore;
-@property(nonatomic) double globalScore; // @synthesize globalScore=_globalScore;
 @property(nonatomic) double computedGlobalScoreCoefficient; // @synthesize computedGlobalScoreCoefficient=_computedGlobalScoreCoefficient;
 @property(nonatomic) double autoSubscribeCtr; // @synthesize autoSubscribeCtr=_autoSubscribeCtr;
-@property(nonatomic) double subscribedChannelCtr; // @synthesize subscribedChannelCtr=_subscribedChannelCtr;
 @property(nonatomic) double paidNonpaidSubscriptionCtr; // @synthesize paidNonpaidSubscriptionCtr=_paidNonpaidSubscriptionCtr;
+@property(nonatomic) double subscribedChannelCtr; // @synthesize subscribedChannelCtr=_subscribedChannelCtr;
 @property(nonatomic) double featureCtr; // @synthesize featureCtr=_featureCtr;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

@@ -18,8 +18,9 @@
 
 + (id)groupEmitterIdentifier;
 + (id)spotlightFeedTransformationWithContext:(id)arg1;
-@property(readonly, copy, nonatomic) id <FCFeedGroupInsertionDescriptor> insertionDescriptor; // @synthesize insertionDescriptor=_insertionDescriptor;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) id <FCFeedGroupInsertionDescriptor> insertionDescriptor; // @synthesize insertionDescriptor=_insertionDescriptor;
+@property(readonly, nonatomic) _Bool shouldEmitContentInFavoritesOnlyMode;
 @property(readonly, nonatomic) long long requiredForYouContentTypes;
 @property(readonly, nonatomic) _Bool emitsSingletonGroups;
 - (id)backingChannelTagIDWithConfiguration:(id)arg1;

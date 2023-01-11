@@ -4,108 +4,96 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameCenterUI/GKComposeControllerDelegate-Protocol.h>
-#import <GameCenterUI/UISearchBarDelegate-Protocol.h>
-#import <GameCenterUI/UISearchResultsUpdating-Protocol.h>
+#import <GameCenterUI/CNContactPickerDelegate-Protocol.h>
+#import <GameCenterUI/GKDashboardMultiplayerPickerDatasourceDelegate-Protocol.h>
 #import <GameCenterUI/UITextFieldDelegate-Protocol.h>
 
-@class GKContactSkipControl, GKDashboardCollectionViewController, GKDashboardMultiplayerPickerDataSource, NSArray, NSLayoutConstraint, NSString, UIButton, UILabel, UISearchController, UISegmentedControl, UITextField, UIView, UIViewController, UIVisualEffectView;
-@protocol GKDashboardNearbyBrowserDelegate;
+@class CNContactPickerViewController, GKDashboardMultiplayerPickerDataSource, GKPickerSearchTextField, NSArray, NSLayoutConstraint, NSString, UIButton, UILabel, UITextField, UIView, UIVisualEffectView;
+@protocol GKDashboardMultiplayerPickerDelegate, GKDashboardNearbyBrowserDelegate;
 
-@interface GKDashboardMultiplayerPickerViewController <UITextFieldDelegate, UISearchBarDelegate, GKComposeControllerDelegate, UISearchResultsUpdating>
+@interface GKDashboardMultiplayerPickerViewController <UITextFieldDelegate, GKDashboardMultiplayerPickerDatasourceDelegate, CNContactPickerDelegate>
 {
-    _Bool _supportsNearby;
     _Bool _shouldIgnoreClearSelection;
-    _Bool _shouldApplyInitialOffset;
-    _Bool _searching;
     NSString *_message;
     CDUnknownBlockType _completionHandler;
     id <GKDashboardNearbyBrowserDelegate> _nearbyDelegate;
+    id <GKDashboardMultiplayerPickerDelegate> _multiplayerPickerDelegate;
     NSArray *_initiallySelectedPlayers;
     UILabel *_descriptionLabel;
     UIButton *_sendButton;
     UIButton *_customizeMessageButton;
     UITextField *_messageField;
-    UIView *_scrollingHeader;
-    NSLayoutConstraint *_scrollingHeaderTopConstraint;
-    double _scrollingHeaderTopConstraintConstant;
     NSLayoutConstraint *_customizeMessageBottomConstraint;
     double _initialCustomizeMessageBottomConstraintConstant;
-    double _segmentControlHeight;
-    UISegmentedControl *_sectionControl;
-    GKContactSkipControl *_contactSkipControl;
-    UIVisualEffectView *_effectView;
-    UISearchController *_searchController;
-    GKDashboardCollectionViewController *_searchResultsCollectionViewController;
-    UIViewController *_composeController;
-    struct UIEdgeInsets _initialInsets;
+    CNContactPickerViewController *_contactPicker;
+    UIView *_searchBackgroundView;
+    UIVisualEffectView *_backgroundEffectView;
+    GKPickerSearchTextField *_searchTextField;
+    UIButton *_showContactPickerButton;
 }
 
-@property(retain, nonatomic) UIViewController *composeController; // @synthesize composeController=_composeController;
-@property(retain, nonatomic) GKDashboardCollectionViewController *searchResultsCollectionViewController; // @synthesize searchResultsCollectionViewController=_searchResultsCollectionViewController;
-@property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
-@property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
-@property(retain, nonatomic) GKContactSkipControl *contactSkipControl; // @synthesize contactSkipControl=_contactSkipControl;
-@property(retain, nonatomic) UISegmentedControl *sectionControl; // @synthesize sectionControl=_sectionControl;
-@property(nonatomic) double segmentControlHeight; // @synthesize segmentControlHeight=_segmentControlHeight;
-@property(nonatomic, getter=isSearching) _Bool searching; // @synthesize searching=_searching;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIButton *showContactPickerButton; // @synthesize showContactPickerButton=_showContactPickerButton;
+@property(retain, nonatomic) GKPickerSearchTextField *searchTextField; // @synthesize searchTextField=_searchTextField;
+@property(retain, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
+@property(retain, nonatomic) UIView *searchBackgroundView; // @synthesize searchBackgroundView=_searchBackgroundView;
+@property(retain, nonatomic) CNContactPickerViewController *contactPicker; // @synthesize contactPicker=_contactPicker;
 @property(nonatomic) double initialCustomizeMessageBottomConstraintConstant; // @synthesize initialCustomizeMessageBottomConstraintConstant=_initialCustomizeMessageBottomConstraintConstant;
 @property(retain, nonatomic) NSLayoutConstraint *customizeMessageBottomConstraint; // @synthesize customizeMessageBottomConstraint=_customizeMessageBottomConstraint;
-@property(nonatomic) _Bool shouldApplyInitialOffset; // @synthesize shouldApplyInitialOffset=_shouldApplyInitialOffset;
-@property(nonatomic) struct UIEdgeInsets initialInsets; // @synthesize initialInsets=_initialInsets;
-@property(nonatomic) double scrollingHeaderTopConstraintConstant; // @synthesize scrollingHeaderTopConstraintConstant=_scrollingHeaderTopConstraintConstant;
-@property(retain, nonatomic) NSLayoutConstraint *scrollingHeaderTopConstraint; // @synthesize scrollingHeaderTopConstraint=_scrollingHeaderTopConstraint;
-@property(retain, nonatomic) UIView *scrollingHeader; // @synthesize scrollingHeader=_scrollingHeader;
 @property(retain, nonatomic) UITextField *messageField; // @synthesize messageField=_messageField;
 @property(retain, nonatomic) UIButton *customizeMessageButton; // @synthesize customizeMessageButton=_customizeMessageButton;
 @property(retain, nonatomic) UIButton *sendButton; // @synthesize sendButton=_sendButton;
 @property(retain, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property(nonatomic) _Bool shouldIgnoreClearSelection; // @synthesize shouldIgnoreClearSelection=_shouldIgnoreClearSelection;
 @property(retain, nonatomic) NSArray *initiallySelectedPlayers; // @synthesize initiallySelectedPlayers=_initiallySelectedPlayers;
+@property(nonatomic) __weak id <GKDashboardMultiplayerPickerDelegate> multiplayerPickerDelegate; // @synthesize multiplayerPickerDelegate=_multiplayerPickerDelegate;
 @property(nonatomic) id <GKDashboardNearbyBrowserDelegate> nearbyDelegate; // @synthesize nearbyDelegate=_nearbyDelegate;
-@property(nonatomic) _Bool supportsNearby; // @synthesize supportsNearby=_supportsNearby;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
-- (void).cxx_destruct;
-- (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)_updateCollectionView;
-- (void)scrollViewDidScroll:(id)arg1;
+- (struct UIEdgeInsets)collectionSectionInset;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)didEndSearchTextEditing;
 - (void)setSearchText:(id)arg1;
-- (void)searchBarCancelButtonClicked:(id)arg1;
-- (void)searchBarTextDidBeginEditing:(id)arg1;
+- (void)didBeginSearchTextEditing;
+- (void)textFieldDidEndEditing:(id)arg1;
+- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textFieldDidBeginEditing:(id)arg1;
+- (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
+- (void)didPressShowContactPickerButton:(id)arg1;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)_updateButtonEnableState;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)addMessage:(id)arg1;
 - (void)send:(id)arg1;
-- (void)contactSkipSelected:(id)arg1;
-- (void)segmentSectionChanged:(id)arg1;
 - (void)clearSelection;
+- (void)pickerDatasourceDidSelectAddFriend:(id)arg1;
+- (void)pickerDatasource:(id)arg1 didPickPlayers:(id)arg2;
+- (id)createSortPickerMenu;
 - (id)preferredFocusEnvironments;
-- (id)verticalCollectionViewLayout;
-- (id)horizontalCollectionViewLayout;
-- (void)setupNoContentView:(id)arg1 withError:(id)arg2;
 - (void)selectPlayersAtIndexPaths:(id)arg1 askDelegateFirst:(_Bool)arg2;
 - (void)dataUpdated:(_Bool)arg1 withError:(id)arg2;
+- (void)setupNoContentView:(id)arg1 withError:(id)arg2;
 - (_Bool)hasData;
-@property(readonly, nonatomic) _Bool excludesContacts;
-- (void)applyInitialContentOffset;
+@property(readonly, nonatomic) _Bool nearbyOnly;
+@property(nonatomic) _Bool supportsNearby; // @dynamic supportsNearby;
 - (id)blurEffectForTraitCollection:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)adjustCustomizeMessageConstraint;
 @property(readonly, nonatomic) GKDashboardMultiplayerPickerDataSource *pickerDataSource;
-- (id)titleStringWithMaxSelectable:(long long)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (id)initWithMaxSelectable:(long long)arg1 hiddenPlayers:(id)arg2 excludeContacts:(_Bool)arg3 tournament:(id)arg4;
+- (id)initWithMaxSelectable:(long long)arg1 hiddenPlayers:(id)arg2 nearbyOnly:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

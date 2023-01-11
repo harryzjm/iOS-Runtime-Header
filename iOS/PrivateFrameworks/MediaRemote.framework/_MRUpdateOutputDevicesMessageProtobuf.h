@@ -8,16 +8,18 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface _MRUpdateOutputDevicesMessageProtobuf : PBCodable <NSCopying>
 {
+    NSString *_endpointUID;
     NSMutableArray *_outputDevices;
 }
 
 + (Class)outputDevicesType;
-@property(retain, nonatomic) NSMutableArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *endpointUID; // @synthesize endpointUID=_endpointUID;
+@property(retain, nonatomic) NSMutableArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -27,6 +29,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasEndpointUID;
 - (id)outputDevicesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)outputDevicesCount;
 - (void)addOutputDevices:(id)arg1;

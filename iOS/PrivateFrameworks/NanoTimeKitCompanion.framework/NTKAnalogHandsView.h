@@ -25,7 +25,12 @@
     CALayer *_minuteHandTransitionPegLayer;
     CALayer *_hourHandTransitionBodyLayer;
     CALayer *_hourHandTransitionStemLayer;
-    unsigned long long _style;
+    UIView *_hourShadowView;
+    UIView *_minuteShadowView;
+    UIView *_secondShadowView;
+    _Bool _shadowCompositingEnabled;
+    _Bool _useDirectionalShadows;
+    UIView *_directionalShadowContainerView;
     _Bool _timeScrubbing;
     _Bool _frozen;
     _Bool _showDebugClientSideHands;
@@ -45,6 +50,9 @@
 }
 
 + (long long)preferredCountOfInstancesToCache;
++ (double)minuteHandAngleForDate:(id)arg1;
++ (double)hourHandAngleForDate:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(nonatomic) _Bool shouldRestoreSecondHandAfterScrubbing; // @synthesize shouldRestoreSecondHandAfterScrubbing=_shouldRestoreSecondHandAfterScrubbing;
 @property(nonatomic) _Bool showDebugClientSideHands; // @synthesize showDebugClientSideHands=_showDebugClientSideHands;
@@ -61,7 +69,6 @@
 @property(retain, nonatomic) NTKHandView *minuteHandView; // @synthesize minuteHandView=_minuteHandView;
 @property(retain, nonatomic) NTKHandView *hourHandView; // @synthesize hourHandView=_hourHandView;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (void)_accessibilityInvalidateElements;
 - (void)_repointDebugHandsToCurrentTime;
 - (void)_handleDisplayLink;
@@ -73,6 +80,7 @@
 - (void)_enumerateSecondHandViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)displayTime;
 - (void)_significantTimeChanged;
+- (void)setUseDirectionalShadows:(_Bool)arg1;
 - (void)_addHourMinuteHandsTransitionLayers;
 - (void)_removeHourMinuteHandsTransitionLayers;
 - (void)_removeColorTransitionViews;
@@ -89,12 +97,21 @@
 - (double)_timeAnimationFramesPerSecondForDevice:(id)arg1;
 - (void)setTimeOffset:(double)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
+- (_Bool)useDirectionalShadows;
+- (_Bool)shadowCompositingEnabled;
+- (id)createSecondHandView;
+- (id)createMinuteHandView;
+- (id)createHourHandView;
+- (id)secondHandConfiguration;
+- (id)minuteHandConfiguration;
+- (id)hourHandConfiguration;
 - (void)didMoveToWindow;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)_enumerateShadowViews:(CDUnknownBlockType)arg1;
 - (void)_enumerateHandViews:(CDUnknownBlockType)arg1;
+- (void)layoutShadowViews;
 - (void)layoutSubviews;
 - (void)dealloc;
-- (id)initForDevice:(id)arg1 withStyle:(unsigned long long)arg2;
 - (id)initForDevice:(id)arg1;
 
 // Remaining properties

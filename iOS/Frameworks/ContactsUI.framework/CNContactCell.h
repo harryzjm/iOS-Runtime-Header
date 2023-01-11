@@ -6,17 +6,21 @@
 
 #import <UIKit/UITableViewCell.h>
 
+#import <ContactsUI/CNIndentableCell-Protocol.h>
+
 @class CNCardGroupItem, NSArray;
 
-@interface CNContactCell : UITableViewCell
+@interface CNContactCell : UITableViewCell <CNIndentableCell>
 {
     NSArray *_constantConstraints;
     NSArray *_variableConstraints;
     CNCardGroupItem *_cardGroupItem;
 }
 
-@property(retain, nonatomic) CNCardGroupItem *cardGroupItem; // @synthesize cardGroupItem=_cardGroupItem;
++ (_Bool)shouldIndentWhileEditing;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CNCardGroupItem *cardGroupItem; // @synthesize cardGroupItem=_cardGroupItem;
+- (void)_setAnimating:(_Bool)arg1 clippingAdjacentCells:(_Bool)arg2;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 @property(readonly, nonatomic) double minCellHeight;
 - (void)updateConstraints;

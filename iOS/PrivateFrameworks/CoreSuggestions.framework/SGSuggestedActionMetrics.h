@@ -26,14 +26,15 @@
 
 + (void)recordConversationTurnWithContact:(id)arg1 received:(_Bool)arg2 curated:(_Bool)arg3 throughApp:(id)arg4 withDetailName:(id)arg5 withDetailExtraction:(id)arg6;
 + (void)recordContactDetailUsage:(id)arg1 withApp:(id)arg2;
-+ (void)recordContactDetailEngagementWithResolution:(long long)arg1 detailType:(struct SGMContactDetailType_)arg2 extractionType:(unsigned long long)arg3 modelVersion:(id)arg4;
++ (void)recordContactDetailEngagementWithResolution:(long long)arg1 detailType:(struct SGMContactDetailType_)arg2 extractionType:(unsigned long long)arg3 modelVersion:(id)arg4 confirmRejectUI:(int)arg5 pet2Tracker:(id)arg6;
 + (void)recordBannerRejectedWithEvent:(id)arg1 inApp:(struct SGMBannerDisplayApp_)arg2;
 + (void)recordBannerConfirmedWithEvent:(id)arg1 proposedEKEvent:(id)arg2 confirmedEKEvent:(id)arg3 inApp:(struct SGMBannerDisplayApp_)arg4;
-+ (void)recordBannerRejectedWithContact:(id)arg1 inApp:(struct SGMBannerDisplayApp_)arg2;
-+ (void)recordBannerConfirmedWithContact:(id)arg1 proposedCNContact:(id)arg2 confirmedCNContact:(id)arg3 inApp:(struct SGMBannerDisplayApp_)arg4;
++ (void)recordRejectedContact:(id)arg1 inApp:(struct SGMBannerDisplayApp_)arg2 rejectionUI:(int)arg3 pet2Tracker:(id)arg4;
++ (void)recordBannerConfirmedWithContact:(id)arg1 proposedCNContact:(id)arg2 confirmedCNContact:(id)arg3 inApp:(struct SGMBannerDisplayApp_)arg4 confirmationUI:(int)arg5 pet2Tracker:(id)arg6;
 + (void)recordBannerShownWithContacts:(id)arg1 events:(id)arg2 inApp:(struct SGMBannerDisplayApp_)arg3;
 + (void)recordMaybeContactFrom:(unsigned long long)arg1 withVersion:(id)arg2;
 + (id)instance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SGMContactDetailConversationTurn *contactDetailConversationTurn; // @synthesize contactDetailConversationTurn=_contactDetailConversationTurn;
 @property(retain, nonatomic) SGMUnknownContactInformationShown *unknownContactInformationShown; // @synthesize unknownContactInformationShown=_unknownContactInformationShown;
 @property(retain, nonatomic) SGMMaybeInformationShown *maybeInformationShown; // @synthesize maybeInformationShown=_maybeInformationShown;
@@ -46,7 +47,6 @@
 @property(retain, nonatomic) SGMContactRejected *contactRejected; // @synthesize contactRejected=_contactRejected;
 @property(retain, nonatomic) SGMContactConfirmed *contactConfirmed; // @synthesize contactConfirmed=_contactConfirmed;
 @property(retain, nonatomic) SGMContactInBanner *contactInBanner; // @synthesize contactInBanner=_contactInBanner;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

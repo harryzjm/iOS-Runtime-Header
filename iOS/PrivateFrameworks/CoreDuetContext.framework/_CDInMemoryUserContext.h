@@ -22,12 +22,12 @@
 }
 
 + (id)userContext;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *localDeviceID; // @synthesize localDeviceID=_localDeviceID;
 @property(retain, nonatomic) _CDInMemoryContext *userContext; // @synthesize userContext=_userContext;
 @property(retain, nonatomic) NSMutableArray *pendingAllDeviceRegistrations; // @synthesize pendingAllDeviceRegistrations=_pendingAllDeviceRegistrations;
 @property(retain, nonatomic) NSMutableDictionary *contexts; // @synthesize contexts=_contexts;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
@@ -52,10 +52,12 @@
 - (id)allDeviceIDs;
 - (id)allDevices;
 - (_Bool)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (_Bool)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (_Bool)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2;
 - (_Bool)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (id)setObject:(id)arg1 returningMetadataForContextualKeyPath:(id)arg2;
+- (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2 removedObjects:(id *)arg3;
 - (id)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 valueDidChange:(_Bool *)arg4;
 - (void)setContextValue:(id)arg1 forContextualKeyPath:(id)arg2;
 - (id)propertiesForContextualKeyPath:(id)arg1;
@@ -65,7 +67,7 @@
 - (id)unsafe_contextForDeviceWithDeviceID:(id)arg1;
 - (id)contextForDeviceWithDeviceID:(id)arg1;
 - (id)contextForKeyPath:(id)arg1;
-- (struct NSDictionary *)valuesForKeyPaths:(id)arg1;
+- (id)valuesForKeyPaths:(id)arg1;
 - (id)valuesForKeyPaths:(id)arg1 inContextsMatchingPredicate:(id)arg2;
 - (id)localContext;
 - (id)init;

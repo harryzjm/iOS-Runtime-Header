@@ -10,6 +10,9 @@
 
 - (id)_singleTriggeredRoomFormatString;
 - (id)_entireHomeString;
+- (id)iconDescriptorForRepresentedHomeKitObjects:(id)arg1;
+- (id)iconDescription;
+- (id)title;
 - (id)_serviceType;
 
 @end

@@ -12,12 +12,14 @@
     PKPaymentPass *_pass;
     PKServiceProviderOrder *_serviceProviderOrder;
     NSData *_nonce;
+    long long _cryptogramType;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long cryptogramType; // @synthesize cryptogramType=_cryptogramType;
 @property(copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
 @property(retain, nonatomic) PKServiceProviderOrder *serviceProviderOrder; // @synthesize serviceProviderOrder=_serviceProviderOrder;
 @property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
-- (void).cxx_destruct;
 - (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3 webService:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end

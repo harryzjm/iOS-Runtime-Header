@@ -16,18 +16,20 @@ __attribute__((visibility("hidden")))
     HKElectrocardiogram *_sample;
     UIColor *_tintColor;
     HKHealthStore *_healthStore;
+    long long _activeAlgorithmVersion;
     NSString *_firstName;
     NSString *_lastName;
     NSDateComponents *_dateOfBirthComponents;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDateComponents *dateOfBirthComponents; // @synthesize dateOfBirthComponents=_dateOfBirthComponents;
 @property(retain, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(retain, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property(readonly, nonatomic) long long activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
-- (void).cxx_destruct;
 - (void)_fetchDemographicInformation;
 - (id)initWithSample:(id)arg1 healthStore:(id)arg2;
 

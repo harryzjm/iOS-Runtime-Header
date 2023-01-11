@@ -6,11 +6,12 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSDateInterval, NSDictionary, NSObject, NSPredicate, NSSet, NSString, PLXPCTransaction;
+@class NSArray, NSDate, NSDateInterval, NSDictionary, NSObject, NSPredicate, NSSet, NSString, PLLocationOfInterestVisit, PLXPCTransaction;
 @protocol NSCopying, PLMomentAnalysisTransaction, PLMomentAssetData, PLMomentData, PLMomentListData, PLPhotosHighlightData;
 
 @protocol PLMomentGenerationDataManagement <NSObject>
 @property(readonly, nonatomic) NSDictionary *generationOptions;
+@property(readonly, nonatomic) _Bool isLightweightMigrationManager;
 @property(nonatomic) _Bool previousValidationSucceeded;
 @property(nonatomic) long long previousValidatedModelVersion;
 @property(nonatomic) _Bool shouldPerformLightweightValidation;
@@ -21,7 +22,9 @@
 - (NSArray *)allAssetIDsNeedingLocationShiftWithError:(id *)arg1;
 - (void)invalidateShiftedLocationForAllAssetsInMoments;
 - (NSDictionary *)locationCoordinatesForAssetIDs:(NSArray *)arg1;
+- (PLLocationOfInterestVisit *)lastLocationOfInterestVisit;
 - (void)logRoutineInformation;
+- (void)fetchLocationsOfInterestIfNeeded;
 - (NSArray *)locationsOfInterest;
 - (_Bool)cameraIsActive;
 - (_Bool)routineIsAvailable;

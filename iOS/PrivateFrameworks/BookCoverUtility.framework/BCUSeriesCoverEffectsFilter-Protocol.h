@@ -11,6 +11,6 @@
 
 @protocol BCUSeriesCoverEffectsFilter <NSObject>
 @property(readonly, nonatomic) NSString *identifier;
-- (id <BCUOperation>)newOperationWithImages:(NSArray *)arg1 filters:(NSArray *)arg2 size:(struct CGSize)arg3 contentsScale:(double)arg4 completion:(void (^)(id <BCUOperation>, id <BCUPurgeableImage>, struct UIEdgeInsets, struct CGPath *))arg5;
+- (id <BCUOperation>)newOperationWithImages:(NSArray *)arg1 filters:(NSArray *)arg2 size:(struct CGSize)arg3 contentsScale:(double)arg4 waitForCPUSynchronization:(_Bool)arg5 completion:(void (^)(id <BCUOperation>, id <BCUPurgeableImage>, struct UIEdgeInsets, struct CGPath *))arg6;
 @end
 

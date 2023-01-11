@@ -10,6 +10,5 @@
 
 @protocol SASHeaterDelegate <NSObject>
 - (void)heaterSuggestsPreheating:(SASHeater *)arg1;
-- (void)heaterSuggestsDefrosting:(SASHeater *)arg1;
 @end
 

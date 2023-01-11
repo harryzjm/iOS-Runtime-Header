@@ -18,7 +18,7 @@
 - (void)markAsFailed;
 - (void)finish;
 - (void)dealloc;
-- (id)initWithHarvestQueue:(id)arg1 itemId:(long long)arg2 fileId:(int)arg3 item:(id)arg4 fails:(int)arg5;
+- (id)initWithHarvestQueue:(id)arg1 itemId:(long long)arg2 fileId:(int)arg3 item:(id)arg4 fails:(int)arg5 customPriorityCriteria:(unsigned char)arg6;
 
 @end
 

@@ -9,6 +9,9 @@
 @class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSData, NSDictionary, NSString;
 
 @protocol UIApplicationSceneClientSettings <NSObject>
+@property(readonly, nonatomic) NSArray *multitaskingDragExclusionRects;
+@property(readonly, nonatomic) long long preferredPointerLockStatus;
+@property(readonly, nonatomic) struct CGRect screenFocusedFrame;
 @property(readonly, nonatomic) long long sceneActivationBias;
 @property(readonly, nonatomic) NSData *activationConditionsData;
 @property(readonly, copy, nonatomic) NSString *canvasTitle;

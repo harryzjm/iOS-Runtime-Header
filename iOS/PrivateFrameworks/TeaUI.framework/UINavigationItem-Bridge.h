@@ -7,6 +7,9 @@
 #import <UIKit/UINavigationItem.h>
 
 @interface UINavigationItem (Bridge)
+- (void)ts_setBottomPalettePreferredHeight:(double)arg1;
+- (void)ts_setBottomPaletteMinimumHeight:(double)arg1;
+- (void)ts_setBottomPaletteWithContentView:(id)arg1;
 - (void)ts_setLargeTitleAccessoryView:(id)arg1 alignToBaseline:(_Bool)arg2;
 - (void)ts_setBackButtonTitle:(id)arg1;
 @end

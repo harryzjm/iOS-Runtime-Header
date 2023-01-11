@@ -4,31 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXAccessibilityView-Protocol.h>
 #import <PhotosUICore/PXGReusableView-Protocol.h>
 
-@class NSString, PXGTitleSubtitleViewConfiguration;
+@class PXGTitleSubtitleViewConfiguration;
 
-@interface PXGTitleSubtitleView <PXGReusableView, PXAccessibilityView>
+@interface PXGTitleSubtitleView <PXGReusableView>
 {
     PXGTitleSubtitleViewConfiguration *_userData;
     struct CGRect _clippingRect;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) PXGTitleSubtitleViewConfiguration *userData; // @synthesize userData=_userData;
 @property(nonatomic) struct CGRect clippingRect; // @synthesize clippingRect=_clippingRect;
-- (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *accessibilityLabel;
-@property(readonly, nonatomic) _Bool isContainedInAsset;
-@property(readonly, nonatomic) _Bool isAccessible;
 - (void)prepareForReuse;
 - (void)becomeReusable;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

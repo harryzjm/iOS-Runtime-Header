@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSURL;
+
 @protocol BarcodeSupportHelperProtocol
+- (void)processAppClipImageWithURL:(NSURL *)arg1 scale:(double)arg2 reply:(void (^)(NSURL *))arg3;
 - (void)setUpQRCodeControlCenterModuleWithReply:(void (^)(_Bool, NSError *))arg1;
 @end
 

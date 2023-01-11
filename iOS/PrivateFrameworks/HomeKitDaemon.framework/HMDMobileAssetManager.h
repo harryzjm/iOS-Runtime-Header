@@ -6,25 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
-
-@class HMFTimer, NSString;
+@class NSBackgroundActivityScheduler;
 @protocol HMDMobileAssetManagerDelegate, OS_dispatch_queue;
 
-@interface HMDMobileAssetManager : NSObject <HMFTimerDelegate>
+@interface HMDMobileAssetManager : NSObject
 {
+    _Bool _indexDownloaded;
     id <HMDMobileAssetManagerDelegate> _delegate;
-    HMFTimer *_periodicMobileCatalogUpdateTimer;
+    NSBackgroundActivityScheduler *_scheduler;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain) HMFTimer *periodicMobileCatalogUpdateTimer; // @synthesize periodicMobileCatalogUpdateTimer=_periodicMobileCatalogUpdateTimer;
-@property(nonatomic) __weak id <HMDMobileAssetManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)timerDidFire:(id)arg1;
-- (void)_resetPeriodicMobileCatalogUpdateTimer;
-- (void)_startPeriodicMobileCatalogUpdateTimer;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly, nonatomic) NSBackgroundActivityScheduler *scheduler; // @synthesize scheduler=_scheduler;
+@property _Bool indexDownloaded; // @synthesize indexDownloaded=_indexDownloaded;
+@property(nonatomic) __weak id <HMDMobileAssetManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_handleMetadataAssetUpdated;
 - (void)_downloadCatalogAndUpdateMetadataIfAble;
 - (void)_updateMetadata;
@@ -32,16 +29,7 @@
 - (void)_downloadNewAsset:(id)arg1 availableVersion:(unsigned long long)arg2 newVersion:(unsigned long long)arg3;
 - (void)handleMetadataAssetUpdated;
 - (void)purgeAllInstalledAssets;
-- (void)handleMetadataAssetUpdated:(id)arg1;
-- (void)registerForNotification;
-- (id)initWithQueue:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

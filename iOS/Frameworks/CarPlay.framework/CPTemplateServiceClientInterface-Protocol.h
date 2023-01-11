@@ -6,12 +6,16 @@
 
 #import <CarPlay/CPBannerDelegate-Protocol.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
 @protocol CPTemplateServiceClientInterface <CPBannerDelegate>
+- (void)clientPushNowPlayingTemplateAnimated:(_Bool)arg1;
 - (void)updateInterestingLayoutGuideWithInsets:(struct UIEdgeInsets)arg1;
 - (void)templateIdentifierDidDismiss:(NSUUID *)arg1;
 - (void)templateIdentifierDidPop:(NSUUID *)arg1;
+- (void)clientExceededAudioMetadataThrottleLimit;
+- (void)clientExceededTabBarTabLimit;
+- (void)clientPushedIllegalTemplateOfClass:(NSString *)arg1;
 - (void)clientExceededHierarchyDepthLimit;
 @end
 

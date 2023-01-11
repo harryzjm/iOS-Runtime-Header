@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property float confidence; // @synthesize confidence=_confidence;
 @property struct CGRect bounds; // @synthesize bounds=_bounds;
 @property long long objectType; // @synthesize objectType=_objectType;
+- (id)description;
 @property(readonly) struct CGPoint center;
 - (id)initWithObjectType:(long long)arg1 boundingBox:(struct CGRect)arg2 confidence:(float)arg3;
 

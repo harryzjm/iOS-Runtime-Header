@@ -8,16 +8,17 @@
 
 #import <SIMToolkitUI/STKTelephonyListItemsProvider-Protocol.h>
 
-@class NSString;
+@class CoreTelephonyClient, NSString;
 
 @interface STKTelephonySelectionListItemsProvider : NSObject <STKTelephonyListItemsProvider>
 {
-    struct __CTServerConnection *_connection;
+    CoreTelephonyClient *_telephonyClient;
 }
 
-- (id)selectionListItemsFromOptions:(id)arg1;
+- (void).cxx_destruct;
+- (id)selectionListItemsForContext:(id)arg1 options:(id)arg2;
 - (void)dealloc;
-- (id)initWithConnection:(struct __CTServerConnection *)arg1;
+- (id)initWithTelephonyClient:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

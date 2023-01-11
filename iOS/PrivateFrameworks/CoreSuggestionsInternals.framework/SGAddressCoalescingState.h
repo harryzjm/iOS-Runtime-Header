@@ -16,8 +16,8 @@
     struct __DDResult *_lastResult;
 }
 
-@property(retain, nonatomic) NSArray *matches; // @synthesize matches=_matches;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *matches; // @synthesize matches=_matches;
 - (void)coalesceAddress:(struct __DDResult *)arg1 orAppendMatch:(id)arg2;
 - (void)dealloc;
 - (id)init;

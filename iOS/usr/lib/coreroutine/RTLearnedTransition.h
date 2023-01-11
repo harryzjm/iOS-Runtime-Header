@@ -26,6 +26,7 @@
 + (id)createWithLearnedLocationOfInterestTransitionMO:(id)arg1;
 + (id)createWithLearnedTransitionMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long predominantMotionActivityType; // @synthesize predominantMotionActivityType=_predominantMotionActivityType;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
@@ -34,12 +35,12 @@
 @property(readonly, nonatomic) NSDate *stopDate; // @synthesize stopDate=_stopDate;
 @property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)initWithIdentifier:(id)arg1 startDate:(id)arg2 stopDate:(id)arg3 visitIdentifierOrigin:(id)arg4 visitIdentifierDestination:(id)arg5 creationDate:(id)arg6 expirationDate:(id)arg7 predominantMotionActivityType:(unsigned long long)arg8;
 - (id)init;
+- (void)updateManagedObject:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;
 
 // Remaining properties

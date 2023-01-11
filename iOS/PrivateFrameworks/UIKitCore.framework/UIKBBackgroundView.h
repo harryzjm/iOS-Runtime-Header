@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) NSObject *geometryCacheKey; // @synthesize geometryCacheKey=_geometryCacheKey;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
+@property(readonly, nonatomic) long long assetIdiom;
 @property(readonly, nonatomic) _Bool keepNonPersistent;
 @property(readonly, nonatomic) double cachedWidth;
 @property(readonly, nonatomic) _Bool cacheDeferable;

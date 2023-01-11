@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CKDatabase, FCCKPrivateDatabaseSchema, FCNetworkBehaviorMonitor, NSArray, NSData, NSDate, NSOperationQueue;
+@class CKRecord, FCCKPrivateDatabaseSchema, FCNetworkBehaviorMonitor, NFLazy, NSArray, NSData, NSDate, NSOperationQueue;
 @protocol FCCKDatabaseEncryptionDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 @interface FCCKPrivateDatabase : NSObject
 {
     _Bool _encryptionEnabled;
+    _Bool _secureSubscriptionsEnabled;
+    _Bool _encryptionRequired;
     _Bool _beganInitialStartUp;
     _Bool _finishedInitialStartUp;
     _Bool _activelyStartingUp;
@@ -19,10 +21,8 @@
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     NSData *_encryptionKey;
     NSData *_secureEncryptionKey;
-    CKDatabase *_database;
-    CKDatabase *_databaseWithZoneWidePCS;
-    CKDatabase *_secureDatabase;
-    NSArray *_containers;
+    CKRecord *_sentinelRecord;
+    NFLazy *_ckProperties;
     FCCKPrivateDatabaseSchema *_schema;
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_serialOperationQueue;
@@ -40,11 +40,15 @@
 }
 
 + (CDUnknownBlockType)_privateDatabaseDeprecatedRecordTestBlock;
++ (id)sensitiveSubscriptionsZoneSchema;
++ (id)subscriptionsZoneSchema;
++ (id)subscriptionFields;
 + (id)privateDatabaseSchema;
 + (id)testingDatabaseWithCKDatabase:(id)arg1 middleware:(id)arg2 schema:(id)arg3 encryptionDelegate:(id)arg4;
 + (id)testingDatabaseWithCKDatabase:(id)arg1 middleware:(id)arg2 schema:(id)arg3;
 + (id)testingDatabaseWithCKDatabase:(id)arg1 middleware:(id)arg2;
 + (id)testingDatabase;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *zonePruningAssistants; // @synthesize zonePruningAssistants=_zonePruningAssistants;
 @property(readonly, nonatomic) NSArray *zoneRestorationSources; // @synthesize zoneRestorationSources=_zoneRestorationSources;
 @property(retain, nonatomic) NSDate *dateOfLastFailedStartUpAttempt; // @synthesize dateOfLastFailedStartUpAttempt=_dateOfLastFailedStartUpAttempt;
@@ -62,16 +66,15 @@
 @property(retain, nonatomic) NSOperationQueue *serialOperationQueue; // @synthesize serialOperationQueue=_serialOperationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) FCCKPrivateDatabaseSchema *schema; // @synthesize schema=_schema;
-@property(retain, nonatomic) NSArray *containers; // @synthesize containers=_containers;
-@property(readonly, nonatomic) CKDatabase *secureDatabase; // @synthesize secureDatabase=_secureDatabase;
-@property(readonly, nonatomic) CKDatabase *databaseWithZoneWidePCS; // @synthesize databaseWithZoneWidePCS=_databaseWithZoneWidePCS;
-@property(readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
+@property(retain, nonatomic) NFLazy *ckProperties; // @synthesize ckProperties=_ckProperties;
+@property(retain) CKRecord *sentinelRecord; // @synthesize sentinelRecord=_sentinelRecord;
 @property(retain) NSData *secureEncryptionKey; // @synthesize secureEncryptionKey=_secureEncryptionKey;
 @property(retain) NSData *encryptionKey; // @synthesize encryptionKey=_encryptionKey;
+@property(getter=isEncryptionRequired) _Bool encryptionRequired; // @synthesize encryptionRequired=_encryptionRequired;
+@property(getter=areSecureSubscriptionsEnabled) _Bool secureSubscriptionsEnabled; // @synthesize secureSubscriptionsEnabled=_secureSubscriptionsEnabled;
 @property(getter=isEncryptionEnabled) _Bool encryptionEnabled; // @synthesize encryptionEnabled=_encryptionEnabled;
 @property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property(readonly, nonatomic) __weak id <FCCKDatabaseEncryptionDelegate> encryptionDelegate; // @synthesize encryptionDelegate=_encryptionDelegate;
-- (void).cxx_destruct;
 - (void)_possiblySimulateCrashForError:(id)arg1 message:(id)arg2;
 - (void)reportFatalStartUpError:(id)arg1;
 - (void)reportPostMigrationCleanupError:(id)arg1;
@@ -114,6 +117,9 @@
 - (void)t_performStartUpWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_possiblyRetryStartUp;
 - (void)_beginInitialStartUpIfNeeded;
+- (id)secureDatabase;
+- (id)databaseWithZoneWidePCS;
+- (id)database;
 - (void)addCKOperationNoPreflight:(id)arg1 destination:(long long)arg2;
 - (void)addCKOperation:(id)arg1 destination:(long long)arg2;
 - (void)enumerateActiveDestinationsWithOptions:(long long)arg1 handler:(CDUnknownBlockType)arg2;
@@ -127,8 +133,9 @@
 - (void)registerZoneRestorationSources:(id)arg1;
 - (id)_queueForOperation:(id)arg1;
 - (void)addOperation:(id)arg1;
+- (id)t_initWithContainers:(id)arg1 database:(id)arg2 databaseWithZoneWidePCS:(id)arg3 secureDatabase:(id)arg4 schema:(id)arg5 middleware:(id)arg6 encryptionDelegate:(id)arg7 networkBehaviorMonitor:(id)arg8;
 - (id)initWithContainerIdentifier:(id)arg1 secureContainerIdentifier:(id)arg2 productionEnvironment:(_Bool)arg3 encryptionDelegate:(id)arg4 networkBehaviorMonitor:(id)arg5 privateDataSyncingEnabled:(_Bool)arg6;
-- (id)initWithContainers:(id)arg1 database:(id)arg2 databaseWithZoneWidePCS:(id)arg3 secureDatabase:(id)arg4 schema:(id)arg5 middleware:(id)arg6 encryptionDelegate:(id)arg7 networkBehaviorMonitor:(id)arg8;
+- (id)initWithCKProperties:(id)arg1 schema:(id)arg2 middleware:(id)arg3 encryptionDelegate:(id)arg4 networkBehaviorMonitor:(id)arg5;
 - (void)fetchChangesForRecordZoneID:(id)arg1 changeToken:(id)arg2 desiredKeys:(id)arg3 fetchAllChanges:(_Bool)arg4 qualityOfService:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)fetchAllDatabaseChangesWithServerChangeToken:(id)arg1 qualityOfService:(long long)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

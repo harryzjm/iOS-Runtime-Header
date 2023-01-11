@@ -6,18 +6,18 @@
 
 #import <UIKit/UIRootWindowScenePresentationBinder.h>
 
-@class NSMutableArray, UIRootSceneWindow, UIWindowScene;
+@class NSMutableArray, SBRootSceneWindow, UIWindowScene;
 
 @interface SBMainDisplayRootWindowScenePresentationBinder : UIRootWindowScenePresentationBinder
 {
-    UIRootSceneWindow *_rootWindow;
+    SBRootSceneWindow *_rootWindow;
     NSMutableArray *_disconnectionAssertions;
     UIWindowScene *_disconnectedFromScene;
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) UIRootSceneWindow *rootWindow; // @synthesize rootWindow=_rootWindow;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SBRootSceneWindow *rootWindow; // @synthesize rootWindow=_rootWindow;
 - (void)_reconnectToRenderServer;
 - (void)_disconnectFromRenderServer;
 - (id)assertDisconnectionFromRenderServerForReason:(id)arg1;

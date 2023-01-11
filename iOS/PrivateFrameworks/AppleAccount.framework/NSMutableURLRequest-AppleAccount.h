@@ -7,8 +7,11 @@
 #import <CFNetwork/NSMutableURLRequest.h>
 
 @interface NSMutableURLRequest (AppleAccount)
+- (void)aa_addAppProvidedContext:(id)arg1;
+- (void)aa_addProxiedAuthHeaderWithAccount:(id)arg1;
 - (void)aa_addLocationSharingAllowedHeader;
 - (void)aa_addContentTypeHeaders:(id)arg1;
+- (void)aa_addClientInfoHeaders;
 - (_Bool)aa_addDeviceProvisioningInfoHeadersWithDSIDFromReponse:(id)arg1;
 - (void)aa_addLoggedInAppleIDHeaderWithAccount:(id)arg1;
 - (void)aa_addMultiUserDeviceHeaderIfEnabled;
@@ -25,7 +28,9 @@
 - (id)aa_setXMLBodyWithParameters:(id)arg1;
 - (void)aa_setBodyWithParameters:(id)arg1;
 - (_Bool)aa_addAuthTokenOrBasicAuthHeaderWithAccount:(id)arg1 preferUsingPassword:(_Bool)arg2;
+- (void)aa_addBasicAuthorizationHeaderWithAccount:(id)arg1 authToken:(id)arg2;
 - (void)aa_addBasicAuthorizationHeaderWithAccount:(id)arg1 preferUsingPassword:(_Bool)arg2;
+- (void)aa_addAltDSIDAndRepairStateWithAccount:(id)arg1;
 - (void)aa_addBasicAuthPasswordWithAccount:(id)arg1;
 - (void)aa_addTokenAuthHeaderWithAccount:(id)arg1;
 @end

@@ -11,16 +11,20 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)gradientLayerLocationsFromSpacings:(id)arg1 height:(double)arg2;
 + (long long)interfaceStyleFromTheme:(id)arg1 defaultInterfaceStyle:(long long)arg2;
 + (id)colorFromHexStr:(id)arg1;
 + (id)colorFromRGBStr:(id)arg1;
++ (double)libraryCategoryListWidthForWindowWidth:(double)arg1;
 + (double)libraryCategoryListWidth;
 + (double)libraryListMarginToGrid;
 + (id)placeholderImageResourceName:(long long)arg1;
 + (double)imageCornerRadiusWithStyle:(long long)arg1;
 + (struct TVCornerRadii)imageCornerRadiiWithStyle:(long long)arg1;
 + (void)gradientConfigForCollection:(id)arg1 gradientMask:(long long)arg2 properties:(id)arg3 configuration:(CDStruct_fe9bf7bc *)arg4;
++ (_Bool)isInFullscreenOrPipPlayback;
 + (id)VideosUIBundle;
++ (_Bool)isTVApp;
 + (long long)textAlignmentWithSemanticContentAttribute:(long long)arg1;
 + (unsigned long long)minimumNumberOfItemsToEnableSeeAllButton;
 + (id)createImageProxyForResourceObject:(id)arg1 imageSize:(struct CGSize)arg2;

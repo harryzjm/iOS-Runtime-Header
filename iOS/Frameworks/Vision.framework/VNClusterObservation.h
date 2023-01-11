@@ -18,6 +18,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *distancesById; // @synthesize distancesById=_distancesById;
 @property(retain, nonatomic) NSNumber *distance; // @synthesize distance=_distance;
 @property(retain, nonatomic) NSArray *groupedClusteredFaceIdsForCluster; // @synthesize groupedClusteredFaceIdsForCluster=_groupedClusteredFaceIdsForCluster;
@@ -25,7 +26,6 @@
 @property(retain, nonatomic) NSData *clusterState; // @synthesize clusterState=_clusterState;
 @property(retain, nonatomic) NSArray *suggestionsForCluster; // @synthesize suggestionsForCluster=_suggestionsForCluster;
 @property(retain, nonatomic) NSArray *clusters; // @synthesize clusters=_clusters;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

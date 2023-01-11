@@ -12,11 +12,15 @@
 {
 }
 
++ (_Bool)supportsCustomUserReportRequestAfforance;
 + (_Bool)supportsRecyclingForCardSection:(id)arg1;
+- (id)leadingTextView;
+- (id)leadingView;
 - (void)footnoteButtonPressed;
 - (void)updateChevronVisible:(_Bool)arg1 leaveSpaceForChevron:(_Bool)arg2;
 - (void)setFeedbackDelegate:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (id)setupContentView;
 
 // Remaining properties

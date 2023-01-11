@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUI/PUPhotoStreamComposeServiceDelegate-Protocol.h>
-#import <PhotosUI/PUVideoTrimQueueControllerDelegate-Protocol.h>
 #import <PhotosUI/PXAlbumStreamingOptionsViewControllerDelegate-Protocol.h>
+#import <PhotosUI/PXAssetsSharingHelperDelegate-Protocol.h>
+#import <PhotosUI/PXPhotoStreamComposeServiceDelegate-Protocol.h>
+#import <PhotosUI/PXVideoTrimQueueControllerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PUVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
+@class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PXVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
 @protocol PUCloudSharedAlbumViewControllerDelegate;
 
-@interface PUCloudSharedAlbumViewController <PXAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
+@interface PUCloudSharedAlbumViewController <PXAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PXVideoTrimQueueControllerDelegate, PXPhotoStreamComposeServiceDelegate, PXAssetsSharingHelperDelegate>
 {
     PUPhotosPickerViewController *_activePhotosPickerViewController;
-    PUVideoTrimQueueController *_trimController;
+    PXVideoTrimQueueController *_trimController;
     PUPhotoStreamComposeServiceViewController *_composeServiceController;
     _Bool _displayingOptions;
     _Bool __canContributeToCloudSharedAlbum;
@@ -30,6 +31,7 @@
     long long __selectedItemIndex;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setSelectedItemIndex:) long long _selectedItemIndex; // @synthesize _selectedItemIndex=__selectedItemIndex;
 @property(retain, nonatomic, setter=_setSwitcherBarButtonItem:) UIBarButtonItem *_switcherBarButtonItem; // @synthesize _switcherBarButtonItem=__switcherBarButtonItem;
 @property(retain, nonatomic, setter=_setSwitcherSegmentedControl:) UISegmentedControl *_switcherSegmentedControl; // @synthesize _switcherSegmentedControl=__switcherSegmentedControl;
@@ -41,12 +43,18 @@
 @property(retain, nonatomic, setter=_setOptionsViewController:) UIViewController *_optionsViewController; // @synthesize _optionsViewController=__optionsViewController;
 @property(nonatomic, getter=isDisplayingOptions, setter=setDisplayingOptions:) _Bool displayingOptions; // @synthesize displayingOptions=_displayingOptions;
 @property(nonatomic) __weak id <PUCloudSharedAlbumViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
+- (id)px_navigationDestination;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)photoStreamComposeServiceDidCancel:(id)arg1;
 - (void)photoStreamComposeService:(id)arg1 didPostComment:(id)arg2;
 - (void)controller:(id)arg1 didCancelTrimmingVideoSources:(id)arg2;
 - (void)controller:(id)arg1 didFinishTrimmingVideoSources:(id)arg2;
+- (void)controller:(id)arg1 dismissViewControllerWithCompletion:(CDUnknownBlockType)arg2;
+- (void)controller:(id)arg1 presentViewController:(id)arg2;
+- (_Bool)assetsSharingHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)assetsSharingHelper:(id)arg1 presentViewController:(id)arg2;
 - (void)handleAddToAlbum:(id)arg1 pickedAssets:(id)arg2;
 - (void)albumStreamingOptionsViewController:(id)arg1 didCompleteWithReason:(int)arg2;
 - (id)_newOptionsViewController;
@@ -80,7 +88,7 @@
 - (_Bool)canDeleteContent;
 - (_Bool)canAddToOtherAlbumContent;
 - (id)_suppressionContexts;
-- (void)setAlbum:(struct NSObject *)arg1 existingFetchResult:(id)arg2;
+- (void)setAlbum:(id)arg1 existingFetchResult:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) PLCloudSharedAlbum *album; // @dynamic album;

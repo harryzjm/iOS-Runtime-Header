@@ -4,23 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKExtraLargeTimeView, NTKFaceColorScheme, UILabel, UITapGestureRecognizer, UIView;
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 
-@interface NTKExtraLargeFaceView
+@class NSString, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKExtraLargeTimeView, NTKFaceColorScheme, UIView;
+
+@interface NTKExtraLargeFaceView <CLKMonochromeFilterProvider>
 {
     UIView *_zoomingIconCircleView;
     UIView *_zoomingIconTimeView;
     NTKFaceColorScheme *_colorScheme;
     unsigned long long _faceColor;
-    double _currentFaceViewScale;
-    double _currentFaceOffsetY;
     NTKExtraLargeTimeView *_largeTimeLabel;
     NTKDigitalTimeLabel *_smallTimeLabel;
     NTKDigitalTimeLabelStyle *_smallTimeLabelStyle;
-    UILabel *_timeTravelLabel;
-    NTKDigitalTimeLabelStyle *_timeTravelStyle;
-    UIView *_timeTravelExitView;
-    UITapGestureRecognizer *_timeTravelExitRecognizer;
     _Bool _viewsOffsetForStatusBar;
     _Bool _isEditing;
     _Bool _complicationIsVisible;
@@ -46,6 +42,7 @@
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (void)_applyComplicationTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (double)_smallTimeAlphaForEditMode:(long long)arg1;
@@ -62,16 +59,13 @@
 - (void)_prepareForStatusChange:(_Bool)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)_applyFrozen;
+- (void)_layoutSmallTimeLabel;
 - (void)_layoutForegroundContainerView;
 - (_Bool)_needsForegroundContainerView;
-- (void)endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_scrubToDate:(id)arg1 animated:(_Bool)arg2;
-- (id)_timeTravelStyle;
-- (void)_startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_handleTimeTravelTapGesture:(id)arg1;
-- (_Bool)_wantsTimeTravelStatusModule;
-- (_Bool)_canStartTimeScrubbing;
-- (_Bool)_supportsTimeScrubbing;
+- (id)_richComplicationSecondaryColor;
+- (_Bool)shouldFlipColorsForRichComplicationView:(id)arg1;
+- (void)_applyColor:(id)arg1 toRichComplicationView:(id)arg2 withFraction:(double)arg3 isMonochrome:(_Bool)arg4;
+- (void)_applyFaceColorToRichComplicationView:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_loadLayoutRules;
@@ -81,7 +75,12 @@
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (void)layoutSubviews;
-- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

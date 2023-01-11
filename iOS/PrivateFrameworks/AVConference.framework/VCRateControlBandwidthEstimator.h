@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SuddenChangeParameters;
+@class SuddenChangeParameters, VCRateControlServerBag;
 
 __attribute__((visibility("hidden")))
 @interface VCRateControlBandwidthEstimator : NSObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned int _referencePacketDataSize;
     _Bool _isInitialized;
     _Bool _isFirstBWEstimationReleased;
+    unsigned int _lastProbingSequenceTimestamp;
     unsigned int _lastProbingSequenceReferenceTimestamp;
     double _firstDivergeTime;
     int _bandwidthDivergeCount;
@@ -37,9 +38,16 @@ __attribute__((visibility("hidden")))
     double _estimatedBandwidthUncapped;
     unsigned int _radioAccessTechnology;
     unsigned int _mode;
-    unsigned int _bandwidthEstimationState;
+    int _bandwidthEstimationState;
+    _Bool _fastSuddenBandwidthDetectionEnabled;
+    VCRateControlServerBag *_serverBag;
+    unsigned int _minProbingSequenceSize;
+    void *_logBWEDump;
 }
 
+@property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
+@property(nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
+@property(readonly, nonatomic) int bandwidthEstimationState; // @synthesize bandwidthEstimationState=_bandwidthEstimationState;
 @property(nonatomic) unsigned int mode; // @synthesize mode=_mode;
 @property(nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
 @property(nonatomic) double estimatedBandwidthUncapped; // @synthesize estimatedBandwidthUncapped=_estimatedBandwidthUncapped;
@@ -55,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (double)resetBandwidthWithParameters:(double)arg1 probingSequenceDuration:(double)arg2 probingSequenceSize:(unsigned int)arg3 packetsInProbingSequence:(unsigned int)arg4;
 - (_Bool)isPacketProcessedLateWithArrivalTime:(double)arg1;
 - (void)updateQualificationParameters;
+- (void)enableBWELogDump:(void *)arg1;
 - (void)calculateBandwidthEstimationForBandwidthSample:(double)arg1 arrivalTime:(double)arg2;
 - (void)calculateBandwidthEstimationAtTime:(double)arg1 mediaTimestamp:(unsigned int)arg2 mediaDataSize:(unsigned int)arg3 probingSequence:(_Bool)arg4 probingSequenceID:(unsigned int)arg5;
 - (void)dealloc;

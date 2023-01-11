@@ -40,6 +40,7 @@
 @property(readonly) _Bool calIsDirty;
 @property(readonly) NSURL *calExternalExchangeWebServicesURL;
 @property(readonly) NSURL *calExchangeWebServicesURL;
+@property(readonly) _Bool calIsiCloudCalDAVAccount;
 @property(copy) NSString *calWebServicesRecordGUID;
 @property _Bool calUseKerberos;
 @property _Bool calSkipCredentialVerification;

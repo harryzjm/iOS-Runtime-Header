@@ -4,46 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/SBFluidSwitcherScrollProviding-Protocol.h>
-
 @class NSString, SBGridLayoutSwitcherModifier, _SBInlineGridFloorSwitcherModifier;
-@protocol SBFluidSwitcherScrollProvidingDelegate;
 
-@interface SBInlineGridSwitcherModifier <SBFluidSwitcherScrollProviding>
+@interface SBInlineGridSwitcherModifier
 {
+    NSString *_bundleIdentifier;
+    unsigned long long _scrollAxis;
+    struct CGSize _fixedCardSize;
+    double _cardScale;
+    _Bool _floating;
+    _Bool _overlay;
     SBGridLayoutSwitcherModifier *_gridLayoutModifier;
     _SBInlineGridFloorSwitcherModifier *_floorModifier;
     unsigned long long _initialScrollAxis;
     struct CGSize _initialCardSize;
     double _initialCardScale;
     _Bool _hasScrolledToInitialAppLayoutForTransitionIntoSwitcher;
-    _Bool _floating;
-    _Bool _overlay;
-    id <SBFluidSwitcherScrollProvidingDelegate> _scrollDelegate;
+    unsigned long long _ongoingAppLayoutRemovals;
 }
 
-@property(readonly, nonatomic, getter=isOverlay) _Bool overlay; // @synthesize overlay=_overlay;
-@property(readonly, nonatomic, getter=isFloating) _Bool floating; // @synthesize floating=_floating;
-@property(nonatomic) __weak id <SBFluidSwitcherScrollProvidingDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
 - (void).cxx_destruct;
-- (id)forwardingTargetForSelector:(SEL)arg1;
-@property(readonly, nonatomic) double cardScale;
-@property(readonly, nonatomic) struct CGSize fixedCardSize;
-@property(readonly, nonatomic) unsigned long long scrollAxis;
-- (double)effectiveHorizontalSpacing;
+- (double)cardScale;
+- (struct CGSize)fixedCardSize;
+- (unsigned long long)scrollAxis;
 - (unsigned long long)numberOfRows;
+- (id)appExposeAccessoryButtonsBundleIdentifier;
+- (id)visibleAppLayouts;
 - (id)handleTapOutsideToDismissEvent:(id)arg1;
 - (id)handleTapAppLayoutEvent:(id)arg1;
+- (id)handleRemovalEvent:(id)arg1;
 - (id)handleInlineTransitionEvent:(id)arg1;
 - (id)gridLayoutModifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
-- (id)initWithScrollAxis:(unsigned long long)arg1 fixedCardSize:(struct CGSize)arg2 cardScale:(double)arg3 floating:(_Bool)arg4 overlay:(_Bool)arg5;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithBundleIdentifier:(id)arg1 scrollAxis:(unsigned long long)arg2 fixedCardSize:(struct CGSize)arg3 cardScale:(double)arg4 floating:(_Bool)arg5 overlay:(_Bool)arg6;
 
 @end
 

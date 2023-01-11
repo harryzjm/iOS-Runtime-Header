@@ -17,8 +17,10 @@
 
 @property(readonly) struct Object *_apiObject;
 - (void)removeAllUserScripts;
+- (void)addUserScript:(id)arg1 baseURL:(id)arg2 includeMatchPatternStrings:(id)arg3 excludeMatchPatternStrings:(id)arg4 injectionTime:(int)arg5 mainFrameOnly:(_Bool)arg6;
 - (void)addUserScript:(id)arg1 baseURL:(id)arg2 whitelistedURLPatterns:(id)arg3 blacklistedURLPatterns:(id)arg4 injectionTime:(int)arg5 mainFrameOnly:(_Bool)arg6;
 - (void)removeAllUserStyleSheets;
+- (void)addUserStyleSheet:(id)arg1 baseURL:(id)arg2 includeMatchPatternStrings:(id)arg3 excludeMatchPatternStrings:(id)arg4 mainFrameOnly:(_Bool)arg5;
 - (void)addUserStyleSheet:(id)arg1 baseURL:(id)arg2 whitelistedURLPatterns:(id)arg3 blacklistedURLPatterns:(id)arg4 mainFrameOnly:(_Bool)arg5;
 @property _Bool privateBrowsingEnabled;
 @property _Bool allowsPlugIns;

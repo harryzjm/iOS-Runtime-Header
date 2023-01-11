@@ -28,6 +28,7 @@
     NSSet *_matchingCategories;
     NSSet *_matchingAlgorithms;
     NSSet *_excludingAlgorithms;
+    NSString *_matchingContactHandle;
     unsigned long long _consumer;
 }
 
@@ -35,7 +36,9 @@
 + (id)_algorithmsDescription:(id)arg1;
 + (id)_matchingCategoriesDescription:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long consumer; // @synthesize consumer=_consumer;
+@property(retain, nonatomic) NSString *matchingContactHandle; // @synthesize matchingContactHandle=_matchingContactHandle;
 @property(nonatomic) _Bool excludingWithoutSentiment; // @synthesize excludingWithoutSentiment=_excludingWithoutSentiment;
 @property(retain, nonatomic) NSSet *excludingAlgorithms; // @synthesize excludingAlgorithms=_excludingAlgorithms;
 @property(retain, nonatomic) NSSet *matchingAlgorithms; // @synthesize matchingAlgorithms=_matchingAlgorithms;
@@ -51,7 +54,6 @@
 @property(retain, nonatomic) NSDate *toDate; // @synthesize toDate=_toDate;
 @property(retain, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
-- (void).cxx_destruct;
 - (id)customizedDescription;
 - (id)description;
 - (unsigned long long)hash;

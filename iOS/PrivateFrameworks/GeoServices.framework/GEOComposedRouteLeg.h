@@ -6,35 +6,47 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/GEOComposedRoutePortion-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOPBTransitStop, NSArray;
+@class GEOArrivalParameters, GEOComposedRoute, GEOComposedRouteEVChargingStationInfo, GEOComposedWaypoint, GEOWaypointInfo, NSArray, NSData, NSString;
 
-@interface GEOComposedRouteLeg : NSObject <NSSecureCoding>
+@interface GEOComposedRouteLeg : NSObject <NSSecureCoding, GEOComposedRoutePortion>
 {
-    GEOComposedRoute *_composedRoute;
-    long long _type;
+    GEOComposedRoute *_route;
+    GEOComposedWaypoint *_origin;
+    GEOComposedWaypoint *_destination;
+    GEOArrivalParameters *_arrivalParameters;
     struct _NSRange _pointRange;
     struct _NSRange _stepRange;
+    unsigned int _distance;
+    int _drivingSide;
+    GEOWaypointInfo *_geoOriginWaypointInfo;
+    GEOWaypointInfo *_geoDestinationWaypointInfo;
+    NSData *_serverLegIDForAnalytics;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) __weak GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
-@property(readonly, nonatomic) struct _NSRange pointRange; // @synthesize pointRange=_pointRange;
-@property(readonly, nonatomic) struct _NSRange stepRange; // @synthesize stepRange=_stepRange;
-@property(readonly, nonatomic) long long type; // @synthesize type=_type;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSData *serverLegIDForAnalytics; // @synthesize serverLegIDForAnalytics=_serverLegIDForAnalytics;
+@property(retain, nonatomic) GEOWaypointInfo *geoDestinationWaypointInfo; // @synthesize geoDestinationWaypointInfo=_geoDestinationWaypointInfo;
+@property(retain, nonatomic) GEOWaypointInfo *geoOriginWaypointInfo; // @synthesize geoOriginWaypointInfo=_geoOriginWaypointInfo;
+@property(readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
+@property(nonatomic) unsigned int distance; // @synthesize distance=_distance;
+@property(nonatomic) struct _NSRange stepRange; // @synthesize stepRange=_stepRange;
+@property(nonatomic) struct _NSRange pointRange; // @synthesize pointRange=_pointRange;
+@property(readonly, nonatomic) GEOArrivalParameters *arrivalParameters; // @synthesize arrivalParameters=_arrivalParameters;
+@property(readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
+@property(readonly, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
+@property(nonatomic) __weak GEOComposedRoute *route; // @synthesize route=_route;
+@property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)description;
-- (_Bool)_MapsCarPlay_isEqual:(id)arg1;
-@property(readonly, nonatomic) GEOPBTransitStop *endingTransitStop;
-@property(readonly, nonatomic) GEOPBTransitStop *startingTransitStop;
-- (double)remainingTimeAlongLegFromStepIndex:(unsigned long long)arg1 currentStepRemainingDistance:(double)arg2;
-- (double)remainingDistanceAlongLegFromStepIndex:(unsigned long long)arg1 currentStepRemainingDistance:(double)arg2;
-@property(readonly, nonatomic) unsigned long long numberOfTransitStops;
+- (void)setServerLegIDForAnalytics:(id)arg1;
+@property(readonly, nonatomic) unsigned long long legIndex;
+- (id)initWithComposedRoute:(id)arg1 origin:(id)arg2 destination:(id)arg3 arrivalParameters:(id)arg4;
+- (id)initWithComposedRoute:(id)arg1 geoRouteLeg:(id)arg2 origin:(id)arg3 destination:(id)arg4 arrivalParameters:(id)arg5;
 @property(readonly, nonatomic) double expectedTime;
-- (_Bool)contains:(id)arg1;
 @property(readonly, nonatomic) NSArray *steps;
 @property(readonly, nonatomic) unsigned long long stepCount;
 @property(readonly, nonatomic) unsigned long long endStepIndex;
@@ -42,9 +54,13 @@
 @property(readonly, nonatomic) unsigned int pointCount;
 @property(readonly, nonatomic) unsigned int endPointIndex;
 @property(readonly, nonatomic) unsigned int startPointIndex;
-@property(readonly, nonatomic) struct _NSRange transitStepRange;
-@property(readonly, nonatomic) int transportType;
-- (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepRange:(struct _NSRange)arg3 pointRange:(struct _NSRange)arg4;
+@property(readonly, nonatomic) double chargingDuration;
+@property(readonly, nonatomic) GEOComposedRouteEVChargingStationInfo *chargingStationInfo;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

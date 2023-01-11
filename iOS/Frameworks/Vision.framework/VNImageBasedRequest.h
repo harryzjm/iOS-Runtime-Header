@@ -14,7 +14,6 @@
 
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (Class)configurationClass;
-- (id)validatedInputFaceObservationsClippedToRegionOfInterest:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)getOptionalValidatedInputFaceObservations:(id *)arg1 clippedToRegionOfInterest:(_Bool)arg2 error:(id *)arg3;
 - (id)_faceObservationsForRegionOfInterestContainingFaceObservations:(id)arg1;
 @property(copy, nonatomic) NSArray *inputFaceObservations;

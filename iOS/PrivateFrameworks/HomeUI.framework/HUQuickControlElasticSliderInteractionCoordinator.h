@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/CAAnimationDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlSliderGestureTransformerDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class HUDisplayLinkApplier, HUElasticApplier, HUQuickControlSliderGestureTransformer, HUQuickControlViewProfile, NSDate, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol HUQuickControlIncrementalConvertibleProfile;
 
-@interface HUQuickControlElasticSliderInteractionCoordinator <HUQuickControlSliderGestureTransformerDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate>
+@interface HUQuickControlElasticSliderInteractionCoordinator <HUQuickControlSliderGestureTransformerDelegate, UIGestureRecognizerDelegate>
 {
     _Bool _userInteractionActive;
     _Bool _hasSecondaryValue;
@@ -29,6 +28,7 @@
     CDStruct_ef18196a _modelValue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *interactableStartTime; // @synthesize interactableStartTime=_interactableStartTime;
 @property(nonatomic, getter=isFirstTouchDown) _Bool firstTouchDown; // @synthesize firstTouchDown=_firstTouchDown;
 @property(nonatomic) CDStruct_c3b9c2ee modelValue; // @synthesize modelValue=_modelValue;
@@ -43,7 +43,6 @@
 @property(retain, nonatomic) HUQuickControlSliderGestureTransformer *gestureTransformer; // @synthesize gestureTransformer=_gestureTransformer;
 @property(nonatomic) _Bool hasSecondaryValue; // @synthesize hasSecondaryValue=_hasSecondaryValue;
 @property(nonatomic, getter=isUserInteractionActive) _Bool userInteractionActive; // @synthesize userInteractionActive=_userInteractionActive;
-- (void).cxx_destruct;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)gestureDidEndForGestureTransformer:(id)arg1;
 - (void)gestureTransformer:(id)arg1 sliderValueDidChange:(double)arg2;
@@ -58,10 +57,6 @@
 - (unsigned long long)_findClosestValueFromTouchLocation:(struct CGPoint)arg1;
 - (double)_sliderValueForLocation:(struct CGPoint)arg1;
 - (CDStruct_c3b9c2ee)_rawViewValueRange;
-- (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
-- (void)_animateToShrinkView;
-- (void)_animateToEnlargeView;
-- (id)_resizingAnimationWithFromValue:(double)arg1 toValue:(double)arg2;
 - (void)_beginReceivingTouchesWithGestureRecognizer:(id)arg1 isTouchContinuation:(_Bool)arg2;
 - (void)_handleControlTapGesture:(id)arg1;
 - (void)_handleControlPanGesture:(id)arg1;

@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/BSXPCCoding-Protocol.h>
 #import <SplashBoard/NSCopying-Protocol.h>
 
-@class FBSDisplayConfiguration, NSString;
+@class FBSDisplayConfiguration, NSString, XBDisplayEdgeInsetsWrapper;
 
-@interface XBLaunchStateRequest : NSObject <BSXPCCoding, NSCopying>
+@interface XBLaunchStateRequest : NSObject <BSXPCCoding, NSCopying, BSDescriptionProviding>
 {
     FBSDisplayConfiguration *_displayConfiguration;
     NSString *_groupID;
     long long _interfaceOrientation;
     long long _userInterfaceStyle;
+    XBDisplayEdgeInsetsWrapper *_customSafeAreaInsets;
     unsigned long long _statusBarState;
     NSString *_urlSchemeName;
     NSString *_launchInterfaceIdentifier;
@@ -24,16 +26,21 @@
     struct CGSize _naturalSize;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *launchInterfaceIdentifier; // @synthesize launchInterfaceIdentifier=_launchInterfaceIdentifier;
 @property(copy, nonatomic) NSString *urlSchemeName; // @synthesize urlSchemeName=_urlSchemeName;
 @property(nonatomic) unsigned long long statusBarState; // @synthesize statusBarState=_statusBarState;
+@property(retain, nonatomic) XBDisplayEdgeInsetsWrapper *customSafeAreaInsets; // @synthesize customSafeAreaInsets=_customSafeAreaInsets;
 @property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(nonatomic) struct CGSize naturalSize; // @synthesize naturalSize=_naturalSize;
 @property(nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
 @property(copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property(retain, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
-- (void).cxx_destruct;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;

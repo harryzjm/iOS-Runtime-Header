@@ -9,7 +9,7 @@
 #import <QuickLookThumbnailing/NSCopying-Protocol.h>
 #import <QuickLookThumbnailing/NSSecureCoding-Protocol.h>
 
-@class FPItem, FPSandboxingURLWrapper, NSDate, NSError, NSString, NSURL, NSUUID, QLCacheBasicVersionedFileIdentifier, QLCacheFileProviderVersionedFileIdentifier, QLThumbnailRepresentation;
+@class FPItem, FPSandboxingURLWrapper, NSData, NSDate, NSDictionary, NSError, NSString, NSURL, NSUUID, QLCacheBasicVersionedFileIdentifier, QLCacheFileProviderVersionedFileIdentifier, QLThumbnailRepresentation, UTType;
 
 @interface QLThumbnailGenerationRequest : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,14 +19,16 @@
     _Bool _finished;
     _Bool _downloadingAllowed;
     int _interpolationQuality;
-    NSString *_contentType;
+    NSString *_contentTypeUTI;
     double _minimumDimension;
     double _scale;
     unsigned long long _representationTypes;
     FPSandboxingURLWrapper *_quicklookSandboxWrapper;
     FPSandboxingURLWrapper *_genericSandboxWrapper;
+    FPSandboxingURLWrapper *_parentDirectorySandboxWrapper;
     NSURL *_fileURL;
     FPItem *_item;
+    NSData *_data;
     NSUUID *_uuid;
     QLCacheBasicVersionedFileIdentifier *_basicFileIdentifier;
     QLCacheFileProviderVersionedFileIdentifier *_fileProviderFileIdentifier;
@@ -34,6 +36,8 @@
     long long _iconVariant;
     long long _generationBehavior;
     NSError *_requestIsInvalidError;
+    NSDictionary *_externalThumbnailGeneratorData;
+    unsigned long long _externalThumbnailGeneratorDataHash;
     NSDate *_beginDate;
     QLThumbnailRepresentation *_mostRepresentativeThumbnail;
     CDUnknownBlockType _updateBlock;
@@ -46,10 +50,12 @@
     struct CGSize _size;
 }
 
++ (id)customExtensionCommunicationEncodedClasses;
 + (_Bool)supportsSecureCoding;
 + (id)_basicFileIdentifierForURL:(id)arg1 error:(id *)arg2;
 + (id)_fileProviderFileIdentifierForFPItem:(id)arg1;
 + (id)requestWithThumbnailRequest:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *overriddenContentType; // @synthesize overriddenContentType=_overriddenContentType;
 @property(nonatomic) unsigned long long typesForWhichUpdateBlockHasBeenCalled; // @synthesize typesForWhichUpdateBlockHasBeenCalled=_typesForWhichUpdateBlockHasBeenCalled;
 @property(copy, nonatomic) NSString *saveURLContentType; // @synthesize saveURLContentType=_saveURLContentType;
@@ -62,6 +68,8 @@
 @property(retain, nonatomic) NSDate *beginDate; // @synthesize beginDate=_beginDate;
 @property(nonatomic, getter=isFinished) _Bool finished; // @synthesize finished=_finished;
 @property(nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(nonatomic) unsigned long long externalThumbnailGeneratorDataHash; // @synthesize externalThumbnailGeneratorDataHash=_externalThumbnailGeneratorDataHash;
+@property(retain, nonatomic) NSDictionary *externalThumbnailGeneratorData; // @synthesize externalThumbnailGeneratorData=_externalThumbnailGeneratorData;
 @property(retain, nonatomic) NSError *requestIsInvalidError; // @synthesize requestIsInvalidError=_requestIsInvalidError;
 @property(nonatomic) int interpolationQuality; // @synthesize interpolationQuality=_interpolationQuality;
 @property(nonatomic) long long generationBehavior; // @synthesize generationBehavior=_generationBehavior;
@@ -71,8 +79,10 @@
 @property(retain, nonatomic) QLCacheFileProviderVersionedFileIdentifier *fileProviderFileIdentifier; // @synthesize fileProviderFileIdentifier=_fileProviderFileIdentifier;
 @property(retain, nonatomic) QLCacheBasicVersionedFileIdentifier *basicFileIdentifier; // @synthesize basicFileIdentifier=_basicFileIdentifier;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(retain, nonatomic) FPItem *item; // @synthesize item=_item;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(retain, nonatomic) FPSandboxingURLWrapper *parentDirectorySandboxWrapper; // @synthesize parentDirectorySandboxWrapper=_parentDirectorySandboxWrapper;
 @property(retain, nonatomic) FPSandboxingURLWrapper *genericSandboxWrapper; // @synthesize genericSandboxWrapper=_genericSandboxWrapper;
 @property(retain, nonatomic) FPSandboxingURLWrapper *quicklookSandboxWrapper; // @synthesize quicklookSandboxWrapper=_quicklookSandboxWrapper;
 @property(nonatomic) unsigned long long representationTypes; // @synthesize representationTypes=_representationTypes;
@@ -80,7 +90,6 @@
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic) _Bool iconMode; // @synthesize iconMode=_iconMode;
 @property(nonatomic) double minimumDimension; // @synthesize minimumDimension=_minimumDimension;
-- (void).cxx_destruct;
 - (void)noteUpdateBlockHasBeenCalledForType:(long long)arg1;
 - (_Bool)isValid;
 - (_Bool)prepareForSending;
@@ -93,7 +102,9 @@
 - (long long)compare:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)equivalentFPItemRequestWithItem:(id)arg1 representationTypes:(unsigned long long)arg2;
 - (_Bool)resultShouldBeSavedToDisk;
+- (_Bool)isDataBased;
 - (_Bool)isFileBased;
 - (_Bool)isUbiquitous;
 - (long long)requestedMostRepresentativeType;
@@ -102,11 +113,13 @@
 - (_Bool)provideFullResolutionThumbnail;
 - (_Bool)provideLowQualityThumbnail;
 - (_Bool)provideGenericIcon;
-@property(retain, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property(retain, nonatomic) NSString *contentTypeUTI; // @synthesize contentTypeUTI=_contentTypeUTI;
+@property(copy, nonatomic) UTType *contentType;
 - (float)maximumPixelSize;
 - (id)saveURL;
 - (id)fileIdentifier;
 - (void)setSaveURL:(id)arg1;
+- (id)initWithData:(id)arg1 contentType:(id)arg2 size:(struct CGSize)arg3 scale:(double)arg4 representationTypes:(unsigned long long)arg5;
 - (id)initWithFPItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 representationTypes:(unsigned long long)arg4;
 - (id)initWithFileAtURL:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 representationTypes:(unsigned long long)arg4;
 - (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 representationTypes:(unsigned long long)arg3;

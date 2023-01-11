@@ -19,9 +19,9 @@
     _SFPasswordPickerTableConfiguration *_configuration;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _SFPasswordPickerTableConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) __weak id <_SFPasswordPickerTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_passwordForIndexPath:(id)arg1;
 - (void)_updateSections;
 - (void)_updateMatchingPasswords;
@@ -37,11 +37,15 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)_passwordStoreDidChange;
+- (void)_reloadSavedPasswords;
+- (void)handleContextMenuDeleteForIndexPath:(id)arg1;
 - (void)_cancel;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
 
 @end

@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class HMDAudioStreamCodecConfiguration, NSArray;
+@class HAPAudioStreamCodecConfiguration, NSArray;
 
 @interface HMDSupportedSiriAudioConfigurations : NSObject
 {
     long long _siriInputType;
     NSArray *_supportedConfigurations;
-    HMDAudioStreamCodecConfiguration *_selectedConfiguration;
+    HAPAudioStreamCodecConfiguration *_selectedConfiguration;
 }
 
-@property(retain, nonatomic) HMDAudioStreamCodecConfiguration *selectedConfiguration; // @synthesize selectedConfiguration=_selectedConfiguration;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HAPAudioStreamCodecConfiguration *selectedConfiguration; // @synthesize selectedConfiguration=_selectedConfiguration;
 @property(retain, nonatomic) NSArray *supportedConfigurations; // @synthesize supportedConfigurations=_supportedConfigurations;
 @property(nonatomic) long long siriInputType; // @synthesize siriInputType=_siriInputType;
-- (void).cxx_destruct;
 
 @end
 

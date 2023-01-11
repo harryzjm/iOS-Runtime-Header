@@ -14,11 +14,14 @@
 {
     BOOL _orientation;
     _Bool _hasTail;
-    _Bool _filled;
+    BOOL _balloonStyle;
+    BOOL _color;
+    BOOL _strokeColor;
     _Bool _showingMenu;
     _Bool _canUseOpaqueMask;
     _Bool _hasOverlay;
     _Bool _wantsSkinnyMask;
+    _Bool _wantsMultilineMask;
     _Bool _useLargeAsset;
     BOOL _balloonShape;
     BOOL _balloonTailShape;
@@ -39,6 +42,7 @@
     struct UIEdgeInsets _textAlignmentInsets;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImageView *overlay; // @synthesize overlay=_overlay;
 @property(retain, nonatomic) CKManualUpdater *displayUpdater; // @synthesize displayUpdater=_displayUpdater;
 @property(nonatomic) _Bool animationPaused; // @synthesize animationPaused=_animationPaused;
@@ -52,6 +56,7 @@
 @property(nonatomic) long long userInterfaceLevel; // @synthesize userInterfaceLevel=_userInterfaceLevel;
 @property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(nonatomic) _Bool useLargeAsset; // @synthesize useLargeAsset=_useLargeAsset;
+@property(nonatomic) _Bool wantsMultilineMask; // @synthesize wantsMultilineMask=_wantsMultilineMask;
 @property(nonatomic) _Bool wantsSkinnyMask; // @synthesize wantsSkinnyMask=_wantsSkinnyMask;
 @property(nonatomic) _Bool hasOverlay; // @synthesize hasOverlay=_hasOverlay;
 @property(nonatomic) _Bool canUseOpaqueMask; // @synthesize canUseOpaqueMask=_canUseOpaqueMask;
@@ -60,13 +65,18 @@
 @property(retain, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(nonatomic) struct UIEdgeInsets textAlignmentInsets; // @synthesize textAlignmentInsets=_textAlignmentInsets;
-@property(nonatomic, getter=isFilled) _Bool filled; // @synthesize filled=_filled;
+@property(nonatomic) BOOL strokeColor; // @synthesize strokeColor=_strokeColor;
+@property(nonatomic) BOOL color; // @synthesize color=_color;
+@property(nonatomic) BOOL balloonStyle; // @synthesize balloonStyle=_balloonStyle;
 @property(nonatomic) _Bool hasTail; // @synthesize hasTail=_hasTail;
 @property(nonatomic) BOOL orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) __weak id <CKBalloonViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isSelected) _Bool selected;
+- (void)setSelected:(_Bool)arg1 withSelectionState:(id)arg2;
 - (void)updateRasterizationForInvisibleInkEffect;
 @property(nonatomic) struct CKBalloonDescriptor_t balloonDescriptor; // @dynamic balloonDescriptor;
+- (void)prepareForAcknowledgementDismissal;
+- (void)prepareForAcknowledgementDisplay;
 - (void)longPressGestureRecognized:(id)arg1;
 - (void)doubleTapGestureRecognized:(id)arg1;
 - (void)invisibleInkEffectViewWasResumed;
@@ -84,10 +94,13 @@
 - (void)addFilter:(id)arg1;
 - (void)setHasOverlay:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHasOverlay:(_Bool)arg1 autoDismiss:(_Bool)arg2;
+- (void)addOverlaySubview:(id)arg1;
 - (void)_dismissOverlay;
+- (id)overlayImage;
 @property(readonly, nonatomic) UIColor *overlayColor;
 - (void)prepareForReuse;
 - (void)updateBalloonForTraitCollection:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)prepareForDisplay;
 - (void)prepareForDisplayIfNeeded;
 - (void)setNeedsPrepareForDisplay;
@@ -98,6 +111,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(_Bool)arg4;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
 - (void)configureForComposition:(id)arg1;
 - (void)configureForChatItem:(id)arg1;

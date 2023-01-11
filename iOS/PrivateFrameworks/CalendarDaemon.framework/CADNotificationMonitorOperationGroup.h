@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)CADEvent:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(id)arg1 excludingDelegateSources:(_Bool)arg2 filteredByShowsNotificationsFlag:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(_Bool)arg1 calculateEarliestExpirationDate:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetInviteReplyNotifications:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetResourceChanges:(CDUnknownBlockType)arg1;
 - (void)CADCalendarSetClearedFromNotificationCenter:(id)arg1 error:(CDUnknownBlockType)arg2;

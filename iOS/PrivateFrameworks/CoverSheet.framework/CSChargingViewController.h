@@ -4,26 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BCBatteryDeviceController, CSBatteryChargingView;
+#import <CoverSheet/BCBatteryDeviceObserving-Protocol.h>
 
-@interface CSChargingViewController
+@class BCBatteryDeviceController, CSBatteryChargingInfo, CSBatteryChargingView, NSString;
+
+@interface CSChargingViewController <BCBatteryDeviceObserving>
 {
     BCBatteryDeviceController *_batteryController;
     CSBatteryChargingView *_chargingView;
+    CSBatteryChargingInfo *_chargingInfo;
 }
 
 - (void).cxx_destruct;
 - (void)_createNewChargingViewForDoubleBattery:(_Bool)arg1;
 - (void)_updateChargingViewIfNecessary;
+- (void)connectedDevicesDidChange:(id)arg1;
 - (long long)presentationStyle;
 - (long long)presentationPriority;
 - (long long)presentationType;
+- (void)performDismissalAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (double)durationBeforeDismissal;
 - (void)_updateChargingViewLegibility;
 - (_Bool)handleEvent:(id)arg1;
 - (void)aggregateAppearance:(id)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (void)dealloc;
+- (id)initWithChargingInfo:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

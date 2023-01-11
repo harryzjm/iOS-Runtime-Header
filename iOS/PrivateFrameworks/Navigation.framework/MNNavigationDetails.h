@@ -8,12 +8,11 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNLocation, MNStartNavigationDetails, NSArray, NSMapTable, NSMutableDictionary, NSString;
+@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNDisplayETAInfo, MNLocation, MNRouteDistanceInfo, NSArray, NSMapTable, NSMutableDictionary, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationDetails : NSObject <NSSecureCoding>
 {
-    MNStartNavigationDetails *_startNavigationDetails;
     unsigned long long _state;
     int _navigationType;
     int _desiredNavigationType;
@@ -31,6 +30,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_routeIDLookup;
     NSMutableDictionary *_routeLookup;
     NSMutableDictionary *_trafficIncidentAlerts;
+    geo_isolater *_routeLookupLock;
     _Bool _guidancePromptsEnabled;
     _Bool _isInPreArrivalState;
     _Bool _traceIsPlaying;
@@ -42,8 +42,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _selectedPreviewRouteIndex;
     double _proceedToRouteDistance;
     NSString *_displayString;
-    double _remainingTime;
-    double _remainingDistance;
     unsigned long long _closestStepIndex;
     double _distanceUntilSign;
     double _timeUntilSign;
@@ -58,6 +56,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableDictionary *routeLookup; // @synthesize routeLookup=_routeLookup;
 @property(retain, nonatomic) NSMutableDictionary *trackedCommuteDestinations; // @synthesize trackedCommuteDestinations=_trackedCommuteDestinations;
 @property(retain, nonatomic) NSArray *traceBookmarks; // @synthesize traceBookmarks=_traceBookmarks;
 @property(nonatomic) double tracePosition; // @synthesize tracePosition=_tracePosition;
@@ -71,8 +71,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double timeUntilSign; // @synthesize timeUntilSign=_timeUntilSign;
 @property(nonatomic) double distanceUntilSign; // @synthesize distanceUntilSign=_distanceUntilSign;
 @property(nonatomic) unsigned long long closestStepIndex; // @synthesize closestStepIndex=_closestStepIndex;
-@property(nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
-@property(nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 @property(retain, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property(nonatomic) double proceedToRouteDistance; // @synthesize proceedToRouteDistance=_proceedToRouteDistance;
 @property(retain, nonatomic) GEOComposedWaypoint *originalDestination; // @synthesize originalDestination=_originalDestination;
@@ -93,26 +91,25 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int desiredNavigationType; // @synthesize desiredNavigationType=_desiredNavigationType;
 @property(nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (id)description;
-@property(readonly, nonatomic) NSMutableDictionary *routeLookup;
 @property(readonly, nonatomic) NSMapTable *routeIDLookup;
 - (void)_updateRouteIDLookup;
-- (id)removeTrafficIncidentAlertWithDetails:(id)arg1;
-- (id)updateWithTrafficIncidentAlertDetails:(id)arg1;
+- (id)removeTrafficIncidentAlert:(id)arg1;
+- (id)updateWithTrafficIncidentAlert:(id)arg1;
 - (id)routeLookupIDs;
 - (id)routeInfoForRoute:(id)arg1;
 - (id)routeInfoForID:(id)arg1;
-- (void)updateLocationFromDetails:(id)arg1;
 - (void)updateETATrafficForRoute:(id)arg1;
 - (void)setAlternateRoutes:(id)arg1;
 - (void)setCurrentRoute:(id)arg1 withAlternateRoutes:(id)arg2;
 - (void)setPreviewRoutes:(id)arg1 withSelectedRouteIndex:(unsigned long long)arg2;
 - (void)updatePossibleCommuteDestinations:(id)arg1;
-@property(readonly, nonatomic) unsigned long long legIndex;
+@property(readonly, nonatomic) unsigned long long segmentIndex;
 @property(readonly, nonatomic) unsigned long long stepIndex;
 @property(readonly, nonatomic) NSArray *alternateRoutes;
 @property(readonly, nonatomic) NSArray *previewRoutes;
+@property(readonly, nonatomic) MNRouteDistanceInfo *remainingDistanceInfo;
+@property(readonly, nonatomic) MNDisplayETAInfo *displayETAInfo;
 @property(readonly, nonatomic) GEOComposedRoute *currentRoute;
 - (void)copySerializableValuesFrom:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

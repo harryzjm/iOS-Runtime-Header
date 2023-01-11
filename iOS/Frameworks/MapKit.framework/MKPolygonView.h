@@ -10,6 +10,7 @@
 {
 }
 
+- (void)strokePath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)fillPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)createPath;
 @property(readonly, nonatomic) MKPolygon *polygon;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class C2MetricOptions, CKOperationMMCSRequestOptions, NSArray, NSData, NSDictionary, NSString;
+@class C2MetricOptions, CKContainerID, CKOperationMMCSRequestOptions, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSRequestOptions : NSObject
@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     _Bool _allowsCellularAccess;
     _Bool _allowsPowerNapScheduling;
     _Bool _resolvedAutomaticallyRetryNetworkFailures;
+    _Bool _isCrossOwner;
     long long _databaseScope;
-    long long _containerEnvironment;
+    CKContainerID *_containerID;
     NSString *_topmostParentOperationID;
     NSString *_topmostParentOperationGroupID;
     NSString *_applicationBundleID;
     NSString *_applicationSecondaryID;
-    NSString *_containerID;
     NSArray *_zoneNames;
     NSString *_deviceHardwareID;
     NSData *_authPutResponse;
@@ -30,12 +30,16 @@ __attribute__((visibility("hidden")))
     unsigned long long _resolvedDiscretionaryNetworkBehavior;
     unsigned long long _duetPreClearedMode;
     C2MetricOptions *_metricOptions;
+    NSNumber *_cacheDeleteAvailableSpaceClass;
     unsigned long long _networkServiceType;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
 @property(nonatomic) unsigned long long networkServiceType; // @synthesize networkServiceType=_networkServiceType;
+@property(retain, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass; // @synthesize cacheDeleteAvailableSpaceClass=_cacheDeleteAvailableSpaceClass;
+@property(nonatomic) _Bool isCrossOwner; // @synthesize isCrossOwner=_isCrossOwner;
 @property(retain, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;
 @property(nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
 @property(nonatomic) unsigned long long resolvedDiscretionaryNetworkBehavior; // @synthesize resolvedDiscretionaryNetworkBehavior=_resolvedDiscretionaryNetworkBehavior;
@@ -48,14 +52,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSData *authPutResponse; // @synthesize authPutResponse=_authPutResponse;
 @property(retain, nonatomic) NSString *deviceHardwareID; // @synthesize deviceHardwareID=_deviceHardwareID;
 @property(retain, nonatomic) NSArray *zoneNames; // @synthesize zoneNames=_zoneNames;
-@property(retain, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
 @property(retain, nonatomic) NSString *applicationSecondaryID; // @synthesize applicationSecondaryID=_applicationSecondaryID;
 @property(retain, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
 @property(retain, nonatomic) NSString *topmostParentOperationGroupID; // @synthesize topmostParentOperationGroupID=_topmostParentOperationGroupID;
 @property(retain, nonatomic) NSString *topmostParentOperationID; // @synthesize topmostParentOperationID=_topmostParentOperationID;
-@property(nonatomic) long long containerEnvironment; // @synthesize containerEnvironment=_containerEnvironment;
+@property(retain, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property(nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
-- (void).cxx_destruct;
 - (id)MMCSOptions;
 - (_Bool)usesBackgroundSession;
 - (id)description;

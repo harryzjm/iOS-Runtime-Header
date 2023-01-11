@@ -6,7 +6,7 @@
 
 #import <Foundation/NSUserActivity.h>
 
-@class CSSearchableItemAttributeSet, NSUUID;
+@class CSSearchableItemAttributeSet, NSDate, NSUUID;
 
 @interface NSUserActivity (CSSearchableItemAttributeSet)
 + (_Bool)_registerAsProxyForApplication:(int)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -22,8 +22,14 @@
 - (id)_payloadForIdentifier:(id)arg1;
 - (_Bool)_finishUserInfoUpdate;
 - (unsigned long long)_beginUserInfoUpdate:(id)arg1;
+@property(getter=_isUniversalLink) _Bool _universalLink;
 @property(readonly) unsigned long long _userInfoChangeCount;
 - (id)_copyWithNewUUID;
+@property(readonly, copy) NSDate *_sentToIndexerDate;
+@property(readonly, copy) NSDate *_madeInitiallyCurrentDate;
+@property(readonly) double _madeCurrentInterval;
+@property(readonly, copy) NSDate *_madeCurrentEndDate;
+@property(readonly, copy) NSDate *_madeCurrentDate;
 @property(readonly, copy) NSUUID *_originalUniqueIdentifier;
 @end
 

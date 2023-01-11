@@ -14,20 +14,22 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)backgroundQueue;
+- (void).cxx_destruct;
 @property(retain) LSResourceProxy *resourceProxy; // @synthesize resourceProxy=_resourceProxy;
 @property(copy, nonatomic) NSArray *decorations; // @synthesize decorations=_decorations;
-- (void).cxx_destruct;
 - (void)getCGImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGImage *)CGImageForImageDescriptor:(id)arg1;
 - (double)_aspectRatio;
 - (void)getImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)imageForDescriptor:(id)arg1;
+- (id)prepareImageForDescriptor:(id)arg1;
+- (id)_cachedImageForDescriptor:(id)arg1;
 - (id)_imageForSymbolImageDescriptor:(id)arg1;
 - (id)imageForImageDescriptor:(id)arg1;
 - (void)prepareImagesForImageDescriptors:(id)arg1;
 - (void)prepareImagesForDescriptors:(id)arg1;
 - (void)_prepareImageForSymbolImageDescriptor:(id)arg1;
-- (id)_prepareImageForImageDescriptor:(id)arg1;
+- (id)_prepareImageForImageDescriptor:(id)arg1 allowIO:(_Bool)arg2;
 - (int)variantForSize:(struct CGSize)arg1 scale:(double)arg2 options:(unsigned long long)arg3;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

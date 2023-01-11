@@ -12,9 +12,11 @@
 }
 
 - (void).cxx_destruct;
+@property(retain) NSArray *sources; // @synthesize sources=_sources;
 - (id)sourceNodeForPipelineState:(id)arg1 error:(out id *)arg2;
 - (id)resolveSourceNodeForPipelineState:(id)arg1 foundScale:(CDStruct_912cb5d2 *)arg2 error:(out id *)arg3;
 - (id)primarySourceNode;
+- (id)description;
 - (id)initWithSourceNodes:(id)arg1 assetIdentifier:(id)arg2;
 - (id)initWithAssetIdentifier:(id)arg1;
 

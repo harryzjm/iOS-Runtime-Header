@@ -16,12 +16,14 @@
 }
 
 + (id)intrinsicSizeDescriptorControlSizeDescriptor:(id)arg1 titlePosition:(unsigned long long)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HUQuickControlViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(nonatomic) struct UIEdgeInsets preferredContentLayoutFrameInset; // @synthesize preferredContentLayoutFrameInset=_preferredContentLayoutFrameInset;
 @property(nonatomic) unsigned long long titlePosition; // @synthesize titlePosition=_titlePosition;
-- (void).cxx_destruct;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)setTitle:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)loadView;
 - (id)initWithContentViewController:(id)arg1;
 

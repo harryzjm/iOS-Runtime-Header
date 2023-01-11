@@ -14,8 +14,8 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
-@property(retain, nonatomic) CRKEDUPayload *crk_payload; // @synthesize crk_payload=_crk_payload;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CRKEDUPayload *crk_payload; // @synthesize crk_payload=_crk_payload;
 @property(retain, nonatomic) NSData *resourcePayloadCertificatePersistentID;
 @property(copy, nonatomic) NSString *resourcePayloadCertificateUUID;
 @property(retain, nonatomic) NSArray *memberPayloadCertificateAnchorPersistentID;
@@ -28,7 +28,7 @@
 - (id)payloadDescriptionKeyValueSections;
 - (id)title;
 - (id)stubDictionary;
-- (id)description;
+- (id)verboseDescription;
 @property(readonly, copy, nonatomic) NSDictionary *configuration;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 

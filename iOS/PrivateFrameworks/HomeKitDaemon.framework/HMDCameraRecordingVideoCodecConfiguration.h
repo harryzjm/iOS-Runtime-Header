@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <CoreHAP/HAPTLVBase.h>
+
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDCameraRecordingVideoCodec, HMDCameraRecordingVideoCodecParameters, NSArray;
 
-@interface HMDCameraRecordingVideoCodecConfiguration <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDCameraRecordingVideoCodecConfiguration : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     HMDCameraRecordingVideoCodec *_codec;
     HMDCameraRecordingVideoCodecParameters *_parameters;
@@ -17,10 +19,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *videoAttributes; // @synthesize videoAttributes=_videoAttributes;
 @property(readonly, copy, nonatomic) HMDCameraRecordingVideoCodecParameters *parameters; // @synthesize parameters=_parameters;
 @property(readonly, copy, nonatomic) HMDCameraRecordingVideoCodec *codec; // @synthesize codec=_codec;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;

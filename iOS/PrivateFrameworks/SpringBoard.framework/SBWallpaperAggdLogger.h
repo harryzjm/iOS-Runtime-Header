@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class SBWallpaperDefaults;
+
 @interface SBWallpaperAggdLogger : NSObject
 {
     long long _aggd_lockscreenWallpaperType;
@@ -14,8 +16,10 @@
     long long _aggd_homescreenWallpaperIdentifier;
     long long _aggd_irisWallpaperEnabled;
     long long _aggd_sharedWallpaper;
+    SBWallpaperDefaults *_wallpaperDefaults;
 }
 
+- (void).cxx_destruct;
 - (void)_resetPlayCountDate;
 - (unsigned long long)_bucketedPlayCount;
 - (id)_valueString;

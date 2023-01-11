@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFRecordStorage-Protocol.h>
 
-@class NSDate, NSString, WFCoreDataTrigger;
+@class NSDate, NSString, WFCoreDataTrigger, WFCoreDataWorkflow;
 
 @interface WFCoreDataRunEvent : NSManagedObject <WFRecordStorage>
 {
@@ -24,6 +24,7 @@
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property(nonatomic) int outcome; // @dynamic outcome;
+@property(retain, nonatomic) WFCoreDataWorkflow *shortcut; // @dynamic shortcut;
 @property(copy, nonatomic) NSString *source; // @dynamic source;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) WFCoreDataTrigger *trigger; // @dynamic trigger;

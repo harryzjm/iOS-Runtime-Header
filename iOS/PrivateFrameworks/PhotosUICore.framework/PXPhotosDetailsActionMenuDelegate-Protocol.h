@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXActionMenuDelegate-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXAssetCollectionActionPerformer, PXPhotoDetailsActionMenuController;
+@class PXActionMenuController, PXActionPerformer, PXAssetCollectionActionPerformer, PXPhotoDetailsActionMenuController, UIViewController;
 @protocol PXDisplayAssetCollection;
 
-@protocol PXPhotosDetailsActionMenuDelegate <PXActionMenuDelegate>
+@protocol PXPhotosDetailsActionMenuDelegate <NSObject>
+- (_Bool)actionMenu:(PXActionMenuController *)arg1 actionPerformer:(PXActionPerformer *)arg2 dismissViewController:(UIViewController *)arg3 completionHandler:(void (^)(void))arg4;
+- (_Bool)actionMenu:(PXActionMenuController *)arg1 actionPerformer:(PXActionPerformer *)arg2 presentViewController:(UIViewController *)arg3;
 
 @optional
 - (void)actionMenu:(PXPhotoDetailsActionMenuController *)arg1 assetCollectionActionPerformer:(PXAssetCollectionActionPerformer *)arg2 playMovieForAssetCollection:(id <PXDisplayAssetCollection>)arg3;
+- (void)actionMenu:(PXActionMenuController *)arg1 actionPerformer:(PXActionPerformer *)arg2 didChangeState:(unsigned long long)arg3;
 @end
 

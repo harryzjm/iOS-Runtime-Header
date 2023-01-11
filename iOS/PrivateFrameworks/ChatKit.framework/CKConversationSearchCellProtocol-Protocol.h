@@ -9,6 +9,7 @@
 @class CKAvatarView, CKLabel, CKSpotlightQueryResult, NSString;
 
 @protocol CKConversationSearchCellProtocol <NSObject>
+@property(nonatomic) double widthForDeterminingAvatarVisibility;
 @property(nonatomic) struct UIEdgeInsets marginInsets;
 - (CKAvatarView *)avatarView;
 - (CKLabel *)fromLabel;

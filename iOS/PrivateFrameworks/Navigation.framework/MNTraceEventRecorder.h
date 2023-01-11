@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
     NSUUID *_lastSecondarySignID;
 }
 
-@property(readonly, nonatomic) NSArray *eventHistory; // @synthesize eventHistory=_eventHistory;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *eventHistory; // @synthesize eventHistory=_eventHistory;
 - (void)navigationSession:(id)arg1 didAnnounceArrival:(id)arg2;
 - (void)navigationSession:(id)arg1 hideLaneDirectionsForId:(id)arg2;
 - (void)navigationSession:(id)arg1 showLaneDirections:(id)arg2;
@@ -43,10 +43,10 @@ __attribute__((visibility("hidden")))
 - (void)navigationSession:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(_Bool)arg8;
 - (void)navigationSession:(id)arg1 didAnnounce:(id)arg2 stage:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3;
-- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4;
+- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4 rerouteReason:(unsigned long long)arg5;
 - (void)navigationSessionWillReroute:(id)arg1;
 - (void)navigationSession:(id)arg1 didUpdateMatchedLocation:(id)arg2;
-- (void)navigationSessionDidStart:(id)arg1;
+- (void)navigationSessionDidStart:(id)arg1 isReconnecting:(_Bool)arg2;
 - (double)timeSinceStartOfRoute;
 - (id)initWithTraceRecorder:(id)arg1;
 

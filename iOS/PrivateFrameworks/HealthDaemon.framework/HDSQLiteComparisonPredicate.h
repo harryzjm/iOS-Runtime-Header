@@ -17,6 +17,10 @@
 + (id)predicateWithProperty:(id)arg1 ifNullValue:(id)arg2 value:(id)arg3 comparisonType:(long long)arg4;
 + (id)predicateWithProperty:(id)arg1 value:(id)arg2 comparisonType:(long long)arg3 influenceIndexUsage:(_Bool)arg4;
 + (id)predicateWithProperty:(id)arg1 value:(id)arg2 comparisonType:(long long)arg3;
++ (id)predicateWithProperty:(id)arg1 containsString:(id)arg2;
++ (id)predicateWithProperty:(id)arg1 endsWithString:(id)arg2;
++ (id)predicateWithProperty:(id)arg1 beginsWithString:(id)arg2;
++ (id)predicateWithProperty:(id)arg1 likePattern:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 likeValue:(id)arg2 escapeCharacter:(id)arg3;
 + (id)predicateWithProperty:(id)arg1 likeValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 lessThanValue:(id)arg2;
@@ -25,9 +29,9 @@
 + (id)predicateWithProperty:(id)arg1 greaterThanOrEqualToValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 notEqualToValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 equalToValue:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id value; // @synthesize value=_value;
 @property(readonly, nonatomic) long long comparisonType; // @synthesize comparisonType=_comparisonType;
-- (void).cxx_destruct;
 - (id)_comparisonTypeString;
 - (id)description;
 - (_Bool)isCompatibleWithPredicate:(id)arg1;

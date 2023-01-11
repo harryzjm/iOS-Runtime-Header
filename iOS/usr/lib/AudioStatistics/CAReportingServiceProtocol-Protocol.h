@@ -9,16 +9,16 @@
 @class NSArray, NSDictionary;
 
 @protocol CAReportingServiceProtocol <NSObject>
-- (void)killService:(void (^)(_Bool))arg1;
-- (void)getAllReporters:(void (^)(NSArray *))arg1;
-- (void)reporterID:(long long)arg1 valid:(void (^)(NSDictionary *))arg2;
-- (void)destroyReportingSession:(long long)arg1 reply:(void (^)(_Bool))arg2;
-- (void)stopReportingSessionForID:(long long)arg1 reply:(void (^)(_Bool))arg2;
+- (void)killService:(void (^)(NSError *, _Bool))arg1;
+- (void)getAllReporters:(void (^)(NSError *, NSArray *))arg1;
+- (void)reporterID:(long long)arg1 valid:(void (^)(NSError *, NSDictionary *))arg2;
+- (void)destroyReportingSession:(long long)arg1 reply:(void (^)(NSError *, _Bool))arg2;
+- (void)stopReportingSessionForID:(long long)arg1 reply:(void (^)(NSError *, _Bool))arg2;
 - (void)sendMessage:(NSDictionary *)arg1 withCategory:(unsigned int)arg2 andType:(unsigned short)arg3 forReportingIDs:(NSArray *)arg4 reply:(void (^)(NSError *))arg5;
-- (void)startReportingSessionForID:(long long)arg1 reply:(void (^)(_Bool))arg2;
-- (void)setConfiguration:(NSDictionary *)arg1 forReporterID:(long long)arg2 reply:(void (^)(_Bool))arg3;
-- (void)getServiceNameForReporterID:(long long)arg1 reply:(void (^)(unsigned short))arg2;
-- (void)setServiceType:(unsigned short)arg1 reportingSession:(long long)arg2 reply:(void (^)(_Bool))arg3;
-- (void)createReportingSession:(long long)arg1 reply:(void (^)(_Bool))arg2;
+- (void)startReportingSessionForID:(long long)arg1 reply:(void (^)(NSError *, _Bool))arg2;
+- (void)setConfiguration:(NSDictionary *)arg1 forReporterID:(long long)arg2 reply:(void (^)(NSError *, _Bool))arg3;
+- (void)getServiceNameForReporterID:(long long)arg1 reply:(void (^)(NSError *, unsigned short))arg2;
+- (void)setServiceType:(unsigned short)arg1 reportingSession:(long long)arg2 reply:(void (^)(NSError *, _Bool))arg3;
+- (void)createReportingSession:(long long)arg1 reply:(void (^)(NSError *, _Bool))arg2;
 @end
 

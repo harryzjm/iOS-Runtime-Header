@@ -17,17 +17,17 @@ __attribute__((visibility("hidden")))
     _Bool _callCompletionHandlerWhenFullyComplete;
     NSDictionary *_launchOptions;
     BSServiceConnectionEndpoint *_targetServiceConnectionEndpoint;
-    NSString *_applicationIdentifier;
+    NSString *_bundleIdentifier;
     NSXPCConnection *_clientXPCConnection;
 }
 
 + (id)springBoardDeadlockPreventionQueue;
 + (id)springBoardQueue;
+- (void).cxx_destruct;
 @property _Bool callCompletionHandlerWhenFullyComplete; // @synthesize callCompletionHandlerWhenFullyComplete=_callCompletionHandlerWhenFullyComplete;
 @property(retain) NSXPCConnection *clientXPCConnection; // @synthesize clientXPCConnection=_clientXPCConnection;
-@property(copy) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
+@property(copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain) BSServiceConnectionEndpoint *targetServiceConnectionEndpoint; // @synthesize targetServiceConnectionEndpoint=_targetServiceConnectionEndpoint;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (void)callWithCompletionHandler:(CDUnknownBlockType)arg1;

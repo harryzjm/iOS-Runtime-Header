@@ -18,12 +18,14 @@
     float _delta;
     MPSCNNLossDescriptor *_descriptor;
     id <MPSNNLossCallback> _propertyCallBack;
+    _Bool _reduceAcrossBatch;
 }
 
 + (id)nodeWithSources:(id)arg1 lossDescriptor:(id)arg2;
 + (id)nodeWithSource:(id)arg1 labels:(id)arg2 lossDescriptor:(id)arg3;
 + (id)nodeWithSource:(id)arg1 labels:(id)arg2 weights:(id)arg3 lossDescriptor:(id)arg4;
 @property(retain, nonatomic) id <MPSNNLossCallback> propertyCallBack; // @synthesize propertyCallBack=_propertyCallBack;
+@property(readonly, nonatomic) _Bool reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property(readonly, nonatomic) float delta; // @synthesize delta=_delta;
 @property(readonly, nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property(readonly, nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;

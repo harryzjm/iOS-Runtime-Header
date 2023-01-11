@@ -57,6 +57,7 @@
     long long _srCloudKitSyncState;
     NSData *_srCloudKitServerChangeTokenBlob;
     NSString *_srCloudKitRecordID;
+    NSString *_sandboxToken;
     NSURL *_localURL;
     NSURL *_temporaryHighQualityLocalURL;
     NSDictionary *_attributionInfo;
@@ -65,12 +66,15 @@
 
 + (id)guidByStrippingAuxPrefix:(id)arg1;
 + (id)AuxGUIDFromFileTransferGUID:(id)arg1;
++ (id)guidForFileTransferDictionary:(id)arg1;
++ (id)whitelistedKeys;
 + (_Bool)_doesLocalURLRequireArchiving:(id)arg1;
 @property(retain, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;
 @property(nonatomic) _Bool appMessageFallbackImage; // @synthesize appMessageFallbackImage=_appMessageFallbackImage;
 @property(retain, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property(retain, nonatomic) NSURL *temporaryHighQualityLocalURL; // @synthesize temporaryHighQualityLocalURL=_temporaryHighQualityLocalURL;
 @property(retain, nonatomic, setter=_setLocalURL:) NSURL *localURL; // @synthesize localURL=_localURL;
+@property(copy, nonatomic) NSString *sandboxToken; // @synthesize sandboxToken=_sandboxToken;
 @property(retain, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
 @property(retain, nonatomic) NSData *srCloudKitServerChangeTokenBlob; // @synthesize srCloudKitServerChangeTokenBlob=_srCloudKitServerChangeTokenBlob;
 @property(nonatomic) long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
@@ -116,6 +120,7 @@
 @property(readonly, nonatomic) unsigned long long _lastAveragedBytes; // @synthesize _lastAveragedBytes;
 @property(nonatomic, setter=_setLastAveragedInterval:) double _lastAveragedInterval; // @synthesize _lastAveragedInterval;
 @property(nonatomic, setter=_setLastUpdatedInterval:) double _lastUpdatedInterval; // @synthesize _lastUpdatedInterval;
+- (void)setMimeType:(id)arg1;
 - (void)_swizzleTransferStateIfMissingAttachmentCanBeDownloadedFromCloudKit;
 - (_Bool)_missingAttachmentCanBeDownloadedFromCloudKit;
 - (_Bool)_isCloudKitEnabled;
@@ -137,6 +142,9 @@
 @property(readonly, nonatomic) _Bool isFinished;
 @property(readonly, nonatomic) _Bool canBeAccepted;
 - (void)_calculateTypeInformation;
+@property(nonatomic) NSDate *refreshDate;
+- (id)_dictionaryToSend;
+- (void)_updateWithDictionaryRepresentationForWhitelistedKeys:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (_Bool)_updateWithDictionaryRepresentation:(id)arg1;
 - (void)_clear;

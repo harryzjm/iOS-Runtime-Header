@@ -10,6 +10,7 @@
 @protocol MTLArgumentEncoder, MTLDevice;
 
 @protocol MTLFunction <NSObject>
+@property(readonly) unsigned long long options;
 @property(readonly) NSDictionary *functionConstantsDictionary;
 @property(readonly) NSString *name;
 @property(readonly) NSArray *stageInputAttributes;

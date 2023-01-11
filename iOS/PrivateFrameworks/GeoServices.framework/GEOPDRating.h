@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSMutableArray, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDRating : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_appleRatingCategorys;
     double _maxScore;
     double _score;
     int _numRatingsUsedForScore;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)appleRatingCategoryType;
++ (id)ratingListForPlaceData:(id)arg1 type:(int)arg2;
 + (id)ratingForPlaceData:(id)arg1 type:(int)arg2;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
@@ -39,8 +42,16 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)appleRatingCategoryAtIndex:(unsigned long long)arg1;
+- (unsigned long long)appleRatingCategorysCount;
+- (void)addAppleRatingCategory:(id)arg1;
+- (void)clearAppleRatingCategorys;
+@property(retain, nonatomic) NSMutableArray *appleRatingCategorys;
 @property(nonatomic) _Bool hasNumRatingsUsedForScore;
 @property(nonatomic) int numRatingsUsedForScore;
 @property(nonatomic) _Bool hasMaxScore;
@@ -51,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)ratingTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasRatingType;
 @property(nonatomic) int ratingType;
+- (id)displayTitle;
 
 @end
 

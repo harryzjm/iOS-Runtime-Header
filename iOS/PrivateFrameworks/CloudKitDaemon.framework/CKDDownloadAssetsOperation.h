@@ -23,14 +23,19 @@ __attribute__((visibility("hidden")))
     NSArray *_assetURLInfosToFillOut;
     NSMutableArray *_MMCSItemsToDownload;
     NSMutableArray *_MMCSItemsToDownloadInMemory;
+    NSMutableArray *_assetsToDownloadFromTranscoder;
+    NSMutableArray *_assetsToDownloadFromTranscoderInMemory;
     NSMapTable *_downloadTasksByPackages;
     CKDCancelTokenGroup *_cancelTokens;
     unsigned long long _maxPackageDownloadsPerBatch;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long maxPackageDownloadsPerBatch; // @synthesize maxPackageDownloadsPerBatch=_maxPackageDownloadsPerBatch;
 @property(retain, nonatomic) CKDCancelTokenGroup *cancelTokens; // @synthesize cancelTokens=_cancelTokens;
 @property(retain, nonatomic) NSMapTable *downloadTasksByPackages; // @synthesize downloadTasksByPackages=_downloadTasksByPackages;
+@property(retain, nonatomic) NSMutableArray *assetsToDownloadFromTranscoderInMemory; // @synthesize assetsToDownloadFromTranscoderInMemory=_assetsToDownloadFromTranscoderInMemory;
+@property(retain, nonatomic) NSMutableArray *assetsToDownloadFromTranscoder; // @synthesize assetsToDownloadFromTranscoder=_assetsToDownloadFromTranscoder;
 @property(retain, nonatomic) NSMutableArray *MMCSItemsToDownloadInMemory; // @synthesize MMCSItemsToDownloadInMemory=_MMCSItemsToDownloadInMemory;
 @property(retain, nonatomic) NSMutableArray *MMCSItemsToDownload; // @synthesize MMCSItemsToDownload=_MMCSItemsToDownload;
 @property(retain, nonatomic) NSArray *assetURLInfosToFillOut; // @synthesize assetURLInfosToFillOut=_assetURLInfosToFillOut;
@@ -44,7 +49,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType downloadCommandBlock; // @synthesize downloadCommandBlock=_downloadCommandBlock;
 @property(copy, nonatomic) CDUnknownBlockType downloadProgressBlock; // @synthesize downloadProgressBlock=_downloadProgressBlock;
 @property(copy, nonatomic) CDUnknownBlockType downloadPreparationBlock; // @synthesize downloadPreparationBlock=_downloadPreparationBlock;
-- (void).cxx_destruct;
+- (void)_downloadTranscodedAsset:(id)arg1 inMemory:(_Bool)arg2;
+- (_Bool)shouldDownloadAssetFromTranscoder:(id)arg1;
+- (_Bool)supportsClearAssetEncryption;
 - (void)main;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)cancel;
@@ -77,6 +84,9 @@ __attribute__((visibility("hidden")))
 - (id)CKStatusReportLogGroups;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

@@ -14,6 +14,7 @@
 @property(nonatomic, getter=isDeviceAuthenticated) _Bool deviceAuthenticated;
 @property(readonly, nonatomic) unsigned long long notificationCount;
 @property(readonly, nonatomic) unsigned long long count;
+- (void)notificationsLoadedForSectionIdentifier:(NSString *)arg1;
 - (void)updateNotificationSectionSettings:(NCNotificationSectionSettings *)arg1 previousSectionSettings:(NCNotificationSectionSettings *)arg2;
 - (void)reloadNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)modifyNotificationRequest:(NCNotificationRequest *)arg1;

@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class UNSBundleLibrarian, UNSKeyedDataStoreRepository, UNSKeyedObservable;
+@class NSMutableSet, UNSBundleLibrarian, UNSKeyedDataStoreRepository, UNSKeyedObservable;
 @protocol OS_dispatch_queue, UNSNotificationRepositoryDelegate, UNSNotificationRepositorySettingsProvider;
 
 @interface UNSNotificationRepository : NSObject
 {
     UNSKeyedDataStoreRepository *_repository;
     UNSKeyedObservable *_observable;
+    NSMutableSet *_unlimitedBodyBundleIdentifiers;
     NSObject<OS_dispatch_queue> *_queue;
     UNSBundleLibrarian *_librarian;
     id <UNSNotificationRepositoryDelegate> _delegate;
     id <UNSNotificationRepositorySettingsProvider> _settingsProvider;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <UNSNotificationRepositorySettingsProvider> settingsProvider; // @synthesize settingsProvider=_settingsProvider;
 @property(nonatomic) id <UNSNotificationRepositoryDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)_shouldPersistNotificationRecord:(id)arg1 forBundleSettings:(id)arg2 perTopicSettings:(id)arg3;
 - (void)_queue_performValidation;
 - (void)_queue_performMigrationForBundleIdentifier:(id)arg1;
@@ -46,6 +47,8 @@
 - (id)_queue_notificationRecordForForIdentifier:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)_queue_notificationRecordsForBundleIdentifier:(id)arg1;
 - (id)_notificationsForObjects:(id)arg1;
+- (void)notificationSourcesDidUninstall:(id)arg1;
+- (void)notificationSourcesDidInstall:(id)arg1;
 - (void)contentProtectionStateChangedForFirstUnlock:(_Bool)arg1;
 - (void)performValidation;
 - (void)performMigration;

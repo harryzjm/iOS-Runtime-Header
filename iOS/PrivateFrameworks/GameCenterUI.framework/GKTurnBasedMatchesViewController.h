@@ -19,16 +19,19 @@
     _Bool _showExistingMatches;
     _Bool _showPlay;
     _Bool _showQuit;
+    GKCollectionViewController *_masterViewController;
     GKGame *_game;
     GKMatchRequest *_matchRequest;
-    GKCollectionViewController *_masterViewController;
     id <GKTurnBasedMatchesViewControllerDelegate> _delegate;
     GKTurnBasedMatchesDataSource *_matchesDataSource;
     long long _maxMatchesSeen;
     NSString *_matchIDWaitingForTurnEvent;
     GKTurnBasedInviteViewController *_inviteController;
+    double _initialSectionHeaderHeight;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double initialSectionHeaderHeight; // @synthesize initialSectionHeaderHeight=_initialSectionHeaderHeight;
 @property(retain, nonatomic) GKTurnBasedInviteViewController *inviteController; // @synthesize inviteController=_inviteController;
 @property(retain, nonatomic) NSString *matchIDWaitingForTurnEvent; // @synthesize matchIDWaitingForTurnEvent=_matchIDWaitingForTurnEvent;
 @property(nonatomic) long long maxMatchesSeen; // @synthesize maxMatchesSeen=_maxMatchesSeen;
@@ -37,10 +40,9 @@
 @property(nonatomic) _Bool showPlay; // @synthesize showPlay=_showPlay;
 @property(nonatomic) _Bool showExistingMatches; // @synthesize showExistingMatches=_showExistingMatches;
 @property(nonatomic) __weak id <GKTurnBasedMatchesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) __weak GKCollectionViewController *masterViewController; // @synthesize masterViewController=_masterViewController;
 @property(retain, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
-- (void).cxx_destruct;
+@property(nonatomic) __weak GKCollectionViewController *masterViewController; // @synthesize masterViewController=_masterViewController;
 - (void)handleTurnBasedEvent:(id)arg1;
 - (void)turnBasedMatchDetailViewControllerDidShowStore:(id)arg1;
 - (void)turnBasedMatchDetailViewControllerDidRemoveMatch:(id)arg1;
@@ -71,9 +73,12 @@
 - (void)didEnterNoContentState;
 - (_Bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)loadDataWithCompletionHandlerAndError:(CDUnknownBlockType)arg1;
+- (void)updateUIBasedOnTraitCollection;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)configureHeader:(id)arg1 indexPath:(id)arg2;
 - (void)configureViewFactories;
 - (void)configureDataSource;

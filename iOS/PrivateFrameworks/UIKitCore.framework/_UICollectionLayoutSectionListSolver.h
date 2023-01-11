@@ -15,14 +15,15 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionLayoutSectionListSolver : NSObject <_UICollectionLayoutSectionSolver, _UICollectionLayoutAuxillaryHosting>
 {
-    struct vector<CGRect, std::__1::allocator<CGRect>> _itemFrames;
+    struct vector<_UIRegionSolveResult, std::__1::allocator<_UIRegionSolveResult>> _regions;
+    struct unique_ptr<_UIItemSolveResult, std::__1::default_delete<_UIItemSolveResult>> _templateItemSolveResult;
     _Bool _shouldAdjustContentSizeForPartialLastGroupSolution;
     _Bool _layoutRTL;
-    int _layoutAxis;
-    int _containerLayoutAxis;
     NSCollectionLayoutSection *_layoutSection;
     id <NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
+    unsigned long long _layoutAxis;
+    unsigned long long _containerLayoutAxis;
     long long _frameCount;
     _UICollectionLayoutItemSolver *_solution;
     _UICollectionLayoutAuxillaryItemSolver *_sectionAuxillarySolution;
@@ -34,6 +35,8 @@ __attribute__((visibility("hidden")))
     struct CGVector _orthogonalScrollingPrefetchingUnitVector;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGVector orthogonalScrollingPrefetchingUnitVector; // @synthesize orthogonalScrollingPrefetchingUnitVector=_orthogonalScrollingPrefetchingUnitVector;
 @property(retain, nonatomic) id <_UICollectionPreferredSizes> preferredSizes; // @synthesize preferredSizes=_preferredSizes;
 @property(retain, nonatomic) id <NSCollectionLayoutContainer> memoizedAuxillaryHostContainer; // @synthesize memoizedAuxillaryHostContainer=_memoizedAuxillaryHostContainer;
@@ -42,33 +45,38 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UICollectionLayoutAuxillaryItemSolver *sectionAuxillarySolution; // @synthesize sectionAuxillarySolution=_sectionAuxillarySolution;
 @property(retain, nonatomic) _UICollectionLayoutItemSolver *solution; // @synthesize solution=_solution;
 @property(nonatomic) long long frameCount; // @synthesize frameCount=_frameCount;
-@property(nonatomic) int containerLayoutAxis; // @synthesize containerLayoutAxis=_containerLayoutAxis;
-@property(nonatomic) int layoutAxis; // @synthesize layoutAxis=_layoutAxis;
+@property(nonatomic) unsigned long long containerLayoutAxis; // @synthesize containerLayoutAxis=_containerLayoutAxis;
+@property(nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property(nonatomic) _Bool layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(retain, nonatomic) id <NSCollectionLayoutContainer> container; // @synthesize container=_container;
 @property(retain, nonatomic) NSCollectionLayoutSection *layoutSection; // @synthesize layoutSection=_layoutSection;
 @property(nonatomic) struct CGPoint orthogonalOffset; // @synthesize orthogonalOffset=_orthogonalOffset;
 @property(nonatomic) _Bool shouldAdjustContentSizeForPartialLastGroupSolution; // @synthesize shouldAdjustContentSizeForPartialLastGroupSolution=_shouldAdjustContentSizeForPartialLastGroupSolution;
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (double)_dimensionForRootGroupAlongAxis:(int)arg1;
+- (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
 - (void)_setOrthogonalOffset:(struct CGPoint)arg1;
 - (id)auxillaryHostPreferredSizes;
 - (id)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (_Bool)auxillaryHostShouldLayoutRTL;
 - (id)auxillaryHostAuxillaryItems;
 - (id)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (struct CGSize)auxillaryHostContentSize;
-- (long long)_binarySearchInitialFrameIndexForStartIndex:(long long)arg1 endIndex:(long long)arg2 lowIndex:(long long)arg3 queryRect:(struct CGRect)arg4;
+- (long long)_anchorIndexForSolveParameters:(id)arg1;
+- (long long)_regionIndexForQueryRect:(struct CGRect)arg1 startRegionIndex:(long long)arg2 endRegionIndex:(long long)arg3;
+- (long long)_regionIndexForQueryRect:(struct CGRect)arg1;
+- (long long)_regionIndexForFrameIndex:(long long)arg1 startRegionIndex:(long long)arg2 endRegionIndex:(long long)arg3;
+- (unsigned long long)_regionIndexForFrameIndex:(long long)arg1;
+- (struct _UIRegionSolveResult *)_regionForFrameIndex:(long long)arg1;
 - (id)_sectionContainer;
 - (id)_queryFramesIntersectingRect:(struct CGRect)arg1 frameOffset:(struct CGPoint)arg2;
+- (void)_recomputeRegionOffsetsStartingAtFrameIndex:(long long)arg1;
+- (long long)_splitRegionAtRegionIndex:(long long)arg1 forFrameIndex:(long long)arg2;
+- (void)_updatePreferredSizeForFrameIndex:(long long)arg1;
 - (id)_resolveWithParameters:(id)arg1;
-- (id)supplementaryKeysAssociatedWithItemAtIndex:(long long)arg1;
-- (id)allSupplementaryKeys;
+- (void)_initialSolve;
 - (id)sectionSupplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(id)arg1;
 - (id)sectionSupplementaryFrameForIndex:(long long)arg1;
@@ -82,9 +90,9 @@ __attribute__((visibility("hidden")))
 - (id)queryFramesIntersectingRect:(struct CGRect)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
 - (id)resolveWithParameters:(id)arg1 preferredSizes:(id)arg2;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(_Bool)arg6;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(_Bool)arg6;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
 - (id)initWithLayoutSection:(id)arg1;
 
 // Remaining properties

@@ -13,20 +13,19 @@
 @interface GEOCompanionRouteUpdate : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     double _lastUpdated;
     NSData *_routeID;
     GEOTransitRouteUpdate *_transitRouteUpdate;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _type;
     struct {
         unsigned int has_lastUpdated:1;
         unsigned int has_type:1;
         unsigned int read_routeID:1;
         unsigned int read_transitRouteUpdate:1;
-        unsigned int wrote_lastUpdated:1;
-        unsigned int wrote_routeID:1;
-        unsigned int wrote_transitRouteUpdate:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,11 +39,13 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOTransitRouteUpdate *transitRouteUpdate;
 @property(readonly, nonatomic) _Bool hasTransitRouteUpdate;
-- (void)_readTransitRouteUpdate;
 @property(nonatomic) _Bool hasLastUpdated;
 @property(nonatomic) double lastUpdated;
 - (int)StringAsType:(id)arg1;
@@ -53,7 +54,8 @@
 @property(nonatomic) int type;
 @property(retain, nonatomic) NSData *routeID;
 @property(readonly, nonatomic) _Bool hasRouteID;
-- (void)_readRouteID;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithTransitRouteUpdate:(id)arg1;
 
 @end

@@ -10,16 +10,20 @@
 {
     _Bool _completed;
     NSString *_extensionID;
-    unsigned long long _bytesUploaded;
+    NSString *_filePromiseUUID;
+    long long _bytesUploaded;
+    long long _totalBytesExpectedToSend;
     NSURLSessionUploadTask *_uploadTask;
 }
 
 + (id)itemAtPath:(id)arg1 enclosedFilename:(id)arg2 extensionID:(id)arg3;
+- (void).cxx_destruct;
 @property(retain) NSURLSessionUploadTask *uploadTask; // @synthesize uploadTask=_uploadTask;
 @property _Bool completed; // @synthesize completed=_completed;
-@property unsigned long long bytesUploaded; // @synthesize bytesUploaded=_bytesUploaded;
+@property long long totalBytesExpectedToSend; // @synthesize totalBytesExpectedToSend=_totalBytesExpectedToSend;
+@property long long bytesUploaded; // @synthesize bytesUploaded=_bytesUploaded;
+@property(retain) NSString *filePromiseUUID; // @synthesize filePromiseUUID=_filePromiseUUID;
 @property(retain) NSString *extensionID; // @synthesize extensionID=_extensionID;
-- (void).cxx_destruct;
 - (id)description;
 - (id)publicDescription;
 - (id)promiseFilename;

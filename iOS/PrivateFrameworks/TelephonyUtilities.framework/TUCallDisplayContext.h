@@ -17,7 +17,6 @@
     int _legacyAddressBookIdentifier;
     NSPersonNameComponents *_personNameComponents;
     NSString *_suggestedName;
-    NSString *_label;
     NSString *_companyName;
     NSString *_mapName;
     NSString *_location;
@@ -28,9 +27,12 @@
     NSString *_callDirectoryExtensionIdentifier;
     NSString *_contactIdentifier;
     NSString *_name;
+    NSString *_label;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) int legacyAddressBookIdentifier; // @synthesize legacyAddressBookIdentifier=_legacyAddressBookIdentifier;
 @property(copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
@@ -42,10 +44,8 @@
 @property(copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property(copy, nonatomic) NSString *mapName; // @synthesize mapName=_mapName;
 @property(copy, nonatomic) NSString *companyName; // @synthesize companyName=_companyName;
-@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
 @property(copy, nonatomic) NSPersonNameComponents *personNameComponents; // @synthesize personNameComponents=_personNameComponents;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

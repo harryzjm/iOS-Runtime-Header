@@ -9,6 +9,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;

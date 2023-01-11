@@ -37,6 +37,7 @@
 
 + (id)labelWithOptions:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)labelWithOptions:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CLKUITimeLabelStyle *style; // @synthesize style=_style;
 @property(nonatomic) _Bool showSeconds; // @synthesize showSeconds=_showSeconds;
 @property(copy, nonatomic) CDUnknownBlockType didResizeHandler; // @synthesize didResizeHandler=_didResizeHandler;
@@ -46,7 +47,6 @@
 @property(readonly, nonatomic) CLKTimeFormatter *timeFormatter; // @synthesize timeFormatter=_timeFormatter;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
-- (void).cxx_destruct;
 - (void)_fadeTransitionLabels;
 - (void)_scaleTransitionLabels;
 - (void)_cancelAnimation;
@@ -78,10 +78,12 @@
 - (void)setStyleTransitionFraction:(double)arg1;
 - (void)prepareToTransitionToStyle:(id)arg1;
 - (id)labelManagerContentView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)setThreeDigitFont:(id)arg1 fourDigitFont:(id)arg2 designatorFont:(id)arg3;
 - (void)setTimeFont:(id)arg1 designatorFont:(id)arg2;
 - (void)setBlinkingPaused:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1;
+- (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2 clockTimer:(id)arg3;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;

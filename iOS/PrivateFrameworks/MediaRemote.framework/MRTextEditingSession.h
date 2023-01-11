@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
 #import <MediaRemote/NSMutableCopying-Protocol.h>
 
 @class MRTextEditingAttributes, NSString;
 
-@interface MRTextEditingSession : NSObject <NSMutableCopying>
+@interface MRTextEditingSession : NSObject <NSCopying, NSMutableCopying>
 {
     NSString *_text;
     _Bool _editing;
@@ -18,12 +19,11 @@
     unsigned long long _uniqueIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MRTextEditingAttributes *attributes; // @synthesize attributes=_attributes;
 @property(readonly, nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
 @property(readonly, nonatomic) NSString *text; // @synthesize text=_text;
 @property(readonly, nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (void).cxx_destruct;
-- (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

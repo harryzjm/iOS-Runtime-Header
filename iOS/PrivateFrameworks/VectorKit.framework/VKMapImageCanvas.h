@@ -7,13 +7,12 @@
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 #import <VectorKit/VKMapModelDelegate-Protocol.h>
 
-@class NSString, VKCamera, VKMapModel;
+@class NSString, VKMapModel;
 
 __attribute__((visibility("hidden")))
 @interface VKMapImageCanvas <VKMapModelDelegate, MDSnapshotMap>
 {
     VKMapModel *_mapModel;
-    VKCamera *_camera;
     struct MapEngine *_mapEngine;
 }
 
@@ -23,10 +22,9 @@ __attribute__((visibility("hidden")))
 - (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)cancelTileRequests;
 - (void)clearScene;
-- (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
 - (void)setMapType:(int)arg1;
 - (void)resetCameraController;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 - (void)dealloc;
 - (id)initWithMapEngine:(struct MapEngine *)arg1;
 

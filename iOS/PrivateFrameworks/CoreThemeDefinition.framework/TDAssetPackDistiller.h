@@ -23,7 +23,7 @@
 - (void)setAssetStoreUuid:(id)arg1;
 - (void)setAssetStoreRenditionCount:(unsigned int)arg1;
 - (void)removeRenditionsFromAssetStoreWithKey:(id)arg1;
-- (_Bool)_storeRenditions;
+- (_Bool)setAsset:(id)arg1 withKey:(const struct _renditionkeytoken *)arg2 fromRenditionSpec:(id)arg3;
 - (id)assetPackForTags:(id)arg1;
 - (void)dealloc;
 - (id)initWithDocument:(id)arg1 outputPath:(id)arg2 versionString:(id)arg3 usingAssetPackMapping:(id)arg4 attemptIncremental:(_Bool)arg5;

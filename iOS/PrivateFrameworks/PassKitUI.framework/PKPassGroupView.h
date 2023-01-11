@@ -55,23 +55,28 @@
     _Bool _modallyPresented;
     _Bool _loaned;
     _Bool _paused;
+    _Bool _reduceMotionEnabled;
     PKPassView *_frontmostPassView;
     PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
     UILongPressGestureRecognizer *_pressGestureRecognizer;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPassGroupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UILongPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
 @property(readonly, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property(nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
-@property(nonatomic) PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
+@property(nonatomic) __weak PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
 @property(readonly, nonatomic) PKGroup *group; // @synthesize group=_group;
 @property(retain, nonatomic) PKPassView *frontmostPassView; // @synthesize frontmostPassView=_frontmostPassView;
+@property(nonatomic, getter=isReducedMotionEnabled) _Bool reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic, getter=isLoaned) _Bool loaned; // @synthesize loaned=_loaned;
 @property(nonatomic, getter=isModallyPresented) _Bool modallyPresented; // @synthesize modallyPresented=_modallyPresented;
-- (void).cxx_destruct;
+- (void)faceFrameDidChangeForPassView:(id)arg1;
+- (void)passViewExpandButtonTapped:(id)arg1;
+- (void)passViewDidResize:(id)arg1 animated:(_Bool)arg2;
 - (void)passView:(id)arg1 didPresentPassDetailsViewController:(id)arg2;
 - (void)passView:(id)arg1 willPresentPassDetailsViewController:(id)arg2;
 - (_Bool)passView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;
@@ -115,7 +120,9 @@
 - (void)_updateLoadedViews:(_Bool)arg1;
 - (void)_applyContentMode:(long long)arg1 toPassView:(id)arg2 animated:(_Bool)arg3;
 - (void)_enumeratePassViewsInStackOrderWithHandler:(CDUnknownBlockType)arg1;
+- (void)_enumerateIndicesInFannedOrderWithHandler:(CDUnknownBlockType)arg1;
 - (void)_enumerateIndicesInStackOrderWithHandler:(CDUnknownBlockType)arg1;
+- (struct _NSRange)_rangeOfFannedIndices;
 - (struct _NSRange)_rangeOfVisibleIndices;
 - (struct _NSRange)_rangeOfPagingIndices;
 - (struct CGSize)_contentSize;
@@ -131,6 +138,7 @@
 - (void)endPinningFrontFaceContentMode;
 - (void)beginPinningFrontFaceContentMode;
 - (void)applyContentModesAnimated:(_Bool)arg1;
+- (void)setPassViewExpanded:(_Bool)arg1 forPass:(id)arg2 animated:(_Bool)arg3;
 - (void)setPresentationState:(long long)arg1 animated:(_Bool)arg2;
 - (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2;

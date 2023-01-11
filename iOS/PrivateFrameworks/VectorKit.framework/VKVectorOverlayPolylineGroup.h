@@ -14,15 +14,19 @@
     long long _lineJoin;
     long long _lineCap;
     double _miterLimit;
+    double _strokeStart;
+    double _strokeEnd;
     struct unfair_lock _propertiesLock;
     shared_ptr_e2cb55c7 _style;
     NSArray *_polylines;
 }
 
-@property(readonly, nonatomic) NSArray *polylines; // @synthesize polylines=_polylines;
-@property(readonly, nonatomic) shared_ptr_e2cb55c7 style; // @synthesize style=_style;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *polylines; // @synthesize polylines=_polylines;
+@property(readonly, nonatomic) shared_ptr_e2cb55c7 style; // @synthesize style=_style;
+@property(nonatomic) double strokeEnd;
+@property(nonatomic) double strokeStart;
 @property(nonatomic) double miterLimit;
 @property(nonatomic) long long lineCap;
 @property(nonatomic) long long lineJoin;
@@ -30,6 +34,7 @@
 @property(nonatomic) struct CGColor *color;
 @property(nonatomic) double lineWidth;
 - (void)_updateStyleColor;
+- (void)setColorStopColors:(id)arg1 locations:(id)arg2;
 - (void)dealloc;
 - (id)initWithPolylines:(id)arg1;
 

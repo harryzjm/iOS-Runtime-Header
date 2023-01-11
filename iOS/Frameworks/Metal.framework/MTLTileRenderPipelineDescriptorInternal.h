@@ -10,10 +10,18 @@ __attribute__((visibility("hidden")))
     struct MTLTileRenderPipelineDescriptorPrivate _private;
 }
 
+- (id)newSerializedTileDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)validateWithDevice:(id)arg1;
+- (_Bool)validateWithDevice:(id)arg1 error:(id *)arg2;
 - (id)colorAttachments;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)binaryArchives;
+- (void)setBinaryArchives:(id)arg1;
+- (long long)textureWriteFPRoundingMode;
+- (void)setTextureWriteFPRoundingMode:(long long)arg1;
+- (long long)textureWriteRoundingMode;
+- (void)setTextureWriteRoundingMode:(long long)arg1;
 - (unsigned long long)maxTotalThreadsPerThreadgroup;
 - (void)setMaxTotalThreadsPerThreadgroup:(unsigned long long)arg1;
 - (const struct MTLTileRenderPipelineDescriptorPrivate *)_descriptorPrivate;
@@ -27,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)tileBuffers;
 - (void)setColorSampleCount:(unsigned long long)arg1;
 - (unsigned long long)colorSampleCount;
+- (void)setPluginData:(id)arg1;
+- (id)pluginData;
 - (void)setRasterSampleCount:(unsigned long long)arg1;
 - (unsigned long long)rasterSampleCount;
 - (void)setSampleCount:(unsigned long long)arg1;

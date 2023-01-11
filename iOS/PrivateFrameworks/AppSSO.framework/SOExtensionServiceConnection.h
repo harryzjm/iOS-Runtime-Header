@@ -9,19 +9,17 @@
 #import <AppSSO/SORemoteExtensionServiceProtocol-Protocol.h>
 
 @class NSString, NSXPCConnection, NSXPCListenerEndpoint;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SOExtensionServiceConnection : NSObject <SORemoteExtensionServiceProtocol>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
     NSXPCListenerEndpoint *_serviceXpcEndpoint;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSXPCListenerEndpoint *serviceXpcEndpoint; // @synthesize serviceXpcEndpoint=_serviceXpcEndpoint;
 @property(retain) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-- (void).cxx_destruct;
 - (void)beginAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)_connectToService;
 - (id)initWithListenerEndpoint:(id)arg1;

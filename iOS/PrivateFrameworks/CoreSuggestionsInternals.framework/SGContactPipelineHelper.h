@@ -17,12 +17,12 @@
 }
 
 + (id)normalizedDigits:(id)arg1;
-+ (_Bool)contactExistsInArray:(id)arg1 withName:(id)arg2;
++ (_Bool)personExistsInContacts:(id)arg1 name:(id)arg2 handle:(id)arg3;
 + (id)findContactsForDetailType:(unsigned long long)arg1 andValue:(id)arg2;
 + (id)findContactsForPerson:(id)arg1 fetchingKeys:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (_Bool)numberMatchesContactsForm:(id)arg1 usingPredicate:(id)arg2;
+- (_Bool)numberMatchesContactsForm:(id)arg1 amongContactsWithIdentifiers:(id)arg2;
 - (_Bool)numberMatchesContactsForm:(id)arg1;
 - (void)dealloc;
 - (id)init;

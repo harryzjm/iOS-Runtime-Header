@@ -14,6 +14,7 @@
 @optional
 - (void)searchGesture:(SBSearchGesture *)arg1 resetAnimated:(_Bool)arg2;
 - (void)searchGesture:(SBSearchGesture *)arg1 completedShowing:(_Bool)arg2;
+- (void)searchGesture:(SBSearchGesture *)arg1 endedGesture:(_Bool)arg2;
 - (void)searchGesture:(SBSearchGesture *)arg1 startedShowing:(_Bool)arg2;
 @end
 

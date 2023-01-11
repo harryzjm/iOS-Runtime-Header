@@ -16,7 +16,6 @@
 - (id)infoDictionary;
 - (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 - (id)pathForResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
-- (id)_pathsForResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
 - (id)pathForResource:(id)arg1 ofType:(id)arg2;
 - (id)bundlePath;
 - (id)bundleIdentifier;
@@ -25,7 +24,6 @@
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (id)initWithURL:(id)arg1;
-- (id)_initWithCFBundle:(struct __CFBundle *)arg1;
 
 @end
 

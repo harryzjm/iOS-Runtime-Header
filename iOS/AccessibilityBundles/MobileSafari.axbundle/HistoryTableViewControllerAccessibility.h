@@ -13,6 +13,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)viewDidLoad;
 - (void)_axUnhideSearchBar;
+- (void)_updateClearHistoryMenuTitle;
+- (void)_setUpClearHistoryMenu;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

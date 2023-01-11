@@ -13,13 +13,15 @@
 @interface GEORPDirectionsCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPCorrectedCoordinate *_arrivalCoordinate;
     NSData *_directionsResponseId;
     NSMutableArray *_instructionCorrections;
     NSString *_overviewScreenshotImageId;
     NSMutableArray *_problematicRouteIndexs;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _noGoodRoutesShown;
     struct {
         unsigned int has_noGoodRoutesShown:1;
@@ -29,13 +31,7 @@
         unsigned int read_instructionCorrections:1;
         unsigned int read_overviewScreenshotImageId:1;
         unsigned int read_problematicRouteIndexs:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_arrivalCoordinate:1;
-        unsigned int wrote_directionsResponseId:1;
-        unsigned int wrote_instructionCorrections:1;
-        unsigned int wrote_overviewScreenshotImageId:1;
-        unsigned int wrote_problematicRouteIndexs:1;
-        unsigned int wrote_noGoodRoutesShown:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,33 +49,31 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasNoGoodRoutesShown;
 @property(nonatomic) _Bool noGoodRoutesShown;
 @property(retain, nonatomic) GEORPCorrectedCoordinate *arrivalCoordinate;
 @property(readonly, nonatomic) _Bool hasArrivalCoordinate;
-- (void)_readArrivalCoordinate;
 @property(retain, nonatomic) NSString *overviewScreenshotImageId;
 @property(readonly, nonatomic) _Bool hasOverviewScreenshotImageId;
-- (void)_readOverviewScreenshotImageId;
 - (id)instructionCorrectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)instructionCorrectionsCount;
-- (void)_addNoFlagsInstructionCorrection:(id)arg1;
 - (void)addInstructionCorrection:(id)arg1;
 - (void)clearInstructionCorrections;
 @property(retain, nonatomic) NSMutableArray *instructionCorrections;
-- (void)_readInstructionCorrections;
 - (id)problematicRouteIndexAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problematicRouteIndexsCount;
-- (void)_addNoFlagsProblematicRouteIndex:(id)arg1;
 - (void)addProblematicRouteIndex:(id)arg1;
 - (void)clearProblematicRouteIndexs;
 @property(retain, nonatomic) NSMutableArray *problematicRouteIndexs;
-- (void)_readProblematicRouteIndexs;
 @property(retain, nonatomic) NSData *directionsResponseId;
 @property(readonly, nonatomic) _Bool hasDirectionsResponseId;
-- (void)_readDirectionsResponseId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

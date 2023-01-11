@@ -21,6 +21,7 @@
     NSString *_initiativeContext;
     NSString *_merchantIdentifier;
     NSString *_nonce;
+    NSString *_operationalAnalyticsIdentifier;
     NSString *_retryNonce;
     NSString *_sessionIdentifier;
     NSData *_signature;
@@ -32,6 +33,8 @@
 }
 
 + (Class)signedFieldsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *operationalAnalyticsIdentifier; // @synthesize operationalAnalyticsIdentifier=_operationalAnalyticsIdentifier;
 @property(retain, nonatomic) NSData *ampEnrollmentPinning; // @synthesize ampEnrollmentPinning=_ampEnrollmentPinning;
 @property(retain, nonatomic) NSMutableArray *signedFields; // @synthesize signedFields=_signedFields;
 @property(retain, nonatomic) NSString *initiative; // @synthesize initiative=_initiative;
@@ -45,7 +48,6 @@
 @property(retain, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 @property(retain, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(retain, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -55,6 +57,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasOperationalAnalyticsIdentifier;
 @property(readonly, nonatomic) _Bool hasAmpEnrollmentPinning;
 - (id)signedFieldsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)signedFieldsCount;

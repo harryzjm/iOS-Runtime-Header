@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)outputImage;
-- (id)outputImageNonMPS;
+- (id)outputImageNonMPS:(id)arg1;
 
 @end
 

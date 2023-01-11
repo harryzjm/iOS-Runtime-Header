@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class INIntent, NSArray, NSString;
 @protocol INIntentResponseObserver;
 
 @protocol INCExtensionProxy
@@ -15,9 +15,11 @@
 
 @optional
 @property(copy, nonatomic) CDUnknownBlockType backgroundAppHandler;
-- (void)getDefaultValueForParameterNamed:(NSString *)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (void)getOptionsForParameterNamed:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)getDefaultValueForParameterNamed:(NSString *)arg1 completionHandler:(void (^)(id, NSError *))arg2;
+- (void)getOptionsForParameterNamed:(NSString *)arg1 searchTerm:(NSString *)arg2 completionHandler:(void (^)(INObjectCollection *, NSError *))arg3;
 - (void)stopSendingUpdates;
 - (void)startSendingUpdatesToObserver:(id <INIntentResponseObserver>)arg1;
+- (void)prewarmAppWithIntent:(INIntent *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 @end
 

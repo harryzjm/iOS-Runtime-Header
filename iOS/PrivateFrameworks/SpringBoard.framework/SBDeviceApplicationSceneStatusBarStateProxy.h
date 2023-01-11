@@ -8,11 +8,12 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneStatusBarStateProvider;
+@class NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarStateProvider;
 
 @interface SBDeviceApplicationSceneStatusBarStateProxy <SBDeviceApplicationSceneStatusBarStateObserver, SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride, BSInvalidatable>
 {
     SBDeviceApplicationSceneStatusBarStateProvider *_stateProvider;
+    SBDeviceApplicationSceneHandle *_deviceApplicationSceneHandle;
 }
 
 - (void).cxx_destruct;
@@ -29,8 +30,12 @@
 - (_Bool)_statusBarAppearsOutsideOfAJailedApp;
 - (_Bool)_suppressInheritedPartStyles;
 - (long long)_fallbackInterfaceOrientation;
+- (id)sceneToHandleStatusBarTapIfExists;
+- (id)classicApplicationSceneHandleIfExists;
 - (id)statusBarSceneIdentifier;
-- (id)statusBarControllingSceneHandle;
+- (id)breadcrumbProvider;
+- (id)overlayStatusBarData;
+- (_Bool)sceneWantsDeviceOrientationEventsEnabled;
 - (struct CGRect)statusBarAvoidanceFrame;
 - (int)statusBarStyleOverridesToSuppress;
 - (long long)_statusBarOrientationGivenFallbackOrientation:(long long)arg1;
@@ -41,7 +46,7 @@
 - (long long)_statusBarStyle;
 - (void)invalidate;
 - (void)invalidateStatusBarSettings;
-- (id)initWithStateProvider:(id)arg1;
+- (id)initWithDeviceApplicationSceneHandle:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

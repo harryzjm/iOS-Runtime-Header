@@ -19,22 +19,25 @@
     int _timezoneOffset;
     unsigned int _userSegment;
     unsigned int _version;
+    _Bool _categoryRootInstalled;
     struct {
         unsigned int deviceId:1;
         unsigned int userId:1;
         unsigned int timezoneOffset:1;
         unsigned int userSegment:1;
         unsigned int version:1;
+        unsigned int categoryRootInstalled:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool categoryRootInstalled; // @synthesize categoryRootInstalled=_categoryRootInstalled;
 @property(nonatomic) unsigned int userSegment; // @synthesize userSegment=_userSegment;
 @property(nonatomic) int timezoneOffset; // @synthesize timezoneOffset=_timezoneOffset;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property(nonatomic) long long deviceId; // @synthesize deviceId=_deviceId;
 @property(nonatomic) long long userId; // @synthesize userId=_userId;
 @property(nonatomic) unsigned int version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -44,6 +47,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasCategoryRootInstalled;
 @property(nonatomic) _Bool hasUserSegment;
 @property(nonatomic) _Bool hasTimezoneOffset;
 @property(readonly, nonatomic) _Bool hasLocale;

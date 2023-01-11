@@ -9,12 +9,13 @@
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
 @class NSCondition, NSMapTable, NSMutableSet, NSString;
-@protocol HDSQLiteDatabasePoolDelegate, OS_dispatch_semaphore;
+@protocol HDSQLiteDatabasePoolDelegate, OS_dispatch_group, OS_dispatch_semaphore;
 
 @interface HDSQLiteDatabasePool : NSObject <HDDiagnosticObject>
 {
     NSCondition *_cacheCondition;
     NSMutableSet *_cache;
+    NSObject<OS_dispatch_group> *_flushGroup;
     unsigned long long _cacheGeneration;
     long long _cacheSize;
     long long _concurrentReaderLimit;
@@ -26,14 +27,14 @@
     id <HDSQLiteDatabasePoolDelegate> _delegate;
 }
 
-@property __weak id <HDSQLiteDatabasePoolDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property __weak id <HDSQLiteDatabasePoolDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)diagnosticDescription;
 - (void)_didFlushDatabases:(id)arg1;
 - (id)_semaphoreForCheckOutOptions:(unsigned long long)arg1;
 - (id)_removeDatabaseFromCheckoutMap:(id)arg1;
 - (void)_addDatabaseWrapperToCheckoutMap:(id)arg1;
-- (void)flush;
+- (id)flush;
 - (void)checkInDatabase:(id)arg1 flushImmediately:(_Bool)arg2;
 - (id)checkOutDatabaseWithOptions:(unsigned long long)arg1 error:(id *)arg2;
 @property(readonly) long long concurrentReaderLimit;

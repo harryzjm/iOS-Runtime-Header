@@ -7,10 +7,11 @@
 #import <UIKit/UIDefaultKeyboardInput.h>
 
 #import <ContactsAutocompleteUI/CNAtomViewResembling-Protocol.h>
+#import <ContactsAutocompleteUI/CNChevronButtonMenuDelegate-Protocol.h>
 
-@class CNModernAtomBackgroundView, CNModernAtomIconView, NSString, UIActivityIndicatorView, UIColor, UIFont, UILabel, UIView;
+@class CNModernAtomBackgroundView, CNModernAtomIconView, NSString, UIActivityIndicatorView, UIColor, UIFont, UIImageView, UILabel, UIView;
 
-@interface CNAtomView : UIDefaultKeyboardInput <CNAtomViewResembling>
+@interface CNAtomView : UIDefaultKeyboardInput <CNChevronButtonMenuDelegate, CNAtomViewResembling>
 {
     CNModernAtomIconView *_badgeIconView;
     CNModernAtomIconView *_accessoryIconView;
@@ -25,6 +26,7 @@
     double _scalingFactor;
     _Bool _wrappingSupported;
     _Bool _cachedIsWrappingEnabled;
+    int _separatorStyle;
     _Bool _isPrimaryAddressAtom;
     _Bool _separatorHidden;
     _Bool _separatorIsLeftAligned;
@@ -33,13 +35,16 @@
     UIFont *_titleFont;
     unsigned long long _presentationOptions;
     double _firstLineIndent;
+    UIImageView *_downwardChevronImageView;
 }
 
 + (_Bool)presentationOptions:(unsigned long long *)arg1 encodedIntoAddress:(id)arg2;
 + (id)_badgeImagesForPresentationOptions:(unsigned long long)arg1 iconOrder:(const unsigned long long *)arg2 orderingLength:(unsigned long long)arg3 tintColor:(id)arg4 large:(_Bool)arg5 variant:(int)arg6;
 + (id)_defaultLabelAttributesWithFont:(id)arg1 wrappingEnabled:(_Bool)arg2;
 + (id)_defaultLabelAttributesWithWrappingEnabled:(_Bool)arg1;
++ (id)_clearBackgroundTextTintColor;
 + (id)_SMSTintColor;
++ (id)_downtimeBlockedTintColor;
 + (id)_failureTintColor;
 + (id)_defaultTintColor;
 + (id)primaryAtomFont;
@@ -47,6 +52,8 @@
 + (double)horizontalPadding;
 + (struct CGPoint)defaultBaselinePoint;
 + (double)defaultHeight;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) UIImageView *downwardChevronImageView; // @synthesize downwardChevronImageView=_downwardChevronImageView;
 @property(nonatomic) double firstLineIndent; // @synthesize firstLineIndent=_firstLineIndent;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(nonatomic) unsigned long long presentationOptions; // @synthesize presentationOptions=_presentationOptions;
@@ -57,7 +64,7 @@
 @property(readonly, nonatomic) CNModernAtomIconView *accessoryIconView; // @synthesize accessoryIconView=_accessoryIconView;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_label;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+- (id)menuConfigurationForChevronButton;
 - (void)performBuildInAnimationFromTextColor:(id)arg1 withDuration:(double)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (id)viewForLastBaselineLayout;
@@ -75,9 +82,12 @@
 - (double)preferredWidth;
 - (void)_updateFontIfNecessary;
 - (void)_updateActivityIndicator;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateCompositingFilters;
 @property(nonatomic) _Bool hidesVIPIndicator;
+- (void)displaySelectionChangeWithAnimation:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2 style:(unsigned long long)arg3;
+- (_Bool)appearsSelected;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic) int separatorStyle;
 @property(nonatomic) _Bool separatorHidden; // @synthesize separatorHidden=_separatorHidden;

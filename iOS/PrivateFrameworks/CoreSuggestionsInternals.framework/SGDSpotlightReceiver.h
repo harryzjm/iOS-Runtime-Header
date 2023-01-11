@@ -25,7 +25,6 @@
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)addInteractions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
-- (id)supportedINIntentClassNames;
 - (id)supportedContentTypes;
 - (void)deleteAllSearchableItemsWithBundleID:(id)arg1;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;

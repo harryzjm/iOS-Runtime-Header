@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
     int _droppedFrameCount;
     int _failedFrameCount;
     _Bool _forceDisableEffectsHealthCheck;
+    struct __CVBuffer *_lastReceivedPixelBuffer;
+    struct __CVBuffer *_lastReceivedDepthBuffer;
     int _thermalPressureLevel;
 }
 
@@ -40,10 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)renderPixelBuffer:(struct __CVBuffer *)arg1 time:(CDStruct_1b6d18a9)arg2;
 - (void)capturedPixelBuffer:(struct __CVBuffer *)arg1 depthDataPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 imageData:(id)arg4;
 - (void)updateThermalLevel:(int)arg1;
-- (void)clearAllStickers:(_Bool)arg1;
-- (void)addStickerWithURL:(id)arg1 isFaceSticker:(_Bool)arg2 atPosition:(struct CGPoint)arg3 identifier:(id)arg4;
-- (void)setMemoji:(id)arg1;
-- (void)setAnimoji:(id)arg1;
 - (_Bool)isFaceMeshTrackingEnabled;
 - (_Bool)isEffectsOn;
 - (void)registerBlocksForService;

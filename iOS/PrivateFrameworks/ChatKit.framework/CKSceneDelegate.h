@@ -8,22 +8,24 @@
 
 #import <ChatKit/UIWindowSceneDelegate-Protocol.h>
 
-@class NSString, UIWindow, UIWindowScene;
+@class CKMacToolbarController, NSString, UIWindow, UIWindowScene;
 
 @interface CKSceneDelegate : NSObject <UIWindowSceneDelegate>
 {
     _Bool _handlingLaunchTask;
     UIWindowScene *_scene;
     UIWindow *_window;
+    CKMacToolbarController *_toolbarController;
 }
 
 + (id)stateFromUserInfoDictionary:(id)arg1;
 + (id)userInfoDictionaryForState:(id)arg1;
 + (Class)containerClassForType:(long long)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKMacToolbarController *toolbarController; // @synthesize toolbarController=_toolbarController;
 @property(nonatomic, getter=isHandlingLaunchTask) _Bool handlingLaunchTask; // @synthesize handlingLaunchTask=_handlingLaunchTask;
 @property(retain, nonatomic) UIWindow *window; // @synthesize window=_window;
 @property(readonly, nonatomic) __weak UIWindowScene *scene; // @synthesize scene=_scene;
-- (void).cxx_destruct;
 - (void)updateSceneTitleForConversation:(id)arg1;
 - (id)predicateMatchingConversation:(id)arg1;
 - (id)prefersToActivatePredicate;
@@ -31,6 +33,7 @@
 - (void)updateSceneActivationConditions;
 - (void)scene:(id)arg1 continueUserActivity:(id)arg2;
 - (id)stateRestorationActivityForScene:(id)arg1;
+- (void)windowSceneDidBecomeVisible:(id)arg1;
 - (void)scene:(id)arg1 openURLContexts:(id)arg2;
 - (void)sceneDidEnterBackground:(id)arg1;
 - (void)sceneWillEnterForeground:(id)arg1;

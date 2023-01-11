@@ -31,12 +31,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_debugStringForPlaybackType:(long long)arg1;
++ (id)debugStringForPlaybackState:(long long)arg1;
 + (id)EBSSummaryWithBundleID:(id)arg1 channelID:(id)arg2 contentID:(id)arg3 accountID:(id)arg4 externalProfileID:(id)arg5 timestamp:(id)arg6 playbackState:(long long)arg7 playbackRate:(id)arg8 currentPlaybackDate:(id)arg9;
 + (id)liveSummaryWithBundleID:(id)arg1 channelID:(id)arg2 serviceID:(id)arg3 accountID:(id)arg4 externalProfileID:(id)arg5 timestamp:(id)arg6 playbackState:(long long)arg7 playbackRate:(id)arg8 currentPlaybackDate:(id)arg9;
 + (id)VODSummaryWithBundleID:(id)arg1 channelID:(id)arg2 contentID:(id)arg3 accountID:(id)arg4 externalProfileID:(id)arg5 timestamp:(id)arg6 duration:(id)arg7 elapsedTime:(id)arg8 playbackState:(long long)arg9 playbackRate:(id)arg10 completionState:(long long)arg11;
 + (id)debugStringForCompletionState:(long long)arg1;
 + (long long)completionStateForDuration:(double)arg1 elapsedTime:(double)arg2;
 + (double)playedThresholdTimeForDuration:(double)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isTimerDerived; // @synthesize isTimerDerived=_isTimerDerived;
 @property(nonatomic) _Bool isAlwaysLive; // @synthesize isAlwaysLive=_isAlwaysLive;
 @property(readonly, nonatomic) long long playbackType; // @synthesize playbackType=_playbackType;
@@ -53,7 +56,6 @@
 @property(readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property(readonly, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
 - (_Bool)_isValid;
 - (_Bool)_validate:(id)arg1 identifier:(id)arg2 expectedClass:(Class)arg3;
 - (_Bool)_compareOptional:(id)arg1 with:(id)arg2;
@@ -62,6 +64,7 @@
 - (id)JSONRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)shortDescription;
 - (_Bool)isLiveType;
 - (unsigned long long)hash;
 - (_Bool)isSameContent:(id)arg1;
@@ -69,6 +72,7 @@
 - (_Bool)isEqualToSummaryExcludingCursor:(id)arg1;
 - (_Bool)isEqualToSummary:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) NSNumber *accountIDAsNumber;
 - (id)initWithMediaRemoteDictionary:(id)arg1 bundleID:(id)arg2 accountID:(id)arg3;
 - (id)initWithBundleID:(id)arg1 timestamp:(id)arg2 duration:(id)arg3 elapsedTime:(id)arg4 externalProfileID:(id)arg5 contentID:(id)arg6 accountID:(id)arg7 playbackState:(long long)arg8 playbackRate:(id)arg9 completionState:(long long)arg10 isAlwaysLive:(_Bool)arg11 serviceID:(id)arg12 currentPlaybackDate:(id)arg13 playbackType:(long long)arg14 isTimerDerived:(_Bool)arg15 channelID:(id)arg16;
 - (void)resolveChannelID:(CDUnknownBlockType)arg1;

@@ -6,20 +6,28 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class RUIStyle;
+@class RUIStyle, UIViewController;
 
 @interface RUINavigationController : UINavigationController
 {
     unsigned long long _ruiSupportedInterfaceOrientations;
     RUIStyle *_style;
+    unsigned long long _ruiModalPresentationStyle;
+    UIViewController *_hostViewController;
     CDUnknownBlockType _menuDismissalHandler;
+    CDUnknownBlockType _viewDidDisappearHandler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType menuDismissalHandler; // @synthesize menuDismissalHandler=_menuDismissalHandler;
-@property(retain, nonatomic) RUIStyle *style; // @synthesize style=_style;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType viewDidDisappearHandler; // @synthesize viewDidDisappearHandler=_viewDidDisappearHandler;
+@property(copy, nonatomic) CDUnknownBlockType menuDismissalHandler; // @synthesize menuDismissalHandler=_menuDismissalHandler;
+@property(nonatomic) __weak UIViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
+@property(nonatomic) unsigned long long ruiModalPresentationStyle; // @synthesize ruiModalPresentationStyle=_ruiModalPresentationStyle;
+@property(retain, nonatomic) RUIStyle *style; // @synthesize style=_style;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)canBeShownFromSuspendedState;
+- (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_menuButtonPressed:(id)arg1;
 - (void)viewDidLoad;
 - (void)loadView;

@@ -14,6 +14,8 @@
 - (id)_axShinyStatusLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUserInputLabels;
+- (struct CGPoint)accessibilityActivationPoint;
+- (_Bool)accessibilityActivate;
 - (id)accessibilityLabel;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)isAccessibilityElement;

@@ -17,8 +17,8 @@
 + (void)ingestPostRestoreMigrationDataForConsentedDevices:(id)arg1;
 + (id)migrationDataPreRestoreForConsentedDevices:(id)arg1;
 + (id)sharedMigrator;
-@property(readonly, retain, nonatomic) NRDevice *migratingDevice; // @synthesize migratingDevice=_migratingDevice;
 - (void).cxx_destruct;
+@property(readonly, retain, nonatomic) NRDevice *migratingDevice; // @synthesize migratingDevice=_migratingDevice;
 - (void)isPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)enterPreMigrationMode;
 - (id)lastMigrationRequestPhoneName;
@@ -32,12 +32,6 @@
 @property(readonly, nonatomic) _Bool migrationIsAvailable;
 - (id)migrationConsentRequestData;
 - (id)devicesFromMigrationConsentRequestData:(id)arg1;
-- (id)_SHA256WithString:(id)arg1;
-- (id)UDIDUUID;
-- (id)compressMigrationProtobuf:(id)arg1;
-- (void)shrinkMigrationProtobufs:(id)arg1;
-- (id)packMigrationProtobufs:(id)arg1;
-- (id)shortenStringByCompleteUnicodeCharactersToReduceStorageSpace:(id)arg1;
 
 @end
 

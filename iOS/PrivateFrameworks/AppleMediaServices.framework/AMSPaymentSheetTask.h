@@ -7,36 +7,43 @@
 #import <AppleMediaServices/PKPaymentAuthorizationControllerDelegate-Protocol.h>
 #import <AppleMediaServices/PKPaymentAuthorizationControllerPrivateDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, AMSPaymentSheetAssetCache, AMSPaymentSheetRequest, AMSPromise, NSObject, NSString, _PaymentSheetState;
+@class AKAppleIDAuthenticationContext, AMSPaymentSheetAssetCache, AMSPaymentSheetRequest, AMSPromise, AMSPurchaseInfo, NSDictionary, NSMutableArray, NSObject, NSString, _PaymentSheetState;
 @protocol AMSBagProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSPaymentSheetTask <PKPaymentAuthorizationControllerDelegate, PKPaymentAuthorizationControllerPrivateDelegate>
 {
     id <AMSBagProtocol> _bag;
+    NSDictionary *_metricsDictionary;
+    AMSPurchaseInfo *_purchaseInfo;
     AMSPaymentSheetAssetCache *_assetCache;
     AKAppleIDAuthenticationContext *_authenticationContext;
     AMSPromise *_paymentSheetPromise;
     NSObject<OS_dispatch_queue> *_presentationQueue;
     _PaymentSheetState *_state;
     AMSPaymentSheetRequest *_request;
+    NSMutableArray *_userActions;
 }
 
 + (id)_authenticationContextForRequest:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *userActions; // @synthesize userActions=_userActions;
 @property(retain, nonatomic) AMSPaymentSheetRequest *request; // @synthesize request=_request;
 @property(retain, nonatomic) _PaymentSheetState *state; // @synthesize state=_state;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *presentationQueue; // @synthesize presentationQueue=_presentationQueue;
 @property(retain, nonatomic) AMSPromise *paymentSheetPromise; // @synthesize paymentSheetPromise=_paymentSheetPromise;
 @property(retain, nonatomic) AKAppleIDAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property(retain, nonatomic) AMSPaymentSheetAssetCache *assetCache; // @synthesize assetCache=_assetCache;
+@property(retain, nonatomic) AMSPurchaseInfo *purchaseInfo; // @synthesize purchaseInfo=_purchaseInfo;
+@property(retain, nonatomic) NSDictionary *metricsDictionary; // @synthesize metricsDictionary=_metricsDictionary;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
-- (void).cxx_destruct;
 - (void)paymentAuthorizationController:(id)arg1 willFinishWithError:(id)arg2;
 - (void)paymentAuthorizationController:(id)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)paymentAuthorizationControllerDidFinish:(id)arg1;
 - (void)paymentAuthorizationController:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_paymentRequest;
 - (_Bool)_presentPaymentSheetWithPaymentRequest:(id)arg1 error:(id *)arg2;
+- (id)_metricsEvent;
 - (float)_challengeSigningDelay;
 - (id)perform;
 - (id)initWithRequest:(id)arg1 bag:(id)arg2;

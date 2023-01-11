@@ -17,9 +17,9 @@
 
 + (id)uuid;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) AWDHomeKitRemoteLogin *metric; // @synthesize metric=_metric;
-- (void).cxx_destruct;
 - (void)setError:(id)arg1;
 - (id)metricForAWD;
 - (unsigned int)AWDMessageType;

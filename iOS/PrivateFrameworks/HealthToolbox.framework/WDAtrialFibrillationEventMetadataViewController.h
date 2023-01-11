@@ -14,15 +14,17 @@
 __attribute__((visibility("hidden")))
 @interface WDAtrialFibrillationEventMetadataViewController : HKTableViewController <HKHeartbeatSequenceListMetadataSectionDelegate>
 {
+    _Bool _firstViewDidLayoutSubviews;
     HKCategorySample *_event;
     NSMutableArray *_sections;
     id <HKDataMetadataViewControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) HKCategorySample *event; // @synthesize event=_event;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)_shortVersionNumberFromString:(id)arg1;
 - (void)_loadSections;
 - (_Bool)_addSectionIfNonNull:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)initWithEvent:(id)arg1 delegate:(id)arg2;
 

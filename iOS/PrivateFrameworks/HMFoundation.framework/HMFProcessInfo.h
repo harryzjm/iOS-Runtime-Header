@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 
-@class HMFBoolean, NSString;
+@class HMFBoolean, NSBundle, NSString, NSURL;
 
 @interface HMFProcessInfo <HMFLogging>
 {
@@ -14,15 +14,21 @@
     NSString *_applicationIdentifier;
     int _identifier;
     NSString *_name;
+    NSURL *_executableURL;
+    NSURL *_mainBundleURL;
 }
 
 + (id)logCategory;
 + (id)processInfoForXPCConnection:(id)arg1;
 + (id)processInfo;
+- (void).cxx_destruct;
+@property(readonly, copy) NSURL *mainBundleURL; // @synthesize mainBundleURL=_mainBundleURL;
+@property(readonly, copy) NSURL *executableURL; // @synthesize executableURL=_executableURL;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly) int identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (id)logIdentifier;
 - (_Bool)getAuditToken:(CDStruct_6ad76789 *)arg1;
+@property(readonly, copy) NSBundle *mainBundle;
 - (id)attributeDescriptions;
 - (id)shortDescription;
 - (_Bool)isEqual:(id)arg1;

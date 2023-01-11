@@ -14,15 +14,13 @@
     FBProcess *_lock_hostProcess;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
 @property(readonly, nonatomic) FBSExtensionInfo *extensionInfo; // @synthesize extensionInfo=_extensionInfo;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (_Bool)isExtensionProcess;
 @property(readonly, nonatomic) FBProcess *hostProcess;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostPID:(int)arg3;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostProcess:(id)arg3;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
+- (void)_finishInit;
 
 @end
 

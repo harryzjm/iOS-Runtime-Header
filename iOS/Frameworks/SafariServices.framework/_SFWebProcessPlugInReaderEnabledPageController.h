@@ -6,7 +6,7 @@
 
 #import <SafariServices/SFReaderWebProcessControllerProtocol-Protocol.h>
 
-@class NSDictionary, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInAppleConnectExtensionController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
+@class NSDictionary, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
 @protocol SFReaderEventsListener;
 
 @interface _SFWebProcessPlugInReaderEnabledPageController <SFReaderWebProcessControllerProtocol>
@@ -20,19 +20,18 @@
     SFWebProcessPlugInPageExtensionController *_extensionController;
     _SFWebProcessSharingLinkExtractor *_sharingLinkExtractor;
     SFWebProcessPlugInCertificateWarningController *_certificateWarningController;
-    _SFWebProcessPlugInAppleConnectExtensionController *_appleConnectExtensionController;
     _Bool _viewingReadingListArchive;
     NSDictionary *_initalArticleScrollPositionAsDictionary;
     NSDictionary *_initialReaderConfiguration;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isViewingReadingListArchive) _Bool viewingReadingListArchive; // @synthesize viewingReadingListArchive=_viewingReadingListArchive;
 @property(readonly, nonatomic) NSDictionary *initialReaderConfiguration; // @synthesize initialReaderConfiguration=_initialReaderConfiguration;
 @property(nonatomic) long long cachedReaderTopScrollOffset; // @synthesize cachedReaderTopScrollOffset=_cachedReaderTopScrollOffset;
 @property(copy, nonatomic) NSDictionary *initalArticleScrollPositionAsDictionary; // @synthesize initalArticleScrollPositionAsDictionary=_initalArticleScrollPositionAsDictionary;
 @property(retain, nonatomic) _SFReaderWebProcessPlugInPageController *readerPageController; // @synthesize readerPageController=_readerPageController;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishDocumentLoadForFrame:(id)arg2;
@@ -62,7 +61,7 @@
 - (void)_setUpReaderControllerInterface;
 - (void)_setUpReaderActivityListenerProxy;
 - (void)readerTextWasExtracted:(id)arg1 withMetadata:(id)arg2 wasDeterminingAvailability:(_Bool)arg3;
-- (void)didDetermineReaderAvailability:(_Bool)arg1 dueToSameDocumentNavigation:(_Bool)arg2;
+- (void)didDetermineReaderAvailability:(id)arg1;
 - (void)articleContentDidChange;
 - (void)willDestroyBrowserContextController:(id)arg1;
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;

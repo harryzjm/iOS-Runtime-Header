@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)uniqueServerContextWithEndpointDescription:(id)arg1;
 - (_Bool)isServer;
 
 @end

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAuthorizationRequest, AKPasswordRequest, NSArray, NSData, NSNumber, NSString, NSUUID, NSValue;
+@class AKAuthorizationRequest, AKAuthorizationUpgradeContext, AKPasswordRequest, NSArray, NSData, NSNumber, NSString, NSUUID, NSValue;
 
-@interface AKCredentialRequestContext : NSObject <NSSecureCoding>
+@interface AKCredentialRequestContext : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _passcodeProtected;
     _Bool _shouldForceUI;
@@ -21,6 +22,7 @@
     _Bool _isWebLogin;
     _Bool _isFirstPartyLogin;
     _Bool _isRapportLogin;
+    _Bool _isEligibleForUpgradeFromPassword;
     NSString *_informativeText;
     NSString *_iconName;
     NSData *_iconData;
@@ -31,23 +33,29 @@
     NSString *_proxiedClientAppID;
     NSString *_proxiedClientTeamID;
     NSArray *_proxiedAssociatedDomains;
+    NSString *_callerBundleID;
     NSString *_proxiedDeviceName;
     NSString *_proxiedDeviceClass;
+    NSString *_proxiedClientServiceID;
+    AKAuthorizationUpgradeContext *_upgradeContext;
     NSUUID *_requestIdentifier;
     AKAuthorizationRequest *_authorizationRequest;
     AKPasswordRequest *_passwordRequest;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AKPasswordRequest *passwordRequest; // @synthesize passwordRequest=_passwordRequest;
 @property(retain, nonatomic) AKAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
 @property(readonly, copy, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property(readonly, nonatomic) AKAuthorizationUpgradeContext *_upgradeContext; // @synthesize _upgradeContext;
+@property(retain, nonatomic) NSString *_proxiedClientServiceID; // @synthesize _proxiedClientServiceID;
 @property(retain, nonatomic) NSString *_proxiedDeviceClass; // @synthesize _proxiedDeviceClass;
 @property(retain, nonatomic) NSString *_proxiedDeviceName; // @synthesize _proxiedDeviceName;
+@property(retain, nonatomic) NSString *_callerBundleID; // @synthesize _callerBundleID;
 @property(nonatomic) _Bool _isRapportLogin; // @synthesize _isRapportLogin;
 @property(nonatomic) _Bool _isFirstPartyLogin; // @synthesize _isFirstPartyLogin;
 @property(nonatomic) _Bool _isWebLogin; // @synthesize _isWebLogin;
-@property(nonatomic) _Bool _requirePassword; // @synthesize _requirePassword;
 @property(retain, nonatomic) NSArray *_proxiedAssociatedDomains; // @synthesize _proxiedAssociatedDomains;
 @property(retain, nonatomic) NSString *_proxiedClientTeamID; // @synthesize _proxiedClientTeamID;
 @property(retain, nonatomic) NSString *_proxiedClientAppID; // @synthesize _proxiedClientAppID;
@@ -62,10 +70,12 @@
 @property(nonatomic) _Bool _shouldSkipAuthorizationUI; // @synthesize _shouldSkipAuthorizationUI;
 @property(nonatomic) _Bool _shouldSkipBiometrics; // @synthesize _shouldSkipBiometrics;
 @property(nonatomic) _Bool _shouldForceUI; // @synthesize _shouldForceUI;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) _Bool _requirePassword; // @synthesize _requirePassword;
 @property(retain, nonatomic) NSArray *credentialRequests;
+@property(readonly, nonatomic) _Bool _isEligibleForUpgradeFromPassword; // @synthesize _isEligibleForUpgradeFromPassword;
+- (id)initWithUpgradeContext:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

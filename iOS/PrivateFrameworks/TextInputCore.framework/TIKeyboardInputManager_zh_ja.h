@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MCKeyboardInput, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSString, TIKeyboardTouchEvent, TIWordSearch, TIWordSearchCandidateResultSet;
+@class MCDrawInput, MCKeyboardInput, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSString, TIKeyboardTouchEvent, TIWordSearch, TIWordSearchCandidateResultSet;
 
 @interface TIKeyboardInputManager_zh_ja
 {
@@ -22,6 +22,7 @@
     NSString *_currentClientIdentifier;
     NSString *_currentRecipientIdentifier;
     TIKeyboardTouchEvent *_previousTouchEvent;
+    MCDrawInput *_cancelledDrawInput;
     RefPtr_54d74a7c _favoniusLayoutForCharacterKeysFrame;
     CDUnknownBlockType _compositionCompletionHandler;
     TIWordSearch *_wordSearch;
@@ -41,6 +42,8 @@
 + (id)dummyGeometryData;
 + (void)removeDynamicDictionaryForInputMode:(id)arg1;
 + (id)inputMethodWithChainedKeyboardInputManager:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *touchUpEvents; // @synthesize touchUpEvents=_touchUpEvents;
 @property(readonly, nonatomic) NSMutableDictionary *touchDownEvents; // @synthesize touchDownEvents=_touchDownEvents;
 @property(readonly, nonatomic) NSMutableArray *geometryDataArray; // @synthesize geometryDataArray=_geometryDataArray;
@@ -50,6 +53,7 @@
 @property(readonly, nonatomic) TIWordSearch *wordSearch; // @synthesize wordSearch=_wordSearch;
 @property(copy, nonatomic) CDUnknownBlockType compositionCompletionHandler; // @synthesize compositionCompletionHandler=_compositionCompletionHandler;
 @property(nonatomic) RefPtr_54d74a7c favoniusLayoutForCharacterKeysFrame; // @synthesize favoniusLayoutForCharacterKeysFrame=_favoniusLayoutForCharacterKeysFrame;
+@property(retain, nonatomic) MCDrawInput *cancelledDrawInput; // @synthesize cancelledDrawInput=_cancelledDrawInput;
 @property(retain, nonatomic) TIKeyboardTouchEvent *previousTouchEvent; // @synthesize previousTouchEvent=_previousTouchEvent;
 @property(nonatomic) _Bool preservesComposingInput; // @synthesize preservesComposingInput=_preservesComposingInput;
 @property(nonatomic) int lastCommittedCandidateType; // @synthesize lastCommittedCandidateType=_lastCommittedCandidateType;
@@ -61,8 +65,6 @@
 @property(retain, nonatomic) NSArray *clearedGeometryDataArray; // @synthesize clearedGeometryDataArray=_clearedGeometryDataArray;
 @property(retain, nonatomic) TIKeyboardInputManager_zh_ja *composingKeyboardInputManager; // @synthesize composingKeyboardInputManager=_composingKeyboardInputManager;
 @property(readonly, nonatomic) TIKeyboardInputManager_zh_ja *chainedKeyboardInputManager; // @synthesize chainedKeyboardInputManager;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)lastAcceptedCandidateCorrected;
 - (void)candidateRejected:(id)arg1;
 - (void)textAccepted:(id)arg1 fromPredictiveInputBar:(_Bool)arg2 withInput:(id)arg3;
@@ -90,6 +92,7 @@
 - (void)incrementUsageTrackingKeysForDeleteFromInput;
 - (void)updateUsageStatisticsForCandidate:(id)arg1 isPartial:(_Bool)arg2;
 - (void)syncToKeyboardState:(id)arg1 from:(id)arg2 afterContextChange:(_Bool)arg3;
+- (_Bool)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (int)mecabraTextContentTypeFromTITextContentType:(id)arg1;
 - (void)setLanguageModelAdaptationContext;
 @property(readonly, nonatomic) _Bool supportsPerRecipientLearning;
@@ -135,6 +138,7 @@
 @property(readonly, nonatomic) MCKeyboardInput *composingInput; // @synthesize composingInput=_composingInput;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1 keyboardState:(id)arg2;
+- (void)tearDown;
 - (void)cancelComposition;
 - (void)completeComposition;
 - (void)_completeComposition:(_Bool)arg1;

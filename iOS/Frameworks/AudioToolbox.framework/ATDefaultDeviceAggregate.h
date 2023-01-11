@@ -17,9 +17,14 @@
 + (id)sharedDefaultDeviceAggregate;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)primarySessionIsDeactivating;
+- (void)primarySessionIsActivatingWithInputCategory:(_Bool)arg1;
 - (shared_ptr_57118bb5)impl;
 - (id)outputStreamsToUse;
 - (id)inputStreamsToUse;
+- (double)sampleRate;
+- (unsigned int)outputChannelCount;
+- (unsigned int)inputChannelCount;
 - (id)_streamsToUse:(_Bool)arg1;
 - (void)removeObserver:(int)arg1;
 - (int)addObserver:(CDUnknownBlockType)arg1;

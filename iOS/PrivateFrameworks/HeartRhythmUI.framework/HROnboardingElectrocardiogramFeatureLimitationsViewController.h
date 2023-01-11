@@ -8,10 +8,9 @@
 {
 }
 
-- (id)buttonTitleString;
-- (id)bulletPoints;
-- (id)bodyString;
-- (id)titleString;
+- (id)_makeSpeedBumpItemForUpdateOnboarding:(_Bool)arg1;
+- (_Bool)_hasOnboardedBeforeWithStore:(id)arg1;
+- (void)setDelegate:(id)arg1;
 - (id)initForOnboarding:(_Bool)arg1;
 
 @end

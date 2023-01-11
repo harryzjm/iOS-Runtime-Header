@@ -42,17 +42,20 @@
 + (id)_spendingMerchantsFromTransaction:(id)arg1 currencyCode:(id)arg2;
 + (id)summaryWithTransactions:(id)arg1 currency:(id)arg2 type:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 lastSummary:(id)arg6;
 - (void).cxx_destruct;
+- (void)_timeZoneChanged:(id)arg1;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
 - (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
+- (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)_spendingSummaryStartingWithDate:(id)arg1 endDate:(id)arg2 type:(unsigned long long)arg3 withLastPeriodChange:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_processNextRequest;
 - (void)spendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 withLastPeriodChange:(_Bool)arg3;
 - (id)cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2;
 - (void)availableSummaries:(CDUnknownBlockType)arg1;
+- (void)_resetCurrentCalendar;
+- (void)dealloc;
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2;
 
 // Remaining properties

@@ -9,6 +9,8 @@
 @protocol PREResponsesTrialProtocol
 @property(readonly) NSString *treatmentId;
 @property(readonly) NSString *experimentId;
+@property(readonly) NSString *lexiconFilePath;
+@property(readonly) NSString *espressoBinFilePath;
 @property(readonly) NSString *inferenceModelConfigPath;
 @property(readonly) NSString *inferenceModelFilePath;
 @property(readonly) NSString *inferenceModelName;

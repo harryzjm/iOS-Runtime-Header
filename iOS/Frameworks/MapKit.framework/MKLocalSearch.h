@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class MKLocalSearchRequest;
-@protocol MKMapServiceTicket;
+@class MKLocalPointsOfInterestRequest, MKLocalSearchRequest;
+@protocol MKMapServiceSpatialPlaceLookupTicket, MKMapServiceTicket;
 
 @interface MKLocalSearch : NSObject
 {
     MKLocalSearchRequest *_request;
     id <MKMapServiceTicket> _ticket;
+    MKLocalPointsOfInterestRequest *_pointsOfInterestRequest;
+    id <MKMapServiceSpatialPlaceLookupTicket> _spatialPlaceLookupTicket;
 }
 
 - (void).cxx_destruct;
 - (void)_handleMapItems:(id)arg1 boundingRegion:(id)arg2 error:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4 queue:(id)arg5;
 @property(readonly, nonatomic, getter=isSearching) _Bool searching;
 - (void)cancel;
+- (void)_startPointsOfInterestFetchWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_startWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (id)initWithPointsOfInterestRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1;
 - (id)init;
 - (void)_phoneOnlyStartWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;

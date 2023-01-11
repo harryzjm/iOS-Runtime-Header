@@ -6,14 +6,16 @@
 
 #import <UIKit/UIView.h>
 
+@class PUPhotoEditToolController;
+
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditToolControllerView : UIView
 {
-    UIView *_eventForwardView;
+    PUPhotoEditToolController *_toolController;
 }
 
-@property(nonatomic) __weak UIView *eventForwardView; // @synthesize eventForwardView=_eventForwardView;
 - (void).cxx_destruct;
+@property(nonatomic) __weak PUPhotoEditToolController *toolController; // @synthesize toolController=_toolController;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end

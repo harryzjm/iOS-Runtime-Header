@@ -8,7 +8,7 @@
 
 #import <IBFoundation/IBICSchemaProvider-Protocol.h>
 
-@class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICScreenWidth, IBICSize, IBICSubtype, IBICVibrancyAppearance, IBICWidthClass, NSArray, NSDictionary, NSSet, NSString;
+@class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICLocale, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICScreenWidth, IBICSize, IBICSubtype, IBICVibrancyAppearance, IBICWidthClass, NSArray, NSDictionary, NSSet, NSString;
 
 @interface IBICBaseSchemaProvider : NSObject <IBICSchemaProvider>
 {
@@ -22,6 +22,7 @@
     IBICFileType *_jpegFileType;
     IBICFileType *_pdfFileType;
     IBICFileType *_gifFileType;
+    IBICFileType *_svgFileType;
     IBICFileType *_avicFileType;
     IBICFileType *_heicFileType;
     IBICFileType *_heifFileType;
@@ -30,7 +31,6 @@
     NSSet *_allAlphaEnabledBitmapFileTypes;
     NSSet *_allVectorFileTypes;
     NSSet *_allVectorAndBitmapFileTypes;
-    NSSet *_allVectorAndAlphaEnabledBitmapFileTypes;
     NSSet *_arkit3DFileTypes;
     NSArray *_modelFileTypes;
     IBICWidthClass *_anyWidthClass;
@@ -56,6 +56,7 @@
     IBICLanguageDirection *_anyLanguageDirection;
     IBICLanguageDirection *_leftToRightLanguageDirection;
     IBICLanguageDirection *_rightToLeftLanguageDirection;
+    IBICLocale *_developmentLanguageLocale;
     NSArray *_cubeFaces;
     NSArray *_mipmapLevels;
 }

@@ -14,19 +14,7 @@ __attribute__((visibility("hidden")))
     CNContactStore *_contactStore;
 }
 
-+ (id)syncImageResultForScalingDownImageData:(id)arg1 cropRect:(struct CGRect)arg2 isPNG:(_Bool)arg3 maxSize:(long long)arg4;
-+ (id)syncImageResultForJPEGCompressionWithImageData:(id)arg1 cropRect:(struct CGRect)arg2 maxSize:(long long)arg3;
-+ (id)imageDataByRemovingOrientation:(id)arg1 isPNG:(_Bool)arg2;
-+ (id)syncImageResultForImageData:(id)arg1 cropRect:(struct CGRect)arg2 isPNG:(_Bool)arg3 maxSize:(long long)arg4;
-+ (id)os_log;
-+ (id)descriptorForRequiredKeys;
-@property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 - (void).cxx_destruct;
-- (void)saveSyncImageResult:(id)arg1 toContact:(id)arg2;
-- (id)syncImageResultForContact:(id)arg1 maxSize:(long long)arg2;
-- (id)generateSyncImageForContact:(id)arg1;
-- (id)generateSyncImageForImageData:(id)arg1 cropRect:(struct CGRect)arg2;
-- (id)initWithContactStore:(id)arg1;
 
 @end
 

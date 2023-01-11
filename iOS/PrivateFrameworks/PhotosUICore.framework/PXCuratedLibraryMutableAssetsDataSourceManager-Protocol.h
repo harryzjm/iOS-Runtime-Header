@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSIndexSet;
+#import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
+
+@class NSIndexSet, NSPredicate;
 @protocol PXDisplayAsset, PXDisplayAssetCollection;
 
-@protocol PXCuratedLibraryMutableAssetsDataSourceManager
+@protocol PXCuratedLibraryMutableAssetsDataSourceManager <PXMutableAssetsDataSourceManager>
+@property(retain, nonatomic) NSPredicate *allPhotosFilterPredicate;
 @property(nonatomic) long long zoomLevel;
 - (void)resumeChangeDelivery:(id)arg1;
 - (id)pauseChangeDeliveryWithTimeout:(double)arg1;

@@ -11,7 +11,7 @@
 #import <BulletinDistributorCompanion/BLTCompanionServer-Protocol.h>
 #import <BulletinDistributorCompanion/NSXPCListenerDelegate-Protocol.h>
 
-@class BBObserver, BLTBulletinDistributorMRUSectionCache, BLTBulletinFetcher, BLTClientReplyTimeoutManager, BLTGizmoLegacyMap, BLTHashCache, BLTPingSubscriberManager, BLTRemoteGizmoClient, BLTSectionConfiguration, BLTSettingSync, BLTUserNotificationList, BLTWatchKitAppList, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class BBObserver, BLTBulletinFetcher, BLTClientReplyTimeoutManager, BLTGizmoLegacyMap, BLTHashCache, BLTPingSubscriberManager, BLTRemoteGizmoClient, BLTSectionConfiguration, BLTSettingSync, BLTSimpleCache, BLTUserNotificationList, BLTWatchKitAppList, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface BLTBulletinDistributor : NSObject <BLTBulletinDistributorSubscriberDeviceDelegate, BBObserverDelegate, BLTCompanionServer, NSXPCListenerDelegate>
 {
@@ -35,11 +35,12 @@
     BLTBulletinFetcher *_bulletinFetcher;
     BLTPingSubscriberManager *_pingSubscriberManager;
     BLTGizmoLegacyMap *_gizmoLegacyMap;
-    BLTBulletinDistributorMRUSectionCache *_mruSectionCache;
+    BLTSimpleCache *_mruCacheOfSectionIDs;
 }
 
 + (id)sharedDistributor;
-@property(retain, nonatomic) BLTBulletinDistributorMRUSectionCache *mruSectionCache; // @synthesize mruSectionCache=_mruSectionCache;
+- (void).cxx_destruct;
+@property(retain, nonatomic) BLTSimpleCache *mruCacheOfSectionIDs; // @synthesize mruCacheOfSectionIDs=_mruCacheOfSectionIDs;
 @property(retain, nonatomic) BLTGizmoLegacyMap *gizmoLegacyMap; // @synthesize gizmoLegacyMap=_gizmoLegacyMap;
 @property(retain, nonatomic) BLTPingSubscriberManager *pingSubscriberManager; // @synthesize pingSubscriberManager=_pingSubscriberManager;
 @property(retain, nonatomic) BLTBulletinFetcher *bulletinFetcher; // @synthesize bulletinFetcher=_bulletinFetcher;
@@ -59,7 +60,6 @@
 @property(retain, nonatomic) NSMutableDictionary *bulletins; // @synthesize bulletins=_bulletins;
 @property(retain, nonatomic) BBObserver *bbObserver; // @synthesize bbObserver=_bbObserver;
 @property(retain, nonatomic) BLTRemoteGizmoClient *gizmoConnection; // @synthesize gizmoConnection=_gizmoConnection;
-- (void).cxx_destruct;
 - (id)_stateDescription;
 - (void)_addBulletin:(id)arg1 forFeed:(unsigned long long)arg2 playLightsAndSirens:(_Bool)arg3 attachment:(id)arg4 attachmentType:(long long)arg5 alwaysSend:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)willSendLightsAndSirensWithPublisherBulletinID:(id)arg1 recordID:(id)arg2 inPhoneSection:(id)arg3 systemApp:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
@@ -69,12 +69,6 @@
 - (void)_handleDidPlayLightsAndSirens:(_Bool)arg1 forBulletin:(id)arg2 inPhoneSection:(id)arg3 transmissionDate:(id)arg4 receptionDate:(id)arg5 fromGizmo:(_Bool)arg6 finalReply:(_Bool)arg7 replyToken:(id)arg8;
 - (void)handleDidPlayLightsAndSirens:(_Bool)arg1 forBulletin:(id)arg2 inPhoneSection:(id)arg3 transmissionDate:(id)arg4 receptionDate:(id)arg5 replyToken:(id)arg6;
 - (void)_handleDidPlayLightsAndSirens:(_Bool)arg1 forBulletin:(id)arg2 inPhoneSection:(id)arg3 finalReply:(_Bool)arg4 replyToken:(id)arg5;
-- (void)observer:(id)arg1 prepareAttachment:(id)arg2 beforeDeliveringBulletin:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (struct CGSize)observer:(id)arg1 composedImageSizeForAttachment:(id)arg2 bulletin:(id)arg3 thumbnailSize:(struct CGSize)arg4;
-- (void)observer:(id)arg1 composedImageFromThumbnailData:(id)arg2 forAttachment:(id)arg3 bulletin:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (_Bool)observerShouldFetchAttachmentSizeBeforeBulletinDelivery:(id)arg1;
-- (_Bool)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(id)arg1;
-- (id)observer:(id)arg1 thumbnailSizeConstraintsForAttachment:(id)arg2 bulletin:(id)arg3;
 - (void)_performRemoveBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
 - (void)observer:(id)arg1 removeBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
 - (void)_performModifyBulletin:(id)arg1 forFeed:(unsigned long long)arg2;

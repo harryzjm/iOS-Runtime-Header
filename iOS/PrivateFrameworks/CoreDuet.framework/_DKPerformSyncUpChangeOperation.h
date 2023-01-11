@@ -20,13 +20,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)endPerfMetrics;
-- (void)startPerfMetrics;
 - (void)endOperation;
-- (void)performSyncUpChange;
 - (void)main;
 - (_Bool)isAsynchronous;
-- (id)initWithParent:(id)arg1 localStorage:(id)arg2 transport:(id)arg3 policy:(id)arg4 type:(id)arg5 insertedEvents:(id)arg6 deletedEvents:(id)arg7;
 
 @end
 

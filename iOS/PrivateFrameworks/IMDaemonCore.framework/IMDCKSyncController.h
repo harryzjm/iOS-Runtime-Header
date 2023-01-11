@@ -23,6 +23,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain) NSTimer *reloadTimer; // @synthesize reloadTimer=_reloadTimer;
 @property _Bool shouldReloadConversations; // @synthesize shouldReloadConversations=_shouldReloadConversations;
 @property(retain, nonatomic) NSDate *lastRestoreFailureLogDumpDate; // @synthesize lastRestoreFailureLogDumpDate=_lastRestoreFailureLogDumpDate;
@@ -31,7 +32,6 @@
 @property(retain, nonatomic) IMTimer *nightlySyncTimer; // @synthesize nightlySyncTimer=_nightlySyncTimer;
 @property(retain, nonatomic) NSTimer *longRunningSyncTimer; // @synthesize longRunningSyncTimer=_longRunningSyncTimer;
 @property(retain, nonatomic) NSDate *syncStartDate; // @synthesize syncStartDate=_syncStartDate;
-- (void).cxx_destruct;
 - (_Bool)logCloudKitAnalytics;
 - (void)_submitCloudKitAnalyticWithOperationGroupName:(id)arg1 analyticDictionary:(id)arg2;
 - (_Bool)_serverDeniesDailySyncStateAnalytics;
@@ -63,7 +63,6 @@
 - (void)_callSyncWithCompletion:(CDUnknownBlockType)arg1 activity:(id)arg2;
 - (void)_syncChatsWithActivity:(id)arg1;
 - (id)_sharedDatabaseManager;
-- (_Bool)_isSyncingToStingRay;
 - (void)syncDeletesToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_beginPeriodicSyncWithActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 attemptCount:(unsigned long long)arg3 useStingRay:(_Bool)arg4 syncChatsCompletionBlock:(CDUnknownBlockType)arg5;
 - (void)syncAttachmentMetadataFirstSyncWithActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -105,6 +104,7 @@
 - (double)_minimumChatComingOnlineSyncInterval;
 - (_Bool)_serverDoesNotAllowComingBackOnlineChatSync;
 - (void)beginFullSyncPeriodic:(_Bool)arg1 deviceConditionsToCheck:(unsigned long long)arg2 activity:(id)arg3;
+- (_Bool)shouldMarkAllIncompatibleMessagesForDeletion;
 - (void)beginChatSyncPeriodic:(_Bool)arg1 activity:(id)arg2;
 - (void)beginInitialSync;
 - (void)performInitialSyncOnFirstConnectionOfImagentIfNeeded;

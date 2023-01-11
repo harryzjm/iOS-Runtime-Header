@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDateComponents, NSDictionary, NSString, _HKMedicalIDData;
+@class HDDemoDataSleepParameters, NSArray, NSDate, NSDateComponents, NSDictionary, NSString, _HKMedicalIDData;
 
 @interface HDDemoDataPerson : NSObject
 {
@@ -20,12 +20,13 @@
     NSDate *_birthDate;
     long long _biologicalSex;
     long long _bloodType;
-    long long _fitzpatricSkinType;
+    long long _fitzpatrickSkinType;
     double _timeIncrement;
     double _timeIncrementDuringExercise;
     double _dawnTime;
     double _sunsetTime;
     double _genericSampleTimeNoiseStdDev;
+    long long _profileType;
     double _uvIndexSampleFrequency;
     double _waistCircumferenceInInches;
     double _wristCircumferenceInInches;
@@ -66,8 +67,12 @@
     double _bodyTempSampleFrequency;
     double _bodyTempSampleNoiseStdDev;
     double _oxygenSaturationMean;
-    double _oxygenSaturationSampleFrequency;
     double _oxygenSaturationStdDev;
+    double _oxygenSaturationMeanAtElevation;
+    double _oxygenSaturationStdDevAtElevation;
+    double _oxygenSaturationMeasuringSuccessRate;
+    double _oxygenSaturationMeasuringSuccessRateDuringSleep;
+    double _oxygenSaturationSampleFrequency;
     double _peripheralPerfusionIndexMean;
     double _peripheralPerfusionIndexSampleFrequency;
     double _peripheralPerfusionIndexStdDev;
@@ -78,6 +83,12 @@
     double _ovulationIndeterminateProbabilityPercentage;
     double _fitzpatrickSkinTypeSampleTime;
     long long _fitzpatrickSkinTypeScore;
+    double _toothbrushingDurationMean;
+    double _toothbrushingDurationMeanStdDev;
+    double _handwashingDurationMean;
+    double _handwashingDurationMeanStdDev;
+    double _handwashingSampleFrequency;
+    double _handwashingSampleFrequencyStdDev;
     double _activeCaloriesSampleFrequency;
     double _restingCaloriesSampleFrequency;
     double _stepsSampleFrequency;
@@ -102,6 +113,35 @@
     double _flightsClimbedSampleTime;
     double _flightsClimbedSampleFrequency;
     double _flightsClimbedSampleFrequencyStdDev;
+    double _rehabLogarithmicConstant;
+    double _walkingSpeedMean;
+    double _walkingSpeedStdDev;
+    double _walkingSpeedSampleFrequency;
+    double _walkingSpeedSampleFrequencyStdDev;
+    double _stepLengthMean;
+    double _stepLengthStdDev;
+    double _stepLengthSampleFrequency;
+    double _stepLengthSampleFrequencyStdDev;
+    double _asymmetryPercentageMean;
+    double _asymmetryPercentageStdDev;
+    double _asymmetryPercentageSampleFrequency;
+    double _asymmetryPercentageSampleFrequencyStdDev;
+    double _doubleSupportPercentageMean;
+    double _doubleSupportPercentageStdDev;
+    double _doubleSupportPercentageSampleFrequency;
+    double _doubleSupportPercentageSampleFrequencyStdDev;
+    double _sixMinuteWalkTestDistanceMean;
+    double _sixMinuteWalkTestDistanceStdDev;
+    double _sixMinuteWalkTestDistanceSampleFrequency;
+    double _sixMinuteWalkTestDistanceSampleFrequencyStdDev;
+    double _stairAscentSpeedMean;
+    double _stairAscentSpeedStdDev;
+    double _stairAscentSpeedSampleFrequency;
+    double _stairAscentSpeedSampleFrequencyStdDev;
+    double _stairDescentSpeedMean;
+    double _stairDescentSpeedStdDev;
+    double _stairDescentSpeedSampleFrequency;
+    double _stairDescentSpeedSampleFrequencyStdDev;
     double _breakfastTime;
     double _lunchTime;
     double _snackTime;
@@ -116,10 +156,10 @@
     double _waterConsumedStdDev;
     double _waterConsumedIntervalMean;
     double _waterConsumedIntervalStdDev;
-    double _wakeUpTime;
+    HDDemoDataSleepParameters *_weekdaySleepParameters;
+    HDDemoDataSleepParameters *_weekendSleepParameters;
     double _wakeUpTimeNoiseStdDev;
-    double _bedTime;
-    double _bedTimeNoiseStdDev;
+    double _bedtimeNoiseStdDev;
     double _inBedTimeStdDev;
     unsigned long long _numSleepInterruptions;
     double _fallSampleFrequency;
@@ -143,6 +183,7 @@
 }
 
 + (id)defaultPersonWithBiologicalSex:(long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _HKMedicalIDData *medicalIDData; // @synthesize medicalIDData=_medicalIDData;
 @property(nonatomic) long long resultsTrackingType; // @synthesize resultsTrackingType=_resultsTrackingType;
 @property(nonatomic) long long nutritionTrackingType; // @synthesize nutritionTrackingType=_nutritionTrackingType;
@@ -164,10 +205,10 @@
 @property(nonatomic) double fallSampleFrequency; // @synthesize fallSampleFrequency=_fallSampleFrequency;
 @property(nonatomic) unsigned long long numSleepInterruptions; // @synthesize numSleepInterruptions=_numSleepInterruptions;
 @property(nonatomic) double inBedTimeStdDev; // @synthesize inBedTimeStdDev=_inBedTimeStdDev;
-@property(nonatomic) double bedTimeNoiseStdDev; // @synthesize bedTimeNoiseStdDev=_bedTimeNoiseStdDev;
-@property(nonatomic) double bedTime; // @synthesize bedTime=_bedTime;
+@property(nonatomic) double bedtimeNoiseStdDev; // @synthesize bedtimeNoiseStdDev=_bedtimeNoiseStdDev;
 @property(nonatomic) double wakeUpTimeNoiseStdDev; // @synthesize wakeUpTimeNoiseStdDev=_wakeUpTimeNoiseStdDev;
-@property(nonatomic) double wakeUpTime; // @synthesize wakeUpTime=_wakeUpTime;
+@property(retain, nonatomic) HDDemoDataSleepParameters *weekendSleepParameters; // @synthesize weekendSleepParameters=_weekendSleepParameters;
+@property(retain, nonatomic) HDDemoDataSleepParameters *weekdaySleepParameters; // @synthesize weekdaySleepParameters=_weekdaySleepParameters;
 @property(nonatomic) double waterConsumedIntervalStdDev; // @synthesize waterConsumedIntervalStdDev=_waterConsumedIntervalStdDev;
 @property(nonatomic) double waterConsumedIntervalMean; // @synthesize waterConsumedIntervalMean=_waterConsumedIntervalMean;
 @property(nonatomic) double waterConsumedStdDev; // @synthesize waterConsumedStdDev=_waterConsumedStdDev;
@@ -182,6 +223,35 @@
 @property(nonatomic) double snackTime; // @synthesize snackTime=_snackTime;
 @property(nonatomic) double lunchTime; // @synthesize lunchTime=_lunchTime;
 @property(nonatomic) double breakfastTime; // @synthesize breakfastTime=_breakfastTime;
+@property(nonatomic) double stairDescentSpeedSampleFrequencyStdDev; // @synthesize stairDescentSpeedSampleFrequencyStdDev=_stairDescentSpeedSampleFrequencyStdDev;
+@property(nonatomic) double stairDescentSpeedSampleFrequency; // @synthesize stairDescentSpeedSampleFrequency=_stairDescentSpeedSampleFrequency;
+@property(nonatomic) double stairDescentSpeedStdDev; // @synthesize stairDescentSpeedStdDev=_stairDescentSpeedStdDev;
+@property(nonatomic) double stairDescentSpeedMean; // @synthesize stairDescentSpeedMean=_stairDescentSpeedMean;
+@property(nonatomic) double stairAscentSpeedSampleFrequencyStdDev; // @synthesize stairAscentSpeedSampleFrequencyStdDev=_stairAscentSpeedSampleFrequencyStdDev;
+@property(nonatomic) double stairAscentSpeedSampleFrequency; // @synthesize stairAscentSpeedSampleFrequency=_stairAscentSpeedSampleFrequency;
+@property(nonatomic) double stairAscentSpeedStdDev; // @synthesize stairAscentSpeedStdDev=_stairAscentSpeedStdDev;
+@property(nonatomic) double stairAscentSpeedMean; // @synthesize stairAscentSpeedMean=_stairAscentSpeedMean;
+@property(nonatomic) double sixMinuteWalkTestDistanceSampleFrequencyStdDev; // @synthesize sixMinuteWalkTestDistanceSampleFrequencyStdDev=_sixMinuteWalkTestDistanceSampleFrequencyStdDev;
+@property(nonatomic) double sixMinuteWalkTestDistanceSampleFrequency; // @synthesize sixMinuteWalkTestDistanceSampleFrequency=_sixMinuteWalkTestDistanceSampleFrequency;
+@property(nonatomic) double sixMinuteWalkTestDistanceStdDev; // @synthesize sixMinuteWalkTestDistanceStdDev=_sixMinuteWalkTestDistanceStdDev;
+@property(nonatomic) double sixMinuteWalkTestDistanceMean; // @synthesize sixMinuteWalkTestDistanceMean=_sixMinuteWalkTestDistanceMean;
+@property(nonatomic) double doubleSupportPercentageSampleFrequencyStdDev; // @synthesize doubleSupportPercentageSampleFrequencyStdDev=_doubleSupportPercentageSampleFrequencyStdDev;
+@property(nonatomic) double doubleSupportPercentageSampleFrequency; // @synthesize doubleSupportPercentageSampleFrequency=_doubleSupportPercentageSampleFrequency;
+@property(nonatomic) double doubleSupportPercentageStdDev; // @synthesize doubleSupportPercentageStdDev=_doubleSupportPercentageStdDev;
+@property(nonatomic) double doubleSupportPercentageMean; // @synthesize doubleSupportPercentageMean=_doubleSupportPercentageMean;
+@property(nonatomic) double asymmetryPercentageSampleFrequencyStdDev; // @synthesize asymmetryPercentageSampleFrequencyStdDev=_asymmetryPercentageSampleFrequencyStdDev;
+@property(nonatomic) double asymmetryPercentageSampleFrequency; // @synthesize asymmetryPercentageSampleFrequency=_asymmetryPercentageSampleFrequency;
+@property(nonatomic) double asymmetryPercentageStdDev; // @synthesize asymmetryPercentageStdDev=_asymmetryPercentageStdDev;
+@property(nonatomic) double asymmetryPercentageMean; // @synthesize asymmetryPercentageMean=_asymmetryPercentageMean;
+@property(nonatomic) double stepLengthSampleFrequencyStdDev; // @synthesize stepLengthSampleFrequencyStdDev=_stepLengthSampleFrequencyStdDev;
+@property(nonatomic) double stepLengthSampleFrequency; // @synthesize stepLengthSampleFrequency=_stepLengthSampleFrequency;
+@property(nonatomic) double stepLengthStdDev; // @synthesize stepLengthStdDev=_stepLengthStdDev;
+@property(nonatomic) double stepLengthMean; // @synthesize stepLengthMean=_stepLengthMean;
+@property(nonatomic) double walkingSpeedSampleFrequencyStdDev; // @synthesize walkingSpeedSampleFrequencyStdDev=_walkingSpeedSampleFrequencyStdDev;
+@property(nonatomic) double walkingSpeedSampleFrequency; // @synthesize walkingSpeedSampleFrequency=_walkingSpeedSampleFrequency;
+@property(nonatomic) double walkingSpeedStdDev; // @synthesize walkingSpeedStdDev=_walkingSpeedStdDev;
+@property(nonatomic) double walkingSpeedMean; // @synthesize walkingSpeedMean=_walkingSpeedMean;
+@property(nonatomic) double rehabLogarithmicConstant; // @synthesize rehabLogarithmicConstant=_rehabLogarithmicConstant;
 @property(nonatomic) double flightsClimbedSampleFrequencyStdDev; // @synthesize flightsClimbedSampleFrequencyStdDev=_flightsClimbedSampleFrequencyStdDev;
 @property(nonatomic) double flightsClimbedSampleFrequency; // @synthesize flightsClimbedSampleFrequency=_flightsClimbedSampleFrequency;
 @property(nonatomic) double flightsClimbedSampleTime; // @synthesize flightsClimbedSampleTime=_flightsClimbedSampleTime;
@@ -206,6 +276,12 @@
 @property(nonatomic) double stepsSampleFrequency; // @synthesize stepsSampleFrequency=_stepsSampleFrequency;
 @property(nonatomic) double restingCaloriesSampleFrequency; // @synthesize restingCaloriesSampleFrequency=_restingCaloriesSampleFrequency;
 @property(nonatomic) double activeCaloriesSampleFrequency; // @synthesize activeCaloriesSampleFrequency=_activeCaloriesSampleFrequency;
+@property(nonatomic) double handwashingSampleFrequencyStdDev; // @synthesize handwashingSampleFrequencyStdDev=_handwashingSampleFrequencyStdDev;
+@property(nonatomic) double handwashingSampleFrequency; // @synthesize handwashingSampleFrequency=_handwashingSampleFrequency;
+@property(nonatomic) double handwashingDurationMeanStdDev; // @synthesize handwashingDurationMeanStdDev=_handwashingDurationMeanStdDev;
+@property(nonatomic) double handwashingDurationMean; // @synthesize handwashingDurationMean=_handwashingDurationMean;
+@property(nonatomic) double toothbrushingDurationMeanStdDev; // @synthesize toothbrushingDurationMeanStdDev=_toothbrushingDurationMeanStdDev;
+@property(nonatomic) double toothbrushingDurationMean; // @synthesize toothbrushingDurationMean=_toothbrushingDurationMean;
 @property(nonatomic) long long fitzpatrickSkinTypeScore; // @synthesize fitzpatrickSkinTypeScore=_fitzpatrickSkinTypeScore;
 @property(nonatomic) double fitzpatrickSkinTypeSampleTime; // @synthesize fitzpatrickSkinTypeSampleTime=_fitzpatrickSkinTypeSampleTime;
 @property(nonatomic) double ovulationIndeterminateProbabilityPercentage; // @synthesize ovulationIndeterminateProbabilityPercentage=_ovulationIndeterminateProbabilityPercentage;
@@ -217,8 +293,12 @@
 @property(nonatomic) double peripheralPerfusionIndexStdDev; // @synthesize peripheralPerfusionIndexStdDev=_peripheralPerfusionIndexStdDev;
 @property(nonatomic) double peripheralPerfusionIndexSampleFrequency; // @synthesize peripheralPerfusionIndexSampleFrequency=_peripheralPerfusionIndexSampleFrequency;
 @property(nonatomic) double peripheralPerfusionIndexMean; // @synthesize peripheralPerfusionIndexMean=_peripheralPerfusionIndexMean;
-@property(nonatomic) double oxygenSaturationStdDev; // @synthesize oxygenSaturationStdDev=_oxygenSaturationStdDev;
 @property(nonatomic) double oxygenSaturationSampleFrequency; // @synthesize oxygenSaturationSampleFrequency=_oxygenSaturationSampleFrequency;
+@property(nonatomic) double oxygenSaturationMeasuringSuccessRateDuringSleep; // @synthesize oxygenSaturationMeasuringSuccessRateDuringSleep=_oxygenSaturationMeasuringSuccessRateDuringSleep;
+@property(nonatomic) double oxygenSaturationMeasuringSuccessRate; // @synthesize oxygenSaturationMeasuringSuccessRate=_oxygenSaturationMeasuringSuccessRate;
+@property(nonatomic) double oxygenSaturationStdDevAtElevation; // @synthesize oxygenSaturationStdDevAtElevation=_oxygenSaturationStdDevAtElevation;
+@property(nonatomic) double oxygenSaturationMeanAtElevation; // @synthesize oxygenSaturationMeanAtElevation=_oxygenSaturationMeanAtElevation;
+@property(nonatomic) double oxygenSaturationStdDev; // @synthesize oxygenSaturationStdDev=_oxygenSaturationStdDev;
 @property(nonatomic) double oxygenSaturationMean; // @synthesize oxygenSaturationMean=_oxygenSaturationMean;
 @property(nonatomic) double bodyTempSampleNoiseStdDev; // @synthesize bodyTempSampleNoiseStdDev=_bodyTempSampleNoiseStdDev;
 @property(nonatomic) double bodyTempSampleFrequency; // @synthesize bodyTempSampleFrequency=_bodyTempSampleFrequency;
@@ -259,13 +339,14 @@
 @property(nonatomic) double wristCircumferenceInInches; // @synthesize wristCircumferenceInInches=_wristCircumferenceInInches;
 @property(nonatomic) double waistCircumferenceInInches; // @synthesize waistCircumferenceInInches=_waistCircumferenceInInches;
 @property(nonatomic) double uvIndexSampleFrequency; // @synthesize uvIndexSampleFrequency=_uvIndexSampleFrequency;
+@property(nonatomic) long long profileType; // @synthesize profileType=_profileType;
 @property(nonatomic) _Bool createHighFidelityData; // @synthesize createHighFidelityData=_createHighFidelityData;
 @property(nonatomic) double genericSampleTimeNoiseStdDev; // @synthesize genericSampleTimeNoiseStdDev=_genericSampleTimeNoiseStdDev;
 @property(nonatomic) double sunsetTime; // @synthesize sunsetTime=_sunsetTime;
 @property(nonatomic) double dawnTime; // @synthesize dawnTime=_dawnTime;
 @property(nonatomic) double timeIncrementDuringExercise; // @synthesize timeIncrementDuringExercise=_timeIncrementDuringExercise;
 @property(nonatomic) double timeIncrement; // @synthesize timeIncrement=_timeIncrement;
-@property(nonatomic) long long fitzpatricSkinType; // @synthesize fitzpatricSkinType=_fitzpatricSkinType;
+@property(nonatomic) long long fitzpatrickSkinType; // @synthesize fitzpatrickSkinType=_fitzpatrickSkinType;
 @property(nonatomic) long long bloodType; // @synthesize bloodType=_bloodType;
 @property(nonatomic) long long biologicalSex; // @synthesize biologicalSex=_biologicalSex;
 @property(retain, nonatomic) NSDate *birthDate; // @synthesize birthDate=_birthDate;
@@ -273,7 +354,6 @@
 @property(copy, nonatomic) NSString *personDescription; // @synthesize personDescription=_personDescription;
 @property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
-- (void).cxx_destruct;
 - (void)updateMedicalIDData;
 - (void)setHighFidelityGeneration:(_Bool)arg1;
 - (void)applyProfileType:(long long)arg1;

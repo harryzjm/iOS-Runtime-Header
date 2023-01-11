@@ -4,25 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
 @protocol MTMediaActivityEventHandlerDelegate;
 
 @interface MTMediaActivityEventHandler
 {
-    NSString *_defaultEventType;
-    NSString *_defaultActionType;
 }
 
-@property(retain, nonatomic) NSString *defaultActionType; // @synthesize defaultActionType=_defaultActionType;
-@property(retain, nonatomic) NSString *defaultEventType; // @synthesize defaultEventType=_defaultEventType;
-- (void).cxx_destruct;
-- (id)actionType;
-- (id)eventType;
 - (id)eventVersion:(id)arg1;
 - (id)knownFields;
 - (id)metricsDataForStopActionWithPosition:(unsigned long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 startMetricsData:(id)arg5 eventData:(id)arg6;
 - (id)metricsDataForStartActionWithPosition:(unsigned long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
-- (id)initWithMetricsKit:(id)arg1 defaultEventType:(id)arg2 defaultActionType:(id)arg3;
+- (void)didCreateMetricsData:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) __weak id <MTMediaActivityEventHandlerDelegate> delegate; // @dynamic delegate;

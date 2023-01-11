@@ -11,43 +11,49 @@
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDProfile, NSDate, NSDictionary, NSHashTable, NSString;
-@protocol OS_dispatch_queue;
+@class HDProfile, HKObserverSet, NSDate, NSDictionary, NSString, _HKDelayedOperation;
+@protocol HDUserCharacteristicsProfileObserver, OS_dispatch_queue;
 
 @interface HDUserCharacteristicsManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDataObserver, HDDiagnosticObject>
 {
-    _Bool _shouldUpdateQuantityCharacteristics;
-    _Bool _needsUpdateAfterUnlock;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_observerQueue;
+    HKObserverSet<HDUserCharacteristicsProfileObserver> *_observers;
+    _Bool _shouldUpdateQuantityCharacteristics;
+    int _significantTimeChangeNotificationToken;
     NSDate *_userProfileLastUpdated;
     NSDictionary *_lastUserProfile;
-    NSHashTable *_observers;
+    _Bool _needsUpdateAfterUnlock;
+    _HKDelayedOperation *_updateOperation;
+    NSDate *_unitTest_currentDate;
 }
 
-@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property(nonatomic) _Bool needsUpdateAfterUnlock; // @synthesize needsUpdateAfterUnlock=_needsUpdateAfterUnlock;
-@property(copy, nonatomic) NSDictionary *lastUserProfile; // @synthesize lastUserProfile=_lastUserProfile;
-@property(retain, nonatomic) NSDate *userProfileLastUpdated; // @synthesize userProfileLastUpdated=_userProfileLastUpdated;
-@property(readonly, nonatomic) _Bool shouldUpdateQuantityCharacteristics; // @synthesize shouldUpdateQuantityCharacteristics=_shouldUpdateQuantityCharacteristics;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *unitTest_currentDate; // @synthesize unitTest_currentDate=_unitTest_currentDate;
+- (void)unitTest_setUpdateOperationDelay:(double)arg1;
 - (void)_queue_alertObserversDidUpdateUserProfile;
 - (void)removeProfileObserver:(id)arg1;
 - (void)addProfileObserver:(id)arg1;
+- (void)_unregisterTimeChangeNotifications;
+- (void)_registerForTimeChangeNotifications;
+- (void)didRecieveDayChangeNotification:(id)arg1;
 - (id)diagnosticDescription;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
 - (void)daemonReady:(id)arg1;
-- (id)_mostRecentSampleOfType:(id)arg1 error:(id *)arg2;
+- (id)_getCardioFitnessMedicationsStatusWithError:(id *)arg1;
+- (id)_mostRecentSampleOfType:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3;
+- (id)_mostRecentCategorySampleOfType:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3;
+- (id)_mostRecentQuantitySampleOfType:(id)arg1 error:(id *)arg2;
 - (void)_queue_updateQuantityCharacteristics;
 - (void)_queue_updateUserProfile;
-- (void)_queue_updateQuantityCharacteristicsAndUserProfileIfNeeded;
-- (void)_queue_updateQuantityCharacteristicsAndUserProfile;
+- (void)_queue_updateActivityMoveModeDefaultAndNotifyIfNecessary;
+- (void)_queue_updateActivityMoveModeCharacteristic;
+- (id)_activityMoveModeActiveDate;
+- (void)_queue_updateCharacteristicsAndUserProfileWithDelay;
+- (void)_queue_updateCharacteristicsAndUserProfileIfNeeded;
+- (void)_queue_updateCharacteristicsAndUserProfile;
 - (void)_userCharacteristicsDidChangeShouldUpdateUserProfile:(_Bool)arg1 shouldSync:(_Bool)arg2;
 - (double)restingCaloriesFromTotalCalories:(double)arg1 timeInterval:(double)arg2 authorizedToRead:(_Bool)arg3;
 - (_Bool)_setUserCharacteristic:(id)arg1 forType:(id)arg2 shouldInsertSample:(_Bool)arg3 updateProfileAndSync:(_Bool)arg4 error:(id *)arg5;

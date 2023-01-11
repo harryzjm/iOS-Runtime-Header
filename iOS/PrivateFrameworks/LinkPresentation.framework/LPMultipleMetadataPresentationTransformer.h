@@ -13,9 +13,11 @@
     NSArray *_metadata;
     NSDictionary *_summaryCounts;
     _Bool _hasOnlyFiles;
+    unsigned long long _preferredSizeClass;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long preferredSizeClass; // @synthesize preferredSizeClass=_preferredSizeClass;
 - (id)summaryMetadata;
 - (id)_summarySubtitle;
 - (id)summaryImages;

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary;
+#import <CloudKit/CKArchiveRecordsOperationCallbacks-Protocol.h>
 
-@interface CKArchiveRecordsOperation
+@class CKArchiveRecordsOperationInfo, NSArray, NSMutableDictionary;
+@protocol CKArchiveRecordsOperationCallbacks;
+
+@interface CKArchiveRecordsOperation <CKArchiveRecordsOperationCallbacks>
 {
     CDUnknownBlockType _recordArchivedBlock;
     CDUnknownBlockType _archiveRecordsCompletionBlock;
@@ -14,12 +17,13 @@
     NSMutableDictionary *_perItemErrors;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
 @property(copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleRecordArchivalForRecordID:(id)arg1 error:(id)arg2;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -29,6 +33,10 @@
 @property(copy, nonatomic) CDUnknownBlockType recordArchivedBlock; // @synthesize recordArchivedBlock=_recordArchivedBlock;
 - (id)initWithRecordIDs:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKArchiveRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKArchiveRecordsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

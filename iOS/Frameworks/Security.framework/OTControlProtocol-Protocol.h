@@ -7,8 +7,16 @@
 @class NSArray, NSData, NSError, NSString, OTJoiningConfiguration, OTOperationConfiguration, _SFECKeyPair;
 
 @protocol OTControlProtocol
+- (void)fetchUserControllableViewsSyncStatus:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)setUserControllableViewsSyncStatus:(NSString *)arg1 contextID:(NSString *)arg2 enabled:(_Bool)arg3 reply:(void (^)(_Bool, NSError *))arg4;
+- (void)invalidateEscrowCache:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)fetchEscrowRecords:(NSString *)arg1 contextID:(NSString *)arg2 forceFetch:(_Bool)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
+- (void)getCDPStatus:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(long long, NSError *))arg3;
+- (void)setCDPEnabled:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)refetchCKKSPolicy:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)tapToRadar:(NSString *)arg1 description:(NSString *)arg2 radar:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)postCDPFollowupResult:(_Bool)arg1 type:(NSString *)arg2 error:(NSError *)arg3 containerName:(NSString *)arg4 contextName:(NSString *)arg5 reply:(void (^)(NSError *))arg6;
-- (void)attemptSosUpgrade:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)waitForOctagonUpgrade:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)healthCheck:(NSString *)arg1 context:(NSString *)arg2 skipRateLimitingCheck:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
 - (void)joinWithRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)createRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
@@ -19,7 +27,7 @@
 - (void)removeFriendsInClique:(NSString *)arg1 context:(NSString *)arg2 peerIDs:(NSArray *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)leaveClique:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)establish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
-- (void)resetAndEstablish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)resetAndEstablish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 resetReason:(long long)arg4 reply:(void (^)(NSError *))arg5;
 - (void)startOctagonStateMachine:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)fetchTrustStatus:(NSString *)arg1 context:(NSString *)arg2 configuration:(OTOperationConfiguration *)arg3 reply:(void (^)(long long, NSString *, NSNumber *, _Bool, NSError *))arg4;
 - (void)fetchCliqueStatus:(NSString *)arg1 context:(NSString *)arg2 configuration:(OTOperationConfiguration *)arg3 reply:(void (^)(long long, NSError *))arg4;
@@ -28,7 +36,7 @@
 - (void)scrubBottledPeer:(NSString *)arg1 bottleID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)launchBottledPeer:(NSString *)arg1 bottleID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)preflightBottledPeer:(NSString *)arg1 dsid:(NSString *)arg2 reply:(void (^)(NSData *, NSString *, NSData *, NSError *))arg3;
-- (void)rpcJoinWithConfiguration:(OTJoiningConfiguration *)arg1 vouchData:(NSData *)arg2 vouchSig:(NSData *)arg3 preapprovedKeys:(NSArray *)arg4 reply:(void (^)(NSError *))arg5;
+- (void)rpcJoinWithConfiguration:(OTJoiningConfiguration *)arg1 vouchData:(NSData *)arg2 vouchSig:(NSData *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)rpcVoucherWithConfiguration:(OTJoiningConfiguration *)arg1 peerID:(NSString *)arg2 permanentInfo:(NSData *)arg3 permanentInfoSig:(NSData *)arg4 stableInfo:(NSData *)arg5 stableInfoSig:(NSData *)arg6 reply:(void (^)(NSData *, NSData *, NSError *))arg7;
 - (void)rpcPrepareIdentityAsApplicantWithConfiguration:(OTJoiningConfiguration *)arg1 reply:(void (^)(NSString *, NSData *, NSData *, NSData *, NSData *, NSError *))arg2;
 - (void)rpcEpochWithConfiguration:(OTJoiningConfiguration *)arg1 reply:(void (^)(unsigned long long, NSError *))arg2;

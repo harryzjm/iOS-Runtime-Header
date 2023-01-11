@@ -16,11 +16,11 @@
 }
 
 + (void)_prewarmForDevice:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) double maxZoomingIconDiameter; // @synthesize maxZoomingIconDiameter=_maxZoomingIconDiameter;
 @property(nonatomic) __weak UIView *handsView; // @synthesize handsView=_handsView;
 @property(nonatomic) __weak UIView *circleView; // @synthesize circleView=_circleView;
 @property(retain, nonatomic) NTKAnalogScene *analogScene; // @synthesize analogScene=_analogScene;
-- (void).cxx_destruct;
 - (void)_setupSceneHostViewIfNecessary;
 - (void)_setContentViewsOpaque:(_Bool)arg1;
 @property(nonatomic) _Bool shouldRasterizeBackground;
@@ -41,11 +41,11 @@
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureForEditMode:(long long)arg1;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(_Bool)arg2;
 - (void)_applyFrozen;
 - (struct CGSize)_sceneSize;
 - (_Bool)_needsForegroundContainerView;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
-- (void)setEditView:(id)arg1;
 - (void)_handleLocaleDidChange;
 - (_Bool)_shouldFreezeSceneForEditMode:(long long)arg1;
 - (void)_endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;

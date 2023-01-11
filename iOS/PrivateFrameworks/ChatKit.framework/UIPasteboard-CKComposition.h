@@ -9,7 +9,7 @@
 @interface UIPasteboard (CKComposition)
 + (id)__ck_pasteboardTypeListRTFD;
 - (id)__ck_mediaObjectManager;
-- (id)__ck_composition;
+- (void)__ck_compositionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)__ck_canCreateComposition;
 @end
 

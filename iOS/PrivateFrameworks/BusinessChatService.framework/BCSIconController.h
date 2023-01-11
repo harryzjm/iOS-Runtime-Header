@@ -6,11 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@interface BCSIconController : NSObject
+#import <BusinessChatService/BCSIconControllerProtocol-Protocol.h>
+
+@class NSString;
+
+@interface BCSIconController : NSObject <BCSIconControllerProtocol>
 {
 }
 
 - (void)fetchSquareIconDataForBusinessItem:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

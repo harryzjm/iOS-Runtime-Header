@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_regionOfInterestConfigurations;
 }
 
++ (id)createCompoundConfigurationHashKeyForRequest:(id)arg1 compoundRequestRevision:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (unsigned long long)count;
 - (id)allConfigurations;

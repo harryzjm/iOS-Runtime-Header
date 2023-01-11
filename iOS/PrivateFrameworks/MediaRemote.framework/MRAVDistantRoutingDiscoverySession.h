@@ -26,18 +26,21 @@
 
 + (id)clientInterface;
 + (id)serviceInterface;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *distantExternalDevices; // @synthesize distantExternalDevices=_distantExternalDevices;
 @property(retain, nonatomic) NSXPCConnection *hostedRoutingSessionConnection; // @synthesize hostedRoutingSessionConnection=_hostedRoutingSessionConnection;
-- (void).cxx_destruct;
+- (_Bool)_shouldAddLocalEndpoint;
 - (void)_reloadAvailableDistantOutputDevices;
 - (void)_reloadAvailableDistantOutputDevicesWithOutputDevices:(id)arg1;
 - (void)_reloadAvailableDistantEndpoints;
 - (void)_reloadAvailableDistantEndpointsWithEndpoints:(id)arg1;
+- (void)_reloadHostedRoutingServiceEndpointFeatures;
 - (void)_reloadHostedRoutingServiceDiscoveryMode;
 - (id)_hostedRoutingConnection;
 - (void)_initializeHostedRoutingConnectionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)availableOutputDevicesDidChange:(id)arg1;
 - (void)availableEndpointsDidChange:(id)arg1;
+@property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSArray *distantOutputDevices;
 @property(retain, nonatomic) NSArray *distantEndpoints;
 - (void)setRoutingContextUID:(id)arg1;
@@ -45,15 +48,15 @@
 - (id)availableOutputDevices;
 - (id)availableEndpoints;
 - (_Bool)devicePresenceDetected;
+- (void)setEndpointFeatures:(unsigned int)arg1;
 - (void)setDiscoveryMode:(unsigned int)arg1;
 - (unsigned int)discoveryMode;
 - (unsigned int)endpointFeatures;
 - (void)dealloc;
-- (id)initWithEndpointFeatures:(unsigned int)arg1 enableThrottling:(_Bool)arg2;
+- (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

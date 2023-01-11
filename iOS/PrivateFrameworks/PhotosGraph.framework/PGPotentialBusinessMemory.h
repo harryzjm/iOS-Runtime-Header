@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableSet, NSString, PGGraphNode;
+@class NSMutableSet, NSString, PGGraphBusinessNode;
 
 @interface PGPotentialBusinessMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    PGGraphNode *_businessNode;
+    PGGraphBusinessNode *_businessNode;
     long long _year;
 }
 
-@property(readonly) long long year; // @synthesize year=_year;
-@property(readonly) PGGraphNode *businessNode; // @synthesize businessNode=_businessNode;
 - (void).cxx_destruct;
+@property(readonly) long long year; // @synthesize year=_year;
+@property(readonly) PGGraphBusinessNode *businessNode; // @synthesize businessNode=_businessNode;
 - (void)addMomentNode:(id)arg1;
 @property(readonly) NSString *business;
 - (id)initWithBusinessNode:(id)arg1 year:(long long)arg2;

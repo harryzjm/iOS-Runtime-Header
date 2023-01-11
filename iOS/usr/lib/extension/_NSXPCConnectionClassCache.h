@@ -15,9 +15,6 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_cache;
 }
 
-- (void)clear;
-- (void)addClass:(Class)arg1;
-- (_Bool)containsClass:(Class)arg1;
 - (void)dealloc;
 - (id)init;
 

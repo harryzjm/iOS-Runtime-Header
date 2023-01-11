@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFAggregatedCharacteristicValueSource-Protocol.h>
+#import <Home/HFLightProfileAggregatedValueSource-Protocol.h>
 
 @class HFServiceDescriptor, NSDictionary, NSSet, NSString;
 @protocol HFCharacteristicValueSource;
 
-@interface HFSimpleAggregatedCharacteristicValueSource : NSObject <HFAggregatedCharacteristicValueSource>
+@interface HFSimpleAggregatedCharacteristicValueSource : NSObject <HFLightProfileAggregatedValueSource, HFAggregatedCharacteristicValueSource>
 {
     NSSet *_allServices;
     NSSet *_characteristics;
@@ -21,10 +22,10 @@
 }
 
 + (id)na_identity;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *characteristicsByType; // @synthesize characteristicsByType=_characteristicsByType;
 @property(readonly, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 @property(readonly, nonatomic) HFServiceDescriptor *primaryServiceDescriptor; // @synthesize primaryServiceDescriptor=_primaryServiceDescriptor;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)commitTransactionWithReason:(id)arg1;
@@ -42,6 +43,11 @@
 - (id)initWithValueSource:(id)arg1 characteristics:(id)arg2 primaryServiceDescriptor:(id)arg3;
 - (id)initWithValueSource:(id)arg1 services:(id)arg2 primaryServiceDescriptor:(id)arg3;
 - (id)init;
+- (void)fetchNaturalLightColorTemperatureForBrightness:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)writeNaturalLightEnabledState:(_Bool)arg1;
+- (_Bool)isNaturalLightingEnabled;
+- (_Bool)isNaturalLightingSupported;
+@property(readonly, nonatomic) NSSet *lightProfiles;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

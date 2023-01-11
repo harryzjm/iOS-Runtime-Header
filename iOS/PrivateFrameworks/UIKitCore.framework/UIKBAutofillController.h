@@ -20,12 +20,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (unsigned long long)translateToTextInputAutofillMode:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldSaveAutofill; // @synthesize shouldSaveAutofill=_shouldSaveAutofill;
 @property(copy, nonatomic) UIColor *textFieldOrigColor; // @synthesize textFieldOrigColor=_textFieldOrigColor;
 @property(copy, nonatomic) NSMutableDictionary *fallbackAutofillGroup; // @synthesize fallbackAutofillGroup=_fallbackAutofillGroup;
 @property(readonly, retain, nonatomic) NSMutableDictionary *autofillGroup; // @synthesize autofillGroup=_autofillGroup;
 @property(nonatomic) long long delegateNeedsAutofillMode; // @synthesize delegateNeedsAutofillMode=_delegateNeedsAutofillMode;
-- (void).cxx_destruct;
 - (void)removeTemporaryTextColorFromTextField:(id)arg1;
 - (void)addTemporaryTextColorToTextField:(id)arg1;
 - (void)enumeratePasswordFieldsUsingBlock:(CDUnknownBlockType)arg1;
@@ -45,10 +45,18 @@ __attribute__((visibility("hidden")))
 - (void)clearAutofillGroup;
 - (long long)_needAutofillCandidate:(id)arg1 delegateAsResponder:(id)arg2;
 - (_Bool)signupHintForUsername:(id)arg1 password:(id)arg2 responder:(id)arg3;
+- (long long)contactAutofillModeWithAutofillGroup:(id)arg1 responders:(id)arg2;
 - (long long)signUpSignalFromNavBarItem:(id)arg1;
 - (long long)signUpSignalFromViewControllerHierarchy:(id)arg1;
 - (long long)signUpSignalFromButton:(id)arg1;
 - (long long)containsIndicationInText:(id)arg1 withAccessibilityHints:(_Bool)arg2;
+- (id)textSignalsForResponder:(id)arg1;
+- (id)processLocalizedString:(id)arg1;
+- (id)emailKeywordSet;
+- (id)phoneKeywordSet;
+- (id)addressKeywordSet;
+- (id)searchKeywordSet;
+- (id)contactAutoFillKeywordsForKey:(id)arg1 value:(id)arg2 localizedKeywords:(id)arg3;
 - (id)accessibilityLoginKeywordList;
 - (id)accessibilitySignupKeywordList;
 - (id)loginKeywordList;

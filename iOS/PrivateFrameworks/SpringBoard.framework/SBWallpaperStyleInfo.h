@@ -8,18 +8,18 @@
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 
-@class NSString, SBWallpaperEffectView;
+@class NSString, SBWallpaperEffectViewBase;
 
 @interface SBWallpaperStyleInfo : NSObject <BSDescriptionProviding>
 {
     CDStruct_e838e30c _priorityInfo[12];
-    SBWallpaperEffectView *_wallpaperEffectView;
+    SBWallpaperEffectViewBase *_wallpaperEffectView;
     CDStruct_059c2b36 _styleTransitionState;
 }
 
-@property(nonatomic) CDStruct_059c2b36 styleTransitionState; // @synthesize styleTransitionState=_styleTransitionState;
-@property(retain, nonatomic) SBWallpaperEffectView *wallpaperEffectView; // @synthesize wallpaperEffectView=_wallpaperEffectView;
 - (void).cxx_destruct;
+@property(nonatomic) CDStruct_059c2b36 styleTransitionState; // @synthesize styleTransitionState=_styleTransitionState;
+@property(retain, nonatomic) SBWallpaperEffectViewBase *wallpaperEffectView; // @synthesize wallpaperEffectView=_wallpaperEffectView;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

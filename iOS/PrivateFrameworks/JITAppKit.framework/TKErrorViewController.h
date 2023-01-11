@@ -8,6 +8,7 @@
 
 @class NSString, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface TKErrorViewController : UIViewController
 {
     UILabel *_label;
@@ -15,8 +16,8 @@
 }
 
 + (id)viewControllerForMessage:(id)arg1;
-@property(copy, nonatomic) NSString *message; // @synthesize message=_message;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *message; // @synthesize message=_message;
 - (void)viewDidLoad;
 - (void)loadView;
 

@@ -36,7 +36,6 @@
 - (void)setDomain:(id)arg1;
 - (void)setTarget:(id)arg1;
 - (void)dealloc;
-- (id)_initWithManager:(id)arg1 configurator:(CDUnknownBlockType)arg2;
 - (id)init;
 
 // Remaining properties

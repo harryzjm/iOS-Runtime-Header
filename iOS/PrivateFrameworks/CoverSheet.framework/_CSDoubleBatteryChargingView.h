@@ -31,6 +31,7 @@
 - (double)_batteryTopPadding;
 - (double)_spaceBetweenBatteryImages;
 - (void)layoutSubviews;
+- (void)performAnimation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setSecondaryBatteryText:(id)arg1 forBattery:(id)arg2;
 - (void)setPrimaryBatteryText:(id)arg1 forBattery:(id)arg2;
 - (void)setLegibilitySettings:(id)arg1;

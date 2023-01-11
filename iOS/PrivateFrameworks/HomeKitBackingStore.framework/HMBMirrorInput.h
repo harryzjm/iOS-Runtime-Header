@@ -18,16 +18,15 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property(readonly, nonatomic) HMBLocalSQLContextInputBlock *block; // @synthesize block=_block;
 @property(readonly, nonatomic) __weak HMBLocalZone *localZone; // @synthesize localZone=_localZone;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (id)abort;
 - (id)commitWithOptions:(id)arg1 error:(id *)arg2;
 - (id)removeModelWithExternalID:(id)arg1;
 - (id)removeModelWithModelID:(id)arg1;
-- (id)updateModelData:(id)arg1 modelEncoding:(unsigned long long)arg2 externalID:(id)arg3 externalData:(id)arg4;
 - (id)updateModel:(id)arg1 externalID:(id)arg2 externalData:(id)arg3;
 - (void)dealloc;
 - (id)initWithLocalZone:(id)arg1 block:(id)arg2;

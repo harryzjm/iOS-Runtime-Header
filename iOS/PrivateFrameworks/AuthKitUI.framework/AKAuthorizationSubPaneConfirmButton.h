@@ -6,7 +6,7 @@
 
 #import <AuthKitUI/LAUIAuthenticationDelegate-Protocol.h>
 
-@class AKAuthorizationButton, AKAuthorizationPaneContext, LAUIAuthenticationView, NSObject, NSString, UILabel, UIStackView, UIView;
+@class AKAuthorizationButton, AKAuthorizationPaneContext, AKAuthorizationPresentationContext, LAUIAuthenticationView, NSObject, NSString, UILabel, UIStackView, UIView;
 @protocol AKAuthorizationSubPaneConfirmButtonDelegate, OS_dispatch_group;
 
 @interface AKAuthorizationSubPaneConfirmButton <LAUIAuthenticationDelegate>
@@ -19,6 +19,7 @@
     AKAuthorizationButton *_authorizationButton;
     id <AKAuthorizationSubPaneConfirmButtonDelegate> _delegate;
     AKAuthorizationPaneContext *_context;
+    AKAuthorizationPresentationContext *_presentationContext;
     UIStackView *_mainStackView;
     UIView *_authorizationButtonContainer;
     UILabel *_bioLabel;
@@ -26,17 +27,18 @@
 }
 
 + (id)_createMainStackView;
+- (void).cxx_destruct;
 @property(retain, nonatomic) LAUIAuthenticationView *bioView; // @synthesize bioView=_bioView;
 @property(retain, nonatomic) UILabel *bioLabel; // @synthesize bioLabel=_bioLabel;
 @property _Bool canPerformBiometricValidation; // @synthesize canPerformBiometricValidation=_canPerformBiometricValidation;
 @property _Bool hasTouchIDOnly; // @synthesize hasTouchIDOnly=_hasTouchIDOnly;
 @property(readonly, nonatomic) UIView *authorizationButtonContainer; // @synthesize authorizationButtonContainer=_authorizationButtonContainer;
 @property(retain, nonatomic) UIStackView *mainStackView; // @synthesize mainStackView=_mainStackView;
+@property(retain, nonatomic) AKAuthorizationPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(retain, nonatomic) AKAuthorizationPaneContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <AKAuthorizationSubPaneConfirmButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) AKAuthorizationButton *authorizationButton; // @synthesize authorizationButton=_authorizationButton;
 @property(copy, nonatomic) NSString *bioTextForInactiveState; // @synthesize bioTextForInactiveState=_bioTextForInactiveState;
-- (void).cxx_destruct;
 - (void)_performPasscodeValidations:(CDUnknownBlockType)arg1;
 - (id)_passcodeButtonTitle;
 - (id)_passwordButtonTitle;
@@ -48,6 +50,7 @@
 - (void)_enterProcessingStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)processBiometricMatchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)authenticationResult:(id)arg1 error:(id)arg2 context:(id)arg3;
+- (_Bool)_isUpgradeFromPassword;
 - (_Bool)_hasTouchIDOnly;
 - (void)_updateLabelWithTitle:(id)arg1;
 - (void)_setupAlertImageWithConstraints:(id)arg1;
@@ -57,6 +60,7 @@
 - (id)_spaceWithConstant:(double)arg1;
 - (void)_enableLAUIAuthMechanism;
 - (void)_switchToBioView:(_Bool)arg1 withEnabled:(_Bool)arg2 showAlert:(_Bool)arg3 alertString:(id)arg4;
+- (void)_windowDidBecomeKey:(id)arg1;
 - (void)showAlertAndContinueWithPassword:(_Bool)arg1;
 - (void)enableAuthorizationCapability:(_Bool)arg1;
 - (void)bioAuthFailWithAlertString:(id)arg1;
@@ -69,9 +73,11 @@
 - (void)setUpButtonToPaneContext:(id)arg1;
 - (void)addToConstraints:(id)arg1 context:(id)arg2;
 - (void)addToStackView:(id)arg1 context:(id)arg2;
+- (_Bool)_shouldUseSIWAButton;
 @property(copy, nonatomic) NSString *buttonText;
-- (id)initWithButtonText:(id)arg1;
-- (id)init;
+- (void)dealloc;
+- (void)_initializeAuthorizationButton;
+- (id)initWithPresentationContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

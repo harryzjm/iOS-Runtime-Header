@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityFormatStringForUnit:(id)arg1 value:(long long)arg2;
+- (id)_accessibilityLocalizedStringForUnit:(id)arg1 value:(long long)arg2;
 - (void)_axUpdateAccessibilityElements;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)layoutSubviews;

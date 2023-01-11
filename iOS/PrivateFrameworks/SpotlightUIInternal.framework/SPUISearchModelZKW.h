@@ -15,8 +15,8 @@
     SPZKWSession *_session;
 }
 
-@property(retain, nonatomic) SPZKWSession *session; // @synthesize session=_session;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SPZKWSession *session; // @synthesize session=_session;
 - (void)updateWithQueryContext:(id)arg1;
 - (void)dealloc;
 - (id)init;

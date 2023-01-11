@@ -16,13 +16,13 @@
 }
 
 + (id)cachedExpressions;
+- (void).cxx_destruct;
 @property(nonatomic) double lastWarningTime; // @synthesize lastWarningTime=_lastWarningTime;
 @property(readonly, copy, nonatomic) NSArray *sometimesFilteredPatterns; // @synthesize sometimesFilteredPatterns=_sometimesFilteredPatterns;
 @property(readonly, copy, nonatomic) NSArray *alwaysFilteredPatterns; // @synthesize alwaysFilteredPatterns=_alwaysFilteredPatterns;
-- (void).cxx_destruct;
 - (id)_matchesInString:(id)arg1 forPattern:(id)arg2;
 - (void)reset;
-- (_Bool)shouldFilterString:(id)arg1 filterable:(_Bool *)arg2;
+- (_Bool)shouldFilterString:(id)arg1 coalescable:(_Bool *)arg2;
 - (id)initWithAlwaysFilteredPatterns:(id)arg1 sometimesFilteredPatterns:(id)arg2;
 
 @end

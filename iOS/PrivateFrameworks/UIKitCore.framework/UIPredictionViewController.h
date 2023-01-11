@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
     TIAutocorrectionList *_cachedAutocorrectionList;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TIAutocorrectionList *cachedAutocorrectionList; // @synthesize cachedAutocorrectionList=_cachedAutocorrectionList;
 @property(readonly, nonatomic) TUIPredictionView *predictionView; // @synthesize predictionView=_predictionView;
-- (void).cxx_destruct;
 - (void)predictionView:(id)arg1 didSelectCandidate:(id)arg2;
 - (void)autocorrectionControllerDidClearAutocorrections:(id)arg1;
 - (void)autocorrectionController:(id)arg1 didUpdateAutocorrectionList:(id)arg2;
@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)_throttledUpdateUIWithAutocorrectionList:(id)arg1;
 - (void)_performThrottledUpdateUIWithAutocorrectionList:(id)arg1;
 - (_Bool)_autocorrectionListContainsContinuousPathConversions:(id)arg1;
-- (_Bool)_autocorrectionListIsNull:(id)arg1;
 @property(readonly, nonatomic) NSArray *displayedCandidates;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_registerForNotifications;
 - (id)_currentTextSuggestions;
 - (_Bool)hidesExpandableButton;
+- (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (_Bool)_isVisibleForAutocorrectionType:(long long)arg1;
 - (_Bool)_canShowWhileLocked;

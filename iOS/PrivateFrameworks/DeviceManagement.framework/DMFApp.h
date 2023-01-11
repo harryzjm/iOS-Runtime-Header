@@ -40,6 +40,8 @@
     unsigned long long _installationState;
     NSString *_VPNUUIDString;
     NSArray *_associatedDomains;
+    NSNumber *_associatedDomainsEnableDirectDownloads;
+    NSNumber *_removable;
     NSDictionary *_configuration;
     NSDictionary *_feedback;
     DMFAppManagementInformation *_managementInformation;
@@ -47,9 +49,12 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)stringForInstallationState:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) DMFAppManagementInformation *managementInformation; // @synthesize managementInformation=_managementInformation;
 @property(copy, nonatomic) NSDictionary *feedback; // @synthesize feedback=_feedback;
 @property(copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
+@property(copy, nonatomic) NSNumber *removable; // @synthesize removable=_removable;
+@property(copy, nonatomic) NSNumber *associatedDomainsEnableDirectDownloads; // @synthesize associatedDomainsEnableDirectDownloads=_associatedDomainsEnableDirectDownloads;
 @property(copy, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
 @property(copy, nonatomic) NSString *VPNUUIDString; // @synthesize VPNUUIDString=_VPNUUIDString;
 @property(nonatomic) _Bool hasUpdateAvailable; // @synthesize hasUpdateAvailable=_hasUpdateAvailable;
@@ -77,7 +82,6 @@
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)_stringForType:(unsigned long long)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

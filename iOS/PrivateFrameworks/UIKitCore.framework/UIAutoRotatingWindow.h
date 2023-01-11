@@ -10,7 +10,6 @@
     _Bool _unknownOrientation;
 }
 
-+ (id)sharedPopoverHostingWindow;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_didRemoveSubview:(id)arg1;
 - (void)updateForOrientation:(long long)arg1;

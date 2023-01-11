@@ -6,30 +6,22 @@
 
 #import <ARKit/ARTrackable-Protocol.h>
 
-@class ARBody2D, ARCoreRESkeletonResult, ARSkeleton3D, NSString;
+@class ARSkeleton3D, NSString;
 
 @interface ARBodyAnchor <ARTrackable>
 {
-    _Bool _tracked;
-    double _estimatedScaleFactor;
-    ARCoreRESkeletonResult *_skeletonData;
-    ARBody2D *_referenceBody;
+    _Bool isTracked;
     ARSkeleton3D *_skeleton;
+    double _estimatedScaleFactor;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) ARSkeleton3D *skeleton; // @synthesize skeleton=_skeleton;
 - (void).cxx_destruct;
-- (id)initWithAnchor:(id)arg1;
-- (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToARBodyAnchor:(id)arg1;
+@property(readonly, nonatomic) double estimatedScaleFactor; // @synthesize estimatedScaleFactor=_estimatedScaleFactor;
+@property(readonly, nonatomic) ARSkeleton3D *skeleton; // @synthesize skeleton=_skeleton;
+@property(readonly, nonatomic) _Bool isTracked; // @synthesize isTracked;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithTrackedState:(_Bool)arg1;
-@property(readonly, nonatomic) ARBody2D *referenceBody;
-@property(readonly, nonatomic) double estimatedScaleFactor;
-@property(readonly, nonatomic) _Bool isTracked;
-- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 tracked:(_Bool)arg3 skeletonData:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

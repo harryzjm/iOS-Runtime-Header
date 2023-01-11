@@ -19,12 +19,10 @@
 - (void)setSnoozedAlarms:(id)arg1;
 - (id)originalAlarm;
 - (void)setOriginalAlarm:(id)arg1;
-- (void)setDefaultAlarm:(_Bool)arg1;
+- (void)setIsDefaultAlarm:(_Bool)arg1;
 - (_Bool)isDefaultAlarm;
 - (id)acknowledgedDate;
 - (void)setAcknowledgedDate:(id)arg1;
-- (id)location;
-- (void)setLocation:(id)arg1;
 - (id)structuredLocation;
 - (void)setStructuredLocation:(id)arg1;
 - (long long)proximity;

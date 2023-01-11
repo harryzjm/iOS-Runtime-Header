@@ -6,10 +6,7 @@
 
 #import <UIKit/UIImage.h>
 
-@class NSString;
-
 @interface UIImage (CarDisplay)
 - (id)car_scaledImageWithSize:(struct CGSize)arg1;
-@property(retain, nonatomic) NSString *MCD_identifier;
 @end
 

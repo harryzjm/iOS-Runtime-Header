@@ -17,10 +17,10 @@
     CDUnknownBlockType _clearButtonTapped;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType clearButtonTapped; // @synthesize clearButtonTapped=_clearButtonTapped;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType clearButtonTapped; // @synthesize clearButtonTapped=_clearButtonTapped;
 - (void)_clearButtonTapped:(id)arg1;
-- (void)updateWithName:(id)arg1 sourceSupportsAvailability:(_Bool)arg2 availabilityRequestInProgress:(_Bool)arg3 availabilityType:(long long)arg4;
+- (void)updateWithName:(id)arg1 sourceSupportsAvailability:(_Bool)arg2 availabilityRequestInProgress:(_Bool)arg3 availabilityType:(long long)arg4 showClearButton:(_Bool)arg5;
 - (id)description;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

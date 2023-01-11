@@ -19,7 +19,6 @@
         unsigned int objectType:1;
         unsigned int questionType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _expectedResultType;
     int _objectType;
     int _questionType;
@@ -32,7 +31,7 @@
 + (_Bool)supportsSecureCoding;
 + (Class)thresholdValuesType;
 + (Class)recordDateType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBWellnessUnitType *unit; // @synthesize unit=_unit;
 @property(copy, nonatomic) NSArray *thresholdValues; // @synthesize thresholdValues=_thresholdValues;
 @property(copy, nonatomic) NSArray *recordDates; // @synthesize recordDates=_recordDates;
@@ -40,7 +39,6 @@
 @property(nonatomic) int objectType; // @synthesize objectType=_objectType;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) int expectedResultType; // @synthesize expectedResultType=_expectedResultType;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

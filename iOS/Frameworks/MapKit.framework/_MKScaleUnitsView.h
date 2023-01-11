@@ -23,17 +23,19 @@ __attribute__((visibility("hidden")))
     NSMapTable *_legendStringWidthCache;
     NSMutableDictionary *_legendStringForDistanceStringCache;
     NSNumberFormatter *_floatNumberFormatter;
+    NSString *_zeroUnitsString;
     _Bool _RTL;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isRTL) _Bool RTL; // @synthesize RTL=_RTL;
 @property(retain, nonatomic) NSNumberFormatter *floatNumberFormatter; // @synthesize floatNumberFormatter=_floatNumberFormatter;
 @property(retain, nonatomic) NSString *legendBaseString; // @synthesize legendBaseString=_legendBaseString;
 @property(copy, nonatomic) NSString *unpaddedUnitsString; // @synthesize unpaddedUnitsString=_unpaddedUnitsString;
 @property(retain, nonatomic) NSString *unitsString; // @synthesize unitsString=_unitsString;
 @property(readonly, nonatomic) double unitsWidth; // @synthesize unitsWidth=_unitsWidth;
-- (void).cxx_destruct;
 - (id)_legendStringForDistanceString:(id)arg1 appendUnits:(_Bool)arg2 index:(int)arg3;
+@property(readonly, nonatomic) NSString *zeroUnitsString; // @synthesize zeroUnitsString=_zeroUnitsString;
 - (id)_uncachedLegendStringsForDistanceString:(id)arg1;
 @property(nonatomic) _Bool useLightText; // @dynamic useLightText;
 @property(nonatomic) double segmentLengthInPixels; // @dynamic segmentLengthInPixels;

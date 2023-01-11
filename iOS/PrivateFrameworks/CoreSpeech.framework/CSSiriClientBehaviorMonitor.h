@@ -6,24 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
+@class CSAudioRecordContext, NSHashTable;
 @protocol OS_dispatch_queue;
 
 @interface CSSiriClientBehaviorMonitor : NSObject
 {
     _Bool _isStreaming;
+    CSAudioRecordContext *_audioRecordContext;
     NSObject<OS_dispatch_queue> *_queue;
     NSHashTable *_observers;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isStreaming; // @synthesize isStreaming=_isStreaming;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
-- (void)notifyDidStopStream:(id)arg1;
+@property(retain, nonatomic) CSAudioRecordContext *audioRecordContext; // @synthesize audioRecordContext=_audioRecordContext;
+- (void)notifyDidStopStream:(id)arg1 withEventUUID:(id)arg2;
 - (void)notifyWillStopStream:(id)arg1;
-- (void)notifyDidStartStreamWithContext:(id)arg1 successfully:(_Bool)arg2 option:(id)arg3;
+- (void)notifyDidStartStreamWithContext:(id)arg1 successfully:(_Bool)arg2 option:(id)arg3 withEventUUID:(id)arg4;
 - (void)notifyWillStartStreamWithContext:(id)arg1 option:(id)arg2;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;

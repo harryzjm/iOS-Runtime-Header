@@ -7,8 +7,10 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @class NSData;
+@protocol HMDDataStreamTransportDelegate;
 
 @protocol HMDDataStreamTransport <NSObject>
+@property(nonatomic) __weak id <HMDDataStreamTransportDelegate> delegate;
 - (void)close;
 - (void)connect;
 - (void)sendRawFrame:(NSData *)arg1 completion:(void (^)(NSError *))arg2;

@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedRoute, GEOETARoute, MNCommuteDestination, MNLocation, NSDictionary;
+@class GEOComposedRoute, MNCommuteDestination, MNLocation, NSDictionary;
 
 @protocol MNCommuteDestinationObserver <NSObject>
 
@@ -17,8 +17,8 @@
 - (void)commuteDestination:(MNCommuteDestination *)arg1 didChangeRerouting:(_Bool)arg2;
 - (void)commuteDestination:(MNCommuteDestination *)arg1 didChangeRemainingDistance:(double)arg2;
 - (void)commuteDestination:(MNCommuteDestination *)arg1 didChangeRemainingTime:(double)arg2;
-- (void)commuteDestination:(MNCommuteDestination *)arg1 didChangeETARoute:(GEOETARoute *)arg2;
 - (void)commuteDestination:(MNCommuteDestination *)arg1 didChangeLastMatchedLocation:(MNLocation *)arg2;
+- (void)commuteDestination:(MNCommuteDestination *)arg1 didUpdateTrafficForRoute:(GEOComposedRoute *)arg2;
 - (void)commuteDestination:(MNCommuteDestination *)arg1 didChangeRoute:(GEOComposedRoute *)arg2;
 - (void)commuteDestination:(MNCommuteDestination *)arg1 didChangeInvalid:(_Bool)arg2;
 @end

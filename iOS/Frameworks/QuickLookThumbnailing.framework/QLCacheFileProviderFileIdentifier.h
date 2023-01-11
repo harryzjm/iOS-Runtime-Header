@@ -6,27 +6,25 @@
 
 #import <QuickLookThumbnailing/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class FPItemID;
 
 @interface QLCacheFileProviderFileIdentifier <NSSecureCoding>
 {
-    NSString *_fileProviderIdentifier;
-    NSString *_itemIdentifier;
+    FPItemID *_itemID;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)versionedFileIdentifierClass;
 + (id)knownFileProviderIdentifiersSoFar;
-@property(readonly, copy) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
-@property(readonly, copy) NSString *fileProviderIdentifier; // @synthesize fileProviderIdentifier=_fileProviderIdentifier;
 - (void).cxx_destruct;
+@property(readonly, copy) FPItemID *itemID; // @synthesize itemID=_itemID;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithFileProviderIdentifier:(id)arg1 itemIdentifier:(id)arg2;
+- (id)initWithItemID:(id)arg1;
 
 @end
 

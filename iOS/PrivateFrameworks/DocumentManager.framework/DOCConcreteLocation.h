@@ -34,6 +34,7 @@
 + (id)recentDocumentsLocation;
 + (id)recentsLocation;
 + (id)searchLocation;
+- (void).cxx_destruct;
 @property _Bool canBeRestored; // @synthesize canBeRestored=_canBeRestored;
 @property _Bool isFPV2; // @synthesize isFPV2=_isFPV2;
 @property(copy) NSArray *tags; // @synthesize tags=_tags;
@@ -43,7 +44,6 @@
 @property(copy) NSString *promptText; // @synthesize promptText=_promptText;
 @property(retain) FPItem *fileProviderItem; // @synthesize fileProviderItem=_fileProviderItem;
 @property(copy) NSString *originalSourceIdentifier; // @synthesize originalSourceIdentifier=_originalSourceIdentifier;
-- (void).cxx_destruct;
 @property(readonly) NSString *shortDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -55,7 +55,6 @@
 - (id)initWithTags:(id)arg1;
 - (id)initWithSourceIdentifier:(id)arg1 fileProviderItem:(id)arg2;
 - (id)init;
-- (id)navigationItemTitleForConfiguration:(id)arg1;
 
 @end
 

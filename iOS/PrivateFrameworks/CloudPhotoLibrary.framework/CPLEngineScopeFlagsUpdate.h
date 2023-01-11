@@ -20,8 +20,12 @@
 @property(readonly, nonatomic) long long updatedFlagsMask; // @synthesize updatedFlagsMask=_updatedFlagsMask;
 @property(readonly, nonatomic) long long flags; // @synthesize flags=_flags;
 @property(readonly, nonatomic) NSArray *arrayDescription;
+- (id)redactedDescription;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasFlagUpdates;
 - (long long)updatedFlagsFromFlags:(long long)arg1;
+- (void)updateFlags:(id)arg1;
+- (void)updateFlags:(long long)arg1 withFlagsValue:(long long)arg2;
 - (void)setValue:(_Bool)arg1 forFlag:(long long)arg2;
 - (_Bool)valueForFlag:(long long)arg1;
 - (id)initWithFlags:(long long)arg1;

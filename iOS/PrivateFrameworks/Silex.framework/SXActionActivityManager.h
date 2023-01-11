@@ -15,12 +15,12 @@
     NSMutableDictionary *_activityProviders;
 }
 
-@property(readonly, nonatomic) NSMutableDictionary *activityProviders; // @synthesize activityProviders=_activityProviders;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableDictionary *activityProviders; // @synthesize activityProviders=_activityProviders;
 - (id)activityProviderForAction:(id)arg1;
 - (id)previewActivityForAction:(id)arg1;
 - (id)activityGroupForAction:(id)arg1;
-- (void)registerActionActivityProvider:(id)arg1 actionType:(Class)arg2;
+- (void)registerActionActivityProvider:(id)arg1 actionType:(id)arg2;
 - (id)init;
 
 // Remaining properties

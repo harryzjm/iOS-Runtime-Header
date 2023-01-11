@@ -12,7 +12,7 @@
 @property(retain, nonatomic) id <PXSectionedFetchResult> participantsFetchResult;
 @property(retain, nonatomic) id <PXDisplayAssetFetchResult> allAssetsFetchResult;
 @property(retain, nonatomic) id <PXDisplayAssetFetchResult> copiedAssetsFetchResult;
-@property(retain, nonatomic) id <PXDisplayAssetFetchResult> downloadingAssetsFetchResult;
+@property(retain, nonatomic) id <PXDisplayAssetFetchResult> copyingAssetsFetchResult;
 @property(retain, nonatomic) id <PXDisplayMomentShare> momentShare;
 @end
 

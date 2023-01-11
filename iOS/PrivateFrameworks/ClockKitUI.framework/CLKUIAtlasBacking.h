@@ -16,13 +16,14 @@
     struct CLKUIAtlasBackingStructure _structure;
 }
 
++ (id)atlasBackingWithUuid:(id)arg1 structure:(struct CLKUIAtlasBackingStructure)arg2 data:(id)arg3;
 + (id)atlasBackingWithBytes:(const void *)arg1 length:(unsigned long long)arg2 mmapFile:(id)arg3 uuid:(id)arg4;
 + (id)atlasBackingWithArt:(id)arg1 uuid:(id)arg2;
 + (id)atlasBackingWithImage:(id)arg1 uuid:(id)arg2 mipmap:(_Bool)arg3;
 + (id)atlasBackingWithImage:(id)arg1 uuid:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct CLKUIAtlasBackingStructure structure; // @synthesize structure=_structure;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 @property(nonatomic) unsigned char filter; // @dynamic filter;
 @property(nonatomic) unsigned char wrap; // @dynamic wrap;
 @property(readonly, nonatomic) _Bool mipmaps;

@@ -10,6 +10,8 @@
 @protocol MSStickerPrivate;
 
 @protocol _MSStickerSendManagerDelegate <NSObject>
+- (void)stickerDragCanceled;
+- (void)stickerDragMoved:(id <MSStickerPrivate>)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 fence:(BKSAnimationFenceHandle *)arg5 completionHandler:(void (^)(_Bool, NSError *))arg6;
 - (void)startDragSticker:(id <MSStickerPrivate>)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(BKSAnimationFenceHandle *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)insertSticker:(id <MSStickerPrivate>)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end

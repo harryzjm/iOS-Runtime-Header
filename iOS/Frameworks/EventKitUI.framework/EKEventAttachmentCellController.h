@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKitUI/UIDocumentInteractionControllerDelegate-Protocol.h>
+#import <EventKitUI/QLPreviewControllerDelegate-Protocol.h>
 
 @class EKAttachment, EKEventAttachmentCell, NSString;
 @protocol EKEventAttachmentCellControllerDelegate;
 
-@interface EKEventAttachmentCellController : NSObject <UIDocumentInteractionControllerDelegate>
+@interface EKEventAttachmentCellController : NSObject <QLPreviewControllerDelegate>
 {
     id _downloadID;
     EKEventAttachmentCell *_cell;
@@ -26,16 +26,19 @@
 + (id)cellControllersForAttachments:(id)arg1 givenExistingControllers:(id)arg2 sourceIsManaged:(_Bool)arg3;
 + (id)_keyForAttachment:(id)arg1;
 + (_Bool)_attachmentIsViewable:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <EKEventAttachmentCellControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) EKAttachment *attachment; // @synthesize attachment=_attachment;
 @property(readonly) EKEventAttachmentCell *cell; // @synthesize cell=_cell;
-- (void).cxx_destruct;
-- (void)documentInteractionControllerWillEndPreview:(id)arg1;
-- (id)documentInteractionControllerViewForPreview:(id)arg1;
-- (id)documentInteractionControllerViewControllerForPreview:(id)arg1;
+- (void)previewControllerWillDismiss:(id)arg1;
+- (void)startAttachmentDownload;
+- (void)promptToDownloadAttachment;
 - (void)cellSelected;
+- (id)event;
+- (id)attachmentFilename;
 - (void)_openExternalAttachmentURLInBrowser:(id)arg1;
 - (void)_presentPreviewWithURL:(id)arg1 filename:(id)arg2;
+- (unsigned long long)supportedInterfaceOrientationMaskForInterfaceOrientation:(long long)arg1;
 - (void)_presentPreviewAttachmentInPreviewWithInfo:(id)arg1;
 - (id)_downloadProgressStringWithDownloadedBytes:(id)arg1 outOfTotalBytes:(id)arg2;
 - (void)tearDown;

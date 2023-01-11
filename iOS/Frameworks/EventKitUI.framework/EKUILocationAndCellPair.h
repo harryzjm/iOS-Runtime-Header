@@ -14,9 +14,10 @@
     UITableViewCell *_cell;
 }
 
+- (void).cxx_destruct;
 @property(retain) UITableViewCell *cell; // @synthesize cell=_cell;
 @property(retain) EKStructuredLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
+- (id)description;
 
 @end
 

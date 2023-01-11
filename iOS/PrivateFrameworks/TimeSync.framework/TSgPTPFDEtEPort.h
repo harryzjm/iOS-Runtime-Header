@@ -11,12 +11,12 @@
     TSgPTPPortStatistics *_statistics;
 }
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSgPTPPortStatistics *statistics; // @synthesize statistics=_statistics;
-- (void)dealloc;
 - (id)_statistics;
 - (void)updateProperties;
-- (_Bool)_commonInitWithService:(unsigned int)arg1;
+- (_Bool)_commonInitWithService:(id)arg1;
 
 @end
 

@@ -7,10 +7,11 @@
 #import <Foundation/NSHTTPURLResponse.h>
 
 @interface NSHTTPURLResponse (ISAdditions)
-- (long long)maxExpectedContentLength;
+- (long long)itunes_maxExpectedContentLength;
 - (id)_iTunesStore_valueForHTTPHeader:(id)arg1;
+- (double)itunes_expirationInterval;
 - (double)expirationInterval;
-- (id)expirationDate;
+- (id)itunes_expirationDate;
 - (id)_dateFromExpires;
 - (_Bool)_getCacheControlMaxAge:(double *)arg1;
 @end

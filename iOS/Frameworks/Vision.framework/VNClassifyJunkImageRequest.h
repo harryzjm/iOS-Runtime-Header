@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface VNClassifyJunkImageRequest
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface VNClassifyJunkImageRequest <VNImageIdealImageSizeProviding>
 {
 }
 
@@ -14,15 +18,20 @@
 + (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
 + (Class)configurationClass;
 + (id)knownClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
-- (id)supportedImageSizeSet;
+@property(readonly) NSArray *supportedImageSizeSet;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
-- (id)description;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
+@property(readonly, copy) NSString *description;
 @property(nonatomic) unsigned long long imageCropAndScaleOption;
-- (id)_applicableDetectorAndOptions:(id *)arg1 error:(id *)arg2;
+- (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

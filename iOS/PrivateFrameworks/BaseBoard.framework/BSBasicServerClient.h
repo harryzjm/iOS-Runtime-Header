@@ -20,7 +20,6 @@
 }
 
 + (id)wrapperWithConnection:(id)arg1;
-@property(retain, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
 - (void)sendMessageWithPacker:(CDUnknownBlockType)arg1 replyHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
 - (void)sendMessageWithPacker:(CDUnknownBlockType)arg1;
@@ -31,6 +30,7 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *connection;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

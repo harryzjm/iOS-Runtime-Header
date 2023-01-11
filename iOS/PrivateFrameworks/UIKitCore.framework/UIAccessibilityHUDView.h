@@ -19,8 +19,8 @@
 }
 
 + (struct CGSize)preferredHUDSize;
-@property(copy, nonatomic) UIAccessibilityHUDItem *item; // @synthesize item=_item;
 - (void).cxx_destruct;
+@property(copy, nonatomic) UIAccessibilityHUDItem *item; // @synthesize item=_item;
 - (id)customView;
 - (id)imageView;
 - (id)titleLabel;

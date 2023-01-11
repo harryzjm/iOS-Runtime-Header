@@ -11,10 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axNeedsToDismissHomeScreenTodayView;
 - (_Bool)_axIsSidebarPinned;
 - (_Bool)_axIsShowingHomeScreenTodayView;
+- (_Bool)_axShowAppLibrary;
 - (_Bool)_axHideTodayView;
 - (_Bool)_axShowTodayView;
+- (_Bool)_axSetOverlayVisible:(_Bool)arg1 leadingOverlay:(_Bool)arg2;
+- (_Bool)_axSetAppLibraryVisible:(_Bool)arg1;
 - (_Bool)_axSetTodayViewVisible:(_Bool)arg1;
 - (id)_axIconScrollView;
 - (id)_axRecipientIconView;

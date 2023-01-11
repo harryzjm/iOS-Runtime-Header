@@ -17,7 +17,7 @@
 + (id)complicationLocalizationKey;
 + (id)appIdentifier;
 - (void).cxx_destruct;
-- (id)_complicationTemplate;
+- (id)sampleTemplate;
 - (void)_localeDidChange:(id)arg1;
 - (id)currentSwitcherTemplate;
 - (void)dealloc;

@@ -20,6 +20,7 @@
     _Bool _previouslyHadMarkedText;
     _Bool _wantsUndoCommands;
     _Bool _wantsUpdateTrackingForInitialLoading;
+    _Bool _shouldInhibitAddingExtraNewlinesAtEndDuringFixup;
     _Bool _convertAttributes;
     _Bool _shouldConvertTablesToTabs;
     _Bool _retainOriginalFormatting;
@@ -60,13 +61,14 @@
     struct _NSRange _ttEditedRange;
 }
 
-+ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(_Bool)arg3 forStandardizedText:(_Bool)arg4 fixAttachments:(_Bool)arg5;
++ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(_Bool)arg3 forStandardizedText:(_Bool)arg4 fixAttachments:(_Bool)arg5 insertListMarkers:(_Bool)arg6;
 + (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(_Bool)arg2 forStandardizedText:(_Bool)arg3;
 + (id)removeTextAttachmentsForAttributedString:(id)arg1 translateTTFont:(_Bool)arg2;
 + (id)removeDataDetectorLinksForAttributedString:(id)arg1;
 + (id)standardizedAttributedStringFromAttributedString:(id)arg1 withStyler:(id)arg2 fixAttachments:(_Bool)arg3 translateTTFont:(_Bool)arg4;
-+ (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 withStyler:(id)arg2;
-+ (id)bulletTextAttributesWithTextFont:(struct UIFont *)arg1 paragraphStyle:(id)arg2 letterpress:(_Bool)arg3 withStyler:(id)arg4;
++ (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 zoomFactor:(double)arg2;
++ (id)bulletTextAttributesWithTextFont:(id)arg1 paragraphStyle:(id)arg2 zoomFactor:(double)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool delayedFixupAfterEditingWantsUndoCommand; // @synthesize delayedFixupAfterEditingWantsUndoCommand=_delayedFixupAfterEditingWantsUndoCommand;
 @property(nonatomic) long long ttChangeInLength; // @synthesize ttChangeInLength=_ttChangeInLength;
 @property(nonatomic) unsigned long long ttEditedMask; // @synthesize ttEditedMask=_ttEditedMask;
@@ -104,16 +106,18 @@
 @property(nonatomic) struct _NSRange beforeEndEditedRange; // @synthesize beforeEndEditedRange=_beforeEndEditedRange;
 @property(readonly, nonatomic) NSMutableArray *deletedRanges; // @synthesize deletedRanges=_deletedRanges;
 @property(retain, nonatomic) id <TTTextStorageStyler> styler; // @synthesize styler=_styler;
+@property(nonatomic) _Bool shouldInhibitAddingExtraNewlinesAtEndDuringFixup; // @synthesize shouldInhibitAddingExtraNewlinesAtEndDuringFixup=_shouldInhibitAddingExtraNewlinesAtEndDuringFixup;
 @property(nonatomic) _Bool wantsUpdateTrackingForInitialLoading; // @synthesize wantsUpdateTrackingForInitialLoading=_wantsUpdateTrackingForInitialLoading;
 @property(nonatomic) _Bool wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
 @property __weak NSObject<TTTextUndoTarget> *overrideUndoTarget; // @synthesize overrideUndoTarget=_overrideUndoTarget;
 @property(retain, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSAttributedString *_icaxUnfilteredAttributedString;
 - (struct _NSRange)safeCharacterRangeForRange:(struct _NSRange)arg1;
 - (id)attributedSubstringFromRange:(struct _NSRange)arg1;
 - (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1;
+- (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1 insertListMarkers:(_Bool)arg2;
 - (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1 styler:(id)arg2;
 - (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1;
 - (id)standardizedAttributedStringFixingTextAttachments;
 - (void)styleTextInRange:(struct _NSRange)arg1;
@@ -136,7 +140,7 @@
 - (void)convertNSTablesToTabs:(id)arg1;
 - (_Bool)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (_Bool)isDeletingContentAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
-- (_Bool)textViewHasMarkedText:(struct UITextView *)arg1;
+- (_Bool)textViewHasMarkedText:(id)arg1;
 - (_Bool)isEditingOrConvertingMarkedText:(_Bool)arg1;
 - (_Bool)isDeletingDictationAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (void)preReplaceCharactersInRange:(struct _NSRange)arg1 withStringLength:(unsigned long long)arg2;
@@ -148,6 +152,7 @@
 - (void)restoreSelection:(id)arg1;
 - (id)savedSelectionWithSelectionAffinity:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *textViews;
+@property(readonly, nonatomic) _Bool hasMultipleTextViews;
 - (void)beginEditing;
 - (void)coordinateAccess:(CDUnknownBlockType)arg1;
 - (void)coordinateEditing:(CDUnknownBlockType)arg1;
@@ -173,7 +178,6 @@
 - (unsigned long long)length;
 - (void)editedAttributeRange:(struct _NSRange)arg1;
 - (void)editedRange:(struct _NSRange)arg1 changeInLength:(long long)arg2;
-- (_Bool)_usesSimpleTextEffects;
 - (void)resetTTEdits;
 - (void)restoreAttributedString:(id)arg1;
 @property(readonly, nonatomic) _Bool hasAnyTextViewWithDarkAppearance;

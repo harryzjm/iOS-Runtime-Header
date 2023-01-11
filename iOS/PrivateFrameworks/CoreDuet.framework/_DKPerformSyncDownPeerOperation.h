@@ -19,17 +19,10 @@
     NSMutableArray *_operations;
 }
 
-+ (void)_updateEventStatsWithTransportType:(long long)arg1;
 - (void).cxx_destruct;
-- (void)endPerfMetrics;
-- (void)startPerfMetrics;
 - (void)endOperation;
-- (void)addSyncDownPeerDeletionsOperation;
-- (void)addSyncDownPeerAdditionsOperation;
-- (void)performSyncDownPeer;
 - (void)main;
 - (_Bool)isAsynchronous;
-- (id)initWithParent:(id)arg1 localStorage:(id)arg2 transport:(id)arg3 peer:(id)arg4 policy:(id)arg5 type:(id)arg6;
 
 @end
 

@@ -16,13 +16,15 @@
     HKDisplayType *_displayType;
 }
 
-@property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
+- (id)_buildDescriptionFromStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 - (id)statisticsIntervalForTimeScope:(long long)arg1 displayType:(id)arg2;
 - (unsigned long long)calendarUnitForTimeScope:(long long)arg1 displayType:(id)arg2;
 - (CDUnknownBlockType)mappingFunctionForContext:(id)arg1;
-- (id)operationForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)operationForIdentifier:(id)arg1 priorityDelegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithDisplayType:(id)arg1 healthStore:(id)arg2;
 
 // Remaining properties

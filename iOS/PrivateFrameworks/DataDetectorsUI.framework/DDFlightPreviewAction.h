@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 
 + (id)viewControllerProviderClass;
 - (void)setPreviewMode:(_Bool)arg1;
+- (struct CGSize)suggestedContentSize;
 - (id)menuActionClasses;
 - (id)expandViewController;
 - (_Bool)wantsCustomViewControllerCommit;

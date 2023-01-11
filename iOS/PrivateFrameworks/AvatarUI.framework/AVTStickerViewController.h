@@ -12,11 +12,12 @@
 #import <AvatarUI/AVTPaddleViewDelegate-Protocol.h>
 #import <AvatarUI/AVTPresenterDelegate-Protocol.h>
 #import <AvatarUI/AVTStickerPagingControllerDelegate-Protocol.h>
+#import <AvatarUI/AVTUIViewSnapshotProvider-Protocol.h>
 
 @class AVTAvatarPickerDataSource, AVTAvatarRecordDataSource, AVTPaddleView, AVTSimpleAvatarPicker, AVTStickerPagingController, AVTUIEnvironment, NSString, UIView;
 @protocol AVTAvatarStore, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTUILogger;
 
-@interface AVTStickerViewController : UIViewController <AVTStickerPagingControllerDelegate, AVTAvatarPickerDelegate, AVTAvatarRecordDataSourceObserver, AVTPresenterDelegate, AVTPaddleViewDelegate, AVTObjectViewController>
+@interface AVTStickerViewController : UIViewController <AVTStickerPagingControllerDelegate, AVTAvatarPickerDelegate, AVTAvatarRecordDataSourceObserver, AVTPresenterDelegate, AVTPaddleViewDelegate, AVTObjectViewController, AVTUIViewSnapshotProvider>
 {
     _Bool _allowEditing;
     _Bool _allowPeel;
@@ -33,24 +34,26 @@
     AVTPaddleView *_paddleView;
 }
 
++ (id)inUseStickerPack;
 + (id)stickersAvatarsFetchRequest;
-+ (double)headerHeightForWidth:(double)arg1 interitemSpacing:(double)arg2;
-+ (unsigned long long)minimumNumberOfVisibleItemForWidth:(double)arg1;
++ (double)headerHeightForWidth:(double)arg1 interitemSpacing:(double)arg2 environment:(id)arg3;
++ (unsigned long long)minimumNumberOfVisibleItemForWidth:(double)arg1 environment:(id)arg2;
++ (double)headerEdgeMarginForEnvironment:(id)arg1;
 + (id)stickerViewControllerForStore:(id)arg1 allowEditing:(_Bool)arg2 allowPeel:(_Bool)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVTPaddleView *paddleView; // @synthesize paddleView=_paddleView;
 @property(retain, nonatomic) NSString *selectedRecordIdentifier; // @synthesize selectedRecordIdentifier=_selectedRecordIdentifier;
 @property(retain, nonatomic) AVTStickerPagingController *pagingController; // @synthesize pagingController=_pagingController;
 @property(retain, nonatomic) AVTSimpleAvatarPicker *avatarPicker; // @synthesize avatarPicker=_avatarPicker;
 @property(retain, nonatomic) AVTAvatarPickerDataSource *avatarPickerDataSource; // @synthesize avatarPickerDataSource=_avatarPickerDataSource;
 @property(readonly, nonatomic) _Bool allowPeel; // @synthesize allowPeel=_allowPeel;
-@property(readonly, nonatomic) _Bool allowEditing; // @synthesize allowEditing=_allowEditing;
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) AVTAvatarRecordDataSource *recordDataSource; // @synthesize recordDataSource=_recordDataSource;
 @property(readonly, nonatomic) id <AVTAvatarStore> store; // @synthesize store=_store;
+@property(nonatomic) _Bool allowEditing; // @synthesize allowEditing=_allowEditing;
 @property(nonatomic) __weak id <AVTStickerDisclosureValidationDelegate> disclosureValidationDelegate; // @synthesize disclosureValidationDelegate=_disclosureValidationDelegate;
 @property(nonatomic) __weak id <AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
-- (void).cxx_destruct;
 - (void)paddleViewWantsToBeDismissed:(id)arg1;
 - (void)paddleViewTapped:(id)arg1;
 - (void)dismissPaddleViewIfNecessary;
@@ -67,6 +70,7 @@
 - (void)avatarPicker:(id)arg1 didSelectAvatarRecord:(id)arg2;
 - (void)dismissAvatarUIControllerAnimated:(_Bool)arg1;
 - (void)presentAvatarUIController:(id)arg1 animated:(_Bool)arg2;
+- (void)snapshotInBlock:(CDUnknownBlockType)arg1;
 - (void)stickerControllerWillEnterForeground;
 - (void)stickerControllerDidEnterBackground;
 - (void)presentMemojiEditorForCreation;
@@ -83,7 +87,6 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (_Bool)allowAvatarCreation;
 - (id)initWithStore:(id)arg1 selectedRecordIdentifier:(id)arg2 allowEditing:(_Bool)arg3 allowPeel:(_Bool)arg4 environment:(id)arg5;

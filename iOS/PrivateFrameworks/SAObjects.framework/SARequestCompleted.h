@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SARequestCompleted
 {
 }
@@ -11,6 +13,7 @@
 + (id)requestCompletedWithDictionary:(id)arg1 context:(id)arg2;
 + (id)requestCompleted;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *turnId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

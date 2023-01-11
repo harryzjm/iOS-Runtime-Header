@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBGridSwipeUpGestureSwitcherModifier;
+@class SBDismissSiriSwitcherModifier, SBGridSwipeUpGestureSwitcherModifier;
 
 @interface SBSwitcherSwipeUpGestureFloatingSwitcherModifier
 {
     SBGridSwipeUpGestureSwitcherModifier *_gridSwipeUpGestureModifier;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
 }
 
 - (void).cxx_destruct;
-- (id)handleEvent:(id)arg1;
+- (double)contentViewScale;
+- (double)scaleForIndex:(unsigned long long)arg1;
+- (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (id)handleGestureEvent:(id)arg1;
+- (id)responseForProposedChildResponse:(id)arg1 childModifier:(id)arg2 event:(id)arg3;
 - (id)initWithGestureID:(id)arg1;
 
 @end

@@ -4,21 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 @interface DAExchangeOAuthFlowController
 {
-    NSString *_redirectURI;
-    NSString *_easEndPoint;
 }
 
-@property(copy, nonatomic) NSString *easEndPoint; // @synthesize easEndPoint=_easEndPoint;
-@property(copy, nonatomic) NSString *redirectURI; // @synthesize redirectURI=_redirectURI;
-- (void).cxx_destruct;
-- (id)_urlRequestForOAuthTokenFromAuthCode:(id)arg1;
-- (void)exchangeAuthCode:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_exchangeAuthCode:(id)arg1 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg2;
-- (id)authURLForUsername:(id)arg1;
+- (void)exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_accountDescription;
 - (id)initialRedirectURL;
 - (id)initWithAuthURI:(id)arg1 easEndPoint:(id)arg2 username:(id)arg3;

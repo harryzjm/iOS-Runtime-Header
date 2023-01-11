@@ -10,7 +10,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TUICandidateView, UIKBScreenTraits, UIKeyboardCandidateInlineFloatingView, UIKeyboardCandidateViewConfiguration, UIKeyboardCandidateViewState, UIPanGestureRecognizer, UIView, UIViewPropertyAnimator;
+@class NSArray, NSDictionary, NSMutableArray, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TUICandidateView, UIKBRenderConfig, UIKBScreenTraits, UIKeyboardCandidateInlineFloatingView, UIKeyboardCandidateViewConfiguration, UIKeyboardCandidateViewState, UIPanGestureRecognizer, UIView, UIViewPropertyAnimator;
 @protocol UIKeyboardCandidateControllerDelegate, UIKeyboardCandidateListDelegate;
 
 __attribute__((visibility("hidden")))
@@ -41,21 +41,26 @@ __attribute__((visibility("hidden")))
     UIKeyboardCandidateViewState *_extendedScrolledBarState;
     UIKeyboardCandidateViewState *_inlineViewState;
     UIKeyboardCandidateViewState *_extendedInlineViewState;
+    double _additionalExtendedBarBackdropOffset;
     TIKeyboardCandidate *_currentCandidate;
     NSDictionary *_opacities;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UIViewPropertyAnimator *_animator;
+    UIKBRenderConfig *_renderConfig;
     struct CGRect _inlineRect;
 }
 
 + (double)candidateViewAnimationDuration;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property(retain, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property(retain, nonatomic) NSDictionary *opacities; // @synthesize opacities=_opacities;
 @property(nonatomic) _Bool darkKeyboardChanged; // @synthesize darkKeyboardChanged=_darkKeyboardChanged;
 @property(nonatomic) _Bool darkKeyboard; // @synthesize darkKeyboard=_darkKeyboard;
 @property(retain, nonatomic) TIKeyboardCandidate *currentCandidate; // @synthesize currentCandidate=_currentCandidate;
+@property(nonatomic) double additionalExtendedBarBackdropOffset; // @synthesize additionalExtendedBarBackdropOffset=_additionalExtendedBarBackdropOffset;
 @property(retain, nonatomic) UIKeyboardCandidateViewState *extendedInlineViewState; // @synthesize extendedInlineViewState=_extendedInlineViewState;
 @property(retain, nonatomic) UIKeyboardCandidateViewState *inlineViewState; // @synthesize inlineViewState=_inlineViewState;
 @property(retain, nonatomic) UIKeyboardCandidateViewState *extendedScrolledBarState; // @synthesize extendedScrolledBarState=_extendedScrolledBarState;
@@ -80,7 +85,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
 @property(retain, nonatomic) TIKeyboardCandidateResultSet *candidateResultSet; // @synthesize candidateResultSet=_candidateResultSet;
 @property(nonatomic) __weak id <UIKeyboardCandidateControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)dimKeys:(id)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (void)candidateView:(id)arg1 didAcceptCandidate:(id)arg2 atIndexPath:(id)arg3 inGridType:(long long)arg4 generateFeedback:(_Bool)arg5;
@@ -117,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isExtendedList;
 - (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(_Bool)arg6;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(_Bool)arg5;
+- (long long)layoutDirectionForCurrentInputMode;
 - (void)resetSortControlIndexAfterCandidatesChanged;
 - (void)clearCurrentCandidate;
 - (void)panGestureRecognizerAction:(id)arg1;
@@ -129,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (void)toggleInlineViewExtendedAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)toggleBarExtendedWithAnimator:(id)arg1;
 - (void)toggleBarExtended;
+- (void)extendKeyboardBackdropHeight:(double)arg1;
 - (void)setupAnimatorWithCurve:(long long)arg1;
 @property(readonly, nonatomic) _Bool isExtended;
 @property(readonly, nonatomic) _Bool inlineViewIsExtended;

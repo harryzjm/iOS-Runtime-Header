@@ -24,13 +24,12 @@
     NSString *_debugName;
 }
 
-@property(retain, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
 @property(readonly, nonatomic) NSUUID *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
 @property(readonly, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
-- (void).cxx_destruct;
 - (void)_updateLogIdentifier;
 - (void)_throwIfNotLoaded:(SEL)arg1;
-- (void)_systemAppStateDidChange;
 - (id)logIdentifier;
 - (id)observers;
 - (id)UUIDsByFace;
@@ -71,12 +70,13 @@
 - (void)enumerateFaceNamesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFacesWithIndexesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFacesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)faceForUUID:(id)arg1;
+- (id)uuidForFace:(id)arg1;
 - (id)faceAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NTKFace *selectedFace;
 - (_Bool)containsFace:(id)arg1;
 - (unsigned long long)indexOfFace:(id)arg1;
 - (unsigned long long)numberOfFaces;
-- (void)dealloc;
 - (id)initWithCollectionIdentifier:(id)arg1 deviceUUID:(id)arg2;
 
 // Remaining properties

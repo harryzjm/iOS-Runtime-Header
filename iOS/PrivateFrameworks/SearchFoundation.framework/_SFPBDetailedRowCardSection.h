@@ -18,6 +18,7 @@
     _Bool _hasBottomPadding;
     _Bool _preventThumbnailImageScaling;
     _Bool _isSecondaryTitleDetached;
+    _Bool _shouldUseCompactDisplay;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -37,6 +38,8 @@
     _SFPBButton *_button;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property(retain, nonatomic) _SFPBButton *button; // @synthesize button=_button;
 @property(retain, nonatomic) _SFPBActionItem *action; // @synthesize action=_action;
 @property(retain, nonatomic) _SFPBFormattedText *trailingBottomText; // @synthesize trailingBottomText=_trailingBottomText;
@@ -59,7 +62,6 @@
 @property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

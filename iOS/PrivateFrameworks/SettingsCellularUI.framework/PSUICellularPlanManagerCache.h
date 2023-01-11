@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CTCellularPlanItem, NSArray, NSDictionary;
+#import <SettingsCellularUI/Loggable-Protocol.h>
 
-@interface PSUICellularPlanManagerCache : NSObject
+@class CTCellularPlanItem, Logger, NSArray, NSDictionary, NSString;
+
+@interface PSUICellularPlanManagerCache : NSObject <Loggable>
 {
     _Bool _cacheIsValid;
     NSArray *_planItems;
     NSArray *_danglingPlanItems;
-    NSArray *_cellularPlanPendingTransfer;
+    NSArray *_plansPendingTransfer;
     NSDictionary *_referenceMap;
     CTCellularPlanItem *_selectedPlanItem;
     _Bool _hasSubscriptions;
@@ -23,14 +25,16 @@
     _Bool _isWebUIFlowSupported;
     _Bool _isActivationCodeFlowSupported;
     _Bool _isCarrierItemFlowSupported;
+    Logger *_logger;
     _Bool _carrierListFetchInProgress;
     NSArray *_cachedCarrierItems;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property _Bool carrierListFetchInProgress; // @synthesize carrierListFetchInProgress=_carrierListFetchInProgress;
 @property(retain) NSArray *cachedCarrierItems; // @synthesize cachedCarrierItems=_cachedCarrierItems;
-- (void).cxx_destruct;
+- (id)getLogger;
 - (id)subscriptionContextForPlanItem:(id)arg1 cachedSubscriptionContexts:(id)arg2;
 - (void)setLabel:(id)arg1 forPlan:(id)arg2;
 - (id)predefinedLabels;
@@ -52,9 +56,10 @@
 - (void)setSelectedPlanItemForData:(id)arg1;
 @property(retain, nonatomic) CTCellularPlanItem *selectedPlanItem;
 - (id)planFromReferenceSafe:(id)arg1;
+- (id)planPendingTransferFromReference:(id)arg1;
 - (id)danglingPlanFromReference:(id)arg1;
 - (id)planFromReference:(id)arg1;
-@property(readonly, nonatomic) NSArray *cellularPlansPendingTransfer;
+@property(readonly, nonatomic) NSArray *plansPendingTransfer;
 @property(readonly, nonatomic) NSArray *danglingPlanItems;
 @property(readonly, nonatomic) NSArray *embeddedPlanItems;
 @property(readonly, nonatomic) NSArray *planItems;
@@ -66,6 +71,12 @@
 - (void)_planInfoDidChange;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

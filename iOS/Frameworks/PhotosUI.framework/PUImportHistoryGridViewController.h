@@ -4,26 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUI/PUImportHistorySectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PUSectionedGridLayoutDelegate-Protocol.h>
+#import <PhotosUI/PXImportHistorySectionHeaderViewDelegate-Protocol.h>
 
-@class NSNumber, NSString, PHFetchResult, PLDateRangeFormatter, PUImportHistorySectionHeaderView;
+@class NSNumber, NSString, PHFetchResult, PLDateRangeFormatter, PXImportHistorySectionHeaderView;
 
-@interface PUImportHistoryGridViewController <PUSectionedGridLayoutDelegate, PUImportHistorySectionHeaderViewDelegate>
+@interface PUImportHistoryGridViewController <PUSectionedGridLayoutDelegate, PXImportHistorySectionHeaderViewDelegate>
 {
     PHFetchResult *_importSessions;
     PLDateRangeFormatter *_dateFormatter;
     double _referenceWidth;
     NSNumber *_cachedHeaderHeight;
-    PUImportHistorySectionHeaderView *_referenceHeaderView;
+    PXImportHistorySectionHeaderView *_referenceHeaderView;
 }
 
-@property(retain, nonatomic) PUImportHistorySectionHeaderView *referenceHeaderView; // @synthesize referenceHeaderView=_referenceHeaderView;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PXImportHistorySectionHeaderView *referenceHeaderView; // @synthesize referenceHeaderView=_referenceHeaderView;
 @property(retain, nonatomic) NSNumber *cachedHeaderHeight; // @synthesize cachedHeaderHeight=_cachedHeaderHeight;
 @property(nonatomic) double referenceWidth; // @synthesize referenceWidth=_referenceWidth;
 @property(readonly, nonatomic) PLDateRangeFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 @property(retain, nonatomic) PHFetchResult *importSessions; // @synthesize importSessions=_importSessions;
-- (void).cxx_destruct;
 - (long long)oneUpPresentationOrigin;
 - (void)_configureSectionHeaderView:(id)arg1 section:(long long)arg2;
 - (void)headerViewDidPressActionButton:(id)arg1;

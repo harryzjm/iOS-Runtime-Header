@@ -27,6 +27,7 @@
     MISSING_TYPE *_flash;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) MISSING_TYPE *flash; // @synthesize flash=_flash;
 @property(nonatomic) double shutterOpenInterval; // @synthesize shutterOpenInterval=_shutterOpenInterval;
 @property(nonatomic) float maximumCircleOfConfusion; // @synthesize maximumCircleOfConfusion=_maximumCircleOfConfusion;
@@ -43,7 +44,6 @@
 @property(copy, nonatomic) CAAnimation *fStopAnimation; // @synthesize fStopAnimation=_fStopAnimation;
 @property(copy, nonatomic) CAAnimation *focalDistanceAnimation; // @synthesize focalDistanceAnimation=_focalDistanceAnimation;
 @property(nonatomic) float worldToMetersConversionScale; // @synthesize worldToMetersConversionScale=_worldToMetersConversionScale;
-- (void).cxx_destruct;
 - (void)lookAt:from: /* Error: Ran out of types for this method. */;
 - (void)lookAt: /* Error: Ran out of types for this method. */;
 - (void)frameBoundingBox:(struct)arg1 setNearAndFar:(_Bool)arg2;

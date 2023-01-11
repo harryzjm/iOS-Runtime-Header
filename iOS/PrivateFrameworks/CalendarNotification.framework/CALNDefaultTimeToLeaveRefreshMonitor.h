@@ -15,17 +15,17 @@
 @interface CALNDefaultTimeToLeaveRefreshMonitor : NSObject <CALNTimeToLeaveRefreshMonitor, CADModule>
 {
     _Bool _active;
-    _Bool _registeredForBackgroundTaskAgentJobs;
+    _Bool _registeredForAlarms;
     id <CALNTimeToLeaveRefreshMonitorDelegate> _delegate;
     id <CALNTimeToLeaveRefreshStorage> _storage;
 }
 
-+ (id)_refreshTimerBTAJobNameForEventExternalURL:(id)arg1;
-@property(nonatomic, getter=isRegisteredForBackgroundTaskAgentJobs) _Bool registeredForBackgroundTaskAgentJobs; // @synthesize registeredForBackgroundTaskAgentJobs=_registeredForBackgroundTaskAgentJobs;
++ (id)_refreshTimerAlarmNameForEventExternalURL:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isRegisteredForAlarms) _Bool registeredForAlarms; // @synthesize registeredForAlarms=_registeredForAlarms;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) id <CALNTimeToLeaveRefreshStorage> storage; // @synthesize storage=_storage;
 @property(nonatomic) __weak id <CALNTimeToLeaveRefreshMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_refreshTimerFiredForEventExternalURL:(id)arg1;
 - (void)removeRefreshTimerForEventExternalURL:(id)arg1;
 - (void)setUpRefreshTimerWithTriggerDate:(id)arg1 eventExternalURL:(id)arg2;
@@ -33,8 +33,6 @@
 - (void)receivedAlarmNamed:(id)arg1;
 - (void)receivedNotificationNamed:(id)arg1;
 - (void)didRegisterForAlarms;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (void)didRegisterForBackgroundTaskAgentJobs;
 - (void)deactivate;
 - (void)activate;
 - (id)initWithStorage:(id)arg1;

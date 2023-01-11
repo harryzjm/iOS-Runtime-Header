@@ -12,9 +12,9 @@
     NSArray *_details;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *details; // @synthesize details=_details;
 @property(retain, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 
 @end
 

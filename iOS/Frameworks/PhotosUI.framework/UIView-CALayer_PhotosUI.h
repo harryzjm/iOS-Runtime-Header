@@ -38,9 +38,6 @@
 - (id)_pu_associatedConstraints;
 - (void)pu_removeAllGeometryAnimationsRecursively:(_Bool)arg1;
 - (void)pu_setCenterAndBoundsForFrameRect:(struct CGRect)arg1;
-- (id)_pu_ancestorSharedWithView:(id)arg1;
-- (struct CGAffineTransform)pu_convertTransform:(struct CGAffineTransform)arg1 toView:(id)arg2;
-- (struct CGAffineTransform)pu_convertTransform:(struct CGAffineTransform)arg1 fromView:(id)arg2;
 - (void)pu_addTransform:(struct CGAffineTransform)arg1;
 @end
 

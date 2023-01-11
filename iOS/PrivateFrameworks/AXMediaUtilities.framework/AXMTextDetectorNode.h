@@ -6,33 +6,31 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMTextLayoutManager, NSArray;
+@class AXMSemanticTextFactory, AXMTextLayoutManager;
 
 @interface AXMTextDetectorNode <NSSecureCoding>
 {
+    AXMSemanticTextFactory *_semanticTextFactory;
     AXMTextLayoutManager *_textLayoutManager;
-    NSArray *_recognitionLanguages;
-    NSArray *_customWords;
 }
 
-+ (id)supportedRecognitionLanguagesForFlavor:(unsigned long long)arg1 textRecognitionLevel:(unsigned long long)arg2 error:(id *)arg3;
-+ (long long)_vnRequestTextRecognitionLevelForAXMTextRecognitionLevel:(unsigned long long)arg1;
++ (id)filterPreferredDetectionLanguages:(id)arg1 withSupportedDetectionLanguages:(id)arg2;
++ (id)supportedDetectionLanguagesForLevel:(long long)arg1;
++ (id)textDetectionLanguagesFromOptions:(id)arg1;
++ (long long)recognitionLevelFromOptions:(id)arg1;
++ (id)effectiveLanguagesFromOptions:(id)arg1;
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSArray *customWords; // @synthesize customWords=_customWords;
-@property(copy, nonatomic) NSArray *recognitionLanguages; // @synthesize recognitionLanguages=_recognitionLanguages;
 - (void).cxx_destruct;
-- (void)evaluate:(id)arg1;
-- (void)_evaluateByRecognizingText:(id)arg1 textDetectionOptions:(id)arg2;
-- (void)_evaluateByDetectingTextRectangles:(id)arg1 textDetectionOptions:(id)arg2;
+@property(retain, nonatomic) AXMTextLayoutManager *textLayoutManager; // @synthesize textLayoutManager=_textLayoutManager;
+@property(retain, nonatomic) AXMSemanticTextFactory *semanticTextFactory; // @synthesize semanticTextFactory=_semanticTextFactory;
+- (id)_textDetectionOptions:(id)arg1;
+- (id)_textsForObservations:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (_Bool)validateVisionKitSoftLinkSymbols;
-- (id)_visionTextDetectionOptionForLanguage:(id)arg1;
 - (_Bool)shouldEvaluate:(id)arg1;
 - (_Bool)requiresVisionFramework;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)freeResources;
 - (void)nodeInitialize;
 
 @end

@@ -8,8 +8,8 @@
 {
 }
 
-- (id)_presentServiceListForTopic:(id)arg1 animated:(_Bool)arg2;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(_Bool)arg2;
+- (id)presentNotificationSettingsForTopic:(id)arg1 animated:(_Bool)arg2;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (_Bool)canSelectItem:(id)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;

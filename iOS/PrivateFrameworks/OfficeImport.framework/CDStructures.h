@@ -4350,13 +4350,6 @@ struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct _tagLevelItem {
     struct _tagLevelItem *_field1;
     struct _tagOctreeNode *_field2;

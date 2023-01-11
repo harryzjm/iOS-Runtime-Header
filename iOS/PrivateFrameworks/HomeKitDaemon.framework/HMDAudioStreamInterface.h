@@ -19,12 +19,12 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(nonatomic) double rtcpSendIntervalSec; // @synthesize rtcpSendIntervalSec=_rtcpSendIntervalSec;
 @property(nonatomic) unsigned long long audioStreamSetting; // @synthesize audioStreamSetting=_audioStreamSetting;
 @property(nonatomic) _Bool streamStarted; // @synthesize streamStarted=_streamStarted;
 @property(readonly) __weak id <HMDAudioStreamInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) AVCAudioStream *audioStream; // @synthesize audioStream=_audioStream;
-- (void).cxx_destruct;
 - (void)streamDidRTCPTimeOut:(id)arg1;
 - (void)streamDidRTPTimeOut:(id)arg1;
 - (void)streamDidServerDie:(id)arg1;
@@ -38,12 +38,11 @@
 @property(nonatomic, getter=isRTCPTimeOutEnabled) _Bool rtcpTimeOutEnabled;
 @property(nonatomic, getter=isRTPTimeOutEnabled) _Bool rtpTimeOutEnabled;
 @property(nonatomic, getter=isRTCPEnabled) _Bool rtcpEnabled;
-@property(nonatomic) long long direction;
 - (void)_callStopped:(id)arg1;
 - (void)_callResumed:(id)arg1;
 - (void)_callPaused:(id)arg1;
 - (void)_callStarted:(id)arg1;
-@property(nonatomic, getter=isMuted) _Bool mute;
+@property(nonatomic, getter=isMuted) _Bool muted;
 - (void)_resumeStream;
 - (void)_pauseStream;
 - (void)stopStream;

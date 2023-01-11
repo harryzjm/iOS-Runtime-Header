@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIMutableApplicationSceneSettings.h>
+#import <UIKit/UIMutableCarPlayApplicationSceneSettings.h>
 
 #import <CarPlayUIServices/CRSUIInstrumentClusterSceneSettings-Protocol.h>
+#import <CarPlayUIServices/CRSUIMutableMapStyleProviding-Protocol.h>
 
 @class NSString;
 
-@interface CRSUIMutableInstrumentClusterSceneSettings : UIMutableApplicationSceneSettings <CRSUIInstrumentClusterSceneSettings>
+@interface CRSUIMutableInstrumentClusterSceneSettings : UIMutableCarPlayApplicationSceneSettings <CRSUIInstrumentClusterSceneSettings, CRSUIMutableMapStyleProviding>
 {
 }
 
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setMapStyle:(long long)arg1;
+@property(readonly, nonatomic) long long mapStyle;
 @property(nonatomic) unsigned long long showsSpeedLimit;
 @property(nonatomic) unsigned long long showsCompass;
 @property(nonatomic) unsigned long long itemType;

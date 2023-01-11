@@ -14,7 +14,6 @@
 + (id)environmentForWorkflowType:(id)arg1;
 @property(readonly, nonatomic) _Bool isAppExtension;
 @property(readonly, nonatomic) _Bool isWatchOS;
-@property(readonly, nonatomic) _Bool isMemoryConstrained;
 
 @end
 

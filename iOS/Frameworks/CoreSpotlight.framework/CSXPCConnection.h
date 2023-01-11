@@ -14,6 +14,7 @@
     _Bool _machService;
     _Bool _listener;
     _Bool _nonLaunching;
+    _Bool _privateDaemon;
     unsigned int _user;
     NSString *_uuid;
     NSString *_serviceName;
@@ -21,6 +22,11 @@
     NSObject<OS_xpc_object> *_connection;
 }
 
++ (void)journalDictionary:(id)arg1 toFolderPath:(const char *)arg2 forPID:(int)arg3 withLabel:(const char *)arg4 andID:(unsigned long long)arg5;
++ (id)copyPlistFromXPCObject:(id)arg1;
++ (void)setJournalEnabled:(_Bool)arg1;
++ (_Bool)journalEnabled;
++ (id)processNameForPID:(int)arg1;
 + (id)appIdentifierFromTeamAppTuple:(id)arg1;
 + (id)dataWrapperForKey:(const char *)arg1 sizeKey:(const char *)arg2 fromXPCDictionary:(id)arg3;
 + (_Bool)dictionary:(id)arg1 setSharedMemory:(void *)arg2 forKey:(const char *)arg3 size:(unsigned long long)arg4 forSizeKey:(const char *)arg5;
@@ -29,15 +35,16 @@
 + (id)copyNSStringArrayFromXPCArray:(id)arg1;
 + (id)copyNSDataForKey:(const char *)arg1 fromXPCDictionary:(id)arg2;
 + (id)copyNSStringForKey:(const char *)arg1 fromXPCDictionary:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int user; // @synthesize user=_user;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
+@property(nonatomic) _Bool privateDaemon; // @synthesize privateDaemon=_privateDaemon;
 @property(nonatomic) _Bool nonLaunching; // @synthesize nonLaunching=_nonLaunching;
 @property(readonly, nonatomic) _Bool listener; // @synthesize listener=_listener;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(readonly, nonatomic) _Bool machService; // @synthesize machService=_machService;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (void)sendMessageAsync:(id)arg1;
 - (void)sendMessageAsync:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleReply:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVButton, NSString;
+@class AVButton, AVLayoutItemAttributes, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVPlaybackControlsRoutePickerView <AVPlaybackControlsViewItem>
@@ -15,19 +15,24 @@ __attribute__((visibility("hidden")))
     _Bool _removed;
     _Bool _hasAlternateAppearance;
     _Bool _hasFullScreenAppearance;
+    AVLayoutItemAttributes *_layoutAttributes;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property(nonatomic) _Bool hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+- (void)_updateLayoutItem;
 - (struct CGSize)intrinsicContentSize;
 - (void)updateButtonAppearance;
 @property(readonly, nonatomic) AVButton *customButton;
+- (void)layoutAttributesDidChange;
 @property(nonatomic) struct CGSize extrinsicContentSize;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed;
 @property(nonatomic, getter=isIncluded) _Bool included;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

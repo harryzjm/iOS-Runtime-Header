@@ -8,8 +8,8 @@
 
 #import <UIKitCore/_UICollectionViewUpdateItemApplying-Protocol.h>
 
-@class NSString, UICollectionView, UITableView, _UIDataSourceSnapshotter;
-@protocol _UICollectionViewUpdateItemApplying;
+@class NSString, UICollectionView, UITableView;
+@protocol _UICollectionViewUpdateItemApplying, _UIDataSourceSnapshotTranslating;
 
 __attribute__((visibility("hidden")))
 @interface _UIDiffableDataSourceViewUpdater : NSObject <_UICollectionViewUpdateItemApplying>
@@ -18,17 +18,17 @@ __attribute__((visibility("hidden")))
     long long _sinkKind;
     id <_UICollectionViewUpdateItemApplying> _updatesSink;
     UICollectionView *_collectionView;
-    _UIDataSourceSnapshotter *_dataSourceSnapshotter;
+    id <_UIDataSourceSnapshotTranslating> _dataSourceSnapshot;
     UITableView *_tableView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
-@property(retain, nonatomic) _UIDataSourceSnapshotter *dataSourceSnapshotter; // @synthesize dataSourceSnapshotter=_dataSourceSnapshotter;
+@property(retain, nonatomic) id <_UIDataSourceSnapshotTranslating> dataSourceSnapshot; // @synthesize dataSourceSnapshot=_dataSourceSnapshot;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) __weak id <_UICollectionViewUpdateItemApplying> updatesSink; // @synthesize updatesSink=_updatesSink;
 @property(nonatomic) long long sinkKind; // @synthesize sinkKind=_sinkKind;
 @property(nonatomic) long long tableViewRowAnimation; // @synthesize tableViewRowAnimation=_tableViewRowAnimation;
-- (void).cxx_destruct;
 - (void)_performMoveUpdate:(id)arg1 onTableView:(id)arg2;
 - (void)_performDeleteUpdate:(id)arg1 onTableView:(id)arg2;
 - (void)_performReloadUpdate:(id)arg1 onTableView:(id)arg2;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_willPerformDiff:(_Bool)arg1;
 - (void)_reloadData;
 - (void)_deleteAllItems;
-- (void)_performUpdateWithCollectionViewUpdateItems:(id)arg1 dataSourceSnapshotter:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_performUpdateWithCollectionViewUpdateItems:(id)arg1 dataSourceSnapshot:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4 viewPropertyAnimator:(id)arg5 customAnimationsProvider:(CDUnknownBlockType)arg6;
 - (id)initWithTableView:(id)arg1;
 - (id)initWithCollectionView:(id)arg1;
 - (id)initWithCollectionViewUpdatesSink:(id)arg1;

@@ -9,21 +9,23 @@
 #import <CalendarNotification/CALNNotificationSource-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CALNCalendarIconIdentifierProvider, CALNEventCanceledNotificationDataSource, CALNNotificationManager;
+@protocol CALNCalendarIconIdentifierProvider, CALNEventCanceledNotificationDataSource, CALNNotificationManager, CalDateProvider;
 
 @interface CALNEventCanceledNotificationSource : NSObject <CALNNotificationSource>
 {
     id <CALNEventCanceledNotificationDataSource> _dataSource;
     id <CALNNotificationManager> _notificationManager;
     id <CALNCalendarIconIdentifierProvider> _iconIdentifierProvider;
+    id <CalDateProvider> _dateProvider;
 }
 
-+ (id)_notificationBodyForNotificationInfo:(id)arg1 contactIdentifier:(id *)arg2 summaryArgument:(id *)arg3;
 + (id)deleteActionIdentifier;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <CalDateProvider> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property(readonly, nonatomic) id <CALNCalendarIconIdentifierProvider> iconIdentifierProvider; // @synthesize iconIdentifierProvider=_iconIdentifierProvider;
 @property(readonly, nonatomic) __weak id <CALNNotificationManager> notificationManager; // @synthesize notificationManager=_notificationManager;
 @property(readonly, nonatomic) id <CALNEventCanceledNotificationDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
+- (id)_notificationBodyForNotificationInfo:(id)arg1 contactIdentifier:(id *)arg2 summaryArgument:(id *)arg3;
 - (void)didReceiveResponse:(id)arg1;
 - (id)contentForNotificationWithInfo:(id)arg1;
 - (id)contentForNotificationWithSourceClientIdentifier:(id)arg1;
@@ -31,7 +33,7 @@
 @property(readonly, nonatomic) NSArray *categories;
 - (id)_categoryIdentifier;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
-- (id)initWithDataSource:(id)arg1 notificationManager:(id)arg2 iconIdentifierProvider:(id)arg3;
+- (id)initWithDataSource:(id)arg1 notificationManager:(id)arg2 iconIdentifierProvider:(id)arg3 dateProvider:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

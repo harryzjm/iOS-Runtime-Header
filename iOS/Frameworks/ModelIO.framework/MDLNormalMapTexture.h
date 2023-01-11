@@ -15,7 +15,7 @@
 
 - (void).cxx_destruct;
 - (id)initByGeneratingNormalMapWithTexture:(id)arg1 name:(id)arg2 smoothness:(float)arg3 contrast:(float)arg4;
-- (id)generateDataAtLevel:(long long)arg1;
+- (id)generateDataAtLevel:(long long)arg1 selector:(SEL)arg2;
 
 @end
 

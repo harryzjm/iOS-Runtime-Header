@@ -15,14 +15,13 @@
 
 + (id)_powerStateTargetValues;
 + (Class)valueClass;
-@property(readonly, nonatomic) NSSet *auxiliaryTargetValueTuples; // @synthesize auxiliaryTargetValueTuples=_auxiliaryTargetValueTuples;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *auxiliaryTargetValueTuples; // @synthesize auxiliaryTargetValueTuples=_auxiliaryTargetValueTuples;
 - (id)_allTargetValues;
 - (_Bool)supportsItemRepresentingServices:(id)arg1;
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)toggleValue;
-- (id)togglePrimaryState;
 - (id)writePrimaryState:(long long)arg1;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (_Bool)canCopyWithCharacteristicOptions:(id)arg1;

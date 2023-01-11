@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)setBounds:(struct CGRect)arg1;
 - (id)actionForKey:(id)arg1;
 - (struct TileController *)createTileController:(struct PlatformCALayer *)arg1;
-- (id)initWithLayer:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

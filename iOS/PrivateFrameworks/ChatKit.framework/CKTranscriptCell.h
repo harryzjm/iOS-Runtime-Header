@@ -8,10 +8,24 @@
 {
     _Bool _wantsDrawerLayout;
     BOOL _orientation;
+    _Bool _shouldConfigureForDarkFSM;
+    _Bool _insertingBeforeReplyPreview;
+    _Bool _insertingWithReplyPreview;
+    _Bool _suppressAnimationsForLineUpdates;
     double _drawerPercentRevealed;
     double _associatedItemOffset;
+    long long _insertionType;
+    double _insertionDuration;
+    double _insertionBeginTime;
 }
 
+@property(nonatomic, getter=suppressesAnimationsForLineUpdates) _Bool suppressAnimationsForLineUpdates; // @synthesize suppressAnimationsForLineUpdates=_suppressAnimationsForLineUpdates;
+@property(nonatomic) _Bool insertingWithReplyPreview; // @synthesize insertingWithReplyPreview=_insertingWithReplyPreview;
+@property(nonatomic) _Bool insertingBeforeReplyPreview; // @synthesize insertingBeforeReplyPreview=_insertingBeforeReplyPreview;
+@property(nonatomic) double insertionBeginTime; // @synthesize insertionBeginTime=_insertionBeginTime;
+@property(nonatomic) double insertionDuration; // @synthesize insertionDuration=_insertionDuration;
+@property(nonatomic) long long insertionType; // @synthesize insertionType=_insertionType;
+@property(nonatomic) _Bool shouldConfigureForDarkFSM; // @synthesize shouldConfigureForDarkFSM=_shouldConfigureForDarkFSM;
 @property(nonatomic) double associatedItemOffset; // @synthesize associatedItemOffset=_associatedItemOffset;
 @property(nonatomic) double drawerPercentRevealed; // @synthesize drawerPercentRevealed=_drawerPercentRevealed;
 @property(nonatomic) BOOL orientation; // @synthesize orientation=_orientation;

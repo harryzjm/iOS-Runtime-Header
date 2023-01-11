@@ -14,7 +14,6 @@
 @interface HDHealthService : NSObject <HDHSCharacteristicsDelegate>
 {
     NSObject<OS_dispatch_queue> *_dataQueue;
-    NSMutableArray *_pendingObjectBuffer;
     NSMutableArray *_pendingCharacteristicBuffer;
     HDDeviceEntity *_deviceEntity;
     _Atomic _Bool _deviceInformationLoaded;
@@ -33,6 +32,7 @@
 + (id)implementedProperties;
 + (id)serviceUUID;
 + (long long)serviceType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *pendingWrites; // @synthesize pendingWrites=_pendingWrites;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *writeQueue; // @synthesize writeQueue=_writeQueue;
 @property(retain, nonatomic) NSMutableDictionary *writableCharacteristics; // @synthesize writableCharacteristics=_writableCharacteristics;
@@ -43,11 +43,9 @@
 @property(readonly, nonatomic) NSUUID *peripheralUUID; // @synthesize peripheralUUID=_peripheralUUID;
 @property(readonly, nonatomic) __weak HDHealthPeripheral *healthPeripheral; // @synthesize healthPeripheral=_healthPeripheral;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (_Bool)processAdvertisementData:(id)arg1;
 - (_Bool)_shouldNotifyReceivedData;
 - (void)_bufferCharacteristicToBeNotified:(id)arg1;
-- (void)_bufferObjectToBePersisted:(id)arg1;
 - (void)_dataQueue_deliverDataIfPossible;
 - (void)deviceInformationSetOnPeripheral;
 - (void)mfaSucceededOnPeripheral;
@@ -67,8 +65,6 @@
 - (_Bool)supportsOperation:(id)arg1;
 - (void)_dataQueue_notifyCharacteristic:(id)arg1;
 - (void)characteristicDataReceived:(id)arg1;
-- (void)_dataQueue_persistData:(id)arg1;
-- (void)serviceDataReceived:(id)arg1;
 - (id)servicesInProfile;
 - (void)deviceDisconnecting;
 - (id)_dataQueue_deviceEntity;

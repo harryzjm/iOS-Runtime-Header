@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool ic_isReachable;
 @property(readonly, nonatomic) long long ic_fileSize;
 @property(readonly, nonatomic) NSString *ic_UTI;
+- (_Bool)ic_isSafeFileURLForAttachment;
 @property(readonly, nonatomic) _Bool ic_isSupportedAsAttachment;
 @property(readonly, nonatomic) _Bool ic_isWebURL;
 @property(readonly, nonatomic) _Bool ic_isAppStoreURL;
@@ -23,8 +24,8 @@
 @property(readonly, nonatomic) _Bool ic_isMapURL;
 @property(readonly, nonatomic) NSURL *ic_uniquedURL;
 @property(readonly, nonatomic) _Bool ic_isExcludedFromCloudBackups;
-@property(readonly, nonatomic) _Bool ic_isExcludedFromNonCloudBackups;
-- (void)ic_updateFlagToExcludeFromCloudBackup:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool ic_isExcludedFromBackups;
+- (void)ic_updateFlagToExcludeFromBackup:(_Bool)arg1;
 - (id)ic_dedupedURLWithProhibitedNames:(id)arg1;
 @end
 

@@ -14,14 +14,15 @@
     NSArray *_gridButtons;
 }
 
-@property(retain, nonatomic) NSArray *gridButtons; // @synthesize gridButtons=_gridButtons;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *gridButtons; // @synthesize gridButtons=_gridButtons;
 - (void)didSelectButton:(id)arg1;
 - (void)setControl:(id)arg1 enabled:(_Bool)arg2;
 - (id)_buttonForIdentifier:(id)arg1;
 - (void)_viewDidLoad;
+- (_Bool)_wantsNowPlayingButton;
 @property(readonly, nonatomic) CPGridTemplate *gridTemplate;
-- (id)initWithGridTemplate:(id)arg1 interfaceDelegate:(id)arg2;
+- (id)initWithGridTemplate:(id)arg1 interfaceDelegate:(id)arg2 templateEnvironment:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

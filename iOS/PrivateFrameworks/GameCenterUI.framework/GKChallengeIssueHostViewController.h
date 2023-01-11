@@ -14,11 +14,11 @@
 }
 
 + (id)challengeExtension;
+- (void).cxx_destruct;
+@property(nonatomic) __weak GKHostedChallengeIssueController *delegate; // @synthesize delegate=_delegateWeak;
 - (id)extensionObjectProxy;
 - (void)extensionIsCanceling;
 - (void)messageFromExtension:(id)arg1;
-@property(nonatomic) GKHostedChallengeIssueController *delegate; // @synthesize delegate=_delegateWeak;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

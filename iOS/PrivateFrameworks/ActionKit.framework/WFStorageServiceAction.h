@@ -12,6 +12,7 @@
 {
 }
 
+- (id)targetContentAttribution;
 - (void)selectedStorageServiceChanged;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 - (id)showPickerKey;
@@ -27,6 +28,8 @@
 - (id)requiredResources;
 @property(readonly, nonatomic) _Bool showsFilePicker;
 @property(readonly, nonatomic) id <WFFileStorageService> selectedStorageService;
+- (_Bool)requiresRemoteExecution;
+- (id)prioritizedParameterKeysForRemoteExecution;
 
 @end
 

@@ -18,13 +18,14 @@
     long long _visibleItemCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool forceInitialShowMore; // @synthesize forceInitialShowMore=_forceInitialShowMore;
 @property(nonatomic, getter=isShowingMoreScores) _Bool showingMoreScores; // @synthesize showingMoreScores=_showingMoreScores;
 @property(nonatomic) long long visibleItemCount; // @synthesize visibleItemCount=_visibleItemCount;
 @property(retain, nonatomic) NSArray *scores; // @synthesize scores=_scores;
 @property(retain, nonatomic) GKGameRecord *gameRecord; // @synthesize gameRecord=_gameRecord;
 @property(nonatomic) SEL timeScopeAction; // @synthesize timeScopeAction=_timeScopeAction;
-@property(nonatomic) id timeScopeTarget; // @synthesize timeScopeTarget=_timeScopeTarget;
+@property(nonatomic) __weak id timeScopeTarget; // @synthesize timeScopeTarget=_timeScopeTarget;
 @property(retain, nonatomic) GKLeaderboard *leaderboard; // @synthesize leaderboard=_leaderboard;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
@@ -51,7 +52,6 @@
 - (void)setupCollectionView:(id)arg1;
 @property(nonatomic) long long timeScope; // @dynamic timeScope;
 @property(nonatomic) long long playerScope; // @dynamic playerScope;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1 leaderboard:(id)arg2;
 
 @end

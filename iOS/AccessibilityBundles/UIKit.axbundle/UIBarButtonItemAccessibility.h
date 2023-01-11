@@ -34,6 +34,9 @@
 - (void)setAccessibilityIdentifier:(id)arg1;
 - (void)setAccessibilityAttributedLabel:(id)arg1;
 - (void)setAccessibilityLabel:(id)arg1;
+- (void)_setAccessibilityValueBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityHintBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityLabelBlock:(CDUnknownBlockType)arg1;
 - (void)setCustomView:(id)arg1;
 - (void)setView:(id)arg1;
 - (void)setTitle:(id)arg1;

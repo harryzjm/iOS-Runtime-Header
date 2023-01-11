@@ -32,6 +32,8 @@
 @property(retain) NSArray *matches; // @synthesize matches=_matches;
 @property(retain) NSString *rid; // @synthesize rid=_rid;
 - (_Bool)transitionToState:(long long)arg1;
+- (_Bool)isNetworkError;
+- (_Bool)isTimeout;
 - (_Bool)isCancelled;
 - (_Bool)isFinished;
 - (int)_incrementSequence;

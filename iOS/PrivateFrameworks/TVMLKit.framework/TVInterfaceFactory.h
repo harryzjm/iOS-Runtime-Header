@@ -45,9 +45,9 @@
 + (id)_tvmlResourceMap;
 + (id)sharedInterfaceFactory;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) TVStyleSheetRegistry *styleSheetRegistry; // @synthesize styleSheetRegistry=_styleSheetRegistry;
 @property(retain, nonatomic) id <TVInterfaceCreating> extendedInterfaceCreator; // @synthesize extendedInterfaceCreator=_extendedInterfaceCreator;
-- (void).cxx_destruct;
 - (void)_willParseAppDocument:(id)arg1 forImplicitUpdates:(_Bool)arg2;
 - (id)_getImageFromURLorBundle:(id)arg1;
 - (id)_resourceImageNamed:(id)arg1;
@@ -55,6 +55,7 @@
 - (id)_controllerTransitionFromElement:(id)arg1 toElement:(id)arg2 forNavigationControllerOperation:(long long)arg3 relativeToFrom:(_Bool)arg4;
 - (void)_registerControllerTransitioningCreator:(CDUnknownBlockType)arg1 withType:(unsigned long long)arg2;
 - (id)_navigationControllerForTabIdentifier:(id)arg1;
+- (id)_imageProxyForSymbolURL:(id)arg1 imageSymbolConfiguration:(id)arg2 scaleToSize:(struct CGSize)arg3;
 - (id)_imageProxyForResourceURL:(id)arg1 scaleToSize:(struct CGSize)arg2;
 - (id)_imageProxyFromElement:(id)arg1 withLayout:(id)arg2;
 - (id)_imageProxyFromElement:(id)arg1;

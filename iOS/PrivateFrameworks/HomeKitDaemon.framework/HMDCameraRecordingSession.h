@@ -6,86 +6,97 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDCameraRecordingUploaderDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCameraClipUploaderDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCameraRecordingSessionVideoAnalyzerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMICameraVideoAnalyzerDelegate-Protocol.h>
 
-@class HMDCameraProfile, HMDCameraRecordingFragmentContextManager, HMDCameraRecordingSessionFactory, HMDCameraRecordingUploader, HMFActivity, HMICameraVideoAnalyzer, NSDictionary, NSMutableDictionary, NSNumber, NSObject, NSString, NSUUID;
-@protocol HMDCameraRecordingSessionDelegate, OS_dispatch_queue;
+@class HMDCameraClipUploader, HMDCameraProfile, HMDCameraRecordingSessionSignificantEventManager, HMDCameraRecordingSessionTimelineManager, HMDCameraSignificantEventServer, HMDStreamData, HMFActivity, HMICameraVideoAnalyzerResult, HMICameraVideoFragment, NSData, NSDictionary, NSNumber, NSObject, NSString, NSUUID;
+@protocol HMDCameraRecordingSessionDelegate, HMDCameraRecordingSessionFactory, HMDCameraRecordingSessionVideoAnalyzer, OS_dispatch_queue;
 
-@interface HMDCameraRecordingSession : HMFObject <HMFLogging, HMICameraVideoAnalyzerDelegate, HMDCameraRecordingUploaderDelegate>
+@interface HMDCameraRecordingSession : HMFObject <HMFLogging, HMDCameraRecordingSessionVideoAnalyzerDelegate, HMDCameraClipUploaderDelegate>
 {
     _Bool _noMoreFragmentsAvailable;
     _Bool _active;
-    _Bool _didHandleFirstFragment;
     NSDictionary *_homePresenceByPairingIdentity;
-    HMDCameraRecordingFragmentContextManager *_fragmentContextManager;
+    HMDCameraRecordingSessionTimelineManager *_timelineManager;
     unsigned long long _currentFragmentNumber;
     NSUUID *_identifier;
-    id <HMDCameraRecordingSessionDelegate> _delegate;
     double _configuredFragmentDuration;
-    HMFActivity *_sessionActivity;
-    HMDCameraRecordingUploader *_recordingUploader;
-    unsigned long long _pendingFragmentsCount;
-    NSString *_fragmentDirectoryPath;
+    id <HMDCameraRecordingSessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDCameraProfile *_camera;
-    HMICameraVideoAnalyzer *_videoAnalyzer;
-    HMDCameraRecordingSessionFactory *_factory;
+    NSString *_logIdentifier;
+    id <HMDCameraRecordingSessionFactory> _factory;
+    id <HMDCameraRecordingSessionVideoAnalyzer> _videoAnalyzer;
+    HMFActivity *_sessionActivity;
+    HMDCameraSignificantEventServer *_significantEventServer;
+    HMDCameraRecordingSessionSignificantEventManager *_significantEventManager;
+    unsigned long long _pendingFragmentsCount;
+    double _cumulativeFragmentDuration;
+    double _currentClipDuration;
+    HMDCameraClipUploader *_clipUploader;
+    HMDStreamData *_cameraVideoInitFragment;
+    HMICameraVideoFragment *_introFragment;
+    HMICameraVideoAnalyzerResult *_introAnalyzerResult;
+    NSData *_analysisVideoInitData;
     NSNumber *_remainingRecordingExtensionDuration;
-    unsigned long long _sequenceNumberOfMostRecentFragmentWithActiveTrigger;
-    NSMutableDictionary *_confidenceLevelsByEventReason;
-    NSMutableDictionary *_analysisEventsBySequenceNumber;
+    NSString *_fragmentDirectoryPath;
 }
 
 + (id)logCategory;
-@property(readonly) NSMutableDictionary *analysisEventsBySequenceNumber; // @synthesize analysisEventsBySequenceNumber=_analysisEventsBySequenceNumber;
-@property(readonly) NSMutableDictionary *confidenceLevelsByEventReason; // @synthesize confidenceLevelsByEventReason=_confidenceLevelsByEventReason;
-@property unsigned long long sequenceNumberOfMostRecentFragmentWithActiveTrigger; // @synthesize sequenceNumberOfMostRecentFragmentWithActiveTrigger=_sequenceNumberOfMostRecentFragmentWithActiveTrigger;
-@property(retain) NSNumber *remainingRecordingExtensionDuration; // @synthesize remainingRecordingExtensionDuration=_remainingRecordingExtensionDuration;
-@property(readonly) HMDCameraRecordingSessionFactory *factory; // @synthesize factory=_factory;
-@property _Bool didHandleFirstFragment; // @synthesize didHandleFirstFragment=_didHandleFirstFragment;
-@property(retain) HMICameraVideoAnalyzer *videoAnalyzer; // @synthesize videoAnalyzer=_videoAnalyzer;
-@property(retain) HMDCameraProfile *camera; // @synthesize camera=_camera;
-@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+- (void).cxx_destruct;
 @property(copy) NSString *fragmentDirectoryPath; // @synthesize fragmentDirectoryPath=_fragmentDirectoryPath;
+@property(copy) NSNumber *remainingRecordingExtensionDuration; // @synthesize remainingRecordingExtensionDuration=_remainingRecordingExtensionDuration;
+@property(retain) NSData *analysisVideoInitData; // @synthesize analysisVideoInitData=_analysisVideoInitData;
+@property(retain) HMICameraVideoAnalyzerResult *introAnalyzerResult; // @synthesize introAnalyzerResult=_introAnalyzerResult;
+@property(retain) HMICameraVideoFragment *introFragment; // @synthesize introFragment=_introFragment;
+@property(retain) HMDStreamData *cameraVideoInitFragment; // @synthesize cameraVideoInitFragment=_cameraVideoInitFragment;
+@property(retain) HMDCameraClipUploader *clipUploader; // @synthesize clipUploader=_clipUploader;
+@property double currentClipDuration; // @synthesize currentClipDuration=_currentClipDuration;
+@property double cumulativeFragmentDuration; // @synthesize cumulativeFragmentDuration=_cumulativeFragmentDuration;
 @property unsigned long long pendingFragmentsCount; // @synthesize pendingFragmentsCount=_pendingFragmentsCount;
-@property(retain) HMDCameraRecordingUploader *recordingUploader; // @synthesize recordingUploader=_recordingUploader;
 @property(getter=isActive) _Bool active; // @synthesize active=_active;
 @property _Bool noMoreFragmentsAvailable; // @synthesize noMoreFragmentsAvailable=_noMoreFragmentsAvailable;
+@property(readonly) HMDCameraRecordingSessionSignificantEventManager *significantEventManager; // @synthesize significantEventManager=_significantEventManager;
+@property(readonly) HMDCameraSignificantEventServer *significantEventServer; // @synthesize significantEventServer=_significantEventServer;
 @property(readonly) HMFActivity *sessionActivity; // @synthesize sessionActivity=_sessionActivity;
-@property(readonly) double configuredFragmentDuration; // @synthesize configuredFragmentDuration=_configuredFragmentDuration;
+@property(readonly) id <HMDCameraRecordingSessionVideoAnalyzer> videoAnalyzer; // @synthesize videoAnalyzer=_videoAnalyzer;
+@property(readonly) id <HMDCameraRecordingSessionFactory> factory; // @synthesize factory=_factory;
+@property(readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property(readonly) HMDCameraProfile *camera; // @synthesize camera=_camera;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property __weak id <HMDCameraRecordingSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly) double configuredFragmentDuration; // @synthesize configuredFragmentDuration=_configuredFragmentDuration;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
-- (id)logIdentifier;
-- (void)recordingUploaderIsIdle:(id)arg1;
-- (void)recordingUploader:(id)arg1 didFinishClip:(id)arg2;
-- (void)recordingUploader:(id)arg1 didStartClip:(id)arg2;
-- (void)recordingUploader:(id)arg1 willFinishClip:(id)arg2;
+- (id)attributeDescriptions;
+- (void)uploaderDidFailUpload:(id)arg1;
+- (void)_finishCurrentClipUploader;
 - (_Bool)_isValidNonFirstSessionFragment:(id)arg1;
 - (_Bool)_isValidFirstSessionFragment:(id)arg1;
 - (void)_writeFragment:(id)arg1;
-- (_Bool)_shouldEndSessionAtFragment:(id)arg1;
-- (_Bool)_shouldUploadFragmentWithContext:(id)arg1 analyzerResult:(id)arg2 sequenceNumber:(unsigned long long)arg3;
-@property(readonly) long long videoAnalyzerEventTypes;
+- (_Bool)_shouldEndSession;
+- (_Bool)_shouldRecordFragmentWithAnalyzerResult:(id)arg1 sequenceNumber:(unsigned long long)arg2 recordingEventTriggers:(unsigned long long)arg3 fragmentAnalyzedEvent:(id)arg4;
 - (void)_endSessionWithError:(id)arg1;
-- (void)_submitAnalysisEventForSequenceNumber:(long long)arg1;
 - (void)_handleDidFailAnalysisForFragment:(id)arg1 withError:(id)arg2;
-- (void)analyzer:(id)arg1 didFailAnalysisForFragment:(id)arg2 withError:(id)arg3;
 - (void)_submitNotificationSuccessMetricWithRecordingEventTriggers:(unsigned long long)arg1 fragmentNumber:(unsigned long long)arg2;
-- (void)_addNotificationForReason:(unsigned long long)arg1 confidenceLevel:(unsigned long long)arg2 dateOfOccurence:(id)arg3 heroFrameData:(id)arg4 offset:(double)arg5 recordingEventTriggers:(unsigned long long)arg6 fragmentNumber:(unsigned long long)arg7;
-- (void)_handleDidFindSignificantEvent:(id)arg1 inFragment:(id)arg2;
-- (void)analyzer:(id)arg1 didFindSignificantEvent:(id)arg2 inFragment:(id)arg3;
-- (void)_handleAnalyzedFragment:(id)arg1 withResult:(id)arg2;
+- (void)_notifyForSignificantEvent:(id)arg1 recordingEventTriggers:(unsigned long long)arg2 fragmentNumber:(unsigned long long)arg3;
+- (void)_notifyForAnalyzerResult:(id)arg1 fragment:(id)arg2 dateOfOccurrence:(id)arg3 timeOffsetWithinClip:(double)arg4 recordingEventTriggers:(unsigned long long)arg5;
+- (void)_uploadFragment:(id)arg1 withDuration:(double)arg2 posterFrames:(id)arg3 clipFinalizedBecauseMaxDurationExceeded:(_Bool)arg4;
+- (void)_handleFragment:(id)arg1 withResult:(id)arg2;
+- (void)analyzer:(id)arg1 didFailAnalysisForFragment:(id)arg2 withError:(id)arg3;
 - (void)analyzer:(id)arg1 didNotAnalyzeFragment:(id)arg2 withResult:(id)arg3;
 - (void)analyzer:(id)arg1 didAnalyzeFragment:(id)arg2 withResult:(id)arg3;
-@property(readonly) HMDCameraRecordingFragmentContextManager *fragmentContextManager; // @synthesize fragmentContextManager=_fragmentContextManager;
-@property(retain) NSDictionary *homePresenceByPairingIdentity; // @synthesize homePresenceByPairingIdentity=_homePresenceByPairingIdentity;
+@property(readonly) HMDCameraRecordingSessionTimelineManager *timelineManager; // @synthesize timelineManager=_timelineManager;
+@property(readonly, copy) NSDictionary *homePresenceByPairingIdentity; // @synthesize homePresenceByPairingIdentity=_homePresenceByPairingIdentity;
 - (void)handleNoMoreFragmentsAvailable;
 - (void)handleFragment:(id)arg1;
+- (void)configure;
+- (_Bool)activityZonesIncludedForSignificantEventDetection;
+- (id)activityZones;
 @property unsigned long long currentFragmentNumber; // @synthesize currentFragmentNumber=_currentFragmentNumber;
-- (id)initWithWorkQueue:(id)arg1 camera:(id)arg2 configuredFragmentDuration:(double)arg3 fragmentContextManager:(id)arg4 factory:(id)arg5;
+@property(readonly) unsigned long long recordingEventTriggers;
+- (id)initWithWorkQueue:(id)arg1 camera:(id)arg2 configuredFragmentDuration:(double)arg3 timelineManager:(id)arg4 significantEventServer:(id)arg5 homePresenceByPairingIdentity:(id)arg6 factory:(id)arg7;
+- (id)initWithWorkQueue:(id)arg1 camera:(id)arg2 configuredFragmentDuration:(double)arg3 timelineManager:(id)arg4 significantEventServer:(id)arg5 homePresenceByPairingIdentity:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

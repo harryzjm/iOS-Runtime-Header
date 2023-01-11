@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     _SCRCStackNode *_next;
 }
 
-@property(retain, nonatomic) _SCRCStackNode *next; // @synthesize next=_next;
-@property(retain, nonatomic) _SCRCStackNode *prev; // @synthesize prev=_prev;
-@property(retain, nonatomic) id object; // @synthesize object=_object;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SCRCStackNode *next; // @synthesize next=_next;
+@property(nonatomic) __weak _SCRCStackNode *prev; // @synthesize prev=_prev;
+@property(retain, nonatomic) id object; // @synthesize object=_object;
 
 @end
 

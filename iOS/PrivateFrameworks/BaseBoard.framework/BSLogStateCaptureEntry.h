@@ -16,10 +16,10 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(copy, nonatomic) CDUnknownBlockType captureBlock; // @synthesize captureBlock=_captureBlock;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, copy, nonatomic) CDUnknownBlockType captureBlock; // @synthesize captureBlock=_captureBlock;
+@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
 @end
 

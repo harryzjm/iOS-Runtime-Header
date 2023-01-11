@@ -29,8 +29,8 @@
 + (_Bool)scoreIsExtraordinary:(double)arg1 rankingOptions:(int)arg2;
 - (void).cxx_destruct;
 - (id)coreRoutineLocationsOfInterestLocationsUsingDate:(id)arg1;
-- (id)emailVIPEmailAddresses;
 - (void)setFavoritesEmailAddresses:(id)arg1;
+- (id)emailVIPEmailAddresses;
 - (void)setEmailVIPEmailAddresses:(id)arg1;
 - (id)favoriteEmailAddresses;
 - (id)scorePastEventVolumesWithFeatureSchema:(id)arg1;

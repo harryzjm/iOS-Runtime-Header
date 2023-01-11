@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsUI/NSObject-Protocol.h>
+#import <NewsUI/SXEmbedDataProvider-Protocol.h>
 
-@protocol NUEmbedDataManager <NSObject>
+@protocol NUEmbedDataManager <SXEmbedDataProvider>
 - (void)loadEmbedDataWithCompletion:(void (^)(void))arg1;
 @end
 

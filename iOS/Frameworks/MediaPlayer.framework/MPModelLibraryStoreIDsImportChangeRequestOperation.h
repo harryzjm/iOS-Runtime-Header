@@ -6,6 +6,7 @@
 
 @class MPMediaLibrary, MPModelObject, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryStoreIDsImportChangeRequestOperation
 {
     _Bool _shouldLibraryAdd;
@@ -15,12 +16,12 @@
     CDUnknownBlockType _responseHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(nonatomic) _Bool shouldLibraryAdd; // @synthesize shouldLibraryAdd=_shouldLibraryAdd;
 @property(copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 @property(retain, nonatomic) MPModelObject *referralObject; // @synthesize referralObject=_referralObject;
 @property(retain, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
-- (void).cxx_destruct;
 - (void)execute;
 
 @end

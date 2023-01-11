@@ -15,11 +15,12 @@
     NSMutableDictionary *_indexConnections;
 }
 
-+ (id)indexDelegateAgent;
-+ (id)indexAgent:(_Bool)arg1;
++ (id)indexDelegateAgent:(id)arg1;
++ (id)indexAgent;
++ (id)indexAgent:(_Bool)arg1 serviceName:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *indexConnections; // @synthesize indexConnections=_indexConnections;
 @property(retain, nonatomic) id <MDIndexer> indexer; // @synthesize indexer=_indexer;
-- (void).cxx_destruct;
 - (_Bool)handleCommand:(const char *)arg1 info:(id)arg2 connection:(id)arg3;
 - (id)indexConnection:(id)arg1;
 - (_Bool)lostClientConnection:(id)arg1 error:(id)arg2;

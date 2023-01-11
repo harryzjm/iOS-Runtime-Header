@@ -16,18 +16,22 @@
     _Bool _didGenerateGadgets;
     PXMessagesExtensionViewModel *_viewModel;
     NSArray *_suggestionGadgets;
+    double _contentHeightAdjustment;
 }
 
 + (id)new;
-@property(retain, nonatomic) PXCMMSuggestionsDataSourceManager *suggestionsDataSourceManager; // @synthesize suggestionsDataSourceManager=_suggestionsDataSourceManager;
 - (void).cxx_destruct;
+@property(nonatomic) double contentHeightAdjustment; // @synthesize contentHeightAdjustment=_contentHeightAdjustment;
+@property(retain, nonatomic) PXCMMSuggestionsDataSourceManager *suggestionsDataSourceManager; // @synthesize suggestionsDataSourceManager=_suggestionsDataSourceManager;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)didSelectSuggestionGadget:(id)arg1;
+- (void)_updateNoContentGadgetIfNeeded;
 - (void)_setDataSource:(id)arg1 changes:(id)arg2;
 - (id)_createSuggestionGadgetWithSuggestion:(id)arg1;
 - (void)generateGadgets;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (id)initWithViewModel:(id)arg1 suggestionsDataSourceManager:(id)arg2;
+- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 
 // Remaining properties

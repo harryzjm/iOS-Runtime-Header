@@ -32,10 +32,18 @@
     _Bool fStopSignificantElevationUpdates;
     double fFilteredElevationOffset;
     _Bool fStopRelativeAltitudeUpdates;
+    NSOperationQueue *fAbsoluteAltitudeClientQueue;
+    CDUnknownBlockType fAbsoluteAltitudeClientHandler;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_handleAbsoluteAltitudeUpdate:(shared_ptr_bdcc6d0f)arg1;
+- (void)_resumeAbsoluteAltitudeUpdates;
+- (void)_pauseAbsoluteAltitudeUpdates;
+- (void)_stopAbsoluteAltitudeUpdates;
+- (void)_startAbsoluteAltitudeUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)_releaseHandlerObjects;
 - (void)_stopRelativeAltitudeUpdates;
 - (void)_startRelativeAltitudeUpdates;
 - (void)_querySignificantElevationChangeFromDate:(id)arg1 toDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;

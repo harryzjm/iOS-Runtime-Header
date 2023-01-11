@@ -10,6 +10,7 @@
 @class ICStorePlatformMetadata, NSArray, NSDate, NSNumber, NSString;
 
 @protocol ICStorePlatformResponse <NSCopying, NSObject>
+@property(readonly, copy, nonatomic) id rawResponse;
 @property(readonly, copy, nonatomic) NSString *storefrontIdentifier;
 @property(readonly, copy, nonatomic) NSDate *expirationDate;
 @property(readonly, copy, nonatomic) NSNumber *enqueuerAccountIdentifier;

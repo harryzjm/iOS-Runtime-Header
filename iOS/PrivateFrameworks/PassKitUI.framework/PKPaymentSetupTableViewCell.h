@@ -4,21 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UILabel;
+@class UIImage, UIImageView, UILabel;
 
 @interface PKPaymentSetupTableViewCell
 {
     UILabel *_betaLabel;
+    UIImageView *_cardImageView;
+    UIImageView *_iconImageView;
+    long long _thumbnailType;
     _Bool _showBetaBadge;
-    UIImageView *_thumbnailImageView;
+    UIImage *_thumbnail;
 }
 
 + (struct CGSize)defaultImageViewSize;
-@property(nonatomic) _Bool showBetaBadge; // @synthesize showBetaBadge=_showBetaBadge;
-@property(readonly, nonatomic) UIImageView *thumbnailImageView; // @synthesize thumbnailImageView=_thumbnailImageView;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showBetaBadge; // @synthesize showBetaBadge=_showBetaBadge;
+@property(readonly, nonatomic) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
+- (void)setThumbnail:(id)arg1 type:(long long)arg2 animated:(_Bool)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

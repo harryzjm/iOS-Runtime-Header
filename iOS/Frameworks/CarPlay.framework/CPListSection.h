@@ -18,13 +18,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(readonly, copy, nonatomic) NSString *sectionIndexTitle; // @synthesize sectionIndexTitle=_sectionIndexTitle;
 @property(readonly, copy, nonatomic) NSString *header; // @synthesize header=_header;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)itemAtIndex:(long long)arg1;
+- (void)replaceItems:(id)arg1;
+- (void)replaceItemAtIndex:(unsigned long long)arg1 withItem:(id)arg2;
+- (unsigned long long)indexOfItem:(id)arg1;
+- (id)itemAtIndex:(unsigned long long)arg1;
 - (long long)numberOfItems;
 - (id)initWithItems:(id)arg1;
 - (id)initWithItems:(id)arg1 header:(id)arg2 sectionIndexTitle:(id)arg3;

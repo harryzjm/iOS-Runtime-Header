@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITouch;
+@class UITouch, _UIGestureRecognizerTransformAnalyzer;
 
 @interface UIRotationGestureRecognizer
 {
@@ -16,7 +16,7 @@
     double _velocity;
     double _previousVelocity;
     struct CGPoint _anchorSceneReferencePoint;
-    id _transformAnalyzer;
+    _UIGestureRecognizerTransformAnalyzer *_transformAnalyzer;
     UITouch *_touches[2];
     float _preRecognitionWeight;
     float _postRecognitionWeight;
@@ -25,6 +25,10 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)_shouldDefaultToTouches;
 - (void).cxx_destruct;
+- (void)_endOrFail;
+- (void)_cancelOrFail;
+- (struct CGPoint)locationInView:(id)arg1;
+- (void)_transformChangedWithEvent:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

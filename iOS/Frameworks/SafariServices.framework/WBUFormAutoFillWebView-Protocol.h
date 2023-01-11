@@ -17,5 +17,8 @@
 - (void)webui_setFormMetadata:(WBSFormMetadata *)arg1 forLastPasswordGenerationOrSubmitEventInFrame:(id <WBUFormAutoFillFrameHandle>)arg2;
 - (WBSFormMetadata *)webui_formMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id <WBUFormAutoFillFrameHandle>)arg1;
 - (void (^)(void))webui_preventNavigationDuringAutoFillPrompt;
+
+@optional
+- (_Bool)webui_canPromptForAccountSecurityRecommendation;
 @end
 

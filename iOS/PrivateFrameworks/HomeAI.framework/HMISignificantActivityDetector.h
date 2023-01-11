@@ -8,7 +8,7 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class MLModel, MLPredictionOptions, NSArray, NSString;
+@class HMINMSConfiguration, MLModel, MLPredictionOptions, NSArray, NSString;
 
 @interface HMISignificantActivityDetector : HMFObject <HMFLogging>
 {
@@ -20,25 +20,30 @@
     NSString *_inputFeatureValueName;
     NSArray *_offsetsFeatureValueNames;
     NSArray *_scoresFeatureValueNames;
-    double _nmsThreshold;
+    NSArray *_yawsFeatureValueNames;
+    NSArray *_rollsFeatureValueNames;
+    HMINMSConfiguration *_nmsConfiguration;
     MLPredictionOptions *_predictionOptions;
     struct CGSize _inputDimensions;
 }
 
 + (id)logCategory;
++ (id)defaultAssetPath;
+- (void).cxx_destruct;
 @property(readonly) MLPredictionOptions *predictionOptions; // @synthesize predictionOptions=_predictionOptions;
 @property(readonly) _Bool useSoftmax; // @synthesize useSoftmax=_useSoftmax;
-@property(readonly) double nmsThreshold; // @synthesize nmsThreshold=_nmsThreshold;
+@property(readonly) HMINMSConfiguration *nmsConfiguration; // @synthesize nmsConfiguration=_nmsConfiguration;
+@property(readonly) NSArray *rollsFeatureValueNames; // @synthesize rollsFeatureValueNames=_rollsFeatureValueNames;
+@property(readonly) NSArray *yawsFeatureValueNames; // @synthesize yawsFeatureValueNames=_yawsFeatureValueNames;
 @property(readonly) NSArray *scoresFeatureValueNames; // @synthesize scoresFeatureValueNames=_scoresFeatureValueNames;
 @property(readonly) NSArray *offsetsFeatureValueNames; // @synthesize offsetsFeatureValueNames=_offsetsFeatureValueNames;
 @property(readonly) NSString *inputFeatureValueName; // @synthesize inputFeatureValueName=_inputFeatureValueName;
 @property(readonly) MLModel *mlModel; // @synthesize mlModel=_mlModel;
 @property(readonly) struct CGSize inputDimensions; // @synthesize inputDimensions=_inputDimensions;
-- (void).cxx_destruct;
-- (void)_postProcessOffsets:(id)arg1 scores:(id)arg2 outputPredictions:(id)arg3;
-- (_Bool)_runNeuralNetworkOnPixelBuffer:(struct __CVBuffer *)arg1 offsets:(id)arg2 scores:(id)arg3 error:(id *)arg4;
+- (void)_postProcessOffsets:(id)arg1 scores:(id)arg2 yaws:(id)arg3 rolls:(id)arg4 outputPredictions:(id)arg5;
+- (_Bool)_runNeuralNetworkOnPixelBuffer:(struct __CVBuffer *)arg1 offsets:(id)arg2 scores:(id)arg3 yaws:(id)arg4 rolls:(id)arg5 error:(id *)arg6;
 - (_Bool)predict:(struct __CVBuffer *)arg1 detectedObjects:(id)arg2 error:(id *)arg3;
-- (id)initWithConfidenceThresholds:(id)arg1 nmsThreshold:(double)arg2 error:(id *)arg3;
+- (id)initWithConfidenceThresholds:(id)arg1 nmsConfiguration:(id)arg2 assetPath:(id)arg3 error:(id *)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

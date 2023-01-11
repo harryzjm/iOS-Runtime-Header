@@ -27,6 +27,7 @@
 
 + (Class)layoutOptionsClass;
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *headlineCellConstraints; // @synthesize headlineCellConstraints=_headlineCellConstraints;
 @property(retain, nonatomic) UIImageView *editingChevronImageView; // @synthesize editingChevronImageView=_editingChevronImageView;
 @property(retain, nonatomic) UIView *editingBackgroundDarkeningView; // @synthesize editingBackgroundDarkeningView=_editingBackgroundDarkeningView;
@@ -37,10 +38,8 @@
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 @property(retain, nonatomic) HUGridHeadlineCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(nonatomic, getter=areCellContentsHidden) _Bool cellContentsHidden; // @synthesize cellContentsHidden=_cellContentsHidden;
-- (void).cxx_destruct;
 - (void)_updateHeadlineLabel;
 - (void)updateUIWithAnimation:(_Bool)arg1;
-- (void)applyLayoutAttributes:(id)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)updateConstraints;
 - (void)setHighlighted:(_Bool)arg1;
@@ -54,6 +53,8 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic, getter=isPointerInteractionEnabled) _Bool pointerInteractionEnabled;
+@property(nonatomic) double pointerRegionMargin;
 @property(nonatomic, getter=isRearranging) _Bool rearranging;
 @property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate;
 @property(readonly) Class superclass;

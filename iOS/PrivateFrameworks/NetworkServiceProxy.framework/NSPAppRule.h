@@ -34,7 +34,6 @@
     NSNumber *_enableMultipath;
     NSNumber *_enableTFO;
     NSNumber *_requireTFO;
-    NSNumber *_useTFOHeuristics;
     NSNumber *_enableNoTFOCookie;
     NSNumber *_enableUDPRace;
     NSNumber *_enableRatio;
@@ -57,6 +56,7 @@
 + (_Bool)supportsSecureCoding;
 + (void)loadAppRules:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)validateRuleDictionary:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *updateHash; // @synthesize updateHash=_updateHash;
 @property(nonatomic) _Bool disabledByRatio; // @synthesize disabledByRatio=_disabledByRatio;
 @property(retain, nonatomic) NSDate *enableCheckDate; // @synthesize enableCheckDate=_enableCheckDate;
@@ -74,7 +74,6 @@
 @property(copy, nonatomic) NSNumber *enableRatio; // @synthesize enableRatio=_enableRatio;
 @property(copy, nonatomic) NSNumber *enableUDPRace; // @synthesize enableUDPRace=_enableUDPRace;
 @property(copy, nonatomic) NSNumber *enableNoTFOCookie; // @synthesize enableNoTFOCookie=_enableNoTFOCookie;
-@property(copy, nonatomic) NSNumber *useTFOHeuristics; // @synthesize useTFOHeuristics=_useTFOHeuristics;
 @property(copy, nonatomic) NSNumber *requireTFO; // @synthesize requireTFO=_requireTFO;
 @property(copy, nonatomic) NSNumber *enableTFO; // @synthesize enableTFO=_enableTFO;
 @property(copy, nonatomic) NSNumber *enableMultipath; // @synthesize enableMultipath=_enableMultipath;
@@ -98,7 +97,6 @@
 @property(copy, nonatomic) NSNumber *enableDirectTFO; // @synthesize enableDirectTFO=_enableDirectTFO;
 @property(copy, nonatomic) NSNumber *enableDirectMultipath; // @synthesize enableDirectMultipath=_enableDirectMultipath;
 @property(copy, nonatomic) NSNumber *disableFallback; // @synthesize disableFallback=_disableFallback;
-- (void).cxx_destruct;
 - (void)teardownNetworkAgent;
 - (_Bool)updateNetworkAgent;
 - (void)merge:(id)arg1;

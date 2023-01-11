@@ -19,6 +19,7 @@
 - (void)cut:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)_accessibilityUpdateSelectionNotification:(id)arg1;
+- (id)_axTextInputResponderAccessibilityParentElementForDelegate:(id)arg1;
 - (void)_sendDelegateChangeNotificationsForText:(_Bool)arg1 selection:(_Bool)arg2;
 
 @end

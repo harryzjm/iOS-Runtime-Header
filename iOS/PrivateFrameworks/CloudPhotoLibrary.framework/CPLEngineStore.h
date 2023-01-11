@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 
-@class CPLChangeBatch, CPLEngineChangePipe, CPLEngineClientCache, CPLEngineCloudCache, CPLEngineDerivativesCache, CPLEngineIDMapping, CPLEngineLibrary, CPLEngineOutgoingResources, CPLEnginePushRepository, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineScopeCleanupTasks, CPLEngineScopeStorage, CPLEngineStatusCenter, CPLEngineTransientRepository, CPLPlatformObject, CPLResetTracker, NSArray, NSDate, NSHashTable, NSMutableArray, NSSet, NSString, NSURL;
+@class CPLChangeBatch, CPLEngineChangePipe, CPLEngineCloudCache, CPLEngineDerivativesCache, CPLEngineIDMapping, CPLEngineInitialQueryTracker, CPLEngineLibrary, CPLEngineOutgoingResources, CPLEnginePushRepository, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineScopeCleanupTasks, CPLEngineScopeStorage, CPLEngineStatusCenter, CPLEngineTransientRepository, CPLPlatformObject, CPLRecordStorageView, CPLResetTracker, NSArray, NSDate, NSHashTable, NSMutableArray, NSSet, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CPLEngineStore : NSObject <CPLAbstractObject, CPLEngineComponent>
@@ -24,6 +24,7 @@
     CPLResetTracker *_pendingTracker;
     CPLChangeBatch *_unacknowledgedBatch;
     _Bool _discardUnacknowledgedBatchOnTransactionFail;
+    _Bool _transactionClientCacheViewHasPushRepository;
     NSSet *_lastInvalidRecordScopedIdentifiers;
     NSDate *_lastInvalidRecordsDate;
     NSObject<OS_dispatch_source> *_pendingUpdateTimer;
@@ -43,13 +44,13 @@
     _Bool _shouldTriggerResetSyncAfterDisabledFeaturesUpdate;
     _Bool _shouldSyncScopeList;
     CPLPlatformObject *_platformObject;
+    CPLRecordStorageView *_transactionClientCacheView;
     CPLEngineLibrary *_engineLibrary;
     CPLEnginePushRepository *_pushRepository;
     CPLEngineScopeStorage *_scopes;
     CPLEngineScopeCleanupTasks *_cleanupTasks;
     CPLEngineChangePipe *_pullQueue;
     CPLEngineIDMapping *_idMapping;
-    CPLEngineClientCache *_clientCache;
     CPLEngineCloudCache *_cloudCache;
     CPLEngineTransientRepository *_transientPullRepository;
     CPLEngineResourceStorage *_resourceStorage;
@@ -58,6 +59,7 @@
     CPLEngineRemappedDeletes *_remappedDeletes;
     CPLEngineQuarantinedRecords *_quarantinedRecords;
     CPLEngineStatusCenter *_statusCenter;
+    CPLEngineInitialQueryTracker *_initialQueryTracker;
     CPLEngineDerivativesCache *_derivativesCache;
     unsigned long long _state;
 }
@@ -65,8 +67,10 @@
 + (id)platformImplementationProtocol;
 + (id)stateDescriptionForState:(unsigned long long)arg1;
 + (id)storageNames;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) CPLEngineDerivativesCache *derivativesCache; // @synthesize derivativesCache=_derivativesCache;
+@property(readonly, nonatomic) CPLEngineInitialQueryTracker *initialQueryTracker; // @synthesize initialQueryTracker=_initialQueryTracker;
 @property(readonly, nonatomic) CPLEngineStatusCenter *statusCenter; // @synthesize statusCenter=_statusCenter;
 @property(readonly, nonatomic) CPLEngineQuarantinedRecords *quarantinedRecords; // @synthesize quarantinedRecords=_quarantinedRecords;
 @property(readonly, nonatomic) CPLEngineRemappedDeletes *remappedDeletes; // @synthesize remappedDeletes=_remappedDeletes;
@@ -75,7 +79,6 @@
 @property(readonly, nonatomic) CPLEngineResourceStorage *resourceStorage; // @synthesize resourceStorage=_resourceStorage;
 @property(readonly, nonatomic) CPLEngineTransientRepository *transientPullRepository; // @synthesize transientPullRepository=_transientPullRepository;
 @property(readonly, nonatomic) CPLEngineCloudCache *cloudCache; // @synthesize cloudCache=_cloudCache;
-@property(readonly, nonatomic) CPLEngineClientCache *clientCache; // @synthesize clientCache=_clientCache;
 @property(readonly, nonatomic) CPLEngineIDMapping *idMapping; // @synthesize idMapping=_idMapping;
 @property(readonly, nonatomic) CPLEngineChangePipe *pullQueue; // @synthesize pullQueue=_pullQueue;
 @property(readonly, nonatomic) CPLEngineScopeCleanupTasks *cleanupTasks; // @synthesize cleanupTasks=_cleanupTasks;
@@ -83,10 +86,10 @@
 @property(readonly, nonatomic) CPLEnginePushRepository *pushRepository; // @synthesize pushRepository=_pushRepository;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
-- (void).cxx_destruct;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)componentName;
+- (void)assertNoUnacknowledgedChanges;
 - (void)assertCanRead;
 - (void)assertCanWrite;
 - (_Bool)_canWrite;
@@ -95,6 +98,8 @@
 - (void)_setTransactionOnCurrentThread:(id)arg1;
 - (id)_currentTransaction;
 @property(readonly, copy) NSString *description;
+- (void)stopVacuum;
+- (void)startVacuum;
 - (void)wipeStoreAtNextOpeningWithReason:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (_Bool)storeDerivativesFilter:(id)arg1 error:(id *)arg2;
 - (id)derivativesFilter;
@@ -105,6 +110,7 @@
 - (_Bool)isFeatureDisabled:(id)arg1;
 - (_Bool)updateDisabledFeatures:(id)arg1 didReset:(_Bool *)arg2 error:(id *)arg3;
 - (id)_storedDisabledFeatures;
+- (_Bool)hasUnacknowledgedChanges;
 - (id)unacknowledgedChangeWithLocalScopedIdentifier:(id)arg1;
 - (void)dropUnacknowledgedBatch;
 - (void)keepUnacknowledgedBatch:(id)arg1;
@@ -114,11 +120,15 @@
 - (_Bool)applyPreviousChangeSessionUpdateWithExpectedLibraryVersion:(id)arg1 error:(id *)arg2;
 - (_Bool)beginChangeSession:(id)arg1 withLibraryVersion:(id)arg2 resetTracker:(id)arg3 error:(id *)arg4;
 - (_Bool)storeChangeSessionUpdate:(id)arg1 error:(id *)arg2;
+- (_Bool)_storeChangeSessionUpdate:(id)arg1 error:(id *)arg2;
+- (void)_dropTransactionClientCacheView;
 - (void)_unschedulePendingUpdateApply;
 - (void)_schedulePendingUpdateApply;
 - (void)_reallyUnschedulePendingUpdateApply;
 - (void)_reallySchedulePendingUpdateApply;
 - (_Bool)_applyPendingUpdate:(id)arg1 error:(id *)arg2;
+- (void)notePushRepositoryStoredSomeChanges;
+@property(readonly, nonatomic) CPLRecordStorageView *transactionClientCacheView; // @synthesize transactionClientCacheView=_transactionClientCacheView;
 @property(readonly, nonatomic) _Bool shouldGenerateDerivatives;
 @property(readonly, nonatomic) id corruptionInfo;
 @property(readonly) NSDate *libraryCreationDate;
@@ -140,17 +150,25 @@
 - (_Bool)storeLibraryVersion:(id)arg1 withError:(id *)arg2;
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performBarrier;
+- (void)performBatchedWriteTransactionBarrierWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)performBatchedWriteTransactionBarrier;
 - (void)performBatchedWriteTransactionWithBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_reallyPerformBatchedTransactionsLocked;
 - (void)_scheduleBatchedTransactionsLocked;
+- (id)performWriteTransactionByPassBlocker:(id)arg1 withBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)blockWriteTransactionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)performWriteTransactionWithBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_performWriteTransactionByPassBlocker:(id)arg1 WithBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_commitWriteTransaction:(id)arg1 commitError:(id)arg2;
+- (void)transactionDidFinish;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;
 - (id)performReadTransactionWithBlock:(CDUnknownBlockType)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_performBarrierTransaction:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_finishTransaction;
 - (void)_performTransaction:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (_Bool)_handleException:(id)arg1;
 - (void)noteInvalidRecordScopedIdentifiersInPushSession:(id)arg1;
 - (void)noteOtherResetEvent:(id)arg1 cause:(id)arg2;
 - (_Bool)resetSyncAnchorWithCause:(id)arg1 error:(id *)arg2;
@@ -174,6 +192,7 @@
 @property(readonly, nonatomic) NSArray *storages;
 - (void)dealloc;
 - (id)initWithEngineLibrary:(id)arg1;
+- (id)newClientCacheViewUsesPushRepository:(_Bool *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

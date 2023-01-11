@@ -8,14 +8,19 @@
 
 @interface AAGenericTermsUIRequest
 {
+    _Bool _preferPassword;
     NSDictionary *_requestDictionary;
     ACAccount *_account;
-    _Bool _preferPassword;
 }
 
 + (Class)responseClass;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool preferPassword; // @synthesize preferPassword=_preferPassword;
+@property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property(readonly, nonatomic) NSDictionary *requestDictionary; // @synthesize requestDictionary=_requestDictionary;
 - (id)urlRequest;
+- (id)_requestParamsForTermsEntries:(id)arg1;
+- (id)initWithAccount:(id)arg1 termsEntries:(id)arg2;
 - (id)initWithAccount:(id)arg1 parameters:(id)arg2 preferPassword:(_Bool)arg3;
 - (id)initWithAccount:(id)arg1 parameters:(id)arg2;
 - (id)initWithParameters:(id)arg1;

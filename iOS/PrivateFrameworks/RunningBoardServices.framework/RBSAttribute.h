@@ -6,31 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSDescriptionProviding-Protocol.h>
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSAttribute : NSObject <BSXPCSecureCoding, BSDescriptionProviding, NSCopying>
+@interface RBSAttribute : NSObject <RBSXPCSecureCoding, NSCopying>
 {
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 - (id)_init;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

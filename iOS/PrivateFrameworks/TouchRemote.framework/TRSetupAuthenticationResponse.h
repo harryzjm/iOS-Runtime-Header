@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet;
+@class NSError, NSSet;
 
 @interface TRSetupAuthenticationResponse
 {
     NSSet *_unauthenticatedAccountServices;
+    NSError *_error;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSSet *unauthenticatedAccountServices; // @synthesize unauthenticatedAccountServices=_unauthenticatedAccountServices;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(retain, nonatomic) NSSet *unauthenticatedAccountServices; // @synthesize unauthenticatedAccountServices=_unauthenticatedAccountServices;
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

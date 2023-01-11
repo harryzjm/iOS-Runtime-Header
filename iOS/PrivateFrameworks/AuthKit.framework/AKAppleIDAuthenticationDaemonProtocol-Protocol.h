@@ -6,13 +6,14 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKCircleRequestContext, AKDeviceListRequestContext, AKFollowUpTearDownContext, NSArray, NSDictionary, NSHTTPURLResponse, NSNumber, NSString;
+@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKCircleRequestContext, AKDeviceListRequestContext, AKFollowUpTearDownContext, AKUserInformation, NSArray, NSDictionary, NSHTTPURLResponse, NSNumber, NSString;
 @protocol NSSecureCoding;
 
 @protocol AKAppleIDAuthenticationDaemonProtocol <NSObject>
 - (void)fetchUserInformationForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)fetchURLBagFromCache:(_Bool)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)fetchURLBagWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)forceURLBagUpdateForAltDSID:(NSString *)arg1 urlSwitchData:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)fetchURLBagFromCache:(_Bool)arg1 altDSID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)fetchURLBagForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)accountNamesForAltDSID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)activeLoginCode:(void (^)(NSString *, NSError *))arg1;
 - (void)isDevicePasscodeProtected:(void (^)(_Bool, NSError *))arg1;
@@ -22,6 +23,7 @@
 - (void)verifyMasterKey:(NSString *)arg1 withContext:(AKAccountRecoveryContext *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)renewRecoveryTokenWithContext:(AKAccountRecoveryContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)performCircleRequestWithContext:(AKCircleRequestContext *)arg1 completion:(void (^)(AKCircleRequestPayload *, NSError *))arg2;
+- (oneway void)isCreateAppleIDAllowedWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)validateVettingToken:(NSString *)arg1 forAltDSID:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)reportSignOutForAllAppleIDsWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)reportSignOutForAppleID:(NSString *)arg1 service:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
@@ -32,9 +34,9 @@
 - (void)revokeAuthorizationForApplicationWithClientID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)deleteAuthorizationDatabaseWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)fetchAppListWithAltDSID:(NSString *)arg1 completion:(void (^)(AKApplicationMetadataInfo *, NSError *))arg2;
-- (void)fetchPrimaryBundleIDForServiceWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)fetchDeviceMapWithContext:(AKDeviceListRequestContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchAuthModeWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
+- (void)updateUserInformationForAltDSID:(NSString *)arg1 userInformation:(AKUserInformation *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)getUserInformationForAltDSID:(NSString *)arg1 completion:(void (^)(AKUserInformation *, NSError *))arg2;
 - (void)setAppleIDWithDSID:(NSNumber *)arg1 inUse:(_Bool)arg2 forService:(long long)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)setAppleIDWithAltDSID:(NSString *)arg1 inUse:(_Bool)arg2 forService:(long long)arg3 completion:(void (^)(_Bool, NSError *))arg4;

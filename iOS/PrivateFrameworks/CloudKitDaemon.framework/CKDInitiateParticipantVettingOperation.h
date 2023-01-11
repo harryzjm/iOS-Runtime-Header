@@ -5,6 +5,7 @@
 //
 
 @class CKShareMetadata, NSData, NSString;
+@protocol CKInitiateParticipantVettingOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDInitiateParticipantVettingOperation
@@ -16,20 +17,24 @@ __attribute__((visibility("hidden")))
     NSString *_address;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *address; // @synthesize address=_address;
 @property(retain, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property(retain, nonatomic) NSData *encryptedKey; // @synthesize encryptedKey=_encryptedKey;
 @property(retain, nonatomic) CKShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;
 @property(copy, nonatomic) CDUnknownBlockType participantVettingProgressBlock; // @synthesize participantVettingProgressBlock=_participantVettingProgressBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_sendRequest:(_Bool)arg1;
+- (int)operationType;
 - (void)main;
 - (id)_addSelfIdentityToShareMetadataPublicPCS:(id)arg1 forShareWithURL:(id)arg2 error:(id *)arg3;
 - (id)_encryptedKeyDataWithShareMetadata:(id)arg1 error:(id *)arg2;
 - (void)_handleVettingInitiationProgress:(id)arg1;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKInitiateParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

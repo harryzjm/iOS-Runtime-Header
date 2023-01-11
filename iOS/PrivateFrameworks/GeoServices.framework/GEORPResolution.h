@@ -13,7 +13,6 @@
 @interface GEORPResolution : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOMapRegion *_displayRegion;
     NSString *_localizedAlertText;
     NSMutableArray *_localizedChangeLists;
@@ -21,6 +20,9 @@
     double _resolutionDate;
     unsigned long long _transitLineMuid;
     NSMutableArray *_updatedPlaces;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _displayStyle;
     struct {
         unsigned int has_resolutionDate:1;
@@ -31,14 +33,7 @@
         unsigned int read_localizedChangeLists:1;
         unsigned int read_localizedDescription:1;
         unsigned int read_updatedPlaces:1;
-        unsigned int wrote_displayRegion:1;
-        unsigned int wrote_localizedAlertText:1;
-        unsigned int wrote_localizedChangeLists:1;
-        unsigned int wrote_localizedDescription:1;
-        unsigned int wrote_resolutionDate:1;
-        unsigned int wrote_transitLineMuid:1;
-        unsigned int wrote_updatedPlaces:1;
-        unsigned int wrote_displayStyle:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,6 +49,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsDisplayStyle:(id)arg1;
@@ -62,31 +60,26 @@
 @property(nonatomic) int displayStyle;
 @property(retain, nonatomic) NSString *localizedAlertText;
 @property(readonly, nonatomic) _Bool hasLocalizedAlertText;
-- (void)_readLocalizedAlertText;
 @property(retain, nonatomic) NSString *localizedDescription;
 @property(readonly, nonatomic) _Bool hasLocalizedDescription;
-- (void)_readLocalizedDescription;
 @property(nonatomic) _Bool hasTransitLineMuid;
 @property(nonatomic) unsigned long long transitLineMuid;
 - (id)updatedPlaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)updatedPlacesCount;
-- (void)_addNoFlagsUpdatedPlace:(id)arg1;
 - (void)addUpdatedPlace:(id)arg1;
 - (void)clearUpdatedPlaces;
 @property(retain, nonatomic) NSMutableArray *updatedPlaces;
-- (void)_readUpdatedPlaces;
 - (id)localizedChangeListAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedChangeListsCount;
-- (void)_addNoFlagsLocalizedChangeList:(id)arg1;
 - (void)addLocalizedChangeList:(id)arg1;
 - (void)clearLocalizedChangeLists;
 @property(retain, nonatomic) NSMutableArray *localizedChangeLists;
-- (void)_readLocalizedChangeLists;
 @property(retain, nonatomic) GEOMapRegion *displayRegion;
 @property(readonly, nonatomic) _Bool hasDisplayRegion;
-- (void)_readDisplayRegion;
 @property(nonatomic) _Bool hasResolutionDate;
 @property(nonatomic) double resolutionDate;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

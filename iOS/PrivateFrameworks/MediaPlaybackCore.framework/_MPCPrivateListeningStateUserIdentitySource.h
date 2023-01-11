@@ -19,6 +19,7 @@
 - (void)_loadCurrentValueFromIdentityProperties;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)sourceType;
 - (id)currentValue;
 - (void)dealloc;
 - (id)_initWithUserIdentity:(id)arg1;

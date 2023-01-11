@@ -20,9 +20,7 @@
 - (void)removeAllEntriesSync;
 - (void)removeAllEntries;
 - (void)pruneEntriesOlderThan:(id)arg1 maximumEntriesToKeep:(int)arg2;
-- (void)_findResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 usingFunction:(CDUnknownFunctionPointerType)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)findExactResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)findResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)findResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 reduceRadius:(double)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)storeResponse:(id)arg1;
 - (void)tearDown;
 - (_Bool)_setup:(id)arg1;

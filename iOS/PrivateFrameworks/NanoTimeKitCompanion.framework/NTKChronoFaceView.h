@@ -21,6 +21,7 @@
     NTKColoringLabel *_lapTimeLabel;
     _LapLabel *_lapLabel;
     NSTimer *_resetLabelTimer;
+    NSDate *_tritiumDate;
     unsigned long long _currentMode;
     CLKRelativeDateTextProvider *_totalTimeTextProvider;
     CLKRelativeDateTextProvider *_lapTimeTextProvider;
@@ -59,6 +60,7 @@
 - (void)_reconsiderStopwatchUpdates;
 - (void)_showChronographModeAnimated:(_Bool)arg1;
 - (void)_showTimeModeAnimated:(_Bool)arg1;
+- (void)_applyModeForStopwatchModelAnimated:(_Bool)arg1;
 - (void)_showAppropriateModeAnimated:(_Bool)arg1;
 - (void)_reloadStopwatchState;
 - (void)_enumerateChronoModeViewsWithBlock:(CDUnknownBlockType)arg1;
@@ -93,7 +95,7 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_dateAccentColorForEditMode:(long long)arg1;
 - (id)_dateForegroundColorForEditMode:(long long)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (_Bool)_handsAreInForegroundForEditMode:(long long)arg1;
 - (double)_handsAlphaForEditMode:(long long)arg1;
 - (double)_buttonAlphaForEditMode:(long long)arg1;

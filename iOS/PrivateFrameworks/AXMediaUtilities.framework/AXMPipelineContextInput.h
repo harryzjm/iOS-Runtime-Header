@@ -26,6 +26,9 @@
 + (id)inputWithCIImage:(id)arg1;
 + (id)new;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct __CVBuffer *wrappedPixelBuffer;
+- (struct CGImage *)createCGImageWithMetrics:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) struct CGColorSpace *imageColorSpace;

@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface CKUIBehaviorPad
 {
 }
@@ -12,6 +11,8 @@ __attribute__((visibility("hidden")))
 - (double)welcomeViewContentViewTopAnchorLayoutConstraintConstant;
 - (_Bool)shouldPopoverSuggestionsBanner;
 - (unsigned long long)suggestedAppStripLimit;
+- (double)searchLinksThumbnailWidth;
+- (double)searchPhotosThumbnailWidth;
 - (id)fullscreenPickerActionLayoutAxisPrioritiesForWidth:(double)arg1;
 - (_Bool)shouldAlignRecipientGlyphsWithMargins;
 - (double)photoPickerMaxPopoverPhotoHeight;
@@ -21,11 +22,13 @@ __attribute__((visibility("hidden")))
 - (double)attachmentBrowserGridInterItemSpacing;
 - (struct CGSize)attachmentBrowserDefaultSizeForSquare;
 - (double)entryViewMaxHandWritingPluginShelfHeight;
+- (_Bool)shouldDisableFocusRing;
 - (_Bool)isAppStripInKeyboard;
-- (_Bool)presentsFullscreenInViewService;
+- (_Bool)presentsAutocompleteInAPopover;
 - (_Bool)shouldRefreshAlternateAddressesSheet;
 - (_Bool)shouldShowDisclosureChevronInRecipientAtoms;
 - (struct CGSize)documentIconSize;
+- (struct UIEdgeInsets)defaultAVPlayerViewContorllerControlsInsets;
 - (struct UIEdgeInsets)minTranscriptMarginInsets;
 - (struct UIEdgeInsets)contactPhotoTranscriptInsets;
 - (double)transcriptContactImageDiameter;
@@ -33,7 +36,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)showsConversationListCellChevronImage;
 - (_Bool)canShowContactPhotosInConversationList;
 - (_Bool)showPendingInConversationList;
-- (double)maxPrimaryColumnWidthForInterfaceOrientation:(long long)arg1;
+- (double)primaryColumnWidthForInterfaceOrientation:(long long)arg1;
+- (double)navigationBarMaxHeight;
+- (double)maxNavigationBarNoContactPhotoCollapsedHeightValue;
 - (unsigned long long)defaultConversationViewingMessageCount;
 - (_Bool)showMMSSetup;
 - (unsigned long long)supportedInterfaceOrientations;

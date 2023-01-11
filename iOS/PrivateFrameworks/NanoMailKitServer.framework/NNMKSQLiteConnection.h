@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface NNMKSQLiteConnection : NSObject
@@ -14,15 +14,17 @@
     _Bool _isInTransaction;
     struct sqlite3 *_db;
     NSObject<OS_dispatch_queue> *_dbQueue;
+    NSString *_databasePath;
     NSMutableDictionary *_cachedPreparedStatementsBySQLPattern;
 }
 
 + (_Bool)errorCodeMeansCorruptedDatabase:(int)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *cachedPreparedStatementsBySQLPattern; // @synthesize cachedPreparedStatementsBySQLPattern=_cachedPreparedStatementsBySQLPattern;
+@property(retain, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dbQueue; // @synthesize dbQueue=_dbQueue;
 @property(nonatomic) _Bool isInTransaction; // @synthesize isInTransaction=_isInTransaction;
 @property(nonatomic) struct sqlite3 *db; // @synthesize db=_db;
-- (void).cxx_destruct;
 - (int)_runRetryingIfNeeded:(CDUnknownBlockType)arg1;
 - (id)_lastErrorMessage;
 - (int)_lastErrorCode;
@@ -30,7 +32,7 @@
 - (int)_stepPreparedStatement:(struct sqlite3_stmt *)arg1;
 - (struct sqlite3_stmt *)_preparedStatementForPattern:(id)arg1 cacheStatement:(_Bool)arg2;
 - (void)_closeDatabase;
-- (_Bool)_openDatabaseWithPath:(id)arg1 protectData:(_Bool)arg2 errorCode:(int *)arg3;
+- (_Bool)_openDatabaseWithPath:(id)arg1 errorCode:(int *)arg2;
 - (_Bool)tableExists:(id)arg1 inDatabase:(id)arg2;
 - (id)lastErrorMessage;
 - (int)lastErrorCode;
@@ -42,7 +44,7 @@
 - (struct sqlite3_stmt *)preparedStatementForPattern:(id)arg1 cacheStatement:(_Bool)arg2;
 - (struct sqlite3_stmt *)preparedStatementForPattern:(id)arg1;
 - (void)dealloc;
-- (id)initWithPath:(id)arg1 protectData:(_Bool)arg2 errorCode:(int *)arg3;
+- (id)initWithPath:(id)arg1 errorCode:(int *)arg2;
 
 @end
 

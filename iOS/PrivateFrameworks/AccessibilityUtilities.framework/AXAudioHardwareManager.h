@@ -15,6 +15,8 @@
 + (id)defaultPortChannels;
 + (id)channelsForPort:(id)arg1;
 + (void)updateTestingChannels;
++ (id)defaultRouteDescription;
++ (void)setDefaultRouteDescription:(id)arg1;
 + (void)setDefaultPortChannels:(id)arg1;
 + (void)disableMultiroute;
 + (void)enableMultiroute;

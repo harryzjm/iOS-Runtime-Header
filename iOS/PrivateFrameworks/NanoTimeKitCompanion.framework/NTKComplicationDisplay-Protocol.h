@@ -15,6 +15,7 @@
 @optional
 @property(nonatomic) _Bool shouldUseTemplateColors;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted;
+- (long long)tritiumUpdateMode;
 - (void)setEditing:(_Bool)arg1;
 - (void)setMaxSize:(struct CGSize)arg1;
 @end

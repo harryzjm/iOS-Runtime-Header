@@ -19,13 +19,6 @@
     MISSING_TYPE *_forwardBackRotation;
 }
 
-@property(nonatomic) MISSING_TYPE *forwardBackRotation; // @synthesize forwardBackRotation=_forwardBackRotation;
-@property(nonatomic) MISSING_TYPE *leftRightRotation; // @synthesize leftRightRotation=_leftRightRotation;
-@property(nonatomic) MISSING_TYPE *upDownRotation; // @synthesize upDownRotation=_upDownRotation;
-@property(retain, nonatomic) SCNNode *rootJoint; // @synthesize rootJoint=_rootJoint;
-@property(retain, nonatomic) SCNNode *drivingNode; // @synthesize drivingNode=_drivingNode;
-@property(retain, nonatomic) SCNNode *referenceNode; // @synthesize referenceNode=_referenceNode;
-@property(nonatomic) float simulationFactor; // @synthesize simulationFactor=_simulationFactor;
 - (void).cxx_destruct;
 
 @end

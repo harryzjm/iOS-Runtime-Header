@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKObserverSet, NSArray, NSDateComponents, NSUserDefaults;
+@class HKObserverSet, NSArray, NSDateComponents, NSString, NSUserDefaults;
 
 @interface HKMCSettingsManager : NSObject
 {
@@ -16,6 +16,7 @@
     int _hiddenDisplayTypesNotifyToken;
     int _analysisSettingsNotifyToken;
     int _notificationSettingsNotifyToken;
+    int _algorithmVersionMismatchSettingsNotifyToken;
 }
 
 - (void).cxx_destruct;
@@ -30,7 +31,10 @@
 @property(retain, nonatomic) NSDateComponents *menstruationNotificationTimeOfDay;
 @property(nonatomic) _Bool menstruationNotificationsEnabled;
 @property(readonly, nonatomic) _Bool notificationsEnabled;
+@property(retain, nonatomic) NSString *localizedTextForVersionMismatchAndDisabledProjections;
 @property(nonatomic) long long minimumAnalysisStartDayIndex;
+@property(nonatomic) _Bool fertileWindowProjectionsDisabledForVersionMismatch;
+@property(nonatomic) _Bool menstruationProjectionsDisabledForVersionMismatch;
 @property(nonatomic) _Bool fertileWindowProjectionsEnabled;
 @property(nonatomic) _Bool menstruationProjectionsEnabled;
 - (void)_setTestDefaults:(id)arg1;
@@ -39,6 +43,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_stopObservingAllDefaults;
 - (void)_startObservingDefaults;
+- (void)_algorithmVersionMismatchSettingsDidUpdate;
 - (void)_notificationSettingsDidUpdate;
 - (void)_analysisSettingsDidUpdate;
 - (void)_hiddenDisplayTypesDidUpdate;

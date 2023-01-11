@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSAutoresizingMaskLayoutConstraint.h>
+#import <CoreAutoLayout/NSAutoresizingMaskLayoutConstraint.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIWindowAutoresizingConstraint : NSAutoresizingMaskLayoutConstraint

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/TSDeliveredNotificationsRemoverType-Protocol.h>
-
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
-@interface TSDeliveredNotificationsRemover : NSObject <TSDeliveredNotificationsRemoverType>
+@interface TSDeliveredNotificationsRemover : NSObject
 {
     MISSING_TYPE *notificationService;
 }

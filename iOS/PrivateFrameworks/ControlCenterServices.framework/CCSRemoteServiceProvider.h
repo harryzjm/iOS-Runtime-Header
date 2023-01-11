@@ -25,7 +25,9 @@
 - (void)enumerateEndpointsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)presentModuleWithIdentifier:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestAvailableModuleIdentifiersWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)requestEnableModuleWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setVisibility:(_Bool)arg1 forModuleWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)requestDisableModuleWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestEnableModuleWithIdentifier:(id)arg1 force:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getEnabledStateOfModuleWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)invalidate;

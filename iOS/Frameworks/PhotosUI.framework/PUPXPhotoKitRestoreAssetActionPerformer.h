@@ -9,7 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
++ (_Bool)canPerformOnImplicitSelection;
++ (_Bool)canPerformOnSubsetOfSelection;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (_Bool)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;
 - (long long)destructivePhotosAction;
 
 @end

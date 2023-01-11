@@ -10,9 +10,6 @@
 {
     unsigned long long _numCols;
     unsigned long long _tableFlags;
-    id _lcache;
-    void *_tablePrimary;
-    void *_tableSecondary;
 }
 
 + (_Bool)supportsSecureCoding;

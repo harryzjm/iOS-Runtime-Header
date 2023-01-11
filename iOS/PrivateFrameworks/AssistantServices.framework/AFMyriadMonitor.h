@@ -15,6 +15,7 @@
 {
     long long _state;
     AFWatchdogTimer *_timer;
+    AFWatchdogTimer *_fetchRepostedMyriadDecisionTimer;
     NSObject<OS_dispatch_queue> *_myriadMonitorQueue;
     AFQueue *_completions;
     AFNotifyObserver *_beginObserver;
@@ -24,7 +25,7 @@
     double _myriadEventMonitorTimeout;
     _Bool _isRegisteredForMyriadEventNotification;
     _Bool _ignoreMyriadEvents;
-    _Bool _didRequestCurrentDecisionResult;
+    _Bool _isMonitoring;
     _Bool _ignoreRepostMyriadNotification;
 }
 
@@ -36,17 +37,23 @@
 - (void)_clear;
 - (void)_dequeueBlocksWithSignal:(long long)arg1;
 - (void)_setDecisionIsPending;
+- (void)notifyObserver:(id)arg1 didChangeStateFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
 - (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
 - (void)_deregisterFromRepostedDecisionResultsObservers;
 - (void)_deregisterFromMyriadEventNotifications;
-- (void)_fetchCurrentMyraidDecision;
+- (id)_fetchCurrentMyriadDecisionWithWaitTime:(double)arg1;
+- (void)_cancelRepostedMyriadDecisionTimer;
 - (void)_registerForMyriadEvents;
 - (id)_myriadStateToString:(long long)arg1;
 - (void)dealloc;
+- (_Bool)didWin;
+- (_Bool)isMonitoring;
 - (void)stopMonitoring;
 - (void)dequeueBlocksWaitingForMyriadDecision;
 - (void)ignoreMyriadEvents:(_Bool)arg1;
 - (void)startMonitoringWithTimeoutInterval:(double)arg1;
+- (void)waitForMyriadDecisionForReason:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_enqueueBlock:(CDUnknownBlockType)arg1 forReason:(id)arg2;
 - (void)waitForMyriadDecisionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 

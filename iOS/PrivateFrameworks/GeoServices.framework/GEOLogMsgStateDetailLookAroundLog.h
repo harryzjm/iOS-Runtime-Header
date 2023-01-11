@@ -13,20 +13,19 @@
 @interface GEOLogMsgStateDetailLookAroundLog : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     double _durationSec;
     NSMutableArray *_lookAroundPipRecords;
     NSMutableArray *_lookAroundViewRecords;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _poisShown;
     struct {
         unsigned int has_durationSec:1;
         unsigned int has_poisShown:1;
         unsigned int read_lookAroundPipRecords:1;
         unsigned int read_lookAroundViewRecords:1;
-        unsigned int wrote_durationSec:1;
-        unsigned int wrote_lookAroundPipRecords:1;
-        unsigned int wrote_lookAroundViewRecords:1;
-        unsigned int wrote_poisShown:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,26 +41,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)lookAroundViewRecordsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lookAroundViewRecordsCount;
-- (void)_addNoFlagsLookAroundViewRecords:(id)arg1;
 - (void)addLookAroundViewRecords:(id)arg1;
 - (void)clearLookAroundViewRecords;
 @property(retain, nonatomic) NSMutableArray *lookAroundViewRecords;
-- (void)_readLookAroundViewRecords;
 - (id)lookAroundPipRecordsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lookAroundPipRecordsCount;
-- (void)_addNoFlagsLookAroundPipRecords:(id)arg1;
 - (void)addLookAroundPipRecords:(id)arg1;
 - (void)clearLookAroundPipRecords;
 @property(retain, nonatomic) NSMutableArray *lookAroundPipRecords;
-- (void)_readLookAroundPipRecords;
 @property(nonatomic) _Bool hasPoisShown;
 @property(nonatomic) unsigned int poisShown;
 @property(nonatomic) _Bool hasDurationSec;
 @property(nonatomic) double durationSec;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

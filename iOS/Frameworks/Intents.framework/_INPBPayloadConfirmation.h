@@ -19,7 +19,6 @@
         unsigned int reason:1;
         unsigned int addTasksIntentTargetTaskListConfirmationReason:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _startCallIntentContactsConfirmationReason;
     int _reason;
     int _addTasksIntentTargetTaskListConfirmationReason;
@@ -27,12 +26,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int addTasksIntentTargetTaskListConfirmationReason; // @synthesize addTasksIntentTargetTaskListConfirmationReason=_addTasksIntentTargetTaskListConfirmationReason;
 @property(nonatomic) int reason; // @synthesize reason=_reason;
 @property(nonatomic) int startCallIntentContactsConfirmationReason; // @synthesize startCallIntentContactsConfirmationReason=_startCallIntentContactsConfirmationReason;
 @property(retain, nonatomic) _INPBSelectionItem *confirmationItem; // @synthesize confirmationItem=_confirmationItem;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

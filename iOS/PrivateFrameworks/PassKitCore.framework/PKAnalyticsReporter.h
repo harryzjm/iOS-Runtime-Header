@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, RTCReporting, RTCSecureHierarchyToken;
+@class NSData, NSString, RTCReporting, RTCSecureHierarchyToken;
 
 @interface PKAnalyticsReporter : NSObject
 {
@@ -14,6 +14,7 @@
     RTCReporting *_session;
     RTCSecureHierarchyToken *_sessionToken;
     struct os_unfair_lock_s _lockArchive;
+    NSString *_subject;
 }
 
 + (id)archivedSessionTokenForSubject:(id)arg1;
@@ -25,6 +26,9 @@
 + (void)beginSubjectReporting:(id)arg1;
 + (id)reporterForSubject:(id)arg1;
 + (id)subjectDictionary;
++ (void)reportDashboardEventIfNecessary:(id)arg1 forPass:(id)arg2;
++ (id)subjectToReportDashboardAnalyticsForAccount:(id)arg1;
++ (id)subjectToReportDashboardAnalyticsForPass:(id)arg1;
 - (void).cxx_destruct;
 - (void)sendEvent:(id)arg1;
 - (id)archivedSessionToken;

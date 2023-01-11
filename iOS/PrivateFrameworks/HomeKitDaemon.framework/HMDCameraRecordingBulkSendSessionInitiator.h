@@ -15,33 +15,36 @@
 @interface HMDCameraRecordingBulkSendSessionInitiator : HMFObject <HMFLogging, HMDDataStreamBulkSendListener>
 {
     _Bool _hasRegisteredBulkSendListener;
-    _Bool _canSendBulkSendSessionOpenRequest;
-    NSString *_logIndentifier;
+    _Bool _canOpenBulkSendSession;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHAPAccessory *_accessory;
-    CDUnknownBlockType _pendingStartSessionCallback;
+    CDUnknownBlockType _pendingOpenSessionCallback;
+    NSString *_pendingOpenSessionReason;
 }
 
 + (id)logCategory;
-@property(copy) CDUnknownBlockType pendingStartSessionCallback; // @synthesize pendingStartSessionCallback=_pendingStartSessionCallback;
-@property _Bool canSendBulkSendSessionOpenRequest; // @synthesize canSendBulkSendSessionOpenRequest=_canSendBulkSendSessionOpenRequest;
+- (void).cxx_destruct;
+@property(copy) NSString *pendingOpenSessionReason; // @synthesize pendingOpenSessionReason=_pendingOpenSessionReason;
+@property(copy) CDUnknownBlockType pendingOpenSessionCallback; // @synthesize pendingOpenSessionCallback=_pendingOpenSessionCallback;
+@property _Bool canOpenBulkSendSession; // @synthesize canOpenBulkSendSession=_canOpenBulkSendSession;
 @property _Bool hasRegisteredBulkSendListener; // @synthesize hasRegisteredBulkSendListener=_hasRegisteredBulkSendListener;
 @property(readonly) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly) NSString *logIndentifier; // @synthesize logIndentifier=_logIndentifier;
-- (void).cxx_destruct;
+- (id)logIdentifier;
 @property(readonly, getter=isSessionOpenInProgress) _Bool sessionOpenInProgress;
-- (void)_callPendingStartSessionCallbackWithSession:(id)arg1 error:(id)arg2;
-- (void)callPendingStartSessionCallback:(id)arg1 error:(id)arg2;
-- (void)_startBulkSendSession;
-- (void)openNewSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_callPendingOpenSessionCallbackWithResult:(id)arg1 error:(id)arg2;
+- (void)callPendingOpenSessionCallbackWithResult:(id)arg1 error:(id)arg2;
+- (void)_openBulkSendSessionWithReason:(id)arg1;
+- (void)openNewSessionWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)accessoryDidCloseDataStream:(id)arg1;
 - (void)accessoryDidStartListening:(id)arg1;
 - (void)accessory:(id)arg1 didReceiveBulkSessionCandidate:(id)arg2;
 - (void)_registerAsBulkSendListener;
 - (void)handleAccessoryDoesSupportBulkSendDataStream:(id)arg1;
+- (void)dealloc;
+- (void)shutDown;
 - (void)start;
-- (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2 logIdentifier:(id)arg3;
+- (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,7 +9,7 @@
 #import <WorkflowUI/UINavigationControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFAutomationSummaryViewControllerDelegate-Protocol.h>
 
-@class NSString, UINavigationController, WFAutomationSummaryViewController, WFConfiguredTriggerRecord, WFDatabase, WFTrigger, WFTriggerManager, WFWorkflow, WFWorkflowReference;
+@class NSString, UINavigationController, WFAutomationSummaryViewController, WFConfiguredTriggerRecord, WFDatabase, WFEditAutomationWorkflowStorage, WFTrigger, WFTriggerManager, WFWorkflow, WFWorkflowReference;
 @protocol WFEditAutomationCoordinatorDelegate;
 
 @interface WFEditAutomationCoordinator : NSObject <UINavigationControllerDelegate, WFAutomationSummaryViewControllerDelegate>
@@ -22,12 +22,15 @@
     NSString *_triggerIdentifier;
     WFTrigger *_trigger;
     WFWorkflowReference *_workflowReference;
-    WFWorkflow *_workflow;
+    WFEditAutomationWorkflowStorage *_editingStorage;
+    WFWorkflow *_editingWorkflow;
     WFAutomationSummaryViewController *_automationSummaryViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) WFAutomationSummaryViewController *automationSummaryViewController; // @synthesize automationSummaryViewController=_automationSummaryViewController;
-@property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
+@property(retain, nonatomic) WFWorkflow *editingWorkflow; // @synthesize editingWorkflow=_editingWorkflow;
+@property(retain, nonatomic) WFEditAutomationWorkflowStorage *editingStorage; // @synthesize editingStorage=_editingStorage;
 @property(readonly, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
 @property(retain, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
 @property(readonly, copy, nonatomic) NSString *triggerIdentifier; // @synthesize triggerIdentifier=_triggerIdentifier;
@@ -36,7 +39,6 @@
 @property(retain, nonatomic) WFDatabase *database; // @synthesize database=_database;
 @property(nonatomic) __weak id <WFEditAutomationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
-- (void).cxx_destruct;
 - (void)updateUIForShowingViewController:(id)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;

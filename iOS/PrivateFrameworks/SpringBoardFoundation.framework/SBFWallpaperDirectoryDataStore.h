@@ -18,9 +18,9 @@
 }
 
 + (id)defaultDirectoryURL;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool supportsWallpaperOptions; // @synthesize supportsWallpaperOptions=_supportsWallpaperOptions;
 @property(readonly, copy, nonatomic) NSURL *directoryURL; // @synthesize directoryURL=_directoryURL;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -65,7 +65,6 @@
 - (id)wallpaperThumbnailDataForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (_Bool)hasWallpaperImageForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)wallpaperImageForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
-- (id)wallpaperImageDataForVariant:(long long)arg1 wallpaperMode:(long long)arg2 error:(id *)arg3;
 - (id)wallpaperThumbnailURLForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)wallpaperOriginalImageURLForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)wallpaperImageURLForVariant:(long long)arg1 wallpaperMode:(long long)arg2;

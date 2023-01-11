@@ -20,6 +20,7 @@
     double _secondsToRun;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double secondsToRun; // @synthesize secondsToRun=_secondsToRun;
 - (double)longTimeInterval;
 - (void)_setupReadSource:(int)arg1 address:(struct sockaddr_in)arg2 icmID:(unsigned short)arg3 queue:(id)arg4 completionHander:(CDUnknownBlockType)arg5;

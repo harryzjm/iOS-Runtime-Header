@@ -7,6 +7,13 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (SXAdditions)
++ (id)colorWithHue:(double)arg1 saturation:(double)arg2 lightness:(double)arg3 alpha:(double)arg4;
+- (double)relativeLuminance;
+- (id)invertedLightness;
+- (_Bool)getHue:(double *)arg1 saturation:(double *)arg2 lightness:(double *)arg3 alpha:(double *)arg4;
+- (id)hex;
+- (id)invertedBrightness;
+- (id)invertedRGB;
 - (void)_getHSBA:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) double brightness;
 - (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;

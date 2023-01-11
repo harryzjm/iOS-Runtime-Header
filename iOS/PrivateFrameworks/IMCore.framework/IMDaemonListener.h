@@ -30,6 +30,7 @@
     _Bool _hasPendingProcessChange;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *persistentProperties; // @synthesize persistentProperties=_persistentProperties;
 @property(readonly, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
 @property(readonly, nonatomic) _Bool hasPostedSetupComplete; // @synthesize hasPostedSetupComplete=_postedSetupComplete;
@@ -40,7 +41,6 @@
 @property(readonly, nonatomic) NSArray *handlers; // @synthesize handlers=_handlers;
 @property(nonatomic, setter=_setHidingDisconnect:) _Bool _hidingDisconnect; // @synthesize _hidingDisconnect;
 @property(readonly, nonatomic) NSMutableDictionary *_contexts; // @synthesize _contexts;
-- (void).cxx_destruct;
 - (void)oneTimeCodesDidChange:(id)arg1;
 - (void)pendingNicknamesOrHandledNicknamesDidChange;
 - (void)updatePersonalNickname:(id)arg1;
@@ -50,7 +50,6 @@
 - (void)updateNicknameData:(id)arg1;
 - (void)nicknameRequestResponse:(id)arg1 encodedNicknameData:(id)arg2;
 - (void)receivedUrgentRequestForMessages:(id)arg1;
-- (void)returnMOCEnabledState:(unsigned long long)arg1;
 - (void)updateCloudKitStateWithDictionary:(id)arg1;
 - (void)updateCloudKitState;
 - (void)didAttemptToDisableAllDevicesResult:(_Bool)arg1;
@@ -102,6 +101,7 @@
 - (void)displayPinCodeForAccount:(id)arg1 pinCode:(id)arg2 deviceName:(id)arg3 deviceType:(id)arg4 phoneNumber:(id)arg5;
 - (void)account:(id)arg1 buddyPictureChanged:(id)arg2 imageData:(id)arg3 imageHash:(id)arg4;
 - (void)account:(id)arg1 buddyPropertiesChanged:(id)arg2;
+- (void)networkDataAvailabilityChanged:(_Bool)arg1;
 - (void)vcCapabilitiesChanged:(unsigned long long)arg1;
 - (void)account:(id)arg1 capabilitiesChanged:(unsigned long long)arg2;
 - (void)account:(id)arg1 statusChanged:(id)arg2;

@@ -18,8 +18,8 @@
 - (void)requestHideAndExitFullscreen;
 - (void)exitFullscreen;
 - (void)enterFullscreen:(id)arg1 mode:(unsigned int)arg2;
-- (struct HTMLVideoElement *)videoElement;
-- (void)setVideoElement:(struct HTMLVideoElement *)arg1;
+- (NakedPtr_311734dd)videoElement;
+- (void)setVideoElement:(NakedPtr_311734dd)arg1;
 - (id)init;
 
 @end

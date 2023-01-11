@@ -8,7 +8,7 @@
 
 #import <Navigation/MNLocationRecorder-Protocol.h>
 
-@class GEOComposedRouteLeg, MNTrace, NSDate, NSMapTable, NSString;
+@class GEOComposedRouteSegment, MNTrace, NSDate, NSMapTable, NSString;
 @protocol MNTraceRecorderBackgroundGuard;
 
 @interface MNTraceRecorder : NSObject <MNLocationRecorder>
@@ -65,7 +65,7 @@
     unsigned long long _etaTrafficUpdateCount;
     NSMapTable *_commuteDirectionsRequests;
     NSMapTable *_eventsPendingLocationReference;
-    GEOComposedRouteLeg *_currentLeg;
+    GEOComposedRouteSegment *_currentSegment;
     CDUnknownBlockType _timeSinceRecordingBeganHandler;
     CDUnknownBlockType _errorHandler;
     _Bool _lastPauseSpokenAudio;
@@ -74,11 +74,11 @@
     id <MNTraceRecorderBackgroundGuard> _backgroundGuardDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <MNTraceRecorderBackgroundGuard> backgroundGuardDelegate; // @synthesize backgroundGuardDelegate=_backgroundGuardDelegate;
 @property(copy, nonatomic) CDUnknownBlockType timeSinceRecordingBeganHandler; // @synthesize timeSinceRecordingBeganHandler=_timeSinceRecordingBeganHandler;
 @property(retain, nonatomic) NSDate *recordingStartTime; // @synthesize recordingStartTime=_recordingStartTime;
 @property(readonly, nonatomic) MNTrace *trace; // @synthesize trace=_trace;
-- (void).cxx_destruct;
 - (void)_executeStatementForQuery:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_updateNavigationEventsWithLocationReference:(id)arg1;
 - (void)recordDirectionsFeedback:(id)arg1;
@@ -106,7 +106,7 @@
 - (void)recordRouteError:(id)arg1;
 - (void)recordRouteError:(id)arg1 forRouteRequest:(id)arg2;
 - (void)recordRouteResponse:(id)arg1 forRouteRequest:(id)arg2;
-- (void)recordRouteRequest:(id)arg1 waypoints:(id)arg2;
+- (void)recordRouteRequest:(id)arg1 waypoints:(id)arg2 timeSinceRecordingBegan:(double)arg3;
 - (void)recordDirectionsRequest:(id)arg1 response:(id)arg2 error:(id)arg3 waypoints:(id)arg4 requestTimestamp:(double)arg5 responseTimestamp:(double)arg6;
 - (void)endTransaction;
 - (void)beginTransaction;
@@ -117,8 +117,8 @@
 - (void)recordTraceEvent:(id)arg1;
 - (void)recordGuidanceWasEnded;
 - (void)recordGuidanceWasEndedAtTime:(double)arg1;
-- (void)recordGuidanceWasStartedForRouteLeg:(id)arg1;
-- (void)recordGuidanceWasStartedForRouteLeg:(id)arg1 timestamp:(double)arg2;
+- (void)recordGuidanceWasStartedForRouteSegment:(id)arg1;
+- (void)recordGuidanceWasStartedForRouteSegment:(id)arg1 timestamp:(double)arg2;
 - (void)recordActiveTransportType:(int)arg1 timestamp:(double)arg2;
 - (void)resetLocationsForSimulation;
 - (void)setRouteGenius:(_Bool)arg1;
@@ -151,6 +151,7 @@
 - (void)setDestinationSearchResultData:(id)arg1;
 - (void)setOriginSearchResultData:(id)arg1;
 - (void)_prepareStatements;
+- (void)_updateForExistingTrace;
 - (void)_initializeTraceDB;
 - (void)_createTrace;
 - (void)_openExistingTrace;

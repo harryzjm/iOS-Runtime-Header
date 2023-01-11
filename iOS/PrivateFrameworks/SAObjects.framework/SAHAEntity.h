@@ -30,10 +30,10 @@
 @property(copy, nonatomic) NSURL *homeIdentifier;
 @property(copy, nonatomic) NSString *home;
 @property(copy, nonatomic) NSString *hashedRouteUID;
+@property(copy, nonatomic) NSString *groupType;
 @property(copy, nonatomic) NSString *entityType;
 @property(copy, nonatomic) NSNumber *currentDevice;
 @property(copy, nonatomic) NSArray *attributes;
-@property(copy, nonatomic) NSString *accessoryType;
 @property(copy, nonatomic) NSURL *accessoryIdentifier;
 @property(copy, nonatomic) NSString *accessory;
 - (id)encodedClassName;

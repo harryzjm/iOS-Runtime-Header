@@ -13,20 +13,18 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *selectedFriend;
     MISSING_TYPE *refreshReason;
-    MISSING_TYPE *serverInteractionController;
+    MISSING_TYPE *interactionController;
     MISSING_TYPE *apsConnectionHandler;
     MISSING_TYPE *tapContexts;
     MISSING_TYPE *refreshQueue;
+    MISSING_TYPE *callbackInterval;
     MISSING_TYPE *minCallbackInterval;
     MISSING_TYPE *maxCallbackInterval;
-    MISSING_TYPE *backgroundCallbackInterval;
     MISSING_TYPE *lastRefreshTime;
-    MISSING_TYPE *lastForegroundTime;
     MISSING_TYPE *refreshTimer;
     MISSING_TYPE *initializedOnce;
     MISSING_TYPE *firstRefreshCompleted;
     MISSING_TYPE *isRefreshing;
-    MISSING_TYPE *isBackgrounded;
 }
 
 - (void)refreshTimerFired;

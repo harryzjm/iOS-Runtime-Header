@@ -16,9 +16,9 @@
 + (void)recursivelyAddAttachment:(id)arg1 toMutableSet:(id)arg2;
 + (id)unsupportedFolderIdentifiersWithContext:(id)arg1;
 + (void)recursivelyAddFolder:(id)arg1 toMutableSet:(id)arg2;
-+ (id)predicateForSupportedAttachments;
-+ (id)predicateForSupportedNotes;
-+ (id)predicateForSupportedFolders;
++ (id)predicateForSupportedAttachmentsInContext:(id)arg1;
++ (id)predicateForSupportedNotesInContext:(id)arg1;
++ (id)predicateForSupportedFoldersInContext:(id)arg1;
 
 @end
 

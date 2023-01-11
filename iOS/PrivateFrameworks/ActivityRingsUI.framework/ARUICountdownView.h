@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARUICountdownController;
+@class ARUIRingGroupController;
 
 @interface ARUICountdownView
 {
-    ARUICountdownController *_countdownController;
 }
 
++ (id)countdownViewConfiguredForDisplayWithRingDiameter:(float)arg1;
 + (id)countdownViewConfiguredForCompanion;
 + (id)countdownViewConfiguredForWatch;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) ARUICountdownController *countdownController;
-- (id)initWithCountdownController:(id)arg1;
+- (id)backingTrackRingGroup;
+- (id)ringGroup;
+@property(readonly, nonatomic) ARUIRingGroupController *countdownController;
 
 @end
 

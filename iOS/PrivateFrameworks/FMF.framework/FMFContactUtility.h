@@ -15,14 +15,15 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
-- (void).cxx_destruct;
 - (id)contactKeys;
 - (id)findOptimalContactInContacts:(id)arg1;
 - (id)getContactForHandle:(id)arg1 keysToFetch:(id)arg2;
 - (id)getContactForHandle:(id)arg1;
 - (id)displayNameForContact:(id)arg1 andHandle:(id)arg2;
+- (id)shortDisplayNameForContact:(id)arg1 andHandle:(id)arg2;
 
 @end
 

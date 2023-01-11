@@ -13,10 +13,7 @@
     CKRecordZoneID *_zoneID;
 }
 
-@property(retain) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 - (void).cxx_destruct;
-- (id)recordFromEventData:(id)arg1 event:(id)arg2;
-- (id)eventDataFromRecord:(id)arg1;
 - (id)eventIDsFromRecordIDsAndTypes:(id)arg1;
 - (id)recordIDsFromEventIDs:(id)arg1;
 - (id)recordsFromEvents:(id)arg1;

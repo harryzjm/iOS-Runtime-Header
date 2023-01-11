@@ -10,7 +10,7 @@
 @class NSDate, NSSet, NSString;
 
 @protocol PLSyncableAsset <NSObject, PLSyncableObject>
-@property(readonly, nonatomic) _Bool hasAdjustmentsOrLegacyAdjustments;
+@property(readonly, nonatomic) _Bool hasAdjustments;
 @property(readonly, copy, nonatomic) NSString *syncedAdjustmentFingerprint;
 @property(readonly, nonatomic) id faceAdjustmentVersion;
 @property(readonly, copy, nonatomic) NSDate *dateForComparingAdjustmentVersions;

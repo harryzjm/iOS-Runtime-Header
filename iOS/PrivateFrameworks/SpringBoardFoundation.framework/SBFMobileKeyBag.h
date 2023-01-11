@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_queue_observerStateChangedCallbackBlocks;
     NSHashTable *_queue_observers;
+    NSMutableArray *_queue_performAfterFirstUnlockBlocks;
     _Bool _queue_hasPasscodeSet;
     _Bool _queue_hasUnlockedSinceBoot;
 }
@@ -26,6 +27,7 @@
 - (void)_queue_createStashBag:(id)arg1;
 - (void)_queue_handleKeybagStatusChanged;
 - (void)_queue_firstUnlockOccurred;
+- (void)performAfterFirstUnlockSinceBootUsingBlock:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)waitForUnlockWithTimeout:(float)arg1;

@@ -11,6 +11,7 @@
 
 @interface PUExitEditPerformanceEventBuilder : NSObject
 {
+    _Bool _firstSinceLaunch;
     _Bool _editingWithRaw;
     id <PUEditableAsset> _asset;
     long long _sessionEndReason;
@@ -18,12 +19,13 @@
     PICompositionController *_compositionController;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property(nonatomic) double exitEditDuration; // @synthesize exitEditDuration=_exitEditDuration;
 @property(nonatomic) long long sessionEndReason; // @synthesize sessionEndReason=_sessionEndReason;
 @property(nonatomic, getter=isEditingWithRaw) _Bool editingWithRaw; // @synthesize editingWithRaw=_editingWithRaw;
+@property(nonatomic, getter=isFirstSinceLaunch) _Bool firstSinceLaunch; // @synthesize firstSinceLaunch=_firstSinceLaunch;
 @property(retain, nonatomic) id <PUEditableAsset> asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
 - (id)buildEvent;
 
 @end

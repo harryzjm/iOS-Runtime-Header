@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLCloudChangeTracker-Protocol.h>
 
-@class NSManagedObjectContext, NSPersistentHistoryToken, NSString;
+@class NSManagedObjectContext, NSPersistentHistoryToken, NSString, PLChangeHandlingNotificationObserver;
 @protocol OS_dispatch_queue, PLCloudChangeTrackerDelegate;
 
 @interface PLCloudPersistentHistoryChangeTracker : NSObject <PLCloudChangeTracker>
@@ -16,15 +16,15 @@
     NSPersistentHistoryToken *_lastKnownToken;
     NSPersistentHistoryToken *_lastKnownDeletionToken;
     NSManagedObjectContext *_context;
-    int _notifyToken;
+    PLChangeHandlingNotificationObserver *_notificationObserver;
     NSObject<OS_dispatch_queue> *_isolationQueue;
     id <PLCloudChangeTrackerDelegate> _delegate;
 }
 
 + (id)unarchiveTokentWithData:(id)arg1;
 + (id)archivedDataWithToken:(id)arg1;
-@property(nonatomic) __weak id <PLCloudChangeTrackerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PLCloudChangeTrackerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateLastKnownDeletionTokenToToken:(id)arg1;
 - (void)updateLastKnownDeletionTokenToResult:(id)arg1;
 - (void)_updateLastKnownTokensToToken:(id)arg1;
@@ -34,9 +34,9 @@
 - (id)eventsResultFromPersistentHistoryToken:(id)arg1;
 - (id)fetchDeletionEvents;
 - (id)fetchAllEvents;
-- (void)_unregisterToChangeHubNotification;
-- (unsigned int)_registerToChangeHubNotification;
-- (void)changeTrackerDidReceiveChanges;
+- (void)_unregisterForChangeHandlingNotifications;
+- (void)_registerForChangeHandlingNotifications;
+- (void)changeTrackerDidReceiveChangesWithTransaction:(id)arg1;
 - (_Bool)isConnected;
 - (void)disconnect;
 - (void)saveLastKnownChangeTrackerTokenToDisk;

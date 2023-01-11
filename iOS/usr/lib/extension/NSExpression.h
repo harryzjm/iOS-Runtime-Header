@@ -40,7 +40,7 @@
 + (id)expressionForVariable:(id)arg1;
 + (id)expressionForEvaluatedObject;
 + (id)expressionForConstantValue:(id)arg1;
-+ (id)expressionWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
++ (id)expressionWithFormat:(id)arg1 arguments:(char *)arg2;
 + (id)expressionWithFormat:(id)arg1;
 + (id)expressionWithFormat:(id)arg1 argumentArray:(id)arg2;
 - (id)_expressionWithSubstitutionVariables:(id)arg1;

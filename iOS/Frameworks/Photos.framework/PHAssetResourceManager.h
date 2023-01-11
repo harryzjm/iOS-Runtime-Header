@@ -21,7 +21,7 @@
 + (unsigned long long)_nextManagerID;
 + (id)defaultManager;
 - (void).cxx_destruct;
-- (void)assetResourceRequestDidFinish:(id)arg1;
+- (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
 - (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
 - (int)_nextRequestID;
 - (void)_autoResolveReferencedResources:(id)arg1 folderURL:(id)arg2 resourceClient:(id)arg3;

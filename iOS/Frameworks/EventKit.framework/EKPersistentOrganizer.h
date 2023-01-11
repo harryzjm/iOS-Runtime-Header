@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL;
+@class NSString;
 
 @interface EKPersistentOrganizer
 {
@@ -14,17 +14,19 @@
 + (id)relations;
 + (id)defaultPropertiesToLoad;
 + (id)organizerWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(_Bool)arg4;
+- (void)setScheduleAgent:(long long)arg1;
+- (long long)scheduleAgent;
 - (id)owner;
 - (void)setOwner:(id)arg1;
-@property(nonatomic, getter=isCurrentUser) _Bool currentUser; // @dynamic currentUser;
+@property(nonatomic) _Bool isCurrentUser; // @dynamic isCurrentUser;
 - (int)entityType;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(_Bool)arg4;
 
 // Remaining properties
-@property(retain, nonatomic) NSURL *address; // @dynamic address;
-@property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
+@property(retain, nonatomic) NSString *URL; // @dynamic URL;
+@property(retain, nonatomic) NSString *displayNameRaw; // @dynamic displayNameRaw;
 @property(retain, nonatomic) NSString *emailAddress; // @dynamic emailAddress;
 
 @end

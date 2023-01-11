@@ -18,7 +18,7 @@
 #import <DocumentCamera/UINavigationControllerDelegate-Protocol.h>
 #import <DocumentCamera/UIScrollViewDelegate-Protocol.h>
 
-@class AVCaptureConnection, AVCaptureDeviceInput, AVCapturePhotoOutput, AVCapturePhotoSettings, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, BKSAccelerometer, CIContext, ICDocCamDebugMovieController, ICDocCamDocumentInfo, ICDocCamDocumentInfoCollection, ICDocCamImageCache, ICDocCamImageQuad, ICDocCamImageSequenceAnalyzer, ICDocCamOverlayView, ICDocCamPhysicalCaptureNotifier, ICDocCamPhysicalCaptureRecognizer, ICDocCamPreviewView, ICDocCamProcessingBlocker, ICDocCamRectangleResultsQueue, ICDocCamSaveButton, ICDocCamShutterButton, ICDocCamSpinner, ICDocCamThumbnailCollectionViewController, ICDocCamThumbnailContainerView, NSArray, NSData, NSDate, NSIndexPath, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSObject, NSString, UIButton, UIColor, UIImage, UILabel, UIScrollView, UITapGestureRecognizer, UIView;
+@class AVCaptureConnection, AVCaptureDeviceInput, AVCapturePhotoOutput, AVCapturePhotoSettings, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, BKSAccelerometer, CIContext, ICDocCamDebugMovieController, ICDocCamDocumentInfo, ICDocCamDocumentInfoCollection, ICDocCamImageCache, ICDocCamImageQuad, ICDocCamImageSequenceAnalyzer, ICDocCamOverlayView, ICDocCamPhysicalCaptureNotifier, ICDocCamPhysicalCaptureRecognizer, ICDocCamPreviewView, ICDocCamProcessingBlocker, ICDocCamRectangleResultsQueue, ICDocCamSaveButton, ICDocCamShutterButton, ICDocCamSpinner, ICDocCamThumbnailCollectionViewController, ICDocCamThumbnailContainerView, NSArray, NSData, NSDate, NSIndexPath, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSObject, NSString, UIButton, UIColor, UIImage, UILabel, UIScrollView, UITapGestureRecognizer, UIView, VNRectangleObservation;
 @protocol ICDocCamViewControllerDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICDocCamViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, ICDocCamThumbnailViewDelegate, ICDocCamExtractedDocumentControllerDelegate, ICDocCamProcessingBlockerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate, UINavigationControllerDelegate, DCUnsavedDataDelegate, ICDocCamDebugMovieControllerDelegate, ICDocCamPhysicalCaptureNotifierDelegate>
@@ -58,9 +58,11 @@
     float _rectangleQuadratureTolerance;
     float _rectangleMinimumSize;
     float _rectangleMinimumConfidence;
+    float _rectangleMinimumVisualConfidence;
     float _rectangleStabilityStdDev;
     ICDocCamThumbnailContainerView *_thumbnailContainerView;
     ICDocCamThumbnailCollectionViewController *_thumbnailViewController;
+    long long _setupResult;
     ICDocCamPreviewView *_previewView;
     UIView *_cameraUnavailableScrim;
     UIView *_cameraUnavailableView;
@@ -114,7 +116,6 @@
     AVCaptureVideoPreviewLayer *_videoPreviewLayer;
     long long _statusBarOrientation;
     UIColor *_cameraHighlightColor;
-    long long _setupResult;
     ICDocCamImageSequenceAnalyzer *_vkAnalyzer;
     ICDocCamRectangleResultsQueue *_rectResultsQueue;
     id <ICDocCamViewControllerDelegate> _delegate;
@@ -136,6 +137,7 @@
     ICDocCamProcessingBlocker *_snapStillImageBlocker;
     long long _snapStillImageMode;
     ICDocCamImageQuad *_backupQuad;
+    VNRectangleObservation *_lastHighConfidenceRectangle;
     NSMutableArray *_filterButtons;
     UIView *_filterView;
     UIButton *_filterViewButton;
@@ -193,6 +195,7 @@
 + (void)registerDefaults;
 + (void)initialize;
 + (CDStruct_d80e62f2)cameraIntrinsicMatrixForWidth:(float)arg1 height:(float)arg2 pixelFocalLength:(float)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool scanMovieRecordingDontShowWarning; // @synthesize scanMovieRecordingDontShowWarning=_scanMovieRecordingDontShowWarning;
 @property(nonatomic) _Bool scanMovieRecordingEnabled; // @synthesize scanMovieRecordingEnabled=_scanMovieRecordingEnabled;
 @property(nonatomic) __weak UIButton *recordButton; // @synthesize recordButton=_recordButton;
@@ -252,6 +255,7 @@
 @property(nonatomic) __weak UIButton *filterViewButton; // @synthesize filterViewButton=_filterViewButton;
 @property(nonatomic) __weak UIView *filterView; // @synthesize filterView=_filterView;
 @property(retain, nonatomic) NSMutableArray *filterButtons; // @synthesize filterButtons=_filterButtons;
+@property(retain, nonatomic) VNRectangleObservation *lastHighConfidenceRectangle; // @synthesize lastHighConfidenceRectangle=_lastHighConfidenceRectangle;
 @property(retain, nonatomic) ICDocCamImageQuad *backupQuad; // @synthesize backupQuad=_backupQuad;
 @property(nonatomic) long long snapStillImageMode; // @synthesize snapStillImageMode=_snapStillImageMode;
 @property(nonatomic) _Bool didAddAppLifetimeObservers; // @synthesize didAddAppLifetimeObservers=_didAddAppLifetimeObservers;
@@ -268,6 +272,7 @@
 @property _Bool rectangleDetectionEnabled; // @synthesize rectangleDetectionEnabled=_rectangleDetectionEnabled;
 @property float rectangleStabilityStdDev; // @synthesize rectangleStabilityStdDev=_rectangleStabilityStdDev;
 @property long long rectangleMaximumNumber; // @synthesize rectangleMaximumNumber=_rectangleMaximumNumber;
+@property float rectangleMinimumVisualConfidence; // @synthesize rectangleMinimumVisualConfidence=_rectangleMinimumVisualConfidence;
 @property float rectangleMinimumConfidence; // @synthesize rectangleMinimumConfidence=_rectangleMinimumConfidence;
 @property float rectangleMinimumSize; // @synthesize rectangleMinimumSize=_rectangleMinimumSize;
 @property float rectangleQuadratureTolerance; // @synthesize rectangleQuadratureTolerance=_rectangleQuadratureTolerance;
@@ -293,7 +298,6 @@
 @property(retain) ICDocCamRectangleResultsQueue *rectResultsQueue; // @synthesize rectResultsQueue=_rectResultsQueue;
 @property(retain, nonatomic) ICDocCamImageSequenceAnalyzer *vkAnalyzer; // @synthesize vkAnalyzer=_vkAnalyzer;
 @property(nonatomic, getter=isSessionRunning) _Bool sessionRunning; // @synthesize sessionRunning=_sessionRunning;
-@property(nonatomic) long long setupResult; // @synthesize setupResult=_setupResult;
 @property(retain, nonatomic) UIColor *cameraHighlightColor; // @synthesize cameraHighlightColor=_cameraHighlightColor;
 @property(nonatomic) struct CGSize viewBoundsSize; // @synthesize viewBoundsSize=_viewBoundsSize;
 @property(nonatomic) long long statusBarOrientation; // @synthesize statusBarOrientation=_statusBarOrientation;
@@ -351,9 +355,10 @@
 @property(nonatomic) __weak UIView *cameraUnavailableView; // @synthesize cameraUnavailableView=_cameraUnavailableView;
 @property(nonatomic) __weak UIView *cameraUnavailableScrim; // @synthesize cameraUnavailableScrim=_cameraUnavailableScrim;
 @property(nonatomic) __weak ICDocCamPreviewView *previewView; // @synthesize previewView=_previewView;
+@property(nonatomic) long long setupResult; // @synthesize setupResult=_setupResult;
 @property(retain, nonatomic) ICDocCamThumbnailCollectionViewController *thumbnailViewController; // @synthesize thumbnailViewController=_thumbnailViewController;
 @property(retain, nonatomic) ICDocCamThumbnailContainerView *thumbnailContainerView; // @synthesize thumbnailContainerView=_thumbnailContainerView;
-- (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (_Bool)useGestureRecognizerForVolumeButtons;
 - (void)handlePhysicalButtonReleased:(long long)arg1;
 - (void)handlePhysicalButtonPressed:(long long)arg1;
@@ -402,7 +407,8 @@
 - (void)clearRectangles;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)snapStillImageWithMode:(long long)arg1;
-- (void)detectRectanglesAndSaveCapturedImage:(struct __CVBuffer *)arg1 metaData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectRectanglesAndSaveCapturedImage:(struct __CVBuffer *)arg1 metadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned int)imageOrientationFromDevice;
 - (id)detectRectanglesRequest;
 - (void)saveCapturedImage:(id)arg1 metaData:(id)arg2 rects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)cropAndFilterImage:(id)arg1 rects:(id)arg2 filterType:(short)arg3;
@@ -443,6 +449,8 @@
 - (void)removeAllNotifications;
 - (void)myApplicationDidBecomeActive:(id)arg1;
 - (void)myApplicationWillResignActive:(id)arg1;
+- (id)flashButtonImage;
+- (id)filterButtonImage;
 - (void)updateFilterChoiceButtonScrollPositionAnimated:(_Bool)arg1;
 - (void)updateAccessibilityFocusForHidingFlashSettingsUI;
 - (void)updateAccessibilityFocusForHidingFilterSettingsUI;
@@ -463,13 +471,14 @@
 - (void)setupCaptureSession;
 - (void)setAutoMode:(_Bool)arg1;
 - (_Bool)autoMode;
+- (void)retakeButtonWasPressed;
 - (void)disableRetakeMode;
 @property(readonly, nonatomic) _Bool isInRetakeMode;
+- (void)updateLabelColors;
 - (void)killFeedbackDisplayInternalIncludingUserPrompts:(_Bool)arg1;
 - (void)killFeedbackDisplayIncludingUserPrompts:(_Bool)arg1;
 - (void)enableUIElements:(_Bool)arg1;
 - (void)enableShutterButtonIfPossible;
-- (void)suppressImageHairlineThickeningForButtons:(id)arg1;
 - (void)updateAutoButtonTitleForAutoMode:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
@@ -483,6 +492,7 @@
 - (void)preWarmFilters;
 - (void)setUpUserDefaults;
 - (void)initializeUserInterface;
+- (void)traitCollectionDidChange:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (_Bool)prefersStatusBarHidden;
 - (void)viewSafeAreaInsetsDidChange;

@@ -48,7 +48,6 @@
 - (void)updateToRepresentLegacyCall:(id)arg1;
 - (void)updateAudioRouteButtonFor:(id)arg1;
 - (void)updateControlsVisibilityForExpandedState:(_Bool)arg1;
-- (void)didTapAudioRouteButton:(id)arg1;
 - (void)didTapMuteButton:(id)arg1;
 - (void)didTapToggleCameraButton:(id)arg1;
 - (void)didTapJoinLeaveButton:(id)arg1;
@@ -56,7 +55,9 @@
 - (void)didTapEffectsButton:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidLayoutSubviews;
+- (void)updateViewConstraints;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)didMoveToParentViewController:(id)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;

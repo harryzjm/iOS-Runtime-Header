@@ -13,24 +13,31 @@
 
 @interface CKMessageSearchResultCell : UICollectionViewCell <CKSearchResultCell>
 {
+    _Bool _ck_editing;
     NSString *_searchText;
     CALayer *_topHairline;
     CALayer *_bottomHairline;
     UITableViewCell<CKConversationSearchCellProtocol> *_searchCell;
     CKSpotlightQueryResult *_result;
-    struct UIEdgeInsets marginInsets;
+    struct UIEdgeInsets _marginInsets;
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKSpotlightQueryResult *result; // @synthesize result=_result;
 @property(retain, nonatomic) UITableViewCell<CKConversationSearchCellProtocol> *searchCell; // @synthesize searchCell=_searchCell;
-@property(retain, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
-@property(retain, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
+@property(readonly, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
+@property(readonly, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
 @property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
-@property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
-- (void).cxx_destruct;
+@property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing; // @synthesize _ck_editing;
+@property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
+- (unsigned long long)_viewConfigurationState;
+- (id)configurationState;
+- (void)forwardStateToEmbeddedCell:(unsigned long long)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)layoutSubviews;
+@property(nonatomic) double widthForDeterminingAvatarVisibility;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;

@@ -19,6 +19,7 @@
     NSMutableArray *_oauthSignerClients;
     NSMutableArray *_authenticationDialogManagerClients;
     NSMutableDictionary *_clientsByConnection;
+    unsigned int _clientCountMaximum;
     NSObject<OS_dispatch_queue> *_deferredConnectionResumeQueue;
     NSObject<OS_dispatch_semaphore> *_deferredConnectionResumeQueueSemaphore;
     NSObject<OS_dispatch_queue> *_performMigrationQueue;
@@ -36,6 +37,7 @@
     ACDDatabaseBackupActivity *_databaseBackupActivity;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ACDDatabaseBackupActivity *databaseBackupActivity; // @synthesize databaseBackupActivity=_databaseBackupActivity;
 @property(retain, nonatomic) id <ACDDatabaseProtocol> database; // @synthesize database=_database;
 @property(retain, nonatomic) id <ACDClientProviderProtocol> clientProvider; // @synthesize clientProvider=_clientProvider;
@@ -48,10 +50,10 @@
 @property(readonly, nonatomic) NSXPCListener *authenticationDialogListener; // @synthesize authenticationDialogListener=_authenticationDialogListener;
 @property(readonly, nonatomic) NSXPCListener *oauthSignerListener; // @synthesize oauthSignerListener=_oauthSignerListener;
 @property(readonly, nonatomic) NSXPCListener *accountStoreListener; // @synthesize accountStoreListener=_accountStoreListener;
-- (void).cxx_destruct;
 - (void)_beginObservingIDSProxyNotifications;
-- (void)credentialsDidChangeForAccountWithIdentifier:(id)arg1;
-- (void)accountStore:(id)arg1 didSaveAccount:(id)arg2;
+- (_Bool)_shouldNotifyClient:(id)arg1 ofChangesForAccountType:(id)arg2;
+- (void)credentialsDidChangeForAccount:(id)arg1;
+- (void)accountStore:(id)arg1 didSaveAccount:(id)arg2 changeType:(int)arg3;
 - (void)_handleLanguageChangedDarwinNotification;
 - (void)_endObservingLanguageChangeNotification;
 - (void)_beginObservingLanguageChangeNotfication;

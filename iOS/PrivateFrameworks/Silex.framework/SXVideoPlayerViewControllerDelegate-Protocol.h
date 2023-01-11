@@ -13,6 +13,8 @@
 - (void)videoPlayerViewControllerFinishedVideoPlayback:(SXVideoPlayerViewController *)arg1;
 
 @optional
+- (void)videoPlayerViewControllerWillExitFullscreen:(SXVideoPlayerViewController *)arg1;
+- (void)videoPlayerViewControllerWillEnterFullscreen:(SXVideoPlayerViewController *)arg1;
 - (_Bool)videoPlayerViewControllerShouldStartPlayback:(SXVideoPlayerViewController *)arg1;
 - (void)videoPlayerViewController:(SXVideoPlayerViewController *)arg1 resumedPlaybackOfVideo:(id <SXVideoProviding>)arg2;
 - (void)videoPlayerViewController:(SXVideoPlayerViewController *)arg1 pausedPlaybackOfVideo:(id <SXVideoProviding>)arg2;

@@ -14,9 +14,9 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) EDAMBootstrapSettings *settings; // @synthesize settings=_settings;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 
 @end
 

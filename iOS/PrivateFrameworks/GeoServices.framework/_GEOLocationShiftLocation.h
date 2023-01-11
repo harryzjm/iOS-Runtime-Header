@@ -20,16 +20,15 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _mustGoToNetworkCallback;
     CDUnknownBlockType _functionHandler;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    _Bool _recordCacheInfo;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(readonly, nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
 @property(readonly, nonatomic) GEOLatLng *latLng; // @synthesize latLng=_latLng;
-- (void).cxx_destruct;
 - (void)performMustGoToNetwork;
 - (void)performErrorHandler:(id)arg1;
-- (void)performCompletionHandlerWithShiftedCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 function:(id)arg3 wasFunctionCached:(_Bool)arg4;
+- (void)performCompletionHandlerWithShiftedCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 function:(id)arg3;
 - (void)_performOnCallbackQueue:(CDUnknownBlockType)arg1;
 - (id)initWithLatLng:(id)arg1 auditToken:(id)arg2 functionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 callbackQueue:(id)arg5;
 - (id)initWithLatLng:(id)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;

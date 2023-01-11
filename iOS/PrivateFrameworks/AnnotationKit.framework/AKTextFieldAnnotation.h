@@ -12,8 +12,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy) NSString *fieldName; // @synthesize fieldName=_fieldName;
 - (void).cxx_destruct;
+@property(copy) NSString *fieldName; // @synthesize fieldName=_fieldName;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

@@ -13,7 +13,6 @@
 @interface LOGMSGEVENTLogMsgEventRideBookingSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_destinationBlurred;
     double _distanceToPickupInMeters;
     double _durationOfSessionInSeconds;
@@ -25,6 +24,9 @@
     NSString *_rideBookingSessionId;
     NSString *_rideType;
     long long _timestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _endState;
     int _endView;
     unsigned int _numberOfAvailableExtensions;
@@ -61,29 +63,7 @@
         unsigned int read_rideAppVersion:1;
         unsigned int read_rideBookingSessionId:1;
         unsigned int read_rideType:1;
-        unsigned int wrote_destinationBlurred:1;
-        unsigned int wrote_distanceToPickupInMeters:1;
-        unsigned int wrote_durationOfSessionInSeconds:1;
-        unsigned int wrote_errorMessages:1;
-        unsigned int wrote_intentResponseFailures:1;
-        unsigned int wrote_originBlurred:1;
-        unsigned int wrote_rideAppId:1;
-        unsigned int wrote_rideAppVersion:1;
-        unsigned int wrote_rideBookingSessionId:1;
-        unsigned int wrote_rideType:1;
-        unsigned int wrote_timestamp:1;
-        unsigned int wrote_endState:1;
-        unsigned int wrote_endView:1;
-        unsigned int wrote_numberOfAvailableExtensions:1;
-        unsigned int wrote_statusIssue:1;
-        unsigned int wrote_comparedRideOptions:1;
-        unsigned int wrote_exploredOtherOptions:1;
-        unsigned int wrote_installedApp:1;
-        unsigned int wrote_movedPickupLocation:1;
-        unsigned int wrote_paymentIsApplePay:1;
-        unsigned int wrote_showedSurgePricingAlert:1;
-        unsigned int wrote_switchedApp:1;
-        unsigned int wrote_unavailable:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -99,15 +79,16 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)intentResponseFailureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)intentResponseFailuresCount;
-- (void)_addNoFlagsIntentResponseFailure:(id)arg1;
 - (void)addIntentResponseFailure:(id)arg1;
 - (void)clearIntentResponseFailures;
 @property(retain, nonatomic) NSMutableArray *intentResponseFailures;
-- (void)_readIntentResponseFailures;
 - (int)StringAsStatusIssue:(id)arg1;
 - (id)statusIssueAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatusIssue;
@@ -116,14 +97,11 @@
 @property(nonatomic) _Bool comparedRideOptions;
 @property(retain, nonatomic) NSString *rideAppVersion;
 @property(readonly, nonatomic) _Bool hasRideAppVersion;
-- (void)_readRideAppVersion;
 - (id)errorMessageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)errorMessagesCount;
-- (void)_addNoFlagsErrorMessage:(id)arg1;
 - (void)addErrorMessage:(id)arg1;
 - (void)clearErrorMessages;
 @property(retain, nonatomic) NSMutableArray *errorMessages;
-- (void)_readErrorMessages;
 @property(nonatomic) _Bool hasMovedPickupLocation;
 @property(nonatomic) _Bool movedPickupLocation;
 @property(nonatomic) _Bool hasUnavailable;
@@ -146,18 +124,14 @@
 @property(nonatomic) double distanceToPickupInMeters;
 @property(retain, nonatomic) NSString *rideType;
 @property(readonly, nonatomic) _Bool hasRideType;
-- (void)_readRideType;
 @property(nonatomic) _Bool hasExploredOtherOptions;
 @property(nonatomic) _Bool exploredOtherOptions;
 @property(retain, nonatomic) GEOLatLng *destinationBlurred;
 @property(readonly, nonatomic) _Bool hasDestinationBlurred;
-- (void)_readDestinationBlurred;
 @property(retain, nonatomic) GEOLatLng *originBlurred;
 @property(readonly, nonatomic) _Bool hasOriginBlurred;
-- (void)_readOriginBlurred;
 @property(retain, nonatomic) NSString *rideAppId;
 @property(readonly, nonatomic) _Bool hasRideAppId;
-- (void)_readRideAppId;
 - (int)StringAsEndView:(id)arg1;
 - (id)endViewAsString:(int)arg1;
 @property(nonatomic) _Bool hasEndView;
@@ -168,7 +142,8 @@
 @property(nonatomic) int endState;
 @property(retain, nonatomic) NSString *rideBookingSessionId;
 @property(readonly, nonatomic) _Bool hasRideBookingSessionId;
-- (void)_readRideBookingSessionId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

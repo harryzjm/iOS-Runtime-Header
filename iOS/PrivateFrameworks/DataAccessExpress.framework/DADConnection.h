@@ -24,16 +24,20 @@
     NSMutableDictionary *_inFlightCalendarDirectorySearches;
     NSMutableDictionary *_inFlightShareRequests;
     NSMutableDictionary *_inFlightOofSettingsRequests;
+    NSMutableDictionary *_inFlightOfficeHoursRequests;
     NSMutableDictionary *_inFlightGrantedDelegatesListRequests;
     NSMutableDictionary *_inFlightUpdateGrantedDelegatePermissionRequests;
+    NSMutableDictionary *_inFlightSubscribedCalendarDownloads;
     _Bool _registered;
 }
 
 + (unsigned long long)_nextStopMonitoringStatusToken;
 + (void)setShouldIgnoreAccountChanges;
 + (id)sharedConnection;
-@property(nonatomic) _Bool registered; // @synthesize registered=_registered;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool registered; // @synthesize registered=_registered;
+- (void)endCalDAVServerSimulationWithHostname:(id)arg1;
+- (void)beginCalDAVServerSimulationWithHostname:(id)arg1;
 - (void)_dispatchMessage:(id)arg1;
 - (void)_registerForAppResumedNotification;
 - (void)resetTimersAndWarnings;
@@ -42,6 +46,7 @@
 - (void)dealloc;
 - (id)_init;
 - (id)init;
+- (void)externalIdentificationInfoForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
 - (void)externalIdentificationForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
 - (void)_calendarDirectorySearchFinished:(id)arg1;
 - (void)_calendarDirectorySearchReturnedResults:(id)arg1;
@@ -52,6 +57,11 @@
 - (void)_grantedDelegatesListRequestFinished:(id)arg1;
 - (void)cancelGrantedDelegatesListRequestWithID:(id)arg1;
 - (id)requestGrantedDelegatesListForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
+- (void)_downloadSubscribedCalendarRequiresPassword:(id)arg1;
+- (void)_downloadSubscribedCalendarFinished:(id)arg1;
+- (void)_downloadSubscribedCalendarProgress:(id)arg1;
+- (void)cancelDownloadingSubscriptionCalendarWithDownloadID:(id)arg1;
+- (id)downloadSubscribedCalendarWithURL:(id)arg1 queue:(id)arg2 delegate:(id)arg3;
 - (void)_calendarAvailabilityRequestFinished:(id)arg1;
 - (void)_calendarAvailabilityRequestReturnedResults:(id)arg1;
 - (void)cancelCalendarAvailabilityRequestWithID:(id)arg1;
@@ -66,6 +76,8 @@
 - (void)reallyRegisterForInterrogation;
 - (id)statusReports;
 - (_Bool)processFolderChange:(id)arg1 forAccountWithID:(id)arg2;
+- (void)setOfficeHours:(id)arg1 forAccountWithID:(id)arg2 queue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)fetchOfficeHoursForAccountWithID:(id)arg1 queue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)reportSharedCalendarInviteAsJunkForCalendarWithID:(id)arg1 accountID:(id)arg2 queue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)respondToSharedCalendarInvite:(long long)arg1 forCalendarWithID:(id)arg2 accountID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)cancelDownloadingAttachmentWithDownloadID:(id)arg1 error:(id)arg2;
@@ -88,8 +100,7 @@
 - (_Bool)updateContentsOfFoldersWithKeys:(id)arg1 forAccountID:(id)arg2 andDataclasses:(long long)arg3 isUserRequested:(_Bool)arg4;
 - (_Bool)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2 isUserRequested:(_Bool)arg3;
 - (_Bool)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2 requireChangedFolders:(_Bool)arg3 isUserRequested:(_Bool)arg4;
-- (void)requestDaemonShutdown;
-- (void)removeStoresForAccountWithID:(id)arg1;
+- (void)handleAccountChange:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (unsigned long long)requestDaemonStopMonitoringAgentsSync;
 - (void)requestDaemonStartMonitoringAgentsSyncWithToken:(unsigned long long)arg1;
 - (unsigned long long)requestDaemonStopMonitoringAgents;
@@ -105,6 +116,7 @@
 - (_Bool)_checkInvalidIdExistsInXPCRely:(id)arg1;
 - (_Bool)watchFoldersWithKeys:(id)arg1 forAccountID:(id)arg2;
 - (void)_oofSettingsRequestsFinished:(id)arg1;
+- (void)_officeHoursRequestFinished:(id)arg1;
 - (void)_shareResponseFinished:(id)arg1;
 - (void)_downloadFinished:(id)arg1;
 - (void)_downloadProgress:(id)arg1;

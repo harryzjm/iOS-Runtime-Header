@@ -9,6 +9,7 @@
 @class CSCoverSheetViewController, NSString, SBLockScreenUnlockRequest;
 
 @protocol CSCoverSheetViewControllerDelegate <NSObject>
+- (void)coverSheetViewControllerShouldDismissContextMenu:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 unlockWithRequest:(SBLockScreenUnlockRequest *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 requestsTouchIDDisabled:(_Bool)arg2 forReason:(NSString *)arg3;
 - (void)coverSheetViewControllerIrisPlayingDidFinish:(CSCoverSheetViewController *)arg1;

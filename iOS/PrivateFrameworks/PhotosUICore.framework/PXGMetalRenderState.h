@@ -11,10 +11,10 @@
 
 @interface PXGMetalRenderState : NSObject
 {
-    id <MTLDevice> _device;
     CDStruct_b1513b2e _uniforms;
     long long _shaderFlagsByEffectIdCount;
     long long _shaderFlagsByEffectIdCapacity;
+    id <MTLDevice> _device;
     const CDStruct_9d1ebe49 *_spriteInfos;
     const CDStruct_3ab912e1 *_originalSpriteGeometries;
     int *_shaderFlagsByEffectId;
@@ -27,6 +27,7 @@
     id <MTLBuffer> _effectDataBuffer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <MTLBuffer> effectDataBuffer; // @synthesize effectDataBuffer=_effectDataBuffer;
 @property(readonly, nonatomic) id <MTLBuffer> resizableCapInsetsBuffer; // @synthesize resizableCapInsetsBuffer=_resizableCapInsetsBuffer;
 @property(readonly, nonatomic) id <MTLBuffer> spriteStylesBuffer; // @synthesize spriteStylesBuffer=_spriteStylesBuffer;
@@ -37,15 +38,15 @@
 @property(readonly, nonatomic) int *shaderFlagsByEffectId; // @synthesize shaderFlagsByEffectId=_shaderFlagsByEffectId;
 @property(nonatomic) const CDStruct_3ab912e1 *originalSpriteGeometries; // @synthesize originalSpriteGeometries=_originalSpriteGeometries;
 @property(nonatomic) const CDStruct_9d1ebe49 *spriteInfos; // @synthesize spriteInfos=_spriteInfos;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
 - (void)prepareForReuse;
 - (void)prepareForCommit;
 @property(readonly, nonatomic) CDStruct_b1513b2e *uniforms;
 @property(readonly, nonatomic) const CDStruct_506f5052 *spriteStyles;
 @property(readonly, nonatomic) const CDStruct_869f9c67 *spriteGeometries;
 - (void)_setShaderFlagsByEffectId:(const int *)arg1 withCount:(long long)arg2;
-- (void)setEffectData:(const CDStruct_ee569e91 *)arg1 shaderFlags:(const int *)arg2 withCount:(long long)arg3;
-- (CDStruct_ee569e91 *)effectDataBufferWithCount:(long long)arg1;
+- (void)setEffectData:(const CDStruct_8a1a641f *)arg1 shaderFlags:(const int *)arg2 withCount:(long long)arg3;
+- (CDStruct_8a1a641f *)effectDataBufferWithCount:(long long)arg1;
 - (CDStruct_0054b44d *)resizableCapInsetsBufferWithCount:(long long)arg1;
 - (id)renderPassStateForSpriteCount:(long long)arg1;
 - (CDStruct_506f5052 *)spriteStylesBufferWithCount:(long long)arg1;

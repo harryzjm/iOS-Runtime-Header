@@ -15,7 +15,7 @@
 - (void)allEventsLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)schemaOrgToEvents:(NSArray *)arg1 completion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)launchAppForSuggestedEventUsingLaunchInfo:(SGSuggestedEventLaunchInfo *)arg1 completion:(void (^)(SGXPCResponse *))arg2;
-- (void)launchInfoForSuggestedEventWithUniqueIdentifier:(NSString *)arg1 sourceURL:(NSURL *)arg2 clientLocale:(NSLocale *)arg3 ignoreUserActivitySupport:(_Bool)arg4 completion:(void (^)(SGXPCResponse1 *))arg5;
+- (void)launchInfoForSuggestedEventWithUniqueIdentifier:(NSString *)arg1 sourceURL:(NSURL *)arg2 clientLocale:(NSLocale *)arg3 ignoreUserActivitySupport:(_Bool)arg4 ignoreMailCheck:(_Bool)arg5 completion:(void (^)(SGXPCResponse1 *))arg6;
 - (void)eventFromUniqueId:(NSString *)arg1 completion:(void (^)(SGXPCResponse1 *))arg2;
 @end
 

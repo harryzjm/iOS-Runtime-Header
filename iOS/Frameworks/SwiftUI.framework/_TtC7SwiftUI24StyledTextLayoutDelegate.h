@@ -9,10 +9,6 @@
 @interface _TtC7SwiftUI24StyledTextLayoutDelegate
 {
     MISSING_TYPE *text;
-    MISSING_TYPE *sizeCache;
-    MISSING_TYPE *firstBaselineCache;
-    MISSING_TYPE *lastBaselineCache;
-    MISSING_TYPE *traitsCache;
 }
 
 @end

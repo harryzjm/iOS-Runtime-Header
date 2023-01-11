@@ -29,6 +29,8 @@
 @property(nonatomic) _Bool isExcludeFilter;
 @property(readonly, nonatomic) _Bool hasHome;
 @property(retain, nonatomic) _INPBDataString *home;
+@property(nonatomic) _Bool hasHasAllQuantifier;
+@property(nonatomic) _Bool hasAllQuantifier;
 @property(readonly, nonatomic) _Bool hasGroup;
 @property(retain, nonatomic) _INPBDataString *group;
 @property(nonatomic) _Bool hasEntityType;

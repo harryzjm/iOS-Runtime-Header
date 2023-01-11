@@ -7,6 +7,11 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (HUAdditions)
++ (id)hu_appStoreURLForBundleIdentifier:(id)arg1;
++ (id)hu_faceRecognitionPrivacyURL;
++ (id)hu_photosLibraryPeopleAlbumURL;
++ (id)hu_learnAboutNetworkProtectionURL;
++ (id)hu_cameraRecordingURL;
 + (id)hu_openiCloudKeychainPreferences;
 + (id)hu_openiCloudPreferencesURL;
 + (id)hu_applePrivacyURL;

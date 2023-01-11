@@ -20,10 +20,10 @@
     NSMutableSet *_trackingComponents;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *trackingComponents; // @synthesize trackingComponents=_trackingComponents;
 @property(readonly, nonatomic) id <SXHost> host; // @synthesize host=_host;
 @property(readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
-- (void).cxx_destruct;
 - (void)endExposure:(id)arg1;
 - (void)beginExposure:(id)arg1;
 - (void)trackExposureForTracking:(id)arg1;
@@ -34,7 +34,9 @@
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;
 - (void)conditionsChanged;
 - (void)stopTrackingExposureOfComponentView:(id)arg1;
+- (void)onExposureOf:(id)arg1 traits:(unsigned long long)arg2 then:(CDUnknownBlockType)arg3 when:(CDUnknownBlockType)arg4;
 - (void)onExposureOf:(id)arg1 then:(CDUnknownBlockType)arg2 when:(CDUnknownBlockType)arg3;
+- (void)onExposureOf:(id)arg1 traits:(unsigned long long)arg2 then:(CDUnknownBlockType)arg3;
 - (void)onExposureOf:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (id)initWithViewport:(id)arg1 appStateMonitor:(id)arg2 componentController:(id)arg3 host:(id)arg4;
 

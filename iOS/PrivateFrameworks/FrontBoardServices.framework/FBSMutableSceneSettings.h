@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
-
 @interface FBSMutableSceneSettings
 {
 }
@@ -14,11 +12,11 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setOccluded:(_Bool)arg1;
-@property(copy, nonatomic) NSArray *occlusions; // @dynamic occlusions;
 - (void)_setDisplayConfiguration:(id)arg1;
 - (id)transientLocalSettings;
 - (id)ignoreOcclusionReasons;
 - (id)otherSettings;
+@property(nonatomic) long long interruptionPolicy; // @dynamic interruptionPolicy;
 @property(nonatomic, getter=isBackgrounded) _Bool backgrounded; // @dynamic backgrounded;
 @property(nonatomic, getter=isForeground) _Bool foreground; // @dynamic foreground;
 @property(nonatomic) long long interfaceOrientation; // @dynamic interfaceOrientation;

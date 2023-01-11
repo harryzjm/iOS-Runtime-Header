@@ -46,6 +46,7 @@
 }
 
 + (id)sharedLocationManager;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <MNLocationProvider> locationProvider; // @synthesize locationProvider=_locationProvider;
 @property(readonly, nonatomic) unsigned long long locationProviderType; // @synthesize locationProviderType=_locationProviderType;
 @property(retain, nonatomic) id <MNLocationRecorder> locationRecorder; // @synthesize locationRecorder=_locationRecorder;
@@ -53,13 +54,13 @@
 @property(readonly, nonatomic) _Bool isLastLocationStale; // @synthesize isLastLocationStale=_isLastLocationStale;
 @property(readonly, nonatomic) CLHeading *heading; // @synthesize heading=_heading;
 @property(copy, nonatomic) CDUnknownBlockType locationCorrector; // @synthesize locationCorrector=_locationCorrector;
-- (void).cxx_destruct;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)locationProvider:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationProvider:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
 - (void)locationProviderDidPauseLocationUpdates:(id)arg1;
 - (_Bool)locationProviderShouldPauseLocationUpdates:(id)arg1;
+- (void)locationProvider:(id)arg1 didChangeCoarseMode:(_Bool)arg2;
 - (void)locationProviderDidChangeAuthorizationStatus:(id)arg1;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
@@ -92,20 +93,21 @@
 - (void)startHeadingUpdateWithObserver:(id)arg1;
 - (void)stopLocationUpdateWithObserver:(id)arg1;
 - (void)startLocationUpdateWithObserver:(id)arg1;
+- (void)useSimulationLocationProvider:(id)arg1;
 - (void)useTraceLocationProvider:(id)arg1;
 - (void)useHybridLocationProvider;
 - (void)useLeechedLocationProvider;
-- (void)useGPSLocationProvider;
+- (void)useGPSLocationProviderWithCLParameters:(id)arg1;
 - (void)stop;
 - (void)setLocationProviderType:(unsigned long long)arg1;
 - (void)removeLocationListener:(id)arg1;
 - (void)addLocationListener:(id)arg1;
 @property(nonatomic) int headingOrientation;
-@property(nonatomic) long long activityType;
 @property(nonatomic) double distanceFilter;
 @property(nonatomic) double desiredAccuracy;
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
+@property(readonly, nonatomic) _Bool coarseModeEnabled;
 @property(readonly, nonatomic) _Bool hasLocation;
 - (void)setLastLocation:(id)arg1;
 @property(readonly, nonatomic) MNLocation *lastLocation;

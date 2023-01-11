@@ -13,12 +13,12 @@
     UIBlurEffect *_backgroundBlurEffect;
     _Bool _didUpdateTranslucentAppearanceAtLeastOnce;
     _Bool _didHaveTranslucentAppearance;
-    double _preferredContentWidth;
+    _Bool _updatePreferredContentSizeAfterNextLayout;
 }
 
++ (double)caculateHeightForTableView:(id)arg1 targetGlobalRow:(long long)arg2 outGlobalRow:(long long *)arg3;
 + (id)tableViewCellForSizeEstimation;
 + (void)initialize;
-@property(nonatomic) double preferredContentWidth; // @synthesize preferredContentWidth=_preferredContentWidth;
 - (void).cxx_destruct;
 - (void)cancelPopoverKeyPressed;
 - (id)keyCommands;
@@ -29,6 +29,7 @@
 - (_Bool)_needsTranslucentAppearanceUpdate;
 - (void)_updateTranslucentAppearanceIfNeeded;
 - (double)tableViewSpacingForExtraSeparators:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)willMoveToParentViewController:(id)arg1;

@@ -13,6 +13,8 @@
 @property(copy, nonatomic) NSString *value;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
+@property(nonatomic) _Bool hasSuggested;
+@property(nonatomic) _Bool suggested;
 @property(readonly, nonatomic) _Bool hasLabel;
 @property(copy, nonatomic) NSString *label;
 @property(nonatomic) _Bool hasEmergencyType;

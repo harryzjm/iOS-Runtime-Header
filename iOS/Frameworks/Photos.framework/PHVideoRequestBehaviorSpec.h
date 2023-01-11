@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/NSSecureCoding-Protocol.h>
 #import <Photos/PLVideoChoosingOptions-Protocol.h>
 
 @class NSString;
 
-@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions>
+@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions, NSSecureCoding>
 {
     _Bool _networkAccessAllowed;
     _Bool _streamingAllowed;
@@ -22,6 +23,7 @@
     long long _streamingVideoIntent;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool restrictToPlayableOnCurrentDevice; // @synthesize restrictToPlayableOnCurrentDevice=_restrictToPlayableOnCurrentDevice;
 @property(nonatomic, getter=isMediumHighQualityAllowed) _Bool mediumHighQualityAllowed; // @synthesize mediumHighQualityAllowed=_mediumHighQualityAllowed;
 @property(nonatomic, getter=isVideoComplementAllowed) _Bool videoComplementAllowed; // @synthesize videoComplementAllowed=_videoComplementAllowed;
@@ -30,11 +32,11 @@
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(nonatomic) long long version; // @synthesize version=_version;
 @property(nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (long long)videoVersion;
 - (long long)videoDeliveryMode;
 - (id)shortDescription;
-- (id)plistDictionary;
-- (id)initWithPlistDictionary:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

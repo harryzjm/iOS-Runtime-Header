@@ -14,6 +14,7 @@
 {
     _Bool _userControlledCategoriesUseWildcard;
     _Bool _usesWordEmbeddings;
+    _Bool _isFilterTypeToken;
     _Bool _isFullTextToken;
     _Bool _belongsToSearchText;
     NSString *_text;
@@ -33,6 +34,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)stringForMatchType:(unsigned long long)arg1;
 + (id)personQueryTokensFromSocialGroupQueryToken:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *dateAttributes; // @synthesize dateAttributes=_dateAttributes;
 @property(retain, nonatomic) NSMutableSet *collectionIds; // @synthesize collectionIds=_collectionIds;
 @property(retain, nonatomic) NSMutableSet *assetIds; // @synthesize assetIds=_assetIds;
@@ -42,6 +44,7 @@
 @property(copy, nonatomic) NSString *normalizedText; // @synthesize normalizedText=_normalizedText;
 @property(retain, nonatomic) PSIQueryToken *parentToken; // @synthesize parentToken=_parentToken;
 @property(nonatomic) struct _NSRange rangeInSearchText; // @synthesize rangeInSearchText=_rangeInSearchText;
+@property(nonatomic) _Bool isFilterTypeToken; // @synthesize isFilterTypeToken=_isFilterTypeToken;
 @property(nonatomic) _Bool usesWordEmbeddings; // @synthesize usesWordEmbeddings=_usesWordEmbeddings;
 @property(nonatomic) _Bool userControlledCategoriesUseWildcard; // @synthesize userControlledCategoriesUseWildcard=_userControlledCategoriesUseWildcard;
 @property(readonly, nonatomic) unsigned long long matchType; // @synthesize matchType=_matchType;
@@ -49,7 +52,6 @@
 @property(copy, nonatomic) NSIndexSet *searchedCategories; // @synthesize searchedCategories=_searchedCategories;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)replaceIdentifier:(id)arg1;

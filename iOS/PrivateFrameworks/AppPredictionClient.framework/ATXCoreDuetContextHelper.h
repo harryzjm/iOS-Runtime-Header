@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@protocol _CDLocalContext;
-
 @interface ATXCoreDuetContextHelper : NSObject
 {
-    id <_CDLocalContext> _context;
+    id _context;
 }
 
-@property(retain, nonatomic) id <_CDLocalContext> context; // @synthesize context=_context;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id context; // @synthesize context=_context;
+- (id)lastModifiedDateForKeyPath:(id)arg1;
 - (id)fetchDataDictionaryForKeyPath:(id)arg1;
 - (id)init;
 

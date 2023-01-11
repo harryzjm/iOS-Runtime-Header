@@ -6,7 +6,6 @@
 
 #import <CameraUI/CAMControlDrawerExpandableButton-Protocol.h>
 
-@class UIView;
 @protocol CAMControlDrawerExpandableButtonDelegate;
 
 @interface CAMControlDrawerCustomButton <CAMControlDrawerExpandableButton>
@@ -14,27 +13,28 @@
     _Bool _expanded;
     _Bool __touchInTrackedView;
     id <CAMControlDrawerExpandableButtonDelegate> _delegate;
-    UIView *__highlightedView;
     struct UIEdgeInsets _expansionInsets;
 }
 
-@property(retain, nonatomic, setter=_setHighlightedView:) UIView *_highlightedView; // @synthesize _highlightedView=__highlightedView;
+- (void).cxx_destruct;
 @property(nonatomic, getter=_isTouchInTrackedView, setter=_setTouchInTrackedView:) _Bool _touchInTrackedView; // @synthesize _touchInTrackedView=__touchInTrackedView;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) __weak id <CAMControlDrawerExpandableButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct UIEdgeInsets expansionInsets; // @synthesize expansionInsets=_expansionInsets;
-- (void).cxx_destruct;
 - (void)_setExpanded:(_Bool)arg1 animated:(_Bool)arg2 shouldNotify:(_Bool)arg3;
 - (void)setExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic, getter=isSelfExpanding) _Bool selfExpanding;
 - (void)_updateHighlightedView;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
+- (_Bool)shouldAccessibilityGestureBeginForHUDManager:(id)arg1;
+- (_Bool)_shouldRejectAccessibilityGestureForHUDManager:(id)arg1;
 - (_Bool)_shouldTrackView:(id)arg1 forTouchAtLocation:(struct CGPoint)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
-- (_Bool)shouldScaleImageWhileHighlighted;
 - (_Bool)isExpandable;
 
 @end

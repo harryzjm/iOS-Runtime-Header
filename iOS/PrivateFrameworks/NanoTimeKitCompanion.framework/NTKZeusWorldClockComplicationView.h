@@ -25,10 +25,11 @@
 - (void)setShortCity:(id)arg1;
 - (void)setOverrideDate:(id)arg1;
 - (void)setTimeZone:(id)arg1;
+- (struct CGRect)padContentFrame:(struct CGRect)arg1;
 - (struct CGRect)contentFrame;
 - (void)layoutSubviews;
 - (void)dealloc;
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) _Bool canUseCurvedText;

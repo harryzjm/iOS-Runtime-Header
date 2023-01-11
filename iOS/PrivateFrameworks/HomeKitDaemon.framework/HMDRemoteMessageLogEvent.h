@@ -5,10 +5,12 @@
 //
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
+#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
 
 @class HMDRemoteMessage, NSString;
 
-@interface HMDRemoteMessageLogEvent <HMDAWDLogEvent>
+@interface HMDRemoteMessageLogEvent <HMDAWDLogEvent, HMDDiagnosticReportLogging, HMDCoreAnalyticsLogging>
 {
     _Bool _sending;
     int _transportType;
@@ -19,17 +21,25 @@
 + (id)sendingRemoteMessage:(id)arg1 transportType:(int)arg2;
 + (id)uuid;
 + (int)awdMessageTypeFromHMDMessageType:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool sending; // @synthesize sending=_sending;
 @property(readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property(readonly, nonatomic) HMDRemoteMessage *remoteMessage; // @synthesize remoteMessage=_remoteMessage;
-- (void).cxx_destruct;
+- (id)asCommaSeparateValues;
+- (id)serializedEventForDiagnostics:(_Bool)arg1;
+- (_Bool)shouldSubmitEvent;
+- (id)serializedEvent;
+- (id)eventName;
 - (id)initWithRemoteMessage:(id)arg1 transportType:(int)arg2 sending:(_Bool)arg3;
 - (id)metricForAWD;
 - (unsigned int)AWDMessageType;
+- (void)updateDiagnosticReportSignature:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *diagnosticReportEventSubType;
+@property(readonly, copy) NSString *diagnosticReportEventType;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

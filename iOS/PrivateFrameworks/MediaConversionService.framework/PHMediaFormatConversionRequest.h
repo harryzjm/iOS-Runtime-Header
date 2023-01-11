@@ -8,7 +8,7 @@
 
 #import <MediaConversionService/NSProgressReporting-Protocol.h>
 
-@class NSError, NSProgress, NSString, NSURL, NSUUID, PFMediaCapabilities, PHMediaFormatConversionCompositeRequest, PHMediaFormatConversionDestination, PHMediaFormatConversionSource;
+@class CLLocation, NSDate, NSError, NSProgress, NSString, NSTimeZone, NSURL, NSUUID, PFMediaCapabilities, PHMediaFormatConversionCompositeRequest, PHMediaFormatConversionDestination, PHMediaFormatConversionSource;
 
 @interface PHMediaFormatConversionRequest : NSObject <NSProgressReporting>
 {
@@ -34,6 +34,15 @@
     NSURL *_directoryForTemporaryFiles;
     long long _transferBehaviorUserPreference;
     CDUnknownBlockType _singlePassVideoConversionUpdateHandler;
+    long long _locationMetadataBehavior;
+    CLLocation *_location;
+    long long _creationDateMetadataBehavior;
+    NSDate *_creationDate;
+    NSTimeZone *_creationDateTimeZone;
+    long long _captionMetadataBehavior;
+    NSString *_caption;
+    long long _accessibilityDescriptionMetadataBehavior;
+    NSString *_accessibilityDescription;
     long long _passthroughConversionAdditionalByteCount;
 }
 
@@ -42,8 +51,18 @@
 + (double)heifToJPEGFactorWithImageDimensions:(struct CGSize)arg1 fileLength:(unsigned long long)arg2;
 + (id)requestForSource:(id)arg1 destinationCapabilities:(id)arg2 error:(id *)arg3;
 + (id)stringForRequestStatus:(long long)arg1;
+- (void).cxx_destruct;
 @property _Bool preflighted; // @synthesize preflighted=_preflighted;
 @property(nonatomic) long long passthroughConversionAdditionalByteCount; // @synthesize passthroughConversionAdditionalByteCount=_passthroughConversionAdditionalByteCount;
+@property(readonly, copy) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
+@property(readonly) long long accessibilityDescriptionMetadataBehavior; // @synthesize accessibilityDescriptionMetadataBehavior=_accessibilityDescriptionMetadataBehavior;
+@property(readonly, copy) NSString *caption; // @synthesize caption=_caption;
+@property(readonly) long long captionMetadataBehavior; // @synthesize captionMetadataBehavior=_captionMetadataBehavior;
+@property(readonly) NSTimeZone *creationDateTimeZone; // @synthesize creationDateTimeZone=_creationDateTimeZone;
+@property(readonly) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(readonly) long long creationDateMetadataBehavior; // @synthesize creationDateMetadataBehavior=_creationDateMetadataBehavior;
+@property(readonly) CLLocation *location; // @synthesize location=_location;
+@property(readonly) long long locationMetadataBehavior; // @synthesize locationMetadataBehavior=_locationMetadataBehavior;
 @property _Bool requiresSinglePassVideoConversion; // @synthesize requiresSinglePassVideoConversion=_requiresSinglePassVideoConversion;
 @property(copy) CDUnknownBlockType singlePassVideoConversionUpdateHandler; // @synthesize singlePassVideoConversionUpdateHandler=_singlePassVideoConversionUpdateHandler;
 @property long long transferBehaviorUserPreference; // @synthesize transferBehaviorUserPreference=_transferBehaviorUserPreference;
@@ -64,7 +83,6 @@
 @property _Bool forceFormatConversion; // @synthesize forceFormatConversion=_forceFormatConversion;
 @property(copy) NSString *livePhotoPairingIdentifier; // @synthesize livePhotoPairingIdentifier=_livePhotoPairingIdentifier;
 @property long long livePhotoPairingIdentifierBehavior; // @synthesize livePhotoPairingIdentifierBehavior=_livePhotoPairingIdentifierBehavior;
-- (void).cxx_destruct;
 - (void)updateSinglePassVideoConversionStatus:(long long)arg1 addedRange:(struct _NSRange)arg2 error:(id)arg3;
 - (void)enableSinglePassVideoEncodingWithUpdateHandler:(CDUnknownBlockType)arg1;
 - (void)didFinishProcessing;
@@ -74,10 +92,18 @@
 - (_Bool)userPreferenceProhibitsFormatConversion;
 @property(readonly) NSString *outputFileType;
 @property(readonly) NSString *outputPathExtension;
+- (void)setAccessibilityDescriptionMetadataBehavior:(long long)arg1 withAccessibilityDescription:(id)arg2;
+- (void)setCaptionMetadataBehavior:(long long)arg1 withCaption:(id)arg2;
+- (void)setCreationDateMetadataBehavior:(long long)arg1 withCreationDate:(id)arg2 inTimeZone:(id)arg3;
+- (void)setLocationMetadataBehavior:(long long)arg1 withLocation:(id)arg2;
 @property(readonly) _Bool requiresFormatConversion;
+- (_Bool)requiresAccessibilityDescriptionMetadataChange;
+- (_Bool)requiresCaptionMetadataChange;
+- (_Bool)requiresCreationDateMetadataChange;
 - (_Bool)requiresLocationMetadataChange;
 - (_Bool)requiresLivePhotoPairingIdentifierChange;
 @property(readonly) _Bool requiresMetadataChanges;
+- (_Bool)sourceSupportsPassthroughConversion;
 @property(readonly) _Bool requiresPassthroughConversion;
 @property(readonly) long long backwardsCompatibilityStatus;
 - (void)preflightWithConversionManager:(id)arg1;

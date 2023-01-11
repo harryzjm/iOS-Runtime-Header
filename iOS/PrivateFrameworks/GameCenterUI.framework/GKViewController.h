@@ -13,11 +13,9 @@
     _Bool _shouldUpdateContentOnlyWhenAuthenticated;
     GKViewController *_rootViewController;
     GKColorPalette *_colorPalette;
-    long long _gkFocusBubbleType;
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
-@property(nonatomic) long long gkFocusBubbleType; // @synthesize gkFocusBubbleType=_gkFocusBubbleType;
 @property(nonatomic) _Bool shouldUpdateContentOnlyWhenAuthenticated; // @synthesize shouldUpdateContentOnlyWhenAuthenticated=_shouldUpdateContentOnlyWhenAuthenticated;
 @property(retain, nonatomic) GKColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
 @property(retain, nonatomic) GKViewController *rootViewController; // @synthesize rootViewController=_rootViewController;

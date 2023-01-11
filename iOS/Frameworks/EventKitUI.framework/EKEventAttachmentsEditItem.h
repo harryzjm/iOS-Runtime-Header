@@ -9,16 +9,21 @@
 #import <EventKitUI/UIDocumentPickerDelegate-Protocol.h>
 #import <EventKitUI/UIDropInteractionDelegate-Protocol.h>
 
-@class EKUITableViewCell, NSArray, NSString;
+@class EKEvent, EKUITableViewCell, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKEventAttachmentsEditItem <UIDocumentPickerDelegate, UIDropInteractionDelegate, EKEventAttachmentCellControllerDelegate, EKEventAttachmentEditViewControllerDelegate>
 {
     NSArray *_cellControllers;
     EKUITableViewCell *_addAttachmentCell;
+    _Bool _documentPickerPresented;
+    _Bool _attachmentsModified;
+    EKEvent *_eventToModify;
 }
 
 - (void).cxx_destruct;
+@property(retain) EKEvent *eventToModify; // @synthesize eventToModify=_eventToModify;
+@property _Bool attachmentsModified; // @synthesize attachmentsModified=_attachmentsModified;
 - (void)_loadAndAddDataAttachmentFromItem:(id)arg1;
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -27,9 +32,10 @@ __attribute__((visibility("hidden")))
 - (void)dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
 - (_Bool)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (id)footerTitle;
+- (void)_addAttachment:(id)arg1;
 - (void)documentPickerWasCancelled:(id)arg1;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
-- (void)_showAddAttachmentViewController;
+- (void)_showAddAttachmentViewControllerAnimated:(_Bool)arg1;
 - (void)attachmentEditViewController:(id)arg1 attachmentDidChange:(long long)arg2;
 - (id)owningEventForAttachmentEditViewController:(id)arg1;
 - (id)owningEventForAttachmentCellController:(id)arg1;
@@ -49,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForReload;
 - (_Bool)forceTableReloadOnSave;
 - (void)refreshFromCalendarItemAndStore;
+- (id)attachmentEvent;
 - (void)_cleanUpCellControllers;
 
 // Remaining properties

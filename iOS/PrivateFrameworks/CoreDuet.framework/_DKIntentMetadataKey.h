@@ -10,6 +10,7 @@
 {
 }
 
++ (id)shortcutAvailability;
 + (id)derivedIntentIdentifier;
 + (id)serializedKeyImage;
 + (id)intentHandlingStatus;

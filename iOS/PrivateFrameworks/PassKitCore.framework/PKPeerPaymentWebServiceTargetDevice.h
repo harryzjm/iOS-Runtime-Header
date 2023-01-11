@@ -9,22 +9,24 @@
 #import <PassKitCore/PKPeerPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
 @class NSString, PKPeerPaymentService;
+@protocol PKPeerPaymentTargetDeviceDelegate;
 
 @interface PKPeerPaymentWebServiceTargetDevice : NSObject <PKPeerPaymentWebServiceTargetDeviceProtocol>
 {
     PKPeerPaymentService *_peerPaymentService;
+    id <PKPeerPaymentTargetDeviceDelegate> _targetDeviceDelegate;
 }
 
-+ (id)localTargetDevice;
 - (void).cxx_destruct;
+- (id)deviceClass;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)appleAccountInformation;
+- (void)_handlePreferencesChangedNotification:(id)arg1;
 - (void)_handleAccountChangedNotification:(id)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
-- (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
-- (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)provisionPeerPaymentPassWithProvisioningController:(id)arg1 peerPaymentWebService:(id)arg2 credential:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)provisionPeerPaymentPassWithProvisioningController:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setUserHasDisabledPeerPayment:(_Bool)arg1;
 - (_Bool)userHasDisabledPeerPayment;
@@ -32,11 +34,13 @@
 - (id)bridgedClientInfo;
 - (id)deviceRegion;
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setPreferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)preferences;
 - (id)account;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 peerPaymentWebService:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
-- (id)init;
+- (id)initWithTargetDeviceDelegate:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

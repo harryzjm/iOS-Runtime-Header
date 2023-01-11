@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)remoteViewControllerClass;
 + (id)serviceViewControllerClassName;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 - (void)userDidCancel;
 - (void)userEnteredCorrectPIN;

@@ -7,6 +7,9 @@
 #import <EventKit/EKEvent.h>
 
 @interface EKEvent (Suggestions)
+- (id)sg_fallbackURL;
+- (id)sg_schemas;
+- (id)sg_eventMetadata;
 - (_Bool)sg_isCuratedEventFromSuggestionNewerThan:(struct SGUnixTimestamp_)arg1;
 @end
 

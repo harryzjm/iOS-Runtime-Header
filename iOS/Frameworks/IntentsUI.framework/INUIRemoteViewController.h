@@ -9,15 +9,17 @@
 #import <IntentsUI/INUIExtensionHostContextDelegate-Protocol.h>
 #import <IntentsUI/_INUIRemoteViewControllerHosting-Protocol.h>
 
-@class INUIExtensionRequestInfo, INUIExtensionViewControllerConfiguration, NSExtension, NSString, _INUIExtensionHostContext;
+@class INUIExtensionRequestInfo, INUIExtensionViewControllerConfiguration, INWidgetDescriptor, NSExtension, NSString, _INUIExtensionHostContext;
 @protocol INUIRemoteViewControllerDelegate, NSCopying;
 
 @interface INUIRemoteViewController : _UIRemoteViewController <_INUIRemoteViewControllerHosting, INUIExtensionHostContextDelegate>
 {
     _Bool _needsStateUpdate;
+    _Bool _widgetHost;
     INUIExtensionRequestInfo *_requestInfo;
     id <INUIRemoteViewControllerDelegate> _delegate;
     INUIExtensionViewControllerConfiguration *_configuration;
+    INWidgetDescriptor *_widgetDescriptor;
     _INUIExtensionHostContext *_extensionHostContext;
     NSExtension *_activeExtension;
     id <NSCopying> _currentRequestIdentifier;
@@ -27,20 +29,24 @@
 + (void)attemptToConnectToRemoteViewControllerForRemainingExtensions:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 + (void)requestRemoteViewControllerForInteraction:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 + (void)_attemptToConnectToRemoteViewControllerForRemainingExtensions:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
++ (void)_getWidgetHostingRemoteViewControllerWithIntent:(id)arg1 descriptor:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)_getWidgetHostingRemoteViewControllerWithIntent:(id)arg1 extensionMatchingError:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)_requestRemoteViewControllerWithRequestInfo:(id)arg1 delegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 + (void)_requestRemoteViewControllerForSnippetExtensionInteraction:(id)arg1 delegate:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 + (void)requestRemoteViewControllerWithRequestInfo:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <NSCopying> currentRequestIdentifier; // @synthesize currentRequestIdentifier=_currentRequestIdentifier;
 @property(retain, nonatomic) NSExtension *activeExtension; // @synthesize activeExtension=_activeExtension;
 @property(retain, nonatomic) _INUIExtensionHostContext *extensionHostContext; // @synthesize extensionHostContext=_extensionHostContext;
+@property(retain, nonatomic) INWidgetDescriptor *widgetDescriptor; // @synthesize widgetDescriptor=_widgetDescriptor;
+@property(nonatomic, getter=isWidgetHost) _Bool widgetHost; // @synthesize widgetHost=_widgetHost;
 @property(nonatomic) _Bool needsStateUpdate; // @synthesize needsStateUpdate=_needsStateUpdate;
 @property(copy, nonatomic) INUIExtensionViewControllerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) __weak id <INUIRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic, setter=_setRequestInfo:) INUIExtensionRequestInfo *requestInfo; // @synthesize requestInfo=_requestInfo;
 @property(nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
-- (void).cxx_destruct;
 - (_Bool)_canShowWhileLocked;
 - (void)serviceViewControllerDesiresConstrainedSize:(struct CGSize)arg1;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;

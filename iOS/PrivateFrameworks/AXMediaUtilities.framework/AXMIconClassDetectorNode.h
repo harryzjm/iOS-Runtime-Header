@@ -4,24 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL, iconclassification__generated__;
+@class iconclassification__generated__;
 
 @interface AXMIconClassDetectorNode
 {
-    iconclassification__generated__ *_mlModel;
-    NSURL *_modelURL;
 }
 
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
-- (void).cxx_destruct;
 - (id)_localizedClassForClass:(id)arg1;
-- (void)evaluate:(id)arg1;
-- (void)_downloadAssetIfNecessary;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
+- (unsigned long long)maxSupportedFormatVersion;
+- (unsigned long long)minSupportedFormatVersion;
+- (id)modelResourceNames;
+- (id)mobileAssetType;
+- (id)mlModelClasses;
+
+// Remaining properties
+@property(readonly, nonatomic) iconclassification__generated__ *mlModel; // @dynamic mlModel;
 
 @end
 

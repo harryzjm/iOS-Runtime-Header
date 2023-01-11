@@ -7,16 +7,20 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (HealthRecordsUI)
-+ (id)unreadable;
-+ (id)procedures;
-+ (id)conditions;
-+ (id)labResults;
-+ (id)allergies;
-+ (id)immunizations;
-+ (id)medications;
-+ (id)clinicalVitals;
-+ (id)healthRecords;
-+ (id)clinicalDocuments;
-+ (id)tableViewCellHighlightColor;
++ (id)hrui_carePlans;
++ (id)hrui_socialHistory;
++ (id)hrui_devices;
++ (id)hrui_unreadable;
++ (id)hrui_procedures;
++ (id)hrui_conditions;
++ (id)hrui_labResults;
++ (id)hrui_allergies;
++ (id)hrui_insurance;
++ (id)hrui_immunizations;
++ (id)hrui_medications;
++ (id)hrui_clinicalVitals;
++ (id)hrui_healthRecords;
++ (id)hrui_clinicalDocuments;
++ (id)hrui_tableViewCellHighlightColor;
 @end
 

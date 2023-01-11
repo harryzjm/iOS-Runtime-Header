@@ -92,6 +92,8 @@
 + (id)viewFlipsideBackgroundColor;
 + (id)tableCellBlueTextColor;
 + (id)tableGroupedSeparatorLightColor;
++ (id)_appKeyColorOrDefaultTint;
++ (id)_appKeyColor;
 + (id)keyboardFocusIndicatorColor;
 + (id)darkTextColor;
 + (id)lightTextColor;
@@ -189,6 +191,11 @@
 + (id)systemBlueColor;
 + (id)systemGreenColor;
 + (id)systemRedColor;
++ (id)_tvInterfaceStyleDarkContentColor;
++ (id)_tvInterfaceStyleLightContentColor;
++ (id)_tvLabelOpacityCColor;
++ (id)_tvLabelOpacityBColor;
++ (id)_tvLabelOpacityAColor;
 + (id)_unfocusedCarSystemColor:(id)arg1;
 + (id)_focusedCarSystemColor:(id)arg1;
 + (id)_alternateSystemInteractionTintColor;
@@ -200,12 +207,18 @@
 + (id)_carSystemTertiaryColor;
 + (id)_carSystemSecondaryColor;
 + (id)_carSystemPrimaryColor;
++ (id)_monochromeCellImageTintColor;
 + (id)_windowBackgroundColor;
 + (id)_groupTableHeaderFooterTextColor;
 + (id)_plainTableHeaderFooterTextColor;
 + (id)tablePlainHeaderFooterFloatingBackgroundColor;
 + (id)tablePlainHeaderFooterBackgroundColor;
++ (id)tableCellDisabledBackgroundColor;
++ (id)tableCellFocusedBackgroundColor;
++ (id)tableCellHighlightedBackgroundColor;
++ (id)tableCellGroupedSelectedBackgroundColor;
 + (id)tableCellDefaultSelectionTintColor;
++ (id)tableCellPlainSelectedBackgroundColor;
 + (id)tableSelectionColor;
 + (id)tableSeparatorLightColor;
 + (id)tableSeparatorDarkColor;
@@ -248,6 +261,7 @@
 + (id)_tertiaryFillColor;
 + (id)_secondaryFillColor;
 + (id)_fillColor;
++ (id)_systemChromeShadowColor;
 + (id)_alertControllerDimmingViewColor;
 + (id)_controlVibrantBottomBackgroundColor;
 + (id)_controlVibrantTopBackgroundColor;
@@ -256,7 +270,11 @@
 + (id)_controlForegroundColor;
 + (id)_searchBarBackgroundColor;
 + (id)_searchFieldPlaceholderTextClearButtonColor;
++ (id)_pageControlPlatterIndicatorColor;
++ (id)_pageControlIndicatorColor;
 + (id)_searchFieldDisabledBackgroundColor;
++ (id)_switchOffImageColor;
++ (id)_switchOffColor;
 + (id)quaternarySystemFillColor;
 + (id)tertiarySystemFillColor;
 + (id)secondarySystemFillColor;
@@ -265,6 +283,7 @@
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
++ (id)_convertColorPickerColor:(id)arg1 fromUserInterfaceStyle:(long long)arg2 to:(long long)arg3;
 - (void).cxx_destruct;
 - (id)_colorBlendedWithColors:(id)arg1;
 - (id)_colorBlendedWithColor:(id)arg1;
@@ -278,6 +297,7 @@
 - (void)_setDebugName:(id)arg1;
 - (id)_debugName;
 @property(retain, nonatomic, getter=_systemColorName, setter=_setSystemColorName:) NSString *systemColorName;
+- (_Bool)_isOpaque;
 - (_Bool)_isDeepColor;
 - (_Bool)isPatternColor;
 - (id)styleString;
@@ -309,13 +329,14 @@
 - (id)initWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
 - (id)initWithWhite:(double)arg1 alpha:(double)arg2;
 - (id)_backgroundColorIgnoringHighContrast;
+@property(readonly, nonatomic) NSString *accessibilityName;
+@property(readonly, nonatomic) NSString *_accessibilityNameWithLuma;
 @property(readonly, nonatomic, getter=_isDynamic) _Bool dynamic;
 - (id)resolvedColorWithTraitCollection:(id)arg1;
 - (id)initWithDynamicProvider:(CDUnknownBlockType)arg1;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
-- (id)_ui_swipeActionHighlightedColor;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

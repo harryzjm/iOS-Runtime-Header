@@ -13,7 +13,6 @@
 @interface GEOPDPlaceResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOClientMetrics *_clientMetrics;
     GEOPDDatasetABStatus *_datasetAbStatus;
@@ -22,8 +21,12 @@
     NSMutableArray *_displayLanguages;
     NSString *_displayRegion;
     GEOPDPlaceGlobalResult *_globalResult;
-    NSMutableArray *_placeResults;
+    NSMutableArray *_mapsResults;
+    NSMutableArray *_legacyPlaceResults;
     NSMutableArray *_spokenLanguages;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _requestType;
     int _status;
     struct {
@@ -37,31 +40,21 @@
         unsigned int read_displayLanguages:1;
         unsigned int read_displayRegion:1;
         unsigned int read_globalResult:1;
-        unsigned int read_placeResults:1;
+        unsigned int read_mapsResults:1;
+        unsigned int read_legacyPlaceResults:1;
         unsigned int read_spokenLanguages:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientMetrics:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_debugApiKey:1;
-        unsigned int wrote_debugLatencyMs:1;
-        unsigned int wrote_displayLanguages:1;
-        unsigned int wrote_displayRegion:1;
-        unsigned int wrote_globalResult:1;
-        unsigned int wrote_placeResults:1;
-        unsigned int wrote_spokenLanguages:1;
-        unsigned int wrote_requestType:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)mapsResultType;
 + (Class)spokenLanguageType;
 + (Class)displayLanguageType;
-+ (Class)placeResultType;
++ (Class)legacyPlaceResultType;
 - (void).cxx_destruct;
 @property(retain, nonatomic) GEOClientMetrics *clientMetrics;
 @property(readonly, nonatomic) _Bool hasClientMetrics;
-- (void)_readClientMetrics;
 @property(nonatomic) _Bool hasDebugLatencyMs;
 @property(nonatomic) unsigned long long debugLatencyMs;
 - (void)clearUnknownFields:(_Bool)arg1;
@@ -75,41 +68,39 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)mapsResultAtIndex:(unsigned long long)arg1;
+- (unsigned long long)mapsResultsCount;
+- (void)addMapsResult:(id)arg1;
+- (void)clearMapsResults;
+@property(retain, nonatomic) NSMutableArray *mapsResults;
 @property(retain, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
 @property(readonly, nonatomic) _Bool hasDatasetAbStatus;
-- (void)_readDatasetAbStatus;
 @property(retain, nonatomic) NSString *debugApiKey;
 @property(readonly, nonatomic) _Bool hasDebugApiKey;
-- (void)_readDebugApiKey;
 - (id)spokenLanguageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spokenLanguagesCount;
-- (void)_addNoFlagsSpokenLanguage:(id)arg1;
 - (void)addSpokenLanguage:(id)arg1;
 - (void)clearSpokenLanguages;
 @property(retain, nonatomic) NSMutableArray *spokenLanguages;
-- (void)_readSpokenLanguages;
 @property(retain, nonatomic) NSString *displayRegion;
 @property(readonly, nonatomic) _Bool hasDisplayRegion;
-- (void)_readDisplayRegion;
 - (id)displayLanguageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)displayLanguagesCount;
-- (void)_addNoFlagsDisplayLanguage:(id)arg1;
 - (void)addDisplayLanguage:(id)arg1;
 - (void)clearDisplayLanguages;
 @property(retain, nonatomic) NSMutableArray *displayLanguages;
-- (void)_readDisplayLanguages;
-- (id)placeResultAtIndex:(unsigned long long)arg1;
-- (unsigned long long)placeResultsCount;
-- (void)_addNoFlagsPlaceResult:(id)arg1;
-- (void)addPlaceResult:(id)arg1;
-- (void)clearPlaceResults;
-@property(retain, nonatomic) NSMutableArray *placeResults;
-- (void)_readPlaceResults;
+- (id)legacyPlaceResultAtIndex:(unsigned long long)arg1;
+- (unsigned long long)legacyPlaceResultsCount;
+- (void)addLegacyPlaceResult:(id)arg1;
+- (void)clearLegacyPlaceResults;
+@property(retain, nonatomic) NSMutableArray *legacyPlaceResults;
 @property(retain, nonatomic) GEOPDPlaceGlobalResult *globalResult;
 @property(readonly, nonatomic) _Bool hasGlobalResult;
-- (void)_readGlobalResult;
 - (int)StringAsRequestType:(id)arg1;
 - (id)requestTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasRequestType;
@@ -118,7 +109,11 @@
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;
 @property(nonatomic) int status;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)_disambiguationLabels;
+- (id)resultsWithResultType:(int)arg1;
+- (unsigned long long)resultsCountWithResultType:(int)arg1;
 - (id)initWithPlace:(id)arg1 forRequestType:(int)arg2;
 
 @end

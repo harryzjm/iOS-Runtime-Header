@@ -20,14 +20,15 @@
 + (id)keyPathsForValuesAffectingSubtitle;
 + (void)_setAnnotationClass:(Class)arg1;
 + (id)title;
+- (void).cxx_destruct;
 @property(nonatomic) double expectedHeadingUpdateInterval; // @synthesize expectedHeadingUpdateInterval=_expectedHeadingUpdateInterval;
 @property(nonatomic) double expectedCoordinateUpdateInterval; // @synthesize expectedCoordinateUpdateInterval=_expectedCoordinateUpdateInterval;
-- (void).cxx_destruct;
 - (void)reset;
 @property(readonly, nonatomic) NSString *shortDescription;
 - (void)_updateCoordinate;
 - (id)annotation;
 @property(readonly, nonatomic) double headingDegrees;
+- (_Bool)hasValidHeading;
 @property(nonatomic) struct CLLocationCoordinate2D coordinate;
 - (_Bool)isEqualToLocation:(id)arg1;
 @property(readonly, nonatomic) double accuracy;

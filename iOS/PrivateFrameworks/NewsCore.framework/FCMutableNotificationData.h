@@ -12,22 +12,18 @@
 {
 }
 
-- (void)setStorefrontID:(id)arg1;
-- (void)setDeviceToken:(id)arg1;
-- (void)setNotificationUserID:(id)arg1;
-- (void)setBaseURLString:(id)arg1;
+@property(copy, nonatomic) NSString *storefrontID;
+@property(copy, nonatomic) NSString *deviceToken;
+@property(copy, nonatomic) NSString *notificationUserID;
+@property(copy, nonatomic) NSString *baseURLString;
 - (id)initWithDictionary:(id)arg1;
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy, nonatomic) NSString *baseURLString;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, copy, nonatomic) NSString *deviceToken;
 @property(readonly, nonatomic) NSMutableDictionary *dictionary; // @dynamic dictionary;
 @property(readonly) unsigned long long hash;
-@property(readonly, copy, nonatomic) NSString *notificationUserID;
-@property(readonly, copy, nonatomic) NSString *storefrontID;
 @property(readonly) Class superclass;
 
 @end

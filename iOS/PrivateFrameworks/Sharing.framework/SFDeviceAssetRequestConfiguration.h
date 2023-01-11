@@ -13,10 +13,10 @@
     CDUnknownBlockType _downloadCompletionHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType downloadCompletionHandler; // @synthesize downloadCompletionHandler=_downloadCompletionHandler;
 @property(nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property(readonly, copy, nonatomic) CDUnknownBlockType queryResultHandler; // @synthesize queryResultHandler=_queryResultHandler;
-- (void).cxx_destruct;
 - (id)description;
 - (id)initWithQueryResultHandler:(CDUnknownBlockType)arg1;
 

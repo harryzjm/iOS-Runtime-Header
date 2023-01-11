@@ -11,6 +11,7 @@
     DAMailAccount *_DAMailAccount;
 }
 
++ (id)accountTypeIdentifier;
 - (void).cxx_destruct;
 - (id)mailAccountIfAvailable;
 - (id)newDeliveryWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;

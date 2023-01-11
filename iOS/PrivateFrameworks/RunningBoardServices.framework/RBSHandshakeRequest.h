@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSSet, NSString;
 
-@interface RBSHandshakeRequest : NSObject <BSXPCSecureCoding>
+@interface RBSHandshakeRequest : NSObject <RBSXPCSecureCoding>
 {
     unsigned int _euid;
     NSSet *_assertionDescriptors;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *assertionDescriptors; // @synthesize assertionDescriptors=_assertionDescriptors;
 @property(nonatomic) unsigned int euid; // @synthesize euid=_euid;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 

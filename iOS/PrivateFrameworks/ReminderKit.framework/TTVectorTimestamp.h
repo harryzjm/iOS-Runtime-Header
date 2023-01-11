@@ -31,8 +31,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)serialize;
-- (void)saveToArchive:(VectorTimestamp_cd1d3bcf *)arg1;
-- (id)initWithArchive:(const VectorTimestamp_cd1d3bcf *)arg1;
+- (void)saveToArchive:(VectorTimestamp_2287ec0f *)arg1;
+- (id)initWithArchive:(const VectorTimestamp_2287ec0f *)arg1;
 - (id)initWithData:(id)arg1;
 
 @end

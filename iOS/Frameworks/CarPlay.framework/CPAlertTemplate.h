@@ -16,9 +16,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (unsigned long long)maximumActionCount;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(readonly, copy, nonatomic) NSArray *titleVariants; // @synthesize titleVariants=_titleVariants;
-- (void).cxx_destruct;
 - (void)handleAlertActionForIdentifier:(id)arg1;
 - (void)_addAction:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -8,16 +8,18 @@
 
 #import <SpringBoardUIServices/CAAnimationDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBNumberPadDelegate-Protocol.h>
+#import <SpringBoardUIServices/UIPointerInteractionDelegate-Protocol.h>
 
 @class NSArray, NSString, SBNumberPadWithDelegate, SBUIButton, UIColor, UIControl;
 @protocol SBUIPasscodeLockNumberPadDelegate, SBUIPasscodeNumberPadButton;
 
-@interface SBUIPasscodeLockNumberPad : UIView <SBNumberPadDelegate, CAAnimationDelegate>
+@interface SBUIPasscodeLockNumberPad : UIView <SBNumberPadDelegate, CAAnimationDelegate, UIPointerInteractionDelegate>
 {
     SBNumberPadWithDelegate *_numberPad;
     UIColor *_customBackgroundColor;
     _Bool _useLightStyle;
     _Bool _visible;
+    _Bool _snapshotsDisabled;
     _Bool _showsBackspaceButton;
     _Bool _showsEmergencyCallButton;
     _Bool _showsCancelButton;
@@ -32,7 +34,8 @@
 
 + (struct UIEdgeInsets)_inputButtonCircleSpacing;
 + (struct CGSize)_inputButtonCircleSize;
-+ (id)_buttonForCharacter:(unsigned int)arg1 withLightStyle:(_Bool)arg2;
++ (id)_buttonForCharacter:(long long)arg1 withLightStyle:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *reduceTransparencyButtonColor; // @synthesize reduceTransparencyButtonColor=_reduceTransparencyButtonColor;
 @property(readonly, nonatomic) SBUIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(readonly, nonatomic) SBUIButton *backspaceButton; // @synthesize backspaceButton=_backspaceButton;
@@ -43,13 +46,15 @@
 @property(nonatomic) _Bool showsEmergencyCallButton; // @synthesize showsEmergencyCallButton=_showsEmergencyCallButton;
 @property(nonatomic) _Bool showsBackspaceButton; // @synthesize showsBackspaceButton=_showsBackspaceButton;
 @property(nonatomic) __weak id <SBUIPasscodeLockNumberPadDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_emergencyCallButtonHit;
 - (void)_backspaceButtonHit;
 - (void)_cancelButtonHit;
 - (void)_configureAdditionalButtons;
 - (id)_fontForAncillaryButton;
+- (void)_setSnapshotsDisabled:(_Bool)arg1;
 - (double)_distanceToTopOfFirstButton;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_numberPadTouchDrag:(id)arg1 forEvent:(id)arg2;
 - (void)_numberPadTouchCancelled:(id)arg1 forEvent:(id)arg2;
 - (void)_numberPadTouchUp:(id)arg1 forEvent:(id)arg2;

@@ -14,8 +14,8 @@
 + (id)defaultPropertiesToLoad;
 - (void)setSpecifier:(id)arg1;
 - (id)specifier;
-- (void)setFirstDayOfTheWeek:(long long)arg1;
-- (long long)firstDayOfTheWeek;
+- (void)setFirstDayOfTheWeekRaw:(long long)arg1;
+- (long long)firstDayOfTheWeekRaw;
 - (id)cachedEndDate;
 - (void)setCount:(unsigned long long)arg1;
 - (unsigned long long)count;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (void)transformKeysForHandwritingKeyplane:(id)arg1 withTransformationContext:(id)arg2;
 + (void)transformKeysForFiveRowKeyplane:(id)arg1 withTransformationContext:(id)arg2;
 + (void)transformKeysForFourRowKeyplane:(id)arg1 withTransformationContext:(id)arg2;
++ (struct CGSize)layoutScaleFactorForContext:(id)arg1;
 + (void)adjustHorizontalPaddingForKeyplane:(id)arg1 withTransformationContext:(id)arg2;
 + (double)_keyPitchForKeyplane:(id)arg1;
 + (id)cachedControlKeySetsForTransformationContext:(id)arg1;

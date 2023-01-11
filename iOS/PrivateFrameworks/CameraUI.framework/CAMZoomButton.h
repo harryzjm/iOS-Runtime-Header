@@ -18,6 +18,7 @@
     long long _contentType;
     double _zoomFactor;
     long long _zoomSymbol;
+    long long _accessoryState;
     long long _orientation;
     NSString *_contentSizeCategory;
     UIView *__contentContainerView;
@@ -25,6 +26,8 @@
     UIImageView *__zoomSymbolView;
     UIImageView *__circleImageView;
     UIImageView *__backgroundImageView;
+    UIImageView *__accessoryBackgroundView;
+    UIImageView *__accessoryImageView;
     struct UIEdgeInsets _tappableEdgeInsets;
     struct CGAffineTransform _highlightingTransform;
 }
@@ -35,6 +38,9 @@
 + (id)textForZoomFactor:(double)arg1 showZoomFactorSymbol:(_Bool)arg2 useLeadingZero:(_Bool)arg3;
 + (id)textForZoomFactor:(double)arg1 showZoomFactorSymbol:(_Bool)arg2;
 + (_Bool)_useOutline;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *_accessoryImageView; // @synthesize _accessoryImageView=__accessoryImageView;
+@property(retain, nonatomic) UIImageView *_accessoryBackgroundView; // @synthesize _accessoryBackgroundView=__accessoryBackgroundView;
 @property(readonly, nonatomic) UIImageView *_backgroundImageView; // @synthesize _backgroundImageView=__backgroundImageView;
 @property(readonly, nonatomic) UIImageView *_circleImageView; // @synthesize _circleImageView=__circleImageView;
 @property(readonly, nonatomic) UIImageView *_zoomSymbolView; // @synthesize _zoomSymbolView=__zoomSymbolView;
@@ -47,20 +53,22 @@
 @property(nonatomic) _Bool shouldHideBackground; // @synthesize shouldHideBackground=_shouldHideBackground;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
+@property(nonatomic) long long accessoryState; // @synthesize accessoryState=_accessoryState;
 @property(nonatomic) long long zoomSymbol; // @synthesize zoomSymbol=_zoomSymbol;
 @property(nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
 @property(nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) __weak id <CAMZoomButtonDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (double)_backgroundImageDiameterForContentSize:(id)arg1;
 - (double)_circleLineWidthForContentSize:(id)arg1;
 - (id)_createCircleImageForContentSize:(id)arg1;
+- (id)_createBackgroundImageForContentSize:(id)arg1 color:(id)arg2;
 - (id)_createBackgroundImageForContentSize:(id)arg1;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
+@property(nonatomic) _Bool useLeadingZero;
 - (void)_updateZoomFactorLabel;
 - (void)_performHighlightAnimation;
 - (void)_updateBackgroundImageViewAlpha;
-- (struct CGAffineTransform)_targetTransformForHighlighted:(_Bool)arg1 orientation:(long long)arg2;
+- (struct CGAffineTransform)_transformForEnlargeText:(_Bool)arg1 orientation:(long long)arg2;
 - (struct CGAffineTransform)_highlightingTransformForHighlighted:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)tintColorDidChange;
@@ -68,6 +76,9 @@
 - (struct CGSize)intrinsicContentSize;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)setShouldHideBackground:(_Bool)arg1 animationDuration:(double)arg2;
+- (void)_updateAccessoryBackgroundView;
+- (void)_updateAccessoryAlphas;
+- (void)setAccessoryState:(long long)arg1 animated:(_Bool)arg2;
 - (id)_imageForZoomSymbol:(long long)arg1;
 - (void)_createZoomSymbolViewIfNecessary;
 - (void)setZoomSymbol:(long long)arg1 animated:(_Bool)arg2;

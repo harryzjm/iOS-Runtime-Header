@@ -6,11 +6,10 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSData, NSDate, NSString, VNSceneprint;
+@class NSDate, NSString, VNSceneprint;
 
 @protocol CLSSimilarlyStackableItem <NSObject>
 @property(readonly) NSDate *cls_universalDate;
-@property(readonly) NSData *clsDistanceIdentity;
 @property(readonly) NSString *clsIdentifier;
 @property(readonly) VNSceneprint *clsSceneprint;
 @end

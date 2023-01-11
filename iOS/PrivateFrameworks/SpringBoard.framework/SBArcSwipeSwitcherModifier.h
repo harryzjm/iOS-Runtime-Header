@@ -13,24 +13,25 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (_Bool)wantsResignActiveAssertion;
-- (id)layoutSettings;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
+- (_Bool)shouldPerformCrossfadeForReduceMotion;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (struct _NSRange)fullSizeSnapshotsRange;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
-- (_Bool)asynchronouslyRendersUntilDelay:(inout double *)arg1;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
+- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
 

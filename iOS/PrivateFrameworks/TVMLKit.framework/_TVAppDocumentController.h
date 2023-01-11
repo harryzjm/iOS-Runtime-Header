@@ -39,6 +39,7 @@
     UIView *_pagePerformanceView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool adoptsContext; // @synthesize adoptsContext=_adoptsContext;
 @property(nonatomic, getter=isPresentedModal) _Bool presentedModal; // @synthesize presentedModal=_presentedModal;
 @property(retain, nonatomic) UIView *pagePerformanceView; // @synthesize pagePerformanceView=_pagePerformanceView;
@@ -54,7 +55,6 @@
 @property(retain, nonatomic) UIViewController *templateViewController; // @synthesize templateViewController=_templateViewController;
 @property(nonatomic) __weak id <_TVAppDocumentControllerDelegate> appDelegate; // @synthesize appDelegate=_appDelegate;
 @property(retain, nonatomic) IKAppDocument *appDocument; // @synthesize appDocument=_appDocument;
-- (void).cxx_destruct;
 - (void)snapshotImpressions;
 - (id)currentImpressionableElements;
 - (id)activeDocument;
@@ -75,6 +75,7 @@
 - (id)_alertControllerWithError:(id)arg1;
 - (void)_updateIdleModeStatus;
 - (void)_markAndNotifyStylesDirty;
+- (void)_boldTextStatusChanged:(id)arg1;
 - (void)_darkerSystemColorStatusChanged:(id)arg1;
 - (void)didHostTemplateViewController:(id)arg1 usedTransitions:(_Bool)arg2;
 - (void)willHostTemplateViewController:(id)arg1 usesTransitions:(_Bool *)arg2;
@@ -111,6 +112,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;

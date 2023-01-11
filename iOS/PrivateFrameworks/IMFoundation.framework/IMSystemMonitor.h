@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSString, NSTimer;
+@class NSDate, NSHashTable, NSString, NSTimer;
 
 @interface IMSystemMonitor : NSObject
 {
@@ -27,31 +27,34 @@
     _Bool _usesPowerNotifications;
     _Bool _usesSystemIdleState;
     _Bool _inBackground;
+    _Bool _listeningForSetupAssistantNotifications;
     int _dataProtectionState;
     int _userIdleToken;
-    NSMutableArray *_listeners;
+    struct os_unfair_lock_s _ivarLock;
+    NSHashTable *_listeners;
     NSDate *_idleStart;
     NSTimer *_timer;
     NSDate *_dateScreenLightLastChanged;
     NSDate *_dateSystemLockLastChanged;
     NSString *_userID;
     double _delayTime;
-    NSMutableArray *_earlyListeners;
+    NSHashTable *_earlyListeners;
     long long _resignActiveCount;
-    struct _opaque_pthread_mutex_t _ivarLock;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool listeningForSetupAssistantNotifications; // @synthesize listeningForSetupAssistantNotifications=_listeningForSetupAssistantNotifications;
 @property(nonatomic) long long resignActiveCount; // @synthesize resignActiveCount=_resignActiveCount;
-@property(nonatomic) struct _opaque_pthread_mutex_t ivarLock; // @synthesize ivarLock=_ivarLock;
+@property(nonatomic) struct os_unfair_lock_s ivarLock; // @synthesize ivarLock=_ivarLock;
 @property(nonatomic) int userIdleToken; // @synthesize userIdleToken=_userIdleToken;
-@property(retain, nonatomic) NSMutableArray *_earlyListeners; // @synthesize _earlyListeners;
+@property(retain, nonatomic) NSHashTable *_earlyListeners; // @synthesize _earlyListeners;
 @property(nonatomic) _Bool _idleOverride; // @synthesize _idleOverride;
 @property(nonatomic) double _delayTime; // @synthesize _delayTime;
 @property(retain, nonatomic) NSString *_userID; // @synthesize _userID;
 @property(retain, nonatomic) NSTimer *_timer; // @synthesize _timer;
 @property(retain, nonatomic) NSDate *_idleStart; // @synthesize _idleStart;
-@property(retain, nonatomic) NSMutableArray *_listeners; // @synthesize _listeners;
+@property(retain, nonatomic) NSHashTable *_listeners; // @synthesize _listeners;
 @property(nonatomic) _Bool isFastUserSwitched; // @synthesize isFastUserSwitched=_switchedOut;
 @property(nonatomic) _Bool _underFirstLock; // @synthesize _underFirstLock;
 @property(nonatomic) int _dataProtectionState; // @synthesize _dataProtectionState;
@@ -65,6 +68,7 @@
 @property(readonly, nonatomic) _Bool isSetup;
 - (void)_unregisterForRestoreNotifications;
 - (void)_registerForRestoreNotifications;
+- (void)_registerForSetupNotifications;
 - (void)_setupStateChanged;
 - (void)_restoreDidStop;
 - (void)_restoreDidStart;

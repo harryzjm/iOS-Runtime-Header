@@ -13,30 +13,33 @@
 
 @interface WFWorkflowFile : NSObject <WFRecordStorage, NSItemProviderWriting>
 {
+    NSMutableDictionary *_rootObject;
     NSString *_name;
     NSDate *_creationDate;
     NSDate *_modificationDate;
     WFWorkflowQuarantine *_quarantine;
-    NSMutableDictionary *_rootObject;
     WFFileRepresentation *_file;
+    NSString *_identifier;
 }
 
 + (id)writableTypeIdentifiersForItemProvider;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) WFFileRepresentation *file; // @synthesize file=_file;
-@property(readonly, nonatomic) NSMutableDictionary *rootObject; // @synthesize rootObject=_rootObject;
 @property(retain, nonatomic) WFWorkflowQuarantine *quarantine; // @synthesize quarantine=_quarantine;
 @property(retain, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-- (void)migrateTypesForImport;
+@property(readonly, nonatomic) NSDictionary *rootObject; // @synthesize rootObject=_rootObject;
 - (_Bool)migrateRootObject;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)writeToOutputStream:(id)arg1 error:(id *)arg2;
-@property(readonly, nonatomic) NSDictionary *rootObjectForExport;
+- (_Bool)writeToOutputStream:(id)arg1 format:(unsigned long long)arg2 error:(id *)arg3;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)fileDataWithError:(id *)arg1;
+- (id)fileDataWithFormat:(unsigned long long)arg1 error:(id *)arg2;
+- (_Bool)writeToFileURL:(id)arg1 format:(unsigned long long)arg2 error:(id *)arg3;
 - (id)writeToDiskWithError:(id *)arg1;
+- (id)writeToDiskWithFormat:(unsigned long long)arg1 error:(id *)arg2;
 @property(copy, nonatomic) NSString *minimumClientVersion;
 @property(copy, nonatomic) NSString *lastMigratedClientVersion;
 @property(copy, nonatomic) NSArray *importQuestions;
@@ -45,8 +48,10 @@
 @property(copy, nonatomic) NSArray *workflowTypes;
 @property(retain, nonatomic) WFWorkflowIcon *icon;
 - (id)recordRepresentationWithError:(id *)arg1;
+@property(readonly, nonatomic) unsigned long long estimatedSize;
 - (id)descriptor;
 - (id)initWithDescriptor:(id)arg1 performMigration:(_Bool)arg2 error:(id *)arg3;
+- (id)initWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)initWithDictionary:(id)arg1 name:(id)arg2 performMigration:(_Bool)arg3;
 - (id)initWithDictionary:(id)arg1 name:(id)arg2;
 - (id)initWithFileData:(id)arg1 name:(id)arg2 error:(id *)arg3;

@@ -17,7 +17,8 @@
 - (void)reindexSearchableItemsWithIdentifiers:(NSArray *)arg1 withReply:(void (^)(void))arg2;
 - (void)writeFavoritesPropertyListData:(NSData *)arg1 toPath:(NSString *)arg2 withReply:(void (^)(NSNumber *, NSError *))arg3;
 - (void)favoritesEntryDictionariesAtPath:(NSString *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
-- (void)changeHistoryTokenWithReply:(void (^)(NSData *, NSError *))arg1;
+- (void)currentHistoryAnchorWithReply:(void (^)(CNChangeHistoryAnchor *, NSError *))arg1;
+- (void)currentHistoryTokenWithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)executeChangeHistoryClearRequest:(CNChangeHistoryClearRequest *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 withReply:(void (^)(CNChangeHistoryResult *, NSError *))arg2;
 - (void)unregisterChangeHistoryClientIdentifier:(NSString *)arg1 forContainerIdentifier:(NSString *)arg2 withReply:(void (^)(NSNumber *, NSError *))arg3;

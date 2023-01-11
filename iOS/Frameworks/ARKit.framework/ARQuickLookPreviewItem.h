@@ -7,38 +7,28 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/QLPreviewItem-Protocol.h>
-#import <ARKit/QLPreviewItemPrivateProtocol-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, UIColor;
+@class NSString, NSURL;
 
-@interface ARQuickLookPreviewItem : NSObject <QLPreviewItemPrivateProtocol, QLPreviewItem>
+@interface ARQuickLookPreviewItem : NSObject <QLPreviewItem>
 {
     _Bool _allowsContentScaling;
+    NSURL *previewItemURL;
     NSURL *_canonicalWebPageURL;
-    NSURL *_fileURL;
 }
 
-@property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsContentScaling; // @synthesize allowsContentScaling=_allowsContentScaling;
 @property(retain, nonatomic) NSURL *canonicalWebPageURL; // @synthesize canonicalWebPageURL=_canonicalWebPageURL;
-- (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *previewOptions;
-@property(readonly, nonatomic) NSURL *previewItemURL;
+@property(readonly, nonatomic) NSURL *previewItemURL; // @synthesize previewItemURL;
 - (id)initWithFileAtURL:(id)arg1;
 
 // Remaining properties
-@property(readonly) NSString *MIMEType;
-@property(readonly) double autoPlaybackPosition;
-@property(readonly) UIColor *backgroundColorOverride;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) _Bool isPromisedItem;
-@property(readonly, nonatomic) NSString *previewItemContentType;
 @property(readonly, nonatomic) NSString *previewItemTitle;
-@property(readonly) NSURL *previewItemURLForDisplay;
 @property(readonly) Class superclass;
-@property(readonly) _Bool wantsDefaultMediaPlayer;
 
 @end
 

@@ -25,13 +25,13 @@
     NSObject<OS_dispatch_queue> *_uuidsQueue;
     NSMutableDictionary *_uuidsByOIDs;
     unsigned long long _batchSize;
-    Class _fetchedObjectClass;
+    Class _fetchedPropertySetClass;
     unsigned long long _propertyHint;
 }
 
 + (_Bool)accessInstanceVariablesDirectly;
-@property(readonly) NSArray *oids; // @synthesize oids=_oids;
 - (void).cxx_destruct;
+@property(readonly) NSArray *oids; // @synthesize oids=_oids;
 @property(readonly) NSSet *oidsSet;
 - (void)prefetchObjectsAtIndexes:(id)arg1;
 - (unsigned long long)test_lastBatchIndex;

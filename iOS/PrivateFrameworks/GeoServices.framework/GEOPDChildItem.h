@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDChildItem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDChildAction *_childAction;
     GEOPDChildPlace *_childPlace;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _childItemType;
     struct {
         unsigned int has_childItemType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_childAction:1;
         unsigned int read_childPlace:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_childAction:1;
-        unsigned int wrote_childPlace:1;
-        unsigned int wrote_childItemType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,18 +42,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDChildAction *childAction;
 @property(readonly, nonatomic) _Bool hasChildAction;
-- (void)_readChildAction;
 @property(retain, nonatomic) GEOPDChildPlace *childPlace;
 @property(readonly, nonatomic) _Bool hasChildPlace;
-- (void)_readChildPlace;
 - (int)StringAsChildItemType:(id)arg1;
 - (id)childItemTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasChildItemType;
 @property(nonatomic) int childItemType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

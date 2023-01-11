@@ -6,12 +6,15 @@
 
 #import <CoreUtils/NSObject-Protocol.h>
 
-@class HMAssistantAccessControl, HMFPairingIdentity, HMHome, HMMediaContentProfileAccessControl, HMUser;
+@class HMAssistantAccessControl, HMFPairingIdentity, HMHome, HMMediaContentProfileAccessControl, HMPhotosPersonManagerSettings, HMUser;
 
 @protocol HMUserDelegatePrivate <NSObject>
 
 @optional
+- (void)user:(HMUser *)arg1 didUpdateNeedsiTunesMultiUserRepair:(_Bool)arg2;
 - (void)user:(HMUser *)arg1 didUpdatePairingIdentity:(HMFPairingIdentity *)arg2;
+- (void)user:(HMUser *)arg1 didUpdatePersonManagerSettings:(HMPhotosPersonManagerSettings *)arg2;
+- (void)user:(HMUser *)arg1 didUpdatePhotosPersonManagerSettings:(HMPhotosPersonManagerSettings *)arg2;
 - (void)user:(HMUser *)arg1 didUpdateMediaContentProfileAccessControl:(HMMediaContentProfileAccessControl *)arg2 forHome:(HMHome *)arg3;
 - (void)user:(HMUser *)arg1 didUpdateAssistantAccessControl:(HMAssistantAccessControl *)arg2 forHome:(HMHome *)arg3;
 @end

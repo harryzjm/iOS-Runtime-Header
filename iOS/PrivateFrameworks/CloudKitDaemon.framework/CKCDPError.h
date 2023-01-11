@@ -18,18 +18,21 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_auxiliaryUserInfos;
     int _code;
     NSString *_message;
+    int _targetPartition;
     struct {
         unsigned int auxiliaryCode:1;
         unsigned int code:1;
+        unsigned int targetPartition:1;
     } _has;
 }
 
 + (Class)auxiliaryUserInfoType;
+- (void).cxx_destruct;
+@property(nonatomic) int targetPartition; // @synthesize targetPartition=_targetPartition;
 @property(retain, nonatomic) NSMutableArray *auxiliaryUserInfos; // @synthesize auxiliaryUserInfos=_auxiliaryUserInfos;
 @property(nonatomic) int auxiliaryCode; // @synthesize auxiliaryCode=_auxiliaryCode;
 @property(retain, nonatomic) NSString *auxiliaryDomain; // @synthesize auxiliaryDomain=_auxiliaryDomain;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasTargetPartition;
 - (id)auxiliaryUserInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)auxiliaryUserInfosCount;
 - (void)addAuxiliaryUserInfo:(id)arg1;

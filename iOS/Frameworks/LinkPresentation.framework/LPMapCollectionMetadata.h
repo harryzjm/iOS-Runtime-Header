@@ -18,17 +18,21 @@
     LPImage *_image;
     LPImage *_darkImage;
     NSArray *_addresses;
+    NSString *_publisherName;
+    LPImage *_publisherIcon;
 }
 
 + (id)keyPathsForValuesAffecting_dummyPropertyForObservation;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) LPImage *publisherIcon; // @synthesize publisherIcon=_publisherIcon;
+@property(copy, nonatomic) NSString *publisherName; // @synthesize publisherName=_publisherName;
 @property(copy, nonatomic) NSArray *addresses; // @synthesize addresses=_addresses;
 @property(retain, nonatomic) LPImage *darkImage; // @synthesize darkImage=_darkImage;
 @property(retain, nonatomic) LPImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) LPImage *icon; // @synthesize icon=_icon;
 @property(nonatomic) unsigned int numberOfItems; // @synthesize numberOfItems=_numberOfItems;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (void)_enumerateAsynchronousFields:(CDUnknownBlockType)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

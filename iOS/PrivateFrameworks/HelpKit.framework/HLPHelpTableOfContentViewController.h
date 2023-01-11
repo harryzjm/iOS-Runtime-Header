@@ -10,7 +10,7 @@
 #import <HelpKit/UISearchControllerDelegate-Protocol.h>
 #import <HelpKit/UISearchResultsUpdating-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLocale, HLPHelpSearchIndexController, HLPHelpSearchResultTableViewController, HLPHelpUsageController, NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, UISearchController, UIView;
+@class HLPHelpBookController, HLPHelpLocale, HLPHelpSearchIndexController, HLPHelpSearchResultTableViewController, NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, UISearchController, UIView;
 @protocol HLPHelpTableOfContentViewControllerDelegate;
 
 @interface HLPHelpTableOfContentViewController : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
@@ -22,11 +22,11 @@
     NSLayoutConstraint *_copyrightFooterLabelHeightConstraint;
     NSLayoutConstraint *_copyrightFooterLabelTopConstraint;
     _Bool _fullBookView;
+    _Bool _searchLogged;
     id <HLPHelpTableOfContentViewControllerDelegate> _delegate;
     NSArray *_searchTerms;
     HLPHelpLocale *_locale;
     HLPHelpBookController *_helpBookController;
-    HLPHelpUsageController *_usageController;
     NSMutableArray *_openSections;
     NSMutableArray *_displayHelpItems;
     UISearchController *_searchController;
@@ -35,19 +35,19 @@
     HLPHelpSearchResultTableViewController *_searchResultTableViewController;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool searchLogged; // @synthesize searchLogged=_searchLogged;
 @property(retain, nonatomic) HLPHelpSearchResultTableViewController *searchResultTableViewController; // @synthesize searchResultTableViewController=_searchResultTableViewController;
 @property(retain, nonatomic) HLPHelpSearchIndexController *helpSearchIndexController; // @synthesize helpSearchIndexController=_helpSearchIndexController;
 @property(retain, nonatomic) UIView *tableFooterView; // @synthesize tableFooterView=_tableFooterView;
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(retain, nonatomic) NSMutableArray *displayHelpItems; // @synthesize displayHelpItems=_displayHelpItems;
 @property(retain, nonatomic) NSMutableArray *openSections; // @synthesize openSections=_openSections;
-@property(retain, nonatomic) HLPHelpUsageController *usageController; // @synthesize usageController=_usageController;
 @property(retain, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
 @property(retain, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
 @property(nonatomic) __weak id <HLPHelpTableOfContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool fullBookView; // @synthesize fullBookView=_fullBookView;
-- (void).cxx_destruct;
 - (void)spotlightSearchDelay;
 - (void)cancelSpotlightSearchDelay;
 - (void)updateSearchResultsForSearchController:(id)arg1;

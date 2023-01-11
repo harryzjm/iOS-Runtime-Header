@@ -18,18 +18,16 @@
         unsigned int attribute:1;
         unsigned int taskType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _attribute;
     int _taskType;
     _INPBHomeAttributeValue *_value;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBHomeAttributeValue *value; // @synthesize value=_value;
 @property(nonatomic) int taskType; // @synthesize taskType=_taskType;
 @property(nonatomic) int attribute; // @synthesize attribute=_attribute;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -15,11 +15,17 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)removeAllSettingsReturningError:(id *)arg1;
++ (_Bool)setSettingsSwitchState:(long long)arg1 forApplicationIdentifier:(id)arg2 error:(id *)arg3;
++ (long long)settingsSwitchStateForApplicationIdentifier:(id)arg1;
++ (_Bool)_areAppLinksEnabledForServiceDetails:(id)arg1 cachedSettings:(id *)arg2;
++ (_Bool)_setSWCSetting:(id)arg1 forKey:(id)arg2 withApplicationIdentifier:(id)arg3 error:(id *)arg4;
++ (id)_SWCSettingsWithApplicationIdentifier:(id)arg1 error:(id *)arg2;
++ (id)_SWCSpecifierForSettingsWithApplicationIdentifier:(id)arg1;
 + (void)initialize;
-@property(retain, nonatomic) _SWCServiceDetails *serviceDetails; // @synthesize serviceDetails=_serviceDetails;
-@property(readonly) struct LSBinding binding; // @synthesize binding=_binding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SWCServiceDetails *serviceDetails; // @synthesize serviceDetails=_serviceDetails;
+@property(readonly) struct LSBinding binding; // @synthesize binding=_binding;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)removeSettingsReturningError:(id *)arg1;

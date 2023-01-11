@@ -6,7 +6,7 @@
 
 #import <Preferences/PSListController.h>
 
-@class ACAccount, NSObject, PSSpecifier, RemoteUIController, UIProgressHUD;
+@class ACAccount, NSObject, PSSpecifier, UIProgressHUD;
 @protocol SPSettingsConfigurating;
 
 @interface FMDUIFMIPiCloudSettingsViewController : PSListController
@@ -19,23 +19,21 @@
     ACAccount *_account;
     PSSpecifier *_fmipSpecifier;
     PSSpecifier *_sendLastLocationSpecifier;
-    RemoteUIController *_ruiController;
     UIProgressHUD *_hud;
     NSObject<SPSettingsConfigurating> *_spSession;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool offlineFindingDisabledDueToNotHSA2; // @synthesize offlineFindingDisabledDueToNotHSA2=_offlineFindingDisabledDueToNotHSA2;
 @property(nonatomic) _Bool offlineFindingEnabled; // @synthesize offlineFindingEnabled=_offlineFindingEnabled;
 @property(retain, nonatomic) NSObject<SPSettingsConfigurating> *spSession; // @synthesize spSession=_spSession;
 @property(nonatomic) _Bool activityInProgress; // @synthesize activityInProgress=_activityInProgress;
 @property(retain, nonatomic) UIProgressHUD *hud; // @synthesize hud=_hud;
-@property(retain, nonatomic) RemoteUIController *ruiController; // @synthesize ruiController=_ruiController;
 @property(retain, nonatomic) PSSpecifier *sendLastLocationSpecifier; // @synthesize sendLastLocationSpecifier=_sendLastLocationSpecifier;
 @property(nonatomic) _Bool togglingFMIPSwitch; // @synthesize togglingFMIPSwitch=_togglingFMIPSwitch;
 @property(retain, nonatomic) PSSpecifier *fmipSpecifier; // @synthesize fmipSpecifier=_fmipSpecifier;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property(nonatomic) _Bool firstTimeSetup; // @synthesize firstTimeSetup=_firstTimeSetup;
-- (void).cxx_destruct;
 - (_Bool)isShowingActivityInProgressUI;
 - (void)hideActivityInProgressUIWithDelay:(double)arg1;
 - (void)hideActivityInProgressUI;

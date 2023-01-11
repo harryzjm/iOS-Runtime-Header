@@ -14,19 +14,21 @@
 {
     NSString *_articleId;
     int _emailOptInInviteLocation;
+    int _newsletterSubscriptionType;
     NSString *_parentFeedId;
     int _parentFeedType;
     int _userAction;
     struct {
         unsigned int emailOptInInviteLocation:1;
+        unsigned int newsletterSubscriptionType:1;
         unsigned int parentFeedType:1;
         unsigned int userAction:1;
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property(retain, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -35,6 +37,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasNewsletterSubscriptionType;
+@property(nonatomic) int newsletterSubscriptionType; // @synthesize newsletterSubscriptionType=_newsletterSubscriptionType;
 @property(readonly, nonatomic) _Bool hasArticleId;
 @property(readonly, nonatomic) _Bool hasParentFeedId;
 - (int)StringAsParentFeedType:(id)arg1;

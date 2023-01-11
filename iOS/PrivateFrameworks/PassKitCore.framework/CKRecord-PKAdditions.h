@@ -9,6 +9,14 @@
 @interface CKRecord (PKAdditions)
 - (id)_dictionaryFromStringValue:(id)arg1;
 - (id)_arrayFromStringValue:(id)arg1;
+- (id)_copyArray:(id)arg1 forNewRecordZone:(id)arg2;
+- (id)_copyReference:(id)arg1 forNewRecordZone:(id)arg2;
+- (id)pk_share;
+- (id)pk_participantWithLookupInfo:(id)arg1;
+- (id)pk_participantWithPhoneNumber:(id)arg1;
+- (id)pk_participantWithEmailAddress:(id)arg1;
+- (id)pk_participantWithRecipientHandle:(id)arg1;
+- (id)pk_copyRecordForNewRecordZone:(id)arg1;
 - (id)description;
 - (id)pk_description;
 - (id)pk_objectForKey:(id)arg1 ofClass:(Class)arg2;
@@ -33,7 +41,7 @@
 - (int)pk_encryptedIntForKey:(id)arg1;
 - (long long)pk_encryptedIntegerForKey:(id)arg1;
 - (_Bool)pk_encryptedBoolForKey:(id)arg1;
-- (id)pk_encryptedArrayForKey:(id)arg1;
+- (id)pk_encryptedArrayOfClasses:(id)arg1 forKey:(id)arg2;
 - (id)pk_encryptedDictionaryForKey:(id)arg1;
 - (id)pk_encryptedUrlForKey:(id)arg1;
 - (id)pk_encryptedDecimalNumberForKey:(id)arg1;

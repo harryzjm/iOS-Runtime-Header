@@ -78,7 +78,6 @@
     _Bool _otherActivityViewPresented;
     _Bool _darkStyleOnLegacyApp;
     _Bool _multipleRows;
-    _Bool _includePeopleSuggestions;
     _Bool _manuallyManageBrowsing;
     NSObject<SFAirDropActivityViewControllerDelegate> *_delegate;
     NSArray *_urlsBeingShared;
@@ -92,12 +91,12 @@
 
 + (_Bool)airDropActivityCanPerformActivityWithItemClasses:(id)arg1;
 + (_Bool)isAirDropAvailable;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool manuallyManageBrowsing; // @synthesize manuallyManageBrowsing=_manuallyManageBrowsing;
 @property(copy, nonatomic) NSString *overriddenInstructionsText; // @synthesize overriddenInstructionsText=_overriddenInstructionsText;
 @property(copy, nonatomic) NSString *overriddenNoAWDLText; // @synthesize overriddenNoAWDLText=_overriddenNoAWDLText;
 @property(copy, nonatomic) NSString *overriddenNoWiFIBTText; // @synthesize overriddenNoWiFIBTText=_overriddenNoWiFIBTText;
 @property(copy, nonatomic) NSString *overriddenTitleText; // @synthesize overriddenTitleText=_overriddenTitleText;
-@property(nonatomic) _Bool includePeopleSuggestions; // @synthesize includePeopleSuggestions=_includePeopleSuggestions;
 @property(copy, nonatomic) NSArray *photosAssetIDs; // @synthesize photosAssetIDs=_photosAssetIDs;
 @property(copy, nonatomic) NSArray *urlsBeingShared; // @synthesize urlsBeingShared=_urlsBeingShared;
 @property(nonatomic) _Bool multipleRows; // @synthesize multipleRows=_multipleRows;
@@ -106,7 +105,6 @@
 @property(nonatomic) _Bool sharedItemsAvailable; // @synthesize sharedItemsAvailable=_sharedItemsAvailable;
 @property(nonatomic) __weak NSObject<SFAirDropActivityViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) CDStruct_4c969caf sendingApplicationAuditToken; // @synthesize sendingApplicationAuditToken=_sendingApplicationAuditToken;
-- (void).cxx_destruct;
 - (void)_emitTelemetryForPerson:(id)arg1;
 - (void)_collectTelemetryForPeople:(id)arg1;
 - (void)_stopTelemetry;

@@ -32,9 +32,12 @@
 - (void)_activateAppLink:(id)arg1 withAppLinkState:(id)arg2 wasFromSpotlight:(_Bool)arg3 previousSideBundleID:(id)arg4 previousBreadcrumb:(id)arg5;
 - (void)_activateBreadcrumbApplication:(id)arg1 withSceneIdentifier:(id)arg2;
 - (long long)_openStrategyForAppLinkState:(id)arg1;
-- (void)_presentSpotlightFromBreadcrumbWithSource:(unsigned long long)arg1;
+- (_Bool)_showTransientOvelayInPlace;
+- (void)_presentSpotlightFromBreadcrumb;
 - (void)_presentAssistantFromBreadcrumb;
 - (void)_handleBreadcrumbAction:(unsigned long long)arg1 analyticsSide:(unsigned long long)arg2;
+- (void)_installedApplicationsDidChange:(id)arg1;
+- (void)_setCurrentBreadcrumbActionContext:(id)arg1;
 - (id)_breadcrumbNavigationActionContextForActivatingSceneEntity:(id)arg1 withTransitionContext:(id)arg2;
 - (void)noteDidUpdateDisplayProperties;
 - (void)prepareForReuse;

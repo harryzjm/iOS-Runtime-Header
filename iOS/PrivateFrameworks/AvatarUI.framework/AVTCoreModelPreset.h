@@ -10,20 +10,23 @@
 
 @interface AVTCoreModelPreset : NSObject
 {
-    struct NSDictionary *_tags;
+    _Bool _defaultPreset;
+    NSDictionary *_tags;
     AVTPreset *_preset;
 }
 
-+ (struct NSDictionary *)tagSetFromPreset:(id)arg1;
-@property(readonly, nonatomic) AVTPreset *preset; // @synthesize preset=_preset;
-@property(readonly, copy, nonatomic) NSDictionary *tags; // @synthesize tags=_tags;
++ (id)tagSetFromPreset:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AVTPreset *preset; // @synthesize preset=_preset;
+@property(readonly, nonatomic, getter=isDefaultPreset) _Bool defaultPreset; // @synthesize defaultPreset=_defaultPreset;
+@property(readonly, copy, nonatomic) NSDictionary *tags; // @synthesize tags=_tags;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 @property(readonly, copy, nonatomic) NSString *localizedName;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (id)copyForPairedCategory:(long long)arg1;
+- (id)initWithPreset:(id)arg1 isDefaultPreset:(_Bool)arg2;
 - (id)initWithPreset:(id)arg1;
 
 @end

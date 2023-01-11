@@ -18,17 +18,22 @@
     NSString *_description;
     NEUserNotification *_notification;
     _Bool _stopped;
+    _Bool _isHostingSystemExtension;
     id <NEExtensionProviderHostDelegate> _delegate;
     NSXPCConnection *_vendorConnection;
 }
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isHostingSystemExtension; // @synthesize isHostingSystemExtension=_isHostingSystemExtension;
 @property(readonly, nonatomic) NSXPCConnection *vendorConnection; // @synthesize vendorConnection=_vendorConnection;
 @property(nonatomic) _Bool stopped; // @synthesize stopped=_stopped;
 @property __weak id <NEExtensionProviderHostDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(readonly) int requiredEntitlement;
+- (_Bool)isSignedWithDeveloperID;
 - (id)copyValueForEntitlement:(id)arg1;
+- (void)validateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopWithReason:(int)arg1;
 - (void)startWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)displayMessage:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

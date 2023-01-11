@@ -18,8 +18,8 @@
 - (void)trackElectrocardiogramPDFShared;
 - (void)trackElectrocardiogramPDFViewed;
 - (void)trackElectrocardiogramDataTypeViewed;
-- (void)trackElectrocardiogramOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4;
-- (void)trackAtrialFibrillationDetectionOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4;
+- (void)trackElectrocardiogramOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4 provenance:(long long)arg5;
+- (void)trackAtrialFibrillationDetectionOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4 provenance:(long long)arg5;
 - (id)init;
 
 @end

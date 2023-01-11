@@ -5,6 +5,7 @@
 //
 
 @protocol _UIDiffableDataSourceIdentifying
+- (id)_diffableDataSourceImpl;
 - (_Bool)_isDiffableDataSource;
 @end
 

@@ -31,6 +31,8 @@
 + (id)unitFromMassFormatterUnit:(long long)arg1;
 + (id)unitFromString:(id)arg1;
 + (id)_foundationBaseUnits;
++ (id)_unitForStringPrewarmCache;
++ (void)_prewarmUnitForStringCache;
 + (id)_countPerMinuteUnit;
 + (id)_countPerSecondUnit;
 + (id)equivalentsUnitWithMolarMass:(double)arg1 valence:(long long)arg2;
@@ -49,6 +51,9 @@
 + (id)decibelHearingLevelUnit;
 + (id)hertzUnit;
 + (id)hertzUnitWithMetricPrefix:(long long)arg1;
++ (id)_voltBaseUnit;
++ (id)voltUnit;
++ (id)voltUnitWithMetricPrefix:(long long)arg1;
 + (id)siemenUnit;
 + (id)siemenUnitWithMetricPrefix:(long long)arg1;
 + (id)degreeFahrenheitUnit;
@@ -67,6 +72,7 @@
 + (id)milliseconds;
 + (id)secondUnit;
 + (id)secondUnitWithMetricPrefix:(long long)arg1;
++ (id)inchesOfMercuryUnit;
 + (id)decibelAWeightedSoundPressureLevelUnit;
 + (id)atmosphereUnit;
 + (id)centimeterOfWaterUnit;
@@ -101,8 +107,8 @@
 + (id)_personMassUnitForLocale:(id)arg1;
 + (id)_distanceUnitForLocale:(id)arg1;
 + (id)_heightUnitForLocale:(id)arg1;
-@property(readonly, nonatomic) double scaleOffset; // @synthesize scaleOffset=_scaleOffset;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double scaleOffset; // @synthesize scaleOffset=_scaleOffset;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (double)_convertFromBaseUnit:(double)arg1;

@@ -19,6 +19,7 @@
     _Bool _cloudkitUseDevelopmentEnvironment;
     long long _finishingMove;
     long long _notifyingMove;
+    double _bugSessionStartTimeout;
     NSString *_seedingDeviceToken;
     long long _seedingSubmissionID;
     long long _seedingSubmissionType;
@@ -34,6 +35,7 @@
 + (id)secureUnarchiveWithData:(id)arg1;
 + (id)archivedClasses;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) DEDNotifierConfiguration *notifierConfiguration; // @synthesize notifierConfiguration=_notifierConfiguration;
 @property(retain) NSDictionary *cloudkitData; // @synthesize cloudkitData=_cloudkitData;
 @property _Bool cloudkitUseDevelopmentEnvironment; // @synthesize cloudkitUseDevelopmentEnvironment=_cloudkitUseDevelopmentEnvironment;
@@ -45,10 +47,10 @@
 @property long long seedingSubmissionType; // @synthesize seedingSubmissionType=_seedingSubmissionType;
 @property long long seedingSubmissionID; // @synthesize seedingSubmissionID=_seedingSubmissionID;
 @property(retain) NSString *seedingDeviceToken; // @synthesize seedingDeviceToken=_seedingDeviceToken;
+@property double bugSessionStartTimeout; // @synthesize bugSessionStartTimeout=_bugSessionStartTimeout;
 @property _Bool allowsCellularUpload; // @synthesize allowsCellularUpload=_allowsCellularUpload;
 @property long long notifyingMove; // @synthesize notifyingMove=_notifyingMove;
 @property long long finishingMove; // @synthesize finishingMove=_finishingMove;
-- (void).cxx_destruct;
 - (id)secureArchive;
 - (_Bool)isEqualToConfiguration:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -58,6 +60,7 @@
 - (void)requestCapabilitiesSet:(id)arg1;
 @property(readonly) NSString *requestedCapabilitiesString;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
 - (void)encodeWithCoder:(id)arg1;
 
 // Remaining properties

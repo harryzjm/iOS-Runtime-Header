@@ -7,27 +7,38 @@
 #import <objc/NSObject.h>
 
 @class CARSessionStatus, CRCarPlayAppBlacklist;
+@protocol OS_dispatch_queue;
 
 @interface CRCarPlayAppPolicyEvaluator : NSObject
 {
     CARSessionStatus *_sessionStatus;
     _Bool _geoSupported;
+    _Bool _geo_queue_geoSupported;
+    _Bool _evaluatorWantsGeoManagement;
     CRCarPlayAppBlacklist *_blacklist;
+    NSObject<OS_dispatch_queue> *_geoQueue;
 }
 
++ (id)allIntentIdentifiers;
 + (id)_carIntentIdentifiers;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool evaluatorWantsGeoManagement; // @synthesize evaluatorWantsGeoManagement=_evaluatorWantsGeoManagement;
+@property(nonatomic) _Bool geo_queue_geoSupported; // @synthesize geo_queue_geoSupported=_geo_queue_geoSupported;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *geoQueue; // @synthesize geoQueue=_geoQueue;
 @property(retain, nonatomic) CRCarPlayAppBlacklist *blacklist; // @synthesize blacklist=_blacklist;
 @property(nonatomic, getter=isGeoSupported) _Bool geoSupported; // @synthesize geoSupported=_geoSupported;
-- (void).cxx_destruct;
 - (void)fetchApplicationBundleIdentifiersForCarIntents:(CDUnknownBlockType)arg1;
 - (id)effectivePolicyForAppDeclaration:(id)arg1 inVehicleWithCertificateSerial:(id)arg2;
 - (id)effectivePolicyForAppDeclaration:(id)arg1;
 - (unsigned long long)_applicationCategoryForAppDeclaration:(id)arg1 policy:(id)arg2;
 - (_Bool)_appWithDeclaration:(id)arg1 supportsAnyIntents:(id)arg2;
 - (_Bool)_appWithDeclaration:(id)arg1 supportsAllIntents:(id)arg2;
+- (_Bool)_checkIfDeclaration:(id)arg1 supportsIntents:(id)arg2 requireAllIntents:(_Bool)arg3;
 - (_Bool)_vehicleProtocolsIntersectAppProtocols:(id)arg1 certificateSerial:(id)arg2;
 - (id)_vehicleProtocolsForCertificateSerial:(id)arg1;
-- (id)_sessionStatus;
+- (id)currentSession;
+- (void)updateGeoSupported;
+- (void)setWantsGeoSupported;
 - (id)init;
 
 @end

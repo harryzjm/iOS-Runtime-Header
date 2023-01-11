@@ -9,7 +9,6 @@
 @interface GEOSharedNavState (MSPExtras)
 - (void)stripArrivedOrClosedTrip;
 - (CDUnknownBlockType)equalityTest;
-- (id)composedRouteTraffic;
 - (id)composedRoute;
 - (void)truncatePointDataForPrivacy;
 - (id)mspDescription;

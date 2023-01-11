@@ -6,15 +6,17 @@
 
 #import <UIKit/UIWindow.h>
 
-@class ICViewControllerManager;
+@class ICViewControllerManager, NSString;
 
 @interface ICWindow : UIWindow
 {
+    NSString *_windowIdentifier;
     ICViewControllerManager *_viewControllerManager;
 }
 
-@property(retain, nonatomic) ICViewControllerManager *viewControllerManager; // @synthesize viewControllerManager=_viewControllerManager;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ICViewControllerManager *viewControllerManager; // @synthesize viewControllerManager=_viewControllerManager;
+@property(retain, nonatomic) NSString *windowIdentifier; // @synthesize windowIdentifier=_windowIdentifier;
 - (id)ic_viewControllerManager;
 - (id)initWithWindowScene:(id)arg1;
 

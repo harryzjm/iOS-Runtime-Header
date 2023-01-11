@@ -15,6 +15,7 @@
 - (id)_accessibilityMailSwipeActions;
 - (id)_accessibilityMessageIndexDescription;
 - (id)accessibilityCustomActions;
+- (_Bool)accessibilityRespondsToUserInteraction;
 
 @end
 

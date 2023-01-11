@@ -24,6 +24,7 @@
     id <NCNotificationDestinationDelegate> _notificationDestinationDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <NCNotificationDestinationDelegate> delegate; // @synthesize delegate=_notificationDestinationDelegate;
 @property(nonatomic) __weak SBNCAlertingController *alertingController; // @synthesize alertingController=_alertingController;
 @property(nonatomic) __weak id <CSCarPlayStatusProviding> carPlayStatusProvider; // @synthesize carPlayStatusProvider=_carPlayStatusProvider;
@@ -31,8 +32,7 @@
 @property(nonatomic) __weak id <CSNotificationDestination> listDestination; // @synthesize listDestination=_listDestination;
 @property(nonatomic) __weak id <CSNotificationDestination> modalDestination; // @synthesize modalDestination=_modalDestination;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
-- (void).cxx_destruct;
-- (void)_clearNotificationRequestsFromDashBoard:(id)arg1;
+- (void)_clearNotificationRequestsFromIncomingSection:(id)arg1;
 - (void)stopAllRealerts;
 - (id)notificationSectionSettingsForDestination:(id)arg1;
 - (id)destination:(id)arg1 settingsForSectionIdentifier:(id)arg2;
@@ -48,6 +48,7 @@
 - (void)destination:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotificationRequest:(id)arg3 withParameters:(id)arg4 completion:(CDUnknownBlockType)arg5;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)withdrawNotificationRequest:(id)arg1;
 - (void)modifyNotificationRequest:(id)arg1;

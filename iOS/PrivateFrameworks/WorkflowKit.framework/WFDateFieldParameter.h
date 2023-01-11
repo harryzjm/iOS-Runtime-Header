@@ -4,24 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
+
 @class NSDateFormatter, NSString;
 
-@interface WFDateFieldParameter
+@interface WFDateFieldParameter <WFParameterDialogProvider>
 {
+    _Bool _detectsAllDayDates;
+    _Bool _displaysAllDayString;
+    _Bool _forcesAllDayDates;
     NSDateFormatter *_hintDateFormatter;
     NSString *_reactiveParameterKey;
     NSString *_hintDateMode;
 }
 
-@property(readonly, nonatomic) NSString *hintDateMode; // @synthesize hintDateMode=_hintDateMode;
-@property(readonly, nonatomic) NSString *reactiveParameterKey; // @synthesize reactiveParameterKey=_reactiveParameterKey;
 - (void).cxx_destruct;
-- (id)localizedIncompleteHintString;
+@property(readonly, nonatomic) NSString *hintDateMode; // @synthesize hintDateMode=_hintDateMode;
+@property(nonatomic) _Bool forcesAllDayDates; // @synthesize forcesAllDayDates=_forcesAllDayDates;
+@property(readonly, nonatomic) _Bool displaysAllDayString; // @synthesize displaysAllDayString=_displaysAllDayString;
+@property(readonly, nonatomic) _Bool detectsAllDayDates; // @synthesize detectsAllDayDates=_detectsAllDayDates;
+@property(readonly, nonatomic) NSString *reactiveParameterKey; // @synthesize reactiveParameterKey=_reactiveParameterKey;
+- (id)parameterStateFromDialogResponse:(id)arg1;
+- (id)createDialogTextFieldConfigurationWithDefaultState:(id)arg1;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)dateFormatterForConfiguration:(id)arg1;
+- (id)datePickerConfiguration;
+@property(readonly, nonatomic) NSString *localizedIncompleteHintString;
 - (id)hintForState:(id)arg1;
 @property(readonly, nonatomic) NSDateFormatter *hintDateFormatter; // @synthesize hintDateFormatter=_hintDateFormatter;
-- (_Bool)dateOnlyMode;
-- (_Bool)timeOnlyMode;
+@property(readonly, nonatomic) _Bool dateOnlyMode;
+@property(readonly, nonatomic) _Bool timeOnlyMode;
 - (id)initWithDefinition:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

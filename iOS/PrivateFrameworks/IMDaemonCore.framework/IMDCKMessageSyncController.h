@@ -9,6 +9,7 @@
 
 @interface IMDCKMessageSyncController
 {
+    _Bool _encounteredIncompatibleMessage;
     CKServerChangeToken *_archivedRecordSyncToken;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDRecordZoneManager *_recordZoneManager;
@@ -20,6 +21,7 @@
 }
 
 + (id)sharedInstance;
+@property(nonatomic) _Bool encounteredIncompatibleMessage; // @synthesize encounteredIncompatibleMessage=_encounteredIncompatibleMessage;
 @property(retain, nonatomic) NSMutableDictionary *visitedChats; // @synthesize visitedChats=_visitedChats;
 @property(nonatomic) unsigned long long deviceConditionsToCheck; // @synthesize deviceConditionsToCheck=_deviceConditionsToCheck;
 @property NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
@@ -27,6 +29,7 @@
 @property(retain, nonatomic) id <IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
 @property(retain, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
+- (void)incompatibleMessageDeleteDetected:(id)arg1;
 - (void)syncDeletedMessagesToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_copyRecordIDsToDeleteWithLimit:(unsigned long long)arg1;
 - (id)_constructMessageRecordIDUsingTombStoneDictionary:(id)arg1;
@@ -43,6 +46,7 @@
 - (void)_markAllUnsuccessFullSyncMessagesAsNeedingSync;
 - (_Bool)_shouldMarkAllMessagesAsNeedingSync;
 - (void)_needsToMarkAllMessagesAsNeedingSync;
+- (void)_markAllIncompatibleMessagesForDeletion;
 - (void)_noteSyncEnded;
 - (void)_fetchMessageZoneChangesSyncType:(long long)arg1 currentBatchCount:(long long)arg2 maxNumberOfBatches:(long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (_Bool)_isDiskSpaceAvailableForSyncType:(long long)arg1 currentBatchCount:(long long)arg2;

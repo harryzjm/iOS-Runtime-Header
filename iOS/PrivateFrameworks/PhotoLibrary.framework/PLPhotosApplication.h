@@ -16,8 +16,6 @@
     int _observeForRechabilityChanges;
     _Bool _isReachable;
     _Bool _isOnWifi;
-    _Bool _photoStreamIsBusy;
-    _Bool _sharedPhotoStreamIsBusy;
     int _photoStreamActivityToken;
     int _sharedPhotoStreamActivityToken;
     int _sharedPhotoStreamInvitationFailureToken;
@@ -35,9 +33,6 @@
 @property(readonly, nonatomic) _Bool isOnWifi; // @synthesize isOnWifi=_isOnWifi;
 @property(readonly, nonatomic) _Bool isReachable; // @synthesize isReachable=_isReachable;
 - (void)handleImportCompleteAlertResponse:(struct __CFUserNotification *)arg1 flags:(unsigned long long)arg2;
-- (void)_updateSharedPhotoStreamProgressDisplay;
-- (void)_updatePhotoStreamProgressDisplay;
-- (void)_updateNetworkActivityIndicatorAsync;
 - (void)_unregisterForPhotoStreamActivityNotifications;
 - (void)_registerForPhotoStreamActivityNotifications;
 - (void)disableNetworkObservation;

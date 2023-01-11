@@ -10,16 +10,21 @@
 #import <Message/EDAccount-Protocol.h>
 #import <Message/EFPubliclyDescribable-Protocol.h>
 
-@class ACAccount, ECAccount, ECAuthenticationScheme, NSArray, NSDictionary, NSMutableDictionary, NSString;
+@class ACAccount, ECAccount, ECAuthenticationScheme, EFLocked, NSArray, NSDictionary, NSMutableDictionary, NSString;
 
 @interface MFAccount : NSObject <EDAccount, ECAuthenticatableAccount, EFPubliclyDescribable>
 {
     ACAccount *_persistentAccount;
     struct os_unfair_lock_s _persistentAccountLock;
     NSMutableDictionary *_unsavedAccountProperties;
+    struct os_unfair_lock_s _descriptionLock;
+    struct os_unfair_lock_s _privacyDescriptionLock;
+    NSString *_cachedPrivacySafeDescription;
+    NSString *_cachedDescription;
     NSArray *emailAddressStrings;
     ECAccount *_baseAccount;
     NSString *_sourceApplicationBundleIdentifier;
+    EFLocked *_currentConnections;
 }
 
 + (id)supportedDataclasses;
@@ -52,15 +57,17 @@
 + (id)newAccountWithDictionary:(id)arg1;
 + (_Bool)shouldHealAccounts;
 + (void)setShouldHealAccounts:(_Bool)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) EFLocked *currentConnections; // @synthesize currentConnections=_currentConnections;
 @property(copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property(readonly, nonatomic) ECAccount *baseAccount; // @synthesize baseAccount=_baseAccount;
 @property(readonly, copy, nonatomic) NSArray *emailAddressStrings; // @synthesize emailAddressStrings;
-- (void).cxx_destruct;
 - (void)setMissingPasswordError;
 - (id)copyDiagnosticInformation;
 - (_Bool)isSyncingNotes;
 - (_Bool)isEnabledForDataclass:(id)arg1;
 - (id)enabledDataclasses;
+@property(readonly, nonatomic) _Bool primaryiCloudAccount;
 - (id)loginDisabledErrorWithTitle:(id)arg1;
 - (id)inaccessiblePasswordErrorWithTitle:(id)arg1;
 - (id)missingPasswordErrorWithTitle:(id)arg1;
@@ -81,6 +88,7 @@
 - (void)applySettingsAsDefault:(id)arg1;
 - (id)defaultConnectionSettings;
 - (id)certUIService;
+@property(readonly, nonatomic) _Bool connectionsAreConstrained;
 - (id)authenticatedConnection;
 - (_Bool)requiresAuthentication;
 - (Class)connectionClass;
@@ -105,12 +113,11 @@
 - (unsigned int)portNumber;
 - (_Bool)hasPasswordCredential;
 - (_Bool)canAuthenticateWithCurrentCredentials;
-@property(readonly, copy, nonatomic) ACAccount *systemAccount;
+@property(readonly, nonatomic) ACAccount *systemAccount;
 - (_Bool)fetchTokensIfNecessary:(id *)arg1;
-@property(readonly) NSString *managedTag;
+@property(readonly) NSString *personaIdentifier;
 @property(readonly) ACAccount *accountForRenewingCredentials;
 - (_Bool)promptUserForWebLoginWithURL:(id)arg1 shouldConfirm:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)promptUserForPasswordWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)renewCredentialsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_renewCredentialsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setOAuth2Token:(id)arg1 refreshToken:(id)arg2;
@@ -124,6 +131,7 @@
 - (id)_credential;
 - (_Bool)supportsMailDrop;
 @property(readonly, copy, nonatomic) NSString *statisticsKind;
+@property(readonly) NSString *managedTag;
 @property(readonly, nonatomic, getter=isManaged) _Bool managed;
 @property(copy, nonatomic) NSString *hostname;
 @property(retain) NSString *username;

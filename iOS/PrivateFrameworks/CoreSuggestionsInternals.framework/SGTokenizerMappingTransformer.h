@@ -14,6 +14,7 @@
 {
     NSLinguisticTagger *_tagger;
     _Bool _nameTagging;
+    _Bool _trustCoreNLP;
     NSString *_punctuationMapping;
     NSString *_personalNameMapping;
     NSString *_locale;
@@ -21,7 +22,8 @@
     int _linguisticDataNotificationToken;
 }
 
-+ (id)forLocale:(id)arg1 withNameTagging:(_Bool)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
++ (id)forLocale:(id)arg1 tagNames:(_Bool)arg2 trustCoreNLP:(_Bool)arg3 personalNameMapping:(id)arg4 punctuationMapping:(id)arg5;
++ (id)forLocale:(id)arg1 tagNames:(_Bool)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
 + (id)forLocale:(id)arg1 withPersonalNameMapping:(id)arg2;
 + (id)forLocale:(id)arg1;
 - (void).cxx_destruct;
@@ -35,7 +37,7 @@
 - (void)transformWithCoreNLP:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_registerForNotifications;
 - (void)dealloc;
-- (id)initForLocale:(id)arg1 withNameTagging:(_Bool)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
+- (id)initForLocale:(id)arg1 tagNames:(_Bool)arg2 trustCoreNLP:(_Bool)arg3 personalNameMapping:(id)arg4 punctuationMapping:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,22 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class EDDonationController, EDInteractionEventLogFile, EDInteractionEventLogUploader, EDInteractionLogger;
+@class EDDifferentialPrivacyReporter, EDInteractionLogger, EDPETInteractionEventLog;
 
 @interface EDCategorySubsystem : NSObject
 {
     EDInteractionLogger *_interactionLogger;
-    EDDonationController *_donationController;
-    EDInteractionEventLogUploader *_logUploader;
-    EDInteractionEventLogFile *_logFile;
+    EDPETInteractionEventLog *_petLog;
+    EDDifferentialPrivacyReporter *_differentialPrivacyReporter;
 }
 
-@property(retain, nonatomic) EDInteractionEventLogFile *logFile; // @synthesize logFile=_logFile;
-@property(retain, nonatomic) EDInteractionEventLogUploader *logUploader; // @synthesize logUploader=_logUploader;
-@property(readonly, nonatomic) EDDonationController *donationController; // @synthesize donationController=_donationController;
-@property(readonly, nonatomic) EDInteractionLogger *interactionLogger; // @synthesize interactionLogger=_interactionLogger;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) EDDifferentialPrivacyReporter *differentialPrivacyReporter; // @synthesize differentialPrivacyReporter=_differentialPrivacyReporter;
+@property(readonly, nonatomic) EDPETInteractionEventLog *petLog; // @synthesize petLog=_petLog;
+@property(readonly, nonatomic) EDInteractionLogger *interactionLogger; // @synthesize interactionLogger=_interactionLogger;
 - (void)_schedulePETSubmissionActivityForLog:(id)arg1;
+- (void)scheduleRecurringActivity;
 - (id)initWithPersistence:(id)arg1 userProfileProvider:(id)arg2 vipManager:(id)arg3 sourceApplicationBundleIdentifier:(id)arg4;
 
 @end

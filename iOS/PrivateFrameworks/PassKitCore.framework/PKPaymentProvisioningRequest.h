@@ -12,6 +12,7 @@
     NSArray *_certChain;
     _Bool _devSigned;
     PKPaymentDeviceProvisioningData *_deviceData;
+    _Bool _disableDeviceScore;
     long long _style;
     PKPaymentEligibilityResponse *_eligibilityResponse;
     NSString *_nonce;
@@ -25,6 +26,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
 @property(copy, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
 @property(copy, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
@@ -33,17 +35,20 @@
 @property(copy, nonatomic) NSString *cardSecurityCode; // @synthesize cardSecurityCode=_cardSecurityCode;
 @property(copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property(copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
+@property(nonatomic) _Bool disableDeviceScore; // @synthesize disableDeviceScore=_disableDeviceScore;
 @property(retain, nonatomic) PKPaymentEligibilityResponse *eligibilityResponse; // @synthesize eligibilityResponse=_eligibilityResponse;
 @property(nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (void)_updateContextUsingWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deviceScoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_requestBodyWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateRequestForRedirect:(id)arg1 overrides:(id)arg2 webService:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_updateRequestForRetry:(id)arg1 retryFields:(id)arg2 webService:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3 certChain:(id)arg4 devSigned:(_Bool)arg5 deviceData:(id)arg6 webService:(id)arg7 completion:(CDUnknownBlockType)arg8;
+@property(readonly, nonatomic, getter=isDeviceProvisioningDataExpected) _Bool deviceProvisioningDataExpected;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithEligibilityResponse:(id)arg1 addRequestConfiguration:(id)arg2 addRequest:(id)arg3;
+- (id)initWithEligibilityResponse:(id)arg1 style:(long long)arg2;
 - (id)initWithEligibilityResponse:(id)arg1;
 - (id)init;
 

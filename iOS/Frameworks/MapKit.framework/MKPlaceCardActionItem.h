@@ -18,13 +18,16 @@
     _MKMapItemAttribution *_attribution;
     NSString *_glyph;
     UIColor *_glyphColor;
+    UIColor *_backgroundColor;
     MKPlaceCardActionItem *_selectedItem;
     id _value;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id value; // @synthesize value=_value;
 @property(retain, nonatomic) MKPlaceCardActionItem *selectedItem; // @synthesize selectedItem=_selectedItem;
 @property(nonatomic) _Bool selected; // @synthesize selected=_selected;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIColor *glyphColor; // @synthesize glyphColor=_glyphColor;
 @property(copy, nonatomic) NSString *glyph; // @synthesize glyph=_glyph;
 @property(retain, nonatomic) _MKMapItemAttribution *attribution; // @synthesize attribution=_attribution;
@@ -32,7 +35,6 @@
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
-- (void).cxx_destruct;
 - (id)initWithType:(unsigned long long)arg1 displayString:(id)arg2 enabled:(_Bool)arg3 urlStrings:(id)arg4 attribution:(id)arg5;
 - (id)initWithType:(unsigned long long)arg1 displayString:(id)arg2 enabled:(_Bool)arg3;
 

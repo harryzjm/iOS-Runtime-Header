@@ -25,7 +25,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property _Bool onlyQueryMostRelevantContacts; // @synthesize onlyQueryMostRelevantContacts=_onlyQueryMostRelevantContacts;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool onlyQueryMostRelevantContacts; // @synthesize onlyQueryMostRelevantContacts=_onlyQueryMostRelevantContacts;
 @property(retain, nonatomic) NSString *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *targetBundleIdentifier; // @synthesize targetBundleIdentifier=_targetBundleIdentifier;
 @property(nonatomic) unsigned char domain; // @synthesize domain=_domain;
@@ -34,7 +35,6 @@
 @property(retain, nonatomic) NSString *matchingEmail; // @synthesize matchingEmail=_matchingEmail;
 @property(retain, nonatomic) NSString *matchingName; // @synthesize matchingName=_matchingName;
 @property(retain, nonatomic) NSArray *matchingIdentifiers; // @synthesize matchingIdentifiers=_matchingIdentifiers;
-- (void).cxx_destruct;
 - (_Bool)isEqualToContactQuery:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -18,14 +18,14 @@
     long long _progressPercentOfTotal;
 }
 
-+ (id)operationWithName:(id)arg1 requiredState:(long long)arg2 parentProgress:(id)arg3 progressPercentOfTotal:(long long)arg4 execution:(CDUnknownBlockType)arg5;
++ (id)operationWithName:(id)arg1 requiredState:(long long)arg2 parentProgress:(id)arg3 execution:(CDUnknownBlockType)arg4;
 + (_Bool)shouldSuppressLogging;
 + (void)setShouldSuppressLogging:(_Bool)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType cancellationBlock; // @synthesize cancellationBlock=_cancellationBlock;
 @property(nonatomic) long long progressPercentOfTotal; // @synthesize progressPercentOfTotal=_progressPercentOfTotal;
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(nonatomic) long long requiredState; // @synthesize requiredState=_requiredState;
-- (void).cxx_destruct;
 - (void)_safeRemoveCancellationObserver;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)debugDescription;

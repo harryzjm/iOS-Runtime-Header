@@ -20,9 +20,9 @@
     NSError *_error;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
-- (void).cxx_destruct;
 - (void)finishWithError:(id)arg1;
 - (void)finish;
 - (void)execute;

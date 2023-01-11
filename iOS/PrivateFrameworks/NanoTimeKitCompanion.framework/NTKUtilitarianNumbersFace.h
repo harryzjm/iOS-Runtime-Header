@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKUtilitarianNumbersFace
+#import <NanoTimeKitCompanion/NTKFaceComplicationPreviewable-Protocol.h>
+
+@class NSString;
+
+@interface NTKUtilitarianNumbersFace <NTKFaceComplicationPreviewable>
 {
 }
 
@@ -13,6 +17,13 @@
 + (id)_dateComplicationSlotForDevice:(id)arg1;
 + (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
 + (id)_complicationSlotDescriptors;
+- (void)applyPreviewConfigurationWithFamily:(long long)arg1 faceColor:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

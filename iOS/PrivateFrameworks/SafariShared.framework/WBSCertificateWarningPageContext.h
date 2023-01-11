@@ -27,15 +27,16 @@
 + (id)permanentAcceptanceConfirmationDescription;
 + (id)permanentAcceptanceConfirmationTitle;
 + (_Bool)certificateWarningCannotBeBypassedForTrust:(struct __SecTrust *)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double clockSkew; // @synthesize clockSkew=_clockSkew;
 @property(readonly, nonatomic) long long numberOfDaysInvalid; // @synthesize numberOfDaysInvalid=_numberOfDaysInvalid;
 @property(readonly, nonatomic) _Bool canGoBack; // @synthesize canGoBack=_canGoBack;
 @property(readonly, nonatomic) long long warningCategory; // @synthesize warningCategory=_warningCategory;
 @property(readonly, nonatomic) NSURL *failingURL; // @synthesize failingURL=_failingURL;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *expiredCerticateDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initLegacyTLSWarningWithFailingURL:(id)arg1 canGoBack:(_Bool)arg2;
 - (id)initWithWarningCategory:(long long)arg1 failingURL:(id)arg2 numberOfDaysInvalid:(long long)arg3 canGoBack:(_Bool)arg4 clockSkew:(double)arg5;
 - (id)init;
 

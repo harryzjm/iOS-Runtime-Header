@@ -6,7 +6,7 @@
 
 #import <Silex/SXCondition-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface SXCondition <SXCondition>
 {
@@ -15,6 +15,8 @@
 + (id)jsonPropertyNameForObjCPropertyName:(id)arg1;
 - (id)contentSizeCategoryFromJSONContentSizeCategory:(id)arg1;
 - (long long)interfaceSizeClassFromJSONSizeClass:(id)arg1;
+@property(readonly, nonatomic) NSSet *types;
+- (unsigned long long)newsletterSubscriptionStatusWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)preferredColorSchemeWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)testingWithValue:(id)arg1 withType:(int)arg2;
 - (id)maxContentSizeCategoryWithValue:(id)arg1 withType:(int)arg2;
@@ -27,6 +29,7 @@
 - (double)minViewportWidthWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) NSString *configurationKey; // @dynamic configurationKey;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
@@ -41,6 +44,7 @@
 @property(readonly, nonatomic) NSString *minSpecVersion; // @dynamic minSpecVersion;
 @property(readonly, nonatomic) double minViewportAspectRatio; // @dynamic minViewportAspectRatio;
 @property(readonly, nonatomic) double minViewportWidth; // @dynamic minViewportWidth;
+@property(readonly, nonatomic) unsigned long long newsletterSubscriptionStatus; // @dynamic newsletterSubscriptionStatus;
 @property(readonly, nonatomic) NSString *platform; // @dynamic platform;
 @property(readonly, nonatomic) unsigned long long preferredColorScheme; // @dynamic preferredColorScheme;
 @property(readonly, nonatomic) NSString *subscriptionStatus; // @dynamic subscriptionStatus;

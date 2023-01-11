@@ -7,13 +7,14 @@
 #import <SpringBoard/SBHomeGestureDockSwitcherModifierDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureFinalDestinationSwitcherModifierDelegate-Protocol.h>
 
-@class NSString, SBAppLayout, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBStackedFloatingSwitcherModifier;
+@class NSString, SBAppLayout, SBDismissSiriSwitcherModifier, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBStackedFloatingSwitcherModifier, UIViewFloatAnimatableProperty;
 
 @interface SBHomeGestureFloatingSwitcherModifier <SBHomeGestureDockSwitcherModifierDelegate, SBHomeGestureFinalDestinationSwitcherModifierDelegate>
 {
     SBStackedFloatingSwitcherModifier *_stackedLayoutModifier;
     SBHomeGestureDockSwitcherModifier *_dockModifier;
     SBHomeGestureFinalDestinationSwitcherModifier *_finalDestinationModifier;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
     SBAppLayout *_selectedAppLayout;
     _Bool _continuingGesture;
     _Bool _lastGestureWasAnArcSwipe;
@@ -22,31 +23,32 @@
     double _rubberbandedYTranslation;
     double _scaleProgress;
     double _multitaskingHintProgress;
+    UIViewFloatAnimatableProperty *_rampingProperty;
     _Bool _gestureHasBegun;
     _Bool _gestureHasEnded;
 }
 
 - (void).cxx_destruct;
-- (_Bool)wantsMinificationFilter;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (long long)sceneDeactivationReason;
-- (_Bool)wantsResignActiveAssertion;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
+- (id)topMostLayoutElements;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (id)topMostAppLayouts;
 - (double)shadowOffsetForIndex:(unsigned long long)arg1;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
-- (id)_actionForActivatingFinalDestination:(long long)arg1;
+- (id)_responseForActivatingFinalDestination:(long long)arg1;
 - (double)unconditionalDistanceThresholdForHome;
 - (long long)currentFinalDestination;
+- (void)_beginAnimatingRampingPropertyWithSettings:(id)arg1;
 - (void)_updateGestureTranslationAndVelocityWithEvent:(id)arg1;
 - (id)_updateForGestureDidEndWithEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;

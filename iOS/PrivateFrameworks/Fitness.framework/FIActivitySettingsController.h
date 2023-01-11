@@ -22,15 +22,16 @@
     CDUnknownBlockType _updateHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 @property(nonatomic) long long wheelchairUse; // @synthesize wheelchairUse=_wheelchairUse;
 @property(nonatomic) long long biologicalSex; // @synthesize biologicalSex=_biologicalSex;
 @property(retain, nonatomic) HKQuantity *weight; // @synthesize weight=_weight;
 @property(retain, nonatomic) HKQuantity *height; // @synthesize height=_height;
 @property(retain, nonatomic) NSDate *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) HKQuantity *leanBodyMass;
+@property(readonly) unsigned long long experienceType;
 - (_Bool)commmitWithError:(id *)arg1;
 - (_Bool)_logAndNilError:(id *)arg1 operationDescription:(id)arg2;
 - (void)populateExistingCharacteristics;

@@ -20,7 +20,9 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)newIdleTimerAssertionWithConfiguration:(id)arg1 forReason:(id)arg2;
+- (id)newIdleTimerAssertionWithConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
 - (id)newAssertionToDisableIdleTimerForReason:(id)arg1;
+- (id)newAssertionToDisableIdleTimerForReason:(id)arg1 error:(id *)arg2;
 - (_Bool)isIdleTimerServiceAvailable;
 - (id)_initWithModel:(id)arg1;
 - (id)_init;

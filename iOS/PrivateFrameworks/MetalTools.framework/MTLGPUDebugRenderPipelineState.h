@@ -4,23 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLRenderPipelineDescriptor, MTLRenderPipelineReflection, MTLTileRenderPipelineDescriptor, MTLToolsFunction;
+@class MTLGPUDebugBuffer, MTLGPUDebugFunction, MTLRenderPipelineDescriptor, MTLRenderPipelineReflection, MTLTileRenderPipelineDescriptor;
 
 @interface MTLGPUDebugRenderPipelineState
 {
     MTLRenderPipelineDescriptor *_descriptor;
     MTLTileRenderPipelineDescriptor *_tileDescriptor;
-    MTLRenderPipelineReflection *_reflection;
+    MTLRenderPipelineReflection *_internalReflection;
+    MTLRenderPipelineReflection *_userReflection;
+    struct KeyBufferPair _globalConstants;
+    unsigned long long _vertexConstantOffset;
+    unsigned long long _fragmentConstantOffset;
+    unsigned long long _tileConstantOffset;
+    MTLGPUDebugBuffer *_indirectStateBuffer;
+    _Bool _supportsIndirectCommandBuffers;
 }
 
+- (id).cxx_construct;
 - (void)dealloc;
-@property(readonly, nonatomic) MTLRenderPipelineReflection *reflection;
+@property(readonly, nonatomic) MTLGPUDebugBuffer *indirectStateBuffer;
+@property(readonly, nonatomic) unsigned long long tileConstantOffset;
+@property(readonly, nonatomic) unsigned long long fragmentConstantOffset;
+@property(readonly, nonatomic) unsigned long long vertexConstantOffset;
+@property(readonly, nonatomic) MTLGPUDebugBuffer *globalConstantsBuffer;
+@property(readonly, nonatomic) MTLRenderPipelineReflection *userReflection;
+@property(readonly, nonatomic) MTLRenderPipelineReflection *internalReflection;
+@property(readonly, nonatomic) MTLGPUDebugFunction *tileFunction;
 - (id)fragmentLibrary;
-@property(readonly, nonatomic) MTLToolsFunction *fragmentFunction;
+@property(readonly, nonatomic) MTLGPUDebugFunction *fragmentFunction;
 - (id)vertexLibrary;
-@property(readonly, nonatomic) MTLToolsFunction *vertexFunction;
+@property(readonly, nonatomic) MTLGPUDebugFunction *vertexFunction;
+- (void)releaseReflection;
 - (id)initWithRenderPipelineState:(id)arg1 tileDescriptor:(id)arg2 reflection:(id)arg3 device:(id)arg4;
-- (id)initWithRenderPipelineState:(id)arg1 descriptor:(id)arg2 reflection:(id)arg3 device:(id)arg4;
+- (id)initWithRenderPipelineState:(id)arg1 descriptor:(id)arg2 unwrappedDescriptor:(id)arg3 reflection:(id)arg4 device:(id)arg5 pipelineOptions:(unsigned long long)arg6;
+- (void)_initConstantsBuffer:(id)arg1 device:(id)arg2;
 
 @end
 

@@ -33,12 +33,17 @@
     NSArray *_constraints;
     CDUnknownBlockType _customOffset;
     struct CGSize _contentSize;
+    struct CGPoint _visibleLocation;
+    struct CGPoint _normalizedAnchorPoint;
     struct CGRect _visibleRect;
     struct UIEdgeInsets _padding;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isAutoInvalidated) _Bool autoInvalidated; // @synthesize autoInvalidated=_autoInvalidated;
 @property(nonatomic) _Bool needsUpdate; // @synthesize needsUpdate=_needsUpdate;
+@property(nonatomic) struct CGPoint normalizedAnchorPoint; // @synthesize normalizedAnchorPoint=_normalizedAnchorPoint;
+@property(nonatomic) struct CGPoint visibleLocation; // @synthesize visibleLocation=_visibleLocation;
 @property(copy, nonatomic) CDUnknownBlockType customOffset; // @synthesize customOffset=_customOffset;
 @property(copy, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
@@ -55,7 +60,6 @@
 @property(readonly, nonatomic) __weak PXGLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) id context; // @synthesize context=_context;
 @property(nonatomic) __weak id <PXGAnchorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *diagnosticDescription;
 - (void)_enumerateSpriteConstraintsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSpritesWithEnumerationOptions:(unsigned long long)arg1 referencingOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;

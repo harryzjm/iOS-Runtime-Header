@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)isCoreMotionCaloriePushModelEnabled;
 + (_Bool)supportsCollectionForProfile:(id)arg1;
 + (_Bool)isNatalimeterAvailable;
 - (id)persistentIdentifier;

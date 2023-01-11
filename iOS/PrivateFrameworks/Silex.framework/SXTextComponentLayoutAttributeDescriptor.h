@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class STTextExclusionPath;
+@class SXTextExclusionPath;
 
 @interface SXTextComponentLayoutAttributeDescriptor
 {
-    STTextExclusionPath *_resultingExclusionPath;
+    SXTextExclusionPath *_resultingExclusionPath;
     struct _NSRange _range;
 }
 
 + (id)descriptorWithFromLayoutAttribute:(int)arg1 toLayoutAttribute:(int)arg2 ignoreMargin:(_Bool)arg3 withRange:(struct _NSRange)arg4;
-@property(retain, nonatomic) STTextExclusionPath *resultingExclusionPath; // @synthesize resultingExclusionPath=_resultingExclusionPath;
-@property(nonatomic) struct _NSRange range; // @synthesize range=_range;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SXTextExclusionPath *resultingExclusionPath; // @synthesize resultingExclusionPath=_resultingExclusionPath;
+@property(nonatomic) struct _NSRange range; // @synthesize range=_range;
 
 @end
 

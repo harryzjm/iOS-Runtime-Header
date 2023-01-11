@@ -12,7 +12,7 @@
 #import <PhotosUICore/PXTilingControllerTransitionDelegate-Protocol.h>
 
 @class NSDate, NSString, PHPhotoLibrary, PXExtendedTraitCollection, PXMemoriesFeedDataSourceManager, PXMemoriesFeedScrollFilter, PXMemoriesFeedTilingLayout, PXMemoriesFeedTransitionAnimationCoordinator, PXMemoriesSpec, PXMemoriesSpecManager, PXScrollViewController, PXSectionedLayoutEngine, PXSectionedObjectReference, PXSectionedSelectionManager, PXTilingController;
-@protocol PXMemoriesFeedViewControllerHelperDelegate;
+@protocol PXMemoriesFeedViewControllerHelperDelegate, PXViewControllerEventTracker;
 
 @interface PXMemoriesFeedViewControllerHelper <PXSectionedDataSourceManagerObserver, PXSectionedLayoutEngineDelegate, PXMemoriesFeedScrollFilterDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXMemoriesFeedTilingLayoutDelegate>
 {
@@ -40,6 +40,7 @@
     PXSectionedObjectReference *_activatedMemoryReference;
     PXSectionedObjectReference *_lastActionPresentationMemoryReference;
     NSString *_scrollTargetMemoryUUID;
+    id <PXViewControllerEventTracker> _eventTracker;
     NSDate *__lastUserMemoryGenerationRequestDate;
     PXSectionedObjectReference *__memoryReferenceToScrollToVisible;
     PXSectionedObjectReference *_anchorMemoryReference;
@@ -52,6 +53,7 @@
     struct CGPoint _anchorMemoryOrigin;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setNewMemoriesRequestCompletion:) CDUnknownBlockType _newMemoriesRequestCompletion; // @synthesize _newMemoriesRequestCompletion=__newMemoriesRequestCompletion;
 @property(nonatomic, getter=_isRequestingNewMemories, setter=_setRequestingNewMemories:) _Bool _requestingNewMemories; // @synthesize _requestingNewMemories=__requestingNewMemories;
 @property(nonatomic, setter=_setRefreshRetryCount:) long long _refreshRetryCount; // @synthesize _refreshRetryCount=__refreshRetryCount;
@@ -63,6 +65,7 @@
 @property(retain, nonatomic, setter=_setAnchorMemoryReference:) PXSectionedObjectReference *anchorMemoryReference; // @synthesize anchorMemoryReference=_anchorMemoryReference;
 @property(retain, nonatomic, setter=_setMemoryReferenceToScrollToVisible:) PXSectionedObjectReference *_memoryReferenceToScrollToVisible; // @synthesize _memoryReferenceToScrollToVisible=__memoryReferenceToScrollToVisible;
 @property(retain, nonatomic, setter=_setLastUserMemoryGenerationRequestDate:) NSDate *_lastUserMemoryGenerationRequestDate; // @synthesize _lastUserMemoryGenerationRequestDate=__lastUserMemoryGenerationRequestDate;
+@property(readonly, nonatomic) id <PXViewControllerEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property(retain, nonatomic, setter=setScrollTargetMemoryUUID:) NSString *scrollTargetMemoryUUID; // @synthesize scrollTargetMemoryUUID=_scrollTargetMemoryUUID;
 @property(retain, nonatomic) PXSectionedObjectReference *lastActionPresentationMemoryReference; // @synthesize lastActionPresentationMemoryReference=_lastActionPresentationMemoryReference;
 @property(retain, nonatomic) PXSectionedObjectReference *activatedMemoryReference; // @synthesize activatedMemoryReference=_activatedMemoryReference;
@@ -75,7 +78,6 @@
 @property(readonly, nonatomic) PXMemoriesSpecManager *specManager; // @synthesize specManager=_specManager;
 @property(readonly, nonatomic) PXMemoriesFeedDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) PXTilingController *tilingController; // @synthesize tilingController=_tilingController;
-- (void).cxx_destruct;
 - (void)_scrollToTargetMemoryUUIDWhenReady:(id)arg1;
 - (id)memoriesFeedTilingLayout:(id)arg1 titleFontNameForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (struct CGRect)memoriesFeedTilingLayout:(id)arg1 contentsRectForItemAtIndexPath:(struct PXSimpleIndexPath)arg2 forAspectRatio:(double)arg3;
@@ -109,11 +111,9 @@
 - (void)_handleFinishedRequestingNewMemoriesWithSuccess:(_Bool)arg1 reason:(unsigned long long)arg2 error:(id)arg3;
 - (void)_handleRefreshCompletionWithResultInformation:(id)arg1 reason:(unsigned long long)arg2 error:(id)arg3;
 - (void)_startRefreshForReason:(unsigned long long)arg1;
-- (void)_generateMemoriesForReason:(unsigned long long)arg1;
-- (void)_generateMemoriesForReason:(unsigned long long)arg1 contextualMemoriesSettings:(id)arg2;
 - (void)invalidateMetrics;
-- (void)feedViewControllerDidDisappear;
-- (void)feedViewControllerDidAppear:(_Bool)arg1;
+- (void)feedViewControllerDidDisappear:(id)arg1;
+- (void)feedViewControllerDidAppear:(id)arg1 shouldUpdateNotifications:(_Bool)arg2;
 - (void)feedViewControllerWillLayoutSubviews;
 @property(readonly, nonatomic) PXMemoriesFeedTilingLayout *targetLayout;
 @property(readonly, nonatomic) PXMemoriesFeedTilingLayout *currentLayout;

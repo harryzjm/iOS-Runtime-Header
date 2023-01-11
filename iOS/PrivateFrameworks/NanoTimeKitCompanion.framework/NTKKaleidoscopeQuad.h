@@ -19,7 +19,8 @@
     float _alpha;
     float _rotation;
     float _dialRadius;
-    CLKUITexture *_primaryTexture;
+    CLKUITexture *_primaryLumaTexture;
+    CLKUITexture *_primaryChromaTexture;
     CLKUITexture *_secondaryTexture;
     unsigned long long _shaderType;
     MISSING_TYPE *_sampleCenter;
@@ -27,6 +28,7 @@
 }
 
 + (id)quadWithShaderType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) float dialRadius; // @synthesize dialRadius=_dialRadius;
 @property(nonatomic) float rotation; // @synthesize rotation=_rotation;
 @property(nonatomic) MISSING_TYPE *sampleRadius; // @synthesize sampleRadius=_sampleRadius;
@@ -34,8 +36,8 @@
 @property(nonatomic) float alpha; // @synthesize alpha=_alpha;
 @property(readonly, nonatomic) unsigned long long shaderType; // @synthesize shaderType=_shaderType;
 @property(retain, nonatomic) CLKUITexture *secondaryTexture; // @synthesize secondaryTexture=_secondaryTexture;
-@property(retain, nonatomic) CLKUITexture *primaryTexture; // @synthesize primaryTexture=_primaryTexture;
-- (void).cxx_destruct;
+@property(retain, nonatomic) CLKUITexture *primaryChromaTexture; // @synthesize primaryChromaTexture=_primaryChromaTexture;
+@property(retain, nonatomic) CLKUITexture *primaryLumaTexture; // @synthesize primaryLumaTexture=_primaryLumaTexture;
 - (_Bool)prepareForTime:(double)arg1;
 - (void)renderForDisplayWithEncoder:(id)arg1;
 - (void)purge;

@@ -8,6 +8,7 @@
 {
 }
 
+- (id)hiddenTinkerReplyKeys;
 - (unsigned long long)defaultCount;
 
 @end

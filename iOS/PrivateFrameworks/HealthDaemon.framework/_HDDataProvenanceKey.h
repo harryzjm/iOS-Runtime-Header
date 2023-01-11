@@ -10,6 +10,7 @@
 
 @class HDDataOriginProvenance, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDDataProvenanceKey : NSObject <NSCopying>
 {
     unsigned long long _hash;
@@ -19,10 +20,10 @@
 }
 
 + (id)provenanceKeyForProvenance:(id)arg1 localProductType:(id)arg2 localSystemBuild:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *localSystemBuild; // @synthesize localSystemBuild=_localSystemBuild;
 @property(readonly, copy, nonatomic) NSString *localProductType; // @synthesize localProductType=_localProductType;
 @property(readonly, copy, nonatomic) HDDataOriginProvenance *dataProvenance; // @synthesize dataProvenance=_dataProvenance;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

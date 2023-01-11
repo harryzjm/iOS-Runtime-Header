@@ -24,7 +24,7 @@
 - (id)momentByMomentLocalIdentifierWithMomentLocalIdentifiers:(id)arg1;
 - (id)sortedMomentLocalIdentifiersWithDateIgnoringYearBeforeDateYear:(id)arg1;
 - (void)reset;
-- (id)nextSuggestion;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 
@@ -32,6 +32,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool lastSuggestionWasColliding;
 @property(readonly) Class superclass;
 
 @end

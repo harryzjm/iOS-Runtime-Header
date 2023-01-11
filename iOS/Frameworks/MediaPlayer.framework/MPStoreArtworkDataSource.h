@@ -6,20 +6,27 @@
 
 @interface MPStoreArtworkDataSource
 {
+    long long _totalImageRequestCount;
+    long long _HEICImageRequestCount;
+    struct os_unfair_lock_s _lock;
+    double _maxHEICRequestPercentage;
 }
 
 + (id)sharedStoreArtworkDataSource;
-- (id)_bestLookupItemArtworkForCatalog:(id)arg1 size:(struct CGSize)arg2;
-- (id)_bestURLForCatalog:(id)arg1 size:(struct CGSize)arg2;
-- (void)getExportableArtworkPropertiesForCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)wantsBackgroundImageDecompression;
-- (id)supportedSizesForCatalog:(id)arg1;
+@property(nonatomic) double maxHEICRequestPercentage; // @synthesize maxHEICRequestPercentage=_maxHEICRequestPercentage;
+- (struct CGSize)_bestSizeForImageSizeInfo:(id)arg1 catalog:(id)arg2;
+- (id)_bestURLForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
 - (id)sortedSupportedSizesForCatalog:(id)arg1;
-- (id)requestForCatalog:(id)arg1 size:(struct CGSize)arg2;
+- (id)cacheKeyForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
+- (struct CGSize)bestAvailableSizeForCatalog:(id)arg1;
+- (id)requestForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
+- (id)supportedSizesForCatalog:(id)arg1;
+- (_Bool)areRepresentationsOfKind:(long long)arg1 availableForCatalog:(id)arg2;
+- (void)getExportableArtworkPropertiesForCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(id)arg2 options:(id)arg3;
-- (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize)arg2;
-- (_Bool)areRepresentationsAvailableForCatalog:(id)arg1;
+- (_Bool)wantsBackgroundImageDecompression;
 - (id)visualIdenticalityIdentifierForCatalog:(id)arg1;
+- (id)init;
 
 @end
 

@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <Silex/STTextCanvasRenderSource-Protocol.h>
 #import <Silex/SXAXAssistiveTechStatusChangeListener-Protocol.h>
 #import <Silex/SXComponentInteractable-Protocol.h>
+#import <Silex/SXTextCanvasRenderSource-Protocol.h>
 #import <Silex/SXTransitionableComponentView-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, SXColumnLayout, SXFillView, SXUnitConverter, SXViewport;
-@protocol SXComponent, SXComponentHosting, SXComponentLayout, SXComponentStyle, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXDOMObjectProviding, SXPresentationDelegate;
+@protocol SXComponent, SXComponentHosting, SXComponentLayout, SXComponentState, SXComponentStyle, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXDOMObjectProviding, SXPresentationDelegate;
 
-@interface SXComponentView : UIView <UIGestureRecognizerDelegate, STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionableComponentView, SXComponentInteractable>
+@interface SXComponentView : UIView <UIGestureRecognizerDelegate, SXTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionableComponentView, SXComponentInteractable>
 {
     _Bool _hasRenderedContents;
     _Bool _requiresThoroughFrameCalculations;
@@ -26,9 +26,10 @@
     _Bool _hasAnimation;
     _Bool _hasBehaviors;
     _Bool _hasRenderedComponentStyle;
-    CDStruct_1cc9d0d0 _presentationChanges;
+    CDStruct_12a35e6e _presentationChanges;
     id <SXComponentLayout> _componentLayout;
     id <SXComponent> _component;
+    id <SXComponentState> _state;
     id <SXDOMObjectProviding> _DOMObjectProvider;
     SXViewport *_viewport;
     id <SXPresentationDelegate> _presentationDelegate;
@@ -54,7 +55,8 @@
     struct CGRect _presentationFrame;
 }
 
-@property(nonatomic) CDStruct_1cc9d0d0 presentationChanges; // @synthesize presentationChanges=_presentationChanges;
+- (void).cxx_destruct;
+@property(nonatomic) CDStruct_12a35e6e presentationChanges; // @synthesize presentationChanges=_presentationChanges;
 @property(nonatomic) struct CGRect presentationFrame; // @synthesize presentationFrame=_presentationFrame;
 @property(nonatomic) unsigned long long componentIndex; // @synthesize componentIndex=_componentIndex;
 @property(nonatomic) __weak id <SXComponentHosting> componentHost; // @synthesize componentHost=_componentHost;
@@ -86,9 +88,10 @@
 @property(readonly, nonatomic) __weak id <SXPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property(readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 @property(readonly, nonatomic) id <SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
+@property(retain, nonatomic) id <SXComponentState> state; // @synthesize state=_state;
 @property(readonly, nonatomic) id <SXComponent> component; // @synthesize component=_component;
 @property(readonly, nonatomic) id <SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
-- (void).cxx_destruct;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)assistiveTechnologyStatusDidChange;
 - (_Bool)userInteractable;
 @property(readonly, copy) NSString *description;
@@ -115,14 +118,15 @@
 - (void)renderComponentStyle;
 - (void)prepareComponentStyleRendererForStyle:(id)arg1;
 - (void)setupComponentStyleRendererForStyle:(id)arg1;
+@property(readonly, nonatomic) struct CGRect interactionFrame;
 - (void)updateAllowHierarchyRemovalWithComponent:(id)arg1 componentStyle:(id)arg2;
 - (_Bool)allowHierarchyRemoval;
 - (void)restoreBehavior;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
 - (id)contentViewForBehavior:(id)arg1;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
-- (void)willPresentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
+- (void)willPresentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)renderContentsIfNeeded;
 - (void)discardContents;
 - (void)renderContents;

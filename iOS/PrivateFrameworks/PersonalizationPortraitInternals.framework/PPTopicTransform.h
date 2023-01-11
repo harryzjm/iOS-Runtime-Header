@@ -17,19 +17,40 @@
     const unsigned int *_matrixIndices;
     const float *_matrixElts;
     const char *_payloads;
+    unsigned char _featureSmoothingType;
+    unsigned char _featureScalingType;
+    unsigned char _featureNormalizationType;
+    unsigned char _outputScalingType;
+    unsigned char _activationType;
+    float _featureSmoothingFactor;
+    float _featureScalingFactor;
+    float _outputScalingFactor;
+    float _attenuationFactor;
+    float _threshold;
 }
 
 - (void).cxx_destruct;
-- (void)halfSigmoid:(float *)arg1;
-- (void)sigmoid:(float *)arg1;
-- (void)scaleBuffer:(float *)arg1 withFactor:(float)arg2;
+@property(readonly, nonatomic) float threshold; // @synthesize threshold=_threshold;
+- (void)applyOutputAttenuation:(float *)arg1 nonzeroCounts:(unsigned short *)arg2;
+- (void)applyOutputActivation:(float *)arg1;
+- (void)applyFeatureNormalization:(float *)arg1 vectorLength:(int)arg2;
+- (void)_applyScaling:(float *)arg1 vectorLength:(int)arg2 scalingType:(unsigned char)arg3 scalingFactor:(float)arg4;
+- (void)applyOutputScaling:(float *)arg1 vectorLength:(int)arg2;
+- (void)applyFeatureScaling:(float *)arg1 vectorLength:(int)arg2;
+- (void)applyFeatureSmoothing:(float *)arg1 vectorLength:(int)arg2;
 - (void)addBias:(float *)arg1;
 - (id)QIDWeightsWithMappedTopicIdentifier:(id)arg1;
-- (void)addTopicToBuffer:(float *)arg1 countNonZeroComponentsInBuffer:(unsigned int *)arg2 qid:(unsigned int)arg3 score:(float)arg4;
+- (void)addWeightedTopicScoreToBuffer:(float *)arg1 qid:(unsigned int)arg2 score:(float)arg3;
+- (void)addWeightedTopicScoreToBuffer:(float *)arg1 countNonZeroComponentsInBuffer:(unsigned short *)arg2 qid:(unsigned int)arg3 score:(float)arg4;
+- (void)_enumerateSparseColumnAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateSparseRowAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (id)payloadForTopic:(unsigned int)arg1;
+- (_Bool)containsMappedTopic:(id)arg1;
 @property(readonly, nonatomic) unsigned long long outputTopicCount;
+- (void)_readHyperparameters:(id)arg1;
+- (id)initWithPath:(id)arg1 mappingId:(id)arg2 hyperparameters:(id)arg3;
 - (id)init;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 mappingId:(id)arg2;
 
 @end
 

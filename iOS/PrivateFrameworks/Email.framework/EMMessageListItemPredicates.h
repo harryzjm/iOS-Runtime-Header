@@ -24,6 +24,7 @@
 + (long long)dateSortOrderFromSortDescriptors:(id)arg1;
 + (id)sortDescriptorForDateAscending:(_Bool)arg1;
 + (id)predicateFromPredicate:(id)arg1 ignoringKeyPaths:(id)arg2;
++ (id)predicateForAccount:(id)arg1;
 + (id)_predicateForMessagesInMailboxWithURL:(id)arg1;
 + (id)predicateForExcludingMessagesInMailboxWithURL:(id)arg1;
 + (id)predicateForMessagesNewerThanDate:(id)arg1;
@@ -35,10 +36,13 @@
 + (id)predicateForNotifyMessages;
 + (id)_predicateForKeyPath:(id)arg1 value:(id)arg2;
 + (id)predicateForMessagesWithAttachments;
++ (id)predicateForReadMessages;
 + (id)predicateForUnreadMessages;
 + (id)predicateForUnflaggedMessages;
++ (id)predicateForFlagColor:(unsigned long long)arg1;
 + (id)predicateForFlaggedMessages;
 + (id)predicateForVIPMessages;
++ (id)predicateForMessagesWithSender:(id)arg1;
 + (id)predicateForMessagesWithThreadScope:(id)arg1;
 + (id)predicateForMessagesWithMailboxScope:(id)arg1;
 + (id)predicateForExcludingMessagesInMailboxesWithObjectIDs:(id)arg1;

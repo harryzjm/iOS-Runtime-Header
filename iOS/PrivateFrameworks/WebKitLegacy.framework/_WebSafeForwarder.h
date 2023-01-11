@@ -11,18 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface _WebSafeForwarder : NSObject
 {
-    id target;
-    id defaultTarget;
-    _WebSafeAsyncForwarder *asyncForwarder;
-    long long asyncForwarderPred;
+    id _target;
+    id _defaultTarget;
+    _WebSafeAsyncForwarder *_asyncForwarder;
 }
 
+@property(readonly, nonatomic) id asyncForwarder; // @synthesize asyncForwarder=_asyncForwarder;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (void)clearTarget;
 - (void)dealloc;
-- (id)asyncForwarder;
 - (id)initWithTarget:(id)arg1 defaultTarget:(id)arg2;
 
 @end

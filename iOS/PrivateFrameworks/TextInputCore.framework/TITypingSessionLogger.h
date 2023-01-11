@@ -20,6 +20,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)logDetailsForKeyboardState:(id)arg1;
 - (void)sendTo:(id)arg1;
 - (void)setClientID:(id)arg1 keyboardState:(id)arg2;
 - (void)layoutDidChange:(id)arg1 keyboardState:(id)arg2;

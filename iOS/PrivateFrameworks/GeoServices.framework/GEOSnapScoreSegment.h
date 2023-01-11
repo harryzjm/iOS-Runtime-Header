@@ -13,12 +13,14 @@
 @interface GEOSnapScoreSegment : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributes;
     NSMutableArray *_categoryScores;
     unsigned long long _geoId;
     GEOLatLng *_pointOnLine;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     float _overallScore;
     struct {
         unsigned int has_geoId:1;
@@ -27,12 +29,7 @@
         unsigned int read_attributes:1;
         unsigned int read_categoryScores:1;
         unsigned int read_pointOnLine:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_attributes:1;
-        unsigned int wrote_categoryScores:1;
-        unsigned int wrote_geoId:1;
-        unsigned int wrote_pointOnLine:1;
-        unsigned int wrote_overallScore:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -50,29 +47,29 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)attributeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributesCount;
-- (void)_addNoFlagsAttribute:(id)arg1;
 - (void)addAttribute:(id)arg1;
 - (void)clearAttributes;
 @property(retain, nonatomic) NSMutableArray *attributes;
-- (void)_readAttributes;
 - (id)categoryScoreAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categoryScoresCount;
-- (void)_addNoFlagsCategoryScore:(id)arg1;
 - (void)addCategoryScore:(id)arg1;
 - (void)clearCategoryScores;
 @property(retain, nonatomic) NSMutableArray *categoryScores;
-- (void)_readCategoryScores;
 @property(nonatomic) _Bool hasOverallScore;
 @property(nonatomic) float overallScore;
 @property(retain, nonatomic) GEOLatLng *pointOnLine;
 @property(readonly, nonatomic) _Bool hasPointOnLine;
-- (void)_readPointOnLine;
 @property(nonatomic) _Bool hasGeoId;
 @property(nonatomic) unsigned long long geoId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

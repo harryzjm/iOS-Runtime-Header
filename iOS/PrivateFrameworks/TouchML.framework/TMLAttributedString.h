@@ -18,8 +18,8 @@
 
 + (id)attributedStringWithFormat:(id)arg1 attributes:(id)arg2;
 + (void)initializeJSContext:(id)arg1;
-@property(copy, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 - (struct CGSize)size;
 - (void)deleteCharactersInRange:(struct _NSRange)arg1;
 - (void)appendAttributedString:(id)arg1;
@@ -32,7 +32,7 @@
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
 - (void)addAttributes:(id)arg1 range:(struct _NSRange)arg2;
 - (id)NSAttributedString;
-@property(retain, nonatomic) NSString *string;
+@property(copy, nonatomic) NSString *string;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)attributedStringWithAttachment:(id)arg1;
 - (id)initWithAttributedString:(id)arg1;

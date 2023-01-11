@@ -21,10 +21,6 @@
 
 + (id)collectionWithInheritances:(id)arg1;
 - (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

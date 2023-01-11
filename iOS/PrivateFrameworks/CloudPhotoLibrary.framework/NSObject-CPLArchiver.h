@@ -26,7 +26,7 @@
 - (void)_cplCopyProperties:(id)arg1 fromOtherObject:(id)arg2 withCopyBlock:(CDUnknownBlockType)arg3;
 - (unsigned long long)cplHash;
 - (_Bool)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 withEqualityBlock:(CDUnknownBlockType)arg3;
-- (_Bool)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 differingProperty:(id *)arg3 withEqualityBlock:(CDUnknownBlockType)arg4;
+- (_Bool)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 diffTracker:(id)arg3 withEqualityBlock:(CDUnknownBlockType)arg4;
 - (_Bool)cplIsEqual:(id)arg1 withEqualityBlock:(CDUnknownBlockType)arg2;
 - (_Bool)cplIsEqual:(id)arg1;
 - (void)cplDecodePropertiesFromCoder:(id)arg1;

@@ -12,13 +12,15 @@
 {
     NSArray *_groups;
     AVTEditingModelColors *_colors;
+    unsigned long long _platform;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long platform; // @synthesize platform=_platform;
 @property(readonly, copy, nonatomic) AVTEditingModelColors *colors; // @synthesize colors=_colors;
 @property(readonly, copy, nonatomic) NSArray *groups; // @synthesize groups=_groups;
-- (void).cxx_destruct;
 - (id)description;
-- (id)initWithGroups:(id)arg1 colors:(id)arg2;
+- (id)initWithGroups:(id)arg1 colors:(id)arg2 forPlatform:(unsigned long long)arg3;
 
 @end
 

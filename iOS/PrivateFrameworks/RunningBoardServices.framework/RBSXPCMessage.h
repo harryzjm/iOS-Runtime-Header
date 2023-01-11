@@ -6,22 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class BSXPCCoder, NSError, RBSXPCMessageReply;
+@class NSError, RBSXPCCoder, RBSXPCMessageReply;
 @protocol OS_xpc_object;
 
 @interface RBSXPCMessage : NSObject
 {
     NSObject<OS_xpc_object> *_xpc_message;
-    BSXPCCoder *_payload;
+    RBSXPCCoder *_payload;
     SEL _method;
 }
 
 + (id)messageForXPCMessage:(id)arg1;
 + (id)messageForMethod:(SEL)arg1 varguments:(id)arg2;
-+ (id)messageForMethod:(SEL)arg1 arguments:(id)arg2;
-+ (id)messageWithEncoder:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) SEL method; // @synthesize method=_method;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SEL method; // @synthesize method=_method;
 - (id)decodeArgumentCollection:(Class)arg1 withClass:(Class)arg2 atIndex:(unsigned long long)arg3 allowNil:(_Bool)arg4 error:(out id *)arg5;
 - (id)decodeArgumentWithClass:(Class)arg1 atIndex:(unsigned long long)arg2 allowNil:(_Bool)arg3 error:(out id *)arg4;
 - (id)invokeOnConnection:(id)arg1 withReturnClass:(Class)arg2 error:(out id *)arg3;
@@ -33,7 +31,6 @@
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) RBSXPCMessageReply *reply;
 @property(readonly, nonatomic) _Bool isEmpty;
-- (id)_initWithMessage:(id)arg1;
 - (id)init;
 
 @end

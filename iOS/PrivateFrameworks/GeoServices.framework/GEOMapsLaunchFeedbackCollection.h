@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOMapsLaunchFeedbackCollection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEOSessionID _sessionId;
     NSString *_sourceAppBundleId;
     NSString *_uriScheme;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_sessionId:1;
         unsigned int read_sourceAppBundleId:1;
         unsigned int read_uriScheme:1;
-        unsigned int wrote_sessionId:1;
-        unsigned int wrote_sourceAppBundleId:1;
-        unsigned int wrote_uriScheme:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,16 +38,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *uriScheme;
 @property(readonly, nonatomic) _Bool hasUriScheme;
-- (void)_readUriScheme;
 @property(retain, nonatomic) NSString *sourceAppBundleId;
 @property(readonly, nonatomic) _Bool hasSourceAppBundleId;
-- (void)_readSourceAppBundleId;
 @property(nonatomic) _Bool hasSessionId;
 @property(nonatomic) struct GEOSessionID sessionId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

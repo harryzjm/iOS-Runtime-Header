@@ -12,5 +12,6 @@
 
 @optional
 - (void)downloadingItemViewControllerDidFinishLoadingPreviewItem:(QLDownloadingItemViewController *)arg1 withContents:(id)arg2;
+- (_Bool)downloadingItemViewControllerShouldForceAutodownloadFile:(QLDownloadingItemViewController *)arg1;
 @end
 

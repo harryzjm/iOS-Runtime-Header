@@ -16,15 +16,15 @@
     PXSnapStripView *_snapStripView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowStartEndTimeSnapIndicators; // @synthesize allowStartEndTimeSnapIndicators=_allowStartEndTimeSnapIndicators;
 @property(retain, nonatomic) PXSnapStripView *snapStripView; // @synthesize snapStripView=_snapStripView;
 @property(retain, nonatomic) PXLivePhotoTrimScrubber *trimScrubber; // @synthesize trimScrubber=_trimScrubber;
-- (void).cxx_destruct;
 @property(retain, nonatomic) PXLivePhotoTrimScrubberSnapStripControllerSpec *spec; // @synthesize spec=_spec;
 - (void)updateSnapStripViewAnimated:(_Bool)arg1;
 - (void)updateSnapStripView;
-- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 suggestedTime:(CDStruct_1b6d18a9)arg3 style:(unsigned long long)arg4 skipSingleIndicatorWithCurrentTime:(_Bool)arg5;
-- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 style:(unsigned long long)arg3 skipSingleIndicatorWithCurrentTime:(_Bool)arg4;
+- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 suggestedTime:(CDStruct_1b6d18a9)arg3 style:(unsigned long long)arg4 skipSingleIndicatorWithCurrentTime:(_Bool)arg5 skipDefaultTimeIndicator:(_Bool)arg6;
+- (id)_snapIndicatorInfosForTimes:(id)arg1 currentTime:(CDStruct_1b6d18a9)arg2 style:(unsigned long long)arg3 skipSingleIndicatorWithCurrentTime:(_Bool)arg4 skipDefaultTimeIndicator:(_Bool)arg5;
 
 @end
 

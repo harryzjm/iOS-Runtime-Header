@@ -32,6 +32,7 @@
     UIBarButtonItem *_doneButtonItem;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSArray *actualSections; // @synthesize actualSections=_actualSections;
 @property(retain, nonatomic) UIBarButtonItem *doneButtonItem; // @synthesize doneButtonItem=_doneButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
@@ -46,7 +47,6 @@
 @property(retain, nonatomic) HKSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(nonatomic) __weak id <HKHealthPrivacyServicePromptControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_configurationFailedWithError:(id)arg1;
 - (void)_addHeaderView;
 - (_Bool)shouldPresent;
@@ -67,7 +67,9 @@
 - (id)_specialCellWithIdentifier:(id)arg1;
 - (id)_openAppCell;
 - (id)_toggleAllCell;
+- (id)_researchStudyExplanationCell;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)_localizedSourceExplanationWithDescription:(id)arg1;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

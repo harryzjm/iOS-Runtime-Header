@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) _Bool showsTextInputOnAppearance;
 @property(readonly, nonatomic, getter=isNumberOfLinesInfinite) _Bool numberOfLinesInfinite;
 @property(readonly, nonatomic) NSArray *interfaceActions;
+@property(readonly, copy, nonatomic) CDUnknownBlockType nilAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType defaultAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType closeAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType clearAction;

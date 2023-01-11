@@ -10,6 +10,7 @@
 
 @interface GKBaseComposeController <UITextViewDelegate>
 {
+    _Bool _showHeaderFieldContainer;
     UIScrollView *_backgroundView;
     NSArray *_composeHeaderFields;
     GKTextView *_messageField;
@@ -34,6 +35,7 @@
 @property(retain, nonatomic) GKTextView *messageField; // @synthesize messageField=_messageField;
 @property(retain, nonatomic) NSArray *composeHeaderFields; // @synthesize composeHeaderFields=_composeHeaderFields;
 @property(retain, nonatomic) UIScrollView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(nonatomic) _Bool showHeaderFieldContainer; // @synthesize showHeaderFieldContainer=_showHeaderFieldContainer;
 - (void)textViewDidChangeSelection:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)_scrollSelectedTextToVisible;

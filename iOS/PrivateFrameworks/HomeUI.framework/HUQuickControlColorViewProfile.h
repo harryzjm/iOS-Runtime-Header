@@ -9,14 +9,18 @@
 @interface HUQuickControlColorViewProfile
 {
     _Bool _supportsRGBColor;
+    _Bool _supportsNaturalLighting;
+    _Bool _naturalLightingEnabled;
     id <HFColorProfile> _colorProfile;
     unsigned long long _mode;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) id <HFColorProfile> colorProfile; // @synthesize colorProfile=_colorProfile;
+@property(nonatomic) _Bool naturalLightingEnabled; // @synthesize naturalLightingEnabled=_naturalLightingEnabled;
+@property(nonatomic) _Bool supportsNaturalLighting; // @synthesize supportsNaturalLighting=_supportsNaturalLighting;
 @property(nonatomic) _Bool supportsRGBColor; // @synthesize supportsRGBColor=_supportsRGBColor;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

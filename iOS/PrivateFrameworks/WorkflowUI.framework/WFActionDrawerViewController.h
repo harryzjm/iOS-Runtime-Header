@@ -7,41 +7,37 @@
 #import <UIKit/UIViewController.h>
 
 #import <WorkflowUI/UISearchBarDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerResultsViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSearchResultsViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSuggestionsViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFDragControllerDelegate-Protocol.h>
 
-@class NSSet, NSString, UISearchBar, UIView, WFActionDrawerResults, WFActionDrawerResultsController, WFActionDrawerSearchResultsViewController, WFActionDrawerSiriSuggestionsViewController, WFActionDrawerState, WFDragController;
-@protocol NSObject, WFActionDrawerResultsControlling, WFActionDrawerViewControllerDelegate;
+@class NSSet, NSString, UISearchBar, UIView, WFActionDrawerCoordinator, WFActionDrawerResults, WFActionDrawerSearchResultsViewController, WFActionDrawerSiriSuggestionsViewController, WFActionDrawerState, WFDragController;
+@protocol NSObject, WFActionDrawerResultsControlling;
 
-@interface WFActionDrawerViewController : UIViewController <UISearchBarDelegate, WFActionDrawerResultsViewControllerDelegate, WFActionDrawerSuggestionsViewControllerDelegate, WFActionDrawerSearchResultsViewControllerDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable, WFDragControllerDelegate>
+@interface WFActionDrawerViewController : UIViewController <UISearchBarDelegate, WFDragControllerDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
     _Bool _scrollsToTop;
     _Bool _requiresOpaqueBackground;
     WFActionDrawerSearchResultsViewController *_searchResultsViewController;
-    WFActionDrawerResultsController *_actionDrawerResultsController;
-    id <WFActionDrawerViewControllerDelegate> _delegate;
+    WFActionDrawerCoordinator *_coordinator;
+    WFActionDrawerSiriSuggestionsViewController *_siriSuggestionsViewController;
     WFActionDrawerResults *_siriSuggestionResults;
     NSSet *_siriSuggestionBundleIdentifiers;
     double _bottomContentInset;
     UISearchBar *_searchBar;
     UIView *_separatorView;
     long long _activePane;
-    WFActionDrawerSiriSuggestionsViewController *_siriSuggestionsViewController;
     WFActionDrawerResults *_workflowSuggestionResults;
     WFDragController *_currentDragController;
     id <WFActionDrawerResultsControlling> _actionDrawerResultsControllingDelegate;
     id <NSObject> _actionRegistryFilledNotificationObserver;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <NSObject> actionRegistryFilledNotificationObserver; // @synthesize actionRegistryFilledNotificationObserver=_actionRegistryFilledNotificationObserver;
 @property(retain, nonatomic) id <WFActionDrawerResultsControlling> actionDrawerResultsControllingDelegate; // @synthesize actionDrawerResultsControllingDelegate=_actionDrawerResultsControllingDelegate;
 @property(retain, nonatomic) WFDragController *currentDragController; // @synthesize currentDragController=_currentDragController;
 @property(retain, nonatomic) WFActionDrawerResults *workflowSuggestionResults; // @synthesize workflowSuggestionResults=_workflowSuggestionResults;
-@property(readonly, nonatomic) WFActionDrawerSiriSuggestionsViewController *siriSuggestionsViewController; // @synthesize siriSuggestionsViewController=_siriSuggestionsViewController;
 @property(readonly, nonatomic) long long activePane; // @synthesize activePane=_activePane;
 @property(nonatomic) __weak UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property(nonatomic) __weak UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
@@ -50,23 +46,11 @@
 @property(nonatomic) _Bool scrollsToTop; // @synthesize scrollsToTop=_scrollsToTop;
 @property(copy, nonatomic) NSSet *siriSuggestionBundleIdentifiers; // @synthesize siriSuggestionBundleIdentifiers=_siriSuggestionBundleIdentifiers;
 @property(retain, nonatomic) WFActionDrawerResults *siriSuggestionResults; // @synthesize siriSuggestionResults=_siriSuggestionResults;
-@property(nonatomic) __weak id <WFActionDrawerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) WFActionDrawerResultsController *actionDrawerResultsController; // @synthesize actionDrawerResultsController=_actionDrawerResultsController;
+@property(readonly, nonatomic) WFActionDrawerSiriSuggestionsViewController *siriSuggestionsViewController; // @synthesize siriSuggestionsViewController=_siriSuggestionsViewController;
+@property(readonly, nonatomic) __weak WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(readonly, nonatomic) WFActionDrawerSearchResultsViewController *searchResultsViewController; // @synthesize searchResultsViewController=_searchResultsViewController;
-- (void).cxx_destruct;
 - (_Bool)moveToState:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) WFActionDrawerState *state;
-- (void)suggestionsViewController:(id)arg1 didSelectCategoryForContentType:(id)arg2;
-- (void)suggestionsViewControllerViewControllerDidSelectCategoryScripting:(id)arg1 title:(id)arg2;
-- (void)suggestionsViewControllerDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;
-- (void)suggestionsViewControllerDidSelectCategoryApps:(id)arg1 title:(id)arg2;
-- (void)suggestionsViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)suggestionsViewController:(id)arg1 didSelectAction:(id)arg2;
-- (void)searchResultsViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)searchResultsViewController:(id)arg1 didSelectSection:(id)arg2;
-- (void)searchResultsViewController:(id)arg1 didSelectAction:(id)arg2;
-- (void)resultsViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)resultsViewController:(id)arg1 didSelectAction:(id)arg2;
 - (void)dragController:(id)arg1 didEnterViewController:(id)arg2;
 - (id)searchText;
 - (void)updateContentForSearchBarSkippingTransition:(_Bool)arg1;
@@ -92,7 +76,7 @@
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithActionRegistry:(id)arg1 home:(id)arg2;
+- (id)initWithCoordinator:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

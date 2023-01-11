@@ -7,12 +7,16 @@
 __attribute__((visibility("hidden")))
 @interface VKMapAnnotationTrackingCameraController
 {
+    float _currentAnimationCompletedFraction;
+    _Bool _zooming;
 }
 
 - (void)_rotateToHeadingAnimated:(_Bool)arg1 duration:(double)arg2;
-- (void)_goToAnnotationAnimated:(_Bool)arg1 duration:(double)arg2 isInitial:(_Bool)arg3;
+- (void)_goToAnnotationAnimated:(_Bool)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3 isInitial:(_Bool)arg4;
+- (void)updateFramerate;
+- (struct VKEdgeInsets)_effectiveEdgeInsets;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
-- (double)_minTrackingCameraDistance;
+- (double)_minTrackingCameraDistance:(_Bool)arg1;
 - (double)_zoomLevelForCameraPosition:(Matrix_6e1d3589)arg1;
 
 @end

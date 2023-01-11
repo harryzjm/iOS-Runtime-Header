@@ -12,7 +12,7 @@
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 #import <FileProvider/NSSecureCoding-Protocol.h>
 
-@class FPItemID, FPSandboxingURLWrapper, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSProgress, NSSet, NSString, NSURL;
+@class FPItemID, FPSandboxingURLWrapper, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSProgress, NSSet, NSString, NSURL, UTType;
 @protocol NSFileProviderItemFlags;
 
 @interface FPItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating, NSFileProviderItem, NSCopying, NSSecureCoding>
@@ -53,7 +53,7 @@
     NSDictionary *_userInfo;
     NSNumber *_documentSize;
     NSDate *_creationDate;
-    NSString *_typeIdentifier;
+    UTType *_contentType;
     NSData *_versionIdentifier;
     NSFileProviderItemVersion *_itemVersion;
     NSPersonNameComponents *_ownerNameComponents;
@@ -67,7 +67,7 @@
     NSURL *_fileURL;
     NSArray *_decorations;
     NSString *_filename;
-    NSString *_appContainerBundleIdentifier;
+    NSString *_fp_appContainerBundleIdentifier;
     NSString *_preformattedOwnerName;
     NSString *_preformattedMostRecentEditorName;
     NSString *_formerIdentifier;
@@ -98,6 +98,7 @@
 + (id)placeholderWithCopyOfExistingItem:(id)arg1 lastUsageUpdatePolicy:(unsigned long long)arg2 underParent:(id)arg3 inProviderDomainID:(id)arg4;
 + (id)generatePlaceholderIdentifierWithOriginalID:(id)arg1;
 + (id)generatePlaceholderIdentifier;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *fileSystemFilename; // @synthesize fileSystemFilename=_fileSystemFilename;
 @property(retain, nonatomic) NSData *fsID; // @synthesize fsID=_fsID;
 @property(readonly, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
@@ -118,7 +119,7 @@
 @property(retain, nonatomic) NSString *formerIdentifier; // @synthesize formerIdentifier=_formerIdentifier;
 @property(retain, nonatomic) NSString *preformattedMostRecentEditorName; // @synthesize preformattedMostRecentEditorName=_preformattedMostRecentEditorName;
 @property(retain, nonatomic) NSString *preformattedOwnerName; // @synthesize preformattedOwnerName=_preformattedOwnerName;
-@property(copy, nonatomic) NSString *appContainerBundleIdentifier; // @synthesize appContainerBundleIdentifier=_appContainerBundleIdentifier;
+@property(copy, nonatomic) NSString *fp_appContainerBundleIdentifier; // @synthesize fp_appContainerBundleIdentifier=_fp_appContainerBundleIdentifier;
 @property(nonatomic, getter=isRecursivelyDownloaded) _Bool recursivelyDownloaded; // @synthesize recursivelyDownloaded=_recursivelyDownloaded;
 @property(copy, nonatomic) NSArray *tags; // @synthesize tags=_tags;
 @property(copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
@@ -145,7 +146,7 @@
 @property(nonatomic, getter=isTrashed) _Bool trashed; // @synthesize trashed=_trashed;
 @property(retain, nonatomic) NSFileProviderItemVersion *itemVersion; // @synthesize itemVersion=_itemVersion;
 @property(retain, nonatomic) NSData *versionIdentifier; // @synthesize versionIdentifier=_versionIdentifier;
-@property(copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
+@property(readonly, copy, nonatomic) UTType *contentType; // @synthesize contentType=_contentType;
 @property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(copy, nonatomic) NSNumber *documentSize; // @synthesize documentSize=_documentSize;
 @property(retain, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
@@ -163,7 +164,6 @@
 @property(readonly, copy, nonatomic) NSString *parentItemIdentifier; // @synthesize parentItemIdentifier=_parentItemIdentifier;
 @property(readonly, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property(readonly, copy, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
-- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *fp_displayName;
 - (id)_downloadingStatus;
 - (id)ubiquitousResourceKeysDiffAgainstItem:(id)arg1;
@@ -175,6 +175,7 @@
 @property(readonly, nonatomic) NSArray *itemDecorations;
 - (id)_sharedByDecorationType;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(readonly, copy, nonatomic) NSString *appContainerBundleIdentifier;
 - (void)setFp_SpotlightDomainIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSString *fp_spotlightDomainIdentifier;
 - (long long)localizedStandardTagsCompare:(id)arg1;
@@ -200,6 +201,7 @@
 @property(readonly, nonatomic, getter=isActionable) _Bool actionable;
 @property(readonly, nonatomic, getter=isWritable) _Bool writable;
 @property(readonly, nonatomic, getter=isReadable) _Bool readable;
+@property(copy, nonatomic) NSString *typeIdentifier;
 @property(readonly) _Bool fp_isContainerPristine;
 @property(readonly) _Bool fp_isContainer;
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
@@ -217,10 +219,11 @@
 - (id)initWithProviderDomainID:(id)arg1 itemIdentifier:(id)arg2 parentItemIdentifier:(id)arg3 filename:(id)arg4 isDirectory:(_Bool)arg5;
 - (id)initWithProviderDomainID:(id)arg1 itemIdentifier:(id)arg2 parentItemIdentifier:(id)arg3 filename:(id)arg4 typeIdentifier:(id)arg5;
 - (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3 parentItemIdentifier:(id)arg4 filename:(id)arg5 isDirectory:(_Bool)arg6;
-- (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3 parentItemIdentifier:(id)arg4 filename:(id)arg5 typeIdentifier:(id)arg6;
+- (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3 parentItemIdentifier:(id)arg4 filename:(id)arg5 contentType:(id)arg6;
 - (id)fp_cs_uniqueIdentifier;
 - (id)initWithSearchableItem:(id)arg1;
 - (id)toSearchableItem;
+- (void *)_coreSpotlightAttributeForKey:(id)arg1;
 @property(readonly, nonatomic) NSString *localizedSharingStatusString;
 @property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
 @property(readonly, nonatomic, getter=fp_isAddedByCurrentUser) _Bool fp_addedByCurrentUser;

@@ -12,6 +12,7 @@
 {
 }
 
+- (unsigned long long)getOptimizedStatus;
 - (void)setFragmentBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void *)getVertexBufferAtIndex:(unsigned long long)arg1;
@@ -29,7 +30,6 @@
 - (void)setRenderPipelineState:(id)arg1;
 - (void)drawIndexedPrimitives:(unsigned long long)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 indexBuffer:(id)arg4 indexBufferOffset:(unsigned long long)arg5 instanceCount:(unsigned long long)arg6 baseVertex:(long long)arg7 baseInstance:(unsigned long long)arg8;
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 baseInstance:(unsigned long long)arg5;
-- (void)acceptVisitor:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

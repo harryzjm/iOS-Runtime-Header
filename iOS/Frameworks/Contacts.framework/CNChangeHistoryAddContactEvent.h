@@ -12,10 +12,12 @@
     NSString *_containerIdentifier;
 }
 
++ (unsigned long long)instanceSortOrder;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-- (void).cxx_destruct;
+- (long long)comparisonResultWithinSameClass:(id)arg1;
 - (void)acceptEventVisitor:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;

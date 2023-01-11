@@ -8,30 +8,34 @@
 
 #import <GameCenterUI/GKPlayerAvatarViewDelegate-Protocol.h>
 
-@class GKDashboardPlayerPhotoView, GKGradientLabel, NSLayoutConstraint, NSString, UILabel, UITapGestureRecognizer;
+@class GKDashboardPlayerPhotoView, GKGradientLabel, NSLayoutConstraint, NSString, UIImageView, UILabel, UITapGestureRecognizer;
 @protocol GKAvatarContainerViewDelegate;
 
 @interface GKAvatarContainerView : UIView <GKPlayerAvatarViewDelegate>
 {
     id <GKAvatarContainerViewDelegate> _delegate;
+    GKDashboardPlayerPhotoView *_playerAvatarView;
     UILabel *_nicknameLabel;
     UILabel *_emailLabel;
     UIView *_imageContainer;
     GKGradientLabel *_editLabel;
+    UIView *_editImage;
+    UIImageView *_editImageBackground;
     NSLayoutConstraint *_imageContainerTopConstraint;
-    GKDashboardPlayerPhotoView *_playerAvatarView;
     UITapGestureRecognizer *_tapGesture;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGesture; // @synthesize tapGesture=_tapGesture;
-@property(retain, nonatomic) GKDashboardPlayerPhotoView *playerAvatarView; // @synthesize playerAvatarView=_playerAvatarView;
 @property(retain, nonatomic) NSLayoutConstraint *imageContainerTopConstraint; // @synthesize imageContainerTopConstraint=_imageContainerTopConstraint;
+@property(retain, nonatomic) UIImageView *editImageBackground; // @synthesize editImageBackground=_editImageBackground;
+@property(retain, nonatomic) UIView *editImage; // @synthesize editImage=_editImage;
 @property(retain, nonatomic) GKGradientLabel *editLabel; // @synthesize editLabel=_editLabel;
 @property(retain, nonatomic) UIView *imageContainer; // @synthesize imageContainer=_imageContainer;
 @property(retain, nonatomic) UILabel *emailLabel; // @synthesize emailLabel=_emailLabel;
 @property(retain, nonatomic) UILabel *nicknameLabel; // @synthesize nicknameLabel=_nicknameLabel;
+@property(retain, nonatomic) GKDashboardPlayerPhotoView *playerAvatarView; // @synthesize playerAvatarView=_playerAvatarView;
 @property(nonatomic) __weak id <GKAvatarContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)setUserInteractionEnabled:(_Bool)arg1;
 - (void)prepareForDefaultNicknameViewController;
 - (void)updateAvatarEditingAvailability;
@@ -40,6 +44,8 @@
 - (void)didSelectPlayerAvatarView:(id)arg1;
 - (void)didSetPlayerAvatarImage:(id)arg1;
 - (void)didMoveToSuperview;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)setupEditImageBackground;
 - (void)layoutSubviews;
 - (void)awakeFromNib;
 

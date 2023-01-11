@@ -9,30 +9,33 @@
 #import <CameraUI/CAMPanoramaChangeDelegate-Protocol.h>
 #import <CameraUI/CAMPanoramaViewDelegate-Protocol.h>
 
-@class CAMPanoramaView, CMMotionManager, CUCaptureController, NSString, UITapGestureRecognizer;
+@class CAMAnalyticsCaptureEvent, CAMPanoramaView, CMMotionManager, CUCaptureController, NSString, UITapGestureRecognizer;
 
 @interface CAMPanoramaViewController : UIViewController <CAMPanoramaViewDelegate, CAMPanoramaChangeDelegate>
 {
     _Bool _painting;
     long long _layoutStyle;
+    CAMAnalyticsCaptureEvent *_analyticsCaptureEvent;
     CUCaptureController *__captureController;
     CMMotionManager *__motionManager;
     long long __captureOrientation;
     UITapGestureRecognizer *__directionChangeGestureRecognizer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UITapGestureRecognizer *_directionChangeGestureRecognizer; // @synthesize _directionChangeGestureRecognizer=__directionChangeGestureRecognizer;
 @property(nonatomic, setter=_setCaptureOrientation:) long long _captureOrientation; // @synthesize _captureOrientation=__captureOrientation;
 @property(retain, nonatomic, setter=_setMotionManager:) CMMotionManager *_motionManager; // @synthesize _motionManager=__motionManager;
 @property(readonly, nonatomic) CUCaptureController *_captureController; // @synthesize _captureController=__captureController;
+@property(retain, nonatomic) CAMAnalyticsCaptureEvent *analyticsCaptureEvent; // @synthesize analyticsCaptureEvent=_analyticsCaptureEvent;
 @property(nonatomic, getter=isPainting, setter=_setPainting:) _Bool painting; // @synthesize painting=_painting;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
-- (void).cxx_destruct;
 - (void)panoramaConfigurationDidChangeWithDirection:(long long)arg1;
 - (void)updateToContentSize:(id)arg1;
 - (void)_updateWithAccelerometerData:(id)arg1 captureOrientation:(long long)arg2;
 - (void)_createMotionManagerIfNecessary;
 - (void)updateWithStatus:(id)arg1;
+- (void)panoramaView:(id)arg1 didUpdateInstruction:(long long)arg2;
 - (void)panoramaViewDidRequestSynchronizedDirectionChange:(id)arg1 toDirection:(long long)arg2;
 - (void)_handleDirectionChange:(id)arg1;
 - (void)finishedProcessingPanorama;

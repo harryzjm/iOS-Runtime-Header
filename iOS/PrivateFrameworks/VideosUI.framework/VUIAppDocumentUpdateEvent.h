@@ -10,12 +10,13 @@
 
 @class NSDictionary, VUIAppDocumentUpdateEventDescriptor;
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentUpdateEvent : NSObject <NSCopying>
 {
     VUIAppDocumentUpdateEventDescriptor *_descriptor;
 }
 
++ (id)iamMessageReceived;
++ (id)locationRetrieved;
 + (id)locationAuthorizationChanged;
 + (id)appRefresh;
 + (id)clearPlayHistory;
@@ -31,8 +32,8 @@ __attribute__((visibility("hidden")))
 + (id)settings;
 + (id)playActivity;
 + (id)purchases;
-@property(retain, nonatomic) VUIAppDocumentUpdateEventDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUIAppDocumentUpdateEventDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

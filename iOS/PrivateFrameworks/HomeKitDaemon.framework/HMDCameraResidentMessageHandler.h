@@ -8,27 +8,32 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDMessageDispatcher, NSString;
+@class HMDAccessory, HMDDevice, HMDMessageDispatcher, HMFUnfairLock, NSMutableDictionary, NSString;
 
 @interface HMDCameraResidentMessageHandler : HMFObject <HMFLogging>
 {
-    NSString *_logID;
     HMDAccessory *_accessory;
-    HMDMessageDispatcher *_remoteMessageDispatcher;
+    HMDMessageDispatcher *_messageDispatcher;
+    NSString *_logIdentifier;
+    NSMutableDictionary *_messageContextsBySessionID;
+    HMFUnfairLock *_lock;
 }
 
 + (id)logCategory;
-@property(retain, nonatomic) HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
-@property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
-@property(readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool companionIsResident;
-- (id)residentDeviceForCamera;
+@property(readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property(readonly, copy) NSMutableDictionary *messageContextsBySessionID; // @synthesize messageContextsBySessionID=_messageContextsBySessionID;
+@property(readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property(retain) HMDMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
+@property(readonly) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property(readonly) _Bool companionIsResident;
+@property(readonly) HMDDevice *residentDeviceForCamera;
 - (void)sendMessageWithName:(id)arg1 cameraSessionID:(id)arg2 payload:(id)arg3 target:(id)arg4 responseQueue:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
 - (void)sendMessageWithName:(id)arg1 cameraSessionID:(id)arg2 payload:(id)arg3 target:(id)arg4 device:(id)arg5 responseQueue:(id)arg6 responseHandler:(CDUnknownBlockType)arg7;
+- (void)sendMessageForCameraWithSessionID:(id)arg1;
 - (void)sendRemoteMessageWithName:(id)arg1 cameraSessionID:(id)arg2 payload:(id)arg3 target:(id)arg4 device:(id)arg5 responseQueue:(id)arg6 responseHandler:(CDUnknownBlockType)arg7;
-- (void)updateMessageDispatcher:(id)arg1;
-- (id)logIdentifier;
+- (id)dequeueMessageContextForCameraSessionID:(id)arg1;
+- (void)enqueueMessageContext:(id)arg1 forCameraSessionID:(id)arg2;
 - (id)initWithAccessory:(id)arg1 logID:(id)arg2;
 
 // Remaining properties

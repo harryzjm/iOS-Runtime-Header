@@ -10,8 +10,7 @@
 {
 }
 
-- (void)addQueueDescriptor:(id)arg1;
-- (_Bool)shouldReverseItems;
+- (unsigned long long)queueAdditionMode;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

@@ -7,10 +7,14 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSPowerStatusProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTodayOverlayProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
 @protocol CSCoverSheetContextProviding <NSObject>
-@property(readonly, nonatomic) id <CSTodayOverlayProviding> todayOverlayProvider;
+@property(readonly, nonatomic) id <CSDeviceOrientationProviding> deviceOrientationProvider;
+@property(readonly, nonatomic) id <CSProximitySensorProviding> proximitySensorProvider;
+@property(readonly, nonatomic) id <CSSystemPointerInteractionManaging> systemPointerInteractionManager;
+@property(readonly, nonatomic) id <CSAppHostConfiguring> appHostConfiguring;
+@property(readonly, nonatomic) id <CSOverlayProviding> homeScreenOverlayProvider;
 @property(readonly, nonatomic) id <CSCarPlayStatusProviding> carPlayStatusProvider;
 @property(readonly, nonatomic) id <CSReachabilityControlling> reachabilityController;
 @property(readonly, nonatomic) id <CSUserSessionControlling> userSessionController;

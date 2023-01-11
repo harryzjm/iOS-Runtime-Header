@@ -14,11 +14,16 @@
 + (_Bool)shouldFilterDonationsForAppWithApplicationBundleIdentifier:(id)arg1;
 + (id)isEligibleForPredictionPredicate;
 + (id)donationWithUUID:(id)arg1;
-+ (id)fetchDonationsWithLimit:(unsigned long long)arg1 filteringForIsEligibleForPrediction:(_Bool)arg2;
++ (void)fetchDonationsWithLimit:(unsigned long long)arg1 filteringForIsEligibleForPrediction:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)getPredicateForIntentsWithApplicationBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)getPredicateForUserActivitiesWithApplicationBundleIdentifier:(id)arg1 filteringForIsEligibleForPrediction:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)fetchDonationsForApplicationBundleIdentifier:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(_Bool)arg3 filteringForIsEligibleForPrediction:(_Bool)arg4;
++ (id)whitelistedDonationsWithOptions:(unsigned long long)arg1;
++ (id)predicateForShortcutAvailabilityOptions:(unsigned long long)arg1;
++ (void)fetchDonationsForApplicationBundleIdentifier:(id)arg1 limit:(unsigned long long)arg2 shortcutAvailability:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)fetchDonationsForApplicationBundleIdentifier:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(_Bool)arg3 filteringForIsEligibleForPrediction:(_Bool)arg4 filteringForRecent:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
++ (id)fetchDonationsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(_Bool)arg3 directAccess:(_Bool)arg4;
 + (id)fetchDonationsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 filteringForTopLevel:(_Bool)arg3;
++ (id)fetchEventsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 directAccess:(_Bool)arg3;
 + (id)fetchEventsWithPredicate:(id)arg1 limit:(unsigned long long)arg2;
 + (id)keyPathForStream:(id)arg1;
 + (_Bool)shouldKeepActionWithAppBundleIdentifierForDisplay:(id)arg1;

@@ -5,7 +5,7 @@
 //
 
 @class CKDDecryptRecordsOperation, CKDRecordCache, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet;
-@protocol OS_dispatch_group;
+@protocol CKFetchRecordsOperationCallbacks, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordsOperation
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _Bool _skipDecryption;
     _Bool _shouldFetchAssetContent;
     _Bool _shouldFetchAssetContentInMemory;
+    _Bool _shouldRollSharePCSOnFetch;
     NSArray *_fullRecordsToFetch;
     CDUnknownBlockType _recordFetchProgressBlock;
     CDUnknownBlockType _recordFetchCommandBlock;
@@ -37,12 +38,14 @@ __attribute__((visibility("hidden")))
     CKDRecordCache *_cache;
     NSMutableArray *_recordIDsToRefetch;
     NSMutableDictionary *_keyOrErrorForHostname;
-    NSMutableArray *_shareRecordsToUpdate;
+    NSMutableDictionary *_shareRecordsToUpdateByRecordID;
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldRollSharePCSOnFetch; // @synthesize shouldRollSharePCSOnFetch=_shouldRollSharePCSOnFetch;
 @property(retain, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
-@property(retain, nonatomic) NSMutableArray *shareRecordsToUpdate; // @synthesize shareRecordsToUpdate=_shareRecordsToUpdate;
+@property(retain, nonatomic) NSMutableDictionary *shareRecordsToUpdateByRecordID; // @synthesize shareRecordsToUpdateByRecordID=_shareRecordsToUpdateByRecordID;
 @property(retain, nonatomic) NSMutableDictionary *keyOrErrorForHostname; // @synthesize keyOrErrorForHostname=_keyOrErrorForHostname;
 @property(retain, nonatomic) NSMutableArray *recordIDsToRefetch; // @synthesize recordIDsToRefetch=_recordIDsToRefetch;
 @property(retain, nonatomic) CKDRecordCache *cache; // @synthesize cache=_cache;
@@ -69,7 +72,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool forcePCSDecrypt; // @synthesize forcePCSDecrypt=_forcePCSDecrypt;
 @property(nonatomic) _Bool useRecordCache; // @synthesize useRecordCache=_useRecordCache;
 @property(nonatomic) _Bool useCachedEtags; // @synthesize useCachedEtags=_useCachedEtags;
-- (void).cxx_destruct;
+- (_Bool)supportsClearAssetEncryption;
 - (void)main;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)finishWithError:(id)arg1;
@@ -89,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)setError:(id)arg1 forRecordID:(id)arg2;
 - (id)errorForRecordID:(id)arg1;
 - (void)fetchRecordsWithIDs:(id)arg1 andFullRecords:(id)arg2;
+- (int)operationType;
 - (void)_findSpecialParticipantsOnShare:(id)arg1 identityDelegate:(id)arg2;
 - (void)_saveUpdatedShareRecords;
 - (id)desiredIndexedListKeys;
@@ -96,6 +100,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKFetchRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

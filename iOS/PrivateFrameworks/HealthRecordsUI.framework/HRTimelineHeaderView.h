@@ -7,9 +7,11 @@
 #import <UIKit/UITableViewHeaderFooterView.h>
 
 @class MISSING_TYPE;
+@protocol HRTimelineHeaderViewDelegate;
 
 @interface HRTimelineHeaderView : UITableViewHeaderFooterView
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *$__lazy_storage_$_titleLabel;
     MISSING_TYPE *$__lazy_storage_$_subtitleLabel;
     MISSING_TYPE *$__lazy_storage_$_backgroundEffectView;
@@ -22,10 +24,12 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 @property(nonatomic) _Bool floating;
+- (void)prepareForReuse;
 - (void)applyStyleFromNavigationBar:(id)arg1;
 - (void)applyTitle:(id)arg1 subtitle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
+@property(nonatomic) __weak id <HRTimelineHeaderViewDelegate> delegate; // @synthesize delegate;
 
 @end
 

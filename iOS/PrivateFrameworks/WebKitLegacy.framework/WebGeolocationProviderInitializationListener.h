@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)initializationDeniedWebView:(id)arg1;
 - (void)initializationAllowedWebView:(id)arg1;
-- (id)initWithGeolocation:(struct Geolocation *)arg1;
+- (id)initWithGeolocation:(NakedRef_f8c98cc9)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

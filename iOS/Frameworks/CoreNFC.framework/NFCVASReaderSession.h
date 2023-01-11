@@ -5,22 +5,22 @@
 //
 
 @class NFTimer, NSArray;
-@protocol NFTag;
 
 @interface NFCVASReaderSession
 {
     NFTimer *_presenceCheckTimer;
-    id <NFTag> _targetTag;
     NSArray *_vasConfig;
 }
 
 + (_Bool)readingAvailable;
+- (void).cxx_destruct;
 - (void)didDetectTags:(id)arg1;
 - (void)didTerminate:(id)arg1;
 - (id)_getVASDataWithConfig:(id)arg1 lastInSequence:(_Bool)arg2;
 - (_Bool)_selectOSE;
 - (void)_callbackDidBecomeActive;
 - (void)_callbackDidInvalidateWithError:(id)arg1;
+- (void)beginSession;
 - (void)dealloc;
 - (id)initWithVASCommandConfigurations:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
 - (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;

@@ -15,11 +15,14 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_replacedByDelegateObjects;
     id <NSXPCEncoderDelegate> _delegate;
     struct {
-        unsigned long long collectionSizeOffset[384];
+        unsigned long long collectionSizeOffset[1024];
         long long collectionRecursionIndex;
         unsigned long long dataLen;
         unsigned long long dataSize;
         char *data;
+        struct __CFDictionary *objectReferences;
+        struct __CFDictionary *stringReferences;
+        struct __CFDictionary *asciiReferences;
         _Bool isVM;
         _Bool isStack;
     } _encoder;

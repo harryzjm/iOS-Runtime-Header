@@ -7,6 +7,6 @@
 @class NFPromise, NSString;
 
 @protocol FCPurchaseMetadataFetcher
-- (NFPromise *)fetchPurchaseMetadataForPurchaseID:(NSString *)arg1 restorePurcase:(_Bool)arg2;
+- (NFPromise *)fetchPurchaseMetadataForPurchaseID:(NSString *)arg1 restorePurchase:(_Bool)arg2;
 @end
 

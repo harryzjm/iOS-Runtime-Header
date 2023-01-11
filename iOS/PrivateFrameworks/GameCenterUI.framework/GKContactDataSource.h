@@ -16,16 +16,19 @@
     NSArray *_skipValues;
     NSDictionary *_skipToContactIndexes;
     CNContactStore *_store;
+    NSDictionary *_contactLookup;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *contactLookup; // @synthesize contactLookup=_contactLookup;
 @property(retain, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property(retain, nonatomic) NSDictionary *skipToContactIndexes; // @synthesize skipToContactIndexes=_skipToContactIndexes;
 @property(retain, nonatomic) NSArray *skipValues; // @synthesize skipValues=_skipValues;
 @property(retain, nonatomic) NSDictionary *sectionToContactIndexes; // @synthesize sectionToContactIndexes=_sectionToContactIndexes;
 @property(retain, nonatomic) NSArray *sectionHeaders; // @synthesize sectionHeaders=_sectionHeaders;
 @property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
+- (id)fullContactWithIdentifier:(id)arg1;
 - (void)loadContactsWithHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

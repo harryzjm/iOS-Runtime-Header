@@ -21,12 +21,13 @@
     NSMutableArray *_queuedApplicationsThrottledForRelaunch;
     NSTimer *_queuedApplicationsThrottledForRelaunchTimer;
     _Bool _autoLaunchSynchronously;
+    _Bool _invalidated;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_queuedApplicationsThrottledForRelaunch) NSArray *queuedApplicationsThrottledForRelaunch; // @synthesize queuedApplicationsThrottledForRelaunch=_queuedApplicationsThrottledForRelaunch;
 @property(readonly, nonatomic, getter=_queuedApplicationsThrottledForRelaunchTimer) NSTimer *queuedApplicationsThrottledForRelaunchTimer; // @synthesize queuedApplicationsThrottledForRelaunchTimer=_queuedApplicationsThrottledForRelaunchTimer;
 @property(nonatomic, getter=_autoLaunchSynchronously, setter=_setAutoLaunchSynchronously:) _Bool autoLaunchSynchronously; // @synthesize autoLaunchSynchronously=_autoLaunchSynchronously;
-- (void).cxx_destruct;
 - (void)_memoryPressureRelieved:(id)arg1;
 - (void)_memoryPressureWarn:(id)arg1;
 - (void)_installedApplicationsDidChange:(id)arg1;
@@ -48,6 +49,7 @@
 - (id)succinctDescription;
 - (void)_noteTerminationAssertionRemovedForApplication:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (void)invalidate;
 - (void)autoLaunchApplicationsIfNecessaryForStartup;
 - (void)dealloc;
 - (id)_initWithWorkspace:(id)arg1 applicationController:(id)arg2 restartManager:(id)arg3 syncController:(id)arg4 keybag:(id)arg5;

@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMDNetworkRouterFirewallRuleManagerBackingStoreMirror-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMBCloudDatabase, HMBLocalDatabase, HMBLocalZone, HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorInternalStateModel, NAFuture, NAPromise, NSMutableSet, NSObject, NSString;
+@class HMBCloudDatabase, HMBLocalDatabase, HMBLocalZone, HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorInternalStateModel, NAFuture, NAPromise, NSObject, NSString;
 @protocol HMBLocalZoneID, NAScheduler, OS_dispatch_queue;
 
 @interface HMDNetworkRouterFirewallRuleManagerBackingStoreMirror : HMFObject <HMFLogging, HMDNetworkRouterFirewallRuleManagerBackingStoreMirror, HMBMirrorProtocol>
@@ -20,7 +20,6 @@
     id <HMBLocalZoneID> _zoneID;
     HMBLocalZone *_localZone;
     NAFuture *_lastAsyncFuture;
-    NSMutableSet *_watchedRecordIDs;
     HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorInternalStateModel *_internalState;
     HMBCloudDatabase *_cloudDatabase;
     HMBLocalDatabase *_localDatabase;
@@ -31,7 +30,7 @@
 }
 
 + (id)logCategory;
-+ (id)__publicKeysFromCertificateRecord:(id)arg1;
++ (id)publicKeysFromCertificateRecord:(id)arg1;
 + (id)__publicKeyFromCertificateRecord:(id)arg1 dataKey:(id)arg2 assetKey:(id)arg3;
 + (id)__recordKeyCertificatePrefix:(id)arg1;
 + (id)__certificatesRecordID;
@@ -39,6 +38,7 @@
 + (unsigned long long)__maxSizeForCKRecordSignatureVerificationCertificateChain;
 + (_Bool)__errorIsNotFound:(id)arg1;
 + (id)__overrideParentModelID;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <NAScheduler> workQueueScheduler; // @synthesize workQueueScheduler=_workQueueScheduler;
 @property(readonly, nonatomic) NAPromise *shutdownPromise; // @synthesize shutdownPromise=_shutdownPromise;
 @property(readonly, nonatomic) NAPromise *startupPromise; // @synthesize startupPromise=_startupPromise;
@@ -50,28 +50,27 @@
 @property(retain, nonatomic) HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorInternalStateModel *internalState; // @synthesize internalState=_internalState;
 @property(retain, nonatomic) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
 @property(readonly, nonatomic) id <HMBLocalZoneID> zoneID; // @synthesize zoneID=_zoneID;
-- (void).cxx_destruct;
 - (void)__saveInternalStateWithActivity:(id)arg1;
 - (_Bool)_removeOverridesForZoneName:(id)arg1 recordName:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)removeOverridesForZoneName:(id)arg1 recordName:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)removeAllOverridesWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)removeOverridesForRecordIDs:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (_Bool)addOverrides:(struct NSDictionary *)arg1 replace:(_Bool)arg2 options:(id)arg3 error:(id *)arg4;
-- (struct NSDictionary *)_fetchOverridesForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (struct NSDictionary *)fetchOverridesForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (struct NSDictionary *)fetchAllOverridesWithOptions:(id)arg1 error:(id *)arg2;
-- (struct NSDictionary *)fetchOverridesForRecordIDs:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (_Bool)addOverrides:(id)arg1 replace:(_Bool)arg2 options:(id)arg3 error:(id *)arg4;
+- (id)_fetchOverridesForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)fetchOverridesForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)fetchAllOverridesWithOptions:(id)arg1 error:(id *)arg2;
+- (id)fetchOverridesForRecordIDs:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)removeAllLocalRulesWithOptions:(id)arg1 error:(id *)arg2;
-- (struct NSDictionary *)fetchNetworkDeclarationDataForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (struct NSDictionary *)fetchAllNetworkDeclarationDataWithOptions:(id)arg1 error:(id *)arg2;
-- (struct NSDictionary *)_fetchNetworkDeclarationDataForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (struct NSDictionary *)fetchNetworkDeclarationDataForRecordIDs:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)fetchAllDataForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)fetchAllDataWithOptions:(id)arg1 error:(id *)arg2;
+- (id)_fetchAllDataForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)fetchAllDataForRecordIDs:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)fetchCloudRecordsForZoneID:(id)arg1 recordID:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)desiredKeys;
 - (void)fetchCloudRecordIDsForZoneID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchCloudRecordsForZoneID:(id)arg1 recordID:(id)arg2 options:(id)arg3 desiredKeys:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)fetchCloudChangesWithOptions:(id)arg1 xpcActivity:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)stopWatchingRecordsWithIDs:(id)arg1;
-- (void)startWatchingRecordsWithIDs:(id)arg1;
+- (void)fetchCloudChangesForRecordIDs:(id)arg1 options:(id)arg2 ignoreLastSynchronizedRecords:(_Bool)arg3 xpcActivity:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)cloudFetchNeededForRecordIDs:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NAFuture *shutdownFuture;
 @property(readonly, nonatomic) NAFuture *startupFuture;
 - (id)shutdown;
@@ -81,7 +80,6 @@
 - (void)startUpWithLocalZone:(id)arg1;
 @property(readonly, nonatomic) NAFuture *startUp;
 - (id)__asyncFutureWithActivity:(id)arg1 ignoreErrors:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
-@property(readonly, nonatomic) NSMutableSet *watchedRecordIDs; // @synthesize watchedRecordIDs=_watchedRecordIDs;
 @property(retain, nonatomic) NAFuture *lastAsyncFuture; // @synthesize lastAsyncFuture=_lastAsyncFuture;
 @property(readonly, nonatomic, getter=isRunning) _Bool running;
 - (id)initWithLocalDatabase:(id)arg1 cloudDatabase:(id)arg2 useAnonymousRequests:(_Bool)arg3 ownerQueue:(id)arg4;
@@ -95,25 +93,24 @@
 - (id)__loadOrCreateInternalStateModelWithLocalZone:(id)arg1 activity:(id)arg2;
 - (void)__retryFetchVerificationCertificatesWithFetchInfo:(id)arg1;
 - (_Bool)__canRecoverFromVerificationCertificatesError:(id)arg1 fetchInfo:(id)arg2;
-- (void)__fetchVerificationCertificatesCompleted:(id)arg1 recordsByRecordID:(id)arg2 error:(id)arg3;
+- (void)__fetchVerificationCertificatesCompleted:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)__fetchVerificationCertificatesWithFetchInfo:(id)arg1;
+- (void)fetchVerificationCertificatesRecordWithOperationGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)__removeOverridesForZoneName:(id)arg1 recordName:(id)arg2 options:(id)arg3 activity:(id)arg4 error:(id *)arg5;
 - (_Bool)__removeOverridesForZoneName:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
 - (_Bool)__removeOverridesForRecordIDs:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
 - (_Bool)__removeAllOverridesWithOptions:(id)arg1 activity:(id)arg2 error:(id *)arg3;
-- (_Bool)__addOverrides:(struct NSDictionary *)arg1 replace:(_Bool)arg2 options:(id)arg3 activity:(id)arg4 error:(id *)arg5;
-- (struct NSDictionary *)__fetchOverridesForZoneName:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
-- (struct NSDictionary *)__fetchOverridesForRecordIDs:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
+- (_Bool)__addOverrides:(id)arg1 replace:(_Bool)arg2 options:(id)arg3 activity:(id)arg4 error:(id *)arg5;
+- (id)__fetchOverridesForZoneName:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
+- (id)__fetchOverridesForRecordIDs:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
 - (_Bool)__removeAllLocalRulesWithOptions:(id)arg1 activity:(id)arg2 error:(id *)arg3;
-- (struct NSDictionary *)__fetchNetworkDeclarationDataForZoneName:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
-- (struct NSDictionary *)__fetchNetworkDeclarationDataForZoneID:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
-- (struct NSDictionary *)__fetchNetworkDeclarationDataForRecordIDs:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
+- (id)__fetchAllDataForZoneName:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
+- (id)__fetchAllDataForZoneID:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
+- (id)__fetchAllDataForRecordIDs:(id)arg1 options:(id)arg2 activity:(id)arg3 error:(id *)arg4;
 - (id)__localZonesForRecordIDs:(id)arg1 activity:(id)arg2 error:(id *)arg3;
 - (void)__shutdownLocalZones:(id)arg1 activity:(id)arg2;
 - (id)__openLocalZoneForCloudZoneID:(id)arg1 error:(id *)arg2;
 - (id)__createCloudZoneIDForZoneID:(id)arg1;
-- (void)__stopWatchingRecords:(id)arg1 activity:(id)arg2;
-- (void)__startWatchingRecords:(id)arg1 activity:(id)arg2;
 - (void)__updateChangeTokenWithFetchInfo:(id)arg1;
 - (void)__removeDeletedZonesWithFetchInfo:(id)arg1;
 - (void)__retryFetchDatabaseChangesWithFetchInfo:(id)arg1;

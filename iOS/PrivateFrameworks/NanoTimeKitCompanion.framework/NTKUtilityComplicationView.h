@@ -28,6 +28,7 @@
     _Bool _alwaysEnforcePlatterInset;
     _Bool _useRoundedFontDesign;
     _Bool _useBlockyHighlightCorners;
+    _Bool _shouldScaleAndFadeWhenHighlighting;
     _Bool _suppressesInternalColorOverrides;
     _Bool _editing;
     id <NTKComplicationDisplayObserver> displayObserver;
@@ -57,6 +58,7 @@
 + (_Bool)handlesComplicationTemplate:(id)arg1;
 + (id)largeComplicationViewForType:(unsigned long long)arg1 narrow:(_Bool)arg2;
 + (id)smallComplicationViewForType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CLKComplicationTemplate *complicationTemplate; // @synthesize complicationTemplate=_complicationTemplate;
 @property(readonly, nonatomic) _Bool editing; // @synthesize editing=_editing;
 @property(readonly, nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
@@ -69,6 +71,7 @@
 @property(retain, nonatomic) UIImageView *backgroundPlatter; // @synthesize backgroundPlatter=_backgroundPlatter;
 @property(nonatomic) _Bool suppressesInternalColorOverrides; // @synthesize suppressesInternalColorOverrides=_suppressesInternalColorOverrides;
 @property(nonatomic) double editingRotationAngle; // @synthesize editingRotationAngle=_editingRotationAngle;
+@property(nonatomic) _Bool shouldScaleAndFadeWhenHighlighting; // @synthesize shouldScaleAndFadeWhenHighlighting=_shouldScaleAndFadeWhenHighlighting;
 @property(nonatomic) _Bool useBlockyHighlightCorners; // @synthesize useBlockyHighlightCorners=_useBlockyHighlightCorners;
 @property(nonatomic) double fontWeight; // @synthesize fontWeight=_fontWeight;
 @property(nonatomic) _Bool useRoundedFontDesign; // @synthesize useRoundedFontDesign=_useRoundedFontDesign;
@@ -85,7 +88,6 @@
 @property(retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText=_canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
-- (void).cxx_destruct;
 - (void)_updateForTemplateChange;
 - (void)_applyForegroundAlpha;
 - (double)_widthThatFits;

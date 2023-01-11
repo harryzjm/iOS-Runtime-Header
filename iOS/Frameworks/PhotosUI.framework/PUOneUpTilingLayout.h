@@ -54,16 +54,19 @@
     struct CGSize _interpageSpacing;
     struct CGSize _playButtonSize;
     struct CGSize _progressIndicatorSize;
+    struct CGSize _renderIndicatorSize;
     struct CGSize _assetExplorerReviewScreenProgressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
     struct CGSize _displaySizeForInsetMatching;
     struct UIEdgeInsets _contentGuideInsets;
     struct UIEdgeInsets _contentSafeInsets;
+    struct UIEdgeInsets _progressIndicatorContentInsets;
 }
 
 + (struct CGRect)untransformedRectForItemWithAspectRatio:(double)arg1 pageRect:(struct CGRect)arg2 safeInsets:(struct UIEdgeInsets)arg3;
 + (id)centerTileKinds;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldHideMainContent; // @synthesize shouldHideMainContent=_shouldHideMainContent;
 @property(retain, nonatomic) PUParallaxComputer *parallaxComputer; // @synthesize parallaxComputer=_parallaxComputer;
 @property(nonatomic) _Bool shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
@@ -74,6 +77,8 @@
 @property(nonatomic) _Bool canDisplayLoadingIndicators; // @synthesize canDisplayLoadingIndicators=_canDisplayLoadingIndicators;
 @property(nonatomic) struct CGSize bufferingIndicatorSize; // @synthesize bufferingIndicatorSize=_bufferingIndicatorSize;
 @property(nonatomic) struct CGSize assetExplorerReviewScreenProgressIndicatorSize; // @synthesize assetExplorerReviewScreenProgressIndicatorSize=_assetExplorerReviewScreenProgressIndicatorSize;
+@property(nonatomic) struct CGSize renderIndicatorSize; // @synthesize renderIndicatorSize=_renderIndicatorSize;
+@property(nonatomic) struct UIEdgeInsets progressIndicatorContentInsets; // @synthesize progressIndicatorContentInsets=_progressIndicatorContentInsets;
 @property(nonatomic) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
 @property(nonatomic) struct CGSize playButtonSize; // @synthesize playButtonSize=_playButtonSize;
 @property(nonatomic) _Bool useVerticalReviewScreenControlBarLayout; // @synthesize useVerticalReviewScreenControlBarLayout=_useVerticalReviewScreenControlBarLayout;
@@ -89,7 +94,6 @@
 @property(readonly, nonatomic) double transitionProgress; // @synthesize transitionProgress=_transitionProgress;
 @property(nonatomic) struct CGSize interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
 @property(nonatomic) __weak id <PUOneUpTilingLayoutDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (double)_normalizedTransitionProgressFrom:(id)arg1 withAbscissa:(double)arg2 outNeighbor:(out id *)arg3;
 - (id)_indexPathOfItemClosestToAbscissa:(double)arg1;
 - (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 parallaxOffset:(out struct CGPoint *)arg3 forContentOfItemAtIndexPath:(id)arg4 options:(unsigned long long)arg5;

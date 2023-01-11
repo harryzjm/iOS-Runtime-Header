@@ -17,10 +17,10 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *externalQueue; // @synthesize externalQueue=_externalQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
-- (void).cxx_destruct;
 - (id)deleteBackup:(id)arg1;
 - (void)deleteBackup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createBackupForPairingID:(id)arg1 synchronousCompletionHandler:(CDUnknownBlockType)arg2;
@@ -33,6 +33,8 @@
 - (void)restoreFromBackup:(id)arg1 forDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)listBackupsWithSynchronousCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)listBackupsOfType:(unsigned long long)arg1 withSynchronousCompletionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)getBackupsStatus;
+- (void)setBackupsEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)listBackupsOfType:(unsigned long long)arg1 timeout:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)listBackupsWithTimeout:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)listBackupsWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -28,6 +28,7 @@
     long long _px_highlightKind;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long px_highlightKind; // @synthesize px_highlightKind=_px_highlightKind;
 @property(readonly, nonatomic) unsigned short px_highlightEnrichmentState; // @synthesize px_highlightEnrichmentState=_px_highlightEnrichmentState;
 @property(readonly, nonatomic) unsigned long long estimatedAssetCount; // @synthesize estimatedAssetCount=_estimatedAssetCount;
@@ -44,35 +45,45 @@
 @property(readonly, nonatomic) NSString *localizedSmartDescription; // @synthesize localizedSmartDescription=_localizedSmartDescription;
 @property(readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property(readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
-- (void).cxx_destruct;
 - (id)localizedDateDescriptionWithOptions:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 - (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool canContainAssets;
+@property(readonly, nonatomic) _Bool canContainCollections;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool px_allowsImplicitSelectionForProjectOrSharingAction;
+@property(readonly, nonatomic) _Bool px_canAddContent;
 @property(readonly, nonatomic) _Bool px_canRearrangeContent;
+@property(readonly, nonatomic) id px_cheapLogIdentifier;
 @property(readonly, nonatomic) _Bool px_isAllPhotosSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isCloudMultipleContributorsEnabled;
 @property(readonly, nonatomic) _Bool px_isFavoriteMemoriesSmartFolder;
 @property(readonly, nonatomic) _Bool px_isFavoritesSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isFolder;
+@property(readonly, nonatomic) _Bool px_isForYouVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isHiddenSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isHighlight;
 @property(readonly, nonatomic) _Bool px_isImportHistoryCollection;
 @property(readonly, nonatomic) _Bool px_isImportSessionCollection;
 @property(readonly, nonatomic) _Bool px_isImportedAlbum;
+@property(readonly, nonatomic) _Bool px_isInReadWriteCloudLibrary;
 @property(readonly, nonatomic) _Bool px_isMacSyncedAlbum;
 @property(readonly, nonatomic) _Bool px_isMacSyncedEventsFolder;
 @property(readonly, nonatomic) _Bool px_isMacSyncedFacesFolder;
 @property(readonly, nonatomic) _Bool px_isMediaTypeSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isMediaTypesFolder;
 @property(readonly, nonatomic) _Bool px_isMemoriesVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isMoment;
 @property(readonly, nonatomic) _Bool px_isMomentsVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isMyAlbumsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMyPhotoStreamAlbum;
 @property(readonly, nonatomic) _Bool px_isOwnedSharedAlbum;
+@property(readonly, nonatomic) _Bool px_isPanoramasSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isPeopleVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPhotosVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPlacesSmartAlbum;
@@ -88,10 +99,13 @@
 @property(readonly, nonatomic) _Bool px_isScreenRecordingsSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSharedActivityVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isSharedAlbum;
+@property(readonly, nonatomic) _Bool px_isSharedAlbumsAndActivityFolder;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsFolder;
+@property(readonly, nonatomic) _Bool px_isSharedAlbumsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSmartFolder;
 @property(readonly, nonatomic) _Bool px_isStandInAlbum;
+@property(readonly, nonatomic) _Bool px_isSuggestion;
 @property(readonly, nonatomic) _Bool px_isTopLevelFolder;
 @property(readonly, nonatomic) _Bool px_isTransientPlacesCollection;
 @property(readonly, nonatomic) _Bool px_isUserCreated;

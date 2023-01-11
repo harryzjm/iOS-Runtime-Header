@@ -12,9 +12,10 @@
     HDCloudSyncSequenceRecord *_sequenceRecord;
 }
 
-@property(retain, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord; // @synthesize sequenceRecord=_sequenceRecord;
 - (void).cxx_destruct;
-- (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
+@property(retain, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord; // @synthesize sequenceRecord=_sequenceRecord;
+- (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 - (void)setExcludedSyncStores:(id)arg1;
 - (id)excludedSyncStores;

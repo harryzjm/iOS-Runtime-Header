@@ -16,12 +16,17 @@ __attribute__((visibility("hidden")))
     id _wrmClientDelegate;
     int _mediaControlInfoVersion;
     int _mode;
-    CDStruct_21a0265e _metricsConfig;
+    struct {
+        _Bool reportImmediateMetricsEnabled;
+        _Bool reportRtpErasureMetricsEnabled;
+        _Bool allowPreWarmCellEnabled;
+    } _metricsConfig;
 }
 
 @property int mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
 - (void)setPreWarmState:(_Bool)arg1;
 - (void)processNotificationList:(id)arg1;
+- (void)processWRMCoexMetrics:(id)arg1 isAlertedMode:(_Bool)arg2;
 - (void)setConfiguration:(CDStruct_69d7cc99 *)arg1;
 - (void)reportMetricsFaceTimeCalling:(const CDStruct_dea828ac *)arg1;
 - (void)reportImmediateMetric:(int)arg1 value:(unsigned long long)arg2;
@@ -36,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)sendProcessInfoWithProcessID:(unsigned long long)arg1;
 - (int)getWRMSubscribeVersion;
 - (void)stopWRMClient;
-- (void)startWRMClientWithMode:(int)arg1 metricsConfig:(CDStruct_21a0265e)arg2;
+- (void)startWRMClientWithMode:(int)arg1 metricsConfig:(CDStruct_2a4d9400)arg2;
 - (void)releaseServiceConnection;
 - (_Bool)setupServiceConnection;
 @property id <WRMClientDelegate> delegate;

@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/SXWebContentLoadingPolicyProvider-Protocol.h>
+#import <NewsUI/SWLoadingPolicyProvider-Protocol.h>
 
 @class NSString;
 @protocol FCHeadlineProviding;
 
-@interface NUWebContentLoadingPolicyProvider : NSObject <SXWebContentLoadingPolicyProvider>
+@interface NUWebContentLoadingPolicyProvider : NSObject <SWLoadingPolicyProvider>
 {
     id <FCHeadlineProviding> _headline;
 }
 
-@property(readonly, nonatomic) id <FCHeadlineProviding> headline; // @synthesize headline=_headline;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <FCHeadlineProviding> headline; // @synthesize headline=_headline;
 - (unsigned long long)loadingPolicy;
 - (id)initWithHeadline:(id)arg1;
 

@@ -15,10 +15,12 @@
     _HMAccessoryProfile *_accessoryProfile;
 }
 
-@property(readonly, nonatomic) _HMAccessoryProfile *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _HMAccessoryProfile *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
+- (void)refreshStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleRuntimeStateUpdate:(id)arg1;
 @property(readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @dynamic profileUniqueIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *uuid;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;

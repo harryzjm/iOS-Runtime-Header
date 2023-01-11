@@ -6,30 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreParsec/PARClientXPC-Protocol.h>
+@class NSMutableArray, NSXPCConnection, PARImageLoader;
+@protocol OS_dispatch_queue;
 
-@class NSMutableArray, NSString, NSXPCConnection, NSXPCListenerEndpoint, PARImageLoader, PARSessionConfiguration;
-@protocol OS_dispatch_queue, PARDaemonXPC;
-
-@interface PARSearchClient : NSObject <PARClientXPC>
+@interface PARSearchClient : NSObject
 {
-    id <PARDaemonXPC> _remoteObject;
     NSMutableArray *_sessions;
     NSObject<OS_dispatch_queue> *_queue;
     _Atomic _Bool _configured;
-    PARSessionConfiguration *_configuration;
     NSXPCConnection *_connection;
     PARImageLoader *_imageLoader;
 }
 
 + (id)sharedClient;
-+ (id)daemonConnection;
-+ (id)_deafListenerEndpoint;
+- (void).cxx_destruct;
 @property(readonly) PARImageLoader *imageLoader; // @synthesize imageLoader=_imageLoader;
 @property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property(retain) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
-- (void)updateParameters:(double)arg1 safariLast1day:(double)arg2 safariLast1week:(double)arg3 safariLast1month:(double)arg4 safariAll:(double)arg5 safariMostRecent:(double)arg6 minThresholdToSend:(double)arg7;
+- (void)didDeleteResource:(id)arg1;
+- (void)didDownloadResource:(id)arg1;
+- (void)bagDidLoad:(id)arg1 error:(id)arg2;
+- (void)updateParametersForSmartSearchV1:(id)arg1 smartSearchV2:(id)arg2;
 - (void)clearCompletionsFromDate:(id)arg1 toDate:(id)arg2;
 - (void)addCompletion:(id)arg1 forInput:(id)arg2;
 - (void)getImageMap:(CDUnknownBlockType)arg1;
@@ -40,22 +36,11 @@
 - (void)forceFetchBag:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)bag:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)configure:(id)arg1;
-@property(retain) NSXPCListenerEndpoint *endpoint;
 - (void)addSession:(id)arg1;
 - (void)dealloc;
 - (void)_invalidateConnection;
 - (id)initWithConnection:(id)arg1;
 - (id)init;
-- (void)sessionDidChange:(id)arg1;
-- (void)didDeleteResource:(id)arg1;
-- (void)didDownloadResource:(id)arg1;
-- (void)bagDidLoad:(id)arg1 error:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

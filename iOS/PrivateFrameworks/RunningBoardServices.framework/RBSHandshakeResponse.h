@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString, RBSProcessHandle;
 
-@interface RBSHandshakeResponse : NSObject <BSXPCSecureCoding>
+@interface RBSHandshakeResponse : NSObject <RBSXPCSecureCoding>
 {
     RBSProcessHandle *_handle;
     NSDictionary *_assertionIdentifiersByOldIdentifier;
     NSDictionary *_assertionErrorsByOldIdentifier;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *assertionErrorsByOldIdentifier; // @synthesize assertionErrorsByOldIdentifier=_assertionErrorsByOldIdentifier;
 @property(retain, nonatomic) NSDictionary *assertionIdentifiersByOldIdentifier; // @synthesize assertionIdentifiersByOldIdentifier=_assertionIdentifiersByOldIdentifier;
 @property(retain, nonatomic) RBSProcessHandle *handle; // @synthesize handle=_handle;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 
 // Remaining properties

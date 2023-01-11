@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSTimer, PKPalettePencilInteractionFeedbackView, UILayoutGuide;
+@class NSLayoutConstraint, NSTimer, PKPalettePencilInteractionFeedbackView, UILayoutGuide, UIViewFloatAnimatableProperty;
 @protocol PKPalettePencilInteractionFeedbackHostViewDelegate;
 
 @interface PKPalettePencilInteractionFeedbackHostView : UIView
@@ -26,8 +26,11 @@
     NSLayoutConstraint *_pencilInteractionFeedbackViewRightConstraint;
     NSLayoutConstraint *_pencilInteractionFeedbackViewCenterXConstraint;
     NSLayoutConstraint *_pencilInteractionFeedbackViewCenterYConstraint;
+    UIViewFloatAnimatableProperty *_feedbackViewVisibilityAnimatableProperty;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIViewFloatAnimatableProperty *feedbackViewVisibilityAnimatableProperty; // @synthesize feedbackViewVisibilityAnimatableProperty=_feedbackViewVisibilityAnimatableProperty;
 @property(nonatomic, getter=isPencilInteractionFeedbackViewVisible) _Bool pencilInteractionFeedbackViewVisible; // @synthesize pencilInteractionFeedbackViewVisible=_pencilInteractionFeedbackViewVisible;
 @property(retain, nonatomic) NSLayoutConstraint *pencilInteractionFeedbackViewCenterYConstraint; // @synthesize pencilInteractionFeedbackViewCenterYConstraint=_pencilInteractionFeedbackViewCenterYConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *pencilInteractionFeedbackViewCenterXConstraint; // @synthesize pencilInteractionFeedbackViewCenterXConstraint=_pencilInteractionFeedbackViewCenterXConstraint;
@@ -43,13 +46,15 @@
 @property(retain, nonatomic) NSTimer *pencilInteractionFeedbackViewAutodismissTimer; // @synthesize pencilInteractionFeedbackViewAutodismissTimer=_pencilInteractionFeedbackViewAutodismissTimer;
 @property(retain, nonatomic) PKPalettePencilInteractionFeedbackView *pencilInteractionFeedbackView; // @synthesize pencilInteractionFeedbackView=_pencilInteractionFeedbackView;
 @property(nonatomic) __weak id <PKPalettePencilInteractionFeedbackHostViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_updateLayoutGuideConstraints;
 - (void)_animatePencilInteractionFeedbackViewToVisible:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)hideFeedbackView;
 - (long long)_palettePosition;
 - (void)showFeedbackForCurrentlySelectedToolInPaletteView;
+- (_Bool)_isPencilInteractionFeedbackViewAlmostOffScreen;
 - (void)layoutSubviews;
+- (double)minimizedPaletteScaleFactor;
+- (struct CGSize)minimizedPaletteSize;
 - (id)initWithDelegate:(id)arg1;
 
 @end

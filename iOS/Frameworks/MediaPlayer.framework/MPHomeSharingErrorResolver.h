@@ -8,6 +8,7 @@
 
 @class MPHomeSharingML3DataProvider, NSData, NSError, NSMutableArray, NSString, NSURL, SSAuthorizationRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPHomeSharingErrorResolver <SSAuthorizationRequestDelegate>
 {
     NSURL *_keybagURL;
@@ -23,8 +24,8 @@
     MPHomeSharingML3DataProvider *_dataProvider;
 }
 
-@property(retain, nonatomic) MPHomeSharingML3DataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MPHomeSharingML3DataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 - (void)_processNextAuthorizationRequest;
 - (void)_performMachineAuthorization;
 - (_Bool)_errorIsFairPlayError:(id)arg1;

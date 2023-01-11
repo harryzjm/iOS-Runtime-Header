@@ -19,6 +19,7 @@
     _Bool _activeRevealTransitioning;
     _Bool _performingGroupingAnimation;
     _Bool _performingRevealAnimation;
+    _Bool _performingHeaderReloadAnimation;
     _Bool _performingVisibleRectAdjustment;
     _Bool _performedFirstLayout;
     _Bool _cachedSizeValid;
@@ -38,6 +39,7 @@
     struct CGRect _visibleRect;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize cachedSize; // @synthesize cachedSize=_cachedSize;
 @property(nonatomic, getter=isCachedSizeValid) _Bool cachedSizeValid; // @synthesize cachedSizeValid=_cachedSizeValid;
 @property(nonatomic, getter=hasPerformedFirstLayout) _Bool performedFirstLayout; // @synthesize performedFirstLayout=_performedFirstLayout;
@@ -46,6 +48,7 @@
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) NSMutableSet *viewsPerformingAnimation; // @synthesize viewsPerformingAnimation=_viewsPerformingAnimation;
 @property(nonatomic, getter=isPerformingVisibleRectAdjustment) _Bool performingVisibleRectAdjustment; // @synthesize performingVisibleRectAdjustment=_performingVisibleRectAdjustment;
+@property(nonatomic, getter=isPerformingHeaderReloadAnimation) _Bool performingHeaderReloadAnimation; // @synthesize performingHeaderReloadAnimation=_performingHeaderReloadAnimation;
 @property(nonatomic, getter=isPerformingRevealAnimation) _Bool performingRevealAnimation; // @synthesize performingRevealAnimation=_performingRevealAnimation;
 @property(nonatomic, getter=isPerformingGroupingAnimation) _Bool performingGroupingAnimation; // @synthesize performingGroupingAnimation=_performingGroupingAnimation;
 @property(nonatomic) unsigned long long removedViewIndex; // @synthesize removedViewIndex=_removedViewIndex;
@@ -63,7 +66,6 @@
 @property(nonatomic, getter=isGrouped) _Bool grouped; // @synthesize grouped=_grouped;
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(nonatomic) __weak id <NCNotificationListViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isNotificationListViewCurrentlyVisible) _Bool notificationListViewCurrentlyVisible;
 - (struct CGAffineTransform)_scaleTransformForGroupingAnimationForViewAtIndex:(unsigned long long)arg1 leadingViewHeight:(double)arg2;
 - (void)_recycleViewIfNecessary:(id)arg1 withDataSource:(id)arg2;

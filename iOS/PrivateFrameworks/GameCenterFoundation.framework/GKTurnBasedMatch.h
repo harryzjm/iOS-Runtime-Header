@@ -32,13 +32,15 @@
 + (void)findMatchForRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)matchesWithInternalRepresentations:(id)arg1;
 + (void)getTurnBasedBadgeCountWithHandler:(CDUnknownBlockType)arg1;
-@property(readonly, retain, nonatomic) NSArray *exchanges; // @synthesize exchanges=_exchanges;
-@property(readonly, retain, nonatomic) NSArray *participants; // @synthesize participants=_participants;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *exchanges; // @synthesize exchanges=_exchanges;
+@property(readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 - (void)sendReminderToParticipants:(id)arg1 localizableMessageKey:(id)arg2 arguments:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)sendExchangeToParticipants:(id)arg1 data:(id)arg2 localizableMessageKey:(id)arg3 arguments:(id)arg4 timeout:(double)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)saveMergedMatchData:(id)arg1 withResolvedExchanges:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)exchangeForID:(id)arg1;
 - (void)saveCurrentTurnWithMatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)endMatchInTurnWithMatchData:(id)arg1 leaderboardScores:(id)arg2 achievements:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)endMatchInTurnWithMatchData:(id)arg1 scores:(id)arg2 achievements:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)endMatchInTurnWithMatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)participantQuitOutOfTurnWithOutcome:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -51,8 +53,8 @@
 - (void)loadURLWithMatchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadMatchDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(readonly, retain, nonatomic) NSArray *completedExchanges;
-@property(readonly, retain, nonatomic) NSArray *activeExchanges;
+@property(readonly, nonatomic) NSArray *completedExchanges;
+@property(readonly, nonatomic) NSArray *activeExchanges;
 @property(readonly, nonatomic) GKTurnBasedParticipant *firstWinnerOrTiedOrLastLoser;
 @property(readonly, nonatomic) GKPlayer *showcasePlayer;
 @property(readonly, nonatomic) GKTurnBasedParticipant *localPlayerParticipant;
@@ -68,7 +70,6 @@
 @property(readonly, nonatomic) long long status; // @dynamic status;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) GKPlayer *currentPlayer; // @dynamic currentPlayer;
-- (void)dealloc;
 @property(nonatomic) unsigned int state; // @synthesize state=_state;
 - (void)setLocalizableMessageWithKey:(id)arg1 arguments:(id)arg2;
 @property(copy, nonatomic) NSString *message;
@@ -95,11 +96,11 @@
 // Remaining properties
 @property(retain, nonatomic) NSString *bundleID; // @dynamic bundleID;
 @property(retain, nonatomic) NSString *bundleVersion; // @dynamic bundleVersion;
-@property(readonly, retain, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property(readonly, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property(readonly, copy) NSString *debugDescription;
 @property(copy, nonatomic) NSDate *lastTurnDate; // @dynamic lastTurnDate;
-@property(readonly, retain, nonatomic) NSData *matchData; // @dynamic matchData;
-@property(readonly, retain, nonatomic) NSString *matchID; // @dynamic matchID;
+@property(readonly, nonatomic) NSData *matchData; // @dynamic matchData;
+@property(readonly, nonatomic) NSString *matchID; // @dynamic matchID;
 @property(readonly, nonatomic) long long platform; // @dynamic platform;
 @property(retain, nonatomic) NSString *shortBundleVersion; // @dynamic shortBundleVersion;
 @property(readonly) Class superclass;

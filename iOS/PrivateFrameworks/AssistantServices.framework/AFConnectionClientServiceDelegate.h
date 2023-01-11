@@ -18,6 +18,8 @@
 }
 
 - (void).cxx_destruct;
+- (oneway void)appLaunchFailedWithBundleIdentifier:(id)arg1;
+- (oneway void)willProcessAppLaunchWithBundleIdentifier:(id)arg1;
 - (oneway void)audioSessionDidBecomeActive:(_Bool)arg1;
 - (oneway void)audioSessionWillBecomeActive:(_Bool)arg1;
 - (oneway void)startPlaybackDidFail:(long long)arg1;
@@ -60,6 +62,7 @@
 - (oneway void)requestRequestedOpenApplicationWithBundleID:(id)arg1 URL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (oneway void)requestHandleCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)requestDidReceiveCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (oneway void)startUIRequestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_connectionDelegate;
 - (id)initWithConnection:(id)arg1 targetQueue:(id)arg2;

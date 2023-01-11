@@ -12,6 +12,7 @@
 {
 }
 
+- (id)description;
 
 // Remaining properties
 @property(retain, nonatomic) NSSet *accessKeys; // @dynamic accessKeys;
@@ -19,7 +20,6 @@
 @property(retain, nonatomic) NSSet *accounts; // @dynamic accounts;
 @property(retain, nonatomic) NSString *credentialProtectionPolicy; // @dynamic credentialProtectionPolicy;
 @property(retain, nonatomic) NSString *credentialType; // @dynamic credentialType;
-@property(retain, nonatomic) NSNumber *encryptAccountProperties; // @dynamic encryptAccountProperties;
 @property(retain, nonatomic) NSString *identifier; // @dynamic identifier;
 @property(retain, nonatomic) NSNumber *obsolete; // @dynamic obsolete;
 @property(retain, nonatomic) NSString *owningBundleID; // @dynamic owningBundleID;
@@ -29,5 +29,6 @@
 @property(retain, nonatomic) NSNumber *supportsMultipleAccounts; // @dynamic supportsMultipleAccounts;
 @property(retain, nonatomic) NSSet *syncableDataclasses; // @dynamic syncableDataclasses;
 @property(retain, nonatomic) NSNumber *visibility; // @dynamic visibility;
+
 @end
 

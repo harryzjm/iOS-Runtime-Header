@@ -11,6 +11,7 @@
 
 @protocol SBFloatingDockRootViewControllerDelegate <NSObject>
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 floatingDockWantsToBePresented:(_Bool)arg2;
+- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 didChangeToFrame:(struct CGRect)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willChangeToHeight:(double)arg2;
 
 @optional

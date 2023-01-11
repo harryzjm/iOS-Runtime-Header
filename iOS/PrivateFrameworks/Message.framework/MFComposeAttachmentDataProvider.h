@@ -29,7 +29,10 @@
 - (void)recordUndoDataForAttachments:(id)arg1;
 - (void)recordPasteboardDataForAttachments:(id)arg1;
 - (void)removeDataForAttachment:(id)arg1;
+- (void)addDataItemProvider:(id)arg1 forContentID:(id)arg2;
 - (void)addData:(id)arg1 forContentID:(id)arg2;
+- (void)_commonInitWithDataProvider:(id)arg1 forContentID:(id)arg2;
+- (id)initWithAttachmentDataItemProvider:(id)arg1 forContentID:(id)arg2;
 - (id)initWithData:(id)arg1 forContentID:(id)arg2;
 
 // Remaining properties

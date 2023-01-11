@@ -24,6 +24,8 @@
 @property(readonly, nonatomic) long long scrollingStrategy;
 @property(readonly, nonatomic) long long proximityDetectionMode;
 @property(readonly, nonatomic) long long notificationBehavior;
+- (void)conformsToCSExternalBehaviorProviding;
+- (void)conformsToCSBehaviorProviding;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (void)dealloc;

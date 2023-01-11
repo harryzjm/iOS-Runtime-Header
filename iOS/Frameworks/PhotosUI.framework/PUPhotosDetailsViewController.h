@@ -7,12 +7,13 @@
 #import <PhotosUICore/PXPhotosDetailsUIViewController.h>
 
 #import <PhotosUI/PUAccessoryContentViewController-Protocol.h>
+#import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 
-@class NSString, _UIContentUnavailableView;
+@class NSString, PUAssetViewModel, _UIContentUnavailableView;
 @protocol PUAccessoryContentViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotosDetailsViewController : PXPhotosDetailsUIViewController <PUAccessoryContentViewController>
+@interface PUPhotosDetailsViewController : PXPhotosDetailsUIViewController <PUAssetViewModelChangeObserver, PUAccessoryContentViewController>
 {
     struct {
         _Bool scrollViewControllerDidScroll;
@@ -20,23 +21,33 @@ __attribute__((visibility("hidden")))
     } _superRespondsTo;
     _UIContentUnavailableView *_contentUnavailableView;
     id <PUAccessoryContentViewControllerDelegate> _accessoryContentViewControllerDelegate;
+    PUAssetViewModel *_assetViewModel;
+    double _maxVisibleHeightInEdit;
 }
 
-@property(nonatomic) __weak id <PUAccessoryContentViewControllerDelegate> accessoryContentViewControllerDelegate; // @synthesize accessoryContentViewControllerDelegate=_accessoryContentViewControllerDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) double maxVisibleHeightInEdit; // @synthesize maxVisibleHeightInEdit=_maxVisibleHeightInEdit;
+@property(readonly, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
+@property(nonatomic) __weak id <PUAccessoryContentViewControllerDelegate> accessoryContentViewControllerDelegate; // @synthesize accessoryContentViewControllerDelegate=_accessoryContentViewControllerDelegate;
+- (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)scrollViewControllerContentBoundsDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (struct UIEdgeInsets)px_safeAreaInsets;
 - (struct CGRect)contentBoundsInCoordinateSpace:(id)arg1;
 - (_Bool)contentAreaContainsPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)setContentInsets:(struct UIEdgeInsets)arg1 changeReason:(long long)arg2;
+- (void)setMaxVisibleContentInsetsWhenInEdit:(struct UIEdgeInsets)arg1;
+@property(readonly, nonatomic) struct CGSize minimumContentSize;
 @property(readonly, nonatomic) struct UIEdgeInsets contentInsets;
+- (void)editorHeightDidChange;
+- (void)editingDidChange:(_Bool)arg1;
 - (_Bool)_canShowWhileLocked;
 - (unsigned long long)occludedContentEdges;
 - (struct CGSize)preferredContentSize;
 - (void)_layoutContentUnavailableView;
 - (void)setContentEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)setEmpty:(_Bool)arg1;
+- (id)initWithContext:(id)arg1 configuration:(id)arg2 assetViewModel:(id)arg3;
 - (id)initWithContext:(id)arg1 configuration:(id)arg2;
 - (id)initWithContext:(id)arg1 options:(unsigned long long)arg2;
 
@@ -44,7 +55,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) struct CGSize minimumContentSize;
 @property(readonly) Class superclass;
 
 @end

@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreServices/LSDetachable-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class LSBundleProxy, LSExtensionPoint, NSDate, NSDictionary, NSNumber, NSString, NSUUID;
+@class LSApplicationExtensionRecord, LSBundleProxy, LSExtensionPoint, NSDate, NSDictionary, NSNumber, NSString, NSUUID;
 
-@interface LSPlugInKitProxy <NSSecureCoding>
+@interface LSPlugInKitProxy <LSDetachable, NSSecureCoding>
 {
     unsigned int _platform;
+    unsigned int _pluginFlags;
+    LSApplicationExtensionRecord *_appexRecord;
+    NSString *_extensionPointID;
     _Bool _onSystemPartition;
     NSString *_signerOrganization;
     NSString *_pluginIdentifier;
@@ -26,8 +30,10 @@
 + (id)pluginKitProxyForURL:(id)arg1;
 + (id)pluginKitProxyForIdentifier:(id)arg1;
 + (id)pluginKitProxyForUUID:(id)arg1;
++ (id)plugInKitProxyForPlugin:(unsigned int)arg1 withContext:(struct LSContext *)arg2 applicationExtensionRecord:(id)arg3 resolveAndDetach:(_Bool)arg4;
 + (id)plugInKitProxyForPlugin:(unsigned int)arg1 withContext:(struct LSContext *)arg2;
 + (id)containingBundleIdentifiersForPlugInBundleIdentifiers:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isOnSystemPartition) _Bool onSystemPartition; // @synthesize onSystemPartition=_onSystemPartition;
 @property(readonly, nonatomic) LSBundleProxy *containingBundle; // @synthesize containingBundle=_containingBundle;
 @property(readonly, nonatomic) NSDate *registrationDate; // @synthesize registrationDate=_registrationDate;
@@ -36,26 +42,31 @@
 @property(readonly, nonatomic) NSString *originalIdentifier; // @synthesize originalIdentifier=_originalIdentifier;
 @property(readonly, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
 - (id)signerOrganization;
-- (void).cxx_destruct;
+- (void)detach;
+- (id)groupContainerURLs;
+- (id)dataContainerURL;
 - (_Bool)_usesSystemPersona;
 - (id)_managedPersonas;
 - (id)description;
 - (id)_valueForEqualityTesting;
 @property(readonly, nonatomic) NSString *teamID; // @dynamic teamID;
+- (_Bool)freeProfileValidated;
 - (_Bool)UPPValidated;
 - (_Bool)profileValidated;
+- (id)bundleType;
 - (id)iconDataForVariant:(int)arg1 withOptions:(int)arg2;
 - (id)boundIconsDictionary;
 @property(readonly, nonatomic) LSExtensionPoint *extensionPoint;
 @property(readonly, nonatomic) _Bool pluginCanProvideIcon;
 @property(readonly, nonatomic) NSDictionary *infoPlist;
 @property(readonly, nonatomic) NSDictionary *pluginKitDictionary;
+- (unsigned long long)compatibilityState;
 @property(readonly, nonatomic) NSNumber *platform;
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2 inScope:(unsigned long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_initWithUUID:(id)arg1 bundleIdentifier:(id)arg2 pluginIdentifier:(id)arg3 effectiveIdentifier:(id)arg4 version:(id)arg5 bundleURL:(id)arg6;
-- (id)_initWithPlugin:(unsigned int)arg1 andContext:(struct LSContext *)arg2;
+- (id)_initWithPlugin:(unsigned int)arg1 andContext:(struct LSContext *)arg2 applicationExtensionRecord:(id)arg3 resolveAndDetach:(_Bool)arg4;
 - (id)_localizedNameWithPreferredLocalizations:(id)arg1 useShortNameOnly:(_Bool)arg2;
 
 @end

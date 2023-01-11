@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
     struct CGSize _contentSizeAdjustment;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize contentSizeAdjustment; // @synthesize contentSizeAdjustment=_contentSizeAdjustment;
 @property(nonatomic) struct CGPoint contentOffsetAdjustment; // @synthesize contentOffsetAdjustment=_contentOffsetAdjustment;
-- (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (id)indexPathsForInsertedDecorationsForElementKind:(id)arg1;
 - (id)indexPathsForInsertedSupplememtariesForElementKind:(id)arg1;
 - (id)indexPathsForDeletedDecorationsForElementKind:(id)arg1;
@@ -34,7 +35,6 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -12,8 +12,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

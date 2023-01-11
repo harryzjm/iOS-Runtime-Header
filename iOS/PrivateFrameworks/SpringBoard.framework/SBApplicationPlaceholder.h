@@ -18,14 +18,16 @@
     _Bool _invalidated;
     NSMutableDictionary *_generatedIconImagesByKey;
     NSMutableSet *_formatsPendingGeneration;
+    _Bool _appClip;
     FBSApplicationPlaceholder *_placeholderProxy;
     id <SBApplicationPlaceholderDelegate> _delegate;
 }
 
 + (id)backgroundQueue;
+- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isAppClip) _Bool appClip; // @synthesize appClip=_appClip;
 @property(nonatomic) __weak id <SBApplicationPlaceholderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) FBSApplicationPlaceholder *placeholderProxy; // @synthesize placeholderProxy=_placeholderProxy;
-- (void).cxx_destruct;
 - (_Bool)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
 - (_Bool)iconCompleteUninstall:(id)arg1;
 - (_Bool)iconSupportsUninstall:(id)arg1;
@@ -39,6 +41,7 @@
 - (_Bool)iconCanTightenLabel:(id)arg1;
 - (_Bool)iconCanTruncateLabel:(id)arg1;
 - (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 - (unsigned long long)priorityForIcon:(id)arg1;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
 - (void)_reloadThumbnailImage;
@@ -78,6 +81,7 @@
 - (id)initWithPlaceholderProxy:(id)arg1;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

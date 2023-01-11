@@ -16,12 +16,14 @@
     NSArray *_supportedIdentifiers;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) int token; // @synthesize token=_token;
 - (id)intentDescription;
-- (void).cxx_destruct;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (id)possibleStatesForEnumeration:(id)arg1;
-- (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
+- (_Bool)requiresRemoteExecution;
+- (id)selectedAppNotSupportedError;
+- (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 - (id)slots;
 - (id)copyWithSerializedParameters:(id)arg1;
 - (id)appSection;
@@ -32,7 +34,9 @@
 @property(readonly, nonatomic) NSArray *supportedIdentifiers; // @synthesize supportedIdentifiers=_supportedIdentifiers;
 - (long long)intentCategory;
 - (id)appIdentifier;
-- (id)appIdentifierForIdentifier:(id)arg1;
+- (id)localizedAppName;
+- (id)localizedDisplayableAppNameForBundleIdentifier:(id)arg1;
+- (id)displayableAppIdentifierForBundleIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 

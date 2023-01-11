@@ -46,10 +46,10 @@
     id <SBBiometricUnlockBehaviorDelegate> _biometricUnlockBehaviorDelegate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool expectsFaceContact; // @synthesize expectsFaceContact=_expectsFaceContact;
 @property(nonatomic) __weak id <SBBiometricUnlockBehaviorDelegate> biometricUnlockBehaviorDelegate; // @synthesize biometricUnlockBehaviorDelegate=_biometricUnlockBehaviorDelegate;
 @property(readonly, nonatomic) CSCoverSheetViewController *coverSheetViewController; // @synthesize coverSheetViewController=_coverSheetViewController;
-- (void).cxx_destruct;
 - (void)updateStatusBarForLockScreenComeback;
 - (void)updateStatusBarForLockScreenTeardown;
 @property(readonly, nonatomic) _Bool shouldShowLockStatusBarTime;
@@ -101,6 +101,7 @@
 - (id)hostedAppSceneHandle;
 - (_Bool)isHostingAnApp;
 - (_Bool)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

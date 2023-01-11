@@ -6,14 +6,18 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
+@class NSString, NSURL;
+
 @protocol FCAppActivityObserving <NSObject>
 
 @optional
 - (void)activityObservingApplicationWindowDidBecomeBackground;
 - (void)activityObservingApplicationWindowDidBecomeForeground;
 - (void)activityObservingApplicationWindowWillBecomeForeground;
+- (void)activityObservingApplicationWillTerminate;
 - (void)activityObservingApplicationWillEnterForeground;
 - (void)activityObservingApplicationDidEnterBackground;
+- (void)activityObservingApplicationDidBecomeActiveWithURL:(NSURL *)arg1 sourceApplication:(NSString *)arg2;
 - (void)activityObservingApplicationDidBecomeActive;
 - (void)activityObservingApplicationDidFinishLaunching;
 @end

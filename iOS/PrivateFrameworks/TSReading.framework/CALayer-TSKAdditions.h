@@ -7,6 +7,7 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CALayer (TSKAdditions)
++ (Class)tsd_renderableClass;
 - (void)makeStretchableLayerWithUIImage:(id)arg1 leftCap:(double)arg2 rightCap:(double)arg3 topCap:(double)arg4 bottomCap:(double)arg5;
 - (void)makeStretchableLayerWithUIImage:(id)arg1 leftCap:(double)arg2 topCap:(double)arg3;
 - (void)makeStretchableLayerWithoutImage:(struct CGImage *)arg1 leftCap:(double)arg2 rightCap:(double)arg3 topCap:(double)arg4 bottomCap:(double)arg5;

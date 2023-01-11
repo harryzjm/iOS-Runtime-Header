@@ -6,7 +6,7 @@
 
 #import <SetupAssistantUI/NSObject-Protocol.h>
 
-@class BFFNavigationController, NSString, UIViewController;
+@class BFFNavigationController, NSArray, NSString, UIViewController;
 @protocol BFFFlowItemDelegate;
 
 @protocol BFFFlowItem <NSObject>
@@ -15,21 +15,30 @@
 - (id)init;
 
 @optional
++ (_Bool)isTrailing;
 + (_Bool)controllerNeedsToRun;
 + (void)skippedByCloudConfig;
 + (_Bool)controllerAffectedByTapFreeSetup;
-- (void)startFlowItem:(_Bool)arg1;
++ (NSString *)internalSkipKey;
+- (void)flowItemDidAppear:(_Bool)arg1;
+- (NSString *)displayLanguage;
+- (_Bool)shouldStopInactivityTimer;
+- (NSArray *)internalMenuActions;
 - (void)handleDebugGesture;
-- (_Bool)shouldSuppressExtendedInitializationActivityIndicator;
-- (void)performExtendedInitializationWithCompletion:(void (^)(_Bool))arg1;
-- (_Bool)isEphemeral;
+- (void)startOver;
+- (_Bool)shouldAllowStartOver;
 - (void)cancelHostedPresentation;
 - (void)presentHostedViewControllerOnNavigationController:(BFFNavigationController *)arg1 completion:(void (^)(UIViewController *))arg2;
+- (_Bool)responsibleForViewController:(UIViewController *)arg1;
 - (UIViewController *)viewController;
-- (_Bool)shouldAllowStartOver;
 - (void)setNavigationController:(BFFNavigationController *)arg1;
-- (void)startOver;
+- (_Bool)isEphemeral;
 - (_Bool)controllerAllowsNavigatingBack;
 - (void)controllerWasPopped;
+- (void)startFlowItem:(_Bool)arg1;
+- (_Bool)shouldPresentModally;
+- (_Bool)shouldSuppressExtendedInitializationActivityIndicator;
+- (void)performExtendedInitializationWithCompletion:(void (^)(_Bool))arg1;
+- (void)didReceiveInternalSkipInfo;
 @end
 

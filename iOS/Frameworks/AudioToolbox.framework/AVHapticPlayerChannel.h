@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class HapticClient;
+@class AVHapticClient;
 
 @interface AVHapticPlayerChannel : NSObject
 {
     unsigned long long _chanID;
     unsigned long long _behavior;
-    HapticClient *_client;
+    AVHapticClient *_client;
 }
 
-@property __weak HapticClient *client; // @synthesize client=_client;
-@property unsigned long long chanID; // @synthesize chanID=_chanID;
 - (void).cxx_destruct;
+@property __weak AVHapticClient *client; // @synthesize client=_client;
+@property unsigned long long chanID; // @synthesize chanID=_chanID;
 - (_Bool)resetAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)scheduleParameterCurve:(unsigned long long)arg1 curve:(id)arg2 atTime:(double)arg3 error:(id *)arg4;
 - (_Bool)setParameter:(unsigned long long)arg1 value:(float)arg2 atTime:(double)arg3 error:(id *)arg4;

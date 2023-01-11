@@ -9,13 +9,11 @@
 @interface SBApplicationSceneEntityDestructionIntent : NSObject
 {
     _Bool _shouldRemoveFromHistory;
-    unsigned long long _layoutRoles;
     unsigned long long _animation;
 }
 
 @property(nonatomic) _Bool shouldRemoveFromHistory; // @synthesize shouldRemoveFromHistory=_shouldRemoveFromHistory;
 @property(nonatomic) unsigned long long animation; // @synthesize animation=_animation;
-@property(nonatomic) unsigned long long layoutRoles; // @synthesize layoutRoles=_layoutRoles;
 
 @end
 

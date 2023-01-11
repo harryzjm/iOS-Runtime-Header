@@ -11,17 +11,22 @@
 
 @interface SearchUIMapPlaceCardSectionView <NUIContainerViewDelegate, _MKPlaceViewControllerDelegate>
 {
+    _Bool _alreadyDispatchedOnMainQueue;
     SearchUIMapsViewController *_mapViewController;
     struct CGSize _placecardBoundsSize;
 }
 
-@property(nonatomic) struct CGSize placecardBoundsSize; // @synthesize placecardBoundsSize=_placecardBoundsSize;
-@property(retain) SearchUIMapsViewController *mapViewController; // @synthesize mapViewController=_mapViewController;
 - (void).cxx_destruct;
+@property(nonatomic) struct CGSize placecardBoundsSize; // @synthesize placecardBoundsSize=_placecardBoundsSize;
+@property _Bool alreadyDispatchedOnMainQueue; // @synthesize alreadyDispatchedOnMainQueue=_alreadyDispatchedOnMainQueue;
+@property(retain) SearchUIMapsViewController *mapViewController; // @synthesize mapViewController=_mapViewController;
+- (_Bool)isReportAProblemAvailable;
+- (void)placeViewController:(id)arg1 requestPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg2;
 - (id)embeddedViewController;
 - (void)placeViewControllerDidUpdateHeight:(id)arg1;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (void)updateTintColorProvider;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (id)setupContentView;
 

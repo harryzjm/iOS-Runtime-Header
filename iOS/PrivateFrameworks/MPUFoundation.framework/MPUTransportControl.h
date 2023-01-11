@@ -27,7 +27,7 @@
 + (_Bool)_hasUnderlyingCommandForTransportControlType:(long long)arg1;
 + (id)_descriptionForTransportControlType:(long long)arg1;
 + (id)_descriptionForTransportControlGroup:(int)arg1;
-+ (id)_createTransportControlForType:(long long)arg1 withMediaRemoteCommand:(struct _MRMediaRemoteCommandInfo *)arg2;
++ (id)_createTransportControlForType:(long long)arg1 withMediaRemoteCommand:(void *)arg2;
 + (void)_addTransportControl:(id)arg1 toTransportControlsArray:(id)arg2;
 + (id)transportControlWithType:(long long)arg1 group:(int)arg2;
 + (id)transportControlsForControlTypes:(id)arg1 withMediaRemoteCommands:(struct __CFArray *)arg2;

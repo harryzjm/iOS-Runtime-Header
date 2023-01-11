@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class NSString, SNAudioLevelMeasurer;
-@protocol SNAnalyzing;
+@class NSString;
 
-@interface SNMeasureLKFSRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNMeasureLKFSRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
-    SNAudioLevelMeasurer *_detector;
 }
 
-- (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <SNAnalyzing> analyzer;
-- (id)init;
++ (_Bool)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToMeasureLKFSRequest:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

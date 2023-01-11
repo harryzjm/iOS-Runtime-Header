@@ -27,9 +27,9 @@
 
 + (id)coverSheetIdentifier;
 + (Class)viewClass;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CSCoverSheetViewPresenting> presenter; // @synthesize presenter=_presenter;
 @property(readonly, nonatomic, getter=isPresentation) _Bool presentation; // @synthesize presentation=_isBeingPresented;
-- (void).cxx_destruct;
 - (struct CGSize)effectiveContentSizeForScrollView:(id)arg1;
 - (id)_regionsForView:(id)arg1;
 - (_Bool)_presentationParticipant;
@@ -47,21 +47,25 @@
 @property(readonly, nonatomic) long long idleWarnMode;
 @property(readonly, nonatomic) long long idleTimerMode;
 @property(readonly, nonatomic) long long idleTimerDuration;
+- (void)conformsToCSBehaviorProviding;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
+- (void)conformsToCSAppearanceProviding;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (void)conformsToCSEventHandling;
 @property(readonly, nonatomic) long long presentationAltitude;
 @property(readonly, nonatomic) long long presentationTransition;
 @property(readonly, nonatomic) long long presentationPriority;
 @property(readonly, nonatomic) long long presentationType;
 @property(readonly, nonatomic) long long presentationStyle;
 - (id)_presenter;
+- (void)conformsToCSCoverSheetViewControlling;
 - (void)handleAction:(id)arg1 fromSender:(id)arg2;
-- (void)_conformsToCSCoverSheetViewPresenting;
+- (void)conformsToCSCoverSheetViewPresenting;
 - (void)updateAppearanceForController:(id)arg1 withAnimationSettings:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateAppearanceForController:(id)arg1;
 - (void)updateBehaviorForController:(id)arg1;
@@ -106,6 +110,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)setDisplayLayoutElementActive:(_Bool)arg1 immediately:(_Bool)arg2;
 - (void)setDisplayLayoutElementActive:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

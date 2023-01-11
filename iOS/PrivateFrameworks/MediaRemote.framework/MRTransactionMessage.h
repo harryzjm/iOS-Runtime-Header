@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, NSArray, NSMutableArray;
 
 @interface MRTransactionMessage
 {
@@ -14,7 +14,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)type;
 @property(readonly, nonatomic) unsigned long long name;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
+@property(readonly, nonatomic) MRPlayerPath *playerPath;
 @property(readonly, nonatomic) NSArray *packets;
 - (id)initWithContentItems:(id)arg1 forPlayerPath:(id)arg2;
 - (id)initWithPlaybackQueue:(id)arg1 forPlayerPath:(id)arg2;

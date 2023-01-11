@@ -4,15 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol PXDisplayAssetCollection;
+@class NSPredicate;
+@protocol PXDisplayAsset, PXDisplayAssetCollection, PXDisplayCollection;
 
 @interface PXAssetsDataSource
 {
+    long long _cachedNumberOfAssets;
+    unsigned long long _estimatedPhotosCount;
+    unsigned long long _estimatedVideosCount;
+    unsigned long long _estimatedOtherCount;
 }
 
+@property(readonly, nonatomic) unsigned long long estimatedOtherCount; // @synthesize estimatedOtherCount=_estimatedOtherCount;
+@property(readonly, nonatomic) unsigned long long estimatedVideosCount; // @synthesize estimatedVideosCount=_estimatedVideosCount;
+@property(readonly, nonatomic) unsigned long long estimatedPhotosCount; // @synthesize estimatedPhotosCount=_estimatedPhotosCount;
 - (void)prefetchIndexPaths:(id)arg1 level:(unsigned long long)arg2;
 - (id)assetCollectionReferenceNearestToObjectReference:(id)arg1;
+- (id)objectReferenceNearestToObjectReference:(id)arg1 inSection:(long long)arg2;
 - (id)objectReferenceNearestToObjectReference:(id)arg1;
+@property(readonly, nonatomic) _Bool areAllSectionsConsideredAccurate;
+@property(readonly, nonatomic) unsigned long long numberOfAssets;
+- (_Bool)isFilteringDisabledForAssetCollection:(id)arg1;
+- (_Bool)isFilteringDisabledForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (_Bool)isFilteringAssetCollection:(id)arg1;
+- (_Bool)isFilteringSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)estimatedAssetsCountWithEnrichmentState:(unsigned short)arg1;
 - (long long)numberOfSectionsWithEnrichmentState:(unsigned short)arg1;
 - (_Bool)hasCurationForAssetCollection:(id)arg1;
@@ -20,9 +35,15 @@
 - (long long)numberOfUncuratedItemsInAssetCollection:(id)arg1;
 - (long long)numberOfCuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfUncuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+@property(readonly, nonatomic) id <PXDisplayAsset> keyAsset;
 - (id)keyAssetsForAssetCollection:(id)arg1;
 - (struct PXSimpleIndexPath)keyAssetIndexPathForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)keyAssetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+@property(readonly, nonatomic) _Bool isSorted;
+@property(readonly, nonatomic) NSPredicate *filterPredicate;
+@property(readonly, nonatomic) _Bool isFiltered;
+@property(readonly, nonatomic) _Bool startsAtEnd;
+@property(readonly, nonatomic) long long startingSection;
 - (id)startingAssetReference;
 - (unsigned long long)estimatedAssetCountForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)assetReferenceForAssetReference:(id)arg1;
@@ -37,11 +58,12 @@
 - (Class)objectReferenceClassForSection;
 @property(readonly, nonatomic) id <PXDisplayAssetCollection> lastAssetCollection;
 @property(readonly, nonatomic) id <PXDisplayAssetCollection> firstAssetCollection;
+@property(readonly, nonatomic) id <PXDisplayCollection> containerCollection;
 - (id)assetIdentifierAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)objectIDAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)assetAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)assetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)assetCollectionAtSectionIndexPath:(struct PXSimpleIndexPath)arg1;
-- (id)estimatedAssetsCountLocalizedString;
 - (long long)aggregateMediaType;
 - (long long)totalNumberOfItems;
 - (id)photosGraphSuggestedContributions;

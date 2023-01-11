@@ -12,6 +12,7 @@
 
 + (id)stabCropRectKey;
 + (id)keyframesKey;
+- (id)copyKeyframesTrimmingToTimeRange:(CDStruct_e83c9415)arg1;
 - (_Bool)isEqual:(id)arg1 forKeys:(id)arg2;
 @property(nonatomic) CDStruct_996ac03c stabCropRect;
 @property(copy, nonatomic) NSArray *keyframes;

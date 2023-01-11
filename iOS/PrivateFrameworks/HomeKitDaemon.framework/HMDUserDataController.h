@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, NSArray, NSMutableSet, NSString, NSUUID;
+@class HMBModel, HMFTimer, HMFUnfairLock, NSArray, NSDictionary, NSMutableSet, NSString, NSUUID;
 @protocol HMDSettingsControllerProtocol, HMDUserDataControllerDelegate, HMDUserDataControllerTimerCreator, OS_dispatch_queue;
 
 @interface HMDUserDataController : NSObject <HMDAssistantAccessControlModelUpdateReceiver, HMDMediaContentProfileAccessControlModelUpdateReceiver, HMFLogging, HMFTimerDelegate>
@@ -38,6 +38,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFTimer *privateZoneFirstLoadTimer; // @synthesize privateZoneFirstLoadTimer=_privateZoneFirstLoadTimer;
 @property(retain, nonatomic) HMFTimer *sharedZoneFirstLoadTimer; // @synthesize sharedZoneFirstLoadTimer=_sharedZoneFirstLoadTimer;
 @property(retain) NSUUID *privateSettingsRootUUID; // @synthesize privateSettingsRootUUID=_privateSettingsRootUUID;
@@ -55,13 +56,16 @@
 @property(readonly) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
 @property(readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property _Bool assistantAccessControlRequiresAuthenticationForSecureRequests; // @synthesize assistantAccessControlRequiresAuthenticationForSecureRequests=_assistantAccessControlRequiresAuthenticationForSecureRequests;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)timerDidFire:(id)arg1;
 - (void)mediaContentProfileAccessControlModelRemoved:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mediaContentProfileAccessControlModelUpdated:(id)arg1 previousModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, copy) NSDictionary *privateSettingValuesByKeyPathForAWD;
+@property(readonly, copy) NSDictionary *sharedSettingValuesByKeyPathForAWD;
 - (void)assistantAccessControlModelRemoved:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)assisteantAccessControlModelUpdated:(id)arg1 previousModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)assistantAccessControlModelUpdated:(id)arg1 previousModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, copy) HMBModel *assistantAccessControlModelToReset;
+- (void)handleRemovedAccessory:(id)arg1;
 - (void)handleMediaContentProfileAccessControlUpdatedAccessoryUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleAssistantAccessControlAccessoryUUIDsUpdated:(id)arg1 requireAuthenticationForSecureRequests:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleStartForZoneController:(id)arg1;
@@ -81,7 +85,7 @@
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSArray *mediaContentProfileAccessControlAccessoriesToEncode;
 @property(readonly, copy) NSArray *assistantAccessControlAccessoriesToEncode;
-- (_Bool)isInitialized;
+@property(readonly) _Bool isInitialized;
 - (void)configure;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 userID:(id)arg3 homeID:(id)arg4 sharedSettingsController:(id)arg5 privateSettingsController:(id)arg6;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 userID:(id)arg3 homeID:(id)arg4 sharedSettingsController:(id)arg5 privateSettingsController:(id)arg6 timerCreator:(id)arg7;

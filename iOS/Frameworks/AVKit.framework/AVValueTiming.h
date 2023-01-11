@@ -15,8 +15,8 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (id)valueTimingWithAnchorValue:(double)arg1 anchorTimeStamp:(double)arg2 rate:(double)arg3;
 + (double)currentTimeStamp;
++ (id)valueTimingWithAnchorValue:(double)arg1 anchorTimeStamp:(double)arg2 rate:(double)arg3;
 @property(readonly, nonatomic) double rate;
 @property(readonly, nonatomic) double anchorTimeStamp;
 @property(readonly, nonatomic) double anchorValue;
@@ -28,12 +28,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithValueTiming:(id)arg1;
-- (id)initWithAnchorValue:(double)arg1 anchorTimeStamp:(double)arg2 rate:(double)arg3;
 - (_Bool)isEqualToValueTiming:(id)arg1;
 - (double)timeStampForValue:(double)arg1;
 - (double)valueForTimeStamp:(double)arg1;
 @property(readonly, nonatomic) double currentValue;
+- (id)initWithValueTiming:(id)arg1;
+- (id)initWithAnchorValue:(double)arg1 anchorTimeStamp:(double)arg2 rate:(double)arg3;
 
 @end
 

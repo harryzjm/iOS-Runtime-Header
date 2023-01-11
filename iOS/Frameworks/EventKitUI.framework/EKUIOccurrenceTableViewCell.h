@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ColorBarView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSObject, NSString, UIColor, UIImageView, UIView, UIVisualEffect, UIVisualEffectView;
+@class ColorBarView, ColoredBackgroundView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSMutableArray, NSObject, NSString, UIColor, UIImageView, UIVisualEffect;
 @protocol OS_dispatch_source;
 
 @interface EKUIOccurrenceTableViewCell
@@ -18,6 +18,7 @@
     EKUIOccurrenceTableViewCellLabel *_countdownLabel;
     ColorBarView *_colorBarView;
     ColorBarView *_travelTimeColorBarView;
+    ColoredBackgroundView *_coloredBackgroundView;
     UIImageView *_angleStripeBackgroundView;
     UIImageView *_accessoryImageView;
     NSArray *_ekUIOccurrenceTableViewCellConstraints;
@@ -25,24 +26,25 @@
     _Bool _carplayMode;
     _Bool _includesTopTimeLabel;
     struct CGSize _sizeWhenLayerLastCalculated;
-    UIVisualEffectView *_primaryVisualEffectParentView;
-    UIVisualEffectView *_secondaryVisualEffectParentView;
+    NSMutableArray *_primaryVisualEffectViews;
+    NSMutableArray *_secondaryVisualEffectViews;
     _Bool _travelTimeTemplate;
     _Bool _invitationTemplate;
+    _Bool _singleLineAllDayTemplate;
+    _Bool _singleLineAllDayWithImageTemplate;
     NSLayoutConstraint *_contentTop_to_travelTextBaseline_Constraint;
     NSLayoutConstraint *_contentTop_to_primaryTextBaseline_Constraint;
-    NSLayoutConstraint *_contentBottom_to_secondaryTextBaseline_Constraint;
+    NSLayoutConstraint *_contentBottom_to_bottomTextBaseline_Constraint;
     NSLayoutConstraint *_primaryTextBaseline_to_secondaryTextBaseline_Constraint;
     NSLayoutConstraint *_travelTextBaseline_to_primaryTextBaseLine_Constraint;
     NSLayoutConstraint *_horizontalDividerBarBottom_to_colorBarTop_Constraint;
     NSLayoutConstraint *_contentTop_to_colorBarTop_Constraint;
     NSLayoutConstraint *_timeTextWidthConstraint;
-    NSLayoutConstraint *_timeTextLeftMarginConstraint;
-    NSLayoutConstraint *_timeTextRightMarginConstraint;
+    NSLayoutConstraint *_timeTextHorizontalPositioningConstraint;
+    NSLayoutConstraint *_colorBarHorizontalPositioningConstraint;
     NSLayoutConstraint *_countdownLabelRightMarginConstraint;
     NSLayoutConstraint *_countdownLabelBaseling_to_contentBottom_Constraint;
     double _travelTime;
-    UIColor *_selectedBackGroundColor;
     NSDate *_eventStartDateIncludingTravelTime;
     EKCalendarDate *_eventEndDate;
     NSString *_eventTitle;
@@ -74,7 +76,6 @@
     _Bool _isTemplateCell;
     _Bool _isFakeInvitation;
     UIColor *_eventCalendarColor;
-    UIView *_coloredBackgroundView;
     EKCalendarDate *_eventStartDate;
     UIVisualEffect *_primaryVisualEffect;
     UIVisualEffect *_secondaryVisualEffect;
@@ -94,23 +95,28 @@
 + (id)cancelledDeclinedColorBarColor;
 + (_Bool)requiresConstraintBasedLayout;
 + (id)color:(id)arg1 lightenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
++ (struct UIEdgeInsets)adjustedSeparatorInsets;
++ (_Bool)drawsBackgroundForEvent:(id)arg1;
++ (double)travelTimeCellHeightForWidth:(double)arg1;
++ (double)singleLineCellHeightForWidth:(double)arg1;
 + (double)cellHeightForWidth:(double)arg1;
 + (id)reuseIdentifierForEvent:(id)arg1;
 + (id)allReuseIdentifiers;
++ (id)reuseIdentifierForTemplateSingleLineAllDayWithImage;
++ (id)reuseIdentifierForTemplateSingleLineAllDay;
 + (id)reuseIdentifierForTemplateInvitation;
 + (id)reuseIdentifierForTemplateWithTravelTime;
 + (id)reuseIdentifierForTemplate;
 + (void)_clearCaches;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffect *secondaryVisualEffect; // @synthesize secondaryVisualEffect=_secondaryVisualEffect;
 @property(retain, nonatomic) UIVisualEffect *primaryVisualEffect; // @synthesize primaryVisualEffect=_primaryVisualEffect;
 @property(nonatomic) _Bool isFakeInvitation; // @synthesize isFakeInvitation=_isFakeInvitation;
 @property(readonly, nonatomic) EKCalendarDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;
-@property(retain, nonatomic) UIView *coloredBackgroundView; // @synthesize coloredBackgroundView=_coloredBackgroundView;
 @property(retain, nonatomic) UIColor *eventCalendarColor; // @synthesize eventCalendarColor=_eventCalendarColor;
 @property(nonatomic) _Bool isTemplateCell; // @synthesize isTemplateCell=_isTemplateCell;
 @property(nonatomic) _Bool doesNotUseTemplate; // @synthesize doesNotUseTemplate=_doesNotUseTemplate;
-- (void).cxx_destruct;
 - (id)_textForDepartureTimeLabel;
 - (id)_textForBottomTimeLabel;
 - (id)_textForTopTimeLabel;
@@ -137,7 +143,6 @@
 - (void)_updatePrimaryTextLabel;
 - (void)_updateNumberOfLinesForLabel:(id)arg1 isRightAlignedInStandardLayout:(_Bool)arg2;
 - (void)_updateColoredBackgroundViewColor;
-- (id)_coloredBackgroundViewLayer;
 - (void)updateAngleBackgroundColor;
 - (void)_updateColorBarColor;
 - (id)_setUpLargeTextConstraints;
@@ -146,7 +151,7 @@
 - (double)_rightMarginForTimeViewsFromTimeWidth:(double)arg1;
 - (double)_leftMarginForTimeViewsFromTimeWidth:(double)arg1;
 - (double)_widthForTimeViews;
-- (double)_verticalSpacingTopToTopForNonPrimaryLabel;
+- (double)_verticalSpacingTravelBaselineToPrimaryBaseline;
 - (double)_verticalSpacingBottomToBaselineForBottomLabel;
 - (double)_verticalSpacingPrimaryLabelToTimeLabel;
 - (double)_verticalSpacingTopToBaselineForBottomLabel;
@@ -154,6 +159,8 @@
 - (void)updateConstraints;
 - (void)layoutSubviews;
 - (void)contentCategorySizeChanged;
+- (void)_addVibrantSubview:(id)arg1 usingPrimaryEffect:(_Bool)arg2;
+- (void)_addSubview:(id)arg1 forVibrancy:(_Bool)arg2 usingPrimaryEffect:(_Bool)arg3;
 - (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
 - (void)_createViewsForReuseIdentifier:(id)arg1;
 - (void)forceUpdateOfAllElements;
@@ -183,6 +190,7 @@
 - (id)coloredBackgroundViewFilter;
 - (id)coloredBackgroundViewFilterColor;
 - (id)coloredBackgroundViewColor;
+- (double)_cornerRadius;
 - (id)_selectedBackgroundViewWithColor:(id)arg1;
 - (id)imageView;
 - (id)detailTextLabel;
@@ -198,6 +206,8 @@
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (id)reuseIdentifier;
 - (void)dealloc;
+- (id)_backgroundViewConfigurationForState:(unsigned long long)arg1;
+- (void)setUpRoundedSelectionHighlight;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

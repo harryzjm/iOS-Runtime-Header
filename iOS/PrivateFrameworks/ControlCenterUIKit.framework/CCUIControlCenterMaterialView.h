@@ -14,11 +14,13 @@
 + (id)controlCenterLightFill;
 + (id)controlCenterTertiaryMaterial;
 + (id)controlCenterDarkMaterial;
++ (id)controlCenterModuleBackgroundMaterial;
 + (long long)_controlCenterRecipe;
 + (id)_auxiliaryMaterialView;
 + (id)_tertiaryMaterialView;
 + (id)_lightFillMaterialView;
 + (id)_darkMaterialView;
++ (id)_moduleBackgroundMaterialView;
 
 @end
 

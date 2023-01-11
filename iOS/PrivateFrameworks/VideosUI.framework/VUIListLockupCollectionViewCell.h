@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKViewElement, VUIListLockupCollectionViewCellView;
+@class IKViewElement, VUIListLockupCollectionViewCellLayout, VUIListLockupCollectionViewCellView;
 
 __attribute__((visibility("hidden")))
 @interface VUIListLockupCollectionViewCell
@@ -14,15 +14,17 @@ __attribute__((visibility("hidden")))
     IKViewElement *_primaryButtonElement;
     IKViewElement *_secondaryButtonElement;
     VUIListLockupCollectionViewCellView *_listCellView;
+    VUIListLockupCollectionViewCellLayout *_layout;
 }
 
 + (id)configureWithElement:(id)arg1 existingView:(id)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) VUIListLockupCollectionViewCellLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) VUIListLockupCollectionViewCellView *listCellView; // @synthesize listCellView=_listCellView;
 @property(retain, nonatomic) IKViewElement *secondaryButtonElement; // @synthesize secondaryButtonElement=_secondaryButtonElement;
 @property(retain, nonatomic) IKViewElement *primaryButtonElement; // @synthesize primaryButtonElement=_primaryButtonElement;
 @property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property(copy, nonatomic) CDUnknownBlockType buttonSelectionHandler; // @synthesize buttonSelectionHandler=_buttonSelectionHandler;
-- (void).cxx_destruct;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

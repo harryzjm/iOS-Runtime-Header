@@ -11,13 +11,18 @@
 @interface SGRequestContext : NSObject
 {
     int _concurrencyBehavior;
+    int _backpressureHazard;
+    int _extractionMode;
     SGServiceContext *_serviceContext;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) int extractionMode; // @synthesize extractionMode=_extractionMode;
+@property(readonly, nonatomic) int backpressureHazard; // @synthesize backpressureHazard=_backpressureHazard;
 @property(readonly, nonatomic) int concurrencyBehavior; // @synthesize concurrencyBehavior=_concurrencyBehavior;
 @property(readonly, nonatomic) SGServiceContext *serviceContext; // @synthesize serviceContext=_serviceContext;
-- (void).cxx_destruct;
-- (id)initWithServiceContext:(id)arg1 concurrencyBehavior:(int)arg2;
+- (id)initWithServiceContext:(id)arg1 concurrencyBehavior:(int)arg2 backpressureHazard:(int)arg3 extractionMode:(int)arg4;
+- (id)initWithServiceContext:(id)arg1 concurrencyBehavior:(int)arg2 backpressureHazard:(int)arg3;
 - (id)init;
 @property(readonly, nonatomic) NSOperationQueue *storageQueue;
 @property(readonly, nonatomic) NSOperationQueue *processingQueue;

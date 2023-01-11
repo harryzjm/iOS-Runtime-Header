@@ -36,10 +36,10 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)analyticsLogContextWithNavigationState;
 - (unsigned char)navigationState;
 - (unsigned long long)navigationDestination;
 - (void)setNavigationDestination:(unsigned long long)arg1;
+- (unsigned char)navCameraModeStyleAttribute;
 - (unsigned long long)navCameraMode;
 - (void)setNavCameraMode:(unsigned long long)arg1;
 - (void)setRoadSpeed:(double)arg1;

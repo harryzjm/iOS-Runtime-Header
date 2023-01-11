@@ -10,26 +10,27 @@
 
 @interface AUParameter <NSSecureCoding>
 {
-    _Bool __localValueStale;
+    struct atomic<bool> _localValueStale;
+    struct atomic<int> _numUIObservers;
+    struct atomic<int> _numRecordingObservers;
     float _value;
-    int _numUIObservers;
-    int _numRecordingObservers;
     unsigned long long _address;
     NSArray *_dependentParameters;
     _AUStaticParameterInfo *_info;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) int numRecordingObservers; // @synthesize numRecordingObservers=_numRecordingObservers;
-@property(nonatomic) int numUIObservers; // @synthesize numUIObservers=_numUIObservers;
-@property(nonatomic) _Bool _localValueStale; // @synthesize _localValueStale=__localValueStale;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _AUStaticParameterInfo *info; // @synthesize info=_info;
 @property(readonly, copy, nonatomic) NSArray *dependentParameters; // @synthesize dependentParameters=_dependentParameters;
 @property(nonatomic) unsigned long long address; // @synthesize address=_address;
-- (void).cxx_destruct;
 - (void)_observersChanged:(_Bool)arg1 deltaCount:(int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)set_originalOrder:(unsigned int)arg1;
+- (unsigned int)_originalOrder;
+- (void)set_defaultValue:(float)arg1;
+- (float)_defaultValue;
 - (void)set_clumpID:(unsigned int)arg1;
 - (unsigned int)_clumpID;
 @property(readonly, copy, nonatomic) NSArray *valueStrings;
@@ -46,6 +47,8 @@
 - (void)setValue:(float)arg1 originator:(void *)arg2;
 @property(nonatomic) float value; // @synthesize value=_value;
 - (float)_internalValue;
+- (void)setLocalValueStale:(_Bool)arg1;
+- (_Bool)localValueStale;
 - (id)copyNodeWithOffset:(unsigned long long)arg1;
 - (id)description;
 - (void)dealloc;

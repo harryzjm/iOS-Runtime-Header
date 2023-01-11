@@ -21,7 +21,7 @@
     NSMutableSet *_pendingMessageIDs;
     _Bool _rejectedNewSessionFromSamePeer;
     _Bool _sessionStarted;
-    struct NSMutableDictionary *_stateResponders;
+    NSMutableDictionary *_stateResponders;
     struct os_unfair_lock_s _setDelegateLock;
     _Bool _isSending;
     long long _priority;
@@ -45,6 +45,7 @@
 
 + (id)unarchiveMetadata:(id)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSMutableDictionary *peerGenerationIDs; // @synthesize peerGenerationIDs=_peerGenerationIDs;
 @property(nonatomic) unsigned long long sessionSignpost; // @synthesize sessionSignpost=_sessionSignpost;
 @property(nonatomic) double birthDate; // @synthesize birthDate=_birthDate;
@@ -63,7 +64,6 @@
 @property(retain, nonatomic) id <SYChangeSerializer> serializer; // @synthesize serializer=_serializer;
 @property(nonatomic) __weak id <SYSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) PBCodable *stateForLogging;
 - (id)CPSafeDescription;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
@@ -78,10 +78,10 @@
 - (void)_handleEndSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleRestartSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleSyncBatch:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (void)_supercededWithSession:(id)arg1;
 - (id)stateResponders;
-- (void)_onSessionStateChangedTo:(long long)arg1 do:(CDUnknownBlockType)arg2;
+- (void)_onSessionStateChangedTo:(unsigned int)arg1 do:(CDUnknownBlockType)arg2;
 - (void)setHasRejectedPeerSession:(_Bool)arg1;
 - (_Bool)hasRejectedPeerSession;
 - (_Bool)_willAcquiesceToNewSessionFromPeer:(id)arg1;
@@ -99,7 +99,7 @@
 @property(readonly) _Bool isResetSync;
 @property _Bool canRollback;
 @property _Bool canRestart;
-@property long long state;
+@property unsigned int state;
 @property(readonly, nonatomic) unsigned long long protocolVersion;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
 - (id)decodeChangeData:(id)arg1 fromProtocolVersion:(long long)arg2 ofType:(long long)arg3;

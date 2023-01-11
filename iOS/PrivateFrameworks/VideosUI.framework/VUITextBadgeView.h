@@ -6,34 +6,36 @@
 
 #import <UIKit/UIView.h>
 
-@class IKViewElement, NSAttributedString, NSTimer, UIImage, VUITextBadgeLayout, _TVImageView;
+@class IKViewElement, NSAttributedString, NSTimer, UIImage, VUIRentalExpirationLabel, VUITextBadgeLayout, _TVImageView;
 @protocol VUITextBadgeViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUITextBadgeView : UIView
 {
+    NSAttributedString *_attributedTitle;
     double _strokeSize;
     UIImage *_backgroundImage;
     _TVImageView *_imageView;
     VUITextBadgeLayout *_badgeLayout;
+    VUIRentalExpirationLabel *_rentalExpirationLabel;
     id <VUITextBadgeViewDelegate> _delegate;
-    NSAttributedString *_attributedTitle;
     IKViewElement *_viewElement;
     NSTimer *_expiryUpdateTimer;
     struct CGSize _glyphSize;
 }
 
 + (_Bool)badgeElementHasContent:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *expiryUpdateTimer; // @synthesize expiryUpdateTimer=_expiryUpdateTimer;
 @property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property(nonatomic) struct CGSize glyphSize; // @synthesize glyphSize=_glyphSize;
-@property(copy, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
 @property(nonatomic) __weak id <VUITextBadgeViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) VUIRentalExpirationLabel *rentalExpirationLabel; // @synthesize rentalExpirationLabel=_rentalExpirationLabel;
 @property(retain, nonatomic) VUITextBadgeLayout *badgeLayout; // @synthesize badgeLayout=_badgeLayout;
 @property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(nonatomic) double strokeSize; // @synthesize strokeSize=_strokeSize;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
 - (void)_imageLoaded;
 - (struct CGSize)_textSize;
 - (void)_invalidateTimer;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)dealloc;
 - (void)reset;
+- (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (void)setElement:(id)arg1 withBadgeLayout:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 

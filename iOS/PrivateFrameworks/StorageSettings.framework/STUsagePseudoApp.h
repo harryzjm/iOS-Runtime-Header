@@ -13,9 +13,6 @@
 - (long long)purgeableSize;
 - (long long)dynamicSize;
 - (long long)staticSize;
-- (id)bundleIdentifier;
-- (id)appIdentifier;
-- (id)name;
 - (id)initWithUsageBundleApp:(id)arg1;
 
 @end

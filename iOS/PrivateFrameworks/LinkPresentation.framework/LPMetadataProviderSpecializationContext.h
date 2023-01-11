@@ -6,25 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL, WKWebView;
+@class LPEvent, NSString, NSURL, WKWebView;
 
 __attribute__((visibility("hidden")))
 @interface LPMetadataProviderSpecializationContext : NSObject
 {
     _Bool _hasLoadedResource;
+    _Bool _shouldFetchSubresources;
     NSURL *_URL;
     NSString *_MIMEType;
     WKWebView *_webView;
     unsigned long long _allowedSpecializations;
+    LPEvent *_event;
+    CDUnknownBlockType _eventGenerator;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType eventGenerator; // @synthesize eventGenerator=_eventGenerator;
+@property(retain, nonatomic) LPEvent *event; // @synthesize event=_event;
 @property(readonly, nonatomic) unsigned long long allowedSpecializations; // @synthesize allowedSpecializations=_allowedSpecializations;
 @property(readonly, retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
+@property(readonly, nonatomic) _Bool shouldFetchSubresources; // @synthesize shouldFetchSubresources=_shouldFetchSubresources;
 @property(readonly, nonatomic) _Bool hasLoadedResource; // @synthesize hasLoadedResource=_hasLoadedResource;
 @property(readonly, copy, nonatomic) NSString *MIMEType; // @synthesize MIMEType=_MIMEType;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-- (void).cxx_destruct;
-- (id)initWithURL:(id)arg1 MIMEType:(id)arg2 webView:(id)arg3 hasLoadedResource:(_Bool)arg4 allowedSpecializations:(unsigned long long)arg5;
+- (void)ensureEvent;
+- (id)initWithURL:(id)arg1 MIMEType:(id)arg2 webView:(id)arg3 hasLoadedResource:(_Bool)arg4 shouldFetchSubresources:(_Bool)arg5 allowedSpecializations:(unsigned long long)arg6;
 
 @end
 

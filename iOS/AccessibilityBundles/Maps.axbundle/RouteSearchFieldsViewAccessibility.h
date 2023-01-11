@@ -14,6 +14,7 @@
 - (void)_createSubviews;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateSubviews;
+- (void)_axFixUpFramesForSortingInTextField:(id)arg1;
 
 @end
 

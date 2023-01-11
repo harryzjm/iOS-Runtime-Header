@@ -6,16 +6,17 @@
 
 #import <GeoServices/GEOMapServiceCompletionTicket-Protocol.h>
 
-@class GEOMapServiceTraits, NSDictionary, NSString;
+@class GEOAutocompleteSessionData, GEOMapServiceTraits, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceSearchAutocompleteTicket <GEOMapServiceCompletionTicket>
 {
     NSString *_searchQuery;
+    GEOAutocompleteSessionData *_sessionData;
 }
 
-@property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 - (_Bool)showAutocompleteClientSource;
 - (_Bool)autocompleteTopSectionIsQuerySuggestions;
 - (id)sortPriorityMapping;
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)matchesFragment:(id)arg1;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
-- (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3;
+- (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3 sessionData:(id)arg4;
 
 // Remaining properties
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;

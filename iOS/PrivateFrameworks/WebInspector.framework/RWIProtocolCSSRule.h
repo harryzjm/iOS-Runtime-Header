@@ -10,7 +10,7 @@
 {
 }
 
-@property(copy, nonatomic) NSArray *media;
+@property(copy, nonatomic) NSArray *groupings;
 @property(retain, nonatomic) RWIProtocolCSSStyle *style;
 @property(nonatomic) long long origin;
 @property(nonatomic) int sourceLine;

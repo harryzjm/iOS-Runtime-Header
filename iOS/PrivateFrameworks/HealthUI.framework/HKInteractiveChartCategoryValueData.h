@@ -13,17 +13,20 @@
 @interface HKInteractiveChartCategoryValueData : NSObject <HKGraphSeriesChartData>
 {
     long long _value;
-    NSDate *_date;
+    NSDate *_startDate;
+    NSDate *_endDate;
 }
 
-@property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
-@property(nonatomic) long long value; // @synthesize value=_value;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(nonatomic) long long value; // @synthesize value=_value;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

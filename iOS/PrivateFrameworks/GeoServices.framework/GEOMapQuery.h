@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOMapQuery : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEOSessionID _sessionID;
     GEOMapRegion *_mapRegion;
     GEOPlaceSearchRequest *_placeSearchRequest;
     NSString *_query;
     GEOLocation *_userLocation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _clientImgFmt;
     int _clientImgMaxHeight;
     int _clientImgMaxWidth;
@@ -48,22 +50,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_placeSearchRequest:1;
         unsigned int read_query:1;
         unsigned int read_userLocation:1;
-        unsigned int wrote_sessionID:1;
-        unsigned int wrote_mapRegion:1;
-        unsigned int wrote_placeSearchRequest:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_userLocation:1;
-        unsigned int wrote_clientImgFmt:1;
-        unsigned int wrote_clientImgMaxHeight:1;
-        unsigned int wrote_clientImgMaxWidth:1;
-        unsigned int wrote_mapCenterX:1;
-        unsigned int wrote_mapCenterY:1;
-        unsigned int wrote_mapSpanX:1;
-        unsigned int wrote_mapSpanY:1;
-        unsigned int wrote_requestType:1;
-        unsigned int wrote_tilesizeX:1;
-        unsigned int wrote_tilesizeY:1;
-        unsigned int wrote_zoomlevel:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -77,19 +64,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPlaceSearchRequest *placeSearchRequest;
 @property(readonly, nonatomic) _Bool hasPlaceSearchRequest;
-- (void)_readPlaceSearchRequest;
 @property(nonatomic) _Bool hasSessionID;
 @property(nonatomic) struct GEOSessionID sessionID;
 @property(retain, nonatomic) GEOLocation *userLocation;
 @property(readonly, nonatomic) _Bool hasUserLocation;
-- (void)_readUserLocation;
 @property(retain, nonatomic) GEOMapRegion *mapRegion;
 @property(readonly, nonatomic) _Bool hasMapRegion;
-- (void)_readMapRegion;
 @property(nonatomic) _Bool hasClientImgMaxHeight;
 @property(nonatomic) int clientImgMaxHeight;
 @property(nonatomic) _Bool hasClientImgMaxWidth;
@@ -118,7 +105,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int requestType;
 @property(retain, nonatomic) NSString *query;
 @property(readonly, nonatomic) _Bool hasQuery;
-- (void)_readQuery;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

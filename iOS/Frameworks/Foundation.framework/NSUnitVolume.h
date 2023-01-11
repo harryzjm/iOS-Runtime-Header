@@ -43,6 +43,7 @@
 + (id)kiloliters;
 + (id)megaliters;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

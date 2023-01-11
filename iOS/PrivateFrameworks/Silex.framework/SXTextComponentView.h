@@ -15,10 +15,10 @@
     struct CGSize _calculatedSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize calculatedSize; // @synthesize calculatedSize=_calculatedSize;
 @property(retain, nonatomic) SXTextView *textView; // @synthesize textView=_textView;
 @property(readonly, nonatomic) __weak SXTangierController *tangierController; // @synthesize tangierController=_tangierController;
-- (void).cxx_destruct;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)provideInfosLayoutTo:(id)arg1;
 - (id)accessibilityContextualLabelForTextView:(id)arg1;
@@ -37,8 +37,7 @@
 - (void)setPresentationFrame:(struct CGRect)arg1;
 - (void)setAbsoluteFrame:(struct CGRect)arg1;
 - (void)didMoveToWindow;
-- (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 tangierController:(id)arg5;
 
 // Remaining properties

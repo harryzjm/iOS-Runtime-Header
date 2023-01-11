@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDSQLiteDatabase, NSDictionary;
+@class HDDatabaseTransaction, HDProfile, HDSQLiteDatabase, NSDictionary;
 
 @interface HDEntityEncoder : NSObject
 {
     HDProfile *_profile;
+    HDDatabaseTransaction *_transaction;
     HDSQLiteDatabase *_database;
     Class _entityClass;
     NSDictionary *_encodingOptions;
@@ -20,14 +21,15 @@
 }
 
 + (long long)estimatedEncodedSize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HDEntityEncoder *superclassEncoder; // @synthesize superclassEncoder=_superclassEncoder;
 @property(readonly, nonatomic) long long purpose; // @synthesize purpose=_purpose;
 @property(readonly, copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
 @property(readonly, copy, nonatomic) NSDictionary *encodingOptions; // @synthesize encodingOptions=_encodingOptions;
 @property(readonly, nonatomic) Class entityClass; // @synthesize entityClass=_entityClass;
 @property(readonly, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
+@property(readonly, nonatomic) HDDatabaseTransaction *transaction; // @synthesize transaction=_transaction;
 @property(readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (void)finish;
 - (_Bool)applyPropertiesToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3 error:(id *)arg4;
 - (void)applyPropertiesToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3;
@@ -37,6 +39,7 @@
 - (id)codableRepresentationForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 error:(id *)arg3;
 - (id)orderedProperties;
 - (id)initWithHealthEntityClass:(Class)arg1 profile:(id)arg2 database:(id)arg3 purpose:(long long)arg4 encodingOptions:(id)arg5 authorizationFilter:(CDUnknownBlockType)arg6;
+- (id)initWithHealthEntityClass:(Class)arg1 profile:(id)arg2 transaction:(id)arg3 purpose:(long long)arg4 encodingOptions:(id)arg5 authorizationFilter:(CDUnknownBlockType)arg6;
 
 @end
 

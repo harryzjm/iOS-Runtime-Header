@@ -15,16 +15,16 @@
     NSError *__configurationError;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setConfigurationError:) NSError *_configurationError; // @synthesize _configurationError=__configurationError;
 @property(readonly, nonatomic) int _requestID; // @synthesize _requestID=__requestID;
 @property(readonly, nonatomic) double _minimumExecutionTime; // @synthesize _minimumExecutionTime=__minimumExecutionTime;
 @property(retain, nonatomic, setter=_setResolvedGraphConfiguration:) CAMCaptureGraphConfiguration *_resolvedGraphConfiguration; // @synthesize _resolvedGraphConfiguration=__resolvedGraphConfiguration;
 @property(readonly, nonatomic) CAMCaptureGraphConfiguration *_desiredGraphConfiguration; // @synthesize _desiredGraphConfiguration=__desiredGraphConfiguration;
-- (void).cxx_destruct;
+- (_Bool)_shouldEnableDeferredProcessingForMode:(long long)arg1;
 - (_Bool)_wantsLivePhotoMetadataInVideosForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_wantsLowLightBoostForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_wantsQuadraHighResolutionForMode:(long long)arg1 device:(long long)arg2;
-- (_Bool)_shouldEnableCTMVideoCaptureForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_shouldEnableLivePhotoCaptureForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_isStillImageMode:(long long)arg1;
 - (void)_performPostConfigurationSanityCheckForGraphConfiguration:(id)arg1 withContext:(id)arg2;
@@ -39,6 +39,7 @@
 - (id)userInfo;
 - (void)executeWithContext:(id)arg1;
 - (void)_sanitizeDeviceUsingContext:(id)arg1;
+- (double)sessionModificationMinimumExecutionTime;
 - (id)sessionModificationLogReason;
 - (_Bool)requiresSessionModification;
 - (id)copyWithZone:(struct _NSZone *)arg1;

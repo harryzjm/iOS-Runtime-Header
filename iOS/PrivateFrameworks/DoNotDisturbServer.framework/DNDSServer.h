@@ -19,12 +19,11 @@
 #import <DoNotDisturbServer/DNDSSettingsManagerDelegate-Protocol.h>
 #import <DoNotDisturbServer/DNDSSettingsSyncManagerDataSource-Protocol.h>
 #import <DoNotDisturbServer/DNDSSettingsSyncManagerDelegate-Protocol.h>
-#import <DoNotDisturbServer/DNDSStateProviderDataSource-Protocol.h>
 
-@class DNDSCalendarEventLifetimeMonitor, DNDSClientDetailsProvider, DNDSEventBehaviorResolver, DNDSModeAssertionManager, DNDSPairedDeviceStateMonitor, DNDSRemoteServiceProvider, DNDSScheduleLifetimeMonitor, DNDSScheduleManager, DNDSSettingsManager, DNDSStateProvider, NSArray, NSString;
+@class DNDSCalendarEventLifetimeMonitor, DNDSClientDetailsProvider, DNDSEventBehaviorResolver, DNDSModeAssertionManager, DNDSPairedDeviceStateMonitor, DNDSRemoteServiceProvider, DNDSScheduleLifetimeMonitor, DNDSScheduleManager, DNDSSettingsManager, DNDSStateProvider, IDSService, NSArray, NSString;
 @protocol DNDSAssertionSyncManager, DNDSSettingsSyncManager, OS_dispatch_queue;
 
-@interface DNDSServer : NSObject <DNDSEventBehaviorResolverDataSource, DNDSLifetimeMonitorDataSource, DNDSScheduleLifetimeMonitorDataSource, DNDSLifetimeMonitorDelegate, DNDSStateProviderDataSource, DNDSRemoteServiceProviderDelegate, DNDSAssertionSyncManagerDataSource, DNDSAssertionSyncManagerDelegate, DNDSLegacyAssertionSyncManagerDataSource, DNDSSettingsSyncManagerDataSource, DNDSSettingsSyncManagerDelegate, DNDSScheduleManagerDataSource, DNDSSettingsManagerDelegate, DNDSPairedDeviceStateMonitorDelegate>
+@interface DNDSServer : NSObject <DNDSEventBehaviorResolverDataSource, DNDSLifetimeMonitorDataSource, DNDSScheduleLifetimeMonitorDataSource, DNDSLifetimeMonitorDelegate, DNDSRemoteServiceProviderDelegate, DNDSAssertionSyncManagerDataSource, DNDSAssertionSyncManagerDelegate, DNDSLegacyAssertionSyncManagerDataSource, DNDSSettingsSyncManagerDataSource, DNDSSettingsSyncManagerDelegate, DNDSScheduleManagerDataSource, DNDSSettingsManagerDelegate, DNDSPairedDeviceStateMonitorDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     DNDSClientDetailsProvider *_clientDetailsProvider;
@@ -39,18 +38,19 @@
     id <DNDSAssertionSyncManager> _assertionSyncManager;
     id <DNDSSettingsSyncManager> _settingsSyncManager;
     DNDSSettingsManager *_settingsManager;
+    IDSService *_idsService;
     DNDSPairedDeviceStateMonitor *_pairedDeviceStateMonitor;
     unsigned long long _lockState;
     unsigned long long _lostModeState;
 }
 
+- (void).cxx_destruct;
 @property unsigned long long lostModeState; // @synthesize lostModeState=_lostModeState;
 @property unsigned long long lockState; // @synthesize lockState=_lockState;
-- (void).cxx_destruct;
 - (void)_queue_handlePairedDeviceAndSyncSettingsChange;
 - (id)_updateModeAssertionManagerAndRefreshLifetimesAndStateWithHandler:(CDUnknownBlockType)arg1 error:(id *)arg2;
-- (id)_activeDateIntervalForModeAssertion:(id)arg1;
-- (id)_activeModeAssertions;
+- (id)_activeDateIntervalForModeAssertion:(id)arg1 currentlyActive:(_Bool)arg2;
+- (id)_stateSystemSnapshot;
 - (void)_queue_updateScheduleManagerLifetimeMonitorsAndStateForReason:(unsigned long long)arg1;
 - (void)_queue_resume;
 - (void)pairedDeviceStateMonitor:(id)arg1 pairingChangedFromDevice:(id)arg2 toDevice:(id)arg3;
@@ -80,10 +80,6 @@
 - (id)remoteServiceProvider:(id)arg1 takeModeAssertionWithDetails:(id)arg2 clientIdentifier:(id)arg3 error:(id *)arg4;
 - (id)remoteServiceProvider:(id)arg1 assertionWithClientIdentifer:(id)arg2 error:(id *)arg3;
 - (id)remoteServiceProvider:(id)arg1 resolveBehaviorForEventDetails:(id)arg2 clientDetails:(id)arg3 date:(id)arg4 error:(id *)arg5;
-- (unsigned long long)currentLostModeStateForStateProvider:(id)arg1;
-- (unsigned long long)currentInterruptionBehaviorSettingForStateProvider:(id)arg1;
-- (id)stateProvider:(id)arg1 activeDateIntervalForModeAssertion:(id)arg2;
-- (id)currentlyActiveModeAssertionsForStateProvider:(id)arg1;
 - (void)lifetimeMonitor:(id)arg1 lifetimeDidExpireForAssertionUUIDs:(id)arg2 expirationDate:(id)arg3;
 - (void)activeAssertionsDidChangeForLifetimeMonitor:(id)arg1;
 - (id)scheduleSettingsForScheduleLifetimeMonitor:(id)arg1;

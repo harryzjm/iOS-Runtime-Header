@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
 #import <ScreenTimeCore/STUniquelySerializableManagedObject-Protocol.h>
+#import <ScreenTimeCore/STVersionVectorable-Protocol.h>
 
 @class NSData, NSDate, NSSet, NSString, STBlueprintSchedule, STBlueprintUsageLimit, STCoreOrganization;
 
-@interface STBlueprint <STUniquelySerializableManagedObject>
+@interface STBlueprint <STSerializableMappedObject, STUniquelySerializableManagedObject, STVersionVectorable>
 {
 }
 
 + (id)scheduleTextWithLocale:(id)arg1 weekdayScheduleComparator:(CDUnknownBlockType)arg2 scheduleTimeGetter:(CDUnknownBlockType)arg3;
++ (id)serializableClassName;
 + (id)fetchOrCreateWithDictionaryRepresentation:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)blueprintIdentifierForUser:(id)arg1;
 + (id)createBlueprintWithType:(id)arg1 user:(id)arg2;
@@ -24,10 +27,11 @@
 + (id)fetchRequestMatchingBlueprintsForUserWithDSID:(id)arg1 ofType:(id)arg2;
 + (id)_fetchRequestMatchingBlueprintsForUserWithDSID:(id)arg1;
 + (id)fetchRequestMatchingUnexpiredOneMoreMinuteBlueprints;
-+ (id)fetchRequestMatchingDeletedBlueprints;
++ (id)fetchRequestMatchingOrphanedBlueprints;
 + (id)fetchRequestMatchingExpiredBlueprints;
 + (id)defaultAlwaysAllowBundleIDs;
 + (_Bool)saveAlwaysAllowListForUser:(id)arg1 withBundleIDs:(id)arg2 error:(id *)arg3;
++ (id)simpleScheduleTimeRangeWithStartTimeComponents:(id)arg1 endTimeComponents:(id)arg2;
 + (id)customScheduleTimeRangeWithLocale:(id)arg1 startTimeComponents:(id)arg2 endTimeComponents:(id)arg3;
 + (id)keyPathsForValuesAffectingDowntimeScheduleText;
 + (id)defaultEndTime;
@@ -48,11 +52,9 @@
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
 - (id)computeUniqueIdentifier;
 - (void)didChangeValueForKey:(id)arg1;
+- (void)migrateToVersion2CategoriesIfNeeded;
 - (id)declarationsWithError:(id *)arg1;
 - (void)tombstone;
-- (void)_didFetchAppInfo:(id)arg1;
-- (void)_limitedApplicationsDidChange:(id)arg1;
-- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 @property(readonly, copy) NSString *downtimeScheduleText;
 - (void)disableDowntimeForDay:(unsigned long long)arg1;
 - (void)setStartTime:(id)arg1 endTime:(id)arg2 forDay:(unsigned long long)arg3;

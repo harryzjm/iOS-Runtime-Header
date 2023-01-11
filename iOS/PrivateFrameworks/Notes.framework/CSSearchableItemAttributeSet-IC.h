@@ -13,6 +13,7 @@
 + (id)ic_itemHasDrawingsCustomKey;
 + (id)ic_itemHasAttachmentsCustomKey;
 + (id)ic_itemHasChecklistsCustomKey;
++ (id)ic_relatedNoteUniqueIdentifierCustomKey;
 + (id)ic_itemIsSharedCustomKey;
 + (id)ic_itemIsLockedCustomKey;
 + (id)ic_searchResultTypeCustomKey;
@@ -24,6 +25,7 @@
 @property(nonatomic) _Bool ic_hasDrawings;
 @property(nonatomic) _Bool ic_hasAttachments;
 @property(nonatomic) _Bool ic_hasChecklists;
+@property(retain, nonatomic) NSString *ic_relatedNoteUniqueIdentifier;
 @property(nonatomic) _Bool ic_isShared;
 @property(nonatomic) _Bool ic_isLocked;
 - (unsigned long long)ic_relevance;

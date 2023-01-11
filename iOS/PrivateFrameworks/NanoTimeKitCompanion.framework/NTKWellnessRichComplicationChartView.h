@@ -44,7 +44,7 @@
 - (id)_keyForDate:(id)arg1;
 - (void)setStandGraphData:(id)arg1;
 - (void)setExerciseGraphData:(id)arg1;
-- (void)setMoveGraphData:(id)arg1;
+- (void)setMoveGraphData:(id)arg1 activityMoveMode:(long long)arg2;
 - (void)_registerForNotifications;
 - (void)_currentLocaleChangeOccurred;
 - (id)_timeStringByRemovingSpacesFromTimeString:(id)arg1;

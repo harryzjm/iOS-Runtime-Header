@@ -11,5 +11,6 @@
 @property(nonatomic) __weak id <FCPaymentTransactionManagerDelegate> delegate;
 - (void)startPurchaseWithTagID:(NSString *)arg1 productID:(NSString *)arg2 purchaseID:(NSString *)arg3 appAdamID:(NSNumber *)arg4 storeExternalVersion:(NSNumber *)arg5 price:(NSNumber *)arg6 webAccessOptIn:(_Bool)arg7 payment:(SKMutablePayment *)arg8;
 - (void)registerOngoingPurchaseTransactionsWithEntry:(FCOngoingPurchaseEntry *)arg1;
+- (_Bool)canMakePayments;
 @end
 

@@ -19,16 +19,17 @@
     _Bool _proximityDetectionEnabled;
     _Bool _proximityDetectionPermitted;
     _Bool _objectInProximity;
+    _Bool _objectInCrudeProximity;
     int _backboardNotificationToken;
     NSHashTable *_observers;
     SpringBoard *_interfaceOrientationProvider;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_interfaceOrientationProvider, setter=_setInterfaceOrientationProvider:) SpringBoard *interfaceOrientationProvider; // @synthesize interfaceOrientationProvider=_interfaceOrientationProvider;
 @property(nonatomic, getter=isProximityDetectionPermitted, setter=_setProximityDetectionPermitted:) _Bool proximityDetectionPermitted; // @synthesize proximityDetectionPermitted=_proximityDetectionPermitted;
 @property(nonatomic, getter=isProximityDetectionEnabled, setter=_setProximityDetectionEnabled:) _Bool proximityDetectionEnabled; // @synthesize proximityDetectionEnabled=_proximityDetectionEnabled;
 @property(nonatomic, getter=isObjectInProximity, setter=_setObjectInProximity:) _Bool objectInProximity; // @synthesize objectInProximity=_objectInProximity;
-- (void).cxx_destruct;
 - (void)_proximityDidChange:(id)arg1;
 - (void)_updateProxState;
 - (_Bool)_clientsWantDetectionEnabled;
@@ -38,11 +39,12 @@
 - (void)_destroy;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
-@property(readonly, copy) NSString *description;
+- (void)processHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)resetProximityCalibration;
 - (void)client:(id)arg1 wantsProximityDetectionEnabled:(_Bool)arg2;
+@property(readonly, copy) NSString *description;
 - (id)initWithHIDInterface:(id)arg1 hardwareDefaults:(id)arg2 interfaceOrientationProvider:(id)arg3;
 - (id)init;
 

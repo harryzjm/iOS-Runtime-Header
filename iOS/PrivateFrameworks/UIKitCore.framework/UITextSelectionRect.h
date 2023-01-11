@@ -18,6 +18,8 @@
 + (id)endRectFromRects:(id)arg1;
 + (struct CGRect)startEdgeFromRects:(id)arg1;
 + (id)startRectFromRects:(id)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) _Bool _drawsOwnHighlight;
 @property(readonly, nonatomic) _Bool isVertical;
 @property(readonly, nonatomic) _Bool containsStart;

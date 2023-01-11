@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVRoute, MPAVRoutingControllerSelectionQueue, MPAVRoutingDataSource, NSArray, NSMutableArray, NSSet, NSString;
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
+
+@class MPAVRoute, MPAVRoutingControllerSelectionQueue, MPAVRoutingDataSource, NSArray, NSSet, NSString;
 @protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingControllerDelegate;
 
-@interface MPAVRoutingController : NSObject
+@interface MPAVRoutingController : NSObject <_MPStateDumpPropertyListTransformable>
 {
     NSArray *_cachedRoutes;
     NSArray *_cachedPickedRoutes;
-    NSMutableArray *_asyncFetchingCompletionHandlers;
-    _Bool _asyncFetchingRoutes;
     long long _externalScreenType;
     _Bool _hasExternalScreenType;
     _Bool _scheduledSendDelegateRoutesChanged;
@@ -45,9 +45,15 @@
 + (void)setActiveRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)getActiveRouteWithCompletion:(CDUnknownBlockType)arg1;
++ (id)_iconImageNameForDeviceSubtypes:(id)arg1;
++ (id)_iconImageNameForDeviceComposition:(id)arg1;
 + (id)_currentDeviceRoutingIconImage;
++ (id)_iconNameForRoute:(id)arg1;
 + (id)_iconImageForRoute:(id)arg1;
++ (id)_iconImageForRoutes:(id)arg1;
++ (id)_iconImageForIdentifier:(id)arg1;
 + (id)_sharedSerialQueue;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool representsLongFormVideoContent; // @synthesize representsLongFormVideoContent=_representsLongFormVideoContent;
 @property(copy, nonatomic) NSString *representedBundleID; // @synthesize representedBundleID=_representedBundleID;
 @property(copy, nonatomic) NSString *presentedBundleID; // @synthesize presentedBundleID=_presentedBundleID;
@@ -60,7 +66,7 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) MPAVRoutingDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <MPAVRoutingControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)_stateDumpObject;
 - (_Bool)removePickedRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)removePickedRoute:(id)arg1;
 - (_Bool)addPickedRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -89,10 +95,10 @@
 - (id)_pickedRoutesInArray:(id)arg1;
 - (id)_pickedRouteInArray:(id)arg1;
 - (void)_onQueueSetExternalScreenType:(long long)arg1;
-- (void)_onQueue_clearCachedRoutes;
 - (long long)_externalScreenType:(_Bool *)arg1;
 - (_Bool)_deviceAvailabilityOverrideState;
 - (void)_clearLegacyCachedRoute;
+- (void)_syncUpdateRoutes;
 - (void)unpickTVRoutes;
 - (void)clearCachedRoutes;
 - (_Bool)wirelessDisplayRoutesAvailable;
@@ -103,6 +109,7 @@
 - (_Bool)routeOtherThanHandsetAndSpeakerAvailable;
 - (_Bool)receiverRouteIsPicked;
 - (_Bool)speakerRouteIsPicked;
+- (void)selectRoutes:(id)arg1 operation:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)selectRoute:(id)arg1 operation:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)pickSpeakerRoute;
 - (_Bool)pickHandsetRoute;
@@ -111,6 +118,8 @@
 - (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAvailableRoutesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchAvailableRoutesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)updatePickedRoutes;
+- (id)updateAvailableRoutes;
 - (_Bool)airtunesRouteIsPicked;
 @property(readonly, nonatomic) _Bool volumeControlIsAvailable;
 - (_Bool)routeIsPendingPick:(id)arg1;
@@ -122,11 +131,19 @@
 @property(readonly, nonatomic) _Bool hasPendingPickedRoutes;
 @property(readonly, nonatomic) long long externalScreenType;
 @property(readonly, copy, nonatomic) NSArray *availableRoutes;
-- (id)description;
+- (id)cachedPickedRoutes;
+- (void)setCachedRoutes:(id)arg1;
+- (id)cachedRoutes;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (id)initWithDataSource:(id)arg1 name:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

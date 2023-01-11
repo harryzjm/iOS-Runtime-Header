@@ -19,18 +19,23 @@
     MPSNDArrayDescriptor *_child;
     MPSNDArrayDescriptor *_parent;
     int _transitionOp;
+    _Bool _preferPackedRows;
 }
 
 + (id)descriptorWithDataType:(unsigned int)arg1 dimensionSizes:(unsigned long long)arg2;
 + (id)descriptorWithDataType:(unsigned int)arg1 shape:(id)arg2;
 + (id)descriptorWithDataType:(unsigned int)arg1 dimensionCount:(unsigned long long)arg2 dimensionSizes:(unsigned long long *)arg3;
+@property(nonatomic) _Bool preferPackedRows; // @synthesize preferPackedRows=_preferPackedRows;
 @property(nonatomic) unsigned long long numberOfDimensions; // @synthesize numberOfDimensions=_numberOfDimensions;
 @property(nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 - (void)dealloc;
 - (void)reshapeWithDimensionCount:(unsigned long long)arg1 dimensionSizes:(unsigned long long *)arg2;
 - (void)reshapeWithShape:(id)arg1;
+- (unique_ptr_443eaf63)getShapeVector;
+- (id)getShape;
 - (id)initWithDataType:(unsigned int)arg1 dimensions:(unsigned long long)arg2 sizes: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)dimensionOrder;
+- (void)permuteWithDimensionOrder:(unsigned long long *)arg1;
 - (void)transposeDimension:(unsigned long long)arg1 withDimension:(unsigned long long)arg2;
 - (void)sliceDimension:(unsigned long long)arg1 withSubrange:(struct MPSDimensionSlice)arg2;
 - (struct MPSDimensionSlice)sliceRangeForDimension:(unsigned long long)arg1;

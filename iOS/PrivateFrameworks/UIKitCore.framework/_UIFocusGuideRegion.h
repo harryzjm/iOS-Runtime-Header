@@ -8,11 +8,13 @@
 
 @interface _UIFocusGuideRegion
 {
+    _Bool __isFocusGuideUnoccludable;
     id <_UIFocusGuideRegionDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <_UIFocusGuideRegionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setIsFocusGuideUnoccludable:) _Bool _isFocusGuideUnoccludable; // @synthesize _isFocusGuideUnoccludable=__isFocusGuideUnoccludable;
+@property(nonatomic) __weak id <_UIFocusGuideRegionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (_Bool)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
 - (long long)_visualRepresentationPatternType;
@@ -26,6 +28,7 @@
 - (id)_focusedItemForLinearSorting:(id)arg1 inMap:(id)arg2;
 - (_Bool)_shouldUseNextFocusedItemForLinearSorting;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
+- (_Bool)_canBeOccludedByRegionsAbove;
 - (_Bool)_canOccludeRegionsBelow;
 - (_Bool)_isEnabledForFocusedRegion:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

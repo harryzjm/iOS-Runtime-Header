@@ -18,14 +18,16 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *conversationCache; // @synthesize conversationCache=_conversationCache;
 @property(retain, nonatomic) CKContactsSearchManager *contactsSearchManager; // @synthesize contactsSearchManager=_contactsSearchManager;
 @property(nonatomic) _Bool shouldHideGroupsDonations; // @synthesize shouldHideGroupsDonations;
-- (void).cxx_destruct;
 - (void)chatStateChanged:(id)arg1;
+- (void)_refreshConversationCache;
 - (id)conversationCacheForContactsSearchManager:(id)arg1;
 - (void)contactsSearchManager:(id)arg1 finishedSearchingWithResults:(id)arg2;
 - (void)updateShortcutItems;
+- (id)shortcutItemForConversation:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

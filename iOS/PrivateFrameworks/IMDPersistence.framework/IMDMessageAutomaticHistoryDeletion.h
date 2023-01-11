@@ -15,7 +15,7 @@
 + (_Bool)isFileHeaderDateAtPath:(id)arg1 olderThanDays:(long long)arg2;
 + (_Bool)isFileAtDirPath:(id)arg1 olderThanDays:(long long)arg2;
 + (void)deleteDirectoryAtPath:(id)arg1;
-+ (void)deleteSpolightArchivedFilesAfterDays:(long long)arg1;
++ (void)deleteSpolightArchivedFiles;
 + (void)cleanDatabase;
 + (void)deleteMessagesAndAttachmentsAfterDays:(long long)arg1;
 + (void)cleanUpOrphanAttachments;

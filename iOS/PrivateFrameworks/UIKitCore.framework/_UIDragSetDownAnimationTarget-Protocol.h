@@ -6,12 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIDragItem, UITargetedDragPreview, UIViewPropertyAnimator, UIWindowScene, _DUIVisibleDroppedItem, _UIDragSetDownAnimation;
+@class UIDragItem, UITargetedDragPreview, UIViewPropertyAnimator, UIWindow, _DUIVisibleDroppedItem, _UIDragSetDownAnimation;
+@protocol UIViewSpringAnimationBehaviorDescribing;
 
 @protocol _UIDragSetDownAnimationTarget <NSObject>
+- (id <UIViewSpringAnimationBehaviorDescribing>)_setDownAnimation:(_UIDragSetDownAnimation *)arg1 customSpringAnimationBehaviorForSetDownOfDragItem:(UIDragItem *)arg2;
 - (_Bool)_setDownAnimation:(_UIDragSetDownAnimation *)arg1 shouldDelaySetDownOfDragItem:(UIDragItem *)arg2 completion:(void (^)(void))arg3;
 - (void)_setDownAnimation:(_UIDragSetDownAnimation *)arg1 willAnimateSetDownOfDragItem:(UIDragItem *)arg2 withAnimator:(UIViewPropertyAnimator *)arg3;
 - (UITargetedDragPreview *)_setDownAnimation:(_UIDragSetDownAnimation *)arg1 prepareForSetDownOfDragItem:(UIDragItem *)arg2 visibleDroppedItem:(_DUIVisibleDroppedItem *)arg3;
-- (UIWindowScene *)_setDownAnimation:(_UIDragSetDownAnimation *)arg1 windowSceneForSetDownOfDragItem:(UIDragItem *)arg2;
+- (UIWindow *)_windowForSetDownOfDragItem:(UIDragItem *)arg1;
 @end
 

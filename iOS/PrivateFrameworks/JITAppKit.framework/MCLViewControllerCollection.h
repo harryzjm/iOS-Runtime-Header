@@ -10,6 +10,7 @@
 
 @class NSArray, NSLayoutConstraint, NSString, UIStackView, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface MCLViewControllerCollection : UIScrollView <UIScrollViewDelegate>
 {
     UIStackView *_contentView;
@@ -18,9 +19,9 @@
     NSArray *_views;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *views; // @synthesize views=_views;
 @property(nonatomic) __weak UIViewController *owner; // @synthesize owner=_owner;
-- (void).cxx_destruct;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)layoutSubviews;
 @property(nonatomic) double spacing;

@@ -16,7 +16,7 @@
     NSObject<OS_dispatch_semaphore> *_timeStepSemaphore;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long timeStep; // @synthesize timeStep=_timeStep;
 @property(readonly, nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property(readonly, nonatomic) double beta2; // @synthesize beta2=_beta2;

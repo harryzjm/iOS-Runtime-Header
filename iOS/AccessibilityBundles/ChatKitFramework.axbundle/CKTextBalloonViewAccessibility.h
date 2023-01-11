@@ -14,9 +14,14 @@
 - (id)accessibilityCustomRotors;
 - (id)accessibilityUserInputLabels;
 - (id)_accessibilitySpeakThisString;
+- (id)_accessibilityElementHelp;
+- (_Bool)accessibilityActivate;
+- (_Bool)_accessibilitySupportsActivateAction;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)_axMessageProvenanceDescription;
+- (id)_axMentionsDescription;
+- (id)_axReplyDescription;
 - (_Bool)_axIsInvisibleInk;
 - (void)invisibleInkEffectViewWasUncovered;
 - (void)_setAXInvisibleInkDescription:(id)arg1;

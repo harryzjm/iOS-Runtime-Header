@@ -16,8 +16,6 @@
 + (_Bool)_hasRenderLayerSubclass;
 + (id)defaultValueForKey:(id)arg1;
 @property _Bool disablesOccludedBackdropBlurs; // @synthesize disablesOccludedBackdropBlurs=_disablesOccludedBackdropBlurs;
-@property double statisticsInterval;
-@property(copy) NSString *statisticsType;
 @property _Bool tracksLuma;
 @property _Bool ignoresScreenClip;
 @property _Bool reducesCaptureBitDepth;
@@ -27,14 +25,14 @@
 @property double zoom;
 @property struct CGRect backdropRect;
 @property double scale;
-@property _Bool usesGlobalGroupNamespace;
+@property(copy) NSString *groupNamespace;
 @property(copy) NSString *groupName;
 @property(getter=isEnabled) _Bool enabled;
+@property _Bool usesGlobalGroupNamespace;
 - (unsigned int)_renderLayerPropertyAnimationFlags:(unsigned int)arg1;
 - (_Bool)_renderLayerDefinesProperty:(unsigned int)arg1;
 - (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (void)didChangeValueForKey:(id)arg1;
-- (id)statisticsValues;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 
 // Remaining properties

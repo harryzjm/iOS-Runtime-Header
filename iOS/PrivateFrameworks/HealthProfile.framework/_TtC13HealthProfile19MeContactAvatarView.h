@@ -15,11 +15,12 @@
     MISSING_TYPE *defaultAvatarImageSymbolConfiguration;
     MISSING_TYPE *contactsAvatarViewController;
     MISSING_TYPE *defaultAvatarImageView;
+    MISSING_TYPE *avatarSize;
 }
 
 - (void).cxx_destruct;
-- (void)didUpdateContentForAvatarViewController:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)didUpdateContentForAvatarViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)meContactCacheDidUpdateWithNotification:(id)arg1;
 

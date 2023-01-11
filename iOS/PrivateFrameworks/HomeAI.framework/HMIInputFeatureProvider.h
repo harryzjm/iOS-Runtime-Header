@@ -17,11 +17,12 @@ __attribute__((visibility("hidden")))
     NSString *_inputName;
 }
 
+- (void).cxx_destruct;
 @property(readonly) NSString *inputName; // @synthesize inputName=_inputName;
 @property(readonly) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
-- (void).cxx_destruct;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
+- (void)dealloc;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 inputName:(id)arg2;
 
 @end

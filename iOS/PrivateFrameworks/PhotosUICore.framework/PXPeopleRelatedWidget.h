@@ -12,7 +12,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, PXPeopleStripCollectionViewController, PXPeopleWidgetDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUITapGestureRecognizer, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPeopleRelatedWidget : NSObject <PXPeopleStripCollectionViewControllerDelegate, PXPeopleDataSourceDelegate, UIGestureRecognizerDelegate, PXWidget>
 {
@@ -37,6 +37,7 @@
     struct CGSize _cellSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setHasLoadedContentData:) _Bool hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property(nonatomic) double targetPrefetchWidth; // @synthesize targetPrefetchWidth=_targetPrefetchWidth;
 @property(retain, nonatomic) PXUITapGestureRecognizer *_tapRecognizer; // @synthesize _tapRecognizer=__tapRecognizer;
@@ -56,7 +57,6 @@
 @property(retain, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
-- (void).cxx_destruct;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_resetControllerLayoutInfosForWidth:(double)arg1;
 - (unsigned long long)_numberOfVisibleFacesForWidth:(double)arg1;
@@ -92,16 +92,21 @@
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 
 @end
 

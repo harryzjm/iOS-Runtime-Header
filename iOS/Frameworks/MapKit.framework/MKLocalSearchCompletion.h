@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEODirectionIntent, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, MKMapItem, NSArray, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, MKMapItem, NSArray, NSString;
 @protocol GEOCompletionItem;
 
 @interface MKLocalSearchCompletion : NSObject
@@ -19,10 +19,12 @@
     MKMapItem *_mapItem;
     _Bool _alreadySentFeedback;
     _Bool _shouldDisplayNoResults;
+    _Bool _shouldEnableRAPForNoResults;
     MKLocalSearchCompletion *_directionIntentOrigin;
     MKLocalSearchCompletion *_directionIntentDestination;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) MKLocalSearchCompletion *directionIntentDestination; // @synthesize directionIntentDestination=_directionIntentDestination;
 @property(retain, nonatomic) MKLocalSearchCompletion *directionIntentOrigin; // @synthesize directionIntentOrigin=_directionIntentOrigin;
 @property(readonly, nonatomic, getter=_alreadySentFeedback) _Bool alreadySentFeedback; // @synthesize alreadySentFeedback=_alreadySentFeedback;
@@ -30,7 +32,6 @@
 @property(copy, nonatomic) NSString *sourceID; // @synthesize sourceID=_sourceID;
 @property(readonly, nonatomic) unsigned long long serverItemIndexInSection; // @synthesize serverItemIndexInSection=_serverItemIndexInSection;
 @property(readonly, nonatomic) unsigned long long serverSectionIndex; // @synthesize serverSectionIndex=_serverSectionIndex;
-- (void).cxx_destruct;
 - (id)iconWithScale:(double)arg1;
 - (id)highlightsForLine:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *displayLines;
@@ -43,6 +44,9 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+@property(readonly, nonatomic) NSArray *childItems;
+@property(readonly, nonatomic) GEOPublisherResult *publisherResult;
+@property(readonly, nonatomic) GEOCollectionResult *collectionResult;
 - (id)_geoCompletionItem;
 @property(readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property(readonly, nonatomic) _Bool hasQueryAcceleratorAffordanceEnabled;

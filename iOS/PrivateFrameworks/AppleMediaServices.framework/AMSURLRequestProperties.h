@@ -9,7 +9,7 @@
 #import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSMutableCopying-Protocol.h>
 
-@class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSPurchaseContext, NSDictionary, NSMutableDictionary, NSString;
+@class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSPurchaseInfo, NSDictionary, NSMutableDictionary, NSString;
 @protocol AMSBagProtocol, AMSResponseDecoding;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _disableLoadURLMetrics;
     _Bool _knownToBeTrusted;
+    _Bool _remoteSecuritySigningEnabled;
     _Bool _disableResponseDecoding;
     _Bool _shouldSetCookiesFromResponse;
     _Bool _shouldSetStorefrontFromResponse;
@@ -30,19 +31,21 @@ __attribute__((visibility("hidden")))
     NSString *_logUUID;
     long long _maxRetryCount;
     long long _mescalType;
-    AMSPurchaseContext *_purchaseContext;
+    AMSPurchaseInfo *_purchaseInfo;
     id <AMSResponseDecoding> _responseDecoder;
     long long _reversePushType;
     NSMutableDictionary *_userInfo;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(nonatomic) _Bool shouldSetStorefrontFromResponse; // @synthesize shouldSetStorefrontFromResponse=_shouldSetStorefrontFromResponse;
 @property(nonatomic) _Bool shouldSetCookiesFromResponse; // @synthesize shouldSetCookiesFromResponse=_shouldSetCookiesFromResponse;
 @property(nonatomic) long long reversePushType; // @synthesize reversePushType=_reversePushType;
 @property(nonatomic) _Bool disableResponseDecoding; // @synthesize disableResponseDecoding=_disableResponseDecoding;
 @property(retain, nonatomic) id <AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
-@property(retain, nonatomic) AMSPurchaseContext *purchaseContext; // @synthesize purchaseContext=_purchaseContext;
+@property(nonatomic) _Bool remoteSecuritySigningEnabled; // @synthesize remoteSecuritySigningEnabled=_remoteSecuritySigningEnabled;
+@property(retain, nonatomic) AMSPurchaseInfo *purchaseInfo; // @synthesize purchaseInfo=_purchaseInfo;
 @property(nonatomic) long long mescalType; // @synthesize mescalType=_mescalType;
 @property(nonatomic) long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property(retain, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
@@ -55,7 +58,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long anisetteType; // @synthesize anisetteType=_anisetteType;
 @property(retain, nonatomic) NSDictionary *additionalMetrics; // @synthesize additionalMetrics=_additionalMetrics;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

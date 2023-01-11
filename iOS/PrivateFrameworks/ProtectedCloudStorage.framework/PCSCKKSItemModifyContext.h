@@ -29,13 +29,13 @@
     NSData *_rollItemReference;
     NSData *_rollItemSHA1;
     NSDate *_server_NextRollDate;
-    struct _PCSIdentityData *_relocateIdentity;
     PCSMTT *_mtt;
     NSObject<OS_os_transaction> *_transaction;
     PCSLockAssertion *_lockAssertion;
     id _activityAssertion;
 }
 
+- (void).cxx_destruct;
 @property(retain) id activityAssertion; // @synthesize activityAssertion=_activityAssertion;
 @property(retain) PCSLockAssertion *lockAssertion; // @synthesize lockAssertion=_lockAssertion;
 @property(retain) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
@@ -44,7 +44,6 @@
 @property int retryLeftCount; // @synthesize retryLeftCount=_retryLeftCount;
 @property _Bool roll; // @synthesize roll=_roll;
 @property _Bool sync; // @synthesize sync=_sync;
-@property struct _PCSIdentityData *relocateIdentity; // @synthesize relocateIdentity=_relocateIdentity;
 @property(retain) NSDate *server_NextRollDate; // @synthesize server_NextRollDate=_server_NextRollDate;
 @property(retain) NSData *rollItemSHA1; // @synthesize rollItemSHA1=_rollItemSHA1;
 @property(retain) NSData *rollItemReference; // @synthesize rollItemReference=_rollItemReference;
@@ -58,7 +57,6 @@
 @property long long timeoutValue; // @synthesize timeoutValue=_timeoutValue;
 @property struct __PCSLogContext *log; // @synthesize log=_log;
 @property struct _PCSIdentitySetData *set; // @synthesize set=_set;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (void)resetIdentities;
 - (id)init;

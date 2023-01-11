@@ -12,22 +12,18 @@
     unsigned long long _AVAssetDownloadToken;
     NSURL *_URL;
     NSURL *_destinationURL;
-    NSURL *_temporaryDestinationURL;
-    NSString *_assetTitle;
-    NSData *_assetArtworkData;
     AVURLAsset *_URLAsset;
     NSDictionary *_options;
     NSArray *_loadedTimeRanges;
+    NSURL *_temporaryDestinationURL;
+    NSString *_assetTitle;
+    NSData *_assetArtworkData;
     AVMediaSelection *_resolvedMediaSelection;
 }
 
-@property(copy) AVMediaSelection *resolvedMediaSelection; // @synthesize resolvedMediaSelection=_resolvedMediaSelection;
 @property(copy) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
 @property(copy) NSDictionary *options; // @synthesize options=_options;
 @property(retain) AVURLAsset *URLAsset; // @synthesize URLAsset=_URLAsset;
-@property(copy) NSData *assetArtworkData; // @synthesize assetArtworkData=_assetArtworkData;
-@property(copy) NSString *assetTitle; // @synthesize assetTitle=_assetTitle;
-@property(copy) NSURL *temporaryDestinationURL; // @synthesize temporaryDestinationURL=_temporaryDestinationURL;
 @property(copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property(copy) NSURL *URL; // @synthesize URL=_URL;
 @property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
@@ -36,11 +32,12 @@
 - (id)currentRequest;
 - (id)originalRequest;
 - (_Bool)isKindOfClass:(Class)arg1;
+- (void)_onqueue_didFinishDownloadforMediaSelectionPropertyList:(id)arg1;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_willDownloadToURL:(id)arg1;
 - (void)_onqueue_didFinishDownloadingToURL:(id)arg1;
 - (void)_onqueue_didResolveMediaSelectionPropertyList:(id)arg1;
-- (void)_onqueue_didLoadTimeRange:(id)arg1 totalTimeRangesLoaded:(id)arg2 timeRangeExpectedToLoad:(id)arg3;
+- (void)_onqueue_didLoadTimeRange:(id)arg1 totalTimeRangesLoaded:(id)arg2 timeRangeExpectedToLoad:(id)arg3 forMediaSelectionPropertyList:(id)arg4;
 - (void)_onqueue_didReceiveProgressUpdateWithTotalBytesWritten:(long long)arg1 totalBytesExpectedToWrite:(long long)arg2;
 - (void)dealloc;
 - (id)initWithTaskInfo:(id)arg1 taskGroup:(id)arg2 ident:(unsigned long long)arg3;

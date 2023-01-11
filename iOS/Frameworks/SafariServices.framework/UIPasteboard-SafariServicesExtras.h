@@ -8,7 +8,9 @@
 
 @interface UIPasteboard (SafariServicesExtras)
 - (void)safari_setSensitiveString:(id)arg1;
+@property(readonly, nonatomic) _Bool safari_canPasteAndNavigate;
 - (id)safari_pasteAndNavigateButtonTitle;
+- (unsigned long long)safari_bestInputTypeForPastingIntoURLField;
 - (id)safari_bestStringForPastingIntoURLField;
 @end
 

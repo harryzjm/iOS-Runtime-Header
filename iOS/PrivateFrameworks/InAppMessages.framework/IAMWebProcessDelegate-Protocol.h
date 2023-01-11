@@ -10,8 +10,8 @@
 
 @protocol IAMWebProcessDelegate <NSObject>
 - (void)webProcessJSODidCallClose;
-- (void)webProcessJSODidCallOpen:(NSString *)arg1;
-- (void)webProcessJSODidCallPerformAction:(NSDictionary *)arg1;
+- (void)webProcessJSODidCallOpen:(NSString *)arg1 options:(NSDictionary *)arg2;
+- (void)webProcessJSODidCallPerformAction:(NSDictionary *)arg1 options:(NSDictionary *)arg2;
 - (void)webProcessJSODidReportEvent:(NSDictionary *)arg1;
 - (void)webProcessPlugInBrowserContextControllerGlobalObjectIsAvailableForFrame;
 - (void)webProcessPlugInWillDestroyBrowserContextController;

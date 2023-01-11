@@ -6,16 +6,20 @@
 
 #import <HomeUI/HUQuickControlPresentationCoordinatorDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlPresentationHost-Protocol.h>
+#import <HomeUI/UICollectionViewDragDelegate-Protocol.h>
+#import <HomeUI/UICollectionViewDropDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class HFItem, HFItemManager, HUQuickControlPresentationCoordinator, NSMutableDictionary, NSString, UICollectionViewLayout, UIGestureRecognizer, UILongPressGestureRecognizer, UIViewController;
-@protocol HUControllableCollectionViewLayout, HUQuickControlPresentationHost, NSCopying;
+@protocol HUControllableCollectionViewLayout, HULockAuthorizationDelegate, HUQuickControlPresentationDelegate, HUQuickControlPresentationHost, NSCopying;
 
-@interface HUControllableItemCollectionViewController <HUQuickControlPresentationHost, UIGestureRecognizerDelegate, HUQuickControlPresentationCoordinatorDelegate>
+@interface HUControllableItemCollectionViewController <HUQuickControlPresentationHost, UIGestureRecognizerDelegate, UICollectionViewDragDelegate, UICollectionViewDropDelegate, HUQuickControlPresentationCoordinatorDelegate>
 {
+    _Bool _useCustomDragAndDrop;
     _Bool _viewAppeared;
-    _Bool _suppressCollectionViewUpdatesForReorderCommit;
     unsigned long long _contentColorStyle;
+    id <HULockAuthorizationDelegate> _lockAuthorizationDelegate;
+    id <HUQuickControlPresentationDelegate> _quickControlPresentationDelegate;
     HUQuickControlPresentationCoordinator *_quickControlPresentationCoordinator;
     UIViewController<HUQuickControlPresentationHost> *_ancestorQuickControlHostAtPresentationTime;
     UILongPressGestureRecognizer *_reorderGestureRecognizer;
@@ -24,16 +28,23 @@
     HFItem<NSCopying> *_selectedContextualMenuItem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HFItem<NSCopying> *selectedContextualMenuItem; // @synthesize selectedContextualMenuItem=_selectedContextualMenuItem;
 @property(retain, nonatomic) UIGestureRecognizer *contextualTapGestureRecognizer; // @synthesize contextualTapGestureRecognizer=_contextualTapGestureRecognizer;
 @property(retain, nonatomic) NSMutableDictionary *actionSetExecutionFuturesKeyedByIdentifier; // @synthesize actionSetExecutionFuturesKeyedByIdentifier=_actionSetExecutionFuturesKeyedByIdentifier;
-@property(nonatomic) _Bool suppressCollectionViewUpdatesForReorderCommit; // @synthesize suppressCollectionViewUpdatesForReorderCommit=_suppressCollectionViewUpdatesForReorderCommit;
 @property(retain, nonatomic) UILongPressGestureRecognizer *reorderGestureRecognizer; // @synthesize reorderGestureRecognizer=_reorderGestureRecognizer;
 @property(nonatomic) _Bool viewAppeared; // @synthesize viewAppeared=_viewAppeared;
 @property(nonatomic) __weak UIViewController<HUQuickControlPresentationHost> *ancestorQuickControlHostAtPresentationTime; // @synthesize ancestorQuickControlHostAtPresentationTime=_ancestorQuickControlHostAtPresentationTime;
 @property(retain, nonatomic) HUQuickControlPresentationCoordinator *quickControlPresentationCoordinator; // @synthesize quickControlPresentationCoordinator=_quickControlPresentationCoordinator;
+@property(nonatomic) __weak id <HUQuickControlPresentationDelegate> quickControlPresentationDelegate; // @synthesize quickControlPresentationDelegate=_quickControlPresentationDelegate;
+@property(nonatomic) __weak id <HULockAuthorizationDelegate> lockAuthorizationDelegate; // @synthesize lockAuthorizationDelegate=_lockAuthorizationDelegate;
+@property(nonatomic) _Bool useCustomDragAndDrop; // @synthesize useCustomDragAndDrop=_useCustomDragAndDrop;
 @property(readonly, nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
-- (void).cxx_destruct;
+- (_Bool)requiresUnlockToPerformActionForItem:(id)arg1;
+- (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
+- (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
+- (_Bool)collectionView:(id)arg1 canHandleDropSession:(id)arg2;
+- (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)_logUserMetricsAfterTapOfItem:(id)arg1;
 - (void)_showQuickControlsForSelectedMenuItem;
 - (void)_showSettingsForSelectedMenuItem;
@@ -45,9 +56,8 @@
 - (void)childViewController:(id)arg1 didEndQuickControlsPresentation:(id)arg2;
 - (void)childViewController:(id)arg1 willBeginQuickControlsPresentation:(id)arg2;
 - (id)_ancestorQuickControlPresentationHost;
-- (void)presentationCoordinatorDidCancelDismissalTransition:(id)arg1;
-- (void)presentationCoordinatorWillBeginDismissalTransition:(id)arg1;
 - (void)presentationCoordinator:(id)arg1 didEndPresentationWithContext:(id)arg2;
+- (void)presentationCoordinator:(id)arg1 willEndPresentationWithContext:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 willBeginPresentationWithContext:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 didRecognizeTapForItem:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 clearOverrideAttributesForItem:(id)arg2;
@@ -56,10 +66,10 @@
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (id)traitCollectionForPresentationCoordinator:(id)arg1;
+- (id)quickControlPresentationContextForUUID:(id)arg1 type:(unsigned long long)arg2;
 - (id)quickControlPresentationContextForItem:(id)arg1 atIndexPath:(id)arg2;
 - (id)_itemForServiceControlPresentationAtPoint:(struct CGPoint)arg1;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
-- (void)itemManager:(id)arg1 didMoveItem:(id)arg2 fromIndexPath:(id)arg3 toIndexPath:(id)arg4;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (void)_itemSetDidChange;
 - (void)collectionView:(id)arg1 moveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
@@ -88,6 +98,7 @@
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_handleApplicationWillResignActiveNotification:(id)arg1;
+- (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

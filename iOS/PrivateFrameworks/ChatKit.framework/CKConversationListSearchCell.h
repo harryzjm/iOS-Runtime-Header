@@ -10,11 +10,11 @@
 
 @interface CKConversationListSearchCell <CKConversationSearchCellProtocol>
 {
-    struct UIEdgeInsets marginInsets;
+    struct UIEdgeInsets _marginInsets;
 }
 
 + (id)annotatedResultStringWithSearchText:(id)arg1 resultText:(id)arg2 primaryTextColor:(id)arg3 primaryFont:(id)arg4 annotatedTextColor:(id)arg5 annotatedFont:(id)arg6;
-@property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
+@property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 - (double)leadingLayoutMargin;
 - (void)prepareForReuse;
 - (id)fromLabel;
@@ -26,6 +26,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(nonatomic) double widthForDeterminingAvatarVisibility;
 
 @end
 

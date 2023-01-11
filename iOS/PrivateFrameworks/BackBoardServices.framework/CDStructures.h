@@ -25,8 +25,8 @@ struct CGSize {
     double height;
 };
 
-struct NSDictionary {
-    Class _field1;
+struct atomic_flag {
+    _Atomic _Bool _Value;
 };
 
 struct os_unfair_lock_s {

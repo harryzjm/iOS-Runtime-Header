@@ -13,17 +13,17 @@
 @interface GEORPFeedbackCommonCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_comments;
     NSMutableArray *_imageIds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_comments:1;
         unsigned int read_imageIds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_comments:1;
-        unsigned int wrote_imageIds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,18 +40,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)imageIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)imageIdsCount;
-- (void)_addNoFlagsImageId:(id)arg1;
 - (void)addImageId:(id)arg1;
 - (void)clearImageIds;
 @property(retain, nonatomic) NSMutableArray *imageIds;
-- (void)_readImageIds;
 @property(retain, nonatomic) NSString *comments;
 @property(readonly, nonatomic) _Bool hasComments;
-- (void)_readComments;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

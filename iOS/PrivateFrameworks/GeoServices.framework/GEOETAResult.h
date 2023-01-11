@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOETAResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPlaceSearchResponse *_placeSearchResponse;
     NSMutableArray *_sortedETAs;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _distance;
     unsigned int _historicTravelTime;
     unsigned int _liveTravelTime;
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_placeSearchResponse:1;
         unsigned int read_sortedETAs:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_placeSearchResponse:1;
-        unsigned int wrote_sortedETAs:1;
-        unsigned int wrote_distance:1;
-        unsigned int wrote_historicTravelTime:1;
-        unsigned int wrote_liveTravelTime:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,20 +50,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)sortedETAAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sortedETAsCount;
-- (void)_addNoFlagsSortedETA:(id)arg1;
 - (void)addSortedETA:(id)arg1;
 - (void)clearSortedETAs;
 @property(retain, nonatomic) NSMutableArray *sortedETAs;
-- (void)_readSortedETAs;
 @property(nonatomic) _Bool hasDistance;
 @property(nonatomic) unsigned int distance;
 @property(retain, nonatomic) GEOPlaceSearchResponse *placeSearchResponse;
 @property(readonly, nonatomic) _Bool hasPlaceSearchResponse;
-- (void)_readPlaceSearchResponse;
 @property(nonatomic) _Bool hasHistoricTravelTime;
 @property(nonatomic) unsigned int historicTravelTime;
 @property(nonatomic) _Bool hasLiveTravelTime;
@@ -76,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;
 @property(nonatomic) int status;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

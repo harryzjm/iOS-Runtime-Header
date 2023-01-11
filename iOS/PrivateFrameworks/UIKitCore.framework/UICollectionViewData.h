@@ -15,15 +15,11 @@ __attribute__((visibility("hidden")))
     UICollectionViewLayout *_layout;
     NSMapTable *_screenPageMap;
     NSMutableIndexSet *_globalIndexesOfItemsAwaitingValidation;
-    id *_globalItems;
     NSMutableDictionary *_supplementaryLayoutAttributes;
     NSMutableDictionary *_decorationLayoutAttributes;
     NSMutableDictionary *_invalidatedSupplementaryIndexPaths;
     NSMutableDictionary *_invalidatedDecorationIndexPaths;
     struct CGRect _validLayoutRect;
-    long long _numItems;
-    long long _numSections;
-    long long *_sectionItemCounts;
     long long _lastSectionTestedForNumberOfItemsBeforeSection;
     long long _lastResultForNumberOfItemsBeforeSection;
     struct CGSize _contentSize;
@@ -37,16 +33,21 @@ __attribute__((visibility("hidden")))
         unsigned int layoutIsPrepared:1;
         unsigned int layoutLocked:1;
     } _collectionViewDataFlags;
+    struct vector<UICollectionViewLayoutAttributes *, std::__1::allocator<UICollectionViewLayoutAttributes *>> _globalItems;
+    struct vector<long, std::__1::allocator<long>> _sectionItemCounts;
 }
 
 + (void)initialize;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) NSArray *clonedDecorationAttributes; // @synthesize clonedDecorationAttributes=_clonedDecorationAttributes;
 @property(readonly, nonatomic) NSArray *clonedSupplementaryAttributes; // @synthesize clonedSupplementaryAttributes=_clonedSupplementaryAttributes;
 @property(readonly, nonatomic) NSArray *clonedCellAttributes; // @synthesize clonedCellAttributes=_clonedCellAttributes;
-- (void).cxx_destruct;
+- (struct CGRect)_TEST_validLayoutRect;
 @property(nonatomic, getter=isLayoutLocked) _Bool layoutLocked;
 @property(readonly, nonatomic) _Bool layoutIsPrepared;
+- (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2 nilAttributesArePermitted:(_Bool)arg3;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)knownDecorationElementKinds;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isGlobalIndexValid:(long long)arg1;
 - (long long)numberOfItemsBeforeSection:(long long)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
+- (long long)_extantNumberOfItems;
 - (long long)numberOfItems;
 - (long long)numberOfSections;
 - (void)validateLayoutInRect:(struct CGRect)arg1;
@@ -90,7 +92,6 @@ __attribute__((visibility("hidden")))
 - (void)invalidateDecorationIndexPaths:(id)arg1;
 - (void)invalidateSupplementaryIndexPaths:(id)arg1;
 - (void)invalidateItemsAtIndexPaths:(id)arg1;
-- (void)dealloc;
 - (id)initWithCollectionView:(id)arg1 layout:(id)arg2;
 
 @end

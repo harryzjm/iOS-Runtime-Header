@@ -15,6 +15,7 @@
 
 @interface EMMailboxScope : NSObject <EFCacheable, EFPubliclyDescribable, NSCopying, NSSecureCoding>
 {
+    unsigned long long _hash;
     _Bool _excludeTypes;
     _Bool _excludeMailboxes;
     NSSet *_mailboxTypes;
@@ -27,11 +28,12 @@
 + (id)mailboxScopeForMailboxObjectIDs:(id)arg1 forExclusion:(_Bool)arg2;
 + (id)noMailboxesScope;
 + (id)allMailboxesScope;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool excludeMailboxes; // @synthesize excludeMailboxes=_excludeMailboxes;
 @property(readonly, copy, nonatomic) NSSet *mailboxObjectIDs; // @synthesize mailboxObjectIDs=_mailboxObjectIDs;
 @property(readonly, nonatomic) _Bool excludeTypes; // @synthesize excludeTypes=_excludeTypes;
 @property(readonly, copy, nonatomic) NSSet *mailboxTypes; // @synthesize mailboxTypes=_mailboxTypes;
-- (void).cxx_destruct;
+- (_Bool)_scopeContainsMailboxWithObjectID:(id)arg1 mailboxTypeBlock:(CDUnknownBlockType)arg2;
 - (_Bool)scopeContainsMailboxObjectID:(id)arg1 mailboxTypeResolver:(id)arg2;
 - (_Bool)scopeContainsMailbox:(id)arg1;
 - (id)_mailboxObjectIDsForTypesWithMailboxTypeResolver:(id)arg1;
@@ -45,9 +47,10 @@
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly) unsigned long long hash;
+- (void)_calculateHash;
 - (id)initWithMailboxTypes:(id)arg1 excludeTypes:(_Bool)arg2 mailboxObjectIDs:(id)arg3 excludeMailboxes:(_Bool)arg4 cached:(_Bool)arg5;
 - (id)initWithMailboxTypes:(id)arg1 excludeTypes:(_Bool)arg2 mailboxObjectIDs:(id)arg3 excludeMailboxes:(_Bool)arg4;
 - (id)init;

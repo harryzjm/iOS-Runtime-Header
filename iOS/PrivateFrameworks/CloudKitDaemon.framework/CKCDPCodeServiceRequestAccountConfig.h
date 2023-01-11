@@ -8,17 +8,28 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestAccountConfig : PBCodable <NSCopying>
 {
+    unsigned long long _accountFlags;
     long long _lastWebActivityUTCMills;
+    long long _photosWebAccessTimestamp;
+    NSString *_countryCode;
     _Bool _corporateSharingEnabled;
     struct {
+        unsigned int accountFlags:1;
         unsigned int lastWebActivityUTCMills:1;
+        unsigned int photosWebAccessTimestamp:1;
         unsigned int corporateSharingEnabled:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long accountFlags; // @synthesize accountFlags=_accountFlags;
+@property(nonatomic) long long photosWebAccessTimestamp; // @synthesize photosWebAccessTimestamp=_photosWebAccessTimestamp;
+@property(retain, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(nonatomic) long long lastWebActivityUTCMills; // @synthesize lastWebActivityUTCMills=_lastWebActivityUTCMills;
 @property(nonatomic) _Bool corporateSharingEnabled; // @synthesize corporateSharingEnabled=_corporateSharingEnabled;
 - (void)mergeFrom:(id)arg1;
@@ -30,6 +41,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAccountFlags;
+@property(nonatomic) _Bool hasPhotosWebAccessTimestamp;
+@property(readonly, nonatomic) _Bool hasCountryCode;
 @property(nonatomic) _Bool hasLastWebActivityUTCMills;
 @property(nonatomic) _Bool hasCorporateSharingEnabled;
 

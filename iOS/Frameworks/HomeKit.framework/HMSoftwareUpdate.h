@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
@@ -13,7 +14,7 @@
 @class HMAccessory, HMFSoftwareVersion, HMFUnfairLock, HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSString, NSUUID, _HMContext;
 @protocol HMSoftwareUpdateDelegate, OS_dispatch_queue;
 
-@interface HMSoftwareUpdate : NSObject <HMFMessageReceiver, HMObjectMerge, NSSecureCoding>
+@interface HMSoftwareUpdate : NSObject <HMFMessageReceiver, HMFLogging, HMObjectMerge, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSUUID *_identifier;
@@ -24,18 +25,20 @@
     id <HMSoftwareUpdateDelegate> _delegate;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
+    double _installDuration;
     _HMContext *_context;
     HMAccessory *_accessory;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property(readonly) double installDuration; // @synthesize installDuration=_installDuration;
 @property(readonly) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;
 @property(readonly, copy) HMFSoftwareVersion *version; // @synthesize version=_version;
 @property __weak id <HMSoftwareUpdateDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
@@ -64,6 +67,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)dealloc;
+- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 documentationMetadata:(id)arg4;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2;

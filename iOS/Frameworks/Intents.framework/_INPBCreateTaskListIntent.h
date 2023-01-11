@@ -15,7 +15,6 @@
 @interface _INPBCreateTaskListIntent : PBCodable <_INPBCreateTaskListIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBDataString *_groupName;
     _INPBIntentMetadata *_intentMetadata;
     NSArray *_taskTitles;
@@ -24,12 +23,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)taskTitlesType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSArray *taskTitles; // @synthesize taskTitles=_taskTitles;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -26,13 +26,14 @@
     NSArray *_eventColors;
 }
 
++ (id)sampleEventTemplateForFamily:(long long)arg1;
 + (id)_entryForTemplateDescription:(id)arg1 family:(long long)arg2;
 + (id)loadingEntryForFamily:(long long)arg1;
 + (id)lockedEntryForFamily:(long long)arg1;
++ (id)wrappedUserStringFrom:(id)arg1;
 + (id)signatureRectangular:(id)arg1;
 + (id)_signatureCornerImageProvider;
 + (id)signatureCorner:(id)arg1;
-+ (id)_signatureCircularCalendarProvider:(id)arg1;
 + (id)signatureCircular:(id)arg1;
 + (id)signatureBezel:(id)arg1;
 + (id)extraLarge:(id)arg1;
@@ -49,6 +50,7 @@
 + (id)contentForSignatureRectangular:(id)arg1;
 + (id)contentForLargeModular:(id)arg1;
 + (id)largeModular:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool displayEntryDateInGraphicCircularView; // @synthesize displayEntryDateInGraphicCircularView=_displayEntryDateInGraphicCircularView;
 @property(retain, nonatomic) NSArray *eventColors; // @synthesize eventColors=_eventColors;
 @property(retain, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
@@ -65,7 +67,10 @@
 @property(retain, nonatomic) NSDate *eventEndDate; // @synthesize eventEndDate=_eventEndDate;
 @property(retain, nonatomic) NSDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (id)_wrappedPrimaryEventOrganizerName;
+- (id)_wrappedPrimaryEventLocation;
+- (id)_wrappedSecondaryEventTitle;
+- (id)_wrappedPrimaryEventTitle;
 - (id)description;
 - (id)templateForComplicationFamily:(long long)arg1;
 

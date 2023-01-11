@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     _Bool __automatic_invalidation_invalidated;
     NSMutableArray *_deferredToViewDidAppear;
     int _hostPID;
+    int _mediaPID;
     NSString *_hostBundleID;
     CDStruct_4c969caf _hostAuditToken;
     id _remoteViewControllerProxyToOperator;
@@ -42,7 +43,7 @@ __attribute__((visibility("hidden")))
     UIPopoverController *_displayedPopoverController;
     _UIViewServiceDummyPopoverController *_dummyPopoverController;
     unsigned long long _supportedOrientations;
-    _Bool _canShowTextServices;
+    long long _availableTextServices;
     struct UIEdgeInsets _localViewControllerRequestedInsets;
     double _localViewControllerRequestedLeftMargin;
     double _localViewControllerRequestedRightMargin;
@@ -56,10 +57,10 @@ __attribute__((visibility("hidden")))
 
 + (id)XPCInterface;
 + (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 hostBundleID:(id)arg3 hostAuditToken:(CDStruct_4c969caf)arg4;
+- (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setTraitsDidChangeHandler:) CDUnknownBlockType _traitsDidChangeHandler; // @synthesize _traitsDidChangeHandler=__traitsDidChangeHandler;
 @property(copy, nonatomic, setter=_setTraitsWillChangeHandler:) CDUnknownBlockType _traitsWillChangeHandler; // @synthesize _traitsWillChangeHandler=__traitsWillChangeHandler;
 @property(nonatomic) __weak id <_UIViewServiceViewControllerOperatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
@@ -82,8 +83,12 @@ __attribute__((visibility("hidden")))
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 - (id)_showServiceForType:(long long)arg1 withContext:(id)arg2;
-- (_Bool)_canShowTextServices;
+- (long long)_availableTextServices;
 - (id)_inputViewsKey;
+- (void)_setNeedsUpdateOfMultitaskingDragExclusionRects;
+- (id)_childViewControllerForMultitaskingDragExclusionRects;
+- (void)setNeedsUpdateOfPrefersPointerLocked;
+- (id)childViewControllerForPointerLock;
 - (void)_setNeedsUserInterfaceAppearanceUpdate;
 - (void)setNeedsUpdateOfHomeIndicatorAutoHidden;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
@@ -108,9 +113,9 @@ __attribute__((visibility("hidden")))
 - (void)__setBoundingPath:(id)arg1;
 - (void)__setContentSize:(struct CGSize)arg1 boundingPath:(id)arg2;
 - (void)__setContentSize:(struct CGSize)arg1 boundingPath:(id)arg2 withFence:(id)arg3;
+- (void)__setMediaOverridePID:(int)arg1;
 - (void)__exchangeAccessibilityPortInformation:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
-- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 traitCollection:(id)arg5 initialInterfaceOrientation:(long long)arg6 hostAccessibilityServerPort:(id)arg7 canShowTextServices:(_Bool)arg8 replyHandler:(CDUnknownBlockType)arg9;
-- (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 hostAccessibilityServerPort:(id)arg3 canShowTextServices:(_Bool)arg4 replyHandler:(CDUnknownBlockType)arg5;
+- (void)__createViewControllerWithOptions:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)_supportedInterfaceOrientationsForViewController:(id)arg1;
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(_Bool)arg2;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
@@ -122,6 +127,8 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidChangeStatusBarOrientationToInterfaceOrientation:(long long)arg1;
 - (void)__hostDidBecomeActive;
 - (void)__hostWillResignActive;
+- (void)__hostSceneDidEnterBackground;
+- (void)__hostSceneWillEnterForeground;
 - (void)__hostWillEnterForeground;
 - (void)__hostDidEnterBackground;
 - (void)__setSheetConfiguration:(id)arg1;
@@ -138,9 +145,7 @@ __attribute__((visibility("hidden")))
 - (id)invalidate;
 - (void)dummyPopoverController:(id)arg1 popoverViewDidSetUseToolbarShine:(_Bool)arg2;
 - (void)dummyPopoverController:(id)arg1 didChangeContentSize:(struct CGSize)arg2 animated:(_Bool)arg3;
-- (void)_completeInteractiveSheetTransitionInHost:(_Bool)arg1 immediately:(_Bool)arg2 offset:(double)arg3 duration:(double)arg4 timingCurve:(id)arg5;
-- (void)_updateInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
-- (void)_startInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
+- (void)_sheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(_Bool)arg2 dismissible:(_Bool)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id)arg6;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (_Bool)isModalInPresentation;
 - (void)systemLayoutFittingSizeDidChangeForChildViewController:(id)arg1;
@@ -155,7 +160,9 @@ __attribute__((visibility("hidden")))
 - (void)_popoverDidDismiss:(id)arg1;
 - (void)_popoverWillPresent:(id)arg1;
 - (void)_viewServiceIsDisplayingPopoverController:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_windowDidBecomeKey:(id)arg1;
 - (void)_firstResponderDidChange:(id)arg1;
 - (_Bool)becomeFirstResponder;
 - (void)__hostWillTransitionToTraitCollection:(id)arg1 withContextDescription:(id)arg2 deferIfAnimated:(_Bool)arg3 inRemoteViewHierarchy:(_Bool)arg4;
@@ -169,6 +176,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)__knownPresentationWithoutPresentationControllerInstance;
 - (void)window:(id)arg1 statusBarWillChangeFromHeight:(double)arg2 toHeight:(double)arg3;
 - (void)__setHostViewUnderlapsStatusBar:(_Bool)arg1;
+@property(readonly, nonatomic) UIViewController *localViewController;
 - (void)_updateSupportedInterfaceOrientationsIfNecessary;
 - (id)_window;
 - (void)addDeputyRotationDelegate:(id)arg1;

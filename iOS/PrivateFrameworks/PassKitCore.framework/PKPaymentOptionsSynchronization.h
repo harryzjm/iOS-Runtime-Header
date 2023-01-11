@@ -14,9 +14,10 @@
     id <PKPaymentOptionsSynchronizationDelegate> _delegate;
 }
 
++ (_Bool)shouldSyncToCloud;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPaymentOptionsSynchronizationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool shouldSyncToCloud; // @synthesize shouldSyncToCloud=_shouldSyncToCloud;
-- (void).cxx_destruct;
 - (void)_localeDidChangeNotification:(id)arg1;
 - (void)_updateSynchronizationBehavior;
 - (id)init;

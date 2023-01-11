@@ -23,7 +23,6 @@
 - (void)_loadDefaultIconInfo;
 - (_Bool)isRoundCornerPad;
 - (_Bool)isRoundCornerPhone;
-- (_Bool)supportsGestureInitiatedAutoPiP;
 - (_Bool)prefersAlwaysOnOrientation;
 - (_Bool)isHomeGestureEnabled;
 - (_Bool)isiPadMini;

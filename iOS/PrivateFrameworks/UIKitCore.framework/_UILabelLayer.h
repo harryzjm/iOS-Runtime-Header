@@ -31,9 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)_setFrameOrBounds:(struct CGRect)arg1 settingAction:(CDUnknownBlockType)arg2;
 - (void)layoutSublayers;
-- (void)updateContentLayerSize;
 - (void)updateContentInsets;
 
 @end

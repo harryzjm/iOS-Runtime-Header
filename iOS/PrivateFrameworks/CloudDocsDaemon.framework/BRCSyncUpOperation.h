@@ -6,17 +6,18 @@
 
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
-@class BRCLocalItem, BRCServerZone, NSMutableArray, NSMutableDictionary, NSString;
+@class BRCLocalItem, BRCServerZone, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncUpOperation <BRCOperationSubclass>
 {
     unsigned long long _requestID;
+    _Bool _encounteredErrorOnPCSChainedItem;
     float _cost;
     NSMutableArray *_recordsToSave;
     NSMutableArray *_packagesInFlight;
     NSMutableArray *_createdAppLibraryNames;
-    NSMutableArray *_deletedRecordIDs;
+    NSMutableOrderedSet *_deletedRecordIDs;
     NSMutableArray *_iworkUnsharedShareIDs;
     NSMutableDictionary *_renamedShareIDsToNames;
     NSMutableArray *_recordsNeedingNewSharingProtectionInfo;
@@ -31,6 +32,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)syncUpOperationForZone:(id)arg1 maxCost:(float)arg2 retryAfter:(unsigned long long *)arg3;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool encounteredErrorOnPCSChainedItem; // @synthesize encounteredErrorOnPCSChainedItem=_encounteredErrorOnPCSChainedItem;
 @property(retain, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
 @property(readonly, nonatomic) float cost; // @synthesize cost=_cost;
 @property(copy, nonatomic) CDUnknownBlockType syncUpCompletionBlock; // @synthesize syncUpCompletionBlock=_syncUpCompletionBlock;
@@ -43,11 +46,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *recordsNeedingNewSharingProtectionInfo; // @synthesize recordsNeedingNewSharingProtectionInfo=_recordsNeedingNewSharingProtectionInfo;
 @property(retain, nonatomic) NSMutableDictionary *renamedShareIDsToNames; // @synthesize renamedShareIDsToNames=_renamedShareIDsToNames;
 @property(retain, nonatomic) NSMutableArray *iworkUnsharedShareIDs; // @synthesize iworkUnsharedShareIDs=_iworkUnsharedShareIDs;
-@property(retain, nonatomic) NSMutableArray *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
+@property(retain, nonatomic) NSMutableOrderedSet *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
 @property(readonly, nonatomic) NSMutableArray *createdAppLibraryNames; // @synthesize createdAppLibraryNames=_createdAppLibraryNames;
 @property(retain, nonatomic) NSMutableArray *packagesInFlight; // @synthesize packagesInFlight=_packagesInFlight;
 @property(retain, nonatomic) NSMutableArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
-- (void).cxx_destruct;
 - (void)main;
 - (void)_performUpdateSharingProtectionDataIfNecessary:(CDUnknownBlockType)arg1;
 - (_Bool)_recordIsIWorkShareable:(id)arg1;

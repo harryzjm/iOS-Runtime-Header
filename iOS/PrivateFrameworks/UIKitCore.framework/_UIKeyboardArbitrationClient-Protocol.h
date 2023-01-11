@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, _UIKeyboardChangedInformation;
+@class FBSSceneIdentityToken, NSDictionary, NSString, _UIKeyboardChangedInformation;
 
 @protocol _UIKeyboardArbitrationClient
 - (void)queue_setLastEventSource:(long long)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_setKeyboardDisabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_getDebugInfoWithCompletion:(void (^)(NSDictionary *))arg1;
-- (void)queue_sceneBecameFocused:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
+- (void)queue_sceneBecameFocused:(FBSSceneIdentityToken *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_keyboardSuppressed:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_keyboardTransition:(NSString *)arg1 event:(unsigned long long)arg2 withInfo:(NSDictionary *)arg3 onComplete:(void (^)(void))arg4;
 - (void)queue_keyboardIAVChanged:(double)arg1 onComplete:(void (^)(void))arg2;

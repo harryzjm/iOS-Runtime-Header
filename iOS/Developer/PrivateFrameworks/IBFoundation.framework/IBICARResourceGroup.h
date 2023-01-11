@@ -24,7 +24,7 @@
 + (id)defaultEmptyInstanceWithName:(id)arg1;
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (void)log:(id)arg1;
-+ (void)log:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
++ (void)log:(id)arg1 arguments:(char *)arg2;
 + (id)createDefaultInstancesForUnitTesting;
 + (id)createInstanceNamed:(id)arg1;
 - (void).cxx_destruct;
@@ -34,7 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
-- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2;
+- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2 manifestFileData:(id)arg3;
 - (Class)manifestArchivist:(id)arg1 childClassForChildEntry:(id)arg2 results:(id)arg3;
 - (_Bool)manifestArchivist:(id)arg1 childHasDataToRecordInManifest:(id)arg2;
 - (id)initializeManifestArchivist;

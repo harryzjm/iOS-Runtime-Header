@@ -19,9 +19,7 @@
 }
 
 + (id)new;
-+ (_Bool)supportsFrameSemantics:(unsigned long long)arg1;
-+ (id)supportedVideoFormats;
-+ (_Bool)isSupported;
+- (void).cxx_destruct;
 @property(nonatomic) long long maximumNumberOfTrackedImages; // @synthesize maximumNumberOfTrackedImages=_maximumNumberOfTrackedImages;
 @property(nonatomic) _Bool automaticSkeletonScaleEstimationEnabled; // @synthesize automaticSkeletonScaleEstimationEnabled=_automaticSkeletonScaleEstimationEnabled;
 @property(nonatomic) _Bool automaticImageScaleEstimationEnabled; // @synthesize automaticImageScaleEstimationEnabled=_automaticImageScaleEstimationEnabled;
@@ -30,12 +28,6 @@
 @property(nonatomic) _Bool wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
 @property(nonatomic) long long environmentTexturing; // @synthesize environmentTexturing=_environmentTexturing;
 @property(retain, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
-- (void).cxx_destruct;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)isEqual:(id)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
-- (id)imageSensorSettings;
 - (id)init;
 
 // Remaining properties

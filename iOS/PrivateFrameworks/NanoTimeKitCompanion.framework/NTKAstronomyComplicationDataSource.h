@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLLocation;
+@class CLLocation, NSString;
 
 @interface NTKAstronomyComplicationDataSource
 {
-    struct NSString *_token;
+    NSString *_token;
     CLLocation *_currentLocation;
     CLLocation *_anyLocation;
     unsigned long long _vista;
@@ -19,10 +19,8 @@
 + (_Bool)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_invalidate;
-- (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)resume;
 - (void)pause;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (id)currentSwitcherTemplate;
 - (unsigned long long)timelineAnimationBehavior;
@@ -30,6 +28,8 @@
 - (void)becomeInactive;
 - (void)becomeActive;
 - (void)_handleLocationUpdate:(id)arg1 anyLocation:(id)arg2;
+- (id)complicationApplicationIdentifier;
+- (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (_Bool)supportsTapAction;
 - (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (_Bool)alwaysShowIdealizedTemplateInSwitcher;

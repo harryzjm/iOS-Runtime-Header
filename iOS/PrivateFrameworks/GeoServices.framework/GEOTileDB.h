@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class GEOCountryConfiguration, GEOResourceManifestManager, GEOSQLiteDB, NSMutableDictionary, NSString, NSURL, _GEOTileDBWriteQueue, geo_isolater;
+@protocol GEOTileDBDelegate, OS_dispatch_queue;
 
 @interface GEOTileDB : NSObject
 {
@@ -27,6 +28,10 @@
     NSMutableDictionary *_editionsMap;
     NSURL *_baseDirectory;
     NSURL *_externalDataDirectory;
+    geo_isolater *_createdExternalDataDirectoryIsolater;
+    _Bool _createdExternalDataDirectory;
+    id <GEOTileDBDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
 }
 
 - (void).cxx_destruct;
@@ -44,10 +49,11 @@
 - (void)evaluateDevicePostureAgainstCurrentManifest:(id)arg1;
 - (void)_flushPendingWrites;
 - (void)flushPendingWritesWithGroup:(id)arg1;
+- (void)deleteDataForTilesets:(id)arg1;
 - (void)_deleteDataOnDBQueueForKey:(const struct _GEOTileKey *)arg1;
 - (void)deleteDataForKey:(const struct _GEOTileKey *)arg1;
 - (void)_setLastAccessTimeOnDBQueue:(double)arg1 forKey:(const struct _GEOTileKey *)arg2;
-- (void)_addDataOnDBQueueWithData:(id)arg1 key:(const struct _GEOTileKey *)arg2 tileSet:(unsigned int)arg3 ETag:(id)arg4 reason:(unsigned char)arg5;
+- (void)_addDataOnDBQueueWithData:(id)arg1 key:(const struct _GEOTileKey *)arg2 tileSet:(unsigned int)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
 - (_Bool)_markExistingTileDataAsCurrentOnDBQueue:(const struct _GEOTileKey *)arg1 reason:(unsigned char)arg2;
 - (void)getStaleTileKeysUsedSince:(double)arg1 fromTileSets:(id)arg2 maxCount:(unsigned long long)arg3 maxTotalSize:(unsigned long long)arg4 queue:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)getLastAccessTimestampForKey:(const struct _GEOTileKey *)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
@@ -84,7 +90,8 @@
 - (_Bool)_setup:(id)arg1;
 - (id)_setupDB:(id)arg1;
 - (void)tearDown;
-- (id)initWithBaseDirectory:(id)arg1 manifestManager:(id)arg2 countryConfiguration:(id)arg3 maximumDatabaseSize:(unsigned long long)arg4;
+- (id)initWithBaseDirectory:(id)arg1 manifestManager:(id)arg2 countryConfiguration:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 maximumDatabaseSize:(unsigned long long)arg6;
+- (id)initWithBaseDirectory:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (id)initWithBaseDirectory:(id)arg1;
 - (id)init;
 

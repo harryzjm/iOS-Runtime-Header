@@ -26,11 +26,11 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CLLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
 @property(retain, nonatomic) CLAssertion *forceEnableLocationAssertion; // @synthesize forceEnableLocationAssertion=_forceEnableLocationAssertion;
-@property(nonatomic, getter=isRequestingLocation) _Bool requestingLocation; // @synthesize requestingLocation=_requestingLocation;
 @property __weak id <SOSPersistentTimerLocationManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic, getter=isRequestingLocation) _Bool requestingLocation; // @synthesize requestingLocation=_requestingLocation;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (_Bool)shouldStopRequestingLocationAfterCallback;

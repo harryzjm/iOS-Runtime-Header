@@ -12,8 +12,8 @@
 #import <PhotosUICore/PXGShadowSource-Protocol.h>
 #import <PhotosUICore/PXGViewSource-Protocol.h>
 
-@class NSSet, NSString, PXAssetCollectionReference, PXAssetsDataSource, PXAssetsSectionConfigurator, PXAssetsSectionLayoutSpec, PXCuratedLibraryActionManager, PXCuratedLibraryActionPerformer, PXCuratedLibraryAssetDecorationSource, PXCuratedLibraryOverlayButtonConfiguration, PXCuratedLibrarySectionHeaderLayout, PXCuratedLibraryShowAllActionPerformer, PXGLayout, PXGLayoutGuide, PXSelectionSnapshot;
-@protocol PXDisplayAssetCollection, PXDisplayAssetFetchResult;
+@class NSSet, NSString, PXAssetCollectionReference, PXAssetReference, PXAssetsDataSource, PXAssetsSectionConfigurator, PXAssetsSectionLayoutSpec, PXCuratedLibraryActionManager, PXCuratedLibraryActionPerformer, PXCuratedLibraryOverlayButtonConfiguration, PXCuratedLibrarySectionHeaderLayout, PXCuratedLibraryShowAllActionPerformer, PXGBurstStackEffect, PXGLayout, PXGLayoutGuide, PXIndexPathSet, PXLoadingStatusManager, PXPhotosGridAssetDecorationSource, PXSelectionSnapshot;
+@protocol PXAssetSectionLayoutDelegate, PXDisplayAssetCollection, PXDisplayAssetFetchResult, PXGItemsGeometry;
 
 @interface PXAssetsSectionLayout <PXChangeObserver, PXGShadowSource, PXGViewSource, PXGDisplayAssetSource, PXGGeneratedLayoutDelegate, PXGItemsLayoutDelegate, PXCuratedLibraryRowBasedLayout>
 {
@@ -30,32 +30,44 @@
     PXCuratedLibrarySectionHeaderLayout *_sectionHeaderLayout;
     _Bool _isLastSection;
     _Bool _isUpdatingLocalSprites;
-    PXCuratedLibraryAssetDecorationSource *_assetDecorationSource;
     _Bool _showAllButtonConfigurationIsValid;
     _Bool _selectAllButtonConfigurationIsValid;
     PXAssetCollectionReference *_assetCollectionReference;
+    struct _NSRange _cachedClampedItemRange;
+    id <PXDisplayAssetFetchResult> _cachedClampedFetchResult;
+    PXGBurstStackEffect *_burstStackEffect;
+    _Bool _itemCaptionsVisible;
     _Bool _isSelecting;
     _Bool _canStartSelecting;
     _Bool _wantsShadow;
-    _Bool _showsSkimmingHints;
+    _Bool _wantsDimmedSelectionStyle;
+    _Bool _removesHeaderLayoutWhenEmpty;
+    _Bool _removesContentLayoutWhenEmpty;
     _Bool _showsSkimmingSlideshow;
     _Bool _showsSkimmingInteraction;
+    _Bool _isSkimming;
     _Bool _allowsPositionDependentHeaderContentOpacity;
-    _Bool _viewBasedDecorationsEnabled;
     _Bool _presentedSkimming;
     PXCuratedLibraryOverlayButtonConfiguration *_showAllButtonConfiguration;
     PXCuratedLibraryOverlayButtonConfiguration *_selectAllButtonConfiguration;
+    id <PXAssetSectionLayoutDelegate> _delegate;
     long long _zoomLevel;
     long long _targetZoomLevel;
     PXAssetsSectionLayoutSpec *_spec;
     long long _section;
     PXAssetsDataSource *_dataSource;
+    PXPhotosGridAssetDecorationSource *_assetDecorationSource;
     PXCuratedLibraryActionManager *_actionManager;
+    PXLoadingStatusManager *_loadingStatusManager;
+    PXAssetReference *_dropTargetAssetReference;
     long long _numberOfPrecedingAssets;
     PXCuratedLibraryShowAllActionPerformer *_showAllActionPerformer;
     PXCuratedLibraryActionPerformer *_selectAllActionPerformer;
     NSString *_selectAllButtonTitle;
+    CDUnknownBlockType _addContentActionHandler;
     PXGLayoutGuide *_headerLayoutGuide;
+    NSString *_axLocalizedBaseLabel;
+    PXIndexPathSet *_skimmingIndexPaths;
     long long _maxSkimmingIndex;
     long long _currentSkimmingIndex;
     PXGLayout *_headerLayout;
@@ -70,11 +82,11 @@
 }
 
 + (struct CGSize)estimatedSizeWithReferenceSize:(struct CGSize)arg1 assetCollection:(id)arg2 numberOfAssets:(long long)arg3 isCurated:(_Bool)arg4 zoomLevel:(long long)arg5 spec:(id)arg6;
+- (void).cxx_destruct;
 @property(nonatomic) double intersectionSpacing; // @synthesize intersectionSpacing=_intersectionSpacing;
 @property(readonly, nonatomic) _Bool presentedSkimming; // @synthesize presentedSkimming=_presentedSkimming;
 @property(readonly, nonatomic) struct PXSimpleIndexPath presentedSectionIndexPath; // @synthesize presentedSectionIndexPath=_presentedSectionIndexPath;
 @property(nonatomic) struct CGRect showAllButtonFrame; // @synthesize showAllButtonFrame=_showAllButtonFrame;
-@property(readonly, nonatomic) _Bool viewBasedDecorationsEnabled; // @synthesize viewBasedDecorationsEnabled=_viewBasedDecorationsEnabled;
 @property(nonatomic) double distanceBetweenHeaderTopAndNextBodyTop; // @synthesize distanceBetweenHeaderTopAndNextBodyTop=_distanceBetweenHeaderTopAndNextBodyTop;
 @property(nonatomic) double distanceBetweenTitleTopAndBodyBottom; // @synthesize distanceBetweenTitleTopAndBodyBottom=_distanceBetweenTitleTopAndBodyBottom;
 @property(nonatomic) _Bool allowsPositionDependentHeaderContentOpacity; // @synthesize allowsPositionDependentHeaderContentOpacity=_allowsPositionDependentHeaderContentOpacity;
@@ -84,34 +96,45 @@
 @property(retain, nonatomic) PXGLayout *headerLayout; // @synthesize headerLayout=_headerLayout;
 @property(nonatomic) long long currentSkimmingIndex; // @synthesize currentSkimmingIndex=_currentSkimmingIndex;
 @property(nonatomic) long long maxSkimmingIndex; // @synthesize maxSkimmingIndex=_maxSkimmingIndex;
+@property(retain, nonatomic) PXIndexPathSet *skimmingIndexPaths; // @synthesize skimmingIndexPaths=_skimmingIndexPaths;
+@property(nonatomic) _Bool isSkimming; // @synthesize isSkimming=_isSkimming;
 @property(nonatomic) _Bool showsSkimmingInteraction; // @synthesize showsSkimmingInteraction=_showsSkimmingInteraction;
 @property(nonatomic) _Bool showsSkimmingSlideshow; // @synthesize showsSkimmingSlideshow=_showsSkimmingSlideshow;
-@property(nonatomic) _Bool showsSkimmingHints; // @synthesize showsSkimmingHints=_showsSkimmingHints;
+@property(retain, nonatomic) NSString *axLocalizedBaseLabel; // @synthesize axLocalizedBaseLabel=_axLocalizedBaseLabel;
+@property(nonatomic) _Bool removesContentLayoutWhenEmpty; // @synthesize removesContentLayoutWhenEmpty=_removesContentLayoutWhenEmpty;
+@property(nonatomic) _Bool removesHeaderLayoutWhenEmpty; // @synthesize removesHeaderLayoutWhenEmpty=_removesHeaderLayoutWhenEmpty;
 @property(retain, nonatomic) PXGLayoutGuide *headerLayoutGuide; // @synthesize headerLayoutGuide=_headerLayoutGuide;
+@property(copy, nonatomic) CDUnknownBlockType addContentActionHandler; // @synthesize addContentActionHandler=_addContentActionHandler;
 @property(retain, nonatomic) NSString *selectAllButtonTitle; // @synthesize selectAllButtonTitle=_selectAllButtonTitle;
 @property(retain, nonatomic) PXCuratedLibraryActionPerformer *selectAllActionPerformer; // @synthesize selectAllActionPerformer=_selectAllActionPerformer;
 @property(retain, nonatomic) PXCuratedLibraryShowAllActionPerformer *showAllActionPerformer; // @synthesize showAllActionPerformer=_showAllActionPerformer;
+@property(nonatomic) _Bool wantsDimmedSelectionStyle; // @synthesize wantsDimmedSelectionStyle=_wantsDimmedSelectionStyle;
 @property(nonatomic) _Bool wantsShadow; // @synthesize wantsShadow=_wantsShadow;
 @property(nonatomic) long long numberOfPrecedingAssets; // @synthesize numberOfPrecedingAssets=_numberOfPrecedingAssets;
 @property(nonatomic) _Bool canStartSelecting; // @synthesize canStartSelecting=_canStartSelecting;
 @property(nonatomic) _Bool isSelecting; // @synthesize isSelecting=_isSelecting;
+@property(retain, nonatomic) PXAssetReference *dropTargetAssetReference; // @synthesize dropTargetAssetReference=_dropTargetAssetReference;
+@property(readonly, nonatomic) PXLoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property(readonly, nonatomic) PXCuratedLibraryActionManager *actionManager; // @synthesize actionManager=_actionManager;
+@property(nonatomic) _Bool itemCaptionsVisible; // @synthesize itemCaptionsVisible=_itemCaptionsVisible;
+@property(readonly, nonatomic) PXPhotosGridAssetDecorationSource *assetDecorationSource; // @synthesize assetDecorationSource=_assetDecorationSource;
 @property(readonly, nonatomic) PXAssetsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly, nonatomic) long long section; // @synthesize section=_section;
 @property(retain, nonatomic) PXAssetsSectionLayoutSpec *spec; // @synthesize spec=_spec;
 @property(nonatomic) long long targetZoomLevel; // @synthesize targetZoomLevel=_targetZoomLevel;
 @property(nonatomic) long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
-- (void).cxx_destruct;
-- (id)accessibilityLabel;
-- (_Bool)canSelectAccessibilityGroupElementsChildren;
-- (_Bool)canSelectAccessibilityGroupElements;
-- (_Bool)hasBodyContent;
-- (_Bool)canCreateAccessibilityGroupElement;
-- (id)diagnosticDescription;
+@property(nonatomic) __weak id <PXAssetSectionLayoutDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)axGroup:(id)arg1 didRequestToPerformAction:(long long)arg2 userInfo:(id)arg3;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (id)axSpriteIndexes;
+- (id)axLocalizedLabel;
 - (struct CGRect)generatedLayout:(id)arg1 bestCropRectForInputItemAtIndex:(unsigned int)arg2 withAspectRatio:(double)arg3;
 - (id)generatedLayout:(id)arg1 inputItemAtIndex:(unsigned int)arg2;
 - (id)generatedLayout:(id)arg1 objectReferenceAtIndex:(unsigned int)arg2;
+- (id)itemsLayout:(id)arg1 objectReferenceForItem:(long long)arg2;
+- (long long)itemsLayout:(id)arg1 itemForObjectReference:(id)arg2 options:(unsigned long long)arg3;
 - (void)itemsLayout:(id)arg1 updateTagsInSpriteInfos:(CDStruct_9d1ebe49 *)arg2 forItemsInRange:(struct _NSRange)arg3;
+- (unsigned short)itemsLayout:(id)arg1 effectIdForItem:(long long)arg2;
 - (struct CGRect)itemsLayout:(id)arg1 bestCropRectForItem:(long long)arg2 withAspectRatio:(double)arg3;
 - (double)itemsLayout:(id)arg1 aspectRatioForItem:(long long)arg2;
 - (id)viewUserDataForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
@@ -121,6 +144,7 @@
 - (id)_displayAssetForBodyItem:(long long)arg1;
 - (id)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (id)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
+- (unsigned long long)desiredPlaceholderStyleInLayout:(id)arg1;
 - (struct CGSize)minSpriteSizeForPresentationStyle:(unsigned long long)arg1;
 - (unsigned long long)supportedDisplayAssetPresentationStylesInLayout:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
@@ -130,7 +154,7 @@
 - (void)enumerateRowsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) double buildingRowSpacing;
 @property(readonly, nonatomic) double buildingRowContentHeight;
-- (CDUnknownBlockType)dateIntervalFutureForContentInRect:(struct CGRect)arg1;
+- (CDUnknownBlockType)dateIntervalFutureForContentInRect:(struct CGRect)arg1 type:(unsigned long long)arg2;
 - (id)_assetReferenceClosestVisuallyToAssetReference:(id)arg1;
 - (struct PXSimpleIndexPath)_dataSourceIndexPathForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
 - (unsigned int)spriteIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
@@ -140,6 +164,8 @@
 - (void)enumerateVisibleAnchoringLayoutsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)objectReferenceForSpriteIndex:(unsigned int)arg1;
 - (id)hitTestResultForSpriteIndex:(unsigned int)arg1;
+@property(readonly, nonatomic) id <PXGItemsGeometry> bodyItemsGeometry;
+@property(readonly, nonatomic) PXGBurstStackEffect *burstStackEffect;
 @property(readonly, nonatomic) id <PXDisplayAssetFetchResult> keyAssetsFetchResult;
 @property(readonly, nonatomic) long long keyItemIndex;
 @property(readonly, nonatomic) _Bool isCurated;
@@ -170,10 +196,12 @@
 - (void)visibleRectDidChange;
 - (id)layoutForItemChanges;
 - (void)update;
+- (void)_callAddContentActionHandler;
 @property(copy, nonatomic) NSSet *draggedAssetReferences;
 @property(retain, nonatomic) PXSelectionSnapshot *selectionSnapshot;
 - (void)setDataSource:(id)arg1 section:(long long)arg2;
-- (id)initWithSection:(long long)arg1 dataSource:(id)arg2 actionManager:(id)arg3 zoomLevel:(long long)arg4 viewBasedDecorationsEnabled:(_Bool)arg5 spec:(id)arg6;
+- (id)initWithSection:(long long)arg1 dataSource:(id)arg2 spec:(id)arg3;
+- (id)initWithSection:(long long)arg1 dataSource:(id)arg2 actionManager:(id)arg3 loadingStatusManager:(id)arg4 zoomLevel:(long long)arg5 spec:(id)arg6;
 - (id)init;
 
 // Remaining properties

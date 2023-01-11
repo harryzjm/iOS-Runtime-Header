@@ -10,34 +10,67 @@
 {
 }
 
++ (_Bool)isActivePairedDeviceTinker;
 + (void)setAllowedToMessageSOSContacts:(_Bool)arg1;
 + (_Bool)isAllowedToMessageSOSContacts;
 + (void)setPlayAudioDuringCountdown:(_Bool)arg1;
 + (_Bool)shouldPlayAudioDuringCountdown;
++ (id)countdownSoundFooterDescription;
++ (id)countdownSoundTitleDescription;
 + (void)setAutomaticCallCountdownEnabled:(_Bool)arg1;
 + (_Bool)isAutomaticCallCountdownEnabled;
++ (id)autoCallFooterDescription;
++ (id)autoCallTitleDescription;
++ (void)openEmergencyContactsFooterLinkOnViewController:(id)arg1;
++ (id)emergencyContactsFooterLinkTitle;
++ (id)emergencyContactsFooterDescription;
++ (id)emergencyContactsEditDescription;
++ (id)emergencyContactsSectionDescription;
++ (_Bool)hasEmergencyContacts;
 + (_Bool)hasActiveSIMForClient:(id)arg1;
 + (_Bool)shouldForceDisableAutoCallForClient:(id)arg1;
 + (long long)SOSSelectableTriggerMechanismCapability;
 + (_Bool)deviceHasHomeButton;
-+ (_Bool)isD2xDevice;
++ (_Bool)isDeviceD2xOrNewer;
 + (long long)defaultSOSTriggerMechanism;
 + (long long)SOSTriggerMechanismForClickCount:(long long)arg1;
++ (void)setCurrentSOSTriggerMechanism:(long long)arg1;
 + (long long)currentSOSTriggerMechanism;
-+ (long long)SOSTriggerClickCount;
-+ (_Bool)canTriggerSOSWithClicks;
++ (void)setCanTriggerSOSWithSideButton:(_Bool)arg1 presentErrorAlertOnViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (_Bool)_hasAccessibilityConflict;
++ (id)callWithSideButtonFooterDescription;
++ (id)callWithSideButtonTitleDescription;
 + (_Bool)canTriggerSOSWithVolumeLockHold;
++ (long long)SOSTriggerClickCount;
++ (_Bool)canTriggerSOSWithSideButton;
++ (_Bool)supportsSOSWithSideButtonSelectableNumberOfClicks;
 + (_Bool)isIndiaSKU;
 + (_Bool)autoCallRequiresSIM;
 + (_Bool)mustAllowThreeClickTrigger;
++ (void)setMostRecentlyUsedSOSTriggerMechanism:(long long)arg1;
++ (long long)mostRecentlyUsedSOSTriggerMechanism;
++ (id)watchTriggerAnimationFooterDescription;
++ (id)getAssetViewForWatchWithCrownOrientationOnRightSide:(_Bool)arg1 layoutLeftToRight:(_Bool)arg2 tintColor:(id)arg3;
++ (id)watchAssetNameWithCrownOrientationOnRightSide:(_Bool)arg1 layoutLeftToRight:(_Bool)arg2;
++ (id)phoneTriggerAnimationFooterDescription;
++ (void)getAssetViewForPhoneWithCompletion:(CDUnknownBlockType)arg1;
++ (id)phoneAssetName;
++ (_Bool)isSmallScreen;
++ (void)setNewtonTriggersEmergencySOS:(_Bool)arg1 isWristDetectionEnabled:(_Bool)arg2 doesNewtonRequireConfirmation:(_Bool)arg3 presentConfirmationOnViewController:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)setNewtonTriggersEmergencySOS:(_Bool)arg1;
 + (_Bool)newtonTriggersEmergencySOS;
 + (void)setNewtonTriggersEmergencySOSNumber:(id)arg1;
 + (id)newtonTriggersEmergencySOSNumber;
++ (id)fallDetectionFooterDescription;
++ (id)fallDetectionTitleDescription;
 + (void)setLongPressTriggersEmergencySOS:(_Bool)arg1;
 + (_Bool)longPressTriggersEmergencySOS;
-+ (id)_userFriendsDefaults;
++ (id)holdSideButtonFooterDescription;
++ (id)holdSideButtonTitleDescription;
++ (id)automaticDialingSectionDescription;
++ (id)_userFriendsDomainAccessor;
 + (id)_userSOSDefaults;
++ (id)_SOSDomainAccessor;
 
 @end
 

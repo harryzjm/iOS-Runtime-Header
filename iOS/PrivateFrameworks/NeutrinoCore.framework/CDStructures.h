@@ -68,22 +68,6 @@ struct DataSet {
 
 struct Histogram<long, double>;
 
-struct NSArray {
-    Class _field1;
-};
-
-struct NSDictionary {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
-};
-
-struct NUResponse {
-    Class _field1;
-};
-
 struct Region {
     struct unordered_set<NU::RegionRect, NU::RectHash, NU::RectEqualTo, std::__1::allocator<NU::RegionRect>> _field1;
 };
@@ -99,13 +83,6 @@ struct __hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*> {
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
-};
-
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
 };
 
 struct map<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>>>> {

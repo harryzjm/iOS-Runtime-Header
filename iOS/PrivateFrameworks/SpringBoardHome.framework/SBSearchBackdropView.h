@@ -6,21 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardHome/SBUIProgressiveBlur-Protocol.h>
+#import <SpringBoardHome/SBHProgressiveBlur-Protocol.h>
 
 @class MTMaterialView, NSString;
 
-@interface SBSearchBackdropView : UIView <SBUIProgressiveBlur>
+@interface SBSearchBackdropView : UIView <SBHProgressiveBlur>
 {
     MTMaterialView *_materialView;
     _Bool _transitioningToBlur;
 }
 
++ (long long)_recipeForStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)completeIncrementalTransitionSuccessfully:(_Bool)arg1;
 - (void)setTransitionProgress:(double)arg1;
 - (void)completeTransitionSuccessfully:(_Bool)arg1;
 - (void)prepareForTransitionToBlurred:(_Bool)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

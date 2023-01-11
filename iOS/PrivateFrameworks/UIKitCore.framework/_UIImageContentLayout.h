@@ -25,23 +25,16 @@ __attribute__((visibility("hidden")))
     struct CGAffineTransform _contentsTransform;
 }
 
-+ (id)layoutForSource:(id)arg1 inTarget:(id)arg2;
++ (id)layoutForSource:(id)arg1 inTarget:(id)arg2 withSize:(struct CGSize)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double baselineOffsetFromBottom; // @synthesize baselineOffsetFromBottom=_baselineOffsetFromBottom;
-@property(readonly, nonatomic) double baselineOffsetFromTop; // @synthesize baselineOffsetFromTop=_baselineOffsetFromTop;
 @property(readonly, nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property(readonly, nonatomic) double contentsScaleFactor; // @synthesize contentsScaleFactor=_contentsScaleFactor;
 @property(readonly, nonatomic) struct CGAffineTransform contentsTransform; // @synthesize contentsTransform=_contentsTransform;
-- (void).cxx_destruct;
 - (id)description;
-- (struct CGImage *)CGImageContents;
-- (_Bool)hasCGImageContents;
-- (_Bool)rendersContentsAtNaturalSize;
 - (_Bool)hasContents;
 @property(readonly, nonatomic) UIColor *contentsMultiplyColor;
 @property(readonly, nonatomic) id contents;
-- (void)_materializeContentsIfNeeded;
-- (void)_prepareContentOfSize:(struct CGSize)arg1 source:(id)arg2 target:(id)arg3;
-- (id)initWithSource:(id)arg1 target:(id)arg2;
 
 @end
 

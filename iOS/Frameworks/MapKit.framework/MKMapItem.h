@@ -11,7 +11,7 @@
 #import <MapKit/NSItemProviderWriting-Protocol.h>
 #import <MapKit/NSSecureCoding-Protocol.h>
 
-@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, GEORelatedPlaceList, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSDate, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
+@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, GEORelatedPlaceList, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemPrivate, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, MKTransitInfoPreload, NSObject;
 
 @interface MKMapItem : NSObject <NSSecureCoding, NSItemProviderReading, NSItemProviderWriting, GEOURLSerializable>
@@ -34,6 +34,7 @@
     NSString *_firstLocalizedCategoryName;
     NSNumberFormatter *_numberFormatterForAdamId;
     NSString *_localizedSampleSizeForUserRatingScoreString;
+    NSDictionary *_cachedHoursBuilder;
     _Bool _isMapItemTypeTransit;
     MKMapItemMetadata *_metadata;
     GEOPlace *_place;
@@ -69,6 +70,7 @@
 + (_Bool)_openHandleInMaps:(id)arg1 withLaunchOptions:(id)arg2;
 + (void)openMapsWithItems:(id)arg1 launchOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)openMapsWithItems:(id)arg1 launchOptions:(id)arg2;
++ (void)openMapsWithItems:(id)arg1 launchOptions:(id)arg2 fromScene:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)_localizedNextOpeningDayOftheWeekFormatter;
 + (id)_localizedNextOpeningHoursFormatter;
 + (id)mapItemForCurrentLocation;
@@ -87,6 +89,7 @@
 + (id)contactsAddressKeysForGeoAddressKeys;
 + (id)contactsAddressDictionaryFromGeoAddressDictionary:(id)arg1;
 + (id)_mapItemFromVCardRepresentation:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_preloadedTransitInfo) id <MKTransitInfoPreload> preloadedTransitInfo; // @synthesize preloadedTransitInfo=_preloadedTransitInfo;
 @property(copy, nonatomic) NSString *pointOfInterestCategory; // @synthesize pointOfInterestCategory=_pointOfInterestCategory;
 @property(retain, nonatomic) _MKPlaceReservationInfo *reservationInfo; // @synthesize reservationInfo=_reservationInfo;
@@ -95,10 +98,7 @@
 @property(readonly, nonatomic, getter=_photosAttribution) _MKMapItemPhotosAttribution *photosAttribution; // @synthesize photosAttribution=_photosAttribution;
 @property(readonly, nonatomic, getter=_attribution) _MKMapItemPlaceAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) _Bool isPlaceHolder; // @synthesize isPlaceHolder=_isPlaceHolder;
-@property(readonly, nonatomic) GEOPlace *place; // @synthesize place=_place;
-@property(readonly, nonatomic) MKMapItemMetadata *metadata; // @synthesize metadata=_metadata;
 @property(nonatomic) _Bool isCurrentLocation; // @synthesize isCurrentLocation=_isCurrentLocation;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_hasCorrectedHomeWorkAddress) _Bool hasCorrectedHomeWorkAddress;
 @property(readonly, nonatomic, getter=_hasCorrectedHomeWorkCoordinate) _Bool hasCorrectedHomeWorkCoordinate;
 @property(readonly, nonatomic, getter=_externalTransitStationCode) NSData *externalTransitStationCode;
@@ -109,7 +109,9 @@
 @property(readonly, nonatomic, getter=_tips) NSArray *tips;
 @property(readonly, nonatomic, getter=_reviews) NSArray *reviews;
 @property(readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
+@property(readonly, nonatomic, getter=_placeCollectionIds) NSArray *collectionIds;
 @property(readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
+@property(readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property(readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
 @property(readonly, nonatomic, getter=_navTintBrandColor) UIColor *navTintBrandColor;
 @property(readonly, nonatomic, getter=_navBackgroundbrandColor) UIColor *navBackgroundbrandColor;
@@ -145,6 +147,7 @@
 - (id)venueLabelWithContext:(unsigned long long)arg1;
 - (id)_cnPostalAddress;
 - (id)_addressFormattedAsTitlesForMapRect:(CDStruct_02837cd9)arg1;
+- (id)_addressFormattedAsWeatherLocationName;
 - (id)_addressFormattedAsWeatherDisplayName;
 - (id)_addressFormattedAsSinglelineAddress;
 - (id)_addressFormattedAsShortenedAddress;
@@ -161,6 +164,7 @@
 - (id)_activityURLUsingWebPlaceCard:(_Bool)arg1 muninViewState:(id)arg2;
 - (id)_activityURLUsingWebPlaceCard:(_Bool)arg1;
 - (id)_activityURL;
+- (id)_weatherLocationName;
 - (id)_weatherDisplayName;
 - (id)_fullAddressWithMultiline:(_Bool)arg1;
 - (_Bool)_isEquivalentURLRepresentationTo:(id)arg1;
@@ -170,6 +174,9 @@
 @property(readonly, nonatomic, getter=_handle) NSData *handle;
 - (void)openInMapsWithLaunchOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)openInMapsWithLaunchOptions:(id)arg1;
+- (void)openInMapsWithLaunchOptions:(id)arg1 fromScene:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic, getter=_chargerNumberString) NSString *chargerNumberString;
+@property(readonly, nonatomic, getter=_hasChargerNumberString) _Bool hasChargerNumberString;
 @property(readonly, nonatomic, getter=_poiPinpointURLString) NSString *poiPinpointURLString;
 @property(readonly, nonatomic, getter=_poiSurveyURLString) NSString *poiSurveyURLString;
 @property(readonly, nonatomic, getter=_placeDataAsData) NSData *placeDataAsData;
@@ -179,6 +186,7 @@
 @property(readonly, nonatomic, getter=_localizedResponseTime) NSString *localizedResponseTime;
 @property(readonly, nonatomic, getter=_messageBusinessHours) GEOBusinessHours *messageBusinessHours;
 - (id)_localizedNextOpeningStringShort:(_Bool)arg1;
+- (id)hoursBuilderForSearchResultCellForOptions:(unsigned long long)arg1;
 @property(readonly, nonatomic, getter=_hasLocalizedOperatingHours) _Bool hasLocalizedOperatingHours;
 @property(readonly, nonatomic, getter=_hasOperatingHours) _Bool hasOperatingHours;
 @property(readonly, nonatomic, getter=_responseStatusIsIncomplete) _Bool responseStatusIncomplete;
@@ -251,6 +259,8 @@
 @property(readonly, copy) NSString *description;
 - (void)_refreshAttribution;
 @property(readonly, nonatomic) MKPlacemark *placemark;
+@property(readonly, nonatomic) MKMapItemMetadata *metadata; // @synthesize metadata=_metadata;
+@property(readonly, nonatomic) GEOPlace *place; // @synthesize place=_place;
 - (void)dealloc;
 - (id)initWithPlacemark:(id)arg1;
 - (id)initWithCLLocation:(id)arg1;
@@ -260,6 +270,10 @@
 - (id)initWithPlace:(id)arg1;
 - (id)initWithGeoMapItem:(id)arg1 isPlaceHolderPlace:(_Bool)arg2;
 - (id)initWithGeoMapItemAsCurrentLocation:(id)arg1;
+- (int)_browseCategory_placeCardType;
+- (_Bool)_browseCategory_isVenueItem;
+- (_Bool)_browseCategory_canDisplayBrowseCategoriesForPlace;
+- (_Bool)_browseCategory_canDisplayBrowseCategoriesForVenue;
 - (void)_launchActivityForBrandItem;
 - (id)thumbnailWithSize:(struct CGSize)arg1 annotationView:(id)arg2;
 - (id)sharingURL;
@@ -273,6 +287,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_getHasAvailableSecondaryAppClipWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getHasAvailableAppClipWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getFirstAvailableAppClipLinkFromQuickLinks:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getFirstAvailableSecondaryAppClipLinkWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getFirstAvailableAppClipLinkWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_restaurantLink_overridenBundleIDsForVendorIDs;
 - (id)_restaurantLink_firstProviderDisplayName;
 - (id)_restaurantLink_firstProviderPlaceIdentifier;

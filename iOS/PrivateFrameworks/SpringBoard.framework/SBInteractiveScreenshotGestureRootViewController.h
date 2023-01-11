@@ -56,8 +56,8 @@
     id <SBInteractiveScreenshotGestureRootViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBInteractiveScreenshotGestureRootViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBInteractiveScreenshotGestureRootViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateWithUpdateMode:(long long)arg1 contentAnimationSettings:(id)arg2 commitProgress:(double)arg3 additionalContentTranslation:(struct CGPoint)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_updateWithUpdateMode:(long long)arg1 commitProgress:(double)arg2 additionalContentTranslation:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_updateCropLinesMultiPartAnimationForCropsProgress;
@@ -87,6 +87,7 @@
 @property(readonly, nonatomic) unsigned long long flashViewLayerRenderID;
 @property(readonly, nonatomic) unsigned int flashViewLayerContextID;
 - (void)invalidate;
+- (_Bool)_canShowWhileLocked;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(_Bool *)arg2;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;

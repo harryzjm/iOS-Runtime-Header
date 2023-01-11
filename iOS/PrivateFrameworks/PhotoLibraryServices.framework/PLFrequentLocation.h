@@ -8,26 +8,31 @@
 
 #import <PhotoLibraryServices/PLFrequentLocationProtocol-Protocol.h>
 
-@class NSDateInterval, NSSet, NSString;
+@class NSDateInterval, NSMutableArray, NSSet, NSString;
 @protocol PLMomentProtocol;
 
 @interface PLFrequentLocation : NSObject <PLFrequentLocationProtocol>
 {
+    NSMutableArray *_sortedMoments;
     NSDateInterval *_dateInterval;
+    NSSet *_momentsSet;
     id <PLMomentProtocol> _centroid;
-    NSSet *_items;
     struct CLLocationCoordinate2D _coordinate;
 }
 
-@property(readonly) NSSet *items; // @synthesize items=_items;
-@property(readonly) id <PLMomentProtocol> centroid; // @synthesize centroid=_centroid;
-@property(readonly) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
-@property(readonly) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PLMomentProtocol> centroid; // @synthesize centroid=_centroid;
+@property(retain, nonatomic) NSSet *momentsSet; // @synthesize momentsSet=_momentsSet;
+@property(retain, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property(nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
+@property(retain, nonatomic) NSMutableArray *sortedMoments; // @synthesize sortedMoments=_sortedMoments;
+- (void)_invalidateLazyProperties;
+- (void)addMomentToSortedMoment:(id)arg1;
 - (_Bool)isWithinDistance:(double)arg1 toCoordinate:(struct CLLocationCoordinate2D)arg2;
 - (_Bool)isSimilarToFrequentLocation:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithDateInterval:(id)arg1 centroid:(id)arg2 items:(id)arg3;
+- (id)initWithSortedMoments:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

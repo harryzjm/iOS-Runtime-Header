@@ -9,7 +9,7 @@
 }
 
 + (id)linkButton;
-- (void)tintColorDidChange;
+- (_Bool)_supportsMacIdiom;
 
 @end
 

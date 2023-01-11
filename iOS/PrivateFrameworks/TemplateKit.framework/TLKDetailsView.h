@@ -5,37 +5,38 @@
 //
 
 #import <TemplateKit/TLKTextAreaViewDelegate-Protocol.h>
-#import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSArray, NSString, TLKImage, TLKMultilineText, TLKRichText, TLKTextAreaView;
+@class NSArray, NSString, TLKImage, TLKRichText, TLKTextAreaView;
 @protocol TLKDetailsViewDelegate;
 
-@interface TLKDetailsView <TLKTextAreaViewDelegate, TLKTextAreaViewTesting>
+@interface TLKDetailsView <TLKTextAreaViewDelegate>
 {
-    _Bool _secondaryTitleIsDetached;
-    TLKRichText *_title;
     id <TLKDetailsViewDelegate> _delegate;
-    TLKMultilineText *_secondaryTitle;
-    TLKImage *_secondaryTitleImage;
-    NSArray *_details;
-    TLKRichText *_footnote;
-    NSString *_footnoteButtonText;
 }
 
-@property(retain, nonatomic) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
-@property(retain, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
-@property(retain, nonatomic) NSArray *details; // @synthesize details=_details;
-@property(retain, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
-@property(nonatomic) _Bool secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
-@property(retain, nonatomic) TLKMultilineText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
-@property(nonatomic) __weak id <TLKDetailsViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) TLKRichText *title; // @synthesize title=_title;
 - (void).cxx_destruct;
-- (id)secondaryTitleLabelString;
-- (id)titleLabelString;
+@property(nonatomic) __weak id <TLKDetailsViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)viewForLastBaselineLayout;
+- (id)viewForFirstBaselineLayout;
+- (void)layoutMarginsDidChange;
+- (id)footnoteContainer;
+- (id)footnoteButton;
 - (id)footnoteLabelString;
-- (id)textAreaLabelStrings;
-- (void)observedPropertiesChanged;
+- (id)footnoteLabel;
+- (id)detailsStrings;
+- (id)detailsFields;
+- (id)titleContainer;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) NSString *footnoteButtonText;
+@property(retain, nonatomic) TLKRichText *footnote;
+@property(retain, nonatomic) NSArray *details;
+@property(nonatomic) _Bool secondaryTitleIsDetached;
+@property(retain, nonatomic) TLKImage *secondaryTitleImage;
+@property(retain, nonatomic) TLKRichText *secondaryTitle;
+@property(nonatomic) _Bool truncateTitleMiddle;
+@property(retain, nonatomic) TLKRichText *title;
+@property(retain, nonatomic) TLKRichText *bannerBadge;
+@property(nonatomic) _Bool useCompactMode;
 - (void)footnoteButtonPressed;
 - (id)setupContentView;
 

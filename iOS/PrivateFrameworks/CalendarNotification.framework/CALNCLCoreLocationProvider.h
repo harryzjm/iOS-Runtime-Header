@@ -16,6 +16,8 @@
 
 + (id)sharedInstance;
 - (void)markAsHavingReceivedLocationWithEffectiveBundleIdentifier:(id)arg1;
+- (_Bool)preciseLocationAuthorizedForBundle:(id)arg1;
+- (_Bool)preciseLocationAuthorizedForBundleIdentifier:(id)arg1;
 - (int)authorizationStatusForBundle:(id)arg1;
 - (int)authorizationStatusForBundleIdentifier:(id)arg1;
 

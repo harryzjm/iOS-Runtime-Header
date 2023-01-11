@@ -16,6 +16,9 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void)isExtensionEnhancedLoggingStateOnWithHandler:(CDUnknownBlockType)arg1;
+- (void)teardownWithParameters:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)setupWithParameters:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)attachmentsForParameters:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)attachmentListWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)hasEntitlement;

@@ -20,6 +20,8 @@
 - (id)accessibilityDragSourceDescriptors;
 - (_Bool)_accessibilityIsOutsideParentBounds;
 - (_Bool)accessibilityScrollToVisible;
+- (_Bool)_accessibilityImplementsDefaultRowRange;
+- (struct _NSRange)accessibilityRowRange;
 - (id)_accessibilityIndexPath;
 - (id)axData;
 - (void)accessibilityClearInternalData;
@@ -32,7 +34,11 @@
 - (void)willRemoveSubview:(id)arg1;
 - (void)addSubview:(id)arg1;
 - (void)_accessibilityClearInternalCaches;
+- (id)_axCustomActionsForActions:(id)arg1;
+- (id)_privateAccessibilityCustomActions;
+- (id)_accessibilityCachedChildren;
 - (id)_accessibilityChildren;
+- (id)_accessibilityUserTestingChildren;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (void)accessibilityReuseChildren:(id)arg1 forMockParent:(id)arg2;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

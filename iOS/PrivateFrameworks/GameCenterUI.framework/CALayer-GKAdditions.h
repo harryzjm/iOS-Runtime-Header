@@ -9,6 +9,6 @@
 @interface CALayer (GKAdditions)
 - (struct CATransform3D)_gkParentSublayerTransform;
 - (id)_gkRecursiveDescription;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 @end
 

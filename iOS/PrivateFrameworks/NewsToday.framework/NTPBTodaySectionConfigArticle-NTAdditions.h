@@ -6,17 +6,19 @@
 
 #import <NewsTransport/NTPBTodaySectionConfigArticle.h>
 
-#import <NewsToday/FCHeadlineMetadata-Protocol.h>
+#import <NewsToday/NTHeadlineMetadata-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface NTPBTodaySectionConfigArticle (NTAdditions) <FCHeadlineMetadata>
+@interface NTPBTodaySectionConfigArticle (NTAdditions) <NTHeadlineMetadata>
 @property(readonly, nonatomic) NSDate *displayDate;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSString *actionURLString;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSString *shortExcerpt;
 @property(readonly, nonatomic) NSString *storyType;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) NSString *title;

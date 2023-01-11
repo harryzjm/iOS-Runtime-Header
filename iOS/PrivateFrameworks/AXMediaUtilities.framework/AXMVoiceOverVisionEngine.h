@@ -4,31 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMIconClassDetectorNode, AXMImageNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMScreenCaptureNode, AXMTextDetectorNode, AXMTraitDetectorNode;
+@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMNSFWDetectorNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMSignificantEventDetectorNode, AXMTraitDetectorNode;
 
 @interface AXMVoiceOverVisionEngine
 {
-    AXMScreenCaptureNode *_captureNode;
-    AXMImageNode *_imageNode;
-    AXMTextDetectorNode *_textDetector;
     AXMSceneDetectorNode *_sceneDetector;
     AXMFaceDetectorNode *_faceDetector;
     AXMTraitDetectorNode *_traitDetector;
     AXMProminentObjectsDetectorNode *_prominentObjectsDetector;
     AXMCaptionDetectorNode *_captionDetector;
-    AXMIconClassDetectorNode *_iconClassDetector;
+    AXMNSFWDetectorNode *_nsfwDetector;
+    AXMSignificantEventDetectorNode *_significantEventDetector;
 }
 
-@property(nonatomic) __weak AXMIconClassDetectorNode *iconClassDetector; // @synthesize iconClassDetector=_iconClassDetector;
+- (void).cxx_destruct;
+@property(nonatomic) __weak AXMSignificantEventDetectorNode *significantEventDetector; // @synthesize significantEventDetector=_significantEventDetector;
+@property(nonatomic) __weak AXMNSFWDetectorNode *nsfwDetector; // @synthesize nsfwDetector=_nsfwDetector;
 @property(nonatomic) __weak AXMCaptionDetectorNode *captionDetector; // @synthesize captionDetector=_captionDetector;
 @property(nonatomic) __weak AXMProminentObjectsDetectorNode *prominentObjectsDetector; // @synthesize prominentObjectsDetector=_prominentObjectsDetector;
 @property(nonatomic) __weak AXMTraitDetectorNode *traitDetector; // @synthesize traitDetector=_traitDetector;
 @property(nonatomic) __weak AXMFaceDetectorNode *faceDetector; // @synthesize faceDetector=_faceDetector;
 @property(nonatomic) __weak AXMSceneDetectorNode *sceneDetector; // @synthesize sceneDetector=_sceneDetector;
-@property(nonatomic) __weak AXMTextDetectorNode *textDetector; // @synthesize textDetector=_textDetector;
-@property(nonatomic) __weak AXMImageNode *imageNode; // @synthesize imageNode=_imageNode;
-@property(nonatomic) __weak AXMScreenCaptureNode *captureNode; // @synthesize captureNode=_captureNode;
-- (void).cxx_destruct;
+- (id)configuredOptionsDisableAllDetectors:(CDUnknownBlockType)arg1 elementOptions:(unsigned int)arg2 textRecognitionLevel:(CDUnknownBlockType)arg3 textDetectionLocales:(CDUnknownBlockType)arg4 preferringFullCaptions:(_Bool)arg5;
+@property(nonatomic) unsigned long long genderStrategy;
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
 

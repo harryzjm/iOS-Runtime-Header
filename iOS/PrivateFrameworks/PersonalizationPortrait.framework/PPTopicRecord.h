@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
+#import <PersonalizationPortrait/PPRecord-Protocol.h>
 
-@class NSString, PPSource, PPTopic, PPTopicMetadata;
+@class NSSet, NSString, PPSource, PPTopic, PPTopicMetadata;
 
-@interface PPTopicRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface PPTopicRecord : NSObject <PPRecord, NSCopying, NSMutableCopying, NSSecureCoding, MLFeatureProvider>
 {
     PPTopic *_topic;
     PPSource *_source;
@@ -21,15 +23,17 @@
     double _decayRate;
     _Bool _isLocal;
     NSString *_extractionOsBuild;
-    unsigned long long _extractionAssetVersion;
+    unsigned int _extractionAssetVersion;
     PPTopicMetadata *_metadata;
     BOOL _bucketizedSentimentScore;
 }
 
++ (id)algorithmForName:(id)arg1;
 + (id)describeAlgorithm:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PPTopicMetadata *metadata; // @synthesize metadata=_metadata;
-@property(readonly, nonatomic) unsigned long long extractionAssetVersion; // @synthesize extractionAssetVersion=_extractionAssetVersion;
+@property(readonly, nonatomic) unsigned int extractionAssetVersion; // @synthesize extractionAssetVersion=_extractionAssetVersion;
 @property(readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property(readonly, nonatomic) _Bool isLocal; // @synthesize isLocal=_isLocal;
 @property(readonly, nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
@@ -37,7 +41,8 @@
 @property(readonly, nonatomic) unsigned long long algorithm; // @synthesize algorithm=_algorithm;
 @property(readonly, nonatomic) PPSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) PPTopic *topic; // @synthesize topic=_topic;
-- (void).cxx_destruct;
+- (id)featureValueForName:(id)arg1;
+@property(readonly, nonatomic) NSSet *featureNames;
 @property(readonly, nonatomic) double sentimentScore; // @dynamic sentimentScore;
 - (_Bool)isEqualToTopicRecord:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

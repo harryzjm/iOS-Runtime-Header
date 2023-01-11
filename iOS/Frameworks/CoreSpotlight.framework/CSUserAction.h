@@ -9,7 +9,7 @@
 #import <CoreSpotlight/CSCoderEncoder-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, NSUUID;
+@class NSArray, NSDictionary, NSSet, NSString, NSUUID;
 @protocol OS_xpc_object;
 
 @interface CSUserAction : NSObject <CSCoderEncoder, NSSecureCoding>
@@ -20,17 +20,28 @@
     NSSet *_keywords;
     unsigned long long _eligibility;
     NSUUID *_uaIdentifier;
+    NSArray *_madeInitiallyCurrentDates;
+    NSArray *_madeCurrentDates;
+    NSArray *_madeCurrentEndDates;
+    NSArray *_sentToIndexerDates;
+    double _madeCurrentInterval;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)actionFromUserActivity:(id)arg1 searchableItem:(id)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) double madeCurrentInterval; // @synthesize madeCurrentInterval=_madeCurrentInterval;
+@property(copy, nonatomic) NSArray *sentToIndexerDates; // @synthesize sentToIndexerDates=_sentToIndexerDates;
+@property(copy, nonatomic) NSArray *madeCurrentEndDates; // @synthesize madeCurrentEndDates=_madeCurrentEndDates;
+@property(copy, nonatomic) NSArray *madeCurrentDates; // @synthesize madeCurrentDates=_madeCurrentDates;
+@property(copy, nonatomic) NSArray *madeInitiallyCurrentDates; // @synthesize madeInitiallyCurrentDates=_madeInitiallyCurrentDates;
 @property(retain, nonatomic) NSUUID *uaIdentifier; // @synthesize uaIdentifier=_uaIdentifier;
 @property unsigned long long eligibility; // @synthesize eligibility=_eligibility;
 @property(retain) NSSet *keywords; // @synthesize keywords=_keywords;
 @property(retain) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy) NSString *contentAction; // @synthesize contentAction=_contentAction;
 @property(copy) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
-- (void).cxx_destruct;
+- (void)updateWithUserAction:(id)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)_propertiesDescription;
@@ -41,6 +52,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithCSCoder:(id)arg1;
+- (id)initWithUserActivity:(id)arg1 searchableItem:(id)arg2;
 - (id)initWithXPCDict:(id)arg1;
 
 @end

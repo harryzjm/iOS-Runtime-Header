@@ -7,6 +7,7 @@
 #import <UIKit/UITableViewCell.h>
 
 @class CKAnimatedImageView, NSDate, NSString, SKUIItemOfferButton, UIDateLabel, UILabel;
+@protocol CKStickerDetailCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface CKStickerDetailCell : UITableViewCell
@@ -15,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSString *_senderText;
     NSString *_stickerPackText;
     NSDate *_timestampDate;
+    id <CKStickerDetailCellDelegate> _delegate;
     CKAnimatedImageView *_stickerView;
     UILabel *_senderLabel;
     UILabel *_stickerPackLabel;
@@ -23,16 +25,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)identifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SKUIItemOfferButton *viewButton; // @synthesize viewButton=_viewButton;
 @property(retain, nonatomic) UIDateLabel *timestampLabel; // @synthesize timestampLabel=_timestampLabel;
 @property(retain, nonatomic) UILabel *stickerPackLabel; // @synthesize stickerPackLabel=_stickerPackLabel;
 @property(retain, nonatomic) UILabel *senderLabel; // @synthesize senderLabel=_senderLabel;
 @property(retain, nonatomic) CKAnimatedImageView *stickerView; // @synthesize stickerView=_stickerView;
+@property(nonatomic) __weak id <CKStickerDetailCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSDate *timestampDate; // @synthesize timestampDate=_timestampDate;
 @property(retain, nonatomic) NSString *stickerPackText; // @synthesize stickerPackText=_stickerPackText;
 @property(retain, nonatomic) NSString *senderText; // @synthesize senderText=_senderText;
 @property(retain, nonatomic) id stickerPreview; // @synthesize stickerPreview=_stickerPreview;
-- (void).cxx_destruct;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (void)prepareForReuse;

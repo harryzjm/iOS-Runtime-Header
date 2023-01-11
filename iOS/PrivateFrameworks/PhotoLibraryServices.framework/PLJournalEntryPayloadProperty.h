@@ -12,10 +12,11 @@
 {
     _Bool _requiresConversion;
     _Bool _isUUIDKey;
+    _Bool _shouldPrefetchRelationship;
     _Bool _isToManySubRelationship;
     NSString *_key;
     unsigned long long _type;
-    NSSet *_relationPropertyNames;
+    NSSet *_relatedEntityPropertyNames;
     NSDictionary *_subRelationshipProperties;
     PLJournalEntryPayloadProperty *_parentProperty;
 }
@@ -23,21 +24,22 @@
 + (id)payloadPropertyWithKey:(id)arg1 subRelationshipProperties:(id)arg2 isToMany:(_Bool)arg3;
 + (id)payloadPropertyWithKey:(id)arg1 andType:(unsigned long long)arg2 requiresConversion:(_Bool)arg3;
 + (id)payloadPropertyWithKey:(id)arg1 andType:(unsigned long long)arg2;
-+ (id)payloadPropertyWithKey:(id)arg1 relationPropertyNames:(id)arg2;
++ (id)payloadPropertyWithKey:(id)arg1 relatedEntityPropertyNames:(id)arg2 shouldPrefetchRelationship:(_Bool)arg3;
 + (id)payloadPropertyForUUID;
-@property(nonatomic) __weak PLJournalEntryPayloadProperty *parentProperty; // @synthesize parentProperty=_parentProperty;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PLJournalEntryPayloadProperty *parentProperty; // @synthesize parentProperty=_parentProperty;
 @property(readonly, nonatomic) _Bool isToManySubRelationship; // @synthesize isToManySubRelationship=_isToManySubRelationship;
+@property(readonly, nonatomic) _Bool shouldPrefetchRelationship; // @synthesize shouldPrefetchRelationship=_shouldPrefetchRelationship;
 @property(readonly, nonatomic) NSDictionary *subRelationshipProperties; // @synthesize subRelationshipProperties=_subRelationshipProperties;
-@property(readonly, nonatomic) NSSet *relationPropertyNames; // @synthesize relationPropertyNames=_relationPropertyNames;
+@property(readonly, nonatomic) NSSet *relatedEntityPropertyNames; // @synthesize relatedEntityPropertyNames=_relatedEntityPropertyNames;
 @property(readonly, nonatomic) _Bool isUUIDKey; // @synthesize isUUIDKey=_isUUIDKey;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isPropertyListSupportedType;
 @property(readonly, nonatomic) _Bool requiresConversion;
 - (id)description;
 - (_Bool)isEqualToKey:(id)arg1;
-- (id)initWithKey:(id)arg1 andType:(unsigned long long)arg2 subRelationshipProperties:(id)arg3 requiresConversion:(_Bool)arg4 relationPropertyNames:(id)arg5 isUUIDKey:(_Bool)arg6 isToManySubRelationship:(_Bool)arg7;
+- (id)initWithKey:(id)arg1 andType:(unsigned long long)arg2 subRelationshipProperties:(id)arg3 requiresConversion:(_Bool)arg4 relatedEntityPropertyNames:(id)arg5 isUUIDKey:(_Bool)arg6 isToManySubRelationship:(_Bool)arg7 shouldPrefetchRelationship:(_Bool)arg8;
 
 @end
 

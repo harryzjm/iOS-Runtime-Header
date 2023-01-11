@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+#import <Email/EMBlockedSenderReader-Protocol.h>
+
+@class NSSet, NSString;
 @protocol EFScheduler, OS_dispatch_queue;
 
-@interface EMBlockedSenderManager : NSObject
+@interface EMBlockedSenderManager : NSObject <EMBlockedSenderReader>
 {
+    struct atomic_flag _didRemoveObservers;
     NSSet *_blockedSenderCache;
     id <EFScheduler> _resetScheduler;
     NSObject<OS_dispatch_queue> *_cacheQueue;
 }
 
++ (_Bool)shouldMoveToTrashForMailboxType:(long long)arg1;
 + (void)setPromptForBlockedSender:(_Bool)arg1;
 + (_Bool)shouldPromptForBlockedSender;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
 @property(retain, nonatomic) id <EFScheduler> resetScheduler; // @synthesize resetScheduler=_resetScheduler;
 @property(retain, nonatomic) NSSet *blockedSenderCache; // @synthesize blockedSenderCache=_blockedSenderCache;
-- (void).cxx_destruct;
 - (void)_unblockPhoneNumber:(id)arg1;
 - (void)_blockPhoneNumber:(id)arg1;
 - (_Bool)areAnyEmailAddressesBlocked:(id)arg1;
@@ -43,7 +47,16 @@
 - (void)_postBlockedSenderListDidChangeNotificationBasedOnBlockedSenderEnabledState;
 - (void)_resetBlockedSenderCache;
 - (void)_blockedSenderListDidChange:(id)arg1;
+- (void)_removeObserversIfNeeded;
+- (void)test_tearDown;
+- (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -29,10 +29,10 @@
 }
 
 + (id)standardUserDefaults;
-@property(copy, nonatomic, getter=isDevicePrivateListeningEnabled) NSNumber *devicePrivateListeningEnabled; // @synthesize devicePrivateListeningEnabled=_devicePrivateListeningEnabled;
-@property(readonly, nonatomic) int musicEQPreset; // @synthesize musicEQPreset=_musicEQPreset;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(copy, nonatomic, getter=isDevicePrivateListeningEnabled) NSNumber *devicePrivateListeningEnabled; // @synthesize devicePrivateListeningEnabled=_devicePrivateListeningEnabled;
+@property(readonly, nonatomic) int musicEQPreset; // @synthesize musicEQPreset=_musicEQPreset;
 - (void)_accountStoreChangedNotification:(id)arg1;
 - (void)_loadAccountProperties;
 - (void)_mobileiPodPrefsDidChange;
@@ -41,6 +41,10 @@
 - (long long)_calculateCurrentMusicRepeatType;
 - (int)_calculateCurrentMusicEQPreset;
 - (void)_addNotificationObserver:(CDUnknownBlockType)arg1 forUserDefaultKey:(struct __CFString *)arg2;
+- (void)setAutoPlayEnabled:(_Bool)arg1 forUserIdentity:(id)arg2;
+- (_Bool)autoPlayEnabledForUserIdentity:(id)arg1;
+- (void)setPrivateListeningEnabled:(_Bool)arg1 forHomeUserIdentifier:(id)arg2 error:(id *)arg3;
+- (_Bool)privateListeningEnabledForHomeUserIdentifier:(id)arg1 error:(id *)arg2;
 - (void)setLastSiriPlaybackContextID:(id)arg1 forPlayerID:(id)arg2;
 - (id)lastSiriPlaybackContextIDForPlayerID:(id)arg1;
 @property(copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled;

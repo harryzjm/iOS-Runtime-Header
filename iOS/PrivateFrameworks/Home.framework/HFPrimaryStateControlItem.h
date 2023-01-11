@@ -15,13 +15,12 @@
 }
 
 + (Class)valueClass;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HFValueTransformer *valueTransformer; // @synthesize valueTransformer=_valueTransformer;
 @property(readonly, copy, nonatomic) NSString *primaryStateCharacteristicType; // @synthesize primaryStateCharacteristicType=_primaryStateCharacteristicType;
-- (void).cxx_destruct;
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)toggleValue;
-- (id)togglePrimaryState;
 - (id)writePrimaryState:(long long)arg1;
 - (id)writeValue:(id)arg1;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;

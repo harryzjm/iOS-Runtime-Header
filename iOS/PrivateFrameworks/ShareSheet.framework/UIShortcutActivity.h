@@ -4,35 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ShareSheet/NSSecureCoding-Protocol.h>
+@class NSArray, NSNumber, NSString, UIImage;
 
-@class NSArray, NSString, UIImage;
-
-@interface UIShortcutActivity <NSSecureCoding>
+@interface UIShortcutActivity
 {
     NSString *_identifier;
+    NSNumber *_sortValue;
     UIImage *_iconImage;
     NSString *_singleUseToken;
     NSString *_name;
     NSArray *_photosAssetIdentifiers;
 }
 
-+ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *photosAssetIdentifiers; // @synthesize photosAssetIdentifiers=_photosAssetIdentifiers;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSString *singleUseToken; // @synthesize singleUseToken=_singleUseToken;
 @property(retain, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
+@property(retain, nonatomic) NSNumber *sortValue; // @synthesize sortValue=_sortValue;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)prepareWithActivityExtensionItemData:(id)arg1;
 - (id)activityTitle;
 - (id)activityType;
 - (id)_actionImage;
 - (long long)_defaultSortGroup;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithApplicationExtension:(id)arg1 singleUseToken:(id)arg2 photosAssetIdentifiers:(id)arg3;
-- (id)initPartialShortcutFromXPCHelperWithName:(id)arg1 identifier:(id)arg2 image:(id)arg3;
+- (id)initPartialShortcutWithName:(id)arg1 identifier:(id)arg2 image:(id)arg3 sortValue:(id)arg4;
 - (id)initWithPartial:(id)arg1;
 
 @end

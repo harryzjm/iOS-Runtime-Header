@@ -8,41 +8,46 @@
 
 #import <UIKitCore/UIScrollViewDelegate-Protocol.h>
 
-@class NSHashTable, NSIndexSet, NSMapTable, NSString, UICollectionView;
+@class NSHashTable, NSIndexSet, NSMapTable, NSString, UICollectionView, _UICollectionViewOrthogonalScrollerEmbeddedScrollView;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewOrthogonalScrollerSectionController : NSObject <UIScrollViewDelegate>
 {
+    _Bool _isHandlingScrollViewDelegateCallout;
     UICollectionView *_collectionView;
     NSMapTable *_scrollViewFromSectionMap;
     NSMapTable *_scrollViewToSectionMap;
     NSHashTable *_frontMostElements;
     NSIndexSet *_currentOrthogonalSectionIndexes;
+    _UICollectionViewOrthogonalScrollerEmbeddedScrollView *_scrollViewCurrentlyBeingConfigured;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isHandlingScrollViewDelegateCallout; // @synthesize isHandlingScrollViewDelegateCallout=_isHandlingScrollViewDelegateCallout;
+@property(retain, nonatomic) _UICollectionViewOrthogonalScrollerEmbeddedScrollView *scrollViewCurrentlyBeingConfigured; // @synthesize scrollViewCurrentlyBeingConfigured=_scrollViewCurrentlyBeingConfigured;
 @property(retain, nonatomic) NSIndexSet *currentOrthogonalSectionIndexes; // @synthesize currentOrthogonalSectionIndexes=_currentOrthogonalSectionIndexes;
 @property(retain, nonatomic) NSHashTable *frontMostElements; // @synthesize frontMostElements=_frontMostElements;
 @property(retain, nonatomic) NSMapTable *scrollViewToSectionMap; // @synthesize scrollViewToSectionMap=_scrollViewToSectionMap;
 @property(retain, nonatomic) NSMapTable *scrollViewFromSectionMap; // @synthesize scrollViewFromSectionMap=_scrollViewFromSectionMap;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-- (void).cxx_destruct;
 - (id)_managedScrollViews;
 - (void)_forceElementsOnTopAsNeeded;
 - (struct CGSize)_contentSizeForSection:(long long)arg1 layout:(id)arg2;
-- (void)_configureScrollView:(id)arg1 forSection:(long long)arg2 baseContentInsets:(struct UIEdgeInsets)arg3;
+- (void)_configureScrollView:(id)arg1 forSection:(long long)arg2 baseContentInsets:(struct UIEdgeInsets)arg3 isInitialConfiguration:(_Bool)arg4;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (id)_addSectionScrollViewForSection:(long long)arg1;
-- (id)_addSectionScrollViewForIndexPath:(id)arg1;
+- (id)_add_sectionScrollViewForIndexPath:(id)arg1;
 - (id)_sectionScrollViewForSection:(long long)arg1;
 - (id)_sectionScrollViewForIndexPath:(id)arg1;
-- (void)restoreLayoutContentOffsetsFromEmbeddedScrollViews;
+- (void)cleanupEmbeddedOrthogonalScrollViews;
 - (void)adjustElementHierarchyOrderingForOrthogonalElementIfNeeded:(id)arg1 layoutAttributes:(id)arg2;
 - (void)reconfigureOrthogonalSectionsForUpdate:(id)arg1;
 - (void)performLayout;
 - (void)addElementIfNeeded:(id)arg1;
 - (void)scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
+- (_Bool)isIndexPathInExtantOrthogonalScroller:(id)arg1;
 - (_Bool)isIndexPathInOrthogonalScrollingSection:(id)arg1;
 - (_Bool)isElementInOrthogonalScrollingSection:(id)arg1;
 - (id)initWithCollectionView:(id)arg1;

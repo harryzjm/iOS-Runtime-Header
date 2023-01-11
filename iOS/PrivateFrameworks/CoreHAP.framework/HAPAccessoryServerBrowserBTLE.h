@@ -8,7 +8,7 @@
 #import <CoreHAP/HAPAccessoryServerBrowserWiProxBTLEDelegate-Protocol.h>
 #import <CoreHAP/HMFLogging-Protocol.h>
 
-@class CBCentralManager, CBConnectionsObserver, HAPAccessoryServerBrowserWiProxBTLE, NSMapTable, NSMutableArray, NSMutableOrderedSet, NSMutableSet, NSObject, NSString;
+@class CBCentralManager, CBConnectionsObserver, HAPAccessoryServerBrowserWiProxBTLE, NSMapTable, NSMutableArray, NSMutableOrderedSet, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserBTLEDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HAPAccessoryServerBrowserBTLE <CBCentralManagerDelegate, HAPAccessoryServerBrowserWiProxBTLEDelegate, HMFLogging>
@@ -21,7 +21,6 @@
     CBConnectionsObserver *_connectionsObserver;
     HAPAccessoryServerBrowserWiProxBTLE *_hapWiProxBLEBrowser;
     NSMapTable *_discoveredPeripheralsWithAccessories;
-    NSMutableSet *_pairedAccessoryIdentifiers;
     NSMapTable *_recentlySeenPairedPeripherals;
     NSMutableArray *_powerOnCentralManagerCompletions;
     CDUnknownBlockType _reachabilityCompletion;
@@ -34,6 +33,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(nonatomic) long long scanState; // @synthesize scanState=_scanState;
 @property(retain, nonatomic) NSMapTable *identifersWithReachabilityScanTuples; // @synthesize identifersWithReachabilityScanTuples=_identifersWithReachabilityScanTuples;
 @property(retain, nonatomic) NSMutableArray *targetedScanAccessoryIdentifiers; // @synthesize targetedScanAccessoryIdentifiers=_targetedScanAccessoryIdentifiers;
@@ -42,9 +42,7 @@
 @property(retain, nonatomic) NSMutableOrderedSet *peripheralsWithConnectionRequests; // @synthesize peripheralsWithConnectionRequests=_peripheralsWithConnectionRequests;
 @property(copy, nonatomic) CDUnknownBlockType reachabilityCompletion; // @synthesize reachabilityCompletion=_reachabilityCompletion;
 @property(retain, nonatomic) NSMutableArray *powerOnCentralManagerCompletions; // @synthesize powerOnCentralManagerCompletions=_powerOnCentralManagerCompletions;
-@property(nonatomic, getter=isPerformingGeneralScan) _Bool performingGeneralScan; // @synthesize performingGeneralScan=_performingGeneralScan;
 @property(retain, nonatomic) NSMapTable *recentlySeenPairedPeripherals; // @synthesize recentlySeenPairedPeripherals=_recentlySeenPairedPeripherals;
-@property(retain) NSMutableSet *pairedAccessoryIdentifiers; // @synthesize pairedAccessoryIdentifiers=_pairedAccessoryIdentifiers;
 @property(retain, nonatomic) NSMapTable *discoveredPeripheralsWithAccessories; // @synthesize discoveredPeripheralsWithAccessories=_discoveredPeripheralsWithAccessories;
 @property(retain, nonatomic) HAPAccessoryServerBrowserWiProxBTLE *hapWiProxBLEBrowser; // @synthesize hapWiProxBLEBrowser=_hapWiProxBLEBrowser;
 @property(retain, nonatomic) CBConnectionsObserver *connectionsObserver; // @synthesize connectionsObserver=_connectionsObserver;
@@ -52,7 +50,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <HAPAccessoryServerBrowserBTLEDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long qosLimits; // @synthesize qosLimits=_qosLimits;
-- (void).cxx_destruct;
 - (void)_handleTargetedScanTimeout;
 - (void)_updateTargetedScanTimer;
 - (_Bool)_shouldCreateHAPAccessoryServerWithIdentifier:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 forPeripheral:(id)arg6 advertisementFormat:(unsigned long long)arg7 setupHash:(id)arg8 stateChanged:(_Bool *)arg9 connectReason:(unsigned char *)arg10;
@@ -81,10 +78,11 @@
 - (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (void)_performTimedScanForIdentifiers:(id)arg1 workQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_removeIdentifiersForReachabilityScan;
+- (id)_recentlySeenPairedPeripheralTupleWithPeripheral:(id)arg1;
 - (id)_getDiscoveredPeripheralMatchingIdentifier:(id)arg1;
 - (void)_forgetPairedAccesoryWithIdentifier:(id)arg1;
-- (void)forgetPairedAccesoryWithIdentifier:(id)arg1;
-- (void)registerPairedAccessoryWithIdentifier:(id)arg1;
+- (void)resetPairedAccessories;
+- (void)deRegisterAccessoryWithIdentifier:(id)arg1;
 - (void)markNotifyingCharacteristicUpdatedForIdentifier:(id)arg1;
 - (void)configureBTLEQoSLimits:(unsigned long long)arg1;
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(id)arg1;
@@ -113,6 +111,8 @@
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (long long)linkType;
 - (id)initWithQueue:(id)arg1;
+@property(readonly, nonatomic, getter=isPerformingGeneralScan) _Bool performingGeneralScan; // @synthesize performingGeneralScan=_performingGeneralScan;
+- (void)setPerformingGeneralScan:(_Bool)arg1;
 - (void)updateCachedStateForIdentifier:(id)arg1 stateNumber:(id)arg2;
 - (void)updateBroadcastKeyForIdentifer:(id)arg1 key:(id)arg2 keyUpdatedStateNumber:(id)arg3 keyUpdatedTime:(double)arg4;
 - (void)saveCacheToDisk:(id)arg1;

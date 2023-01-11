@@ -20,6 +20,9 @@
 - (void)removeAttachmentForURL:(id)arg1;
 - (_Bool)updateAttachment:(id)arg1 withNewData:(id)arg2;
 - (void)loadAttachmentURL:(id)arg1 forContextID:(id)arg2;
+- (id)_contentIDWithoutBracket:(id)arg1;
+- (id)_filenameWithExtensionForFilename:(id)arg1 mimeType:(id)arg2;
+- (id)attachmentForItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4 context:(id)arg5;
 - (id)attachmentForData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4 context:(id)arg5;
 - (id)_composeAttachmentDataProviderForContext:(id)arg1;
 - (id)attachmentForCID:(id)arg1;

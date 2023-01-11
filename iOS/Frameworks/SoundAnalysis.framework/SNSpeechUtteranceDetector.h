@@ -8,12 +8,11 @@
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
-@class NSString, SNSystemConfiguration;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SNSpeechUtteranceDetector : NSObject <SNAnalyzing>
 {
-    SNSystemConfiguration *_systemConfiguration;
     long long _requestType;
     shared_ptr_f6ac7592 _graph;
 }
@@ -28,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (id)sharedProcessorConfiguration;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (shared_ptr_f6ac7592)createGraph;
 - (id)initWithRequestType:(long long)arg1;
 - (id)init;
 

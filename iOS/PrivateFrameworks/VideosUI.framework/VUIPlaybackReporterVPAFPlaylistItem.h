@@ -19,11 +19,11 @@ __attribute__((visibility("hidden")))
     struct _NSRange _timeRange;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property(nonatomic) struct _NSRange timeRange; // @synthesize timeRange=_timeRange;
 @property(retain, nonatomic) NSArray *eventData; // @synthesize eventData=_eventData;
 @property(nonatomic) unsigned long long overallPosition; // @synthesize overallPosition=_overallPosition;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)initWithPosition:(unsigned long long)arg1 duration:(unsigned long long)arg2 eventData:(id)arg3;
 
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) unsigned long long startOverallPosition;
+@property(readonly, nonatomic) unsigned long long startPosition;
 @property(readonly) Class superclass;
 
 @end

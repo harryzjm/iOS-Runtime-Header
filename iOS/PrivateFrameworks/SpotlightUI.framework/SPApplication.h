@@ -13,27 +13,34 @@
 @interface SPApplication : NSObject <NSSecureCoding>
 {
     NSString *_longDisplayName;
-    _Bool _isWebClip;
     NSString *_displayIdentifier;
     NSMutableArray *_keywords;
     NSURL *_URL;
     NSString *_shortVersion;
+    NSString *_appBundleIdentifier;
+    long long _webClipType;
+    NSString *_subtitle;
     NSString *_displayNameInternal;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) NSString *displayNameInternal; // @synthesize displayNameInternal=_displayNameInternal;
-@property(nonatomic) _Bool isWebClip; // @synthesize isWebClip=_isWebClip;
+@property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(nonatomic) long long webClipType; // @synthesize webClipType=_webClipType;
+@property(retain, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property(retain, nonatomic) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(retain, nonatomic) NSMutableArray *keywords; // @synthesize keywords=_keywords;
 @property(retain, nonatomic) NSString *displayIdentifier; // @synthesize displayIdentifier=_displayIdentifier;
-- (void).cxx_destruct;
+@property(readonly) NSString *utiType;
 @property(retain, nonatomic) NSString *longDisplayName;
 @property(retain, nonatomic) NSString *displayName;
 @property(readonly, nonatomic) _Bool displayNameLoaded;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+@property(readonly) _Bool isAppClip;
+@property(readonly) _Bool isWebClip;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

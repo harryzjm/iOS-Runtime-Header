@@ -30,6 +30,7 @@
     HAPRelayStream *_stream;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HAPRelayStream *stream; // @synthesize stream=_stream;
 @property(nonatomic) __weak HAPCharacteristic *pairingsCharacteristic; // @synthesize pairingsCharacteristic=_pairingsCharacteristic;
 @property(nonatomic) _Bool shouldDiscover; // @synthesize shouldDiscover=_shouldDiscover;
@@ -45,7 +46,6 @@
 @property(readonly, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
 @property(readonly, nonatomic) NSMapTable *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
 @property(readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (void)fragmentationStream:(id)arg1 didReceiveData:(id)arg2 transactionIdentifier:(unsigned short)arg3 error:(id)arg4;
 - (void)fragmentationStream:(id)arg1 didCloseWithError:(id)arg2;

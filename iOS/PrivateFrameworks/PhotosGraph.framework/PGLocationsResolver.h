@@ -21,6 +21,7 @@
     NSMapTable *_resolvedLocationNodesToAddressNodesMapTable;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldCreateLocationToAddressMapTable; // @synthesize shouldCreateLocationToAddressMapTable=_shouldCreateLocationToAddressMapTable;
 @property(retain, nonatomic) NSArray *resolvedLocationNodes; // @synthesize resolvedLocationNodes=_resolvedLocationNodes;
 @property(retain, nonatomic) NSArray *resolvedMomentNodes; // @synthesize resolvedMomentNodes=_resolvedMomentNodes;
@@ -29,12 +30,11 @@
 @property(retain, nonatomic) NSArray *sortedMoments; // @synthesize sortedMoments=_sortedMoments;
 @property(retain, nonatomic) PGIncompleteLocationResolver *incompleteLocationResolver; // @synthesize incompleteLocationResolver=_incompleteLocationResolver;
 @property(nonatomic) float maximumMissingLocationsThreshold; // @synthesize maximumMissingLocationsThreshold=_maximumMissingLocationsThreshold;
-- (void).cxx_destruct;
 - (void)_resolve;
 - (void)setCreateLocationToAddressMapTable:(_Bool)arg1;
 @property(readonly, nonatomic) NSMapTable *resolvedLocationNodesToAddressNodesMapTable; // @synthesize resolvedLocationNodesToAddressNodesMapTable=_resolvedLocationNodesToAddressNodesMapTable;
-- (id)initWithSortedMoments:(id)arg1 incompleteLocationResolver:(id)arg2;
-- (id)initWithMoments:(id)arg1 incompleteLocationResolver:(id)arg2;
+- (id)initWithSortedMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2;
 
 @end
 

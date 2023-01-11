@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (long long)_accessibilityExpandedStatus;
 - (unsigned long long)accessibilityTraits;
+- (_Bool)isAccessibilityElement;
 - (id)accessibilityLabel;
 - (struct CGPoint)accessibilityActivationPoint;
 

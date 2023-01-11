@@ -35,17 +35,17 @@
 - (void)dealloc;
 - (void)didChangeValueForKey:(id)arg1;
 - (_Bool)shouldArchiveValueForKey:(id)arg1;
-@property double drawableTimeoutSeconds;
-@property double inputTime;
-@property _Bool exclusiveMode;
-@property _Bool lowLatency;
-@property _Bool serverSyncEnabled;
-@property _Bool fenceEnabled;
-@property _Bool nonDefaultColorspace;
+@property(nonatomic) double drawableTimeoutSeconds;
+@property(nonatomic) double inputTime;
+@property(nonatomic) _Bool exclusiveMode;
+@property(nonatomic) _Bool lowLatency;
+@property(nonatomic) _Bool serverSyncEnabled;
+@property(nonatomic) _Bool fenceEnabled;
+@property(nonatomic) _Bool nonDefaultColorspace;
 - (void)removeBackBuffers;
 - (void)discardContents;
 - (_Bool)isDrawableAvailable;
-@property(readonly) unsigned long long displayCompositingInternalStatus;
+@property(readonly, nonatomic) unsigned long long displayCompositingInternalStatus;
 
 @end
 

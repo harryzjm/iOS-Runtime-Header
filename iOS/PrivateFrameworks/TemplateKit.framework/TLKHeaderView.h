@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
+
 @class NSString, TLKImage, TLKImageView, TLKLabel, TLKMultilineText, TLKRichText, TLKRoundedCornerLabel, TLKStackView;
 
-@interface TLKHeaderView
+@interface TLKHeaderView <NUIContainerViewDelegate>
 {
+    _Bool _subtitleIsEmphasized;
+    _Bool _useCompactWidth;
     TLKImage *_image;
     TLKMultilineText *_title;
     TLKRichText *_subtitle;
@@ -27,6 +31,7 @@
     TLKRoundedCornerLabel *_roundedCornerLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKRoundedCornerLabel *roundedCornerLabel; // @synthesize roundedCornerLabel=_roundedCornerLabel;
 @property(retain, nonatomic) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
 @property(retain, nonatomic) TLKStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
@@ -36,29 +41,33 @@
 @property(retain, nonatomic) TLKLabel *trailingTextLabel; // @synthesize trailingTextLabel=_trailingTextLabel;
 @property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;
+@property(nonatomic) _Bool useCompactWidth; // @synthesize useCompactWidth=_useCompactWidth;
 @property(nonatomic) long long axis; // @synthesize axis=_axis;
 @property(retain, nonatomic) NSString *roundedBorderText; // @synthesize roundedBorderText=_roundedBorderText;
 @property(retain, nonatomic) TLKImage *subtitleImage; // @synthesize subtitleImage=_subtitleImage;
 @property(retain, nonatomic) TLKMultilineText *trailingText; // @synthesize trailingText=_trailingText;
 @property(retain, nonatomic) TLKMultilineText *footnote; // @synthesize footnote=_footnote;
+@property(nonatomic) _Bool subtitleIsEmphasized; // @synthesize subtitleIsEmphasized=_subtitleIsEmphasized;
 @property(retain, nonatomic) TLKRichText *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 @property(retain, nonatomic) TLKImage *image; // @synthesize image=_image;
-- (void).cxx_destruct;
 - (id)roundedCornerLabelText;
 - (id)hasImage;
 - (id)footnoteLabelText;
-- (id)subtitleLabelText;
-- (id)titleLabelText;
-- (id)titleLabelFont;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (_Bool)usesDefaultLayoutMargins;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)observedPropertiesChanged;
 - (id)setupContentView;
 
 // Remaining properties
 @property(retain, nonatomic) TLKStackView *contentView; // @dynamic contentView;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

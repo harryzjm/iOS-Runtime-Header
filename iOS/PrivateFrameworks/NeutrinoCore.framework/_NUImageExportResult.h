@@ -14,8 +14,8 @@
     NSData *_destinationData;
 }
 
-@property(retain) NSData *destinationData; // @synthesize destinationData=_destinationData;
 - (void).cxx_destruct;
+@property(retain) NSData *destinationData; // @synthesize destinationData=_destinationData;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

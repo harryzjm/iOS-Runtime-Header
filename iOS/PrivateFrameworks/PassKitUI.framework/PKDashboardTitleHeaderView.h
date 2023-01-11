@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIButton, UILabel;
+@class NSString, UIButton, UIColor, UILabel;
 
 @interface PKDashboardTitleHeaderView
 {
@@ -13,22 +13,27 @@
     _Bool _isTemplateLayout;
     _Bool _isCompactUI;
     _Bool _useCompactTopInset;
+    NSString *_title;
+    UIColor *_titleColor;
+    unsigned long long _titleStyle;
     NSString *_actionTitle;
     CDUnknownBlockType _action;
 }
 
 + (double)defaultHorizontalInset;
 + (id)defaultBackgroundColor;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
 @property(copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
+@property(nonatomic) unsigned long long titleStyle; // @synthesize titleStyle=_titleStyle;
+@property(copy, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool useCompactTopInset; // @synthesize useCompactTopInset=_useCompactTopInset;
-- (void).cxx_destruct;
 - (void)_buttonPressed:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-@property(readonly, nonatomic) UILabel *titleLabel;
 - (void)resetFonts;
 - (void)createSubviews;
 - (void)prepareForReuse;

@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCPrivateDataContext-Protocol.h>
 
-@class FCIssueReadingHistory, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
+@class FCAudioPlaylist, FCIssueReadingHistory, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
 @protocol FCContentContext, FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @interface FCPrivateDataContext : NSObject <FCPrivateDataContext>
@@ -19,6 +19,7 @@
     FCPrivateChannelMembershipController *_privateChannelMembershipController;
     FCReadingHistory *_readingHistory;
     FCReadingList *_readingList;
+    FCAudioPlaylist *_audioPlaylist;
     FCSubscriptionList *_subscriptionList;
     FCUserInfo *_userInfo;
     NSString *_privateDataDirectory;
@@ -29,17 +30,18 @@
     id <FCContentContext> _contentContext;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property(retain, nonatomic) id <FCPrivateDataContextInternal> internalPrivateDataContext; // @synthesize internalPrivateDataContext=_internalPrivateDataContext;
 @property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property(readonly, nonatomic, getter=isPrivateDataSyncingEnabled) _Bool privateDataSyncingEnabled; // @synthesize privateDataSyncingEnabled=_privateDataSyncingEnabled;
 @property(readonly, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
-- (void).cxx_destruct;
 - (id)privateStoreWithName:(id)arg1 version:(unsigned long long)arg2 options:(unsigned long long)arg3;
 @property(readonly, copy, nonatomic) NSString *privateDataDirectory; // @synthesize privateDataDirectory=_privateDataDirectory;
 @property(readonly, nonatomic) id <FCPushNotificationHandling> privatePushNotificationHandler; // @synthesize privatePushNotificationHandler=_privatePushNotificationHandler;
 @property(readonly, nonatomic) FCUserInfo *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, nonatomic) FCSubscriptionList *subscriptionList; // @synthesize subscriptionList=_subscriptionList;
+@property(readonly, nonatomic) FCAudioPlaylist *audioPlaylist; // @synthesize audioPlaylist=_audioPlaylist;
 @property(readonly, nonatomic) FCReadingList *readingList; // @synthesize readingList=_readingList;
 @property(readonly, nonatomic) FCReadingHistory *readingHistory; // @synthesize readingHistory=_readingHistory;
 @property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController; // @synthesize privateChannelMembershipController=_privateChannelMembershipController;

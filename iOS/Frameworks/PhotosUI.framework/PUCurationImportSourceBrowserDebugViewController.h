@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)importSourceNameForImportSource:(long long)arg1;
 - (void)_fetchImportSources;
 - (void)viewDidLoad;
 

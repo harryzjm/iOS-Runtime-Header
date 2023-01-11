@@ -8,20 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPAccessPointCorrections, GEORPAmenityCorrections, GEORPCorrectedCoordinate, GEORPMapLocation, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEORPAccessPointCorrections, GEORPAmenityCorrections, GEORPCorrectedCoordinate, GEORPMapLocation, GEORPPlaceContainmentCorrections, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPTransitPoiCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPAccessPointCorrections *_accessPoint;
     GEORPAmenityCorrections *_amenity;
     NSMutableArray *_businessHours;
+    GEORPPlaceContainmentCorrections *_containmentCorrections;
     GEORPCorrectedCoordinate *_coordinate;
     GEORPMapLocation *_mapLocation;
     NSString *_name;
     NSString *_originalName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _lineScheduleDelay;
     _Bool _lineShapeIncorrect;
     struct {
@@ -31,20 +34,12 @@
         unsigned int read_accessPoint:1;
         unsigned int read_amenity:1;
         unsigned int read_businessHours:1;
+        unsigned int read_containmentCorrections:1;
         unsigned int read_coordinate:1;
         unsigned int read_mapLocation:1;
         unsigned int read_name:1;
         unsigned int read_originalName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_accessPoint:1;
-        unsigned int wrote_amenity:1;
-        unsigned int wrote_businessHours:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_mapLocation:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_originalName:1;
-        unsigned int wrote_lineScheduleDelay:1;
-        unsigned int wrote_lineShapeIncorrect:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -61,37 +56,36 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPPlaceContainmentCorrections *containmentCorrections;
+@property(readonly, nonatomic) _Bool hasContainmentCorrections;
 @property(retain, nonatomic) NSString *originalName;
 @property(readonly, nonatomic) _Bool hasOriginalName;
-- (void)_readOriginalName;
 @property(retain, nonatomic) GEORPAccessPointCorrections *accessPoint;
 @property(readonly, nonatomic) _Bool hasAccessPoint;
-- (void)_readAccessPoint;
 @property(nonatomic) _Bool hasLineScheduleDelay;
 @property(nonatomic) _Bool lineScheduleDelay;
 @property(nonatomic) _Bool hasLineShapeIncorrect;
 @property(nonatomic) _Bool lineShapeIncorrect;
 @property(retain, nonatomic) GEORPMapLocation *mapLocation;
 @property(readonly, nonatomic) _Bool hasMapLocation;
-- (void)_readMapLocation;
 @property(retain, nonatomic) GEORPCorrectedCoordinate *coordinate;
 @property(readonly, nonatomic) _Bool hasCoordinate;
-- (void)_readCoordinate;
 - (id)businessHoursAtIndex:(unsigned long long)arg1;
 - (unsigned long long)businessHoursCount;
-- (void)_addNoFlagsBusinessHours:(id)arg1;
 - (void)addBusinessHours:(id)arg1;
 - (void)clearBusinessHours;
 @property(retain, nonatomic) NSMutableArray *businessHours;
-- (void)_readBusinessHours;
 @property(retain, nonatomic) GEORPAmenityCorrections *amenity;
 @property(readonly, nonatomic) _Bool hasAmenity;
-- (void)_readAmenity;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

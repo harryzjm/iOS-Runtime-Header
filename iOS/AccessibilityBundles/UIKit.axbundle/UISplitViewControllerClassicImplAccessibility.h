@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilitySpeakThisViewController;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateDisplayModeButtonItem;
 - (void)_axApplyDisplayModeLabel;

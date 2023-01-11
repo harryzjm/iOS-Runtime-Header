@@ -12,10 +12,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_axShouldTakeBackFocus;
+- (void)_axTakeBakeFocusWithHeading:(unsigned long long)arg1;
 - (void)__handleFocusMovementAction:(id)arg1;
+- (void)_axSetWasFocusEnabled:(_Bool)arg1;
+- (_Bool)_axGetWasFocusEnabled;
 - (id)disconnect;
 - (void)__setViewServiceIsDisplayingPopover:(_Bool)arg1;
 - (void)_awakeWithConnectionInfo:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation:(_Bool)arg1 retryTime:(double)arg2;
 - (void)_accessibilityLoadAccessibilityInformation:(_Bool)arg1;
 - (void)_axRemoteViewLoadRequest:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;

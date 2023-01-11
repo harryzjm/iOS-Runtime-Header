@@ -19,23 +19,29 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBSystemServiceServerStateDumpDelegate> stateDumpDelegate; // @synthesize stateDumpDelegate=_stateDumpDelegate;
 @property(nonatomic) __weak id <SBSystemServiceServerTestAutomationDelegate> testAutomationDelegate; // @synthesize testAutomationDelegate=_testAutomationDelegate;
 @property(nonatomic) __weak id <SBSystemServiceServerSoftwareUpdateDelegate> softwareUpdateDelegate; // @synthesize softwareUpdateDelegate=_softwareUpdateDelegate;
 @property(nonatomic) __weak id <SBSystemServiceServerHardwareButtonDelegate> hardwareButtonDelegate; // @synthesize hardwareButtonDelegate=_hardwareButtonDelegate;
 @property(nonatomic) __weak id <SBSystemServiceServerBiometricsDelegate> biometricsDelegate; // @synthesize biometricsDelegate=_biometricsDelegate;
 @property(nonatomic) __weak id <SBSystemServiceServerAppSwitcherDelegate> appSwitcherDelegate; // @synthesize appSwitcherDelegate=_appSwitcherDelegate;
-- (void).cxx_destruct;
 - (void)_handleStateDumpServiceClientMessageTypeDisableRemoteStateDump:(id)arg1 fromClient:(id)arg2;
 - (void)_handleStateDumpServiceClientMessageTypeEnableRemoteStateDump:(id)arg1 fromClient:(id)arg2;
 - (void)_handleStateDumpServiceClientMessageTypeStateDump:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationAddSpecificWidgetToPageWithSize:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationAddWidgetsToEachPage:(id)arg1 fromClient:(id)arg2;
+- (void)_handleLoadStashedSwitcherModelFromPath:(id)arg1 fromClient:(id)arg2;
+- (void)_handleStashSwitcherModelToPath:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationGetScencesForBundleIdentifier:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetTestRunnerRecoveryApplicationBundleIdentifier:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationRequestHUDHiddenAssertion:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationBlockApplicationForScreenTime:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationResetToHomeScreen:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationSetMallocStackLoggingState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetOrientationLockState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetIdleTimerState:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationSetHiddenFeatureState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetAlertState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSuspendAllDisplays:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSoftwareUpdateGetPasscodePolicy:(id)arg1 fromClient:(id)arg2;

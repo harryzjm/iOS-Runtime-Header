@@ -12,18 +12,22 @@
 
 @interface VSAssetBase : NSObject <NSSecureCoding>
 {
+    _Bool _isPurgeable;
     NSString *_bundleIdentifier;
     NSNumber *_compatibilityVersion;
     NSNumber *_contentVersion;
     NSString *_masteredVersion;
+    NSNumber *_downloadSize;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isPurgeable; // @synthesize isPurgeable=_isPurgeable;
+@property(copy, nonatomic) NSNumber *downloadSize; // @synthesize downloadSize=_downloadSize;
 @property(copy, nonatomic) NSString *masteredVersion; // @synthesize masteredVersion=_masteredVersion;
 @property(copy, nonatomic) NSNumber *contentVersion; // @synthesize contentVersion=_contentVersion;
 @property(copy, nonatomic) NSNumber *compatibilityVersion; // @synthesize compatibilityVersion=_compatibilityVersion;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

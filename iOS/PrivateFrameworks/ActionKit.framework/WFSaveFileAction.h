@@ -4,21 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol WFFileStorageServiceOperation;
+@protocol WFFileStorageServiceOperation, WFSaveFileActionUserInterface;
 
 @interface WFSaveFileAction
 {
+    id <WFSaveFileActionUserInterface> _actionUserInterface;
     id <WFFileStorageServiceOperation> _saveOperation;
 }
 
-@property(retain, nonatomic) id <WFFileStorageServiceOperation> saveOperation; // @synthesize saveOperation=_saveOperation;
++ (id)userInterfaceXPCInterface;
++ (id)userInterfaceProtocol;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <WFFileStorageServiceOperation> saveOperation; // @synthesize saveOperation=_saveOperation;
+@property(retain, nonatomic) id <WFSaveFileActionUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
+- (id)targetContentAttribution;
 - (_Bool)outputsMultipleItems;
 - (_Bool)inputsMultipleItems;
 - (id)showPickerKey;
 - (id)filePathKey;
 - (void)finishRunningWithError:(id)arg1;
 - (void)cancel;
+- (void)runWithRemoteUserInterface:(id)arg1 path:(id)arg2 input:(id)arg3 storageService:(id)arg4;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 
 @end

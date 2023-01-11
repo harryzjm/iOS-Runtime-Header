@@ -9,7 +9,7 @@
 #import <PhotosUI/PUAirPlayRouteObserverRegistryDelegate-Protocol.h>
 #import <PhotosUI/PUAirPlayScreenReceiver-Protocol.h>
 
-@class NSDate, NSString, PUAirPlayContentRegistry, PUAirPlayRootViewController, PUAirPlayRouteObserverRegistry, PUAirPlayScreen, PUAirPlayScreenDetector, UIViewController;
+@class AVOutputContext, NSDate, NSString, PUAirPlayContentRegistry, PUAirPlayRootViewController, PUAirPlayRouteObserverRegistry, PUAirPlayScreen, PUAirPlayScreenDetector, UIViewController;
 
 @interface PHAirPlayScreenController : NSObject <PUAirPlayScreenReceiver, PUAirPlayRouteObserverRegistryDelegate>
 {
@@ -22,10 +22,17 @@
     NSDate *__lastScreenConnectDate;
     NSDate *__lastScreenRequestDate;
     long long __lastScreenRequestOrigin;
+    long long _airPlaySessionSignpost;
+    id _secondDisplayModeToken;
+    AVOutputContext *_outputContext;
 }
 
 + (struct __CFString *)_keyForScreenRequestOrigin:(long long)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) AVOutputContext *outputContext; // @synthesize outputContext=_outputContext;
+@property(retain, nonatomic) id secondDisplayModeToken; // @synthesize secondDisplayModeToken=_secondDisplayModeToken;
+@property(nonatomic) long long airPlaySessionSignpost; // @synthesize airPlaySessionSignpost=_airPlaySessionSignpost;
 @property(nonatomic, setter=_setLastScreenRequestOrigin:) long long _lastScreenRequestOrigin; // @synthesize _lastScreenRequestOrigin=__lastScreenRequestOrigin;
 @property(retain, nonatomic, setter=_setLastScreenRequestDate:) NSDate *_lastScreenRequestDate; // @synthesize _lastScreenRequestDate=__lastScreenRequestDate;
 @property(retain, nonatomic, setter=_setLastScreenConnectDate:) NSDate *_lastScreenConnectDate; // @synthesize _lastScreenConnectDate=__lastScreenConnectDate;
@@ -35,9 +42,11 @@
 @property(retain, nonatomic, setter=_setRootViewController:) PUAirPlayRootViewController *_rootViewController; // @synthesize _rootViewController=__rootViewController;
 @property(retain, nonatomic, setter=_setScreenDetector:) PUAirPlayScreenDetector *_screenDetector; // @synthesize _screenDetector=__screenDetector;
 @property(retain, nonatomic, setter=_setCurrentScreen:) PUAirPlayScreen *_currentScreen; // @synthesize _currentScreen=__currentScreen;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *debugDescription;
 - (id)_screenAvailabilityName;
+- (void)_sceneDidActivate:(id)arg1;
+- (void)_sceneWillDeactivate:(id)arg1;
+- (void)_outputDeviceDidChange:(id)arg1;
 - (void)_recordSessionEnded;
 - (void)_recordSessionBeganWithScreen:(id)arg1;
 - (void)_notifyWillRequestAirPlayScreenFromSource:(long long)arg1;
@@ -53,6 +62,9 @@
 - (void)registerContentProvider:(id)arg1;
 - (_Bool)_shouldIgnoreScreen:(id)arg1;
 - (id)_findAvailableScreen;
+- (void)_handleSettingHighResolutionContent:(_Bool)arg1 forRootController:(id)arg2 content:(id)arg3;
+- (void)_switchModeForHighResolutionContent:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_updateSecondDisplayModeWithCurrentContent;
 - (void)_updateScreenContentWithShouldTryToFindAvailableScreen:(_Bool)arg1;
 - (void)_cacheDisplayedContentIfNeededForUnregisteringProvider:(id)arg1;
 - (id)_currentContent;

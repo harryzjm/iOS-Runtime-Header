@@ -11,6 +11,8 @@
 }
 
 - (void)_observeOtherSetting:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)observePointerLockStatusWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeAccessibilityContrastWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSafeAreaInsetsLandscapeRightWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSafeAreaInsetsPortraitUpsideDownWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSafeAreaInsetsLandscapeLeftWithBlock:(CDUnknownBlockType)arg1;

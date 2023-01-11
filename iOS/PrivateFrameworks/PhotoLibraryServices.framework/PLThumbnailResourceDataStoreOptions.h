@@ -11,8 +11,8 @@
     NSNumber *_overridingThumbnailIndex;
 }
 
-@property(retain, nonatomic) NSNumber *overridingThumbnailIndex; // @synthesize overridingThumbnailIndex=_overridingThumbnailIndex;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *overridingThumbnailIndex; // @synthesize overridingThumbnailIndex=_overridingThumbnailIndex;
 
 @end
 

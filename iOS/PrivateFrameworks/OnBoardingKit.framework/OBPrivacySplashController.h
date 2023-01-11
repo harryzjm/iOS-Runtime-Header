@@ -13,7 +13,6 @@
     _Bool _allowsOpeningSafari;
     _Bool _showLinkToPrivacyGateway;
     _Bool _showsLinkToUnifiedAbout;
-    _Bool _useSmallTitle;
     _Bool _forceLargeMargins;
     _Bool _useModalStyle;
     _Bool _isCombined;
@@ -27,6 +26,7 @@
 }
 
 + (id)splashPageWithBundleIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType defaultButtonHandler; // @synthesize defaultButtonHandler=_defaultButtonHandler;
 @property(retain) UIButton *unifiedAboutButton; // @synthesize unifiedAboutButton=_unifiedAboutButton;
 @property(retain) UILabel *linkToPrivacyGateway; // @synthesize linkToPrivacyGateway=_linkToPrivacyGateway;
@@ -37,12 +37,11 @@
 @property unsigned long long displayDeviceType; // @synthesize displayDeviceType=_displayDeviceType;
 @property(retain) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property _Bool forceLargeMargins; // @synthesize forceLargeMargins=_forceLargeMargins;
-@property _Bool useSmallTitle; // @synthesize useSmallTitle=_useSmallTitle;
 @property _Bool showsLinkToUnifiedAbout; // @synthesize showsLinkToUnifiedAbout=_showsLinkToUnifiedAbout;
 @property(nonatomic) _Bool showLinkToPrivacyGateway; // @synthesize showLinkToPrivacyGateway=_showLinkToPrivacyGateway;
 @property _Bool allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
 @property _Bool suppressPerPageAnalyticsLogging; // @synthesize suppressPerPageAnalyticsLogging=_suppressPerPageAnalyticsLogging;
-- (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (void)defaultButtonPressed:(id)arg1;
 - (void)updateFontForUnifiedAboutButton;
 - (void)updateFontForPrivacyGateway;

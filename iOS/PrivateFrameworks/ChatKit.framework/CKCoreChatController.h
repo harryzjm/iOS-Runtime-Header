@@ -7,8 +7,8 @@
 #import <ChatKit/IMChatSendProgressDelegate-Protocol.h>
 #import <ChatKit/IMSystemMonitorListener-Protocol.h>
 
-@class CKConversation, CKFullScreenBalloonViewController, CKScheduledUpdater, CKTranscriptCollectionView, CKTranscriptCollectionViewController, IMChat, NSString, STLockoutViewController, UIProgressView;
-@protocol CKCoreChatControllerDelegate;
+@class CKConversation, CKFullScreenBalloonViewController, CKMacToolbarController, CKScheduledUpdater, CKTranscriptCollectionView, CKViewController, IMChat, NSString, STLockoutViewController, UIProgressView;
+@protocol CKCoreChatControllerDelegate, CKCoreTranscriptControllerProtocol;
 
 @interface CKCoreChatController <IMChatSendProgressDelegate, IMSystemMonitorListener>
 {
@@ -22,21 +22,28 @@
     _Bool _isShowingLockoutView;
     id <CKCoreChatControllerDelegate> _delegate;
     CKConversation *_conversation;
-    CKTranscriptCollectionViewController *_collectionViewController;
+    CKViewController<CKCoreTranscriptControllerProtocol> *_collectionViewController;
     CKScheduledUpdater *_refreshServiceForSendingUpdater;
     UIProgressView *_progressBar;
     double _sendProgress;
     unsigned long long _sendProgressSendCount;
     unsigned long long _sendProgressTotalCount;
     CKFullScreenBalloonViewController *_fullScreenBalloonViewController;
+    long long _acknowledgmentToSend;
     CDUnknownBlockType _overrideScrollBlock;
     STLockoutViewController *_lockoutViewController;
+    CKMacToolbarController *_macToolbarController;
 }
 
++ (Class)transcriptControllerClass;
++ (Class)_gradientReferenceViewClass;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKMacToolbarController *macToolbarController; // @synthesize macToolbarController=_macToolbarController;
 @property(nonatomic) _Bool isShowingLockoutView; // @synthesize isShowingLockoutView=_isShowingLockoutView;
 @property(retain, nonatomic) STLockoutViewController *lockoutViewController; // @synthesize lockoutViewController=_lockoutViewController;
 @property(copy, nonatomic) CDUnknownBlockType overrideScrollBlock; // @synthesize overrideScrollBlock=_overrideScrollBlock;
 @property(nonatomic) _Bool disableAnimationsUnderTest; // @synthesize disableAnimationsUnderTest=_disableAnimationsUnderTest;
+@property(nonatomic) long long acknowledgmentToSend; // @synthesize acknowledgmentToSend=_acknowledgmentToSend;
 @property(retain, nonatomic) CKFullScreenBalloonViewController *fullScreenBalloonViewController; // @synthesize fullScreenBalloonViewController=_fullScreenBalloonViewController;
 @property(nonatomic) unsigned long long sendProgressTotalCount; // @synthesize sendProgressTotalCount=_sendProgressTotalCount;
 @property(nonatomic) unsigned long long sendProgressSendCount; // @synthesize sendProgressSendCount=_sendProgressSendCount;
@@ -49,11 +56,22 @@
 @property(nonatomic) _Bool transitionedFromComposing; // @synthesize transitionedFromComposing=_transitionedFromComposing;
 @property(nonatomic) _Bool viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
 @property(nonatomic, getter=isSendingMessage) _Bool sendingMessage; // @synthesize sendingMessage=_sendingMessage;
-@property(retain, nonatomic) CKTranscriptCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
+@property(retain, nonatomic) CKViewController<CKCoreTranscriptControllerProtocol> *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak id <CKCoreChatControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)presentMacToolbarController;
+- (id)toolbarItemForIdentifier:(id)arg1;
+- (_Bool)itemProviderDisablesTouches;
+- (void)providerWillBeRemovedFromToolbarController:(id)arg1;
+- (void)configureWithToolbarController:(id)arg1;
 - (void)systemApplicationDidResume;
+- (id)_threadChatItemForReplyCountChatItem:(id)arg1 chatItems:(id)arg2;
+- (void)dismissInlineReplyController:(_Bool)arg1;
+- (void)showInlineReplyControllerForChatItem:(id)arg1 presentKeyboard:(_Bool)arg2;
+- (_Bool)isInline;
+- (struct CGRect)fullScreenBalloonViewControllerSafeAreaLayoutFrame:(id)arg1;
+- (_Bool)wantsReplyButton;
+- (_Bool)fullScreenBalloonViewControllerShouldShowReplyButton:(id)arg1;
 - (void)fullScreenBalloonViewControllerHandleDismissTap:(id)arg1;
 - (struct CGRect)fullScreenBalloonViewController:(id)arg1 balloonFrameForChatItem:(id)arg2;
 - (void)fullScreenBalloonViewController:(id)arg1 sendMessageAcknowledgment:(long long)arg2 forChatItem:(id)arg3;
@@ -61,9 +79,9 @@
 - (void)fullScreenBalloonViewController:(id)arg1 willDisappearWithSendAnimation:(_Bool)arg2;
 - (void)fullScreenBalloonViewController:(id)arg1 didAppearAnimated:(_Bool)arg2;
 - (void)fullScreenBalloonViewController:(id)arg1 willAppearAnimated:(_Bool)arg2;
-- (void)_dismissFullScreenBubbleViewControllerWithSendAnimation:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_dismissFullScreenBubbleViewControllerAnimated:(_Bool)arg1 withSendAnimation:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showFullScreenAcknowledgmentPickerForChatItem:(id)arg1 showActionMenu:(_Bool)arg2;
-- (void)showFullScreenAcknowledgmentPickerForBalloonAtIndexPath:(id)arg1 showActionMenu:(_Bool)arg2;
+- (void)showFullScreenAcknowledgmentPickerIfNeededForBalloonAtIndexPath:(id)arg1 showActionMenu:(_Bool)arg2;
 - (id)_fullScreenBalloonViewControllerWithChatItem:(id)arg1 showActionMenu:(_Bool)arg2;
 - (id)textInputContextIdentifier;
 - (void)_refreshActiveChat:(id)arg1;
@@ -86,6 +104,7 @@
 - (void)_deregisterSendProgressDelegate;
 - (void)_registerSendProgressDelegate;
 - (void)_setTitle:(id)arg1 animated:(_Bool)arg2;
+- (_Bool)shouldListParticipantsInTitle;
 - (void)_updateTitleAnimated:(_Bool)arg1;
 - (void)setupScrollingForKeyboardInteraction;
 - (void)keyboardWillHideViaGesture;
@@ -111,26 +130,39 @@
 - (_Bool)transcriptCollectionViewControllerShouldLayoutFullscreenEffects:(id)arg1;
 - (_Bool)transcriptCollectionViewController:(id)arg1 shouldSetupFullscreenEffectUI:(id)arg2;
 - (_Bool)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(id)arg1;
+- (double)transcriptCollectionViewController:(id)arg1 targetAlphaForChatItem:(id)arg2;
 - (id)traitCollectionForTranscriptCollectionViewController:(id)arg1;
 - (void)transcriptCollectionViewControllerDidInsertAssociatedChatItem:(id)arg1;
 - (void)transcriptCollectionViewControllerWillDisplayLastBalloon:(id)arg1;
 - (void)transcriptCollectionViewControllerReportSpamButtonTapped:(id)arg1;
 - (void)transcriptCollectionViewControllerWillScrollToBottom:(id)arg1;
+- (void)transcriptCollectionViewControllerRestingStateDidChange:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 collectionViewContentSizeDidChange:(struct CGSize)arg2;
 - (void)transcriptCollectionViewControllerChatItemsDidChange:(id)arg1;
 - (void)transcriptCollectionViewControllerPlayingAudioDidChange:(id)arg1;
 - (_Bool)transcriptCollectionViewControllerShouldPlayAudio:(id)arg1;
+- (_Bool)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 shouldSelectChatItem:(id)arg3;
 - (void)transcriptCollectionViewControllerDidInset:(id)arg1;
 - (void)transcriptCollectionViewControllerWillInset:(id)arg1 targetContentInset:(inout struct UIEdgeInsets *)arg2;
+- (void)transcriptCollectionViewController:(id)arg1 didTapReplyCountStatusButtonForChatItem:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewTitleTappedForItemWithIndexPath:(id)arg2;
+- (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 showInlineReplyForItemWithIndexPath:(id)arg3;
+- (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 selectedItemAtIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 longPressedForItemWithIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 doubleTappedItemAtIndexPath:(id)arg3;
+- (void)_handleShowInlineReplyShortcut:(id)arg1 atIndexPath:(id)arg2;
 - (void)_handleTapEventForBalloonView:(id)arg1 atIndexPath:(id)arg2 showActionMenu:(_Bool)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)_setConversationDeferredSetup;
 - (void)_removeExistingCollectionViewController;
+- (struct CGRect)_initialFrameForCollectionView;
+- (_Bool)conversationAllowedByScreenTime;
+- (_Bool)_deviceIsPasscodeLocked;
+- (_Bool)_shouldAllowReplyFromLockScreen;
+- (_Bool)_shouldAllowReply;
+- (_Bool)_conversationHasReplyEnabled;
 - (id)_handleIDsForCurrentConversation;
 @property(readonly, nonatomic) double gradientBottomPlaceholderHeight;
 @property(readonly, nonatomic) double balloonMaxWidth;
@@ -149,6 +181,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppearDeferredSetup;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithConversation:(id)arg1;
 - (void)dealloc;

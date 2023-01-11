@@ -13,7 +13,7 @@
 - (_Bool)removeFollowUpItemsWithIdentifiers:(NSArray *)arg1 error:(id *)arg2;
 - (_Bool)removeFollowUpItems:(NSArray *)arg1 error:(id *)arg2;
 - (_Bool)addFollowUpItems:(NSArray *)arg1 error:(id *)arg2;
-- (_Bool)removeAllAuthKitFollowUpItems:(id *)arg1;
-- (NSArray *)pendingAuthKitFollowUpItems:(id *)arg1;
+- (_Bool)removeAllFollowUpItems:(id *)arg1;
+- (NSArray *)pendingFollowUpItems:(id *)arg1;
 @end
 

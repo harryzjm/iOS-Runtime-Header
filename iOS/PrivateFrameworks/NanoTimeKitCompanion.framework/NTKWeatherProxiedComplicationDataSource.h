@@ -11,8 +11,8 @@
 
 + (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (Class)proxyClass;
-@property(retain, nonatomic) id proxy; // @synthesize proxy=_proxy;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id proxy; // @synthesize proxy=_proxy;
 - (void)resume;
 - (void)pause;
 - (void)becomeInactive;
@@ -21,9 +21,8 @@
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getTimelineEndDateWithHandler:(CDUnknownBlockType)arg1;
-- (void)getTimelineStartDateWithHandler:(CDUnknownBlockType)arg1;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
+- (id)sampleTemplate;
 - (id)lockedTemplate;
 - (id)currentSwitcherTemplate;
 - (void)setDelegate:(id)arg1;

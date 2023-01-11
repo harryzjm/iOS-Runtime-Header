@@ -7,33 +7,30 @@
 #import <objc/NSObject.h>
 
 @class FBSDisplayConfiguration;
+@protocol XBApplicationLaunchRequestProviding, XBApplicationProviding;
 
 @interface XBApplicationController : NSObject
 {
-    FBSDisplayConfiguration *_mainDisplayConfiguration;
     long long _statusBarOrientation;
+    FBSDisplayConfiguration *_mainDisplayConfiguration;
+    id <XBApplicationLaunchRequestProviding> _launchRequestProvider;
+    id <XBApplicationProviding> _applicationProvider;
 }
 
-+ (id)sharedInstance;
-@property(getter=_statusBarOrientation, setter=_setStatusBarOrientation:) long long statusBarOrientation; // @synthesize statusBarOrientation=_statusBarOrientation;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <XBApplicationProviding> applicationProvider; // @synthesize applicationProvider=_applicationProvider;
 - (void)_updateStatusBarOrientation;
-- (id)launchRequestsForApplication:(id)arg1 withCompatibilityInfo:(id)arg2;
-- (void)_captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2;
 - (void)_removeLaunchImagesMatchingPredicate:(id)arg1 forApplications:(id)arg2 forgettingApps:(_Bool)arg3;
-- (void)_removeCachedLaunchImagesForApplications:(id)arg1 forgettingApps:(_Bool)arg2;
-- (void)resetEverything;
-- (void)removeAllGeneratedLaunchImagesAndSnapshots;
-- (void)removeAllGeneratedLaunchImages;
-- (id)allSplashBoardSystemApplications;
-- (id)allSplashBoardApplications;
-- (id)_allApplications;
-- (id)_allApplicationsFilteredBySystem:(_Bool)arg1 bySplashBoard:(_Bool)arg2;
+- (void)_removeAllGeneratedLaunchImagesAndSnapshots;
+- (id)_launchRequestsForApplication:(id)arg1 withCompatibilityInfo:(id)arg2;
+- (void)_captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2 createCaptureInfo:(_Bool)arg3 completionWithCaptureInfo:(CDUnknownBlockType)arg4;
+- (void)_captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2 completionWithCaptureInfo:(CDUnknownBlockType)arg3;
+- (void)captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeCachedLaunchImagesForApplications:(id)arg1 forgettingApps:(_Bool)arg2;
 - (void)_deleteLegacyCachesSnapshotPathsIfNeeded;
 - (void)_migrateDataIfNeeded;
 - (void)dealloc;
-- (id)init;
+- (id)initWithMainDisplayConfiguration:(id)arg1 applicationProvider:(id)arg2 launchRequestProvider:(id)arg3;
 
 @end
 

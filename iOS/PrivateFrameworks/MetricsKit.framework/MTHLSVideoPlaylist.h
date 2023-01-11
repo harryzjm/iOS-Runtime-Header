@@ -17,18 +17,22 @@
     NSArray *_mainFeatureMetricsData;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *mainFeatureMetricsData; // @synthesize mainFeatureMetricsData=_mainFeatureMetricsData;
 @property(retain, nonatomic) NSMutableArray *rollItems; // @synthesize rollItems=_rollItems;
 @property(nonatomic) unsigned long long startPosition; // @synthesize startPosition=_startPosition;
-- (void).cxx_destruct;
 - (long long)indexOfLastRollItemWithStartBeforePosition:(unsigned long long)arg1;
 - (id)mainFeatureItemWithStartOverallPosition:(unsigned long long)arg1;
 - (void)addRollItem:(id)arg1;
 - (id)itemsBetweenStartOverallPosition:(unsigned long long)arg1 endOverallPosition:(unsigned long long)arg2;
 - (id)itemAtOverallPosition:(unsigned long long)arg1 rangeOptions:(long long)arg2;
 - (void)addRollItemWithStartOverallPosition:(unsigned long long)arg1 duration:(unsigned long long)arg2 metricsData:(id)arg3;
+- (void)addItemStartAtMilliseconds:(unsigned long long)arg1 endAtMilliseconds:(unsigned long long)arg2 metricsData:(id)arg3;
+- (void)addItemStartAtMilliseconds:(unsigned long long)arg1 durationMilliseconds:(unsigned long long)arg2 metricsData:(id)arg3;
+- (void)addItemStartAtSeconds:(double)arg1 durationSeconds:(double)arg2 metricsData:(id)arg3;
 - (void)addRollInfoItem:(id)arg1;
 - (void)addRollInfoItems:(id)arg1;
+- (id)initWithMainFeatureMetricsData:(id)arg1;
 - (id)initWithStartPosition:(unsigned long long)arg1 mainFeatureMetricsData:(id)arg2;
 
 // Remaining properties

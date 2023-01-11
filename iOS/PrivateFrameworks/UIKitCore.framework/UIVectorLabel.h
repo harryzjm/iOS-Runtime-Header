@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UILabelContentAttributesProvider-Protocol.h>
-
 @class NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelContent, _UIVectorTextLayout;
 
-@interface UIVectorLabel <_UILabelContentAttributesProvider>
+@interface UIVectorLabel
 {
     _UILabelContent *_content;
     NSMutableDictionary *_defaultAttributes;
@@ -26,11 +24,11 @@
 + (id)_defaultAttributes;
 + (id)_defaultFont;
 + (Class)layerClass;
+- (void).cxx_destruct;
 @property(nonatomic) double preferredMaxLayoutWidth; // @synthesize preferredMaxLayoutWidth=_preferredMaxLayoutWidth;
 @property(nonatomic) unsigned long long numberOfLines; // @synthesize numberOfLines=_numberOfLines;
 - (void)_setMultilineContextWidth:(double)arg1;
 - (double)_multilineContextWidth;
-- (void).cxx_destruct;
 - (id)_attributedTextCompatibleForSizing;
 - (void)_generateDeferredAnimations:(id)arg1;
 - (void)layoutSubviews;
@@ -62,15 +60,8 @@
 @property(retain, nonatomic, getter=_content, setter=_setContent:) _UILabelContent *_content;
 - (id)_defaultAttributes;
 - (void)_mergeDefaultAttributesForDowngradingContent:(id)arg1;
-- (id)_defaultAttributesForUpgradingString:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)_labelLayer;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

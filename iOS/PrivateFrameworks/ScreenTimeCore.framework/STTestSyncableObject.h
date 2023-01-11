@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
 #import <ScreenTimeCore/STUniquelySerializableManagedObject-Protocol.h>
 
 @class NSSet, NSString;
 
-@interface STTestSyncableObject <STUniquelySerializableManagedObject>
+@interface STTestSyncableObject <STSerializableMappedObject, STUniquelySerializableManagedObject>
 {
 }
 
++ (id)serializableClassName;
 + (id)fetchOrCreateWithDictionaryRepresentation:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
 - (id)dictionaryRepresentation;

@@ -8,6 +8,7 @@ __attribute__((visibility("hidden")))
 @interface RBXMLRecorder_Fill
 {
     struct vector<std::__1::pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>>, std::__1::allocator<std::__1::pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>>>> _attributes;
+    unsigned int _seed;
 }
 
 - (id).cxx_construct;

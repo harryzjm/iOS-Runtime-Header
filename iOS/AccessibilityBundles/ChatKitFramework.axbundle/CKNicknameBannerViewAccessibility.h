@@ -11,8 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)layoutSubviews;
-- (void)_accessibilityLoadAccessibilityInformation;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityCustomActions;
+- (_Bool)accessibilityActivate;
+- (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 
 @end
 

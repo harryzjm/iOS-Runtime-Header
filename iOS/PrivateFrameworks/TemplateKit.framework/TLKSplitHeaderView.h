@@ -6,11 +6,13 @@
 
 #import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerGridView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText;
+@class NSString, NUIContainerGridView, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText;
 
 @interface TLKSplitHeaderView <NUIContainerViewDelegate>
 {
+    _Bool _useLargeTitle;
     _Bool _shouldBadgeSubtitle;
+    _Bool _useCompactWidth;
     TLKMultilineText *_title;
     TLKMultilineText *_subtitle1;
     TLKMultilineText *_subtitle2;
@@ -27,13 +29,15 @@
     TLKLabel *_trailingTitleLabel;
     TLKLabel *_trailingSubtitleLabel;
     TLKLabel *_titleLabel;
+    NUIContainerStackView *_subtitleStackView;
     TLKLabel *_subtitle1Label;
     TLKEmbossedLabel *_subtitle2Label;
 }
 
-+ (id)footnoteFont;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKEmbossedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
 @property(retain, nonatomic) TLKLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
+@property(retain, nonatomic) NUIContainerStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
 @property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) TLKLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
 @property(retain, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
@@ -47,27 +51,25 @@
 @property(retain, nonatomic) TLKMultilineText *leadingSubtitle; // @synthesize leadingSubtitle=_leadingSubtitle;
 @property(retain, nonatomic) TLKMultilineText *leadingTitle; // @synthesize leadingTitle=_leadingTitle;
 @property(retain, nonatomic) TLKImage *leadingImage; // @synthesize leadingImage=_leadingImage;
+@property(nonatomic) _Bool useCompactWidth; // @synthesize useCompactWidth=_useCompactWidth;
 @property(nonatomic) _Bool shouldBadgeSubtitle; // @synthesize shouldBadgeSubtitle=_shouldBadgeSubtitle;
+@property(nonatomic) _Bool useLargeTitle; // @synthesize useLargeTitle=_useLargeTitle;
 @property(retain, nonatomic) TLKMultilineText *subtitle2; // @synthesize subtitle2=_subtitle2;
 @property(retain, nonatomic) TLKMultilineText *subtitle1; // @synthesize subtitle1=_subtitle1;
 @property(retain, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
-- (void).cxx_destruct;
-- (id)titleFont;
 - (id)trailingImageInView;
-- (id)trailingSubtitleText;
-- (id)leadingSubtitleText;
-- (id)subtitleLabelText;
-- (id)titleLabelText;
 - (id)leadingImageInView;
 - (_Bool)secondRowIsHidden;
+- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (_Bool)usesDefaultLayoutMargins;
 - (void)observedPropertiesChanged;
-- (id)footnoteLabel;
+- (id)subtitleLabel;
 - (id)thirdRowOfViews;
 - (id)secondRowOfViews;
 - (id)firstRowOfViews;
 - (id)grid;
-- (struct UIEdgeInsets)effectiveAlignmentRectInsets;
 - (id)setupContentView;
 
 // Remaining properties

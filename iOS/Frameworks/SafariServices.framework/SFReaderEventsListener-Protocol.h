@@ -6,7 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString, _WKFrameHandle;
+@class NSDictionary, NSNumber, NSString, WBSReaderAvailabilityCheckResult, _WKFrameHandle;
 
 @protocol SFReaderEventsListener <NSObject>
 - (void)didCollectArticleContent:(NSDictionary *)arg1;
@@ -16,7 +16,7 @@
 - (void)didCollectReadingListItemInfo:(NSDictionary *)arg1 bookmarkID:(NSNumber *)arg2;
 - (void)didSetReaderConfiguration:(NSDictionary *)arg1;
 - (void)contentDidBecomeReadyWithDetectedLanguage:(NSString *)arg1;
-- (void)didDetermineReaderAvailabilityForDynamicCheck:(_Bool)arg1;
-- (void)didDetermineReaderAvailability:(_Bool)arg1 dueToSameDocumentNavigation:(_Bool)arg2;
+- (void)didDetermineReaderAvailabilityForDynamicCheck:(WBSReaderAvailabilityCheckResult *)arg1;
+- (void)didDetermineReaderAvailability:(WBSReaderAvailabilityCheckResult *)arg1;
 @end
 

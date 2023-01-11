@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BSMachPortSendRight, BSTimer, NSObject;
+@class BSTimer, NSObject, RBSProcessHandle;
 @protocol OS_dispatch_queue;
 
 @interface FBSProcessResourceProvision
@@ -14,17 +14,16 @@
     unsigned long long _consumedValue;
     NSObject<OS_dispatch_queue> *_queue;
     BSTimer *_timer;
-    BSMachPortSendRight *_taskRight;
+    RBSProcessHandle *_processHandle;
 }
 
 + (id)provisionWithResourceType:(long long)arg1 timeInterval:(double)arg2;
 + (id)provisionWithAllowance:(CDStruct_4e83c7bf)arg1;
-@property(nonatomic) CDStruct_4e83c7bf allowance; // @synthesize allowance=_allowance;
 - (void).cxx_destruct;
+@property(nonatomic) CDStruct_4e83c7bf allowance; // @synthesize allowance=_allowance;
 - (_Bool)isResourceProvision;
 - (id)succinctDescriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)_getElapsedCPUTimeForTaskPort:(unsigned int)arg1;
 - (_Bool)_queue_calculateValueConsumed:(out unsigned long long *)arg1;
 - (_Bool)_queue_updateConsumption;
 - (void)_queue_evaluateConsumption;

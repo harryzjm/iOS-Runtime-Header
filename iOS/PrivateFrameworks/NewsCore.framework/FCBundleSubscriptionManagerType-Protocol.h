@@ -13,6 +13,7 @@
 @property(retain, nonatomic) id <FCEntitlementsOverrideProviderType> entitlementsOverrideProvider;
 @property(readonly, nonatomic) FCBundleSubscription *cachedSubscription;
 - (void)forceExpireBundleSubscriptionBasedOnInternalSettings;
+- (void)silentExpireBundleSubscription;
 - (void)clearBundleSubscription;
 - (void)prewarmBundleTagIDsWithPurchaseID:(NSString *)arg1;
 - (void)renewalNoticeShownWithPurchaseID:(NSString *)arg1;

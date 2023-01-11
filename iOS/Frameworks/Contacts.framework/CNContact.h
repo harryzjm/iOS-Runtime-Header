@@ -94,18 +94,21 @@
     NSData *_cropRectHash;
 }
 
++ (void)you_used_a_property_that_you_didnt_request_when_you_fetched_the_contact;
 + (id)previewURLForContact:(id)arg1;
 + (id)unifyContacts:(id)arg1;
 + (CDUnknownBlockType)preferredImageComparator;
 + (CDUnknownBlockType)comparatorForNameSortOrder:(long long)arg1;
 + (id)descriptorWithKeyDescriptors:(id)arg1 description:(id)arg2;
 + (id)descriptorForKeyDescriptors:(id)arg1 description:(id)arg2;
++ (id)descriptorForAllImageDataKeys;
 + (id)descriptorForAllComparatorKeys;
 + (_Bool)supportsSecureCoding;
 + (id)storeInfoFromCoder:(id)arg1 storeIdentifier:(id)arg2 key:(id)arg3;
 + (id)makeContactAndMergeValuesFromAvailableKeysInContact:(id)arg1;
 + (id)newContactWithPropertyKeys:(id)arg1 withValuesFromContact:(id)arg2;
 + (id)contactWithContact:(id)arg1;
++ (id)emptyContact;
 + (id)_contactWithContact:(id)arg1 createNewInstance:(_Bool)arg2 propertyDescriptions:(id)arg3;
 + (void)freezeIfInstancetypeIsImmutable:(id)arg1;
 + (id)contactWithDisplayName:(id)arg1 handleStrings:(id)arg2;
@@ -171,6 +174,7 @@
 + (id)contactIdentifierFromSuggestionID:(id)arg1;
 + (id)contactFromSuggestion:(id)arg1;
 + (id)predicateForSuggestionIdentifier:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *preferredChannel; // @synthesize preferredChannel=_preferredChannel;
 @property(readonly, nonatomic) long long displayNameOrder; // @synthesize displayNameOrder=_displayNameOrder;
 @property(readonly, copy, nonatomic) NSString *sortingFamilyName; // @synthesize sortingFamilyName=_sortingFamilyName;
@@ -181,7 +185,6 @@
 @property(readonly, copy, nonatomic) NSDictionary *storeInfo; // @synthesize storeInfo=_storeInfo;
 @property(readonly, copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property(readonly, copy, nonatomic) NSString *internalIdentifier; // @synthesize internalIdentifier=_internalIdentifier;
-- (void).cxx_destruct;
 - (id)linkedIdentifierMap;
 - (_Bool)isEqualIgnoringIdentifiers:(id)arg1;
 - (_Bool)areAllPropertiesEqualToContactIgnoringIdentifiers:(id)arg1;
@@ -237,6 +240,7 @@
 @property(readonly, copy, nonatomic) NSString *externalModificationTag;
 @property(readonly, copy, nonatomic) NSData *externalRepresentation;
 @property(readonly, copy, nonatomic) NSString *externalIdentifier;
+@property(readonly, copy, nonatomic) NSString *externalURI;
 @property(readonly, copy, nonatomic) CNActivityAlert *textAlert;
 @property(readonly, copy, nonatomic) CNActivityAlert *callAlert;
 @property(readonly, copy, nonatomic) NSString *phonemeData;

@@ -18,6 +18,7 @@
 }
 
 + (Class)_timeViewClass;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setTimeViewBehindContentView:) _Bool _timeViewBehindContentView; // @synthesize _timeViewBehindContentView=__timeViewBehindContentView;
 @property(nonatomic, getter=_contentViewsAreOpaque, setter=_setContentViewsOpaque:) _Bool _contentViewsOpaque; // @synthesize _contentViewsOpaque=__contentViewsOpaque;
 @property(nonatomic) double maxZoomingIconDiameter; // @synthesize maxZoomingIconDiameter=_maxZoomingIconDiameter;
@@ -25,7 +26,6 @@
 @property(nonatomic) __weak UIView *borrowedCircleView; // @synthesize borrowedCircleView=_borrowedCircleView;
 @property(retain, nonatomic) UIView *zoomingClippingView; // @synthesize zoomingClippingView=_zoomingClippingView;
 @property(readonly, nonatomic) UIView *dialComplicationContainerView; // @synthesize dialComplicationContainerView=_dialComplicationContainerView;
-- (void).cxx_destruct;
 - (void)_createTimeViewIfNecessary;
 - (_Bool)_isComplicationSlotInsideDial:(id)arg1;
 - (void)_updateDateComplicationPositionIfNecessary;
@@ -36,6 +36,7 @@
 - (long long)_backgroundedTimeViewEditModes;
 - (struct CGPoint)_contentCenterOffset;
 - (void)_configureTimeView:(id)arg1;
+- (double)_timeViewScale;
 - (void)_cleanupAfterZoom;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;

@@ -13,9 +13,14 @@
 @interface PKPaymentMarket : NSObject <NSSecureCoding>
 {
     NSDictionary *_localizedNames;
+    NSDictionary *_renotifyCampaigns;
     NSSet *_geoFences;
+    _Bool _productsRequiredForRegion;
+    _Bool _shouldConsiderCellularRegion;
     long long _type;
     long long _classification;
+    unsigned long long _expressUpgradeHideDisableAction;
+    double _expressUpgradePromoteDuration;
     NSString *_identifier;
     NSString *_region;
     NSSet *_supportedCredentialTypes;
@@ -25,20 +30,25 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly) _Bool shouldConsiderCellularRegion; // @synthesize shouldConsiderCellularRegion=_shouldConsiderCellularRegion;
+@property(readonly) _Bool productsRequiredForRegion; // @synthesize productsRequiredForRegion=_productsRequiredForRegion;
 @property(readonly, copy) NSSet *expressTransitNetworks; // @synthesize expressTransitNetworks=_expressTransitNetworks;
 @property(readonly, copy) NSSet *supportedTransitNetworks; // @synthesize supportedTransitNetworks=_supportedTransitNetworks;
 @property(readonly, copy) NSSet *expressCredentialTypes; // @synthesize expressCredentialTypes=_expressCredentialTypes;
 @property(readonly, copy) NSSet *supportedCredentialTypes; // @synthesize supportedCredentialTypes=_supportedCredentialTypes;
 @property(readonly, copy) NSString *region; // @synthesize region=_region;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly) double expressUpgradePromoteDuration; // @synthesize expressUpgradePromoteDuration=_expressUpgradePromoteDuration;
+@property(readonly) unsigned long long expressUpgradeHideDisableAction; // @synthesize expressUpgradeHideDisableAction=_expressUpgradeHideDisableAction;
 @property(readonly) long long classification; // @synthesize classification=_classification;
 @property(readonly) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)_geoFenceWithDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (double)shortestDistanceFromLocation:(id)arg1;
 - (_Bool)containsLocation:(id)arg1;
+@property(readonly, copy) NSString *renotifyOpenLoopCampaignIdentifier;
 @property(readonly, copy) NSString *name; // @dynamic name;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

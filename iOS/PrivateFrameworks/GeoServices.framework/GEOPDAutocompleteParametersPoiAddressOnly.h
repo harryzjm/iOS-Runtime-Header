@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteParametersPoiAddressOnly : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_query;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _maxResults;
     _Bool _highlightDiff;
-    CDStruct_58fcab42 _flags;
+    CDStruct_f55cf389 _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -35,6 +37,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasHighlightDiff;
@@ -43,10 +48,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int maxResults;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(retain, nonatomic) NSString *query;
 @property(readonly, nonatomic) _Bool hasQuery;
-- (void)_readQuery;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

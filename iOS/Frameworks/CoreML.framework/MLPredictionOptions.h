@@ -9,16 +9,23 @@
 #import <CoreML/NSCopying-Protocol.h>
 #import <CoreML/NSSecureCoding-Protocol.h>
 
+@class NSDictionary;
+
 @interface MLPredictionOptions : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _usesCPUOnly;
     unsigned long long _classifyTopK;
+    NSDictionary *_outputBackings;
+    NSDictionary *_automaticOutputBackingMode;
     unsigned long long _maxComputationBatchSize;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)defaultOptions;
+- (void).cxx_destruct;
 @property unsigned long long maxComputationBatchSize; // @synthesize maxComputationBatchSize=_maxComputationBatchSize;
+@property(copy, nonatomic) NSDictionary *automaticOutputBackingMode; // @synthesize automaticOutputBackingMode=_automaticOutputBackingMode;
+@property(copy, nonatomic) NSDictionary *outputBackings; // @synthesize outputBackings=_outputBackings;
 @property unsigned long long classifyTopK; // @synthesize classifyTopK=_classifyTopK;
 @property(nonatomic) _Bool usesCPUOnly; // @synthesize usesCPUOnly=_usesCPUOnly;
 - (id)copyWithZone:(struct _NSZone *)arg1;

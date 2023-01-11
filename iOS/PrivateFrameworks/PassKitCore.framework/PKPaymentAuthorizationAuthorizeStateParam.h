@@ -10,16 +10,20 @@
 {
     PKAuthenticatorEvaluationResponse *_evaluationResponse;
     NSData *_nonceData;
+    NSData *_networkMerchantIdentifier;
+    long long _cryptogramType;
     NSData *_credential;
 }
 
-+ (id)paramWithNonceParam:(id)arg1 nonce:(id)arg2;
++ (id)paramWithNonceParam:(id)arg1 nonce:(id)arg2 cryptogramType:(long long)arg3 networkMerchantIdentifier:(id)arg4;
 + (id)paramWithAuthenticatorEvaluationResponse:(id)arg1;
 + (id)paramWithCredential:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *credential; // @synthesize credential=_credential;
+@property(nonatomic) long long cryptogramType; // @synthesize cryptogramType=_cryptogramType;
+@property(retain, nonatomic) NSData *networkMerchantIdentifier; // @synthesize networkMerchantIdentifier=_networkMerchantIdentifier;
 @property(retain, nonatomic) NSData *nonceData; // @synthesize nonceData=_nonceData;
 @property(retain, nonatomic) PKAuthenticatorEvaluationResponse *evaluationResponse; // @synthesize evaluationResponse=_evaluationResponse;
-- (void).cxx_destruct;
 - (id)description;
 
 @end

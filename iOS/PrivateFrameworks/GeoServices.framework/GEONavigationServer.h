@@ -28,7 +28,6 @@
     NSData *_positionFromSignData;
     NSData *_positionFromManeuverData;
     NSData *_positionFromDestinationData;
-    NSData *_trafficIncidentAlertDetailsData;
     NSData *_navigationVoiceVolumeData;
 }
 
@@ -39,10 +38,10 @@
 - (void)_openPushStatePeerConnection:(id)arg1;
 - (void)clearAllData;
 - (void)_sendMessage:(long long)arg1 data:(id)arg2 toPeer:(id)arg3;
+- (void)_forEachValidPeerProxyOnMainQueue:(CDUnknownBlockType)arg1;
 - (void)_forEachValidPeerProxy:(CDUnknownBlockType)arg1;
 - (void)_updateAllPeersWithMessage:(long long)arg1 data:(id)arg2;
 - (void)_requestNavigationVoiceVolumeWithPeer:(id)arg1;
-- (void)_requestTrafficIncidentDetailsDataWithPeer:(id)arg1;
 - (void)_requestPositionFromDestinationWithPeer:(id)arg1;
 - (void)_requestPositionFromManeuverWithPeer:(id)arg1;
 - (void)_requestPositionFromSignWithPeer:(id)arg1;
@@ -55,7 +54,6 @@
 - (void)_requestRouteSummaryWithPeer:(id)arg1;
 - (void)setCurrentRoadName:(id)arg1;
 - (void)setNavigationVoiceVolumeWithData:(id)arg1;
-- (void)setRouteSummaryWithTrafficIncidentAlertDetailsData:(id)arg1;
 - (void)setRouteSummaryWithPositionFromDestinationData:(id)arg1;
 - (void)setRouteSummaryWithPositionFromManeuverData:(id)arg1;
 - (void)setRouteSummaryWithPositionFromSignData:(id)arg1;

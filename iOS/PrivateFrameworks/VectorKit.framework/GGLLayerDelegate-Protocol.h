@@ -11,7 +11,7 @@
 - (void)willPresent;
 - (void)drawToTexture:(struct Texture *)arg1 withRenderQueue:(struct RenderQueue *)arg2;
 - (struct RenderQueue *)renderQueueForTimestamp:(double)arg1;
-- (void)prepareTexture:(struct Texture *)arg1;
+- (void)prepareTexture:(const shared_ptr_857963ed *)arg1;
 - (_Bool)isDelayedRenderQueueConsumptionSupported;
 @end
 

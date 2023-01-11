@@ -22,18 +22,12 @@
 + (void)undeleteProjects:(id)arg1;
 + (void)deleteProjects:(id)arg1;
 + (void)_deleteProjects:(id)arg1 withOperation:(long long)arg2;
-+ (_Bool)canGenerateUUIDWithoutEntitlements;
 + (id)creationRequestForProjectCopyFromProject:(id)arg1;
 + (id)creationRequestForProjectWithDocumentType:(id)arg1 projectExtensionIdentifier:(id)arg2 assets:(id)arg3 title:(id)arg4;
 + (id)creationRequestForProjectWithDocumentType:(id)arg1 projectExtensionIdentifier:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetHelper; // @synthesize keyAssetHelper=_keyAssetHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *assetsHelper; // @synthesize assetsHelper=_assetsHelper;
-- (void).cxx_destruct;
-- (void)didMutate;
-@property(readonly, nonatomic) NSManagedObjectID *objectID;
-- (id)uuid;
-@property(readonly, getter=isMutated) _Bool mutated;
-@property(readonly) _Bool isNewRequest;
 - (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
@@ -42,7 +36,6 @@
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSString *managedEntityName;
 - (_Bool)prepareForServicePreflightCheck:(id *)arg1;
-- (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (void)encodeToXPCDict:(id)arg1;
 - (void)moveAssetsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
@@ -72,12 +65,16 @@
 - (id)initWithProject:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSString *clientName;
-@property(readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly) _Bool isNewRequest;
+@property(readonly, getter=isMutated) _Bool mutated;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(nonatomic) _Bool shouldPerformConcurrentWork;
 @property(readonly) Class superclass;
 
 @end

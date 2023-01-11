@@ -14,7 +14,7 @@
 {
 }
 
-- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2;
+- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

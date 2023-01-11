@@ -4,18 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKDateRichComplicationFullColorImageView;
-
 @interface NTKDateRichComplicationCircularView
 {
-    NTKDateRichComplicationFullColorImageView *_dateView;
 }
 
-- (void).cxx_destruct;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)layoutSubviews;
++ (_Bool)supportsComplicationFamily:(long long)arg1;
 - (id)init;
 
 @end

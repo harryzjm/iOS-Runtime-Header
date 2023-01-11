@@ -9,7 +9,6 @@
 @class GEOMapServiceTraits, NSArray, NSDictionary, NSNumber, NSString, PBRequest;
 
 @protocol GEOServiceRequestConfiguring <NSObject>
-- (unsigned char)requestCounterInfoTypeForRequest:(PBRequest *)arg1;
 - (NSNumber *)serviceTypeNumber;
 - (NSString *)debugRequestName;
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(PBRequest *)arg1 traits:(GEOMapServiceTraits *)arg2;
@@ -18,6 +17,7 @@
 - (unsigned long long)urlType;
 
 @optional
+- (NSArray *)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;
 - (double)timeout;
 @end

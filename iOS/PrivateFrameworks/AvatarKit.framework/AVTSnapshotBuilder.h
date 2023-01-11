@@ -13,11 +13,11 @@
 
 @interface AVTSnapshotBuilder : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
-    SCNRenderer *_renderer;
     AVTAvatar *_avatar;
     AVTAvatar *_snapshotedAvatar;
-    SCNNode *_avatarNode;
     AVTAvatarEnvironment *_environment;
+    SCNNode *_avatarNode;
+    SCNRenderer *_renderer;
 }
 
 + (struct CGImage *)copyRescaledCGImage:(struct CGImage *)arg1 by:(float)arg2;
@@ -26,10 +26,10 @@
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
 - (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-- (struct UIImage *)animatedImageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
-- (struct UIImage *)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3 useACopy:(_Bool)arg4;
-- (struct UIImage *)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
-- (struct UIImage *)imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
+- (id)animatedImageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
+- (id)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3 useACopy:(_Bool)arg4;
+- (id)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
+- (id)imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (void)setupAvatarWithOptions:(id)arg1 useACopy:(_Bool)arg2;
 - (void)_applyOptions:(id)arg1;
 - (id)init;

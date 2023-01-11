@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSSet, NSString;
+@class NSSet, NSString;
 
 @interface PGGraphMusicTrackNode
 {
+    NSString *_title;
+    double _durationInSeconds;
 }
 
 + (id)musicTrackTitleSortDescriptors;
+- (void).cxx_destruct;
+@property(readonly) double durationInSeconds; // @synthesize durationInSeconds=_durationInSeconds;
+@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 - (id)description;
 @property(readonly, nonatomic) NSSet *artistNodes;
 @property(readonly, nonatomic) NSSet *genreNodes;
@@ -18,8 +23,13 @@
 - (void)enumerateArtistNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateGenreNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateAlbumNodesUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSNumber *durationInSeconds;
-@property(readonly, nonatomic) NSString *title;
+- (unsigned short)domain;
+- (id)label;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 @end
 

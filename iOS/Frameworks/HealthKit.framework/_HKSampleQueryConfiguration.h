@@ -10,15 +10,17 @@ __attribute__((visibility("hidden")))
 @interface _HKSampleQueryConfiguration
 {
     _Bool _includeAutomaticTimeZones;
+    _Bool _includeContributorInformation;
     NSArray *_sortDescriptors;
     unsigned long long _limit;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property(nonatomic) _Bool includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property(copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

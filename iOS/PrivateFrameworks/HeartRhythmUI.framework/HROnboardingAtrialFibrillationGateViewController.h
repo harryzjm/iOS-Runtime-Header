@@ -39,6 +39,7 @@
     NSLayoutConstraint *_contentViewBottomConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) HRStackedButtonView *stackedButtonView; // @synthesize stackedButtonView=_stackedButtonView;
 @property(retain, nonatomic) UILabel *diagnosisFooterLabel; // @synthesize diagnosisFooterLabel=_diagnosisFooterLabel;
@@ -65,7 +66,6 @@
 @property(retain, nonatomic) HKSeparatorLineView *birthdayTopSeparator; // @synthesize birthdayTopSeparator=_birthdayTopSeparator;
 @property(retain, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
 - (id)_footnoteFont;
 - (id)_diagnosisPromptFont;
 - (id)_ageEntryTitleFont;

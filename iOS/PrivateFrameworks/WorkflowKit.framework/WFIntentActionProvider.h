@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class INStringLocalizer, NSDictionary;
 
 @interface WFIntentActionProvider
 {
     _Bool _observingInstalledApplicationsChanges;
     NSDictionary *_cachedSchemasByBundleIdentifier;
+    INStringLocalizer *_stringLocalizer;
 }
 
++ (id)disabledPlatformsForIntentWithTypeName:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 @property(copy, nonatomic) NSDictionary *cachedSchemasByBundleIdentifier; // @synthesize cachedSchemasByBundleIdentifier=_cachedSchemasByBundleIdentifier;
 @property(nonatomic, getter=isObservingInstalledApplicationsChanges) _Bool observingInstalledApplicationsChanges; // @synthesize observingInstalledApplicationsChanges=_observingInstalledApplicationsChanges;
-- (void).cxx_destruct;
 - (void)installedApplicationsDidChange:(id)arg1;
 - (void)observeInstalledApplicationsChangesIfNeeded;
 - (_Bool)shouldCreateActionForIntentClassName:(id)arg1 actionIdentifier:(id)arg2 bundleIdentifier:(id)arg3 inSchema:(id)arg4;
@@ -25,6 +28,7 @@
 - (void)createActionsForRequests:(id)arg1;
 - (id)availableActionIdentifiers;
 - (id)createAllAvailableActions;
+- (id)init;
 
 @end
 

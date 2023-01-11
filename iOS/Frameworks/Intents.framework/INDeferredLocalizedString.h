@@ -20,13 +20,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *_cachedLocalization; // @synthesize _cachedLocalization;
 @property(readonly, copy, nonatomic) NSURL *_bundleURL; // @synthesize _bundleURL;
 @property(readonly, copy, nonatomic) NSString *_bundleIdentifier; // @synthesize _bundleIdentifier;
 @property(readonly, copy, nonatomic) NSArray *_arguments; // @synthesize _arguments;
 @property(readonly, copy, nonatomic) NSString *_table; // @synthesize _table;
 @property(readonly, copy, nonatomic) NSString *_formatKey; // @synthesize _formatKey;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -38,7 +38,7 @@
 - (id)description;
 - (id)localizeForLanguage:(id)arg1;
 - (id)initWithDeferredFormat:(id)arg1 fromTable:(id)arg2 bundleIdentifier:(id)arg3 bundleURL:(id)arg4 arguments:(id)arg5;
-- (id)initWithDeferredFormat:(id)arg1 fromTable:(id)arg2 bundle:(id)arg3 arguments:(struct __va_list_tag [1])arg4;
+- (id)initWithDeferredFormat:(id)arg1 fromTable:(id)arg2 bundle:(id)arg3 arguments:(char *)arg4;
 - (id)_intents_encodeForProto;
 
 @end

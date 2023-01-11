@@ -6,25 +6,35 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSString, UIImage, UILabel, WFActionDrawerImageView;
+#import <WorkflowUI/UIPointerInteractionDelegate-Protocol.h>
 
-@interface WFActionDrawerAppsCollectionViewCell : UICollectionViewCell
+@class NSString, UIImage, UIImageView, UILabel;
+
+@interface WFActionDrawerAppsCollectionViewCell : UICollectionViewCell <UIPointerInteractionDelegate>
 {
     NSString *_title;
     UIImage *_appIconImage;
-    WFActionDrawerImageView *_imageView;
+    UIImageView *_imageView;
     UILabel *_titleLabel;
 }
 
 + (struct CGSize)preferredSize;
+- (void).cxx_destruct;
 @property(nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) __weak WFActionDrawerImageView *imageView; // @synthesize imageView=_imageView;
+@property(nonatomic) __weak UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(readonly, nonatomic) UIImage *appIconImage; // @synthesize appIconImage=_appIconImage;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 - (void)configureWithTitle:(id)arg1 appIconImage:(id)arg2;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -18,13 +18,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *photoPickerProperties; // @synthesize photoPickerProperties=_photoPickerProperties;
 @property(copy, nonatomic) NSString *requestedClassName; // @synthesize requestedClassName=_requestedClassName;
 @property(retain, nonatomic) NSUUID *requestedIdentifier; // @synthesize requestedIdentifier=_requestedIdentifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) long long sourceType;
 @property(readonly, nonatomic) long long modalPresentationStyle;
-@property(readonly, nonatomic) struct CGSize preferredViewSize;
 @property(readonly, nonatomic) _Bool convertAutoloopsToGIF;
 @property(readonly, nonatomic) _Bool showsPrompt;
 @property(readonly, nonatomic) _Bool showsFileSizePicker;

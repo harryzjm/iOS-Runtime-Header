@@ -46,6 +46,8 @@
 - (void)setStringArray:(id)arg1;
 - (void)setQuatfArray:(struct *)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
 - (void)setQuatfArray:(struct *)arg1 count:(unsigned long long)arg2;
+- (void)setUIntArray:(unsigned int *)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
+- (void)setUIntArray:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)setIntArray:(int *)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
 - (void)setIntArray:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setQuatfValue:(struct)arg1 atTime:(double)arg2;
@@ -68,8 +70,11 @@
 - (void)setDouble2Value: /* Error: Ran out of types for this method. */;
 - (void)setDoubleValue:(double)arg1 atTime:(double)arg2;
 - (void)setDoubleValue:(double)arg1;
+- (void)setUIntValue:(unsigned int)arg1 atTime:(double)arg2;
+- (void)setUIntValue:(unsigned int)arg1;
 - (void)setIntValue:(int)arg1;
 - (void)setBoolValue:(_Bool)arg1;
+- (void)setTimeCodeValue:(id)arg1;
 - (void)setStringValue:(id)arg1;
 - (void)setTokenValue:(id)arg1;
 - (void)setData:(id)arg1 atTime:(double)arg2;
@@ -103,6 +108,8 @@
 - (id)stringArray;
 - (unsigned long long)quatfArray:(struct *)arg1 maxCount:(unsigned long long)arg2 atTime:(double)arg3;
 - (unsigned long long)quatfArray:(struct *)arg1 maxCount:(unsigned long long)arg2;
+- (unsigned long long)uintArray:(unsigned int *)arg1 maxCount:(unsigned long long)arg2 atTime:(double)arg3;
+- (unsigned long long)uintArray:(unsigned int *)arg1 maxCount:(unsigned long long)arg2;
 - (unsigned long long)intArray:(int *)arg1 maxCount:(unsigned long long)arg2 atTime:(double)arg3;
 - (unsigned long long)intArray:(int *)arg1 maxCount:(unsigned long long)arg2;
 - (struct)quatfValueAtTime:(double)arg1;
@@ -125,8 +132,11 @@
 - (MISSING_TYPE *)double2Value;
 - (double)doubleValueAtTime:(double)arg1;
 - (double)doubleValue;
+- (unsigned int)uintValueAtTime:(double)arg1;
+- (unsigned int)uintValue;
 - (int)intValue;
 - (_Bool)boolValue;
+- (id)timeCodeValue;
 - (id)resourcePathArray;
 - (id)resourcePath;
 - (id)urlValue;
@@ -136,6 +146,7 @@
 - (_Bool)isAnimated;
 - (id)dataAtTime:(double)arg1;
 - (id)data;
+- (void)clearConnections;
 - (_Bool)setConnectionWithTargetPaths:(id)arg1;
 - (id)connectedPropertyPaths;
 - (id)connectedPropertyPath;

@@ -10,7 +10,7 @@
 
 @interface _TtC7NewsUI230URLNotificationResponseHandler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *pattern;
+    MISSING_TYPE *urlHandler;
 }
 
 @end

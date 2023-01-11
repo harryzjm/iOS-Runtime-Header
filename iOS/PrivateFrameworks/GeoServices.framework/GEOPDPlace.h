@@ -13,7 +13,6 @@
 @interface GEOPDPlace : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_components;
     unsigned long long _createdTime;
@@ -23,6 +22,9 @@
     unsigned long long _preferredMuid;
     GEOMapItemInitialRequestData *_requestData;
     unsigned long long _updateVersion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _referenceFrame;
     int _resultProviderId;
     int _status;
@@ -39,18 +41,7 @@
         unsigned int read_mapsId:1;
         unsigned int read_placeCacheKey:1;
         unsigned int read_requestData:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_components:1;
-        unsigned int wrote_createdTime:1;
-        unsigned int wrote_mapsId:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_placeCacheKey:1;
-        unsigned int wrote_preferredMuid:1;
-        unsigned int wrote_requestData:1;
-        unsigned int wrote_updateVersion:1;
-        unsigned int wrote_referenceFrame:1;
-        unsigned int wrote_resultProviderId:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -63,10 +54,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *placeCacheKey;
 @property(readonly, nonatomic) _Bool hasPlaceCacheKey;
-- (void)_readPlaceCacheKey;
 @property(retain, nonatomic) GEOMapItemInitialRequestData *requestData;
 @property(readonly, nonatomic) _Bool hasRequestData;
-- (void)_readRequestData;
 - (int)StringAsReferenceFrame:(id)arg1;
 - (id)referenceFrameAsString:(int)arg1;
 @property(nonatomic) _Bool hasReferenceFrame;
@@ -82,24 +71,24 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasCreatedTime;
 @property(nonatomic) unsigned long long createdTime;
 @property(retain, nonatomic) GEOPDMapsIdentifier *mapsId;
 @property(readonly, nonatomic) _Bool hasMapsId;
-- (void)_readMapsId;
 @property(nonatomic) _Bool hasUpdateVersion;
 @property(nonatomic) unsigned long long updateVersion;
 @property(nonatomic) _Bool hasResultProviderId;
 @property(nonatomic) int resultProviderId;
 - (id)componentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)componentsCount;
-- (void)_addNoFlagsComponent:(id)arg1;
 - (void)addComponent:(id)arg1;
 - (void)clearComponents;
 @property(retain, nonatomic) NSMutableArray *components;
-- (void)_readComponents;
 @property(nonatomic) _Bool hasPreferredMuid;
 @property(nonatomic) unsigned long long preferredMuid;
 - (int)StringAsStatus:(id)arg1;
@@ -108,11 +97,14 @@
 @property(nonatomic) int status;
 @property(nonatomic) _Bool hasMuid;
 @property(nonatomic) unsigned long long muid;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (_Bool)hasExpectedComponentTypes:(id)arg1;
 - (_Bool)isCacheable;
 - (_Bool)meetsManifestVersioningForServiceVersion:(id)arg1;
 - (_Bool)_isKey:(id)arg1 subsetOf:(id)arg2;
-- (id)pdPlaceCacheKey;
+- (id)pdPlaceCacheKeyForRequest:(id)arg1;
+- (_Bool)shouldCacheByIDForRequest:(id)arg1;
 - (id)entityComponent;
 - (unsigned int)minTTL;
 - (id)cacheKey;

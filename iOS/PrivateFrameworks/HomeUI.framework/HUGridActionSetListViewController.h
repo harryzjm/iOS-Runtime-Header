@@ -7,22 +7,27 @@
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 
 @class HFWallpaperSlice, HUGridActionSetItemManager, HUGridLayoutOptions, HUWallpaperView, NSString, UILabel;
-@protocol HUGridActionSetListViewControllerItemUpdateDelegate;
+@protocol HUGridActionSetListViewControllerDelegate;
 
 @interface HUGridActionSetListViewController <HFItemManagerDelegate>
 {
-    id <HUGridActionSetListViewControllerItemUpdateDelegate> _itemUpdateDelegate;
+    _Bool _shouldAllowItemPresentation;
+    id <HUGridActionSetListViewControllerDelegate> _actionSetListViewControllerDelegate;
     UILabel *_titleLabel;
 }
 
-+ (double)requiredHeightWithLayoutOptions:(id)arg1;
++ (double)requiredHeightWithLayoutOptions:(id)arg1 numberOfItems:(unsigned long long)arg2;
 + (unsigned long long)updateMode;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) __weak id <HUGridActionSetListViewControllerItemUpdateDelegate> itemUpdateDelegate; // @synthesize itemUpdateDelegate=_itemUpdateDelegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(nonatomic) _Bool shouldAllowItemPresentation; // @synthesize shouldAllowItemPresentation=_shouldAllowItemPresentation;
+@property(nonatomic) __weak id <HUGridActionSetListViewControllerDelegate> actionSetListViewControllerDelegate; // @synthesize actionSetListViewControllerDelegate=_actionSetListViewControllerDelegate;
+- (_Bool)_canShowWhileLocked;
 - (long long)_scrollDirectionForLayoutOptions:(id)arg1;
 - (void)_updateLayoutScrollDirectionIfNeeded;
 - (id)_detailsViewControllerForActionSetItem:(id)arg1;
+- (_Bool)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
+- (id)_performTapActionForItem:(id)arg1;
 - (id)detailsViewControllerForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (_Bool)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (void)setReorderableHomeKitItemList:(id)arg1 forSection:(long long)arg2;
@@ -40,6 +45,7 @@
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)_internalSetLayoutOptions:(id)arg1;
 @property(copy, nonatomic) HUGridLayoutOptions *layoutOptions;
+@property(retain, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice;
 @property(retain, nonatomic) HFWallpaperSlice *blurredWallpaperSlice;
 @property(retain, nonatomic) HUWallpaperView *wallpaperView;
 - (void)viewDidLoad;

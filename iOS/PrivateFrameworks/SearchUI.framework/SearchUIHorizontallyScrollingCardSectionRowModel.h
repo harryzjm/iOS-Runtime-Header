@@ -11,8 +11,9 @@
     NSArray *_cardSectionRowModels;
 }
 
-@property(retain) NSArray *cardSectionRowModels; // @synthesize cardSectionRowModels=_cardSectionRowModels;
 - (void).cxx_destruct;
+@property(retain) NSArray *cardSectionRowModels; // @synthesize cardSectionRowModels=_cardSectionRowModels;
+- (_Bool)hasLeadingImage;
 - (id)reuseIdentifier;
 - (id)cardSection;
 - (Class)cellViewClass;

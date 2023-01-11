@@ -9,8 +9,6 @@
 @class SBFluidSwitcherItemContainer;
 
 @protocol SBFluidSwitcherItemContainerDelegate <NSObject>
-- (_Bool)shouldUseBackgroundWallpaperTreatmentForItemContainer:(SBFluidSwitcherItemContainer *)arg1;
-- (double)switcherCardScale;
 - (long long)homeScreenInterfaceOrientation;
 - (long long)switcherInterfaceOrientation;
 - (void)scrollViewKillingProgressUpdated:(double)arg1 ofContainer:(SBFluidSwitcherItemContainer *)arg2;

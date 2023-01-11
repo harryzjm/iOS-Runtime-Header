@@ -8,5 +8,7 @@
 {
 }
 
++ (id)classNameComponents;
+
 @end
 

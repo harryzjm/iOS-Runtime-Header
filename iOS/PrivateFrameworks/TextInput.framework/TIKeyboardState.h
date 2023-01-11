@@ -9,7 +9,7 @@
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
+@class BKSHIDEventAuthenticationMessage, NSArray, NSDictionary, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
 
 @interface TIKeyboardState : NSObject <NSCopying, NSSecureCoding>
 {
@@ -35,6 +35,9 @@
             unsigned int needAutofill:1;
             unsigned int needOneTimeCodeAutofill:1;
             unsigned int landscapeOrientation:1;
+            unsigned int omitEmojiCandidates:1;
+            unsigned int emojiSearchMode:1;
+            unsigned int emojiPopoverMode:1;
         } fields;
     } _mask;
     union {
@@ -55,6 +58,7 @@
     TIKeyboardLayoutState *_layoutState;
     TIDocumentState *_documentState;
     TIKeyboardSecureCandidateRenderTraits *_secureCandidateRenderTraits;
+    BKSHIDEventAuthenticationMessage *_eventAuthenticationMessage;
     NSString *_inputForMarkedText;
     NSString *_searchStringForMarkedText;
     TIKeyboardCandidate *_currentCandidate;
@@ -63,9 +67,12 @@
     unsigned long long _autofillMode;
     NSDictionary *_autofillContext;
     NSArray *_supportedPayloadIds;
+    NSArray *_statisticChanges;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *statisticChanges; // @synthesize statisticChanges=_statisticChanges;
 @property(copy, nonatomic) NSArray *supportedPayloadIds; // @synthesize supportedPayloadIds=_supportedPayloadIds;
 @property(retain, nonatomic) NSDictionary *autofillContext; // @synthesize autofillContext=_autofillContext;
 @property(nonatomic) unsigned long long autofillMode; // @synthesize autofillMode=_autofillMode;
@@ -74,6 +81,7 @@
 @property(retain, nonatomic) TIKeyboardCandidate *currentCandidate; // @synthesize currentCandidate=_currentCandidate;
 @property(copy, nonatomic) NSString *searchStringForMarkedText; // @synthesize searchStringForMarkedText=_searchStringForMarkedText;
 @property(copy, nonatomic) NSString *inputForMarkedText; // @synthesize inputForMarkedText=_inputForMarkedText;
+@property(copy, nonatomic) BKSHIDEventAuthenticationMessage *eventAuthenticationMessage; // @synthesize eventAuthenticationMessage=_eventAuthenticationMessage;
 @property(copy, nonatomic) TIKeyboardSecureCandidateRenderTraits *secureCandidateRenderTraits; // @synthesize secureCandidateRenderTraits=_secureCandidateRenderTraits;
 @property(retain, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
 @property(copy, nonatomic) TIKeyboardLayoutState *layoutState; // @synthesize layoutState=_layoutState;
@@ -85,7 +93,6 @@
 @property(copy, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(retain, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -93,6 +100,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldOutputFullwidthSpace;
 @property(nonatomic) _Bool needOneTimeCodeAutofill;
+@property(readonly, nonatomic) _Bool needContactAutofill;
 @property(nonatomic) _Bool needAutofill;
 @property(nonatomic) _Bool longPredictionListEnabled;
 @property(nonatomic) _Bool isScreenLocked;
@@ -107,6 +115,9 @@
 @property(nonatomic) _Bool candidateSelectionPredictionEnabled;
 @property(nonatomic) _Bool shortcutConversionEnabled;
 @property(nonatomic) _Bool autocorrectionEnabled;
+@property(nonatomic) _Bool emojiPopoverMode;
+@property(nonatomic) _Bool emojiSearchMode;
+@property(nonatomic) _Bool omitEmojiCandidates;
 @property(nonatomic) _Bool wordLearningEnabled;
 @property(nonatomic) _Bool landscapeOrientation;
 @property(nonatomic) _Bool floatingKeyboardMode;

@@ -33,6 +33,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDAWDRemoteSessionMetric *metric; // @synthesize metric=_metric;
 @property(nonatomic) _Bool supportsSharedIdentities; // @synthesize supportsSharedIdentities=_supportsSharedIdentities;
 @property(readonly, nonatomic) HMDDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
@@ -41,7 +42,6 @@
 @property(retain, nonatomic) HMDUser *peer; // @synthesize peer=_peer;
 @property(readonly, copy, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly) long long role; // @synthesize role=_role;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)__handleDeviceRemovedFromAccount:(id)arg1;
 - (void)__handleAccountRemovedFromRegistry:(id)arg1;

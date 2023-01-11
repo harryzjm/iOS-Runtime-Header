@@ -15,11 +15,10 @@
 }
 
 + (id)sharedSpinnerManager;
-@property(nonatomic) long long activityIndicatorViewStyle; // @synthesize activityIndicatorViewStyle=_activityIndicatorViewStyle;
 - (void).cxx_destruct;
+@property(nonatomic) long long activityIndicatorViewStyle; // @synthesize activityIndicatorViewStyle=_activityIndicatorViewStyle;
 - (void)stopAnimatingForIdentifier:(id)arg1;
-- (void)startAnimatingInNavItem:(id)arg1 forIdentifier:(id)arg2;
-- (void)startAnimatingInNavItem:(id)arg1 title:(id)arg2 forIdentifier:(id)arg3 hideBackButton:(_Bool)arg4;
+- (void)startAnimatingInNavItem:(id)arg1 title:(id)arg2 forIdentifier:(id)arg3 hideBackButton:(_Bool)arg4 hideLeftItems:(_Bool)arg5;
 - (id)init;
 
 @end

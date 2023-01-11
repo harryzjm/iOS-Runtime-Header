@@ -4,29 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleAccount/AAResponse.h>
+#import <AppleAccount/AAQuotaInfoResponse.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSURL;
+@class NSArray;
 
-@interface AAUIQuotaResponse : AAResponse
+@interface AAUIQuotaResponse : AAQuotaInfoResponse
 {
-    NSDictionary *_quotaInfo;
-    NSArray *_usage;
-    NSDictionary *_endPoints;
-    NSDictionary *_storageInfo;
-    NSDictionary *_storageMeterLabel;
 }
 
-- (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *displayLabel;
-@property(readonly, nonatomic) NSURL *manageStorageURL;
-@property(readonly, nonatomic) _Bool hasMaxTier;
-@property(readonly, nonatomic) NSNumber *availableStorageInBytes;
-@property(readonly, nonatomic) NSNumber *usedStorageInBytes;
-@property(readonly, nonatomic) NSNumber *totalStorageInBytes;
 @property(readonly, nonatomic) NSArray *iCloudMediaUsage;
-@property(readonly, nonatomic) NSArray *usage;
-- (id)initWithHTTPResponse:(id)arg1 data:(id)arg2;
 
 @end
 

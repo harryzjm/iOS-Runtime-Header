@@ -42,6 +42,7 @@
 
 + (id)_trimmedPreviewText:(id)arg1;
 + (id)_trimmedTitle:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *localAttributes; // @synthesize localAttributes=_localAttributes;
 @property(retain, nonatomic) NSDictionary *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property(retain, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
@@ -59,8 +60,8 @@
 @property(readonly, nonatomic) int parentID; // @synthesize parentID=_parentID;
 @property(retain, nonatomic) NSString *address; // @synthesize address=_url;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isBuiltinBookmark;
 - (_Bool)isFrequentlyVisitedSitesFolder;
 - (_Bool)isWebFilterWhiteListFolder;
 - (_Bool)isReadingListFolder;
@@ -79,6 +80,7 @@
 - (id)initBuiltinDeviceBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initBuiltinBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initFolderWithParentID:(int)arg1;
+- (id)initWithTitle:(id)arg1 address:(id)arg2 parentID:(int)arg3;
 - (id)initWithTitle:(id)arg1 address:(id)arg2;
 - (_Bool)_attributesMarkedAsModified:(unsigned long long)arg1;
 - (void)_markAttributesAsModified:(unsigned long long)arg1;
@@ -116,7 +118,7 @@
 @property(nonatomic) int archiveStatus;
 @property(nonatomic) _Bool locallyAdded;
 @property(retain, nonatomic) NSString *previewText;
-- (_Bool)isReadingListItem;
+@property(readonly, nonatomic) _Bool isReadingListItem;
 - (id)initReadingListBookmarkWithTitle:(id)arg1 address:(id)arg2 previewText:(id)arg3;
 @property(nonatomic) _Bool shouldArchive;
 - (_Bool)fullArchiveAvailable;
@@ -126,11 +128,10 @@
 - (void)_removeDirectoryAtPath:(id)arg1;
 - (unsigned long long)archiveSize;
 - (unsigned long long)_sizeForFileOrDirectory:(id)arg1 withAttributes:(id)arg2;
-- (_Bool)writeOfflineWebView:(id)arg1 asArchive:(_Bool)arg2 inReaderForm:(_Bool)arg3;
+- (void)writeOfflineWebView:(id)arg1 withOptions:(unsigned long long)arg2 quickLookFilePath:(id)arg3 suggestedFileName:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)offlineArchiveDirectoryPath;
 - (id)webarchivePathForNextPageURL:(id)arg1;
 - (id)webarchivePathInReaderForm:(_Bool)arg1 fileExists:(_Bool *)arg2;
-- (id)_suggestedFileNameForWebView:(id)arg1;
 - (void)_modifyLocalReadingListAttributes:(CDUnknownBlockType)arg1;
 - (void)_modifyExtraReadingListAttributes:(CDUnknownBlockType)arg1;
 - (id)_readingListPropertyNamed:(id)arg1;

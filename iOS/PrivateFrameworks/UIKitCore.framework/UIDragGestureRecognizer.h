@@ -13,14 +13,14 @@ __attribute__((visibility("hidden")))
     UIDragEvent *_dragEvent;
 }
 
-@property(readonly, nonatomic, getter=_dragEvent) __weak UIDragEvent *dragEvent; // @synthesize dragEvent=_dragEvent;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_dragEvent) __weak UIDragEvent *dragEvent; // @synthesize dragEvent=_dragEvent;
 - (struct CGPoint)locationInView:(id)arg1;
 - (_Bool)canBePreventedByGestureRecognizer:(id)arg1;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
 - (_Bool)_shouldReceivePress:(id)arg1;
 - (_Bool)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
-- (_Bool)_shouldReceiveDragEvent:(id)arg1;
+- (_Bool)shouldReceiveEvent:(id)arg1;
 @property(readonly, nonatomic) _UIDropSessionImpl *dropSession;
 @property(readonly, nonatomic) _UIInternalDraggingSessionDestination *sessionDestination;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;

@@ -13,6 +13,7 @@
 - (_Bool)chatInputControllerShouldShowHandwriting:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidSelectFunCamera:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillSelectFunCamera:(CKChatInputController *)arg1;
+- (void)showContactForHandle:(NSString *)arg1;
 - (void)sendCurrentLocation;
 - (void)chatInputControllerWillDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(CKChatInputController *)arg1;
@@ -28,17 +29,18 @@
 - (void)chatInputControllerDidShowHandwriting:(CKChatInputController *)arg1;
 - (void)chatInputDidChangeSize;
 - (void)chatInputWillChangeHeightForCompactPresentation:(double)arg1;
+- (void)chatInputDidSelectEffectPicker;
 - (void)chatInputDidSelectPhotoPicker;
 - (void)setLocalUserIsComposing:(_Bool)arg1 withPluginBundleID:(NSString *)arg2 typingIndicatorData:(NSData *)arg3;
 - (void)chatInputDidUpdateWithNewInputViewController:(UIInputViewController *)arg1;
 - (void)chatInputController:(CKChatInputController *)arg1 presentShelfModal:(UIViewController *)arg2 animated:(_Bool)arg3 completion:(void (^)(void))arg4;
 - (void)chatInputDidUpdateInputViewShowingBrowser:(_Bool)arg1 entryFieldCollapsed:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)chatInputWillUpdateInputViewShowingBrowser;
+- (_Bool)chatInputControllerCanSend:(CKChatInputController *)arg1;
 - (void)chatInputSentComposition:(CKComposition *)arg1;
 - (_Bool)keyboardIsVisibleForChatInputController:(CKChatInputController *)arg1;
 - (id <CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;
 - (void)sendSticker:(IMSticker *)arg1 withDragTarget:(CKBrowserDragControllerTarget *)arg2;
-- (void)sendSticker:(IMSticker *)arg1;
 - (void)chatInputControllerRequestInputViewFocusFromFullscreen:(CKChatInputController *)arg1;
 - (UIView *)viewForDragAndChatInputDropTarget;
 - (UIViewController *)viewControllerForChatInputModalPresentation;

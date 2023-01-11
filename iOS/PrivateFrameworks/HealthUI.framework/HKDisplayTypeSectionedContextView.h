@@ -7,28 +7,33 @@
 #import <UIKit/UIView.h>
 
 #import <HealthUI/UICollectionViewDataSource-Protocol.h>
-#import <HealthUI/UICollectionViewDelegateFlowLayout-Protocol.h>
+#import <HealthUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewFlowLayout;
+@class HKDisplayTypeContextItem, HKDisplayTypeContextVerticalCollectionViewCell, NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewLayout;
 @protocol HKDisplayTypeSectionedContextViewDelegate;
 
-@interface HKDisplayTypeSectionedContextView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface HKDisplayTypeSectionedContextView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 {
     long long _style;
     _Bool _bottomInsetsEnabled;
     UICollectionView *_collectionView;
-    UICollectionViewFlowLayout *_collectionViewLayout;
+    UICollectionViewLayout *_collectionViewLayout;
     NSIndexPath *_lastSelectedIndex;
     NSArray *_displayTypeContextSections;
     id <HKDisplayTypeSectionedContextViewDelegate> _delegate;
+    HKDisplayTypeContextVerticalCollectionViewCell *_sizingCell;
+    HKDisplayTypeContextItem *_sizingItem;
+    double _sizingCellEstimatedHeight;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double sizingCellEstimatedHeight; // @synthesize sizingCellEstimatedHeight=_sizingCellEstimatedHeight;
+@property(retain, nonatomic) HKDisplayTypeContextItem *sizingItem; // @synthesize sizingItem=_sizingItem;
+@property(retain, nonatomic) HKDisplayTypeContextVerticalCollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property(nonatomic) __weak id <HKDisplayTypeSectionedContextViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSArray *displayTypeContextSections; // @synthesize displayTypeContextSections=_displayTypeContextSections;
-- (void).cxx_destruct;
 - (double)_maximumHeaderLabelLength;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
@@ -38,9 +43,14 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (long long)_rowsForScreenSize;
+- (double)_cellSizingWidth;
 - (double)_contentWidth;
 - (double)_contentHeight;
 - (double)_preferredCollectionViewHeightForCount:(long long)arg1;
+- (double)_estimatedDynamicCellHeight;
+- (void)_updateSizingCellWithContextItemSections:(id)arg1;
+- (id)_makeSizingItemWithItem:(id)arg1;
+- (id)_makeDummySizingItem;
 - (struct CGSize)intrinsicContentSize;
 - (void)deselectAllItemsAnimated:(_Bool)arg1;
 - (void)selectItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(unsigned long long)arg3;

@@ -18,12 +18,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *shuffleStartingItemIdentifier; // @synthesize shuffleStartingItemIdentifier=_shuffleStartingItemIdentifier;
 @property(copy, nonatomic) NSString *shuffleStartingSectionIdentifier; // @synthesize shuffleStartingSectionIdentifier=_shuffleStartingSectionIdentifier;
 @property(nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
-- (void).cxx_destruct;
-- (void)moveItem:(id)arg1 fromSection:(id)arg2 afterTailOfSection:(id)arg3;
-- (void)moveItem:(id)arg1 fromSection:(id)arg2 afterHeadOfSection:(id)arg3;
 - (void)addDataSource:(id)arg1 section:(id)arg2 afterHeadOfSection:(id)arg3;
 - (id)_shuffledListWithExclusiveAccessToken:(id)arg1;
 - (void)_dequeueCandidatesWithQuota:(long long)arg1 withExclusiveAccessToken:(id)arg2;
@@ -36,6 +34,8 @@
 - (void)dataSourceInsertItemsAtHead:(id)arg1 inSection:(id)arg2;
 - (long long)_itemCountWithExclusiveAccessToken:(id)arg1;
 - (void)removeItem:(id)arg1 fromSection:(id)arg2;
+- (void)moveItem:(id)arg1 fromSection:(id)arg2 afterTailOfSection:(id)arg3;
+- (void)moveItem:(id)arg1 fromSection:(id)arg2 afterHeadOfSection:(id)arg3;
 - (void)moveItem:(id)arg1 fromSection:(id)arg2 afterItem:(id)arg3 inSection:(id)arg4;
 - (void)moveItemToEnd:(id)arg1 fromSection:(id)arg2;
 - (void)moveItemToStart:(id)arg1 fromSection:(id)arg2;
@@ -48,12 +48,7 @@
 - (void)addDataSource:(id)arg1 section:(id)arg2 afterTailOfSection:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addDataSource:(id)arg1 section:(id)arg2 afterItem:(id)arg3 inSection:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)addDataSourceAtStart:(id)arg1 section:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtTailOfSection:(id)arg2 withExclusiveAccessToken:(id)arg3;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtItem:(id)arg2 inSection:(id)arg3 withExclusiveAccessToken:(id)arg4;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 withExclusiveAccessToken:(id)arg2;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtTailOfSection:(id)arg2;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtItem:(id)arg2 inSection:(id)arg3;
-- (id)enumeratorWithOptions:(unsigned long long)arg1;
+- (id)enumeratorWithOptions:(unsigned long long)arg1 startPosition:(id)arg2 endPosition:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (void)safelyReshuffleAfterItem:(id)arg1 inSection:(id)arg2;
 - (void)setShuffleType:(long long)arg1 startingItem:(id)arg2 inSection:(id)arg3 randomSource:(id)arg4;
 - (void)setShuffleType:(long long)arg1 startingItem:(id)arg2 inSection:(id)arg3;

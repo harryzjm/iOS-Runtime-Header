@@ -8,5 +8,7 @@
 {
 }
 
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+
 @end
 

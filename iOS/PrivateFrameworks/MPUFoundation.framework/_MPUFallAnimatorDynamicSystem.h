@@ -14,7 +14,7 @@
 {
 }
 
-- (struct CGRect)bounds;
+@property(readonly, nonatomic) struct CGRect bounds;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

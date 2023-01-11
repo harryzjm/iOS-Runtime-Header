@@ -7,7 +7,7 @@
 #import <SafariServices/NSObject-Protocol.h>
 #import <SafariServices/WKUIDelegatePrivate-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString, NSURL, NSURLRequest, _SFReaderController, _SFSyntheticClickContext, _WKFrameHandle;
+@class NSDictionary, NSNumber, NSString, NSURL, NSURLRequest, WBSReaderAvailabilityCheckResult, _SFReaderController, _SFSyntheticClickContext, _WKFrameHandle;
 
 @protocol _SFReaderControllerDelegate <NSObject, WKUIDelegatePrivate>
 
@@ -25,6 +25,6 @@
 - (void)readerController:(_SFReaderController *)arg1 didClickLinkInReaderWithRequest:(NSURLRequest *)arg2;
 - (void)readerController:(_SFReaderController *)arg1 didClickLinkRequestingNewWindowInReaderWithRequest:(NSURLRequest *)arg2;
 - (void)readerController:(_SFReaderController *)arg1 didDeactivateReaderWithMode:(unsigned long long)arg2;
-- (void)readerController:(_SFReaderController *)arg1 didDetermineReaderAvailability:(_Bool)arg2 dueToSameDocumentNavigation:(_Bool)arg3;
+- (void)readerController:(_SFReaderController *)arg1 didDetermineReaderAvailability:(WBSReaderAvailabilityCheckResult *)arg2 dueTo:(long long)arg3;
 @end
 

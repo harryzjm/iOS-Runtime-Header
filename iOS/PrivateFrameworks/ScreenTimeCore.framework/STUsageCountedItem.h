@@ -12,14 +12,15 @@
 {
 }
 
-+ (id)pickupDetailItemsForCountedItems:(id)arg1;
-+ (id)notificationDetailItemsForCountedItems:(id)arg1;
++ (id)pickupItemsExcludingSystemHiddenApplications:(id)arg1;
++ (id)notificationItemsExcludingSystemHiddenApplications:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) STUsageBlock *block; // @dynamic block;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @dynamic bundleIdentifier;
 @property(readonly, nonatomic) long long numberOfNotifications; // @dynamic numberOfNotifications;
 @property(readonly, nonatomic) long long numberOfPickups; // @dynamic numberOfPickups;
+@property(readonly, nonatomic) _Bool usageTrusted; // @dynamic usageTrusted;
 
 @end
 

@@ -16,7 +16,7 @@
 + (id)scrcStringWithString:(id)arg1 treePosition:(id)arg2;
 + (id)scrcStringWithString:(id)arg1;
 + (id)scrcStringWithFormat:(id)arg1;
-+ (id)_scrcStringWithFormat:(id)arg1 args:(struct __va_list_tag [1])arg2;
++ (id)_scrcStringWithFormat:(id)arg1 args:(char *)arg2;
 - (_Bool)scrcContainsPause;
 - (_Bool)_scrcHasPauseCommaAtIndex:(unsigned long long)arg1;
 - (id)scrcStringByAddingAttribute:(id)arg1 value:(id)arg2;
@@ -25,5 +25,6 @@
 - (struct _NSRange)_scrcRangeOfFormatSpecifierWithIndex:(unsigned long long)arg1;
 - (struct _NSRange)_scrcRangeOfVanillaFormatSpecifier;
 - (id)scrcSplitBasedOnAttribute:(id)arg1 limit:(long long)arg2;
+- (id)scrcSplitBasedOnMultipleAttributesWithLimit:(long long)arg1;
 @end
 

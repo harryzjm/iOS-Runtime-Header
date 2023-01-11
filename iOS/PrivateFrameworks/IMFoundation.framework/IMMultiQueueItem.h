@@ -15,10 +15,10 @@
     NSString *_describer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *describer; // @synthesize describer=_describer;
 @property(readonly, nonatomic) NSString *GUID; // @synthesize GUID=_GUID;
 @property(readonly, nonatomic) id block; // @synthesize block=_block;
-- (void)dealloc;
 - (id)initWithBlock:(id)arg1 GUID:(id)arg2 description:(id)arg3;
 
 @end

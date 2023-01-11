@@ -18,7 +18,7 @@
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSIndexPath, NSMutableDictionary, NSMutableSet, NSOrderedSet, NSString, PHCachingImageManager, PHFetchResult, PLAvalanche, PLManagedAsset, PUAssetTransitionInfo, PUAvalancheReviewCollectionViewLayout, PUAvalancheReviewControllerSpec, PUPhotoPinchGestureRecognizer, PUPhotosSharingTransitionContext, PUPhotosZoomingSharingGridCell, PUReviewInstructionalView, PUReviewScrubber, PUTransitionViewAnimator, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
+@class NSIndexPath, NSMutableDictionary, NSMutableSet, NSOrderedSet, NSString, PHCachingImageManager, PHFetchResult, PLAvalanche, PLManagedAsset, PUAssetTransitionInfo, PUAvalancheReviewCollectionViewLayout, PUAvalancheReviewControllerSpec, PUPhotoPinchGestureRecognizer, PUPhotosSharingTransitionContext, PUPhotosZoomingSharingGridCell, PUReviewScrubber, PUTransitionViewAnimator, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
 @protocol PLAssetContainer, PLAssetContainerList, PUAvalancheReviewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
     PUAvalancheReviewControllerSpec *__spec;
     UICollectionView *__collectionView;
     PUAvalancheReviewCollectionViewLayout *__collectionViewLayout;
-    PUReviewInstructionalView *__instructionalView;
     UIBarButtonItem *__doneBarButtonItem;
     UIBarButtonItem *__cancelBarButtonItem;
     UITapGestureRecognizer *__tapGestureRecognizer;
@@ -55,6 +54,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)filteringContext;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PUAssetTransitionInfo *_assetTransitionInfo; // @synthesize _assetTransitionInfo=__assetTransitionInfo;
 @property(retain, nonatomic) PUPhotosSharingTransitionContext *_photosSharingTransitionContext; // @synthesize _photosSharingTransitionContext=__photosSharingTransitionContext;
 @property(retain, nonatomic, setter=_setTransitionLayout:) UICollectionViewLayout *_transitionLayout; // @synthesize _transitionLayout=__transitionLayout;
@@ -75,13 +75,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UITapGestureRecognizer *_tapGestureRecognizer; // @synthesize _tapGestureRecognizer=__tapGestureRecognizer;
 @property(readonly, nonatomic) UIBarButtonItem *_cancelBarButtonItem; // @synthesize _cancelBarButtonItem=__cancelBarButtonItem;
 @property(readonly, nonatomic) UIBarButtonItem *_doneBarButtonItem; // @synthesize _doneBarButtonItem=__doneBarButtonItem;
-@property(readonly, nonatomic) PUReviewInstructionalView *_instructionalView; // @synthesize _instructionalView=__instructionalView;
 @property(readonly, nonatomic) PUAvalancheReviewCollectionViewLayout *_collectionViewLayout; // @synthesize _collectionViewLayout=__collectionViewLayout;
 @property(readonly, nonatomic) UICollectionView *_collectionView; // @synthesize _collectionView=__collectionView;
 @property(readonly, nonatomic) PUAvalancheReviewControllerSpec *_spec; // @synthesize _spec=__spec;
 @property(readonly, nonatomic) id <PLAssetContainerList> avalancheContainerList; // @synthesize avalancheContainerList=_avalancheContainerList;
 @property(nonatomic) id <PUAvalancheReviewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_updatePreheatedAssets;
 - (void)_resetPreheating;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(CDUnknownBlockType)arg2;
@@ -108,7 +106,6 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;

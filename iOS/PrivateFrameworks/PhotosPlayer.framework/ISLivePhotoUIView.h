@@ -7,24 +7,26 @@
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 #import <PhotosPlayer/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ISLivePhotoPlayer, ISTouchLivePhotoPlaybackFilter, NSString, UIGestureRecognizer, UIImpactFeedbackGenerator, UILabel;
+@class CAMeshTransform, ISLivePhotoPlayer, ISTouchLivePhotoPlaybackFilter, NSString, UIGestureRecognizer, UIImpactFeedbackGenerator, UILabel;
 
 @interface ISLivePhotoUIView <UIGestureRecognizerDelegate, ISChangeObserver>
 {
     UIImpactFeedbackGenerator *_feedbackGenerator;
     _Bool __playingVitality;
     UIGestureRecognizer *_playbackGestureRecognizer;
+    CAMeshTransform *_vitalityTransform;
     ISTouchLivePhotoPlaybackFilter *__playbackFilter;
     UILabel *__overlayLabel;
     long long __overlayDismissalID;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setOverlayDismissalID:) long long _overlayDismissalID; // @synthesize _overlayDismissalID=__overlayDismissalID;
 @property(readonly, nonatomic) UILabel *_overlayLabel; // @synthesize _overlayLabel=__overlayLabel;
 @property(nonatomic, setter=_setPlayingVitality:) _Bool _playingVitality; // @synthesize _playingVitality=__playingVitality;
 @property(retain, nonatomic, setter=_setPlaybackFilter:) ISTouchLivePhotoPlaybackFilter *_playbackFilter; // @synthesize _playbackFilter=__playbackFilter;
+@property(copy, nonatomic) CAMeshTransform *vitalityTransform; // @synthesize vitalityTransform=_vitalityTransform;
 @property(readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer; // @synthesize playbackGestureRecognizer=_playbackGestureRecognizer;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)_updateGestureRecognizerParameters;
@@ -35,6 +37,7 @@
 - (void)_updatePlaybackFilter;
 - (void)contentDidChange;
 - (void)audioSessionDidChange;
+- (void)_updateVideoTransform;
 - (void)_updatePlaybackFilterInput;
 - (void)_handlePlaybackRecognizer:(id)arg1;
 - (void)_ISLivePhotoUIViewCommonInitialization;

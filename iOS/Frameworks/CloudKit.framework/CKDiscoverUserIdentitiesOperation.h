@@ -4,28 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <CloudKit/CKDiscoverUserIdentitiesOperationCallbacks-Protocol.h>
 
-@interface CKDiscoverUserIdentitiesOperation
+@class CKDiscoverUserIdentitiesOperationInfo, NSArray;
+@protocol CKDiscoverUserIdentitiesOperationCallbacks;
+
+@interface CKDiscoverUserIdentitiesOperation <CKDiscoverUserIdentitiesOperationCallbacks>
 {
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverUserIdentitiesCompletionBlock;
     NSArray *_userIdentityLookupInfos;
 }
 
-@property(copy, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleUserIdentityDiscoveryForLookupInfo:(id)arg1 userIdentity:(id)arg2;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
-- (Class)operationInfoClass;
 @property(copy, nonatomic) CDUnknownBlockType discoverUserIdentitiesCompletionBlock; // @synthesize discoverUserIdentitiesCompletionBlock=_discoverUserIdentitiesCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType userIdentityDiscoveredBlock; // @synthesize userIdentityDiscoveredBlock=_userIdentityDiscoveredBlock;
 - (id)initWithUserIdentityLookupInfos:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKDiscoverUserIdentitiesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKDiscoverUserIdentitiesOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

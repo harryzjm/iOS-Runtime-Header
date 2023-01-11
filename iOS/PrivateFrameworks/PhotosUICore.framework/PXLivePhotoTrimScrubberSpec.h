@@ -18,27 +18,31 @@
     double _handleWidth;
     double _handleHeight;
     double _handleAnchorX;
+    double _loupeVerticalInset;
     double _loupeOuterCornerRadius;
     double _loupeInnerCornerRadius;
+    double _playheadWidth;
     double _filmstripCornerRadius;
     UIColor *_disabledOverlayColor;
     struct UIEdgeInsets _filmstripViewInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool useMiniScrubberHeight; // @synthesize useMiniScrubberHeight=_useMiniScrubberHeight;
 @property(nonatomic) _Bool fallbackToPlayheadTracking; // @synthesize fallbackToPlayheadTracking=_fallbackToPlayheadTracking;
 @property(nonatomic) _Bool fallbackToKeyTimeTracking; // @synthesize fallbackToKeyTimeTracking=_fallbackToKeyTimeTracking;
 @property(retain, nonatomic) UIColor *disabledOverlayColor; // @synthesize disabledOverlayColor=_disabledOverlayColor;
 @property(nonatomic) double filmstripCornerRadius; // @synthesize filmstripCornerRadius=_filmstripCornerRadius;
+@property(nonatomic) double playheadWidth; // @synthesize playheadWidth=_playheadWidth;
 @property(nonatomic) double loupeInnerCornerRadius; // @synthesize loupeInnerCornerRadius=_loupeInnerCornerRadius;
 @property(nonatomic) double loupeOuterCornerRadius; // @synthesize loupeOuterCornerRadius=_loupeOuterCornerRadius;
+@property(nonatomic) double loupeVerticalInset; // @synthesize loupeVerticalInset=_loupeVerticalInset;
 @property(nonatomic) struct UIEdgeInsets filmstripViewInsets; // @synthesize filmstripViewInsets=_filmstripViewInsets;
 @property(nonatomic) double handleAnchorX; // @synthesize handleAnchorX=_handleAnchorX;
 @property(nonatomic) double handleHeight; // @synthesize handleHeight=_handleHeight;
 @property(nonatomic) double handleWidth; // @synthesize handleWidth=_handleWidth;
 @property(nonatomic) double handleTouchDistance; // @synthesize handleTouchDistance=_handleTouchDistance;
 @property(nonatomic) double scrubberHeight; // @synthesize scrubberHeight=_scrubberHeight;
-- (void).cxx_destruct;
 - (void)_updateScrubberHeight;
 - (id)init;
 

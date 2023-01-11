@@ -11,8 +11,8 @@
     NSURL *_destinationURL;
 }
 
-@property(readonly, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 - (id)initWithDestinationURL:(id)arg1;
 
 @end

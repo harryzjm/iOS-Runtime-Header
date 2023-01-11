@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSValue, UIImageView;
+
 __attribute__((visibility("hidden")))
 @interface _UIGroupTableViewCellBackground_TV
 {
-    double _backgroundImageAlpha;
+    NSValue *_currentShadowKey;
+    UIImageView *_backgroundImageView;
 }
 
-@property(readonly, nonatomic) double backgroundImageAlpha; // @synthesize backgroundImageAlpha=_backgroundImageAlpha;
-- (id)initWithFrame:(struct CGRect)arg1 backgroundImageAlpha:(double)arg2;
+- (void).cxx_destruct;
+- (void)updateBackgroundImageColor:(id)arg1 cornerRadius:(double)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 backgroundImageColor:(id)arg2 cornerRadius:(double)arg3;
 
 @end
 

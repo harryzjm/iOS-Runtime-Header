@@ -9,7 +9,7 @@
 #import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface AKUserInformation : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,6 +17,7 @@
     NSString *_familyName;
     NSString *_forwardingEmail;
     NSString *_previouslySelectedEmail;
+    NSString *_primaryEmailAddress;
     NSString *_accountName;
     NSArray *_accountAliases;
     NSArray *_reachableEmails;
@@ -32,11 +33,14 @@
     unsigned long long _appleIDSecurityLevel;
     unsigned long long _authMode;
     unsigned long long _repairState;
+    NSDictionary *_additionalInfo;
     NSString *_selectedEmail;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *selectedEmail; // @synthesize selectedEmail=_selectedEmail;
+@property(copy, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo=_additionalInfo;
 @property(nonatomic) unsigned long long repairState; // @synthesize repairState=_repairState;
 @property(nonatomic) unsigned long long authMode; // @synthesize authMode=_authMode;
 @property(nonatomic) unsigned long long appleIDSecurityLevel; // @synthesize appleIDSecurityLevel=_appleIDSecurityLevel;
@@ -52,11 +56,11 @@
 @property(copy, nonatomic) NSArray *reachableEmails; // @synthesize reachableEmails=_reachableEmails;
 @property(copy, nonatomic) NSArray *accountAliases; // @synthesize accountAliases=_accountAliases;
 @property(copy, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
+@property(copy, nonatomic) NSString *primaryEmailAddress; // @synthesize primaryEmailAddress=_primaryEmailAddress;
 @property(copy, nonatomic) NSString *previouslySelectedEmail; // @synthesize previouslySelectedEmail=_previouslySelectedEmail;
 @property(copy, nonatomic) NSString *forwardingEmail; // @synthesize forwardingEmail=_forwardingEmail;
 @property(copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
 @property(copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

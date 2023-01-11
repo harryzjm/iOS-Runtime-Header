@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
 
-@interface CPLFeatureVersionHistory : NSObject <NSSecureCoding>
+@interface CPLFeatureVersionHistory : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableDictionary *_anchorToVersion;
     NSMutableDictionary *_versionToAnchor;
@@ -18,14 +19,17 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) long long currentFeatureVersion; // @synthesize currentFeatureVersion=_currentFeatureVersion;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long currentFeatureVersion; // @synthesize currentFeatureVersion=_currentFeatureVersion;
 - (void)enumerateHistoryWithBlock:(CDUnknownBlockType)arg1;
 - (id)description;
-- (long long)featureVersionForSyncAnchor:(struct NSData *)arg1;
-- (struct NSData *)syncAnchorForFeatureVersion:(long long)arg1;
-- (void)addSyncAnchor:(struct NSData *)arg1 forFeatureVersion:(long long)arg2;
+- (long long)featureVersionForSyncAnchor:(id)arg1;
+- (id)syncAnchorForFeatureVersion:(long long)arg1;
+- (void)addSyncAnchor:(id)arg1 forFeatureVersion:(long long)arg2;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithCurrentFeatureVersion:(long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

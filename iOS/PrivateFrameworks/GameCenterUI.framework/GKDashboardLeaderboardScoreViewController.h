@@ -17,6 +17,7 @@
 
 + (void)setInitialTimeScope:(long long)arg1;
 + (long long)initialTimeScope;
+- (void).cxx_destruct;
 @property(nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
 @property(retain, nonatomic) GKDashboardLeaderboardScoreDataSource *globalDataSource; // @synthesize globalDataSource=_globalDataSource;
 @property(retain, nonatomic) GKDashboardLeaderboardScoreDataSource *friendDataSource; // @synthesize friendDataSource=_friendDataSource;
@@ -32,7 +33,6 @@
 - (void)setupNoContentView:(id)arg1 withError:(id)arg2;
 - (void)dataUpdated:(_Bool)arg1 withError:(id)arg2;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1 leaderboard:(id)arg2;
 
 @end

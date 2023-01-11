@@ -34,7 +34,6 @@
 - (id)copyMessageInfo;
 - (_Bool)shouldSetSummary;
 - (void)setSummary:(id)arg1;
-- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 messageIDHash:(long long)arg8 conversationIDHash:(long long)arg9 summary:(id)arg10 withOptions:(unsigned int)arg11;
 - (void)setMutableInfoFromMessage:(id)arg1;
 - (unsigned long long)numberOfAttachments;
 - (id)globalMessageURL;

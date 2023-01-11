@@ -6,25 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableSet;
+@class NSDate, NSMutableSet, NSSet;
 
 @interface SBClawGestureLogger : NSObject
 {
     _Bool _didTriggerSOS;
     NSDate *_clawEventTimestamp;
-    NSMutableSet *_activePressTypes;
+    NSSet *_activePressTypes;
     NSMutableSet *_participatingPressTypes;
 }
 
-@property(retain, nonatomic) NSMutableSet *participatingPressTypes; // @synthesize participatingPressTypes=_participatingPressTypes;
-@property(retain, nonatomic) NSMutableSet *activePressTypes; // @synthesize activePressTypes=_activePressTypes;
-@property(nonatomic) _Bool didTriggerSOS; // @synthesize didTriggerSOS=_didTriggerSOS;
-@property(copy, nonatomic) NSDate *clawEventTimestamp; // @synthesize clawEventTimestamp=_clawEventTimestamp;
 - (void).cxx_destruct;
 - (void)_resetLoggedData;
 - (void)_publishLoggedData;
 - (void)noteSOSTriggered;
-- (void)noteGesturePressType:(long long)arg1 withPressPhase:(long long)arg2;
+- (void)noteActiveGesturePressTypes:(id)arg1 wasClawGestureActive:(_Bool)arg2 isClawGestureActive:(_Bool)arg3;
 - (id)init;
 
 @end

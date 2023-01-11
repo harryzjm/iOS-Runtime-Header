@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOReview : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_languageCode;
     double _reviewTime;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     double _score;
     NSString *_snippet;
     NSString *_uid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _isChinaSuppressed;
     struct {
         unsigned int has_reviewTime:1;
@@ -32,14 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_reviewer:1;
         unsigned int read_snippet:1;
         unsigned int read_uid:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_languageCode:1;
-        unsigned int wrote_reviewTime:1;
-        unsigned int wrote_reviewer:1;
-        unsigned int wrote_score:1;
-        unsigned int wrote_snippet:1;
-        unsigned int wrote_uid:1;
-        unsigned int wrote_isChinaSuppressed:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -55,26 +50,27 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIsChinaSuppressed;
 @property(nonatomic) _Bool isChinaSuppressed;
 @property(retain, nonatomic) NSString *languageCode;
 @property(readonly, nonatomic) _Bool hasLanguageCode;
-- (void)_readLanguageCode;
 @property(retain, nonatomic) NSString *uid;
 @property(readonly, nonatomic) _Bool hasUid;
-- (void)_readUid;
 @property(retain, nonatomic) GEOUser *reviewer;
 @property(readonly, nonatomic) _Bool hasReviewer;
-- (void)_readReviewer;
 @property(nonatomic) _Bool hasReviewTime;
 @property(nonatomic) double reviewTime;
 @property(nonatomic) _Bool hasScore;
 @property(nonatomic) double score;
 @property(retain, nonatomic) NSString *snippet;
 @property(readonly, nonatomic) _Bool hasSnippet;
-- (void)_readSnippet;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

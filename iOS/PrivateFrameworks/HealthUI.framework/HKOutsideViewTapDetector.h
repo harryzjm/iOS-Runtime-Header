@@ -8,23 +8,21 @@
 
 #import <HealthUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UITapGestureRecognizer, UIView;
+@class NSMutableArray, NSString;
 
 @interface HKOutsideViewTapDetector : NSObject <UIGestureRecognizerDelegate>
 {
-    UITapGestureRecognizer *_recognizer;
-    UIView *_view;
-    CDUnknownBlockType _outsideTapBlock;
+    NSMutableArray *_windowCallbacks;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType outsideTapBlock; // @synthesize outsideTapBlock=_outsideTapBlock;
-@property(retain, nonatomic) UIView *view; // @synthesize view=_view;
-@property(retain, nonatomic) UITapGestureRecognizer *recognizer; // @synthesize recognizer=_recognizer;
++ (void)removeOutsideTouchCallbackForView:(id)arg1;
++ (void)addOutsideTouchCallbackForView:(id)arg1 outsideTapBlock:(CDUnknownBlockType)arg2;
++ (id)_detectorSingleton;
 - (void).cxx_destruct;
-- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)handleTap:(id)arg1;
-- (void)dealloc;
-- (id)initWithView:(id)arg1 outsideTapBlock:(CDUnknownBlockType)arg2;
+@property(retain, nonatomic) NSMutableArray *windowCallbacks; // @synthesize windowCallbacks=_windowCallbacks;
+- (void)_removeCallbacksForView:(id)arg1;
+- (id)_callbacksForWindow:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

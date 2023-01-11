@@ -12,12 +12,16 @@
 
 @interface NTPBTodaySectionConfigArticle : PBCodable <NSCopying>
 {
+    NSString *_actionURLString;
     NSString *_articleID;
     NSString *_displayDateString;
+    NTPBTodaySectionConfigArticle *_paidArticle;
     NSString *_storyType;
     NSString *_title;
 }
 
+@property(retain, nonatomic) NSString *actionURLString; // @synthesize actionURLString=_actionURLString;
+@property(retain, nonatomic) NTPBTodaySectionConfigArticle *paidArticle; // @synthesize paidArticle=_paidArticle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *storyType; // @synthesize storyType=_storyType;
 @property(retain, nonatomic) NSString *displayDateString; // @synthesize displayDateString=_displayDateString;
@@ -30,6 +34,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasActionURLString;
+@property(readonly, nonatomic) _Bool hasPaidArticle;
 @property(readonly, nonatomic) _Bool hasTitle;
 @property(readonly, nonatomic) _Bool hasStoryType;
 @property(readonly, nonatomic) _Bool hasDisplayDateString;

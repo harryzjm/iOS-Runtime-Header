@@ -4,36 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAGradientLayer, NSString, UIColor, UIImage, UIImageView, UILabel, UIView;
+@class PKSplashImageHeaderView, UIColor, UIView, UIVisualEffect, UIVisualEffectView;
 
 @interface PKTransactionHistoryMerchantHeaderCell
 {
-    UIView *_fallbackColorView;
-    UIImageView *_backgroundImageView;
-    CAGradientLayer *_gradientLayer;
-    UIImageView *_iconImageView;
-    UILabel *_primaryLabel;
-    UILabel *_secondaryLabel;
-    UILabel *_attributionLabel;
-    unsigned long long _screenType;
-    _Bool _showsGradientOverlay;
-    NSString *_primaryText;
-    NSString *_secondaryText;
-    UIImage *_iconImage;
-    UIImage *_backgroundImage;
-    UIColor *_fallbackColor;
-    NSString *_attributionProviderName;
+    UIVisualEffectView *_overlayEffectView;
+    UIView *_shadowView;
+    PKSplashImageHeaderView *_headerView;
+    UIVisualEffect *_overlayEffect;
+    UIColor *_shadowColor;
+    double _overlayAlpha;
 }
 
-@property(copy, nonatomic) NSString *attributionProviderName; // @synthesize attributionProviderName=_attributionProviderName;
-@property(retain, nonatomic) UIColor *fallbackColor; // @synthesize fallbackColor=_fallbackColor;
-@property(nonatomic) _Bool showsGradientOverlay; // @synthesize showsGradientOverlay=_showsGradientOverlay;
-@property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
-@property(retain, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
-@property(copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
-@property(copy, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
 - (void).cxx_destruct;
-- (void)setBackgroundImage:(id)arg1 animated:(_Bool)arg2;
+@property(nonatomic) double overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
+@property(retain, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
+@property(retain, nonatomic) UIVisualEffect *overlayEffect; // @synthesize overlayEffect=_overlayEffect;
+@property(readonly, nonatomic) PKSplashImageHeaderView *headerView; // @synthesize headerView=_headerView;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

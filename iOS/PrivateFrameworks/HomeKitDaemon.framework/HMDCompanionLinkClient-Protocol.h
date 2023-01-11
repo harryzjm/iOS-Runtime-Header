@@ -6,10 +6,14 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
+@class NSObject;
+@protocol OS_dispatch_queue;
+
 @protocol HMDCompanionLinkClient <NSObject>
 @property(copy, nonatomic) CDUnknownBlockType deviceChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceLostHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceFoundHandler;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 - (void)stop;
 - (void)start;
 @end

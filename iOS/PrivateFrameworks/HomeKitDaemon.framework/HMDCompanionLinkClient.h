@@ -9,19 +9,21 @@
 #import <HomeKitDaemon/HMDCompanionLinkClient-Protocol.h>
 
 @class NSString, RPCompanionLinkClient;
+@protocol OS_dispatch_queue;
 
 @interface HMDCompanionLinkClient : NSObject <HMDCompanionLinkClient>
 {
     RPCompanionLinkClient *_client;
 }
 
-@property(retain, nonatomic) RPCompanionLinkClient *client; // @synthesize client=_client;
 - (void).cxx_destruct;
+@property(retain, nonatomic) RPCompanionLinkClient *client; // @synthesize client=_client;
 - (void)stop;
 - (void)start;
 @property(copy, nonatomic) CDUnknownBlockType deviceLostHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceFoundHandler;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 - (void)dealloc;
 
 // Remaining properties

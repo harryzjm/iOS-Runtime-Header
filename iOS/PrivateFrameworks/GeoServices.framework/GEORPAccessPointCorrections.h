@@ -13,20 +13,19 @@
 @interface GEORPAccessPointCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_addeds;
     NSMutableArray *_editeds;
     NSMutableArray *_removeds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_addeds:1;
         unsigned int read_editeds:1;
         unsigned int read_removeds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addeds:1;
-        unsigned int wrote_editeds:1;
-        unsigned int wrote_removeds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,29 +44,28 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)editedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)editedsCount;
-- (void)_addNoFlagsEdited:(id)arg1;
 - (void)addEdited:(id)arg1;
 - (void)clearEditeds;
 @property(retain, nonatomic) NSMutableArray *editeds;
-- (void)_readEditeds;
 - (id)removedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)removedsCount;
-- (void)_addNoFlagsRemoved:(id)arg1;
 - (void)addRemoved:(id)arg1;
 - (void)clearRemoveds;
 @property(retain, nonatomic) NSMutableArray *removeds;
-- (void)_readRemoveds;
 - (id)addedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)addedsCount;
-- (void)_addNoFlagsAdded:(id)arg1;
 - (void)addAdded:(id)arg1;
 - (void)clearAddeds;
 @property(retain, nonatomic) NSMutableArray *addeds;
-- (void)_readAddeds;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

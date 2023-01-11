@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (void)applyToCountdownView:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)identifier;
 - (_Bool)cancelable;
-- (id)timingFunction;
 - (double)duration;
 - (double)delay;
 

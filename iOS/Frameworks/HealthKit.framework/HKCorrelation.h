@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)_allTypes;
 - (void)_removeAllCorrelatedObjects;
 - (_Bool)_containsObjects;

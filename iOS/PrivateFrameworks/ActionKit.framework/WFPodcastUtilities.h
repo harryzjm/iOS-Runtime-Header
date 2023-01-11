@@ -11,7 +11,9 @@
 }
 
 + (void)getPodcastsFromLibraryFetchingDetailsFromServer:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-+ (void *)createPlayerPath;
++ (void)createPreferredPlayerPathWithCompletion:(CDUnknownBlockType)arg1;
++ (void *)createLocalPlayerPath;
++ (void *)createPlayerPathForOrigin:(void *)arg1;
 + (struct _MRSystemAppPlaybackQueue *)createPlaybackQueueWithURLs:(id)arg1 setImmediatePlayback:(_Bool)arg2;
 + (id)generatePlaybackQueueURL:(id)arg1 withQueryDictionary:(id)arg2;
 

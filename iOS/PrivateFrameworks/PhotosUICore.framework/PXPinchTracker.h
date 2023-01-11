@@ -43,6 +43,7 @@
     struct CGAffineTransform _transform;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldResize; // @synthesize shouldResize=_shouldResize;
 @property(readonly, nonatomic) double scaleHysteresis; // @synthesize scaleHysteresis=_scaleHysteresis;
 @property(readonly, nonatomic) double rotationHysteris; // @synthesize rotationHysteris=_rotationHysteris;
@@ -55,7 +56,6 @@
 @property(nonatomic) double time; // @synthesize time=_time;
 @property(nonatomic) struct CGPoint pinchLocation2; // @synthesize pinchLocation2=_pinchLocation2;
 @property(nonatomic) struct CGPoint pinchLocation1; // @synthesize pinchLocation1=_pinchLocation1;
-- (void).cxx_destruct;
 - (void)_updateGeometryIfNeeded;
 - (void)_invalidateGeometry;
 - (void)_updateInitialValuesIfNeeded;

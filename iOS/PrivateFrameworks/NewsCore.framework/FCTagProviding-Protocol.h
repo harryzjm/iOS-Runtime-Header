@@ -7,14 +7,19 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCPurchaseOfferableConfiguration, FCSubscriptionButtonConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
-@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTopicProviding;
+@class FCAssetHandle, FCColor, FCPaywallConfiguration, FCPurchaseOfferableConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
+@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTagStocksFields, FCTopicProviding;
 
 @protocol FCTagProviding <NSObject, NFCopying>
-@property(readonly, copy, nonatomic) FCSubscriptionButtonConfiguration *paidBundleSubscriptionButtonConfiguration;
+@property(readonly, copy, nonatomic) FCPaywallConfiguration *paidBundlePaywallConfiguration;
+@property(readonly, nonatomic) id <FCTagStocksFields> stocksFields;
 @property(readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
+@property(readonly, nonatomic) _Bool isLocal;
+@property(readonly, nonatomic) _Bool isSandbox;
+@property(readonly, nonatomic) _Bool isInternal;
+@property(readonly, nonatomic) _Bool isAutoDarkModeEnabled;
 @property(readonly, nonatomic) _Bool isArticleReadCountReportingEnabled;
 @property(readonly, nonatomic) _Bool isRealTimeTrackingEnabled;
 @property(readonly, nonatomic) _Bool isHidden;
@@ -44,7 +49,6 @@
 @property(readonly, copy, nonatomic) FCColor *groupDarkStyleTitleColor;
 @property(readonly, copy, nonatomic) FCColor *groupTitleColor;
 @property(readonly, copy, nonatomic) id <FCFeedTheming> theme;
-@property(readonly, copy, nonatomic) NSString *coverArticleListID;
 @property(readonly, nonatomic) FCAssetHandle *feedNavImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *coverImageAssetHandle;
 @property(readonly, nonatomic) _Bool isSubscribable;
@@ -64,6 +68,7 @@
 @property(readonly, nonatomic) id <FCSectionProviding> asSection;
 @property(readonly, nonatomic) id <FCChannelProviding> asChannel;
 @property(readonly, nonatomic) _Bool hideAccessoryText;
+@property(readonly, nonatomic) unsigned long long userFacingTagType;
 @property(readonly, nonatomic) unsigned long long tagType;
 - (void)ppt_overrideFeedID:(NSString *)arg1;
 - (NSURL *)authorizationURL;

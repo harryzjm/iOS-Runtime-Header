@@ -6,8 +6,11 @@
 
 @interface SBSpotlightTransientOverlaySpotlightViewController
 {
+    unsigned long long _presentationSource;
 }
 
+@property(nonatomic) unsigned long long presentationSource; // @synthesize presentationSource=_presentationSource;
+- (_Bool)_canShowWhileLocked;
 - (unsigned long long)remoteSearchViewPresentationSource;
 - (unsigned long long)level;
 

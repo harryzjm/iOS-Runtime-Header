@@ -15,15 +15,17 @@
 #import <HealthDaemon/HDNanoSyncStoreDelegate-Protocol.h>
 #import <HealthDaemon/HDSyncSessionDelegate-Protocol.h>
 
-@class HDIDSMessageCenter, HDKeyValueDomain, HDNanoSyncStore, HDPairedSyncManager, HDProfile, HKNanoSyncPairedDevicesSnapshot, HKObserverSet, NSArray, NSDate, NSMutableDictionary, NSString;
+@class HDIDSMessageCenter, HDKeyValueDomain, HDNanoSyncStore, HDPairedSyncManager, HDProfile, HKNanoSyncPairedDevicesSnapshot, HKObserverSet, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HDNanoSyncManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDNanoSyncStoreDelegate, HDSyncSessionDelegate, HDDatabaseProtectedDataObserver, HDDataObserver, HDIDSMessageCenterDelegate, HDForegroundClientProcessObserver>
 {
     _Bool _isMaster;
-    _Bool _invalidated;
+    _Atomic _Bool _invalidated;
     _Bool _waitingForFirstUnlock;
     _Bool _enablePeriodicSyncTimer;
+    int _tinkerOptInAcceptedToken;
+    int _tinkerOptInDeclinedToken;
     HKNanoSyncPairedDevicesSnapshot *_pairedDevicesSnapshot;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -32,6 +34,8 @@
     HKObserverSet *_observers;
     HDKeyValueDomain *_nanoSyncDomain;
     HDNanoSyncStore *_activeSyncStore;
+    HDNanoSyncStore *_activeTinkerSyncStore;
+    NSMutableArray *_tinkerOptInResponseBlocks;
     NSMutableDictionary *_syncStoresByDeviceIdentifier;
     NSArray *_pairedDevices;
     NSObject<OS_dispatch_source> *_periodicSyncTimer;
@@ -40,6 +44,7 @@
     HDPairedSyncManager *_pairedSyncManager;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HDPairedSyncManager *pairedSyncManager; // @synthesize pairedSyncManager=_pairedSyncManager;
 @property _Bool enablePeriodicSyncTimer; // @synthesize enablePeriodicSyncTimer=_enablePeriodicSyncTimer;
 @property double restoreTimeout; // @synthesize restoreTimeout=_restoreTimeout;
@@ -48,6 +53,10 @@
 @property(nonatomic) _Bool waitingForFirstUnlock; // @synthesize waitingForFirstUnlock=_waitingForFirstUnlock;
 @property(retain, nonatomic) NSArray *pairedDevices; // @synthesize pairedDevices=_pairedDevices;
 @property(retain, nonatomic) NSMutableDictionary *syncStoresByDeviceIdentifier; // @synthesize syncStoresByDeviceIdentifier=_syncStoresByDeviceIdentifier;
+@property(retain, nonatomic) NSMutableArray *tinkerOptInResponseBlocks; // @synthesize tinkerOptInResponseBlocks=_tinkerOptInResponseBlocks;
+@property(nonatomic) int tinkerOptInDeclinedToken; // @synthesize tinkerOptInDeclinedToken=_tinkerOptInDeclinedToken;
+@property(nonatomic) int tinkerOptInAcceptedToken; // @synthesize tinkerOptInAcceptedToken=_tinkerOptInAcceptedToken;
+@property(retain, nonatomic) HDNanoSyncStore *activeTinkerSyncStore; // @synthesize activeTinkerSyncStore=_activeTinkerSyncStore;
 @property(retain, nonatomic) HDNanoSyncStore *activeSyncStore; // @synthesize activeSyncStore=_activeSyncStore;
 @property(retain, nonatomic) HDKeyValueDomain *nanoSyncDomain; // @synthesize nanoSyncDomain=_nanoSyncDomain;
 @property(retain, nonatomic) HKObserverSet *observers; // @synthesize observers=_observers;
@@ -56,7 +65,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(retain) HKNanoSyncPairedDevicesSnapshot *pairedDevicesSnapshot; // @synthesize pairedDevicesSnapshot=_pairedDevicesSnapshot;
-- (void).cxx_destruct;
 - (void)foregroundClientProcessesDidChange:(id)arg1 previouslyForegroundBundleIdentifiers:(id)arg2;
 - (void)_didReceiveChangeRequest;
 - (id)diagnosticDescription;
@@ -76,6 +84,23 @@
 - (void)_queue_receiveAuthorizationResponse:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_receiveAuthorizationRequest:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_requestAuthorizationForRequestRecord:(id)arg1 syncStore:(id)arg2 requestSentHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_queue_tinkerEndToEndCloudSyncRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_receiveTinkerEndToEndCloudSyncResponse:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_performSyncForTinkerEndToEndCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queue_receiveTinkerEndToEndCloudSyncRequest:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_sendTinkerEndToEndCloudSyncRequestWithSyncStore:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_tinkerPairingRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_receiveTinkerPairingResponse:(id)arg1 syncStore:(id)arg2;
+- (_Bool)_saveGuardianDetailsWithUserInfo:(id)arg1 guardianParticipant:(id)arg2 error:(id *)arg3;
+- (_Bool)_scheduleTransparencyAlert:(id *)arg1;
+- (void)_queue_receiveTinkerPairingRequest:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_sendTinkerPairingRequest:(id)arg1 syncStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_tinkerOptInRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_receiveTinkerOptInResponse:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_handleTinkerOptInNotification:(_Bool)arg1;
+- (void)_queue_registerForTinkerOptInNotificationWithResponse:(CDUnknownBlockType)arg1;
+- (void)_queue_receiveTinkerOptInRequest:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_sendTinkerOptInRequest:(id)arg1 syncStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_companionUserNotificationRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_recieveCompanionUserNotificationResponse:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_recieveCompanionUserNotificationRequest:(id)arg1 syncStore:(id)arg2;
@@ -97,10 +122,10 @@
 - (void)_syncImmediatelyWithReason:(id)arg1 options:(unsigned long long)arg2;
 - (void)_syncImmediatelyWithReason:(id)arg1;
 - (void)_syncQueue_forwardSpeculativeChangeSetIfNecessaryForChanges:(id)arg1 destinationSyncStores:(id)arg2 originSyncStore:(id)arg3;
-- (void)_queue_performNextProactiveSyncWithRemainingDevices:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_beginProactiveSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queue_performNextProactiveSyncWithRemainingDevices:(id)arg1 accessibilityAssertion:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_beginProactiveSyncWithAssertion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_queue_eligibleInactiveSyncStores;
-- (void)_queue_syncImmediatelyWithReason:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_syncImmediatelyWithReason:(id)arg1 options:(unsigned long long)arg2 accessibilityAssertion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_queue_isRestoreCompleteForSyncStore:(id)arg1 error:(id *)arg2;
 - (void)_queue_cancelPeriodicSyncTimer;
 - (void)_queue_startPeriodicSyncTimerIfNecessary;
@@ -110,7 +135,7 @@
 - (void)_queue_changeResponseDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_changeRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
 - (id)_syncQueue_responseForChangesRequest:(id)arg1 syncStore:(id)arg2 statusCode:(int)arg3;
-- (void)_queue_receiveChangeRequest:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_receiveChangeRequest:(id)arg1 syncStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (int)_changeResponseStatusCodeForAction:(long long)arg1;
 - (long long)_queue_changeRequestActionForMessage:(id)arg1 syncStore:(id)arg2 errorDescription:(id *)arg3;
 - (void)_queue_sendSpeculativeChangeSet:(id)arg1 syncStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -133,12 +158,21 @@
 - (void)_queue_transitionToRestoreCompleteWithSyncStore:(id)arg1;
 - (void)_queue_transitionToRestoreIncompleteWithSyncStore:(id)arg1 error:(id)arg2;
 - (void)_showFitnessAppIfNeeded;
-- (void)_queue_synchronizeWithOptions:(unsigned long long)arg1 restoreMessagesSentHandler:(CDUnknownBlockType)arg2 targetSyncStore:(id)arg3 reason:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_queue_synchronizeWithOptions:(unsigned long long)arg1 restoreMessagesSentHandler:(CDUnknownBlockType)arg2 targetSyncStore:(id)arg3 reason:(id)arg4 accessibilityAssertion:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_queue_updateSyncStoresWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_updateSyncStores;
 - (void)_logOutgoingMessageError:(id)arg1;
 - (void)_logIncomingResponse:(id)arg1;
 - (void)_logIncomingRequest:(id)arg1;
+- (void)messageCenterDidReceiveTinkerEndToEndCloudSyncError:(id)arg1;
+- (void)messageCenterDidReceiveTinkerEndToEndCloudSyncResponse:(id)arg1;
+- (void)messageCenterDidReceiveTinkerEndToEndCloudSyncRequest:(id)arg1;
+- (void)messageCenterDidReceiveTinkerPairingError:(id)arg1;
+- (void)messageCenterDidReceiveTinkerPairingResponse:(id)arg1;
+- (void)messageCenterDidReceiveTinkerPairingRequest:(id)arg1;
+- (void)messageCenterDidReceiveTinkerOptInError:(id)arg1;
+- (void)messageCenterDidReceiveTinkerOptInResponse:(id)arg1;
+- (void)messageCenterDidReceiveTinkerOptInRequest:(id)arg1;
 - (void)messageCenterDidReceiveCompanionUserNotificationError:(id)arg1;
 - (void)messageCenterDidReceiveCompanionUserNotificationResponse:(id)arg1;
 - (void)messageCenterDidReceiveCompanionUserNotificationRequest:(id)arg1;
@@ -161,6 +195,7 @@
 - (void)messageCenter:(id)arg1 didResolveIDSIdentifierForRequest:(id)arg2;
 - (void)_handleOutgoingMessageError:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_queue_syncStoreForMessageCenterError:(id)arg1;
+- (void)_syncronouslyHandleIncomingRequest:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_handleIncomingResponse:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_handleIncomingRequest:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_queue_validatedSyncStore:(id)arg1 device:(id)arg2 message:(id)arg3 error:(id *)arg4;
@@ -169,10 +204,14 @@
 - (void)_queue_sendResponse:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_sendRequest:(id)arg1 syncStore:(id)arg2;
 - (_Bool)_queue_permitSyncWithError:(id *)arg1;
-- (void)_addGraceVersionMessageHandlersToMessageCenter:(id)arg1;
+- (void)_addHunterVersionMessageHandlersToMessageCenter:(id)arg1;
 - (void)_addDaytonaVersionMessageHandlersToMessageCenter:(id)arg1;
 - (void)_queue_setUpMessageCentersIfNecessary;
 - (_Bool)_queue_finishInitializationAfterFirstUnlockIfNecessaryWithError:(id *)arg1;
+- (void)_queue_updateTinkerSyncStore;
+- (void)sendTinkerEndToEndCloudSyncRequestForNRDeviceUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendTinkerWatchPairingRequest:(id)arg1 forNRDeviceUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendTinkerSharingOptInRequest:(id)arg1 forNRDeviceUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendCompanionUserNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendStartWorkoutAppRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestAuthorizationForRequestRecord:(id)arg1 requestSentHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -180,6 +219,7 @@
 - (void)updatePairedDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)waitForLastChanceSyncWithDevicePairingID:(id)arg1 timeout:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)syncHealthDataWithOptions:(unsigned long long)arg1 reason:(id)arg2 accessibilityAssertion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)syncHealthDataWithOptions:(unsigned long long)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)syncHealthDataWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pairedSyncDidBeginForDevice:(id)arg1 messagesSentHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -190,6 +230,7 @@
 @property(readonly) _Bool isMaster;
 - (void)dealloc;
 - (void)_invalidate;
+- (void)initializeMessageCenterIfNeeded;
 - (void)obliterateWithOptions:(unsigned long long)arg1 reason:(id)arg2;
 - (void)invalidateAndWait;
 - (id)initWithProfile:(id)arg1 isMaster:(_Bool)arg2;

@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOSuggestionsOptions : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSData *_suggestionEntryMetadata;
     NSData *_suggestionMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _entriesType;
     int _listType;
     _Bool _includeRankingFeatures;
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_suggestionMetadata:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_suggestionMetadata:1;
-        unsigned int wrote_entriesType:1;
-        unsigned int wrote_listType:1;
-        unsigned int wrote_includeRankingFeatures:1;
-        unsigned int wrote_normalizePOIs:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,6 +48,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIncludeRankingFeatures;
@@ -60,10 +59,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool normalizePOIs;
 @property(retain, nonatomic) NSData *suggestionEntryMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-- (void)_readSuggestionEntryMetadata;
 @property(retain, nonatomic) NSData *suggestionMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionMetadata;
-- (void)_readSuggestionMetadata;
 - (int)StringAsEntriesType:(id)arg1;
 - (id)entriesTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasEntriesType;
@@ -72,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (id)listTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasListType;
 @property(nonatomic) int listType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

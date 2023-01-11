@@ -16,13 +16,16 @@
 }
 
 + (double)confidenceFromDataPointCount:(unsigned long long)arg1;
++ (id)shiftLocation:(id)arg1 shifter:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(readonly, nonatomic) unsigned long long dataPointCount; // @synthesize dataPointCount=_dataPointCount;
 @property(readonly, nonatomic) RTLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+- (id)initWithLearnedLocations:(id)arg1;
+- (void)calculateAltitude:(double *)arg1 verticalUncertainty:(double *)arg2 learnedLocations:(id)arg3;
 - (id)initWithLocation:(id)arg1 dataPointCount:(unsigned long long)arg2;
 - (id)initWithLocation:(id)arg1 dataPointCount:(unsigned long long)arg2 confidence:(double)arg3;
 - (id)init;

@@ -40,6 +40,7 @@
 - (void)launchDataActivationNextWithUrl:(NSString *)arg1;
 - (void)expirePlan;
 - (void)launchSequoia;
+- (void)userSignupInitiatedOrFailed;
 - (void)didCancelRemotePlan;
 - (void)pendingReleaseRemotePlan;
 - (void)didPurchaseRemotePlanForEid:(NSString *)arg1 imei:(NSString *)arg2 meid:(NSString *)arg3 iccid:(NSString *)arg4 alternateSmdpFqdn:(NSString *)arg5 completion:(void (^)(_Bool))arg6;
@@ -48,6 +49,7 @@
 - (void)didDeleteRemotePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)didSelectRemotePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)manageAccountForRemotePlan:(CTCellularPlanItem *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)installPendingRemotePlan:(CTCellularPlanItem *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)addNewRemotePlanWithAddress:(NSString *)arg1 matchingId:(NSString *)arg2 oid:(NSString *)arg3 confirmationCode:(NSString *)arg4 isPairing:(_Bool)arg5 withCSN:(NSString *)arg6 withContext:(CTXPCServiceSubscriptionContext *)arg7 userConsent:(long long)arg8 completion:(void (^)(NSError *))arg9;
 - (void)addNewRemotePlanWithCardData:(NSString *)arg1 confirmationCode:(NSString *)arg2 isPairing:(_Bool)arg3 withCSN:(NSString *)arg4 withContext:(CTXPCServiceSubscriptionContext *)arg5 userConsent:(long long)arg6 completion:(void (^)(NSError *))arg7;
 - (void)addNewRemotePlan:(_Bool)arg1 withCSN:(NSString *)arg2 withContext:(CTXPCServiceSubscriptionContext *)arg3 userConsent:(long long)arg4 completion:(void (^)(NSError *))arg5;
@@ -70,7 +72,7 @@
 - (void)isAddButtonEnabled:(void (^)(_Bool))arg1;
 - (void)triggerAddNewDataPlan:(void (^)(NSError *))arg1;
 - (void)carrierHandoffToken:(void (^)(NSString *, NSString *, NSError *))arg1;
-- (void)didTransferPlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 profileServer:(NSString *)arg3 state:(NSString *)arg4;
+- (void)didTransferPlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 srcIccid:(NSString *)arg3 profileServer:(NSString *)arg4 state:(NSString *)arg5;
 - (void)didPurchasePlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 profileServer:(NSString *)arg3;
 - (void)planLaunchInfoWithCompletion:(void (^)(NSString *, NSDictionary *, NSError *))arg1;
 - (void)eraseAllPlansWithCompletion:(void (^)(_Bool, NSError *))arg1;
@@ -85,10 +87,11 @@
 - (void)resolveSimLabel:(CTDanglingPlanItem *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)carrierItemsShouldUpdate:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)deletePlanPendingTransfer:(CTCellularPlanPendingTransfer *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)cancelPlanActivation:(CTCellularPlanPendingTransfer *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)activatePlanPendingTransfer:(CTCellularPlanPendingTransfer *)arg1 completion:(void (^)(_Bool, NSString *, NSDictionary *, NSError *))arg2;
 - (void)getPlansPendingTransferWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)danglingPlanItemsShouldUpdate:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)planItemsShouldUpdate:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)planItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)manageAccountForPlan:(CTCellularPlanItem *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)resumePlanProvisioning:(_Bool)arg1 userConsent:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addNewPlanWithFlowType:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;

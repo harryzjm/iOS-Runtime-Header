@@ -15,14 +15,14 @@
     _Bool _isDeadEnd;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isDeadEnd; // @synthesize isDeadEnd=_isDeadEnd;
 @property(nonatomic) CDStruct_2c43369c coordinates; // @synthesize coordinates=_coordinates;
 @property(retain, nonatomic) AXVKMultiSectionFeatureWrapper *featureWrapper; // @synthesize featureWrapper=_featureWrapper;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithFeature:(CDStruct_123780e2 *)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(_Bool)arg3;
+- (id)initWithFeature:(CDStruct_66740237 *)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(_Bool)arg3;
 - (id)initWithFeatureWrapper:(id)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(_Bool)arg3;
 
 @end

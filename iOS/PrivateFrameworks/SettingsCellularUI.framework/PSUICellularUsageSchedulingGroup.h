@@ -15,17 +15,17 @@
 __attribute__((visibility("hidden")))
 @interface PSUICellularUsageSchedulingGroup : NSObject <PSBillingPeriodSelectorSpecifierDelegate, PSAppCellularUsageSpecifierDelegate, PSUIResetStatisticsGroupDelegate>
 {
-    _Bool _loading;
     PSListController *_hostController;
     CTUIListWithHeaderLoadingGroup *_loadingGroup;
     PSUICellularUsageLayoutGroup *_dataUsageSyncGroup;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PSUICellularUsageLayoutGroup *dataUsageSyncGroup; // @synthesize dataUsageSyncGroup=_dataUsageSyncGroup;
-@property _Bool loading; // @synthesize loading=_loading;
 @property(retain, nonatomic) CTUIListWithHeaderLoadingGroup *loadingGroup; // @synthesize loadingGroup=_loadingGroup;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
-- (void).cxx_destruct;
+- (void)sortGroup;
+- (void)setGroupSpecifierTitle:(id)arg1;
 - (void)calculateUsage;
 - (void)didResetStatistics;
 - (void)selectedBillingPeriodChanged:(unsigned long long)arg1;

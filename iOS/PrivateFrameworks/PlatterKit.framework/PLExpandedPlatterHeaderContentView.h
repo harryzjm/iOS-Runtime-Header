@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
-
 @interface PLExpandedPlatterHeaderContentView
 {
-    NSArray *_iconButtonShadows;
 }
 
-- (void).cxx_destruct;
 - (double)_largeTextLabelBaselineOffsetFromBottom;
 - (double)_largeTextTitleLabelBaselineOffset;
 - (struct CGRect)_titleLabelBoundsForSize:(struct CGSize)arg1;
@@ -19,7 +15,6 @@
 - (void)_layoutDateLabelWithScale:(double)arg1;
 - (void)_layoutUtilityButtonWithScale:(double)arg1;
 - (void)_layoutTitleLabelWithScale:(double)arg1;
-- (void)_layoutIconButtonsWithScale:(double)arg1;
 - (void)_configureUtilityButton;
 - (id)_ellipsisHighlightedBackgroundImage;
 - (void)_updateUtilityButtonVibrantStyling;
@@ -29,8 +24,8 @@
 - (void)setDate:(id)arg1;
 - (void)_configureDateLabel;
 - (void)_updateStylingForTitleLabel:(id)arg1;
-- (void)_configureIconButtonsForIcons:(id)arg1;
-- (id)_iconShadowImageForIcon:(id)arg1;
+- (void)_configureIconButton:(id)arg1 withIcon:(id)arg2;
+- (id)_newIconButton;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)_headerHeightForWidth:(double)arg1;

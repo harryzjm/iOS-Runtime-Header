@@ -13,9 +13,11 @@
 - (CDStruct_1b6d18a9)pu_duration;
 @property(readonly, nonatomic) NSValue *pu_cachedDuration;
 - (void)_pu_setCachedDuration:(id)arg1;
-- (id)pu_vitalityVideoComposition;
+- (struct TransformMetadataItemPair)pu_stillAssetTransformMetadataPair;
 - (CDStruct_8e0628e6)pu_perspectiveTransformForMetadata:(id)arg1;
-- (id)pu_stillAssetTransformMetadata;
+- (_Bool)_pu_getVitalityTransform:(out CDStruct_8e0628e6 *)arg1 dimensions:(out struct CGSize *)arg2;
+- (void)_pu_handleRequiredPropertiesLoadedWithAdditionalNormalizedTransform:(CDStruct_8e0628e6)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)pu_loadNormalizedVitalityPerspectiveTransformWithAdditionalNormalizedTransform:(CDStruct_8e0628e6)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)pu_stillImageTransformAssetTrack;
 @property(readonly, nonatomic) _Bool pu_supportsVitality;
 @end

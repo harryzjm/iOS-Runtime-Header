@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSMutableDictionary, NSString;
+@class NSAttributedString, NSMutableData, NSString;
 
 @interface UIWKDocumentContext : NSObject
 {
-    NSMutableDictionary *_selectionRects;
+    _Bool _rectsAreInCharacterOrder;
+    struct _NSRange _lastRectRange;
+    NSMutableData *_selectionRects;
     NSObject *_contextBefore;
     NSObject *_selectedText;
     NSObject *_contextAfter;
@@ -25,13 +27,15 @@
 @property(copy, nonatomic) NSObject *contextAfter; // @synthesize contextAfter=_contextAfter;
 @property(copy, nonatomic) NSObject *selectedText; // @synthesize selectedText=_selectedText;
 @property(copy, nonatomic) NSObject *contextBefore; // @synthesize contextBefore=_contextBefore;
-@property(retain, nonatomic) NSMutableDictionary *_selectionRects; // @synthesize _selectionRects;
+@property(retain, nonatomic) NSMutableData *_selectionRects; // @synthesize _selectionRects;
+- (void)enumerateLayoutRectsWithOptions:(unsigned long long)arg1 characterRange:(struct _NSRange)arg2 block:(CDUnknownBlockType)arg3;
 - (void)enumerateLayoutRects:(CDUnknownBlockType)arg1;
 - (struct _NSRange)deltaForSelectionRange:(struct _NSRange)arg1;
 - (id)stringContainedWithinRect:(struct CGRect)arg1;
 - (struct _NSRange)rangeContainedWithinRect:(struct CGRect)arg1;
 - (id)characterRectsForCharacterRange:(struct _NSRange)arg1;
 - (unsigned long long)closestCharacterIndexForPoint:(struct CGPoint)arg1;
+- (void)sortTextRectsByCharacterRange;
 - (void)addTextRect:(struct CGRect)arg1 forCharacterRange:(struct _NSRange)arg2;
 - (void)resetTextRects;
 @property(readonly, nonatomic) struct _NSRange markedTextRange;

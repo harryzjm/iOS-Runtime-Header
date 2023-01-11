@@ -26,19 +26,19 @@
 
 + (id)logCategory;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDeviceSetupSession *setupSession; // @synthesize setupSession=_setupSession;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly) __weak TRSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)setupSession:(id)arg1 didReceiveExchangeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setupSession:(id)arg1 didCloseWithError:(id)arg2;
 - (void)cancelWithError:(id)arg1;
 - (void)cancel;
-- (void)_reallyStart;
 - (void)start;
 - (void)setAccessory:(id)arg1;
 @property(readonly) HMAccessory *accessory; // @synthesize accessory=_accessory;
+- (void)setQualityOfService:(long long)arg1;
 - (void)setError:(id)arg1;
 @property(readonly) NSError *error; // @synthesize error=_error;
 - (void)finish;

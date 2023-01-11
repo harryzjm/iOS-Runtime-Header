@@ -19,10 +19,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
+- (id)_generateUniqueIdentifier;
 - (_Bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (_Bool)appearsInDailySnapshotForFamily:(long long)arg1;
+- (id)initWithComplicationType:(unsigned long long)arg1;
+- (id)ntk_localizedNameWithOptions:(unsigned long long)arg1 forRichComplicationSlot:(_Bool)arg2;
 
 @end
 

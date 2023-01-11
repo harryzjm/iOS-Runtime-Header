@@ -10,12 +10,13 @@
 #import <SearchUI/SearchUIAccessoryViewDelegate-Protocol.h>
 #import <SearchUI/TLKDetailsViewDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SearchUIAccessoryViewController, SearchUIDetailedRowModel, SearchUILeadingViewController, TLKDetailsView, TLKStackView;
+@class NSMutableArray, NSString, SearchUIAccessoryViewController, SearchUIDetailedRowModel, SearchUILeadingViewController, TLKDetailsView, TLKStackView, UIView;
 @protocol SearchUIDetailedViewDelegate, SearchUIFeedbackDelegate;
 
 @interface SearchUIDetailedView : NUIContainerStackView <NUIContainerViewDelegate, SearchUIAccessoryViewDelegate, TLKDetailsViewDelegate>
 {
     _Bool _isVerticalAlignment;
+    _Bool _isCompactWidth;
     id <SearchUIFeedbackDelegate> _feedbackDelegate;
     id <SearchUIDetailedViewDelegate> _buttonDelegate;
     SearchUIAccessoryViewController *_currentAccessoryViewController;
@@ -28,18 +29,25 @@
 }
 
 + (void)addViewIfNecessary:(id)arg1 toStackView:(id)arg2 removeFromStackView:(id)arg3;
++ (id)bannerBadgeForRowModel:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *accessoryViewControllers; // @synthesize accessoryViewControllers=_accessoryViewControllers;
 @property(retain, nonatomic) TLKDetailsView *detailsView; // @synthesize detailsView=_detailsView;
 @property(retain, nonatomic) NSMutableArray *leadingViewControllers; // @synthesize leadingViewControllers=_leadingViewControllers;
 @property(retain, nonatomic) TLKStackView *innerContainer; // @synthesize innerContainer=_innerContainer;
 @property(retain, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel=_rowModel;
+@property _Bool isCompactWidth; // @synthesize isCompactWidth=_isCompactWidth;
 @property(retain, nonatomic) SearchUILeadingViewController *currentLeadingViewController; // @synthesize currentLeadingViewController=_currentLeadingViewController;
 @property(retain, nonatomic) SearchUIAccessoryViewController *currentAccessoryViewController; // @synthesize currentAccessoryViewController=_currentAccessoryViewController;
 @property(nonatomic) __weak id <SearchUIDetailedViewDelegate> buttonDelegate; // @synthesize buttonDelegate=_buttonDelegate;
 @property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property(nonatomic) _Bool isVerticalAlignment; // @synthesize isVerticalAlignment=_isVerticalAlignment;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *leadingTextView;
+@property(readonly, nonatomic) UIView *leadingView;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)layoutSubviews;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (void)footnoteButtonPressed;
 - (_Bool)arrangedViewMustCenter:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;

@@ -11,6 +11,7 @@
 @interface FIUIWorkoutDefaultMetricsProvider : NSObject
 {
     FIUIWorkoutActivityType *_activityType;
+    long long _activityMoveMode;
     _Bool _supportsElevationMetrics;
     _Bool _supportsGroundElevationMetrics;
     long long _metricsVersion;
@@ -18,10 +19,10 @@
     NSArray *_supportedMetrics;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *supportedMetrics; // @synthesize supportedMetrics=_supportedMetrics;
 @property(readonly, copy, nonatomic) NSArray *defaultEnabledMetrics; // @synthesize defaultEnabledMetrics=_defaultEnabledMetrics;
 @property(readonly, nonatomic) long long metricsVersion; // @synthesize metricsVersion=_metricsVersion;
-- (void).cxx_destruct;
 - (id)supportedMetricsWithIsMachineWorkout:(_Bool)arg1 activityType:(id)arg2;
 - (_Bool)isMetricTypeSupported:(unsigned long long)arg1 isMachineWorkout:(_Bool)arg2 activityType:(id)arg3;
 - (id)appendMachineMetricsToMetrics:(id)arg1 maxNumMetrics:(long long)arg2 activityType:(id)arg3;
@@ -35,7 +36,7 @@
 - (id)_indoorDefaultEnabledMetricsForActivityType:(unsigned long long)arg1 metricsVersion:(long long)arg2;
 - (id)_defaultEnabledMetricsForSwimmingWithLocationType:(long long)arg1 metricsVersion:(long long)arg2;
 - (id)_defaultEnabledMetricsForActivityType:(id)arg1 metricsVersion:(long long)arg2;
-- (id)initWithMetricsVersion:(long long)arg1 activityType:(id)arg2 deviceSupportsElevationMetrics:(_Bool)arg3 deviceSupportsGroundElevationMetrics:(_Bool)arg4;
+- (id)initWithMetricsVersion:(long long)arg1 activityType:(id)arg2 activityMoveMode:(long long)arg3 deviceSupportsElevationMetrics:(_Bool)arg4 deviceSupportsGroundElevationMetrics:(_Bool)arg5;
 
 @end
 

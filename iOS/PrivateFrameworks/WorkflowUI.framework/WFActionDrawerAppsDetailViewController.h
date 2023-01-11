@@ -6,29 +6,23 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerActionTableViewCellDelegate-Protocol.h>
-#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDelegate-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
 @class NSString, WFActionDrawerState;
-@protocol WFActionDrawerAppsDetailViewControllerDelegate;
 
-@interface WFActionDrawerAppsDetailViewController <UITableViewDataSource, UITableViewDelegate, WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFActionDrawerActionTableViewCellDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
+@interface WFActionDrawerAppsDetailViewController <UITableViewDataSource, UITableViewDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
-    id <WFActionDrawerAppsDetailViewControllerDelegate> _delegate;
+    _Bool _loading;
     NSString *_bundleIdentifier;
 }
 
-@property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property(nonatomic) __weak id <WFActionDrawerAppsDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(nonatomic) _Bool loading; // @synthesize loading=_loading;
 - (_Bool)moveToState:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) WFActionDrawerState *state;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 infoButtonTappedForSuggestion:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 didSelectAction:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -38,7 +32,7 @@
 - (void)reloadViews;
 - (void)viewDidLoad;
 - (void)loadView;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithCoordinator:(id)arg1 bundleIdentifier:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKModifyRecordsOperationCallbacks-Protocol.h>
 
-@interface CKModifyRecordsOperation
+@class CKModifyRecordsOperationInfo, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@protocol CKModifyRecordsOperationCallbacks;
+
+@interface CKModifyRecordsOperation <CKModifyRecordsOperationCallbacks>
 {
     _Bool _atomic;
     _Bool _shouldReportRecordsInFlight;
@@ -26,20 +29,22 @@
     NSMutableDictionary *_recordErrors;
     NSMutableDictionary *_assetsByRecordIDAndRecordKey;
     NSMutableSet *_packagesToDestroy;
+    NSDictionary *_assetUUIDToExpectedProperties;
+    NSDictionary *_packageUUIDToExpectedProperties;
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
     NSDictionary *_pluginFieldsForRecordDeletesByID;
-    NSDictionary *_assetUUIDToExpectedProperties;
-    NSDictionary *_packageUUIDToExpectedProperties;
 }
 
-@property(copy, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
-@property(copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
-@property(retain, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
+@property(copy, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property(copy, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
 @property(nonatomic) _Bool markAsParticipantNeedsNewInvitationToken; // @synthesize markAsParticipantNeedsNewInvitationToken=_markAsParticipantNeedsNewInvitationToken;
 @property(nonatomic) _Bool shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
+@property(copy, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
+@property(copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property(retain, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property(nonatomic) _Bool shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
 @property(retain, nonatomic) NSMutableDictionary *assetsByRecordIDAndRecordKey; // @synthesize assetsByRecordIDAndRecordKey=_assetsByRecordIDAndRecordKey;
@@ -52,10 +57,13 @@
 @property(nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property(copy, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property(copy, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)copyStreamingAssetServerFieldsFromServerRecord:(id)arg1 toRecord:(id)arg2;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleRecordUploadForRecordID:(id)arg1 recordKey:(id)arg2 arrayIndex:(long long)arg3 signature:(id)arg4 size:(unsigned long long)arg5 paddedFileSize:(unsigned long long)arg6 uploaded:(_Bool)arg7 uploadReceipt:(id)arg8 uploadReceiptExpiration:(double)arg9 wrappedAssetKey:(id)arg10 clearAssetKey:(id)arg11 referenceSignature:(id)arg12;
+- (void)handleSaveForRecordID:(id)arg1 etag:(id)arg2 creationDate:(id)arg3 modificationDate:(id)arg4 serverRecord:(id)arg5 protectionData:(id)arg6 pcsKeyID:(id)arg7 allPCSKeyIDs:(id)arg8 zoneishKeyID:(id)arg9 error:(id)arg10;
+- (void)handleDeleteForRecordID:(id)arg1 error:(id)arg2;
+- (void)handleRecordModificationForRecordID:(id)arg1 didProgress:(double)arg2;
+- (void)handleRecordIDsInFlight:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void)performCKOperation;
 - (void)_trackAssetsToUpload;
@@ -72,6 +80,10 @@
 @property(copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
 - (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKModifyRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKModifyRecordsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

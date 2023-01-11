@@ -18,11 +18,11 @@
     long long _totalItemCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long totalItemCount; // @synthesize totalItemCount=_totalItemCount;
 @property(nonatomic) long long playingItemIndex; // @synthesize playingItemIndex=_playingItemIndex;
 @property(retain, nonatomic) MCDPCModel *model; // @synthesize model=_model;
 @property(nonatomic, getter=isSeeking) _Bool seeking; // @synthesize seeking=_seeking;
-- (void).cxx_destruct;
 - (void)nowPlayingViewControllerMore:(id)arg1;
 - (_Bool)nowPlayingViewControllerCanShowMore:(id)arg1;
 - (void)nowPlayingViewControllerAddToLibrary:(id)arg1;
@@ -43,7 +43,6 @@
 - (id)_adjustedIndexPathForPlaybackQueue:(id)arg1;
 - (long long)_numberOfItemsInPlaybackQueue;
 - (void)_processResponse:(id)arg1 error:(id)arg2;
-- (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 bundleID:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

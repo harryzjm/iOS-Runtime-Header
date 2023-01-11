@@ -12,6 +12,7 @@
 
 @property(nonatomic) unsigned long long allowedEntityTypes; // @synthesize allowedEntityTypes=_allowedEntityTypes;
 @property(nonatomic) unsigned long long sharingInvitationResponse; // @synthesize sharingInvitationResponse=_sharingInvitationResponse;
+- (_Bool)isSharedCalendarInvitation;
 - (id)calendarFromEventStore:(id)arg1;
 - (id)initWithType:(long long)arg1;
 

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown; // @synthesize safeAreaInsetsPortraitUpsideDown;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight; // @synthesize safeAreaInsetsLandscapeRight;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft; // @synthesize safeAreaInsetsLandscapeLeft;
@@ -31,9 +32,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct UIEdgeInsets peripheryInsets; // @synthesize peripheryInsets;
 @property(readonly, nonatomic) double systemMinimumMargin; // @synthesize systemMinimumMargin;
 @property(readonly, nonatomic) double homeAffordanceOverlayAllowance; // @synthesize homeAffordanceOverlayAllowance;
-@property(nonatomic) unsigned long long artworkSubtype; // @synthesize artworkSubtype;
-@property(retain, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long artworkSubtype; // @synthesize artworkSubtype;
+@property(readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

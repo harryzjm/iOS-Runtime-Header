@@ -6,12 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSObject, NSSet;
-@protocol OS_dispatch_queue;
+@class NSArray, NSMapTable, NSMutableArray, NSSet;
 
 @interface HMDCloudChangeTree : HMFObject
 {
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_objects;
     NSMapTable *_objectMap;
     NSMapTable *_recordMap;
@@ -20,14 +19,14 @@
 }
 
 + (_Bool)modelTypeCanBeOrphaned:(id)arg1;
++ (id)logCategory;
 + (id)shortDescription;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *validRootUUIDs; // @synthesize validRootUUIDs=_validRootUUIDs;
 @property(retain, nonatomic) NSMapTable *branchMap; // @synthesize branchMap=_branchMap;
 @property(retain, nonatomic) NSMapTable *recordMap; // @synthesize recordMap=_recordMap;
 @property(retain, nonatomic) NSMapTable *objectMap; // @synthesize objectMap=_objectMap;
 @property(retain, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasValidChanges;
 - (id)recordMapWithFilter:(id)arg1;
 @property(readonly, nonatomic) NSMutableArray *invalidCloudChanges;
@@ -42,7 +41,7 @@
 - (void)updateModel:(id)arg1;
 - (void)updateRecordMapping:(id)arg1;
 - (void)removeNode:(id)arg1;
-- (void)addNode:(id)arg1;
+- (void)_addNode:(id)arg1;
 - (void)_updateNode:(id)arg1 oldRecordName:(id)arg2;
 - (id)_findNodeWithRecordMapping:(id)arg1;
 - (id)objectForRecordName:(id)arg1;

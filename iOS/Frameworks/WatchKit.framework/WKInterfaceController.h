@@ -24,10 +24,10 @@
 + (void)_removePageControllersAtIndexes:(id)arg1;
 + (void)_movePageControllerAtIndex:(long long)arg1 toIndex:(long long)arg2;
 + (void)_insertPageControllersAtIndexes:(id)arg1 withNames:(id)arg2 contexts:(id)arg3;
-+ (void)reloadRootPageControllersWithNames:(id)arg1 contexts:(id)arg2 orientation:(long long)arg3 pageIndex:(long long)arg4;
 + (void)reloadRootControllersWithNames:(id)arg1 contexts:(id)arg2;
 + (struct CGRect)screenBounds;
 + (double)screenScale;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *pendingGestureInstallationFinishedBlocks; // @synthesize pendingGestureInstallationFinishedBlocks=_pendingGestureInstallationFinishedBlocks;
 @property(retain, nonatomic) NSMutableArray *uninstalledGestureIDs; // @synthesize uninstalledGestureIDs=_uninstalledGestureIDs;
 @property(retain, nonatomic) NSMutableDictionary *gestureRecognizers; // @synthesize gestureRecognizers=_gestureRecognizers;
@@ -36,7 +36,6 @@
 @property(retain, nonatomic) NSArray *topLevelObjects; // @synthesize topLevelObjects=_topLevelObjects;
 @property(readonly, nonatomic) WKCrownSequencer *crownSequencer; // @synthesize crownSequencer=_crownSequencer;
 @property(nonatomic) struct CGRect contentFrame; // @synthesize contentFrame=_contentFrame;
-- (void).cxx_destruct;
 - (void)endGlanceUpdates;
 - (void)beginGlanceUpdates;
 - (void)invalidateUserActivity;
@@ -53,10 +52,6 @@
 - (id)contextForSegueWithIdentifier:(id)arg1;
 - (void)dismissAddPassesController;
 - (void)presentAddPassesControllerWithPasses:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)dismissAudioRecorderController;
-- (void)presentAudioRecorderControllerWithOutputURL:(id)arg1 preset:(long long)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)dismissMediaPlayerController;
-- (void)presentMediaPlayerControllerWithURL:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissTextInputController;
 - (void)presentTextInputControllerWithSuggestionsForLanguage:(CDUnknownBlockType)arg1 allowedInputMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentTextInputControllerWithSuggestions:(id)arg1 allowedInputMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -67,7 +62,6 @@
 - (void)interfaceOffsetDidScrollToBottom;
 - (void)interfaceOffsetDidScrollToTop;
 - (void)interfaceDidScrollToTop;
-- (void)scrollToObject:(id)arg1 atScrollPosition:(long long)arg2 animated:(_Bool)arg3;
 - (void)popToRootController;
 - (void)popController;
 - (void)pushControllerWithName:(id)arg1 context:(id)arg2;

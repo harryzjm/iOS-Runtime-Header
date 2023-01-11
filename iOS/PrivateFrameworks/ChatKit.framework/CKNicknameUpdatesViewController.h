@@ -21,20 +21,20 @@
     UICollectionViewCompositionalLayout *_collectionViewLayout;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionViewCompositionalLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
 @property(retain, nonatomic) _UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) CKNicknameUpdatesCollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
-@property(nonatomic) id <CKNicknameUpdatesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)updateCell:(id)arg1 ignoreButtonTappedForBannerView:(id)arg2;
-- (void)updateCell:(id)arg1 updateButtonTappedForBannerView:(id)arg2;
+@property(nonatomic) __weak id <CKNicknameUpdatesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_doneButtonTapped:(id)arg1;
 - (void)_nicknameStateChanged:(id)arg1;
-- (id)layoutSectionForSection:(long long)arg1 withEnvironment:(id)arg2;
+- (void)updateCell:(id)arg1 selectedAction:(unsigned long long)arg2 sourceView:(id)arg3;
+- (unsigned long long)cellOrderForIndexPath:(id)arg1;
 - (id)cellForItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 withIdentifier:(id)arg3;
 - (void)reloadData;
 - (_Bool)canBecomeFirstResponder;
+- (void)updatePreferredContentSize;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

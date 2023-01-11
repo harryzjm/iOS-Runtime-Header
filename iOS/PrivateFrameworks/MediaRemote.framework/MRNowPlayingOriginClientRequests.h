@@ -8,13 +8,13 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSNumber, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
+@class MRDeviceInfo, MROrigin, MRPlayerPath, NSMutableArray, NSMutableDictionary, NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClientRequests : NSObject <MRNowPlayingClientState>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRDeviceInfo *_deviceInfo;
     NSNumber *_volumeCapabilities;
     NSNumber *_volume;
     NSMutableArray *_nowPlayingClients;
@@ -22,13 +22,13 @@
     NSMutableArray *_deviceInfoCompletions;
     NSMutableArray *_volumeCompletions;
     NSMutableArray *_volumeCapabilitiesCompletions;
-    _MROriginProtobuf *_origin;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MROrigin *_origin;
+    MRPlayerPath *_playerPath;
 }
 
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property(readonly, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
+@property(readonly, nonatomic) MROrigin *origin; // @synthesize origin=_origin;
 - (void)restoreNowPlayingClientState;
 - (void)handleVolumeCapabilitiesRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleVolumeRequestWithCompletion:(CDUnknownBlockType)arg1;
@@ -37,11 +37,10 @@
 - (void)setTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
 @property(retain, nonatomic) NSNumber *volume;
 @property(retain, nonatomic) NSNumber *volumeCapabilities;
-@property(copy, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property(copy, nonatomic) MRDeviceInfo *deviceInfo;
 - (void)removeClient:(id)arg1;
 - (id)existingNowPlayingClientRequestsForPlayerPath:(id)arg1;
 - (id)nowPlayingClientRequestsForPlayerPath:(id)arg1;
-- (id)nowPlayingClients;
 - (id)debugDescription;
 - (id)initWithOrigin:(id)arg1;
 

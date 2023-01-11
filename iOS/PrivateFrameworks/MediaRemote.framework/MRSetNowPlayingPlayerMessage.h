@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath;
 
 @interface MRSetNowPlayingPlayerMessage
 {
 }
 
 - (unsigned long long)type;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
+@property(readonly, nonatomic) MRPlayerPath *playerPath;
 - (id)initWithPlayerPath:(id)arg1;
 
 @end

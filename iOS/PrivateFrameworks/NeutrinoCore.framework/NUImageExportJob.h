@@ -19,6 +19,7 @@
 - (id)result;
 - (id)imageDestinationOptions;
 - (id)_filterProperties:(id)arg1;
+- (id)renderer:(out id *)arg1;
 - (id)imageExportRequest;
 - (id)initWithExportRequest:(id)arg1;
 - (id)initWithImageExportRequest:(id)arg1;

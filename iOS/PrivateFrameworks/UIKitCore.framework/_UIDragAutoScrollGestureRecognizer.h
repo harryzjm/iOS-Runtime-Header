@@ -4,8 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/_UIDragEventRespondable-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UIDragAutoScrollGestureRecognizer
+@interface _UIDragAutoScrollGestureRecognizer <_UIDragEventRespondable>
 {
 }
 
@@ -15,7 +19,13 @@ __attribute__((visibility("hidden")))
 - (void)_draggingExitedWithEvent:(id)arg1;
 - (void)_draggingUpdatedWithEvent:(id)arg1;
 - (void)_draggingEnteredWithEvent:(id)arg1;
-- (_Bool)_shouldReceiveDragEvent:(id)arg1;
+- (_Bool)shouldReceiveEvent:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

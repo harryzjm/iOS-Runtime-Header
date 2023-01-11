@@ -13,7 +13,8 @@
 }
 
 + (id)descriptor;
-- (_Bool)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
+@property(retain) NSData *salt;
 @property(retain) NSData *message;
 @property(retain) TransparencyVRFVerifier *verifier;
 

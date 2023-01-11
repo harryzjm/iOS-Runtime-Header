@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDSettingConstraintProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDSettingBaseProtocol-Protocol.h>
 
 @class NSData, NSNumber, NSString, NSUUID;
 
-@interface HMDSettingConstraint : NSObject <HMDSettingConstraintProtocol>
+@interface HMDSettingConstraint : NSObject <HMDSettingBaseProtocol>
 {
     NSUUID *_identifier;
     NSUUID *_parentIdentifier;
@@ -20,15 +20,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly) NSData *dataValue; // @synthesize dataValue=_dataValue;
 @property(readonly) NSNumber *numberValue; // @synthesize numberValue=_numberValue;
 @property(readonly, copy) NSNumber *type; // @synthesize type=_type;
-@property(readonly) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
-@property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+@property(readonly, copy) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
+@property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly) NSString *name;
+@property(readonly, copy) NSString *name;
 @property(readonly, copy) id value;
 - (id)initWithIdentifier:(id)arg1 parentIdentifier:(id)arg2 type:(id)arg3 numberValue:(id)arg4 dataValue:(id)arg5;
 

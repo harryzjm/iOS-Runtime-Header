@@ -18,13 +18,14 @@
     NSLocale *_locale;
 }
 
++ (id)supportedLanguagesForRevision:(unsigned long long)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(readonly) NSLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) CRCHPatternNetwork *patternFST; // @synthesize patternFST=_patternFST;
 @property(retain, nonatomic) NSString *invalidSingleCharCNNCode; // @synthesize invalidSingleCharCNNCode=_invalidSingleCharCNNCode;
 @property(nonatomic) struct _LXLexicon *dynamicLexicon; // @synthesize dynamicLexicon=_dynamicLexicon;
 @property(nonatomic) struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
 @property(nonatomic) void *characterLanguageModel; // @synthesize characterLanguageModel=_characterLanguageModel;
-- (void).cxx_destruct;
 - (id)findBestPathsForTextResults:(id)arg1 numPathsToExtract:(unsigned long long)arg2 ngramsize:(unsigned long long)arg3;
 - (struct _LXLexicon *)newDynamicLexiconForLocale:(id)arg1 error:(id *)arg2;
 - (void)adjustCaseConfusions:(id)arg1;
@@ -33,9 +34,9 @@
 @property(readonly) NSCharacterSet *confusableCharacters;
 - (id)correctTextFeature:(id)arg1 inImage:(id)arg2 withTextPieces:(id)arg3 withMaxWidthPerRegion:(double)arg4 withMedianCharSpacing:(double)arg5 withBreakpoints:(const vector_e5f6796a *)arg6 segmenter:(struct Segmenter *)arg7 options:(id)arg8 numCharCandidates:(int)arg9 downscaleSpaceRatio:(_Bool)arg10 latticePresetIdx:(int)arg11 latticeResults:(id)arg12;
 - (void)dealloc;
-- (_Bool)isLanguageCorrectionSupportedForLanguage:(id)arg1;
+- (_Bool)isLanguageCorrectionSupportedForLanguage:(id)arg1 revision:(unsigned long long)arg2;
 - (void)loadCharacterNgramModel:(id)arg1;
-- (id)initWithOptions:(id)arg1;
+- (id)initWithRevision:(unsigned long long)arg1 localeCode:(id)arg2 customWords:(id)arg3;
 
 @end
 

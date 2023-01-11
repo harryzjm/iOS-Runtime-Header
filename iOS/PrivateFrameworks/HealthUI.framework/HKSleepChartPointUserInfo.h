@@ -9,22 +9,21 @@
 #import <HealthUI/HKGraphSeriesBlockCoordinateInfo-Protocol.h>
 #import <HealthUI/HKGraphSeriesChartData-Protocol.h>
 
-@class HKSleepDay, NSArray, NSDate, NSString;
+@class HKSHSleepDaySummary, HKSleepDay, NSString;
 
 @interface HKSleepChartPointUserInfo : NSObject <HKGraphSeriesBlockCoordinateInfo, HKGraphSeriesChartData>
 {
-    NSArray *_titles;
-    NSArray *_values;
-    NSDate *_date;
+    long long _seriesType;
     HKSleepDay *_sleepDay;
+    HKSHSleepDaySummary *_sleepDaySummary;
 }
 
-@property(retain, nonatomic) HKSleepDay *sleepDay; // @synthesize sleepDay=_sleepDay;
-@property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
-@property(retain, nonatomic) NSArray *values; // @synthesize values=_values;
-@property(retain, nonatomic) NSArray *titles; // @synthesize titles=_titles;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long numberOfColumns;
+@property(readonly, nonatomic) HKSHSleepDaySummary *sleepDaySummary; // @synthesize sleepDaySummary=_sleepDaySummary;
+@property(readonly, nonatomic) HKSleepDay *sleepDay; // @synthesize sleepDay=_sleepDay;
+@property(readonly, nonatomic) long long seriesType; // @synthesize seriesType=_seriesType;
+- (id)initWithSeriesType:(long long)arg1 sleepDaySummary:(id)arg2;
+- (id)initWithSeriesType:(long long)arg1 sleepDay:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

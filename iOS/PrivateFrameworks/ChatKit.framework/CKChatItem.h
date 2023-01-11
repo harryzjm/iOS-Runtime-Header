@@ -11,6 +11,7 @@
 @interface CKChatItem : NSObject
 {
     _Bool _zOrder;
+    _Bool _wantsOverlayLayout;
     _Bool _sizeLoaded;
     IMTranscriptChatItem *_imChatItem;
     UNNotification *_notification;
@@ -23,16 +24,17 @@
 }
 
 + (id)chatItemWithNotification:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3;
-+ (id)chatItemWithIMChatItem:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3 transcriptTraitCollection:(id)arg4;
++ (id)chatItemWithIMChatItem:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3 transcriptTraitCollection:(id)arg4 overlayLayout:(_Bool)arg5;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isSizeLoaded) _Bool sizeLoaded; // @synthesize sizeLoaded=_sizeLoaded;
 @property(copy, nonatomic) NSAttributedString *transcriptDrawerText; // @synthesize transcriptDrawerText=_transcriptDrawerText;
 @property(copy, nonatomic) NSAttributedString *transcriptText; // @synthesize transcriptText=_transcriptText;
+@property(nonatomic) _Bool wantsOverlayLayout; // @synthesize wantsOverlayLayout=_wantsOverlayLayout;
 @property(retain, nonatomic) UITraitCollection *transcriptTraitCollection; // @synthesize transcriptTraitCollection=_transcriptTraitCollection;
 @property(nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property(readonly, nonatomic) _Bool zOrder; // @synthesize zOrder=_zOrder;
 @property(retain, nonatomic) UNNotification *notification; // @synthesize notification=_notification;
 @property(retain, nonatomic) IMTranscriptChatItem *IMChatItem; // @synthesize IMChatItem=_imChatItem;
-- (void).cxx_destruct;
 - (void)_setSizeForTesting:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct CKBalloonDescriptor_t balloonDescriptor; // @dynamic balloonDescriptor;
 - (id)loadTranscriptDrawerText;
@@ -43,6 +45,7 @@
 @property(readonly, nonatomic) _Bool stickersSnapToPoint;
 @property(readonly, nonatomic) _Bool canAttachStickers;
 @property(readonly, copy, nonatomic) NSString *menuTitle;
+@property(readonly, nonatomic) _Bool canInlineReply;
 @property(readonly, nonatomic) _Bool canSendAsTextMessage;
 - (_Bool)canSave;
 @property(readonly, nonatomic) _Bool canExport;
@@ -67,7 +70,20 @@
 @property(readonly, nonatomic) unsigned char contiguousType;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (id)supplementaryItemsWithLayoutEnvironment:(id)arg1;
+- (_Bool)wantsAvatarViewForLayoutEnvironment:(id)arg1;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (id)layoutGroupForEnvironment:(id)arg1;
+- (Class)collectionViewCellClass;
+- (unsigned long long)layoutType;
 - (id)visibleAssociatedMessageChatItems;
+- (_Bool)itemIsReplyCount;
+- (_Bool)itemIsThreadOriginator;
+- (_Bool)itemIsReplyContextPreview;
+- (_Bool)itemIsReplyFromMe;
+- (_Bool)itemIsFromMe;
+- (_Bool)itemIsReply;
 
 @end
 

@@ -16,7 +16,6 @@
 - (struct UIEdgeInsets)collectionsLevelSectionHeaderHighlightInset;
 - (struct CGSize)collectionsLevelThumbnailSize;
 - (void)configureCollectionsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
-- (unsigned long long)fullMomentsSectionHeaderBackgroundStyle;
 - (long long)fullMomentsSectionHeaderStyle;
 - (struct UIEdgeInsets)fullMomentsLevelSectionHeaderHighlightInset;
 - (struct CGSize)fullMomentsLevelThumbnailSize;

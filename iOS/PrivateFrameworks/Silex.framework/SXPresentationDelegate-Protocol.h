@@ -24,6 +24,8 @@
 - (_Bool)isScrolling;
 - (UIViewController *)presentingContentViewController;
 - (void)dismissFullscreenCanvasForComponent:(SXComponentView *)arg1;
+- (void)willDismissFullscreenCanvasForComponent:(SXComponentView *)arg1;
+- (void)willReturnToFullscreenForComponent:(SXComponentView *)arg1;
 - (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 canvasController:(SXFullscreenCanvasController *)arg2 withCompletionBlock:(void (^)(void))arg3;
 - (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 withCompletionBlock:(void (^)(void))arg2;
 - (void)removeInteractivityFocusForComponent:(SXComponentView *)arg1;

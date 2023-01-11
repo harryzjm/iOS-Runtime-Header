@@ -8,7 +8,7 @@
 
 #import <Notes/ICLegacyContext-Protocol.h>
 
-@class AccountUtilities, CPExclusiveLock, ICManagedObjectContextUpdater, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
+@class AccountUtilities, CPExclusiveLock, ICManagedObjectContextUpdater, ICSelectorDelayer, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
 
 @interface NoteContext : NSObject <ICLegacyContext>
 {
@@ -29,6 +29,7 @@
     _Bool _isMainContext;
     _Bool _usePrivateQueue;
     ICManagedObjectContextUpdater *_mocUpdater;
+    ICSelectorDelayer *_externalChangeNotificationDelayer;
 }
 
 + (id)searchIndexerDataSource;
@@ -38,11 +39,18 @@
 + (id)urlForPersistentStore;
 + (id)pathForIndex;
 + (id)pathForPersistentStore;
++ (unsigned long long)countOfVisibleNotesMatchingPredicate:(id)arg1 includingNoteWithoutBodyContent:(_Bool)arg2 context:(id)arg3;
++ (unsigned long long)countOfVisibleNotesMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 sorted:(_Bool)arg2 context:(id)arg3 fetchLimit:(unsigned long long)arg4;
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 sorted:(_Bool)arg2 context:(id)arg3;
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 context:(id)arg2;
++ (unsigned long long)countOfVisibleNotesInCollection:(id)arg1;
++ (unsigned long long)countOfVisibleNotesInCollectionIncludingNotesWithoutBodyContent:(id)arg1;
 + (id)newlyAddedAttachmentInContext:(id)arg1;
 + (id)newFetchRequestForNotes;
++ (id)newFetchRequestForStores;
++ (id)newFetchRequestForAccounts;
++ (id)visibleNotesIncludingEmptyBodyContentPredicate;
 + (id)visibleNotesPredicate;
 + (void)removeConflictingSqliteAndIdxFiles;
 + (void)removeSqliteAndIdxFiles;
@@ -56,12 +64,14 @@
 + (_Bool)databaseIsCorrupt:(id)arg1;
 + (_Bool)shouldLogIndexing;
 + (id)newLegacyContext;
+- (void).cxx_destruct;
+@property(retain, nonatomic) ICSelectorDelayer *externalChangeNotificationDelayer; // @synthesize externalChangeNotificationDelayer=_externalChangeNotificationDelayer;
 @property(retain, nonatomic) ICManagedObjectContextUpdater *mocUpdater; // @synthesize mocUpdater=_mocUpdater;
 @property(nonatomic) _Bool usePrivateQueue; // @synthesize usePrivateQueue=_usePrivateQueue;
 @property(nonatomic) _Bool isMainContext; // @synthesize isMainContext=_isMainContext;
 @property(retain, nonatomic) AccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
-- (void).cxx_destruct;
 - (long long)context:(id)arg1 shouldHandleInaccessibleFault:(id)arg2 forObjectID:(id)arg3 andTrigger:(id)arg4;
+- (void)postNotesChangedExternally;
 - (void)updateForRecentChanges;
 - (void)cleanUpLocks;
 - (void)trackChanges:(id)arg1;
@@ -132,14 +142,18 @@
 - (void)sortNotes:(id)arg1;
 - (void)clearCaches;
 - (id)newFetchRequestForNotes;
+- (id)newFRCForFetchRequest:(id)arg1 delegate:(id)arg2 performFetch:(_Bool)arg3;
 - (id)newFRCForCollection:(id)arg1 delegate:(id)arg2 performFetch:(_Bool)arg3;
 - (id)newFRCForCollection:(id)arg1 delegate:(id)arg2;
+- (id)newFRCForStoresWithDelegate:(id)arg1;
+- (id)newFRCForAccountsWithDelegate:(id)arg1;
 - (id)liveNotesNeedingBodiesPredicate;
 - (id)visibleNotesPredicate;
 - (void)dealloc;
 - (id)initWithAccountUtilities:(id)arg1 inMigrator:(_Bool)arg2 isMainContext:(_Bool)arg3 usePrivateQueue:(_Bool)arg4;
 - (id)initWithAccountUtilities:(id)arg1 inMigrator:(_Bool)arg2;
 - (id)initWithAccountUtilities:(id)arg1;
+- (id)initWithPrivateQueue:(_Bool)arg1;
 - (id)initWithPrivateQueue;
 - (id)initForMigrator;
 - (id)initForMainContext;

@@ -6,32 +6,38 @@
 
 #import <UIKit/UIView.h>
 
-#import <NanoTimeKitCompanion/CLKTimeFormatterObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKDevice, NSDate, NSString, NTKBigNumeralsTimeComponentLabel;
+@class CAGradientLayer, CALayer, CLKClockTimerToken, CLKDevice, NSDate, NSString, NTKBigNumeralsTimeComponentLabel;
+@protocol NTKBigNumeralsDigitalTimeViewDelegate;
 
-@interface NTKBigNumeralsDigitalTimeView : UIView <CLKTimeFormatterObserver, NTKTimeView>
+@interface NTKBigNumeralsDigitalTimeView : UIView <NTKTimeView>
 {
     CLKDevice *_device;
     NTKBigNumeralsTimeComponentLabel *_topLabel;
     NTKBigNumeralsTimeComponentLabel *_bottomLabel;
+    double _statusBarTransitionFraction;
     NSDate *_overrideDate;
-    struct NSNumber *_timerToken;
+    CLKClockTimerToken *_timerToken;
+    CAGradientLayer *_gradientLayer;
+    CALayer *_topLabelColorLayer;
+    CALayer *_bottomLabelColorLayer;
+    UIView *_timeLabelsContainerView;
     _Bool _frozen;
     _Bool _showingStatus;
     unsigned long long _style;
     unsigned long long _typeface;
     unsigned long long _color;
+    id <NTKBigNumeralsDigitalTimeViewDelegate> _delegate;
 }
 
-+ (long long)uiSensitivity;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <NTKBigNumeralsDigitalTimeViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long color; // @synthesize color=_color;
 @property(readonly, nonatomic) unsigned long long typeface; // @synthesize typeface=_typeface;
 @property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(nonatomic) _Bool showingStatus; // @synthesize showingStatus=_showingStatus;
 @property(nonatomic, getter=isFrozen) _Bool frozen; // @synthesize frozen=_frozen;
-- (void).cxx_destruct;
 - (void)cleanupTransition;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
 - (void)applyColor:(unsigned long long)arg1;

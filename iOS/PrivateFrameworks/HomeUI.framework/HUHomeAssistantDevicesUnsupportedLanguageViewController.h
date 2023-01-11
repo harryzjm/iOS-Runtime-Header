@@ -22,11 +22,11 @@
     OBTrayButton *_continueButton;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) OBTrayButton *continueButton; // @synthesize continueButton=_continueButton;
 @property(retain, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property(retain, nonatomic) NSArray *homeAssistantDevicesHavingLanguageMismatch; // @synthesize homeAssistantDevicesHavingLanguageMismatch=_homeAssistantDevicesHavingLanguageMismatch;
 @property(nonatomic) __weak id <HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -36,7 +36,7 @@
 - (void)loadView;
 - (id)hu_preloadContent;
 - (void)_continue;
-- (id)initWithHomeAssistantDevicesHavingLanguageMismatch:(id)arg1;
+- (id)initWithHomeAssistantDevicesHavingLanguageMismatch:(id)arg1 home:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

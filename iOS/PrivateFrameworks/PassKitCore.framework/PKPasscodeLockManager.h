@@ -15,8 +15,9 @@
 {
     MCProfileConnection *_profileConnection;
     _Bool _isPasscodeSet;
-    NSObject<OS_dispatch_queue> *_internalQueue;
+    struct os_unfair_lock_s _lock;
     NSHashTable *_observers;
+    NSObject<OS_dispatch_queue> *_replyQueue;
 }
 
 + (id)sharedManager;

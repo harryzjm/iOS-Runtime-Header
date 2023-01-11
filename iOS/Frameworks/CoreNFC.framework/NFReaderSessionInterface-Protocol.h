@@ -18,8 +18,9 @@
 - (oneway void)updateSharingUIScanText:(NSString *)arg1 callback:(void (^)(NSError *))arg2;
 - (oneway void)checkPresence:(void (^)(NSError *, _Bool))arg1;
 - (oneway void)transceive:(NSData *)arg1 callback:(void (^)(id <NFTag>, NSData *, NSError *))arg2;
-- (oneway void)disconnect:(void (^)(NSError *))arg1;
+- (oneway void)disconnectWithCardRemoval:(_Bool)arg1 callback:(void (^)(NSError *))arg2;
 - (oneway void)connect:(id <NFTag>)arg1 callback:(void (^)(NSError *))arg2;
+- (oneway void)restartPolling:(void (^)(NSError *))arg1;
 - (oneway void)stopPolling:(void (^)(NSError *))arg1;
 - (oneway void)startPollingForNDEFMessagesWithSessionConfig:(unsigned long long)arg1 callback:(void (^)(NSError *))arg2;
 - (oneway void)startPollingForTags:(unsigned long long)arg1 sessionConfig:(unsigned long long)arg2 callback:(void (^)(NSError *))arg3;

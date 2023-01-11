@@ -6,7 +6,7 @@
 
 #import <CarPlay/CPBaseTemplateProviding-Protocol.h>
 
-@class CPImageSet, CPNavigationAlert, CPTravelEstimates, CPTrip, CPTripPreviewTextConfiguration, NSArray, NSUUID, UIColor, UIImage;
+@class CPImageSet, CPNavigationAlert, CPTravelEstimates, CPTripPreviewTextConfiguration, NSArray, NSUUID, UIColor, UIImage;
 
 @protocol CPMapTemplateProviding <CPBaseTemplateProviding>
 - (void)updateNavigationAlert:(CPNavigationAlert *)arg1;
@@ -14,9 +14,8 @@
 - (void)showNavigationAlert:(CPNavigationAlert *)arg1 animated:(_Bool)arg2;
 - (void)hostPanInterfaceVisible:(void (^)(_Bool))arg1;
 - (void)hostSetPanInterfaceVisible:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)hostStartNavigationSessionForTrip:(CPTrip *)arg1 reply:(void (^)(id <CPNavigationSessionProviding>))arg2;
 - (void)hostUpdateTravelEstimates:(CPTravelEstimates *)arg1 forTripIdentifier:(NSUUID *)arg2;
-- (void)setHostTripPreviews:(NSArray *)arg1 textConfiguration:(CPTripPreviewTextConfiguration *)arg2 previewOnlyRouteChoices:(_Bool)arg3;
+- (void)setHostTripPreviews:(NSArray *)arg1 textConfiguration:(CPTripPreviewTextConfiguration *)arg2 previewOnlyRouteChoices:(_Bool)arg3 selectedIndex:(unsigned long long)arg4;
 - (void)hostSetMapButtons:(NSArray *)arg1;
 - (void)hostSetMapButton:(NSUUID *)arg1 imageSet:(CPImageSet *)arg2;
 - (void)setMapButton:(NSUUID *)arg1 focusedImage:(UIImage *)arg2;

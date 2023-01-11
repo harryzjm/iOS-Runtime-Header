@@ -8,21 +8,14 @@
 
 #import <DistributedEvaluation/NSCopying-Protocol.h>
 
-@class NSString;
+@class DESDataTransport, NSString;
 
 @interface DESPFLNoisable : PBCodable <NSCopying>
 {
-    struct {
-        float *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _data32s;
-    struct {
-        double *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _datas;
+    CDStruct_fae3dc92 _data32s;
+    CDStruct_82f37d05 _datas;
     double _weight;
+    DESDataTransport *_dataTransport;
     unsigned int _iteration;
     NSString *_recipeId;
     NSString *_uuid;
@@ -34,12 +27,13 @@
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) DESDataTransport *dataTransport; // @synthesize dataTransport=_dataTransport;
 @property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) double weight; // @synthesize weight=_weight;
 @property(nonatomic) unsigned int iteration; // @synthesize iteration=_iteration;
 @property(retain, nonatomic) NSString *recipeId; // @synthesize recipeId=_recipeId;
 @property(nonatomic) int version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -49,6 +43,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasDataTransport;
 @property(readonly, nonatomic) _Bool hasUuid;
 - (void)setData32s:(float *)arg1 count:(unsigned long long)arg2;
 - (float)data32AtIndex:(unsigned long long)arg1;

@@ -6,11 +6,12 @@
 
 #import <HomeKit/HMZone.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
-@interface HMZone (HFDebugging) <HFStateDumpBuildable>
+@interface HMZone (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties
@@ -18,5 +19,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @end
 

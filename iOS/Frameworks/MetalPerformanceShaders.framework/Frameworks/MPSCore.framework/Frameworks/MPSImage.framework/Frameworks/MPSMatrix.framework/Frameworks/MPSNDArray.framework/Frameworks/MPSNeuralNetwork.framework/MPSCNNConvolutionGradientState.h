@@ -19,6 +19,7 @@
     _Bool _needReductionInN;
     _Bool _needReductionInXY;
     unsigned int _weightsLayout;
+    unsigned long long _dimSizeN;
 }
 
 + (id)temporaryStateWithCommandBuffer:(id)arg1 resourceList:(id)arg2 convolution:(id)arg3 weightsLayout:(unsigned int)arg4;

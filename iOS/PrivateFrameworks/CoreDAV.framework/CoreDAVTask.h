@@ -8,7 +8,7 @@
 
 #import <CoreDAV/CoreDAVSubmittable-Protocol.h>
 
-@class CoreDAVErrorItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSRunLoop, NSString, NSURL, NSURLConnection, NSURLRequest;
+@class CoreDAVErrorItem, CoreDAVItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSRunLoop, NSString, NSURL, NSURLConnection, NSURLRequest;
 @protocol CoreDAVAccountInfoProvider, CoreDAVResponseBodyParser, CoreDAVTaskDelegate, CoreDAVTaskManager;
 
 @interface CoreDAVTask : NSObject <CoreDAVSubmittable>
@@ -58,12 +58,21 @@
     CoreDAVErrorItem *_forbiddenErrorItem;
     NSString *_uniqueID;
     _Bool _ignoresGuardianRestrictions;
+    _Bool _simulated;
     _Bool _totalBytesWasProcessedAsAbnormallyLarge;
+    NSMutableDictionary *_simulatedResponseHeaders;
+    long long _simulatedStatusCode;
+    CoreDAVItem *_simulatedRootElement;
 }
 
 + (id)stringFromDepth:(int)arg1;
 + (unsigned int)uniqueQueryID;
+- (void).cxx_destruct;
 @property _Bool totalBytesWasProcessedAsAbnormallyLarge; // @synthesize totalBytesWasProcessedAsAbnormallyLarge=_totalBytesWasProcessedAsAbnormallyLarge;
+@property(retain, nonatomic) CoreDAVItem *simulatedRootElement; // @synthesize simulatedRootElement=_simulatedRootElement;
+@property(nonatomic) long long simulatedStatusCode; // @synthesize simulatedStatusCode=_simulatedStatusCode;
+@property(retain, nonatomic) NSMutableDictionary *simulatedResponseHeaders; // @synthesize simulatedResponseHeaders=_simulatedResponseHeaders;
+@property(nonatomic) _Bool simulated; // @synthesize simulated=_simulated;
 @property(nonatomic) _Bool ignoresGuardianRestrictions; // @synthesize ignoresGuardianRestrictions=_ignoresGuardianRestrictions;
 @property(retain, nonatomic) NSDictionary *requestProperties; // @synthesize requestProperties=_requestProperties;
 @property(nonatomic) _Bool allowAutomaticRedirects; // @synthesize allowAutomaticRedirects=_allowAutomaticRedirects;
@@ -81,7 +90,7 @@
 @property(nonatomic) __weak id <CoreDAVTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <CoreDAVAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
 @property(nonatomic) __weak id <CoreDAVTaskManager> taskManager; // @synthesize taskManager=_taskManager;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) CoreDAVItem *rootElement;
 - (id)_requestForLogging;
 - (id)_connectionForLogging;
 - (void)reportStatusWithError:(id)arg1;

@@ -8,30 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, PBDataReader, PBUnknownFields;
+@class NSData, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDRecentRouteInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    NSData *_etaFilter;
+    NSData *_evChargingMetadata;
+    NSData *_originalWaypointRoute;
     NSData *_routeId;
     NSData *_sessionState;
+    NSMutableArray *_zilchPointSegments;
     NSData *_zilchPoints;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    int _preferredTransportType;
     struct {
+        unsigned int has_preferredTransportType:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_etaFilter:1;
+        unsigned int read_evChargingMetadata:1;
+        unsigned int read_originalWaypointRoute:1;
         unsigned int read_routeId:1;
         unsigned int read_sessionState:1;
+        unsigned int read_zilchPointSegments:1;
         unsigned int read_zilchPoints:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_routeId:1;
-        unsigned int wrote_sessionState:1;
-        unsigned int wrote_zilchPoints:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)zilchPointSegmentType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -43,17 +53,34 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSData *originalWaypointRoute;
+@property(readonly, nonatomic) _Bool hasOriginalWaypointRoute;
+@property(retain, nonatomic) NSData *evChargingMetadata;
+@property(readonly, nonatomic) _Bool hasEvChargingMetadata;
+- (id)zilchPointSegmentAtIndex:(unsigned long long)arg1;
+- (unsigned long long)zilchPointSegmentsCount;
+- (void)addZilchPointSegment:(id)arg1;
+- (void)clearZilchPointSegments;
+@property(retain, nonatomic) NSMutableArray *zilchPointSegments;
+@property(retain, nonatomic) NSData *etaFilter;
+@property(readonly, nonatomic) _Bool hasEtaFilter;
+- (int)StringAsPreferredTransportType:(id)arg1;
+- (id)preferredTransportTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasPreferredTransportType;
+@property(nonatomic) int preferredTransportType;
 @property(retain, nonatomic) NSData *routeId;
 @property(readonly, nonatomic) _Bool hasRouteId;
-- (void)_readRouteId;
 @property(retain, nonatomic) NSData *sessionState;
 @property(readonly, nonatomic) _Bool hasSessionState;
-- (void)_readSessionState;
 @property(retain, nonatomic) NSData *zilchPoints;
 @property(readonly, nonatomic) _Bool hasZilchPoints;
-- (void)_readZilchPoints;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

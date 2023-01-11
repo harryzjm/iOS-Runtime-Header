@@ -10,5 +10,7 @@
 @property(readonly, nonatomic, getter=isSuccess) _Bool success;
 @property(readonly, nonatomic) unsigned long long endTime;
 @property(readonly, nonatomic) unsigned long long totalDuration;
+@property(readonly, nonatomic) int pbNetworkEventCacheState;
+@property(readonly, nonatomic) int pbNetworkEventType;
 @end
 

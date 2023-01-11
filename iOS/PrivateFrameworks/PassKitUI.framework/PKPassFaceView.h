@@ -7,7 +7,8 @@
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class CAFilter, NSArray, NSMutableArray, NSMutableSet, NSString, PKLiveRenderedCardFaceView, PKPass, PKPassColorProfile, PKPassFaceTemplate, PKPassFaceViewRendererState, PKPaymentService, PKTransactionDataOverlayCardFaceView, UIImage, UIImageView, UIView;
+@class CAFilter, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, PKDynamicLayerView, PKLiveRenderedCardFaceView, PKPass, PKPassBucketTemplate, PKPassColorProfile, PKPassFaceTemplate, PKPassFaceViewRendererState, PKPaymentService, PKTransactionDataOverlayCardFaceView, UIImage, UIImageView, UIView;
+@protocol PKPassFaceViewDelegate;
 
 @interface PKPassFaceView <PKPaymentServiceDelegate, PKForegroundActiveArbiterObserver>
 {
@@ -17,12 +18,23 @@
     NSMutableSet *_bodyInvariantViews;
     NSMutableSet *_headerContentViews;
     NSMutableSet *_bodyContentViews;
-    _Bool _showingHeader;
-    _Bool _showingBody;
-    _Bool _resizablePartialImage;
+    struct {
+        unsigned int showingHeader:1;
+        unsigned int showingBody:1;
+        unsigned int showsLiveRendering:1;
+        unsigned int effectiveShowsLiveRendering:1;
+        unsigned int showsBackgroundView:1;
+        unsigned int effectiveShowsBackgroundView:1;
+        unsigned int backgroundModeSet:1;
+        unsigned int cachedFaceImageLoaded:1;
+        unsigned int faceImageLoading:1;
+        unsigned int partialFaceImageLoading:1;
+    } _flags;
     UIView *_contentView;
+    UIImageView *_backgroundPlaceholderView;
     UIImageView *_backgroundView;
     UIImageView *_shadowBackgroundView;
+    UIImage *_placeholderFaceImage;
     UIImage *_faceImage;
     UIImage *_faceShadowImage;
     UIImage *_partialFaceImage;
@@ -33,37 +45,48 @@
     NSMutableArray *_delayedAnimations;
     PKLiveRenderedCardFaceView *_liveBackgroundView;
     PKTransactionDataOverlayCardFaceView *_transactionDataOverlayView;
+    PKDynamicLayerView *_dynamicCardView;
     unsigned long long _contentViewCreatedRegions;
     unsigned long long _invariantViewCreatedRegions;
-    _Bool _showsLiveRendering;
     _Bool _foregroundActive;
     PKPaymentService *_paymentService;
     _Bool _invalidated;
+    _Bool _paused;
     _Bool _clipsContent;
-    _Bool _allowBackgroundPlaceHolders;
+    _Bool _allowBackgroundPlaceholders;
     _Bool _liveMotionEnabled;
+    _Bool _reduceMotionEnabled;
+    _Bool _viewExpanded;
     long long _backgroundMode;
     unsigned long long _visibleRegions;
     double _clippedContentHeight;
-    NSArray *_buckets;
+    NSData *_additionalBarcodeData;
+    id <PKPassFaceViewDelegate> _delegate;
     long long _style;
     PKPassFaceTemplate *_faceTemplate;
+    PKPassBucketTemplate *_headerBucketTemplate;
+    NSArray *_buckets;
 }
 
 + (id)newFrontFaceViewForStyle:(long long)arg1;
 + (Class)_faceClassForStyle:(long long)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
+@property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(readonly, nonatomic) PKPassBucketTemplate *headerBucketTemplate; // @synthesize headerBucketTemplate=_headerBucketTemplate;
 @property(readonly, nonatomic) PKPassFaceTemplate *faceTemplate; // @synthesize faceTemplate=_faceTemplate;
 @property(retain, nonatomic) NSMutableArray *headerBucketViews; // @synthesize headerBucketViews=_headerBucketViews;
 @property(nonatomic) long long style; // @synthesize style=_style;
-@property(readonly, retain, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
+@property(nonatomic) __weak id <PKPassFaceViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) NSData *additionalBarcodeData; // @synthesize additionalBarcodeData=_additionalBarcodeData;
+@property(nonatomic) _Bool viewExpanded; // @synthesize viewExpanded=_viewExpanded;
+@property(nonatomic, getter=isReduceMotionEnabled) _Bool reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property(nonatomic) _Bool liveMotionEnabled; // @synthesize liveMotionEnabled=_liveMotionEnabled;
-@property(nonatomic) _Bool showsLiveRendering; // @synthesize showsLiveRendering=_showsLiveRendering;
 @property(nonatomic) double clippedContentHeight; // @synthesize clippedContentHeight=_clippedContentHeight;
-@property(nonatomic) _Bool allowBackgroundPlaceHolders; // @synthesize allowBackgroundPlaceHolders=_allowBackgroundPlaceHolders;
+@property(nonatomic) _Bool allowBackgroundPlaceholders; // @synthesize allowBackgroundPlaceholders=_allowBackgroundPlaceholders;
 @property(nonatomic) _Bool clipsContent; // @synthesize clipsContent=_clipsContent;
 @property(nonatomic) unsigned long long visibleRegions; // @synthesize visibleRegions=_visibleRegions;
 @property(nonatomic) long long backgroundMode; // @synthesize backgroundMode=_backgroundMode;
-- (void).cxx_destruct;
 - (void)_handleTimeOrLocaleChange:(id)arg1;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
@@ -72,6 +95,8 @@
 - (void)_updateForeignBalances;
 - (void)_createBucketsIfNecessary;
 - (id)_relevantBuckets;
+- (void)_loadFaceImageIfNecessary;
+- (void)_updateEffectiveShowsBackgroundView;
 - (void)_setShowsBackgroundView:(_Bool)arg1;
 - (void)_setContentViewsAlpha:(double)arg1;
 - (void)_setShowsBodyViews:(_Bool)arg1;
@@ -79,14 +104,17 @@
 - (void)_flushContentViewsForRegions:(unsigned long long)arg1;
 - (void)_createContentViewsForRegions:(unsigned long long)arg1;
 - (void)_createInvariantViewsForRegions:(unsigned long long)arg1;
+- (void)didTransact;
 - (void)didAuthenticate;
 - (void)setShowsLiveRendering:(_Bool)arg1 rendererState:(id)arg2;
+@property(nonatomic) _Bool showsLiveRendering;
 @property(readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 - (void)createBodyContentViews;
 - (void)createHeaderContentViews;
 - (void)createBodyInvariantViews;
 - (void)createHeaderInvariantViews;
 @property(readonly, nonatomic) struct CGSize contentSize;
+- (id)headerTemplate;
 - (id)passFaceTemplate;
 - (void)updateShadow:(double)arg1 animated:(_Bool)arg2 withDelay:(double)arg3;
 - (void)_presentDiffRecursivelyDiff:(id)arg1 forBucketAtIndex:(unsigned long long)arg2 withBuckets:(id)arg3 completion:(CDUnknownBlockType)arg4;

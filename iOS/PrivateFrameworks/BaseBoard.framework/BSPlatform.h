@@ -13,24 +13,23 @@
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) _Bool hasOrbCapability; // @dynamic hasOrbCapability;
-@property(readonly, nonatomic) _Bool hasGasGauge; // @dynamic hasGasGauge;
-@property(readonly, nonatomic, getter=isMultiCore) _Bool multiCore; // @dynamic multiCore;
-@property(readonly, nonatomic, getter=isCarrierInstall) _Bool carrierInstall; // @dynamic carrierInstall;
-@property(readonly, nonatomic, getter=isDeveloperInstall) _Bool developerInstall; // @dynamic developerInstall;
-@property(readonly, nonatomic, getter=isInternalInstall) _Bool internalInstall; // @dynamic internalInstall;
-@property(readonly, copy, nonatomic) NSString *uniqueDeviceIdentifier; // @dynamic uniqueDeviceIdentifier;
-@property(readonly, copy, nonatomic) NSString *operatingSystemName; // @dynamic operatingSystemName;
-@property(readonly, copy, nonatomic) NSString *localizedProductName; // @dynamic localizedProductName;
-- (_Bool)_isD22Emulator;
-@property(readonly, nonatomic) long long homeButtonType; // @dynamic homeButtonType;
-@property(readonly, nonatomic) int deviceClass; // @dynamic deviceClass;
-@property(readonly, copy, nonatomic) NSString *productClass; // @dynamic productClass;
-@property(readonly, copy, nonatomic) NSString *productHardwareModelName; // @dynamic productHardwareModelName;
-@property(readonly, copy, nonatomic) NSString *productHardwareModel; // @dynamic productHardwareModel;
-@property(readonly, copy, nonatomic) NSString *productType; // @dynamic productType;
-@property(readonly, copy, nonatomic) NSString *productBuildVersion; // @dynamic productBuildVersion;
-@property(readonly, copy, nonatomic) NSString *productVersion; // @dynamic productVersion;
+@property(readonly, nonatomic) _Bool hasOrbCapability;
+@property(readonly, nonatomic) _Bool hasGasGauge;
+@property(readonly, nonatomic, getter=isMultiCore) _Bool multiCore;
+@property(readonly, nonatomic, getter=isCarrierInstall) _Bool carrierInstall;
+@property(readonly, nonatomic, getter=isDeveloperInstall) _Bool developerInstall;
+@property(readonly, nonatomic, getter=isInternalInstall) _Bool internalInstall;
+@property(readonly, copy, nonatomic) NSString *uniqueDeviceIdentifier;
+@property(readonly, copy, nonatomic) NSString *operatingSystemName;
+@property(readonly, copy, nonatomic) NSString *localizedProductName;
+@property(readonly, nonatomic) long long homeButtonType;
+@property(readonly, nonatomic) int deviceClass;
+@property(readonly, copy, nonatomic) NSString *productClass;
+@property(readonly, copy, nonatomic) NSString *productHardwareModelName;
+@property(readonly, copy, nonatomic) NSString *productHardwareModel;
+@property(readonly, copy, nonatomic) NSString *productType;
+@property(readonly, copy, nonatomic) NSString *productBuildVersion;
+@property(readonly, copy, nonatomic) NSString *productVersion;
 
 @end
 

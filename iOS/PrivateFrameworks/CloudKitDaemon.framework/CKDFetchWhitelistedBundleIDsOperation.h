@@ -5,6 +5,7 @@
 //
 
 @class NSArray;
+@protocol CKFetchWhitelistedBundleIDsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchWhitelistedBundleIDsOperation
@@ -12,13 +13,15 @@ __attribute__((visibility("hidden")))
     NSArray *_bundleIDs;
 }
 
-@property(copy, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 - (void).cxx_destruct;
-- (void)fillOutOperationResult:(id)arg1;
-- (Class)operationResultClass;
+@property(copy, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 - (void)main;
+- (int)operationType;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKFetchWhitelistedBundleIDsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

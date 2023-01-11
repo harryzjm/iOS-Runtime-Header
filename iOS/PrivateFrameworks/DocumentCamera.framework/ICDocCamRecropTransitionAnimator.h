@@ -24,6 +24,7 @@
     struct CGRect _containerViewFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ICDocCamImageQuad *quadForOverlay; // @synthesize quadForOverlay=_quadForOverlay;
 @property(nonatomic) __weak UIView *startView; // @synthesize startView=_startView;
 @property(nonatomic) struct CGRect containerViewFrame; // @synthesize containerViewFrame=_containerViewFrame;
@@ -34,10 +35,9 @@
 @property(retain, nonatomic) UIImage *unfilteredImage; // @synthesize unfilteredImage=_unfilteredImage;
 @property(retain, nonatomic) UIImage *filteredImage; // @synthesize filteredImage=_filteredImage;
 @property(nonatomic) _Bool presenting; // @synthesize presenting=_presenting;
-- (void).cxx_destruct;
-- (union _GLKMatrix3)matrixTransformingToUnitSquareWithPoints:(double)arg1 y0:(double)arg2 x1:(double)arg3 y1:(double)arg4 x2:(double)arg5 y2:(double)arg6 x3:(double)arg7 y3:(double)arg8;
+- (CDStruct_d80e62f2)matrixTransformingToUnitSquareWithPoints:(double)arg1 y0:(double)arg2 x1:(double)arg3 y1:(double)arg4 x2:(double)arg5 y2:(double)arg6 x3:(double)arg7 y3:(double)arg8;
 - (void)sortPoints:(struct CGPoint *)arg1 sorted:(struct CGPoint *)arg2;
-- (union _GLKMatrix3)matrixTransformingQuadForOverlayToImageView:(_Bool *)arg1;
+- (CDStruct_d80e62f2)matrixTransformingQuadForOverlayToImageView:(_Bool *)arg1;
 - (id)scrollViewTransform:(_Bool)arg1;
 - (id)imageMeshTransform:(_Bool)arg1;
 - (void)performSimpleFadeInFromViewController:(id)arg1 toViewController:(id)arg2 transitionContext:(id)arg3;

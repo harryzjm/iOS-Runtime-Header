@@ -22,8 +22,8 @@
 + (void)_addCalendarsForStoreWithUID:(id)arg1 toSet:(id)arg2 database:(struct CalDatabase *)arg3;
 + (void)_addCalendarUIDsFromPrefs:(id)arg1 toSet:(id)arg2 database:(struct CalDatabase *)arg3;
 + (void)_addCalendarWithUID:(id)arg1 toSet:(id)arg2 database:(struct CalDatabase *)arg3;
-@property(copy, nonatomic) NSString *searchTerm; // @synthesize searchTerm=_searchTerm;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *searchTerm; // @synthesize searchTerm=_searchTerm;
 - (id)calendarIDClauseForQueryWithVariableName:(id)arg1;
 - (id)filterQueryForKey:(id)arg1 prefix:(id)arg2 whereClause:(id)arg3 creator:(CDUnknownFunctionPointerType)arg4 userInfo:(void *)arg5;
 - (id)filterQueryForQueryString:(id)arg1 creator:(CDUnknownFunctionPointerType)arg2 userInfo:(void *)arg3;

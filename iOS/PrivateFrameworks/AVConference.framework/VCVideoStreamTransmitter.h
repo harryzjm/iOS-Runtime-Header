@@ -19,8 +19,6 @@ __attribute__((visibility("hidden")))
     struct opaqueCMBufferQueue *_bufferQueue;
     char *_buffer;
     unsigned long long _bufferSize;
-    int _packetBufferSize;
-    char *_packetBuffer;
     int _maxPacketCount;
     int *_packetSizes;
     int *_packetFlags;
@@ -52,6 +50,7 @@ __attribute__((visibility("hidden")))
     unsigned int _totalPacketsSent;
     unsigned long long _totalBytesSent;
     unsigned int _tilesPerFrame;
+    unsigned int _totalKeyFramesSent;
     struct __CFAllocator *_videoPacketAllocator;
 }
 
@@ -68,13 +67,16 @@ __attribute__((visibility("hidden")))
 - (void)encodeVideoFrame:(struct opaqueCMSampleBuffer *)arg1;
 - (struct __CFDictionary *)forceKeyFrameProperties;
 - (void)initVideoCompressionWithWidth:(unsigned int)arg1 height:(unsigned int)arg2 bitrate:(unsigned int)arg3 keyFrameIntervalDuration:(unsigned int)arg4;
+- (_Bool)setEncodingMode:(int)arg1;
+- (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
+- (void)setFECRedundancyVector:(const CDStruct_cd7ddd1c *)arg1;
 - (void)setFECRatio:(double)arg1;
 - (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
 - (void)setTargetBitrate:(unsigned int)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;
 - (void)generateKeyFrame;
-- (_Bool)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (_Bool)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (void)stopVideo;
 - (void)startVideo;
 - (void)dealloc;

@@ -53,11 +53,14 @@
         unsigned int activatingAccounts:1;
     } _controllerFlags;
     IDSPhoneSubscriptionSelector *_phoneSubscriptionSelector;
+    NSArray *__temporaryDeviceAliases;
     NSDictionary *_cachedCallerIDMap;
 }
 
 + (id)controllerForServiceType:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *cachedCallerIDMap; // @synthesize cachedCallerIDMap=_cachedCallerIDMap;
+@property(retain, nonatomic) NSArray *_temporaryDeviceAliases; // @synthesize _temporaryDeviceAliases=__temporaryDeviceAliases;
 @property(retain, nonatomic) IDSPhoneSubscriptionSelector *phoneSubscriptionSelector; // @synthesize phoneSubscriptionSelector=_phoneSubscriptionSelector;
 @property(copy, nonatomic) CDUnknownBlockType willLaunchURLBlock; // @synthesize willLaunchURLBlock=_willLaunchURLBlock;
 @property(copy, nonatomic) CDUnknownBlockType accountActivationChangedBlock; // @synthesize accountActivationChangedBlock=_accountActivationChangedBlock;
@@ -76,7 +79,6 @@
 @property(copy, nonatomic) CDUnknownBlockType accountRemovedBlock; // @synthesize accountRemovedBlock=_accountRemovedBlock;
 @property(copy, nonatomic) CDUnknownBlockType accountAddedBlock; // @synthesize accountAddedBlock=_accountAddedBlock;
 @property(copy, nonatomic) CDUnknownBlockType accountRegistrationBlock; // @synthesize accountRegistrationBlock=_accountRegistrationBlock;
-- (void).cxx_destruct;
 - (void)_decrementLogIndent;
 - (void)_incrementLogIndent;
 - (id)_logSpace;
@@ -127,6 +129,7 @@
 - (_Bool)_accountHasValidatedLocale:(id)arg1;
 - (_Bool)_accountIsAuthenticated:(id)arg1;
 - (id)aliasSummaryString:(_Bool *)arg1;
+- (void)disableDeviceAlias:(id)arg1;
 - (void)removeDeviceAlias:(id)arg1;
 - (void)addDeviceAlias:(id)arg1;
 - (long long)_phoneSubscriptionSlotMatchingLabel:(id)arg1;
@@ -160,6 +163,8 @@
 - (id)_aliasesForAccount:(id)arg1;
 - (_Bool)_shouldFilterOutAlias:(id)arg1 onAccount:(id)arg2;
 - (id)localPhoneNumberSentinelAlias;
+- (void)_clearCachedTemporaryDeviceAliases;
+- (_Bool)_aliasIsTemporaryDeviceAlias:(id)arg1;
 - (_Bool)_aliasIsDevicePhoneNumber:(id)arg1;
 - (id)accountForAlias:(id)arg1;
 - (id)_accountForAlias:(id)arg1 accounts:(id)arg2;

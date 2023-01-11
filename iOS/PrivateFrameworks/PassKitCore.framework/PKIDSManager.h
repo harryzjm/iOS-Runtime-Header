@@ -8,7 +8,7 @@
 
 #import <PassKitCore/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableDictionary, NSString, PKProximityAdvertiser;
+@class IDSService, NSArray, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, PKProximityAdvertiser;
 @protocol OS_dispatch_queue, PKIDSManagerDataSource;
 
 @interface PKIDSManager : NSObject <IDSServiceDelegate>
@@ -19,7 +19,7 @@
     NSMutableDictionary *_thumbnailCompletionHandlers;
     PKProximityAdvertiser *_proximityAdvertiser;
     NSHashTable *_delegates;
-    NSLock *_delegatesLock;
+    struct os_unfair_lock_s _delegatesLock;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     int _requestCLTMThrottleUncapToken;
     id <PKIDSManagerDataSource> _dataSource;
@@ -30,13 +30,13 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) NSMutableDictionary *recentlySeenUUIDs; // @synthesize recentlySeenUUIDs=_recentlySeenUUIDs;
 @property(retain, nonatomic) IDSService *service; // @synthesize service=_service;
 @property(retain, nonatomic) NSMutableDictionary *pendingDiscoveries; // @synthesize pendingDiscoveries=_pendingDiscoveries;
 @property(retain, nonatomic) NSMutableArray *pendingCancellations; // @synthesize pendingCancellations=_pendingCancellations;
 @property(nonatomic) id <PKIDSManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (void)_createThumbnailCacheDirectory;
 - (void)_populateDevicesIfNeeded;
 - (id)_remoteDevicesWithArchive;
@@ -48,7 +48,7 @@
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (id)_fetchPaymentInstrumentsForRequestingDevice:(id)arg1;
-- (id)_preparePaymentDeviceResponseForRequestingDevice:(id)arg1;
+- (id)_preparePaymentDeviceResponseForRequestingDevice:(id)arg1 userDisabled:(_Bool)arg2;
 - (void)_registerListeners;
 - (void)_postCTLMThrottleUncapNotification;
 - (void)_unregisterCTLMThrottleUncapNotification;

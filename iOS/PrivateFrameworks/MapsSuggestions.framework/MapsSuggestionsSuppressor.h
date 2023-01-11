@@ -8,23 +8,21 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class MapsSuggestionsQueue, NSString;
+@class MapsSuggestionsQueue, NSMutableDictionary, NSString;
 
 @interface MapsSuggestionsSuppressor : NSObject <MapsSuggestionsObject>
 {
-    struct NSMutableDictionary *_suppressionEntries;
+    NSMutableDictionary *_suppressionEntries;
     NSString *_suppressionEntriesFilePath;
     MapsSuggestionsQueue *_queue;
 }
 
-+ (id)defaultFilePath;
 - (void).cxx_destruct;
+- (void)awaitQueue;
 - (id)test_dateUntilSuppressedEntry:(id)arg1;
 - (void)test_deleteSuppressedEntriesFile;
 - (_Bool)saveSuppressedEntries;
 - (_Bool)loadSuppressedEntries;
-- (_Bool)_saveSuppressedEntries;
-- (_Bool)_loadSuppressedEntries;
 - (void)purge;
 - (_Bool)suppressEntry:(id)arg1 forTime:(double)arg2;
 - (_Bool)isSuppressedEntry:(id)arg1;

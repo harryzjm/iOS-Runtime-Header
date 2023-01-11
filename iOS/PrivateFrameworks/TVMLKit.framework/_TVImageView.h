@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class CAFilter, TVImageProxy, UIColor, UIImage, UIImageView;
+@class CAFilter, TVImageProxy, UIColor, UIImage, UIImageSymbolConfiguration, UIImageView;
 
 @interface _TVImageView : UIControl
 {
@@ -26,29 +26,35 @@
     _Bool __enableEdgeAntialiasingOnSelected;
     UIImage *_placeholderImage;
     TVImageProxy *_imageProxy;
+    CDUnknownBlockType _dynamicProxyProvider;
     CDUnknownBlockType _completion;
     UIColor *__tintColor;
     UIColor *__darkTintColor;
+    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setPreferredSymbolConfiguration:) UIImageSymbolConfiguration *preferredSymbolConfiguration; // @synthesize preferredSymbolConfiguration=_preferredSymbolConfiguration;
 @property(nonatomic, setter=_setEnableEdgeAntialiasingOnSelected:) _Bool _enableEdgeAntialiasingOnSelected; // @synthesize _enableEdgeAntialiasingOnSelected=__enableEdgeAntialiasingOnSelected;
 @property(retain, nonatomic, setter=_setFocusedColor:) UIColor *_focusedColor; // @synthesize _focusedColor=__focusedColor;
 @property(retain, nonatomic, setter=_setDarkTintColor:) UIColor *_darkTintColor; // @synthesize _darkTintColor=__darkTintColor;
 @property(retain, nonatomic, setter=_setTintColor:) UIColor *_tintColor; // @synthesize _tintColor=__tintColor;
 @property(nonatomic, getter=isImageLoaded) _Bool imageLoaded; // @synthesize imageLoaded=_imageLoaded;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property(copy, nonatomic) CDUnknownBlockType dynamicProxyProvider; // @synthesize dynamicProxyProvider=_dynamicProxyProvider;
 @property(retain, nonatomic) TVImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;
 @property(nonatomic) _Bool imageContainsCornerRadius; // @synthesize imageContainsCornerRadius=_imageContainsCornerRadius;
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateCornerRadius;
 - (void)_updateImageView;
 - (void)_setImage:(id)arg1;
+- (void)_updateFlatImageWithImage:(id)arg1;
 - (void)_updateTintColor;
 - (id)_imageView;
 - (void)_loadImage;
 - (void)_reloadImageForLayoutDirectionChange;
+- (id)_imageProxyWithSize:(struct CGSize)arg1;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_resetContentRect;

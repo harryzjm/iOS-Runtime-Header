@@ -14,6 +14,7 @@
 + (id)needRulesVerdict;
 + (id)dropVerdict;
 + (id)allowVerdict;
+- (long long)filterAction;
 
 @end
 

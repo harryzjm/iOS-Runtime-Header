@@ -16,10 +16,10 @@
     CDUnknownBlockType _dropnoteHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dropnoteHandler; // @synthesize dropnoteHandler=_dropnoteHandler;
 @property(readonly, nonatomic) OSLogEventLiveSource *source; // @synthesize source=_source;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *diagdconn; // @synthesize diagdconn=_diagdconn;
-- (void).cxx_destruct;
 - (void)invalidate;
 - (void)activate;
 - (void)_activateLiveStream;

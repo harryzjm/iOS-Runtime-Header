@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class BSUIMappedImageCache, NSCache;
+@class NSCache;
+@protocol OS_dispatch_queue;
 
 @interface NTKSiderealCache : NSObject
 {
     NSCache *_dataCache;
-    BSUIMappedImageCache *_imageCache;
+    NSObject<OS_dispatch_queue> *_readerWriterQueue;
+    NSCache *_aplCache;
 }
 
 + (id)sharedCache;
 - (void).cxx_destruct;
-- (id)gradientData:(CDUnknownBlockType)arg1;
-- (id)waypointViewImage:(CDUnknownBlockType)arg1;
-- (id)dialViewImage:(CDUnknownBlockType)arg1;
+- (float)aplForDate:(id)arg1 generationBlock:(CDUnknownBlockType)arg2;
+- (id)imageDataForKey:(id)arg1 generationBlock:(CDUnknownBlockType)arg2;
+- (void)purgeAPLCache;
 - (void)purgeCachedKey:(id)arg1;
 - (void)_purgeEverything;
 - (id)_init;

@@ -15,13 +15,10 @@ __attribute__((visibility("hidden")))
     CNContactStore *_store;
 }
 
-+ (id)contactEventForChange:(id)arg1 factory:(id)arg2;
 + (id)os_log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property(readonly, copy, nonatomic) CNChangeHistoryFetchRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
-- (id)groupEventsFromLegacyResult:(id)arg1 eventFactory:(id)arg2;
-- (id)contactEventsFromLegacyResult:(id)arg1 eventFactory:(id)arg2;
 - (id)keysToFetch;
 - (id)deltaSync;
 - (id)fullSync;

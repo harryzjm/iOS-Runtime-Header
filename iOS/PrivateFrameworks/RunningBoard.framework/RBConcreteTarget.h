@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/NSCopying-Protocol.h>
 
 @class NSString, RBProcess, RBSProcessIdentity;
 
-@interface RBConcreteTarget : NSObject <NSCopying, BSDescriptionProviding>
+@interface RBConcreteTarget : NSObject <NSCopying>
 {
 }
 
@@ -19,22 +18,12 @@
 + (id)targetWithProcess:(id)arg1 environment:(id)arg2;
 + (id)systemTarget;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-@property(readonly, copy) NSString *description;
+- (id)description;
 @property(readonly, copy, nonatomic) NSString *environment;
 @property(readonly, copy, nonatomic) RBSProcessIdentity *identity;
 @property(readonly, nonatomic) RBProcess *process;
-- (id)_init;
 - (id)createRBSTarget;
 @property(readonly, nonatomic, getter=isSystem) _Bool system;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

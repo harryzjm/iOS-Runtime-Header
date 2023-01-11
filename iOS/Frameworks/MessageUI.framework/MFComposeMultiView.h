@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNComposeHeaderLabelView, NSString, UILabel;
+#import <MessageUI/PKScribbleInteractionDelegate-Protocol.h>
+#import <MessageUI/PKScribbleInteractionElementSource-Protocol.h>
 
-@interface MFComposeMultiView
+@class CNComposeHeaderLabelView, NSString, UILabel;
+@protocol MFComposeMultiViewDelegate;
+
+@interface MFComposeMultiView <PKScribbleInteractionDelegate, PKScribbleInteractionElementSource>
 {
     UILabel *_accountLabel;
     CNComposeHeaderLabelView *_imageSizeHeaderLabelView;
@@ -16,11 +20,18 @@
     NSString *_accountDescription;
     _Bool _accountHasUnsafeDomain;
     _Bool _accountAutoselected;
+    id <MFComposeMultiViewDelegate> _scribbleDelegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <MFComposeMultiViewDelegate> scribbleDelegate; // @synthesize scribbleDelegate=_scribbleDelegate;
 @property(nonatomic, getter=isAccountAutoselected) _Bool accountAutoselected; // @synthesize accountAutoselected=_accountAutoselected;
 @property(nonatomic) _Bool accountHasUnsafeDomain; // @synthesize accountHasUnsafeDomain=_accountHasUnsafeDomain;
-- (void).cxx_destruct;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;
+- (_Bool)_scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
 - (id)labelColor;
 - (void)refreshPreferredContentSize;
 - (void)layoutSubviews;
@@ -33,6 +44,12 @@
 - (id)imageSizeLabel;
 - (id)accountLabel;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

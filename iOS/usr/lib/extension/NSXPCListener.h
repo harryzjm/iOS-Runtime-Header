@@ -11,14 +11,12 @@
 
 @interface NSXPCListener : NSObject
 {
-    void *_xconnection;
+    CDUnion_12533362 _connection;
     NSObject<OS_dispatch_queue> *_userQueue;
-    void *reserved0;
-    id _delegate;
+    _Atomic id _delegate;
     NSString *_serviceName;
     unsigned long long _state;
-    id _reserved1;
-    id _reserved2;
+    unsigned char _remote;
 }
 
 + (id)_UUID;
@@ -34,6 +32,7 @@
 @property __weak id <NSXPCListenerDelegate> delegate;
 - (void)invalidate;
 - (void)stop;
+- (void)activate;
 - (void)resume;
 - (void)suspend;
 - (id)description;

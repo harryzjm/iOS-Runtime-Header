@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class HKCalendarCache, NSMutableArray, NSMutableDictionary;
 
 @interface HDMCDaySummaryBuilder : NSObject
 {
+    HKCalendarCache *_calendarCache;
     NSMutableArray *_menstrualFlowSamples;
     NSMutableArray *_intermenstrualBleedingSamples;
     NSMutableArray *_symptomsSamples;
@@ -17,21 +18,22 @@
     NSMutableArray *_ovulationTestResultSamples;
     NSMutableArray *_cervicalMucusQualitySamples;
     NSMutableArray *_basalBodyTemperatureSamples;
+    NSMutableDictionary *_sampleCountByType;
     long long _dayIndex;
 }
 
-@property(readonly, nonatomic) long long dayIndex; // @synthesize dayIndex=_dayIndex;
 - (void).cxx_destruct;
-- (id)createDaySummaryWithDevice:(id)arg1 calendarCache:(id)arg2;
+@property(readonly, nonatomic) long long dayIndex; // @synthesize dayIndex=_dayIndex;
+- (id)createDaySummaryWithDevice:(id)arg1;
 - (id)_basalBodyTemperature;
 - (long long)_cervicalMucusQuality;
 - (long long)_ovulationTestResult;
 - (long long)_sexualActivity;
 - (unsigned long long)_symptoms;
 - (_Bool)_intermenstrualBleeding;
-- (long long)_menstrualFlowWithCalendarCache:(id)arg1 modificationDay:(long long *)arg2 startOfCycleFromCycleTracking:(id *)arg3;
+- (long long)_menstrualFlowWithModificationDay:(long long *)arg1 startOfCycleFromCycleTracking:(id *)arg2;
 - (void)addCycleTrackingSample:(id)arg1;
-- (id)initWithDayIndex:(long long)arg1;
+- (id)initWithDayIndex:(long long)arg1 calendarCache:(id)arg2;
 
 @end
 

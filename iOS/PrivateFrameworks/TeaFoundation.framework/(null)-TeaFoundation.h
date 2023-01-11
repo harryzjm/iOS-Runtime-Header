@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TeaFoundation/NFAssembly-Protocol.h>
-
-@interface (null) (TeaFoundation) <NFAssembly>
+@interface (null) (TeaFoundation)
 - (void)loadInRegistry:(id)arg1;
 @end
 

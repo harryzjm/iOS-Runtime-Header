@@ -18,6 +18,7 @@
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (unsigned long long)maxPlayersAllowedForMatchOfType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType recipientResponseHandler; // @synthesize recipientResponseHandler=_recipientResponseHandler;
 @property(copy) CDUnknownBlockType inviteeResponseHandler; // @synthesize inviteeResponseHandler=_inviteeResponseHandler;
 @property(retain) GKMatchRequestInternal *internal; // @synthesize internal=_internal;
@@ -28,6 +29,7 @@
 - (id)valueForUndefinedKey:(id)arg1;
 @property(retain) NSArray *playersToInvite; // @dynamic playersToInvite;
 @property(retain) GKTournament *tournamentForInvitePool;
+@property(copy) NSString *inviteMessage; // @dynamic inviteMessage;
 @property(retain) NSArray *recipients; // @dynamic recipients;
 - (id)guestPlayers;
 - (_Bool)respondsToSelector:(SEL)arg1;
@@ -42,7 +44,6 @@
 - (_Bool)defaultNumberOfPlayersIsValid;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithInternalRepresentation:(id)arg1;
@@ -50,7 +51,6 @@
 
 // Remaining properties
 @property unsigned long long defaultNumberOfPlayers; // @dynamic defaultNumberOfPlayers;
-@property(copy) NSString *inviteMessage; // @dynamic inviteMessage;
 @property unsigned long long maxPlayers; // @dynamic maxPlayers;
 @property unsigned long long minPlayers; // @dynamic minPlayers;
 @property unsigned int playerAttributes; // @dynamic playerAttributes;

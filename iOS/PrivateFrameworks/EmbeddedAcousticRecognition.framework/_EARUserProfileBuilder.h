@@ -22,6 +22,7 @@
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)signalEndOfUserData;
 - (id)sanitizedStringWithString:(id)arg1;
 - (id)pronunciationsForOrthography:(id)arg1;
 - (void)writeOutUserDataToJson:(id)arg1 withConfig:(id)arg2;

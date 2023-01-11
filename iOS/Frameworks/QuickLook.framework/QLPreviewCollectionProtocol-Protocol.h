@@ -14,6 +14,7 @@
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)invalidateService;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(void (^)(void))arg1;
+- (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(NSString *)arg1;
 - (void)setLoadingString:(NSString *)arg1;
 - (void)tearDownTransition:(_Bool)arg1;
 - (void)startTransitionWithSourceViewProvider:(QLTransitionContext *)arg1 transitionController:(id <QLTransitionControllerProtocol>)arg2 presenting:(_Bool)arg3 useInteractiveTransition:(_Bool)arg4 completionHandler:(void (^)(void))arg5;

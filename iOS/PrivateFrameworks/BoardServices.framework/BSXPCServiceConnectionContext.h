@@ -15,7 +15,6 @@
     NSString *_proem;
 }
 
-@property(readonly, copy, nonatomic) NSString *loggingProem; // @synthesize loggingProem=_proem;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -24,7 +23,6 @@
 @property(readonly, nonatomic, getter=isClient) _Bool client;
 @property(readonly, nonatomic, getter=isServer) _Bool server;
 @property(readonly, copy, nonatomic) NSString *endpointDescription;
-- (id)_initWithProem:(id)arg1;
 - (id)init;
 
 @end

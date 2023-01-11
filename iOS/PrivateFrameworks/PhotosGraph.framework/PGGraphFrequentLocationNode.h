@@ -6,23 +6,32 @@
 
 #import <PhotosGraph/PLFrequentLocationProtocol-Protocol.h>
 
-@class NSDate, NSDateInterval, NSSet, NSString, PGGraphAddressNode;
+@class NSArray, NSDate, NSDateInterval, NSSet, NSString, PGGraphAddressNode;
 
 @interface PGGraphFrequentLocationNode <PLFrequentLocationProtocol>
 {
     NSDateInterval *_localDateInterval;
 }
 
++ (id)filter;
 - (void).cxx_destruct;
+@property(readonly) NSDateInterval *localDateInterval; // @synthesize localDateInterval=_localDateInterval;
 @property(readonly, copy) NSString *description;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) unsigned long long numberOfMomentNodes;
 @property(readonly) NSSet *momentNodes;
 @property(readonly) PGGraphAddressNode *addressNode;
-@property(readonly) NSDateInterval *localDateInterval;
+- (id)name;
 @property(readonly) NSDate *localEndDate;
 @property(readonly) NSDate *localStartDate;
-@property(readonly) NSSet *items;
+- (unsigned short)domain;
+- (id)label;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
+@property(readonly) NSArray *sortedMoments;
 @property(readonly) NSDateInterval *dateInterval;
 @property(readonly) struct CLLocationCoordinate2D coordinate;
 

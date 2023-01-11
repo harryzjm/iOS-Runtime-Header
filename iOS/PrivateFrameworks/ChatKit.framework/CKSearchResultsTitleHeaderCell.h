@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKit/UICollectionReusableView.h>
 
 #import <ChatKit/CKSearchResultSupplementryCell-Protocol.h>
 
-@class CALayer, NSString, UIButton, UILabel;
+@class CALayer, NSString, UIButton, UILabel, UIVisualEffectView;
 @protocol CKSearchResultsTitleHeaderCellDelegate;
 
-@interface CKSearchResultsTitleHeaderCell : UICollectionViewCell <CKSearchResultSupplementryCell>
+@interface CKSearchResultsTitleHeaderCell : UICollectionReusableView <CKSearchResultSupplementryCell>
 {
+    _Bool _useMacSidebarVisualEffectView;
     id <CKSearchResultsTitleHeaderCellDelegate> _delegate;
     unsigned long long _sectionIndex;
     UIButton *_showAllButton;
@@ -20,21 +21,24 @@
     CALayer *_topHairline;
     double _titleTopPadding;
     double _titleBottomPadding;
+    UIVisualEffectView *_macBackgroundVisualEffectView;
     struct UIEdgeInsets marginInsets;
 }
 
 + (double)desiredZPosition;
 + (id)reuseIdentifier;
 + (id)supplementaryViewType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIVisualEffectView *macBackgroundVisualEffectView; // @synthesize macBackgroundVisualEffectView=_macBackgroundVisualEffectView;
 @property(nonatomic) double titleBottomPadding; // @synthesize titleBottomPadding=_titleBottomPadding;
 @property(nonatomic) double titleTopPadding; // @synthesize titleTopPadding=_titleTopPadding;
 @property(retain, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
 @property(retain, nonatomic) UILabel *sectionTitle; // @synthesize sectionTitle=_sectionTitle;
+@property(nonatomic) _Bool useMacSidebarVisualEffectView; // @synthesize useMacSidebarVisualEffectView=_useMacSidebarVisualEffectView;
 @property(retain, nonatomic) UIButton *showAllButton; // @synthesize showAllButton=_showAllButton;
 @property(nonatomic) unsigned long long sectionIndex; // @synthesize sectionIndex=_sectionIndex;
 @property(nonatomic) __weak id <CKSearchResultsTitleHeaderCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
-- (void).cxx_destruct;
 - (void)_showAllButtonTapped:(id)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)setTitle:(id)arg1;

@@ -25,6 +25,7 @@
 + (void)createZoneWithName:(id)arg1 rootRecordName:(id)arg2 subscriptionName:(id)arg3 owner:(id)arg4 cacheZone:(id)arg5 cloudCache:(id)arg6 completion:(CDUnknownBlockType)arg7;
 + (id)zoneSubscriptionName:(id)arg1;
 + (id)zoneRootRecordName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMDBackingStoreCacheZone *backingStoreZone; // @synthesize backingStoreZone=_backingStoreZone;
 @property(retain, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
 @property(retain, nonatomic) CKRecordZoneSubscription *subscription; // @synthesize subscription=_subscription;
@@ -34,8 +35,8 @@
 @property(retain, nonatomic) HMDCloudGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
 @property(retain, nonatomic) CKRecordZone *zone; // @synthesize zone=_zone;
 @property(nonatomic) __weak HMDCloudCache *cache; // @synthesize cache=_cache;
-- (void).cxx_destruct;
 - (void)updateServerChangeToken:(id)arg1;
+- (void)updateCurrentServerChangeToken;
 - (void)deleteZone;
 - (void)_initializeServerChangeToken:(id)arg1;
 - (void)_initializeSubscription:(id)arg1;
@@ -44,6 +45,7 @@
 - (id)createCloudZoneChangeTemporaryCache:(_Bool)arg1;
 - (void)deleteCloudRecord:(id)arg1;
 - (void)deleteCloudRecordNames:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateCloudRecord:(id)arg1;
 - (_Bool)isRootCloudRecord:(id)arg1;
 - (_Bool)isRootRecord:(id)arg1;
@@ -51,6 +53,7 @@
 - (void)addCloudRecord:(id)arg1 ownerID:(id)arg2;
 - (void)markMigratedObjectsAsMigrated;
 - (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

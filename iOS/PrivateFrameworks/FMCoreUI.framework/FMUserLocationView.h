@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKModernUserLocationView.h>
+#import <MapKit/MKUserLocationView.h>
 
 __attribute__((visibility("hidden")))
-@interface FMUserLocationView : MKModernUserLocationView
+@interface FMUserLocationView : MKUserLocationView
 {
 }
 

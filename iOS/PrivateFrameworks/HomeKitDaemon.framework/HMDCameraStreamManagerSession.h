@@ -20,6 +20,7 @@
     HMFMessage *_currentMessage;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFMessage *currentMessage; // @synthesize currentMessage=_currentMessage;
 @property(retain, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
 @property(readonly, nonatomic) NSString *streamShowingAppIdentifier; // @synthesize streamShowingAppIdentifier=_streamShowingAppIdentifier;
@@ -27,8 +28,8 @@
 @property(readonly, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
 @property(readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly, nonatomic) id <HMDCameraStreamControlManagerProtocol> streamControlManager; // @synthesize streamControlManager=_streamControlManager;
-- (void).cxx_destruct;
-- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(unsigned long long)arg5 error:(id *)arg6;
+- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(double)arg5 error:(id *)arg6;
+- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(double)arg5 timerFactory:(CDUnknownBlockType)arg6 error:(id *)arg7;
 
 @end
 

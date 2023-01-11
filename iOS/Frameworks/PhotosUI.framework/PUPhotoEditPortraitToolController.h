@@ -9,19 +9,19 @@
 #import <PhotosUI/PUPhotoEditApertureToolbarDelegate-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class CEKApertureButton, CEKLightingControl, CEKLightingNameBadge, CEKSlider, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, PFCoalescer, PUPhotoEditApertureToolbar, UIButton, UIView, _PULightingGradientView;
+@class CEKApertureButton, CEKLightingControl, CEKLightingNameBadge, CEKSlider, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, PFCoalescer, PUPhotoEditApertureToolbar, PXUIButton, UIView, _PULightingGradientView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditPortraitToolController <PUPhotoEditApertureToolbarDelegate, CEKLightingControlDelegate, CEKSliderDelegate, PXChangeObserver>
 {
     CEKApertureButton *_apertureButton;
-    UIButton *_lightingIntensityButton;
+    PXUIButton *_lightingIntensityButton;
     UIView *_lightingContainer;
     UIView *_apertureContainer;
     NSMutableArray *_containerConstraints;
     long long _initialLightingType;
     double _initialLightingIntensity;
-    UIButton *_depthToolbarButton;
+    PXUIButton *_depthToolbarButton;
     _PULightingGradientView *_lightingGradient;
     CEKLightingNameBadge *_lightingNameBadge;
     NSArray *_lightingNameBadgeConstraints;
@@ -32,17 +32,19 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_toolConstraints;
     NSDictionary *_cachedPortraitEffectSettings;
     _Bool _isStageLightEnabled;
-    double _majorVersion;
-    double _minorVersion;
     NSMutableDictionary *_lightingIntensityCache;
     CEKLightingControl *_lightingControl;
     long long _toolSelection;
+    unsigned long long _majorVersion;
+    unsigned long long _minorVersion;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long minorVersion; // @synthesize minorVersion=_minorVersion;
+@property(nonatomic) unsigned long long majorVersion; // @synthesize majorVersion=_majorVersion;
 @property(nonatomic) long long toolSelection; // @synthesize toolSelection=_toolSelection;
 @property(readonly, nonatomic) CEKLightingControl *lightingControl; // @synthesize lightingControl=_lightingControl;
 @property(readonly, nonatomic) PUPhotoEditApertureToolbar *apertureToolbar; // @synthesize apertureToolbar=_apertureToolbar;
-- (void).cxx_destruct;
 - (_Bool)apertureToolbarShouldRotateLabelsWithOrientation:(id)arg1;
 - (void)apertureToolbar:(id)arg1 didChangeValue:(double)arg2;
 - (void)_updateLightingIntensityCache;

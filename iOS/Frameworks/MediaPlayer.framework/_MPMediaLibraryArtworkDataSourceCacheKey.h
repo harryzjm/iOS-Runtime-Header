@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPMediaLibraryArtworkDataSourceCacheKey : NSObject
 {
     id _catalogIdentifier;
     struct CGSize _representationSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize representationSize; // @synthesize representationSize=_representationSize;
 @property(copy, nonatomic) id catalogIdentifier; // @synthesize catalogIdentifier=_catalogIdentifier;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithArtworkCatalog:(id)arg1 representativeSize:(struct CGSize)arg2;

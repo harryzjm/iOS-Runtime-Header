@@ -13,7 +13,11 @@
 + (_Bool)ic_alwaysShowLightContent;
 - (void)ic_performAsCurrent:(CDUnknownBlockType)arg1;
 - (id)ic_traitCollectionByAppendingNonNilTraitCollection:(id)arg1;
+- (_Bool)ic_hasEqualSizeToTraitCollection:(id)arg1;
 @property(readonly, nonatomic) ICAppearanceInfo *ic_appearanceInfo;
 @property(readonly, nonatomic) _Bool ic_isDark;
+@property(readonly, nonatomic) _Bool ic_hasCompactWidth;
+@property(readonly, nonatomic) _Bool ic_hasCompactHeight;
+@property(readonly, nonatomic) _Bool ic_hasCompactSize;
 @end
 

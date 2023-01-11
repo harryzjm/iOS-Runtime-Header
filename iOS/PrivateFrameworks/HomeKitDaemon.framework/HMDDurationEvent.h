@@ -14,20 +14,21 @@
 
 @interface HMDDurationEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
+    struct os_unfair_lock_s _lock;
     NSNumber *_duration;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
-@property(copy, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
 - (void).cxx_destruct;
-- (id)metricData;
+- (id)analyticsTriggerEventData;
 - (id)_nextTimerDate;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(copy) NSNumber *duration; // @synthesize duration=_duration;
 - (void)_handleUpdateRequest:(id)arg1;
 - (id)emptyModelObject;
 - (id)createPayload;

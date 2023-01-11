@@ -10,16 +10,19 @@
 #import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFHomeStatusVisible-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
+#import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
 @class HFServiceDescriptor, HFServiceNameComponents, HFUserNotificationServiceSettings, NSDate, NSString, NSUUID;
 
-@interface HMServiceGroup (HFDebugging) <HFStateDumpBuildable, HFHomeStatusVisible, HFFavoritable, HFHomeKitObject, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject>
+@interface HMServiceGroup (HFDebugging) <HFStateDumpBuildable, HFHomeStatusVisible, HFFavoritable, HFHomeKitObject, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @property(readonly, nonatomic) HFServiceDescriptor *hf_serviceDescriptor;
+@property(readonly, nonatomic) _Bool hf_areAllServicesInSameRoom;
 @property(readonly, nonatomic) _Bool hf_isSupported;
 - (id)hf_updateIsVisibleInHomeStatus:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool hf_isForcedVisibleInHomeStatus;
 @property(readonly, nonatomic) _Bool hf_hasSetVisibleInHomeStatus;
 @property(readonly, nonatomic) _Bool hf_isVisibleInHomeStatus;
 @property(readonly, nonatomic) _Bool hf_supportsHomeStatus;
@@ -27,6 +30,10 @@
 @property(readonly, nonatomic) _Bool hf_shouldShowInFavorites;
 @property(readonly, nonatomic) _Bool hf_hasSetFavorite;
 @property(readonly, nonatomic) _Bool hf_isFavorite;
+- (id)hf_topLevelAccessoryLikeHomeObject;
+- (id)hf_accessories;
+- (id)hf_profiles;
+- (id)hf_services;
 - (_Bool)hf_isValidObject;
 - (id)hf_updateUserNotificationSettings:(id)arg1;
 @property(readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;

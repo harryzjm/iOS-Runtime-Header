@@ -12,12 +12,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)clearCachedResources;
++ (id)appClipIcon;
 + (id)transportWalkIcon;
++ (id)transportBicycleIcon;
 + (id)transportTransitIcon;
 + (id)transportDriveIcon;
 + (id)indeterminateProgressSpinnerDarkInterface;
 + (id)indeterminateProgressSpinner;
 + (id)telephoneIcon;
++ (id)textIcon;
 + (id)fileIcon;
 + (id)unmuteButton;
 + (id)muteButton;
@@ -31,7 +34,6 @@ __attribute__((visibility("hidden")))
 + (id)notesIcon;
 + (id)pagesIcon;
 + (id)safariIcon;
-+ (id)chevronLeft;
 + (id)chevron;
 + (id)metadataExtractorJS;
 

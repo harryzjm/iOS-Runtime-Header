@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <SpringBoard/APUIAppPredictionViewControllerDelegate-Protocol.h>
 #import <SpringBoard/BBObserverDelegate-Protocol.h>
 #import <SpringBoard/FBSDisplayLayoutPublisherObserving-Protocol.h>
 #import <SpringBoard/MCProfileConnectionObserver-Protocol.h>
@@ -13,25 +14,35 @@
 #import <SpringBoard/SBAlertItemsControllerObserver-Protocol.h>
 #import <SpringBoard/SBApplicationRestrictionObserver-Protocol.h>
 #import <SpringBoard/SBAssistantObserver-Protocol.h>
+#import <SpringBoard/SBBarSwipeAffordanceDelegate-Protocol.h>
+#import <SpringBoard/SBBarSwipeAffordanceObserver-Protocol.h>
+#import <SpringBoard/SBFOverlayObserving-Protocol.h>
 #import <SpringBoard/SBFloatingDockControllerDelegate-Protocol.h>
 #import <SpringBoard/SBHIconManagerDelegate-Protocol.h>
+#import <SpringBoard/SBHLibraryViewControllerObserver-Protocol.h>
 #import <SpringBoard/SBHSidebarProviderDelegate-Protocol.h>
 #import <SpringBoard/SBHomeScreenIconTransitionAnimatorDelegate-Protocol.h>
+#import <SpringBoard/SBHomeScreenOverlayControllerDelegate-Protocol.h>
 #import <SpringBoard/SBHomeScreenSpotlightDismissalDelegate-Protocol.h>
 #import <SpringBoard/SBHomeScreenTodayViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBIconAnimationContaining-Protocol.h>
 #import <SpringBoard/SBIconModelApplicationDataSource-Protocol.h>
+#import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
+#import <SpringBoard/SBProactiveHomeScreenSuggestionProviderObserver-Protocol.h>
+#import <SpringBoard/SBProactiveHomeScreenUsageObserverDelegate-Protocol.h>
 #import <SpringBoard/SBRootFolderControllerAccessoryViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBRootFolderPageStateObserver-Protocol.h>
 #import <SpringBoard/SBSearchGestureObserver-Protocol.h>
+#import <SpringBoard/SBTodayViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SPUIRemoteSearchViewDelegate-Protocol.h>
+#import <SpringBoard/SPUISearchBarDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/WGWidgetGroupViewControllerDelegate-Protocol.h>
 
-@class BBObserver, BSEventQueue, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PTSingleTestRecipe, SBAlertItemsController, SBApplicationController, SBApplicationPlaceholderController, SBAssistantController, SBFloatingDockController, SBFolderController, SBFolderStatsQueryableMetric, SBHIconImageCache, SBHIconManager, SBHRootFolderSettings, SBHomeScreenSpotlightViewController, SBHomeScreenTodayViewController, SBIconContentView, SBIconDragManager, SBIconModel, SBIconVisibilityService, SBMainDisplayPolicyAggregator, SBMainStatusBarContentAssertion, SBRootFolder, SBRootFolderController, SBTodayOverlayController, SBUIController, SBWorkspaceTransitionRequest, UIView, UIWindow, WGWidgetGroupViewController, _UILegibilitySettings;
-@protocol BSInvalidatable, SBIconAnimationContaining, SBRootFolderPageTransition;
+@class BBObserver, BSEventQueue, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSObject, NSSet, NSString, NSTimer, PTDoubleTestRecipe, PTSingleTestRecipe, SBAlertItemsController, SBAppStatusBarContentAssertion, SBApplicationController, SBApplicationPlaceholderController, SBAssistantController, SBBarSwipeAffordanceViewController, SBFloatingDockBehaviorAssertion, SBFloatingDockController, SBFolderController, SBFolderStatsQueryableMetric, SBHIconEditingSettings, SBHIconImageCache, SBHIconManager, SBHLibraryCategoryMap, SBHLibraryCategoryMapProvider, SBHLibraryViewController, SBHRootFolderSettings, SBHomeScreenOverlayController, SBHomeScreenSpotlightViewController, SBHomeScreenTodayViewController, SBIconContentView, SBIconDragManager, SBIconModel, SBIconVisibilityService, SBMainDisplayPolicyAggregator, SBProactiveHomeScreenSuggestionProvider, SBProactiveHomeScreenUsageObserver, SBRootFolder, SBRootFolderController, SBSpotlightTransientOverlayInteractiveGestureTransaction, SBUIController, SBWidgetMetricsServer, SBWorkspaceTransitionRequest, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, UIWindow, WGWidgetGroupViewController, _UILegibilitySettings;
+@protocol BSInvalidatable, OS_dispatch_queue, SBIconAnimationContaining, SBRootFolderPageTransition;
 
-@interface SBIconController : UIViewController <BBObserverDelegate, MCProfileConnectionObserver, SBApplicationRestrictionObserver, UIGestureRecognizerDelegate, SBSearchGestureObserver, FBSDisplayLayoutPublisherObserving, SBRootFolderPageStateObserver, SBAlertItemsControllerObserver, SBAssistantObserver, SBHIconManagerDelegate, SBRootFolderControllerAccessoryViewControllerDelegate, SBHomeScreenSpotlightDismissalDelegate, SBHomeScreenTodayViewControllerDelegate, SBFloatingDockControllerDelegate, SPUIRemoteSearchViewDelegate, PTSettingsKeyObserver, WGWidgetGroupViewControllerDelegate, SBHSidebarProviderDelegate, SBIconModelApplicationDataSource, SBHomeScreenIconTransitionAnimatorDelegate, SBIconAnimationContaining>
+@interface SBIconController : UIViewController <BBObserverDelegate, MCProfileConnectionObserver, SBApplicationRestrictionObserver, UIGestureRecognizerDelegate, SBSearchGestureObserver, FBSDisplayLayoutPublisherObserving, SBRootFolderPageStateObserver, SBAlertItemsControllerObserver, SBAssistantObserver, SBHIconManagerDelegate, SBRootFolderControllerAccessoryViewControllerDelegate, SBHomeScreenSpotlightDismissalDelegate, SBHomeScreenTodayViewControllerDelegate, SBTodayViewControllerDelegate, SBFloatingDockControllerDelegate, SPUIRemoteSearchViewDelegate, PTSettingsKeyObserver, WGWidgetGroupViewControllerDelegate, SBHSidebarProviderDelegate, SBLayoutStateTransitionObserver, SPUISearchBarDelegate, SBProactiveHomeScreenSuggestionProviderObserver, SBFOverlayObserving, SBProactiveHomeScreenUsageObserverDelegate, SBHLibraryViewControllerObserver, SBHomeScreenOverlayControllerDelegate, APUIAppPredictionViewControllerDelegate, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBIconModelApplicationDataSource, SBHomeScreenIconTransitionAnimatorDelegate, SBIconAnimationContaining>
 {
     NSSet *_visibleTags;
     NSSet *_hiddenTags;
@@ -60,80 +71,183 @@
     NSMapTable *_folderControllerDeferRotationForIconScrollingAssertions;
     NSMapTable *_activeInterfaceOrientationChangeDeferralAssertionsByReason;
     NSMapTable *_deviceOrientationUpdateDeferralAssertionsByReason;
-    SBHIconImageCache *_appSwitcherUnmaskedIconImageCache;
+    SBFloatingDockBehaviorAssertion *_homeScreenOverlayFloatingDockBehaviorAssertion;
+    SBFloatingDockBehaviorAssertion *_addWidgetSheetFloatingDockBehaviorAssertion;
+    SBFloatingDockBehaviorAssertion *_widgetConfigurationFloatingDockBehaviorAssertion;
     SBHIconImageCache *_appSwitcherHeaderIconImageCache;
     SBHIconImageCache *_tableUIIconImageCache;
     SBHIconImageCache *_notificationIconImageCache;
     NSMutableSet *_delayedStyleWallpaperEffectViews;
+    NSMapTable *_suspendWallpaperAnimationForFolderAssertions;
+    NSMutableDictionary *_temporaryWidgetIntents;
+    SBHLibraryCategoryMapProvider *_categoryMapProvider;
+    SBHIconEditingSettings *_iconEditingSettings;
+    UILongPressGestureRecognizer *_longPressToEditGestureRecognizer;
+    UITapGestureRecognizer *_tapToEndEditingGestureRecognizer;
+    SBSpotlightTransientOverlayInteractiveGestureTransaction *_spotlightInteractiveGestureTransaction;
+    NSMutableDictionary *_recentsDocumentExtensionProviders;
+    NSNumber *_homeScreenOverlayInitialPresentationProgress;
+    UIView *_screenSnapshotForIconViews;
+    NSMutableArray *_outstandingSnapshotProviders;
+    id <BSInvalidatable> _iconControllerStateDumpHandle;
     SBIconVisibilityService *_iconVisibilityService;
+    id <BSInvalidatable> _stateCaptureHandlerForKeyDisplayIDsWithBadgingEnabled;
+    id <BSInvalidatable> _stateCaptureHandleForHomeScreenDefaults;
+    _Bool _showingHomeScreenOverlay;
     _Bool _hasRestrictedEnforcedLayout;
     _Bool _uninstallingSystemAppsRestricted;
     _Bool _dismissingMenuForFolderPresentation;
     _Bool __ignoreMutatingIconListsOnApplicationInstall;
     SBHIconManager *_iconManager;
     SBHomeScreenTodayViewController *_todayViewController;
+    SBHomeScreenTodayViewController *_coverSheetTodayViewController;
+    SBHomeScreenTodayViewController *_homeScreenTodayViewController;
     SBHomeScreenSpotlightViewController *_spotlightViewController;
+    SBHLibraryViewController *_libraryViewController;
     SBFloatingDockController *_floatingDockController;
+    SBAppStatusBarContentAssertion *_statusBarContentAssertion;
     NSTimer *_delayedLaunchRequestTimer;
-    NSTimer *_editingEndTimer;
-    CDUnknownBlockType _searchGestureCompletionHandler;
     NSTimer *_popoverDelayTimer;
-    NSTimer *_iconEditingFeedbackWarmTimer;
     unsigned long long _iconOcclusionReasons;
     id <SBRootFolderPageTransition> _interactivePullToTodaySearchTransition;
     id <BSInvalidatable> _displayLayoutTransition;
     PTSingleTestRecipe *_relayoutTestRecipe;
     PTSingleTestRecipe *_toggleSearchTestRecipe;
     PTSingleTestRecipe *_runDownloadingIconTestRecipe;
+    PTSingleTestRecipe *_runRemoveAndRestoreIconTestRecipe;
+    PTSingleTestRecipe *_organizeInFoldersTestRecipe;
+    PTDoubleTestRecipe *_shuffleStackTestRecipe;
     SBHRootFolderSettings *_rootFolderSettings;
-    SBMainStatusBarContentAssertion *_widgetsStatusBarContentAssertion;
+    id <BSInvalidatable> _sidebarAppearanceStateOverrideAssertion;
+    id <BSInvalidatable> _significantAnimationColorSamplingAssertion;
+    id <BSInvalidatable> _suspendWallpaperAnimationForSpotlightAssertion;
+    id <BSInvalidatable> _suspendWallpaperAnimationForOverlayViewAssertion;
+    SBProactiveHomeScreenUsageObserver *_proactiveUsageObserver;
+    SBProactiveHomeScreenSuggestionProvider *_proactiveSuggestionProvider;
+    NSObject<OS_dispatch_queue> *_accountStoreQueue;
+    SBWidgetMetricsServer *_widgetMetricsServer;
+    id <BSInvalidatable> _pageManagementWallpaperScaleAssertion;
+    SBBarSwipeAffordanceViewController *_widgetAddSheetAffordanceViewController;
     WGWidgetGroupViewController *_widgetGroupViewController;
-    SBTodayOverlayController *_todayOverlayController;
+    SBHomeScreenOverlayController *_homeScreenOverlayController;
     long long _currentIconListIndex;
     NSSet *_appIconForceTouchWindows;
 }
 
 + (id)sharedInstanceIfExists;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *appIconForceTouchWindows; // @synthesize appIconForceTouchWindows=_appIconForceTouchWindows;
 @property(readonly, nonatomic) long long currentIconListIndex; // @synthesize currentIconListIndex=_currentIconListIndex;
 @property(nonatomic, setter=_setIgnoreMutatingIconListsOnApplicationInstall:) _Bool _ignoreMutatingIconListsOnApplicationInstall; // @synthesize _ignoreMutatingIconListsOnApplicationInstall=__ignoreMutatingIconListsOnApplicationInstall;
-@property(retain, nonatomic) SBTodayOverlayController *todayOverlayController; // @synthesize todayOverlayController=_todayOverlayController;
+@property(retain, nonatomic) SBHomeScreenOverlayController *homeScreenOverlayController; // @synthesize homeScreenOverlayController=_homeScreenOverlayController;
 @property(readonly, nonatomic) WGWidgetGroupViewController *widgetGroupViewController; // @synthesize widgetGroupViewController=_widgetGroupViewController;
+@property(retain, nonatomic) SBBarSwipeAffordanceViewController *widgetAddSheetAffordanceViewController; // @synthesize widgetAddSheetAffordanceViewController=_widgetAddSheetAffordanceViewController;
+@property(retain, nonatomic) id <BSInvalidatable> pageManagementWallpaperScaleAssertion; // @synthesize pageManagementWallpaperScaleAssertion=_pageManagementWallpaperScaleAssertion;
+@property(readonly, nonatomic) SBWidgetMetricsServer *widgetMetricsServer; // @synthesize widgetMetricsServer=_widgetMetricsServer;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accountStoreQueue; // @synthesize accountStoreQueue=_accountStoreQueue;
+@property(retain, nonatomic) SBProactiveHomeScreenSuggestionProvider *proactiveSuggestionProvider; // @synthesize proactiveSuggestionProvider=_proactiveSuggestionProvider;
+@property(retain, nonatomic) SBProactiveHomeScreenUsageObserver *proactiveUsageObserver; // @synthesize proactiveUsageObserver=_proactiveUsageObserver;
+@property(retain, nonatomic) id <BSInvalidatable> suspendWallpaperAnimationForOverlayViewAssertion; // @synthesize suspendWallpaperAnimationForOverlayViewAssertion=_suspendWallpaperAnimationForOverlayViewAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> suspendWallpaperAnimationForSpotlightAssertion; // @synthesize suspendWallpaperAnimationForSpotlightAssertion=_suspendWallpaperAnimationForSpotlightAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> significantAnimationColorSamplingAssertion; // @synthesize significantAnimationColorSamplingAssertion=_significantAnimationColorSamplingAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> sidebarAppearanceStateOverrideAssertion; // @synthesize sidebarAppearanceStateOverrideAssertion=_sidebarAppearanceStateOverrideAssertion;
 @property(nonatomic) _Bool dismissingMenuForFolderPresentation; // @synthesize dismissingMenuForFolderPresentation=_dismissingMenuForFolderPresentation;
-@property(retain, nonatomic) SBMainStatusBarContentAssertion *widgetsStatusBarContentAssertion; // @synthesize widgetsStatusBarContentAssertion=_widgetsStatusBarContentAssertion;
 @property(readonly, nonatomic) SBHRootFolderSettings *rootFolderSettings; // @synthesize rootFolderSettings=_rootFolderSettings;
+@property(readonly, nonatomic) PTDoubleTestRecipe *shuffleStackTestRecipe; // @synthesize shuffleStackTestRecipe=_shuffleStackTestRecipe;
+@property(readonly, nonatomic) PTSingleTestRecipe *organizeInFoldersTestRecipe; // @synthesize organizeInFoldersTestRecipe=_organizeInFoldersTestRecipe;
+@property(readonly, nonatomic) PTSingleTestRecipe *runRemoveAndRestoreIconTestRecipe; // @synthesize runRemoveAndRestoreIconTestRecipe=_runRemoveAndRestoreIconTestRecipe;
 @property(readonly, nonatomic) PTSingleTestRecipe *runDownloadingIconTestRecipe; // @synthesize runDownloadingIconTestRecipe=_runDownloadingIconTestRecipe;
 @property(readonly, nonatomic) PTSingleTestRecipe *toggleSearchTestRecipe; // @synthesize toggleSearchTestRecipe=_toggleSearchTestRecipe;
 @property(readonly, nonatomic) PTSingleTestRecipe *relayoutTestRecipe; // @synthesize relayoutTestRecipe=_relayoutTestRecipe;
 @property(retain, nonatomic) id <BSInvalidatable> displayLayoutTransition; // @synthesize displayLayoutTransition=_displayLayoutTransition;
 @property(retain, nonatomic) id <SBRootFolderPageTransition> interactivePullToTodaySearchTransition; // @synthesize interactivePullToTodaySearchTransition=_interactivePullToTodaySearchTransition;
 @property(nonatomic) unsigned long long iconOcclusionReasons; // @synthesize iconOcclusionReasons=_iconOcclusionReasons;
-@property(retain, nonatomic) NSTimer *iconEditingFeedbackWarmTimer; // @synthesize iconEditingFeedbackWarmTimer=_iconEditingFeedbackWarmTimer;
 @property(retain, nonatomic) NSTimer *popoverDelayTimer; // @synthesize popoverDelayTimer=_popoverDelayTimer;
-@property(copy, nonatomic) CDUnknownBlockType searchGestureCompletionHandler; // @synthesize searchGestureCompletionHandler=_searchGestureCompletionHandler;
-@property(retain, nonatomic) NSTimer *editingEndTimer; // @synthesize editingEndTimer=_editingEndTimer;
 @property(retain, nonatomic) NSTimer *delayedLaunchRequestTimer; // @synthesize delayedLaunchRequestTimer=_delayedLaunchRequestTimer;
 @property(nonatomic, getter=isUninstallingSystemAppsRestricted) _Bool uninstallingSystemAppsRestricted; // @synthesize uninstallingSystemAppsRestricted=_uninstallingSystemAppsRestricted;
 @property(nonatomic) _Bool hasRestrictedEnforcedLayout; // @synthesize hasRestrictedEnforcedLayout=_hasRestrictedEnforcedLayout;
+@property(retain, nonatomic) SBAppStatusBarContentAssertion *statusBarContentAssertion; // @synthesize statusBarContentAssertion=_statusBarContentAssertion;
+@property(readonly, nonatomic, getter=isShowingHomeScreenOverlay) _Bool showingHomeScreenOverlay; // @synthesize showingHomeScreenOverlay=_showingHomeScreenOverlay;
 @property(readonly, nonatomic) SBFloatingDockController *floatingDockController; // @synthesize floatingDockController=_floatingDockController;
+@property(retain, nonatomic) SBHLibraryViewController *libraryViewController; // @synthesize libraryViewController=_libraryViewController;
 @property(retain, nonatomic) SBHomeScreenSpotlightViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
+@property(retain, nonatomic) SBHomeScreenTodayViewController *homeScreenTodayViewController; // @synthesize homeScreenTodayViewController=_homeScreenTodayViewController;
+@property(retain, nonatomic) SBHomeScreenTodayViewController *coverSheetTodayViewController; // @synthesize coverSheetTodayViewController=_coverSheetTodayViewController;
 @property(retain, nonatomic) SBHomeScreenTodayViewController *todayViewController; // @synthesize todayViewController=_todayViewController;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(readonly, nonatomic) SBHIconManager *iconManager; // @synthesize iconManager=_iconManager;
-- (void).cxx_destruct;
+- (id)_addStateCaptureHandlerForHomeScreenDefaults;
+- (id)_addStateCaptureHandlerForKeyDisplayIDsWithBadgingEnabled;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)_teardownDeweyTestConfigurations;
+- (void)_configureDeweyEachAppHasItsOwnCategory:(unsigned long long)arg1;
+- (void)_configureDeweyOneCategoryWithAllApps;
+- (id)_configureCategoryMapProviderToUseCategoryMapAtURL:(id)arg1;
+- (void)setWallpaperAnimationDisabled:(_Bool)arg1 forReason:(id)arg2;
 - (void)_relinquishStatusBarContentAssertion;
-- (void)_takeStatusBarContentAssertion;
+- (void)_updateStatusBarContentAssertion;
+- (id)appPredictionViewController:(id)arg1 iconForApplicationWithBundleIdentifier:(id)arg2;
+- (_Bool)appPredictionViewController:(id)arg1 shouldDisplayBadgeWithBundleIdentifier:(id)arg2;
+- (id)appPredictionViewController:(id)arg1 badgeValueForApplicationWithBundleIdentifier:(id)arg2;
+- (_Bool)appPredictionViewController:(id)arg1 launchAppFromIcon:(id)arg2;
+- (id)proactiveHomeScreenUsageObserver:(id)arg1 intentForWidget:(id)arg2 ofIcon:(id)arg3;
+- (void)proactiveHomeScreenSuggestionProvider:(id)arg1 willUseTemporaryIntent:(id)arg2 forIconWithIdentifier:(id)arg3 widgetUniqueIdentifier:(id)arg4;
+- (void)proactiveHomeScreenSuggestionProviderDidUpdatePrediction:(id)arg1;
+- (void)searchBarDidFocus;
+- (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
+- (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (double)minimumHomeScreenScaleForFloatingDockController:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)libraryViewController:(id)arg1 didDismissSearchController:(id)arg2;
+- (void)libraryViewController:(id)arg1 willDismissSearchController:(id)arg2;
+- (void)libraryViewController:(id)arg1 didPresentSearchController:(id)arg2;
+- (void)libraryViewController:(id)arg1 willPresentSearchController:(id)arg2;
+- (void)libraryViewControllerDidDismiss:(id)arg1;
+- (void)libraryViewControllerWillDismiss:(id)arg1;
+- (void)libraryViewControllerDidPresent:(id)arg1;
+- (void)libraryViewControllerWillPresent:(id)arg1;
+- (void)libraryViewController:(id)arg1 willDismissFolderController:(id)arg2;
+- (void)libraryViewController:(id)arg1 willPresentFolderController:(id)arg2;
+- (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
+- (unsigned long long)barSwipeAffordanceView:(id)arg1 systemGestureTypeForType:(long long)arg2;
+- (void)iconManager:(id)arg1 prepareAddSheetViewController:(id)arg2;
+- (_Bool)iconManager:(id)arg1 canAddIcon:(id)arg2 toIconList:(id)arg3 inFolder:(id)arg4;
+- (id)iconManager:(id)arg1 applicationNameWithIdentifier:(id)arg2;
+- (_Bool)iconManager:(id)arg1 isApplicationWithIdentifierBlockedForScreenTimeExpiration:(id)arg2;
+- (_Bool)_isWidgetWithContainerBundleIdentifierValid:(id)arg1;
+- (_Bool)iconManager:(id)arg1 isCustomElementValid:(id)arg2;
+- (_Bool)iconManager:(id)arg1 isWidgetValid:(id)arg2;
+- (_Bool)iconManager:(id)arg1 shouldPlaceIconOnIgnoredList:(id)arg2;
+- (_Bool)iconManager:(id)arg1 canAddIconToIgnoredList:(id)arg2;
+- (void)iconManagerDidDismissWidgetEditing:(id)arg1;
+- (void)iconManagerWillPresentWidgetEditing:(id)arg1;
+@property(readonly, nonatomic) SBHLibraryCategoryMap *libraryCategoryMap;
+- (void)iconManagerDidDismissPageManagement:(id)arg1;
+- (void)iconManager:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2;
+- (void)iconManager:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2;
+- (id)iconManager:(id)arg1 vendorNameForAppWithBundleIdentifiers:(id)arg2;
+- (void)iconManager:(id)arg1 prepareForPageHidingEducationWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)iconManager:(id)arg1 didRemoveConfigurableDataSource:(id)arg2;
+- (void)iconManager:(id)arg1 dataSource:(id)arg2 ofIcon:(id)arg3 didUpdateConfigurationData:(id)arg4;
+- (id)iconManager:(id)arg1 configurationDataForDataSource:(id)arg2 ofIcon:(id)arg3;
+- (void)_getApplicationDataStore:(id *)arg1 configurationKey:(id *)arg2 forDataSource:(id)arg3;
 - (void)iconManager:(id)arg1 rootFolderController:(id)arg2 willUsePropertyAnimator:(id)arg3 toTransitionToState:(long long)arg4;
 - (void)iconManager:(id)arg1 rootFolderController:(id)arg2 willUseTransitionContext:(id)arg3 toTransitionToState:(long long)arg4;
 - (void)iconManagerDidNoteIconStateChangedExternally:(id)arg1;
 - (unsigned long long)maximumListCountForFoldersForIconManager:(id)arg1;
+- (void)dismissOverlaysForIconManager:(id)arg1;
+- (void)dismissLibraryOverlayAnimated:(_Bool)arg1;
+- (void)dismissLibraryOverlayForIconManager:(id)arg1;
+- (void)dismissTodayOverlayAnimated:(_Bool)arg1;
+- (void)dismissTodayOverlayForIconManager:(id)arg1;
+- (_Bool)isTodayOverlayPresented;
+- (_Bool)isLibraryOverlayPresented;
+- (void)presentLibraryOverlayForIconManager:(id)arg1;
+- (void)presentTodayOverlayForIconManager:(id)arg1;
 - (_Bool)isFloatingDockVisibleForIconManager:(id)arg1;
 - (id)iconManager:(id)arg1 accessibilityTintColorForScreenRect:(struct CGRect)arg2;
 - (id)iconManager:(id)arg1 animator:(id)arg2 animationSettingsForOperation:(unsigned long long)arg3 childViewController:(id)arg4;
@@ -150,7 +264,7 @@
 - (void)iconManager:(id)arg1 willRemoveFakeStatusBar:(id)arg2 forFolderController:(id)arg3;
 - (id)iconManager:(id)arg1 statusBarStyleRequestForFolderController:(id)arg2;
 - (id)iconManager:(id)arg1 fakeStatusBarForFolderController:(id)arg2;
-- (id)iconManager:(id)arg1 wantsToHideStatusBarForFolderController:(id)arg2;
+- (id)iconManager:(id)arg1 wantsToHideStatusBarForFolderController:(id)arg2 animated:(_Bool)arg3;
 - (void)iconManager:(id)arg1 didSpringLoadIconView:(id)arg2;
 - (void)iconManager:(id)arg1 didEndIconDragWithUniqueIdentifier:(id)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconManager:(id)arg1 didAddItemsToIconDragWithUniqueIdentifier:(id)arg2 numberOfDraggedItems:(unsigned long long)arg3;
@@ -160,26 +274,37 @@
 - (id)iconManager:(id)arg1 dragPreviewForIconView:(id)arg2 dragPreviewForItem:(id)arg3 session:(id)arg4 previewParameters:(id)arg5;
 - (_Bool)iconManagerCanBeginIconDrags:(id)arg1;
 - (id)iconManager:(id)arg1 accessibilityTintColorForIconView:(id)arg2;
+- (_Bool)iconManager:(id)arg1 allowsBadgingForIconLocation:(id)arg2;
 - (_Bool)iconManager:(id)arg1 allowsBadgingForIcon:(id)arg2;
 - (long long)iconManager:(id)arg1 closeBoxTypeForIconView:(id)arg2 proposedType:(long long)arg3;
 - (id)recycledViewsContainerProviderForIconManager:(id)arg1;
+- (id)iconManager:(id)arg1 screenSnapshotProviderForComponentsOfIconView:(id)arg2;
 - (_Bool)iconManager:(id)arg1 shouldContinueToUseBackgroundView:(id)arg2 forComponentsOfIconView:(id)arg3;
 - (id)iconManager:(id)arg1 backgroundViewForComponentsOfIconView:(id)arg2;
 - (_Bool)shouldUseLiveBlurForBackgroundViewForComponentsOfIconView:(id)arg1;
 - (void)iconManager:(id)arg1 iconDropSessionDidEnter:(id)arg2;
 - (long long)iconManager:(id)arg1 draggingStartLocationForIconView:(id)arg2 proposedStartLocation:(long long)arg3;
 - (double)iconManager:(id)arg1 additionalDragLiftScaleForIconView:(id)arg2;
+- (_Bool)iconManager:(id)arg1 canAcceptDropInSession:(id)arg2 inIconListView:(id)arg3;
+- (_Bool)iconManager:(id)arg1 canAddDragItemsToSession:(id)arg2 fromIconView:(id)arg3;
+- (_Bool)_dragSessionContainsAppClipWebClipIcon:(id)arg1;
 - (_Bool)iconManager:(id)arg1 canBeginDragForIconView:(id)arg2;
 - (id)viewControllerForPresentingViewControllersForIconManager:(id)arg1;
 - (void)iconManager:(id)arg1 wantsUninstallForIcon:(id)arg2 location:(id)arg3;
 - (_Bool)iconManager:(id)arg1 iconViewDisplaysCloseBox:(id)arg2;
 - (void)iconManager:(id)arg1 iconView:(id)arg2 willUseContextMenuStyle:(id)arg3;
+- (void)iconManager:(id)arg1 iconView:(id)arg2 configurationDidEndWithInteraction:(id)arg3;
+- (void)iconManager:(id)arg1 iconView:(id)arg2 configurationWillBeginWithInteraction:(id)arg3;
+- (id)iconManager:(id)arg1 homeScreenContentViewForConfigurationOfIconView:(id)arg2;
+- (struct CGRect)iconManager:(id)arg1 contentBoundingRectForConfigurationOfIconView:(id)arg2;
+- (id)iconManager:(id)arg1 containerViewControllerForConfigurationOfIconView:(id)arg2;
 - (id)iconManager:(id)arg1 containerViewForPresentingContextMenuForIconView:(id)arg2;
+- (void)iconManager:(id)arg1 launchIcon:(id)arg2 location:(id)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)iconManager:(id)arg1 launchURLForIconView:(id)arg2;
 - (id)iconManager:(id)arg1 launchActionsForIconView:(id)arg2;
 - (void)iconManager:(id)arg1 touchesEndedForIconView:(id)arg2;
 - (id)iconManager:(id)arg1 reasonToDisallowInteractionOnIconView:(id)arg2;
-- (void)iconManager:(id)arg1 launchIconForIconView:(id)arg2;
+- (void)iconManager:(id)arg1 launchIconForIconView:(id)arg2 withActions:(id)arg3;
 - (void)iconManager:(id)arg1 didReceiveTapOnLaunchDisabledIconView:(id)arg2;
 - (void)iconManager:(id)arg1 willPrepareIconViewForLaunch:(id)arg2;
 - (void)iconManager:(id)arg1 possibleUserIconTapBeganAfterInformingIcon:(id)arg2;
@@ -190,13 +315,18 @@
 - (id)localizedFolderNameForDefaultDisplayName:(id)arg1;
 - (void)iconManager:(id)arg1 configureIconView:(id)arg2 forIcon:(id)arg3;
 - (void)iconManager:(id)arg1 willUseIconImageCache:(id)arg2;
+- (void)iconManagerEditingDidChange:(id)arg1;
+- (_Bool)iconManager:(id)arg1 isPartialEditingAllowedForIconLocation:(id)arg2;
 - (_Bool)isEditingAllowedForIconManager:(id)arg1;
 - (_Bool)isRootFolderContentVisibleForIconManager:(id)arg1;
 - (unsigned long long)allowedInterfaceOrientationsForIconManager:(id)arg1;
 - (long long)interfaceOrientationForIconManager:(id)arg1;
-- (id)additionalIconModelForIconManager:(id)arg1;
 - (void)iconManager:(id)arg1 didCreateRootViewController:(id)arg2;
 - (void)iconManager:(id)arg1 didCreateRootFolderController:(id)arg2;
+- (id)_createWidgetIconWithDescriptors:(id)arg1 gridSize:(unsigned long long)arg2;
+- (id)_createWidgetIconWithKind:(id)arg1 extensionBundleIdentifier:(id)arg2 gridSize:(unsigned long long)arg3;
+- (id)_createWidgetIconWithDataSource:(id)arg1 gridSize:(unsigned long long)arg2;
+- (id)_newTodayViewControllerWithIconManager:(id)arg1 iconListModel:(id)arg2 rootFolder:(id)arg3 location:(long long)arg4;
 - (void)iconManager:(id)arg1 willUseRootFolderControllerConfiguration:(id)arg2;
 - (void)iconManager:(id)arg1 willDestroyRootViewController:(id)arg2;
 - (void)iconManager:(id)arg1 willDestroyRootFolderController:(id)arg2;
@@ -209,33 +339,52 @@
 @property(readonly, nonatomic) UIWindow *animationWindow;
 @property(readonly, nonatomic) UIView *containerView;
 - (void)publisher:(id)arg1 didUpdateLayout:(id)arg2 withTransition:(id)arg3;
-- (void)searchGesture:(id)arg1 completedShowing:(_Bool)arg2;
+- (void)searchGesture:(id)arg1 endedGesture:(_Bool)arg2;
 - (void)searchGesture:(id)arg1 changedPercentComplete:(double)arg2;
+- (void)searchGesture:(id)arg1 startedShowing:(_Bool)arg2;
+- (void)_startSpotlightInteractiveGestureTransactionForGesture:(id)arg1;
 - (void)_iconForceTouchControllerDidDismiss:(id)arg1;
 - (void)_iconForceTouchControllerWillPresent:(id)arg1;
 - (id)_aggregateLoggingAppKeyForIcon:(id)arg1;
 - (void)_forceTouchControllerWillPresent:(id)arg1;
 - (_Bool)iconManager:(id)arg1 shouldActivateApplicationShortcutItem:(id)arg2 atIndex:(unsigned long long)arg3 forIconView:(id)arg4;
-- (id)iconManager:(id)arg1 applicationShortcutItemsForAppIcon:(id)arg2;
+- (id)iconManager:(id)arg1 applicationShortcutItemsForIconView:(id)arg2;
 - (id)iconManager:(id)arg1 applicationShortcutWidgetBundleIdentifierForShortcutsWithIconView:(id)arg2;
 - (id)iconManager:(id)arg1 applicationBundleURLForShortcutsWithIconView:(id)arg2;
 - (_Bool)_shouldHideAppIconForceTouchInfoForApplication:(id)arg1;
 - (_Bool)_isHostedByCoverSheet;
 - (void)earlyTerminateAnyContextMenuAnimations;
 - (void)performAfterContextMenuAnimationsHaveCompleted:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool isAnySearchVisibleOrTransitioning;
 - (_Bool)areAnyIconViewContextMenusAnimating;
 @property(readonly, nonatomic) _Bool areAnyIconViewContextMenusShowing;
 - (void)activateTodayViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissAppIconForceTouchControllers:(CDUnknownBlockType)arg1;
 - (void)dismissSearchView;
+- (_Bool)isTodayViewRotating:(id)arg1;
+- (void)todayViewDidAppear:(id)arg1;
+- (void)todayViewControllerWillPresentSpotlight:(id)arg1;
+- (void)todayViewWantsToEndEditing:(id)arg1;
 - (void)todayViewController:(id)arg1 didEndInteractivePullToSearchSuccessfully:(_Bool)arg2;
 - (void)todayViewController:(id)arg1 didUpdateInteractivePullToSearchWithProgress:(double)arg2;
 - (void)todayViewControllerDidBeginInteractivePullToSearch:(id)arg1;
 - (_Bool)todayViewControllerCanBeginInteractivePullToSearch:(id)arg1;
+- (void)todayViewControllerDidChangeHeaderVisibility:(id)arg1;
 - (void)todayViewControllerDidFocusSearchField:(id)arg1;
 - (unsigned long long)defaultSearchViewPresentationSourceForViewController:(id)arg1;
 - (void)handleSpotlightDismissalFromViewController:(id)arg1;
 - (void)handleSpotlightPresentationFromViewController:(id)arg1;
+- (id)homeScreenOverlayController:(id)arg1 displayLayoutIdentifierForSidebarViewController:(id)arg2;
+- (void)homeScreenOverlayController:(id)arg1 setSuppressesEditingStateForListView:(_Bool)arg2;
+- (_Bool)isEditingForHomeScreenOverlayController:(id)arg1;
+- (_Bool)showsDoneButtonWhileEditingForHomeScreenOverlayController:(id)arg1;
+- (_Bool)showsAddWidgetButtonWhileEditingForHomeScreenOverlayController:(id)arg1;
+- (void)homeScreenOverlayWantsWidgetEditingViewControllerPresented:(id)arg1;
+- (void)homeScreenOverlayWantsToEndEditing:(id)arg1;
+- (id)backgroundViewForEditingDoneButtonForHomeScreenOverlayController:(id)arg1;
+- (void)overlayController:(id)arg1 visibilityDidChange:(_Bool)arg2;
+- (void)overlayController:(id)arg1 didChangePresentationProgress:(double)arg2 fromLeading:(_Bool)arg3;
+- (void)overlayControllerDidBeginChangingPresentationProgress:(id)arg1;
 - (void)_invalidateAssertionsForFolderController:(id)arg1;
 - (void)_acquireAssertionsForFolderController:(id)arg1;
 - (void)popToCurrentRootIconListWhenPossible;
@@ -249,17 +398,22 @@
 - (void)rootFolderPageStateProvider:(id)arg1 willEndTransitionToState:(long long)arg2 successfully:(_Bool)arg3;
 - (void)rootFolderPageStateProvider:(id)arg1 didContinueTransitionToState:(long long)arg2 progress:(double)arg3;
 - (void)rootFolderPageStateProvider:(id)arg1 willBeginTransitionToState:(long long)arg2 animated:(_Bool)arg3 interactive:(_Bool)arg4;
-- (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didEndOverscrollOnFirstPageWithVelocity:(double)arg3;
+- (void)iconManager:(id)arg1 willRemoveViewControllerForIdentifier:(id)arg2;
+- (_Bool)iconManager:(id)arg1 shouldCacheRecentViewController:(id)arg2 forIdentifier:(id)arg3;
+- (id)iconManager:(id)arg1 viewControllerForCustomIcon:(id)arg2 element:(id)arg3;
+- (void)iconManager:(id)arg1 wantsLaunchForWidgetURL:(id)arg2;
+- (_Bool)iconManager:(id)arg1 isIconVisibleForBundleIdentifier:(id)arg2;
+- (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didEndOverscrollOnLastPageWithVelocity:(double)arg3 translation:(double)arg4;
+- (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didOverscrollOnLastPageByAmount:(double)arg3;
+- (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didEndOverscrollOnFirstPageWithVelocity:(double)arg3 translation:(double)arg4;
 - (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didOverscrollOnFirstPageByAmount:(double)arg3;
-- (id)_todayOverlayControllerIfNeeded;
-- (_Bool)iconManager:(id)arg1 rootFolderControllerShouldAllowOverscrollOnFirstPage:(id)arg2;
-- (void)rootFolderControllerDidChangeSidebarPinned:(id)arg1;
+- (id)_homeScreenOverlayControllerIfNeeded;
+- (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didChangeEffectiveSidebarVisibilityProgress:(double)arg3;
 - (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didChangeSidebarVisibilityProgress:(double)arg3;
 - (_Bool)isIconContentPossiblyVisibleOverApplicationForIconManager:(id)arg1;
 - (_Bool)iconManager:(id)arg1 folderController:(id)arg2 canChangeCurrentPageIndexToIndex:(long long)arg3;
 - (void)iconManager:(id)arg1 statusBarInsetsDidChange:(struct UIEdgeInsets)arg2;
 - (_Bool)iconManagerCanUseSeparateWindowForRotation:(id)arg1;
-- (id)iconManager:(id)arg1 backgroundViewForEditingDoneButtonForRootFolderController:(id)arg2;
 - (id)iconManager:(id)arg1 backgroundViewForDockForRootFolderController:(id)arg2;
 - (double)distanceToTopOfSpotlightIconsForIconManager:(id)arg1;
 - (void)iconManager:(id)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
@@ -284,9 +438,20 @@
 - (void)observer:(id)arg1 updateSectionInfo:(id)arg2;
 - (void)_updateEnabledBadgesSetWithSections:(id)arg1;
 - (_Bool)_badgesAreEnabledForSectionInfo:(id)arg1;
+- (void)configureLibraryViewController:(id)arg1 withIconManager:(id)arg2;
+- (void)_setUpLibraryViewController;
+- (_Bool)isAppLibraryAllowed;
+@property(readonly, nonatomic, getter=isAppLibrarySupported) _Bool appLibrarySupported;
 - (_Bool)importIconState:(id)arg1;
+- (void)_makeTodayViewControllers;
+- (void)_rootFolderDidChange;
+- (void)_performWidgetMigrationIfNecessaryForApplication:(id)arg1;
+- (void)_performWidgetMigrationIfNecessary;
+- (void)_addSmartStackToTodayList:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_iconModelDidLayout:(id)arg1;
+- (void)_showsBadgesInAppLibraryDidChange;
 @property(retain, nonatomic) SBIconModel *model;
-- (void)_selectIconModel:(_Bool)arg1;
+- (void)_updateIconModelStore;
 - (void)_backupRestoringDidChange:(id)arg1;
 - (void)_mutateIconListsForInstalledAppsDidChangeWithController:(id)arg1 added:(id)arg2 modified:(id)arg3 removed:(id)arg4;
 - (void)_installedAppsDidChange:(id)arg1;
@@ -301,21 +466,43 @@
 - (struct CGSize)_suggestedTodayViewSizeForBounds:(struct CGRect)arg1;
 - (struct CGSize)widgetGroupViewController:(id)arg1 sizeForInterfaceOrientation:(long long)arg2;
 - (void)widgetGroupViewControllerDidChangeHeaderVisibility:(id)arg1;
+- (void)libraryViewControllerRequestsDismissal:(id)arg1;
+- (_Bool)_shouldTodayViewController:(id)arg1 receiveTouch:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)_handleEditingGesture:(id)arg1;
+- (void)_configureEditingGestureRecognizers;
 @property(readonly, copy) NSString *description;
-@property(nonatomic, getter=isSidebarPinned) _Bool sidebarPinned;
+@property(readonly, nonatomic) _Bool shouldAddNewIconsToRootFolder;
+- (void)_showOnBoardingAlertIfNeeded;
+- (void)_bookmarkDidUninstall:(id)arg1;
+- (_Bool)allowsHomeScreenOverlay;
+- (id)temporaryIntentDataForIconWithIdentifier:(id)arg1 widgetUniqueIdentifier:(id)arg2;
+- (void)setTemporaryIntent:(id)arg1 forIconWithIdentifier:(id)arg2 widgetUniqueIdentifier:(id)arg3;
+@property(readonly, nonatomic, getter=isSidebarPinned) _Bool sidebarPinned;
 @property(readonly, nonatomic, getter=isShowingSidebar) _Bool showingSidebar;
-@property(readonly, nonatomic, getter=isShowingTodayOverlay) _Bool showingTodayOverlay;
 - (void)completeSidebarAnimationsIfNeeded;
+- (void)dismissHomeScreenOverlayUsingTransitionCoordinator:(id)arg1;
+- (void)dismissHomeScreenOverlayAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dismissHomeScreenOverlayAnimated:(_Bool)arg1;
+- (void)dismissTodayOverlaySpotlightAnimated:(_Bool)arg1;
+@property(readonly, nonatomic, getter=isTodayOverlaySpotlightVisible) _Bool todayOverlaySpotlightVisible;
+- (void)dismissLibraryOverlay;
 - (void)dismissTodayOverlay;
+- (void)dismissHomeScreenOverlay;
 @property(readonly, nonatomic) SBHIconImageCache *notificationIconImageCache;
 @property(readonly, nonatomic) SBHIconImageCache *tableUIIconImageCache;
 @property(readonly, nonatomic) SBHIconImageCache *appSwitcherHeaderIconImageCache;
 @property(readonly, nonatomic) SBHIconImageCache *appSwitcherUnmaskedIconImageCache;
+- (_Bool)unforbidApplicationBundleIdentifierFromLibrary:(id)arg1;
+- (_Bool)forbidApplicationBundleIdentifierFromLibrary:(id)arg1;
+- (_Bool)resetCategories;
 - (_Bool)resetHomeScreenLayout;
+- (void)_mainSwitcherCreated:(id)arg1;
 - (double)minimumHomeScreenScale;
 - (_Bool)allowsBadgingForIcon:(id)arg1;
 - (id)launchActivationSettingsForIconView:(id)arg1;
 - (id)containerViewForPresentingContextMenuForIconView:(id)arg1;
+- (id)_containerViewControllerForPresentingFromTodayViewController;
 - (id)launchURLForIconView:(id)arg1;
 - (id)launchActionsForIconView:(id)arg1;
 @property(readonly, nonatomic) id <SBIconAnimationContaining> currentAnimationContainer;
@@ -329,14 +516,16 @@
 - (id)_policyAggregator;
 - (void)_lockScreenUIWillLock:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *visibleIconStateDisplayIdentifiers;
-- (_Bool)_shouldRespondToIconCloseBoxes;
-- (void)_updateVisibleIconsViewsForAllowableCloseBoxes;
-@property(readonly, nonatomic) _Bool iconsShouldAllowCloseBoxes;
 - (void)noteViewUncovered;
 - (void)noteViewCovered;
 - (void)noteTransientOverlayPresented;
-- (void)_launchFromIconView:(id)arg1;
+- (void)_launchWidgetIcon:(id)arg1 fromLocation:(id)arg2 withContext:(id)arg3;
+- (void)_launchFromIconView:(id)arg1 withActions:(id)arg2;
 - (void)updateNumberOfRowsWithDuration:(double)arg1;
+- (_Bool)isHideSuggestionSupportedForIconView:(id)arg1 inLocation:(id)arg2;
+- (_Bool)isOnlyHideSuggestionSupportedForIcon:(id)arg1 inLocation:(id)arg2;
+- (_Bool)isUninstallOrHideSupportedForIcon:(id)arg1 inLocation:(id)arg2;
+- (_Bool)isHideSupportedForIcon:(id)arg1 inLocation:(id)arg2;
 - (_Bool)isUninstallSupportedForIcon:(id)arg1;
 - (_Bool)allowsUninstall;
 - (void)_enqueueTransitionName:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -360,9 +549,13 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)_performInitialLayoutWithOrientation:(long long)arg1;
 - (void)updateContentViewOrientationAndLayoutIfNeeded;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)_endAppearanceTransitionForChildViewControllersToVisible:(_Bool)arg1;
+- (void)_beginAppearanceTransitionForChildViewControllersToVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewWillLayoutSubviews;
 @property(readonly, nonatomic) SBIconContentView *contentView;
 - (void)loadView;
@@ -383,7 +576,7 @@
 - (void)_runFolderCloseTest;
 - (void)_runFolderOpenTest;
 - (void)_runTest:(CDUnknownBlockType)arg1 afterMovingIconsIntoFolder:(id)arg2 withFolderOpen:(_Bool)arg3;
-- (void)_ppt_restoreHomescreenState:(id)arg1;
+- (void)_ppt_setHomescreenState:(id)arg1;
 - (id)_ppt_currentHomescreenState;
 - (id)_createTestFolderWithOverrideIconList:(id)arg1;
 - (id)_createTestFolder;

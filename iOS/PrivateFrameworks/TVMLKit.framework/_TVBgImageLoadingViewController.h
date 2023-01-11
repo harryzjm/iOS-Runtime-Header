@@ -30,13 +30,14 @@
 }
 
 + (id)_decorateImage:(id)arg1 decorator:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool appliedNavigationItem; // @synthesize appliedNavigationItem=_appliedNavigationItem;
 @property(retain, nonatomic) IKViewElement *navigationItemElement; // @synthesize navigationItemElement=_navigationItemElement;
-- (void).cxx_destruct;
 - (id)_stackViewWithMinSpacing:(double)arg1 layoutMargin:(struct UIEdgeInsets)arg2;
 - (void)_updateNavigationItem;
 - (void)_updateNavigationBarPadding;
 - (void)_reparentNavigationItem:(id)arg1;
+- (_Bool)_isNewiOSTVApp;
 - (long long)_overrideLargeTitleDisplayMode;
 - (void)_dismissViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;

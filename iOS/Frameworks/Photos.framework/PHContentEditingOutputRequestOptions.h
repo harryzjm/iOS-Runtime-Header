@@ -10,9 +10,11 @@
 {
     _Bool _asyncAdjustment;
     _Bool _onlyChangingOriginalChoice;
+    _Bool _preferHEICForRenderedImages;
     long long _playbackStyle;
 }
 
+@property(nonatomic) _Bool preferHEICForRenderedImages; // @synthesize preferHEICForRenderedImages=_preferHEICForRenderedImages;
 @property(nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property(nonatomic, getter=isOnlyChangingOriginalChoice) _Bool onlyChangingOriginalChoice; // @synthesize onlyChangingOriginalChoice=_onlyChangingOriginalChoice;
 @property(nonatomic, getter=isAsyncAdjustment) _Bool asyncAdjustment; // @synthesize asyncAdjustment=_asyncAdjustment;

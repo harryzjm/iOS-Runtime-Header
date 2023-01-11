@@ -6,20 +6,16 @@
 
 #import <ChatKit/CKDetailsCell-Protocol.h>
 
-@class NSString, UILabel;
+@class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDetailsSIMCell <CKDetailsCell>
 {
-    UILabel *_simTitleLabel;
 }
 
 + (double)preferredHeight;
 + (_Bool)shouldHighlight;
 + (id)reuseIdentifier;
-@property(retain, nonatomic) UILabel *simTitleLabel; // @synthesize simTitleLabel=_simTitleLabel;
-- (void).cxx_destruct;
-- (void)initConstraints;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

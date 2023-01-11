@@ -14,15 +14,15 @@
     NSMutableArray *_requests;
     NSMutableArray *_completions;
     _Bool _didStartTransaction;
+    CDUnknownBlockType _sessionCompletion;
     NSString *_bundleIdentifier;
     NSUUID *_sessionIdentifier;
-    CDUnknownBlockType _sessionCompletion;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType sessionCompletion; // @synthesize sessionCompletion=_sessionCompletion;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType sessionCompletion; // @synthesize sessionCompletion=_sessionCompletion;
 - (id)sessionDescriptor;
 - (void)endPromptTransactionWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)beginPromptTransactionWithCompletion:(CDUnknownBlockType)arg1;

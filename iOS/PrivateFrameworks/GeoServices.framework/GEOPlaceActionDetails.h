@@ -13,7 +13,6 @@
 @interface GEOPlaceActionDetails : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_actionUrl;
     unsigned long long _animationID;
     unsigned long long _businessID;
@@ -24,6 +23,9 @@
     double _searchResponseRelativeTimestamp;
     unsigned long long _targetID;
     GEOTransitPlaceCard *_transitPlaceCard;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _localSearchProviderID;
     int _resultIndex;
     struct {
@@ -39,18 +41,7 @@
         unsigned int read_photoId:1;
         unsigned int read_richProviderId:1;
         unsigned int read_transitPlaceCard:1;
-        unsigned int wrote_actionUrl:1;
-        unsigned int wrote_animationID:1;
-        unsigned int wrote_businessID:1;
-        unsigned int wrote_destinationApp:1;
-        unsigned int wrote_photoId:1;
-        unsigned int wrote_placeID:1;
-        unsigned int wrote_richProviderId:1;
-        unsigned int wrote_searchResponseRelativeTimestamp:1;
-        unsigned int wrote_targetID:1;
-        unsigned int wrote_transitPlaceCard:1;
-        unsigned int wrote_localSearchProviderID:1;
-        unsigned int wrote_resultIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -71,23 +62,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *destinationApp;
 @property(readonly, nonatomic) _Bool hasDestinationApp;
-- (void)_readDestinationApp;
 @property(retain, nonatomic) NSString *richProviderId;
 @property(readonly, nonatomic) _Bool hasRichProviderId;
-- (void)_readRichProviderId;
 @property(retain, nonatomic) GEOTransitPlaceCard *transitPlaceCard;
 @property(readonly, nonatomic) _Bool hasTransitPlaceCard;
-- (void)_readTransitPlaceCard;
 @property(retain, nonatomic) NSString *actionUrl;
 @property(readonly, nonatomic) _Bool hasActionUrl;
-- (void)_readActionUrl;
 @property(retain, nonatomic) NSString *photoId;
 @property(readonly, nonatomic) _Bool hasPhotoId;
-- (void)_readPhotoId;
 @property(nonatomic) _Bool hasTargetID;
 @property(nonatomic) unsigned long long targetID;
 @property(nonatomic) _Bool hasAnimationID;
@@ -102,6 +91,8 @@
 @property(nonatomic) long long placeID;
 @property(nonatomic) _Bool hasBusinessID;
 @property(nonatomic) unsigned long long businessID;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithMapItem:(id)arg1 childPlace:(id)arg2 relativeTimestamp:(double)arg3 resultIndex:(int)arg4 targetID:(unsigned long long)arg5 transitCardCategory:(int)arg6 transitSystem:(id)arg7 transitDepartureSequence:(id)arg8 transitIncident:(id)arg9;
 - (id)initWithMapItem:(id)arg1 relativeTimestamp:(double)arg2 resultIndex:(int)arg3 targetID:(unsigned long long)arg4;
 - (id)initWithMapItem:(id)arg1 relativeTimestamp:(double)arg2 resultIndex:(int)arg3;

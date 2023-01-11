@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOIndexQueryNode : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_field;
     NSMutableArray *_operands;
     NSString *_value;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _type;
-    CDStruct_24aeab2f _flags;
+    CDStruct_dc56225f _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -36,24 +38,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)operandsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)operandsCount;
-- (void)_addNoFlagsOperands:(id)arg1;
 - (void)addOperands:(id)arg1;
 - (void)clearOperands;
 @property(retain, nonatomic) NSMutableArray *operands;
-- (void)_readOperands;
 @property(retain, nonatomic) NSString *value;
 @property(readonly, nonatomic) _Bool hasValue;
-- (void)_readValue;
 @property(retain, nonatomic) NSString *field;
 @property(readonly, nonatomic) _Bool hasField;
-- (void)_readField;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) int type;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

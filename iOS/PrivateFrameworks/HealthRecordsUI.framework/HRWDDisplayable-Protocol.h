@@ -6,15 +6,15 @@
 
 #import <HealthRecordsUI/NSObject-Protocol.h>
 
-@class HKConceptStore, HKHealthRecordsStore, HKInspectableValueCollection, NSArray, NSDate, NSString;
+@class HKConceptStore, HKHealthRecordsStore, NSArray, NSDate, NSString;
 
 @protocol HRWDDisplayable <NSObject>
+@property(readonly, nonatomic) _Bool isRemovedFromRemote;
 @property(readonly, nonatomic) NSArray *conceptNameItems;
 @property(readonly, nonatomic) NSString *titleDisplayStringForDetailViewController;
 @property(readonly, nonatomic) long long recordCategoryType;
 @property(readonly, nonatomic) _Bool isDateLess;
 @property(readonly, nonatomic) _Bool isDisplayable;
-@property(readonly, nonatomic) HKInspectableValueCollection *chartValue;
 @property(readonly, nonatomic) NSDate *meaningfulDate;
 @property(readonly, nonatomic) NSString *meaningfulDateString;
 @property(readonly, nonatomic) NSString *meaningfulDateTitle;

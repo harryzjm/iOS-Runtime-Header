@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKColoringLabel, NTKRichComplicationImageView;
+@class NTKRichComplicationImageView;
 
 @interface NTKRichComplicationRectangularLargeImageView
 {
     NTKRichComplicationImageView *_imageView;
-    NTKColoringLabel *_headerLabel;
 }
 
 + (_Bool)supportsComplicationFamily:(long long)arg1;
@@ -17,11 +16,12 @@
 - (void).cxx_destruct;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_editingDidEnd;
+- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
+- (id)headerTextProviderFromTemplate:(id)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)setPaused:(_Bool)arg1;
-- (void)layoutSubviews;
-- (id)init;
+- (id)body;
 
 @end
 

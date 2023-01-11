@@ -12,8 +12,8 @@
 }
 
 + (id)copyTypeDescription;
-@property(retain) NSData *vendorData; // @synthesize vendorData=_vendorData;
 - (void).cxx_destruct;
+@property(retain) NSData *vendorData; // @synthesize vendorData=_vendorData;
 - (_Bool)parsePayloadData;
 - (_Bool)generatePayloadData;
 - (_Bool)hasRequiredFields;

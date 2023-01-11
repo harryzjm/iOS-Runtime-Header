@@ -7,7 +7,7 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCHeadlineTemplate, FCTagBanner, FCTextInfo, NSArray, NSString;
+@class FCAssetHandle, FCColor, FCContentColorMap, FCHeadlineTemplate, FCTagBanner, FCTextInfo, NSArray, NSString;
 
 @protocol FCFeedTheming <NSObject, NFCopying>
 @property(readonly, nonatomic) _Bool allowCustomBottomStyle;
@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) FCAssetHandle *nameImageCompactAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *nameImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *logoImageAssetHandle;
+@property(readonly, nonatomic) FCContentColorMap *contentColorMap;
 @property(readonly, nonatomic) FCColor *darkStyleForegroundColor;
 @property(readonly, nonatomic) FCColor *foregroundColor;
 @property(readonly, nonatomic) FCColor *darkStyleBackgroundColor;

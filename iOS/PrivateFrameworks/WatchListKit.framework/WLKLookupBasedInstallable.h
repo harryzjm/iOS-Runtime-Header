@@ -8,15 +8,15 @@
 
 #import <WatchListKit/WLKInstallable-Protocol.h>
 
-@class NSArray, NSString, NSURL, SSLookupItem;
+@class AMSLookupItem, NSArray, NSString, NSURL;
 
 @interface WLKLookupBasedInstallable : NSObject <WLKInstallable>
 {
-    SSLookupItem *_item;
+    AMSLookupItem *_item;
 }
 
-@property(readonly, nonatomic) SSLookupItem *item; // @synthesize item=_item;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AMSLookupItem *item; // @synthesize item=_item;
 @property(readonly, copy, nonatomic) NSURL *appStoreURL;
 - (id)appIconURLForSize:(struct CGSize)arg1;
 @property(readonly, copy, nonatomic) NSArray *appAdamIDs;

@@ -14,14 +14,17 @@
 {
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_sourceChannelCohorts;
+    NSMutableArray *_topicCohortScores;
     NSMutableArray *_topicCohorts;
 }
 
++ (Class)topicCohortScoresType;
 + (Class)topicCohortsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *topicCohortScores; // @synthesize topicCohortScores=_topicCohortScores;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *sourceChannelCohorts; // @synthesize sourceChannelCohorts=_sourceChannelCohorts;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts; // @synthesize globalCohorts=_globalCohorts;
 @property(retain, nonatomic) NSMutableArray *topicCohorts; // @synthesize topicCohorts=_topicCohorts;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -31,6 +34,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)topicCohortScoresAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicCohortScoresCount;
+- (void)addTopicCohortScores:(id)arg1;
+- (void)clearTopicCohortScores;
 @property(readonly, nonatomic) _Bool hasSourceChannelCohorts;
 @property(readonly, nonatomic) _Bool hasGlobalCohorts;
 - (id)topicCohortsAtIndex:(unsigned long long)arg1;

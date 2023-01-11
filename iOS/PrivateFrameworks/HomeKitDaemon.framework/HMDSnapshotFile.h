@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMFOSTransaction, NSDate, NSNumber, NSString;
+@class HMFOSTransaction, NSData, NSDate, NSNumber, NSString;
 
 @interface HMDSnapshotFile : HMFObject <HMFLogging>
 {
@@ -22,22 +22,23 @@
 }
 
 + (id)logCategory;
-@property(retain, nonatomic) HMFOSTransaction *snapshotCATransaction; // @synthesize snapshotCATransaction=_snapshotCATransaction;
-@property(readonly, nonatomic) _Bool externalFilePath; // @synthesize externalFilePath=_externalFilePath;
-@property(readonly, nonatomic) NSNumber *aspectRatio; // @synthesize aspectRatio=_aspectRatio;
-@property(retain, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
-@property(readonly, nonatomic) NSDate *snapshotTimestamp; // @synthesize snapshotTimestamp=_snapshotTimestamp;
-@property(readonly, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
-@property(readonly, nonatomic) NSString *directory; // @synthesize directory=_directory;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HMFOSTransaction *snapshotCATransaction; // @synthesize snapshotCATransaction=_snapshotCATransaction;
+@property(readonly) _Bool externalFilePath; // @synthesize externalFilePath=_externalFilePath;
+@property(readonly) NSNumber *aspectRatio; // @synthesize aspectRatio=_aspectRatio;
+@property(retain, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
+@property(readonly) NSDate *snapshotTimestamp; // @synthesize snapshotTimestamp=_snapshotTimestamp;
+@property(readonly) NSString *filePath; // @synthesize filePath=_filePath;
+@property(readonly) NSString *directory; // @synthesize directory=_directory;
+- (_Bool)decodeIDSDataReceived:(id)arg1 snapshotDataTransaction:(id)arg2;
+@property(readonly) NSData *encodedDataForIDSSend;
 - (_Bool)prepareParametersWithFilePath:(id)arg1 snapshotData:(id)arg2 directory:(id)arg3 snapshotTimestamp:(id)arg4 resize:(_Bool)arg5 writeBack:(_Bool)arg6;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, copy) NSString *description;
+- (id)attributeDescriptions;
 - (void)updateSlotIdentifier;
 - (void)dealloc;
 - (id)copyFileAtPath:(id)arg1 snapshotTimestamp:(id)arg2;
-- (id)setFileData:(id)arg1 snapshotTimestamp:(id)arg2;
 - (id)logIdentifier;
 - (id)initWithImageDirectory:(id)arg1 externalFilePath:(id)arg2 snapshotTimestamp:(id)arg3;
 - (id)initWithImageDirectory:(id)arg1 filePath:(id)arg2 snapshotTimestamp:(id)arg3;
@@ -46,6 +47,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

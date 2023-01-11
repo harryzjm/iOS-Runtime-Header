@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileTimer/MTBedtimeSession-Protocol.h>
+#import <MobileTimer/MTSleepSession-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSString;
 
-@interface MTTimeInBedSession : NSObject <MTBedtimeSession>
+@interface MTTimeInBedSession : NSObject <MTSleepSession>
 {
     _Bool _needsAdditionalProcessing;
     NSDate *_startDate;
@@ -22,13 +22,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)timeInBedSessionWithStartDate:(id)arg1 endDate:(id)arg2 intervals:(id)arg3 endReason:(unsigned long long)arg4 metadata:(id)arg5;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(nonatomic) unsigned long long endReason; // @synthesize endReason=_endReason;
 @property(retain, nonatomic) NSArray *intervals; // @synthesize intervals=_intervals;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(nonatomic) _Bool needsAdditionalProcessing; // @synthesize needsAdditionalProcessing=_needsAdditionalProcessing;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -19,6 +19,8 @@
     NSMutableSet *_calendars;
     NSMutableArray *_duplicateCalendars;
     CalDAVServerVersion *_serverVersion;
+    NSString *_usernameForDiscovery;
+    NSString *_hostForDiscovery;
     _Bool _needsAccountPropertyRefresh;
     _Bool _isRefreshing;
     _Bool _searchQueriesShouldCancel;
@@ -37,6 +39,7 @@
     DACoreDAVLogger *_coreDAVLogger;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool subscribedCalendarsChanged; // @synthesize subscribedCalendarsChanged=_subscribedCalendarsChanged;
 @property(retain, nonatomic) DACoreDAVLogger *coreDAVLogger; // @synthesize coreDAVLogger=_coreDAVLogger;
 @property(retain, nonatomic) NSMutableSet *searchTaskSet; // @synthesize searchTaskSet=_searchTaskSet;
@@ -56,7 +59,6 @@
 @property(retain, nonatomic) NSMutableSet *mMovedItemURLStrings; // @synthesize mMovedItemURLStrings=_movedItemURLStrings;
 @property(retain, nonatomic) NSMutableDictionary *mItemIDsToMoveActions; // @synthesize mItemIDsToMoveActions=_itemIDsToMoveActions;
 @property(retain, nonatomic) NSMutableDictionary *mPrincipals; // @synthesize mPrincipals=_principals;
-- (void).cxx_destruct;
 - (_Bool)addressIsAccountOwner:(id)arg1;
 - (void)coreDAVTransmittedDataFinished;
 - (void)coreDAVLogTransmittedDataPartial:(id)arg1;
@@ -67,7 +69,8 @@
 - (id)onBehalfOfBundleIdentifier;
 - (id)localizedInvalidPasswordMessage;
 - (id)localizedIdenticalAccountFailureMessage;
-- (_Bool)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
+- (void)calendarsDataclassModified;
+- (_Bool)accountHasSignificantPropertyChangesWithChangeInfo:(id)arg1;
 - (_Bool)isEqualToAccount:(id)arg1;
 - (void)setIsDelegateAccount:(_Bool)arg1;
 - (_Bool)isDelegateAccount;
@@ -78,7 +81,9 @@
 - (void)retainPowerAssertion;
 - (id)_powerAssertionGroupIdentifier;
 - (id)_powerAssertionContext;
+- (void)performDiscoveryWithHostname:(id)arg1 username:(id)arg2 consumer:(id)arg3;
 - (void)discoverInitialPropertiesWithConsumer:(id)arg1;
+- (_Bool)retryDiscoveryTask:(id)arg1;
 @property(readonly, nonatomic) NSArray *wellKnownPaths;
 - (void)discoveryTask:(id)arg1 gotAccountInfo:(id)arg2 error:(id)arg3;
 - (_Bool)_reallySearchQueriesRunning;
@@ -109,8 +114,9 @@
 - (id)accountDescription;
 @property(copy, nonatomic) NSString *calendarHomeSyncToken;
 - (void *)copyCalStore;
-- (id)_calendarConstraintsPath;
-- (id)_calendarConstraintsResource;
+- (id)_calendarConstraintsName;
+- (id)username;
+- (id)host;
 @property(readonly, nonatomic) _Bool shouldUseCalendarHomeSyncReport;
 @property(readonly, nonatomic) DACoreDAVTaskManager *taskManager;
 @property(readonly, nonatomic) _Bool supportsEvents;
@@ -145,6 +151,7 @@
 - (void)setDelegatePrincipalPath:(id)arg1;
 - (id)delegatePrincipalPath;
 - (void)_setParentAccount:(id)arg1;
+- (id)preferredAddress;
 - (id)emailAddresses;
 @property(readonly, nonatomic) NSDictionary *itemIDsToMoveActions;
 @property(readonly, nonatomic) NSSet *movedItemURLStrings;

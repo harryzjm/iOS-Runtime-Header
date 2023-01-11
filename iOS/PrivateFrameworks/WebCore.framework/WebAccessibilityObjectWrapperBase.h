@@ -9,33 +9,35 @@
 __attribute__((visibility("hidden")))
 @interface WebAccessibilityObjectWrapperBase : NSObject
 {
-    struct AccessibilityObject *m_object;
-    unsigned int _identifier;
+    struct AXCoreObject *m_axObject;
+    unsigned long long _identifier;
 }
 
 + (void)accessibilitySetShouldRepostNotifications:(_Bool)arg1;
-@property(nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 - (void)accessibilityPostedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)accessibilityPostedNotification:(id)arg1;
+- (id)baseAccessibilityResolvedEditingStyles;
 - (id)accessibilityMathPrescriptPairs;
 - (id)accessibilityMathPostscriptPairs;
 - (id)accessibilityPlatformMathSuperscriptKey;
 - (id)accessibilityPlatformMathSubscriptKey;
 - (void)baseAccessibilitySetFocus:(_Bool)arg1;
 - (id)ariaLandmarkRoleDescription;
-- (struct CGRect)convertRectToSpace:(struct FloatRect *)arg1 space:(int)arg2;
+- (struct CGRect)convertRectToSpace:(const struct FloatRect *)arg1 space:(int)arg2;
 - (id)_accessibilityWebDocumentView;
-- (struct CGPath *)convertPathToScreenSpace:(struct Path *)arg1;
+- (struct CGPath *)convertPathToScreenSpace:(const struct Path *)arg1;
 - (id)baseAccessibilityHelpText;
 - (id)baseAccessibilitySpeechHint;
 - (id)baseAccessibilityDescription;
-- (struct AccessibilityObjectInterface *)axBackingObject;
+- (struct AXCoreObject *)axBackingObject;
 - (id)baseAccessibilityTitle;
-- (struct AccessibilityObject *)accessibilityObject;
 - (id)attachmentView;
-- (_Bool)updateObjectBackingStore;
+- (struct AXCoreObject *)updateObjectBackingStore;
 - (void)detach;
-- (id)initWithAccessibilityObject:(struct AccessibilityObject *)arg1;
+- (void)detachAXObject;
+- (void)attachAXObject:(struct AXCoreObject *)arg1;
+- (id)initWithAccessibilityObject:(struct AXCoreObject *)arg1;
 
 @end
 

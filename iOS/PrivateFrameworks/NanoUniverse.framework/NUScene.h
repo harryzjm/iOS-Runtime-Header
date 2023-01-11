@@ -32,6 +32,7 @@
     MISSING_TYPE *_up;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) float yearsSince1970; // @synthesize yearsSince1970=_yearsSince1970;
 @property(copy, nonatomic) CDUnknownBlockType currentDateBlock; // @synthesize currentDateBlock=_currentDateBlock;
 @property(nonatomic) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
@@ -44,9 +45,8 @@
 @property(readonly, nonatomic) MISSING_TYPE *up; // @synthesize up=_up;
 @property(readonly, nonatomic) MISSING_TYPE *target; // @synthesize target=_target;
 @property(readonly, nonatomic) MISSING_TYPE *position; // @synthesize position=_position;
-@property(readonly, nonatomic) NSArray *spheroids; // @synthesize spheroids=_spheroids;
+@property(readonly, copy, nonatomic) NSArray *spheroids; // @synthesize spheroids=_spheroids;
 @property(nonatomic, getter=isUpdatable) _Bool updatable; // @synthesize updatable=_isUpdatable;
-- (void).cxx_destruct;
 - (void)setCamera:(float)arg1 target:up:roll: /* Error: Ran out of types for this method. */;
 - (void)updateFromDateIfNeeded;
 - (id)spheroidOfType:(unsigned long long)arg1;

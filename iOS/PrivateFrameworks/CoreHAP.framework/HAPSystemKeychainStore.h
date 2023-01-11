@@ -20,9 +20,9 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)systemStore;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *activeControllerIdentifier; // @synthesize activeControllerIdentifier=_activeControllerIdentifier;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (int)_deleteAllPeripheralIdentifiers;
 - (_Bool)deleteAllPeripheralIdentifiers:(id *)arg1;
 - (id)getPeripherialIdentifiersAndAccessoryNames;
@@ -37,8 +37,8 @@
 - (int)_addKeychainItem:(id)arg1 logDuplicateItemError:(_Bool)arg2;
 - (id)_getKeychainItemsForAccessGroup:(id)arg1 type:(id)arg2 account:(id)arg3 shouldReturnData:(_Bool)arg4 error:(int *)arg5;
 - (void)_updateKeychainItemToInvisible:(id)arg1;
-- (id)_auditAccessoryKeys:(id)arg1;
-- (id)auditAccessoryKeys:(id)arg1;
+- (id)_auditKeychainItems:(id)arg1 managedAccessories:(id)arg2;
+- (id)auditKeysOfManagedAccessories:(id)arg1;
 - (int)_removeAccessoryKeyForName:(id)arg1;
 - (_Bool)removeAllAccessoryKeys:(id *)arg1;
 - (_Bool)removeAccessoryKeyForName:(id)arg1 error:(id *)arg2;

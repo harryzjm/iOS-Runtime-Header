@@ -13,7 +13,7 @@
     struct Region_params *_gpuRegions;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) const struct MPSRegion *regions; // @synthesize regions=_regions;
 @property(readonly, nonatomic) unsigned long long numberOfRegions; // @synthesize numberOfRegions=_numberOfRegions;
 @property(readonly, nonatomic) unsigned long long resizeHeight; // @synthesize resizeHeight=_resizeHeight;

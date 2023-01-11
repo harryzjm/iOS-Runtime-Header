@@ -15,6 +15,8 @@
 + (id)sharedGestalt;
 - (id)answerForQuestion:(struct __CFString *)arg1;
 - (id)answerForQuestion:(struct __CFString *)arg1 ofClass:(Class)arg2;
+@property(readonly, copy, nonatomic) NSString *productVersion;
+@property(readonly, copy, nonatomic) NSString *buildVersion;
 @property(readonly, nonatomic) unsigned long long availableBytes;
 @property(readonly, nonatomic) struct CGSize mainScreenSizeInPixels;
 @property(readonly, nonatomic) double mainScreenScale;

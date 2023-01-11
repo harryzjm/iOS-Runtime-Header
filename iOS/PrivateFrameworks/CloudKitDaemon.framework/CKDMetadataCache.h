@@ -16,8 +16,11 @@
 
 + (id)dbFileName;
 + (id)sharedCache;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
+- (void)willCreateDatabase;
+- (id)cachedDSIDForAccountID:(id)arg1;
+- (void)setCachedDSID:(id)arg1 forAccountID:(id)arg2;
 - (void)removeContainerID:(id)arg1;
 - (void)setContainerInfo:(id)arg1 forContainerID:(id)arg2 accountID:(id)arg3;
 - (id)containerInfoForContainerID:(id)arg1 accountID:(id)arg2;
@@ -26,12 +29,12 @@
 - (id)publicKeyOfType:(id)arg1 withIdentifier:(id)arg2;
 - (void)setGlobalConfiguration:(id)arg1;
 - (id)globalConfiguration;
-- (void)removeKnownApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2;
+- (void)removeKnownApplicationID:(id)arg1;
 - (id)knownContainerizedApplicationBundleIDs;
 - (id)knownApplicationBundleIDs;
-- (void)setApplicationMetadata:(id)arg1 forApplicationBundleID:(id)arg2 sourceApplicationBundleID:(id)arg3;
-- (id)applicationMetadataForApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2;
-- (id)inlock_applicationMetadataForApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2;
+- (void)setApplicationMetadata:(id)arg1 forApplicationID:(id)arg2;
+- (id)applicationMetadataForApplicationID:(id)arg1;
+- (id)inlock_applicationMetadataForApplicationID:(id)arg1;
 - (void)setDateOfLastTokenUpdate:(id)arg1;
 - (void)inlock_setDateOfLastTokenUpdate:(id)arg1;
 - (id)dateOfLastTokenUpdate;
@@ -42,7 +45,10 @@
 - (void)setPushToken:(id)arg1 forAppContainerAccountTuple:(id)arg2;
 - (id)pushTokenForAppContainerAccountTuple:(id)arg1 filterOldTokens:(_Bool)arg2;
 - (void)expungeStaleAccountIDs;
-- (void)expungeWithDeletedAccountID:(id)arg1 forceRemove:(_Bool)arg2;
+- (void)expungeDataForAccountID:(id)arg1;
+- (void)inlock_expungeDataForAccountID:(id)arg1;
+- (void)expungeOldData;
+- (void)expungeAllData;
 - (id)_initWithCacheDir:(id)arg1;
 
 @end

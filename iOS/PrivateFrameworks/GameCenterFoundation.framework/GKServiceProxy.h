@@ -11,16 +11,17 @@
 
 @interface GKServiceProxy : NSObject
 {
-    NSDictionary *_serviceLookup;
-    GKThreadsafeDictionary *_pendingRequests;
     unsigned int _serviceGeneration;
+    GKThreadsafeDictionary *_pendingRequests;
     GKDaemonProxy *_baseProxy;
     GKPlayerInternal *_localPlayer;
+    NSDictionary *_serviceLookup;
 }
 
-@property(retain) GKPlayerInternal *localPlayer; // @synthesize localPlayer=_localPlayer;
-@property(retain) GKDaemonProxy *baseProxy; // @synthesize baseProxy=_baseProxy;
+- (void).cxx_destruct;
 @property(retain) NSDictionary *serviceLookup; // @synthesize serviceLookup=_serviceLookup;
+@property __weak GKPlayerInternal *localPlayer; // @synthesize localPlayer=_localPlayer;
+@property(retain) GKDaemonProxy *baseProxy; // @synthesize baseProxy=_baseProxy;
 @property unsigned int serviceGeneration; // @synthesize serviceGeneration=_serviceGeneration;
 @property(retain) GKThreadsafeDictionary *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 - (void)buildServiceLookup;
@@ -57,7 +58,6 @@
 @property(readonly) id <GKProfileService> profileService;
 @property(readonly) id <GKAccountServicePrivate> accountServicePrivate;
 @property(readonly) id <GKAccountService> accountService;
-- (void)dealloc;
 - (id)initWithPlayer:(id)arg1;
 
 @end

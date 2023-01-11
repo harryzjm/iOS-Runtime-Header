@@ -8,5 +8,7 @@
 {
 }
 
+- (id)description;
+
 @end
 

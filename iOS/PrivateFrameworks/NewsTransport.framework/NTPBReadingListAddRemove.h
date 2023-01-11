@@ -53,6 +53,7 @@
     NSString *_surfacedBySectionId;
     NSString *_surfacedByTopicId;
     int _topStoryType;
+    NSMutableArray *_topicIds;
     int _userAction;
     _Bool _fromNextArticleAffordanceTap;
     _Bool _isBreakingNewsArticle;
@@ -97,8 +98,11 @@
     } _has;
 }
 
++ (Class)topicIdsType;
 + (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
 @property(retain, nonatomic) NTPBChannelData *channelData; // @synthesize channelData=_channelData;
 @property(retain, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
 @property(retain, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
@@ -145,7 +149,6 @@
 @property(nonatomic) _Bool isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property(retain, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property(retain, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -154,6 +157,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
+- (void)addTopicIds:(id)arg1;
+- (void)clearTopicIds;
 @property(readonly, nonatomic) _Bool hasChannelData;
 - (int)StringAsContentType:(id)arg1;
 - (id)contentTypeAsString:(int)arg1;

@@ -17,13 +17,13 @@
     PKCurrencyAmount *_amount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showsPositivePrefix; // @synthesize showsPositivePrefix=_showsPositivePrefix;
 @property(copy, nonatomic) PKCurrencyAmount *amount; // @synthesize amount=_amount;
 @property(copy, nonatomic) NSString *detailString; // @synthesize detailString=_detailString;
 @property(copy, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
-- (_Bool)_shouldUseStackedLayout;
+- (_Bool)_shouldUseStackedLayoutWithBounds:(struct CGRect)arg1;
 - (void)_updateCurrencyLabel;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)resetFonts;

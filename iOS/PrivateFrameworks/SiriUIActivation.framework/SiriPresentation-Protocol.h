@@ -10,8 +10,9 @@
 @protocol SiriPresentationControllerDelegate;
 
 @protocol SiriPresentation <BSInvalidatable>
-@property(retain, nonatomic) id <SiriPresentationControllerDelegate> siriPresentationControllerDelegate;
+@property(nonatomic) __weak id <SiriPresentationControllerDelegate> siriPresentationControllerDelegate;
 @property(readonly, nonatomic) long long identifier;
+- (void)invalidate;
 - (void)dismissWithOptions:(SiriDismissalOptions *)arg1;
 - (void)dismiss;
 - (_Bool)isEnabled;

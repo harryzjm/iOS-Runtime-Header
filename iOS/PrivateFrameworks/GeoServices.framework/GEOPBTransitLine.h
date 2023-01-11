@@ -14,7 +14,6 @@
 @interface GEOPBTransitLine : PBCodable <GEOTransitNamedItem, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOPBTransitTimeRange *_operatingHours;
     unsigned long long _operatingHoursCount;
@@ -27,6 +26,9 @@
     unsigned long long _muid;
     NSString *_nameDisplayString;
     GEOStyleAttributes *_styleAttributes;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _guidanceSnappingType;
     unsigned int _lineIndex;
     int _placeDisplayStyle;
@@ -50,22 +52,7 @@
         unsigned int read_modeArtwork:1;
         unsigned int read_nameDisplayString:1;
         unsigned int read_styleAttributes:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_operatingHours:1;
-        unsigned int wrote_alternateArtwork:1;
-        unsigned int wrote_artwork:1;
-        unsigned int wrote_displayHints:1;
-        unsigned int wrote_lineColor:1;
-        unsigned int wrote_modeArtwork:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_nameDisplayString:1;
-        unsigned int wrote_styleAttributes:1;
-        unsigned int wrote_guidanceSnappingType:1;
-        unsigned int wrote_lineIndex:1;
-        unsigned int wrote_placeDisplayStyle:1;
-        unsigned int wrote_preferredDepartureTimeStyle:1;
-        unsigned int wrote_systemIndex:1;
-        unsigned int wrote_transitType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -81,6 +68,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 - (int)StringAsPlaceDisplayStyle:(id)arg1;
@@ -89,21 +79,16 @@
 @property(nonatomic) int placeDisplayStyle;
 @property(retain, nonatomic) NSString *nameDisplayString;
 @property(readonly, nonatomic) _Bool hasNameDisplayString;
-- (void)_readNameDisplayString;
 @property(retain, nonatomic) GEOPBTransitLineDisplayHints *displayHints;
 @property(readonly, nonatomic) _Bool hasDisplayHints;
-- (void)_readDisplayHints;
 - (void)setOperatingHours:(struct GEOPBTransitTimeRange *)arg1 count:(unsigned long long)arg2;
 - (struct GEOPBTransitTimeRange)operatingHoursAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsOperatingHours:(struct GEOPBTransitTimeRange)arg1;
 - (void)addOperatingHours:(struct GEOPBTransitTimeRange)arg1;
 - (void)clearOperatingHours;
 @property(readonly, nonatomic) struct GEOPBTransitTimeRange *operatingHours;
 @property(readonly, nonatomic) unsigned long long operatingHoursCount;
-- (void)_readOperatingHours;
 @property(retain, nonatomic) GEOStyleAttributes *styleAttributes;
 @property(readonly, nonatomic) _Bool hasStyleAttributes;
-- (void)_readStyleAttributes;
 - (int)StringAsPreferredDepartureTimeStyle:(id)arg1;
 - (id)preferredDepartureTimeStyleAsString:(int)arg1;
 @property(nonatomic) _Bool hasPreferredDepartureTimeStyle;
@@ -114,7 +99,6 @@
 @property(nonatomic) unsigned int systemIndex;
 @property(retain, nonatomic) NSString *lineColor;
 @property(readonly, nonatomic) _Bool hasLineColor;
-- (void)_readLineColor;
 - (int)StringAsGuidanceSnappingType:(id)arg1;
 - (id)guidanceSnappingTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasGuidanceSnappingType;
@@ -123,16 +107,15 @@
 @property(nonatomic) unsigned long long muid;
 @property(retain, nonatomic) GEOPBTransitArtwork *alternateArtwork;
 @property(readonly, nonatomic) _Bool hasAlternateArtwork;
-- (void)_readAlternateArtwork;
 @property(retain, nonatomic) GEOPBTransitArtwork *modeArtwork;
 @property(readonly, nonatomic) _Bool hasModeArtwork;
-- (void)_readModeArtwork;
 @property(retain, nonatomic) GEOPBTransitArtwork *artwork;
 @property(readonly, nonatomic) _Bool hasArtwork;
-- (void)_readArtwork;
 @property(nonatomic) _Bool hasLineIndex;
 @property(nonatomic) unsigned int lineIndex;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)identifierWithLocationHint:(CDStruct_c3b9c2ee)arg1;
 - (id)geoTransitLineWithSystem:(id)arg1 locationHint:(CDStruct_c3b9c2ee)arg2;
 - (id)bestName;

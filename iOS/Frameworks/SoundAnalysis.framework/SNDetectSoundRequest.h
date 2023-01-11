@@ -6,28 +6,46 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalysisPassStrategyProviding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
+#import <SoundAnalysis/SNTwoPassRequest-Protocol.h>
 
-@class NSString, SNSoundDetector;
-@protocol SNAnalyzing;
+@class MLModel, NSString, SNTwoPassConfiguration;
 
-@interface SNDetectSoundRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNDetectSoundRequest : NSObject <SNAnalysisPassStrategyProviding, SNAnalyzerCreating, SNTwoPassRequest, NSCopying, NSSecureCoding, SNRequest>
 {
-    SNSoundDetector *_detector;
+    MLModel *_model;
     NSString *_soundIdentifier;
+    long long _analysisPassStrategy;
+    SNTwoPassConfiguration *_twoPassConfiguration;
 }
 
-@property(readonly, nonatomic) NSString *soundIdentifier; // @synthesize soundIdentifier=_soundIdentifier;
++ (_Bool)supportsSecureCoding;
++ (id)createTwoPassConfigurationWithSoundIdentifier:(id)arg1;
++ (id)allValidSoundIdentifiers;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <SNAnalyzing> analyzer;
+@property(readonly, nonatomic) NSString *soundIdentifier; // @synthesize soundIdentifier=_soundIdentifier;
+@property(readonly) SNTwoPassConfiguration *twoPassConfiguration; // @synthesize twoPassConfiguration=_twoPassConfiguration;
+@property(readonly, nonatomic) long long analysisPassStrategy; // @synthesize analysisPassStrategy=_analysisPassStrategy;
+@property(readonly, copy) NSString *description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToDetectSoundRequest:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createSecondPassController;
+- (id)createAnalyzerWithError:(id *)arg1;
 - (id)initWithVGGishBasedMLModel:(id)arg1 soundIdentifier:(id)arg2;
+- (id)initWithSoundIdentifier:(id)arg1 analysisPassStrategy:(long long)arg2;
+- (id)initWithSoundIdentifier:(id)arg1 shouldUseTwoPassDetection:(_Bool)arg2;
 - (id)initWithSoundIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

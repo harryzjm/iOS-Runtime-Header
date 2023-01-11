@@ -14,21 +14,24 @@
 {
     struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
     ICUserIdentity *_userIdentity;
+    NSDictionary *_mediaRemoteOptions;
 }
 
 + (_Bool)supportsSecureCoding;
 + (void)registerRemotePlaybackQueueClass:(Class)arg1 forPlaybackQueueType:(int)arg2;
 + (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1 options:(id)arg2;
 + (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
-@property(readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 - (void).cxx_destruct;
-- (struct _MRSystemAppPlaybackQueue *)_mediaRemotePlaybackQueue;
+@property(readonly, nonatomic) NSDictionary *mediaRemoteOptions; // @synthesize mediaRemoteOptions=_mediaRemoteOptions;
+@property(readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property(readonly, nonatomic) struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
 - (_Bool)verifyWithError:(id *)arg1;
 @property(copy, nonatomic) NSDictionary *userInfo;
 @property(nonatomic) long long replaceIntent;
 @property(nonatomic) _Bool shouldOverrideManuallyCuratedQueue;
 @property(copy, nonatomic) NSString *siriRecommendationIdentifier;
 @property(readonly, copy, nonatomic) NSDictionary *siriWHAMetricsInfo;
+@property(readonly, copy, nonatomic) NSString *featureName;
 @property(readonly, copy, nonatomic) NSString *siriAssetInfo;
 @property(nonatomic, getter=isRequestingImmediatePlayback) _Bool requestingImmediatePlayback;
 - (void)encodeWithCoder:(id)arg1;

@@ -20,6 +20,7 @@
 + (id)accessSpecifierForTask:(struct __SecTask *)arg1;
 + (id)accessSpecifierForAuditToken:(CDStruct_6ad76789)arg1;
 + (id)accessSpecifierForXPCConnection:(id)arg1;
++ (id)accessSpecifierForCurrentConnection;
 + (id)accessSpecifierForCurrentProcess;
 + (id)accessSpecifierWithNoAccessForBundleIdentifier:(id)arg1;
 + (id)accessSpecifierWithNoAccess;
@@ -27,11 +28,16 @@
 + (id)accessSpecifierUnrestrictedWithAssociatedAppBundleIdentifier:(id)arg1 bundleIdentifier:(id)arg2;
 + (id)accessSpecifierUnrestricted;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long entitlements; // @synthesize entitlements=_entitlements;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
-- (void).cxx_destruct;
+- (_Bool)allowIntentsExtensionDiscovery;
+- (_Bool)isRemovalService;
 - (_Bool)isSettingsApp;
+- (_Bool)allowReadAccessForDonations;
+- (_Bool)allowReadAccessForSleepWorkflows;
+- (_Bool)allowWriteAccessForSleepWorkflows;
 - (_Bool)allowHomeResidentShortcutRunning;
 - (_Bool)allowBackgroundShortcutRunning;
 - (_Bool)allowReadAccessToPodcastsDatabase;

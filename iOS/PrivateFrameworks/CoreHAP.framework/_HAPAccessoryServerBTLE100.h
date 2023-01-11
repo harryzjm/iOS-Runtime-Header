@@ -54,6 +54,7 @@
 + (id)_convertFromBTLEToHAPUUID:(id)arg1;
 + (id)deserializeCharacteristicReadData:(id)arg1 characteristicFormat:(unsigned long long)arg2 supportsAdditonalAuthentication:(_Bool)arg3 error:(id *)arg4;
 + (id)serializeCharacteristicWriteValue:(id)arg1 characteristicFormat:(unsigned long long)arg2 supportsAdditonalAuthentication:(_Bool)arg3 authenticationData:(id)arg4 error:(id *)arg5;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool removeOnDisconnect; // @synthesize removeOnDisconnect=_removeOnDisconnect;
 @property(copy, nonatomic) CDUnknownBlockType unpairedIdentifyCompletionBlock; // @synthesize unpairedIdentifyCompletionBlock=_unpairedIdentifyCompletionBlock;
 @property(nonatomic) _Bool unpairedIdentifyRequested; // @synthesize unpairedIdentifyRequested=_unpairedIdentifyRequested;
@@ -90,7 +91,6 @@
 @property(retain, nonatomic) NSMapTable *btleServiceToHAPServiceMap; // @synthesize btleServiceToHAPServiceMap=_btleServiceToHAPServiceMap;
 @property(nonatomic) unsigned long long connectionRetryCount; // @synthesize connectionRetryCount=_connectionRetryCount;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (void)_dequeueAndContinueOperation;
 - (void)_enqueueOperation:(long long)arg1 identifier:(id)arg2 publicKey:(id)arg3 admin:(_Bool)arg4 queue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -178,6 +178,7 @@
 - (void)enableEvents:(_Bool)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (_Bool)stopPairingWithError:(id *)arg1;
 - (void)_handlePairingStateMachine;
+- (void)continueAuthAfterValidation:(_Bool)arg1;
 - (_Bool)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)_checkForAuthPrompt;
 - (void)continuePairingAfterAuthPrompt;

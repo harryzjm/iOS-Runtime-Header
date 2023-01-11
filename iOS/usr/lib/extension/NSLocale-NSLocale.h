@@ -18,6 +18,8 @@
 + (void)setPreferredLanguages:(id)arg1;
 + (id)systemLanguages;
 + (id)preferredLocale;
++ (id)__effectiveLanguageForBundle:(id)arg1;
++ (id)_deviceLanguage;
 - (Class)classForCoder;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

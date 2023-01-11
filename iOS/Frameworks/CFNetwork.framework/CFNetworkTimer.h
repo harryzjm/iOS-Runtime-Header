@@ -18,16 +18,6 @@
     int _state;
 }
 
-@property int state; // @synthesize state=_state;
-- (void)setCancelCallbacks:(CDUnknownBlockType)arg1;
-- (void)resumeCallbacksForTimer;
-- (void)suspendCallbacksForTimer;
-- (void)resumeTimer;
-- (void)pauseTimer;
-- (void)cancelTimer;
-- (void)setTimer:(double)arg1;
-- (id)initWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 
 @end

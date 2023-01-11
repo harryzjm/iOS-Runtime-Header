@@ -12,7 +12,7 @@
     VNImageRegistrationSignature *_cachedFloatingImageSignature;
 }
 
-+ (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (_Bool)internalPerformInContext:(id)arg1 error:(id *)arg2;
 - (_Bool)getReferenceImageBuffer:(id *)arg1 registrationSignature:(id *)arg2 forRequestPerformingContext:(id)arg3 options:(id)arg4 error:(id *)arg5;
@@ -20,7 +20,7 @@
 - (id)cachedFloatingImageBufferReturningError:(id *)arg1;
 - (_Bool)wantsSequencedRequestObservationsRecording;
 - (_Bool)allowsCachingOfResults;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -12,14 +12,16 @@
 }
 
 + (Class)queryClass;
-@property(readonly, copy, nonatomic) _HKQuantityDistributionQueryServerConfiguration *quantityDistributionQueryServerConfiguration; // @synthesize quantityDistributionQueryServerConfiguration=_quantityDistributionQueryServerConfiguration;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) _HKQuantityDistributionQueryServerConfiguration *quantityDistributionQueryServerConfiguration; // @synthesize quantityDistributionQueryServerConfiguration=_quantityDistributionQueryServerConfiguration;
+- (id)_combineDistributionResults:(id)arg1 withIntersectingDateIntervals:(id)arg2;
 - (id)_combineDistributionResults:(id)arg1 withAverageAndDurations:(id)arg2 bucketUnits:(id)arg3;
+- (id)_walkSampleDatesWithPredicate:(id)arg1 entityClass:(Class)arg2 includeUUID:(_Bool)arg3 errorOut:(id *)arg4;
 - (id)_walkSampleDatesWithPredicate:(id)arg1 entityClass:(Class)arg2 errorOut:(id *)arg3;
 - (id)_categoryPredicateWithTypeCode:(long long)arg1 matchingValue:(id)arg2 errorOut:(id *)arg3;
 - (id)_workoutPredicateWithErrorOut:(id *)arg1;
 - (id)_mindfulnessPredicateWithErrorOut:(id *)arg1;
-- (id)_intervalsForContextStyle:(long long)arg1 errorOut:(id *)arg2;
+- (id)_intervalsForContextStyle:(long long)arg1 includeContextIdentifiers:(_Bool)arg2 errorOut:(id *)arg3;
 - (_Bool)_walkSampleValuesWithPredicate:(id)arg1 errorOut:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_sqlitePredicateForObjectType:(id)arg1 errorOut:(id *)arg2;
 - (id)_buildStatisticsCollectionCalculatorForAverageAndDuration;

@@ -14,9 +14,9 @@
     HMFMessageDestination *_messageDestination;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMFMessageDestination *messageDestination; // @synthesize messageDestination=_messageDestination;
 @property(readonly, nonatomic) __weak HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-- (void).cxx_destruct;
 - (void)fetchCloudChangesAndForceChangesFoundWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchCloudChangesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchCloudChangesWithForceChangesFound:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -27,13 +27,15 @@
 - (void)setOverrides:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_addOverrides:(id)arg1 replace:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAllLocalRulesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dumpPairedMetadataForProductGroup:(id)arg1 productNumber:(id)arg2 firmwareVersion:(id)arg3 ignoreOverrides:(_Bool)arg4 rawOutput:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_dumpPairedMetadataForProductGroup:(id)arg1 productNumber:(id)arg2 firmwareVersion:(id)arg3 ignoreOverrides:(_Bool)arg4 rawOutput:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)dumpLocalRulesForProductGroup:(id)arg1 productNumber:(id)arg2 firmwareVersion:(id)arg3 ignoreOverrides:(_Bool)arg4 rawOutput:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)dumpLocalRulesForProductGroup:(id)arg1 ignoreOverrides:(_Bool)arg2 rawOutput:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dumpAllLocalRulesIgnoringOverrides:(_Bool)arg1 rawOutput:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_dumpLocalRulesForProductGroup:(id)arg1 productNumber:(id)arg2 firmwareVersion:(id)arg3 ignoreOverrides:(_Bool)arg4 rawOutput:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)dumpCloudRecordsForProductGroup:(id)arg1 productNumber:(id)arg2 rawOutput:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)dumpCloudRecordsForProductGroup:(id)arg1 productNumber:(id)arg2 rawOutput:(_Bool)arg3 verifySignatures:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)listCloudRecordsForProductGroup:(id)arg1 rawOutput:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_dumpCloudRecordsForProductGroup:(id)arg1 productNumber:(id)arg2 rawOutput:(_Bool)arg3 listOnly:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_dumpCloudRecordsForProductGroup:(id)arg1 productNumber:(id)arg2 rawOutput:(_Bool)arg3 listOnly:(_Bool)arg4 verifySignatures:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)__sendMessage:(id)arg1;
 - (id)initWithHomeManager:(id)arg1;
 

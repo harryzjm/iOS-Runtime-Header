@@ -22,11 +22,11 @@
 }
 
 + (double)heightForUtterance:(id)arg1 andWidth:(double)arg2;
+- (void).cxx_destruct;
 @property(nonatomic, getter=_accessibilityIsUnread, setter=_accessibilitySetIsUnread:) _Bool accessibilityIsUnread; // @synthesize accessibilityIsUnread=_accessibilityIsUnread;
 @property(nonatomic) __weak id <RTTUIUtteranceCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isEditingUtterance) _Bool editingUtterance; // @synthesize editingUtterance=_editingUtterance;
 @property(retain, nonatomic) RTTUtterance *utterance; // @synthesize utterance=_utterance;
-- (void).cxx_destruct;
 - (_Bool)_accessibilityRealtimeCompleted;
 - (_Bool)_accessibilityRealtimeHasUnread;
 - (void)_accessibilityHandleATFocused:(_Bool)arg1 assistiveTech:(id)arg2;
@@ -40,6 +40,7 @@
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (double)preferredHeightForWidth:(double)arg1;
 - (struct _NSRange)selectedTextRange;
+- (id)utteranceTextColor;
 - (void)dealloc;
 - (void)setSendProgressIndex:(unsigned long long)arg1;
 - (void)updateUtterance:(id)arg1;

@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitServices/BSXPCCoding-Protocol.h>
+#import <UIKitServices/BSXPCSecureCoding-Protocol.h>
 #import <UIKitServices/NSCopying-Protocol.h>
 #import <UIKitServices/NSMutableCopying-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface UISDeviceContext : NSObject <BSXPCCoding, NSCopying, NSMutableCopying>
+@interface UISDeviceContext : NSObject <BSXPCSecureCoding, NSCopying, NSMutableCopying>
 {
     NSDictionary *_deviceInfoKeysToValues;
 }
 
 + (id)_allKeys;
 + (id)_keysToValueTypes;
++ (_Bool)supportsBSXPCSecureCoding;
 + (id)defaultContext;
 - (void).cxx_destruct;
 - (id)_dictionaryWithOnlyValidKeysFromDictionary:(id)arg1;
@@ -32,8 +33,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
-- (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)deviceInfoStringValueForKey:(id)arg1;
 - (_Bool)deviceInfoBoolValueForKey:(id)arg1;
 - (long long)deviceInfoIntegerValueForKey:(id)arg1;

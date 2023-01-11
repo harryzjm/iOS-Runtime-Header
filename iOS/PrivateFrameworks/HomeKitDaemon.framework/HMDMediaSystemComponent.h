@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDMediaProfile, HMMediaSystemRole, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDAccessory, HMDMediaProfile, HMMediaSystemRole, NSObject, NSString, NSUUID;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDMediaSystemComponent : NSObject <NSSecureCoding, HMFDumpState, HMFLogging>
+@interface HMDMediaSystemComponent : HMFObject <NSSecureCoding, HMFDumpState, HMFLogging>
 {
+    id <HMFLocking> _lock;
     HMMediaSystemRole *_role;
     NSUUID *_uuid;
     HMDAccessory *_accessory;
@@ -23,12 +24,14 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
++ (id)componentsWithLeftComponent:(id)arg1 leftAccessory:(id)arg2 rightComponent:(id)arg3 rightAccessory:(id)arg4;
++ (_Bool)decodeComponents:(id)arg1 leftUUID:(id *)arg2 leftAccessory:(id *)arg3 rightUUID:(id *)arg4 rightAccessory:(id *)arg5;
 + (id)mediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
 + (id)accessoryForMediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setRole:(id)arg1;
@@ -36,13 +39,15 @@
 @property(readonly, nonatomic) __weak HMDMediaProfile *mediaProfile;
 - (id)serialize;
 - (id)dumpState;
-@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)logIdentifier;
+- (id)attributeDescriptions;
+- (id)privateDescription;
 - (id)initWithUUID:(id)arg1 accessory:(id)arg2 role:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

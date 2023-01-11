@@ -6,14 +6,15 @@
 
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 
-@class NSArray, NSString, SBMainWorkspaceTransitionRequest, SBUIAnimationController;
+@class NSString, SBAppLayout, SBMainWorkspaceTransitionRequest, SBUIAnimationController;
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate;
 
 @protocol SBSwitcherLiveContentOverlayCoordinating <SBLayoutStateTransitionObserver>
 @property(nonatomic) __weak id <SBSwitcherLiveContentOverlayCoordinatorDelegate> delegate;
-@property(readonly, nonatomic) NSArray *windowsToExcludeForCrossfadeSnapshot;
 @property(nonatomic) long long containerOrientation;
 @property(nonatomic, getter=areLiveContentOverlayUpdatesSuspended) _Bool liveContentOverlayUpdatesSuspended;
+- (void)appLayoutDidBecomeHidden:(SBAppLayout *)arg1;
+- (void)appLayoutWillBecomeVisible:(SBAppLayout *)arg1;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
 - (SBUIAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
 @end

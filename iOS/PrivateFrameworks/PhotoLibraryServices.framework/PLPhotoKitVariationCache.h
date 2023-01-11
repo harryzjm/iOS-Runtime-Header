@@ -16,27 +16,30 @@
     NSURL *_cacheURL;
 }
 
-@property(readonly) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
 - (void).cxx_destruct;
+@property(readonly) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
 - (_Bool)_removeCachesForURL:(id)arg1;
 - (void)_saveToMemoryCache:(id)arg1 forFileURL:(id)arg2 fileSize:(unsigned long long)arg3;
 - (id)_readInfoForURL:(id)arg1;
 - (_Bool)_writeInfo:(id)arg1 atURL:(id)arg2;
-- (id)_fileURLWithIdentifier:(id)arg1 pathExtension:(id)arg2;
+- (id)_fileURLWithIdentifier:(id)arg1 sourceType:(long long)arg2 pathExtension:(id)arg3;
 - (_Bool)deleteCacheForAssetIdentifier:(id)arg1;
+- (_Bool)deleteCacheForAssetIdentifier:(id)arg1 sourceType:(long long)arg2;
 - (unsigned long long)purgeAll;
 - (unsigned long long)evictIfNeeded;
-- (_Bool)_performChangesForAssetIdentifier:(id)arg1 changesBlock:(CDUnknownBlockType)arg2;
+- (_Bool)_performChangesForAssetIdentifier:(id)arg1 sourceType:(long long)arg2 changesBlock:(CDUnknownBlockType)arg3;
 - (id)gatingResultForVariationType:(long long)arg1 assetIdentifier:(id)arg2;
+- (id)gatingResultForVariationType:(long long)arg1 assetIdentifier:(id)arg2 sourceType:(long long)arg3;
 - (void)saveGatingResult:(id)arg1 forVariationType:(long long)arg2 assetIdentifier:(id)arg3;
+- (void)saveGatingResult:(id)arg1 forVariationType:(long long)arg2 assetIdentifier:(id)arg3 sourceType:(long long)arg4;
 - (id)portraitEffectSettingsForAssetIdentifier:(id)arg1;
+- (id)portraitEffectSettingsForAssetIdentifier:(id)arg1 sourceType:(long long)arg2;
 - (void)savePortraitEffectSettings:(id)arg1 assetIdentifier:(id)arg2;
+- (void)savePortraitEffectSettings:(id)arg1 sourceType:(long long)arg2 assetIdentifier:(id)arg3;
+- (id)analysisResultForAssetIdentifier:(id)arg1 sourceType:(long long)arg2;
 - (id)analysisResultForAssetIdentifier:(id)arg1;
+- (void)saveAnalysisResult:(id)arg1 assetIdentifier:(id)arg2 sourceType:(long long)arg3;
 - (void)saveAnalysisResult:(id)arg1 assetIdentifier:(id)arg2;
-- (id)_suggestionKeyForVariationType:(long long)arg1;
-- (id)_gatingKeyForVariationType:(long long)arg1;
-- (id)_recipeKeyForVariationType:(long long)arg1;
-- (id)_keyForVariationType:(long long)arg1;
 - (id)initWithCacheURL:(id)arg1;
 - (id)initWithPathManager:(id)arg1;
 

@@ -6,43 +6,53 @@
 
 #import <UIKit/UIView.h>
 
-@class HUBlendedSeparatorView, HUClipScrubberPlayheadView, UIButton, UICollectionView;
+@class AVBackgroundView, HUBlendedSeparatorView, HUClipScrubberPlayheadView, UIButton, UICollectionView;
 
 @interface HUClipScrubberView : UIView
 {
     _Bool _isPlayingMedia;
     HUClipScrubberPlayheadView *_playHeadView;
     UIView *_contentView;
-    UIButton *_leftActionButton;
+    AVBackgroundView *_contentBackgroundView;
+    HUClipScrubberPlayheadView *_playheadView;
+    HUClipScrubberPlayheadView *_backgroundPlayheadView;
+    UIButton *_playPauseButton;
     UIButton *_rightActionButton;
     UICollectionView *_clipCollectionView;
+    UIView *_collectionViewContainer;
     unsigned long long _displayMode;
     HUBlendedSeparatorView *_leftBlendedSeparator;
     HUBlendedSeparatorView *_rightBlendedSeparator;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isPlayingMedia; // @synthesize isPlayingMedia=_isPlayingMedia;
 @property(retain, nonatomic) HUBlendedSeparatorView *rightBlendedSeparator; // @synthesize rightBlendedSeparator=_rightBlendedSeparator;
 @property(retain, nonatomic) HUBlendedSeparatorView *leftBlendedSeparator; // @synthesize leftBlendedSeparator=_leftBlendedSeparator;
 @property(nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
+@property(retain, nonatomic) UIView *collectionViewContainer; // @synthesize collectionViewContainer=_collectionViewContainer;
 @property(retain, nonatomic) UICollectionView *clipCollectionView; // @synthesize clipCollectionView=_clipCollectionView;
 @property(retain, nonatomic) UIButton *rightActionButton; // @synthesize rightActionButton=_rightActionButton;
-@property(retain, nonatomic) UIButton *leftActionButton; // @synthesize leftActionButton=_leftActionButton;
+@property(retain, nonatomic) UIButton *playPauseButton; // @synthesize playPauseButton=_playPauseButton;
+@property(retain, nonatomic) HUClipScrubberPlayheadView *backgroundPlayheadView; // @synthesize backgroundPlayheadView=_backgroundPlayheadView;
+@property(retain, nonatomic) HUClipScrubberPlayheadView *playheadView; // @synthesize playheadView=_playheadView;
+@property(retain, nonatomic) AVBackgroundView *contentBackgroundView; // @synthesize contentBackgroundView=_contentBackgroundView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property(retain, nonatomic) HUClipScrubberPlayheadView *playHeadView; // @synthesize playHeadView=_playHeadView;
-- (void).cxx_destruct;
-- (id)_selectionImage;
+@property(readonly, nonatomic) HUClipScrubberPlayheadView *playHeadView; // @synthesize playHeadView=_playHeadView;
+- (id)displayModeDescription;
 - (id)_deleteImage;
 - (id)_pauseImage;
 - (id)_playImage;
 - (void)hideEditInterface;
 - (void)displayEditInterface;
 - (void)updateDisplayMode:(unsigned long long)arg1;
-- (void)updateMode:(unsigned long long)arg1;
 - (void)navigateToOffset:(double)arg1;
 - (void)navigateToLivePosition;
-- (void)updateTimeControlStatus:(unsigned long long)arg1 forEngineMode:(unsigned long long)arg2;
-- (id)playOrPauseImage;
+- (void)updateAccessoryButtonsForPlaybackEngine:(id)arg1;
+- (void)didUpdatePlaybackEngine:(id)arg1;
+- (void)deactivateLiveButtonDisplay;
+- (void)activateLiveButtonDisplay;
+- (id)playOrPauseImageForEngineMode:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)_addConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;

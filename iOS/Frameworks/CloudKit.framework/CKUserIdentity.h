@@ -18,29 +18,29 @@
     CKUserIdentityLookupInfo *_lookupInfo;
     NSPersonNameComponents *_nameComponents;
     CKRecordID *_userRecordID;
-    NSArray *_contactIdentifiers;
     NSData *_publicSharingKey;
     unsigned long long _publicKeyVersion;
     NSData *_outOfNetworkPrivateKey;
     NSData *_encryptedPersonalInfo;
+    NSArray *_contactIdentifiers;
     NSString *_firstName;
     NSString *_lastName;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(readonly, copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property(copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property(retain, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
 @property(retain, nonatomic) NSData *outOfNetworkPrivateKey; // @synthesize outOfNetworkPrivateKey=_outOfNetworkPrivateKey;
 @property(nonatomic) unsigned long long publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
 @property(retain, nonatomic) NSData *publicSharingKey; // @synthesize publicSharingKey=_publicSharingKey;
 @property(nonatomic) _Bool isCached; // @synthesize isCached=_isCached;
-@property(copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property(nonatomic) _Bool hasiCloudAccount; // @synthesize hasiCloudAccount=_hasiCloudAccount;
 @property(copy, nonatomic) CKRecordID *userRecordID; // @synthesize userRecordID=_userRecordID;
 @property(copy, nonatomic) NSPersonNameComponents *nameComponents; // @synthesize nameComponents=_nameComponents;
 @property(copy, nonatomic) CKUserIdentityLookupInfo *lookupInfo; // @synthesize lookupInfo=_lookupInfo;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)ckShortDescription;

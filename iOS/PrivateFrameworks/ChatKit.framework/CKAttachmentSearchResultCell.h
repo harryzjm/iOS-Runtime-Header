@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class CKSearchAvatarSupplementryView, NSString, UIDateLabel, UIImageView, UILabel;
 
-@interface CKAttachmentSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKAttachmentSearchResultCell <CKSearchResultCell>
 {
     _Bool _suppressAvatars;
     UIImageView *_imageView;
@@ -22,6 +20,7 @@
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKSearchAvatarSupplementryView *avatarView; // @synthesize avatarView=_avatarView;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) UIDateLabel *dateLabel; // @synthesize dateLabel=_dateLabel;
@@ -29,18 +28,19 @@
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) _Bool suppressAvatars; // @synthesize suppressAvatars=_suppressAvatars;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
-- (void).cxx_destruct;
 - (void)_thumbnailGenerated:(id)arg1;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
 - (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
+@property(readonly, nonatomic) double editModeHorizontalOffset;
 @property(readonly, nonatomic) struct CGPoint avatarOffsetRTL;
 @property(readonly, nonatomic) struct CGPoint avatarOffsetLTR;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

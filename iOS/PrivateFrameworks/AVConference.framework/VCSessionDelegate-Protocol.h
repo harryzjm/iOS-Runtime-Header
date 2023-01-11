@@ -11,7 +11,7 @@
 @protocol VCSessionDelegate <NSObject>
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 spatialAudioSourceIDDidChange:(unsigned long long)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 didDetectError:(NSError *)arg3;
-- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 didChangeProminence:(unsigned char)arg3 description:(NSString *)arg4;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 didChangeMediaPriority:(unsigned char)arg3 description:(NSString *)arg4;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoPausedDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteAudioPausedDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 videoPaused:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;

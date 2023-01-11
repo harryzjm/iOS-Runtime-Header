@@ -16,8 +16,8 @@
     NSHashTable *_observers;
 }
 
-@property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 - (void)_enumerateObserversRespondingToSelector:(SEL)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_makeObserversPerformSelector:(SEL)arg1;
 - (void)_logExpirationTimeout:(double)arg1;
@@ -28,6 +28,7 @@
 - (void)removeAllIdleTimerObservers;
 - (void)reset;
 @property(readonly, nonatomic, getter=isDisabled) _Bool disabled;
+- (void)conformsToSBIdleTimerActivation;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

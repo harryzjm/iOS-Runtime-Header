@@ -6,22 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@protocol _UILabelContentAttributesProvider;
+#import <UIKitCore/NSCopying-Protocol.h>
+
+@class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _UILabelContent : NSObject
+@interface _UILabelContent : NSObject <NSCopying>
 {
-    id <_UILabelContentAttributesProvider> _defaultAttributesProvider;
+    NSDictionary *_defaultAttributes;
 }
 
-+ (id)emptyContentWithDefaultAttributesProvider:(id)arg1;
 - (void).cxx_destruct;
-- (unsigned long long)hash;
-- (_Bool)_isContentEqualToContent:(id)arg1;
-- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (long long)differenceVersusContent:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)_isContentEqualToContent:(id)arg1;
+- (_Bool)isEqualToContent:(id)arg1 byAttribute:(id)arg2;
 - (_Bool)isEqualToAttributedString:(id)arg1;
 - (_Bool)isEqualToString:(id)arg1;
+- (id)defaultAttributes;
 - (id)attributedString;
 - (id)string;
 - (_Bool)isNil;
@@ -30,15 +35,22 @@ __attribute__((visibility("hidden")))
 - (long long)length;
 - (id)defaultValueForAttribute:(id)arg1;
 - (_Bool)isAttribute:(id)arg1 uniformlyEqualToValue:(id)arg2;
-- (void)_mergeDefaultAttributes:(id)arg1;
-- (id)_defaultAttributesForString:(id)arg1;
 - (id)attributedStringContent;
 - (id)contentByApplyingAttribute:(id)arg1 value:(id)arg2 toRange:(struct _NSRange)arg3;
 - (id)contentByApplyingAttributeToEntireRange:(id)arg1 value:(id)arg2;
 - (id)widthVariantContentForView:(id)arg1;
 - (id)contentWithAttributedString:(id)arg1;
 - (id)contentWithString:(id)arg1;
-- (id)initWithDefaultAttributesProvider:(id)arg1;
+- (id)contentByCompletingDefaultAttributesWithAttributes:(id)arg1;
+- (id)contentByAddingAttribute:(id)arg1 toDefaultAttributesWithValue:(id)arg2;
+- (id)contentByAddingAttributesToDefaultAttributes:(id)arg1;
+- (id)contentWithDefaultAttributes:(id)arg1;
+- (id)initWithDefaultAttributes:(id)arg1;
+- (id)shadow;
+- (id)paragraphStyle;
+- (id)backgroundColor;
+- (id)textColor;
+- (id)font;
 
 @end
 

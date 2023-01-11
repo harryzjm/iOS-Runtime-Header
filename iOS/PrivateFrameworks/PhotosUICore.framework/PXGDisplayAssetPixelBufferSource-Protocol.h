@@ -8,7 +8,7 @@
 
 @protocol PXGDisplayAssetPixelBufferSource <NSObject>
 @property(copy, nonatomic) CDUnknownBlockType pixelBufferDidChangeHandler;
-@property(readonly, nonatomic) struct CGAffineTransform videoRotationTransform;
+@property(readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property(readonly, nonatomic) struct __CVBuffer *currentPixelBuffer;
 @end
 

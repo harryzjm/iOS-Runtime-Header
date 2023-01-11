@@ -13,17 +13,17 @@
 @interface GEOComposedWaypoint : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_latLng;
     GEOMapItemStorage *_mapItemStorage;
     GEOWaypointTyped *_waypoint;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_latLng:1;
         unsigned int read_mapItemStorage:1;
         unsigned int read_waypoint:1;
-        unsigned int wrote_latLng:1;
-        unsigned int wrote_mapItemStorage:1;
-        unsigned int wrote_waypoint:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,17 +54,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOLatLng *latLng;
 @property(readonly, nonatomic) _Bool hasLatLng;
-- (void)_readLatLng;
 @property(retain, nonatomic) GEOMapItemStorage *mapItemStorage;
 @property(readonly, nonatomic) _Bool hasMapItemStorage;
-- (void)_readMapItemStorage;
 @property(retain, nonatomic) GEOWaypointTyped *waypoint;
 @property(readonly, nonatomic) _Bool hasWaypoint;
-- (void)_readWaypoint;
+- (id)initWithData:(id)arg1;
+- (id)init;
+- (id)initWithCompanionWaypoint:(id)arg1;
 - (id)_regionCandidatesForContainment;
 - (id)_addressCandidatesForComparison;
 - (id)_locationCandidatesForComparison;
@@ -72,11 +75,17 @@
 - (_Bool)isSameAs:(id)arg1 comparisonCriteria:(unsigned long long)arg2;
 - (_Bool)isSameAs:(id)arg1;
 - (id)bestLatLng;
+- (id)chargingInfo;
 - (_Bool)isLocationWaypointType;
+- (id)styleAttributes;
+- (id)artwork;
 - (id)timezone;
 - (id)geoMapItem;
 - (void)setIsCurrentLocation:(_Bool)arg1;
 - (_Bool)isCurrentLocation;
+- (CDStruct_39925896)coordinate;
+- (unsigned long long)muid;
+- (id)name;
 - (id)initWithLocation:(id)arg1 isCurrentLocation:(_Bool)arg2;
 - (id)initWithMapItem:(id)arg1;
 - (double)distanceToWaypoint:(id)arg1;

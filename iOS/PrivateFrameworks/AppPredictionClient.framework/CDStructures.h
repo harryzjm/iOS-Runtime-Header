@@ -8,15 +8,14 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Named Structures
-
-struct ATXScoredPrediction {
-    Class _field1;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
     unsigned long long lastEventTimestamp;
 } CDStruct_a7b080c6;
+
+// Ambiguous groups
+typedef struct {
+    unsigned int engagementType:1;
+} CDStruct_c054b854;
 

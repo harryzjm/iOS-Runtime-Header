@@ -8,24 +8,31 @@
 
 #import <Home/HFIconDescriptor-Protocol.h>
 
-@class NSString;
+@class NSString, UIImageSymbolConfiguration;
 
 @interface HFImageIconDescriptor : NSObject <HFIconDescriptor>
 {
     _Bool _shouldForceLTR;
     _Bool _isDemoModeDescriptor;
+    _Bool _isSystemImage;
     NSString *_imageIdentifier;
+    UIImageSymbolConfiguration *_imageSymbolConfiguration;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isSystemImage; // @synthesize isSystemImage=_isSystemImage;
 @property(nonatomic) _Bool isDemoModeDescriptor; // @synthesize isDemoModeDescriptor=_isDemoModeDescriptor;
+@property(readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
 @property(readonly, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property(readonly, nonatomic) _Bool shouldForceLTR; // @synthesize shouldForceLTR=_shouldForceLTR;
-- (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (id)iconDescriptorByMergingWithIconDescriptor:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *identifier;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithSystemImageNamed:(id)arg1 configuration:(id)arg2;
+- (id)initWithSystemImageNamed:(id)arg1;
 - (id)initWithDemoModeImageIdentifier:(id)arg1;
 - (id)initWithImageIdentifier:(id)arg1;
 

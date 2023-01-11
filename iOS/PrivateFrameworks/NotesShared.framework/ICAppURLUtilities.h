@@ -12,6 +12,7 @@
 
 + (id)referralURLForSnapshotBackgroundTask;
 + (id)firstQueryItemInURL:(id)arg1 withURLScheme:(id)arg2 andHost:(id)arg3 andQueryItemName:(id)arg4;
++ (_Bool)quickNoteURLIsContinuing:(id)arg1;
 + (id)contentOffsetFromQuickNoteURL:(id)arg1;
 + (id)noteIdentifierFromQuickNoteURL:(id)arg1;
 + (id)attachmentIdentifierFromQuickNoteURL:(id)arg1;
@@ -24,8 +25,14 @@
 + (_Bool)isShowHTMLNoteURL:(id)arg1;
 + (_Bool)isShowLegacyNoteURL:(id)arg1;
 + (_Bool)isShowNoteURL:(id)arg1;
++ (_Bool)isShowHTMLFolderURL:(id)arg1;
++ (_Bool)isShowFolderURL:(id)arg1;
 + (_Bool)isShowFolderListURL:(id)arg1;
 + (id)appURLForFolderList;
++ (id)objectIDURIRepresentationForHTMLFolderMentionedInURL:(id)arg1;
++ (id)appURLForHTMLFolder:(id)arg1;
++ (id)objectIDURIRepresentationForFolderMentionedInURL:(id)arg1;
++ (id)appURLForFolder:(id)arg1;
 + (id)objectIDURIRepresentationForHTMLNoteMentionedInURL:(id)arg1;
 + (id)appURLForHTMLNote:(id)arg1;
 + (id)predicateForNoteMentionedInURL:(id)arg1;

@@ -13,13 +13,15 @@
 @interface GEORPFeedbackConversationMessage : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_comments;
     GEORPTimestamp *_postedAt;
     GEORPPostedBy *_postedBy;
     NSMutableArray *_surveyResponses;
     NSString *_uuid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_comments:1;
@@ -27,12 +29,7 @@
         unsigned int read_postedBy:1;
         unsigned int read_surveyResponses:1;
         unsigned int read_uuid:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_comments:1;
-        unsigned int wrote_postedAt:1;
-        unsigned int wrote_postedBy:1;
-        unsigned int wrote_surveyResponses:1;
-        unsigned int wrote_uuid:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,27 +46,26 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)surveyResponseAtIndex:(unsigned long long)arg1;
 - (unsigned long long)surveyResponsesCount;
-- (void)_addNoFlagsSurveyResponse:(id)arg1;
 - (void)addSurveyResponse:(id)arg1;
 - (void)clearSurveyResponses;
 @property(retain, nonatomic) NSMutableArray *surveyResponses;
-- (void)_readSurveyResponses;
 @property(retain, nonatomic) NSString *comments;
 @property(readonly, nonatomic) _Bool hasComments;
-- (void)_readComments;
 @property(retain, nonatomic) GEORPTimestamp *postedAt;
 @property(readonly, nonatomic) _Bool hasPostedAt;
-- (void)_readPostedAt;
 @property(retain, nonatomic) GEORPPostedBy *postedBy;
 @property(readonly, nonatomic) _Bool hasPostedBy;
-- (void)_readPostedBy;
 @property(retain, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) _Bool hasUuid;
-- (void)_readUuid;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

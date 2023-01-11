@@ -13,11 +13,10 @@ __attribute__((visibility("hidden")))
 + (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
 + (double)bottomLeadingWidth;
 + (double)lowerExpandedBaselineOffset;
-+ (double)itemSpacing;
 + (double)baselineBottomInset;
++ (id)systemUpdateFont;
 + (id)pillSmallFont;
 + (id)pillFont;
-+ (id)smallFont;
 + (id)emphasizedFont;
 + (id)expandedFont;
 + (id)normalFont;
@@ -27,8 +26,9 @@ __attribute__((visibility("hidden")))
 + (double)leadingCenteringEdgeInset;
 + (double)leadingSmallPillSpacing;
 + (double)leadingItemSpacing;
++ (double)itemSpacing;
 + (struct CGSize)notchSize;
-+ (double)referenceWidth;
++ (double)nativeDisplayWidth;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 
 @end

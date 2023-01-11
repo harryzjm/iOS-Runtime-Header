@@ -16,11 +16,12 @@
     NSDictionary *_extraMetadata;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *extraMetadata; // @synthesize extraMetadata=_extraMetadata;
 @property(readonly, nonatomic) unsigned long long sessionState; // @synthesize sessionState=_sessionState;
 @property(readonly, nonatomic) long long sequenceNumberError; // @synthesize sequenceNumberError=_sequenceNumberError;
 @property(readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
-- (void).cxx_destruct;
+- (id)transportData;
 - (id)initWithMetadata:(id)arg1 sequenceNumberManager:(id)arg2;
 - (id)initWithSequenceNumberManager:(id)arg1 extraMetadata:(id)arg2;
 

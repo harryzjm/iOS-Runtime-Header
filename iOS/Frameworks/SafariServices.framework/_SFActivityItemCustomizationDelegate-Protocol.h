@@ -11,6 +11,7 @@
 @protocol _SFActivityItemCustomizationDelegate <NSObject>
 
 @optional
+- (_Bool)isShowingReaderForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
 - (_Bool)isReaderAvailableForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
 - (_Bool)isDisplayingQuickLookDocumentForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
 - (_Bool)isContentObscuredByDigitalHealthForCustomizationController:(_SFActivityItemCustomizationController *)arg1;

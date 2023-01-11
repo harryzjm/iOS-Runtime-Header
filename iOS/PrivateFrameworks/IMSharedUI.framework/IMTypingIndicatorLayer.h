@@ -13,13 +13,14 @@
 @interface IMTypingIndicatorLayer : CALayer <IMTypingIndicatorLayerProtocol>
 {
     _Bool _hasDarkBackground;
+    _Bool _highlighted;
     id _iconImage;
-    struct UIColor *_bubbleColor;
-    struct UIColor *_thinkingDotColor;
+    UIColor *_bubbleColor;
+    UIColor *_thinkingDotColor;
     UITraitCollection *_traitCollection;
     double _bubbleOpacity;
     double _thinkingDotOpacity;
-    struct UIColor *_customBubbleColor;
+    UIColor *_customBubbleColor;
     CALayer *_bubbleContainer;
     CALayer *_smallBubble;
     CALayer *_mediumBubble;
@@ -42,11 +43,8 @@
 + (struct CGPoint)smallBubbleGrowOffset;
 + (struct CGRect)smallBubbleFrame;
 + (_Bool)supportsTypingIndicatorAnimation;
-+ (double)defaultBubbleOpacity;
-+ (double)defaultThinkingDotOpacity;
-+ (struct UIColor *)defaultThinkingDotColor;
-+ (struct UIColor *)defaultBubbleColor;
 + (struct CGSize)defaultSize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CALayer *iconImageLayer; // @synthesize iconImageLayer=_iconImageLayer;
 @property(retain, nonatomic) CAReplicatorLayer *thinkingDots; // @synthesize thinkingDots=_thinkingDots;
 @property(retain, nonatomic) CALayer *thinkingDot; // @synthesize thinkingDot=_thinkingDot;
@@ -62,8 +60,8 @@
 @property(copy, nonatomic) UIColor *thinkingDotColor; // @synthesize thinkingDotColor=_thinkingDotColor;
 @property(copy, nonatomic) UIColor *bubbleColor; // @synthesize bubbleColor=_bubbleColor;
 @property(retain, nonatomic) id iconImage; // @synthesize iconImage=_iconImage;
+@property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) _Bool hasDarkBackground; // @synthesize hasDarkBackground=_hasDarkBackground;
-- (void).cxx_destruct;
 - (void)stopAnimation;
 - (void)startShrinkAnimationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)stopPulseAnimation;
@@ -84,7 +82,12 @@
 - (void)_setup;
 - (id)resolvedColor:(id)arg1 forTraitCollection:(id)arg2;
 - (double)convertedCurrentMediaTime;
+- (id)initHighlighted:(_Bool)arg1;
 - (id)init;
+@property(readonly, nonatomic) double defaultBubbleOpacity;
+@property(readonly, nonatomic) double defaultThinkingDotOpacity;
+@property(readonly, nonatomic) UIColor *defaultThinkingDotColor;
+@property(readonly, nonatomic) UIColor *defaultBubbleColor;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

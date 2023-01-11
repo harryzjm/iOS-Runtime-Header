@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Home/HFColorLikeObject-Protocol.h>
 #import <Home/NAIdentifiable-Protocol.h>
 
 @class HFRGBColor, HFTemperatureColor, NSString;
 @protocol HFColorPrimitive;
 
-@interface HFColorCollection : NSObject <NAIdentifiable>
+@interface HFColorCollection : NSObject <HFColorLikeObject, NAIdentifiable>
 {
     HFRGBColor *_RGBColor;
     HFTemperatureColor *_temperatureColor;
@@ -25,6 +26,7 @@
 - (id)colorByAdjustingForProfile:(id)arg1;
 - (id)initWithPrimitiveColors:(id)arg1;
 - (id)initWithPrimitiveColor:(id)arg1;
+- (id)init;
 @property(readonly, copy, nonatomic) id <HFColorPrimitive> preferredColorPrimitive;
 - (id)colorPrimitives;
 @property(readonly, copy, nonatomic) HFTemperatureColor *temperatureColor; // @synthesize temperatureColor=_temperatureColor;

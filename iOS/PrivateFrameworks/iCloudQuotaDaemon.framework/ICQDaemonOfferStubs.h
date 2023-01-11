@@ -10,13 +10,15 @@
 {
     NSArray *_serverStubs;
     NSArray *_buddyStubs;
+    NSArray *_defaultStubs;
 }
 
 + (id)persistenceKey;
 + (id)daemonOfferStubsDictionarySample;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *defaultStubs; // @synthesize defaultStubs=_defaultStubs;
 @property(readonly, nonatomic) NSArray *buddyStubs; // @synthesize buddyStubs=_buddyStubs;
 @property(readonly, nonatomic) NSArray *serverStubs; // @synthesize serverStubs=_serverStubs;
-- (void).cxx_destruct;
 - (id)_chooseStubFromServerStubs:(id)arg1 conditions:(id)arg2;
 - (_Bool)_isValidServerStubs:(id)arg1 key:(id)arg2;
 - (void)_initServerStubsFromServerDictionary;
@@ -25,6 +27,9 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)_initWithAccount:(id)arg1 error:(id)arg2;
 - (id)_initWithAccount:(id)arg1 serverDictionary:(id)arg2;
+- (id)chooseFirstDefaultStub;
+- (id)chooseDefaultStubForConditions:(id)arg1;
+- (id)chooseDefaultStub;
 - (id)chooseBuddyStubForConditions:(id)arg1;
 - (id)chooseBuddyStub;
 - (id)chooseFirstStub;

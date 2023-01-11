@@ -36,6 +36,7 @@
     struct CGAffineTransform _strokeTransform;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGPoint previousPoint; // @synthesize previousPoint=_previousPoint;
 @property(readonly, nonatomic) NSUUID *drawingUUID; // @synthesize drawingUUID=_drawingUUID;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -52,7 +53,6 @@
 @property(readonly, nonatomic) _Bool waitingForStrokeToEnd; // @synthesize waitingForStrokeToEnd=_waitingForStrokeToEnd;
 @property _Bool allowLiveInteraction; // @synthesize allowLiveInteraction=_allowLiveInteraction;
 @property(nonatomic) _Bool isDrawing; // @synthesize isDrawing=_isDrawing;
-- (void).cxx_destruct;
 - (void)drawingChanged:(id)arg1;
 - (void)setNeedsDrawingDisplay;
 - (void)metalRendererController:(id)arg1 didCommitRenderingIntoTexture:(id)arg2;
@@ -65,9 +65,9 @@
 - (_Bool)eraserBegan:(id)arg1 transformedLocation:(struct CGPoint)arg2;
 - (void)vsync:(double)arg1;
 - (void)drawingCancelled;
-- (void)drawingEndedWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)drawingEndedWithDetectedShape:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_setupPKController;
-- (void)drawingBegan:(id)arg1 transformedLocation:(struct CGPoint)arg2;
+- (void)drawingBegan:(id)arg1 transformedLocation:(struct CGPoint)arg2 activeInputProperties:(unsigned long long)arg3;
 - (void)dispatchSyncOnSurfaceQueue:(CDUnknownBlockType)arg1;
 - (id)CIImageFromTexture:(id)arg1;
 - (void)dealloc;

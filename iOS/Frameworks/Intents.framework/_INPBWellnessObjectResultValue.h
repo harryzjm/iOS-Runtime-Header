@@ -17,7 +17,6 @@
     struct {
         unsigned int resultType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _resultType;
     _INPBDateTimeRange *_recordDate;
     _INPBString *_unit;
@@ -26,12 +25,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)valuesType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *values; // @synthesize values=_values;
 @property(retain, nonatomic) _INPBString *unit; // @synthesize unit=_unit;
 @property(nonatomic) int resultType; // @synthesize resultType=_resultType;
 @property(retain, nonatomic) _INPBDateTimeRange *recordDate; // @synthesize recordDate=_recordDate;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

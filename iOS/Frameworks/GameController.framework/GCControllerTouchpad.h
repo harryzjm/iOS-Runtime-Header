@@ -13,7 +13,7 @@
     long long _touchState;
     _Bool _leftBufferZone;
     _Bool _beganTouchOutsideBounds;
-    _Bool _previousPressedState;
+    float _previousButtonState;
     struct CGPoint _absoluteWindowLocation;
     struct CGPoint _absolutePosition;
     struct CGPoint _absoluteTouchDownPosition;
@@ -27,6 +27,7 @@
     GCControllerDirectionPad *_touchSurface;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool reportsAbsoluteTouchSurfaceValues; // @synthesize reportsAbsoluteTouchSurfaceValues=_reportsAbsoluteTouchSurfaceValues;
 @property(readonly, nonatomic) long long touchState; // @synthesize touchState=_touchState;
 @property(retain, nonatomic) GCControllerDirectionPad *touchSurface; // @synthesize touchSurface=_touchSurface;
@@ -34,9 +35,7 @@
 @property(copy, nonatomic) CDUnknownBlockType touchMoved; // @synthesize touchMoved=_touchMoved;
 @property(copy, nonatomic) CDUnknownBlockType touchDown; // @synthesize touchDown=_touchDown;
 @property(readonly, nonatomic) GCControllerButtonInput *button; // @synthesize button=_button;
-- (void).cxx_destruct;
-- (void)setValueForXAxis:(float)arg1 yAxis:(float)arg2 touchDown:(_Bool)arg3 pressed:(_Bool)arg4;
-- (void)setValue:(float)arg1 yAxis:(float)arg2 touchDown:(_Bool)arg3;
+- (void)setValueForXAxis:(float)arg1 yAxis:(float)arg2 touchDown:(_Bool)arg3 buttonValue:(float)arg4;
 - (id)description;
 - (struct CGPoint)clampPoint:(struct CGPoint)arg1 toLength:(double)arg2;
 - (struct CGPoint)mulCGPoint:(struct CGPoint)arg1 byScalar:(double)arg2;
@@ -46,10 +45,10 @@
 - (struct CGPoint)normalizeCGPoint:(struct CGPoint)arg1;
 - (double)distanceBetweenCGPoint:(struct CGPoint)arg1 andCGPoint:(struct CGPoint)arg2;
 - (double)magnitudeForCGPoint:(struct CGPoint)arg1;
-- (_Bool)setDigitizerX:(float)arg1 digitizerY:(float)arg2 timeStamp:(unsigned long long)arg3 touchDown:(_Bool)arg4 queue:(id)arg5;
-- (_Bool)determineTouchStateWithDigitizerX:(float)arg1 digitizerY:(float)arg2 timeStamp:(unsigned long long)arg3 touchDown:(_Bool)arg4;
+- (_Bool)setDigitizerX:(float)arg1 digitizerY:(float)arg2 touchDown:(_Bool)arg3 queue:(id)arg4;
+- (_Bool)determineTouchStateWithDigitizerX:(float)arg1 digitizerY:(float)arg2 touchDown:(_Bool)arg3;
 - (void)reportDigitizerChange:(id)arg1;
-- (_Bool)calculateRelativePositionWithDigitizerX:(float)arg1 digitizerY:(float)arg2 timeStamp:(unsigned long long)arg3 touchDown:(_Bool)arg4;
+- (_Bool)calculateRelativePositionWithDigitizerX:(float)arg1 digitizerY:(float)arg2 touchDown:(_Bool)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDescriptionName:(id)arg1;

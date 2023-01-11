@@ -13,11 +13,12 @@
 }
 
 + (Class)cellClass;
++ (id)indexingString;
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
 + (_Bool)previewControllerPresentsModally;
-+ (_Bool)supportsQuicklook;
++ (_Bool)supportsQuicklookForResult:(id)arg1;
 + (unsigned long long)recencyRankedTargetResultCount;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;

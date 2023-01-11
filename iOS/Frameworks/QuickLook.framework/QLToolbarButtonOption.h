@@ -18,13 +18,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)cancelOption;
+- (void).cxx_destruct;
 @property long long style; // @synthesize style=_style;
 @property(copy) NSString *title; // @synthesize title=_title;
 @property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)isCancel;
 - (id)initWithIdentifier:(id)arg1;
 
 @end

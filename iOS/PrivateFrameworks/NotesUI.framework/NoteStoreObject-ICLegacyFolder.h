@@ -8,19 +8,28 @@
 
 #import <NotesUI/ICLegacyFolder-Protocol.h>
 
-@class NSString;
+@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
+@protocol ICLegacyAccount, ICLegacyFolder;
 
 @interface NoteStoreObject (ICLegacyFolder) <ICLegacyFolder>
-- (_Bool)isDeletedOrInTrash;
+@property(readonly, nonatomic) _Bool isTrashFolder;
+@property(readonly, nonatomic) _Bool isDefaultFolder;
+@property(readonly, nonatomic) _Bool isDeletedOrInTrash;
 - (void)addNotesObject:(id)arg1;
-- (id)newNoteInContext:(struct NoteContext *)arg1;
-- (id)parentFolder;
-- (id)title;
+- (id)newNoteInContext:(id)arg1;
+@property(readonly, nonatomic) long long depth;
+@property(readonly, nonatomic) id <ICLegacyFolder> parentFolder;
+@property(readonly, copy, nonatomic) NSString *localizedTitle;
 
 // Remaining properties
+@property(readonly, nonatomic) id <ICLegacyAccount> account;
+@property(readonly, nonatomic) NSSet *changes;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
 @property(readonly) Class superclass;
 @end
 

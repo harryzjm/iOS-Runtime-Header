@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
     _Bool _canDisplayLoadingIndicatorsChanged;
     _Bool _backgroundColorOverrideChanged;
     _Bool _progressIndicatorSizeChanged;
+    _Bool _progressIndicatorContentInsetsChanged;
     _Bool _bufferingIndicatorSizeChanged;
+    _Bool _renderIndicatorSizeChanged;
     _Bool _shouldUseCompactCommentsTitleChanged;
     _Bool _tileInitialContentModeChanged;
     _Bool _shouldCounterrotateReviewScreenBarsChanged;
@@ -40,7 +42,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setShouldCounterrotateReviewScreenBarsChanged:) _Bool shouldCounterrotateReviewScreenBarsChanged; // @synthesize shouldCounterrotateReviewScreenBarsChanged=_shouldCounterrotateReviewScreenBarsChanged;
 @property(nonatomic, setter=_setTileInitialContentModeChanged:) _Bool tileInitialContentModeChanged; // @synthesize tileInitialContentModeChanged=_tileInitialContentModeChanged;
 @property(nonatomic, setter=_setShouldUseCompactCommentsTitleChanged:) _Bool shouldUseCompactCommentsTitleChanged; // @synthesize shouldUseCompactCommentsTitleChanged=_shouldUseCompactCommentsTitleChanged;
+@property(nonatomic, setter=_setRenderIndicatorSizeChanged:) _Bool renderIndicatorSizeChanged; // @synthesize renderIndicatorSizeChanged=_renderIndicatorSizeChanged;
 @property(nonatomic, setter=_setBufferingIndicatorSizeChanged:) _Bool bufferingIndicatorSizeChanged; // @synthesize bufferingIndicatorSizeChanged=_bufferingIndicatorSizeChanged;
+@property(nonatomic, setter=_setProgressIndicatorContentInsetsChanged:) _Bool progressIndicatorContentInsetsChanged; // @synthesize progressIndicatorContentInsetsChanged=_progressIndicatorContentInsetsChanged;
 @property(nonatomic, setter=_setProgressIndicatorSizeChanged:) _Bool progressIndicatorSizeChanged; // @synthesize progressIndicatorSizeChanged=_progressIndicatorSizeChanged;
 @property(nonatomic, setter=_setBackgroundColorOverrideChanged:) _Bool backgroundColorOverrideChanged; // @synthesize backgroundColorOverrideChanged=_backgroundColorOverrideChanged;
 @property(nonatomic, setter=_setCanDisplayLoadingIndicatorsChanged:) _Bool canDisplayLoadingIndicatorsChanged; // @synthesize canDisplayLoadingIndicatorsChanged=_canDisplayLoadingIndicatorsChanged;

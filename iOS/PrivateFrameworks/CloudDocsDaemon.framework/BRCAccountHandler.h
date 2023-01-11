@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/MCProfileConnectionObserver-Protocol.h>
 
 @class BRCAccountSession, NSMutableDictionary, NSString;
-@protocol BRCAccountHandlerDelegate, OS_dispatch_queue;
+@protocol BRCAccountHandlerDelegate, OS_dispatch_queue, OS_dispatch_workloop;
 
 @interface BRCAccountHandler : NSObject <MCProfileConnectionObserver>
 {
@@ -20,21 +20,20 @@
     _Bool _hasSetMigrationComplete;
     NSMutableDictionary *_syncPolicyByFolderType;
     id <BRCAccountHandlerDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_pushQueue;
+    NSObject<OS_dispatch_workloop> *_pushWorkloop;
 }
 
 + (_Bool)destroyCurrentAccountSynchronously;
 + (id)primaryiCloudAccountID;
 + (id)primaryiCloudAccount;
-+ (id)icloudDriveAccountID;
 + (void)_migrateAccountIfNecessaryForAccountID:(id)arg1;
 + (id)mobileDocsAccountID;
 + (id)dbAccountID;
 + (id)accountIDPath;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *pushQueue; // @synthesize pushQueue=_pushQueue;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_workloop> *pushWorkloop; // @synthesize pushWorkloop=_pushWorkloop;
 @property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property(nonatomic) __weak id <BRCAccountHandlerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)setSyncPolicy:(long long)arg1 forSyncedFolderType:(unsigned long long)arg2;
 - (long long)syncPolicyforSyncedFolderType:(unsigned long long)arg1;
 - (void)reloadSyncedFolderPoliciesDisableiCloudDesktop:(_Bool)arg1;

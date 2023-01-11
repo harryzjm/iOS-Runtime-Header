@@ -25,6 +25,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) GEOPBTransitHall *destinationHall; // @synthesize destinationHall=_destinationHall;
 @property(readonly, nonatomic) GEOPBTransitHall *originHall; // @synthesize originHall=_originHall;
 @property(readonly, nonatomic) GEOPBTransitStop *destinationStop; // @synthesize destinationStop=_destinationStop;
@@ -35,7 +36,6 @@
 @property(readonly, nonatomic) id <GEOTransitRoutingIncidentMessage> routeDetailsIncidentMessage; // @synthesize routeDetailsIncidentMessage=_routeDetailsIncidentMessage;
 @property(readonly, nonatomic) id <GEOTransitRoutingIncidentMessage> steppingIncidentMessage; // @synthesize steppingIncidentMessage=_steppingIncidentMessage;
 @property(readonly, nonatomic) int maneuver; // @synthesize maneuver=_maneuver;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_intermediateListNameForStop:(id)arg1;
@@ -64,12 +64,12 @@
 @property(readonly, nonatomic) id <GEOTransitVehicleEntries> vehicleEntries;
 - (id)instructions;
 @property(readonly, nonatomic) GEOTransitStep *transitStep; // @synthesize transitStep=_transitStep;
-- (unsigned int)distance;
+- (double)distance;
 - (unsigned int)duration;
 - (_Bool)hasDuration;
 - (void)_populateArtworksWithDecoderData:(id)arg1;
 - (void)_populateIncidentsWithDecoderData:(id)arg1;
-- (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 routeLegType:(long long)arg3 step:(id)arg4 stepIndex:(unsigned long long)arg5 duration:(unsigned int)arg6 pointRange:(struct _NSRange)arg7;
+- (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 routeSegmentType:(long long)arg3 step:(id)arg4 stepIndex:(unsigned long long)arg5 duration:(unsigned int)arg6 pointRange:(struct _NSRange)arg7;
 
 @end
 

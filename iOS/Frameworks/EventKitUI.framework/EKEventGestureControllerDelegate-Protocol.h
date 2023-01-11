@@ -25,7 +25,7 @@
 - (EKDayOccurrenceView *)eventGestureController:(EKEventGestureController *)arg1 occurrenceViewForOccurrence:(EKEvent *)arg2;
 - (EKDayOccurrenceView *)eventGestureController:(EKEventGestureController *)arg1 occurrenceViewAtPoint:(struct CGPoint)arg2;
 - (EKEvent *)createEventForEventGestureController:(EKEventGestureController *)arg1;
-- (void)eventGestureController:(EKEventGestureController *)arg1 adjustDraggingViewForAllDay:(_Bool)arg2;
+- (void)eventGestureController:(EKEventGestureController *)arg1 adjustDraggingView:(EKDayOccurrenceView *)arg2 forAllDay:(_Bool)arg3;
 - (EKDayOccurrenceView *)createOccurrenceViewForEventGestureController:(EKEventGestureController *)arg1;
 - (void)eventGestureController:(EKEventGestureController *)arg1 requestsPresentationOfViewController:(UIViewController *)arg2;
 - (UIViewController *)currentPresentationController;
@@ -34,6 +34,7 @@
 - (UIView *)touchTrackingViewForEventGestureController:(EKEventGestureController *)arg1;
 
 @optional
+- (_Bool)eventGestureController:(EKEventGestureController *)arg1 shouldAllowShortLiftDelay:(EKEvent *)arg2;
 - (_Bool)eventGestureController:(EKEventGestureController *)arg1 shouldFadeOccurrenceAfterFling:(EKEvent *)arg2;
 - (_Bool)eventEditorPopoverActiveWhileDraggingForEventGestureController:(EKEventGestureController *)arg1;
 - (struct CGRect)marginFrameForEventGestureController:(EKEventGestureController *)arg1;

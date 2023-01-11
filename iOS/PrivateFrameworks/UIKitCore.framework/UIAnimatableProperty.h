@@ -25,14 +25,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _invalidationCallback;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType invalidationCallback; // @synthesize invalidationCallback=_invalidationCallback;
 @property(nonatomic) int ownershipCount; // @synthesize ownershipCount=_ownershipCount;
 @property(nonatomic) __weak UIViewInProcessAnimationState *animationState; // @synthesize animationState=_animationState;
 @property(retain, nonatomic) id <UIViewAnimationComposing> composer; // @synthesize composer=_composer;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(retain) id presentationValue; // @synthesize presentationValue=_presentationValue;
-@property(retain, nonatomic) id value; // @synthesize value=_value;
-- (void).cxx_destruct;
+@property(retain) id value; // @synthesize value=_value;
 - (id)debugDescription;
 - (id)transformer;
 - (void)setTransformer:(id)arg1;

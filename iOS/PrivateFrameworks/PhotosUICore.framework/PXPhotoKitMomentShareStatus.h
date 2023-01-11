@@ -11,6 +11,7 @@
 - (id)owner;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)_prepareFetchResultsForPhotoLibrary:(id)arg1;
+- (id)_actionManager;
 - (id)initWithPhotoKitMomentShare:(id)arg1;
 
 @end

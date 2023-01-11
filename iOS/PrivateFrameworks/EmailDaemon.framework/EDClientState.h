@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <EmailDaemon/EDClientStateReporting-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface EDClientState : NSObject <EFLoggable>
+@interface EDClientState : NSObject <EDClientStateReporting, EFLoggable>
 {
     _Bool _isForeground;
+    _Bool _isRunningTests;
     NSArray *_visibleMailboxesObjectIds;
 }
 
 + (id)sharedInstance;
 + (id)log;
-@property(readonly, nonatomic) _Bool isForeground; // @synthesize isForeground=_isForeground;
-@property(readonly, nonatomic) NSArray *visibleMailboxesObjectIds; // @synthesize visibleMailboxesObjectIds=_visibleMailboxesObjectIds;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isRunningTests; // @synthesize isRunningTests=_isRunningTests;
+@property(readonly, nonatomic) NSArray *visibleMailboxesObjectIds; // @synthesize visibleMailboxesObjectIds=_visibleMailboxesObjectIds;
+@property(readonly, nonatomic) _Bool isForeground; // @synthesize isForeground=_isForeground;
+- (void)setClientIsRunningTests:(_Bool)arg1;
 - (id)giveBoostWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)setClientIsInForeground:(_Bool)arg1;
-- (void)setCurrentlyVisibleMailboxes:(id)arg1;
+- (void)setCurrentlyVisibleMailboxObjectIDs:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

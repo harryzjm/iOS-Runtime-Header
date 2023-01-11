@@ -18,6 +18,12 @@
 - (CDStruct_0f015c83)ams_encryptDataUsingDataProtectionClass:(unsigned long long)arg1 error:(id *)arg2;
 - (id)ams_decryptUsingKey:(id)arg1 initializationVectorData:(id)arg2 tagData:(id)arg3 error:(id *)arg4;
 - (id)ams_decryptUsingDataProtectionClass:(unsigned long long)arg1 initializationVectorData:(id)arg2 tagData:(id)arg3 error:(id *)arg4;
+- (id)_decompressLZMA;
+- (id)_decompressGZIP;
+- (id)_compressLZMA;
+- (id)_compressGZIP;
+- (id)ams_decompressWithAlgorithm:(long long)arg1;
+- (id)ams_compressWithAlgorithm:(long long)arg1;
 @property(readonly, nonatomic) NSData *ams_SHA1;
 @property(readonly, nonatomic) NSString *ams_nvramDescription;
 @property(readonly, nonatomic) NSString *ams_hexAddressDescription;

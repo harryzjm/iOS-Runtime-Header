@@ -45,6 +45,7 @@
     struct CGRect _chevronFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *blurHiddenRequesters; // @synthesize blurHiddenRequesters=_blurHiddenRequesters;
 @property(nonatomic) double blurAlpha; // @synthesize blurAlpha=_blurAlpha;
 @property(retain, nonatomic) UIView *reflectionImageView; // @synthesize reflectionImageView=_reflectionImageView;
@@ -79,7 +80,6 @@
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(nonatomic) id <_UIGlintyStringViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (double)baselineOffsetFromBottomWithSize:(struct CGSize)arg1;

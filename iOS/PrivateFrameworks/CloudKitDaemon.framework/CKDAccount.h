@@ -11,7 +11,6 @@
 @class ACAccountStore, CKAccountOverrideInfo, CKDBackingAccount, NSPersonNameComponents, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDAccount : NSObject <CKDAccountInfoProvider>
 {
     _Bool _isUnitTestingAccount;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)globalAuthTokenQueue;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *lastFailediCloudAuthToken; // @synthesize lastFailediCloudAuthToken=_lastFailediCloudAuthToken;
 @property(copy, nonatomic) NSString *lastFailedCloudKitAuthToken; // @synthesize lastFailedCloudKitAuthToken=_lastFailedCloudKitAuthToken;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *authTokenCallbackQueue; // @synthesize authTokenCallbackQueue=_authTokenCallbackQueue;
@@ -39,11 +39,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool accountWantsPushRegistration; // @synthesize accountWantsPushRegistration=_accountWantsPushRegistration;
 @property(nonatomic) _Bool isUnitTestingAccount; // @synthesize isUnitTestingAccount=_isUnitTestingAccount;
 @property(readonly, nonatomic) CKAccountOverrideInfo *fakeAccountInfo; // @synthesize fakeAccountInfo=_fakeAccountInfo;
-- (void).cxx_destruct;
 - (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)sharingURLHostname;
 - (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 accountAccessProvider:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-@property(readonly, nonatomic) NSURL *privateDatabaseRPCServiceURL;
 @property(readonly, nonatomic) NSURL *privateMetricsServiceURL;
 @property(readonly, nonatomic) NSURL *privateCodeServiceURL;
 @property(readonly, nonatomic) NSURL *privateDeviceServiceURL;
@@ -61,9 +59,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *authTokenQueue;
 - (void)updateAccountPropertiesAndSaveAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)dsid;
+- (_Bool)isDataclassEnabledForCellular:(id)arg1;
 - (_Bool)isDataclassEnabled:(id)arg1;
 @property(readonly, nonatomic) _Bool isPrimaryEmailVerified;
-@property(readonly, nonatomic) _Bool iCloudDriveAllowsCellularAccess;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *serverPreferredPushEnvironment;
 @property(readonly, nonatomic) NSString *displayedHostname;

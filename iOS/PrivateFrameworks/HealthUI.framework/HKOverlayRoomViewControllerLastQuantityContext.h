@@ -20,15 +20,15 @@
     HKInteractiveChartOverlayNamedDataSource *_cacheDataSource;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKInteractiveChartOverlayNamedDataSource *cacheDataSource; // @synthesize cacheDataSource=_cacheDataSource;
 @property(retain, nonatomic) HKDisplayTypeContextItem *lastUpdatedContextItem; // @synthesize lastUpdatedContextItem=_lastUpdatedContextItem;
 @property(retain, nonatomic) HKDisplayType *overlayDisplayType; // @synthesize overlayDisplayType=_overlayDisplayType;
 @property(retain, nonatomic) HKOverlayRoomApplicationItems *applicationItems; // @synthesize applicationItems=_applicationItems;
 @property(retain, nonatomic) HKInteractiveChartOverlayViewController *overlayChartController; // @synthesize overlayChartController=_overlayChartController;
 @property(nonatomic) long long overlayMode; // @synthesize overlayMode=_overlayMode;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
-- (id)_valueFromQuantity:(id)arg1;
+- (id)_stringValueFromQuantity:(id)arg1 unit:(id)arg2;
 - (id)_colorForDisplayType:(id)arg1;
 - (id)_buildFullTitle:(id)arg1;
 - (id)_buildContextWithTime:(id)arg1 value:(id)arg2;

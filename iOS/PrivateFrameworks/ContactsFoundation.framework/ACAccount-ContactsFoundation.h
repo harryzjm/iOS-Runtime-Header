@@ -12,6 +12,7 @@
 - (void)setPropertiesFromDelegateInfo:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *_cn_appleAccountAppleIDAliases;
 @property(readonly, copy, nonatomic) NSString *_cn_appleAccountAppleID;
+@property(readonly, nonatomic) _Bool _cn_isManaged;
 @property(readonly, nonatomic) _Bool _cn_isChildDelegateAccount;
 @property(readonly, nonatomic) _Bool _cn_isCardDAV;
 @property(readonly, nonatomic) _Bool _cn_isLDAP;

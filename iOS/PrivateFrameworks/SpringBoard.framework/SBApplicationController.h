@@ -9,10 +9,11 @@
 #import <SpringBoard/BKSTerminationAssertionObserver-Protocol.h>
 #import <SpringBoard/SBApplicationLifecycleObserver-Protocol.h>
 #import <SpringBoard/SBApplicationRestrictionDataSource-Protocol.h>
+#import <SpringBoard/XBApplicationProviding-Protocol.h>
 
-@class FBSApplicationLibrary, NSMutableDictionary, NSSet, NSString, SBApplicationInfo, SBApplicationLibraryObserver, SBApplicationRestrictionController, SBReverseCountedSemaphore;
+@class FBSApplicationLibrary, NSMutableDictionary, NSSet, NSString, SBApplicationInfo, SBApplicationLibraryObserver, SBApplicationRestrictionController, SBReverseCountedSemaphore, SBSplashBoardController;
 
-@interface SBApplicationController : NSObject <SBApplicationRestrictionDataSource, BKSTerminationAssertionObserver, SBApplicationLifecycleObserver>
+@interface SBApplicationController : NSObject <SBApplicationRestrictionDataSource, BKSTerminationAssertionObserver, XBApplicationProviding, SBApplicationLifecycleObserver>
 {
     NSMutableDictionary *_applicationsByBundleIdentifer;
     struct os_unfair_lock_s _applicationsLock;
@@ -22,6 +23,7 @@
     SBApplicationLibraryObserver *_appLibraryObserver;
     FBSApplicationLibrary *_appLibrary;
     SBApplicationInfo *_systemAppInfo;
+    SBSplashBoardController *_splashBoardController;
     SBReverseCountedSemaphore *_uninstallationReverseSemaphore;
 }
 
@@ -40,6 +42,7 @@
 - (void)applicationsUpdated:(id)arg1;
 - (void)applicationsReplaced:(id)arg1;
 - (void)applicationsAdded:(id)arg1;
+- (void)_updateVisibilityOverridesInBackground;
 - (void)_updateVisibilityOverrides;
 - (void)_removeApplicationsFromModelWithBundleIdentifier:(id)arg1 forInstall:(_Bool)arg2 withReason:(id)arg3;
 - (void)_loadApplications:(id)arg1 remove:(id)arg2;
@@ -54,7 +57,13 @@
 - (id)_lock_applicationWithBundleIdentifier:(id)arg1;
 - (id)_appLibraryObserver;
 - (id)_appLibrary;
+- (id)_splashBoardController;
+- (id)_allApplicationsFilteredBySystem:(_Bool)arg1;
+- (id)allInstalledApplications;
+- (id)splashBoardSystemApplications;
+- (id)allSplashBoardApplications;
 - (id)restrictionController;
+- (id)spotlightApplication;
 - (id)notesApplication;
 - (id)testFlightApplication;
 - (id)loginApplication;
@@ -71,8 +80,8 @@
 - (id)musicApplication;
 - (id)alwaysAvailableApplicationBundleIdentifiers;
 - (void)waitForUninstallsToComplete;
-- (void)requestUninstallApplicationWithBundleIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)requestUninstallApplication:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)requestUninstallApplicationWithBundleIdentifier:(id)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)requestUninstallApplication:(id)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)uninstallApplication:(id)arg1;
 - (id)applicationWithPid:(int)arg1;
 - (id)applicationWithBundleIdentifier:(id)arg1;

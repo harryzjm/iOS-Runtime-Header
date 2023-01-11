@@ -11,7 +11,7 @@
 
 @protocol PGCoordinatableSuggester <PGSuggester>
 - (void)reset;
-- (id <PGSuggestion>)nextSuggestion;
+- (id <PGSuggestion>)nextSuggestionWithProgress:(void (^)(double, _Bool *))arg1;
 - (void)startSuggestingWithOptions:(PGSuggestionOptions *)arg1;
 @end
 

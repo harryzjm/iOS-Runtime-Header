@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface EFSQLFunction : NSObject <EFSQLExpressable>
+@interface EFSQLFunction : NSObject <EFSQLValueExpressable>
 {
     NSString *_name;
     NSArray *_arguments;
 }
 
++ (id)unlikely:(id)arg1;
++ (id)likely:(id)arg1;
 + (id)upper:(id)arg1;
 + (id)typeOf:(id)arg1;
 + (id)trim:(id)arg1 pattern:(id)arg2;
@@ -38,10 +40,11 @@
 + (id)coalesce:(id)arg1;
 + (id)char:(id)arg1;
 + (id)abs:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-- (id)ef_aggregateColumnExpression;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 - (id)initWithName:(id)arg1 arguments:(id)arg2;
 

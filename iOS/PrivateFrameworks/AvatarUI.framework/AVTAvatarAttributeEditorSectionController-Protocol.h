@@ -6,11 +6,12 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTAttributeCollectionViewCell, AVTCoreModelRowDisplayCondition, UIView;
+@class AVTAttributeCollectionViewCell, AVTCoreModelRowDisplayCondition, AVTUIEnvironment, UIView;
 @protocol AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTAvatarAttributeEditorSection, AVTAvatarAttributeEditorSectionItem, AVTAvatarAttributeEditorSectionItemPrefetching;
 
 @protocol AVTAvatarAttributeEditorSectionController <NSObject>
 + (_Bool)supportsSelection;
++ (double)edgeLengthFittingWidth:(double)arg1 environment:(AVTUIEnvironment *)arg2;
 @property(nonatomic) long long selectedIndex;
 @property(readonly, nonatomic) id <AVTAvatarAttributeEditorSection> section;
 @property(nonatomic) __weak id <AVTAvatarAttributeEditorControllerSubSelectionDelegate> delegate;

@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FileProviderDaemon/FPProviderDomainAccessControl-Protocol.h>
 #import <FileProviderDaemon/NSObject-Protocol.h>
 
 @class FPCTLTermDumper, FPDDomain, FPDDomainIndexer, FPDExtension, FPDRequest, FPExtensionEnumerationSettings, FPItem, FPItemID, FPSandboxingURLWrapper, NSArray, NSData, NSObject, NSProgress, NSURL;
 @protocol FPDLifetimeExtender, FPXEnumeratorObserver, OS_dispatch_queue;
 
-@protocol FPDDomainBackend <NSObject, FPProviderDomainAccessControl>
+@protocol FPDDomainBackend <NSObject>
 @property(readonly) NSObject<OS_dispatch_queue> *backendQueue;
 @property(readonly, copy) NSArray *rootURLs;
 - (void)resolveProviderItemID:(FPItemID *)arg1 completionHandler:(void (^)(FPItemID *, NSError *))arg2;
@@ -22,7 +21,6 @@
 - (_Bool)removeAllFilesWithError:(id *)arg1;
 - (void)currentMaterializedSetSyncAnchorWithCompletionHandler:(void (^)(NSData *))arg1;
 - (void)enumerateMaterializedSetFromSyncAnchor:(NSData *)arg1 completionHandler:(void (^)(NSArray *, NSArray *, _Bool, NSData *, NSError *))arg2;
-- (void)writeCheckReportTo:(FPCTLTermDumper *)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)dumpStateTo:(FPCTLTermDumper *)arg1 limitNumberOfItems:(_Bool)arg2;
 - (void)URLForItemID:(FPItemID *)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 request:(FPDRequest *)arg4 completionHandler:(void (^)(NSError *, FPSandboxingURLWrapper *, FPSandboxingURLWrapper *))arg5;
 - (_Bool)updateRootAfterDomainChangeWithError:(id *)arg1;

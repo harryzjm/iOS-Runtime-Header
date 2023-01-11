@@ -9,6 +9,9 @@
 @interface NSError (CRKAdditions)
 + (id)crk_errorForSecurityOSStatus:(int)arg1;
 + (id)crk_EDUProfileErrorWithCode:(long long)arg1 errorField:(id)arg2 andValue:(id)arg3;
++ (id)crk_topLevelUserIsNeitherLeaderNorMemberErrorWithUserIdentifier:(id)arg1;
++ (id)crk_topLevelUserIsBothLeaderAndMemberErrorWithUserIdentifier:(id)arg1;
++ (id)crk_allOrNoneKeysErrorWithProvidedKeys:(id)arg1 allOrNoneKeys:(id)arg2;
 + (id)crk_malformedProfileErrorWithField:(id)arg1 value:(id)arg2;
 + (id)crk_unsupportedValueErrorWithField:(id)arg1 value:(id)arg2;
 + (id)crk_valueNotUniqueErrorWithField:(id)arg1 value:(id)arg2;

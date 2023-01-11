@@ -14,13 +14,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)cdEntityName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_deepCopy;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 reminderID:(id)arg3 url:(id)arg4 metadata:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;

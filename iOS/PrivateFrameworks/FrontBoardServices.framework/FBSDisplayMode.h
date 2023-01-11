@@ -38,8 +38,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)_height;
-- (unsigned long long)_width;
 - (id)_referenceSizeDescription;
 - (long long)_rotation;
 - (id)_caHDRMode;

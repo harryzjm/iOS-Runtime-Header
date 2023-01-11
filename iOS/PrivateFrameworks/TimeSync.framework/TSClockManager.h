@@ -6,26 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class IOKConnection, NSMutableArray;
 
 @interface TSClockManager : NSObject
 {
-    unsigned int _connection;
+    IOKConnection *_connection;
     NSMutableArray *_clockPersonalities;
     struct mach_timebase_info _timebaseInfo;
     unsigned long long _machAbsoluteNanosecondClockIdentifier;
 }
 
-+ (id)diagnosticDescriptionForClockService:(unsigned int)arg1 withIndent:(id)arg2;
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForClockService:(id)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (id)defaultClockPersonalities;
 + (id)clockManager;
 + (id)sharedClockManagerSyncWithTimeout:(unsigned long long)arg1;
 + (id)sharedClockManager;
 + (id)timeSyncAudioClockDeviceUIDForClockIdentifier:(unsigned long long)arg1;
 + (void)notifyWhenClockManagerIsAvailable:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long machAbsoluteNanosecondClockIdentifier; // @synthesize machAbsoluteNanosecondClockIdentifier=_machAbsoluteNanosecondClockIdentifier;
-- (void)dealloc;
 - (unsigned long long)nanosecondsToMachAbsolute:(unsigned long long)arg1;
 - (unsigned long long)machAbsoluteToNanoseconds:(unsigned long long)arg1;
 - (_Bool)removeUserFilteredClockWithIdentifier:(unsigned long long)arg1 error:(id *)arg2;

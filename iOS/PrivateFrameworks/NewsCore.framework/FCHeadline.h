@@ -9,7 +9,7 @@
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCHeadline : NSObject <FCHeadlineProviding, FCFeedElement>
@@ -35,6 +35,7 @@
     _Bool _issueOnly;
     _Bool _showBundleSoftPaywall;
     _Bool _useTransparentNavigationBar;
+    _Bool _hasAudioTrack;
     _Bool _bundlePaid;
     FCHeadlineThumbnail *_thumbnailLQ;
     FCHeadlineThumbnail *_thumbnail;
@@ -94,6 +95,8 @@
     NSDate *_displayDate;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_publisherCohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_publisherConversionStats;
     NSString *_articleRecirculationConfigJSON;
     NSArray *_publisherSpecifiedArticleIDs;
     NSString *_language;
@@ -104,6 +107,11 @@
     NSData *_backingArticleRecordData;
     FCIssue *_masterIssue;
     long long _bodyTextLength;
+    FCArticleAudioTrack *_narrativeTrack;
+    FCArticleAudioTrack *_narrativeTrackSample;
+    NSString *_narrativeTrackTextRanges;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
+    COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
     NSString *_identifier;
     NSURL *_headlineURL;
     NSString *_titleCompact;
@@ -113,11 +121,18 @@
 
 + (id)emptyHeadlineWithIdentifier:(id)arg1;
 + (id)emptyHeadline;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *excerpt; // @synthesize excerpt=_excerpt;
 @property(nonatomic, getter=isBundlePaid) _Bool bundlePaid; // @synthesize bundlePaid=_bundlePaid;
 @property(copy, nonatomic) NSString *titleCompact; // @synthesize titleCompact=_titleCompact;
 @property(copy, nonatomic) NSURL *headlineURL; // @synthesize headlineURL=_headlineURL;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) _Bool hasAudioTrack; // @synthesize hasAudioTrack=_hasAudioTrack;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt; // @synthesize personalizationVectorAlt=_personalizationVectorAlt;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector; // @synthesize personalizationVector=_personalizationVector;
+@property(readonly, nonatomic) NSString *narrativeTrackTextRanges; // @synthesize narrativeTrackTextRanges=_narrativeTrackTextRanges;
+@property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample; // @synthesize narrativeTrackSample=_narrativeTrackSample;
+@property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrack; // @synthesize narrativeTrack=_narrativeTrack;
 @property(readonly, nonatomic) _Bool useTransparentNavigationBar; // @synthesize useTransparentNavigationBar=_useTransparentNavigationBar;
 @property(readonly, nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
 @property(readonly, nonatomic) _Bool showBundleSoftPaywall; // @synthesize showBundleSoftPaywall=_showBundleSoftPaywall;
@@ -134,6 +149,8 @@
 @property(readonly, nonatomic) _Bool webEmbedsEnabled; // @synthesize webEmbedsEnabled=_webEmbedsEnabled;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs; // @synthesize publisherSpecifiedArticleIDs=_publisherSpecifiedArticleIDs;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON; // @synthesize articleRecirculationConfigJSON=_articleRecirculationConfigJSON;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats; // @synthesize publisherConversionStats=_publisherConversionStats;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats; // @synthesize globalConversionStats=_globalConversionStats;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts; // @synthesize publisherCohorts=_publisherCohorts;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts; // @synthesize globalCohorts=_globalCohorts;
 @property(copy, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
@@ -146,8 +163,8 @@
 @property(readonly, copy, nonatomic) NSString *videoCallToActionTitle; // @synthesize videoCallToActionTitle=_videoCallToActionTitle;
 @property(readonly, nonatomic) FCCoverArt *coverArt; // @synthesize coverArt=_coverArt;
 @property(nonatomic, getter=isPaid) _Bool paid; // @synthesize paid=_paid;
-@property(readonly, nonatomic) long long minimumNewsVersion;
-@property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
+@property(readonly, nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
+@property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites; // @synthesize hiddenFromAutoFavorites=_hiddenFromAutoFavorites;
 @property(readonly, nonatomic, getter=isPressRelease) _Bool pressRelease; // @synthesize pressRelease=_pressRelease;
 @property(readonly, nonatomic, getter=isHiddenFromFeeds) _Bool hiddenFromFeeds; // @synthesize hiddenFromFeeds=_hiddenFromFeeds;
 @property(readonly, nonatomic, getter=isBoundToContext) _Bool boundToContext; // @synthesize boundToContext=_boundToContext;
@@ -208,7 +225,8 @@
 @property(retain, nonatomic) FCHeadlineThumbnail *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(retain, nonatomic) FCHeadlineThumbnail *thumbnailLQ; // @synthesize thumbnailLQ=_thumbnailLQ;
 @property(nonatomic) _Bool hasThumbnail; // @synthesize hasThumbnail=_hasThumbnail;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isFullTrackAvailableToAll;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
 @property(readonly, nonatomic, getter=isFromBlockedStorefront) _Bool fromBlockedStorefront;
@@ -224,6 +242,7 @@
 @property(readonly, nonatomic) _Bool isTopStory;
 - (void)applyHeadlineMetadata:(id)arg1 configuration:(id)arg2;
 - (void)assignStoryType:(unsigned long long)arg1 withConfiguration:(id)arg2;
+- (void)overrideShortExcerpt:(id)arg1;
 - (void)overrideDisplayDate:(id)arg1;
 - (void)overrideTitle:(id)arg1;
 @property(readonly, copy) NSString *description;

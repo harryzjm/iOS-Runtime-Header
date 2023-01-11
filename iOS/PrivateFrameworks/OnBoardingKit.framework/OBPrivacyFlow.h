@@ -20,6 +20,7 @@
 }
 
 + (id)_modelSpecificLocalizedStringKeyForKey:(id)arg1 preferredDeviceType:(unsigned long long)arg2;
++ (id)_splashPlistFromBundle:(id)arg1 forContentName:(id)arg2;
 + (id)flowWithBundle:(id)arg1;
 - (void).cxx_destruct;
 - (id)localizedContentListForLanguage:(id)arg1 preferredDeviceType:(unsigned long long)arg2;
@@ -38,6 +39,8 @@
 @property(readonly, nonatomic) _Bool showInCombinedList;
 - (void)setButtonIcon:(id)arg1;
 @property(readonly, nonatomic) OBImage *buttonIcon;
+- (id)_splashPlist;
+- (id)_iconType;
 @property(readonly, nonatomic, getter=isPersonallyIdentifiable) _Bool personallyIdentifiable;
 - (id)_bundleImageNamed:(id)arg1;
 - (id)_splashLocalizedStringForKey:(id)arg1 language:(id)arg2 table:(id)arg3 preferredDeviceType:(unsigned long long)arg4;

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <AvatarUI/AVTAvatarRecord-Protocol.h>
 #import <AvatarUI/AVTAvatarRecordInternal-Protocol.h>
 #import <AvatarUI/NSCopying-Protocol.h>
 #import <AvatarUI/NSSecureCoding-Protocol.h>
@@ -13,7 +14,7 @@
 
 @class NSData, NSDate, NSString;
 
-@interface AVTAvatarRecord : NSObject <UIActivityItemSource, AVTAvatarRecordInternal, NSSecureCoding, NSCopying>
+@interface AVTAvatarRecord : NSObject <UIActivityItemSource, AVTAvatarRecordInternal, NSSecureCoding, NSCopying, AVTAvatarRecord>
 {
     NSString *_identifier;
     NSData *_avatarData;
@@ -26,10 +27,10 @@
 + (id)dataForNewRecord;
 + (_Bool)supportsSecureCoding;
 + (CDUnknownBlockType)matchingIdentifierTest:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *orderDate; // @synthesize orderDate=_orderDate;
 @property(retain, nonatomic) NSData *avatarData; // @synthesize avatarData=_avatarData;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -40,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithAvatarData:(id)arg1 identifier:(id)arg2 orderDate:(id)arg3;
 - (id)initWithAvatarData:(id)arg1 orderDate:(id)arg2;
+- (id)initWithAvatarData:(id)arg1;
 - (id)init;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;

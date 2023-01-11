@@ -10,7 +10,6 @@
 @class INPerson, INSpeakableString, NSArray, NSString;
 
 @protocol INSendMessageIntentExport <NSObject, JSExport>
-@property(nonatomic) long long messageType;
 @property(copy, nonatomic) NSArray *attachments;
 @property(nonatomic) long long effect;
 @property(copy, nonatomic) INPerson *sender;
@@ -18,6 +17,7 @@
 @property(copy, nonatomic) NSString *conversationIdentifier;
 @property(copy, nonatomic) INSpeakableString *speakableGroupName;
 @property(copy, nonatomic) NSString *content;
+@property(nonatomic) long long outgoingMessageType;
 @property(copy, nonatomic) NSArray *recipients;
 - (id)init;
 @end

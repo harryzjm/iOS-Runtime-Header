@@ -18,6 +18,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *identifierToCFUserNotificationMap; // @synthesize identifierToCFUserNotificationMap=_identifierToCFUserNotificationMap;
 @property(retain, nonatomic) NSMutableDictionary *identifierToRunLoopSourcesMap; // @synthesize identifierToRunLoopSourcesMap=_identifierToRunLoopSourcesMap;
 @property(retain, nonatomic) NSMutableDictionary *identifierToBlockQueueMap; // @synthesize identifierToBlockQueueMap=_identifierToBlockQueueMap;
@@ -41,7 +42,6 @@
 - (CDUnknownBlockType)_frontBlockForIdentifier:(id)arg1;
 - (id)_frontListenerForIdentifier:(id)arg1;
 - (id)_frontUserNotificationForIdentifier:(id)arg1;
-- (void)dealloc;
 
 @end
 

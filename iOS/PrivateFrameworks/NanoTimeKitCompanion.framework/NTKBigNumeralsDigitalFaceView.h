@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKBigNumeralsDigitalFaceView
+#import <NanoTimeKitCompanion/NTKBigNumeralsDigitalTimeViewDelegate-Protocol.h>
+
+@class NSString;
+
+@interface NTKBigNumeralsDigitalFaceView <NTKBigNumeralsDigitalTimeViewDelegate>
 {
 }
 
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
-+ (long long)uiSensitivity;
 - (id)_renderTimeViewSwatchImageForStyle:(unsigned long long)arg1 typeface:(unsigned long long)arg2 color:(unsigned long long)arg3;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -28,11 +31,18 @@
 - (void)_prepareForStatusChange:(_Bool)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (void)layoutSubviews;
+- (void)bigNumeralsDigitalTimeViewDidChangeTime;
 - (void)_removeTimeView;
 - (void)_createTimeView;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -11,5 +11,6 @@
 @protocol CNComposeRecipientTableViewCellDelegate <NSObject>
 - (void)didTapInfoButtonForCell:(CNComposeRecipientTableViewCell *)arg1;
 - (void)didTapDisambiguationChevronForCell:(CNComposeRecipientTableViewCell *)arg1;
+- (_Bool)willProvideOverrideImageDataForCell:(CNComposeRecipientTableViewCell *)arg1 completionBlock:(void (^)(NSData *))arg2;
 @end
 

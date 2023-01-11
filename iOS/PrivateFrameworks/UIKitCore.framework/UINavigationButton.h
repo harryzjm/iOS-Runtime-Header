@@ -34,8 +34,10 @@
     struct UIEdgeInsets __additionalSelectionInsets;
 }
 
++ (_Bool)_cursorInteractionEnabled;
 + (void)_resetRenderingModesForBackgroundImageView:(id)arg1 inBarStyle:(long long)arg2 isEnabled:(_Bool)arg3 withAccessibilityBackground:(_Bool)arg4 wantsBlendModeForAccessibilityBackgrounds:(_Bool)arg5 accessibilityBackgroundTintColor:(id)arg6;
 + (id)defaultFont;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setBarItemHidden:) _Bool _barItemHidden; // @synthesize _barItemHidden=__barItemHidden;
 @property(nonatomic) __weak UIBarButtonItem *originatingButtonItem; // @synthesize originatingButtonItem=_originatingButtonItem;
 @property(nonatomic) __weak UINavigationItem *originatingNavigationItem; // @synthesize originatingNavigationItem=_originatingNavigationItem;
@@ -53,11 +55,13 @@
 @property(nonatomic, setter=_setCreatedByBarButtonItem:) _Bool _createdByBarButtonItem; // @synthesize _createdByBarButtonItem;
 @property(copy, nonatomic, setter=_setStylesForSizingTitles:) NSDictionary *_stylesForSizingTitles; // @synthesize _stylesForSizingTitles;
 @property(nonatomic, setter=_setButtonItemStyle:) long long _buttonItemStyle; // @synthesize _buttonItemStyle;
-- (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (void)_uinavigationbar_prepareToAppearInNavigationItem:(id)arg1 onLeft:(_Bool)arg2;
 - (id)_externalUnfocusedBorderColor;
 - (_Bool)_isExternalRoundedRectButton;
 - (_Bool)canBecomeFocused;
+- (_Bool)_supportsMacIdiom;
 - (id)_activeVisualStyle;
 - (id)_visualStyleForMetrics:(long long)arg1;
 - (long long)_activeBarMetrics;
@@ -133,8 +137,8 @@
 - (void)_updateShadowOffsetWithAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (struct CGSize)_defaultTitleShadowOffsetForState:(unsigned long long)arg1;
 - (id)_defaultTitleShadowColorForState:(unsigned long long)arg1;
-- (id)_externalTitleColorForState:(unsigned long long)arg1;
-- (id)_defaultTitleColorForState:(unsigned long long)arg1;
+- (id)_externalTitleColorForState:(unsigned long long)arg1 isTintColor:(_Bool *)arg2;
+- (id)_defaultTitleColorForState:(unsigned long long)arg1 isTintColor:(_Bool *)arg2;
 - (_Bool)_wantsAccessibilityButtonShapes;
 - (_Bool)_showsAccessibilityBackgroundWhenEnabled;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;

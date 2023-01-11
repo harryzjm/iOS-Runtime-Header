@@ -11,6 +11,7 @@
     NSCountedSet *_holdingUpdatesKeys;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSCountedSet *holdingUpdatesKeys; // @synthesize holdingUpdatesKeys=_holdingUpdatesKeys;
 - (void)invalidate;
 - (_Bool)isHoldingUpdatesForKey:(id)arg1;

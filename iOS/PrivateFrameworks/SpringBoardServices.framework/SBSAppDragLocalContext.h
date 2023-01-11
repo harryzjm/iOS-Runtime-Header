@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, NSURL, UIView;
+@class NSSet, NSString, NSURL, NSUserActivity, UIView;
 
 @interface SBSAppDragLocalContext : NSObject
 {
@@ -17,18 +17,20 @@
     long long _startLocation;
     NSString *_draggedSceneIdentifier;
     NSURL *_launchURL;
+    NSUserActivity *_userActivity;
     UIView *_portaledPreview;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isSourceLocal) _Bool sourceLocal; // @synthesize sourceLocal=_sourceLocal;
 @property(nonatomic) _Bool cancelsViaScaleAndFade; // @synthesize cancelsViaScaleAndFade=_cancelsViaScaleAndFade;
 @property(retain, nonatomic) UIView *portaledPreview; // @synthesize portaledPreview=_portaledPreview;
+@property(retain, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 @property(copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(copy, nonatomic) NSString *draggedSceneIdentifier; // @synthesize draggedSceneIdentifier=_draggedSceneIdentifier;
 @property(readonly, nonatomic) long long startLocation; // @synthesize startLocation=_startLocation;
 @property(readonly, copy, nonatomic) NSSet *launchActions; // @synthesize launchActions=_launchActions;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

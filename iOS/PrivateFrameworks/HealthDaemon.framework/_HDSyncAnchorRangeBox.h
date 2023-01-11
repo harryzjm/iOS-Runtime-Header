@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/NSCopying-Protocol.h>
 #import <HealthDaemon/NSSecureCoding-Protocol.h>
 
-@interface _HDSyncAnchorRangeBox : NSObject <NSSecureCoding>
+__attribute__((visibility("hidden")))
+@interface _HDSyncAnchorRangeBox : NSObject <NSSecureCoding, NSCopying>
 {
     struct HDSyncAnchorRange _anchorRange;
 }
 
 + (_Bool)supportsSecureCoding;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (struct HDSyncAnchorRange)anchorRange;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHDSyncAnchorRange:(struct HDSyncAnchorRange)arg1;
 
 @end

@@ -7,24 +7,26 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMapTable;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsHardwareVolumeManager : NSObject
 {
+    NSObject<OS_dispatch_queue> *_avSystemControllerQueue;
     NSMapTable *_assertions;
     NSArray *_volumeButtonConsumerInvalidators;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *volumeButtonConsumerInvalidators; // @synthesize volumeButtonConsumerInvalidators=_volumeButtonConsumerInvalidators;
 @property(retain, nonatomic) NSMapTable *assertions; // @synthesize assertions=_assertions;
-- (void).cxx_destruct;
 - (void)_relinquishHardwareVolumeButtons;
 - (void)_requestHardwareVolumeButtons;
 - (void)_updateVolumeControlsForRoute:(id)arg1;
 - (void)unregisterClient:(id)arg1;
 - (void)registerClient:(id)arg1 forRoute:(id)arg2;
-- (id)requestVolumeControlsForRoute:(id)arg1;
+- (id)requestVolumeControlsForRoute:(id)arg1 reason:(id)arg2;
 - (id)init;
 
 @end

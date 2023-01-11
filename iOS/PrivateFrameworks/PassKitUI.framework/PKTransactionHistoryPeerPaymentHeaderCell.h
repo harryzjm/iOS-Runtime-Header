@@ -4,21 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNAvatarView, UILabel;
+@class PKAvatarHeaderView;
 
 @interface PKTransactionHistoryPeerPaymentHeaderCell
 {
-    CNAvatarView *_avatarView;
-    UILabel *_primaryLabel;
-    UILabel *_secondaryLabel;
-    _Bool _isTemplateLayout;
+    PKAvatarHeaderView *_headerView;
 }
 
 - (void).cxx_destruct;
-- (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
-- (void)configureWithPeerPaymentCounterpartHandle:(id)arg1 contact:(id)arg2;
-- (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)layoutSubviews;
+- (void)configureWithPeerPaymentCounterpartHandle:(id)arg1 contact:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

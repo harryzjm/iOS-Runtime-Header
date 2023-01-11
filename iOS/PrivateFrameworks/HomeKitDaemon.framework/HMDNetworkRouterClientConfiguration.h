@@ -6,36 +6,38 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterCredential, HMDNetworkRouterLANFirewallConfiguration, HMDNetworkRouterWANFirewallConfiguration, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterCredential, HMDNetworkRouterLANFirewallConfiguration, HMDNetworkRouterWANFirewallConfiguration, NSString, NSUUID;
 
-@interface HMDNetworkRouterClientConfiguration : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientConfiguration : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_clientIdentifier;
-    HMDTLVUnsignedNumberValue *_interfaceIdentifier;
-    HMDTLVUnsignedNumberValue *_lanIdentifier;
+    HAPTLVUnsignedNumberValue *_clientIdentifier;
+    HAPTLVUnsignedNumberValue *_lanIdentifier;
     HMDNetworkRouterCredential *_credential;
     HMDNetworkRouterWANFirewallConfiguration *_wanFirewallConfiguration;
     HMDNetworkRouterLANFirewallConfiguration *_lanFirewallConfiguration;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
++ (id)configurationForFirewallConfiguration:(id)arg1 hapAccessory:(_Bool)arg2 withClientIdentifier:(id)arg3;
++ (id)configurationForOpenProtectionWithClientIdentifier:(id)arg1;
++ (id)configurationWithClientIdentifier:(id)arg1 lanIdentifier:(long long)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMDNetworkRouterLANFirewallConfiguration *lanFirewallConfiguration; // @synthesize lanFirewallConfiguration=_lanFirewallConfiguration;
 @property(retain, nonatomic) HMDNetworkRouterWANFirewallConfiguration *wanFirewallConfiguration; // @synthesize wanFirewallConfiguration=_wanFirewallConfiguration;
 @property(retain, nonatomic) HMDNetworkRouterCredential *credential; // @synthesize credential=_credential;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *interfaceIdentifier; // @synthesize interfaceIdentifier=_interfaceIdentifier;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithError:(id *)arg1;
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
-- (id)initWithClientIdentifier:(id)arg1 interfaceIdentifier:(id)arg2 lanIdentifier:(id)arg3 credential:(id)arg4 wanFirewallConfiguration:(id)arg5 lanFirewallConfiguration:(id)arg6;
+- (id)initWithClientIdentifier:(id)arg1 lanIdentifier:(id)arg2 credential:(id)arg3 wanFirewallConfiguration:(id)arg4 lanFirewallConfiguration:(id)arg5;
 - (id)init;
+@property(readonly, nonatomic) NSUUID *fingerprint;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

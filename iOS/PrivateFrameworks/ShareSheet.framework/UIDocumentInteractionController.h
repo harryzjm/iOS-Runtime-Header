@@ -64,6 +64,7 @@
 + (id)_archiveDecompressQueue;
 + (id)_UTIForFileURL:(id)arg1;
 + (id)interactionControllerWithURL:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool excludeDotFilesFromArchiveListings; // @synthesize excludeDotFilesFromArchiveListings=_excludeDotFilesFromArchiveListings;
 @property(nonatomic) _Bool previewsPresentWithMarkup; // @synthesize previewsPresentWithMarkup=_previewsPresentWithMarkup;
 @property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
@@ -74,7 +75,6 @@
 @property(copy, nonatomic, getter=_completionWithItemsHandler, setter=_setCompletionWithItemsHandler:) CDUnknownBlockType _completionWithItemsHandler; // @synthesize _completionWithItemsHandler;
 @property(retain, nonatomic) id annotation; // @synthesize annotation=_annotation;
 @property(nonatomic) __weak id <UIDocumentInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_fixupFileExtensionIfNeeded;
 - (id)activityViewController:(id)arg1 mailSubjectForActivityType:(id)arg2;
 - (void)activityViewController:(id)arg1 didFinishPerformingActivityType:(id)arg2 completed:(_Bool)arg3 items:(id)arg4 error:(id)arg5;
@@ -109,6 +109,8 @@
 - (id)_preparedActivityViewControllerWithItems:(id)arg1 activities:(id)arg2 options:(unsigned long long)arg3;
 - (void)_invokeDelegateDidFinishOpenWithApplicationIdentifier:(id)arg1;
 - (void)_invokeDelegateWillBeginOpenWithApplicationIdentifier:(id)arg1;
+- (id)physicalURL;
+- (id)_appOpeningDocumentProxy;
 - (id)_preferredApplicationForDocumentOpening;
 - (void)openResourceOperation:(id)arg1 didFinishCopyingResource:(id)arg2;
 - (void)__performLaunchServiceDocumentOpenWithApplication:(id)arg1 launchServiceOptions:(id)arg2;
@@ -153,7 +155,7 @@
 - (_Bool)_shouldReturnDefaultApplication;
 - (void)setPreviewURLOverride:(id)arg1;
 - (_Bool)_delegateExistsAndImplementsRequiredMethods:(id *)arg1;
-- (id)_documentProxyWithIsContentManaged:(_Bool)arg1;
+- (id)_documentProxyWithIsContentManaged:(_Bool)arg1 usingURL:(id)arg2;
 - (id)_documentProxy;
 - (void)_invalidate;
 @property(readonly, nonatomic) NSArray *gestureRecognizers;

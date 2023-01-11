@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <CoreHAP/HAPTLVBase.h>
+
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDEndPointAddress, HMDSRTPParameters, NSUUID;
 
-@interface HMDSetupEndPointWrite <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDSetupEndPointWrite : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     NSUUID *_sessionID;
     HMDEndPointAddress *_address;
@@ -18,11 +20,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) HMDSRTPParameters *audioSrtpParameters; // @synthesize audioSrtpParameters=_audioSrtpParameters;
 @property(readonly, copy, nonatomic) HMDSRTPParameters *videoSrtpParameters; // @synthesize videoSrtpParameters=_videoSrtpParameters;
 @property(readonly, copy, nonatomic) HMDEndPointAddress *address; // @synthesize address=_address;
 @property(readonly, copy, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;

@@ -12,8 +12,8 @@
 }
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
-@property(copy, nonatomic) NSString *textHighlightStyle; // @synthesize textHighlightStyle=_textHighlightStyle;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *textHighlightStyle; // @synthesize textHighlightStyle=_textHighlightStyle;
 
 @end
 

@@ -12,9 +12,11 @@
 {
     _Bool _hideProgress;
     _Bool _eraseDataPlan;
+    _Bool _disallowProximitySetup;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool disallowProximitySetup; // @synthesize disallowProximitySetup=_disallowProximitySetup;
 @property(nonatomic) _Bool eraseDataPlan; // @synthesize eraseDataPlan=_eraseDataPlan;
 @property(nonatomic) _Bool hideProgress; // @synthesize hideProgress=_hideProgress;
 - (void)encodeWithCoder:(id)arg1;

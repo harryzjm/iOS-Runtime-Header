@@ -25,6 +25,7 @@
 
 + (long long)failureReasonToFallbackReason:(unsigned int)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property _Bool isProbeInProgress; // @synthesize isProbeInProgress=_isProbeInProgress;
 @property(retain) NPEdgeSelection *edgeSelection; // @synthesize edgeSelection=_edgeSelection;
 @property(retain) NSDate *probeRateLimit; // @synthesize probeRateLimit=_probeRateLimit;
@@ -32,16 +33,15 @@
 @property(retain) NSArray *edgeLatencies; // @synthesize edgeLatencies=_edgeLatencies;
 @property _Bool hasIPv6; // @synthesize hasIPv6=_hasIPv6;
 @property long long lastFallbackReason; // @synthesize lastFallbackReason=_lastFallbackReason;
-@property(retain) NSDate *lastUsed; // @synthesize lastUsed=_lastUsed;
-@property(retain) NSDate *lastVisited; // @synthesize lastVisited=_lastVisited;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *lastUsed; // @synthesize lastUsed=_lastUsed;
+@property(retain, nonatomic) NSDate *lastVisited; // @synthesize lastVisited=_lastVisited;
 - (void)handleTFOFailedForAddressFamily:(unsigned char)arg1;
 - (void)mergeNewLatencies:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
 - (void)rebuildLatencyMapWithViewSize:(id)arg1 edgeCount:(unsigned long long)arg2 parameters:(struct networkParameters *)arg3;
 - (_Bool)isLatency:(id)arg1 qualifiedForLatencyMap:(id)arg2 parameters:(struct networkParameters *)arg3 requireUniqueEdges:(_Bool)arg4;
 - (void)resortEdgeLatenciesUsingComparator:(CDUnknownBlockType)arg1;
-@property(readonly) NSString *lastUsedDesc;
-@property(readonly) NSString *lastVisitedDesc;
+@property(readonly, nonatomic) NSString *lastUsedDesc;
+@property(readonly, nonatomic) NSString *lastVisitedDesc;
 - (long long)compareLastVisited:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

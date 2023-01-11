@@ -47,6 +47,7 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType bytesAvailableHandler; // @synthesize bytesAvailableHandler=_bytesAvailableHandler;
 @property(nonatomic) _Bool usesOpportunisticSockets; // @synthesize usesOpportunisticSockets=_usesOpportunisticSockets;
 @property(nonatomic) unsigned int timeout; // @synthesize timeout=_timeout;
@@ -62,13 +63,12 @@
 @property(retain, nonatomic) NSArray *clientCertificates; // @synthesize clientCertificates=_clientCertificates;
 @property(nonatomic) _Bool allowsTrustPrompt; // @synthesize allowsTrustPrompt=_allowsTrustPrompt;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool isConstrained;
 @property(readonly, nonatomic) _Bool isCellularConnection;
 @property(readonly, nonatomic) _Bool isValid;
 @property(readonly, nonatomic) _Bool isWritable;
 @property(readonly, nonatomic) _Bool isReadable;
-@property(readonly, nonatomic) NSString *sourceIPAddressString;
 @property(readonly, nonatomic) unsigned int remotePortNumber;
 @property(readonly, nonatomic) NSString *remoteHostname;
 - (void)unregisterForBytesAvailable;
@@ -77,6 +77,8 @@
 - (_Bool)setSecurityProtocol:(id)arg1;
 - (id)securityProtocol;
 - (void)close;
+- (void)stopActivity;
+- (void)startActivity;
 - (void)_closeWithErrorDomain:(id)arg1 code:(long long)arg2;
 - (void)_closeWithError:(id)arg1;
 - (void)_scheduleNextRead;

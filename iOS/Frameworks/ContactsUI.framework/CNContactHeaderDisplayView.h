@@ -17,6 +17,8 @@
     NSDictionary *_geminiTextAttributes;
     _Bool _shouldShowGemini;
     _Bool _isEmergencyContact;
+    _Bool _isRestrictedContact;
+    _Bool _isDowntimeContact;
     _Bool _allowsPickerActions;
     CNContactFormatter *_contactFormatter;
     NSDictionary *_importantTextAttributes;
@@ -35,10 +37,12 @@
     CNGeminiPickerController *_geminiPicker;
 }
 
-+ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(_Bool)arg2 monogramOnly:(_Bool)arg3 delegate:(id)arg4;
-+ (id)contactHeaderViewWithContact:(id)arg1 monogramOnly:(_Bool)arg2 delegate:(id)arg3;
++ (id)sizeAttributesShowingNavBar:(_Bool)arg1;
++ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(_Bool)arg2 showingNavBar:(_Bool)arg3 monogramOnly:(_Bool)arg4 delegate:(id)arg5;
++ (id)contactHeaderViewWithContact:(id)arg1 showingNavBar:(_Bool)arg2 monogramOnly:(_Bool)arg3 delegate:(id)arg4;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(_Bool)arg2 shouldAllowImageDrops:(_Bool)arg3 monogramOnly:(_Bool)arg4;
 + (id)descriptorForRequiredKeysForContactFormatter:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNGeminiPickerController *geminiPicker; // @synthesize geminiPicker=_geminiPicker;
 @property(retain) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
 @property(retain) CNContactGeminiView *geminiView; // @synthesize geminiView=_geminiView;
@@ -50,6 +54,8 @@
 @property(retain) UILabel *taglineLabel; // @synthesize taglineLabel=_taglineLabel;
 @property(retain, nonatomic) UIView *personHeaderView; // @synthesize personHeaderView=_personHeaderView;
 @property(nonatomic) _Bool allowsPickerActions; // @synthesize allowsPickerActions=_allowsPickerActions;
+@property(nonatomic) _Bool isDowntimeContact; // @synthesize isDowntimeContact=_isDowntimeContact;
+@property(nonatomic) _Bool isRestrictedContact; // @synthesize isRestrictedContact=_isRestrictedContact;
 @property(nonatomic) _Bool isEmergencyContact; // @synthesize isEmergencyContact=_isEmergencyContact;
 @property(retain, nonatomic) NSString *importantMessage; // @synthesize importantMessage=_importantMessage;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
@@ -57,7 +63,6 @@
 @property(copy, nonatomic) NSDictionary *importantTextAttributes; // @synthesize importantTextAttributes=_importantTextAttributes;
 @property(retain, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property(nonatomic) _Bool shouldShowGemini; // @synthesize shouldShowGemini=_shouldShowGemini;
-- (void).cxx_destruct;
 - (void)pickerDidCancel:(id)arg1;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)handleGeminiViewTouch:(id)arg1;
@@ -89,10 +94,12 @@
 - (void)tintColorDidChange;
 @property(nonatomic) unsigned long long avatarStyle;
 - (void)createGeminiViewIfNeeded;
+- (double)defaultMaxHeight;
 - (double)maxHeight;
 - (double)minHeight;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(_Bool)arg4 monogramOnly:(_Bool)arg5 delegate:(id)arg6;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogramOnly:(_Bool)arg3 delegate:(id)arg4;
+- (void)didFinishUsing;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(_Bool)arg4 showingNavBar:(_Bool)arg5 monogramOnly:(_Bool)arg6 delegate:(id)arg7;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 showingNavBar:(_Bool)arg3 monogramOnly:(_Bool)arg4 delegate:(id)arg5;
 - (id)descriptorForRequiredKeys;
 
 // Remaining properties

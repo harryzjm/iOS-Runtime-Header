@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSCertifiedDeliveryContext, NSData, NSDate, NSError, NSNumber, NSString;
+@class IDSCertifiedDeliveryContext, NSData, NSDate, NSDictionary, NSError, NSNumber, NSString;
 @protocol OS_os_transaction;
 
 @interface IDSMessageContext : NSObject
@@ -28,6 +28,9 @@
     NSNumber *_originalTimestamp;
     NSError *_wpConnectionError;
     NSString *_senderCorrelationIdentifier;
+    NSString *_resourceTransferURLString;
+    NSString *_resourceTransferSandboxExtension;
+    NSDictionary *_resourceTransferMetadata;
     NSNumber *_broadcastTime;
     NSNumber *_priority;
     NSNumber *_messageSequenceNumber;
@@ -48,6 +51,7 @@
     _Bool _messageHadEncryptedData;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) IDSCertifiedDeliveryContext *certifiedDeliveryContext; // @synthesize certifiedDeliveryContext=_certifiedDeliveryContext;
 @property(readonly, nonatomic) long long endpointState; // @synthesize endpointState=_endpointState;
 @property(readonly, copy, nonatomic) NSNumber *messageSequenceNumber; // @synthesize messageSequenceNumber=_messageSequenceNumber;
@@ -57,7 +61,6 @@
 @property(readonly, nonatomic) double averageLocalRTT; // @synthesize averageLocalRTT=_averageLocalRTT;
 @property(nonatomic) _Bool messageHadEncryptedData; // @synthesize messageHadEncryptedData=_messageHadEncryptedData;
 @property(copy, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;
-- (void).cxx_destruct;
 @property(nonatomic) _Bool usedEngram;
 @property(nonatomic) long long connectionType;
 @property(nonatomic) _Bool fromServerStorage;
@@ -65,6 +68,9 @@
 @property(nonatomic) long long broadcastID;
 @property(nonatomic) _Bool wantsAppAck;
 @property(nonatomic) _Bool expectsPeerResponse;
+@property(copy, nonatomic) NSString *resourceTransferSandboxExtension;
+@property(copy, nonatomic) NSDictionary *resourceTransferMetadata;
+@property(copy, nonatomic) NSString *resourceTransferURLString;
 @property(readonly, copy, nonatomic) NSNumber *totalBytes;
 - (void)setTotalBytes:(id)arg1;
 @property(readonly, copy, nonatomic) NSNumber *bytesSent;

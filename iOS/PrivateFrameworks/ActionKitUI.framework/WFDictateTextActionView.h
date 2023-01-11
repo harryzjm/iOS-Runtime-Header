@@ -6,42 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-#import <ActionKitUI/WFDictateTextActionRunningDelegate-Protocol.h>
-
-@class NSString, UIButton, UITextView, WFDictateTextAction, WFDictateTextActionStopButton;
-@protocol WFComponentNavigationContext;
+@class UITextView, WFDictateTextActionStopButton;
+@protocol WFDictateTextActionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFDictateTextActionView : UIView <WFDictateTextActionRunningDelegate>
+@interface WFDictateTextActionView : UIView
 {
-    WFDictateTextAction *_action;
-    id <WFComponentNavigationContext> _navigationContext;
+    id <WFDictateTextActionViewDelegate> _delegate;
     UITextView *_textView;
     WFDictateTextActionStopButton *_stopButton;
-    UIButton *_inputSourceButton;
 }
 
-@property(nonatomic) __weak UIButton *inputSourceButton; // @synthesize inputSourceButton=_inputSourceButton;
+- (void).cxx_destruct;
 @property(nonatomic) __weak WFDictateTextActionStopButton *stopButton; // @synthesize stopButton=_stopButton;
 @property(nonatomic) __weak UITextView *textView; // @synthesize textView=_textView;
-@property(nonatomic) __weak id <WFComponentNavigationContext> navigationContext; // @synthesize navigationContext=_navigationContext;
-@property(nonatomic) __weak WFDictateTextAction *action; // @synthesize action=_action;
-- (void).cxx_destruct;
-- (void)action:(id)arg1 didReceiveTranscription:(id)arg2;
-- (void)actionDidBeginListening:(id)arg1;
-- (void)updateInputSourceButton;
+@property(nonatomic) __weak id <WFDictateTextActionViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)updateWithTranscription:(id)arg1;
 - (void)stopButtonTapped;
-- (void)sourceButtonTapped;
-- (void)willLeaveReusePool;
-- (void)didEnterReusePool;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 padded:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

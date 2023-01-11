@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString, NTKPeopleComplicationEntry;
+@class NSObject, NSString, NTKPeopleComplication, NTKPeopleComplicationEntry;
 @protocol OS_dispatch_queue;
 
 @interface NTKPeopleComplicationDataSource
@@ -12,11 +12,14 @@
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _isPaused;
     _Bool _needsInvalidation;
-    NSString *_contactID;
+    NTKPeopleComplication *_complication;
+    NSString *_secondaryContactID;
+    NSString *_storeBackedContactID;
     NTKPeopleComplicationEntry *_timelineEntry;
     NTKPeopleComplicationEntry *_switcherEntry;
 }
 
++ (long long)tritiumUpdatePriority;
 + (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (_Bool)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
@@ -29,7 +32,6 @@
 - (void)pause;
 - (void)resume;
 - (id)complicationApplicationIdentifier;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (id)currentSwitcherTemplate;
 - (id)lockedTemplate;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;

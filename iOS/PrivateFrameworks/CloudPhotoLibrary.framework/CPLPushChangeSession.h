@@ -10,6 +10,7 @@
 
 @interface CPLPushChangeSession <CPLAbstractObject>
 {
+    double _startWaitingForBatch;
 }
 
 + (id)shortDescription;

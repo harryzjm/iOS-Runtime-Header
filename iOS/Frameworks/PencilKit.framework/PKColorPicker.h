@@ -18,15 +18,16 @@
 }
 
 + (id)_representableColorForColor:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _PKColorPickerView *colorPickerView; // @synthesize colorPickerView=_colorPickerView;
 @property(nonatomic) __weak id <PKColorPickerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_colorPickerViewUserDidTouchUpInside:(id)arg1;
 - (void)_colorPickerViewDidChangeSelectedColor:(id)arg1;
 - (id)_colorPickerView;
 - (void)_setInitialColorForSpringLoading:(id)arg1;
 - (void)_setSelectedColorForPoint:(struct CGPoint)arg1;
 - (struct CGSize)preferredContentSize;
+@property(nonatomic) long long colorUserInterfaceStyle;
 @property(retain, nonatomic) UIColor *selectedColor;
 - (void)viewWillLayoutSubviews;
 - (_Bool)_canShowWhileLocked;

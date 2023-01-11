@@ -21,10 +21,8 @@
 + (int)_nextSequenceNumber;
 - (void).cxx_destruct;
 - (id)description;
-- (void)finishWithResult:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)execute;
-- (id)initForApplication:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

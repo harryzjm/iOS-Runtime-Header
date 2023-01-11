@@ -6,7 +6,7 @@
 
 #import <Intents/INAnswerCallIntentResponseExport-Protocol.h>
 
-@class NSArray, NSString;
+@class INConnectedCall, NSArray, NSString;
 
 @interface INAnswerCallIntentResponse <INAnswerCallIntentResponseExport>
 {
@@ -21,6 +21,7 @@
 - (id)propertiesByName;
 - (id)_dictionaryRepresentation;
 @property(copy, nonatomic) NSArray *recentMissedCalls;
+@property(copy, nonatomic) INConnectedCall *answeredCall;
 @property(copy, nonatomic) NSArray *callRecords;
 @property(nonatomic) long long statusCode;
 - (long long)_codeWithName:(id)arg1;

@@ -12,8 +12,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) SKTexture *velocityTexture; // @synthesize velocityTexture=_velocityTexture;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SKTexture *velocityTexture; // @synthesize velocityTexture=_velocityTexture;
 @property(nonatomic) MISSING_TYPE *velocity;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

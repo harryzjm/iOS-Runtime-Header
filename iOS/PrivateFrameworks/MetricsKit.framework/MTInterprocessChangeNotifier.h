@@ -14,6 +14,8 @@
     int _token;
 }
 
++ (void)notify:(id)arg1;
++ (id)fullIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (void)stop;
 - (void)notify;

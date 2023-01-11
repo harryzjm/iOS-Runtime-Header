@@ -4,22 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CKFetchUserQuotaOperation
+#import <CloudKit/CKFetchUserQuotaOperationCallbacks-Protocol.h>
+
+@protocol CKFetchUserQuotaOperationCallbacks;
+
+@interface CKFetchUserQuotaOperation <CKFetchUserQuotaOperationCallbacks>
 {
     CDUnknownBlockType _fetchUserQuotaCompletionBlock;
     unsigned long long _quotaAvailable;
 }
 
-@property(nonatomic) unsigned long long quotaAvailable; // @synthesize quotaAvailable=_quotaAvailable;
++ (SEL)daemonCallbackCompletionSelector;
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long quotaAvailable; // @synthesize quotaAvailable=_quotaAvailable;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
+- (void)handleOperationDidCompleteWithQuotaAvailable:(unsigned long long)arg1 metrics:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)hasCKOperationCallbacksSet;
-- (Class)operationInfoClass;
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType fetchUserQuotaCompletionBlock; // @synthesize fetchUserQuotaCompletionBlock=_fetchUserQuotaCompletionBlock;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchUserQuotaOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

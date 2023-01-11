@@ -12,7 +12,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)unsupportedEnvironments;
 - (_Bool)outputsMultipleItems;
 - (_Bool)inputsMultipleItems;
 - (id)inputContentClasses;

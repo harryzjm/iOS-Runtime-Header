@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (unsigned long long)multipathServiceType;
 - (double)timeout;
-- (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
 - (id)serviceTypeNumber;
 - (unsigned long long)urlType;

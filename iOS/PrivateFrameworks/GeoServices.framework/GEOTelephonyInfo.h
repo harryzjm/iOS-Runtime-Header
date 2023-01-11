@@ -14,11 +14,9 @@
 + (id)sharedInfo;
 - (void)_updateMapsAuthed;
 - (id)isMapsAuthorizedForCellularIfAvailable;
-- (_Bool)isMapsAuthorizedForCellular;
+- (void)isMapsAuthorizedForCellular:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (id)isDeviceAuthorizedForCellularIfAvailable;
-- (_Bool)isDeviceAuthorizedForCellular;
 - (id)cellularCarrierIfAvailable;
-- (id)cellularCarrier;
 - (id)init;
 - (int)cellularDataStateIfAvailable;
 

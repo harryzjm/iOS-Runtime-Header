@@ -43,13 +43,13 @@
 + (id)node;
 + (_Bool)supportsSecureCoding;
 + (id)nodeFromCaptureData:(id)arg1;
+- (void).cxx_destruct;
 @property _Bool performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property(nonatomic) __weak GKEntity *entity; // @synthesize entity=_entity;
 @property(retain, nonatomic) NSMutableDictionary *userData; // @synthesize userData=_userData;
 @property(nonatomic) long long focusBehavior; // @synthesize focusBehavior=_focusBehavior;
 @property(copy, nonatomic) SKReachConstraints *reachConstraints; // @synthesize reachConstraints=_reachConstraints;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (_Bool)_isEligibleForFocusInteraction;
 - (_Bool)_isEligibleForFocus;
 - (_Bool)_isEffectivelyHidden;
@@ -60,6 +60,7 @@
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)updateFocusIfNeeded;
 - (void)setNeedsFocusUpdate;
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 - (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (id)valueForAttributeNamed:(id)arg1;
 @property(copy, nonatomic) NSDictionary *attributeValues;
@@ -177,7 +178,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 @property(readonly) Class superclass;

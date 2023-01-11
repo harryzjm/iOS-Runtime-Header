@@ -14,7 +14,7 @@
     NSUUID *_uuid;
     NSString *_personaUniqueString;
     long long _containerClass;
-    struct container_object *_thisContainer;
+    struct container_object_s *_thisContainer;
 }
 
 + (long long)typeContainerClass;
@@ -22,9 +22,11 @@
 + (id)containerWithIdentifier:(id)arg1 createIfNecessary:(_Bool)arg2 existed:(_Bool *)arg3 error:(id *)arg4;
 + (id)containerWithIdentifier:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (_Bool)_obj1:(id)arg1 isEqualToObj2:(id)arg2;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToContainer:(id)arg1;
 - (unsigned long long)diskUsageWithError:(id *)arg1;
 @property(readonly, nonatomic) long long containerClass;
 @property(readonly, nonatomic) NSUUID *uuid; // @dynamic uuid;
@@ -40,12 +42,12 @@
 - (id)destroyContainerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 createIfNecessary:(_Bool)arg2 existed:(_Bool *)arg3 temp:(_Bool)arg4 error:(id *)arg5;
 - (id)init;
-- (struct container_object *)getLowLevelContainerObject;
+- (struct container_object_s *)getLowLevelContainerObject;
 - (void)markDeleted;
-- (id)initWithIdentifier:(id)arg1 uuid:(id)arg2 personaUniqueString:(id)arg3 error:(id *)arg4;
+- (id)initWithIdentifier:(id)arg1 path:(id)arg2 uniquePathComponent:(id)arg3 uuid:(id)arg4 personaUniqueString:(id)arg5 error:(id *)arg6;
 - (void)dealloc;
 - (void)_errorOccurred;
-@property(readonly, nonatomic) struct container_object *thisContainer;
+@property(readonly, nonatomic) struct container_object_s *thisContainer;
 
 @end
 

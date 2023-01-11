@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     _Bool _shouldAnimateBoundsChanges;
 }
 
-@property(nonatomic) _Bool shouldAnimateBoundsChanges; // @synthesize shouldAnimateBoundsChanges=_shouldAnimateBoundsChanges;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 
 @end

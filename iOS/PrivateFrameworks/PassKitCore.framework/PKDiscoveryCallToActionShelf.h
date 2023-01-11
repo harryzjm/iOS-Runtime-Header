@@ -13,12 +13,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool useImageAsTitle; // @synthesize useImageAsTitle=_useImageAsTitle;
 @property(readonly, nonatomic) PKDiscoveryCallToAction *callToAction; // @synthesize callToAction=_callToAction;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)localizeWithBundle:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

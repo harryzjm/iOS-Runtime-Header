@@ -13,9 +13,16 @@
     SBBookmark *_bookmark;
 }
 
-@property(readonly, nonatomic) SBBookmark *bookmark; // @synthesize bookmark=_bookmark;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBBookmark *bookmark; // @synthesize bookmark=_bookmark;
+- (id)_sbhIconLibraryOverrideCollationSectionTitle;
 - (_Bool)isBookmarkIcon;
+- (id)draggingUserActivity;
+- (id)uninstallAlertBody;
+- (id)uninstallAlertTitle;
+- (_Bool)canBeAddedToSubfolder;
+- (_Bool)canBeAddedToMultiItemDrag;
+- (id)iTunesCategoriesOrderedByRelevancy;
 - (id)representedSceneIdentifier;
 - (id)folderFallbackTitle;
 - (id)folderTitleOptions;

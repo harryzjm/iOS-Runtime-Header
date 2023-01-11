@@ -8,7 +8,7 @@
 
 #import <VoiceShortcuts/VCDatabaseProvider-Protocol.h>
 
-@class NSPersistentStoreDescription, NSString, WFDatabase;
+@class NSString, WFDatabase;
 @protocol OS_dispatch_queue;
 
 @interface VCDaemonDatabaseProvider : NSObject <VCDatabaseProvider>
@@ -17,9 +17,11 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSPersistentStoreDescription *storeDescription;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (_Bool)isShortcutsAppInstalled;
+- (void)migrateVoiceShortcutsToShortcutsInDatabase:(id)arg1;
+- (id)databaseWithError:(id *)arg1;
 @property(readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
 - (_Bool)migrateDatabasesToShortcutsFolderIfNeeded;
 - (id)init;

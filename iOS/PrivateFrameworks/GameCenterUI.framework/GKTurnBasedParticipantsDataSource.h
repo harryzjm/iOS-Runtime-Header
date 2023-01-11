@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GKTurnBasedMatch;
+@class GKTurnBasedMatch, NSString;
 
 @interface GKTurnBasedParticipantsDataSource
 {
     GKTurnBasedMatch *_match;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
-- (id)sectionTitle;
+@property(readonly, nonatomic) NSString *sectionTitle;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)configureCollectionView:(id)arg1;
 - (void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2 updateNotifier:(id)arg3;
-- (void)dealloc;
 
 @end
 

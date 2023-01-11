@@ -6,9 +6,10 @@
 
 #import <CarPlay/NSObject-Protocol.h>
 
-@class CPWindow;
+@class CPWindow, UITraitCollection;
 
 @protocol CPWindowProviding <NSObject>
+@property(readonly, nonatomic) UITraitCollection *carTraitCollection;
 @property(readonly, nonatomic) CPWindow *carWindow;
 - (void)updateLayoutGuideWithInsets:(struct UIEdgeInsets)arg1;
 - (long long)activationState;

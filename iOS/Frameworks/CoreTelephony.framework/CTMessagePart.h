@@ -17,11 +17,11 @@
     NSData *_data;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property(copy, nonatomic) NSString *contentLocation; // @synthesize contentLocation=_contentLocation;
 @property(copy, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property(copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
-- (void)dealloc;
 - (id)allContentTypeParameterNames;
 - (void)addContentTypeParameterWithName:(id)arg1 value:(id)arg2;
 - (id)contentTypeParameterWithName:(id)arg1;

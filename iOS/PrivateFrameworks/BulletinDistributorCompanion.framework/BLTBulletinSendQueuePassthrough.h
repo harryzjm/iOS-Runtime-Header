@@ -13,11 +13,11 @@
     id <BLTBulletinSendQueueDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <BLTBulletinSendQueueDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <BLTBulletinSendQueueDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)sendNow;
 - (void)queuePending;
-- (void)handleFileURL:(id)arg1;
+- (_Bool)handleFileURL:(id)arg1;
 - (void)sendRequest:(id)arg1 withTimeout:(id)arg2 isTrafficRestricted:(_Bool)arg3 didSend:(CDUnknownBlockType)arg4;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(CDUnknownBlockType)arg3 didQueue:(CDUnknownBlockType)arg4;
 

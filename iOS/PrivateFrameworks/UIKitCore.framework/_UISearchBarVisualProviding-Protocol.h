@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBar, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UIView, UIVisualEffectView, _UIBackdropView, _UIBarButtonItemAppearanceStorage, _UIBarInsertLayoutData, _UINavigationBarTitleViewOverlayRects, _UISearchBarScopeBarBackground;
+@class NSArray, NSAttributedString, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBar, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UITextField, UIView, UIVisualEffectView, _UIBackdropView, _UIBarButtonItemAppearanceStorage, _UIBarInsertLayoutData, _UINavigationBarTitleViewOverlayRects, _UISearchBarScopeBarBackground;
 @protocol _UINavigationBarTitleViewDataSource, _UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private;
 
 @protocol _UISearchBarVisualProviding <NSObject>
@@ -74,6 +74,7 @@
 @property(retain, nonatomic) UIVisualEffectView *backdropVisualEffectView;
 @property(retain, nonatomic) _UIBackdropView *backdrop;
 @property(retain, nonatomic) UISearchBarBackground *searchBarBackground;
+@property(readonly, nonatomic) UITextField *searchFieldIfExists;
 @property(retain, nonatomic) UISearchBarTextField *searchField;
 @property(nonatomic) UIView<_UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private> *delegate;
 @property(readonly, copy, nonatomic) NSArray *runtimeOnlyViews;
@@ -133,6 +134,8 @@
 - (void)setImage:(UIImage *)arg1 forSearchBarIcon:(long long)arg2 state:(unsigned long long)arg3;
 - (UIImage *)searchFieldBackgroundImageForState:(unsigned long long)arg1;
 - (void)setSearchFieldBackgroundImage:(UIImage *)arg1 forState:(unsigned long long)arg2;
+- (void)updateForSemanticContext;
+- (void)updateForDynamicType;
 - (void)applySearchBarStyle;
 - (void)updateRightView;
 - (void)setUpScopeBar;
@@ -143,6 +146,9 @@
 - (void)setShowsScopeBar:(_Bool)arg1 animateOpacity:(_Bool)arg2;
 - (void)setShowsCancelButton:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setEnabled:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setHelperPlaceholderHidden:(_Bool)arg1;
+- (void)setHelperPlaceholderOverride:(NSAttributedString *)arg1;
+- (void)setHelperPlaceholder:(NSAttributedString *)arg1;
 - (void)destroyCancelButton;
 - (void)teardown;
 - (void)setUpSearchField;

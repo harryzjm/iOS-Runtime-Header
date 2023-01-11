@@ -8,11 +8,24 @@
 
 @interface PGGraphBusinessEdge
 {
+    _Bool _hasRoutineInfo;
+    float _weight;
+    NSDate *_universalStartDate;
+    NSDate *_universalEndDate;
 }
 
-@property(readonly, nonatomic) NSDate *universalEndDate;
-@property(readonly, nonatomic) NSDate *universalStartDate;
-@property(readonly, nonatomic) _Bool hasRoutineInfo;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *universalEndDate; // @synthesize universalEndDate=_universalEndDate;
+@property(readonly, nonatomic) NSDate *universalStartDate; // @synthesize universalStartDate=_universalStartDate;
+@property(readonly, nonatomic) _Bool hasRoutineInfo; // @synthesize hasRoutineInfo=_hasRoutineInfo;
+- (void)setWeight:(float)arg1;
+- (float)weight;
+- (id)edgeDescription;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 fromSourceNode:(id)arg2 toBusinessNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
 
 @end
 

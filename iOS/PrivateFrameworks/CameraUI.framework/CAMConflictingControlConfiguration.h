@@ -11,14 +11,15 @@
     long long _desiredFlashMode;
     long long _desiredHDRMode;
     long long _flashAndHDRConflictingControl;
+    long long _desiredLivePhotoMode;
 }
 
 + (void)resolveDesiredFlashMode:(long long)arg1 desiredHDRMode:(long long)arg2 primaryConflictingControl:(long long)arg3 device:(long long)arg4 toFlashMode:(long long *)arg5 HDRMode:(long long *)arg6;
+@property(readonly, nonatomic) long long desiredLivePhotoMode; // @synthesize desiredLivePhotoMode=_desiredLivePhotoMode;
 @property(readonly, nonatomic) long long flashAndHDRConflictingControl; // @synthesize flashAndHDRConflictingControl=_flashAndHDRConflictingControl;
 @property(readonly, nonatomic) long long desiredHDRMode; // @synthesize desiredHDRMode=_desiredHDRMode;
 @property(readonly, nonatomic) long long desiredFlashMode; // @synthesize desiredFlashMode=_desiredFlashMode;
-- (id)init;
-- (id)initWithDesiredFlashMode:(long long)arg1 desiredHDRMode:(long long)arg2 flashAndHDRConflictingControl:(long long)arg3;
+- (id)initWithDesiredFlashMode:(long long)arg1 desiredHDRMode:(long long)arg2 flashAndHDRConflictingControl:(long long)arg3 desiredLivePhotoMode:(long long)arg4;
 
 @end
 

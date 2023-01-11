@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     _UIDebugLogReport *_debugReport;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIDebugLogReport *debugReport; // @synthesize debugReport=_debugReport;
 @property(nonatomic) _Bool allowsFocusRestoration; // @synthesize allowsFocusRestoration=_allowsFocusRestoration;
-- (void).cxx_destruct;
 - (void)_reportDidFindOverridingPreferredFocusEnvironment:(id)arg1 source:(id)arg2;
 - (void)_reportDidFinishEnumeratingPreferencesWithDeepestPreferredFocusableItem:(id)arg1;
 - (void)_reportFinishedEvaluatingAllPreferencesForEnvironmentInContext:(id)arg1 result:(long long)arg2;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)_reportStartingSearch;
 - (id)_overridingPreferredFocusEnvironmentForPreferredEnvironment:(id)arg1 visitedFocusEnvironments:(id)arg2;
 - (id)deepestPreferredFocusEnvironmentForEnvironment:(id)arg1;
-- (id)deepestPreferredFocusableItemForEnvironment:(id)arg1 inFocusSystem:(id)arg2;
+- (id)deepestPreferredFocusableItemForEnvironment:(id)arg1 withRequest:(id)arg2;
 
 @end
 

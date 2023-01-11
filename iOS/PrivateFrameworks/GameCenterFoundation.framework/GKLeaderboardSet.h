@@ -21,7 +21,9 @@
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) GKLeaderboardSetInternal *internal; // @synthesize internal=_internal;
+- (void)loadLeaderboardsWithHandler:(CDUnknownBlockType)arg1;
 - (void)loadLeaderboardsForGame:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadLeaderboardsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadLeaderboardsForGame:(id)arg1 forPlayer:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -33,14 +35,13 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithInternalRepresentation:(id)arg1;
 
 // Remaining properties
-@property(readonly, retain, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
+@property(readonly, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property(readonly, retain, nonatomic) NSArray *leaderboardIdentifiers; // @dynamic leaderboardIdentifiers;
 @property(copy, nonatomic) NSString *title; // @dynamic title;

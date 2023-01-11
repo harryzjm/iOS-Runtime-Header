@@ -12,8 +12,8 @@
     id <NSCopying> _payload;
 }
 
-@property(readonly, copy, nonatomic) id <NSCopying> payload; // @synthesize payload=_payload;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) id <NSCopying> payload; // @synthesize payload=_payload;
 - (_Bool)isOpaque;
 @property(readonly, nonatomic) int presentationType;
 - (struct CGSize)pixelSize;

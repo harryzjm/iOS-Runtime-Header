@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, CPLExtractedBatch, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportGroup, CPLEngineTransportUploadBatchTask, OS_dispatch_queue;
 
 @interface CPLPushToTransportScopeTask
@@ -15,7 +15,6 @@
     CPLEnginePushRepository *_pushRepository;
     CPLEngineScheduler *_scheduler;
     CPLBatchExtractionStrategy *_currentStrategy;
-    CPLExtractedBatch *_extractedBatch;
     CPLChangeBatch *_uploadBatch;
     CPLChangeBatch *_batchToCommit;
     NSError *_preparationError;
@@ -57,12 +56,10 @@
     unsigned long long _recordCount;
     _Bool _didExtractOneBatch;
     _Bool _highPriority;
-    NSString *_phaseDescription;
 }
 
-@property(nonatomic) _Bool highPriority; // @synthesize highPriority=_highPriority;
-@property(copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool highPriority; // @synthesize highPriority=_highPriority;
 - (id)taskIdentifier;
 - (void)_pushTaskDidFinishWithError:(id)arg1;
 - (void)cancel;
@@ -80,9 +77,9 @@
 - (_Bool)_shouldCheckResourcesAheadForChange:(id)arg1;
 - (void)_updateChangeProperties:(id)arg1 withBaseChange:(id)arg2 withCopyProperty:(CDUnknownBlockType)arg3;
 - (_Bool)_reenqueueExtractedBatchWithRejectedRecords:(id)arg1 error:(id *)arg2;
-- (_Bool)_discardUploadedExtractedBatchWithError:(id *)arg1;
-- (_Bool)_markUploadedTasksDidFinishWithError:(id)arg1 error:(id *)arg2;
-- (_Bool)_prepareResourcesToUploadInBatch:(id)arg1 error:(id *)arg2;
+- (_Bool)_discardUploadedExtractedBatch:(id)arg1 error:(id *)arg2;
+- (_Bool)_markUploadedTasksDidFinishWithError:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (_Bool)_prepareResourcesToUploadInBatch:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (void)_requireExistenceCheckForRecords:(id)arg1;
 - (void)_updateQuotaStrategyAfterSuccessInTransaction:(id)arg1;
 - (void)_popNextBatchAndContinue;

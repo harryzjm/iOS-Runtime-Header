@@ -23,24 +23,27 @@
     id <SBDockViewDelegate> _delegate;
 }
 
-+ (double)defaultHeightPadding;
-+ (double)defaultHeight;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBDockViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double dockListOffset; // @synthesize dockListOffset=_dockListOffset;
 @property(nonatomic) unsigned long long dockEdge; // @synthesize dockEdge=_dockEdge;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(readonly, nonatomic) SBDockIconListView *dockListView; // @synthesize dockListView=_iconListView;
-- (void).cxx_destruct;
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)_visualConfiguration;
+- (double)_layoutScale;
+- (id)_listLayout;
 @property(readonly, nonatomic) UIColor *accessibilityBackgroundColor;
 - (void)_updateCornerRadii;
 - (void)updateAccessibilityTintColor;
 - (void)_backgroundContrastDidChange:(id)arg1;
 - (void)setBackgroundAlpha:(double)arg1;
+- (void)minimumHomeScreenScaleDidChange;
 - (double)_minimumHomeScreenScale;
 - (void)layoutSubviews;
+- (struct UIEdgeInsets)_dockOverhangInsets;
 - (void)didMoveToWindow;
 - (void)getDockViewMetrics:(CDStruct_cafad96f *)arg1;
 @property(readonly, nonatomic) struct CGRect dockListViewFrame;

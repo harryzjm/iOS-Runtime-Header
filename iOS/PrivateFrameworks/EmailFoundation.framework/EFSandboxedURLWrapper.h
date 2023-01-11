@@ -10,21 +10,21 @@
 #import <EmailFoundation/EFPubliclyDescribable-Protocol.h>
 #import <EmailFoundation/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL, _EFInvokeOnDeallocToken;
+@class EFDeallocInvocationToken, NSString, NSURL;
 
 @interface EFSandboxedURLWrapper : NSObject <EFLoggable, EFPubliclyDescribable, NSSecureCoding>
 {
     NSURL *_url;
-    _EFInvokeOnDeallocToken *_invocable;
+    EFDeallocInvocationToken *_invocable;
     NSString *_sandboxToken;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)log;
-@property(readonly, nonatomic) NSString *sandboxToken; // @synthesize sandboxToken=_sandboxToken;
-@property(readonly, nonatomic) _EFInvokeOnDeallocToken *invocable; // @synthesize invocable=_invocable;
-@property(readonly) NSURL *url; // @synthesize url=_url;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *sandboxToken; // @synthesize sandboxToken=_sandboxToken;
+@property(readonly, nonatomic) EFDeallocInvocationToken *invocable; // @synthesize invocable=_invocable;
+@property(readonly) NSURL *url; // @synthesize url=_url;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)addInvalidationHandler:(CDUnknownBlockType)arg1;

@@ -6,10 +6,10 @@
 
 #import <NewsTransport/NTPBSectionDisplayDescriptor.h>
 
-@class NSURL, NTPBDiscoverMoreVideosInfo;
+@class NSURL;
 
 @interface NTPBSectionDisplayDescriptor (NTAdditions)
+@property(copy, nonatomic) NSURL *nameActionURL;
 @property(copy, nonatomic) NSURL *actionURL;
-@property(copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
 @end
 

@@ -11,8 +11,8 @@
     NSArray *_regions;
 }
 
-@property(retain, nonatomic) NSArray *regions; // @synthesize regions=_regions;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *regions; // @synthesize regions=_regions;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

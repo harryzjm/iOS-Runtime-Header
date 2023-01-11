@@ -6,31 +6,25 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaTurnInteraction-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaTurnInteraction : PBCodable <SISchemaTurnInteraction, NSSecureCoding>
+@interface SISchemaTurnInteraction : PBCodable
 {
     NSString *_interactionId;
+    _Bool _hasInteractionId;
 }
 
-@property(copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasInteractionId; // @synthesize hasInteractionId=_hasInteractionId;
+@property(copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
 
 @end
 

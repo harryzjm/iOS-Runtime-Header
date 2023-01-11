@@ -9,11 +9,9 @@
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClientManager : NSObject <MRNowPlayingClientState>
 {
-    NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableDictionary *_originClients;
     NSMutableDictionary *_originClientRequests;
 }
@@ -33,9 +31,7 @@
 - (id)originClientRequestsForPlayerPath:(id)arg1;
 - (id)playerClientForPlayerPath:(id)arg1;
 - (id)clientForPlayerPath:(id)arg1;
-- (id)existingClientForPlayerPath:(id)arg1;
 - (id)originClientForPlayerPath:(id)arg1;
-- (id)existingOriginClientForPlayerPath:(id)arg1;
 - (id)originClientForOrigin:(id)arg1;
 - (id)localOriginClient;
 - (id)debugDescription;

@@ -13,7 +13,7 @@
 - (void)unpark;
 - (void)park;
 - (void)dealloc;
-- (id)init;
+- (id)initWithReason:(id)arg1;
 
 @end
 

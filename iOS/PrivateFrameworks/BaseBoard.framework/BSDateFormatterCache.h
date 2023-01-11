@@ -33,15 +33,14 @@
     NSDateComponentsFormatter *_alarmSnoozeFormatter;
 }
 
++ (id)formatterForDateAsTimeNoAMPMWithLocale:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)multiLineDayOfWeekMonthDayFormatForLocale:(id)arg1;
 - (_Bool)supportsMultiLineDayOfWeekMonthDayStyle;
 - (id)formatAlarmSnoozeDuration:(double)arg1;
 - (id)formatAbbreviatedTimerDuration:(double)arg1;
 - (id)formatTimerDuration:(double)arg1;
 - (id)formatDateAsRelativeDateStyle:(id)arg1;
-- (_Bool)_shouldShowHoursForTimerDuration:(double)arg1;
 - (id)formatDateAsLongYMDHMSNoSpacesWithDate:(id)arg1;
 - (id)formatDateAsLongYMDHMSZPosixLocaleWithDate:(id)arg1;
 - (id)formatDateAsLongYMDHMSZWithDate:(id)arg1;

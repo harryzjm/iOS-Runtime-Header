@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     NSString *_searchQuery;
 }
 
-@property(readonly, nonatomic) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 - (id)initWithError:(id)arg1 searchQuery:(id)arg2 traits:(id)arg3;
 
 // Remaining properties
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property(readonly, nonatomic, getter=isChainResultSet) _Bool chainResultSet;
 @property(readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
+@property(readonly, nonatomic) NSArray *collectionResults;
 @property(readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;
+@property(readonly, nonatomic) NSArray *publisherResults;
+@property(readonly, nonatomic) NSArray *relatedEntitySections;
 @property(readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly, nonatomic) GEOMapRegion *resultBoundingRegion;

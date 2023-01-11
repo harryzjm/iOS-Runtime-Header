@@ -16,10 +16,10 @@
 @interface WGWidgetPlatterView : UIView <PLContentSizeManaging, PLContentSizeCategoryAdjusting, MTMaterialGrouping, MTVisualStylingRequiring>
 {
     MTMaterialView *_backgroundView;
-    MTMaterialView *_headerBackgroundView;
     WGPlatterHeaderContentView *_headerContentView;
     double _cornerRadius;
     _Bool _adjustsFontForContentSizeCategory;
+    _Bool _contentViewHitTestingDisabled;
     _Bool _backgroundHidden;
     _Bool _showingMoreContent;
     NSString *_materialGroupNameBase;
@@ -33,18 +33,19 @@
 }
 
 + (double)contentBaselineToBoundsBottomWithWidth:(double)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isShowingMoreContent) _Bool showingMoreContent; // @synthesize showingMoreContent=_showingMoreContent;
 @property(nonatomic) long long buttonMode; // @synthesize buttonMode=_buttonMode;
 @property(nonatomic) double topMarginForLayout; // @synthesize topMarginForLayout=_topMarginForLayout;
 @property(nonatomic) double overrideHeightForLayingOutContentView; // @synthesize overrideHeightForLayingOutContentView=_overrideHeightForLayingOutContentView;
 @property(nonatomic, getter=isBackgroundHidden) _Bool backgroundHidden; // @synthesize backgroundHidden=_backgroundHidden;
 @property(nonatomic) unsigned long long clippingEdge; // @synthesize clippingEdge=_clippingEdge;
+@property(nonatomic, getter=isContentViewHitTestingDisabled) _Bool contentViewHitTestingDisabled; // @synthesize contentViewHitTestingDisabled=_contentViewHitTestingDisabled;
 @property(retain, nonatomic, setter=_setContentView:) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) __weak WGWidgetListItemViewController *listItem; // @synthesize listItem=_listItem;
 @property(nonatomic) __weak WGWidgetHostingViewController *widgetHost; // @synthesize widgetHost=_widgetHost;
 @property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-- (void).cxx_destruct;
 - (void)iconDidInvalidate:(id)arg1;
 - (void)_updateUtilityButtonForMoreContentState:(_Bool)arg1;
 - (void)_handleAddWidget:(id)arg1;
@@ -73,6 +74,8 @@
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)cancelTouches;
+@property(readonly, copy, nonatomic) NSString *widgetIdentifier;
 @property(nonatomic, getter=isAddWidgetButtonVisible) _Bool addWidgetButtonVisible;
 @property(readonly, nonatomic) UIButton *addWidgetButton;
 @property(nonatomic, getter=isShowMoreButtonVisible) _Bool showMoreButtonVisible;

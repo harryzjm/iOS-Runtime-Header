@@ -17,6 +17,7 @@
 
 + (void)_signingDataFromRequest:(id)arg1 buyParams:(id)arg2 bag:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)_dataToSignFromRequest:(id)arg1 bagDefinition:(id)arg2;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;

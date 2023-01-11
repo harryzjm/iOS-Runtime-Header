@@ -6,20 +6,12 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTAvatarActionsModel, AVTAvatarActionsRecordUpdate, AVTAvatarEditorViewController;
-@protocol AVTAvatarRecord;
+@class AVTAvatarActionsProvider;
 
 @protocol AVTAvatarActionsModelDelegate <NSObject>
-- (void)actionsModelDidFinish:(AVTAvatarActionsModel *)arg1;
-- (void)actionsModelDidUpdateInlineActionButtons:(AVTAvatarActionsModel *)arg1;
-- (void)actionsModel:(AVTAvatarActionsModel *)arg1 didDeleteRecord:(id <AVTAvatarRecord>)arg2 withRecordUpdate:(AVTAvatarActionsRecordUpdate *)arg3 completionBlock:(void (^)(void))arg4;
-- (AVTAvatarActionsRecordUpdate *)actionsModel:(AVTAvatarActionsModel *)arg1 recordUpdateForDeletingRecord:(id <AVTAvatarRecord>)arg2;
-- (void)actionsModel:(AVTAvatarActionsModel *)arg1 shouldDeleteRecord:(id <AVTAvatarRecord>)arg2 resultBlock:(void (^)(_Bool))arg3;
-- (void)actionsModel:(AVTAvatarActionsModel *)arg1 didDuplicateToRecord:(id <AVTAvatarRecord>)arg2 completionBlock:(void (^)(void))arg3;
-- (void)actionsModel:(AVTAvatarActionsModel *)arg1 didCancelEditingRecord:(id <AVTAvatarRecord>)arg2;
-- (void)actionsModel:(AVTAvatarActionsModel *)arg1 didEditRecord:(id <AVTAvatarRecord>)arg2;
-- (void)actionsModel:(AVTAvatarActionsModel *)arg1 didAddRecord:(id <AVTAvatarRecord>)arg2;
-- (void)dismissEditorViewController:(AVTAvatarEditorViewController *)arg1 forActionsModel:(AVTAvatarActionsModel *)arg2 wasCreate:(_Bool)arg3 didEdit:(_Bool)arg4 animated:(_Bool)arg5 completion:(void (^)(void))arg6;
-- (void)presentEditorViewController:(AVTAvatarEditorViewController *)arg1 forActionsModel:(AVTAvatarActionsModel *)arg2 isCreate:(_Bool)arg3;
+- (void)performDeleteForActionsModel:(AVTAvatarActionsProvider *)arg1;
+- (void)performDuplicateForActionsModel:(AVTAvatarActionsProvider *)arg1;
+- (void)performEditForActionsModel:(AVTAvatarActionsProvider *)arg1;
+- (void)performCreateForActionsModel:(AVTAvatarActionsProvider *)arg1;
 @end
 

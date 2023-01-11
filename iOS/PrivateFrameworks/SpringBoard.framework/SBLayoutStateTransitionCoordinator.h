@@ -19,16 +19,17 @@
     id <SBLayoutStateTransitionSceneEntityFrameProvider> _sceneEntityFrameProvider;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBLayoutStateTransitionSceneEntityFrameProvider> sceneEntityFrameProvider; // @synthesize sceneEntityFrameProvider=_sceneEntityFrameProvider;
 @property(readonly, nonatomic) __weak SBSceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
 @property(readonly, nonatomic) SBLayoutStateTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
-- (void).cxx_destruct;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)endTransitionWithError:(id)arg1;
 - (void)willEndTransition;
 - (void)beginTransitionForWorkspaceTransaction:(id)arg1;
 @property(readonly, nonatomic, getter=isTransitioning) _Bool transitioning;
+- (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (id)previousLayoutStateForApplicationTransitionContext:(id)arg1;
 - (id)layoutStateForApplicationTransitionContext:(id)arg1;
 - (id)init;

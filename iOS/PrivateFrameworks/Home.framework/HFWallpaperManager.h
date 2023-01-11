@@ -9,12 +9,11 @@
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 
-@class HFWallpaperFileManager, HFWallpaperImageCache, HFWallpaperLegacyFileManager, NSMutableDictionary, NSString, NSUserDefaults;
-@protocol HFNamedWallpaperSource, HMFLocking;
+@class HFReaderWriterCache, HFWallpaperFileManager, HFWallpaperImageCache, HFWallpaperLegacyFileManager, NSString, NSUserDefaults;
+@protocol HFNamedWallpaperSource;
 
 @interface HFWallpaperManager : NSObject <HFHomeManagerObserver, HFHomeObserver>
 {
-    id <HMFLocking> _lock;
     _Bool _wallpaperSourceRegistered;
     _Bool _hasPreheatedCache;
     id <HFNamedWallpaperSource> _namedWallpaperSource;
@@ -22,27 +21,28 @@
     HFWallpaperLegacyFileManager *_legacyFileManager;
     HFWallpaperImageCache *_imageCache;
     NSUserDefaults *_userDefaults;
-    NSMutableDictionary *_wallpapers;
-    NSMutableDictionary *_wallpaperSlices;
+    HFReaderWriterCache *_wallpapersCache;
+    HFReaderWriterCache *_wallpaperSlicesCache;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasPreheatedCache; // @synthesize hasPreheatedCache=_hasPreheatedCache;
-@property(retain, nonatomic) NSMutableDictionary *wallpaperSlices; // @synthesize wallpaperSlices=_wallpaperSlices;
-@property(retain, nonatomic) NSMutableDictionary *wallpapers; // @synthesize wallpapers=_wallpapers;
+@property(retain, nonatomic) HFReaderWriterCache *wallpaperSlicesCache; // @synthesize wallpaperSlicesCache=_wallpaperSlicesCache;
+@property(retain, nonatomic) HFReaderWriterCache *wallpapersCache; // @synthesize wallpapersCache=_wallpapersCache;
 @property(retain, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(retain, nonatomic) HFWallpaperImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property(retain, nonatomic) HFWallpaperLegacyFileManager *legacyFileManager; // @synthesize legacyFileManager=_legacyFileManager;
 @property(retain, nonatomic) HFWallpaperFileManager *fileManager; // @synthesize fileManager=_fileManager;
 @property(retain, nonatomic) id <HFNamedWallpaperSource> namedWallpaperSource; // @synthesize namedWallpaperSource=_namedWallpaperSource;
 @property(readonly, nonatomic) _Bool wallpaperSourceRegistered; // @synthesize wallpaperSourceRegistered=_wallpaperSourceRegistered;
-- (void).cxx_destruct;
 - (void)_logUserMetricsAfterSettingWallpaper;
 - (void)_dispatchWallpaperChangedForKey:(id)arg1;
 - (long long)_namedCollectionTypeForKey:(id)arg1;
 - (id)_resolveHomeKitObjectForKey:(id)arg1;
 - (void)_pruneUnusedWallpapers;
 - (void)_pruneUnusedWallpapersWithExistingHomeKitIdentifiers:(id)arg1;
+- (void)_setImageCacheForWallpaper:(id)arg1 image:(id)arg2 forHomeKitIdentifier:(id)arg3;
 - (void)_setWallpaper:(id)arg1 image:(id)arg2 forHomeKitIdentifier:(id)arg3;
 - (id)_wallpaperForKey:(id)arg1 createIfNeeded:(_Bool)arg2;
 - (id)_originalImageForWallpaper:(id)arg1;

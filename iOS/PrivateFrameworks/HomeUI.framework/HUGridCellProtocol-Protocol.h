@@ -15,6 +15,8 @@
 @property(nonatomic, getter=areCellContentsHidden) _Bool cellContentsHidden;
 
 @optional
+@property(nonatomic) double pointerRegionMargin;
+@property(nonatomic, getter=isPointerInteractionEnabled) _Bool pointerInteractionEnabled;
 @property(nonatomic, getter=isRearranging) _Bool rearranging;
 @end
 

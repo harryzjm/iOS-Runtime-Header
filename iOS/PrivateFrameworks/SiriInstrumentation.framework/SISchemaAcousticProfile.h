@@ -6,31 +6,25 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaAcousticProfile-Protocol.h>
+@class NSData;
 
-@class NSData, NSString;
-
-@interface SISchemaAcousticProfile : PBCodable <SISchemaAcousticProfile, NSSecureCoding>
+@interface SISchemaAcousticProfile : PBCodable
 {
+    _Bool _hasA;
     NSData *_a;
 }
 
-@property(copy, nonatomic) NSData *a; // @synthesize a=_a;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasA; // @synthesize hasA=_hasA;
+@property(copy, nonatomic) NSData *a; // @synthesize a=_a;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
 
 @end
 

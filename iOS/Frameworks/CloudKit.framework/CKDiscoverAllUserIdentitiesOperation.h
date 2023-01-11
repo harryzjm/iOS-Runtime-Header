@@ -4,26 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
+#import <CloudKit/CKDiscoverAllUserIdentitiesOperationCallbacks-Protocol.h>
 
-@interface CKDiscoverAllUserIdentitiesOperation
+@class CKDiscoverUserIdentitiesOperationInfo, NSMutableDictionary;
+@protocol CKDiscoverAllUserIdentitiesOperationCallbacks;
+
+@interface CKDiscoverAllUserIdentitiesOperation <CKDiscoverAllUserIdentitiesOperationCallbacks>
 {
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverAllUserIdentitiesCompletionBlock;
     NSMutableDictionary *_identityToContactIdentifiers;
 }
 
-@property(retain, nonatomic) NSMutableDictionary *identityToContactIdentifiers; // @synthesize identityToContactIdentifiers=_identityToContactIdentifiers;
++ (Class)operationInfoClass;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *identityToContactIdentifiers; // @synthesize identityToContactIdentifiers=_identityToContactIdentifiers;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleUserIdentityDiscovery:(id)arg1;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
-- (Class)operationInfoClass;
 @property(copy, nonatomic) CDUnknownBlockType discoverAllUserIdentitiesCompletionBlock; // @synthesize discoverAllUserIdentitiesCompletionBlock=_discoverAllUserIdentitiesCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType userIdentityDiscoveredBlock; // @synthesize userIdentityDiscoveredBlock=_userIdentityDiscoveredBlock;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKDiscoverAllUserIdentitiesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKDiscoverUserIdentitiesOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

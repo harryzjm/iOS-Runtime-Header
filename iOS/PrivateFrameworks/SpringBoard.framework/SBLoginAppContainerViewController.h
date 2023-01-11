@@ -47,6 +47,7 @@
 - (void)_removeBatteryChargingView;
 - (void)_addBatteryChargingView;
 - (void)_handleBacklightFadeEnded;
+- (void)sceneUpdatedWallpaperMode:(unsigned long long)arg1;
 - (void)sceneUpdatedRotationMode:(long long)arg1;
 - (void)sceneUpdatedStatusBarUserName:(id)arg1;
 - (void)sceneUpdatedIdleTimerMode:(long long)arg1;
@@ -54,8 +55,6 @@
 - (void)_setupLoginScene;
 - (void)_reallyRelinquishStatusBarAssertion;
 - (void)_reallyAcquireStatusBarAssertionIfNecessaryInitiallyVisible:(_Bool)arg1;
-- (void)_hideStatusBarForReason:(id)arg1;
-- (void)_showStatusBarForReason:(id)arg1;
 - (id)_statusBarSettingsAssertion;
 - (id)_hostedSceneIdentifier;
 - (id)_hostedAppView;
@@ -79,6 +78,7 @@
 - (_Bool)requiresPasscodeInputForUIUnlockFromSource:(int)arg1 withOptions:(id)arg2;
 - (_Bool)canBeDeactivatedForUIUnlockFromSource:(int)arg1;
 - (_Bool)willUIUnlockFromSource:(int)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

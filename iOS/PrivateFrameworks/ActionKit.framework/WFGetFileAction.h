@@ -8,6 +8,9 @@
 {
 }
 
++ (id)userInterfaceXPCInterface;
++ (id)userInterfaceProtocol;
+- (id)targetContentAttribution;
 - (void)updateVisibleParameters;
 - (void)selectedStorageServiceChanged;
 - (_Bool)setParameterState:(id)arg1 forKey:(id)arg2;
@@ -16,6 +19,7 @@
 - (id)filenamePlaceholderText;
 - (id)showPickerKey;
 - (id)filePathKey;
+- (void)runWithRemoteUserInterface:(id)arg1 path:(id)arg2 input:(id)arg3 storageService:(id)arg4;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 
 @end

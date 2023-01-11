@@ -20,6 +20,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *rawContentDictionary;
 @property(readonly, copy, nonatomic) NSDictionary *matchDictionary;
 @property(readonly, nonatomic) long long contentType;
 

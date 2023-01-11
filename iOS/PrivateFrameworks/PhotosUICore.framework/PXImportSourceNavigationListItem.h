@@ -12,14 +12,14 @@
     PHPhotoLibrary *_photoLibrary;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) PHImportSource *importSource; // @synthesize importSource=_importSource;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)representedObject;
 - (_Bool)isRemovable;
-- (id)imageName;
+- (id)glyphImageName;
 @property(readonly, nonatomic) UIImage *image;
 - (id)initWithIdentifier:(id)arg1 title:(id)arg2 itemCount:(long long)arg3;
 - (id)initWithImportSource:(id)arg1 photoLibrary:(id)arg2;

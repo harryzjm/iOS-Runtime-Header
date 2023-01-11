@@ -20,6 +20,7 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *esso_hosts; // @synthesize esso_hosts=_esso_hosts;
 @property(retain, nonatomic) NSArray *esso_URLs; // @synthesize esso_URLs=_esso_URLs;
 @property(retain, nonatomic) NSDictionary *esso_extensionData; // @synthesize esso_extensionData=_esso_extensionData;
@@ -27,13 +28,12 @@
 @property(retain, nonatomic) NSString *esso_extensionIdentifier; // @synthesize esso_extensionIdentifier=_esso_extensionIdentifier;
 @property(retain, nonatomic) NSString *esso_realm; // @synthesize esso_realm=_esso_realm;
 @property(retain, nonatomic) NSString *esso_type; // @synthesize esso_type=_esso_type;
-- (void).cxx_destruct;
 - (id)_validateURLString:(id)arg1 outError:(id *)arg2;
 - (_Bool)_validateHost:(id)arg1 outError:(id *)arg2;
 - (id)payloadDescriptionKeyValueSections;
 - (id)title;
 - (id)stubDictionary;
-- (id)description;
+- (id)verboseDescription;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 
 @end

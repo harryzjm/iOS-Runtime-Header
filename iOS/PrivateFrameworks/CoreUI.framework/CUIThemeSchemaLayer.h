@@ -21,6 +21,7 @@
 @property(retain, nonatomic) NSArray *renditions; // @synthesize renditions=_renditions;
 - (void)calculateColumLefts:(id *)arg1 rowTops:(id *)arg2 totalSize:(struct CGSize *)arg3 forPartFeatures:(unsigned long long)arg4;
 - (double)translateFromWidthsOrHeightsToLeftsOrTops:(id)arg1 leftsOrTops:(id *)arg2;
+- (id)description;
 - (void)dealloc;
 - (id)initWithRenditions:(id)arg1 name:(id)arg2 index:(unsigned long long)arg3;
 

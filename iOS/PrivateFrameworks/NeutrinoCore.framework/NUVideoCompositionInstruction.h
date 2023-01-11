@@ -16,6 +16,7 @@
     NSMutableDictionary *_sourceIdentifiersByTrackID;
     NSArray *_requiredSourceTrackIDs;
     NURenderJob *_renderJob;
+    NSString *_name;
     NURenderContext *_renderContext;
     NUComposition *_adjustmentComposition;
     NSArray *_pipelineFilters;
@@ -27,16 +28,17 @@
 
 + (id)instructionFromBase:(id)arg1;
 + (id)instructionForVideoTrack:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long sampleMode; // @synthesize sampleMode=_sampleMode;
 @property(retain, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(nonatomic) CDStruct_912cb5d2 renderScale; // @synthesize renderScale=_renderScale;
 @property(retain, nonatomic) NSArray *pipelineFilters; // @synthesize pipelineFilters=_pipelineFilters;
 @property(retain, nonatomic) NUComposition *adjustmentComposition; // @synthesize adjustmentComposition=_adjustmentComposition;
 @property(retain) NURenderContext *renderContext; // @synthesize renderContext=_renderContext;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) __weak NURenderJob *renderJob; // @synthesize renderJob=_renderJob;
 @property(retain, nonatomic) NSArray *requiredSourceTrackIDs; // @synthesize requiredSourceTrackIDs=_requiredSourceTrackIDs;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToInstruction:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

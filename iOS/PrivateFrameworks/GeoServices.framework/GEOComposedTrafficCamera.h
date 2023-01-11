@@ -29,7 +29,7 @@
 - (id)titleFormatForLocation:(id)arg1;
 - (id)position;
 - (id)description;
-- (id)initWithEnrouteNotice:(id)arg1 trafficCamera:(id)arg2 onRoute:(id)arg3;
+- (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 trafficCamera:(id)arg4 onRoute:(id)arg5;
 
 @end
 

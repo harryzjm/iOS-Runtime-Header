@@ -9,9 +9,6 @@
 @interface WFHomeAccessoryConditionalSubjectState
 {
     _Bool _negatesValue;
-    HMHome *_home;
-    HMService *_service;
-    HMCharacteristic *_characteristic;
     NSDictionary *_serializedWFHMServiceParameter;
     NSDictionary *_serializedWFHMCharacteristicSubstitutableState;
     WFHMServiceParameterState *_serviceParameterState;
@@ -20,13 +17,13 @@
 }
 
 + (id)subjectType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSFormatter *characteristicValueFormatter; // @synthesize characteristicValueFormatter=_characteristicValueFormatter;
 @property(retain, nonatomic) WFHMCharacteristicSubstitutableState *characteristicSubstitutableState; // @synthesize characteristicSubstitutableState=_characteristicSubstitutableState;
 @property(retain, nonatomic) WFHMServiceParameterState *serviceParameterState; // @synthesize serviceParameterState=_serviceParameterState;
 @property(retain, nonatomic) NSDictionary *serializedWFHMCharacteristicSubstitutableState; // @synthesize serializedWFHMCharacteristicSubstitutableState=_serializedWFHMCharacteristicSubstitutableState;
 @property(retain, nonatomic) NSDictionary *serializedWFHMServiceParameter; // @synthesize serializedWFHMServiceParameter=_serializedWFHMServiceParameter;
 @property(readonly, nonatomic) _Bool negatesValue; // @synthesize negatesValue=_negatesValue;
-- (void).cxx_destruct;
 - (id)localizedLabelForEnumerationPossibleState:(id)arg1;
 - (void)getEnumerationPossibleStatesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)isEnumeration;
@@ -36,12 +33,12 @@
 - (id)minimumValue;
 - (id)maximumLength;
 - (long long)contentType;
-- (void)getContentWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-@property(readonly, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
-@property(readonly, nonatomic) HMService *service; // @synthesize service=_service;
-@property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property(readonly, nonatomic) HMCharacteristic *characteristic;
+@property(readonly, nonatomic) HMService *service;
+@property(readonly, nonatomic) HMHome *home;
 - (id)serializedRepresentation;
 - (id)initWithService:(id)arg1 characteristic:(id)arg2 homeIdentifier:(id)arg3 negatesValue:(_Bool)arg4;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;

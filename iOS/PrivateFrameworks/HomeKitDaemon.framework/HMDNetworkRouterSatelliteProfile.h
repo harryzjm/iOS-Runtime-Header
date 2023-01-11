@@ -15,9 +15,10 @@
 @property(nonatomic) long long satelliteStatus; // @synthesize satelliteStatus=_satelliteStatus;
 @property(nonatomic) unsigned long long networkStatus; // @synthesize networkStatus=_networkStatus;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleAccessoryIsReachable:(id)arg1;
-- (void)__handleAccessoryIsReachable;
-- (void)handleCharacteristicValuesChanged:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
+- (void)__handleAccessoryConnected;
+- (void)handleCharacteristicsChangedNotification:(id)arg1;
+- (void)_handleCharacteristicsChangedPayload:(id)arg1;
 - (void)_handleCharacteristicChanges:(id)arg1;
 - (void)__updateSatelliteStatus:(id)arg1;
 - (void)_updateNetworkStatus;

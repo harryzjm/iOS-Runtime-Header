@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilitySelectedSwatch;
 - (id)_accessibilityFirstQuickControlElementForFocus;
 - (void)_updateColorPicker;
 - (id)accessibilityElements;

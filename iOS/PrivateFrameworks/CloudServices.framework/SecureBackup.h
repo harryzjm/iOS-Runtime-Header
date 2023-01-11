@@ -27,6 +27,7 @@
     _Bool _usesRandomPassphrase;
     _Bool _usesRecoveryKey;
     _Bool _suppressServerFiltering;
+    _Bool _silentDoubleRecovery;
     NSString *_appleID;
     NSString *_authToken;
     NSDate *_backOffDate;
@@ -37,6 +38,7 @@
     NSString *_emcsCred;
     NSDictionary *_emcsDict;
     NSString *_encodedMetadata;
+    NSString *_duplicateEncodedMetadata;
     NSDictionary *_escrowRecord;
     NSString *_escrowProxyURL;
     NSString *_fmipUUID;
@@ -61,13 +63,19 @@
     SESWrapper *_ses;
 }
 
++ (id)getAcceptedTermsWithError:(id *)arg1;
++ (void)getAcceptedTermsForAltDSID:(id)arg1 reply:(CDUnknownBlockType)arg2;
++ (void)saveTermsAcceptance:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (unsigned int)daemonPasscodeRequestOpinion:(id *)arg1;
 + (unsigned int)needPasscodeForHSA2EscrowRecordUpdate:(id *)arg1;
++ (void)asyncRequestEscrowRecordUpdate;
 + (_Bool)supportsSecureCoding;
 + (id)_ClassCreateSecureBackupConcurrentConnection;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SESWrapper *ses; // @synthesize ses=_ses;
 @property(retain, nonatomic) EscrowPrerecord *prerecord; // @synthesize prerecord=_prerecord;
 @property(copy, nonatomic) NSString *hsa2CachedPrerecordUUID; // @synthesize hsa2CachedPrerecordUUID=_hsa2CachedPrerecordUUID;
+@property(nonatomic) _Bool silentDoubleRecovery; // @synthesize silentDoubleRecovery=_silentDoubleRecovery;
 @property(nonatomic) _Bool suppressServerFiltering; // @synthesize suppressServerFiltering=_suppressServerFiltering;
 @property(copy, nonatomic) NSString *activityUUID; // @synthesize activityUUID=_activityUUID;
 @property(copy, nonatomic) NSString *activityLabel; // @synthesize activityLabel=_activityLabel;
@@ -99,6 +107,7 @@
 @property(nonatomic) _Bool fmipRecovery; // @synthesize fmipRecovery=_fmipRecovery;
 @property(copy, nonatomic) NSString *escrowProxyURL; // @synthesize escrowProxyURL=_escrowProxyURL;
 @property(retain, nonatomic) NSDictionary *escrowRecord; // @synthesize escrowRecord=_escrowRecord;
+@property(copy, nonatomic) NSString *duplicateEncodedMetadata; // @synthesize duplicateEncodedMetadata=_duplicateEncodedMetadata;
 @property(copy, nonatomic) NSString *encodedMetadata; // @synthesize encodedMetadata=_encodedMetadata;
 @property(nonatomic) _Bool emcsMode; // @synthesize emcsMode=_emcsMode;
 @property(retain, nonatomic) NSDictionary *emcsDict; // @synthesize emcsDict=_emcsDict;
@@ -111,7 +120,8 @@
 @property(retain, nonatomic) NSDate *backOffDate; // @synthesize backOffDate=_backOffDate;
 @property(copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property(copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
-- (void).cxx_destruct;
+- (_Bool)requiresDoubleEnrollment;
+- (void)getCertificates:(CDUnknownBlockType)arg1;
 - (id)beginHSA2PasscodeRequest:(_Bool)arg1 uuid:(id)arg2 error:(id *)arg3;
 - (id)beginHSA2PasscodeRequest:(_Bool)arg1 error:(id *)arg2;
 - (void)prepareHSA2EscrowRecordContents:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
@@ -140,6 +150,9 @@
 - (void)recoverWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)recoverWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
 - (id)recoverWithInfo:(id)arg1 results:(id *)arg2;
+- (void)restoreKeychainAsyncWithPassword:(id)arg1 keybagDigest:(id)arg2 haveBottledPeer:(_Bool)arg3 viewsNotToBeRestored:(id)arg4 error:(id *)arg5;
+- (id)recoverSilentWithCDPContext:(id)arg1 allRecords:(id)arg2 error:(id *)arg3;
+- (id)recoverWithCDPContext:(id)arg1 escrowRecord:(id)arg2 error:(id *)arg3;
 - (id)recoverWithError:(id *)arg1;
 - (void)enableWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)enableWithInfo:(id)arg1;
@@ -168,6 +181,7 @@
 - (void)updateMetadataWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)stashRecoveryDataWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)disableWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)createICDPRecordWithContents:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)recoverRecordContents:(CDUnknownBlockType)arg1;
 - (void)recoverWithResults:(CDUnknownBlockType)arg1;
 - (void)enableWithCompletionBlock:(CDUnknownBlockType)arg1;

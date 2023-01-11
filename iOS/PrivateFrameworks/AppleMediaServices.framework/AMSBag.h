@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagProtocol-Protocol.h>
 
-@class NSDate, NSString;
+@class AMSProcessInfo, NSDate, NSString;
 @protocol AMSBagDataSourceProtocol;
 
 @interface AMSBag : NSObject <AMSBagProtocol>
@@ -21,21 +21,23 @@
 + (id)bagCache;
 + (id)bagForProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;
 + (id)bagForProfile:(id)arg1 profileVersion:(id)arg2;
-+ (id)internalBag;
-@property(retain, nonatomic) id <AMSBagDataSourceProtocol> dataSource; // @synthesize dataSource=_dataSource;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <AMSBagDataSourceProtocol> dataSource; // @synthesize dataSource=_dataSource;
 - (id)dictionaryForKey:(id)arg1;
+- (id)URLForKey:(id)arg1 account:(id)arg2;
 - (id)URLForKey:(id)arg1;
 - (id)stringForKey:(id)arg1;
 - (id)integerForKey:(id)arg1;
 - (id)doubleForKey:(id)arg1;
 - (id)boolForKey:(id)arg1;
 - (id)arrayForKey:(id)arg1;
+@property(readonly, nonatomic) NSString *descriptionExtended;
 @property(readonly, copy) NSString *description;
 - (void)createSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)isLoaded;
 @property(readonly, copy, nonatomic) NSString *profileVersion;
 @property(readonly, copy, nonatomic) NSString *profile;
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
 @property(readonly, nonatomic) NSDate *expirationDate;
 - (id)initWithDataSource:(id)arg1;

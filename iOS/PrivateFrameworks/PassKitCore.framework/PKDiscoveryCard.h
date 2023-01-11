@@ -25,6 +25,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *inlineDescription; // @synthesize inlineDescription=_inlineDescription;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *heading; // @synthesize heading=_heading;
@@ -35,10 +36,11 @@
 @property(readonly, nonatomic) NSString *inlineDescriptionKey; // @synthesize inlineDescriptionKey=_inlineDescriptionKey;
 @property(readonly, nonatomic) NSString *titleKey; // @synthesize titleKey=_titleKey;
 @property(readonly, nonatomic) NSString *headingKey; // @synthesize headingKey=_headingKey;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)localizeWithBundle:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

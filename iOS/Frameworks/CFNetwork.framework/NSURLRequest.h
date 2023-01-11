@@ -20,7 +20,6 @@
 + (double)defaultTimeoutInterval;
 + (void)setDefaultTimeoutInterval:(double)arg1;
 + (_Bool)supportsSecureCoding;
-+ (id)getObjectKeyWithIndex:(long long)arg1;
 + (id)requestWithURL:(id)arg1;
 + (id)requestWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
 + (void)setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
@@ -28,6 +27,7 @@
 + (void)setAllowsAnyHTTPSCertificate:(_Bool)arg1 forHost:(id)arg2;
 + (_Bool)allowsAnyHTTPSCertificateForHost:(id)arg1;
 - (id)boundInterfaceIdentifier;
+@property(readonly, getter=isKnownHTTP3Capable) _Bool knownHTTP3Capable;
 @property(readonly) _Bool allowsExpensiveNetworkAccess;
 @property(readonly) _Bool allowsConstrainedNetworkAccess;
 @property(readonly) _Bool allowsCellularAccess;
@@ -48,13 +48,13 @@
 @property(readonly) unsigned long long cachePolicy;
 - (const struct __CFURL *)cfURL;
 @property(readonly, copy) NSURL *URL;
-- (id)_CFURLRequest;
+- (struct _CFURLRequest *)_CFURLRequest;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (id)_initWithInternal:(id)arg1;
 - (id)initWithURL:(id)arg1;
-- (id)_initWithCFURLRequest:(id)arg1;
+- (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
 - (id)initWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
 @property(readonly) struct URLRequest *_inner;
 - (_Bool)_isSafeRequestForBackgroundDownload;
@@ -75,7 +75,6 @@
 - (id)HTTPReferrer;
 - (id)HTTPExtraCookies;
 - (id)HTTPContentType;
-- (id)_bodyParts;
 @property(readonly, retain) NSInputStream *HTTPBodyStream;
 @property(readonly, copy) NSData *HTTPBody;
 - (id)valueForHTTPHeaderField:(id)arg1;

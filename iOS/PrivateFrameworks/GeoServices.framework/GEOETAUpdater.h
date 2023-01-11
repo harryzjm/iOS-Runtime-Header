@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedRoute, GEOComposedRouteStep, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSString, NSTimer;
+@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedETARoute, GEOComposedRoute, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSString, NSTimer;
 @protocol GEOETAUpdaterDelegate;
 
 @interface GEOETAUpdater : NSObject
@@ -19,6 +19,7 @@
     GEOComposedRoute *_route;
     GEOComposedWaypoint *_destination;
     GEORouteAttributes *_routeAttributes;
+    GEOComposedETARoute *_etaRoute;
     long long _etaState;
     _Bool _allowRequests;
     _Bool _shouldUseConditionalRequest;
@@ -31,10 +32,9 @@
     NSData *_directionsResponseID;
     GEOCommonOptions *_commonOptions;
     GEOApplicationAuditToken *_auditToken;
-    GEOComposedRouteStep *_currentStepAtRequestStart;
-    double _percentageOfCurrentStepRemainingAtRequestStart;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(nonatomic) unsigned long long maxAlternateRoutesCount; // @synthesize maxAlternateRoutesCount=_maxAlternateRoutesCount;
 @property(nonatomic) double debugTimeWindowDuration; // @synthesize debugTimeWindowDuration=_debugTimeWindowDuration;
@@ -50,11 +50,6 @@
 @property(retain, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property(retain, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
 @property(nonatomic) __weak id <GEOETAUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (_Bool)_updateRouteWithETATrafficUpdateResponse:(id)arg1;
-- (_Bool)updateRouteWithETATrafficUpdateResponse:(id)arg1 step:(id)arg2 percentOfStepRemaining:(double)arg3;
-- (id)routesForETAUpdateRequest;
-- (double)percentageOfCurrentStepRemaining;
 - (id)currentStep;
 - (_Bool)_shouldStartConditionalETARequest;
 - (void)_continueUpdateRequests;
@@ -62,10 +57,10 @@
 - (void)_trafficRequest:(id)arg1 finished:(id)arg2;
 - (void)_sendRequest:(id)arg1;
 - (id)_updateOrCreateRequest:(id)arg1;
-- (_Bool)_updateETAResponse:(id)arg1 withRemainingDistanceFromRequest:(id)arg2;
 - (void)_startConditionalConnectionETARequest;
 - (double)_currentTime;
 - (void)_startStateWaitingForBestTimeStart:(id)arg1;
+- (void)_addRouteAttributesToRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateRequest:(id)arg1;
 - (void)stopUpdateRequests;
 - (void)startUpdateRequests;

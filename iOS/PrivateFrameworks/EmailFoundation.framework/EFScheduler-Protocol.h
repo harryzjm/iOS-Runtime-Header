@@ -13,6 +13,7 @@
 - (id <EFCancelable>)afterDelay:(double)arg1 performBlock:(void (^)(void))arg2;
 - (id <EFCancelable>)performCancelableBlock:(void (^)(EFCancelationToken *))arg1;
 - (void)performVoucherPreservingBlock:(void (^)(void))arg1;
+- (void)performSyncBarrierBlock:(void (^)(void))arg1;
 - (void)performSyncBlock:(void (^)(void))arg1;
 - (void)performBlock:(void (^)(void))arg1;
 @end

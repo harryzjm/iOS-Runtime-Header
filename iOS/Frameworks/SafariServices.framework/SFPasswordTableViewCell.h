@@ -6,10 +6,12 @@
 
 #import <UIKit/UITableViewCell.h>
 
+#import <SafariServices/SFPasswordTableViewCell-Protocol.h>
+
 @class NSString, UILabel, UIView, WBSSavedPassword;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordTableViewCell : UITableViewCell
+@interface SFPasswordTableViewCell : UITableViewCell <SFPasswordTableViewCell>
 {
     UILabel *_monogramLabel;
     UIView *_monogramBackgroundView;
@@ -17,14 +19,22 @@ __attribute__((visibility("hidden")))
     NSString *_searchPattern;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *searchPattern; // @synthesize searchPattern=_searchPattern;
 @property(readonly, nonatomic) WBSSavedPassword *savedPassword; // @synthesize savedPassword=_savedPassword;
-- (void).cxx_destruct;
 - (void)safari_copyPassword;
 - (void)safari_copyUserName;
+- (void)setSavedPassword:(id)arg1 withWarnings:(id)arg2 savedPasswordIsOnlySavedPasswordForHighLevelDomain:(_Bool)arg3;
 - (void)setSavedPassword:(id)arg1 searchPattern:(id)arg2;
 - (void)showPlaceholderImageForDomain:(id)arg1 backgroundColor:(id)arg2;
 - (void)setIcon:(id)arg1;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

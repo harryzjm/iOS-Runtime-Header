@@ -42,10 +42,9 @@ __attribute__((visibility("hidden")))
     SCNMTLComputePipeline *_splatCPS;
 }
 
-- (void)morphSparseMesh:(id)arg1 morpher:(struct __C3DMorpher *)arg2 renderContext:(id)arg3;
-- (void)unifyMesh:(id)arg1 renderContext:(id)arg2;
-- (void)morphIncrementalMesh:(id)arg1 morpher:(struct __C3DMorpher *)arg2 renderContext:(id)arg3;
-- (void)morphMesh:(id)arg1 morph:(struct __C3DMorph *)arg2 renderContext:(id)arg3;
+- (void)morphSparseMorpher:(struct __C3DMorpher *)arg1 renderContext:(id)arg2 positionBuffer:(id)arg3 normalBuffer:(id)arg4;
+- (void)unifyMeshWithRenderContext:(id)arg1 positionBuffer:(id)arg2 normalBuffer:(id)arg3;
+- (void)morphIncrementallyForMorpher:(struct __C3DMorpher *)arg1 renderContext:(id)arg2 positionBuffer:(id)arg3 normalBuffer:(id)arg4;
 - (_Bool)isCompatibleWithMorph:(struct __C3DMorph *)arg1;
 - (unsigned int)sparseIndexSize;
 - (void)dealloc;

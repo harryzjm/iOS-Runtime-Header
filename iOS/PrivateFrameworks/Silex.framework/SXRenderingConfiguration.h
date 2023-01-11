@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SXHintsConfigurationOption;
+@class NSArray, SXHintsConfigurationOption;
 
 @interface SXRenderingConfiguration
 {
@@ -12,6 +12,7 @@
 
 
 // Remaining properties
+@property(readonly, nonatomic) NSArray *conditionKeys; // @dynamic conditionKeys;
 @property(readonly, nonatomic) SXHintsConfigurationOption *hints; // @dynamic hints;
 @end
 

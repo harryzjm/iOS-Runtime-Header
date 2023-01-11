@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface HMDNetworkRouterClientStatusIdentifierList : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientStatusIdentifierList : NSObject <NSCopying, HAPTLVProtocol>
 {
     NSMutableArray *_clientStatusIdentifiers;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) NSMutableArray *clientStatusIdentifiers; // @synthesize clientStatusIdentifiers=_clientStatusIdentifiers;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *clientStatusIdentifiers; // @synthesize clientStatusIdentifiers=_clientStatusIdentifiers;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

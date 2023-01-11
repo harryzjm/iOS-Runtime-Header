@@ -14,14 +14,15 @@
     CDStruct_14d5dc5e _worldTransform;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MISSING_TYPE *localPosition; // @synthesize localPosition=_localPosition;
 @property(readonly, nonatomic) CDStruct_14d5dc5e worldTransform; // @synthesize worldTransform=_worldTransform;
 @property(readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property(readonly, nonatomic) NSUUID *planeIdentifier; // @synthesize planeIdentifier=_planeIdentifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) float distanceFromFeaturePoint;
 - (id)initWithType:(long long)arg1 worldPosition:(CDStruct_14d5dc5e)arg2 worldTransform:(id)arg3 localPosition:(long long)arg4 imagePoint:assetPosition:cameraPosition:planeIdentifier:planeAlignment: /* Error: Ran out of types for this method. */;
 - (id)initWithHitTestResult:(id)arg1 imagePoint:assetPosition:cameraPosition: /* Error: Ran out of types for this method. */;
+- (id)initWithRaycastResult:(id)arg1 imagePoint:assetPosition:cameraPosition: /* Error: Ran out of types for this method. */;
 
 @end
 

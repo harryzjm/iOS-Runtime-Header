@@ -20,24 +20,29 @@ __attribute__((visibility("hidden")))
     long long _keepAliveCount;
 }
 
++ (id)sharedDatabaseWithContainerId:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long keepAliveCount; // @synthesize keepAliveCount=_keepAliveCount;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) AMSSQLiteConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSString *containerId; // @synthesize containerId=_containerId;
-- (void).cxx_destruct;
 - (void)_performTransaction:(CDUnknownBlockType)arg1;
 - (id)_lockedById;
 - (_Bool)connectionNeedsResetForCorruption:(id)arg1;
+- (id)identifierForKey:(id)arg1 account:(id)arg2 error:(id *)arg3;
+- (void)setIdentifier:(id)arg1 forKey:(id)arg2 account:(id)arg3 duration:(double)arg4 error:(id *)arg5;
+- (void)removeIdentifiersForAccount:(id)arg1 error:(id *)arg2;
+- (void)cleanupInvalidIdentifiersWithError:(id *)arg1;
 - (void)unlockEvents:(id)arg1 error:(id *)arg2;
 - (void)unlockAllEventsWithKey:(id)arg1 error:(id *)arg2;
 - (id)lockAllEventsWithError:(id *)arg1;
 - (void)insertEvents:(id)arg1 error:(id *)arg2;
-- (void)enumerateTopicsWithLockKey:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumerateEventsWithTopic:(id)arg1 lockKey:(id)arg2 objectBlock:(CDUnknownBlockType)arg3;
 - (void)dropEvents:(id)arg1 error:(id *)arg2;
 - (void)dropAllEventsWithLockKey:(id)arg1 error:(id *)arg2;
 - (long long)countAllEventsWithLockKey:(id)arg1 error:(id *)arg2;
 - (void)close;
+- (void)dealloc;
 - (id)initWithContainerId:(id)arg1;
 
 // Remaining properties

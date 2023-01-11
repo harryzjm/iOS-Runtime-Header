@@ -12,22 +12,25 @@
     NSString *_photoDataDirectory;
     NSString *_photoDataCachesDirectory;
     NSString *_photoDataSearchDirectory;
+    NSString *_restoreInfoDirectory;
     NSString *_dcimDirectory;
     NSString *_cplAssetsDirectory;
     NSString *_cmmAssetsDirectory;
     NSString *_journalsDirectory;
     NSString *_projectsDirectory;
+    NSString *_privateDirectory;
     NSString *_changeStoreDatabasePath;
     NSString *_thumbnailsDirectory;
     NSString *_thumbnailsV2Directory;
+    NSString *_thumbnailsVideoKeyFramesDirectory;
     _Bool _assetAlbumOrderStructurePathCreated;
     PLImportFileManager *_importFileManager;
 }
 
 + (id)systemLibraryPathManager;
-@property(retain, nonatomic) PLImportFileManager *importFileManager; // @synthesize importFileManager=_importFileManager;
 - (void).cxx_destruct;
-- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1;
+@property(retain, nonatomic) PLImportFileManager *importFileManager; // @synthesize importFileManager=_importFileManager;
+- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1 populateInvalidAdjustmentPaths:(id)arg2;
 - (id)assetBaseFilenameForAdjustmentFilePath:(id)arg1;
 - (id)persistedAlbumDataDirectoryCreateIfNeeded:(_Bool)arg1 error:(id *)arg2;
 - (id)iTunesPhotosSyncCurrentLibraryUUIDPath;
@@ -39,6 +42,10 @@
 - (id)iTunesSyncedFaceDataDirectory;
 - (id)iTunesSyncedAssetsDirectory;
 - (id)iTunesPhotosSyncDirectory;
+- (id)modelRestorePostProcessingCompleteTokenPath;
+- (id)cloudRestoreCompleteTokenPath;
+- (id)cloudRestoreBackgroundPhaseInProgressTokenPath;
+- (id)cloudRestoreForegroundPhaseCompleteTokenPath;
 - (id)pathToAssetAlbumOrderStructure;
 - (id)photoMetadataDirectoryForMediaInMainDirectory:(id)arg1;
 - (id)photoMutationsDirectory;
@@ -57,6 +64,7 @@
 - (id)addToPath:(id)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;
 - (id)convertPhotoLibraryPathType:(unsigned char)arg1;
 - (id)getImportFileManager;
+- (id)basePrivateDirectoryPath;
 - (id)initWithLibraryURL:(id)arg1;
 
 @end

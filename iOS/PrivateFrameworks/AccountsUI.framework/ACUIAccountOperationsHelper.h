@@ -18,17 +18,19 @@
     id <ACUIAccountOperationsDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property _Bool isSavingAccount; // @synthesize isSavingAccount=_isSavingAccount;
 @property _Bool isRemovingAccount; // @synthesize isRemovingAccount=_isRemovingAccount;
 @property(nonatomic) __weak id <ACUIAccountOperationsDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_desiredDataclassActionsFromPossibleActions:(id)arg1 forAccount:(id)arg2 withError:(id *)arg3;
 - (void)removeAccount:(id)arg1;
+- (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2 requireVerification:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2 requireVerification:(_Bool)arg3;
 - (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2;
 - (void)saveAccount:(id)arg1 requireVerification:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveAccount:(id)arg1 requireVerification:(_Bool)arg2;
 - (void)saveAccount:(id)arg1;
+- (id)dataclassActionsForAccountSave:(id)arg1 forDataclass:(id)arg2 error:(id *)arg3;
 - (id)initWithAccountStore:(id)arg1;
 
 @end

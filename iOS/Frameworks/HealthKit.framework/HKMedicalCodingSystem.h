@@ -23,7 +23,9 @@
 
 + (id)externalCodeSystems;
 + (_Bool)supportsSecureCoding;
++ (id)appleHealthDataTypeSystem;
 + (id)adHocConceptSystem;
++ (id)unknownSystem;
 + (id)textSystem;
 + (id)FHIRQuantityComparatorSystem;
 + (id)FHIRConditionVerificationStatus;
@@ -32,12 +34,21 @@
 + (id)FHIRAllergyIntoleranceCriticality;
 + (id)FHIRAllergyIntoleranceStatus;
 + (id)FHIRProcedureStatus;
-+ (id)FHIRMedicationOrderStatus;
++ (id)FHIRMedicationDispenseStatusR4;
 + (id)FHIRMedicationDispenseStatus;
++ (id)FHIRCoverageStatus;
++ (id)FHIRGoalStatus;
++ (id)FHIRCarePlanStatus;
 + (id)FHIRMedicationStatementStatus;
++ (id)FHIRMedicationRequestStatus;
++ (id)FHIRMedicationOrderStatus;
 + (id)FHIRMedicationAdminStatus;
 + (id)FHIRObservationStatus;
++ (id)FHIRImmunizationStatus;
++ (id)FHIREventStatus;
 + (id)FHIRDiagnosticReportStatus;
++ (id)FHIRDeviceStatus;
++ (id)argonautHL7System;
 + (id)ICD10USSystem;
 + (id)ICD10System;
 + (id)NDCSystem;
@@ -48,13 +59,13 @@
 + (id)LOINCCodeSystem;
 + (id)systemWithSystemDefinition:(CDStruct_b04166ad)arg1;
 + (id)codeSystemWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasDisplayStrings; // @synthesize hasDisplayStrings=_hasDisplayStrings;
 @property(copy, nonatomic) NSArray *synonyms; // @synthesize synonyms=_synonyms;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *OID; // @synthesize OID=_OID;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -62,8 +73,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCustomIdentifier:(id)arg1;
-- (long long)codingSystemOntologyIdentifier;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 OID:(id)arg3 type:(unsigned long long)arg4 synonyms:(id)arg5 hasDisplayStrings:(_Bool)arg6;
+- (long long)ontology_hasCodingSystemAttributeIdentifier;
 
 @end
 

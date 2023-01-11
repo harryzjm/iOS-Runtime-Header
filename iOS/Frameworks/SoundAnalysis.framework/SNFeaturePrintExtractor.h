@@ -25,10 +25,10 @@ __attribute__((visibility("hidden")))
     long long _featurePrintType;
 }
 
-@property(nonatomic) float overlapFactor; // @synthesize overlapFactor=_overlapFactor;
-@property(nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) float overlapFactor; // @synthesize overlapFactor=_overlapFactor;
+@property(nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
 @property(readonly, nonatomic) struct Box *resultsBox;
 - (void)primeGraph;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)logMelSpectrogramModelDescription;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
 - (void)updateGraph;
-- (id)init;
+- (id)initWithFeaturePrintType:(long long)arg1 overlapFactor:(float)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

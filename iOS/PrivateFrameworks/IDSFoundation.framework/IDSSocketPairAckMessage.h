@@ -21,6 +21,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) NSData *data;
+@property(readonly, nonatomic) _Bool didWakeHint;
 @property(readonly, nonatomic) _Bool expectsPeerResponse;
 @property(retain, nonatomic) NSDate *expiryDate;
 @property(readonly, nonatomic) NSString *messageUUID;

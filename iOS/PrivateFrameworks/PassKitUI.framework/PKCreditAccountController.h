@@ -12,9 +12,9 @@
 + (id)relevantScheduledPaymentFromScheduledPayments:(id)arg1 account:(id)arg2;
 + (_Bool)_shouldDisplayTransactionsForAccount:(id)arg1;
 + (_Bool)_shouldDisplayBalanceForAccount:(id)arg1;
-+ (_Bool)_shouldDisplayBalanceAndTransactionsForPaymentPass:(id)arg1;
-+ (_Bool)shouldDisplayTransactionsForPaymentPass:(id)arg1 withAccount:(id)arg2;
-+ (_Bool)shouldDisplayAccountInformationForPaymentPass:(id)arg1 withAccount:(id)arg2;
++ (_Bool)_shouldDisplayBalanceAndTransactionsForTransactionSource:(id)arg1;
++ (_Bool)shouldDisplayTransactionsForTransactionSource:(id)arg1 withAccount:(id)arg2;
++ (_Bool)shouldDisplayAccountInformationForTransactionSource:(id)arg1 withAccount:(id)arg2;
 + (void)resolutionToReceiveCashbackForAccount:(id)arg1 withPeerPaymentAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

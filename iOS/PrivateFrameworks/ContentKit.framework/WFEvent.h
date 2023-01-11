@@ -12,6 +12,8 @@
 
 + (id)serializablePropertyTransformers;
 + (Class)codableEventClass;
+- (id)debugDescription;
+- (id)description;
 - (void)trackWithCount:(int)arg1;
 - (void)track;
 - (Class)codableEventClass;

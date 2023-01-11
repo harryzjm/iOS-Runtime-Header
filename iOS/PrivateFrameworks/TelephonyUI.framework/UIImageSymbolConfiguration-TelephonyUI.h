@@ -7,6 +7,7 @@
 #import <UIKit/UIImageSymbolConfiguration.h>
 
 @interface UIImageSymbolConfiguration (TelephonyUI)
++ (id)tpConfigurationWithStaticTextStyle:(id)arg1 scale:(long long)arg2 symbolWeight:(long long)arg3;
 + (id)tpConfigurationWithStaticTextStyle:(id)arg1 scale:(long long)arg2;
 @end
 

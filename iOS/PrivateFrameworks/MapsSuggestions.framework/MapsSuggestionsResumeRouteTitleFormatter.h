@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSuggestions/MapsSuggestionsETATitleFormatter-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsETAChargeTitleFormatter-Protocol.h>
 
 @class NSString;
 
-@interface MapsSuggestionsResumeRouteTitleFormatter <MapsSuggestionsETATitleFormatter>
+@interface MapsSuggestionsResumeRouteTitleFormatter <MapsSuggestionsETAChargeTitleFormatter>
 {
 }
 
-- (_Bool)formatTitlesForEntry:(id)arg1 eta:(id)arg2;
+- (_Bool)formatTitlesForEntry:(id)arg1 eta:(id)arg2 requiredChargeLevel:(id)arg3 currentChargeLevel:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

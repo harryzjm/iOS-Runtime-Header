@@ -13,14 +13,17 @@
 @interface GEOLogMsgStateMapLaunch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_launchUri;
+    NSString *_referringWebsite;
     NSString *_sourceAppId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_launchUri:1;
+        unsigned int read_referringWebsite:1;
         unsigned int read_sourceAppId:1;
-        unsigned int wrote_launchUri:1;
-        unsigned int wrote_sourceAppId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -34,14 +37,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *referringWebsite;
+@property(readonly, nonatomic) _Bool hasReferringWebsite;
 @property(retain, nonatomic) NSString *launchUri;
 @property(readonly, nonatomic) _Bool hasLaunchUri;
-- (void)_readLaunchUri;
 @property(retain, nonatomic) NSString *sourceAppId;
 @property(readonly, nonatomic) _Bool hasSourceAppId;
-- (void)_readSourceAppId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

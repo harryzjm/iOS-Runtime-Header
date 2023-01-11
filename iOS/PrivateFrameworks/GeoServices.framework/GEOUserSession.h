@@ -16,8 +16,8 @@
     unsigned int _sequenceNumber;
     struct GEOSessionID _longSessionID;
     double _longSessionIDGenerationTime;
-    struct GEOSessionID _thirtyDayCountsSessionID;
-    double _thirtyDayCountsSessionIDGenerationTime;
+    struct GEOSessionID _15MonthSessionID;
+    double _15MonthSessionIDGenerationTime;
     _Bool _shareSessionWithMaps;
     GEOUserSessionEntity *_mapsUserSessionEntity;
     _Bool _zeroSessionIDMode;
@@ -41,16 +41,18 @@
 }
 
 + (id)sharedInstance;
++ (void)setInitialShareSessionWithMaps:(_Bool)arg1;
++ (_Bool)initialShareSessionWithMaps;
 + (void)setIsGeod;
 + (_Bool)isGeod;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
 @property(nonatomic) _Bool shareSessionWithMaps; // @synthesize shareSessionWithMaps=_shareSessionWithMaps;
-- (void).cxx_destruct;
 - (void)prepareForNewShortSession;
 - (void)endNavigationSession;
 - (void)startNavigationSessionWithDirectionsID:(id)arg1 originalDirectionsID:(id)arg2;
 @property(readonly, nonatomic) GEOUserSessionEntity *navSessionEntity;
-- (id)thirtyDayCountsEntity;
+@property(readonly, nonatomic) GEOUserSessionEntity *fifteenMonthSessionEntity;
 @property(readonly, nonatomic) GEOUserSessionEntity *longSessionEntity;
 - (void)_updateNavSessionID;
 - (void)_generateNewNavSessionID;
@@ -58,16 +60,17 @@
 @property(readonly, nonatomic) GEOUserSessionSnapshot *userSessionSnapshot;
 @property(retain, nonatomic) GEOUserSessionEntity *mapsUserSessionEntity; // @synthesize mapsUserSessionEntity=_mapsUserSessionEntity;
 - (id)shortSessionEntity;
-- (struct GEOSessionID)thirtyDayCountsSessionID;
+@property(readonly, nonatomic) struct GEOSessionID fifteenMonthSessionID;
 @property(readonly, nonatomic) struct GEOSessionID longSessionID;
 - (void)mapsSessionEntityWithCallback:(CDUnknownBlockType)arg1 shareSessionIDWithMaps:(_Bool)arg2 resetSession:(_Bool)arg3;
 - (void)_resetSessionID;
-- (void)_renewThirtyDayCountsSessionID;
+- (void)_renew15MonthSessionId;
+- (void)_rollInitial15MonthSessionId;
+- (void)_create15MonthSessionFirstTime:(_Bool)arg1;
 - (void)_renewLongSessionID;
+- (void)_rollInitialLongSessionId;
+- (void)_createLongSessionWithOffset:(_Bool)arg1;
 @property(readonly, nonatomic) GEOUserSessionEntity *cohortSessionEntity;
-- (void)_safe_renewCohortSessionID;
-- (void)_renewCohortSessionID;
-- (void)_safe_renewThirtyDayCountsSessionID;
 - (void)_safe_renewLongSessionID;
 - (void)dealloc;
 - (id)init;

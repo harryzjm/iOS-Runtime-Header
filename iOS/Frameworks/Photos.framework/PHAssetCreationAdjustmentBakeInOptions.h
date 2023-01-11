@@ -7,8 +7,9 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/NSSecureCoding-Protocol.h>
 
-@interface PHAssetCreationAdjustmentBakeInOptions : NSObject <NSCopying>
+@interface PHAssetCreationAdjustmentBakeInOptions : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _shouldBakeInIfLivePhotoPlaybackDisabled;
     _Bool _shouldBakeInIfLivePhotoMuted;
@@ -17,8 +18,12 @@
     _Bool _shouldBakeInIfTimelineTrimmed;
     _Bool _shouldBakeInIfPortraitDepthEffectEnabled;
     _Bool _shouldBakeInIfContainsPenultimateResources;
+    _Bool _flattenLivePhotoToStillIfNeeded;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)adjustmentBakeInOptionsForPublishingOriginals;
+@property(nonatomic) _Bool flattenLivePhotoToStillIfNeeded; // @synthesize flattenLivePhotoToStillIfNeeded=_flattenLivePhotoToStillIfNeeded;
 @property(nonatomic) _Bool shouldBakeInIfContainsPenultimateResources; // @synthesize shouldBakeInIfContainsPenultimateResources=_shouldBakeInIfContainsPenultimateResources;
 @property(nonatomic) _Bool shouldBakeInIfPortraitDepthEffectEnabled; // @synthesize shouldBakeInIfPortraitDepthEffectEnabled=_shouldBakeInIfPortraitDepthEffectEnabled;
 @property(nonatomic) _Bool shouldBakeInIfTimelineTrimmed; // @synthesize shouldBakeInIfTimelineTrimmed=_shouldBakeInIfTimelineTrimmed;
@@ -26,6 +31,9 @@
 @property(nonatomic) _Bool shouldBakeInIfAdjustedByThirdParty; // @synthesize shouldBakeInIfAdjustedByThirdParty=_shouldBakeInIfAdjustedByThirdParty;
 @property(nonatomic) _Bool shouldBakeInIfLivePhotoMuted; // @synthesize shouldBakeInIfLivePhotoMuted=_shouldBakeInIfLivePhotoMuted;
 @property(nonatomic) _Bool shouldBakeInIfLivePhotoPlaybackDisabled; // @synthesize shouldBakeInIfLivePhotoPlaybackDisabled=_shouldBakeInIfLivePhotoPlaybackDisabled;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)plRepresentation;
 - (id)description;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

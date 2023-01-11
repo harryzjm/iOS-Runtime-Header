@@ -17,6 +17,8 @@
 @property(copy, nonatomic) NSString *uri;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
+@property(nonatomic) _Bool hasRenderingMode;
+@property(nonatomic) int renderingMode;
 @property(readonly, nonatomic) _Bool hasProxyServiceIdentifier;
 @property(copy, nonatomic) NSString *proxyServiceIdentifier;
 @property(nonatomic) _Bool hasHeight;
@@ -25,5 +27,7 @@
 @property(copy, nonatomic) NSData *data;
 - (int)StringAsType:(NSString *)arg1;
 - (NSString *)typeAsString:(int)arg1;
+- (int)StringAsRenderingMode:(NSString *)arg1;
+- (NSString *)renderingModeAsString:(int)arg1;
 @end
 

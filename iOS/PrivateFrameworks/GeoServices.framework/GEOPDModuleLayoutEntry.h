@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDModuleLayoutEntry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_applicationIds;
     NSString *_debugLayoutId;
     NSMutableArray *_modules;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _platformType;
     struct {
         unsigned int has_platformType:1;
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_applicationIds:1;
         unsigned int read_debugLayoutId:1;
         unsigned int read_modules:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_applicationIds:1;
-        unsigned int wrote_debugLayoutId:1;
-        unsigned int wrote_modules:1;
-        unsigned int wrote_platformType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,29 +46,29 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)modulesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)modulesCount;
-- (void)_addNoFlagsModules:(id)arg1;
 - (void)addModules:(id)arg1;
 - (void)clearModules;
 @property(retain, nonatomic) NSMutableArray *modules;
-- (void)_readModules;
 - (int)StringAsPlatformType:(id)arg1;
 - (id)platformTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasPlatformType;
 @property(nonatomic) int platformType;
 @property(retain, nonatomic) NSString *debugLayoutId;
 @property(readonly, nonatomic) _Bool hasDebugLayoutId;
-- (void)_readDebugLayoutId;
 - (id)applicationIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)applicationIdsCount;
-- (void)_addNoFlagsApplicationId:(id)arg1;
 - (void)addApplicationId:(id)arg1;
 - (void)clearApplicationIds;
 @property(retain, nonatomic) NSMutableArray *applicationIds;
-- (void)_readApplicationIds;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

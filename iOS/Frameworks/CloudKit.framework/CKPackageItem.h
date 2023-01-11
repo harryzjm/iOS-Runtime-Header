@@ -24,19 +24,19 @@
     NSString *_itemTypeHint;
 }
 
-@property(retain, nonatomic) NSString *itemTypeHint; // @synthesize itemTypeHint=_itemTypeHint;
-@property(retain, nonatomic) NSData *wrappedAssetKey; // @synthesize wrappedAssetKey=_wrappedAssetKey;
-@property(retain, nonatomic) NSNumber *generationID; // @synthesize generationID=_generationID;
-@property(retain, nonatomic) NSNumber *fileID; // @synthesize fileID=_fileID;
-@property(retain, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *itemTypeHint; // @synthesize itemTypeHint=_itemTypeHint;
+@property(copy, nonatomic) NSData *wrappedAssetKey; // @synthesize wrappedAssetKey=_wrappedAssetKey;
+@property(copy, nonatomic) NSNumber *generationID; // @synthesize generationID=_generationID;
+@property(copy, nonatomic) NSNumber *fileID; // @synthesize fileID=_fileID;
+@property(copy, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property(nonatomic) int sectionIndex; // @synthesize sectionIndex=_sectionIndex;
 @property(nonatomic) long long offset; // @synthesize offset=_offset;
 @property(nonatomic) long long size; // @synthesize size=_size;
-@property(retain, nonatomic) NSData *signature; // @synthesize signature=_signature;
+@property(copy, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property(nonatomic) unsigned long long itemID; // @synthesize itemID=_itemID;
-@property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(nonatomic) long long packageIndex; // @synthesize packageIndex=_packageIndex;
-- (void).cxx_destruct;
 - (id)description;
 - (id)CKPropertiesDescription;
 - (id)initWithDeviceID:(id)arg1 fileID:(id)arg2 generationID:(id)arg3;

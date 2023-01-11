@@ -26,6 +26,7 @@
     NSMutableSet *_exposedGalleryItems;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *exposedGalleryItems; // @synthesize exposedGalleryItems=_exposedGalleryItems;
 @property(retain, nonatomic) SXMosaicGalleryLayouter *galleryLayouter; // @synthesize galleryLayouter=_galleryLayouter;
 @property(nonatomic) _Bool loadedAtleastOneImage; // @synthesize loadedAtleastOneImage=_loadedAtleastOneImage;
@@ -35,7 +36,6 @@
 @property(retain, nonatomic) UIView *galleryView; // @synthesize galleryView=_galleryView;
 @property(readonly, nonatomic) SXFullscreenCanvasController *fullScreenCanvasController; // @synthesize fullScreenCanvasController=_fullScreenCanvasController;
 @property(readonly, nonatomic) id <SXGalleryItemImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
-- (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
 - (void)willSubmitMediaExposureEvent:(id)arg1;
 - (_Bool)shouldSubmitMediaExposureEventForExposedBounds:(struct CGRect)arg1;
@@ -82,7 +82,7 @@
 - (void)visibleBoundsChanged;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 mediaSharingPolicyProvider:(id)arg7 imageViewFactory:(id)arg8 canvasControllerFactory:(id)arg9;
 
 // Remaining properties

@@ -29,8 +29,8 @@
 }
 
 + (id)prepareOfflineTermsResponse:(id)arg1;
-+ (id)licensePathForAppleLanguages:(id)arg1;
 + (id)warrantyFilePathForLanguageCode:(id)arg1 countryCode:(id)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType enableSiriCompletion; // @synthesize enableSiriCompletion=_enableSiriCompletion;
 @property(copy, nonatomic) CDUnknownBlockType siriStateCompletion; // @synthesize siriStateCompletion=_siriStateCompletion;
 @property(copy, nonatomic) CDUnknownBlockType activationCompletion; // @synthesize activationCompletion=_activationCompletion;
@@ -45,8 +45,10 @@
 @property(readonly, nonatomic) NSString *regionIdentifer; // @synthesize regionIdentifer=_regionIdentifer;
 @property(readonly, nonatomic) NSString *languageIdentifer; // @synthesize languageIdentifer=_languageIdentifer;
 @property(nonatomic) __weak id <PBBridgeConnectionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)handleBuysOnWatchIngestion:(id)arg1;
+- (void)ingestTinkerCredentials:(id)arg1;
+- (void)setComputedTimeZone:(id)arg1;
+- (void)returnProxiedDeviceForDeviceWithData:(id)arg1;
 - (void)companionTermsResponse:(id)arg1;
 - (void)fetchTermsAndConditions:(id)arg1;
 - (void)prepareForForcedWatchSU:(id)arg1;
@@ -80,8 +82,11 @@
 - (void)tellCompanionThatGizmoFinishedSettingPasscode:(_Bool)arg1 isLong:(_Bool)arg2;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (_Bool)tellCompanionThatLanguageAndLanguageCompletedWithStatus:(unsigned short)arg1;
+- (void)companionDidSendTinkerWirelessCredentials:(id)arg1;
 - (void)companionDidSendWirelessCredentials:(id)arg1;
 - (void)companionDidSendLanguageAndLocale:(id)arg1;
+- (void)setFitnessRouteAuthorizationForTinker:(id)arg1;
+- (void)setMessagesInCloudEnabledForTinker:(id)arg1;
 - (void)setSiriEnabled:(id)arg1;
 - (void)setLocationEnabled:(id)arg1;
 - (void)setDiagnosticsEnabled:(id)arg1;
@@ -98,6 +103,7 @@
 - (void)getSiriStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setCompanionRegion:(id)arg1;
 - (void)setCompanionLanguage:(id)arg1;
+- (void)tellCompanionGizmoFinishedHealthSharingOptInWithSelection:(_Bool)arg1;
 - (_Bool)tellCompanionGizmoFailedActivating:(id)arg1;
 - (_Bool)tellCompanionGizmoFinishedActivatingAsDeKOTA;
 - (_Bool)tellCompanionGizmoFinishedActivating;

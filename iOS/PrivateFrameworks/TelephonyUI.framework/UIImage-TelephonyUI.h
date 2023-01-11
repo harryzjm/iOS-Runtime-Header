@@ -21,7 +21,9 @@
 + (id)telephonyUI_iPhoneAudioRouteGlyphImage;
 + (id)voicemailGlyphForSymbolType:(long long)arg1;
 + (id)voicemailReportFeedbackGlyphImage;
++ (id)voicemailPauseGlyphDisabledImage;
 + (id)voicemailPauseGlyphImage;
++ (id)voicemailPlayGlyphDisabledImage;
 + (id)voicemailPlayGlyphImage;
 + (id)voicemailUndeleteGlyphImage;
 + (id)voicemailDeleteGlyphImage;
@@ -46,9 +48,13 @@
 + (id)telephonyUIUnreadIndicatorGlyphImage;
 + (id)telephonyUIInfoButtonGlyphImage;
 + (id)telephonyUIActionButtonGlyphImage;
++ (void)clearCachedCappedSizeImagesIfNeeded;
++ (_Bool)cappedSizedImagesAreValid;
 + (id)systemImageNameForSymbolType:(long long)arg1;
 + (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
 + (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 cappedAt:(id)arg3;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 symbolWeight:(long long)arg4;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 isStaticSize:(_Bool)arg4;
 + (long long)scaleForTPScale:(long long)arg1;
 + (id)tpImageNamed:(id)arg1 inBundle:(id)arg2;

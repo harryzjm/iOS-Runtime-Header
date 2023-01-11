@@ -11,6 +11,7 @@
     void *_impl;
 }
 
+@property(readonly) _Bool upsamplingSourceAudio;
 @property(readonly) _Bool remoteVoiceActivityAvailable;
 @property(readonly) unsigned char remoteVoiceActivityVAD;
 @property(readonly) unsigned char remoteVoiceActivityRMS;

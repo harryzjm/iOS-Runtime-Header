@@ -7,6 +7,10 @@
 #import <WorkflowKit/WFAppInFocusTrigger.h>
 
 @interface WFAppInFocusTrigger (CoreDuetContext)
++ (id)offLabel;
++ (id)onLabel;
++ (id)offIcon;
++ (id)onIcon;
 + (id)triggerTypeIcon;
 @end
 

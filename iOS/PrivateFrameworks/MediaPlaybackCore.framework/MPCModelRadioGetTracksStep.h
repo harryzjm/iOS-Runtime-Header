@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class ICRadioGetTracksRequest, ICRadioGetTracksResponse, ICUserIdentityProperties, NSError, SSVPlayActivityController;
+@class ICPlayActivityController, ICRadioGetTracksRequest, ICRadioGetTracksResponse, ICUserIdentityProperties, NSError;
 
 @interface MPCModelRadioGetTracksStep : NSObject
 {
     NSError *_error;
     _Bool _finished;
-    SSVPlayActivityController *_playActivityController;
+    ICPlayActivityController *_playActivityController;
     unsigned long long _playActivitySessionToken;
     ICUserIdentityProperties *_identityProperties;
     ICUserIdentityProperties *_delegatedIdentityProperties;
@@ -22,16 +22,16 @@
     unsigned long long _playActitySessionToken;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) ICRadioGetTracksResponse *siriAssetInfoGetTracksResponse; // @synthesize siriAssetInfoGetTracksResponse=_siriAssetInfoGetTracksResponse;
 @property(readonly, copy, nonatomic) ICRadioGetTracksResponse *response; // @synthesize response=_response;
 @property(readonly, copy, nonatomic) ICRadioGetTracksRequest *request; // @synthesize request=_request;
 @property(readonly, nonatomic) unsigned long long playActitySessionToken; // @synthesize playActitySessionToken=_playActitySessionToken;
-@property(readonly, copy, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
+@property(readonly, copy, nonatomic) ICPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 @property(readonly, copy, nonatomic) ICUserIdentityProperties *identityProperties; // @synthesize identityProperties=_identityProperties;
 @property(readonly, nonatomic, getter=isFinished) _Bool finished; // @synthesize finished=_finished;
 @property(readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, copy, nonatomic) ICUserIdentityProperties *delegatedIdentityProperties; // @synthesize delegatedIdentityProperties=_delegatedIdentityProperties;
-- (void).cxx_destruct;
 - (void)_presentServerDialog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_performDefaultHandlingForButtonAction:(id)arg1;
 - (void)_fireAndForgetServerDialog:(id)arg1;

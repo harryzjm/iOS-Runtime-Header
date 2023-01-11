@@ -6,10 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIView, _UINavigationBarTitleViewOverlayRects;
+@class UIMenu, UIView, _UINavigationBarTitleViewOverlayRects;
 @protocol _UINavigationBarAugmentedTitleView;
 
 @protocol _UINavigationBarTitleViewDataSource <NSObject>
+- (UIMenu *)titleViewBackButtonMenu:(UIView<_UINavigationBarAugmentedTitleView> *)arg1;
 - (void)titleViewChangedMaximumBackButtonWidth:(UIView<_UINavigationBarAugmentedTitleView> *)arg1;
 - (void)titleViewChangedPreferredDisplaySize:(UIView<_UINavigationBarAugmentedTitleView> *)arg1;
 - (void)titleViewChangedDisplayItemAlpha:(UIView<_UINavigationBarAugmentedTitleView> *)arg1;

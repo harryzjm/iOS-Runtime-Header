@@ -10,6 +10,7 @@
     _Bool _simulateCPLDisabled;
     _Bool _simulateImportantInformation;
     _Bool _simulateAnimatedIconMode;
+    _Bool _showFilterView;
     float _minimumDisplayedProgress;
     long long _alternateTitleGridCycleCount;
     double _alternateTitleGridCycleDelay;
@@ -21,6 +22,7 @@
 + (void)resetLastShownInfo;
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool showFilterView; // @synthesize showFilterView=_showFilterView;
 @property(nonatomic) long long simulatedAnimatedIconMode; // @synthesize simulatedAnimatedIconMode=_simulatedAnimatedIconMode;
 @property(nonatomic) _Bool simulateAnimatedIconMode; // @synthesize simulateAnimatedIconMode=_simulateAnimatedIconMode;
 @property(nonatomic) _Bool simulateImportantInformation; // @synthesize simulateImportantInformation=_simulateImportantInformation;

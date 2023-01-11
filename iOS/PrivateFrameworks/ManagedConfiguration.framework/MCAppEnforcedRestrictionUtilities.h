@@ -11,9 +11,9 @@
 }
 
 + (id)appUnavailableInRegionRestrictionForBundleID:(id)arg1;
-+ (id)currentCountryCode;
++ (id)currentCountryCodes;
 + (id)clientUUIDForBundleID:(id)arg1;
-+ (id)enforcedRestrictionsForBundleID:(id)arg1 restrictionPlistURL:(id)arg2 countryCode:(id)arg3;
++ (id)enforcedRestrictionsForBundleID:(id)arg1 restrictionPlistURL:(id)arg2 countryCodes:(id)arg3;
 
 @end
 

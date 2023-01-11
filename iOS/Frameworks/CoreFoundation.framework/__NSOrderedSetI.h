@@ -7,7 +7,8 @@
 __attribute__((visibility("hidden")))
 @interface __NSOrderedSetI
 {
-    unsigned int _used:58;
+    unsigned int _used:56;
+    unsigned int _stride:2;
     unsigned int _szidx:6;
     id _list[0];
 }

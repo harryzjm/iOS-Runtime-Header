@@ -10,38 +10,46 @@
 #import <HomeUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class HFCameraPlaybackEngine, HUClipScrubberDataSource, NSString, UICollectionView;
+@protocol HFCameraRecordingEvent;
 
 @interface HUClipScrubberScrollDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
     _Bool _shouldIgnoreScrolling;
-    _Bool _isUserScrubbing;
+    _Bool _userScrubbing;
     _Bool _hasUserInteractedWithScrubber;
     HUClipScrubberDataSource *_dataSource;
     UICollectionView *_clipCollectionView;
     HFCameraPlaybackEngine *_playbackEngine;
     double _lastContentWidth;
+    id <HFCameraRecordingEvent> _currentEvent;
+    double _targetScrollOffset;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double targetScrollOffset; // @synthesize targetScrollOffset=_targetScrollOffset;
+@property(retain, nonatomic) id <HFCameraRecordingEvent> currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(nonatomic) double lastContentWidth; // @synthesize lastContentWidth=_lastContentWidth;
 @property(nonatomic) _Bool hasUserInteractedWithScrubber; // @synthesize hasUserInteractedWithScrubber=_hasUserInteractedWithScrubber;
-@property(nonatomic) _Bool isUserScrubbing; // @synthesize isUserScrubbing=_isUserScrubbing;
+@property(nonatomic, getter=isUserScrubbing) _Bool userScrubbing; // @synthesize userScrubbing=_userScrubbing;
 @property(nonatomic) _Bool shouldIgnoreScrolling; // @synthesize shouldIgnoreScrolling=_shouldIgnoreScrolling;
 @property(nonatomic) __weak HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) __weak UICollectionView *clipCollectionView; // @synthesize clipCollectionView=_clipCollectionView;
 @property(nonatomic) __weak HUClipScrubberDataSource *dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
-- (id)_interpolatedDateFromClip:(id)arg1 toClip:(id)arg2 insideRect:(struct CGRect)arg3 atTimelinePosition:(float)arg4;
-- (id)_selectedDateForYesterdayFromPreviousClip:(id)arg1 percentDuration:(float)arg2;
-- (id)_selectedDateForTodayFromClip:(id)arg1 percentDuration:(float)arg2;
-- (id)_selectedDateForClipInRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)_interpolatedDateFromEvent:(id)arg1 toEvent:(id)arg2 insideRect:(struct CGRect)arg3 atTimelinePosition:(float)arg4;
+- (id)_selectedDateForYesterdayFromPreviousEvent:(id)arg1 percentDuration:(float)arg2;
+- (id)_selectedDateForTodayFromEvent:(id)arg1 percentDuration:(float)arg2;
+- (id)_selectedDateForEventInRect:(struct CGRect)arg1;
 - (float)playheadPosition;
+- (void)_updateFamiliarFaceCell;
+- (id)_selectedDateForAreaOfNoActivityAtPoint:(struct CGPoint)arg1 inScrollView:(id)arg2;
 - (void)_handleOutOfBoundsTimelinePosition:(float)arg1;
 - (_Bool)_shouldScrollBypassPlaybackEngineUpdate;
-- (_Bool)_indexPathContainsClip:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updateCollectionView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
+- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
@@ -51,7 +59,7 @@
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
-- (_Bool)_spacerPrecedingClipSpansMultipleDays:(id)arg1;
+- (_Bool)_doesPrecedingSpacerSpanMultipleDaysForEvent:(id)arg1;
 - (void)finishEditing;
 - (void)beginEditing;
 - (void)updatePlaybackEngineDate:(id)arg1;

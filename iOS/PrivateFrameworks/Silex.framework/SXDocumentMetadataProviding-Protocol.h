@@ -6,9 +6,9 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXMetaData;
+@class SXMetadata;
 
 @protocol SXDocumentMetadataProviding <NSObject>
-@property(readonly, nonatomic) SXMetaData *metadata;
+@property(readonly, nonatomic) SXMetadata *metadata;
 @end
 

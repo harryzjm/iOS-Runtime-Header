@@ -57,6 +57,7 @@
     id <CAMStillImageCaptureRequestDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long maximumBurstLength; // @synthesize maximumBurstLength=_maximumBurstLength;
 @property(readonly, nonatomic) long long aspectRatioCrop; // @synthesize aspectRatioCrop=_aspectRatioCrop;
 @property(readonly, nonatomic) long long lightingEffectType; // @synthesize lightingEffectType=_lightingEffectType;
@@ -94,7 +95,6 @@
 @property(readonly, nonatomic) long long irisMode; // @synthesize irisMode=_irisMode;
 @property(readonly, nonatomic) long long hdrMode; // @synthesize hdrMode=_hdrMode;
 @property(readonly, nonatomic) long long flashMode; // @synthesize flashMode=_flashMode;
-- (void).cxx_destruct;
 - (_Bool)hasAdjustments;
 @property(readonly, nonatomic, getter=isCTMVideo) _Bool CTMVideo;
 - (_Bool)shouldProtectPersistenceForVideo;

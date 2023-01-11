@@ -8,7 +8,7 @@
 
 #import <InstallCoordination/IXAppInstallCoordinatorObserver-Protocol.h>
 
-@class IXAppInstallCoordinator, NSString;
+@class IXAppInstallCoordinator, NSString, NSURL;
 @protocol IXInitiatingOrUpdatingCoordinator;
 
 @interface _IXSimpleInstallerDelegate : NSObject <IXAppInstallCoordinatorObserver>
@@ -16,12 +16,14 @@
     CDUnknownBlockType _completion;
     NSString *_bundleID;
     IXAppInstallCoordinator<IXInitiatingOrUpdatingCoordinator> *_coordinator;
+    NSURL *_moveResultToURL;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *moveResultToURL; // @synthesize moveResultToURL=_moveResultToURL;
 @property(retain, nonatomic) IXAppInstallCoordinator<IXInitiatingOrUpdatingCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-- (void).cxx_destruct;
 - (void)coordinator:(id)arg1 canceledWithReason:(id)arg2 client:(unsigned long long)arg3;
 - (void)coordinatorDidCompleteSuccessfully:(id)arg1;
 

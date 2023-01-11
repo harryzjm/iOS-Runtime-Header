@@ -25,8 +25,8 @@
     RETrainingContext *_currentTrainingContext;
 }
 
-@property(retain) RETrainingContext *currentTrainingContext; // @synthesize currentTrainingContext=_currentTrainingContext;
 - (void).cxx_destruct;
+@property(retain) RETrainingContext *currentTrainingContext; // @synthesize currentTrainingContext=_currentTrainingContext;
 @property(readonly, nonatomic) RETrainingScheduler *trainingScheduler;
 @property(readonly, nonatomic) NSMutableArray *trainingEvents;
 - (void)remoteTrainingClientListenerDidDisconnectContext:(id)arg1;

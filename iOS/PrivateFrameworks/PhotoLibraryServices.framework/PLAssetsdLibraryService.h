@@ -6,18 +6,18 @@
 
 #import <PhotoLibraryServices/PLAssetsdLibraryServiceProtocol-Protocol.h>
 
-@class NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController, PLProgressFollower;
+@class NSMutableArray, NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController;
 
 @interface PLAssetsdLibraryService <PLAssetsdLibraryServiceProtocol>
 {
     PLAssetsdConnectionAuthorization *_connectionAuthorization;
-    PLProgressFollower *_preRunningProgressFollower;
-    PLProgressFollower *_postRunningProgressFollower;
+    NSMutableArray *_preRunningProgressFollowers;
+    NSMutableArray *_postRunningProgressFollowers;
     PLPhotoLibraryBundleController *_libraryBundleController;
     PLAssetsdService *_assetsdService;
 }
 
-+ (long long)requiredLibraryServicesState;
++ (long long)requiredLibraryServicesStateForURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)libraryBundle;
 - (void)pendingEventsForRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -26,14 +26,17 @@
 - (void)updateThumbnailsForPhotos:(id)arg1 assignNewIndex:(_Bool)arg2 forceRefresh:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)repairSingletonObjectsWithReply:(CDUnknownBlockType)arg1;
 - (void)recoverFromCrashIfNeeded;
-- (void)importFileSystemAssetsWithReason:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)importFileSystemAssetsWithReason:(id)arg1 force:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getPhotoLibraryStoreXPCListenerEndpointWithReply:(CDUnknownBlockType)arg1;
-- (void)shutdownPhotoLibraryDatabaseWithReply:(CDUnknownBlockType)arg1;
 - (void)_sendClientReply:(CDUnknownBlockType)arg1 sandboxExtensionsByPath:(id)arg2 error:(id)arg3;
-- (id)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)_returnValueForProgress:(id)arg1 addTo:(id)arg2;
+- (id)_postRunningProgress;
+- (id)_preRunningProgress;
+- (id)upgradePhotoLibraryDatabaseWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)postOpenProgressWithReply:(CDUnknownBlockType)arg1;
-- (void)openPhotoLibraryDatabaseWithReply:(CDUnknownBlockType)arg1;
-- (void)createPhotoLibraryDatabaseWithReply:(CDUnknownBlockType)arg1;
+- (void)openPhotoLibraryDatabaseWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)createPhotoLibraryDatabaseWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)sandboxExtensionsByPath;
 - (id)newLibraryOpener;
 - (void)getCurrentModelVersionWithReply:(CDUnknownBlockType)arg1;
 - (void)launchAssetsd;

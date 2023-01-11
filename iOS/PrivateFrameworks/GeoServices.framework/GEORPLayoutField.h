@@ -8,15 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFeedbackLayoutFieldName, NSString, PBDataReader, PBUnknownFields;
+@class GEORPFeedbackLayoutFieldName, NSString, PBDataReader;
 
 @interface GEORPLayoutField : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
-    PBUnknownFields *_unknownFields;
     NSString *_displayText;
     GEORPFeedbackLayoutFieldName *_name;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _ordinal;
     int _type;
     _Bool _enabled;
@@ -24,22 +25,14 @@
         unsigned int has_ordinal:1;
         unsigned int has_type:1;
         unsigned int has_enabled:1;
-        unsigned int read_unknownFields:1;
         unsigned int read_displayText:1;
         unsigned int read_name:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayText:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_ordinal:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_enabled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -48,6 +41,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasOrdinal;
@@ -56,14 +52,14 @@
 @property(nonatomic) _Bool enabled;
 @property(retain, nonatomic) NSString *displayText;
 @property(readonly, nonatomic) _Bool hasDisplayText;
-- (void)_readDisplayText;
 @property(retain, nonatomic) GEORPFeedbackLayoutFieldName *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

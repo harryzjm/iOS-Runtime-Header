@@ -6,30 +6,27 @@
 
 #import <UIKit/UIButton.h>
 
-@class NAUILayoutConstraintSet, NSString, UIFont, UILabel, UIView;
+@class NAUILayoutConstraintSet, NSString, UIColor, UIFont, UILabel, UIView;
 
 @interface HUPillButton : UIButton
 {
     unsigned long long _style;
+    unsigned long long _cornerRadiusStyle;
     NAUILayoutConstraintSet *_constraintSet;
     UIView *_backgroundView;
     UILabel *_buttonLabel;
-    struct {
-        double topToLabelBaselineDistance;
-        double labelBaselineToBottomDistance;
-        double minHorizontalPadding;
-        double minWidth;
-    } _metrics;
+    CDStruct_e9cf424c _metrics;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
-+ (CDStruct_d2b197d1)defaultMetrics;
++ (CDStruct_e9cf424c)defaultMetrics;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *buttonLabel; // @synthesize buttonLabel=_buttonLabel;
 @property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) NAUILayoutConstraintSet *constraintSet; // @synthesize constraintSet=_constraintSet;
+@property(readonly, nonatomic) unsigned long long cornerRadiusStyle; // @synthesize cornerRadiusStyle=_cornerRadiusStyle;
 @property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
-@property(nonatomic) CDStruct_d2b197d1 metrics; // @synthesize metrics=_metrics;
-- (void).cxx_destruct;
+@property(nonatomic) CDStruct_e9cf424c metrics; // @synthesize metrics=_metrics;
 - (void)_didTap:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
@@ -40,11 +37,13 @@
 - (void)updateConstraints;
 - (void)_setupConstraintSet;
 @property(nonatomic) _Bool adjustsFontSizeToFitWidth; // @dynamic adjustsFontSizeToFitWidth;
+@property(retain, nonatomic) UIColor *buttonTextColor;
 @property(copy, nonatomic) NSString *buttonText; // @dynamic buttonText;
 @property(retain, nonatomic) UIFont *buttonFont;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (id)description;
+- (id)initWithBackgroundStyle:(unsigned long long)arg1 cornerRadiusStyle:(unsigned long long)arg2;
 - (id)initWithBackgroundStyle:(unsigned long long)arg1;
 
 @end

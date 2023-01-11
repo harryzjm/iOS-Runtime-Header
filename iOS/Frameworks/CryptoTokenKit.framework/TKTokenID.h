@@ -16,11 +16,14 @@
     NSString *_stringRepresentation;
 }
 
-+ (id)encodedObjectID:(id)arg1;
++ (id)encodedCertificateID:(id)arg1;
++ (id)encodedKeyID:(id)arg1;
 + (_Bool)supportsSecureCoding;
-@property(readonly) NSString *stringRepresentation; // @synthesize stringRepresentation=_stringRepresentation;
 - (void).cxx_destruct;
-- (id)decodedObjectID:(id)arg1 error:(id *)arg2;
+@property(readonly) NSString *stringRepresentation; // @synthesize stringRepresentation=_stringRepresentation;
+- (id)decodedCertificateID:(id)arg1 error:(id *)arg2;
+- (id)decodedKeyID:(id)arg1 error:(id *)arg2;
+- (id)decodedObjectID:(id)arg1 isCertificate:(_Bool *)arg2 error:(id *)arg3;
 - (id)description;
 @property(readonly) NSString *instanceID;
 @property(readonly) NSString *classID;

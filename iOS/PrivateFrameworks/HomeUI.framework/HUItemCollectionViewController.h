@@ -9,13 +9,15 @@
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
+#import <HomeUI/UICollectionViewDataSourcePrefetching-Protocol.h>
 
 @class HFItem, HFItemManager, NSHashTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NACancelable;
 
-@interface HUItemCollectionViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
+@interface HUItemCollectionViewController <HFExecutionEnvironmentObserver, UICollectionViewDataSourcePrefetching, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     _Bool _wantsPreferredContentSize;
+    _Bool _suppressCollectionViewUpdatesForReorderCommit;
     _Bool _hasFinishedInitialLoad;
     _Bool _viewVisible;
     _Bool _visibilityUpdatesEnabled;
@@ -24,13 +26,16 @@
     NSMutableArray *_foregroundUpdateFutures;
     NSMutableArray *_viewVisibleFutures;
     id <NACancelable> _deferredVisibilityUpdate;
+    id <NACancelable> _iconPreloadCancelable;
     NSHashTable *_childViewControllersAtViewWillAppearTime;
     NSHashTable *_childViewControllersAtViewWillDisappearTime;
 }
 
 + (unsigned long long)updateMode;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSHashTable *childViewControllersAtViewWillDisappearTime; // @synthesize childViewControllersAtViewWillDisappearTime=_childViewControllersAtViewWillDisappearTime;
 @property(retain, nonatomic) NSHashTable *childViewControllersAtViewWillAppearTime; // @synthesize childViewControllersAtViewWillAppearTime=_childViewControllersAtViewWillAppearTime;
+@property(retain, nonatomic) id <NACancelable> iconPreloadCancelable; // @synthesize iconPreloadCancelable=_iconPreloadCancelable;
 @property(retain, nonatomic) id <NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
 @property(nonatomic) _Bool visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
 @property(readonly, nonatomic) NSMutableArray *viewVisibleFutures; // @synthesize viewVisibleFutures=_viewVisibleFutures;
@@ -39,15 +44,18 @@
 @property(readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property(nonatomic) _Bool hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
 @property(retain, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property(nonatomic) _Bool suppressCollectionViewUpdatesForReorderCommit; // @synthesize suppressCollectionViewUpdatesForReorderCommit=_suppressCollectionViewUpdatesForReorderCommit;
 @property(nonatomic) _Bool wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
-- (void).cxx_destruct;
+- (void)_cancelIconPreload;
+- (void)_preloadIconsIfNeeded;
 - (void)recursivelyDisableItemUpdates:(_Bool)arg1 withReason:(id)arg2;
 @property(readonly, nonatomic) HFItem *hu_presentedItem;
 - (void)executionEnvironmentRunningStateDidChange:(id)arg1;
 - (id)hu_preloadContent;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
+- (void)itemManager:(id)arg1 didChangeHome:(id)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
-- (void)itemManager:(id)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
 - (void)itemManager:(id)arg1 didMoveSection:(long long)arg2 toSection:(long long)arg3;
 - (void)itemManager:(id)arg1 didInsertSections:(id)arg2;
 - (void)itemManager:(id)arg1 didRemoveSections:(id)arg2;
@@ -57,6 +65,7 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
+- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

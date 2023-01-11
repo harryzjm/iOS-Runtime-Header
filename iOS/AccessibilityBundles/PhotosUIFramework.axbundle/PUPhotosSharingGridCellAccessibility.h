@@ -13,6 +13,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)accessibilityCustomContent;
 - (_Bool)isAccessibilityElement;
 
 @end

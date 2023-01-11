@@ -19,6 +19,7 @@
     CTXPCServiceSubscriptionContext *_context;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) NSString *smscAddress; // @synthesize smscAddress=_smscAddress;
 @property(copy, nonatomic) NSString *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
@@ -27,7 +28,6 @@
 @property(nonatomic) int srcPort; // @synthesize srcPort=_srcPort;
 @property(nonatomic) int portAddressingScheme; // @synthesize portAddressingScheme=_portAddressingScheme;
 - (_Bool)isValid;
-- (void)dealloc;
 - (id)init;
 
 @end

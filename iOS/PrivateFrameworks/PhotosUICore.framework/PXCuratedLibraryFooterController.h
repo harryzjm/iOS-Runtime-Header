@@ -5,16 +5,15 @@
 //
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
-#import <PhotosUICore/PXCuratedLibraryFooterCPLActionDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryFooterViewModelPresentationDelegate-Protocol.h>
 #import <PhotosUICore/PXMutableCuratedLibraryFooterController-Protocol.h>
 #import <PhotosUICore/PXPhotosGlobalFooterViewDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 
-@class NSString, NSTimer, PXCPLServiceUI, PXCuratedLibraryFooterViewModel, PXCuratedLibraryItemCountsController, PXCuratedLibraryLayout, PXCuratedLibraryViewModel, PXGView, PXPhotosGlobalFooterView, PXUpdater, UIView;
+@class NSString, NSTimer, PXAssetsDataSourceCountsController, PXCuratedLibraryFooterViewModel, PXCuratedLibraryLayout, PXCuratedLibraryViewModel, PXGView, PXPhotosGlobalFooterView, PXUpdater, UIView;
 @protocol PXCuratedLibraryFooterControllerDelegate;
 
-@interface PXCuratedLibraryFooterController <PXMutableCuratedLibraryFooterController, PXChangeObserver, PXScrollViewControllerObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterViewModelPresentationDelegate, PXCuratedLibraryFooterCPLActionDelegate>
+@interface PXCuratedLibraryFooterController <PXMutableCuratedLibraryFooterController, PXChangeObserver, PXScrollViewControllerObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterViewModelPresentationDelegate>
 {
     double _lastUserScrollTime;
     _Bool _footerDidAutoScroll;
@@ -29,13 +28,12 @@
     _Bool _isFooterVisible;
     _Bool _hasAppearedOnce;
     _Bool _footerNeedsReveal;
-    int _systemLibraryChangeToken;
     id <PXCuratedLibraryFooterControllerDelegate> _delegate;
     double _footerMaskVerticalOffset;
     PXGView *_gridView;
     PXCuratedLibraryLayout *_layout;
     PXCuratedLibraryViewModel *_viewModel;
-    PXCuratedLibraryItemCountsController *_itemCountsController;
+    PXAssetsDataSourceCountsController *_itemCountsController;
     PXUpdater *_updater;
     PXCuratedLibraryFooterViewModel *_footerViewModelIfLoaded;
     PXPhotosGlobalFooterView *_footerView;
@@ -43,7 +41,7 @@
 }
 
 + (long long)_modeForZoomLevel:(long long)arg1;
-@property(nonatomic) int systemLibraryChangeToken; // @synthesize systemLibraryChangeToken=_systemLibraryChangeToken;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *footerMaskView; // @synthesize footerMaskView=_footerMaskView;
 @property(retain, nonatomic) PXPhotosGlobalFooterView *footerView; // @synthesize footerView=_footerView;
 @property(retain, nonatomic) PXCuratedLibraryFooterViewModel *footerViewModelIfLoaded; // @synthesize footerViewModelIfLoaded=_footerViewModelIfLoaded;
@@ -52,7 +50,7 @@
 @property(nonatomic) _Bool isFooterVisible; // @synthesize isFooterVisible=_isFooterVisible;
 @property(nonatomic) _Bool wantsFooter; // @synthesize wantsFooter=_wantsFooter;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
-@property(readonly, nonatomic) PXCuratedLibraryItemCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
+@property(readonly, nonatomic) PXAssetsDataSourceCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
 @property(readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(readonly, nonatomic) PXCuratedLibraryLayout *layout; // @synthesize layout=_layout;
 @property(readonly, nonatomic) PXGView *gridView; // @synthesize gridView=_gridView;
@@ -60,12 +58,7 @@
 @property(readonly, nonatomic) double footerMaskVerticalOffset; // @synthesize footerMaskVerticalOffset=_footerMaskVerticalOffset;
 @property(readonly, nonatomic) _Bool wantsFooterMask; // @synthesize wantsFooterMask=_wantsFooterMask;
 @property(nonatomic) __weak id <PXCuratedLibraryFooterControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)_stopObservingSystemLibraryChanges;
-- (void)_startObservingSystemLibraryChanges;
-- (void)_resetFooterViewModel;
-- (_Bool)footerViewModel:(id)arg1 performCPLAction:(long long)arg2;
-- (struct NSObject *)presentingViewControllerForFooterViewModel:(id)arg1;
+- (id)presentingViewControllerForFooterViewModel:(id)arg1;
 - (void)photosGlobalFooterViewDidChangeHeight:(id)arg1;
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (void)scrollViewControllerContentBoundsDidChange:(id)arg1;
@@ -74,10 +67,13 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateFooterMaskViewFrame;
 - (void)_invalidateFooterMaskViewFrame;
+- (void)_updateFooterAlpha;
+- (void)_invalidateFooterAlpha;
 - (void)_updateIsFooterVisible;
 - (void)_invalidateIsFooterVisible;
 - (void)_updateFooter;
 - (void)_invalidateFooter;
+- (void)_resetFooterViewModel;
 - (void)_updateFooterMode;
 - (void)_invalidateFooterMode;
 - (void)_updateWantsFooter;
@@ -89,7 +85,6 @@
 - (_Bool)_shouldShowFooterForPresentedZoomLevel;
 - (_Bool)_shouldShowFooterForGridViewState;
 @property(readonly, nonatomic) _Bool isPullingFooter;
-@property(readonly, nonatomic) _Bool isFooterOnlyPartiallyVisible;
 - (double)footerVisibleAmountIncludingSafeAreaInsets:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isGridViewVisible;
 - (void)_viewDidStartScrolling;
@@ -100,8 +95,6 @@
 - (void)setFooterMaskVerticalOffset:(double)arg1;
 - (void)setWantsFooterMask:(_Bool)arg1;
 - (id)footerViewModel;
-- (void)dealloc;
-@property(readonly, nonatomic) PXCPLServiceUI *cplServiceUI;
 - (id)initWithGridView:(id)arg1 layout:(id)arg2 viewModel:(id)arg3 itemsCountsController:(id)arg4;
 - (id)init;
 

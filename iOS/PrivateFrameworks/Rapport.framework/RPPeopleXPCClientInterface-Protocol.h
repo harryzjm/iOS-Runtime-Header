@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class RPPerson;
+@class CURangingMeasurement, NSString, RPPerson;
 
 @protocol RPPeopleXPCClientInterface
+- (void)xpcPersonID:(NSString *)arg1 deviceID:(NSString *)arg2 updatedMeasurement:(CURangingMeasurement *)arg3;
 - (void)xpcPersonChanged:(RPPerson *)arg1 changes:(unsigned int)arg2;
 - (void)xpcPersonLost:(RPPerson *)arg1;
 - (void)xpcPersonFound:(RPPerson *)arg1;
+- (void)xpcPeopleStatusChanged:(unsigned int)arg1;
 @end
 

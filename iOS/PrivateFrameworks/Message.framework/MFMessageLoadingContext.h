@@ -9,15 +9,12 @@
 #import <Message/EFCancelable-Protocol.h>
 
 @class EFCancelationToken, EFObservable, MFAttachmentManager, MFMailMessage, MFMimeBody, MFMimePart, NSString;
-@protocol EFObserver, EFScheduler;
+@protocol EFObserver;
 
 @interface MFMessageLoadingContext : NSObject <EFCancelable>
 {
     EFCancelationToken *_cancelable;
     EFObservable<EFObserver> *_inputObservable;
-    id <EFScheduler> _trustReevaluationScheduler;
-    EFObservable<EFObserver> *_trustReevaluationObservable;
-    EFObservable *_smimeObservable;
     NSString *_eventUniqueID;
     NSString *_meetingName;
     NSString *_meetingStorePersistentID;
@@ -37,6 +34,8 @@
 }
 
 + (unsigned long long)_nextOffsetForOffset:(unsigned long long)arg1 totalLength:(unsigned long long)arg2 requestedAmount:(unsigned long long)arg3;
++ (id)log;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long contentOffset; // @synthesize contentOffset=_contentOffset;
 @property(retain, nonatomic) MFMimePart *loadedPart; // @synthesize loadedPart=_loadedPart;
 @property(readonly, nonatomic) EFObservable *contentObservable; // @synthesize contentObservable=_contentObservable;
@@ -49,16 +48,13 @@
 @property(retain, nonatomic, setter=_setAttachmentManager:) MFAttachmentManager *attachmentManager; // @synthesize attachmentManager=_attachmentManager;
 @property(retain, nonatomic, setter=_setMessageBody:) MFMimeBody *messageBody; // @synthesize messageBody=_messageBody;
 @property(retain, nonatomic, setter=_setMessage:) MFMailMessage *message; // @synthesize message=_message;
-- (void).cxx_destruct;
 - (void)processMeetingInvitations:(id)arg1;
 - (void)assignAttachmentManagerToContent:(id)arg1;
 - (id)_reallyLoad:(long long)arg1 shouldDownload:(_Bool)arg2;
 - (void)_load:(long long)arg1 shouldDownload:(_Bool)arg2;
-- (void)reevaluateSMIMETrustWithNetworkAccessAllowed;
 - (void)load:(long long)arg1 scheduler:(id)arg2 shouldDownload:(_Bool)arg3;
 - (void)load:(long long)arg1 scheduler:(id)arg2;
 - (void)load:(long long)arg1;
-- (id)addSMIMEObserver:(CDUnknownBlockType)arg1;
 - (id)addLoadObserver:(CDUnknownBlockType)arg1;
 - (id)onScheduler:(id)arg1 addLoadObserver:(CDUnknownBlockType)arg2;
 - (void)cancel;

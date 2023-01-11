@@ -7,11 +7,12 @@
 #import <Silex/SXComponent-Protocol.h>
 #import <Silex/SXComponentAdvertisingMetadataProviding-Protocol.h>
 
-@class UIColor;
+@class NSString, UIColor;
 
 @protocol SXAdComponent <SXComponent, SXComponentAdvertisingMetadataProviding>
 @property(readonly, nonatomic) unsigned long long placementType;
 @property(readonly, nonatomic) UIColor *debugColor;
 @property(readonly, nonatomic) unsigned long long adType;
+@property(readonly, nonatomic) NSString *placementIdentifier;
 @end
 

@@ -17,17 +17,17 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property(copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property(copy, nonatomic) NSDictionary *recordFields; // @synthesize recordFields=_recordFields;
 @property(nonatomic) long long queryNotificationReason; // @synthesize queryNotificationReason=_queryNotificationReason;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
-@property(readonly, nonatomic) _Bool isPublicDatabase;
 - (id)CKPropertiesDescription;
 - (id)initWithRemoteNotificationDictionary:(id)arg1;
+- (_Bool)isPublicDatabase;
 
 @end
 

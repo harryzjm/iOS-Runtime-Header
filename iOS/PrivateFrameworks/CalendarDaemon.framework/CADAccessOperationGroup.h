@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresEventOrReminderAccess;
 + (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
+- (void)CADDatabaseResetWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetAccess:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSetInitializationOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 

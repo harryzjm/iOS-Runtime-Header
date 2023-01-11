@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSError, NSString, UIDictationConnection, UIDictationConnectionOptions, UIDictationSerializableResults;
+@class AFDictationOptions, NSArray, NSError, NSString, UIDictationConnection, UIDictationConnectionOptions, UIDictationSerializableResults;
 
 @protocol UIDictationConnectionDelegate <NSObject>
 - (void)dictationConnection:(UIDictationConnection *)arg1 didDetectLanguage:(NSString *)arg2;
@@ -18,8 +18,11 @@
 - (void)dictationConnection:(UIDictationConnection *)arg1 receivedInterpretation:(NSString *)arg2 languageModel:(NSString *)arg3 secureInput:(_Bool)arg4;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didFailRecognitionWithError:(NSError *)arg2;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didFailRecordingWithError:(NSError *)arg2;
+- (void)dictationConnectionDidCancelIncompatibleLocalRecognizer:(UIDictationConnection *)arg1;
 - (void)dictationConnectionDidCancelRecording:(UIDictationConnection *)arg1;
 - (void)dictationConnectionDidEndRecording:(UIDictationConnection *)arg1;
+- (void)dictationConnection:(UIDictationConnection *)arg1 didBeginLocalRecognitionWithModelInfo:(NSString *)arg2;
+- (void)dictationConnection:(UIDictationConnection *)arg1 didStartRecordingWithOptions:(AFDictationOptions *)arg2;
 - (void)dictationConnectionDidStartRecording:(UIDictationConnection *)arg1;
 - (void)dictationConnectionWillStartRecording:(UIDictationConnection *)arg1;
 - (void)dictationConnection:(UIDictationConnection *)arg1 updateOptions:(UIDictationConnectionOptions *)arg2;

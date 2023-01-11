@@ -12,9 +12,9 @@
     double _scale;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property(readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

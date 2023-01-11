@@ -22,22 +22,25 @@
     CDStruct_7238a68f _transitionContext;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CSComponent *homeAffordance; // @synthesize homeAffordance=_homeAffordance;
 @property(nonatomic) long long transitionType; // @synthesize transitionType=_transitionType;
 @property(nonatomic) __weak id <CSInterstitialTransitionDelegate> transitioningDelegate; // @synthesize transitioningDelegate=_transitioningDelegate;
 @property(readonly, nonatomic) CDStruct_7238a68f transitionContext; // @synthesize transitionContext=_transitionContext;
-- (void).cxx_destruct;
 - (void)cancelTransition;
 @property(readonly, nonatomic, getter=isTransitioning) _Bool transitioning;
 @property(readonly, nonatomic) long long proximityDetectionMode;
 @property(readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property(readonly, nonatomic) long long notificationBehavior;
 @property(readonly, nonatomic) long long scrollingStrategy;
+- (void)conformsToCSExternalBehaviorProviding;
+- (void)conformsToCSBehaviorProviding;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
+- (void)conformsToCSAppearanceProviding;
 @property(readonly, nonatomic) long long participantState; // @synthesize participantState=_participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (void)cleanupPresentation;

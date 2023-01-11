@@ -38,6 +38,7 @@
     NSArray *_attachmentUUIDsToUpload;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *attachmentUUIDsToUpload; // @synthesize attachmentUUIDsToUpload=_attachmentUUIDsToUpload;
 @property(retain, nonatomic) CalDiagAccountSync *accountSyncDiagnostics; // @synthesize accountSyncDiagnostics=_accountSyncDiagnostics;
 @property(retain, nonatomic) NSString *calendarHomeSyncToken; // @synthesize calendarHomeSyncToken=_calendarHomeSyncToken;
@@ -57,12 +58,13 @@
 @property(nonatomic) __weak MobileCalDAVAccount *account; // @synthesize account=_account;
 @property(nonatomic) _Bool shouldCancel; // @synthesize shouldCancel=_shouldCancel;
 @property(retain, nonatomic) CalDAVRefreshContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool needsRemindersSync;
 - (void)_sendResultToAccount;
 - (id)_guidsOfExistingCalendars;
 - (void)_cleanUpOrphanedPreferredUserAddressesPerCalendar;
 - (void)_calendarCollectionsWereRefreshed;
+- (void)_beginAttachmentDownloads;
+- (void)_downloadAttachments;
 - (void)_handleAttachmentUploadComplete:(id)arg1 attachmentUUID:(id)arg2;
 - (void)_uploadAttachments:(struct __CFArray *)arg1 forOwnerURL:(id)arg2 syncKey:(id)arg3 scheduleTag:(id)arg4;
 - (void)_uploadAttachments:(id)arg1 calDAVItemsByOwnerURL:(id)arg2;

@@ -6,17 +6,19 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class AVPlayer, HFCameraPlaybackEngine, HFCameraPlaybackPosition, HMCameraClipManager, HMCameraSource, NSError;
+@class AVPlayer, HFCameraPlaybackEngine, HFCameraPlaybackPosition, HMCameraSource, NSArray, NSError;
 
 @protocol HFCameraPlaybackEngineObserver <NSObject>
 
 @optional
-- (void)playbackEngineDidUpdateClips:(HFCameraPlaybackEngine *)arg1;
+- (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didRemoveEvents:(NSArray *)arg2;
+- (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateEvents:(NSArray *)arg2;
 - (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateClipPlayer:(AVPlayer *)arg2;
-- (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateClipManager:(HMCameraClipManager *)arg2;
+- (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateStreamAudioVolume:(_Bool)arg2;
 - (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateStreamAudioEnabled:(_Bool)arg2;
 - (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateMicrophoneEnabled:(_Bool)arg2;
 - (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateLiveCameraSource:(HMCameraSource *)arg2;
+- (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateTimelineState:(unsigned long long)arg2;
 - (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdatePlaybackError:(NSError *)arg2;
 - (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdatePlaybackPosition:(HFCameraPlaybackPosition *)arg2;
 - (void)playbackEngine:(HFCameraPlaybackEngine *)arg1 didUpdateScrubbingStatus:(_Bool)arg2;

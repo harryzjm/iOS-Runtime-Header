@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     long long _positionOffset;
 }
 
++ (id)outputWithKeyboardOutput:(id)arg1;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool didBeginOutput; // @synthesize didBeginOutput=_didBeginOutput;
 @property(nonatomic) long long positionOffset; // @synthesize positionOffset=_positionOffset;

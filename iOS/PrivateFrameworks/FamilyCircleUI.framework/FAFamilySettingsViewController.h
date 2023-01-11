@@ -10,7 +10,7 @@
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AAFamilyDetailsResponse, AAFamilyMember, AAGrandSlamSigner, AAUIProfilePictureStore, AAUIRemoteUIController, AAUIServerUIHookHandler, ACAccount, ACAccountStore, CNMonogrammer, FAChildAccountCreationController, FACircleRemoteUIDelegate, FAFamilyCreditCard, FAFamilyNotificationObserver, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSObject, NSOperationQueue, NSString, NSURL, PSSpecifier, SSAccount, UINavigationController, UITableViewCell;
+@class AAGrandSlamSigner, AAUIRemoteUIController, AAUIServerUIHookHandler, ACAccount, ACAccountStore, FACircleRemoteUIDelegate, FAFamilyCircle, FAFamilyCreditCard, FAFamilyMember, FAFamilyNotificationObserver, FAProfilePictureStore, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSOperationQueue, NSString, NSURL, PSSpecifier, UIActivityIndicatorView, UILabel, UINavigationController, UITableViewCell;
 @protocol FAFamilySettingsViewControllerDelegate;
 
 @interface FAFamilySettingsViewController : ACUIViewController <UINavigationControllerDelegate, RemoteUIControllerDelegate, FASharedSubscriptionSpecifierProviderDelegeate>
@@ -19,25 +19,21 @@
     AAGrandSlamSigner *_appleIDGrandSlamSigner;
     ACAccount *_appleAccount;
     ACAccount *_grandSlamAccount;
-    SSAccount *_itunesAccount;
+    ACAccount *_itunesAccount;
     ACAccountStore *_accountStore;
-    AAFamilyDetailsResponse *_familyDetailsResponse;
+    FAFamilyCircle *_familyCircle;
     NSOperationQueue *_networkingQueue;
-    PSSpecifier *_familyMembersGroup;
     PSSpecifier *_addFamilyMemberCell;
-    AAUIProfilePictureStore *_profilePictureStore;
-    CNMonogrammer *_monogrammer;
+    FAProfilePictureStore *_familyPictureStore;
     AAUIRemoteUIController *_iCloudRemoteUIController;
     AAUIRemoteUIController *_appleIDRemoteUIController;
     AAUIRemoteUIController *_familyV2RemoteUIController;
     FACircleRemoteUIDelegate *_familyRemoteUIDelegate;
     UITableViewCell *_activeCell;
     NSURL *_activeURL;
-    AAFamilyMember *_memberBeingViewed;
-    NSMutableDictionary *_memberDetailsPageSurrogatesByOM;
-    FAChildAccountCreationController *_childAccountCreationController;
+    FAFamilyMember *_memberBeingViewed;
+    NSMutableDictionary *_objectModelDecorators;
     UINavigationController *_childAccountCreationNavController;
-    NSObject *_profilePictureStoreDidChangeObserver;
     FAFamilyNotificationObserver *_notificationObserver;
     _Bool _fetchingPaymentInfo;
     FAFamilyCreditCard *_paymentMethod;
@@ -48,11 +44,15 @@
     AAUIServerUIHookHandler *_serverUIHookHandler;
     FACircleRemoteUIDelegate *_faCircleRemoteUIDelegate;
     FASharedSubscriptionSpecifierProvider *_sharedSubscriptionSpecifierProvider;
+    UIActivityIndicatorView *_activityIndicatorView;
+    UILabel *_navigationBarTitleLabel;
+    double _familyHeaderTitleOffset;
+    _Bool _isNavigationTitleViewDisplayed;
     id <FAFamilySettingsViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <FAFamilySettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <FAFamilySettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didSelectSpecifier:(id)arg1;
 - (void)reloadSpecifiersForProvider:(id)arg1 oldSpecifiers:(id)arg2 animated:(_Bool)arg3;
 - (void)_updateMemberDetailsPageWithLinkedAppleID:(id)arg1;
@@ -70,12 +70,20 @@
 - (void)_handleFamilyStatusChange:(id)arg1;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 willLoadRequest:(id)arg2;
+- (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
+- (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
+- (void)_handleObjectModelChangeForController:(id)arg1 objectModel:(id)arg2 isModal:(_Bool)arg3;
+- (void)remoteUIController:(id)arg1 didRefreshObjectModel:(id)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)hideActivityIndicatorInNavigationBar;
+- (void)showActivityIndicatorInNavigationBar;
 - (_Bool)_hasActiveCell;
 - (void)_stopSpinnerInCellLoadingRemoteUI;
 - (void)_startSpinnerInCellLoadingRemoteUI:(id)arg1;
 - (void)_fireFamilyUpdateNotification;
 - (void)_fetchFamilyPaymentInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchUpdatedFamilyDetailsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_addChildAccount;
 - (void)_performEventWithContext:(id)arg1 specifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_addMemberWithEventType:(id)arg1;
 - (void)_addFamilyMemberButtonWasTapped:(id)arg1;
@@ -85,6 +93,7 @@
 - (void)_paymentMethodCellWasTapped:(id)arg1;
 - (void)_pendingFamilyMemberCellWasTapped:(id)arg1;
 - (void)_familyMemberCellWasTapped:(id)arg1;
+- (void)_handleServiceSpecifierURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_createSpecifiersForPaymentInfo;
 - (id)_createSpecifierForPendingMember:(id)arg1;
 - (id)_createSpecifierForFamilyMemberCell:(id)arg1;
@@ -95,12 +104,18 @@
 - (id)_sharedSubscriptionSpecifierProvider;
 - (id)_sharedSubscriptionSpecifiers;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)specifiers;
+- (void)_layoutTableHeaderView;
+- (void)viewWillLayoutSubviews;
+- (void)_setupNavigationBarTitleView;
+- (void)_setupFamilyHeaderView;
 - (void)viewDidLoad;
 - (id)_requestConfigurator;
 - (id)_appleIDGrandSlamSigner;
+- (void)_profilePictureStoreDidReload;
 - (void)dealloc;
-- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2 familyDetailsResponse:(id)arg3;
+- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2 familyCircle:(id)arg3 familyPictureStore:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

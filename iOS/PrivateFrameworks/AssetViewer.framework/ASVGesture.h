@@ -17,11 +17,11 @@
     MISSING_TYPE *_latestAssetLocationOnScreen;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) MISSING_TYPE *latestAssetLocationOnScreen; // @synthesize latestAssetLocationOnScreen=_latestAssetLocationOnScreen;
 @property(nonatomic) MISSING_TYPE *initialAssetLocationOnScreen; // @synthesize initialAssetLocationOnScreen=_initialAssetLocationOnScreen;
 @property(nonatomic) _Bool firstTouchWasOnAsset; // @synthesize firstTouchWasOnAsset=_firstTouchWasOnAsset;
 @property(nonatomic) __weak id <ASVGestureDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (void)finishGesture;
 - (void)updateGesture;
 - (id)initWithDataSource:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSString, NSURL;
+@class EMMailDropMetadata, MFAttachmentManager, MFAttachmentPlaceholder, MFMimePart, NSItemProvider, NSString, NSURL;
 @protocol MFDataConsumer;
 
 @interface MFAttachment : NSObject
@@ -18,22 +18,24 @@
     NSURL *_url;
     MFMimePart *_part;
     NSString *_disposition;
+    NSItemProvider *_attachmentDataProvider;
     CDUnknownBlockType _fetchCompletionBlock;
     id <MFDataConsumer> _customConsumer;
     struct CGSize _imageDimensions;
 }
 
 + (_Bool)isSinglePagePDF:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize imageDimensions; // @synthesize imageDimensions=_imageDimensions;
 @property(nonatomic) _Bool wantsCompletionBlockOffMainThread; // @synthesize wantsCompletionBlockOffMainThread=_wantsCompletionBlockOffMainThread;
 @property(retain, nonatomic) id <MFDataConsumer> customConsumer; // @synthesize customConsumer=_customConsumer;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionBlock; // @synthesize fetchCompletionBlock=_fetchCompletionBlock;
+@property(retain, nonatomic) NSItemProvider *attachmentDataProvider; // @synthesize attachmentDataProvider=_attachmentDataProvider;
 @property(retain, nonatomic) MFAttachmentPlaceholder *placeholder; // @synthesize placeholder=_placeholder;
 @property(readonly) _Bool isAutoArchive; // @synthesize isAutoArchive=_isAutoArchive;
 @property(copy, nonatomic) NSString *disposition; // @synthesize disposition=_disposition;
 @property(retain, nonatomic) MFMimePart *part; // @synthesize part=_part;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (_Bool)contentTypeConformsToIWork;
 - (_Bool)contentTypeConformsToPassbook;
 - (_Bool)contentTypeConformsToMarkup;
@@ -85,7 +87,7 @@
 - (id)filterData:(id)arg1;
 - (id)fileURL;
 - (id)newDownloadProgress;
-@property(retain, nonatomic) MFMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
+@property(retain, nonatomic) EMMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
 @property _Bool isPlaceholder; // @dynamic isPlaceholder;
 - (id)fetchPlaceholderData;
 - (_Bool)isMailDropPhotoArchive;

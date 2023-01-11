@@ -8,15 +8,18 @@
 {
 }
 
++ (_Bool)range:(struct _NSRange)arg1 containsEmptySelectedRange:(struct _NSRange)arg2;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setShowMentionSuggestions:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_postSentAnnouncementIfNeeded;
 - (void)touchUpInsideSendButton:(id)arg1;
 - (void)collapsedPlaceholderLabelTapped:(id)arg1;
 - (void)browserButtonTapped:(id)arg1;
 - (void)arrowButtonTapped:(id)arg1;
 - (void)loadRecordedAudioViewsIfNeeded;
-- (void)touchUpInsideDeleteAudioRecordingButton:(id)arg1;
+- (void)messageEntryRecordedAudioViewPressedDelete:(id)arg1;
 - (void)audioReplyButtonCancel:(id)arg1;
 - (void)audioReplyButtonStop:(id)arg1;
 - (void)audioReplyButtonStart:(id)arg1;
@@ -26,7 +29,9 @@
 - (void)audioMenuItemAction:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)layoutSubviews;
+- (void)_accessibilityApplyEmojiButtonLabel;
+- (void)_accessibilityApplyCancelButtonLabel;
+- (void)_accessibilityApplyAudioButtonLabel;
 - (void)_accessibilityApplyPlaceholderLabel;
 - (void)_accessibilityApplyBrowserLabel;
 - (void)_accessibilityApplyPhotoLabel;

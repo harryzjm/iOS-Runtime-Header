@@ -6,24 +6,30 @@
 
 #import <ChatKit/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIView;
 @protocol CKComposeRecipientSelectionControllerDelegate;
 
 @interface CKComposeRecipientSelectionController <UITextFieldDelegate>
 {
+    _Bool _contactPreferredContextSelected;
+    UIView *_pillContainerView;
     CDUnknownBlockType _sendBlock;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType sendBlock; // @synthesize sendBlock=_sendBlock;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool contactPreferredContextSelected; // @synthesize contactPreferredContextSelected=_contactPreferredContextSelected;
+@property(copy, nonatomic) CDUnknownBlockType sendBlock; // @synthesize sendBlock=_sendBlock;
+@property(retain, nonatomic) UIView *pillContainerView; // @synthesize pillContainerView=_pillContainerView;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (id)_handlesForRecipients:(id)arg1;
+- (_Bool)recipientIsiMessagable:(id)arg1;
 - (_Bool)_updateBackfillForNewRecipients;
 - (id)autocompleteResultIdentifier:(id)arg1;
 - (id)conversationGUIDForRecipient:(id)arg1;
 - (_Bool)shouldInvalidateIDSRequests;
 - (_Bool)_hasExistingConversationWithAddedRecipient:(id)arg1;
 - (id)conversationList;
+- (_Bool)isBeingPresentedInMacDetailsView;
 - (_Bool)alwaysShowSearchResultsTable;
 - (_Bool)shouldSuppressSearchResultsTable;
 - (_Bool)homogenizePreferredServiceForiMessage;
@@ -34,11 +40,11 @@
 - (void)atomizeAndInvokeBlock:(CDUnknownBlockType)arg1;
 - (void)_legacyAddRecipient:(id)arg1;
 - (id)_subscriptionContextForSimID:(id)arg1 phoneNumber:(id)arg2;
+- (void)_updateSubscriptionContextForRecipient:(id)arg1 preferredService:(id)arg2;
 - (void)addRecipient:(id)arg1;
 - (void)_atomizeToConversationNameIfNecessary:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *proposedRecipients;
 @property(readonly, nonatomic) NSArray *expandedRecipients;
-- (void)_updatePillViewIfNeededIfIsNewConversation:(_Bool)arg1;
 - (_Bool)_canShowWhileLocked;
 - (_Bool)deviceHasMultipleSubscriptions;
 - (void)viewDidDisappear:(_Bool)arg1;

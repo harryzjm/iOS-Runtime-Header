@@ -29,12 +29,12 @@
 }
 
 + (_Bool)_shouldDisallowAvailabilityNotifications;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) SUDescriptor *scanDescriptor; // @synthesize scanDescriptor=_scanDescriptor;
 @property(retain, nonatomic) SUDescriptor *installDescriptor; // @synthesize installDescriptor=_installDescriptor;
 @property(nonatomic) int clientType; // @synthesize clientType=_clientType;
 @property(nonatomic) __weak id <SUManagerClientDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)autoInstallOperationPasscodePolicyChanged:(id)arg1 passcodePolicyType:(unsigned long long)arg2;
 - (void)autoInstallOperationIsReadyToInstall:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)autoInstallOperationDidConsent:(id)arg1;
@@ -69,11 +69,14 @@
 - (void)preference:(id)arg1 didChange:(id)arg2;
 - (void)installationConstraintObserverDidRemoveAllObserverBlocks:(id)arg1;
 - (void)installationConstraintMonitor:(id)arg1 constraintsDidChange:(unsigned long long)arg2;
+- (void)scheduleDateActivity:(long long)arg1;
 - (void)demoteApps:(unsigned long long)arg1;
 - (void)_cancelAutoInstallOperation:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)_consentAutoInstallOperation:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)_unregisterAutoInstallOperationClientHandler:(id)arg1;
 - (void)_registerAutoInstallOperationClientHandler:(id)arg1;
+- (_Bool)isAutomaticDownloadEnabled;
+- (void)enableAutomaticDownload:(_Bool)arg1;
 - (_Bool)isAutomaticUpdateV2Enabled;
 - (void)enableAutomaticUpdateV2:(_Bool)arg1;
 - (void)getMandatorySoftwareUpdateDictionary:(CDUnknownBlockType)arg1;
@@ -86,11 +89,13 @@
 - (_Bool)createInstallationKeybag:(id)arg1;
 - (void)installUpdate:(CDUnknownBlockType)arg1;
 - (void)installUpdateWithOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)installUpdateWithInstallOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)isUpdateReadyForInstallation:(CDUnknownBlockType)arg1;
 - (void)registerCSInstallPredicatesOnDate:(id)arg1;
 - (id)observeInstallationConstraintChangesForDownload:(id)arg1 observer:(CDUnknownBlockType)arg2;
 - (id)_getExistingAutoInstallOperationFromModel:(id)arg1;
 - (void)presentAutoUpdateBanner:(CDUnknownBlockType)arg1;
+- (_Bool)isAutoUpdateScheduled;
 - (void)isAutoUpdateScheduled:(CDUnknownBlockType)arg1;
 - (void)isAutoUpdateEnabled:(CDUnknownBlockType)arg1;
 - (void)currentPasscodePolicy:(CDUnknownBlockType)arg1;
@@ -101,13 +106,16 @@
 - (void)download:(CDUnknownBlockType)arg1;
 - (void)purgeDownload:(CDUnknownBlockType)arg1;
 - (void)updateDownloadMetadata:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)updateDownloadOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)resumeDownload:(CDUnknownBlockType)arg1;
 - (void)pauseDownload:(CDUnknownBlockType)arg1;
 - (void)cancelDownload:(CDUnknownBlockType)arg1;
 - (void)startDownloadWithMetadata:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)startDownloadWithOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)startDownload:(CDUnknownBlockType)arg1;
 - (void)isDownloading:(CDUnknownBlockType)arg1;
 - (unsigned long long)totalPurgeableSpace;
+- (void)descriptor:(CDUnknownBlockType)arg1;
 - (void)autoScanAndDownloadIfAvailable:(CDUnknownBlockType)arg1;
 - (void)scanForUpdates:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)isScanning:(CDUnknownBlockType)arg1;

@@ -15,11 +15,11 @@
 }
 
 + (id)identityWithIdentityData:(id)arg1 prekeyData:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NGMPublicPreKey *prekey; // @synthesize prekey=_prekey;
 @property(retain, nonatomic) SigningPublicKey *signingKey; // @synthesize signingKey=_signingKey;
-- (void).cxx_destruct;
-- (id)debugDescription;
 - (id)description;
+- (id)sealMessage:(id)arg1 withEncryptedAttributes:(id)arg2 signedByFullIdentity:(id)arg3 error:(id *)arg4;
 - (id)sealMessage:(id)arg1 signedByFullIdentity:(id)arg2 error:(id *)arg3;
 - (_Bool)isValidSigningDestination;
 - (_Bool)verifySignature:(id)arg1 formatter:(id)arg2;

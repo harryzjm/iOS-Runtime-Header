@@ -6,6 +6,7 @@
 
 @protocol CNFRegCreateAccountControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegCreateAccountController
 {
     id <CNFRegCreateAccountControllerDelegate> _delegate;

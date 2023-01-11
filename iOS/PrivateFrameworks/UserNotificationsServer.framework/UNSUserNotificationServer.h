@@ -86,14 +86,13 @@
 - (void)didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)willPresentNotification:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)isApplicationForeground:(id)arg1;
-- (void)applicationsDidAuthorizeNotificationSettings:(id)arg1;
-- (void)applicationsDidDenyNotificationSettings:(id)arg1;
+- (void)didChangeNotificationSettings:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)applicationsDidUninstall:(id)arg1;
+- (id)_sourceDescriptionsForApplications:(id)arg1;
 - (void)_applicationsDidInstall:(id)arg1;
 - (void)applicationStateDidChange:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
-- (void)initialApplicationsDidInstall:(id)arg1;
-- (void)initialSystemNotificationSourcesDidInstall:(id)arg1;
+- (void)initialSystemNotificationSourcesDidInstall:(id)arg1 applicationsDidInstall:(id)arg2;
 - (id)_loadAllSystemNotificationSourceDescriptions;
 - (id)init;
 

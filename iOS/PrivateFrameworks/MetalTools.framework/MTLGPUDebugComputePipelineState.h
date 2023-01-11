@@ -4,18 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLComputePipelineDescriptor, MTLComputePipelineReflection, MTLToolsFunction;
+@class MTLComputePipelineDescriptor, MTLComputePipelineReflection, MTLGPUDebugBuffer, MTLToolsFunction;
 
 @interface MTLGPUDebugComputePipelineState
 {
     MTLComputePipelineDescriptor *_descriptor;
-    MTLComputePipelineReflection *_reflection;
+    MTLComputePipelineReflection *_internalReflection;
+    MTLComputePipelineReflection *_userReflection;
+    struct KeyBufferPair _globalConstants;
 }
 
-@property(readonly, nonatomic) MTLComputePipelineReflection *reflection; // @synthesize reflection=_reflection;
+- (id).cxx_construct;
 - (void)dealloc;
+@property(readonly) unsigned long long staticThreadgroupMemoryLength;
+@property(readonly, nonatomic) MTLGPUDebugBuffer *globalConstantsBuffer;
 @property(readonly, nonatomic) MTLToolsFunction *computeFunction;
-- (id)initWithComputePipelineState:(id)arg1 descriptor:(id)arg2 reflection:(id)arg3 device:(id)arg4;
+@property(readonly, nonatomic) MTLComputePipelineReflection *userReflection;
+@property(readonly, nonatomic) MTLComputePipelineReflection *internalReflection;
+- (void)releaseReflection;
+- (id)initWithComputePipelineState:(id)arg1 descriptor:(id)arg2 unwrappedDescriptor:(id)arg3 reflection:(id)arg4 device:(id)arg5;
 
 @end
 

@@ -4,13 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBAppLayout;
+
 @interface SBExternalInlineAppExposeTransitionSwitcherModifier
 {
+    SBAppLayout *_fromAppLayout;
+    SBAppLayout *_toAppLayout;
 }
 
-- (_Bool)wantsMinificationFilter;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (_Bool)asynchronouslyRendersUntilDelay:(inout double *)arg1;
+- (void).cxx_destruct;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (double)opacityForIndex:(unsigned long long)arg1;
+- (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (id)transitionWillBegin;
+- (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
 
 @end
 

@@ -24,6 +24,7 @@
     SBUIButton *_emergencyCallButton;
     SBUIButton *_cancelButton;
     UIButton *_backgroundCancelButton;
+    UIButton *_invisibleUsePasscodeButton;
     UILabel *_touchIDReasonLabel;
     UILabel *_faceIDLabel;
     UILabel *_faceIDReasonLabel;
@@ -32,12 +33,14 @@
     NSLayoutConstraint *_faceIDLabelFaceIDReasonBaselineConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *faceIDLabelFaceIDReasonBaselineConstraint; // @synthesize faceIDLabelFaceIDReasonBaselineConstraint=_faceIDLabelFaceIDReasonBaselineConstraint;
 @property(retain, nonatomic) UILayoutGuide *faceIDLabelAndReasonLayoutGuide; // @synthesize faceIDLabelAndReasonLayoutGuide=_faceIDLabelAndReasonLayoutGuide;
 @property(retain, nonatomic) UILayoutGuide *faceIDLabelAndReasonHelperGuide; // @synthesize faceIDLabelAndReasonHelperGuide=_faceIDLabelAndReasonHelperGuide;
 @property(retain, nonatomic) UILabel *faceIDReasonLabel; // @synthesize faceIDReasonLabel=_faceIDReasonLabel;
 @property(retain, nonatomic) UILabel *faceIDLabel; // @synthesize faceIDLabel=_faceIDLabel;
 @property(retain, nonatomic) UILabel *touchIDReasonLabel; // @synthesize touchIDReasonLabel=_touchIDReasonLabel;
+@property(retain, nonatomic) UIButton *invisibleUsePasscodeButton; // @synthesize invisibleUsePasscodeButton=_invisibleUsePasscodeButton;
 @property(retain, nonatomic) UIButton *backgroundCancelButton; // @synthesize backgroundCancelButton=_backgroundCancelButton;
 @property(retain, nonatomic) SBUIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) SBUIButton *emergencyCallButton; // @synthesize emergencyCallButton=_emergencyCallButton;
@@ -53,7 +56,6 @@
 @property(nonatomic) __weak id <SBUIPasscodeBiometricAuthenticationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <SBUIPasscodeBiometricAuthenticationViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (void)_noteContentSizeCategoryDidChange;
 - (double)_leadingForFaceIDReason;
 - (void)_emergencyCallButtonHit;

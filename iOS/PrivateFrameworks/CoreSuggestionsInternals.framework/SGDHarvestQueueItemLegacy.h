@@ -18,7 +18,7 @@
 - (void)markAsFailed;
 - (void)finish;
 - (void)dealloc;
-- (id)initWithWorkQueueItem:(id)arg1 item:(id)arg2 highPriority:(_Bool)arg3;
+- (id)initWithWorkQueueItem:(id)arg1 item:(id)arg2 highPriority:(_Bool)arg3 customPriorityCritera:(unsigned char)arg4;
 
 @end
 

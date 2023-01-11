@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, DMFWebsitePolicyMonitor, NSArray, NSSet, NSString, NSURL, STAskForTimeResource, STConversation, STConversationContext, STManagementState;
+@class CNContactStore, CNContainer, DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, DMFWebsitePolicyMonitor, NSArray, NSSet, NSString, NSURL, STAskForTimeResource, STConversation, STConversationContext, STManagementState;
 @protocol STLockoutPolicyControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _reuseIdentifier;
     long long _style;
-    unsigned long long _state;
     unsigned long long _stateBeforePending;
     STManagementState *_managementState;
     STAskForTimeResource *_askForTimeResource;
@@ -23,22 +22,26 @@ __attribute__((visibility("hidden")))
     NSURL *_websiteURL;
     DMFWebsitePolicyMonitor *_websitePolicyMonitor;
     id <STLockoutPolicyControllerDelegate> _delegate;
+    _Bool _contactsEditable;
     NSString *_categoryIdentifier;
     NSString *_bundleIdentifier;
     CNContactStore *_contactStore;
+    unsigned long long _state;
     STConversation *_conversation;
     STConversationContext *_conversationContext;
     NSArray *_contactsHandles;
 }
 
+- (void).cxx_destruct;
 @property(copy) NSArray *contactsHandles; // @synthesize contactsHandles=_contactsHandles;
 @property(retain) STConversationContext *conversationContext; // @synthesize conversationContext=_conversationContext;
 @property(retain) STConversation *conversation; // @synthesize conversation=_conversation;
+@property(readonly) unsigned long long state; // @synthesize state=_state;
+@property(readonly) _Bool contactsEditable; // @synthesize contactsEditable=_contactsEditable;
 @property(readonly) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(copy, nonatomic) NSURL *websiteURL; // @synthesize websiteURL=_websiteURL;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
-- (void).cxx_destruct;
 - (void)_askForTimeResponseWithState:(long long)arg1 respondingParent:(id)arg2 amountGranted:(id)arg3 error:(id)arg4;
 - (id)_makeAskForTimeResource;
 - (_Bool)_actionIgnoreLimitForTodayWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -57,14 +60,17 @@ __attribute__((visibility("hidden")))
 - (void)_changePolicyToCurrentWithBundleIdentifier:(id)arg1;
 - (void)_changePolicyToCurrentWithCategoryIdentifier:(id)arg1;
 @property(readonly) _Bool shouldAllowOneMoreMinute;
+@property(readonly) _Bool needsToSetRestrictionsPasscode;
 - (_Bool)_isRestrictionsPasscodeSet;
 - (_Bool)_shouldRequestMoreTime;
-- (void)_updateAllowedByScreenTime:(_Bool)arg1 applicationCurrentlyLimited:(_Bool)arg2;
+- (void)_updateAllowedByScreenTime:(_Bool)arg1 applicationCurrentlyLimited:(_Bool)arg2 allowedByContactsHandle:(id)arg3;
+- (void)_allowedByContactsHandleDidChange:(id)arg1 conversationContext:(id)arg2;
 - (void)_applicationCurrentlyLimitedDidChange:(_Bool)arg1 conversationContext:(id)arg2;
 - (void)_allowedByScreenTimeDidChange:(_Bool)arg1 conversationContext:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_setupWebsitePolicyMonitorForURL:(id)arg1;
 - (void)_setupCategoryPolicyMonitorForIdentifier:(id)arg1;
+@property(readonly) CNContainer *iCloudContainer;
 @property(readonly, copy) NSSet *blockedContactsHandles;
 - (void)dealloc;
 - (_Bool)handleAction:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

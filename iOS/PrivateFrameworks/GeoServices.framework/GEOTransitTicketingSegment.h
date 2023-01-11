@@ -13,20 +13,19 @@
 @interface GEOTransitTicketingSegment : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_paths;
     NSString *_segmentName;
     NSString *_ticketingUrl;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_paths:1;
         unsigned int read_segmentName:1;
         unsigned int read_ticketingUrl:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_paths:1;
-        unsigned int wrote_segmentName:1;
-        unsigned int wrote_ticketingUrl:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,21 +42,22 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)pathAtIndex:(unsigned long long)arg1;
 - (unsigned long long)pathsCount;
-- (void)_addNoFlagsPath:(id)arg1;
 - (void)addPath:(id)arg1;
 - (void)clearPaths;
 @property(retain, nonatomic) NSMutableArray *paths;
-- (void)_readPaths;
 @property(retain, nonatomic) NSString *segmentName;
 @property(readonly, nonatomic) _Bool hasSegmentName;
-- (void)_readSegmentName;
 @property(retain, nonatomic) NSString *ticketingUrl;
 @property(readonly, nonatomic) _Bool hasTicketingUrl;
-- (void)_readTicketingUrl;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

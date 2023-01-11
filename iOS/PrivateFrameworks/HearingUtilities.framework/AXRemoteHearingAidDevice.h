@@ -75,6 +75,7 @@
     unsigned long long _rightAvailableProperties;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long rightAvailableProperties; // @synthesize rightAvailableProperties=_rightAvailableProperties;
 @property(nonatomic) unsigned long long leftAvailableProperties; // @synthesize leftAvailableProperties=_leftAvailableProperties;
 @property(nonatomic) unsigned long long pendingPropertyWrites; // @synthesize pendingPropertyWrites=_pendingPropertyWrites;
@@ -134,7 +135,6 @@
 @property(nonatomic) double rightMicrophoneVolume; // @synthesize rightMicrophoneVolume=_rightMicrophoneVolume;
 @property(nonatomic) _Bool keepInSync; // @synthesize keepInSync=_keepInSync;
 @property(nonatomic) unsigned long long deviceType; // @synthesize deviceType=_deviceType;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (double)combinedVolumeForProperty:(unsigned long long)arg1;
 - (id)valueForProperty:(unsigned long long)arg1;
@@ -157,7 +157,9 @@
 - (void)_delayWriteProperties;
 - (_Bool)propertyIsAvailable:(unsigned long long)arg1 forEar:(int)arg2;
 - (void)loadRequiredProperties;
+- (_Bool)checkDidLoadProperties:(unsigned long long)arg1;
 - (_Bool)didLoadRequiredProperties;
+- (_Bool)didLoadRequiredPeerProperties;
 - (_Bool)didLoadBasicProperties;
 - (_Bool)didLoadProperty:(unsigned long long)arg1;
 - (_Bool)containsPeripheralWithUUID:(id)arg1;

@@ -31,6 +31,8 @@
 }
 
 + (id)unserialisedReplicaID;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long replicaStyleClock; // @synthesize replicaStyleClock=_replicaStyleClock;
 @property(readonly, nonatomic) unsigned long long replicaTextClock; // @synthesize replicaTextClock=_replicaTextClock;
 @property(retain, nonatomic) NSMutableAttributedString *attributedString; // @synthesize attributedString=_attributedString;
@@ -39,8 +41,6 @@
 @property(nonatomic) _Bool hasLocalChanges; // @synthesize hasLocalChanges=_hasLocalChanges;
 @property(retain, nonatomic) TTVectorMultiTimestamp *timestamp; // @synthesize timestamp=_timestamp;
 @property(retain, nonatomic) NSUUID *replicaUUID; // @synthesize replicaUUID=_replicaUUID;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)dotDescription:(unsigned long long)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)graphIsEqual:(id)arg1;
@@ -51,6 +51,7 @@
 - (unsigned long long)mergeWithString:(id)arg1 mergeTimestamps:(_Bool)arg2;
 - (unsigned long long)mergeWithString:(id)arg1;
 - (void)dumpMergeData:(id)arg1;
+- (void)dumpData;
 - (void)checkTimestampLogStyleErrors:(_Bool)arg1;
 - (_Bool)check:(id *)arg1;
 - (void)updateClock;
@@ -68,7 +69,7 @@
 - (struct TopoSubstring *)splitTopoSubstring:(struct TopoSubstring *)arg1 atIndex:(unsigned int)arg2;
 - (_Bool)selection:(id)arg1 wasModifiedAfter:(id)arg2;
 - (_Bool)textEitherSideOfSelectionAnchor:(struct TopoID)arg1 wasModifiedAfter:(id)arg2;
-- (void)enumerateRangesModifiedAfter:(id)arg1 includingAttributes:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateHighlightableRangesModifiedAfter:(id)arg1 includingAttributes:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (long long)substring:(struct TopoSubstring *)arg1 modifiedAfter:(id)arg2 includeAttributes:(_Bool)arg3;
 - (long long)substring:(struct TopoSubstring *)arg1 modifiedAfter:(id)arg2;
 - (void)enumerateSubstrings:(CDUnknownBlockType)arg1;

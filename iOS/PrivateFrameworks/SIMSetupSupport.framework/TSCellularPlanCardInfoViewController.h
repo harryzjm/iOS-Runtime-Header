@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBBaseWelcomeController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
@@ -14,7 +14,7 @@
 @class NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UILabel, UIScrollView, UITableView, UITextField;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanCardInfoViewController : OBBaseWelcomeController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TSSetupFlowItem>
+@interface TSCellularPlanCardInfoViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TSSetupFlowItem>
 {
     NSString *_fauxCardData;
     NSArray *_tableData;
@@ -28,12 +28,12 @@
     UIScrollView *_scrollView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic) __weak NSLayoutConstraint *infoTableViewHeightConstraint; // @synthesize infoTableViewHeightConstraint=_infoTableViewHeightConstraint;
 @property(nonatomic) __weak UITableView *infoTableView; // @synthesize infoTableView=_infoTableView;
 @property(nonatomic) __weak UILabel *enterActivationLabel; // @synthesize enterActivationLabel=_enterActivationLabel;
 @property(nonatomic) __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)canBeShownFromSuspendedState;
 - (void)addNewPlanWithUserInfo:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;

@@ -10,6 +10,7 @@
 
 @class MPMediaPickerController, MPMusicMediaPickerRemoteViewController, NSString, UIViewController, _UIResilientRemoteViewContainerViewController;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaPickerController_Appex : NSObject <MPMediaPickerRemoteViewLoader>
 {
     _UIResilientRemoteViewContainerViewController *_remoteViewContainerViewController;
@@ -18,8 +19,8 @@
     UIViewController *_remoteViewController;
 }
 
-@property(nonatomic) __weak MPMediaPickerController *mediaPickerController; // @synthesize mediaPickerController=_mediaPickerController;
 - (void).cxx_destruct;
+@property(nonatomic) __weak MPMediaPickerController *mediaPickerController; // @synthesize mediaPickerController=_mediaPickerController;
 - (id)serviceController;
 - (void)dealloc;
 - (void)synchronizeSettings;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSOutputStream;
+@class NSError, NSOutputStream;
 
 __attribute__((visibility("hidden")))
 @interface _NSJSONWriter : NSObject
@@ -20,12 +20,13 @@ __attribute__((visibility("hidden")))
     char *tempBuffer;
     unsigned long long tempBufferLen;
     long long totalDataWritten;
+    NSError *_failure;
 }
 
-- (_Bool)appendString:(id)arg1 range:(struct _NSRange)arg2 error:(id *)arg3;
-- (void)resizeTemporaryBuffer:(unsigned long long)arg1;
-- (long long)writeRootObject:(id)arg1 toStream:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
-- (id)dataWithRootObject:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+@property(retain) NSError *failure; // @synthesize failure=_failure;
+- (_Bool)appendString:(id)arg1 range:(struct _NSRange)arg2;
+- (long long)writeRootObject:(id)arg1 toStream:(id)arg2 options:(unsigned long long)arg3;
+- (id)dataWithRootObject:(id)arg1 options:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)init;
 

@@ -13,7 +13,7 @@
 #import <SIMSetupSupport/WKUIDelegate-Protocol.h>
 #import <SIMSetupSupport/_WKInputDelegate-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIBarButtonItem, UIView, WKProcessPool, WKWebView, _SFFormAutoFillController;
+@class NSString, NSURLRequest, UIBarButtonItem, UIView, WKProcessPool, WKWebView, _SFFormAutoFillController;
 @protocol TSEntitlementJSHandlerDelegate, TSSIMSetupFlowDelegate;
 
 @interface TSWebsheetViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate, _WKInputDelegate, TSSetupFlowItem>
@@ -22,21 +22,22 @@
     WKWebView *_webView;
     UIView *_contentView;
     UIBarButtonItem *_cancelButton;
-    UIActivityIndicatorView *_headerActivityIndicator;
-    _Bool _headerActivityIndicatorVisible;
     NSString *_currentTitle;
+    NSURLRequest *_request;
     _Bool _didFinishDocumentLoad;
     _Bool _didFirstLayout;
+    _Bool _didLoadLoadingView;
     _SFFormAutoFillController *_autoFillController;
+    _Bool _isRemotePlan;
     _Bool _loadFailure;
     id <TSSIMSetupFlowDelegate> _delegate;
     id <TSEntitlementJSHandlerDelegate> _callbackDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool loadFailure; // @synthesize loadFailure=_loadFailure;
 @property __weak id <TSEntitlementJSHandlerDelegate> callbackDelegate; // @synthesize callbackDelegate=_callbackDelegate;
 @property __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)_isHexadecimalString:(id)arg1;
 - (_Bool)_currentLanguageIsRTL;
 - (void)_handleTransferWithMessageBody:(id)arg1;
@@ -60,10 +61,11 @@
 - (void)_webView:(id)arg1 navigationDidFinishDocumentLoad:(id)arg2;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
+- (void)sendRequest:(id)arg1;
 - (void)loadRequest:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
-- (id)init;
+- (id)initForRemotePlan:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

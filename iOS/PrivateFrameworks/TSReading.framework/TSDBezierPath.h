@@ -127,8 +127,9 @@
 - (void)transformUsingAffineTransform:(struct CGAffineTransform)arg1;
 - (id)bezierPathByReversingPath;
 - (id)_copyFlattenedPath;
+- (id)bezierPathByFlatteningPathWithFlatness:(double)arg1;
 - (id)bezierPathByFlatteningPath;
-- (void)flattenIntoPath:(id)arg1;
+- (void)flattenIntoPath:(id)arg1 flatness:(double)arg2;
 - (void)subdivideBezierWithFlatness:(double)arg1 startPoint:(struct CGPoint)arg2 controlPoint1:(struct CGPoint)arg3 controlPoint2:(struct CGPoint)arg4 endPoint:(struct CGPoint)arg5;
 - (void)addClip;
 - (void)fill;
@@ -159,6 +160,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)copyPathAttributesTo:(id)arg1;
 - (id)chisel;
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(CDStruct_c3b9c2ee)arg2 inElementRange:(struct _NSRange)arg3 into:(id)arg4;
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(CDStruct_c3b9c2ee)arg2 into:(id)arg3;
@@ -175,6 +177,7 @@
 - (struct CGPoint)gradientAt:(float)arg1;
 - (struct CGPoint)gradientAt:(double)arg1 fromElement:(long long)arg2;
 - (struct CGPoint)pointAt:(double)arg1 fromElement:(long long)arg2;
+- (long long)elementPercentage:(double *)arg1 forOverallPercentage:(double)arg2 startingElementIndex:(long long)arg3 lengthToStartingElement:(double)arg4;
 - (long long)elementPercentage:(float *)arg1 forOverallPercentage:(float)arg2;
 - (id)pressure;
 - (struct CGPoint)nearestAngleOnPathToLine:(struct CGPoint [2])arg1;
@@ -210,6 +213,10 @@
 - (id)bezierPathByOffsettingPath:(double)arg1 joinStyle:(unsigned long long)arg2 withThreshold:(double)arg3;
 - (id)p_beziersFromSegmentIntersections:(id)arg1;
 - (id)p_pathAsSegments;
+- (id)p_elementCountForSubpaths;
+- (id)pathSplitAtSubpathBoundariesWithSoftElementLimit:(unsigned long long)arg1 hardElementLimit:(unsigned long long)arg2;
+- (id)copyWithPointsInRange:(struct _NSRange)arg1;
+- (id)p_copyWithPointsInRange:(struct _NSRange)arg1 countingSubpaths:(unsigned long long *)arg2;
 - (id)bezierPathByRemovingRedundantElements;
 - (void)appendBezierPathWithArcWithEllipseBounds:(struct CGRect)arg1 startRadialVector:(struct CGPoint)arg2 endRadialVector:(struct CGPoint)arg3 angleSign:(int)arg4 startNewPath:(_Bool)arg5;
 - (void)appendBezierPathWithArcWithEllipseBounds:(struct CGRect)arg1 startAngle:(double)arg2 swingAngle:(double)arg3 angleType:(int)arg4 startNewPath:(_Bool)arg5;

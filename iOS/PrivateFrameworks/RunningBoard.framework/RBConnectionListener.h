@@ -9,8 +9,8 @@
 #import <RunningBoard/NSXPCListenerDelegate-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, RBConnectionContext;
-@protocol OS_dispatch_queue, OS_os_transaction, OS_xpc_object;
+@class NSMapTable, NSMutableArray, NSString;
+@protocol OS_dispatch_queue, OS_os_transaction, OS_xpc_object, RBDaemonContextProviding;
 
 __attribute__((visibility("hidden")))
 @interface RBConnectionListener : NSObject <NSXPCListenerDelegate, RBStateCapturing>
@@ -20,19 +20,15 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *_listener;
     NSMapTable *_lock_connectionToClientMap;
     NSMapTable *_lock_identifierToClientMap;
-    RBConnectionContext *_context;
+    NSMutableArray *_lock_readyClients;
+    id <RBDaemonContextProviding> _context;
     NSObject<OS_os_transaction> *_transaction;
 }
 
-+ (id)sharedConnectionWorkloop;
 - (void).cxx_destruct;
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;
-- (void)stop;
-- (void)start;
-@property(readonly, nonatomic) NSArray *clients;
 @property(readonly, copy) NSString *debugDescription;
-- (id)initWithContext:(id)arg1;
 - (id)init;
 
 // Remaining properties

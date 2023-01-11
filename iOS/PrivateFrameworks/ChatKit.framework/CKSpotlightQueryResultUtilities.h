@@ -10,6 +10,7 @@
 {
 }
 
++ (struct CLLocationCoordinate2D)coordinateForResult:(id)arg1;
 + (id)contactForResult:(id)arg1;
 
 @end

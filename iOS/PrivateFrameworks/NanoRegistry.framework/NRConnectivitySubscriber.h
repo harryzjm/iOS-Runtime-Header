@@ -13,9 +13,6 @@
 }
 
 + (_Bool)getDropoutCounter:(unsigned long long *)arg1;
-@property(nonatomic) unsigned long long dropoutCounter; // @synthesize dropoutCounter=_dropoutCounter;
-@property(nonatomic) _Bool connected; // @synthesize connected=_connected;
-- (void)_readConnectivityStatus;
 - (id)init;
 
 @end

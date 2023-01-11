@@ -7,6 +7,7 @@
 #import <IMSharedUtilities/IMGroupActionItem.h>
 
 @interface IMGroupActionItem (IMTranscriptChatItemRules)
+- (_Bool)shouldGenerateTopLevelChatItem;
 - (id)_newChatItems;
 @end
 

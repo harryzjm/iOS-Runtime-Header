@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)shouldRunStateForRing:(id)arg1;
 - (id)name;
 - (id)renderPipelineDescriptorFromLibrary:(id)arg1;
 

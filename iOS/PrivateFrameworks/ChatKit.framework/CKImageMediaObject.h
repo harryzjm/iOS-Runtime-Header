@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKImageData, NSString, NSURL, UIImage;
+@class CKImageData, NSString, NSURL, PHLivePhoto, UIImage;
 
 @interface CKImageMediaObject
 {
@@ -14,26 +14,25 @@
     struct CGSize _originalSize;
     NSString *_irisVideoPath;
     _Bool _isSticker;
+    PHLivePhoto *_livePhoto;
     UIImage *_thumbnail;
 }
 
 + (Class)imageDataClass;
 + (_Bool)isPreviewable;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isSticker; // @synthesize isSticker=_isSticker;
 @property(retain, nonatomic) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 - (struct CGSize)originalSize;
 @property(readonly, nonatomic) CKImageData *imageData;
 - (id)previewItemTitle;
 - (id)previewItemURL;
 - (_Bool)canShareItem;
 - (id)pasteboardItem;
-- (id)_getIrisBundleURL;
-- (id)_getIrisBundleLocation;
 - (id)calculateIrisVideoPath;
 - (id)getIrisVideoPath;
 - (void)export:(id)arg1;
@@ -46,7 +45,8 @@
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (id)location;
 - (int)mediaType;
-- (id)previewFilenameExtension;
+- (id)attachmentSummary:(unsigned long long)arg1;
+- (id)metricsCollectorMediaType;
 - (id)initWithTransfer:(id)arg1 isFromMe:(_Bool)arg2 suppressPreview:(_Bool)arg3 forceInlinePreview:(_Bool)arg4;
 
 @end

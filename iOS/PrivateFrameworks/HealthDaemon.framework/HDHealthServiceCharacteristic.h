@@ -18,7 +18,7 @@
 + (_Bool)uint32:(unsigned int)arg1 toData:(char **)arg2 before:(const char *)arg3;
 + (_Bool)uint16:(unsigned short)arg1 toData:(char **)arg2 before:(const char *)arg3;
 + (_Bool)uint8:(unsigned char)arg1 toData:(char **)arg2 before:(const char *)arg3;
-+ (id)dateFromData:(const char **)arg1 before:(const char *)arg2;
++ (id)dateFromData:(const char **)arg1 before:(const char *)arg2 calendar:(id)arg3;
 + (double)doubleFromFLOATData:(const char **)arg1 before:(const char *)arg2;
 + (float)floatFromSFLOATData:(const char **)arg1 before:(const char *)arg2;
 + (unsigned int)uint32FromData:(const char **)arg1 before:(const char *)arg2;
@@ -28,11 +28,14 @@
 + (unsigned char)uint8FromData:(const char **)arg1 before:(const char *)arg2;
 + (double)doubleFromFLOAT:(unsigned int)arg1;
 + (float)floatFromSFLOAT:(unsigned short)arg1;
++ (_Bool)_copySignedInt:(int *)arg1 fromData:(const char **)arg2 byteCount:(unsigned long long)arg3 beforeByte:(const char *)arg4;
++ (_Bool)_copyUnsignedInt:(unsigned int *)arg1 fromData:(const char **)arg2 byteCount:(unsigned long long)arg3 beforeByte:(const char *)arg4;
++ (_Bool)_bufferHasSpace:(const char **)arg1 beforeByte:(const char *)arg2 count:(unsigned long long)arg3 resetOnFailure:(_Bool)arg4;
 + (id)_buildWithBinaryValue:(id)arg1 error:(id *)arg2;
 + (id)buildWithBinaryValue:(id)arg1 updateTime:(id)arg2 error:(id *)arg3;
 + (id)uuid;
-@property(readonly, nonatomic) NSDate *updateTime; // @synthesize updateTime=_updateTime;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *updateTime; // @synthesize updateTime=_updateTime;
 - (void)unitTest_setUpdateTime:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)getBinaryValueWithError:(id *)arg1;

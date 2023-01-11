@@ -51,6 +51,7 @@
 @property(retain, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property(retain, nonatomic) NSString *systemName; // @synthesize systemName=_systemName;
 @property(retain, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
+@property(readonly, nonatomic) NSString *osVersionAndBuild;
 - (void)updateLocality:(id)arg1 adminArea:(id)arg2 subAdmin:(id)arg3 isoCountryCode:(id)arg4 postalCode:(id)arg5;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

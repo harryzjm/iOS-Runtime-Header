@@ -12,12 +12,15 @@
 
 @interface UIView (HUAdditions) <HULayoutAnchorProviding>
 + (void)hu_enableAnimations:(_Bool)arg1 forBlock:(CDUnknownBlockType)arg2;
+- (_Bool)hu_isDescendantOfPickerView;
 - (_Bool)hu_isHomeAffordancePresent;
 - (void)hu_autoSizeByConstrainingWidth:(double)arg1;
 - (void)hu_traverseViewHierarchy:(CDUnknownBlockType)arg1;
 - (void)hu_setFramePreservingTransform:(struct CGRect)arg1;
 - (struct CGRect)hu_frameInGlobalCoordinateSpace;
 - (struct CGPoint)hu_centerInGlobalCoordinateSpace;
+- (id)pinToEdgesConstraints:(id)arg1;
+- (void)pinToEdges:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor;

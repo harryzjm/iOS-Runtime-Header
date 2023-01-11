@@ -8,7 +8,7 @@
 
 #import <FMF/FMFXPCInternalClientProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSString, NSXPCConnection;
+@class FMFuture, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSString, NSXPCConnection;
 @protocol FMFSessionDelegate, OS_dispatch_queue;
 
 @interface FMFSession : NSObject <FMFXPCInternalClientProtocol>
@@ -25,6 +25,8 @@
     NSMutableDictionary *_cachedCanShareLocationWithHandleByHandle;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSObject<OS_dispatch_queue> *_handlesQueue;
+    FMFuture *_sessionInvalidationFuture;
+    FMFuture *_sessionInterruptionFuture;
 }
 
 + (_Bool)isAnyAccountManaged;
@@ -32,6 +34,9 @@
 + (_Bool)FMFRestricted;
 + (_Bool)FMFAllowed;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) FMFuture *sessionInterruptionFuture; // @synthesize sessionInterruptionFuture=_sessionInterruptionFuture;
+@property(retain, nonatomic) FMFuture *sessionInvalidationFuture; // @synthesize sessionInvalidationFuture=_sessionInvalidationFuture;
 @property(nonatomic) _Bool isModelInitialized; // @synthesize isModelInitialized=_isModelInitialized;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *handlesQueue; // @synthesize handlesQueue=_handlesQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
@@ -44,7 +49,6 @@
 @property(retain, nonatomic) NSMutableSet *internalHandles; // @synthesize internalHandles=_internalHandles;
 @property(retain, nonatomic) NSOperationQueue *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <FMFSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)handleIncomingAirDropURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mappingPacketSendFailed:(id)arg1 toHandle:(id)arg2 withError:(id)arg3;
 - (void)receivedMappingPacket:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -80,16 +84,21 @@
 - (void)dispatchOnDelegateQueue:(CDUnknownBlockType)arg1;
 - (id)serverProxy;
 - (id)__connection;
-- (void)invalidateWithError:(id)arg1;
+- (void)addInvalidationHander:(CDUnknownBlockType)arg1;
+- (void)addInterruptionHander:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 - (void)locatingInProgressChanged:(id)arg1;
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (id)init;
 - (void)_registerForFMFDLaunchedNotification;
+- (void)applicationWillEnterForeground;
+- (void)applicationDidEnterBackground;
+- (void)_registerForApplicationLifecycleEvents;
+- (void)restoreClientConnection;
 - (void)_daemonDidLaunch;
-- (id)internalConnection;
 - (void)includeDeviceInAutomations:(CDUnknownBlockType)arg1;
+- (void)showMeDeviceAlert;
 - (void)showShareMyLocationRestrictedAlert;
 - (void)showShareMyLocationiCloudSettingsOffAlert;
 - (void)getDataForPerformanceRequest:(CDUnknownBlockType)arg1;
@@ -149,6 +158,7 @@
 - (void)stopSharingMyLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)declineFriendshipRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)approveFriendshipRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendNotNowToHandle:(id)arg1 callerId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendFriendshipInviteToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)extendFriendshipOfferToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendFriendshipOfferToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -157,6 +167,8 @@
 - (void)_sendAutoSwitchMeDevice;
 - (void)_sendFriendshipOfferToHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)_isNoMappingPacketReturnedError:(id)arg1;
+- (void)muteFencesForHandle:(id)arg1 untilDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)triggerWithUUID:(id)arg1 forFenceWithID:(id)arg2 withStatus:(id)arg3 forDate:(id)arg4 triggerLocation:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)triggerWithUUID:(id)arg1 forFenceWithID:(id)arg2 withStatus:(id)arg3 forDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)fencesForHandles:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getFences:(CDUnknownBlockType)arg1;

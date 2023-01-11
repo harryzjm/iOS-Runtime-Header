@@ -22,6 +22,7 @@
 // Remaining properties
 @property(retain, nonatomic) NSDate *acknowledgedDate; // @dynamic acknowledgedDate;
 @property(retain, nonatomic) NSNumber *forUserDSID; // @dynamic forUserDSID;
+@property(nonatomic) _Bool isBackgroundTask; // @dynamic isBackgroundTask;
 @property(retain, nonatomic) NSDate *requestedDate; // @dynamic requestedDate;
 
 @end

@@ -10,15 +10,16 @@
 
 @class MPModelSocialPerson, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreSocialPendingFollowRequestOperationDataSource : NSObject <MPStoreSocialRequestOperationDataSource>
 {
     long long _action;
     MPModelSocialPerson *_person;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) MPModelSocialPerson *person; // @synthesize person=_person;
 @property(readonly, nonatomic) long long action; // @synthesize action=_action;
-- (void).cxx_destruct;
 - (id)queryItems;
 - (long long)httpMethod;
 - (long long)httpBodyType;

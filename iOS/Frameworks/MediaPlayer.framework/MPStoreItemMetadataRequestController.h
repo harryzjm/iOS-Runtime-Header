@@ -7,23 +7,31 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSOperationQueue;
+@protocol OS_dispatch_queue;
 
 @interface MPStoreItemMetadataRequestController : NSObject
 {
+    NSObject<OS_dispatch_queue> *_calloutQueue;
     NSOperationQueue *_operationQueue;
     unsigned long long _lastExpiredMetadataPurgeMachTime;
     NSMutableDictionary *_itemCaches;
+    struct os_unfair_lock_s _transactionLock;
+    long long _transactionCount;
     long long _cacheSize;
 }
 
++ (void)setImportToServerObjectDatabase:(_Bool)arg1;
++ (_Bool)importToServerObjectDatabase;
 + (unsigned long long)optimalBatchSize;
 + (id)sharedStoreItemMetadataRequestController;
-@property(nonatomic) long long cacheSize; // @synthesize cacheSize=_cacheSize;
 - (void).cxx_destruct;
+@property(nonatomic) long long cacheSize; // @synthesize cacheSize=_cacheSize;
 - (void)_removeExpiredItemsPeriodically;
 - (id)getStoreItemMetadataForRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)requestStoreItemMetadataForReason:(unsigned long long)arg1 withItemIdentifiers:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)addStoreItemMetadata:(id)arg1;
+- (void)endTransaction;
+- (void)beginTransaction;
 - (id)init;
 
 @end

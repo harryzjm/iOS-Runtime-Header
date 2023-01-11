@@ -13,6 +13,9 @@
 - (Class)cellClass;
 - (BOOL)transcriptOrientation;
 - (struct UIEdgeInsets)contentInsets;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (Class)collectionViewCellClass;
+- (unsigned long long)layoutType;
 
 @end
 

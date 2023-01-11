@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContact, NSString, WFFileRepresentation;
+@class CNContact, NSString;
 
 @interface WFCNContact
 {
     _Bool _fromVCard;
     int _propertyID;
+    NSString *_accountIdentifier;
     long long _multivalueIndex;
-    WFFileRepresentation *_vCardRepresentation;
     CNContact *_contact;
 }
 
@@ -29,14 +29,15 @@
 + (id)allContactsWithSortOrder:(long long)arg1;
 + (id)allContactsWithSortOrder:(long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (id)requiredKeysToFetch;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool fromVCard; // @synthesize fromVCard=_fromVCard;
 @property(readonly, copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (long long)multivalueIndex;
 - (int)propertyID;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(readonly, copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 - (id)instantMessageAddresses;
 - (id)socialProfiles;
 - (id)URLs;
@@ -59,7 +60,7 @@
 - (id)namePrefix;
 - (id)formattedName;
 @property(readonly, copy, nonatomic) NSString *contactIdentifier;
-- (id)vCardRepresentation;
+- (id)vCardRepresentationWithFullData:(_Bool)arg1;
 - (id)contactWithPropertyID:(int)arg1 multivalueIndex:(long long)arg2;
 - (id)valueForPropertyID:(int)arg1;
 - (void)refetchContact;

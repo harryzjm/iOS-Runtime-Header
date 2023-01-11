@@ -22,11 +22,12 @@
 
 + (_Bool)supportsContentExtensions;
 + (id)currentNotificationCenter;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <UNUserNotificationCenterDelegatePrivate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic) __weak id <UNUserNotificationCenterDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)clearedInfoForDataProviderMigration;
 - (id)notificationSettingsForTopics;
 - (void)getNotificationSettingsForTopicsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)notificationTopics;
@@ -57,6 +58,7 @@
 - (void)setNotificationCategories:(id)arg1;
 - (void)getNotificationSettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)notificationSettings;
+- (void)requestRemoveAuthorizationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setWantsNotificationResponsesDelivered;
 @property(readonly, nonatomic) _Bool supportsContentExtensions;

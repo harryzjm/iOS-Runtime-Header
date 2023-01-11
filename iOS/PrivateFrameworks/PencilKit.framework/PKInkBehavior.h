@@ -38,6 +38,8 @@
 + (id)inkFunctionForProperty:(unsigned long long)arg1 outputFunctions:(vector_2b0a8222 *)arg2 index:(unsigned long long)arg3;
 + (id)arrayFromVector:(vector_b67dfe3a)arg1;
 + (double)inkRadiusOverride;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PKInkFeatheringDescriptor *featheringDescriptor; // @synthesize featheringDescriptor=_featheringDescriptor;
 @property(retain, nonatomic) PKInkSmoothingDescriptor *smoothingDescriptor; // @synthesize smoothingDescriptor=_smoothingDescriptor;
 @property(nonatomic) double baseAlpha; // @synthesize baseAlpha=_baseAlpha;
@@ -45,8 +47,6 @@
 @property(nonatomic) double blendAlpha; // @synthesize blendAlpha=_blendAlpha;
 @property(readonly, nonatomic) PKInkRenderingDescriptor *renderingDescriptor; // @synthesize renderingDescriptor=_renderingDescriptor;
 @property(readonly, nonatomic) NSString *variant; // @synthesize variant=_variant;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)particleTextureName;
 - (double)rulerOffsetForBaseValues:(struct _PKStrokePoint)arg1 inputType:(long long)arg2 inputScale:(double)arg3;
 - (void)setVariableSnappedWidth:(_Bool)arg1;
@@ -61,15 +61,15 @@
 - (void)setTimeDependent:(_Bool)arg1;
 - (_Bool)isEraser;
 - (_Bool)immutableVelocity;
-- (double)solve:(vector_2b0a8222 *)arg1 forPoint:(CDStruct_f17e9403)arg2 context:(CDStruct_5237edf5 *)arg3 weight:(double)arg4;
+- (double)solve:(vector_2b0a8222 *)arg1 forPoint:(CDStruct_6422aa5d)arg2 context:(CDStruct_713d3c04 *)arg3 weight:(double)arg4;
 - (double)solveForTime:(vector_2b0a8222 *)arg1 forTime:(double)arg2 stillChanging:(_Bool *)arg3;
 - (struct _PKStrokePoint)outputTimePoint:(struct _PKStrokePoint)arg1 atTime:(double)arg2 stillChanging:(_Bool *)arg3;
-- (struct _PKStrokePoint)outputForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
-- (double)edgeWidthForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
-- (double)radiusForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
+- (struct _PKStrokePoint)outputForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
+- (double)edgeWidthForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
+- (double)radiusForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
 - (double)alphaForStrokeColor:(struct CGColor *)arg1;
 - (double)alphaForStroke:(id)arg1;
-- (double)brushOpacityForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
+- (double)brushOpacityForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
 - (double)particleSpacingForRadius:(double)arg1;
 - (struct PKOutputFunction)outputFunctionFromInkFunction:(id)arg1;
 - (void)setBrushOpacityOutput:(vector_2b0a8222)arg1;

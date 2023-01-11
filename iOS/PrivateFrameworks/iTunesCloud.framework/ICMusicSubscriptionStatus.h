@@ -31,7 +31,6 @@
     long long _statusType;
     _Bool _isAdministrator;
     _Bool _isDiscoveryModeEligible;
-    long long _statusCode;
     NSArray *_termsStatusList;
     NSString *_phoneNumber;
     NSString *_cellularOperatorName;
@@ -40,12 +39,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long carrierBundlingErrorCode; // @synthesize carrierBundlingErrorCode=_carrierBundlingErrorCode;
 @property(readonly, copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, copy, nonatomic) NSString *cellularOperatorName; // @synthesize cellularOperatorName=_cellularOperatorName;
 @property(readonly, copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(readonly, copy, nonatomic) NSArray *termsStatusList; // @synthesize termsStatusList=_termsStatusList;
-@property(readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property(readonly, nonatomic, getter=isDiscoveryModeEligible) _Bool discoveryModeEligible; // @synthesize discoveryModeEligible=_isDiscoveryModeEligible;
 @property(readonly, nonatomic, getter=isAdministrator) _Bool administrator; // @synthesize administrator=_isAdministrator;
 @property(readonly, nonatomic) long long statusType; // @synthesize statusType=_statusType;
@@ -63,9 +62,11 @@
 @property(readonly, nonatomic) _Bool hasFamily; // @synthesize hasFamily=_hasFamily;
 @property(readonly, nonatomic, getter=isMinorAccountHolder) _Bool minorAccountHolder; // @synthesize minorAccountHolder=_isMinorAccountHolder;
 @property(readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
-- (void).cxx_destruct;
 - (void)_copySubscriptionStatusPropertiesToStatus:(id)arg1 withZone:(struct _NSZone *)arg2;
+@property(readonly, nonatomic, getter=isCloudMusicServiceEnabled) _Bool cloudMusicServiceEnabled;
 @property(readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(readonly, nonatomic) _Bool hasAddToCloudLibraryCapability;
+@property(readonly, nonatomic) _Bool hasCatalogPlaybackCapability;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -73,7 +74,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqualToStatus:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic, getter=isCloudMusicServiceEnabled) _Bool cloudMusicServiceEnabled;
+- (id)_init;
 - (id)initWithResponseDictionary:(id)arg1;
 
 @end

@@ -17,9 +17,11 @@
     id <DEDXPCProtocol> _remoteObject;
 }
 
-@property(retain) id <DEDXPCProtocol> remoteObject; // @synthesize remoteObject=_remoteObject;
 - (void).cxx_destruct;
+@property(retain) id <DEDXPCProtocol> remoteObject; // @synthesize remoteObject=_remoteObject;
+- (void)didGetState:(long long)arg1 info:(id)arg2 sessionID:(id)arg3;
 - (void)didCancelSession:(id)arg1;
+- (void)getSessionStateWithSession:(id)arg1;
 - (void)cancelNotificationForSession:(id)arg1;
 - (void)scheduleNotificationForSession:(id)arg1;
 - (void)cancelSession:(id)arg1;

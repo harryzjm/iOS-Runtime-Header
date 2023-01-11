@@ -9,15 +9,17 @@
 #import <SpringBoard/SBProximityBacklightPolicy-Protocol.h>
 
 @class NSString, SBBacklightController;
+@protocol BSInvalidatable;
 
 @interface SBDefaultProximityBacklightPolicy : NSObject <SBProximityBacklightPolicy>
 {
     SBBacklightController *_backlightController;
+    id <BSInvalidatable> _idleTimerDisableAssertion;
     _Bool _scheduled;
 }
 
 - (void).cxx_destruct;
-- (void)_doBacklightFactorChange;
+- (void)_turnBacklightOff;
 - (void)_backlightWillUndim:(id)arg1;
 - (void)_restoreBacklightFactor;
 - (void)_cancelScheduledBacklightFactorToZero;

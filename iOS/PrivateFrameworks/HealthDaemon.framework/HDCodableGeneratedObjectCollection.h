@@ -16,6 +16,7 @@
     NSMutableArray *_allergyRecords;
     NSMutableArray *_clinicalRecords;
     NSMutableArray *_conditionRecords;
+    NSMutableArray *_coverageRecords;
     NSMutableArray *_diagnosticTestReports;
     NSMutableArray *_diagnosticTestResults;
     NSMutableArray *_medicationDispenseRecords;
@@ -26,6 +27,7 @@
     NSMutableArray *_vaccinationRecords;
 }
 
++ (Class)coverageRecordType;
 + (Class)clinicalRecordType;
 + (Class)unknownRecordType;
 + (Class)accountOwnerType;
@@ -38,6 +40,8 @@
 + (Class)medicationRecordType;
 + (Class)medicationDispenseRecordType;
 + (Class)medicationOrderType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *coverageRecords; // @synthesize coverageRecords=_coverageRecords;
 @property(retain, nonatomic) NSMutableArray *clinicalRecords; // @synthesize clinicalRecords=_clinicalRecords;
 @property(retain, nonatomic) NSMutableArray *unknownRecords; // @synthesize unknownRecords=_unknownRecords;
 @property(retain, nonatomic) NSMutableArray *accountOwners; // @synthesize accountOwners=_accountOwners;
@@ -50,7 +54,6 @@
 @property(retain, nonatomic) NSMutableArray *medicationRecords; // @synthesize medicationRecords=_medicationRecords;
 @property(retain, nonatomic) NSMutableArray *medicationDispenseRecords; // @synthesize medicationDispenseRecords=_medicationDispenseRecords;
 @property(retain, nonatomic) NSMutableArray *medicationOrders; // @synthesize medicationOrders=_medicationOrders;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -60,6 +63,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)coverageRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)coverageRecordsCount;
+- (void)addCoverageRecord:(id)arg1;
+- (void)clearCoverageRecords;
 - (id)clinicalRecordAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clinicalRecordsCount;
 - (void)addClinicalRecord:(id)arg1;

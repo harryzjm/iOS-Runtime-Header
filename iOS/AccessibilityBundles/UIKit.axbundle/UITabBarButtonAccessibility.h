@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)_currentItemState;
 - (struct _NSRange)accessibilityRowRange;
+- (_Bool)_accessibilityRetainsFocusOnScreenChange;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)_axIsSelected:(id)arg1;
 - (id)accessibilityHint;

@@ -23,7 +23,7 @@
 - (unsigned long long)globalTraceObjectID;
 @property(copy) NSString *label;
 - (void)addRetainedObject:(id)arg1;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2 lockingPolicy:(struct ILayerLockingPolicy *)arg3;
+- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

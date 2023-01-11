@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKDayOccurrenceView;
+@class EKDayOccurrenceView, UIView;
 
 @protocol EKDayOccurrenceViewDelegate
 
 @optional
+- (UIView *)selectedCopyViewForDayOccurrenceView:(EKDayOccurrenceView *)arg1;
 - (void)dayOccurrenceViewSelected:(EKDayOccurrenceView *)arg1 atPoint:(struct CGPoint)arg2 wasTapped:(_Bool)arg3;
 @end
 

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)systemColorName;
 - (const struct _csicolor *)csiColor;
 - (struct CGColor *)cgColor;
-- (struct CGColorSpace *)_colorSpaceWithID:(long long)arg1;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 
 @end

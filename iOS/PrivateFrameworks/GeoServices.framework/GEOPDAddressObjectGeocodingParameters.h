@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAddressObjectGeocodingParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSData *_addressObject;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _maxResults;
     struct {
         unsigned int has_maxResults:1;
         unsigned int read_unknownFields:1;
         unsigned int read_addressObject:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressObject:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,16 +42,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(nonatomic) _Bool hasMaxResults;
 @property(nonatomic) unsigned int maxResults;
 @property(retain, nonatomic) NSData *addressObject;
 @property(readonly, nonatomic) _Bool hasAddressObject;
-- (void)_readAddressObject;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

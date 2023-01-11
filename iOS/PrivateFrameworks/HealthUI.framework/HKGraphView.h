@@ -15,7 +15,7 @@
 #import <HealthUI/HKSeriesDelegate-Protocol.h>
 #import <HealthUI/UIScrollViewDelegate-Protocol.h>
 
-@class HKAxis, HKBorderLineView, HKGraphViewSelectionStyle, HKMultiTouchPressGestureRecognizer, HKOutsideViewTapDetector, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimer, UIColor, UIImage, UIScrollView, _HKGraphViewOverlayView;
+@class HKAxis, HKBorderLineView, HKGraphViewSelectionStyle, HKMultiTouchPressGestureRecognizer, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimer, UIColor, UIImage, UIScrollView, _HKGraphViewOverlayView;
 @protocol HKGraphRenderer, HKGraphViewDelegate;
 
 @interface HKGraphView : UIView <UIScrollViewDelegate, HKSeriesDelegate, HKGraphRenderDelegate, HKMultiTouchPressGestureRecognizerDelegate, HKGraphTileDrawingDelegate, HKGraphSeriesOverlayDelegate, HKScrollPerformanceTestable, HKInteractiveChartRangeProvider>
@@ -40,6 +40,7 @@
     _Bool _disableScrolling;
     _Bool _disableSelection;
     _Bool _multiSeriesSelection;
+    _Bool _moveSelectedSeriesToFront;
     _Bool _contentWidthFromTimeScope;
     _Bool _enableStickySelection;
     _Bool _enableZoomInGesture;
@@ -72,12 +73,12 @@
     HKValueRange *_effectiveVisibleRangeActive;
     long long _minimumDateZoom;
     long long _maximumDateZoom;
+    long long _scrollingOptions;
     HKMultiTouchPressGestureRecognizer *_multiTouchGestureRecognizer;
     double _zoomScale;
     UIView *_detailView;
     HKValueRange *_destinationEffectiveVisibleRangeActive;
     NSSet *_yAxisAccessoryViews;
-    HKOutsideViewTapDetector *_outsideViewTapDetector;
     long long _tileColumns;
     double _tileWidthInPoints;
     long long _tileFirstColumn;
@@ -94,13 +95,17 @@
     double _startTime;
     double _lastEndTime;
     NSTimer *_startupTimer;
+    double _firstNonemptyDrawTime;
     struct CGPoint _contentOffset;
     struct CGPoint _tileContentOffsetOverride;
     struct UIEdgeInsets _axisInset;
 }
 
++ (_Bool)visibleIntersectionForRange:(id)arg1 visibleRange:(id)arg2;
 + (id)_rangeFromModelCoordinateMin:(double)arg1 max:(double)arg2 axis:(id)arg3;
 + (double)_modelCoordinateSpanForRange:(id)arg1 axis:(id)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) double firstNonemptyDrawTime; // @synthesize firstNonemptyDrawTime=_firstNonemptyDrawTime;
 @property(retain, nonatomic) NSTimer *startupTimer; // @synthesize startupTimer=_startupTimer;
 @property(nonatomic) double lastEndTime; // @synthesize lastEndTime=_lastEndTime;
 @property(nonatomic) double startTime; // @synthesize startTime=_startTime;
@@ -123,7 +128,6 @@
 @property(nonatomic) long long tileFirstColumn; // @synthesize tileFirstColumn=_tileFirstColumn;
 @property(nonatomic) double tileWidthInPoints; // @synthesize tileWidthInPoints=_tileWidthInPoints;
 @property(nonatomic) long long tileColumns; // @synthesize tileColumns=_tileColumns;
-@property(retain, nonatomic) HKOutsideViewTapDetector *outsideViewTapDetector; // @synthesize outsideViewTapDetector=_outsideViewTapDetector;
 @property(retain, nonatomic) NSSet *yAxisAccessoryViews; // @synthesize yAxisAccessoryViews=_yAxisAccessoryViews;
 @property(retain, nonatomic) HKValueRange *destinationEffectiveVisibleRangeActive; // @synthesize destinationEffectiveVisibleRangeActive=_destinationEffectiveVisibleRangeActive;
 @property(retain, nonatomic) UIView *detailView; // @synthesize detailView=_detailView;
@@ -136,6 +140,7 @@
 @property(readonly, nonatomic) HKMultiTouchPressGestureRecognizer *multiTouchGestureRecognizer; // @synthesize multiTouchGestureRecognizer=_multiTouchGestureRecognizer;
 @property(nonatomic) _Bool enableStickySelection; // @synthesize enableStickySelection=_enableStickySelection;
 @property(nonatomic) _Bool contentWidthFromTimeScope; // @synthesize contentWidthFromTimeScope=_contentWidthFromTimeScope;
+@property(nonatomic) long long scrollingOptions; // @synthesize scrollingOptions=_scrollingOptions;
 @property(nonatomic) long long maximumDateZoom; // @synthesize maximumDateZoom=_maximumDateZoom;
 @property(nonatomic) long long minimumDateZoom; // @synthesize minimumDateZoom=_minimumDateZoom;
 @property(readonly, nonatomic) HKValueRange *effectiveVisibleRangeActive; // @synthesize effectiveVisibleRangeActive=_effectiveVisibleRangeActive;
@@ -150,6 +155,7 @@
 @property(readonly, nonatomic) HKValueRange *effectiveAxisRange; // @synthesize effectiveAxisRange=_effectiveAxisRange;
 @property(readonly, nonatomic) long long xAxisDateZoom; // @synthesize xAxisDateZoom=_xAxisDateZoom;
 @property(retain, nonatomic) HKGraphViewSelectionStyle *selectionStyle; // @synthesize selectionStyle=_selectionStyle;
+@property(nonatomic) _Bool moveSelectedSeriesToFront; // @synthesize moveSelectedSeriesToFront=_moveSelectedSeriesToFront;
 @property(nonatomic) _Bool multiSeriesSelection; // @synthesize multiSeriesSelection=_multiSeriesSelection;
 @property(nonatomic) _Bool disableSelection; // @synthesize disableSelection=_disableSelection;
 @property(nonatomic) _Bool disableScrolling; // @synthesize disableScrolling=_disableScrolling;
@@ -162,7 +168,6 @@
 @property(nonatomic) double xAxisSpace; // @synthesize xAxisSpace=_xAxisSpace;
 @property(copy, nonatomic) HKAxis *xAxis; // @synthesize xAxis=_xAxis;
 @property(nonatomic) __weak id <HKGraphViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_overlayViewsForOverlayData:(id)arg1 overlayView:(id)arg2;
 - (void)_drawOverlaysIfNeeded:(id)arg1;
 - (long long)_overlayEnvironmentType;
@@ -278,12 +283,13 @@
 - (id)_seriesForCommonAxesForSeriesGroup:(id)arg1;
 - (_Bool)_simultaneousAxesAreEqualForSeriesGroup:(id)arg1;
 - (void)_renderSelectionLineWithContext:(struct CGContext *)arg1;
+- (double)_topBaselineYValueForChartRect:(struct CGRect)arg1;
+- (double)_bottomBaselineYValueForChartRect:(struct CGRect)arg1;
 - (void)_renderVirtualMarginsWithContext:(struct CGContext *)arg1;
 - (double)_inactiveRightAreaForRect:(struct CGRect)arg1;
 - (void)_renderVirtualMarginInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 marginStyle:(long long)arg3;
 - (void)_renderVirtualMarginGridLines:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_renderSeriesWithContext:(struct CGContext *)arg1 secondaryRenderContext:(id)arg2 chartRect:(struct CGRect)arg3;
-- (void)_renderYAxisDividersWithContext:(struct CGContext *)arg1;
 - (void)_renderDataAreaDividersWithContext:(struct CGContext *)arg1;
 - (void)forceYAxisScaleToRange:(id)arg1 animated:(_Bool)arg2;
 - (void)forceYAxisAutoScaleAnimated:(_Bool)arg1;
@@ -293,6 +299,8 @@
 - (id)_yAxisRangeForSynchronizedAxesForDateZoom:(long long)arg1 chartRect:(struct CGRect)arg2 seriesGroup:(id)arg3;
 - (void)_autoScaleXAxis;
 - (id)_defaultXAxisValueRange;
+- (void)nonemptyDrawComplete;
+- (_Bool)rangeIsVisible:(id)arg1;
 - (void)autoscaleStateChangedForSeries:(id)arg1;
 - (struct CGRect)screenRectForSeries:(id)arg1;
 - (_Bool)seriesDrawingDuringTiling;
@@ -355,6 +363,7 @@
 - (struct CGRect)_verticalAxisRect;
 - (struct CGRect)_scrollingAreaRect;
 - (double)_detailViewWidth;
+- (struct CGRect)_adjustLeftMarginRectForBaselines:(struct CGRect)arg1;
 @property(readonly, nonatomic) struct CGRect leftMarginViewRect;
 @property(readonly, nonatomic) double yAxisWidth;
 - (_Bool)_configureYAxisViewIfNeeded;

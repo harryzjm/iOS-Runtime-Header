@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface VUIPreflightManager : NSObject
 {
+    _Bool _contentAllowsCellularDownload;
     VUIVideosPlayable *_videosPlayable;
     NSObject<TVPMediaItem> *_mediaItem;
     unsigned long long _restrictionsCheckType;
@@ -19,12 +20,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultPreflightManager;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *presentingController; // @synthesize presentingController=_presentingController;
 @property(nonatomic) unsigned long long restrictionsCheckType; // @synthesize restrictionsCheckType=_restrictionsCheckType;
+@property(nonatomic) _Bool contentAllowsCellularDownload; // @synthesize contentAllowsCellularDownload=_contentAllowsCellularDownload;
 @property(retain, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property(retain, nonatomic) VUIVideosPlayable *videosPlayable; // @synthesize videosPlayable=_videosPlayable;
-- (void).cxx_destruct;
-- (_Bool)_isOnWiFi;
 - (void)_preflightDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showAgeConfirmationWithPresentingViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_shouldShowAgeConfirmationAlert;
@@ -34,14 +35,13 @@ __attribute__((visibility("hidden")))
 - (long long)_lastConfirmedAge;
 - (void)_performAgeGateVerificationWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)_requiredAgeForPlayback;
-- (_Bool)_isAllowed:(_Bool)arg1 isTVShow:(_Bool)arg2;
-- (void)_showRestrictionsAlert:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_isAllowedToPlayOrPurchase;
+- (void)_showRestrictionsAlertForRatingDomain:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performRestrictionsCheckWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_contentRatingValue;
+- (id)_ratingValue;
 - (_Bool)_isTrailer;
-- (_Bool)_isTVShow;
-- (_Bool)_isMovie;
-- (void)_preflightWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_ratingDomain;
+- (void)_preflightWithOptions:(long long)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)preflightWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 

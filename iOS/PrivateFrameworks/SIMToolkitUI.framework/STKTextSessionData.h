@@ -13,13 +13,15 @@
 @interface STKTextSessionData : NSObject <BSXPCCoding>
 {
     NSString *_text;
+    NSString *_simLabel;
 }
 
-@property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *simLabel; // @synthesize simLabel=_simLabel;
+@property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithText:(id)arg1;
+- (id)initWithText:(id)arg1 simLabel:(id)arg2;
 - (id)init;
 
 // Remaining properties

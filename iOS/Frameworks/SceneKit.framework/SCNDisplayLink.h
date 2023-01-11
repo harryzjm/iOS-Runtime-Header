@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setPaused:(_Bool)arg1 nextFrameTimeHint:(double)arg2 lastUpdate:(double)arg3;
 @property(nonatomic, getter=isPaused) _Bool paused;
 - (void)dealloc;
-- (id)initWithQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)initWithQueue:(id)arg1 screen:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
 
 @end

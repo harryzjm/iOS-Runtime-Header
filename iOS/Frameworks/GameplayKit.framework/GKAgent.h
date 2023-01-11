@@ -17,10 +17,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) GKBehavior *behavior; // @synthesize behavior=_behavior;
-@property(nonatomic) __weak id <GKAgentDelegate> delegate; // @synthesize delegate=_delegate;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(retain, nonatomic) GKBehavior *behavior; // @synthesize behavior=_behavior;
+@property(nonatomic) __weak id <GKAgentDelegate> delegate; // @synthesize delegate=_delegate;
 - (MISSING_TYPE *)steerToStayOnPath:(id)arg1 maxPredictionTime:(double)arg2;
 - (MISSING_TYPE *)steerToFollowPath:(id)arg1 maxPredictionTime:(double)arg2 forward:(_Bool)arg3;
 - (MISSING_TYPE *)steerForIntercept:(id)arg1 maxPredictionTime:(double)arg2;

@@ -14,17 +14,16 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_notificationIDsByRequestID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *notificationIDsByRequestID; // @synthesize notificationIDsByRequestID=_notificationIDsByRequestID;
 @property(retain, nonatomic) NSArray *notificationIDs; // @synthesize notificationIDs=_notificationIDs;
 @property(copy, nonatomic) CDUnknownBlockType notificationMarkedReadProgressBlock; // @synthesize notificationMarkedReadProgressBlock=_notificationMarkedReadProgressBlock;
-- (void).cxx_destruct;
 - (id)zoneIDsToLock;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
-- (int)operationType;
-- (id)initWithNotificationIDsToMarkRead:(id)arg1;
+- (id)initWithOperation:(id)arg1 notificationIDsToMarkRead:(id)arg2;
 
 @end
 

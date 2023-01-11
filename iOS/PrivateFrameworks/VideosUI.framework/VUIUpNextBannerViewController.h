@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface VUIUpNextBannerViewController : UIViewController <__TVShelfViewControllerDelegate, TVMediaProviding, TVAppTemplateImpressionable>
 {
+    _Bool _firstViewAppearance;
     unsigned long long _host;
     IKViewElement *_viewElement;
     _TVShelfViewController *_shelfViewController;
@@ -22,12 +23,13 @@ __attribute__((visibility("hidden")))
     TVObservableEventController *_observableEventController;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, getter=isFirstViewAppearance) _Bool firstViewAppearance; // @synthesize firstViewAppearance=_firstViewAppearance;
 @property(retain, nonatomic) TVObservableEventController *observableEventController; // @synthesize observableEventController=_observableEventController;
 @property(retain, nonatomic) TVMediaInfo *selectedMediaInfo; // @synthesize selectedMediaInfo=_selectedMediaInfo;
 @property(retain, nonatomic) _TVShelfViewController *shelfViewController; // @synthesize shelfViewController=_shelfViewController;
 @property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property(readonly, nonatomic) unsigned long long host; // @synthesize host=_host;
-- (void).cxx_destruct;
 - (void)removeObserver:(id)arg1;
 - (void)removeObserver:(id)arg1 forEvent:(id)arg2;
 - (void)addObserver:(id)arg1 forEvent:(id)arg2;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)loadView;
 - (void)updateWithElement:(id)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (id)initWithHost:(unsigned long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;

@@ -19,17 +19,19 @@
     NSData *_authorizationCode;
     NSString *_state;
     AKUserInformation *_userInformation;
+    NSString *_transactionID;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isLikelyRealUser; // @synthesize isLikelyRealUser=_isLikelyRealUser;
+@property(readonly, copy, nonatomic) NSString *transactionID; // @synthesize transactionID=_transactionID;
 @property(readonly, nonatomic) AKUserInformation *userInformation; // @synthesize userInformation=_userInformation;
 @property(readonly, copy, nonatomic) NSString *state; // @synthesize state=_state;
 @property(readonly, copy, nonatomic) NSData *authorizationCode; // @synthesize authorizationCode=_authorizationCode;
 @property(readonly, copy, nonatomic) NSData *identityToken; // @synthesize identityToken=_identityToken;
 @property(readonly, copy, nonatomic) NSArray *authorizedScopes; // @synthesize authorizedScopes=_authorizedScopes;
 @property(readonly, copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)initWithCoder:(id)arg1;

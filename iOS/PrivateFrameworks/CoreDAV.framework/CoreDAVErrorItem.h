@@ -18,6 +18,7 @@
     CoreDAVItemWithNoChildren *_maxImageSize;
     CoreDAVItemWithNoChildren *_invalidImageType;
     CoreDAVItemWithNoChildren *_imageError;
+    CoreDAVItemWithNoChildren *_guardianRestricted;
     CoreDAVItemWithNoChildren *_maxAttendees;
     CoreDAVItemWithNoChildren *_quotaExceeded;
     CoreDAVItemWithNoChildren *_maxResources;
@@ -27,7 +28,9 @@
 }
 
 + (id)copyParseRules;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CoreDAVLeafItem *status; // @synthesize status=_status;
+@property(retain, nonatomic) CoreDAVItemWithNoChildren *guardianRestricted; // @synthesize guardianRestricted=_guardianRestricted;
 @property(retain, nonatomic) CoreDAVItemWithNoChildren *validSplit; // @synthesize validSplit=_validSplit;
 @property(retain, nonatomic) CoreDAVItemWithNoChildren *validTimezone; // @synthesize validTimezone=_validTimezone;
 @property(retain, nonatomic) CoreDAVItemWithNoChildren *maxResources; // @synthesize maxResources=_maxResources;
@@ -43,7 +46,6 @@
 @property(retain, nonatomic) CoreDAVItemWithNoChildren *noUIDConflict; // @synthesize noUIDConflict=_noUIDConflict;
 @property(retain, nonatomic) CoreDAVItemWithNoChildren *validSyncToken; // @synthesize validSyncToken=_validSyncToken;
 @property(retain, nonatomic) CoreDAVItemWithNoChildren *numberOfMatchesWithinLimits; // @synthesize numberOfMatchesWithinLimits=_numberOfMatchesWithinLimits;
-- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

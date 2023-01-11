@@ -16,18 +16,25 @@
 @property(retain, nonatomic, setter=ic_setActiveStoreAccount:) ACAccount *ic_activeStoreAccount;
 @property(readonly, nonatomic) ACAccount *ic_primaryAppleAccount;
 @property(readonly, copy, nonatomic) NSArray *ic_allStoreAccounts;
-- (id)ic_storeAccountForStoreAccountID:(id)arg1 error:(id *)arg2;
-- (id)ic_activeStoreAccountWithError:(id *)arg1;
-- (id)ic_allStoreAccountsWithError:(id *)arg1;
+- (id)ic_localStoreAccountWithError:(id *)arg1;
 - (void)ic_localStoreAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (id)ic_storeAccountForHomeUserIdentifier:(id)arg1 error:(id *)arg2;
 - (void)ic_storeAccountForHomeUserIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)ic_storeAccountTypeWithError:(id *)arg1;
 - (void)ic_storeAccountTypeWithCompletion:(CDUnknownBlockType)arg1;
+- (id)ic_storeAccountForStoreAccountID:(id)arg1 error:(id *)arg2;
 - (void)ic_storeAccountForStoreAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)ic_primaryAppleAccountWithError:(id *)arg1;
 - (void)ic_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)ic_setActiveLockerAccount:(id)arg1 error:(id *)arg2;
 - (void)ic_setActiveLockerAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)ic_activeLockerAccountWithError:(id *)arg1;
 - (void)ic_activeLockerAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)ic_setActiveStoreAccount:(id)arg1 error:(id *)arg2;
 - (void)ic_setActiveStoreAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)ic_activeStoreAccountWithError:(id *)arg1;
 - (void)ic_activeStoreAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (id)ic_allStoreAccountsWithError:(id *)arg1;
 - (void)ic_allStoreAccountsWithCompletion:(CDUnknownBlockType)arg1;
 @end
 

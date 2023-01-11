@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIFont;
+@class UIFont, UIImage;
 
 @interface EKUISemiConstantCache : NSObject
 {
@@ -22,23 +22,25 @@
     UIFont *_weekAllDayLabelFontCompact;
     UIFont *_weekAllDayLabelFontRegular;
     UIFont *_weekAllDayTodayLabelFontCompact;
+    UIImage *_inboxDisclosureImage;
     double _currentScaleFactor;
     double _weekAllDayOccurrenceHeight;
     double _minYearMonthHeaderFontSizeUsed;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property double minYearMonthHeaderFontSizeUsed; // @synthesize minYearMonthHeaderFontSizeUsed=_minYearMonthHeaderFontSizeUsed;
 @property double weekAllDayOccurrenceHeight; // @synthesize weekAllDayOccurrenceHeight=_weekAllDayOccurrenceHeight;
 @property double weekAllDayBaselineForSmallFormatWeekView; // @synthesize weekAllDayBaselineForSmallFormatWeekView=_weekAllDayBaselineForSmallFormatWeekView;
 @property double weekAllDayBaselineForLargeFormatWeekView; // @synthesize weekAllDayBaselineForLargeFormatWeekView=_weekAllDayBaselineForLargeFormatWeekView;
 @property(readonly) double currentScaleFactor; // @synthesize currentScaleFactor=_currentScaleFactor;
 @property(readonly) _Bool usesLargeText; // @synthesize usesLargeText=_usesLargeText;
-- (void).cxx_destruct;
 @property(readonly) UIFont *weekAllDayTodayLabelFontRegular;
 @property(readonly) UIFont *weekAllDayTodayLabelFontCompact;
 @property(readonly) UIFont *weekAllDayLabelFontRegular;
 @property(readonly) UIFont *weekAllDayLabelFontCompact;
+- (id)inboxDisclosureImage;
 - (id)birthdayImageForFont:(id)arg1;
 - (long long)_participantStatusFromDetailAttendeesStatus:(int)arg1;
 - (id)statusGlyphForStatusType:(int)arg1;

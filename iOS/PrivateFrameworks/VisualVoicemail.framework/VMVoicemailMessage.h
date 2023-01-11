@@ -20,6 +20,7 @@
     unsigned int _flags;
     unsigned int _identifier;
     unsigned int _protocolVersion;
+    NSString *_receiverLabelID;
     NSString *_receiverDestinationID;
     unsigned int _remoteUID;
     NSString *_senderDestinationID;
@@ -35,6 +36,8 @@
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *receiverLabelID; // @synthesize receiverLabelID=_receiverLabelID;
 @property(retain, nonatomic) NSString *receiverDestinationID; // @synthesize receiverDestinationID=_receiverDestinationID;
 @property(nonatomic) unsigned int protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property(retain, nonatomic) VMAudioMessage *audio; // @synthesize audio=_audio;
@@ -48,7 +51,6 @@
 @property(nonatomic) double date; // @synthesize date=_date;
 @property(nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) unsigned int remoteUID; // @synthesize remoteUID=_remoteUID;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -58,6 +60,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasReceiverLabelID;
 @property(readonly, nonatomic) _Bool hasReceiverDestinationID;
 @property(nonatomic) _Bool hasProtocolVersion;
 @property(readonly, nonatomic) _Bool hasAudio;

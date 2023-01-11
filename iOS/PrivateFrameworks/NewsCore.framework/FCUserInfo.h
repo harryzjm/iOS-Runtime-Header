@@ -28,13 +28,14 @@
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
 + (id)userInfoCKRecordFromUserInfoDictionary:(id)arg1;
++ (unsigned long long)progressivePersonalization;
 + (id)iCloudDataKeys;
 + (id)desiredKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCMTWriterLock *userInfoLock; // @synthesize userInfoLock=_userInfoLock;
 @property(retain, nonatomic) NSDictionary *readOnlyUserInfo; // @synthesize readOnlyUserInfo=_readOnlyUserInfo;
 @property(readonly, nonatomic) _Bool useParsecResults; // @synthesize useParsecResults=_useParsecResults;
 @property(retain, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
-- (void).cxx_destruct;
 - (id)_userInfoValueForKey:(id)arg1;
 - (void)_modifyUserInfoWithBlock:(CDUnknownBlockType)arg1;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2;
@@ -54,6 +55,7 @@
 - (void)addObserver:(id)arg1;
 - (void)loadLocalCachesFromStore;
 - (id)asCKRecord;
+@property(nonatomic) _Bool endOfAudioTrackNotificationsEnabled;
 @property(nonatomic) _Bool newIssueNotificationsEnabled;
 @property(nonatomic) _Bool marketingNotificationsEnabled;
 @property(copy, nonatomic) NSString *canonicalLanguage;
@@ -64,10 +66,14 @@
 - (void)updateOnboardingVersion;
 - (void)refreshOnboardingVersion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool mightNeedToUpdateOnboardingVersion;
+@property(copy, nonatomic) NSString *lastAppLaunchUpsellInstanceID;
+@property(copy, nonatomic) NSNumber *upsellAppLaunchCount;
 @property(copy, nonatomic) NSDate *bundleSubscriptionMeteredCountLastResetDate;
 @property(copy, nonatomic) NSNumber *monthlyBundleSubscriptionMeteredCount;
 @property(copy, nonatomic) NSDate *aLaCarteSubscriptionMeteredCountLastResetDate;
 @property(copy, nonatomic) NSNumber *monthlyALaCarteSubscriptionMeteredCount;
+@property(copy, nonatomic) NSDate *personalizedNewsletterSignupLastSeenDate;
+@property(copy, nonatomic) NSDate *newsletterSignupLastSeenDate;
 @property(nonatomic) _Bool userHasCompletedFavoritesSetup;
 @property(nonatomic) _Bool hasShownProgressivePersonalizationWelcomeBrick;
 @property(readonly, nonatomic) unsigned long long progressivePersonalization;

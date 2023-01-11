@@ -6,9 +6,11 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
+@class PLXPCTransaction;
+
 @protocol PLCloudChangeTrackerDelegate <NSObject>
 - (void)saveTokenObject:(id)arg1;
 - (id)readTokenObject;
-- (void)changeTrackerDidReceiveChanges;
+- (void)changeTrackerDidReceiveChangesWithTransaction:(PLXPCTransaction *)arg1;
 @end
 

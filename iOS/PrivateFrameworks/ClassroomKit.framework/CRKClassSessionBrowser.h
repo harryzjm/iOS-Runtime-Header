@@ -31,17 +31,17 @@
     NSSet *_enrolledControlGroupIdentifiers;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowUnenrolledSessions; // @synthesize allowUnenrolledSessions=_allowUnenrolledSessions;
 @property(nonatomic) _Bool allowInvitationSessions; // @synthesize allowInvitationSessions=_allowInvitationSessions;
 @property(copy, nonatomic) NSSet *enrolledControlGroupIdentifiers; // @synthesize enrolledControlGroupIdentifiers=_enrolledControlGroupIdentifiers;
 @property(copy, nonatomic) NSSet *organizationUUIDs; // @synthesize organizationUUIDs=_organizationUUIDs;
 @property(nonatomic) __weak id <CRKInvitationSessionBrowserDelegate> invitationSessionDelegate; // @synthesize invitationSessionDelegate=_invitationSessionDelegate;
 @property(nonatomic) __weak id <CRKClassSessionBrowserDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)delegateDidRemoveInvitationSession:(id)arg1;
 - (void)delegateLostConnectionToInvitationSession:(id)arg1;
 - (void)delegateDidFindInvitationSession:(id)arg1 transport:(id)arg2;
-- (id)delegateNeedsClientIdentityInvitationSession;
+- (id)delegateNeedsClientIdentityForInvitationSessionWithEndpoint:(id)arg1;
 - (void)delegateInRangeClassSessionsDidChange;
 - (void)delegateDidRemoveClassSession:(id)arg1;
 - (void)delegateLostConnectionToClassSession:(id)arg1;
@@ -66,6 +66,9 @@
 - (void)beaconBrowser:(id)arg1 didFindBeaconForInvitationSessionWithEndpoint:(id)arg2;
 - (void)beaconBrowser:(id)arg1 didFindBeaconForClassSession:(id)arg2 flags:(unsigned short)arg3;
 - (void)beaconBrowser:(id)arg1 didFailWithError:(id)arg2;
+- (void)handleUntrustedClassSession:(id)arg1 decisionHandler:(CDUnknownBlockType)arg2;
+- (void)handleUntrustedInvitationSession:(id)arg1 decisionHandler:(CDUnknownBlockType)arg2;
+- (void)session:(id)arg1 encounteredUntrustedConnection:(CDUnknownBlockType)arg2;
 - (void)sessionDidInvalidate:(id)arg1;
 - (void)sessionDidLoseBeacon:(id)arg1;
 - (void)session:(id)arg1 willLoseBeaconAfterTimeInterval:(double)arg2;

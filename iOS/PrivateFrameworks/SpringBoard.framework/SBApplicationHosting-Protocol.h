@@ -14,5 +14,6 @@
 - (SBDeviceApplicationSceneHandle *)hostedAppSceneHandle;
 - (_Bool)isHostingAnApp;
 - (_Bool)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
 @end
 

@@ -21,12 +21,13 @@
     HMFTimer *_retryTimer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFTimer *retryTimer; // @synthesize retryTimer=_retryTimer;
 @property(readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (void)completeConfirmationsWithError:(id)arg1;
 - (void)queueConfirmationHandler:(CDUnknownBlockType)arg1 timeout:(double)arg2;
-@property(getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
+- (void)setReachable:(_Bool)arg1 reason:(unsigned long long)arg2;
+@property(readonly, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
 - (void)clearState:(long long)arg1;
 - (void)setState:(long long)arg1;
 @property(readonly) long long state; // @synthesize state=_state;

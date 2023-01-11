@@ -11,6 +11,7 @@
 
 @property(nonatomic) _Bool lunar; // @synthesize lunar=_lunar;
 - (id)_newSignatureCornerTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
 - (id)_newSignatureCircularTemplate;
 - (id)_newBezelTemplate;
 - (id)_newExtraLargeLunarTemplate;

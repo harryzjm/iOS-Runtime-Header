@@ -17,6 +17,7 @@
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (id)defaultName;
 + (Class)assetRepClass;
++ (id)createDefaultInstancesForUnitTesting;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (_Bool)requiresRootNamespace;
 - (id)effectiveModificationDateForCARCompiler;
@@ -28,6 +29,7 @@
 - (id)assetRepForIdentifier:(id)arg1;
 - (id)conflictFreeChildForSlot:(id)arg1;
 - (id)assetRepMatchingVariant:(id)arg1 forPlatform:(id)arg2;
+- (id)slotForChild:(id)arg1;
 - (id)assetRepForSlot:(id)arg1;
 
 @end

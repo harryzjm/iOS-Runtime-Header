@@ -39,7 +39,6 @@
 @property _Bool allowsGroupOpacity;
 @property _Bool allowsEdgeAntialiasing;
 @property _Bool drawsAsynchronously;
-@property double rasterizationScale;
 @property _Bool rasterizationPrefersDisplayCompositing;
 @property _Bool shouldRasterize;
 @property const struct CGPath *shadowPath;
@@ -53,6 +52,8 @@
 @property double borderWidth;
 @property struct CGColor *borderColor;
 @property(copy) NSDictionary *actions;
+@property(copy) NSDictionary *separatedOptions;
+@property(getter=isSeparated) _Bool separated;
 @property(copy) NSDictionary *style;
 @property(copy) NSString *name;
 @property(retain) id compositingFilter;
@@ -64,7 +65,6 @@
 @property float minificationFilterBias;
 @property(copy) NSString *minificationFilter;
 @property(copy) NSString *magnificationFilter;
-@property double contentsScale;
 @property _Bool contentsContainsSubtitles;
 @property _Bool cornerContentsMasksEdges;
 @property struct CGRect cornerContentsCenter;
@@ -77,7 +77,6 @@
 @property(getter=isHidden) _Bool hidden;
 @property(retain) id cornerContents;
 @property double anchorPointZ;
-@property struct CGPoint anchorPoint;
 @property(copy) NSString *fillMode;
 @property _Bool autoreverses;
 @property double repeatDuration;
@@ -87,6 +86,7 @@
 @property double timeOffset;
 @property double beginTime;
 @property _Bool continuousCorners;
+- (_Bool)_continuousCorners;
 @property(copy) NSString *cornerCurve;
 @property unsigned long long maskedCorners;
 - (void)layoutSublayers;
@@ -95,6 +95,11 @@
 - (struct CGSize)_preferredSize;
 - (_Bool)needsLayout;
 - (void)setNeedsLayout;
+- (void)_validateLayoutHashHasChangedWithLayoutTime:(double)arg1;
+- (void)_saveCurrentLayoutHash;
+- (void)_setPreviousLayoutHash:(id)arg1;
+- (id)_previousLayoutHash;
+- (id)_layoutHash;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)_contentsFormatDidChange:(id)arg1;
 - (struct CGColorSpace *)_retainColorSpace;
@@ -137,6 +142,8 @@
 @property(copy) NSString *contentsFormat;
 @property(copy) NSString *securityMode;
 @property unsigned int disableUpdateMask;
+@property double rasterizationScale;
+@property double contentsScale;
 @property unsigned int edgeAntialiasingMask;
 @property(retain) id contents;
 - (_Bool)containsPoint:(struct CGPoint)arg1;
@@ -155,12 +162,14 @@
 @property struct CATransform3D transform;
 @property double zPosition;
 @property struct CGPoint position;
+@property struct CGPoint anchorPoint;
 @property struct CGRect bounds;
 - (_Bool)shouldArchiveValueForKey:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setObservationInfo:(void *)arg1;
 - (void *)observationInfo;
+- (_Bool)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (id)valueForKeyPath:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -191,17 +200,19 @@
 - (void)_scrollRect:(struct CGRect)arg1 fromLayer:(id)arg2;
 - (void)scrollPoint:(struct CGPoint)arg1;
 - (void)_scrollPoint:(struct CGPoint)arg1 fromLayer:(id)arg2;
+- (_Bool)getRendererInfo:(struct _CARenderRendererInfo *)arg1 size:(unsigned long long)arg2;
+@property double motionBlurAmount;
 @property _Bool definesDisplayRegionOfInterest;
 @property _Bool acceleratesDrawing;
 @property struct CGSize backgroundColorPhase;
 @property struct CGSize sizeRequisition;
 @property _Bool allowsGroupBlending;
+@property _Bool toneMapToStandardDynamicRange;
 - (void)setWantsExtendedDynamicRangeContent:(_Bool)arg1;
 - (_Bool)wantsExtendedDynamicRangeContent;
 @property _Bool allowsDisplayCompositing;
 @property _Bool createsCompositingGroup;
 @property _Bool preloadsCache;
-@property double motionBlurAmount;
 @property _Bool inheritsTiming;
 @property _Bool contentsOpaque;
 @property _Bool contentsDither;
@@ -224,6 +235,7 @@
 - (_Bool)doubleSided;
 - (_Bool)opaque;
 - (_Bool)hidden;
+- (_Bool)CAMLTypeSupportedForKey:(id)arg1;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
@@ -261,11 +273,7 @@
 - (_Bool)_canDisplayConcurrently;
 - (id)implicitAnimationForKeyPath:(id)arg1;
 - (void)reloadValueForKeyPath:(id)arg1;
-- (void)setBehaviors:(id)arg1;
-- (id)behaviors;
-- (void)setMass:(double)arg1;
-- (double)mass;
-- (_Bool)getRendererInfo:(struct _CARenderRendererInfo *)arg1 size:(unsigned long long)arg2;
+- (id)optimizationOpportunities:(_Bool)arg1;
 
 // Remaining properties
 @property(copy) NSArray *stateTransitions; // @dynamic stateTransitions;

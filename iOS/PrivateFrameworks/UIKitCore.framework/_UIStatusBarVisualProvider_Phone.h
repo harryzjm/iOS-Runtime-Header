@@ -14,12 +14,12 @@
     NSTimer *_backgroundActivityDetailTimer;
 }
 
-+ (Class)visualProviderSubclassForScreen:(id)arg1;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *backgroundActivityDetailTimer; // @synthesize backgroundActivityDetailTimer=_backgroundActivityDetailTimer;
 @property(retain, nonatomic) _UIStatusBarRegion *pillRegion; // @synthesize pillRegion=_pillRegion;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *pillIconPlacement; // @synthesize pillIconPlacement=_pillIconPlacement;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *backgroundActivityDetailPlacement; // @synthesize backgroundActivityDetailPlacement=_backgroundActivityDetailPlacement;
-- (void).cxx_destruct;
 - (id)animationForBackgroundActivityPillWithDuration:(double)arg1 scale:(double)arg2;
 - (id)_animationForBackgroundActivityPill;
 - (id)_animationForBackgroundActivityIcon;

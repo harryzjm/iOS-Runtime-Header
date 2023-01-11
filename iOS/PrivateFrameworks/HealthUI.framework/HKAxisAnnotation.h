@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class HKAxisLabel, UIColor;
+@class NSAttributedString;
 
 @interface HKAxisAnnotation : NSObject
 {
-    UIColor *_textColor;
-    HKAxisLabel *_axisLabel;
+    NSAttributedString *_annotationText;
+    id _position;
 }
 
-@property(readonly, nonatomic) HKAxisLabel *axisLabel; // @synthesize axisLabel=_axisLabel;
-@property(readonly, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 - (void).cxx_destruct;
-- (id)initWithAnnotation:(id)arg1 color:(id)arg2 position:(id)arg3;
+@property(readonly, nonatomic) id position; // @synthesize position=_position;
+@property(readonly, nonatomic) NSAttributedString *annotationText; // @synthesize annotationText=_annotationText;
+- (id)initWithAnnotation:(id)arg1 position:(id)arg2;
 
 @end
 

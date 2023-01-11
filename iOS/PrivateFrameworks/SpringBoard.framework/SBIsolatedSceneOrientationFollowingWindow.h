@@ -8,6 +8,7 @@
 {
 }
 
+- (id)overlayRootViewController;
 - (_Bool)_usesWindowServerHitTesting;
 
 @end

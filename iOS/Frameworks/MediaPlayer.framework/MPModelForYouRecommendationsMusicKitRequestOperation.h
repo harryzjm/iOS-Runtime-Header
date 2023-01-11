@@ -12,9 +12,20 @@
 }
 
 - (void).cxx_destruct;
+- (id)displayFilterKindsValueForOptions:(long long)arg1;
+- (id)typesArrayWithTypes:(long long)arg1;
+- (_Bool)isOnboardingRequired:(id)arg1;
 - (id)recentlyPlayedURLWithStoreBagDictionary:(id)arg1;
 - (id)recommendationsURLWithStoreBagDictionary:(id)arg1;
-- (id)_produceResponseWithRecommendationsArray:(id)arg1 recentlyPlayedArray:(id)arg2 storeItemMetadataResults:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)queryItemsWithStoreBagDictionary:(id)arg1;
+- (id)_personalizeRecommendationGroup:(id)arg1 flatPersonalizedSectionedItems:(id)arg2;
+- (id)_responseWithResults:(id)arg1 personalizationResponse:(id)arg2;
+- (id)_produceResultsWithRecommendationsArray:(id)arg1 recentlyPlayedArray:(id)arg2;
+- (id)_produceResultsWithItemsArray:(id)arg1;
+- (id)_recommendationGroupBuilderWithFlatSectionedItems:(id)arg1;
+- (id)_recommendationGroupBuilder;
+- (id)itemProperties;
+- (id)sectionProperties;
 - (void)produceResponseWithLoadedOutput:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)configurationForLoadingModelDataWithStoreBagDictionary:(id)arg1 error:(id *)arg2;
 

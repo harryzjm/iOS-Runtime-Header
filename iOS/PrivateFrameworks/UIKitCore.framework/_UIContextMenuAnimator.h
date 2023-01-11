@@ -21,15 +21,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)animatorWithViewController:(id)arg1;
-@property(retain, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
-@property(retain, nonatomic) NSMutableArray *animations; // @synthesize animations=_animations;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
+@property(readonly, nonatomic) NSMutableArray *animations; // @synthesize animations=_animations;
 @property(readonly, nonatomic) UIViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
 @property(nonatomic) long long preferredCommitStyle; // @synthesize preferredCommitStyle=_preferredCommitStyle;
-- (void).cxx_destruct;
 - (void)performAllCompletions;
 - (void)performAllAnimations;
 - (void)addCompletion:(CDUnknownBlockType)arg1;
 - (void)addAnimations:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool hasAnyActions;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

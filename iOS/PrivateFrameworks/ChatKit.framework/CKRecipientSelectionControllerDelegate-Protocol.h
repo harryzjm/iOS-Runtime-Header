@@ -15,6 +15,7 @@
 - (void)recipientSelectionControllerRequestDismissKeyboard:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionController:(CKRecipientSelectionController *)arg1 textDidChange:(NSString *)arg2;
 - (void)recipientSelectionControllerSearchListDidShowOrHide:(CKRecipientSelectionController *)arg1;
+- (void)recipientSelectionControllerTabPressed:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionControllerReturnPressed:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionControllerDidChangeSize:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionControllerDidBecomeFirstResponder:(CKRecipientSelectionController *)arg1;

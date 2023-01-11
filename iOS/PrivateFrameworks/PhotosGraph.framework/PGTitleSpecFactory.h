@@ -14,9 +14,10 @@
 + (id)_publicEventSpecCategoryNameAtBusiness;
 + (id)_publicEventSpecPerformerNames;
 + (id)_publicEventSpecEventName;
++ (id)_specForFoodieWithPersonNodes:(id)arg1 locationName:(id)arg2 allowInspiredTastesTitle:(_Bool)arg3 genericOnly:(_Bool)arg4;
 + (id)_specForThrowbackThursday;
 + (id)_specForPeopleVisiting;
-+ (id)_specForEarlyMoments;
++ (id)_specForEarlyMomentsWithPersonNodes:(id)arg1;
 + (id)_specForBabyGrowingUp;
 + (id)_specForBaby;
 + (id)_specForPet;
@@ -38,7 +39,9 @@
 + (id)_specForBirthday;
 + (id)_specForWedding;
 + (id)_specForCelebration;
++ (id)specCollectionForFoodieMemoryWithPersonNodes:(id)arg1 locationName:(id)arg2 allowInspiredTastesTitle:(_Bool)arg3 genericOnly:(_Bool)arg4;
 + (id)specCollectionForMeaningLabel:(id)arg1;
++ (id)specCollectionForMemoryCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2 personNodes:(id)arg3;
 + (id)specCollectionForMemoryCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2;
 
 @end

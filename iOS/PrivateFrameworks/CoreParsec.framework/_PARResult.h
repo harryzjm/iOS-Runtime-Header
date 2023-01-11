@@ -9,13 +9,17 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_PARResult-Protocol.h>
 
-@class NSArray, NSData, NSString, _PARResult_Template;
+@class NSArray, NSData, NSDictionary, NSString, _PARResult_Template;
 
 __attribute__((visibility("hidden")))
 @interface _PARResult : PBCodable <_PARResult, NSSecureCoding>
 {
     _Bool _renderHorizontallyWithOtherResultsInCategory;
     _Bool _isQuickGlance;
+    _Bool _shouldUseCompactDisplay;
+    _Bool _noGoTakeover;
+    _Bool _preferTopPlatter;
+    _Bool _usesCompactDisplay;
     float _score;
     int _maxAgeSeconds;
     float _serverScore;
@@ -39,8 +43,17 @@ __attribute__((visibility("hidden")))
     NSString *_intendedQuery;
     NSString *_correctedQuery;
     NSString *_completedQuery;
+    NSArray *_alternativeURLs;
+    NSDictionary *_serverFeatures;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
+@property(copy, nonatomic) NSArray *alternativeURLs; // @synthesize alternativeURLs=_alternativeURLs;
+@property(nonatomic) _Bool usesCompactDisplay; // @synthesize usesCompactDisplay=_usesCompactDisplay;
+@property(nonatomic) _Bool preferTopPlatter; // @synthesize preferTopPlatter=_preferTopPlatter;
+@property(nonatomic) _Bool noGoTakeover; // @synthesize noGoTakeover=_noGoTakeover;
+@property(nonatomic) _Bool shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property(copy, nonatomic) NSString *completedQuery; // @synthesize completedQuery=_completedQuery;
 @property(copy, nonatomic) NSString *correctedQuery; // @synthesize correctedQuery=_correctedQuery;
 @property(copy, nonatomic) NSString *intendedQuery; // @synthesize intendedQuery=_intendedQuery;
@@ -66,7 +79,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *canonicalId; // @synthesize canonicalId=_canonicalId;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
@@ -75,6 +87,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(id)arg2;
+- (_Bool)getServerFeatures:(double *)arg1 forKey:(id)arg2;
+- (id)alternativeURLsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternativeURLsCount;
+- (void)addAlternativeURLs:(id)arg1;
+- (void)clearAlternativeURLs;
 - (id)entitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entitiesCount;
 - (void)addEntities:(id)arg1;

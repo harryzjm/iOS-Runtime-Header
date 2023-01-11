@@ -8,10 +8,11 @@
 
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/_UICollectionViewLayoutOrthogonalScrolling-Protocol.h>
+#import <UIKitCore/_UICollectionViewLayoutSwipeActions-Protocol.h>
 
-@class NSArray, NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSString, UICollectionView, UICollectionViewLayoutInvalidationContext, UIDynamicAnimator, _UICollectionViewCompositionLayout;
+@class NSArray, NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSString, UICollectionView, UICollectionViewLayoutInvalidationContext, UIDynamicAnimator, _UICollectionViewAnimationContext, _UICollectionViewCompositionLayout, _UICollectionViewLayoutSwipeActionsModule;
 
-@interface UICollectionViewLayout : NSObject <_UICollectionViewLayoutOrthogonalScrolling, NSCoding>
+@interface UICollectionViewLayout : NSObject <_UICollectionViewLayoutOrthogonalScrolling, _UICollectionViewLayoutSwipeActions, NSCoding>
 {
     UICollectionView *_collectionView;
     struct CGSize _collectionViewBoundsSize;
@@ -30,11 +31,12 @@
     UICollectionViewLayout *_transitioningToLayout;
     UIDynamicAnimator *_animator;
     UICollectionViewLayoutInvalidationContext *_invalidationContext;
+    _UICollectionViewLayoutSwipeActionsModule *_swipeActionsModule;
     struct CGRect _frame;
     NSIndexSet *_sections;
     NSIndexSet *_items;
     NSArray *_elementKinds;
-    struct _UICollectionViewCompositionLayout *_compositionLayout;
+    _UICollectionViewCompositionLayout *_compositionLayout;
     UICollectionViewLayout *_siblingLayout;
     struct CGPoint _layoutOffset;
     unsigned long long _layoutOffsetEdges;
@@ -43,21 +45,31 @@
         unsigned int inTransitionToTransitionLayout:1;
         unsigned int prepared:1;
         unsigned int wantsRightToLeftHorizontalMirroringIfNeeded:1;
+        unsigned int isEditing:1;
     } _layoutFlags;
     long long _sublayoutType;
+    _UICollectionViewAnimationContext *_collectionViewAnimationContext;
 }
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
-@property(nonatomic, getter=_sublayoutType, setter=_setSublayoutType:) long long sublayoutType; // @synthesize sublayoutType=_sublayoutType;
 - (void).cxx_destruct;
+@property(retain, nonatomic, getter=_collectionViewAnimationContext, setter=_setCollectionViewAnimationContext:) _UICollectionViewAnimationContext *collectionViewAnimationContext; // @synthesize collectionViewAnimationContext=_collectionViewAnimationContext;
+@property(nonatomic, getter=_sublayoutType, setter=_setSublayoutType:) long long sublayoutType; // @synthesize sublayoutType=_sublayoutType;
+- (_Bool)_initialAppearingLayoutAttributesCanBeOverriddenForEstimatedSizing;
+- (double)_alignedContentMarginGivenMargin:(double)arg1;
+- (void)_didEndSwiping;
+- (void)_willBeginSwiping;
+- (id)_trailingSwipeActionsConfigurationForIndexPath:(id)arg1;
+- (id)_leadingSwipeActionsConfigurationForIndexPath:(id)arg1;
 - (id)_orthogonalScrollingTrace;
+- (id)_orthogonalScrollingStateForSection:(long long)arg1;
 - (_Bool)_orthogonalScrollingElementShouldAppearAboveForAttributes:(id)arg1;
 - (struct CGRect)_orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(id)arg1 frame:(struct CGRect)arg2;
 - (_Bool)_shouldOrthogonalScrollingSectionDecorationScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
 - (_Bool)_shouldOrthogonalScrollingSectionSupplementaryScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
 - (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;
-- (int)_orthogonalScrollingAxis;
+- (unsigned long long)_orthogonalScrollingAxis;
 - (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2;
 - (_Bool)_orthogonalScrollingUsesTargetContentOffsetForSection:(long long)arg1;
 - (_Bool)_orthogonalScrollingShouldCenterCustomPagingSizeForSection:(long long)arg1;
@@ -72,16 +84,28 @@
 - (void)_setOffset:(struct CGPoint)arg1 forOrthogonalScrollingSection:(long long)arg2;
 - (id)_orthogonalScrollingSections;
 - (_Bool)_hasOrthogonalScrollingSections;
-- (int)_layoutAxis;
+- (unsigned long long)_layoutAxis;
+- (_Bool)_disallowsFadeCellsForBoundsChange;
 - (unsigned long long)_edgesForSafeAreaPropagationToDescendants;
 - (_Bool)_overridesSafeAreaPropagationToDescendants;
 - (_Bool)_preparedForBoundsChanges;
 - (_Bool)_needsRecomputeOfPreferredAttributesForVisibleEstimatedItemsDuringUpdate;
+- (_Bool)_wantsAnimationsForOffscreenAuxillaries;
 - (_Bool)_wantsUntrackedAnimationCleanupForAuxillaryItems;
 - (void)_traitCollectionDidChangeFromPreviousCollection:(id)arg1 newTraitCollection:(id)arg2;
 - (_Bool)flipsHorizontallyInOppositeLayoutDirection;
 - (long long)developmentLayoutDirection;
+- (id)_layoutAttributesForItemNearestPosition:(struct CGPoint)arg1 maximumDistance:(double)arg2;
 - (id)_layoutAttributesForElementsInProjectedRect:(struct CGRect)arg1 withProjectionVector:(struct CGVector)arg2 projectionDistance:(double)arg3;
+- (id)_nextLayoutAttributesForGlobalIndex:(long long)arg1;
+- (id)_previousLayoutAttributesForGlobalIndex:(long long)arg1;
+- (unsigned long long)_layoutAxisForAttributes:(id)arg1 previousAttributes:(id)arg2 nextAttributes:(id)arg3;
+- (struct CGPoint)_targetPositionForInteractiveMovementOfItemAtIndexPath:(id)arg1 withProposedTargetPosition:(struct CGPoint)arg2;
+- (_Bool)_allowsItemInteractionsToBegin;
+- (id)_indexPathForInsertionIndicatorForTargetAttributes:(id)arg1 axis:(unsigned long long)arg2 edges:(unsigned long long)arg3 previousAttributes:(id)arg4 nextAttributes:(id)arg5;
+- (struct CGRect)_centerInsertionIndicatorFrame:(struct CGRect)arg1 targetAttributes:(id)arg2 axis:(unsigned long long)arg3 edges:(unsigned long long)arg4;
+- (struct CGRect)_frameForInsertionIndicatorForTargetFrame:(struct CGRect)arg1 axis:(unsigned long long)arg2 edges:(unsigned long long)arg3;
+- (id)_layoutAttributesForInsertionIndicatorAtTargetPosition:(struct CGPoint)arg1 sourceIndexPath:(id)arg2;
 - (struct CGPoint)_contentOffsetForScrollingToSection:(long long)arg1;
 @property(readonly, nonatomic, getter=_focusFastScrollingIndexBarInsets) struct UIEdgeInsets focusFastScrollingIndexBarInsets;
 - (void)_setWantsRightToLeftHorizontalMirroringIfNeeded:(_Bool)arg1;
@@ -96,17 +120,20 @@
 - (id)_invalidationContextForReorderingTargetPosition:(struct CGPoint)arg1 targetIndexPaths:(id)arg2 withPreviousPosition:(struct CGPoint)arg3 previousIndexPaths:(id)arg4;
 - (id)_layoutAttributesForReorderedItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (id)_reorderingTargetItemIndexPathForPosition:(struct CGPoint)arg1 withPreviousIndexPath:(id)arg2;
+- (void)_backgroundChangedForInteractionAtIndexPath:(id)arg1;
+- (void)_postProcessPreferredAttributes:(id)arg1 forView:(id)arg2;
 - (void)_prepareForPreferredAttributesQueryForView:(id)arg1 withLayoutAttributes:(id)arg2;
-- (void)_didPerformUpdateVisibleCellsPass;
+- (void)_didPerformUpdateVisibleCellsPassWithLayoutOffset:(struct CGPoint)arg1;
 - (void)_willPerformUpdateVisibleCellsPass;
 - (struct CGSize)_fallbackItemSize;
 - (_Bool)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (_Bool)_estimatesSupplementaryItems;
+- (_Bool)_disablesDoubleSidedAnimations;
 - (_Bool)_estimatesSizes;
 @property(nonatomic, getter=_isPrepared, setter=_setPrepared:) _Bool prepared;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayout:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayout:(id)arg2;
-- (struct CGPoint)_offsetInTopParentLayout:(struct _UICollectionViewCompositionLayout **)arg1;
+- (struct CGPoint)_offsetInTopParentLayout:(id *)arg1;
 @property(nonatomic, getter=_layoutOffsetEdges, setter=_setLayoutOffsetEdges:) unsigned long long layoutOffsetEdges;
 @property(nonatomic, getter=_layoutOffset, setter=_setLayoutOffset:) struct CGPoint layoutOffset;
 @property(nonatomic, getter=_siblingLayout, setter=_setSiblingLayout:) UICollectionViewLayout *siblingLayout;
@@ -115,7 +142,6 @@
 @property(copy, nonatomic, getter=_items, setter=_setItems:) NSIndexSet *items;
 @property(copy, nonatomic, getter=_sections, setter=_setSections:) NSIndexSet *sections;
 - (struct CGRect)_dynamicReferenceBounds;
-- (struct CGRect)_bounds;
 - (struct CGRect)bounds;
 @property(nonatomic, getter=_frame, setter=_setFrame:) struct CGRect frame;
 - (void)setEditing:(_Bool)arg1;
@@ -139,9 +165,12 @@
 - (id)initialLayoutAttributesForAppearingDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)finalLayoutAttributesForDisappearingSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)initialLayoutAttributesForAppearingSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (id)_finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
+- (id)_initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (void)_prepareToAnimateFromCollectionViewItems:(id)arg1 atContentOffset:(struct CGPoint)arg2 toItems:(id)arg3 atContentOffset:(struct CGPoint)arg4;
+- (id)_propertyAnimatorForCollectionViewUpdates:(id)arg1 withCustomAnimator:(id)arg2;
 - (id)_dynamicAnimator;
 - (void)_setDynamicAnimator:(id)arg1;
 - (void)finalizeAnimatedBoundsChange;
@@ -168,6 +197,7 @@
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2;
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned long long)arg3;
 - (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
+- (_Bool)_shouldAdjustTargetContentOffsetToValidateContentExtents;
 - (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1 withScrollingVelocity:(struct CGPoint)arg2;
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;

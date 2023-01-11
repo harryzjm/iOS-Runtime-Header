@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)displayImage;
+- (RetainPtr_337fe565)displayImage;
 - (_Bool)isVideo;
 
 @end

@@ -24,7 +24,7 @@
 + (id)insertSourceWithUUID:(id)arg1 bundleIdentifier:(id)arg2 owningAppBundleIdentifier:(id)arg3 name:(id)arg4 options:(unsigned long long)arg5 isCurrentDevice:(_Bool)arg6 productType:(id)arg7 modificationDate:(id)arg8 provenance:(long long)arg9 profile:(id)arg10 error:(id *)arg11;
 + (id)propertyForSyncAnchor;
 + (id)propertyForSyncProvenance;
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (long long)protectionClass;
 + (id)indices;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;

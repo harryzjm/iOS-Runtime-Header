@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContact, CNLabeledValue, SGRealtimeContact, SGRecordId;
+@class SGRealtimeContact, SGRecordId;
 
 @protocol _SGSuggestionsServiceContactsConfirmRejectProtocol
-- (void)rejectCuratedContactDetail:(CNLabeledValue *)arg1 from:(CNContact *)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (_Bool)rejectContactDetailRecord:(SGRecordId *)arg1 error:(id *)arg2;
+- (_Bool)rejectContactDetailRecord:(SGRecordId *)arg1 rejectionUI:(int)arg2 error:(id *)arg3;
 - (void)rejectContactDetailRecord:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)rejectContactDetailRecord:(SGRecordId *)arg1 rejectionUI:(int)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (_Bool)confirmContactDetailRecord:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)confirmContactDetailRecord:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (_Bool)rejectRecord:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)rejectRecord:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (_Bool)rejectRecord:(SGRecordId *)arg1 rejectionUI:(int)arg2 error:(id *)arg3;
+- (void)rejectRecord:(SGRecordId *)arg1 rejectionUI:(int)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (_Bool)confirmRecord:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)confirmRecord:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)rejectContact:(SGRealtimeContact *)arg1 rejectionUI:(int)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)rejectContact:(SGRealtimeContact *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)confirmContact:(SGRealtimeContact *)arg1 withCompletion:(void (^)(NSError *))arg2;
 @end

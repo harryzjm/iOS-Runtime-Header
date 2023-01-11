@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSpatialEventLookupResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _categorys;
     GEOLatLng *_center;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     GEOPDMapsIdentifier *_eventId;
     GEOPDMapsIdentifier *_poiId;
     GEOTimezone *_timezone;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_categorys:1;
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_eventId:1;
         unsigned int read_poiId:1;
         unsigned int read_timezone:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_categorys:1;
-        unsigned int wrote_center:1;
-        unsigned int wrote_eventDateTimes:1;
-        unsigned int wrote_eventId:1;
-        unsigned int wrote_poiId:1;
-        unsigned int wrote_timezone:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,38 +49,35 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDMapsIdentifier *poiId;
 @property(readonly, nonatomic) _Bool hasPoiId;
-- (void)_readPoiId;
 @property(retain, nonatomic) GEOTimezone *timezone;
 @property(readonly, nonatomic) _Bool hasTimezone;
-- (void)_readTimezone;
 - (id)eventDateTimeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)eventDateTimesCount;
-- (void)_addNoFlagsEventDateTime:(id)arg1;
 - (void)addEventDateTime:(id)arg1;
 - (void)clearEventDateTimes;
 @property(retain, nonatomic) NSMutableArray *eventDateTimes;
-- (void)_readEventDateTimes;
 - (int)StringAsCategorys:(id)arg1;
 - (id)categorysAsString:(int)arg1;
 - (void)setCategorys:(int *)arg1 count:(unsigned long long)arg2;
 - (int)categoryAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsCategory:(int)arg1;
 - (void)addCategory:(int)arg1;
 - (void)clearCategorys;
 @property(readonly, nonatomic) int *categorys;
 @property(readonly, nonatomic) unsigned long long categorysCount;
-- (void)_readCategorys;
 @property(retain, nonatomic) GEOLatLng *center;
 @property(readonly, nonatomic) _Bool hasCenter;
-- (void)_readCenter;
 @property(retain, nonatomic) GEOPDMapsIdentifier *eventId;
 @property(readonly, nonatomic) _Bool hasEventId;
-- (void)_readEventId;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

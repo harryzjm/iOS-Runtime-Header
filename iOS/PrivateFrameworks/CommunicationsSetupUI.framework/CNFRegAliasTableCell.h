@@ -6,22 +6,28 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class UIActivityIndicatorView;
+@class UIActivityIndicatorView, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegAliasTableCell : PSTableCell
 {
     _Bool _hasSpinner;
     UIActivityIndicatorView *_spinner;
+    UIImageView *_temporaryPhoneGlyph;
+    UIImageView *_iconView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
+@property(retain, nonatomic) UIImageView *temporaryPhoneGlyph; // @synthesize temporaryPhoneGlyph=_temporaryPhoneGlyph;
 @property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property(nonatomic) _Bool hasSpinner; // @synthesize hasSpinner=_hasSpinner;
-- (void).cxx_destruct;
 - (_Bool)usesStandardBackgroundImage;
 - (void)layoutSubviews;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)_updateIcon;
 - (void)setChecked:(_Bool)arg1;
+- (void)setIsTemporaryPhone:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 

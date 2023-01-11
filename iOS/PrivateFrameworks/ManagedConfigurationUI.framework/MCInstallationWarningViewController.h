@@ -4,25 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
-
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-
-@class NSArray, NSString;
+@class NSArray;
 @protocol MCInstallationWarningDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MCInstallationWarningViewController : UITableViewController <PSStateRestoration>
+@interface MCInstallationWarningViewController
 {
     _Bool _isMDMInstall;
     NSArray *_warnings;
     id <MCInstallationWarningDelegate> _warningDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <MCInstallationWarningDelegate> warningDelegate; // @synthesize warningDelegate=_warningDelegate;
 @property(retain, nonatomic) NSArray *warnings; // @synthesize warnings=_warnings;
 @property(nonatomic) _Bool isMDMInstall; // @synthesize isMDMInstall=_isMDMInstall;
-- (void).cxx_destruct;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
@@ -31,17 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)_installProfile;
 - (void)_cancelInstallProfile;
 - (void)_confirmInstallProfileIfNeeded;
-- (_Bool)canBeShownFromSuspendedState;
-- (void)didReceiveMemoryWarning;
-- (void)viewDidLoad;
 - (void)_setup;
 - (id)initWithStyle:(long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -17,13 +17,10 @@
     NSRunLoop *_scheduledRunLoop;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableData *_buffer;
-    NSMutableData *_preBuffer;
 }
 
 - (void).cxx_destruct;
-- (void)_onRunLoop_notifyDelegateOfStreamEvent:(unsigned long long)arg1;
 - (void)handleStreamDisconnect;
-- (void)_onSerialQueue_handleDataReceived:(id)arg1;
 - (void)handleDataReceived:(id)arg1;
 - (void)notifyDelegateOfStreamEvent:(unsigned long long)arg1;
 - (_Bool)hasBytesAvailable;
@@ -43,7 +40,6 @@
 - (id)initWithFileAtPath:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithURL:(id)arg1;
-- (void)_init;
 
 @end
 

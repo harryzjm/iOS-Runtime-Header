@@ -24,12 +24,12 @@
     UITapGestureRecognizer *_platterTapGestureRecognizer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UITapGestureRecognizer *platterTapGestureRecognizer; // @synthesize platterTapGestureRecognizer=_platterTapGestureRecognizer;
 @property(retain, nonatomic) PLExpandedPlatterView *expandedPlatterView; // @synthesize expandedPlatterView=_expandedPlatterView;
 @property(nonatomic) __weak id <APUILongLookViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <APUILongLookViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <PLClickPresentationInteractionPresenting> presenter; // @synthesize presenter=_presenter;
-- (void).cxx_destruct;
 - (id)expandedPlatterViewForPresentationView:(id)arg1;
 - (void)_platterUtilityButtonTapped:(id)arg1;
 - (void)_platterDidReceiveTap:(id)arg1;
@@ -40,6 +40,7 @@
 - (void)_setupProgressIndicator;
 - (void)_dismissButtonTapped:(id)arg1;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 - (void)loadView;
 
 // Remaining properties

@@ -6,13 +6,14 @@
 
 #import <PhotoLibraryServices/NSFilePresenter-Protocol.h>
 
-@class NSOperationQueue, NSSet, NSString, NSURL, PLBackgroundJobService;
+@class NSOperationQueue, NSSet, NSString, NSURL, PLBackgroundJobService, PLLazyObject;
 
 @interface PLServerPhotoLibraryBundle <NSFilePresenter>
 {
     Class _libraryServicesDelegateClass;
     PLBackgroundJobService *_backgroundJobService;
     NSOperationQueue *_presentedItemOperationQueue;
+    PLLazyObject *_lazyTouchCoalescer;
 }
 
 - (void).cxx_destruct;
@@ -29,7 +30,12 @@
 - (_Bool)bindAssetsdService:(id)arg1 error:(id *)arg2;
 - (id)boundAssetsdServices;
 - (void)shutdownWithReason:(id)arg1;
+- (void)clearShutdownReason;
+- (void)invalidateClientConnectionsWithReason:(id)arg1;
+- (void)_touch;
+- (void)touch;
 - (void)close;
+- (id)_newTouchCoalescer;
 - (id)newBoundAssetsdServicesTable;
 - (id)newLibraryServicesManager;
 - (id)newChangePublisher;

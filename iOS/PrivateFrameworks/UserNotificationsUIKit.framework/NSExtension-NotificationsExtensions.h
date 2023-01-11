@@ -7,6 +7,8 @@
 #import <Foundation/NSExtension.h>
 
 @interface NSExtension (NotificationsExtensions)
+- (id)nc_allowedSectionIdentifiers;
+- (id)_nc_customSectionIdentifiers;
 - (id)nc_extensionContainerBundleIdentifier;
 - (id)nc_extensionContainerBundleProxy;
 @end

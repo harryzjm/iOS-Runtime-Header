@@ -10,14 +10,29 @@
 
 @interface PGGraphHomeWorkNode <PGGraphLocalizable>
 {
+    NSString *_uuid;
+    NSString *_label;
 }
 
++ (id)ownerOfHomeWork;
++ (id)workFilter;
++ (id)homeFilter;
++ (id)filter;
+- (void).cxx_destruct;
+- (id)label;
+- (_Bool)isHome;
 - (id)owners;
 @property(readonly, nonatomic) NSString *localizedName;
+- (unsigned short)domain;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

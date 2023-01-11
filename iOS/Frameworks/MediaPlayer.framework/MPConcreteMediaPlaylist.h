@@ -9,6 +9,7 @@
 @class MPMediaQuery, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPConcreteMediaPlaylist <NSCopying>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

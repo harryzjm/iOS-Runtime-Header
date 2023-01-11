@@ -11,14 +11,16 @@
     unsigned long long _numberOfInsufficientlyFacedRejects;
     unsigned long long _numberOfBuildFailureRejects;
     NSString *_personUUID;
+    NSString *_personName;
 }
 
-@property(retain, nonatomic) NSString *personUUID; // @synthesize personUUID=_personUUID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *personName; // @synthesize personName=_personName;
+@property(retain, nonatomic) NSString *personUUID; // @synthesize personUUID=_personUUID;
 - (_Bool)canFallbackToDejunkAndDedupeForShowMore;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (unsigned long long)durationForExtendedCuration;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_computeOverTheTimeFacedAssetsForPersonWithUUID:(id)arg1 inFacedAssets:(id)arg2;
 

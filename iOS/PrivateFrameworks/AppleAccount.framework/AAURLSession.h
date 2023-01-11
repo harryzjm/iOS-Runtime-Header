@@ -35,6 +35,8 @@
 - (id)bodyTaskWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dataTaskWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dataTaskWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)resetSessionCache;
+- (id)initForProxiedDevice:(id)arg1;
 - (id)_initRequiringSigning:(_Bool)arg1;
 - (id)init;
 

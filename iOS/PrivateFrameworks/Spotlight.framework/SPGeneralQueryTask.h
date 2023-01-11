@@ -20,24 +20,21 @@
     NSString *_mutableSessionEntityString;
 }
 
-@property(readonly) SPSearchQuery *query; // @synthesize query=_query;
 - (void).cxx_destruct;
+@property(readonly) SPSearchQuery *query; // @synthesize query=_query;
+@property(retain) NSMutableArray *mutableSections; // @synthesize mutableSections=_mutableSections;
 - (id)unsafeSessionEntityString;
 - (id)unsafeSections;
 - (void)searchDaemonRankingLog:(id)arg1;
 - (void)searchDaemonQuery:(id)arg1 encounteredError:(id)arg2;
-- (void)searchDaemonLocalSuggestionsData:(id)arg1 lexicon:(struct _LXLexicon *)arg2 tokenizer:(struct __CFStringTokenizer *)arg3 currentLocaleRef:(struct __CFLocale *)arg4;
-- (void)searchDaemonSuggestionsArray:(id)arg1;
-- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(_Bool)arg3 complete:(_Bool)arg4 finished:(_Bool)arg5 delayed:(_Bool)arg6 delayedTopHit:(_Bool)arg7 unchanged:(_Bool)arg8 blendingDuration:(double)arg9 geoEntityString:(id)arg10 supportedAppScopes:(id)arg11;
+- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(_Bool)arg3 partiallyComplete:(_Bool)arg4 update:(_Bool)arg5 complete:(_Bool)arg6 delayedTopHit:(_Bool)arg7 unchanged:(_Bool)arg8 forceStable:(_Bool)arg9 blendingDuration:(double)arg10 geoEntityString:(id)arg11 supportedAppScopes:(id)arg12 showMoreInAppInfo:(id)arg13;
 - (id)defaultSearchThroughSection;
 - (id)searchThroughSection;
-- (_Bool)_shouldPromptUserToOpenTTR;
-- (id)getTapToRadarPunchOutForRankingWithDebugLog:(id)arg1;
 - (id)resultWithIdentifier:(id)arg1 title:(id)arg2 url:(id)arg3 bundleIdentifier:(id)arg4;
 - (void)addSections:(id)arg1 delayedTopHit:(_Bool)arg2;
 - (void)handleOptionsForNewSections:(id)arg1;
+- (void)truncateSuggestionsSectionToFit:(id)arg1;
 - (void)mergeSections;
-- (void)handleHiddenResult:(id)arg1 shownResult:(id)arg2 inSection:(id)arg3;
 - (id)searchString;
 - (void)cancel;
 - (void)clear;

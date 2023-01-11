@@ -17,10 +17,12 @@
     NSSet *_operationalAccountsCache;
     _Bool _isLoading;
     _Bool _isFirstLoad;
+    _Bool _networkDataAvailable;
 }
 
 + (id)sharedAccountController;
 + (id)sharedInstance;
+@property(nonatomic) _Bool networkDataAvailable; // @synthesize networkDataAvailable=_networkDataAvailable;
 @property(readonly, nonatomic) _Bool isLoading; // @synthesize isLoading=_isLoading;
 - (void)account:(id)arg1 isActiveChanged:(_Bool)arg2;
 - (id)_nicknameController;
@@ -39,6 +41,7 @@
 - (id)activeAccountsForService:(id)arg1;
 @property(readonly, nonatomic) NSArray *activeAccounts;
 - (id)accountsForService:(id)arg1;
+- (id)accountForHandle:(id)arg1;
 - (id)accountForAccountID:(id)arg1;
 - (id)accountsForLoginID:(id)arg1 onService:(id)arg2;
 @property(readonly, nonatomic) NSArray *accounts;
@@ -59,6 +62,10 @@
 - (void)_daemonWillShutdown:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)activeAliases;
+- (_Bool)hasActivePhoneAccount;
+- (_Bool)receiverIsCandidateForHawking:(id)arg1;
+- (_Bool)activeAccountsAreEligibleForHawking;
 @property(readonly, nonatomic) NSDictionary *loadOldStatusStore;
 - (id)_superFormatFromAIML:(id)arg1;
 

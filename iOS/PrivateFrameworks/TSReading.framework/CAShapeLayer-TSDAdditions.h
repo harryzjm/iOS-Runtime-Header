@@ -7,6 +7,7 @@
 #import <QuartzCore/CAShapeLayer.h>
 
 @interface CAShapeLayer (TSDAdditions)
++ (Class)tsd_renderableClass;
 - (void)setCGLineJoin:(int)arg1;
 - (void)setCGLineCap:(int)arg1;
 @end

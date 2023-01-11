@@ -8,25 +8,23 @@
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
-@class NSString, SNSystemConfiguration;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SNAudioLevelMeasurer : NSObject <SNAnalyzing>
 {
-    SNSystemConfiguration *_systemConfiguration;
     shared_ptr_f6ac7592 _graph;
     float _inputSensitivity;
 }
 
-@property(readonly, nonatomic) float inputSensitivity; // @synthesize inputSensitivity=_inputSensitivity;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) float inputSensitivity; // @synthesize inputSensitivity=_inputSensitivity;
 - (id)sharedProcessorConfiguration;
 @property(readonly, nonatomic) struct Box *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (void)updateGraph;
 - (id)initWithInputSensitivity:(float)arg1;
 
 // Remaining properties

@@ -14,9 +14,10 @@
     NSString *_identifier;
 }
 
++ (id)emptyFetchResultWithPhotoLibrary:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly) NSArray *objects; // @synthesize objects=_objects;
-- (void).cxx_destruct;
 - (id)description;
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
 - (id)fetchUpdatedObjects;
@@ -28,6 +29,7 @@
 - (id)containerIdentifier;
 - (long long)collectionFetchType;
 - (id)fetchedObjects;
+- (id)fetchSortDescriptors;
 - (id)fetchRequest;
 - (void)prefetchObjectsAtIndexes:(id)arg1;
 - (id)photoLibrary;

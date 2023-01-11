@@ -16,18 +16,23 @@
     id <HKDecimalPrecisionRule> _allowedDecimalPrecisionRule;
     NSDictionary *_perUnitDecimalPrecision;
     _Bool _shouldHideAverageLine;
+    _Bool _shouldDisplayUnitForAxisLabels;
     _Bool _shouldConnectSamplesWithLines;
+    _Bool _shouldRoundYAxisDuringExpansion;
     long long _defaultChartStyle;
     id <HKInteractiveChartsAxisScalingRule> _axisScalingRule;
     long long _preferredTimeScope;
 }
 
++ (_Bool)chartStyleContainsHorizontalGridlines:(long long)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldRoundYAxisDuringExpansion; // @synthesize shouldRoundYAxisDuringExpansion=_shouldRoundYAxisDuringExpansion;
 @property(nonatomic) long long preferredTimeScope; // @synthesize preferredTimeScope=_preferredTimeScope;
 @property(nonatomic) _Bool shouldConnectSamplesWithLines; // @synthesize shouldConnectSamplesWithLines=_shouldConnectSamplesWithLines;
 @property(retain, nonatomic) id <HKInteractiveChartsAxisScalingRule> axisScalingRule; // @synthesize axisScalingRule=_axisScalingRule;
+@property(nonatomic) _Bool shouldDisplayUnitForAxisLabels; // @synthesize shouldDisplayUnitForAxisLabels=_shouldDisplayUnitForAxisLabels;
 @property(nonatomic) _Bool shouldHideAverageLine; // @synthesize shouldHideAverageLine=_shouldHideAverageLine;
 @property(readonly, nonatomic) long long defaultChartStyle; // @synthesize defaultChartStyle=_defaultChartStyle;
-- (void).cxx_destruct;
 - (id)allowedDecimalPrecisionRuleForUnit:(id)arg1;
 - (void)setAllowedDecimalPrecisionRule:(id)arg1 perUnitPrecisionRules:(id)arg2;
 - (void)adjustedBoundsForPortraitChartWithMin:(double)arg1 max:(double)arg2 minOut:(double *)arg3 maxOut:(double *)arg4 decimalPrecision:(long long *)arg5 unit:(id)arg6 timeScope:(long long)arg7;

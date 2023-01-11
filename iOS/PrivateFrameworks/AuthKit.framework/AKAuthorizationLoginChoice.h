@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface AKAuthorizationLoginChoice : NSObject <NSSecureCoding>
+@interface AKAuthorizationLoginChoice : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _appleIDAuth;
     _Bool _createAppleID;
@@ -19,12 +20,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) _Bool createAppleID; // @synthesize createAppleID=_createAppleID;
-@property(nonatomic) _Bool appleIDAuth; // @synthesize appleIDAuth=_appleIDAuth;
+- (void).cxx_destruct;
+@property(nonatomic, getter=shouldCreateAppleID) _Bool createAppleID; // @synthesize createAppleID=_createAppleID;
+@property(nonatomic, getter=isAppleIDAuthorization) _Bool appleIDAuth; // @synthesize appleIDAuth=_appleIDAuth;
 @property(copy, nonatomic) NSString *site; // @synthesize site=_site;
 @property(copy, nonatomic) NSString *user; // @synthesize user=_user;
-- (void).cxx_destruct;
 - (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUser:(id)arg1 site:(id)arg2;

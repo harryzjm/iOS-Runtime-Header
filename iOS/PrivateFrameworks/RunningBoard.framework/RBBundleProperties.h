@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/RBBundleProperties-Protocol.h>
 
 @class NSDictionary, NSString, NSURL, RBBundlePropertiesBSXPCProvider, RBBundlePropertiesBackgroundRefreshProvider, RBBundlePropertiesLSProvider, RBLSBundleProperties, RBSProcessIdentifier, RBSProcessIdentity, RBXPCBundleProperties;
 
-@interface RBBundleProperties : NSObject <RBBundleProperties, BSDescriptionProviding>
+@interface RBBundleProperties : NSObject <RBBundleProperties>
 {
     RBBundlePropertiesLSProvider *_lsProvider;
     RBBundlePropertiesBSXPCProvider *_xpcProvider;
@@ -25,17 +24,12 @@
 }
 
 - (void).cxx_destruct;
-- (id)_xpcBundleProperties;
-- (id)_lsBundleProperties;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 @property(readonly, copy) NSString *debugDescription;
 - (id)bundleInfoValuesForKeys:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *environmentVariables;
 @property(readonly, nonatomic) NSURL *dataContainerURL;
 @property(readonly, nonatomic) int preferredJetsamBand;
+@property(readonly, nonatomic) int platform;
 @property(readonly, nonatomic) _Bool isExtension;
 @property(readonly, nonatomic) _Bool hasPreferredJetsamBand;
 @property(readonly, nonatomic, getter=isBackgroundRefreshEnabled) _Bool backgroundRefreshEnabled;
@@ -48,7 +42,6 @@
 @property(readonly, copy, nonatomic) NSString *executablePath;
 @property(readonly, copy, nonatomic) NSString *bundlePath;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;
-- (id)_bundleProperties;
 - (id)initWithLSProvider:(id)arg1 xpcProvider:(id)arg2 backgroundRefreshProvider:(id)arg3 processIdentity:(id)arg4 processIdentifier:(id)arg5;
 
 // Remaining properties

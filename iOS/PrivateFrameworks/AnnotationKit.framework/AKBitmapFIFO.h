@@ -25,6 +25,7 @@
     struct CGAffineTransform _viewToBitmapTransform;
 }
 
+- (void).cxx_destruct;
 @property struct CGRect unionDirtyRect; // @synthesize unionDirtyRect=_unionDirtyRect;
 @property MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
 @property _Bool bitmapSizeHasBeenUpdatedOnceForLiveDraw; // @synthesize bitmapSizeHasBeenUpdatedOnceForLiveDraw=_bitmapSizeHasBeenUpdatedOnceForLiveDraw;
@@ -34,7 +35,6 @@
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(nonatomic) _Bool isInLiveDraw; // @synthesize isInLiveDraw=_isInLiveDraw;
 @property double bitmapSizeMultiplier; // @synthesize bitmapSizeMultiplier=_bitmapSizeMultiplier;
-- (void).cxx_destruct;
 - (void)_applyDirtyRectToView;
 - (void)_addToDirtyRect:(struct CGRect)arg1;
 - (void)_addSinglePointToBitmap: /* Error: Ran out of types for this method. */;

@@ -8,17 +8,21 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteSessionData, GEOPDParsecQueryRankingFeatures, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    GEOPDAutocompleteSessionData *_autocompleteSessionData;
     NSMutableArray *_clientRankingFeatureMetadatas;
+    GEOPDParsecQueryRankingFeatures *_parsecQueryRankingFeatures;
     NSMutableArray *_sections;
     NSMutableArray *_sortPriorityMappings;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _retainSearchTime;
     _Bool _enableRap;
     _Bool _isNoResultFromNegativeCache;
@@ -33,19 +37,12 @@ __attribute__((visibility("hidden")))
         unsigned int has_shouldDifferentiateClientAndServerResults:1;
         unsigned int has_shouldDisplayNoResults:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_autocompleteSessionData:1;
         unsigned int read_clientRankingFeatureMetadatas:1;
+        unsigned int read_parsecQueryRankingFeatures:1;
         unsigned int read_sections:1;
         unsigned int read_sortPriorityMappings:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientRankingFeatureMetadatas:1;
-        unsigned int wrote_sections:1;
-        unsigned int wrote_sortPriorityMappings:1;
-        unsigned int wrote_retainSearchTime:1;
-        unsigned int wrote_enableRap:1;
-        unsigned int wrote_isNoResultFromNegativeCache:1;
-        unsigned int wrote_isTopSectionTypeQuery:1;
-        unsigned int wrote_shouldDifferentiateClientAndServerResults:1;
-        unsigned int wrote_shouldDisplayNoResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -65,26 +62,29 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOPDParsecQueryRankingFeatures *parsecQueryRankingFeatures;
+@property(readonly, nonatomic) _Bool hasParsecQueryRankingFeatures;
+@property(retain, nonatomic) GEOPDAutocompleteSessionData *autocompleteSessionData;
+@property(readonly, nonatomic) _Bool hasAutocompleteSessionData;
 @property(nonatomic) _Bool hasShouldDifferentiateClientAndServerResults;
 @property(nonatomic) _Bool shouldDifferentiateClientAndServerResults;
 - (id)clientRankingFeatureMetadataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clientRankingFeatureMetadatasCount;
-- (void)_addNoFlagsClientRankingFeatureMetadata:(id)arg1;
 - (void)addClientRankingFeatureMetadata:(id)arg1;
 - (void)clearClientRankingFeatureMetadatas;
 @property(retain, nonatomic) NSMutableArray *clientRankingFeatureMetadatas;
-- (void)_readClientRankingFeatureMetadatas;
 @property(nonatomic) _Bool hasIsTopSectionTypeQuery;
 @property(nonatomic) _Bool isTopSectionTypeQuery;
 - (id)sortPriorityMappingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sortPriorityMappingsCount;
-- (void)_addNoFlagsSortPriorityMapping:(id)arg1;
 - (void)addSortPriorityMapping:(id)arg1;
 - (void)clearSortPriorityMappings;
 @property(retain, nonatomic) NSMutableArray *sortPriorityMappings;
-- (void)_readSortPriorityMappings;
 @property(nonatomic) _Bool hasIsNoResultFromNegativeCache;
 @property(nonatomic) _Bool isNoResultFromNegativeCache;
 @property(nonatomic) _Bool hasRetainSearchTime;
@@ -95,11 +95,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool enableRap;
 - (id)sectionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionsCount;
-- (void)_addNoFlagsSections:(id)arg1;
 - (void)addSections:(id)arg1;
 - (void)clearSections;
 @property(retain, nonatomic) NSMutableArray *sections;
-- (void)_readSections;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

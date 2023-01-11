@@ -8,7 +8,7 @@
 
 #import <ContactsUI/CNPhotoPickerProvider-Protocol.h>
 
-@class CNContact, NSString;
+@class CNVisualIdentity, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerRecentsProvider : NSObject <CNPhotoPickerProvider>
@@ -16,17 +16,17 @@ __attribute__((visibility("hidden")))
     _Bool _containsContactImage;
     _Bool _containsMonogram;
     NSString *identifier;
-    CNContact *_contact;
+    CNVisualIdentity *_visualIdentity;
 }
 
-@property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 @property(nonatomic) _Bool containsMonogram; // @synthesize containsMonogram=_containsMonogram;
 @property(nonatomic) _Bool containsContactImage; // @synthesize containsContactImage=_containsContactImage;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier;
-- (void).cxx_destruct;
 - (id)providerItemForContactImage:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 RTL:(_Bool)arg4 renderingQueue:(id)arg5 callbackQueue:(id)arg6;
 - (id)loadItemsForSize:(struct CGSize)arg1 scale:(double)arg2 RTL:(_Bool)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5 itemDelegate:(id)arg6;
-- (id)initWithContact:(id)arg1;
+- (id)initWithVisualIdentity:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

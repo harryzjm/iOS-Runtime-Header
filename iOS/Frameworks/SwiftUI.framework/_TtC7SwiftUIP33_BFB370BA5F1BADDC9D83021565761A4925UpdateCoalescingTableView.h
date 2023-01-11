@@ -10,13 +10,26 @@
 
 @interface _TtC7SwiftUIP33_BFB370BA5F1BADDC9D83021565761A4925UpdateCoalescingTableView : UITableView
 {
+    MISSING_TYPE *programmaticSelectionDelegate;
     MISSING_TYPE *visibleCellsUpdate;
+    MISSING_TYPE *ignoreGraphUpdates;
+    MISSING_TYPE *pendingGraphUpdate;
+    MISSING_TYPE *previousHorizontalMargin;
+    MISSING_TYPE *_lastUpdateSeed;
+    MISSING_TYPE *bridgedState;
+    MISSING_TYPE *shouldDetermineInsetStyle;
 }
 
++ (_Bool)_isInternalTableView;
+- (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (void)deselectRowAtIndexPath:(id)arg1 animated:(_Bool)arg2;
+- (void)selectRowAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(long long)arg3;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)layoutSubviews;
+- (void)layoutMarginsDidChange;
+@property(nonatomic) struct CGRect bounds;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 
 @end
 

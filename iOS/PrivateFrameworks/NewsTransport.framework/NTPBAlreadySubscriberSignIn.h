@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBIssueData;
+@class NSData, NSMutableArray, NSString, NTPBIssueData;
 
 @interface NTPBAlreadySubscriberSignIn : PBCodable <NSCopying>
 {
@@ -27,6 +27,9 @@
     NSString *_sectionId;
     NSString *_sourceChannelId;
     NSData *_subscriptionPurchaseSessionId;
+    NSString *_surfacedByChannelId;
+    NSString *_surfacedByTopicId;
+    NSMutableArray *_topicIds;
     _Bool _arrivedFromAd;
     _Bool _subscriptionOnlyArticlePreview;
     _Bool _successfulNewsTokenVerification;
@@ -40,6 +43,11 @@
     } _has;
 }
 
++ (Class)topicIdsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *surfacedByChannelId; // @synthesize surfacedByChannelId=_surfacedByChannelId;
+@property(retain, nonatomic) NSString *surfacedByTopicId; // @synthesize surfacedByTopicId=_surfacedByTopicId;
+@property(retain, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
 @property(retain, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
 @property(retain, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property(retain, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
@@ -55,7 +63,6 @@
 @property(retain, nonatomic) NSString *errorCode; // @synthesize errorCode=_errorCode;
 @property(retain, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
 @property(nonatomic) _Bool successfulNewsTokenVerification; // @synthesize successfulNewsTokenVerification=_successfulNewsTokenVerification;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -64,6 +71,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSurfacedByChannelId;
+@property(readonly, nonatomic) _Bool hasSurfacedByTopicId;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
+- (void)addTopicIds:(id)arg1;
+- (void)clearTopicIds;
 @property(readonly, nonatomic) _Bool hasIssueData;
 - (int)StringAsGroupType:(id)arg1;
 - (id)groupTypeAsString:(int)arg1;

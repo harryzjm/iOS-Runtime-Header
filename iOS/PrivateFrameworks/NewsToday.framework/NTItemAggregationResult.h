@@ -8,23 +8,30 @@
 
 #import <NewsToday/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet;
+@class NSArray, NSDictionary;
 
 @interface NTItemAggregationResult : NSObject <NSCopying>
 {
     NSDictionary *_aggregatedItemsBySectionDescriptor;
-    NSSet *_itemIDsOfLeadingCells;
     NSDictionary *_slotAllocationByDynamicSlotItemID;
     NSArray *_unusedSectionDescriptors;
+    double _headlineScale;
+    double _slotsUsed;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double slotsUsed; // @synthesize slotsUsed=_slotsUsed;
+@property(nonatomic) double headlineScale; // @synthesize headlineScale=_headlineScale;
 @property(copy, nonatomic) NSArray *unusedSectionDescriptors; // @synthesize unusedSectionDescriptors=_unusedSectionDescriptors;
 @property(copy, nonatomic) NSDictionary *slotAllocationByDynamicSlotItemID; // @synthesize slotAllocationByDynamicSlotItemID=_slotAllocationByDynamicSlotItemID;
-@property(copy, nonatomic) NSSet *itemIDsOfLeadingCells; // @synthesize itemIDsOfLeadingCells=_itemIDsOfLeadingCells;
 @property(copy, nonatomic) NSDictionary *aggregatedItemsBySectionDescriptor; // @synthesize aggregatedItemsBySectionDescriptor=_aggregatedItemsBySectionDescriptor;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithAggregatedItemsBySectionDescriptor:(id)arg1 itemIDsOfLeadingCells:(id)arg2 slotAllocationByDynamicSlotItemID:(id)arg3 unusedSectionDescriptors:(id)arg4;
+@property(readonly, nonatomic) unsigned long long itemCount;
+- (double)slotCostWithInfo:(id)arg1;
+- (double)sectionOverheadSlotCostWithInfo:(id)arg1;
+- (double)headlineSlotCostWithSlotCost:(double)arg1;
+- (id)copyWithHeadlineScale:(double)arg1;
+- (id)initWithAggregatedItemsBySectionDescriptor:(id)arg1 slotAllocationByDynamicSlotItemID:(id)arg2 unusedSectionDescriptors:(id)arg3;
 - (id)init;
 
 @end

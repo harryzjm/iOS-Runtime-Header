@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, MKMapItem, NSError, _MKRouteETA, _MKRouteETAFetcher;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKMapItem, NSError, _MKRouteETA, _MKRouteETAFetcher;
 @protocol MKQuickRouteConfigurableView, MKQuickRouteManagerDelegate, MKQuickRouteTransportTypeFinding;
 
 @interface _MKQuickRouteManager : NSObject
@@ -30,12 +30,12 @@
 + (unsigned long long)counterpartForTransportType:(unsigned long long)arg1;
 + (_Bool)isLikelyToReturnETAForLocation:(id)arg1;
 + (double)_maxDistanceToRequestETA;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool fetchAllTransportTypes; // @synthesize fetchAllTransportTypes=_fetchAllTransportTypes;
 @property(nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property(nonatomic) __weak NSObject<MKQuickRouteConfigurableView> *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <MKQuickRouteTransportTypeFinding> transportTypeFinder; // @synthesize transportTypeFinder=_transportTypeFinder;
 @property(nonatomic) __weak id <MKQuickRouteManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isOnlyDriving;
 - (_Bool)haveETAsForPreferredTransportType:(unsigned long long)arg1;
 - (unsigned long long)guessTransportTypeForDistance:(double)arg1 preferredDirectionsType:(unsigned long long)arg2;
@@ -51,6 +51,7 @@
 - (void)_resetState;
 @property(retain, nonatomic) MKMapItem *originMapItem;
 @property(retain, nonatomic) MKMapItem *mapItem;
+@property(copy, nonatomic) GEOCyclingOptions *cyclingOptions;
 @property(copy, nonatomic) GEOTransitOptions *transitOptions;
 @property(copy, nonatomic) GEOAutomobileOptions *automobileOptions;
 - (_Bool)_transportTypeShouldBeSmart;

@@ -6,9 +6,12 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBString;
+@class NSArray, NSString, _INPBDataString, _INPBString;
 
 @protocol _INPBHomeEntity <NSObject>
++ (Class)zonesType;
+@property(readonly, nonatomic) unsigned long long zonesCount;
+@property(copy, nonatomic) NSArray *zones;
 @property(readonly, nonatomic) _Bool hasZone;
 @property(retain, nonatomic) _INPBDataString *zone;
 @property(nonatomic) _Bool hasSceneType;
@@ -31,6 +34,9 @@
 @property(readonly, nonatomic) int *deviceTypes;
 @property(nonatomic) _Bool hasDeviceType;
 @property(nonatomic) int deviceType;
+- (_INPBDataString *)zonesAtIndex:(unsigned long long)arg1;
+- (void)addZones:(_INPBDataString *)arg1;
+- (void)clearZones;
 - (int)StringAsSceneType:(NSString *)arg1;
 - (NSString *)sceneTypeAsString:(int)arg1;
 - (int)StringAsEntityType:(NSString *)arg1;

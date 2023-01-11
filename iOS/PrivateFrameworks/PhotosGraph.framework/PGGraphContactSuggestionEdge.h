@@ -8,32 +8,76 @@
 
 @interface PGGraphContactSuggestionEdge
 {
+    unsigned long long _sexMatch;
+    _Bool _contactFaceprintMatch;
+    float _weight;
+    double _contactScore;
+    unsigned long long _numberOfMomentsAtHome;
+    unsigned long long _numberOfMomentsAtMentionedAddress;
+    unsigned long long _numberOfWeakBirthdayMomentsAroundBirthdayDate;
+    unsigned long long _numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate;
+    unsigned long long _numberOfMomentsOverlappingWithCalendarEvents;
+    unsigned long long _numberOfAppearancesInSharedAssets;
+    unsigned long long _numberOfCMMMoments;
+    double _facetimeFaceprintConfidence;
+    NSString *_relationshipsDebug;
+    double _socialGroupsConfidence;
+    NSString *_socialGroupsDebug;
+    NSString *_messageGroupsDebug;
+    double _birthdayScore;
+    double _potentialBirthdayScore;
+    double _addressScore;
+    double _mentionedAddressScore;
+    double _calendarScore;
+    double _sharedAssetScore;
+    double _sharedCMMScore;
+    double _relationshipScore;
+    double _scoreAfterMessagePenalty;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double scoreAfterMessagePenalty; // @synthesize scoreAfterMessagePenalty=_scoreAfterMessagePenalty;
+@property(readonly, nonatomic) double relationshipScore; // @synthesize relationshipScore=_relationshipScore;
+@property(readonly, nonatomic) double sharedCMMScore; // @synthesize sharedCMMScore=_sharedCMMScore;
+@property(readonly, nonatomic) double sharedAssetScore; // @synthesize sharedAssetScore=_sharedAssetScore;
+@property(readonly, nonatomic) double calendarScore; // @synthesize calendarScore=_calendarScore;
+@property(readonly, nonatomic) double mentionedAddressScore; // @synthesize mentionedAddressScore=_mentionedAddressScore;
+@property(readonly, nonatomic) double addressScore; // @synthesize addressScore=_addressScore;
+@property(readonly, nonatomic) double potentialBirthdayScore; // @synthesize potentialBirthdayScore=_potentialBirthdayScore;
+@property(readonly, nonatomic) double birthdayScore; // @synthesize birthdayScore=_birthdayScore;
+@property(readonly, nonatomic) NSString *messageGroupsDebug; // @synthesize messageGroupsDebug=_messageGroupsDebug;
+@property(readonly, nonatomic) NSString *socialGroupsDebug; // @synthesize socialGroupsDebug=_socialGroupsDebug;
+@property(readonly, nonatomic) double socialGroupsConfidence; // @synthesize socialGroupsConfidence=_socialGroupsConfidence;
+@property(readonly, nonatomic) NSString *relationshipsDebug; // @synthesize relationshipsDebug=_relationshipsDebug;
+@property(readonly, nonatomic) _Bool contactFaceprintMatch; // @synthesize contactFaceprintMatch=_contactFaceprintMatch;
+@property(readonly, nonatomic) double facetimeFaceprintConfidence; // @synthesize facetimeFaceprintConfidence=_facetimeFaceprintConfidence;
+@property(readonly, nonatomic) unsigned long long numberOfCMMMoments; // @synthesize numberOfCMMMoments=_numberOfCMMMoments;
+@property(readonly, nonatomic) unsigned long long numberOfAppearancesInSharedAssets; // @synthesize numberOfAppearancesInSharedAssets=_numberOfAppearancesInSharedAssets;
+@property(readonly, nonatomic) unsigned long long numberOfMomentsOverlappingWithCalendarEvents; // @synthesize numberOfMomentsOverlappingWithCalendarEvents=_numberOfMomentsOverlappingWithCalendarEvents;
+@property(readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate; // @synthesize numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate=_numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate;
+@property(readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundBirthdayDate; // @synthesize numberOfWeakBirthdayMomentsAroundBirthdayDate=_numberOfWeakBirthdayMomentsAroundBirthdayDate;
+@property(readonly, nonatomic) unsigned long long numberOfMomentsAtMentionedAddress; // @synthesize numberOfMomentsAtMentionedAddress=_numberOfMomentsAtMentionedAddress;
+@property(readonly, nonatomic) unsigned long long numberOfMomentsAtHome; // @synthesize numberOfMomentsAtHome=_numberOfMomentsAtHome;
+@property(readonly, nonatomic) double contactScore; // @synthesize contactScore=_contactScore;
+- (void)setWeight:(float)arg1;
+- (float)weight;
 - (id)_readableStringForContactSuggestionProperty:(id)arg1;
-- (unsigned long long)_genderMatch;
-@property(readonly, nonatomic) _Bool personContactGenderMismatch;
-@property(readonly, nonatomic) _Bool personContactGenderMatch;
-@property(readonly, nonatomic) NSString *messageGroupsDebug;
-@property(readonly, nonatomic) NSString *socialGroupsDebug;
-@property(readonly, nonatomic) double socialGroupsConfidence;
+@property(readonly, nonatomic) _Bool personContactBiologicalSexMismatch;
+@property(readonly, nonatomic) _Bool personContactBiologicalSexMatch;
 @property(readonly, nonatomic) unsigned long long numberOfMatchedMessageGroups;
 @property(readonly, nonatomic) unsigned long long numberOfMatchedRelationships;
-@property(readonly, nonatomic) NSString *relationshipsDebug;
-@property(readonly, nonatomic) _Bool contactFaceprintMatch;
-@property(readonly, nonatomic) double facetimeFaceprintConfidence;
-@property(readonly, nonatomic) unsigned long long numberOfCMMMoments;
-@property(readonly, nonatomic) unsigned long long numberOfAppearancesInSharedAssets;
-@property(readonly, nonatomic) unsigned long long numberOfMomentsOverlappingWithCalendarEvents;
-@property(readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate;
-@property(readonly, nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundBirthdayDate;
-@property(readonly, nonatomic) unsigned long long numberOfMomentsAtMentionedAddress;
-@property(readonly, nonatomic) unsigned long long numberOfMomentsAtHome;
-- (_Bool)isHighConfidence;
+@property(readonly) _Bool isHighConfidence;
 - (_Bool)isFilteredOut;
-- (id)_stringForGenderMatch:(unsigned long long)arg1;
-- (id)description;
-- (double)confidence;
+- (id)_stringForBiologicalSexMatch:(unsigned long long)arg1;
+@property(readonly) double confidence;
+- (unsigned short)domain;
+- (id)label;
+- (id)edgeDescription;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initFromPersonNode:(id)arg1 toContactNode:(id)arg2 weight:(float)arg3;
 
 @end
 

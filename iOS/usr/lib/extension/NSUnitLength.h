@@ -34,6 +34,7 @@
 + (id)kilometers;
 + (id)megameters;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

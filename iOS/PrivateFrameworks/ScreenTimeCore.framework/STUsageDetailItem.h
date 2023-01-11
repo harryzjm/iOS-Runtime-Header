@@ -10,19 +10,25 @@
 
 @interface STUsageDetailItem : NSObject
 {
+    _Bool _usageTrusted;
     float _quantity;
     NSString *_identifier;
     long long _type;
 }
 
++ (id)keyPathsForValuesAffectingSortQuantity;
++ (id)keyPathsForValuesAffectingIsAllAppsOrCategories;
+- (void).cxx_destruct;
+@property(readonly) _Bool usageTrusted; // @synthesize usageTrusted=_usageTrusted;
 @property(nonatomic) float quantity; // @synthesize quantity=_quantity;
 @property long long type; // @synthesize type=_type;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
-- (long long)compare:(id)arg1;
+@property(readonly) float sortQuantity;
+@property(readonly) _Bool isAllAppsOrCategories;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2;
+- (id)initWithType:(long long)arg1 identifier:(id)arg2 usageTrusted:(_Bool)arg3;
 
 @end
 

@@ -23,11 +23,16 @@
     LPImage *_imageLoadedFromItemProvider;
     NSObject<OS_dispatch_group> *_itemProviderLoadGroup;
     NSObject<OS_dispatch_group> *_asynchronousLoadGroup;
+    struct CGSize _pixelSize;
+    _Bool _hasComputedPixelSize;
+    _Bool _hasTransparency;
+    _Bool _hasComputedHasTransparency;
     _Bool _fallbackIcon;
     NSArray *_remoteURLsForEmailCompatibleOutput;
     LPImage *_darkInterfaceAlternativeImage;
     NSURL *_fileURL;
     UIImage *_platformImage;
+    CDUnknownBlockType __alternateHTMLImageGenerator;
 }
 
 + (id)_loadImageSubsampledToScreenSizeFromData:(id)arg1;
@@ -35,18 +40,21 @@
 + (id)_PDFImageNamed:(id)arg1 template:(_Bool)arg2;
 + (id)_PNGImageNamed:(id)arg1 template:(_Bool)arg2;
 + (id)_PNGImageNamed:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType _alternateHTMLImageGenerator; // @synthesize _alternateHTMLImageGenerator=__alternateHTMLImageGenerator;
 @property(retain, nonatomic) UIImage *platformImage; // @synthesize platformImage=_platformImage;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(retain, nonatomic, setter=_setDarkInterfaceAlternativeImage:) LPImage *_darkInterfaceAlternativeImage; // @synthesize _darkInterfaceAlternativeImage;
 @property(retain, nonatomic) NSArray *_remoteURLsForEmailCompatibleOutput; // @synthesize _remoteURLsForEmailCompatibleOutput;
 @property(nonatomic, getter=_isFallbackIcon) _Bool _fallbackIcon; // @synthesize _fallbackIcon;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool _hasTransparency;
 - (id)_asTemplate;
 @property(readonly, retain, nonatomic) NSItemProvider *_itemProvider;
 - (void)loadAsynchronouslyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)needsAsynchronousLoad;
 @property(readonly, copy, nonatomic) NSString *_srcsetForRemoteURLs;
 @property(readonly, nonatomic, getter=_isAnimated) _Bool _animated;
+@property(readonly, nonatomic) _Bool _isImperceptible;
 @property(readonly, nonatomic) struct CGSize _pixelSize;
 - (_Bool)_shouldEncodeData;
 @property(readonly, nonatomic) unsigned long long _encodedSize;
@@ -60,6 +68,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_waitForAsynchronouslyLoadedImageIfNeeded;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)_initWithPlatformImageGenerator:(CDUnknownBlockType)arg1;
 - (id)_initWithCGImage:(struct CGImage *)arg1 properties:(id)arg2;
 - (id)_initWithCGImage:(struct CGImage *)arg1;
@@ -77,7 +87,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

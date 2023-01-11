@@ -4,29 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+@class CSHomeAffordanceView, NSMutableArray, SBFHomeGrabberSettings, UIHoverGestureRecognizer, UIView;
 
-@class CSHomeAffordanceView, NSMutableArray, SBFHomeGrabberSettings, UIView;
-
-@interface CSHomeAffordanceViewController : UIViewController
+@interface CSHomeAffordanceViewController
 {
     UIView *_counterRotationView;
     NSMutableArray *_rotationWrapperViews;
     long long _orientation;
     SBFHomeGrabberSettings *_settings;
+    UIHoverGestureRecognizer *_suppressAnimationForPointerGestureRecognizer;
+    _Bool _suppressAnimationForPointer;
     CSHomeAffordanceView *_homeAffordanceView;
     struct CGPoint _homeAffordanceOffset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGPoint homeAffordanceOffset; // @synthesize homeAffordanceOffset=_homeAffordanceOffset;
 @property(readonly, nonatomic) CSHomeAffordanceView *homeAffordanceView; // @synthesize homeAffordanceView=_homeAffordanceView;
-- (void).cxx_destruct;
+- (void)aggregateAppearance:(id)arg1;
+- (void)_handleSuppressAnimationForPointerGesture:(id)arg1;
 - (id)_addWrapperViewWithOrientation:(long long)arg1;
 - (struct CGRect)_homeAffordanceRestingFrame;
 - (void)_layoutHomeAffordance;
 - (void)setLegibilitySettings:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

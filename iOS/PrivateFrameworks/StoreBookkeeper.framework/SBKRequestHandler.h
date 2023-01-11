@@ -8,14 +8,13 @@
 
 @class SBKStoreURLBagContext;
 
-__attribute__((visibility("hidden")))
 @interface SBKRequestHandler : NSObject
 {
     SBKStoreURLBagContext *_bagContext;
 }
 
-@property(readonly, nonatomic) SBKStoreURLBagContext *bagContext; // @synthesize bagContext=_bagContext;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SBKStoreURLBagContext *bagContext; // @synthesize bagContext=_bagContext;
 - (void)cancel;
 - (void)timeout;
 - (id)initWithBagContext:(id)arg1;

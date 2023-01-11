@@ -59,19 +59,11 @@ struct IncrementalSearchResultsDefn {
     struct _NSRange _field2[64];
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
 struct NSDirectionalEdgeInsets {
     double _field1;
     double _field2;
     double _field3;
     double _field4;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
 };
 
 struct UIEdgeInsets {
@@ -101,6 +93,10 @@ struct _WDActivitySummaryAverages {
     double _field7;
     double _field8;
     double _field9;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures

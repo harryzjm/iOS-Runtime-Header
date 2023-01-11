@@ -41,6 +41,7 @@
 + (id)cellIdentifierForPropertyPlaceholder;
 + (id)cellIdentifierForSplitActions;
 + (id)cellIdentifierForActions;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool needsUpdateVisibleCells; // @synthesize needsUpdateVisibleCells=_needsUpdateVisibleCells;
 @property(nonatomic) struct CGSize oldSize; // @synthesize oldSize=_oldSize;
 @property(copy, nonatomic) NSDictionary *actionTextAttributes; // @synthesize actionTextAttributes=_actionTextAttributes;
@@ -52,7 +53,6 @@
 @property(nonatomic, getter=isCellsLayoutCachingEnabled) _Bool cellsLayoutCachingEnabled; // @synthesize cellsLayoutCachingEnabled=_cellsLayoutCachingEnabled;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(retain, nonatomic) UIView *customHeaderView; // @synthesize customHeaderView=_customHeaderView;
-- (void).cxx_destruct;
 - (void)applyCellAppearance:(id)arg1;
 - (void)updateFontSizes;
 - (void)updateVisibleCellsIfNeeded;
@@ -62,9 +62,11 @@
 - (void)layoutSubviews;
 - (void)tintColorDidChange;
 @property(retain, nonatomic) UIColor *backgroundColor; // @dynamic backgroundColor;
-- (void)setAttributesFromContactView:(id)arg1;
+- (void)setAttributesFromContactView:(id)arg1 runningInContactsAppOniPad:(_Bool)arg2;
 - (void)registerContactCellClass:(Class)arg1;
 @property(readonly, nonatomic) CNContactHeaderView *defaultHeaderView;
+- (void)updateTableViewMetrics;
+- (void)setEditing:(_Bool)arg1;
 - (void)_cnui_applyContactStyle;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 contact:(id)arg2;

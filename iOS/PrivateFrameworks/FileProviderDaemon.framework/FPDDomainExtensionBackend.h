@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
 @interface FPDDomainExtensionBackend : NSObject <FPDDomainBackend>
 {
     FPDDomain *_domain;
+    NSObject<OS_dispatch_queue> *_queue;
     _Bool _invalidated;
     NSMutableDictionary *_provideFileCompletionsByURL;
 }
 
 - (void).cxx_destruct;
 - (void)resolveProviderItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)isAllowedToProvideItemID:(id)arg1 toConsumerWithIdentifier:(id)arg2;
 - (id)createIndexerWithExtension:(id)arg1 enabled:(_Bool)arg2 error:(id *)arg3;
 - (void)reimportItemsBelowItemWithID:(id)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)updateRootAfterDomainChangeWithError:(id *)arg1;
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)fetchOperationServiceOrEndpointWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)valuesForAttributes:(id)arg1 forURL:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)enumerateWithSettings:(id)arg1 lifetimeExtender:(id)arg2 observer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2;
 - (void)didIndexOneBatchWithError:(id)arg1 updatedItems:(id)arg2 deletedIDs:(id)arg3 anchor:(id)arg4;
 - (void)itemForItemID:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -45,6 +44,8 @@ __attribute__((visibility("hidden")))
 - (void)_cancelProvidingItemAtURL:(id)arg1 withKey:(id)arg2 request:(id)arg3;
 - (void)itemIDForURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)itemForURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)newFileProviderProxyWithRequest:(id)arg1;
+- (id)newFileProviderProxyWithTimeout:(_Bool)arg1 request:(id)arg2;
 - (_Bool)needsRootCreation;
 - (id)createRootByImportingURL:(id)arg1 error:(id *)arg2;
 - (_Bool)isProviderForURL:(id)arg1;

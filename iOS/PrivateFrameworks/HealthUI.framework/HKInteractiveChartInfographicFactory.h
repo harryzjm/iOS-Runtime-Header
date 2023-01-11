@@ -20,8 +20,8 @@
 + (id)_itemForAudioInfographicWithClassification:(unsigned long long)arg1 descriptionKey:(id)arg2;
 + (id)_headphoneAudioExposureInfographic;
 + (id)_environmentalAudioExposureInfographic;
-+ (id)infographicViewControllerForDisplayType:(id)arg1;
-+ (_Bool)infographicSupportedForDisplayType:(id)arg1;
++ (id)infographicViewControllerForDisplayType:(id)arg1 healthStore:(id)arg2;
++ (_Bool)infographicSupportedForDisplayType:(id)arg1 healthStore:(id)arg2;
 
 @end
 

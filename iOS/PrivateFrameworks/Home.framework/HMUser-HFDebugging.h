@@ -6,17 +6,22 @@
 
 #import <HomeKit/HMUser.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
-@interface HMUser (HFDebugging) <HFStateDumpBuildable>
+@interface HMUser (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (unsigned long long)hf_getPhotosLibrarySettingsStatus;
+- (_Bool)hf_isSharingPhotosLibraryEnabledForFaceRecognition;
+- (_Bool)hf_isImportingPhotosLibraryEnabledForFaceRecognition;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @end
 

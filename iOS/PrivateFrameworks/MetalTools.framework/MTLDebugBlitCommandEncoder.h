@@ -4,16 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MTLDebugCommandBuffer;
+
 @interface MTLDebugBlitCommandEncoder
 {
     _Bool canDealloc;
     _Bool canEndEncoding;
     _Bool hasEndEncoding;
     struct deque<id, std::__1::allocator<id>> updatedFences;
+    MTLDebugCommandBuffer *_commandBuffer;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)resolveCounters:(id)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)copyFromTexture:(id)arg1 toTexture:(id)arg2;
 - (void)copyFromTexture:(id)arg1 sourceSlice:(unsigned long long)arg2 sourceLevel:(unsigned long long)arg3 toTexture:(id)arg4 destinationSlice:(unsigned long long)arg5 destinationLevel:(unsigned long long)arg6 sliceCount:(unsigned long long)arg7 levelCount:(unsigned long long)arg8;
 - (void)optimizeIndirectCommandBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
@@ -27,10 +32,6 @@
 - (void)resetTextureAccessCounters:(id)arg1 region:(CDStruct_1e3be3a8)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4;
 - (void)getTextureAccessCounters:(id)arg1 region:(CDStruct_1e3be3a8)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4 resetCounters:(_Bool)arg5 countersBuffer:(id)arg6 countersBufferOffset:(unsigned long long)arg7;
 - (void)filterCounterRangeWithFirstBatch:(unsigned int)arg1 lastBatch:(unsigned int)arg2 filterIndex:(unsigned int)arg3;
-- (void)_resourceTrackingRecordBlitFromBuf:(id)arg1 toBuf:(id)arg2;
-- (void)_resourceTrackingRecordBlitFromTex:(id)arg1 toBuf:(id)arg2;
-- (void)_resourceTrackingRecordBlitFromBuf:(id)arg1 toTex:(id)arg2;
-- (void)_resourceTrackingRecordBlitFromTex:(id)arg1 toTex:(id)arg2;
 - (void)endEncoding;
 - (void)waitForFence:(id)arg1;
 - (void)updateFence:(id)arg1;

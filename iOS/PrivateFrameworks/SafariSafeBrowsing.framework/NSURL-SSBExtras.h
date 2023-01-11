@@ -6,7 +6,11 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSArray;
+
 @interface NSURL (SSBExtras)
+@property(readonly, nonatomic) NSArray *ssb_hashes;
+@property(readonly, nonatomic) NSURL *ssb_canonicalizeURL;
 @property(readonly, nonatomic) _Bool ssb_isSafeURL;
 @property(readonly, nonatomic) _Bool ssb_hasUserInfo;
 @end

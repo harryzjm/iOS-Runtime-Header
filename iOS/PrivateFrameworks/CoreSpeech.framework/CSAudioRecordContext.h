@@ -20,21 +20,24 @@
 
 + (id)recordTypeString:(long long)arg1;
 + (id)defaultContext;
++ (id)contextForHomeButton;
 + (id)contextForServerInvoke;
 + (id)contextForVoiceTriggerTraining;
-+ (id)contextForBTLE;
++ (id)contextForBTLEWithDeviceId:(id)arg1;
 + (id)contextForJarvisWithDeviceId:(id)arg1;
 + (id)contextForBuiltInVoiceTrigger;
 + (id)contextForOpportuneSpeakerListener;
++ (id)contextForRemoraVoiceTriggerWithDeviceId:(id)arg1;
 + (id)contextForHearstVoiceTriggerWithDeviceId:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool alwaysUseRemoteBuiltInMic; // @synthesize alwaysUseRemoteBuiltInMic=_alwaysUseRemoteBuiltInMic;
 @property(retain, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
 @property(nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)description;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject;
 - (long long)avvcActivationMode:(long long)arg1;
 - (long long)recordTypeFromAVVCActivationMode:(long long)arg1;
+- (_Bool)isDictation;
 - (_Bool)isStarkTriggered;
 - (_Bool)isServerInvoked;
 - (_Bool)isJarvisVoiceTriggered;
@@ -52,6 +55,7 @@
 - (id)initWithAVVCContext:(id)arg1;
 - (id)initWithXPCObject:(id)arg1;
 - (id)avvcContextSettings;
+- (_Bool)isPluginContext;
 
 @end
 

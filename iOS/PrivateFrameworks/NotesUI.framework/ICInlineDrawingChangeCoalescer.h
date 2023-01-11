@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICAttachment, ICSelectorDelayer, PKDrawing;
-@protocol OS_dispatch_queue;
+@class ICAttachment, ICSelectorDelayer, NSManagedObjectContext, PKDrawing;
 
 @interface ICInlineDrawingChangeCoalescer : NSObject
 {
@@ -15,21 +14,21 @@
     ICSelectorDelayer *_processChangesSelectorDelayer;
     PKDrawing *_latestDrawing;
     unsigned long long _numberOfChanges;
-    NSObject<OS_dispatch_queue> *_mergeQueue;
+    NSManagedObjectContext *_workerContext;
 }
 
 + (void)purgeHandwritingSummariesInContext:(id)arg1;
 + (void)generateMissingOrOutdatedHandwritingSummariesInContext:(id)arg1;
-+ (id)missingOrOutdatedHandwritingSummaryAttachmentsInContext:(id)arg1;
++ (id)missingOrOutdatedHandwritingSummaryAttachmentIDsInContext:(id)arg1;
 + (id)handwritingSummaryAttachmentsInContext:(id)arg1;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *mergeQueue; // @synthesize mergeQueue=_mergeQueue;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSManagedObjectContext *workerContext; // @synthesize workerContext=_workerContext;
 @property(nonatomic) unsigned long long numberOfChanges; // @synthesize numberOfChanges=_numberOfChanges;
 @property(retain, nonatomic) PKDrawing *latestDrawing; // @synthesize latestDrawing=_latestDrawing;
 @property(retain, nonatomic) ICSelectorDelayer *processChangesSelectorDelayer; // @synthesize processChangesSelectorDelayer=_processChangesSelectorDelayer;
 @property(retain, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
-- (void).cxx_destruct;
 - (void)updateVersionIfNeededForAttachment:(id)arg1 withDrawing:(id)arg2;
-- (void)processIndexableContent;
+- (void)processIndexableContentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)mergeDrawingWithDrawing:(id)arg1;
 - (id)retrieveAndClearLatestDrawingToMerge;
 - (void)mergeDrawingChanges;

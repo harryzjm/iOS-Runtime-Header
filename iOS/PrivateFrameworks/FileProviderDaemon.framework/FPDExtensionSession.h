@@ -37,8 +37,8 @@ __attribute__((visibility("hidden")))
     _Bool _hasFileProviderPresenceTCCAccess;
 }
 
-@property(nonatomic) _Bool hasFileProviderPresenceTCCAccess; // @synthesize hasFileProviderPresenceTCCAccess=_hasFileProviderPresenceTCCAccess;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasFileProviderPresenceTCCAccess; // @synthesize hasFileProviderPresenceTCCAccess=_hasFileProviderPresenceTCCAccess;
 - (void)dumpStateTo:(id)arg1;
 - (void)processMonitor:(id)arg1 didBecomeForeground:(_Bool)arg2;
 - (void)_evaluateExtensionForegroundness;
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
 - (id)_connectionWithError:(id *)arg1;
 - (_Bool)_setUpConnectionWithAttemptNumber:(long long)arg1 error:(id *)arg2;
+- (_Bool)terminateExtensionWithRetry:(long long)arg1 error:(id *)arg2;
 - (id)_alternateContentsDictionary;
 - (void)__invalidateWithCancellation:(_Bool)arg1;
 - (void)_invalidateWithCancellation:(_Bool)arg1;

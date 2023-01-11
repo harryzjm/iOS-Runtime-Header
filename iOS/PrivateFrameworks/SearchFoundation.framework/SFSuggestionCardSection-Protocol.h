@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText;
 
 @protocol SFSuggestionCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFImage *thumbnail;
+@property(retain, nonatomic) SFRichText *detailText;
 @property(nonatomic) int suggestionType;
 @property(copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier;
 @property(nonatomic) _Bool isContact;

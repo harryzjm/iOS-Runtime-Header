@@ -26,8 +26,12 @@
     unsigned long long _openCount;
     NSMutableDictionary *_statementsBySQL;
     NSDateFormatter *_dateFormatter;
+    NSMutableDictionary *_unitTestOverrides;
 }
 
++ (id)equalityClauseAndBindingsForDict:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
 @property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 @property(readonly, nonatomic) NSMutableDictionary *statementsBySQL; // @synthesize statementsBySQL=_statementsBySQL;
 @property(nonatomic) _Bool corrupt; // @synthesize corrupt=_corrupt;
@@ -43,7 +47,7 @@
 @property(readonly, nonatomic) NSString *schemaVersion; // @synthesize schemaVersion=_schemaVersion;
 @property(readonly, nonatomic) NSString *schema; // @synthesize schema=_schema;
 @property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
-- (void).cxx_destruct;
+- (void)willCreateDatabase;
 - (int)dbUserVersion;
 - (id)_boxedValue:(id)arg1 forObjcCProperty:(id)arg2;
 - (id)_boxedPropertyDictionary:(id)arg1 forObjCClass:(id)arg2;
@@ -81,7 +85,7 @@
 - (id)allTableNames;
 - (void)removeAllStatements;
 - (id)statementForSQL:(id)arg1;
-- (void)executeSQL:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
+- (void)executeSQL:(id)arg1 arguments:(char *)arg2;
 - (void)executeSQL:(id)arg1;
 - (int)changes;
 - (long long)lastInsertRowID;

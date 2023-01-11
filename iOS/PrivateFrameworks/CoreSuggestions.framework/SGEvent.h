@@ -34,6 +34,7 @@
 
 + (id)eventWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(_Bool)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tags:(id)arg15 URL:(id)arg16;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *schemaOrg; // @synthesize schemaOrg=_schemaOrg;
 @property(readonly, nonatomic) unsigned long long naturalLanguageEventAttributes; // @synthesize naturalLanguageEventAttributes=_naturalLanguageEventAttributes;
 @property(readonly, nonatomic) NSString *naturalLanguageEventTypeIdentifier; // @synthesize naturalLanguageEventTypeIdentifier=_naturalLanguageEventTypeIdentifier;
@@ -51,7 +52,7 @@
 @property(readonly, nonatomic) NSDate *start; // @synthesize start=_start;
 @property(readonly, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+- (id)loggingIdentifier;
 - (id)_naturalLanguageEventTagsInTags:(id)arg1;
 @property(readonly, nonatomic, getter=isNaturalLanguageEvent) _Bool naturalLanguageEvent;
 - (id)geocodedEventWithStartDate:(id)arg1 startTimeZone:(id)arg2 endDate:(id)arg3 endTimeZone:(id)arg4 locations:(id)arg5;
@@ -66,11 +67,13 @@
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2 preservingValuesDifferentFrom:(id)arg3;
 - (void)_mergeTagsIntoEKEvent:(id)arg1 withStore:(id)arg2;
 - (void)_applyTimeRangeToEKEvent:(id)arg1 withTZID:(id)arg2;
+- (_Bool)shouldAllowNotificationsInCalendarForBundleId:(id)arg1 appIsInForeground:(_Bool)arg2 allowListOverride:(id)arg3;
 - (_Bool)shouldAllowNotificationsInCalendarForBundleId:(id)arg1 appIsInForeground:(_Bool)arg2;
-- (_Bool)shouldAllowNotificationsInCalendar;
+- (_Bool)shouldAllowNotificationsInCalendarWithAllowListOverride:(id)arg1;
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2;
 - (void)mergeIntoEKEvent:(id)arg1;
 - (id)toEKEventWithStore:(id)arg1;
+- (long long)ekEventAvailabilityState;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToEvent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

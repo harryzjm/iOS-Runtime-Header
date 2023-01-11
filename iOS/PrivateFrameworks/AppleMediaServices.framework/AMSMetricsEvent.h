@@ -20,21 +20,23 @@
 }
 
 + (_Bool)_isValidJSONProperty:(id)arg1;
++ (id)sanitizedObject:(id)arg1;
 + (id)_topicFromAuthenticationContext:(id)arg1;
 + (id)_buyParamsStringFromAuthenticationContext:(id)arg1;
 + (id)_buyParamsFromString:(id)arg1;
 + (id)metricsAuthenticationAttemptDictionaryForAuthKitError:(id)arg1;
 + (id)createEventFromAuthenticationContext:(id)arg1 error:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *databasePID; // @synthesize databasePID=_databasePID;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (void)_setProperty:(id)arg1 forBodyKey:(id)arg2 clientOnly:(_Bool)arg3;
 - (id)_propertyForBodyKey:(id)arg1 clientOnly:(_Bool)arg2;
 - (void)setProperty:(id)arg1 forBodyKey:(id)arg2;
 - (void)removePropertiesForKeys:(id)arg1;
 - (id)propertyForBodyKey:(id)arg1;
 - (void)addPropertiesWithDictionary:(id)arg1;
+- (void)addClientIdentifier:(id)arg1;
 @property(retain, nonatomic) NSString *topic;
 @property(retain, nonatomic) NSNumber *timezoneOffset;
 @property(retain, nonatomic) NSString *osVersion;
@@ -42,11 +44,16 @@
 @property(retain, nonatomic) NSNumber *eventVersion;
 @property(retain, nonatomic) NSString *eventType;
 @property(retain, nonatomic) NSNumber *eventTime;
+@property(retain, nonatomic) NSString *diagnosticsSubmissionBugType;
+@property(retain, nonatomic) NSString *clientIdentifier;
 @property(retain, nonatomic) NSString *clientEventID;
+@property(nonatomic) _Bool checkDiagnosticsAndUsageSetting;
 @property(retain, nonatomic) NSString *canaryIdentifier;
 @property(retain, nonatomic) NSNumber *baseVersion;
 @property(retain, nonatomic) NSString *appVersion;
 @property(retain, nonatomic) NSString *app;
+@property(nonatomic, getter=isAnonymous) _Bool anonymous;
+@property(readonly, nonatomic) _Bool engagementEvent;
 @property(readonly, nonatomic) NSMutableDictionary *underlyingDictionary; // @synthesize underlyingDictionary=_underlyingDictionary;
 @property(readonly, nonatomic) NSDictionary *dictionaryForPosting;
 @property(readonly, nonatomic) NSDictionary *databaseEventBody;
@@ -54,6 +61,7 @@
 - (id)initWithTopic:(id)arg1;
 - (id)initWithUnderlyingDictionary:(id)arg1;
 - (id)initWithDatabaseEventBody:(id)arg1;
+- (id)initForEngagement;
 
 @end
 

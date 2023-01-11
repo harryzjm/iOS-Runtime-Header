@@ -15,10 +15,10 @@
     NSMutableDictionary *_fileURLsByKey;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSMutableDictionary *fileURLsByKey; // @synthesize fileURLsByKey=_fileURLsByKey;
 @property(copy, nonatomic) NSString *preferredExtension; // @synthesize preferredExtension=_preferredExtension;
 @property(copy, nonatomic) NSString *directoryPath; // @synthesize directoryPath=_directoryPath;
-- (void).cxx_destruct;
 - (unsigned long long)_sizeOfFileAtURL:(id)arg1;
 - (id)_keyForFileName:(id)arg1;
 - (id)_filePathForKey:(id)arg1;
@@ -32,8 +32,10 @@
 - (_Bool)removeAllFilesExceptKeys:(id)arg1;
 - (_Bool)removeFileWithKey:(id)arg1;
 - (id)copyData:(id)arg1 withKey:(id)arg2;
+- (id)moveFileAtURL:(id)arg1 withKey:(id)arg2;
 - (id)moveFileAtPath:(id)arg1 withKey:(id)arg2;
 - (id)copyFileAtPath:(id)arg1 withKey:(id)arg2;
+@property(readonly, nonatomic) NSString *rootDirectory;
 - (id)initWithDirectoryAtPath:(id)arg1 preferredAssetPathExtension:(id)arg2;
 
 @end

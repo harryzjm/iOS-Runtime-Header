@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
     NSArray *_legendViews;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *legendViews; // @synthesize legendViews=_legendViews;
 @property(retain, nonatomic) UIView *dividerView; // @synthesize dividerView=_dividerView;
 @property(retain, nonatomic) _TVImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
 @property(retain, nonatomic) VUIVideoAdvisoryViewLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
 - (void)_configureSubviewsWithDictionary:(id)arg1;
 - (struct UIEdgeInsets)_dividerMargin;
 - (struct UIEdgeInsets)_legendsMargin;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isPortrait;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)initWithRatingInfoDictionary:(id)arg1;
+- (id)initWithAdvisoryInfoDictionary:(id)arg1;
 - (void)_hideWithAnimationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_hideAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_showWithAnimationWithCompletion:(CDUnknownBlockType)arg1;

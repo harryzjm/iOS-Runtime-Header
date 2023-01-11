@@ -9,8 +9,10 @@
 @class MCUISignInViewController, NSError, NSMutableDictionary;
 
 @protocol MCUISignInViewControllerDelegate <NSObject>
-- (void)signInViewControllerDidCancelAuthentication:(MCUISignInViewController *)arg1;
 - (void)signInViewController:(MCUISignInViewController *)arg1 didAuthenticateWithResults:(NSMutableDictionary *)arg2 error:(NSError *)arg3;
+
+@optional
+- (void)signInViewControllerDidCancelAuthentication:(MCUISignInViewController *)arg1;
 - (void)signInViewController:(MCUISignInViewController *)arg1 willAuthenticateWithCompletionHandler:(void (^)(void))arg2;
 @end
 

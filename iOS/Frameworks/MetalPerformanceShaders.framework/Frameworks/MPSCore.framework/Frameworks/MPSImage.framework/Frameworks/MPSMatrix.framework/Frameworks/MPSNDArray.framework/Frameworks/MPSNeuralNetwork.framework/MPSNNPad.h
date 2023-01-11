@@ -15,7 +15,7 @@
     struct MPSImageCoordinate _paddingSizeAfter;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float fillValue; // @synthesize fillValue=_fillValue;
 @property(nonatomic) struct MPSImageCoordinate paddingSizeAfter; // @synthesize paddingSizeAfter=_paddingSizeAfter;
 @property(nonatomic) struct MPSImageCoordinate paddingSizeBefore; // @synthesize paddingSizeBefore=_paddingSizeBefore;

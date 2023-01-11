@@ -6,36 +6,37 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCharacteristicsAvailabilityListenerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraNotificationCharacteristicsAvailabilityListener, HMDHAPAccessory, NSNotificationCenter, NSObject, NSString;
+@class HMDCharacteristicsAvailabilityListener, HMDHAPAccessory, NSNotificationCenter, NSObject, NSSet, NSString;
 @protocol HMDCameraRecordingSessionNotificationTriggerDelegate, OS_dispatch_queue;
 
-@interface HMDCameraRecordingSessionNotificationTrigger : HMFObject <HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate, HMFLogging>
+@interface HMDCameraRecordingSessionNotificationTrigger : HMFObject <HMDCharacteristicsAvailabilityListenerDelegate, HMFLogging>
 {
     id <HMDCameraRecordingSessionNotificationTriggerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHAPAccessory *_cameraAccessory;
-    HMDCameraNotificationCharacteristicsAvailabilityListener *_availabilityListener;
+    HMDCharacteristicsAvailabilityListener *_availabilityListener;
     NSNotificationCenter *_notificationCenter;
+    NSSet *_availableCharacteristics;
+    NSString *_clientIdentifier;
 }
 
 + (id)logCategory;
-+ (id)clientIdentifier;
+- (void).cxx_destruct;
+@property(readonly, copy) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property(retain) NSSet *availableCharacteristics; // @synthesize availableCharacteristics=_availableCharacteristics;
 @property(readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
-@property(readonly) HMDCameraNotificationCharacteristicsAvailabilityListener *availabilityListener; // @synthesize availabilityListener=_availabilityListener;
+@property(readonly) HMDCharacteristicsAvailabilityListener *availabilityListener; // @synthesize availabilityListener=_availabilityListener;
 @property(readonly) __weak HMDHAPAccessory *cameraAccessory; // @synthesize cameraAccessory=_cameraAccessory;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property __weak id <HMDCameraRecordingSessionNotificationTriggerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2 previousCharacteristics:(id)arg3;
-- (void)_handleCharacteristicsValueUpdated:(id)arg1;
-- (void)_handleAccessoryLocalReachabilityChanged:(id)arg1;
+- (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2;
+- (id)logIdentifier;
+- (void)handleCharacteristicsValueUpdated:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
 - (void)_handleObservedCharacteristicsValueUpdate:(id)arg1;
-- (void)_setNotificationForCharacteristics:(id)arg1 to:(_Bool)arg2;
-- (void)_registerForNotifications:(id)arg1;
-- (void)_configureAvailableCharacteristics:(id)arg1 previousCharacteristics:(id)arg2;
 - (void)start;
 - (void)dealloc;
 - (id)initWithCamera:(id)arg1 workQueue:(id)arg2 availabilityListener:(id)arg3 notificationCenter:(id)arg4;

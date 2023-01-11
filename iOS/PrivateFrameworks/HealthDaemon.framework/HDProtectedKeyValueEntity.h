@@ -8,6 +8,7 @@
 {
 }
 
++ (const char *)_insertStatementKey;
 + (long long)_deviceLocalCategory;
 + (long long)protectionClass;
 + (id)databaseTable;

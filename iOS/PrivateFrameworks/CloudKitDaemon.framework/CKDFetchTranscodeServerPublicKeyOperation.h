@@ -6,7 +6,6 @@
 
 @class CKPublicKey, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchTranscodeServerPublicKeyOperation
 {
     CKPublicKey *_transcodeServerPublicKey;
@@ -15,10 +14,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct __SecPolicy *)createTranscodeServerTrustPolicy;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *transcodeServerPublicKeyURL; // @synthesize transcodeServerPublicKeyURL=_transcodeServerPublicKeyURL;
 @property(readonly, nonatomic) NSString *transcodeServerHostname; // @synthesize transcodeServerHostname=_transcodeServerHostname;
 @property(retain) CKPublicKey *transcodeServerPublicKey; // @synthesize transcodeServerPublicKey=_transcodeServerPublicKey;
-- (void).cxx_destruct;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (void)fetchRemoteTranscodePublicKey;
@@ -26,6 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)determineTranscodeServerPublicKeyURL;
 - (void)main;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

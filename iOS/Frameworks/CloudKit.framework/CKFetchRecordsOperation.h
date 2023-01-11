@@ -4,51 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKFetchRecordsOperationCallbacks-Protocol.h>
+#import <CloudKit/CKOperationInMemoryAssets-Protocol.h>
 
-@interface CKFetchRecordsOperation
+@class CKFetchRecordsOperationInfo, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchRecordsOperationCallbacks;
+
+@interface CKFetchRecordsOperation <CKFetchRecordsOperationCallbacks, CKOperationInMemoryAssets>
 {
+    _Bool _isFetchCurrentUserOperation;
     _Bool _shouldFetchAssetContent;
     _Bool _shouldFetchAssetContentInMemory;
     _Bool _dropInMemoryAssetContentASAP;
-    _Bool _isFetchCurrentUserOperation;
+    NSMutableDictionary *_assetInfoByArrayIndexByRecordKeyByRecordID;
     CDUnknownBlockType _perRecordProgressBlock;
     CDUnknownBlockType _perRecordCompletionBlock;
     CDUnknownBlockType _fetchRecordsCompletionBlock;
     NSArray *_recordIDs;
     NSArray *_desiredKeys;
     NSMutableSet *_packagesToDestroy;
-    NSMutableDictionary *_assetInfoByArrayIndexByRecordKeyByRecordID;
+    NSMutableDictionary *_recordErrors;
+    NSDictionary *_webSharingIdentityDataByRecordID;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
     NSMutableDictionary *_recordIDsToRecords;
-    NSMutableDictionary *_recordErrors;
     NSDictionary *_desiredPackageFileIndices;
     NSDictionary *_recordIDsToETags;
     NSDictionary *_recordIDsToVersionETags;
-    NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 + (id)fetchCurrentUserRecordOperation;
-@property(retain, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
-@property(retain, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
-@property(retain, nonatomic) NSDictionary *recordIDsToETags; // @synthesize recordIDsToETags=_recordIDsToETags;
-@property(nonatomic) _Bool isFetchCurrentUserOperation; // @synthesize isFetchCurrentUserOperation=_isFetchCurrentUserOperation;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
+@property(copy, nonatomic) NSDictionary *recordIDsToETags; // @synthesize recordIDsToETags=_recordIDsToETags;
 @property(copy, nonatomic) NSDictionary *desiredPackageFileIndices; // @synthesize desiredPackageFileIndices=_desiredPackageFileIndices;
-@property(retain, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property(retain, nonatomic) NSMutableDictionary *recordIDsToRecords; // @synthesize recordIDsToRecords=_recordIDsToRecords;
-@property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
-@property(retain, nonatomic) NSMutableDictionary *assetInfoByArrayIndexByRecordKeyByRecordID; // @synthesize assetInfoByArrayIndexByRecordKeyByRecordID=_assetInfoByArrayIndexByRecordKeyByRecordID;
+@property(copy, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(nonatomic) _Bool dropInMemoryAssetContentASAP; // @synthesize dropInMemoryAssetContentASAP=_dropInMemoryAssetContentASAP;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
+@property(retain, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
+@property(nonatomic) _Bool isFetchCurrentUserOperation; // @synthesize isFetchCurrentUserOperation=_isFetchCurrentUserOperation;
+@property(retain, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property(retain, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *assetInfoByArrayIndexByRecordKeyByRecordID; // @synthesize assetInfoByArrayIndexByRecordKeyByRecordID=_assetInfoByArrayIndexByRecordKeyByRecordID;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
-- (id)assetInfoForRecordID:(id)arg1 recordKey:(id)arg2 arrayIndex:(id)arg3;
+- (void)handleAssetDataForRecordID:(id)arg1 recordKey:(id)arg2 arrayIndex:(long long)arg3 data:(id)arg4 offset:(unsigned long long)arg5;
+- (void)handleFetchForRecordID:(id)arg1 didProgress:(double)arg2;
+- (void)handleFetchForRecordID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (_Bool)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
@@ -60,6 +66,10 @@
 @property(copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
 - (id)initWithRecordIDs:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKFetchRecordsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

@@ -8,16 +8,17 @@
 
 #import <PhotosGraph/CLSInvestigationItem-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSDateComponents, NSNumber, NSSet, NSString, VNSceneprint;
+@class CLLocation, NSArray, NSDate, NSDateComponents, NSNumber, NSSet, NSString, VNSceneprint;
+@protocol CLSCurationModel;
 
 @interface PGCuratorInvestigationItem : NSObject <CLSInvestigationItem>
 {
     NSNumber *_clsViewCount;
     NSNumber *_clsPlayCount;
     NSNumber *_clsShareCount;
-    NSNumber *_isUtility;
-    NSNumber *_isBlurry;
-    NSNumber *_isScreenshotOrScreenRecording;
+    NSNumber *_clsIsUtility;
+    NSNumber *_clsIsBlurry;
+    NSNumber *_clsIsScreenshotOrScreenRecording;
     NSNumber *_isFavorite;
     NSNumber *_isVideo;
     NSNumber *_clsContentScore;
@@ -48,33 +49,37 @@
     NSNumber *_clsIsNonMemorable;
     NSNumber *_clsIsLoopOrBounce;
     NSNumber *_clsIsLongExposure;
+    NSNumber *_clsGpsHorizontalAccuracy;
+    NSNumber *_clsSquareCropScore;
     NSString *_clsIdentifier;
     NSDate *_cls_universalDate;
     NSDate *_cls_localDate;
     CLLocation *_clsLocation;
     NSArray *_clsPeopleNames;
-    NSData *_clsDistanceIdentity;
     NSSet *_clsSceneClassifications;
     VNSceneprint *_clsSceneprint;
     NSArray *_clsUnprefetchedPeopleNames;
     NSArray *_faceInfos;
+    id <CLSCurationModel> _curationModel;
 }
 
-+ (id)contextForItems:(id)arg1;
-+ (id)itemWithUUID:(id)arg1 itemInfo:(id)arg2;
++ (id)itemWithUUID:(id)arg1 itemInfo:(id)arg2 curationModel:(id)arg3;
+- (void).cxx_destruct;
+@property(readonly) id <CLSCurationModel> curationModel; // @synthesize curationModel=_curationModel;
 @property(readonly) NSArray *faceInfos; // @synthesize faceInfos=_faceInfos;
 @property(readonly, nonatomic) NSArray *clsUnprefetchedPeopleNames; // @synthesize clsUnprefetchedPeopleNames=_clsUnprefetchedPeopleNames;
-@property(readonly) VNSceneprint *clsSceneprint;
+@property(readonly, nonatomic) VNSceneprint *clsSceneprint; // @synthesize clsSceneprint=_clsSceneprint;
 @property(readonly, copy, nonatomic) NSSet *clsSceneClassifications; // @synthesize clsSceneClassifications=_clsSceneClassifications;
-@property(readonly) NSData *clsDistanceIdentity;
 @property(readonly, nonatomic) NSArray *clsPeopleNames; // @synthesize clsPeopleNames=_clsPeopleNames;
 @property(readonly, nonatomic) CLLocation *clsLocation; // @synthesize clsLocation=_clsLocation;
 @property(readonly, nonatomic) NSDate *cls_localDate; // @synthesize cls_localDate=_cls_localDate;
-@property(readonly) NSDate *cls_universalDate;
-@property(readonly) NSString *clsIdentifier;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *cls_universalDate; // @synthesize cls_universalDate=_cls_universalDate;
+@property(readonly, nonatomic) NSString *clsIdentifier; // @synthesize clsIdentifier=_clsIdentifier;
+@property(readonly, nonatomic) double pl_gpsHorizontalAccuracy;
+@property(readonly, nonatomic) NSString *pl_uuid;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property(readonly, nonatomic) NSDate *pl_date;
+@property(readonly, nonatomic) double clsSquareCropScore;
 @property(readonly, nonatomic) _Bool clsIsLongExposure;
 @property(readonly, nonatomic) _Bool clsIsLoopOrBounce;
 @property(readonly, nonatomic) _Bool clsIsNonMemorable;
@@ -105,21 +110,20 @@
 @property(readonly, nonatomic) double clsContentScore;
 @property(readonly, nonatomic) _Bool isVideo;
 @property(readonly, nonatomic) _Bool isFavorite;
-@property(readonly, nonatomic) _Bool isScreenshotOrScreenRecording;
-@property(readonly, nonatomic) _Bool isBlurry;
-@property(readonly, nonatomic) _Bool isUtility;
+@property(readonly, nonatomic) _Bool clsIsScreenshotOrScreenRecording;
+@property(readonly, nonatomic) _Bool clsIsBlurry;
+@property(readonly, nonatomic) _Bool clsIsUtility;
 @property(readonly, nonatomic) long long clsShareCount;
 @property(readonly, nonatomic) long long clsPlayCount;
 @property(readonly, nonatomic) long long clsViewCount;
-- (double)scoreWithContext:(id)arg1;
-- (struct CGImage *)createThumbnailWithResolution:(unsigned long long)arg1 fillMode:(_Bool)arg2 networkAllowed:(_Bool)arg3;
+- (double)scoreInContext:(id)arg1;
 @property(readonly, nonatomic) NSDateComponents *cls_localDateComponents;
 @property(readonly, nonatomic) unsigned long long clsPeopleCount;
 @property(readonly, nonatomic) NSArray *peopleNames;
 @property(readonly, nonatomic) CLLocation *location;
 - (id)date;
 @property(readonly, copy) NSString *description;
-- (id)initWithUUID:(id)arg1 itemInfo:(id)arg2;
+- (id)initWithUUID:(id)arg1 itemInfo:(id)arg2 curationModel:(id)arg3;
 - (id)init;
 
 // Remaining properties

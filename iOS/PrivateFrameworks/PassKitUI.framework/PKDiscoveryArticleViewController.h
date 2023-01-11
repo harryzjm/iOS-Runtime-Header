@@ -42,6 +42,7 @@
     struct UIEdgeInsets _safeAreaOverrideInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldHideStatusBar; // @synthesize shouldHideStatusBar=_shouldHideStatusBar;
 @property(nonatomic, getter=shouldUseCustomPresentation) _Bool useCustomPresentation; // @synthesize useCustomPresentation=_useCustomPresentation;
 @property(nonatomic, getter=isAnimatingCard) _Bool animatingCard; // @synthesize animatingCard=_animatingCard;
@@ -49,7 +50,7 @@
 @property(nonatomic) _Bool hasSafeAreaInsetOverride; // @synthesize hasSafeAreaInsetOverride=_hasSafeAreaInsetOverride;
 @property(readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(readonly, nonatomic) PKDiscoveryCardView *cardView; // @synthesize cardView=_cardView;
-- (void).cxx_destruct;
+- (void)_dismissForActionCompleted:(_Bool)arg1 withRelevantPassUniqueIdentifier:(id)arg2;
 - (_Bool)_hasCardInGalleryView;
 - (void)_leftScreenEdgePanSwipeGesture:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
@@ -73,6 +74,7 @@
 - (long long)modalPresentationStyle;
 - (void)paymentSetupDidFinish:(id)arg1;
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
+- (void)_performProvisioningCTATapped:(id)arg1 callToAction:(id)arg2;
 - (void)discoveryCardViewCTATapped:(id)arg1 callToAction:(id)arg2;
 - (void)setIsDownloading:(_Bool)arg1;
 - (void)setArticleLayout:(id)arg1 animated:(_Bool)arg2;

@@ -13,24 +13,29 @@
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/PXUIViewControllerZoomTransitionEndPoint-Protocol.h>
 #import <PhotosUICore/PXWidgetCompositionDelegate-Protocol.h>
+#import <PhotosUICore/PXWidgetEditingDelegate-Protocol.h>
 #import <PhotosUICore/PXWidgetUnlockDelegate-Protocol.h>
 #import <PhotosUICore/UIContextMenuInteractionDelegate-Protocol.h>
+#import <PhotosUICore/UIPointerInteractionDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, NSUserActivity, PXBarsController, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIContextMenuInteraction, UIScrollView, UIView;
-@protocol PXAssetCollectionActionPerformerDelegate, PXDisplayAsset, PXPhotosDetailsUIViewControllerDelegate, PXUIWidget;
+@class NSArray, NSMapTable, NSMutableArray, NSString, NSUserActivity, PXAssetSelectionUserActivityController, PXBarsController, PXMiroMoviePresenter, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIContextMenuInteraction, UIPointerInteraction, UIScrollView, UIView;
+@protocol PXAssetCollectionActionPerformerDelegate, PXDisplayAsset, PXPhotosDetailsUIViewControllerDelegate, PXUIWidget, PXViewControllerEventTracker;
 
-@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, PXActionPerformerDelegate, PXWidgetUnlockDelegate, PXForcedDismissableViewController, UIContextMenuInteractionDelegate, PXScrollViewControllerObserver, PXPurgeableController>
+@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, PXActionPerformerDelegate, PXWidgetUnlockDelegate, PXWidgetEditingDelegate, PXForcedDismissableViewController, UIContextMenuInteractionDelegate, UIPointerInteractionDelegate, PXScrollViewControllerObserver, PXPurgeableController>
 {
     struct {
         _Bool requestDismissal;
     } _delegateRespondsTo;
     _Bool __hasAppeared;
+    _Bool _didAppearOnce;
     _Bool __shouldFocusHeader;
     _Bool __previewCommitting;
     _Bool _empty;
+    PXAssetSelectionUserActivityController *_userActivityController;
     PXPhotosDetailsContext *_context;
     unsigned long long _options;
     id <PXPhotosDetailsUIViewControllerDelegate> _delegate;
+    id <PXViewControllerEventTracker> _eventTracker;
     PXPhotosDetailsViewModel *__viewModel;
     PXUIScrollViewController *__scrollViewController;
     NSArray *__widgets;
@@ -51,7 +56,9 @@
     CDUnknownBlockType __ppt_variationsWidgetLoadingCompleteHandler;
     UIContextMenuInteraction *__contextMenuInteraction;
     UIViewController *__previewViewController;
+    UIPointerInteraction *__pointerInteraction;
     NSUserActivity *_siriActionActivity;
+    PXMiroMoviePresenter *_miroMoviePresenter;
     PXBarsController *_barsController;
     id <PXAssetCollectionActionPerformerDelegate> _actionPerformerDelegate;
     unsigned long long _occludedContentEdges;
@@ -59,12 +66,15 @@
 }
 
 + (void)preloadResources;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long occludedContentEdges; // @synthesize occludedContentEdges=_occludedContentEdges;
 @property(nonatomic, getter=isEmpty) _Bool empty; // @synthesize empty=_empty;
 @property(nonatomic) __weak id <PXAssetCollectionActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
 @property(nonatomic) struct UIEdgeInsets contentEdgeInsets; // @synthesize contentEdgeInsets=_contentEdgeInsets;
 @property(readonly, nonatomic) PXBarsController *barsController; // @synthesize barsController=_barsController;
+@property(retain, nonatomic) PXMiroMoviePresenter *miroMoviePresenter; // @synthesize miroMoviePresenter=_miroMoviePresenter;
 @property(retain, nonatomic) NSUserActivity *siriActionActivity; // @synthesize siriActionActivity=_siriActionActivity;
+@property(retain, nonatomic, setter=_setPointerInteraction:) UIPointerInteraction *_pointerInteraction; // @synthesize _pointerInteraction=__pointerInteraction;
 @property(retain, nonatomic, setter=_setPreviewViewController:) UIViewController *_previewViewController; // @synthesize _previewViewController=__previewViewController;
 @property(nonatomic, setter=_setPreviewCommitting:) _Bool _previewCommitting; // @synthesize _previewCommitting=__previewCommitting;
 @property(retain, nonatomic, setter=_setContextMenuInteraction:) UIContextMenuInteraction *_contextMenuInteraction; // @synthesize _contextMenuInteraction=__contextMenuInteraction;
@@ -72,6 +82,7 @@
 @property(copy, nonatomic, setter=_ppt_setAllWidgetLoadingCompleteHandler:) CDUnknownBlockType _ppt_allWidgetLoadingCompleteHandler; // @synthesize _ppt_allWidgetLoadingCompleteHandler=__ppt_allWidgetLoadingCompleteHandler;
 @property(retain, nonatomic, setter=_setHeaderTileView:) UIView *_headerTileView; // @synthesize _headerTileView=__headerTileView;
 @property(nonatomic, setter=_setShouldFocusHeader:) _Bool _shouldFocusHeader; // @synthesize _shouldFocusHeader=__shouldFocusHeader;
+@property(nonatomic) _Bool didAppearOnce; // @synthesize didAppearOnce=_didAppearOnce;
 @property(readonly, nonatomic) id <PXUIWidget> _previewWidget; // @synthesize _previewWidget=__previewWidget;
 @property(readonly, copy, nonatomic) CDUnknownBlockType _unlockHandler; // @synthesize _unlockHandler=__unlockHandler;
 @property(readonly, copy, nonatomic) CDUnknownBlockType _unlockStatus; // @synthesize _unlockStatus=__unlockStatus;
@@ -88,10 +99,10 @@
 @property(readonly, nonatomic) NSArray *_widgets; // @synthesize _widgets=__widgets;
 @property(readonly, nonatomic) PXUIScrollViewController *_scrollViewController; // @synthesize _scrollViewController=__scrollViewController;
 @property(readonly, nonatomic) PXPhotosDetailsViewModel *_viewModel; // @synthesize _viewModel=__viewModel;
+@property(readonly, nonatomic) id <PXViewControllerEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property(nonatomic) __weak id <PXPhotosDetailsUIViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (void)_ppt_informWidgetsLoadedHandlerIfNeeded;
 - (void)ppt_navigateToMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_performBlockAfterVariationsWidgetLoadingCompletes:(CDUnknownBlockType)arg1;
@@ -104,11 +115,15 @@
 - (id)_previewViewControllerForLocation:(struct CGPoint)arg1;
 - (id)_widgetAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)contextMenuInteractionDidEnd:(id)arg1;
-- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)playMiroMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)contentViewForZoomTransition:(id)arg1;
 - (id)zoomAnimationCoordinatorForZoomTransition:(id)arg1;
 - (void)prepareForInteractiveTransition:(id)arg1;
 - (void)scrollRegionOfInterestToVisible:(id)arg1 forTransition:(id)arg2;
@@ -133,7 +148,9 @@
 - (_Bool)widgetComposition:(id)arg1 shouldUseEdgeToEdgeLayoutForWidget:(id)arg2;
 - (_Bool)widgetComposition:(id)arg1 requestViewControllerDismissalAnimated:(_Bool)arg2;
 - (_Bool)widgetCompositionHasContentAbove:(id)arg1;
-- (struct NSObject *)widgetComposition:(id)arg1 viewControllerHostingWidget:(id)arg2;
+- (id)widgetComposition:(id)arg1 viewControllerHostingWidget:(id)arg2;
+- (void)widgetEditorHeightDidChange:(id)arg1;
+- (void)widget:(id)arg1 didChangeEditingMode:(_Bool)arg2;
 - (void)widget:(id)arg1 performAfterUnlockingDeviceIfNecessary:(CDUnknownBlockType)arg2 failurehandler:(CDUnknownBlockType)arg3;
 - (_Bool)widgetDeviceIsUnlocked:(id)arg1;
 - (void)_updateBarSpec;
@@ -142,8 +159,12 @@
 - (void)_invalidateWidgetSpec;
 - (void)_updateCompositionSpec;
 - (void)_invalidateCompositionSpec;
-- (_Bool)px_isSnapBackDestination;
 - (void)purgeIfPossible;
+@property(readonly, nonatomic) PXAssetSelectionUserActivityController *userActivityController; // @synthesize userActivityController=_userActivityController;
+- (void)informFirstWidgetAvailableVisibleRectInEditMode:(struct CGRect)arg1;
+- (void)requestExitEditModeWithChangeSavingMode:(long long)arg1;
+- (void)editorHeightDidChange;
+- (void)editingDidChange:(_Bool)arg1;
 - (void)_handleDeviceDidUnlock;
 - (void)_updateWidgetDisablingWithAnimationOptions:(id)arg1;
 - (void)_updateTitleAndSubtitle;
@@ -162,6 +183,8 @@
 - (void)_loadComposition;
 - (void)_ensureComposition;
 - (void)_ensureScrollViewController;
+@property(readonly, nonatomic) double captionWidgetCurrentContentHeight;
+@property(readonly, nonatomic) double captionWidgetPreferredHeight;
 - (void)_handleWidgetsLoadingDelay;
 @property(readonly, nonatomic) _Bool shouldUpdateStatusBarTitle;
 - (id)contentScrollView;
@@ -175,6 +198,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (unsigned long long)_userEventSourceForDetailView:(id)arg1;
+- (void)_updateTopTrailingBarButtons;
 - (void)_updateStatusBarTitle;
 - (void)viewDidLoad;
 @property(readonly, nonatomic) id <PXDisplayAsset> presentedKeyAsset;

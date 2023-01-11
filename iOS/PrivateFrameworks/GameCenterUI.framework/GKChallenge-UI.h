@@ -7,6 +7,7 @@
 #import <GameCenterFoundation/GKChallenge.h>
 
 @interface GKChallenge (UI)
++ (id)challengesNotSupportedAlertController;
 - (id)iconURLString;
 - (id)smallIconURLString;
 - (id)iconSource;

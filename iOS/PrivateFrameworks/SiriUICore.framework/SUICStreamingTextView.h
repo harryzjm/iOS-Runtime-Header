@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutManager, NSMutableArray, NSMutableSet, NSString, NSTextContainer, NSTextStorage, UIColor, UIFont;
+@class NSArray, NSLayoutManager, NSMutableArray, NSMutableSet, NSString, NSTextContainer, NSTextStorage, UIColor, UIFont, UIImage;
 
 @interface SUICStreamingTextView : UIView
 {
@@ -17,7 +17,11 @@
     NSMutableArray *_wordsToShow;
     NSMutableSet *_wordsToDelete;
     _Bool _animatedInternal;
+    UIImage *_chevronImage;
     _Bool _animated;
+    _Bool _showChevron;
+    _Bool _renderEmojisOnly;
+    _Bool _renderEmojis;
     UIFont *_font;
     double _hyphenationFactor;
     UIColor *_startTextColor;
@@ -26,6 +30,10 @@
     UIColor *_textColor;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool renderEmojis; // @synthesize renderEmojis=_renderEmojis;
+@property(nonatomic) _Bool renderEmojisOnly; // @synthesize renderEmojisOnly=_renderEmojisOnly;
+@property(nonatomic) _Bool showChevron; // @synthesize showChevron=_showChevron;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(nonatomic) _Bool animated; // @synthesize animated=_animated;
 @property(nonatomic) double animationDuration; // @synthesize animationDuration=_animationDuration;
@@ -33,9 +41,10 @@
 @property(retain, nonatomic) UIColor *startTextColor; // @synthesize startTextColor=_startTextColor;
 @property(nonatomic) double hyphenationFactor; // @synthesize hyphenationFactor=_hyphenationFactor;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
-- (void).cxx_destruct;
+- (id)_createChevronImage;
 - (id)_createGlyphImage:(struct CGRect)arg1 glyphRange:(struct _NSRange)arg2 layoutManager:(id)arg3;
 - (id)_glyphImageForWord:(id)arg1 frame:(struct CGRect)arg2 glyphRange:(struct _NSRange)arg3 textColor:(id)arg4;
+- (id)_substringRangesContainingEmojiInString:(id)arg1 startingIndex:(long long)arg2;
 - (void)_resetState;
 - (void)_animateWordOut:(id)arg1;
 - (void)_animateWordIn:(id)arg1;

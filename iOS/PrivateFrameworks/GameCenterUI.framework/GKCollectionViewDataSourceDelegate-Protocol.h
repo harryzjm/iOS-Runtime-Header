@@ -20,6 +20,7 @@
 - (void)dataSource:(GKCollectionViewDataSource *)arg1 didRemoveSections:(NSIndexSet *)arg2;
 - (void)dataSource:(GKCollectionViewDataSource *)arg1 didInsertSections:(NSIndexSet *)arg2;
 - (void)dataSource:(GKCollectionViewDataSource *)arg1 didMoveItemAtIndexPath:(NSIndexPath *)arg2 toIndexPath:(NSIndexPath *)arg3;
+- (void)dataSource:(GKCollectionViewDataSource *)arg1 didRefreshItemsAtIndexPaths:(NSArray *)arg2 animated:(_Bool)arg3;
 - (void)dataSource:(GKCollectionViewDataSource *)arg1 didRefreshItemsAtIndexPaths:(NSArray *)arg2;
 - (void)dataSource:(GKCollectionViewDataSource *)arg1 didRemoveItemsAtIndexPaths:(NSArray *)arg2;
 - (void)dataSource:(GKCollectionViewDataSource *)arg1 didInsertItemsAtIndexPaths:(NSArray *)arg2;

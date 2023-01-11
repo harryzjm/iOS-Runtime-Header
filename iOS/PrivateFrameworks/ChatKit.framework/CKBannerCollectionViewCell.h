@@ -14,9 +14,8 @@
 }
 
 + (id)reuseIdentifier;
-@property(retain, nonatomic) UIImageView *bannerView; // @synthesize bannerView=_bannerView;
 - (void).cxx_destruct;
-- (void)setBannerImage:(id)arg1;
+@property(retain, nonatomic) UIImageView *bannerView; // @synthesize bannerView=_bannerView;
 - (void)configureWithEntity:(id)arg1;
 - (void)layoutSubviews;
 - (id)init;

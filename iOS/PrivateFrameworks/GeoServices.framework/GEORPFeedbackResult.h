@@ -13,13 +13,15 @@
 @interface GEORPFeedbackResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPFeedbackIdLookupResult *_idLookupResult;
     GEORPFeedbackImageUploadResult *_imageUploadResult;
     GEORPFeedbackLayoutConfigResult *_layoutConfigResult;
     GEORPFeedbackQueryResult *_queryResult;
     GEORPFeedbackSubmissionResult *_submissionResult;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_idLookupResult:1;
@@ -27,12 +29,7 @@
         unsigned int read_layoutConfigResult:1;
         unsigned int read_queryResult:1;
         unsigned int read_submissionResult:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_idLookupResult:1;
-        unsigned int wrote_imageUploadResult:1;
-        unsigned int wrote_layoutConfigResult:1;
-        unsigned int wrote_queryResult:1;
-        unsigned int wrote_submissionResult:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,23 +45,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPFeedbackLayoutConfigResult *layoutConfigResult;
 @property(readonly, nonatomic) _Bool hasLayoutConfigResult;
-- (void)_readLayoutConfigResult;
 @property(retain, nonatomic) GEORPFeedbackImageUploadResult *imageUploadResult;
 @property(readonly, nonatomic) _Bool hasImageUploadResult;
-- (void)_readImageUploadResult;
 @property(retain, nonatomic) GEORPFeedbackQueryResult *queryResult;
 @property(readonly, nonatomic) _Bool hasQueryResult;
-- (void)_readQueryResult;
 @property(retain, nonatomic) GEORPFeedbackIdLookupResult *idLookupResult;
 @property(readonly, nonatomic) _Bool hasIdLookupResult;
-- (void)_readIdLookupResult;
 @property(retain, nonatomic) GEORPFeedbackSubmissionResult *submissionResult;
 @property(readonly, nonatomic) _Bool hasSubmissionResult;
-- (void)_readSubmissionResult;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

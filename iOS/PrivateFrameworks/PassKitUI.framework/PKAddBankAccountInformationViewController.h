@@ -24,14 +24,15 @@
     _Bool _isEditingBankInformation;
     _Bool _hasInteractedWithCell;
     _Bool _prefilledFromKeychain;
+    NSMutableDictionary *_cellHasPastedContent;
     PKAccount *_featureAccount;
     _Bool _offerKeychainPreFill;
     id <PKAddBankAccountInformationViewControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKAddBankAccountInformationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool offerKeychainPreFill; // @synthesize offerKeychainPreFill=_offerKeychainPreFill;
-- (void).cxx_destruct;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 minDigits:(unsigned long long)arg2 maxDigits:(unsigned long long)arg3;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 numberOfDigits:(unsigned long long)arg2;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1;
@@ -63,9 +64,13 @@
 - (_Bool)_isRoutingNumberCellValid;
 - (_Bool)_isAccountNumberCellValid;
 - (_Bool)_cellValuesAreValid;
+- (void)textFieldDidClear:(id)arg1;
 - (double)_minimumRequiredWidthForCellText:(id)arg1 withFont:(id)arg2;
 - (unsigned long long)_rowWithTextField:(id)arg1;
 - (void)_setTableFooterView;
+- (_Bool)_allCellsHavePastedContent;
+- (void)_setCellHasPastedContent:(_Bool)arg1 forRow:(unsigned long long)arg2;
+- (id)_cellHasPastedContent;
 - (void)next:(id)arg1;
 - (void)cancel:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;

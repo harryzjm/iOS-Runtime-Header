@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEORPProblemOptInRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSData *_devicePushToken;
     NSString *_problemId;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _didOptIn;
     struct {
         unsigned int has_didOptIn:1;
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_problemId:1;
         unsigned int read_userCredentials:1;
         unsigned int read_userEmail:1;
-        unsigned int wrote_devicePushToken:1;
-        unsigned int wrote_problemId:1;
-        unsigned int wrote_userCredentials:1;
-        unsigned int wrote_userEmail:1;
-        unsigned int wrote_didOptIn:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,22 +44,23 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *userEmail;
 @property(readonly, nonatomic) _Bool hasUserEmail;
-- (void)_readUserEmail;
 @property(retain, nonatomic) NSData *devicePushToken;
 @property(readonly, nonatomic) _Bool hasDevicePushToken;
-- (void)_readDevicePushToken;
 @property(retain, nonatomic) GEORPUserCredentials *userCredentials;
 @property(readonly, nonatomic) _Bool hasUserCredentials;
-- (void)_readUserCredentials;
 @property(nonatomic) _Bool hasDidOptIn;
 @property(nonatomic) _Bool didOptIn;
 @property(retain, nonatomic) NSString *problemId;
 @property(readonly, nonatomic) _Bool hasProblemId;
-- (void)_readProblemId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithSubmissionID:(id)arg1 allowContactBackAtEmailAddress:(id)arg2 traits:(id)arg3;
 
 @end

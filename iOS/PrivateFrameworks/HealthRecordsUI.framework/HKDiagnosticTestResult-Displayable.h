@@ -15,7 +15,6 @@
 - (void)fetchConceptRoomItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchDetailItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)codings;
-- (id)chartValue;
 - (id)title;
 - (id)chartableCodedQuantitySet;
 @end

@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapItemChildAction, GEOMapItemChildPlace;
+@class GEOMapItemChildAction, GEOMapItemChildPlace, GEOPublisherResult;
 
 @interface GEOMapItemChildItem : NSObject
 {
     long long _childItemType;
     GEOMapItemChildPlace *_childItemPlace;
     GEOMapItemChildAction *_childItemAction;
+    GEOPublisherResult *_publisherResult;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) GEOPublisherResult *publisherResult; // @synthesize publisherResult=_publisherResult;
 @property(retain, nonatomic) GEOMapItemChildAction *childItemAction; // @synthesize childItemAction=_childItemAction;
 @property(retain, nonatomic) GEOMapItemChildPlace *childItemPlace; // @synthesize childItemPlace=_childItemPlace;
 @property(nonatomic) long long childItemType; // @synthesize childItemType=_childItemType;
-- (void).cxx_destruct;
+- (id)initWithPublisherResult:(id)arg1;
 - (id)initWithChildPlace:(id)arg1;
 - (id)initWithChildItem:(id)arg1;
 

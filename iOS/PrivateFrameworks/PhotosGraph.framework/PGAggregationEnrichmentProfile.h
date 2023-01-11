@@ -8,23 +8,25 @@
 
 #import <PhotosGraph/PGEnrichmentProfile-Protocol.h>
 
-@class NSDictionary, NSString, PGDejunkerDeduperOptions, PGManager;
+@class NSDictionary, NSString, PGDejunkerDeduperOptions, PGManager, PLDateRangeTitleGenerator;
 
 @interface PGAggregationEnrichmentProfile : NSObject <PGEnrichmentProfile>
 {
     _Bool _collectsDebugInfo;
     PGManager *_manager;
     PGDejunkerDeduperOptions *_extendedCurationOptions;
+    PLDateRangeTitleGenerator *_dateRangeTitleGenerator;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PLDateRangeTitleGenerator *dateRangeTitleGenerator; // @synthesize dateRangeTitleGenerator=_dateRangeTitleGenerator;
 @property(retain, nonatomic) PGDejunkerDeduperOptions *extendedCurationOptions; // @synthesize extendedCurationOptions=_extendedCurationOptions;
 @property(nonatomic) _Bool collectsDebugInfo; // @synthesize collectsDebugInfo=_collectsDebugInfo;
 @property(readonly, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-- (void).cxx_destruct;
 - (id)curationsWithHighlightTailorContext:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)extendedCurationWithHighlightTailorContext:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)keyAssetWithHighlightTailorContext:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)moodWithHighlightTailorContext:(id)arg1;
+- (unsigned long long)moodWithHighlightTailorContext:(id)arg1 moodGenerationContext:(id)arg2;
 - (double)promotionScoreWithHighlightTailorContext:(id)arg1;
 - (id)momentTitleByMomentUUIDWithHighlightTailorContext:(id)arg1;
 @property(readonly) NSDictionary *debugInfos;

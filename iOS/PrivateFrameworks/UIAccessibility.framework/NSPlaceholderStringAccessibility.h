@@ -10,7 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
+- (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(char *)arg3;
 
 @end
 

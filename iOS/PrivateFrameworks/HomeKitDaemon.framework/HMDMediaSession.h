@@ -13,14 +13,14 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDMediaEndpoint, HMDMediaSessionState, HMFTimer, NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDMediaSession : HMFObject <HMFTimerDelegate, HMDHomeMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding>
 {
+    id <HMFLocking> _lock;
     NSMutableSet *_mediaProfiles;
     _Bool _connected;
     _Bool _currentAccessorySession;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSString *_sessionIdentifier;
     HMDMediaEndpoint *_endpoint;
     HMDMediaSessionState *_state;
@@ -32,9 +32,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (Class)mediaPropertyValueTypeWithMessageKey:(id)arg1;
++ (id)mediaPropertyMessageKeys;
 + (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)sessionForCurrentAccessory:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFTimer *setPlaybackStateTimer; // @synthesize setPlaybackStateTimer=_setPlaybackStateTimer;
 @property(retain, nonatomic) NSMutableArray *setPlaybackStateCompletionHandlers; // @synthesize setPlaybackStateCompletionHandlers=_setPlaybackStateCompletionHandlers;
 @property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -45,8 +48,6 @@
 @property(retain, nonatomic) HMDMediaSessionState *state; // @synthesize state=_state;
 @property(retain, nonatomic) HMDMediaEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(readonly, copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -68,8 +69,8 @@
 - (void)_queueSetPlaybackStateCompletion:(CDUnknownBlockType)arg1;
 - (void)_invokePendingSetPlaybackStateBlocksOfError:(id)arg1;
 - (void)updateWithResponses:(id)arg1 message:(id)arg2;
-- (void)_postNotificationOfPlaybackStateUpdateWithPayload:(id)arg1;
-- (void)_postNotificationOfPlaybackStateUpdateWithError:(id)arg1 inResponseToMessage:(id)arg2;
+- (void)_postNotificationOfMediaStateUpdateWithPayload:(id)arg1;
+- (void)_postNotificationOfMediaStateUpdateWithError:(id)arg1 inResponseToMessage:(id)arg2;
 - (void)_registerForSessionUpdates:(_Bool)arg1;
 - (void)evaluateIfMediaPlaybackStateChanged:(id)arg1;
 - (void)handleMediaPlaybackStateNotification:(id)arg1;

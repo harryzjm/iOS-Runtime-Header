@@ -17,14 +17,14 @@
     MKMapItem *_mapItem;
     MKSearchFoundationRichText *_secondLineDisplayedText;
     NSArray *_descriptions;
-    MKSearchFoundationRichText *_thirdLineDisplayedText;
+    MKSearchFoundationBusinessHoursAndDistanceRichText *_thirdLineDisplayedText;
     unsigned long long _iconSize;
     unsigned long long _mksfResultType;
     NSBundle *_bundle;
     NSString *_bundleID;
     MKLocationManager *_locationManager;
-    MKSearchFoundationBusinessHoursAndDistanceRichText *_fourthLineDisplayedText;
-    NSMutableArray *_fourthLineText;
+    MKSearchFoundationRichText *_fourthLineDisplayedText;
+    NSMutableArray *_thirdLineText;
     id _attributionObserver;
     SFText *_title;
     SFImage *_thumbnail;
@@ -32,6 +32,7 @@
 }
 
 + (id)styledStringFromStringArray:(id)arg1;
+- (void).cxx_destruct;
 - (void)setAction:(id)arg1;
 - (id)action;
 - (void)setThumbnail:(id)arg1;
@@ -40,20 +41,19 @@
 - (id)title;
 @property(retain, nonatomic) id attributionObserver; // @synthesize attributionObserver=_attributionObserver;
 @property(nonatomic) _Bool optionSmallerScreen; // @synthesize optionSmallerScreen=_optionSmallerScreen;
-@property(retain, nonatomic) NSMutableArray *fourthLineText; // @synthesize fourthLineText=_fourthLineText;
-@property(retain, nonatomic) MKSearchFoundationBusinessHoursAndDistanceRichText *fourthLineDisplayedText; // @synthesize fourthLineDisplayedText=_fourthLineDisplayedText;
+@property(retain, nonatomic) NSMutableArray *thirdLineText; // @synthesize thirdLineText=_thirdLineText;
+@property(retain, nonatomic) MKSearchFoundationRichText *fourthLineDisplayedText; // @synthesize fourthLineDisplayedText=_fourthLineDisplayedText;
 @property(retain, nonatomic) MKLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property(nonatomic) unsigned long long mksfResultType; // @synthesize mksfResultType=_mksfResultType;
 @property(nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
-@property(retain, nonatomic) MKSearchFoundationRichText *thirdLineDisplayedText; // @synthesize thirdLineDisplayedText=_thirdLineDisplayedText;
+@property(retain, nonatomic) MKSearchFoundationBusinessHoursAndDistanceRichText *thirdLineDisplayedText; // @synthesize thirdLineDisplayedText=_thirdLineDisplayedText;
 - (void)setDescriptions:(id)arg1;
 - (id)descriptions;
 @property(retain, nonatomic) MKSearchFoundationRichText *secondLineDisplayedText; // @synthesize secondLineDisplayedText=_secondLineDisplayedText;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(retain, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
-- (void).cxx_destruct;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
@@ -66,10 +66,10 @@
 - (_Bool)_isSmallerScreen;
 - (id)_businessHoursAndDistance;
 - (id)_brandURL;
-- (id)_localizedMessageBusinessHours;
 - (id)_businessCategory;
 - (id)_businessAddress;
-- (id)_businessPriceAndReviewText;
+- (id)_businessReviewText;
+- (id)_appleRatingsDescription;
 - (id)_defaultRichTextItems;
 - (void)_commonInit;
 - (void)dealloc;

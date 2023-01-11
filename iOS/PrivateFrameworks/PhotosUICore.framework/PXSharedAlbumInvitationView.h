@@ -22,6 +22,7 @@
     UIImageView *_avatarView;
     UILabel *_infoLabel;
     UILabel *_albumTitleLabel;
+    UILabel *_subscriberInfoLabel;
     PXCapsuleButton *_acceptButton;
     PXCapsuleButton *_declineButton;
     UILabel *_reportJunkLabel;
@@ -30,10 +31,12 @@
 }
 
 + (void)preloadResources;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <PLCloudSharedAlbumProtocol> sharedAlbum; // @synthesize sharedAlbum=_sharedAlbum;
 @property(retain, nonatomic) UILabel *reportJunkLabel; // @synthesize reportJunkLabel=_reportJunkLabel;
 @property(retain, nonatomic) PXCapsuleButton *declineButton; // @synthesize declineButton=_declineButton;
 @property(retain, nonatomic) PXCapsuleButton *acceptButton; // @synthesize acceptButton=_acceptButton;
+@property(retain, nonatomic) UILabel *subscriberInfoLabel; // @synthesize subscriberInfoLabel=_subscriberInfoLabel;
 @property(retain, nonatomic) UILabel *albumTitleLabel; // @synthesize albumTitleLabel=_albumTitleLabel;
 @property(retain, nonatomic) UILabel *infoLabel; // @synthesize infoLabel=_infoLabel;
 @property(retain, nonatomic) UIImageView *avatarView; // @synthesize avatarView=_avatarView;
@@ -44,7 +47,6 @@
 @property(nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property(retain, nonatomic) PXFeedInvitationSectionInfo *invitationSectionInfo; // @synthesize invitationSectionInfo=_invitationSectionInfo;
 @property(nonatomic) __weak id <PXSharedAlbumInvitationViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_reportJunkLabelTapped:(id)arg1;
 - (void)_reportJunk;
 - (void)_declineButtonTapped:(id)arg1;
@@ -52,9 +54,9 @@
 - (void)_presentToastWithTitle:(id)arg1;
 - (void)_enableUserInteractions:(_Bool)arg1;
 - (void)_showOutOfNetworkInvitationMessageForSharedAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_openiCloudSettings;
 - (id)_actionButtonWithTitle:(id)arg1 action:(SEL)arg2 buttonColor:(id)arg3 titleColor:(id)arg4;
 - (void)_updateReportJunkLabel;
+- (void)_updateSubscriberInfoLabel;
 - (void)_updateAlbumTitleLabel;
 - (void)_updateInfoLabel;
 - (void)_handlePersonImage:(id)arg1 imageTag:(unsigned long long)arg2;

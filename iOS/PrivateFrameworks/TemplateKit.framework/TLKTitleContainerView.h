@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKImageView, TLKLabel;
+@class TLKImageView, TLKLabel, TLKRichTextField;
 
 @interface TLKTitleContainerView
 {
-    TLKLabel *_titleLabel;
+    TLKRichTextField *_titleField;
     TLKLabel *_secondaryLabel;
     TLKImageView *_secondaryImageView;
 }
 
-+ (id)titleFont;
-+ (id)titleFontforTitle:(id)arg1;
++ (_Bool)hasNonBoldFormattingInRichText:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKImageView *secondaryImageView; // @synthesize secondaryImageView=_secondaryImageView;
 @property(retain, nonatomic) TLKLabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
-@property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
+@property(retain, nonatomic) TLKRichTextField *titleField; // @synthesize titleField=_titleField;
+- (id)titleLabel;
 - (id)secondaryTitleLabelString;
 - (id)titleLabelString;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
-- (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(_Bool)arg4;
+- (id)titleFont;
+- (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(_Bool)arg4 useCompactMode:(_Bool)arg5 truncateMiddle:(_Bool)arg6;
 - (id)init;
 
 @end

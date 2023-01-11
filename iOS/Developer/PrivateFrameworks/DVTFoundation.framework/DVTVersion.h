@@ -19,14 +19,15 @@
 
 + (id)userRepresentationOfVersion:(id)arg1 build:(id)arg2;
 + (id)currentDarwinVersion;
++ (id)currentiOSSupportSystemVersion;
 + (id)currentSystemVersion;
 + (id)versionWithStringValue:(id)arg1;
 + (id)versionWithStringValue:(id)arg1 buildNumber:(id)arg2;
 + (id)versionWithMajorComponent:(unsigned long long)arg1 minorComponent:(unsigned long long)arg2 updateComponent:(unsigned long long)arg3;
 + (id)versionWithAvailabilityForm:(unsigned long long)arg1;
 + (void)initialize;
-@property(readonly, copy) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
 - (unsigned long long)availabilityFormIncludingUpdate:(_Bool)arg1 shortForm:(_Bool)arg2;
 - (unsigned long long)availabilityFormIncludingUpdate:(_Bool)arg1;
 - (id)initWithString:(id)arg1;

@@ -7,8 +7,10 @@
 #import <TextInput/TIAutocorrectionList.h>
 
 @interface TIAutocorrectionList (UIKeyboardAdditions)
+@property(readonly, nonatomic) _Bool notEmpty;
 @property(readonly, nonatomic) _Bool containsContinuousPathConversions;
 @property(readonly, nonatomic) _Bool containsAutofillCandidates;
+- (long long)sourceForAutocorrection;
 - (void)updateLabelsWithSmartPunctuation:(id)arg1;
 @end
 

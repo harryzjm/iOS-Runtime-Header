@@ -6,23 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <FontServices/FontServicesClientProtocol-Protocol.h>
+
 @class NSXPCConnection;
 
-@interface FontServicesDaemonManager : NSObject
+@interface FontServicesDaemonManager : NSObject <FontServicesClientProtocol>
 {
     NSXPCConnection *_connection;
 }
 
 + (id)sharedManager;
-@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+- (void)scheduleFontFilesDeletion:(id)arg1;
+- (void)synchronizeFontAssets:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)checkinForWebKitProcess:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)resetIssuedFontsFor:(id)arg1;
+- (void)updatingUserFonts:(CDUnknownBlockType)arg1;
 - (void)resumeAndShowAlertForSuspendedFontProviders;
 - (void)fontChanged:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestFonts:(id)arg1 forClient:(id)arg2;
 - (void)requestFonts:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)requestFileAccess:(id)arg1;
 - (void)checkinForFontPicker:(CDUnknownBlockType)arg1;
 - (void)checkin:(CDUnknownBlockType)arg1;
+- (void)fontAddedInfo:(id)arg1 addedURLStrings:(id)arg2 removedURLStrings:(id)arg3;
 
 @end
 

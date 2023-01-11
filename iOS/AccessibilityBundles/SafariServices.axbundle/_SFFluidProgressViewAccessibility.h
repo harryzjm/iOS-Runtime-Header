@@ -12,9 +12,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)fluidProgressController:(id)arg1 setProgressToCurrentPosition:(id)arg2;
+- (void)_axHandleProgressComplete;
 - (void)fluidProgressControllerFinishProgressBar:(id)arg1 animateFillFade:(_Bool)arg2;
 - (void)fluidProgressController:(id)arg1 startFluidProgressBar:(id)arg2 animateFillFade:(_Bool)arg3;
+- (void)_axHandleProgressStart:(id)arg1;
+- (void)_axCheckProgress;
 - (void)fluidProgressController:(id)arg1 updateFluidProgressBar:(id)arg2;
+- (void)_axSetProgressTimer:(id)arg1;
+- (id)_axProgressTimer;
 
 @end
 

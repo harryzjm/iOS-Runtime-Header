@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPrintFormatter.h>
+#import <objc/NSObject.h>
 
-@class WFPDFDocument;
+#import <ContentKit/NSCopying-Protocol.h>
+
+@class UIPrintFormatter, WFPDFDocument;
 
 __attribute__((visibility("hidden")))
-@interface WFPDFPrintFormatter : UIPrintFormatter
+@interface WFPDFPrintFormatter : NSObject <NSCopying>
 {
+    UIPrintFormatter *_printFormatter;
     WFPDFDocument *_document;
 }
 
-@property(readonly, nonatomic) WFPDFDocument *document; // @synthesize document=_document;
 - (void).cxx_destruct;
-- (long long)pageCount;
-- (void)drawInRect:(struct CGRect)arg1 forPageAtIndex:(long long)arg2;
-- (struct CGRect)rectForPageAtIndex:(long long)arg1;
-- (int)pdfBox;
+@property(readonly, nonatomic) WFPDFDocument *document; // @synthesize document=_document;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithFileRepresentation:(id)arg1;
+@property(readonly, nonatomic) UIPrintFormatter *printFormatter; // @synthesize printFormatter=_printFormatter;
 - (id)initWithPDFDocument:(id)arg1;
+- (id)initWithFileRepresentation:(id)arg1;
 
 @end
 

@@ -14,8 +14,12 @@
     struct UIEdgeInsets _containerInsets;
 }
 
-@property(readonly, nonatomic) struct UIEdgeInsets containerInsets; // @synthesize containerInsets=_containerInsets;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct UIEdgeInsets containerInsets; // @synthesize containerInsets=_containerInsets;
+- (_Bool)supportsAspectRatioToggle;
+- (long long)initialZoomStep;
+- (long long)numberOfZoomStepsWithDataSource:(id)arg1;
+- (struct CGSize)estimatedSizeOfSectionForAssetCollection:(id)arg1 isCurated:(_Bool)arg2 numberOfAssets:(long long)arg3 referenceSize:(struct CGSize)arg4;
 - (struct CGRect)containerFrameForAssetSectionLayout:(id)arg1;
 - (void)configureAssetSectionLayout:(id)arg1;
 - (id)updatedHeaderLayout:(id)arg1 withHeaderStyle:(long long)arg2 forAssetSectionLayout:(id)arg3;

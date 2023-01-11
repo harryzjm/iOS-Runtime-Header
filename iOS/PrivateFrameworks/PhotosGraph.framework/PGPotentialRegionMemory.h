@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSMutableSet, NSString, PGGraphNode;
+@class NSArray, NSDate, NSMutableSet, NSString, PGGraphROINode;
 
 @interface PGPotentialRegionMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    PGGraphNode *_regionNode;
+    PGGraphROINode *_regionNode;
     long long _year;
-    NSArray *_scenedAssets;
+    NSArray *_scenedAssetLocalIdentifiers;
     NSDate *_startDate;
     NSDate *_endDate;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain) NSDate *startDate; // @synthesize startDate=_startDate;
-@property(retain) NSArray *scenedAssets; // @synthesize scenedAssets=_scenedAssets;
+@property(retain) NSArray *scenedAssetLocalIdentifiers; // @synthesize scenedAssetLocalIdentifiers=_scenedAssetLocalIdentifiers;
 @property(readonly) long long year; // @synthesize year=_year;
-@property(readonly) PGGraphNode *regionNode; // @synthesize regionNode=_regionNode;
-- (void).cxx_destruct;
+@property(readonly) PGGraphROINode *regionNode; // @synthesize regionNode=_regionNode;
 @property(readonly) NSString *region;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithRegionNode:(id)arg1 year:(long long)arg2;

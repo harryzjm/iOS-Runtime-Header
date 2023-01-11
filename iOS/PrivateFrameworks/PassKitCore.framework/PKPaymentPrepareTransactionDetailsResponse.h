@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDecimalNumber, NSString;
+@class NSDecimalNumber, NSDictionary, NSString;
 
 @interface PKPaymentPrepareTransactionDetailsResponse
 {
     NSDecimalNumber *_amount;
     NSString *_secureElementIdentifier;
-    NSData *_instructions;
-    NSData *_signature;
+    NSDictionary *_instructionsDictionary;
 }
 
-@property(readonly, nonatomic) NSData *signature; // @synthesize signature=_signature;
-@property(readonly, nonatomic) NSData *instructions; // @synthesize instructions=_instructions;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *instructionsDictionary; // @synthesize instructionsDictionary=_instructionsDictionary;
 @property(readonly, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 @property(readonly, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
-- (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 
 @end

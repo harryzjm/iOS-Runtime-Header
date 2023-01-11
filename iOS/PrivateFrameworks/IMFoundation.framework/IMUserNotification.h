@@ -15,11 +15,13 @@
 
 + (id)userNotificationWithIdentifier:(id)arg1 title:(id)arg2 message:(id)arg3 defaultButton:(id)arg4 alternateButton:(id)arg5 otherButton:(id)arg6;
 + (id)userNotificationWithIdentifier:(id)arg1 timeout:(double)arg2 alertLevel:(unsigned long long)arg3 displayFlags:(unsigned long long)arg4 displayInformation:(id)arg5;
+- (void).cxx_destruct;
 - (void)_setResponseFlags:(unsigned long long)arg1 responseInformation:(id)arg2;
 @property(readonly, retain, nonatomic) NSDictionary *responseInformation;
 @property(readonly, nonatomic) unsigned long long responseFlags;
 @property(retain, nonatomic) NSDictionary *userInfo;
 @property(nonatomic) _Bool usesNotificationCenter;
+@property(nonatomic) _Bool requireUserInteraction;
 @property(nonatomic) _Bool showInLockScreen;
 @property(retain, nonatomic) NSString *representedApplicationBundle;
 @property(readonly, nonatomic) unsigned long long response;
@@ -27,7 +29,6 @@
 @property(readonly, nonatomic) unsigned long long displayFlags;
 @property(readonly, nonatomic) double timeout;
 @property(readonly, retain, nonatomic) id identifier;
-- (void)dealloc;
 - (id)_initWithIdentifier:(id)arg1 timeout:(double)arg2 displayFlags:(unsigned long long)arg3 displayInformation:(id)arg4;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/FASetupDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSOperationQueue, NSString, SSAccount, UIViewController;
+@class ACAccount, ACAccountStore, NSOperationQueue, NSString, UIViewController;
 @protocol FAFamilySetupPrompterDelegate;
 
 @interface FAFamilySetupPrompter : NSObject <FASetupDelegate>
@@ -16,20 +16,19 @@
     ACAccountStore *_accountStore;
     ACAccount *_appleAccount;
     ACAccount *_grandSlamAccount;
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
     UIViewController *_presentingViewController;
     NSOperationQueue *_networkingQueue;
     _Bool _isRequestInFlight;
     id <FAFamilySetupPrompterDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <FAFamilySetupPrompterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <FAFamilySetupPrompterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)familySetupViewController:(id)arg1 didCompleteWithSuccess:(_Bool)arg2;
 - (void)_startFamilySetupFlowWithEligibilityResponse:(id)arg1;
 - (void)_goToFamilySetup;
 - (void)_goToInvitations;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)_showUnderageAlertWithEligibilityResponse:(id)arg1;
 - (void)_showPendingInvitesDialog;
 - (void)_showConfirmationForStartingFamilySetupWithPendingInvite;

@@ -10,24 +10,17 @@
 #import <SensorKitUI/UITableViewDelegatePrivate-Protocol.h>
 
 @class NSArray, NSBundle, NSMutableDictionary, NSString;
-@protocol SRAuthorizationTableDelegate;
 
 @interface SRAuthorizationCategoryGroupViewController : UITableViewController <SRAuthorizationCellDelegate, UITableViewDelegatePrivate>
 {
     NSBundle *_appBundle;
     NSMutableDictionary *_authState;
-    id <SRAuthorizationTableDelegate> _delegate;
-    NSArray *_commonUIs;
     NSArray *_allKeys;
 }
 
 @property(retain, nonatomic) NSArray *allKeys; // @synthesize allKeys=_allKeys;
-@property(retain, nonatomic) NSArray *commonUIs; // @synthesize commonUIs=_commonUIs;
-@property(nonatomic) __weak id <SRAuthorizationTableDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSMutableDictionary *authState; // @synthesize authState=_authState;
 @property(retain, nonatomic) NSBundle *appBundle; // @synthesize appBundle=_appBundle;
-- (void).cxx_destruct;
-- (void)dismissViewController;
 - (void)openPrivacy;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)confirmAuthChangeForService:(id)arg1 value:(_Bool)arg2;

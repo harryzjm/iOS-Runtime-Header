@@ -8,16 +8,15 @@
 
 @class NSSet;
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentModifiedUpNextEvent <NSCopying>
 {
     NSSet *_addedCanonicalIDs;
     NSSet *_removedCanonicalIDs;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *removedCanonicalIDs; // @synthesize removedCanonicalIDs=_removedCanonicalIDs;
 @property(copy, nonatomic) NSSet *addedCanonicalIDs; // @synthesize addedCanonicalIDs=_addedCanonicalIDs;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

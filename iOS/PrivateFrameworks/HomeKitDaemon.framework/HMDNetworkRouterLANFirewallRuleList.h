@@ -6,29 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface HMDNetworkRouterLANFirewallRuleList : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterLANFirewallRuleList : NSObject <NSCopying, HAPTLVProtocol>
 {
-    NSMutableArray *_multicastBridgingRule;
-    NSMutableArray *_staticPortRule;
-    NSMutableArray *_dynamicPortRule;
+    NSMutableArray *_multicastBridgingRules;
+    NSMutableArray *_staticPortRules;
+    NSMutableArray *_dynamicPortRules;
+    NSMutableArray *_staticICMPRules;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) NSMutableArray *dynamicPortRule; // @synthesize dynamicPortRule=_dynamicPortRule;
-@property(retain, nonatomic) NSMutableArray *staticPortRule; // @synthesize staticPortRule=_staticPortRule;
-@property(retain, nonatomic) NSMutableArray *multicastBridgingRule; // @synthesize multicastBridgingRule=_multicastBridgingRule;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *staticICMPRules; // @synthesize staticICMPRules=_staticICMPRules;
+@property(retain, nonatomic) NSMutableArray *dynamicPortRules; // @synthesize dynamicPortRules=_dynamicPortRules;
+@property(retain, nonatomic) NSMutableArray *staticPortRules; // @synthesize staticPortRules=_staticPortRules;
+@property(retain, nonatomic) NSMutableArray *multicastBridgingRules; // @synthesize multicastBridgingRules=_multicastBridgingRules;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithError:(id *)arg1;
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
-- (id)initWithMulticastBridgingRule:(id)arg1 staticPortRule:(id)arg2 dynamicPortRule:(id)arg3;
+- (id)initWithMulticastBridgingRules:(id)arg1 staticPortRules:(id)arg2 dynamicPortRules:(id)arg3 staticICMPRules:(id)arg4;
 - (id)init;
 
 // Remaining properties

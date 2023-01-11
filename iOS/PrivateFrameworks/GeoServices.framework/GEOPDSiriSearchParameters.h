@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSiriSearchParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOAddress *_address;
     NSMutableArray *_businessCategoryFilters;
@@ -23,6 +22,9 @@ __attribute__((visibility("hidden")))
     NSString *_searchString;
     NSMutableArray *_searchSubstringDescriptors;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _maxResultCount;
     int _sortOrder;
     _Bool _isStrictMapRegion;
@@ -40,18 +42,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_searchString:1;
         unsigned int read_searchSubstringDescriptors:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_businessCategoryFilters:1;
-        unsigned int wrote_indexFilter:1;
-        unsigned int wrote_recentRouteInfo:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_searchSubstringDescriptors:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResultCount:1;
-        unsigned int wrote_sortOrder:1;
-        unsigned int wrote_isStrictMapRegion:1;
-        unsigned int wrote_structuredSearch:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -69,47 +60,43 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo;
 @property(readonly, nonatomic) _Bool hasRecentRouteInfo;
-- (void)_readRecentRouteInfo;
 @property(retain, nonatomic) GEOPDIndexQueryNode *indexFilter;
 @property(readonly, nonatomic) _Bool hasIndexFilter;
-- (void)_readIndexFilter;
 - (id)searchSubstringDescriptorAtIndex:(unsigned long long)arg1;
 - (unsigned long long)searchSubstringDescriptorsCount;
-- (void)_addNoFlagsSearchSubstringDescriptor:(id)arg1;
 - (void)addSearchSubstringDescriptor:(id)arg1;
 - (void)clearSearchSubstringDescriptors;
 @property(retain, nonatomic) NSMutableArray *searchSubstringDescriptors;
-- (void)_readSearchSubstringDescriptors;
 @property(nonatomic) _Bool hasStructuredSearch;
 @property(nonatomic) _Bool structuredSearch;
 @property(nonatomic) _Bool hasIsStrictMapRegion;
 @property(nonatomic) _Bool isStrictMapRegion;
 - (id)businessCategoryFilterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)businessCategoryFiltersCount;
-- (void)_addNoFlagsBusinessCategoryFilter:(id)arg1;
 - (void)addBusinessCategoryFilter:(id)arg1;
 - (void)clearBusinessCategoryFilters;
 @property(retain, nonatomic) NSMutableArray *businessCategoryFilters;
-- (void)_readBusinessCategoryFilters;
 @property(retain, nonatomic) GEOAddress *address;
 @property(readonly, nonatomic) _Bool hasAddress;
-- (void)_readAddress;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(retain, nonatomic) NSString *searchString;
 @property(readonly, nonatomic) _Bool hasSearchString;
-- (void)_readSearchString;
 @property(nonatomic) _Bool hasMaxResultCount;
 @property(nonatomic) unsigned int maxResultCount;
 - (int)StringAsSortOrder:(id)arg1;
 - (id)sortOrderAsString:(int)arg1;
 @property(nonatomic) _Bool hasSortOrder;
 @property(nonatomic) int sortOrder;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

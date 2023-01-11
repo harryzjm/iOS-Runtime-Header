@@ -8,8 +8,8 @@
 {
 }
 
-+ (id)_firstAssetInCollection:(id)arg1;
-+ (id)_assetForResourceDirectoryForDevice:(id)arg1;
+- (id)_fetchAlbumName;
+- (id)_fetchSingleAsset;
 
 @end
 

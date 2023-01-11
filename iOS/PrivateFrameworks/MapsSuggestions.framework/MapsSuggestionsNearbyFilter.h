@@ -13,7 +13,6 @@
 }
 
 + (_Bool)isEnabled;
-- (id)_locationOfEntry:(id)arg1;
 - (_Bool)shouldKeepEntry:(id)arg1;
 
 // Remaining properties

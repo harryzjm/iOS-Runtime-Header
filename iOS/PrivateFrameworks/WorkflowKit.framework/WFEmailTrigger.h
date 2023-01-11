@@ -8,26 +8,29 @@
 
 @interface WFEmailTrigger
 {
-    NSString *_selectedAccount;
+    NSArray *_selectedAccountIdentifiers;
+    NSArray *_selectedAccountDescriptions;
     NSString *_selectedSubject;
     NSArray *_selectedRecipients;
     NSArray *_selectedSenders;
-    unsigned long long _attachmentConfiguration;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
-@property(nonatomic) unsigned long long attachmentConfiguration; // @synthesize attachmentConfiguration=_attachmentConfiguration;
++ (_Bool)isAllowedToRunAutomatically;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *selectedSenders; // @synthesize selectedSenders=_selectedSenders;
 @property(retain, nonatomic) NSArray *selectedRecipients; // @synthesize selectedRecipients=_selectedRecipients;
 @property(retain, nonatomic) NSString *selectedSubject; // @synthesize selectedSubject=_selectedSubject;
-@property(retain, nonatomic) NSString *selectedAccount; // @synthesize selectedAccount=_selectedAccount;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *selectedAccountDescriptions; // @synthesize selectedAccountDescriptions=_selectedAccountDescriptions;
+@property(retain, nonatomic) NSArray *selectedAccountIdentifiers; // @synthesize selectedAccountIdentifiers=_selectedAccountIdentifiers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
+- (id)localizedDescriptionWithConfigurationSummaryWithCount:(unsigned long long)arg1;
+- (id)localizedDescriptionWithConfigurationSummary;
 - (_Bool)hasValidConfiguration;
 
 @end

@@ -12,6 +12,7 @@
     HDDataProvenanceCache *_dataProvenanceCache;
     CDUnknownBlockType _metadataKeyFilter;
     _Bool _includeAutomaticTimeZones;
+    _Bool _includeContributorInformation;
 }
 
 - (void).cxx_destruct;
@@ -21,7 +22,7 @@
 - (id)objectForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 error:(id *)arg3;
 - (id)codableRepresentationForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 error:(id *)arg3;
 - (id)orderedProperties;
-- (id)initWithHealthEntityClass:(Class)arg1 profile:(id)arg2 database:(id)arg3 purpose:(long long)arg4 encodingOptions:(id)arg5 authorizationFilter:(CDUnknownBlockType)arg6;
+- (id)initWithHealthEntityClass:(Class)arg1 profile:(id)arg2 transaction:(id)arg3 purpose:(long long)arg4 encodingOptions:(id)arg5 authorizationFilter:(CDUnknownBlockType)arg6;
 
 @end
 

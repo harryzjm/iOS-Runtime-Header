@@ -10,8 +10,7 @@
 
 @protocol NSTextStorageController <NSObject>
 @property(retain) NSTextStorage *textStorage;
-- (void)endEditingTransaction;
-- (void)beginEditingTransaction;
+- (void)performEditingTransactionForTextStorage:(NSTextStorage *)arg1 withBlock:(void (^)(void))arg2;
 - (void)processEditingForTextStorage:(NSTextStorage *)arg1 edited:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4 invalidatedRange:(struct _NSRange)arg5;
 @end
 

@@ -9,10 +9,12 @@
 @interface QLCacheBasicFileIdentifier <NSSecureCoding>
 {
     unsigned long long _fileId;
+    struct fsid _fsid;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)versionedFileIdentifierClass;
+@property(readonly) struct fsid fsid; // @synthesize fsid=_fsid;
 @property(readonly) unsigned long long fileId; // @synthesize fileId=_fileId;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -21,7 +23,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithFileId:(unsigned long long)arg1;
+- (id)initWithFileId:(unsigned long long)arg1 fsid:(struct fsid)arg2;
 
 @end
 

@@ -24,12 +24,11 @@ __attribute__((visibility("hidden")))
 - (id)maskForSliceIndex:(long long)arg1;
 - (id)imageForSliceIndex:(long long)arg1;
 - (struct CGSize)unslicedSize;
-- (id)rawData;
 - (struct CGImage *)unslicedImage;
 - (int)pixelFormat;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)dealloc;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 
 @end
 

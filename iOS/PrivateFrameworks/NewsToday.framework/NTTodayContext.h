@@ -16,7 +16,6 @@
 {
     CDUnknownBlockType _newResultsHandler;
     id <FCContentContext> _contentContext;
-    CDUnknownBlockType _sessionProvider;
     id <NTReadablePrivateDataStorage> _readablePrivateDataStorage;
     id <NTWritablePrivateDataStorage> _writablePrivateDataStorage;
     NTSourceAvailabilityManager *_sourceAvailabilityManager;
@@ -25,23 +24,24 @@
     FCAsyncSerialQueue *_fetchQueue;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FCAsyncSerialQueue *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property(retain, nonatomic) id <NTTodayResultsSource> todayResultsSource; // @synthesize todayResultsSource=_todayResultsSource;
 @property(retain, nonatomic) NTSourceAvailabilityManager *sourceAvailabilityManager; // @synthesize sourceAvailabilityManager=_sourceAvailabilityManager;
 @property(retain, nonatomic) id <NTWritablePrivateDataStorage> writablePrivateDataStorage; // @synthesize writablePrivateDataStorage=_writablePrivateDataStorage;
 @property(retain, nonatomic) id <NTReadablePrivateDataStorage> readablePrivateDataStorage; // @synthesize readablePrivateDataStorage=_readablePrivateDataStorage;
-@property(copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;
 @property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property(copy, nonatomic) CDUnknownBlockType newResultsHandler; // @synthesize newResultsHandler=_newResultsHandler;
-- (void).cxx_destruct;
 - (void)_setupTodayResultsSource;
 - (void)userDidReadHeadlineWithAnalyticsElement:(id)arg1 atDate:(id)arg2;
 - (void)userDidSeeHeadlinesWithAnalyticsElements:(id)arg1 atDate:(id)arg2;
+- (id)placeholderResultsWithOperationInfo:(id)arg1;
 - (void)fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchModuleDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)networkReachabilityDidChange:(id)arg1;
-- (id)initWithContentHostDirectory:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4 sessionProvider:(CDUnknownBlockType)arg5;
-- (id)initWithContentContext:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4 sessionProvider:(CDUnknownBlockType)arg5;
+- (id)initWithContentHostDirectory:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4;
+- (id)initWithContentContext:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4;
 - (id)init;
 
 // Remaining properties

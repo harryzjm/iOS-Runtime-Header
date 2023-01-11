@@ -14,10 +14,13 @@
 @interface CPManeuver : NSObject <NSCopying, NSSecureCoding>
 {
     CPImageSet *_symbolSet;
-    UIImage *_junctionImage;
     NSArray *_instructionVariants;
     CPTravelEstimates *_initialTravelEstimates;
     NSArray *_attributedInstructionVariants;
+    NSArray *_dashboardInstructionVariants;
+    NSArray *_dashboardAttributedInstructionVariants;
+    NSArray *_notificationInstructionVariants;
+    NSArray *_notificationAttributedInstructionVariants;
     id _userInfo;
     NSUUID *_identifier;
     unsigned long long _maneuverType;
@@ -27,12 +30,21 @@
     NSMeasurement *_junctionExitAngle;
     NSSet *_junctionElementAngles;
     long long _displayStyle;
+    CPImageSet *_junctionImageSet;
+    CPImageSet *_dashboardSymbolImageSet;
+    CPImageSet *_dashboardJunctionImageSet;
+    CPImageSet *_notificationSymbolImageSet;
 }
 
 + (id)_descriptionForJunctionType:(unsigned long long)arg1;
 + (id)_descriptionForTrafficSide:(unsigned long long)arg1;
 + (id)_descriptionForManeuverType:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CPImageSet *notificationSymbolImageSet; // @synthesize notificationSymbolImageSet=_notificationSymbolImageSet;
+@property(retain, nonatomic) CPImageSet *dashboardJunctionImageSet; // @synthesize dashboardJunctionImageSet=_dashboardJunctionImageSet;
+@property(retain, nonatomic) CPImageSet *dashboardSymbolImageSet; // @synthesize dashboardSymbolImageSet=_dashboardSymbolImageSet;
+@property(retain, nonatomic) CPImageSet *junctionImageSet; // @synthesize junctionImageSet=_junctionImageSet;
 @property(nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property(copy, nonatomic) NSSet *junctionElementAngles; // @synthesize junctionElementAngles=_junctionElementAngles;
 @property(copy, nonatomic) NSMeasurement *junctionExitAngle; // @synthesize junctionExitAngle=_junctionExitAngle;
@@ -42,12 +54,19 @@
 @property(nonatomic) unsigned long long maneuverType; // @synthesize maneuverType=_maneuverType;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
+@property(copy, nonatomic) NSArray *notificationAttributedInstructionVariants; // @synthesize notificationAttributedInstructionVariants=_notificationAttributedInstructionVariants;
+@property(copy, nonatomic) NSArray *notificationInstructionVariants; // @synthesize notificationInstructionVariants=_notificationInstructionVariants;
+@property(copy, nonatomic) NSArray *dashboardAttributedInstructionVariants; // @synthesize dashboardAttributedInstructionVariants=_dashboardAttributedInstructionVariants;
+@property(copy, nonatomic) NSArray *dashboardInstructionVariants; // @synthesize dashboardInstructionVariants=_dashboardInstructionVariants;
 @property(copy, nonatomic) NSArray *attributedInstructionVariants; // @synthesize attributedInstructionVariants=_attributedInstructionVariants;
 @property(retain, nonatomic) CPTravelEstimates *initialTravelEstimates; // @synthesize initialTravelEstimates=_initialTravelEstimates;
 @property(copy, nonatomic) NSArray *instructionVariants; // @synthesize instructionVariants=_instructionVariants;
-@property(retain, nonatomic) UIImage *junctionImage; // @synthesize junctionImage=_junctionImage;
 @property(retain, nonatomic) CPImageSet *symbolSet; // @synthesize symbolSet=_symbolSet;
-- (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
+@property(retain, nonatomic) UIImage *notificationSymbolImage;
+@property(retain, nonatomic) UIImage *dashboardJunctionImage;
+@property(retain, nonatomic) UIImage *dashboardSymbolImage;
+@property(retain, nonatomic) UIImage *junctionImage;
 @property(retain, nonatomic) UIImage *symbolImage;
 - (id)description;
 @property(readonly) NSArray *stringInstructionVariants;

@@ -8,11 +8,11 @@
 
 #import <PassKitUI/PKAccountServiceObserver-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSDictionary, NSString, PKAccount, PKBalanceSummary, PKBalanceSummaryFetcher, PKCreditAccountStatement, PKCreditAccountSummary, PKDashboardBalanceItem, PKDashboardBalancePresenter, PKDashboardBalanceSummaryItem, PKDashboardBalanceSummaryItemPresenter, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKDashboardTransactionFetcher, PKPaymentPass, PKPaymentWebService;
+@class NSArray, NSDateFormatter, NSDictionary, NSString, PKAccount, PKBalanceSummary, PKBalanceSummaryFetcher, PKCreditAccountStatement, PKCreditAccountSummary, PKDashboardBalanceItem, PKDashboardBalancePresenter, PKDashboardBalanceSummaryItem, PKDashboardBalanceSummaryItemPresenter, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKDashboardTransactionFetcher, PKPaymentWebService, PKTransactionSource;
 
 @interface PKCreditBalanceDetailsViewController : UICollectionViewController <PKAccountServiceObserver>
 {
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
     unsigned long long _feature;
     PKCreditAccountStatement *_statement;
@@ -31,22 +31,30 @@
     PKDashboardBalanceSummaryItem *_paymentsSummaryItem;
     PKDashboardBalanceSummaryItem *_creditsSummaryItem;
     PKDashboardBalanceSummaryItem *_dailyCashSummaryItem;
+    PKDashboardBalanceSummaryItem *_installmentBalanceSummaryItem;
+    PKDashboardBalanceSummaryItem *_creditLimitSummaryItem;
+    PKDashboardBalanceSummaryItem *_totalBalanceSummaryItem;
+    PKDashboardBalanceSummaryItem *_availableCreditSummaryItem;
+    NSArray *_totalBalanceItems;
     NSArray *_usageItems;
-    PKDashboardBalanceSummaryItem *_statementDowloadSummaryItem;
+    PKDashboardBalanceSummaryItem *_statementDownloadSummaryItem;
+    PKDashboardBalanceSummaryItem *_exportTransactionDataSummaryItem;
+    NSArray *_buttonItems;
     PKBalanceSummary *_balanceSummary;
     NSArray *_statements;
     NSDictionary *_statementsByYear;
     NSArray *_sortedYears;
     NSDateFormatter *_monthYearFormatter;
-    NSDateFormatter *_dateFormatter;
-    PKDashboardTitleHeaderView *_sampleView;
+    PKDashboardTitleHeaderView *_sampleHeaderView;
     PKDashboardFooterTextView *_sampleFooterView;
     NSArray *_sectionMap;
     unsigned long long _numberOfStaticSections;
     long long _style;
+    NSString *_pageTagForAnalyticsReporting;
 }
 
 - (void).cxx_destruct;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
 - (_Bool)_shouldInset;
@@ -60,6 +68,7 @@
 - (_Bool)_hasHeaderForSectionIndex:(unsigned long long)arg1;
 - (id)_summaryItemForIndexPath:(id)arg1;
 - (unsigned long long)_sectionForIndex:(unsigned long long)arg1;
+- (void)showStatement:(id)arg1 style:(long long)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
@@ -74,8 +83,10 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithStyle:(long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 account:(id)arg4 statement:(id)arg5 previousStatements:(id)arg6;
+- (id)initWithStyle:(long long)arg1 transactionSource:(id)arg2 webService:(id)arg3 account:(id)arg4 statement:(id)arg5 previousStatements:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

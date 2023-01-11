@@ -13,13 +13,15 @@
 @interface GEORPFeedbackRequestParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPFeedbackIdLookupParameters *_idLookupParameters;
     GEORPFeedbackImageUploadParameters *_imageUploadParameters;
     GEORPFeedbackLayoutConfigParameters *_layoutConfigParameters;
     GEORPFeedbackQueryParameters *_queryParameters;
     GEORPFeedbackSubmissionParameters *_submissionParameters;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_idLookupParameters:1;
@@ -27,12 +29,7 @@
         unsigned int read_layoutConfigParameters:1;
         unsigned int read_queryParameters:1;
         unsigned int read_submissionParameters:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_idLookupParameters:1;
-        unsigned int wrote_imageUploadParameters:1;
-        unsigned int wrote_layoutConfigParameters:1;
-        unsigned int wrote_queryParameters:1;
-        unsigned int wrote_submissionParameters:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,24 +45,26 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPFeedbackLayoutConfigParameters *layoutConfigParameters;
 @property(readonly, nonatomic) _Bool hasLayoutConfigParameters;
-- (void)_readLayoutConfigParameters;
 @property(retain, nonatomic) GEORPFeedbackImageUploadParameters *imageUploadParameters;
 @property(readonly, nonatomic) _Bool hasImageUploadParameters;
-- (void)_readImageUploadParameters;
 @property(retain, nonatomic) GEORPFeedbackQueryParameters *queryParameters;
 @property(readonly, nonatomic) _Bool hasQueryParameters;
-- (void)_readQueryParameters;
 @property(retain, nonatomic) GEORPFeedbackIdLookupParameters *idLookupParameters;
 @property(readonly, nonatomic) _Bool hasIdLookupParameters;
-- (void)_readIdLookupParameters;
 @property(retain, nonatomic) GEORPFeedbackSubmissionParameters *submissionParameters;
 @property(readonly, nonatomic) _Bool hasSubmissionParameters;
-- (void)_readSubmissionParameters;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithMerchantIndustryCode:(long long)arg1 mapsIdentifier:(unsigned long long)arg2 merchantName:(id)arg3 merchantRawName:(id)arg4 merchantIndustryCategory:(id)arg5 merchantURL:(id)arg6 merchantFormattedAddress:(id)arg7 transactionTime:(double)arg8 transactionType:(id)arg9 transactionLocation:(CDStruct_c3b9c2ee)arg10;
+- (_Bool)isPOIEnrichment;
+- (id)initWithIncidentLocation:(id)arg1 type:(int)arg2 historicalLocations:(id)arg3;
 
 @end
 

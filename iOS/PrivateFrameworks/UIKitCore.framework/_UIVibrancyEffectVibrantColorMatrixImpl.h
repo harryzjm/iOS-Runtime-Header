@@ -4,19 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIColor;
+
 __attribute__((visibility("hidden")))
 @interface _UIVibrancyEffectVibrantColorMatrixImpl
 {
-    struct CAColorMatrix _vibrantColorMatrix;
+    long long _systemName;
+    struct CAColorMatrix _lightVibrantColorMatrix;
+    struct CAColorMatrix _darkVibrantColorMatrix;
+    UIColor *_reducedTransperancyColor;
     double _alpha;
+    _Bool _hasDarkVariant;
 }
 
+- (void).cxx_destruct;
 - (void)appendDescriptionTo:(id)arg1;
 - (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
+- (_Bool)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)implementationReplacingTintColor:(id)arg1;
+- (id)initWithLightCAColorMatrix:(struct CAColorMatrix)arg1 darkCAColorMatrix:(struct CAColorMatrix)arg2 alpha:(double)arg3;
 - (id)initWithCAColorMatrix:(struct CAColorMatrix)arg1 alpha:(double)arg2;
+- (id)initWithSystemName:(long long)arg1;
 
 @end
 

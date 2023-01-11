@@ -18,25 +18,21 @@
     CDUnknownBlockType _completionHandler;
     NSError *_error;
     CDUnknownBlockType _remoteViewReadyHandler;
-    NSString *_lastPersonalizationVersionDisplayed;
-    unsigned long long _lastPrivacyNoticeVersionDisplayed;
     GKAuthenticateHostViewController *_extensionHostViewController;
     long long _mode;
     CDUnknownBlockType _dismissCompletionHandler;
 }
 
 + (_Bool)_preventsAppearanceProxyCustomization;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) GKAuthenticateHostViewController *extensionHostViewController; // @synthesize extensionHostViewController=_extensionHostViewController;
-@property(nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
-@property(retain, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
 @property(copy, nonatomic) CDUnknownBlockType remoteViewReadyHandler; // @synthesize remoteViewReadyHandler=_remoteViewReadyHandler;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic, getter=isRotationLocked) _Bool rotationLocked; // @synthesize rotationLocked=_rotationLocked;
 @property(nonatomic) _Bool disablesSignIn; // @synthesize disablesSignIn=_disablesSignIn;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-- (void).cxx_destruct;
 - (void)onboardingFlowDidSignOut;
 - (void)showPasswordChangeAlertWithURL:(id)arg1;
 - (_Bool)shouldAutorotate;
@@ -50,6 +46,7 @@
 - (void)_setupChildViewController;
 - (void)continueWithMode:(long long)arg1;
 - (void)setModalPresentationStyle:(long long)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;
 - (id)init;

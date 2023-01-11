@@ -6,15 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSLock;
+@class CNContactStore, CNFavorites, NSArray, NSDictionary, NSLock;
+@protocol OS_dispatch_queue;
 
 @interface NTKPeopleComplicationContactsCache : NSObject
 {
     NSDictionary *_favoritesMapping;
     NSLock *_favoritesMappingLock;
-    int _deviceLockStateChangeNotifyToken;
+    NSLock *_favoritesEntriesLock;
+    NSLock *_allContactsEntriesLock;
     _Bool _hasSetupNotifications;
     NSLock *_hasSetupNotificationsLock;
+    CNContactStore *_contactStore;
+    CNFavorites *_favorites;
+    NSArray *_nonFavoriteValidAllContacts;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)sharedCache;
@@ -24,11 +30,25 @@
 - (void)_didReceiveContactStoreChangedNotification;
 - (void)_tearDownNotifications;
 - (void)_setupNotifications;
+- (void)_queue_findContactWithFullName:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_queue_loadAllContacts;
 - (void)_queue_loadFavoriteContacts;
-- (id)_loadFavoriteContacts;
+- (void)_queue_reloadContacts;
+- (id)computeNonFavoriteAllContactsWithCount:(unsigned long long)arg1;
+- (id)_mappedFavoriteContacts;
+- (id)_fetchContactForId:(id)arg1;
+- (id)_contactKeysToFetchWithoutThumbnail;
+- (id)_contactKeysToFetchWithThumbnail;
+- (_Bool)contactIdentifierIsFavorited:(id)arg1;
+- (void)findContactWithFullName:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)contactForId:(id)arg1;
+- (_Bool)checkValidityOfContact:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)abbreviatedNameForContact:(id)arg1;
 - (id)fullNameForContact:(id)arg1;
 - (id)shortNameForContact:(id)arg1;
+- (id)nonFavoriteAllContactsWithCount:(unsigned long long)arg1;
+- (id)firstNonFavoriteAllContact;
+- (id)_favoritesMappingLocked;
 - (id)favoriteContacts;
 - (void)setupNotificationsIfNecessary;
 - (void)dealloc;

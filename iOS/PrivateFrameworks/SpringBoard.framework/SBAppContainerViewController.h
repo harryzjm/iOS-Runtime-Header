@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SpringBoard/SBApplicationSceneStatusBarDescriberProviding-Protocol.h>
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBApplicationSceneViewControllingStatusBarDelegate-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
 
-@class NSString, SBApplicationSceneHandle, SBSceneHandle, UIApplicationSceneSettingsDiffInspector, UIView, UIViewController, _SBAppContainerStatusBarStateProxy;
+@class NSString, SBApplicationSceneHandle, UIApplicationSceneSettingsDiffInspector, UIView, UIViewController, _SBAppContainerStatusBarStateProxy;
 @protocol SBApplicationSceneStatusBarDescribing, SBApplicationSceneViewControlling, SBApplicationSceneViewControllingStatusBarDelegate, SBDeviceApplicationSceneStatusBarStateObserver, SBScenePlaceholderContentContext;
 
-@interface SBAppContainerViewController <SBDeviceApplicationSceneStatusBarStateObserver, SBApplicationSceneViewControllingStatusBarDelegate, SBSceneHandleObserver, SBApplicationSceneViewControlling>
+@interface SBAppContainerViewController <SBDeviceApplicationSceneStatusBarStateObserver, SBApplicationSceneViewControllingStatusBarDelegate, SBSceneHandleObserver, SBApplicationSceneViewControlling, SBApplicationSceneStatusBarDescriberProviding>
 {
     SBApplicationSceneHandle *_applicationSceneHandle;
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsDiffInspector;
@@ -22,16 +23,17 @@
     id <SBDeviceApplicationSceneStatusBarStateObserver> _statusBarDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBDeviceApplicationSceneStatusBarStateObserver> statusBarDelegate; // @synthesize statusBarDelegate=_statusBarDelegate;
 @property(readonly, nonatomic) id <SBApplicationSceneStatusBarDescribing> statusBarDescriber; // @synthesize statusBarDescriber=_statusBarObserverProxy;
 @property(readonly, nonatomic) UIViewController<SBApplicationSceneViewControlling> *_applicationSceneViewController; // @synthesize _applicationSceneViewController;
-- (void).cxx_destruct;
 - (void)_updateDisplayLayoutElementForSceneExistence:(id)arg1;
 - (void)_clearState;
 - (void)applicationSceneViewController:(id)arg1 didUpdateStatusBarSettings:(id)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeSceneInterfaceOrientationTo:(long long)arg2;
-- (long long)_overrideStatusBarOrientation;
+- (long long)_overrideStatusBarOrientationGivenFallbackOrientation:(long long)arg1;
 - (id)_deviceApplicationSceneHandle;
+- (_Bool)SB_conformsToSBApplicationSceneStatusBarDescriberProviding;
 - (void)sceneHandle:(id)arg1 didUpdateContentState:(long long)arg2;
 - (void)sceneHandle:(id)arg1 didUpdatePairingStatusForExternalSceneIdentifiers:(id)arg2;
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
@@ -51,7 +53,7 @@
 - (id)newSnapshot;
 @property(retain, nonatomic) UIView *customContentView;
 @property(retain, nonatomic) id <SBScenePlaceholderContentContext> placeholderContentContext;
-@property(readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property(readonly, nonatomic) SBApplicationSceneHandle *sceneHandle;
 - (void)_configureViewController:(id)arg1;
 - (id)_applicationSceneViewControllerForSceneHandle:(id)arg1;
 - (id)_newDisplayLayoutElementForEntity:(id)arg1;

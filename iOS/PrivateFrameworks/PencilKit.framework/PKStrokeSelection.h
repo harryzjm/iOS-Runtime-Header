@@ -9,13 +9,14 @@
 #import <PencilKit/NSItemProviderReading-Protocol.h>
 #import <PencilKit/NSItemProviderWriting-Protocol.h>
 
-@class NSArray, NSMutableOrderedSet, NSString, PKDrawing, PKStroke, UIImage;
+@class NSArray, NSOrderedSet, NSSet, NSString, PKDrawing, PKStroke, PKStrokeSelectionImage;
 
 @interface PKStrokeSelection : NSObject <NSItemProviderReading, NSItemProviderWriting>
 {
-    NSMutableOrderedSet *_strokes;
+    NSOrderedSet *_strokes;
+    NSSet *_strokeIdentifiers;
     PKStroke *_lassoStroke;
-    UIImage *_strokeImage;
+    PKStrokeSelectionImage *_strokeImage;
     PKDrawing *_drawing;
 }
 
@@ -23,11 +24,13 @@
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
-@property(readonly, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
-@property(copy, nonatomic) UIImage *strokeImage; // @synthesize strokeImage=_strokeImage;
-@property(readonly, nonatomic) PKStroke *lassoStroke; // @synthesize lassoStroke=_lassoStroke;
-@property(readonly, nonatomic) NSMutableOrderedSet *strokes; // @synthesize strokes=_strokes;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
+@property(copy, nonatomic) PKStrokeSelectionImage *strokeImage; // @synthesize strokeImage=_strokeImage;
+@property(readonly, nonatomic) PKStroke *lassoStroke; // @synthesize lassoStroke=_lassoStroke;
+@property(readonly, nonatomic) NSSet *strokeIdentifiers; // @synthesize strokeIdentifiers=_strokeIdentifiers;
+@property(readonly, nonatomic) NSOrderedSet *strokes; // @synthesize strokes=_strokes;
+- (void)generateImageWithConfig:(id)arg1 fullSizeConfig:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (_Bool)containsBitmapData;
 - (id)strokeDataForSelection;
 - (id)legacyStrokeDataForSelection;

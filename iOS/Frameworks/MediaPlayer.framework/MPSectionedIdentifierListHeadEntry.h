@@ -9,6 +9,7 @@
 @class MPSectionedIdentifierListItemEntry, MPSectionedIdentifierListTailEntry, NSMutableDictionary, NSString;
 @protocol MPSectionedIdentifierListDataSource;
 
+__attribute__((visibility("hidden")))
 @interface MPSectionedIdentifierListHeadEntry <MPSectionedIdentifierListEnumerationTrackingEntry>
 {
     _Bool _shuffledHead;
@@ -19,12 +20,12 @@
 }
 
 + (id)headEntryWithSectionIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isShuffledHead) _Bool shuffledHead; // @synthesize shuffledHead=_shuffledHead;
 @property(retain, nonatomic) id <MPSectionedIdentifierListDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) MPSectionedIdentifierListItemEntry *lastItemEntry; // @synthesize lastItemEntry=_lastItemEntry;
 @property(retain, nonatomic) MPSectionedIdentifierListTailEntry *tailEntry; // @synthesize tailEntry=_tailEntry;
 @property(readonly, nonatomic) NSMutableDictionary *identifiersItemEntryMap; // @synthesize identifiersItemEntryMap=_identifiersItemEntryMap;
-- (void).cxx_destruct;
 - (void)setBranchDepth:(long long)arg1;
 - (id)nextEntries;
 @property(readonly, nonatomic) long long entryType;

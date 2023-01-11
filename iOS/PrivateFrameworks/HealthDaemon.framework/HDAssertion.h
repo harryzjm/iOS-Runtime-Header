@@ -7,34 +7,42 @@
 #import <objc/NSObject.h>
 
 @class HDAssertionManager, NSString, NSUUID;
-@protocol OS_dispatch_source;
 
 @interface HDAssertion : NSObject
 {
     HDAssertionManager *_manager;
     long long _state;
-    NSObject<OS_dispatch_source> *_invalidationTimer;
-    double _expirationDate;
+    double _remainingBudget;
+    double _budgetIntervalStartTime;
     struct os_unfair_lock_s _lock;
     NSUUID *_UUID;
     NSString *_assertionIdentifier;
     NSString *_ownerIdentifier;
-    double _timeout;
+    double _budget;
 }
 
-@property(nonatomic) double timeout; // @synthesize timeout=_timeout;
+- (void).cxx_destruct;
+@property(nonatomic) double budget; // @synthesize budget=_budget;
 @property(readonly, copy, nonatomic) NSString *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
 @property(readonly, copy, nonatomic) NSString *assertionIdentifier; // @synthesize assertionIdentifier=_assertionIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
+- (long long)_lock_consumeBudgetThroughTime:(double)arg1 error:(id *)arg2;
+- (id)_lock_setBudgetIntervalStartTime:(double)arg1;
+- (_Bool)_lock_setBudget:(double)arg1 error:(id *)arg2;
+- (double)_lock_remainingBudget;
+- (long long)_lock_state;
+- (id)_lock_cloneWithOwnerIdentifier:(id)arg1;
+- (id)_lock_description;
+- (_Bool)_consumeFromBudgetThroughTime:(double)arg1;
+- (void)_setBudgetIntervalStartTime:(double)arg1;
+- (void)_invalidateAndRelease:(_Bool)arg1;
 - (long long)_takeWithManager:(id)arg1;
 @property(readonly) long long rawState;
-@property(readonly) double remainingTime;
+@property(readonly) double remainingBudget;
 @property(readonly) long long state;
-- (id)description;
-- (void)_invalidationTimerDidFire;
-- (void)_invalidateAndRelease:(_Bool)arg1;
 - (void)invalidate;
+- (id)cloneWithOwnerIdentifier:(id)arg1;
+- (id)description;
 - (void)dealloc;
 - (id)initWithAssertionIdentifier:(id)arg1 ownerIdentifier:(id)arg2;
 

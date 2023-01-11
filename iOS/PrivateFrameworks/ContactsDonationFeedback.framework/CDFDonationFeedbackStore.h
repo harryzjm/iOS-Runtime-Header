@@ -30,6 +30,8 @@
 - (id)_loadSalt;
 - (void)_handleHashesChangedNotification:(id)arg1;
 - (id)_hashableStringsForDonation:(id)arg1 contactIdentifier:(id)arg2;
+- (_Bool)canHashDonation:(id)arg1;
+- (id)_hashableStringsForDonation:(id)arg1;
 - (id)_hashesForDonation:(id)arg1 contactIdentifier:(id)arg2;
 - (void)_confirmOrRejectDonatedValues:(id)arg1 contactIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reset;

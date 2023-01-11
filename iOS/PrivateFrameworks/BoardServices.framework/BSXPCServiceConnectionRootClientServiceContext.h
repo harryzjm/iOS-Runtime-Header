@@ -4,18 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 @interface BSXPCServiceConnectionRootClientServiceContext
 {
     _Bool _privileged;
 }
 
-+ (id)uniqueClientContextWithServiceName:(id)arg1 privileged:(_Bool)arg2;
-@property(readonly, nonatomic, getter=isPrivileged) _Bool privileged; // @synthesize privileged=_privileged;
 - (_Bool)isClient;
-@property(readonly, copy, nonatomic) NSString *serviceName;
-- (id)_initWithService:(id)arg1 privileged:(_Bool)arg2;
 
 @end
 

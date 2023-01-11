@@ -17,6 +17,7 @@
     _Bool _forceUpsell;
     int _fairplayStatus;
     NSString *_bundleID;
+    NSString *_bundlePath;
     NSNumber *_accountDSID;
     long long _claimStyle;
     unsigned long long _exitReason;
@@ -24,6 +25,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool forceUpsell; // @synthesize forceUpsell=_forceUpsell;
 @property(nonatomic) _Bool forceRevoke; // @synthesize forceRevoke=_forceRevoke;
 @property(copy, nonatomic) NSDictionary *relaunchOptions; // @synthesize relaunchOptions=_relaunchOptions;
@@ -31,12 +33,14 @@
 @property(nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
 @property(readonly, nonatomic) long long claimStyle; // @synthesize claimStyle=_claimStyle;
 @property(readonly, nonatomic) NSNumber *accountDSID; // @synthesize accountDSID=_accountDSID;
+@property(readonly, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyUserInfoDictionary;
 - (id)initWithBundleID:(id)arg1 accountIdentifier:(id)arg2 claimStyle:(long long)arg3;
+- (id)initWithBundlePath:(id)arg1;
 - (id)initWithBundleID:(id)arg1;
 
 @end

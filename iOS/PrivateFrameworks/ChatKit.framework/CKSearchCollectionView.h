@@ -8,6 +8,7 @@
 
 @interface CKSearchCollectionView : UICollectionView
 {
+    _Bool __ck_editing;
     _Bool _suppressDatasourceUpdates;
     _Bool _lockContentOffset;
     struct UIEdgeInsets _marginInsets;
@@ -15,6 +16,7 @@
 
 @property(nonatomic) _Bool lockContentOffset; // @synthesize lockContentOffset=_lockContentOffset;
 @property(nonatomic) _Bool suppressDatasourceUpdates; // @synthesize suppressDatasourceUpdates=_suppressDatasourceUpdates;
+@property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing; // @synthesize _ck_editing=__ck_editing;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setDataSource:(id)arg1;

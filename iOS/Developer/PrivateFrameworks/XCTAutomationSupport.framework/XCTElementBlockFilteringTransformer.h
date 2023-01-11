@@ -8,7 +8,7 @@
 
 #import <XCTAutomationSupport/XCTElementSetTransformer-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface XCTElementBlockFilteringTransformer : NSObject <XCTElementSetTransformer>
 {
@@ -18,14 +18,14 @@
 }
 
 + (void)provideCapabilitiesToBuilder:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property _Bool stopsOnFirstMatch; // @synthesize stopsOnFirstMatch;
 @property(copy) NSString *transformationDescription; // @synthesize transformationDescription;
-- (void).cxx_destruct;
+@property(readonly, copy) NSSet *elementTypes;
 - (id)iteratorForInput:(id)arg1;
 - (id)requiredKeyPathsOrError:(id *)arg1;
 @property(readonly) _Bool supportsAttributeKeyPathAnalysis;
-@property(readonly) _Bool supportsRemoteEvaluation;
 - (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (id)transform:(id)arg1 relatedElements:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

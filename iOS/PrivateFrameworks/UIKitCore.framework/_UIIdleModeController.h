@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIIdleModeController : NSObject
 {
     _Bool _didApplyVisualEffects;
+    unsigned long long _dismissalTransactionID;
     UIWindow *_backgroundWindow;
     UIImageView *_vignetteView;
     _Bool _keyWindowAllowedGroupBlending;
@@ -23,9 +24,9 @@ __attribute__((visibility("hidden")))
     UIScreen *_screen;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isIdleModeEnabled) _Bool idleModeEnabled; // @synthesize idleModeEnabled=_idleModeEnabled;
 @property(readonly, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
-- (void).cxx_destruct;
 - (void)_completeDismissal;
 - (void)_animateDismissal;
 - (void)_animatePresentation;

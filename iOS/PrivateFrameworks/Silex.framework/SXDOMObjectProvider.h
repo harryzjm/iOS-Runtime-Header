@@ -19,20 +19,17 @@
     SXJSONObjectMerger *_componentTextStyleMerger;
 }
 
-@property(readonly, nonatomic) SXJSONObjectMerger *componentTextStyleMerger; // @synthesize componentTextStyleMerger=_componentTextStyleMerger;
-@property(readonly, nonatomic) SXJSONObjectMerger *componentStyleMerger; // @synthesize componentStyleMerger=_componentStyleMerger;
-@property(readonly, nonatomic) id <SXDocumentControllerProvider> documentControllerProvider; // @synthesize documentControllerProvider=_documentControllerProvider;
-@property(retain, nonatomic) SXDOM *DOM; // @synthesize DOM=_DOM;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SXDOM *DOM; // @synthesize DOM=_DOM;
 - (id)imageResourceForIdentifier:(id)arg1;
 - (id)resourceForIdentifier:(id)arg1;
-- (id)componentTextStyleForIdentifier:(id)arg1 inheritingFromComponentTextStyle:(id)arg2;
-- (id)componentTextStyleForIdentifier:(id)arg1 classification:(id)arg2;
-- (id)componentTextStyleForIdentifiers:(id)arg1;
-- (id)textStyleForIdentifier:(id)arg1;
+- (id)componentTextStyleForIdentifier:(id)arg1 inheritingFromComponentTextStyle:(id)arg2 component:(id)arg3;
+- (id)componentTextStyleForIdentifier:(id)arg1 classification:(id)arg2 component:(id)arg3;
+- (id)componentTextStyleForIdentifiers:(id)arg1 component:(id)arg2;
+- (id)componentTextStyleForIdentifier:(id)arg1 component:(id)arg2;
+- (id)textStyleForIdentifier:(id)arg1 component:(id)arg2;
 - (id)componentStyleForIdentifiers:(id)arg1;
 - (id)componentStyleForComponent:(id)arg1;
-- (id)componentStyleForIdentifier:(id)arg1;
 - (id)componentLayoutForIdentifier:(id)arg1;
 @property(readonly, nonatomic) id <SXAutoPlacement> autoPlacement;
 @property(readonly, nonatomic) SXComponents *components;

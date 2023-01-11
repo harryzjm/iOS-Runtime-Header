@@ -30,7 +30,7 @@
 
 + (_Bool)_hasCustomSettings;
 + (void)_setHasCustomSettings:(_Bool)arg1;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
++ (void)performLayoutOperation:(CDUnknownBlockType)arg1;
 + (id)stringDrawingTextStorage;
 + (void)initialize;
 @property(retain, nonatomic) CUIStyleEffectConfiguration *cuiStyleEffects; // @synthesize cuiStyleEffects=_styleEffects;
@@ -70,9 +70,6 @@
 - (long long)typesetterBehavior;
 - (id)textContainer;
 - (id)layoutManager;
-- (oneway void)release;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

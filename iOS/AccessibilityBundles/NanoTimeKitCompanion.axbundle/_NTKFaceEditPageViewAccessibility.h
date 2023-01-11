@@ -15,7 +15,6 @@
 - (void)removeAllKeylines;
 - (void)addKeyline:(id)arg1 forKey:(id)arg2 tappable:(_Bool)arg3;
 - (void)layoutSubviews;
-- (void)startBreathing;
 - (id)accessibilityElements;
 - (_Bool)_accessibilityOverridesInvalidFrames;
 

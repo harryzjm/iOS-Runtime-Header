@@ -16,13 +16,13 @@
 }
 
 + (id)serializedParametersForHome:(id)arg1;
-@property(nonatomic) __weak id <WFVariableProvider> parentVariableProvider; // @synthesize parentVariableProvider=_parentVariableProvider;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <WFVariableProvider> parentVariableProvider; // @synthesize parentVariableProvider=_parentVariableProvider;
 - (void)variableDidChange:(id)arg1;
 - (void)clearLegacyComparisonBehaviorFlag;
 - (_Bool)useLegacyComparisonBehavior;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
-- (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateRightExpressionParameters;
 - (void)updatePossibleOperators;
 - (long long)subjectContentType;
@@ -36,9 +36,11 @@
 - (Class)settingsViewControllerClass;
 - (_Bool)groupContainsOtherwiseAction;
 - (id)defaultOutputName;
+- (id)inputSourceInWorkflow:(id)arg1;
 - (_Bool)ignoresOutputFromAction:(id)arg1 inWorkflow:(id)arg2;
 - (id)inputContentClasses;
 - (_Bool)inputRequired;
+- (_Bool)usesLegacyInputBehavior;
 - (_Bool)truthWithVariableSource:(id)arg1;
 - (void)setTruth:(_Bool)arg1 withVariableSource:(id)arg2;
 - (void)resetEvaluationCriteriaWithVariableSource:(id)arg1;

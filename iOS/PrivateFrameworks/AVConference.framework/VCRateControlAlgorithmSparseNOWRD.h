@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastRateChangeCounter;
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
+    _Bool _isFirstInitialRampUpDone;
     CDStruct_55dce769 _owrdList;
     _Bool _isOWRDListReady;
     _Bool _isOWRDConstant;
@@ -66,9 +67,11 @@ __attribute__((visibility("hidden")))
     unsigned int _mostBurstLoss;
     unsigned int _roundTripTimeTick;
     double _roundTripTime;
+    double _worstRecentRoundTripTime;
     double _averageRoundTripTime;
     double _packetLossRate;
     double _previousPacketLossRate;
+    unsigned int _worstRecentBurstLoss;
     double _basebandNotificationArrivalTime;
     unsigned int _basebandAverageBitrate;
     unsigned int _basebandTotalQueueDepth;
@@ -87,16 +90,24 @@ __attribute__((visibility("hidden")))
     void *_logDump;
     void *_logBasebandDump;
     _Bool _isPeriodicLoggingEnabled;
+    _Bool _didMBLRampDown;
+    double _packetLossRateAudio;
     double _packetLossRateVideo;
 }
 
+@property(readonly, nonatomic) _Bool isFirstInitialRampUpDone; // @synthesize isFirstInitialRampUpDone=_isFirstInitialRampUpDone;
+@property(readonly, nonatomic) _Bool isSendBitrateLimited; // @synthesize isSendBitrateLimited=_isSendBitrateLimited;
+@property(nonatomic) _Bool didMBLRampDown; // @synthesize didMBLRampDown=_didMBLRampDown;
 @property(readonly, nonatomic) unsigned int actualBitrate; // @synthesize actualBitrate=_actualBitrate;
 @property(readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 @property(nonatomic) unsigned int localBandwidthEstimation; // @synthesize localBandwidthEstimation=_localBandwidthEstimation;
 @property(readonly, nonatomic) _Bool isNewRateSentOut; // @synthesize isNewRateSentOut=_isNewRateSentOut;
+@property(readonly, nonatomic) unsigned int worstRecentBurstLoss; // @synthesize worstRecentBurstLoss=_worstRecentBurstLoss;
+@property(readonly, nonatomic) double worstRecentRoundTripTime; // @synthesize worstRecentRoundTripTime=_worstRecentRoundTripTime;
 @property(readonly, nonatomic) double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
 @property(readonly, nonatomic) unsigned int totalPacketReceived; // @synthesize totalPacketReceived=_totalPacketReceived;
 @property(readonly, nonatomic) double packetLossRateVideo; // @synthesize packetLossRateVideo=_packetLossRateVideo;
+@property(readonly, nonatomic) double packetLossRateAudio; // @synthesize packetLossRateAudio=_packetLossRateAudio;
 @property(readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
 @property(readonly, nonatomic) unsigned int mostBurstLoss; // @synthesize mostBurstLoss=_mostBurstLoss;
 @property(retain, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
@@ -133,9 +144,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldRampUp;
 - (void)checkPaused;
 - (void)checkCongestionStatus;
-- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_b21f1e06)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_b21f1e06)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_b21f1e06)arg1;
+- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_56e8fa21)arg1;
+- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_56e8fa21)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(_Bool)arg2;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;

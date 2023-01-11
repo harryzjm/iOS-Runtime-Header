@@ -22,6 +22,7 @@
 + (id)errorWithErrno;
 + (_Bool)isError:(id)arg1 errorWithDomain:(id)arg2 code:(long long)arg3;
 + (_Bool)isCertificateError:(id)arg1;
++ (_Bool)isFileAlreadyExistsError:(id)arg1;
 + (_Bool)isFileNotFoundError:(id)arg1;
 + (_Bool)isCanceledError:(id)arg1;
 + (id)userCanceledError;

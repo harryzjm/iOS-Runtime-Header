@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface NSBundle (DVTMainThreadLatencyCheckerAdditions)
++ (void)dvt_installBundleForClassCheckerUsingClassFromMainBundle:(Class)arg1;
++ (id)dvt_swizzledBundleForClass:(Class)arg1;
 + (id)dvt_uncachedInfoAtPath:(id)arg1;
 + (id)dvt_uncachedInfoAtURL:(id)arg1;
 + (id)_uncachedValueForKey:(const struct __CFString *)arg1 atURL:(id)arg2;
@@ -17,6 +19,8 @@
 + (id)dvt_uncachedValueForKey:(id)arg1 inBundleAtPath:(id)arg2;
 + (id)dvt_uncachedExtensionInfoAtPath:(id)arg1;
 + (id)dvt_uncachedBundleExecutableAtPath:(id)arg1;
++ (id)dvt_uncachedBundleNameAtPath:(id)arg1;
++ (id)dvt_uncachedBundleNameAtURL:(id)arg1;
 + (id)dvt_uncachedBundleIdentifierAtPath:(id)arg1;
 + (id)dvt_uncachedBundleExecutableAtURL:(id)arg1;
 + (id)dvt_uncachedBundleIdentifierAtURL:(id)arg1;

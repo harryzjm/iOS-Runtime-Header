@@ -11,10 +11,7 @@
 - (void)_continueButtonSelected:(id)arg1;
 - (void)_addContinueButtonToContext:(id)arg1 title:(id)arg2;
 - (void)_addPrivacyLinkToContext:(id)arg1;
-- (void)_addBulletPointToContext:(id)arg1 image:(id)arg2 title:(id)arg3 message:(id)arg4;
-- (void)_addTitleToContext:(id)arg1 title:(id)arg2;
-- (void)_addViewToContext:(id)arg1 spacing:(double)arg2;
-- (id)_frameworkImageNamed:(id)arg1;
+- (void)_addTitleToContext:(id)arg1;
 - (_Bool)shouldEmbedContentTrayIfNeeded;
 - (void)viewDidLoad;
 

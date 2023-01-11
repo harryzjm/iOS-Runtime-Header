@@ -9,7 +9,7 @@
 #import <EmailCore/EFLoggable-Protocol.h>
 #import <EmailCore/EFPubliclyDescribable-Protocol.h>
 
-@class ACAccount, ACAccountCredential, ACAccountStore, NSArray, NSDictionary, NSString;
+@class ACAccount, ACAccountCredential, ACAccountStore, EFLazyCache, NSArray, NSDictionary, NSString;
 
 @interface ECAccount : NSObject <EFLoggable, EFPubliclyDescribable>
 {
@@ -19,19 +19,24 @@
     NSString *_accountDirectoryTildeAbbreviatedPath;
     ACAccount *_systemAccount;
     NSDictionary *_properties;
+    EFLazyCache *_cache;
 }
 
 + (id)standardSSLPorts;
 + (id)standardPorts;
 + (id)log;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) EFLazyCache *cache; // @synthesize cache=_cache;
 @property(readonly, copy, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property(copy, nonatomic) ACAccount *systemAccount; // @synthesize systemAccount=_systemAccount;
+@property(retain, nonatomic) ACAccount *systemAccount; // @synthesize systemAccount=_systemAccount;
 @property(copy, nonatomic) NSString *accountDirectoryTildeAbbreviatedPath; // @synthesize accountDirectoryTildeAbbreviatedPath=_accountDirectoryTildeAbbreviatedPath;
 @property(readonly, nonatomic) _Bool sslIsDirectIsSet; // @synthesize sslIsDirectIsSet=_sslIsDirectIsSet;
 @property(readonly, copy, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property(readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;
+- (void)_accountStoreDidChange:(id)arg1;
+- (_Bool)_cachedEnabled;
+- (id)_cachedParentAccount;
 - (void)clearSSLIsDirect;
 - (_Bool)setSslIsDirectIsSet;
 @property(nonatomic) _Bool sslIsDirect;

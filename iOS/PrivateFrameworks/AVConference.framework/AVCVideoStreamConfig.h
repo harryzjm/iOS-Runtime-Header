@@ -31,8 +31,14 @@
     unsigned long long _customWidth;
     unsigned long long _customHeight;
     unsigned long long _tilesPerFrame;
+    unsigned int _pixelFormat;
+    _Bool _ltrpEnabled;
+    unsigned long long _hdrMode;
+    NSString *_remoteDeviceName;
+    _Bool _latencySensitiveModeEnabled;
 }
 
++ (_Bool)isPixelFormatValid:(unsigned int)arg1 hdrMode:(unsigned long long)arg2;
 + (long long)videoStreamTypeFromClientVideoStreamMode:(long long)arg1;
 + (long long)clientVideoStreamModeFromVideoStreamType:(long long)arg1;
 + (int)videoCaptureSourceFromClientCaptureSource:(long long)arg1;
@@ -41,6 +47,11 @@
 + (long long)videoResolutionFromClientResolution:(long long)arg1;
 + (long long)clientCodecTypeWithCodecType:(long long)arg1;
 + (long long)codecTypeWithClientCodecType:(long long)arg1;
+@property(nonatomic, getter=isLatencySensitiveModeEnabled) _Bool latencySensitiveModeEnabled; // @synthesize latencySensitiveModeEnabled=_latencySensitiveModeEnabled;
+@property(retain, nonatomic) NSString *remoteDeviceName; // @synthesize remoteDeviceName=_remoteDeviceName;
+@property(nonatomic) unsigned long long hdrMode; // @synthesize hdrMode=_hdrMode;
+@property(nonatomic, getter=isLTRPEnabled) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
+@property(nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(nonatomic) unsigned long long tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
 @property(nonatomic) unsigned long long customHeight; // @synthesize customHeight=_customHeight;
 @property(nonatomic) unsigned long long customWidth; // @synthesize customWidth=_customWidth;
@@ -64,7 +75,7 @@
 @property(nonatomic) long long txCodecType; // @synthesize txCodecType=_txCodecType;
 - (id)dictionary;
 - (void)setUpWithDictionary:(id)arg1;
-- (_Bool)isValid;
+- (_Bool)isValidForDirection:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 

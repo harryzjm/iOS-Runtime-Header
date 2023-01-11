@@ -6,15 +6,12 @@
 
 #import <SiriUI/SiriUIBaseAceObjectViewControllerDelegate-Protocol.h>
 
-@class AFDataStore, AFUserUtterance, AceObject, NSArray, NSBundle, NSString, NSURL, SAUIAppPunchOut, SAUIListItem, SiriUIDisambiguationItem, UIView;
-@protocol AFUIDataStoring, SiriUIViewController;
+@class AFDataStore, AFUserUtterance, AceObject, NSArray, NSBundle, NSString, NSURL, SAUIListItem, SiriUIDisambiguationItem, UIView;
+@protocol SiriUIViewController;
 
 @protocol SiriUIAceObjectViewControllerDelegate <SiriUIBaseAceObjectViewControllerDelegate>
-- (id <AFUIDataStoring>)persistentStoreForSiriViewController:(id <SiriUIViewController>)arg1;
-- (_Bool)siriViewController:(id <SiriUIViewController>)arg1 openPunchOut:(SAUIAppPunchOut *)arg2;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 sendGenericAceCommands:(NSArray *)arg2;
-- (double)siriSnippetViewControllerExpectedWidth:(id <SiriUIViewController>)arg1;
-- (struct UIEdgeInsets)siriViewControllerDisplayInsetsForVisibleSpace:(id <SiriUIViewController>)arg1;
+- (void)siriViewControllerViewDidDisappear:(id <SiriUIViewController>)arg1 isTopLevelViewController:(_Bool)arg2;
+- (void)siriViewControllerViewDidAppear:(id <SiriUIViewController>)arg1 isTopLevelViewController:(_Bool)arg2;
 - (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setStatusViewHidden:(_Bool)arg2;
 - (void)siriViewController:(id <SiriUIViewController>)arg1 didHideVibrantView:(UIView *)arg2;
 - (AFDataStore *)persistentDataStoreForSiriViewController:(id <SiriUIViewController>)arg1;

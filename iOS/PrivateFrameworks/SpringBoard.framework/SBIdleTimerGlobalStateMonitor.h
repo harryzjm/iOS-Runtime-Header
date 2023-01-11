@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/SBFThermalConditionObserver-Protocol.h>
 #import <SpringBoard/SBIdleTimerServiceDelegate-Protocol.h>
 #import <SpringBoard/SBPocketStateMonitorObserver-Protocol.h>
 #import <SpringBoard/_SBIdleTimerGlobalSettingMonitorDelegate-Protocol.h>
 
 @class NSHashTable, NSNumber, NSString, SBIdleTimerAggregateClientConfiguration, SBIdleTimerService, SBLocalDefaults, _SBIdleTimerGlobalBoolSettingMonitor, _SBIdleTimerGlobalNumericSettingMonitor;
-@protocol BSInvalidatable;
+@protocol BSInvalidatable, SBFThermalBlockProvider;
 
-@interface SBIdleTimerGlobalStateMonitor : NSObject <SBPocketStateMonitorObserver, _SBIdleTimerGlobalSettingMonitorDelegate, SBIdleTimerServiceDelegate>
+@interface SBIdleTimerGlobalStateMonitor : NSObject <SBPocketStateMonitorObserver, _SBIdleTimerGlobalSettingMonitorDelegate, SBIdleTimerServiceDelegate, SBFThermalConditionObserver>
 {
     struct os_unfair_lock_s _observerLock;
     NSHashTable *_observers;
     SBIdleTimerService *_idleTimerService;
     SBLocalDefaults *_localDefaults;
+    id <SBFThermalBlockProvider> _thermalBlockProvider;
     CDUnknownBlockType _dontLockEver;
     CDUnknownBlockType _dontDimOrLockOnAC;
     CDUnknownBlockType _disableAttentionAwareness;
@@ -29,22 +31,28 @@
     long long _pocketState;
     _Bool _autoDimDisabled;
     SBIdleTimerAggregateClientConfiguration *_aggregateClientConfiguration;
+    _Bool _thermalBlocked;
     id <BSInvalidatable> _stateCaptureAssertion;
+    _Bool _faceDownOnTable;
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) SBIdleTimerAggregateClientConfiguration *aggregateClientConfiguration; // @synthesize aggregateClientConfiguration=_aggregateClientConfiguration;
-@property(readonly, nonatomic) long long pocketState; // @synthesize pocketState=_pocketState;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long pocketState; // @synthesize pocketState=_pocketState;
+@property(readonly, nonatomic) SBIdleTimerAggregateClientConfiguration *aggregateClientConfiguration; // @synthesize aggregateClientConfiguration=_aggregateClientConfiguration;
+@property(readonly, nonatomic, getter=isFaceDownOnTable) _Bool faceDownOnTable; // @synthesize faceDownOnTable=_faceDownOnTable;
 - (id)_stateCaptureDescription;
 - (void)_addStateCaptureHandlers;
 - (CDUnknownBlockType)_timeIntervalMonitorForProperty:(id)arg1 inDefaults:(id)arg2 fetchingWith:(CDUnknownBlockType)arg3;
 - (CDUnknownBlockType)_boolMonitorForProperty:(id)arg1 inDefaults:(id)arg2 fetchingWith:(CDUnknownBlockType)arg3;
 - (void)_updateAutoDimDisabled;
 - (void)_updateObserversForReason:(id)arg1;
+- (void)_updateFaceDownOnTable;
+- (void)thermalBlockStatusChanged:(id)arg1;
 - (void)idleTimerServiceTimeoutAssertionsDidChange:(id)arg1;
 - (void)pocketStateMonitor:(id)arg1 pocketStateDidChangeFrom:(long long)arg2 to:(long long)arg3;
 - (void)idleTimerGlobalSettingMonitor:(id)arg1 changedForReason:(id)arg2;
+@property(readonly, nonatomic, getter=isThermalBlocked) _Bool thermalBlocked;
 @property(readonly, nonatomic, getter=isAutoDimDisabled) _Bool autoDimDisabled;
 @property(readonly, nonatomic, getter=isOnACPower) _Bool onACPower;
 @property(readonly, nonatomic, getter=isBatterySaverModeActive) _Bool batterySaverModeActive;
@@ -57,7 +65,7 @@
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)_init;
-- (id)_initWithLocalDefaults:(id)arg1 profileConnection:(id)arg2 pocketStateMonitor:(id)arg3 uiController:(id)arg4 idleTimerService:(id)arg5;
+- (id)_initWithLocalDefaults:(id)arg1 profileConnection:(id)arg2 pocketStateMonitor:(id)arg3 uiController:(id)arg4 idleTimerService:(id)arg5 thermalBlockProvider:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

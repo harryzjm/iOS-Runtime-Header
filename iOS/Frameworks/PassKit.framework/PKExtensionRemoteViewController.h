@@ -18,7 +18,8 @@
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
-@property(nonatomic) id <PKExtensionRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <PKExtensionRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)exportedInterface;
 - (id)serviceViewControllerInterface;
 

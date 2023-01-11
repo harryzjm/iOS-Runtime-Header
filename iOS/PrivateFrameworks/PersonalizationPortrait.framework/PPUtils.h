@@ -10,6 +10,8 @@
 {
 }
 
++ (id)preferredLanguages;
++ (_Bool)localizedTimeStructForSecondsFrom1970:(double)arg1 tm:(struct tm *)arg2;
 + (_Bool)localizedTimeStructForDate:(id)arg1 tm:(struct tm *)arg2;
 + (_Bool)isFirstPartyApp:(id)arg1;
 + (id)sqliteGlobEscape:(id)arg1;
@@ -23,8 +25,8 @@
 + (id)hexUUID;
 + (id)hexOfBytes:(const void *)arg1 size:(unsigned long long)arg2;
 + (id)Sha256ForData:(id)arg1 withSalt:(id)arg2;
++ (id)osBuild;
 + (_Bool)isInternalDevice;
-+ (_Bool)isConstrainedDevice;
 + (void)enumerateChunksOfSize:(unsigned long long)arg1 fromArray:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 @end

@@ -13,13 +13,15 @@
 @interface CTRemoteDevice : NSObject <NSSecureCoding>
 {
     CTDeviceIdentifier *_deviceID;
+    NSArray *_remoteDisplayPlans;
     NSArray *_remotePlans;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSArray *remotePlans; // @synthesize remotePlans=_remotePlans;
-@property(retain, nonatomic) CTDeviceIdentifier *deviceID; // @synthesize deviceID=_deviceID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *remotePlans; // @synthesize remotePlans=_remotePlans;
+@property(retain, nonatomic) NSArray *remoteDisplayPlans; // @synthesize remoteDisplayPlans=_remoteDisplayPlans;
+@property(retain, nonatomic) CTDeviceIdentifier *deviceID; // @synthesize deviceID=_deviceID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)EID;

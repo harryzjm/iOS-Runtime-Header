@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <ScreenshotServices/SSScreenshotsWindowDelegate-Protocol.h>
 #import <ScreenshotServices/SSTestingCoordinatorDelegate-Protocol.h>
 #import <ScreenshotServices/SSUIServiceServerDelegate-Protocol.h>
 
-@class RCPEventStreamRecorder, RCPScreenRecorder, SSApplicationScreenshotSupplementalDataCapturer, SSDittoRemoteConnection, SSScreenshotsWindow, SSSnapshotter, SSTestingCoordinator, SSUIServiceServer, UIWindow;
+@class FBSDisplayLayoutMonitor, RCPEventStreamRecorder, RCPScreenRecorder, SSApplicationScreenshotSupplementalDataCapturer, SSDittoRemoteConnection, SSScreenshotsWindow, SSSnapshotter, SSTestingCoordinator, SSUIServiceServer, UIWindow;
 @protocol SSScreenCapturerDelegate;
 
-@interface SSScreenCapturer : NSObject <SSUIServiceServerDelegate, SSTestingCoordinatorDelegate>
+@interface SSScreenCapturer : NSObject <SSUIServiceServerDelegate, SSTestingCoordinatorDelegate, SSScreenshotsWindowDelegate>
 {
     SSSnapshotter *_snapshotter;
     SSDittoRemoteConnection *_dittoRemoteConnection;
@@ -22,19 +23,20 @@
     SSScreenshotsWindow *_serviceWindow;
     RCPEventStreamRecorder *_recap;
     RCPScreenRecorder *_recapSnapshotter;
+    FBSDisplayLayoutMonitor *_layoutMonitor;
     id <SSScreenCapturerDelegate> _delegate;
 }
 
 + (void)playScreenshotSound;
 + (_Bool)shouldUseScreenCapturerForScreenshots;
-+ (id)_currentDisplayLayout;
 + (_Bool)_filesAppExistsOnSystem;
-@property(nonatomic) __weak id <SSScreenCapturerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SSScreenCapturerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)testingCoordinator:(id)arg1 requestsTakingScreenshotForRunPPTRequest:(id)arg2;
 - (id)_testingCoordinator;
 @property(readonly, nonatomic) UIWindow *screenshotsWindow;
 - (void)server:(id)arg1 handleRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)_currentDisplayLayout;
 - (_Bool)_betaFeedbackEnabled:(id)arg1;
 - (id)_applicationProxyForCurrentApp;
 - (id)_bundleIDForCurrentApplication;
@@ -48,11 +50,14 @@
 - (void)_captureAndSendMetadataForEnvironmentElement:(id)arg1 sendCompletion:(CDUnknownBlockType)arg2;
 - (void)_sendEnvironmentDescription:(id)arg1 savingImageToPhotos:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_environmentDescriptionFromImage:(id)arg1;
+- (void)screenshotWindowWillBeDisplayed;
+- (void)screenshotWindowWasDismissed;
 - (void)takeScreenshot;
 - (void)takeScreenshotWithOptionsCollection:(id)arg1 presentationOptions:(id)arg2;
 - (void)takeScreenshotWithPresentationOptions:(id)arg1;
 - (void)preheatWithPresentationOptions:(id)arg1;
 - (void)startRecap;
+- (void)dealloc;
 - (id)init;
 
 @end

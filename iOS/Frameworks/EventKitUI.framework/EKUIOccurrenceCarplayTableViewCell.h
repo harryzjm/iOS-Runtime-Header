@@ -8,6 +8,7 @@
 {
 }
 
+- (id)traitCollection;
 - (id)timeLabelsFont;
 - (id)secondaryTextLabelFont;
 - (id)primaryTextLabelFont;
@@ -28,6 +29,7 @@
 - (id)topTimeColor;
 - (id)secondaryTextColor;
 - (id)primaryTextColor;
+- (_Bool)canBecomeFocused;
 - (void)configure;
 
 @end

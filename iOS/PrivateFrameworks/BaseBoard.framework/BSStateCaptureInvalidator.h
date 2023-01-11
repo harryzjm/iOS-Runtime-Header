@@ -17,7 +17,6 @@
 }
 
 - (void)invalidate;
-- (id)initWithHandle:(unsigned long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

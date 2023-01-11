@@ -11,8 +11,8 @@
     NSData *_data;
 }
 
-@property(retain) NSData *data; // @synthesize data=_data;
 - (void).cxx_destruct;
+@property(retain) NSData *data; // @synthesize data=_data;
 
 @end
 

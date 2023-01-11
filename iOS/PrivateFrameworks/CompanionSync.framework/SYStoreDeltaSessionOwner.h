@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (unsigned int)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) unsigned long long changeCount;
 - (id)initWithChanges:(id)arg1;
 

@@ -6,18 +6,19 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface STKCallSetupSessionData
 {
     NSString *_phoneNumber;
     _Bool _isHighPriority;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isHighPriority; // @synthesize isHighPriority=_isHighPriority;
 @property(readonly, copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-- (void).cxx_destruct;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithText:(id)arg1 phoneNumber:(id)arg2;
+- (id)initWithText:(id)arg1 simLabel:(id)arg2 phoneNumber:(id)arg3;
 
 @end
 

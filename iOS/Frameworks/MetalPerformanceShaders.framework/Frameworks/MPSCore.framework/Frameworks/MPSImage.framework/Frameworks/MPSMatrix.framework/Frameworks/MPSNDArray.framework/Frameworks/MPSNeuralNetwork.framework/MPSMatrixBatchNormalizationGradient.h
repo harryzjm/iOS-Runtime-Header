@@ -17,7 +17,7 @@
     unsigned long long _sourceInputFeatureChannels;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property(nonatomic) float neuronC; // @synthesize neuronC=_neuronC;
 @property(nonatomic) float neuronB; // @synthesize neuronB=_neuronB;

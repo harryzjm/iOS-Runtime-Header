@@ -98,6 +98,7 @@
 @property(readonly, nonatomic) CALayer *layer;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)releaseSingleTextures;
 - (void)teardown;
 - (id)init;
 

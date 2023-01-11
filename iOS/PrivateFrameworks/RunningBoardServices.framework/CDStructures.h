@@ -10,15 +10,20 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct NSObject {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
+    unsigned int val[8];
+} CDStruct_4c969caf;
 

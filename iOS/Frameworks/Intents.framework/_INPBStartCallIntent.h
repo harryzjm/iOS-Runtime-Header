@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBStartCallIntent-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBIntentMetadata;
 
 @interface _INPBStartCallIntent : PBCodable <_INPBStartCallIntent, NSSecureCoding, NSCopying>
 {
@@ -22,29 +22,31 @@
         unsigned int recordTypeForRedialing:1;
         unsigned int ttyType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _audioRoute;
     int _callCapability;
     int _destinationType;
     int _preferredCallProvider;
     int _recordTypeForRedialing;
     int _ttyType;
+    _INPBCallRecordFilter *_callRecordFilter;
+    _INPBCallRecordValue *_callRecordToCallBack;
     NSArray *_contacts;
     _INPBIntentMetadata *_intentMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)contactsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property(nonatomic) int recordTypeForRedialing; // @synthesize recordTypeForRedialing=_recordTypeForRedialing;
 @property(nonatomic) int preferredCallProvider; // @synthesize preferredCallProvider=_preferredCallProvider;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) int destinationType; // @synthesize destinationType=_destinationType;
 @property(copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
+@property(retain, nonatomic) _INPBCallRecordValue *callRecordToCallBack; // @synthesize callRecordToCallBack=_callRecordToCallBack;
+@property(retain, nonatomic) _INPBCallRecordFilter *callRecordFilter; // @synthesize callRecordFilter=_callRecordFilter;
 @property(nonatomic) int callCapability; // @synthesize callCapability=_callCapability;
 @property(nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -70,6 +72,8 @@
 @property(readonly, nonatomic) unsigned long long contactsCount;
 - (void)addContacts:(id)arg1;
 - (void)clearContacts;
+@property(readonly, nonatomic) _Bool hasCallRecordToCallBack;
+@property(readonly, nonatomic) _Bool hasCallRecordFilter;
 - (int)StringAsCallCapability:(id)arg1;
 - (id)callCapabilityAsString:(int)arg1;
 @property(nonatomic) _Bool hasCallCapability;

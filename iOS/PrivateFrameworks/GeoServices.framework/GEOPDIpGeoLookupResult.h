@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDIpGeoLookupResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_countryCode;
     NSString *_ipAddress;
     GEOLatLng *_location;
     NSString *_timeZome;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_status:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_ipAddress:1;
         unsigned int read_location:1;
         unsigned int read_timeZome:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_ipAddress:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_timeZome:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,24 +46,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *timeZome;
 @property(readonly, nonatomic) _Bool hasTimeZome;
-- (void)_readTimeZome;
 @property(retain, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) _Bool hasCountryCode;
-- (void)_readCountryCode;
 @property(retain, nonatomic) GEOLatLng *location;
 @property(readonly, nonatomic) _Bool hasLocation;
-- (void)_readLocation;
 @property(retain, nonatomic) NSString *ipAddress;
 @property(readonly, nonatomic) _Bool hasIpAddress;
-- (void)_readIpAddress;
 - (int)StringAsStatus:(id)arg1;
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;
 @property(nonatomic) int status;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

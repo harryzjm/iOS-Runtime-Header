@@ -13,7 +13,7 @@
 
 @interface PXGadgetCollectionViewLayout : UICollectionViewFlowLayout <UICollectionViewDelegateFlowLayout>
 {
-    _Bool _pagingEnabled;
+    _Bool _prefersPagingEnabled;
     _Bool _isPageFullColumnnWidth;
     PXGadgetSpec *_spec;
     id <PXGadgetCollectionViewLayoutDelegate> _delegate;
@@ -22,27 +22,30 @@
     double _interSectionSpacing;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
 @property(nonatomic) double columnWidth; // @synthesize columnWidth=_columnWidth;
 @property(nonatomic) _Bool isPageFullColumnnWidth; // @synthesize isPageFullColumnnWidth=_isPageFullColumnnWidth;
 @property(nonatomic) long long pageSizeClass; // @synthesize pageSizeClass=_pageSizeClass;
-@property(nonatomic) _Bool pagingEnabled; // @synthesize pagingEnabled=_pagingEnabled;
+@property(nonatomic) _Bool prefersPagingEnabled; // @synthesize prefersPagingEnabled=_prefersPagingEnabled;
 @property(nonatomic) __weak id <PXGadgetCollectionViewLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PXGadgetSpec *spec; // @synthesize spec=_spec;
-- (void).cxx_destruct;
 - (unsigned long long)_sectionHeaderStyleForGadget:(id)arg1;
 - (_Bool)_shouldShowSectionHeaderForGadget:(id)arg1;
 - (_Bool)_hasButtonForGadget:(id)arg1;
 - (unsigned long long)_buttonTypeForGadget:(id)arg1;
 - (id)_titleForGadget:(id)arg1;
-- (id)_gadgetForSection:(long long)arg1;
+- (void)_updateMinimumLineSpacing;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
 - (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1 withScrollingVelocity:(struct CGPoint)arg2;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (_Bool)flipsHorizontallyInOppositeLayoutDirection;
+- (void)setScrollDirection:(long long)arg1;
+- (_Bool)_disablesDoubleSidedAnimations;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

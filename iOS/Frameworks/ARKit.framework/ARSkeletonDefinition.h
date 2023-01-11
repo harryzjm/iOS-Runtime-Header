@@ -16,13 +16,14 @@
     ARSkeleton3D *_neutralBodySkeleton3D;
 }
 
-+ (id)default2DSkeletonDefinition;
-+ (id)default3DSkeletonDefinition;
++ (id)defaultBody3DSkeletonDefinition;
++ (id)defaultBody2DSkeletonDefinition;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) ARSkeleton3D *neutralBodySkeleton3D; // @synthesize neutralBodySkeleton3D=_neutralBodySkeleton3D;
 @property(readonly, nonatomic) NSArray *parentIndices; // @synthesize parentIndices=_parentIndices;
 @property(readonly, nonatomic) NSArray *jointNames; // @synthesize jointNames=_jointNames;
 @property(readonly, nonatomic) unsigned long long jointCount; // @synthesize jointCount=_jointCount;
-- (void).cxx_destruct;
+- (unsigned long long)indexForJointName:(id)arg1;
 
 @end
 

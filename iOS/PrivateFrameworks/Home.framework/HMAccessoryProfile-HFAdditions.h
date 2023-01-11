@@ -7,13 +7,16 @@
 #import <HomeKit/HMAccessoryProfile.h>
 
 #import <Home/HFFavoritable-Protocol.h>
+#import <Home/HFHomeKitObject-Protocol.h>
+#import <Home/HFRoomContextProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class HMRoom, NSString, NSUUID;
 @protocol HFIconDescriptor;
 
-@interface HMAccessoryProfile (HFAdditions) <HFStateDumpBuildable, HFFavoritable>
+@interface HMAccessoryProfile (HFAdditions) <HFStateDumpBuildable, HFFavoritable, HFHomeKitObject, HFRoomContextProviding>
 + (id)_profilesWithNonStandardTileUI;
+@property(readonly, nonatomic) _Bool hf_offersAutomation;
 @property(readonly, nonatomic) _Bool hf_hasNonStandardTileUI;
 @property(readonly, nonatomic) id <HFIconDescriptor> hf_iconDescriptor;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
@@ -22,12 +25,13 @@
 @property(readonly, nonatomic) _Bool hf_hasSetFavorite;
 @property(readonly, nonatomic) _Bool hf_isFavorite;
 - (_Bool)hf_isValidObject;
-- (id)hf_parentRoom;
+@property(readonly, nonatomic) __weak HMRoom *hf_parentRoom;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @end
 

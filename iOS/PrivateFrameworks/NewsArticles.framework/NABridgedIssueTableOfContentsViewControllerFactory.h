@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)createViewControllerFor:(id)arg1;
-- (id)initWithResolver:(id)arg1 bridgedActionHandler:(id)arg2;
+- (id)initWithResolver:(id)arg1 bridgedContainer:(id)arg2 bridgedActionHandler:(id)arg3;
 
 @end
 

@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) MPModelPlaylist *currentPlayingPlaylist;
 @property(readonly, nonatomic) MPModelPlaylistEntry *currentPlayingPlaylistEntry;
 @property(readonly, nonatomic) MPModelSong *currentPlayingSong;
+@property(readonly, nonatomic) long long playerState;
 @property(nonatomic) _Bool limitedUI;
 - (void)viewWillDisappear;
 - (void)endRequestObservation;

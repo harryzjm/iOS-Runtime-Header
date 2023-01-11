@@ -4,30 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBAppLayout, SBDeckSwitcherModifier;
+@class SBAppLayout, SBSwitcherModifier;
 
 @interface SBDeckToFullScreenSwitcherModifier
 {
+    long long _direction;
     SBAppLayout *_fullScreenAppLayout;
-    SBDeckSwitcherModifier *_deckLayoutModifier;
+    SBSwitcherModifier *_deckModifier;
+    _Bool _wantsMinificationFilter;
 }
 
 - (void).cxx_destruct;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (id)topMostAppLayouts;
+- (id)_appLayoutToScrollToDuringTransition;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)appLayoutToScrollToBeforeTransitioning;
+- (id)appLayoutsToCacheSnapshots;
+- (id)topMostLayoutElements;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
+- (id)handleMainTransitionEvent:(id)arg1;
 - (id)transitionWillBegin;
-- (id)appLayoutToScrollToDuringTransition;
-- (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 multitaskingModifier:(id)arg4;
+- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 deckModifier:(id)arg4;
 
 @end
 

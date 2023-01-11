@@ -11,21 +11,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityHandwritingElement;
 - (int)_accessibilityRemotePid;
 - (_Bool)_accessibilityHandlesRemoteFocusMovement;
-- (_Bool)_accessibilityHandleDefaultActionForNativeFocusedElement;
-- (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1;
-- (void)_axSendUpAndDownForKeyCode:(unsigned short)arg1 modifierFlags:(long long)arg2 input:(id)arg3;
-- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (_Bool)accessibilityPerformEscape;
+- (id)_viewToAddFocusLayer;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (_Bool)canBecomeFocused;
-- (void)_axSetHandlesFullKeyboardAccessCommands:(_Bool)arg1;
-- (_Bool)_axHandlesFullKeyboardAccessCommands;
 - (id)accessibilityDragSourceDescriptors;
 - (void)_hideKeyboard;
 - (void)_zoomToRevealFocusedElement;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
 - (struct CGRect)accessibilityFrame;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityElements;
 - (void)dealloc;
 - (_Bool)_accessibilityIsScrollAncestor;
@@ -34,6 +31,8 @@
 - (_Bool)_accessibilityBeginUndoableTextInsertion;
 - (void)toggleUnderline:(id)arg1;
 - (void)toggleItalics:(id)arg1;
+- (void)decreaseSizeForWebView:(id)arg1;
+- (void)increaseSizeForWebView:(id)arg1;
 - (void)toggleBoldface:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)paste:(id)arg1;
@@ -42,9 +41,10 @@
 - (void)_pasteboardChanged:(id)arg1;
 - (void)handleKeyWebEvent:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_accessibilityResponderElementForFocus;
-- (unsigned long long)accessibilityTraits;
+- (_Bool)accessibilityParentDiscardsChildrenContainerGroupingBehavior;
 - (long long)accessibilityContainerType;
 - (_Bool)_accessibilityServesAsFirstResponder;
+- (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (void)_setAccessibilityWebProcessToken:(id)arg1;
 - (void)_processDidExit;
@@ -54,6 +54,7 @@
 - (void)_axClearRemoteElements;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_registerForNotificationsIfNecessary;
+- (void)_signalAccessibilityPageLoadCompleteForCatalyst;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (unsigned long long)_accessibilityAutomationType;
 

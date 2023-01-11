@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSAssertionIdentifier : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSAssertionIdentifier : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     NSString *_desc;
     unsigned long long _hash;
@@ -20,24 +20,22 @@
     unsigned long long _count;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (id)identifierWithClientPid:(int)arg1;
-+ (unsigned long long)_next;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
 @property(readonly, nonatomic) int clientPid; // @synthesize clientPid=_clientPid;
 @property(readonly, nonatomic) int serverPid; // @synthesize serverPid=_serverPid;
-- (void).cxx_destruct;
-- (id)_initWithServerPid:(int)arg1 clientPid:(int)arg2 count:(unsigned long long)arg3;
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly) Class superclass;
 
 @end

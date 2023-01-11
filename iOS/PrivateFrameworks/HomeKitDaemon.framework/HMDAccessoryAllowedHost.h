@@ -8,27 +8,31 @@
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDNetworkRouterFirewallRuleWAN, HMFNetAddress, NSString;
+@class HMDNetworkRouterFirewallRuleWAN, NSSet, NSString;
 
 @interface HMDAccessoryAllowedHost : HMFObject <NSSecureCoding>
 {
+    HMDNetworkRouterFirewallRuleWAN *_cachedWANRule;
     NSString *_jsonWANRule;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)allowedHostsFromFirewallRuleConfiguration:(id)arg1;
 + (id)allowedHostsFromJSONFirewallWANRules:(id)arg1;
-@property(readonly) NSString *jsonWANRule; // @synthesize jsonWANRule=_jsonWANRule;
++ (id)allowedHostForFullWANAccess;
 - (void).cxx_destruct;
+@property(readonly) NSString *jsonWANRule; // @synthesize jsonWANRule=_jsonWANRule;
+- (id)attributeDescriptions;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)_encodeForLocalStoreWithCoder:(id)arg1;
 - (void)_encodeForSPIEntitledXPCTransportWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long purpose;
-@property(readonly) HMFNetAddress *address;
+@property(readonly) NSSet *addresses;
 @property(readonly) NSString *name;
 @property(readonly, nonatomic) HMDNetworkRouterFirewallRuleWAN *wanRule;
+- (id)initWithWANRule:(id)arg1;
 - (id)initWithJSONFirewallWANRule:(id)arg1;
 
 @end

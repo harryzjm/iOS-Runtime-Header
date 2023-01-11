@@ -10,7 +10,9 @@
 #import <Home/HFStringGenerator-Protocol.h>
 
 @interface NSString (HFPropertyListConverting) <HFPropertyListConvertible, HFStringGenerator>
++ (id)hf_stringWithFormat:(id)arg1 arguments:(id)arg2;
 + (id)hf_formattedPersonNameForFirstName:(id)arg1 lastName:(id)arg2;
+- (id)hf_stringByTrimmingTrailingHexCode;
 - (unsigned long long)hf_countForSubstring:(id)arg1;
 - (id)hf_toHexString:(char *)arg1 length:(unsigned int)arg2;
 - (unsigned int)hf_UTF8Length;

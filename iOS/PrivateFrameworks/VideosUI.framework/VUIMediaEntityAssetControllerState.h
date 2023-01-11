@@ -8,19 +8,32 @@
 
 #import <VideosUI/NSCopying-Protocol.h>
 
+@class NSDate;
+
 __attribute__((visibility("hidden")))
 @interface VUIMediaEntityAssetControllerState : NSObject <NSCopying>
 {
     _Bool _supportsCancellation;
     _Bool _supportsPausing;
+    _Bool _renewsOfflineKeysAutomatically;
+    _Bool _performsKeyFetchOnly;
+    _Bool _allowsCellular;
     unsigned long long _status;
     double _downloadProgress;
+    NSDate *_downloadExpirationDate;
+    NSDate *_availabilityEndDate;
     unsigned long long _bytesToDownload;
     unsigned long long _bytesDownloaded;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long bytesDownloaded; // @synthesize bytesDownloaded=_bytesDownloaded;
 @property(nonatomic) unsigned long long bytesToDownload; // @synthesize bytesToDownload=_bytesToDownload;
+@property(nonatomic) _Bool allowsCellular; // @synthesize allowsCellular=_allowsCellular;
+@property(nonatomic) _Bool performsKeyFetchOnly; // @synthesize performsKeyFetchOnly=_performsKeyFetchOnly;
+@property(retain, nonatomic) NSDate *availabilityEndDate; // @synthesize availabilityEndDate=_availabilityEndDate;
+@property(retain, nonatomic) NSDate *downloadExpirationDate; // @synthesize downloadExpirationDate=_downloadExpirationDate;
+@property(nonatomic) _Bool renewsOfflineKeysAutomatically; // @synthesize renewsOfflineKeysAutomatically=_renewsOfflineKeysAutomatically;
 @property(nonatomic) _Bool supportsPausing; // @synthesize supportsPausing=_supportsPausing;
 @property(nonatomic) _Bool supportsCancellation; // @synthesize supportsCancellation=_supportsCancellation;
 @property(nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;

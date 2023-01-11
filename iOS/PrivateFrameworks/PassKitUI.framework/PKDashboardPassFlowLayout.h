@@ -20,16 +20,14 @@
     _Bool _userWasHoldingCard;
     _Bool _bouncing;
     _Bool _showNonPassCells;
-    double _revealingContentOffset;
+    _Bool _revealingItems;
     struct CGSize _passCellSize;
     NSMutableDictionary *_attributesPerIndexPath;
     struct CGSize _currentSize;
     _Bool _isCompactUI;
     _Bool _preventLayoutComputation;
-    _Bool _fade;
 }
 
-@property(nonatomic) _Bool fade; // @synthesize fade=_fade;
 - (void).cxx_destruct;
 - (void)passPanDidEnd;
 - (void)passPanDidBegin;
@@ -54,6 +52,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool fade;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

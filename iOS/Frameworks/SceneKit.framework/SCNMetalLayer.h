@@ -9,7 +9,7 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, NSString, SCNDisplayLink, SCNJitterer, SCNNode, SCNRenderer, SCNScene, SCNTechnique, SKScene;
+@class AVAudioEngine, AVAudioEnvironmentNode, MTLRenderPassDescriptor, NSString, SCNDisplayLink, SCNJitterer, SCNNode, SCNRenderer, SCNScene, SCNTechnique, SKScene;
 @protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, SCNSceneRendererDelegate;
 
 @interface SCNMetalLayer : CAMetalLayer <SCNSceneRenderer, SCNTechniqueSupport>
@@ -65,7 +65,7 @@
 @property(readonly, nonatomic) id <MTLCommandQueue> commandQueue;
 @property(readonly, nonatomic) id <MTLDevice> device;
 @property(readonly, nonatomic) id <MTLRenderCommandEncoder> currentRenderCommandEncoder;
-- (id)currentRenderPassDescriptor;
+@property(readonly, nonatomic) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 @property(retain, nonatomic) SKScene *overlaySKScene;
 @property(nonatomic) _Bool loops;
 @property(getter=isPlaying) _Bool playing;

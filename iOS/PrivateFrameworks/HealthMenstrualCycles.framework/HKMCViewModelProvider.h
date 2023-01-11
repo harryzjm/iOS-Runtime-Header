@@ -9,13 +9,15 @@
 #import <HealthMenstrualCycles/HKMCAnalysisProviderObserver-Protocol.h>
 #import <HealthMenstrualCycles/HKMCViewModelProviderDataSourceDelegate-Protocol.h>
 
-@class HKMCAnalysis, HKMCAnalysisProvider, HKMCViewModelProviderDataSource, NSHashTable, NSMutableDictionary, NSMutableIndexSet, NSNumber, NSString;
+@class HKCalendarCache, HKMCAnalysis, HKMCAnalysisProvider, HKMCViewModelProviderDataSource, NSHashTable, NSMutableDictionary, NSMutableIndexSet, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HKMCViewModelProvider : NSObject <HKMCViewModelProviderDataSourceDelegate, HKMCAnalysisProviderObserver>
 {
     HKMCViewModelProviderDataSource *_dataSource;
     HKMCAnalysisProvider *_analysisProvider;
     NSHashTable *_observers;
+    NSObject<OS_dispatch_queue> *_queue;
     long long _maximumActiveDuration;
     long long _minimumPrefetchDuration;
     CDStruct_ef5fcbe6 _managedDayRange;
@@ -24,15 +26,16 @@
     NSMutableDictionary *_daySummariesByDayIndex;
     NSNumber *_minimumAnalysisAnchor;
     HKMCAnalysis *_analysis;
+    HKCalendarCache *_calendarCache;
     CDStruct_ef5fcbe6 _activeDayRange;
 }
 
-@property(nonatomic) CDStruct_ef5fcbe6 activeDayRange; // @synthesize activeDayRange=_activeDayRange;
 - (void).cxx_destruct;
+@property(nonatomic) CDStruct_ef5fcbe6 activeDayRange; // @synthesize activeDayRange=_activeDayRange;
 - (_Bool)_ppt_didFetchDaySummaries;
 - (_Bool)_ppt_didFetchAnalysis;
 - (CDStruct_ef5fcbe6)_test_managedDayRange;
-- (void)_notifyObserversDidUpdate;
+- (void)_queue_notifyObserversDidUpdate;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)analysisProvider:(id)arg1 didUpdateAnalysis:(id)arg2;
@@ -44,10 +47,11 @@
 - (long long)_fetchStateForDayIndex:(long long)arg1;
 - (void)_updateManagedDayRangeIfNeeded;
 - (unsigned long long)_fertileWindowLevelWithDayIndex:(long long)arg1;
-- (unsigned long long)_menstruationLevelWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2;
+- (unsigned long long)_menstruationLevelWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 partiallyLoggedPeriod:(_Bool *)arg3;
 - (id)_viewModelWithDayIndex:(long long)arg1 fetchedDaySummary:(id)arg2;
 - (id)dayViewModelAtIndex:(long long)arg1;
-- (id)_initWithDataSource:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4;
+- (id)_initWithDataSource:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4 calendarCache:(id)arg5 queue:(id)arg6;
+- (id)initWithHealthStore:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4 queue:(id)arg5;
 - (id)initWithHealthStore:(id)arg1 analysisProvider:(id)arg2 maximumActiveDuration:(long long)arg3 minimumPrefetchDuration:(long long)arg4;
 
 // Remaining properties

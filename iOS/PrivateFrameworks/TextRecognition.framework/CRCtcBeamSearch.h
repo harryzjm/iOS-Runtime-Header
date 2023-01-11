@@ -10,28 +10,16 @@
 
 @interface CRCtcBeamSearch : NSObject
 {
-    void *_characterLanguageModel;
-    struct _LXLexicon *_staticLexicon;
     struct _LXLexicon *_dynamicLexicon;
-    void *_wordLanguageModel;
     NSLocale *_locale;
 }
 
-@property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-@property(nonatomic) void *wordLanguageModel; // @synthesize wordLanguageModel=_wordLanguageModel;
-@property(nonatomic) struct _LXLexicon *dynamicLexicon; // @synthesize dynamicLexicon=_dynamicLexicon;
-@property(nonatomic) struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
-@property(nonatomic) void *characterLanguageModel; // @synthesize characterLanguageModel=_characterLanguageModel;
 - (void).cxx_destruct;
-- (id)kBestPathsForInput:(id)arg1 k:(unsigned long long)arg2 beamWidth:(unsigned long long)arg3 outputProbs:(id *)arg4 outputWhitespaceRanges:(id *)arg5;
-- (struct _LXLexicon *)newDynamicLexiconForLocale:(id)arg1 error:(id *)arg2;
-- (void)loadWordLanguageModel;
-- (void)loadDynamicLexicon:(id)arg1 forLocale:(id)arg2;
-- (void)loadStaticLexicon:(id)arg1;
-- (void)loadCharacterNgramModel:(id)arg1;
-- (_Bool)isLanguageSupported:(id)arg1;
+@property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(nonatomic) struct _LXLexicon *dynamicLexicon; // @synthesize dynamicLexicon=_dynamicLexicon;
+- (id)kBestPathsForInput:(id)arg1 k:(unsigned long long)arg2 beamWidth:(unsigned long long)arg3 outputProbs:(id *)arg4 outputWhitespaceRanges:(id *)arg5 error:(id *)arg6;
 - (void)dealloc;
-- (id)initWithOptions:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
 
 @end
 

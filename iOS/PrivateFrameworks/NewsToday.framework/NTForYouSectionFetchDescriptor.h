@@ -15,14 +15,14 @@
     NTCatchUpOperationForYouRequest *_forYouRequest;
 }
 
-@property(copy, nonatomic) NTCatchUpOperationForYouRequest *forYouRequest; // @synthesize forYouRequest=_forYouRequest;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NTCatchUpOperationForYouRequest *forYouRequest; // @synthesize forYouRequest=_forYouRequest;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)incrementalLimitTransformationWithFeedPersonalizer:(id)arg1 limit:(unsigned long long)arg2 priorFeedItems:(id)arg3;
 - (id)incrementalSortTransformationWithFeedPersonalizer:(id)arg1;
 - (id)assembleResultsWithCatchUpOperation:(id)arg1;
 - (void)configureCatchUpOperationWithFetchRequest:(id)arg1;
-- (id)initWithForYouConfiguration:(id)arg1 topStoriesChannelID:(id)arg2 hiddenFeedIDs:(id)arg3 paidBundleFeedID:(id)arg4 mutedTagIDs:(id)arg5 purchasedTagIDs:(id)arg6 subscribedTagIDs:(id)arg7 bundleSubscriptionProvider:(id)arg8;
+- (id)initWithForYouConfiguration:(id)arg1 appConfiguration:(id)arg2 topStoriesChannelID:(id)arg3 hiddenFeedIDs:(id)arg4 paidBundleFeedID:(id)arg5 mutedTagIDs:(id)arg6 purchasedTagIDs:(id)arg7 subscribedTagIDs:(id)arg8 bundleSubscriptionProvider:(id)arg9;
 - (id)init;
 
 // Remaining properties

@@ -79,12 +79,12 @@
 
 + (id)timeStringForSeconds:(int)arg1 forceFullWidthComponents:(_Bool)arg2 isElapsed:(_Bool)arg3;
 + (_Bool)_allowActionsToQueue;
+- (void).cxx_destruct;
 @property(nonatomic) double edgeInset; // @synthesize edgeInset=_edgeInset;
 @property(nonatomic) double minimumTrimLength; // @synthesize minimumTrimLength=_minTrimmedLength;
 @property(nonatomic) double maximumTrimLength; // @synthesize maximumTrimLength=_maxTrimmedLength;
 @property(nonatomic) _Bool showTimeViews; // @synthesize showTimeViews=_showTimeViews;
 @property(nonatomic) double zoomDelay; // @synthesize zoomDelay=_zoomDelay;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isZoomAnimating) _Bool zoomAnimating;
 @property(readonly, nonatomic) double zoomMaximumValue;
 @property(readonly, nonatomic) double zoomMinimumValue;
@@ -122,7 +122,6 @@
 - (void)_setZoomAnimating:(_Bool)arg1;
 - (void)setRotationDisabled:(_Bool)arg1;
 - (double)_valueForLocatable:(id)arg1;
-- (void)_sendDelayedActions;
 - (void)_sliderAnimationDidStop:(_Bool)arg1;
 - (void)_sliderAnimationWillStart;
 @property(nonatomic) double trimEndValue;

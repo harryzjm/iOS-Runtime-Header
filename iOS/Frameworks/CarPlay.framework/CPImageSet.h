@@ -8,18 +8,22 @@
 
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class UIImage;
+@class CPImageSetAssetRegistration, UIImage;
 
 @interface CPImageSet : NSObject <NSSecureCoding>
 {
     UIImage *_lightContentImage;
     UIImage *_darkContentImage;
+    CPImageSetAssetRegistration *_currentAssetRegistration;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CPImageSetAssetRegistration *currentAssetRegistration; // @synthesize currentAssetRegistration=_currentAssetRegistration;
 @property(retain, nonatomic) UIImage *darkContentImage; // @synthesize darkContentImage=_darkContentImage;
 @property(retain, nonatomic) UIImage *lightContentImage; // @synthesize lightContentImage=_lightContentImage;
-- (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
+- (void)resizeImagesToSize:(struct CGSize)arg1;
 - (void)swapStyles;
 - (id)image;
 - (id)initWithImage:(id)arg1;

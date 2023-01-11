@@ -10,35 +10,37 @@
 #import <AuthKitUI/UITableViewDelegate-Protocol.h>
 
 @class AKAuthorizationPaneContext, NSLayoutConstraint, NSMutableArray, NSString, UIStackView, UITableView, UIVisualEffectView;
-@protocol AKAuthorizationEditableDataSources, AKAuthorizationPaneViewControllerDelegate;
+@protocol AKAuthorizationEditableDataSources, AKAuthorizationPaneDelegate;
 
 @interface AKAuthorizationPaneViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-    UITableView *_tableView;
-    id <AKAuthorizationPaneViewControllerDelegate> _paneDelegate;
+    _Bool _isWristDetectionEnabled;
+    id <AKAuthorizationPaneDelegate> _paneDelegate;
     id <AKAuthorizationEditableDataSources> _editableDataSources;
     UIStackView *_paneHeaderStackView;
     UIStackView *_paneFooterStackView;
     AKAuthorizationPaneContext *_headerPaneContext;
     AKAuthorizationPaneContext *_footerPaneContext;
     NSMutableArray *_mutableConstraints;
+    UITableView *_tableView;
     NSLayoutConstraint *_headerWidthConstraint;
     NSLayoutConstraint *_footerWidthConstraint;
     UIVisualEffectView *_blurryTray;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffectView *blurryTray; // @synthesize blurryTray=_blurryTray;
 @property(readonly, nonatomic) NSLayoutConstraint *footerWidthConstraint; // @synthesize footerWidthConstraint=_footerWidthConstraint;
 @property(readonly, nonatomic) NSLayoutConstraint *headerWidthConstraint; // @synthesize headerWidthConstraint=_headerWidthConstraint;
+@property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property(readonly, nonatomic) _Bool isWristDetectionEnabled; // @synthesize isWristDetectionEnabled=_isWristDetectionEnabled;
 @property(retain, nonatomic) NSMutableArray *mutableConstraints; // @synthesize mutableConstraints=_mutableConstraints;
 @property(retain, nonatomic) AKAuthorizationPaneContext *footerPaneContext; // @synthesize footerPaneContext=_footerPaneContext;
 @property(retain, nonatomic) AKAuthorizationPaneContext *headerPaneContext; // @synthesize headerPaneContext=_headerPaneContext;
 @property(readonly, nonatomic) UIStackView *paneFooterStackView; // @synthesize paneFooterStackView=_paneFooterStackView;
 @property(readonly, nonatomic) UIStackView *paneHeaderStackView; // @synthesize paneHeaderStackView=_paneHeaderStackView;
 @property(nonatomic) __weak id <AKAuthorizationEditableDataSources> editableDataSources; // @synthesize editableDataSources=_editableDataSources;
-@property(nonatomic) __weak id <AKAuthorizationPaneViewControllerDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
-@property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <AKAuthorizationPaneDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -62,7 +64,7 @@
 - (double)intrinsicContentHeight;
 - (_Bool)_shouldEmbedContentTray;
 - (_Bool)shouldEmbedContentTrayIfNeeded;
-- (double)contentTrayOffset;
+- (double)contentScrollOffset;
 - (_Bool)_isContentUnderNavigationBar;
 - (_Bool)_isContentUnderTray;
 - (double)_contentTrayOffsetAdjustedForScrollInset:(_Bool)arg1;

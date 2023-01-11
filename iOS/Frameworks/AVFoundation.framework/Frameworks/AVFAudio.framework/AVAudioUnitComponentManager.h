@@ -24,10 +24,6 @@
 - (void)registrationsChanged:(id)arg1;
 - (void)localeChanged:(id)arg1;
 - (id)init;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

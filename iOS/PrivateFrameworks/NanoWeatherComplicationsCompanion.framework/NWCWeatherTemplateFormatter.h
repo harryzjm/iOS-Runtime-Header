@@ -16,20 +16,22 @@
 }
 
 + (id)sharedFormatter;
-@property(retain, nonatomic) NWMTemperatureFormatter *temperatureFormatter; // @synthesize temperatureFormatter=_temperatureFormatter;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NWMTemperatureFormatter *temperatureFormatter; // @synthesize temperatureFormatter=_temperatureFormatter;
 - (id)switcherTemplateWithFamily:(long long)arg1;
 - (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
-- (id)utilitarianSmallTemplateForConditions:(id)arg1;
-- (id)utilitarianLargeTemplateForConditions:(id)arg1;
-- (id)modularSmallTemplateForConditions:(id)arg1;
-- (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(_Bool)arg2 airQualityConditions:(id)arg3 conditions:(id)arg4 dailyForecastedConditions:(id)arg5;
-- (id)graphicCornerTemplateForCurrentObservations:(id)arg1 dailyForecastedConditions:(id)arg2;
-- (id)graphicCircularTemplateForCurrentObservations:(id)arg1 dailyForecastedConditions:(id)arg2;
-- (id)graphicBezelTemplateForCurrentObservations:(id)arg1 dailyForecastedConditions:(id)arg2;
-- (id)extraLargeTemplateForConditions:(id)arg1;
-- (id)circularSmallTemplateForConditions:(id)arg1;
-- (id)circularMediumTemplateForConditions:(id)arg1;
+- (id)utilitarianSmallTemplateForEntryModel:(id)arg1;
+- (id)utilitarianLargeTemplateForEntryModel:(id)arg1;
+- (id)modularSmallTemplateForEntryModel:(id)arg1;
+- (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(_Bool)arg2 entryModel:(id)arg3;
+- (id)graphicCornerTemplateForEntryModel:(id)arg1;
+- (id)graphicExtraLargeCircularTemplateForEntryModel:(id)arg1;
+- (id)graphicCircularTemplateForEntryModel:(id)arg1;
+- (id)_richCircularTemplateForComplicationFamily:(long long)arg1 entryModel:(id)arg2;
+- (id)graphicBezelTemplateForEntryModel:(id)arg1;
+- (id)extraLargeTemplateForEntryModel:(id)arg1;
+- (id)circularSmallTemplateForEntryModel:(id)arg1;
+- (id)circularMediumTemplateForEntryModel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

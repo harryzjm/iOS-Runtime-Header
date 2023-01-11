@@ -15,7 +15,6 @@
 @interface GEOTransitRouteDisplayStrings : PBCodable <GEOComposedRouteTransitDisplayStrings, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_advisorys;
     GEOFormattedString *_badge;
@@ -23,6 +22,9 @@
     GEOFormattedString *_duration;
     GEOFormattedString *_planningDescription;
     GEOFormattedString *_travelDescription;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_advisorys:1;
@@ -31,13 +33,7 @@
         unsigned int read_duration:1;
         unsigned int read_planningDescription:1;
         unsigned int read_travelDescription:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_advisorys:1;
-        unsigned int wrote_badge:1;
-        unsigned int wrote_durationList:1;
-        unsigned int wrote_duration:1;
-        unsigned int wrote_planningDescription:1;
-        unsigned int wrote_travelDescription:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,30 +50,28 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) GEOFormattedString *badge;
 @property(readonly, nonatomic) _Bool hasBadge;
-- (void)_readBadge;
 - (id)advisoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)advisorysCount;
-- (void)_addNoFlagsAdvisory:(id)arg1;
 - (void)addAdvisory:(id)arg1;
 - (void)clearAdvisorys;
 @property(retain, nonatomic) NSMutableArray *advisorys;
-- (void)_readAdvisorys;
 @property(retain, nonatomic) GEOFormattedString *travelDescription;
 @property(readonly, nonatomic) _Bool hasTravelDescription;
-- (void)_readTravelDescription;
 @property(retain, nonatomic) GEOFormattedString *durationList;
 @property(readonly, nonatomic) _Bool hasDurationList;
-- (void)_readDurationList;
 @property(retain, nonatomic) GEOFormattedString *duration;
 @property(readonly, nonatomic) _Bool hasDuration;
-- (void)_readDuration;
 @property(retain, nonatomic) GEOFormattedString *planningDescription;
 @property(readonly, nonatomic) _Bool hasPlanningDescription;
-- (void)_readPlanningDescription;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) id <GEOServerFormattedString> transitRouteBadge;
 @property(readonly, nonatomic) NSArray *transitAdvisories;
 @property(readonly, nonatomic) id <GEOServerFormattedString> transitDescriptionFormatString;

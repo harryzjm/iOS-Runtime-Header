@@ -15,5 +15,6 @@
 + (void)pushNibPath:(id)arg1;
 - (id)dataForResourceName:(id)arg1;
 - (id)loadNibNamed:(id)arg1 owner:(id)arg2 options:(id)arg3;
+- (id)_preferredEnglishLocalizationBundle;
 @end
 

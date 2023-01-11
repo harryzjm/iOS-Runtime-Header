@@ -13,7 +13,6 @@
     UICollectionReusableView<SiriUIReusableView> *_footerView;
     UICollectionReusableView<SiriUIReusableView> *_transparentHeaderView;
     UICollectionReusableView<SiriUIReusableView> *_transparentFooterView;
-    _Bool _topKeylineHidden;
     _Bool _wantsConfirmationInsets;
     _Bool _isFullPadWidth;
     _Bool _isTransparent;
@@ -21,12 +20,13 @@
     _Bool _confirmed;
     _Bool _cancelled;
     _Bool _virgin;
+    _Bool _navigating;
     _Bool _willAnimateConfirmation;
     _Bool _willAnimateCancellation;
     _Bool _awaitingSuccessOrFailureEvent;
     _Bool _showHeaderChevron;
     _Bool _provisional;
-    struct NSUUID *_instrumentationTurnIdentifier;
+    NSUUID *_instrumentationTurnIdentifier;
     UIColor *_titleTextColor;
     UIColor *_titleBackgroundColor;
     NSAttributedString *_attributedSubtitle;
@@ -40,6 +40,7 @@
     struct UIEdgeInsets _defaultViewInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_isProvisional, setter=_setProvisional:) _Bool provisional; // @synthesize provisional=_provisional;
 @property(nonatomic) _Bool showHeaderChevron; // @synthesize showHeaderChevron=_showHeaderChevron;
 @property(nonatomic, getter=_isAwaitingSuccessOrFailureEvent, setter=_setAwaitingSuccessOrFailureEvent:) _Bool awaitingSuccessOrFailureEvent; // @synthesize awaitingSuccessOrFailureEvent=_awaitingSuccessOrFailureEvent;
@@ -47,6 +48,7 @@
 @property(nonatomic, getter=_willAnimateCancellation, setter=_setWillAnimateCancellation:) _Bool willAnimateCancellation; // @synthesize willAnimateCancellation=_willAnimateCancellation;
 @property(nonatomic, getter=_willAnimateConfirmation, setter=_setWillAnimateConfirmation:) _Bool willAnimateConfirmation; // @synthesize willAnimateConfirmation=_willAnimateConfirmation;
 @property(nonatomic) long long defaultKeylineType; // @synthesize defaultKeylineType=_defaultKeylineType;
+@property(nonatomic, getter=isNavigating) _Bool navigating; // @synthesize navigating=_navigating;
 @property(readonly, nonatomic, getter=isVirgin) _Bool virgin; // @synthesize virgin=_virgin;
 @property(nonatomic) __weak UIView *containingView; // @synthesize containingView=_containingView;
 @property(nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
@@ -60,12 +62,14 @@
 @property(retain, nonatomic) SAUIAppPunchOut *headerPunchOut; // @synthesize headerPunchOut=_headerPunchOut;
 @property(copy, nonatomic) NSArray *requestContext; // @synthesize requestContext=_requestContext;
 @property(copy, nonatomic) NSString *navigationTitle; // @synthesize navigationTitle=_navigationTitle;
-@property(nonatomic) _Bool topKeylineHidden; // @synthesize topKeylineHidden=_topKeylineHidden;
 @property(copy, nonatomic) NSAttributedString *attributedSubtitle; // @synthesize attributedSubtitle=_attributedSubtitle;
 @property(copy, nonatomic) UIColor *titleBackgroundColor; // @synthesize titleBackgroundColor=_titleBackgroundColor;
 @property(copy, nonatomic) UIColor *titleTextColor; // @synthesize titleTextColor=_titleTextColor;
 @property(retain, nonatomic) NSUUID *instrumentationTurnIdentifier; // @synthesize instrumentationTurnIdentifier=_instrumentationTurnIdentifier;
-- (void).cxx_destruct;
+- (id)_instrumentationManager;
+- (void)_instrumentConfirmationOptionInteractionWithPreviousTurn:(id)arg1;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)setTopKeylineHidden:(_Bool)arg1;
 - (void)confirmSnippet;
 - (void)confirmButtonTapped:(id)arg1;
 - (void)cancelButtonTapped:(id)arg1;
@@ -107,6 +111,8 @@
 - (long long)_insertionAnimation;
 - (long long)_pinAnimationType;
 - (void)_setVirgin:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (_Bool)shouldHidePriorViews;
 - (_Bool)logContentsIfApplicable;
 @property(readonly, nonatomic, getter=isIndicatingActivity) _Bool indicatingActivity;

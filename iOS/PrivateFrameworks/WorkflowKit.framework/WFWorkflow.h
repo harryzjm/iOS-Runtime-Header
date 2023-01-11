@@ -12,7 +12,7 @@
 #import <WorkflowKit/WFNaming-Protocol.h>
 
 @class NSArray, NSString, WFActionGroupingCache, WFVariableAvailability, WFWorkflowIcon, WFWorkflowQuarantine, WFWorkflowRecord, WFWorkflowReference;
-@protocol WFRecordStorageProvider;
+@protocol WFWorkflowStorage;
 
 @interface WFWorkflow : NSObject <WFNaming, WFActionEventObserver, NSCopying, NSSecureCoding>
 {
@@ -25,32 +25,34 @@
     WFWorkflowRecord *_record;
     long long _environment;
     WFWorkflowQuarantine *_quarantine;
-    WFWorkflowReference *_overridenReference;
-    id <WFRecordStorageProvider> _storageProvider;
+    id <WFWorkflowStorage> _storageProvider;
 }
 
 + (_Bool)checkClientVersion:(id)arg1 currentVersion:(id)arg2 error:(id *)arg3;
++ (void)loadActionDescriptionIconsWithActions:(id)arg1 maxCount:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)localizedSubtitleWithActionCount:(unsigned long long)arg1;
 + (id)effectiveInputClassesFromInputClasses:(id)arg1 workflowTypes:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)defaultName;
 + (id)supportedInputClassNames;
 + (id)supportedInputClasses;
-+ (id)workflowWithReference:(id)arg1 storageProvider:(id)arg2 error:(id *)arg3;
-@property(readonly, nonatomic) id <WFRecordStorageProvider> storageProvider; // @synthesize storageProvider=_storageProvider;
++ (id)workflowWithReference:(id)arg1 database:(id)arg2 migrateIfNecessary:(_Bool)arg3 environment:(long long)arg4 error:(id *)arg5;
++ (id)workflowWithReference:(id)arg1 database:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool saveDisabled; // @synthesize saveDisabled=_saveDisabled;
-@property(readonly, nonatomic) WFWorkflowReference *overridenReference; // @synthesize overridenReference=_overridenReference;
+@property(retain, nonatomic) id <WFWorkflowStorage> storageProvider; // @synthesize storageProvider=_storageProvider;
 @property(retain, nonatomic) WFWorkflowQuarantine *quarantine; // @synthesize quarantine=_quarantine;
 @property(readonly, nonatomic) long long environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) WFWorkflowRecord *record; // @synthesize record=_record;
 @property(copy, nonatomic) NSArray *importQuestions; // @synthesize importQuestions=_importQuestions;
 @property(copy, nonatomic) NSArray *inputClasses; // @synthesize inputClasses=_inputClasses;
-- (void).cxx_destruct;
 - (_Bool)isUntitled;
+- (_Bool)isInUserLibrary;
 - (_Bool)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (void)loadActionDescriptionIconsMaxCount:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)localizedSubtitle;
 - (id)localizedActionsSummary;
+- (id)additionalEffectiveInputClassesForTriggers:(id)arg1;
 - (id)effectiveInputClasses;
 - (void)action:(id)arg1 didChangeVariableName:(id)arg2 to:(id)arg3;
 - (void)updateVariablesForAction:(id)arg1 includingImportedVariables:(_Bool)arg2;
@@ -60,6 +62,7 @@
 - (void)action:(id)arg1 supplementalParameterValueDidChangeForKey:(id)arg2;
 - (void)action:(id)arg1 parameterStateDidChangeForKey:(id)arg2;
 - (id)actionForSuggestionsDrawer;
+- (_Bool)hasActions;
 - (id)actionsGroupedWithAction:(id)arg1;
 @property(readonly, nonatomic) WFActionGroupingCache *groupingCache; // @synthesize groupingCache=_groupingCache;
 - (void)moveActionsAtIndexes:(id)arg1 toIndexes:(id)arg2;
@@ -71,7 +74,8 @@
 - (void)setActions:(id)arg1;
 @property(readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 - (void)initializeAddedAction:(id)arg1;
-- (void)configureWithShortcut:(id)arg1;
+- (void)getHomeSummaryTextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)configureWithShortcut:(id)arg1 homeSummaryText:(id)arg2;
 - (void)configureAsSingleStepShortcutIfNecessary:(CDUnknownBlockType)arg1;
 - (void)saveActionsToRecordIfNeeded;
 - (void)performBatchOperation:(CDUnknownBlockType)arg1;
@@ -79,7 +83,7 @@
 - (void)loadFromRecord;
 - (void)reloadFromRecord;
 - (void)save;
-- (_Bool)hasStorageProvider;
+- (id)database;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -90,6 +94,8 @@
 @property(nonatomic) _Bool hiddenFromLibraryAndSync;
 @property(nonatomic) _Bool hiddenInComplication;
 @property(copy, nonatomic) NSArray *workflowTypes;
+@property(readonly, nonatomic) NSString *source;
+@property(readonly, nonatomic) NSString *galleryIdentifier;
 @property(readonly, nonatomic) NSString *associatedAppBundleIdentifier;
 @property(readonly, nonatomic) NSString *actionsDescription;
 @property(readonly, nonatomic) NSString *workflowSubtitle;
@@ -102,14 +108,15 @@
 - (void)dealloc;
 - (id)initWithRecord:(id)arg1 storageProvider:(id)arg2 migrateIfNecessary:(_Bool)arg3 environment:(long long)arg4 error:(id *)arg5;
 - (id)initWithRecord:(id)arg1 storageProvider:(id)arg2 error:(id *)arg3;
-- (void)overrideReference:(id)arg1;
 - (id)init;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (id)initWithShortcut:(id)arg1 error:(id *)arg2;
 - (id)initWithActionDonation:(id)arg1 error:(id *)arg2;
 - (id)initWithName:(id)arg1 description:(id)arg2 associatedAppBundleIdentifier:(id)arg3 actions:(id)arg4;
 @property(readonly, copy, nonatomic) NSString *wfName;
-- (id)eventDictionary;
+- (_Bool)isEligibleForWatch;
+- (_Bool)addWatchWorkflowTypeIfEligible;
+- (void)addWatchWorkflowType;
 - (id)createUserActivityForViewing;
 - (void)setEditingDelegate:(id)arg1;
 - (id)editingDelegate;

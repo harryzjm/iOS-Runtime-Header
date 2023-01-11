@@ -8,6 +8,7 @@
 {
 }
 
++ (id)coverageRecordType;
 + (id)vitalSignRecordType;
 + (id)procedureRecordType;
 + (id)medicationRecordType;
@@ -16,7 +17,7 @@
 + (id)conditionRecordType;
 + (id)allergyRecordType;
 + (id)allTypes;
-- (_Bool)_isClinicalType;
+- (_Bool)isClinicalType;
 
 @end
 

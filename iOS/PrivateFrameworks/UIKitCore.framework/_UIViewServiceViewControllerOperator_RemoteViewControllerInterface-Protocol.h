@@ -7,7 +7,7 @@
 #import <UIKitCore/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
 #import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIBoundingPath, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription;
+@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSString, UIColor, UITraitCollection, _UIBoundingPath, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription, _UIViewServiceViewControllerOperatorCreateOptions;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
 - (void)__cancelAlertActionWithToken:(long long)arg1;
@@ -15,6 +15,7 @@
 - (void)__undoActionWithToken:(long long)arg1;
 - (void)__restoreStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2;
 - (void)__saveStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)__setMediaOverridePID:(int)arg1;
 - (void)__exchangeAccessibilityPortInformation:(BSMachPortSendRight *)arg1 replyHandler:(void (^)(BSMachPortSendRight *, NSError *))arg2;
 - (void)__dimmingViewWasTapped;
 - (void)__textServiceDidDismiss;
@@ -36,6 +37,8 @@
 - (void)__hostDidChangeStatusBarOrientationToInterfaceOrientation:(long long)arg1;
 - (void)__hostDidBecomeActive;
 - (void)__hostWillResignActive;
+- (void)__hostSceneDidEnterBackground;
+- (void)__hostSceneWillEnterForeground;
 - (void)__hostDidEnterBackground;
 - (void)__hostWillEnterForeground;
 - (void)__setBoundingPath:(_UIBoundingPath *)arg1;
@@ -52,7 +55,6 @@
 - (void)__hostViewDidAppear:(_Bool)arg1;
 - (void)__hostViewWillAppear:(_Bool)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(UITraitCollection *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 completionHandler:(void (^)(struct CGSize))arg6;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
-- (void)__createViewController:(NSString *)arg1 withContextToken:(NSUUID *)arg2 fbsDisplays:(NSArray *)arg3 appearanceSerializedRepresentations:(NSArray *)arg4 traitCollection:(UITraitCollection *)arg5 initialInterfaceOrientation:(long long)arg6 hostAccessibilityServerPort:(BSMachPortSendRight *)arg7 canShowTextServices:(_Bool)arg8 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg9;
-- (void)__createViewController:(NSString *)arg1 withAppearanceSerializedRepresentations:(NSArray *)arg2 hostAccessibilityServerPort:(BSMachPortSendRight *)arg3 canShowTextServices:(_Bool)arg4 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg5;
+- (void)__createViewControllerWithOptions:(_UIViewServiceViewControllerOperatorCreateOptions *)arg1 completionBlock:(void (^)(_UIViewServiceControllerOperatorCreateResult *, NSError *))arg2;
 @end
 

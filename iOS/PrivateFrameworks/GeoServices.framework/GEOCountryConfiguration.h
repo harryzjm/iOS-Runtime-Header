@@ -9,13 +9,13 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/_GEOCountryConfigurationServerProxyDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
+@class NSMutableArray, NSMutableDictionary, NSString, _GEOCountryConfigurationInfo, geo_isolater;
 @protocol _GEOCountryConfigurationServerProxy;
 
 @interface GEOCountryConfiguration : NSObject <GEOResourceManifestTileGroupObserver, _GEOCountryConfigurationServerProxyDelegate>
 {
     geo_isolater *_isolater;
-    NSString *_countryCode;
+    _GEOCountryConfigurationInfo *_countryCodeInfo;
     NSMutableArray *_updateCompletionHandlers;
     NSMutableDictionary *_supportedFeatures;
     geo_isolater *_currentCountrySupportsNavigationIsolater;
@@ -41,8 +41,10 @@
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2 sourcePtr:(long long *)arg3 decoder:(CDUnknownBlockType)arg4;
 - (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long *)arg4 decoder:(CDUnknownBlockType)arg5;
 - (id)_countryCodeOnIsolationQueue;
+- (id)countryCodeWithSource:(unsigned int *)arg1 updatedAtTime:(id *)arg2;
 @property(readonly, copy, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) double urlAuthenticationTimeToLive;
+@property(readonly, nonatomic) _Bool currentCountrySupportsElectricVehicleRouting;
 @property(readonly, nonatomic) _Bool currentCountrySupportsCommute;
 @property(readonly, nonatomic) _Bool currentCountrySupportsCarIntegration;
 @property(readonly, nonatomic) _Bool currentCountrySupportsRouteGenius;

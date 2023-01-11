@@ -7,11 +7,10 @@
 @class NSString, VCVideoRule;
 
 @protocol VCVideoCaptureClient
-- (void)sourceFrameRateDidChange:(unsigned int)arg1;
+- (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 - (VCVideoRule *)clientCaptureRule;
 - (void)avConferencePreviewError:(NSString *)arg1;
-- (_Bool)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 
 @optional
 - (void)avConferenceScreenCaptureError:(NSString *)arg1;

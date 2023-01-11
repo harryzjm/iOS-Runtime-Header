@@ -12,12 +12,12 @@
     _Bool _usingCircleButton;
     _Bool _isCompactUI;
     _Bool _isTemplateLayout;
+    UILabel *_paymentDueLabel;
+    UILabel *_dateLabel;
+    UILabel *_detailLabel;
     _Bool _useAccssibilityLayout;
     id <PKCreditPaymentDueCellDelegate> _delegate;
     PKDashboardCreditAccountItem *_item;
-    UILabel *_labelPaymentDue;
-    UILabel *_labelDate;
-    UILabel *_labelDetail;
     PKContinuousButton *_payButton;
     UIColor *_payButtonTintColor;
     UIColor *_payButtonTitleColor;
@@ -26,6 +26,7 @@
     NSString *_fallbackButtonTitle;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *fallbackButtonTitle; // @synthesize fallbackButtonTitle=_fallbackButtonTitle;
 @property(retain, nonatomic) UIImage *payButtonImage; // @synthesize payButtonImage=_payButtonImage;
 @property(nonatomic) _Bool useAccssibilityLayout; // @synthesize useAccssibilityLayout=_useAccssibilityLayout;
@@ -33,16 +34,21 @@
 @property(copy, nonatomic) UIColor *payButtonTitleColor; // @synthesize payButtonTitleColor=_payButtonTitleColor;
 @property(copy, nonatomic) UIColor *payButtonTintColor; // @synthesize payButtonTintColor=_payButtonTintColor;
 @property(readonly, nonatomic) PKContinuousButton *payButton; // @synthesize payButton=_payButton;
-@property(readonly, nonatomic) UILabel *labelDetail; // @synthesize labelDetail=_labelDetail;
-@property(readonly, nonatomic) UILabel *labelDate; // @synthesize labelDate=_labelDate;
-@property(readonly, nonatomic) UILabel *labelPaymentDue; // @synthesize labelPaymentDue=_labelPaymentDue;
 @property(retain, nonatomic) PKDashboardCreditAccountItem *item; // @synthesize item=_item;
 @property(nonatomic) __weak id <PKCreditPaymentDueCellDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_buttonTapped:(id)arg1;
 - (id)_payButtonWithCircleLayout:(_Bool)arg1;
 - (void)_updateButtonImage:(id)arg1;
 - (void)setButtonTitle:(id)arg1;
+@property(copy, nonatomic) UIColor *detailLabelTextColor;
+@property(copy, nonatomic) UIFont *detailLabelFont;
+@property(copy, nonatomic) NSString *detailLabelText;
+@property(copy, nonatomic) UIColor *dateLabelTextColor;
+@property(copy, nonatomic) UIFont *dateLabelFont;
+@property(copy, nonatomic) NSString *dateLabelText;
+@property(copy, nonatomic) UIColor *paymentDueLabelTextColor;
+@property(copy, nonatomic) UIFont *paymentDueLabelFont;
+@property(copy, nonatomic) NSString *paymentDueLabelText;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

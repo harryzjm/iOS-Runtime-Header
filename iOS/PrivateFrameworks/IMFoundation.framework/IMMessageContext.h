@@ -12,18 +12,27 @@
 @interface IMMessageContext : NSObject
 {
     NSObject<OS_xpc_object> *_xpcMessage;
+    _Bool _boost;
+    _Bool _shouldBoost;
+    _Bool _sync;
+    _Bool _reply;
+    _Bool _needReply;
     IMLocalObject *_localObject;
     id _context;
-    _Bool _boost;
     NSObject<OS_voucher> *_voucher;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_voucher> *voucher; // @synthesize voucher=_voucher;
+@property(nonatomic) _Bool needReply; // @synthesize needReply=_needReply;
+@property(nonatomic) _Bool reply; // @synthesize reply=_reply;
+@property(nonatomic) _Bool sync; // @synthesize sync=_sync;
+@property _Bool shouldBoost; // @synthesize shouldBoost=_shouldBoost;
 @property(retain) id context; // @synthesize context=_context;
-@property _Bool shouldBoost; // @synthesize shouldBoost=_boost;
 @property(retain) IMLocalObject *localObject; // @synthesize localObject=_localObject;
+- (_Bool)isReply;
+- (_Bool)isSync;
 @property(retain) NSObject<OS_xpc_object> *xpcMessage; // @synthesize xpcMessage=_xpcMessage;
-- (void)dealloc;
 - (id)init;
 
 @end

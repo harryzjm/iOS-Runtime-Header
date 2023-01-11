@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 {
     NUIContainerGridView *_gridView;
     NSArray *_arrangedSubviews;
-    NSArray *_visibleArrangedSubviews;
     double _length;
     double _spacing;
     struct {
@@ -26,15 +25,12 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-@property(copy, nonatomic) NSArray *visibleArrangedSubviews; // @synthesize visibleArrangedSubviews=_visibleArrangedSubviews;
 @property(nonatomic) long long alignment;
 @property(nonatomic) double spacingAfter;
 @property(nonatomic) double length;
 @property(nonatomic, getter=isHidden) _Bool hidden;
 @property(copy, nonatomic) NSArray *arrangedSubviews; // @dynamic arrangedSubviews;
-- (void)invalidateArrangedSubviews;
 - (void)dealloc;
-- (id)initWithContainerGridView:(id)arg1 isRow:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

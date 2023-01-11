@@ -15,22 +15,26 @@
     NSArray *_mailDomains;
     NSArray *_calendarDomains;
     NSArray *_contactsDomains;
+    NSArray *_excludedDomains;
+    NSArray *_associatedDomains;
 }
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool restrictDomains; // @synthesize restrictDomains=_restrictDomains;
+@property(retain, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
+@property(retain, nonatomic) NSArray *excludedDomains; // @synthesize excludedDomains=_excludedDomains;
 @property(retain, nonatomic) NSArray *contactsDomains; // @synthesize contactsDomains=_contactsDomains;
 @property(retain, nonatomic) NSArray *calendarDomains; // @synthesize calendarDomains=_calendarDomains;
 @property(retain, nonatomic) NSArray *mailDomains; // @synthesize mailDomains=_mailDomains;
 @property(retain, nonatomic) NSArray *SMBDomains; // @synthesize SMBDomains=_SMBDomains;
 @property(retain, nonatomic) NSArray *SafariDomains; // @synthesize SafariDomains=_SafariDomains;
 @property(retain, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
-- (void).cxx_destruct;
 - (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)payloadDescriptionKeyValueSections;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 

@@ -13,36 +13,41 @@
 
 @interface HUGridCellLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
-    _Bool _drawsBorderForOnState;
     unsigned long long _contentColorStyle;
     HUGridCellBackgroundDisplayOptions *_backgroundDisplayOptions;
     UIVisualEffect *_vibrancyEffect;
     UIVisualEffect *_secondaryVibrancyEffect;
+    UIVisualEffect *_iconVibrancyEffect;
     double _secondaryContentDimmingFactor;
+    NSString *_contentSizeCategory;
     UIFont *_font;
     double _iconSize;
     long long _iconContentMode;
     double _cellInnerMargin;
     double _cellCornerRadius;
+    unsigned long long _onStateBorderStyle;
     double _cellScaleFactor;
     long long _cellSizeSubclass;
 }
 
 + (id)defaultOptionsForCellSizeSubclass:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long cellSizeSubclass; // @synthesize cellSizeSubclass=_cellSizeSubclass;
 @property(nonatomic) double cellScaleFactor; // @synthesize cellScaleFactor=_cellScaleFactor;
-@property(nonatomic) _Bool drawsBorderForOnState; // @synthesize drawsBorderForOnState=_drawsBorderForOnState;
+@property(nonatomic) unsigned long long onStateBorderStyle; // @synthesize onStateBorderStyle=_onStateBorderStyle;
 @property(nonatomic) double cellCornerRadius; // @synthesize cellCornerRadius=_cellCornerRadius;
 @property(nonatomic) double cellInnerMargin; // @synthesize cellInnerMargin=_cellInnerMargin;
 @property(nonatomic) long long iconContentMode; // @synthesize iconContentMode=_iconContentMode;
 @property(nonatomic) double iconSize; // @synthesize iconSize=_iconSize;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
+@property(nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(nonatomic) double secondaryContentDimmingFactor; // @synthesize secondaryContentDimmingFactor=_secondaryContentDimmingFactor;
+@property(retain, nonatomic) UIVisualEffect *iconVibrancyEffect; // @synthesize iconVibrancyEffect=_iconVibrancyEffect;
 @property(retain, nonatomic) UIVisualEffect *secondaryVibrancyEffect; // @synthesize secondaryVibrancyEffect=_secondaryVibrancyEffect;
 @property(retain, nonatomic) UIVisualEffect *vibrancyEffect; // @synthesize vibrancyEffect=_vibrancyEffect;
 @property(copy, nonatomic) HUGridCellBackgroundDisplayOptions *backgroundDisplayOptions; // @synthesize backgroundDisplayOptions=_backgroundDisplayOptions;
 @property(nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) double gutter;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCellSizeSubclass:(long long)arg1;
 

@@ -24,9 +24,12 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
+@property(retain, nonatomic) NSData *lastOrderingCloudKitRecordMetadata; // @dynamic lastOrderingCloudKitRecordMetadata;
 @property(retain, nonatomic) NSData *lastOrderingData; // @dynamic lastOrderingData;
 @property(retain, nonatomic) NSData *serverChangeTokenData; // @dynamic serverChangeTokenData;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) NSData *syncEngineMetadata; // @dynamic syncEngineMetadata;
+@property(retain, nonatomic) NSData *syncFlagsCloudKitRecordMetadata; // @dynamic syncFlagsCloudKitRecordMetadata;
 
 @end
 

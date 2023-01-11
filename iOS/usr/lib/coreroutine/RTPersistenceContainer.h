@@ -7,25 +7,27 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSPersistentStoreCoordinator, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, RTPersistenceContainerDelegate;
 
 @interface RTPersistenceContainer : NSObject
 {
     NSArray *_configurations;
     _Bool _serveContexts;
     _Bool _setupFailed;
+    id <RTPersistenceContainerDelegate> _delegate;
     NSString *_name;
     NSObject<OS_dispatch_queue> *_contextRequestsQueue;
     NSPersistentStoreCoordinator *_coordinator;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSPersistentStoreCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property _Bool setupFailed; // @synthesize setupFailed=_setupFailed;
 @property _Bool serveContexts; // @synthesize serveContexts=_serveContexts;
 @property(retain) NSObject<OS_dispatch_queue> *contextRequestsQueue; // @synthesize contextRequestsQueue=_contextRequestsQueue;
 @property(readonly) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-- (id)persistenceContextWithOptions:(long long)arg1;
+@property(nonatomic) __weak id <RTPersistenceContainerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)persistenceContextWithOptions:(unsigned long long)arg1;
 - (id)_persistenceContext;
 - (id)waitForPersistenceContext;
 - (id)persistenceContext;

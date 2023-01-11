@@ -15,13 +15,14 @@
 }
 
 + (id)sharedSystemInfo;
-@property(readonly, copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
-@property(readonly, copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
+@property(copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
+@property(readonly, nonatomic) _Bool cloudConfigEnablesEphemeralMultiUser;
+@property(readonly, nonatomic, getter=isEphemeralMultiUser) _Bool ephemeralMultiUser;
 @property(readonly, copy, nonatomic) NSDate *bootDate;
 @property(readonly, nonatomic) unsigned long long platform;
 - (void)populateVersions;
-- (id)init;
 
 @end
 

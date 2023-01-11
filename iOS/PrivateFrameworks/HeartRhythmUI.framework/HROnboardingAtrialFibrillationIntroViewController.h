@@ -26,6 +26,7 @@
     NSArray *_learnMoreExpandedConstraints;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *learnMoreExpandedConstraints; // @synthesize learnMoreExpandedConstraints=_learnMoreExpandedConstraints;
 @property(retain, nonatomic) NSArray *learnMoreCollapsedConstraints; // @synthesize learnMoreCollapsedConstraints=_learnMoreCollapsedConstraints;
 @property(retain, nonatomic) UIView *learnMoreContentView; // @synthesize learnMoreContentView=_learnMoreContentView;
@@ -39,7 +40,6 @@
 @property(retain, nonatomic) UIView *heroView; // @synthesize heroView=_heroView;
 @property(retain, nonatomic) NSNumber *activeWatchNeedsLocationCheck; // @synthesize activeWatchNeedsLocationCheck=_activeWatchNeedsLocationCheck;
 @property(retain, nonatomic) HKHeartRhythmAvailability *availability; // @synthesize availability=_availability;
-- (void).cxx_destruct;
 - (id)watchOSVersionTooLowBodyString;
 - (id)deviceNotSupportedBodyString;
 - (id)featureDisabledBodyString;

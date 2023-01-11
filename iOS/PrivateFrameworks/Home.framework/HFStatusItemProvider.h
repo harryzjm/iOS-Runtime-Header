@@ -12,11 +12,15 @@
     HMRoom *_room;
 }
 
++ (id)sortOrderForStatusItemCategory:(unsigned long long)arg1;
 + (id)_statusItemClasses;
 + (_Bool)hasStatusItemForServiceType:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMRoom *room; // @synthesize room=_room;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
+- (void)_buildStatusItemsForGroupedStatusItem:(id)arg1;
+- (id)_buildStatusItemWithClass:(Class)arg1 home:(id)arg2 room:(id)arg3;
+- (id)_createStatusItemsForHome:(id)arg1 room:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1 room:(id)arg2;
 - (id)initWithItems:(id)arg1;

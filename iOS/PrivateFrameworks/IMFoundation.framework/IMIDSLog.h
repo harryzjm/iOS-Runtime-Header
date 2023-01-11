@@ -10,7 +10,11 @@
 {
 }
 
++ (id)URLLoading;
++ (id)security;
++ (id)activityMonitor;
 + (id)dataDetector;
++ (id)daemon_oversized;
 + (id)daemon;
 + (id)encryption;
 

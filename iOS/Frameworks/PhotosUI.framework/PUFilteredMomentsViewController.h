@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     long long _gridPresentationContext;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long gridPresentationContext; // @synthesize gridPresentationContext=_gridPresentationContext;
 @property(retain, nonatomic) NSString *emptyPlaceholderText; // @synthesize emptyPlaceholderText=_emptyPlaceholderText;
 @property(retain, nonatomic) PUFilteredMomentsDataSource *filteredMomentsDataSource; // @synthesize filteredMomentsDataSource=_filteredMomentsDataSource;
-- (void).cxx_destruct;
 - (long long)oneUpPresentationOrigin;
 - (void)filteredMomentsDataSourceHasPendingChanges:(id)arg1;
 - (void)didTapHeaderView:(id)arg1;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)allowSlideshowButton;
 - (id)newEmptyPlaceholderView;
 - (void)setSelected:(_Bool)arg1 itemsAtIndexes:(id)arg2 inSection:(long long)arg3 animated:(_Bool)arg4;
+- (void)_configureSectionHeaderView:(id)arg1 section:(unsigned long long)arg2;
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (void)_getDataForVisualSection:(long long)arg1 hasActionButton:(_Bool *)arg2 actionButtonTitle:(id *)arg3 hasDisclosure:(_Bool *)arg4 locations:(id *)arg5 title:(id *)arg6 startDate:(id *)arg7 endDate:(id *)arg8;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;

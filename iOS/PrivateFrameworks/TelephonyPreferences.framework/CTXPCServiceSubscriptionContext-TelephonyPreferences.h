@@ -12,6 +12,7 @@
 
 @interface CTXPCServiceSubscriptionContext (TelephonyPreferences) <TPSTelephonySubscription>
 + (id)telephonyClient;
+- (_Bool)tps_isEquivalentToSubscriptionContext:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *tps_localizedPhoneNumber;
 @property(readonly, copy, nonatomic) NSString *tps_localizedLabel;
 @property(readonly, copy, nonatomic) NSString *tps_isoCountryCode;

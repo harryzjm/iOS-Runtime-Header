@@ -9,20 +9,27 @@
 @interface CKTextMessagePartChatItem
 {
     UIItemProvider *_dragItemProvider;
+    _Bool _shouldUseBigEmoji;
+    _Bool _hasCachedBigEmoji;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldUseBigEmoji;
 @property(readonly, nonatomic) _Bool containsExcessiveLineHeightCharacters;
 @property(readonly, nonatomic) _Bool containsHyperlink;
 @property(readonly, copy, nonatomic) NSAttributedString *subject;
 @property(readonly, copy, nonatomic) NSAttributedString *fallbackCorruptText;
 @property(readonly, copy, nonatomic) NSAttributedString *text;
-- (_Bool)shouldUseBigEmoji;
 - (id)_time;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)pasteboardItems;
 - (id)dragItemProvider;
 - (Class)impactBalloonViewClass;
 - (Class)balloonViewClass;
+- (id)meMentionsTextColor;
+- (id)bodyTextFont;
+- (_Bool)mentionsMe:(id)arg1;
+- (_Bool)allowsMentions;
 - (id)_attributedTextWithTextColor:(id)arg1;
 - (id)_fallbackCorruptMessageTextWithTextColor:(id)arg1;
 - (_Bool)showMoneyResults;

@@ -4,20 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class INCodableEnumValue;
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
 
-@interface INCodableEnumAttributeMetadata
+@class INCodableEnumValue, NSString;
+
+@interface INCodableEnumAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     INCodableEnumValue *_defaultValue;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) INCodableEnumValue *defaultValue; // @synthesize defaultValue=_defaultValue;
 - (void).cxx_destruct;
+@property(retain, nonatomic) INCodableEnumValue *defaultValue; // @synthesize defaultValue=_defaultValue;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)defaultValueForIntentDefaultValueProvider;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
+- (id)__INCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

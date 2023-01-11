@@ -9,6 +9,9 @@
 @class NSArray, NSData, NSDictionary, NSSet, NSString;
 
 @protocol PLAssetsdLibraryInternalServiceProtocol <NSObject>
+- (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)setFetchFilterWithAssets:(NSArray *)arg1 forApplication:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)invalidateBehavioralScoreOnAllAssetsWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)deleteiTunesSyncedContentWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)backgroundJobServiceRemoveAllBundleRecordsFromProcessingSet;
@@ -22,14 +25,8 @@
 - (void)waitForSearchIndexExistenceWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)getSearchIndexProgressWithReply:(void (^)(unsigned long long))arg1;
 - (void)markPersonAsNeedingKeyFaceWithPersonUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (void)resetPendingAnalysisStatesWithReply:(void (^)(_Bool, NSError *))arg1;
-- (void)markAnalysisStatesProcessedForWorkerType:(unsigned long long)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (void)removeAnalysisRecordsForDeletedAssetsWithUUIDs:(NSArray *)arg1 workerType:(unsigned long long)arg2;
 - (void)reloadMomentGenerationOptions;
 - (void)repairMemoriesWithUUIDs:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)previewAssetLocalIdentifiersWithReply:(void (^)(NSArray *))arg1;
-- (void)previewRenderedContentURLAtIndex:(unsigned long long)arg1 reply:(void (^)(_Bool, NSURL *, NSError *))arg2;
-- (void)previewRenderedContentURLCountWithReply:(void (^)(unsigned long long))arg1;
 - (void)updateAssetLocationDataWithUUID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)getSizeOfResourcesToUploadByCPLWithReply:(void (^)(_Bool, long long, NSError *))arg1;
 - (void)getLibrarySizesFromDB:(_Bool)arg1 reply:(void (^)(_Bool, NSDictionary *, NSError *))arg2;

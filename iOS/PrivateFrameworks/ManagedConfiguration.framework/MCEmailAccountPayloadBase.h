@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSNumber, NSString;
+#import <ManagedConfiguration/MCPerAccountVPNPayloadProtocol-Protocol.h>
 
-@interface MCEmailAccountPayloadBase
+@class NSArray, NSData, NSNumber, NSString;
+
+@interface MCEmailAccountPayloadBase <MCPerAccountVPNPayloadProtocol>
 {
     _Bool _preventMove;
     _Bool _preventAppSheet;
@@ -18,6 +20,7 @@
     _Bool _SMIMEEncryptByDefaultUserOverrideable;
     _Bool _SMIMEEncryptionIdentityUserOverrideable;
     _Bool _SMIMEPerMessageSwitchEnabled;
+    NSString *_VPNUUID;
     NSNumber *_SMIMESigningEnabled;
     NSString *_SMIMESigningIdentityUUID;
     NSNumber *_SMIMEEncryptionEnabled;
@@ -32,6 +35,7 @@
     NSNumber *_SMIMEPerMessageSwitchEnabledNum;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *SMIMEPerMessageSwitchEnabledNum; // @synthesize SMIMEPerMessageSwitchEnabledNum=_SMIMEPerMessageSwitchEnabledNum;
 @property(retain, nonatomic) NSNumber *isMailDropEnabledNum; // @synthesize isMailDropEnabledNum=_isMailDropEnabledNum;
 @property(retain, nonatomic) NSNumber *isRecentsSyncingDisabledNum; // @synthesize isRecentsSyncingDisabledNum=_isRecentsSyncingDisabledNum;
@@ -49,18 +53,23 @@
 @property(retain, nonatomic) NSString *SMIMESigningIdentityUUID; // @synthesize SMIMESigningIdentityUUID=_SMIMESigningIdentityUUID;
 @property(nonatomic) _Bool SMIMESigningUserOverrideable; // @synthesize SMIMESigningUserOverrideable=_SMIMESigningUserOverrideable;
 @property(retain, nonatomic) NSNumber *SMIMESigningEnabled; // @synthesize SMIMESigningEnabled=_SMIMESigningEnabled;
+@property(readonly, retain, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
 @property(nonatomic) _Bool isMailDropEnabled; // @synthesize isMailDropEnabled=_isMailDropEnabled;
 @property(nonatomic) _Bool isRecentsSyncingDisabled; // @synthesize isRecentsSyncingDisabled=_isRecentsSyncingDisabled;
 @property(nonatomic) _Bool SMIMEEnabled; // @synthesize SMIMEEnabled=_SMIMEEnabled;
 @property(nonatomic) _Bool preventAppSheet; // @synthesize preventAppSheet=_preventAppSheet;
 @property(nonatomic) _Bool preventMove; // @synthesize preventMove=_preventMove;
-- (void).cxx_destruct;
 - (_Bool)containsSensitiveUserInformation;
 - (void)addSMIMEEncryptionPayloadKeysTo:(id)arg1;
 - (id)payloadDescriptionKeyValueSections;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+
+// Remaining properties
+@property(readonly, retain, nonatomic) NSArray *calendarAccountIdentifiers;
+@property(readonly, retain, nonatomic) NSArray *contactsAccountIdentifiers;
+@property(readonly, retain, nonatomic) NSArray *mailAccountIdentifiers;
 
 @end
 

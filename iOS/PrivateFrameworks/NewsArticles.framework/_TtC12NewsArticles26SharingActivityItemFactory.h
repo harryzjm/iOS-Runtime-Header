@@ -10,12 +10,9 @@
 
 @interface _TtC12NewsArticles26SharingActivityItemFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *readingList;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *subscriptionController;
-    MISSING_TYPE *followingManager;
-    MISSING_TYPE *alertPresenter;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *shareLinkProvider;
+    MISSING_TYPE *shareLinkTextProvider;
 }
 
 @end

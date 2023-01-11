@@ -7,6 +7,7 @@
 @class CSPasscodeViewController;
 
 @protocol CSPasscodeViewControllerDelegate
+- (_Bool)passcodeViewControllerShouldHideStatusBar:(CSPasscodeViewController *)arg1;
 - (void)passcodeViewController:(CSPasscodeViewController *)arg1 didCompletePasscodeEntry:(_Bool)arg2;
 - (void)passcodeViewControllerDidCancelPasscodeEntry:(CSPasscodeViewController *)arg1;
 - (void)passcodeViewControllerDidBeginPasscodeEntry:(CSPasscodeViewController *)arg1;

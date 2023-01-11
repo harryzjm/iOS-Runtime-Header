@@ -6,12 +6,11 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PKImage, PKPassPersonalization;
+@class NSArray, NSDictionary, NSString, PKPassBarcodeSettings, PKPassPersonalization;
 
 @interface PKPassContent <NSSecureCoding>
 {
     long long _transitType;
-    PKImage *_footerImage;
     NSString *_logoText;
     NSArray *_frontFieldBuckets;
     NSArray *_backFieldBuckets;
@@ -20,9 +19,14 @@
     NSDictionary *_semantics;
     NSDictionary *_allSemantics;
     NSString *_businessChatIdentifier;
+    PKPassBarcodeSettings *_barcodeSettings;
+    NSString *_cardholderInfoSectionTitle;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *cardholderInfoSectionTitle; // @synthesize cardholderInfoSectionTitle=_cardholderInfoSectionTitle;
+@property(retain, nonatomic) PKPassBarcodeSettings *barcodeSettings; // @synthesize barcodeSettings=_barcodeSettings;
 @property(copy, nonatomic) NSString *businessChatIdentifier; // @synthesize businessChatIdentifier=_businessChatIdentifier;
 @property(copy, nonatomic) NSDictionary *allSemantics; // @synthesize allSemantics=_allSemantics;
 @property(copy, nonatomic) NSDictionary *semantics; // @synthesize semantics=_semantics;
@@ -31,9 +35,7 @@
 @property(copy, nonatomic) NSArray *backFieldBuckets; // @synthesize backFieldBuckets=_backFieldBuckets;
 @property(copy, nonatomic) NSArray *frontFieldBuckets; // @synthesize frontFieldBuckets=_frontFieldBuckets;
 @property(copy, nonatomic) NSString *logoText; // @synthesize logoText=_logoText;
-@property(retain, nonatomic) PKImage *footerImage; // @synthesize footerImage=_footerImage;
 @property(nonatomic) long long transitType; // @synthesize transitType=_transitType;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *primaryFields;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

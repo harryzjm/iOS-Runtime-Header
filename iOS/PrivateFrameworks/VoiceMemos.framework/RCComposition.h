@@ -10,7 +10,7 @@
 #import <VoiceMemos/NSMutableCopying-Protocol.h>
 #import <VoiceMemos/RCDictionaryPListRepresentationCoding-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSURL;
+@class NSArray, NSDate, NSDictionary, NSString, NSURL;
 
 @interface RCComposition : NSObject <NSMutableCopying, NSCopying, RCDictionaryPListRepresentationCoding>
 {
@@ -19,6 +19,7 @@
     NSArray *_composedFragments;
     NSString *_savedRecordingUUID;
     NSDate *_creationDate;
+    NSDictionary *_musicMemoMetadata;
     NSURL *_composedAVURL;
     NSURL *_composedWaveformURL;
     NSArray *_decomposedFragments;
@@ -41,11 +42,13 @@
 + (id)compositionLoadedForEditingSavedRecording:(id)arg1 error:(id *)arg2;
 + (id)compositionLoadedForSavedRecordingUUID:(id)arg1;
 + (id)compositionLoadedForSavedRecording:(id)arg1;
++ (id)uriRepresentationForLegacyComposedAVURL:(id)arg1;
 + (id)compositionLoadedForComposedAVURL:(id)arg1 createIfNeeded:(_Bool)arg2;
 + (id)compositionLoadedFromCompositionBundleURL:(id)arg1;
 + (id)_compositionLoadedFromMetadataURL:(id)arg1 savedRecording:(id)arg2;
 + (id)_compositionLoadedFromMetadataURL:(id)arg1 composedAVURL:(id)arg2 savedRecordingUUID:(id)arg3 creationDate:(id)arg4 createIfNeeded:(_Bool)arg5;
 + (id)_unitTestingCompositionWithDecomposedFragments:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject *composedFragmentsMutex; // @synthesize composedFragmentsMutex=_composedFragmentsMutex;
 @property(nonatomic) _Bool readonly; // @synthesize readonly=_readonly;
 @property(nonatomic) double cachedComposedAVURLDuration; // @synthesize cachedComposedAVURLDuration=_cachedComposedAVURLDuration;
@@ -54,9 +57,9 @@
 @property(retain, nonatomic) NSArray *decomposedFragments; // @synthesize decomposedFragments=_decomposedFragments;
 @property(readonly, nonatomic) NSURL *composedWaveformURL; // @synthesize composedWaveformURL=_composedWaveformURL;
 @property(readonly, nonatomic) NSURL *composedAVURL; // @synthesize composedAVURL=_composedAVURL;
+@property(retain, nonatomic) NSDictionary *musicMemoMetadata; // @synthesize musicMemoMetadata=_musicMemoMetadata;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(retain, nonatomic) NSString *savedRecordingUUID; // @synthesize savedRecordingUUID=_savedRecordingUUID;
-- (void).cxx_destruct;
 - (id)rcs_repairDecomposedFragmentMetadataIfNecessary;
 - (void)rcs_composeToFinalDestinationAndDeleteDecomposedFragments:(_Bool)arg1 composeWaveform:(_Bool)arg2 canGenerateWaveformByProcessingAVURL:(_Bool)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)_eaccess_repairDecomposedFragmentMetadataIfNecessaryAndSave:(_Bool)arg1;
@@ -65,6 +68,7 @@
 - (id)_privateModel;
 - (id)_calculateComposedFragments;
 - (double)_composedDuration;
+- (void)_loadMusicMemoMetadata;
 - (void)recacheComposedDuration;
 - (id)compositionByDuplicatingResourcesToDestinationComposedAVURL:(id)arg1;
 - (_Bool)saveMetadataToDefaultLocation;
@@ -90,7 +94,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_initWithSavedRecording:(id)arg1 decomposedFragments:(id)arg2 composedFragments:(id)arg3;
-- (id)_initWithComposedAVURL:(id)arg1 savedRecordingUUID:(id)arg2 creationDate:(id)arg3 title:(id)arg4 decomposedFragments:(id)arg5 composedFragments:(id)arg6;
+- (id)_initWithComposedAVURL:(id)arg1 savedRecordingUUID:(id)arg2 creationDate:(id)arg3 title:(id)arg4 musicMemoMetadata:(id)arg5 decomposedFragments:(id)arg6 composedFragments:(id)arg7;
 - (id)compositionAsset;
 - (id)playableAsset;
 

@@ -15,9 +15,11 @@
     GEORPProblem *_problem;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) GEORPProblem *problem; // @synthesize problem=_problem;
 @property(readonly, nonatomic) GEORPFeedbackRequestParameters *requestParameters; // @synthesize requestParameters=_requestParameters;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long lookupTransactionType;
+@property(nonatomic) _Bool isAppleCard;
 @property(copy, nonatomic) NSString *correlationId;
 @property(copy, nonatomic) NSString *reportersComment;
 @property(copy, nonatomic) NSString *merchantAdamId;

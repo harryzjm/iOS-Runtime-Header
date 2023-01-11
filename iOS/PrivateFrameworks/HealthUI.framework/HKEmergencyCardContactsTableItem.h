@@ -4,26 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKEmergencyContactPickerDelegate-Protocol.h>
+#import <HealthUI/HKEmergencyContactRelationshipPickerDelegate-Protocol.h>
 #import <HealthUI/HKMedicalIDEditorCellEditDelegate-Protocol.h>
-#import <HealthUI/_HKEmergencyContactPickerDelegate-Protocol.h>
-#import <HealthUI/_HKEmergencyContactRelationshipPickerDelegate-Protocol.h>
 
-@class HKCoreTelephonyUtilities, UITableViewCell, _HKEmergencyContact, _HKEmergencyContactPicker;
+@class HKCoreTelephonyUtilities, HKEmergencyContactPicker, UITableViewCell, _HKEmergencyContact;
 @protocol HKEmergencyCardContactUpdateDelegate;
 
-@interface HKEmergencyCardContactsTableItem <HKMedicalIDEditorCellEditDelegate, _HKEmergencyContactPickerDelegate, _HKEmergencyContactRelationshipPickerDelegate>
+@interface HKEmergencyCardContactsTableItem <HKMedicalIDEditorCellEditDelegate, HKEmergencyContactPickerDelegate, HKEmergencyContactRelationshipPickerDelegate>
 {
     UITableViewCell *_lastDequeuedAddContactCell;
     _HKEmergencyContact *_selectedContact;
-    _HKEmergencyContactPicker *_contactPicker;
+    HKEmergencyContactPicker *_contactPicker;
     _Bool _selectedContactIsBeingAdded;
     id <HKEmergencyCardContactUpdateDelegate> _delegate;
     HKCoreTelephonyUtilities *_coreTelephonyUtilities;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKCoreTelephonyUtilities *coreTelephonyUtilities; // @synthesize coreTelephonyUtilities=_coreTelephonyUtilities;
 @property(nonatomic) __weak id <HKEmergencyCardContactUpdateDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)titleForHeader;
 - (id)viewOnlyTitle;
 - (id)titleForFooter;
@@ -45,8 +45,13 @@
 - (id)title;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
 - (id)_dequeueAndConfigureContactEditCellForIndex:(long long)arg1 inTableView:(id)arg2;
+- (id)_footerTextWithGivenName:(id)arg1;
+- (id)_footerTextForSecondaryProfile;
+- (id)_footerAttributedTextForSecondaryProfile;
+- (id)_footerAttributedTextForPrimaryProfile;
+- (id)_footerAttributedText;
 - (id)_dequeueAndConfigureContactViewCellForIndex:(long long)arg1 inTableView:(id)arg2;
-- (_Bool)refreshFromData;
+- (_Bool)refreshFromData:(_Bool)arg1;
 - (long long)numberOfRows;
 - (void)callEmergencyContact:(id)arg1;
 - (long long)contactIndexForRowIndex:(long long)arg1;

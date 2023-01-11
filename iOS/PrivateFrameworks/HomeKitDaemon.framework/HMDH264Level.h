@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreHAP/HAPNumberParser.h>
+
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDH264Level <NSSecureCoding>
+@interface HMDH264Level : HAPNumberParser <NSSecureCoding>
 {
     unsigned long long _h264Level;
 }

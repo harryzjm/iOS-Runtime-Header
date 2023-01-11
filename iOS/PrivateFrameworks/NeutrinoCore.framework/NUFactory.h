@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NUCacheNodeRegistry, NUGLContext, NUGLContextPool, NUJSContextPool, NUPlatform, NUPurgeableStoragePool, NURenderNodeCache, NURenderPipelineRegistry, NUScheduler, NUSchemaRegistry;
-@protocol NUSlowMotionVideoFactory, NUStorageFactory;
+@class CIFilter, NSString, NUCacheNodeRegistry, NUGLContext, NUGLContextPool, NUJSContextPool, NUPlatform, NUPurgeableStoragePool, NURenderNodeCache, NURenderPipelineRegistry, NUScheduler, NUSchemaRegistry;
+@protocol NUStorageFactory;
 
 @interface NUFactory : NSObject
 {
@@ -25,13 +25,16 @@
     NUPlatform *_platform;
     NUJSContextPool *_sharedJavaScriptContextPool;
     NUCacheNodeRegistry *_cacheNodeRegistry;
-    id <NUSlowMotionVideoFactory> _slomoFactory;
+    CIFilter *_repairMLFilter;
 }
 
++ (void)reapAllStoragePools;
 + (void)reset;
 + (void)setSharedFactory:(id)arg1;
++ (void)shutdownSharedFactory;
 + (id)sharedFactory;
-@property(retain, nonatomic) id <NUSlowMotionVideoFactory> slomoFactory; // @synthesize slomoFactory=_slomoFactory;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CIFilter *repairMLFilter; // @synthesize repairMLFilter=_repairMLFilter;
 @property(retain, nonatomic) NUCacheNodeRegistry *cacheNodeRegistry; // @synthesize cacheNodeRegistry=_cacheNodeRegistry;
 @property(retain, nonatomic) NUJSContextPool *sharedJavaScriptContextPool; // @synthesize sharedJavaScriptContextPool=_sharedJavaScriptContextPool;
 @property(retain, nonatomic) NUPlatform *platform; // @synthesize platform=_platform;
@@ -46,8 +49,6 @@
 @property(copy, nonatomic) NSString *defaultNameSpace; // @synthesize defaultNameSpace=_defaultNameSpace;
 @property(retain, nonatomic) NURenderPipelineRegistry *renderPipelineRegistry; // @synthesize renderPipelineRegistry=_renderPipelineRegistry;
 @property(retain, nonatomic) NUSchemaRegistry *schemaRegistry; // @synthesize schemaRegistry=_schemaRegistry;
-- (void).cxx_destruct;
-- (void)shutdown;
 - (void)start;
 
 @end

@@ -27,7 +27,7 @@
 - (void)pad:(int)arg1 count:(unsigned long long)arg2;
 - (void)writeln;
 - (void)hexdump:(const void *)arg1 length:(unsigned long long)arg2;
-- (unsigned int)vformat:(const char *)arg1 args:(struct __va_list_tag [1])arg2;
+- (unsigned int)vformat:(const char *)arg1 args:(char *)arg2;
 - (void)putc:(int)arg1;
 - (void)write:(const void *)arg1 size:(unsigned long long)arg2;
 - (void)flush:(_Bool)arg1;

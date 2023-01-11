@@ -14,11 +14,11 @@
 
 @interface BSColor : NSObject <NSCopying, NSSecureCoding, BSXPCCoding>
 {
+    struct CGColor *_colorRef;
     double _red;
     double _green;
     double _blue;
     double _alpha;
-    struct CGColor *_colorRef;
 }
 
 + (_Bool)supportsSecureCoding;

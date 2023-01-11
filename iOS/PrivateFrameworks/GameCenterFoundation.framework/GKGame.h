@@ -27,6 +27,7 @@
 + (id)currentGameIncludingGameCenter:(_Bool)arg1;
 + (id)currentGame;
 + (_Bool)isGameCenter;
++ (_Bool)isFirstParty;
 + (_Bool)isPreferences;
 @property long long environment; // @synthesize environment=_environment;
 @property(retain) GKGameInternal *internal; // @synthesize internal=_internal;

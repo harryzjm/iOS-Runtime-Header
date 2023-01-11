@@ -19,6 +19,7 @@
     MISSING_TYPE *_offset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int inAnimation; // @synthesize inAnimation=_inAnimation;
 @property(nonatomic) float curHeadX; // @synthesize curHeadX=_curHeadX;
 @property(nonatomic) float curHeadTilt; // @synthesize curHeadTilt=_curHeadTilt;
@@ -28,7 +29,6 @@
 @property(retain, nonatomic) NSMutableArray *texs; // @synthesize texs=_texs;
 @property(nonatomic) float height; // @synthesize height=_height;
 @property(nonatomic) float width; // @synthesize width=_width;
-- (void).cxx_destruct;
 
 @end
 

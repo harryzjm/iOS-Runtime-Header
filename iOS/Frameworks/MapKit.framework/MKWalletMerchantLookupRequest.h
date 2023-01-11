@@ -40,10 +40,15 @@
     NSNumber *_merchantCleanConfidenceLevel;
     NSString *_merchantAdditionalData;
     NSString *_merchantCanl;
+    NSNumber *_fuzzyMatched;
+    NSNumber *_coarseLocationUsed;
     GEOMapServiceTraits *_traits;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
+@property(copy, nonatomic) NSNumber *coarseLocationUsed; // @synthesize coarseLocationUsed=_coarseLocationUsed;
+@property(copy, nonatomic) NSNumber *fuzzyMatched; // @synthesize fuzzyMatched=_fuzzyMatched;
 @property(copy, nonatomic) NSString *merchantCanl; // @synthesize merchantCanl=_merchantCanl;
 @property(copy, nonatomic) NSString *merchantAdditionalData; // @synthesize merchantAdditionalData=_merchantAdditionalData;
 @property(copy, nonatomic) NSNumber *merchantCleanConfidenceLevel; // @synthesize merchantCleanConfidenceLevel=_merchantCleanConfidenceLevel;
@@ -74,7 +79,6 @@
 @property(copy, nonatomic) NSString *industryCategory; // @synthesize industryCategory=_industryCategory;
 @property(copy, nonatomic) NSString *rawMerchantCode; // @synthesize rawMerchantCode=_rawMerchantCode;
 @property(copy, nonatomic) NSString *merchantCode; // @synthesize merchantCode=_merchantCode;
-- (void).cxx_destruct;
 
 @end
 

@@ -18,16 +18,17 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)description;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *profileID; // @synthesize profileID;
 @property(readonly, nonatomic) NSString *name; // @synthesize name;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (_Bool)isEqual:(id)arg1;
-- (const void *)rawData;
+- (const void *)bytes;
 - (id)description;
 - (id)initWithData:(id)arg1 name:(id)arg2;
+- (id)initWithData:(id)arg1;
 - (id)init;
 
 @end

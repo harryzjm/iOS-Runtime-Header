@@ -11,6 +11,8 @@
 @interface _TtC7NewsUI221HistoryCommandHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *clearDataManager;
+    MISSING_TYPE *isiCloudPrivateDataSyncingEnabled;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

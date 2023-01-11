@@ -15,6 +15,7 @@
 - (void)hostSupportsShowingQuitForTurnBasedMatch:(_Bool)arg1;
 - (void)hostSupportsShowingPlayForTurnBasedMatch:(_Bool)arg1;
 - (void)hostSupportsShowingPlayForChallenge:(_Bool)arg1;
+- (void)hostDidChangeLeaderboardPlayerScope:(NSNumber *)arg1;
 - (void)hostDidChangeLeaderboardTimeScope:(NSNumber *)arg1;
 - (void)hostDidChangeLeaderboardIdentifier:(NSString *)arg1;
 - (void)hostDidChangeViewState:(NSNumber *)arg1;

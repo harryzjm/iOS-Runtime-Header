@@ -8,15 +8,15 @@
 
 @interface ICCollapsibleImageView
 {
-    struct UIImage *_image;
-    struct UIColor *_tintColor;
-    struct UIImageView *_imageView;
+    UIImage *_image;
+    UIColor *_tintColor;
+    UIImageView *_imageView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
-- (void).cxx_destruct;
 - (void)performSetup;
 
 @end

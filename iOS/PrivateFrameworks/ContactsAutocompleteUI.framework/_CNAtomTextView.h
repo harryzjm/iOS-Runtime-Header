@@ -14,10 +14,21 @@
     CNComposeRecipientTextView *_hostRecipientView;
 }
 
-@property __weak CNComposeRecipientTextView *hostRecipientView; // @synthesize hostRecipientView=_hostRecipientView;
++ (id)os_log;
 - (void).cxx_destruct;
-- (void)_handleKeyUIEvent:(id)arg1;
-- (_Bool)_delegateSupportsKeyboardEvents;
+@property __weak CNComposeRecipientTextView *hostRecipientView; // @synthesize hostRecipientView=_hostRecipientView;
+- (_Bool)hostRecipientViewHasSearchTextOrTokensAndNoSearchResults;
+- (_Bool)hostRecipientViewHasSearchResults;
+- (_Bool)notifyDelegateWithSelector:(SEL)arg1 checkReturnValue:(_Bool)arg2;
+- (_Bool)notifyDelegateWithBooleanSelector:(SEL)arg1;
+- (_Bool)notifyDelegateWithVoidSelector:(SEL)arg1;
+- (void)tabPressed;
+- (void)returnPressed;
+- (void)rightArrowPressed;
+- (void)leftArrowPressed;
+- (void)downArrowPressed;
+- (void)upArrowPressed;
+- (id)keyCommands;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)undoManager;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;

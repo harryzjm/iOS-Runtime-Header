@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDVenueInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_filterElements;
     GEOPDVenueItemList *_itemList;
     GEOPDLocatedInsideInfo *_locatedInside;
     NSMutableArray *_venueFeatureIds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _featureType;
     int _goInsideLevel;
     struct {
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_itemList:1;
         unsigned int read_locatedInside:1;
         unsigned int read_venueFeatureIds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_filterElements:1;
-        unsigned int wrote_itemList:1;
-        unsigned int wrote_locatedInside:1;
-        unsigned int wrote_venueFeatureIds:1;
-        unsigned int wrote_featureType:1;
-        unsigned int wrote_goInsideLevel:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -55,34 +51,33 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasGoInsideLevel;
 @property(nonatomic) int goInsideLevel;
 - (id)filterElementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)filterElementsCount;
-- (void)_addNoFlagsFilterElement:(id)arg1;
 - (void)addFilterElement:(id)arg1;
 - (void)clearFilterElements;
 @property(retain, nonatomic) NSMutableArray *filterElements;
-- (void)_readFilterElements;
 @property(retain, nonatomic) GEOPDLocatedInsideInfo *locatedInside;
 @property(readonly, nonatomic) _Bool hasLocatedInside;
-- (void)_readLocatedInside;
 @property(retain, nonatomic) GEOPDVenueItemList *itemList;
 @property(readonly, nonatomic) _Bool hasItemList;
-- (void)_readItemList;
 - (int)StringAsFeatureType:(id)arg1;
 - (id)featureTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasFeatureType;
 @property(nonatomic) int featureType;
 - (id)venueFeatureIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)venueFeatureIdsCount;
-- (void)_addNoFlagsVenueFeatureId:(id)arg1;
 - (void)addVenueFeatureId:(id)arg1;
 - (void)clearVenueFeatureIds;
 @property(retain, nonatomic) NSMutableArray *venueFeatureIds;
-- (void)_readVenueFeatureIds;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

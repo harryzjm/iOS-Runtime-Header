@@ -7,12 +7,11 @@
 #import <Foundation/NSDate.h>
 
 #import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
-#import <EmailFoundation/EFSQLNumericValueExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class EFSQLBinding, NSString;
 
-@interface NSDate (EmailFoundationAdditions) <EFSQLBindable, EFSQLExpressable, EFSQLNumericValueExpressable>
+@interface NSDate (EmailFoundationAdditions) <EFSQLBindable, EFSQLValueExpressable>
 + (id)_ef_gregorianCalendarForTimeZone:(id)arg1;
 + (id)_ef_morningDateComponents;
 + (id)_ef_nightDateComponents;
@@ -25,6 +24,8 @@
 - (_Bool)ef_isLaterThanDate:(id)arg1;
 - (_Bool)ef_isEarlierThanDate:(id)arg1;
 @property(readonly, nonatomic) EFSQLBinding *ef_SQLBinding;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 
 // Remaining properties

@@ -15,6 +15,7 @@
 + (id)_specDefinitionForDinner;
 + (id)_specDefinitionForLunch;
 + (id)_specDefinitionForBreakfast;
++ (id)_specDefinitionForClimbing;
 + (id)_specDefinitionForWinterSport;
 + (id)_specDefinitionForHiking;
 + (id)_specDefinitionForDiving;

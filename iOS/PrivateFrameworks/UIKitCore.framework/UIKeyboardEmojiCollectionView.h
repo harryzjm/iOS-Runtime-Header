@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)closestCellForPoint:(struct CGPoint)arg1;
+- (id)backgroundColor;
 - (double)_currentScreenScale;
 - (_Bool)_shouldReverseLayoutDirection;
 - (void)layoutSubviews;

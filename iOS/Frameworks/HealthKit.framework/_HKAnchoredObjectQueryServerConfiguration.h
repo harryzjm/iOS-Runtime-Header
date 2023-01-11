@@ -11,18 +11,20 @@ __attribute__((visibility("hidden")))
 {
     _Bool _includeDeletedObjects;
     _Bool _includeAutomaticTimeZones;
+    _Bool _includeContributorInformation;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
     double _collectionInterval;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property(nonatomic) _Bool includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property(nonatomic) _Bool includeDeletedObjects; // @synthesize includeDeletedObjects=_includeDeletedObjects;
 @property(nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property(copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

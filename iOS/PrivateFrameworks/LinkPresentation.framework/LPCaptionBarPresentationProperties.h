@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionRowPresentationProperties, LPImage, LPImagePresentationProperties, NSArray, NSNumber;
+@class LPCaptionRowPresentationProperties, LPImage, LPImagePresentationProperties, NSArray, NSNumber, NSString;
 
 @interface LPCaptionBarPresentationProperties : NSObject
 {
@@ -14,6 +14,7 @@
     LPCaptionRowPresentationProperties *_top;
     LPCaptionRowPresentationProperties *_bottom;
     LPCaptionRowPresentationProperties *_belowBottom;
+    _Bool _shouldHighlightIndependently;
     LPImage *_leadingIcon;
     NSArray *_additionalLeadingIcons;
     LPImagePresentationProperties *_leadingIconProperties;
@@ -22,12 +23,16 @@
     LPImagePresentationProperties *_trailingIconProperties;
     long long _leadingAccessoryType;
     long long _trailingAccessoryType;
+    NSString *_buttonCaption;
     NSNumber *_minimumHeight;
     struct CGSize _leadingIconSize;
     struct CGSize _trailingIconSize;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
+@property(nonatomic) _Bool shouldHighlightIndependently; // @synthesize shouldHighlightIndependently=_shouldHighlightIndependently;
+@property(copy, nonatomic) NSString *buttonCaption; // @synthesize buttonCaption=_buttonCaption;
 @property(nonatomic) long long trailingAccessoryType; // @synthesize trailingAccessoryType=_trailingAccessoryType;
 @property(nonatomic) long long leadingAccessoryType; // @synthesize leadingAccessoryType=_leadingAccessoryType;
 @property(retain, nonatomic) LPImagePresentationProperties *trailingIconProperties; // @synthesize trailingIconProperties=_trailingIconProperties;
@@ -38,9 +43,10 @@
 @property(retain, nonatomic) NSArray *additionalLeadingIcons; // @synthesize additionalLeadingIcons=_additionalLeadingIcons;
 @property(nonatomic) struct CGSize leadingIconSize; // @synthesize leadingIconSize=_leadingIconSize;
 @property(retain, nonatomic) LPImage *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
-- (void).cxx_destruct;
 - (long long)rightAccessoryType;
 - (long long)leftAccessoryType;
+- (id)rightIconProperties;
+- (id)leftIconProperties;
 - (id)rightIcon;
 - (id)leftIcon;
 - (void)applyToAllCaptions:(CDUnknownBlockType)arg1;

@@ -8,12 +8,12 @@
 
 #import <NeutrinoKit/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, NSString, NUImageGeometry, _NUBackfillLayer, _NUContainerLayer, _NUROILayer;
+@class CALayer, NSString, NUImageGeometry, NUImageLayer, _NUContainerLayer;
 
 @interface NURenderView : UIView <CAAnimationDelegate>
 {
-    _NUBackfillLayer *_backfillLayer;
-    _NUROILayer *_roiLayer;
+    NUImageLayer *_backfillLayer;
+    NUImageLayer *_roiLayer;
     _NUContainerLayer *_containerLayer;
     NUImageGeometry *_geometry;
     _Bool _transitionAnimationInFlight;
@@ -22,8 +22,8 @@
     _Bool _debugMode;
 }
 
-@property(nonatomic) _Bool debugMode; // @synthesize debugMode=_debugMode;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool debugMode; // @synthesize debugMode=_debugMode;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)animationDidStart:(id)arg1;
 - (void)transitionToSize:(struct CGSize)arg1 offset:(struct CGPoint)arg2 duration:(double)arg3 animationCurve:(id)arg4 completion:(CDUnknownBlockType)arg5;

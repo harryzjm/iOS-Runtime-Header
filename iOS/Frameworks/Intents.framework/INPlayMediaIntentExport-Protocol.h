@@ -7,10 +7,14 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INMediaItem, INMediaSearch, NSArray, NSDate, NSNumber, NSString;
+@class INMediaItem, INMediaSearch, INPrivatePlayMediaIntentData, NSArray, NSDate, NSNumber, NSString;
 
 @protocol INPlayMediaIntentExport <NSObject, JSExport>
+@property(copy, nonatomic) INPrivatePlayMediaIntentData *privatePlayMediaIntentData;
 @property(copy, nonatomic) NSString *proxiedBundleIdentifier;
+@property(nonatomic) long long parsecCategory;
+@property(copy, nonatomic) NSArray *alternativeResults;
+@property(copy, nonatomic) NSArray *audioSearchResults;
 @property(copy, nonatomic) NSArray *hashedRouteUIDs;
 @property(copy, nonatomic) INMediaSearch *mediaSearch;
 @property(copy, nonatomic) NSNumber *playbackSpeed;

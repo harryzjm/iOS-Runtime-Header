@@ -6,41 +6,46 @@
 
 #import <UIKit/UIPageControl.h>
 
-@class SBIconPageIndicatorImageSetCache, SBIconPageIndicatorImageSetResult, _UILegibilitySettings;
+#import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
+
+@class NSArray, NSString, UITapGestureRecognizer, _UILegibilitySettings;
 @protocol SBIconListPageControlDelegate;
 
-@interface SBIconListPageControl : UIPageControl
+@interface SBIconListPageControl : UIPageControl <UIGestureRecognizerDelegate>
 {
-    _Bool _hasSetLegibility;
     double _cachedDefaultHeight;
-    SBIconPageIndicatorImageSetResult *_pageIndicatorImageSets;
-    SBIconPageIndicatorImageSetResult *_searchIndicatorImageSets;
-    _Bool _shouldShowSearchIndicator;
-    _Bool _legibilityEnabled;
+    _Bool _actsAsButton;
     _UILegibilitySettings *_legibilitySettings;
     id <SBIconListPageControlDelegate> _delegate;
-    SBIconPageIndicatorImageSetCache *_imageSetCache;
+    NSArray *_touchIgnoreRects;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
-@property(retain, nonatomic) SBIconPageIndicatorImageSetCache *imageSetCache; // @synthesize imageSetCache=_imageSetCache;
-@property(nonatomic) __weak id <SBIconListPageControlDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic, getter=isLegibilityEnabled) _Bool legibilityEnabled; // @synthesize legibilityEnabled=_legibilityEnabled;
-@property(nonatomic) _Bool shouldShowSearchIndicator; // @synthesize shouldShowSearchIndicator=_shouldShowSearchIndicator;
-@property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 - (void).cxx_destruct;
-- (void)_transitionIndicator:(id)arg1 toEnabled:(_Bool)arg2 index:(long long)arg3;
-- (void)_invalidateIndicators;
-- (id)_indicatorViewEnabled:(_Bool)arg1 index:(long long)arg2;
-- (id)_iconListIndicatorImage:(_Bool)arg1;
-- (id)_searchIndicatorImage:(_Bool)arg1;
-- (void)_setIndicatorImage:(id)arg1 toEnabled:(_Bool)arg2 index:(long long)arg3;
-- (void)setFrame:(struct CGRect)arg1;
+@property(readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
+@property(nonatomic) _Bool actsAsButton; // @synthesize actsAsButton=_actsAsButton;
+@property(copy, nonatomic) NSArray *touchIgnoreRects; // @synthesize touchIgnoreRects=_touchIgnoreRects;
+@property(nonatomic) __weak id <SBIconListPageControlDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)legibilitySettingsDidChange;
+- (id)effectiveLegibilitySettings;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-@property(readonly, nonatomic) double defaultIndicatorHeight;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)pageControlCurrentPageDidChange:(id)arg1;
+- (void)tapGestureDidUpdate:(id)arg1;
+- (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)setButtonHighlighted:(_Bool)arg1;
 @property(readonly, nonatomic) double defaultHeight;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

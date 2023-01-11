@@ -12,7 +12,7 @@
 
 + (void)deleteInteractionsWithUUID:(id)arg1;
 + (void)deleteInteractionsWithUUIDs:(id)arg1;
-+ (void)donateInteraction:(id)arg1;
++ (void)_donateInteraction:(id)arg1;
 + (id)interactionForPlaybackVoiceMemo;
 + (id)interactionForRecordVoiceMemo;
 + (void)donatePlaybackVoiceMemoIntentWithUUID:(id)arg1;

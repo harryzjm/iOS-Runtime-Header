@@ -23,13 +23,13 @@
 @property(readonly) struct Object *_apiObject;
 @property(nonatomic) _Bool javaScriptCanOpenWindowsAutomatically;
 @property(nonatomic, getter=isFraudulentWebsiteWarningEnabled) _Bool fraudulentWebsiteWarningEnabled;
-@property(nonatomic) _Bool javaScriptEnabled;
 @property(nonatomic) double minimumFontSize;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)init;
+@property(nonatomic, setter=_setAccessibilityIsolatedTreeEnabled:) _Bool _accessibilityIsolatedTreeEnabled;
 @property(nonatomic, setter=_setDeviceOrientationEventEnabled:) _Bool _deviceOrientationEventEnabled;
 @property(nonatomic, setter=_setWebAnimationsCSSIntegrationEnabled:) _Bool _webAnimationsCSSIntegrationEnabled;
 @property(nonatomic, setter=_setVideoQualityIncludesDisplayCompositingEnabled:) _Bool _videoQualityIncludesDisplayCompositingEnabled;
@@ -37,6 +37,13 @@
 @property(nonatomic, setter=_setShouldEnableTextAutosizingBoost:) _Bool _shouldEnableTextAutosizingBoost;
 @property(nonatomic, setter=_setDOMPasteAllowed:) _Bool _domPasteAllowed;
 @property(nonatomic, setter=_setJavaScriptCanAccessClipboard:) _Bool _javaScriptCanAccessClipboard;
+@property(nonatomic, setter=_setServiceWorkerEntitlementDisabledForTesting:) _Bool _serviceWorkerEntitlementDisabledForTesting;
+@property(readonly, nonatomic) _Bool _isITPDatabaseEnabled;
+@property(nonatomic, setter=_setRemotePlaybackEnabled:) _Bool _remotePlaybackEnabled;
+@property(nonatomic, setter=_setRequestAnimationFrameEnabled:) _Bool _requestAnimationFrameEnabled;
+@property(nonatomic, setter=_setAcceleratedCompositingEnabled:) _Bool _acceleratedCompositingEnabled;
+@property(nonatomic, setter=_setWebAudioEnabled:) _Bool _webAudioEnabled;
+@property(nonatomic, setter=_setSecureContextChecksEnabled:) _Bool _secureContextChecksEnabled;
 @property(nonatomic, setter=_setMediaSourceEnabled:) _Bool _mediaSourceEnabled;
 @property(nonatomic, setter=_setItpDebugModeEnabled:) _Bool _itpDebugModeEnabled;
 @property(nonatomic, setter=_setNeedsSiteSpecificQuirks:) _Bool _needsSiteSpecificQuirks;
@@ -83,6 +90,8 @@
 @property(nonatomic, setter=_setSubpixelAntialiasedLayerTextEnabled:) _Bool _subpixelAntialiasedLayerTextEnabled;
 @property(nonatomic, setter=_setTextAutosizingEnabled:) _Bool _textAutosizingEnabled;
 @property(nonatomic, setter=_setAnimatedImageAsyncDecodingEnabled:) _Bool _animatedImageAsyncDecodingEnabled;
+@property(nonatomic, setter=_setNeedsInAppBrowserPrivacyQuirks:) _Bool _needsInAppBrowserPrivacyQuirks;
+@property(nonatomic, setter=_setInAppBrowserPrivacyEnabled:) _Bool _inAppBrowserPrivacyEnabled;
 @property(nonatomic, setter=_setLargeImageAsyncDecodingEnabled:) _Bool _largeImageAsyncDecodingEnabled;
 @property(nonatomic, setter=_setDisplayListDrawingEnabled:) _Bool _displayListDrawingEnabled;
 @property(nonatomic, setter=_setAcceleratedDrawingEnabled:) _Bool _acceleratedDrawingEnabled;
@@ -99,6 +108,7 @@
 @property(nonatomic, setter=_setOfflineApplicationCacheIsEnabled:) _Bool _offlineApplicationCacheIsEnabled;
 @property(nonatomic, setter=_setStorageBlockingPolicy:) long long _storageBlockingPolicy;
 @property(nonatomic, setter=_setTelephoneNumberDetectionIsEnabled:) _Bool _telephoneNumberDetectionIsEnabled;
+@property(nonatomic) _Bool javaScriptEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

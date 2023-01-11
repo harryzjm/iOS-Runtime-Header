@@ -4,61 +4,81 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/CPLStatusDelegate-Protocol.h>
-#import <PhotosUICore/PXAssetCountObserverDelegate-Protocol.h>
+#import <objc/NSObject.h>
 
-@class CPLStatus, NSObject, NSProgress, NSString, PHPhotoLibrary, PLPhotoLibrary, PXAssetCountObserver, PXCPLState;
-@protocol OS_dispatch_queue;
+#import <PhotosUICore/NSCopying-Protocol.h>
 
-@interface PXCPLStatus <CPLStatusDelegate, PXAssetCountObserverDelegate>
+@class NSDate, NSString;
+
+@interface PXCPLStatus : NSObject <NSCopying>
 {
-    PXCPLState *_state;
-    NSObject<OS_dispatch_queue> *_serialUpdateQueue;
-    CPLStatus *_cplStatus;
-    unsigned long long _syncProgressState;
-    id _syncProgressSubscriber;
-    NSProgress *_syncProgress;
-    PXAssetCountObserver *_numberOfReferencedItemsObserver;
+    _Bool _isEnabled;
+    _Bool _isSyncing;
+    _Bool _isUserPaused;
+    _Bool _isInLowDataMode;
+    _Bool _isInLowPowerMode;
+    _Bool _isExceedingBatteryQuota;
+    _Bool _isExceedingCellularQuota;
+    _Bool _isExceedingQuota;
+    _Bool _isCellularDataDisabled;
+    _Bool _isInAirplaneMode;
+    _Bool _isClientVersionTooOld;
+    _Bool _isOffline;
+    _Bool _isInSoftResetSync;
+    _Bool _isInHardResetSync;
+    _Bool _hasCloudQuotaOffer;
+    _Bool _cloudQuotaOfferHasAssetCounts;
+    NSDate *_syncDate;
+    NSDate *_exitDate;
+    unsigned long long _numberOfItemsToUpload;
+    unsigned long long _numberOfItemsToAdd;
+    unsigned long long _numberOfOriginalsToDownload;
+    unsigned long long _numberOfItemsFailingToUpload;
+    unsigned long long _numberOfPhotoAssets;
+    unsigned long long _numberOfVideoAssets;
+    unsigned long long _numberOfOtherAssets;
     unsigned long long _numberOfReferencedItems;
-    PHPhotoLibrary *_ph_photoLibrary;
-    PLPhotoLibrary *_pl_photoLibrary;
-    unsigned long long _needsUpdate;
-    double _lastUpdate;
-    _Bool _isUpdating;
-    CDUnknownBlockType _handler;
+    long long _itemsToUploadProgressPercentage;
 }
 
-+ (id)currentStatusProvider;
-@property(readonly, nonatomic) PXCPLState *state; // @synthesize state=_state;
++ (id)statusWithStringRepresentation:(id)arg1;
 - (void).cxx_destruct;
-- (void)assetCountObserver:(id)arg1 didChangeNumberOfAssets:(long long)arg2;
-- (void)statusDidChange:(id)arg1;
-- (void)syncWithCloudPhotoLibrary;
-- (void)userPauseCloudPhotos:(_Bool)arg1;
-- (void)setHandler:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)handler;
-- (void)userResumeICloudPhotos;
-- (void)userPauseICloudPhotos;
-- (void)_unsubscribeFromSyncProgress;
-- (void)_subscribeToSyncProgress;
-- (void)_setSyncProgress:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_powerStateDidChange:(id)arg1;
-- (void)_scheduleUpdateForType:(unsigned long long)arg1;
-- (void)_schedulePendingUpdates;
-- (void)_performUpdate;
-- (id)_updateState:(id)arg1 requestedTypes:(unsigned long long)arg2;
-- (void)setState:(id)arg1;
-- (void)dealloc;
+@property(nonatomic) long long itemsToUploadProgressPercentage; // @synthesize itemsToUploadProgressPercentage=_itemsToUploadProgressPercentage;
+@property(nonatomic) _Bool cloudQuotaOfferHasAssetCounts; // @synthesize cloudQuotaOfferHasAssetCounts=_cloudQuotaOfferHasAssetCounts;
+@property(nonatomic) _Bool hasCloudQuotaOffer; // @synthesize hasCloudQuotaOffer=_hasCloudQuotaOffer;
+@property(nonatomic) _Bool isInHardResetSync; // @synthesize isInHardResetSync=_isInHardResetSync;
+@property(nonatomic) _Bool isInSoftResetSync; // @synthesize isInSoftResetSync=_isInSoftResetSync;
+@property(nonatomic) _Bool isOffline; // @synthesize isOffline=_isOffline;
+@property(nonatomic) _Bool isClientVersionTooOld; // @synthesize isClientVersionTooOld=_isClientVersionTooOld;
+@property(nonatomic) _Bool isInAirplaneMode; // @synthesize isInAirplaneMode=_isInAirplaneMode;
+@property(nonatomic) _Bool isCellularDataDisabled; // @synthesize isCellularDataDisabled=_isCellularDataDisabled;
+@property(nonatomic) _Bool isExceedingQuota; // @synthesize isExceedingQuota=_isExceedingQuota;
+@property(nonatomic) _Bool isExceedingCellularQuota; // @synthesize isExceedingCellularQuota=_isExceedingCellularQuota;
+@property(nonatomic) _Bool isExceedingBatteryQuota; // @synthesize isExceedingBatteryQuota=_isExceedingBatteryQuota;
+@property(nonatomic) _Bool isInLowPowerMode; // @synthesize isInLowPowerMode=_isInLowPowerMode;
+@property(nonatomic) _Bool isInLowDataMode; // @synthesize isInLowDataMode=_isInLowDataMode;
+@property(nonatomic) _Bool isUserPaused; // @synthesize isUserPaused=_isUserPaused;
+@property(nonatomic) unsigned long long numberOfReferencedItems; // @synthesize numberOfReferencedItems=_numberOfReferencedItems;
+@property(nonatomic) unsigned long long numberOfOtherAssets; // @synthesize numberOfOtherAssets=_numberOfOtherAssets;
+@property(nonatomic) unsigned long long numberOfVideoAssets; // @synthesize numberOfVideoAssets=_numberOfVideoAssets;
+@property(nonatomic) unsigned long long numberOfPhotoAssets; // @synthesize numberOfPhotoAssets=_numberOfPhotoAssets;
+@property(nonatomic) unsigned long long numberOfItemsFailingToUpload; // @synthesize numberOfItemsFailingToUpload=_numberOfItemsFailingToUpload;
+@property(nonatomic) unsigned long long numberOfOriginalsToDownload; // @synthesize numberOfOriginalsToDownload=_numberOfOriginalsToDownload;
+@property(nonatomic) unsigned long long numberOfItemsToAdd; // @synthesize numberOfItemsToAdd=_numberOfItemsToAdd;
+@property(nonatomic) unsigned long long numberOfItemsToUpload; // @synthesize numberOfItemsToUpload=_numberOfItemsToUpload;
+@property(copy, nonatomic) NSDate *exitDate; // @synthesize exitDate=_exitDate;
+@property(copy, nonatomic) NSDate *syncDate; // @synthesize syncDate=_syncDate;
+@property(nonatomic) _Bool isSyncing; // @synthesize isSyncing=_isSyncing;
+@property(nonatomic) _Bool isEnabled; // @synthesize isEnabled=_isEnabled;
+@property(nonatomic) float itemsToUploadProgress;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)_isEqualToCPLStatus:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)init;
-- (id)_initWithInitialSynchronousUpdateType:(unsigned long long)arg1;
-- (id)_initWithInitialUpdateType:(unsigned long long)arg1 isSynchronous:(_Bool)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSString *stringRepresentation;
+- (id)_dictionaryRepresentation;
+- (id)_initWithDictionaryRepresentation:(id)arg1;
 
 @end
 

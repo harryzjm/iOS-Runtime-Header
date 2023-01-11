@@ -9,6 +9,7 @@
 @interface TSDCapabilities : NSObject
 {
     long long _platform;
+    long long _deviceType;
     long long _device;
     long long _renderer;
 }
@@ -18,8 +19,12 @@
 + (id)currentCapabilities;
 @property(readonly, nonatomic) long long renderer; // @synthesize renderer=_renderer;
 @property(readonly, nonatomic) long long device; // @synthesize device=_device;
+@property(readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property(readonly, nonatomic) long long platform; // @synthesize platform=_platform;
-- (struct CGSize)maximumHardcodedTextureSize;
+@property(readonly, nonatomic) _Bool isMetalCapable;
+- (_Bool)p_isMetalCapable;
+- (struct CGSize)maximumMetalTextureSizeForDevice:(id)arg1;
+@property(readonly, nonatomic) struct CGSize maximumHardcodedTextureSize;
 @property(readonly, nonatomic) struct CGSize maximumTextureSize;
 @property(readonly, nonatomic) _Bool hasLightningPort;
 @property(readonly, nonatomic) _Bool isRendererH5OrBelow;

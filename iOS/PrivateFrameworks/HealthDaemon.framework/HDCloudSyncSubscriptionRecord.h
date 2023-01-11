@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordID;
-
 @interface HDCloudSyncSubscriptionRecord
 {
 }
 
++ (id)recordForZoneID:(id)arg1;
 + (id)recordIDWithZoneID:(id)arg1;
 + (_Bool)hasFutureSchema:(id)arg1;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
 + (_Bool)isSubscriptionRecord:(id)arg1;
 + (id)recordIDsWithZoneID:(id)arg1;
 - (id)description;
-- (id)initWithCKRecord:(id)arg1 forStoreRecordID:(id)arg2 schemaVersion:(long long)arg3;
-- (id)initForStoreRecord:(id)arg1;
-@property(readonly, copy, nonatomic) CKRecordID *storeRecordID;
+- (id)storeRecordID;
 
 @end
 

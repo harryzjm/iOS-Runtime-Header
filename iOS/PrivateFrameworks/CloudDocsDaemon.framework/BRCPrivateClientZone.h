@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BRCAppLibrary, BRCPrivateServerZone, BRCProblemReport, BRCServerZoneHealthState, NSMutableArray, NSMutableSet, NSSet;
+@class BRCAppLibrary, BRCPrivateServerZone, BRCProblemReport, BRCServerZoneHealthState, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface BRCPrivateClientZone
@@ -12,14 +12,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_syncBarriers;
     BRCServerZoneHealthState *_zoneHealthState;
     BRCProblemReport *_problemReport;
+    NSMutableArray *_lastResets;
     NSMutableArray *_faultsLiveBarriers;
     NSMutableSet *_appLibraries;
     BRCAppLibrary *_defaultAppLibrary;
+    NSMapTable *_pcsChainFolderOperations;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) BRCServerZoneHealthState *zoneHealthState; // @synthesize zoneHealthState=_zoneHealthState;
 @property(readonly, nonatomic) NSSet *appLibraries; // @synthesize appLibraries=_appLibraries;
-- (void).cxx_destruct;
 - (_Bool)validateItemsLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 - (_Bool)validateStructureLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 - (void)_checkResultSetIsEmpty:(id)arg1 logToFile:(struct __sFILE *)arg2 reason:(id)arg3 result:(_Bool *)arg4;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool zoneHealthNeedsSyncUp;
 - (void)zoneHealthWasReset;
 - (void)syncedDownZoneHealthState:(id)arg1;
+@property(readonly, nonatomic) _Bool resetFrequencyIsTooHigh;
 - (void)syncedDownZoneHealthRequestID:(long long)arg1;
 - (id)prepareProblemReportForSyncWithRequestID:(long long)arg1;
 - (void)reportProblemWithType:(int)arg1 recordName:(id)arg2;
@@ -48,17 +51,18 @@ __attribute__((visibility("hidden")))
 - (void)removeAppLibrary:(id)arg1;
 - (void)addAppLibrary:(id)arg1;
 @property(readonly, nonatomic) NSSet *appLibraryIDs;
+- (id)pcsChainOperationForItemID:(id)arg1;
+- (void)registerPCSChainingOperation:(id)arg1;
 @property(readonly, nonatomic) _Bool hasDefaultAppLibrary;
 @property(readonly, nonatomic) BRCAppLibrary *defaultAppLibrary; // @synthesize defaultAppLibrary=_defaultAppLibrary;
-- (struct BRCDirectoryItem *)fetchZoneRootItemInDB:(id)arg1;
+- (id)fetchZoneRootItemInDB:(id)arg1;
 - (id)rootItemID;
 @property(readonly, nonatomic) BRCPrivateServerZone *privateServerZone;
 - (id)asPrivateClientZone;
 @property(readonly, nonatomic) _Bool isPrivateZone;
-- (struct PQLResultSet *)reparentedItemsNeedingChaining;
-- (struct PQLResultSet *)unchainedItemInfoInServerTruthEnumeratorParentedTo:(id)arg1;
+- (id)unchainedItemInfoInServerTruthEnumeratorParentedTo:(id)arg1;
 - (_Bool)parentIDHasLiveUnchainedChildren:(id)arg1;
-- (_Bool)isItemIDMarkedChained:(id)arg1;
+- (unsigned int)pcsChainStateForItem:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool isSharedZone; // @dynamic isSharedZone;

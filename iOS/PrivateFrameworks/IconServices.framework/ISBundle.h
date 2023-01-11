@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+#import <IconServices/ISScalableCompositorResource-Protocol.h>
+
+@class NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface ISBundle : NSObject
+@interface ISBundle : NSObject <ISScalableCompositorResource>
 {
     struct __CFBundle *_bundle;
 }
@@ -20,6 +22,8 @@ __attribute__((visibility("hidden")))
 + (id)iconsetResourceBundle;
 + (id)frameworkBundle;
 @property struct __CFBundle *bundle; // @synthesize bundle=_bundle;
+@property(readonly, copy) NSURL *assetCatalogURL;
+@property(readonly, copy) NSDictionary *iconDictionary;
 @property(readonly, copy) NSURL *bundleURL;
 - (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 - (id)URLsForResourcesWithExtension:(id)arg1 subdirectory:(id)arg2;
@@ -28,6 +32,14 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithCFBundle:(struct __CFBundle *)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
+- (id)compositorResource;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

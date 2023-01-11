@@ -19,15 +19,18 @@
 }
 
 + (id)catalogWithLocalCatalog:(id)arg1 ubiquitousCatalog:(id)arg2;
-+ (id)cloudStoreCatalogRecordTypeRecordNamePrefix;
++ (id)recordNamePrefix;
 + (_Bool)supportsSecureCoding;
++ (id)catalogWithContentsOfURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2 directoryCoordinator:(id)arg3;
 + (id)catalogWithContentsOfURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property(retain, nonatomic) NSMutableArray *groups; // @synthesize groups=_groups;
-- (void).cxx_destruct;
 - (unsigned long long)itemType;
-- (id)recordTypesAndNames;
+- (id)primaryIdentifier;
+- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)shuffle:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;

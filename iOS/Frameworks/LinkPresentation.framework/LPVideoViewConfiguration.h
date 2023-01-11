@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     _Bool _disablePlayback;
     _Bool _disablePlaybackControls;
     _Bool _disableAutoPlay;
+    _Bool _allowsLoadingMediaWithAutoPlayDisabled;
     double _fullScreenTransitionCornerRadius;
 }
 
 @property(nonatomic) double fullScreenTransitionCornerRadius; // @synthesize fullScreenTransitionCornerRadius=_fullScreenTransitionCornerRadius;
+@property(nonatomic) _Bool allowsLoadingMediaWithAutoPlayDisabled; // @synthesize allowsLoadingMediaWithAutoPlayDisabled=_allowsLoadingMediaWithAutoPlayDisabled;
 @property(nonatomic) _Bool disableAutoPlay; // @synthesize disableAutoPlay=_disableAutoPlay;
 @property(nonatomic) _Bool disablePlaybackControls; // @synthesize disablePlaybackControls=_disablePlaybackControls;
 @property(nonatomic) _Bool disablePlayback; // @synthesize disablePlayback=_disablePlayback;

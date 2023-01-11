@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)isCVPixelBuffer:(struct __CVBuffer *)arg1 equalToCVPixelBuffer:(struct __CVBuffer *)arg2;
 + (struct __CVBuffer *)createCVPixelBufferRefFromDictionaryRepresentation:(id)arg1;
 + (id)createDictionaryRepresentationOfCVPixelBuffer:(struct __CVBuffer *)arg1;
++ (id)dictionaryRepresentationClassesSet;
 
 @end
 

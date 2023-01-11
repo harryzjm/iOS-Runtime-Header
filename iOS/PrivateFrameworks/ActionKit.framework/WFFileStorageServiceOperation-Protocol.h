@@ -7,6 +7,7 @@
 #import <ActionKit/NSObject-Protocol.h>
 
 @protocol WFFileStorageServiceOperation <NSObject>
+@property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
 - (void)cancel;
 @end
 

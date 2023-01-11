@@ -13,6 +13,7 @@
     _Bool _isDestructiveAction;
     _Bool _showDisclosure;
     _Bool _showSpinner;
+    _Bool _reportToAnalytics;
     NSString *_identifier;
     unsigned long long _type;
     NSString *_title;
@@ -22,8 +23,12 @@
     CDUnknownBlockType _actionOnButtonPress;
     CDUnknownBlockType _actionOnDismiss;
     UIImage *_image;
+    NSString *_analyticsReporterSubject;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, getter=canReportToAnalytics) _Bool reportToAnalytics; // @synthesize reportToAnalytics=_reportToAnalytics;
+@property(nonatomic) NSString *analyticsReporterSubject; // @synthesize analyticsReporterSubject=_analyticsReporterSubject;
 @property(nonatomic) _Bool showSpinner; // @synthesize showSpinner=_showSpinner;
 @property(nonatomic) _Bool showDisclosure; // @synthesize showDisclosure=_showDisclosure;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
@@ -36,7 +41,6 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 
 @end
 

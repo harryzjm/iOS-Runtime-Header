@@ -8,8 +8,8 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIPreviewParameters, UIPreviewTarget, UIView;
-@protocol _UIPreviewProvider;
+@class NSArray, UIPreviewParameters, UIPreviewTarget, UIView;
+@protocol NSCopying><NSObject, _UIPreviewProvider;
 
 @interface UITargetedPreview : NSObject <NSCopying>
 {
@@ -21,9 +21,18 @@
     UIPreviewParameters *_parameters;
     UIView *_viewToSnapshot;
     id <_UIPreviewProvider> __PreviewProvider;
+    id <NSCopying><NSObject> _internalIdentifer;
+    NSArray *_transferrableAnimationKeys;
+    UIView *_overridePositionTrackingView;
+    NSArray *__accessoryViews;
 }
 
 + (id)new;
+- (void).cxx_destruct;
+@property(retain, nonatomic, getter=_accessoryViews, setter=_setAccessoryViews:) NSArray *_accessoryViews; // @synthesize _accessoryViews=__accessoryViews;
+@property(retain, nonatomic, setter=_setOverridePositionTrackingView:) UIView *overridePositionTrackingView; // @synthesize overridePositionTrackingView=_overridePositionTrackingView;
+@property(retain, nonatomic) NSArray *transferrableAnimationKeys; // @synthesize transferrableAnimationKeys=_transferrableAnimationKeys;
+@property(copy, nonatomic) id <NSCopying><NSObject> internalIdentifer; // @synthesize internalIdentifer=_internalIdentifer;
 @property(readonly, nonatomic) _Bool hasCustomTarget; // @synthesize hasCustomTarget=_hasCustomTarget;
 @property(readonly, nonatomic) _Bool sourceViewIsInViewHierarchy; // @synthesize sourceViewIsInViewHierarchy=_sourceViewIsInViewHierarchy;
 @property(readonly, nonatomic) id <_UIPreviewProvider> _PreviewProvider; // @synthesize _PreviewProvider=__PreviewProvider;
@@ -32,9 +41,11 @@
 @property(readonly, copy, nonatomic) UIPreviewParameters *parameters; // @synthesize parameters=_parameters;
 @property(readonly, nonatomic) UIView *view; // @synthesize view=_view;
 @property(readonly, nonatomic) UIPreviewTarget *target; // @synthesize target=_target;
-- (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
 @property(nonatomic, getter=_previewMode, setter=_setPreviewMode:) long long previewMode;
 @property(nonatomic) _Bool _springboardPlatterStyle;
+@property(nonatomic, getter=_prefersUnmaskedPlatterStyle, setter=_setPrefersUnmaskedPlatterStyle:) _Bool _prefersUnmaskedPlatterStyle;
+@property(readonly, nonatomic, getter=_isVisible) _Bool _visible;
 - (id)retargetedPreviewWithTarget:(id)arg1;
 @property(readonly, nonatomic) struct CGSize size;
 - (_Bool)containsPoint:(struct CGPoint)arg1 fromView:(id)arg2;

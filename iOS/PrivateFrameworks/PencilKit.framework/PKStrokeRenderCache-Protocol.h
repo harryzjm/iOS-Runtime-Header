@@ -6,12 +6,12 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class NSMutableSet;
+@class NSMutableSet, PKInk;
 
 @protocol PKStrokeRenderCache <NSObject>
 - (_Bool)lockPurgeableResourcesAddToSet:(NSMutableSet *)arg1;
 - (_Bool)needsCompute;
 - (unsigned long long)cacheCost;
-- (unsigned long long)inkVersion;
+- (_Bool)isCompatibleWithInk:(PKInk *)arg1;
 @end
 

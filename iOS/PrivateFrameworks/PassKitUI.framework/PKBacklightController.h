@@ -19,7 +19,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_updateBacklightNits:(float)arg1 period:(double)arg2;
+- (void)_updateBacklightNits:(float)arg1 period:(double)arg2 disableWhitePointShift:(_Bool)arg3;
 - (void)_changeBacklightMinimumEnabledIfNecessary;
 - (void)endRequestingBacklightRamping:(id)arg1;
 - (void)beginRequestingBacklightRamping:(id)arg1;

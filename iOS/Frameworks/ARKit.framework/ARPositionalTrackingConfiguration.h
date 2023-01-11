@@ -8,24 +8,14 @@
 
 @interface ARPositionalTrackingConfiguration
 {
-    _Bool _vioFusionEnabled;
     unsigned long long _planeDetection;
     ARWorldMap *_initialWorldMap;
 }
 
-+ (id)supportedVideoFormats;
 + (id)new;
-+ (_Bool)isSupported;
-@property(nonatomic, getter=isVIOFusionEnabled) _Bool vioFusionEnabled; // @synthesize vioFusionEnabled=_vioFusionEnabled;
+- (void).cxx_destruct;
 @property(retain, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
 @property(nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
-- (void).cxx_destruct;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)isEqual:(id)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
-- (id)worldTrackingOptions;
-- (id)imageSensorSettings;
 - (id)init;
 
 @end

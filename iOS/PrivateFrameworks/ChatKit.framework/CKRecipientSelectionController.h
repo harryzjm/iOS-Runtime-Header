@@ -5,20 +5,22 @@
 //
 
 #import <ChatKit/CKComposeRecipientViewDelegate-Protocol.h>
+#import <ChatKit/CKDetailsContactsManagerDelegate-Protocol.h>
 #import <ChatKit/CKRecipientSearchListControllerDelegate-Protocol.h>
 #import <ChatKit/CNAutocompleteGroupDetailViewControllerDelegate-Protocol.h>
 #import <ChatKit/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <ChatKit/CNContactPickerDelegate-Protocol.h>
 
-@class CKComposeRecipientView, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, NSMutableDictionary, NSString, UILabel, UIScrollView, UIView;
+@class CKComposeRecipientView, CKDetailsContactsManager, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, NSMutableDictionary, NSString, STConversationContext, UILabel, UIScrollView, UIView;
 @protocol CKRecipientSelectionControllerDelegate;
 
-@interface CKRecipientSelectionController <CNComposeRecipientTextViewDelegate, CKComposeRecipientViewDelegate, CKRecipientSearchListControllerDelegate, CNAutocompleteGroupDetailViewControllerDelegate, CNContactPickerDelegate>
+@interface CKRecipientSelectionController <CNComposeRecipientTextViewDelegate, CKComposeRecipientViewDelegate, CKRecipientSearchListControllerDelegate, CNAutocompleteGroupDetailViewControllerDelegate, CNContactPickerDelegate, CKDetailsContactsManagerDelegate>
 {
     double _keyboardHeightWithAccessoryView;
     CNContactStore *_contactStore;
     _Bool _peoplePickerHidden;
     _Bool _editable;
+    _Bool _allowedByScreenTime;
     _Bool _forceMMS;
     _Bool _isDisambiguating;
     _Bool _preventAtomization;
@@ -30,6 +32,7 @@
     CKComposeRecipientView *_toField;
     UIView *_toFieldContainerView;
     CKRecipientSearchListController *_searchListController;
+    STConversationContext *_currentConversationContext;
     CDUnknownBlockType _gameCenterPickerBlock;
     UIScrollView *_toFieldScrollingView;
     UILabel *_toFieldPlaceholderLabel;
@@ -38,8 +41,13 @@
     CKManualUpdater *_addressBookNotificationUpdater;
     NSMutableDictionary *_recipientAvailibityTimers;
     NSMutableDictionary *_recipientAvailabilities;
+    unsigned long long _numberOfRowsInToField;
+    CKDetailsContactsManager *_contactsManager;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKDetailsContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
+@property(nonatomic) unsigned long long numberOfRowsInToField; // @synthesize numberOfRowsInToField=_numberOfRowsInToField;
 @property(retain, nonatomic) NSMutableDictionary *recipientAvailabilities; // @synthesize recipientAvailabilities=_recipientAvailabilities;
 @property(retain, nonatomic) NSMutableDictionary *recipientAvailibityTimers; // @synthesize recipientAvailibityTimers=_recipientAvailibityTimers;
 @property(readonly, nonatomic) _Bool shouldSuppressSearchResultsTable; // @synthesize shouldSuppressSearchResultsTable=_shouldSuppressSearchResultsTable;
@@ -54,6 +62,8 @@
 @property(retain, nonatomic) UIScrollView *toFieldScrollingView; // @synthesize toFieldScrollingView=_toFieldScrollingView;
 @property(copy, nonatomic) CDUnknownBlockType gameCenterPickerBlock; // @synthesize gameCenterPickerBlock=_gameCenterPickerBlock;
 @property(nonatomic) _Bool forceMMS; // @synthesize forceMMS=_forceMMS;
+@property(nonatomic) _Bool allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
+@property(retain, nonatomic) STConversationContext *currentConversationContext; // @synthesize currentConversationContext=_currentConversationContext;
 @property(nonatomic, getter=isEditable) _Bool editable; // @synthesize editable=_editable;
 @property(nonatomic, getter=isPeoplePickerHidden) _Bool peoplePickerHidden; // @synthesize peoplePickerHidden=_peoplePickerHidden;
 @property(retain, nonatomic) CKRecipientSearchListController *searchListController; // @synthesize searchListController=_searchListController;
@@ -61,13 +71,19 @@
 @property(retain, nonatomic) CKComposeRecipientView *toField; // @synthesize toField=_toField;
 @property(retain, nonatomic) CKPendingConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak id <CKRecipientSelectionControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)autocompleteResultsController:(id)arg1 willOverrideImageDataForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)updateScreenTimePolicy;
+- (id)handlesForScreenTimePolicyCheck;
 - (struct CGPoint)scrollSearchListControllerToTopContentOffset;
 - (void)scrollSearchListControllerToTop:(_Bool)arg1;
 - (void)_updateAddressBookProperties;
+- (void)resetSearchResults;
 - (void)_updateSearchResultsTable;
 - (struct UIEdgeInsets)_navigationBarInsets;
 - (void)_keyboardWillShowOrHide:(id)arg1;
+- (void)_updateSearchListControllerPopOverSizing;
+- (void)_configureSearchListControllerAsAPopover;
 - (void)_hideSearchField;
 - (void)_showSearchField;
 - (void)_updateShowingSearch;
@@ -76,13 +92,14 @@
 - (void)_adjustToFieldPositionIfNecessary;
 - (void)_updateRecipientViewLayouts;
 - (void)_removeRecent;
+- (void)_showContactCardForRecipient:(id)arg1 sourceView:(id)arg2;
 - (void)_showDetailsForRecipient:(id)arg1 canDelete:(_Bool)arg2;
 - (void)_showDetailsForGroup:(id)arg1;
 - (id)_alternateiMessagableAddressesForRecipient:(id)arg1;
 - (id)_alternateAddressesForRecipient:(id)arg1;
 - (void)_showActionSheetForRecipient:(id)arg1 animated:(_Bool)arg2;
+- (void)presentAlternateAddressesAlertForRecipient:(id)arg1;
 - (void)_refreshActionSheet;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)_showOneTimeErrorAlertForAddedRecipient:(id)arg1 service:(id)arg2 withError:(BOOL)arg3;
 - (id)_recipientCausingTooManyRecipientsError;
 - (_Bool)hasTimedOutRecipients;
@@ -127,12 +144,13 @@
 - (void)searchListController:(id)arg1 destinationsUpdated:(id)arg2;
 - (void)searchListControllerDidScroll:(id)arg1;
 - (void)searchListControllerDidFinishSearch:(id)arg1;
+- (void)autocompleteResultsController:(id)arg1 didCollapseSelectedRecipient:(id)arg2;
+- (void)autocompleteResultsController:(id)arg1 didExpandSelectedRecipient:(id)arg2;
 - (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
 - (_Bool)hasIDSResultsForAllRecipients:(id)arg1;
 - (id)preferredRecipientForRecipients:(id)arg1 forServiceType:(BOOL)arg2;
 - (id)preferredRecipientForNewContact:(id)arg1;
 - (id)autocompleteResultsController:(id)arg1 preferredRecipientForRecipients:(id)arg2;
-- (void)autocompleteResultsController:(id)arg1 preferredRecipientForRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)recipientIsDuetSuggestion:(id)arg1;
 - (void)autocompleteResultsController:(id)arg1 tintColorForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)chatForIMHandle:(id)arg1;
@@ -142,7 +160,7 @@
 - (void)colorTypeForRecipient:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)hasEmailRecipientsInAddresses:(id)arg1;
 - (_Bool)lastSentMessageWasNotDeliveredForConversation:(id)arg1;
-- (id)conversationForAddresses:(id)arg1;
+- (id)conversationForRecipients:(id)arg1;
 - (BOOL)serviceColorForRecipientAddresses:(id)arg1;
 - (id)expandedRecipientsForGroupRecipient:(id)arg1;
 - (BOOL)serviceTypeForRecipient:(id)arg1;
@@ -151,6 +169,16 @@
 - (void)_handleIDSResultsWhenSearchTableIsHidden:(id)arg1;
 - (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
 - (struct UIEdgeInsets)layoutMarginsForComposeRecipientView:(id)arg1;
+- (_Bool)collapseSelectedSearchResultForComposeRecipientView:(id)arg1;
+- (_Bool)expandSelectedSearchResultForComposeRecipientView:(id)arg1;
+- (_Bool)chooseSelectedSearchResultForComposeRecipientView:(id)arg1;
+- (void)selectPreviousSearchResultForComposeRecipientView:(id)arg1;
+- (void)selectNextSearchResultForComposeRecipientView:(id)arg1;
+- (void)dismissSearchResultsForComposeRecipientView:(id)arg1;
+- (_Bool)presentSearchResultsForComposeRecipientView:(id)arg1;
+- (_Bool)composeRecipientViewShowingSearchResults:(id)arg1;
+- (void)contactsManagerViewModelsDidChange:(id)arg1;
+- (id)composeRecipientView:(id)arg1 contextMenuConfigurationForAtom:(id)arg2;
 - (_Bool)recipientViewShouldIgnoreFirstResponderChanges:(id)arg1;
 - (void)recipientViewDidResignFirstResponder:(id)arg1;
 - (void)recipientViewDidBecomeFirstResponder:(id)arg1;
@@ -164,6 +192,7 @@
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (id)composeRecipientView:(id)arg1 composeRecipientForContact:(id)arg2;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;
+- (void)composeRecipientViewTabPressed:(id)arg1;
 - (void)composeRecipientViewReturnPressed:(id)arg1;
 - (void)composeRecipientView:(id)arg1 didFinishEnteringAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didRemoveRecipient:(id)arg2;
@@ -172,6 +201,15 @@
 - (void)_handleRecipientViewChanged:(id)arg1;
 - (void)recipientAvailibilitiesDidUpdate;
 - (void)recipientSelectionControllerDidChange;
+- (double)_toolbarHeightForNumberOfRows:(unsigned long long)arg1;
+- (_Bool)_shouldEnableScrolling;
+- (double)preferredMacToolbarHeight;
+- (double)_macToFieldHeight;
+- (double)fieldHeightOffset;
+- (double)additionalCatalystTopInset;
+- (double)composeRecipientViewOriginY;
+- (void)bringComposeRecipientViewToFront;
+- (_Bool)isBeingPresentedInMacDetailsView;
 - (void)parentControllerDidResume:(_Bool)arg1 animating:(_Bool)arg2;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

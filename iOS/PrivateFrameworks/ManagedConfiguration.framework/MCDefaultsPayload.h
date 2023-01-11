@@ -18,7 +18,7 @@
 - (id)title;
 - (id)defaultsForDomain:(id)arg1;
 - (id)domains;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (_Bool)isAllowedToWriteDefaults;

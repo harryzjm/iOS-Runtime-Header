@@ -20,11 +20,11 @@
     AKAuthorizationScopeChoices *_scopeChoices;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AKAuthorizationScopeChoices *scopeChoices; // @synthesize scopeChoices=_scopeChoices;
 @property(readonly, nonatomic) AKAuthorizationNavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property(nonatomic) __weak id <AKAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) AKAuthorizationPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
-- (void).cxx_destruct;
+@property(retain, nonatomic) AKAuthorizationPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 - (void)performPasswordAuthenticationForPaneViewController:(id)arg1;
 - (void)performAppleIDAuthorizationForPaneViewController:(id)arg1;
 - (void)authorizationPaneViewController:(id)arg1 pushEditScope:(id)arg2 presentationContext:(id)arg3 options:(id)arg4;
@@ -34,20 +34,20 @@
 - (void)_delegate_authorizationViewControllerDidCompleteWithAuthorization:(id)arg1 error:(id)arg2;
 - (void)_backButtonSelected:(id)arg1;
 - (void)_cancelButtonSelected:(id)arg1;
-- (void)_presentConfirmPaneViewControllerReplacing:(_Bool)arg1;
+- (void)_presentInputPaneViewControllerReplacing:(_Bool)arg1;
 - (_Bool)_isFirstTimeAppleIDAuthorization;
 - (void)authorizationContainerViewControllerDidDismiss:(id)arg1;
 - (id)_backBarButtonItem;
 - (id)_cancelBarButtonItem;
 - (id)_logoBarButtonItem:(id)arg1;
 - (long long)modalPresentationStyle;
-- (id)confirmPaneViewController;
+- (id)_inputPaneViewController;
 - (id)firstTimeViewController;
-- (id)passwordRequestController;
 - (void)_presentContainerViewControllerWith:(id)arg1;
 - (void)presentAuthenticationChoiceUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presentAuthorizationViewController;
 - (void)_presentFirstTimeViewController;
+- (void)presentInputPaneViewController;
 - (void)presentConfirmPaneViewController;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

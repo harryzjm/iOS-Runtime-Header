@@ -15,8 +15,8 @@
 }
 
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
-- (_Bool)preferItemPickerSheet;
-- (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)preferParameterValuePicker;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;

@@ -22,14 +22,15 @@
     FBSceneMonitor *_sceneMonitor;
     NSHashTable *_observers;
     NSMapTable *_observersToObserverBehaviors;
+    NSHashTable *_actionConsumers;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_manuallyControlsLifecycle, setter=_setManuallyControlsLifecycle:) _Bool manuallyControlsLifecycle; // @synthesize manuallyControlsLifecycle=_manuallyControlsLifecycle;
 @property(retain, nonatomic, getter=_sceneMonitor, setter=_setSceneMonitor:) FBSceneMonitor *sceneMonitor; // @synthesize sceneMonitor=_sceneMonitor;
 @property(readonly, nonatomic, getter=_definition) FBSSceneDefinition *definition; // @synthesize definition=_definition;
 @property(retain, nonatomic, setter=_setDisplayIdentity:) FBSDisplayIdentity *displayIdentity; // @synthesize displayIdentity=_displayIdentity;
 @property(readonly, nonatomic) FBScene *sceneIfExists; // @synthesize sceneIfExists=_scene;
-- (void).cxx_destruct;
 - (void)_setScene:(id)arg1;
 - (void)sceneContentStateDidChange:(id)arg1;
 - (void)sceneMonitor:(id)arg1 pairingStatusDidChangeForExternalSceneIDs:(id)arg2;
@@ -41,6 +42,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
+- (_Bool)_handleSceneAction:(id)arg1;
 - (void)_noteSceneDestroyed:(id)arg1;
 - (void)_noteSceneCreated:(id)arg1;
 - (id)_createMonitor;
@@ -55,6 +57,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (void)removeActionConsumer:(id)arg1;
+- (void)addActionConsumer:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (_Bool)isPairedWithExternalSceneWithIdentifier:(id)arg1;

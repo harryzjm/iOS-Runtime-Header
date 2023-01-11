@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSString;
 
 @protocol CRCarPlayDNDService
 - (void)internalUtilityToolWithReply:(void (^)(NSString *))arg1;
-- (void)setInternalAutoReplyWhitelist:(NSArray *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (void)internalAutoReplyWhitelistWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)disableDNDUntilEndOfDriveWithContext:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)setDNDTriggerMode:(unsigned long long)arg1 withReply:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchDNDTriggerModeWithReply:(void (^)(unsigned long long, NSError *))arg1;

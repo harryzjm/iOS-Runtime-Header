@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitCore/PKPass.h>
+#import <PassKit/PKPass.h>
 
 @class NSData, PKBarcode;
 
 @interface PKPass (NanoPassKit)
-+ (void)npkClearTransitValuePendingStateIfNecessaryForPassWithID:(id)arg1 withBalance:(id)arg2;
-+ (void)npkHandleTransitValuePendingAmount:(id)arg1 withBalance:(id)arg2 forPassWithID:(id)arg3;
-- (id)npkLastAddValueAmount;
++ (void)npkClearTransitValuePendingStateIfNecessaryForPassWithID:(id)arg1 withBalanceFields:(id)arg2;
++ (void)npkHandleTransitValuePendingAmount:(id)arg1 forBalanceField:(id)arg2 passWithUniqueID:(id)arg3;
+- (id)npkLastAddValueAmountForBalanceFieldWithIdentifier:(id)arg1;
+- (id)npkPendingAddValueStateExpireDateForBalanceFieldWithIdentifier:(id)arg1 currentBalance:(id)arg2;
 - (_Bool)npkIsAddValuePending;
 @property(readonly) _Bool npkHasValidNFCPayload;
 @property(readonly) _Bool hasLogoImageSet;
@@ -21,6 +22,5 @@
 @property(readonly) _Bool npkSupportsHidingAccessory;
 @property(readonly) PKBarcode *npkWatchBarcode;
 - (long long)npkAccessoryType;
-- (id)npkArchiveData;
 @end
 

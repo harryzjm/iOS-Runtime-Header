@@ -35,6 +35,7 @@
 - (void)musicLeaseSession:(id)arg1 requestsFairPlayKeyStatusUpdateWithCompletion:(CDUnknownBlockType)arg2;
 - (void)musicLeaseSession:(id)arg1 didFinishPlaybackRequest:(id)arg2 withPlaybackResponse:(id)arg3 responseError:(id)arg4 updatedFairPlayKeyStatusList:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *lastKnownHouseholdID;
 - (void)dealloc;
 - (id)_init;
 

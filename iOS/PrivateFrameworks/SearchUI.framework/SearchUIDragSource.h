@@ -10,34 +10,34 @@
 #import <SearchUI/UIDragInteractionDelegate_Private-Protocol.h>
 
 @class NSString, SearchUIRowModel, UIView;
-@protocol OS_os_transaction;
+@protocol SearchUIFeedbackDelegate;
 
 @interface SearchUIDragSource : NSObject <UIDragInteractionDelegate, UIDragInteractionDelegate_Private>
 {
     SearchUIRowModel *_dragObject;
     UIView *_overrideDragPreviewView;
     UIView *_dragSourceView;
-    NSObject<OS_os_transaction> *_transaction;
+    id <SearchUIFeedbackDelegate> _feedbackDelegate;
 }
 
-+ (id)dragSourceForView:(id)arg1 dragObject:(id)arg2;
-@property(retain) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
++ (id)dragSourceForView:(id)arg1 dragObject:(id)arg2 feedbackDelegate:(id)arg3;
+- (void).cxx_destruct;
+@property __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property __weak UIView *dragSourceView; // @synthesize dragSourceView=_dragSourceView;
 @property(retain, nonatomic) UIView *overrideDragPreviewView; // @synthesize overrideDragPreviewView=_overrideDragPreviewView;
 @property(retain, nonatomic) SearchUIRowModel *dragObject; // @synthesize dragObject=_dragObject;
-- (void).cxx_destruct;
 - (_Bool)_shouldPerformHitTestingForDragSessionInView:(id)arg1;
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (_Bool)dragInteraction:(id)arg1 sessionIsRestrictedToDraggingApplication:(id)arg2;
 - (_Bool)dragInteraction:(id)arg1 sessionAllowsMoveOperation:(id)arg2;
-- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
+- (void)sendDragFeedback;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (_Bool)isMailDrag;
 - (id)dragParametersForPreviewView:(id)arg1;
-- (id)initWithView:(id)arg1 dragObject:(id)arg2;
+- (id)initWithView:(id)arg1 dragObject:(id)arg2 feedbackDelegate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

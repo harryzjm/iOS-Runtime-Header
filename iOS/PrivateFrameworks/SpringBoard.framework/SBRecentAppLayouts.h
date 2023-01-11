@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBApplicationRestrictionObserver-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSMutableSet, NSString, SBAppSwitcherDefaults, SBApplicationController, SBIconController, SBRecentAppLayoutsPersister;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SBAppSwitcherDefaults, SBApplicationController, SBApplicationPlaceholderController, SBIconController, SBMainDisplaySceneManager, SBRecentAppLayoutsPersister;
 @protocol BSInvalidatable, SBRecentAppLayoutsDelegate;
 
 @interface SBRecentAppLayouts : NSObject <SBApplicationRestrictionObserver>
@@ -19,17 +19,19 @@
     NSDictionary *_unhiddenRecentsForBundleIdentifiers;
     NSDictionary *_allRecentDisplayItemsForBundleIdentifiers;
     NSDictionary *_unhiddenRecentDisplayItemsForBundleIdentifiers;
-    NSMutableSet *_appsAllowedWhileHidden;
+    NSMutableDictionary *_allowHiddenAppAssertions;
     SBAppSwitcherDefaults *_defaults;
     SBIconController *_iconController;
     SBApplicationController *_applicationController;
+    SBApplicationPlaceholderController *_placeholderController;
+    SBMainDisplaySceneManager *_sceneManager;
     SBRecentAppLayoutsPersister *_persister;
     id <BSInvalidatable> _stateCaptureInvalidatable;
     id <SBRecentAppLayoutsDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBRecentAppLayoutsDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBRecentAppLayoutsDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_migrateDisplayItemIfNeeded:(id)arg1;
 - (_Bool)_isApplicationSupported:(id)arg1;
 - (void)_installedApplicationsDidChange:(id)arg1;
@@ -40,9 +42,13 @@
 - (void)_filterRestrictedOrUnsupportedAppsFromRecents;
 - (id)_changeDescriptionForFilteringRestrictedOrUnsupportedAppsFromAppLayouts:(id)arg1;
 - (_Bool)_isDisplayItemRestrictedOrUnsupported:(id)arg1;
-- (void)_disallowAppFromAppearingWhileHidden:(id)arg1;
-- (void)_allowAppToAppearWhileHidden:(id)arg1;
-- (void)_loadPPTAppsIntoModel;
+- (_Bool)_ignoresAppHiddenForDisplayItem:(id)arg1;
+- (void)_removeAllowHiddenAppAssertionForBundleIdentifier:(id)arg1 requestIdentifier:(id)arg2;
+- (void)_addAllowHiddenAppAssertionForBundleIdentifier:(id)arg1 requestIdentifier:(id)arg2;
+- (id)_acquireAllowHiddenAppAssertionForBundleIdentifier:(id)arg1 reason:(id)arg2;
+- (void)_ppt_setModel:(id)arg1;
+- (id)_ppt_currentModel;
+- (id)_ppt_loadStashedModel;
 - (void)_addAllAppsToModel;
 - (_Bool)_loadStashedModelAtPath:(id)arg1;
 - (_Bool)_stashModelToPath:(id)arg1;
@@ -67,9 +73,10 @@
 - (id)recentDisplayItemsForBundleIdentifier:(id)arg1 includingHiddenAppLayouts:(_Bool)arg2;
 - (id)recentsForBundleIdentifier:(id)arg1 includingHiddenAppLayouts:(_Bool)arg2;
 - (id)recentsIncludingHiddenAppLayouts:(_Bool)arg1;
+- (void)_initializeRecents;
 - (void)dealloc;
 - (id)init;
-- (id)initWithUserDefaults:(id)arg1 persister:(id)arg2 iconController:(id)arg3 applicationController:(id)arg4;
+- (id)initWithUserDefaults:(id)arg1 persister:(id)arg2 iconController:(id)arg3 applicationController:(id)arg4 placeholderController:(id)arg5 sceneManager:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

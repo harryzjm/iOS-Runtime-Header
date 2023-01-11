@@ -36,6 +36,7 @@
 - (void)processPendingTextureRequestIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)enumerateSpriteIndexes:(CDUnknownBlockType)arg1;
 - (void)getSpriteIndexes:(unsigned int *)arg1 maxSpriteCount:(unsigned int)arg2;
+- (void)removeAllSpriteIndexes;
 - (void)addSpriteIndexRange:(struct _NSRange)arg1;
 - (void)_addSpriteIndex:(unsigned int)arg1;
 - (void)removeSpriteIndex:(unsigned int)arg1;

@@ -8,7 +8,7 @@
 
 #import <VisualPairing/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureSession, AVCaptureVideoPreviewLayer, CAShapeLayer, NSObject, NSString;
+@class AVCaptureDevice, AVCaptureSession, AVCaptureVideoPreviewLayer, CAShapeLayer, NSDate, NSError, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface VPScannerView : UIView <AVCaptureVideoDataOutputSampleBufferDelegate>
@@ -30,13 +30,26 @@
     long long _autoFocusRangeRestriction;
     long long _focusMode;
     CDUnknownBlockType _scannedCodeHandler;
+    NSDate *_startDate;
+    NSDate *_firstScannedCodeDate;
+    NSDate *_firstCapturedFrameDate;
+    unsigned long long _readerResetCount;
+    unsigned long long _extractedCodeLength;
+    NSError *_latestError;
 }
 
+- (void).cxx_destruct;
+@property(retain) NSError *latestError; // @synthesize latestError=_latestError;
+@property unsigned long long extractedCodeLength; // @synthesize extractedCodeLength=_extractedCodeLength;
+@property unsigned long long readerResetCount; // @synthesize readerResetCount=_readerResetCount;
+@property(retain) NSDate *firstCapturedFrameDate; // @synthesize firstCapturedFrameDate=_firstCapturedFrameDate;
+@property(retain) NSDate *firstScannedCodeDate; // @synthesize firstScannedCodeDate=_firstScannedCodeDate;
+@property(retain) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(copy, nonatomic) CDUnknownBlockType scannedCodeHandler; // @synthesize scannedCodeHandler=_scannedCodeHandler;
 @property(nonatomic) long long focusMode; // @synthesize focusMode=_focusMode;
 @property(nonatomic) long long autoFocusRangeRestriction; // @synthesize autoFocusRangeRestriction=_autoFocusRangeRestriction;
-- (void).cxx_destruct;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
+- (void)_postMetricAndResetAnalyticsState;
 - (void)_handleCaptureSessionInterruptionEnded:(id)arg1;
 - (void)_handleCaptureSessionInterrupted:(id)arg1;
 - (void)_handleCaptureSessionRuntimeError:(id)arg1;

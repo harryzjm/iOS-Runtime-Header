@@ -24,7 +24,6 @@
 + (id)index;
 - (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)_lock_removeProcess:(id)arg1;
 - (void)removeAllObjects;
 - (id)processForIdentity:(id)arg1;
 - (id)processForInstance:(id)arg1;
@@ -36,7 +35,6 @@
 - (_Bool)removeProcess:(id)arg1;
 - (_Bool)addProcess:(id)arg1;
 - (id)allProcesses;
-- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
 
 @end

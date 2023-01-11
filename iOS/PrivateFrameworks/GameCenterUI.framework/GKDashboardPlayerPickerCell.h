@@ -10,6 +10,7 @@
 {
     _Bool _selectable;
     _Bool _showsLastPlayedStatusText;
+    _Bool _showsMessagesHandleInStatusText;
     UIImageView *_selectionView;
     UIButton *_selectionButton;
     NSLayoutConstraint *_nameConstraint;
@@ -32,6 +33,7 @@
 @property(nonatomic) NSLayoutConstraint *nameConstraint; // @synthesize nameConstraint=_nameConstraint;
 @property(nonatomic) UIButton *selectionButton; // @synthesize selectionButton=_selectionButton;
 @property(nonatomic) UIImageView *selectionView; // @synthesize selectionView=_selectionView;
+@property(nonatomic) _Bool showsMessagesHandleInStatusText; // @synthesize showsMessagesHandleInStatusText=_showsMessagesHandleInStatusText;
 @property(nonatomic) _Bool showsLastPlayedStatusText; // @synthesize showsLastPlayedStatusText=_showsLastPlayedStatusText;
 @property(nonatomic, getter=isSelectable) _Bool selectable; // @synthesize selectable=_selectable;
 - (void)_dynamicUserInterfaceTraitDidChange;

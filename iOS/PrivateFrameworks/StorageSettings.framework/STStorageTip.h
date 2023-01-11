@@ -11,15 +11,17 @@
 @interface STStorageTip : NSObject
 {
     PSSpecifier *_infoSpecifier;
+    struct os_unfair_lock_s _specLock;
     NSString *_identifier;
     PSSpecifier *_specifier;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PSSpecifier *infoSpecifier; // @synthesize infoSpecifier=_infoSpecifier;
 @property(retain) PSSpecifier *specifier; // @synthesize specifier=_specifier;
 @property(retain) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)reload;
+- (void)_reload:(id)arg1;
 @property(retain, nonatomic) NSString *representedApp;
 @property(retain, nonatomic) UIImage *icon;
 @property(nonatomic) long long size;

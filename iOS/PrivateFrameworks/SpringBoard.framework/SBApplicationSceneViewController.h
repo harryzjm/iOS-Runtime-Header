@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
 
-@class NSString, SBAppStatusBarSettings, SBApplicationSceneView, SBSceneHandle, UIView;
+@class NSString, SBAppStatusBarSettings, SBApplicationSceneHandle, SBApplicationSceneView, UIView;
 @protocol SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
 @interface SBApplicationSceneViewController <SBApplicationSceneViewControlling>
@@ -16,10 +16,10 @@
     SBAppStatusBarSettings *_overrideStatusBarSettings;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_overrideStatusBarSettings, setter=_setOverrideStatusBarSettings:) SBAppStatusBarSettings *overrideStatusBarSettings; // @synthesize overrideStatusBarSettings=_overrideStatusBarSettings;
 @property(readonly, nonatomic, getter=_isApplicationStatusBarHidden) _Bool _applicationStatusBarHidden; // @synthesize _applicationStatusBarHidden=__applicationStatusBarHidden;
 @property(nonatomic) __weak id <SBApplicationSceneViewControllingStatusBarDelegate> applicationSceneStatusBarDelegate; // @synthesize applicationSceneStatusBarDelegate=_applicationSceneStatusBarDelegate;
-- (void).cxx_destruct;
 - (double)_applicationStatusBarAlpha;
 @property(readonly, nonatomic) long long overrideStatusBarStyle;
 @property(readonly, nonatomic) double statusBarAlpha;
@@ -34,7 +34,7 @@
 @property(readonly, nonatomic) long long displayMode;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) id <SBScenePlaceholderContentContext> placeholderContentContext;
-@property(readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property(readonly, nonatomic) SBApplicationSceneHandle *sceneHandle;
 @property(readonly, nonatomic, getter=_sceneView) SBApplicationSceneView *sceneView; // @dynamic sceneView;
 @property(readonly) Class superclass;
 

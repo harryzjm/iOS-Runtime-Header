@@ -10,7 +10,6 @@
 @protocol SXComponentTextStyle, SXTextStyle;
 
 @protocol SXTextSourceDataSource <NSObject>
-- (id <SXTextStyle>)linkStyleForTextSource:(SXTextSource *)arg1;
 - (id <SXTextStyle>)textStyleForIdentifier:(NSString *)arg1;
 - (NSArray *)defaultComponentTextStylesForTextSource:(SXTextSource *)arg1;
 - (id <SXComponentTextStyle>)defaultComponentTextStyleForTextSource:(SXTextSource *)arg1;

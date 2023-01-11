@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
-
 __attribute__((visibility("hidden")))
 @interface VCDefaults : NSObject
 {
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
     int _forceVideoPayload;
     int _forceRecvVideoPayload;
     int _forceKeyFrameInterval;
+    _Bool _isFECVersion2Enabled;
     _Bool _forceWiFiAssist;
     _Bool _forceWiFiAssistOutOfBudget;
 }
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 @property(readonly) _Bool forceWiFiAssistOutOfBudget; // @synthesize forceWiFiAssistOutOfBudget=_forceWiFiAssistOutOfBudget;
 @property(readonly) _Bool forceWiFiAssist; // @synthesize forceWiFiAssist=_forceWiFiAssist;
+@property(readonly) _Bool isFECVersion2Enabled; // @synthesize isFECVersion2Enabled=_isFECVersion2Enabled;
 - (_Bool)forceUseInternalRTPThreadingWithDefaultValue:(_Bool)arg1;
 @property(readonly) double remoteMediaStallTimeout;
 @property(readonly) unsigned int prominenceInactiveAccumulationThreshold;
@@ -70,8 +70,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool forceEVSWideBand;
 @property(readonly) unsigned int maxActiveVideoDecoders;
 @property(readonly) unsigned int maxActiveVideoEncoders;
-@property(readonly) _Bool rearCameraVideoStablization;
+@property(readonly) _Bool supportsOneToOneMode;
+@property(readonly) _Bool forceOneToOneMode;
+@property(readonly) _Bool cameraVideoStablization;
 @property(readonly) _Bool dumpMediaBlob;
+@property(readonly) _Bool momentsUseBestVideoRule;
 @property(readonly) _Bool momentsUserPreferenceEnabled;
 - (_Bool)forceWifiAssistOutOfBudget;
 - (_Bool)forceWifiAssist;
@@ -79,8 +82,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) float pauseHeartbeatInterval;
 @property(readonly) _Bool enableGFTStatsReceiveThread;
 @property(readonly) _Bool enableGFTStatsReporting;
+@property(readonly) int localRATTypeOverride;
 @property(readonly) int localWRMLinkType;
-@property(readonly) NSNumber *enableiRATSuggestion;
+@property(readonly) int enableiRATSuggestion;
 @property(readonly) _Bool forceIPv6;
 @property(readonly) int max2GRate;
 @property(readonly) int redundancyControlForceVideoRedundancyPercentage;
@@ -93,6 +97,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool rateControlAllowVideoStop;
 @property(readonly) _Bool rateControlLogEnabled;
 @property(readonly) _Bool rateControlDumpEnabled;
+@property(readonly) _Bool bandwidthEstimationDumpEnabled;
 @property(readonly) int rateControlStatisticsQueueWaitTime;
 @property(readonly) int rateControllerType;
 @property(readonly) _Bool mediaQueueDumpEnabled;
@@ -101,7 +106,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) int videoStreamRateControlAlgorithm;
 @property(readonly) _Bool videoStreamRateControlDumpEnabled;
 @property(readonly) _Bool enableHEIFAndHEVCForMoments;
-@property(readonly) int tilesPerVideoFrame;
 @property(readonly) _Bool forceVideoStreamLowLatency;
 @property(readonly) int forceVideoStreamPayload;
 @property(readonly) _Bool forceVideoStreamDisableBitrateCap;
@@ -140,6 +144,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) int enable2vuyCapture;
 @property(readonly) _Bool enableBitstreamCapture;
 - (unsigned int)forceThermalLevelFramerate:(unsigned int)arg1;
+@property(readonly) _Bool forceDisableVideoRuleCell720;
+@property(readonly) _Bool forceDisableVideoRuleWiFi1080;
 @property(readonly) _Bool forceEnablePearlCamera;
 @property(readonly) _Bool forceMirroredCapture;
 @property(readonly) _Bool forceARCapture;

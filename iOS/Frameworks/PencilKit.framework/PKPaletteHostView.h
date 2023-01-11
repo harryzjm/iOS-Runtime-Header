@@ -8,18 +8,16 @@
 
 #import <PencilKit/PKPalettePencilInteractionFeedbackHostViewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteTransitionDelegate-Protocol.h>
+#import <PencilKit/PKPaletteViewHosting-Protocol.h>
 #import <PencilKit/PKPaletteViewInternalDelegate-Protocol.h>
-#import <PencilKit/PKPaletteWindowSceneListening-Protocol.h>
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKColorPicker, PKPalettePencilInteractionFeedbackHostView, PKPaletteTransition, PKPaletteView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
-@protocol PKPaletteHostViewDelegate, PKPaletteHostingWindowScene;
+@protocol PKPaletteHostViewDelegate;
 
-@interface PKPaletteHostView : UIView <UIGestureRecognizerDelegate, PKPaletteViewInternalDelegate, UIPopoverPresentationControllerDelegate, PKPalettePencilInteractionFeedbackHostViewDelegate, PKPaletteTransitionDelegate, PKPaletteWindowSceneListening>
+@interface PKPaletteHostView : UIView <UIGestureRecognizerDelegate, PKPaletteViewInternalDelegate, UIPopoverPresentationControllerDelegate, PKPalettePencilInteractionFeedbackHostViewDelegate, PKPaletteTransitionDelegate, PKPaletteViewHosting>
 {
-    _Bool paletteDragging;
-    _Bool paletteMinimized;
     _Bool _paletteVisible;
     _Bool _effectivePaletteVisible;
     PKPaletteView *_paletteView;
@@ -35,32 +33,27 @@
     UIPanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapToExpandPaletteFromMinimizedGestureRecognizer;
     UILongPressGestureRecognizer *_touchDownFeedbackGestureRecognizer;
-    long long _dockingAppearance;
     long long _paletteDraggingBehavior;
     long long _paletteVisualState;
+    long long _palettePosition;
+    long long _lastNonCompactPalettePosition;
     long long _draggingPendingPaletteVisualState;
-    unsigned long long _paletteCornerLocation;
-    unsigned long long _paletteEdgeLocation;
-    double _paletteSizeScaleFactor;
     PKPaletteTransition *_paletteTransition;
     PKPalettePencilInteractionFeedbackHostView *_pencilInteractionFeedbackHostView;
     PKColorPicker *_colorPickerPopover;
-    id <PKPaletteHostingWindowScene> _hostingWindowScene;
     struct CGPoint _draggingInitialPaletteCenterInSelf;
 }
 
-@property(readonly, nonatomic) __weak id <PKPaletteHostingWindowScene> hostingWindowScene; // @synthesize hostingWindowScene=_hostingWindowScene;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PKColorPicker *colorPickerPopover; // @synthesize colorPickerPopover=_colorPickerPopover;
 @property(retain, nonatomic) PKPalettePencilInteractionFeedbackHostView *pencilInteractionFeedbackHostView; // @synthesize pencilInteractionFeedbackHostView=_pencilInteractionFeedbackHostView;
 @property(retain, nonatomic) PKPaletteTransition *paletteTransition; // @synthesize paletteTransition=_paletteTransition;
-@property(nonatomic) double paletteSizeScaleFactor; // @synthesize paletteSizeScaleFactor=_paletteSizeScaleFactor;
-@property(nonatomic) unsigned long long paletteEdgeLocation; // @synthesize paletteEdgeLocation=_paletteEdgeLocation;
-@property(nonatomic) unsigned long long paletteCornerLocation; // @synthesize paletteCornerLocation=_paletteCornerLocation;
 @property(nonatomic) struct CGPoint draggingInitialPaletteCenterInSelf; // @synthesize draggingInitialPaletteCenterInSelf=_draggingInitialPaletteCenterInSelf;
 @property(nonatomic) long long draggingPendingPaletteVisualState; // @synthesize draggingPendingPaletteVisualState=_draggingPendingPaletteVisualState;
+@property(nonatomic) long long lastNonCompactPalettePosition; // @synthesize lastNonCompactPalettePosition=_lastNonCompactPalettePosition;
+@property(nonatomic) long long palettePosition; // @synthesize palettePosition=_palettePosition;
 @property(nonatomic, setter=_setPaletteVisualState:) long long paletteVisualState; // @synthesize paletteVisualState=_paletteVisualState;
 @property(nonatomic) long long paletteDraggingBehavior; // @synthesize paletteDraggingBehavior=_paletteDraggingBehavior;
-@property(nonatomic) long long dockingAppearance; // @synthesize dockingAppearance=_dockingAppearance;
 @property(retain, nonatomic) UILongPressGestureRecognizer *touchDownFeedbackGestureRecognizer; // @synthesize touchDownFeedbackGestureRecognizer=_touchDownFeedbackGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *tapToExpandPaletteFromMinimizedGestureRecognizer; // @synthesize tapToExpandPaletteFromMinimizedGestureRecognizer=_tapToExpandPaletteFromMinimizedGestureRecognizer;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
@@ -75,8 +68,7 @@
 @property(nonatomic, getter=isEffectivePaletteVisible) _Bool effectivePaletteVisible; // @synthesize effectivePaletteVisible=_effectivePaletteVisible;
 @property(nonatomic) __weak id <PKPaletteHostViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isPaletteVisible) _Bool paletteVisible; // @synthesize paletteVisible=_paletteVisible;
-@property(readonly, nonatomic) PKPaletteView *paletteView; // @synthesize paletteView=_paletteView;
-- (void).cxx_destruct;
+@property(retain, nonatomic) PKPaletteView *paletteView; // @synthesize paletteView=_paletteView;
 - (double)paletteEdgeSpacingForMinimized;
 - (double)paletteEdgeSpacing;
 - (double)paletteSpringAnimationResponse;
@@ -87,22 +79,27 @@
 - (struct CGSize)paletteShadowOffset;
 - (id)paletteBorderColor;
 - (id)paletteShadowColor;
-- (struct CGSize)regularPaletteSize;
-- (struct CGSize)minimizedPaletteSize;
-- (double)paletteScaleFactor;
-- (double)_currentWindowSceneScaleFactor;
+- (void)paletteViewStateDidChangeEnableKeyboardButtons:(id)arg1;
+- (void)paletteViewStateDidChangeIsVisible:(id)arg1;
+- (void)paletteViewStateDidChangeInputAssistantItems:(id)arg1;
+- (void)paletteViewStateDidChangeSelectedTool:(id)arg1;
+- (void)paletteViewStateDidChangeShowsHandwritingTool:(id)arg1;
+- (void)paletteViewStateDidChangeAutoHide:(id)arg1;
+- (void)paletteViewStateDidChangeAnnotationSupport:(id)arg1;
+- (void)paletteViewStateDidChangeScaleFactor:(id)arg1;
+- (void)paletteViewStateDidChange:(id)arg1;
+- (void)paletteViewReturnKeyTypeDidChange:(id)arg1;
+- (void)paletteViewContentSizeDidChange:(id)arg1;
 - (void)paletteViewShowFeedbackForToolChange:(id)arg1;
-- (void)paletteView:(id)arg1 didChangeAnnotationSupport:(_Bool)arg2;
-- (struct CGSize)paletteSizeForEdge:(unsigned long long)arg1;
-- (void)paletteView:(id)arg1 didToggleAutoHideOption:(_Bool)arg2;
+@property(readonly, nonatomic, getter=isPaletteVisualStateMinimized) _Bool paletteVisualStateMinimized;
 @property(readonly, nonatomic) UIView *hostingView;
 - (_Bool)_shouldBeCompact;
 - (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)_isPaletteAnimating;
 - (struct CGSize)_paletteSizeForVisualState:(long long)arg1;
-- (struct CGSize)_minimizedPaletteSize;
 - (void)_updatePaletteSizeAnimated:(_Bool)arg1;
-- (void)_updateMinimizedPreviewRotationAnimated:(_Bool)arg1;
+- (void)_updateToolPreviewRotationAnimated:(_Bool)arg1;
+- (void)_updateToolPreviewMinimizedStateAnimated:(_Bool)arg1;
 - (void)_performAnimated:(_Bool)arg1 tracking:(_Bool)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)transitionExpandedToCollapsedRatioDidChange:(id)arg1;
 - (void)transitionPointingDirectionDidChange:(id)arg1;
@@ -118,39 +115,29 @@
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (unsigned long long)edgeToDockPaletteFromCurrentPaletteCorner;
 - (void)_tapToExpandPaletteFromMinimizedGestureHandler:(id)arg1;
 - (void)_touchDownFeedbackGestureHandler:(id)arg1;
-- (void)_paletteDidDockToCorner:(unsigned long long)arg1;
-- (void)_paletteWillDockToCorner:(unsigned long long)arg1;
-- (void)_updateConstraintsToDockPaletteToCorner:(unsigned long long)arg1;
-- (void)_dockPaletteToCorner:(unsigned long long)arg1 animated:(_Bool)arg2;
-- (void)_paletteDidDockToEdge:(unsigned long long)arg1;
-- (void)_paletteWillDockToEdge:(unsigned long long)arg1;
-- (void)_updateConstraintsToDockPaletteToEdge:(unsigned long long)arg1;
-- (void)_dockPaletteToEdge:(unsigned long long)arg1 animated:(_Bool)arg2;
+- (void)_paletteDidDockToPosition:(long long)arg1 fromUserReposition:(_Bool)arg2;
+- (void)_paletteWillDockToPosition:(long long)arg1 prepareForExpansion:(_Bool)arg2;
+- (void)_updateConstraintsToDockPaletteToPosition:(long long)arg1;
+- (void)_dockPaletteToPosition:(long long)arg1 isFromUserReposition:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)_dockPaletteToPosition:(long long)arg1 animated:(_Bool)arg2;
 - (void)_updatePaletteHeightConstraint;
 - (void)_updateConstraintsToFixToBottomEdge;
-- (void)fixToBottomEdge;
+- (void)_fixToBottomEdge;
 - (void)safeAreaInsetsDidChange;
 - (void)layoutSubviews;
 - (void)_updatePaletteContentAlpha;
 - (void)_updatePaletteViewSizeConstraints;
-- (void)setCommonPaletteViewProperties;
-- (void)adaptAppearanceToExpandFromAnyCorner;
-- (void)adaptAppearanceToDockToAnyCorner;
-- (void)adaptAppearanceToDockToAnyEdge;
-- (void)adaptAppearanceToHorizontalCompactSize;
-@property(readonly, nonatomic, getter=isPaletteDragging) _Bool paletteDragging; // @synthesize paletteDragging;
-@property(readonly, nonatomic, getter=isPaletteMinimized) _Bool paletteMinimized; // @synthesize paletteMinimized;
+- (void)_updatePaletteAppearance;
+@property(readonly, nonatomic, getter=isPaletteDragging) _Bool paletteDragging;
 - (void)_setPaletteVisualState:(long long)arg1 usingTransition:(_Bool)arg2;
-- (void)_updatePaletteScaleFactor;
-- (void)windowSceneDidChangeBounds:(id)arg1;
-- (void)animatePaletteToVisible:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)updateKeyboardAvoidanceForPalette:(_Bool)arg1;
+- (void)setPaletteVisible:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_cancelPanGestureIfNecessary;
 - (void)_installPencilInteractionFeedbackHostViewIfNeeded;
 - (void)didMoveToWindow;
-- (id)initWithHostingWindowScene:(id)arg1;
+- (id)initWithPaletteView:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

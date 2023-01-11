@@ -10,13 +10,14 @@
 #import <UIKitCore/UITextInputAdditions-Protocol.h>
 #import <UIKitCore/UITextInput_Internal-Protocol.h>
 #import <UIKitCore/UIUserActivityRestoring-Protocol.h>
+#import <UIKitCore/_UIPressesEventRespondable-Protocol.h>
 #import <UIKitCore/_UIStateRestorationContinuation-Protocol.h>
-#import <UIKitCore/_UITouchable-Protocol.h>
+#import <UIKitCore/_UITouchesEventRespondable-Protocol.h>
 
 @class NSArray, NSString, NSUndoManager, NSUserActivity, UIInputViewController, UITextInputAssistantItem, UITextInputMode, UIView;
 @protocol UIActivityItemsConfigurationReading, UITextInput, UITextInputPrivate, _UICopyConfigurationReading;
 
-@interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, UIUserActivityRestoring, _UIStateRestorationContinuation, _UITouchable, UIResponderStandardEditActions>
+@interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, UIUserActivityRestoring, _UIStateRestorationContinuation, _UITouchesEventRespondable, _UIPressesEventRespondable, UIResponderStandardEditActions>
 {
     struct {
         unsigned int hasOverrideClient:1;
@@ -36,6 +37,7 @@
 + (void)_stopDeferredTrackingObjectsWithIdentifiers;
 + (void)_startDeferredTrackingObjectsWithIdentifiers;
 + (id)objectWithRestorationIdentifierPath:(id)arg1;
+- (id)_textInteraction;
 @property(readonly, nonatomic) long long editingInteractionConfiguration;
 - (void)_setDropDataOwner:(long long)arg1;
 - (long long)_dropDataOwner;
@@ -46,6 +48,7 @@
 - (void)setPasteConfiguration:(id)arg1;
 - (id)pasteConfiguration;
 - (id)_effectivePasteConfiguration;
+- (struct CGRect)_rectToScrollToVisibleInCellInWindow:(id)arg1;
 - (_Bool)_shouldRestorationInputViewsOnlyWhenKeepingFirstResponder;
 - (_Bool)_supportsBecomeFirstResponderWhenPossible;
 - (_Bool)_canBecomeFirstResponderWhenPossible;
@@ -71,7 +74,9 @@
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 - (id)_showServiceForType:(long long)arg1 withContext:(id)arg2;
-- (_Bool)_canShowTextServices;
+- (_Bool)_canShowTextServiceForType:(long long)arg1;
+- (long long)_availableTextServices;
+- (_Bool)_isView;
 - (_Bool)_isViewController;
 - (void)_completeForwardingTouches:(id)arg1 phase:(long long)arg2 event:(id)arg3;
 - (void)_completeForwardingTouches:(id)arg1 phase:(long long)arg2 event:(id)arg3 index:(unsigned long long)arg4;
@@ -85,6 +90,8 @@
 - (_Bool)_isPinningInputViews;
 - (void)_endPinningInputViews;
 - (void)_beginPinningInputViews;
+- (_Bool)_nextResponderChainContainsResponder:(id)arg1;
+- (id)_nextResponderThatCanBecomeFirstResponder;
 - (void)_becomeFirstResponderAndMakeVisible;
 - (_Bool)_canBecomeFirstResponder;
 - (void)_resignFirstResponder;
@@ -101,7 +108,7 @@
 - (_Bool)_disableAutomaticKeyboardUI;
 - (_Bool)_disableAutomaticKeyboardBehavior;
 - (id)_keyCommandsInChainPassingTest:(CDUnknownBlockType)arg1 skipViewControllersPresentingModally:(_Bool)arg2;
-- (id)_keyCommandForEvent:(id)arg1 target:(id *)arg2;
+- (id)_keyCommandForEvent:(id)arg1 target:(out id *)arg2;
 - (id)_keyCommandForEvent:(id)arg1;
 - (id)_keyCommands;
 - (void)_controlTouchEnded:(id)arg1 withEvent:(id)arg2;
@@ -113,6 +120,8 @@
 - (void)_tagAsRestorableResponder;
 - (void)_clearRestorableResponderStatus;
 - (id)_nextResponderOverride;
+- (void)_overrideNextResponderWithResponder:(id)arg1 forType:(long long)arg2;
+- (void)_overrideRehostedViewControllerNextResponderWithResponder:(id)arg1;
 - (void)_overrideInputAccessoryViewNextResponderWithResponder:(id)arg1;
 - (void)_overrideInputViewNextResponderWithResponder:(id)arg1;
 - (void)_clearOverrideNextResponder;
@@ -152,7 +161,7 @@
 - (_Bool)becomeFirstResponder;
 - (_Bool)_containsResponder:(id)arg1;
 - (_Bool)_containedInAbsoluteResponderChain;
-@property(readonly, nonatomic) UIResponder *_responderForEditing;
+- (id)_responderForEditing;
 @property(readonly, nonatomic) UIResponder *_editingDelegate;
 - (void)_gatherKeyResponders:(id)arg1 indexOfSelf:(unsigned long long *)arg2 visibilityTest:(CDUnknownBlockType)arg3 passingTest:(CDUnknownBlockType)arg4 subviewsTest:(CDUnknownBlockType)arg5;
 - (_Bool)_isRootForKeyResponderCycle;
@@ -174,17 +183,17 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
+- (id)_nextResponderUsingLookupStrategy:(unsigned long long)arg1;
 - (_Bool)_handleActivityItemsConfigurationShare:(id)arg1;
 - (_Bool)_handleActivityItemsConfigurationDoesNotHandleSelector:(SEL)arg1;
 - (_Bool)_handleActivityItemsConfigurationCanPerformAction:(SEL)arg1 sender:(id)arg2;
+- (id)_firstNonnullActivityItemsConfigurationInResponderChainForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2 skipPresentingViewControllers:(_Bool)arg3 sender:(id)arg4 responder:(id *)arg5;
 - (id)_firstNonnullActivityItemsConfigurationInResponderChainForView:(id)arg1 location:(struct CGPoint)arg2 sender:(id)arg3 responder:(id *)arg4;
 @property(retain, nonatomic) id <UIActivityItemsConfigurationReading> activityItemsConfiguration;
+- (id)_effectiveActivityItemsConfigurationAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2 sender:(id)arg3;
 - (id)_effectiveActivityItemsConfigurationForView:(id)arg1 location:(struct CGPoint)arg2 sender:(id)arg3;
 - (id)_effectiveActivityItemsConfiguration;
 - (id)_effectiveActivityItemsConfigurationForSender:(id)arg1;
-- (void)_clearTextInputSource;
-- (void)set_textInputSource:(long long)arg1;
-- (long long)_textInputSource;
 - (id)_selectableText;
 @property(readonly, nonatomic) UIView<UITextInputPrivate> *_textSelectingContainer;
 - (struct CGRect)_lastRectForRange:(id)arg1;
@@ -241,6 +250,7 @@
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToStartOfLine;
+- (void)_deleteForwardByWord;
 - (void)_deleteByWord;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (id)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(id)arg2;
@@ -272,6 +282,8 @@
 - (void)_selectAll;
 - (struct _NSRange)_selectedRangeWithinMarkedText;
 - (struct _NSRange)_selectedNSRange;
+- (void)set_textInputSource:(long long)arg1;
+- (long long)_textInputSource;
 - (id)textInputSuggestionDelegate;
 - (id)_keyInput;
 @property(readonly, nonatomic, getter=_proxyTextInput) UIResponder<UITextInput> *__content;
@@ -293,6 +305,7 @@
 - (void)reloadInputViewsWithoutReset;
 - (void)reloadInputViews;
 - (_Bool)shouldReloadInputViews;
+- (id)_additionalTextInputLocales;
 @property(readonly, nonatomic) NSString *textInputContextIdentifier;
 @property(readonly, nonatomic) UITextInputMode *textInputMode;
 @property(readonly, nonatomic) UIInputViewController *inputAccessoryViewController;

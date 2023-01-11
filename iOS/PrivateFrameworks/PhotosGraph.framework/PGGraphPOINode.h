@@ -12,11 +12,18 @@
 
 @interface PGGraphPOINode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport>
 {
+    NSString *_label;
 }
 
 + (id)_localizationKeyForPOINode:(id)arg1;
++ (id)validPOILabels;
+- (void).cxx_destruct;
+- (id)label;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 @property(readonly, nonatomic) NSString *localizedName;
+- (unsigned short)domain;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1;
 @property(readonly, nonatomic) NSString *pg_topic;
 
 // Remaining properties

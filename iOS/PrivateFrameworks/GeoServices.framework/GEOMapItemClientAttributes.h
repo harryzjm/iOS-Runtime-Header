@@ -13,20 +13,19 @@
 @interface GEOMapItemClientAttributes : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapItemAddressBookAttributes *_addressBookAttributes;
     GEOMapItemCorrectedLocationAttributes *_correctedLocationAttributes;
     GEOMapItemRoutineAttributes *_routineAttributes;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_addressBookAttributes:1;
         unsigned int read_correctedLocationAttributes:1;
         unsigned int read_routineAttributes:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressBookAttributes:1;
-        unsigned int wrote_correctedLocationAttributes:1;
-        unsigned int wrote_routineAttributes:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,17 +41,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOMapItemCorrectedLocationAttributes *correctedLocationAttributes;
 @property(readonly, nonatomic) _Bool hasCorrectedLocationAttributes;
-- (void)_readCorrectedLocationAttributes;
 @property(retain, nonatomic) GEOMapItemRoutineAttributes *routineAttributes;
 @property(readonly, nonatomic) _Bool hasRoutineAttributes;
-- (void)_readRoutineAttributes;
 @property(retain, nonatomic) GEOMapItemAddressBookAttributes *addressBookAttributes;
 @property(readonly, nonatomic) _Bool hasAddressBookAttributes;
-- (void)_readAddressBookAttributes;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

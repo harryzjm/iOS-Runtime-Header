@@ -22,6 +22,7 @@
 - (id)_axNCNotificationViewController;
 - (id)_axLookView;
 - (id)accessibilityHint;
+- (_Bool)_accessibilityIsSpeakThisElement;
 - (_Bool)isAccessibilityElement;
 - (_Bool)_accessibilityIsAwayAlertElement;
 - (id)accessibilityDragSourceDescriptors;

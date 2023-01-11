@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSTerminateRequest;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSMachPortTaskNameRight, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSTerminateRequest;
 
 @protocol RBSServiceLocalProtocol
 - (void)reset;
+- (NSSet *)preventLaunchPredicatesWithError:(out id *)arg1;
 - (NSSet *)busyExtensionInstancesFromSet:(NSSet *)arg1 error:(out id *)arg2;
 - (NSSet *)identifiersForStateCaptureSubsystems:(out id *)arg1;
 - (NSString *)captureStateForSubsystem:(NSString *)arg1 error:(out id *)arg2;
@@ -20,7 +21,9 @@
 - (void)unsubscribeProcessStateMonitor:(RBSProcessMonitor *)arg1 configuration:(RBSProcessMonitorConfiguration *)arg2;
 - (_Bool)subscribeProcessStateMonitor:(RBSProcessMonitor *)arg1 configuration:(RBSProcessMonitorConfiguration *)arg2 error:(out id *)arg3;
 - (void)subscribeToProcessDeath:(RBSProcessIdentifier *)arg1 handler:(void (^)(RBSProcessExitContext *, NSError *))arg2;
+- (RBSMachPortTaskNameRight *)portForIdentifier:(RBSProcessIdentifier *)arg1;
 - (RBSProcessHandle *)handleForPredicate:(RBSProcessPredicate *)arg1 error:(out id *)arg2;
+- (NSString *)processName:(NSNumber *)arg1;
 - (RBSProcessHandle *)handleForKey:(NSNumber *)arg1;
 - (_Bool)executeTerminateRequest:(RBSTerminateRequest *)arg1 assertion:(out id *)arg2 error:(out id *)arg3;
 - (_Bool)executeLaunchRequest:(RBSLaunchRequest *)arg1 process:(out id *)arg2 assertion:(out id *)arg3 error:(out id *)arg4;

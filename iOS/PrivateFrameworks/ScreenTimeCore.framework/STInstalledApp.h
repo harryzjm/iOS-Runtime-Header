@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
 #import <ScreenTimeCore/STUniquelySerializableManagedObject-Protocol.h>
 
 @class NSData, NSString, STUserDeviceState;
 
-@interface STInstalledApp <STUniquelySerializableManagedObject>
+@interface STInstalledApp <STSerializableMappedObject, STUniquelySerializableManagedObject>
 {
 }
 
++ (id)serializableClassName;
 + (id)fetchOrCreateWithDictionaryRepresentation:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)bundleIdentifiersInstalledForDSID:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)computeUniqueIdentifier;
 - (void)didChangeValueForKey:(id)arg1;
+@property(retain, nonatomic) STUserDeviceState *userDeviceState; // @dynamic userDeviceState;
 
 // Remaining properties
 @property(copy, nonatomic) NSString *bundleIdentifier; // @dynamic bundleIdentifier;
@@ -26,8 +29,8 @@
 @property(copy, nonatomic) NSString *displayName; // @dynamic displayName;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSData *iconData; // @dynamic iconData;
+@property(nonatomic) _Bool installedLocally; // @dynamic installedLocally;
 @property(readonly) Class superclass;
-@property(retain, nonatomic) STUserDeviceState *userDeviceState; // @dynamic userDeviceState;
 
 @end
 

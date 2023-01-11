@@ -28,6 +28,9 @@
 - (id)testResultsWithDataProvider:(id)arg1;
 - (id)sequenceTestResultsWithDataProvider:(id)arg1;
 - (id)classifierTestResultsWithDataProvider:(id)arg1;
+- (id)predictedLabelHypothesesForTokens:(id)arg1 maximumCount:(unsigned long long)arg2;
+- (id)predictedLabelHypothesesForString:(id)arg1 maximumCount:(unsigned long long)arg2;
+- (id)predictedLabelArraysForTokenArrays:(id)arg1;
 - (id)predictedLabelsForTokens:(id)arg1;
 - (id)predictedLabelForString:(id)arg1;
 - (id)embeddingData;

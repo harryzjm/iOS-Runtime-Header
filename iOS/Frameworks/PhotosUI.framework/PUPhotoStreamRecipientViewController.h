@@ -6,29 +6,24 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <PhotosUI/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
+#import <PhotosUI/CNAutocompleteSearchConsumer-Protocol.h>
+#import <PhotosUI/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <PhotosUI/CNContactPickerDelegate-Protocol.h>
 #import <PhotosUI/IDSBatchIDQueryControllerDelegate-Protocol.h>
-#import <PhotosUI/MFComposeRecipientTextViewDelegate-Protocol.h>
-#import <PhotosUI/MFContactsSearchConsumer-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <PhotosUI/UITableViewDataSource-Protocol.h>
-#import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class CNContactPickerViewController, CNContactStore, IDSBatchIDQueryController, MFComposeRecipientTextView, MFContactsSearchManager, MFContactsSearchResultsModel, NSArray, NSMutableSet, NSNumber, NSString, UIScrollView, UITableView;
+@class CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipientTextView, CNContactPickerViewController, CNContactStore, IDSBatchIDQueryController, NSArray, NSMutableSet, NSNumber, NSString, UIScrollView;
 
-@interface PUPhotoStreamRecipientViewController : UIViewController <MFContactsSearchConsumer, UITableViewDataSource, UITableViewDelegate, CNContactPickerDelegate, UIPopoverPresentationControllerDelegate, MFComposeRecipientTextViewDelegate, IDSBatchIDQueryControllerDelegate>
+@interface PUPhotoStreamRecipientViewController : UIViewController <UIPopoverPresentationControllerDelegate, IDSBatchIDQueryControllerDelegate, CNContactPickerDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNComposeRecipientTextViewDelegate, CNAutocompleteSearchConsumer>
 {
-    UITableView *_searchResultsTable;
-    MFComposeRecipientTextView *_recipientView;
+    CNAutocompleteResultsTableViewController *_searchResultsTableViewController;
+    CNComposeRecipientTextView *_recipientView;
     UIScrollView *_recipientContainerView;
-    MFContactsSearchManager *_searchManager;
-    MFContactsSearchResultsModel *_searchResultsModel;
+    CNAutocompleteSearchManager *_searchManager;
     NSNumber *_currentSearchTaskID;
-    NSArray *_searchResults;
     IDSBatchIDQueryController *_idsBatchIDQueryController;
     NSMutableSet *_validPhoneNumbers;
-    _Bool _wasFirstResponder;
-    _Bool _showingContactPicker;
     CNContactPickerViewController *_contactPickerPresentedController;
     struct CGSize _recipientViewSize;
     double _lastHeight;
@@ -38,9 +33,9 @@
 }
 
 + (void)recordRecentInvitationRecipient:(id)arg1 displayName:(id)arg2 date:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) double bottomTableOffset; // @synthesize bottomTableOffset=_bottomTableOffset;
 @property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)_dismissContactPicker;
@@ -48,21 +43,18 @@
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)_addRecipientForContact:(id)arg1 address:(id)arg2 kind:(unsigned long long)arg3;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)autocompleteResultsController:(id)arg1 tintColorForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
+- (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)_setSearchResults:(id)arg1;
 - (id)_selectedNormalizedPhoneForRecipient:(id)arg1;
-- (void)endedNetworkActivity;
-- (void)beganNetworkActivity;
-- (void)finishedTaskWithID:(id)arg1;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (id)_searchManager;
 - (void)_searchForRecipientWithText:(id)arg1;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;
+- (void)composeRecipientView:(id)arg1 disambiguateRecipientForAtom:(id)arg2;
 - (void)composeRecipientView:(id)arg1 showPersonCardForAtom:(id)arg2;
 - (void)composeRecipientViewDidFinishPickingRecipient:(id)arg1;
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;

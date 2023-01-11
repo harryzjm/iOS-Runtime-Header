@@ -9,15 +9,17 @@
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 #import <SpringBoardHome/SBFolderObserver-Protocol.h>
 #import <SpringBoardHome/SBFolderViewDelegate-Protocol.h>
+#import <SpringBoardHome/SBIconListLayoutObserver-Protocol.h>
 #import <SpringBoardHome/SBIconListViewDragObserver-Protocol.h>
 #import <SpringBoardHome/SBIconLocationPresenting-Protocol.h>
+#import <SpringBoardHome/SBIconViewObserver-Protocol.h>
 #import <SpringBoardHome/SBIconViewQuerying-Protocol.h>
 #import <SpringBoardHome/SBScaleIconZoomAnimationContaining-Protocol.h>
 
-@class NSArray, NSIndexPath, NSMutableSet, NSSet, NSString, NSTimer, SBFolder, SBFolderContainerView, SBFolderControllerAnimationContext, SBFolderControllerBackgroundView, SBFolderControllerConfiguration, SBFolderIconImageCache, SBFolderView, SBHIconImageCache, SBHIconModel, SBIconAnimator, SBIconLayoutOverrideStrategy, SBIconListPageControl, SBIconListView, SBIconPageIndicatorImageSetCache, SBIconView, UIColor, UIStatusBar, UIView, UIWindow, _UILegibilitySettings;
+@class NSArray, NSHashTable, NSIndexPath, NSMapTable, NSMutableSet, NSSet, NSString, NSTimer, SBFolder, SBFolderContainerView, SBFolderControllerAnimationContext, SBFolderControllerBackgroundView, SBFolderControllerConfiguration, SBFolderIconImageCache, SBFolderView, SBHIconImageCache, SBHIconModel, SBIconAnimator, SBIconListModel, SBIconListPageControl, SBIconListView, SBIconPageIndicatorImageSetCache, SBIconView, UIColor, UIStatusBar, UIView, UIWindow, _UILegibilitySettings;
 @protocol BSInvalidatable, SBFolderControllerDelegate, SBIconListLayoutProvider, SBIconViewProviding;
 
-@interface SBFolderController <SBFolderControllerDelegate, SBFolderObserver, SBIconListViewDragObserver, SBFolderControllerBackgroundViewDelegate, SBFolderViewDelegate, SBScaleIconZoomAnimationContaining, BSDescriptionProviding, SBIconLocationPresenting, SBIconViewQuerying>
+@interface SBFolderController <SBFolderControllerDelegate, SBIconListViewDragObserver, SBFolderControllerBackgroundViewDelegate, SBFolderViewDelegate, SBFolderObserver, SBIconListLayoutObserver, SBIconViewObserver, SBScaleIconZoomAnimationContaining, BSDescriptionProviding, SBIconLocationPresenting, SBIconViewQuerying>
 {
     SBFolderContainerView *_containerView;
     SBFolderView *_contentView;
@@ -28,6 +30,14 @@
     NSMutableSet *_draggingEnteredIconListViews;
     NSMutableSet *_fakeStatusBarHidingReasons;
     NSMutableSet *_realStatusBarHidingReasons;
+    long long _leadingVisiblePageIndex;
+    long long _trailingVisiblePageIndex;
+    NSHashTable *_pageViewControllerAppearStateOverrideAssertions;
+    NSHashTable *_iconImageViewControllerKeepStaticAssertions;
+    id <BSInvalidatable> _iconImageViewControllerKeepStaticForAnimatedScrollAssertion;
+    NSMutableSet *_iconViewsWithCustomImageViewControllers;
+    NSMapTable *_iconViewCustomImageViewControllerTouchCancellationAssertions;
+    NSMutableSet *_appearanceTransitioningCustomImageViewControllers;
     _Bool _isOpen;
     _Bool _isEditing;
     _Bool _isAnimating;
@@ -60,6 +70,7 @@
 + (Class)listViewClass;
 + (Class)_contentViewClass;
 + (Class)configurationClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBIconListPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property(retain, nonatomic) SBFolderControllerAnimationContext *animationContext; // @synthesize animationContext=_animationContext;
 @property(copy, nonatomic) SBFolderControllerConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -86,7 +97,6 @@
 @property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_isAnimating;
 @property(readonly, nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_isEditing;
 @property(nonatomic, getter=isOpen) _Bool open; // @synthesize open=_isOpen;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -98,18 +108,26 @@
 - (double)minimumHomeScreenScaleForFolderControllerBackgroundView:(id)arg1;
 - (void)folder:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (void)folder:(id)arg1 didAddIcons:(id)arg2 removedIcons:(id)arg3;
-- (void)folder:(id)arg1 didRemoveLists:(id)arg2 atIndexes:(id)arg3;
-- (void)folder:(id)arg1 didAddList:(id)arg2;
-- (void)_noteFolderListsDidChange;
+- (void)iconViewDidHandleTap:(id)arg1;
+- (void)iconViewDidDismissContextMenu:(id)arg1;
+- (void)iconViewWillPresentContextMenu:(id)arg1;
+- (void)iconView:(id)arg1 didChangeCustomImageViewController:(id)arg2;
+- (void)iconListViewDidChangeBoundsSize:(id)arg1;
+- (void)iconListView:(id)arg1 didRemoveIconView:(id)arg2;
+- (void)iconListView:(id)arg1 didAddIconView:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSessionDidEnd:(id)arg2;
 - (void)iconListView:(id)arg1 concludeIconDrop:(id)arg2;
+- (void)folderView:(id)arg1 didRemoveIconListView:(id)arg2;
+- (void)folderView:(id)arg1 didAddIconListView:(id)arg2;
 - (void)folderViewDidChangeOrientation:(id)arg1;
 - (id)folderView:(id)arg1 accessibilityTintColorForRect:(struct CGRect)arg2;
 - (struct UIEdgeInsets)contentOverlayInsetsFromParentIfAvailableForFolderView:(id)arg1;
+- (id)folderView:(id)arg1 iconListView:(id)arg2 customSpringAnimationBehaviorForDroppingItem:(id)arg3;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(id)arg3;
 - (_Bool)folderView:(id)arg1 iconListView:(id)arg2 shouldAllowSpringLoadedInteractionForIconDropSession:(id)arg3 onIconView:(id)arg4;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 iconDragItem:(id)arg3 willAnimateDropWithAnimator:(id)arg4;
 - (id)folderView:(id)arg1 iconListView:(id)arg2 previewForDroppingIconDragItem:(id)arg3 proposedPreview:(id)arg4;
+- (void)folderView:(id)arg1 iconListView:(id)arg2 willUseIconView:(id)arg3 forDroppingIconDragItem:(id)arg4;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 performIconDrop:(id)arg3;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 iconDropSessionDidExit:(id)arg3;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 iconDropSession:(id)arg3 didPauseAtLocation:(struct CGPoint)arg4;
@@ -125,6 +143,8 @@
 - (void)folderViewDidScroll:(id)arg1;
 - (void)folderViewWillUpdatePageDuringScrolling:(id)arg1;
 - (void)folderViewWillBeginScrolling:(id)arg1;
+- (void)folderViewWillEndDragging:(id)arg1;
+- (void)folderViewWillBeginDragging:(id)arg1;
 - (void)folderView:(id)arg1 currentPageIndexDidChange:(long long)arg2;
 - (void)folderView:(id)arg1 currentPageIndexWillChange:(long long)arg2;
 - (_Bool)folderView:(id)arg1 canChangeCurrentPageIndexToIndex:(long long)arg2;
@@ -137,7 +157,7 @@
 - (id)statusBarStyleRequestForFolderController:(id)arg1;
 - (void)folderController:(id)arg1 willRemoveFakeStatusBar:(id)arg2;
 - (id)fakeStatusBarForFolderController:(id)arg1;
-- (id)folderControllerWantsToHideStatusBar:(id)arg1;
+- (id)folderControllerWantsToHideStatusBar:(id)arg1 animated:(_Bool)arg2;
 - (void)folderControllerDidClose:(id)arg1;
 - (void)folderControllerWillClose:(id)arg1;
 - (void)folderControllerDidOpen:(id)arg1;
@@ -145,10 +165,12 @@
 - (void)folderController:(id)arg1 willCreateInnerFolderControllerWithConfiguration:(id)arg2;
 - (id)folderController:(id)arg1 accessibilityTintColorForScreenRect:(struct CGRect)arg2;
 - (struct UIEdgeInsets)contentOverlayInsetsFromParentIfAvailableForFolderController:(id)arg1;
+- (id)folderController:(id)arg1 iconListView:(id)arg2 customSpringAnimationBehaviorForDroppingItem:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(id)arg3;
 - (_Bool)folderController:(id)arg1 iconListView:(id)arg2 shouldAllowSpringLoadedInteractionForIconDropSession:(id)arg3 onIconView:(id)arg4;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDragItem:(id)arg3 willAnimateDropWithAnimator:(id)arg4;
 - (id)folderController:(id)arg1 iconListView:(id)arg2 previewForDroppingIconDragItem:(id)arg3 proposedPreview:(id)arg4;
+- (void)folderController:(id)arg1 iconListView:(id)arg2 willUseIconView:(id)arg3 forDroppingIconDragItem:(id)arg4;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 performIconDrop:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDropSessionDidExit:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDropSession:(id)arg3 didPauseAtLocation:(struct CGPoint)arg4;
@@ -159,16 +181,17 @@
 - (void)folderControllerWillBeginScrolling:(id)arg1;
 - (void)folderControllerShouldEndEditing:(id)arg1;
 - (double)minimumHomeScreenScaleForFolderController:(id)arg1;
-- (void)folderControllerShouldBeginEditing:(id)arg1;
+- (void)folderControllerShouldBeginEditing:(id)arg1 withHaptic:(_Bool)arg2;
 - (_Bool)folderControllerShouldClose:(id)arg1 withPinchGesture:(id)arg2;
 - (void)folderController:(id)arg1 draggedIconShouldDropFromListView:(id)arg2;
 - (_Bool)folderController:(id)arg1 canChangeCurrentPageIndexToIndex:(long long)arg2;
 - (Class)controllerClassForFolder:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (struct UIEdgeInsets)statusBarInsetsForOrientation:(long long)arg1;
-@property(readonly, copy, nonatomic) NSArray *extraViews;
+@property(readonly, nonatomic) _Bool shouldAnimateFirstTwoViewsAsOne;
 @property(readonly, nonatomic) _Bool shouldAnimateLastTwoViewsAsOne;
-@property(readonly, nonatomic) UIView *extraViewsContainer;
+@property(readonly, copy, nonatomic) NSArray *extraViews;
+@property(readonly, copy, nonatomic) NSArray *extraViewsContainers;
 - (void)setContentAlpha:(double)arg1;
 - (void)prepareForAnimation:(id)arg1 withTargetIcon:(id)arg2;
 - (void)returnScalingView;
@@ -181,9 +204,19 @@
 @property(readonly, nonatomic) UIWindow *animationWindow;
 - (id)matchMoveSourceViewForIconView:(id)arg1;
 @property(readonly, nonatomic) UIView *containerView;
+- (void)_updateVisiblySettledForIconView:(id)arg1 visiblySettled:(_Bool)arg2;
+- (void)_updateVisiblySettledForIconView:(id)arg1;
+- (_Bool)_canAnyIconViewBeVisiblySettled;
+- (void)_updateVisiblySettledForIconViews;
+- (_Bool)_isHitTestingDisabledOnCustomIconImageViewControllers;
+- (void)_disableTouchesOnAllCustomIconImageViewControllers;
+- (void)_enableTouchesOnAllCustomIconImageViewControllers;
+- (void)_invalidateAllCancelTouchesAssertions;
+- (void)_cancelTouchesForCustomIconImageViewController:(id)arg1;
+- (void)_cancelTouchesForAllCustomIconImageViewControllers;
 - (void)prepareToLaunchTappedIcon:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSIndexPath *currentIndexPath;
-- (_Bool)restoreExpandedIndexPath:(id)arg1;
+- (_Bool)restoreExpandedPathIdentifiers:(id)arg1;
 - (_Bool)shouldOpenFolderIcon:(id)arg1;
 - (void)popFolderAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)configureInnerFolderControllerConfiguration:(id)arg1;
@@ -210,9 +243,8 @@
 @property(readonly, nonatomic) _Bool closesAfterDragExits;
 - (void)_cancelAllInteractionTimers;
 - (_Bool)_allowUserInteraction;
+- (_Bool)shouldViewControllersAppearVisibleForListView:(id)arg1;
 - (void)_compactFolder;
-- (id)_addEmptyListForce:(_Bool)arg1;
-- (id)addEmptyListView;
 - (void)layoutIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(_Bool)arg3;
 - (void)_resetIconLists;
 - (void)prepareToTearDown;
@@ -221,9 +253,9 @@
 - (void)_updateStateOfAssociatedController:(id)arg1 animated:(_Bool)arg2;
 - (void)_updateAssociatedControllerStateAnimated:(_Bool)arg1;
 - (void)_unhideStatusBarForReason:(id)arg1;
-- (void)_hideStatusBarForReason:(id)arg1;
-- (void)_unhideFakeStatusBarForReason:(id)arg1;
-- (void)_hideFakeStatusBarForReason:(id)arg1;
+- (void)_hideStatusBarForReason:(id)arg1 animated:(_Bool)arg2;
+- (void)_unhideFakeStatusBarForReason:(id)arg1 animated:(_Bool)arg2;
+- (void)_hideFakeStatusBarForReason:(id)arg1 animated:(_Bool)arg2;
 - (void)_removeFakeStatusBarAndAssertionIfExists;
 - (void)_removeFakeStatusBar;
 - (void)_resetFakeStatusBarMatchMoveAnimation;
@@ -234,6 +266,7 @@
 - (void)_updateHomescreenAndDockFade;
 - (_Bool)_homescreenAndDockShouldFade;
 - (void)_setHomescreenAndDockAlpha:(double)arg1;
+- (void)minimumHomeScreenScaleDidChange;
 - (void)setFolderIconImageCache:(id)arg1;
 @property(readonly, nonatomic) long long userInterfaceLayoutDirection;
 @property(readonly, nonatomic) unsigned long long userInterfaceLayoutDirectionHandling;
@@ -260,13 +293,31 @@
 - (_Bool)isDisplayingIcon:(id)arg1 inLocations:(id)arg2;
 - (_Bool)isDisplayingIcon:(id)arg1 inLocation:(id)arg2;
 - (_Bool)isDisplayingIcon:(id)arg1;
+- (void)_updatePresentationModeForIconView:(id)arg1;
+- (void)_updatePresentationModeForIconViews;
+- (unsigned long long)iconImageViewControllerPresentationModeForIconView:(id)arg1;
+- (void)_removeIconImageViewControllerKeepStaticAssertion:(id)arg1;
+- (id)keepIconImageViewControllersStaticInAllPagesExcluding:(id)arg1 forReason:(id)arg2;
+@property(readonly, nonatomic, getter=isOverridingPageViewControllerAppearanceStateToRemainDisappeared) _Bool overridingPageViewControllerAppearanceStateToRemainDisappeared;
+- (void)_removePageViewControllerAppearStateOverrideAssertion:(id)arg1;
+- (id)beginOverridingPageViewControllerAppearanceStateToRemainDisappearedForReason:(id)arg1;
+- (void)updateAppearanceStateForPageViewControllers:(_Bool)arg1;
+- (id)pageViewControllersForLeadingPageIndex:(long long)arg1 trailingPageIndex:(long long)arg2;
+- (id)visiblePageViewControllers;
+- (id)viewControllersForPageIndex:(long long)arg1;
+- (_Bool)_isValidPageIndex:(long long)arg1;
+- (unsigned long long)iconListViewIndexForIconListModelIndex:(unsigned long long)arg1;
+- (long long)pageIndexForIconListModelIndex:(unsigned long long)arg1;
 - (long long)pageIndexForIconListViewIndex:(unsigned long long)arg1;
+- (unsigned long long)iconListModelIndexForPageIndex:(long long)arg1;
 - (unsigned long long)iconListViewIndexForPageIndex:(long long)arg1;
 - (id)iconListViewForDrag:(id)arg1;
 - (id)iconListViewForTouch:(id)arg1;
 - (id)iconListViewAtPoint:(struct CGPoint)arg1;
+- (id)iconListViewForIconListModelIndex:(unsigned long long)arg1;
 - (id)iconListViewAtIndex:(unsigned long long)arg1;
 - (_Bool)doesPageContainIconListView:(long long)arg1;
+@property(readonly, nonatomic) SBIconListModel *currentIconListModel;
 @property(readonly, nonatomic) SBIconListView *currentIconListView;
 @property(readonly, nonatomic) unsigned long long iconListViewCount;
 @property(readonly, copy, nonatomic) NSArray *iconListViews;
@@ -286,10 +337,9 @@
 - (_Bool)setCurrentPageIndex:(long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)setCurrentPageIndex:(long long)arg1 animated:(_Bool)arg2;
 - (void)setCurrentPageIndex:(long long)arg1;
-@property(retain, nonatomic) SBIconLayoutOverrideStrategy *iconLayoutOverrideStrategy;
-@property(nonatomic) double statusBarHeight;
 - (void)beginEditingTitle;
 - (void)_updateFolderRequiredTrailingEmptyListCount;
+- (void)_handleEndEditingKeyCommand:(id)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) double currentScrollingOffset;
 @property(readonly, nonatomic) long long currentPageIndex;
@@ -308,12 +358,19 @@
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 forOperation:(long long)arg2 withTransitionCoordinator:(id)arg3;
 - (void)nestingViewController:(id)arg1 willPerformOperation:(long long)arg2 onViewController:(id)arg3 withTransitionCoordinator:(id)arg4;
 - (id)nestingViewController:(id)arg1 animationControllerForOperation:(long long)arg2 onViewController:(id)arg3 animated:(_Bool)arg4;
+- (id)keyCommands;
+@property(readonly, copy, nonatomic) NSArray *_viewControllersToNotifyForViewObscuration;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)invalidate;
 - (void)_invalidate;
 - (void)parentDelegateDidChange;
 - (void)delegateDidChange;
+- (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties

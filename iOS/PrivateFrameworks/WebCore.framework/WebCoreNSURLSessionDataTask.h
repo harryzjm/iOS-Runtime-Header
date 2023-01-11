@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
     float _priority;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property float priority; // @synthesize priority=_priority;
 @property(copy) NSString *taskDescription; // @synthesize taskDescription=_taskDescription;
 @property(copy) NSError *error; // @synthesize error=_error;
@@ -39,16 +41,14 @@ __attribute__((visibility("hidden")))
 @property(copy) NSURLRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property unsigned long long taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property WebCoreNSURLSession *session; // @synthesize session=_session;
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (void)resourceFinished:(struct PlatformMediaResource *)arg1;
+- (void)resourceFinished:(struct PlatformMediaResource *)arg1 metrics:(const struct NetworkLoadMetrics *)arg2;
 - (void)resource:(struct PlatformMediaResource *)arg1 loadFailedWithError:(const struct ResourceError *)arg2;
 - (void)resource:(struct PlatformMediaResource *)arg1 accessControlCheckFailedWithError:(const struct ResourceError *)arg2;
-- (void)_resource:(struct PlatformMediaResource *)arg1 loadFinishedWithError:(id)arg2;
+- (void)_resource:(struct PlatformMediaResource *)arg1 loadFinishedWithError:(id)arg2 metrics:(const struct NetworkLoadMetrics *)arg3;
 - (void)resource:(struct PlatformMediaResource *)arg1 receivedRedirect:(const struct ResourceResponse *)arg2 request:(struct ResourceRequest *)arg3 completionHandler:(CompletionHandler_7162061b *)arg4;
 - (void)resource:(struct PlatformMediaResource *)arg1 receivedData:(const char *)arg2 length:(int)arg3;
 - (_Bool)resource:(struct PlatformMediaResource *)arg1 shouldCacheResponse:(const struct ResourceResponse *)arg2;
-- (void)resource:(struct PlatformMediaResource *)arg1 receivedResponse:(const struct ResourceResponse *)arg2 completionHandler:(CompletionHandler_071c3afe *)arg3;
+- (void)resource:(struct PlatformMediaResource *)arg1 receivedResponse:(const struct ResourceResponse *)arg2 completionHandler:(CompletionHandler_be2c0021 *)arg3;
 - (void)resource:(struct PlatformMediaResource *)arg1 sentBytes:(unsigned long long)arg2 totalBytesToBeSent:(unsigned long long)arg3;
 - (id)_timingData;
 - (void)dealloc;

@@ -36,6 +36,7 @@
     _Bool _centerFollowsFinger;
     _Bool _animateIconsOnPresentationToo;
     _Bool _iconAnimatorNeedsAnimating;
+    _Bool _wantsHomeGestureOwnership;
     SBWindow *_coverSheetWindow;
     SBWindow *_secureAppWindow;
     SBCoverSheetSlidingViewController *_secureAppSlidingViewController;
@@ -72,16 +73,22 @@
     double _iconFlyInTension;
     double _iconFlyInFriction;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    id <BSInvalidatable> _suspendWallpaperAnimationAssertion;
+    id <BSInvalidatable> _requireWallpaperAssertion;
     CDUnknownBlockType _ppt_transitionBeginsCallback;
     CDUnknownBlockType _ppt_transitionEndsCallback;
     SBCoverSheetSlidingViewController *_coverSheetSlidingViewController;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBCoverSheetSlidingViewController *coverSheetSlidingViewController; // @synthesize coverSheetSlidingViewController=_coverSheetSlidingViewController;
 @property(copy, nonatomic) CDUnknownBlockType ppt_transitionEndsCallback; // @synthesize ppt_transitionEndsCallback=_ppt_transitionEndsCallback;
 @property(copy, nonatomic) CDUnknownBlockType ppt_transitionBeginsCallback; // @synthesize ppt_transitionBeginsCallback=_ppt_transitionBeginsCallback;
+@property(retain, nonatomic) id <BSInvalidatable> requireWallpaperAssertion; // @synthesize requireWallpaperAssertion=_requireWallpaperAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> suspendWallpaperAnimationAssertion; // @synthesize suspendWallpaperAnimationAssertion=_suspendWallpaperAnimationAssertion;
 @property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
+@property(nonatomic) _Bool wantsHomeGestureOwnership; // @synthesize wantsHomeGestureOwnership=_wantsHomeGestureOwnership;
 @property(nonatomic) _Bool iconAnimatorNeedsAnimating; // @synthesize iconAnimatorNeedsAnimating=_iconAnimatorNeedsAnimating;
 @property(nonatomic) double iconFlyInFriction; // @synthesize iconFlyInFriction=_iconFlyInFriction;
 @property(nonatomic) double iconFlyInTension; // @synthesize iconFlyInTension=_iconFlyInTension;
@@ -124,7 +131,6 @@
 @property(nonatomic) __weak id <SBCoverSheetPresentationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long scrollingStrategy; // @synthesize scrollingStrategy=_scrollingStrategy;
 @property(nonatomic) long long participantState; // @synthesize participantState=_participantState;
-- (void).cxx_destruct;
 - (void)_cleanupIconAnimator;
 - (void)_setTransitionProgress:(double)arg1 animated:(_Bool)arg2 gestureActive:(_Bool)arg3 coverSheetProgress:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_animateForProgress:(double)arg1;
@@ -143,9 +149,9 @@
 - (void)_setCoverSheet:(_Bool)arg1 windowVisible:(_Bool)arg2 forReason:(id)arg3;
 - (void)_setSecureAppWindowVisible:(_Bool)arg1 forReason:(id)arg2;
 - (void)_setCoverSheetWindowVisible:(_Bool)arg1 forReason:(id)arg2;
-- (void)_relinquishHomeGesture;
-- (void)_requestHomeGestureOwnership;
 - (void)_setOrientationUpdatesDeferred:(_Bool)arg1;
+- (void)_relinquishHomeGestureOwnership;
+- (void)_requestHomeGestureOwnership;
 - (void)_enqueueBlock:(CDUnknownBlockType)arg1 withName:(id)arg2;
 - (void)_notifyDelegateRequestsUnlock;
 - (void)_notifyDelegateDidDismiss;
@@ -203,12 +209,15 @@
 @property(readonly, nonatomic) long long idleTimerDuration;
 @property(readonly, nonatomic) long long idleTimerMode;
 @property(readonly, nonatomic) long long idleWarnMode;
+- (void)conformsToCSExternalBehaviorProviding;
+- (void)conformsToCSBehaviorProviding;
 @property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
+- (void)conformsToCSAppearanceProviding;
 - (void)secureAppEnvironmentViewControllerOwnsHomeGestureDidChange;
 - (void)_transitionFromSecureAppToFullAppAndDismiss:(_Bool)arg1 preservingBanners:(_Bool)arg2;
 - (void)_noteEffectiveLockStatusMayHaveChangedForUserNotification:(_Bool)arg1 canDismiss:(_Bool)arg2;

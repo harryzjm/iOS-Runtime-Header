@@ -17,8 +17,8 @@
 
 + (id)keyPathsForValuesAffectingVisibleNotesCount;
 + (id)accountProxyWithAccount:(id)arg1;
-@property(retain) ICAccount *account; // @synthesize account=_account;
 - (void).cxx_destruct;
+@property(retain) ICAccount *account; // @synthesize account=_account;
 - (id)customNoteSortTypeValue;
 - (_Bool)mergeWithSubFolderMergeableData:(id)arg1;
 - (void)updateSubFolderMergeableDataChangeCount;
@@ -30,12 +30,12 @@
 - (_Bool)isModernCustomFolder;
 @property(readonly, nonatomic) _Bool isAllNotesContainer;
 @property(readonly, nonatomic) _Bool canBeSharedViaICloud;
+@property(readonly, nonatomic) _Bool isSharedReadOnly;
 @property(readonly, nonatomic) _Bool isSharedViaICloud;
 - (_Bool)isDeleted;
 - (id)noteVisibilityTestingForSearchingAccount;
 @property(readonly, nonatomic) _Bool supportsEditingNotes;
 - (id)visibleNoteContainerChildren;
-- (id)detailForTableViewCell;
 - (id)titleForTableViewCell;
 - (id)titleForNavigationBar;
 - (_Bool)noteIsVisible:(id)arg1;

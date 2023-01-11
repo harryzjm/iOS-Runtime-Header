@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
+#import <CoreServices/LSDetachable-Protocol.h>
 #import <CoreServices/NSCopying-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
 @class NSDictionary;
 
-@interface _LSLazyPropertyList : NSObject <NSCopying, NSSecureCoding>
+@interface _LSLazyPropertyList <NSCopying, NSSecureCoding, LSDetachable>
 {
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)lazyPropertyListWithLazyPropertyLists:(id)arg1;
 + (id)lazyPropertyListWithPropertyList:(id)arg1;
++ (id)lazyPropertyListWithPropertyListURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 + (id)lazyPropertyListWithPropertyListURL:(id)arg1;
 + (id)lazyPropertyListWithPropertyListData:(id)arg1;
 + (id)lazyPropertyList;
@@ -25,14 +25,16 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)detach;
+- (id)_expensiveDictionaryRepresentation;
+- (id)objectForKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
+- (id)objectForKey:(id)arg1 ofClass:(Class)arg2;
+- (id)objectsForKeys:(id)arg1;
 - (_Bool)_getValue:(id *)arg1 forPropertyListKey:(id)arg2;
 - (_Bool)_getPropertyList:(id *)arg1;
-- (id)objectForPropertyListKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
-- (id)objectForPropertyListKey:(id)arg1 ofClass:(Class)arg2;
-- (id)objectsForPropertyListKeys:(id)arg1;
+- (id)uncheckedObjectsForKeys:(id)arg1;
 @property(readonly) NSDictionary *propertyList; // @dynamic propertyList;
 - (id)init;
-- (id)_filterValueFromPropertyList:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
 
 @end
 

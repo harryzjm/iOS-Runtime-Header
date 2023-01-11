@@ -23,6 +23,7 @@
 - (id)disambiguationItemForListItem:(id)arg1 disambiguationKey:(id)arg2;
 - (id)filteredDisambiguationListItems:(id)arg1;
 - (id)snippetViewControllerForSnippet:(id)arg1;
+- (id)transcriptItemForObject:(id)arg1 sizeClass:(long long)arg2;
 - (id)transcriptItemForObject:(id)arg1;
 - (_Bool)_compareObject:(id)arg1 toObject:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (_Bool)_listItem:(id)arg1 isPreferredOverListItem:(id)arg2;

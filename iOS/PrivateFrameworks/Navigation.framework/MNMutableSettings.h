@@ -12,21 +12,8 @@
 
 + (id)settingsWithSettings:(id)arg1;
 @property(nonatomic) _Bool shouldUseGuidanceEventManager; // @dynamic shouldUseGuidanceEventManager;
-@property(nonatomic) double simulationGPSError; // @dynamic simulationGPSError;
-@property(nonatomic) double simulationSpeed; // @dynamic simulationSpeed;
-@property(nonatomic) _Bool shouldRecordTrace; // @dynamic shouldRecordTrace;
-@property(nonatomic) _Bool isTracePlaybackCameraTestMode; // @dynamic isTracePlaybackCameraTestMode;
-@property(nonatomic) _Bool shouldLoadETAUpdatesFromTrace; // @dynamic shouldLoadETAUpdatesFromTrace;
-@property(nonatomic) _Bool shouldLoadReroutesFromTrace; // @dynamic shouldLoadReroutesFromTrace;
-@property(nonatomic) double initialTraceSpeedMultiplier; // @dynamic initialTraceSpeedMultiplier;
-@property(nonatomic) long long fakeTrafficIncidentAlert; // @dynamic fakeTrafficIncidentAlert;
-@property(nonatomic) double backgroundTimeWindow; // @dynamic backgroundTimeWindow;
-@property(nonatomic) double initialRequestDelay; // @dynamic initialRequestDelay;
-@property(nonatomic) double etaRequestInterval; // @dynamic etaRequestInterval;
 @property(copy, nonatomic) NSString *voiceLanguage; // @dynamic voiceLanguage;
 @property(nonatomic) _Bool beepBeforeInstruction; // @dynamic beepBeforeInstruction;
-@property(nonatomic) _Bool walkingVoiceGuidance; // @dynamic walkingVoiceGuidance;
-@property(nonatomic) _Bool drivingVoiceGuidance; // @dynamic drivingVoiceGuidance;
 @property(nonatomic) unsigned long long maxAlternateRoutesCount; // @dynamic maxAlternateRoutesCount;
 @property(nonatomic) _Bool speechEnabled; // @dynamic speechEnabled;
 @property(nonatomic) _Bool muteSpeechOverride; // @dynamic muteSpeechOverride;

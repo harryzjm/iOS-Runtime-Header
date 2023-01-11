@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
     PUAlbumPickerViewController *_albumPickerViewController;
 }
 
-+ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
-@property(retain, nonatomic) PUAlbumPickerViewController *albumPickerViewController; // @synthesize albumPickerViewController=_albumPickerViewController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PUAlbumPickerViewController *albumPickerViewController; // @synthesize albumPickerViewController=_albumPickerViewController;
 - (void)_handleUserInteractionTaskResult:(_Bool)arg1 error:(id)arg2;
-- (void)_handlePickedAlbum:(struct NSObject *)arg1 assets:(id)arg2;
+- (void)_handlePickedAlbum:(id)arg1 assets:(id)arg2;
 - (void)performUserInteractionTask;
 
 @end

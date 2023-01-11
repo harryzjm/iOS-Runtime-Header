@@ -12,9 +12,11 @@
     SearchUIGridLayoutManager *_gridLayoutManager;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldHide; // @synthesize shouldHide=_shouldHide;
 @property(retain, nonatomic) SearchUIGridLayoutManager *gridLayoutManager; // @synthesize gridLayoutManager=_gridLayoutManager;
-- (void).cxx_destruct;
+- (_Bool)hasLeadingImage;
+- (_Bool)prefersNoSeparatorAbove;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 gridLayoutManager:(id)arg3 queryId:(unsigned long long)arg4;
 
 @end

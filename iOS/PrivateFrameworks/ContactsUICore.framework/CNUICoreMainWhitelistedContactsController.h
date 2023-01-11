@@ -9,7 +9,7 @@
 #import <ContactsUICore/CNUICoreFamilyMemberWhitelistedContactsDataSource-Protocol.h>
 
 @class CNFuture, NSArray, NSString;
-@protocol CNCancelable, CNScheduler, CNSchedulerProvider, CNUICoreContactStoreFacade, CNUICoreFamilyMemberContactsModelFetching, CNUICoreFamilyMemberContactsObserver;
+@protocol CNCancelable, CNDowntimeWhitelistContainerFetching, CNScheduler, CNSchedulerProvider, CNUICoreContactStoreFacade, CNUICoreFamilyMemberContactsModelFetching, CNUICoreFamilyMemberContactsObserver;
 
 @interface CNUICoreMainWhitelistedContactsController : NSObject <CNUICoreFamilyMemberWhitelistedContactsDataSource>
 {
@@ -17,6 +17,7 @@
     id <CNUICoreFamilyMemberContactsObserver> _observer;
     id <CNUICoreFamilyMemberContactsModelFetching> _modelFetcher;
     id <CNUICoreContactStoreFacade> _mainContactStoreFacade;
+    id <CNDowntimeWhitelistContainerFetching> _downtimeContainerFetcher;
     id <CNSchedulerProvider> _schedulerProvider;
     CNFuture *_familyMemberContactItemsFuture;
     CNFuture *_addContactsToWhitelistFuture;
@@ -26,16 +27,17 @@
 }
 
 + (id)controllerWithOptions:(id)arg1 schedulerProvider:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <CNCancelable> contactStoreDidChangeToken; // @synthesize contactStoreDidChangeToken=_contactStoreDidChangeToken;
 @property(retain, nonatomic) CNFuture *deleteContactsFromWhitelistFuture; // @synthesize deleteContactsFromWhitelistFuture=_deleteContactsFromWhitelistFuture;
 @property(retain, nonatomic) CNFuture *updateContactsInWhitelistFuture; // @synthesize updateContactsInWhitelistFuture=_updateContactsInWhitelistFuture;
 @property(retain, nonatomic) CNFuture *addContactsToWhitelistFuture; // @synthesize addContactsToWhitelistFuture=_addContactsToWhitelistFuture;
 @property(retain, nonatomic) CNFuture *familyMemberContactItemsFuture; // @synthesize familyMemberContactItemsFuture=_familyMemberContactItemsFuture;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property(readonly, nonatomic) id <CNDowntimeWhitelistContainerFetching> downtimeContainerFetcher; // @synthesize downtimeContainerFetcher=_downtimeContainerFetcher;
 @property(readonly, nonatomic) id <CNUICoreContactStoreFacade> mainContactStoreFacade; // @synthesize mainContactStoreFacade=_mainContactStoreFacade;
 @property(readonly, nonatomic) id <CNUICoreFamilyMemberContactsModelFetching> modelFetcher; // @synthesize modelFetcher=_modelFetcher;
 @property(nonatomic) __weak id <CNUICoreFamilyMemberContactsObserver> observer; // @synthesize observer=_observer;
-- (void).cxx_destruct;
 - (void)finishWhitelistedContactsTasks;
 - (id)contactRepresentingItem:(id)arg1;
 - (void)updateWhitelistByRemovingContacts:(id)arg1;
@@ -50,7 +52,7 @@
 @property(readonly, nonatomic) id <CNScheduler> backgroundOrImmediateScheduler;
 - (void)dealloc;
 - (void)setupChangeNotificationResponse;
-- (id)initWithModelFetcher:(id)arg1 mainContactStoreFacade:(id)arg2 schedulerProvider:(id)arg3;
+- (id)initWithModelFetcher:(id)arg1 mainContactStoreFacade:(id)arg2 downtimeContainerFetcher:(id)arg3 schedulerProvider:(id)arg4;
 - (id)initWiththOptions:(id)arg1 mainContactStoreFacade:(id)arg2 schedulerProvider:(id)arg3;
 - (id)init;
 

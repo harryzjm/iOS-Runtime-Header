@@ -6,7 +6,7 @@
 
 #import <CarPlaySupport/CPSessionConfigurationDelegate-Protocol.h>
 
-@class CPSessionConfiguration, NSMutableArray, NSString;
+@class CPSessionConfiguration, NSArray, NSMutableArray, NSString;
 
 @interface CPSSectionedDataSource <CPSessionConfigurationDelegate>
 {
@@ -15,24 +15,32 @@
     long long _numberOfVisibleItemsInLastSection;
     NSMutableArray *_sections;
     CPSessionConfiguration *_sessionConfiguration;
+    NSArray *_sectionHeightCache;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *sectionHeightCache; // @synthesize sectionHeightCache=_sectionHeightCache;
 @property(retain, nonatomic) CPSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
-- (void).cxx_destruct;
 - (void)sessionConfiguration:(id)arg1 limitedUserInterfacesChanged:(unsigned long long)arg2;
 - (_Bool)isLimitingLists;
+- (void)reloadItems:(id)arg1;
 - (void)updateSections:(id)arg1;
 - (void)deleteSectionAtIndex:(unsigned long long)arg1;
 - (void)insertSection:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)appendSection:(id)arg1;
 - (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)_sanitizedSectionIndexTitleForTitle:(id)arg1;
+- (void)rebuildHeightCacheWithEnvironment:(id)arg1;
+- (void)invalidateHeightCache;
+- (double)heightForItemAtIndexPath:(id)arg1 inEnvironment:(id)arg2;
+- (id)indexPathForItemWithIdentifier:(id)arg1;
 - (id)items;
 - (id)itemAtIndexPath:(id)arg1;
+- (id)firstItemIndexPath;
 - (long long)numberOfItemsInSection:(long long)arg1;
+- (long long)numberOfItems;
 - (long long)numberOfSections;
 - (long long)_filteredNumberOfItemsGivenSection:(long long)arg1 numberOfItems:(long long)arg2;
 - (id)sectionAtIndex:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface DMFMDMv1InstallAppRequest
 {
@@ -14,6 +14,8 @@
     unsigned long long _managementOptions;
     NSString *_VPNUUIDString;
     NSArray *_associatedDomains;
+    NSNumber *_associatedDomainsEnableDirectDownloads;
+    NSNumber *_removable;
     NSDictionary *_configuration;
     NSString *_personaID;
 }
@@ -23,15 +25,17 @@
 + (_Bool)isPermittedOnSystemConnection;
 + (id)permittedPlatforms;
 + (Class)whitelistedClassForResultObject;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
 @property(copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
+@property(copy, nonatomic) NSNumber *removable; // @synthesize removable=_removable;
+@property(copy, nonatomic) NSNumber *associatedDomainsEnableDirectDownloads; // @synthesize associatedDomainsEnableDirectDownloads=_associatedDomainsEnableDirectDownloads;
 @property(copy, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
 @property(copy, nonatomic) NSString *VPNUUIDString; // @synthesize VPNUUIDString=_VPNUUIDString;
 @property(nonatomic) unsigned long long managementOptions; // @synthesize managementOptions=_managementOptions;
 @property(nonatomic) _Bool manage; // @synthesize manage=_manage;
 @property(copy, nonatomic) NSString *originator; // @synthesize originator=_originator;
 @property(copy, nonatomic) NSString *redemptionCode; // @synthesize redemptionCode=_redemptionCode;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

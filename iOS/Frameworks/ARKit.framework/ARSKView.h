@@ -6,39 +6,21 @@
 
 #import <SpriteKit/SKView.h>
 
-#import <ARKit/ARInternalSessionObserver-Protocol.h>
 #import <ARKit/ARSessionProviding-Protocol.h>
 
-@class ARSession, NSMutableDictionary, NSObject, NSSet, NSString;
+@class ARSession, NSObject, NSString;
 @protocol ARSKViewDelegate;
 
-@interface ARSKView : SKView <ARInternalSessionObserver, ARSessionProviding>
+@interface ARSKView : SKView <ARSessionProviding>
 {
     ARSession *_session;
-    NSMutableDictionary *_nodesByAnchorIdentifier;
-    NSSet *_lastFrameAnchors;
-    long long _interfaceOrientation;
-    struct CGSize _viewportSize;
 }
 
 - (void).cxx_destruct;
-- (void)session:(id)arg1 didOutputAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
-- (void)sessionShouldAttemptRelocalization:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)sessionInterruptionEnded:(id)arg1;
-- (void)sessionWasInterrupted:(id)arg1;
-- (void)session:(id)arg1 cameraDidChangeTrackingState:(id)arg2;
-- (void)session:(id)arg1 didFailWithError:(id)arg2;
-- (void)session:(id)arg1 didUpdateFrame:(id)arg2;
-- (void)_updateNode:(id)arg1 forAnchor:(id)arg2 projectionMatrix:(CDStruct_14d5dc5e)arg3 camera:(id)arg4 orientation:(long long)arg5;
-- (void)_updateAnchors:(id)arg1 camera:(id)arg2;
-- (id)_anchorForNode:(id)arg1 inFrame:(id)arg2;
+@property(retain, nonatomic) ARSession *session; // @synthesize session=_session;
 - (id)nodeForAnchor:(id)arg1;
 - (id)anchorForNode:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
-@property(retain, nonatomic) ARSession *session;
-- (void)layoutSubviews;
-- (void)dealloc;
-- (void)commonInit;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 

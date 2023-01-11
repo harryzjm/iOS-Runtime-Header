@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBDataString, _INPBReservationAction, _INPBTimestamp;
+@class NSArray, NSString, _INPBDataString, _INPBReservationAction, _INPBTimestamp, _INPBURLValue;
 
 @protocol _INPBReservation <NSObject>
 + (Class)actionsType;
@@ -22,6 +22,8 @@
 @property(retain, nonatomic) _INPBTimestamp *bookingTime;
 @property(readonly, nonatomic) unsigned long long actionsCount;
 @property(copy, nonatomic) NSArray *actions;
+@property(readonly, nonatomic) _Bool hasUrl;
+@property(retain, nonatomic) _INPBURLValue *url;
 - (int)StringAsReservationStatus:(NSString *)arg1;
 - (NSString *)reservationStatusAsString:(int)arg1;
 - (_INPBReservationAction *)actionsAtIndex:(unsigned long long)arg1;

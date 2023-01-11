@@ -14,6 +14,7 @@
 {
 }
 
+- (id)HEICData:(struct CGImage *)arg1 compressionQuality:(double)arg2;
 - (id)_clippedScreenshotData:(id)arg1 compressionQuality:(double)arg2 rect:(struct CGRect)arg3 scale:(double)arg4;
 - (void)requestScreenshotOfScreenWithID:(long long)arg1 withRect:(struct CGRect)arg2 scale:(double)arg3 formatUTI:(id)arg4 compressionQuality:(double)arg5 withReply:(CDUnknownBlockType)arg6;
 - (void)requestScaleForScreenWithIdentifier:(long long)arg1 completion:(CDUnknownBlockType)arg2;

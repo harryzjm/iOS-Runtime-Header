@@ -7,7 +7,7 @@
 #import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
-@class NSArray, WFAirQualityConditions, WFWeatherConditions;
+@class NSArray, NSData, WFAirQualityConditions, WFNextHourPrecipitation, WFWeatherConditions;
 
 @interface WFAggregateCommonResponse <NSCopying, NSSecureCoding>
 {
@@ -18,17 +18,25 @@
     NSArray *_hourlyForecastedConditions;
     NSArray *_dailyForecastedConditions;
     NSArray *_dailyPollenForecastedConditions;
+    NSArray *_changeForecasts;
+    NSArray *_severeWeatherEvents;
+    WFNextHourPrecipitation *_nextHourPrecipitation;
+    NSData *_rawAPIData;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool responseWasFromCache; // @synthesize responseWasFromCache=_responseWasFromCache;
+@property(retain, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
+@property(retain, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
+@property(retain, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
+@property(retain, nonatomic) NSArray *changeForecasts; // @synthesize changeForecasts=_changeForecasts;
 @property(retain, nonatomic) NSArray *dailyPollenForecastedConditions; // @synthesize dailyPollenForecastedConditions=_dailyPollenForecastedConditions;
 @property(retain, nonatomic) NSArray *dailyForecastedConditions; // @synthesize dailyForecastedConditions=_dailyForecastedConditions;
 @property(retain, nonatomic) NSArray *hourlyForecastedConditions; // @synthesize hourlyForecastedConditions=_hourlyForecastedConditions;
 @property(retain, nonatomic) NSArray *lastTwentyFourHoursOfObservations; // @synthesize lastTwentyFourHoursOfObservations=_lastTwentyFourHoursOfObservations;
 @property(retain, nonatomic) WFWeatherConditions *currentObservations; // @synthesize currentObservations=_currentObservations;
 @property(retain, nonatomic) WFAirQualityConditions *airQualityObservations; // @synthesize airQualityObservations=_airQualityObservations;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

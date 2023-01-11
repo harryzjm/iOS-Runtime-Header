@@ -43,6 +43,7 @@
     _UIStatusBarDataEntry *_airPlayEntry;
     _UIStatusBarDataEntry *_carPlayEntry;
     _UIStatusBarDataEntry *_alarmEntry;
+    _UIStatusBarDataEntry *_sensorActivityEntry;
     _UIStatusBarDataIntegerEntry *_volumeEntry;
     _UIStatusBarDataBackgroundActivityEntry *_backgroundActivityEntry;
     _UIStatusBarDataStringEntry *_backNavigationEntry;
@@ -51,10 +52,12 @@
 
 + (id)entryKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) _UIStatusBarDataStringEntry *forwardNavigationEntry; // @synthesize forwardNavigationEntry=_forwardNavigationEntry;
 @property(copy, nonatomic) _UIStatusBarDataStringEntry *backNavigationEntry; // @synthesize backNavigationEntry=_backNavigationEntry;
 @property(copy, nonatomic) _UIStatusBarDataBackgroundActivityEntry *backgroundActivityEntry; // @synthesize backgroundActivityEntry=_backgroundActivityEntry;
 @property(copy, nonatomic) _UIStatusBarDataIntegerEntry *volumeEntry; // @synthesize volumeEntry=_volumeEntry;
+@property(copy, nonatomic) _UIStatusBarDataEntry *sensorActivityEntry; // @synthesize sensorActivityEntry=_sensorActivityEntry;
 @property(copy, nonatomic) _UIStatusBarDataEntry *alarmEntry; // @synthesize alarmEntry=_alarmEntry;
 @property(copy, nonatomic) _UIStatusBarDataEntry *carPlayEntry; // @synthesize carPlayEntry=_carPlayEntry;
 @property(copy, nonatomic) _UIStatusBarDataEntry *airPlayEntry; // @synthesize airPlayEntry=_airPlayEntry;
@@ -85,7 +88,6 @@
 @property(copy, nonatomic) _UIStatusBarDataStringEntry *dateEntry; // @synthesize dateEntry=_dateEntry;
 @property(copy, nonatomic) _UIStatusBarDataStringEntry *shortTimeEntry; // @synthesize shortTimeEntry=_shortTimeEntry;
 @property(copy, nonatomic) _UIStatusBarDataStringEntry *timeEntry; // @synthesize timeEntry=_timeEntry;
-- (void).cxx_destruct;
 - (void)makeUpdateFromData:(id)arg1;
 - (id)updateFromData:(id)arg1;
 - (id)dataByApplyingUpdate:(id)arg1 keys:(id)arg2;

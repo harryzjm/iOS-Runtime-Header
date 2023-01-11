@@ -21,12 +21,13 @@
     NSArray *_deletes;
     NSError *_error;
     NSArray *_filterByTransactionAuthorStrings;
-    NSArray *_unfilteredTransactions;
+    NSArray *_filteredTransactions;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)errorChangeSetWithError:(id)arg1;
-@property(retain, nonatomic) NSArray *unfilteredTransactions; // @synthesize unfilteredTransactions=_unfilteredTransactions;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *filteredTransactions; // @synthesize filteredTransactions=_filteredTransactions;
 @property(nonatomic) _Bool filterByTransactionAuthorsIsExclusion; // @synthesize filterByTransactionAuthorsIsExclusion=_filterByTransactionAuthorsIsExclusion;
 @property(retain, nonatomic) NSArray *filterByTransactionAuthorStrings; // @synthesize filterByTransactionAuthorStrings=_filterByTransactionAuthorStrings;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
@@ -35,15 +36,15 @@
 @property(retain, nonatomic) NSArray *updates; // @synthesize updates=_updates;
 @property(retain, nonatomic) NSArray *inserts; // @synthesize inserts=_inserts;
 @property(readonly, nonatomic) NSArray *transactions; // @synthesize transactions=_transactions;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)lastChangeTokenForAccountID:(id)arg1;
 - (_Bool)enumerateChanges:(long long)arg1 forModelsOfClass:(Class)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (_Bool)_filterAndFlattenAndConsolidateChanges;
 - (_Bool)applyFilterByTransactionAuthors:(id)arg1 isExclusion:(_Bool)arg2;
-- (_Bool)_flattenAndConsolidateChanges;
-- (id)initWithChangeTransactions:(id)arg1 unfilteredTransactions:(id)arg2;
+- (_Bool)consolidateAndFilterChangesWithTransactionAuthors:(id)arg1 isExclusion:(_Bool)arg2;
+- (id)description;
 - (id)initWithChangeTransactions:(id)arg1;
 - (id)initWithError:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

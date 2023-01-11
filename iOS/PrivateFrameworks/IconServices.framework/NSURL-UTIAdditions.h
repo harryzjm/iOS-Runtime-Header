@@ -16,6 +16,7 @@
 - (id)__is_volumeURL;
 - (_Bool)__is__isAliasFile;
 - (_Bool)__is__isVolume;
+- (id)__is__modDate;
 - (long long)__is__fileSize;
 - (_Bool)__is__isDirectory;
 - (_Bool)__is__conformsToUTI:(id)arg1;

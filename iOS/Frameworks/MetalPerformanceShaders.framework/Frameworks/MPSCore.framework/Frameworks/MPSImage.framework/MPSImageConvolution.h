@@ -22,7 +22,7 @@
     MPSImageLaplacian *_laplacian;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) unsigned long long kernelHeight; // @synthesize kernelHeight=_fHeight;
 @property(readonly, nonatomic) unsigned long long kernelWidth; // @synthesize kernelWidth=_fWidth;
 @property(nonatomic) float bias; // @synthesize bias=_fBias;

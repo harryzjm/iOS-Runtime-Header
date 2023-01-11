@@ -6,15 +6,16 @@
 
 #import <MetalTools/MTLCommandQueueSPI-Protocol.h>
 
-@class MTLToolsPointerArray, NSObject, NSString;
+@class MTLToolsPerfCounterMailbox, NSObject, NSString;
 @protocol MTLDevice, OS_dispatch_queue;
 
 @interface MTLToolsCommandQueue <MTLCommandQueueSPI>
 {
-    MTLToolsPointerArray *_commandBuffers;
+    MTLToolsPerfCounterMailbox *_perfSampleMailbox;
+    struct os_unfair_lock_s _perfHandlerLock;
+    CDUnknownBlockType _perfSampleHandlerBlock;
 }
 
-@property(readonly, nonatomic) MTLToolsPointerArray *commandBuffers; // @synthesize commandBuffers=_commandBuffers;
 - (id)counterInfo;
 @property(nonatomic, getter=getStatLocations) unsigned long long StatLocations;
 @property(nonatomic, getter=getStatOptions) unsigned long long StatOptions;
@@ -28,9 +29,11 @@
 @property(readonly) unsigned long long qosLevel;
 - (id)subdivideCounterList:(id)arg1;
 - (int)requestCounters:(id)arg1 withIndex:(unsigned long long)arg2;
+- (CDUnknownBlockType)snapshotPerfSampleHandlerAndStatEnabled:(_Bool *)arg1 forCommandBuffer:(id)arg2;
 - (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
 - (int)requestCounters:(id)arg1;
-@property _Bool isOpenGLQueue;
+- (id)getSPIStats;
+@property(readonly) _Bool isOpenGLQueue;
 - (void)setSubmissionQueue:(id)arg1;
 - (void)setCompletionQueue:(id)arg1;
 @property(getter=isProfilingEnabled) _Bool profilingEnabled;
@@ -46,12 +49,12 @@
 - (_Bool)setGPUPriority:(unsigned long long)arg1;
 - (unsigned long long)getGPUPriority;
 - (void)insertDebugCaptureBoundary;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (id)commandBufferWithUnretainedReferences;
 - (id)commandBuffer;
 @property(copy) NSString *label;
-- (void)acceptVisitor:(id)arg1;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (void)dealloc;
+- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

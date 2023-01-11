@@ -13,12 +13,14 @@
 @interface GEOClientNetworkMetrics : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _requestEnd;
     double _requestStart;
     NSString *_serviceIpAddress;
     NSMutableArray *_transactionMetrics;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _httpResponseCode;
     int _redirectCount;
     int _requestDataSize;
@@ -33,15 +35,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_serviceIpAddress:1;
         unsigned int read_transactionMetrics:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_requestEnd:1;
-        unsigned int wrote_requestStart:1;
-        unsigned int wrote_serviceIpAddress:1;
-        unsigned int wrote_transactionMetrics:1;
-        unsigned int wrote_httpResponseCode:1;
-        unsigned int wrote_redirectCount:1;
-        unsigned int wrote_requestDataSize:1;
-        unsigned int wrote_responseDataSize:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,15 +52,16 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)transactionMetricsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transactionMetricsCount;
-- (void)_addNoFlagsTransactionMetrics:(id)arg1;
 - (void)addTransactionMetrics:(id)arg1;
 - (void)clearTransactionMetrics;
 @property(retain, nonatomic) NSMutableArray *transactionMetrics;
-- (void)_readTransactionMetrics;
 @property(nonatomic) _Bool hasRedirectCount;
 @property(nonatomic) int redirectCount;
 @property(nonatomic) _Bool hasRequestEnd;
@@ -79,9 +74,10 @@
 @property(nonatomic) int requestDataSize;
 @property(retain, nonatomic) NSString *serviceIpAddress;
 @property(readonly, nonatomic) _Bool hasServiceIpAddress;
-- (void)_readServiceIpAddress;
 @property(nonatomic) _Bool hasHttpResponseCode;
 @property(nonatomic) int httpResponseCode;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -14,7 +14,7 @@
 + (id)tsu_listSeparator;
 + (id)tsu_stringByIndentingString:(id)arg1;
 + (id)tsu_stringByIndentingString:(id)arg1 times:(unsigned long long)arg2;
-+ (id)tsu_stringWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
++ (id)tsu_stringWithFormat:(id)arg1 arguments:(char *)arg2;
 + (id)tsu_stringWithUUID;
 + (id)stringWithSqlStatement:(struct sqlite3_stmt *)arg1 columnIndex:(int)arg2;
 + (id)customNumberFormatDecimalFormatStringWithDigits:(unsigned int)arg1 digitString:(id)arg2 includeDecimalSeparator:(_Bool)arg3;

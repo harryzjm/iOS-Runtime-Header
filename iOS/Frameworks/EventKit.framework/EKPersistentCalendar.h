@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKPersistentSource, NSSet, NSString, NSURL;
+@class EKPersistentSource, NSSet, NSString;
 
 @interface EKPersistentCalendar
 {
@@ -14,18 +14,29 @@
 + (id)relations;
 + (id)defaultPropertiesToLoad;
 + (id)calendarWithRandomUUID;
-- (id)alarms;
-- (void)setAlarms:(id)arg1;
+- (void)setLastSyncErrorData:(id)arg1;
+- (id)lastSyncErrorData;
+- (void)setLastSyncError:(unsigned long long)arg1;
+- (unsigned long long)lastSyncError;
+- (void)setLastSyncEndDate:(id)arg1;
+- (id)lastSyncEndDate;
+- (void)setLastSyncStartDate:(id)arg1;
+- (id)lastSyncStartDate;
+- (void)setSubscriptionID:(id)arg1;
+- (id)subscriptionID;
+- (void)setRefreshDate:(id)arg1;
+- (id)refreshDate;
+- (id)allAlarms;
+- (void)setAllAlarms:(id)arg1;
 - (void)setDigest:(id)arg1;
 - (id)digest;
 @property(copy, nonatomic) NSString *pushKey; // @dynamic pushKey;
 @property(copy, nonatomic) NSString *subcalAccountID; // @dynamic subcalAccountID;
-@property(copy, nonatomic) NSString *bulkRequests; // @dynamic bulkRequests;
 - (void)setNotes:(id)arg1;
 - (id)notes;
 @property(copy, nonatomic) NSString *ownerIdentityLastName; // @dynamic ownerIdentityLastName;
 @property(copy, nonatomic) NSString *ownerIdentityFirstName; // @dynamic ownerIdentityFirstName;
-@property(copy, nonatomic) NSURL *ownerIdentityAddress; // @dynamic ownerIdentityAddress;
+@property(copy, nonatomic) NSString *ownerIdentityAddress; // @dynamic ownerIdentityAddress;
 @property(copy, nonatomic) NSString *ownerIdentityPhoneNumber; // @dynamic ownerIdentityPhoneNumber;
 @property(copy, nonatomic) NSString *ownerIdentityEmail; // @dynamic ownerIdentityEmail;
 @property(copy, nonatomic) NSString *ownerIdentityDisplayName; // @dynamic ownerIdentityDisplayName;
@@ -33,7 +44,7 @@
 - (int)ownerIdentityId;
 @property(copy, nonatomic) NSString *selfIdentityLastName; // @dynamic selfIdentityLastName;
 @property(copy, nonatomic) NSString *selfIdentityFirstName; // @dynamic selfIdentityFirstName;
-@property(copy, nonatomic) NSURL *selfIdentityAddress; // @dynamic selfIdentityAddress;
+@property(copy, nonatomic) NSString *selfIdentityAddress; // @dynamic selfIdentityAddress;
 @property(copy, nonatomic) NSString *selfIdentityPhoneNumber; // @dynamic selfIdentityPhoneNumber;
 @property(copy, nonatomic) NSString *selfIdentityEmail; // @dynamic selfIdentityEmail;
 @property(copy, nonatomic) NSString *selfIdentityDisplayName; // @dynamic selfIdentityDisplayName;
@@ -46,19 +57,20 @@
 - (id)notifications;
 @property(nonatomic, getter=isPublished) _Bool published; // @dynamic published;
 - (void)setIsPublished:(_Bool)arg1;
-@property(copy, nonatomic) NSString *publishedURL; // @dynamic publishedURL;
+- (void)setPublishURL:(id)arg1;
+- (id)publishURL;
 @property(nonatomic) unsigned long long sharingInvitationResponse; // @dynamic sharingInvitationResponse;
-@property(copy, nonatomic) NSURL *sharedOwnerAddress; // @dynamic sharedOwnerAddress;
+@property(copy, nonatomic) NSString *sharedOwnerURL; // @dynamic sharedOwnerURL;
 @property(copy, nonatomic) NSString *sharedOwnerName; // @dynamic sharedOwnerName;
 @property(nonatomic) unsigned long long sharingStatus; // @dynamic sharingStatus;
 @property(nonatomic) int flags; // @dynamic flags;
 - (id)description;
 @property(nonatomic) int displayOrder; // @dynamic displayOrder;
 @property(retain, nonatomic) NSString *UUID; // @dynamic UUID;
-@property(copy, nonatomic) NSString *colorString; // @dynamic colorString;
+@property(copy, nonatomic) NSString *colorStringRaw; // @dynamic colorStringRaw;
 @property(copy, nonatomic) NSString *symbolicColorName; // @dynamic symbolicColorName;
 @property(nonatomic, getter=isColorDisplayOnly) _Bool colorDisplayOnly; // @dynamic colorDisplayOnly;
-@property(copy, nonatomic) NSString *title; // @dynamic title;
+@property(copy, nonatomic) NSString *unlocalizedTitle; // @dynamic unlocalizedTitle;
 - (void)setExternalRepresentation:(id)arg1;
 - (id)externalRepresentation;
 - (void)setSyncToken:(id)arg1;
@@ -68,6 +80,9 @@
 - (id)externalIDTag;
 @property(copy, nonatomic) NSString *externalID; // @dynamic externalID;
 - (int)entityType;
+
+// Remaining properties
+@property(copy, nonatomic) NSString *publishedURL; // @dynamic publishedURL;
 
 @end
 

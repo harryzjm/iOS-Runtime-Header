@@ -8,11 +8,12 @@
 #import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
 #import <NewsCore/FCDerivedPersonalizationData-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
+#import <NewsCore/FCPersonalizationDataSource-Protocol.h>
 
 @class CKRecord, FCPersonalizationTreatment, NSData, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
-@interface FCPersonalizationData <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCAppActivityObserving, FCDerivedPersonalizationData>
+@interface FCPersonalizationData <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCAppActivityObserving, FCDerivedPersonalizationData, FCPersonalizationDataSource>
 {
     _Bool _attemptingUpload;
     NSData *_pbData;
@@ -38,6 +39,7 @@
 + (_Bool)requiresHighPriorityFirstSync;
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
+- (void).cxx_destruct;
 @property _Bool attemptingUpload; // @synthesize attemptingUpload=_attemptingUpload;
 @property(retain, nonatomic) id <FCOperationThrottler> saveThrottler; // @synthesize saveThrottler=_saveThrottler;
 @property(retain) FCPersonalizationTreatment *treatment; // @synthesize treatment=_treatment;
@@ -47,15 +49,20 @@
 @property(retain, nonatomic) NSMutableDictionary *openChangeGroupDeltas; // @synthesize openChangeGroupDeltas=_openChangeGroupDeltas;
 @property(retain, nonatomic) NSMutableDictionary *aggregates; // @synthesize aggregates=_aggregates;
 @property(readonly, nonatomic) NSData *pbData; // @synthesize pbData=_pbData;
-- (void).cxx_destruct;
+- (id)createAggregateWith:(id)arg1 clicks:(double)arg2 impressions:(double)arg3;
+- (id)lookupAggregatesWith:(id)arg1 creationBlock:(CDUnknownBlockType)arg2;
+- (void)updateAggregatesWith:(id)arg1 creationBlock:(CDUnknownBlockType)arg2 updateBlock:(CDUnknownBlockType)arg3;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (id)aggregateForFeatureKey:(id)arg1;
 - (void)enumerateAggregatesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)aggregatesForFeatureKeys:(id)arg1;
-- (void)activityObservingApplicationDidEnterBackground;
+- (void)activityObservingApplicationWillTerminate;
+- (void)activityObservingApplicationWindowDidBecomeBackground;
+- (void)activityObservingApplicationWindowDidBecomeForeground;
 - (void)_reloadTreatment;
 - (void)_applicationDidEnterBackground;
+- (void)_applicationDidEnterForeground;
 - (void)_closeOpenChangeGroupFromInstance:(id)arg1;
 - (void)_writeToLocalStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateWithRemoteRecord:(id)arg1 profile:(id)arg2;
@@ -68,15 +75,20 @@
 - (void)generateDerivedDataWithQualityOfService:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)d_allGlobalAggregates;
 - (void)clearPersonalizationData;
-- (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6;
+- (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6 groupBias:(double)arg7;
+- (void)saveReadableAggregates;
+- (void)submitPersonalizationVector;
+- (void)cacheGSToken;
 @property(readonly, nonatomic) FCPersonalizationTreatment *personalizationTreatment;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (id)initWithAggregates:(id)arg1;
+- (id)init;
 - (id)initWithPBData:(id)arg1 treatment:(id)arg2;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (void)d_allResults:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prepareAggregatesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 individually:(_Bool)arg5 configurableValues:(id)arg6 featuresUpdatedBlock:(CDUnknownBlockType)arg7;
+- (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 groupType:(long long)arg5 individually:(_Bool)arg6 configurableValues:(id)arg7 featuresUpdatedBlock:(CDUnknownBlockType)arg8;
 - (id)aggregatesForFeatures:(id)arg1;
 - (id)baselineAggregateWithConfigurableValues:(id)arg1;
 

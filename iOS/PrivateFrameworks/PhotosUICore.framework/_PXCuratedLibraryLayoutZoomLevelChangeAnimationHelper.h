@@ -17,6 +17,7 @@
     long long _transitionType;
     PXCuratedLibrarySectionGeometryDescriptor *_nullSectionGeometryDescriptor;
     NSObject<UICoordinateSpace> *_coordinateSpace;
+    _Bool _shouldAlwaysFadeDecoration;
 }
 
 - (void).cxx_destruct;

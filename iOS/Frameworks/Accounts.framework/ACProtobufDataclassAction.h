@@ -8,21 +8,25 @@
 
 #import <Accounts/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface ACProtobufDataclassAction : PBCodable <NSCopying>
 {
     NSMutableArray *_affectedContainers;
     int _type;
+    NSString *_undoAlertMessage;
+    NSString *_undoAlertTitle;
     _Bool _destructive;
 }
 
 + (Class)affectedContainersType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *undoAlertMessage; // @synthesize undoAlertMessage=_undoAlertMessage;
+@property(retain, nonatomic) NSString *undoAlertTitle; // @synthesize undoAlertTitle=_undoAlertTitle;
 @property(retain, nonatomic) NSMutableArray *affectedContainers; // @synthesize affectedContainers=_affectedContainers;
 @property(nonatomic) _Bool destructive; // @synthesize destructive=_destructive;
 @property(nonatomic) int type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -32,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasUndoAlertMessage;
+@property(readonly, nonatomic) _Bool hasUndoAlertTitle;
 - (id)affectedContainersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)affectedContainersCount;
 - (void)addAffectedContainers:(id)arg1;

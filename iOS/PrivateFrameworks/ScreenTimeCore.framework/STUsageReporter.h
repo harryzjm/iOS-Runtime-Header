@@ -8,23 +8,34 @@
 
 #import <ScreenTimeCore/NSFetchedResultsControllerDelegate-Protocol.h>
 
-@class NSArray, NSDateInterval, NSFetchedResultsController, NSString;
+@class NSArray, NSDate, NSDateInterval, NSFetchedResultsController, NSNumber, NSSet, NSString;
 
 @interface STUsageReporter : NSObject <NSFetchedResultsControllerDelegate>
 {
     _Bool _includeTotalUsageDetailItem;
     NSDateInterval *_dateInterval;
+    NSNumber *_userDSID;
     NSFetchedResultsController *_fetchedResultsController;
+    NSFetchedResultsController *_installedAppsController;
+    NSSet *_installedBundleIdentifiers;
 }
 
++ (id)keyPathsForValuesAffectingNotifications;
+- (void).cxx_destruct;
+@property(copy) NSSet *installedBundleIdentifiers; // @synthesize installedBundleIdentifiers=_installedBundleIdentifiers;
+@property(retain, nonatomic) NSFetchedResultsController *installedAppsController; // @synthesize installedAppsController=_installedAppsController;
 @property(readonly) NSFetchedResultsController *fetchedResultsController; // @synthesize fetchedResultsController=_fetchedResultsController;
+@property(readonly, copy) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 @property(readonly, copy) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property _Bool includeTotalUsageDetailItem; // @synthesize includeTotalUsageDetailItem=_includeTotalUsageDetailItem;
-- (void).cxx_destruct;
+- (void)_updateInstalledBundleIdentifiers;
 - (void)controllerDidChangeContent:(id)arg1;
 - (void)_enumerateUsageBlocksWithUnitGranularity:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)notificationRatiosForApplication:(id)arg1 perCalendarUnit:(unsigned long long)arg2;
 - (id)notificationsPerCalendarUnit:(unsigned long long)arg1;
+- (id)_firstPickupFromUsageBlocks:(id)arg1;
+- (id)firstPickupOfIntervalWithMostPickups:(unsigned long long *)arg1 perCalendarUnit:(unsigned long long)arg2;
+@property(readonly, copy) NSDate *firstPickup;
 - (id)pickupRatiosForApplication:(id)arg1 perCalendarUnit:(unsigned long long)arg2;
 - (id)pickupsPerCalendarUnit:(unsigned long long)arg1;
 - (id)ratiosForWebDomain:(id)arg1 perCalendarUnit:(unsigned long long)arg2;

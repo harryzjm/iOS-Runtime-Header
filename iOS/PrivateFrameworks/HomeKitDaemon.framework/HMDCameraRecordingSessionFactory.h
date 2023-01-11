@@ -4,14 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@interface HMDCameraRecordingSessionFactory : NSObject
+#import <HomeKitDaemon/HMDCameraRecordingSessionFactory-Protocol.h>
+
+@class NSString;
+
+@interface HMDCameraRecordingSessionFactory : HMFObject <HMDCameraRecordingSessionFactory>
 {
 }
 
-- (id)createUploaderWithLocalZone:(id)arg1 workQueue:(id)arg2 videoInitData:(id)arg3 targetFragmentDuration:(double)arg4;
+- (_Bool)isVideoInitData:(id)arg1 combinableWithVideoInitData:(id)arg2;
+- (id)createUploaderWithClipUUID:(id)arg1 startDate:(id)arg2 targetFragmentDuration:(double)arg3 localZone:(id)arg4 workQueue:(id)arg5 logIdentifier:(id)arg6;
+- (id)createSignificantEventManagerWithWorkQueue:(id)arg1 faceClassificationResolver:(id)arg2 logIdentifier:(id)arg3;
 - (id)createVideoAnalyzerWithConfiguration:(id)arg1 identifier:(id)arg2;
+@property(readonly) double recordingExtensionDuration;
+@property(readonly) double maximumClipDuration;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

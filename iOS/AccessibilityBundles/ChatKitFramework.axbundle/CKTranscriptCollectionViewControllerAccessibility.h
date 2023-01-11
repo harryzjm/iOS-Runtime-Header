@@ -6,11 +6,15 @@
 
 @interface CKTranscriptCollectionViewControllerAccessibility
 {
+    _Bool _axBuddyWasTyping;
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+@property(nonatomic) _Bool axBuddyWasTyping; // @synthesize axBuddyWasTyping=_axBuddyWasTyping;
+- (void)chatItemsDidChange:(id)arg1;
+- (_Bool)axIsShowingChatController;
 - (void)effectManager:(id)arg1 didStartEffect:(id)arg2;
 - (id)_accessibilitySpeakThisElementsAndStrings;
 

@@ -28,33 +28,12 @@ __attribute__((visibility("hidden")))
     NSString *_coalescingNotificationName;
 }
 
-@property(retain, nonatomic) NSString *coalescingNotificationName; // @synthesize coalescingNotificationName=_coalescingNotificationName;
-@property(retain, nonatomic) CNCoalescingTimer *coalescingTimer; // @synthesize coalescingTimer=_coalescingTimer;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *notifierQueue; // @synthesize notifierQueue=_notifierQueue;
-@property(retain, nonatomic) NSMutableDictionary *notificationsToBeSentOnceAllowed; // @synthesize notificationsToBeSentOnceAllowed=_notificationsToBeSentOnceAllowed;
-@property(retain, nonatomic) NSCountedSet *supressedNotificationNames; // @synthesize supressedNotificationNames=_supressedNotificationNames;
-@property(readonly, nonatomic) NSMutableDictionary *notificationForwardingMapping; // @synthesize notificationForwardingMapping=_notificationForwardingMapping;
-@property(readonly, nonatomic) id <CNContactsLoggerProvider> loggerProvider; // @synthesize loggerProvider=_loggerProvider;
-@property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
-@property(retain, nonatomic) NSMapTable *notifyingBlocks; // @synthesize notifyingBlocks=_notifyingBlocks;
-@property(retain, nonatomic) NSMapTable *removalBlocks; // @synthesize removalBlocks=_removalBlocks;
+- (void).cxx_destruct;
 @property(nonatomic) double externalNotificationCoalescingDelay; // @synthesize externalNotificationCoalescingDelay=_externalNotificationCoalescingDelay;
 @property(nonatomic) _Bool forwardsSelfGeneratedDistributedSaveNotifications; // @synthesize forwardsSelfGeneratedDistributedSaveNotifications;
-- (void).cxx_destruct;
 - (void)waitForCurrentTasksToFinish;
-- (CDUnknownBlockType)receiveNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 calledFromNotifierQueue:(_Bool)arg5 isFromExternalProcess:(_Bool)arg6;
 - (void)receiveNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 isFromExternalProcess:(_Bool)arg5;
 - (void)receiveExternalNotificationName:(id)arg1;
-- (void)coalesceNotificationName:(id)arg1;
-- (void)stopSupressionOfNotificationName:(id)arg1;
-- (void)supressNotificationName:(id)arg1;
-- (void)removeAllRegisteredNotificationSources;
-- (void)forwardNotificationName:(id)arg1 asNotificationName:(id)arg2;
-- (CDUnknownBlockType)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 shouldForwardExternally:(_Bool)arg5 calledFromNotifierQueue:(_Bool)arg6 isFromExternalProcess:(_Bool)arg7;
-- (void)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 isFromExternalProcess:(_Bool)arg4;
-- (void)addNotificationPoster:(CDUnknownBlockType)arg1 forNotificationName:(id)arg2;
-- (void)addListenerForNotificationName:(id)arg1 registration:(CDUnknownBlockType)arg2 removal:(CDUnknownBlockType)arg3;
-- (id)initWithSchedulerProvider:(id)arg1 loggerProvider:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

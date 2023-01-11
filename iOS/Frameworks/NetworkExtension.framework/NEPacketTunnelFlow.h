@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileHandle, NSMutableDictionary;
+@class NSDictionary, NSFileHandle;
 @protocol OS_dispatch_queue;
 
 @interface NEPacketTunnelFlow : NSObject
@@ -14,34 +14,34 @@
     _Bool _handlerSetup;
     NSObject<OS_dispatch_queue> *_queue;
     NSFileHandle *_socket;
-    NSMutableDictionary *_uuidMappings;
     CDUnknownBlockType _packetHandler;
     CDUnknownBlockType _packetObjectHandler;
     char **_packetDataArray;
     unsigned int *_packetProtocols;
     unsigned long long *_packetLengths;
     unsigned long long _buffersSize;
+    NSDictionary *_uuidMap;
     long long _interfaceType;
     struct NEVirtualInterface_s *_interface;
 }
 
+- (void).cxx_destruct;
 @property(readonly) struct NEVirtualInterface_s *interface; // @synthesize interface=_interface;
 @property(readonly) long long interfaceType; // @synthesize interfaceType=_interfaceType;
+@property(retain) NSDictionary *uuidMap; // @synthesize uuidMap=_uuidMap;
 @property unsigned long long buffersSize; // @synthesize buffersSize=_buffersSize;
 @property unsigned long long *packetLengths; // @synthesize packetLengths=_packetLengths;
 @property unsigned int *packetProtocols; // @synthesize packetProtocols=_packetProtocols;
 @property char **packetDataArray; // @synthesize packetDataArray=_packetDataArray;
 @property(copy) CDUnknownBlockType packetObjectHandler; // @synthesize packetObjectHandler=_packetObjectHandler;
 @property(copy) CDUnknownBlockType packetHandler; // @synthesize packetHandler=_packetHandler;
-@property(retain) NSMutableDictionary *uuidMappings; // @synthesize uuidMappings=_uuidMappings;
 @property(retain) NSFileHandle *socket; // @synthesize socket=_socket;
 @property _Bool handlerSetup; // @synthesize handlerSetup=_handlerSetup;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
+- (void)setAppUUIDMap:(id)arg1;
 - (_Bool)writePacketObjects:(id)arg1;
 - (_Bool)writePackets:(id)arg1 withProtocols:(id)arg2;
 - (void)readPacketObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)signingIdentifierForUUID:(id)arg1;
 - (void)readPacketsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)closeVirtualInterface;
 - (void)resetReadHandler;

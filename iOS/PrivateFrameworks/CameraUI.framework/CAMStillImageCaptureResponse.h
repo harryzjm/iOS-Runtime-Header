@@ -17,9 +17,12 @@
     NSString *_burstIdentifier;
     unsigned long long _burstRepresentedCount;
     UIImage *_imageWellImage;
+    long long _captureID;
     struct CGSize _finalExpectedPixelSize;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) long long captureID; // @synthesize captureID=_captureID;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
 @property(readonly, nonatomic) UIImage *imageWellImage; // @synthesize imageWellImage=_imageWellImage;
 @property(readonly, nonatomic) unsigned long long burstRepresentedCount; // @synthesize burstRepresentedCount=_burstRepresentedCount;
@@ -27,7 +30,6 @@
 @property(readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property(readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool flashFired;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property(readonly, nonatomic) NSURL *irisVideoPersistenceURL;
@@ -42,7 +44,7 @@
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType;
 @property(readonly, copy) NSString *description;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(_Bool)arg10;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(_Bool)arg10 captureID:(long long)arg11;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

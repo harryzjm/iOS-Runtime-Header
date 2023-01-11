@@ -13,13 +13,13 @@ __attribute__((visibility("hidden")))
 {
     Class _theClass;
     NSMutableDictionary *_blockByClass;
-    NSMutableOrderedSet *_classOrder;
+    NSMutableOrderedSet *_orderedClassNames;
 }
 
-@property(retain, nonatomic) NSMutableOrderedSet *classOrder; // @synthesize classOrder=_classOrder;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableOrderedSet *orderedClassNames; // @synthesize orderedClassNames=_orderedClassNames;
 @property(retain, nonatomic) NSMutableDictionary *blockByClass; // @synthesize blockByClass=_blockByClass;
 @property(retain, nonatomic) Class theClass; // @synthesize theClass=_theClass;
-- (void).cxx_destruct;
 - (id)coerceObject:(id)arg1 toObjectOfClass:(Class)arg2 outError:(id *)arg3;
 - (_Bool)canCoerceToObjectOfClass:(Class)arg1;
 - (id)availableClasses;

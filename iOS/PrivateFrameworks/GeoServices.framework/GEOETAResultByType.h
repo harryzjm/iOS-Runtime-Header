@@ -13,14 +13,17 @@
 @interface GEOETAResultByType : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _expectedTimeOfDeparture;
     GEORouteTrafficDetail *_routeTrafficDetail;
     GEOShortTrafficSummary *_shortTrafficSummary;
     NSMutableArray *_summaryForPredictedDestinations;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _distance;
     unsigned int _historicTravelTime;
+    int _licensePlateRestrictionImpact;
     unsigned int _staticTravelTime;
     int _status;
     int _transportType;
@@ -31,6 +34,7 @@
         unsigned int has_expectedTimeOfDeparture:1;
         unsigned int has_distance:1;
         unsigned int has_historicTravelTime:1;
+        unsigned int has_licensePlateRestrictionImpact:1;
         unsigned int has_staticTravelTime:1;
         unsigned int has_status:1;
         unsigned int has_transportType:1;
@@ -41,19 +45,7 @@
         unsigned int read_routeTrafficDetail:1;
         unsigned int read_shortTrafficSummary:1;
         unsigned int read_summaryForPredictedDestinations:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_expectedTimeOfDeparture:1;
-        unsigned int wrote_routeTrafficDetail:1;
-        unsigned int wrote_shortTrafficSummary:1;
-        unsigned int wrote_summaryForPredictedDestinations:1;
-        unsigned int wrote_distance:1;
-        unsigned int wrote_historicTravelTime:1;
-        unsigned int wrote_staticTravelTime:1;
-        unsigned int wrote_status:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_travelTimeBestEstimate:1;
-        unsigned int wrote_travelTimeAggressiveEstimate:1;
-        unsigned int wrote_travelTimeConservativeEstimate:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -70,21 +62,24 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsLicensePlateRestrictionImpact:(id)arg1;
+- (id)licensePlateRestrictionImpactAsString:(int)arg1;
+@property(nonatomic) _Bool hasLicensePlateRestrictionImpact;
+@property(nonatomic) int licensePlateRestrictionImpact;
 @property(retain, nonatomic) GEOShortTrafficSummary *shortTrafficSummary;
 @property(readonly, nonatomic) _Bool hasShortTrafficSummary;
-- (void)_readShortTrafficSummary;
 @property(retain, nonatomic) GEORouteTrafficDetail *routeTrafficDetail;
 @property(readonly, nonatomic) _Bool hasRouteTrafficDetail;
-- (void)_readRouteTrafficDetail;
 - (id)summaryForPredictedDestinationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)summaryForPredictedDestinationsCount;
-- (void)_addNoFlagsSummaryForPredictedDestination:(id)arg1;
 - (void)addSummaryForPredictedDestination:(id)arg1;
 - (void)clearSummaryForPredictedDestinations;
 @property(retain, nonatomic) NSMutableArray *summaryForPredictedDestinations;
-- (void)_readSummaryForPredictedDestinations;
 @property(nonatomic) _Bool hasStaticTravelTime;
 @property(nonatomic) unsigned int staticTravelTime;
 @property(nonatomic) _Bool hasTravelTimeAggressiveEstimate;
@@ -107,6 +102,8 @@
 - (id)transportTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasTransportType;
 @property(nonatomic) int transportType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

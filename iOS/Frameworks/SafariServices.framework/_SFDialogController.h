@@ -9,7 +9,7 @@
 #import <SafariServices/_SFDialogViewDelegate-Protocol.h>
 
 @class NSString, UIViewController, WBSTabDialogManager, _SFDialog, _SFDialogView;
-@protocol _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFDialogViewPresenting;
+@protocol _SFAuthenticatorDialog, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFDialogViewPresenting;
 
 @interface _SFDialogController : NSObject <_SFDialogViewDelegate>
 {
@@ -24,11 +24,11 @@
 }
 
 + (void)applicationDidEnterBackground;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _SFDialog *presentedDialog; // @synthesize presentedDialog=_presentedDialog;
 @property(nonatomic) __weak id <_SFDialogViewControllerPresenting> viewControllerPresenter; // @synthesize viewControllerPresenter=_viewControllerPresenter;
 @property(nonatomic) __weak id <_SFDialogViewPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 @property(nonatomic) __weak id <_SFDialogControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)dialogView:(id)arg1 didSelectActionAtIndex:(unsigned long long)arg2 withInputText:(id)arg3 passwordText:(id)arg4;
 - (void)_dismissCurrentDialogWithResponse:(id)arg1;
 - (void)_dismissDialogWithAdditionalAnimations:(CDUnknownBlockType)arg1;
@@ -46,6 +46,7 @@
 - (void)cancelPresentedDialogIfNeeded;
 - (void)presentDialog:(id)arg1 animateAlongsidePresentation:(CDUnknownBlockType)arg2 dismissal:(CDUnknownBlockType)arg3;
 - (void)presentDialog:(id)arg1;
+@property(readonly, nonatomic) _SFDialog<_SFAuthenticatorDialog> *presentedAuthenticatorDialog;
 - (id)_initWithDialogManager:(id)arg1;
 - (id)init;
 

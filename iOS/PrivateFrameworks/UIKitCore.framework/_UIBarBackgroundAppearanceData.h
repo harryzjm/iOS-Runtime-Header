@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasShadow:1;
         unsigned int needsToCalculateVibrantEffect:1;
     } _flags;
+    UIVibrancyEffect *_shadowViewEffect;
     UIVibrancyEffect *_defaultVibrancyEffect;
     NSArray *_backgroundEffects;
     UIColor *_backgroundColor;
@@ -22,25 +23,30 @@ __attribute__((visibility("hidden")))
     long long _backgroundImageContentMode;
     UIColor *_shadowColor;
     UIImage *_shadowImage;
+    UIVibrancyEffect *_shadowEffect;
 }
 
 + (id)decodeFromCoder:(id)arg1 prefix:(id)arg2;
 + (id)transparentBackgroundData;
 + (id)opaqueBackgroundData;
 + (id)standardBackgroundData;
+- (void).cxx_destruct;
+@property(copy, nonatomic) UIVibrancyEffect *shadowEffect; // @synthesize shadowEffect=_shadowEffect;
 @property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
 @property(copy, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
 @property(nonatomic) long long backgroundImageContentMode; // @synthesize backgroundImageContentMode=_backgroundImageContentMode;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) UIVibrancyEffect *defaultVibrancyEffect; // @synthesize defaultVibrancyEffect=_defaultVibrancyEffect;
 @property(readonly, nonatomic) UIColor *shadowViewTintColor;
 @property(readonly, nonatomic) UIColor *shadowViewBackgroundColor;
+@property(readonly, nonatomic) UIVibrancyEffect *shadowViewEffect; // @synthesize shadowViewEffect=_shadowViewEffect;
 - (long long)behaviorForTransitioningTo:(id)arg1;
 @property(readonly, nonatomic) _Bool hasShadow;
 @property(readonly, nonatomic) _Bool hasBackground;
+- (void)configureWithoutShadow;
+- (void)configureWithDefaultShadow;
 - (void)_updateShadowFlags;
 @property(copy, nonatomic) UIBlurEffect *backgroundEffect;
 - (void)_updateBackgroundFlags;

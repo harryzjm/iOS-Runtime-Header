@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isProtectedDataAvailable;
 + (_Bool)deviceIsPhone;
 + (_Bool)supportsLEA2;
 + (_Bool)watchSupportsPairingHearingAids;
@@ -17,6 +18,7 @@
 + (_Bool)deviceIsPod;
 + (_Bool)deviceIsWatch;
 + (_Bool)deviceIsPad;
++ (_Bool)deviceIsBigPhone;
 + (_Bool)deviceIsSmallPhone;
 + (_Bool)deviceIsMultiUser;
 + (_Bool)currentProcessIsPreferences;

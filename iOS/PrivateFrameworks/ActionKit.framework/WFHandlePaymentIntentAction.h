@@ -6,11 +6,11 @@
 
 #import <WorkflowKit/WFHandleSystemIntentAction.h>
 
-@class UIImage;
+@class WFImage;
 
 @interface WFHandlePaymentIntentAction : WFHandleSystemIntentAction
 {
-    UIImage *_icon;
+    WFImage *_icon;
 }
 
 - (void).cxx_destruct;
@@ -27,9 +27,12 @@
 - (id)noRecipientAccountError:(_Bool)arg1;
 - (id)localizedKeyParameterDisplayName;
 - (id)localizedPaymentServiceName;
+- (id)localizedDisplayableAppNameForBundleIdentifier:(id)arg1;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
+- (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)minimumSupportedClientVersion;
 - (_Bool)opensInApp;
-- (_Bool)showsWhenRun;
+- (id)showsWhenRunIfApplicable;
 
 @end
 

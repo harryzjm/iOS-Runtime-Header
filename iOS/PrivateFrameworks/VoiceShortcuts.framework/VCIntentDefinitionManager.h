@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 #import <VoiceShortcuts/INVCIntentDefinitionManager-Protocol.h>
 
 @class NSString;
 
-@interface VCIntentDefinitionManager <INVCIntentDefinitionManager>
+@interface VCIntentDefinitionManager : NSObject <INVCIntentDefinitionManager>
 {
 }
 
-+ (id)appInfoForBundleID:(id)arg1;
-+ (id)intentDefinitionURLsForBundleID:(id)arg1 withExtensions:(id)arg2;
 + (id)intentDefinitionLocalizableFileURLsForBundleID:(id)arg1;
++ (id)allBundleIdentifiers;
++ (id)appInfoForBundleID:(id)arg1;
++ (id)intentDefinitionBundleURLForBundleID:(id)arg1;
++ (id)intentDefinitionURLsForBundleID:(id)arg1 inDirectory:(id)arg2;
 + (id)intentDefinitionURLsForBundleID:(id)arg1;
 
 // Remaining properties

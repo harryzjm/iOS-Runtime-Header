@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class HKOutstandingFetchOperationManager, NSArray, NSHashTable, NSMutableDictionary, _HKChartCachePendingFetchOperationManager;
-@protocol HKChartCacheDataSource;
+@protocol HKChartCacheDataSource, HKChartCachePriorityDelegate;
 
 @interface HKChartCache : NSObject
 {
@@ -15,25 +15,28 @@
     NSMutableDictionary *_cachedResultsByIdentifier;
     _HKChartCachePendingFetchOperationManager *_pendingFetchOperationsManager;
     NSMutableDictionary *_resultsLoadedByIdentifier;
-    NSArray *_bufferedIdentifiers;
     _Bool _shouldBufferFetchOperations;
     id <HKChartCacheDataSource> _dataSource;
     HKOutstandingFetchOperationManager *_operationManager;
     long long _maxRetryCount;
+    NSArray *_bufferedIdentifiers;
+    id <HKChartCachePriorityDelegate> _priorityDelegateForBufferedIdentifiers;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <HKChartCachePriorityDelegate> priorityDelegateForBufferedIdentifiers; // @synthesize priorityDelegateForBufferedIdentifiers=_priorityDelegateForBufferedIdentifiers;
+@property(retain, nonatomic) NSArray *bufferedIdentifiers; // @synthesize bufferedIdentifiers=_bufferedIdentifiers;
 @property(nonatomic) long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property(nonatomic) _Bool shouldBufferFetchOperations; // @synthesize shouldBufferFetchOperations=_shouldBufferFetchOperations;
 @property(retain, nonatomic) HKOutstandingFetchOperationManager *operationManager; // @synthesize operationManager=_operationManager;
 @property(retain, nonatomic) id <HKChartCacheDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
-- (void)_handleOperationCompletionWithOperation:(id)arg1 identifier:(id)arg2 results:(id)arg3 error:(id)arg4;
-- (id)_operationForIdentifier:(id)arg1;
+- (void)_handleOperationCompletionWithOperation:(id)arg1 identifier:(id)arg2 priorityDelegate:(id)arg3 results:(id)arg4 error:(id)arg5;
+- (id)_operationForIdentifier:(id)arg1 priorityDelegate:(id)arg2;
 - (void)invalidateCache;
 - (void)invalidateResultsForIdentifiers:(id)arg1;
-- (void)_addFetchOperationsForIdentifiers:(id)arg1;
+- (void)_addFetchOperationsForIdentifiers:(id)arg1 priorityDelegate:(id)arg2;
 - (void)_removeFetchOperationsForIdentifiers:(id)arg1;
-- (void)fetchResultsForIdentifiers:(id)arg1;
+- (void)fetchResultsForIdentifiers:(id)arg1 priorityDelegate:(id)arg2;
 - (id)cachedResultsForIdentifier:(id)arg1;
 - (unsigned long long)stateForIdentifier:(id)arg1;
 - (void)_alertObserversDidUpdateResults;

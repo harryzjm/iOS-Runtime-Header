@@ -13,8 +13,8 @@
     ETPointFIFO *_nextFIFO;
 }
 
-@property(retain, nonatomic) ETPointFIFO *nextFIFO; // @synthesize nextFIFO=_nextFIFO;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ETPointFIFO *nextFIFO; // @synthesize nextFIFO=_nextFIFO;
 - (void)clear;
 - (void)flush;
 - (void)addPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2;

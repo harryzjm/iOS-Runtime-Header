@@ -25,6 +25,7 @@
 
 + (Class)controlItemClass;
 + (id)controlItemPredicate;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasSetControlSize; // @synthesize hasSetControlSize=_hasSetControlSize;
 @property(nonatomic) double horizontalControlCompressionFactor; // @synthesize horizontalControlCompressionFactor=_horizontalControlCompressionFactor;
 @property(nonatomic) double verticalDirectionalControlStretchFactor; // @synthesize verticalDirectionalControlStretchFactor=_verticalDirectionalControlStretchFactor;
@@ -35,7 +36,6 @@
 @property(nonatomic, getter=areWritesInProgressOrPossible) _Bool writesInProgressOrPossible; // @synthesize writesInProgressOrPossible=_writesInProgressOrPossible;
 @property(readonly, nonatomic) id modelValue; // @synthesize modelValue=_modelValue;
 @property(retain, nonatomic) HUQuickControlInteractionCoordinator *interactionCoordinator; // @synthesize interactionCoordinator=_interactionCoordinator;
-- (void).cxx_destruct;
 - (id)viewForTouchContinuation;
 - (void)interactionCoordinator:(id)arg1 updateControlVerticalStretchFactor:(double)arg2;
 - (void)interactionCoordinator:(id)arg1 updateControlHorizontalCompressionFactor:(double)arg2;
@@ -59,7 +59,7 @@
 - (void)_updateTitle;
 - (void)_updateWriteState;
 - (void)_writeModelControlValue:(id)arg1;
-- (void)_updateValueFromControlItem;
+- (void)updateValueFromControlItem;
 - (void)_setModelValue:(id)arg1 writeValue:(_Bool)arg2;
 - (void)invalidateViewProfile;
 - (void)setUserInteractionEnabled:(_Bool)arg1;
@@ -72,6 +72,7 @@
 - (id)overrideValueForCharacteristic:(id)arg1;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)setPreferredFrameLayoutGuide:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;

@@ -9,6 +9,8 @@
 @class AVPictureInPicturePlatformAdapter, NSError;
 
 @protocol AVPictureInPicturePlatformAdapterDelegate <NSObject>
+- (void)pictureInPicturePlatformAdapterEndReducingResourcesForEligibleOffScreenState;
+- (void)pictureInPicturePlatformAdapterBeginReducingResourcesForEligibleOffScreenState;
 - (void)pictureInPicturePlatformAdapter:(AVPictureInPicturePlatformAdapter *)arg1 statusDidChange:(long long)arg2 fromStatus:(long long)arg3;
 - (void)pictureInPicturePlatformAdapter:(AVPictureInPicturePlatformAdapter *)arg1 handlePlaybackCommand:(long long)arg2;
 - (void)pictureInPicturePlatformAdapter:(AVPictureInPicturePlatformAdapter *)arg1 stopPictureInPictureAndRestoreUserInterface:(_Bool)arg2;

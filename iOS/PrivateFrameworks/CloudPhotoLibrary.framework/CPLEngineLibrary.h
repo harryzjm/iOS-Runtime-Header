@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLStatusDelegate-Protocol.h>
 
-@class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSString, NSURL;
+@class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSMutableDictionary, NSString, NSURL;
 @protocol CPLEngineLibraryOwner, OS_dispatch_queue;
 
 @interface CPLEngineLibrary : NSObject <CPLStatusDelegate, CPLAbstractObject>
@@ -17,6 +17,7 @@
     NSArray *_components;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_closingQueue;
+    NSMutableDictionary *_blocksToDispatchWhenLibraryAttaches;
     NSHashTable *_attachedObjects;
     NSError *_openingError;
     CPLStatus *_status;
@@ -43,6 +44,7 @@
 }
 
 + (id)platformImplementationProtocol;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool libraryIsCorrupted; // @synthesize libraryIsCorrupted=_libraryIsCorrupted;
 @property(readonly, nonatomic) CPLConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) CPLEngineFeedbackManager *feedback; // @synthesize feedback=_feedback;
@@ -58,10 +60,12 @@
 @property(readonly, copy, nonatomic) NSURL *cloudLibraryStateStorageURL; // @synthesize cloudLibraryStateStorageURL=_cloudLibraryStateStorageURL;
 @property(readonly, copy, nonatomic) NSURL *clientLibraryBaseURL; // @synthesize clientLibraryBaseURL=_clientLibraryBaseURL;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
-- (void).cxx_destruct;
+- (void)performMaintenanceCleanupWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)forceBackupWithActivity:(id)arg1 forceClientPush:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)requestClientToPushAllChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideScopeChangeForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)componentName;
 - (void)notifyAttachedObjectsSizeOfResourcesToUploadDidChangeToSize:(unsigned long long)arg1 sizeOfOriginalResourcesToUpload:(unsigned long long)arg2 numberOfImages:(unsigned long long)arg3 numberOfVideos:(unsigned long long)arg4 numberOfOtherItems:(unsigned long long)arg5;
 - (void)notifyAttachedObjectsUploadTask:(id)arg1 didFinishWithError:(id)arg2;
@@ -72,10 +76,14 @@
 - (void)notifyAttachedObjectsHasStatusChanges;
 - (void)notifyAttachedObjectsPullQueueIsFull;
 - (void)requestAttachedLibrary;
-- (void)_performBlockOnLibrary:(CDUnknownBlockType)arg1;
+- (void)performBlockOnLibrary:(CDUnknownBlockType)arg1;
+- (void)_cancelBlockWhenLibraryAttaches:(id)arg1;
+- (id)_performBlockWhenLibraryAttaches:(CDUnknownBlockType)arg1;
+- (void)_performPendingBlockForWhenLibraryAttaches;
 - (void)_performBlockWithLibrary:(_Bool)arg1 enumerateAttachedObjects:(CDUnknownBlockType)arg2;
 - (void)detachObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)attachObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)_libraryObject;
 @property(readonly, copy) NSString *description;
 - (void)forceFetchAccountFlags;
 - (void)startSyncSession;
@@ -89,7 +97,7 @@
 - (void)_updateTotalAssetCountWithAssetCounts:(id)arg1;
 - (void)updateDisabledFeatures:(id)arg1;
 - (void)setLowDiskSpace:(_Bool)arg1;
-- (void)setConnectedToNetwork:(_Bool)arg1;
+- (void)setConnectedToNetwork:(_Bool)arg1 cellularIsRestricted:(_Bool)arg2 inAirplaneMode:(_Bool)arg3;
 - (void)setHasCellularBudget:(_Bool)arg1 hasBatteryBudget:(_Bool)arg2 isConstrainedNetwork:(_Bool)arg3 isBudgetValid:(_Bool)arg4;
 @property(nonatomic) _Bool iCloudLibraryClientVersionTooOld;
 @property(copy, nonatomic) NSDate *exitDeleteTime;

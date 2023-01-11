@@ -8,7 +8,7 @@
 
 #import <GeoServices/_GEOTileDBWriteOperation-Protocol.h>
 
-@class GEOTileData, NSString;
+@class GEOTileData, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface _GEOTileDBAddTileOperation : NSObject <_GEOTileDBWriteOperation>
@@ -18,17 +18,18 @@ __attribute__((visibility("hidden")))
     GEOTileData *_data;
     NSString *_ETag;
     unsigned char _reason;
+    NSUUID *_externalResourceUUID;
 }
 
-@property(readonly, nonatomic) unsigned char reason; // @synthesize reason=_reason;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned char reason; // @synthesize reason=_reason;
 - (id)dataForKey:(const struct _GEOTileKey *)arg1 ETag:(id *)arg2 originalLoadReason:(unsigned char *)arg3 isKnownNotToExist:(_Bool *)arg4;
 - (_Bool)isSupercededByOperation:(id)arg1;
 - (void)performWithDB:(id)arg1;
 - (_Bool)canIncreaseDataSizeInDB;
 @property(readonly, nonatomic) unsigned long long sizeInBytes;
 @property(readonly, nonatomic) struct _GEOTileKey *key;
-- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(unsigned int)arg2 data:(id)arg3 ETag:(id)arg4 reason:(unsigned char)arg5;
+- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(unsigned int)arg2 data:(id)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

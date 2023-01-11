@@ -9,6 +9,7 @@
 @class NEConfiguration, NSDictionary, NSString;
 
 @protocol NEExtensionProviderProtocol <NSObject>
+- (void)validateWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)stopWithReason:(int)arg1;
 - (void)startWithOptions:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setConfiguration:(NEConfiguration *)arg1 extensionIdentifier:(NSString *)arg2;

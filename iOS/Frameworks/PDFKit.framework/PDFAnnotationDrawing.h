@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (void)drawRadioButton:(id)arg1 inContext:(struct CGContext *)arg2 withState:(long long)arg3 withBackgroundColor:(id)arg4 withBorderColor:(id)arg5 withFontColor:(id)arg6 isHighlighted:(_Bool)arg7;
 + (void)drawPushButton:(id)arg1 inContext:(struct CGContext *)arg2 withBackgroundColor:(id)arg3 withCaption:(id)arg4 withFont:(id)arg5 withFontColor:(id)arg6 isHighlighted:(_Bool)arg7;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withButtonWidgetAnnotation:(id)arg3;
++ (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withRedactAnnotation:(id)arg3;
 + (void)drawInsertIconInRect:(struct CGRect)arg1 withColor:(id)arg2 inContext:(struct CGContext *)arg3;
 + (void)drawParagraphIconInRect:(struct CGRect)arg1 withColor:(id)arg2 inContext:(struct CGContext *)arg3;
 + (void)drawNewParagraphIconInRect:(struct CGRect)arg1 withColor:(id)arg2 inContext:(struct CGContext *)arg3;

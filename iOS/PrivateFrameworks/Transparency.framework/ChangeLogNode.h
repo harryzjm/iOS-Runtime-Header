@@ -13,8 +13,8 @@
 + (id)descriptor;
 
 // Remaining properties
-@property(retain, nonatomic) NSMutableArray *changesArray; // @dynamic changesArray;
-@property(readonly, nonatomic) unsigned long long changesArray_Count; // @dynamic changesArray_Count;
+@property(retain, nonatomic) NSMutableArray *mutationsArray; // @dynamic mutationsArray;
+@property(readonly, nonatomic) unsigned long long mutationsArray_Count; // @dynamic mutationsArray_Count;
 
 @end
 

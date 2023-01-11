@@ -15,7 +15,7 @@
 + (_Bool)isBool:(_Bool)arg1 equalToOther:(_Bool)arg2;
 + (_Bool)isString:(id)arg1 localizedCaseInsensitiveEqualToOther:(id)arg2;
 + (_Bool)isObject:(id)arg1 equalToOther:(id)arg2;
-+ (_Bool)evaluateBuilderBlock:(CDUnknownBlockType)arg1 remainingBlocks:(struct __va_list_tag [1])arg2;
++ (_Bool)evaluateBuilderBlock:(CDUnknownBlockType)arg1 remainingBlocks:(char *)arg2;
 + (_Bool)isObject:(id)arg1 memberOfSameClassAndEqualTo:(id)arg2 withBlocks:(CDUnknownBlockType)arg3;
 + (_Bool)isObject:(id)arg1 memberOfClass:(Class)arg2 andEqualToObject:(id)arg3 withBlocks:(CDUnknownBlockType)arg4;
 + (_Bool)isObject:(id)arg1 kindOfClass:(Class)arg2 andEqualToObject:(id)arg3 withBlocks:(CDUnknownBlockType)arg4;

@@ -10,7 +10,6 @@
 
 + (id)groupedAttributeValueForManifestArchiving;
 + (id)displayName;
-+ (id)contentsJSONKey;
 + (id)highContrastAppearance;
 + (id)unspecifiedValuePlaceholder;
 + (void)setComponentID:(long long)arg1;

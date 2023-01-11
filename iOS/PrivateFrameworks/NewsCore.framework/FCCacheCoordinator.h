@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 
-@class FCCacheCoordinatorFlushPolicy, FCThreadSafeMutableDictionary, NFUnfairLock, NSArray, NSCountedSet, NSMutableSet, NSString;
+@class FCCacheCoordinatorFlushPolicy, FCThreadSafeMutableDictionary, NFUnfairLock, NSCountedSet, NSMutableSet, NSSet, NSString;
 @protocol FCCacheCoordinatorDelegate, FCCacheCoordinatorLocking, FCOperationThrottler;
 
 @interface FCCacheCoordinator : NSObject <FCOperationThrottlerDelegate>
@@ -24,6 +24,7 @@
     FCCacheCoordinatorFlushPolicy *_flushPolicy;
 }
 
+- (void).cxx_destruct;
 @property(getter=isFlushingEnabled) _Bool flushingEnabled; // @synthesize flushingEnabled=_flushingEnabled;
 @property(retain) FCCacheCoordinatorFlushPolicy *flushPolicy; // @synthesize flushPolicy=_flushPolicy;
 @property(retain, nonatomic) id <FCOperationThrottler> flushThrottler; // @synthesize flushThrottler=_flushThrottler;
@@ -33,7 +34,6 @@
 @property(retain, nonatomic) NSCountedSet *interestedKeys; // @synthesize interestedKeys=_interestedKeys;
 @property(retain, nonatomic) NSMutableSet *storedKeys; // @synthesize storedKeys=_storedKeys;
 @property(nonatomic) __weak id <FCCacheCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)performWriteSync:(CDUnknownBlockType)arg1;
 - (void)performReadSync:(CDUnknownBlockType)arg1;
 - (void)_modifyCacheHintForKeys:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
@@ -50,8 +50,8 @@
 - (_Bool)cacheContainsKey:(id)arg1;
 - (void)performCacheWrite:(CDUnknownBlockType)arg1;
 - (void)performCacheRead:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSArray *keysWithNonZeroInterest;
-@property(readonly, nonatomic) NSArray *keysWithZeroInterest;
+@property(readonly, nonatomic) NSSet *keysWithNonZeroInterest;
+@property(readonly, nonatomic) NSSet *keysWithZeroInterest;
 - (id)holdTokensForKeys:(id)arg1;
 - (id)holdTokenForKeys:(id)arg1;
 - (id)holdTokenForKey:(id)arg1;

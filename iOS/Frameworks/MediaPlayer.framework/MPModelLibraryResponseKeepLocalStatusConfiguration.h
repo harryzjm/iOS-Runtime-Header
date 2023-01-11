@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryResponseKeepLocalStatusConfiguration : NSObject
 {
     CDUnknownBlockType _downloadablePlaylistItemEntityQueryBlock;
     shared_ptr_e8455ceb _downloadableItemsQuery;
 }
 
-@property(nonatomic) shared_ptr_e8455ceb downloadableItemsQuery; // @synthesize downloadableItemsQuery=_downloadableItemsQuery;
-@property(copy, nonatomic) CDUnknownBlockType downloadablePlaylistItemEntityQueryBlock; // @synthesize downloadablePlaylistItemEntityQueryBlock=_downloadablePlaylistItemEntityQueryBlock;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) shared_ptr_e8455ceb downloadableItemsQuery; // @synthesize downloadableItemsQuery=_downloadableItemsQuery;
+@property(copy, nonatomic) CDUnknownBlockType downloadablePlaylistItemEntityQueryBlock; // @synthesize downloadablePlaylistItemEntityQueryBlock=_downloadablePlaylistItemEntityQueryBlock;
 
 @end
 

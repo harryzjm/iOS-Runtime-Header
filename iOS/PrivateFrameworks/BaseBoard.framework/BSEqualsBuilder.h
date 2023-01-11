@@ -30,7 +30,6 @@
 - (id)appendInteger:(long long)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendBool:(_Bool)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendEqualsBlocks:(CDUnknownBlockType)arg1;
-- (id)_initWithInitialState:(_Bool)arg1;
 - (id)init;
 
 @end

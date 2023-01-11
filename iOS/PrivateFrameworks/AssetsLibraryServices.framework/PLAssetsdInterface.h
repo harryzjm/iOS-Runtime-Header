@@ -18,6 +18,8 @@
 + (void)_addMigrationInterface:(id)arg1;
 + (void)_addCloudInterfaces:(id)arg1;
 + (void)_addResourceInterfaces:(id)arg1;
++ (void)_addResourceAvailabilityInterface:(id)arg1;
++ (void)_addPhotoKitAddInterface:(id)arg1;
 + (void)_addPhotoKitInterface:(id)arg1;
 + (void)_addLibraryInterfaces:(id)arg1;
 + (id)assetsdInterface;

@@ -13,11 +13,13 @@
 @interface GEOLogMsgEventClientACSuggestions : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_entries;
     long long _overallLatencyInMs;
     NSMutableArray *_queryTokens;
     NSString *_query;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _keypressStatus;
     int _selectedIndex;
     int _selectedSectionIndex;
@@ -39,18 +41,7 @@
         unsigned int read_entries:1;
         unsigned int read_queryTokens:1;
         unsigned int read_query:1;
-        unsigned int wrote_entries:1;
-        unsigned int wrote_overallLatencyInMs:1;
-        unsigned int wrote_queryTokens:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_keypressStatus:1;
-        unsigned int wrote_selectedIndex:1;
-        unsigned int wrote_selectedSectionIndex:1;
-        unsigned int wrote_trigger:1;
-        unsigned int wrote_withinSectionSelectedIndex:1;
-        unsigned int wrote_isRerankerTriggered:1;
-        unsigned int wrote_isRetainedQuery:1;
-        unsigned int wrote_shouldDifferentiateClientAndServerResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -66,6 +57,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasShouldDifferentiateClientAndServerResults;
@@ -92,21 +86,18 @@
 @property(nonatomic) int selectedIndex;
 - (id)entriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entriesCount;
-- (void)_addNoFlagsEntries:(id)arg1;
 - (void)addEntries:(id)arg1;
 - (void)clearEntries;
 @property(retain, nonatomic) NSMutableArray *entries;
-- (void)_readEntries;
 - (id)queryTokensAtIndex:(unsigned long long)arg1;
 - (unsigned long long)queryTokensCount;
-- (void)_addNoFlagsQueryTokens:(id)arg1;
 - (void)addQueryTokens:(id)arg1;
 - (void)clearQueryTokens;
 @property(retain, nonatomic) NSMutableArray *queryTokens;
-- (void)_readQueryTokens;
 @property(retain, nonatomic) NSString *query;
 @property(readonly, nonatomic) _Bool hasQuery;
-- (void)_readQuery;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

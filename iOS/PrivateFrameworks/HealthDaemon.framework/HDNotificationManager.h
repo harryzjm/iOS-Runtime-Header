@@ -14,15 +14,14 @@
 @interface HDNotificationManager : NSObject <HDDiagnosticObject>
 {
     HDProfile *_profile;
+    UNUserNotificationCenter *_userNotificationCenter;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
     NSObject<OS_dispatch_queue> *_resourceQueue;
     NSDate *_lastNotificationDate;
-    UNUserNotificationCenter *_userNotificationCenter;
 }
 
-@property(retain, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
 - (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (void)_postBadgesDidUpdateNotification;
@@ -43,8 +42,8 @@
 - (void)_sendCompanionUserNotificationResponse:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (void)receivedCompanionUserNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postCompanionUserNotificationOfType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 completion:(CDUnknownBlockType)arg7;
-- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 accessoryImageName:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 accessoryImageName:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)postNotificationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postNotificationWithIdentifier:(id)arg1 content:(id)arg2 trigger:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setBadge:(id)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;

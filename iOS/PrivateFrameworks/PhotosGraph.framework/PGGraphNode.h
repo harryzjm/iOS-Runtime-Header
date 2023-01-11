@@ -6,56 +6,36 @@
 
 #import <KnowledgeGraphKit/MANode.h>
 
-@class NSDateComponents;
+#import <PhotosGraph/PGGraphElement-Protocol.h>
 
-@interface PGGraphNode : MANode
+@class NSString, PGGraph;
+
+@interface PGGraphNode : MANode <PGGraphElement>
 {
 }
 
-+ (id)sortEventsByDateSortDescriptors;
-+ (id)addressNodesFromEventNodes:(id)arg1;
-+ (id)_specialDateComponentsForDate:(id)arg1;
-+ (double)specialDateTimeIntervalForDateComponents:(id)arg1;
-+ (id)_specialDateDateComponentsFromTimeInterval:(double)arg1;
-+ (double)specialDateTimeIntervalForDate:(id)arg1;
-+ (unsigned long long)partOfDayForPartOfDayNode:(id)arg1;
-+ (id)stringValueForPartOfDay:(unsigned long long)arg1;
-- (id)keywordDescription;
-- (id)_stringValueForPropertyWithKey:(id)arg1;
-- (id)UUID;
-- (id)name;
-- (_Bool)isFrequentSocialGroup;
-- (id)nameAsSocialGroupNode;
++ (id)filter;
+- (unsigned long long)propertiesCount;
+- (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
+- (id)propertyForKey:(id)arg1;
+- (void)setWeight:(float)arg1;
 - (void)_enumerateDeepNeighborsWithLabel:(id)arg1 domain:(unsigned short)arg2 edgeType:(unsigned long long)arg3 shouldStop:(_Bool *)arg4 block:(CDUnknownBlockType)arg5;
 - (void)_enumerateDeepNeighborsWithLabel:(id)arg1 domain:(unsigned short)arg2 edgeType:(unsigned long long)arg3 excluding:(id)arg4 shouldStop:(_Bool *)arg5 block:(CDUnknownBlockType)arg6;
 - (void)enumerateDeepNeighborsWithLabel:(id)arg1 usingOutEdges:(_Bool)arg2 inDomain:(unsigned short)arg3 andBlock:(CDUnknownBlockType)arg4;
 - (id)deepNeighborsWithLabel:(id)arg1 usingOutEdges:(_Bool)arg2 inDomain:(unsigned short)arg3;
 - (unsigned long long)countOfDeepNeighborsWithLabel:(id)arg1 usingOutEdges:(_Bool)arg2 inDomain:(unsigned short)arg3;
 - (id)firstDeepNeighborWithLabel:(id)arg1 usingOutEdges:(_Bool)arg2 inDomain:(unsigned short)arg3;
-- (id)matchingDescription;
-- (_Bool)isSmartInteresting;
-- (_Bool)isInteresting;
-- (void)_enumeratePartOfDayWithThreshold:(float)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)_partOfDayWithThreshold:(float)arg1;
-- (void)enumerateSignificantPartsOfDayUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePartOfDayUsingBlock:(CDUnknownBlockType)arg1;
-- (unsigned long long)significantPartsOfDay;
-- (unsigned long long)partOfDay;
-- (struct CLLocationCoordinate2D)bestLocationCoordinate;
-- (id)bestAddressNode;
-- (id)nextEvent;
-- (id)previousEvent;
-- (unsigned long long)totalNumberOfPersons;
-- (unsigned long long)numberOfAssets;
-- (double)timestampTZEnd;
-- (double)timestampTZStart;
-- (double)timestampUTCEnd;
-- (double)timestampUTCStart;
-- (double)graphScore;
-@property(retain, nonatomic) NSDateComponents *anniversaryDateComponents;
-@property(retain, nonatomic) NSDateComponents *potentialBirthdayDateComponents;
-@property(retain, nonatomic) NSDateComponents *birthdayDateComponents;
-- (long long)timeValue;
+- (id)keywordDescription;
+- (id)UUID;
+- (id)name;
+- (void)concreteNodeSuperAccess_setPropertyValue:(id)arg1 forKey:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) PGGraph *graph;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

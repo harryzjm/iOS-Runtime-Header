@@ -19,6 +19,7 @@
 
 + (CDUnknownBlockType)distanceBlockForAlgorithm:(long long)arg1 sceneprintGetterBlock:(CDUnknownBlockType)arg2;
 + (double)defaultDistanceThresholdForAlgorithm:(long long)arg1 similarity:(long long)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) double distanceThresholdForSemanticalSimilarityWithPersons; // @synthesize distanceThresholdForSemanticalSimilarityWithPersons=_distanceThresholdForSemanticalSimilarityWithPersons;
 @property(nonatomic) double distanceThresholdForSemanticalSimilarityWithPeople; // @synthesize distanceThresholdForSemanticalSimilarityWithPeople=_distanceThresholdForSemanticalSimilarityWithPeople;
 @property(nonatomic) double distanceThresholdForSemanticalSimilarity; // @synthesize distanceThresholdForSemanticalSimilarity=_distanceThresholdForSemanticalSimilarity;
@@ -26,15 +27,12 @@
 @property(nonatomic) double distanceThresholdForIdenticalSimilarity; // @synthesize distanceThresholdForIdenticalSimilarity=_distanceThresholdForIdenticalSimilarity;
 @property(copy, nonatomic) CDUnknownBlockType sceneprintGetterBlock; // @synthesize sceneprintGetterBlock=_sceneprintGetterBlock;
 @property(readonly) long long algorithm; // @synthesize algorithm=_algorithm;
-- (void).cxx_destruct;
-- (_Bool)_canUseSceneprintSimilarStackingWithItems:(id)arg1;
 - (double)distanceThresholdForSimilarity:(long long)arg1;
 - (double)distanceBetweenItem:(id)arg1 andItem:(id)arg2;
 - (id)adaptiveStackSimilarItems:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)stackSimilarItems:(id)arg1 withSimilarity:(long long)arg2 timestampSupport:(_Bool)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)similarGroupComparator;
 - (id)initWithAlgorithm:(long long)arg1;
-- (id)legacyStackSimilarItems:(id)arg1 withThreshold:(double)arg2;
 
 @end
 

@@ -9,6 +9,7 @@
 @class BBBulletin, NSData, NSString;
 
 @protocol BLTTTestServiceServerExportedInterface <NSObject>
+- (void)logFaultWithCompletion:(void (^)(void))arg1;
 - (void)removeSectionID:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)overriddenSettingsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)originalSettingsWithCompletion:(void (^)(NSArray *))arg1;

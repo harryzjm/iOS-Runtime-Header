@@ -11,8 +11,8 @@
     NSString *_currencyCode;
 }
 
-@property(readonly, copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 - (id)displayString;
 - (id)initWithConfiguration:(id)arg1;
 

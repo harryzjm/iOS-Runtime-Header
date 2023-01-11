@@ -43,10 +43,8 @@
 - (void)_generateCacheIndexesWithTodayIndex:(long long *)arg1 yesterdayIndex:(long long *)arg2;
 - (_Bool)_queue_dateHasChanged;
 - (id)_queue_gregorianCalendar;
-- (id)timezoneOverride;
-- (void)setTimezoneOverride:(id)arg1;
-- (id)dateOverride;
-- (void)setDateOverride:(id)arg1;
+@property(retain, nonatomic) NSTimeZone *timezoneOverride;
+@property(retain, nonatomic) NSDate *dateOverride;
 @property(readonly) _Bool hasLoadedActivitySummaries;
 @property(readonly) HKActivitySummary *yesterdayActivitySummary;
 @property(readonly) HKActivitySummary *todayActivitySummary;

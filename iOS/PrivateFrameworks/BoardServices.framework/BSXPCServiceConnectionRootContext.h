@@ -19,9 +19,6 @@
 - (unsigned long long)hash;
 - (_Bool)isRoot;
 - (id)endpointDescription;
-- (id)childContextWithRemoteIdentifier:(unsigned long long)arg1;
-- (id)uniqueChildContext;
-- (id)_initWithType:(BOOL)arg1 eDesc:(id)arg2;
 
 @end
 

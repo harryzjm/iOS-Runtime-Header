@@ -12,10 +12,14 @@
 @interface PUPhotoEditValuesCalculator : PXObservable
 {
     PUPhotoEditImageValues *_currentImageValues;
+    PUPhotoEditImageValues *_currentGeometricValues;
     PUPhotoEditImageValues *_initialImageValues;
+    PUPhotoEditImageValues *_initialGeometricValues;
     PICompositionController *_compositionControllerForCurrentValues;
-    NSObject<OS_dispatch_queue> *_computationQueue;
-    NSObject<OS_dispatch_group> *_computingValuesGroup;
+    NSObject<OS_dispatch_queue> *_imageValuesComputationQueue;
+    NSObject<OS_dispatch_group> *_computingImageValuesGroup;
+    NSObject<OS_dispatch_queue> *_geometricValuesComputationQueue;
+    NSObject<OS_dispatch_group> *_computingGeometricValuesGroup;
     long long _currentSourceSelection;
     PLEditSource *_editSource;
     PLEditSource *_overcaptureEditSource;
@@ -24,19 +28,23 @@
 }
 
 + (_Bool)shouldRunGeometricAutoCalculatorForSource:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_1b6d18a9 videoFrameTime; // @synthesize videoFrameTime=_videoFrameTime;
 @property(retain, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property(retain, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property(retain, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
-- (void).cxx_destruct;
+- (void)_ensureInitialGeometricValuesAreComputed;
+- (void)_ensureCurrentGeometricValuesAreComputed;
 - (void)_ensureInitialImageValuesAreComputed;
 - (void)_ensureCurrentImageValuesAreComputed;
 - (void)computeAutoEnhanceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 @property(readonly, nonatomic) _Bool hasImageValues;
+- (void)precomputeGeometricValues;
 - (void)precomputeImageValuesWithOptionalCompletion:(CDUnknownBlockType)arg1;
 - (void)precomputeImageValuesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)precomputeImageValues;
+- (_Bool)_geometricCurrentValuesCacheIsValid;
 - (_Bool)_imageCurrentValuesCacheIsValid;
 - (id)autoPerspectiveValuesWithAccuracy:(long long)arg1;
 - (id)autoCropValuesWithAccuracy:(long long)arg1;

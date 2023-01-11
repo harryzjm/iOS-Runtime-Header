@@ -6,9 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <OnBoardingKit/OBSetupAssistantSupport-Protocol.h>
+
 @class NSString, OBWelcomeController, UIImage, UIView;
 
-@interface OBSetupAssistantDynamicLayoutController : UIViewController
+@interface OBSetupAssistantDynamicLayoutController : UIViewController <OBSetupAssistantSupport>
 {
     _Bool _enableStickyHeader;
     OBWelcomeController *_backingController;
@@ -20,6 +22,7 @@
     UIImage *_localImage;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *localImage; // @synthesize localImage=_localImage;
 @property(copy, nonatomic) NSString *localDetailText; // @synthesize localDetailText=_localDetailText;
 @property(copy, nonatomic) NSString *localTitle; // @synthesize localTitle=_localTitle;
@@ -28,7 +31,6 @@
 @property(copy, nonatomic) CDUnknownBlockType constraintForLayoutFactory; // @synthesize constraintForLayoutFactory=_constraintForLayoutFactory;
 @property(retain, nonatomic) OBWelcomeController *backingController; // @synthesize backingController=_backingController;
 @property(nonatomic) _Bool enableStickyHeader; // @synthesize enableStickyHeader=_enableStickyHeader;
-- (void).cxx_destruct;
 - (void)_relayoutContentSubviewIfNeeded;
 - (void)_updateScrollUnderLayout;
 - (void)resetLayoutTo:(long long)arg1;
@@ -41,6 +43,12 @@
 - (void)viewDidLoad;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

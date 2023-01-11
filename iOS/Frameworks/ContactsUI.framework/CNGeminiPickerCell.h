@@ -4,30 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UILabel, UIView;
+@class UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CNGeminiPickerCell
 {
     UILabel *_labelLabel;
     UILabel *_valueLabel;
-    NSString *_badgeText;
-    UIView *_badgeView;
 }
 
-@property(retain, nonatomic) UIView *badgeView; // @synthesize badgeView=_badgeView;
-@property(readonly, nonatomic) NSString *badgeText; // @synthesize badgeText=_badgeText;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 @property(readonly, nonatomic) UILabel *labelLabel; // @synthesize labelLabel=_labelLabel;
-- (void).cxx_destruct;
-- (id)variableConstraints;
 - (void)tintColorDidChange;
 - (id)valueView;
 - (id)labelView;
 - (void)setText:(id)arg1 detailText:(id)arg2;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)dealloc;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

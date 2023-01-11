@@ -9,32 +9,35 @@
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTemplateComplicationDisplay-Protocol.h>
 
-@class CLKComplicationTemplate, CLKDevice, CLKFont, NSString, NTKColoringLabel;
+@class CLKComplicationTemplateSimpleText, CLKDevice, CLKFont, NSDate, NSString, NTKColoringLabel;
 @protocol NTKComplicationDisplayObserver;
 
 @interface NTKSimpleTextComplicationView : UIView <NTKComplicationDisplay, NTKTemplateComplicationDisplay>
 {
     _Bool canUseCurvedText;
     id <NTKComplicationDisplayObserver> displayObserver;
-    CLKFont *_font;
     NTKColoringLabel *_label;
     CLKDevice *_device;
-    CLKComplicationTemplate *_template;
+    CLKComplicationTemplateSimpleText *_template;
+    NSDate *_timeTravelDate;
 }
 
 + (_Bool)supportsComplicationFamily:(long long)arg1;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-@property(retain, nonatomic) CLKComplicationTemplate *template; // @synthesize template=_template;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
+@property(retain, nonatomic) CLKComplicationTemplateSimpleText *template; // @synthesize template=_template;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(retain, nonatomic) NTKColoringLabel *label; // @synthesize label=_label;
-@property(retain, nonatomic) CLKFont *font; // @synthesize font=_font;
 @property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
-- (void).cxx_destruct;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
 - (id)complicationTemplate;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
-- (void)sizeToFit;
+@property(readonly, nonatomic) _Bool useAlternateFont;
+@property(retain, nonatomic) CLKFont *font;
+- (id)_defaultFont;
+- (void)_updateLabelFrame;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)init;

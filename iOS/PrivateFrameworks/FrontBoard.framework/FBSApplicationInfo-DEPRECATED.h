@@ -7,9 +7,9 @@
 #import <FrontBoardServices/FBSApplicationInfo.h>
 
 @interface FBSApplicationInfo (DEPRECATED)
-- (void)acceptApplicationSignatureIdentity;
-- (id)_applicationTrustData;
 - (long long)_mapSignatureStateFromTrustState:(unsigned long long)arg1;
+- (void)acceptApplicationSignatureIdentity;
+- (id)_signatureValidationService;
 @property(readonly, nonatomic, getter=hasUniversalProvisioningProfile) _Bool universalProvisioningProfile;
 @property(readonly, nonatomic, getter=hasFreeDeveloperProvisioningProfile) _Bool freeDeveloperProvisioningProfile;
 @property(readonly, nonatomic) long long signatureState;

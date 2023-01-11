@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreServicesStore/NSCopying-Protocol.h>
+
 @class NSMutableDictionary, NSRecursiveLock;
 
-@interface _CSVisualizer : NSObject
+@interface _CSVisualizer : NSObject <NSCopying>
 {
-    NSMutableDictionary *_handlers;
+    NSMutableDictionary *_functions;
     NSRecursiveLock *_lock;
     const struct __CSStore *_store;
     NSMutableDictionary *_userInfo;
@@ -25,20 +27,26 @@
 + (void)enumerateValuesForTitlesInDescription:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (struct _NSRange)rangeOfValueForTitle:(id)arg1 inDescription:(id)arg2;
 + (id)new;
+- (void).cxx_destruct;
 @property(readonly) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly) const struct __CSStore *store; // @synthesize store=_store;
-- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateReferencesToUnit:(unsigned int)arg1 inTable:(unsigned int)arg2 block:(CDUnknownBlockType)arg3;
 - (id)breakDownUsage;
 - (id)descriptionOfUnit:(unsigned int)arg1 inTable:(unsigned int)arg2;
 - (id)summaryOfUnit:(unsigned int)arg1 inTable:(unsigned int)arg2;
+- (void)setStandardTableFunctions;
+- (void)setFunctions:(id)arg1 forTable:(unsigned int)arg2;
+- (id)functionsForTable:(unsigned int)arg1;
+- (id)functionsForTableNoCopy:(unsigned int)arg1;
+- (void)dealloc;
+- (id)initWithStore:(struct __CSStore *)arg1 useStandardTableFunctions:(_Bool)arg2;
+- (id)initWithStore:(struct __CSStore *)arg1;
+- (id)init;
 - (void)setStandardTableHandlers;
 - (void)setHandler:(CDUnknownBlockType)arg1 forTable:(unsigned int)arg2;
 - (CDUnknownBlockType)handlerForTable:(unsigned int)arg1;
-- (void)dealloc;
 - (id)initWithStore:(struct __CSStore *)arg1 useStandardTableHandlers:(_Bool)arg2;
-- (id)initWithStore:(struct __CSStore *)arg1;
-- (id)init;
 
 @end
 

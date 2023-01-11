@@ -6,7 +6,7 @@
 
 @class NSString, SXFeedNavigationAppearance, SXJSONDictionary, SXTabBarAppearance;
 
-@interface SXMetaData
+@interface SXMetadata
 {
 }
 

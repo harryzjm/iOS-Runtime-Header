@@ -10,18 +10,21 @@
 
 @interface _SlotDescriptor : NSObject
 {
-    long long _family;
+    NSArray *_familiesRankedList;
     NSArray *_typesRankedList;
     NSIndexSet *_possibleTypes;
 }
 
-+ (id)descriptorWithComplicationFamily:(long long)arg1 complicationTypesRankedList:(id)arg2 allowedComplicationTypes:(id)arg3;
++ (id)descriptorWithComplicationFamilies:(id)arg1 complicationTypesRankedList:(id)arg2 allowedComplicationTypes:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSIndexSet *possibleTypes; // @synthesize possibleTypes=_possibleTypes;
 @property(readonly, nonatomic) NSArray *typesRankedList; // @synthesize typesRankedList=_typesRankedList;
-@property(readonly, nonatomic) long long family; // @synthesize family=_family;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *familiesRankedList; // @synthesize familiesRankedList=_familiesRankedList;
 - (_Bool)supportsType:(unsigned long long)arg1;
 - (_Bool)allowsType:(unsigned long long)arg1 inFace:(id)arg2;
+- (_Bool)supportsFamiliesOfComplications:(id)arg1 inFace:(id)arg2;
+- (_Bool)allowsFamily:(long long)arg1 inFace:(id)arg2;
+- (void)enumerateAllowedFamiliesForFace:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -24,6 +24,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain) DEDController *controller; // @synthesize controller=_controller;
 @property(retain) DEDDiagnosticCollector *_diagnosticCollector; // @synthesize _diagnosticCollector=__diagnosticCollector;
 @property(retain) NSObject<OS_dispatch_queue> *diskAccessQueue; // @synthesize diskAccessQueue=_diskAccessQueue;
@@ -32,7 +33,6 @@
 @property(retain) NSOperationQueue *backgroundOpQueue; // @synthesize backgroundOpQueue=_backgroundOpQueue;
 @property(retain) DEDConfiguration *config; // @synthesize config=_config;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
-- (void).cxx_destruct;
 - (id)_blockOnFakeSysidagnoseWithIdentifer:(id)arg1 withBugSession:(id)arg2;
 - (void)_logOperations;
 - (void)_streamOperationStatus;
@@ -40,21 +40,26 @@
 - (id)_controller;
 - (id)attachmentHandler;
 - (id)diagnosticCollector;
-- (void)_getSessionStatusWithSession:(id)arg1;
 - (void)_syncSessionStatusWithSession:(id)arg1 withIdentifiers:(_Bool)arg2;
-- (void)cancelNotificationForSession:(id)arg1;
-- (void)scheduleNotificationForSession:(id)arg1;
+- (void)_syncSessionStatusWithSessionID:(id)arg1 withIdentifiers:(_Bool)arg2;
 - (void)syncSessionStatusWithSession:(id)arg1;
 - (void)getSessionStatusWithSession:(id)arg1;
+- (void)getSessionStateWithSession:(id)arg1;
+- (void)cancelNotificationForSession:(id)arg1;
+- (void)scheduleNotificationForSession:(id)arg1;
 - (void)cancelSession:(id)arg1;
 - (void)commitSession:(id)arg1;
 - (void)adoptFiles:(id)arg1 forSession:(id)arg2;
 - (void)terminateExtension:(id)arg1 info:(id)arg2 session:(id)arg3;
+- (void)_startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3 runSetup:(_Bool)arg4;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 deferRunUntil:(id)arg3 session:(id)arg4;
 - (void)listAvailableExtensionsForSession:(id)arg1;
 - (void)pingSession:(id)arg1;
 - (long long)transportType;
+- (void)teardownDeferredDiagnosticsWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
+- (void)setupDeferredDiagnosticsWithExtensionInfo:(id)arg1;
+- (void)finallyStartDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
 - (void)start;
 - (void)configureForEmbedded:(_Bool)arg1;
 - (id)init;

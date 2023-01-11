@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
+@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUDownloadOptions, SUInstallOptions, SUScanOptions;
 
 @protocol SUManagerServerInterface
 - (void)registerCSInstallPredicatesOnDate:(NSDate *)arg1;
+- (void)isAutomaticDownloadEnabled:(void (^)(_Bool, NSError *))arg1;
+- (void)enableAutomaticDownload:(_Bool)arg1;
 - (void)isAutomaticUpdateV2Enabled:(void (^)(_Bool, NSError *))arg1;
 - (void)enableAutomaticUpdateV2:(_Bool)arg1;
 - (void)createInstallationKeybag:(NSString *)arg1 forUnattendedInstall:(_Bool)arg2 withResult:(void (^)(_Bool, NSError *))arg3;
@@ -18,6 +20,7 @@
 - (void)slaVersion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)setClientType:(int)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
+- (void)installUpdateWithInstallOptions:(SUInstallOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)installUpdate:(void (^)(_Bool, NSError *))arg1;
 - (void)isUpdateReadyForInstallation:(void (^)(_Bool, NSError *))arg1;
 - (void)isInstallationKeybagRequired:(void (^)(_Bool, NSError *))arg1;
@@ -31,14 +34,17 @@
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(void (^)(NSNumber *, NSError *))arg1;
 - (void)deviceHasSufficientSpaceForDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)downloadAndInstallState:(void (^)(SUDownload *, SUInstallPolicy *, _SUAutoInstallOperationModel *, NSError *))arg1;
+- (void)updateDownloadOptions:(SUDownloadOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)updateDownloadMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)resumeDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)pauseDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)purgeDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)cancelDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)startDownloadWithMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
+- (void)startDownloadWithOptions:(SUDownloadOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)startDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)isDownloading:(void (^)(_Bool, NSError *))arg1;
+- (void)descriptor:(void (^)(SUDescriptor *, NSError *))arg1;
 - (void)autoScanAndDownloadIfAvailable:(void (^)(SUDescriptor *, NSError *))arg1;
 - (void)scanForUpdates:(SUScanOptions *)arg1 withResult:(void (^)(SUDescriptor *, NSError *))arg2;
 - (void)isScanning:(void (^)(_Bool, NSError *))arg1;

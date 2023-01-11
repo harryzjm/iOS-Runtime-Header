@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CKContextSemaphore, NSMutableArray, NSSet, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+#import <ContextKit/CKContextServiceUpdateNotifications-Protocol.h>
 
-@interface CKContextClient : NSObject
+@class CKContextSemaphore, NSMutableArray, NSSet, NSString;
+@protocol OS_dispatch_semaphore;
+
+@interface CKContextClient : NSObject <CKContextServiceUpdateNotifications>
 {
-    NSObject<OS_dispatch_queue> *_notificationsQueue;
     NSSet *_capabilities;
     NSString *_indexVersionId;
     NSMutableArray *_updateHandlers;
@@ -20,14 +21,17 @@
     unsigned long long _defaultRequestType;
 }
 
++ (_Bool)isLikelyUnsolicitedUserInteraction;
++ (double)timeIntervalBetweenMachTime:(unsigned long long)arg1 andMachTime:(unsigned long long)arg2;
 + (id)clientWithDefaultRequestType:(unsigned long long)arg1;
 + (id)new;
-@property(readonly, nonatomic) unsigned long long defaultRequestType; // @synthesize defaultRequestType=_defaultRequestType;
++ (void)_observeApplicationStateNotifications;
++ (void)initialize;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long defaultRequestType; // @synthesize defaultRequestType=_defaultRequestType;
 - (void)ancestorsForTopics:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)workWithServiceSemaphore:(CDUnknownBlockType)arg1;
-- (_Bool)tryAcquireServiceSemaphore;
-- (_Bool)hasServiceSemaphore;
+- (long long)tryAcquireServiceSemaphore;
 @property(readonly, nonatomic) NSSet *capabilities;
 - (id)indexVersionId;
 - (id)retrieveCapabilites;
@@ -35,7 +39,7 @@
 - (void)capabilitiesWithReply:(CDUnknownBlockType)arg1;
 - (id)newRequest;
 - (void)_updateCachedCapabilites;
-- (void)_handleConfigurationUpdate;
+- (void)didReceiveCKContextServiceUpdateNotification;
 - (void)ensureFullyInitialized;
 - (id)initWithDefaultRequestType:(unsigned long long)arg1;
 - (id)init;

@@ -16,7 +16,9 @@
 
 + (_Bool)dismissAutomaticallyAfterExtensionCompletion;
 + (id)dashboardExtension;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject *dashboardAssetController; // @synthesize dashboardAssetController=_dashboardAssetController;
+@property(nonatomic) __weak GKGameCenterViewController *delegate; // @synthesize delegate=_delegateWeak;
 - (void)extensionIsFinishing;
 - (void)extensionIsCanceling;
 - (void)playerQuitMatch:(id)arg1;
@@ -26,13 +28,13 @@
 - (void)hostSupportsShowingQuitForTurnBasedMatch:(_Bool)arg1;
 - (void)hostSupportsShowingPlayForTurnBasedMatch:(_Bool)arg1;
 - (void)hostSupportsShowingPlayForChallenge:(_Bool)arg1;
+- (void)hostDidChangeLeaderboardPlayerScope:(id)arg1;
 - (void)hostDidChangeLeaderboardTimeScope:(id)arg1;
 - (void)hostDidChangeLeaderboardIdentifier:(id)arg1;
 - (void)hostDidChangeViewState:(id)arg1;
 - (id)extensionObjectProxy;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-@property(nonatomic) GKGameCenterViewController *delegate; // @synthesize delegate=_delegateWeak;
-- (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties

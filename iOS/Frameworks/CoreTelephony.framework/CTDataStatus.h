@@ -19,6 +19,8 @@
     int _indicator;
     int _indicatorOverride;
     int _radioTechnology;
+    int _dataBearerTechnology;
+    unsigned int _dataBearerSoMask;
     unsigned int _activeContexts;
     unsigned int _totalActiveContexts;
 }
@@ -29,6 +31,8 @@
 @property(nonatomic) unsigned int activeContexts; // @synthesize activeContexts=_activeContexts;
 @property(nonatomic) _Bool cellularDataPossible; // @synthesize cellularDataPossible=_cellularDataPossible;
 @property(nonatomic) _Bool dataPlanSignalingReductionOverride; // @synthesize dataPlanSignalingReductionOverride=_dataPlanSignalingReductionOverride;
+@property(nonatomic) unsigned int dataBearerSoMask; // @synthesize dataBearerSoMask=_dataBearerSoMask;
+@property(nonatomic) int dataBearerTechnology; // @synthesize dataBearerTechnology=_dataBearerTechnology;
 @property(nonatomic) int radioTechnology; // @synthesize radioTechnology=_radioTechnology;
 @property(nonatomic) _Bool roamAllowed; // @synthesize roamAllowed=_roamAllowed;
 @property(nonatomic) int indicatorOverride; // @synthesize indicatorOverride=_indicatorOverride;

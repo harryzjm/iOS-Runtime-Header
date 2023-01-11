@@ -24,9 +24,12 @@
     NSString *_clientID;
     AKAuthorizationRequest *_request;
     AKAuthorizationScopesUserSelection *_userSelection;
+    NSString *_realUserVerificationData;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *realUserVerificationData; // @synthesize realUserVerificationData=_realUserVerificationData;
 @property(retain, nonatomic) AKAuthorizationScopesUserSelection *userSelection; // @synthesize userSelection=_userSelection;
 @property(readonly, copy, nonatomic) AKAuthorizationRequest *request; // @synthesize request=_request;
 @property(copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
@@ -38,7 +41,6 @@
 @property(copy, nonatomic) NSDictionary *appProvidedData; // @synthesize appProvidedData=_appProvidedData;
 @property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName; // @synthesize _proxiedAppName;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool _hasApplicationMetaData;
 - (void)encodeWithCoder:(id)arg1;
@@ -46,6 +48,7 @@
 - (id)initWithCoder:(id)arg1;
 
 // Remaining properties
+@property(nonatomic) long long authenticationMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

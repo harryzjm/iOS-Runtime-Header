@@ -15,6 +15,7 @@
 {
     unsigned short _type;
     unsigned short _visibilityState;
+    unsigned short _enrichmentState;
     unsigned short _kind;
     NSDate *_startDate;
     NSDate *_endDate;
@@ -34,7 +35,9 @@
 
 + (void)updateParentHighlightItemLists:(id)arg1 withChildHighlightItems:(id)arg2;
 + (id)timeSortDescriptors;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned short kind; // @synthesize kind=_kind;
+@property(readonly, nonatomic) unsigned short enrichmentState; // @synthesize enrichmentState=_enrichmentState;
 @property(nonatomic) unsigned short visibilityState; // @synthesize visibilityState=_visibilityState;
 @property(readonly, nonatomic) unsigned short type; // @synthesize type=_type;
 @property(nonatomic) double promotionScore; // @synthesize promotionScore=_promotionScore;
@@ -47,7 +50,6 @@
 @property(readonly, nonatomic) NSMutableSet *internalRemovedHighlightItems; // @synthesize internalRemovedHighlightItems=_internalRemovedHighlightItems;
 @property(readonly, nonatomic) NSMutableSet *internalAddedHighlightItems; // @synthesize internalAddedHighlightItems=_internalAddedHighlightItems;
 @property(retain, nonatomic) NSMutableOrderedSet *internalHighlightItems; // @synthesize internalHighlightItems=_internalHighlightItems;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)_updateHighlightItemsOrdering;
 - (void)removeHighlightItem:(id)arg1;

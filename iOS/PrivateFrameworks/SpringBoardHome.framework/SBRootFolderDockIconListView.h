@@ -8,7 +8,5 @@
 {
 }
 
-- (struct CGPoint)originForIconAtCoordinate:(struct SBIconCoordinate)arg1;
-
 @end
 

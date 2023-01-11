@@ -6,19 +6,18 @@
 
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIViewController;
+@class NSString, UIViewController;
 @protocol TSSetupFlowItem;
 
 @interface TSTransferFlow <TSSIMSetupFlowDelegate>
 {
     UIViewController<TSSetupFlowItem> *_currentViewController;
-    NSMutableArray *_transferItems;
 }
 
++ (void)needsToRunUsingMessageSession:(id)arg1 transferablePlanOnSource:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)needsToRunUsingMessageSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)viewControllerDidComplete:(id)arg1;
-- (void)_getTransferPlanList;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (id)firstViewController;

@@ -18,10 +18,10 @@
     CDStruct_14d5dc5e _meshBindTransform;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CDStruct_14d5dc5e meshBindTransform; // @synthesize meshBindTransform=_meshBindTransform;
 @property(readonly, nonatomic) NSData *jointBindTransforms; // @synthesize jointBindTransforms=_jointBindTransforms;
 @property(readonly, nonatomic) NSArray *jointPaths; // @synthesize jointPaths=_jointPaths;
-- (void).cxx_destruct;
 - (unsigned long long)copyJointBindTransformsInto:(CDStruct_14d5dc5e *)arg1 maxCount:(unsigned long long)arg2;
 - (id)initWithJointPaths:(id)arg1 jointBindTransforms:(const CDStruct_14d5dc5e *)arg2 count:(unsigned long long)arg3 meshBindTransform:(CDStruct_14d5dc5e)arg4;
 - (id)initWithJointPaths:(id)arg1 jointBindTransforms:(id)arg2 meshBindTransform:(CDStruct_14d5dc5e)arg3;

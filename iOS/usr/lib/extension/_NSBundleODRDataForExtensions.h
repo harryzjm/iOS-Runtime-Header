@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_connection;
 }
 
-+ (id)dataForBundle:(id)arg1 createIfRequired:(_Bool)arg2;
 - (void)hostApplicationAssetPacksBecameUnavailable:(id)arg1;
 - (void)hostApplicationAssetPacksBecameAvailable:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

@@ -26,6 +26,7 @@
 - (void)avcVideoFrameDidRelease:(id)arg1;
 - (void)deregisterBlocksForNotifications;
 - (void)registerBlocksForNotifications;
+- (_Bool)setupRemoteReceiverQueueWithSenderQueue:(id)arg1;
 @property(nonatomic) id <AVCEffectsDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;

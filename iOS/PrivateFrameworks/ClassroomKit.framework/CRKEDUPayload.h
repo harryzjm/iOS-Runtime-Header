@@ -11,6 +11,7 @@
 @interface CRKEDUPayload : NSObject
 {
     _Bool _screenObservationPermissionModificationAllowed;
+    _Bool _isEphemeralMultiUserDevice;
     NSString *_payloadDisplayName;
     NSString *_payloadDescriptionName;
     NSString *_organizationUUID;
@@ -30,6 +31,8 @@
     NSArray *_deviceGroups;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isEphemeralMultiUserDevice; // @synthesize isEphemeralMultiUserDevice=_isEphemeralMultiUserDevice;
 @property(retain, nonatomic) NSArray *deviceGroups; // @synthesize deviceGroups=_deviceGroups;
 @property(retain, nonatomic) NSArray *users; // @synthesize users=_users;
 @property(retain, nonatomic) NSArray *groups; // @synthesize groups=_groups;
@@ -48,14 +51,15 @@
 @property(retain, nonatomic) NSString *organizationUUID; // @synthesize organizationUUID=_organizationUUID;
 @property(retain, nonatomic) NSString *payloadDescriptionName; // @synthesize payloadDescriptionName=_payloadDescriptionName;
 @property(retain, nonatomic) NSString *payloadDisplayName; // @synthesize payloadDisplayName=_payloadDisplayName;
-- (void).cxx_destruct;
 - (id)description;
 @property(readonly, copy, nonatomic) NSDictionary *configuration;
 - (id)parseDeviceGroupFromDictionary:(id)arg1 isStub:(_Bool)arg2 outError:(id *)arg3;
 - (id)parseUserFromDictionary:(id)arg1 isStub:(_Bool)arg2 outError:(id *)arg3;
 - (id)parseGroupFromDictionary:(id)arg1 isStub:(_Bool)arg2 outError:(id *)arg3;
 - (id)parseDepartmentFromDictionary:(id)arg1 isStub:(_Bool)arg2 outError:(id *)arg3;
+- (_Bool)areCredentialsValidForStub:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)parseDictionary:(id)arg1 isStub:(_Bool)arg2 outError:(id *)arg3;
+- (id)initWithDictionary:(id)arg1 isStub:(_Bool)arg2 isEphemeralMultiUserDevice:(_Bool)arg3 error:(id *)arg4;
 - (id)initWithDictionary:(id)arg1 isStub:(_Bool)arg2 error:(id *)arg3;
 
 @end

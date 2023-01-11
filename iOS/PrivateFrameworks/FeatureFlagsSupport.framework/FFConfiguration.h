@@ -19,11 +19,16 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+- (_Bool)reset:(id *)arg1;
+- (_Bool)resetDomain:(id)arg1 error:(id *)arg2;
 - (_Bool)isValidName:(id)arg1;
 - (void)invalidateCache;
 - (_Bool)commitUpdates:(id *)arg1;
+- (void)unsetFeaturesMatchingAttribute:(id)arg1 level:(long long)arg2;
 - (void)unsetFeature:(id)arg1 domain:(id)arg2 level:(long long)arg3;
+- (void)disableFeaturesMatchingAttribute:(id)arg1 level:(long long)arg2;
 - (void)disableFeature:(id)arg1 domain:(id)arg2 level:(long long)arg3;
+- (void)enableFeaturesMatchingAttribute:(id)arg1 level:(long long)arg2;
 - (void)enableFeature:(id)arg1 domain:(id)arg2 level:(long long)arg3;
 - (id)defaultStateForFeature:(id)arg1 domain:(id)arg2;
 - (id)stateForFeature:(id)arg1 domain:(id)arg2 level:(long long)arg3;
@@ -33,10 +38,12 @@
 - (_Bool)writeCombinedUpdates:(id *)arg1;
 - (_Bool)writeDomainUpdates:(id *)arg1;
 - (_Bool)writeData:(id)arg1 toFile:(id)arg2 error:(id *)arg3;
-- (void)populateDictionary:(id)arg1 withFeatures:(struct NSMutableDictionary *)arg2;
+- (void)populateDictionary:(id)arg1 withFeatures:(id)arg2;
 - (_Bool)createDirectoryAtURL:(id)arg1 error:(id *)arg2;
+- (void)setFeaturesMatchingAttribute:(id)arg1 level:(long long)arg2 value:(long long)arg3;
 - (void)setValue:(long long)arg1 feature:(id)arg2 domain:(id)arg3 level:(long long)arg4;
 - (void)createMutableDomainConfig:(id)arg1 level:(long long)arg2;
+- (_Bool)isFeatureHidden:(id)arg1 domain:(id)arg2;
 - (id)resolvedStateForFeature:(id)arg1 domain:(id)arg2;
 - (id)effectiveStateForFeature:(id)arg1 domain:(id)arg2 level:(long long)arg3;
 - (void)loadAllData;
@@ -44,7 +51,7 @@
 - (void)loadDomain:(id)arg1 level:(long long)arg2;
 - (void)addFeaturesForDomain:(id)arg1 pathIndex:(int)arg2 fromURL:(id)arg3;
 - (void)loadCombinedDataForLevel:(long long)arg1;
-- (struct NSMutableDictionary *)makeFeatureDictionaryFrom:(id)arg1 forDomain:(id)arg2;
+- (id)makeFeatureDictionaryFrom:(id)arg1 forDomain:(id)arg2;
 - (id)fileURLForLevel:(long long)arg1 pathIndex:(int)arg2;
 - (id)fileURLForDomain:(id)arg1 pathIndex:(int)arg2;
 - (void)validateName:(id)arg1;

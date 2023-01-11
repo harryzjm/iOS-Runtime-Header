@@ -11,10 +11,13 @@
 
 @property(nonatomic) long long livePhotoMode; // @synthesize livePhotoMode=_livePhotoMode;
 - (_Bool)shouldUseActiveTintForCurrentState;
+- (_Bool)shouldShowSlashForCurrentState;
+- (_Bool)shouldUseSlash;
 - (id)imageNameForCurrentState;
 - (void)didSelectMenuItem:(id)arg1;
 - (id)loadMenuItems;
 - (_Bool)isMenuItemSelected:(id)arg1;
+- (void)setLivePhotoMode:(long long)arg1 animated:(_Bool)arg2;
 - (long long)controlType;
 
 @end

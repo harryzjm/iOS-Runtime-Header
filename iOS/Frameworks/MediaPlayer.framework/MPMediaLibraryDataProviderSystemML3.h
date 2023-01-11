@@ -7,6 +7,7 @@
 @class NSObject;
 @protocol MPArtworkDataSource, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaLibraryDataProviderSystemML3
 {
     id <MPArtworkDataSource> _completeMyCollectionArtworkDataSource;

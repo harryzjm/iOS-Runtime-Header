@@ -19,7 +19,10 @@
 - (void).cxx_destruct;
 - (void)enumerateTokensInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)tokensForRange:(struct _NSRange)arg1;
+- (struct _NSRange)tokenRangeForRange:(struct _NSRange)arg1;
 - (struct _NSRange)tokenRangeAtIndex:(unsigned long long)arg1;
+- (const CDStruct_b1a60774 *)_tokenAtIndex:(unsigned long long)arg1;
+- (id)_wordCharacterSet;
 - (id)language;
 - (void)setLanguage:(id)arg1;
 @property(retain, nonatomic) NSString *string;

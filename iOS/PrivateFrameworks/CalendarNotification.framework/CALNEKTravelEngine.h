@@ -19,10 +19,10 @@
     EKTravelEngine *_travelEngine;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) EKTravelEngine *travelEngine; // @synthesize travelEngine=_travelEngine;
 @property(nonatomic) __weak id <CALNTravelEngineDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (CDUnknownBlockType)_authorizationChangedBlock;
 - (CDUnknownBlockType)_eventSignficantlyChangedBlock;
 - (CDUnknownBlockType)_adviceReceivedBlock;
@@ -35,8 +35,6 @@
 - (void)receivedAlarmNamed:(id)arg1;
 - (void)didRegisterForAlarms;
 - (void)receivedNotificationNamed:(id)arg1;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (void)didRegisterForBackgroundTaskAgentJobs;
 - (void)deactivate;
 - (void)activate;
 - (id)initWithTravelEngine:(id)arg1;

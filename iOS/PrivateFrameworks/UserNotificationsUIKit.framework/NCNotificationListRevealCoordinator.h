@@ -25,6 +25,7 @@
     UIImpactFeedbackGenerator *_feedbackGenerator;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isHapticPrepared) _Bool hapticPrepared; // @synthesize hapticPrepared=_hapticPrepared;
 @property(retain, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property(nonatomic) _Bool shouldLimitTargetContentOffsetForNotificationListReveal; // @synthesize shouldLimitTargetContentOffsetForNotificationListReveal=_shouldLimitTargetContentOffsetForNotificationListReveal;
@@ -35,10 +36,10 @@
 @property(nonatomic) int revealState; // @synthesize revealState=_revealState;
 @property(nonatomic, getter=isForceRevealed) _Bool forceRevealed; // @synthesize forceRevealed=_forceRevealed;
 @property(nonatomic) __weak id <NCNotificationListRevealCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_performHaptic;
 - (void)_releaseHaptic;
 - (void)_prepareHaptic;
+- (id)_stringForRevealState:(int)arg1;
 - (void)_performRevealForSubviewsIfNecessary;
 - (id)_revealListView;
 - (id)_topView;

@@ -4,32 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup, NSArray;
+@class HMDBackingStoreCacheGroup, NSArray;
 
 @interface HMDBackingStoreCacheFetchRecords
 {
+    _Bool _recursive;
     HMDBackingStoreCacheGroup *_group;
-    HMDBackingStoreCacheShareGroup *_share;
     CDUnknownBlockType _fetchResult;
     NSArray *_recordNames;
     NSArray *_uuids;
     NSArray *_parentUuids;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *parentUuids; // @synthesize parentUuids=_parentUuids;
 @property(retain, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;
 @property(retain, nonatomic) NSArray *recordNames; // @synthesize recordNames=_recordNames;
 @property(copy, nonatomic) CDUnknownBlockType fetchResult; // @synthesize fetchResult=_fetchResult;
-@property(retain, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
 @property(retain, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
-- (void).cxx_destruct;
+@property _Bool recursive; // @synthesize recursive=_recursive;
 - (id)mainReturningError;
 - (id)initWithGroup:(id)arg1 records:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
-- (id)initWithShareGroup:(id)arg1 records:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
 - (id)initWithGroup:(id)arg1 parentUuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
-- (id)initWithShareGroup:(id)arg1 parentUuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
 - (id)initWithGroup:(id)arg1 uuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
-- (id)initWithShareGroup:(id)arg1 uuids:(id)arg2 fetchResult:(CDUnknownBlockType)arg3;
 
 @end
 

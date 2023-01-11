@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFAccountLoginViewController.h>
-
 #import <ActionKitUI/UITableViewDataSource-Protocol.h>
 #import <ActionKitUI/UITableViewDelegate-Protocol.h>
 #import <ActionKitUI/UITextFieldDelegate-Protocol.h>
@@ -13,7 +11,7 @@
 @class NSDictionary, NSString, NSURL, UIBarButtonItem, UITableView, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface WFPasswordAccountLoginViewController : WFAccountLoginViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface WFPasswordAccountLoginViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
     NSDictionary *_textFieldsByIndexPath;
@@ -23,13 +21,13 @@ __attribute__((visibility("hidden")))
     UIBarButtonItem *_loadingItem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIBarButtonItem *loadingItem; // @synthesize loadingItem=_loadingItem;
 @property(retain, nonatomic) UIBarButtonItem *loginItem; // @synthesize loginItem=_loginItem;
 @property(readonly, nonatomic) __weak UITextField *passwordField; // @synthesize passwordField=_passwordField;
 @property(readonly, nonatomic) __weak UITextField *usernameField; // @synthesize usernameField=_usernameField;
 @property(copy, nonatomic) NSDictionary *textFieldsByIndexPath; // @synthesize textFieldsByIndexPath=_textFieldsByIndexPath;
 @property(readonly, nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
-- (void).cxx_destruct;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

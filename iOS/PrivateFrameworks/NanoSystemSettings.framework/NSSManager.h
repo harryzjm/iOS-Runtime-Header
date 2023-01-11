@@ -16,14 +16,15 @@
     NSXPCConnection *_xpcConnection;
 }
 
-+ (void)displayAirplaneModeMirroringUserEducationAlert;
-+ (void)displayAlertFailedRemoteAirplaneMode;
++ (void)displayAirplaneModeMirroringUserEducationAlert:(_Bool)arg1;
++ (void)displayAlertFailedRemoteAirplaneMode:(_Bool)arg1;
 + (void)displayAlertWithTitle:(id)arg1 body:(id)arg2 icon:(id)arg3;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *externalQueue; // @synthesize externalQueue=_externalQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
-- (void).cxx_destruct;
+- (void)recordSoftwareUpdateSpaceFailure:(id)arg1 osBeingUpdatedTo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getLocalesInfo:(CDUnknownBlockType)arg1;
 - (void)getLegalDocuments:(CDUnknownBlockType)arg1;
 - (void)rebootDevice;
@@ -42,9 +43,13 @@
 - (void)getDiagnosticLogsInfo:(CDUnknownBlockType)arg1;
 - (_Bool)fileTransferInProgress:(id)arg1;
 - (void)cancelFileTransfersInProgress;
+- (void)cancelDiagnosticLogTranfer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)retrieveDiagnosticLogTransferProgress:(id)arg1 withProgress:(CDUnknownBlockType)arg2;
 - (void)getDiagnosticLogFileFromGizmo:(id)arg1 withResults:(CDUnknownBlockType)arg2;
 - (void)purgeUsageBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getUsage:(CDUnknownBlockType)arg1;
+- (void)setAirplaneModeSettings:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)retrieveAirplaneModeSettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enableAirplaneMode:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 - (id)connection;

@@ -11,7 +11,9 @@
     unsigned long long _templateType;
 }
 
++ (struct CGSize)preferredContentSize;
 @property(nonatomic) unsigned long long templateType; // @synthesize templateType=_templateType;
+- (struct CGSize)preferredContentSize;
 - (void)_presentationStyleValidationCheck;
 - (void)_applyChromelessToBar:(long long)arg1 navigationItem:(id)arg2;
 - (id)navigationItem;
@@ -22,6 +24,8 @@
 - (void)updateDirectionalLayoutMargins;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidLayoutSubviews;
 - (void)loadView;
 
 @end

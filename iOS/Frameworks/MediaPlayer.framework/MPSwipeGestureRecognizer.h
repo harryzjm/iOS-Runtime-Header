@@ -8,6 +8,7 @@
 
 @class UITouch;
 
+__attribute__((visibility("hidden")))
 @interface MPSwipeGestureRecognizer : UIGestureRecognizer
 {
     struct CGPoint _startLocation;
@@ -16,8 +17,8 @@
     long long _swipeDirection;
 }
 
-@property(readonly, nonatomic) long long swipeDirection; // @synthesize swipeDirection=_swipeDirection;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long swipeDirection; // @synthesize swipeDirection=_swipeDirection;
 - (void)dealloc;
 - (void)reset;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

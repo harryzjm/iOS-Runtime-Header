@@ -21,11 +21,9 @@
     NSString *_incidentID;
     unsigned long long _timestamp;
     unsigned long long _appUptime;
-    ASDBetaAppVersion *_appVersion;
     NSString *_bundleID;
     NSString *_pairedWatchModel;
     NSString *_pairedWatchOSVersion;
-    NSString *_itemID;
     NSString *_architecture;
     NSString *_carrier;
     NSString *_cellularNetworkType;
@@ -36,9 +34,12 @@
     NSString *_networkConnectionType;
     NSString *_osVersion;
     NSString *_timeZone;
+    ASDBetaAppVersion *_appVersion;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy) ASDBetaAppVersion *appVersion; // @synthesize appVersion=_appVersion;
 @property(copy) NSString *timeZone; // @synthesize timeZone=_timeZone;
 @property unsigned int screenWidth; // @synthesize screenWidth=_screenWidth;
 @property unsigned int screenHeight; // @synthesize screenHeight=_screenHeight;
@@ -52,18 +53,15 @@
 @property(copy) NSString *carrier; // @synthesize carrier=_carrier;
 @property unsigned int batteryPercentage; // @synthesize batteryPercentage=_batteryPercentage;
 @property(copy) NSString *architecture; // @synthesize architecture=_architecture;
-@property(copy) NSString *itemID; // @synthesize itemID=_itemID;
 @property(copy) NSString *pairedWatchOSVersion; // @synthesize pairedWatchOSVersion=_pairedWatchOSVersion;
 @property(copy) NSString *pairedWatchModel; // @synthesize pairedWatchModel=_pairedWatchModel;
 @property(copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property(copy) ASDBetaAppVersion *appVersion; // @synthesize appVersion=_appVersion;
 @property unsigned long long appUptime; // @synthesize appUptime=_appUptime;
 @property unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property(copy) NSString *incidentID; // @synthesize incidentID=_incidentID;
 @property(copy) NSArray *imagesData; // @synthesize imagesData=_imagesData;
 @property(copy) NSString *email; // @synthesize email=_email;
 @property(copy) NSString *comments; // @synthesize comments=_comments;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

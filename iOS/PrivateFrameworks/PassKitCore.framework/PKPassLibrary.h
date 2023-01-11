@@ -9,7 +9,7 @@
 #import <PassKitCore/PKPassLibraryExportedInterface-Protocol.h>
 #import <PassKitCore/PKXPCServiceDelegate-Protocol.h>
 
-@class NSHashTable, NSString, PKXPCService;
+@class NSArray, NSHashTable, NSString, PKXPCService;
 @protocol NSObject, OS_dispatch_queue, PKPassLibraryDelegate;
 
 @interface PKPassLibrary : NSObject <PKXPCServiceDelegate, PKPassLibraryExportedInterface>
@@ -19,7 +19,7 @@
     id <NSObject> _remoteLibraryObserver;
     unsigned long long _interfaceType;
     NSHashTable *_delegates;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
+    struct os_unfair_lock_s _delegatesLock;
     NSObject<OS_dispatch_queue> *_asynchronousImageQueue;
     id <PKPassLibraryDelegate> _delegate;
 }
@@ -31,10 +31,11 @@
 + (_Bool)isSuppressingAutomaticPassPresentation;
 + (void)endAutomaticPassPresentationSuppressionWithRequestToken:(unsigned long long)arg1;
 + (unsigned long long)requestAutomaticPassPresentationSuppressionWithResponseHandler:(CDUnknownBlockType)arg1;
++ (_Bool)isSecureElementPassActivationAvailable;
 + (_Bool)isPaymentPassActivationAvailable;
 + (_Bool)isPassLibraryAvailable;
-@property(nonatomic) __weak id <PKPassLibraryDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPassLibraryDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_hasInterfaceOfType:(unsigned long long)arg1;
 - (id)passesPendingActivation;
 - (void)_applyDataAccessorToObject:(id)arg1;
@@ -43,8 +44,9 @@
 - (void)recomputeRelevantPassesWithSearchMode:(long long)arg1;
 - (void)_applyDataAccessorToObjects:(id)arg1;
 - (void)_getPassesAndCatalogOfPassTypes:(unsigned long long)arg1 synchronously:(_Bool)arg2 limitResults:(_Bool)arg3 withRetries:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
-- (id)_passesOfType:(unsigned long long)arg1 withRetries:(unsigned long long)arg2;
-- (id)_passesWithRetries:(unsigned long long)arg1;
+- (id)_copyPassesOfStyles:(unsigned long long)arg1 withRetries:(unsigned long long)arg2;
+- (id)_copyPassesOfType:(unsigned long long)arg1 withRetries:(unsigned long long)arg2;
+- (id)_copyPassesWithRetries:(unsigned long long)arg1;
 - (void)_postLibraryChangeWithUserInfo:(id)arg1;
 - (void)contactlessInterfaceDidDismissFromSource:(long long)arg1;
 - (void)contactlessInterfaceDidPresentFromSource:(long long)arg1;
@@ -55,22 +57,24 @@
 - (id)diffForPassUpdateUserNotificationWithIdentifier:(id)arg1;
 - (void)noteAccountDeleted;
 - (void)noteAccountChanged;
-- (void)logDelayExitReasons;
 - (void)shuffleGroups:(int)arg1;
+- (_Bool)resetApplePayWithDiagnosticReason:(id)arg1;
+- (void)resetApplePayWithDiagnosticReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)estimatedTimeToResetApplePay;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(id)arg2;
 - (void)removePassesWithUniqueIDs:(id)arg1 diagnosticReason:(id)arg2;
 - (void)removePassWithUniqueID:(id)arg1 diagnosticReason:(id)arg2;
-- (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)spotlightReindexPassesWithUniqueIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)spotlightReindexAllPassesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)spotlightStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)spotlightResetWithCompletion:(CDUnknownBlockType)arg1;
+- (void)spotlightReindexContentWithIdentifiers:(id)arg1 acknowledgement:(CDUnknownBlockType)arg2;
+- (void)spotlightReindexAllContentWithAcknowledgement:(CDUnknownBlockType)arg1;
 - (void)forceImmediateRevocationCheck;
 - (void)introduceDatabaseIntegrityProblem;
 - (void)removeAllScheduledActivities;
-- (void)nukeDatabaseAndExit;
 - (void)pendingUserNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)issueWalletUserNotificationWithTitle:(id)arg1 message:(id)arg2 forPassUniqueIdentifier:(id)arg3 customActionRoute:(id)arg4;
-- (void)notifyPassUsed:(id)arg1 fromSource:(long long)arg2;
+- (void)notifyPassUsedWithIdentifier:(id)arg1 fromSource:(long long)arg2;
 - (void)sendUserEditedCatalog:(id)arg1;
 - (_Bool)migrateData;
 - (id)_remoteLibrary;
@@ -79,6 +83,10 @@
 - (long long)_currentNotificationCountForIdentifier:(id)arg1;
 - (void)transitMessageDidDisplay:(id)arg1;
 - (void)transitMessageForRouteInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setBackupMetadata:(id)arg1;
+- (id)backupMetadata;
+- (void)pushProvisioningNoncesWithCredentialCount:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)supportsSearchForPassUniqueID:(id)arg1;
 - (_Bool)supportsDisbursements;
 - (id)_defaultPaymentPassForPaymentRequest:(id)arg1;
 - (void)supportedTransitPartnersForDigitalIssuance:(CDUnknownBlockType)arg1;
@@ -98,9 +106,13 @@
 - (void)_fetchImageSetContainerForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4 usingSynchronousProxy:(_Bool)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (void)fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (id)imageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4;
+- (id)cachedImageSetForUniqueID:(id)arg1 type:(long long)arg2 withDisplayProfile:(id)arg3 displayTraits:(id)arg4;
 - (void)_fetchContentForUniqueID:(id)arg1 usingSynchronousProxy:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)fetchContentForUniqueID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)contentForUniqueID:(id)arg1;
+- (id)passForProvisioningCredentialHash:(id)arg1;
+- (_Bool)canAddSecureElementPassWithConfiguration:(id)arg1;
+- (void)signData:(id)arg1 withSecureElementPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)postUpgradedPassNotificationForMarket:(id)arg1 passUniqueID:(id)arg2;
 - (void)checkForTransitNotification;
 - (void)rescheduleCommutePlanRenewalReminderForPassWithUniqueID:(id)arg1;
@@ -111,15 +123,18 @@
 - (void)removePass:(id)arg1;
 - (void)requestPersonalizationOfPassWithUniqueIdentifier:(id)arg1 contact:(id)arg2 personalizationToken:(id)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)requestUpdateOfObjectWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_activatePaymentPass:(id)arg1 withActivationCode:(id)arg2 activationData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_activateSecureElementPass:(id)arg1 withActivationCode:(id)arg2 activationData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)activateSecureElementPass:(id)arg1 withActivationData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activatePaymentPass:(id)arg1 withActivationData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activatePaymentPass:(id)arg1 withActivationCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentContactlessInterfaceForPassWithUniqueIdentifier:(id)arg1 fromSource:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentContactlessInterfaceForDefaultPassFromSource:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)hasPassesWithSupportedNetworks:(id)arg1 merchantCapabilities:(unsigned long long)arg2 webDomain:(id)arg3;
+- (_Bool)hasPassesWithSupportedNetworks:(id)arg1 merchantCapabilities:(unsigned long long)arg2 issuerCountryCodes:(id)arg3 webDomain:(id)arg4;
 - (void)canPresentPaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentWalletWithRelevantPassUniqueID:(id)arg1;
+- (void)presentSecureElementPass:(id)arg1;
 - (void)presentPaymentPass:(id)arg1;
+- (void)paymentPassWithAssociatedAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)paymentSetupFeaturesForConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentPaymentSetupRequest:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)openPaymentSetupForMerchantIdentifier:(id)arg1 domain:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -127,6 +142,7 @@
 - (void)openPaymentSetup;
 - (void)addPassesWithData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)addPasses:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)passLocalizedStringForKey:(id)arg1 uniqueID:(id)arg2;
 - (id)dataForBundleResources:(id)arg1 objectUniqueIdentifier:(id)arg2;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2 objectUniqueIdentifier:(id)arg3;
 - (id)archiveForObjectWithUniqueID:(id)arg1;
@@ -147,19 +163,24 @@
 - (_Bool)isPassbookVisible;
 - (_Bool)isRemovingPassesOfType:(unsigned long long)arg1;
 - (_Bool)canAddFelicaPass;
+@property(readonly, nonatomic, getter=isSecureElementPassActivationAvailable) _Bool secureElementPassActivationAvailable;
+- (_Bool)canAddSecureElementPassWithPrimaryAccountIdentifier:(id)arg1;
 - (_Bool)canAddPaymentPassWithPrimaryAccountIdentifier:(id)arg1;
 - (_Bool)canAddPassOfType:(unsigned long long)arg1;
 - (unsigned long long)countPassesOfType:(unsigned long long)arg1;
+- (unsigned long long)countOfPasses;
 - (id)peerPaymentPassUniqueID;
 - (id)paymentPassesWithLocallyStoredValue;
 - (_Bool)hasPassesOfType:(unsigned long long)arg1;
+@property(readonly, copy, nonatomic) NSArray *remoteSecureElementPasses;
 - (id)remotePaymentPasses;
 - (id)passWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
-- (void)getPassUniqueIdentifiersForFieldProperties:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getMetadataForFieldWithProperties:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getPassesWithUniqueIdentifiers:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)passWithDPANIdentifier:(id)arg1;
 - (id)passWithFPANIdentifier:(id)arg1;
 - (id)passWithUniqueID:(id)arg1;
+- (id)passesOfStyles:(unsigned long long)arg1;
 - (id)passesOfType:(unsigned long long)arg1;
 - (id)passes;
 - (void)remoteService:(id)arg1 didInterruptConnection:(id)arg2;

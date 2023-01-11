@@ -6,16 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-@class UILabel;
-
 @interface PKPaletteOptionCell : UIView
 {
-    UILabel *_textLabel;
 }
-
-@property(retain, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
-- (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

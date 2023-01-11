@@ -17,22 +17,28 @@
     NSMutableArray *_introducersByCategorys;
     NSMutableArray *_keyViewMappings;
     NSMutableArray *_modelToCategorys;
+    NSMutableArray *_piggybackViews;
     NSMutableArray *_redactions;
+    NSMutableArray *_userControllableViews;
     CDStruct_0e29c504 _has;
 }
 
++ (Class)piggybackViewsType;
++ (Class)userControllableViewsType;
 + (Class)keyViewMappingType;
 + (Class)redactionsType;
 + (Class)introducersByCategoryType;
 + (Class)categoriesByViewType;
 + (Class)modelToCategoryType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *piggybackViews; // @synthesize piggybackViews=_piggybackViews;
+@property(retain, nonatomic) NSMutableArray *userControllableViews; // @synthesize userControllableViews=_userControllableViews;
 @property(retain, nonatomic) NSMutableArray *keyViewMappings; // @synthesize keyViewMappings=_keyViewMappings;
 @property(retain, nonatomic) NSMutableArray *redactions; // @synthesize redactions=_redactions;
 @property(retain, nonatomic) NSMutableArray *introducersByCategorys; // @synthesize introducersByCategorys=_introducersByCategorys;
 @property(retain, nonatomic) NSMutableArray *categoriesByViews; // @synthesize categoriesByViews=_categoriesByViews;
 @property(retain, nonatomic) NSMutableArray *modelToCategorys; // @synthesize modelToCategorys=_modelToCategorys;
 @property(nonatomic) unsigned long long policyVersion; // @synthesize policyVersion=_policyVersion;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -42,6 +48,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)piggybackViewsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)piggybackViewsCount;
+- (void)addPiggybackViews:(id)arg1;
+- (void)clearPiggybackViews;
+- (id)userControllableViewsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)userControllableViewsCount;
+- (void)addUserControllableViews:(id)arg1;
+- (void)clearUserControllableViews;
 - (id)keyViewMappingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)keyViewMappingsCount;
 - (void)addKeyViewMapping:(id)arg1;

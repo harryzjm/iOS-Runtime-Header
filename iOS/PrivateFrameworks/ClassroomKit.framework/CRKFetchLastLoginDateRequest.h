@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskRequest.h"
+#import <DeviceManagement/CATTaskRequest.h>
 
 @class NSSet;
 
@@ -15,8 +15,8 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
-@property(copy, nonatomic) NSSet *appleIDs; // @synthesize appleIDs=_appleIDs;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *appleIDs; // @synthesize appleIDs=_appleIDs;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

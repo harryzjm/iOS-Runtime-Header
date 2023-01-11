@@ -6,27 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, NSUUID, RBSProcessIdentity;
 
-__attribute__((visibility("hidden")))
 @interface RBLaunchdProperties : NSObject
 {
     long long _type;
+    NSString *_path;
+    int _hostPid;
     _Bool _multiInstance;
     _Bool _systemShell;
     _Bool _variableEUID;
     unsigned char _overrideManageFlags;
-    _Bool _doesOverrideManagement;
-    int _hostPid;
-    int _requestedJetsamPriority;
-    NSString *_path;
     NSString *_bundleID;
     NSString *_jobLabel;
     NSString *_executablePath;
+    int _requestedJetsamPriority;
+    _Bool _doesOverrideManagement;
     NSString *_underlyingAssertion;
+    RBSProcessIdentity *_specifiedIdentity;
+    NSString *_beforeTranslocationBundlePath;
+    NSString *_homeDirectory;
+    NSString *_tmpDirectory;
+    NSUUID *_uuid;
 }
 
 + (id)propertiesForPid:(int)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(readonly, copy, nonatomic) NSString *tmpDirectory; // @synthesize tmpDirectory=_tmpDirectory;
+@property(readonly, copy, nonatomic) NSString *homeDirectory; // @synthesize homeDirectory=_homeDirectory;
+@property(readonly, nonatomic) NSString *beforeTranslocationBundlePath; // @synthesize beforeTranslocationBundlePath=_beforeTranslocationBundlePath;
+@property(readonly, copy, nonatomic) RBSProcessIdentity *specifiedIdentity; // @synthesize specifiedIdentity=_specifiedIdentity;
 @property(readonly, nonatomic) NSString *underlyingAssertion; // @synthesize underlyingAssertion=_underlyingAssertion;
 @property(readonly, nonatomic) _Bool doesOverrideManagement; // @synthesize doesOverrideManagement=_doesOverrideManagement;
 @property(readonly, nonatomic) int requestedJetsamPriority; // @synthesize requestedJetsamPriority=_requestedJetsamPriority;
@@ -39,9 +49,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isMultiInstance) _Bool multiInstance; // @synthesize multiInstance=_multiInstance;
 @property(readonly, nonatomic) int hostPid; // @synthesize hostPid=_hostPid;
 @property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
-- (void).cxx_destruct;
-@property(readonly, nonatomic, getter=isDaemon) _Bool daemon;
-@property(readonly, nonatomic, getter=isXPCService) _Bool XPCService;
 - (id)_initDaemonWithProperties:(id)arg1 path:(id)arg2;
 - (void)_parseDaemonProperties;
 - (void)_parseAdditionalProperties:(id)arg1;
@@ -49,6 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)_parseLASSProperties:(id)arg1;
 - (id)_initAppWithProperties:(id)arg1;
 - (id)_initXPCServiceWithProperties:(id)arg1 path:(id)arg2 HostPid:(int)arg3;
+@property(readonly, nonatomic, getter=isDaemon) _Bool daemon;
+@property(readonly, nonatomic, getter=isXPCService) _Bool XPCService;
 
 @end
 

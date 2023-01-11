@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer, CLKDevice, NSString, NTKCurvedColoringLabel;
+@class CAShapeLayer, CLKDevice, NSMutableDictionary, NSString, NTKCurvedColoringLabel;
 
 @interface NTKSiderealAuxiliaryDialLabels : UIView
 {
@@ -17,18 +17,23 @@
     UIView *_bottomLabelContainerView;
     CAShapeLayer *_bottomLabelMask;
     NTKCurvedColoringLabel *_bottomLabel;
+    NSMutableDictionary *_fontSizeCache;
     NSString *_topText;
     NSString *_bottomText;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *bottomText; // @synthesize bottomText=_bottomText;
 @property(retain, nonatomic) NSString *topText; // @synthesize topText=_topText;
-- (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)_curvedLabel;
 - (void)didFinishTransition;
 - (void)applyTransitionFraction:(double)arg1;
 - (void)willStartTransition;
-- (void)_layoutLabel:(id)arg1 text:(id)arg2 monospaced:(_Bool)arg3 offset:(struct CGPoint)arg4 adjustsFontSize:(_Bool)arg5;
+- (void)_setFontSize:(double)arg1 monospaced:(_Bool)arg2 offset:(struct CGPoint)arg3 onLabel:(id)arg4;
+- (void)_layoutLabel:(id)arg1 text:(id)arg2 monospaced:(_Bool)arg3 offset:(struct CGPoint)arg4 useCache:(_Bool)arg5;
+- (void)_layoutBottomLabel;
+- (void)_layoutTopLabel;
 - (void)setup;
 - (id)initWithFrame:(struct CGRect)arg1 device:(id)arg2;
 

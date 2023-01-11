@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)new;
-@property(readonly, nonatomic) const struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) const struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
 - (id)debugDescription;
 - (id)description;
 - (void)_reloadProperties;
@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *account;
 - (id)_metadataWithError:(id *)arg1;
 @property(readonly, nonatomic) struct __SecAccessControl *accessControlRef;
+@property(readonly, nonatomic) _Bool useDataProtectionKeychain;
+- (void)migrateToKeyBagFromLegacy;
 - (_Bool)save:(id *)arg1;
 - (void)reload;
 - (void)dealloc;

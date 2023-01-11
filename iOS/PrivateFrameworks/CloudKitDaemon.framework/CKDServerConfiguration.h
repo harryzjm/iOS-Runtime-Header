@@ -10,7 +10,6 @@
 
 @class NSDate, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDServerConfiguration : NSObject <CKPropertyCoding>
 {
     NSDate *_expiry;
@@ -18,13 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_allowedAppVersionsCache;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *allowedAppVersionsCache; // @synthesize allowedAppVersionsCache=_allowedAppVersionsCache;
 @property(retain, nonatomic) NSMutableDictionary *values; // @synthesize values=_values;
 @property(retain, nonatomic) NSDate *expiry; // @synthesize expiry=_expiry;
-- (void).cxx_destruct;
 - (id)dictionaryPropertyEncoding;
 - (id)initWithPropertyDictionary:(id)arg1;
 - (id)iCloudHostnames;
+- (id)chunkProfileConfigurationDefaultProfilePolicy:(id)arg1;
+- (id)chunkProfileConfigurationFileExtensionToProfileMap:(id)arg1;
+- (id)chunkProfileConfigurationVersion:(id)arg1;
 - (unsigned long long)c2AllOperationGroupMetricsReportFrequencyBase:(id)arg1;
 - (unsigned long long)c2AllOperationGroupMetricsReportFrequency:(id)arg1;
 - (unsigned long long)c2AllOperationMetricsReportFrequencyBase:(id)arg1;
@@ -36,15 +38,16 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)c2NetworkMetricsReportFrequencyBase:(id)arg1;
 - (unsigned long long)c2NetworkMetricsReportFrequency:(id)arg1;
 - (_Bool)allowExpiredDNSBehavior:(id)arg1;
-- (double)publicIdentitiesExpirationTimeoutForContainer:(id)arg1;
-- (unsigned long long)maxBatchSizeForContainer:(id)arg1;
+- (double)publicIdentitiesExpirationTimeout:(id)arg1;
+- (unsigned long long)maxBatchSize:(id)arg1;
 - (id)flowControlMaximumThrottleTime:(id)arg1;
-- (id)flowControlRegenerationForContainer:(id)arg1;
-- (id)flowControlBudgetForContainer:(id)arg1;
-- (id)transcodeServerPublicKeyURLsForContainer:(id)arg1;
-- (long long)tokenRegisterDaysForContainer:(id)arg1;
-- (_Bool)applicationWithBundleID:(id)arg1 canSyncUsingVersion:(id)arg2 forContainer:(id)arg3;
-- (id)valueForKeyPath:(id)arg1 forContainer:(id)arg2;
+- (id)flowControlRegeneration:(id)arg1;
+- (id)flowControlBudget:(id)arg1;
+- (id)transcodeServerPublicKeyURLs:(id)arg1;
+- (long long)tokenRegisterDays:(id)arg1;
+- (_Bool)applicationWithBundleID:(id)arg1 canSyncUsingVersion:(id)arg2 forContainerID:(id)arg3;
+- (id)valueForKeyPath:(id)arg1 forContainerID:(id)arg2;
+- (id)valuesForContainerID:(id)arg1;
 - (_Bool)isExpired;
 @property(readonly, copy) NSString *description;
 - (id)initWithValues:(id)arg1;

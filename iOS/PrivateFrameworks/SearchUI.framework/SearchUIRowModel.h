@@ -12,6 +12,9 @@
 {
     _Bool _isTappable;
     _Bool _isDraggable;
+    _Bool _supportsCustomUserReportRequestAfforance;
+    _Bool _hasLeadingImage;
+    _Bool _prefersNoSeparatorAbove;
     NSArray *_results;
     SFSearchResult *_identifyingResult;
     SFCardSection *_cardSection;
@@ -19,7 +22,6 @@
     NSArray *_contactIdentifiers;
     Class _cellViewClass;
     SFCard *_nextCard;
-    double _leadingSeparatorImageInset;
     unsigned long long _queryId;
     NSString *_dragTitle;
     NSString *_dragSubtitle;
@@ -28,6 +30,10 @@
     NSString *_dragAppBundleID;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool prefersNoSeparatorAbove; // @synthesize prefersNoSeparatorAbove=_prefersNoSeparatorAbove;
+@property(readonly, nonatomic) _Bool hasLeadingImage; // @synthesize hasLeadingImage=_hasLeadingImage;
+@property(readonly, nonatomic) _Bool supportsCustomUserReportRequestAfforance; // @synthesize supportsCustomUserReportRequestAfforance=_supportsCustomUserReportRequestAfforance;
 @property(readonly, nonatomic) NSString *dragAppBundleID; // @synthesize dragAppBundleID=_dragAppBundleID;
 @property(readonly, nonatomic) NSURL *dragURL; // @synthesize dragURL=_dragURL;
 @property(readonly, nonatomic) NSString *dragText; // @synthesize dragText=_dragText;
@@ -35,7 +41,6 @@
 @property(readonly, nonatomic) NSString *dragTitle; // @synthesize dragTitle=_dragTitle;
 @property(readonly, nonatomic) _Bool isDraggable; // @synthesize isDraggable=_isDraggable;
 @property(readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
-@property(readonly, nonatomic) double leadingSeparatorImageInset; // @synthesize leadingSeparatorImageInset=_leadingSeparatorImageInset;
 @property(readonly, nonatomic) _Bool isTappable; // @synthesize isTappable=_isTappable;
 @property(readonly, nonatomic) SFCard *nextCard; // @synthesize nextCard=_nextCard;
 @property(readonly, nonatomic) Class cellViewClass; // @synthesize cellViewClass=_cellViewClass;
@@ -44,9 +49,10 @@
 @property(retain, nonatomic) SFCardSection *cardSection; // @synthesize cardSection=_cardSection;
 @property(retain, nonatomic) SFSearchResult *identifyingResult; // @synthesize identifyingResult=_identifyingResult;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *accessibilityIdentifier;
 @property(readonly, nonatomic) _Bool isQuerySuggestion;
 @property(readonly, nonatomic) NSString *reuseIdentifier;
+@property(readonly, nonatomic) _Bool fillsBackgroundWithContent;
 @property(readonly, nonatomic) int separatorStyle;
 - (id)initWithResults:(id)arg1 cardSection:(id)arg2 queryId:(unsigned long long)arg3;
 - (id)initWithResults:(id)arg1;

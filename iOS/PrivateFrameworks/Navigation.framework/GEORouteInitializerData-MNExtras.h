@@ -7,8 +7,11 @@
 #import <GeoServices/GEORouteInitializerData.h>
 
 @interface GEORouteInitializerData (MNExtras)
-- (id)_allRouteInfosWithTypes:(id)arg1;
+- (id)_allRouteInfosWithTypes:(id)arg1 maxCount:(unsigned long long)arg2;
 - (id)nonRecommendedRoutes;
+- (id)allETAUAlternateRouteInfos;
+- (id)mainRouteInfo;
+- (id)routeInfosWithMaxCount:(unsigned long long)arg1;
 - (id)allRouteInfos;
 - (id)allRoutes;
 @end

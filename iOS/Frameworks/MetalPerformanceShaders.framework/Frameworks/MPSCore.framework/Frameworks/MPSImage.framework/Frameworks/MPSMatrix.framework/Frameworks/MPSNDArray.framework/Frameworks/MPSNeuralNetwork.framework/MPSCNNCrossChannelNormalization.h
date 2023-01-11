@@ -12,7 +12,7 @@
     float _delta;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float delta; // @synthesize delta=_delta;
 @property(nonatomic) float beta; // @synthesize beta=_beta;
 @property(nonatomic) float alpha; // @synthesize alpha=_alpha;
@@ -21,9 +21,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 destinationImages:(struct NSArray *)arg3;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationImages:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationImage:(id)arg3;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 kernelSize:(unsigned long long)arg2;

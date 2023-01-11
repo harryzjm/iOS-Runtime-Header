@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     CAEmitterLayer *_dustDrawEmitterLayer;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool blendingEnabled; // @synthesize blendingEnabled=_blendingEnabled;
 @property(retain, nonatomic) CAEmitterLayer *dustDrawEmitterLayer; // @synthesize dustDrawEmitterLayer=_dustDrawEmitterLayer;
 @property(retain, nonatomic) NSArray *dustEmitterLayers; // @synthesize dustEmitterLayers=_dustEmitterLayers;
@@ -27,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CAEmitterLayer *textDrawEmitterLayer; // @synthesize textDrawEmitterLayer=_textDrawEmitterLayer;
 @property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 @property(nonatomic) __weak CKTextBalloonView *balloonView; // @synthesize balloonView=_balloonView;
-- (void).cxx_destruct;
 - (void)setSuspended:(_Bool)arg1;
 - (void)setPaused:(_Bool)arg1;
 - (void)cullSubviewsWithVisibleBounds:(struct CGRect)arg1;
@@ -35,9 +35,13 @@ __attribute__((visibility("hidden")))
 - (void)detachFromBalloonView;
 - (void)attachToBalloonView:(id)arg1;
 - (void)updateDustCellColor;
+- (void)endEmittersForTouchesCancelled:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)endEmittersForTouchesEnded:(id)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)moveEmittersForTouchesMoved:(id)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)moveEmittersForTouchesBegan:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)moveEmittersWithTouches:(id)arg1;
 - (void)endTouches;

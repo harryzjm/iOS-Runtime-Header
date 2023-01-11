@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, HKUnit, NSArray, NSDate, NSHashTable, _HKCurrentActivitySummaryQuery;
+#import <NanoTimeKitCompanion/FIFitnessAppsStateObserverDelegate-Protocol.h>
+
+@class FIFitnessAppsStateObserver, HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, HKUnit, NSArray, NSDate, NSHashTable, NSString, _HKCurrentActivitySummaryQuery;
 @protocol OS_dispatch_queue;
 
-@interface NTKWellnessTimelineModel : NSObject
+@interface NTKWellnessTimelineModel : NSObject <FIFitnessAppsStateObserverDelegate>
 {
     HKHealthStore *_healthStore;
     HKUnit *_kcalUnit;
@@ -20,16 +22,20 @@
     HKActivitySummary *_queue_currentActivitySummary;
     HKCurrentActivityCacheQuery *_queue_currentActivityCacheQuery;
     NSArray *_queue_currentActiveEnergyChartData;
+    NSArray *_queue_currentMoveTimeChartData;
     NSArray *_queue_currentExerciseChartData;
     NSArray *_queue_currentStandChartData;
     NSObject<OS_dispatch_queue> *_subscriber_queue;
     NSHashTable *_subscribers;
     NSDate *_currentDate;
     _Bool _queue_ignoreLoadingSummary;
+    FIFitnessAppsStateObserver *_fitnessAppsStateObserver;
+    _Bool _areFitnessAppsRestricted;
 }
 
 + (id)sharedModel;
 - (void).cxx_destruct;
+- (void)fitnessAppsStateObserver:(id)arg1 stateDidChange:(long long)arg2;
 - (void)_broadcastCurrentEntryUpdate:(id)arg1 toSubscriber:(id)arg2;
 - (void)_broadcastCurrentEntryUpdateToSubscribers:(id)arg1;
 - (void)_handleTimeChange;
@@ -52,6 +58,12 @@
 - (void)addSubscriber:(id)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

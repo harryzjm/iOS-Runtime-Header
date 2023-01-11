@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
-@class NSString, PKPaymentCredential, PKPaymentCredentialMetadataTableController, PKPaymentSetupProduct, UIImage;
+@class NSString, PKAddPaymentPassRequest, PKPaymentCredential, PKPaymentCredentialMetadataTableController, PKPaymentSetupProduct, UIImage;
 
 @interface PKPaymentCredentialProvisioningViewController <PKViewControllerPreflightable, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentSetupPresentationProtocol>
 {
@@ -21,13 +21,15 @@
     PKPaymentSetupProduct *_setupProduct;
     _Bool _allowsManualEntry;
     _Bool _previouslyAcceptedTerms;
-    _Bool _snapshotNeedsCorners;
     UIImage *_passSnapshot;
+    _Bool _passSnapshotNeedsCorners;
+    struct CGSize _passSnapshotOverrideSize;
+    PKAddPaymentPassRequest *_addRequest;
     _Bool _shouldAutoProvision;
 }
 
-@property(nonatomic) _Bool shouldAutoProvision; // @synthesize shouldAutoProvision=_shouldAutoProvision;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldAutoProvision; // @synthesize shouldAutoProvision=_shouldAutoProvision;
 - (id)onPresentationRemoveViewControllersAfterMarker;
 - (void)paymentPassUpdatedOnCredential:(id)arg1;
 - (void)_cleanupTransferredCredentialFromSourceDeviceWithCompletion:(CDUnknownBlockType)arg1;
@@ -44,10 +46,12 @@
 - (void)_performProvisionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performTermsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performEligibilityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_fetchAddRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performRequirementsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_preflightCredentialFieldsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
+- (id)newPaymentProvisioningRequest;
 - (id)newPaymentEligibilityRequest;
 - (id)newPaymentRequirementsRequest;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -56,9 +60,9 @@
 - (void)_terminateSetupFlow;
 - (void)_skipCard;
 - (void)addDifferentCard:(id)arg1;
+- (void)setPassSnapshot:(id)arg1 needsCorners:(_Bool)arg2;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
-- (void)setPassSnapshot:(id)arg1 needsCorners:(_Bool)arg2;
 - (void)dealloc;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 paymentCredential:(id)arg4 setupProduct:(id)arg5 allowsManualEntry:(_Bool)arg6 previouslyAcceptedTerms:(_Bool)arg7;
 

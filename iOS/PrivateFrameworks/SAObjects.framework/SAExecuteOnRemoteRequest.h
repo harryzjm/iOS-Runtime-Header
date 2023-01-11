@@ -12,7 +12,9 @@
 
 + (id)executeOnRemoteRequestWithDictionary:(id)arg1 context:(id)arg2;
 + (id)executeOnRemoteRequest;
+- (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
+@property(nonatomic) _Bool useGuaranteedDelivery;
 @property(copy, nonatomic) NSData *serializedCommand;
 @property(nonatomic) _Bool requiresResponseFromRemote;
 @property(retain, nonatomic) SARemoteDevice *remoteDevice;

@@ -12,6 +12,7 @@
 @interface PHMediaResourceRequest <PHAssetResourceRequestDelegate>
 {
     _Bool _networkAccessAllowed;
+    _Bool _synchronous;
     PHAssetResourceRequest *_internalRequest;
     NSMutableData *_compositeData;
     PHMediaResourceResult *_dataResult;
@@ -21,12 +22,12 @@
     PHAssetResource *_resource;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool wantsURLOnly; // @synthesize wantsURLOnly=_wantsURLOnly;
 @property(readonly, nonatomic) PHAssetResource *resource; // @synthesize resource=_resource;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property(nonatomic) __weak id <PHMediaRequestDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)assetResourceRequestDidFinish:(id)arg1;
+- (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
 - (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
 - (void)_finishWithError:(id)arg1;
 - (void)_receiveAssetResourceDataPart:(id)arg1;
@@ -37,7 +38,7 @@
 - (void)startRequest;
 - (_Bool)isSynchronous;
 @property(readonly, nonatomic) long long resourceType;
-- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 assetResource:(id)arg6 networkAccessAllowed:(_Bool)arg7 wantsURLOnly:(_Bool)arg8 delegate:(id)arg9;
+- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 assetResource:(id)arg6 networkAccessAllowed:(_Bool)arg7 wantsURLOnly:(_Bool)arg8 synchronous:(_Bool)arg9 delegate:(id)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

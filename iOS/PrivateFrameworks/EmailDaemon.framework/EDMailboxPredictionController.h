@@ -9,12 +9,13 @@
 #import <EmailDaemon/EDMessageChangeHookResponder-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
-@class EDCachingMailboxPredictor, EDMailboxPersistence, EDPersistenceHookRegistry, NSString;
+@class EDCachingMailboxPredictor, EDMailboxPersistence, EDMessagePersistence, EDPersistenceHookRegistry, NSString;
 @protocol EDMailboxPredictionQueryAdapter, EMUserProfileProvider, OS_dispatch_queue;
 
 @interface EDMailboxPredictionController : NSObject <EDMessageChangeHookResponder, EFLoggable>
 {
     id <EDMailboxPredictionQueryAdapter> _queryAdapter;
+    EDMessagePersistence *_messagePersistence;
     NSObject<OS_dispatch_queue> *_processingQueue;
     EDCachingMailboxPredictor *_cachingPredictor;
     EDMailboxPersistence *_mailboxPersistence;
@@ -23,19 +24,21 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <EMUserProfileProvider> userProfileProvider; // @synthesize userProfileProvider=_userProfileProvider;
 @property(readonly, nonatomic) EDPersistenceHookRegistry *hookRegistry; // @synthesize hookRegistry=_hookRegistry;
 @property(readonly, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
 @property(readonly, nonatomic) EDCachingMailboxPredictor *cachingPredictor; // @synthesize cachingPredictor=_cachingPredictor;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property(readonly, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property(readonly, nonatomic) id <EDMailboxPredictionQueryAdapter> queryAdapter; // @synthesize queryAdapter=_queryAdapter;
-- (void).cxx_destruct;
 - (id)_createPredictor;
 - (void)_invalidateCacheForAddedMessage:(id)arg1;
+- (id)_accountsForMessages:(id)arg1;
 - (id)_processPredictionForMessages:(id)arg1;
-- (void)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)persistenceWillAddMessage:(id)arg1 fromExistingMessage:(_Bool)arg2;
-- (void)dealloc;
+- (void)_predictMailboxForMovingMessages:(id)arg1 cancelationToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)predictMailboxForMovingObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)persistenceWillAddNewMessage:(id)arg1 fromExistingMessage:(_Bool)arg2;
 - (id)initWithMessagePersistence:(id)arg1 mailboxPersistence:(id)arg2 hookRegistry:(id)arg3 userProfileProvider:(id)arg4;
 
 // Remaining properties

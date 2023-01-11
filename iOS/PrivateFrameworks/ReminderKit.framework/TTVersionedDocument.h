@@ -10,7 +10,7 @@
 {
     struct Document {
         CDUnknownFunctionPointerType *;
-        basic_string_a1f69cfb;
+        basic_string_7c0a1c0b;
         unsigned int [1];
         int;
         struct RepeatedPtrField<versioned_document::Version>;
@@ -22,7 +22,7 @@
 + (unsigned int)minimumSupportedVersion;
 + (unsigned int)serializationVersion;
 @property(nonatomic) struct Document *documentArchive; // @synthesize documentArchive=_documentArchive;
-- (void)saveToArchive:(Document_0e94f2f5 *)arg1;
+- (void)saveToArchive:(Document_22a49c75 *)arg1;
 - (id)serialize;
 - (unsigned int)maxDocumentVersion;
 - (unsigned long long)mergeWithVersionedDocument:(id)arg1;
@@ -31,10 +31,10 @@
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 @property(readonly, nonatomic) unsigned long long futureVersionCount;
 - (void)dealloc;
-- (void)loadDocumentArchive:(Document_0e94f2f5 *)arg1;
-- (void)loadArchive:(const Document_0e94f2f5 *)arg1;
+- (void)loadDocumentArchive:(Document_22a49c75 *)arg1;
+- (void)loadArchive:(const Document_22a49c75 *)arg1;
 - (void)loadData:(id)arg1;
-- (id)initWithArchive:(const Document_0e94f2f5 *)arg1;
+- (id)initWithArchive:(const Document_22a49c75 *)arg1;
 - (id)initWithData:(id)arg1;
 
 @end

@@ -21,11 +21,24 @@ __attribute__((visibility("hidden")))
     unsigned char _languageMode;
 }
 
++ (id)englishLocalizationAdditionForLanguage:(id)arg1;
++ (id)supportedEnglishLocalizationAdditions;
++ (id)transliterationLocalizationForLanguage:(id)arg1;
++ (id)supportedTransliterationLanguages;
++ (id)supportedCyrillicLanguages;
++ (id)supportedNonLatinLanguages;
++ (id)supportedLatinLanguages;
++ (id)supportedLocalizations;
++ (id)supportedAssetLanguages;
++ (id)supportedLanguages;
 + (id)languageWithIdentifier:(id)arg1;
 + (void)getCodesForLanguage:(id)arg1 languageCode:(char *)arg2 languageDialect:(char *)arg3 languageMode:(char *)arg4 orthographyIndex:(unsigned long long *)arg5 encoding:(unsigned int *)arg6;
 + (unsigned int)encodingForOrthographyIndex:(unsigned long long)arg1;
 + (unsigned long long)orthographyIndexForForOtherLanguage:(id)arg1;
 + (unsigned long long)orthographyIndexForLanguageCode:(unsigned char)arg1;
++ (id)textInputModeForLanguage:(id)arg1;
++ (id)languageModelFallbackLocalizationForLanguage:(id)arg1;
++ (id)languageModelLocalizationForLanguage:(id)arg1;
 + (id)fallbackLocalizationForLanguage:(id)arg1;
 + (id)localizationForLanguage:(id)arg1;
 + (id)localizationsForLanguage:(id)arg1;
@@ -34,14 +47,19 @@ __attribute__((visibility("hidden")))
 - (_Bool)isUkrainian;
 - (_Bool)isTurkish;
 - (_Bool)isThai;
+- (_Bool)isTelugu;
 - (_Bool)isSwedish;
 - (_Bool)isSpanish;
 - (_Bool)isRussian;
+- (_Bool)isRomanian;
+- (_Bool)isPunjabi;
 - (_Bool)isPortuguese;
 - (_Bool)isPolish;
+- (_Bool)isNynorsk;
 - (_Bool)isNorwegian;
 - (_Bool)isKorean;
 - (_Bool)isItalian;
+- (_Bool)isIrishGaelic;
 - (_Bool)isIndonesian;
 - (_Bool)isHungarian;
 - (_Bool)isHindi;
@@ -56,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isCzech;
 - (_Bool)isBulgarian;
 - (_Bool)isArabic;
+- (_Bool)isBicameral;
 - (const char *)accents;
 - (const char *)twoLetterWords;
 - (const char *)oneLetterWords;

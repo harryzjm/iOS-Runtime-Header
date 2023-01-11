@@ -13,7 +13,6 @@
 - (struct CGRect)annotationContainerVisibleRect:(MKAnnotationContainerView *)arg1;
 - (struct CGPoint)convertCoordinate:(struct CLLocationCoordinate2D)arg1 toPointToView:(UIView *)arg2;
 - (struct CLLocationCoordinate2D)convertPoint:(struct CGPoint)arg1 toCoordinateFromView:(UIView *)arg2;
-- (double)annotationContainerZoomScale:(MKAnnotationContainerView *)arg1;
 - (struct CGRect)visibleRectInView:(UIView *)arg1;
 - (struct CGRect)visibleCenteringRectInView:(UIView *)arg1;
 - (void)annotationContainerDidDropPins:(MKAnnotationContainerView *)arg1;

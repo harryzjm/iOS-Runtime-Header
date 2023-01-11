@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIButton, UILabel;
+@class CKStandardButton, NSString, UILabel;
 @protocol CKBusinessInfoViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,15 +16,15 @@ __attribute__((visibility("hidden")))
     NSString *_descriptionText;
     long long _layoutType;
     UILabel *_descriptionTextLabel;
-    UIButton *_infoButton;
+    CKStandardButton *_infoButton;
 }
 
-@property(retain, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKStandardButton *infoButton; // @synthesize infoButton=_infoButton;
 @property(retain, nonatomic) UILabel *descriptionTextLabel; // @synthesize descriptionTextLabel=_descriptionTextLabel;
 @property(nonatomic) long long layoutType; // @synthesize layoutType=_layoutType;
 @property(retain, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property(nonatomic) __weak id <CKBusinessInfoViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)infoButtonTapped:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

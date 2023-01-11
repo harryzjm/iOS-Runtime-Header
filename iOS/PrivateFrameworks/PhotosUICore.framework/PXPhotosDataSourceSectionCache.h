@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, PHFetchResult;
+@class NSArray, NSDictionary, PHFetchResult;
 
 @interface PXPhotosDataSourceSectionCache : NSObject
 {
     PHFetchResult *_collectionListFetchResult;
+    NSArray *_assetCollections;
     NSDictionary *_assetCollectionToSection;
     long long _estimatedPhotosCount;
     long long _estimatedVideosCount;
@@ -27,6 +28,7 @@
     long long _estimatedAssetCountWithEnrichmentStateComplete;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long estimatedAssetCountWithEnrichmentStateComplete; // @synthesize estimatedAssetCountWithEnrichmentStateComplete=_estimatedAssetCountWithEnrichmentStateComplete;
 @property(readonly, nonatomic) long long estimatedAssetCountWithEnrichmentStateAssetMetadataAndScenesProcessed; // @synthesize estimatedAssetCountWithEnrichmentStateAssetMetadataAndScenesProcessed=_estimatedAssetCountWithEnrichmentStateAssetMetadataAndScenesProcessed;
 @property(readonly, nonatomic) long long estimatedAssetCountWithEnrichmentStateAssetMetadataAndScore; // @synthesize estimatedAssetCountWithEnrichmentStateAssetMetadataAndScore=_estimatedAssetCountWithEnrichmentStateAssetMetadataAndScore;
@@ -41,8 +43,8 @@
 @property(readonly, nonatomic) long long estimatedVideosCount; // @synthesize estimatedVideosCount=_estimatedVideosCount;
 @property(readonly, nonatomic) long long estimatedPhotosCount; // @synthesize estimatedPhotosCount=_estimatedPhotosCount;
 @property(readonly, nonatomic) NSDictionary *assetCollectionToSection; // @synthesize assetCollectionToSection=_assetCollectionToSection;
+@property(readonly, nonatomic) NSArray *assetCollections; // @synthesize assetCollections=_assetCollections;
 @property(readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
-- (void).cxx_destruct;
 - (id)initWithCollectionListFetchResult:(id)arg1;
 
 @end

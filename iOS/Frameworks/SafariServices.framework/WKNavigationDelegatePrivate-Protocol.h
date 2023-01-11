@@ -6,16 +6,22 @@
 
 #import <SafariServices/WKNavigationDelegate-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString, NSURL, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView, WKWebpagePreferences, _WKContentRuleListAction;
+@class NSArray, NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, NSURLRequest, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView, WKWebpagePreferences, _WKContentRuleListAction;
 @protocol NSSecureCoding;
 
 @protocol WKNavigationDelegatePrivate <WKNavigationDelegate>
 
 @optional
 - (void)_webView:(WKWebView *)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(NSString *)arg3 completionHandler:(void (^)(long long))arg4;
+- (void)_webView:(WKWebView *)arg1 willGoToBackForwardListItem:(WKBackForwardListItem *)arg2 inPageCache:(_Bool)arg3;
 - (void)_webViewDidRequestPasswordForQuickLookDocument:(WKWebView *)arg1;
 - (void)_webView:(WKWebView *)arg1 didFinishLoadForQuickLookDocumentInMainFrame:(NSData *)arg2;
 - (void)_webView:(WKWebView *)arg1 didStartLoadForQuickLookDocumentInMainFrameWithFileName:(NSString *)arg2 uti:(NSString *)arg3;
+- (void)_webView:(WKWebView *)arg1 didFinishLoadWithRequest:(NSURLRequest *)arg2 inFrame:(WKFrameInfo *)arg3;
+- (void)_webView:(WKWebView *)arg1 didFailLoadWithRequest:(NSURLRequest *)arg2 inFrame:(WKFrameInfo *)arg3 withError:(NSError *)arg4;
+- (void)_webView:(WKWebView *)arg1 didCommitLoadWithRequest:(NSURLRequest *)arg2 inFrame:(WKFrameInfo *)arg3;
+- (void)_webView:(WKWebView *)arg1 didFailProvisionalLoadWithRequest:(NSURLRequest *)arg2 inFrame:(WKFrameInfo *)arg3 withError:(NSError *)arg4;
+- (void)_webView:(WKWebView *)arg1 didStartProvisionalLoadWithRequest:(NSURLRequest *)arg2 inFrame:(WKFrameInfo *)arg3;
 - (void)_webView:(WKWebView *)arg1 webContentProcessDidTerminateWithReason:(long long)arg2;
 - (void)_webView:(WKWebView *)arg1 contentRuleListWithIdentifier:(NSString *)arg2 performedAction:(_WKContentRuleListAction *)arg3 forURL:(NSURL *)arg4;
 - (void)_webView:(WKWebView *)arg1 URL:(NSURL *)arg2 contentRuleListIdentifiers:(NSArray *)arg3 notifications:(NSArray *)arg4;
@@ -29,6 +35,8 @@
 - (void)_webViewWillEndNavigationGesture:(WKWebView *)arg1 withNavigationToBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)_webViewDidEndNavigationGesture:(WKWebView *)arg1 withNavigationToBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)_webViewDidBeginNavigationGesture:(WKWebView *)arg1;
+- (void)_webView:(WKWebView *)arg1 didNegotiateModernTLS:(NSURLAuthenticationChallenge *)arg2;
+- (void)_webView:(WKWebView *)arg1 authenticationChallenge:(NSURLAuthenticationChallenge *)arg2 shouldAllowLegacyTLS:(void (^)(_Bool))arg3;
 - (NSData *)_webCryptoMasterKeyForWebView:(WKWebView *)arg1;
 - (void)_webViewWebProcessDidBecomeUnresponsive:(WKWebView *)arg1;
 - (void)_webViewWebProcessDidBecomeResponsive:(WKWebView *)arg1;

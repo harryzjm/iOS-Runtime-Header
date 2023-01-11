@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsPosOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsNegOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _offsetsOutputs;
-    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _objectnessOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _rollOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _yawOutputs;
     unsigned long long _currentNetworkWidth;
@@ -35,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)processingDeviceNetworkWithModelPath:(id)arg1 threshold:(float)arg2 preferredDeviceID:(int)arg3 engineID:(int)arg4 storageType:(int)arg5;
 + (unsigned long long)numberBinsYaw;
 + (unsigned long long)numberBinsRoll;
++ (_Bool)hasPose;
 + (_Bool)inputBGR;
 + (tuple_8621cb4d)inputBiasRGB;
 + (float)inputScale;
@@ -46,10 +46,10 @@ __attribute__((visibility("hidden")))
 + (float)inputImageMaxDimension;
 + (float)inputImageMinDimension;
 + (id)inputLayerName;
-@property(readonly, nonatomic) unsigned long long preferredSmallSide; // @synthesize preferredSmallSide=_preferredSmallSide;
-@property(nonatomic) float threshold; // @synthesize threshold=_threshold;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long preferredSmallSide; // @synthesize preferredSmallSide=_preferredSmallSide;
+@property(nonatomic) float threshold; // @synthesize threshold=_threshold;
 - (id)resizeAndProcessVImage:(struct vImage_Buffer)arg1 inputIsBGR:(_Bool)arg2;
 - (id)processVImage:(struct vImage_Buffer)arg1 inputIsBGR:(_Bool)arg2;
 - (void)runNetwork:(struct vImage_Buffer)arg1 inputIsBGR:(_Bool)arg2;

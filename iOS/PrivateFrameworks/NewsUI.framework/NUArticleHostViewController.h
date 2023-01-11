@@ -11,7 +11,7 @@
 #import <NewsUI/NUPageable-Protocol.h>
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 
-@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, UIScrollView, UIView;
+@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, NUArticleContext, UIResponder, UIScrollView, UIView;
 @protocol NUAnalyticsReporting, NUArticleContentSizeManager, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
 @interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable, NUBarCompressible>
@@ -19,6 +19,8 @@
     NSString *_pageIdentifier;
     id <NULoadingDelegate> _loadingDelegate;
     FCObservable *_articleViewStyler;
+    NUArticleContext *_articleContext;
+    UIResponder *_responder;
     FCArticle *_article;
     FCIssue *_issue;
     id <NUArticleViewControllerFactory> _articleViewControllerFactory;
@@ -31,6 +33,7 @@
     id <NUArticleContentSizeManager> _contentSizeManager;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <NUArticleContentSizeManager> contentSizeManager; // @synthesize contentSizeManager=_contentSizeManager;
 @property(readonly, nonatomic) id <NUAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property(readonly, nonatomic) id <NUErrorMessageFactory> errorMessageFactory; // @synthesize errorMessageFactory=_errorMessageFactory;
@@ -41,10 +44,11 @@
 @property(readonly, nonatomic) id <NUArticleViewControllerFactory> articleViewControllerFactory; // @synthesize articleViewControllerFactory=_articleViewControllerFactory;
 @property(readonly, nonatomic) FCIssue *issue; // @synthesize issue=_issue;
 @property(readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
+@property(retain, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
+@property(retain, nonatomic) NUArticleContext *articleContext; // @synthesize articleContext=_articleContext;
 @property(readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
 @property(nonatomic) __weak id <NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property(readonly, copy, nonatomic) NSString *pageIdentifier; // @synthesize pageIdentifier=_pageIdentifier;
-- (void).cxx_destruct;
 - (id)loadingTextForArticle:(id)arg1;
 - (void)loadArticleAndEmbedArticleViewController;
 - (void)reportEvent:(id)arg1;
@@ -54,9 +58,15 @@
 - (void)loadingDidStart;
 - (void)loadingWillStart;
 - (void)viewDidLayoutSubviews;
+- (void)updateContentScaleAndSize;
 @property(nonatomic) long long contentScale;
 @property(retain, nonatomic) NSString *contentSizeCategory;
+- (_Bool)resignFirstResponder;
+- (_Bool)becomeFirstResponder;
+- (void)viewWillLayoutSubviews;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)reload;
 @property(readonly, nonatomic) NSHashTable *loadingListeners;
 - (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 contentSizeManager:(id)arg5;
 - (id)initWithArticle:(id)arg1 issue:(id)arg2 articleViewControllerFactory:(id)arg3 settings:(id)arg4 errorMessageFactory:(id)arg5 analyticsReporting:(id)arg6 contentSizeManager:(id)arg7;

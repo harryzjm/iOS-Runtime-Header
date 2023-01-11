@@ -6,19 +6,21 @@
 
 #import <Preferences/PSListController.h>
 
+#import <AssistantSettingsSupport/AssistantHistoryDelegate-Protocol.h>
 #import <AssistantSettingsSupport/AssistantVoiceSettingsConnectionProvider-Protocol.h>
 #import <AssistantSettingsSupport/CNContactPickerDelegate-Protocol.h>
 #import <AssistantSettingsSupport/DevicePINControllerDelegate-Protocol.h>
 
-@class AFSettingsConnection, CNContactPickerViewController, CNContactStore, NSArray, NSMutableSet, NSSet, NSString, PSSpecifier, SUICAssistantVoiceSettingsConnection;
+@class AFSettingsConnection, ASTLockScreenSuggestionsGlobalController, CNContactPickerViewController, CNContactStore, NSArray, NSMutableSet, NSSet, NSString, PSSpecifier, SUICAssistantVoiceSettingsConnection;
 
-@interface AssistantController : PSListController <CNContactPickerDelegate, AssistantVoiceSettingsConnectionProvider, DevicePINControllerDelegate>
+@interface AssistantController : PSListController <CNContactPickerDelegate, AssistantVoiceSettingsConnectionProvider, DevicePINControllerDelegate, AssistantHistoryDelegate>
 {
     NSArray *_assistantSettings;
     SUICAssistantVoiceSettingsConnection *_settingsConnection;
     NSString *_pendingLanguage;
     PSSpecifier *_voiceSpecifier;
-    PSSpecifier *_voiceActiviationSpecifier;
+    PSSpecifier *_announceMessagesSpecifier;
+    PSSpecifier *_voiceActivationSpecifier;
     PSSpecifier *_hardwareButtonActivationSpecifier;
     PSSpecifier *_currentSiriActivationSpecifier;
     PSSpecifier *_lockScreenSpecifier;
@@ -30,14 +32,17 @@
     NSSet *_installedBundleIDs;
     NSArray *_allAppsSpecifiers;
     AFSettingsConnection *_AFSettingsConnection;
+    ASTLockScreenSuggestionsGlobalController *_lockScreenGlobalController;
 }
 
 + (void)presentAssistantEnableAlertForState:(_Bool)arg1 presentingViewController:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
 + (id)shortTitlesForLanguageIdentifiers:(id)arg1;
 + (_Bool)_heySiriSupportedForLanguage:(id)arg1;
 + (id)bundle;
-@property(readonly, nonatomic) SUICAssistantVoiceSettingsConnection *settingsConnection; // @synthesize settingsConnection=_settingsConnection;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SUICAssistantVoiceSettingsConnection *settingsConnection; // @synthesize settingsConnection=_settingsConnection;
+- (void)deleteHistorySuccessfulFromViewController:(id)arg1;
+- (void)showAssistantHistoryViewController:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -49,7 +54,7 @@
 - (void)setHardwareButtonTrigger:(id)arg1 forSpecifier:(id)arg2;
 - (id)hardwareButtonTrigger:(id)arg1;
 - (void)loadAppStorePageForBundleId:(id)arg1;
-- (void)handleURL:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setVoiceTrigger:(id)arg1 forSpecifier:(id)arg2;
 - (id)voiceTrigger:(id)arg1;
 - (_Bool)_isVoiceTriggerEnabled;
@@ -63,8 +68,11 @@
 - (void)_setAssistantLanguageCancelled:(id)arg1;
 - (void)_setAssistantLanguageConfirmed:(id)arg1;
 - (void)_setAssistantLanguageHeySiriDisableConfirmed:(id)arg1;
+- (id)_confirmationPromptDisableHeySiri:(_Bool)arg1 disableMultiUser:(_Bool)arg2 disableSpokenFeedback:(_Bool)arg3;
 - (void)_setAssistantLanguageWatchMismatchConfirmed:(id)arg1;
-- (void)_showWillDisableHeySiriAlert;
+- (_Bool)_pairedWithSiriSpeaksEnabledNanoHardware;
+- (id)confirmationSpecifierWillDisableHeySiri:(_Bool)arg1 disableMultiUser:(_Bool)arg2 disableSpokenFeedbackOnWatch:(_Bool)arg3;
+- (void)_showWillDisableAlertWillDisableHeySiri:(_Bool)arg1 disableMultiUser:(_Bool)arg2 disableSpokenFeedbackOnWatch:(_Bool)arg3;
 - (void)_showIncompatibleWatchLanguageAlert;
 - (_Bool)_isHeySiriAlwaysOn;
 - (_Bool)_languageWillDisableHeySiri:(id)arg1;
@@ -77,10 +85,10 @@
 - (void)assistantEnabledCancelled:(id)arg1;
 - (void)assistantEnabledConfirmed:(id)arg1;
 - (id)assistantEnabled:(id)arg1;
-- (void)setLockScreenSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
-- (id)isLockScreenSuggestionEnabled:(id)arg1;
-- (void)setLookUpSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
-- (id)isLookUpSuggestionsEnabled:(id)arg1;
+- (void)setSharingSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (id)isSharingSuggestionsEnabled:(id)arg1;
+- (void)setHomeScreenSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (id)isHomeScreenSuggestionsEnabled:(id)arg1;
 - (void)setAssistantSuggestionsEnabled:(id)arg1;
 - (id)isAssistantSuggestionsEnabled;
 - (void)showAssistantConfirmationViewForSpecifier:(id)arg1 presentingViewController:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
@@ -90,7 +98,6 @@
 - (void)setAssistantEnabled:(_Bool)arg1;
 - (_Bool)watchSupportsSiriLanguageCode:(id)arg1;
 - (id)_localizeTriggerString:(id)arg1;
-- (id)assistantAudioFeedbackMode:(id)arg1;
 - (id)assistantVoice:(id)arg1;
 - (void)_updateSpecifiersForLanguage:(id)arg1;
 - (void)saveSpotlightSettings;

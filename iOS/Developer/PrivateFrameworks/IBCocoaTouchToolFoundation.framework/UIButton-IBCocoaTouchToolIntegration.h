@@ -15,6 +15,7 @@
 - (_Bool)ibHasAttributedTitle;
 - (void)setIbHasAttributedTitle:(id)arg1;
 - (void)applyPerControlStateAttributes:(id)arg1 orderedKeys:(id)arg2 populatingIgnoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
+- (void)awakeAfterMarshallerDidEstablishRelationshipsWithContext:(id)arg1 populatingWarningMessages:(id)arg2;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

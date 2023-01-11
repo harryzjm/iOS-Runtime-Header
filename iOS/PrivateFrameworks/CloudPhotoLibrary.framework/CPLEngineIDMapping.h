@@ -5,10 +5,11 @@
 //
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
+#import <CloudPhotoLibrary/CPLEngineIDMapping-Protocol.h>
 
 @class CPLPlatformObject, NSString;
 
-@interface CPLEngineIDMapping <CPLAbstractObject>
+@interface CPLEngineIDMapping <CPLAbstractObject, CPLEngineIDMapping>
 {
 }
 

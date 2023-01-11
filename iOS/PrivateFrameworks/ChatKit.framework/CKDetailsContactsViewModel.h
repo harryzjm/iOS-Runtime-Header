@@ -14,6 +14,7 @@
     _Bool _showsMessageButton;
     _Bool _showsFaceTimeVideoButton;
     _Bool _showsPhoneButton;
+    _Bool _showsScreenSharingButton;
     _Bool _isPendingRecipient;
     _Bool _verified;
     NSString *_preferredHandle;
@@ -23,9 +24,11 @@
 }
 
 + (id)descriptorForContactRequiredKeys;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool verified; // @synthesize verified=_verified;
 @property(nonatomic) _Bool isPendingRecipient; // @synthesize isPendingRecipient=_isPendingRecipient;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property(nonatomic) _Bool showsScreenSharingButton; // @synthesize showsScreenSharingButton=_showsScreenSharingButton;
 @property(nonatomic) _Bool showsPhoneButton; // @synthesize showsPhoneButton=_showsPhoneButton;
 @property(nonatomic) _Bool showsFaceTimeVideoButton; // @synthesize showsFaceTimeVideoButton=_showsFaceTimeVideoButton;
 @property(nonatomic) _Bool showsMessageButton; // @synthesize showsMessageButton=_showsMessageButton;
@@ -33,8 +36,7 @@
 @property(copy, nonatomic) NSString *locationString; // @synthesize locationString=_locationString;
 @property(copy, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
 @property(copy, nonatomic) NSString *preferredHandle; // @synthesize preferredHandle=_preferredHandle;
-- (void).cxx_destruct;
-- (id)initWithPreferredHandle:(id)arg1 entityName:(id)arg2 locationString:(id)arg3 showsLocation:(_Bool)arg4 showsMessageButton:(_Bool)arg5 showsFaceTimeVideoButton:(_Bool)arg6 showsPhoneButton:(_Bool)arg7 contact:(id)arg8 isPendingRecipient:(_Bool)arg9 verified:(_Bool)arg10;
+- (id)initWithPreferredHandle:(id)arg1 entityName:(id)arg2 locationString:(id)arg3 showsLocation:(_Bool)arg4 showsMessageButton:(_Bool)arg5 showsFaceTimeVideoButton:(_Bool)arg6 showsPhoneButton:(_Bool)arg7 showsScreenSharingButton:(_Bool)arg8 contact:(id)arg9 isPendingRecipient:(_Bool)arg10 verified:(_Bool)arg11;
 
 @end
 

@@ -7,32 +7,37 @@
 #import <objc/NSObject.h>
 
 #import <Email/EFCacheable-Protocol.h>
+#import <Email/EFLoggable-Protocol.h>
 #import <Email/NSCopying-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class EFStringHash, NSString;
+@class EFStringHash, NSData, NSString;
 @protocol NSObject><NSSecureCoding><NSCopying;
 
-@interface EMObjectID : NSObject <EFCacheable, NSSecureCoding, NSCopying>
+@interface EMObjectID : NSObject <EFLoggable, EFCacheable, NSSecureCoding, NSCopying>
 {
     unsigned long long _hash;
+    struct os_unfair_lock_s _lock;
     _Bool _ephemeral;
     id <NSObject><NSSecureCoding><NSCopying> _representedObjectID;
     EFStringHash *_stringHash;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)objectIDFromSerializedRepresentation:(id)arg1;
 + (void)addDecodableClass:(Class)arg1;
 + (id)_decodableClasses;
-@property(readonly, nonatomic, getter=isEphemeral) _Bool ephemeral; // @synthesize ephemeral=_ephemeral;
-@property(readonly, copy, nonatomic) id <NSObject><NSSecureCoding><NSCopying> representedObjectID; // @synthesize representedObjectID=_representedObjectID;
++ (id)log;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) id <NSObject><NSSecureCoding><NSCopying> representedObjectID; // @synthesize representedObjectID=_representedObjectID;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) EFStringHash *stringHash; // @synthesize stringHash=_stringHash;
+@property(readonly, copy, nonatomic) NSData *serializedRepresentation;
+@property(readonly) EFStringHash *stringHash; // @synthesize stringHash=_stringHash;
+@property(readonly, getter=isEphemeral) _Bool ephemeral; // @synthesize ephemeral=_ephemeral;
 @property(readonly, copy) NSString *description;
 - (void)_commonInitAsEphemeralID:(_Bool)arg1 representedObjectID:(id)arg2;
 - (id)initAsEphemeralID:(_Bool)arg1 representedObjectID:(id)arg2;

@@ -43,6 +43,8 @@
     _Bool _screenIsOff;
     unsigned long long _presentationModifierRequestCount;
     NSHashTable *_presentationGroups;
+    _Bool _appSuspended;
+    NSMutableArray *_observedWindowScenes;
     _Bool _usesMainThreadExecution;
     _Bool _advancingOnCommitDisabled;
     unsigned long long _executionMode;
@@ -57,6 +59,7 @@
 + (id)_requestPresentationModifierGroup:(CDUnknownBlockType)arg1;
 + (id)sharedManager;
 + (void)_setExternalAnimationDriver:(id)arg1;
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_semaphore> *animationThreadKeepAliveSemaphore; // @synthesize animationThreadKeepAliveSemaphore=_animationThreadKeepAliveSemaphore;
 @property __weak NSRunLoop *animationThreadRunLoop; // @synthesize animationThreadRunLoop=_animationThreadRunLoop;
 @property __weak NSThread *animationThread; // @synthesize animationThread=_animationThread;
@@ -64,7 +67,6 @@
 @property(nonatomic) _Bool advancingOnCommitDisabled; // @synthesize advancingOnCommitDisabled=_advancingOnCommitDisabled;
 @property(nonatomic) unsigned long long executionMode; // @synthesize executionMode=_executionMode;
 @property(nonatomic) _Bool usesMainThreadExecution; // @synthesize usesMainThreadExecution=_usesMainThreadExecution;
-- (void).cxx_destruct;
 - (void)finishAdvancingAnimationManager;
 - (void)startAdvancingAnimationManager:(id)arg1;
 - (double)refreshInterval;
@@ -92,8 +94,13 @@
 - (unsigned long long)_runPreCommitBlocks;
 - (void)_processPreCommitBlocks;
 - (void)_prepareForTick;
+- (void)_setAnimationsSuspended:(_Bool)arg1;
+- (void)_updateAnimationSuspensionForAppStateChange;
 - (void)_applicationBecameActive;
+- (void)_applicationDidEnterBackground;
 - (void)_applicationResignedActive;
+- (void)_screenBasedSceneDidDisconnect:(id)arg1;
+- (void)_screenBasedSceneWillAttachWindow:(id)arg1;
 - (void)_cancelAllAnimationsImmediately;
 - (void)dealloc;
 - (void)_registerBacklightChangedNotification;

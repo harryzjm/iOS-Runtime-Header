@@ -26,7 +26,7 @@
     _Bool _StatEnabled;
     unsigned long long _StatOptions;
     unsigned long long _StatLocations;
-    unsigned long long _numCommandBuffers;
+    _Atomic int _numCommandBuffers;
     CDUnknownBlockType _perfSampleHandlerBlock;
     unsigned long long _listIndex;
     unsigned long long _maxCommandBufferCount;
@@ -53,7 +53,6 @@
 @property(readonly) unsigned long long qosLevel; // @synthesize qosLevel=_qosLevel;
 @property(readonly) unsigned long long maxCommandBufferCount; // @synthesize maxCommandBufferCount=_maxCommandBufferCount;
 @property(nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
-@property(nonatomic) unsigned long long numCommandBuffers; // @synthesize numCommandBuffers=_numCommandBuffers;
 @property(nonatomic, getter=getStatLocations) unsigned long long StatLocations; // @synthesize StatLocations=_StatLocations;
 @property(nonatomic, getter=getStatOptions) unsigned long long StatOptions; // @synthesize StatOptions=_StatOptions;
 @property(nonatomic, getter=isStatEnabled) _Bool StatEnabled; // @synthesize StatEnabled=_StatEnabled;
@@ -63,7 +62,7 @@
 - (unsigned long long)getAndIncrementNumCommandBuffers;
 - (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
 - (int)requestCounters:(id)arg1;
-- (void)availableCounters;
+- (id)availableCounters;
 - (void)insertDebugCaptureBoundary;
 - (void)finish;
 @property(copy) NSString *label; // @dynamic label;
@@ -74,6 +73,7 @@
 - (void)completeCommandBuffers:(id *)arg1 count:(unsigned long long)arg2;
 - (_Bool)_submitAvailableCommandBuffers;
 - (void)enqueueCommandBuffer:(id)arg1;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
@@ -81,6 +81,7 @@
 - (id)initWithDevice:(id)arg1 descriptor:(id)arg2;
 - (id)initWithDevice:(id)arg1 maxCommandBufferCount:(unsigned long long)arg2;
 - (id)initWithDevice:(id)arg1;
+@property(nonatomic) unsigned long long numCommandBuffers; // @dynamic numCommandBuffers;
 
 @end
 

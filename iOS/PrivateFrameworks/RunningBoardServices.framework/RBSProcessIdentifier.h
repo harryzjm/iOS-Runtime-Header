@@ -6,29 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/NSSecureCoding-Protocol.h>
 #import <RunningBoardServices/RBSProcessIdentifier-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSProcessIdentifier : NSObject <BSXPCSecureCoding, RBSProcessIdentifier, NSSecureCoding, NSCopying>
+@interface RBSProcessIdentifier : NSObject <RBSXPCSecureCoding, RBSProcessIdentifier, NSSecureCoding, NSCopying>
 {
     NSString *_description;
     int _pid;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (_Bool)supportsSecureCoding;
 + (id)identifierForIdentifier:(id)arg1;
 + (id)identifierForCurrentProcess;
 + (id)identifierWithPid:(int)arg1;
-@property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;

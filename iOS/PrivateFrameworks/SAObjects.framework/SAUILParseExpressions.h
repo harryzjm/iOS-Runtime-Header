@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, SARemoteDevice;
 
 @interface SAUILParseExpressions
 {
@@ -13,6 +13,7 @@
 + (id)parseExpressionsWithDictionary:(id)arg1 context:(id)arg2;
 + (id)parseExpressions;
 - (_Bool)requiresResponse;
+@property(retain, nonatomic) SARemoteDevice *targetDevice;
 @property(copy, nonatomic) NSArray *expressions;
 - (id)encodedClassName;
 - (id)groupIdentifier;

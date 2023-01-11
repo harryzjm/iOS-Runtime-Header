@@ -20,6 +20,13 @@
 - (_Bool)discardStagedChangesForScopeWithIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)commitStagedChangesForScopeWithIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)remapAllRecordsWithPreviousScopedIdentifier:(id)arg1 newScopedIdentifier:(id)arg2 error:(id *)arg3;
+- (_Bool)ackownledgeRecordWithScopedIdentifier:(id)arg1 error:(id *)arg2;
+- (unsigned long long)countOfRecordsAcknowledgedByClientWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
+- (id)recordsAcknowledgedByClientWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
+- (_Bool)hasRecordAcknowledgedByClientWithScopedIdentifier:(id)arg1;
+- (id)recordAcknowledgedByClientWithScopedIdentifier:(id)arg1;
+- (id)relatedScopedIdentifierForRecordWithScopedIdentifier:(id)arg1 isFinal:(_Bool)arg2;
+- (id)recordsWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2 isFinal:(_Bool)arg3;
 - (id)recordsWithRelatedScopedIdentifier:(id)arg1 isFinal:(_Bool)arg2;
 - (_Bool)hasRecordWithScopedIdentifier:(id)arg1;
 - (id)recordWithScopedIdentifier:(id)arg1 isConfirmed:(_Bool *)arg2 isStaged:(_Bool *)arg3;

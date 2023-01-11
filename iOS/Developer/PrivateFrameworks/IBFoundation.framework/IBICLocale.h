@@ -4,24 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface IBICLocale
+#import <IBFoundation/IBICCoreUISlotComponent-Protocol.h>
+
+@class NSString;
+
+@interface IBICLocale <IBICCoreUISlotComponent>
 {
+    long long _coreUIValue;
 }
 
-+ (id)localeWithLocaleStringIdentifier:(id)arg1;
-+ (long long)localeIdentifierForName:(id)arg1;
-+ (id)localeNameToIdentifierMapping;
-+ (id)availableLocales;
-+ (id)appPreferredLocale;
 + (id)displayNameForLocaleIdentifier:(id)arg1;
-+ (id)knownLocaleIdentifiers;
++ (id)createDynamicComponentWithIdentifier:(id)arg1;
++ (_Bool)createsComponentsDynamically;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 displayOrder:(double)arg4;
++ (id)developmentLanguageLocale;
 + (id)displayName;
 + (id)contentsJSONKey;
 + (id)unspecifiedValuePlaceholder;
 + (void)setComponentID:(long long)arg1;
 + (long long)componentID;
+@property(nonatomic) long long coreUIValue; // @synthesize coreUIValue=_coreUIValue;
 - (long long)componentID;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

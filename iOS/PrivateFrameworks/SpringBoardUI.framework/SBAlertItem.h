@@ -35,6 +35,7 @@
 
 + (void)activateAlertItem:(id)arg1;
 + (id)_alertItemsController;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setAttachmentImage:) UIImage *_attachmentImage; // @synthesize _attachmentImage;
 @property(retain, nonatomic, setter=_setHeaderImage:) UIImage *_headerImage; // @synthesize _headerImage;
 @property(nonatomic, getter=_isPresented, setter=_setPresented:) _Bool presented; // @synthesize presented=_presented;
@@ -50,13 +51,13 @@
 @property(nonatomic) _Bool suppressForKeynote; // @synthesize suppressForKeynote=_suppressForKeynote;
 @property(nonatomic) _Bool allowInSetup; // @synthesize allowInSetup=_allowInSetup;
 @property(nonatomic) _Bool ignoreIfAlreadyDisplaying; // @synthesize ignoreIfAlreadyDisplaying=_ignoreIfAlreadyDisplaying;
-- (void).cxx_destruct;
 - (_Bool)unlocksScreen;
 - (_Bool)undimsScreen;
 - (_Bool)dismissOnLock;
 - (void)buttonDismissed;
 - (void)dismiss:(int)arg1;
 - (void)dismiss;
+- (id)visualStyleForAlertControllerStyle:(long long)arg1 traitCollection:(id)arg2 descriptor:(id)arg3;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

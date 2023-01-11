@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (id)internedCalendarWithEKCalendar:(id)arg1;
+- (void)clearPool;
 - (id)init;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UILabel;
+@class NSString, UIColor, UIFont, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface _UITableViewCellBadge
@@ -13,12 +13,15 @@ __attribute__((visibility("hidden")))
     UILabel *_badgeTextLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *badgeTextLabel; // @synthesize badgeTextLabel=_badgeTextLabel;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
-- (void).cxx_destruct;
 - (_Bool)isHighlighted;
 - (void)setHighlighted:(_Bool)arg1;
 @property(copy, nonatomic) NSString *text;
+@property(retain, nonatomic) UIColor *color;
+@property(retain, nonatomic) UIFont *font;
+- (void)layoutSubviews;
 - (void)_sizeToFit;
 - (double)minHeight;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

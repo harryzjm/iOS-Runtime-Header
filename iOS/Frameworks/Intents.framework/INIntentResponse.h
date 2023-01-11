@@ -7,18 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
-#import <Intents/INFileURLEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INGenericIntentResponse-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INIntentResponseExport-Protocol.h>
 #import <Intents/INIntentSlotComposing-Protocol.h>
+#import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/INRuntimeObject-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableDescription, INIntentResponseCodableCode, INIntentResponseDescription, NSDictionary, NSString, NSUserActivity, PBCodable, _INPBIntentResponse;
+@class INCodableDescription, INImage, INIntentResponseCodableCode, INIntentResponseDescription, NSDictionary, NSString, NSUserActivity, PBCodable, _INPBIntentResponse;
 
-@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INFileURLEnumerable, INCacheableContainer, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
+@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INCacheableContainer, INEnumerable, INKeyImageProducing, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
 {
     _Bool __userConfirmationRequired;
     long long _code;
@@ -40,10 +41,10 @@
 + (int)_errorCodeFromCode:(long long)arg1;
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool _userConfirmationRequired; // @synthesize _userConfirmationRequired=__userConfirmationRequired;
 @property(nonatomic, setter=_setStage:) long long _stage; // @synthesize _stage=__stage;
 @property(copy, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
-- (void).cxx_destruct;
 - (_Bool)setValue:(id)arg1 forProperty:(id)arg2;
 - (id)valueForProperty:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -80,26 +81,33 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) long long code; // @synthesize code=_code;
 @property(readonly, copy, nonatomic) _INPBIntentResponse *backingStore; // @synthesize backingStore=_backingStore;
-- (long long)_code;
-- (void)_setCode:(long long)arg1;
+@property(nonatomic, setter=_setCode:) long long _code;
 - (_Bool)_commonInit;
 - (id)initWithBackingStore:(id)arg1;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)init;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
+- (id)localizeValueOfSlotDescription:(id)arg1 withLocalizer:(id)arg2;
 - (id)intentSlotDescriptions;
-- (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) long long _intents_toggleState;
+- (id)_renderedResponseWithLocalizer:(id)arg1 requiresSiriCompatibility:(_Bool)arg2;
 - (id)_renderedResponseForLanguage:(id)arg1 requiresSiriCompatibility:(_Bool)arg2;
+- (id)_propertiesByNameWithLocalizer:(id)arg1;
 - (id)_propertiesByNameForLanguage:(id)arg1;
+- (id)_responseTemplateWithLocalizer:(id)arg1 requiresSiriCompatibility:(_Bool)arg2;
+- (id)_responseTemplateWithLocalizer:(id)arg1;
 - (id)_responseTemplateForLanguage:(id)arg1 requiresSiriCompatibility:(_Bool)arg2;
 - (id)_responseTemplateForLanguage:(id)arg1;
 @property(readonly, nonatomic, getter=_isSuccess) _Bool _success;
 - (id)_originatingBundleIdentifier;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_intents_cacheableObjects;
+- (_Bool)_enumerateWithValueProcessingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
+@property(readonly) INImage *_keyImage;
+- (void)_intents_prepareResponse;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

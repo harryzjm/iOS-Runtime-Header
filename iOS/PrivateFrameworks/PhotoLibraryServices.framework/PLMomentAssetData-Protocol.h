@@ -38,6 +38,7 @@
 @property(nonatomic) _Bool reverseLocationDataIsValid;
 @property(retain, nonatomic) NSData *reverseLocationData;
 @property(retain, nonatomic) id <PLMomentData> moment;
+@property(readonly, nonatomic) double gpsHorizontalAccuracy;
 @property(readonly, nonatomic) int inferredTimeZoneOffset;
 @property(readonly, retain, nonatomic) NSDate *localDateCreated;
 @property(retain, nonatomic) NSDate *dateCreated;

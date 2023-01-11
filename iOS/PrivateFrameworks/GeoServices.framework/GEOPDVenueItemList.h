@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDVenueItemList : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_items;
     NSString *_title;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_items:1;
         unsigned int read_title:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_items:1;
-        unsigned int wrote_title:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,18 +41,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)itemsCount;
-- (void)_addNoFlagsItem:(id)arg1;
 - (void)addItem:(id)arg1;
 - (void)clearItems;
 @property(retain, nonatomic) NSMutableArray *items;
-- (void)_readItems;
 @property(retain, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (void)_readTitle;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

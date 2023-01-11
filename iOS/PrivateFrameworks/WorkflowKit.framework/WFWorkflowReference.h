@@ -4,40 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <VoiceShortcutClient/WFWorkflowDescriptor.h>
+
 #import <WorkflowKit/WFNaming-Protocol.h>
 
-@class NSString, WFWorkflowIcon;
+@class NSDate, NSString, NSUserActivity, WFImage, WFWorkflowIcon;
 
-@interface WFWorkflowReference <WFNaming>
+@interface WFWorkflowReference : WFWorkflowDescriptor <WFNaming>
 {
     _Bool _isDeleted;
-    NSString *_name;
+    _Bool _hiddenFromLibraryAndSync;
     NSString *_subtitle;
     NSString *_actionsDescription;
-    NSString *_associatedAppBundleIdentifier;
+    unsigned long long _actionCount;
     WFWorkflowIcon *_icon;
+    NSDate *_modificationDate;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)workflowReferenceConsumingSingleUseToken:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property(readonly, nonatomic) _Bool hiddenFromLibraryAndSync; // @synthesize hiddenFromLibraryAndSync=_hiddenFromLibraryAndSync;
 @property(readonly, nonatomic) _Bool isDeleted; // @synthesize isDeleted=_isDeleted;
 @property(readonly, copy, nonatomic) WFWorkflowIcon *icon; // @synthesize icon=_icon;
-@property(readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
+@property(readonly, nonatomic) unsigned long long actionCount; // @synthesize actionCount=_actionCount;
 @property(readonly, copy, nonatomic) NSString *actionsDescription; // @synthesize actionsDescription=_actionsDescription;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
+- (id)attributionIconWithSize:(struct CGSize)arg1 scale:(double)arg2 rounded:(_Bool)arg3;
+@property(readonly, nonatomic) WFImage *attributionIcon;
+@property(readonly, nonatomic) NSString *attributionTitle;
 - (id)externalURLForViewing;
 - (id)externalURLForRunningWithSource:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 subtitle:(id)arg3 actionsDescription:(id)arg4 associatedAppBundleIdentifier:(id)arg5 icon:(id)arg6 isDeleted:(_Bool)arg7;
-- (id)generateSingleUseToken;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 color:(long long)arg3 glyphCharacter:(unsigned short)arg4 associatedAppBundleIdentifier:(id)arg5 subtitle:(id)arg6 actionsDescription:(id)arg7 actionCount:(unsigned long long)arg8 isDeleted:(_Bool)arg9 hiddenFromLibraryAndSync:(_Bool)arg10 modificationDate:(id)arg11;
 @property(readonly, copy, nonatomic) NSString *wfName;
-- (id)eventDictionary;
-- (void)deleteAssociatedInteractions;
 - (void)donateRunInteraction;
 - (id)speakableString;
+@property(readonly, nonatomic) NSUserActivity *userActivityForViewing;
 
 @end
 

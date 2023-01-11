@@ -8,7 +8,7 @@
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravelState-Protocol.h>
 
-@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, UIView, _NTKColorManager;
+@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSNumber, NSParagraphStyle, NSString, UIColor, UIFont, UIView, _NTKColorManager;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKColoringLabel <NTKColoringView, CLKUILabel, NTKTimeTravelState>
@@ -16,7 +16,7 @@
     CLKDevice *_device;
     unsigned long long _options;
     _NTKColorManager *_colorManager;
-    struct NSNumber *_updateToken;
+    NSNumber *_updateToken;
     _Bool _updatedAfterTimeTravelStateChange;
     CLKFont *_preTimeTravelFont;
     _Bool _monochromeSnapshot;
@@ -32,6 +32,7 @@
     _Bool _usesTextProviderSize;
     UIColor *_overrideColor;
     CLKTextProvider *_textProvider;
+    CLKFont *_monospacedDigitsFont;
     CLKFont *_textProviderFont;
     CLKFont *_textProviderSmallCapsBaseFont;
     double _maxWidth;
@@ -46,6 +47,7 @@
 }
 
 + (id)labelWithOptions:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool usesTextProviderSize; // @synthesize usesTextProviderSize=_usesTextProviderSize;
 @property(nonatomic) _Bool cachedOpticalEdgeInsetsIsValid; // @synthesize cachedOpticalEdgeInsetsIsValid=_cachedOpticalEdgeInsetsIsValid;
 @property(readonly, nonatomic) struct UIEdgeInsets cachedOpticalEdgeInsets; // @synthesize cachedOpticalEdgeInsets=_cachedOpticalEdgeInsets;
@@ -63,11 +65,11 @@
 @property(nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property(retain, nonatomic) CLKFont *textProviderSmallCapsBaseFont; // @synthesize textProviderSmallCapsBaseFont=_textProviderSmallCapsBaseFont;
 @property(retain, nonatomic) CLKFont *textProviderFont; // @synthesize textProviderFont=_textProviderFont;
+@property(retain, nonatomic) CLKFont *monospacedDigitsFont; // @synthesize monospacedDigitsFont=_monospacedDigitsFont;
 @property(retain, nonatomic) CLKTextProvider *textProvider; // @synthesize textProvider=_textProvider;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(retain, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 @property(nonatomic) _Bool inTimeTravel; // @synthesize inTimeTravel=_inTimeTravel;
-- (void).cxx_destruct;
 - (void)_setAnimationAlpha:(double)arg1;
 - (void)_setUpSnapshot;
 - (void)editingDidEnd;
@@ -78,6 +80,7 @@
 - (id)_fontWithMonospaceNumbers:(id)arg1;
 - (void)_updateDynamicTracking;
 - (void)setShadowOffset:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 @property(copy, nonatomic) NSAttributedString *attributedText;
 @property(copy, nonatomic) NSString *text;
 @property(retain, nonatomic) UIFont *font;

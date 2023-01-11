@@ -32,12 +32,9 @@
     unsigned long long _maxDataSegmentCount;
     unsigned int _didReceiveDataCount;
     _Bool _canSendDidFinishCollectingMetrics;
-    _Bool _sentDidFinishCollectingMetrics;
     _Bool _ignoreLoaderEvents;
 }
 
-- (void)_didSendMetrics;
-- (_Bool)_needSendingMetrics;
 - (void)_captureTransportConnection:(shared_ptr_8da4e70b)arg1 extraBytes:(id)arg2;
 - (void)_capturedSocketInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)cancelAuthenticationChallenge:(id)arg1;
@@ -50,34 +47,20 @@
 - (void)_conditionalRequirementsChanged:(_Bool)arg1;
 - (void)_connectionIsWaitingWithReason:(long long)arg1;
 - (void)_willSendRequestForEstablishedConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
 - (void)_didFinishWithError:(id)arg1;
 - (void)_didSendBodyData:(struct UploadProgressInfo)arg1;
 - (void)_didReceiveData:(id)arg1;
 - (void)_didReceiveResponse:(id)arg1 sniff:(_Bool)arg2 rewrite:(_Bool)arg3;
-- (void)_sendResponseToDelegate:(id)arg1;
-- (void)_tick;
-- (void)_tick_finishing;
-- (void)_task_sendFinish;
 - (void)_ackBytes:(long long)arg1;
-- (void)_tick_running;
-- (void)_tick_sniffNow;
-- (void)_tick_initialize;
-- (void)_tick_initialize_startLoad;
 - (void)expectedProgressTargetChanged;
 - (void)setBytesPerSecondLimit:(long long)arg1;
-- (void)setPriorityHint:(float)arg1;
+- (void)setPriorityHint:(float)arg1 incremental:(_Bool)arg2;
 - (void)setPoolPriority:(long long)arg1;
 - (void)setIsDownload:(_Bool)arg1;
 - (void)resume;
 - (void)suspend;
 - (void)cancel;
 - (void)withLoaderAsync:(CDUnknownBlockType)arg1;
-- (void)withLoaderOnQueue:(CDUnknownBlockType)arg1;
-- (void)afterDelegateWithTick:(CDUnknownBlockType)arg1;
-- (void)_immediatePostDelegateTick;
-- (void)withDelegateAndPendingCompletion:(CDUnknownBlockType)arg1;
-- (void)_cleanup;
 - (void)dealloc;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 

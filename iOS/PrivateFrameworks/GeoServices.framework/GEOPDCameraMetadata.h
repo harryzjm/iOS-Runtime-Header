@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDCameraMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_9f2792e4 _textureIds;
     GEOPDLensProjection *_lensProjection;
     GEOPDOrientedPosition *_position;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _cameraNumber;
     int _imageHeight;
     int _imageWidth;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_textureIds:1;
         unsigned int read_lensProjection:1;
         unsigned int read_position:1;
-        unsigned int wrote_textureIds:1;
-        unsigned int wrote_lensProjection:1;
-        unsigned int wrote_position:1;
-        unsigned int wrote_cameraNumber:1;
-        unsigned int wrote_imageHeight:1;
-        unsigned int wrote_imageWidth:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,22 +44,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setTextureIds:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)textureIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsTextureId:(unsigned int)arg1;
 - (void)addTextureId:(unsigned int)arg1;
 - (void)clearTextureIds;
 @property(readonly, nonatomic) unsigned int *textureIds;
 @property(readonly, nonatomic) unsigned long long textureIdsCount;
-- (void)_readTextureIds;
 @property(retain, nonatomic) GEOPDOrientedPosition *position;
 @property(readonly, nonatomic) _Bool hasPosition;
-- (void)_readPosition;
 @property(retain, nonatomic) GEOPDLensProjection *lensProjection;
 @property(readonly, nonatomic) _Bool hasLensProjection;
-- (void)_readLensProjection;
 @property(nonatomic) _Bool hasImageHeight;
 @property(nonatomic) int imageHeight;
 @property(nonatomic) _Bool hasImageWidth;
@@ -70,6 +66,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasCameraNumber;
 @property(nonatomic) int cameraNumber;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class GEOMapRegion, GEOPOICategoryFilter, NSArray;
 
 @interface GEOSpatialPlaceLookupParameters : NSObject
 {
@@ -14,13 +14,19 @@
     double _radius;
     NSArray *_categories;
     int _maxResultCount;
+    GEOMapRegion *_mapRegion;
+    GEOPOICategoryFilter *_poiCategoryFilter;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) GEOPOICategoryFilter *poiCategoryFilter; // @synthesize poiCategoryFilter=_poiCategoryFilter;
+@property(readonly, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
 @property(readonly, nonatomic) int maxResultCount; // @synthesize maxResultCount=_maxResultCount;
 @property(readonly, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property(readonly, nonatomic) double radius; // @synthesize radius=_radius;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
-- (void).cxx_destruct;
+- (id)initWithMapRegion:(id)arg1 poiCategoryFilter:(id)arg2;
+- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 poiCategoryFilter:(id)arg3;
 - (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 categories:(id)arg3 maxResultCount:(int)arg4;
 - (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 categories:(id)arg3;
 - (id)init;

@@ -8,18 +8,22 @@
 
 #import <FrontBoardServices/BSXPCSecureCoding-Protocol.h>
 
-@class FBSSceneClientSettings, NSString;
+@class FBSSceneClientSettings, FBSSceneSpecification, NSString;
 
 @interface FBSWorkspaceSceneRequestOptions : NSObject <BSXPCSecureCoding>
 {
+    _Bool _keyboardScene;
     NSString *_identifier;
+    FBSSceneSpecification *_specification;
     FBSSceneClientSettings *_initialClientSettings;
 }
 
 + (_Bool)supportsBSXPCSecureCoding;
-@property(copy, nonatomic) FBSSceneClientSettings *initialClientSettings; // @synthesize initialClientSettings=_initialClientSettings;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isKeyboardScene) _Bool keyboardScene; // @synthesize keyboardScene=_keyboardScene;
+@property(copy, nonatomic) FBSSceneClientSettings *initialClientSettings; // @synthesize initialClientSettings=_initialClientSettings;
+@property(copy, nonatomic) FBSSceneSpecification *specification; // @synthesize specification=_specification;
+@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
 

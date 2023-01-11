@@ -16,7 +16,7 @@
 - (_Bool)isSwitcherWindowVisible;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)visibleAppLayouts;
 - (id)init;
 
 @end

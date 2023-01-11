@@ -9,20 +9,22 @@
 #import <HealthRecordServices/NSCopying-Protocol.h>
 #import <HealthRecordServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSURL;
+@class NSArray, NSString, NSURL;
 
 @interface HDReferenceExtractionRequest : NSObject <NSCopying, NSSecureCoding>
 {
     NSArray *_resources;
     NSArray *_FHIRResourceData;
     NSURL *_serverBaseURL;
+    NSString *_FHIRRelease;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *FHIRRelease; // @synthesize FHIRRelease=_FHIRRelease;
 @property(readonly, copy, nonatomic) NSURL *serverBaseURL; // @synthesize serverBaseURL=_serverBaseURL;
 @property(readonly, copy, nonatomic) NSArray *FHIRResourceData; // @synthesize FHIRResourceData=_FHIRResourceData;
 @property(readonly, copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithResources:(id)arg1 FHIRResourceData:(id)arg2 serverBaseURL:(id)arg3;
 - (id)initWithCoder:(id)arg1;

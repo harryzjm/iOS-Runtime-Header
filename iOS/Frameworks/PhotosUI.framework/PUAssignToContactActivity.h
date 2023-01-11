@@ -18,13 +18,12 @@ __attribute__((visibility("hidden")))
     id <PXActivityItemSourceController> _itemSourceController;
 }
 
-@property(nonatomic) __weak id <PXActivityItemSourceController> itemSourceController; // @synthesize itemSourceController=_itemSourceController;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PXActivityItemSourceController> itemSourceController; // @synthesize itemSourceController=_itemSourceController;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (id)activityViewController;
 - (id)_embeddedActivityViewController;
 - (id)_systemImageName;
-- (_Bool)canPerformWithActivityItems:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

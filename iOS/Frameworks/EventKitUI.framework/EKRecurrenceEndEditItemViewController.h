@@ -25,9 +25,9 @@
 }
 
 + (id)_neverLocalizedString;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDate *bestInitialDate; // @synthesize bestInitialDate=_bestInitialDate;
 @property(copy, nonatomic) NSDate *repeatEndDate; // @synthesize repeatEndDate=_repeatEndDate;
-- (void).cxx_destruct;
 - (void)shortenCell:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -47,6 +47,7 @@
 - (id)_endDateStringForCurrentShorteningStatus;
 - (id)_stringForEndDate;
 - (void)_localeChanged;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (void)loadView;

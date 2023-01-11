@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
-- (void)componentViewDidMoveToWindow;
+- (void)ensurePlatformView;
 
 @end
 

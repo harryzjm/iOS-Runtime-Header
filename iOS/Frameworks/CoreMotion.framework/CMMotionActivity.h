@@ -12,6 +12,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (struct CLMotionActivity *)motionActivity;
 - (id)description;
 @property(readonly, nonatomic) _Bool cycling;
 @property(readonly, nonatomic) _Bool automotive;

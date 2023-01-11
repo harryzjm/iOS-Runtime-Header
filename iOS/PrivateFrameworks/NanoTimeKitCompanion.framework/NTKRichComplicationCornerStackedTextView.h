@@ -19,6 +19,7 @@
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (id)outerLabel;
 - (void)layoutSubviews;
 - (id)init;
 

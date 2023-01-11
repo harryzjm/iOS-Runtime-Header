@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSDate, NSNumber, NSSet, NSString, NSUUID;
+@class CHRecentCall, NSDate, NSNumber, NSSet, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface CallRecord : NSManagedObject
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsRemoteParticipantHandles;
 @property(readonly, nonatomic) _Bool supportsOutgoingLocalParticipantUUID;
 @property(readonly, nonatomic) _Bool supportsLocalParticipantUUID;
+- (_Bool)supportsJunkConfidence;
 @property(readonly, nonatomic) _Bool supportsHandleType;
 @property(readonly, nonatomic) _Bool supportsCallCategory;
 - (id)compositeVerificationStatusForContext:(id)arg1;
@@ -26,10 +27,13 @@ __attribute__((visibility("hidden")))
 - (id)compositeRemoteParticipantHandlesForContext:(id)arg1;
 - (id)compositeOutgoingLocalParticipantUUIDForContext:(id)arg1;
 - (id)compositeLocalParticipantUUIDForContext:(id)arg1;
+- (id)compositeJunkConfidenceForContext:(id)arg1;
 - (id)compositeHandleTypeForContext:(id)arg1;
 - (id)compositeCallCategoryForContext:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *chRemoteParticipantHandles;
+@property(readonly, nonatomic) CHRecentCall *chRecentCall;
 @property(readonly, nonatomic) long long chHandleType;
+@property(nonatomic) unsigned int chCallStatus;
 
 // Remaining properties
 @property(retain, nonatomic) NSString *address; // @dynamic address;
@@ -40,8 +44,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *disconnected_cause; // @dynamic disconnected_cause;
 @property(copy, nonatomic) NSNumber *duration; // @dynamic duration;
 @property(copy, nonatomic) NSNumber *face_time_data; // @dynamic face_time_data;
+@property(copy, nonatomic) NSNumber *filtered_out_reason; // @dynamic filtered_out_reason;
 @property(copy, nonatomic) NSNumber *handle_type; // @dynamic handle_type;
 @property(copy, nonatomic) NSString *iso_country_code; // @dynamic iso_country_code;
+@property(copy, nonatomic) NSNumber *junkConfidence; // @dynamic junkConfidence;
 @property(copy, nonatomic) NSUUID *localParticipantUUID; // @dynamic localParticipantUUID;
 @property(copy, nonatomic) NSString *location; // @dynamic location;
 @property(copy, nonatomic) NSString *name; // @dynamic name;

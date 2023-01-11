@@ -5,12 +5,15 @@
 //
 
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
+#import <SpringBoard/SBSceneLayoutStatusBarAssertionProviding-Protocol.h>
 
-@class SBDeviceApplicationSceneHandle, SBHomeGrabberView, SBSceneViewStatusBarAssertion;
+@class SBDeviceApplicationSceneHandle, SBHomeGrabberView, UIView;
+@protocol SBApplicationSceneBackgroundView;
 
-@protocol SBDeviceApplicationSceneViewControlling <SBApplicationSceneViewControlling>
+@protocol SBDeviceApplicationSceneViewControlling <SBApplicationSceneViewControlling, SBSceneLayoutStatusBarAssertionProviding>
+@property(nonatomic) long long homeGrabberDisplayMode;
 @property(readonly, nonatomic) SBHomeGrabberView *homeGrabberView;
 @property(readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
-- (SBSceneViewStatusBarAssertion *)statusBarAssertionWithStatusBarHidden:(_Bool)arg1 atLevel:(unsigned long long)arg2;
+@property(retain, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
 @end
 

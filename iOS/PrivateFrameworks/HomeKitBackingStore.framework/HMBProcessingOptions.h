@@ -12,39 +12,43 @@
 
 @interface HMBProcessingOptions : HMFObject <NSSecureCoding>
 {
-    _Bool _enqueueExternalOutput;
-    _Bool _performDelegateCallbacks;
-    _Bool _rollbackIfUnpushedForMirror;
+    _Bool _shouldPerformDelegateCallbacks;
+    _Bool _shouldEnqueueMirrorOutput;
+    _Bool _shouldRollBackIfMirrorOutputFails;
+    _Bool _disallowsCellularAccessForMirrorOutput;
+    _Bool _disallowsModelCreation;
     NSString *_label;
     NSDictionary *_messagePayload;
     NSString *_messageName;
     CDUnknownBlockType _messageResponseHandler;
     NSUUID *_messageTransactionIdentifier;
-    unsigned long long _changeSource;
     long long _qualityOfService;
     HMFActivity *_activity;
+    unsigned long long _transactionItemsBatchLimit;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)optionsWithMessage:(id)arg1;
 + (id)optionsWithLabel:(id)arg1;
-+ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property _Bool disallowsModelCreation; // @synthesize disallowsModelCreation=_disallowsModelCreation;
+@property(nonatomic) unsigned long long transactionItemsBatchLimit; // @synthesize transactionItemsBatchLimit=_transactionItemsBatchLimit;
 @property(retain, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property(readonly, nonatomic) unsigned long long changeSource; // @synthesize changeSource=_changeSource;
-@property(nonatomic) _Bool rollbackIfUnpushedForMirror; // @synthesize rollbackIfUnpushedForMirror=_rollbackIfUnpushedForMirror;
-@property(nonatomic) _Bool performDelegateCallbacks; // @synthesize performDelegateCallbacks=_performDelegateCallbacks;
-@property(nonatomic) _Bool enqueueExternalOutput; // @synthesize enqueueExternalOutput=_enqueueExternalOutput;
+@property(nonatomic) _Bool disallowsCellularAccessForMirrorOutput; // @synthesize disallowsCellularAccessForMirrorOutput=_disallowsCellularAccessForMirrorOutput;
+@property(nonatomic) _Bool shouldRollBackIfMirrorOutputFails; // @synthesize shouldRollBackIfMirrorOutputFails=_shouldRollBackIfMirrorOutputFails;
+@property(nonatomic) _Bool shouldEnqueueMirrorOutput; // @synthesize shouldEnqueueMirrorOutput=_shouldEnqueueMirrorOutput;
+@property(nonatomic) _Bool shouldPerformDelegateCallbacks; // @synthesize shouldPerformDelegateCallbacks=_shouldPerformDelegateCallbacks;
 @property(retain, nonatomic) NSUUID *messageTransactionIdentifier; // @synthesize messageTransactionIdentifier=_messageTransactionIdentifier;
 @property(copy, nonatomic) CDUnknownBlockType messageResponseHandler; // @synthesize messageResponseHandler=_messageResponseHandler;
 @property(retain, nonatomic) NSString *messageName; // @synthesize messageName=_messageName;
 @property(retain, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
-@property(retain, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)callMessageResponseHandlerWithPayload:(id)arg1 error:(id)arg2;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)attributeDescriptions;
-- (id)transactionIdentifier;
 - (id)initWithLabel:(id)arg1;
 
 @end

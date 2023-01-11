@@ -13,17 +13,17 @@
 @interface GEOPDStorefrontFace : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_features;
     GEOPDOrientedBoundingBox *_geometry;
     unsigned long long _groupId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_groupId:1;
         unsigned int read_features:1;
         unsigned int read_geometry:1;
-        unsigned int wrote_features:1;
-        unsigned int wrote_geometry:1;
-        unsigned int wrote_groupId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,20 +38,22 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasGroupId;
 @property(nonatomic) unsigned long long groupId;
 - (id)featureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)featuresCount;
-- (void)_addNoFlagsFeature:(id)arg1;
 - (void)addFeature:(id)arg1;
 - (void)clearFeatures;
 @property(retain, nonatomic) NSMutableArray *features;
-- (void)_readFeatures;
 @property(retain, nonatomic) GEOPDOrientedBoundingBox *geometry;
 @property(readonly, nonatomic) _Bool hasGeometry;
-- (void)_readGeometry;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

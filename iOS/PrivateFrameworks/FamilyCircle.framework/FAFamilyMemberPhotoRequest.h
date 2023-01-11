@@ -6,20 +6,20 @@
 
 #import <AppleAccount/AAFamilyRequest.h>
 
-@class NSNumber, NSString, SSAccount;
+@class ACAccount, NSNumber, NSString;
 
 @interface FAFamilyMemberPhotoRequest : AAFamilyRequest
 {
     NSNumber *_familyMemberDSID;
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
     NSString *_serverCacheTag;
 }
 
 + (Class)responseClass;
-@property(copy, nonatomic) NSString *serverCacheTag; // @synthesize serverCacheTag=_serverCacheTag;
-@property(retain, nonatomic, setter=setiTunesAccount:) SSAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
-@property(copy, nonatomic) NSNumber *familyMemberDSID; // @synthesize familyMemberDSID=_familyMemberDSID;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *serverCacheTag; // @synthesize serverCacheTag=_serverCacheTag;
+@property(retain, nonatomic, setter=setiTunesAccount:) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
+@property(copy, nonatomic) NSNumber *familyMemberDSID; // @synthesize familyMemberDSID=_familyMemberDSID;
 - (id)urlRequest;
 - (id)urlString;
 

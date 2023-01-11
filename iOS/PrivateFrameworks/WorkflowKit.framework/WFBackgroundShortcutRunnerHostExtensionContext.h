@@ -18,10 +18,10 @@
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
-@property(nonatomic) __weak id <WFOutOfProcessWorkflowControllerHost> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)workflowDidFinishRunningWithError:(id)arg1 cancelled:(_Bool)arg2;
-- (void)workflowDidStart;
+@property(nonatomic) __weak id <WFOutOfProcessWorkflowControllerHost> delegate; // @synthesize delegate=_delegate;
+- (void)workflowDidFinishRunningWithError:(id)arg1 cancelled:(_Bool)arg2 reference:(id)arg3;
+- (void)workflowDidStartFromWorkflowReference:(id)arg1 attribution:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

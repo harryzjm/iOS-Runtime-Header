@@ -7,41 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <TrustedPeers/NSSecureCoding-Protocol.h>
-#import <TrustedPeers/TPPolicy-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSSet, TPPolicyVersion;
 
-@interface TPPolicy : NSObject <TPPolicy, NSSecureCoding>
+@interface TPPolicy : NSObject <NSSecureCoding>
 {
+    _Bool _unknownRedactions;
+    TPPolicyVersion *_version;
     NSArray *_modelToCategory;
     NSDictionary *_categoriesByView;
     NSDictionary *_introducersByCategory;
     NSArray *_keyViewMapping;
-    unsigned long long _version;
+    NSSet *_userControllableViewList;
+    NSSet *_piggybackViews;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)policyWithModelToCategory:(id)arg1 categoriesByView:(id)arg2 introducersByCategory:(id)arg3 keyViewMapping:(id)arg4 version:(unsigned long long)arg5;
-@property(nonatomic) unsigned long long version; // @synthesize version=_version;
++ (id)policyWithModelToCategory:(id)arg1 categoriesByView:(id)arg2 introducersByCategory:(id)arg3 keyViewMapping:(id)arg4 unknownRedactions:(_Bool)arg5 userControllableViewList:(id)arg6 piggybackViews:(id)arg7 version:(id)arg8;
+- (void).cxx_destruct;
+@property _Bool unknownRedactions; // @synthesize unknownRedactions=_unknownRedactions;
+@property(retain, nonatomic) NSSet *piggybackViews; // @synthesize piggybackViews=_piggybackViews;
+@property(retain, nonatomic) NSSet *userControllableViewList; // @synthesize userControllableViewList=_userControllableViewList;
 @property(retain, nonatomic) NSArray *keyViewMapping; // @synthesize keyViewMapping=_keyViewMapping;
 @property(retain, nonatomic) NSDictionary *introducersByCategory; // @synthesize introducersByCategory=_introducersByCategory;
 @property(retain, nonatomic) NSDictionary *categoriesByView; // @synthesize categoriesByView=_categoriesByView;
 @property(retain, nonatomic) NSArray *modelToCategory; // @synthesize modelToCategory=_modelToCategory;
-- (void).cxx_destruct;
+@property(retain, nonatomic) TPPolicyVersion *version; // @synthesize version=_version;
+- (_Bool)isEqualToPolicy:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)mapKeyToView:(id)arg1;
-- (id)viewsForModel:(id)arg1;
-- (id)excludedViewsForModel:(id)arg1;
+- (id)viewsForModel:(id)arg1 error:(id *)arg2;
+- (id)syncingPolicyForModel:(id)arg1 syncUserControllableViews:(int)arg2 error:(id *)arg3;
 - (_Bool)peerInCategory:(id)arg1 canAccessView:(id)arg2;
 - (_Bool)trustedPeerInCategory:(id)arg1 canIntroduceCategory:(id)arg2;
 - (id)categoryForModel:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)description;
 
 @end
 

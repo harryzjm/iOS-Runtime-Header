@@ -12,16 +12,18 @@
 #import <DocumentManager/DOCRemoteViewControllerDelegate-Protocol.h>
 #import <DocumentManager/DOCViewServiceErrorViewControllerDelegate-Protocol.h>
 #import <DocumentManager/NSCoding-Protocol.h>
+#import <DocumentManager/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <DocumentManager/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class DOCAppearance, DOCConfiguration, DOCDocBrowserVC_UIActivityViewController, NSArray, NSOperationQueue, NSString, UIColor, UIView, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController;
+@class DOCAppearance, DOCConfiguration, DOCDocBrowserVC_UIActivityViewController, NSArray, NSOperationQueue, NSString, NSURL, UIColor, UIPresentationController, UIView, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController;
 @protocol DOCServiceDocumentBrowserViewControllerInterface, UIDocumentBrowserViewControllerDelegate;
 
-@interface UIDocumentBrowserViewController : UIViewController <DOCHostDocumentBrowserViewControllerInterface, DOCRemoteViewControllerDelegate, DOCViewServiceErrorViewControllerDelegate, DOCKeyCommandResponder, _UIRemoteViewControllerContaining, DOCAppearanceCustomization, NSCoding>
+@interface UIDocumentBrowserViewController : UIViewController <DOCHostDocumentBrowserViewControllerInterface, DOCViewServiceErrorViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIRemoteViewControllerContaining, DOCRemoteViewControllerDelegate, DOCKeyCommandResponder, DOCAppearanceCustomization, NSCoding>
 {
     _Bool _isDisplayingRemoteViewController;
     UIView *_trackingViewsContainer;
     DOCAppearance *_appearance;
+    NSURL *_urlCurrentlyBeingImported;
     _Bool _allowsDocumentCreation;
     _Bool _allowsPickingMultipleItems;
     _Bool _shouldShowFileExtensions;
@@ -36,6 +38,7 @@
     NSArray *_remoteAdditionalTrailingNavigationBarButtonItems;
     _UIResilientRemoteViewContainerViewController *_remoteViewController;
     DOCDocBrowserVC_UIActivityViewController *_activityViewController;
+    UIPresentationController *_adaptivePresentationController;
     id <DOCServiceDocumentBrowserViewControllerInterface> _serviceProxy;
     NSOperationQueue *_serviceQueue;
     DOCConfiguration *_configuration;
@@ -49,6 +52,7 @@
 }
 
 + (id)placeholderURLForDownloadsFolder;
+- (void).cxx_destruct;
 @property(copy, nonatomic) UIColor *itemSubtitleColor; // @synthesize itemSubtitleColor=_itemSubtitleColor;
 @property(copy, nonatomic) UIColor *itemTitleColor; // @synthesize itemTitleColor=_itemTitleColor;
 @property(copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -59,6 +63,7 @@
 @property(retain, nonatomic) DOCConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSOperationQueue *serviceQueue; // @synthesize serviceQueue=_serviceQueue;
 @property(retain, nonatomic) id <DOCServiceDocumentBrowserViewControllerInterface> serviceProxy; // @synthesize serviceProxy=_serviceProxy;
+@property(nonatomic) __weak UIPresentationController *adaptivePresentationController; // @synthesize adaptivePresentationController=_adaptivePresentationController;
 @property(nonatomic) __weak DOCDocBrowserVC_UIActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
 @property(retain, nonatomic) _UIResilientRemoteViewContainerViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property(nonatomic) _Bool shouldDelayRemoteViewController; // @synthesize shouldDelayRemoteViewController=_shouldDelayRemoteViewController;
@@ -73,7 +78,7 @@
 @property(nonatomic) _Bool allowsPickingMultipleItems; // @synthesize allowsPickingMultipleItems=_allowsPickingMultipleItems;
 @property(nonatomic) _Bool allowsDocumentCreation; // @synthesize allowsDocumentCreation=_allowsDocumentCreation;
 @property(nonatomic) __weak id <UIDocumentBrowserViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)_presentationController:(id)arg1 prepareAdaptivePresentationController:(id)arg2;
 - (void)forwardHostSceneIdentifier:(id)arg1;
 - (id)recentDocumentsTypesFromInfoPlist;
 - (_Bool)supportsRemovableFileProvidersForConfiguration:(id)arg1;
@@ -87,7 +92,9 @@
 - (void)_didTriggerCustomActionWithIdentifier:(id)arg1 onItems:(id)arg2;
 - (void)_commitDocumentURLPreview:(id)arg1;
 - (void)_presentActivityViewControllerForItems:(id)arg1 withPopoverTracker:(id)arg2 isContentManaged:(_Bool)arg3 additionalActivities:(id)arg4 activityProxy:(id)arg5;
+- (void)_establishFirstResponderOnServiceSideForKeyCommand:(id)arg1;
 - (void)dismissingKeyCommandWasPerformed:(id)arg1;
+- (void)_awakingNoOpKeyCommandWasPerformed:(id)arg1;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (_Bool)becomeFirstResponder;
 - (_Bool)canBecomeFirstResponder;
@@ -118,10 +125,12 @@
 @property(nonatomic) double createButtonAspectRatio;
 @property(nonatomic) double defaultDocumentAspectRatio;
 @property(retain, nonatomic) NSArray *additionalToolbarButtonItems; // @dynamic additionalToolbarButtonItems;
+@property(readonly, copy, nonatomic) NSArray *contentTypesForRecentDocuments;
 @property(readonly, copy, nonatomic) NSArray *recentDocumentsContentTypes;
 @property(readonly, copy, nonatomic) NSArray *allowedContentTypes;
 - (void)didTapTryAgainInErrorViewController:(id)arg1;
 - (void)remoteViewController:(id)arg1 didTerminateViewServiceWithError:(id)arg2;
+- (void)applicationDidBecomeActive:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_importDocumentAtURL:(id)arg1 neighbourURL:(id)arg2 mode:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)importDocumentAtURL:(id)arg1 byMoving:(_Bool)arg2 toCurrentBrowserLocationWithCompletion:(CDUnknownBlockType)arg3;
@@ -141,10 +150,13 @@
 - (void)_embedViewController:(id)arg1;
 - (void)_embedDocumentBrowserViewController;
 - (void)viewDidLoad;
+- (void)dealloc;
 - (void)__commonInit;
 - (id)initWithConfiguration:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)configurationForOpeningDocumentsWithContentTypes:(id)arg1;
+- (id)initForOpeningContentTypes:(id)arg1;
 - (id)initForOpeningFilesWithContentTypes:(id)arg1;
 - (id)init;
 

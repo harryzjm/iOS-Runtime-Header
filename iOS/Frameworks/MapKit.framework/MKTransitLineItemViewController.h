@@ -15,7 +15,7 @@
 #import <MapKit/_MKInfoCardAnalyticsDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardController-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKNearestStationViewController, MKPlaceActionManager, MKPlaceCardActionItem, MKPlaceCardActionsViewController, MKPlaceCardHeaderViewController, MKPlaceHeaderButtonsViewController, NSNumber, NSString;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKNearestStationViewController, MKPlaceActionManager, MKPlaceCardActionItem, MKPlaceCardActionsViewController, MKPlaceCardHeaderViewController, MKPlaceHeaderButtonsViewController, NSNumber, NSString;
 @protocol GEOTransitLineItem, MKLocationManagerOperation, MKMapServiceTicket, MKTransitLineItemViewControllerDelegate, UIScrollViewDelegate;
 
 @interface MKTransitLineItemViewController <MKStackingViewControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKETAProviderDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKNearestStationViewControllerDelegate, MKTransitLineIncidentsViewControllerDelegate, _MKInfoCardController, _MKInfoCardAnalyticsDelegate, MKPlaceCardActionControllerDelegate>
@@ -40,11 +40,14 @@
     MKPlaceCardActionItem *_removeFromFavoritesItem;
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
+    GEOCyclingOptions *_cyclingOptions;
     id <UIScrollViewDelegate> _scrollViewDelegate;
 }
 
 + (double)headerHeightInMinimalMode;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <UIScrollViewDelegate> scrollViewDelegate; // @synthesize scrollViewDelegate=_scrollViewDelegate;
+@property(retain, nonatomic) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property(retain, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property(retain, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property(readonly, nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
@@ -53,7 +56,6 @@
 @property(retain, nonatomic) NSNumber *favorited; // @synthesize favorited=_favorited;
 @property(nonatomic) __weak id <MKTransitLineItemViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <GEOTransitLineItem> transitLineItem; // @synthesize transitLineItem=_transitLineItem;
-- (void).cxx_destruct;
 - (void)infoCardTransitAnalyticsDidSelectionAction:(int)arg1 resultIndex:(long long)arg2 targetID:(unsigned long long)arg3 transitSystem:(id)arg4 transitDepartureSequence:(id)arg5 transitCardCategory:(int)arg6 transitIncident:(id)arg7 feedbackDelegateSelector:(int)arg8;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 feedbackDelegateSelector:(int)arg6;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 feedbackDelegateSelector:(int)arg4;
@@ -80,6 +82,8 @@
 - (void)nearestStationViewControllerDidSelectStation:(id)arg1;
 - (void)_fetchNearestStation;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)performAction:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)createMenuActions;
 - (void)_updateViewControllers;
 - (void)resetNearestStation;
 - (void)setTransitLineItem:(id)arg1 loading:(_Bool)arg2;

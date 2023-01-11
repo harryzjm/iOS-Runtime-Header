@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebUI/WBSFormMetadataController.h>
+#import <SafariSharedUI/WBSFormMetadataController.h>
 
 #import <SafariServices/WKWebProcessPlugInFormDelegatePrivate-Protocol.h>
 
@@ -40,7 +40,7 @@
 - (void)clearField:(id)arg1 inFrame:(id)arg2;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(id)arg1 passwordControlUniqueIDs:(id)arg2;
 - (void)removeAutomaticPasswordElementsInFrame:(id)arg1 focusedPasswordControlUniqueID:(id)arg2 passwordControlUniqueIDs:(id)arg3 blurAfterRemoval:(_Bool)arg4;
-- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3;
+- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3 focusedFieldControlID:(id)arg4;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 fillSynchronously:(_Bool)arg3 setAutoFilled:(_Bool)arg4 focusFieldAfterFilling:(_Bool)arg5 fieldToFocus:(id)arg6 submitForm:(_Bool)arg7;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 fillSynchronously:(_Bool)arg3 setAutoFilled:(_Bool)arg4 selectFieldAfterFilling:(id)arg5;
 - (id)_observer;

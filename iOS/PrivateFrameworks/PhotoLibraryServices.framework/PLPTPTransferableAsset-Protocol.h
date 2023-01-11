@@ -12,7 +12,7 @@
 @protocol PLPTPTransferableAsset <NSObject>
 @property(readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderImageFile;
-@property(readonly, nonatomic) long long snowplowTrashedState;
+@property(readonly, nonatomic) long long cameraProcessingAdjustmentTrashedState;
 @property(readonly, nonatomic) struct CGSize videoComplementSpatialOverCaptureSize;
 @property(readonly, nonatomic) struct CGSize spatialOverCaptureSize;
 @property(readonly, copy, nonatomic) NSString *pathForOriginalAdjustmentFile;
@@ -52,6 +52,7 @@
 @property(readonly, copy, nonatomic) NSDate *dateCreated;
 @property(readonly, copy, nonatomic) NSString *originalFilename;
 @property(readonly, copy, nonatomic) NSString *filename;
+@property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, nonatomic) short savedAssetType;
 @property(readonly, retain, nonatomic) id uuid;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;

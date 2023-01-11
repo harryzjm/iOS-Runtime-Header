@@ -18,14 +18,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)createFakeBrandForTestAccounts;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *batchID; // @synthesize batchID=_batchID;
 @property(readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic, getter=isFakeBrandForTestAccounts) _Bool fakeBrandForTestAccounts;
 - (id)initWithExternalID:(id)arg1 batchID:(id)arg2;
 - (id)init;
 

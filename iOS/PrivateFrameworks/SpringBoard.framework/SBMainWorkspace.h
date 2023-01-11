@@ -15,13 +15,14 @@
 #import <SpringBoard/MCProfileConnectionObserver-Protocol.h>
 #import <SpringBoard/SBBacklightControllerObserver-Protocol.h>
 #import <SpringBoard/SBControlCenterModuleTransientOverlayViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBInCallPresentationManagerDelegate-Protocol.h>
 #import <SpringBoard/SBPowerDownViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBTransientOverlayPresentationManagerDelegate-Protocol.h>
 
-@class BSEventQueueLock, BSWatchdog, FBDisplayLayoutTransition, FBSceneManager, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBControlCenterModuleTransientOverlayViewController, SBHUDController, SBHomeGestureArbiter, SBHomeHardwareButtonLongPressDurationAssertion, SBIdleTimerCoordinatorHelper, SBInCallTransientOverlayManager, SBOrientationAggdLogger, SBPowerDownViewController, SBRingerControl, SBTransientOverlayPresentationManager, SBVolumeControl, SBWorkspaceKeyboardFocusController, SBWorkspaceTransaction;
+@class BSEventQueueLock, BSWatchdog, FBDisplayLayoutTransition, FBSceneManager, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBControlCenterModuleTransientOverlayViewController, SBHUDController, SBHomeGestureArbiter, SBHomeHardwareButtonLongPressDurationAssertion, SBIdleTimerCoordinatorHelper, SBInCallPresentationManager, SBInCallTransientOverlayManager, SBOrientationAggdLogger, SBPowerDownViewController, SBRingerControl, SBTransientOverlayPresentationManager, SBVolumeControl, SBWorkspaceKeyboardFocusController, SBWorkspaceTransaction;
 @protocol SBIdleTimerCoordinating, SBIdleTimerProviding;
 
-@interface SBMainWorkspace <BSTransactionObserver, SBBacklightControllerObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver, MCProfileConnectionObserver, BSPowerMonitorObserver, SBPowerDownViewControllerDelegate, SBTransientOverlayPresentationManagerDelegate, CCSModulePresentationEndpoint, SBControlCenterModuleTransientOverlayViewControllerDelegate>
+@interface SBMainWorkspace <BSTransactionObserver, SBBacklightControllerObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver, MCProfileConnectionObserver, BSPowerMonitorObserver, SBPowerDownViewControllerDelegate, SBTransientOverlayPresentationManagerDelegate, CCSModulePresentationEndpoint, SBControlCenterModuleTransientOverlayViewControllerDelegate, SBInCallPresentationManagerDelegate>
 {
     _Bool _initialized;
     BSEventQueueLock *_suspensionLock;
@@ -46,6 +47,7 @@
     SBHomeGestureArbiter *_homeGestureArbiter;
     SBInCallTransientOverlayManager *_inCallTransientOverlayManager;
     SBTransientOverlayPresentationManager *_transientOverlayPresentationManager;
+    SBInCallPresentationManager *_inCallPresentationManager;
     FBSceneManager *_sceneManager;
 }
 
@@ -54,7 +56,9 @@
 + (id)_instanceIfExists;
 + (id)sharedInstance;
 + (id)start;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FBSceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
+@property(readonly, nonatomic) SBInCallPresentationManager *inCallPresentationManager; // @synthesize inCallPresentationManager=_inCallPresentationManager;
 @property(readonly, nonatomic) SBTransientOverlayPresentationManager *transientOverlayPresentationManager; // @synthesize transientOverlayPresentationManager=_transientOverlayPresentationManager;
 @property(readonly, nonatomic) SBInCallTransientOverlayManager *inCallTransientOverlayManager; // @synthesize inCallTransientOverlayManager=_inCallTransientOverlayManager;
 @property(readonly, nonatomic) SBHomeGestureArbiter *homeGestureArbiter; // @synthesize homeGestureArbiter=_homeGestureArbiter;
@@ -64,7 +68,6 @@
 @property(retain, nonatomic) SBWorkspaceTransaction *currentTransaction; // @synthesize currentTransaction=_currentTransaction;
 @property(retain, nonatomic, getter=_activeIdleTimerProvider, setter=_setActiveIdleTimerProvider:) id <SBIdleTimerProviding> activeIdleTimerProvider; // @synthesize activeIdleTimerProvider=_activeIdleTimerProvider;
 @property(readonly, nonatomic, getter=isMedusaEnabled) _Bool medusaEnabled; // @synthesize medusaEnabled=_medusaEnabled;
-- (void).cxx_destruct;
 - (_Bool)presentTransientOverlayViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)dismissTransientOverlayViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)dismissAllTransientOverlayPresentationsAnimated:(_Bool)arg1;
@@ -87,12 +90,12 @@
 - (id)transientOverlayPresentationManager:(id)arg1 newSceneDeactivationAssertionWithReason:(long long)arg2;
 - (void)transientOverlayPresentationManagerRequestsSiriDismissal:(id)arg1 animated:(_Bool)arg2;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireSiriWindowLevelAssertionWithReason:(id)arg2 windowLevel:(double)arg3;
+- (id)transientOverlayPresentationManager:(id)arg1 acquireWallpaperAnimationSuspensionAssertionWithReason:(id)arg2;
 - (id)siriPresentationObservationTokenForTransientOverlayPresentationManager:(id)arg1;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireDeviceOrientationUpdateDeferralAssertionWithReason:(id)arg2;
 - (void)transientOverlayPresentationManagerRequestsControlCenterDismissal:(id)arg1 animated:(_Bool)arg2;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireControlCenterWindowLevelAssertionWithReason:(id)arg2 windowLevel:(double)arg3;
 - (id)controlCenterPresentationObservationTokenForTransientOverlayPresentationManager:(id)arg1;
-- (void)transientOverlayPresentationManagerRequestsBannerLongLookDismissal:(id)arg1 animated:(_Bool)arg2;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireBannerLongLookWindowLevelAssertionWithReason:(id)arg2 windowLevel:(double)arg3;
 - (id)bannerLongLookPresentationObservationTokenForTransientOverlayPresentationManager:(id)arg1;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireInteractiveScreenshotGestureDisabledAssertionWithReason:(id)arg2;
@@ -100,9 +103,10 @@
 - (id)transientOverlayPresentationManager:(id)arg1 acquireDisableAutoUnlockAssertionWithReason:(id)arg2;
 - (void)transientOverlayPresentationManagerRequestsAppIconForceTouchDismissal:(id)arg1 animated:(_Bool)arg2;
 - (unsigned long long)defaultSupportedInterfaceOrientationsForTransientOverlayPresentationManager:(id)arg1;
+- (_Bool)isKeyboardVisibleForSpringBoardForTransientOverlayPresentationManager:(id)arg1;
 - (_Bool)defaultShouldAutorotateForTransientOverlayPresentationManager:(id)arg1;
 - (long long)defaultPreferredInterfaceOrientationForPresentationForTransientOverlayPresentationManager:(id)arg1;
-- (id)transientOverlayPresentationManager:(id)arg1 acquireHideAppStatusBarAssertionWithReason:(id)arg2;
+- (id)transientOverlayPresentationManager:(id)arg1 acquireHideAppStatusBarAssertionWithReason:(id)arg2 animated:(_Bool)arg3;
 - (id)currentStatusBarSettingsForTransientOverlayPresentationManager:(id)arg1;
 - (void)transactionDidComplete:(id)arg1;
 - (void)watchdogFired:(id)arg1;
@@ -114,11 +118,13 @@
 - (void)systemService:(id)arg1 isPasscodeLockedOrBlockedWithResult:(CDUnknownBlockType)arg2;
 - (void)_attemptUnlockToApplication:(id)arg1 showPasscode:(_Bool)arg2 origin:(id)arg3 givenOrigin:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (_Bool)_canImplicitlyUnlockAtLockScreenWhileAuthenticatedFromOrigin:(id)arg1 givenOrigin:(id)arg2 trustedRequest:(_Bool)arg3 outReason:(id *)arg4;
-- (void)_handleOpenURLRequest:(id)arg1 application:(id)arg2 options:(id)arg3 activationSettings:(id)arg4 origin:(id)arg5 withResult:(CDUnknownBlockType)arg6;
+- (void)_handleUserActionRequest:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (void)_handleUntrustedOpenRequestForApplication:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (void)_handleTrustedOpenRequestForApplication:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
 - (_Bool)_isApplicationRunningAsViewService:(id)arg1;
-- (void)_handleOpenApplicationRequest:(id)arg1 options:(id)arg2 origin:(id)arg3 withResult:(CDUnknownBlockType)arg4;
+- (void)_handleOpenApplicationRequest:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
 - (id)_validateRequestToOpenApplication:(id)arg1 options:(id)arg2 origin:(id)arg3 error:(out id *)arg4;
-- (id)_commonActivationSettingsForRequestWithOptions:(id)arg1 isTrustedRequest:(_Bool)arg2 clientProcess:(id)arg3;
+- (void)_applyCommonActivationSettings:(id)arg1 forRequestWithOptions:(id)arg2 clientProcess:(id)arg3 application:(id)arg4;
 - (void)systemService:(id)arg1 handleOpenApplicationRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)systemService:(id)arg1 canActivateApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (id)systemServiceApplicationInfoProvider:(id)arg1;
@@ -173,6 +179,10 @@
 - (void)presentPowerDownTransientOverlay;
 - (id)_generateIdleTimerBehaviorForReason:(id)arg1;
 - (void)_proposeIdleTimerBehaviorForReason:(id)arg1;
+- (void)inCallPresentationManagerRequestsHandlingOfDeferredUILock:(id)arg1;
+- (long long)inCallPresentationManagerInterfaceOrientationForTransientOverlayPresentation:(id)arg1;
+- (long long)inCallPresentationManagerInterfaceOrientationForBannerPresentation:(id)arg1;
+- (id)inCallPresentationManager:(id)arg1 createPresentationSessionWithSceneHandle:(id)arg2;
 - (void)controlCenterModuleTransientOverlayViewControllerNeedsDismissal:(id)arg1;
 - (void)_dismissPresentedControlCenterModule:(CDUnknownBlockType)arg1;
 - (void)presentModuleWithIdentifier:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;

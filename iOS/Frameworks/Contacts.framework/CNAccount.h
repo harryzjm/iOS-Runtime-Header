@@ -19,17 +19,21 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)ios_requestAccountSyncWithOptions:(unsigned long long)arg1;
++ (_Bool)requestAccountSyncWithOptions:(unsigned long long)arg1;
++ (_Bool)requestAccountSyncWithDefaultOptions;
 + (id)makeIdentifier;
 + (id)makeIdentifierString;
 + (id)identifierProvider;
 + (id)localAccount;
++ (id)os_log;
 + (id)predicateForAccountsWithIdentifiers:(id)arg1;
 + (id)predicateForAccountForContainerWithIdentifier:(id)arg1;
 + (id)predicateForAccountWithExternalIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) int iOSLegacyIdentifier; // @synthesize iOSLegacyIdentifier=_iOSLegacyIdentifier;
 @property(readonly, copy, nonatomic) NSString *externalIdentifierString; // @synthesize externalIdentifierString=_externalIdentifierString;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

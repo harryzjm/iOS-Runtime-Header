@@ -27,21 +27,19 @@
     _Bool _initializationOptionsSet;
     CADOperationProxy *_cadOperationProxy;
     id <ClientConnectionDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_workQueue;
     ClientIdentity *_identity;
     NSXPCConnection *_xpcConnection;
     CADDatabaseInitializationOptions *_databaseInitializationOptions;
 }
 
+- (void).cxx_destruct;
 @property(readonly) _Bool initializationOptionsSet; // @synthesize initializationOptionsSet=_initializationOptionsSet;
 @property(retain, nonatomic) CADDatabaseInitializationOptions *databaseInitializationOptions; // @synthesize databaseInitializationOptions=_databaseInitializationOptions;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(readonly, nonatomic) ClientIdentity *identity; // @synthesize identity=_identity;
 @property(nonatomic) struct CalDatabase *database; // @synthesize database=_database;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) __weak id <ClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) CADOperationProxy *cadOperationProxy; // @synthesize cadOperationProxy=_cadOperationProxy;
-- (void).cxx_destruct;
 - (_Bool)isCalendarItemManaged:(void *)arg1;
 - (_Bool)isCalendarManaged:(void *)arg1;
 - (_Bool)isStoreManaged:(void *)arg1;

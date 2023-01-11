@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Silex/SXComponentController-Protocol.h>
-#import <Silex/SXLayoutIntegrator-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
 @class NSArray, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, SXLayoutBlueprint, SXPresentationAttributes, SXViewport;
 @protocol SXComponentHosting, SXComponentViewEngine, SXDOMObjectProviding;
 
-@interface SXComponentController : NSObject <SXViewportChangeListener, SXComponentController, SXLayoutIntegrator>
+@interface SXComponentController : NSObject <SXViewportChangeListener, SXComponentController>
 {
     _Bool _isPresented;
     _Bool _isPresenting;
@@ -30,6 +29,7 @@
     SXPresentationAttributes *_presentationAttributes;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SXPresentationAttributes *presentationAttributes; // @synthesize presentationAttributes=_presentationAttributes;
 @property(nonatomic) _Bool isPresenting; // @synthesize isPresenting=_isPresenting;
 @property(retain, nonatomic) NSMutableArray *nestedComponentViews; // @synthesize nestedComponentViews=_nestedComponentViews;
@@ -42,7 +42,6 @@
 @property(nonatomic) __weak id <SXComponentHosting> host; // @synthesize host=_host;
 @property(readonly, nonatomic) _Bool isPresented; // @synthesize isPresented=_isPresented;
 @property(readonly, nonatomic) SXLayoutBlueprint *presentedBlueprint; // @synthesize presentedBlueprint=_presentedBlueprint;
-- (void).cxx_destruct;
 - (void)updatePresentationStateForNestedComponentView:(id)arg1 presentationState:(long long)arg2;
 - (void)updatePresentationStateForNestedComponentViews:(id)arg1 presentationState:(long long)arg2;
 - (void)assistiveTechnologyStatusDidChange;

@@ -23,7 +23,6 @@
 - (id)_accessibilityKeyCommands;
 - (id)_accessibilityPerformableActions;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (_Bool)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (_Bool)_accessibilityViewHierarchyHasNativeFocus;
 - (_Bool)_accessibilitySetNativeFocus;
 - (id)_accessibilityNativeFocusPreferredElement;
@@ -99,6 +98,7 @@
 - (void)_accessibilityHandleRemoveConfirm;
 - (id)_accessibilityFindRemoveConfirmSubview;
 - (void)_accessibilityHandleRemoveSwitch;
+- (id)_accessibilityCellReorderControl;
 - (id)_accessibilityCellEditingControl;
 - (_Bool)_accessibilityIsRemoveConfirmVisible;
 - (_Bool)_accessibilityIsRemoveControlVisible;
@@ -109,7 +109,10 @@
 - (_Bool)_accessibilityTableViewCellHidesInsertControl;
 - (void)_setAccessibilityMockParent:(id)arg1;
 - (id)_accessibilityMockParent;
+- (id)_accessibilityInternalDataRetrieveOnly;
+- (void)_accessibilityRemoveInternalData;
 - (id)_accessibilityInternalData;
+- (_Bool)_accessibilityImplementsDefaultRowRange;
 - (struct _NSRange)accessibilityRowRange;
 - (id)_accessibilityOverrideChildren;
 - (id)_accessibilityContainerElements;

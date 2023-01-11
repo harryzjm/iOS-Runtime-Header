@@ -11,6 +11,7 @@
 @class NSString;
 
 @interface NSDate (CKRecordValue) <CKRecordValue>
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

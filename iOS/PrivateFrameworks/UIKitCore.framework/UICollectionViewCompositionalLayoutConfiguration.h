@@ -13,21 +13,23 @@
 
 @interface UICollectionViewCompositionalLayoutConfiguration : NSObject <_UICollectionViewCompositionalLayoutConfiguration, NSCopying>
 {
-    long long _safeAreaReference;
     long long _scrollDirection;
     double _interSectionSpacing;
     NSArray *_boundarySupplementaryItems;
+    long long _contentInsetsReference;
 }
 
 + (id)defaultConfiguration;
+- (void).cxx_destruct;
+@property(nonatomic) long long contentInsetsReference; // @synthesize contentInsetsReference=_contentInsetsReference;
 @property(copy, nonatomic) NSArray *boundarySupplementaryItems; // @synthesize boundarySupplementaryItems=_boundarySupplementaryItems;
 @property(nonatomic) double interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
 @property(nonatomic) long long scrollDirection; // @synthesize scrollDirection=_scrollDirection;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic, getter=_safeAreaReference, setter=_setSafeAreaReference:) long long safeAreaReference;
 - (unsigned long long)differencesFromConfiguration:(id)arg1;
-- (id)initWithScrollDirection:(long long)arg1 interSectionSpacing:(double)arg2 boundarySupplememtaryItems:(id)arg3 safeAreaReference:(long long)arg4;
+- (id)initWithScrollDirection:(long long)arg1 interSectionSpacing:(double)arg2 boundarySupplememtaryItems:(id)arg3 contentInsetsReference:(long long)arg4;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, SSLookupItem, UIButton, UIImage, UIImageView, UIView, _MKUILabel;
+@class GEOAppStoreApp, NSMutableArray, UIButton, UIImage, UIImageView, UIView, _MKUILabel;
 @protocol MKOfficialAppViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,16 +18,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_constraintArray;
     _Bool _layoutShouldStack;
     _Bool _isAppInstalled;
-    SSLookupItem *_storeItem;
-    UIImage *_storeItemImage;
+    GEOAppStoreApp *_appStoreApp;
+    UIImage *_image;
     id <MKOfficialAppViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isAppInstalled; // @synthesize isAppInstalled=_isAppInstalled;
 @property(nonatomic) __weak id <MKOfficialAppViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIImage *storeItemImage; // @synthesize storeItemImage=_storeItemImage;
-@property(retain, nonatomic) SSLookupItem *storeItem; // @synthesize storeItem=_storeItem;
-- (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) GEOAppStoreApp *appStoreApp; // @synthesize appStoreApp=_appStoreApp;
 - (void)_createConstraints;
 - (void)_updateLabelText;
 - (void)updateButtonText;

@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityGraphData;
+- (void)accessibilityReloadData;
 - (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
 - (id)_accessibilityDataSeriesMinimumValueForAxis:(long long)arg1;
 - (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;

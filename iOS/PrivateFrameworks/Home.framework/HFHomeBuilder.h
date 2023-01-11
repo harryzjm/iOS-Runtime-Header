@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFNamedItemBuilder-Protocol.h>
+
 @class HFWallpaperEditCollectionBuilder, NSString;
 
-@interface HFHomeBuilder
+@interface HFHomeBuilder <HFNamedItemBuilder>
 {
     NSString *_name;
     NSString *_userNotes;
@@ -14,10 +16,10 @@
 }
 
 + (Class)homeKitRepresentationClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HFWallpaperEditCollectionBuilder *wallpaperBuilder; // @synthesize wallpaperBuilder=_wallpaperBuilder;
 @property(copy, nonatomic) NSString *userNotes; // @synthesize userNotes=_userNotes;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)updateUserNotes;
 - (id)updateName;
 - (id)createHome;
@@ -25,6 +27,12 @@
 - (id)commitItem;
 - (void)setHome:(id)arg1;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

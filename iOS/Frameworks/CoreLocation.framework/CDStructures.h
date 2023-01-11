@@ -43,6 +43,7 @@ struct _CLLocationManagerStateTrackerState {
     _Bool dynamicAccuracyReductionEnabled;
     _Bool previousAuthorizationStatusValid;
     int previousAuthorizationStatus;
+    _Bool limitsPrecision;
     long long activityType;
     int pausesLocationUpdatesAutomatically;
     _Bool paused;
@@ -54,7 +55,9 @@ struct _CLLocationManagerStateTrackerState {
     _Bool updatingVehicleHeading;
     _Bool matchInfoEnabled;
     _Bool groundAltitudeEnabled;
+    _Bool fusionInfoEnabled;
     _Bool courtesyPromptNeeded;
+    _Bool isAuthorizedForWidgetUpdates;
 };
 
 struct os_state_hints_s {
@@ -83,6 +86,10 @@ typedef struct {
 } CDStruct_14d5dc5e;
 
 typedef struct {
+    float v[6][6];
+} CDStruct_2972252c;
+
+typedef struct {
     double x;
     double y;
     double z;
@@ -102,6 +109,17 @@ typedef struct {
     double machContinuousTime;
     double machAbsoluteTime;
 } CDStruct_6a5f25ec;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    int _field4;
+} CDStruct_b141a4d0;
+
+typedef struct {
+    double coordinate__horizontalAccuracy;
+} CDStruct_c3074bf1;
 
 typedef struct {
     double _field1;
@@ -132,20 +150,32 @@ typedef struct {
         double _field1;
         double _field2;
     } _field17;
-    float _field18;
+    int _field18;
+    float _field19;
     struct {
         double _field1;
         double _field2;
-    } _field19;
-    double _field20;
+    } _field20;
     double _field21;
-    int _field22;
-    _Bool _field23;
-    double _field24;
+    double _field22;
+    int _field23;
+    _Bool _field24;
     double _field25;
     double _field26;
     double _field27;
-} CDStruct_f185aced;
+    double _field28;
+    double _field29;
+    double _field30;
+    _Bool _field31;
+    struct {
+        double _field1;
+        double _field2;
+    } _field32;
+    double _field33;
+    int _field34;
+    double _field35;
+    double _field36;
+} CDStruct_9ef4a103;
 
 typedef struct {
     int padding1;
@@ -180,6 +210,7 @@ typedef struct {
     _Bool notifyOnEntry;
     _Bool notifyOnExit;
     _Bool conservativeEntry;
+    _Bool emergency;
     union {
         struct {
             char proximityUUID[512];
@@ -194,9 +225,16 @@ typedef struct {
             double desiredAccuracy;
             int referenceFrame;
             _Bool allowMonitoringWhileNearby;
+            _Bool lowPower;
         } circularAttributes;
+        struct {
+            CDStruct_2c43369c vertices[101];
+            int verticesCount;
+            int referenceFrame;
+            _Bool allowMonitoringWhileNearby;
+        } polygonalAttributes;
     } ;
-} CDStruct_5652eb1b;
+} CDStruct_739493b2;
 
 // Ambiguous groups
 typedef struct {

@@ -19,6 +19,7 @@
     unsigned long long _ipFlags;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool _isSleeping; // @synthesize _isSleeping;
 @property(nonatomic) _Bool _isConnected; // @synthesize _isConnected;
 @property(nonatomic) unsigned long long _ipFlags; // @synthesize _ipFlags;

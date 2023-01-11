@@ -6,35 +6,35 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaDeviceDynamicContext-Protocol.h>
-
 @class NSData, NSString, SISchemaLocation;
 
-@interface SISchemaDeviceDynamicContext : PBCodable <SISchemaDeviceDynamicContext, NSSecureCoding>
+@interface SISchemaDeviceDynamicContext : PBCodable
 {
     SISchemaLocation *_location;
     NSString *_countryCode;
     double _timeIntervalSince1970;
+    struct {
+        unsigned int timeIntervalSince1970:1;
+    } _has;
+    _Bool _hasLocation;
+    _Bool _hasCountryCode;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasCountryCode; // @synthesize hasCountryCode=_hasCountryCode;
+@property(nonatomic) _Bool hasLocation; // @synthesize hasLocation=_hasLocation;
 @property(nonatomic) double timeIntervalSince1970; // @synthesize timeIntervalSince1970=_timeIntervalSince1970;
 @property(copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(retain, nonatomic) SISchemaLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+@property(nonatomic) _Bool hasTimeIntervalSince1970;
 
 @end
 

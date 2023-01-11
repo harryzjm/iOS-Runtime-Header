@@ -9,8 +9,16 @@
 }
 
 + (id)_defaultValueFormatter;
++ (id)_localizedStateStringForKey:(id)arg1;
 + (id)_localizedRangeStringForKey:(id)arg1;
++ (id)_localizedStringForKey:(id)arg1;
 + (id)displayTitleStringForService:(id)arg1 withResponse:(id)arg2 multipleServices:(_Bool)arg3 updateOptions:(id)arg4;
++ (id)formatValue:(id)arg1 forCharacteristic:(id)arg2;
++ (id)descriptionStringForCharacteristicType:(id)arg1 withResponses:(id)arg2;
++ (id)titleStringForState:(long long)arg1;
++ (unsigned long long)badgeTypeForState:(long long)arg1;
++ (long long)currentStateForResponses:(id)arg1;
++ (_Bool)shouldShowAverageForRange:(id)arg1;
 + (_Bool)isPercentRange;
 + (unsigned long long)abstractCurrentModeInResponse:(id)arg1;
 + (unsigned long long)abstractTargetModeInResponse:(id)arg1;
@@ -25,7 +33,11 @@
 + (id)currentValueCharacteristicType;
 + (id)sensorServiceTypes;
 + (id)controllableServiceTypes;
++ (unsigned long long)statusItemCategory;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)title;
+- (id)iconDescriptorForRepresentedHomeKitObjects:(id)arg1;
+- (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;
 
 @end
 

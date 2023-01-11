@@ -13,10 +13,12 @@
 @interface GEORPProblem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _userPaths;
     GEORPProblemContext *_problemContext;
     GEORPProblemCorrections *_problemCorrections;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _problemType;
     unsigned int _protocolVersion;
     struct {
@@ -25,11 +27,7 @@
         unsigned int read_userPaths:1;
         unsigned int read_problemContext:1;
         unsigned int read_problemCorrections:1;
-        unsigned int wrote_userPaths:1;
-        unsigned int wrote_problemContext:1;
-        unsigned int wrote_problemCorrections:1;
-        unsigned int wrote_problemType:1;
-        unsigned int wrote_protocolVersion:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,14 +41,15 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPProblemContext *problemContext;
 @property(readonly, nonatomic) _Bool hasProblemContext;
-- (void)_readProblemContext;
 @property(retain, nonatomic) GEORPProblemCorrections *problemCorrections;
 @property(readonly, nonatomic) _Bool hasProblemCorrections;
-- (void)_readProblemCorrections;
 - (int)StringAsProblemType:(id)arg1;
 - (id)problemTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasProblemType;
@@ -59,16 +58,15 @@
 - (id)userPathsAsString:(int)arg1;
 - (void)setUserPaths:(int *)arg1 count:(unsigned long long)arg2;
 - (int)userPathAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsUserPath:(int)arg1;
 - (void)addUserPath:(int)arg1;
 - (void)clearUserPaths;
 @property(readonly, nonatomic) int *userPaths;
 @property(readonly, nonatomic) unsigned long long userPathsCount;
-- (void)_readUserPaths;
 @property(nonatomic) _Bool hasProtocolVersion;
 @property(nonatomic) unsigned int protocolVersion;
 - (void)dealloc;
-- (id)initWithMerchantIndustryCode:(long long)arg1 mapsIdentifier:(unsigned long long)arg2 merchantName:(id)arg3 merchantRawName:(id)arg4 merchantIndustryCategory:(id)arg5 merchantURL:(id)arg6 merchantFormattedAddress:(id)arg7 transactionTime:(double)arg8 transactionType:(id)arg9 transactionLocation:(CDStruct_c3b9c2ee)arg10;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

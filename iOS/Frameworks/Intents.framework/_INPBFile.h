@@ -15,7 +15,6 @@
 @interface _INPBFile : PBCodable <_INPBFile, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     NSData *_data;
     _INPBURLValue *_fileURL;
     NSString *_filename;
@@ -23,12 +22,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property(copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property(retain, nonatomic) _INPBURLValue *fileURL; // @synthesize fileURL=_fileURL;
 @property(copy, nonatomic) NSData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

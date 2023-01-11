@@ -23,6 +23,7 @@
     FCFeedViewportBookmark *_adjustedToBookmark;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCFeedViewportBookmark *adjustedToBookmark; // @synthesize adjustedToBookmark=_adjustedToBookmark;
 @property(retain, nonatomic) FCFeedViewportBookmark *adjustedFromBookmark; // @synthesize adjustedFromBookmark=_adjustedFromBookmark;
 @property(retain, nonatomic) FCFeedViewportDiff *resultDiff; // @synthesize resultDiff=_resultDiff;
@@ -35,7 +36,6 @@
 @property(retain, nonatomic) FCFeedViewport *viewport; // @synthesize viewport=_viewport;
 @property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

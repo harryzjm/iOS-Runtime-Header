@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 @interface VCSessionParticipantRemote <VCSessionDownlinkBandwidthAllocatorClient>
 {
     NSNumber *_optedInVideoStreamID;
+    NSNumber *_previousOptedInVideoStreamID;
     NSNumber *_optedInAudioStreamID;
     unsigned short _activeDownlinkVideoStreamID;
     unsigned short _activeDownlinkAudioStreamID;
     _Bool _remoteVideoEnabled;
     _Bool _remoteVideoPaused;
+    _Bool _receivedFirstFrame;
     unsigned char _videoQuality;
     unsigned int _visibilityIndex;
     unsigned int _prominenceIndex;
@@ -30,7 +32,7 @@ __attribute__((visibility("hidden")))
     _Bool _videoSuspended;
     _Bool _isRedundancyRequested;
     _Bool _isRemoteMediaStalled;
-    struct _VCSessionParticipantProminenceInfo _prominenceInfo;
+    struct _VCSessionParticipantMediaPriorityInfo _mediaPriorityInfo;
     TimingCollection *_perfTimers;
     _Bool _haveReportedPerfTimers;
     struct _VCSessionParticipantSourceIO _sourceIO;
@@ -65,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (void)notifyChangeInActiveMediaBitrate:(_Bool)arg1;
 - (void)setActualBitrateForOptedInStreamID:(id)arg1 withActiveStreamID:(id)arg2 isVideo:(_Bool)arg3;
 - (_Bool)setupVideoStreamFromMediaBlobWithIDSDestination:(id)arg1;
+- (_Bool)setupVideoStreamOneToOneConfigurations:(id)arg1;
+- (_Bool)setupVideoStreamMultiwayConfigurations:(id)arg1;
 - (id)newVideoStreamConfigurationWithNegotiationVideoResult:(id)arg1;
 @property(readonly, nonatomic) _Bool isVideoExpected;
 @property(nonatomic, getter=isVideoSuspended) _Bool videoSuspended;
@@ -80,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)collectVideoChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
+- (_Bool)configureWithOneToOneParticipantConfig:(id)arg1;
 @property(readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
 - (void)receivedMediaPacketAtTime:(double)arg1 isDecryptable:(_Bool)arg2;
 @property(readonly, nonatomic) VCSessionParticipantMediaStreamInfo *videoStreamInfo;
@@ -94,11 +99,12 @@ __attribute__((visibility("hidden")))
 - (id)getAudioDumpName;
 - (id)entryForStreamID:(id)arg1;
 - (_Bool)setupAudioStreamFromMediaBlobWithIDSDestination:(id)arg1;
+- (_Bool)setupAudioStreamOneToOneConfigurations:(id)arg1;
+- (_Bool)setupAudioStreamMultiwayConfigurations:(id)arg1;
 - (_Bool)setupBandwidthAllocationTableForMediaStreamConfigs:(id)arg1 entryType:(unsigned char)arg2;
 - (id)newAudioStreamConfigurationWithMultiwayAudioNegotiationResult:(id)arg1 maxIDSStreamIDCount:(unsigned int)arg2;
 - (_Bool)configureAudioIOWithDeviceRole:(int)arg1;
 - (id)setupStreamRTP:(id)arg1;
-- (_Bool)setupAudioStreamConfiguration:(id)arg1 audioRules:(id)arg2;
 - (_Bool)processParticipantInfo;
 - (void)updateDownlinkBandwithAllocatorClientConfigurations:(id)arg1;
 - (void)setVideoPaused:(_Bool)arg1;
@@ -108,7 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)onStartAudioIO;
 - (void)stopAudioIOCompletion;
 - (void)dealloc;
-- (id)initWithIDSDestination:(id)arg1 idsParticipantID:(unsigned long long)arg2 mediaNegotiator:(id)arg3 opaqueData:(id)arg4 delegate:(id)arg5 processId:(int)arg6 transportSessionID:(unsigned int)arg7 sessionUUID:(id)arg8 config:(id)arg9;
+- (id)initWithIDSDestination:(id)arg1 idsParticipantID:(unsigned long long)arg2 mediaNegotiator:(id)arg3 opaqueData:(id)arg4 delegate:(id)arg5 processId:(int)arg6 transportSessionID:(unsigned int)arg7 sessionUUID:(id)arg8 config:(id)arg9 isGKVoiceChat:(_Bool)arg10;
 
 // Remaining properties
 @property(readonly) NSString *uuid;

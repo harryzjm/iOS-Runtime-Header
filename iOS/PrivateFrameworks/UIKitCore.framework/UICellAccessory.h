@@ -6,25 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIView;
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface UICellAccessory : NSObject
+@class NSString, UIColor;
+
+@interface UICellAccessory : NSObject <NSCopying, NSSecureCoding>
 {
-    UIView *_view;
-    _Bool _alwaysNeedsLayout;
-    NSString *_identifier;
+    _Bool _hidden;
+    long long _displayedState;
+    double _reservedLayoutWidth;
+    UIColor *_tintColor;
+    UIColor *_backgroundColor;
 }
 
-+ (id)accessoryWithIdentifier:(id)arg1;
-@property(readonly, nonatomic) _Bool alwaysNeedsLayout; // @synthesize alwaysNeedsLayout=_alwaysNeedsLayout;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) UIView *view; // @synthesize view=_view;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool requestsHuggingLayoutWidth;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)description;
+@property(retain, nonatomic, getter=_backgroundColor, setter=_setBackgroundColor:) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property(nonatomic) double reservedLayoutWidth; // @synthesize reservedLayoutWidth=_reservedLayoutWidth;
+@property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
+@property(nonatomic) long long displayedState; // @synthesize displayedState=_displayedState;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic, getter=_identifier) NSString *identifier;
+- (long long)_defaultPlacementForHeader:(_Bool)arg1;
+- (long long)_systemTypePlacementForHeader:(_Bool)arg1;
+@property(readonly, nonatomic, getter=_systemType) long long systemType;
+@property(readonly, nonatomic, getter=_isSystemType) _Bool isSystemType;
+- (id)init;
 
 @end
 

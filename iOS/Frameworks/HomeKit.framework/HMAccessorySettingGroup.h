@@ -19,9 +19,9 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property __weak HMAccessorySettingGroup *group; // @synthesize group=_group;
 @property(readonly) _HMAccessorySettingGroup *internal; // @synthesize internal=_internal;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)_settingGroup:(id)arg1 didRemoveSettingGroup:(id)arg2;
 - (void)_settingGroup:(id)arg1 didAddSettingGroup:(id)arg2;
@@ -43,6 +43,8 @@
 @property(readonly, copy) NSArray *settings;
 @property(readonly, copy) NSString *keyPath;
 @property(readonly, copy) NSString *description;
+- (void)mergeReflected:(id)arg1;
+- (_Bool)isReflectedEqual:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *localizedTitle;

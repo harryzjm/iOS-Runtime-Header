@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct NSString *)attachmentClass;
+- (id)attachmentClass;
 - (id)navigationBarTitle;
 
 @end

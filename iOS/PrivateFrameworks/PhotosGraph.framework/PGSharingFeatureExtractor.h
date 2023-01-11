@@ -16,6 +16,7 @@
 
 + (id)extractFeatureNodesFromAsset:(id)arg1 andPersonLocalIdentifiers:(id)arg2 inGraph:(id)arg3;
 + (id)personLocalIdentifiersByAssetUUIDFromSharingRecords:(id)arg1;
++ (void)invalideCacheForManager:(id)arg1;
 + (id)recordsFilename;
 + (id)featuresFilename;
 - (void).cxx_destruct;

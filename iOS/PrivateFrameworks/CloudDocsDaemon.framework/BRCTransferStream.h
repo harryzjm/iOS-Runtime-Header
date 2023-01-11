@@ -10,7 +10,7 @@
 #import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCAccountSession, BRCDeadlineSource, BRCSyncContext, NSArray, NSMutableDictionary, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCTransferStream : NSObject <BRCLifeCycle, BRCSuspendable>
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     long long _nextFire;
     NSMutableDictionary *_inFlightOpByID;
     BRCDeadlineSource *_schedulingSource;
-    NSObject<OS_dispatch_queue> *_transferQueue;
+    NSObject<OS_dispatch_workloop> *_transferWorkloop;
     unsigned long long _inFlightSize;
     NSObject<OS_dispatch_group> *_transferBatchRequestWaiter;
     _Bool _isWaitingForTransferBatch;
@@ -31,11 +31,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxCountOfBatchesInFlight;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long inFlightSize; // @synthesize inFlightSize=_inFlightSize;
 @property(nonatomic) unsigned long long maxCountOfBatchesInFlight; // @synthesize maxCountOfBatchesInFlight=_maxCountOfBatchesInFlight;
 @property(readonly, nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(copy, nonatomic) CDUnknownBlockType streamDidBecomeReadyToTransferRecords; // @synthesize streamDidBecomeReadyToTransferRecords=_streamDidBecomeReadyToTransferRecords;
-- (void).cxx_destruct;
 - (void)suspend;
 - (void)close;
 - (void)cancel;

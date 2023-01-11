@@ -12,17 +12,22 @@
 {
     _Bool _cachedShouldRequestMoreTime;
     _Bool _cachedIsRestrictionsPasscodeSet;
+    _Bool _contactsEditable;
     NSXPCConnection *_connection;
 }
 
+- (void).cxx_destruct;
+@property(readonly) _Bool contactsEditable; // @synthesize contactsEditable=_contactsEditable;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property _Bool cachedIsRestrictionsPasscodeSet; // @synthesize cachedIsRestrictionsPasscodeSet=_cachedIsRestrictionsPasscodeSet;
 @property _Bool cachedShouldRequestMoreTime; // @synthesize cachedShouldRequestMoreTime=_cachedShouldRequestMoreTime;
-- (void).cxx_destruct;
-- (id)shouldAllowOneMoreMinuteForWebsiteURL:(id)arg1 error:(id *)arg2;
+- (void)isExplicitContentRestricted:(CDUnknownBlockType)arg1;
+- (id)shouldAllowOneMoreMinuteForCategoryIdentifier:(id)arg1 error:(id *)arg2;
+- (id)shouldAllowOneMoreMinuteForWebDomain:(id)arg1 error:(id *)arg2;
 - (id)shouldAllowOneMoreMinuteForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)permitWebFilterURL:(id)arg1 pageTitle:(id)arg2 error:(id *)arg3;
 - (_Bool)performMigrationFromMCXSettings:(id)arg1 error:(id *)arg2;
+- (id)primaryiCloudCardDAVAccountIdentifierWithError:(id *)arg1;
 - (void)contactManagementStateForDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestToManageContactsForDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setManageContactsEnabled:(_Bool)arg1 forDSID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -35,6 +40,7 @@
 - (_Bool)enableScreenTimeForDSID:(id)arg1 error:(id *)arg2;
 - (_Bool)setScreenTimeEnabled:(_Bool)arg1 error:(id *)arg2;
 - (void)screenTimeStateWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly) _Bool needsToSetRestrictionsPasscode;
 - (void)isRestrictionsPasscodeSet:(CDUnknownBlockType)arg1;
 - (_Bool)clearRestrictionsPasscodeWithError:(id *)arg1;
 @property(readonly, nonatomic) _Bool isRestrictionsPasscodeSet;

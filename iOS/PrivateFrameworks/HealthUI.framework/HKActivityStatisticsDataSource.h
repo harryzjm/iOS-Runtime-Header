@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)queryDescription;
 - (id)_calorieValueFromStatsCollection:(id)arg1 range:(id)arg2;
 - (void)_handleStatistics:(id)arg1 activityCaches:(id)arg2 workouts:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_cachePredicateForStartDate:(id)arg1 endDate:(id)arg2;

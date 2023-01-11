@@ -22,9 +22,7 @@ __attribute__((visibility("hidden")))
     UIStackView *_logoStack;
     UIStackView *_bottomStack;
     UIButton *_allowButton;
-    UIButton *_disallowButton;
     UIButton *_nackButton;
-    UILabel *_privacyLabel;
     UIButton *_seeAllButton;
     _TVCarouselView *_carouselView;
     _Bool _didLayout;
@@ -32,8 +30,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGSize)iconSize;
-@property(retain, nonatomic) UIView *privacyView; // @synthesize privacyView=_privacyView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *privacyView; // @synthesize privacyView=_privacyView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)_imageViewForIndex:(unsigned long long)arg1;
 - (id)_buildLogoStack;
@@ -42,13 +40,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfItemsInCarouselView:(id)arg1;
 - (void)layoutSubviews;
 - (void)showNackScreen;
-- (void)setFooter:(id)arg1;
 - (void)setBody:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)bodyScroll;
 - (id)nackButton;
 - (id)seeAllButton;
-- (id)disallowButton;
 - (id)allowButton;
 - (void)dealloc;
 - (id)initWithApps:(id)arg1;

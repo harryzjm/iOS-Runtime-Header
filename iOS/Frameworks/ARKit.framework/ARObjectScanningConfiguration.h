@@ -6,23 +6,11 @@
 
 @interface ARObjectScanningConfiguration
 {
-    _Bool _mlModelEnabled;
-    _Bool _deliverRawSceneUnderstandingResults;
     unsigned long long _planeDetection;
 }
 
-+ (id)supportedVideoFormats;
-+ (_Bool)supportsFrameSemantics:(unsigned long long)arg1;
 + (id)new;
-+ (_Bool)isSupported;
-@property(nonatomic) _Bool deliverRawSceneUnderstandingResults; // @synthesize deliverRawSceneUnderstandingResults=_deliverRawSceneUnderstandingResults;
-@property(nonatomic, getter=isMLModelEnabled) _Bool mlModelEnabled; // @synthesize mlModelEnabled=_mlModelEnabled;
 @property(nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)isEqual:(id)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
-- (id)imageSensorSettings;
 - (id)init;
 
 // Remaining properties

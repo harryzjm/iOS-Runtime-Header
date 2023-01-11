@@ -10,6 +10,8 @@
 {
 }
 
++ (_Bool)IMDeviceRegionIsEligibleToBeForcedIntoFilteringUnknownSender;
++ (_Bool)IMDeviceIsIndiaRegion;
 + (_Bool)IMDeviceIsGreenTea;
 + (_Bool)IMDeviceIsChinaRegion;
 + (_Bool)IMSupportsASTC;

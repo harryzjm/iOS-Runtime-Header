@@ -13,6 +13,7 @@
 + (id)candidateVerticalBaselineSpacingConstraintBetweenDescendant:(id)arg1 andDescendant:(id)arg2 ofView:(id)arg3 layoutInfo:(id)arg4;
 + (id)candidateVerticalSpacingConstraintBetweenDescendant:(id)arg1 andDescendant:(id)arg2 ofView:(id)arg3 layoutInfo:(id)arg4;
 + (void)determineComponentsForVerticalSpacingConstraintBetweenDescendant:(id)arg1 andDescendant:(id)arg2 ofView:(id)arg3 layoutInfo:(id)arg4 returningTopItem:(id *)arg5 bottomItem:(id *)arg6 constant:(id *)arg7;
++ (id)determineConstantForSpacingValue:(double)arg1 forSpacingConstraintBetweenDescendant:(id)arg2 andDescendant:(id)arg3 withRuleEdge:(long long)arg4 layoutInfo:(id)arg5;
 + (id)candidateHorizontalSpacingConstraintBetweenDescendant:(id)arg1 andDescendant:(id)arg2 ofView:(id)arg3 layoutInfo:(id)arg4;
 + (void)determineComponentsForHorizontalSpacingConstraintBetweenDescendant:(id)arg1 andDescendant:(id)arg2 ofView:(id)arg3 layoutInfo:(id)arg4 returningLeadingItem:(id *)arg5 trailingItem:(id *)arg6 constant:(id *)arg7;
 + (id)constraintsWithVisualFormatViews:(id)arg1 overridingContainingItem:(id)arg2 layoutInfo:(id)arg3 formatsAndOptionsAndMetricsAndScoringClasses:(id)arg4;

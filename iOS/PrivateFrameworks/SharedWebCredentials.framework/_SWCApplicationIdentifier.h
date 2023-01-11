@@ -22,9 +22,9 @@
 + (_Bool)supportsSecureCoding;
 + (id)new;
 + (_Bool)isCaseSensitive;
+- (void).cxx_destruct;
 @property(readonly) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly) NSString *prefix; // @synthesize prefix=_prefix;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -38,7 +38,7 @@
 @property(readonly) NSString *rawValue;
 - (id)initWithString:(id)arg1;
 - (id)init;
-- (id)initForBundleProxy:(id)arg1;
+- (id)initForBundleRecord:(id)arg1;
 
 @end
 

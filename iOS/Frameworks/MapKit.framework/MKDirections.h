@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEODirectionsRequest, GEOQuickETARequest, GEOQuickETARequester, MKDirectionsRequest;
+@class GEODirectionsRequest, GEOQuickETARequest, GEOQuickETARequester, GEORouteAttributes, MKDirectionsRequest, NSError;
 @protocol MKLocationManagerOperation, OS_dispatch_group;
 
 @interface MKDirections : NSObject
@@ -17,11 +17,16 @@
     GEOQuickETARequester *_etaRequester;
     id <MKLocationManagerOperation> _locationOperation;
     NSObject<OS_dispatch_group> *_waypointsDispatchGroup;
+    GEORouteAttributes *_routeAttributes;
+    NSError *_previousError;
 }
 
 - (void).cxx_destruct;
 - (void)calculateETAWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_issueETARequestForOrigin:(id)arg1 destination:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_calculateETAWithTraits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_issueDirectionsRequestForOrigin:(id)arg1 destination:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_calculateDirectionsWithTraits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)calculateDirectionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_performWithValidCurrentLocationAndWaypointsForQuickETA:(_Bool)arg1 traits:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_establishCurrentLocationAndThen:(CDUnknownBlockType)arg1;

@@ -24,8 +24,8 @@
 + (id)journalForInMemoryDb;
 + (id)journalWithDbPath:(id)arg1;
 + (id)_journalPathForDbPath:(id)arg1;
-@property(readonly, nonatomic) _Bool journaling; // @synthesize journaling=_journaling;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool journaling; // @synthesize journaling=_journaling;
 - (id)directoryPath;
 - (_Bool)stopJournaling;
 - (_Bool)startJournaling;
@@ -34,10 +34,6 @@
 - (_Bool)_executeFile:(id)arg1 onDb:(id)arg2 becameLocked:(_Bool *)arg3;
 - (_Bool)_executeNextRecordFromFile:(id)arg1 onDb:(id)arg2 becameLocked:(_Bool *)arg3 deleteFile:(_Bool *)arg4;
 - (void)runQuery:(id)arg1 values:(id)arg2 onDb:(id)arg3;
-- (void)_closeCurrentFile;
-- (void)_addCurrentFileToLog;
-- (void)_clearCurrentFile;
-- (id)_getCurrentFile;
 - (id)description;
 
 @end

@@ -9,13 +9,20 @@
 @interface CMAltimeter : NSObject
 {
     id _internal;
+    double _absoluteAltitudeUpdateInterval;
 }
 
++ (_Bool)isAbsoluteAltitudeAvailable;
 + (long long)authorizationStatus;
 + (_Bool)isSignificantElevationAvailable;
 + (_Bool)isRelativeAltitudeAvailable;
 + (void)initialize;
 + (void)dummySelector:(id)arg1;
+@property(nonatomic) double absoluteAltitudeUpdateInterval; // @synthesize absoluteAltitudeUpdateInterval=_absoluteAltitudeUpdateInterval;
+- (void)resumeAbsoluteAltitudeUpdates;
+- (void)pauseAbsoluteAltitudeUpdates;
+- (void)stopAbsoluteAltitudeUpdates;
+- (void)startAbsoluteAltitudeUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)onFilteredPressure:(const struct Sample *)arg1;
 - (void)stopRelativeAltitudeUpdatesPrivate;
 - (void)startRelativeAltitudeUpdatesPrivateToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

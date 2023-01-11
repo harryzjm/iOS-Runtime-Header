@@ -8,18 +8,18 @@
 
 @interface AXVKMultiSectionFeatureWrapper : NSObject
 {
-    CDStruct_123780e2 *_feature;
+    CDStruct_66740237 *_feature;
     double _creationTime;
 }
 
 @property(nonatomic) double creationTime; // @synthesize creationTime=_creationTime;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)featureName;
-@property(nonatomic) CDStruct_123780e2 *feature;
-- (id)initWithFeature:(CDStruct_123780e2 *)arg1;
+@property(nonatomic) CDStruct_66740237 *feature;
+- (void)dealloc;
+- (id)initWithFeature:(CDStruct_66740237 *)arg1;
 
 @end
 

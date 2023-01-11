@@ -6,17 +6,21 @@
 
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-@class MRAVOutputDeviceSourceInfo, NSDictionary, _MRAVOutputDeviceDescriptorProtobuf;
+@class MRAVOutputDeviceSourceInfo, NSArray, NSDictionary, _MRAVOutputDeviceDescriptorProtobuf;
 
 @interface MRAVDistantOutputDevice <NSSecureCoding>
 {
     _MRAVOutputDeviceDescriptorProtobuf *_protobuf;
     MRAVOutputDeviceSourceInfo *_sourceInfo;
     NSDictionary *_modelSpecificInfo;
+    NSArray *_clusterComposition;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)clusterComposition;
+- (_Bool)isUsingJSONProtocol;
+- (_Bool)supportsHAP;
 - (id)bluetoothID;
 - (unsigned int)volumeCapabilities;
 - (_Bool)isAddedToHomeKit;

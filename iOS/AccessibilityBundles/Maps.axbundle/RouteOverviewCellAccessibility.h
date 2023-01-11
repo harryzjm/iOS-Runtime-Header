@@ -11,9 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)detailsButton;
+- (id)artworkList;
+- (id)tertiaryLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)accessibilityLabel;
+- (void)_axAnnotateLabels;
+- (id)_axTextForFakeElement;
 
 @end
 

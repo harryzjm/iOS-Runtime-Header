@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDPoiEvent : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_eventCategorys;
     NSMutableArray *_eventDateTimes;
@@ -23,6 +22,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_performers;
     NSMutableArray *_poiIds;
     GEOTimezone *_timezone;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _expectedAttendance;
     struct {
         unsigned int has_expectedAttendance:1;
@@ -34,15 +36,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_performers:1;
         unsigned int read_poiIds:1;
         unsigned int read_timezone:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_eventCategorys:1;
-        unsigned int wrote_eventDateTimes:1;
-        unsigned int wrote_eventId:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_performers:1;
-        unsigned int wrote_poiIds:1;
-        unsigned int wrote_timezone:1;
-        unsigned int wrote_expectedAttendance:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -62,47 +56,41 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasExpectedAttendance;
 @property(nonatomic) int expectedAttendance;
 - (id)performerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)performersCount;
-- (void)_addNoFlagsPerformer:(id)arg1;
 - (void)addPerformer:(id)arg1;
 - (void)clearPerformers;
 @property(retain, nonatomic) NSMutableArray *performers;
-- (void)_readPerformers;
 @property(retain, nonatomic) GEOTimezone *timezone;
 @property(readonly, nonatomic) _Bool hasTimezone;
-- (void)_readTimezone;
 - (id)eventDateTimeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)eventDateTimesCount;
-- (void)_addNoFlagsEventDateTime:(id)arg1;
 - (void)addEventDateTime:(id)arg1;
 - (void)clearEventDateTimes;
 @property(retain, nonatomic) NSMutableArray *eventDateTimes;
-- (void)_readEventDateTimes;
 - (id)poiIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)poiIdsCount;
-- (void)_addNoFlagsPoiId:(id)arg1;
 - (void)addPoiId:(id)arg1;
 - (void)clearPoiIds;
 @property(retain, nonatomic) NSMutableArray *poiIds;
-- (void)_readPoiIds;
 - (id)eventCategoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)eventCategorysCount;
-- (void)_addNoFlagsEventCategory:(id)arg1;
 - (void)addEventCategory:(id)arg1;
 - (void)clearEventCategorys;
 @property(retain, nonatomic) NSMutableArray *eventCategorys;
-- (void)_readEventCategorys;
 @property(retain, nonatomic) GEOLocalizedString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
 @property(retain, nonatomic) GEOPDMapsIdentifier *eventId;
 @property(readonly, nonatomic) _Bool hasEventId;
-- (void)_readEventId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

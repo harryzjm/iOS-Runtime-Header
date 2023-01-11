@@ -8,13 +8,17 @@
 
 @interface SBAssistantWindow
 {
+    _Bool _touchesPassThroughToSpringBoard;
 }
 
 + (_Bool)_isSecure;
 + (_Bool)sb_autorotates;
 + (id)defaultLayoutStrategy;
+@property(nonatomic) _Bool touchesPassThroughToSpringBoard; // @synthesize touchesPassThroughToSpringBoard=_touchesPassThroughToSpringBoard;
+- (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
 - (_Bool)_canBecomeKeyWindow;
 - (_Bool)isOpaque;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 @property(readonly, nonatomic) SBAssistantRootViewController *assistantRootViewController; // @dynamic assistantRootViewController;
 - (void)dealloc;
 - (id)initWithScreen:(id)arg1 layoutStrategy:(id)arg2 debugName:(id)arg3 scene:(id)arg4;

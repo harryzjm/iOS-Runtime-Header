@@ -12,10 +12,13 @@
 @protocol OS_dispatch_queue;
 
 @protocol GEOMapServiceTicket <GEOMapServiceCancellableTicket, GEOMapServiceCorrectableTicket, GEOMapServiceThrottlableTicket>
+@property(readonly, nonatomic) NSArray *publisherResults;
+@property(readonly, nonatomic) NSArray *collectionResults;
 @property(readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;
 @property(nonatomic) unsigned long long cachePolicy;
 @property(readonly, nonatomic) _Bool showDymSuggestionCloseButton;
 @property(readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
+@property(readonly, nonatomic) NSArray *relatedEntitySections;
 @property(readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property(readonly, nonatomic) NSArray *searchResultSections;
 @property(readonly, nonatomic) NSArray *retainedSearchMetadata;

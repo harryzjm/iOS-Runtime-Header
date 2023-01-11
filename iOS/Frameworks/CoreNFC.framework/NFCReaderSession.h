@@ -11,12 +11,12 @@
 #import <CoreNFC/NFCSessionCallbacks-Protocol.h>
 #import <CoreNFC/NFReaderSessionCallbacks-Protocol.h>
 
-@class NFWeakReference, NSNumber, NSString;
+@class NSNumber, NSString;
 @protocol NFReaderSessionInterface><NSXPCProxyCreating, NFTag, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NFCReaderSession : NSObject <NFReaderSessionCallbacks, NFCHardwareManagerCallbacks, NFCSessionCallbacks, NFCReaderSession>
 {
-    NFWeakReference *_delegate;
+    id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
     NSObject<NFReaderSessionInterface><NSXPCProxyCreating> *_proxy;
@@ -34,6 +34,7 @@
 
 + (_Bool)featureAvailable:(unsigned long long)arg1;
 + (_Bool)readingAvailable;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long delegateType; // @synthesize delegateType=_delegateType;
 @property(readonly, nonatomic) NSNumber *sessionId; // @synthesize sessionId=_sessionId;
 @property(nonatomic) unsigned long long sessionConfig; // @synthesize sessionConfig=_sessionConfig;
@@ -55,13 +56,16 @@
 - (_Bool)connectTag:(id)arg1 error:(id *)arg2;
 - (void)connectTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) id <NFTag> connectedTag;
+- (void)_restartPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_stopPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_startPollingWithMethod:(unsigned long long)arg1 sessionConfig:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)validateDelegate:(id)arg1 expectedType:(long long)arg2;
 - (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pollMethod:(unsigned long long)arg3;
+- (void)beginSessionWithConfig:(id)arg1;
 - (void)beginSession;
 - (void)submitBlockOnDelegateQueue:(CDUnknownBlockType)arg1;
+- (void)submitBlockOnSessionQueueWithDelay:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)submitBlockOnSessionQueue:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionQueue;
 @property(readonly, nonatomic) __weak id delegate;

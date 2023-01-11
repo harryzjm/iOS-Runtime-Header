@@ -24,6 +24,7 @@
     _UILegibilitySettings *_legibilitySettings;
     _Bool _transitioningPresentation;
     _Bool _useDismissHitTestPadding;
+    SBFloatingDockSuggestionsModel *_suggestionsModel;
     id <SBFloatingDockRootViewControllerDelegate> _delegate;
     SBApplication *_requestedSuggestedApplication;
     FBDisplayLayoutElement *_displayLayoutElement;
@@ -37,10 +38,9 @@
     SBFAnalyticsClient *_analyticsClient;
     SBWorkspaceApplicationSceneTransitionContext *_currentTransitionContext;
     id <SBIconViewProviding> _iconViewProvider;
-    SBFloatingDockSuggestionsModel *_suggestionsModel;
 }
 
-@property(retain, nonatomic) SBFloatingDockSuggestionsModel *suggestionsModel; // @synthesize suggestionsModel=_suggestionsModel;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
 @property(retain, nonatomic) SBWorkspaceApplicationSceneTransitionContext *currentTransitionContext; // @synthesize currentTransitionContext=_currentTransitionContext;
 @property(retain, nonatomic) SBFAnalyticsClient *analyticsClient; // @synthesize analyticsClient=_analyticsClient;
@@ -56,12 +56,12 @@
 @property(nonatomic, getter=isTransitioningPresentation) _Bool transitioningPresentation; // @synthesize transitioningPresentation=_transitioningPresentation;
 @property(retain, nonatomic) SBApplication *requestedSuggestedApplication; // @synthesize requestedSuggestedApplication=_requestedSuggestedApplication;
 @property(nonatomic) __weak id <SBFloatingDockRootViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(retain, nonatomic) SBFloatingDockSuggestionsModel *suggestionsModel; // @synthesize suggestionsModel=_suggestionsModel;
 - (_Bool)isFloatingDockViewControllerPresentedOverTransitioningContent:(id)arg1;
 - (double)minimumHomeScreenScaleForFloatingDockViewController:(id)arg1;
-- (double)statusBarHeightForFloatingDockViewController:(id)arg1;
 - (void)floatingDockViewController:(id)arg1 willUseAnimator:(id)arg2 forTransitioningWithFolder:(id)arg3 presenting:(_Bool)arg4;
 - (void)floatingDockViewController:(id)arg1 willPerformTransitionWithFolder:(id)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id)arg4;
+- (void)floatingDockViewController:(id)arg1 didChangeContentFrame:(struct CGRect)arg2;
 - (void)floatingDockViewController:(id)arg1 didChangeContentHeight:(double)arg2;
 - (void)floatingDockViewController:(id)arg1 wantsToBePresented:(_Bool)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

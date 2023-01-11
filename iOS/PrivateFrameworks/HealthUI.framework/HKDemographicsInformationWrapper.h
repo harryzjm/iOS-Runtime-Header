@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKBiologicalSexObject, HKBloodTypeObject, HKFitzpatrickSkinTypeObject, HKQuantity, HKWheelchairUseObject, NSArray, NSDateComponents, NSString;
+@class HKBiologicalSexObject, HKBloodTypeObject, HKCardioFitnessMedicationsUseObject, HKFitzpatrickSkinTypeObject, HKQuantity, HKWheelchairUseObject, NSArray, NSDateComponents, NSString;
 
 @interface HKDemographicsInformationWrapper : NSObject
 {
@@ -20,12 +20,15 @@
     HKFitzpatrickSkinTypeObject *_fitzpatrickSkinTypeObject;
     HKBloodTypeObject *_bloodTypeObject;
     HKWheelchairUseObject *_wheelchairUseObject;
+    HKCardioFitnessMedicationsUseObject *_cardioFitnessMedicationsUseObject;
     NSArray *_postalAddresses;
     NSArray *_emailAddresses;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
 @property(copy, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
+@property(copy, nonatomic) HKCardioFitnessMedicationsUseObject *cardioFitnessMedicationsUseObject; // @synthesize cardioFitnessMedicationsUseObject=_cardioFitnessMedicationsUseObject;
 @property(copy, nonatomic) HKWheelchairUseObject *wheelchairUseObject; // @synthesize wheelchairUseObject=_wheelchairUseObject;
 @property(copy, nonatomic) HKBloodTypeObject *bloodTypeObject; // @synthesize bloodTypeObject=_bloodTypeObject;
 @property(copy, nonatomic) HKFitzpatrickSkinTypeObject *fitzpatrickSkinTypeObject; // @synthesize fitzpatrickSkinTypeObject=_fitzpatrickSkinTypeObject;
@@ -36,7 +39,6 @@
 @property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(copy, nonatomic) NSString *middleName; // @synthesize middleName=_middleName;
 @property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
-- (void).cxx_destruct;
 
 @end
 

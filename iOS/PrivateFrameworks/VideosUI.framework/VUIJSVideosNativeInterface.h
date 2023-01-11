@@ -13,8 +13,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)generateHash:(id)arg1;
 - (void)setLocDictionary:(id)arg1;
-- (id)locStringForKeyWithCount:(id)arg1:(id)arg2;
+- (id)locStringForKeyWithCounts:(id)arg1:(id)arg2;
 - (id)locStringForKey:(id)arg1;
 
 @end

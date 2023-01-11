@@ -13,6 +13,7 @@
     SBIconView *_iconOverlayView;
     UIView *_iconCrossfadeView;
     UIView *_iconOverlayContainerView;
+    struct CGRect _initialIconOverlayViewBounds;
     UIView *_crossfadeView;
     struct CGRect _crossfadeViewFrame;
     UIViewFloatAnimatableProperty *_iconCrossfadeAnimatableProperty;
@@ -20,12 +21,13 @@
     double _cornerRadius;
 }
 
-@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 - (void).cxx_destruct;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 - (void)_setUpIconCrossfadeView;
 - (void)_setUpIconCrossfadeAnimatableProperty;
 - (double)_iconOverlayScale;
 - (void)_applyIconOverlayViewOverlayScaleProperties;
+- (double)_currentFadeValue;
 - (void)layoutSubviews;
 @property(readonly, nonatomic) SBIconView *iconView;
 @property(readonly, nonatomic) struct CGRect crossfadeViewFrame;

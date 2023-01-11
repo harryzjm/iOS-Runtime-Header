@@ -6,7 +6,7 @@
 
 #import <HomeUI/HUEditableCheckmarkDelegate-Protocol.h>
 
-@class HFItemBuilder, HUChildServiceEditorItemModule, NSMapTable, NSString;
+@class HFItemBuilder, HUChildServiceEditorItemModule, NSMapTable, NSNumber, NSString;
 @protocol HFServiceLikeBuilder, HUChildServiceModuleControllerDelegate;
 
 @interface HUChildServiceItemModuleController <HUEditableCheckmarkDelegate>
@@ -15,13 +15,15 @@
     HUChildServiceEditorItemModule *_childServiceItemModule;
     HFItemBuilder<HFServiceLikeBuilder> *_activelyEditingNameServiceBuilder;
     NSMapTable *_identifyButtonMap;
+    NSNumber *_allCheckmarksDisabled;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *allCheckmarksDisabled; // @synthesize allCheckmarksDisabled=_allCheckmarksDisabled;
 @property(retain, nonatomic) NSMapTable *identifyButtonMap; // @synthesize identifyButtonMap=_identifyButtonMap;
 @property(retain, nonatomic) HFItemBuilder<HFServiceLikeBuilder> *activelyEditingNameServiceBuilder; // @synthesize activelyEditingNameServiceBuilder=_activelyEditingNameServiceBuilder;
 @property(retain, nonatomic) HUChildServiceEditorItemModule *childServiceItemModule; // @synthesize childServiceItemModule=_childServiceItemModule;
 @property(nonatomic) __weak id <HUChildServiceModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)checkmarkTappedInCell:(id)arg1 forItem:(id)arg2;
 - (void)_identifyButtonPressed:(id)arg1 forEvent:(id)arg2;
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;

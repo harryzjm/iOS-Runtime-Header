@@ -9,6 +9,8 @@
 @interface MKCircleRenderer
 {
     VKVectorOverlayCircle *_vectorData;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 + (Class)_mapkitLeafClass;
@@ -22,6 +24,10 @@
 - (void)setStrokeColor:(id)arg1;
 - (void)setFillColor:(id)arg1;
 - (void)setLineWidth:(double)arg1;
+@property(nonatomic) double strokeEnd;
+@property(nonatomic) double strokeStart;
+- (void)_performInitialConfiguration;
+- (void)strokePath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)createPath;
 @property(readonly, nonatomic) MKCircle *circle;
 - (id)initWithCircle:(id)arg1;

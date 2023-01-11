@@ -14,10 +14,10 @@
 - (id)description;
 - (id)owner;
 - (void)setOwner:(id)arg1;
-- (void)setShareeAccessLevel:(int)arg1;
-- (int)shareeAccessLevel;
-- (void)setShareeStatus:(int)arg1;
-- (int)shareeStatus;
+- (void)setShareeAccessLevelRaw:(int)arg1;
+- (int)shareeAccessLevelRaw;
+- (void)setShareeStatusRaw:(int)arg1;
+- (int)shareeStatusRaw;
 - (void)setExternalID:(id)arg1;
 - (id)externalID;
 - (void)setLastName:(id)arg1;

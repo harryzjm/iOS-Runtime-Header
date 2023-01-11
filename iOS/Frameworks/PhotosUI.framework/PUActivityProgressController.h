@@ -6,9 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSProgress, NSString, PUActivityProgressViewController, UIAlertController, UIView;
+@class NSProgress, NSString, PUActivityProgressViewController, UIAlertController, UIView, UIWindow;
 
-__attribute__((visibility("hidden")))
 @interface PUActivityProgressController : NSObject
 {
     PUActivityProgressViewController *_progressViewController;
@@ -20,14 +19,16 @@ __attribute__((visibility("hidden")))
     _Bool _didShow;
     _Bool _didHide;
     NSString *_title;
+    UIWindow *_window;
     CDUnknownBlockType _cancellationHandler;
     NSProgress *_progress;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(copy, nonatomic) CDUnknownBlockType cancellationHandler; // @synthesize cancellationHandler=_cancellationHandler;
+@property(nonatomic) __weak UIWindow *window; // @synthesize window=_window;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)hideAnimated:(_Bool)arg1 allowDelay:(_Bool)arg2;
 - (void)showAnimated:(_Bool)arg1 allowDelay:(_Bool)arg2;

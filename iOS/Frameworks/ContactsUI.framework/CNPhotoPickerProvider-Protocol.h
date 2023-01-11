@@ -6,12 +6,12 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNContact, NSArray, NSString;
+@class CNVisualIdentity, NSArray, NSString;
 @protocol CNPhotoPickerProviderItemDelegate, CNScheduler;
 
 @protocol CNPhotoPickerProvider <NSObject>
 @property(retain, nonatomic) NSString *identifier;
 - (NSArray *)loadItemsForSize:(struct CGSize)arg1 scale:(double)arg2 RTL:(_Bool)arg3 renderingQueue:(id <CNScheduler>)arg4 callbackQueue:(id <CNScheduler>)arg5 itemDelegate:(id <CNPhotoPickerProviderItemDelegate>)arg6;
-- (id)initWithContact:(CNContact *)arg1;
+- (id)initWithVisualIdentity:(CNVisualIdentity *)arg1;
 @end
 

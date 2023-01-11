@@ -13,6 +13,7 @@
 }
 
 + (id)attachmentRecordsFromAttachments:(id)arg1;
++ (unsigned long long)partKeyForAttachmentFromItem:(id)arg1 withGUID:(id)arg2;
 + (id)copyGUIDFromAttachment:(struct _IMDAttachmentRecordStruct *)arg1;
 + (id)copyPathFromAttachment:(struct _IMDAttachmentRecordStruct *)arg1;
 + (id)copyAttachmentsForMessageID:(long long)arg1;

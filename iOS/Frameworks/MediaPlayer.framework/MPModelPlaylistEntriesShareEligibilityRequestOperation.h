@@ -6,15 +6,16 @@
 
 @class MPModelPlaylistEntriesShareEligibilityRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPModelPlaylistEntriesShareEligibilityRequestOperation
 {
     MPModelPlaylistEntriesShareEligibilityRequest *_request;
     CDUnknownBlockType _responseHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) MPModelPlaylistEntriesShareEligibilityRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 - (void)execute;
 
 @end

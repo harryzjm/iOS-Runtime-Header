@@ -6,69 +6,77 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Pegasus/PGPictureInPictureControlsViewControllerDelegate-Protocol.h>
+#import <Pegasus/PGCommandHandler-Protocol.h>
+#import <Pegasus/PGPlaybackStateDiffConsumer-Protocol.h>
 
-@class NSArray, NSString, PGHostedWindowHostingHandle, PGLayerHostView, PGLoadingIndicatorView, PGPictureInPictureApplication, PGPictureInPictureControlsViewController, PGPlaybackProgress, PGStashedView, UIView;
-@protocol PGPictureInPictureViewControllerContentContainer, PGPictureInPictureViewControllerDelegate;
+@class MTShadowView, NSString, NSUUID, PGControlsContainerView, PGControlsViewModel, PGHostedWindowHostingHandle, PGLayerHostView, PGPictureInPictureApplication, PGPortalView, PGStashView, PGStashedMaskView, UITapGestureRecognizer, UIView;
+@protocol PGPictureInPictureAnalyticsDelegate, PGPictureInPictureViewControllerContentContainer, PGPictureInPictureViewControllerDelegate;
 
-@interface PGPictureInPictureViewController : UIViewController <PGPictureInPictureControlsViewControllerDelegate>
+@interface PGPictureInPictureViewController : UIViewController <PGCommandHandler, PGPlaybackStateDiffConsumer>
 {
-    long long _stashState;
     PGHostedWindowHostingHandle *_hostedWindowHostingHandle;
-    struct CGAffineTransform _layerHostTransform;
-    _Bool _showsAlternateActionButtonImage;
-    _Bool _showsLoadingIndicator;
-    PGPlaybackProgress *_playbackProgress;
-    NSArray *_loadedTimeRanges;
-    UIView *_styleViewBelow;
+    UIView *_backgroundView;
     UIView *_containerView;
     PGLayerHostView *_contentView;
-    PGLoadingIndicatorView *_loadingIndicatorView;
-    PGStashedView *_stashedView;
-    UIView *_styleViewAbove;
-    PGPictureInPictureControlsViewController *_controlsViewController;
+    PGControlsContainerView *_controlsContainerView;
+    PGControlsViewModel *_viewModel;
+    MTShadowView *_shadowView;
+    PGStashView *_stashView;
+    MTShadowView *_tabShadowView;
+    PGStashedMaskView *_stashMaskView;
+    PGPortalView *_leftSideContentPortalView;
+    PGPortalView *_rightSideContentPortalView;
     _Bool _initialLayerFrameIsNull;
-    id <PGPictureInPictureViewControllerDelegate> _delegate;
-    struct {
-        unsigned int pictureInPictureViewController_updateHostedWindowSize_animationType_initialSpringVelocity:1;
-        unsigned int pictureInPictureViewControllerHostedWindowSizeChangeBegan:1;
-        unsigned int pictureInPictureViewControllerHostedWindowSizeChangeEnded:1;
-        unsigned int pictureInPictureViewControllerStopButtonTapped:1;
-        unsigned int pictureInPictureViewControllerActionButtonTapped:1;
-        unsigned int pictureInPictureViewControllerCancelButtonTapped:1;
-    } _delegateRespondsTo;
+    _Bool _interactivelyResizing;
+    _Bool _prefersIdleTimerDisabled;
+    _Bool _isSuspended;
+    _Bool _stashTabHidden;
+    _Bool _stashTabShownLeft;
+    unsigned long long _inFlightStashTabAnimationIdentifier;
+    unsigned long long _inFlightStashProgressAnimationIdentifier;
+    long long _stashState;
+    UITapGestureRecognizer *_stashedTapGestureRecognizer;
+    struct CGSize _preferredContentSize;
     id <PGPictureInPictureViewControllerContentContainer> _contentContainer;
+    id <PGPictureInPictureViewControllerDelegate> _delegate;
+    id <PGPictureInPictureAnalyticsDelegate> _analyticsDelegate;
+    NSUUID *_analyticsSourceUUID;
+    NSUUID *_analyticsSessionUUID;
+    _Bool _startedAutomatically;
     struct {
         unsigned int prepareStopAnimationWithCompletionHandler:1;
         unsigned int acquireInterfaceOrientationLock:1;
         unsigned int relinquishInterfaceOrientationLock:1;
-        unsigned int handleTapGesture:1;
+        unsigned int handleTapWhileStashedGesture:1;
         unsigned int handleDoubleTapGesture:1;
         unsigned int performRotateAnimationWithRotation:1;
     } _contentContainerRespondsTo;
-    struct CGSize _preferredContentSize;
     _Bool _canStartShowingChrome;
     PGPictureInPictureApplication *_application;
     CDUnknownBlockType _waitForUIFinalizationCompletionBlock;
     long long _controlsStyle;
+    struct CGSize _minimumStashTabSize;
 }
 
 + (void)animateViewWithAnimationType:(long long)arg1 initialSpringVelocity:(double)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (double)contentViewCornerRadius;
-@property(nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <PGPictureInPictureViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
 @property(copy, nonatomic) CDUnknownBlockType waitForUIFinalizationCompletionBlock; // @synthesize waitForUIFinalizationCompletionBlock=_waitForUIFinalizationCompletionBlock;
+@property(nonatomic) long long stashState; // @synthesize stashState=_stashState;
+@property(nonatomic) struct CGSize minimumStashTabSize; // @synthesize minimumStashTabSize=_minimumStashTabSize;
+@property(nonatomic, getter=isInteractivelyResizing) _Bool interactivelyResizing; // @synthesize interactivelyResizing=_interactivelyResizing;
 @property(nonatomic) _Bool canStartShowingChrome; // @synthesize canStartShowingChrome=_canStartShowingChrome;
 @property(nonatomic) __weak id <PGPictureInPictureViewControllerContentContainer> contentContainer; // @synthesize contentContainer=_contentContainer;
 @property(readonly, nonatomic) __weak PGPictureInPictureApplication *application; // @synthesize application=_application;
-- (void).cxx_destruct;
-- (_Bool)pictureInPictureControlsViewControllerShouldHandleDoubleTapGesture:(id)arg1;
-- (_Bool)pictureInPictureControlsViewControllerShouldHandleTapGesture:(id)arg1;
-- (void)pictureInPictureControlsViewControllerCancelButtonTapped:(id)arg1;
-- (void)pictureInPictureControlsViewControllerActionButtonTapped:(id)arg1;
-- (void)pictureInPictureControlsViewControllerStopButtonTapped:(id)arg1;
-- (void)_handleTapGestureRecognizer:(id)arg1;
-- (void)setControlsStyle:(long long)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_stopShowingControlsAnimated:(_Bool)arg1;
+- (void)_updatePrefersIdleTimerDisabled;
+- (void)_loadShadowViewIfNeeded;
+- (void)updatePlaybackStateWithDiff:(id)arg1;
+- (void)handleCommand:(id)arg1;
+- (void)_handleTapWhileStashedGestureRecognizer:(id)arg1;
+- (void)setContentViewHidden:(_Bool)arg1;
+@property(nonatomic, getter=isInterrupted) _Bool interrupted;
 - (void)relinquishInterfaceOrientationLock;
 - (void)acquireInterfaceOrientationLock;
 - (void)prepareStopAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -82,21 +90,34 @@
 - (void)prepareStartAnimationWithInitialInterfaceOrientation:(long long)arg1 initialLayerFrame:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (struct CGSize)preferredContentSize;
+@property(readonly, nonatomic) double preferredMinimumWidth;
 @property(readonly, nonatomic) UIView *contentContainerView;
+- (void)_resetStashTabViewsIfPossible;
+- (void)_addMaskViewSubviewIfNeeded;
+- (void)_updateContentCornerRadiusForMaskActive:(_Bool)arg1;
+- (void)_setStashMaskActive:(_Bool)arg1;
+- (void)_setPortalActive:(_Bool)arg1 left:(_Bool)arg2;
+- (void)_setStashedTabHidden:(_Bool)arg1 left:(_Bool)arg2;
+- (void)_layoutStashTabViewsIfNeeded;
+- (void)viewWillLayoutSubviews;
+- (void)viewDidLoad;
 - (void)loadView;
-- (void)setStashState:(long long)arg1 animated:(_Bool)arg2;
+- (void)setShowsPictureInPictureUnavailableIndicator:(_Bool)arg1;
+- (_Bool)showsPictureInPictureUnavailableIndicator;
+- (void)setStashTabHidden:(_Bool)arg1 left:(_Bool)arg2 withSpringBehavior:(id)arg3;
+@property(readonly, nonatomic) _Bool isStashTabHidden;
+- (void)setStashProgress:(double)arg1;
 - (void)hostedWindowSizeChangeEnded;
 - (void)hostedWindowSizeChangeBegan;
-- (void)updateLayerHostTransform:(struct CGAffineTransform)arg1;
 - (void)updateHostedWindowSize:(struct CGSize)arg1;
 - (void)showChrome:(_Bool)arg1 animated:(_Bool)arg2;
-@property(nonatomic) __weak id <PGPictureInPictureViewControllerDelegate> delegate;
-@property(retain, nonatomic) NSArray *loadedTimeRanges;
-@property(retain, nonatomic) PGPlaybackProgress *playbackProgress;
-@property(nonatomic) _Bool showsLoadingIndicator;
-@property(nonatomic) _Bool showsAlternateActionButtonImage;
+@property(readonly, nonatomic) PGControlsViewModel *viewModel;
+@property(readonly, nonatomic) _Bool prefersIdleTimerDisabled;
+- (void)deactivateAnalyticsSessionIfNeeded;
+- (void)notePictureInPictureWillStopForAppRequest:(_Bool)arg1 preferredFullScreenRestore:(_Bool)arg2;
+- (void)notePictureInPictureStartedAutomatically:(_Bool)arg1;
+- (void)setAnalyticsDelegate:(id)arg1 analyticsSourceUUID:(id)arg2;
 @property(retain, nonatomic) PGHostedWindowHostingHandle *hostedWindowHostingHandle;
-@property(nonatomic) long long stashState;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

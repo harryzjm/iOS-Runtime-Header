@@ -21,9 +21,9 @@
 
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (double)curvedRadiusForDevice:(id)arg1 dark:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long dateStyle; // @synthesize dateStyle=_dateStyle;
 @property(nonatomic) unsigned long long color; // @synthesize color=_color;
-- (void).cxx_destruct;
 - (void)_setupDialView;
 - (void)_reorderSwitcherSnapshotView;
 - (void)bezelViewDidEndInteractive:(id)arg1;
@@ -49,6 +49,7 @@
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (void)_cleanupAfterZoom;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
+- (id)_richComplicationViewForView:(id)arg1;
 - (_Bool)viewShouldIgnoreTwoPieceImage:(id)arg1;
 - (id)colorForView:(id)arg1 accented:(_Bool)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
@@ -73,6 +74,7 @@
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
+- (id)_complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (id)_keylineViewForComplicationSlot:(id)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;

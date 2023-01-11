@@ -27,13 +27,13 @@
 + (id)sharedOperationQueue;
 + (id)mecabraLearningDictionaryDirectory;
 + (id)configureUserDictionaryObserver:(id)arg1 previousObserver:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSCache *candidatesCache; // @synthesize candidatesCache=_candidatesCache;
 @property _Bool shouldLearnAcceptedCandidate; // @synthesize shouldLearnAcceptedCandidate=_shouldLearnAcceptedCandidate;
 @property _Bool autoCorrects; // @synthesize autoCorrects=_autoCorrects;
 @property(retain) TIWordSearchOperationGetCandidates *operation; // @synthesize operation=_operation;
 @property(retain, nonatomic) TIMecabraEnvironment *mecabraEnvironment; // @synthesize mecabraEnvironment=_mecabraEnvironment;
 @property(readonly) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
-- (void).cxx_destruct;
 - (void)revertInlineCandidate;
 - (void)setMecabraTextContentType:(int)arg1;
 - (void)resetMecabraEnvironment;
@@ -73,6 +73,7 @@
 - (void)dealloc;
 - (id)initTIWordSearchWithInputMode:(id)arg1 mecabraWrapper:(id)arg2;
 - (id)initTIWordSearchWithInputMode:(id)arg1;
+- (id)mecabraCreationOptionsDictionary;
 - (unsigned long long)mecabraCreationOptions;
 @property(readonly, nonatomic) int mecabraLanguage;
 - (int)mecabraInputMethodType;

@@ -10,6 +10,11 @@
 
 @protocol _PARSearchRequest <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) long long exp;
+@property(nonatomic) _Bool isInReservedAllocationForExperiment;
+@property(nonatomic) _Bool isClientOnlyExperiment;
+@property(copy, nonatomic) NSString *experimentNamespaceId;
+@property(nonatomic) int abTestSeed;
 @property(nonatomic) _Bool seedBuild;
 @property(nonatomic) _Bool internalBuild;
 @property(nonatomic) _Bool hsEnabled;

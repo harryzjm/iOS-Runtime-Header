@@ -10,6 +10,11 @@
 {
 }
 
++ (struct CGAffineTransform)preferredTransformFromOrientation:(long long)arg1 size:(CDStruct_912cb5d2)arg2;
++ (id)urlOfAVAsset:(id)arg1;
++ (id)compositionFromVideoComposition:(id)arg1;
++ (id)pixelFormatStringForCVPixelBuffer:(struct __CVBuffer *)arg1;
++ (id)debugDescriptionOfAssetTrack:(id)arg1;
 + (id)cleanApertureVideoSettingsFor:(CDStruct_996ac03c)arg1 scale:(CDStruct_912cb5d2)arg2 videoSize:(CDStruct_912cb5d2)arg3;
 + (_Bool)compositionInstructions:(id)arg1 areEqualToCompositionInstructions:(id)arg2;
 + (id)videoCompositionDescription:(id)arg1;
@@ -28,16 +33,27 @@
 + (id)readerOutputForAsset:(id)arg1 outputSettings:(id)arg2 videoComposition:(id)arg3 error:(out id *)arg4;
 + (id)deepMutableCopyVideoComposition:(id)arg1;
 + (_Bool)updateVideoMetadataAtURL:(id)arg1 withItems:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 error:(out id *)arg4;
-+ (_Bool)readFromReader:(id)arg1 andWriteToWriter:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 progress:(id)arg4 error:(out id *)arg5;
++ (_Bool)readFromReader:(id)arg1 andWriteToWriter:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 createCustomMetadata:(_Bool)arg4 geometryTransform:(id)arg5 inputSize:(struct CGSize)arg6 outputSize:(struct CGSize)arg7 progress:(id)arg8 error:(out id *)arg9;
 + (CDStruct_1b6d18a9)readStillImageTimeFromVideoAsset:(id)arg1;
++ (id)metadataTrackWithStillImageDimensionsInLivePhotoAsset:(id)arg1;
++ (id)metadataTrackWithStillImageTransformInLivePhotoAsset:(id)arg1;
 + (id)metadataTrackWithStillImageDisplayTimeMarkerInLivePhotoAsset:(id)arg1;
++ (_Bool)isMetadataTrackWithLivePhotoInfo:(id)arg1;
++ (_Bool)isMetadataTrackWithStillImageDimensionsInLivePhoto:(id)arg1;
++ (_Bool)isMetadataTrackWithStillImageTransformInLivePhoto:(id)arg1;
++ (_Bool)isMetadataTrackStillImageDisplayTimeMarkerInLivePhoto:(id)arg1;
++ (_Bool)_metadataTrack:(id)arg1 containsIdentifier:(id)arg2;
 + (void)readNextSampleBuffer:(id)arg1 output:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (void)readNextPixelBuffer:(id)arg1 output:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (CDStruct_1b6d18a9)minimumFrameDurationForAssetTrack:(id)arg1;
 + (CDStruct_1b6d18a9)minimumFrameDurationForAsset:(id)arg1 videoComposition:(id)arg2;
 + (CDStruct_1b6d18a9)minimumFrameDurationForAsset:(id)arg1;
 + (id)firstEnabledVideoTrackInAsset:(id)arg1 error:(out id *)arg2;
-+ (id)bestOutputSettingsPresetForTargetVideoSize:(CDStruct_912cb5d2)arg1;
++ (id)bestOutputSettingsPresetForTargetVideoSize:(CDStruct_912cb5d2)arg1 codec:(unsigned int)arg2;
++ (id)defaultOutputColorSpaceForComposition:(id)arg1;
++ (id)defaultExportCodecForComposition:(id)arg1;
++ (_Bool)deviceSupportsHardware10BitHEVCEncoding;
++ (_Bool)deviceSupportsHardwareHEVCEncoding;
 + (id)rgbVideoSettingsForAVAssetReader;
 + (id)defaultVideoSettingsForAVAssetReader;
 

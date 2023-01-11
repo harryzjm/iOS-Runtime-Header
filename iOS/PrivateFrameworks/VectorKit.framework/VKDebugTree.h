@@ -21,11 +21,11 @@
 - (id)serializeZippedTree;
 - (_Bool)deserializeTree:(id)arg1;
 - (id)serializeTree;
-- (optional_615f169e)_deserializeNode:(id)arg1;
+- (optional_d7aa20cf)_deserializeNode:(id)arg1;
 - (id)_serializeNode:(const struct DebugTreeNode *)arg1;
-- (optional_61f7b1bf)_deserializeProperty:(id)arg1;
+- (optional_dea32acd)_deserializeProperty:(id)arg1;
 - (id)_serializeProperty:(const struct DebugTreeProperty *)arg1;
-- (optional_7a04703f)_deserializeValue:(id)arg1;
+- (optional_19b353d7)_deserializeValue:(id)arg1;
 - (id)_serializeValue:(const struct DebugTreeValue *)arg1;
 - (id)logTree;
 - (void)printTree;

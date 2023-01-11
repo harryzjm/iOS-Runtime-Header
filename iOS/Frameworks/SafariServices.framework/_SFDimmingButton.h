@@ -6,17 +6,27 @@
 
 #import <UIKit/UIButton.h>
 
+@class NSNumber, UIColor;
+
 @interface _SFDimmingButton : UIButton
 {
+    UIColor *_cachedDimmedBackgroundColor;
     double _normalImageAlpha;
     double _highlightedImageAlpha;
     double _highlightAnimationDuration;
+    UIColor *_dimmableBackgroundColor;
+    NSNumber *_tapTargetSideMargin;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *tapTargetSideMargin; // @synthesize tapTargetSideMargin=_tapTargetSideMargin;
+@property(retain, nonatomic) UIColor *dimmableBackgroundColor; // @synthesize dimmableBackgroundColor=_dimmableBackgroundColor;
 @property(nonatomic) double highlightAnimationDuration; // @synthesize highlightAnimationDuration=_highlightAnimationDuration;
 @property(nonatomic) double highlightedImageAlpha; // @synthesize highlightedImageAlpha=_highlightedImageAlpha;
 @property(nonatomic) double normalImageAlpha; // @synthesize normalImageAlpha=_normalImageAlpha;
+- (void)_updateBackgroundColor;
 - (void)_updateImageAlpha;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (void)setHighlighted:(_Bool)arg1;
 

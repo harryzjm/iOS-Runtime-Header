@@ -15,12 +15,12 @@
 @property(copy, nonatomic) NSString *targetContentIdentifier; // @dynamic targetContentIdentifier;
 @property(nonatomic) unsigned long long summaryArgumentCount; // @dynamic summaryArgumentCount;
 @property(copy, nonatomic) NSString *summaryArgument; // @dynamic summaryArgument;
+@property(nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property(copy, nonatomic) NSSet *topicIdentifiers; // @dynamic topicIdentifiers;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;
 @property(copy, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property(copy, nonatomic) UNNotificationSound *sound; // @dynamic sound;
-@property(nonatomic) _Bool shouldPreemptSTAR; // @dynamic shouldPreemptSTAR;
 @property(nonatomic) _Bool shouldPreemptPresentedNotification; // @dynamic shouldPreemptPresentedNotification;
 @property(nonatomic) _Bool shouldUseRequestIdentifierForDismissalSync; // @dynamic shouldUseRequestIdentifierForDismissalSync;
 @property(nonatomic) _Bool shouldSuppressSyncDismissalWhenRemoved; // @dynamic shouldSuppressSyncDismissalWhenRemoved;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)renderPassDescriptor;
+- (id)sampleBufferAttachments;
 - (const struct MTLRenderPassDescriptorPrivate *)_descriptorPrivate;
 - (_Bool)validate:(id)arg1 width:(unsigned long long *)arg2 height:(unsigned long long *)arg3;
 - (unsigned long long)getSamplePositions:(CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1;
 - (unsigned long long)imageblockSampleLength;
 - (void)setImageblockSampleLength:(unsigned long long)arg1;
+- (_Bool)pointCoordYFlipEnabled;
+- (void)setPointCoordYFlipEnabled:(_Bool)arg1;
 - (_Bool)openGLModeEnabled;
 - (void)setOpenGLModeEnabled:(_Bool)arg1;
 - (_Bool)isDitherEnabled;

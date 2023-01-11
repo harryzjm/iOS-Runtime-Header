@@ -11,17 +11,17 @@
 #import <ClassKit/NSLocking-Protocol.h>
 #import <ClassKit/NSSecureCoding-Protocol.h>
 
-@class CLSDataStore, NSDate, NSString;
+@class CLSDataStore, NSDate, NSMutableDictionary, NSString;
 
 @interface CLSObject : NSObject <CLSRelationable, CLSGraphVertex, NSLocking, NSSecureCoding>
 {
     _Bool _deleted;
     _Bool _modified;
-    _Bool _enforceImmutablility;
+    _Bool _enforceImmutability;
     CLSDataStore *_dataStore;
     NSString *_parentObjectID;
     NSString *_appIdentifier;
-    struct NSMutableDictionary *_childrenByID;
+    NSMutableDictionary *_childrenByID;
     CLSObject *_parent;
     struct os_unfair_recursive_lock_s _lock;
     _Bool _temporary;
@@ -35,13 +35,13 @@
 + (id)dateFormatter;
 + (_Bool)supportsSecureCoding;
 + (id)relations;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *dateExpires; // @synthesize dateExpires=_dateExpires;
 @property(copy, nonatomic) NSString *objectID; // @synthesize objectID=_objectID;
 @property unsigned int generation; // @synthesize generation=_generation;
 @property(nonatomic, getter=isTemporary) _Bool temporary; // @synthesize temporary=_temporary;
 @property(retain, nonatomic) NSDate *dateLastModified; // @synthesize dateLastModified=_dateLastModified;
 @property(retain, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
-- (void).cxx_destruct;
 - (id)ancestorOfClass:(Class)arg1;
 - (long long)effectiveAuthorizationStatus;
 - (id)dictionaryRepresentation;
@@ -69,7 +69,7 @@
 @property(readonly, nonatomic) id vertexID;
 - (void)unlock;
 - (void)lock;
-@property(nonatomic, getter=isImmutablilityEnforced) _Bool enforceImmutablility;
+@property(nonatomic, getter=isImmutabilityEnforced) _Bool enforceImmutability;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_init;

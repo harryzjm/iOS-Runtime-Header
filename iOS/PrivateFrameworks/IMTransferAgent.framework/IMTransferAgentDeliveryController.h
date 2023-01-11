@@ -14,6 +14,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) FTMessageDelivery *messageDelivery; // @synthesize messageDelivery=_messageDelivery;
 - (void)sendFTMessage:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;

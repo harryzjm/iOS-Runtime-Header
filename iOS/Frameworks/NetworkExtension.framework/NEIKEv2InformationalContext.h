@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSArray;
+@class NSArray, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface NEIKEv2InformationalContext : NSObject
+@interface NEIKEv2InformationalContext
 {
     unsigned int _maxRetries;
     NSArray *_privateNotifies;
@@ -18,14 +16,15 @@
     CDUnknownBlockType _callback;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(nonatomic) unsigned long long retryIntervalInMilliseconds; // @synthesize retryIntervalInMilliseconds=_retryIntervalInMilliseconds;
 @property(nonatomic) unsigned int maxRetries; // @synthesize maxRetries=_maxRetries;
 @property(retain, nonatomic) NSArray *privateNotifies; // @synthesize privateNotifies=_privateNotifies;
-- (void).cxx_destruct;
 - (void)sendCallbackSuccess:(_Bool)arg1 session:(id)arg2;
 - (id)description;
+- (id)initWithPrivateNotifies:(id)arg1 maxRetries:(unsigned int)arg2 retryIntervalMilliseconds:(unsigned long long)arg3 callbackQueue:(id)arg4 callback:(CDUnknownBlockType)arg5;
 
 @end
 

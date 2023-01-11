@@ -8,7 +8,7 @@
 
 #import <PassKitUIFoundation/SCNSceneRendererDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PKPeerPayment3DScene, PKPeerPayment3DStore, SCNView;
+@class MISSING_TYPE, NSMutableArray, NSString, PKPeerPayment3DScene, PKPeerPayment3DStore, SCNView;
 
 @interface PKPeerPayment3DTextView : UIView <SCNSceneRendererDelegate>
 {
@@ -34,11 +34,12 @@
 }
 
 + (id)supportedCharacterSet;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(readonly, nonatomic) unsigned long long renderStyle; // @synthesize renderStyle=_renderStyle;
-- (void).cxx_destruct;
 - (void)renderer:(id)arg1 didRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)performPostRender:(CDUnknownBlockType)arg1;
+- (MISSING_TYPE *)_fakeAnimationRollPitchWithElapsedTime:(double)arg1;
 - (void)didMoveToWindow;
 - (void)didBecomeActive;
 - (void)willResignActive;

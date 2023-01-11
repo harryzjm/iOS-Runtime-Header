@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIViewController;
+
 __attribute__((visibility("hidden")))
 @interface PUPhotoKitEditActionPerformer
 {
+    UIViewController *_presentedAlertViewController;
 }
 
 + (_Bool)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
+- (void).cxx_destruct;
 - (void)_presentEditorForAsset:(id)arg1;
 - (void)_beginEditingCurrentAsset;
 - (void)performUserInteractionTask;

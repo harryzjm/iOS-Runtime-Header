@@ -17,8 +17,8 @@
     NSArray *_applicationKeys;
 }
 
-@property(retain, nonatomic) NSDictionary *debugBlockingTasks; // @synthesize debugBlockingTasks=_debugBlockingTasks;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *debugBlockingTasks; // @synthesize debugBlockingTasks=_debugBlockingTasks;
 - (long long)tableView:(id)arg1 indentationLevelForRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
@@ -29,6 +29,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)_configureCell:(id)arg1 withBlockingTask:(id)arg2;
 - (id)_tableView;
+- (_Bool)_canShowWhileLocked;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 

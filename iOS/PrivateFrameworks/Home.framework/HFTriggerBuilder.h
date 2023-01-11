@@ -11,6 +11,7 @@
 {
     _Bool _enabled;
     NSString *_name;
+    NSString *_displayName;
     HFTriggerActionSetsBuilder *_triggerActionSets;
     id <HFTriggerBuilderContextProviding> _context;
     HFConditionCollection *_conditionCollection;
@@ -19,13 +20,14 @@
 
 + (id)triggerBuilderForTrigger:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 + (Class)homeKitRepresentationClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HFMutableSetDiff *endEventBuildersDiff; // @synthesize endEventBuildersDiff=_endEventBuildersDiff;
 @property(retain, nonatomic) HFConditionCollection *conditionCollection; // @synthesize conditionCollection=_conditionCollection;
 @property(retain, nonatomic) id <HFTriggerBuilderContextProviding> context; // @synthesize context=_context;
 @property(retain, nonatomic) HFTriggerActionSetsBuilder *triggerActionSets; // @synthesize triggerActionSets=_triggerActionSets;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
+@property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)_deleteTrigger:(id)arg1 fromHome:(id)arg2;
 - (id)_commitAddTriggerToHome:(id)arg1;
 - (id)_uniquelyRenameTrigger:(id)arg1 pendingReplaceByNewTrigger:(id)arg2;
@@ -42,6 +44,7 @@
 - (id)_updateEnabledState;
 - (id)commitItem;
 - (id)_performValidation;
+- (id)validateTrigger;
 - (id)deleteTrigger;
 - (_Bool)markTriggerAsHomeAppCreated;
 - (void)setMarkTriggerAsHomeAppCreated:(_Bool)arg1;
@@ -56,6 +59,7 @@
 @property(readonly, nonatomic) _Bool requiresConfirmationToRun;
 @property(readonly, nonatomic) NSArray *endEventBuilders;
 - (void)setEndEvent:(id)arg1;
+- (void)removeServiceLikeItem:(id)arg1;
 - (void)removeAllEndEventBuilders;
 - (void)removeEndEventBuilder:(id)arg1;
 - (void)updateEndEventBuilder:(id)arg1;

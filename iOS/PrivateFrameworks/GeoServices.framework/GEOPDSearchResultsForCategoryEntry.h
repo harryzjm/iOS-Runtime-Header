@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSearchResultsForCategoryEntry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _placeIndexs;
     GEOPDBrowseCategory *_category;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_placeIndexs:1;
         unsigned int read_category:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_placeIndexs:1;
-        unsigned int wrote_category:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,20 +40,22 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setPlaceIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)placeIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsPlaceIndex:(unsigned int)arg1;
 - (void)addPlaceIndex:(unsigned int)arg1;
 - (void)clearPlaceIndexs;
 @property(readonly, nonatomic) unsigned int *placeIndexs;
 @property(readonly, nonatomic) unsigned long long placeIndexsCount;
-- (void)_readPlaceIndexs;
 @property(retain, nonatomic) GEOPDBrowseCategory *category;
 @property(readonly, nonatomic) _Bool hasCategory;
-- (void)_readCategory;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

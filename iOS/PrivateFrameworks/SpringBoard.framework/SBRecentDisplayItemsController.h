@@ -25,9 +25,12 @@
     id <SBRecentDisplayItemsControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBRecentDisplayItemsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBRecentDisplayItemsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_addStateCaptureHandler;
+- (id)_webClipForIdentifier:(id)arg1;
+- (id)_associatedWebClipIdentifierForAppClipIdentifier:(id)arg1 sceneIdentifier:(id)arg2;
+- (_Bool)_displayItemRepresentsAppClip:(id)arg1;
 - (void)_disallowAppFromAppearingWhileHidden:(id)arg1;
 - (void)_allowAppToAppearWhileHidden:(id)arg1;
 - (void)_removeDisplayItem:(id)arg1;
@@ -36,14 +39,17 @@
 - (void)_addOrMoveDisplayItemToFront:(id)arg1;
 - (id)_displayItemForLayoutElement:(id)arg1;
 - (id)_allDisplayItemsPassingTest:(CDUnknownBlockType)arg1;
+- (id)_allDisplayItemsForWebClipID:(id)arg1;
 - (id)_allDisplayItemsForUniqueID:(id)arg1;
 - (id)_allDisplayItemsForBundleID:(id)arg1;
 - (id)_firstDisplayItemForBundleID:(id)arg1;
+- (_Bool)_displayItem:(id)arg1 matchesBundleID:(id)arg2;
 - (id)_firstDisplayItemForUniqueID:(id)arg1;
 - (_Bool)_isDisallowedDisplayItem:(id)arg1;
 - (_Bool)_displayItemIsExecutableOnCurrentPlatform:(id)arg1;
 - (void)_setupDelayAfterTransitionTimerForActivatingElement:(id)arg1;
 - (void)_clearDelayAfterTransitionTimer;
+- (void)eventSource:(id)arg1 userDeletedWebBookmark:(id)arg2;
 - (void)eventSource:(id)arg1 applicationsBecameVisible:(id)arg2;
 - (void)eventSource:(id)arg1 userQuitApplicationInSwitcher:(id)arg2;
 - (void)eventSource:(id)arg1 didBeginTransitionToMode:(long long)arg2 withLayoutState:(id)arg3 activatingElement:(id)arg4 triggeredBy:(long long)arg5;
@@ -55,6 +61,7 @@
 - (void)eventSource:(id)arg1 userRemovedSuggestions:(id)arg2;
 - (void)dealloc;
 - (void)reset;
+- (void)removeDisplayItem:(id)arg1;
 @property(copy, nonatomic) NSOrderedSet *recentDisplayItems;
 - (id)init;
 - (id)initWithRemovalPersonality:(long long)arg1 movePersonality:(long long)arg2 transitionFromSources:(id)arg3 maxDisplayItems:(unsigned long long)arg4 eventSource:(id)arg5 applicationController:(id)arg6;

@@ -15,23 +15,25 @@ __attribute__((visibility("hidden")))
     UIView *_seed;
     _Bool _hasFinishedRevealing;
     UILabel *_textLabel;
-    _Bool _scrollViewVerticalFeedbackGeneratorEnabled;
     _Bool _areAnimationsValid;
+    _Bool _horizontallyCenteredFramesNeedUpdate;
     double _currentPopStiffness;
     double _impactIntensity;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool horizontallyCenteredFramesNeedUpdate; // @synthesize horizontallyCenteredFramesNeedUpdate=_horizontallyCenteredFramesNeedUpdate;
 @property(nonatomic) double impactIntensity; // @synthesize impactIntensity=_impactIntensity;
 @property(nonatomic) double currentPopStiffness; // @synthesize currentPopStiffness=_currentPopStiffness;
 @property(readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(nonatomic) _Bool areAnimationsValid; // @synthesize areAnimationsValid=_areAnimationsValid;
-- (void).cxx_destruct;
 - (id)attributedTitle;
 - (void)setAttributedTitle:(id)arg1;
 - (void)setTintColor:(id)arg1;
 - (id)_effectiveTintColorWithAlpha:(double)arg1;
 - (id)_effectiveTintColor;
 - (void)layoutSubviews;
+- (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)maximumSnappingHeight;
 - (double)_maximumSnappingHeightScalingForScrollViewHeight;

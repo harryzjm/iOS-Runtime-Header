@@ -23,13 +23,13 @@
     NSURLSession *_backgroundSession;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
 @property(retain) NSString *bugSessionIdentifier; // @synthesize bugSessionIdentifier=_bugSessionIdentifier;
 @property(retain) NSURLSession *foregroundSession; // @synthesize foregroundSession=_foregroundSession;
 @property __weak id <DEDSeedingClientDelegate> uploadDelegate; // @synthesize uploadDelegate=_uploadDelegate;
 @property(retain) DEDBugSessionConfiguration *config; // @synthesize config=_config;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
-- (void).cxx_destruct;
 - (_Bool)isLoggedIn;
 - (id)_keyValuePairsForKey:(id)arg1 value:(id)arg2;
 - (id)_formEncodedBodyForDictionary:(id)arg1;
@@ -43,6 +43,7 @@
 - (id)newFilePromiseURL;
 - (id)loginWithTokenURL;
 - (id)seedingURL;
+- (id)baseURL;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (id)_serverErrorFromTask:(id)arg1;
@@ -50,12 +51,14 @@
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(id)arg1;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)cancelPromise:(id)arg1 withSuccess:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
+- (void)updatePromise:(id)arg1 withFilename:(id)arg2 size:(long long)arg3 extensionID:(id)arg4 status:(long long)arg5 success:(CDUnknownBlockType)arg6 error:(CDUnknownBlockType)arg7;
 - (void)updatePromise:(id)arg1 withFilename:(id)arg2 size:(long long)arg3 status:(long long)arg4 success:(CDUnknownBlockType)arg5 error:(CDUnknownBlockType)arg6;
 - (void)updatePromise:(id)arg1 withAttachmentGroup:(id)arg2 status:(long long)arg3 success:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (void)getPromise:(id)arg1 withSuccess:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
-- (void)makePromiseWithUUID:(id)arg1 success:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
+- (void)makePromiseWithUUID:(id)arg1 extensionID:(id)arg2 success:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;
 - (void)cleanup;
-- (id)beginUploadWithRequest:(id)arg1 fromFileURL:(id)arg2;
+- (id)ongoingUploads;
+- (id)beginUploadWithRequest:(id)arg1 fromFileURL:(id)arg2 error:(id *)arg3;
 - (void)performHTTPMethod:(id)arg1 toURL:(id)arg2 parameters:(id)arg3 encoding:(unsigned long long)arg4 success:(CDUnknownBlockType)arg5 error:(CDUnknownBlockType)arg6;
 - (void)deleteResourceAtURL:(id)arg1 success:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)putToURL:(id)arg1 parameters:(id)arg2 encoding:(unsigned long long)arg3 success:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;

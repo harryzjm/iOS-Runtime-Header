@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 
-@class NSString, PUAssetViewModel, UIActivityIndicatorView, UIImageView, UIView;
+@class NSString, PUAssetViewModel, UIActivityIndicatorView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUImportStatusTileViewController <PUAssetViewModelChangeObserver>
@@ -17,15 +17,16 @@ __attribute__((visibility("hidden")))
         _Bool isPerformingUpdate;
     } _updateFlags;
     UIView *_successView;
+    UIView *_errorView;
     UIActivityIndicatorView *_progressIndicatorView;
-    UIImageView *_errorView;
     _Bool __isPerformingChanges;
     PUAssetViewModel *_assetViewModel;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool _isPerformingChanges; // @synthesize _isPerformingChanges=__isPerformingChanges;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
-- (void).cxx_destruct;
+- (void)applyLayoutInfo:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)_updateStatusView;
 - (void)_updateIfNeeded;

@@ -11,9 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)monitorLocationAuthorizationStatusChanges:(unsigned long long)arg1;
 + (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 + (_Bool)requiresEventOrReminderAccess;
+- (void)CADDatabaseGetTTLLocationAuthorizationStatus:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetSecurityScopedLocalURLWrapperForAttachment:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseShouldWhitelistOrganizerPhoneNumberFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseShouldWhitelistOrganizerEmailFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -31,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_CADDatabaseCanModifySuggestedEventCalendar;
 - (void)CADDatabaseCanModifySuggestedEventCalendar:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSetShowsDeclinedEvents:(_Bool)arg1;
-- (void)CADDatabaseGetEndDateOfEarliestExpiringNotifiableEventAfterDate:(id)arg1 timeZone:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetCountOfNotifiableEvents:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetCountOfUnacknowledgedEvents:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetAllEventsWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -41,6 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseInsertSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetNaturalLanguageSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseSetBirthdayCalendarEnabled:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseGetBirthdayCalendarEnabledWithReply:(CDUnknownBlockType)arg1;
+- (void *)_chooseRealSubscribedCalendarStoreFromStoresAndDeleteTheOtherOnes:(struct __CFArray *)arg1 withDatabase:(struct CalDatabase *)arg2;
+- (void)CADDatabaseGetOrCreateBirthdayCalendar:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseGetOrCreateSubscribedCalendarsSource:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSetDefaultCalendarForNewEvents:(id)arg1 delegateSource:(id)arg2;
 - (void)CADDatabaseGetDefaultCalendarForNewEventsInDelegateSource:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (id)_getDefaultCalendarIDForNewEventsInStoreWithID:(id)arg1;

@@ -17,13 +17,16 @@
 
 + (id)emptyCapabilities;
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy) NSDictionary *capabilitiesDictionary; // @synthesize capabilitiesDictionary=_capabilitiesDictionary;
 - (void).cxx_destruct;
+@property(readonly, copy) NSDictionary *capabilitiesDictionary; // @synthesize capabilitiesDictionary=_capabilitiesDictionary;
 - (_Bool)hasCapability:(id)arg1;
 - (unsigned long long)versionForCapability:(id)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, copy) NSDictionary *dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 
 @end

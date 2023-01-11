@@ -4,14 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HUNetworkConfigurationSettingsModuleController
+#import <HomeUI/HUNetworkConfigurationSettingsModuleDelegate-Protocol.h>
+#import <HomeUI/HUTappableTextViewDelegate-Protocol.h>
+
+@class NSString;
+
+@interface HUNetworkConfigurationSettingsModuleController <HUNetworkConfigurationSettingsModuleDelegate, HUTappableTextViewDelegate>
 {
 }
 
+- (id)_presentNetworkConfigurationSettingsMismatchViewController;
+- (void)tappableTextView:(id)arg1 tappedAtIndex:(unsigned long long)arg2 withAttributes:(id)arg3;
+- (void)networkConfigurationSettingsModuleUpdateDidTimeout:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (_Bool)canSelectItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;
 - (Class)cellClassForItem:(id)arg1;
+@property(readonly, copy) NSString *description;
+- (id)initWithModule:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

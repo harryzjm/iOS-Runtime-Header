@@ -31,11 +31,13 @@ __attribute__((visibility("hidden")))
 - (unsigned int)trafficIncidentTypeKey;
 - (unsigned int)styleAttributeTransitSystemTypeKey;
 - (unsigned int)styleAttributeTransitTypeKey;
+- (id)imageForIconID:(unsigned int)arg1 contentScale:(float)arg2 sizeGroup:(long long)arg3 modifiers:(id)arg4;
 - (id)imageForName:(id)arg1 contentScale:(float)arg2 sizeGroup:(long long)arg3 modifiers:(id)arg4;
 - (id)imageForKey:(unsigned int)arg1 value:(unsigned int)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
 - (id)imageForDataID:(unsigned int)arg1 text:(id)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
 - (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
 - (id)imageForStyleAttributes:(id)arg1 styleManager:(shared_ptr_a3c46825)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
+- (id)imageForImageSourceKey:(id)arg1;
 - (id)init:(shared_ptr_6d521cf7)arg1 stylesheetVendor:(shared_ptr_dd2d1f5e)arg2;
 - (id)init;
 

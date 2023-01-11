@@ -10,6 +10,7 @@
 @protocol RBEntitlementPossessing;
 
 @protocol RBEntitlementManaging <NSObject>
+- (void)purgeEntitlementsForProcess:(RBProcess *)arg1;
 - (id <RBEntitlementPossessing>)entitlementsForProcess:(RBProcess *)arg1;
 - (NSSet *)allEntitlements;
 @end

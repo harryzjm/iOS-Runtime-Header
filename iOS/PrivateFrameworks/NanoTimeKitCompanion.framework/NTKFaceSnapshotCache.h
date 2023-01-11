@@ -6,27 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableDictionary;
+@class NSMapTable, NSMutableDictionary, NSMutableOrderedSet, NTKFaceSnapshotCacheRequest;
 @protocol OS_dispatch_queue;
 
 @interface NTKFaceSnapshotCache : NSObject
 {
     NSMutableDictionary *_snapshots;
-    NSMapTable *_callbacks;
-    NSMapTable *_callCount;
     NSObject<OS_dispatch_queue> *_snapshotQueue;
+    NSMapTable *_requestsByFace;
+    NSMapTable *_callCountsByFace;
+    NTKFaceSnapshotCacheRequest *_servicingRequest;
+    NSMutableOrderedSet *_highPriorityRequests;
+    NSMutableOrderedSet *_lowPriorityRequests;
 }
 
 + (id)snapshotCache;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *snapshotQueue; // @synthesize snapshotQueue=_snapshotQueue;
-@property(readonly, nonatomic) NSMapTable *callCount; // @synthesize callCount=_callCount;
-@property(readonly, nonatomic) NSMapTable *callbacks; // @synthesize callbacks=_callbacks;
-@property(readonly, nonatomic) NSMutableDictionary *snapshots; // @synthesize snapshots=_snapshots;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableOrderedSet *lowPriorityRequests; // @synthesize lowPriorityRequests=_lowPriorityRequests;
+@property(retain, nonatomic) NSMutableOrderedSet *highPriorityRequests; // @synthesize highPriorityRequests=_highPriorityRequests;
+@property(retain, nonatomic) NTKFaceSnapshotCacheRequest *servicingRequest; // @synthesize servicingRequest=_servicingRequest;
+@property(readonly, nonatomic) NSMapTable *callCountsByFace; // @synthesize callCountsByFace=_callCountsByFace;
+@property(readonly, nonatomic) NSMapTable *requestsByFace; // @synthesize requestsByFace=_requestsByFace;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *snapshotQueue; // @synthesize snapshotQueue=_snapshotQueue;
+@property(readonly, nonatomic) NSMutableDictionary *snapshots; // @synthesize snapshots=_snapshots;
+- (void)_attemptSnapshotForRequest:(id)arg1;
+- (void)_serviceRequestsIfIdle;
+- (void)fetchSnapshotWithRequest:(id)arg1;
+- (void)cancelSnapshotRequest:(id)arg1;
 - (void)_invokeCallbacksOfFace:(id)arg1 withSnapshot:(id)arg2;
 - (void)_snapshotProcessInterrupted:(id)arg1;
-- (void)_attemptSnapshotOfFace:(id)arg1;
-- (void)fetchSnapshotOfFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_attemptSnapshotOfFace:(id)arg1 atQOS:(unsigned int)arg2;
 - (id)cachedSnapshotOfFace:(id)arg1;
 - (void)dealloc;
 - (id)init;

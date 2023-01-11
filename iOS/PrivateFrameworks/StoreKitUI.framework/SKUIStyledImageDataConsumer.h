@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKColor, UIColor;
+@class IKColor, UIColor, UITraitCollection;
 
 @interface SKUIStyledImageDataConsumer
 {
     struct UIEdgeInsets _borderRadii;
     IKColor *_iKBackgroundColor;
+    UITraitCollection *_startingTraitCollection;
     UIColor *_backgroundColor;
     UIColor *_borderColor;
     long long _imageContentMode;
@@ -63,6 +64,7 @@
 + (id)brickConsumer;
 + (id)applePackIconConsumer;
 + (id)appIconConsumerWithSize:(struct CGSize)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
 @property(nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
 @property(nonatomic) struct CGSize shadowOffset; // @synthesize shadowOffset=_shadowOffset;
@@ -74,9 +76,9 @@
 @property(nonatomic) struct UIEdgeInsets borderWidths; // @synthesize borderWidths=_borderWidths;
 @property(retain, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-- (void).cxx_destruct;
 - (id)_leftToRightGradient:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
-- (id)_uberImageWithBounds:(struct CGRect)arg1 inputSize:(struct CGSize)arg2 drawBlock:(CDUnknownBlockType)arg3;
+- (id)_uberImageWithBounds:(struct CGRect)arg1 inputSize:(struct CGSize)arg2 backgroundColor:(id)arg3 drawBlock:(CDUnknownBlockType)arg4;
+- (id)_dynamicUberImageWithBounds:(struct CGRect)arg1 inputSize:(struct CGSize)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_uberBannerImageWithBounds:(struct CGRect)arg1 inputSize:(struct CGSize)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_roundedBorderWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;
 - (id)_radialBlurImageWithBounds:(struct CGRect)arg1 contentRect:(struct CGRect)arg2 drawBlock:(CDUnknownBlockType)arg3;

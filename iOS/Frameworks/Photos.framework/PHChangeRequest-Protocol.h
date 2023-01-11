@@ -10,6 +10,7 @@
 @protocol OS_xpc_object, PLClientAuthorization;
 
 @protocol PHChangeRequest <NSObject>
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic) NSString *clientName;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;

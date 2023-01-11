@@ -4,23 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup, NSArray;
+@class HMDBackingStoreCacheGroup, NSArray;
 
 @interface HMDBackingStoreCacheDeleteRecordOperation
 {
     HMDBackingStoreCacheGroup *_group;
-    HMDBackingStoreCacheShareGroup *_share;
     NSArray *_recordNames;
 }
 
-@property(retain, nonatomic) NSArray *recordNames; // @synthesize recordNames=_recordNames;
-@property(retain, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
-@property(retain, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *recordNames; // @synthesize recordNames=_recordNames;
+@property(retain, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
 - (id)mainReturningError;
-- (id)initWithShareGroup:(id)arg1 recordNames:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)initWithGroup:(id)arg1 recordNames:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
-- (id)initWithGroup:(id)arg1 share:(id)arg2 recordNames:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
 
 @end
 

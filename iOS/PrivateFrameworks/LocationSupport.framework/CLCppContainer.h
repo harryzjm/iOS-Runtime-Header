@@ -12,18 +12,22 @@
 {
     const void *_cppObjectPtr;
     CDUnknownBlockType _destructor;
+    unsigned long long _binaryVersion;
+    unsigned long long _sizeOfType;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)containerWithObject:(void *)arg1 destructor:(CDUnknownBlockType)arg2;
++ (id)containerWithObject:(void *)arg1 destructor:(CDUnknownBlockType)arg2 binaryVersion:(unsigned long long)arg3 typeSize:(unsigned long long)arg4;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long sizeOfType; // @synthesize sizeOfType=_sizeOfType;
+@property(readonly, nonatomic) unsigned long long binaryVersion; // @synthesize binaryVersion=_binaryVersion;
 @property(copy, nonatomic) CDUnknownBlockType destructor; // @synthesize destructor=_destructor;
 @property(nonatomic) const void *cppObjectPtr; // @synthesize cppObjectPtr=_cppObjectPtr;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithObject:(void *)arg1 destructor:(CDUnknownBlockType)arg2;
+- (id)initWithObject:(void *)arg1 destructor:(CDUnknownBlockType)arg2 binaryVersion:(unsigned long long)arg3 typeSize:(unsigned long long)arg4;
 
 @end
 

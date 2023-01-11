@@ -18,8 +18,14 @@
 
 + (_Bool)supportsSecureCoding;
 @property(readonly) struct Object *_apiObject;
+- (void)removeAllScriptMessageHandlers;
+- (void)removeAllScriptMessageHandlersFromContentWorld:(id)arg1;
+- (void)removeScriptMessageHandlerForName:(id)arg1 contentWorld:(id)arg2;
 - (void)removeScriptMessageHandlerForName:(id)arg1;
+- (void)addScriptMessageHandlerWithReply:(id)arg1 contentWorld:(id)arg2 name:(id)arg3;
+- (void)addScriptMessageHandler:(id)arg1 contentWorld:(id)arg2 name:(id)arg3;
 - (void)addScriptMessageHandler:(id)arg1 name:(id)arg2;
+- (void)_addScriptMessageHandler:(struct WebScriptMessageHandler *)arg1;
 - (void)removeAllContentRuleLists;
 - (void)removeContentRuleList:(id)arg1;
 - (void)addContentRuleList:(id)arg1;
@@ -32,8 +38,9 @@
 - (id)init;
 - (void)_removeAllScriptMessageHandlersAssociatedWithUserContentWorld:(id)arg1;
 - (void)_removeScriptMessageHandlerForName:(id)arg1 userContentWorld:(id)arg2;
+- (void)_addScriptMessageHandler:(id)arg1 name:(id)arg2 contentWorld:(id)arg3;
 - (void)_addScriptMessageHandler:(id)arg1 name:(id)arg2 userContentWorld:(id)arg3;
-- (void)_removeAllUserStyleSheetsAssociatedWithUserContentWorld:(id)arg1;
+- (void)_removeAllUserStyleSheetsAssociatedWithContentWorld:(id)arg1;
 - (void)_removeAllUserStyleSheets;
 - (void)_removeUserStyleSheet:(id)arg1;
 - (void)_addUserStyleSheet:(id)arg1;
@@ -42,7 +49,7 @@
 - (void)_removeUserContentFilter:(id)arg1;
 - (void)_addUserContentFilter:(id)arg1;
 - (void)_addUserScriptImmediately:(id)arg1;
-- (void)_removeAllUserScriptsAssociatedWithUserContentWorld:(id)arg1;
+- (void)_removeAllUserScriptsAssociatedWithContentWorld:(id)arg1;
 - (void)_removeUserScript:(id)arg1;
 
 // Remaining properties

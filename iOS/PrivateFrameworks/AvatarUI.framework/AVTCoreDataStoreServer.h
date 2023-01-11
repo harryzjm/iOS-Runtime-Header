@@ -40,6 +40,7 @@
 
 + (_Bool)resetSyncShouldPreserveContentForReason:(unsigned long long)arg1;
 + (id)imageGeneratorForEnvironment:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType userRequestedBackupActivityCompletion; // @synthesize userRequestedBackupActivityCompletion=_userRequestedBackupActivityCompletion;
 @property(copy, nonatomic) CDUnknownBlockType migrationActivityCompletion; // @synthesize migrationActivityCompletion=_migrationActivityCompletion;
 @property(nonatomic) _Bool setupCompleted; // @synthesize setupCompleted=_setupCompleted;
@@ -60,7 +61,6 @@
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) AVTCoreEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) id <AVTStoreBackend> backend; // @synthesize backend=_backend;
-- (void).cxx_destruct;
 - (void)clientDidCheckInForServer:(id)arg1;
 - (void)mirroringHandler:(id)arg1 didResetSyncWithReason:(unsigned long long)arg2;
 - (void)mirroringHandler:(id)arg1 willResetSyncWithReason:(unsigned long long)arg2;
@@ -68,9 +68,9 @@
 - (void)deleteStickerRecents;
 - (void)scheduleUpdateThumbnails;
 - (void)updateThumbnails;
-- (void)scheduleExportWithManagedObjectContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)scheduleExportWithManagedObjectContext:(id)arg1 discretionary:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)processInternalSettingsChanges:(CDUnknownBlockType)arg1;
-- (void)scheduleImportThen:(CDUnknownBlockType)arg1;
+- (void)scheduleImportDiscretionary:(_Bool)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)migrate;
 - (void)scheduleMigrationThen:(CDUnknownBlockType)arg1;
 - (void)scheduleImportExportIfRequiredWithPostImportHandler:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;

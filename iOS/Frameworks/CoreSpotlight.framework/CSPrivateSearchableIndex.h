@@ -9,17 +9,19 @@
 @interface CSPrivateSearchableIndex
 {
     _Bool _attemptedIndexPathResolution;
+    int _resolvedIndexPathErrorCode;
     NSString *_resolvedIndexPath;
     NSString *_indexPath;
     CSIndexConnection *_savedConnection;
 }
 
 + (id)defaultSearchableIndex;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CSIndexConnection *savedConnection; // @synthesize savedConnection=_savedConnection;
 @property(retain, nonatomic) NSString *indexPath; // @synthesize indexPath=_indexPath;
+@property(nonatomic) int resolvedIndexPathErrorCode; // @synthesize resolvedIndexPathErrorCode=_resolvedIndexPathErrorCode;
 @property(retain, nonatomic) NSString *resolvedIndexPath; // @synthesize resolvedIndexPath=_resolvedIndexPath;
 @property _Bool attemptedIndexPathResolution; // @synthesize attemptedIndexPathResolution=_attemptedIndexPathResolution;
-- (void).cxx_destruct;
 - (id)xpc_dictionary_for_command:(const char *)arg1 requiresInitialization:(_Bool)arg2;
 - (id)connection;
 - (void)dealloc;

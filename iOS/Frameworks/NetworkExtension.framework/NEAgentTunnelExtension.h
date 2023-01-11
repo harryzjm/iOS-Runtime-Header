@@ -23,13 +23,15 @@
 - (void)extension:(id)arg1 didSetTunnelConfiguration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extension:(id)arg1 didSetStatus:(long long)arg2;
 - (void)extension:(id)arg1 didStartWithError:(id)arg2;
+- (void)setAppUUIDMap:(id)arg1;
 - (void)attachIPCWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)disconnectWithReason:(int)arg1;
 - (void)connectWithParameters:(id)arg1;
 - (id)driverInterface;
 - (id)managerInterface;
-- (void)handlePluginUpdateEnds:(id)arg1;
-- (void)handlePluginUpdateBegins:(id)arg1;
+- (void)handleAppsUpdateEnds:(id)arg1;
+- (void)handleAppsUpdateEnding:(id)arg1;
+- (void)handleAppsUpdateBegins:(id)arg1;
 - (void)handleAppsUninstalled:(id)arg1;
 - (void)handleCancel;
 

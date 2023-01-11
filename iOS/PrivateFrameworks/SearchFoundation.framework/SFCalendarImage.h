@@ -16,8 +16,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -31,6 +31,7 @@
 // Remaining properties
 @property(copy, nonatomic) NSString *contentType;
 @property(nonatomic) double cornerRadius;
+@property(nonatomic) int cornerRoundingStyle;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(copy, nonatomic) NSString *identifier;

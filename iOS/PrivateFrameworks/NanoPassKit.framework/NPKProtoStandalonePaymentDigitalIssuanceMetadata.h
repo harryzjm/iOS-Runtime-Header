@@ -15,25 +15,25 @@
     NSString *_action;
     NSMutableArray *_defaultSuggestions;
     NSString *_merchantID;
+    NSMutableArray *_serviceProviderAcceptedNetworks;
     NSMutableArray *_serviceProviderCapabilities;
     NSString *_serviceProviderCountryCode;
     NSString *_serviceProviderDictJson;
     NSString *_serviceProviderIdentifier;
-    NSMutableArray *_serviceProviderSupportedNetworks;
 }
 
 + (Class)defaultSuggestionsType;
 + (Class)serviceProviderCapabilitiesType;
-+ (Class)serviceProviderSupportedNetworksType;
++ (Class)serviceProviderAcceptedNetworksType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *defaultSuggestions; // @synthesize defaultSuggestions=_defaultSuggestions;
 @property(retain, nonatomic) NSString *merchantID; // @synthesize merchantID=_merchantID;
 @property(retain, nonatomic) NSString *action; // @synthesize action=_action;
 @property(retain, nonatomic) NSString *serviceProviderDictJson; // @synthesize serviceProviderDictJson=_serviceProviderDictJson;
 @property(retain, nonatomic) NSMutableArray *serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;
-@property(retain, nonatomic) NSMutableArray *serviceProviderSupportedNetworks; // @synthesize serviceProviderSupportedNetworks=_serviceProviderSupportedNetworks;
+@property(retain, nonatomic) NSMutableArray *serviceProviderAcceptedNetworks; // @synthesize serviceProviderAcceptedNetworks=_serviceProviderAcceptedNetworks;
 @property(retain, nonatomic) NSString *serviceProviderCountryCode; // @synthesize serviceProviderCountryCode=_serviceProviderCountryCode;
 @property(retain, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -54,10 +54,10 @@
 - (unsigned long long)serviceProviderCapabilitiesCount;
 - (void)addServiceProviderCapabilities:(id)arg1;
 - (void)clearServiceProviderCapabilities;
-- (id)serviceProviderSupportedNetworksAtIndex:(unsigned long long)arg1;
-- (unsigned long long)serviceProviderSupportedNetworksCount;
-- (void)addServiceProviderSupportedNetworks:(id)arg1;
-- (void)clearServiceProviderSupportedNetworks;
+- (id)serviceProviderAcceptedNetworksAtIndex:(unsigned long long)arg1;
+- (unsigned long long)serviceProviderAcceptedNetworksCount;
+- (void)addServiceProviderAcceptedNetworks:(id)arg1;
+- (void)clearServiceProviderAcceptedNetworks;
 @property(readonly, nonatomic) _Bool hasServiceProviderCountryCode;
 @property(readonly, nonatomic) _Bool hasServiceProviderIdentifier;
 

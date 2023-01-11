@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKAccountOverrideInfo, CKContainerID, NSDictionary, NSString;
+@class CKAccountOverrideInfo, CKContainerID, CKFrameworkFingerprint, NSDictionary, NSString;
 
 @interface CKContainerSetupInfo : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,18 +21,32 @@
     _Bool _bypassPCSEncryption;
     _Bool _forceEnableReadOnlyManatee;
     _Bool _masqueradeAsThirdPartyApp;
+    _Bool _useClearAssetEncryption;
+    _Bool _connectToTestingDaemon;
     unsigned int _clientSDKVersion;
-    CKContainerID *_containerID;
-    NSString *_sourceApplicationBundleIdentifier;
     CKAccountOverrideInfo *_accountInfoOverride;
+    CKContainerID *_containerID;
     NSDictionary *_fakeEntitlements;
     unsigned long long _mmcsEncryptionSupport;
     NSString *_containerEncryptionServiceName;
+    CKFrameworkFingerprint *_frameworkFingerprint;
     NSString *_personaIdentifier;
+    NSString *_applicationBundleIdentifierOverrideForContainerAccess;
+    NSString *_applicationBundleIdentifierOverrideForNetworkAttribution;
+    NSString *_applicationBundleIdentifierOverrideForPushTopicGeneration;
+    NSString *_applicationBundleIdentifierOverrideForTCC;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *applicationBundleIdentifierOverrideForTCC; // @synthesize applicationBundleIdentifierOverrideForTCC=_applicationBundleIdentifierOverrideForTCC;
+@property(retain, nonatomic) NSString *applicationBundleIdentifierOverrideForPushTopicGeneration; // @synthesize applicationBundleIdentifierOverrideForPushTopicGeneration=_applicationBundleIdentifierOverrideForPushTopicGeneration;
+@property(retain, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
+@property(retain, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
+@property(nonatomic) _Bool connectToTestingDaemon; // @synthesize connectToTestingDaemon=_connectToTestingDaemon;
+@property(nonatomic) _Bool useClearAssetEncryption; // @synthesize useClearAssetEncryption=_useClearAssetEncryption;
 @property(retain, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
+@property(retain, nonatomic) CKFrameworkFingerprint *frameworkFingerprint; // @synthesize frameworkFingerprint=_frameworkFingerprint;
 @property(nonatomic) _Bool masqueradeAsThirdPartyApp; // @synthesize masqueradeAsThirdPartyApp=_masqueradeAsThirdPartyApp;
 @property(nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property(nonatomic) _Bool forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
@@ -45,10 +59,9 @@
 @property(nonatomic) _Bool useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property(nonatomic) _Bool wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 @property(nonatomic) _Bool captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
-@property(retain, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
-@property(retain, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property(retain, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
-- (void).cxx_destruct;
+@property(copy, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
+- (id)hashString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

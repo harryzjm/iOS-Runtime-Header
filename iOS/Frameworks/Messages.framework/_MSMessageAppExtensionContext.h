@@ -25,6 +25,7 @@
 + (id)_extensionContextHostProtocolAllowedClassesForItems;
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct __CFRunLoopObserver *principalObjectCreationObserver; // @synthesize principalObjectCreationObserver=_principalObjectCreationObserver;
 @property(readonly, nonatomic) struct CGRect initialFrameOfHostView; // @synthesize initialFrameOfHostView=_initialFrameOfHostView;
 @property(retain, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
@@ -32,7 +33,6 @@
 @property(nonatomic) unsigned long long presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(nonatomic) unsigned long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property(retain, nonatomic) id <_MSMessageComposeHostImplProtocol> hostContext; // @synthesize hostContext=_hostContext;
-- (void).cxx_destruct;
 - (void)endDisablingUserInteraction;
 - (void)beginDisablingUserInteraction;
 - (void)contentDidLoad;
@@ -40,10 +40,13 @@
 - (void)_remoteViewDidBecomeReadyForDisplay;
 - (void)_hostDidBeginDeferredTeardown;
 - (void)dismissToKeyboard:(_Bool)arg1;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissAndPresentPhotosApp;
 - (void)dismiss;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1;
+- (void)dragMediaItemCanceled;
+- (void)dragMediaItemMoved:(id)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)startDragMediaItem:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stageAssetArchive:(id)arg1 skipShelf:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;

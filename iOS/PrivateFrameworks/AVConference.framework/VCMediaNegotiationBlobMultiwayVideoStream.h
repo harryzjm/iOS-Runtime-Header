@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)description;
 @property(nonatomic) _Bool hasRepairedMaxNetworkBitrate;
 @property(nonatomic) _Bool hasRepairedStreamID;
 @property(nonatomic) _Bool hasMaxPacketsPerSecond;

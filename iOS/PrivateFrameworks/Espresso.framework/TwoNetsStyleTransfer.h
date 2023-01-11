@@ -13,7 +13,7 @@
     void *ctx;
     void *plan;
     CDStruct_2bc666a5 net;
-    basic_string_23d93216 output_layer_name;
+    basic_string_90719d97 output_layer_name;
     unsigned long long dim_data0[5];
     unsigned long long dim_data0__small[5];
     unsigned long long dim_data2[5];

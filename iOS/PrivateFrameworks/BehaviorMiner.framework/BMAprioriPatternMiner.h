@@ -8,20 +8,25 @@
 
 #import <BehaviorMiner/BMPatternMiner-Protocol.h>
 
-@class NSMutableArray;
+@class NSArray;
 
 @interface BMAprioriPatternMiner : NSObject <BMPatternMiner>
 {
-    NSMutableArray *_indexBaskets;
-    NSMutableArray *_items;
+    _Bool _shouldStop;
+    NSArray *_items;
+    NSArray *_indexBaskets;
+    unsigned long long _maxItemsetSize;
 }
 
-@property(copy, nonatomic) NSMutableArray *items; // @synthesize items=_items;
-@property(copy, nonatomic) NSMutableArray *indexBaskets; // @synthesize indexBaskets=_indexBaskets;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long maxItemsetSize; // @synthesize maxItemsetSize=_maxItemsetSize;
+@property(readonly, nonatomic) NSArray *indexBaskets; // @synthesize indexBaskets=_indexBaskets;
+@property _Bool shouldStop; // @synthesize shouldStop=_shouldStop;
+@property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 - (id)minePatternsWithMinSupport:(unsigned long long)arg1 constrainedToPatternsWithTypes:(id)arg2;
 - (id)getItemIndexSetsWithMinSupport:(double)arg1 itemIndexSets:(id)arg2;
 - (id)supportOfItemIndexSet:(id)arg1;
+- (void)terminateEarly;
 - (id)initWithBaskets:(id)arg1;
 
 @end

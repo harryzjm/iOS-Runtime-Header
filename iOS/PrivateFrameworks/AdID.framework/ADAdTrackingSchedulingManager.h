@@ -20,13 +20,11 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isConfigRequestInFlight; // @synthesize isConfigRequestInFlight=_isConfigRequestInFlight;
 @property(retain, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
 @property(retain, nonatomic) id <NSObject> accountChangedNotifyToken; // @synthesize accountChangedNotifyToken=_accountChangedNotifyToken;
 @property(retain, nonatomic) id <NSObject> storeFrontNotifyToken; // @synthesize storeFrontNotifyToken=_storeFrontNotifyToken;
-- (void).cxx_destruct;
-- (void)runOnFirstUnlock:(CDUnknownBlockType)arg1;
-- (void)registerForLockStateNotification;
 - (void)handleAccountChange;
 - (void)pushDisable;
 - (void)pushEnable;
@@ -37,7 +35,9 @@
 - (void)forceExpiration;
 - (void)refreshConfiguration:(CDUnknownBlockType)arg1;
 - (void)handleConfiguration;
+- (_Bool)_shouldSaveConfig;
 - (_Bool)isAdEnabledLocality;
+- (void)migratePersonalizedAdsFromLAT;
 - (void)dealloc;
 - (id)init;
 

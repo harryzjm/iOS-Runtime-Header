@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -27,10 +25,6 @@ struct CGSize {
     double height;
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
 struct UIEdgeInsets {
     double _field1;
     double _field2;
@@ -44,6 +38,12 @@ struct _NSRange {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char _field1;
+    long long _field2;
+    _Bool _field3;
+} CDStruct_65ebe2bc;
 
 typedef struct {
     unsigned long long _field1;

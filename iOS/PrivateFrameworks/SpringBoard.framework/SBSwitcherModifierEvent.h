@@ -4,34 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <SpringBoard/BSDescriptionProviding-Protocol.h>
-
-@class NSString;
-
-@interface SBSwitcherModifierEvent : NSObject <BSDescriptionProviding>
+@interface SBSwitcherModifierEvent
 {
-    NSString *_handledReason;
-    _Bool _handled;
 }
 
-@property(readonly, nonatomic, getter=isHandled) _Bool handled; // @synthesize handled=_handled;
-- (void).cxx_destruct;
-@property(readonly, copy) NSString *description;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)handleWithReason:(id)arg1;
+- (id)loggingCategory;
 @property(readonly, nonatomic) long long type;
 - (_Bool)isTransitionEvent;
 - (_Bool)isGestureEvent;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

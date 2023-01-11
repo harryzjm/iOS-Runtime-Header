@@ -31,6 +31,8 @@
     _Bool _shouldBatchUpdates;
     _Bool _automaticBrailleTranslation;
     _Bool _wordWrapEnabled;
+    _Bool _autoAdvanceEnabled;
+    double _autoAdvanceDuration;
     unsigned int _persistentKeyModifiers;
     long long _uiStringCachedLineOffset;
     NSAttributedString *_uiEditingCachedString;
@@ -46,13 +48,17 @@
     _Bool _isValid;
     int _inputAccessMode;
     NSAttributedString *_blankUIString;
+    double _lastUserInteractionTime;
     CDUnknownBlockType _eventHandled;
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType eventHandled; // @synthesize eventHandled=_eventHandled;
 @property(readonly, nonatomic) SCROBrailleDisplayManagedQueue *managedDisplayQueue; // @synthesize managedDisplayQueue=_managedDisplayQueue;
-- (void).cxx_destruct;
+@property(nonatomic) double lastUserInteractionTime; // @synthesize lastUserInteractionTime=_lastUserInteractionTime;
+- (void)_eventQueue_resetEditingManager;
+- (void)resetEditingManager;
 - (id)_eventQueue_activeDisplayForToken:(int)arg1;
 - (void)_enumerateActiveDisplays:(CDUnknownBlockType)arg1;
 - (void)_eventQueue_setBrailleKeyDebounceTimeout:(double)arg1;
@@ -85,6 +91,10 @@
 @property(nonatomic) unsigned int persistentKeyModifiers;
 - (void)_eventQueue_setInputContractionMode:(int)arg1;
 @property(nonatomic) int inputContractionMode;
+- (void)_eventQueue_setAutoAdvanceDuration:(double)arg1;
+@property(nonatomic) double autoAdvanceDuration;
+- (void)_eventQueue_setAutoAdvanceEnabled:(_Bool)arg1;
+@property(nonatomic) _Bool autoAdvanceEnabled;
 - (void)_eventQueue_setWordWrapEnabled:(_Bool)arg1;
 @property(nonatomic) _Bool wordWrapEnabled;
 - (void)_eventQueue_setAutomaticBrailleTranslationEnabled:(_Bool)arg1;

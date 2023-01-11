@@ -14,15 +14,16 @@
 }
 
 + (Class)homeKitRepresentationClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <NSCopying> targetValue; // @synthesize targetValue=_targetValue;
 @property(retain, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
-- (void).cxx_destruct;
 - (id)commitItem;
-- (id)_performValidation;
+- (id)performValidation;
 - (_Bool)hasSameTargetAsAction:(id)arg1;
 - (id)createNewAction;
 - (_Bool)requiresDeviceUnlock;
 - (_Bool)updateWithActionBuilder:(id)arg1;
+- (id)description;
 - (id)copyForCreatingNewAction;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 

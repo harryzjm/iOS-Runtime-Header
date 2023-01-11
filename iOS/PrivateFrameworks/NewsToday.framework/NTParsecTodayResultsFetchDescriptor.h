@@ -8,11 +8,16 @@
 
 #import <NewsToday/NTTodayResultsFetchDescriptor-Protocol.h>
 
+@class NSString;
+
 @interface NTParsecTodayResultsFetchDescriptor : NSObject <NTTodayResultsFetchDescriptor>
 {
 }
 
+- (id)placeholderSectionDescriptorsWithContentRequest:(id)arg1;
 @property(readonly, nonatomic) Class fetchOperationClass;
+@property(readonly, nonatomic) Class descriptorsOperationClass;
+@property(readonly, copy, nonatomic) NSString *sourceIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

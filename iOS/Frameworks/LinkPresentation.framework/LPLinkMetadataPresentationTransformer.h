@@ -12,6 +12,7 @@
 {
     _Bool _complete;
     _Bool _allowsTapToLoad;
+    _Bool _allowsTapping;
     LPLinkMetadata *_metadata;
     NSURL *_URL;
     unsigned long long _preferredSizeClass;
@@ -20,15 +21,16 @@
     double _scaleFactor;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(copy, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property(retain, nonatomic) LPImage *sourceContextIcon; // @synthesize sourceContextIcon=_sourceContextIcon;
 @property(nonatomic) unsigned long long preferredSizeClass; // @synthesize preferredSizeClass=_preferredSizeClass;
+@property(nonatomic) _Bool allowsTapping; // @synthesize allowsTapping=_allowsTapping;
 @property(nonatomic) _Bool allowsTapToLoad; // @synthesize allowsTapToLoad=_allowsTapToLoad;
 @property(nonatomic, getter=isComplete) _Bool complete; // @synthesize complete=_complete;
 @property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(copy, nonatomic) LPLinkMetadata *metadata; // @synthesize metadata=_metadata;
-- (void).cxx_destruct;
 - (void)_populateProperties:(id)arg1 withPrimaryIcon:(id)arg2 iconProperties:(id)arg3;
 - (void)_populateProperties:(id)arg1 withPrimaryIcon:(id)arg2;
 - (void)_populateProperties:(id)arg1 withPrimaryImage:(id)arg2;
@@ -46,7 +48,10 @@
 - (id)videoForStyle:(long long)arg1;
 - (id)imageForStyle:(long long)arg1 icon:(id *)arg2 alternateImages:(id *)arg3;
 - (id)quotedTextForStyle:(long long)arg1;
+- (id)domainNameForIndicator;
 - (id)subtitleForStyle:(long long)arg1;
+- (_Bool)shouldUseAppClipPresentation;
+- (id)domainName;
 - (id)titleForStyle:(long long)arg1;
 - (id)mainCaptionBarForStyle:(long long)arg1;
 - (long long)rendererStyle;

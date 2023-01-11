@@ -6,16 +6,29 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipientTextView.h>
 
-@class MFComposeDisplayMetrics;
+#import <MessageUI/PKScribbleInteractionDelegate-Protocol.h>
+#import <MessageUI/PKScribbleInteractionElementSource-Protocol.h>
+#import <MessageUI/_UICursorInteractionDelegate-Protocol.h>
+
+@class MFComposeDisplayMetrics, NSString;
 @protocol MFMailComposeRecipientTextViewDelegate;
 
-@interface MFMailComposeRecipientTextView : CNComposeRecipientTextView
+@interface MFMailComposeRecipientTextView : CNComposeRecipientTextView <PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, _UICursorInteractionDelegate>
 {
     MFComposeDisplayMetrics *_displayMetrics;
 }
 
-@property(retain, nonatomic) MFComposeDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MFComposeDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
+- (double)beamHeight;
+- (struct CGRect)cursorRectForLineContainingGlyphIndex:(unsigned long long)arg1;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;
+- (_Bool)_scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
 - (void)_textInputDidChange:(id)arg1;
 - (void)_displayMetricsDidChange;
 - (void)layoutMarginsDidChange;
@@ -25,7 +38,11 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) __weak id <MFMailComposeRecipientTextViewDelegate> delegate; // @dynamic delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

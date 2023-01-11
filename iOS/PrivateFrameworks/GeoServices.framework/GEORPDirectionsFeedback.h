@@ -13,20 +13,19 @@
 @interface GEORPDirectionsFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPDirectionsFeedbackContext *_directionsContext;
     GEORPDirectionsCorrections *_directionsCorrections;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _correctionType;
     struct {
         unsigned int has_correctionType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_directionsContext:1;
         unsigned int read_directionsCorrections:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_directionsContext:1;
-        unsigned int wrote_directionsCorrections:1;
-        unsigned int wrote_correctionType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,6 +41,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsCorrectionType:(id)arg1;
@@ -50,10 +52,10 @@
 @property(nonatomic) int correctionType;
 @property(retain, nonatomic) GEORPDirectionsCorrections *directionsCorrections;
 @property(readonly, nonatomic) _Bool hasDirectionsCorrections;
-- (void)_readDirectionsCorrections;
 @property(retain, nonatomic) GEORPDirectionsFeedbackContext *directionsContext;
 @property(readonly, nonatomic) _Bool hasDirectionsContext;
-- (void)_readDirectionsContext;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

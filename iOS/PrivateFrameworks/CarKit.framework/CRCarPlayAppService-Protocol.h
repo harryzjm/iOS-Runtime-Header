@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDictionary;
+
 @protocol CRCarPlayAppService
+- (void)requestCarCapabilitiesStatus:(NSDictionary *)arg1 withReply:(void (^)(CRCarPlayCapabilities *))arg2;
 - (void)requestCarCapabilitiesUpdate;
 - (void)requestBlacklistUpdate;
 @end

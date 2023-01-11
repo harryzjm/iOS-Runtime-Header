@@ -10,6 +10,7 @@
 
 - (id)adjustmentData;
 - (void)setAdjustmentData:(id)arg1;
+- (id)allowedInfoKeys;
 - (_Bool)containsValidData;
 
 @end

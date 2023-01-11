@@ -6,34 +6,27 @@
 
 #import <UIKit/UISplitViewController.h>
 
-@class MISSING_TYPE, NSArray, UIViewController;
+@class MISSING_TYPE;
 
 @interface _TtC5TeaUI25TabBarSplitViewController : UISplitViewController
 {
     MISSING_TYPE *extendedDelegate;
+    MISSING_TYPE *commands;
     MISSING_TYPE *eventManager;
     MISSING_TYPE *presentationContextCache;
+    MISSING_TYPE *stagedModalContextCache;
+    MISSING_TYPE *modalContextCache;
     MISSING_TYPE *fullscreenTransitionCoverManager;
     MISSING_TYPE *appearanceViewControllers;
     MISSING_TYPE *restoreStateCache;
     MISSING_TYPE *options;
     MISSING_TYPE *hasPerformedInitialLayout;
+    MISSING_TYPE *splitViewFocus;
 }
 
 - (void).cxx_destruct;
+- (id)initWithStyle:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)didReceiveMemoryWarning;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
-- (void)traitCollectionDidChange:(id)arg1;
-@property(nonatomic, copy) NSArray *viewControllers;
-@property(nonatomic, readonly) UIViewController *childViewControllerForHomeIndicatorAutoHidden;
-@property(nonatomic, readonly) UIViewController *childViewControllerForStatusBarHidden;
-@property(nonatomic, readonly) UIViewController *childViewControllerForStatusBarStyle;
-- (void)loadView;
 - (id)initWithCoder:(id)arg1;
 
 @end

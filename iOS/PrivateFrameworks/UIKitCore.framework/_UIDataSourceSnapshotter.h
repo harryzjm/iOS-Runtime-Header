@@ -7,17 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIDataSourceSnapshot-Protocol.h>
+#import <UIKitCore/_UIDataSourceSnapshotTranslating-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshot>
+@interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshotTranslating>
 {
-    struct _NSRange *_sectionRanges;
-    long long _sectionCount;
+    struct vector<_NSRange, std::__1::allocator<_NSRange>> _sectionRanges;
 }
 
-+ (id)snapshotWithSectionCountsProvider:(CDUnknownBlockType)arg1;
-+ (id)snapshotForDataSourceBackedView:(id)arg1;
++ (id)snapshotterForSnapshot:(id)arg1;
++ (id)snapshotterForSectionCountsProvider:(CDUnknownBlockType)arg1;
++ (id)snapshotterForDataSourceBackedView:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)_recomputeRangeLocations;
 - (_Bool)_insertSection:(long long)arg1 withInitialCount:(long long)arg2;
 - (_Bool)_incrementSectionCount:(long long)arg1 byCount:(long long)arg2;
@@ -39,12 +43,15 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (long long)numberOfItems;
-- (id)description;
-- (void)dealloc;
+@property(readonly, copy) NSString *description;
 - (id)initWithSectionCountsProvider:(CDUnknownBlockType)arg1;
 - (id)initWithDataSourceBackedView:(id)arg1;
 - (id)initWithSectionCounts:(id)arg1;
-- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

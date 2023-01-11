@@ -6,12 +6,15 @@
 
 #import <UIKitCore/UINavigationBarDelegate-Protocol.h>
 
-@class UINavigationBar, UINavigationItem, UISearchController;
+@class UINavigationBar, UINavigationItem, UISearchController, UIWindow;
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol _UINavigationBarDelegatePrivate <UINavigationBarDelegate>
 
 @optional
+- (void)_navigationBar:(UINavigationBar *)arg1 topItemUpdatedContentLayout:(UINavigationItem *)arg2;
+- (void)_navigationBarDidUpdateStack:(UINavigationBar *)arg1;
+- (_Bool)_navigationBar:(UINavigationBar *)arg1 getContentOffsetOfObservedScrollViewIfApplicable:(struct CGPoint *)arg2;
 - (_Bool)_navigationBarLayoutIsInInteractiveScroll;
 - (_Bool)_navigationBarShouldUpdateProgress;
 - (struct CGRect)_incomingNavigationBarFrame;
@@ -28,6 +31,8 @@
 - (_Bool)_willPerformCustomNavigationTransitionForPop;
 - (id <UIViewControllerTransitionCoordinator>)_transitionCoordinator;
 - (_Bool)_hasInterruptibleNavigationTransition;
+- (void)_navigationBar:(UINavigationBar *)arg1 requestPopToItem:(UINavigationItem *)arg2;
+- (UIWindow *)_navigationBarWindowForInterfaceOrientation:(UINavigationBar *)arg1;
 - (void)_navigationBar:(UINavigationBar *)arg1 itemEnabledAutoScrollTransition:(UINavigationItem *)arg2;
 - (double)_navigationBar:(UINavigationBar *)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
 - (struct NSDirectionalEdgeInsets)_layoutMarginsforNavigationBar:(UINavigationBar *)arg1;

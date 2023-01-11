@@ -11,7 +11,6 @@
 @class FPDActionOperationQueue, FPDMoveOperation, FPDMoveWriter, FPMoveInfo, NSError, NSMutableSet;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface FPDMoveReader : NSObject <FPCancellable>
 {
     FPDMoveOperation *_operation;
@@ -35,11 +34,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _errorBlock;
 }
 
++ (_Bool)_hasDiskWriterSupportForDomain:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType errorBlock; // @synthesize errorBlock=_errorBlock;
 @property(copy, nonatomic) CDUnknownBlockType startDownloadBlock; // @synthesize startDownloadBlock=_startDownloadBlock;
 @property(copy, nonatomic) CDUnknownBlockType preflightCompletionBlock; // @synthesize preflightCompletionBlock=_preflightCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType rootPreflightCompletionBlock; // @synthesize rootPreflightCompletionBlock=_rootPreflightCompletionBlock;
-- (void).cxx_destruct;
 - (void)dumpStateTo:(id)arg1;
 - (void)cancel;
 - (void)cancelRoot:(id)arg1;
@@ -54,10 +54,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)_enqueueItem:(id)arg1 forRoot:(id)arg2 atomically:(_Bool)arg3 useDiskWriter:(_Bool)arg4;
 - (id)_targetNameForSource:(id)arg1;
 - (id)_getTargetFolderFor:(id)arg1 root:(id)arg2 error:(id *)arg3;
+- (_Bool)_shouldCheckFileSystemBitsForRoot:(id)arg1 targetFolderURL:(id)arg2;
+- (_Bool)_shouldCheckSpaceForRoot:(id)arg1 targetFolderURL:(id)arg2;
+- (long long)_filesizeBitsSupportAtPath:(id)arg1;
+- (_Bool)_isSpaceAvailableForWrite:(long long)arg1 atTargetPath:(id)arg2;
 - (void)_progressComputationPreflight;
 - (void)_finishWithError:(id)arg1;
 - (_Bool)_isCancelled;
 - (void)start;
+- (void)verifyTargetURL:(CDUnknownBlockType)arg1;
 - (id)initWithMoveWriter:(id)arg1 operation:(id)arg2 queue:(id)arg3;
 - (id)init;
 

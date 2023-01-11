@@ -9,11 +9,11 @@
 }
 
 + (_Bool)isPreviewable;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
 - (id)diskCachedThumbnailForOrientation:(BOOL)arg1;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (id)attachmentSummary:(unsigned long long)arg1;
 
 @end
 

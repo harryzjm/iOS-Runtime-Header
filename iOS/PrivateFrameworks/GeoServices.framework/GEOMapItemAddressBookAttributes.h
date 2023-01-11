@@ -13,11 +13,13 @@
 @interface GEOMapItemAddressBookAttributes : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_addressIdentifier;
     NSString *_name;
     NSString *_spokenName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _addressType;
     _Bool _isMe;
     struct {
@@ -27,12 +29,7 @@
         unsigned int read_addressIdentifier:1;
         unsigned int read_name:1;
         unsigned int read_spokenName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressIdentifier:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_spokenName:1;
-        unsigned int wrote_addressType:1;
-        unsigned int wrote_isMe:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,23 +45,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *addressIdentifier;
 @property(readonly, nonatomic) _Bool hasAddressIdentifier;
-- (void)_readAddressIdentifier;
 @property(nonatomic) _Bool hasIsMe;
 @property(nonatomic) _Bool isMe;
 @property(retain, nonatomic) NSString *spokenName;
 @property(readonly, nonatomic) _Bool hasSpokenName;
-- (void)_readSpokenName;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
 - (int)StringAsAddressType:(id)arg1;
 - (id)addressTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasAddressType;
 @property(nonatomic) int addressType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

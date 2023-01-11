@@ -23,18 +23,19 @@
 
 + (id)copyConfigurationWithItemProviders:(id)arg1;
 + (id)copyConfigurationWithSharedObjects:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType applicationActivitiesProvider; // @synthesize applicationActivitiesProvider=_applicationActivitiesProvider;
 @property(copy, nonatomic) CDUnknownBlockType activityItemsProvider; // @synthesize activityItemsProvider=_activityItemsProvider;
 @property(copy, nonatomic) CDUnknownBlockType previewProvider; // @synthesize previewProvider=_previewProvider;
 @property(copy, nonatomic) CDUnknownBlockType metadataProvider; // @synthesize metadataProvider=_metadataProvider;
 @property(nonatomic) _Bool allowsSharing; // @synthesize allowsSharing=_allowsSharing;
 @property(retain, nonatomic) id localObject; // @synthesize localObject=_localObject;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *itemProvidersForSharing;
 @property(readonly, copy, nonatomic) NSArray *applicationActivitiesForSharing;
 @property(readonly, copy, nonatomic) NSArray *activityItemsForSharing;
 - (id)previewForSharedItemProviderAtIndex:(long long)arg1 intent:(id)arg2;
 - (id)sharingMetadataForKey:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *itemProvidersForActivityItemsConfiguration;
 - (id)itemProviders;
 - (id)initWithItemProviders:(id)arg1;
 - (id)initWithSharedObjects:(id)arg1;
@@ -44,7 +45,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, copy, nonatomic) NSArray *itemProvidersForActivityItemsConfiguration;
 @property(readonly) Class superclass;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Home/NAIdentifiable-Protocol.h>
 
-@class MTAlarm, NSString;
+@class HMMediaProfile, MTAlarm, NSString;
 @protocol HFMediaProfileContainer;
 
 @interface HFHomePodAlarmItem <NAIdentifiable>
@@ -17,12 +17,13 @@
 }
 
 + (id)na_identity;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *alarmIdentifier; // @synthesize alarmIdentifier=_alarmIdentifier;
 @property(copy, nonatomic) MTAlarm *alarm; // @synthesize alarm=_alarm;
 @property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
-- (void).cxx_destruct;
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
+@property(readonly, nonatomic) HMMediaProfile *mediaProfile;
 - (long long)compare:(id)arg1;
 - (id)initWithMediaProfileContainer:(id)arg1 alarm:(id)arg2;
 @property(readonly) unsigned long long hash;

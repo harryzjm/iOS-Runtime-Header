@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTPurgable-Protocol.h>
+#import <coreroutine/RTStoreManager-Protocol.h>
 
-@class NSString, RTBatteryManager, RTBluetoothManager, RTCameraManager, RTDarwinNotificationHelper, RTLearnedLocationManager, RTLocationManager, RTMetricManager, RTNavigationManager, RTPersistenceManager, RTReachabilityManager, RTWalletManager;
-@protocol OS_dispatch_queue;
+@class NSString, RTBatteryManager, RTBluetoothManager, RTCameraManager, RTDarwinNotificationHelper, RTHintStore, RTLearnedLocationManager, RTLocationManager, RTMetricManager, RTNavigationManager, RTPersistenceManager, RTReachabilityManager, RTWalletManager;
 
-@interface RTHintManager : NSObject <RTPurgable>
+@interface RTHintManager <RTPurgable, RTStoreManager>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     RTBatteryManager *_batteryManager;
     RTBluetoothManager *_bluetoothManager;
     RTCameraManager *_cameraManager;
     RTDarwinNotificationHelper *_notificationHelper;
+    RTHintStore *_hintStore;
     RTLearnedLocationManager *_learnedLocationManager;
     RTLocationManager *_locationManager;
     RTMetricManager *_metricManager;
@@ -27,7 +25,8 @@
     RTWalletManager *_walletManager;
 }
 
-+ (id)boundingBoxPredicateForLocation:(id)arg1;
++ (id)vendedClasses;
+- (void).cxx_destruct;
 @property(retain, nonatomic) RTWalletManager *walletManager; // @synthesize walletManager=_walletManager;
 @property(retain, nonatomic) RTReachabilityManager *reachabilityManager; // @synthesize reachabilityManager=_reachabilityManager;
 @property(retain, nonatomic) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
@@ -35,12 +34,14 @@
 @property(retain, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 @property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
+@property(retain, nonatomic) RTHintStore *hintStore; // @synthesize hintStore=_hintStore;
 @property(retain, nonatomic) RTDarwinNotificationHelper *notificationHelper; // @synthesize notificationHelper=_notificationHelper;
 @property(retain, nonatomic) RTCameraManager *cameraManager; // @synthesize cameraManager=_cameraManager;
 @property(retain, nonatomic) RTBluetoothManager *bluetoothManager; // @synthesize bluetoothManager=_bluetoothManager;
 @property(retain, nonatomic) RTBatteryManager *batteryManager; // @synthesize batteryManager=_batteryManager;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
+- (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_onLearnedLocationNotification:(id)arg1;
+- (void)onLearnedLocationNotification:(id)arg1;
 - (void)_onWalletNotification:(id)arg1;
 - (void)onWalletNotification:(id)arg1;
 - (void)_onCameraNotification:(id)arg1;
@@ -54,19 +55,16 @@
 - (void)_onBluetoothNotification:(id)arg1;
 - (void)onBluetoothNotification:(id)arg1;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_clearHintsPredating:(id)arg1 managedObjectContext:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)_clearHintsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)fetchIsHintNearLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)_fetchHintStatsNearLocation:(id)arg1 managedObjectContext:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchHintStatsNearLocation:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_submitHintFromSource:(long long)arg1 location:(id)arg2 managedObjectContext:(id)arg3;
 - (void)_submitHintFromSource:(long long)arg1 location:(id)arg2;
 - (void)submitHintFromSource:(long long)arg1 location:(id)arg2;
-- (void)_submitHintFromSource:(long long)arg1;
+- (void)_storeHints:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)storeHints:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_submitHintFromSource:(long long)arg1 fallbackLocation:(id)arg2;
+- (void)submitHintFromSource:(long long)arg1 fallbackLocation:(id)arg2;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
 - (void)shutdown;
-- (id)initWithBatteryManager:(id)arg1 bluetoothManager:(id)arg2 cameraManager:(id)arg3 learnedLocationManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 navigationManager:(id)arg7 persistenceManager:(id)arg8 reachabilityManager:(id)arg9 walletManager:(id)arg10;
+- (id)initWithBatteryManager:(id)arg1 bluetoothManager:(id)arg2 cameraManager:(id)arg3 hintStore:(id)arg4 learnedLocationManager:(id)arg5 locationManager:(id)arg6 metricManager:(id)arg7 navigationManager:(id)arg8 reachabilityManager:(id)arg9 walletManager:(id)arg10;
 - (id)init;
 
 // Remaining properties

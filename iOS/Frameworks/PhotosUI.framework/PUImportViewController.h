@@ -7,7 +7,6 @@
 #import <PhotosUI/PUCameraImportItemCellDelegate-Protocol.h>
 #import <PhotosUI/PUImportActionCoordinatorDelegate-Protocol.h>
 #import <PhotosUI/PUImportAddToAlbumsToolbarViewDelegate-Protocol.h>
-#import <PhotosUI/PUImportHistorySectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PUImportOneUpTransitioning-Protocol.h>
 #import <PhotosUI/PUImportSectionedGridLayoutDelegate-Protocol.h>
 #import <PhotosUI/PUSectionedGridLayoutDelegate-Protocol.h>
@@ -16,14 +15,15 @@
 #import <PhotosUI/PXImportAssetsDataSourceManagerObserver-Protocol.h>
 #import <PhotosUI/PXImportControllerImportCompletionDelegate-Protocol.h>
 #import <PhotosUI/PXImportControllerNotificationsReceiver-Protocol.h>
+#import <PhotosUI/PXImportHistorySectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUI/PXSwipeSelectionManagerDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSMutableSet, NSNumber, NSProgress, NSString, PHImportSource, PLRoundProgressView, PUImportActionCoordinator, PUImportAddToAlbumsPickerViewController, PUImportAddToAlbumsToolbarView, PUImportChangeDetailsCollectionViewHelper, PUImportCustomViewBarButton, PUImportFakePhotosDataSource, PUImportFloatingToolbarView, PUImportHistorySectionHeaderView, PUPhotosGridViewControllerSpec, PXImportAssetsDataSource, PXImportAssetsDataSourceManager, PXImportController, PXImportSessionInfo, PXNavigationTitleView, PXSelectionSnapshot, PXSwipeSelectionManager, UIBarButtonItem, UILabel, UITapGestureRecognizer;
+@class NSLayoutConstraint, NSMutableSet, NSNumber, NSProgress, NSString, PHImportSource, PLRoundProgressView, PUImportActionCoordinator, PUImportAddToAlbumsPickerViewController, PUImportAddToAlbumsToolbarView, PUImportChangeDetailsCollectionViewHelper, PUImportCustomViewBarButton, PUImportFakePhotosDataSource, PUImportFloatingToolbarView, PUPhotosGridViewControllerSpec, PXImportAssetsDataSource, PXImportAssetsDataSourceManager, PXImportController, PXImportHistorySectionHeaderView, PXImportSessionInfo, PXNavigationTitleView, PXProgrammaticNavigationDestination, PXSelectionSnapshot, PXSwipeSelectionManager, UIBarButtonItem, UILabel, UITapGestureRecognizer;
 
-@interface PUImportViewController <PUSectionedGridLayoutDelegate, PUImportActionCoordinatorDelegate, PXImportAlbumPickerDelegate, PXImportAssetsDataSourceManagerObserver, PXImportControllerImportCompletionDelegate, PXImportControllerNotificationsReceiver, PUImportHistorySectionHeaderViewDelegate, PUImportOneUpTransitioning, PUImportSectionedGridLayoutDelegate, PXSettingsKeyObserver, PUCameraImportItemCellDelegate, PXChangeObserver, PXSwipeSelectionManagerDelegate, PUImportAddToAlbumsToolbarViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate>
+@interface PUImportViewController <PUSectionedGridLayoutDelegate, PUImportActionCoordinatorDelegate, PXImportAlbumPickerDelegate, PXImportAssetsDataSourceManagerObserver, PXImportControllerImportCompletionDelegate, PXImportControllerNotificationsReceiver, PXImportHistorySectionHeaderViewDelegate, PUImportOneUpTransitioning, PUImportSectionedGridLayoutDelegate, PXSettingsKeyObserver, PUCameraImportItemCellDelegate, PXChangeObserver, PXSwipeSelectionManagerDelegate, PUImportAddToAlbumsToolbarViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate>
 {
     _Bool _completedAnImport;
     PXImportSessionInfo *_completedImportSessionInfo;
@@ -60,6 +60,7 @@
     _Bool _shouldStayScrolledToBottom;
     _Bool _animateHeaderActionButtonChanges;
     _Bool _isPeeking;
+    PXProgrammaticNavigationDestination *_px_navigationDestination;
     PUPhotosGridViewControllerSpec *__spec;
     double __collectionViewLayoutReferenceWidth;
     id __pendingViewSizeTransitionContext;
@@ -88,7 +89,7 @@
     PXNavigationTitleView *_compactWidthAlbumPickerBarButtonView;
     PUImportCustomViewBarButton *_compactWidthAlbumPickerButton;
     NSNumber *_cachedHeaderHeight;
-    PUImportHistorySectionHeaderView *_referenceHeaderView;
+    PXImportHistorySectionHeaderView *_referenceHeaderView;
     double _referenceWidth;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
     struct CGSize __cachedViewSizeTransitionContextSize;
@@ -97,10 +98,11 @@
 
 + (unsigned short)defaultThumbnailImageFormat;
 + (id)totalSizeStringForItems:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
 @property(nonatomic) double referenceWidth; // @synthesize referenceWidth=_referenceWidth;
 @property(nonatomic) _Bool isPeeking; // @synthesize isPeeking=_isPeeking;
-@property(retain, nonatomic) PUImportHistorySectionHeaderView *referenceHeaderView; // @synthesize referenceHeaderView=_referenceHeaderView;
+@property(retain, nonatomic) PXImportHistorySectionHeaderView *referenceHeaderView; // @synthesize referenceHeaderView=_referenceHeaderView;
 @property(retain, nonatomic) NSNumber *cachedHeaderHeight; // @synthesize cachedHeaderHeight=_cachedHeaderHeight;
 @property(retain, nonatomic) PUImportCustomViewBarButton *compactWidthAlbumPickerButton; // @synthesize compactWidthAlbumPickerButton=_compactWidthAlbumPickerButton;
 @property(retain, nonatomic) PXNavigationTitleView *compactWidthAlbumPickerBarButtonView; // @synthesize compactWidthAlbumPickerBarButtonView=_compactWidthAlbumPickerBarButtonView;
@@ -141,8 +143,9 @@
 @property(nonatomic, setter=_setCollectionViewSafeAreaInsets:) struct UIEdgeInsets collectionViewSafeAreaInsets; // @synthesize collectionViewSafeAreaInsets=_collectionViewSafeAreaInsets;
 @property(nonatomic, setter=_setCollectionViewLayoutReferenceWidth:) double _collectionViewLayoutReferenceWidth; // @synthesize _collectionViewLayoutReferenceWidth=__collectionViewLayoutReferenceWidth;
 @property(retain, nonatomic, setter=_setSpec:) PUPhotosGridViewControllerSpec *_spec; // @synthesize _spec=__spec;
-- (void).cxx_destruct;
-- (id)ppt_importButton;
+- (id)px_navigationDestination;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -181,6 +184,7 @@
 - (void)presentOneUpViewController:(id)arg1 animated:(_Bool)arg2 interactive:(_Bool)arg3;
 - (id)oneUpViewControllerForItemAtIndexPath:(id)arg1;
 - (void)updateDataSourceManagerFilters;
+- (double)sectionedGridLayout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (_Bool)anyAlreadyImportedItemsAreSelected;
@@ -237,7 +241,6 @@
 - (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3;
 - (void)stopImport:(id)arg1;
 - (void)delete:(id)arg1;
-- (void)import:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)transitionFromDataSource:(id)arg1 toDataSource:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleNewDataSource:(id)arg1;

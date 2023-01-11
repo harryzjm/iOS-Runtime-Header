@@ -32,10 +32,10 @@
 
 + (id)incomingFilePath;
 + (id)incomingFilePathForMessageUUID:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
 @property(readonly, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
 @property(readonly, nonatomic) unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;
-- (void).cxx_destruct;
 - (id)finalizedMessageDictionaryIfDone;
 - (_Bool)appendMessage:(id)arg1 receiverError:(unsigned char *)arg2;
 - (_Bool)writeResourceData:(id)arg1 resourceByteOffset:(unsigned long long)arg2;
@@ -46,6 +46,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) NSData *data;
+@property(readonly, nonatomic) _Bool didWakeHint;
 @property(readonly, nonatomic) _Bool expectsPeerResponse;
 @property(readonly, nonatomic) NSString *peerResponseIdentifier;
 @property(nonatomic) unsigned int sequenceNumber;

@@ -8,15 +8,16 @@
 
 #import <BulletinBoard/AFSiriUserNotificationRequestCapabilityObserving-Protocol.h>
 #import <BulletinBoard/BBDataProviderManagerDelegate-Protocol.h>
+#import <BulletinBoard/BBSectionAuthorizationManagerDelegate-Protocol.h>
 #import <BulletinBoard/BBServerConduitServerInterface-Protocol.h>
 #import <BulletinBoard/BBSettingsGatewayServerInterface-Protocol.h>
 #import <BulletinBoard/BBSyncServiceDelegate-Protocol.h>
 #import <BulletinBoard/NSXPCListenerDelegate-Protocol.h>
 
-@class BBBiometricResource, BBDataProviderManager, BBDismissalSyncCache, BBMaskedSet, BBSyncService, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
+@class BBBiometricResource, BBDataProviderManager, BBDismissalSyncCache, BBMaskedSet, BBSectionAuthorizationManager, BBSyncService, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface BBServer : NSObject <BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, NSXPCListenerDelegate, AFSiriUserNotificationRequestCapabilityObserving, BBSyncServiceDelegate>
+@interface BBServer : NSObject <BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, NSXPCListenerDelegate, AFSiriUserNotificationRequestCapabilityObserving, BBSectionAuthorizationManagerDelegate, BBSyncServiceDelegate>
 {
     NSMutableDictionary *_bulletinRequestsByID;
     NSMutableDictionary *_sectionInfoByID;
@@ -51,6 +52,7 @@
     NSXPCListener *_settingsListener;
     NSMutableSet *_suspendedConnections;
     BBDismissalSyncCache *_dismissalSyncCache;
+    BBSectionAuthorizationManager *_sectionAuthorizationManager;
     BBBiometricResource *_biometricResource;
     _Bool _siriAllowedWhenLocked;
     _Bool _siriEnabled;
@@ -79,6 +81,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (unsigned long long)_pairedDeviceCount;
+- (void)didChangeEffectiveAuthorizationStatusForSectionID:(id)arg1;
 - (id)syncService:(id)arg1 sectionIdentifierForUniversalSectionIdentifier:(id)arg2;
 - (id)syncService:(id)arg1 universalSectionIdentifierForSectionIdentifier:(id)arg2;
 - (_Bool)syncService:(id)arg1 shouldAbortDelayedDismissalForBulletin:(id)arg2;
@@ -188,14 +191,12 @@
 - (void)observer:(id)arg1 clearSection:(id)arg2;
 - (void)observer:(id)arg1 finishedWithBulletinID:(id)arg2 transactionID:(unsigned long long)arg3;
 - (void)observer:(id)arg1 handleResponse:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_sendBulletinsLoadedForSectionID:(id)arg1;
 - (void)_didReceiveResponseForBulletin:(id)arg1;
 - (id)_openApplicationOptionsForResponse:(id)arg1;
 - (void)observer:(id)arg1 setObserverFeed:(unsigned long long)arg2 asLightsAndSirensGateway:(id)arg3 priority:(unsigned long long)arg4;
 - (void)observer:(id)arg1 setObserverFeed:(unsigned long long)arg2 attachToLightsAndSirensGateway:(id)arg3;
 - (void)_storeObserver:(id)arg1 forFeed:(unsigned long long)arg2;
-- (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-- (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getSectionParametersForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)ping:(CDUnknownBlockType)arg1;
 - (void)_scheduleExpirationForBulletin:(id)arg1;
@@ -215,6 +216,7 @@
 - (void)_handleSignificantTimeChange;
 - (void)_handleSystemWake;
 - (void)_handleSystemSleep;
+- (void)_addStateCaptureHandlers;
 - (void)_updateDataProviderForSectionInfo:(id)arg1 sectionID:(id)arg2;
 - (void)_setSectionInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)_setSectionInfoNoteSettingsChanged:(id)arg1 forSectionID:(id)arg2;

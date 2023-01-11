@@ -19,12 +19,15 @@
     TLKRichText *_richText;
     UILabel *_overlayLabelForNonColoredGlyphs;
     UIFont *_originalFont;
+    unsigned long long _adjustedProminence;
 }
 
 + (id)genericLabel;
 + (id)tertiaryLabel;
 + (id)secondaryLabel;
 + (id)primaryLabel;
+- (void).cxx_destruct;
+@property unsigned long long adjustedProminence; // @synthesize adjustedProminence=_adjustedProminence;
 @property _Bool attributedTextUpdateSkipped; // @synthesize attributedTextUpdateSkipped=_attributedTextUpdateSkipped;
 @property _Bool attributedTextUpdateDisabled; // @synthesize attributedTextUpdateDisabled=_attributedTextUpdateDisabled;
 @property _Bool attributedTextExplicitelySet; // @synthesize attributedTextExplicitelySet=_attributedTextExplicitelySet;
@@ -34,17 +37,21 @@
 @property(nonatomic) _Bool supportsColorGlyphs; // @synthesize supportsColorGlyphs=_supportsColorGlyphs;
 @property(retain, nonatomic) TLKRichText *richText; // @synthesize richText=_richText;
 @property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
-- (void).cxx_destruct;
+- (void)setNumberOfLines:(long long)arg1;
+- (void)setLineBreakMode:(long long)arg1;
 - (void)updateWithString:(id)arg1;
 - (void)updateWithAttributedString:(id)arg1;
 - (void)updateAttributedText;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)setTextColor:(id)arg1;
+- (_Bool)hasEmphasizedFormattingInRichText;
+- (void)updateAdjustedProminence;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)setAttributedText:(id)arg1;
 @property(retain, nonatomic) TLKFormattedText *formattedText;
 @property(retain, nonatomic) TLKMultilineText *multilineText;
 - (void)setText:(id)arg1;
+- (void)setTextAlignment:(long long)arg1;
 - (void)setFont:(id)arg1 keepOriginal:(_Bool)arg2;
 - (void)setFont:(id)arg1;
 - (void)didMoveToWindow;

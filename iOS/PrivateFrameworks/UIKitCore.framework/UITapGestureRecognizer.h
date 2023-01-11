@@ -13,12 +13,15 @@
     struct CGPoint _locationInView;
     UITapRecognizer *_imp;
     unsigned int _delaysRecognitionForGreaterTapCounts;
+    _Bool _isSingleKeyPressGesture;
     long long _buttonType;
 }
 
 + (_Bool)_supportsTouchContinuation;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isSingleKeyPressGesture; // @synthesize isSingleKeyPressGesture=_isSingleKeyPressGesture;
+- (_Bool)_isGestureType:(long long)arg1;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
 - (struct CGPoint)_digitizerLocation;
 - (struct CGPoint)locationOfTouch:(unsigned long long)arg1 inView:(id)arg2;
@@ -41,6 +44,9 @@
 - (double)_allowableSeparation;
 - (void)setAllowableMovement:(double)arg1;
 - (double)allowableMovement;
+- (void)_setButtonMaskRequired:(long long)arg1;
+@property(nonatomic) long long buttonMaskRequired;
+- (long long)_buttonMaskRequired;
 @property(nonatomic) unsigned long long numberOfTouchesRequired;
 @property(nonatomic) unsigned long long numberOfTapsRequired;
 @property(readonly, nonatomic) NSArray *touches;

@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
 - (void)printFlushAckToBasebandDump:(unsigned char)arg1 transactionID:(unsigned short)arg2 packetDropped:(unsigned short)arg3 sequenceNumberArray:(unsigned short *)arg4;
 - (void)processBasebandAck:(CDStruct_b203c80d *)arg1;
+- (_Bool)isRadioAccessTechnologyOnCellular:(unsigned int)arg1;
 - (void)enableBasebandLogDump:(void *)arg1;
 - (_Bool)processBasebandNotification:(CDStruct_b203c80d *)arg1 arrivalTime:(double)arg2 error:(id *)arg3;
 - (_Bool)processBasebandNotification:(id)arg1 metaData:(id)arg2 error:(id *)arg3;

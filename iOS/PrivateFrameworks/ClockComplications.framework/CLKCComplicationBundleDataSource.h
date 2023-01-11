@@ -9,6 +9,8 @@
 }
 
 + (id)complicationApplicationIdentifier;
++ (id)localizedComplicationName;
++ (id)appGroupIdentifier;
 + (id)legacyNTKComplicationType;
 + (id)localizedAppName;
 + (id)appIdentifier;

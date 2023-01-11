@@ -10,14 +10,13 @@
 
 @interface PKAccountBillPaymentAmountContainerView : UIView
 {
-    unsigned long long _screenType;
     _Bool _showAmount;
     PKEnterCurrencyAmountView *_enterCurrencyAmountView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showAmount; // @synthesize showAmount=_showAmount;
 @property(retain, nonatomic) PKEnterCurrencyAmountView *enterCurrencyAmountView; // @synthesize enterCurrencyAmountView=_enterCurrencyAmountView;
-- (void).cxx_destruct;
 - (double)_amountLabelFontSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

@@ -9,12 +9,13 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMFUnfairLock, NSDictionary, NSString, NSUUID, _HMContext;
+@class HMFActivity, HMFUnfairLock, NSDictionary, NSString, NSUUID, _HMContext;
 @protocol HMDeviceSetupSessionDelegate, OS_dispatch_queue;
 
 @interface HMDeviceSetupSession : NSObject <HMFLogging, HMFMessageReceiver>
 {
     HMFUnfairLock *_lock;
+    HMFActivity *_activity;
     _Bool _open;
     NSDictionary *_userInfo;
     id <HMDeviceSetupSessionDelegate> _delegate;
@@ -25,18 +26,18 @@
 
 + (id)logCategory;
 + (id)homeManagerDestination;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isOpen) _Bool open; // @synthesize open=_open;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly) long long role; // @synthesize role=_role;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly) __weak id <HMDeviceSetupSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)logIdentifier;
-- (void)_reallySendExchangeData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_reallySendExchangeData:(id)arg1 qualityOfService:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__handleReceivedExchangeData:(id)arg1;
-- (void)sendExchangeData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)sendExchangeData:(id)arg1 qualityOfService:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleDisconnection:(id)arg1;
 - (void)__handleClose:(id)arg1;
 - (void)__closeWithError:(id)arg1;

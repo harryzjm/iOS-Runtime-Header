@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSSet;
+
 @interface _HDActivityCacheEntityEncoder
 {
+    NSSet *_activityStatisticsQuantityInfoClasses;
 }
 
+- (void).cxx_destruct;
 - (id)_decodeActivityQuantityStatisticsInfosWithRow:(struct HDSQLiteRow *)arg1 column:(int)arg2;
 - (void)_applyActivityCacheStatisticsToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3;
 - (void)_applyPrivateActivityCachePropertiesToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3;

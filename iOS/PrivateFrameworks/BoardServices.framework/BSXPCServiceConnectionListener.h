@@ -33,10 +33,7 @@
     _Bool _lock_clientInvalidated;
 }
 
-+ (id)listenerWithServiceName:(id)arg1;
-+ (id)listener;
 - (void).cxx_destruct;
-- (void)_invalidateWithLockBlock:(CDUnknownBlockType)arg1;
 - (void)_invalidateChildConnection:(id)arg1;
 @property(readonly, nonatomic, getter=_isClientInvalidated) _Bool _clientInvalidated;
 @property(readonly, nonatomic, getter=_isInvalidated) _Bool _invalidated;
@@ -45,12 +42,7 @@
 - (void)setServiceQuality:(id)arg1;
 - (void)setEndpointDescription:(id)arg1;
 - (void)invalidate;
-- (void)activate;
-- (void)configure:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic, getter=isNonLaunching) _Bool nonLaunching;
-@property(readonly, nonatomic) NSObject<OS_xpc_object> *endpoint;
 - (void)dealloc;
-- (id)_initWithServiceName:(id)arg1;
 - (id)init;
 
 // Remaining properties

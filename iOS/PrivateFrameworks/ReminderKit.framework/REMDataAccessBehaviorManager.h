@@ -13,9 +13,9 @@
     REMXPCDaemonController *_daemonController;
 }
 
-@property(retain, nonatomic) REMXPCDaemonController *daemonController; // @synthesize daemonController=_daemonController;
 - (void).cxx_destruct;
-- (id)_debugPerformerWithErrorHandler:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) REMXPCDaemonController *daemonController; // @synthesize daemonController=_daemonController;
+- (id)_debugPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_crashDaemonWithMessage:(id)arg1;
 - (long long)_getIntegerForKey:(id)arg1 withDefaultValue:(long long)arg2;
 - (void)_setIntegerValue:(long long)arg1 forBehaviorKey:(id)arg2;

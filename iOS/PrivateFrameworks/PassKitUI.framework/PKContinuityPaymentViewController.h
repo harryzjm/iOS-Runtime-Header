@@ -31,7 +31,12 @@
     UIViewController *_passphraseViewController;
     _Bool _viewAppeared;
     _Bool _userIntentRequired;
+    long long _userIntentStyle;
+    long long _internalAuthenticationEvaluationState;
+    _Bool _idleStateIsPasscode;
+    long long _coachingState;
     long long _internalCoachingState;
+    NSArray *_activeConstraints;
     NSArray *_defaultConstraints;
     NSArray *_compactConstraints;
     _Bool _authenticating;
@@ -43,21 +48,18 @@
     PKRemotePaymentRequest *_remoteRequest;
 }
 
-@property(readonly, nonatomic) PKRemotePaymentRequest *remoteRequest; // @synthesize remoteRequest=_remoteRequest;
-@property(nonatomic) id <PKPaymentAuthorizationHostProtocol> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKRemotePaymentRequest *remoteRequest; // @synthesize remoteRequest=_remoteRequest;
+@property(nonatomic) __weak id <PKPaymentAuthorizationHostProtocol> delegate; // @synthesize delegate=_delegate;
 - (void)authorizationFooterViewDidChangeConstraints:(id)arg1;
 - (void)authorizationFooterViewPasscodeButtonPressed:(id)arg1;
 - (void)dismissPassphraseViewController;
 - (void)presentPassphraseViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)dismissPasscodeViewController;
 - (void)presentPasscodeViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)authenticatorDidEncounterMatchMiss:(id)arg1;
-- (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
-- (void)authenticatorDidEncounterFingerOff:(id)arg1;
-- (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_912cb5d2)arg2;
+- (long long)_progressStateForAuthenticationWithBiometricFailure:(_Bool)arg1;
 - (_Bool)paymentPass:(id *)arg1 paymentApplication:(id *)arg2 fromAID:(id)arg3;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
 - (void)_didCancel;
@@ -65,9 +67,9 @@
 - (void)_didFailWithError:(id)arg1;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_didSucceedWithAuthorizationStateParam:(id)arg1;
-- (id)_evaluationRequest;
+- (id)_evaluationRequestWithHasInitialAuthenticatorState:(_Bool)arg1 initialAuthenticatorState:(unsigned long long)arg2;
 - (long long)_authenticatorPolicy;
-- (void)_startEvaluation;
+- (void)_startEvaluationWithHasInitialAuthenticatorState:(_Bool)arg1 initialAuthenticatorState:(unsigned long long)arg2;
 - (void)_suspendAuthentication;
 - (void)_resumeAuthenticationWithPreviousError:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
@@ -81,8 +83,10 @@
 - (void)_cancelPassphrasePressed;
 - (void)cancelPressed:(id)arg1;
 - (void)_setUserIntentRequired:(_Bool)arg1;
-- (void)_updateCoachingInstruction;
+- (void)_updateProgressStateIfAuthenticatingWithBiometricFailure:(_Bool)arg1;
+- (void)_updateCoachingState;
 - (void)_updateUserIntentRequired;
+- (void)_updateUserIntentStyle;
 - (void)_setPassphraseViewController:(id)arg1;
 - (void)_setPasscodeViewController:(id)arg1;
 - (void)_setAuthenticating:(_Bool)arg1;
@@ -90,6 +94,7 @@
 - (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(_Bool)arg3;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillLayoutSubviews;
+- (void)_updateActiveConstraints;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

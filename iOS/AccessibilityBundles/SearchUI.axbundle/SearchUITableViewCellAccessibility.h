@@ -12,14 +12,16 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityContainsSportsGrid;
+- (id)_accessibilitySupplementaryFooterViews;
+- (_Bool)_accessibilityShouldSortTableViewCellChildren;
 - (_Bool)_accessibilityHasAccessibleSubviews;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (id)_accessibilityRetrieveTableViewCellText;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)accessibilityElements;
-- (_Bool)_accessibilityUsesOverrideContainerProtocol;
 
 @end
 

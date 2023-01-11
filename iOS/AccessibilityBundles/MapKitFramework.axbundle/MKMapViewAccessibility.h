@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_didEndZoom;
-- (void)_setCompassVisible:(_Bool)arg1 animated:(_Bool)arg2 force:(_Bool)arg3;
+- (void)_setCompassVisible:(_Bool)arg1 animationAllowed:(_Bool)arg2 force:(_Bool)arg3;
 - (id)_axMapsDelegate;
 - (long long)_accessibilitySortPriority;
 - (_Bool)canBecomeFocused;

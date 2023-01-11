@@ -8,25 +8,28 @@
 
 #import <Silex/SXActionActivity-Protocol.h>
 
-@class NSString;
+@class NSString, UIImage;
 
 @interface SXBlockActionActivity : NSObject <SXActionActivity>
 {
     NSString *_label;
     unsigned long long _type;
+    UIImage *_image;
     CDUnknownBlockType _genericBlock;
     CDUnknownBlockType _immediateBlock;
     CDUnknownBlockType _userSelectedBlock;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType userSelectedBlock; // @synthesize userSelectedBlock=_userSelectedBlock;
 @property(readonly, copy, nonatomic) CDUnknownBlockType immediateBlock; // @synthesize immediateBlock=_immediateBlock;
 @property(readonly, copy, nonatomic) CDUnknownBlockType genericBlock; // @synthesize genericBlock=_genericBlock;
+@property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (void)invokeWithAction:(id)arg1 invocationMethod:(unsigned long long)arg2;
 - (id)initWithLabel:(id)arg1 type:(unsigned long long)arg2 immediateBlock:(CDUnknownBlockType)arg3 userSelectedBlock:(CDUnknownBlockType)arg4;
+- (id)initWithLabel:(id)arg1 image:(id)arg2 type:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (id)initWithLabel:(id)arg1 type:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 
 // Remaining properties

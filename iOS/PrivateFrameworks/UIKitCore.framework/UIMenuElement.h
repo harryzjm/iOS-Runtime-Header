@@ -13,25 +13,37 @@
 
 @interface UIMenuElement : NSObject <NSCopying, NSSecureCoding>
 {
+    NSString *_accessibilityIdentifier;
     NSString *_title;
-    UIImage *_image;
+    NSString *_imageName;
+    UIImage *_imageIfLoaded;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
-@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIImage *imageIfLoaded; // @synthesize imageIfLoaded=_imageIfLoaded;
+@property(readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
+- (void)setAccessibilityIdentifier:(id)arg1;
+- (id)accessibilityIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_setImage:(id)arg1;
 - (void)_setTitle:(id)arg1;
+- (id)_mutableCopy;
 - (id)_immutableCopy;
 - (_Bool)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
 - (_Bool)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
-- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
+- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3 deferredElementVisit:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) UIImage *image;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithTitle:(id)arg1 image:(id)arg2;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 imageName:(id)arg3;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool isLoadingPlaceholder;
+@property(readonly, nonatomic) _Bool isLeaf;
+- (_Bool)_isVisible;
+- (_Bool)_canBeHighlighted;
+- (_Bool)_isInlineGroup;
 
 @end
 

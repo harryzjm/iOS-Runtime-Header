@@ -13,7 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
-    NSMutableDictionary *_cachedMusicUserTokens;
+    NSMutableDictionary *_cachedUserTokens;
 }
 
 + (void)_getCacheKeyForDeveloperToken:(id)arg1 requestContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -24,8 +24,8 @@
 - (void)_persistCache;
 - (void)_loadPersistedCacheWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleMusicUserTokensDidChangeDistributedNotification:(id)arg1;
-- (void)setCachedMusicUserToken:(id)arg1 forDeveloperToken:(id)arg2 requestContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)getCachedMusicUserTokenForDeveloperToken:(id)arg1 requestContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setCachedUserToken:(id)arg1 forDeveloperToken:(id)arg2 requestContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)getCachedUserTokenForDeveloperToken:(id)arg1 requestContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)_init;
 

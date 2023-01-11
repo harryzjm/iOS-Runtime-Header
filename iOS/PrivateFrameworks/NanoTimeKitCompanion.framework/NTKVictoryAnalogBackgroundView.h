@@ -33,23 +33,25 @@
     struct CGPoint _logoPositionRing;
     struct CGPoint _logoPositionNoDigits;
     struct CGPoint _logoPositionBig;
+    struct CGPoint _logoPositionSmallFont;
     struct CGPoint _logoPositionCircularDial;
     double _dialShapeFraction;
     id <NTKVictoryAnalogBackgroundColorPalette> _palette;
     unsigned long long _style;
     unsigned long long _dialShape;
+    UIImage *_logoImage;
     id <NTKVictoryAnalogBackgroundViewDelegate> _delegate;
 }
 
 + (id)_disabledLayerActions;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <NTKVictoryAnalogBackgroundViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) UIImage *logoImage; // @synthesize logoImage=_logoImage;
 @property(nonatomic) unsigned long long dialShape; // @synthesize dialShape=_dialShape;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(retain, nonatomic) id <NTKVictoryAnalogBackgroundColorPalette> palette; // @synthesize palette=_palette;
-- (void).cxx_destruct;
 - (id)_dotImage;
 - (id)_circularDialLogoImage;
-- (id)_logoImage;
 - (id)_bigNumberInitialTransforms;
 - (struct CGAffineTransform)_affineTransformFromTransform3D:(struct CATransform3D)arg1;
 - (id)_createAndAddLayersWithCount:(unsigned long long)arg1;

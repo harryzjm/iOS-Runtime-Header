@@ -13,13 +13,15 @@
     TIInputContextHistory *_tiInputContextHistory;
 }
 
-@property(readonly, nonatomic) TIInputContextHistory *tiInputContextHistory; // @synthesize tiInputContextHistory=_tiInputContextHistory;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) TIInputContextHistory *tiInputContextHistory; // @synthesize tiInputContextHistory=_tiInputContextHistory;
 - (id)mostRecentTextEntries:(unsigned long long)arg1;
 - (void)addTextEntry:(id)arg1 timestamp:(id)arg2;
 - (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifier:(id)arg2;
 @property(readonly, nonatomic) NSString *senderIdentifier;
+- (void)updateRecipientNames:(id)arg1;
 - (void)addTextEntry:(id)arg1 timestamp:(id)arg2 senderIdentifier:(id)arg3;
+@property(readonly, nonatomic) NSSet *recipientNames;
 @property(readonly, nonatomic) NSSet *senderIdentifiers;
 @property(readonly, nonatomic) NSSet *recipientIdentifiers;
 - (_Bool)isEqual:(id)arg1;

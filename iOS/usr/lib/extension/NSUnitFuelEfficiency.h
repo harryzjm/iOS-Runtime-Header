@@ -14,6 +14,7 @@
 + (id)milesPerGallon;
 + (id)milesPerImperialGallon;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

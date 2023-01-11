@@ -8,7 +8,7 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipientTableViewCellDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, _CNAutocompleteResultsTableViewModel;
+@class CNAvatarViewControllerSettings, NSArray, NSMutableArray, NSMutableSet, NSString, _CNAutocompleteResultsTableViewModel;
 @protocol CNAutocompleteResultsTableViewControllerDelegate;
 
 @interface CNAutocompleteResultsTableViewController : UITableViewController <CNComposeRecipientTableViewCellDelegate>
@@ -21,13 +21,19 @@
     _Bool _deferTableViewUpdates;
     _Bool _inDisambiguationMode;
     _Bool _hasPerformedRecipientExpansion;
+    _Bool _supportsInfoButton;
     id <CNAutocompleteResultsTableViewControllerDelegate> _delegate;
     NSArray *_recipients;
     double _trailingButtonMidlineInsetFromLayoutMargin;
     NSMutableSet *_expandedIdentifiers;
+    CNAvatarViewControllerSettings *_sharedAvatarViewControllerSettings;
 }
 
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
++ (_Bool)avatarsAreHidden;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CNAvatarViewControllerSettings *sharedAvatarViewControllerSettings; // @synthesize sharedAvatarViewControllerSettings=_sharedAvatarViewControllerSettings;
+@property(nonatomic) _Bool supportsInfoButton; // @synthesize supportsInfoButton=_supportsInfoButton;
 @property(nonatomic) _Bool hasPerformedRecipientExpansion; // @synthesize hasPerformedRecipientExpansion=_hasPerformedRecipientExpansion;
 @property(nonatomic) _Bool inDisambiguationMode; // @synthesize inDisambiguationMode=_inDisambiguationMode;
 @property(retain, nonatomic) NSMutableSet *expandedIdentifiers; // @synthesize expandedIdentifiers=_expandedIdentifiers;
@@ -35,10 +41,10 @@
 @property(nonatomic, getter=isDeferringTableViewUpdates) _Bool deferTableViewUpdates; // @synthesize deferTableViewUpdates=_deferTableViewUpdates;
 @property(copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(nonatomic) __weak id <CNAutocompleteResultsTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)didTapInfoButtonForCell:(id)arg1;
+- (_Bool)shouldShowCheckmarkForRecipient:(id)arg1 preferredRecipient:(id)arg2;
 - (_Bool)updatePreferredRecipientForCell:(id)arg1 isInvalidation:(_Bool)arg2;
 - (void)updateLabelColorForCell:(id)arg1;
 - (void)invalidatePreferredRecipients;
@@ -56,6 +62,8 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (double)_tableViewHeaderHeight;
+- (_Bool)willProvideOverrideImageDataForCell:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)didToggleDisambiguationAtIndexPath:(id)arg1;
 - (void)didTapDisambiguationChevronForCell:(id)arg1;
 - (void)invalidateSearchResultRecipient:(id)arg1;
 - (void)_selectSearchResultsRecipientAtIndexPath:(id)arg1;
@@ -64,14 +72,20 @@
 - (id)_indexPathForRecipient:(id)arg1;
 - (id)_combinedResults;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (_Bool)attemptDisambiguationToggleAtSelectedRowIsExpand:(_Bool)arg1;
+- (_Bool)collapseSelectedRecipient;
+- (_Bool)expandSelectedRecipient;
 - (_Bool)confirmSelectedRecipient;
 - (void)selectPreviousSearchResult;
 - (void)selectNextSearchResult;
 - (id)_flattenedIndexPaths;
 - (void)updateRecipients:(id)arg1 disambiguatingRecipient:(id)arg2;
 - (id)unificationIdentifierForRecipient:(id)arg1;
+- (_Bool)_deviceIsLockedWithPassword;
 - (void)_updateTableViewModelAnimated:(_Bool)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)selectRowAtIndexPath:(id)arg1;
+- (void)didHover:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 
 // Remaining properties

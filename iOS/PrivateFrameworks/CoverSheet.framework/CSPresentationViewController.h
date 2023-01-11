@@ -7,6 +7,7 @@
 #import <CoverSheet/BSDescriptionProviding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
+@protocol CSPresentationViewControllerDelegate;
 
 @interface CSPresentationViewController <BSDescriptionProviding>
 {
@@ -14,11 +15,14 @@
     unsigned long long _transitioning;
     NSMutableArray *_contentViewControllers;
     NSArray *_activeContentViewControllers;
+    id <CSPresentationViewControllerDelegate> _presentationDelegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CSPresentationViewControllerDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 - (void)_updatePresentationForViewController:(id)arg1 presentation:(id)arg2 animationSettings:(id)arg3;
 - (void)_reflowPresentationWithAnimationSettings:(id)arg1;
+- (void)_didTransitionViewController:(id)arg1 toPresented:(_Bool)arg2;
 - (void)_updateContentViewControllersAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

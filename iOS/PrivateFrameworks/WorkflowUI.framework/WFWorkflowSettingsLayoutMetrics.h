@@ -13,16 +13,13 @@
     UITraitCollection *_traitCollection;
 }
 
-@property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 - (id)scaledFont;
 - (id)baseFont;
 - (double)scaledValueForValue:(double)arg1;
-@property(readonly, nonatomic) double emptySizeButtonHeight;
 @property(readonly, nonatomic) struct CGSize tileSize;
 @property(readonly, nonatomic) UIFont *textFieldFont;
-@property(readonly, nonatomic) UIFont *emptyStateButtonFont;
-@property(readonly, nonatomic) UIFont *emptyStateFont;
 @property(readonly, nonatomic) UIFont *typeSelectionTypeLabelFont;
 @property(readonly, nonatomic) UIFont *typeSelectionTitleFont;
 - (id)initWithTraitCollection:(id)arg1;

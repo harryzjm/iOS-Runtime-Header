@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKInspectableValue, NSArray;
+@class HKConcept, HKInspectableValue, NSArray, NSString;
 
-@interface HKCodedValue : NSObject <NSSecureCoding, NSCopying>
+@interface HKCodedValue : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
+    HKConcept *_concept;
     NSArray *_codings;
     HKInspectableValue *_value;
     NSArray *_referenceRanges;
@@ -20,19 +22,29 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)codedValueWithCodings:(id)arg1 value:(id)arg2 referenceRanges:(id)arg3;
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *referenceRanges; // @synthesize referenceRanges=_referenceRanges;
 @property(readonly, copy, nonatomic) HKInspectableValue *value; // @synthesize value=_value;
 @property(readonly, copy, nonatomic) NSArray *codings; // @synthesize codings=_codings;
-- (void).cxx_destruct;
+- (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)chartableCodedQuantitySetWithDate:(id)arg1 error:(id *)arg2;
 - (id)chartableCodedQuantityWithError:(id *)arg1;
+@property(readonly, copy, nonatomic) HKConcept *concept;
+- (void)_setConcept:(id)arg1;
 - (id)initWithCodings:(id)arg1 value:(id)arg2 referenceRanges:(id)arg3;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

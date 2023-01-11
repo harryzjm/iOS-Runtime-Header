@@ -15,8 +15,8 @@
 + (_Bool)supportsSecureCoding;
 + (id)homeInvitationsFromData:(id)arg1 home:(id)arg2;
 + (id)homeInvitationsFromEncodedData:(id)arg1 home:(id)arg2;
-@property(readonly, nonatomic) HMUser *invitee; // @synthesize invitee=_invitee;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMUser *invitee; // @synthesize invitee=_invitee;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -24,6 +24,8 @@
 - (void)_cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *accessoryInvitations;
+- (void)dealloc;
+- (void)_unconfigure;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (id)initWithInvitationData:(id)arg1 home:(id)arg2;
 

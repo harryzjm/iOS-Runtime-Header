@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDIDSMessageCenter, IDSDevice, NSData, NSDictionary, NSString;
+@class HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString;
 
 @interface HDIDSOutgoingRequest : NSObject <HDNanoSyncDescription>
 {
@@ -16,7 +16,7 @@
     _Bool _queueOnly1;
     _Bool _forceLocalDelivery;
     unsigned short _messageID;
-    IDSDevice *_toDevice;
+    HDIDSParticipant *_toParticipant;
     NSData *_data;
     NSString *_idsIdentifier;
     unsigned long long _priority;
@@ -27,11 +27,12 @@
     id _pbRequest;
 }
 
-+ (id)requestWithMessageID:(unsigned short)arg1 device:(id)arg2;
++ (id)requestWithMessageID:(unsigned short)arg1 participant:(id)arg2;
 + (id)_requestWithMessageID:(unsigned short)arg1 message:(id)arg2 syncStore:(id)arg3;
 + (id)speculativeChangeRequestWithChangeSet:(id)arg1 syncStore:(id)arg2;
 + (id)changeRequestWithChangeSet:(id)arg1 status:(id)arg2 syncStore:(id)arg3;
 + (id)activationRequestWithRestore:(id)arg1 syncStore:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id pbRequest; // @synthesize pbRequest=_pbRequest;
 @property(nonatomic) __weak HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
 @property(nonatomic) _Bool forceLocalDelivery; // @synthesize forceLocalDelivery=_forceLocalDelivery;
@@ -43,9 +44,8 @@
 @property(nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-@property(readonly, nonatomic) IDSDevice *toDevice; // @synthesize toDevice=_toDevice;
+@property(readonly, nonatomic) HDIDSParticipant *toParticipant; // @synthesize toParticipant=_toParticipant;
 @property(readonly, nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)init;
 - (id)nanoSyncDescription;

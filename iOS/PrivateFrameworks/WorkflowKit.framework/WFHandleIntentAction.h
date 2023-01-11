@@ -5,54 +5,60 @@
 //
 
 #import <WorkflowKit/WFIntentExecutorDelegate-Protocol.h>
-#import <WorkflowKit/WFIntentPlatterViewControllerDelegate-Protocol.h>
 #import <WorkflowKit/WFStandaloneShortcutAction-Protocol.h>
 
-@class INCExtensionConnection, INIntentDescription, NSArray, NSString, WFIntentExecutor, WFIntentPlatterViewController;
+@class INCExtensionConnection, INIntent, INIntentDescription, INStringLocalizer, NSArray, NSString, WFIntentExecutor;
 
-@interface WFHandleIntentAction <WFIntentExecutorDelegate, WFIntentPlatterViewControllerDelegate, WFStandaloneShortcutAction>
+@interface WFHandleIntentAction <WFIntentExecutorDelegate, WFStandaloneShortcutAction>
 {
-    NSString *_inputParameterName;
+    INIntent *_runningIntent;
+    INStringLocalizer *_stringLocalizer;
+    NSString *_localizedName;
     WFIntentExecutor *_executor;
-    WFIntentPlatterViewController *_intentViewController;
-    CDUnknownBlockType _viewControllerCompletionHandler;
     INCExtensionConnection *_connection;
 }
 
-+ (id)bundleIdentifierForIntent:(id)arg1;
-+ (id)appIdentifierForIntent:(id)arg1;
-@property(retain, nonatomic) INCExtensionConnection *connection; // @synthesize connection=_connection;
-@property(copy, nonatomic) CDUnknownBlockType viewControllerCompletionHandler; // @synthesize viewControllerCompletionHandler=_viewControllerCompletionHandler;
-@property(retain, nonatomic) WFIntentPlatterViewController *intentViewController; // @synthesize intentViewController=_intentViewController;
-@property(retain, nonatomic) WFIntentExecutor *executor; // @synthesize executor=_executor;
-@property(readonly, nonatomic) NSString *inputParameterName; // @synthesize inputParameterName=_inputParameterName;
 - (void).cxx_destruct;
+@property(retain, nonatomic) INCExtensionConnection *connection; // @synthesize connection=_connection;
+@property(retain, nonatomic) WFIntentExecutor *executor; // @synthesize executor=_executor;
+@property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property(readonly, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
+@property(readonly, copy, nonatomic) INIntent *runningIntent; // @synthesize runningIntent=_runningIntent;
 - (_Bool)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
+- (void)intentExecutor:(id)arg1 showConfirmationForSlot:(id)arg2 item:(id)arg3 intent:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)intentExecutor:(id)arg1 showConfirmationForInteraction:(id)arg2 confirmationRequired:(_Bool)arg3 authenticationRequired:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)intentExecutorRequestsContinueInApp:(id)arg1;
 - (void)handleExecutorError:(id)arg1;
-- (id)errorFromExtensionError:(id)arg1;
+- (void)getErrorFromExtensionError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)errorThatLaunchesApp:(id)arg1;
+- (id)errorAttributedToApp:(id)arg1;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
+- (void)showConfirmationAndRetryForSlot:(id)arg1 item:(id)arg2 onIntent:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)localizedConfirmationPromptForAttribute:(id)arg1 intent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showDisambiguationAndRetryForSlot:(id)arg1 items:(id)arg2 onIntent:(id)arg3;
 - (void)localizedDisambiguationPromptForAttribute:(id)arg1 intent:(id)arg2 disambiguationItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)showAskForValueAndRetryForSlot:(id)arg1 onIntent:(id)arg2;
 - (void)handleResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 - (id)unknownErrorWithCode:(long long)arg1 localizedDescription:(id)arg2 userInfo:(id)arg3;
-- (void)intentViewControllerDidDismissPlatter:(id)arg1;
-- (void)intentViewControllerDidConfirmIntent:(id)arg1;
-- (void)intentViewControllerWasTapped:(id)arg1;
-- (void)dismissViewControllerIfNecessary:(CDUnknownBlockType)arg1;
-- (void)showInteraction:(id)arg1 fromViewController:(id)arg2 sourceView:(id)arg3 requiringConfirmation:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)confirmationAlertForInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)showInteractionIfNeeded:(id)arg1 inUserInterface:(id)arg2 requiringConfirmation:(_Bool)arg3 requiringAuthentication:(_Bool)arg4 executionStage:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (_Bool)allowsContinueInAppWhenRunningRemotely;
+- (_Bool)requiresRemoteExecution;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)finishRunningByContinuingInApp;
 - (_Bool)shouldOpenAppThroughSiriForIntent:(id)arg1 intentResponse:(id)arg2;
 - (void)populateIntent:(id)arg1 withInput:(id)arg2 processedParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)executorWithIntent:(id)arg1;
+- (id)executorWithIntent:(id)arg1 groupIdentifier:(id)arg2;
+- (_Bool)intentIsHandledBySiri:(id)arg1;
+- (_Bool)skipSiriExecution;
+- (_Bool)runInProcess;
+- (_Bool)parameterCombinationForIntentSupportsBackgroundExecution:(id)arg1;
+- (void)handleExecutionCompletionWithInteraction:(id)arg1 error:(id)arg2;
 - (void)startExecutingIntent:(id)arg1;
+- (_Bool)shouldDonateIntent:(id)arg1;
+- (_Bool)isWorkflowInDatabase;
 - (void)accessBundleContentWithBlock:(CDUnknownBlockType)arg1;
 - (id)parameterForSlot:(id)arg1;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
@@ -60,19 +66,25 @@
 - (id)createResourceManager;
 @property(readonly, nonatomic) NSArray *slots;
 @property(readonly, nonatomic) INIntentDescription *intentDescription;
+- (void)generatePopulatedIntentWithIdentifier:(id)arg1 fromInput:(id)arg2 processedParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generatePopulatedIntentFromInput:(id)arg1 processedParameters:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
+- (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
+- (id)generatedIntentWithInput:(id)arg1 processedParameters:(id)arg2 error:(id *)arg3;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 @property(readonly, nonatomic) long long intentCategory;
 - (unsigned long long)allowsInteractiveSlotResolution;
 - (_Bool)opensInApp;
 - (_Bool)showsWhenRun;
+- (id)showsWhenRunIfApplicable;
 - (_Bool)requiresShowsWhenRun;
 - (void)wasAddedToWorkflowByUser:(id)arg1;
 - (_Bool)skipsProcessingHiddenParameters;
 - (void)cancel;
 - (void)finishRunningWithError:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)initializeParameters;
+- (_Bool)inputPassthrough;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 stringLocalizer:(id)arg4;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 
 // Remaining properties

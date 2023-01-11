@@ -8,7 +8,7 @@
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class BKPresenceDetectOperation, NSObject, NSString, PKPass, PKPaymentPass, UIButton, _PKUIKVisibilityBackdropView;
+@class BKPresenceDetectOperation, NSObject, NSString, PKDashboardPassFlowLayout, PKDashboardPaymentTransactionItemPresenter, PKPass, PKPaymentPass, UIButton, _PKUIKVisibilityBackdropView;
 @protocol OS_dispatch_source, PKDashboardPassViewControllerDelegate><PKDashboardDelegate;
 
 @interface PKDashboardPassViewController <PKForegroundActiveArbiterObserver, _PKUIKVisibilityBackdropViewDelegate, BKOperationDelegate>
@@ -25,10 +25,15 @@
     struct CGSize _defaultPasscodeButtonSize;
     UIButton *_passcodeButton;
     PKPass *_frontmostPass;
+    PKDashboardPassFlowLayout *_passFlowLayout;
+    PKDashboardPaymentTransactionItemPresenter *_transactionPresenter;
 }
 
-@property(retain, nonatomic) PKPass *frontmostPass; // @synthesize frontmostPass=_frontmostPass;
++ (void)dataSource:(id *)arg1 presenters:(id *)arg2 forGroupView:(id)arg3 context:(id)arg4 presentingViewController:(id)arg5;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKDashboardPaymentTransactionItemPresenter *transactionPresenter; // @synthesize transactionPresenter=_transactionPresenter;
+@property(readonly, nonatomic) PKDashboardPassFlowLayout *passFlowLayout; // @synthesize passFlowLayout=_passFlowLayout;
+@property(retain, nonatomic) PKPass *frontmostPass; // @synthesize frontmostPass=_frontmostPass;
 - (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (void)operation:(id)arg1 presenceStateChanged:(_Bool)arg2;
@@ -47,6 +52,8 @@
 - (void)loadView;
 - (void)invalidate;
 - (void)dealloc;
+- (id)initWithDataSource:(id)arg1 presenters:(id)arg2 layout:(id)arg3;
+- (id)initWithPass:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

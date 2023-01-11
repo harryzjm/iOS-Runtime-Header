@@ -23,21 +23,18 @@
 }
 
 + (id)xpcInterface;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *bulletinIDsToTransaction; // @synthesize bulletinIDsToTransaction=_bulletinIDsToTransaction;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak BBServer *server; // @synthesize server=_server;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getBulletinsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getUniversalSectionIDForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionParametersForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-- (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForActiveSectionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoWithHandler:(CDUnknownBlockType)arg1;
@@ -52,6 +49,7 @@
 - (void)setObserverFeed:(unsigned long long)arg1 asLightsAndSirensGateway:(id)arg2 priority:(unsigned long long)arg3;
 - (void)setObserverFeed:(unsigned long long)arg1 attachToLightsAndSirensGateway:(id)arg2;
 - (void)getObserverDebugInfo:(CDUnknownBlockType)arg1;
+- (void)noteBulletinsLoadedForSectionID:(id)arg1;
 - (void)noteServerReceivedResponseForBulletin:(id)arg1;
 - (void)updateGlobalSettings:(id)arg1;
 - (void)removeSection:(id)arg1;

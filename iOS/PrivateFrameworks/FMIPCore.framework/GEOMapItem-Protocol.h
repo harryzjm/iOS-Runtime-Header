@@ -6,10 +6,19 @@
 
 #import <FMIPCore/NSObject-Protocol.h>
 
-@class GEOAddress, GEOAddressObject, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemAdditionalPlaceInfo, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORestaurantFeaturesLink, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
+@class GEOAddress, GEOAddressObject, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemAdditionalPlaceInfo, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORestaurantFeaturesLink, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
 @protocol GEOEncyclopedicInfo, GEOMapItem, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @protocol GEOMapItem <NSObject>
+- (NSArray *)_alternateSearchableNames;
+- (unsigned long long)_totalPhotoCount;
+- (_Bool)_canDownloadMorePhotos;
+- (NSArray *)_identifierHistory;
+- (GEOPlaceQuestionnaire *)_placeQuestionnaire;
+- (_Bool)_hasPlaceQuestionnaire;
+- (GEOAppleRating *)_overallAppleRating;
+- (NSArray *)_appleRatings;
+- (_Bool)_supportsAppleRatings;
 - (_Bool)_showSuggestAnEditButton;
 - (_Bool)_enableRAPLightweightFeedback;
 - (NSString *)_walletCategoryIdentifier;
@@ -61,6 +70,9 @@
 - (unsigned long long)_brandMUID;
 - (_Bool)_hasBrandMUID;
 - (GEOPlacecardLayoutConfiguration *)_placecardLayoutConfiguration;
+- (NSArray *)_placeCollectionsIds;
+- (NSArray *)_placeCollections;
+- (NSArray *)_secondaryQuickLinks;
 - (NSArray *)_quickLinks;
 - (GEOMessageLink *)_messageLink;
 - (_Bool)_isStandaloneBrand;
@@ -170,12 +182,16 @@
 @property(nonatomic, readonly) NSString *name;
 
 @optional
+- (NSString *)_iso3166SubdivisionCode;
+- (NSString *)_iso3166CountryCode;
 - (id <GEOMapItem>)_mapItemBySettingIsTransitDisplayFeature:(_Bool)arg1;
 
 // Remaining properties
 @property(nonatomic, readonly) NSArray *additionalPlaceInfos;
 @property(nonatomic, readonly) int addressGeocodeAccuracy;
+@property(nonatomic, readonly) NSArray *alternateSearchableNames;
 @property(nonatomic, readonly) NSArray *amenities;
+@property(nonatomic, readonly) NSArray *appleRatings;
 @property(nonatomic, readonly) double areaInMeters;
 @property(nonatomic, readonly) GEOAssociatedApp *associatedApp;
 @property(nonatomic, readonly) GEOMapItemPlaceAttribution *attribution;
@@ -184,6 +200,7 @@
 @property(nonatomic, readonly) GEOPDBusinessClaim *businessClaim;
 @property(nonatomic, readonly) NSArray *businessHours;
 @property(nonatomic, readonly) NSString *businessURL;
+@property(nonatomic, readonly) _Bool canDownloadMorePhotos;
 @property(nonatomic, readonly) NSArray *childItems;
 @property(nonatomic, readonly) GEOMapItemClientAttributes *clientAttributes;
 @property(nonatomic, readonly) GEOMapItemContainedPlace *containedPlace;
@@ -209,6 +226,7 @@
 @property(nonatomic, readonly) _Bool hasLinkedServices;
 @property(nonatomic, readonly) _Bool hasMUID;
 @property(nonatomic, readonly) _Bool hasOperatingHours;
+@property(nonatomic, readonly) _Bool hasPlaceQuestionnaire;
 @property(nonatomic, readonly) _Bool hasPriceRange;
 @property(nonatomic, readonly) _Bool hasResolvablePartialInformation;
 @property(nonatomic, readonly) _Bool hasResultProviderID;
@@ -220,9 +238,12 @@
 @property(nonatomic, readonly) _Bool hasWifiFingerprintLabelStatusCode;
 @property(nonatomic, readonly) _Bool hasWifiFingerprintLabelType;
 @property(nonatomic, readonly) GEOMapItemIdentifier *identifier;
+@property(nonatomic, readonly) NSArray *identifierHistory;
 @property(nonatomic, readonly) _Bool inLinkedPlaceRelationship;
 @property(nonatomic, readonly) _Bool isStandAloneBrand;
 @property(nonatomic, readonly) _Bool isTransitDisplayFeature;
+@property(nonatomic, readonly) NSString *iso3166CountryCode;
+@property(nonatomic, readonly) NSString *iso3166SubdivisionCode;
 @property(nonatomic, readonly) NSArray *linkedServices;
 @property(nonatomic, readonly) NSString *mapsCategoryId;
 @property(nonatomic, readonly) GEOMessageLink *messageLink;
@@ -232,14 +253,18 @@
 @property(nonatomic, readonly) float normalizedUserRatingScore;
 @property(nonatomic, readonly) unsigned long long openingHoursOptions;
 @property(nonatomic, readonly) _Bool optsOutOfTelephoneAds;
+@property(nonatomic, readonly) GEOAppleRating *overallRating;
 @property(nonatomic, readonly) int parsecSectionType;
 @property(nonatomic, readonly) NSArray *photos;
 @property(nonatomic, readonly) GEOMapItemPhotosAttribution *photosAttribution;
 @property(nonatomic, readonly) GEOPlace *place;
+@property(nonatomic, readonly) NSArray *placeCollections;
+@property(nonatomic, readonly) NSArray *placeCollectionsIds;
 @property(nonatomic, readonly) GEOPDPlace *placeData;
 @property(nonatomic, readonly) NSData *placeDataAsData;
 @property(nonatomic, readonly) int placeDisplayStyle;
 @property(nonatomic, readonly) int placeDisplayType;
+@property(nonatomic, readonly) GEOPlaceQuestionnaire *placeQuestionnaire;
 @property(nonatomic, readonly) GEOPlaceResult *placeResult;
 @property(nonatomic, readonly) int placeType;
 @property(nonatomic, readonly) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
@@ -258,10 +283,13 @@
 @property(nonatomic, readonly) GEOMapItemReviewsAttribution *reviewsAttribution;
 @property(nonatomic, readonly) NSArray *roadAccessPoints;
 @property(nonatomic, readonly) unsigned int sampleSizeForUserRatingScore;
+@property(nonatomic, readonly) NSArray *secondaryQuickLinks;
 @property(nonatomic, readonly) _Bool showSuggestAnEditButton;
 @property(nonatomic, readonly) GEOFeatureStyleAttributes *styleAttributes;
+@property(nonatomic, readonly) _Bool supportsAppleRatings;
 @property(nonatomic, readonly) NSString *telephone;
 @property(nonatomic, readonly) NSArray *tips;
+@property(nonatomic, readonly) unsigned long long totalPhotoCount;
 @property(nonatomic, readonly) id <GEOTransitAttribution> transitAttribution;
 @property(nonatomic, readonly) id <GEOMapItemTransitInfo> transitInfo;
 @property(nonatomic, readonly) id <GEOTransitVehiclePosition> transitVehiclePosition;

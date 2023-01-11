@@ -23,6 +23,7 @@
 - (_Bool)sendRTCLogsWithError:(id *)arg1;
 - (_Bool)interactionSummaryMetricsError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)logEventInteractionForEventWithEventIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
+- (_Bool)iterScoredEventsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)iterWeeklyEventHighlightsError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)iterDailyEventHighlightsError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)iterEventHighlightsFrom:(id)arg1 to:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;

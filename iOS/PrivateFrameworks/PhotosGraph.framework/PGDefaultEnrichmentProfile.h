@@ -20,20 +20,19 @@
 
 + (long long)cardinalModeForSummary;
 + (unsigned long long)durationForSummary;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PGDejunkerDeduperOptions *extendedCurationOptions; // @synthesize extendedCurationOptions=_extendedCurationOptions;
 @property(readonly) NSDictionary *debugInfos; // @synthesize debugInfos=_debugInfos;
 @property(nonatomic) _Bool collectsDebugInfo; // @synthesize collectsDebugInfo=_collectsDebugInfo;
 @property(readonly, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-- (void).cxx_destruct;
 - (id)faceInfosWithAsset:(id)arg1;
-- (id)sceneInfoWithAsset:(id)arg1;
 - (id)debugInfoDictionaryByAddingItemInfosToDebugInfo:(id)arg1;
 - (id)curationsWithHighlightTailorContext:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)extendedCurationWithHighlightTailorContext:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)curationOptionsForForHighlightTailorContext:(id)arg1;
 - (id)legacyKeyAssetWithHighlightTailorContext:(id)arg1;
 - (id)keyAssetWithHighlightTailorContext:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)moodWithHighlightTailorContext:(id)arg1;
+- (unsigned long long)moodWithHighlightTailorContext:(id)arg1 moodGenerationContext:(id)arg2;
 - (double)promotionScoreWithHighlightTailorContext:(id)arg1;
 - (id)momentTitleByMomentUUIDWithHighlightTailorContext:(id)arg1;
 - (id)titleWithHighlightTailorContext:(id)arg1 curatedAssets:(id)arg2 keyAsset:(id)arg3 createVerboseTitle:(_Bool)arg4;

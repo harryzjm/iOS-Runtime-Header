@@ -24,10 +24,11 @@
 + (double)defaultHeight;
 + (void)initialize;
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(nonatomic) double trailingMargin; // @synthesize trailingMargin=_trailingMargin;
 @property(nonatomic) double leadingMargin; // @synthesize leadingMargin=_leadingMargin;
 @property(retain, nonatomic) NSArray *searchBarConstraints; // @synthesize searchBarConstraints=_searchBarConstraints;
-@property(nonatomic) id <UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSNumber *usePadConstraints; // @synthesize usePadConstraints=_usePadConstraints;
 @property(retain, nonatomic) GKSearchBar *searchBar; // @synthesize searchBar=_searchBar;
 - (void)dealloc;

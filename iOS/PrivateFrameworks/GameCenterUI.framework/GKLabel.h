@@ -18,15 +18,17 @@
     _Bool _usingAttributedText;
     _Bool _shouldInhibitReplay;
     double _actualFontShrinkageFactor;
+    struct NSEdgeInsets _titleEdgeInsets;
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) double actualFontShrinkageFactor; // @synthesize actualFontShrinkageFactor=_actualFontShrinkageFactor;
 @property(retain, nonatomic) GKTextStyle *appliedStyle; // @synthesize appliedStyle=_appliedStyle;
+@property(nonatomic) struct NSEdgeInsets titleEdgeInsets; // @synthesize titleEdgeInsets=_titleEdgeInsets;
 @property(nonatomic) _Bool shouldInhibitReplay; // @synthesize shouldInhibitReplay=_shouldInhibitReplay;
 @property(readonly, nonatomic) _Bool usingAttributedText; // @synthesize usingAttributedText=_usingAttributedText;
 @property(nonatomic) _Bool shouldEnforcePreferredWidth; // @synthesize shouldEnforcePreferredWidth=_shouldEnforcePreferredWidth;
-- (void).cxx_destruct;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)updateConstraints;
 - (struct CGSize)shrinkFontToFitSize:(struct CGSize)arg1;
@@ -35,6 +37,7 @@
 - (void)setText:(id)arg1;
 - (void)setAttributedText:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 @property(retain, nonatomic) GKTextStyle *baseStyle;
 - (void)replayAndApplyStyleWithSystemContentChange:(_Bool)arg1;
 - (void)replayAndApplyStyleUnlessInhibited;

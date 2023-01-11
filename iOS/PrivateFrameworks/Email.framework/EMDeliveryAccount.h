@@ -10,6 +10,7 @@
 
 @interface EMDeliveryAccount <EMDeliveryAccountBuilder>
 {
+    _Bool _primaryiCloudAccount;
     NSString *_name;
     NSString *_username;
     NSString *_hostname;
@@ -17,11 +18,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long maximumMessageBytes; // @synthesize maximumMessageBytes=_maximumMessageBytes;
+@property(nonatomic, getter=isPrimaryiCloudAccount) _Bool primaryiCloudAccount; // @synthesize primaryiCloudAccount=_primaryiCloudAccount;
 @property(copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 - (id)name;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_commonInitName:(id)arg1 hostname:(id)arg2 builder:(CDUnknownBlockType)arg3;

@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDGroundMetadataTile : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_buildTables;
     NSMutableArray *_cameraMetadataTables;
     GEOTileCoordinate *_coord;
     NSMutableArray *_photoPositions;
     NSMutableArray *_storefronts;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _tileBuildId;
     struct {
         unsigned int has_tileBuildId:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_coord:1;
         unsigned int read_photoPositions:1;
         unsigned int read_storefronts:1;
-        unsigned int wrote_buildTables:1;
-        unsigned int wrote_cameraMetadataTables:1;
-        unsigned int wrote_coord:1;
-        unsigned int wrote_photoPositions:1;
-        unsigned int wrote_storefronts:1;
-        unsigned int wrote_tileBuildId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -51,41 +48,37 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasTileBuildId;
 @property(nonatomic) unsigned int tileBuildId;
 @property(retain, nonatomic) GEOTileCoordinate *coord;
 @property(readonly, nonatomic) _Bool hasCoord;
-- (void)_readCoord;
 - (id)cameraMetadataTableAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cameraMetadataTablesCount;
-- (void)_addNoFlagsCameraMetadataTable:(id)arg1;
 - (void)addCameraMetadataTable:(id)arg1;
 - (void)clearCameraMetadataTables;
 @property(retain, nonatomic) NSMutableArray *cameraMetadataTables;
-- (void)_readCameraMetadataTables;
 - (id)buildTableAtIndex:(unsigned long long)arg1;
 - (unsigned long long)buildTablesCount;
-- (void)_addNoFlagsBuildTable:(id)arg1;
 - (void)addBuildTable:(id)arg1;
 - (void)clearBuildTables;
 @property(retain, nonatomic) NSMutableArray *buildTables;
-- (void)_readBuildTables;
 - (id)storefrontAtIndex:(unsigned long long)arg1;
 - (unsigned long long)storefrontsCount;
-- (void)_addNoFlagsStorefront:(id)arg1;
 - (void)addStorefront:(id)arg1;
 - (void)clearStorefronts;
 @property(retain, nonatomic) NSMutableArray *storefronts;
-- (void)_readStorefronts;
 - (id)photoPositionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoPositionsCount;
-- (void)_addNoFlagsPhotoPosition:(id)arg1;
 - (void)addPhotoPosition:(id)arg1;
 - (void)clearPhotoPositions;
 @property(retain, nonatomic) NSMutableArray *photoPositions;
-- (void)_readPhotoPositions;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

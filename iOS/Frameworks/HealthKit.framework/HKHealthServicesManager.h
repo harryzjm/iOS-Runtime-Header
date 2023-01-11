@@ -6,30 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/HKHealthServicesClientInterface-Protocol.h>
+#import <HealthKit/HKHealthServicesManagerClientInterface-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, NSMutableDictionary, NSMutableSet, NSString;
+@class HKProxyProvider, NSMutableDictionary, NSMutableSet, NSString;
 
-__attribute__((visibility("hidden")))
-@interface HKHealthServicesManager : NSObject <HKHealthServicesClientInterface>
+@interface HKHealthServicesManager : NSObject <_HKXPCExportable, HKHealthServicesManagerClientInterface>
 {
-    HKHealthStore *_healthStore;
+    HKProxyProvider *_proxyProvider;
     NSMutableDictionary *_discoveries;
     NSMutableSet *_discoveriesEnded;
     NSMutableDictionary *_sessions;
     NSMutableSet *_sessionsEnded;
     CDUnknownBlockType _bluetoothStatusHandler;
-    HKHealthServicesManager *_healthServicesManager;
 }
 
-@property(readonly, nonatomic) HKHealthServicesManager *healthServicesManager; // @synthesize healthServicesManager=_healthServicesManager;
++ (id)taskIdentifier;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType bluetoothStatusHandler; // @synthesize bluetoothStatusHandler=_bluetoothStatusHandler;
 @property(retain, nonatomic) NSMutableSet *sessionsEnded; // @synthesize sessionsEnded=_sessionsEnded;
 @property(retain, nonatomic) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
 @property(retain, nonatomic) NSMutableSet *discoveriesEnded; // @synthesize discoveriesEnded=_discoveriesEnded;
 @property(retain, nonatomic) NSMutableDictionary *discoveries; // @synthesize discoveries=_discoveries;
-@property(nonatomic) __weak HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-- (void).cxx_destruct;
+- (id)remoteInterface;
+- (id)exportedInterface;
+- (void)connectionInvalidated;
+- (void)connectionInterrupted;
 - (void)clientRemote_deliverSessionCharacteristics:(id)arg1 forService:(id)arg2 toClient:(unsigned long long)arg3 withError:(id)arg4;
 - (void)clientRemote_deliverSessionHealthServiceStatus:(long long)arg1 toClient:(unsigned long long)arg2 finished:(_Bool)arg3 withError:(id)arg4;
 - (void)clientRemote_deliverDiscoveryHealthService:(id)arg1 toClient:(unsigned long long)arg2 finished:(_Bool)arg3 withError:(id)arg4;
@@ -58,7 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)_fetchSupportedServiceIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)endBluetoothStatusUpdates;
 - (void)startBluetoothStatusUpdates:(CDUnknownBlockType)arg1;
-- (void)clientQueue_handleInterruption;
+- (void)_fetchHealthServicesServerProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)initWithWeakHealthStore:(id)arg1;
 - (id)initWithHealthStore:(id)arg1;
 
 // Remaining properties

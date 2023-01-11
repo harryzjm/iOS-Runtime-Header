@@ -11,7 +11,7 @@
 @protocol TSEntitlementJSHandlerDelegate <NSObject>
 - (void)accountPendingRelease;
 - (void)accountCancelled;
-- (void)didTransferPlanSuccessfullyWithEid:(NSString *)arg1 imei:(NSString *)arg2 meid:(NSString *)arg3 iccid:(NSString *)arg4 alternateSDMP:(NSString *)arg5 state:(NSString *)arg6;
+- (void)didTransferPlanSuccessfullyWithEid:(NSString *)arg1 imei:(NSString *)arg2 meid:(NSString *)arg3 iccid:(NSString *)arg4 srcIccid:(NSString *)arg5 alternateSDMP:(NSString *)arg6 state:(NSString *)arg7;
 - (void)didPurchasePlanSuccessfullyWithEid:(NSString *)arg1 imei:(NSString *)arg2 meid:(NSString *)arg3 iccid:(NSString *)arg4 alternateSDMP:(NSString *)arg5;
 @end
 

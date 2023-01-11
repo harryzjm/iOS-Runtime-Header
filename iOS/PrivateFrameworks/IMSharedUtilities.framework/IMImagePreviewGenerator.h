@@ -12,7 +12,10 @@
 }
 
 + (struct CGImage *)newThumbnailFillToSize:(struct CGSize)arg1 imagePxSize:(struct CGSize)arg2 imageSource:(struct CGImageSource *)arg3 scale:(double)arg4;
++ (_Bool)writesToDisk;
++ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 outSize:(struct CGSize *)arg3 error:(id *)arg4;
 + (struct CGSize)sizePreviewAtSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (struct CGImage *)cropAndScaleImageWithImageSource:(struct CGImageSource *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (id)UTITypes;
 + (id)fetchUTITypes;

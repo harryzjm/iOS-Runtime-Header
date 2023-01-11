@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (RecorderExtensions)
++ (id)voiceMemosUserDefaults;
 - (_Bool)rc_useLocationBasedNaming;
 - (long long)rc_audioQuality;
 - (long long)rc_recentlyDeletedWindow;

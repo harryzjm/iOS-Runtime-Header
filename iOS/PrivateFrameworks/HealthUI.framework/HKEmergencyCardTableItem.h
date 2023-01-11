@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController, _HKMedicalIDData;
+@class NSString, UIViewController, _HKMedicalIDData;
 
 @interface HKEmergencyCardTableItem : NSObject
 {
+    _Bool _isSecondaryProfile;
     _Bool _isInEditMode;
     _Bool _shouldShowHints;
     _HKMedicalIDData *_data;
+    NSString *_profileFirstName;
     UIViewController *_owningViewController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldShowHints; // @synthesize shouldShowHints=_shouldShowHints;
 @property(readonly, nonatomic) _Bool isInEditMode; // @synthesize isInEditMode=_isInEditMode;
+@property(nonatomic) _Bool isSecondaryProfile; // @synthesize isSecondaryProfile=_isSecondaryProfile;
 @property(nonatomic) __weak UIViewController *owningViewController; // @synthesize owningViewController=_owningViewController;
+@property(retain, nonatomic) NSString *profileFirstName; // @synthesize profileFirstName=_profileFirstName;
 @property(retain, nonatomic) _HKMedicalIDData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
 - (void)timeZoneDidChange:(id)arg1;
 - (void)localeDidChange:(id)arg1;
 - (id)_dequeueNoValueCellInTableView:(id)arg1 withTitle:(id)arg2;

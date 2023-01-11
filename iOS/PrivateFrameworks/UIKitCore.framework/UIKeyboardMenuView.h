@@ -37,16 +37,22 @@ __attribute__((visibility("hidden")))
     UISelectionFeedbackGenerator *m_slideBehavior;
     _Bool _usesStraightLeftEdge;
     _Bool _usesDarkTheme;
+    _Bool _showingCapsLockSwitcher;
+    long long _indexForSelectedFastSwitchMode;
+    long long _indexForUnselectedFastSwitchMode;
     UIKBTree *_referenceKey;
     UIKeyboardLayoutStar *_layout;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) UIKeyboardLayoutStar *layout; // @synthesize layout=_layout;
 @property(nonatomic) UIKBTree *referenceKey; // @synthesize referenceKey=_referenceKey;
+@property(nonatomic) long long indexForUnselectedFastSwitchMode; // @synthesize indexForUnselectedFastSwitchMode=_indexForUnselectedFastSwitchMode;
+@property(nonatomic) long long indexForSelectedFastSwitchMode; // @synthesize indexForSelectedFastSwitchMode=_indexForSelectedFastSwitchMode;
+@property(nonatomic) _Bool showingCapsLockSwitcher; // @synthesize showingCapsLockSwitcher=_showingCapsLockSwitcher;
 @property(nonatomic) _Bool usesDarkTheme; // @synthesize usesDarkTheme=_usesDarkTheme;
 @property(nonatomic) _Bool usesStraightLeftEdge; // @synthesize usesStraightLeftEdge=_usesStraightLeftEdge;
 @property(nonatomic) long long mode; // @synthesize mode=m_mode;
-- (void).cxx_destruct;
 - (id)subtitleFontForItemAtIndex:(unsigned long long)arg1;
 - (id)subtitleForItemAtIndex:(unsigned long long)arg1;
 - (id)fontForItemAtIndex:(unsigned long long)arg1;
@@ -106,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (id)containerView;
 - (void)showAsHUD;
 - (void)showAsHUDFromLocation:(struct CGPoint)arg1 withInputView:(id)arg2 touchBegan:(double)arg3;
+- (id)_renderConfig;
 - (void)setupShadowViewWithSize:(struct CGSize)arg1;
 - (void)setupBackgroundKeyViewWithSize:(struct CGSize)arg1;
 - (void)show;

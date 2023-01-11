@@ -13,12 +13,14 @@
 @interface GEORPUserSearchInput : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDAutocompleteEntry *_autocompleteEntry;
     GEOLatLng *_coordinate;
     GEOPDPlace *_place;
     NSString *_searchString;
     NSString *_singleLineAddressString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _origin;
     struct {
         unsigned int has_origin:1;
@@ -27,12 +29,7 @@
         unsigned int read_place:1;
         unsigned int read_searchString:1;
         unsigned int read_singleLineAddressString:1;
-        unsigned int wrote_autocompleteEntry:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_place:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_singleLineAddressString:1;
-        unsigned int wrote_origin:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,6 +43,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsOrigin:(id)arg1;
@@ -54,19 +54,16 @@
 @property(nonatomic) int origin;
 @property(retain, nonatomic) GEOLatLng *coordinate;
 @property(readonly, nonatomic) _Bool hasCoordinate;
-- (void)_readCoordinate;
 @property(retain, nonatomic) GEOPDAutocompleteEntry *autocompleteEntry;
 @property(readonly, nonatomic) _Bool hasAutocompleteEntry;
-- (void)_readAutocompleteEntry;
 @property(retain, nonatomic) GEOPDPlace *place;
 @property(readonly, nonatomic) _Bool hasPlace;
-- (void)_readPlace;
 @property(retain, nonatomic) NSString *singleLineAddressString;
 @property(readonly, nonatomic) _Bool hasSingleLineAddressString;
-- (void)_readSingleLineAddressString;
 @property(retain, nonatomic) NSString *searchString;
 @property(readonly, nonatomic) _Bool hasSearchString;
-- (void)_readSearchString;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

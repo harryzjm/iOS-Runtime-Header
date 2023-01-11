@@ -7,15 +7,16 @@
 #import <UIKit/UIView.h>
 
 #import <PlatterKit/MTMaterialGrouping-Protocol.h>
+#import <PlatterKit/MTVisualStylingProviding-Protocol.h>
 #import <PlatterKit/MTVisualStylingRequiring-Protocol.h>
 #import <PlatterKit/PLPlatter-Protocol.h>
 #import <PlatterKit/PLPlatterInternal-Protocol.h>
 
-@class MTMaterialShadowView, MTMaterialView, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSString, PLShadowView;
+@class MTMaterialShadowView, MTMaterialView, MTShadowView, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSString;
 
-@interface PLPlatterView : UIView <PLPlatterInternal, PLPlatter, MTVisualStylingRequiring, MTMaterialGrouping>
+@interface PLPlatterView : UIView <PLPlatterInternal, PLPlatter, MTVisualStylingProviding, MTVisualStylingRequiring, MTMaterialGrouping>
 {
-    PLShadowView *_shadowView;
+    MTShadowView *_shadowView;
     UIView *_customContentView;
     _Bool _recipeDynamic;
     NSMutableDictionary *_categoriesToProviders;
@@ -30,6 +31,10 @@
     CDStruct_b48b9fb5 _shadowAttributes;
 }
 
++ (id)platterViewWithBlurEffectStyle:(long long)arg1;
++ (id)platterViewWithStyle:(id)arg1;
++ (id)platterViewWithStyle:(id)arg1 inBundle:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) CDStruct_b48b9fb5 shadowAttributes; // @synthesize shadowAttributes=_shadowAttributes;
 @property(nonatomic) long long materialRecipe; // @synthesize materialRecipe=_materialRecipe;
@@ -37,7 +42,6 @@
 @property(nonatomic) _Bool usesBackgroundView; // @synthesize usesBackgroundView=_usesBackgroundView;
 @property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property(nonatomic, getter=isBackgroundBlurred) _Bool backgroundBlurred; // @synthesize backgroundBlurred=_backgroundBlurred;
-- (void).cxx_destruct;
 - (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 @property(readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 - (id)visualStylingProviderForCategory:(long long)arg1;
@@ -52,9 +56,15 @@
 @property(readonly, nonatomic) UIView *customContentView; // @synthesize customContentView=_customContentView;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
+@property(readonly, nonatomic) struct UIEdgeInsets shadowOutsets;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithRecipe:(long long)arg1;
+- (id)_newCarPlayBannerStrokeView;
+- (id)_initWithBlurEffectStyle:(long long)arg1;
+- (id)_initWithNotificationsBannerStyle;
+- (id)_initWithCarPlayBannerStyle;
+- (id)_initWithNavigationBannerStyle;
 @property(nonatomic, getter=isRecipeDynamic) _Bool recipeDynamic;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted;
 - (id)initWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2;

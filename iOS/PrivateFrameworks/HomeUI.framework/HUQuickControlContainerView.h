@@ -38,6 +38,7 @@
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILayoutGuide *topToSummarySpacingLayoutGuide; // @synthesize topToSummarySpacingLayoutGuide=_topToSummarySpacingLayoutGuide;
 @property(retain, nonatomic) UILayoutGuide *contentToAuxiliarySpacingLayoutGuide; // @synthesize contentToAuxiliarySpacingLayoutGuide=_contentToAuxiliarySpacingLayoutGuide;
 @property(retain, nonatomic) UIButton *detailsButton; // @synthesize detailsButton=_detailsButton;
@@ -62,12 +63,10 @@
 @property(nonatomic) double initialSourceViewScale; // @synthesize initialSourceViewScale=_initialSourceViewScale;
 @property(nonatomic) double chromeTransitionProgress; // @synthesize chromeTransitionProgress=_chromeTransitionProgress;
 @property(nonatomic) double controlTransitionProgress; // @synthesize controlTransitionProgress=_controlTransitionProgress;
-- (void).cxx_destruct;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
 - (struct CGSize)_presentedControlHostSize;
 @property(readonly, nonatomic) struct CGRect presentedControlFrame;
-- (double)_summaryFirstBaselineToControlTopSpacing;
 - (void)_updateCompactControlBottomConstraint;
 - (void)_configureCardViewLayoutGuideConstraints:(id)arg1;
 - (void)_configureControlViewLayoutGuideConstraints:(id)arg1;
@@ -78,11 +77,8 @@
 - (struct CGPoint)_controlHostCenter;
 - (struct CGAffineTransform)_controlHostTransform;
 - (struct CGAffineTransform)_controlHostTransformForPresentationProgress:(double)arg1;
-- (void)_updateContentAlignment;
 - (void)_updateLayoutMargins;
 - (void)layoutMarginsDidChange;
-- (void)layoutSubviews;
-- (long long)_sizeSubclass;
 - (_Bool)_useCompactHeightLayout;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateDetailsButtonVisibility;

@@ -6,12 +6,14 @@
 
 #import <ControlCenterUIKit/NSObject-Protocol.h>
 
-@class UIViewPropertyAnimator;
+@class UITouch, UIViewPropertyAnimator;
 
 @protocol CCUIContentModuleContentViewController <NSObject>
 @property(readonly, nonatomic) double preferredExpandedContentHeight;
 
 @optional
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
 @property(readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property(readonly, nonatomic) _Bool providesOwnPlatter;
 @property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
@@ -25,6 +27,7 @@
 - (_Bool)canDismissPresentedContent;
 - (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)willTransitionToExpandedContentMode:(_Bool)arg1;
+- (_Bool)shouldExpandModuleOnTouch:(UITouch *)arg1;
 - (_Bool)shouldFinishTransitionToExpandedContentModule;
 - (_Bool)shouldBeginTransitionToExpandedContentModule;
 @end

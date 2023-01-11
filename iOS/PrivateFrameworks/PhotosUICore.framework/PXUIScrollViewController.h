@@ -6,17 +6,22 @@
 
 #import <PhotosUICore/PXUIScrollViewDelegate-Protocol.h>
 #import <PhotosUICore/UIScrollViewDelegate-Protocol.h>
+#import <PhotosUICore/_PXUIScrollViewFocusItemProvider-Protocol.h>
 
 @class NSString, UIScrollView, _PXUIScrollView;
+@protocol PXUIScrollViewControllerFocusItemProvider;
 
-@interface PXUIScrollViewController <PXUIScrollViewDelegate, UIScrollViewDelegate>
+@interface PXUIScrollViewController <PXUIScrollViewDelegate, _PXUIScrollViewFocusItemProvider, UIScrollViewDelegate>
 {
     _PXUIScrollView *_scrollView;
     _Bool _isScrollingToTop;
+    id <PXUIScrollViewControllerFocusItemProvider> _focusItemProvider;
 }
 
-@property(nonatomic, setter=setScrollingToTop:) _Bool isScrollingToTop; // @synthesize isScrollingToTop=_isScrollingToTop;
 - (void).cxx_destruct;
+@property(nonatomic, setter=setScrollingToTop:) _Bool isScrollingToTop; // @synthesize isScrollingToTop=_isScrollingToTop;
+@property(nonatomic) __weak id <PXUIScrollViewControllerFocusItemProvider> focusItemProvider; // @synthesize focusItemProvider=_focusItemProvider;
+- (id)focusItemsForScrollView:(id)arg1 inRect:(struct CGRect)arg2;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (_Bool)scrollViewShouldScrollToTop:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
@@ -34,22 +39,28 @@
 - (_Bool)isDragging;
 - (_Bool)isTracking;
 - (_Bool)deferContentOffsetUpdates;
+- (_Bool)respectsContentZOrder;
+- (void)setRespectsContentZOrder:(_Bool)arg1;
 - (void)setDeferContentOffsetUpdates:(_Bool)arg1;
 - (void)setScrollViewContentBounds:(struct CGRect)arg1;
 - (struct CGSize)scrollViewContentSize;
 - (struct CGRect)scrollViewContentBounds;
+- (struct CGRect)scrollViewTargetRect;
 - (struct CGRect)scrollViewConstrainedVisibleRect;
 - (struct CGRect)scrollViewVisibleRect;
 - (struct CGRect)scrollViewActiveRect;
 - (struct CGSize)scrollViewReferenceSize;
 - (void)scrollViewLayoutIfNeeded;
 - (void)setScrollViewNeedsLayout;
+- (void)stopScrollingAndZoomingAnimations;
 - (void)scrollRectToVisible:(struct CGRect)arg1 avoidingContentInsetEdges:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (_Bool)isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
+- (void)scrollToEdge:(unsigned int)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)scrollToEdge:(unsigned int)arg1 animated:(_Bool)arg2;
 - (void)setVisibleOrigin:(struct CGPoint)arg1;
 - (void)removeGestureRecognizer:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1;
-- (void)addSubviewToScrollView:(struct NSObject *)arg1;
+- (void)addSubviewToScrollView:(id)arg1;
 - (void)addSubview:(id)arg1;
 - (_Bool)hasWindow;
 @property(readonly, nonatomic) UIScrollView *scrollView;

@@ -60,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)sendChannelBindingMsgWithDict:(id)arg1 error:(id *)arg2;
 - (_Bool)sendAllocateMsg:(id *)arg1;
 - (unsigned int)connectionType;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithRelayRequestDictionary:(id)arg1 withCallID:(unsigned int)arg2 relayType:(unsigned char)arg3 errorCode:(int *)arg4;
 - (void)receivedSSLConnectionData:(id)arg1 recordType:(unsigned short)arg2;

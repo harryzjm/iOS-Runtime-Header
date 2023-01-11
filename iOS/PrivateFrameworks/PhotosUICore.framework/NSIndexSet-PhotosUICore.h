@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSIndexSet (PhotosUICore)
+- (_Bool)px_isSingleRangeWithMax:(long long)arg1;
 @property(readonly, nonatomic) struct _NSRange px_coveringRange;
 - (id)px_indexSetAdjustedForInsertions:(id)arg1;
 - (id)px_indexSetAdjustedForDeletions:(id)arg1;

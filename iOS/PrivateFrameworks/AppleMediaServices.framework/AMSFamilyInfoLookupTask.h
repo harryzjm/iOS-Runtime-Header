@@ -6,31 +6,35 @@
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@class NSString;
+@class ACAccount, NSString;
 @protocol AMSBagProtocol;
 
 @interface AMSFamilyInfoLookupTask <AMSBagConsumer>
 {
+    ACAccount *_account;
     id <AMSBagProtocol> _bag;
     NSString *_logKey;
 }
 
 + (id)_processURLResult:(id)arg1;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
-@property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
-@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+@property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)initWithBagContract:(id)arg1;
+- (id)initWithBag:(id)arg1;
 - (id)_pathForCachedFamilyInfoLookupResult;
 - (id)_currentCachedFamilyInfo;
 - (id)_cachedFamilyInfoLookupResultForAccount:(id)arg1;
 - (void)_cacheFamilyInfoLookupResult:(id)arg1 forAccount:(id)arg2;
 - (id)_performFamilyInfoRequestForAccount:(id)arg1 error:(id *)arg2;
 - (id)performFamilyInfoLookup;
-- (id)initWithBag:(id)arg1;
+- (id)initWithAccount:(id)arg1 bag:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

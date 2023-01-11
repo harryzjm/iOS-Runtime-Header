@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ChatKit/CKAppMenuViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKAppSelectionInterface-Protocol.h>
 #import <ChatKit/CKBrowserAppManagerViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKBrowserSwitcherViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKBrowserTransitionCoordinatorDelegate-Protocol.h>
-#import <ChatKit/CKBrowserViewControllerSendDelegate-Protocol.h>
 #import <ChatKit/CKBrowserViewControllerStoreSendDelegate-Protocol.h>
 #import <ChatKit/CKDeviceOrientationManagerDelegate-Protocol.h>
 #import <ChatKit/CKFullScreenAppViewControllerDelegate-Protocol.h>
@@ -18,12 +19,14 @@
 #import <ChatKit/CKMessageEntryViewInputDelegate-Protocol.h>
 #import <ChatKit/CKPhotoBrowserViewControllerSendDelegate-Protocol.h>
 #import <ChatKit/CKPluginEntryViewControllerDelegate-Protocol.h>
+#import <ChatKit/SKStoreProductViewControllerDelegate-Protocol.h>
 #import <ChatKit/UITextInputPayloadDelegate-Protocol.h>
+#import <ChatKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class CKBrowserSwitcherViewController, CKChatEagerUploadController, CKDeviceOrientationManager, CKHandwritingPresentationController, CKKeyboardContentViewController, CKMessageEntryView, CKScheduledUpdater, IMBalloonPlugin, IMBalloonPluginDataSource, IMScheduledUpdater, NSDate, NSString, UINavigationController, UITextInputPayloadController, UIViewController;
 @protocol CKBrowserViewControllerProtocol, CKChatInputControllerDelegate;
 
-@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKBrowserViewControllerSendDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate>
+@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate, CKAppMenuViewControllerDelegate, UIViewControllerTransitioningDelegate, SKStoreProductViewControllerDelegate, CKAppSelectionInterface>
 {
     _Bool _isDismissingAppModal;
     _Bool _shouldSuppressStatusBarForHandwriting;
@@ -45,7 +48,7 @@
     CKDeviceOrientationManager *_orientationManager;
     long long _lastSeenOrientation;
     UINavigationController *_presentedBrowserNavigationController;
-    UIViewController<CKBrowserViewControllerProtocol> *_modalBrowserViewController;
+    UIViewController<CKBrowserViewControllerProtocol> *_macBrowserViewController;
     IMScheduledUpdater *_dismissEntryViewShelfUpdater;
     CKScheduledUpdater *_orientationUpdater;
     CKHandwritingPresentationController *_handwritingPresentationController;
@@ -55,6 +58,7 @@
     CKChatEagerUploadController *_eagerUploadController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKChatEagerUploadController *eagerUploadController; // @synthesize eagerUploadController=_eagerUploadController;
 @property(retain, nonatomic) IMBalloonPluginDataSource *deferredPluginDataSource; // @synthesize deferredPluginDataSource=_deferredPluginDataSource;
 @property(copy, nonatomic) CDUnknownBlockType insertPayloadCompletionHandler; // @synthesize insertPayloadCompletionHandler=_insertPayloadCompletionHandler;
@@ -65,7 +69,7 @@
 @property(retain, nonatomic) IMScheduledUpdater *dismissEntryViewShelfUpdater; // @synthesize dismissEntryViewShelfUpdater=_dismissEntryViewShelfUpdater;
 @property(nonatomic) _Bool inCollapseOrExpandAnimation; // @synthesize inCollapseOrExpandAnimation=_inCollapseOrExpandAnimation;
 @property(nonatomic) _Bool keyboardIsHiding; // @synthesize keyboardIsHiding=_keyboardIsHiding;
-@property(retain, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *modalBrowserViewController; // @synthesize modalBrowserViewController=_modalBrowserViewController;
+@property(retain, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *macBrowserViewController; // @synthesize macBrowserViewController=_macBrowserViewController;
 @property(retain, nonatomic) UINavigationController *presentedBrowserNavigationController; // @synthesize presentedBrowserNavigationController=_presentedBrowserNavigationController;
 @property(nonatomic) long long lastSeenOrientation; // @synthesize lastSeenOrientation=_lastSeenOrientation;
 @property(retain, nonatomic) CKDeviceOrientationManager *orientationManager; // @synthesize orientationManager=_orientationManager;
@@ -83,7 +87,11 @@
 @property(retain, nonatomic) IMBalloonPluginDataSource *browserPluginDataSource; // @synthesize browserPluginDataSource=_browserPluginDataSource;
 @property(retain, nonatomic) IMBalloonPlugin *browserPlugin; // @synthesize browserPlugin=_browserPlugin;
 @property(nonatomic) __weak id <CKChatInputControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)productViewControllerDidFinish:(id)arg1;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (id)participantHandles;
 - (void)eagerUploadPayload:(id)arg1 identifier:(id)arg2 replace:(_Bool)arg3;
 - (void)eagerUploadCancelIdentifier:(id)arg1;
 - (void)willSendComposition;
@@ -116,9 +124,9 @@
 - (void)startEditingPayload:(id)arg1 dismiss:(_Bool)arg2;
 - (void)startEditingPayload:(id)arg1;
 - (void)startEditingPayloadBypassingValidation:(id)arg1 forPlugin:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_deferredRequestPresentationStyleFullScreenModalForPlugin:(id)arg1;
+- (void)_deferredRequestPresentationStyleFullScreenModalForPluginInfo:(id)arg1;
 - (void)_deferredRequestPresentationStyleExpanded:(id)arg1;
-- (void)requestPresentationStyleFullScreenModalForPlugin:(id)arg1 skipValidation:(_Bool)arg2;
+- (void)requestPresentationStyleFullScreenModalForPlugin:(id)arg1 datasource:(id)arg2 skipValidation:(_Bool)arg3;
 - (void)requestPresentationStyleFullScreenModalForPlugin:(id)arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1 forPlugin:(id)arg2;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1;
@@ -127,6 +135,7 @@
 - (void)dismissAndReloadInputViews:(_Bool)arg1 forPlugin:(id)arg2;
 - (void)dismissAndReloadInputViews:(_Bool)arg1;
 - (void)dismiss;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissToKeyboard:(_Bool)arg1;
 - (id)dragControllerTranscriptDelegate;
 - (void)commitSticker:(id)arg1 atScreenCoordinate:(struct CGPoint)arg2 scale:(double)arg3 rotation:(double)arg4;
@@ -144,7 +153,11 @@
 - (void)openURL:(id)arg1 applicationIdentifier:(id)arg2 pluginID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openURL:(id)arg1 pluginID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)entryViewDidChangeSize;
+- (void)messageEntryViewSelectedAppMenuItem:(id)arg1;
 - (void)messageEntryView:(id)arg1 didSelectPluginAtIndex:(id)arg2;
+- (id)balloonPluginForIndexPath:(id)arg1;
+- (void)didSelectPlugin:(id)arg1;
+- (_Bool)shouldPreventAppFromDisplayingForBundleIdentifier:(id)arg1;
 - (long long)messageEntryViewHighLightInputButton:(id)arg1;
 - (_Bool)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryViewBrowserButtonHit:(id)arg1;
@@ -174,18 +187,17 @@
 - (void)_dismissBrowserViewControllerAndReloadInputViews:(_Bool)arg1;
 - (void)dismissBrowserViewController;
 - (void)showBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
+- (void)macShowExpandedBrowser:(id)arg1;
+- (void)macShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (void)launchAndShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (void)_setupObserverForLaunchAppExtensionForDebugging;
 - (void)_launchAppExtensionForDebugging;
 - (void)switcherViewController:(id)arg1 hasUpdatedLastTouchDate:(id)arg2;
-- (void)switcherViewController:(id)arg1 willHideSelectionViewWithAnimations:(CDUnknownBlockType *)arg2 completion:(CDUnknownBlockType *)arg3;
-- (void)switcherViewController:(id)arg1 willShowSelectionViewWithAnimations:(CDUnknownBlockType *)arg2 completion:(CDUnknownBlockType *)arg3;
 - (void)switcherViewController:(id)arg1 didSelectPluginAtIndexPath:(id)arg2;
 - (void)switcherViewControllerDidSelectAppManager:(id)arg1 shouldRestoreAppSwitcher:(_Bool)arg2;
 - (void)switcherViewControllerDidSelectAppStore:(id)arg1 shouldRestoreAppSwitcher:(_Bool)arg2;
 - (void)switcherViewControllerDidCollapse:(id)arg1;
 - (void)switcherViewControllerDidFinishSwitching:(id)arg1 toViewController:(id)arg2;
-- (void)switcherViewControllerDidStartSwitching:(id)arg1;
 - (id)appIconOverride;
 - (id)appTitleOverride;
 - (void)browserTransitionCoordinatorDidCollapseOrDismiss:(id)arg1 withReason:(long long)arg2;
@@ -210,11 +222,14 @@
 - (void)presentAppStoreForURL:(id)arg1 fromSourceApplication:(id)arg2;
 - (void)presentAppStoreForURL:(id)arg1;
 - (void)presentAppStoreForAdamID:(id)arg1;
+- (void)macPresentStoreViewControllerForAdamID:(id)arg1;
 - (void)presentViewControllerWithPluginChatItem:(id)arg1 presentationStyle:(unsigned long long)arg2;
 - (id)_adamIDFromPluginPayloadData:(id)arg1;
 - (void)swipeDismissBrowser;
 - (void)showHandwritingBrowser;
-- (void)showAppsBrowser;
+- (void)appSelectionInterfaceSelectedItem:(id)arg1;
+- (void)appMenuViewController:(id)arg1 didSelectMenuItem:(id)arg2;
+- (void)macShowAppMenu;
 - (void)_showFullScreenBrowser:(id)arg1;
 - (void)showDTCompose;
 - (void)showFunCamera:(id)arg1;

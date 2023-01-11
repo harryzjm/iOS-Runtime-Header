@@ -21,8 +21,8 @@
 + (id)tokenWithInvocationBlock:(CDUnknownBlockType)arg1;
 + (id)tokenWithLabel:(id)arg1 invocationBlock:(CDUnknownBlockType)arg2;
 + (id)_descriptionString;
-@property(readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
 - (void)addInvocable:(id)arg1;
 - (void)addInvocationBlock:(CDUnknownBlockType)arg1;
 @property(readonly, getter=isInvoked) _Bool invoked;
@@ -30,6 +30,7 @@
 - (void)removeAllInvocationBlocks;
 - (id)_nts_consumeBlocks;
 @property(readonly, copy) NSString *description;
+- (id)initWithInvocationBlock:(CDUnknownBlockType)arg1;
 - (id)initWithLabel:(id)arg1;
 - (id)init;
 

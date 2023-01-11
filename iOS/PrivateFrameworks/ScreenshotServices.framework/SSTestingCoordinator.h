@@ -13,11 +13,10 @@
     id <SSTestingCoordinatorDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SSTestingCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SSTestingCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)handleRunPPTRequest:(id)arg1;
 - (void)_delayedHandleRunPPTRequest:(id)arg1;
-- (_Bool)_runPPTRequestRequiresTakingScreenshot:(id)arg1;
 
 @end
 

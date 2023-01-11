@@ -32,7 +32,6 @@
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1 cache:(_Bool)arg2;
 - (id)resizableImageWithCapInsets:(struct UIEdgeInsets)arg1 resizingMode:(long long)arg2;
-- (void)_accessibilityApplyLabelOnMainThread:(id)arg1;
 - (struct CGImage *)CGImage;
 - (id)_accessibilityPhotoDescription;
 - (id)initWithCoder:(id)arg1;

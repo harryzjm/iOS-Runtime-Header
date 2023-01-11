@@ -18,6 +18,7 @@
 @property struct CGSize tileSize;
 @property unsigned long long levelsOfDetailBias;
 @property unsigned long long levelsOfDetail;
+- (void)setUnsafeUnretainedDelegate:(id)arg1;
 - (void)_colorSpaceDidChange;
 - (_Bool)_canDisplayConcurrently;
 - (void)_display;

@@ -13,9 +13,9 @@
 @interface NPKProtoPassSyncStateChange : PBCodable <NSCopying>
 {
     NSData *_baseManifestHashForPartialUpdate;
-    NPKProtoCatalog *_catalog;
     int _changeType;
     NSData *_changeUUID;
+    NPKProtoCatalog *_companionCatalog;
     NSData *_lastKnownReconciledPassSyncStateHash;
     NSData *_passData;
     unsigned int _passSegmentIndex;
@@ -23,6 +23,7 @@
     NSMutableArray *_remoteAssetsForPartialUpdates;
     NPKProtoPassSyncStateItem *_syncStateItem;
     NSString *_uniqueID;
+    NPKProtoCatalog *_watchCatalog;
     struct {
         unsigned int passSegmentIndex:1;
         unsigned int passSegmentTotal:1;
@@ -30,9 +31,11 @@
 }
 
 + (Class)remoteAssetsForPartialUpdateType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NPKProtoCatalog *watchCatalog; // @synthesize watchCatalog=_watchCatalog;
 @property(retain, nonatomic) NSMutableArray *remoteAssetsForPartialUpdates; // @synthesize remoteAssetsForPartialUpdates=_remoteAssetsForPartialUpdates;
 @property(retain, nonatomic) NSData *baseManifestHashForPartialUpdate; // @synthesize baseManifestHashForPartialUpdate=_baseManifestHashForPartialUpdate;
-@property(retain, nonatomic) NPKProtoCatalog *catalog; // @synthesize catalog=_catalog;
+@property(retain, nonatomic) NPKProtoCatalog *companionCatalog; // @synthesize companionCatalog=_companionCatalog;
 @property(nonatomic) unsigned int passSegmentTotal; // @synthesize passSegmentTotal=_passSegmentTotal;
 @property(nonatomic) unsigned int passSegmentIndex; // @synthesize passSegmentIndex=_passSegmentIndex;
 @property(retain, nonatomic) NSData *passData; // @synthesize passData=_passData;
@@ -41,7 +44,6 @@
 @property(nonatomic) int changeType; // @synthesize changeType=_changeType;
 @property(retain, nonatomic) NSData *lastKnownReconciledPassSyncStateHash; // @synthesize lastKnownReconciledPassSyncStateHash=_lastKnownReconciledPassSyncStateHash;
 @property(retain, nonatomic) NSData *changeUUID; // @synthesize changeUUID=_changeUUID;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -51,12 +53,13 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasWatchCatalog;
 - (id)remoteAssetsForPartialUpdateAtIndex:(unsigned long long)arg1;
 - (unsigned long long)remoteAssetsForPartialUpdatesCount;
 - (void)addRemoteAssetsForPartialUpdate:(id)arg1;
 - (void)clearRemoteAssetsForPartialUpdates;
 @property(readonly, nonatomic) _Bool hasBaseManifestHashForPartialUpdate;
-@property(readonly, nonatomic) _Bool hasCatalog;
+@property(readonly, nonatomic) _Bool hasCompanionCatalog;
 @property(nonatomic) _Bool hasPassSegmentTotal;
 @property(nonatomic) _Bool hasPassSegmentIndex;
 @property(readonly, nonatomic) _Bool hasPassData;

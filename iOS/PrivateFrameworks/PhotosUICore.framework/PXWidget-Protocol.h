@@ -7,12 +7,15 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSObject, NSString, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetContentViewTransitionCoordinator, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol PXAnonymousView, PXWidgetContentViewTransitionCoordinator, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @protocol PXWidget <NSObject>
 
 @optional
 + (void)preloadResources;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
+@property(readonly, nonatomic) _Bool isInEditMode;
+@property(readonly, nonatomic) _Bool wantsFocus;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
@@ -29,12 +32,15 @@
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(readonly, nonatomic) _Bool hasContentForCurrentInput;
 @property(retain, nonatomic) PXWidgetSpec *spec;
 @property(retain, nonatomic) PXPhotosDetailsContext *context;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate;
 - (void)deviceDidBecomeUnlocked;
+- (void)requestExitEditWithChangesSavingMode:(long long)arg1;
 - (void)userDidSelectDisclosureControl;
 - (void)userDidSelectSubtitle;
 - (void)contentViewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id <PXWidgetContentViewTransitionCoordinator>)arg2;

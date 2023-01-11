@@ -9,10 +9,13 @@
 @class NSString;
 
 @interface NSError (AppleMediaServices)
+- (id)ams_underlyingErrorWithDomain:(id)arg1 code:(unsigned long long)arg2;
 - (_Bool)ams_hasDomain:(id)arg1 code:(unsigned long long)arg2;
 - (id)ams_errorByAddingUserInfo:(id)arg1;
-@property(readonly, nonatomic, getter=ams_isUserCancelledError) _Bool ams_userCancelledError;
+- (id)ams_errorByAddingUnderlyingError:(id)arg1;
+@property(readonly, nonatomic) NSError *ams_underlyingError;
 @property(readonly, nonatomic) NSString *ams_title;
 @property(readonly, nonatomic) NSString *ams_message;
+@property(readonly, nonatomic, getter=ams_isUserCancelledError) _Bool ams_userCancelledError;
 @end
 

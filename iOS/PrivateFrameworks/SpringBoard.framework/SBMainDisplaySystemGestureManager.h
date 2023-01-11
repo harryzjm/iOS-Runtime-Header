@@ -5,18 +5,23 @@
 //
 
 @class SBGestureDefaults, SBHomeGestureParticipant;
+@protocol BSInvalidatable;
 
 @interface SBMainDisplaySystemGestureManager
 {
     SBGestureDefaults *_gestureDefaults;
+    id <BSInvalidatable> _systemGestureEventDeferringRule;
+    id <BSInvalidatable> _pointerEventRoutingAssertion;
     _Bool _multitaskingGesturesEnabled;
     SBHomeGestureParticipant *_accessibilityHomeGestureParticipant;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) SBHomeGestureParticipant *accessibilityHomeGestureParticipant; // @synthesize accessibilityHomeGestureParticipant=_accessibilityHomeGestureParticipant;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBHomeGestureParticipant *accessibilityHomeGestureParticipant; // @synthesize accessibilityHomeGestureParticipant=_accessibilityHomeGestureParticipant;
+- (void)_setupSystemGestureEventDeferringIfNeeded;
 - (void)_updateUserPreferences;
+- (void)addGestureRecognizer:(id)arg1 withType:(unsigned long long)arg2;
 - (void)setSystemGesturesDisabledForAccessibility:(_Bool)arg1;
 - (_Bool)shouldSystemGestureReceiveTouchWithLocation:(struct CGPoint)arg1;
 - (_Bool)_isTouchGestureWithType:(unsigned long long)arg1;

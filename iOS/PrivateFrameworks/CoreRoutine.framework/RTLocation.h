@@ -16,30 +16,36 @@
     int _referenceFrame;
     double _latitude;
     double _longitude;
-    double _uncertainty;
+    double _horizontalUncertainty;
+    double _altitude;
+    double _verticalUncertainty;
     NSDate *_date;
     double _speed;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double speed; // @synthesize speed=_speed;
 @property(readonly, nonatomic) int referenceFrame; // @synthesize referenceFrame=_referenceFrame;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
-@property(readonly, nonatomic) double uncertainty; // @synthesize uncertainty=_uncertainty;
-@property(readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
-@property(readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) double verticalUncertainty; // @synthesize verticalUncertainty=_verticalUncertainty;
+@property(readonly, nonatomic) double altitude; // @synthesize altitude=_altitude;
+@property(nonatomic) double horizontalUncertainty; // @synthesize horizontalUncertainty=_horizontalUncertainty;
+@property(nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property(nonatomic) double latitude; // @synthesize latitude=_latitude;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToLocation:(id)arg1;
 - (id)coordinateToString;
 - (id)description;
+- (void)setUncertainty:(double)arg1;
+@property(readonly, nonatomic) double uncertainty;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 date:(id)arg4 referenceFrame:(int)arg5 speed:(double)arg6;
-- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 date:(id)arg4 referenceFrame:(int)arg5;
-- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 date:(id)arg4;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 altitude:(double)arg4 verticalUncertainty:(double)arg5 date:(id)arg6 referenceFrame:(int)arg7 speed:(double)arg8;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 date:(id)arg4 referenceFrame:(int)arg5;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 date:(id)arg4;
 - (id)init;
 
 @end

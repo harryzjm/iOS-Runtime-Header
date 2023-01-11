@@ -15,12 +15,13 @@
     NSURL *_url;
 }
 
++ (_Bool)getPathHash:(unsigned long long *)arg1 lastPathComponent:(id *)arg2 forDictionaryRepresentation:(id)arg3;
 + (id)referenceWithDictionaryRepresentation:(id)arg1 error:(id *)arg2;
 + (id)referenceWithURL:(id)arg1;
+- (void).cxx_destruct;
 @property _Bool shouldDeleteOnDeallocation; // @synthesize shouldDeleteOnDeallocation=_shouldDeleteOnDeallocation;
 @property _Bool mustStopAccessingURL; // @synthesize mustStopAccessingURL=_mustStopAccessingURL;
 @property(retain) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentationWithError:(id *)arg1;
 - (void)dealloc;
 - (_Bool)getFileSize:(unsigned long long *)arg1 error:(id *)arg2;

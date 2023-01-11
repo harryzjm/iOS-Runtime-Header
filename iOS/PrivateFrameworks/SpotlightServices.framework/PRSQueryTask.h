@@ -8,7 +8,7 @@
 
 #import <SpotlightServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PRSSearchFeedback, PRSSearchSession;
+@class NSArray, NSDictionary, NSString, PRSSearchFeedback, PRSSearchSession, SPSearchQueryContext;
 @protocol OS_dispatch_queue, PRSSearchQueryHandler;
 
 @interface PRSQueryTask : NSObject <NSSecureCoding>
@@ -21,8 +21,7 @@
     NSDictionary *_server_features;
     NSArray *_parsecCategoryOrder;
     id _representedObject;
-    NSString *_keyboardLanguage;
-    double _scaleFactor;
+    SPSearchQueryContext *_queryContext;
     NSString *_queryString;
     unsigned long long _queryIdent;
     PRSSearchFeedback *_feedback;
@@ -36,6 +35,7 @@
 + (void)resumeDecoding;
 + (void)suspendDecoding;
 + (void)initialize;
+- (void).cxx_destruct;
 @property _Bool webSearch; // @synthesize webSearch=_webSearch;
 @property(retain, nonatomic) NSString *fbq; // @synthesize fbq=_fbq;
 @property(nonatomic) __weak PRSSearchSession *session; // @synthesize session=_session;
@@ -46,19 +46,18 @@
 @property(nonatomic) _Bool started; // @synthesize started=_started;
 @property unsigned long long queryIdent; // @synthesize queryIdent=_queryIdent;
 @property(retain, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
-@property double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
-@property(retain, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
+@property(readonly, nonatomic) SPSearchQueryContext *queryContext; // @synthesize queryContext=_queryContext;
 @property(nonatomic) __weak id representedObject; // @synthesize representedObject=_representedObject;
 @property(retain, nonatomic) NSArray *parsecCategoryOrder; // @synthesize parsecCategoryOrder=_parsecCategoryOrder;
 @property(retain, nonatomic) NSDictionary *server_features; // @synthesize server_features=_server_features;
 @property(retain, nonatomic) NSDictionary *category_stats; // @synthesize category_stats=_category_stats;
 @property long long queryId; // @synthesize queryId=_queryId;
-- (void).cxx_destruct;
+- (void)setParsecState:(_Bool)arg1;
 - (id)feedbackQueryIdentifier;
 - (void)invalidateHandler;
 - (void)cancel;
 - (void)resume;
-- (id)initWithSession:(id)arg1 handler:(id)arg2 queue:(id)arg3 feedback:(id)arg4;
+- (id)initWithSession:(id)arg1 handler:(id)arg2 queue:(id)arg3 feedback:(id)arg4 queryContext:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

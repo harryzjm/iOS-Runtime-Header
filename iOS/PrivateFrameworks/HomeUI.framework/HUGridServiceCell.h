@@ -6,7 +6,7 @@
 
 #import <HomeUI/HUAccessoryViewCellProtocol-Protocol.h>
 
-@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UILabel, UIView, UIVisualEffectView;
+@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UIColor, UILabel, UIView, UIVisualEffectView;
 @protocol NACancelable;
 
 @interface HUGridServiceCell <HUAccessoryViewCellProtocol>
@@ -19,6 +19,8 @@
     _Bool _showingProgressIndicator;
     HFItem *_serviceItem;
     UIView *_accessoryView;
+    UIColor *_defaultNameTextColor;
+    UIColor *_defaultDescriptionColor;
     HUIconView *_iconView;
     HUGridServiceCellTextView *_serviceTextView;
     UILabel *_coloredDescriptionLabel;
@@ -32,6 +34,7 @@
 
 + (id)_iconTintColor;
 + (Class)layoutOptionsClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HUVisualEffectContainerView *exclamationView; // @synthesize exclamationView=_exclamationView;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) UIView *overrideAccessoryView; // @synthesize overrideAccessoryView=_overrideAccessoryView;
@@ -46,10 +49,12 @@
 @property(retain, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 @property(nonatomic) _Bool shouldShowRoomName; // @synthesize shouldShowRoomName=_shouldShowRoomName;
 @property(nonatomic) _Bool shouldShowLoadingState; // @synthesize shouldShowLoadingState=_shouldShowLoadingState;
+@property(retain, nonatomic) UIColor *defaultDescriptionColor; // @synthesize defaultDescriptionColor=_defaultDescriptionColor;
+@property(retain, nonatomic) UIColor *defaultNameTextColor; // @synthesize defaultNameTextColor=_defaultNameTextColor;
 @property(nonatomic) _Bool shouldColorDescription; // @synthesize shouldColorDescription=_shouldColorDescription;
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(retain, nonatomic) HFItem *serviceItem; // @synthesize serviceItem=_serviceItem;
-- (void).cxx_destruct;
+- (void)dragStateDidChange:(long long)arg1;
 - (void)_updateExclamationViewColor;
 - (void)_createExclamationViewIfNecessary;
 - (void)_updateAccessoryView;
@@ -67,6 +72,7 @@
 @property(nonatomic) _Bool disableContinuousIconAnimation;
 @property(nonatomic) _Bool showProgressIndicatorAfterDelay;
 @property(nonatomic) _Bool showUpdatingStateAfterDelay;
+- (void)_setupCommonServiceCell;
 - (void)_setupServiceCell;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;

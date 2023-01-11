@@ -13,6 +13,7 @@
 - (CSSearchableItemAttributeSet *)searchableItemAttributeSet;
 - (NSString *)searchDomainIdentifier;
 - (NSArray *)authorsExcludingCurrentUser;
+- (_Bool)isDeletable;
 - (_Bool)isMovable;
 - (_Bool)isHiddenFromSearch;
 - (_Bool)searchResultCanBeDeletedFromNoteContext;
@@ -22,6 +23,7 @@
 - (NSDate *)creationDate;
 - (NSString *)contentIdentifier;
 - (NSString *)searchIndexingIdentifier;
+- (NSString *)dataSourceIdentifier;
 - (long long)visibilityTestingType;
 - (NSManagedObjectID *)objectID;
 - (NSManagedObjectContext *)managedObjectContext;

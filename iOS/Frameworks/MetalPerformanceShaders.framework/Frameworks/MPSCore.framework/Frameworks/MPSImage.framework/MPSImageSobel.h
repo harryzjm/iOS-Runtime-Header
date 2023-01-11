@@ -9,7 +9,7 @@
     float _colVec[3];
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) const float *colorTransform;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;

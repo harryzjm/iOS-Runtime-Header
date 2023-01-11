@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSRecursiveLock, NSString, Protocol;
+@class NSString, Protocol;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface IMRemoteObjectInternal : NSObject
 {
-    NSRecursiveLock *_lock;
     NSObject<OS_xpc_object> *_connection;
     NSObject<OS_dispatch_queue> *_queue;
-    long long _deathPostPredicate;
     Protocol *_protocol;
     NSString *_portName;
     NSString *_processName;
-    _Bool _willBeTerminated;
+    struct os_unfair_recursive_lock_s _lock;
     int _pid;
+    _Bool _willBeTerminated;
+    _Bool _postedDeathNote;
 }
 
 @end

@@ -18,10 +18,12 @@
     Box_8bd38d92 _textureCoordinates;
     struct CGRect _collisionRect;
     struct CGPoint _anchorPoint;
+    struct CGPoint _labelingPoint;
     struct CGSize _size;
     double _scale;
     _Bool _hasCollisionRect;
     _Bool _hasAnchorPoint;
+    _Bool _hasLabelingPoint;
     _Bool _usedAsTextureAndImage;
     struct atomic<bool> _isTextureReady;
     struct atomic<bool> _isImageReady;
@@ -33,8 +35,10 @@
 - (void).cxx_destruct;
 - (int)compareTo:(id)arg1;
 - (void)setCollisionRect:(struct CGRect)arg1;
+- (void)setLabelingPoint:(struct CGPoint)arg1;
 - (void)setAnchorPoint:(struct CGPoint)arg1;
 - (struct CGRect)collisionRect;
+- (struct CGPoint)labelingPoint;
 - (struct CGPoint)anchorPoint;
 - (double)scale;
 - (struct CGSize)size;

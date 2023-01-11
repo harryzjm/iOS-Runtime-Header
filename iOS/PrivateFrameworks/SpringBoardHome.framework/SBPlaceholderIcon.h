@@ -13,13 +13,15 @@
     NSArray *_icons;
 }
 
++ (_Bool)hasIconImage;
++ (id)clusteredIconPlaceholderForIcons:(id)arg1;
 + (id)grabbedIconPlaceholderForIcons:(id)arg1;
 + (id)grabbedIconPlaceholderForIcon:(id)arg1;
 + (id)placeholderForIcon:(id)arg1;
 + (id)placeholderNodeIdentifierForIconNodeIdentifier:(id)arg1;
 + (id)placeholderNodeIdentifierForIcon:(id)arg1;
 - (void).cxx_destruct;
-- (id)children;
+- (id)folder;
 - (_Bool)isUninstallSupported;
 - (id)gridCellImage;
 - (_Bool)referencesIconWithIdentifier:(id)arg1;

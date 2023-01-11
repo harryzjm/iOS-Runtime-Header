@@ -8,6 +8,7 @@
 {
 }
 
+- (void)observePreferredSceneHostIdentityWithBlock:(CDUnknownBlockType)arg1;
 - (void)observePreferredSceneHostIdentifierWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeOcclusionsWithBlock:(CDUnknownBlockType)arg1;
 - (void)observePreferredInterfaceOrientationWithBlock:(CDUnknownBlockType)arg1;

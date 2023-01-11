@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationPalette-Protocol.h>
 
-@class NSString, UINavigationController, UINavigationItem, UIView;
+@class NSString, UINavigationController, UINavigationItem, UIView, _UIPointerInteractionAssistant;
 
-@interface _UINavigationBarPalette <_UINavigationPalette>
+@interface _UINavigationBarPalette <_UINavigationPalette, UIPointerInteractionDelegate>
 {
     _Bool _didSetMinimumHeight;
     _Bool _transitioning;
@@ -18,24 +19,34 @@
     double _preferredHeight;
     double _minimumHeight;
     UIView *_temporaryBackgroundView;
+    NSString *_assistantIdentifier;
+    _UIPointerInteractionAssistant *_assistant;
     UINavigationItem *_owningNavigationItem;
     unsigned long long __contentViewMarginType;
     long long __layoutPriority;
 }
 
 + (id)defaultContentViewWithFrame:(struct CGRect)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setLayoutPriority:) long long _layoutPriority; // @synthesize _layoutPriority=__layoutPriority;
 @property(nonatomic, setter=_setDisplaysWhenSearchActive:) _Bool _displaysWhenSearchActive; // @synthesize _displaysWhenSearchActive=__displaysWhenSearchActive;
 @property(nonatomic, setter=_setContentViewMarginType:) unsigned long long _contentViewMarginType; // @synthesize _contentViewMarginType=__contentViewMarginType;
 @property(nonatomic) __weak UINavigationItem *owningNavigationItem; // @synthesize owningNavigationItem=_owningNavigationItem;
 @property(nonatomic, getter=isPinned) _Bool pinned; // @synthesize pinned=_pinned;
 @property(nonatomic) _Bool transitioning; // @synthesize transitioning=_transitioning;
+@property(nonatomic) __weak _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property(nonatomic) _Bool didSetMinimumHeight; // @synthesize didSetMinimumHeight=_didSetMinimumHeight;
 @property(retain, nonatomic) UIView *temporaryBackgroundView; // @synthesize temporaryBackgroundView=_temporaryBackgroundView;
 @property(nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property(nonatomic) double preferredHeight; // @synthesize preferredHeight=_preferredHeight;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-- (void).cxx_destruct;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (void)_clearAssistants;
+- (void)_setAssistants;
 - (void)_setupBackgroundViewIfNecessary;
 - (void)_resetHeightConstraintConstant;
 - (void)_resetConstraintConstants:(double)arg1;

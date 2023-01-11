@@ -6,10 +6,8 @@
 
 #import <Intents/INCodableDescription.h>
 
-@class NSString;
-
 @interface INCodableDescription (Workflow)
 - (Class)wf_contentItemClassForCustomObjectWithNamespace:(id)arg1;
-@property(readonly, nonatomic) NSString *wf_outputDisplayName;
+- (id)wf_outputDisplayNameWithLocalizer:(id)arg1;
 @end
 

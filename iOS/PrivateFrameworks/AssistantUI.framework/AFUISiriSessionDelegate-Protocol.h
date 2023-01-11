@@ -6,19 +6,18 @@
 
 #import <AssistantUI/AFUISiriSessionListener-Protocol.h>
 
-@class AFAnalyticsTurnBasedInstrumentationContext, AFSpeechInterpretation, AceObject, INImage, NSArray, NSError, NSString, NSURL, SACardShowNextCard, SAGuidanceGuideUpdate, SAPhonePlayVoiceMail, SAPreSynthesizeTTS, SASRequestOptions, SASSpeechPartialResult, SASSpeechRecognized, SASettingSetUIGuidedAccess, SASmsPlayAudio, SAUIAddContentToView, SAUIAddViews, SAUIAppPunchOut, SAUIChangePrimaryUtterance, SAUIClearScreen, SAUICloseAssistant, SAUIDisambiguationItemSelected, SAUIExtendCurrentTTS, SAUIGetResponseAlternativesPlayback, SAUIHideSiriOverlay, SAUILaunchTVRemote, SAUIListenForPronunciation, SAUIOpenLink, SAUIPlayNotificationSound, SAUIRepeatIt, SAUISayIt, SAUISetSuggestedUtterances, SAUIShowFullScreenEffect, SAUIShowHelp, SAUIShowSpeechAlternatives, SAUIUpdateViews, SAVCSPlayContent;
+@class AFAnalyticsTurnBasedInstrumentationContext, AFSpeechInterpretation, AceObject, INImage, NSArray, NSError, NSString, NSURL, SACardShowNextCard, SAGuidanceGuideUpdate, SAPhonePlayVoiceMail, SAPreSynthesizeTTS, SASRequestOptions, SASSpeechPartialResult, SASSpeechRecognized, SASettingSetUIGuidedAccess, SASmsPlayAudio, SAUIAddContentToView, SAUIAddDialogs, SAUIAddViews, SAUIAppPunchOut, SAUIChangePrimaryUtterance, SAUIClearScreen, SAUICloseAssistant, SAUIDisambiguationItemSelected, SAUIExtendCurrentTTS, SAUIGetResponseAlternativesPlayback, SAUIHideSiriOverlay, SAUILaunchTVRemote, SAUIListenForPronunciation, SAUIOpenLink, SAUIPlayNotificationSound, SAUIRepeatIt, SAUIRevealRecognizedSpeech, SAUISayIt, SAUISetSuggestedUtterances, SAUIShowFullScreenEffect, SAUIShowHelp, SAUIShowSpeechAlternatives, SAUIUpdateViews, SAVCSPlayContent;
 @protocol SAAceCommand;
 
 @protocol AFUISiriSessionDelegate <AFUISiriSessionListener>
-- (void)siriSessionFailTest:(NSString *)arg1 withReason:(NSString *)arg2;
-- (void)siriSessionDidFinishTest:(NSString *)arg1;
-- (void)siriSessionWillStartTest:(NSString *)arg1;
+- (void)siriSessionWillProcessAceCommand:(AceObject<SAAceCommand> *)arg1;
 - (void)siriSessionWillDismissAudioRoutePicker;
 - (void)siriSessionWillShowAudioRoutePicker;
 - (void)siriSessionSpeechRecordingDidFailWithError:(NSError *)arg1;
 - (void)siriSessionSpeechRecordingDidCancel;
 - (void)siriSessionSpeechRecordingDidEnd;
 - (void)siriSessionSpeechRecordingDidChangeAVRecordRoute:(NSString *)arg1;
+- (void)siriSessionDidReceiveRevealRecognizedSpeechCommand:(SAUIRevealRecognizedSpeech *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveExtendCurrentTTSCommand:(SAUIExtendCurrentTTS *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveLaunchTVRemoteCommand:(SAUILaunchTVRemote *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceivePlayContentCommand:(SAVCSPlayContent *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
@@ -46,6 +45,7 @@
 - (void)siriSessionDidReceivePlayVoicemailCommand:(SAPhonePlayVoiceMail *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveClearScreenCommand:(SAUIClearScreen *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveOpenLinkCommand:(SAUIOpenLink *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
+- (void)siriSessionDidReceiveAddDialogsCommand:(SAUIAddDialogs *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveAddViewsCommand:(SAUIAddViews *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidUpdateRecognitionWithPhrases:(NSArray *)arg1 utterances:(NSArray *)arg2 refId:(NSString *)arg3;
 - (void)siriSessionDidRecognizedAdditionalSpeechInterpretation:(AFSpeechInterpretation *)arg1 refId:(NSString *)arg2;
@@ -63,6 +63,7 @@
 - (void)siriSessionDidChangeLockState:(unsigned long long)arg1;
 - (void)siriSessionDidChangeNetworkAvailability;
 - (void)siriSessionDidFinishAcousticIDRequestWithSuccess:(_Bool)arg1;
+- (void)siriSessionDidStartAcousticIDRequest;
 - (void)siriSessionAudioRecordingDidChangePowerLevel:(float)arg1;
 - (void)siriSessionDidFailToStartStarkNotificationRequestWithOptions:(SASRequestOptions *)arg1;
 - (void)siriSessionWillStartUIRequestWithText:(NSString *)arg1 completionHandler:(void (^)(_Bool))arg2;

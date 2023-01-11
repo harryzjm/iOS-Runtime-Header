@@ -9,13 +9,14 @@
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBCoverSheetSystemGestureDelegatePositionProviding-Protocol.h>
 
-@class CSCoverSheetTransitionSettings, CSLockScreenSettings, NSObject, NSString, SBCoverSheetPositionView, SBCoverSheetSystemGesturesDelegate, SBHomeGestureSettings, SBScreenEdgePanGestureRecognizer, UIViewFloatAnimatableProperty;
+@class CSCoverSheetTransitionSettings, CSLockScreenSettings, NSObject, NSString, SBCoverSheetPositionView, SBCoverSheetSystemGesturesDelegate, SBFluidScrunchGestureRecognizer, SBHomeGestureSettings, SBIndirectPanGestureRecognizer, SBScreenEdgePanGestureRecognizer, UIViewFloatAnimatableProperty;
 @protocol OS_dispatch_group, SBCoverSheetSlidingViewControllerContentViewController, SBCoverSheetSlidingViewControllerDelegate;
 
 @interface SBCoverSheetSlidingViewController : UIViewController <SBCoverSheetSystemGestureDelegatePositionProviding, PTSettingsKeyObserver>
 {
     long long _dismissGestureState;
     _Bool _roundsCorners;
+    _Bool _indirectPresentGestureCalledBegin;
     _Bool _canBePulledDown;
     _Bool _canBePulledUp;
     _Bool _performingCatchUpForPresentation;
@@ -23,6 +24,9 @@
     id <SBCoverSheetSlidingViewControllerDelegate> _delegate;
     SBScreenEdgePanGestureRecognizer *_dismissGestureRecognizer;
     SBScreenEdgePanGestureRecognizer *_dismissAddendumGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectPresentGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectDismissGestureRecognizer;
+    SBFluidScrunchGestureRecognizer *_scrunchDismissGestureRecognizer;
     long long _dismissalSlidingMode;
     long long _dismissalTransformMode;
     SBCoverSheetSystemGesturesDelegate *_systemGesturesDelegate;
@@ -36,9 +40,12 @@
     long long _groupCount;
     CDUnknownBlockType _completionBlock;
     NSObject<OS_dispatch_group> *_completionGroup;
+    double _initialTouchOffsetFromScreenEdge;
     struct CGPoint _lastTouchLocation;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double initialTouchOffsetFromScreenEdge; // @synthesize initialTouchOffsetFromScreenEdge=_initialTouchOffsetFromScreenEdge;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *completionGroup; // @synthesize completionGroup=_completionGroup;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(nonatomic) long long groupCount; // @synthesize groupCount=_groupCount;
@@ -51,17 +58,20 @@
 @property(nonatomic, setter=_logPresentGestureState:) long long presentGestureState; // @synthesize presentGestureState=_presentGestureState;
 @property(retain, nonatomic) CSLockScreenSettings *lockScreenSettings; // @synthesize lockScreenSettings=_lockScreenSettings;
 @property(retain, nonatomic) SBHomeGestureSettings *homeGestureSettings; // @synthesize homeGestureSettings=_homeGestureSettings;
+@property(nonatomic) _Bool indirectPresentGestureCalledBegin; // @synthesize indirectPresentGestureCalledBegin=_indirectPresentGestureCalledBegin;
 @property(retain, nonatomic) SBCoverSheetPositionView *positionView; // @synthesize positionView=_positionView;
 @property(nonatomic) __weak CSCoverSheetTransitionSettings *transitionSettings; // @synthesize transitionSettings=_transitionSettings;
 @property(nonatomic) _Bool roundsCorners; // @synthesize roundsCorners=_roundsCorners;
 @property(retain, nonatomic) SBCoverSheetSystemGesturesDelegate *systemGesturesDelegate; // @synthesize systemGesturesDelegate=_systemGesturesDelegate;
 @property(nonatomic) long long dismissalTransformMode; // @synthesize dismissalTransformMode=_dismissalTransformMode;
 @property(nonatomic) long long dismissalSlidingMode; // @synthesize dismissalSlidingMode=_dismissalSlidingMode;
+@property(retain, nonatomic) SBFluidScrunchGestureRecognizer *scrunchDismissGestureRecognizer; // @synthesize scrunchDismissGestureRecognizer=_scrunchDismissGestureRecognizer;
+@property(retain, nonatomic) SBIndirectPanGestureRecognizer *indirectDismissGestureRecognizer; // @synthesize indirectDismissGestureRecognizer=_indirectDismissGestureRecognizer;
+@property(retain, nonatomic) SBIndirectPanGestureRecognizer *indirectPresentGestureRecognizer; // @synthesize indirectPresentGestureRecognizer=_indirectPresentGestureRecognizer;
 @property(retain, nonatomic) SBScreenEdgePanGestureRecognizer *dismissAddendumGestureRecognizer; // @synthesize dismissAddendumGestureRecognizer=_dismissAddendumGestureRecognizer;
 @property(retain, nonatomic) SBScreenEdgePanGestureRecognizer *dismissGestureRecognizer; // @synthesize dismissGestureRecognizer=_dismissGestureRecognizer;
 @property(nonatomic) __weak id <SBCoverSheetSlidingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIViewController<SBCoverSheetSlidingViewControllerContentViewController> *contentViewController; // @synthesize contentViewController=_contentViewController;
-- (void).cxx_destruct;
 - (void)_studyLogForCompletionOfTransitionToPresented:(_Bool)arg1;
 - (void)_studyLogForGestureRecognizerState:(long long)arg1 bounds:(struct CGRect)arg2 position:(double)arg3 velocity:(double)arg4;
 - (void)_updateCoverSheetDismissSettings:(id)arg1;
@@ -102,9 +112,10 @@
 - (void)_dismissGestureBeganWithGestureRecognizer:(id)arg1;
 - (void)_presentGestureBeganWithGestureRecognizer:(id)arg1;
 - (void)_handleDismissGesture:(id)arg1;
+- (void)_handleIndirectPresentGesture:(id)arg1;
 - (void)_handlePresentGesture:(id)arg1;
 - (void)_dismissCoverSheetAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_presentCoverSheetAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_presentCoverSheetAnimated:(_Bool)arg1 forUserGesture:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (_Bool)isTransitioning;
 - (long long)participantState;
 - (id)coverSheetIdentifier;
@@ -125,7 +136,7 @@
 - (_Bool)_isTransitioning;
 - (_Bool)isDismissGestureActive;
 - (_Bool)isPresentGestureActive;
-- (void)setPresented:(_Bool)arg1 animated:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)setPresented:(_Bool)arg1 forUserGesture:(_Bool)arg2 animated:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithContentViewController:(id)arg1 canBePulledDown:(_Bool)arg2 canBePulledUp:(_Bool)arg3 dismissalPreemptingGestureRecognizer:(id)arg4;

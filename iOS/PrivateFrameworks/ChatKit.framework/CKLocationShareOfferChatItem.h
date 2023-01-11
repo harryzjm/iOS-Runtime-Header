@@ -13,8 +13,8 @@
 
 + (id)placeholderPreviewCache;
 + (id)titleBarMaskImageForWidth:(double)arg1;
-@property(retain, nonatomic) FMFLocation *lastKnownLocation; // @synthesize lastKnownLocation=_lastKnownLocation;
 - (void).cxx_destruct;
+@property(retain, nonatomic) FMFLocation *lastKnownLocation; // @synthesize lastKnownLocation=_lastKnownLocation;
 - (id)_desaturatedImageForImage:(id)arg1;
 - (_Bool)shouldUpdatePreviewWithLocation:(id)arg1 lastKnownLocation:(id)arg2 previewURL:(id)arg3;
 - (void)_handleLocationDidChangeNotification:(id)arg1;
@@ -27,6 +27,7 @@
 - (void)_generateMapPreview;
 - (id)previewURLForWidth:(unsigned long long)arg1;
 - (id)previewURL;
+- (id)_placeholderCacheKey;
 - (id)_previewCacheKey:(unsigned long long)arg1;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 @property(readonly, nonatomic) __weak NSString *locationText;

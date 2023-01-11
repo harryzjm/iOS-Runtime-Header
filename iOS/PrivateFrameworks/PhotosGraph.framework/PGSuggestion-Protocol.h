@@ -30,6 +30,7 @@
 
 @optional
 @property(readonly, copy, nonatomic) NSArray *reasons;
+@property(readonly, nonatomic) double score;
 @property(readonly, nonatomic) _Bool isInvalid;
 @end
 

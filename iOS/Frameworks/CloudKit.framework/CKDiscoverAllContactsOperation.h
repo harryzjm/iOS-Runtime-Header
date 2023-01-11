@@ -4,25 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
-
 @interface CKDiscoverAllContactsOperation
 {
     CDUnknownBlockType _discoverAllContactsCompletionBlock;
-    NSMutableArray *_discoveredUserInfos;
 }
 
-@property(retain, nonatomic) NSMutableArray *discoveredUserInfos; // @synthesize discoveredUserInfos=_discoveredUserInfos;
 - (void).cxx_destruct;
-- (id)activityCreate;
-- (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
-- (void)performCKOperation;
-- (_Bool)CKOperationShouldRun:(id *)arg1;
-- (_Bool)hasCKOperationCallbacksSet;
-- (Class)operationInfoClass;
 @property(copy, nonatomic) CDUnknownBlockType discoverAllContactsCompletionBlock; // @synthesize discoverAllContactsCompletionBlock=_discoverAllContactsCompletionBlock;
-- (id)init;
+- (_Bool)CKOperationShouldRun:(id *)arg1;
 
 @end
 

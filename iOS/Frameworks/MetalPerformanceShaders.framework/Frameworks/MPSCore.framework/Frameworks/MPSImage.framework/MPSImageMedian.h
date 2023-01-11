@@ -11,7 +11,7 @@
 
 + (unsigned long long)maxKernelDiameter;
 + (unsigned long long)minKernelDiameter;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) unsigned long long kernelDiameter; // @synthesize kernelDiameter=_filterDiameter;
 - (struct MPSRegion)sourceRegionForDestinationSize:(CDStruct_14f26992)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

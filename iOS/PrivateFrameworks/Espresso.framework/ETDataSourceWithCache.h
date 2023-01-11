@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     id <ETDataSource> _source;
     struct map<int, ETDataPoint *, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, ETDataPoint *>>> _cache;
-    basic_string_23d93216 dump_path;
+    basic_string_90719d97 dump_path;
     _Bool dump_descriptors;
 }
 

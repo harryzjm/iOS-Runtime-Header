@@ -9,12 +9,15 @@
 @class NSIndexPath;
 
 @interface UICollectionView (IC)
-- (void)ic_selectFirstUnselectedCellWithFrame:(struct CGRect)arg1;
+- (void)ic_reloadDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ic_selectCellAtIndexPath:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)ic_selectFirstItemIfNoneSelected;
 - (struct CGRect)ic_frameForItemAtIndexPath:(id)arg1;
+@property(readonly, nonatomic) NSIndexPath *ic_middleVisibleIndexPath;
 @property(readonly, nonatomic) struct CGRect ic_firstSelectedItemFrame;
 @property(readonly, nonatomic) NSIndexPath *ic_firstItemIndexPath;
 - (id)ic_cellAtLocation:(struct CGPoint)arg1;
+- (void)ic_deselectAllItemsAnimated:(_Bool)arg1;
 - (void)ic_deselectAllItems;
 @end
 

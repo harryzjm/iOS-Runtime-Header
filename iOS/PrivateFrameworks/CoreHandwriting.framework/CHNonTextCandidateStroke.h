@@ -8,15 +8,15 @@
 
 #import <CoreHandwriting/NSCopying-Protocol.h>
 #import <CoreHandwriting/NSMutableCopying-Protocol.h>
+#import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary;
-@protocol CHStrokeIdentifier;
+@class CHEncodedStrokeIdentifier, NSDictionary, NSMutableDictionary;
 
-@interface CHNonTextCandidateStroke : NSObject <NSCopying, NSMutableCopying>
+@interface CHNonTextCandidateStroke : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSMutableDictionary *_supportByStrokeIdentifier;
     double _support;
-    id <CHStrokeIdentifier> _strokeIdentifier;
+    CHEncodedStrokeIdentifier *_strokeIdentifier;
     long long _classificationAsNonText;
     long long _substrokesCount;
     double _lineError;
@@ -28,6 +28,7 @@
     struct CGRect _rotatedBounds;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) struct CGRect rotatedBounds; // @synthesize rotatedBounds=_rotatedBounds;
 @property(readonly, nonatomic) struct CGRect enlargedBounds; // @synthesize enlargedBounds=_enlargedBounds;
 @property(readonly, nonatomic) double boundsDiagonal; // @synthesize boundsDiagonal=_boundsDiagonal;
@@ -39,7 +40,12 @@
 @property(readonly, nonatomic) long long substrokesCount; // @synthesize substrokesCount=_substrokesCount;
 @property(readonly, nonatomic) long long classificationAsNonText; // @synthesize classificationAsNonText=_classificationAsNonText;
 @property(readonly, nonatomic) double support; // @synthesize support=_support;
-@property(readonly, retain, nonatomic) id <CHStrokeIdentifier> strokeIdentifier; // @synthesize strokeIdentifier=_strokeIdentifier;
+@property(readonly, retain, nonatomic) CHEncodedStrokeIdentifier *strokeIdentifier; // @synthesize strokeIdentifier=_strokeIdentifier;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToNonTextCandidateStroke:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) long long effectiveClassification;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

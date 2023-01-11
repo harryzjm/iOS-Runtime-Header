@@ -9,6 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)regionCursorIsPill;
++ (struct UIEdgeInsets)regionCursorInsets;
 + (struct NSDirectionalEdgeInsets)edgeInsets;
 + (id)pillSmallFont;
 + (id)pillFont;

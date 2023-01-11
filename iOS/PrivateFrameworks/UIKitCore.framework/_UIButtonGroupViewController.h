@@ -19,12 +19,13 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)_cleanupForDismissal;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)dismissIfNecessary;
-- (id)initWithBarButtonItemGroups:(id)arg1 fromButtonBar:(id)arg2;
+- (id)initWithBarButtonItemGroups:(id)arg1 fromButtonBar:(id)arg2 createsPopoverLayoutGuides:(_Bool)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

@@ -19,8 +19,6 @@
 - (_Bool)_validateMutationOfTitleToKeyword:(id)arg1 error:(id *)arg2;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) NSString *managedEntityName;
-- (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
@@ -31,15 +29,16 @@
 - (id)initForNewObject;
 
 // Remaining properties
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSString *clientName;
-@property(readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) _Bool isNewRequest;
 @property(readonly, getter=isMutated) _Bool mutated;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(nonatomic) _Bool shouldPerformConcurrentWork;
 @property(readonly) Class superclass;
 
 @end

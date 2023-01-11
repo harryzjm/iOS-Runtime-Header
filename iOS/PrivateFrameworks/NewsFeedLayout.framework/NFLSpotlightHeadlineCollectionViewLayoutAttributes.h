@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSAttributedString;
+
 @interface NFLSpotlightHeadlineCollectionViewLayoutAttributes
 {
     double _shadowRadius;
     double _shadowOpacity;
+    NSAttributedString *_titleAttributedString;
     struct CGSize _shadowOffset;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSAttributedString *titleAttributedString; // @synthesize titleAttributedString=_titleAttributedString;
 @property(nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
 @property(nonatomic) struct CGSize shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property(nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;

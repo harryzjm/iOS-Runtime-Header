@@ -20,6 +20,7 @@
     NSString *_proxyPassword;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *_proxyPassword; // @synthesize _proxyPassword;
 @property(copy, nonatomic) NSString *_proxyAccount; // @synthesize _proxyAccount;
 @property(nonatomic) unsigned short _proxyPort; // @synthesize _proxyPort;
@@ -28,7 +29,6 @@
 @property(nonatomic) unsigned short _port; // @synthesize _port;
 @property(copy, nonatomic) NSString *_host; // @synthesize _host;
 @property id delegate; // @synthesize delegate=_delegate;
-- (void)dealloc;
 - (void)retrieveProxyAccountSettings;
 - (void)retrieveProxySettings;
 - (id)initWithProxyProtocol:(long long)arg1 proxyHost:(id)arg2 proxyPort:(unsigned short)arg3 delegate:(id)arg4;

@@ -22,7 +22,6 @@
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
-- (id)_init;
 - (id)init;
 
 @end

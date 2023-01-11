@@ -7,11 +7,11 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, NSString;
+@class HMFTimer, NSString;
 
 @interface HMFOperationBudget <HMFLogging, HMFTimerDelegate>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_recursive_lock_s _lock;
     HMFTimer *_timer;
     unsigned long long _value;
     unsigned long long _limit;
@@ -20,9 +20,9 @@
 
 + (id)logCategory;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct _HMFRate rate; // @synthesize rate=_rate;
 @property(readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (_Bool)decrementByCount:(unsigned long long)arg1;
 - (_Bool)decrement;

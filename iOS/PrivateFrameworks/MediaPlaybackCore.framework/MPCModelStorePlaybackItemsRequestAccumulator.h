@@ -6,54 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class MPCModelStorePlaybackItemsRequest, MPMutableSectionedCollection, MPSectionedCollection, MPStoreModelGenericObjectBuilder, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class MPCModelStorePlaybackItemsRequest, MPMutableSectionedCollection, MPPropertySet, MPSectionedCollection, MPServerObjectDatabase, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 
 @interface MPCModelStorePlaybackItemsRequestAccumulator : NSObject
 {
-    long long _currentBatchCount;
-    long long _defaultLibraryPersonalizationStyle;
-    NSMutableDictionary *_equivalencyMapping;
-    _Bool _lastStoreIDBasedSectionWasPlaylist;
-    NSArray *_orderedStoreIDs;
-    NSMutableArray *_pendingOrderedStoreIDs;
-    NSMutableArray *_pendingPrioritizedStoreIDs;
-    NSMutableArray *_unprocessedItemIdentifiers;
-    MPMutableSectionedCollection *_progressiveContentDescriptors;
-    NSMutableDictionary *_receivedStoreIDs;
-    MPStoreModelGenericObjectBuilder *_resultsGenericObjectBuilder;
-    NSMutableDictionary *_sectionIndexToDeletedIndexSet;
-    NSMutableDictionary *_storeIDToIndexPathReference;
-    long long _unknownEndpointLibraryPersonalizationStyle;
-    _Bool _allowsExplicitContent;
-    _Bool _shouldLibraryPersonalize;
-    long long _batchSize;
-    NSDate *_earliestExpirationDate;
-    long long _storePersonalizationStyle;
     MPCModelStorePlaybackItemsRequest *_request;
+    _Bool _requestUsesSectionedModelObjects;
+    MPServerObjectDatabase *_sod;
+    NSString *_personID;
+    MPPropertySet *_requestPropertySet;
+    NSMutableArray *_importResults;
+    _Bool _allowsExplicitContent;
+    long long _defaultLibraryPersonalizationStyle;
+    long long _unknownEndpointLibraryPersonalizationStyle;
+    NSMutableDictionary *_equivalencyMapping;
+    NSMutableOrderedSet *_pendingStoreIDs;
+    NSMutableSet *_failedStoreIDs;
+    long long _storePersonalizationStyle;
+    MPMutableSectionedCollection *_progressiveContentDescriptors;
 }
 
-@property(readonly, nonatomic) _Bool shouldLibraryPersonalize; // @synthesize shouldLibraryPersonalize=_shouldLibraryPersonalize;
-@property(readonly, copy, nonatomic) MPCModelStorePlaybackItemsRequest *request; // @synthesize request=_request;
-@property(readonly, nonatomic) long long storePersonalizationStyle; // @synthesize storePersonalizationStyle=_storePersonalizationStyle;
-@property(readonly, copy, nonatomic) NSDate *earliestExpirationDate; // @synthesize earliestExpirationDate=_earliestExpirationDate;
-@property(nonatomic) long long batchSize; // @synthesize batchSize=_batchSize;
-@property(readonly, nonatomic) _Bool allowsExplicitContent; // @synthesize allowsExplicitContent=_allowsExplicitContent;
 - (void).cxx_destruct;
-- (_Bool)_shouldUsePlaylistEntriesForSectionAtIndex:(long long)arg1;
-- (void)_removeItemAtOriginalIndexPath:(id)arg1;
-- (id)_originalIndexPathsForStoreID:(id)arg1;
-- (void)_prepareRequestInformation;
-- (id)_modelObjectWithStoreItemMetadata:(id)arg1 requestModelObject:(id)arg2 shouldUsePlaylistEntries:(_Bool)arg3;
-- (id)_indexPathAccountingForRemovalsWithOriginalIndexPath:(id)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *equivalencyMapping; // @synthesize equivalencyMapping=_equivalencyMapping;
+- (id)_userIdentityWithRequest:(id)arg1;
+- (id)_mergedObjectWithRequestedObjectIfNeeded:(id)arg1 forIndexPath:(id)arg2;
+- (id)_serverObjectFromPlaceholderContentDescriptor:(id)arg1 propertySet:(id)arg2;
+- (void)_resolveContentDescriptorsUsingServerObjectDatabase;
+- (id)_playlistEntryForObject:(id)arg1 containerUniqueID:(id)arg2;
 - (struct _MPCModelStorePlaybackItemEligibility)_eligibilityForItem:(id)arg1;
-- (void)_addOriginalIndexPath:(id)arg1 forStoreID:(id)arg2;
 - (void)_addEquivalencyForMetadata:(id)arg1 requestStoreIdentifier:(id)arg2;
 - (id)newStoreItemMetadataRequest;
-- (long long)_appendProgressiveContentDescriptorsWithStoreItemMetadata:(id)arg1;
 - (struct MPCModelStorePlaybackItemsRequestAccumulatorResult)handleResponse:(id)arg1;
 @property(readonly, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors;
-@property(readonly, copy, nonatomic) NSDictionary *equivalencyMapping;
-- (id)initWithRequest:(id)arg1 shouldLibraryPersonalize:(_Bool)arg2;
+- (id)initWithRequest:(id)arg1 serverObjectDatabase:(id)arg2;
+- (id)initWithRequest:(id)arg1;
 
 @end
 

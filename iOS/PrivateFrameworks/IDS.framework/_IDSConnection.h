@@ -24,9 +24,11 @@
     IMOrderedMutableDictionary *_pendingSends;
     unsigned int _delegateCapabilities;
     _Bool _indirectDelegateCallouts;
+    unsigned int _wakingDowngradeCount;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int wakingDowngradeCount; // @synthesize wakingDowngradeCount=_wakingDowngradeCount;
 - (void)_sendMissingMessageMetric:(id)arg1;
 - (void)checkTransportLogWithReason:(long long)arg1;
 - (void)updateDeviceIdentity:(id)arg1 error:(id)arg2;

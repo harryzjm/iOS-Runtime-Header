@@ -17,7 +17,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)handleXPCMessage:(id)arg1 messageBody:(id)arg2 client:(id)arg3;
 - (_Bool)isEnabled;
 - (void)_notifyObserver:(_Bool)arg1;
 - (void)disableAssertionReceived;

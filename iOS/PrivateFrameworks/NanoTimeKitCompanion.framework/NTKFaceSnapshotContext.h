@@ -26,17 +26,17 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)currentContext;
-@property(retain, nonatomic) NSString *lunarCalendarLocaleID; // @synthesize lunarCalendarLocaleID=_lunarCalendarLocaleID;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *lunarCalendarLocaleID; // @synthesize lunarCalendarLocaleID=_lunarCalendarLocaleID;
 @property(retain, nonatomic) NSNumber *enhanceTextLegibilityEnabled; // @synthesize enhanceTextLegibilityEnabled=_enhanceTextLegibilityEnabled;
-@property(retain, nonatomic) NSString *tzVersion; // @synthesize tzVersion=_tzVersion;
-@property(retain, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
+@property(copy, nonatomic) NSString *tzVersion; // @synthesize tzVersion=_tzVersion;
+@property(copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property(retain, nonatomic) NSNumber *uses24hTime; // @synthesize uses24hTime=_uses24hTime;
-@property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
-@property(retain, nonatomic) NSString *monogram; // @synthesize monogram=_monogram;
+@property(copy, nonatomic) NSString *locale; // @synthesize locale=_locale;
+@property(copy, nonatomic) NSString *monogram; // @synthesize monogram=_monogram;
 @property(retain, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (id)_yearMonthDay;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

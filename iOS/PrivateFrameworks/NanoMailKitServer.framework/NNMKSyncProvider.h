@@ -42,6 +42,7 @@
 }
 
 + (_Bool)prepareForSystemAppDeletion:(id *)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool triggeredInitialSyncToRecoverFromSyncVersionMismatch; // @synthesize triggeredInitialSyncToRecoverFromSyncVersionMismatch=_triggeredInitialSyncToRecoverFromSyncVersionMismatch;
 @property(retain, nonatomic) NNMKBatchRequestHandler *batchRequestHandler; // @synthesize batchRequestHandler=_batchRequestHandler;
 @property(retain, nonatomic) NNMKInitialSyncProgressTracker *initialSyncProgressTracker; // @synthesize initialSyncProgressTracker=_initialSyncProgressTracker;
@@ -61,7 +62,6 @@
 @property(retain, nonatomic) id <NNMKSyncStateManager> syncStateManager; // @synthesize syncStateManager=_syncStateManager;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *providerQueue; // @synthesize providerQueue=_providerQueue;
 @property(nonatomic) __weak id <NNMKSyncProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)pairedDeviceSupportsStandaloneMode;
 - (_Bool)pairedDeviceSupportsMultipleMailboxes;
 - (id)currentDeviceRegistry;
@@ -87,6 +87,7 @@
 - (void)_notifyDelegateThatMessagesStatusWereUpdated:(id)arg1;
 - (void)_handleDidFailSendingProtobufWithIDSIdentifier:(id)arg1 errorCode:(long long)arg2;
 - (void)_checkBatchFetchedMessages;
+- (_Bool)_isUsingCompaionSync;
 - (_Bool)_isConnectedToWatch;
 - (void)batchRequestHandlerDidTimeoutFetchRequest:(id)arg1;
 - (void)_checkConnectivityBasedSuspensionTimer:(_Bool)arg1;

@@ -11,7 +11,9 @@
 @interface _TtC7NewsUI234ArticleNotificationResponseHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *navigator;
-    MISSING_TYPE *pattern;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *contextBuilder;
+    MISSING_TYPE *commandContainer;
 }
 
 @end

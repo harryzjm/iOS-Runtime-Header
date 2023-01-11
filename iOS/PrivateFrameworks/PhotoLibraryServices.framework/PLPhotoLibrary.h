@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSPersistentStore, NSSet, NSString, PAImageConversionServiceClient, PAVideoConversionServiceClient, PLGenericAlbum, PLKeywordManager, PLLibraryServicesManager, PLManagedObjectContext, PLPhotoLibraryBundle, PLPhotoLibraryOptions, PLPhotoLibraryPathManager, PLSimpleDCIMDirectory, PLThumbnailIndexes, PLThumbnailManager;
+@class NSArray, NSMutableArray, NSPersistentStore, NSSet, NSString, PAImageConversionServiceClient, PAVideoConversionServiceClient, PLGenericAlbum, PLGlobalValues, PLKeywordManager, PLLibraryServicesManager, PLManagedObjectContext, PLPhotoLibraryBundle, PLPhotoLibraryOptions, PLPhotoLibraryPathManager, PLSimpleDCIMDirectory, PLThumbnailIndexes, PLThumbnailManager;
 @protocol PLAlbumProtocol;
 
 @interface PLPhotoLibrary : NSObject
@@ -38,8 +38,11 @@
 + (void)refreshCachedCountsAndDates:(_Bool)arg1 onAssetsContainerClass:(Class)arg2 inContext:(id)arg3 withPredicate:(id)arg4;
 + (void)refreshCachedCountsOnAllAssetContainersInContext:(id)arg1;
 + (_Bool)canSaveVideoToLibrary:(id)arg1;
-+ (id)resourcesInfoFromMoc:(id)arg1;
-+ (void)_getResourceData:(id)arg1 nonDerivativeSizeOut:(unsigned long long *)arg2 derivativesSizeOut:(unsigned long long *)arg3 fileBackedThumbnailsSizeOut:(float *)arg4 tableThumbnailsSizeOut:(float *)arg5;
++ (id)_resourcesInfoFromMoc:(id)arg1;
++ (id)librarySummarySizeDataRefWithManagedObjectContext:(id)arg1;
++ (id)savedPhotosReferenceMediaSizeWithSizeDataRef:(id)arg1;
++ (id)savedPhotosOriginalsSizeWithSizeDataRef:(id)arg1;
++ (void)_getResourceData:(id)arg1 nonDerivativeSizeOut:(unsigned long long *)arg2 derivativesSizeOut:(unsigned long long *)arg3 fileBackedThumbnailsSizeOut:(unsigned long long *)arg4 tableThumbnailsSizeOut:(unsigned long long *)arg5;
 + (int)priorityForFileExtension:(id)arg1;
 + (_Bool)isAdjustmentEnvelopeExtension:(id)arg1;
 + (_Bool)isAudioFileExtension:(id)arg1;
@@ -50,13 +53,10 @@
 + (void)_loadFileExtensionInformation;
 + (id)masterURLFromSidecarURLs:(id)arg1;
 + (id)photoOutboundSharingTmpDirectoryURL;
-+ (void)exitToRelocatePhotoLibrary;
-+ (id)_getLibraryPathFromTriggerFile;
-+ (void)removeRelocateLibraryTriggerFile;
-+ (void)createRelocateLibraryTriggerFileWithPath:(id)arg1;
 + (_Bool)removeFaceMetadataAtURL:(id)arg1 includingPeople:(_Bool)arg2;
 + (id)fileReservationForFileAtPath:(id)arg1 exclusive:(_Bool)arg2;
 + (void)postGlobalPhotoLibraryAvailableIfNecessary;
++ (_Bool)shouldTryFastPathWithLibraryBundle:(id)arg1;
 + (_Bool)photoLibraryIsObtainable;
 + (_Bool)systemPhotoLibraryIsObtainable;
 + (void)setCloudAlbumSharingEnabled:(_Bool)arg1;
@@ -78,16 +78,18 @@
 + (id)sharedPhotoLibrary;
 + (void)initialize;
 + (void)_context:(id)arg1 saveFailedWithError:(id)arg2;
++ (void)_contextSaveFailedDueToClientRequestedShutdown:(id)arg1;
++ (void)_contextSaveFailedDueToChangingSPL:(id)arg1;
 + (void)_contextSaveFailedWithNoPersistentStores:(id)arg1;
 + (void)_contextSaveFailedWithError:(id)arg1;
 + (void)_contextSaveFailedWithSQLiteError:(id)arg1;
 + (void)_contextSaveFailedWithTimeoutError:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PLPhotoLibraryOptions *options; // @synthesize options=_options;
 @property(readonly) PLPhotoLibraryBundle *libraryBundle; // @synthesize libraryBundle=_libraryBundle;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) __weak PLLibraryServicesManager *libraryServicesManager; // @synthesize libraryServicesManager=_libraryServicesManager;
 @property(readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
-- (void).cxx_destruct;
 - (id)personInfoManager;
 - (unsigned long long)numberOfUnpushedAssetsOfKind:(short)arg1;
 - (unsigned long long)numberOfCPLSupportedAssetsOfKind:(short)arg1 includingTrashedSinceDate:(id)arg2;
@@ -95,7 +97,6 @@
 - (unsigned long long)sharedStreamsSize;
 - (void)deleteExpiredTrashedAssetsAndAlbums;
 - (void)deleteExpiredTrashedResources;
-- (void)scheduleUserInitiatedAnalysisForAssets:(id)arg1;
 - (void)updateAlbumKeyAssetsInContext:(id)arg1 withPredicate:(id)arg2;
 - (void)_updateMemoryCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 - (void)updateMemoryPlayShareViewCountsInContext:(id)arg1;
@@ -123,15 +124,15 @@
 @property(readonly) PLKeywordManager *keywordManager;
 - (id)assetsdClient;
 - (id)simpleDCIMDirectory;
-- (void)_processPhotoIrisSidecarIfNecessary:(id)arg1 forAsset:(id)arg2;
-- (void)_applyAdjustmentFileInfo:(id)arg1 renderedContentFileInfo:(id)arg2 renderedVideoComplementFileInfo:(id)arg3 toAsset:(id)arg4 withMainFileURL:(id)arg5;
-- (void)_applySideCarFiles:(id)arg1 toAsset:(id)arg2 withMainFileURL:(id)arg3;
-- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(_Bool)arg6 previewImage:(struct NSObject *)arg7 thumbnailImage:(struct NSObject *)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 withUUID:(id)arg13 ignoreEmbeddedMetadata:(_Bool)arg14 isPlaceholder:(_Bool)arg15;
+- (void)_processPhotoIrisSidecarIfNecessary:(id)arg1 forAsset:(id)arg2 mainFileMetadata:(id)arg3;
+- (void)_applyAdjustmentFileInfo:(id)arg1 renderedContentFileInfo:(id)arg2 renderedVideoComplementFileInfo:(id)arg3 toAsset:(id)arg4 withMainFileURL:(id)arg5 mainFileMetadata:(id)arg6;
+- (void)_applySideCarFiles:(id)arg1 toAsset:(id)arg2 withMainFileURL:(id)arg3 mainFileMetadata:(id)arg4;
+- (id)addDCIMEntryAtFileURL:(id)arg1 mainFileMetadata:(id)arg2 toEvent:(id)arg3 sidecarFileInfo:(id)arg4 progress:(id)arg5 importSessionIdentifier:(id)arg6 isImported:(_Bool)arg7 previewImage:(id)arg8 thumbnailImage:(id)arg9 savedAssetType:(short)arg10 replacementUUID:(id)arg11 publicGlobalUUID:(id)arg12 extendedInfo:(id)arg13 withUUID:(id)arg14 ignoreEmbeddedMetadata:(_Bool)arg15 isPlaceholder:(_Bool)arg16 placeholderFileURL:(id)arg17;
 - (void)modifyDCIMEntryForPhoto:(id)arg1;
 - (id)photoOutboundSharingTmpDirectoryURL;
-- (struct NSObject *)newImageForPhoto:(id)arg1 format:(unsigned short)arg2;
-- (struct NSObject *)newImageForPhoto:(id)arg1 format:(unsigned short)arg2 allowPlaceholder:(_Bool)arg3 outImageProperties:(const struct __CFDictionary **)arg4 outDeliveredPlaceholder:(_Bool *)arg5;
-- (struct NSObject *)imageForFormat:(unsigned short)arg1 forAsset:(id)arg2;
+- (id)newImageForPhoto:(id)arg1 format:(unsigned short)arg2;
+- (id)newImageForPhoto:(id)arg1 format:(unsigned short)arg2 allowPlaceholder:(_Bool)arg3 outImageProperties:(const struct __CFDictionary **)arg4 outDeliveredPlaceholder:(_Bool *)arg5;
+- (id)imageForFormat:(unsigned short)arg1 forAsset:(id)arg2;
 @property(readonly, retain, nonatomic) NSObject<PLAlbumProtocol> *filesystemImportProgressAlbum;
 @property(readonly, retain, nonatomic) NSObject<PLAlbumProtocol> *otaRestoreProgressAlbum;
 @property(readonly, retain, nonatomic) NSObject<PLAlbumProtocol> *syncProgressAlbum;
@@ -149,16 +150,13 @@
 - (void)recreatePersonsFromMetadata;
 - (void)recreateMemoriesAndPersonsFromMetadata;
 - (void)recreateAlbumsAndPersonsFromMetadata;
-- (void)setICloudPhotosEnabled:(_Bool)arg1 withClient:(id)arg2;
 - (void)invalidateWithReason:(id)arg1;
 - (id)managedObjectContextStoreUUID;
-- (void)setGlobalValue:(id)arg1 forKey:(id)arg2;
-- (id)globalValueForKey:(id)arg1;
 - (void)repairSingletonObjects;
-- (id)_loadDatabaseContext:(id *)arg1;
-- (id)_loadServerDatabaseContext:(id *)arg1;
-- (id)_loadClientDatabaseContext:(id *)arg1;
-- (id)_loadClientDatabaseContextFastPath;
+- (id)_loadDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
+- (id)_loadServerDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
+- (id)_loadClientDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
+- (id)_loadClientDatabaseContextFastPathAndReturnAbortAfterOpen:(_Bool *)arg1;
 - (void)cleanupIncompleteAssetsAfterOTARestore;
 - (void)dataMigratorSupportCleanupModelForDataMigrationPurgeMissingSharedAndSynced;
 - (id)_fetchCompleteAssetIDsWithSavedAssetType:(short)arg1 context:(id)arg2;
@@ -171,7 +169,8 @@
 - (void)cleanupAfterImportAllDCIMAssets;
 - (void)_deleteObsoleteMetadataFiles;
 - (_Bool)deleteAllDiagnosticFiles:(id *)arg1;
-- (struct NSObject *)albumFromGroupURL:(id)arg1;
+@property(readonly, nonatomic) PLGlobalValues *globalValues;
+- (id)albumFromGroupURL:(id)arg1;
 - (id)photoFromAssetURL:(id)arg1;
 - (id)assetURLForPhoto:(id)arg1;
 - (id)assetURLForPhoto:(id)arg1 extension:(id)arg2;
@@ -181,7 +180,6 @@
 - (void)userExpungeAssets:(id)arg1;
 - (void)userUntrashAssets:(id)arg1;
 - (void)userTrashAssets:(id)arg1;
-- (void)_reportExpungedAssets:(id)arg1;
 - (void)_userApplyTrashedState:(short)arg1 toAssets:(id)arg2;
 - (void)_filterAssets:(id)arg1 toTrashableAssets:(id *)arg2 deletableAssets:(id *)arg3 otherAssets:(id *)arg4;
 - (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2;
@@ -189,7 +187,7 @@
 - (id)assetWithUUID:(id)arg1;
 - (id)objectWithObjectID:(id)arg1;
 - (unsigned long long)countOfLocalAlbumsContainingAssets:(id)arg1 assetsInSomeAlbumCount:(long long *)arg2;
-- (struct NSObject *)eventAlbumContainingPhoto:(id)arg1;
+- (id)eventAlbumContainingPhoto:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *photoStreamAlbumsForPreferences;
 @property(readonly, copy, nonatomic) NSArray *photoStreamAlbums;
 - (id)albumListForAlbumOfKind:(int)arg1;
@@ -199,8 +197,8 @@
 - (void)_userApplyTrashedState:(short)arg1 toAlbums:(id)arg2;
 - (void)_filterAlbums:(id)arg1 toTrashableAlbums:(id *)arg2 deletableAlbums:(id *)arg3 otherAlbums:(id *)arg4;
 - (void)_userDeleteAlbums:(id)arg1;
-- (struct NSObject *)albumWithUuid:(id)arg1;
-- (struct NSObject *)eventWithName:(id)arg1 andImportSessionIdentifier:(id)arg2;
+- (id)albumWithUuid:(id)arg1;
+- (id)eventWithName:(id)arg1 andImportSessionIdentifier:(id)arg2;
 - (void)addCompletionHandlerToCurrentTransaction:(CDUnknownBlockType)arg1;
 - (void)deleteITunesSyncedContentForEnablingiCPL;
 - (id)iTunesSyncedContentInfo;
@@ -211,10 +209,9 @@
 - (id)constraintsDirector;
 - (id)photoAnalysisClient;
 - (void)clientApplicationWillEnterForeground;
-- (void)_doFilesystemImportIfNeededWithMOC:(id)arg1 reason:(id)arg2;
 @property(readonly, nonatomic) PLManagedObjectContext *managedObjectContext;
 - (void)handlePersistentStoreRemoval:(id)arg1;
-- (_Bool)loadDatabase:(id *)arg1;
+- (_Bool)loadDatabaseWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)unloadDatabase:(id *)arg1;
 - (void)_setManagedObjectContext:(id)arg1;
 - (void)dealloc;

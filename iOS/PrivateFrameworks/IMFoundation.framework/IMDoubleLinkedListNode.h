@@ -13,12 +13,12 @@
     id _object;
 }
 
+- (void).cxx_destruct;
 @property(retain) id object; // @synthesize object=_object;
 @property(retain) IMDoubleLinkedListNode *next; // @synthesize next=_next;
 @property(retain) IMDoubleLinkedListNode *prev; // @synthesize prev=_prev;
 - (void)orphan;
 - (void)removeFromList;
-- (void)dealloc;
 - (id)initWithObject:(id)arg1;
 
 @end

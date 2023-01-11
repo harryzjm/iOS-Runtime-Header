@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSProcessInfoPlistResult : NSObject <BSXPCSecureCoding>
+@interface RBSProcessInfoPlistResult : NSObject <RBSXPCSecureCoding>
 {
     id _value;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-@property(copy, nonatomic) id value; // @synthesize value=_value;
++ (_Bool)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+@property(copy, nonatomic) id value; // @synthesize value=_value;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -19,18 +19,20 @@
 
 + (id)new;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *priorityAssetUUID; // @synthesize priorityAssetUUID=_priorityAssetUUID;
 @property(readonly, nonatomic) PSIQueryToken *queryToken; // @synthesize queryToken=_queryToken;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+- (id)init;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (id)dictionaryForArchiving;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithTitle:(id)arg1 queryToken:(id)arg2 priorityAssetUUID:(id)arg3;
 - (id)initWithTitle:(id)arg1 queryToken:(id)arg2;
-- (id)init;
 
 @end
 

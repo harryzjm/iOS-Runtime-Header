@@ -10,6 +10,9 @@
 {
 }
 
++ (id)getStorebagValueStorebagKey:(id)arg1 defaultValue:(id)arg2;
++ (id)getStorebagValueForStorebagKey:(id)arg1 userDefaultKey:(struct __CFString *)arg2 defaultValue:(id)arg3 isDoubleType:(_Bool)arg4;
++ (id)getVCRCSeverBagConfigWithKey:(id)arg1;
 + (double)getNoRemoteDuplicationThresholdFast;
 + (double)getRemoteMediaStallTimeout;
 + (id)getTestGroupPermutations:(unsigned char)arg1;
@@ -38,6 +41,7 @@
 + (_Bool)supportsEVSCodec;
 + (int)getKeepAliveTimeoutFromCarrierBundle;
 + (int)getNATTypeFromCarrierBundle;
++ (void)clearAllSettingsWithRefreshIntervalInSeconds:(int)arg1;
 + (id)getAllSettings;
 + (struct tagIPPORT *)getIPPortForService:(id)arg1;
 + (struct tagIPPORT *)getCachedIPPort;

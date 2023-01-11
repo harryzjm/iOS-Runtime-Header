@@ -18,7 +18,6 @@
         unsigned int priority:1;
         unsigned int status:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _priority;
     int _status;
     _INPBContactEventTrigger *_contactEventTrigger;
@@ -30,7 +29,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBTemporalEventTrigger *temporalEventTrigger; // @synthesize temporalEventTrigger=_temporalEventTrigger;
 @property(retain, nonatomic) _INPBDataString *taskTitle; // @synthesize taskTitle=_taskTitle;
 @property(retain, nonatomic) _INPBTask *targetTask; // @synthesize targetTask=_targetTask;
@@ -39,7 +38,6 @@
 @property(nonatomic) int priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBContactEventTrigger *contactEventTrigger; // @synthesize contactEventTrigger=_contactEventTrigger;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

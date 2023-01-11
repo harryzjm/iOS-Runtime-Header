@@ -6,15 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SpringBoard/SBApplicationHosting-Protocol.h>
+#import <SpringBoard/CSApplicationHosting-Protocol.h>
 #import <SpringBoard/SBCoverSheetSlidingViewControllerContentViewController-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBSecureAppObserver-Protocol.h>
 
 @class NSString, SBDashBoardHostedAppViewController, SBHomeGestureParticipant;
 @protocol BSInvalidatable, SBCoverSheetSecureAppEnvironmentViewControllerDelegate;
 
-@interface SBCoverSheetSecureAppEnvironmentViewController : UIViewController <SBHomeGestureParticipantDelegate, SBSecureAppObserver, SBApplicationHosting, SBCoverSheetSlidingViewControllerContentViewController>
+@interface SBCoverSheetSecureAppEnvironmentViewController : UIViewController <SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBSecureAppObserver, CSApplicationHosting, SBCoverSheetSlidingViewControllerContentViewController>
 {
     id <BSInvalidatable> _biometricMatchingAssertion;
     unsigned long long _currentOrientationMask;
@@ -23,10 +24,11 @@
     SBHomeGestureParticipant *_homeGestureParticipant;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property(nonatomic) __weak id <SBCoverSheetSecureAppEnvironmentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) SBDashBoardHostedAppViewController *secureAppViewController; // @synthesize secureAppViewController=_secureAppViewController;
-- (void).cxx_destruct;
+- (void)homeGrabberViewDidReceiveClick:(id)arg1;
 - (void)relinquishHiddenAssertionForHomeGrabber:(id)arg1 animated:(_Bool)arg2;
 - (void)takeHiddenAssertionForHomeGrabber:(id)arg1 animated:(_Bool)arg2;
 - (void)updateHomeGrabberHiddenAssertion:(_Bool)arg1;
@@ -37,12 +39,16 @@
 - (void)requestHomeGestureOwnership;
 - (void)secureAppOfTypeDidTakeNewAssertion:(unsigned long long)arg1;
 - (void)secureAppOfTypeDidBegin:(unsigned long long)arg1;
+- (_Bool)handlesRotationIndependentOfCoverSheet;
 - (void)hostedAppWillRotateToInterfaceOrientation:(long long)arg1;
 - (id)hostedAppSceneHandles;
 - (id)hostedAppSceneHandle;
 - (_Bool)isHostingAnApp;
 - (_Bool)canHostAnApp;
+- (void)conformsToCSApplicationHosting;
+- (void)conformsToSBApplicationHosting;
 @property(readonly, nonatomic) _Bool contentOccludesBackground;
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 - (_Bool)_canShowWhileLocked;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillDisappear:(_Bool)arg1;

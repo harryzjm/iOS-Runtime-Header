@@ -20,12 +20,16 @@
     _Bool _hiddenFromSpringboard;
     _Bool _is32BitOnly;
     _Bool _isPreorder;
+    _Bool _isIOSBinaryMacOSAvailable;
+    _Bool _isIOSBinaryMacOSCompatible;
     _Bool _supportsIPad;
     _Bool _supportsIPhone;
     _Bool _supportsLayeredImage;
+    _Bool _supportsMac;
     _Bool _watchAppDeliveredIniOSApp;
     _Bool _watchAppRunsIndependently;
     _Bool _watchOnly;
+    unsigned int _mediaKind;
     unsigned int _purchaseToken;
     NSString *_bundleID;
     NSString *_circularIconURLString;
@@ -48,12 +52,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property unsigned long long lockerItemID; // @synthesize lockerItemID=_lockerItemID;
 @property unsigned int purchaseToken; // @synthesize purchaseToken=_purchaseToken;
 @property _Bool watchOnly; // @synthesize watchOnly=_watchOnly;
 @property _Bool watchAppRunsIndependently; // @synthesize watchAppRunsIndependently=_watchAppRunsIndependently;
 @property _Bool watchAppDeliveredIniOSApp; // @synthesize watchAppDeliveredIniOSApp=_watchAppDeliveredIniOSApp;
 @property(copy) NSString *title; // @synthesize title=_title;
+@property _Bool supportsMac; // @synthesize supportsMac=_supportsMac;
 @property _Bool supportsLayeredImage; // @synthesize supportsLayeredImage=_supportsLayeredImage;
 @property _Bool supportsIPhone; // @synthesize supportsIPhone=_supportsIPhone;
 @property _Bool supportsIPad; // @synthesize supportsIPad=_supportsIPad;
@@ -64,7 +70,10 @@
 @property(copy) NSURL *productURL; // @synthesize productURL=_productURL;
 @property(copy) NSURL *preflightPackageURL; // @synthesize preflightPackageURL=_preflightPackageURL;
 @property(copy) NSString *ovalIconURLString; // @synthesize ovalIconURLString=_ovalIconURLString;
+@property unsigned int mediaKind; // @synthesize mediaKind=_mediaKind;
 @property(copy) NSString *longTitle; // @synthesize longTitle=_longTitle;
+@property _Bool isIOSBinaryMacOSCompatible; // @synthesize isIOSBinaryMacOSCompatible=_isIOSBinaryMacOSCompatible;
+@property _Bool isIOSBinaryMacOSAvailable; // @synthesize isIOSBinaryMacOSAvailable=_isIOSBinaryMacOSAvailable;
 @property _Bool isPreorder; // @synthesize isPreorder=_isPreorder;
 @property _Bool is32BitOnly; // @synthesize is32BitOnly=_is32BitOnly;
 @property(copy) NSString *iconURLString; // @synthesize iconURLString=_iconURLString;
@@ -81,9 +90,9 @@
 @property long long contentRatingFlags; // @synthesize contentRatingFlags=_contentRatingFlags;
 @property(copy) NSString *circularIconURLString; // @synthesize circularIconURLString=_circularIconURLString;
 @property(copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
 - (void)_setBooleanPropertiesForBitfield:(int)arg1;
 - (int)_bitfieldForBooleanProperties;
+@property(readonly) _Bool hasAnyMacOSCompatibleIOSVersion;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

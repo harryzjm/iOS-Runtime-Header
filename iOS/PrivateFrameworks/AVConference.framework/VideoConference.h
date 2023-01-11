@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AVConference/GKNATObserverDelegate-Protocol.h>
 #import <AVConference/VCAudioIODelegate-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
@@ -14,11 +12,12 @@
 #import <AVConference/VCCallSessionDelegate-Protocol.h>
 #import <AVConference/VCMomentTransportDelegate-Protocol.h>
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
+#import <AVConference/VCVideoSink-Protocol.h>
 
-@class GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCAudioPowerSpectrumSource, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
+@class GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCAudioPowerSpectrumSource, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
 @protocol OS_dispatch_queue, VideoConferenceChannelQualityDelegate, VideoConferenceDelegate, VideoConferenceSpeakingDelegate;
 
-@interface VideoConference : NSObject <VCCallSessionDelegate, VCVideoCaptureClient, GKNATObserverDelegate, VCAudioIOSource, VCAudioIOSink, VCAudioIODelegate, VCAudioPowerLevelMonitorDelegate, VCMomentTransportDelegate>
+@interface VideoConference <VCCallSessionDelegate, VCVideoSink, VCVideoCaptureClient, GKNATObserverDelegate, VCAudioIOSource, VCAudioIOSink, VCAudioIODelegate, VCAudioPowerLevelMonitorDelegate, VCMomentTransportDelegate>
 {
     int _clientPid;
     id delegate;
@@ -107,6 +106,7 @@
     VCVideoRule *conferenceCaptureRule;
 }
 
+@property(readonly, nonatomic) VCMoments *vcMoments; // @synthesize vcMoments=_vcMoments;
 @property(readonly, nonatomic) long long outputAudioPowerSpectrumToken; // @synthesize outputAudioPowerSpectrumToken=_outputAudioPowerSpectrumToken;
 @property(readonly, nonatomic) long long inputAudioPowerSpectrumToken; // @synthesize inputAudioPowerSpectrumToken=_inputAudioPowerSpectrumToken;
 @property(nonatomic) unsigned int transportType; // @synthesize transportType=_transportType;
@@ -215,7 +215,8 @@
 - (void)sendData:(id)arg1 toCallID:(unsigned int)arg2 encrypted:(_Bool)arg3;
 - (void)sendARPLData:(id)arg1 toCallID:(unsigned int)arg2;
 - (void)cleanupManager;
-- (id)newSessionWithDeviceRole:(int)arg1;
+- (id)newSessionWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
+- (unsigned int)initializeNewCallWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
 - (unsigned int)initializeNewCallWithDeviceRole:(int)arg1;
 - (void)dealloc;
 - (id)initWithClientPid:(int)arg1;
@@ -304,13 +305,14 @@
 - (void)session:(id)arg1 withCallID:(unsigned int)arg2 videoIsDegraded:(_Bool)arg3 isRemote:(_Bool)arg4;
 - (void)session:(id)arg1 withCallID:(unsigned int)arg2 networkHint:(_Bool)arg3;
 - (void)sourceFrameRateDidChange:(unsigned int)arg1;
+- (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 - (void)setConferenceVisualRectangle:(struct CGRect)arg1 forCallID:(unsigned int)arg2;
 - (void)setConferenceState:(unsigned int)arg1 forCallID:(unsigned int)arg2;
 - (void)shouldSendBlackFrame:(_Bool)arg1 callID:(id)arg2;
 - (void)avConferenceScreenCaptureError:(id)arg1;
 - (void)avConferencePreviewError:(id)arg1;
-- (_Bool)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (_Bool)onVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 attribute:(CDStruct_51555cf6)arg3;
 - (_Bool)initiateResolutionChangeToWidth:(int)arg1 height:(int)arg2 rate:(int)arg3;
 - (id)clientCaptureRule;
 - (void)NATTypeDictionaryUpdated:(id)arg1;

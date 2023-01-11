@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (long long)_orientationForRootTransform;
 - (long long)_orientationForViewTransform;
 - (_Bool)_isHostedInAnotherProcess;
+- (double)_adjustedWindowLevelFromLevel:(double)arg1;
 
 @end
 

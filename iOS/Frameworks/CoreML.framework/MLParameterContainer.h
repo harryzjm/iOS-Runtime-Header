@@ -19,13 +19,14 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)parameterContainerFor:(id)arg1 descriptions:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *parameterDescriptions; // @synthesize parameterDescriptions=_parameterDescriptions;
 @property(retain, nonatomic) NSArray *parameterKeys; // @synthesize parameterKeys=_parameterKeys;
 @property(retain, nonatomic) NSMutableDictionary *currentParameterValues; // @synthesize currentParameterValues=_currentParameterValues;
-- (void).cxx_destruct;
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)validateParameterValue:(id)arg1 givenConstraint:(id)arg2;
 - (_Bool)setCurrentValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 
 @end

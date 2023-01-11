@@ -10,6 +10,7 @@
 {
 }
 
++ (id)observedTypesForActivityType:(unsigned long long)arg1 isIndoor:(_Bool)arg2 connectedToFitnessMachine:(_Bool)arg3 activityMode:(long long)arg4;
 + (id)observedTypesForActivityType:(unsigned long long)arg1 isIndoor:(_Bool)arg2 connectedToFitnessMachine:(_Bool)arg3;
 + (id)_distanceTypeForActivityType:(unsigned long long)arg1 isIndoor:(_Bool)arg2;
 

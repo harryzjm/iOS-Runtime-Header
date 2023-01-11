@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)handleBindingOfSymbol:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)copyModifiersFrom:(id)arg1;
 @property(copy, nonatomic) NSDictionary *shaderModifiers;
-- (id)shaderModifierCache;
 - (void)_parseAndSetShaderModifier:(id)arg1;
 - (void)_unbindValueForSymbol:(id)arg1 atLocation:(unsigned int)arg2 programID:(unsigned int)arg3 node:(id)arg4 renderer:(id)arg5;
 - (_Bool)_bindValueForSymbol:(id)arg1 atLocation:(unsigned int)arg2 programID:(unsigned int)arg3 node:(id)arg4 renderer:(id)arg5;

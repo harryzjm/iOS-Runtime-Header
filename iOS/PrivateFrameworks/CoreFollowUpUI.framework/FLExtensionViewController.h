@@ -23,6 +23,7 @@
 - (void)processFollowUpItem:(id)arg1 selectedAction:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)finishProcessing;
+- (id)syncHostInterface;
 - (id)hostInterface;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 

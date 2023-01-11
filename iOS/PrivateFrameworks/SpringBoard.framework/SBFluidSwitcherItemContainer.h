@@ -11,14 +11,14 @@
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSString, SBAppSwitcherPageView, SBAppSwitcherSettings, SBFFluidBehaviorSettings, SBFailureNotifyingTapGestureRecognizer, SBFluidSwitcherIconOverlayView, SBFluidSwitcherItemContainerHeaderView, SBFluidSwitcherTouchPassThroughScrollView, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView;
+@class NSArray, NSString, SBAppLayout, SBAppSwitcherPageView, SBAppSwitcherSettings, SBFFluidBehaviorSettings, SBFailureNotifyingTapGestureRecognizer, SBFluidSwitcherIconOverlayView, SBFluidSwitcherItemContainerHeaderView, SBFluidSwitcherTouchPassThroughScrollView, SBMedusaSettings, UIHoverGestureRecognizer, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView;
 @protocol SBAppSwitcherPageContentView, SBFluidSwitcherItemContainerDelegate;
 
 @interface SBFluidSwitcherItemContainer : SBFTouchPassThroughView <UIScrollViewDelegate, UIGestureRecognizerDelegate, SBFailureNotifyingTapGestureRecognizerDelegate, SBAppPlatterDragSourceViewProviding>
 {
     SBAppSwitcherPageView *_pageView;
     id <SBFluidSwitcherItemContainerDelegate> _delegate;
-    SBFluidSwitcherTouchPassThroughScrollView *_verticalScrollView;
+    SBFluidSwitcherTouchPassThroughScrollView *_killScrollView;
     SBFluidSwitcherItemContainerHeaderView *_iconAndLabelHeader;
     SBFluidSwitcherIconOverlayView *_iconOverlayView;
     struct UIRectCornerRadii _contentCornerRadii;
@@ -31,34 +31,46 @@
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
     SBFFluidBehaviorSettings *_squishSettings;
     SBAppSwitcherSettings *_settings;
+    SBMedusaSettings *_medusaSettings;
     _Bool _sentKillRequest;
     struct CGPoint _highlightTapDownLocation;
-    _Bool _highlighted;
     _Bool _animatingPageViewScale;
     double _killProgressForCurrentDecelerationTarget;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     _Bool _dragging;
     _Bool _clipsToUnobscuredMargin;
+    _Bool _selectable;
     _Bool _killable;
     _Bool _shouldScaleOverlayToFillBounds;
     _Bool _active;
     _Bool _visible;
+    _Bool _pointerInteractionEnabled;
+    _Bool _highlightedFromDirectTouch;
+    _Bool _highlightedFromCursorHover;
     double _unobscuredMargin;
-    double _minimumVerticalTranslationForKillingContainer;
+    SBAppLayout *_appLayout;
+    unsigned long long _killAxis;
+    double _minimumTranslationForKillingContainer;
     double _contentAlpha;
-    NSString *_additionalDescriptionDebugText;
     NSArray *_headerItems;
 }
 
 + (double)preferredRestingVisibleMarginForBounds:(struct CGRect)arg1;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isHighlightedFromCursorHover) _Bool highlightedFromCursorHover; // @synthesize highlightedFromCursorHover=_highlightedFromCursorHover;
+@property(nonatomic, getter=isHighlightedFromDirectTouch) _Bool highlightedFromDirectTouch; // @synthesize highlightedFromDirectTouch=_highlightedFromDirectTouch;
 @property(copy, nonatomic) NSArray *headerItems; // @synthesize headerItems=_headerItems;
-@property(copy, nonatomic) NSString *additionalDescriptionDebugText; // @synthesize additionalDescriptionDebugText=_additionalDescriptionDebugText;
+@property(nonatomic, getter=isPointerInteractionEnabled) _Bool pointerInteractionEnabled; // @synthesize pointerInteractionEnabled=_pointerInteractionEnabled;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
 @property(nonatomic) _Bool shouldScaleOverlayToFillBounds; // @synthesize shouldScaleOverlayToFillBounds=_shouldScaleOverlayToFillBounds;
-@property(nonatomic) double minimumVerticalTranslationForKillingContainer; // @synthesize minimumVerticalTranslationForKillingContainer=_minimumVerticalTranslationForKillingContainer;
+@property(nonatomic) double minimumTranslationForKillingContainer; // @synthesize minimumTranslationForKillingContainer=_minimumTranslationForKillingContainer;
 @property(nonatomic, getter=isKillable) _Bool killable; // @synthesize killable=_killable;
+@property(nonatomic) unsigned long long killAxis; // @synthesize killAxis=_killAxis;
+@property(nonatomic, getter=isSelectable) _Bool selectable; // @synthesize selectable=_selectable;
 @property(nonatomic) _Bool clipsToUnobscuredMargin; // @synthesize clipsToUnobscuredMargin=_clipsToUnobscuredMargin;
+@property(retain, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
 @property(nonatomic, getter=isDragging) _Bool dragging; // @synthesize dragging=_dragging;
 @property(nonatomic) double unobscuredMargin; // @synthesize unobscuredMargin=_unobscuredMargin;
 @property(nonatomic) double contentPageViewScale; // @synthesize contentPageViewScale=_contentPageViewScale;
@@ -66,7 +78,6 @@
 @property(nonatomic) double titleOpacity; // @synthesize titleOpacity=_titleOpacity;
 @property(nonatomic) struct UIRectCornerRadii contentCornerRadii; // @synthesize contentCornerRadii=_contentCornerRadii;
 @property(nonatomic) __weak id <SBFluidSwitcherItemContainerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)containerViewForBlurContentView;
 - (id)initialRimShadowFilters;
 - (id)initialDiffuseShadowFilters;
@@ -74,6 +85,7 @@
 - (struct SBDragPreviewShadowParameters)initialDiffuseShadowParameters;
 - (id)initialCornerRadiusConfiguration;
 - (id)sourceView;
+- (void)_handleHoverGesture:(id)arg1;
 - (_Bool)_scrollViewShouldPanGestureTryToBegin:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
@@ -81,8 +93,9 @@
 - (void)gestureRecognizerTransitionedToFailed:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (struct CGAffineTransform)_squishedPageViewScaleTransform;
-@property(nonatomic, getter=isHighlighted) _Bool highlighted;
+- (double)_scaleForHighlightFromCursorHover;
+- (double)_scaleForHighlightFromDirectTouch;
+- (void)_updateTransformForCurrentHighlight;
 - (void)_handleSelectionHighlightGesture:(id)arg1;
 - (void)_handlePageViewPressDown:(id)arg1;
 - (void)_handlePageViewTap:(id)arg1;
@@ -91,9 +104,12 @@
 - (void)_updateHeaderAnimated:(_Bool)arg1;
 - (double)_scaleTransformFactor;
 - (double)_inverseScaleTransformFactor;
-- (void)_setKillingDarkeningAlpha:(double)arg1;
-- (double)_killingDarkeningAlpha;
 - (_Bool)_isTitleIconVisible;
+- (struct CGPoint)_CGPointFromScalarBasedOnKillAxis:(double)arg1;
+- (struct CGSize)_CGSizeFromLengthBasedOnKillAxis:(double)arg1;
+- (double)_CGPointXOrYBasedOnKillAxis:(struct CGPoint)arg1;
+- (double)_CGSizeWidthOrHeightBasedOnKillAxis:(struct CGSize)arg1;
+- (struct CGPoint)_contentOffsetAtRest;
 - (void)_resetKillProgressScrollState;
 - (struct CGSize)_overlayViewSize;
 - (struct CGSize)_contentSizeForScrollView;
@@ -103,8 +119,10 @@
 - (void)layoutSubviews;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 @property(readonly, nonatomic) _Bool isDeceleratingTowardsKillZone;
+@property(nonatomic) _Bool shouldUseBackgroundWallpaperTreatment;
 - (void)removeIconOverlay;
 - (void)configureOverlayForIconZoomWithView:(id)arg1;
+@property(readonly, nonatomic) _Bool contentViewHasSceneOverlay;
 @property(retain, nonatomic) UIView<SBAppSwitcherPageContentView> *contentView;
 @property(nonatomic) long long shadowStyle;
 @property(nonatomic) double shadowOffset;
@@ -112,7 +130,6 @@
 - (struct CGPoint)_contentOffsetForKillingProgress:(double)arg1;
 - (double)_killingProgressForContentOffset:(struct CGPoint)arg1;
 @property(readonly, nonatomic) double killingProgress;
-@property(nonatomic) double killGestureHysteresis;
 @property(nonatomic) double lighteningAlpha;
 @property(nonatomic) double wallpaperOverlayAlpha;
 @property(nonatomic) double darkeningAlpha;
@@ -127,7 +144,7 @@
 - (void)prepareForReuse;
 - (void)_addPageView;
 - (id)_createScrollView;
-- (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2 active:(_Bool)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 appLayout:(id)arg2 delegate:(id)arg3 active:(_Bool)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

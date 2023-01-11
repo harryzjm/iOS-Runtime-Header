@@ -25,17 +25,23 @@
     NSString *_localStoragePath;
     SUPurchaseManager *_purchaseManager;
     SUQueueSessionManager *_queueSessionManager;
+    _Bool _showDialogOnError;
     NSMutableDictionary *_urlBagKeys;
     NSString *_userAgent;
     SUViewControllerFactory *_viewControllerFactory;
     _Bool _wasLaunchedFromLibrary;
     _Bool _ignoreDefaultKeyboardNotifications;
     _Bool inAskToBuyApprovalFlow;
+    _Bool _financeInterruption;
+    NSString *_hostApplicationIdentifier;
 }
 
 + (id)_defaultApplicationVersion;
 + (id)_defaultApplicationIdentifier;
 @property(retain) SUViewControllerFactory *viewControllerFactory; // @synthesize viewControllerFactory=_viewControllerFactory;
+@property _Bool showDialogOnError; // @synthesize showDialogOnError=_showDialogOnError;
+@property(copy) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
+@property(getter=isFinanceInterruption) _Bool financeInterruption; // @synthesize financeInterruption=_financeInterruption;
 @property(copy, nonatomic) UIColor *lightKeyColor; // @synthesize lightKeyColor=_lightKeyColor;
 @property(nonatomic) id <SUClientInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) UIColor *darkKeyColor; // @synthesize darkKeyColor=_darkKeyColor;

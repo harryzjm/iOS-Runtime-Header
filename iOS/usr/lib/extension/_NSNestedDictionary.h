@@ -19,8 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)keyEnumerator;
 - (id)objectForKey:(id)arg1;
 - (unsigned long long)count;
-- (id)_recursiveAllValues;
-- (id)_recursiveAllKeys;
 
 @end
 

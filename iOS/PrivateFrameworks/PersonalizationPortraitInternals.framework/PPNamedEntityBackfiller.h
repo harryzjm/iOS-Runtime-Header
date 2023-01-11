@@ -16,7 +16,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (_Bool)backfillEntityMappingAndDonation;
+- (_Bool)backfillEntityMappingAndDonationWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (id)initWithNamedEntityStore:(id)arg1 topicStore:(id)arg2;
 
 @end

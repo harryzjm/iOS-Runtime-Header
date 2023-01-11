@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)finalIndexPathForInitialIndexPath:(id)arg1;
 - (long long)initialGlobalIndexForFinalGlobalIndex:(long long)arg1;
 - (long long)finalGlobalIndexForInitialGlobalIndex:(long long)arg1;
+- (id)validatedOldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
 - (id)oldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
 - (id)newIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
 - (void)_computeSupplementaryUpdates;

@@ -14,6 +14,7 @@
 - (void)ams_addTimezoneOffsetHeader;
 - (void)ams_addStoreFrontHeaderForAccount:(id)arg1 client:(id)arg2 withBag:(id)arg3;
 - (void)ams_addSilentEnrollmentHeadersForAccount:(id)arg1;
+- (void)ams_addRequestTimestampHeader;
 - (void)ams_addRequestingProcessWithClient:(id)arg1;
 - (void)ams_addPrimaryiCloudIdentifierHeader;
 - (void)ams_addParameters:(id)arg1 encoding:(long long)arg2 compressBody:(_Bool)arg3 error:(id *)arg4;
@@ -21,18 +22,19 @@
 - (void)ams_addIssuingProcessHeader;
 - (void)ams_addIdentifierHeadersForAccount:(id)arg1;
 - (void)ams_addGUIDParameterUsingBag:(id)arg1;
-- (void)ams_addContentLengthHeaderForData:(id)arg1;
+- (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2;
 - (void)ams_addContentTypeHeaderForEncoding:(long long)arg1;
+- (void)ams_addContentLengthHeaderForData:(id)arg1;
 - (void)ams_addConnectionTypeHeader;
 - (void)ams_addClientVersionsForClient:(id)arg1;
 - (void)ams_addClientIdentifierHeaderForClient:(id)arg1;
 - (void)ams_addCachePolicyHeader;
 - (void)ams_addCacheBusterParameter;
 - (void)ams_addBiometricsHeadersForAccount:(id)arg1 options:(id)arg2;
+- (void)ams_addAuthorizationHeaderForAccount:(id)arg1;
 - (void)ams_addAuthKitHeaders;
-- (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2;
-- (void)ams_addAcceptLanguageHeader;
 - (void)ams_addAnisetteHeadersForAccount:(id)arg1 type:(long long)arg2 bag:(id)arg3;
+- (void)ams_addAcceptLanguageHeader;
 - (void)ams_addAbsintheHeadersWithBuyParams:(id)arg1 bag:(id)arg2;
 - (void)ams_addHeaders:(id)arg1;
 @end

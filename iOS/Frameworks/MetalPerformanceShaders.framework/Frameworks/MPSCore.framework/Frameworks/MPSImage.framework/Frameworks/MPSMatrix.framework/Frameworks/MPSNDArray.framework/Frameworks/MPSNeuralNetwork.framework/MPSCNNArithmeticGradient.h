@@ -21,7 +21,7 @@
     MPSNNReduceUnary *_reduceFeatureChannels;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) _Bool isSecondarySourceFilter; // @synthesize isSecondarySourceFilter=_isSecondarySourceFilter;
 @property(nonatomic) unsigned long long secondaryStrideInFeatureChannels; // @synthesize secondaryStrideInFeatureChannels=_secondaryStrideInFeatureChannels;
 @property(nonatomic) float maximumValue; // @synthesize maximumValue=_maximumValue;

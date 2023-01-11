@@ -10,16 +10,17 @@
 
 @interface WFHomeWorkflow : NSObject
 {
+    WFWorkflow *_cachedWorkflow;
     NSData *_data;
-    WFWorkflow *_workflow;
     HFTriggerActionsSetsUISummary *_actionSetsSummary;
 }
 
-@property(retain, nonatomic) HFTriggerActionsSetsUISummary *actionSetsSummary; // @synthesize actionSetsSummary=_actionSetsSummary;
-@property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
-@property(readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
++ (void)setCachedHomes:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HFTriggerActionsSetsUISummary *actionSetsSummary; // @synthesize actionSetsSummary=_actionSetsSummary;
+@property(readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
 - (id)debugDescription;
+- (id)workflowWithEnvironment:(long long)arg1 error:(id *)arg2;
 - (id)actionSetsFromTriggerActionSetsBuilders:(id)arg1;
 - (id)triggerActionSetsBuilders;
 @property(readonly, nonatomic) _Bool requiresDeviceUnlock;

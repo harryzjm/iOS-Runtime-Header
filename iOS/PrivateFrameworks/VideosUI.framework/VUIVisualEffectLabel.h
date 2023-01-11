@@ -6,24 +6,36 @@
 
 #import <UIKit/UIView.h>
 
-@class UIVisualEffectView, VUILabel;
+#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
+
+@class NSString, UIVisualEffectView, VUILabel;
 
 __attribute__((visibility("hidden")))
-@interface VUIVisualEffectLabel : UIView
+@interface VUIVisualEffectLabel : UIView <VUILabelBaselineProtocol>
 {
-    UIVisualEffectView *_visualEffectView;
     VUILabel *_label;
+    UIVisualEffectView *_visualEffectView;
+    unsigned long long _visualEffectLabelType;
 }
 
-+ (id)vibrantLabelWithLabel:(id)arg1;
-@property(retain, nonatomic) VUILabel *label; // @synthesize label=_label;
-@property(readonly, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
++ (long long)_backdropStyleForVisualEffectType:(unsigned long long)arg1 traitCollection:(id)arg2;
++ (id)labelWithType:(unsigned long long)arg1 label:(id)arg2 traitCollection:(id)arg3 existingVisualEffectLabel:(id)arg4;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long visualEffectLabelType; // @synthesize visualEffectLabelType=_visualEffectLabelType;
+@property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
+@property(retain, nonatomic) VUILabel *label; // @synthesize label=_label;
+- (double)baselineOffsetFromBottom;
+- (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateContentWithNewLabel:(id)arg1 oldLabel:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)initWithEffect:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

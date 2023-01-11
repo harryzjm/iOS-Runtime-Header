@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)handleURL:(id)arg1;
 - (void)_pushProfileDetailsForProfileWithID:(id)arg1;
 - (void)_showSheetToInstallProvisioningProfile;
+- (void)_presentNextController:(id)arg1;
 - (void)_showSheetToInstallConfigurationProfileWithData:(id)arg1;
 - (void)_showSheetToInstallConfigurationProfileFromInstallationQueue;
 - (void)_showSheetToInstallConfigurationProfileFromPurgatory;

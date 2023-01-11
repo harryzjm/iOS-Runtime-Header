@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (_Bool)_isLocationNearAccessPoint:(id)arg1;
 - (_Bool)_isLocationNearTransitNode:(id)arg1;
-- (_Bool)_isLocationNearEndOfWalkingLeg:(id)arg1;
+- (_Bool)_isLocationNearEndOfWalkingSegment:(id)arg1;
 - (_Bool)_hasLocationExitedStation:(id)arg1;
 - (_Bool)_hasLocationEnteredStation:(id)arg1 routeMatch:(id)arg2;
 - (_Bool)updateRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;

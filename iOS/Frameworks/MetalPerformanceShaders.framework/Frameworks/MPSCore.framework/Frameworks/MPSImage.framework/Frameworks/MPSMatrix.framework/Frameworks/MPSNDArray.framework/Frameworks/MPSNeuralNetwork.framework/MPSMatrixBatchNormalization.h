@@ -18,7 +18,7 @@
     unsigned long long _sourceInputFeatureChannels;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) _Bool computeStatistics; // @synthesize computeStatistics=_computeStatistics;
 @property(nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property(nonatomic) float neuronC; // @synthesize neuronC=_neuronC;

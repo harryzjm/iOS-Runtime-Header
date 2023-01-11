@@ -8,19 +8,23 @@
 
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 
-@class SBBarSwipeAffordanceView, SBHomeGestureParticipant;
+@class NSString, SBBarSwipeAffordanceView, SBHomeGestureParticipant;
+@protocol SBHomeGrabberPointerClickDelegate;
 
 @interface SBBarSwipeAffordanceViewController : UIViewController <SBHomeGestureParticipantDelegate>
 {
     long long _homeGestureParticipantIdentifier;
-    SBHomeGestureParticipant *_homeGestureParticipant;
     _Bool _wantsToBeActiveAffordance;
     _Bool _suppressAffordance;
+    SBHomeGestureParticipant *_homeGestureParticipant;
+    id <SBHomeGrabberPointerClickDelegate> _pointerClickDelegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <SBHomeGrabberPointerClickDelegate> pointerClickDelegate; // @synthesize pointerClickDelegate=_pointerClickDelegate;
+@property(readonly, nonatomic) SBHomeGestureParticipant *homeGestureParticipant;
 @property(nonatomic) _Bool suppressAffordance; // @synthesize suppressAffordance=_suppressAffordance;
 @property(nonatomic) _Bool wantsToBeActiveAffordance; // @synthesize wantsToBeActiveAffordance=_wantsToBeActiveAffordance;
-- (void).cxx_destruct;
 - (void)_updateActiveState;
 - (void)_stopTryingToBecomeActiveAffordance;
 - (void)_beginTryingToBecomeActiveAffordance;
@@ -30,6 +34,10 @@
 - (id)initWithHomeGestureParticipantIdentifier:(long long)arg1;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @property(retain, nonatomic) SBBarSwipeAffordanceView *view; // @dynamic view;
 
 @end

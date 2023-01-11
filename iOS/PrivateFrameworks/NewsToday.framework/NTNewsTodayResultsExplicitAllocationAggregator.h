@@ -8,40 +8,26 @@
 
 #import <NewsToday/NTTodayResultsAggregator-Protocol.h>
 
-@class NSDate, NSString, NTPBSectionSlotCostInfo;
+@class NSDate, NSString;
 @protocol FCCoreConfigurationManager, FCFeedPersonalizing, FCTodayPrivateData;
 
 @interface NTNewsTodayResultsExplicitAllocationAggregator : NSObject <NTTodayResultsAggregator>
 {
-    _Bool _allowLeadingCell;
-    _Bool _allowSectionTitles;
-    _Bool _respectMinMaxLimit;
     id <FCCoreConfigurationManager> _configurationManager;
     id <FCFeedPersonalizing> _feedPersonalizer;
-    NTPBSectionSlotCostInfo *_nonVideoSectionSlotCostInfo;
-    NTPBSectionSlotCostInfo *_videoSectionSlotCostInfo;
-    unsigned long long _embedsLimit;
-    double _slotsLimit;
     NSDate *_filterDate;
     NSObject<FCTodayPrivateData> *_todayData;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSObject<FCTodayPrivateData> *todayData; // @synthesize todayData=_todayData;
 @property(copy, nonatomic) NSDate *filterDate; // @synthesize filterDate=_filterDate;
-@property(nonatomic) double slotsLimit; // @synthesize slotsLimit=_slotsLimit;
-@property(nonatomic) _Bool respectMinMaxLimit; // @synthesize respectMinMaxLimit=_respectMinMaxLimit;
-@property(nonatomic) _Bool allowSectionTitles; // @synthesize allowSectionTitles=_allowSectionTitles;
-@property(nonatomic) _Bool allowLeadingCell; // @synthesize allowLeadingCell=_allowLeadingCell;
-@property(nonatomic) unsigned long long embedsLimit; // @synthesize embedsLimit=_embedsLimit;
-@property(copy, nonatomic) NTPBSectionSlotCostInfo *videoSectionSlotCostInfo; // @synthesize videoSectionSlotCostInfo=_videoSectionSlotCostInfo;
-@property(copy, nonatomic) NTPBSectionSlotCostInfo *nonVideoSectionSlotCostInfo; // @synthesize nonVideoSectionSlotCostInfo=_nonVideoSectionSlotCostInfo;
 @property(retain, nonatomic) id <FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
 @property(retain, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
-- (void).cxx_destruct;
 - (id)_sectionFilterTransformationWithDescriptor:(id)arg1 priorClusterIDsInOtherSections:(id)arg2 priorClusterIDsInSection:(id)arg3 otherArticleIDs:(id)arg4 embedsLimit:(unsigned long long)arg5;
-- (id)_itemsForSection:(id)arg1 items:(id)arg2 previouslyChosenItems:(id)arg3 allowLeadingCell:(_Bool)arg4 leadingCellItemID:(id *)arg5 priorClusterIDsInOtherSections:(id)arg6 sectionItemsLimit:(unsigned long long)arg7 otherArticleIDs:(id)arg8 embedsLimit:(unsigned long long)arg9 remainingSlots:(double)arg10 slotsUsed:(double *)arg11 noMoreItemsToGive:(_Bool *)arg12 noRoomForMoreItems:(_Bool *)arg13 slotAllocationByDynamicSlotItemID:(id)arg14;
-- (id)aggregateSections:(id)arg1 itemsBySectionDescriptor:(id)arg2;
-- (id)initWithConfigurationManager:(id)arg1 feedPersonalizer:(id)arg2 nonVideoSectionSlotCostInfo:(id)arg3 videoSectionSlotCostInfo:(id)arg4 embedsLimit:(unsigned long long)arg5 allowLeadingCell:(_Bool)arg6 allowSectionTitles:(_Bool)arg7 respectMinMaxLimit:(_Bool)arg8 filterDate:(id)arg9 todayData:(id)arg10 slotsLimit:(double)arg11;
+- (id)_itemsForSection:(id)arg1 items:(id)arg2 withBudgetInfo:(id)arg3 previouslyChosenItems:(id)arg4 priorClusterIDsInOtherSections:(id)arg5 sectionItemsLimit:(unsigned long long)arg6 otherArticleIDs:(id)arg7 embedsLimit:(unsigned long long)arg8 remainingSlots:(double)arg9 slotsUsed:(double *)arg10 noMoreItemsToGive:(_Bool *)arg11 noRoomForMoreItems:(_Bool *)arg12 slotAllocationByDynamicSlotItemID:(id)arg13;
+- (id)aggregateSections:(id)arg1 itemsBySectionDescriptor:(id)arg2 budgetInfo:(id)arg3;
+- (id)initWithConfigurationManager:(id)arg1 feedPersonalizer:(id)arg2 filterDate:(id)arg3 todayData:(id)arg4;
 - (id)init;
 
 // Remaining properties

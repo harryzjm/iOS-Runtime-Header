@@ -9,20 +9,24 @@
 #import <GeoServices/GEOCompanionManeuverStep-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBDataReader;
+@class GEOPBTransitArtwork, NSMutableArray, NSString, PBDataReader;
+@protocol GEOTransitArtworkDataSource;
 
 @interface GEOCompanionFerryStep : PBCodable <GEOCompanionManeuverStep, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEOJunctionElement *_junctionElements;
     unsigned long long _junctionElementsCount;
     unsigned long long _junctionElementsSpace;
+    GEOPBTransitArtwork *_artworkOverride;
     NSMutableArray *_maneuverNames;
     NSMutableArray *_signposts;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _junctionType;
     int _maneuverType;
-    CDStruct_6da46726 _flags;
+    CDStruct_9011fabd _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -37,39 +41,41 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) GEOPBTransitArtwork *artworkOverride;
+@property(readonly, nonatomic) _Bool hasArtworkOverride;
+- (id)signpostAtIndex:(unsigned long long)arg1;
+- (unsigned long long)signpostsCount;
+- (void)addSignpost:(id)arg1;
+- (void)clearSignposts;
+@property(retain, nonatomic) NSMutableArray *signposts;
+- (id)maneuverNameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)maneuverNamesCount;
+- (void)addManeuverName:(id)arg1;
+- (void)clearManeuverNames;
+@property(retain, nonatomic) NSMutableArray *maneuverNames;
 - (void)setJunctionElements:(struct GEOJunctionElement *)arg1 count:(unsigned long long)arg2;
 - (struct GEOJunctionElement)junctionElementAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsJunctionElement:(struct GEOJunctionElement)arg1;
 - (void)addJunctionElement:(struct GEOJunctionElement)arg1;
 - (void)clearJunctionElements;
 @property(readonly, nonatomic) struct GEOJunctionElement *junctionElements;
 @property(readonly, nonatomic) unsigned long long junctionElementsCount;
-- (void)_readJunctionElements;
 - (int)StringAsJunctionType:(id)arg1;
 - (id)junctionTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasJunctionType;
 @property(nonatomic) int junctionType;
-- (id)signpostAtIndex:(unsigned long long)arg1;
-- (unsigned long long)signpostsCount;
-- (void)_addNoFlagsSignpost:(id)arg1;
-- (void)addSignpost:(id)arg1;
-- (void)clearSignposts;
-@property(retain, nonatomic) NSMutableArray *signposts;
-- (void)_readSignposts;
-- (id)maneuverNameAtIndex:(unsigned long long)arg1;
-- (unsigned long long)maneuverNamesCount;
-- (void)_addNoFlagsManeuverName:(id)arg1;
-- (void)addManeuverName:(id)arg1;
-- (void)clearManeuverNames;
-@property(retain, nonatomic) NSMutableArray *maneuverNames;
-- (void)_readManeuverNames;
 - (int)StringAsManeuverType:(id)arg1;
 - (id)maneuverTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasManeuverType;
 @property(nonatomic) int maneuverType;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
+@property(readonly, nonatomic) id <GEOTransitArtworkDataSource> maneuverArtworkOverride;
 @property(readonly, nonatomic) int transportType;
 
 // Remaining properties

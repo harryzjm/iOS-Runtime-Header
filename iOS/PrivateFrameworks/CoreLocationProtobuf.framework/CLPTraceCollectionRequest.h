@@ -14,12 +14,14 @@
 {
     NSMutableArray *_events;
     CLPMeta *_meta;
+    int _type;
+    CDStruct_f953fb60 _has;
 }
 
 + (Class)eventsType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *events; // @synthesize events=_events;
 @property(retain, nonatomic) CLPMeta *meta; // @synthesize meta=_meta;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -31,6 +33,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsType:(id)arg1;
+- (id)typeAsString:(int)arg1;
+@property(nonatomic) _Bool hasType;
+@property(nonatomic) int type; // @synthesize type=_type;
 - (id)eventsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)eventsCount;
 - (void)addEvents:(id)arg1;

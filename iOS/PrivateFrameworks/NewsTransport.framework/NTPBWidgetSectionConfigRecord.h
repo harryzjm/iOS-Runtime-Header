@@ -19,12 +19,14 @@
     NTPBRecordBase *_base;
     NSString *_configuration;
     NSString *_configuration2;
+    NSString *_singleTagConfiguration;
 }
 
 + (Class)articleIDs2Type;
 + (Class)articleListIDs2Type;
 + (Class)articleIDsType;
 + (Class)articleListIDsType;
+@property(retain, nonatomic) NSString *singleTagConfiguration; // @synthesize singleTagConfiguration=_singleTagConfiguration;
 @property(retain, nonatomic) NSMutableArray *articleIDs2s; // @synthesize articleIDs2s=_articleIDs2s;
 @property(retain, nonatomic) NSMutableArray *articleListIDs2s; // @synthesize articleListIDs2s=_articleListIDs2s;
 @property(retain, nonatomic) NSString *configuration2; // @synthesize configuration2=_configuration2;
@@ -40,6 +42,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSingleTagConfiguration;
 - (id)articleIDs2AtIndex:(unsigned long long)arg1;
 - (unsigned long long)articleIDs2sCount;
 - (void)addArticleIDs2:(id)arg1;

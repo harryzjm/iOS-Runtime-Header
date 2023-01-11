@@ -8,15 +8,17 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSSet, NSString;
 
 @interface PGGraphIngestPublicEventsProcessor : NSObject <PGGraphIngestProcessor>
 {
     NSDictionary *_publicEventCriteriaByCategory;
+    NSSet *_largeFrequentLocationNodes;
 }
 
-@property(readonly, nonatomic) NSDictionary *publicEventCriteriaByCategory; // @synthesize publicEventCriteriaByCategory=_publicEventCriteriaByCategory;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *largeFrequentLocationNodes; // @synthesize largeFrequentLocationNodes=_largeFrequentLocationNodes;
+@property(readonly, nonatomic) NSDictionary *publicEventCriteriaByCategory; // @synthesize publicEventCriteriaByCategory=_publicEventCriteriaByCategory;
 - (id)publicEventCriteriaByCategoryInGraph:(id)arg1;
 - (id)_frequentLocationNodesByMomentIdentifierForMomentNodes:(id)arg1 graph:(id)arg2;
 - (void)_collectConsolidatedAddressesForMomentNodes:(id)arg1 inGraph:(id)arg2 consolidatedAddresses:(id *)arg3 consolidatedAddressesByMomentIdentifier:(id *)arg4 momentNodesForConsolidatedAddresses:(id *)arg5;

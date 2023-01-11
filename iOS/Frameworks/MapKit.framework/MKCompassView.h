@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
+#import <MapKit/MKCompassView-Protocol.h>
 
-@interface MKCompassView : UIView
+@class NSString, UIImageView;
+
+@interface MKCompassView : UIView <MKCompassView>
 {
     UIImageView *_imageView;
     long long _compassViewSize;
@@ -17,9 +19,9 @@
 
 + (id)_parameterForStyle:(long long)arg1;
 + (id)_parameterForSize:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long compassViewStyle; // @synthesize compassViewStyle=_compassViewStyle;
 @property(readonly, nonatomic) long long compassViewSize; // @synthesize compassViewSize=_compassViewSize;
-- (void).cxx_destruct;
 - (_Bool)isPointInNorthEastHalf:(struct CGPoint)arg1;
 - (struct CGSize)intrinsicContentSize;
 @property(nonatomic) double yaw;
@@ -28,12 +30,20 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setCompassViewSize:(long long)arg1 style:(long long)arg2;
 - (void)_adaptCompassStyleToUserInterfaceStyle;
+- (void)_updateStyle;
 - (void)layoutSubviews;
 - (void)updateLocale:(id)arg1;
 - (void)dealloc;
+- (void)movedToWindow:(id)arg1;
 - (void)_commonInit;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

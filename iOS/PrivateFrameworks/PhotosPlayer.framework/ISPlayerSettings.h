@@ -24,8 +24,6 @@ __attribute__((visibility("hidden")))
     float _vitalityEaseMinRate;
     double _vitalityEaseDuration;
     long long _startBehavior;
-    double _forceTouchTimeoutInterval;
-    double _forceTouchTimeoutMinimumProgress;
     double _forceScrubMinimumPressure;
     double _forceScrubMaximumPressure;
     double _forceScrubRewindFactor;
@@ -44,8 +42,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double forceScrubRewindFactor; // @synthesize forceScrubRewindFactor=_forceScrubRewindFactor;
 @property(nonatomic) double forceScrubMaximumPressure; // @synthesize forceScrubMaximumPressure=_forceScrubMaximumPressure;
 @property(nonatomic) double forceScrubMinimumPressure; // @synthesize forceScrubMinimumPressure=_forceScrubMinimumPressure;
-@property(nonatomic) double forceTouchTimeoutMinimumProgress; // @synthesize forceTouchTimeoutMinimumProgress=_forceTouchTimeoutMinimumProgress;
-@property(nonatomic) double forceTouchTimeoutInterval; // @synthesize forceTouchTimeoutInterval=_forceTouchTimeoutInterval;
 @property(nonatomic) _Bool allowPlayerReuse; // @synthesize allowPlayerReuse=_allowPlayerReuse;
 @property(nonatomic) _Bool allowVideoPreRoll; // @synthesize allowVideoPreRoll=_allowVideoPreRoll;
 @property(nonatomic) _Bool allowFrameBlending; // @synthesize allowFrameBlending=_allowFrameBlending;

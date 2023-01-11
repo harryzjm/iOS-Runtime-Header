@@ -24,6 +24,7 @@
 
 + (id)sharedSchedulerWithUnitTestingContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
 + (id)sharedScheduler;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *unitTestingPushTokens; // @synthesize unitTestingPushTokens=_unitTestingPushTokens;
 @property(retain, nonatomic) id <CKDAccountInfoProvider> unitTestingAccountInfoProvider; // @synthesize unitTestingAccountInfoProvider=_unitTestingAccountInfoProvider;
 @property(retain, nonatomic) NSMutableSet *operations; // @synthesize operations=_operations;
@@ -31,12 +32,11 @@
 @property(retain, nonatomic) NSMutableDictionary *callbackBlocks; // @synthesize callbackBlocks=_callbackBlocks;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) _Bool schedulerIsAvailable; // @synthesize schedulerIsAvailable=_schedulerIsAvailable;
-- (void).cxx_destruct;
-- (void)ensureTokenRefreshForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)registerTokenForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 accountInfoProvider:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)handlePublicPushTokenDidUpdate:(id)arg1;
 - (void)forceTokenRefreshForAllClients;
 - (void)unregisterAllTokensForAccountID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1;
+- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2;
 - (void)_handlePushToken:(id)arg1 forAppContainerAccountTuple:(id)arg2 applicationMetadata:(id)arg3 appContainerIntersectionMetadata:(id)arg4;
 - (void)refreshAllClientsNow:(_Bool)arg1;
 - (void)_removeApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(_Bool)arg5 completionBlock:(CDUnknownBlockType)arg6;
@@ -44,7 +44,7 @@
 - (void)tokenRefreshChanged;
 - (void)registerTokenRefreshActivity;
 - (void)setSchedulerAvailable:(_Bool)arg1;
-- (void)systemAvailabilityChanged:(unsigned long long)arg1;
+- (_Bool)systemAvailabilityChanged:(unsigned long long)arg1;
 - (_Bool)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithAccountInfoProvider:(id)arg1;

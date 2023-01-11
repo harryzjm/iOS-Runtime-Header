@@ -17,12 +17,12 @@
     MISSING_TYPE *restDown;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double applyDownForce; // @synthesize applyDownForce;
 @property(nonatomic) MISSING_TYPE *restDown; // @synthesize restDown;
 @property(nonatomic) MISSING_TYPE *restPosition; // @synthesize restPosition;
 @property(retain, nonatomic) SCNNode *chainRoot; // @synthesize chainRoot;
 @property(retain, nonatomic) SCNNode *rig; // @synthesize rig;
-- (void).cxx_destruct;
 
 @end
 

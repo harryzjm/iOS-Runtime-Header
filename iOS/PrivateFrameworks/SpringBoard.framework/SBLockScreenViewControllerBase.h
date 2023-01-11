@@ -42,6 +42,7 @@
     SBFLockScreenWakeAnimator *_lockScreenWakeAnimator;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SBFLockScreenWakeAnimator *lockScreenWakeAnimator; // @synthesize lockScreenWakeAnimator=_lockScreenWakeAnimator;
 @property(nonatomic) __weak UIVisualEffectView *wakeEffectView; // @synthesize wakeEffectView=_wakeEffectView;
 @property(nonatomic) __weak id <SBBiometricUnlockBehaviorDelegate> biometricUnlockBehaviorDelegate; // @synthesize biometricUnlockBehaviorDelegate=_biometricUnlockBehaviorDelegate;
@@ -49,7 +50,6 @@
 @property(nonatomic) __weak id <SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 @property(readonly, nonatomic) _Bool expectsFaceContact; // @synthesize expectsFaceContact=_expectsFaceContact;
 @property(nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
-- (void).cxx_destruct;
 - (void)handleBiometricEvent:(unsigned long long)arg1;
 - (_Bool)shouldAutoUnlockForSource:(int)arg1;
 - (_Bool)shouldUnlockUIOnKeyDownEvent;
@@ -64,11 +64,13 @@
 @property(readonly, nonatomic) _Bool shouldShowLockStatusBarTime;
 - (_Bool)shouldDisableALS;
 @property(readonly, nonatomic) _Bool contentOccludesBackground;
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 - (void)hostedAppWillRotateToInterfaceOrientation:(long long)arg1;
 - (id)hostedAppSceneHandles;
 - (id)hostedAppSceneHandle;
 - (_Bool)isHostingAnApp;
 - (_Bool)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
 - (void)noteMenuButtonUp;
 - (void)noteMenuButtonDown;
 - (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
@@ -90,7 +92,6 @@
 - (void)exitEmergencyDialerAnimated:(_Bool)arg1;
 - (void)launchEmergencyDialerAnimated:(_Bool)arg1;
 - (void)launchEmergencyDialer;
-- (void)launchInCallAlert;
 - (void)finishUIUnlockFromSource:(int)arg1;
 - (_Bool)canBeDeactivatedForUIUnlockFromSource:(int)arg1;
 - (_Bool)willUIUnlockFromSource:(int)arg1;

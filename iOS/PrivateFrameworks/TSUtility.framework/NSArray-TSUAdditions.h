@@ -13,6 +13,7 @@
 - (_Bool)tsu_containsObjectIdenticalTo:(id)arg1;
 - (id)tsu_arrayByTransformingWithBlock:(CDUnknownBlockType)arg1;
 - (id)tsu_arrayOfObjectsAtIndexes:(id)arg1 options:(unsigned long long)arg2 passingTest:(CDUnknownBlockType)arg3;
+- (id)tsu_arrayByMappingObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)tsu_arrayOfObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)tsu_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (void)tsu_enumerateSnapshotObjectsUsingBlock:(CDUnknownBlockType)arg1;

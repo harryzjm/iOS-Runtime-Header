@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class NSArray, NSDictionary, NSObject, NSSet, NTCatchUpOperationForYouFetchInfo;
+@class NSArray, NSDictionary, NSObject, NTCatchUpOperationForYouFetchInfo;
 @protocol FCContentContext, FCFeedPersonalizing, FCNewsAppConfiguration, FCTodayPrivateData, NTTodayResultOperationInfoProviding;
 
 @interface NTTodayItemOperation : FCOperation
@@ -14,7 +14,6 @@
     NSDictionary *_catchUpOperationResultsBySectionDescriptor;
     id <FCNewsAppConfiguration> _appConfiguration;
     id <FCContentContext> _contentContext;
-    NSSet *_itemIDsOfLeadingCells;
     NSDictionary *_slotAllocationByDynamicSlotItemID;
     id <FCFeedPersonalizing> _feedPersonalizer;
     id <FCTodayPrivateData> _todayData;
@@ -24,10 +23,13 @@
     NSArray *_feedItems;
     NSDictionary *_resultTodayItemsBySectionDescriptor;
     NSDictionary *_resultAssetFileURLsByRemoteURL;
+    NSObject *_resultRecordsHoldToken;
     NSObject *_resultAssetsHoldToken;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject *resultAssetsHoldToken; // @synthesize resultAssetsHoldToken=_resultAssetsHoldToken;
+@property(retain, nonatomic) NSObject *resultRecordsHoldToken; // @synthesize resultRecordsHoldToken=_resultRecordsHoldToken;
 @property(retain, nonatomic) NSDictionary *resultAssetFileURLsByRemoteURL; // @synthesize resultAssetFileURLsByRemoteURL=_resultAssetFileURLsByRemoteURL;
 @property(retain, nonatomic) NSDictionary *resultTodayItemsBySectionDescriptor; // @synthesize resultTodayItemsBySectionDescriptor=_resultTodayItemsBySectionDescriptor;
 @property(copy, nonatomic) NSArray *feedItems; // @synthesize feedItems=_feedItems;
@@ -37,11 +39,9 @@
 @property(retain, nonatomic) id <FCTodayPrivateData> todayData; // @synthesize todayData=_todayData;
 @property(retain, nonatomic) id <FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
 @property(copy, nonatomic) NSDictionary *slotAllocationByDynamicSlotItemID; // @synthesize slotAllocationByDynamicSlotItemID=_slotAllocationByDynamicSlotItemID;
-@property(copy, nonatomic) NSSet *itemIDsOfLeadingCells; // @synthesize itemIDsOfLeadingCells=_itemIDsOfLeadingCells;
 @property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property(copy, nonatomic) id <FCNewsAppConfiguration> appConfiguration; // @synthesize appConfiguration=_appConfiguration;
 @property(copy, nonatomic) NSDictionary *catchUpOperationResultsBySectionDescriptor; // @synthesize catchUpOperationResultsBySectionDescriptor=_catchUpOperationResultsBySectionDescriptor;
-- (void).cxx_destruct;
 - (void)_fetchProtoitemsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_extractFeedItemsFromInputs;
 - (void)operationWillFinishWithError:(id)arg1;

@@ -29,14 +29,14 @@
 - (id)description;
 - (void)dealloc;
 - (id)initWithMaximumCapacity:(unsigned long long)arg1;
-- (void)_addNodeToFront:(id)arg1;
-- (void)_moveNodeToFront:(id)arg1;
-- (void)_removeNode:(id)arg1;
-- (void)_removeNodeFromLinkedList:(id)arg1;
 - (id)objectForKeyWithoutAffectingLRU:(id)arg1;
 - (id)allValuesInLRUOrder;
 - (id)allKeysInLRUOrder;
 - (unsigned long long)linkedListCount;
+- (void)_addNodeToFront:(id)arg1;
+- (void)_moveNodeToFront:(id)arg1;
+- (void)_removeNode:(id)arg1;
+- (void)_removeNodeFromLinkedList:(id)arg1;
 
 @end
 

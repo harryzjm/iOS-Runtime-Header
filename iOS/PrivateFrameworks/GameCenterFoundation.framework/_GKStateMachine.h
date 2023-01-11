@@ -12,13 +12,14 @@
 @interface _GKStateMachine : NSObject
 {
     struct os_unfair_lock_s _lock;
-    NSString *_currentState;
+    _Bool _shouldLogStateTransitions;
     NSDictionary *_validTransitions;
     id <_GKStateMachineDelegate> _delegate;
-    _Bool _shouldLogStateTransitions;
+    NSString *_currentState;
 }
 
-@property id <_GKStateMachineDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+@property __weak id <_GKStateMachineDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain) NSDictionary *validTransitions; // @synthesize validTransitions=_validTransitions;
 @property(nonatomic) _Bool shouldLogStateTransitions; // @synthesize shouldLogStateTransitions=_shouldLogStateTransitions;
 - (void)_performTransitionFromState:(id)arg1 toState:(id)arg2;

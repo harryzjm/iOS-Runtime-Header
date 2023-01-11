@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     struct CGRect _bounds;
 }
 
-+ (id)targetWithSize:(struct CGSize)arg1 scale:(double)arg2;
 @property(readonly, nonatomic) double preferredContentScaleFactor; // @synthesize preferredContentScaleFactor=_preferredContentScaleFactor;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 - (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(_Bool)arg4;

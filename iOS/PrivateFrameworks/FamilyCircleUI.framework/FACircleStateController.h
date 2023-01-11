@@ -6,26 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class FARequestConfigurator, RUIStyle, UIViewController;
+#import <FamilyCircleUI/FACirclePresenterDelegate-Protocol.h>
+#import <FamilyCircleUI/FARemoteViewControllerDelegate-Protocol.h>
 
-@interface FACircleStateController : NSObject
+@class FARequestConfigurator, NSString, RUIStyle, UIViewController;
+
+@interface FACircleStateController : NSObject <FARemoteViewControllerDelegate, FACirclePresenterDelegate>
 {
     FARequestConfigurator *_requestConfigurator;
     CDUnknownBlockType _performOperationCompletion;
     UIViewController *_presenter;
+    CDUnknownBlockType _presentationHandler;
     RUIStyle *_customRUIStyle;
+    long long _modalPresentationStyle;
 }
 
-@property(retain, nonatomic) RUIStyle *customRUIStyle; // @synthesize customRUIStyle=_customRUIStyle;
-@property(nonatomic) __weak UIViewController *presenter; // @synthesize presenter=_presenter;
 - (void).cxx_destruct;
+@property(nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
+@property(retain, nonatomic) RUIStyle *customRUIStyle; // @synthesize customRUIStyle=_customRUIStyle;
+@property(copy, nonatomic) CDUnknownBlockType presentationHandler; // @synthesize presentationHandler=_presentationHandler;
+@property(nonatomic) __weak UIViewController *presenter; // @synthesize presenter=_presenter;
+- (void)circlePresenterDidPresent:(id)arg1;
+- (void)remoteViewControllerDidStartFlow:(id)arg1;
+- (void)dealloc;
 - (void)_performOperationWithContext:(id)arg1 viewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_presentViewServiceWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentViewServiceWithContext:(id)arg1 viewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_presentFlowUsingSpringBoardWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_processRequiresSpringBoardServices;
+- (id)_whitelistedInProcessClients;
 - (_Bool)_contextRequiresRemoteService:(id)arg1;
 - (void)_ensurePresenterWithCompletion:(CDUnknownBlockType)arg1;
+- (void)performWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performOperationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithPresenter:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

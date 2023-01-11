@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLFileSystemAlbumMetadataPersistence-Protocol.h>
 
-@class NSOrderedSet, NSString;
+@class NSSet, NSString;
 
 @interface PLImportSession <PLFileSystemAlbumMetadataPersistence>
 {
@@ -16,11 +16,11 @@
 
 + (id)validKindsForPersistence;
 + (id)albumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)albumsWithImportSessionIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)insertNewImportSessionAlbumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityName;
 @property(nonatomic) _Bool albumShouldBeAutomaticallyDeleted; // @synthesize albumShouldBeAutomaticallyDeleted=_albumShouldBeAutomaticallyDeleted;
 @property(nonatomic) _Bool needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
-- (id)mutableAssets;
 - (_Bool)canPerformEditOperation:(unsigned long long)arg1;
 - (_Bool)isEmpty;
 - (unsigned long long)count;
@@ -31,7 +31,7 @@
 - (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (_Bool)isValidForPersistence;
-- (id)batchedAssets;
+- (id)_orderedBatchedAssets;
 - (_Bool)_isDateAfterEndDate:(id)arg1;
 - (_Bool)_isDateBeforeStartDate:(id)arg1;
 - (_Bool)_isAssetIncludedInImportDates:(id)arg1;
@@ -39,11 +39,12 @@
 - (void)revalidateImportDates;
 - (void)_updateEndDate:(id)arg1;
 - (void)_updateStartDate:(id)arg1;
+- (id)mutableAssets;
 - (_Bool)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (id)payloadForChangedKeys:(id)arg1;
 
 // Remaining properties
-@property(retain, nonatomic) NSOrderedSet *assets; // @dynamic assets;
+@property(retain, nonatomic) NSSet *assets; // @dynamic assets;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

@@ -15,7 +15,7 @@
 @interface TIProactiveQuickTypeManager : NSObject <TIProactiveQuickTypeManaging, TIKeyboardActivityObserving>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    id <_ICPredictionManaging> _inputContextManager;
+    id <_ICPredictionManaging> _inputContextPredictionManager;
     TIProactiveTrigger *_lastTriggerForSuggestion;
     NSDate *_lastSuggestionTime;
     NSString *_maxLengthProactiveCandidate;
@@ -23,30 +23,35 @@
 }
 
 + (id)buildSecureCandidateFrom:(id)arg1 withSecureCandidateRenderer:(id)arg2 input:(id)arg3;
++ (id)proactiveTriggerForTextContentType:(id)arg1 withContextBeforeInput:(id)arg2 autofillMode:(unsigned long long)arg3;
 + (id)proactiveTriggerForTextContentType:(id)arg1;
 + (id)singletonInstance;
-+ (id)sharedTIProactiveQuickTypeManager;
++ (id)sharedInstance;
 + (id)buildSecureCandidateForTestFrom:(id)arg1 withSecureCandidateRenderer:(id)arg2 input:(id)arg3;
 + (void)setSharedTIProactiveQuickTypeManager:(id)arg1;
 - (void).cxx_destruct;
 - (_Bool)isAutoCompleteEnabled;
 - (_Bool)isAutoPopupEnabled;
 - (_Bool)isEnabled;
+- (id)searchForMeCardRegions;
+- (void)propogateMetrics:(id)arg1 data:(id)arg2;
+- (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)reset;
 - (unsigned long long)matchProactiveCandidateToUserInput:(id)arg1 userInput:(id)arg2;
 - (void)loggingProactiveEngagementMetric:(unsigned long long)arg1 withLocale:(id)arg2 fieldType:(id)arg3;
 - (void)keyboardActivityDidTransition:(id)arg1;
 - (void)generateAndRenderProactiveSuggestionsWithInput:(id)arg1 withSecureCandidateRenderer:(id)arg2 withRenderTraits:(id)arg3 textContentType:(id)arg4 async:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)generateAndRenderProactiveSuggestionsWithInput:(id)arg1 withSecureCandidateRenderer:(id)arg2 withRenderTraits:(id)arg3 textContentType:(id)arg4;
-- (id)getMeCardEmailAddresses;
+- (id)searchForMeCardEmailAddresses;
 - (void)suggestionNotAccepted:(id)arg1;
 - (void)suggestionAccepted:(id)arg1 fieldType:(id)arg2;
 - (void)userActionWithNoNewTriggers:(id)arg1 fieldType:(id)arg2;
-- (void)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withSecureCandidateRenderer:(id)arg3 withRenderTraits:(id)arg4 withInput:(id)arg5 withRecipient:(id)arg6 withApplication:(id)arg7 withLocale:(id)arg8 withTextContentType:(id)arg9 withAvailableApps:(id)arg10 logBlock:(CDUnknownBlockType)arg11 async:(_Bool)arg12 completion:(CDUnknownBlockType)arg13;
-- (id)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withSecureCandidateRenderer:(id)arg3 withRenderTraits:(id)arg4 withInput:(id)arg5 withRecipient:(id)arg6 withApplication:(id)arg7 withLocale:(id)arg8 withTextContentType:(id)arg9 withAvailableApps:(id)arg10 logBlock:(CDUnknownBlockType)arg11;
+- (void)generateAndRenderProactiveSuggestionsForInput:(id)arg1 withKeyboardState:(id)arg2 withAdditionalPredictions:(id)arg3 withSecureCandidateRenderer:(id)arg4 withRenderTraits:(id)arg5 withInput:(id)arg6 withRecipient:(id)arg7 withApplication:(id)arg8 withLocale:(id)arg9 nextInputWillInsertAutospace:(_Bool)arg10 withIsResponseDenyListed:(_Bool)arg11 withShouldDisableAutoCaps:(_Bool)arg12 withAvailableApps:(id)arg13 logBlock:(CDUnknownBlockType)arg14 async:(_Bool)arg15 completion:(CDUnknownBlockType)arg16;
+- (id)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withKeyboardState:(id)arg2 withAdditionalPredictions:(id)arg3 withSecureCandidateRenderer:(id)arg4 withRenderTraits:(id)arg5 withInput:(id)arg6 withRecipient:(id)arg7 withApplication:(id)arg8 withLocale:(id)arg9 nextInputWillInsertAutospace:(_Bool)arg10 withAvailableApps:(id)arg11 logBlock:(CDUnknownBlockType)arg12;
 - (void)addToTypologyTrace:(CDUnknownBlockType)arg1 withTriggerSource:(id)arg2 withTriggerType:(id)arg3 withTriggerSubType:(id)arg4 withPredictionResults:(id)arg5 withFirstTrigger:(id)arg6;
 - (id)renderItems:(id)arg1 withAdditionalPredictions:(id)arg2 withSecureCandidateRenderer:(id)arg3 withRenderTraits:(id)arg4 withInput:(id)arg5;
 - (id)_makeQueue;
+- (_Bool)usePQT2Flow;
 - (void)dealloc;
 - (id)init;
 - (id)getLastSuggestionTime;

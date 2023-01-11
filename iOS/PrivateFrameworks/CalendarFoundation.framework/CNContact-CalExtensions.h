@@ -12,6 +12,7 @@
 - (id)CalValueForKey:(id)arg1 withLabel:(id)arg2;
 - (id)CalFirstValueForKey:(id)arg1;
 - (id)CalBirthdayStringForDate:(id)arg1;
+- (id)CalPhoneNumbers;
 - (id)CalEmailAddresses;
 - (id)CalDisplayName;
 @end

@@ -8,7 +8,7 @@
 
 #import <CoreML/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSOrderedSet, NSString, NSURL;
+@class MLLayerPath, NSArray, NSDictionary, NSOrderedSet, NSString, NSURL;
 
 @interface MLModelDescription : NSObject <NSSecureCoding>
 {
@@ -18,28 +18,32 @@
     NSString *_predictedFeatureName;
     NSString *_predictedProbabilitiesName;
     NSDictionary *_metadata;
+    NSArray *_classLabels;
     NSOrderedSet *_inputFeatureNames;
     NSOrderedSet *_outputFeatureNames;
     NSURL *_modelURL;
     NSDictionary *_trainingInputDescriptionsByName;
     NSDictionary *_parameterDescriptionsByKey;
+    MLLayerPath *_modelPath;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)metadataWithFormat:(struct _MLModelMetadataSpecification *)arg1;
 + (id)metadataWithSpecification:(struct _MLModelSpecification *)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) MLLayerPath *modelPath; // @synthesize modelPath=_modelPath;
 @property(retain, nonatomic) NSDictionary *parameterDescriptionsByKey; // @synthesize parameterDescriptionsByKey=_parameterDescriptionsByKey;
 @property(retain, nonatomic) NSDictionary *trainingInputDescriptionsByName; // @synthesize trainingInputDescriptionsByName=_trainingInputDescriptionsByName;
 @property(nonatomic) _Bool isUpdatable; // @synthesize isUpdatable=_isUpdatable;
 @property(retain, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 @property(retain) NSOrderedSet *outputFeatureNames; // @synthesize outputFeatureNames=_outputFeatureNames;
 @property(retain) NSOrderedSet *inputFeatureNames; // @synthesize inputFeatureNames=_inputFeatureNames;
+@property(copy, nonatomic) NSArray *classLabels; // @synthesize classLabels=_classLabels;
 @property(readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(readonly, copy, nonatomic) NSString *predictedProbabilitiesName; // @synthesize predictedProbabilitiesName=_predictedProbabilitiesName;
 @property(readonly, copy, nonatomic) NSString *predictedFeatureName; // @synthesize predictedFeatureName=_predictedFeatureName;
 @property(readonly, nonatomic) NSDictionary *outputDescriptionsByName; // @synthesize outputDescriptionsByName=_outputDescriptionsByName;
 @property(readonly, nonatomic) NSDictionary *inputDescriptionsByName; // @synthesize inputDescriptionsByName=_inputDescriptionsByName;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -51,6 +55,7 @@
 - (id)initWithModelDescriptionSpecification:(struct _MLModelDescriptionSpecification *)arg1 error:(id *)arg2;
 - (id)initWithInputDescriptions:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 metadata:(id)arg5;
 - (id)initWithInputDescriptions:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 trainingInputDescriptions:(id)arg5 metadata:(id)arg6;
+- (id)initWithInputDescriptionsAndFeatureNames:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 trainingInputDescriptions:(id)arg5 inputFeatureNames:(id)arg6 outputFeatureNames:(id)arg7 metadata:(id)arg8;
 - (id)debugQuickLookObject;
 
 @end

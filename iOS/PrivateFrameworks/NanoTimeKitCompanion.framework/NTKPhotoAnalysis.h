@@ -20,6 +20,9 @@
 + (id)analysisWithImage:(id)arg1 alignment:(id)arg2;
 + (id)invalidAnalysis;
 + (id)defaultAnalysis;
++ (_Bool)_dictionaryHasValidValues:(id)arg1;
++ (_Bool)_dictionaryPassesBasicCheck:(id)arg1;
++ (_Bool)isValidDictionary:(id)arg1;
 @property(readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

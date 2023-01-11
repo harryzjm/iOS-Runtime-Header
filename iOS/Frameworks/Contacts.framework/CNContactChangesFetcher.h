@@ -16,9 +16,6 @@ __attribute__((visibility("hidden")))
     NSSet *_keysToFetch;
 }
 
-@property(nonatomic) _Bool unify; // @synthesize unify=_unify;
-@property(retain, nonatomic) NSSet *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
-@property(retain, nonatomic) NSSet *identifiers; // @synthesize identifiers=_identifiers;
 - (void).cxx_destruct;
 
 @end

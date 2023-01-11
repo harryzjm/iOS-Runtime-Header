@@ -14,22 +14,23 @@
 
 @interface HFColorPalette : NSObject <NAEquatable, NSCopying, NSMutableCopying>
 {
-    NSArray *_colors;
     unsigned long long _paletteType;
+    NSArray *_rawColors;
 }
 
 + (id)defaultColorPaletteOfType:(unsigned long long)arg1;
-+ (id)defaultColorPalette;
 + (id)_defaultColorsOfType:(unsigned long long)arg1;
 + (id)_defaultTemperatureColors;
 + (id)_defaultRGBColors;
 + (id)warmWhiteColor;
-@property(readonly, nonatomic) unsigned long long paletteType; // @synthesize paletteType=_paletteType;
-@property(copy, nonatomic) NSArray *colors; // @synthesize colors=_colors;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *rawColors; // @synthesize rawColors=_rawColors;
+@property(readonly, nonatomic) unsigned long long paletteType; // @synthesize paletteType=_paletteType;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)colorPaletteByAdjustingForColorProfile:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *colors;
+- (_Bool)_isNaturalLightPalette;
 - (id)serializedRepresentation;
 - (id)initWithSerializedRepresentation:(id)arg1 type:(unsigned long long)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

@@ -13,12 +13,10 @@
 
 - (void).cxx_destruct;
 - (_Bool)wantsAsynchronousSurfaceRetentionAssertion;
-- (_Bool)wantsMinificationFilter;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (long long)sceneDeactivationReason;
-- (_Bool)wantsResignActiveAssertion;
-- (_Bool)isHomeGrabberVisible;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
+- (_Bool)isHomeGrabberVisibleForIndex:(unsigned long long)arg1;
 - (id)initWithActiveAppLayout:(id)arg1;
 
 @end

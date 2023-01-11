@@ -14,10 +14,32 @@
 }
 
 + (id)keyWithLanguage:(id)arg1 andResponse:(id)arg2;
++ (_Bool)isProfane:(id)arg1 inLocales:(id)arg2;
 + (id)instanceInMemory;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (double)getUsageSpreadForReply:(id)arg1 language:(id)arg2;
+- (double)getPerRecipientCountForReply:(id)arg1 language:(id)arg2 recipient:(id)arg3;
 - (void)destroyInstanceInMemory;
+- (_Bool)deltaForResponsesOnRow:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)countCustomResponsesAfterTruncatingTable:(unsigned long long)arg1;
+- (unsigned long long)countCustomResponsesAfterPruningWithMinimumCountThreshold:(double)arg1;
+- (void)decayAllCustomResponsesWithDecayFactor:(double)arg1 filteringBatchSize:(unsigned long long)arg2;
+- (id)nearestCustomResponsesToPromptEmbedding:(id)arg1 recipient:(id)arg2 limit:(unsigned long long)arg3 withinRadius:(float)arg4 responseCountExponent:(float)arg5 minimumDecayedCount:(float)arg6 compatibilityVersion:(unsigned long long)arg7 language:(id)arg8 locale:(id)arg9 allowProfanity:(_Bool)arg10 minimumTimeInterval:(double)arg11 usageSpreadExponent:(float)arg12;
+- (void)prunePerRecipientTableWithMaxRows:(unsigned long long)arg1;
+- (void)calculateUsageSpreads;
+- (void)recordMessagesInBatchAsCustomResponsesWithEmbedder:(CDUnknownBlockType)arg1 compatibilityVersion:(unsigned long long)arg2;
+- (_Bool)resetDbIfNeededCompareWithCompatibilityVersion:(unsigned long long)arg1;
+- (void)setProfanityLocale:(id)arg1 andModelVersion:(long long)arg2;
+- (id)getModelVersion;
+- (id)getProfanityLocale;
+- (void)filterBatchWithMinimumDistinctRecipients:(unsigned long long)arg1 minimumReplyOccurences:(unsigned long long)arg2;
+- (void)designateFilteringBatch:(unsigned long long)arg1;
+- (void)recordKnownCustomResponsesInBatchWithEmbedder:(CDUnknownBlockType)arg1 compatibilityVersion:(unsigned long long)arg2;
+- (id)embeddingForPrompt:(id)arg1 language:(id)arg2 embedder:(CDUnknownBlockType)arg3;
+- (_Bool)addingMessageExceedsBatchLimit:(unsigned long long)arg1 tableLimit:(unsigned long long)arg2 message:(id)arg3 language:(id)arg4 prompt:(id)arg5 recipientHandle:(id)arg6 sentAt:(id)arg7;
+- (void)_incrementCustomResponseInDb:(id)arg1 reply:(id)arg2 language:(id)arg3 embedding:(id)arg4 sentAt:(double)arg5 recipient:(id)arg6 messagesRowId:(long long)arg7 onError:(CDUnknownBlockType)arg8;
+- (void)_addCustomResponseToDb:(id)arg1 reply:(id)arg2 language:(id)arg3 embedding:(id)arg4 sentAt:(double)arg5 recipient:(id)arg6 messagesRowId:(long long)arg7 onError:(CDUnknownBlockType)arg8;
 - (void)addWrittenToResponse:(id)arg1 language:(id)arg2 isMatch:(_Bool)arg3;
 - (void)addSelectedToResponse:(id)arg1 language:(id)arg2;
 - (void)addDisplayedToResponses:(id)arg1 language:(id)arg2;

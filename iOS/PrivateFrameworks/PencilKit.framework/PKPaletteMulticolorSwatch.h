@@ -4,27 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PencilKit/PKPaletteMultiColorSwatchProperties-Protocol.h>
-
-@class NSString, PKSwatchColor;
-
-@interface PKPaletteMulticolorSwatch <PKPaletteMultiColorSwatchProperties>
+@interface PKPaletteMulticolorSwatch
 {
 }
 
 - (_Bool)wantsColorBulletVisible;
 - (_Bool)wantsBackgroundViewColor;
 - (id)newColorBackgroundView;
+- (id)presentationColor;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(nonatomic, getter=isSelected) _Bool selected;
-@property(nonatomic) _Bool showsSelectionHighlight;
-@property(readonly) Class superclass;
-@property(retain, nonatomic) PKSwatchColor *swatchColor;
 
 @end
 

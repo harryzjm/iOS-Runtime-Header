@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLKDevice, NSDate, NSMapTable, NSMutableArray, NTKComplication;
+@class CLKDevice, NSDate, NSMapTable, NSMutableArray, NSString, NTKComplication, NTKFace;
 @protocol NTKComplicationDisplay;
 
 @interface NTKComplicationController : NSObject
@@ -20,6 +20,8 @@
     _Bool _faceZooming;
     NTKComplication *_complication;
     long long _complicationFamily;
+    NTKFace *_face;
+    NSString *_slot;
     CLKDevice *_device;
     CDUnknownBlockType _invalidationHandler;
     NSDate *_pauseDate;
@@ -35,6 +37,7 @@
 + (_Bool)_acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 + (Class)controllerClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 + (id)controllerForComplication:(id)arg1 withRequestedFamily:(long long)arg2 face:(id)arg3 slot:(id)arg4;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long effectiveFaceDataMode; // @synthesize effectiveFaceDataMode=_effectiveFaceDataMode;
 @property(readonly, nonatomic) long long animationMode; // @synthesize animationMode=_animationMode;
 @property(readonly, nonatomic) long long updatingMode; // @synthesize updatingMode=_updatingMode;
@@ -44,10 +47,12 @@
 @property(retain, nonatomic) NSDate *pauseDate; // @synthesize pauseDate=_pauseDate;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
+@property(readonly, nonatomic) NSString *slot; // @synthesize slot=_slot;
+@property(readonly, nonatomic) NTKFace *face; // @synthesize face=_face;
 @property(readonly, nonatomic) long long complicationFamily; // @synthesize complicationFamily=_complicationFamily;
 @property(readonly, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
-- (void).cxx_destruct;
-- (void)notifyDelegateOnTimelineChange;
+- (void)_handleRenderStatsForDisplayWrapper:(id)arg1 withTime:(double)arg2 cost:(double)arg3;
+- (void)notifyDelegateOnTimelineChangeWithTritiumUpdatePriority:(long long)arg1;
 - (id)complicationApplicationIdentifier;
 - (void)performBackgroundDataRefresh;
 - (void)_openApp:(id)arg1 withURL:(id)arg2 result:(CDUnknownBlockType)arg3;
@@ -79,7 +84,7 @@
 - (void)_updateEffectiveCachingMode;
 - (void)DEPRECATEDInvalidate;
 - (id)_initWithComplication:(id)arg1 legacyDisplay:(id)arg2 forDevice:(id)arg3;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 face:(id)arg3 slot:(id)arg4;
 - (Class)richComplicationDisplayViewClass;
 - (_Bool)wantsLegacyDisplay;
 

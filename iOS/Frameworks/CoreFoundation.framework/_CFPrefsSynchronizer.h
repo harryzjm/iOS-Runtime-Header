@@ -18,15 +18,6 @@ __attribute__((visibility("hidden")))
     _Bool _active;
 }
 
-+ (id)sharedInstance;
-- (void)clear;
-- (void)clear_alreadyLocked;
-- (void)synchronize;
-- (void)synchronizeForDaemonTermination;
-- (const struct __CFSet *)copyDirtySourcesSnapshotAndClear;
-- (void)noteDirtySource:(id)arg1;
-- (void)disableTimer_alreadyLocked;
-- (void)enableTimer_alreadyLocked;
 - (id)init;
 
 @end

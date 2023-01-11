@@ -8,13 +8,24 @@
 
 #import <GeoServices/GEOMapItem-Protocol.h>
 
-@class GEOAddress, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
+@class GEOAddress, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @interface GEOBaseMapItem : NSObject <GEOMapItem>
 {
 }
 
+@property(readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
+@property(readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
+@property(readonly, nonatomic, getter=_totalPhotoCount) unsigned long long totalPhotoCount;
+@property(readonly, nonatomic, getter=_canDownloadMorePhotos) _Bool canDownloadMorePhotos;
+@property(readonly, nonatomic, getter=_identifierHistory) NSArray *identifierHistory;
+@property(readonly, nonatomic, getter=_hasPlaceQuestionnaire) _Bool hasPlaceQuestionnaire;
+@property(readonly, nonatomic, getter=_placeQuestionnaire) GEOPlaceQuestionnaire *placeQuestionnaire;
+@property(readonly, nonatomic, getter=_overallAppleRating) GEOAppleRating *overallRating;
+@property(readonly, nonatomic, getter=_appleRatings) NSArray *appleRatings;
+@property(readonly, nonatomic, getter=_supportsAppleRatings) _Bool supportsAppleRatings;
+@property(readonly, nonatomic, getter=_alternateSearchableNames) NSArray *alternateSearchableNames;
 @property(readonly, nonatomic, getter=_showSuggestAnEditButton) _Bool showSuggestAnEditButton;
 @property(readonly, nonatomic, getter=_enableRAPLightweightFeedback) _Bool enableRAPLightweightFeedback;
 @property(readonly, nonatomic, getter=_walletPlaceStyling) GEOStyleAttributes *walletPlaceStyling;
@@ -62,7 +73,9 @@
 @property(readonly, nonatomic) GEOMapItemDetourInfo *detourInfo;
 @property(readonly, nonatomic, getter=_placecardLayoutConfiguration) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
 @property(readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
+@property(readonly, nonatomic, getter=_placeCollectionsIds) NSArray *placeCollectionsIds;
 @property(readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
+@property(readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property(readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
 @property(readonly, nonatomic, getter=_messageLink) GEOMessageLink *messageLink;
 @property(readonly, nonatomic, getter=_brandMUID) unsigned long long brandMUID;

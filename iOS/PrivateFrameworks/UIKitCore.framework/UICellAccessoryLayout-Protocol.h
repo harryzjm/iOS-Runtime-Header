@@ -6,18 +6,19 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, UICellAccessory, UICellAccessoryManager;
+@class NSArray, NSString, UICellAccessoryManager, _UICellAccessory;
 
 @protocol UICellAccessoryLayout <NSObject>
-@property(nonatomic) double minimumCompressionLayoutWidth;
+@property(copy, nonatomic) CDUnknownBlockType disclosureLayoutWidthProvider;
+@property(copy, nonatomic) CDUnknownBlockType standardLayoutWidthProvider;
 @property(nonatomic) unsigned long long edge;
 @property(nonatomic) double safeAreaInset;
 @property(nonatomic) __weak UICellAccessoryManager *manager;
 - (struct CGRect)endLayout;
-- (double)finalAlphaForAccessory:(UICellAccessory *)arg1;
-- (double)initialAlphaForAccessory:(UICellAccessory *)arg1;
-- (struct CGRect)finalFrameForAccessory:(UICellAccessory *)arg1;
-- (struct CGRect)initialFrameForAccessory:(UICellAccessory *)arg1;
+- (double)finalAlphaForAccessory:(_UICellAccessory *)arg1;
+- (double)initialAlphaForAccessory:(_UICellAccessory *)arg1;
+- (struct CGRect)finalFrameForAccessory:(_UICellAccessory *)arg1;
+- (struct CGRect)initialFrameForAccessory:(_UICellAccessory *)arg1;
 - (void)prepareLayoutForAccessories:(NSArray *)arg1 previousAccessories:(NSArray *)arg2 configurationIdentifier:(NSString *)arg3;
 @end
 

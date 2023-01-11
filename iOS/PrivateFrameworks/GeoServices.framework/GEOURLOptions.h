@@ -14,12 +14,14 @@
 @interface GEOURLOptions : PBCodable <GEOURLSerializable, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOURLCamera *_camera;
     GEOURLCenterSpan *_centerSpan;
     NSString *_referralIdentifier;
     GEOURLRouteHandle *_routeHandle;
     GEOURLTimePoint *_timePoint;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _mapType;
     int _transportType;
     int _userTrackingMode;
@@ -36,16 +38,7 @@
         unsigned int read_referralIdentifier:1;
         unsigned int read_routeHandle:1;
         unsigned int read_timePoint:1;
-        unsigned int wrote_camera:1;
-        unsigned int wrote_centerSpan:1;
-        unsigned int wrote_referralIdentifier:1;
-        unsigned int wrote_routeHandle:1;
-        unsigned int wrote_timePoint:1;
-        unsigned int wrote_mapType:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_userTrackingMode:1;
-        unsigned int wrote_connectedToCar:1;
-        unsigned int wrote_enableTraffic:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -59,29 +52,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool hasConnectedToCar;
 @property(nonatomic) _Bool connectedToCar;
 @property(retain, nonatomic) GEOURLTimePoint *timePoint;
 @property(readonly, nonatomic) _Bool hasTimePoint;
-- (void)_readTimePoint;
 @property(retain, nonatomic) GEOURLRouteHandle *routeHandle;
 @property(readonly, nonatomic) _Bool hasRouteHandle;
-- (void)_readRouteHandle;
 - (int)StringAsUserTrackingMode:(id)arg1;
 - (id)userTrackingModeAsString:(int)arg1;
 @property(nonatomic) _Bool hasUserTrackingMode;
 @property(nonatomic) int userTrackingMode;
 @property(retain, nonatomic) NSString *referralIdentifier;
 @property(readonly, nonatomic) _Bool hasReferralIdentifier;
-- (void)_readReferralIdentifier;
 @property(retain, nonatomic) GEOURLCamera *camera;
 @property(readonly, nonatomic) _Bool hasCamera;
-- (void)_readCamera;
 @property(retain, nonatomic) GEOURLCenterSpan *centerSpan;
 @property(readonly, nonatomic) _Bool hasCenterSpan;
-- (void)_readCenterSpan;
 - (int)StringAsTransportType:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasTransportType;
@@ -92,6 +83,8 @@
 @property(nonatomic) int mapType;
 @property(nonatomic) _Bool hasEnableTraffic;
 @property(nonatomic) _Bool enableTraffic;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)urlRepresentation;
 - (id)initWithUrlRepresentation:(id)arg1;
 

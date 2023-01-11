@@ -6,19 +6,22 @@
 
 #import <NotesUI/NSObject-Protocol.h>
 
-@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
+@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString, NoteContext;
 @protocol ICLegacyAccount, ICLegacyFolder, ICLegacyNote;
 
 @protocol ICLegacyFolder <NSObject>
-- (_Bool)isDeletedOrInTrash;
-- (NSManagedObjectContext *)managedObjectContext;
-- (NSManagedObjectID *)objectID;
+@property(readonly, nonatomic) _Bool isTrashFolder;
+@property(readonly, nonatomic) _Bool isDefaultFolder;
+@property(readonly, nonatomic) _Bool isDeletedOrInTrash;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(readonly, nonatomic) NSSet *changes;
+@property(readonly, nonatomic) long long depth;
+@property(readonly, nonatomic) id <ICLegacyFolder> parentFolder;
+@property(readonly, copy, nonatomic) NSString *localizedTitle;
+@property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, nonatomic) id <ICLegacyAccount> account;
 - (void)addNotesObject:(id <ICLegacyNote>)arg1;
-- (id <ICLegacyNote>)newNoteInContext:(struct NoteContext *)arg1;
-- (NSSet *)changes;
-- (id <ICLegacyFolder>)parentFolder;
-- (NSString *)title;
-- (NSString *)name;
-- (id <ICLegacyAccount>)account;
+- (id <ICLegacyNote>)newNoteInContext:(NoteContext *)arg1;
 @end
 

@@ -18,7 +18,7 @@
     double _alpha;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) _Bool unit; // @synthesize unit=_unit;
 @property(readonly, nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property(nonatomic) unsigned long long numberOfRightHandSides; // @synthesize numberOfRightHandSides=_numberOfRightHandSides;

@@ -7,10 +7,11 @@
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFAppSearchViewControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFTriggerMultiSelectCellDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableOrderedSet, NSString, UITableView;
 
-@interface WFAppInFocusTriggerConfigurationViewController <WFAppSearchViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface WFAppInFocusTriggerConfigurationViewController <WFAppSearchViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, WFTriggerMultiSelectCellDelegate>
 {
     NSMutableOrderedSet *_selectedApps;
     NSMutableArray *_displayNameOfSelectedApps;
@@ -18,17 +19,19 @@
     NSArray *_sections;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) NSMutableArray *displayNameOfSelectedApps; // @synthesize displayNameOfSelectedApps=_displayNameOfSelectedApps;
 @property(retain, nonatomic) NSMutableOrderedSet *selectedApps; // @synthesize selectedApps=_selectedApps;
-- (void).cxx_destruct;
+- (void)cell:(id)arg1 didSelectOptionWithLeftViewSelected:(_Bool)arg2 rightViewSelected:(_Bool)arg3;
 - (void)appSearchViewController:(id)arg1 didFinishWithApps:(id)arg2;
 - (void)appSearchViewControllerDidCancel:(id)arg1;
 - (void)updateDisplayNameOfSelectedApps;
 - (void)presentNavControllerWithRootViewController:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)pickerView:(id)arg1 viewForRow:(long long)arg2 forComponent:(long long)arg3 reusingView:(id)arg4;
 - (id)accessibilityElements;
+- (_Bool)canBecomeFocused;
 - (_Bool)isAccessibilityElement;
 
 @end

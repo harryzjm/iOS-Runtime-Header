@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_updateFooterViewFrameForCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)_accessibilityTitleForLeadingActionWithCell:(id)arg1;
 - (void)scheduleAutomaticMarkAsReadForMessage:(id)arg1;
 - (void)_axCancelMarkAsReadTimer;
@@ -19,22 +20,22 @@
 - (void)_axSetAutomaticallyMarkReadTimer:(id)arg1;
 - (id)_axAutomaticallyMarkReadTimer;
 - (void)messageViewController:(id)arg1 didTapRevealActionsButton:(id)arg2;
+- (void)_navigateMessageDownKeyCommandInvoked:(id)arg1;
+- (void)_navigateMessageUpKeyCommandInvoked:(id)arg1;
 - (void)arrowControlsView:(id)arg1 didTapButtonWithDirection:(int)arg2;
 - (id)arrowControlsView;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)_shrinkMessagesToBarButton:(id)arg1 withInteraction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_scrollToReferenceMessage;
+- (void)_scrollToInitialPosition;
 - (void)_accessibilityPerformLeadingActionWithCell:(id)arg1;
 - (id)_axMessageSubjectView;
 - (void)_axSimulateTapArrowButtonWithDirection:(int)arg1;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (id)_axFirstVisibleCell;
+- (id)_axFirstVisibleExpandedCell;
 - (id)_accessibilityFirstElementForFocus;
 - (id)_axElementForFocusInCell:(id)arg1 shouldAllowCollapsedCell:(_Bool)arg2;
 - (id)accessibilityCustomRotors;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axSetFocusOnReferenceOnMessage:(_Bool)arg1;
-- (_Bool)_axFocusOnReferenceMessage;
 - (void)_axSetSkipNextFocusOnMessage:(_Bool)arg1;
 - (_Bool)_axSkipNextFocusOnMessage;
 

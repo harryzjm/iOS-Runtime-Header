@@ -8,12 +8,17 @@
 
 #import <Notes/ICNoteVisibilityTesting-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface NoteCollectionObject : NSManagedObject <ICNoteVisibilityTesting>
 {
+    NSNumber *transientNoteCount;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *transientNoteCount; // @synthesize transientNoteCount;
+@property(readonly, nonatomic) _Bool isAllNotesContainer;
+- (id)searchDomainIdentifier;
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
 - (id)predicateForNotes;

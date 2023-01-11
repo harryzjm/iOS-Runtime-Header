@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFContextSnapshot-Protocol.h>
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSOrderedSet;
+@class NSDate, NSDictionary, NSOrderedSet, NSString;
 
-@interface AFClockAlarmSnapshot : NSObject <NSCopying, NSSecureCoding>
+@interface AFClockAlarmSnapshot : NSObject <AFContextSnapshot, NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     unsigned long long _generation;
     NSDate *_date;
@@ -21,20 +23,31 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSOrderedSet *notifiedFiringAlarmIDs; // @synthesize notifiedFiringAlarmIDs=_notifiedFiringAlarmIDs;
 @property(readonly, copy, nonatomic) NSDictionary *alarmsByID; // @synthesize alarmsByID=_alarmsByID;
 @property(readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
-- (void).cxx_destruct;
+- (id)buildDictionaryRepresentation;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithGeneration:(unsigned long long)arg1 date:(id)arg2 alarmsByID:(id)arg3 notifiedFiringAlarmIDs:(id)arg4;
+- (id)mostRecentFiringAlarm;
+- (_Bool)hasFiringAlarms;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
+- (id)ad_shortDescription;
+- (id)initWithSerializedBackingStore:(id)arg1;
+- (id)serializedBackingStore;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKUploadRequestConfiguration, NSArray, NSMutableDictionary;
+#import <CloudKit/CKRepairAssetsOperationCallbacks-Protocol.h>
 
-@interface CKRepairAssetsOperation
+@class CKRepairAssetsOperationInfo, CKUploadRequestConfiguration, NSArray, NSMutableDictionary;
+@protocol CKRepairAssetsOperationCallbacks;
+
+@interface CKRepairAssetsOperation <CKRepairAssetsOperationCallbacks>
 {
     CDUnknownBlockType _repairAssetsCompletionBlock;
     NSArray *_assets;
@@ -19,6 +22,8 @@
     CKUploadRequestConfiguration *_uploadRequestConfiguration;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
 @property(retain, nonatomic) NSMutableDictionary *perItemErrorsByRecordID; // @synthesize perItemErrorsByRecordID=_perItemErrorsByRecordID;
 @property(retain, nonatomic) NSArray *unavailablePackages; // @synthesize unavailablePackages=_unavailablePackages;
@@ -27,10 +32,9 @@
 @property(retain, nonatomic) NSArray *assetMetadata; // @synthesize assetMetadata=_assetMetadata;
 @property(retain, nonatomic) NSArray *packages; // @synthesize packages=_packages;
 @property(retain, nonatomic) NSArray *assets; // @synthesize assets=_assets;
-- (void).cxx_destruct;
 - (id)includedMetadata;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleAssetRepairCompletionForRecordID:(id)arg1 error:(id)arg2;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -40,6 +44,10 @@
 - (id)activityCreate;
 @property(readonly, copy, nonatomic) CKUploadRequestConfiguration *resolvedUploadRequestConfiguration;
 - (id)initWithAssets:(id)arg1 packages:(id)arg2 assetMetadata:(id)arg3 packageMetadata:(id)arg4 unavailableAssets:(id)arg5 unavailablePackages:(id)arg6;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKRepairAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKRepairAssetsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

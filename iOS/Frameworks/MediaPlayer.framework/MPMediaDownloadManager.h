@@ -13,9 +13,12 @@
 }
 
 + (id)sharedManager;
+- (void)downloadLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)downloadForIdentifierSet:(id)arg1 downloadState:(long long *)arg2;
 - (id)activeDownloadForStoreID:(long long)arg1;
 - (id)activeDownloadForMediaItemPersistentID:(long long)arg1;
 - (_Bool)hasActiveDownloads;
+@property(readonly, nonatomic) long long activeDownloadsCount;
 - (void)cancelDownloads:(id)arg1;
 - (void)sendKeepLocalStatusChanged:(long long)arg1 forLibraryIdentifier:(long long)arg2 entityType:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)enqueueAssetForDownload:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

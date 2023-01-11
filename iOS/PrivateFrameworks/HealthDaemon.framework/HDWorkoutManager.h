@@ -9,13 +9,14 @@
 #import <HealthDaemon/HDDevicePowerObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDSchoolTimeObserverDelegate-Protocol.h>
 #import <HealthDaemon/HDWorkoutDataAccumulatorObserver-Protocol.h>
 #import <HealthDaemon/HDWorkoutSessionObserver-Protocol.h>
 
-@class HDAlertSuppressor, HDAssertion, HDLocationManager, HDProfile, HDWatchAppStateMonitor, HDWorkoutLocationSmoother, HDWorkoutSessionServer, HKObserverSet, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
+@class HDAlertSuppressor, HDAssertion, HDLocationManager, HDProfile, HDSchoolTimeObserver, HDWatchAppStateMonitor, HDWorkoutLocationSmoother, HDWorkoutSessionServer, HKObserverSet, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDWorkoutManager : NSObject <HDDevicePowerObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDWorkoutDataAccumulatorObserver, HDWorkoutSessionObserver>
+@interface HDWorkoutManager : NSObject <HDDevicePowerObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDWorkoutDataAccumulatorObserver, HDSchoolTimeObserverDelegate, HDWorkoutSessionObserver>
 {
     HDWorkoutSessionServer *_currentWorkout;
     HDAssertion *_currentWorkoutAssertion;
@@ -30,18 +31,25 @@
     NSMutableArray *_postLaunchRecoveryBlocks;
     NSObject<OS_dispatch_queue> *_postLaunchRecoveryCallbackQueue;
     HKObserverSet *_currentWorkoutObservers;
+    HDSchoolTimeObserver *_schoolTime;
     HDProfile *_profile;
     HDAlertSuppressor *_alertSuppressor;
     NSObject<OS_dispatch_queue> *_queue;
     HDWorkoutLocationSmoother *_locationSmoother;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HDWorkoutLocationSmoother *locationSmoother; // @synthesize locationSmoother=_locationSmoother;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) HDLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(readonly, nonatomic) HDAlertSuppressor *alertSuppressor; // @synthesize alertSuppressor=_alertSuppressor;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
+- (void)unitTest_setInSchoolMode:(_Bool)arg1;
+- (void)_queue_endSessionForSchoolMode:(id)arg1;
+- (_Bool)_queue_endSessionIfInSchoolMode:(id)arg1;
+- (void)_queue_schoolModeDidChangeTo:(_Bool)arg1;
+- (void)schoolTime:(id)arg1 didChangeSchoolModeTo:(_Bool)arg2;
+- (_Bool)_queue_inSchoolMode;
 - (_Bool)isPowerSavingSupportedForCurrentActivity;
 - (void)endHeartRateRecovery;
 @property(readonly, nonatomic) _Bool isInHeartRateRecovery;
@@ -51,6 +59,7 @@
 - (id)_workoutSessionNotCurrentError:(id)arg1;
 - (void)_queue_sessionFinished:(id)arg1;
 - (void)_queue_setCurrentWorkout:(id)arg1;
+- (void)workoutSession:(id)arg1 didUpdateControllerStateForRecoveryIdentifier:(id)arg2;
 - (void)workoutSession:(id)arg1 didUpdateDataAccumulator:(id)arg2;
 - (void)workoutSession:(id)arg1 didFailWithError:(id)arg2;
 - (void)workoutSession:(id)arg1 didGenerateEvent:(id)arg2;
@@ -68,6 +77,7 @@
 - (void)daemonReady:(id)arg1;
 - (id)diagnosticDescription;
 - (void)pauseActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)currentWorkoutSessionServer;
 - (void)unregisterCurrentWorkoutObserver:(id)arg1;
 - (void)registerCurrentWorkoutObserver:(id)arg1;
 - (void)getCurrentWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;

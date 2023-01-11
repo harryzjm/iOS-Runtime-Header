@@ -35,17 +35,15 @@
     GEONavigationRouteSummary *_routeSummary;
     GEONavigationRouteTransitSummary *_transitRouteSummary;
     GEONavigationGuidanceState *_guidanceState;
-    NSData *_trafficIncidentAlertDetailsData;
     int _navigationVoiceVolume;
     _Bool _isNavigatingInLowGuidance;
     _Bool _isConnectedToCarplay;
     id <GEOServerFormattedStepStringFormatter> _formatter;
 }
 
-@property(retain, nonatomic) id <GEOServerFormattedStepStringFormatter> formatter; // @synthesize formatter=_formatter;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <GEOServerFormattedStepStringFormatter> formatter; // @synthesize formatter=_formatter;
 - (void)_sendNavigationVoiceVolume;
-- (void)_sendTrafficIncidentAlertDetailsData;
 - (void)_sendPositionFromDestination;
 - (void)_sendPositionFromManeuver;
 - (void)_sendPositionFromSign;
@@ -64,7 +62,6 @@
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
 - (void)setIsNavigatingInLowGuidance:(_Bool)arg1;
 - (void)setNavigationVoiceVolume:(int)arg1;
-- (void)setTrafficIncidentDetailsData:(id)arg1;
 - (void)setNextAnnouncementStage:(unsigned long long)arg1 timeUntilNextAnnouncement:(double)arg2;
 - (void)setAnnouncementStage:(unsigned long long)arg1;
 - (void)setPositionFromDestination:(CDStruct_c3b9c2ee)arg1;
@@ -82,7 +79,7 @@
 - (void)setLocationUnreliable:(_Bool)arg1;
 - (void)setLastLocation:(id)arg1;
 - (void)setNavigationState:(int)arg1;
-- (void)setNavigationSessionState:(unsigned long long)arg1 transportType:(int)arg2;
+- (void)setNavigationSessionState:(unsigned long long)arg1 transportType:(int)arg2 navigationType:(int)arg3;
 - (void)setRoute:(id)arg1;
 - (void)stop;
 - (void)startWithDestinationName:(id)arg1;

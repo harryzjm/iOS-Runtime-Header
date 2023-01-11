@@ -16,6 +16,7 @@
 @class MPAVController, MPAVItem, MPInlineVideoFullscreenViewController, MPSwipableView, MPTVOutWindow, MPVideoBackgroundView, MPVideoContainerView, MPVideoPlaybackOverlayView, MPVideoView, MPVolumeController, MPWeakTimer, NSSet, NSString, UIActivityIndicatorView, UIAlertView, UIColor, UIImage, UINavigationController, UIPinchGestureRecognizer, UITapGestureRecognizer, UIView, UIWindow, _UIHostedWindow;
 @protocol MPVideoOverlay;
 
+__attribute__((visibility("hidden")))
 @interface MPInlineVideoController : NSObject <MPVolumeControllerDelegate, MPVideoControllerProtocol, MPSwipableViewDelegate, MPVideoOverlayDelegate, MPTransportControlsTarget, UIAlertViewDelegate>
 {
     id _delegate;
@@ -88,6 +89,7 @@
     MPVolumeController *_volumeController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *subtitlesView; // @synthesize subtitlesView=_subtitlesView;
 @property(copy, nonatomic) NSString *playbackErrorDescription; // @synthesize playbackErrorDescription=_playbackErrorDescription;
 @property(nonatomic) _Bool navigationBarHidden; // @synthesize navigationBarHidden=_navigationBarHidden;
@@ -116,7 +118,6 @@
 @property(retain, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property(nonatomic) _Bool automaticallyHandleTransportControls; // @synthesize automaticallyHandleTransportControls=_automaticallyHandleTransportControls;
 @property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)_viewWasPinched:(id)arg1;
 - (void)_viewWasTapped:(id)arg1;

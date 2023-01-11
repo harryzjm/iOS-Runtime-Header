@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOABExperimentAssignment : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOABDebugPanelExperimentBranch *_debugExperimentBranch;
     NSString *_offlineAbJson;
     NSString *_querySubstring;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _placeRequestType;
     int _serviceType;
     struct {
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_debugExperimentBranch:1;
         unsigned int read_offlineAbJson:1;
         unsigned int read_querySubstring:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_debugExperimentBranch:1;
-        unsigned int wrote_offlineAbJson:1;
-        unsigned int wrote_querySubstring:1;
-        unsigned int wrote_placeRequestType:1;
-        unsigned int wrote_serviceType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,17 +46,17 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *offlineAbJson;
 @property(readonly, nonatomic) _Bool hasOfflineAbJson;
-- (void)_readOfflineAbJson;
 @property(retain, nonatomic) GEOABDebugPanelExperimentBranch *debugExperimentBranch;
 @property(readonly, nonatomic) _Bool hasDebugExperimentBranch;
-- (void)_readDebugExperimentBranch;
 @property(retain, nonatomic) NSString *querySubstring;
 @property(readonly, nonatomic) _Bool hasQuerySubstring;
-- (void)_readQuerySubstring;
 - (int)StringAsPlaceRequestType:(id)arg1;
 - (id)placeRequestTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasPlaceRequestType;
@@ -68,6 +65,8 @@ __attribute__((visibility("hidden")))
 - (id)serviceTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasServiceType;
 @property(nonatomic) int serviceType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

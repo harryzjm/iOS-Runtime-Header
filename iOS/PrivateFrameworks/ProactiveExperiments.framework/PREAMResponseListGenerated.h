@@ -18,6 +18,8 @@
     NSString *_hostProcess;
     NSString *_lang;
     NSString *_locale;
+    unsigned int _numberOfCustomResponses;
+    unsigned int _numberOfResponsesGenerated;
     NSString *_treatmentId;
     NSString *_treatmentModelName;
     _Bool _isApricotDevice;
@@ -25,11 +27,14 @@
     struct {
         unsigned int ageGroup:1;
         unsigned int generationStatus:1;
+        unsigned int numberOfCustomResponses:1;
+        unsigned int numberOfResponsesGenerated:1;
         unsigned int isApricotDevice:1;
         unsigned int isCached:1;
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isApricotDevice; // @synthesize isApricotDevice=_isApricotDevice;
 @property(retain, nonatomic) NSString *lang; // @synthesize lang=_lang;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
@@ -37,8 +42,9 @@
 @property(retain, nonatomic) NSString *treatmentModelName; // @synthesize treatmentModelName=_treatmentModelName;
 @property(retain, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
 @property(retain, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+@property(nonatomic) unsigned int numberOfCustomResponses; // @synthesize numberOfCustomResponses=_numberOfCustomResponses;
+@property(nonatomic) unsigned int numberOfResponsesGenerated; // @synthesize numberOfResponsesGenerated=_numberOfResponsesGenerated;
 @property(nonatomic) _Bool isCached; // @synthesize isCached=_isCached;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -59,6 +65,8 @@
 @property(readonly, nonatomic) _Bool hasTreatmentModelName;
 @property(readonly, nonatomic) _Bool hasTreatmentId;
 @property(readonly, nonatomic) _Bool hasExperimentId;
+@property(nonatomic) _Bool hasNumberOfCustomResponses;
+@property(nonatomic) _Bool hasNumberOfResponsesGenerated;
 - (int)StringAsGenerationStatus:(id)arg1;
 - (id)generationStatusAsString:(int)arg1;
 @property(nonatomic) _Bool hasGenerationStatus;

@@ -18,7 +18,7 @@
 @property(readonly, nonatomic) NSString *suggestedContactIdentifier;
 @property(readonly, nonatomic) NSString *contactIdentifier;
 @property(readonly, nonatomic) NSString *localIdentifier;
-@property(readonly, nonatomic) NSString *displayName;
+@property(readonly, nonatomic) NSString *fullName;
 - (long long)compareToPerson:(id <PGPersonResult>)arg1;
 @end
 

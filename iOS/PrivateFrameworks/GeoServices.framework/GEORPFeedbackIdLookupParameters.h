@@ -13,17 +13,17 @@
 @interface GEORPFeedbackIdLookupParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _feedbackComponentTypes;
     NSMutableArray *_feedbackIds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackComponentTypes:1;
         unsigned int read_feedbackIds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_feedbackComponentTypes:1;
-        unsigned int wrote_feedbackIds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,26 +40,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsFeedbackComponentTypes:(id)arg1;
 - (id)feedbackComponentTypesAsString:(int)arg1;
 - (void)setFeedbackComponentTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)feedbackComponentTypeAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsFeedbackComponentType:(int)arg1;
 - (void)addFeedbackComponentType:(int)arg1;
 - (void)clearFeedbackComponentTypes;
 @property(readonly, nonatomic) int *feedbackComponentTypes;
 @property(readonly, nonatomic) unsigned long long feedbackComponentTypesCount;
-- (void)_readFeedbackComponentTypes;
 - (id)feedbackIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)feedbackIdsCount;
-- (void)_addNoFlagsFeedbackId:(id)arg1;
 - (void)addFeedbackId:(id)arg1;
 - (void)clearFeedbackIds;
 @property(retain, nonatomic) NSMutableArray *feedbackIds;
-- (void)_readFeedbackIds;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

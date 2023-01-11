@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, UIImage;
+@class NSNumber, WFImage;
 
 @interface WFSliderParameter
 {
@@ -12,11 +12,12 @@
     NSNumber *_maximumValue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property(retain, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) UIImage *maximumIcon;
-@property(readonly, nonatomic) UIImage *minimumIcon;
+- (id)localizedLabelWithState:(id)arg1;
+@property(readonly, nonatomic) WFImage *maximumIcon;
+@property(readonly, nonatomic) WFImage *minimumIcon;
 - (_Bool)shouldAlignLabels;
 - (id)defaultSerializedRepresentation;
 - (id)initWithDefinition:(id)arg1;

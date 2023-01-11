@@ -33,6 +33,7 @@
 + (id)sharedInstanceWithQueue:(id)arg1 server:(id)arg2 shouldRegister:(_Bool)arg3;
 + (id)sharedInstance;
 + (id)sharedContactStore;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) CDUnknownBlockType disconnectCallPreflight; // @synthesize disconnectCallPreflight=_disconnectCallPreflight;
 @property(nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
@@ -46,7 +47,6 @@
 @property(retain, nonatomic) TUVideoDeviceController *videoDeviceController; // @synthesize videoDeviceController=_videoDeviceController;
 @property(retain, nonatomic) TUAudioDeviceController *audioDeviceController; // @synthesize audioDeviceController=_audioDeviceController;
 @property(retain, nonatomic) TUCallServicesInterface *callServicesInterface; // @synthesize callServicesInterface=_callServicesInterface;
-- (void).cxx_destruct;
 - (unsigned long long)_callGroupCountForCall:(id)arg1 withCall:(id)arg2;
 - (_Bool)canGroupCall:(id)arg1 withCall:(id)arg2;
 @property(readonly, nonatomic, getter=isHoldAndAnswerAllowed) _Bool holdAndAnswerAllowed;
@@ -60,6 +60,7 @@
 - (_Bool)isHoldAllowed;
 - (_Bool)isMergeable;
 - (_Bool)isSwappable;
+- (void)shouldAllowRingingCallStatusIndicator:(_Bool)arg1;
 - (void)shouldSuppressInCallStatusBar:(_Bool)arg1;
 - (id)activeConversationForCall:(id)arg1;
 - (void)enteredBackgroundForAllCalls;
@@ -76,7 +77,9 @@
 - (void)pushRelayingCallsToHost;
 - (void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setTTYType:(int)arg1 forCall:(id)arg2;
+- (void)activateInCallUIWithActivityContinuationIdentifier:(id)arg1;
 - (void)handleActionForWiredHeadsetMiddleButtonLongPress;
+- (void)handleActionForWiredHeadsetMiddleButtonPressWithSourceIdentifier:(id)arg1 allowBluetoothAnswerWithoutDowngrade:(_Bool)arg2;
 - (void)handleActionForWiredHeadsetMiddleButtonPress;
 - (void)disconnectAllCalls;
 - (void)disconnectCurrentCallAndActivateHeld;
@@ -102,6 +105,7 @@
 - (void)answerCall:(id)arg1;
 - (void)sendFieldModeDigits:(id)arg1 forProvider:(id)arg2;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)applicationWillLaunchForStartCallInteraction:(id)arg1;
 - (id)_dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dialWithRequest:(id)arg1;

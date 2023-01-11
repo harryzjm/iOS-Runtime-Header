@@ -12,11 +12,12 @@
     UIView *_contentView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)initWithOrientation:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

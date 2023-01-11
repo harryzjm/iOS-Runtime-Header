@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (struct _VCBitrateConfiguration *)bitrateConfiguration;
 - (_Bool)setupH264Rules;
 - (_Bool)setupVideoRulesForPayload:(int)arg1 transportType:(unsigned char)arg2 encodingType:(unsigned char)arg3 formatList:(struct _VCVideoFormat *)arg4 formatListCount:(unsigned int)arg5 preferredFormat:(id)arg6 supportsHighDef:(_Bool *)arg7;
+- (_Bool)isPreferredVideoRule:(id)arg1 preferredFormat:(id)arg2;
 - (struct _VCHardwareConfiguration *)hardwareConfigurationForPayload:(int)arg1 transportType:(unsigned char)arg2;
 - (double)preferredAspectRatio;
 - (void)initSupportedPayloads;

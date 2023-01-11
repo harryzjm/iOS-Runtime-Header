@@ -16,6 +16,7 @@
 + (double)_mapkit_currentAnimationDuration;
 + (id)_mapkit_currentAnimationTimingFunction;
 + (_Bool)_mapkit_shouldAdoptImplicitAnimationParameters;
++ (void)_mapkit_performWithoutAnimation:(CDUnknownBlockType)arg1;
 + (void)_mapkit_animateFromCurrentStateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_mapkit_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_maps_setDoesNotTranslateAutoresizingConstraintsForViewsDictionary:(id)arg1;
@@ -24,9 +25,15 @@
 - (unsigned long long)_mapkit_countOfSet:(id)arg1 minusSubset:(id)arg2;
 @property(readonly, retain, nonatomic) MKMapView *_mapKit_mapView;
 @property(readonly, retain, nonatomic) CALayer *_mapkit_currentLayer;
+- (void)_mapkit_removeCursorInteraction;
+- (void)_mapkit_addCursorInteractionWithDelegate:(id)arg1;
+- (void)_mapkit_addCursorInteraction;
+- (id)_mapkit_currentCursorInteraction;
+@property(readonly, nonatomic) _Bool _mapkit_hasCursorInteraction;
 - (struct CGRect)_mapkit_translateRect:(struct CGRect)arg1 ifNeededFromSingleEdge:(unsigned long long)arg2;
 - (struct UIEdgeInsets)_mapkit_userInterfaceOnlySafeAreaInsets;
 @property(readonly, nonatomic) _Bool _mapkit_isDarkModeEnabled;
+- (void)_mapkit_bringSubviewToFront:(id)arg1;
 - (void)_mapkit_insertSubview:(id)arg1 atIndex:(long long)arg2;
 - (double)_mapkit_trailingMargin;
 - (double)_mapkit_leadingMargin;

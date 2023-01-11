@@ -20,23 +20,24 @@
     NSArray *_prefilteredRecipients;
     IMAccount *_defaultiMessageAccount;
     IDSBatchIDQueryController *_statusQueryController;
-    CKContactsSearchManager *_searchManager;
     NSArray *_searchResults;
+    CKContactsSearchManager *_searchManager;
     NSDate *_idsQueryStartTime;
     NSArray *_conversationCache;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *conversationCache; // @synthesize conversationCache=_conversationCache;
 @property(retain, nonatomic) NSDate *idsQueryStartTime; // @synthesize idsQueryStartTime=_idsQueryStartTime;
-@property(copy, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
 @property(retain, nonatomic) CKContactsSearchManager *searchManager; // @synthesize searchManager=_searchManager;
+@property(copy, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
 @property(retain, nonatomic) IDSBatchIDQueryController *statusQueryController; // @synthesize statusQueryController=_statusQueryController;
 @property(retain, nonatomic) IMAccount *defaultiMessageAccount; // @synthesize defaultiMessageAccount=_defaultiMessageAccount;
 @property(nonatomic) _Bool smsEnabled; // @synthesize smsEnabled=_smsEnabled;
 @property(retain, nonatomic) NSArray *prefilteredRecipients; // @synthesize prefilteredRecipients=_prefilteredRecipients;
 @property(retain, nonatomic) NSArray *enteredRecipients; // @synthesize enteredRecipients=_enteredRecipients;
 @property(nonatomic) _Bool shouldHideGroupsDonations; // @synthesize shouldHideGroupsDonations;
-- (void).cxx_destruct;
+- (long long)idsStatusForAddress:(id)arg1;
 - (BOOL)_serviceColorForRecipients:(id)arg1;
 - (id)_statusQueryController;
 - (id)_conversationList;
@@ -56,6 +57,7 @@
 - (_Bool)scrollViewShouldScrollToTop:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidAppearDeferredSetup;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

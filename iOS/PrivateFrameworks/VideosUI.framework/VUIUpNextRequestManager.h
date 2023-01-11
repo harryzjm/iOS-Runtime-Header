@@ -8,16 +8,16 @@
 
 @class NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface VUIUpNextRequestManager : NSObject
 {
     NSMutableDictionary *_ongoingCanonicalIDOperationDictionary;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) NSMutableDictionary *ongoingCanonicalIDOperationDictionary; // @synthesize ongoingCanonicalIDOperationDictionary=_ongoingCanonicalIDOperationDictionary;
 - (void).cxx_destruct;
-- (void)sendRequestForCanonicalID:(id)arg1 action:(unsigned long long)arg2;
+@property(retain, nonatomic) NSMutableDictionary *ongoingCanonicalIDOperationDictionary; // @synthesize ongoingCanonicalIDOperationDictionary=_ongoingCanonicalIDOperationDictionary;
+- (void)_displayConfirmationForAction:(unsigned long long)arg1;
+- (void)sendRequestForCanonicalID:(id)arg1 action:(unsigned long long)arg2 confirmationShouldWaitCompletion:(_Bool)arg3;
 - (id)init;
 - (id)_init;
 

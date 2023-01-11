@@ -10,11 +10,12 @@
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal-Protocol.h>
 #import <SpringBoard/SBSceneViewStatusBarAssertionObserver-Protocol.h>
+#import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
 
-@class BSCornerRadiusConfiguration, MTLumaDodgePillSettings, NSHashTable, NSMutableSet, NSString, SBApplicationBlurContentView, SBAsymmetricalCornerRadiusWrapperView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBNubView, SBSceneHandle, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
-@protocol SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
+@class BSCornerRadiusConfiguration, MTLumaDodgePillSettings, NSHashTable, NSMutableSet, NSString, SBApplicationBlurContentView, SBAsymmetricalCornerRadiusWrapperView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBMedusaSettings, SBNubView, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
+@protocol SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
-@interface SBMedusaDecoratedDeviceApplicationSceneViewController : UIViewController <SBSceneViewStatusBarAssertionObserver, SBInlineAppExposeContainerViewControllerDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
+@interface SBMedusaDecoratedDeviceApplicationSceneViewController : UIViewController <SBSceneViewStatusBarAssertionObserver, SBInlineAppExposeContainerViewControllerDelegate, SBSystemPointerInteractionDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
 {
     SBDeviceApplicationSceneHandle *_deviceApplicationSceneHandle;
     SBDeviceApplicationSceneViewController *_deviceApplicationSceneViewController;
@@ -33,6 +34,7 @@
     NSHashTable *_statusBarAssertions;
     SBSceneViewStatusBarAssertion *_inlineAppExposeStatusBarAssertion;
     NSMutableSet *_matchMoveAnimationRequiringReasons;
+    SBMedusaSettings *_medusaSettings;
     _Bool _clipsToBounds;
     double _shadowOpacity;
     double _shadowOffset;
@@ -42,6 +44,7 @@
     UIDropInteraction *_dropInteraction;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
 @property(nonatomic) double darkenViewAlpha; // @synthesize darkenViewAlpha=_darkenViewAlpha;
 @property(nonatomic) _Bool clipsToBounds; // @synthesize clipsToBounds=_clipsToBounds;
@@ -49,7 +52,6 @@
 @property(retain, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration; // @synthesize cornerRadiusConfiguration=_cornerRadiusConfiguration;
 @property(nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property(nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
-- (void).cxx_destruct;
 - (void)_setAbsoluteShadowRadius:(double)arg1;
 - (void)_setAbsoluteShadowOffset:(struct CGSize)arg1;
 - (void)_setAbsoluteDiffuseShadowOpacity:(double)arg1;
@@ -62,6 +64,8 @@
 - (id)_blurContentView;
 @property(readonly, nonatomic) UIView *_blurViewContainerView;
 - (void)_handleNubTapGestureRecognizerAction:(id)arg1;
+@property(nonatomic) _Bool shouldRasterizeSceneHostView;
+@property(copy, nonatomic) NSString *sceneHostViewMinificationFilter;
 @property(retain, nonatomic) MTLumaDodgePillSettings *homeGrabberPillSettings;
 @property(nonatomic) long long homeGrabberDisplayMode;
 - (double)effectiveCornerRadius;
@@ -69,6 +73,9 @@
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)loadView;
 - (void)viewWillLayoutSubviews;
+- (id)styleForRegion:(id)arg1 forView:(id)arg2;
+- (struct UIEdgeInsets)pointerInteractionHitTestInsetsForView:(id)arg1;
+- (_Bool)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionWillEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
@@ -81,6 +88,9 @@
 - (void)statusBarAssertionDidUpdate:(id)arg1;
 - (id)statusBarAssertionWithStatusBarHidden:(_Bool)arg1 nubViewHidden:(long long)arg2 atLevel:(unsigned long long)arg3;
 - (id)statusBarAssertionWithStatusBarHidden:(_Bool)arg1 atLevel:(unsigned long long)arg2;
+- (_Bool)SB_conformsToSceneLayoutMedusaStatusBarAssertionProviding;
+- (_Bool)SB_conformsToSceneLayoutStatusBarAssertionProviding;
+- (_Bool)SB_conformsToMedusaDecoratedDeviceApplicationSceneViewControlling;
 @property(nonatomic) __weak id <SBApplicationSceneViewControllingStatusBarDelegate> applicationSceneStatusBarDelegate;
 @property(readonly, nonatomic) long long overrideStatusBarStyle;
 @property(readonly, nonatomic) double statusBarAlpha;
@@ -94,15 +104,17 @@
 - (id)newSnapshotView;
 - (id)newSnapshot;
 @property(retain, nonatomic) UIView *customContentView;
+@property(retain, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
 @property(retain, nonatomic) id <SBScenePlaceholderContentContext> placeholderContentContext;
 @property(readonly, nonatomic) long long displayMode;
-@property(readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property(readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic) long long layoutRole;
 - (void)setInlineAppExposeContainerViewController:(id)arg1;
 - (void)blurApplicationContent:(_Bool)arg1 withAnimationFactory:(id)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic, getter=isBlurred) _Bool blurred;
 - (void)invalidate;
+- (void)dealloc;
 - (id)initWithDeviceApplicationSceneHandle:(id)arg1 inlineContainerViewController:(id)arg2 layoutRole:(long long)arg3;
 
 // Remaining properties

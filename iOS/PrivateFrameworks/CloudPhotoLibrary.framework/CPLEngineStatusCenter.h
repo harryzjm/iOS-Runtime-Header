@@ -21,10 +21,11 @@
 - (void).cxx_destruct;
 - (id)allStatusChanges;
 - (id)status;
+- (id)recordViewForStatusWithScopedIdentifier:(id)arg1;
 - (id)recordForStatusWithScopedIdentifier:(id)arg1;
 - (id)_statusFromCachesWithRecordScopedIdentifier:(id)arg1;
 - (void)_fillStatus:(id)arg1;
-- (void)_fillStatus:(id)arg1 withClientCacheRecord:(id)arg2 cloudCacheRecord:(id)arg3 isConfirmed:(_Bool)arg4 isStaged:(_Bool)arg5 isInIDMapping:(_Bool)arg6;
+- (void)_fillStatus:(id)arg1 withClientCacheRecordView:(id)arg2 cloudCacheRecord:(id)arg3 isConfirmed:(_Bool)arg4 isStaged:(_Bool)arg5 isInIDMapping:(_Bool)arg6;
 - (void)writeTransactionDidSucceed;
 - (void)writeTransactionDidFail;
 - (_Bool)discardNotificationForRecordWithScopedIdentifier:(id)arg1 error:(id *)arg2;
@@ -37,6 +38,8 @@
 - (void)_removeStatusesInDictionary:(id)arg1 withScopeIdentifier:(id)arg2;
 - (id)_allScopedIdentifierInCollection:(id)arg1 withScopeIdentifier:(id)arg2;
 - (id)statusChanges;
+- (_Bool)notifyStatusForRecordWithScopedIdentifierHasChanged:(id)arg1 recordClass:(Class)arg2 persist:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)notifyStatusForRecordViewHasChanged:(id)arg1 persist:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)notifyStatusForRecordHasChanged:(id)arg1 persist:(_Bool)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) _Bool hasStatusChanges;
 - (_Bool)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;

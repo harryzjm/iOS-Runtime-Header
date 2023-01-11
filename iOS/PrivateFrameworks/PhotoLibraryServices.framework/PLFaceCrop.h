@@ -14,13 +14,14 @@
     _Bool _needsPersistenceUpdate;
 }
 
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(_Bool)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 + (id)insertOrUpdateWithCPLFaceCrop:(id)arg1 inPhotoLibrary:(id)arg2;
 + (short)_localTypeFromCloudType:(long long)arg1;
 + (long long)_cloudTypeToPushFromLocalType:(short)arg1 cachedCloudType:(unsigned short)arg2;
 + (id)listOfSyncedProperties;
 + (int)_nameSourceForFaceFromFaceCrop:(id)arg1;
 + (int)_trainingFaceTypeForFaceFromFaceCrop:(id)arg1;
++ (id)batchFetchFaceCropByFaceObjectIDWithFaceObjectIDs:(id)arg1 library:(id)arg2;
 + (id)faceCropsToUploadInPhotoLibrary:(id)arg1 limit:(unsigned long long)arg2;
 + (id)faceCropsWithUUIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)faceCropsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;

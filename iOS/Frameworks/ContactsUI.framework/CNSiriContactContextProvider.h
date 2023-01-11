@@ -13,14 +13,16 @@
 __attribute__((visibility("hidden")))
 @interface CNSiriContactContextProvider : NSObject <AFContextProvider>
 {
+    _Bool _isEnabled;
     CNContact *_contact;
     CNContactStore *_store;
 }
 
 + (id)descriptorForRequiredKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool isEnabled; // @synthesize isEnabled=_isEnabled;
 - (id)defaultContextManager;
 - (void)_removeContextProviderOnMainThread;
 - (void)setEnabled:(_Bool)arg1;

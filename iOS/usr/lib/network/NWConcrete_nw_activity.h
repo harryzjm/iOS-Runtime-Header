@@ -19,10 +19,14 @@ __attribute__((visibility("hidden")))
     unsigned long long end_time;
     NWConcrete_nw_activity *parent;
     struct os_unfair_lock_s lock;
+    struct os_unfair_lock_s description_lock;
     unsigned int label;
     unsigned int domain;
+    int underlying_error_domain;
+    int underlying_error_code;
     int reporting_strategy;
     int completion_reason;
+    NSString *description;
     unsigned int is_retry:1;
     unsigned int is_lightweight:1;
     unsigned int activated:1;
@@ -33,9 +37,6 @@ __attribute__((visibility("hidden")))
 - (id)redactedDescription;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithOriginal:(id)arg1;
-- (id)initWithToken:(unsigned char [16])arg1;
-- (id)initWithDomain:(unsigned int)arg1 label:(unsigned int)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -35,6 +35,7 @@
     AXSSInterDeviceSecurityHelper *_securityHelper;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) AXSSInterDeviceSecurityHelper *securityHelper; // @synthesize securityHelper=_securityHelper;
 @property(nonatomic) unsigned long long numberOfBurstPacketsRemaining; // @synthesize numberOfBurstPacketsRemaining=_numberOfBurstPacketsRemaining;
 @property(retain, nonatomic) NSTimer *dummyPacketTimer; // @synthesize dummyPacketTimer=_dummyPacketTimer;
@@ -52,7 +53,6 @@
 @property(nonatomic) __weak id <AXSSInterDeviceSearchObserver> searchObserver; // @synthesize searchObserver=_searchObserver;
 @property(nonatomic) __weak id <AXSSInterDeviceActionReceiver> actionReceiver; // @synthesize actionReceiver=_actionReceiver;
 @property(nonatomic) __weak id <AXSSInterDeviceConnectionListener> connectionListener; // @synthesize connectionListener=_connectionListener;
-- (void).cxx_destruct;
 - (void)advertiser:(id)arg1 didNotStartAdvertisingPeer:(id)arg2;
 - (void)advertiser:(id)arg1 didReceiveInvitationFromPeer:(id)arg2 withContext:(id)arg3 invitationHandler:(CDUnknownBlockType)arg4;
 - (void)browser:(id)arg1 didNotStartBrowsingForPeers:(id)arg2;
@@ -65,6 +65,7 @@
 - (void)session:(id)arg1 didStartReceivingResourceWithName:(id)arg2 fromPeer:(id)arg3 withProgress:(id)arg4;
 - (void)session:(id)arg1 didReceiveData:(id)arg2 fromPeer:(id)arg3;
 - (void)_removePeerFromAvailableDevices:(id)arg1;
+- (void)_handlePerformSysdiagnoseMessage;
 - (void)_handleHighlightMessage;
 - (void)_handleSelectionMessageWithPayload:(id)arg1;
 - (void)_handleSwitchEventMessageWithPayload:(id)arg1 fromPeer:(id)arg2;
@@ -72,6 +73,7 @@
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_sendDummyPacket;
+- (void)performSysdiagnoseOnSlave;
 - (void)forwardSwitchEvent:(id)arg1;
 - (void)_sendDataToSlave:(id)arg1;
 - (id)_messageForSwitchEvent:(id)arg1 index:(unsigned long long)arg2;

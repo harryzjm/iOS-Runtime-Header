@@ -6,20 +6,24 @@
 
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
-@class CSBatteryChargingView, NSMutableArray, NSTimer;
+#import <SpringBoard/BCBatteryDeviceObserving-Protocol.h>
+
+@class BCBatteryDeviceController, CSBatteryChargingView, NSMutableArray, NSString, NSTimer;
 @protocol SBLockScreenBatteryChargingViewControllerDelegate;
 
-@interface SBLockScreenBatteryChargingViewController : CSCoverSheetViewControllerBase
+@interface SBLockScreenBatteryChargingViewController : CSCoverSheetViewControllerBase <BCBatteryDeviceObserving>
 {
     _Bool _shouldDisplayBattery;
     CSBatteryChargingView *_chargingView;
     NSTimer *_visibilityTimer;
     NSMutableArray *_connectedDevices;
+    BCBatteryDeviceController *_batteryDeviceController;
     id <SBLockScreenBatteryChargingViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBLockScreenBatteryChargingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBLockScreenBatteryChargingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)connectedDevicesDidChange:(id)arg1;
 - (long long)presentationStyle;
 - (void)_visibilityTimerFired:(id)arg1;
 - (void)showChargeLevelWithBatteryVisible:(_Bool)arg1;
@@ -31,6 +35,12 @@
 - (void)loadView;
 - (void)dealloc;
 - (id)initForDisplayOfBattery:(_Bool)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

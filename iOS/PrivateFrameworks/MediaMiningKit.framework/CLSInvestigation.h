@@ -29,12 +29,12 @@
         unsigned int delegateDidEnd:1;
         unsigned int delegateNumberOfItems:1;
         unsigned int delegateSampleOfItems:1;
-        unsigned int delegateItemThumbnailAtIndexWithResolution:1;
     } _investigationFlags;
 }
 
 + (id)investigationWithProfiles:(id)arg1 clueDates:(id)arg2 clueLocations:(id)arg3 cluePeoples:(id)arg4;
 + (id)investigationWithProfiles:(id)arg1;
+- (void).cxx_destruct;
 @property _Bool enableDebuggingClues; // @synthesize enableDebuggingClues=_enableDebuggingClues;
 @property(nonatomic) unsigned long long precision; // @synthesize precision=_precision;
 @property(readonly, retain) CLSClueCollection *clueCollection; // @synthesize clueCollection=_clueCollection;
@@ -45,11 +45,9 @@
 @property(readonly, retain, nonatomic) NSArray *profiles; // @synthesize profiles=_profiles;
 @property(readonly, retain, nonatomic) CLSInvestigationFeeder *feeder; // @synthesize feeder=_feeder;
 @property(readonly, copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (id)tracesDescription;
 - (id)_traceStringForType:(unsigned long long)arg1;
 - (void)addTraceFromObject:(id)arg1 feature:(id)arg2 type:(unsigned long long)arg3 context:(id)arg4 withDescriptionFormat:(id)arg5;
-- (id)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;
 - (id)sampleOfItems;
 - (unsigned long long)numberOfItems;
 - (void)_didEndInvestigation:(_Bool)arg1;

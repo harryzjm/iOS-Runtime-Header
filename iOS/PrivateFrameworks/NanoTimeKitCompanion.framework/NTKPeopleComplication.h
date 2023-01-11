@@ -8,6 +8,7 @@
 
 @interface NTKPeopleComplication
 {
+    NSString *_storeBackedContactID;
     NSString *_contactID;
     NSString *_shortName;
     NSString *_fullName;
@@ -15,26 +16,41 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)complicationForContact:(id)arg1 forFavoriteList:(_Bool)arg2;
++ (id)localizedNameForContact:(id)arg1;
++ (id)allValidFavoriteContacts;
++ (_Bool)_complicationPickerShouldShowMoreButtonForList:(id)arg1;
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *abbreviation; // @synthesize abbreviation=_abbreviation;
 @property(readonly, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property(readonly, nonatomic) NSString *shortName; // @synthesize shortName=_shortName;
 @property(readonly, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
-- (void).cxx_destruct;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (void)_addKeysToJSONDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
+- (id)_generateUniqueIdentifier;
 - (_Bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
+- (id)_complicationTypeString;
 - (_Bool)appearsInDailySnapshotForFamily:(long long)arg1;
+- (void)_updateStateWithContact:(id)arg1 foundAsPrimaryId:(_Bool)arg2;
+- (void)_refreshContactInfoNotifyOfChange;
+- (void)_contactsCacheDidChange;
 - (id)localizedRichKeylineLabelText;
 - (id)localizedRichDetailText;
+@property(readonly, nonatomic, getter=isFavoritedPerson) _Bool favoritedPerson;
 - (id)localizedKeylineLabelText;
 - (id)localizedDetailText;
+@property(readonly, nonatomic) NSString *storeBackedContactID; // @synthesize storeBackedContactID=_storeBackedContactID;
+- (id)ntk_sectionIdentifier;
+- (void)dealloc;
+- (void)_registerWithSwitch:(_Bool)arg1;
+- (id)init;
+- (id)ntk_contactIdentifier;
+- (unsigned long long)ntk_itemType;
 
 @end
 

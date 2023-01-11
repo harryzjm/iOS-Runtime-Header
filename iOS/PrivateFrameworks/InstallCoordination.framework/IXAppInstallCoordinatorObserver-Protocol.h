@@ -6,7 +6,7 @@
 
 #import <InstallCoordination/NSObject-Protocol.h>
 
-@class IXAppInstallCoordinator, NSError;
+@class IXAppInstallCoordinator, NSError, NSURL;
 
 @protocol IXAppInstallCoordinatorObserver <NSObject>
 
@@ -15,12 +15,16 @@
 - (void)promiseDidBeginFulfillmentWithIdentifier:(unsigned long long)arg1;
 - (void)coordinator:(IXAppInstallCoordinator *)arg1 canceledWithReason:(NSError *)arg2;
 - (void)coordinator:(IXAppInstallCoordinator *)arg1 canceledWithReason:(NSError *)arg2 client:(unsigned long long)arg3;
+- (void)coordinatorDidCompleteSuccessfully:(IXAppInstallCoordinator *)arg1 forAppAtURL:(NSURL *)arg2;
 - (void)coordinatorDidCompleteSuccessfully:(IXAppInstallCoordinator *)arg1;
+- (void)coordinator:(IXAppInstallCoordinator *)arg1 didUpdateProgress:(double)arg2 forPhase:(unsigned long long)arg3 overallProgress:(double)arg4;
+- (void)coordinatorDidInstallPlaceholder:(IXAppInstallCoordinator *)arg1 atURL:(NSURL *)arg2;
 - (void)coordinatorDidInstallPlaceholder:(IXAppInstallCoordinator *)arg1;
 - (void)coordinatorShouldBeginRestoringUserData:(IXAppInstallCoordinator *)arg1;
 - (void)coordinator:(IXAppInstallCoordinator *)arg1 configuredPromiseDidBeginFulfillment:(unsigned long long)arg2;
 - (void)coordinatorShouldPause:(IXAppInstallCoordinator *)arg1;
 - (void)coordinatorShouldResume:(IXAppInstallCoordinator *)arg1;
 - (void)coordinatorShouldPrioritize:(IXAppInstallCoordinator *)arg1;
+- (void)coordinatorDidRegisterForObservation:(IXAppInstallCoordinator *)arg1;
 @end
 

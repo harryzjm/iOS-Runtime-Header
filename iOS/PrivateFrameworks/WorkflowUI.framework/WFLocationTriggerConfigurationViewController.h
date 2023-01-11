@@ -20,12 +20,12 @@
     NSDateFormatter *_dateFormatter;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 @property(readonly, nonatomic) _Bool isArrive; // @synthesize isArrive=_isArrive;
 @property(nonatomic) _Bool isLocationBasedAlertsEnabled; // @synthesize isLocationBasedAlertsEnabled=_isLocationBasedAlertsEnabled;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void).cxx_destruct;
 - (void)timeRangePickerViewControllerDidCancel:(id)arg1;
 - (void)timeRangePickerViewController:(id)arg1 didPickStartTime:(id)arg2 endTime:(id)arg3;
 - (void)locationPickerDidCancel:(id)arg1;
@@ -36,6 +36,7 @@
 - (id)textForSummaryFooterView;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)infoForSection:(long long)arg1;

@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSDictionary, NSSet;
 
 @interface HUSoftwareLibraryLookupResult : NSObject
 {
     NSSet *_matchedLibraryItems;
+    NSDictionary *_accessoriesByBundleIDs;
     NSSet *_matchedStoreItems;
+    NSDictionary *_accessoriesByStoreIDs;
     NSSet *_unmatchedRequests;
 }
 
@@ -19,10 +21,12 @@
 + (id)_libraryResultForRequests:(id)arg1;
 + (id)resultForRequests:(id)arg1;
 + (id)resultForAccessories:(id)arg1;
-@property(retain, nonatomic) NSSet *unmatchedRequests; // @synthesize unmatchedRequests=_unmatchedRequests;
-@property(retain, nonatomic) NSSet *matchedStoreItems; // @synthesize matchedStoreItems=_matchedStoreItems;
-@property(retain, nonatomic) NSSet *matchedLibraryItems; // @synthesize matchedLibraryItems=_matchedLibraryItems;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *unmatchedRequests; // @synthesize unmatchedRequests=_unmatchedRequests;
+@property(retain, nonatomic) NSDictionary *accessoriesByStoreIDs; // @synthesize accessoriesByStoreIDs=_accessoriesByStoreIDs;
+@property(retain, nonatomic) NSSet *matchedStoreItems; // @synthesize matchedStoreItems=_matchedStoreItems;
+@property(retain, nonatomic) NSDictionary *accessoriesByBundleIDs; // @synthesize accessoriesByBundleIDs=_accessoriesByBundleIDs;
+@property(retain, nonatomic) NSSet *matchedLibraryItems; // @synthesize matchedLibraryItems=_matchedLibraryItems;
 - (id)init;
 
 @end

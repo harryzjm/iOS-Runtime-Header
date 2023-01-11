@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *medicalIDData;
     MISSING_TYPE *fetchError;
-    MISSING_TYPE *healthStore;
+    MISSING_TYPE *medicalIDStore;
 }
 
 - (void).cxx_destruct;

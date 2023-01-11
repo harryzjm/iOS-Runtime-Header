@@ -23,17 +23,19 @@ __attribute__((visibility("hidden")))
 + (_Bool)shouldAllowComponents;
 + (_Bool)alwaysKeepContexts;
 - (void).cxx_destruct;
+- (_Bool)_shouldAllowFencing;
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDelegate:(id)arg1;
 - (id)_displayInfoProvider;
+- (void)_screenDisconnected:(id)arg1;
 - (void)_detachWindow:(id)arg1;
+- (void)_attachWindow:(id)arg1;
 - (id)_synthesizedSettings;
 - (void)_setKeepContextAssociationInBackground:(_Bool)arg1;
 - (void)_updateClientSettingsToInterfaceOrientation:(long long)arg1 withAnimationDuration:(double)arg2;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (struct CGRect)_referenceBounds;
 - (id)screen;
-- (void)_invalidateScreen;
 - (id)initWithScreen:(id)arg1 session:(id)arg2 lookupKey:(id)arg3;
 
 @end

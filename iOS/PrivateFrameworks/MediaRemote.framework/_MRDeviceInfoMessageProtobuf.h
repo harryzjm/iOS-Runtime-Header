@@ -17,6 +17,8 @@
     NSString *_applicationBundleIdentifier;
     NSString *_applicationBundleVersion;
     NSData *_bluetoothAddress;
+    NSString *_clusterID;
+    NSString *_clusterLeaderID;
     int _deviceClass;
     NSString *_deviceUID;
     NSString *_groupName;
@@ -66,6 +68,9 @@
 
 + (Class)airplayReceiversType;
 + (Class)groupedDevicesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *clusterLeaderID; // @synthesize clusterLeaderID=_clusterLeaderID;
+@property(retain, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property(retain, nonatomic) NSString *linkAgent; // @synthesize linkAgent=_linkAgent;
 @property(retain, nonatomic) NSMutableArray *airplayReceivers; // @synthesize airplayReceivers=_airplayReceivers;
 @property(retain, nonatomic) NSString *senderDefaultGroupUID; // @synthesize senderDefaultGroupUID=_senderDefaultGroupUID;
@@ -98,7 +103,6 @@
 @property(retain, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -108,6 +112,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasClusterLeaderID;
+@property(readonly, nonatomic) _Bool hasClusterID;
 @property(readonly, nonatomic) _Bool hasLinkAgent;
 - (id)airplayReceiversAtIndex:(unsigned long long)arg1;
 - (unsigned long long)airplayReceiversCount;

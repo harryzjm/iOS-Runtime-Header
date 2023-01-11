@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface SGQuickResponsesReplyRecord : NSObject
 {
+    NSString *_langResponse;
     double _displayed;
     double _selected;
     double _matched;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double matched; // @synthesize matched=_matched;
 @property(readonly, nonatomic) double selected; // @synthesize selected=_selected;
 @property(readonly, nonatomic) double displayed; // @synthesize displayed=_displayed;
+@property(readonly, nonatomic) NSString *langResponse; // @synthesize langResponse=_langResponse;
 - (id)initWithDisplayed:(double)arg1 selected:(double)arg2 matched:(double)arg3;
 
 @end

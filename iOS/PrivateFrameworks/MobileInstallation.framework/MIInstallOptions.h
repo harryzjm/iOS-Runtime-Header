@@ -9,7 +9,7 @@
 #import <MobileInstallation/NSCopying-Protocol.h>
 #import <MobileInstallation/NSSecureCoding-Protocol.h>
 
-@class MIStoreMetadata, NSArray, NSData, NSDictionary;
+@class MIStoreMetadata, NSArray, NSData, NSDictionary, NSString;
 
 @interface MIInstallOptions : NSObject <NSSecureCoding, NSCopying>
 {
@@ -23,6 +23,7 @@
     _Bool _allowLocalProvisioned;
     _Bool _performAPFSClone;
     unsigned long long _installTargetType;
+    NSString *_bundleIdentifier;
     unsigned long long _lsInstallType;
     MIStoreMetadata *_iTunesMetadata;
     NSData *_sinfData;
@@ -33,6 +34,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long autoInstallOverride; // @synthesize autoInstallOverride=_autoInstallOverride;
 @property(nonatomic) _Bool performAPFSClone; // @synthesize performAPFSClone=_performAPFSClone;
 @property(nonatomic) _Bool allowLocalProvisioned; // @synthesize allowLocalProvisioned=_allowLocalProvisioned;
@@ -49,8 +51,8 @@
 @property(nonatomic, getter=isUserInitiated) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(nonatomic, getter=isSystemAppInstall) _Bool systemAppInstall; // @synthesize systemAppInstall=_systemAppInstall;
 @property(nonatomic, getter=isDeveloperInstall) _Bool developerInstall; // @synthesize developerInstall=_developerInstall;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic) unsigned long long installTargetType; // @synthesize installTargetType=_installTargetType;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *legacyOptionsDictionary;

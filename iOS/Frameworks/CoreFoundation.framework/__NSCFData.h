@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
+- (Class)classForCoder;
 - (_Bool)_providesConcreteBacking;
 - (void)setLength:(unsigned long long)arg1;
 - (void *)mutableBytes;

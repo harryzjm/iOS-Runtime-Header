@@ -10,9 +10,11 @@
 
 @interface WFPhotoMediaContentItem <WFContentItemClass>
 {
+    long long _library;
     WFFileType *_preferredFileType;
 }
 
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (_Bool)isAvailableOnPlatform:(long long)arg1;
 + (_Bool)hasLibrary;
 + (id)pluralFilterDescription;
@@ -28,14 +30,20 @@
 + (id)propertyBuilders;
 + (id)photoAlbums;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
++ (id)fetchOptionsForLibrary:(long long)arg1;
 + (id)itemsWithBurstIdentifier:(id)arg1;
-+ (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2 nameIfKnown:(id)arg3;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2 assetFile:(id)arg3 nameIfKnown:(id)arg4 attributionSet:(id)arg5;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2 assetFile:(id)arg3 nameIfKnown:(id)arg4;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2 assetFile:(id)arg3;
++ (id)itemWithAssetIdentifier:(id)arg1 library:(long long)arg2;
 + (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2;
 + (id)itemWithAssetIdentifier:(id)arg1;
-@property(retain, nonatomic) WFFileType *preferredFileType; // @synthesize preferredFileType=_preferredFileType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) WFFileType *preferredFileType; // @synthesize preferredFileType=_preferredFileType;
+@property(nonatomic) long long library; // @synthesize library=_library;
 - (id)outputTypes;
+- (id)intermediaryTypesForCoercionToItemClass:(Class)arg1;
 - (id)assetRepresentationTypes;
 - (id)fullSizeAssetResourcesInResources:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
@@ -47,7 +55,6 @@
 - (void)generateAVAsset:(CDUnknownBlockType)arg1 networkAccessAllowed:(_Bool)arg2;
 - (void)generateFileRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forType:(id)arg3;
 - (id)preferredAssetResourceForType:(id)arg1;
-- (void)retrieveLivePhotoAssetResource:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)retrieveFileWithImageManager:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)retrieveAssetResource:(id)arg1 withNetworkAccess:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getThumbnail:(CDUnknownBlockType)arg1 ofSize:(struct CGSize)arg2;
@@ -69,6 +76,8 @@
 - (id)metadataIfLocallyAvailable;
 - (void)getFrameRate:(CDUnknownBlockType)arg1;
 - (void)getMetadata:(CDUnknownBlockType)arg1;
+- (id)assetResourceManager;
+- (id)imageManager;
 - (id)duration;
 - (void)getPreferredFileExtension:(CDUnknownBlockType)arg1;
 - (void)getPreferredFileSize:(CDUnknownBlockType)arg1;

@@ -34,7 +34,6 @@
 - (id)unquotedPassword;
 - (id)pathDecodedAndWithoutTrailingSlashRemoved;
 - (id)pathWithoutTrailingRemovingSlash;
-- (_Bool)isEqualToURL:(id)arg1;
 - (id)serverURL;
 - (id)initWithScheme:(id)arg1 host:(id)arg2 port:(int)arg3 path:(id)arg4;
 - (id)URLWithUsername:(id)arg1 withPassword:(id)arg2;

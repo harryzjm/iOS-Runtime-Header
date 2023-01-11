@@ -13,7 +13,7 @@
 @interface WKHTTPCookieStore : NSObject <WKObject>
 {
     struct ObjectStorage<API::HTTPCookieStore> _cookieStore;
-    struct HashMap<const void *, std::__1::unique_ptr<WKHTTPCookieStoreObserver, std::__1::default_delete<WKHTTPCookieStoreObserver>>, WTF::PtrHash<const void *>, WTF::HashTraits<const void *>, WTF::HashTraits<std::__1::unique_ptr<WKHTTPCookieStoreObserver, std::__1::default_delete<WKHTTPCookieStoreObserver>>>> _observers;
+    struct HashMap<const void *, std::__1::unique_ptr<WKHTTPCookieStoreObserver, std::__1::default_delete<WKHTTPCookieStoreObserver>>, WTF::DefaultHash<const void *>, WTF::HashTraits<const void *>, WTF::HashTraits<std::__1::unique_ptr<WKHTTPCookieStoreObserver, std::__1::default_delete<WKHTTPCookieStoreObserver>>>> _observers;
 }
 
 - (id).cxx_construct;
@@ -25,6 +25,7 @@
 - (void)setCookie:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getAllCookies:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)_getCookiesForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

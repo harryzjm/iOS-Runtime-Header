@@ -6,21 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+#import <MetricsKit/MTID-Protocol.h>
 
-@interface MTIDInfo : NSObject
+@class MTIDScheme, MTIDSecret, NSDate, NSDictionary, NSString;
+
+@interface MTIDInfo : NSObject <MTID>
 {
-    NSString *_ID;
+    _Bool _isSynchronized;
+    MTIDScheme *_scheme;
+    MTIDSecret *_secret;
+    NSString *_idString;
+    NSDate *_effectiveDate;
     NSDate *_expirationDate;
-    NSString *_idNamespace;
+    NSDate *_computedDate;
 }
 
-@property(retain, nonatomic) NSString *idNamespace; // @synthesize idNamespace=_idNamespace;
-@property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property(retain, nonatomic) NSString *ID; // @synthesize ID=_ID;
 - (void).cxx_destruct;
-- (id)description;
-- (id)initWithNamespace:(id)arg1 expiration:(id)arg2 ID:(id)arg3;
+@property(retain, nonatomic) NSDate *computedDate; // @synthesize computedDate=_computedDate;
+@property(nonatomic) _Bool isSynchronized; // @synthesize isSynchronized=_isSynchronized;
+@property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property(copy, nonatomic) NSDate *effectiveDate; // @synthesize effectiveDate=_effectiveDate;
+@property(copy, nonatomic) NSString *idString; // @synthesize idString=_idString;
+@property(retain, nonatomic) MTIDSecret *secret; // @synthesize secret=_secret;
+@property(retain, nonatomic) MTIDScheme *scheme; // @synthesize scheme=_scheme;
+- (id)debugInfo;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSDictionary *metricsFields;
+- (_Bool)isValueExpired;
+@property(readonly, nonatomic) double lifespan;
+@property(readonly, nonatomic) long long idType;
+@property(readonly, copy, nonatomic) NSString *idNamespace;
+- (id)initWithScheme:(id)arg1 secret:(id)arg2 idString:(id)arg3 effectiveDate:(id)arg4 expirationDate:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

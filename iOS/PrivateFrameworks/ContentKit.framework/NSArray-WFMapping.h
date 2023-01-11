@@ -13,8 +13,6 @@
 @class NSString;
 
 @interface NSArray (WFMapping) <WFPropertyListObject, WFJavaScriptCoreBridgeableObject, WFJSONObject>
-- (void)transformObjectsUsingAsynchronousBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (void)transformObjectsUsingAsynchronousBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)filteredObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)mapAndFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
@@ -23,13 +21,11 @@
 - (id)objectMatchingKey:(id)arg1 intValue:(int)arg2;
 - (id)objectMatchingKey:(id)arg1 boolValue:(_Bool)arg2;
 - (id)objectMatchingKey:(id)arg1 value:(id)arg2;
-- (id)wf_firstObjectMatchingPredicate:(id)arg1;
 - (id)filteredArrayForKey:(id)arg1 intValue:(int)arg2;
 - (id)filteredArrayForKey:(id)arg1 boolValue:(_Bool)arg2;
 - (id)filteredArrayForKey:(id)arg1 value:(id)arg2;
 - (void)enumerateObjectsSequentiallyUsingAsynchronousBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enumerateObjectsUsingAsynchronousBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)safeObjectAtIndex:(unsigned long long)arg1;
 - (void)sortedArrayUsingContentSortDescriptors:(id)arg1 propertySubstitutor:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sortedArrayUsingContentSortDescriptors:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

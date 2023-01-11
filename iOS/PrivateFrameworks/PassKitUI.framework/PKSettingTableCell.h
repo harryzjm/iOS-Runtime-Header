@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UISwitch;
+@class UIActivityIndicatorView, UISwitch;
 
 @interface PKSettingTableCell
 {
+    UIActivityIndicatorView *_spinner;
+    _Bool _showingSpinner;
     id _target;
     SEL _action;
     UISwitch *_settingSwitch;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UISwitch *settingSwitch; // @synthesize settingSwitch=_settingSwitch;
 @property(readonly, nonatomic) SEL action; // @synthesize action=_action;
 @property(readonly, nonatomic) id target; // @synthesize target=_target;
-- (void).cxx_destruct;
+- (void)prepareForReuse;
+- (void)showSpinner:(_Bool)arg1;
 - (void)setTarget:(id)arg1 action:(SEL)arg2;
 @property(nonatomic, getter=isOn) _Bool on;
 - (void)dealloc;

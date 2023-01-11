@@ -6,7 +6,7 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString;
+@class NSArray, NSData, NSDictionary, NSError, NSString;
 
 @protocol MRAVDistantExternalDeviceServiceProtocol <NSObject>
 - (void)sendButtonEventWithUsagePage:(unsigned int)arg1 usage:(unsigned int)arg2 down:(_Bool)arg3;
@@ -18,11 +18,13 @@
 - (void)outputDeviceVolume:(NSString *)arg1 withCompletion:(void (^)(float, NSError *))arg2;
 - (void)unpair;
 - (void)disconnect:(NSError *)arg1;
-- (void)connectWithOptions:(unsigned int)arg1;
+- (void)connectWithOptions:(unsigned int)arg1 userInfo:(NSDictionary *)arg2;
 - (void)getConnectionStateWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 - (void)getCustomOriginDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)getExternalDeviceIsPairedWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)getExternalDeviceMetadataWithCompletion:(void (^)(MRAVDistantExternalDeviceMetadata *, NSError *))arg1;
 - (void)setNotifications:(unsigned long long)arg1;
 - (void)setRegisteredCallbacks:(unsigned long long)arg1;
+- (void)getPersonalOutputDevices:(void (^)(NSArray *))arg1;
 @end
 

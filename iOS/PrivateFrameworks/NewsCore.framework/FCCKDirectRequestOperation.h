@@ -10,10 +10,10 @@
 {
     _Bool _production;
     _Bool _operationFailsOnRequestFailure;
+    int _networkEventType;
     NSArray *_requests;
     NSString *_containerName;
     long long _requestType;
-    long long _networkEventType;
     double _timeoutIntervalForRequest;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCEdgeCacheHint *_edgeCacheHint;
@@ -26,9 +26,14 @@
     NSError *_resultError;
 }
 
++ (void)setNewTagFeedEnabled:(_Bool)arg1;
++ (_Bool)newTagFeedEnabled;
++ (void)setNewTodayFeedEnabled:(_Bool)arg1;
++ (_Bool)newTodayFeedEnabled;
 + (id)_headersImpactingEdgeCache;
 + (_Bool)_enableDebugLogLevel;
 + (id)URLSession;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *resultError; // @synthesize resultError=_resultError;
 @property(retain, nonatomic) NSMutableDictionary *resultErrorsByRequestID; // @synthesize resultErrorsByRequestID=_resultErrorsByRequestID;
 @property(retain, nonatomic) NSMutableArray *resultResponses; // @synthesize resultResponses=_resultResponses;
@@ -39,13 +44,12 @@
 @property(copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
 @property(copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property(nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
-@property(nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
+@property(nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
 @property(nonatomic) long long requestType; // @synthesize requestType=_requestType;
 @property(nonatomic) _Bool operationFailsOnRequestFailure; // @synthesize operationFailsOnRequestFailure=_operationFailsOnRequestFailure;
 @property(nonatomic) _Bool production; // @synthesize production=_production;
 @property(copy, nonatomic) NSString *containerName; // @synthesize containerName=_containerName;
 @property(copy, nonatomic) NSArray *requests; // @synthesize requests=_requests;
-- (void).cxx_destruct;
 - (id)_errorFromOperationResultError:(id)arg1;
 - (id)_errorFromHTTPResponse:(id)arg1;
 - (id)_bundleIDToReport;

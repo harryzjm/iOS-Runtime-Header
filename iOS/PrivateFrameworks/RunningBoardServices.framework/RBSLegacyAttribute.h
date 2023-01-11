@@ -12,13 +12,12 @@
 }
 
 + (id)attributeWithReason:(unsigned long long)arg1 flags:(unsigned long long)arg2;
-@property(nonatomic) unsigned long long flags; // @synthesize flags=_flags;
-@property(nonatomic) unsigned long long requestedReason; // @synthesize requestedReason=_requestedReason;
+@property(readonly, nonatomic) unsigned long long flags;
+@property(readonly, nonatomic) unsigned long long requestedReason;
 @property(nonatomic) unsigned long long reason; // @synthesize reason=_reason;
-- (id)_initWithReason:(unsigned long long)arg1 flags:(unsigned long long)arg2;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)succinctDescriptionBuilder;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 

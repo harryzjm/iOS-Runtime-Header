@@ -11,6 +11,7 @@
 
 @protocol NTKFaceViewComplicationFactory <NSObject>
 - (unsigned long long)keylineLabelAlignmentForComplicationSlot:(NSString *)arg1;
+- (UIView<NTKKeylineView> *)complicationPickerKeylineViewForComplicationSlot:(NSString *)arg1;
 - (UIView<NTKKeylineView> *)keylineViewForComplicationSlot:(NSString *)arg1;
 - (void)configureComplicationView:(UIView *)arg1 forSlot:(NSString *)arg2;
 - (UIView<NTKComplicationDisplay> *)newLegacyViewForComplication:(NTKComplication *)arg1 family:(long long)arg2 slot:(NSString *)arg3;

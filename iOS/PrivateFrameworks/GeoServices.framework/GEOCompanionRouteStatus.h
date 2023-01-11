@@ -13,12 +13,14 @@
 @interface GEOCompanionRouteStatus : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_9f2792e4 _selectedRideIndexs;
     GEOLocation *_location;
     NSData *_routeID;
     GEOLatLng *_routeMatchCoordinate;
     double _timestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _distanceRemainingOnRoute;
     unsigned int _distanceToManeuver;
     unsigned int _distanceToRoute;
@@ -49,23 +51,7 @@
         unsigned int read_location:1;
         unsigned int read_routeID:1;
         unsigned int read_routeMatchCoordinate:1;
-        unsigned int wrote_selectedRideIndexs:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_routeID:1;
-        unsigned int wrote_routeMatchCoordinate:1;
-        unsigned int wrote_timestamp:1;
-        unsigned int wrote_distanceRemainingOnRoute:1;
-        unsigned int wrote_distanceToManeuver:1;
-        unsigned int wrote_distanceToRoute:1;
-        unsigned int wrote_feedbackType:1;
-        unsigned int wrote_hapticsType:1;
-        unsigned int wrote_remainingTime:1;
-        unsigned int wrote_routeLocationIndex:1;
-        unsigned int wrote_routeLocationOffset:1;
-        unsigned int wrote_stepID:1;
-        unsigned int wrote_guidancePromptsEnabled:1;
-        unsigned int wrote_isConnectedToCarplay:1;
-        unsigned int wrote_lowGuidanceNavigation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -79,6 +65,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIsConnectedToCarplay;
@@ -91,20 +80,16 @@
 @property(nonatomic) _Bool lowGuidanceNavigation;
 - (void)setSelectedRideIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)selectedRideIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsSelectedRideIndex:(unsigned int)arg1;
 - (void)addSelectedRideIndex:(unsigned int)arg1;
 - (void)clearSelectedRideIndexs;
 @property(readonly, nonatomic) unsigned int *selectedRideIndexs;
 @property(readonly, nonatomic) unsigned long long selectedRideIndexsCount;
-- (void)_readSelectedRideIndexs;
 @property(nonatomic) _Bool hasGuidancePromptsEnabled;
 @property(nonatomic) _Bool guidancePromptsEnabled;
 @property(retain, nonatomic) NSData *routeID;
 @property(readonly, nonatomic) _Bool hasRouteID;
-- (void)_readRouteID;
 @property(retain, nonatomic) GEOLatLng *routeMatchCoordinate;
 @property(readonly, nonatomic) _Bool hasRouteMatchCoordinate;
-- (void)_readRouteMatchCoordinate;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) double timestamp;
 @property(nonatomic) _Bool hasRouteLocationOffset;
@@ -113,7 +98,6 @@
 @property(nonatomic) unsigned int routeLocationIndex;
 @property(retain, nonatomic) GEOLocation *location;
 @property(readonly, nonatomic) _Bool hasLocation;
-- (void)_readLocation;
 @property(nonatomic) _Bool hasRemainingTime;
 @property(nonatomic) unsigned int remainingTime;
 @property(nonatomic) _Bool hasDistanceRemainingOnRoute;
@@ -129,6 +113,8 @@
 @property(nonatomic) _Bool hasFeedbackType;
 @property(nonatomic) int feedbackType;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSArray *selectedRideIndices;
 @property(readonly, nonatomic) unsigned int effectiveDistanceToManeuver;
 @property(readonly, nonatomic) _Bool hasEffectiveDistanceToManeuver;

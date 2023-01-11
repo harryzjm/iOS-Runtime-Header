@@ -8,9 +8,10 @@
 
 #import <SafariServices/WBUFormAutoFillWebView-Protocol.h>
 
-@class NSString, UIViewController, _SFSecurityInfo;
+@class NSString, UIView, UIViewController, _SFSecurityInfo;
 
 @interface WKWebView (SafariServicesExtras) <WBUFormAutoFillWebView>
+@property(readonly, nonatomic) NSString *_sf_suggestedFilename;
 - (void)_sf_saveUnsubmittedGeneratedPasswordAndRemoveFormMetadata;
 - (void)_sf_applicationDidEnterBackgroundOrWillTerminate:(id)arg1;
 @property(copy, nonatomic, setter=webui_setLastGeneratedPasswordForCurrentBackForwardItem:) NSString *webui_lastGeneratedPasswordForCurrentBackForwardItem;
@@ -21,6 +22,7 @@
 @property(readonly, nonatomic) _Bool webui_privateBrowsingEnabled;
 - (CDUnknownBlockType)webui_preventNavigationDuringAutoFillPrompt;
 @property(retain, nonatomic, setter=_sf_setSecurityInfo:) _SFSecurityInfo *_sf_securityInfo;
+@property(readonly, nonatomic) UIView *_sf_effectiveViewToLayOut;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

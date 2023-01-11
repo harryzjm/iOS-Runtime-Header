@@ -7,7 +7,7 @@
 #import <HealthDaemon/HDDatumRendering-Protocol.h>
 #import <HealthDaemon/HDHealthServiceCharacteristic-Protocol.h>
 
-@class NSDate, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface HDFitnessMachineDataCharacteristicBase <HDDatumRendering, HDHealthServiceCharacteristic>
 {
@@ -17,7 +17,7 @@
 + (unsigned char)flagFieldLength;
 + (id)uuid;
 - (id)getBinaryValueWithError:(id *)arg1;
-- (id)allFields;
+@property(readonly, copy, nonatomic) NSArray *allFields;
 @property(readonly, nonatomic) unsigned short elapsedTime;
 @property(readonly, nonatomic) _Bool elapsedTimeIsSet;
 - (id)generateDatums:(id)arg1;

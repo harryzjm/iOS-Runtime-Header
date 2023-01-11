@@ -16,6 +16,7 @@
 + (void)displayCity:(id)arg1 usingController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (_Bool)handleOpenURL:(id)arg1 withContainerViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (_Bool)handleOpenURL:(id)arg1 withContainerViewController:(id)arg2;
++ (id)cityFromURL:(id)arg1 withContainerViewController:(id)arg2;
 + (id)URLForWeatherCityComponents:(id)arg1;
 + (id)URLForCity:(id)arg1;
 

@@ -13,13 +13,14 @@ __attribute__((visibility("hidden")))
     _Bool _watchPaired;
 }
 
-@property _Bool watchPaired; // @synthesize watchPaired=_watchPaired;
 - (void).cxx_destruct;
+@property _Bool watchPaired; // @synthesize watchPaired=_watchPaired;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (_Bool)_shouldDisplayPrivacySection;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateFont;
 - (void)handlePairedDevicesSnapshot:(id)arg1;

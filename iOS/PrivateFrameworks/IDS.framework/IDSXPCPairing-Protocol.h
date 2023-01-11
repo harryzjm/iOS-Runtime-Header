@@ -24,6 +24,7 @@
 - (void)getPairingDevicesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)setupCompletedForPairedDeviceWithID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)connectPairedDeviceWithID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)updatePairedDevice:(NSUUID *)arg1 pairingType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addPairedDeviceWithInfo:(IDSLocalPairingAddPairedDeviceInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)addPairedDevice:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 @end

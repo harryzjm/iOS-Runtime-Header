@@ -18,11 +18,12 @@
     NSString *_urlString;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property(readonly, nonatomic) MFLibraryMessage *libraryMessage; // @synthesize libraryMessage=_libraryMessage;
-- (void).cxx_destruct;
 - (_Bool)isKindOfClass:(Class)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+@property(readonly, nonatomic) _Bool isServerSearchResult;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)bestAlternativePart:(_Bool *)arg1;
 @property(readonly, nonatomic) id <ECMailbox> mailbox; // @dynamic mailbox;

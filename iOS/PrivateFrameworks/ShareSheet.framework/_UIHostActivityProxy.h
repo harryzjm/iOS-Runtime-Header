@@ -15,21 +15,29 @@
     _Bool _disabled;
     _Bool _favorite;
     _Bool _restricted;
+    _Bool _longPressable;
     NSUUID *_proxyIdentifier;
     NSNumber *_imageSlot;
     NSNumber *_labelSlot;
     double _platterTextHeight;
+    NSUUID *_activityIdentifierShare;
+    NSUUID *_activityIdentifierOpen;
+    NSUUID *_activityIdentifierCopy;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isLongPressable) _Bool longPressable; // @synthesize longPressable=_longPressable;
 @property(nonatomic, getter=isRestricted) _Bool restricted; // @synthesize restricted=_restricted;
 @property(nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
+@property(retain, nonatomic) NSUUID *activityIdentifierCopy; // @synthesize activityIdentifierCopy=_activityIdentifierCopy;
+@property(retain, nonatomic) NSUUID *activityIdentifierOpen; // @synthesize activityIdentifierOpen=_activityIdentifierOpen;
+@property(retain, nonatomic) NSUUID *activityIdentifierShare; // @synthesize activityIdentifierShare=_activityIdentifierShare;
 @property(nonatomic) double platterTextHeight; // @synthesize platterTextHeight=_platterTextHeight;
 @property(retain, nonatomic) NSNumber *labelSlot; // @synthesize labelSlot=_labelSlot;
 @property(retain, nonatomic) NSNumber *imageSlot; // @synthesize imageSlot=_imageSlot;
 @property(retain, nonatomic) NSUUID *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

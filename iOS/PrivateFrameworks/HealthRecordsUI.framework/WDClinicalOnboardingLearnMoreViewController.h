@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthUI/HKViewController.h>
-
-__attribute__((visibility("hidden")))
-@interface WDClinicalOnboardingLearnMoreViewController : HKViewController
+@interface WDClinicalOnboardingLearnMoreViewController
 {
 }
 
-- (void)done:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)doneTapped:(id)arg1;
 - (void)viewDidLoad;
-- (void)loadView;
 
 @end
 

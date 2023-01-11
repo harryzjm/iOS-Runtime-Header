@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionBandwidthAllocationTable
 {
     unsigned char _type;
-    NSMutableDictionary *_aggregatedAudioOnlyTable;
-    NSMutableDictionary *_aggregatedAudioVideoTable;
-    NSMutableDictionary *_aggregatedAudioOnlyTableWithRedundancy;
-    NSMutableDictionary *_aggregatedAudioVideoTableWithRedundancy;
+    NSMutableArray *_sortedAudioEntries;
+    NSMutableArray *_sortedVideoEntries;
+    NSMutableDictionary *_videoStreamIdToRepairStreamIdMap;
     NSMutableDictionary *_audioTable;
     NSMutableDictionary *_videoTable;
     NSMutableDictionary *_audioOnlyBitrateToStreamIDsTable;
@@ -22,23 +21,25 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_streamIDToEntryTable;
 }
 
-@property(readonly, nonatomic) NSDictionary *aggregatedAudioVideoTableWithRedundancy; // @synthesize aggregatedAudioVideoTableWithRedundancy=_aggregatedAudioVideoTableWithRedundancy;
-@property(readonly, nonatomic) NSDictionary *aggregatedAudioOnlyTableWithRedundancy; // @synthesize aggregatedAudioOnlyTableWithRedundancy=_aggregatedAudioOnlyTableWithRedundancy;
 @property(readonly, nonatomic) NSDictionary *videoOnlyBitrateToStreamIDsTable; // @synthesize videoOnlyBitrateToStreamIDsTable=_videoOnlyBitrateToStreamIDsTable;
 @property(readonly, nonatomic) NSDictionary *audioOnlyBitrateToStreamIDsTable; // @synthesize audioOnlyBitrateToStreamIDsTable=_audioOnlyBitrateToStreamIDsTable;
 @property(readonly, nonatomic) NSDictionary *audioVideoBitrateToStreamIDsTable; // @synthesize audioVideoBitrateToStreamIDsTable=_audioVideoBitrateToStreamIDsTable;
-@property(readonly, nonatomic) NSDictionary *aggregatedAudioVideoTable; // @synthesize aggregatedAudioVideoTable=_aggregatedAudioVideoTable;
-@property(readonly, nonatomic) NSDictionary *aggregatedAudioOnlyTable; // @synthesize aggregatedAudioOnlyTable=_aggregatedAudioOnlyTable;
 - (void)printTable:(id)arg1;
 - (id)newBitrateToStreamIDsTableWithAudioTable:(id)arg1 videoTable:(id)arg2;
-- (id)newAggregateTableWithAudioTable:(id)arg1 videoTable:(id)arg2 isVideoEnabled:(_Bool)arg3 isRedundancyEnabled:(_Bool)arg4;
+- (unsigned int)getTotalBitrateForEntries:(id)arg1 repairStreamEnabled:(_Bool)arg2;
+- (_Bool)shouldAddBackupEntry:(id)arg1 videoEnabled:(_Bool)arg2 audioEnabled:(_Bool)arg3 availableStreamArray:(id)arg4;
+- (_Bool)getAudioActiveFromAudioTable:(id)arg1;
+- (void)checkAndRemoveBackupEntries:(id)arg1 redundancyEnabled:(_Bool)arg2 currentNetworkBitrate:(unsigned int *)arg3;
+- (void)appendEntry:(id)arg1 entries:(id)arg2 currentNetworkBitrate:(unsigned int *)arg3 isRedundancyEnabled:(_Bool)arg4 isRedundancyEnabledFor720Stream:(_Bool)arg5;
+- (id)newAggregateTableWithAudioTable:(id)arg1 videoTable:(id)arg2 isVideoEnabled:(_Bool)arg3 isRedundancyEnabled:(_Bool)arg4 redundancyEnabledFor720Stream:(_Bool)arg5;
+- (id)newAggregatedBandwidthTableWithRedundancy:(_Bool)arg1 videoEnabled:(_Bool)arg2 redundancyEnabledFor720Stream:(_Bool)arg3;
+- (void)_generateVideoStreamIDToRepairStreamIDMap;
+- (void)_generateSortedAudioEntries;
+- (void)_generateSortedVideoEntries;
 - (void)generateVideoOnlyBitrateToStreamIDsTable;
 - (void)generateAudioVideoBitrateToStreamIDsTable;
 - (void)generateAudioOnlyBitrateToStreamIDsTable;
-- (void)generateAudioVideoBandwidthAllocationTableWithRedundancy;
-- (void)generateAudioOnlyBandwidthAllocationTableWithRedundancy;
-- (void)generateAudioVideoBandwidthAllocationTable;
-- (void)generateAudioOnlyBandwidthAllocationTable;
+@property(readonly, nonatomic) NSDictionary *videoStreamIdToRepairStreamIdMap;
 @property(readonly, nonatomic) NSArray *videoEntries;
 @property(readonly, nonatomic) NSArray *audioEntries;
 - (void)generate;

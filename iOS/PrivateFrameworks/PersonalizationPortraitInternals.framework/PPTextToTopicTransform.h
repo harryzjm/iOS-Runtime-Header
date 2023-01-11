@@ -13,18 +13,18 @@
     _PASLock *_lock;
     NSString *_vocabularyPath;
     NSString *_weightsPath;
+    NSString *_mappingId;
     _PASNotificationToken *_assetUpdateNotificationToken;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)enumerateTopicsForText:(id)arg1 threshold:(double)arg2 block:(CDUnknownBlockType)arg3;
 - (id)_payloadForTopic:(unsigned int)arg1;
-- (id)_getTopicScoreArrayForText:(id)arg1;
+- (void)iterateTopicsForText:(id)arg1 block:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) float threshold;
 @property(readonly, nonatomic) unsigned long long outputTopicCount;
-- (void)dealloc;
 - (id)init;
-- (void)_updateFromAssetData;
+- (_Bool)_updateFromAssetData;
 - (id)_initWithVocabulary:(id)arg1 weights:(id)arg2;
 - (id)_init;
 

@@ -14,11 +14,19 @@ __attribute__((visibility("hidden")))
     NSUserDefaults *_userDefaults;
 }
 
-+ (id)allDefaultsInfo;
 + (id)userDefaults;
 + (id)instance;
-@property(retain, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
++ (unsigned int)builtInMicrophoneAnalysisChannelNumberOrDefault:(unsigned int)arg1;
++ (id)builtInMicrophoneAnalysisChannelNumber;
++ (id)fileServerRootDirectory;
++ (_Bool)enableFileServer;
++ (_Bool)deleteRecordingsWithoutDetection;
++ (double)recordingTimeToLiveSeconds;
++ (long long)recordingDirectoryMaximumSizeBytes;
++ (id)daemonRecordingPath;
++ (_Bool)enableSecondPassRecordingInDaemon;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 - (id)init;
 
 @end

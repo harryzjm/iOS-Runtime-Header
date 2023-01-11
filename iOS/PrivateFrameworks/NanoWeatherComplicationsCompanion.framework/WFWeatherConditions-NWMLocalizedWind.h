@@ -10,16 +10,17 @@
 
 @interface WFWeatherConditions (NWMLocalizedWind)
 + (int)_preferredWindSpeedUnitForLocale:(id)arg1;
-+ (id)_localizedStringForWindspeed:(double)arg1 withUnit:(int)arg2 forLocale:(id)arg3;
-+ (id)_localizedArrayForWindspeed:(double)arg1 withUnit:(int)arg2 forLocale:(id)arg3;
++ (id)_localizedWindspeed:(double)arg1 withUnit:(int)arg2 forLocale:(id)arg3;
++ (id)_defaultWindSpeedWithUnit:(double)arg1;
 + (id)nwm_localizedWindpeedUnit;
 + (id)_nwc_prefixForFamily:(long long)arg1;
 + (id)nwc_noDataImageForComplicationFamily:(long long)arg1;
 + (id)_nwm_shortSuffixedKey:(id)arg1;
 + (id)nwm_localizedNoDataRounded;
 + (id)nwm_localizedNoData;
-+ (id)nwm_localizedDescriptionShortForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
++ (id)nwm_localizedDescriptionShortKeyForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwm_localizedDescriptionKeyForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
++ (id)nwm_localizedDescriptionShortForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwm_localizedDescriptionForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwc_ultravioletIndexCategoryColorUnknown;
 + (id)nwc_ultravioletIndexCategoryColorSpectrum;
@@ -33,14 +34,15 @@
 @property(readonly, nonatomic) NSString *nwm_localizedWindDirectionAbbreviationCompact;
 @property(readonly, nonatomic) NSString *nwm_localizedWindDirectionAbbreviation;
 - (unsigned long long)_nwc_code;
-- (id)nwc_nighttimeConditionImageForComplicationFamily:(long long)arg1;
-- (id)nwc_daytimeConditionImageForComplicationFamily:(long long)arg1;
-- (id)nwc_conditionImageProviderForComplicationFamily:(long long)arg1;
-- (id)nwc_conditionImageForComplicationFamily:(long long)arg1;
+- (id)nwc_conditionImageProviderForTimeOfDay:(unsigned long long)arg1 andFamily:(long long)arg2;
+- (id)nwc_conditionImageForTimeOfDay:(unsigned long long)arg1 andFamily:(long long)arg2;
 - (unsigned long long)nw_timeOfDay;
-@property(readonly, nonatomic) NSString *nwm_localizedDescriptionShort;
-@property(readonly, nonatomic) NSString *nwm_localizedDescriptionKey;
-@property(readonly, nonatomic) NSString *nwm_localizedDescription;
+- (id)nwm_localizedDescriptionShort;
+- (id)nwm_localizedDescriptionKey;
+- (id)nwm_localizedDescription;
+- (id)nwm_localizedDescriptionKeyForTimeOfDay:(unsigned long long)arg1;
+- (id)nwm_localizedDescriptionShortForTimeOfDay:(unsigned long long)arg1;
+- (id)nwm_localizedDescriptionForTimeOfDay:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *nwc_ultravioletIndexRiskDescription;
 @property(readonly, nonatomic) UIColor *nwc_ultravioletIndexCategoryColor;
 @property(readonly, nonatomic) unsigned long long nwc_ultravioletIndexCategory;

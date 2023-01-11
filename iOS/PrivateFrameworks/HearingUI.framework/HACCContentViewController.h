@@ -15,17 +15,18 @@
 @interface HACCContentViewController : UIViewController <UIGestureRecognizerDelegate, CCUIContentModuleContentViewController>
 {
     unsigned long long _controlType;
-    UIView<HACCContentModule> *_contentView;
     CCUIContentModuleDetailTransitioningDelegate *_detailTransitioningDelegate;
     UIViewController<CCUIContentModuleContentViewController> *_expandedViewController;
     UITapGestureRecognizer *_tapRecognizer;
+    UIView<HACCContentModule> *_contentView;
     struct CGRect _collapsedFrame;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView<HACCContentModule> *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 @property(retain, nonatomic) UIViewController<CCUIContentModuleContentViewController> *expandedViewController; // @synthesize expandedViewController=_expandedViewController;
 @property(nonatomic) struct CGRect collapsedFrame; // @synthesize collapsedFrame=_collapsedFrame;
-- (void).cxx_destruct;
 - (_Bool)supportsExpanding;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (id)viewControllerForExpandedView;
@@ -39,7 +40,9 @@
 - (unsigned long long)controlTypeForModule:(unsigned long long)arg1;
 - (void)updateViewConstraints;
 - (id)value;
+- (void)updateWithValue:(id)arg1;
 - (void)updateValue;
+- (_Bool)_canShowWhileLocked;
 - (id)initWithContentModule:(unsigned long long)arg1 andDelegate:(id)arg2;
 
 // Remaining properties
@@ -50,6 +53,8 @@
 @property(readonly, nonatomic) double preferredExpandedContentWidth;
 @property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property(readonly, nonatomic) _Bool providesOwnPlatter;
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
 @property(readonly) Class superclass;
 
 @end

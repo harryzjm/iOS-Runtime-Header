@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)isPitchIncreasing;
 - (void)endPitch:(struct CGPoint)arg1;
+- (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)beginPitch:(struct CGPoint)arg1;
 - (void)endRotate:(struct CGPoint)arg1;

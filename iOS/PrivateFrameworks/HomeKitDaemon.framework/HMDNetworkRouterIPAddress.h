@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSData, NSString;
 
-@interface HMDNetworkRouterIPAddress : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterIPAddress : NSObject <NSCopying, HAPTLVProtocol>
 {
     NSData *_v4;
     NSData *_v6;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
++ (id)ipAddressFromRuleAddress:(id)arg1 allowWildcard:(_Bool)arg2;
 + (id)ipAddressFromNetAddress:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *v6; // @synthesize v6=_v6;
 @property(retain, nonatomic) NSData *v4; // @synthesize v4=_v4;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

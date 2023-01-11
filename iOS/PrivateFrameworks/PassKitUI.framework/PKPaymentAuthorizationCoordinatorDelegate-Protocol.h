@@ -19,6 +19,7 @@
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectPaymentMethod:(PKPaymentMethod *)arg2 handler:(void (^)(PKPaymentRequestPaymentMethodUpdate *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectShippingAddress:(CNContact *)arg2 handler:(void (^)(PKPaymentRequestShippingContactUpdate *))arg3;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didSelectShippingMethod:(PKShippingMethod *)arg2 handler:(void (^)(PKPaymentRequestShippingMethodUpdate *))arg3;
+- (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didRequestMerchantSessionUpdate:(void (^)(PKPaymentRequestMerchantSessionUpdate *))arg2;
 - (void)paymentAuthorizationCoordinatorWillAuthorizePayment:(PKPaymentAuthorizationCoordinator *)arg1;
 - (void)paymentAuthorizationCoordinator:(PKPaymentAuthorizationCoordinator *)arg1 didAuthorizePayment:(PKPayment *)arg2 completion:(void (^)(long long))arg3;
 @end

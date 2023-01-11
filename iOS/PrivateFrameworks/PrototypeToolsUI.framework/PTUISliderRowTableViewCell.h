@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _PTSAccessorySlider;
+#import <PrototypeToolsUI/PTUINumericKeypadDelegate-Protocol.h>
 
-@interface PTUISliderRowTableViewCell
+@class UILabel, UISlider;
+
+@interface PTUISliderRowTableViewCell <PTUINumericKeypadDelegate>
 {
-    _PTSAccessorySlider *_slider;
+    UISlider *_slider;
+    UILabel *_label;
 }
 
 - (void).cxx_destruct;
+- (void)numericKeypadWillDismiss:(id)arg1;
+- (void)numericKeypadDidUpdateValue:(id)arg1;
+- (void)labelTapped;
 - (void)_valueChanged:(id)arg1;
 - (void)updateDisplayedValue;
 - (void)updateCellCharacteristics;
+- (void)updateLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

@@ -17,7 +17,7 @@
 }
 
 - (void)printf:(const char *)arg1;
-- (void)printf:(const char *)arg1 arguments:(struct __va_list_tag [1])arg2;
+- (void)printf:(const char *)arg1 arguments:(char *)arg2;
 - (void)writePropertyList:(id)arg1;
 - (void)writeUnsignedAsciiInteger:(unsigned long long)arg1;
 - (void)writeString:(id)arg1;

@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, _UIBackdropViewSettings;
+@class UIColor;
 
 @interface _UICustomBlurEffect
 {
-    _UIBackdropViewSettings *_blurEffect;
 }
 
 + (id)effectWithStyle:(long long)arg1;
-- (void).cxx_destruct;
 - (id)effectSettings;
 @property(nonatomic) double zoom;
 @property(nonatomic) double scale;
@@ -29,10 +27,6 @@
 @property(nonatomic) _Bool lightenGrayscaleWithSourceOver;
 @property(nonatomic) double grayscaleTintAlpha;
 @property(nonatomic) double grayscaleTintLevel;
-- (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
 
 @end
 

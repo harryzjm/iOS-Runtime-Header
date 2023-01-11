@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)classesForKey;
+- (void).cxx_destruct;
 @property(nonatomic) long long participantType; // @synthesize participantType=_participantType;
 @property(nonatomic) long long participantStatus; // @synthesize participantStatus=_participantStatus;
 @property(nonatomic) long long participantRole; // @synthesize participantRole=_participantRole;
@@ -26,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)createAttendee:(id *)arg1;
 - (id)initWithParticipant:(id)arg1;
 

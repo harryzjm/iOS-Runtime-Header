@@ -15,8 +15,8 @@
     NSMapTable *_lastFocusedItems;
 }
 
-@property(retain, nonatomic) NSMapTable *lastFocusedItems; // @synthesize lastFocusedItems=_lastFocusedItems;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMapTable *lastFocusedItems; // @synthesize lastFocusedItems=_lastFocusedItems;
 - (id)_linearFocusItems;
 - (id)preferredFocusEnvironments;
 - (id)popNavigationItemAnimated:(_Bool)arg1;
@@ -29,6 +29,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool useRightHandDriveFocusGuide;
 
 @end
 

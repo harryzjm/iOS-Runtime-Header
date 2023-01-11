@@ -17,7 +17,7 @@
 + (void)initialize;
 - (id)privateImpl;
 @property(readonly) GKConnection *connection;
-@property id <GKSessionPrivateDelegate> privateDelegate;
+@property __weak id <GKSessionPrivateDelegate> privateDelegate;
 @property _Bool wifiEnabled;
 - (_Bool)isPeerBusy:(id)arg1;
 @property(getter=isBusy) _Bool busy;
@@ -38,7 +38,7 @@
 @property double disconnectTimeout;
 @property(readonly) NSString *displayName;
 @property(readonly) NSString *sessionID;
-@property id <GKSessionDelegate> delegate;
+@property __weak id <GKSessionDelegate> delegate;
 - (void)dealloc;
 - (id)description;
 - (id)initWithConnection:(id)arg1 delegate:(id)arg2;

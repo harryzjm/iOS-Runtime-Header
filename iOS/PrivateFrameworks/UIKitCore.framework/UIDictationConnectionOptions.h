@@ -26,8 +26,11 @@ __attribute__((visibility("hidden")))
     NSString *_prefixText;
     NSString *_selectedText;
     NSString *_postfixText;
+    id _turnIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) id turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;
 @property(copy, nonatomic) NSString *postfixText; // @synthesize postfixText=_postfixText;
 @property(copy, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
 @property(copy, nonatomic) NSString *prefixText; // @synthesize prefixText=_prefixText;
@@ -43,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property(nonatomic) unsigned long long activationType; // @synthesize activationType=_activationType;
 @property(nonatomic) unsigned long long version; // @synthesize version=_version;
-- (void).cxx_destruct;
 
 @end
 

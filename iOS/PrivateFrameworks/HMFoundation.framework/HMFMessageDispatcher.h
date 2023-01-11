@@ -6,33 +6,33 @@
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFMessageTransportDelegate-Protocol.h>
-#import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFMessageTransport, HMFTimer, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSSet, NSString;
-@protocol HMFLocking, OS_dispatch_queue;
+@class HMFMessageTransport, HMFTimer, NSBackgroundActivityScheduler, NSDictionary, NSMutableOrderedSet, NSObject, NSSet, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HMFMessageDispatcher <HMFLogging, HMFTimerDelegate, HMFMessageTransportDelegate>
+@interface HMFMessageDispatcher <HMFLogging, HMFMessageTransportDelegate>
 {
-    id <HMFLocking> _lock;
+    struct hmf_unfair_data_lock_s _lock;
     NSMutableOrderedSet *_handlers;
     HMFTimer *_indexWatchdog;
-    NSMutableArray *_indexOperations;
+    NSBackgroundActivityScheduler *_indexScheduler;
+    NSDictionary *_destinationHandlerIndexes;
+    NSDictionary *_nameHandlerIndexes;
+    _Bool _indexed;
+    _Bool _shouldAutomaticallyIndex;
     NSSet *_filterClasses;
     HMFMessageTransport *_transport;
-    NSMutableDictionary *_destinationHandlerIndexes;
-    NSMutableDictionary *_nameHandlerIndexes;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 + (id)logCategory;
-@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly) NSMutableDictionary *nameHandlerIndexes; // @synthesize nameHandlerIndexes=_nameHandlerIndexes;
-@property(readonly) NSMutableDictionary *destinationHandlerIndexes; // @synthesize destinationHandlerIndexes=_destinationHandlerIndexes;
-@property(readonly, nonatomic) HMFMessageTransport *transport; // @synthesize transport=_transport;
 - (void).cxx_destruct;
-- (void)timerDidFire:(id)arg1;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(nonatomic) _Bool shouldAutomaticallyIndex; // @synthesize shouldAutomaticallyIndex=_shouldAutomaticallyIndex;
+@property(readonly, nonatomic) HMFMessageTransport *transport; // @synthesize transport=_transport;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)sendMessage:(id)arg1;
 - (void)dispatchMessage:(id)arg1;
 - (void)deregisterReceiver:(id)arg1;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;
@@ -41,7 +41,10 @@
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 selector:(SEL)arg3;
 - (id)handlersForMessage:(id)arg1;
+- (void)index;
+@property(readonly, getter=isIndexed) _Bool indexed; // @synthesize indexed=_indexed;
 @property(copy) NSSet *filterClasses; // @synthesize filterClasses=_filterClasses;
+- (void)dealloc;
 - (id)initWithTransport:(id)arg1;
 - (id)init;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;

@@ -8,36 +8,33 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedRouteTraffic, GEOETARoute, GEOETATrafficUpdateResponse, GEOTransitRouteUpdateRequest, NSDate, NSUUID;
+@class GEOComposedETARoute, GEOComposedRoute, GEOComposedRouteTraffic, GEOETATrafficUpdateResponse, GEOTransitRouteUpdateRequest, MNDisplayETAInfo, MNRouteDistanceInfo, NSUUID;
 
 @interface MNActiveRouteInfo : NSObject <NSSecureCoding>
 {
     GEOComposedRoute *_route;
-    GEOETARoute *_etaRoute;
+    GEOComposedETARoute *_etaRoute;
     GEOETATrafficUpdateResponse *_etaResponse;
-    NSDate *_displayETA;
-    unsigned long long _displayRemainingMinutes;
-    GEOComposedRouteTraffic *_traffic;
+    MNDisplayETAInfo *_displayETAInfo;
+    MNRouteDistanceInfo *_remainingDistanceInfo;
     unsigned long long _alternateRouteIndex;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) unsigned long long alternateRouteIndex; // @synthesize alternateRouteIndex=_alternateRouteIndex;
-@property(retain, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
-@property(nonatomic) unsigned long long displayRemainingMinutes; // @synthesize displayRemainingMinutes=_displayRemainingMinutes;
-@property(retain, nonatomic) NSDate *displayETA; // @synthesize displayETA=_displayETA;
-@property(retain, nonatomic) GEOETATrafficUpdateResponse *etaResponse; // @synthesize etaResponse=_etaResponse;
-@property(retain, nonatomic) GEOETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
-@property(retain, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long alternateRouteIndex; // @synthesize alternateRouteIndex=_alternateRouteIndex;
+@property(retain, nonatomic) MNRouteDistanceInfo *remainingDistanceInfo; // @synthesize remainingDistanceInfo=_remainingDistanceInfo;
+@property(retain, nonatomic) MNDisplayETAInfo *displayETAInfo; // @synthesize displayETAInfo=_displayETAInfo;
+@property(retain, nonatomic) GEOETATrafficUpdateResponse *etaResponse; // @synthesize etaResponse=_etaResponse;
+@property(retain, nonatomic) GEOComposedETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
+@property(retain, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) GEOTransitRouteUpdateRequest *transitRouteUpdateRequest;
+@property(readonly, nonatomic) GEOComposedRouteTraffic *traffic;
 @property(readonly, nonatomic) NSUUID *routeID;
-- (void)updateWithETARoute:(id)arg1 offsetInMeters:(double)arg2;
 - (id)initWithRoute:(id)arg1 trafficRoute:(id)arg2 routeInitalizerData:(id)arg3;
-- (id)initWithRoute:(id)arg1 traffic:(id)arg2;
 - (id)initWithRoute:(id)arg1;
 
 @end

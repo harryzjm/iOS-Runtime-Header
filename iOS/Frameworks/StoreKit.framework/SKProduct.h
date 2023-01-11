@@ -28,8 +28,8 @@
 - (void)_setLocalizedTitle:(id)arg1;
 - (void)_setLocalizedDescription:(id)arg1;
 @property(copy, nonatomic, getter=_localeIdentifier, setter=_setLocaleIdentifier:) NSString *_localeIdentifier;
-- (void)_setLocale:(id)arg1;
 - (void)_setIntroductoryPrice:(id)arg1;
+- (void)_setFamilyShareable:(_Bool)arg1;
 - (void)_setDownloadable:(_Bool)arg1;
 - (void)_setDownloadContentLengths:(id)arg1;
 - (void)_setContentVersion:(id)arg1;
@@ -42,6 +42,7 @@
 @property(readonly, nonatomic) NSString *localizedTitle;
 @property(readonly, nonatomic) NSString *localizedDescription;
 @property(readonly, nonatomic) SKProductDiscount *introductoryPrice;
+@property(readonly, nonatomic) _Bool isFamilyShareable;
 @property(readonly, nonatomic) _Bool downloadable;
 @property(readonly, nonatomic) _Bool isDownloadable;
 @property(readonly, nonatomic) NSString *downloadContentVersion;

@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/HUDatePickerCellDelegate-Protocol.h>
+#import <HomeUI/HUInlineDatePickerCellDelegate-Protocol.h>
 #import <HomeUI/HUSignificantEventOffsetPickerDelegate-Protocol.h>
 
 @class HFTimeRangeCondition, HUTriggerTimeConditionDetailEditorItemManager, NSString;
 @protocol HUTriggerTimeConditionDetailEditorDelegate;
 
-@interface HUTriggerTimeConditionDetailEditorViewController <HUSignificantEventOffsetPickerDelegate, HUDatePickerCellDelegate>
+@interface HUTriggerTimeConditionDetailEditorViewController <HUSignificantEventOffsetPickerDelegate, HUInlineDatePickerCellDelegate>
 {
     id <HUTriggerTimeConditionDetailEditorDelegate> _delegate;
 }
 
-@property(readonly, nonatomic) __weak id <HUTriggerTimeConditionDetailEditorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <HUTriggerTimeConditionDetailEditorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)datePickerCell:(id)arg1 didSelectDate:(id)arg2;
 - (void)significantEventOffsetPicker:(id)arg1 didSelectOffset:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;

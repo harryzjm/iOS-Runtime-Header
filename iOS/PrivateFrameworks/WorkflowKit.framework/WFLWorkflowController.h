@@ -9,7 +9,7 @@
 #import <WorkflowKit/WFSiriUserInterface-Protocol.h>
 #import <WorkflowKit/WFWorkflowControllerDelegate-Protocol.h>
 
-@class INIntentResponse, NSArray, NSProgress, NSString, WFWorkflow, WFWorkflowController;
+@class INInteraction, NSArray, NSProgress, NSString, WFWorkflow, WFWorkflowController;
 @protocol WFLWorkflowControllerDelegate;
 
 @interface WFLWorkflowController : NSObject <WFWorkflowControllerDelegate, WFSiriUserInterface>
@@ -18,30 +18,35 @@
     id <WFLWorkflowControllerDelegate> _delegate;
     long long _executionContext;
     WFWorkflowController *_controller;
-    INIntentResponse *_lastIntentResponse;
+    INInteraction *_lastInteraction;
 }
 
-@property(retain, nonatomic) INIntentResponse *lastIntentResponse; // @synthesize lastIntentResponse=_lastIntentResponse;
+- (void).cxx_destruct;
+@property(retain, nonatomic) INInteraction *lastInteraction; // @synthesize lastInteraction=_lastInteraction;
 @property(readonly, nonatomic) WFWorkflowController *controller; // @synthesize controller=_controller;
 @property(nonatomic) long long executionContext; // @synthesize executionContext=_executionContext;
 @property(nonatomic) __weak id <WFLWorkflowControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSArray *airPlayRouteIDs; // @synthesize airPlayRouteIDs=_airPlayRouteIDs;
-- (void).cxx_destruct;
 - (void)configureIntent:(id)arg1;
 - (_Bool)executeIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openUserActivity:(id)arg1 bundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)speakText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openInteractionInApp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)showInteractionIfNeeded:(id)arg1 requiringConfirmation:(_Bool)arg2 requiringAuthentication:(_Bool)arg3 executionStage:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)showHandleInteraction:(id)arg1 prompt:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)showConfirmInteraction:(id)arg1 prompt:(id)arg2 requireAuthentication:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (_Bool)isRunningInSiri;
+- (void)showConfirmInteraction:(id)arg1 requireAuthentication:(_Bool)arg2 requireConfirmation:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)workflowController:(id)arg1 userInterfaceForAction:(id)arg2;
 - (void)presentAlert:(id)arg1;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 - (void)workflowController:(id)arg1 didRunAction:(id)arg2;
 - (void)workflowController:(id)arg1 prepareToRunAction:(id)arg2 withInput:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(_Bool)arg3;
 - (void)workflowControllerWillRun:(id)arg1;
 - (void)launchAppWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
+- (id)runSource;
 - (void)runWithInput:(id)arg1;
 @property(readonly, nonatomic) WFWorkflow *workflow;
 @property(readonly, nonatomic) NSProgress *progress;

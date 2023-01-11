@@ -50,6 +50,7 @@
 - (void)loadGamesPlayed:(CDUnknownBlockType)arg1;
 - (void)loadRecentMatchesForGame:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)loadCommonFriends:(_Bool)arg1 asPlayersWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)loadFriendsWithFilter:(id)arg1 withComplationHandler:(CDUnknownBlockType)arg2;
 - (void)loadFriendsAsPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)postChangeNotification;
 - (void)_postChangeNotification;
@@ -61,12 +62,19 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+@property(readonly, nonatomic) _Bool isInvitable;
+- (void)setAutomatchedTogether:(id)arg1;
+- (void)setInitiatedGameInviteToThisFriend:(id)arg1;
+- (void)setAcceptedGameInviteFromThisFriend:(id)arg1;
 - (void)setFriendPlayedNearby:(id)arg1;
 - (void)setFriendPlayedWith:(id)arg1;
 - (void)setFriendBiDirectional:(id)arg1;
 - (void)setFriendLevel:(id)arg1;
 @property(readonly, nonatomic) long long avatarType; // @dynamic avatarType;
 @property(copy, nonatomic) NSString *alias; // @dynamic alias;
+@property(readonly, nonatomic) NSNumber *automatchedTogether; // @dynamic automatchedTogether;
+@property(readonly, nonatomic) NSNumber *initiatedGameInviteToThisFriend; // @dynamic initiatedGameInviteToThisFriend;
+@property(readonly, nonatomic) NSNumber *acceptedGameInviteFromThisFriend; // @dynamic acceptedGameInviteFromThisFriend;
 @property(readonly, nonatomic) NSNumber *friendPlayedNearby; // @dynamic friendPlayedNearby;
 @property(readonly, nonatomic) NSNumber *friendPlayedWith; // @dynamic friendPlayedWith;
 @property(readonly, nonatomic) NSNumber *friendBiDirectional; // @dynamic friendBiDirectional;
@@ -91,6 +99,7 @@
 @property(readonly, nonatomic) _Bool isAnonymousPlayer; // @dynamic isAnonymousPlayer;
 @property(readonly, nonatomic) _Bool isAutomatchPlayer; // @dynamic isAutomatchPlayer;
 @property(nonatomic) _Bool isFriend; // @dynamic isFriend;
+@property(readonly, nonatomic) _Bool isGuestPlayer; // @dynamic isGuestPlayer;
 @property(readonly, nonatomic) _Bool isLocalPlayer; // @dynamic isLocalPlayer;
 @property(readonly, nonatomic) _Bool isUnknownPlayer; // @dynamic isUnknownPlayer;
 @property(readonly, nonatomic) NSString *lastName; // @dynamic lastName;

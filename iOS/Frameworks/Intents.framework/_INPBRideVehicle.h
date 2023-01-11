@@ -15,7 +15,6 @@
 @interface _INPBRideVehicle : PBCodable <_INPBRideVehicle, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     GEOLocation *_location;
     NSString *_manufacturer;
     _INPBImageValue *_mapAnnotationImage;
@@ -24,13 +23,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *registrationPlate; // @synthesize registrationPlate=_registrationPlate;
 @property(copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property(retain, nonatomic) _INPBImageValue *mapAnnotationImage; // @synthesize mapAnnotationImage=_mapAnnotationImage;
 @property(copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property(retain, nonatomic) GEOLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

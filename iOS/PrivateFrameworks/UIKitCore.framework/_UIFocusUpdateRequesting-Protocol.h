@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) _Bool requiresEnvironmentValidation;
 @property(readonly, nonatomic) _Bool requiresNextFocusedItem;
 @property(readonly, nonatomic) _Bool shouldPlayFocusSound;
+@property(readonly, nonatomic, getter=isMovementRequest) _Bool movementRequest;
 @property(readonly, nonatomic) __weak UIFocusSystem *focusSystem;
 @end
 

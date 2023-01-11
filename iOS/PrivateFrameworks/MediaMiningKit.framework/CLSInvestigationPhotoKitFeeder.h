@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLSFeederPrefetchOptions, NSArray, PHAssetCollection, PHFetchOptions, PHFetchResult;
+@class NSArray, PHAssetCollection, PHFetchOptions, PHFetchResult;
 
 @interface CLSInvestigationPhotoKitFeeder
 {
@@ -14,18 +14,15 @@
     unsigned long long _numberOfAllPeople;
     PHAssetCollection *_assetCollection;
     PHFetchOptions *_assetFetchOptions;
-    CLSFeederPrefetchOptions *_prefetchOptions;
 }
 
 + (id)feederForAssetCollection:(id)arg1 options:(id)arg2 feederPrefetchOptions:(id)arg3;
-@property(readonly, copy, nonatomic) CLSFeederPrefetchOptions *prefetchOptions; // @synthesize prefetchOptions=_prefetchOptions;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) PHFetchOptions *assetFetchOptions; // @synthesize assetFetchOptions=_assetFetchOptions;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) double behavioralScore;
 @property(readonly, nonatomic) unsigned long long numberOfRegularGemItems;
 @property(readonly, nonatomic) unsigned long long numberOfShinyGemItems;
-- (struct CGImage *)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;
 - (void)enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)itemAtIndex:(unsigned long long)arg1;
@@ -44,7 +41,8 @@
 @property(readonly, nonatomic) _Bool hasPeople;
 - (unsigned long long)numberOfItems;
 - (_Bool)_shouldPrefetchCurationInformation;
-- (id)initWithFeederWithAssetCollection:(id)arg1 assetFetchOptions:(id)arg2 feederPrefetchOptions:(id)arg3;
+- (id)initWithAssetFetchResult:(id)arg1;
+- (id)initWithAssetCollection:(id)arg1 assetFetchOptions:(id)arg2 feederPrefetchOptions:(id)arg3;
 
 @end
 

@@ -6,22 +6,73 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+#import <QuartzCore/CABrightnessControl-Protocol.h>
 
-@interface CAWindowServerDisplay : NSObject
+@class NSDictionary, NSSet, NSString;
+
+@interface CAWindowServerDisplay : NSObject <CABrightnessControl>
 {
     struct CAWindowServerDisplayImpl *_impl;
     _Bool _mirroringEnabled;
 }
 
 @property(getter=isMirroringEnabled) _Bool mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
+- (void)setGammaAdjustment:(struct CGColorTRC [3])arg1;
+@property struct CGColorTRC blackpointAdaptation;
+@property struct CGColorTRC systemGamma;
+@property(retain) struct CGColorSpace *displayColorSpace;
+@property(retain) struct CGColorSpace *blendColorSpace;
+@property(readonly) _Bool supportsColorSpaces;
+- (_Bool)setDigitalModes:(id)arg1 withTimings:(id)arg2;
+@property(readonly, nonatomic) NSDictionary *brightnessCapabilities;
+@property(readonly) _Bool wantedToDetach;
+@property(retain) struct __IOSurface *cursorSurface;
+@property(readonly) struct CGSize minimumVisibleCursorSize;
+@property(readonly) _Bool tripleBuffered;
+@property _Bool cursorEnabled;
+@property _Bool cursorHidden;
+@property(copy) NSDictionary *cursorDictionary;
+@property struct CGPoint cursorPosition;
+@property(readonly) struct CGSize maximumCursorSize;
+@property(readonly) _Bool supportsCursor;
+@property(readonly) _Bool needsUpdate;
+@property(readonly) struct CGRect detachingRect;
+@property(readonly, getter=isDetaching) _Bool detaching;
+@property(readonly) void *detachingDisplay;
+- (void)presentSurface:(struct __IOSurface *)arg1 withOptions:(id)arg2;
+- (void)activateReplay;
+- (_Bool)finishExternalUpdate:(void *)arg1 withFlags:(unsigned int)arg2;
+- (void)beginExternalUpdate:(void *)arg1 usingSoftwareRenderer:(_Bool)arg2;
+@property(readonly) unsigned long long previousVBL;
+@property(readonly) unsigned long long vblDelta;
+@property(readonly) double nextWakeupTime;
+- (_Bool)canUpdateWithFlags:(unsigned int)arg1;
+- (_Bool)canUpdate:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool whitePointD50XYZ;
+@property(readonly, nonatomic) _Bool whitePointAvailable;
+@property(readonly, nonatomic) _Bool brightnessAvailable;
+- (_Bool)commitBrightness:(id *)arg1;
+- (void)setSDRBrightness:(float)arg1;
+- (void)setPotentialHeadroom:(float)arg1;
+- (void)setHeadroom:(float)arg1;
+- (void)setAmbient:(float)arg1;
+- (void)emitWhitePointError:(id *)arg1;
+- (void)emitBrightnessError:(id *)arg1;
+@property(readonly) long long transportType;
+@property(readonly) float gamma;
+@property(readonly) CDStruct_31cefc2d chromaticities;
 @property(readonly) CDStruct_b2fbf00d whitepoint;
-- (id)description;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned int framebufferFormat;
+@property _Bool enabled;
 @property _Bool disabled;
 @property _Bool disablesUpdates;
+- (struct __IOSurface *)acquireFrozenSurface;
 - (void)freeze;
 @property _Bool allowsDisplayCompositing;
 @property(getter=isSecure) _Bool secure;
+@property(copy) CDUnknownBlockType brightnessCallback;
+@property(copy) CDUnknownBlockType hotPlugCallback;
 @property(copy) NSString *TVSignalType;
 @property(copy) NSString *TVMode;
 @property int processId;
@@ -40,12 +91,16 @@
 @property float contrast;
 - (void)setAccessibilityColorMatrix:(float *)arg1 scale:(float)arg2;
 @property float nits;
+- (void)abortContrastEnhancerRamp:(float *)arg1;
+- (void)setContrastEnhancer:(float)arg1 rampDuration:(double)arg2;
+- (void)abortColorMatrixRamp:(float *)arg1 scale:(float *)arg2;
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 @property(getter=isGrayscale) _Bool grayscale;
 @property _Bool allowsExtendedDynamicRange;
 @property _Bool invertsColors;
 @property struct CGSize overscanAmounts;
 @property double overscanAmount;
+@property(copy) NSString *overscanAdjustment;
 @property(copy) NSString *orientation;
 @property(getter=isFlipBookEnabled) _Bool flipBookEnabled;
 - (void)setCalibrationPhase:(unsigned int)arg1 forIdentifier:(unsigned int)arg2;
@@ -57,24 +112,40 @@
 - (void)addClone:(id)arg1;
 - (void)addClone:(id)arg1 options:(id)arg2;
 @property(readonly) NSSet *clones;
+- (struct CATransform3D)transformFromLayerId:(unsigned long long)arg1 inContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
 - (unsigned int)clientPortOfContextId:(unsigned int)arg1;
 - (unsigned int)clientPortAtPosition:(struct CGPoint)arg1;
+- (id)hitTestAtPosition:(struct CGPoint)arg1 options:(id)arg2;
 - (unsigned int)contextIdAtPosition:(struct CGPoint)arg1 excludingContextIds:(id)arg2;
 - (unsigned int)contextIdAtPosition:(struct CGPoint)arg1;
 @property(readonly) unsigned int rendererFlags;
 @property(readonly) NSString *uniqueId;
+@property(readonly) long long displayType;
 @property(readonly) unsigned int displayId;
 @property(readonly) NSString *deviceName;
 @property(readonly) NSString *name;
+@property(readonly) unsigned long long panelPointsPerInch;
+@property(readonly) struct CGSize panelPhysicalSize;
+@property(readonly) unsigned long long maximumSourceRectPixels;
+@property(readonly) unsigned long long maximumSourceRectWidth;
+@property(readonly) unsigned long long minimumSourceRectSize;
+@property(readonly) double maximumScale;
+@property(readonly) double minimumScale;
 @property double scale;
+@property(readonly) struct CGSize nativeSize;
 @property(readonly) struct CGRect bounds;
 - (void)update;
 - (void)dealloc;
 - (void)invalidate;
 - (id)_initWithCADisplayServer:(struct Server *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

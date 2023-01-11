@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)doneButton:(id)arg1;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (void)prepareForPopoverPresentation:(id)arg1;
 - (struct CGRect)_popoverControllerSourceRect;
 - (void)_presentViewController:(id)arg1;
 - (void)_presentPopupView_iOS;

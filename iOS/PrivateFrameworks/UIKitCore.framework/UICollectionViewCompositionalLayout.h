@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSCollectionLayoutSection, UICollectionViewCompositionalLayoutConfiguration, _UICollectionCompositionalLayoutSolver, _UICollectionCompositionalLayoutSolverUpdate, _UIDataSourceSnapshotter, _UIUpdateVisibleCellsContext;
+#import <UIKitCore/_UICollectionViewLayoutInteractionStateModuleHost-Protocol.h>
+
+@class NSCollectionLayoutSection, NSString, UICollectionViewCompositionalLayoutConfiguration, _UICollectionCompositionalLayoutSolver, _UICollectionCompositionalLayoutSolverUpdate, _UICollectionViewLayoutInteractionStateModule, _UIDataSourceSnapshotter, _UIUpdateVisibleCellsContext;
 @protocol _UICollectionCompositionalLayoutSolverResolveResult;
 
-@interface UICollectionViewCompositionalLayout
+@interface UICollectionViewCompositionalLayout <_UICollectionViewLayoutInteractionStateModuleHost>
 {
     UICollectionViewCompositionalLayoutConfiguration *_configuration;
+    _UICollectionViewLayoutInteractionStateModule *_interactionStateModule;
     _Bool _defersInitialSolveUntilPrepare;
     _Bool _shouldAdjustContentInsetModeForCollectionViewNeverMode;
     _Bool _isInUpdateVisibleCellsPass;
+    _Bool _deferredLastInvalidationNextInvalidationRequiresFullResolve;
     _Bool _layoutRTL;
     _Bool _roundsToScreenScale;
     NSCollectionLayoutSection *_layoutSectionTemplate;
@@ -24,32 +28,57 @@
     _UICollectionCompositionalLayoutSolverUpdate *_currentUpdate;
     id <_UICollectionCompositionalLayoutSolverResolveResult> _currentResolveResult;
     CDUnknownBlockType _dynamicsConfigurationHandler;
-    struct CGSize _memoizedPreviousInvalidationCollectionViewBoundsSize;
+    struct CGSize _memoizedPreviousSolvedViewBoundsSize;
     struct UIEdgeInsets _memoizedDynamicAnimatorWorldAdjustingInsets;
     struct UIEdgeInsets _memoizedPreviousLayoutMargins;
     struct CGRect _contentFrame;
 }
 
++ (id)layoutWithListConfiguration:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dynamicsConfigurationHandler; // @synthesize dynamicsConfigurationHandler=_dynamicsConfigurationHandler;
 @property(nonatomic) _Bool roundsToScreenScale; // @synthesize roundsToScreenScale=_roundsToScreenScale;
 @property(nonatomic) _Bool layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property(retain, nonatomic) id <_UICollectionCompositionalLayoutSolverResolveResult> currentResolveResult; // @synthesize currentResolveResult=_currentResolveResult;
 @property(retain, nonatomic) _UICollectionCompositionalLayoutSolverUpdate *currentUpdate; // @synthesize currentUpdate=_currentUpdate;
 @property(retain, nonatomic) _UIUpdateVisibleCellsContext *updateVisibleCellsContext; // @synthesize updateVisibleCellsContext=_updateVisibleCellsContext;
+@property(nonatomic) _Bool deferredLastInvalidationNextInvalidationRequiresFullResolve; // @synthesize deferredLastInvalidationNextInvalidationRequiresFullResolve=_deferredLastInvalidationNextInvalidationRequiresFullResolve;
 @property(nonatomic) _Bool isInUpdateVisibleCellsPass; // @synthesize isInUpdateVisibleCellsPass=_isInUpdateVisibleCellsPass;
 @property(nonatomic) unsigned long long edgesForSafeAreaPropagation; // @synthesize edgesForSafeAreaPropagation=_edgesForSafeAreaPropagation;
 @property(nonatomic) _Bool shouldAdjustContentInsetModeForCollectionViewNeverMode; // @synthesize shouldAdjustContentInsetModeForCollectionViewNeverMode=_shouldAdjustContentInsetModeForCollectionViewNeverMode;
 @property(nonatomic) struct CGRect contentFrame; // @synthesize contentFrame=_contentFrame;
 @property(retain, nonatomic) _UIDataSourceSnapshotter *dataSourceSnapshotter; // @synthesize dataSourceSnapshotter=_dataSourceSnapshotter;
-@property(nonatomic) struct CGSize memoizedPreviousInvalidationCollectionViewBoundsSize; // @synthesize memoizedPreviousInvalidationCollectionViewBoundsSize=_memoizedPreviousInvalidationCollectionViewBoundsSize;
+@property(nonatomic) struct CGSize memoizedPreviousSolvedViewBoundsSize; // @synthesize memoizedPreviousSolvedViewBoundsSize=_memoizedPreviousSolvedViewBoundsSize;
 @property(nonatomic) struct UIEdgeInsets memoizedPreviousLayoutMargins; // @synthesize memoizedPreviousLayoutMargins=_memoizedPreviousLayoutMargins;
 @property(nonatomic) struct UIEdgeInsets memoizedDynamicAnimatorWorldAdjustingInsets; // @synthesize memoizedDynamicAnimatorWorldAdjustingInsets=_memoizedDynamicAnimatorWorldAdjustingInsets;
 @property(nonatomic) _Bool defersInitialSolveUntilPrepare; // @synthesize defersInitialSolveUntilPrepare=_defersInitialSolveUntilPrepare;
 @property(retain, nonatomic) _UICollectionCompositionalLayoutSolver *solver; // @synthesize solver=_solver;
 @property(copy, nonatomic) CDUnknownBlockType layoutSectionProvider; // @synthesize layoutSectionProvider=_layoutSectionProvider;
 @property(retain, nonatomic) NSCollectionLayoutSection *layoutSectionTemplate; // @synthesize layoutSectionTemplate=_layoutSectionTemplate;
-- (void).cxx_destruct;
+- (double)_alignedContentMarginGivenMargin:(double)arg1;
+- (id)_propertyAnimatorForCollectionViewUpdates:(id)arg1 withCustomAnimator:(id)arg2;
+- (void)_didEndSwiping;
+- (void)_willBeginSwiping;
+- (id)_trailingSwipeActionsConfigurationForIndexPath:(id)arg1;
+- (id)_leadingSwipeActionsConfigurationForIndexPath:(id)arg1;
+- (_Bool)_supportsSwipeActionsForIndexPath:(id)arg1;
+- (void)_createSwipeActionsModuleIfNeeded;
+- (id)finalLayoutAttributesForDisappearingDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
+- (void)setEditing:(_Bool)arg1;
+- (_Bool)isEditing;
+- (_Bool)canBeEdited;
+- (void)_backgroundChangedForInteractionAtIndexPath:(id)arg1;
+- (double)_interactionStateModule:(id)arg1 spacingAfterLayoutSection:(long long)arg2;
+- (id)_interactionStateModule:(id)arg1 layoutSectionForIndex:(long long)arg2;
+- (void)_transformSupplementaryLayoutAttributes:(id)arg1;
+- (void)_transformDecorationLayoutAttributes:(id)arg1;
+- (void)_transformCellLayoutAttributes:(id)arg1;
+- (id)_layoutSectionForSectionIndex:(unsigned long long)arg1;
+- (void)_solveForPinnedSupplementaryItemsIfNeededWithContext:(id)arg1;
+- (_Bool)_viewBoundsPermitsLayout:(struct CGRect)arg1;
 - (id)_invokeVisibleItemsInvalidationHandlerIfNeededForVisibleBounds:(struct CGRect)arg1;
+- (id)_contentInsetsEnvironmentFromCollectionViewForInsetsReference:(long long)arg1;
 - (id)_containerFromCollectionView;
 - (_Bool)_orthogonalScrollingElementShouldAppearAboveForAttributes:(id)arg1;
 - (struct CGRect)_orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(id)arg1 frame:(struct CGRect)arg2;
@@ -61,7 +90,7 @@
 - (struct CGRect)_orthogonalScrollingLayoutRectForSection:(long long)arg1;
 - (struct CGVector)_scrollingUnitVectorForOrthogonalScrollingSection:(long long)arg1;
 - (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;
-- (int)_orthogonalScrollingAxis;
+- (unsigned long long)_orthogonalScrollingAxis;
 - (_Bool)_orthogonalScrollingUsesTargetContentOffsetForSection:(long long)arg1;
 - (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2;
 - (_Bool)_orthogonalScrollingShouldCenterCustomPagingSizeForSection:(long long)arg1;
@@ -74,24 +103,30 @@
 - (id)_updatePinnedSectionSupplementaryItemsForCurrentVisibleBounds;
 - (void)_computeAndUpdateAdjustedContentFrame;
 - (id)_dataSourceSnapshotter;
-- (_Bool)_adjustCollectionViewContentInsetBehaviorForLayoutAxisIfNeeded:(int)arg1 container:(id)arg2;
+- (_Bool)_adjustCollectionViewContentInsetBehaviorForLayoutAxisIfNeeded:(unsigned long long)arg1 container:(id)arg2;
 - (_Bool)_invokeVisibleBoundsUpdateForDynamicAnimatorForNewVisibleBounds:(struct CGRect)arg1 preparingLayout:(_Bool)arg2;
 - (_Bool)_shouldInvalidateLayoutForBoundsSizeChange:(struct CGRect)arg1;
 - (void)_traitCollectionDidChangeFromPreviousCollection:(id)arg1 newTraitCollection:(id)arg2;
+- (void)_handlePreferredSizingCustomizationsInvalidation:(id)arg1;
+- (void)_handleSwipeActionsInvalidationWithContext:(id)arg1;
 - (id)_marginsChangeResolve;
 - (id)_boundsChangeResolve;
 - (id)_updateResolve;
+- (id)_endInteractiveReorderingResolveWithContext:(id)arg1;
 - (void)_fullResolve;
+- (_Bool)_shouldAdjustTargetContentOffsetToValidateContentExtents;
+- (_Bool)_disallowsFadeCellsForBoundsChange;
 - (unsigned long long)_edgesForSafeAreaPropagationToDescendants;
 - (_Bool)_overridesSafeAreaPropagationToDescendants;
 - (_Bool)_preparedForBoundsChanges;
+- (_Bool)_wantsAnimationsForOffscreenAuxillaries;
 - (_Bool)_wantsUntrackedAnimationCleanupForAuxillaryItems;
-- (int)_layoutAxis;
+- (unsigned long long)_layoutAxis;
 - (void)_prepareForCollectionViewUpdates:(id)arg1 withDataSourceTranslator:(id)arg2;
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (_Bool)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (void)_prepareForPreferredAttributesQueryForView:(id)arg1 withLayoutAttributes:(id)arg2;
-- (void)_didPerformUpdateVisibleCellsPass;
+- (void)_didPerformUpdateVisibleCellsPassWithLayoutOffset:(struct CGPoint)arg1;
 - (void)_willPerformUpdateVisibleCellsPass;
 - (_Bool)_estimatesSupplementaryItems;
 - (_Bool)_estimatesSizes;
@@ -100,16 +135,21 @@
 - (id)indexPathsToInsertForDecorationViewOfKind:(id)arg1;
 - (id)indexPathsToInsertForSupplementaryViewOfKind:(id)arg1;
 - (void)finalizeCollectionViewUpdates;
+- (void)_postProcessPreferredAttributes:(id)arg1 forView:(id)arg2;
 - (_Bool)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (struct CGSize)collectionViewContentSize;
+- (struct CGPoint)_targetPositionForInteractiveMovementOfItemAtIndexPath:(id)arg1 withProposedTargetPosition:(struct CGPoint)arg2;
+- (_Bool)_allowsItemInteractionsToBegin;
+- (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (void)prepareLayout;
+- (void)_setCollectionView:(id)arg1;
 - (void)setBoundarySupplementaryItems:(id)arg1;
 - (id)boundarySupplementaryItems;
 - (long long)scrollDirection;
@@ -121,6 +161,12 @@
 - (id)initWithSection:(id)arg1 configuration:(id)arg2;
 - (id)initWithSection:(id)arg1;
 - (id)initWithSection:(id)arg1 sectionProvider:(CDUnknownBlockType)arg2 configuration:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

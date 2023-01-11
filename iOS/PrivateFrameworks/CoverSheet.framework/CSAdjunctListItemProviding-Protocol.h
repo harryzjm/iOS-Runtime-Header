@@ -14,5 +14,6 @@
 @property(retain, nonatomic) UIView *platterView;
 @property(readonly, nonatomic) SBSLockScreenContentAction *action;
 @property(readonly, nonatomic) NSString *identifier;
+- (void)conformsToCSAdjunctListItemProviding;
 @end
 

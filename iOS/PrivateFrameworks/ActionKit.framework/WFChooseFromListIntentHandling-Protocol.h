@@ -9,13 +9,14 @@
 @class NSArray, WFChooseFromListIntent;
 
 @protocol WFChooseFromListIntentHandling <NSObject>
-- (void)provideItemsOptionsForChooseFromList:(WFChooseFromListIntent *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
-- (void)resolveItemsForChooseFromList:(WFChooseFromListIntent *)arg1 withCompletion:(void (^)(NSArray *))arg2;
+- (void)provideChosenItemsOptionsCollectionForChooseFromList:(WFChooseFromListIntent *)arg1 withCompletion:(void (^)(INObjectCollection *, NSError *))arg2;
+- (void)resolveChosenItemsForChooseFromList:(WFChooseFromListIntent *)arg1 withCompletion:(void (^)(NSArray *))arg2;
 - (void)resolvePromptForChooseFromList:(WFChooseFromListIntent *)arg1 withCompletion:(void (^)(INStringResolutionResult *))arg2;
 - (void)handleChooseFromList:(WFChooseFromListIntent *)arg1 completion:(void (^)(WFChooseFromListIntentResponse *))arg2;
 
 @optional
-- (NSArray *)defaultItemsForChooseFromList:(WFChooseFromListIntent *)arg1;
+- (void)provideChosenItemsOptionsForChooseFromList:(WFChooseFromListIntent *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
+- (NSArray *)defaultChosenItemsForChooseFromList:(WFChooseFromListIntent *)arg1;
 - (void)confirmChooseFromList:(WFChooseFromListIntent *)arg1 completion:(void (^)(WFChooseFromListIntentResponse *))arg2;
 @end
 

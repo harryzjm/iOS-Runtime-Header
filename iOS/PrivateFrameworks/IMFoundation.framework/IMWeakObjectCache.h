@@ -11,10 +11,14 @@
 @interface IMWeakObjectCache : NSObject
 {
     NSMutableDictionary *_weakObjectCache;
-    struct _opaque_pthread_mutex_t _tableLock;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _tableLock;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)removeObject:(id)arg1 key:(id)arg2;
 - (id)objectForKey:(id)arg1;
 - (id)copyObjectForKey:(id)arg1;

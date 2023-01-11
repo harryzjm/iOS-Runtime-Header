@@ -4,25 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
-
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-
-@class MCProfile, NSString;
+@class MCProfile;
 @protocol MCInstallationConsentDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MCInstallationConsentViewController : UITableViewController <PSStateRestoration>
+@interface MCInstallationConsentViewController
 {
     _Bool _showInstall;
     MCProfile *_profile;
     id <MCInstallationConsentDelegate> _consentDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showInstall; // @synthesize showInstall=_showInstall;
 @property(nonatomic) __weak id <MCInstallationConsentDelegate> consentDelegate; // @synthesize consentDelegate=_consentDelegate;
 @property(retain, nonatomic) MCProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
@@ -30,17 +26,8 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)_installProfile;
 - (void)_cancelInstallProfile;
-- (_Bool)canBeShownFromSuspendedState;
-- (void)didReceiveMemoryWarning;
-- (void)viewDidLoad;
 - (void)_setup;
 - (id)initWithStyle:(long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

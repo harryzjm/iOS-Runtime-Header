@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)serializeFragmentData;
 - (id)newSerializedFragmentDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)validateWithDevice:(id)arg1;
+- (_Bool)validateWithDevice:(id)arg1 error:(id *)arg2;
 - (void)setStencilAttachmentPixelFormat:(unsigned long long)arg1;
 - (unsigned long long)stencilAttachmentPixelFormat;
 - (void)setDepthAttachmentPixelFormat:(unsigned long long)arg1;
@@ -40,14 +41,20 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (id)fragmentBuffers;
 - (id)vertexBuffers;
+- (id)binaryArchives;
+- (void)setBinaryArchives:(id)arg1;
 - (void)setInputPrimitiveTopology:(unsigned long long)arg1;
 - (unsigned long long)inputPrimitiveTopology;
 - (void)setDepthStencilWriteDisabled:(_Bool)arg1;
 - (_Bool)isDepthStencilWriteDisabled;
 - (void)setSampleCoverageInvert:(_Bool)arg1;
 - (_Bool)sampleCoverageInvert;
+- (void)setNeedsCustomBorderColorSamplers:(_Bool)arg1;
+- (_Bool)needsCustomBorderColorSamplers;
 - (void)setOpenGLModeEnabled:(_Bool)arg1;
 - (_Bool)openGLModeEnabled;
+- (void)setPluginData:(id)arg1;
+- (id)pluginData;
 - (void)setFragmentDepthCompareClampMask:(unsigned int)arg1;
 - (unsigned int)fragmentDepthCompareClampMask;
 - (void)setVertexDepthCompareClampMask:(unsigned int)arg1;
@@ -72,8 +79,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)isLogicOperationEnabled;
 - (void)setColorSampleCount:(unsigned long long)arg1;
 - (unsigned long long)colorSampleCount;
-- (void)setVertexEnabled:(_Bool)arg1;
-- (_Bool)isVertexEnabled;
 - (void)setMaxVertexAmplificationCount:(unsigned long long)arg1;
 - (unsigned long long)maxVertexAmplificationCount;
 - (void)setVertexAmplificationMode:(unsigned long long)arg1;
@@ -97,6 +102,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)resourceIndex;
 - (void)setForceResourceIndex:(_Bool)arg1;
 - (_Bool)forceResourceIndex;
+- (long long)textureWriteFPRoundingMode;
+- (void)setTextureWriteFPRoundingMode:(long long)arg1;
+- (long long)textureWriteRoundingMode;
+- (void)setTextureWriteRoundingMode:(long long)arg1;
 - (void)setSupportIndirectCommandBuffers:(_Bool)arg1;
 - (_Bool)supportIndirectCommandBuffers;
 - (void)setTessellationOutputWindingOrder:(unsigned long long)arg1;

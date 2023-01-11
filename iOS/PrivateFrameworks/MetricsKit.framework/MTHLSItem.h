@@ -13,13 +13,15 @@
 @interface MTHLSItem : NSObject <MTMediaPlaylistItem>
 {
     unsigned long long _startOverallPosition;
+    unsigned long long _startPosition;
     NSArray *_eventData;
 }
 
 + (CDUnknownBlockType)comparator;
-@property(retain, nonatomic) NSArray *eventData; // @synthesize eventData=_eventData;
-@property(nonatomic) unsigned long long startOverallPosition; // @synthesize startOverallPosition=_startOverallPosition;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *eventData; // @synthesize eventData=_eventData;
+@property(nonatomic) unsigned long long startPosition; // @synthesize startPosition=_startPosition;
+@property(nonatomic) unsigned long long startOverallPosition; // @synthesize startOverallPosition=_startOverallPosition;
 - (long long)compare:(id)arg1;
 - (id)initWithStartOverallPosition:(unsigned long long)arg1 metricsData:(id)arg2;
 

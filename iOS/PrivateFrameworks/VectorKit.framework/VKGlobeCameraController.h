@@ -29,10 +29,10 @@ __attribute__((visibility("hidden")))
     _Bool _tourShouldResumeWhenDoneGesturing;
 }
 
-@property(nonatomic) _Bool tourShouldResumeWhenDoneGesturing; // @synthesize tourShouldResumeWhenDoneGesturing=_tourShouldResumeWhenDoneGesturing;
-@property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool tourShouldResumeWhenDoneGesturing; // @synthesize tourShouldResumeWhenDoneGesturing=_tourShouldResumeWhenDoneGesturing;
+@property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
 - (void)animateToRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)animateRegionWithDuration:(double)arg1 timingFunction:(CDUnknownBlockType)arg2 cursor:(Matrix_443f5d51)arg3 stepHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (double)distanceFromCenterCoordinate;
 - (CDStruct_c3b9c2ee)centerCoordinate;
 - (CDStruct_c3b9c2ee)_centerCoordinateForMapRegion:(id)arg1;
-- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (double)durationToAnimateToMapRegion:(id)arg1;
 - (double)zoomForMapRegion:(id)arg1;
 - (double)widestLatitudeForMapRegion:(id)arg1;
@@ -62,11 +62,13 @@ __attribute__((visibility("hidden")))
 - (void)setYaw:(double)arg1 animated:(_Bool)arg2;
 - (double)presentationYaw;
 - (void)updateCameraManager;
-- (void)startTrackingAnnotation:(id)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)startTrackingAnnotation:(id)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3 duration:(double)arg4 timingFunction:(CDUnknownBlockType)arg5;
 - (void)setGesturing:(_Bool)arg1;
 - (void)updateState;
 - (void)_updateCanEnter3DMode;
 - (void)_updateIsPitched;
+- (double)maxPitch;
+- (double)minPitch;
 - (_Bool)isFullyPitched;
 - (_Bool)isPitched;
 - (_Bool)canEnter3DMode;

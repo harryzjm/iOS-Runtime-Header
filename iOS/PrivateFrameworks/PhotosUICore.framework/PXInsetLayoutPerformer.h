@@ -15,10 +15,9 @@
 }
 
 + (struct CGSize)performLayoutWithLayoutInput:(CDStruct_392cfed4)arg1 layoutOutput:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-@property(nonatomic) struct UIEdgeInsets layoutInsets; // @synthesize layoutInsets=_layoutInsets;
-- (void)setChildren:(id)arg1;
-@property(readonly, nonatomic) NSArray *children;
 - (void).cxx_destruct;
+@property(nonatomic) struct UIEdgeInsets layoutInsets; // @synthesize layoutInsets=_layoutInsets;
+@property(retain, nonatomic) NSArray *children; // @synthesize children;
 - (void)prepareForReuse;
 - (struct CGSize)performLayout;
 

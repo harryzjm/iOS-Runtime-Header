@@ -15,9 +15,9 @@
     NSObject<OS_xpc_object> *_listenerConnection;
     NSMutableSet *_clients;
     _Bool _connectionResumed;
-    _Bool _usesAnonymousConnection;
     NSString *_serviceName;
     int _notifyToken;
+    _Bool _usesAnonymousConnection;
 }
 
 @property(nonatomic, getter=usesAnonymousConnection) _Bool usesAnonymousConnection; // @synthesize usesAnonymousConnection=_usesAnonymousConnection;
@@ -35,11 +35,8 @@
 - (_Bool)queue_shouldAcceptNewConnection:(id)arg1;
 - (void)queue_handleMessage:(id)arg1 client:(id)arg2;
 - (id)_queue_clientForConnection:(id)arg1;
-- (void)_queue_removeClientConnection:(id)arg1;
-- (void)_addClientConnection:(id)arg1;
 - (void)_invalidate;
 - (void)resumeServer;
-- (id)_notifyTokenName;
 - (void)registerServerSuspended;
 - (void)run;
 - (id)queue;

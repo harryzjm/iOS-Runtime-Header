@@ -12,6 +12,11 @@
 
 @interface _MRNowPlayingPlayerProtobuf : PBCodable <NSCopying>
 {
+    struct {
+        long long *list;
+        unsigned long long count;
+        unsigned long long size;
+    } _mxSessionIDs;
     int _audioSessionType;
     NSString *_displayName;
     NSString *_identifier;
@@ -20,9 +25,9 @@
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -32,12 +37,19 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)setMxSessionIDs:(long long *)arg1 count:(unsigned long long)arg2;
+- (long long)mxSessionIDAtIndex:(unsigned long long)arg1;
+- (void)addMxSessionID:(long long)arg1;
+- (void)clearMxSessionIDs;
+@property(readonly, nonatomic) long long *mxSessionIDs;
+@property(readonly, nonatomic) unsigned long long mxSessionIDsCount;
 - (int)StringAsAudioSessionType:(id)arg1;
 - (id)audioSessionTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasAudioSessionType;
 @property(nonatomic) int audioSessionType; // @synthesize audioSessionType=_audioSessionType;
 @property(readonly, nonatomic) _Bool hasDisplayName;
 @property(readonly, nonatomic) _Bool hasIdentifier;
+- (void)dealloc;
 
 @end
 

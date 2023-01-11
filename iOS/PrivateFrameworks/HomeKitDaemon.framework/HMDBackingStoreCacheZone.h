@@ -13,15 +13,12 @@
     long long _zoneID;
     NSString *_zoneName;
     NSMutableArray *_actualGroups;
-    NSMutableArray *_actualShares;
 }
 
-@property(retain) NSMutableArray *actualShares; // @synthesize actualShares=_actualShares;
+- (void).cxx_destruct;
 @property(retain) NSMutableArray *actualGroups; // @synthesize actualGroups=_actualGroups;
 @property(readonly) NSString *zoneName; // @synthesize zoneName=_zoneName;
 @property(readonly) long long zoneID; // @synthesize zoneID=_zoneID;
-- (void).cxx_destruct;
-@property(readonly) NSArray *shares;
 @property(readonly) NSArray *groups;
 - (id)dumpDebug;
 - (id)initWithZoneID:(long long)arg1 name:(id)arg2;

@@ -18,10 +18,9 @@ __attribute__((visibility("hidden")))
     _UITextServicesResponderProxy *_responderProxy;
 }
 
-@property(retain, nonatomic) _UITextServicesResponderProxy *responderProxy; // @synthesize responderProxy=_responderProxy;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _UITextServicesResponderProxy *responderProxy; // @synthesize responderProxy=_responderProxy;
 - (void)_define:(id)arg1;
-- (void)_removeDefinitionController;
 - (void)_addShortcut:(id)arg1;
 - (void)_removeShortcutController;
 - (void)_share:(id)arg1;

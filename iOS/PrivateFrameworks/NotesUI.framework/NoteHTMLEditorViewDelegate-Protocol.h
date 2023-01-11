@@ -6,12 +6,11 @@
 
 #import <NotesUI/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, NoteAttachmentPresentation, NoteHTMLEditorView, UIScrollView;
+@class NSArray, NSDictionary, NSFileWrapper, NSString, NSURL, NoteAttachmentPresentation, NoteHTMLEditorView;
 
 @protocol NoteHTMLEditorViewDelegate <NSObject>
 
 @optional
-- (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 webScrollViewDidScroll:(UIScrollView *)arg2;
 - (NSDictionary *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 updateAttachments:(NSArray *)arg2;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 didInvokeStyleFormattingOption:(long long)arg2;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 didInvokeFormattingCalloutOption:(long long)arg2;
@@ -20,12 +19,12 @@
 - (NoteAttachmentPresentation *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 attachmentPresentationForContentID:(NSString *)arg2;
 - (NSURL *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 fileURLForAttachmentWithContentID:(NSString *)arg2;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 openURL:(NSURL *)arg2;
-- (void)noteHTMLEditorViewDidChangeSelection:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorViewDidChange:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorViewWillChange:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorViewDidEndEditing:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorViewDidBeginEditing:(NoteHTMLEditorView *)arg1;
 - (_Bool)noteHTMLEditorViewShouldBeginEditing:(NoteHTMLEditorView *)arg1 isUserInitiated:(_Bool)arg2;
+- (NoteAttachmentPresentation *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 createAttachmentPresentationWithFileWrapper:(NSFileWrapper *)arg2 mimeType:(NSString *)arg3;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 addAttachmentItemProviders:(NSArray *)arg2;
 - (_Bool)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 canAddAttachmentItemProviders:(NSArray *)arg2;
 - (_Bool)allowsAttachmentsInNoteHTMLEditorView:(NoteHTMLEditorView *)arg1;

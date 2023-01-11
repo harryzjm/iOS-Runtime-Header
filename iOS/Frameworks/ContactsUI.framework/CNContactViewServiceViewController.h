@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)viewDidAppearForContactViewController:(id)arg1;
+- (void)presentCancelConfirmationAlert;
 - (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)didExecuteClearRecentsDataAction;
 - (void)viewDidAppear;

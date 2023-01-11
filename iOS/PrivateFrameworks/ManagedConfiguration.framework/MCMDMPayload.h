@@ -9,6 +9,7 @@
 @interface MCMDMPayload
 {
     _Bool _useDevelopmentAPNS;
+    _Bool _pinningRevocationCheckRequired;
     _Bool _signMessage;
     _Bool _checkOutWhenRemoved;
     int _accessRights;
@@ -16,7 +17,11 @@
     NSData *_identityPersistentID;
     NSString *_topic;
     NSString *_serverURLString;
+    NSArray *_serverPinningUUIDs;
+    NSArray *_serverPinningPersistentRefs;
     NSString *_checkInURLString;
+    NSArray *_checkInPinningUUIDs;
+    NSArray *_checkInPinningPersistentRefs;
     NSArray *_serverCapabilities;
     NSString *_managedAppleID;
     NSString *_personaID;
@@ -31,6 +36,7 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *checkOutWhenRemovedNum; // @synthesize checkOutWhenRemovedNum=_checkOutWhenRemovedNum;
 @property(readonly, nonatomic) NSNumber *signMessageNum; // @synthesize signMessageNum=_signMessageNum;
 @property(readonly, nonatomic) NSNumber *useDevelopmentAPNSNum; // @synthesize useDevelopmentAPNSNum=_useDevelopmentAPNSNum;
@@ -43,22 +49,26 @@
 @property(readonly, nonatomic) _Bool checkOutWhenRemoved; // @synthesize checkOutWhenRemoved=_checkOutWhenRemoved;
 @property(readonly, nonatomic) _Bool signMessage; // @synthesize signMessage=_signMessage;
 @property(readonly, nonatomic) int accessRights; // @synthesize accessRights=_accessRights;
+@property(readonly, nonatomic) _Bool pinningRevocationCheckRequired; // @synthesize pinningRevocationCheckRequired=_pinningRevocationCheckRequired;
+@property(retain, nonatomic) NSArray *checkInPinningPersistentRefs; // @synthesize checkInPinningPersistentRefs=_checkInPinningPersistentRefs;
+@property(readonly, retain, nonatomic) NSArray *checkInPinningUUIDs; // @synthesize checkInPinningUUIDs=_checkInPinningUUIDs;
 @property(readonly, retain, nonatomic) NSString *checkInURLString; // @synthesize checkInURLString=_checkInURLString;
 @property(readonly, nonatomic) _Bool useDevelopmentAPNS; // @synthesize useDevelopmentAPNS=_useDevelopmentAPNS;
+@property(retain, nonatomic) NSArray *serverPinningPersistentRefs; // @synthesize serverPinningPersistentRefs=_serverPinningPersistentRefs;
+@property(readonly, retain, nonatomic) NSArray *serverPinningUUIDs; // @synthesize serverPinningUUIDs=_serverPinningUUIDs;
 @property(readonly, retain, nonatomic) NSString *serverURLString; // @synthesize serverURLString=_serverURLString;
 @property(readonly, retain, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property(retain, nonatomic) NSData *identityPersistentID; // @synthesize identityPersistentID=_identityPersistentID;
 @property(readonly, retain, nonatomic) NSString *identityUUID; // @synthesize identityUUID=_identityUUID;
-- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSString *managedAppleIDName;
 @property(readonly, nonatomic) _Bool isUserEnrollment;
+- (id)kvsForCertUUIDs:(id)arg1 persistentRefs:(id)arg2 labelKey:(id)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
-- (id)title;
 - (id)installationWarnings;
 @property(readonly, retain, nonatomic) NSArray *localizedAccessRightDescriptions;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)_nonHTTPSURLErrorForField:(id)arg1;

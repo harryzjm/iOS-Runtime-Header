@@ -17,6 +17,8 @@
     struct __CTServerConnection *_telephonyServerConnectionRef;
     NWPathEvaluator *_networkPathEvaluator;
     int _thermalNotificationToken;
+    unsigned int _powerNotificationRef;
+    void *_symptomPresentationFeedDyLibHandle;
     _Bool _isCharging;
     _Bool _isRemoteServerLikelyReachable;
     _Bool _isWiFiActive;
@@ -24,6 +26,7 @@
     _Bool _wifiAssociated;
     _Bool _networkConstrained;
     _Bool _ethernetWired;
+    _Bool _remoteServerReachable;
     NSString *_telephonyOperatorName;
     NSString *_telephonyRegistrationStatus;
     NSString *_telephonyStatusIndicator;
@@ -34,7 +37,9 @@
 }
 
 + (id)sharedMonitor;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long currentThermalLevel; // @synthesize currentThermalLevel=_currentThermalLevel;
+@property(readonly, nonatomic, getter=isRemoteServerReachable) _Bool remoteServerReachable; // @synthesize remoteServerReachable=_remoteServerReachable;
 @property(readonly, nonatomic) long long lastKnownNetworkType; // @synthesize lastKnownNetworkType=_lastKnownNetworkType;
 @property(readonly, nonatomic) long long networkType; // @synthesize networkType=_networkType;
 @property(readonly, nonatomic) double currentBatteryLevel; // @synthesize currentBatteryLevel=_currentBatteryLevel;
@@ -48,7 +53,6 @@
 @property(readonly, copy, nonatomic) NSString *telephonyOperatorName; // @synthesize telephonyOperatorName=_telephonyOperatorName;
 @property(readonly, nonatomic, getter=isRemoteServerLikelyReachable) _Bool remoteServerLikelyReachable; // @synthesize remoteServerLikelyReachable=_isRemoteServerLikelyReachable;
 @property(readonly, nonatomic, getter=isCharging) _Bool charging; // @synthesize charging=_isCharging;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_handleCTServerConnectionNotification:(id)arg1 userInfo:(id)arg2;
 - (void)_handleApplicationDidEnterForegroundNotification:(id)arg1;

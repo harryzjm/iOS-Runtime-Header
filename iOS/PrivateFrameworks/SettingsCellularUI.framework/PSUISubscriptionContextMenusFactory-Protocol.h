@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTCellularPlanManager, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularPlanManagerCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUILowDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
+@class CTCellularPlanManager, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularDataOptionsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUIDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
 
 @protocol PSUISubscriptionContextMenusFactory
-- (PSUILowDataModeSubgroup *)createLowDataModeSubgroup;
+- (PSUICellularDataOptionsController *)createRoamingSpecifiersSubgroup;
+- (PSUIDataModeSubgroup *)createDataModeSubgroup;
 - (CTCellularPlanManager *)createCellularPlanManager;
 - (PSUICellularPlanManagerCache *)createCellularPlanManagerCache;
 - (PSUICoreTelephonyDataCache *)createDataCache;
 - (PSUICoreTelephonyCarrierBundleCache *)createCarrierBundleCache;
 - (PSSimStatusCache *)createSimStatusCache;
+- (PSUICoreTelephonyCallCache *)createCallCache;
 - (PSUISIMSubgroup *)createSimSubgroup;
 - (PSUINetworkSettingsSubgroup *)createNetworkSettingsSubgroup;
 - (PSUIMyNumberSubgroup *)createMyNumberSubgroup;

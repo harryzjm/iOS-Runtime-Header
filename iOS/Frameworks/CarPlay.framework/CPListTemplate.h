@@ -7,7 +7,7 @@
 #import <CarPlay/CPBarButtonProviding-Protocol.h>
 #import <CarPlay/CPListClientTemplateDelegate-Protocol.h>
 
-@class CPBarButton, NAFuture, NSArray, NSString;
+@class CPBarButton, NAFuture, NSArray, NSMutableSet, NSString;
 @protocol CPListTemplateDelegate;
 
 @interface CPListTemplate <CPListClientTemplateDelegate, CPBarButtonProviding>
@@ -15,18 +15,35 @@
     id <CPListTemplateDelegate> _delegate;
     NSArray *_sections;
     NSString *_title;
+    NSArray *_emptyViewTitleVariants;
+    NSArray *_emptyViewSubtitleVariants;
+    NSMutableSet *_itemsToReload;
 }
 
++ (unsigned long long)maximumSectionCount;
++ (unsigned long long)maximumItemCount;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *itemsToReload; // @synthesize itemsToReload=_itemsToReload;
+@property(copy, nonatomic) NSArray *emptyViewSubtitleVariants; // @synthesize emptyViewSubtitleVariants=_emptyViewSubtitleVariants;
+@property(copy, nonatomic) NSArray *emptyViewTitleVariants; // @synthesize emptyViewTitleVariants=_emptyViewTitleVariants;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) __weak id <CPListTemplateDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)listTemplate:(id)arg1 didSelectListItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)listTemplate:(id)arg1 didSelectImageAtIndex:(unsigned long long)arg2 inImageRowItem:(id)arg3;
+- (void)listTemplate:(id)arg1 didSelectListItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_itemForHostItemWithIdentifier:(id)arg1;
+- (void)performUpdate;
+- (void)_setItemNeedsUpdate:(id)arg1;
+- (void)_linkItemsInSection:(id)arg1;
+- (id)indexPathForItem:(id)arg1;
+@property(readonly, nonatomic) unsigned long long itemCount;
+@property(readonly, nonatomic) unsigned long long sectionCount;
 - (void)updateSections:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 sections:(id)arg2;
+- (id)_sectionsByTrimmingAndLinkingSections:(id)arg1;
 
 // Remaining properties
 @property(retain, nonatomic) CPBarButton *backButton;

@@ -18,7 +18,7 @@
     GEOXPCActivity *_activity;
 }
 
-+ (_Bool)shouldIgnoreRequestType:(unsigned char)arg1 fromClientWithId:(id)arg2;
++ (_Bool)shouldIgnoreRequestType:(int)arg1 fromClientWithId:(id)arg2;
 + (void)cancelOldActivities;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -27,7 +27,7 @@
 - (void)_flushToPowerLog;
 - (void)dealloc;
 - (void)startNewSessionWithName:(id)arg1;
-- (void)incrementCountForClient:(id)arg1 requestType:(unsigned char)arg2;
+- (void)incrementCountForClient:(id)arg1 requestType:(int)arg2;
 - (id)init;
 
 @end

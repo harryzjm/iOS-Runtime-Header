@@ -4,25 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, PXForYouSuggestionAssetCollection;
+@class NSArray;
+@protocol PXDisplayAssetCollection;
 
 @interface PXForYouSuggestionsAssetsDataSource
 {
-    PXForYouSuggestionAssetCollection *_collection;
+    id <PXDisplayAssetCollection> _collection;
     NSArray *_assets;
-    NSString *_collectionTitle;
 }
 
 + (id)new;
-@property(copy, nonatomic) NSString *collectionTitle; // @synthesize collectionTitle=_collectionTitle;
-@property(copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 - (struct PXSimpleIndexPath)indexPathForAssetReference:(id)arg1;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
-- (id)initWithDisplayAssets:(id)arg1 collectionTitle:(id)arg2;
+- (id)initWithDisplayAssets:(id)arg1 collection:(id)arg2;
 - (id)init;
 
 @end

@@ -6,19 +6,21 @@
 
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class IKViewElement, NSString, VUIOfferView;
+@class IKViewElement, NSString, VUILabel, VUIOfferView;
 
 __attribute__((visibility("hidden")))
 @interface VUIOfferCell <VUIRentalExpirationLabelDelegate>
 {
-    IKViewElement *_viewElement;
     VUIOfferView *_offerView;
+    VUILabel *_belowCardTextLabel;
+    IKViewElement *_viewElement;
 }
 
 + (id)configureViewWithElement:(id)arg1 existingCell:(id)arg2;
-@property(retain, nonatomic) VUIOfferView *offerView; // @synthesize offerView=_offerView;
-@property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 - (void).cxx_destruct;
+@property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
+@property(retain, nonatomic) VUILabel *belowCardTextLabel; // @synthesize belowCardTextLabel=_belowCardTextLabel;
+@property(retain, nonatomic) VUIOfferView *offerView; // @synthesize offerView=_offerView;
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

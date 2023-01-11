@@ -16,25 +16,25 @@
 @interface BSServiceConnectionListener : NSObject <BSServiceConnectionListenerConfiguring, BSServiceListener, BSInvalidatable>
 {
     BSServiceManager *_manager;
-    NSString *_domain;
-    NSString *_service;
-    NSString *_instance;
     struct os_unfair_lock_s _lock;
     id <BSServiceConnectionListenerDelegate> _lock_delegate;
     _Bool _lock_activated;
     _Bool _lock_invalidated;
     struct os_unfair_lock_s _registrationLock;
     id <BSInvalidatable> _registrationLock_assertion;
+    NSString *_domain;
+    NSString *_service;
+    NSString *_instance;
     BSServiceConnectionEndpoint *_endpoint;
 }
 
 + (void)disableLaunchWhitelist;
 + (id)listenerWithConfigurator:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) BSServiceConnectionEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(readonly, copy, nonatomic) NSString *instance; // @synthesize instance=_instance;
 @property(readonly, copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)didReceiveConnection:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -44,7 +44,6 @@
 - (void)invalidate;
 - (void)activate;
 - (void)dealloc;
-- (id)_initWithManager:(id)arg1 config:(CDUnknownBlockType)arg2;
 - (id)init;
 
 // Remaining properties

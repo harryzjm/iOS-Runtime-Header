@@ -26,9 +26,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_enabledDataclasses;
     NSString *_identifier;
     ACProtobufDate *_lastCredentialRenewalRejectionDate;
+    NSString *_modificationID;
     ACProtobufURL *_objectID;
     NSString *_owningBundleID;
-    NSString *_parentAccountIdentifier;
+    ACProtobufAccount *_parentAccount;
     NSMutableArray *_properties;
     NSMutableArray *_provisionedDataclasses;
     NSString *_username;
@@ -36,6 +37,10 @@ __attribute__((visibility("hidden")))
     _Bool _authenticated;
     _Bool _supportsAuthentication;
     _Bool _visible;
+    _Bool _warmingUp;
+    struct {
+        unsigned int warmingUp:1;
+    } _has;
 }
 
 + (Class)dirtyDataclassPropertiesType;
@@ -45,6 +50,9 @@ __attribute__((visibility("hidden")))
 + (Class)enabledDataclassesType;
 + (Class)dataclassPropertiesType;
 + (Class)propertiesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *modificationID; // @synthesize modificationID=_modificationID;
+@property(nonatomic) _Bool warmingUp; // @synthesize warmingUp=_warmingUp;
 @property(retain, nonatomic) NSMutableArray *dirtyDataclassProperties; // @synthesize dirtyDataclassProperties=_dirtyDataclassProperties;
 @property(retain, nonatomic) NSMutableArray *dirtyAccountProperties; // @synthesize dirtyAccountProperties=_dirtyAccountProperties;
 @property(retain, nonatomic) NSMutableArray *dirtyProperties; // @synthesize dirtyProperties=_dirtyProperties;
@@ -54,7 +62,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *authenticationType; // @synthesize authenticationType=_authenticationType;
 @property(retain, nonatomic) NSMutableArray *provisionedDataclasses; // @synthesize provisionedDataclasses=_provisionedDataclasses;
 @property(retain, nonatomic) NSMutableArray *enabledDataclasses; // @synthesize enabledDataclasses=_enabledDataclasses;
-@property(retain, nonatomic) NSString *parentAccountIdentifier; // @synthesize parentAccountIdentifier=_parentAccountIdentifier;
+@property(retain, nonatomic) ACProtobufAccount *parentAccount; // @synthesize parentAccount=_parentAccount;
 @property(retain, nonatomic) ACProtobufURL *objectID; // @synthesize objectID=_objectID;
 @property(retain, nonatomic) NSMutableArray *dataclassProperties; // @synthesize dataclassProperties=_dataclassProperties;
 @property(nonatomic) _Bool supportsAuthentication; // @synthesize supportsAuthentication=_supportsAuthentication;
@@ -68,7 +76,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) ACProtobufAccountCredential *credential; // @synthesize credential=_credential;
 @property(retain, nonatomic) ACProtobufAccountType *accountType; // @synthesize accountType=_accountType;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -78,6 +85,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasModificationID;
+@property(nonatomic) _Bool hasWarmingUp;
 - (id)dirtyDataclassPropertiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)dirtyDataclassPropertiesCount;
 - (void)addDirtyDataclassProperties:(id)arg1;
@@ -102,7 +111,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)enabledDataclassesCount;
 - (void)addEnabledDataclasses:(id)arg1;
 - (void)clearEnabledDataclasses;
-@property(readonly, nonatomic) _Bool hasParentAccountIdentifier;
+@property(readonly, nonatomic) _Bool hasParentAccount;
 @property(readonly, nonatomic) _Bool hasObjectID;
 - (id)dataclassPropertiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)dataclassPropertiesCount;

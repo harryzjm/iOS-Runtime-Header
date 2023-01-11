@@ -17,6 +17,7 @@
 - (long long)accessibilityContainerType;
 - (id)_accessibilityFuzzyHitTestElements;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
+- (id)accessibilityLabel;
 - (id)accessibilityIdentifier;
 - (unsigned long long)_accessibilityAutomationType;
 

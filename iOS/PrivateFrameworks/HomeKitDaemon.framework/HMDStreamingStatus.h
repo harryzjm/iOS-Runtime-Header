@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <CoreHAP/HAPTLVBase.h>
+
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDStreamingStatus <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDStreamingStatus : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     unsigned long long _streamingStatus;
 }

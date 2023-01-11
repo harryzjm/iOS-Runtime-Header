@@ -12,10 +12,10 @@
 
 @protocol HFIconDescriptor <NSObject, NAEquatable>
 @property(readonly, nonatomic) _Bool shouldForceLTR;
-@property(readonly, nonatomic) NSString *imageIdentifier;
 @property(readonly, nonatomic) NSString *identifier;
 
 @optional
+- (long long)compare:(id <HFIconDescriptor>)arg1;
 - (id)iconDescriptorByMergingWithIconDescriptor:(id <HFIconDescriptor>)arg1;
 @end
 

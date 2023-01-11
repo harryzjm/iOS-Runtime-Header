@@ -4,28 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKColoringLabel, NTKRichComplicationCurvedProgressView, NTKRichComplicationImageView;
-
 @interface NTKRichComplicationCircularOpenMeteredGaugeImageView
 {
-    NTKRichComplicationCurvedProgressView *_progressView;
-    NTKRichComplicationImageView *_centerImageView;
-    NTKColoringLabel *_smallLabel;
 }
 
-+ (_Bool)supportsComplicationFamily:(long long)arg1;
++ (long long)progressFillStyle;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-@property(readonly, nonatomic) NTKColoringLabel *smallLabel; // @synthesize smallLabel=_smallLabel;
-@property(readonly, nonatomic) NTKRichComplicationImageView *centerImageView; // @synthesize centerImageView=_centerImageView;
-@property(readonly, nonatomic) NTKRichComplicationCurvedProgressView *progressView; // @synthesize progressView=_progressView;
-- (void).cxx_destruct;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_editingDidEnd;
-- (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
++ (_Bool)supportsComplicationFamily:(long long)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)setPaused:(_Bool)arg1;
-- (void)layoutSubviews;
 - (id)init;
 
 @end

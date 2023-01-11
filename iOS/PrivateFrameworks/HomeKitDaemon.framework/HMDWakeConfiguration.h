@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDWakeConfigurationParamaters, NSData, NSString;
+@class HMDWakeConfigurationParameters, NSData, NSString;
 
-@interface HMDWakeConfiguration : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDWakeConfiguration : NSObject <NSCopying, HAPTLVProtocol>
 {
     NSData *_reserved;
-    HMDWakeConfigurationParamaters *_custom1;
-    HMDWakeConfigurationParamaters *_custom2;
+    HMDWakeConfigurationParameters *_custom1;
+    HMDWakeConfigurationParameters *_custom2;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) HMDWakeConfigurationParamaters *custom2; // @synthesize custom2=_custom2;
-@property(retain, nonatomic) HMDWakeConfigurationParamaters *custom1; // @synthesize custom1=_custom1;
-@property(retain, nonatomic) NSData *reserved; // @synthesize reserved=_reserved;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HMDWakeConfigurationParameters *custom2; // @synthesize custom2=_custom2;
+@property(retain, nonatomic) HMDWakeConfigurationParameters *custom1; // @synthesize custom1=_custom1;
+@property(retain, nonatomic) NSData *reserved; // @synthesize reserved=_reserved;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

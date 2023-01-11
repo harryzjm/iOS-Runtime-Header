@@ -10,7 +10,7 @@
 #import <CoreDuetContext/_CDXPCEventPublisherDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString, NSXPCListener, _CDInMemoryUserContext, _CDXPCEventPublisher;
-@protocol _CDContextPersisting;
+@protocol OS_dispatch_queue, _CDContextPersisting;
 
 @interface _CDUserContextService : NSObject <NSXPCListenerDelegate, _CDXPCEventPublisherDelegate>
 {
@@ -27,13 +27,16 @@
     NSMutableDictionary *_mdcsEventSubscribersByToken;
     NSMutableDictionary *_notificationEventSubscribersByToken;
     NSMutableDictionary *_notificationEventSubscribersByClientIdentifier;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableDictionary *_remoteDevicesByDeviceID;
 }
 
 + (id)sharedInstanceWithSharedMemoryStore:(id)arg1;
 + (id)sharedInstanceWithPersistence:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *remoteDevicesByDeviceID; // @synthesize remoteDevicesByDeviceID=_remoteDevicesByDeviceID;
 @property(nonatomic) _Bool remoteDevicesHaveBeenActivated; // @synthesize remoteDevicesHaveBeenActivated=_remoteDevicesHaveBeenActivated;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSMutableDictionary *notificationEventSubscribersByClientIdentifier; // @synthesize notificationEventSubscribersByClientIdentifier=_notificationEventSubscribersByClientIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *notificationEventSubscribersByToken; // @synthesize notificationEventSubscribersByToken=_notificationEventSubscribersByToken;
 @property(retain, nonatomic) NSMutableDictionary *mdcsEventSubscribersByToken; // @synthesize mdcsEventSubscribersByToken=_mdcsEventSubscribersByToken;
@@ -46,7 +49,6 @@
 @property(retain, nonatomic) NSMutableSet *clients; // @synthesize clients=_clients;
 @property(retain, nonatomic) _CDInMemoryUserContext *userContext; // @synthesize userContext=_userContext;
 @property(retain, nonatomic) id <_CDContextPersisting> persistence; // @synthesize persistence=_persistence;
-- (void).cxx_destruct;
 - (void)removeSubscriberWithToken:(unsigned long long)arg1 streamName:(id)arg2;
 - (void)addSubscriber:(id)arg1;
 - (void)requestActivateDevicesFromSubscriber:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

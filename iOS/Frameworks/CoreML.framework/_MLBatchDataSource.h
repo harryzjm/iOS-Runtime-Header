@@ -8,21 +8,29 @@
 
 #import <CoreML/ETDataProvider-Protocol.h>
 
-@class MLNeuralNetworkEngine;
+@class MLNeuralNetworkEngine, NSString;
 @protocol MLBatchProvider;
 
 @interface _MLBatchDataSource : NSObject <ETDataProvider>
 {
+    _Bool _useForPrediction;
     id <MLBatchProvider> _batchProvider;
     MLNeuralNetworkEngine *_nnEngine;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool useForPrediction; // @synthesize useForPrediction=_useForPrediction;
 @property(readonly, nonatomic) MLNeuralNetworkEngine *nnEngine; // @synthesize nnEngine=_nnEngine;
 @property(readonly, nonatomic) id <MLBatchProvider> batchProvider; // @synthesize batchProvider=_batchProvider;
-- (void).cxx_destruct;
 - (unsigned long long)numberOfDataPoints;
 - (id)dataPointAtIndex:(unsigned long long)arg1 error:(id *)arg2;
-- (id)initWithMLBatchProvider:(id)arg1 neuralNetworkEngine:(id)arg2 error:(id *)arg3;
+- (id)initWithMLBatchProvider:(id)arg1 forPrediction:(_Bool)arg2 neuralNetworkEngine:(id)arg3 error:(id *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

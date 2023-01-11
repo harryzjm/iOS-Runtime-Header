@@ -14,17 +14,17 @@
 __attribute__((visibility("hidden")))
 @interface _UIMenuBuilder : NSObject <NSCopying, UIMenuBuilder>
 {
-    CDStruct_5ddd6656 _analysis;
+    CDStruct_de35aa0b _analysis;
     NSArray *_keyCommandsCache;
     UIMenuSystem *_system;
     unsigned long long __changeCount;
     unsigned long long __actualChangeCount;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long _actualChangeCount; // @synthesize _actualChangeCount=__actualChangeCount;
 @property(readonly, nonatomic) unsigned long long _changeCount; // @synthesize _changeCount=__changeCount;
 @property(nonatomic) __weak UIMenuSystem *system; // @synthesize system=_system;
-- (void).cxx_destruct;
 - (void)removeMenuForIdentifier:(id)arg1;
 - (void)insertChildMenu:(id)arg1 atEndOfMenuForIdentifier:(id)arg2;
 - (void)insertChildMenu:(id)arg1 atStartOfMenuForIdentifier:(id)arg2;
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (id)_firstValidMenuWithinIdentifiers:(id)arg1;
 - (id)_parentOfMenuForIdentifier:(id)arg1 commandForIdentifier:(id)arg2;
 @property(readonly, nonatomic) NSArray *_keyCommands;
-- (id)_menuForMenu:(id)arg1;
 - (void)_recacheCommandsIfNeeded;
 - (void)_setNeedsRecacheCommands;
 - (id)commandForAction:(SEL)arg1 propertyList:(id)arg2;
@@ -46,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)menuForIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRootMenu:(id)arg1;
-- (id)initWithSystem:(id)arg1 analysis:(CDStruct_5ddd6656)arg2;
+- (id)initWithSystem:(id)arg1 analysis:(CDStruct_de35aa0b)arg2;
 - (void)_patch:(id)arg1;
 - (void)_patchInternalDiff:(id)arg1;
 - (id)_internalDiffForDiffv1:(id)arg1;

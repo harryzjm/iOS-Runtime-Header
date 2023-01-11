@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPSAbridgableLabel, SBUIStarkBannerViewButton, UIImageView;
+@class CPSAbridgableLabel, CPUIBannerViewButton, UIImageView, UIStackView;
 
 @interface CPSGuidanceBannerView
 {
-    SBUIStarkBannerViewButton *_actionButton;
+    UIStackView *_labelStackView;
+    CPUIBannerViewButton *_actionButton;
     UIImageView *_applicationIconImageView;
     UIImageView *_guidanceImageView;
     CPSAbridgableLabel *_guidanceTextLabel;
@@ -16,17 +17,20 @@
     long long _currentInterfaceStyle;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long currentInterfaceStyle; // @synthesize currentInterfaceStyle=_currentInterfaceStyle;
 @property(retain, nonatomic) CPSAbridgableLabel *guidanceDetailTextLabel; // @synthesize guidanceDetailTextLabel=_guidanceDetailTextLabel;
 @property(retain, nonatomic) CPSAbridgableLabel *guidanceTextLabel; // @synthesize guidanceTextLabel=_guidanceTextLabel;
 @property(retain, nonatomic) UIImageView *guidanceImageView; // @synthesize guidanceImageView=_guidanceImageView;
 @property(retain, nonatomic) UIImageView *applicationIconImageView; // @synthesize applicationIconImageView=_applicationIconImageView;
-@property(retain, nonatomic) SBUIStarkBannerViewButton *actionButton; // @synthesize actionButton=_actionButton;
-- (void).cxx_destruct;
+@property(retain, nonatomic) CPUIBannerViewButton *actionButton; // @synthesize actionButton=_actionButton;
+@property(retain, nonatomic) UIStackView *labelStackView; // @synthesize labelStackView=_labelStackView;
+- (void)_updateBannerSelectedState;
 - (void)_setGuidanceImageViewForImageSet:(id)arg1;
 - (void)updateBannerWithBannerItem:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)initWithContext:(id)arg1;
+- (void)_updateLabels;
+- (id)initWithBannerItem:(id)arg1;
 
 @end
 

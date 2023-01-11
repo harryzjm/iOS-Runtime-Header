@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NTKSiderealSolarEvent;
+#import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 
-@interface NTKSiderealSector : NSObject
+@class MISSING_TYPE, NSString, NTKSiderealSolarEvent;
+
+@interface NTKSiderealSector : NSObject <NSSecureCoding>
 {
+    NSString *_localizedName;
     unsigned long long _type;
     NTKSiderealSolarEvent *_startingEvent;
     NTKSiderealSolarEvent *_endingEvent;
@@ -17,14 +20,17 @@
     MISSING_TYPE *_gradientEndPoint;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) MISSING_TYPE *gradientEndPoint; // @synthesize gradientEndPoint=_gradientEndPoint;
 @property(nonatomic) MISSING_TYPE *gradientStartPoint; // @synthesize gradientStartPoint=_gradientStartPoint;
 @property(retain, nonatomic) NTKSiderealSolarEvent *endingEvent; // @synthesize endingEvent=_endingEvent;
 @property(retain, nonatomic) NTKSiderealSolarEvent *startingEvent; // @synthesize startingEvent=_startingEvent;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)localizedName;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStartingEvent:(id)arg1 endingEvent:(id)arg2;
 
 @end

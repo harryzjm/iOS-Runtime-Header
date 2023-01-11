@@ -6,24 +6,30 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFActionSetItemProvider, HFReorderableHomeKitItemList, HMRoom;
+@class HFActionSetItemProvider, HFReorderableHomeKitItemList, HFStaticItem, HFStaticItemProvider, HMRoom;
 
 @interface HUGridActionSetItemManager : HFItemManager
 {
     _Bool _onlyShowsFavorites;
     HMRoom *_room;
     unsigned long long _actionSetStyle;
+    HFStaticItem *_actionSetPlaceholderItem;
     HFActionSetItemProvider *_actionSetItemProvider;
+    HFStaticItemProvider *_actionsetPlaceholderItemProvider;
     HFReorderableHomeKitItemList *_clientReorderableActionSetList;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HFReorderableHomeKitItemList *clientReorderableActionSetList; // @synthesize clientReorderableActionSetList=_clientReorderableActionSetList;
+@property(retain, nonatomic) HFStaticItemProvider *actionsetPlaceholderItemProvider; // @synthesize actionsetPlaceholderItemProvider=_actionsetPlaceholderItemProvider;
 @property(retain, nonatomic) HFActionSetItemProvider *actionSetItemProvider; // @synthesize actionSetItemProvider=_actionSetItemProvider;
+@property(retain, nonatomic) HFStaticItem *actionSetPlaceholderItem; // @synthesize actionSetPlaceholderItem=_actionSetPlaceholderItem;
 @property(readonly, nonatomic) unsigned long long actionSetStyle; // @synthesize actionSetStyle=_actionSetStyle;
 @property(nonatomic) _Bool onlyShowsFavorites; // @synthesize onlyShowsFavorites=_onlyShowsFavorites;
 @property(retain, nonatomic) HMRoom *room; // @synthesize room=_room;
-- (void).cxx_destruct;
+- (_Bool)isItemReorderableAtIndex:(id)arg1;
 - (void)_updateFilters;
+- (id)_itemsToHideInSet:(id)arg1;
 - (_Bool)_requiresNotificationsForCharacteristic:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
 - (id)_itemForSorting;

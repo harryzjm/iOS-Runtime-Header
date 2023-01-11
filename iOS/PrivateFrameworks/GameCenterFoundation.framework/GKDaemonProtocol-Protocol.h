@@ -7,14 +7,15 @@
 #import <GameCenterFoundation/CKXPCShareDaemon-Protocol.h>
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
-@class CKShareMetadata, GKGameInternal, GKPlayerInternal, GKQuickAction, NSDictionary, NSString, NSURL;
+@class CKShareMetadata, GKGameInternal, GKPlayerInternal, NSDictionary, NSString, NSURL;
 
 @protocol GKDaemonProtocol <NSObject, CKXPCShareDaemon>
 - (void)handleCloudKitShareMetadata:(CKShareMetadata *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)resetLoginCancelCount;
-- (oneway void)processQuickAction:(GKQuickAction *)arg1;
 - (oneway void)loadRemoteImageDataForURL:(NSURL *)arg1 reply:(void (^)(NSData *))arg2;
 - (oneway void)localizedMessageFromDictionary:(NSDictionary *)arg1 forBundleID:(NSString *)arg2 handler:(void (^)(NSString *))arg3;
+- (oneway void)getGamedFiredUpWithHandler:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)getPreferenceForKey:(NSString *)arg1 handler:(void (^)(_Bool, _Bool))arg2;
 - (oneway void)getAuthenticatedLocalPlayersWithStatus:(unsigned long long)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getAuthenticatedPlayerInfo:(void (^)(GKAuthenticateResponse *, NSError *))arg1;
 - (oneway void)getAuthenticatedPlayerIDWithHandler:(void (^)(NSString *))arg1;

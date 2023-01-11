@@ -28,13 +28,13 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _lastKnownSafeAreaInsets;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PUPhotoPickerResizeTaskDescriptor *resizeTaskDescriptor; // @synthesize resizeTaskDescriptor=_resizeTaskDescriptor;
 @property(nonatomic) struct UIEdgeInsets lastKnownSafeAreaInsets; // @synthesize lastKnownSafeAreaInsets=_lastKnownSafeAreaInsets;
 @property(nonatomic) double lastKnownWidth; // @synthesize lastKnownWidth=_lastKnownWidth;
 @property(nonatomic) _Bool didDisappear; // @synthesize didDisappear=_didDisappear;
 @property(copy, nonatomic, setter=_setImagePickerMediaTypes:) NSArray *_imagePickerMediaTypes; // @synthesize _imagePickerMediaTypes=__imagePickerMediaTypes;
 @property(nonatomic) __weak id <PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
-- (void).cxx_destruct;
 - (_Bool)canDragIn;
 - (_Bool)canDragOut;
 - (void)photoPickerFileSizeToolbarProvider:(id)arg1 didSelectResizeTaskDescriptor:(id)arg2;
@@ -69,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (_Bool)allowsPeeking;
 - (id)initWithSpec:(id)arg1;
 - (id)initWithModalPresentationStyle:(long long)arg1;
 - (id)init;

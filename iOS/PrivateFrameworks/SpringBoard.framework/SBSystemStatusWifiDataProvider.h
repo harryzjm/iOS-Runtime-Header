@@ -15,14 +15,14 @@
     _Bool _wifiActive;
     _Bool _fallingBackToCellular;
     STWifiStatusDomainPublisher *_wifiDataPublisher;
-    struct tcp_connection_fallback_watch_s *_cellularFallbackWatcher;
+    void *_cellularFallbackWatcher;
 }
 
-@property(nonatomic) struct tcp_connection_fallback_watch_s *cellularFallbackWatcher; // @synthesize cellularFallbackWatcher=_cellularFallbackWatcher;
+- (void).cxx_destruct;
+@property(nonatomic) void *cellularFallbackWatcher; // @synthesize cellularFallbackWatcher=_cellularFallbackWatcher;
 @property(nonatomic, getter=isFallingBackToCellular) _Bool fallingBackToCellular; // @synthesize fallingBackToCellular=_fallingBackToCellular;
 @property(nonatomic, getter=isWifiActive) _Bool wifiActive; // @synthesize wifiActive=_wifiActive;
 @property(readonly, nonatomic) STWifiStatusDomainPublisher *wifiDataPublisher; // @synthesize wifiDataPublisher=_wifiDataPublisher;
-- (void).cxx_destruct;
 - (void)_updateWifiActive;
 - (void)_updateData;
 - (void)_registerForNotifications;

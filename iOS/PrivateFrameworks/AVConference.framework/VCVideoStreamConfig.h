@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamConfig
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _framerate;
     unsigned long long _txMaxBitrate;
     unsigned long long _txMinBitrate;
+    unsigned long long _txInitialBitrate;
     unsigned long long _rxMaxBitrate;
     unsigned long long _rxMinBitrate;
     unsigned long long _keyFrameInterval;
@@ -28,13 +29,21 @@ __attribute__((visibility("hidden")))
     unsigned int _screenDisplayID;
     unsigned long long _customWidth;
     unsigned long long _customHeight;
-    NSString *_rxCodecFeatureListString;
-    NSString *_txCodecFeatureListString;
+    NSMutableDictionary *_rxCodecFeatureListStrings;
+    NSMutableDictionary *_txCodecFeatureListStrings;
     unsigned long long _tilesPerFrame;
+    unsigned int _pixelFormat;
+    _Bool _ltrpEnabled;
+    int _hdrMode;
+    NSString *_remoteDeviceName;
 }
 
 + (_Bool)validateClientDictionary:(id)arg1;
+@property(retain, nonatomic) NSString *remoteDeviceName; // @synthesize remoteDeviceName=_remoteDeviceName;
+@property(nonatomic) int hdrMode; // @synthesize hdrMode=_hdrMode;
+@property(nonatomic) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
 @property(nonatomic) unsigned long long tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
+@property(nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(nonatomic) unsigned long long customHeight; // @synthesize customHeight=_customHeight;
 @property(nonatomic) unsigned long long customWidth; // @synthesize customWidth=_customWidth;
 @property(nonatomic) unsigned int screenDisplayID; // @synthesize screenDisplayID=_screenDisplayID;
@@ -48,14 +57,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool enableCVO; // @synthesize enableCVO=_enableCVO;
 @property(nonatomic) int remoteVideoInitialOrientation; // @synthesize remoteVideoInitialOrientation=_remoteVideoInitialOrientation;
 @property(nonatomic) unsigned long long keyFrameInterval; // @synthesize keyFrameInterval=_keyFrameInterval;
-@property(retain, nonatomic) NSString *rxCodecFeatureListString; // @synthesize rxCodecFeatureListString=_rxCodecFeatureListString;
+@property(readonly, nonatomic) NSDictionary *txCodecFeatureListStrings; // @synthesize txCodecFeatureListStrings=_txCodecFeatureListStrings;
+@property(readonly, nonatomic) NSDictionary *rxCodecFeatureListStrings; // @synthesize rxCodecFeatureListStrings=_rxCodecFeatureListStrings;
 @property(nonatomic) unsigned long long rxMaxBitrate; // @synthesize rxMaxBitrate=_rxMaxBitrate;
 @property(nonatomic) unsigned long long rxMinBitrate; // @synthesize rxMinBitrate=_rxMinBitrate;
-@property(retain, nonatomic) NSString *txCodecFeatureListString; // @synthesize txCodecFeatureListString=_txCodecFeatureListString;
+@property(nonatomic) unsigned long long txInitialBitrate; // @synthesize txInitialBitrate=_txInitialBitrate;
 @property(nonatomic) unsigned long long txMaxBitrate; // @synthesize txMaxBitrate=_txMaxBitrate;
 @property(nonatomic) unsigned long long txMinBitrate; // @synthesize txMinBitrate=_txMinBitrate;
 @property(nonatomic) unsigned long long framerate; // @synthesize framerate=_framerate;
 @property(nonatomic) long long videoResolution; // @synthesize videoResolution=_videoResolution;
+- (void)addTxCodecFeatureListString:(id)arg1 codecType:(long long)arg2;
+- (void)addRxCodecFeatureListString:(id)arg1 codecType:(long long)arg2;
 - (_Bool)updateWithClientDictionary:(id)arg1;
 - (_Bool)applyVideoStreamClientDictionary:(id)arg1;
 - (void)dealloc;

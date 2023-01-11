@@ -24,6 +24,7 @@
 }
 
 + (void)makePersistentImageCache:(out id *)arg1 volatileImageCache:(out id *)arg2 withEnvironment:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool allowPreFlight; // @synthesize allowPreFlight=_allowPreFlight;
 @property(readonly, nonatomic) id <AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
@@ -34,13 +35,13 @@
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) id <AVTImageCache> volatileCache; // @synthesize volatileCache=_volatileCache;
 @property(readonly, nonatomic) id <AVTImageCache> peristentCache; // @synthesize peristentCache=_peristentCache;
-- (void).cxx_destruct;
 - (CDUnknownBlockType)_providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(_Bool)arg4;
 - (CDUnknownBlockType)_providerForRecord:(id)arg1 scope:(id)arg2;
 - (CDUnknownBlockType)providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(_Bool)arg4;
 - (CDUnknownBlockType)providerForRecord:(id)arg1 scope:(id)arg2;
-- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 renderingQueue:(id)arg3 callbackQueue:(id)arg4 configurationRenderer:(id)arg5 avatarRenderer:(id)arg6 allowPreFlight:(_Bool)arg7 environment:(id)arg8;
-- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 allowPreFlight:(_Bool)arg3 environment:(id)arg4;
+- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 renderingQueue:(id)arg3 callbackQueue:(id)arg4 configurationRenderer:(id)arg5 avatarRenderer:(id)arg6 scheduler:(id)arg7 allowPreFlight:(_Bool)arg8 environment:(id)arg9;
+- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 allowPreFlight:(_Bool)arg3 scheduler:(id)arg4 environment:(id)arg5;
+- (id)initWithEnvironment:(id)arg1 scheduler:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
 
 @end

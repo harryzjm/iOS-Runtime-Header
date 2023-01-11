@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOLocalizedDisambiguationLabel : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_locale;
     NSString *_string;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_locale:1;
         unsigned int read_string:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_locale:1;
-        unsigned int wrote_string:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,14 +40,17 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *string;
 @property(readonly, nonatomic) _Bool hasString;
-- (void)_readString;
 @property(retain, nonatomic) NSString *locale;
 @property(readonly, nonatomic) _Bool hasLocale;
-- (void)_readLocale;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

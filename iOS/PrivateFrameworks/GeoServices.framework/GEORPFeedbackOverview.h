@@ -13,12 +13,14 @@
 @interface GEORPFeedbackOverview : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPTimestamp *_createdAt;
     GEORPTimestamp *_lastUpdatedAt;
     NSString *_stateDescription;
     NSString *_title;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _feedbackState;
     int _type;
     struct {
@@ -29,13 +31,7 @@
         unsigned int read_lastUpdatedAt:1;
         unsigned int read_stateDescription:1;
         unsigned int read_title:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_createdAt:1;
-        unsigned int wrote_lastUpdatedAt:1;
-        unsigned int wrote_stateDescription:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_feedbackState:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -51,28 +47,29 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *stateDescription;
 @property(readonly, nonatomic) _Bool hasStateDescription;
-- (void)_readStateDescription;
 - (int)StringAsFeedbackState:(id)arg1;
 - (id)feedbackStateAsString:(int)arg1;
 @property(nonatomic) _Bool hasFeedbackState;
 @property(nonatomic) int feedbackState;
 @property(retain, nonatomic) GEORPTimestamp *lastUpdatedAt;
 @property(readonly, nonatomic) _Bool hasLastUpdatedAt;
-- (void)_readLastUpdatedAt;
 @property(retain, nonatomic) GEORPTimestamp *createdAt;
 @property(readonly, nonatomic) _Bool hasCreatedAt;
-- (void)_readCreatedAt;
 @property(retain, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (void)_readTitle;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

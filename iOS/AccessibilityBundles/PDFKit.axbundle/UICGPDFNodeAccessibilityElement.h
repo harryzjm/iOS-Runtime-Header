@@ -7,12 +7,11 @@
 #import "UIAccessibilityContainerDataTable-Protocol.h"
 #import "UIAccessibilityContainerDataTableCell-Protocol.h"
 
-@class NSMutableArray, NSString, PDFPage;
+@class NSMutableArray, NSString;
 
 @interface UICGPDFNodeAccessibilityElement <UIAccessibilityContainerDataTable, UIAccessibilityContainerDataTableCell>
 {
     struct CGPDFTaggedNode *_nodeRef;
-    PDFPage *_page;
     NSMutableArray *_cachedAXElements;
     NSMutableArray *_cachedAXPDFLinks;
     NSMutableArray *_cachedAXPDFOtherLinks;
@@ -25,12 +24,12 @@
     NSString *_altText;
 }
 
-+ (void)_findClosestWordNodeForBounds:(struct CGRect)arg1 withLineNode:(id)arg2 withDistanceBetterThan:(double *)arg3 siblingNodeFound:(id *)arg4;
 + (void)_findClosestLineNodeForBounds:(struct CGRect)arg1 withRootNode:(id)arg2 withDistanceBetterThan:(double *)arg3 parentFound:(id *)arg4 siblingFound:(id *)arg5;
 + (void)_addPDFAnnotation:(id)arg1 toPDFAccessibilityNode:(id)arg2;
 + (void)buildPDFAnnotationNodes:(id)arg1;
 + (_Bool)_isValidTextFieldElement:(id)arg1;
 + (_Bool)_containsOnlyTextChildren:(struct CGPDFTaggedNode *)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *altText; // @synthesize altText=_altText;
 @property(retain, nonatomic) NSString *listStyle; // @synthesize listStyle=_listStyle;
 @property(nonatomic) long long listItemNumber; // @synthesize listItemNumber=_listItemNumber;
@@ -41,9 +40,7 @@
 @property(retain, nonatomic) NSMutableArray *cachedAXPDFOtherLinks; // @synthesize cachedAXPDFOtherLinks=_cachedAXPDFOtherLinks;
 @property(retain, nonatomic) NSMutableArray *cachedAXPDFLinks; // @synthesize cachedAXPDFLinks=_cachedAXPDFLinks;
 @property(retain, nonatomic) NSMutableArray *cachedAXElements; // @synthesize cachedAXElements=_cachedAXElements;
-@property(nonatomic) __weak PDFPage *page; // @synthesize page=_page;
 @property(nonatomic) struct CGPDFTaggedNode *nodeRef; // @synthesize nodeRef=_nodeRef;
-- (void).cxx_destruct;
 - (unsigned long long)_findTraitsForTableCellElements;
 - (id)_findTOCIChildNodeOfNode:(id)arg1;
 - (id)_findLabelChildNodeOfListItem:(id)arg1;
@@ -51,7 +48,7 @@
 - (id)_findFigureChildrenNodesOfTableCellNode:(id)arg1;
 - (id)_findCaptionChildrenNodesOfFigureNode:(id)arg1;
 - (id)_findLinkChildrenNodesOfNode:(id)arg1;
-- (id)_findLinkChildrenNodesThatHaveLinksWithoutLinkNode:(id)arg1;
+- (id)_paragraphLinksInNode:(id)arg1;
 - (_Bool)_pdfElementHasLinkContainer;
 - (_Bool)_isContainerOfOnlyOneLinkNodeChild;
 - (id)_accessibilityLinks;
@@ -59,6 +56,7 @@
 - (id)_attributedAccessibilityLabelForNode:(struct CGPDFTaggedNode *)arg1;
 - (id)_accessibilityStringForListType:(int)arg1;
 - (id)_accessibilityHeadingLevel;
+- (void)_axHandleUpdateVisibility:(id)arg1;
 - (struct _NSRange)accessibilityColumnRange;
 - (struct _NSRange)accessibilityRowRange;
 - (id)accessibilityDataTableCellElementForRow:(unsigned long long)arg1 column:(unsigned long long)arg2;

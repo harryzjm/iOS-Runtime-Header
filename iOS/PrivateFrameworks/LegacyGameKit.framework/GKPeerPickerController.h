@@ -25,7 +25,7 @@
 @property(readonly, nonatomic) GKPeerPickerViewController *pickerViewController; // @dynamic pickerViewController;
 - (void)dismiss;
 - (void)show;
-@property(nonatomic) id <GKPeerPickerControllerDelegate> delegate;
+@property(nonatomic) __weak id <GKPeerPickerControllerDelegate> delegate;
 - (void)dealloc;
 - (id)init;
 

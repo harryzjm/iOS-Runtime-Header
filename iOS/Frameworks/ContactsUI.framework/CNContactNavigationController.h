@@ -13,7 +13,7 @@
 #import <ContactsUI/CNContactViewControllerAddContactPresenter-Protocol.h>
 #import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
 
-@class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSString, UIAlertController, UIKeyCommand;
+@class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSNumber, NSString, UIAlertController, UIBarButtonItem, UIKeyCommand;
 @protocol CNContactDataSource, CNContactNavigationControllerDelegate, CNScheduler;
 
 @interface CNContactNavigationController : UINavigationController <CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerDelegate, CNContactContentViewControllerDelegate, CNAccountsAndGroupsViewControllerDelegate, CNContactViewControllerAddContactPresenter>
@@ -30,6 +30,7 @@
     CNContactStyle *_contactStyle;
     CNContactStore *_contactStore;
     CNContactViewController *_reusableContactViewController;
+    NSNumber *_shouldShowAccountsAndGroupsCachedValue;
     CNAccountsAndGroupsViewController *_accountsAndGroupsViewController;
     CNAccountsAndGroupsDataSource *_accountsAndGroupsDataSource;
     long long _leftButtonBehavior;
@@ -43,9 +44,14 @@
     CNUIUserActivityManager *_activityManager;
     CNContactListStyleApplier *_contactListStyleApplier;
     NSArray *_prohibitedPropertyKeys;
+    UIBarButtonItem *_addContactBarButtonItem;
 }
 
++ (void)moveViewController:(id)arg1 toParent:(id)arg2;
++ (id)keyCommandForNewContact;
 + (id)newContactFormatter;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIBarButtonItem *addContactBarButtonItem; // @synthesize addContactBarButtonItem=_addContactBarButtonItem;
 @property(retain, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property(nonatomic) _Bool hideGroupsButton; // @synthesize hideGroupsButton=_hideGroupsButton;
 @property(nonatomic) _Bool ignoresMapsData; // @synthesize ignoresMapsData=_ignoresMapsData;
@@ -61,7 +67,8 @@
 @property(nonatomic) long long rightButtonBehavior; // @synthesize rightButtonBehavior=_rightButtonBehavior;
 @property(nonatomic) long long leftButtonBehavior; // @synthesize leftButtonBehavior=_leftButtonBehavior;
 @property(retain, nonatomic) CNAccountsAndGroupsDataSource *accountsAndGroupsDataSource; // @synthesize accountsAndGroupsDataSource=_accountsAndGroupsDataSource;
-@property(nonatomic) __weak CNAccountsAndGroupsViewController *accountsAndGroupsViewController; // @synthesize accountsAndGroupsViewController=_accountsAndGroupsViewController;
+@property(retain, nonatomic) CNAccountsAndGroupsViewController *accountsAndGroupsViewController; // @synthesize accountsAndGroupsViewController=_accountsAndGroupsViewController;
+@property(retain, nonatomic) NSNumber *shouldShowAccountsAndGroupsCachedValue; // @synthesize shouldShowAccountsAndGroupsCachedValue=_shouldShowAccountsAndGroupsCachedValue;
 @property(retain, nonatomic) CNContactViewController *reusableContactViewController; // @synthesize reusableContactViewController=_reusableContactViewController;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(nonatomic) _Bool allowsContactBlocking; // @synthesize allowsContactBlocking=_allowsContactBlocking;
@@ -70,12 +77,12 @@
 @property(nonatomic) _Bool allowsCardDeletion; // @synthesize allowsCardDeletion=_allowsCardDeletion;
 @property(nonatomic) _Bool allowsCardEditing; // @synthesize allowsCardEditing=_allowsCardEditing;
 @property(retain, nonatomic) CNContactStyle *contactStyle; // @synthesize contactStyle=_contactStyle;
-- (void).cxx_destruct;
 - (id)userActivityRepresentingCurrentlyDisplayedContact;
 - (void)notifyOtherFacebookContactsAlertDidSelectAction;
 - (void)otherFacebookContactsAlertDidSelectActionWithNotification:(id)arg1;
 - (void)observeOtherFacebookContactsAlert;
 - (void)checkForFacebookContactsWithDelay:(double)arg1 allowAlert:(_Bool)arg2;
+- (_Bool)shouldFlipDirectionWhenChangingSelectionWithKey:(id)arg1;
 - (void)selectPreviousContact:(id)arg1;
 - (void)selectNextContact:(id)arg1;
 - (void)executeAddContact;
@@ -88,6 +95,7 @@
 - (void)applicationDidResume;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)checkForInfoContentWithContext:(id)arg1;
+- (void)accountsAndGroupsViewControllerDidUpdateSelection:(id)arg1;
 - (void)accountsAndGroupsViewControllerDidFinish:(id)arg1;
 - (void)contactViewController:(id)arg1 didDeleteContact:(id)arg2;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
@@ -97,6 +105,7 @@
 - (void)contactListViewController:(id)arg1 didSelectContact:(id)arg2;
 - (_Bool)contactListViewController:(id)arg1 shouldSelectContact:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)contactListViewController:(id)arg1 canSelectContact:(id)arg2;
+- (void)startEditingPresentedContact;
 - (void)showCardForContactIfPossible:(id)arg1;
 - (_Bool)isPresentedContactViewControllerVisible;
 - (void)showCardForContactBeforeIndexPath:(id)arg1;
@@ -111,6 +120,7 @@
 - (void)cancel:(id)arg1;
 - (void)done:(id)arg1;
 - (void)presentGroupsViewController:(id)arg1;
+- (void)clearServerSearchIfNeeded:(id)arg1;
 - (void)updateNavigationButtonsAnimated:(_Bool)arg1;
 - (void)updateNavigationButtonsInSearchMode:(_Bool)arg1;
 - (void)updateLeftNavigationButtonAnimated:(_Bool)arg1;
@@ -118,16 +128,21 @@
 - (_Bool)shouldShowRightAddButton;
 - (_Bool)shouldShowRightCancelButton;
 - (_Bool)shouldShowRightAddAndCancelButton;
+- (_Bool)shouldShowLeftDoneAndRightAddButton;
 - (_Bool)shouldShowLeftCancelAndRightAddButton;
 - (_Bool)shouldShowLeftCancelAndRightDoneButton;
 - (_Bool)shouldShowGroupsButton;
+- (void)checkShouldShowAccountsAndGroupsDidChange;
+- (id)checkShouldShowAccountsAndGroups;
+- (_Bool)shouldShowAccountsAndGroups;
 - (void)updateNavigationButtonsInSearchMode:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic) _Bool hidesSearchableSources;
 - (_Bool)shouldDisplayMeContactBanner;
 - (void)setShouldDisplayMeContactBanner:(_Bool)arg1;
 - (id)contactListViewController;
 @property(readonly, nonatomic) id <CNContactDataSource> dataSource;
-- (void)updateContactStyle:(id)arg1;
+- (void)contactStyleCurrentStyleDidChange:(id)arg1;
+- (void)contactStoreDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 contactFormatter:(id)arg2 applyGroupFilterFromPreferences:(_Bool)arg3 environment:(id)arg4 allowsLargeTitles:(_Bool)arg5;
 - (id)initWithDataSource:(id)arg1 environment:(id)arg2 allowsLargeTitles:(_Bool)arg3;

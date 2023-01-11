@@ -23,7 +23,6 @@
 @property(readonly) CDStruct_14f26992 physicalGranularity;
 @property(readonly) CDStruct_14f26992 screenSize;
 @property(readonly) NSString *label;
-- (void)acceptVisitor:(id)arg1;
 @property(readonly) id <MTLDevice> device;
 
 // Remaining properties

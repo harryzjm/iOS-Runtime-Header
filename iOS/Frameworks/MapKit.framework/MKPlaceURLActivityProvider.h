@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKActivityItemSocialSource-Protocol.h>
-#import <MapKit/MKActivityItemSource-Protocol.h>
+#import <MapKit/UIActivityItemSocialSource-Protocol.h>
+#import <MapKit/UIActivityItemSource-Protocol.h>
 
 @class NSString;
 
-@interface MKPlaceURLActivityProvider <MKActivityItemSource, MKActivityItemSocialSource>
+@interface MKPlaceURLActivityProvider <UIActivityItemSource, UIActivityItemSocialSource>
 {
 }
 

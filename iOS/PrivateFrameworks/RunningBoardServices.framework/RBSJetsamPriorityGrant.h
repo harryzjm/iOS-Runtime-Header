@@ -9,15 +9,14 @@
     long long _priority;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (id)grantWithBackgroundPriority;
 + (id)grantWithForegroundPriority;
 + (id)grantWithPriority:(long long)arg1;
 @property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
-- (id)_initWithPriority:(long long)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)description;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 

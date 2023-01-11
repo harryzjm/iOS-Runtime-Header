@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitCore/PKFileDataAccessor.h>
+#import <PassKit/PKFileDataAccessor.h>
 
 @class NPKCompanionAgentConnection, NSString;
 
@@ -14,9 +14,9 @@
     NSString *_objectUniqueID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *objectUniqueID; // @synthesize objectUniqueID=_objectUniqueID;
 @property(retain, nonatomic) NPKCompanionAgentConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)updateSettings:(unsigned long long)arg1;
 
 @end

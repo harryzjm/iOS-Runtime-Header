@@ -13,13 +13,15 @@
 @interface GEOWiFiBSS : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _attributes;
     NSString *_identifier;
     GEOLatLngE7 *_latLngE7;
     GEOLatLng *_location;
     NSMutableArray *_qualities;
     long long _uniqueIdentifier;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_uniqueIdentifier:1;
         unsigned int read_attributes:1;
@@ -27,12 +29,7 @@
         unsigned int read_latLngE7:1;
         unsigned int read_location:1;
         unsigned int read_qualities:1;
-        unsigned int wrote_attributes:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_latLngE7:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_qualities:1;
-        unsigned int wrote_uniqueIdentifier:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,37 +44,35 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOLatLngE7 *latLngE7;
 @property(readonly, nonatomic) _Bool hasLatLngE7;
-- (void)_readLatLngE7;
 @property(nonatomic) _Bool hasUniqueIdentifier;
 @property(nonatomic) long long uniqueIdentifier;
 - (id)qualitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)qualitiesCount;
-- (void)_addNoFlagsQualities:(id)arg1;
 - (void)addQualities:(id)arg1;
 - (void)clearQualities;
 @property(retain, nonatomic) NSMutableArray *qualities;
-- (void)_readQualities;
 - (int)StringAsAttributes:(id)arg1;
 - (id)attributesAsString:(int)arg1;
 - (void)setAttributes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)attributesAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsAttributes:(int)arg1;
 - (void)addAttributes:(int)arg1;
 - (void)clearAttributes;
 @property(readonly, nonatomic) int *attributes;
 @property(readonly, nonatomic) unsigned long long attributesCount;
-- (void)_readAttributes;
 @property(retain, nonatomic) GEOLatLng *location;
 @property(readonly, nonatomic) _Bool hasLocation;
-- (void)_readLocation;
 @property(retain, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) _Bool hasIdentifier;
-- (void)_readIdentifier;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

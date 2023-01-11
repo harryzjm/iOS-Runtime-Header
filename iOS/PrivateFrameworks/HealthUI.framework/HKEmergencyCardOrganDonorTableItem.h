@@ -26,9 +26,6 @@
 - (double)tableView:(id)arg1 heightForRowAtIndex:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
 - (id)_createEditableCell;
-- (void)setOrganDonationStatus:(unsigned long long)arg1;
-- (unsigned long long)chosenIndexForOrganDonorStatus:(id)arg1;
-- (id)displayValueForOrganDonorStatus:(unsigned long long)arg1;
 - (id)possibleValues;
 - (_Bool)hasPresentableData;
 - (id)title;

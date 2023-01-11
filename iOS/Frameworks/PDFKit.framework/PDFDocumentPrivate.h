@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *pages;
     NSMutableDictionary *pageIndices;
     NSMutableDictionary *pageDictionaryIndices;
+    NSMutableIndexSet *preloadingPageIndexes;
     _Bool subclassOverridesPageAtIndex;
     id delegate;
     _Bool respondsToDidUnlock;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *attributes;
     PDFOutline *outline;
     NSObject<OS_dispatch_queue> *textExtractionQueue;
+    NSObject<OS_dispatch_queue> *displayListCreationQueue;
     _Bool finding;
     int findModel;
     NSArray *findStrings;
@@ -68,7 +70,12 @@ __attribute__((visibility("hidden")))
     id <PDFDocumentPageChangeDelegate> pageChangeDelegate;
     _Bool documentChanged;
     _Bool documentHasBurnInAnnotations;
-    _Bool pagesChanged;
+    unsigned long long documentRedactionCount;
+    struct {
+        _Bool pagesAdded;
+        _Bool pagesRemoved;
+        _Bool pagesExchanged;
+    } pagesChanged;
     NSIndexSet *initialBookmarkedPageIndices;
     NSMutableIndexSet *bookmarkedPages;
     PDFAKDocumentAdaptor *akDocumentAdaptor;

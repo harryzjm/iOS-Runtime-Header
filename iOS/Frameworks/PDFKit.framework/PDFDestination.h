@@ -24,8 +24,10 @@
 - (long long)compare:(id)arg1;
 @property(nonatomic) double zoom;
 @property(readonly, nonatomic) struct CGPoint point;
+- (id)pageIfExists;
 @property(readonly, nonatomic) __weak PDFPage *page;
 - (id)document;
+- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPage:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)init;

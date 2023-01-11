@@ -40,6 +40,7 @@
     BSUIEmojiLabelView *_summaryLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_summaryLabel, setter=_setSummaryLabel:) BSUIEmojiLabelView *summaryLabel; // @synthesize summaryLabel=_summaryLabel;
 @property(retain, nonatomic, getter=_primarySubtitleLabel, setter=_setPrimarySubtitleLabel:) UILabel *primarySubtitleLabel; // @synthesize primarySubtitleLabel=_primarySubtitleLabel;
 @property(retain, nonatomic, getter=_primaryLabel, setter=_setPrimaryLabel:) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
@@ -55,7 +56,6 @@
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property(readonly, nonatomic, getter=_secondaryTextView) UITextView *secondaryTextView; // @synthesize secondaryTextView=_secondaryTextView;
 @property(readonly, nonatomic, getter=_secondaryLabel) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
@@ -99,21 +99,21 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
 - (unsigned long long)_numberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forSize:(struct CGSize)arg3;
-- (unsigned long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3;
+- (unsigned long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3 scale:(double)arg4;
 - (void)_clearCacheForFont:(id)arg1;
 - (void)_invalidateNumberOfLinesCache;
 - (struct CGRect)_summaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (unsigned long long)_summaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
-- (unsigned long long)_summaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_summaryTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (struct CGRect)_secondaryTextViewBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (unsigned long long)_secondaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
-- (unsigned long long)_secondaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_secondaryTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (struct CGRect)_primarySubtitleLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (unsigned long long)_primarySubtitleTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
-- (unsigned long long)_primarySubtitleTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_primarySubtitleTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (struct CGRect)_primaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (unsigned long long)_primaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
-- (unsigned long long)_primaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
+- (unsigned long long)_primaryTextMeasuredNumberOfLinesForWidth:(double)arg1 scale:(double)arg2;
 - (double)_summaryTextBaselineOffsetForCurrentStyle;
 - (double)_secondaryTextBaselineOffsetForCurrentStyle;
 - (double)_primarySubtitleTextBaselineOffsetForCurrentStyle;

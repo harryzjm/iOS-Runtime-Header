@@ -14,14 +14,13 @@
     _Bool __overrideSessionCookieAcceptPolicy;
 }
 
-+ (id)_csfi:(id)arg1;
 + (id)_csff:(id)arg1;
 + (id)sharedCookieStorageForGroupContainerIdentifier:(id)arg1;
 + (id)sharedHTTPCookieStorage;
 + (void)_setSharedHTTPCookieStorage:(id)arg1;
-+ (id)_groupContainerCookieStorages;
 @property(nonatomic) _Bool _overrideSessionCookieAcceptPolicy; // @synthesize _overrideSessionCookieAcceptPolicy=__overrideSessionCookieAcceptPolicy;
 - (void)_testingOfStoringOfCookie:(id)arg1;
+- (id)_getCookiesForDomain:(id)arg1;
 - (void)_getCookiesForPartition:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_getCookieStoragePartitionsCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getCookiesForURL:(id)arg1 mainDocumentURL:(id)arg2 partition:(id)arg3 policyProperties:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -31,17 +30,17 @@
 - (id)sortedCookiesUsingDescriptors:(id)arg1;
 - (id)description;
 @property unsigned long long cookieAcceptPolicy;
+- (void)_setCookiesRemovedHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
+- (void)_setCookiesChangedHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
+- (void)_setSubscribedDomainsForCookieChanges:(id)arg1;
 - (void)_setCookies:(id)arg1 forURL:(id)arg2 mainDocumentURL:(id)arg3 policyProperties:(id)arg4;
 - (void)setCookies:(id)arg1 forURL:(id)arg2 mainDocumentURL:(id)arg3;
 - (id)_cookiesForURL:(id)arg1 mainDocumentURL:(id)arg2;
 - (id)cookiesForURL:(id)arg1;
-- (void)setCookiesFromResponseHeader:(id)arg1 forURL:(id)arg2 policyBaseURL:(id)arg3;
-- (id)cookieRequestHeaderFieldsForURL:(id)arg1;
 - (void)removeCookiesSinceDate:(id)arg1;
 - (void)deleteCookie:(id)arg1;
 - (void)setCookie:(id)arg1;
 @property(readonly, copy) NSArray *cookies;
-- (struct OpaqueCFHTTPCookieStorage *)_CFHTTPCookieStorage;
 - (void)dealloc;
 - (id)init;
 - (id)_initWithCFHTTPCookieStorage:(struct OpaqueCFHTTPCookieStorage *)arg1;

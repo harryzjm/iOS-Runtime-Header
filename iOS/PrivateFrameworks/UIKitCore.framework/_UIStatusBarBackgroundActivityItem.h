@@ -4,25 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIStatusBarPillView;
+@class _UIStatusBarActivityIconView, _UIStatusBarPillView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarBackgroundActivityItem
 {
     _UIStatusBarPillView *_backgroundView;
+    _UIStatusBarActivityIconView *_iconView;
 }
 
++ (double)_fontSizeAdjustmentForActivityType:(long long)arg1;
++ (double)_verticalOffsetForActivityType:(long long)arg1;
++ (_Bool)_identifierContainsItemImage:(id)arg1;
 + (id)backgroundDisplayIdentifier;
-@property(retain, nonatomic) _UIStatusBarPillView *backgroundView; // @synthesize backgroundView=_backgroundView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _UIStatusBarActivityIconView *iconView; // @synthesize iconView=_iconView;
+@property(retain, nonatomic) _UIStatusBarPillView *backgroundView; // @synthesize backgroundView=_backgroundView;
+- (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1;
+- (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
+- (id)imageView;
+- (void)_create_iconView;
 - (void)_create_backgroundView;
+- (id)_visualEffectForActivityType:(long long)arg1 traitCollection:(id)arg2;
 - (_Bool)_shouldPulseForActivityType:(long long)arg1 traitCollection:(id)arg2;
+- (_Bool)_shouldRingForActivityType:(long long)arg1 traitCollection:(id)arg2;
 - (id)_backgroundColorForActivityType:(long long)arg1;
+- (id)imageForUpdate:(id)arg1;
+- (id)_textLabelForActivityType:(long long)arg1;
 - (id)_imageNameForActivityType:(long long)arg1;
 - (id)_systemImageNameForActivityType:(long long)arg1;
 - (id)imageNameForUpdate:(id)arg1;
 - (id)systemImageNameForUpdate:(id)arg1;
+- (void)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)_backgroundActivityViewForIdentifier:(id)arg1;
 - (id)createDisplayItemForIdentifier:(id)arg1;

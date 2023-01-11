@@ -15,7 +15,7 @@
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 #import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
 
-@class CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UISDisplayContext, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDragManager, _UIFocusMovementPerformer, _UIFocusScrollManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace, _UIScreenFocusSystemManager;
+@class CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UISDisplayContext, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDragManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIDisplayInfoProviding, _UIFocusRegionContainer;
 
 @interface UIScreen : NSObject <_UIFallbackEnvironment, UICoordinateSpace, _UITraitEnvironmentInternal, _UIFocusEnvironmentInternal, _UIFocusRegionContainer, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UITraitEnvironment>
@@ -33,7 +33,6 @@
     _UIScreenFixedCoordinateSpace *_fixedCoordinateSpace;
     id <_UIDisplayInfoProviding> _displayInfoProvider;
     FBSDisplayConfiguration *__displayConfiguration;
-    CARSessionStatus *_currentCarSessionStatus;
     long long _lastUpdatedCanvasUserInterfaceStyle;
     struct {
         unsigned int bitsPerComponent:4;
@@ -62,12 +61,9 @@
     UITraitCollection *_overrideTraitCollection;
     UITraitCollection *_lastNotifiedTraitCollection;
     UISoftwareDimmingWindow *_softwareDimmingWindow;
-    _UIFocusScrollManager *_focusScrollManager;
-    _UIFocusMovementPerformer *_focusMovementPerformer;
-    _UIScreenFocusSystemManager *_focusSystemManager;
-    UIFocusSystem *_focusSystem;
     _UIDragManager *_dragManager;
     _UIInteractiveHighlightEnvironment *_interactiveHighlightEnvironment;
+    CARSessionStatus *_carSessionStatus;
     _UIScreenBoundingPathUtilities *_boundingPathUtilities;
     UIWindow<UIFocusEnvironment> *__focusedWindow;
 }
@@ -77,6 +73,7 @@
 + (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2;
 + (struct CGPoint)convertPoint:(struct CGPoint)arg1 toView:(id)arg2;
 + (id)__displayConfigurationsIncludingMain:(_Bool)arg1;
++ (id)_mainScreenThreadSafeTraitCollection;
 + (_Bool)_shouldDisableJail;
 + (_Bool)_isProbablyBeingRecorded;
 + (void)_FBSDisplayIdentityDisconnected:(id)arg1;
@@ -89,7 +86,6 @@
 + (id)_screenForScene:(id)arg1;
 + (void)_FBSDisplayDidPossiblyConnect:(id)arg1 withScene:(id)arg2;
 + (void)_FBSDisplayDidPossiblyConnect:(id)arg1;
-+ (void)_prepareCarScreensForResume;
 + (void)_prepareScreensForAppResume;
 + (id)_screenWithIntegerDisplayID:(unsigned int)arg1;
 + (id)_screenWithDisplayID:(id)arg1;
@@ -102,9 +98,11 @@
 + (struct CGAffineTransform)transformForScreenOriginRotation:(double)arg1;
 + (id)mainScreen;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setFocusedWindow:) UIWindow<UIFocusEnvironment> *_focusedWindow; // @synthesize _focusedWindow=__focusedWindow;
 @property(nonatomic, getter=_isMainScreen, setter=_setMainScreen:) _Bool mainScreen; // @synthesize mainScreen=_mainScreen;
 @property(retain, nonatomic, getter=_boundingPathUtilities, setter=_setBoundingPathUtilities:) _UIScreenBoundingPathUtilities *boundingPathUtilities; // @synthesize boundingPathUtilities=_boundingPathUtilities;
+@property(retain, nonatomic, getter=_carSessionStatus) CARSessionStatus *carSessionStatus; // @synthesize carSessionStatus=_carSessionStatus;
 @property(nonatomic, setter=_setUIIBAlwaysProvidePeripheryInsets:) _Bool _UIIBAlwaysProvidePeripheryInsets; // @synthesize _UIIBAlwaysProvidePeripheryInsets=__UIIBAlwaysProvidePeripheryInsets;
 @property(nonatomic, getter=isCaptured, setter=_setCaptured:) _Bool captured; // @synthesize captured=_captured;
 @property(nonatomic, setter=_setLastNotifiedBacklightLevel:) float _lastNotifiedBacklightLevel; // @synthesize _lastNotifiedBacklightLevel;
@@ -115,7 +113,6 @@
 @property(retain, nonatomic, getter=_lastNotifiedTraitCollection, setter=_setLastNotifiedTraitCollection:) UITraitCollection *lastNotifiedTraitCollection; // @synthesize lastNotifiedTraitCollection=_lastNotifiedTraitCollection;
 @property(retain, nonatomic, getter=_overrideTraitCollection, setter=_setOverrideTraitCollection:) UITraitCollection *overrideTraitCollection; // @synthesize overrideTraitCollection=_overrideTraitCollection;
 @property(retain, nonatomic, getter=_defaultTraitCollection, setter=_setDefaultTraitCollection:) UITraitCollection *defaultTraitCollection; // @synthesize defaultTraitCollection=_defaultTraitCollection;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_interactiveHighlightEnvironment) _UIInteractiveHighlightEnvironment *interactiveHighlightEnvironment; // @synthesize interactiveHighlightEnvironment=_interactiveHighlightEnvironment;
 - (_Bool)_supportsDragging;
 @property(readonly, nonatomic, getter=_dragManager) _UIDragManager *dragManager; // @synthesize dragManager=_dragManager;
@@ -139,12 +136,12 @@
 @property(readonly, nonatomic) __weak UIView *focusedView;
 @property(readonly, nonatomic) __weak id <UIFocusItem> focusedItem;
 - (void)setFocusEnabled:(_Bool)arg1;
-- (void)_ensureFocusSystemIsLoaded;
 - (_Bool)_isFocusSystemLoaded;
-@property(readonly, nonatomic, getter=_focusSystem) UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
-@property(readonly, nonatomic, getter=_focusSystemManager) _UIScreenFocusSystemManager *focusSystemManager; // @synthesize focusSystemManager=_focusSystemManager;
-@property(readonly, nonatomic, getter=_focusMovementPerformer) _UIFocusMovementPerformer *focusMovementPerformer; // @synthesize focusMovementPerformer=_focusMovementPerformer;
-@property(readonly, nonatomic, getter=_focusScrollManager) _UIFocusScrollManager *focusScrollManager; // @synthesize focusScrollManager=_focusScrollManager;
+@property(readonly, nonatomic, getter=_focusSystem) UIFocusSystem *focusSystem;
+- (id)_focusSystemManager;
+- (id)_focusMovementPerformer;
+- (id)_focusScrollManager;
+- (id)_preferredFocusedWindowScene;
 - (void)_handleForcedUserInterfaceLayoutDirectionChanged:(id)arg1;
 - (void)_accessibilityTraitFlagsChanged:(id)arg1;
 - (void)_handleEffectiveUserInterfaceStyleChanged:(id)arg1;
@@ -296,6 +293,7 @@
 @property(nonatomic) _Bool areChildrenFocused;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;

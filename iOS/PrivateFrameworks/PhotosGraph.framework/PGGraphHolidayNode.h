@@ -10,16 +10,27 @@
 
 @interface PGGraphHolidayNode <PGGraphLocalizable>
 {
+    unsigned int _category:8;
+    NSString *_name;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long category; // @synthesize category=_category;
+@property(readonly) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSString *localizedName;
 - (void)enumerateCelebratingHighlightNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCelebratingMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) unsigned long long category;
+- (unsigned short)domain;
+- (id)label;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

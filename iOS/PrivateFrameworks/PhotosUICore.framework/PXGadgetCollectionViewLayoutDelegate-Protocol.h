@@ -9,6 +9,7 @@
 @class PXGadgetDataSource;
 
 @protocol PXGadgetCollectionViewLayoutDelegate <NSObject>
+@property(readonly, nonatomic) _Bool isTogglingSidebarNoRotating;
 @property(readonly, nonatomic) struct UIEdgeInsets insetsForSectionHeaders;
 @property(readonly, nonatomic) PXGadgetDataSource *dataSource;
 @end

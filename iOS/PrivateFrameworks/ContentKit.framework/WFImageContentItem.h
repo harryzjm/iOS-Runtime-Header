@@ -6,7 +6,7 @@
 
 #import <ContentKit/WFContentItemClass-Protocol.h>
 
-@class UIImage, WFFileType;
+@class WFFileType, WFImage;
 
 @interface WFImageContentItem <WFContentItemClass>
 {
@@ -24,10 +24,11 @@
 + (id)imageTypes;
 + (id)propertyBuilders;
 + (id)itemWithImage:(id)arg1 named:(id)arg2 preferredFileType:(id)arg3;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
+- (void).cxx_destruct;
 @property(retain, nonatomic) WFFileType *preferredFileType; // @synthesize preferredFileType=_preferredFileType;
 @property(nonatomic) _Bool imageIsAnimated; // @synthesize imageIsAnimated=_imageIsAnimated;
-- (void).cxx_destruct;
+- (id)preferredObjectType;
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (_Bool)isContent;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
@@ -37,7 +38,8 @@
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)generateImageFileForType:(id)arg1 includingMetadata:(_Bool)arg2 compressionQuality:(id)arg3 error:(id *)arg4;
 - (id)imageFile;
-@property(readonly, nonatomic) UIImage *image;
+@property(readonly, nonatomic) WFImage *image;
+- (_Bool)isObjectBacked;
 - (_Bool)isScreenshot;
 - (id)orientation;
 - (id)location;

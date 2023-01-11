@@ -6,7 +6,7 @@
 
 #import <UIKitCore/FBSSceneDelegate-Protocol.h>
 
-@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UISceneActivationConditions, UISceneSession, _UISceneLifecycleMonitor;
+@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UIPointerLockState, UISceneActivationConditions, UISceneSession, _UIFocusSystemSceneComponent, _UISceneLifecycleMonitor;
 @protocol UISceneDelegate;
 
 @interface UIScene <FBSSceneDelegate>
@@ -31,7 +31,8 @@
     NSMutableDictionary *_postSettingsUpdateResponseBlocks;
     UIScene *_settingsScene;
     NSPointerArray *_inheritingScenes;
-    NSString *_identifier;
+    NSString *_sceneIdentifier;
+    NSString *_persistenceIdentifier;
     FBSSceneSettings *_oldSettings;
     struct {
         unsigned int delegateIsResponder:1;
@@ -43,6 +44,7 @@
         unsigned int delegateSupportsDidEnterBackground:1;
         unsigned int isUIKitManaged:1;
         unsigned int isInternal:1;
+        unsigned int affectsAppLifecycleIfInternal:1;
         unsigned int hostsWindows:1;
         unsigned int hasInvalidated:1;
         unsigned int allowOverrideSettings:1;
@@ -50,33 +52,34 @@
         unsigned int readyForSuspend:1;
         unsigned int isMediaParticipant:1;
     } _sceneFlags;
-    NSDate *_suspensionTimeMark;
     _Bool _respondingToLifecycleEvent;
     NSNumber *__cachedInterfaceOrientation;
 }
 
 + (Class)_implicitSceneFilterClass;
 + (long long)_activationStateFromSceneSettings:(id)arg1;
-+ (void)_enqueuePostSettingUpdateTransactionBlock:(CDUnknownBlockType)arg1;
-+ (void)_setActiveSettingsTransaction:(_Bool)arg1;
-+ (_Bool)_activeSettingsTransaction;
 + (id)_persistenceIdentifierForScene:(id)arg1;
 + (id)_connectionOptionsForScene:(id)arg1 withSpecification:(id)arg2 transitionContext:(id)arg3 actions:(id)arg4 sceneSession:(id)arg5;
 + (id)_mostActiveScene;
 + (void *)_unsafeScenesIncludingInternal;
++ (id)_scenesIncludingInternalForPK:(_Bool)arg1;
 + (id)_scenesIncludingInternal:(_Bool)arg1;
 + (id)_sceneForFBSScene:(id)arg1 create:(_Bool)arg2 withSession:(id)arg3 connectionOptions:(id)arg4;
++ (void)_registerInternalSceneIdentifier:(id)arg1 withInitializationBlock:(CDUnknownBlockType)arg2;
 + (void)_enumerateAllWindowsIncludingInternalWindows:(_Bool)arg1 onlyVisibleWindows:(_Bool)arg2 asCopy:(_Bool)arg3 withBlock:(CDUnknownBlockType)arg4;
 + (_Bool)_hostsWindows;
 + (void)_synchronizeDrawingWithFence:(id)arg1;
 + (id)_synchronizedDrawingFence;
++ (void)_synchronizeDrawingUsingFence:(id)arg1;
++ (id)_synchronizeDrawingAndReturnFence;
++ (void)_synchronizeDrawing;
 + (void)_registerSceneComponentClass:(Class)arg1 withKey:(id)arg2 predicate:(id)arg3;
 + (id)_sceneForFBSScene:(id)arg1 usingPredicate:(id)arg2;
 + (id)_sceneForFBSScene:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_cachedInterfaceOrientation, setter=_setCachedInterfaceOrientation:) NSNumber *_cachedInterfaceOrientation; // @synthesize _cachedInterfaceOrientation=__cachedInterfaceOrientation;
 @property(nonatomic, setter=_setIsRespondingToLifecycleEvent:) _Bool _respondingToLifecycleEvent; // @synthesize _respondingToLifecycleEvent;
 @property(readonly, nonatomic) FBSSceneSettings *_oldSettings; // @synthesize _oldSettings;
-- (void).cxx_destruct;
 - (void)_removeInheritingScene:(id)arg1;
 - (void)_addInheritingScene:(id)arg1;
 @property(readonly, nonatomic) NSArray *_sceneBSActionHandlers;
@@ -88,6 +91,7 @@
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateWithDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_refreshActivationConditions;
+@property(readonly, nonatomic) _Bool _affectsAppLifecycleIfInternal;
 @property(readonly, nonatomic, getter=_isUIKitManaged) _Bool _isUIKitManaged;
 @property(readonly, nonatomic, getter=_isInternal) _Bool _internal;
 - (id)_shortDescription;
@@ -115,11 +119,9 @@
 @property(readonly, nonatomic) _Bool _readyForSuspend;
 - (void)_prepareForSuspend;
 - (void)_prepareForResume;
-- (void)_performBackgroundSceneDetach:(id)arg1;
-- (void)_cancelBackgroundSceneDetach;
-- (void)_scheduleBackgroundSceneDetach;
 @property(nonatomic, setter=_setInvolvedInMediaPlayback:) _Bool _involvedInMediaPlayback;
 - (void)_initializeSceneComponents;
+- (_Bool)_needsMakeKeyAndVisible;
 - (void)_makeKeyAndVisibleIfNeeded;
 - (void)_readySceneForConnection;
 - (void)__releaseWindow:(id)arg1;
@@ -140,8 +142,13 @@
 @property(readonly, nonatomic) NSArray *_windows;
 @property(readonly, nonatomic) _Bool _hasInvaidated;
 - (void)_invalidate;
+- (void)_noteDisplayIdentityDidChangeWithConfiguration:(id)arg1;
 - (void)_synchronizeDrawingWithFence:(id)arg1;
 @property(readonly, nonatomic) BKSAnimationFenceHandle *_synchronizedDrawingFence;
+- (void)_synchronizeDrawingUsingFence:(id)arg1;
+- (id)_synchronizeDrawingAndReturnFence;
+- (void)_synchronizeDrawing;
+- (_Bool)_shouldAllowFencing;
 - (void)_compatibilityModeZoomDidChange;
 - (void)_updateUIClientSettingsWithTransitionBlock:(CDUnknownBlockType)arg1;
 - (void)_updateUIClientSettingsWithUITransitionBlock:(CDUnknownBlockType)arg1;
@@ -155,6 +162,8 @@
 - (void)_registerSceneActionsHandlerArray:(id)arg1 forKey:(id)arg2;
 - (void)_unregisterSettingsDiffActionArrayForKey:(id)arg1;
 - (void)_registerSettingsDiffActionArray:(id)arg1 forKey:(id)arg2;
+@property(readonly, nonatomic) NSString *_sceneIdentifier;
+@property(readonly, nonatomic) NSString *_persistenceIdentifier;
 @property(readonly, nonatomic) NSString *_identifier;
 @property(readonly, nonatomic, getter=_FBSScene) FBSScene *_FBSScene;
 @property(retain, nonatomic) UISceneActivationConditions *activationConditions;
@@ -168,6 +177,9 @@
 @property(retain, nonatomic) id <UISceneDelegate> delegate;
 @property(readonly, nonatomic) UISceneSession *session;
 - (id)initWithSession:(id)arg1 connectionOptions:(id)arg2;
+@property(readonly, nonatomic) _UIFocusSystemSceneComponent *_focusSystemSceneComponent;
+@property(readonly, nonatomic) UIPointerLockState *pointerLockState;
+- (id)_carPlaySceneComponent;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

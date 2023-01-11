@@ -12,9 +12,9 @@
     long long _pushFlags;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long pushFlags; // @synthesize pushFlags=_pushFlags;
 @property(retain, nonatomic) HMDBackingStoreTransactionBlock *transaction; // @synthesize transaction=_transaction;
-- (void).cxx_destruct;
 - (id)mainReturningError;
 - (id)initWithTransaction:(id)arg1;
 

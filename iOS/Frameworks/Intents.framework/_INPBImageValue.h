@@ -16,10 +16,11 @@
 {
     struct {
         unsigned int height:1;
+        unsigned int renderingMode:1;
         unsigned int type:1;
         unsigned int width:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
+    int _renderingMode;
     int _type;
     NSData *_data;
     double _height;
@@ -30,15 +31,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) double width; // @synthesize width=_width;
 @property(retain, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 @property(copy, nonatomic) NSString *uri; // @synthesize uri=_uri;
 @property(nonatomic) int type; // @synthesize type=_type;
+@property(nonatomic) int renderingMode; // @synthesize renderingMode=_renderingMode;
 @property(copy, nonatomic) NSString *proxyServiceIdentifier; // @synthesize proxyServiceIdentifier=_proxyServiceIdentifier;
 @property(nonatomic) double height; // @synthesize height=_height;
 @property(copy, nonatomic) NSData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -53,6 +54,9 @@
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
+- (int)StringAsRenderingMode:(id)arg1;
+- (id)renderingModeAsString:(int)arg1;
+@property(nonatomic) _Bool hasRenderingMode;
 @property(readonly, nonatomic) _Bool hasProxyServiceIdentifier;
 @property(nonatomic) _Bool hasHeight;
 @property(readonly, nonatomic) _Bool hasData;

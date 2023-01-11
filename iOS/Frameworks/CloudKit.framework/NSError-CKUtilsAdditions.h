@@ -11,7 +11,10 @@
 + (id)CKErrorWithPOSIXCode:(int)arg1;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (_Bool)CKIsPOSIXErrorCode:(long long)arg1;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 @property(readonly, nonatomic, getter=isComparisonError) _Bool comparisonError;
+- (id)CKErrorScopedToZoneIDs:(id)arg1;
+- (_Bool)CKHasTopLevelUnderlyingError;
 - (_Bool)CKHasCKErrorInChildChain;
 - (_Bool)CKIsCKError;
 - (_Bool)CKIsNotFoundError;

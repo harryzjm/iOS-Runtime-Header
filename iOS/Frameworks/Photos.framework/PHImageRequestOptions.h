@@ -20,6 +20,8 @@
     _Bool _allowPlaceholder;
     _Bool _allowSecondaryOpportunisticImage;
     _Bool _onlyUseFetchedAssetPropertiesDuringChoosing;
+    _Bool _useLowMemoryMode;
+    _Bool _useLimitedLibraryMode;
     long long _version;
     long long _deliveryMode;
     long long _resizeMode;
@@ -27,10 +29,15 @@
     long long _loadingMode;
     NSObject<OS_dispatch_queue> *_resultHandlerQueue;
     CDUnknownBlockType _cachingCompleteHandler;
+    long long _downloadIntent;
     struct CGRect _normalizedCropRect;
 }
 
 + (id)defaultOptionsAllowingPlaceholder;
+- (void).cxx_destruct;
+@property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
+@property(nonatomic) _Bool useLimitedLibraryMode; // @synthesize useLimitedLibraryMode=_useLimitedLibraryMode;
+@property(nonatomic) _Bool useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
 @property(copy, nonatomic) CDUnknownBlockType cachingCompleteHandler; // @synthesize cachingCompleteHandler=_cachingCompleteHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property(nonatomic) _Bool onlyUseFetchedAssetPropertiesDuringChoosing; // @synthesize onlyUseFetchedAssetPropertiesDuringChoosing=_onlyUseFetchedAssetPropertiesDuringChoosing;
@@ -44,7 +51,6 @@
 @property(nonatomic) long long resizeMode; // @synthesize resizeMode=_resizeMode;
 @property(nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property(nonatomic) long long version; // @synthesize version=_version;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <AnnotationKit/PKSelectionInteractionDelegate-Protocol.h>
 #import <AnnotationKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class AKPanGestureRecognizer, AKRotationGestureRecognizer, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
-@interface AKMainEventHandler_iOS <UIGestureRecognizerDelegate>
+@interface AKMainEventHandler_iOS <UIGestureRecognizerDelegate, PKSelectionInteractionDelegate>
 {
     UITapGestureRecognizer *_tapRecognizer;
     UITapGestureRecognizer *_doubleTapRecognizer;
@@ -18,18 +19,21 @@
     double _lastRotationAngleInRotationGesture;
 }
 
+- (void).cxx_destruct;
 @property double lastRotationAngleInRotationGesture; // @synthesize lastRotationAngleInRotationGesture=_lastRotationAngleInRotationGesture;
 @property(retain) AKRotationGestureRecognizer *rotationRecognizer; // @synthesize rotationRecognizer=_rotationRecognizer;
 @property(retain) AKPanGestureRecognizer *panRecognizer; // @synthesize panRecognizer=_panRecognizer;
 @property(retain) UILongPressGestureRecognizer *pressRecognizer; // @synthesize pressRecognizer=_pressRecognizer;
 @property(retain) UITapGestureRecognizer *doubleTapRecognizer; // @synthesize doubleTapRecognizer=_doubleTapRecognizer;
 @property(retain) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
-- (void).cxx_destruct;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)applyToAllSelectedAnnotationsRotateEvent:(id)arg1 orRecognizer:(id)arg2;
+- (_Bool)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2 forGestureRecognizer:(id)arg3;
+- (_Bool)_shouldAllowTapAtLocationInWindow:(struct CGPoint)arg1;
+- (_Bool)_doubleTapRecognizerCanBeginAtPoint:(struct CGPoint)arg1;
+- (_Bool)_tapRecognizerCanBeginAtPoint:(struct CGPoint)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)_penDrawingQuiesced;
 - (void)forwardRecognizerToMainHandleEvent:(id)arg1;
 - (void)teardown;
 - (id)initWithController:(id)arg1;

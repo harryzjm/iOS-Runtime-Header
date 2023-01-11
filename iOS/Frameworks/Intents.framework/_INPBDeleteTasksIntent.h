@@ -16,7 +16,6 @@
 {
     CDStruct_eff9c538 _has;
     _Bool _all;
-    _Bool __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
     _INPBTaskList *_taskList;
     NSArray *_tasks;
@@ -24,12 +23,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)tasksType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *tasks; // @synthesize tasks=_tasks;
 @property(retain, nonatomic) _INPBTaskList *taskList; // @synthesize taskList=_taskList;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) _Bool all; // @synthesize all=_all;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

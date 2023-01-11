@@ -19,7 +19,6 @@
         unsigned int destinationType:1;
         unsigned int sourceType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _destinationType;
     int _sourceType;
     _INPBString *_destinationName;
@@ -32,7 +31,7 @@
 + (_Bool)supportsSecureCoding;
 + (Class)propertiesType;
 + (Class)entityNameType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int sourceType; // @synthesize sourceType=_sourceType;
 @property(retain, nonatomic) _INPBString *sourceName; // @synthesize sourceName=_sourceName;
 @property(copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
@@ -40,7 +39,6 @@
 @property(copy, nonatomic) NSArray *entityNames; // @synthesize entityNames=_entityNames;
 @property(nonatomic) int destinationType; // @synthesize destinationType=_destinationType;
 @property(retain, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <UIKitCore/_UISearchBarTextFieldOrMailReplacement-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableDictionary, NSString, NSValue, UIColor, UIImageView, UISearchBar, UITapGestureRecognizer, UITextRange, _UISearchBarSearchFieldBackgroundView, _UISearchBarTextFieldTokenCounter;
+@class NSArray, NSHashTable, NSMutableDictionary, NSString, NSValue, UIColor, UIHoverGestureRecognizer, UIImage, UIImageView, UISearchBar, UITapGestureRecognizer, UITextRange, _UISearchBarSearchFieldBackgroundView, _UISearchBarTextFieldTokenCounter;
 
 @interface UISearchTextField <_UISearchBarTextFieldOrMailReplacement>
 {
@@ -24,26 +24,31 @@
         unsigned int delegateImplementsUnderscoredItemProviderForCopyingTokens;
         unsigned int allowsCopyingTokens:1;
         unsigned int allowsDeletingTokens:1;
+        unsigned int alwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory:1;
     } _searchBarTextFieldFlags;
     NSHashTable *_knownTokenLayoutViews;
     _UISearchBarTextFieldTokenCounter *_tokenCounter;
     UITapGestureRecognizer *_tokenTapGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
+    UIImage *_magnifyingGlassImage;
     _Bool __preventSelectionViewActivation;
+    _Bool __alwaysShowsClearButtonWhenEmpty;
     UISearchBar *_searchBar;
     UIColor *_tokenBackgroundColor;
-    long long __textInputSource;
 }
 
 + (Class)_textPasteItemClass;
 + (_Bool)_wantsFadedEdges;
++ (Class)_canvasViewClass;
 + (Class)_fieldEditorClass;
-@property(nonatomic) long long _textInputSource; // @synthesize _textInputSource=__textInputSource;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setAlwaysShowsClearButtonWhenEmpty:) _Bool _alwaysShowsClearButtonWhenEmpty; // @synthesize _alwaysShowsClearButtonWhenEmpty=__alwaysShowsClearButtonWhenEmpty;
 @property(nonatomic, setter=_setPreventSelectionViewActivation:) _Bool _preventSelectionViewActivation; // @synthesize _preventSelectionViewActivation=__preventSelectionViewActivation;
 @property(nonatomic, setter=_setSearchBar:) __weak UISearchBar *_searchBar; // @synthesize _searchBar;
-- (void).cxx_destruct;
 - (id)_customDraggableObjectsForRange:(id)arg1;
 - (id)_rangeOfCustomDraggableObjectsInRange:(id)arg1;
 - (_Bool)allowsDraggingAttachments;
+- (_Bool)_shouldSuppressSelectionHandles;
 - (void)fieldEditorDidChangeSelection:(id)arg1;
 - (void)_updateAtomViewSelection:(_Bool)arg1;
 - (void)deleteBackward;
@@ -66,10 +71,9 @@
 - (id)attributedTextInRange:(id)arg1;
 - (id)text;
 - (struct _NSRange)_textRangeForTextStorageRange:(struct _NSRange)arg1;
+- (struct _NSRange)_rangeForClearButton;
 - (struct _NSRange)_rangeForSetText;
 - (id)textInRange:(id)arg1;
-- (void)_didSetFont:(id)arg1;
-- (_Bool)drawsAsAtom;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_tokenTapGestureRecognized;
 - (unsigned long long)_characterIndexForTokenTapGestureRecognizer;
@@ -87,6 +91,12 @@
 - (void)insertToken:(id)arg1 atIndex:(long long)arg2;
 @property(copy, nonatomic) NSArray *tokens;
 - (id)_newAttributedStringWithToken:(id)arg1;
+@property(nonatomic, setter=_setAlwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory:) _Bool _alwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory;
+- (void)_didSetFont:(id)arg1;
+- (void)_updateDefaultLeftViewForFont:(id)arg1;
+- (_Bool)_scalesMagnifyingGlassForDynamicTypeWithFont:(id)arg1;
+- (_Bool)_supportsDynamicType;
+- (_Bool)_shouldOverrideEditingFont;
 - (_Bool)_textShouldFillFieldEditorHeight;
 - (long long)_blurEffectStyle;
 - (_Bool)_shouldDetermineInterfaceStyleTextColor;
@@ -104,12 +114,18 @@
 - (_Bool)canResignFirstResponder;
 - (_Bool)resignFirstResponder;
 - (void)_becomeFirstResponder;
+- (void)_animateForFirstResponderChangeWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_animateForFirstResponderChangeWithAnimations:(CDUnknownBlockType)arg1;
+- (void)layoutSubviews;
 - (void)_activateSelectionView;
 - (void)_removeEffectsBackgroundViews;
 - (void)_clearBackgroundViews;
 - (void)_updateBackgroundViewsAnimated:(_Bool)arg1;
 - (void)updateForBackdropStyle:(unsigned long long)arg1;
+- (void)_hoverGestureChanged:(id)arg1;
+- (void)__highlightedDidChangeAnimated:(_Bool)arg1;
 - (void)_applyHighlightedAnimated:(_Bool)arg1;
+- (void)_highlightedDidChangeAnimated:(_Bool)arg1;
 - (void)_setBackgroundViewsAlpha:(double)arg1;
 - (void)_setAnimatesBackgroundCornerRadius:(_Bool)arg1;
 - (id)_createEffectsBackgroundViewWithStyle:(unsigned long long)arg1 applyFilter:(id)arg2;
@@ -126,22 +142,32 @@
 - (_Bool)_becomeFirstResponderWhenPossible;
 - (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
 - (struct CGSize)_clearButtonSize;
+- (double)_clearButtonMarginX;
 - (struct CGRect)_bookmarkViewRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)_searchIconViewRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
 - (_Bool)_shouldCenterPlaceholder;
 - (struct CGRect)_adjustmentsForSearchIconViewRectForBounds:(struct CGRect)arg1;
+- (_Bool)_shouldHideMagnifyingGlassWhenEditingOrHasContent;
+- (_Bool)_isEditingOrHasContent;
+- (double)_maximumAlphaForLeadingView;
+- (void)_updateAlphaForMagnifyingGlass;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)_adjustedTextOrEditingRect:(struct CGRect)arg1 forBounds:(struct CGRect)arg2;
+- (void)_updateHelpMessageOverrideWithMessage:(id)arg1;
+- (_Bool)_displaysHelpMessageLabel;
 - (_Bool)_shouldResignOnEditingDidEndOnExit;
 - (_Bool)_hasContent;
 @property(retain, nonatomic, setter=_setSearchTextOffetValue:) NSValue *_searchTextOffsetValue;
 - (id)_offsetValueForIcon:(long long)arg1;
 - (void)_setOffsetValue:(id)arg1 forIcon:(long long)arg2;
+- (_Bool)_hasCustomClearButtonImage;
 - (id)_clearButtonImageForState:(unsigned long long)arg1;
 - (void)_setClearButtonImage:(id)arg1 forState:(unsigned long long)arg2;
+@property(nonatomic, setter=_setIgnoresDynamicType:) _Bool _ignoresDynamicType;
+- (void)_updateLeftViewForMagnifyingGlassImage;
 - (void)_setMagnifyingGlassImage:(id)arg1;
 - (_Bool)canBecomeFocused;
 - (struct CGSize)intrinsicContentSize;

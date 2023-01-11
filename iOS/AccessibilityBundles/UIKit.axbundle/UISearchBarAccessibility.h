@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)layoutSubviews;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (_Bool)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (void)_searchFieldEndEditing;
 - (void)_searchFieldBeginEditing;
 - (id)_accessibilitySubviews;

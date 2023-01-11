@@ -4,23 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UILabel;
+@class PKBackdropView, PKBarcodeStickerView, UIButton, UIImageView, UILabel, UIView;
 
 @interface PKPassPaymentCardFrontFaceView
 {
     UILabel *_balanceLabel;
+    UIView *_scrimView;
+    PKBackdropView *_backdropView;
+    PKBarcodeStickerView *_topBarcodeView;
+    PKBarcodeStickerView *_bottomBarcodeView;
+    UIButton *_fullScreenButton;
+    UIImageView *_compactBankLogoView;
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)_barcodeSize;
+- (double)_barcodePadding;
+- (void)setViewExpanded:(_Bool)arg1;
 - (void)_handleAccountChanged:(id)arg1;
 - (void)_updateBalanceWithAccount:(id)arg1;
+- (void)_showFullScreenBarcodeForButton:(id)arg1;
 - (void)layoutSubviews;
 - (void)_updateBalanceLabelFontSize;
 - (void)traitCollectionDidChange:(id)arg1;
+- (struct CGSize)contentSize;
 - (void)setShowsLiveBalance:(_Bool)arg1;
 - (void)createHeaderContentViews;
 - (_Bool)showsShare;
+- (id)_filterAuxiliaryField:(id)arg1;
+- (id)_filterSecondaryField:(id)arg1;
 - (id)templateForLayoutMode:(long long)arg1;
+- (id)templateForHeaderBucket;
 - (void)dealloc;
 
 @end

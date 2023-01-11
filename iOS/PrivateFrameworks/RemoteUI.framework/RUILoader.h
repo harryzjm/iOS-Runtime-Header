@@ -20,20 +20,21 @@
     long long _userInterfaceStyle;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(retain, nonatomic) RUIStyle *style; // @synthesize style=_style;
 @property(nonatomic) __weak id <RUIParserDelegate> parserDelegate; // @synthesize parserDelegate=_parserDelegate;
 @property(nonatomic) _Bool allowNonSecureHTTP; // @synthesize allowNonSecureHTTP=_allowNonSecureHTTP;
-- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (_Bool)receivedValidResponse:(id)arg1;
-- (void)failWithError:(id)arg1;
+- (_Bool)receivedValidResponse:(id)arg1 forRequest:(id)arg2;
+- (void)failWithError:(id)arg1 forRequest:(id)arg2;
 - (void)webViewFinishedLoading;
 - (void)didParseData;
 - (_Bool)anyWebViewLoading;
 - (void)allWebViewsFinishedLoading;
-- (void)_finishLoad;
+- (void)_finishLoadWithObjectModel:(id)arg1 actionSignal:(id)arg2 error:(id)arg3;
+- (void)_loadResources;
 - (void)parseData:(id)arg1;
 - (id)URL;
 - (void)loadXMLUIWithData:(id)arg1 baseURL:(id)arg2;

@@ -16,6 +16,7 @@
 - (id)genericPlayPodcastFailedError;
 - (id)contentNotFoundError;
 - (id)getPlaybackURLForContentItem:(id)arg1;
+- (void)playQueue:(struct _MRSystemAppPlaybackQueue *)arg1 onPlayerPath:(void *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

@@ -8,5 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
+
 @end
 

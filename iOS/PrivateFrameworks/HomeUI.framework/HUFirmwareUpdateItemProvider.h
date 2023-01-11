@@ -6,36 +6,31 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HMHome, HUInstructionsItem, HULinkedApplicationItemProvider, NSSet, NSString;
+@class HMHome, HUInstructionsItem, NSSet;
 
 @interface HUFirmwareUpdateItemProvider : HFItemProvider
 {
     _Bool _hasProvidedInstructionsItem;
-    _Bool _instructionsHidden;
     HMHome *_home;
     CDUnknownBlockType _filter;
     unsigned long long _style;
     HUInstructionsItem *_instructionsItem;
-    HULinkedApplicationItemProvider *_linkedApplicationItemProvider;
     NSSet *_linkedApplicationItems;
-    NSString *_instructionsTitle;
-    NSString *_instructionsDescription;
+    HFItemProvider *_linkedApplicationItemProvider;
 }
 
 + (_Bool)prefersNonBlockingReloads;
 + (CDUnknownBlockType)itemComparator;
-@property(nonatomic) _Bool instructionsHidden; // @synthesize instructionsHidden=_instructionsHidden;
-@property(retain, nonatomic) NSString *instructionsDescription; // @synthesize instructionsDescription=_instructionsDescription;
-@property(retain, nonatomic) NSString *instructionsTitle; // @synthesize instructionsTitle=_instructionsTitle;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasProvidedInstructionsItem; // @synthesize hasProvidedInstructionsItem=_hasProvidedInstructionsItem;
+@property(retain, nonatomic) HFItemProvider *linkedApplicationItemProvider; // @synthesize linkedApplicationItemProvider=_linkedApplicationItemProvider;
 @property(retain, nonatomic) NSSet *linkedApplicationItems; // @synthesize linkedApplicationItems=_linkedApplicationItems;
-@property(retain, nonatomic) HULinkedApplicationItemProvider *linkedApplicationItemProvider; // @synthesize linkedApplicationItemProvider=_linkedApplicationItemProvider;
 @property(retain, nonatomic) HUInstructionsItem *instructionsItem; // @synthesize instructionsItem=_instructionsItem;
 @property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
 - (id)_instructionsItemResultsWithSampleLinkedApplicationItem:(id)arg1 numberOfLinkedApplicationItems:(long long)arg2;
+- (id)_localizedDescriptionForAppName:(id)arg1 accessoriesWithFirmwareUpdates:(id)arg2 visibleAccessoryTileDisplayNames:(id)arg3;
 - (CDUnknownBlockType)_effectiveFilter;
 - (id)invalidationReasons;
 - (id)items;

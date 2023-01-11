@@ -16,16 +16,15 @@
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSBundle *localPolicyBundle; // @synthesize localPolicyBundle=_localPolicyBundle;
 @property(retain, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
-- (void).cxx_destruct;
 - (id)createDirectoryForAssetWithIdentifier:(id)arg1 directoryExists:(_Bool *)arg2 error:(id *)arg3;
 - (_Bool)deleteAssetBundlesExceptAssetWithIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)persistAssetToDisk:(id)arg1 error:(id *)arg2;
 - (_Bool)processAsset:(id)arg1 error:(id *)arg2;
-- (void)scheduleRegularPolicyUpdates;
-- (void)updatePolicyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updatePolicyWithXPCActivity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)policyStringForBundleIfValid:(id)arg1;
 - (id)latestRemotePolicyAssetBundle;
 - (id)policyAssetBundle;

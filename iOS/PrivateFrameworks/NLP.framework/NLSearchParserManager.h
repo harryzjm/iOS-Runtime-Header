@@ -16,7 +16,7 @@
 - (void)dealloc;
 - (void)enumerateSearchSuggestions:(id)arg1 options:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)tokenizeAndEnumerateAttributedParsesForQuery:(id)arg1 options:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)enumerateAttributedParsesForQuery:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateAttributedParsesForQuery:(id)arg1 options:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateDateRangeAttributedParseForOptions:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)initWithLocale:(id)arg1 context:(id)arg2 options:(id)arg3;
 - (id)initWithOptions:(id)arg1;

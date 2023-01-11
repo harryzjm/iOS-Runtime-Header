@@ -12,12 +12,12 @@
 
 @interface SBEmptyButtonView : UIView <TPNumberPadButtonProtocol>
 {
-    unsigned int _char;
+    long long _char;
 }
 
-@property unsigned int character; // @synthesize character=_char;
+@property long long character; // @synthesize character=_char;
 - (struct CGSize)intrinsicContentSize;
-- (id)initForCharacter:(unsigned int)arg1;
+- (id)initForCharacter:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

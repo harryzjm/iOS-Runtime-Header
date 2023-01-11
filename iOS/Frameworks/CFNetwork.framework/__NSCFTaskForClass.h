@@ -23,18 +23,7 @@
     id <__NSURLSessionTaskGroupForConfiguration> _group;
 }
 
-@property(readonly, retain) id <__NSURLSessionTaskGroupForConfiguration> group; // @synthesize group=_group;
-@property(copy) CDUnknownBlockType downloadCompletion; // @synthesize downloadCompletion;
-@property(retain) NSData *resumeData; // @synthesize resumeData;
-@property(retain) NSString *downloadFilePath; // @synthesize downloadFilePath;
-@property(copy) CDUnknownBlockType completion; // @synthesize completion;
-@property(retain) NSData *bodyData; // @synthesize bodyData;
-@property(retain) NSURL *uploadFile; // @synthesize uploadFile;
-@property(retain) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier;
-@property(retain) NSURLRequest *request; // @synthesize request;
-@property(retain) Class cl; // @synthesize cl;
 - (void)dealloc;
-- (id)initWithGroup:(id)arg1;
 
 @end
 

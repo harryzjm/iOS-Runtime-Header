@@ -10,11 +10,12 @@
 
 @interface PXActivityCoordinator : NSObject
 {
-    NSMutableArray *_items;
+    NSMutableArray *_records;
 }
 
 + (id)coordinatorForActivity:(id)arg1;
 - (void).cxx_destruct;
+- (void)_update;
 - (void)unregisterItem:(id)arg1;
 - (void)registerItem:(id)arg1;
 - (id)init;

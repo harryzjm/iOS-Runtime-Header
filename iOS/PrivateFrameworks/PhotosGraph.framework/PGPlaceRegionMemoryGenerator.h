@@ -16,7 +16,6 @@
 @property(nonatomic) NSString *region; // @synthesize region=_region;
 - (_Bool)canFallbackToDejunkAndDedupeForShowMore;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_potentialMemoriesWithRegionNode:(id)arg1 inYear:(long long)arg2 result:(CDUnknownBlockType)arg3;

@@ -13,8 +13,5 @@
 - (void)siriViewController:(id <SiriUIViewController>)arg1 openURL:(NSURL *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)siriViewController:(id <SiriUIViewController>)arg1 performAceCommands:(NSArray *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)siriViewController:(id <SiriUIViewController>)arg1 performAceCommands:(NSArray *)arg2;
-
-@optional
-- (_Bool)siriViewController:(id <SiriUIViewController>)arg1 openURL:(NSURL *)arg2;
 @end
 

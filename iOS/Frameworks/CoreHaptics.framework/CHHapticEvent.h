@@ -17,16 +17,16 @@
     NSArray *_eventParams;
     double _time;
     double _duration;
-    double _fullDuration;
 }
 
-@property(readonly) double fullDuration; // @synthesize fullDuration=_fullDuration;
++ (_Bool)parameterValuesFromLegacyEventType:(unsigned long long)arg1 sharpness:(float *)arg2 fullness:(float *)arg3 error:(id *)arg4;
+- (void).cxx_destruct;
 @property(readonly) NSString *type; // @synthesize type=_type;
 @property double duration; // @synthesize duration=_duration;
 @property double relativeTime; // @synthesize relativeTime=_time;
 @property(readonly) NSArray *eventParameters; // @synthesize eventParameters=_eventParams;
-- (void).cxx_destruct;
-- (_Bool)resolveExternalResources:(id)arg1 error:(id *)arg2;
+- (id)resolveExternalResources:(id)arg1 error:(id *)arg2;
+@property(readonly) double fullDuration;
 @property(readonly) NSArray *parameterCurves;
 @property(readonly) NSArray *parameters;
 @property(readonly) NSArray *events;
@@ -37,7 +37,7 @@
 - (id)initWithEventType:(id)arg1 parameters:(id)arg2 relativeTime:(double)arg3;
 - (id)init;
 @property(readonly) unsigned long long audioResID;
-- (id)initWithAudioResourceIndex:(unsigned long long)arg1 parameters:(id)arg2 time:(double)arg3;
+- (id)initWithAudioResourceIndex:(unsigned long long)arg1 parameters:(id)arg2 time:(double)arg3 duration:(double)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

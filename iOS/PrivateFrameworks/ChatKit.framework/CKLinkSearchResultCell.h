@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class LPLinkMetadata, LPLinkView, NSString;
 
-@interface CKLinkSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKLinkSearchResultCell <CKSearchResultCell>
 {
     NSString *_identifier;
     LPLinkView *_linkView;
@@ -19,11 +17,11 @@
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property(retain, nonatomic) LPLinkView *linkView; // @synthesize linkView=_linkView;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
-- (void).cxx_destruct;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (void)didMoveToWindow;
@@ -34,6 +32,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

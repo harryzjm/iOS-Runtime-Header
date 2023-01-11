@@ -19,5 +19,6 @@
 - (SEL)_responderSelectorForPhase:(long long)arg1;
 - (NSArray *)_forwardingRecord;
 - (_Bool)_wantsForwardingFromResponder:(UIResponder *)arg1 toNextResponder:(UIResponder *)arg2 withEvent:(UIEvent *)arg3;
+- (long long)_responderForwardableType;
 @end
 

@@ -12,6 +12,7 @@
 {
 }
 
+- (_Bool)canReply;
 @property(readonly, nonatomic) IMHandle *sender;
 @property(readonly, nonatomic) NSDate *time;
 @property(readonly, nonatomic) _Bool failed;

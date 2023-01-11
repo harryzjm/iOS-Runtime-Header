@@ -7,7 +7,7 @@
 #import <EventKitUI/EKCellShortener-Protocol.h>
 #import <EventKitUI/EKTimeZoneViewControllerDelegate-Protocol.h>
 
-@class NSDate, NSDateComponents, NSString, NSTimeZone, PreferencesTwoPartValueCell, UIDatePicker, UITableViewCell;
+@class NSArray, NSDate, NSDateComponents, NSString, NSTimeZone, PreferencesTwoPartValueCell, UIDatePicker, UITableViewCell;
 @protocol EKEventDateEditItemDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSTimeZone *_startTimeZone;
     NSTimeZone *_endTimeZone;
     _Bool _showTimeZones;
+    _Bool _canPerformTargettedReload;
     PreferencesTwoPartValueCell *_startDateCell;
     PreferencesTwoPartValueCell *_endDateCell;
     UITableViewCell *_allDayCell;
@@ -33,6 +34,8 @@ __attribute__((visibility("hidden")))
     _Bool _changingDate;
     int _shorteningStatus;
     _Bool _pushingTZController;
+    NSArray *_startPickerConstraints;
+    NSArray *_endPickerConstraints;
     _Bool _showsAllDay;
     _Bool _proposedTime;
     NSDate *_pendingProposedTime;
@@ -40,11 +43,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_timeZoneLocalizedString;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <EKEventDateEditItemDelegate> eventDateEditItemDelegate; // @synthesize eventDateEditItemDelegate=_eventDateEditItemDelegate;
 @property(retain, nonatomic) NSDate *pendingProposedTime; // @synthesize pendingProposedTime=_pendingProposedTime;
 @property(nonatomic) _Bool proposedTime; // @synthesize proposedTime=_proposedTime;
 @property(nonatomic) _Bool showsAllDay; // @synthesize showsAllDay=_showsAllDay;
-- (void).cxx_destruct;
 - (_Bool)_shouldShowTimeZone;
 - (id)_dateComponentsInSystemCalendarFromDate:(id)arg1;
 - (id)_dateFromComponents:(id)arg1 timeZone:(id)arg2;
@@ -80,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)shortenCell:(id)arg1;
 - (void)_datePickerDoubleTapped:(id)arg1;
+- (void)setupPickerConstraintsForCell:(id)arg1 datePicker:(id)arg2;
 - (id)_endDatePickerCell;
 - (id)_startDatePickerCell;
 - (id)_newDatePicker;
@@ -95,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)forceRefreshLocationItemOnSave;
 - (_Bool)forceRefreshInviteesItemOnSave;
 - (_Bool)requiresReconfigurationOnSave;
+- (_Bool)prefersTargettedTableReloadOnSave;
 - (_Bool)configureForCalendarConstraints:(id)arg1;
 - (_Bool)canBeConfiguredForCalendarConstraints:(id)arg1;
 - (void)_adjustStartAndEndComponentsForEventIfNeeded:(id)arg1;

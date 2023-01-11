@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView, UIView, UIVisualEffectView, _UIBarBackgroundLayout;
+@class NSString, UIImageView, UIView, UIVisualEffectView, _UIBarBackgroundLayout, _UIBarBackgroundShadowView;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarBackground
 {
     UIVisualEffectView *_effectView1;
     UIImageView *_colorAndImageView1;
-    UIImageView *_shadowView1;
+    _UIBarBackgroundShadowView *_shadowView1;
     UIVisualEffectView *_effectView2;
     UIImageView *_colorAndImageView2;
-    UIImageView *_shadowView2;
+    _UIBarBackgroundShadowView *_shadowView2;
     UIView *_topInsetView;
     double _bg1LastLayoutHeight;
     double _bg2LastLayoutHeight;
@@ -33,11 +33,11 @@ __attribute__((visibility("hidden")))
     UIView *_customBackgroundView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *customBackgroundView; // @synthesize customBackgroundView=_customBackgroundView;
 @property(retain, nonatomic) _UIBarBackgroundLayout *layout; // @synthesize layout=_layout;
 @property(nonatomic) _Bool topAligned; // @synthesize topAligned=_topAligned;
 @property(copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
-- (void).cxx_destruct;
 - (void)set_shadowView:(id)arg1;
 - (id)_shadowView;
 - (void)set_backgroundEffectView:(id)arg1;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)transitionBackgroundViews;
 - (void)cleanupBackgroundViews;
 - (void)updateBackground;
+- (void)_setupShadowView:(id)arg1 effect:(id)arg2 image:(id)arg3 shadowColor:(id)arg4 shadowTint:(id)arg5 alpha:(double)arg6;
 - (void)prepareBackgroundViews;
 - (struct CGRect)frameForYOrigin:(double)arg1 height:(double)arg2;
 - (void)_orderSubviews;

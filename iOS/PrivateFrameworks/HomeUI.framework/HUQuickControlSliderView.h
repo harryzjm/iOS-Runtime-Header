@@ -29,6 +29,7 @@
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property(nonatomic) double secondaryNormalizedValue; // @synthesize secondaryNormalizedValue=_secondaryNormalizedValue;
 @property(nonatomic) double primaryNormalizedValue; // @synthesize primaryNormalizedValue=_primaryNormalizedValue;
@@ -43,15 +44,14 @@
 @property(nonatomic) double sliderValue; // @synthesize sliderValue=_sliderValue;
 @property(nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property(copy, nonatomic) HUQuickControlSliderViewProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (_Bool)_createDecorationIconViewIfNecessary;
 - (void)_updateDecorationIconDescriptorAnimated:(_Bool)arg1;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 @property(retain, nonatomic) id secondaryValue;
 @property(retain, nonatomic) id value;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
-- (void)_actuateTapticFeedbackIfAvailable;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_actuateTapticFeedback;
+- (void)_prepareForTapticFeedback;
 - (void)_updateOffState;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;

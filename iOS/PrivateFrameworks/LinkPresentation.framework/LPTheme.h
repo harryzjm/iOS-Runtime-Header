@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarStyle, LPImageViewStyle, LPPointUnit, LPTapToLoadViewStyle, LPTextViewStyle, LPVideoViewStyle, UIColor;
+@class LPCaptionBarStyle, LPImageViewStyle, LPPointUnit, LPTapToLoadViewStyle, LPTextViewStyle, LPVideoViewStyle, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface LPTheme : NSObject
@@ -26,11 +26,15 @@ __attribute__((visibility("hidden")))
     LPCaptionBarStyle *_mediaTopCaptionBar;
     LPCaptionBarStyle *_mediaBottomCaptionBar;
     LPTapToLoadViewStyle *_tapToLoad;
+    UIFont *_domainNameIndicatorFont;
+    UIFont *_domainNameIndicatorIconFont;
     LPPointUnit *_maximumWidth;
     LPPointUnit *_maximumIntrinsicHeight;
     double _widthFractionForTallMedia;
 }
 
++ (id)iconPlatterCornerRadius;
++ (id)iconPlatterPaddingForReason:(long long)arg1;
 + (void)addClient:(id)arg1;
 + (id)themeWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4;
 + (id)secondaryLabelColor;
@@ -38,9 +42,12 @@ __attribute__((visibility("hidden")))
 + (double)largestIconSizeInPoints;
 + (id)regularTheme;
 + (void)invalidateThemeCache;
+- (void).cxx_destruct;
 @property(nonatomic) double widthFractionForTallMedia; // @synthesize widthFractionForTallMedia=_widthFractionForTallMedia;
 @property(retain, nonatomic) LPPointUnit *maximumIntrinsicHeight; // @synthesize maximumIntrinsicHeight=_maximumIntrinsicHeight;
 @property(retain, nonatomic) LPPointUnit *maximumWidth; // @synthesize maximumWidth=_maximumWidth;
+@property(readonly, nonatomic) UIFont *domainNameIndicatorIconFont; // @synthesize domainNameIndicatorIconFont=_domainNameIndicatorIconFont;
+@property(readonly, nonatomic) UIFont *domainNameIndicatorFont; // @synthesize domainNameIndicatorFont=_domainNameIndicatorFont;
 @property(readonly, nonatomic) LPTapToLoadViewStyle *tapToLoad; // @synthesize tapToLoad=_tapToLoad;
 @property(readonly, nonatomic) LPCaptionBarStyle *mediaBottomCaptionBar; // @synthesize mediaBottomCaptionBar=_mediaBottomCaptionBar;
 @property(readonly, nonatomic) LPCaptionBarStyle *mediaTopCaptionBar; // @synthesize mediaTopCaptionBar=_mediaTopCaptionBar;
@@ -52,7 +59,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) LPCaptionBarStyle *captionBar; // @synthesize captionBar=_captionBar;
 @property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-- (void).cxx_destruct;
 - (id)CSSTextForProperty:(id)arg1 withValue:(id)arg2 allowsAlternateProperties:(_Bool)arg3;
 - (id)CSSTextForThemeProperty:(id)arg1 allowsAlternateProperties:(_Bool)arg2;
 - (id)valueForThemeProperty:(id)arg1;

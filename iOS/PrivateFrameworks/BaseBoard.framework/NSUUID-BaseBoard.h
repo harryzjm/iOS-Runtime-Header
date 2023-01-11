@@ -14,7 +14,6 @@
 + (_Bool)supportsBSXPCSecureCoding;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)bs_XPCObject;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

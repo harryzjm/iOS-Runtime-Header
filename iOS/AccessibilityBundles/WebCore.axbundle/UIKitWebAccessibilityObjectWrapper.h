@@ -4,7 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface UIKitWebAccessibilityObjectWrapper
+#import <WebCore/UIFocusItem-Protocol.h>
+#import <WebCore/UIFocusItemContainer-Protocol.h>
+#import <WebCore/_UIFocusEnvironmentPrivate-Protocol.h>
+#import <WebCore/_UIFocusRegionContainer-Protocol.h>
+
+@class NSArray, NSString, UIView;
+@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
+
+@interface UIKitWebAccessibilityObjectWrapper <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
 {
 }
 
@@ -13,7 +21,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityNextElementsWithHeading:(unsigned long long)arg1 queryString:(id)arg2;
+- (_Bool)_accessibilityHandlesArrowKeys;
+- (_Bool)_accessibilitySetNativeFocus;
+- (_Bool)_accessibilityHasNativeFocus;
+- (id)_accessibilityNextElementsWithHeading:(unsigned long long)arg1 queryString:(id)arg2 startingFrom:(id)arg3;
 - (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
 - (unsigned long long)_axUpdatesFrequentlyTrait;
 - (unsigned long long)_axTextAreaTrait;
@@ -48,6 +59,7 @@
 - (_Bool)_accessibilityIsScrollable;
 - (struct CGPoint)accessibilityActivationPoint;
 - (struct _NSRange)_accessibilitySelectedNSRangeForObject;
+- (struct _NSRange)_rangeForWebTextMarkers:(id)arg1;
 - (struct _NSRange)_accessibilityRangeForTextMarkers:(id)arg1;
 - (struct _NSRange)_accessibilityRangeForTextMarker:(id)arg1;
 - (id)_accessibilityApplication;
@@ -64,9 +76,8 @@
 - (void)postChildrenChangedNotification;
 - (void)postInvalidStatusChangedNotification;
 - (void)postLoadCompleteNotification;
-- (void)_repostLoadCompleteNotification;
 - (void)postSelectedTextChangeNotification;
-- (void)_repostWebSelectionChange;
+- (void)_enqueReorderingNotification:(id)arg1;
 - (void)_repostWebNotificaton:(id)arg1;
 - (void)postLiveRegionCreatedNotification;
 - (void)postLiveRegionChangeNotification;
@@ -81,8 +92,8 @@
 - (_Bool)_accessibilityHasTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
-- (struct _NSRange)_accessibilitySelectedTextRangeForHandwritingWithValue:(id)arg1;
 - (void)_accessibilityInsertText:(id)arg1;
+- (struct _NSRange)_accessibilitySelectedTextRangeForHandwritingWithValue:(id)arg1;
 - (id)_accessibilityValueForHandwriting;
 - (void)_performLiveRegionUpdate;
 - (id)_accessibilityWebAreaURL;
@@ -90,11 +101,14 @@
 - (void)_accessibilityIncreaseSelection:(id)arg1;
 - (void)_accessibilityDecreaseSelection:(id)arg1;
 - (void)_accessibilityModifySelection:(id)arg1 increase:(_Bool)arg2;
+- (unsigned long long)_accessibilityTraitsHelper;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)_accessibilityShouldSpeakMathEquationTrait;
 - (id)accessibilityCustomRotors;
 - (_Bool)_accessibilityIsTopMostWebElement;
 - (id)_accessibilityCustomRotor:(long long)arg1;
+- (_Bool)_accessibilityReplaceTextInRange:(struct _NSRange)arg1 withString:(id)arg2;
+- (id)_misspelledWordRotor;
 - (id)_axWebKitSearchKeyForCustomRotorType:(long long)arg1;
 - (id)accessibilityCustomActions;
 - (void)accessibilityDecrement;
@@ -108,7 +122,7 @@
 - (_Bool)_accessibilityHasOtherAccessibleChildElements:(id)arg1;
 - (id)_accessibilityParentLinkContainer;
 - (id)ariaLandmarkRoleDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)accessibilityValue;
 - (id)accessibilityHint;
 - (id)_accessibilityHeaderElementsForRow:(unsigned long long)arg1;
@@ -167,13 +181,17 @@
 - (_Bool)accessibilityActivate;
 - (id)accessibilityPath;
 - (_Bool)_accessibilitySupportsActivateAction;
+- (void)accessibilityElementDidBecomeFocused;
 - (float)_accessibilityActivationDelay;
 - (_Bool)_isCheckBox;
 - (id)_accessibilityMarkerForPoint:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
+- (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (id)_accessibilityLineStartMarker:(id)arg1;
 - (id)_accessibilityLineEndMarker:(id)arg1;
 - (id)_accessibilityLinePosition:(_Bool)arg1 withMarker:(id)arg2;
+- (long long)_accessibilityLineStartPosition;
+- (long long)_accessibilityLineEndPosition;
 - (id)_accessibilityNextMarker:(id)arg1;
 - (id)_accessibilityPreviousMarker:(id)arg1;
 - (id)_accessibilityMarkerPosition:(_Bool)arg1 withMarker:(id)arg2;
@@ -182,11 +200,12 @@
 - (id)accessibilityArrayOfTextForTextMarkers:(id)arg1;
 - (id)accessibilityStringForTextMarkers:(id)arg1;
 - (struct CGRect)accessibilityBoundsForTextMarkers:(id)arg1;
-- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 string:(id)arg2;
+- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 string:(id)arg2 wantsSentences:(_Bool)arg3;
 - (id)_accessibilityObjectForTextMarker:(id)arg1;
 - (id)_accessibilityConvertTextMarkersToDataArray:(id)arg1;
 - (id)_accessibilityConvertDataArrayToTextMarkerArray:(id)arg1;
 - (_Bool)_accessibilityIsDataEmpty:(id)arg1;
+- (_Bool)_accessibilityIsGroupedParent;
 - (id)_accessibilityContainerTypes;
 - (id)_axAncestorTypes;
 - (_Bool)isAccessibilityElement;
@@ -210,6 +229,7 @@
 - (id)_accessibilityCurrentStatus;
 - (_Bool)_axWebKitIsAriaExpanded;
 - (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityResolvedEditingStyles;
 - (_Bool)_axWebKitSupportsARIAExpanded;
 - (unsigned int)_accessibilityContextId;
 - (_Bool)_accessibilityRequiresContextIdConversion;
@@ -219,6 +239,37 @@
 - (_Bool)_prepareAccessibilityCall;
 - (void)_axSetWebAreaURL:(id)arg1;
 - (id)_axWebAreaURL;
+- (_Bool)conformsToProtocol:(id)arg1;
+@property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
+- (id)focusItemsInRect:(struct CGRect)arg1;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (id)_preferredFocusRegionCoordinateSpace;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+@property(readonly, nonatomic) _Bool canBecomeFocused;
+- (void)_updateFocusLayerFrame;
+- (void)_destroyFocusLayer;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (_Bool)shouldUpdateFocusInContext:(id)arg1;
+- (void)updateFocusIfNeeded;
+- (void)setNeedsFocusUpdate;
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
+- (id)_focusGroupDescriptor;
+@property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
+@property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
+@property(nonatomic) _Bool areChildrenFocused;
+- (void)_axSetAreChildrenFocused:(_Bool)arg1;
+- (_Bool)_axAreChildrenFocused;
+@property(readonly, nonatomic) struct CGRect frame; // @dynamic frame;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
+@property(readonly, nonatomic) __weak UIView *preferredFocusedView;
+@property(readonly) Class superclass;
 
 @end
 

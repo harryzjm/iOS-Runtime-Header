@@ -17,13 +17,13 @@
 + (id)attendeeWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3;
 - (void)setFlags:(unsigned int)arg1;
 - (unsigned int)flags;
-@property(copy, nonatomic) NSDate *lastModified; // @dynamic lastModified;
-- (id)owner;
-- (void)setOwner:(id)arg1;
-@property(nonatomic) int pendingStatus; // @dynamic pendingStatus;
+- (id)lastModifiedParticipationStatus;
+- (void)setLastModifiedParticipationStatus:(id)arg1;
+- (void)setPendingStatusRaw:(int)arg1;
+- (int)pendingStatusRaw;
 @property(nonatomic) long long participantType; // @dynamic participantType;
 @property(nonatomic) long long participantRole; // @dynamic participantRole;
-@property(nonatomic) int status; // @dynamic status;
+@property(nonatomic) int statusRaw; // @dynamic statusRaw;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)entityType;
@@ -33,6 +33,8 @@
 
 // Remaining properties
 @property(nonatomic) _Bool commentChanged; // @dynamic commentChanged;
+@property(copy, nonatomic) NSDate *lastModified; // @dynamic lastModified;
+@property(nonatomic) int pendingStatus; // @dynamic pendingStatus;
 @property(nonatomic) _Bool proposedStartDateChanged; // @dynamic proposedStartDateChanged;
 @property(nonatomic) _Bool statusChanged; // @dynamic statusChanged;
 

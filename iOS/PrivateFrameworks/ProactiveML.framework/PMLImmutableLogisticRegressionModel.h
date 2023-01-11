@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <ProactiveML/PMLClassifierModelProtocol-Protocol.h>
+#import <ProactiveML/PMLMultiLabelClassifierProtocol-Protocol.h>
 #import <ProactiveML/PMLPlistAndChunksSerializableProtocol-Protocol.h>
-#import <ProactiveML/PMLRegressionModelProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PMLImmutableLogisticRegressionModel : NSObject <PMLPlistAndChunksSerializableProtocol, PMLRegressionModelProtocol, PMLClassifierModelProtocol>
+@interface PMLImmutableLogisticRegressionModel : NSObject <PMLPlistAndChunksSerializableProtocol, PMLMultiLabelClassifierProtocol>
 {
     id _backingObject;
     const float *_weights;
@@ -21,8 +20,8 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)classify:(id)arg1;
-- (float)predict:(id)arg1;
+- (id)predict:(id)arg1;
+- (unsigned long long)outputDimension;
 - (_Bool)intercept;
 - (id)toChunk;
 - (id)initWithFloatsNoCopy:(const float *)arg1 count:(int)arg2 intercept:(_Bool)arg3;

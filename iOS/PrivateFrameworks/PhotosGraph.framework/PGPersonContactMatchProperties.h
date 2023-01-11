@@ -25,7 +25,7 @@
     double _socialGroupsOverlapScore;
     unsigned long long _numberOfMatchedRelationships;
     NSMutableSet *_matchedRelationships;
-    unsigned long long _genderMatch;
+    unsigned long long _sexMatch;
     double _matchScore;
     double _birthdayScore;
     double _potentialBirthdayScore;
@@ -38,6 +38,7 @@
     double _scoreAfterMessagePenalty;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double scoreAfterMessagePenalty; // @synthesize scoreAfterMessagePenalty=_scoreAfterMessagePenalty;
 @property(nonatomic) double relationshipScore; // @synthesize relationshipScore=_relationshipScore;
 @property(nonatomic) double sharedCMMScore; // @synthesize sharedCMMScore=_sharedCMMScore;
@@ -47,7 +48,7 @@
 @property(nonatomic) double addressScore; // @synthesize addressScore=_addressScore;
 @property(nonatomic) double potentialBirthdayScore; // @synthesize potentialBirthdayScore=_potentialBirthdayScore;
 @property(nonatomic) double birthdayScore; // @synthesize birthdayScore=_birthdayScore;
-@property(nonatomic) unsigned long long genderMatch; // @synthesize genderMatch=_genderMatch;
+@property(nonatomic) unsigned long long sexMatch; // @synthesize sexMatch=_sexMatch;
 @property(retain, nonatomic) NSMutableSet *matchedRelationships; // @synthesize matchedRelationships=_matchedRelationships;
 @property(nonatomic) unsigned long long numberOfMatchedRelationships; // @synthesize numberOfMatchedRelationships=_numberOfMatchedRelationships;
 @property(nonatomic) double socialGroupsOverlapScore; // @synthesize socialGroupsOverlapScore=_socialGroupsOverlapScore;
@@ -63,7 +64,6 @@
 @property(nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate; // @synthesize numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate=_numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate;
 @property(nonatomic) unsigned long long numberOfWeakBirthdayMomentsAroundBirthdayDate; // @synthesize numberOfWeakBirthdayMomentsAroundBirthdayDate=_numberOfWeakBirthdayMomentsAroundBirthdayDate;
 @property(readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
-- (void).cxx_destruct;
 - (void)setPersonContactMatchScore:(double)arg1;
 @property(readonly, nonatomic) double matchScore; // @synthesize matchScore=_matchScore;
 - (id)edgeProperties;
@@ -71,10 +71,9 @@
 - (id)_messageGroupsDescription;
 - (id)_socialGroupsDescription;
 - (id)description;
-- (id)_stringForGenderMatch;
 - (id)_stringsForRelationshipMatch;
 - (void)registerMessageFrequencyPenaltyNewScore:(double)arg1;
-- (void)registerGenderMatch:(unsigned long long)arg1;
+- (void)registerBiologicalSexMatch:(unsigned long long)arg1;
 - (void)registerMatchedRelationship:(unsigned long long)arg1 withPeopleCount:(unsigned long long)arg2;
 - (void)registerCMMWithPeopleCount:(unsigned long long)arg1;
 - (void)registerSocialGroupAndMessageGroupMatchScore:(double)arg1 debugSocialGroupsDescription:(id)arg2 debugMessageGroupsDescription:(id)arg3;

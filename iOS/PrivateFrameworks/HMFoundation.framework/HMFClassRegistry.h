@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFUnfairLock, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface HMFClassRegistry
 {
-    HMFUnfairLock *_lock;
+    struct hmf_unfair_data_lock_s _lock;
     NSMutableDictionary *_classes;
     Class _defaultClass;
 }
 
-@property(readonly) Class defaultClass; // @synthesize defaultClass=_defaultClass;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) Class defaultClass; // @synthesize defaultClass=_defaultClass;
 - (void)setClass:(Class)arg1 forKey:(id)arg2;
 - (Class)classForKey:(id)arg1;
 - (id)initWithDefaultClass:(Class)arg1;

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarForegroundView <UIAccessibilityHUDGestureDelegate>
 {
     _Bool _usesVerticalLayout;
-    _Bool _itemIsEnabled[48];
+    _Bool _itemIsEnabled[49];
     UIStatusBarLayoutManager *_layoutManagers[3];
     int _ignoreDataLevel;
     NSMutableArray *_actionAnimationStack;
@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
     UIStatusBarForegroundStyleAttributes *_foregroundStyle;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIStatusBarForegroundStyleAttributes *foregroundStyle; // @synthesize foregroundStyle=_foregroundStyle;
 @property(nonatomic) long long idiom; // @synthesize idiom=_idiom;
-- (void).cxx_destruct;
 - (_Bool)rectIntersectsBatteryItem:(struct CGRect)arg1;
 - (_Bool)rectIntersectsTimeItem:(struct CGRect)arg1;
 - (struct CGRect)frameForAllItemsInRegion:(int)arg1;

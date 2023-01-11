@@ -9,7 +9,7 @@
 #import <MaterialKit/MTVisualStylingProviding-Protocol.h>
 #import <MaterialKit/NSCopying-Protocol.h>
 
-@class NSBundle, NSDictionary, NSHashTable, NSMutableDictionary, NSString, UIViewFloatAnimatableProperty;
+@class MTMaterialLayer, NSBundle, NSDictionary, NSHashTable, NSMutableDictionary, NSString, UIViewFloatAnimatableProperty;
 
 @interface MTMaterialView : UIView <NSCopying, MTVisualStylingProviding>
 {
@@ -31,18 +31,22 @@
 + (id)_recipeNameForTraitCollection:(id)arg1 withRecipeNamesByTraitCollection:(id)arg2;
 + (Class)layerClass;
 + (id)newDefaultHighlightAnimator;
++ (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 compatibleWithTraitCollection:(id)arg4;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
 + (void)initialize;
-+ (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
++ (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 compatibleWithTraitCollection:(id)arg2 bundle:(id)arg3 configuration:(long long)arg4 initialWeighting:(double)arg5 scaleAdjustment:(CDUnknownBlockType)arg6;
 + (id)materialViewWithRecipeNamed:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
++ (id)staticMaterialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
++ (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_backdropFloatAnimatableProperty) UIViewFloatAnimatableProperty *backdropFloatAnimatableProperty; // @synthesize backdropFloatAnimatableProperty=_backdropFloatAnimatableProperty;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) long long configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) long long recipe; // @synthesize recipe=_recipe;
 @property(copy, nonatomic) NSString *groupNameBase; // @synthesize groupNameBase=_groupNameBase;
-- (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)_recipeNameForCurrentTraitCollection;
 - (void)_reduceTransparencyStatusDidChange;
@@ -50,10 +54,9 @@
 - (void)_updateGroupNameIfNecessary;
 - (id)_groupNameWithBase:(id)arg1;
 - (void)_setRecipeName:(id)arg1 withWeighting:(double)arg2;
-- (id)_materialLayer;
 - (id)visualStylingProviderForCategory:(long long)arg1;
-- (_Bool)addCompletionForCurrentAnimation:(CDUnknownBlockType)arg1 forMaterialLayer:(id)arg2;
-- (_Bool)isManagingCustomOpacityTransitionForMaterialLayer:(id)arg1;
+- (_Bool)addCompletionForCurrentAnimation:(CDUnknownBlockType)arg1 forMaterialLayer:(id)arg2 reason:(out id *)arg3;
+- (_Bool)isManagingInterpolationForMaterialLayer:(id)arg1;
 - (_Bool)isManagingOpacityForMaterialLayer:(id)arg1;
 - (_Bool)managesWeightingForMaterialLayer:(id)arg1;
 - (void)didMoveToWindow;
@@ -64,11 +67,12 @@
 - (void)_invalidateAlphaTransformer;
 - (void)_setupAlphaTransformer;
 - (void)prune;
+@property(copy, nonatomic) NSString *debugIdentifier;
 @property(nonatomic) double weighting;
 @property(copy, nonatomic) NSString *groupName;
 - (void)dealloc;
-- (id)_initWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
-- (id)_initWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
+- (id)_initWithRecipeNamesByTraitCollection:(id)arg1 compatibleWithTraitCollection:(id)arg2 bundle:(id)arg3 configuration:(long long)arg4 initialWeighting:(double)arg5 scaleAdjustment:(CDUnknownBlockType)arg6;
+- (id)_initWithRecipe:(long long)arg1 configuration:(long long)arg2 userInterfaceStyle:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 - (id)_initWithCoreMaterialRecipe:(id)arg1 fromBundle:(id)arg2 coreMaterialConfiguration:(id)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 - (id)init;
 @property(nonatomic, getter=isContentReplacedWithSnapshot) _Bool contentReplacedWithSnapshot;
@@ -79,8 +83,7 @@
 @property(nonatomic, getter=isRecipeDynamic) _Bool recipeDynamic;
 @property(nonatomic) _Bool useBuiltInAlphaTransformerAndBackdropScaleAdjustmentIfNecessary;
 @property(nonatomic) _Bool useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
-@property(nonatomic) _Bool forceCrossfadeIfNecessary;
-@property(nonatomic) _Bool shouldCrossfadeIfNecessary;
+@property(nonatomic) _Bool shouldCrossfade;
 @property(copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment;
 @property(nonatomic, getter=isCaptureOnly) _Bool captureOnly;
 @property(nonatomic, getter=isZoomEnabled) _Bool zoomEnabled;
@@ -88,10 +91,13 @@
 - (void)_removeObserver:(id)arg1;
 - (void)_addObserver:(id)arg1;
 @property(copy, nonatomic) NSString *recipeName;
+- (id)_coreMaterialVisualStylingProviderForCategory:(id)arg1;
+@property(readonly, nonatomic, getter=_materialLayer) MTMaterialLayer *materialLayer;
+@property(nonatomic) _Bool forceCrossfadeIfNecessary;
+@property(nonatomic) _Bool shouldCrossfadeIfNecessary;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

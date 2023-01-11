@@ -6,23 +6,30 @@
 
 #import <AppleMediaServices/AMSAuthenticateTask.h>
 
-@class UIViewController;
+#import <AppleMediaServicesUI/AMSAuthenticateTaskDelegate-Protocol.h>
+
+@class NSString, UIViewController;
 @protocol AMSBagProtocol;
 
-@interface AMSUIAuthenticateTask : AMSAuthenticateTask
+@interface AMSUIAuthenticateTask : AMSAuthenticateTask <AMSAuthenticateTaskDelegate>
 {
-    id <AMSBagProtocol> _bag;
     UIViewController *_presentingViewController;
 }
 
-@property(readonly, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (void).cxx_destruct;
-- (void)_handleDialogForFailedAuthenticationWithError:(id)arg1;
-- (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+- (id)_createAuthKitUpdateTaskForAccount:(id)arg1;
+- (void)authenticateTask:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)performAuthentication;
-- (id)initWithRequest:(id)arg1 presentingViewController:(struct UIViewController *)arg2;
-- (id)initWithAccount:(id)arg1 presentingViewController:(struct UIViewController *)arg2 options:(id)arg3;
+- (id)initWithRequest:(id)arg1 presentingViewController:(id)arg2;
+- (id)initWithAccount:(id)arg1 presentingViewController:(id)arg2 options:(id)arg3;
+
+// Remaining properties
+@property(retain, nonatomic) id <AMSBagProtocol> bag;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

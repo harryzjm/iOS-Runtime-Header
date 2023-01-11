@@ -9,6 +9,9 @@
 @class NSString, UIColor;
 
 @protocol MKInfoCardTheme <NSObject>
+@property(readonly, nonatomic) UIColor *ratingBarBackgroundColor;
+@property(readonly, nonatomic) UIColor *ratingBarEndColor;
+@property(readonly, nonatomic) UIColor *ratingBarStartColor;
 @property(readonly, nonatomic) UIColor *buttonHighlightedColor;
 @property(readonly, nonatomic) UIColor *buttonNormalColor;
 @property(readonly, nonatomic) UIColor *normalBackgroundColor;
@@ -21,7 +24,6 @@
 @property(readonly, nonatomic) UIColor *normalActionRowBackgroundColor;
 @property(readonly, nonatomic) UIColor *disabledActionRowBackgroundColor;
 @property(readonly, nonatomic) UIColor *disabledActionRowTextColor;
-@property(readonly, nonatomic) UIColor *highlightedActionRowTextColor;
 @property(readonly, nonatomic) UIColor *selectedRowColor;
 @property(readonly, nonatomic) UIColor *rowColor;
 @property(readonly, nonatomic) UIColor *separatorLineColor;

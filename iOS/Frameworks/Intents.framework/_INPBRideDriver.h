@@ -15,7 +15,6 @@
 @interface _INPBRideDriver : PBCodable <_INPBRideDriver, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBImageValue *_image;
     _INPBContactValue *_person;
     NSString *_phoneNumber;
@@ -23,12 +22,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *rating; // @synthesize rating=_rating;
 @property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(retain, nonatomic) _INPBContactValue *person; // @synthesize person=_person;
 @property(retain, nonatomic) _INPBImageValue *image; // @synthesize image=_image;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

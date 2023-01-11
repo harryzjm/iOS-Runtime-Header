@@ -9,7 +9,6 @@
 @class CNMonogrammer, NSCache, NSMutableSet, NSPersonNameComponentsFormatter, NSURLSession, UIImage;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface STIconCache : NSObject
 {
     NSCache *_iconByKeyCache;
@@ -21,12 +20,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedCache;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *bundleIdentifiersWithPendingRequests; // @synthesize bundleIdentifiersWithPendingRequests=_bundleIdentifiersWithPendingRequests;
 @property(readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *lookupQueue; // @synthesize lookupQueue=_lookupQueue;
 @property(retain, nonatomic) NSPersonNameComponentsFormatter *personNameComponentsFormatter; // @synthesize personNameComponentsFormatter=_personNameComponentsFormatter;
 @property(retain, nonatomic) CNMonogrammer *monogrammer; // @synthesize monogrammer=_monogrammer;
-- (void).cxx_destruct;
 - (id)monogramImageForNameComponents:(id)arg1;
 - (void)_fetchFamilyPhotoWithDSID:(id)arg1 fullName:(id)arg2 appleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_personImageWithDSID:(id)arg1 fullName:(id)arg2 appleID:(id)arg3 forceFetch:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -40,11 +39,13 @@ __attribute__((visibility("hidden")))
 - (id)blankSpaceImageWithSize:(struct CGSize)arg1;
 - (void)removeObserver:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)addObserver:(id)arg1 selector:(SEL)arg2 bundleIdentifier:(id)arg3;
-- (id)_iconForCacheKey:(id)arg1 categoryIdentifier:(id)arg2;
-- (id)imageForCategoryIdentifier:(id)arg1 userInterfaceStyle:(long long)arg2;
+- (id)imageForCategoryIdentifier:(id)arg1;
 - (void)_handleiTunesResponseForAppInfo:(id)arg1 response:(id)arg2 data:(id)arg3 error:(id)arg4;
 - (void)_fetchImageForAppInfoIfNeeded:(id)arg1;
 - (id)imageForBundleIdentifier:(id)arg1;
+- (void)_handleiTunesResponseForAppInfo:(id)arg1 response:(id)arg2 data:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_fetchImageForAppInfoIfNeeded:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)imageForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly) UIImage *imageForBlankApplicationIcon;
 - (void)dealloc;
 - (id)init;

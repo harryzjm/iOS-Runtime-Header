@@ -17,8 +17,15 @@ __attribute__((visibility("hidden")))
     _Bool _doNotClipToBounds;
     _Bool _darkBackdrop;
     _Bool _scrollDisabled;
+    _Bool _allowCandidateGridExpanding;
     _Bool _showsIndex;
+    _Bool _showExtraLineBeforeFirstRow;
     _Bool _fillGridWithLines;
+    _Bool _dontSelectLastItemByBackwardMoving;
+    _Bool _showOneMoreCandidate;
+    _Bool _disableSwitchingSortingMethodByTabKey;
+    _Bool _skipInlineCandidate;
+    _Bool _hidesPartialCandidates;
     UIFont *_candidateFont;
     UIFont *_annotationTextFont;
     UIFont *_alternativeTextFont;
@@ -37,6 +44,7 @@ __attribute__((visibility("hidden")))
     UIColor *_highlightedBackgroundColor;
     UIColor *_highlightedRowBackgroundColor;
     UIColor *_groupHeaderBackgroundColor;
+    UIColor *_transliterationCandidateBackgroundColor;
     UIColor *_lineColor;
     UIColor *_sortControlColor;
     UIColor *_sortControlBackgroundColor;
@@ -48,6 +56,7 @@ __attribute__((visibility("hidden")))
     UIImage *_arrowButtonSeparatorImage;
     UIImage *_cellBackgroundImage;
     UIImage *_highlightedCellBackgroundImage;
+    UIImage *_transliterationCandidateBackgroundImage;
     double _rowHeight;
     double _arrowButtonHeight;
     double _cornerRadius;
@@ -55,12 +64,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _gridMaskedCorners;
     double _foregroundOpacity;
     double _backgroundOpacity;
+    long long _layoutOrientation;
     unsigned long long _columnsCount;
     unsigned long long _maxNumberOfProactiveCells;
     double _minimumCellPadding;
     double _minimumCellWidth;
     double _singleSlottedCellMargin;
     long long _cellTextAlignment;
+    long long _alternativeTextAlignment;
+    long long _minimumNumberOfCandidates;
     struct CGPoint _gridLineOffset;
     struct UIEdgeInsets _extraCellPadding;
     struct UIEdgeInsets _arrowButtonPadding;
@@ -77,10 +89,20 @@ __attribute__((visibility("hidden")))
 + (id)lightKeyboardStyleForDisambiguation;
 + (id)darkKeyboardStyle;
 + (id)lightKeyboardStyle;
+- (void).cxx_destruct;
+@property(nonatomic) long long minimumNumberOfCandidates; // @synthesize minimumNumberOfCandidates=_minimumNumberOfCandidates;
+@property(nonatomic) _Bool hidesPartialCandidates; // @synthesize hidesPartialCandidates=_hidesPartialCandidates;
+@property(nonatomic) _Bool skipInlineCandidate; // @synthesize skipInlineCandidate=_skipInlineCandidate;
+@property(nonatomic) _Bool disableSwitchingSortingMethodByTabKey; // @synthesize disableSwitchingSortingMethodByTabKey=_disableSwitchingSortingMethodByTabKey;
+@property(nonatomic) _Bool showOneMoreCandidate; // @synthesize showOneMoreCandidate=_showOneMoreCandidate;
+@property(nonatomic) _Bool dontSelectLastItemByBackwardMoving; // @synthesize dontSelectLastItemByBackwardMoving=_dontSelectLastItemByBackwardMoving;
 @property(nonatomic) _Bool fillGridWithLines; // @synthesize fillGridWithLines=_fillGridWithLines;
+@property(nonatomic) _Bool showExtraLineBeforeFirstRow; // @synthesize showExtraLineBeforeFirstRow=_showExtraLineBeforeFirstRow;
 @property(nonatomic) _Bool showsIndex; // @synthesize showsIndex=_showsIndex;
+@property(nonatomic) _Bool allowCandidateGridExpanding; // @synthesize allowCandidateGridExpanding=_allowCandidateGridExpanding;
 @property(nonatomic) _Bool scrollDisabled; // @synthesize scrollDisabled=_scrollDisabled;
 @property(nonatomic) _Bool darkBackdrop; // @synthesize darkBackdrop=_darkBackdrop;
+@property(nonatomic) long long alternativeTextAlignment; // @synthesize alternativeTextAlignment=_alternativeTextAlignment;
 @property(nonatomic) long long cellTextAlignment; // @synthesize cellTextAlignment=_cellTextAlignment;
 @property(nonatomic) struct UIEdgeInsets sortControlPadding; // @synthesize sortControlPadding=_sortControlPadding;
 @property(nonatomic) struct CGPoint gridLineOffset; // @synthesize gridLineOffset=_gridLineOffset;
@@ -93,6 +115,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minimumCellPadding; // @synthesize minimumCellPadding=_minimumCellPadding;
 @property(nonatomic) unsigned long long maxNumberOfProactiveCells; // @synthesize maxNumberOfProactiveCells=_maxNumberOfProactiveCells;
 @property(nonatomic) unsigned long long columnsCount; // @synthesize columnsCount=_columnsCount;
+@property(nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property(nonatomic) _Bool doNotClipToBounds; // @synthesize doNotClipToBounds=_doNotClipToBounds;
 @property(nonatomic) double backgroundOpacity; // @synthesize backgroundOpacity=_backgroundOpacity;
 @property(nonatomic) double foregroundOpacity; // @synthesize foregroundOpacity=_foregroundOpacity;
@@ -101,6 +124,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) double arrowButtonHeight; // @synthesize arrowButtonHeight=_arrowButtonHeight;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
+@property(readonly, nonatomic) UIImage *transliterationCandidateBackgroundImage; // @synthesize transliterationCandidateBackgroundImage=_transliterationCandidateBackgroundImage;
 @property(retain, nonatomic) UIImage *highlightedCellBackgroundImage; // @synthesize highlightedCellBackgroundImage=_highlightedCellBackgroundImage;
 @property(retain, nonatomic) UIImage *cellBackgroundImage; // @synthesize cellBackgroundImage=_cellBackgroundImage;
 @property(retain, nonatomic) UIImage *arrowButtonSeparatorImage; // @synthesize arrowButtonSeparatorImage=_arrowButtonSeparatorImage;
@@ -112,6 +136,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *sortControlBackgroundColor; // @synthesize sortControlBackgroundColor=_sortControlBackgroundColor;
 @property(retain, nonatomic) UIColor *sortControlColor; // @synthesize sortControlColor=_sortControlColor;
 @property(retain, nonatomic) UIColor *lineColor; // @synthesize lineColor=_lineColor;
+@property(retain, nonatomic) UIColor *transliterationCandidateBackgroundColor; // @synthesize transliterationCandidateBackgroundColor=_transliterationCandidateBackgroundColor;
 @property(retain, nonatomic) UIColor *groupHeaderBackgroundColor; // @synthesize groupHeaderBackgroundColor=_groupHeaderBackgroundColor;
 @property(retain, nonatomic) UIColor *highlightedRowBackgroundColor; // @synthesize highlightedRowBackgroundColor=_highlightedRowBackgroundColor;
 @property(retain, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
@@ -130,7 +155,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIFont *alternativeTextFont; // @synthesize alternativeTextFont=_alternativeTextFont;
 @property(retain, nonatomic) UIFont *annotationTextFont; // @synthesize annotationTextFont=_annotationTextFont;
 @property(retain, nonatomic) UIFont *candidateFont; // @synthesize candidateFont=_candidateFont;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSError *_error;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool downloadCompletionCalled; // @synthesize downloadCompletionCalled=_downloadCompletionCalled;
 @property(nonatomic) _Bool queryResultCalled; // @synthesize queryResultCalled=_queryResultCalled;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
@@ -40,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(readonly, nonatomic) SFDeviceAssetRequestConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) SFDeviceAssetQuery *deviceAssetQuery; // @synthesize deviceAssetQuery=_deviceAssetQuery;
-- (void).cxx_destruct;
 - (id)bundleAtURL:(id)arg1 error:(id *)arg2;
 - (id)bundleURLFromAssetURL:(id)arg1;
 - (void)completeWithBundle:(id)arg1 isFallback:(_Bool)arg2 isCached:(_Bool)arg3;

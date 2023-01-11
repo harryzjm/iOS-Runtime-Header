@@ -38,6 +38,7 @@
     id <FBSynchronizedTransactionDelegate> _synchronizationDelegate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SBWorkspaceApplicationSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
 @property(nonatomic) __weak id <FBSynchronizedTransactionDelegate> synchronizationDelegate; // @synthesize synchronizationDelegate=_synchronizationDelegate;
 @property(readonly, nonatomic) NSSet *backgroundingApplicationSceneEntities; // @synthesize backgroundingApplicationSceneEntities=_backgroundingAppSceneEntities;
@@ -47,7 +48,6 @@
 @property(readonly, nonatomic, getter=isTransitioning) _Bool transitioning; // @synthesize transitioning=_isTransitioning;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(nonatomic) __weak id <SBSceneLayoutWorkspaceTransactionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)synchronizedTransactionGroup:(id)arg1 shouldFailForSynchronizedTransaction:(id)arg2;
 - (void)synchronizedTransaction:(id)arg1 didCommitSynchronizedTransactions:(id)arg2;
 - (void)synchronizedTransaction:(id)arg1 willCommitSynchronizedTransactions:(id)arg2;
@@ -60,12 +60,13 @@
 - (void)transaction:(id)arg1 didCreateScene:(id)arg2;
 - (void)transaction:(id)arg1 didLaunchProcess:(id)arg2;
 - (void)transaction:(id)arg1 willLaunchProcess:(id)arg2;
-- (void)_sendActivationResultWithSuccess:(_Bool)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
 - (_Bool)_overrideInterfaceOrientationForOrientationMismatch:(long long *)arg1;
+- (long long)_orientationForFollowOnRotationIfNeeded;
 - (void)_updateScenesForTransitionCompletion;
 - (void)_prepareScenesForTransition;
 - (void)_prepareScenesForSceneUpdates;
-- (void)_updateKeyboardContextMaskStyleForEntities:(id)arg1;
+- (void)_updateKeyboardContextMaskStyles:(_Bool)arg1;
 - (void)_updateAggregateDictionary;
 - (void)_mainDisplayUpdateAggregateDictionaryForLayoutRoleWithApplication:(id)arg1;
 - (void)_beginLayoutTransition;
@@ -75,6 +76,7 @@
 - (void)_performTransition;
 - (_Bool)_sceneEntities:(id)arg1 hasEntityRepresentingSceneID:(id)arg2;
 - (void)_captureAppsForTransition;
+- (id)sceneManager;
 - (_Bool)canInterruptForTransitionRequest:(id)arg1;
 - (void)_childTransactionDidComplete:(id)arg1;
 - (void)_willFailWithReason:(id)arg1;

@@ -35,7 +35,6 @@
 - (id)initToBuffer:(char *)arg1 capacity:(unsigned long long)arg2;
 - (id)initWithURL:(id)arg1 append:(_Bool)arg2;
 - (id)initToMemory;
-- (void)_init;
 
 @end
 

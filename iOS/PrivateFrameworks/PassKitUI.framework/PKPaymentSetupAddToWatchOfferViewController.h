@@ -4,42 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PassKitUI/PKAddToWatchOfferViewControllerDelegate-Protocol.h>
 
-@class PKPaymentPass, PKPaymentSetupAddToWatchOfferView, UIView;
+@class NSString, UIView;
 
-@interface PKPaymentSetupAddToWatchOfferViewController : UIViewController
+@interface PKPaymentSetupAddToWatchOfferViewController <PKAddToWatchOfferViewControllerDelegate>
 {
     UIView *_interactionDisabledView;
-    PKPaymentPass *_pass;
-    long long _context;
     CDUnknownBlockType _dismissalHandler;
-    PKPaymentSetupAddToWatchOfferView *_offerView;
 }
 
 + (void)shouldShowAddToWatchOfferForPass:(id)arg1 inContext:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
-@property(readonly, retain, nonatomic) PKPaymentSetupAddToWatchOfferView *offerView; // @synthesize offerView=_offerView;
-@property(copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
-@property(nonatomic) long long context; // @synthesize context=_context;
-@property(readonly, retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 - (void).cxx_destruct;
-- (void)_setIdleTimerDisabled:(_Bool)arg1;
-- (void)_clearInteractionDisabledView;
-- (void)_hideSpinner;
-- (void)_showSpinner;
+@property(copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
+- (void)addToWatchOfferViewControllerDidRequestToAddToWatch:(id)arg1;
+- (void)addToWatchOfferViewControllerDidNotRequestToAddToWatch:(id)arg1;
 - (void)_handleDismissal:(_Bool)arg1;
 - (void)_handleBridgeProvisioningError:(id)arg1;
-- (void)_addLaterTapped:(id)arg1;
-- (void)_openAppTapped:(id)arg1;
-- (void)_doneTapped:(id)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillLayoutSubviews;
-- (void)loadView;
-- (unsigned long long)edgesForExtendedLayout;
-- (void)_configureNavigationItem;
-- (void)dealloc;
 - (id)initWithPaymentPass:(id)arg1 context:(long long)arg2 dismissalHandler:(CDUnknownBlockType)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString;
+@class NSData, NSDate, NSString;
 
 @interface PHProject
 {
     NSData *_projectExtensionData;
+    NSDate *_creationDate;
     NSString *_projectExtensionIdentifier;
     NSString *_projectDocumentType;
     NSString *_projectRenderUuid;
@@ -26,10 +27,11 @@
 + (id)localIdentifierWithUUID:(id)arg1;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *projectRenderUuid; // @synthesize projectRenderUuid=_projectRenderUuid;
 @property(readonly, nonatomic) NSString *projectDocumentType; // @synthesize projectDocumentType=_projectDocumentType;
 @property(readonly, nonatomic) NSString *projectExtensionIdentifier; // @synthesize projectExtensionIdentifier=_projectExtensionIdentifier;
-- (void).cxx_destruct;
+- (id)creationDate;
 @property(readonly, nonatomic) NSData *projectData;
 @property(readonly, nonatomic) NSData *projectExtensionData; // @synthesize projectExtensionData=_projectExtensionData;
 @property(readonly, nonatomic) _Bool hasProjectPreview;

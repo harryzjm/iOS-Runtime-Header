@@ -13,8 +13,9 @@
     WFAutomationTypeExplanationPlatterView *_automationTypeView;
 }
 
-@property(readonly, nonatomic) WFAutomationTypeExplanationPlatterView *automationTypeView; // @synthesize automationTypeView=_automationTypeView;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WFAutomationTypeExplanationPlatterView *automationTypeView; // @synthesize automationTypeView=_automationTypeView;
+- (void)prepareForReuse;
 - (void)configureForAutomationType:(unsigned long long)arg1 buttonTarget:(id)arg2 action:(SEL)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

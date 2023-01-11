@@ -8,7 +8,7 @@
 #import <PhotosUI/PHLivePhotoViewDelegatePrivate-Protocol.h>
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 
-@class NSString, PHLivePhotoView, PUBrowsingViewModel;
+@class NSString, PHLivePhotoView, PUBrowsingViewModel, PXLivePhotoViewModulator;
 @protocol PUIrisImageTileViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,18 +27,20 @@ __attribute__((visibility("hidden")))
     id <PUIrisImageTileViewControllerDelegate> _delegate;
     PUBrowsingViewModel *_browsingViewModel;
     PHLivePhotoView *__livePhotoView;
+    PXLivePhotoViewModulator *_livePhotoViewModulator;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PXLivePhotoViewModulator *livePhotoViewModulator; // @synthesize livePhotoViewModulator=_livePhotoViewModulator;
 @property(readonly, nonatomic) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
 @property(retain, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 @property(nonatomic) __weak id <PUIrisImageTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)livePhotoViewDidBeginHinting:(id)arg1;
 - (void)livePhotoViewDidEndPlayingVitality:(id)arg1;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
+- (void)_updateVitalityTransform;
 - (void)_updatePlaybackGestureRecognizer;
-- (void)_playVitalityHintIfNeeded;
 - (void)_handleBrowsingIrisPlayer:(id)arg1 didChange:(id)arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (id)generateAssetTransitionInfo;
@@ -46,13 +48,13 @@ __attribute__((visibility("hidden")))
 - (void)_updatePlayerViewInteractivePlaybackAllowed;
 - (void)_assetFocusValueDidChange;
 - (void)_updateLivePhotoViewVitalityEnabled;
-- (void)_setLivePhotoView:(id)arg1;
 - (void)assetViewModelDidChange;
 - (void)setAssetViewModel:(id)arg1;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)addToTilingView:(id)arg1;
 - (void)removeAllAnimations;
-- (void)updateMutableImageLayerModulator:(id)arg1;
+- (void)updateModulatorInputs;
+- (void)updateModulator;
 - (id)loadView;
 
 // Remaining properties

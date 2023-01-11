@@ -16,6 +16,7 @@
     NSArray *_valueAddedServiceTransactions;
     PKFieldProperties *_fieldProperties;
     PKFieldProperties *_fieldPropertiesToLookup;
+    _Bool _restoreActiveApplets;
     unsigned long long _transactionStartTime;
     _Atomic _Bool _fieldPresent;
     _Bool _handlingExpress;
@@ -27,9 +28,9 @@
 }
 
 + (id)transitAppletStateFromPaymentSession:(id)arg1 withPaymentApplication:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PKFieldProperties *fieldProperties; // @synthesize fieldProperties=_fieldProperties;
 @property(readonly, nonatomic) NSArray *activatedValueAddedServicePasses; // @synthesize activatedValueAddedServicePasses=_activatedValueAddedServicePasses;
-- (void).cxx_destruct;
 - (id)_filteredLoyaltyPassesFromVASTransactions:(id)arg1 activatedPasses:(id)arg2;
 @property(nonatomic) __weak id <PKContactlessInterfaceSessionDelegate> delegate;
 @property(readonly, nonatomic) _Bool persistentCardEmulationQueued;

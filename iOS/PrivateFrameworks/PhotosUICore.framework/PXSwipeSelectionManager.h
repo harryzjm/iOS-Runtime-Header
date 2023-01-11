@@ -25,6 +25,7 @@
         _Bool respondsToShouldAutomaticallyTransitionToMultiSelectModeAtPoint;
         _Bool respondsToAutomaticallyTransitionToMultiSelectMode;
         _Bool respondsToIndexPathSetFromIndexPathToIndexPath;
+        _Bool respondsToDidAutoScroll;
     } _delegateFlags;
     id <PXSwipeSelectionManagerDelegate> _delegate;
     unsigned long long _state;
@@ -39,6 +40,7 @@
     struct PXSimpleIndexPath __currentIndexPath;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PXUIAutoScroller *_autoScroller; // @synthesize _autoScroller=__autoScroller;
 @property(retain, nonatomic, setter=_setPausingChangesToken:) id _pausingChangesToken; // @synthesize _pausingChangesToken=__pausingChangesToken;
 @property(retain, nonatomic, setter=_setSelectedIndexPathsBeforeSwipe:) PXIndexPathSet *_selectedIndexPathsBeforeSwipe; // @synthesize _selectedIndexPathsBeforeSwipe=__selectedIndexPathsBeforeSwipe;
@@ -50,7 +52,6 @@
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) __weak id <PXSwipeSelectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)didEndMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)multiSelectInteraction:(id)arg1 appendSelectionAtPoint:(struct CGPoint)arg2;
 - (_Bool)shouldAllowSelectionExtensionAtPoint:(struct CGPoint)arg1;
@@ -63,6 +64,7 @@
 - (_Bool)isInMultiSelectMode;
 - (_Bool)supportsMultiSelectInteraction:(id)arg1;
 - (_Bool)_shouldBeginMultiSelectAtLocation:(struct CGPoint)arg1;
+- (void)autoScroller:(id)arg1 didAutoscrollWithTimestamp:(double)arg2;
 - (void)_updateWithDataSource:(id)arg1 changeHistory:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;

@@ -11,8 +11,8 @@
     PKAccount *_account;
 }
 
-@property(readonly, copy, nonatomic) PKAccount *account; // @synthesize account=_account;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) PKAccount *account; // @synthesize account=_account;
 - (id)initWithData:(id)arg1;
 
 @end

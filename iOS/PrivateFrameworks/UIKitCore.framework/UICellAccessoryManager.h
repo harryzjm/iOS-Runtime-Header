@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 {
     struct CGSize _enforcedContainerSize;
     _Bool _needsLayout;
-    double _minimumCompressionLayoutWidth;
+    CDUnknownBlockType _standardLayoutWidthProvider;
+    CDUnknownBlockType _disclosureLayoutWidthProvider;
     id <UICellAccessoryLayout> _leadingLayout;
     id <UICellAccessoryLayout> _trailingLayout;
     NSDictionary *_configurations;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _contentInset;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
 @property(retain, nonatomic) UICellAccessoryConfiguration *previousConfiguration; // @synthesize previousConfiguration=_previousConfiguration;
 @property(nonatomic) struct CGSize previousContainerSize; // @synthesize previousContainerSize=_previousContainerSize;
@@ -37,9 +39,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *configurations; // @synthesize configurations=_configurations;
 @property(retain, nonatomic) id <UICellAccessoryLayout> trailingLayout; // @synthesize trailingLayout=_trailingLayout;
 @property(retain, nonatomic) id <UICellAccessoryLayout> leadingLayout; // @synthesize leadingLayout=_leadingLayout;
-@property(nonatomic) double minimumCompressionLayoutWidth; // @synthesize minimumCompressionLayoutWidth=_minimumCompressionLayoutWidth;
+@property(copy, nonatomic) CDUnknownBlockType disclosureLayoutWidthProvider; // @synthesize disclosureLayoutWidthProvider=_disclosureLayoutWidthProvider;
+@property(copy, nonatomic) CDUnknownBlockType standardLayoutWidthProvider; // @synthesize standardLayoutWidthProvider=_standardLayoutWidthProvider;
 @property(nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
-- (void).cxx_destruct;
 - (id)description;
 - (void)performWithEnforcedContainerSize:(struct CGSize)arg1 block:(CDUnknownBlockType)arg2;
 - (struct CGRect)containerBounds;

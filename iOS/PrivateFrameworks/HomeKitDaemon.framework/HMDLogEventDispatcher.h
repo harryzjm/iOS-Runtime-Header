@@ -6,25 +6,32 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSMapTable, NSObject;
-@protocol OS_dispatch_queue;
+@class HMDHomeConfigurationLogEvent, HMDLogEventContextProvider, NSMapTable, NSObject;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDLogEventDispatcher : HMFObject
 {
-    NSObject<OS_dispatch_queue> *_clientQueue;
+    id <HMFLocking> _lock;
+    HMDHomeConfigurationLogEvent *_cachedHomeConfiguration;
     NSMapTable *_logEventObserversByEventType;
+    unsigned long long _cachedHomeConfigurationVersion;
+    HMDLogEventContextProvider *_logEventContextProvider;
+    NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
 + (id)sharedInstance;
 + (void)initialize;
-@property(readonly, nonatomic) NSMapTable *logEventObserversByEventType; // @synthesize logEventObserversByEventType=_logEventObserversByEventType;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property(readonly, nonatomic) HMDLogEventContextProvider *logEventContextProvider; // @synthesize logEventContextProvider=_logEventContextProvider;
+@property(nonatomic) unsigned long long cachedHomeConfigurationVersion; // @synthesize cachedHomeConfigurationVersion=_cachedHomeConfigurationVersion;
+@property(readonly, nonatomic) NSMapTable *logEventObserversByEventType; // @synthesize logEventObserversByEventType=_logEventObserversByEventType;
 - (void)submitLogEvent:(id)arg1 error:(id)arg2;
 - (void)submitLogEvent:(id)arg1;
 - (void)removeObserver:(id)arg1 forEventType:(id)arg2;
 - (void)addObserver:(id)arg1 forEventTypes:(id)arg2;
 - (void)addObserver:(id)arg1 forEventType:(id)arg2;
+@property(retain, nonatomic) HMDHomeConfigurationLogEvent *cachedHomeConfiguration; // @synthesize cachedHomeConfiguration=_cachedHomeConfiguration;
 - (id)init;
 
 @end

@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *publisherResults;
+@property(readonly, nonatomic) NSArray *collectionResults;
+@property(readonly, nonatomic) NSArray *relatedEntitySections;
 @property(readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property(readonly, nonatomic) NSArray *searchResultSections;
 @property(readonly, nonatomic) NSString *sectionHeader;

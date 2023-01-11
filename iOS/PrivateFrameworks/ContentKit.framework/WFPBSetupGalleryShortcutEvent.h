@@ -18,17 +18,15 @@ __attribute__((visibility("hidden")))
     NSString *_galleryIdentifier;
     NSString *_key;
     _Bool _completed;
-    struct {
-        unsigned int completed:1;
-    } _has;
+    CDStruct_c267e6e8 _has;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool completed; // @synthesize completed=_completed;
 @property(retain, nonatomic) NSString *addToSiriBundleIdentifier; // @synthesize addToSiriBundleIdentifier=_addToSiriBundleIdentifier;
 @property(retain, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property(retain, nonatomic) NSString *galleryCategoryIdentifier; // @synthesize galleryCategoryIdentifier=_galleryCategoryIdentifier;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNComposeRecipientAtom;
+@class CNComposeRecipientAtom, UIContextMenuConfiguration;
 
 @protocol CNComposeRecipientAtomDelegate
+- (UIContextMenuConfiguration *)menuConfigurationForAtomView:(CNComposeRecipientAtom *)arg1;
 - (void)composeRecipientAtomSelectNext:(CNComposeRecipientAtom *)arg1;
 - (void)composeRecipientAtomSelectPrevious:(CNComposeRecipientAtom *)arg1;
 - (void)composeRecipientAtomShowPersonCard:(CNComposeRecipientAtom *)arg1;

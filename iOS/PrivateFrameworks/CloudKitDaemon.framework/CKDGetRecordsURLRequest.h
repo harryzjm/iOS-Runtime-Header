@@ -6,7 +6,6 @@
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKDGetRecordsURLRequest
 {
     _Bool _shouldFetchAssetContent;
@@ -24,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSSet *_desiredKeys;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(retain, nonatomic) NSMutableDictionary *recordIDByRequestID; // @synthesize recordIDByRequestID=_recordIDByRequestID;
 @property(nonatomic) unsigned long long recordCount; // @synthesize recordCount=_recordCount;
@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property(nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 @property(retain, nonatomic) NSSet *assetFieldNamesToPublishURLs; // @synthesize assetFieldNamesToPublishURLs=_assetFieldNamesToPublishURLs;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestedListFieldsForDesiredIndexedListKeys;
@@ -45,9 +44,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)requestGETPreAuth;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
-- (int)operationType;
 - (_Bool)allowsAnonymousAccount;
-- (id)initWithRecordIDs:(id)arg1 recordIDsToEtags:(id)arg2 recordIDsToVersionETags:(id)arg3 desiredKeys:(id)arg4;
+- (id)initWithOperation:(id)arg1 recordIDs:(id)arg2 recordIDsToEtags:(id)arg3 recordIDsToVersionETags:(id)arg4 desiredKeys:(id)arg5;
 
 @end
 

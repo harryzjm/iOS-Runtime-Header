@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 #import <ClassroomKit/CATRemoteConnectionDelegate-Protocol.h>
 #import <ClassroomKit/NSNetServiceDelegate-Protocol.h>
@@ -27,8 +27,8 @@
     id <CRKHostResourcesOperationDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <CRKHostResourcesOperationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CRKHostResourcesOperationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)connectionDidClose:(id)arg1;
 - (void)connection:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)connection:(id)arg1 didFailToSendDataWithStream:(id)arg2 userInfo:(id)arg3 error:(id)arg4;

@@ -6,26 +6,39 @@
 
 #import <PhotosGraph/PGGraphLocationCoordinates-Protocol.h>
 #import <PhotosGraph/PGGraphLocationNaming-Protocol.h>
+#import <PhotosGraph/PGGraphLocationOrArea-Protocol.h>
 
 @class NSString, PGGraphLocationNode;
 
-@interface PGGraphAreaNode <PGGraphLocationNaming, PGGraphLocationCoordinates>
+@interface PGGraphAreaNode <PGGraphLocationOrArea, PGGraphLocationNaming, PGGraphLocationCoordinates>
 {
+    unsigned int _isBlacklisted:1;
+    NSString *_name;
     struct CLLocationCoordinate2D _centroidCoordinate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isBlacklisted; // @synthesize isBlacklisted=_isBlacklisted;
 @property(nonatomic) struct CLLocationCoordinate2D centroidCoordinate; // @synthesize centroidCoordinate=_centroidCoordinate;
+@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (struct CLLocationCoordinate2D)coordinate;
+- (void)enumerateAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)addressNodes;
 @property(readonly) NSString *shortenedName;
 - (_Bool)diameterIsLargerThanDiameter:(double)arg1;
 @property(readonly) PGGraphLocationNode *stateOrBiggerParentLocationNode;
 @property(readonly) NSString *fullname;
-@property(readonly) _Bool isBlacklisted;
+- (unsigned short)domain;
+- (id)label;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -6,24 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class PGManager, PHFetchResult;
+@class NSMutableDictionary, NSUbiquitousKeyValueStore, PGManager, PGTrialSession;
 @protocol OS_os_log;
 
 @interface PHAQuestionController : NSObject
 {
     PGManager *_graphManager;
     NSObject<OS_os_log> *_loggingConnection;
-    PHFetchResult *_persons;
+    PGTrialSession *_trialSession;
+    NSMutableDictionary *_questionTypeImportanceByQuestionType;
+    NSUbiquitousKeyValueStore *_store;
 }
 
-@property(retain, nonatomic) PHFetchResult *persons; // @synthesize persons=_persons;
-@property(retain, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
-@property(retain, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
 - (void).cxx_destruct;
-- (id)_stringForQuestionType:(long long)arg1;
-- (id)_factoryForType:(long long)arg1 manager:(id)arg2;
-- (id)existingQuestionsForType:(long long)arg1;
-- (_Bool)generateQuestionsWithType:(long long)arg1 limit:(unsigned long long)arg2 progress:(CDUnknownBlockType)arg3;
+@property(retain, nonatomic) NSUbiquitousKeyValueStore *store; // @synthesize store=_store;
+@property(retain, nonatomic) NSMutableDictionary *questionTypeImportanceByQuestionType; // @synthesize questionTypeImportanceByQuestionType=_questionTypeImportanceByQuestionType;
+@property(retain, nonatomic) PGTrialSession *trialSession; // @synthesize trialSession=_trialSession;
+@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
+@property(retain, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
+- (void)removeCurrentKVSData;
+- (id)currentQuestionsKVSData;
+- (void)_handleKVSQuestionsUpdateIfNeededWithProgressBlock:(CDUnknownBlockType)arg1;
+- (void)_syncAnsweredQuestionsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (void)_updateInvalidQuestionsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (id)allQuestionFactories;
+- (id)questionFactoriesForOptions:(long long)arg1;
+- (double)importanceOfQuestionType:(id)arg1;
+- (_Bool)persistQuestions:(id)arg1;
+- (void)assignScoreToQuestions:(id)arg1;
+- (id)selectedQuestionsFromSortedQuestionsByQuestionType:(id)arg1 withLimit:(unsigned long long)arg2;
+- (_Bool)generateQuestionsWithOptions:(long long)arg1 limit:(unsigned long long)arg2 progress:(CDUnknownBlockType)arg3;
+- (_Bool)generateQuestionsWithOptions:(long long)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)initWithGraphManager:(id)arg1;
 
 @end

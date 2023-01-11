@@ -4,18 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIUndoGestureInteraction;
+@class UIUndoGestureInteraction, _UIActionWhenIdle;
+@protocol UIInteraction;
 
 __attribute__((visibility("hidden")))
 @interface UIEditingOverlayViewController
 {
     UIUndoGestureInteraction *_undoInteraction;
+    _UIActionWhenIdle *_addPencilTextInputInteractionAction;
+    id <UIInteraction> _pencilTextInputInteraction;
 }
 
-@property(retain, nonatomic) UIUndoGestureInteraction *undoInteraction; // @synthesize undoInteraction=_undoInteraction;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <UIInteraction> pencilTextInputInteraction; // @synthesize pencilTextInputInteraction=_pencilTextInputInteraction;
+@property(retain, nonatomic) _UIActionWhenIdle *addPencilTextInputInteractionAction; // @synthesize addPencilTextInputInteractionAction=_addPencilTextInputInteractionAction;
+@property(retain, nonatomic) UIUndoGestureInteraction *undoInteraction; // @synthesize undoInteraction=_undoInteraction;
 - (void)updateEditingOverlayContainer;
 - (void)_removeInteractions;
+- (void)_addPencilTextInputInteraction;
 - (void)_addInteractions;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

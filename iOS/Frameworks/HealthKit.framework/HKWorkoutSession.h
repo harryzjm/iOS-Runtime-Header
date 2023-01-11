@@ -35,8 +35,8 @@
 + (id)clientInterface;
 + (_Bool)_applicationHasRunningWorkout;
 + (id)targetWorkoutSessionStateMachineForSessionUUID:(id)arg1;
-@property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 - (void)_unitTest_discardAssociatedWorkoutBuilder;
 - (void)stopActivity;
 - (void)startActivity;
@@ -45,6 +45,7 @@
 - (void)_setAssociatedWorkoutBuilder:(id)arg1;
 - (id)associatedWorkoutBuilderWithDevice:(id)arg1 goalType:(unsigned long long)arg2 goal:(id)arg3;
 - (id)associatedWorkoutBuilder;
+@property(nonatomic) _Bool shouldStopPreviousSession;
 @property(readonly, nonatomic) _Bool isGymKitSession;
 @property(readonly) NSDate *endDate;
 @property(readonly) NSDate *startDate;
@@ -68,6 +69,7 @@
 - (void)prepare;
 - (void)stateMachine:(id)arg1 didTransition:(id)arg2 fromState:(id)arg3 toState:(id)arg4 date:(id)arg5 error:(id)arg6;
 - (void)stateMachine:(id)arg1 didIgnoreEvent:(long long)arg2 state:(id)arg3;
+- (void)client_didUpdateWorkoutConfiguration:(id)arg1;
 - (void)client_synchronizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)client_didFailWithError:(id)arg1;
 - (void)client_didGenerateEvents:(id)arg1;
@@ -77,6 +79,7 @@
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
+- (id)_privateDelegate;
 - (_Bool)_queue_shouldAttemptRecovery;
 - (void)_queue_markRecoveryRequired;
 - (void)_recoverWithCompletion:(CDUnknownBlockType)arg1;

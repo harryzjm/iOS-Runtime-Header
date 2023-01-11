@@ -16,16 +16,18 @@
     NSArray *_outputMatchingBuffers;
 }
 
-@property(nonatomic) int use_cvpixelbuffer; // @synthesize use_cvpixelbuffer=_use_cvpixelbuffer;
-@property(retain) NSArray *outputMatchingBuffers; // @synthesize outputMatchingBuffers=_outputMatchingBuffers;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) int use_cvpixelbuffer; // @synthesize use_cvpixelbuffer=_use_cvpixelbuffer;
+@property(retain) NSArray *outputMatchingBuffers; // @synthesize outputMatchingBuffers=_outputMatchingBuffers;
 - (void)dealloc;
 - (void)freeTemporaryResources;
 - (int)bindOutputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2 executionStatus:(int)arg3;
 - (int)bindOutputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2;
 - (int)bindOutputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2 referenceNetwork:(CDStruct_2bc666a5)arg3;
 - (int)bindInputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2;
+- (int)bindInput:(id)arg1 fromTensorAttachment:(id)arg2 toNetwork:(CDStruct_2bc666a5)arg3;
+- (int)bindInput:(id)arg1 fromImageAttachment:(id)arg2 toNetwork:(CDStruct_2bc666a5)arg3;
 - (_Bool)useCVPixelBuffers;
 - (_Bool)useCVPixelBuffersForOutputs:(_Bool)arg1;
 

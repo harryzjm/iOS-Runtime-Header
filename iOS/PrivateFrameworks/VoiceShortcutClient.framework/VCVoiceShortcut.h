@@ -22,12 +22,11 @@
     INShortcut *_shortcut;
     NSDate *_dateCreated;
     NSDate *_dateLastModified;
-    unsigned long long _cachedBlacklistStatus;
 }
 
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
-@property(nonatomic) unsigned long long cachedBlacklistStatus; // @synthesize cachedBlacklistStatus=_cachedBlacklistStatus;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *dateLastModified; // @synthesize dateLastModified=_dateLastModified;
 @property(readonly, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property(readonly, nonatomic) INShortcut *shortcut; // @synthesize shortcut=_shortcut;
@@ -37,7 +36,6 @@
 @property(readonly, copy, nonatomic) NSString *shortcutName; // @synthesize shortcutName=_shortcutName;
 @property(readonly, copy, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;

@@ -6,31 +6,28 @@
 
 #import <UIKit/UIView.h>
 
-@class MTMaterialView, NSString;
+@class MTMaterialView;
 
 @interface CCUIContentModuleContentContainerView : UIView
 {
     _Bool _expanded;
-    _Bool _moduleProvidesOwnPlatter;
-    _Bool _clipsContentInCompactMode;
     MTMaterialView *_moduleMaterialView;
-    NSString *_materialViewGroupName;
+    _Bool _moduleProvidesOwnPlatter;
     double _compactContinuousCornerRadius;
     double _expandedContinuousCornerRadius;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double expandedContinuousCornerRadius; // @synthesize expandedContinuousCornerRadius=_expandedContinuousCornerRadius;
 @property(nonatomic) double compactContinuousCornerRadius; // @synthesize compactContinuousCornerRadius=_compactContinuousCornerRadius;
-@property(nonatomic) _Bool clipsContentInCompactMode; // @synthesize clipsContentInCompactMode=_clipsContentInCompactMode;
-@property(copy, nonatomic) NSString *materialViewGroupName; // @synthesize materialViewGroupName=_materialViewGroupName;
 @property(nonatomic) _Bool moduleProvidesOwnPlatter; // @synthesize moduleProvidesOwnPlatter=_moduleProvidesOwnPlatter;
-- (void).cxx_destruct;
-- (void)_setContinuousCornerRadius:(double)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_setContinuousCornerRadius:(double)arg1 ignoreSubviewClipping:(_Bool)arg2;
 - (_Bool)_isContentClippingRequiredForSubview:(id)arg1;
 - (void)layoutSubviews;
 - (void)addSubview:(id)arg1;
-@property(readonly, nonatomic) MTMaterialView *moduleMaterialView; // @synthesize moduleMaterialView=_moduleMaterialView;
 - (void)_configureModuleMaterialViewIfNecessary;
+- (void)didEndTransitionToExpandedMode:(_Bool)arg1;
 - (void)transitionToExpandedMode:(_Bool)arg1;
 - (void)_transitionToExpandedMode:(_Bool)arg1 force:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

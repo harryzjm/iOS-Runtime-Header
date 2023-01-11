@@ -24,8 +24,8 @@
 + (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
 + (id)debugHierarchyPropertyDescriptions;
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) unsigned long long particleRenderOrder; // @synthesize particleRenderOrder=_particleRenderOrder;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long particleRenderOrder; // @synthesize particleRenderOrder=_particleRenderOrder;
 - (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (id)valueForAttributeNamed:(id)arg1;
 - (void)dealloc;
@@ -111,7 +111,6 @@
 - (void)setFieldInfluenceSequence:(id)arg1;
 - (id)fieldInfluenceSequence;
 - (id)subEmitterNode;
-- (void)addSubEmitterNode:(id)arg1;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 

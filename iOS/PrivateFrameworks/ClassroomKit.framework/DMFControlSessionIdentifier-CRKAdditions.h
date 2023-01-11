@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "DMFControlSessionIdentifier.h"
+#import <DeviceManagement/DMFControlSessionIdentifier.h>
 
 @class CRKRemoteEndpoint;
 
 @interface DMFControlSessionIdentifier (CRKAdditions)
-@property(readonly, nonatomic) CRKRemoteEndpoint *crk_endpoint;
+@property(readonly, copy, nonatomic) CRKRemoteEndpoint *crk_endpoint;
 @end
 

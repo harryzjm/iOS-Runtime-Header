@@ -10,20 +10,24 @@
 {
 }
 
++ (id)sectionOptionFromModelOptions:(id)arg1;
 + (id)firstColorSectionInSections:(id)arg1;
-+ (struct NSDictionary *)tagSetForTagNames:(id)arg1 inTagSet:(struct NSDictionary *)arg2;
-+ (void)setTags:(struct NSDictionary *)arg1 onMutableTagSet:(struct NSMutableDictionary *)arg2;
-+ (void)addTags:(struct NSDictionary *)arg1 toMutableTagSet:(struct NSMutableDictionary *)arg2;
-+ (int)scoreForTags:(struct NSDictionary *)arg1 forCombination:(struct NSDictionary *)arg2 currentSelection:(struct NSDictionary *)arg3;
-+ (id)filterPresets:(id)arg1 matchingTagValues:(struct NSDictionary *)arg2;
-+ (struct NSDictionary *)tagSetByRemovingTagNames:(id)arg1 fromTagSet:(struct NSDictionary *)arg2;
-+ (id)tagCombinationsForTagNames:(id)arg1 availableTags:(struct NSDictionary *)arg2;
-+ (id)filterPresets:(id)arg1 forRowRepresentingTags:(id)arg2 currentTagSelection:(struct NSDictionary *)arg3 fixedTags:(struct NSDictionary *)arg4 availableTags:(struct NSDictionary *)arg5;
++ (id)tagSetForTagNames:(id)arg1 inTagSet:(id)arg2;
++ (void)setTags:(id)arg1 onMutableTagSet:(id)arg2;
++ (void)addTags:(id)arg1 toMutableTagSet:(id)arg2;
++ (int)scoreForTags:(id)arg1 forCombination:(id)arg2 currentSelection:(id)arg3;
++ (void)insertPreset:(id)arg1 intoList:(id)arg2 forSortingOption:(unsigned long long)arg3;
++ (id)filterPresets:(id)arg1 matchingTagValues:(id)arg2 sortedUsing:(unsigned long long)arg3;
++ (id)tagSetByRemovingTagNames:(id)arg1 fromTagSet:(id)arg2;
++ (id)tagCombinationsForTagNames:(id)arg1 availableTags:(id)arg2;
++ (id)filterPresets:(id)arg1 forRowRepresentingTags:(id)arg2 currentTagSelection:(id)arg3 fixedTags:(id)arg4 availableTags:(id)arg5 sortingOption:(unsigned long long)arg6;
 + (id)framingModeForRow:(id)arg1 selectedPreset:(id)arg2;
-+ (id)sectionForModelRow:(id)arg1 fromModelPresets:(id)arg2 selectedModelPreset:(id)arg3 tagSelection:(struct NSDictionary *)arg4 fixedTags:(struct NSDictionary *)arg5 availableTags:(struct NSDictionary *)arg6 imageProvider:(id)arg7 configuration:(id)arg8 previousSection:(id)arg9 pairedCategory:(long long)arg10;
-+ (id)sectionColorItemsForColors:(id)arg1 selectedPreset:(id)arg2 configuration:(id)arg3 imageProvider:(id)arg4 colorVariationStore:(id)arg5 pairedCategory:(long long)arg6;
-+ (id)sectionForModelColorPalette:(id)arg1 selectedPreset:(id)arg2 configuration:(id)arg3 imageProvider:(id)arg4 colorVariationStore:(id)arg5 pairedCategory:(long long)arg6;
-+ (id)buildDataSourceCategoriesFromCoreModel:(id)arg1 selectingFromAvatarConfiguration:(id)arg2 imageProvider:(id)arg3 currentEditorDataSource:(id)arg4 forCategoryAtIndex:(unsigned long long)arg5;
++ (unsigned long long)sectionDisplayModeForCoreModelDisplayMode:(unsigned long long)arg1;
++ (id)sectionForModelRow:(id)arg1 fromModelPresets:(id)arg2 selectedModelPreset:(id)arg3 tagSelection:(id)arg4 fixedTags:(id)arg5 availableTags:(id)arg6 imageProvider:(id)arg7 configuration:(id)arg8 previousSection:(id)arg9 pairedCategory:(long long)arg10;
++ (id)sectionColorItemsForColors:(id)arg1 selectedPreset:(id)arg2 configuration:(id)arg3 imageProvider:(id)arg4 colorLayerProvider:(id)arg5 colorVariationStore:(id)arg6 pairedCategory:(long long)arg7 editingColors:(id)arg8;
++ (id)sectionForModelColorsRow:(id)arg1 configuration:(id)arg2 imageProvider:(id)arg3 colorLayerProvider:(id)arg4 colorVariationStore:(id)arg5 pairedCategory:(long long)arg6 destination:(long long)arg7 editingColors:(id)arg8;
++ (id)selectedModelPresetForSelectedPreset:(id)arg1 inPresetsList:(id)arg2;
++ (id)buildDataSourceCategoriesFromCoreModel:(id)arg1 selectingFromAvatarConfiguration:(id)arg2 imageProvider:(id)arg3 colorLayerProvider:(id)arg4 modelManager:(id)arg5 withSelectedCategory:(id)arg6 atIndex:(unsigned long long)arg7;
 
 @end
 

@@ -6,19 +6,21 @@
 
 #import <UIKitCore/_UIClickPresentationInteractionDelegate-Protocol.h>
 
-@class NSArray, UIDragItem, UITargetedDragPreview, UITargetedPreview, _UIClickPresentation, _UIClickPresentationInteraction;
-@protocol UIDragAnimating, UIInteractionEffect;
+@class NSArray, UIDragItem, UITargetedDragPreview, UITargetedPreview, _UICPILiveDragPreview, _UIClickPresentation, _UIClickPresentationInteraction;
+@protocol UIDragAnimating, _UIClickHighlightEffect;
 
 @protocol _UIClickPresentationInteractionDelegateInternal <_UIClickPresentationInteractionDelegate>
 
 @optional
+- (_Bool)_clickPresentationInteractionShouldPlayFeedback:(_UIClickPresentationInteraction *)arg1;
 - (void)_clickPresentationInteractionEnded:(_UIClickPresentationInteraction *)arg1 forPresentation:(_UIClickPresentation *)arg2 reason:(unsigned long long)arg3;
 - (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 dragSessionDidEndForItems:(NSArray *)arg2;
-- (id <UIInteractionEffect>)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 interactionEffectForTargetedPreview:(UITargetedPreview *)arg2;
+- (id <_UIClickHighlightEffect>)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 interactionEffectForTargetedPreview:(UITargetedPreview *)arg2;
 - (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 item:(UIDragItem *)arg2 willAnimateDragCancelWithAnimator:(id <UIDragAnimating>)arg3;
 - (UITargetedDragPreview *)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 previewForCancellingDragItem:(UIDragItem *)arg2;
+- (_UICPILiveDragPreview *)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 liveDragPreviewForPresentation:(_UIClickPresentation *)arg2;
 - (_Bool)_clickPresentationInteractionShouldAllowDragAfterDismiss:(_UIClickPresentationInteraction *)arg1;
 - (_Bool)_clickPresentationInteractionShouldAllowRapidRestart:(_UIClickPresentationInteraction *)arg1;
-- (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 shouldBegin:(void (^)(_Bool))arg2;
+- (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 shouldBegin:(void (^)(unsigned long long))arg2;
 @end
 

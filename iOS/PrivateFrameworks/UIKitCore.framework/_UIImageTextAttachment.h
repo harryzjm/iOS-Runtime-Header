@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)_deriveAttribute:(id)arg1 inStorage:(id)arg2 atIndex:(long long)arg3;
 - (id)_imageAdaptedForTextAtIndex:(long long)arg1 inContainer:(id)arg2 sizeOnly:(_Bool)arg3;
 - (id)imageForBounds:(struct CGRect)arg1 textContainer:(id)arg2 characterIndex:(unsigned long long)arg3;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;

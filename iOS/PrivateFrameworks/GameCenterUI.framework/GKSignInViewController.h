@@ -10,7 +10,7 @@
 #import <GameCenterUI/RemoteUIControllerDelegate-Protocol.h>
 #import <GameCenterUI/UIScrollViewDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, AKInlineSignInViewController, GKAccountRemoteUIController, GKBubbleFlowContainerView, GKDispatchGroup, GKGame, GKLabel, GKSignInInputView, NSMutableArray, NSString, OBPrivacyLinkController, RemoteUIController, UIActivityIndicatorView, UINavigationController, UIScrollView, UIViewController;
+@class AKAppleIDAuthenticationInAppContext, AKInlineSignInViewController, GKAccountRemoteUIController, GKDispatchGroup, GKGame, GKLabel, GKSignInInputView, NSMutableArray, NSString, RemoteUIController, UIActivityIndicatorView, UIImageView, UILabel, UINavigationController, UIScrollView, UIViewController;
 
 @interface GKSignInViewController <AKInlineSignInViewControllerDelegate, AKAppleIDAuthenticationDelegate, RemoteUIControllerDelegate, GKAuthenticateViewController, UIScrollViewDelegate>
 {
@@ -22,11 +22,10 @@
     CDUnknownBlockType _completionHandler;
     UIViewController *_remoteUIPresentingViewController;
     UIActivityIndicatorView *_progressIndicator;
-    GKLabel *_signInLabel;
+    UILabel *_signInLabel;
     GKLabel *_loginPromptLabel;
     GKSignInInputView *_signInInputView;
-    OBPrivacyLinkController *_privacyLinkController;
-    GKBubbleFlowContainerView *_bubbleContainerView;
+    UIImageView *_bubbleImageView;
     AKInlineSignInViewController *_inlineSignInViewController;
     AKAppleIDAuthenticationInAppContext *_authContext;
     double _fullWidthContentWidthConstraintConstant;
@@ -45,6 +44,7 @@
     struct UIEdgeInsets _scrollIndicatorInsetsBeforeKeyboard;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKAccountRemoteUIController *accountController; // @synthesize accountController=_accountController;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
@@ -59,36 +59,24 @@
 @property(nonatomic) double fullWidthContentWidthConstraintConstant; // @synthesize fullWidthContentWidthConstraintConstant=_fullWidthContentWidthConstraintConstant;
 @property(retain, nonatomic) AKAppleIDAuthenticationInAppContext *authContext; // @synthesize authContext=_authContext;
 @property(retain, nonatomic) AKInlineSignInViewController *inlineSignInViewController; // @synthesize inlineSignInViewController=_inlineSignInViewController;
-@property(retain, nonatomic) GKBubbleFlowContainerView *bubbleContainerView; // @synthesize bubbleContainerView=_bubbleContainerView;
+@property(retain, nonatomic) UIImageView *bubbleImageView; // @synthesize bubbleImageView=_bubbleImageView;
 @property(nonatomic) struct UIEdgeInsets scrollIndicatorInsetsBeforeKeyboard; // @synthesize scrollIndicatorInsetsBeforeKeyboard=_scrollIndicatorInsetsBeforeKeyboard;
 @property(nonatomic) struct UIEdgeInsets contentInsetsBeforeKeyboard; // @synthesize contentInsetsBeforeKeyboard=_contentInsetsBeforeKeyboard;
 @property(nonatomic) struct UIEdgeInsets currentContentInsets; // @synthesize currentContentInsets=_currentContentInsets;
 @property(nonatomic) _Bool constraintsCreated; // @synthesize constraintsCreated=_constraintsCreated;
-@property(retain, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property(retain, nonatomic) GKSignInInputView *signInInputView; // @synthesize signInInputView=_signInInputView;
 @property(retain, nonatomic) GKLabel *loginPromptLabel; // @synthesize loginPromptLabel=_loginPromptLabel;
-@property(retain, nonatomic) GKLabel *signInLabel; // @synthesize signInLabel=_signInLabel;
+@property(retain, nonatomic) UILabel *signInLabel; // @synthesize signInLabel=_signInLabel;
 @property(retain, nonatomic) UIActivityIndicatorView *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
 @property(nonatomic, getter=isLoadingRemoteUI) _Bool loadingRemoteUI; // @synthesize loadingRemoteUI=_loadingRemoteUI;
 @property(retain, nonatomic) UIViewController *remoteUIPresentingViewController; // @synthesize remoteUIPresentingViewController=_remoteUIPresentingViewController;
 @property(nonatomic) _Bool disablesSignIn; // @synthesize disablesSignIn=_disablesSignIn;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(retain, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
-- (void).cxx_destruct;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
 - (void)iForgotTapped;
 - (void)createAppleID;
-- (id)viewsToAnimateOutWhileDisappearingWithBubbleFlow;
-- (id)viewsToAnimateInWhileAppearingWithBubbleFlow;
-- (id)bubbleAnimatorForTransitionFromViewController:(id)arg1;
-- (double)bubbleFlowAnimateInDuration;
-- (double)bubbleFlowAnimateOutDuration;
-- (void)viewDidLayoutSubviews;
-- (void)viewWillAppearAnimated:(_Bool)arg1 bubbleFlow:(_Bool)arg2;
-- (double)bubbleFlowSubviewFadeOutDelay;
-- (double)bubbleFlowSubviewFadeOutDuration;
-- (_Bool)_gkUsesBubbleFlowModalPresentation;
 - (void)showConnectionFailedAlert;
 - (void)showAccountDisabledAlert;
 - (void)showForgotPasswordAlert;
@@ -119,9 +107,7 @@
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_systemContentSizeSettingDidChange:(id)arg1;
 - (void)viewSafeAreaInsetsDidChange;
-- (void)addGDPRPrivacyLink;
 - (void)createSubviews;
-- (void)_updateBubbleRectsForOrientation:(long long)arg1;
 - (_Bool)authenticationController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;

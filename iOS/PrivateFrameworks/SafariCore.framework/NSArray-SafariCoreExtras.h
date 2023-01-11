@@ -9,8 +9,11 @@
 @interface NSArray (SafariCoreExtras)
 + (id)safari_arrayWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
 + (id)safari_arrayFromDictionaryOfObjectsByIndex:(id)arg1;
+- (id)safari_prefixWithMaxLength:(unsigned long long)arg1;
 - (id)safari_flattenedArray;
 - (id)safari_arrayByAddingObjectsFromArrayIfNotDuplicates:(id)arg1;
+- (_Bool)safari_noObjectsPassTest:(CDUnknownBlockType)arg1;
+- (_Bool)safari_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (_Bool)safari_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)safari_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)_safari_generateDiffWithLongestCommonSubsequenceLengths:(id)arg1 array:(id)arg2 indexIntoSelf:(unsigned long long)arg3 indexIntoArray:(unsigned long long)arg4;
@@ -24,6 +27,7 @@
 - (id)safari_mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_orderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_setByApplyingBlock:(CDUnknownBlockType)arg1;
+- (void)safari_enumerateOutwardFromIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)safari_enumerateZippedValuesWithArray:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)safari_mapAndFilterObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)safari_mapAndFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;

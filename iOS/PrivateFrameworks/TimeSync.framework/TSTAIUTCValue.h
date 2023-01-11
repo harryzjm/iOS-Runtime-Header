@@ -20,13 +20,13 @@
     unsigned long long _offset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(nonatomic) double coefficient; // @synthesize coefficient=_coefficient;
 @property(nonatomic) double constant; // @synthesize constant=_constant;
 @property(nonatomic) unsigned long long modifiedJulianDay; // @synthesize modifiedJulianDay=_modifiedJulianDay;
 @property(retain, nonatomic) NSDate *taiDate; // @synthesize taiDate=_taiDate;
 @property(retain, nonatomic) NSDate *utcDate; // @synthesize utcDate=_utcDate;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSDictionary *dictionary; // @dynamic dictionary;
 - (id)initWithDictionary:(id)arg1;

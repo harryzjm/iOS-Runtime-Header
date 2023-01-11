@@ -13,16 +13,17 @@
 @interface GEOWiFiQualityHours : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _days;
     struct GEOWiFiQualityTimeRange *_timeRanges;
     unsigned long long _timeRangesCount;
     unsigned long long _timeRangesSpace;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_days:1;
         unsigned int read_timeRanges:1;
-        unsigned int wrote_days:1;
-        unsigned int wrote_timeRanges:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -36,27 +37,28 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setTimeRanges:(struct GEOWiFiQualityTimeRange *)arg1 count:(unsigned long long)arg2;
 - (struct GEOWiFiQualityTimeRange)timeRangesAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsTimeRanges:(struct GEOWiFiQualityTimeRange)arg1;
 - (void)addTimeRanges:(struct GEOWiFiQualityTimeRange)arg1;
 - (void)clearTimeRanges;
 @property(readonly, nonatomic) struct GEOWiFiQualityTimeRange *timeRanges;
 @property(readonly, nonatomic) unsigned long long timeRangesCount;
-- (void)_readTimeRanges;
 - (int)StringAsDays:(id)arg1;
 - (id)daysAsString:(int)arg1;
 - (void)setDays:(int *)arg1 count:(unsigned long long)arg2;
 - (int)daysAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsDays:(int)arg1;
 - (void)addDays:(int)arg1;
 - (void)clearDays;
 @property(readonly, nonatomic) int *days;
 @property(readonly, nonatomic) unsigned long long daysCount;
-- (void)_readDays;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

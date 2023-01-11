@@ -14,13 +14,11 @@
     NSObject<OS_xpc_object> *_connection;
 }
 
++ (void)runWithoutContext:(CDUnknownBlockType)arg1;
 + (id)currentContext;
-@property(readonly, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
-- (void)_unset;
-- (void)_set;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
 - (void)handoffToQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (id)_initWithHandoffToken:(id)arg1;
 
 @end
 

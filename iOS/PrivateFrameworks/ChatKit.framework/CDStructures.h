@@ -53,6 +53,15 @@ struct CATransform3D {
     double m44;
 };
 
+struct CGAffineTransform {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+};
+
 struct CGPoint {
     double x;
     double y;
@@ -75,11 +84,13 @@ struct CKBalloonDescriptor_t {
     char _field4;
     unsigned long long _field5;
     char _field6;
-    long long _field7;
+    char _field7;
     long long _field8;
-    _Bool _field9;
+    long long _field9;
     _Bool _field10;
     _Bool _field11;
+    _Bool _field12;
+    _Bool _field13;
 };
 
 struct CKFeedSeparatorMetrics {
@@ -116,10 +127,6 @@ struct NSDirectionalEdgeInsets {
     double _field4;
 };
 
-struct NSString {
-    Class _field1;
-};
-
 struct UIEdgeInsets {
     double top;
     double left;
@@ -128,8 +135,8 @@ struct UIEdgeInsets {
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct _Spec {
@@ -151,6 +158,20 @@ typedef struct {
     double _field6;
     int _field7;
 } CDStruct_e950349b;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    double _field3;
+    double _field4;
+} CDStruct_c53b0b9a;
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 
 typedef struct {
     long long value;

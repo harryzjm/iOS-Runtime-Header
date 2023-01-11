@@ -7,35 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <VoiceShortcuts/VCSpotlightSyncOperationDelegate-Protocol.h>
-#import <VoiceShortcuts/WFDatabaseResultObserver-Protocol.h>
+#import <VoiceShortcuts/WFDatabaseObjectObserver-Protocol.h>
 
-@class CSSearchableIndex, NSString, VCSpotlightSyncOperation, WFDatabaseResult, WFDebouncer;
+@class CSSearchableIndex, NSString, VCDaemonXPCEventHandler, VCSpotlightSyncOperation, WFDatabaseResult, WFDebouncer;
 @protocol OS_dispatch_queue, VCDatabaseProvider;
 
-@interface VCSpotlightSyncService : NSObject <WFDatabaseResultObserver, VCSpotlightSyncOperationDelegate>
+@interface VCSpotlightSyncService : NSObject <WFDatabaseObjectObserver, VCSpotlightSyncOperationDelegate>
 {
     _Bool _isFetchingClientState;
+    _Bool _hasAddedXPCEventHandlerObserver;
     WFDatabaseResult *_workflows;
     WFDebouncer *_debouncer;
+    VCDaemonXPCEventHandler *_eventHandler;
     VCSpotlightSyncOperation *_syncOperation;
     id <VCDatabaseProvider> _databaseProvider;
     CSSearchableIndex *_index;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasAddedXPCEventHandlerObserver; // @synthesize hasAddedXPCEventHandlerObserver=_hasAddedXPCEventHandlerObserver;
 @property(nonatomic) _Bool isFetchingClientState; // @synthesize isFetchingClientState=_isFetchingClientState;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
 @property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property(retain, nonatomic) VCSpotlightSyncOperation *syncOperation; // @synthesize syncOperation=_syncOperation;
+@property(readonly, nonatomic) VCDaemonXPCEventHandler *eventHandler; // @synthesize eventHandler=_eventHandler;
 @property(readonly, nonatomic) WFDebouncer *debouncer; // @synthesize debouncer=_debouncer;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) WFDatabaseResult *workflows; // @synthesize workflows=_workflows;
 - (void)syncOperationFinishedWithRequestToRelaunch:(_Bool)arg1;
+- (void)syncWithModifiedObjects:(id)arg1 inserted:(id)arg2 removed:(id)arg3;
 - (void)sync;
 - (void)requestSync;
-- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
-@property(readonly, nonatomic) WFDatabaseResult *workflows; // @synthesize workflows=_workflows;
-- (id)initWithDatabaseProvider:(id)arg1;
+- (void)databaseDidChange:(id)arg1 modified:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (void)start;
+- (void)dealloc;
+- (id)initWithDatabaseProvider:(id)arg1 eventHandler:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

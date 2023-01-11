@@ -20,9 +20,9 @@
 
 + (id)_restoreNotification;
 + (_Bool)isSystemRestoreDone;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool restoreDoneHandled; // @synthesize restoreDoneHandled=_restoreDoneHandled;
 @property(nonatomic) __weak id <MTSystemStateDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)gatherDiagnostics;
 - (void)printDiagnostics;
 - (id)liveDarwinNotifications;
@@ -30,6 +30,7 @@
 - (_Bool)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (void)_handleF5Reset;
 - (void)_handleRestoreDone;
+- (void)_verifyRestoreDone;
 - (_Bool)_checkIfRestoreDone;
 - (_Bool)checkSystemReady;
 - (id)initWithDelegate:(id)arg1;

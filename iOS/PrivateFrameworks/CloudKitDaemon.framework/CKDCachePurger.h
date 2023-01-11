@@ -8,7 +8,6 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDCachePurger : NSObject
 {
     _Bool _purged;
@@ -16,9 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)enumerateOldCachesForApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerPath:(id)arg3 cachesPath:(id)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool purged; // @synthesize purged=_purged;
 @property(readonly, nonatomic) NSArray *oldCacheDirs; // @synthesize oldCacheDirs=_oldCacheDirs;
-- (void).cxx_destruct;
 - (void)purgeOldCacheDirectories;
 - (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerPath:(id)arg3 cachePath:(id)arg4;
 

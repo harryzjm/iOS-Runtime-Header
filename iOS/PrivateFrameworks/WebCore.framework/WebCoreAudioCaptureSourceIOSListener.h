@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)sessionMediaServicesWereReset:(id)arg1;
-- (void)handleInterruption:(id)arg1;
 - (void)invalidate;
 - (id)initWithCallback:(struct CoreAudioCaptureSourceFactoryIOS *)arg1;
 

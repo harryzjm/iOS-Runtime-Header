@@ -11,7 +11,6 @@
 @class CKDServerConfiguration, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface CKDServerConfigurationManager : NSObject <CKDSystemAvailabilityWatcher>
 {
     _Bool _shouldDropAllConfigurations;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldDropAllConfigurations; // @synthesize shouldDropAllConfigurations=_shouldDropAllConfigurations;
 @property(nonatomic) int iCloudEnvNotifToken; // @synthesize iCloudEnvNotifToken=_iCloudEnvNotifToken;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKDServerConfiguration *globalConfiguration; // @synthesize globalConfiguration=_globalConfiguration;
 @property(retain, nonatomic) NSOperationQueue *configurationQueue; // @synthesize configurationQueue=_configurationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *switchNotifSource; // @synthesize switchNotifSource=_switchNotifSource;
-- (void).cxx_destruct;
 - (id)CKStatusReportArray;
 - (void)expireConfigurationForContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
 - (void)expireGlobalConfiguration;
@@ -53,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_watchForSwitchPrefFileChanges;
 - (id)_uniqueStringForContext:(id)arg1 account:(id)arg2;
-- (void)systemAvailabilityChanged:(unsigned long long)arg1;
+- (_Bool)systemAvailabilityChanged:(unsigned long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -19,14 +19,14 @@
     double _startTime;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) SXDOM *DOM; // @synthesize DOM=_DOM;
-@property(readonly, nonatomic) SXLayoutBlueprint *blueprint; // @synthesize blueprint=_blueprint;
+@property(readonly, copy, nonatomic) SXLayoutBlueprint *blueprint; // @synthesize blueprint=_blueprint;
 @property(readonly, nonatomic) SXLayoutInstructions *instructions; // @synthesize instructions=_instructions;
 @property(readonly, nonatomic) SXLayoutOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)description;
 - (id)initWithOptions:(id)arg1 instructions:(id)arg2 blueprint:(id)arg3 DOM:(id)arg4;
 - (id)initWithOptions:(id)arg1 instructions:(id)arg2;

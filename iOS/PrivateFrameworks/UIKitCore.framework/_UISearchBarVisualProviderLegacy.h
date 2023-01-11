@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UISearchBarVisualProviding-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UIView, UIVisualEffectView, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarAppearanceStorage, _UISearchBarScopeBarBackground;
+@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UITextField, UIView, UIVisualEffectView, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarAppearanceStorage, _UISearchBarScopeBarBackground;
 @protocol _UINavigationBarTitleViewDataSource, _UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private;
 
 __attribute__((visibility("hidden")))
@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _minimumContentInsetPrivate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImageView *shadowView; // @synthesize shadowView=_shadowView;
 @property(readonly, nonatomic) UIBarButtonItem *animatedAppearanceBarButtonItem; // @synthesize animatedAppearanceBarButtonItem=_animatedAppearanceBarButtonItem;
 @property(nonatomic) __weak id <_UINavigationBarTitleViewDataSource> navBarTitleViewDataSource; // @synthesize navBarTitleViewDataSource=_navBarTitleViewDataSource;
@@ -102,11 +103,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UISearchBarBackground *searchBarBackground; // @synthesize searchBarBackground=_searchBarBackground;
 @property(retain, nonatomic) UISearchBarTextField *searchField; // @synthesize searchField=_searchField;
 @property(nonatomic) UIView<_UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private> *delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)setHelperPlaceholderHidden:(_Bool)arg1;
+- (void)setHelperPlaceholderOverride:(id)arg1;
+- (void)setHelperPlaceholder:(id)arg1;
 - (void)prepareFromAbandonedVisualProvider:(id)arg1;
 - (void)setUpSearchNavigationItemWithSizingOption:(unsigned long long)arg1;
 @property(readonly, nonatomic) UINavigationItem *searchNavigationItem;
 @property(nonatomic) __weak id searchDisplayController;
+- (_Bool)wantsDictationButton;
 - (long long)barMetricsForOrientation:(long long)arg1;
 - (void)allowCursorToAppear:(_Bool)arg1;
 - (void)setSearchDisplayControllerShowsCancelButton:(_Bool)arg1;
@@ -180,6 +184,8 @@ __attribute__((visibility("hidden")))
 - (void)updateIfNecessaryForOldSize:(struct CGSize)arg1;
 - (void)updateForDrawsBackgroundInPalette;
 @property(readonly, nonatomic, getter=isLegacy) _Bool legacy;
+- (void)updateForSemanticContext;
+- (void)updateForDynamicType;
 - (void)applySearchBarStyle;
 - (id)effectiveBarTintColor;
 - (void)effectiveBarTintColorDidChange:(_Bool)arg1;
@@ -208,6 +214,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDelegate:(id)arg1;
 @property(readonly, nonatomic) UIBarButtonItem *cancelBarButtonItem; // @synthesize cancelBarButtonItem=_cancelBarButtonItem;
 @property(readonly, nonatomic) UINavigationButton *leftButton; // @synthesize leftButton=_leftButton;
+@property(readonly, nonatomic) UITextField *searchFieldIfExists;
 @property(copy, nonatomic) NSString *prompt;
 @property(nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 - (void)setDisableDictationButton:(_Bool)arg1;

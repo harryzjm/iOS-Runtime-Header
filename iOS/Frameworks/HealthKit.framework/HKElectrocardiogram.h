@@ -6,36 +6,51 @@
 
 #import <HealthKit/_HKBinarySample-Protocol.h>
 
-@class HKQuantity, NSArray, NSString;
+@class HKQuantity, NSArray, NSNumber, NSString;
 
 @interface HKElectrocardiogram <_HKBinarySample>
 {
     struct Electrocardiogram _reading;
+    unsigned long long _privateClassification;
+    HKQuantity *_averageHeartRate;
+    long long _symptomsStatus;
 }
 
++ (_Bool)supportsEquivalence;
 + (_Bool)supportsSecureCoding;
 + (_Bool)_isConcreteObjectClass;
 + (id)_electrocardiogramWithStartDate:(id)arg1 device:(id)arg2 metadata:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long symptomsStatus; // @synthesize symptomsStatus=_symptomsStatus;
+- (unsigned long long)_symptoms;
+- (unsigned long long)_classification;
+- (id)frequency;
+- (long long)numberOfValues;
+@property(readonly, nonatomic, getter=privateSymptoms) unsigned long long privateSymptoms;
 @property(readonly, nonatomic, getter=_localizedSymptoms) NSArray *localizedSymptoms;
-@property(readonly, nonatomic, getter=_localizedClassification) NSString *localizedClassification;
-@property(readonly, nonatomic, getter=_symptoms) unsigned long long symptoms;
-@property(readonly, nonatomic, getter=_classification) unsigned long long classification;
-@property(readonly, nonatomic, getter=_averageHeartRate) HKQuantity *averageHeartRate;
+- (id)_localizedClassificationWithActiveAlgorithmVersion:(long long)arg1;
+- (_Bool)isEquivalent:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (_Bool)isEqual:(id)arg1;
 - (_Bool)prepareForSaving:(id *)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)payload;
 - (void)_setPayload:(id)arg1;
-- (void)_enumerateDataForLead:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
-- (void)enumerateDataForLead:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) HKQuantity *frequency;
-@property(readonly, nonatomic) long long numberOfValues;
-@property(readonly, nonatomic) NSArray *leadNames;
+- (void)_enumerateDataForLead:(long long)arg1 block:(CDUnknownBlockType)arg2;
+- (void)enumerateDataForLead:(long long)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_setSymptomsStatus:(long long)arg1;
+- (void)_setPrivateClassification:(unsigned long long)arg1;
+- (void)_setAverageHeartRate:(id)arg1;
 - (void)setReading:(struct Electrocardiogram)arg1;
+@property(readonly, nonatomic, getter=_algorithmVersion) NSNumber *algorithmVersion;
+@property(readonly, nonatomic) unsigned long long privateClassification;
+@property(readonly, nonatomic) long long classification;
+- (long long)symptoms;
+@property(readonly, copy, nonatomic) HKQuantity *averageHeartRate;
+@property(readonly, copy, nonatomic) HKQuantity *samplingFrequency;
+@property(readonly, nonatomic) long long numberOfVoltageMeasurements;
+@property(readonly, copy, nonatomic) NSArray *leadNames;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

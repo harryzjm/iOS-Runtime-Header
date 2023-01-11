@@ -4,16 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDHomeKitVersion, NSData, NSNumber, NSString;
+@class HMDHomeKitVersion, HMDNaturalLightingContext, NSData, NSDate, NSNumber, NSString;
 
 @interface HMDHomeModel
 {
 }
 
 + (id)properties;
+@property(copy, nonatomic) HMDNaturalLightingContext *naturalLightingContext;
 
 // Remaining properties
+@property(retain, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property(retain, nonatomic) NSString *defaultRoomUUID; // @dynamic defaultRoomUUID;
+@property(retain, nonatomic) NSNumber *doorbellChimeEnabled; // @dynamic doorbellChimeEnabled;
+@property(retain, nonatomic) NSData *encodedNaturalLightingContext; // @dynamic encodedNaturalLightingContext;
+@property(retain, nonatomic) NSDate *firstHAPAccessoryAddedDate; // @dynamic firstHAPAccessoryAddedDate;
 @property(retain, nonatomic) NSNumber *hasAnyUserAcknowledgedCameraRecordingOnboarding; // @dynamic hasAnyUserAcknowledgedCameraRecordingOnboarding;
 @property(retain, nonatomic) NSData *homeLocationData; // @dynamic homeLocationData;
 @property(retain, nonatomic) NSNumber *multiUserEnabled; // @dynamic multiUserEnabled;

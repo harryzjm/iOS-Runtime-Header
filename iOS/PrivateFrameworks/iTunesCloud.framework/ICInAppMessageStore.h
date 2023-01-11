@@ -28,12 +28,14 @@
 - (void)removeAllMetadataForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateMetadata:(id)arg1 messageIdentifier:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)getAllMetadataForBundleIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAllMetadataForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removePendingMessageEventWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pendingMessageEventsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addPendingMessageEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetStoreWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getAllMessageEntriesForBundleIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAllMessageEntriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getMessageEntryWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

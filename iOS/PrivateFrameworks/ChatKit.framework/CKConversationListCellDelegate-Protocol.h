@@ -6,11 +6,12 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKConversation, CKConversationListCell;
+@class CKConversation, CKConversationListCell, UITableViewCell;
 
 @protocol CKConversationListCellDelegate <NSObject>
 
 @optional
+- (void)selectedDeleteButtonForConversation:(CKConversation *)arg1 inCell:(UITableViewCell *)arg2;
 - (void)avatarHeaderWasTappedForConversation:(CKConversation *)arg1 inCell:(CKConversationListCell *)arg2;
 @end
 

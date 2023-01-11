@@ -10,12 +10,12 @@
 #import <MediaServices/NSMutableCopying-Protocol.h>
 #import <MediaServices/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary;
+@class NSDictionary;
 
 @interface MSVBidirectionalDictionary : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
-    NSMutableDictionary *_keyToObjectDictionary;
-    NSMutableDictionary *_objectToKeyDictionary;
+    NSDictionary *_keyToObjectDictionary;
+    NSDictionary *_objectToKeyDictionary;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -31,6 +31,7 @@
 - (id)keyForObject:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (id)allKeys;
+- (id)initWithDictionary:(id)arg1;
 - (id)init;
 
 @end

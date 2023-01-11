@@ -10,18 +10,21 @@
 #import <UIKitCore/UITableConstantsCellProviding-Protocol.h>
 #import <UIKitCore/_UIInteractiveHighlighting-Protocol.h>
 #import <UIKitCore/_UILayoutEngineSuspending-Protocol.h>
+#import <UIKitCore/_UISystemBackgroundViewContainer-Protocol.h>
 
-@class NSArray, NSIndexPath, NSMutableDictionary, NSString, NSTimer, UICellAccessoryManager, UIColor, UIControl, UIFocusGuide, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITextField, UIView, UIVisualEffect, _UIFloatingContentView, _UITableViewCellSeparatorView;
-@protocol UITableConstants, UITable_UITableViewCellDelegate;
+@class NSArray, NSIndexPath, NSMutableDictionary, NSString, NSTimer, UIBackgroundConfiguration, UICellAccessoryManager, UICellConfigurationState, UIColor, UIControl, UIFocusGuide, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITextField, UIView, UIVisualEffect, _UIFloatingContentView, _UISystemBackgroundView, _UITableViewCellSeparatorView;
+@protocol UIContentConfiguration, UITableConstants, UITable_UITableViewCellDelegate, _UIBackgroundConfigurationInternal, _UIContentViewInternal;
 
-@interface UITableViewCell <UIScrollViewDelegate, _UILayoutEngineSuspending, UITableConstantsCellProviding, _UIInteractiveHighlighting, NSCoding, UIGestureRecognizerDelegate>
+@interface UITableViewCell <UIScrollViewDelegate, _UILayoutEngineSuspending, UITableConstantsCellProviding, _UISystemBackgroundViewContainer, _UIInteractiveHighlighting, NSCoding, UIGestureRecognizerDelegate>
 {
     struct {
         unsigned int showingDeleteConfirmation:1;
         unsigned int separatorStyle:3;
         unsigned int selectionStyle:3;
-        unsigned int selectionFadeFraction:11;
+        unsigned int selected:1;
         unsigned int editing:1;
+        unsigned int swiped:1;
+        unsigned int reordering:1;
         unsigned int editingStyle:3;
         unsigned int accessoryType:3;
         unsigned int editingAccessoryType:3;
@@ -78,6 +81,18 @@
         unsigned int tableViewHasBeenExplicitlySet:1;
         unsigned int ignoresMultipleSelectionDuringEditing:1;
         unsigned int hasEverUsedRoundedGroups:1;
+        unsigned int preserveBackgroundMaskingForReorderAnimationEnding:1;
+        unsigned int needsConfigurationStateUpdate:1;
+        unsigned int hasCustomBackgroundColor:1;
+        unsigned int hasCustomBackgroundView:1;
+        unsigned int hasCustomSelectedBackgroundView:1;
+        unsigned int hasCustomMultipleSelectionBackgroundView:1;
+        unsigned int hasCustomBackgroundViewConfigurationProvider:1;
+        unsigned int hasCustomBackgroundViewConfiguration:1;
+        unsigned int hasCustomIndentationWidth:1;
+        unsigned int automaticallyUpdatesContentViewConfiguration:1;
+        unsigned int automaticallyUpdatesBackgroundViewConfiguration:1;
+        unsigned int hasShownHighlightedOrSelectedBackground:1;
     } _tableCellFlags;
     NSMutableDictionary *__editingControlTintColors;
     id <UITable_UITableViewCellDelegate> _tableView;
@@ -88,6 +103,7 @@
     id _editingData;
     long long _indentationLevel;
     double _indentationWidth;
+    double _extraLeadingLayoutMarginForIndentation;
     NSString *_reuseIdentifier;
     _UIFloatingContentView *_floatingContentView;
     long long _lineBreakModeBeforeFocus;
@@ -100,6 +116,12 @@
     UIView *_multipleSelectionBackgroundView;
     UIView *_selectedOverlayView;
     double _selectionFadeDuration;
+    NSString *_contentViewConfigurationIdentifier;
+    id <_UIContentViewInternal> _viewForContentConfiguration;
+    CDUnknownBlockType _contentViewConfigurationProvider;
+    _UISystemBackgroundView *_systemBackgroundView;
+    CDUnknownBlockType _backgroundViewConfigurationProvider;
+    id <_UIBackgroundConfigurationInternal> _lastNormalBackgroundViewConfiguration;
     UIColor *_separatorColor;
     UIVisualEffect *_separatorEffect;
     UIColor *_sectionBorderColor;
@@ -138,24 +160,28 @@
     UIFocusGuide *_reorderControlFocusGuide;
     id <UITableConstants> _constants;
     long long _dragState;
+    long long _dropState;
     _Bool _isLayoutEngineSuspended;
     UICellAccessoryManager *_accessoryManager;
 }
 
 + (void)_initializeForIdiom:(long long)arg1;
-+ (void)initialize;
++ (void)_ensureInitializeSystemAppearanceModifications;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_accessoryManager) UICellAccessoryManager *accessoryManager; // @synthesize accessoryManager=_accessoryManager;
 @property(nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) _Bool _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property(retain, nonatomic, getter=_reorderControlFocusGuide, setter=_setReorderControlFocusGuide:) UIFocusGuide *reorderControlFocusGuide; // @synthesize reorderControlFocusGuide=_reorderControlFocusGuide;
 @property(retain, nonatomic, getter=_editControlFocusGuide, setter=_setEditControlFocusGuide:) UIFocusGuide *editControlFocusGuide; // @synthesize editControlFocusGuide=_editControlFocusGuide;
-- (void).cxx_destruct;
 - (void)_setNeedsAccessoriesUpdate;
 - (void)_setNeedsAccessoriesUpdateForced:(_Bool)arg1;
 - (void)_updateAccessoriesIfNeeded;
 - (void)_updateAccessories;
 - (void)_updateAccessoryMetrics;
-- (id)_trailingAccessoriesForType:(long long)arg1 view:(id)arg2 editing:(_Bool)arg3;
+- (id)_trailingAccessoriesForType:(long long)arg1 view:(id)arg2 editing:(_Bool)arg3 style:(long long)arg4;
 - (id)_leadingAccessoriesForEditing:(_Bool)arg1 style:(long long)arg2;
+- (id)_editControlAccessoryForStyle:(long long)arg1;
+- (_Bool)_editControlShouldBeOnLeadingSideForStyle:(long long)arg1;
+- (long long)_sanitizedEditingStyleForEditing:(_Bool)arg1 style:(long long)arg2;
 - (void)_setAccessoryManager:(id)arg1;
 @property(nonatomic, getter=_usesModernAccessoriesLayout, setter=_setUsesModernAccessoriesLayout:) _Bool usesModernAccessoriesLayout;
 - (void)_highlightDidEndForInteraction:(id)arg1;
@@ -173,6 +199,7 @@
 - (void)_updateDefaultLabelsForFocus:(_Bool)arg1;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)preferredFocusedView;
+- (long long)_focusTouchSensitivityStyle;
 - (_Bool)canBecomeFocused;
 - (void)_removeFocusedFloatingContentView;
 - (void)_ensureFocusedFloatingContentView;
@@ -221,7 +248,8 @@
 - (void)_updateSeparatorContent:(_Bool)arg1;
 - (void)_layoutMarginsDidChangeFromOldMargins:(struct UIEdgeInsets)arg1;
 - (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
-@property(readonly, nonatomic, getter=_defaultTrailingCellMarginWidth) double defaultTrailingCellMarginWidth;
+@property(readonly, nonatomic, getter=_minimumCellAccessoryMargin) double minimumCellAccessoryMargin;
+- (double)_defaultTrailingCellMarginWidth;
 - (void)_setDefaultTrailingCellMarginWidth:(double)arg1;
 - (double)_defaultLeadingMarginWidth;
 - (void)_setDefaultLeadingMarginWidth:(double)arg1;
@@ -229,12 +257,17 @@
 - (double)_rightMarginWidth;
 - (void)_setMarginWidth:(double)arg1;
 - (double)_marginWidth;
+- (double)_contentConfigurationPrimaryTextInsetFromCellLeadingEdge;
 - (double)_imageViewExtentFromCellLeadingEdge;
 - (_Bool)_shouldApplyReadableWidthInsets;
 - (struct UIEdgeInsets)_effectiveSafeAreaInsets;
 - (void)_setOverriddenDefaultContentViewLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (struct NSDirectionalEdgeInsets)_overriddenDefaultContentViewLayoutMargins;
 - (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
+- (void)_resetRawLayoutMargins;
+- (void)_setRawLayoutMargins:(struct UIEdgeInsets)arg1;
+- (void)_updateLeadingLayoutMarginForIndentation;
+- (struct UIEdgeInsets)_adjustedRawLayoutMargins:(struct UIEdgeInsets)arg1 withLeadingLayoutMarginAdjustment:(double)arg2;
 - (_Bool)_insetsContentViewsToSafeArea;
 - (void)_setInsetsContentViewsToSafeArea:(_Bool)arg1;
 - (_Bool)_separatorInsetIsRelativeToCellEdges;
@@ -259,6 +292,8 @@
 - (void)_setAccessoryAction:(SEL)arg1;
 - (id)_target;
 - (void)_setTarget:(id)arg1;
+- (_Bool)_isSwiped;
+- (void)_setSwiped:(_Bool)arg1;
 - (_Bool)wasSwiped;
 - (void)setWasSwiped:(_Bool)arg1;
 - (_Bool)_hasEditingAccessoryView;
@@ -335,6 +370,7 @@
 - (void)willMoveToSuperview:(id)arg1;
 - (void)_setHiddenForReuse:(_Bool)arg1;
 - (void)_updateCellMaskViewsForView:(id)arg1 backdropView:(id)arg2;
+- (void)_removeFromSuperviewIgnoringFirstResponder:(_Bool)arg1;
 - (void)removeFromSuperview;
 - (SEL)accessoryAction;
 - (void)setAccessoryAction:(SEL)arg1;
@@ -365,7 +401,9 @@
 - (_Bool)clipsContents;
 - (void)setClipsContents:(_Bool)arg1;
 - (unsigned long long)currentStateMask;
+- (void)_updateDefaultIndentationWidth;
 @property(nonatomic) double indentationWidth;
+- (void)_setIndentationWidth:(double)arg1;
 @property(nonatomic) long long indentationLevel;
 - (_Bool)hidesAccessoryWhenEditing;
 - (void)setHidesAccessoryWhenEditing:(_Bool)arg1;
@@ -375,6 +413,7 @@
 - (void)_setAccessoryTintColor:(id)arg1;
 @property(retain, nonatomic) UIView *accessoryView;
 @property(nonatomic) long long accessoryType;
+- (_Bool)_updateExpansionButtonFromType:(long long)arg1 toType:(long long)arg2;
 - (void)_syncAccessoryViewsIfNecessary;
 @property(nonatomic) _Bool shouldIndentWhileEditing;
 @property(nonatomic) _Bool showsReorderControl;
@@ -389,6 +428,37 @@
 - (id)layoutManager;
 - (void)setLayoutManager:(id)arg1;
 - (void)_drawContentInRect:(struct CGRect)arg1 selected:(_Bool)arg2;
+- (void)updateConfigurationUsingState:(id)arg1;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
+- (void)_layoutSystemBackgroundView;
+- (void)_performConfigurationStateUpdate;
+- (void)_setNeedsConfigurationStateUpdate;
+- (void)setNeedsUpdateConfiguration;
+- (id)_configurationState;
+@property(readonly, nonatomic) UICellConfigurationState *configurationState;
+- (unsigned long long)_viewConfigurationState;
+- (void)_updateBackgroundViewConfigurationForState:(id)arg1;
+- (id)_stateForUpdatingBackgroundConfigurationWithState:(id)arg1;
+- (void)_resetBackgroundViewConfiguration;
+- (void)_resetBackgroundViewsAndColor;
+- (void)_updateDefaultBackgroundAppearance;
+- (_Bool)_usingBackgroundConfigurationOrDefaultBackgroundConfiguration;
+- (id)_defaultBackgroundConfiguration;
+- (CDUnknownBlockType)_backgroundViewConfigurationProvider;
+- (void)_setBackgroundViewConfigurationProvider:(CDUnknownBlockType)arg1;
+@property(nonatomic) _Bool automaticallyUpdatesBackgroundConfiguration;
+- (_Bool)_automaticallyUpdatesBackgroundViewConfiguration;
+- (void)_setAutomaticallyUpdatesBackgroundViewConfiguration:(_Bool)arg1;
+- (id)_backgroundViewConfiguration;
+@property(copy, nonatomic) UIBackgroundConfiguration *backgroundConfiguration;
+- (void)_applyBackgroundViewConfiguration:(id)arg1 withState:(id)arg2;
+- (void)_setBackgroundViewConfiguration:(id)arg1;
+- (_Bool)_usingBackgroundViewConfiguration;
+- (id)_systemBackgroundView;
+- (id)_visiblePathForBackgroundConfiguration;
+- (unsigned long long)_maskedCornersForSystemBackgroundView;
+- (void)_updateDefaultImageSymbolConfiguration;
+- (void)_updateImageViewTintColor;
 - (void)_updateHighlightColors;
 - (_Bool)_isHighlighted;
 - (float)selectionPercent;
@@ -399,7 +469,14 @@
 - (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_cancelInternalPerformRequests;
 - (void)showSelectedBackgroundView:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_updateCellForCurrentBackgroundConfiguration;
+- (void)_updateShowingSelectedBackground;
+- (void)setUserInteractionEnabled:(_Bool)arg1;
 @property(nonatomic) _Bool userInteractionEnabledWhileDragging;
+- (long long)_dropState;
+- (void)_setDropState:(long long)arg1;
+- (_Bool)_isDropTarget;
+- (void)_setDropTarget:(_Bool)arg1;
 - (_Bool)_isDragging;
 - (void)_setDragging:(_Bool)arg1;
 - (void)_updateUserInteractionEnabledForNewDragState:(long long)arg1;
@@ -432,11 +509,8 @@
 - (id)sectionBorderColor;
 - (id)separatorColor;
 - (void)setSeparatorColor:(id)arg1;
-- (id)tableBackgroundColor;
-- (void)setTableBackgroundColor:(id)arg1;
-- (_Bool)_backgroundColorSet;
+- (void)_setDefaultBackgroundColor:(id)arg1;
 - (id)_contentBackgroundColor;
-- (void)_setTableBackgroundCGColor:(struct CGColor *)arg1 withSystemColorName:(id)arg2;
 - (long long)separatorStyle;
 - (void)setSeparatorStyle:(long long)arg1;
 @property(retain, nonatomic) UIView *multipleSelectionBackgroundView;
@@ -445,7 +519,27 @@
 @property(retain, nonatomic) UIView *selectedBackgroundView;
 - (void)setSelectedBackgroundView:(id)arg1 animated:(_Bool)arg2;
 @property(retain, nonatomic) UIView *backgroundView;
+- (void)_resetContentViews;
+- (void)_updateContentViewConfigurationForState:(id)arg1;
+- (CDUnknownBlockType)_contentViewConfigurationProvider;
+- (void)_setContentViewConfigurationProvider:(CDUnknownBlockType)arg1;
+- (_Bool)_automaticallyUpdatesContentViewConfiguration;
+- (void)_setAutomaticallyUpdatesContentViewConfiguration:(_Bool)arg1;
+@property(nonatomic) _Bool automaticallyUpdatesContentConfiguration;
+- (id)_contentViewConfiguration;
+@property(copy, nonatomic) id <UIContentConfiguration> contentConfiguration;
+- (void)_applyContentViewConfiguration:(id)arg1 withState:(id)arg2 usingSPI:(_Bool)arg3;
+- (void)_setContentViewConfiguration:(id)arg1;
+- (id)defaultContentConfiguration;
+- (void)_setupPrimaryTextFrameDidChangeHandlerForContentView:(id)arg1;
+- (void)_clearPrimaryTextFrameDidChangeHandlerForContentView:(id)arg1;
 @property(readonly, nonatomic) UIView *contentView;
+- (void)_setContentView:(id)arg1;
+- (id)_createDefaultContentView;
+- (id)_badgeColor;
+- (void)_setBadgeColor:(id)arg1;
+- (id)_badgeFont;
+- (void)_setBadgeFont:(id)arg1;
 - (id)_badgeText;
 - (void)_setBadgeText:(id)arg1;
 - (id)selectedImage;
@@ -474,6 +568,7 @@
 - (void)_didCreateContentView;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (void)_encodeBackgroundColorWithCoder:(id)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_encodableSubviews;
 - (id)initWithCoder:(id)arg1;
@@ -519,14 +614,17 @@
 - (void)setAccessoryActionSegueTemplate:(id)arg1;
 - (void)_setDrawsTopSeparatorDuringReordering:(_Bool)arg1;
 - (_Bool)_drawsTopSeparatorDuringReordering;
+- (_Bool)_isReordering;
 - (void)_setReordering:(_Bool)arg1;
 - (void)_resetSelectionTimer;
 - (void)paste:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (_Bool)_appliesMaskingToCellWhenUsingBackgroundConfiguration;
 - (void)_updateContentClip;
 - (void)_setContentClipCorners:(unsigned long long)arg1 updateCorners:(_Bool)arg2;
+- (double)_roundedGroupCornerRadius;
 - (void)_showMenuFromLongPressGesture;
 - (void)_longPressGestureRecognized:(id)arg1;
 - (_Bool)_gestureRecognizerShouldBegin:(id)arg1;
@@ -544,7 +642,6 @@
 - (void)_updateHighlightColorsForAnimationHalfwayPoint;
 - (_Bool)_isCurrentlyConsideredHighlighted;
 - (void)_updateHighlightColorsForView:(id)arg1 highlighted:(_Bool)arg2;
-- (void)_layoutSubviewsAnimated:(_Bool)arg1;
 - (id)_layoutDebuggingTitle;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (struct CGRect)_updatedContentViewFrameForTargetWidth:(double)arg1;

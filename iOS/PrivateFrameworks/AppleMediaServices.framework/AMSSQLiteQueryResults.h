@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)bindStringCopy:(id)arg1 atPosition:(int)arg2;
 - (void)bindString:(id)arg1 atPosition:(int)arg2;
 - (void)bindNumber:(id)arg1 atPosition:(int)arg2;
+- (void)bindNullableString:(id)arg1 atPosition:(int)arg2;
 - (void)bindNullAtPosition:(int)arg1;
 - (void)bindInt64:(long long)arg1 atPosition:(int)arg2;
 - (void)bindInt:(int)arg1 atPosition:(int)arg2;

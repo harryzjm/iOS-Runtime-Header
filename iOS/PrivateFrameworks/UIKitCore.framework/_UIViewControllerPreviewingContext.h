@@ -23,14 +23,13 @@ __attribute__((visibility("hidden")))
     struct CGRect _sourceRect;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIPreviewInteractionController *previewInteractionController; // @synthesize previewInteractionController=_previewInteractionController;
 @property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain, nonatomic) UIView *customViewForInteractiveHighlight; // @synthesize customViewForInteractiveHighlight=_customViewForInteractiveHighlight;
 @property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
-- (void)setDelegate:(id)arg1;
-@property(readonly, nonatomic) id <UIViewControllerPreviewingDelegate> delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <UIViewControllerPreviewingDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)previewInteractionController:(id)arg1 commitViewController:(id)arg2;
 - (void)previewInteractionController:(id)arg1 didDismissViewController:(id)arg2 committing:(_Bool)arg3;
 - (void)previewInteractionController:(id)arg1 willDismissViewController:(id)arg2;

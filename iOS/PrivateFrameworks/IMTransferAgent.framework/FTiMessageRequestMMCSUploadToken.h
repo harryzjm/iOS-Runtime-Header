@@ -30,6 +30,7 @@
     NSString *_anonymousSenderID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *anonymousSenderID; // @synthesize anonymousSenderID=_anonymousSenderID;
 @property(copy, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
 @property(copy, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;

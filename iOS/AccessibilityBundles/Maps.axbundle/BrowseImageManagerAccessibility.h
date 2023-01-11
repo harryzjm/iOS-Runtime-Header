@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)imageForCategory:(id)arg1 scale:(double)arg2 traits:(id)arg3 isCarplay:(_Bool)arg4;
+- (id)_createImageForCategory:(id)arg1 scale:(double)arg2 traits:(id)arg3 isCarplay:(_Bool)arg4 nightMode:(_Bool)arg5;
 
 @end
 

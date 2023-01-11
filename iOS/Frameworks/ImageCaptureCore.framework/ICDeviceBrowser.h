@@ -18,7 +18,13 @@
 
 @property(nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property unsigned long long browsedDeviceTypeMask; // @synthesize browsedDeviceTypeMask=_browsedDeviceTypeMask;
+- (void)requestControlAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (id)controlAuthorizationStatus;
+- (void)requestContentsAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (id)contentsAuthorizationStatus;
 - (id)internalDevices;
+@property(nonatomic, getter=isSuspended) _Bool suspended;
+- (_Bool)suspended;
 - (void)stop;
 - (void)start;
 @property(readonly, getter=isBrowsing) _Bool browsing;

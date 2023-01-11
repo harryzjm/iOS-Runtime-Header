@@ -17,6 +17,7 @@
 - (void)_accessibilityLoadInfoOnPipVideoViews;
 - (void)_accessibilityMakeSureWindowIsVisibleToElementFetcher;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_ensureVideoLayersExist;
 - (void)autoFadeOutBottomBar;
 - (void)_refreshStatusBarAndPIPAnimated:(_Bool)arg1;
 - (void)videoOverlayViewController:(id)arg1 isShowingOverlay:(_Bool)arg2;

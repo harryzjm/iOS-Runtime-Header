@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 #import <ClassroomKit/NSURLSessionDownloadDelegate-Protocol.h>
 
@@ -20,8 +20,8 @@
     NSArray *_resources;
 }
 
-@property(readonly, copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)finalizeDownloadedItem:(id)arg1 forRequestURL:(id)arg2;

@@ -6,13 +6,14 @@
 
 #import <WorkflowKit/WFNaming-Protocol.h>
 
-@class NSArray, NSDate, NSSet, NSString, WFWorkflowIcon, WFWorkflowQuarantine;
+@class NSArray, NSData, NSDate, NSSet, NSString, WFWorkflowIcon, WFWorkflowQuarantine;
 
 @interface WFWorkflowRecord <WFNaming>
 {
     _Bool _hiddenInComplication;
     _Bool _hiddenFromLibraryAndSync;
-    _Bool _isDeleted;
+    _Bool _deleted;
+    _Bool _conflictOfOtherWorkflow;
     NSString *_name;
     NSString *_legacyName;
     WFWorkflowIcon *_icon;
@@ -21,36 +22,49 @@
     NSString *_workflowSubtitle;
     NSString *_actionsDescription;
     NSString *_associatedAppBundleIdentifier;
+    NSString *_galleryIdentifier;
+    NSString *_source;
     WFWorkflowQuarantine *_quarantine;
     NSArray *_workflowTypes;
     NSArray *_inputClasses;
     NSArray *_actions;
+    long long _actionCount;
     NSArray *_importQuestions;
     NSString *_minimumClientVersion;
     NSString *_lastMigratedClientVersion;
     long long _lastSyncedHash;
     NSString *_lastSavedOnDeviceName;
-    NSSet *_accessResourcePermissionStates;
+    unsigned long long _estimatedSize;
+    NSSet *_accessResourcePerWorkflowStates;
     long long _remoteQuarantineStatus;
-    unsigned long long _cachedSyncHash;
+    NSData *_cloudKitRecordMetadata;
+    long long _syncHash;
 }
 
++ (id)workflowSubtitleForActionCount:(unsigned long long)arg1 savedSubtitle:(id)arg2;
 + (id)defaultPropertyValues;
-@property(nonatomic) unsigned long long cachedSyncHash; // @synthesize cachedSyncHash=_cachedSyncHash;
+- (void).cxx_destruct;
+@property(nonatomic) long long syncHash; // @synthesize syncHash=_syncHash;
+@property(copy, nonatomic) NSData *cloudKitRecordMetadata; // @synthesize cloudKitRecordMetadata=_cloudKitRecordMetadata;
+@property(readonly, nonatomic, getter=isConflictOfOtherWorkflow) _Bool conflictOfOtherWorkflow; // @synthesize conflictOfOtherWorkflow=_conflictOfOtherWorkflow;
 @property(nonatomic) long long remoteQuarantineStatus; // @synthesize remoteQuarantineStatus=_remoteQuarantineStatus;
-@property(copy, nonatomic) NSSet *accessResourcePermissionStates; // @synthesize accessResourcePermissionStates=_accessResourcePermissionStates;
+@property(copy, nonatomic) NSSet *accessResourcePerWorkflowStates; // @synthesize accessResourcePerWorkflowStates=_accessResourcePerWorkflowStates;
+@property(readonly, nonatomic) unsigned long long estimatedSize; // @synthesize estimatedSize=_estimatedSize;
 @property(copy, nonatomic) NSString *lastSavedOnDeviceName; // @synthesize lastSavedOnDeviceName=_lastSavedOnDeviceName;
 @property(nonatomic) long long lastSyncedHash; // @synthesize lastSyncedHash=_lastSyncedHash;
 @property(copy, nonatomic) NSString *lastMigratedClientVersion; // @synthesize lastMigratedClientVersion=_lastMigratedClientVersion;
-@property(readonly, nonatomic) _Bool isDeleted; // @synthesize isDeleted=_isDeleted;
+@property(nonatomic, getter=isDeleted) _Bool deleted; // @synthesize deleted=_deleted;
 @property(nonatomic) _Bool hiddenFromLibraryAndSync; // @synthesize hiddenFromLibraryAndSync=_hiddenFromLibraryAndSync;
 @property(nonatomic) _Bool hiddenInComplication; // @synthesize hiddenInComplication=_hiddenInComplication;
 @property(copy, nonatomic) NSString *minimumClientVersion; // @synthesize minimumClientVersion=_minimumClientVersion;
 @property(copy, nonatomic) NSArray *importQuestions; // @synthesize importQuestions=_importQuestions;
+@property(nonatomic) long long actionCount; // @synthesize actionCount=_actionCount;
 @property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(copy, nonatomic) NSArray *inputClasses; // @synthesize inputClasses=_inputClasses;
 @property(copy, nonatomic) NSArray *workflowTypes; // @synthesize workflowTypes=_workflowTypes;
 @property(retain, nonatomic) WFWorkflowQuarantine *quarantine; // @synthesize quarantine=_quarantine;
+@property(copy, nonatomic) NSString *source; // @synthesize source=_source;
+@property(copy, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property(copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
 @property(copy, nonatomic) NSString *actionsDescription; // @synthesize actionsDescription=_actionsDescription;
 @property(copy, nonatomic) NSString *workflowSubtitle; // @synthesize workflowSubtitle=_workflowSubtitle;
@@ -59,12 +73,18 @@
 @property(retain, nonatomic) WFWorkflowIcon *icon; // @synthesize icon=_icon;
 @property(copy, nonatomic) NSString *legacyName; // @synthesize legacyName=_legacyName;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-- (unsigned long long)syncHash;
 - (_Bool)isEquivalentForSyncTo:(id)arg1;
 - (_Bool)saveChangesToStorage:(id)arg1 error:(id *)arg2;
 - (id)fileRepresentation;
+- (_Bool)loadFromPeaceData:(id)arg1 keyImageData:(id)arg2 error:(id *)arg3;
+- (id)initWithPeaceCoreDataModel:(id)arg1 error:(id *)arg2;
+- (id)initWithPeaceCloudKitRecord:(id)arg1 error:(id *)arg2;
 @property(readonly, copy, nonatomic) NSString *wfName;
+- (_Bool)isEligibleForWatchWithIneligibleActionIdentifiers:(id)arg1;
+- (_Bool)isEligibleForWatch;
+- (_Bool)addWatchWorkflowTypeIfEligibleWithIneligibleActionIdentifiers:(id)arg1;
+- (_Bool)addWatchWorkflowTypeIfEligible;
+- (void)addWatchWorkflowType;
 
 @end
 

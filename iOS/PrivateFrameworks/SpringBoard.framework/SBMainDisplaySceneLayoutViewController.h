@@ -8,12 +8,13 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver-Protocol.h>
 #import <SpringBoard/SBMainDisplaySceneLayoutStatusBarViewDataSource-Protocol.h>
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
+#import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
 #import <SpringBoard/TFBetaLaunchHandleActivationDelegate-Protocol.h>
 
-@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, SBUIKeyboardHomeAffordanceAssertion, UIApplicationSceneClientSettingsDiffInspector, UIView;
-@protocol OS_dispatch_queue;
+@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBMedusaSettings, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
+@protocol BSInvalidatable, OS_dispatch_queue;
 
-@interface SBMainDisplaySceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver>
+@interface SBMainDisplaySceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver, SBSystemPointerInteractionDelegate>
 {
     SBMainDisplaySceneLayoutGestureManager *_gestureManager;
     NSMutableSet *_pushPopTransformReasons;
@@ -30,26 +31,29 @@
     UIApplicationSceneClientSettingsDiffInspector *_clientSettingsInspector;
     _Bool _isKeyboardShowing;
     FBScene *_medusaKeyboardScene;
-    SBUIKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
+    SBKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
     NSMutableSet *_activeBetaLaunchHandles;
     NSObject<OS_dispatch_queue> *_betaLaunchUIActivationQueue;
     NSLayoutConstraint *_homeGrabberTopConstraint;
     NSLayoutConstraint *_homeGrabberBottomConstraint;
     NSLayoutConstraint *_homeGrabberLeftConstraint;
     NSLayoutConstraint *_homeGrabberRightConstraint;
+    SBMedusaSettings *_medusaSettings;
     _Bool __preventsCornerRadiusUpdate;
     double _separatorViewAlpha;
     unsigned long long _nubStyle;
+    id <BSInvalidatable> _pushPopWallpaperRequireAssertion;
     SBHomeGrabberRotationView *_homeGrabberRotationView;
     NSString *_keyboardFocusSceneID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic, getter=_keyboardFocusSceneID, setter=_setKeyboardFocusSceneID:) NSString *keyboardFocusSceneID; // @synthesize keyboardFocusSceneID=_keyboardFocusSceneID;
 @property(nonatomic, setter=_setPreventsCornerRadiusUpdate:) _Bool _preventsCornerRadiusUpdate; // @synthesize _preventsCornerRadiusUpdate=__preventsCornerRadiusUpdate;
 @property(readonly, nonatomic) SBHomeGrabberRotationView *homeGrabberRotationView; // @synthesize homeGrabberRotationView=_homeGrabberRotationView;
+@property(retain, nonatomic) id <BSInvalidatable> pushPopWallpaperRequireAssertion; // @synthesize pushPopWallpaperRequireAssertion=_pushPopWallpaperRequireAssertion;
 @property(nonatomic, setter=_setNubStyle:) unsigned long long _nubStyle; // @synthesize _nubStyle;
 @property(nonatomic, setter=_setSeparatorViewAlpha:) double _separatorViewAlpha; // @synthesize _separatorViewAlpha;
-- (void).cxx_destruct;
 - (struct CGSize)_layoutSizeForLayoutRole:(long long)arg1 spaceConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3 frameOptions:(unsigned long long)arg4;
 - (struct CGRect)_layoutFrameForLayoutRole:(long long)arg1 inLayoutState:(id)arg2;
 - (unsigned int)_convertAnchorEdge:(unsigned int)arg1 toLayoutOrientation:(long long)arg2;
@@ -57,6 +61,9 @@
 - (struct CGRect)_separatorViewFrame;
 - (void)_createOrDestroyHomeGrabberRotationViewIfNecessary;
 - (id)_createStatusBarWithFrame:(struct CGRect)arg1 interfaceOrientation:(long long)arg2 reason:(id)arg3;
+- (id)styleForRegion:(id)arg1 forView:(id)arg2;
+- (struct UIEdgeInsets)pointerInteractionHitTestInsetsForView:(id)arg1;
+- (_Bool)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
 - (void)statusBarBreadcrumbProviderDidUpdateDisplayProperties:(id)arg1;
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
@@ -148,6 +155,7 @@
 - (id)initWithSceneManager:(id)arg1;
 - (id)animationWrapperViewForLayoutState:(id)arg1 roleMask:(unsigned long long)arg2 interfaceOrientation:(long long)arg3 maskDisplayCorners:(_Bool)arg4;
 - (id)_animationWrapperViewForElement:(id)arg1 entity:(id)arg2 layoutState:(id)arg3;
+- (void)_fadeStatusBarStylesBetweenFromAndToViewControllersWithSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_rotateAppViewsWithAnimationSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resizeAppViewsWithAnimationSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performJiggleHintAnimationForApplicationSceneHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -162,8 +170,10 @@
 - (id)_replaceSingleAppAnimationControllerWithTransitionRequest:(id)arg1;
 - (id)_removeAppAnimationControllerWithTransitionRequest:(id)arg1;
 - (id)_rotateAppsAnimationControllerWithTransitionRequest:(id)arg1;
+- (id)_fadeStatusBarStylesBetweenFromAndToViewControllersWithTransitionRequest:(id)arg1;
 - (id)_resizeAppsAnimationControllerWithTransitionRequest:(id)arg1;
 - (id)_jiggleAppAnimationControllerForTransitionRequest:(id)arg1;
+- (id)_bannerUnfurlAnimationControllerForTransitionRequest:(id)arg1;
 - (id)animationControllerForRotatingWithTransitionRequest:(id)arg1;
 - (id)animationControllerForTransitionRequest:(id)arg1;
 - (double)normalizedDismissRightLocation;

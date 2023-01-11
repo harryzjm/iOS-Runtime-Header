@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
 @interface GEORating : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_uRL;
     double _maxScore;
     NSString *_provider;
+    NSString *_ratingCategoryId;
     NSMutableArray *_reviews;
     double _score;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _numberOfRatings;
     int _numberOfReviews;
     struct {
@@ -31,15 +34,9 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_uRL:1;
         unsigned int read_provider:1;
+        unsigned int read_ratingCategoryId:1;
         unsigned int read_reviews:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_uRL:1;
-        unsigned int wrote_maxScore:1;
-        unsigned int wrote_provider:1;
-        unsigned int wrote_reviews:1;
-        unsigned int wrote_score:1;
-        unsigned int wrote_numberOfRatings:1;
-        unsigned int wrote_numberOfReviews:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,29 +53,32 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *ratingCategoryId;
+@property(readonly, nonatomic) _Bool hasRatingCategoryId;
 @property(nonatomic) _Bool hasNumberOfReviews;
 @property(nonatomic) int numberOfReviews;
 - (id)reviewAtIndex:(unsigned long long)arg1;
 - (unsigned long long)reviewsCount;
-- (void)_addNoFlagsReview:(id)arg1;
 - (void)addReview:(id)arg1;
 - (void)clearReviews;
 @property(retain, nonatomic) NSMutableArray *reviews;
-- (void)_readReviews;
 @property(retain, nonatomic) NSString *uRL;
 @property(readonly, nonatomic) _Bool hasURL;
-- (void)_readURL;
 @property(retain, nonatomic) NSString *provider;
 @property(readonly, nonatomic) _Bool hasProvider;
-- (void)_readProvider;
 @property(nonatomic) _Bool hasNumberOfRatings;
 @property(nonatomic) int numberOfRatings;
 @property(nonatomic) _Bool hasMaxScore;
 @property(nonatomic) double maxScore;
 @property(nonatomic) _Bool hasScore;
 @property(nonatomic) double score;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithSampleSizeForUserRatingScore:(unsigned int)arg1 normalizedUserRatingScore:(float)arg2;
 
 @end

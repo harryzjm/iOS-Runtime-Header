@@ -13,13 +13,19 @@
 
 @interface CKAlertController : UIAlertController <CKAdaptivePresentedControllerProtocol>
 {
+    _Bool _wantsWindowedPresentation;
+    _Bool _preserveModalPresentationStyle;
+    _Bool _shouldHidePresentingWindow;
     id <CKAlertControllerDelegate> _alertDelegate;
 }
 
-@property(nonatomic) __weak id <CKAlertControllerDelegate> alertDelegate; // @synthesize alertDelegate=_alertDelegate;
++ (id)alertControllerWithTitle:(id)arg1 message:(id)arg2 preferredStyle:(long long)arg3;
 - (void).cxx_destruct;
-- (_Bool)preserveModalPresentationStyle;
-- (_Bool)wantsWindowedPresentation;
+@property(nonatomic) __weak id <CKAlertControllerDelegate> alertDelegate; // @synthesize alertDelegate=_alertDelegate;
+@property(nonatomic) _Bool shouldHidePresentingWindow; // @synthesize shouldHidePresentingWindow=_shouldHidePresentingWindow;
+@property(nonatomic) _Bool preserveModalPresentationStyle; // @synthesize preserveModalPresentationStyle=_preserveModalPresentationStyle;
+@property(nonatomic) _Bool wantsWindowedPresentation; // @synthesize wantsWindowedPresentation=_wantsWindowedPresentation;
+- (void)presentFromViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addAction:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (_Bool)allowsRotation;

@@ -18,12 +18,13 @@
     struct UIEdgeInsets _padding;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(nonatomic) struct CGPoint anchorViewportCenter; // @synthesize anchorViewportCenter=_anchorViewportCenter;
 @property(retain, nonatomic) id anchorObjectReference; // @synthesize anchorObjectReference=_anchorObjectReference;
 @property(readonly, nonatomic) NSArray *layers; // @synthesize layers=_layers;
 @property(readonly, nonatomic) PXGLayout *primaryLayer; // @synthesize primaryLayer=_primaryLayer;
-- (void).cxx_destruct;
+- (id)axSpriteIndexes;
 - (void)enumerateVisibleAnchoringLayoutsUsingBlock:(CDUnknownBlockType)arg1;
 - (long long)sublayoutIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
 - (struct CGRect)sublayout:(id)arg1 visibleRectForRequestedVisibleRect:(struct CGRect)arg2;
@@ -32,6 +33,7 @@
 - (void)sublayoutDidChangeContentSize:(id)arg1;
 - (void)sublayoutNeedsUpdate:(id)arg1;
 - (void)userInterfaceDirectionDidChange;
+- (void)scrollSpeedRegimeDidChange;
 - (void)screenScaleDidChange;
 - (void)safeAreaInsetsDidChange;
 - (void)visibleRectDidChange;

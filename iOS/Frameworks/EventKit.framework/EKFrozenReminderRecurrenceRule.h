@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)daysOfTheWeekFromREMRecurrenceRule;
 - (long long)remWeekdayToEKWeekday:(long long)arg1;
 - (long long)ekWeekdayToREMWeekday:(long long)arg1;
-- (int)firstDayOfTheWeek;
+- (int)firstDayOfTheWeekRaw;
 - (long long)interval;
 - (int)frequency;
 - (unsigned long long)count;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_recurrenceRule;
 - (id)remObjectID;
 - (id)uniqueIdentifier;
-- (id)initWithAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
+- (id)initWithAlternateUniverseObject:(id)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (id)initWithREMObject:(id)arg1 inStore:(id)arg2 withChanges:(id)arg3;
 - (id)initWithREMObject:(id)arg1 inStore:(id)arg2;
 

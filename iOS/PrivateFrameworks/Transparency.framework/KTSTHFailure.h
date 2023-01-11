@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class KTTreeHead, NSData;
+@class KTTreeHead, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface KTSTHFailure : NSManagedObject
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(nonatomic) long long errorCode; // @dynamic errorCode;
+@property(copy, nonatomic) NSString *errorDomain; // @dynamic errorDomain;
 @property(retain, nonatomic) NSData *proofOfFailure; // @dynamic proofOfFailure;
 @property(retain, nonatomic) KTTreeHead *sth; // @dynamic sth;
+@property(nonatomic) long long verificationType; // @dynamic verificationType;
 
 @end
 

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)accessibilityNavigationStyle;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)generateSnapshotImageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

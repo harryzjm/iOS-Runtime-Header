@@ -15,6 +15,7 @@
 {
     _Bool _shared;
     _Bool _isSystemService;
+    unsigned int _extensionPointPlatform;
     PKServicePersonality *_solePersonality;
     id <PKServiceDelegate> _delegate;
     NSXPCListener *_serviceListener;
@@ -28,6 +29,7 @@
 + (int)_defaultRun:(int)arg1 arguments:(const char **)arg2;
 + (id)defaultService;
 + (void)main;
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_source> *firstHostRequestTimer; // @synthesize firstHostRequestTimer=_firstHostRequestTimer;
 @property(retain) NSObject<OS_dispatch_source> *terminationTimer; // @synthesize terminationTimer=_terminationTimer;
 @property _Bool isSystemService; // @synthesize isSystemService=_isSystemService;
@@ -37,7 +39,7 @@
 @property(retain) NSMutableDictionary *personalities; // @synthesize personalities=_personalities;
 @property(retain) NSXPCListener *serviceListener; // @synthesize serviceListener=_serviceListener;
 @property(retain) id <PKServiceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property unsigned int extensionPointPlatform; // @synthesize extensionPointPlatform=_extensionPointPlatform;
 - (void)cancelTermination;
 - (void)scheduleTermination:(double)arg1;
 - (void)checkEnvironment:(id)arg1;

@@ -4,24 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView, UIWindow;
+@class CALayer, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface SCNTextureUIKitSource
 {
-    _Bool _setup;
     _Bool _windowReady;
     id _source;
     UIWindow *_uiWindow;
     UIView *_uiView;
     struct CGSize _sizeCache;
     unsigned int _textureID;
+    CALayer *_uiWindowLayer;
+    _Bool _isOpaque;
     struct __C3DEngineContext *_engineContext;
     struct __C3DTextureSampler *_textureSampler;
 }
 
+@property(nonatomic) _Bool isOpaque; // @synthesize isOpaque=_isOpaque;
 @property(retain, nonatomic) id source; // @synthesize source=_source;
 @property(retain, nonatomic) UIView *uiView; // @synthesize uiView=_uiView;
+@property(retain, nonatomic) CALayer *uiWindowLayer; // @synthesize uiWindowLayer=_uiWindowLayer;
 @property(retain, nonatomic) UIWindow *uiWindow; // @synthesize uiWindow=_uiWindow;
 - (void)_layerTreeDidUpdate;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
@@ -33,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)setup;
 - (void)dealloc;
+- (_Bool)requiresMainThreadUpdates;
+- (_Bool)shouldFlip;
 - (_Bool)supportsMetal;
 
 @end

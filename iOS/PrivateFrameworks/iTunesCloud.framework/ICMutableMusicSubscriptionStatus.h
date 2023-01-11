@@ -8,14 +8,15 @@
 
 @interface ICMutableMusicSubscriptionStatus
 {
+    long long _statusCode;
 }
 
+@property(nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property(nonatomic) long long carrierBundlingErrorCode; // @dynamic carrierBundlingErrorCode;
 @property(copy, nonatomic) NSString *sessionIdentifier; // @dynamic sessionIdentifier;
 @property(copy, nonatomic) NSString *cellularOperatorName; // @dynamic cellularOperatorName;
 @property(copy, nonatomic) NSString *phoneNumber; // @dynamic phoneNumber;
 @property(copy, nonatomic) NSArray *termsStatusList; // @dynamic termsStatusList;
-@property(nonatomic) long long statusCode; // @dynamic statusCode;
 @property(nonatomic, getter=isDiscoveryModeEligible) _Bool discoveryModeEligible; // @dynamic discoveryModeEligible;
 @property(nonatomic, getter=isAdministrator) _Bool administrator; // @dynamic administrator;
 @property(nonatomic) long long statusType; // @dynamic statusType;

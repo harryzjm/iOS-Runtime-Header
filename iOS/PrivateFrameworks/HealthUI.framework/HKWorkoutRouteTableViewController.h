@@ -13,10 +13,10 @@
     NSMutableArray *_routeData;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *routeData; // @synthesize routeData=_routeData;
 @property(retain, nonatomic) HKMapRouteTableViewCell *mapRouteTableViewCell; // @synthesize mapRouteTableViewCell=_mapRouteTableViewCell;
 @property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-- (void).cxx_destruct;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -27,9 +27,9 @@
 - (void)addRouteData:(id)arg1 hasFinishedQuery:(_Bool)arg2;
 - (void)loadRoute;
 @property(readonly) HKWorkoutRoute *workoutRoute;
-- (id)initWithSample:(id)arg1 usingInsetStyling:(_Bool)arg2 delegate:(id)arg3;
+- (id)initWithSample:(id)arg1 usingInsetStyling:(_Bool)arg2 profileName:(id)arg3 delegate:(id)arg4;
 - (void)viewDidLoad;
-- (id)initWithWorkoutRoute:(id)arg1 healthStore:(id)arg2 usingInsetStyling:(_Bool)arg3 delegate:(id)arg4;
+- (id)initWithWorkoutRoute:(id)arg1 healthStore:(id)arg2 usingInsetStyling:(_Bool)arg3 profileName:(id)arg4 delegate:(id)arg5;
 
 @end
 

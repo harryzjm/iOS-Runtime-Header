@@ -8,11 +8,11 @@
 
 #import <PhotosUICore/PLSInvitationRecipient-Protocol.h>
 
-@class MFComposeRecipient, NSArray, NSMutableArray, NSString;
+@class CNComposeRecipient, NSArray, NSMutableArray, NSString;
 
 @interface PXInvitationRecipient : NSObject <PLSInvitationRecipient>
 {
-    MFComposeRecipient *_mfRecipient;
+    CNComposeRecipient *_recipient;
     NSString *_firstName;
     NSString *_lastName;
     NSMutableArray *_allEmails;
@@ -22,19 +22,20 @@
     NSString *_invalidAddressString;
 }
 
-+ (id)validPhoneNumberFromString:(id)arg1;
-+ (id)validEmailAddressFromComposeRecipient:(id)arg1;
++ (id)_validPhoneNumberFromString:(id)arg1;
++ (id)_validEmailAddressFromComposeRecipient:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *invalidAddressString; // @synthesize invalidAddressString=_invalidAddressString;
 @property(readonly, copy, nonatomic) NSString *selectedEmailString; // @synthesize selectedEmailString=_selectedEmailString;
 @property(readonly, copy, nonatomic) NSString *selectedPhoneString; // @synthesize selectedPhoneString=_selectedPhoneString;
-@property(readonly, retain, nonatomic) NSArray *allPhones; // @synthesize allPhones=_allPhones;
-@property(readonly, retain, nonatomic) NSArray *allEmails; // @synthesize allEmails=_allEmails;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *allPhones; // @synthesize allPhones=_allPhones;
+@property(readonly, nonatomic) NSArray *allEmails; // @synthesize allEmails=_allEmails;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSString *lastName;
 @property(readonly, copy, nonatomic) NSString *firstName;
-- (id)displayName;
+@property(readonly, copy, nonatomic) NSString *displayName;
 - (id)initWithRecipient:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

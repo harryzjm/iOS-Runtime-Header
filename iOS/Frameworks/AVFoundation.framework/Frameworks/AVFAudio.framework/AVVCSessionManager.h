@@ -26,11 +26,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (_Bool)isAirplayOneOfTheOutputRoutes:(id)arg1;
+- (int)enableSmartRoutingConsideration:(_Bool)arg1;
 - (void)setSessionActivationOptions:(unsigned int)arg1;
 - (unsigned int)getSessionActivationOptions;
 - (_Bool)isSessionOutputInWirelessSplitterMode;
 - (void)changeDuckOthersOption:(_Bool)arg1;
-- (int)setSessionBufferSizeForRecordingEngine:(struct AVVCRecordingEngine *)arg1;
+- (int)setSessionBufferSize:(int)arg1;
 - (int)setSessionSampleRateForActivationMode:(long long)arg1;
 - (int)setSessionAudioHWControlFlagsForActivationMode:(long long)arg1;
 - (int)setSessionCategoryModeOptionsForActivationMode:(long long)arg1;

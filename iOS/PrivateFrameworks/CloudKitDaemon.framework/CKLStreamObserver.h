@@ -16,16 +16,17 @@
     NSMutableDictionary *_processNamesByPath;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *processNamesByPath; // @synthesize processNamesByPath=_processNamesByPath;
 @property(readonly, nonatomic) NSDateFormatter *formatter; // @synthesize formatter=_formatter;
 @property(retain, nonatomic) CKLEventFilter *filter; // @synthesize filter=_filter;
 @property(nonatomic) _Bool colorOutput; // @synthesize colorOutput=_colorOutput;
-- (void).cxx_destruct;
 - (void)finish;
 - (void)eventMatched:(id)arg1;
 - (void)_handleEvent:(id)arg1;
 - (id)_processNameForPath:(id)arg1;
 @property(retain, nonatomic) NSString *processName;
+@property(nonatomic) _Bool onlyTestLogs;
 @property(nonatomic) _Bool simulatorOnly;
 - (id)initWithLogTypes:(unsigned long long)arg1;
 

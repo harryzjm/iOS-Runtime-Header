@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSSet;
 
 @interface SignpostAnimationInterval
 {
@@ -27,9 +27,12 @@
     NSArray *_longHIDLatencies;
     NSArray *_allRenderServerRenders;
     NSArray *_longRenderServerRenders;
+    NSSet *_allFirstFrameLifetimesWithCommits;
 }
 
 + (id)serializationTypeNumber;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *allFirstFrameLifetimesWithCommits; // @synthesize allFirstFrameLifetimesWithCommits=_allFirstFrameLifetimesWithCommits;
 @property(readonly, nonatomic) NSArray *longRenderServerRenders; // @synthesize longRenderServerRenders=_longRenderServerRenders;
 @property(readonly, nonatomic) NSArray *allRenderServerRenders; // @synthesize allRenderServerRenders=_allRenderServerRenders;
 @property(readonly, nonatomic) NSArray *longHIDLatencies; // @synthesize longHIDLatencies=_longHIDLatencies;
@@ -49,7 +52,6 @@
 @property(readonly, nonatomic) NSArray *allSystemwideCommits; // @synthesize allSystemwideCommits=_allSystemwideCommits;
 @property(readonly, nonatomic) NSArray *longCommits; // @synthesize longCommits=_longCommits;
 @property(readonly, nonatomic) NSArray *allCommits; // @synthesize allCommits=_allCommits;
-- (void).cxx_destruct;
 - (double)durationToFirstEndSeconds:(id)arg1;
 - (double)durationToFirstBeginSeconds:(id)arg1;
 - (unsigned long long)durationToFirstEndMachContinuousTime:(id)arg1;
@@ -62,9 +64,19 @@
 - (id)_frameDescription;
 - (id)_animationStatsDescription;
 - (id)_statsStringForTimeIntervals:(id)arg1 label:(id)arg2;
+@property(readonly, nonatomic) double nonFirstFrameGlitchTimeRatioMsPerS;
+@property(readonly, nonatomic) double nonFirstFrameGlitchTimeRatio;
+@property(readonly, nonatomic) NSArray *contributedNonFirstFrameGlitches;
+@property(readonly, nonatomic) NSArray *nonFirstFrameGlitches;
+@property(readonly, nonatomic) double firstFrameGlitchTimeRatioMsPerS;
+@property(readonly, nonatomic) double firstFrameGlitchTimeRatio;
+@property(readonly, nonatomic) NSArray *contributedFirstFrameGlitches;
+@property(readonly, nonatomic) NSArray *firstFrameGlitches;
+@property(readonly, nonatomic) double glitchTimeRatioMsPerS;
 @property(readonly, nonatomic) double glitchTimeRatio;
 @property(readonly, nonatomic) NSArray *contributedGlitches;
 @property(readonly, nonatomic) NSArray *glitches;
+- (double)_timeRatioForTimeIntervalArray:(id)arg1;
 - (id)_poorPerfFrameDescription;
 - (id)_detailedFrameDescription;
 - (id)_descriptionStringForColumn:(unsigned long long)arg1 timeFormat:(unsigned long long)arg2 asBegin:(_Bool)arg3;

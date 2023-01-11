@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Accounts/ACProtobufCoding-Protocol.h>
+#import <Accounts/NSCopying-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
 @class ACAccountStore, NSSet, NSString, NSURL;
 
-@interface ACAccountType : NSObject <ACProtobufCoding, NSSecureCoding>
+@interface ACAccountType : NSObject <ACProtobufCoding, NSCopying, NSSecureCoding>
 {
     NSString *_accountTypeDescription;
     NSString *_identifier;
@@ -26,20 +27,18 @@
     NSSet *_supportedDataclasses;
     NSSet *_syncableDataclasses;
     NSSet *_accessKeys;
-    _Bool _encryptAccountProperties;
     NSString *_owningBundleID;
 }
 
 + (id)allIdentifiers;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *owningBundleID; // @synthesize owningBundleID=_owningBundleID;
 @property(nonatomic, getter=isObsolete) _Bool obsolete; // @synthesize obsolete=_obsolete;
 @property(nonatomic) _Bool supportsMultipleAccounts; // @synthesize supportsMultipleAccounts=_supportsMultipleAccounts;
 @property(nonatomic) __weak ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic) _Bool encryptAccountProperties; // @synthesize encryptAccountProperties=_encryptAccountProperties;
 @property(readonly, nonatomic) NSSet *accessKeys; // @synthesize accessKeys=_accessKeys;
 @property(nonatomic) int supportsAuthentication; // @synthesize supportsAuthentication=_supportsAuthentication;
 @property(readonly, nonatomic) _Bool accessGranted;

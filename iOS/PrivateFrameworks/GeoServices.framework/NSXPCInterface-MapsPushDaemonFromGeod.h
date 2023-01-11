@@ -8,5 +8,6 @@
 
 @interface NSXPCInterface (MapsPushDaemonFromGeod)
 + (id)geo_MapsPushDaemonFromGeodInterface;
++ (id)_geo_GEOAppleMediaServicesProtocolInterface;
 @end
 

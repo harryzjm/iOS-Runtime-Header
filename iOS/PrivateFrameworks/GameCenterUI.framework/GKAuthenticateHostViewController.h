@@ -10,17 +10,17 @@
 
 @interface GKAuthenticateHostViewController <GKAuthenticateHostProtocol>
 {
-    GKHostedAuthenticateViewController *_delegateWeak;
+    GKHostedAuthenticateViewController *_delegate;
 }
 
 + (_Bool)dismissAutomaticallyAfterExtensionCompletion;
 + (id)authenticateExtension;
+- (void).cxx_destruct;
+@property(nonatomic) __weak GKHostedAuthenticateViewController *delegate; // @synthesize delegate=_delegate;
 - (void)applicationWillTerminate:(id)arg1;
 - (void)extensionIsCanceling;
 - (void)extensionIsFinishing;
 - (void)messageFromExtension:(id)arg1;
-@property(nonatomic) GKHostedAuthenticateViewController *delegate; // @synthesize delegate=_delegateWeak;
-- (void)dealloc;
 - (void)viewDidLoad;
 
 // Remaining properties

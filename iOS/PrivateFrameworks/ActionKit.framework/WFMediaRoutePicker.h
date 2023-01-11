@@ -8,27 +8,28 @@
 
 #import <ActionKit/MPAVRoutingControllerDelegate-Protocol.h>
 
-@class MPAVRoutingController, NSArray, NSMutableArray, NSString;
+@class MPAVRoutingController, NSArray, NSMutableArray, NSString, WFBluetoothSettingsClient;
 @protocol OS_dispatch_queue;
 
 @interface WFMediaRoutePicker : NSObject <MPAVRoutingControllerDelegate>
 {
     long long _routeType;
     MPAVRoutingController *_routingController;
+    WFBluetoothSettingsClient *_bluetoothClient;
     NSMutableArray *_observers;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSMutableArray *observers; // @synthesize observers=_observers;
+@property(readonly, nonatomic) WFBluetoothSettingsClient *bluetoothClient; // @synthesize bluetoothClient=_bluetoothClient;
 @property(retain, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
 @property(readonly, nonatomic) long long routeType; // @synthesize routeType=_routeType;
-- (void).cxx_destruct;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)findHandoffRoutesMatchingDescriptors:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)findHandoffRouteMatchingDescriptor:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)handOffFromEndpoint:(id)arg1 toEndpoint:(id)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)establishConnectionToEndpoints:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)handOffFromSourceUID:(id)arg1 toDestinationUID:(id)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)selectRoute:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)findRoutesMatchingDescriptors:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)findRouteMatchingDescriptor:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -37,6 +38,7 @@
 - (void)addAvailableRoutesObserver:(id)arg1;
 - (void)stopDiscoveringRoutes;
 - (void)startDiscoveringRoutes;
+- (void)getPairedAudioDevicesMatchingRouteDescriptor:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)initWithRouteType:(long long)arg1;
 - (id)init;
 

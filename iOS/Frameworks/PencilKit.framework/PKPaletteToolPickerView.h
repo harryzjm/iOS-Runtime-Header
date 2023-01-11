@@ -8,84 +8,109 @@
 
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
+#import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
-#import <PencilKit/PKPaletteViewStateObserving-Protocol.h>
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, PKInk, PKPaletteToolPickerOverlayView, PKPaletteToolView, UIScrollView, UIStackView, UIViewController;
-@protocol PKPalettePopoverPresenting><PKPaletteToolPickerViewDelegate, PKPaletteViewStateObservable;
+@class NSArray, NSHashTable, NSMutableArray, NSString, PKInk, PKPaletteAttributeViewController, PKPaletteToolPickerOverlayView, PKPaletteToolView, UIScrollView, UIStackView;
+@protocol PKDrawingPaletteStatistics, PKPalettePopoverPresenting><PKPaletteToolPickerViewDelegate;
 
-@interface PKPaletteToolPickerView : UIView <UIPopoverPresentationControllerDelegate, PKEdgeLocatable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling, PKPaletteViewStateObserving>
+@interface PKPaletteToolPickerView : UIView <UIPopoverPresentationControllerDelegate, PKEdgeLocatable, PKPalettePopoverDismissing, PKPalettePopoverUpdating, PKPaletteViewSizeScaling>
 {
-    _Bool _isRulerActive;
     _Bool _usingShortestToolSpacing;
+    _Bool _showsHandwritingTool;
     unsigned long long _edgeLocation;
     double _scalingFactor;
     id <PKPalettePopoverPresenting><PKPaletteToolPickerViewDelegate> _delegate;
-    id <PKPaletteViewStateObservable> _paletteViewState;
+    long long _colorUserInterfaceStyle;
+    NSString *_handwritingToolLocaleIdentifier;
+    id <PKDrawingPaletteStatistics> _drawingPaletteStatistics;
     UIScrollView *_scrollView;
     UIStackView *_stackView;
     PKPaletteToolPickerOverlayView *_overlayView;
-    NSArray *_tools;
-    NSLayoutConstraint *_stackViewWidthConstraint;
+    NSMutableArray *_toolViews;
     NSMutableArray *_toolsWidthConstraints;
     NSMutableArray *_toolsHeightConstraints;
     NSMutableArray *_toolsWidthCompactConstraints;
     PKPaletteToolView *_lastSelectedTool;
-    UIViewController *_presentedAttributePickerPopover;
+    PKPaletteAttributeViewController *_toolAttributesPopover;
+    NSHashTable *_presentedViewControllers;
 }
 
 + (id)defaultToolIdentifiers;
-@property(retain, nonatomic) UIViewController *presentedAttributePickerPopover; // @synthesize presentedAttributePickerPopover=_presentedAttributePickerPopover;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSHashTable *presentedViewControllers; // @synthesize presentedViewControllers=_presentedViewControllers;
+@property(retain, nonatomic) PKPaletteAttributeViewController *toolAttributesPopover; // @synthesize toolAttributesPopover=_toolAttributesPopover;
 @property(retain, nonatomic) PKPaletteToolView *lastSelectedTool; // @synthesize lastSelectedTool=_lastSelectedTool;
 @property(retain, nonatomic) NSMutableArray *toolsWidthCompactConstraints; // @synthesize toolsWidthCompactConstraints=_toolsWidthCompactConstraints;
 @property(retain, nonatomic) NSMutableArray *toolsHeightConstraints; // @synthesize toolsHeightConstraints=_toolsHeightConstraints;
 @property(retain, nonatomic) NSMutableArray *toolsWidthConstraints; // @synthesize toolsWidthConstraints=_toolsWidthConstraints;
-@property(retain, nonatomic) NSLayoutConstraint *stackViewWidthConstraint; // @synthesize stackViewWidthConstraint=_stackViewWidthConstraint;
-@property(retain, nonatomic) NSArray *tools; // @synthesize tools=_tools;
+@property(retain, nonatomic) NSMutableArray *toolViews; // @synthesize toolViews=_toolViews;
 @property(retain, nonatomic) PKPaletteToolPickerOverlayView *overlayView; // @synthesize overlayView=_overlayView;
 @property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property(nonatomic) __weak id <PKPaletteViewStateObservable> paletteViewState; // @synthesize paletteViewState=_paletteViewState;
+@property(retain, nonatomic) id <PKDrawingPaletteStatistics> drawingPaletteStatistics; // @synthesize drawingPaletteStatistics=_drawingPaletteStatistics;
+@property(copy, nonatomic) NSString *handwritingToolLocaleIdentifier; // @synthesize handwritingToolLocaleIdentifier=_handwritingToolLocaleIdentifier;
+@property(nonatomic) _Bool showsHandwritingTool; // @synthesize showsHandwritingTool=_showsHandwritingTool;
 @property(nonatomic, getter=isUsingShortestToolSpacing) _Bool usingShortestToolSpacing; // @synthesize usingShortestToolSpacing=_usingShortestToolSpacing;
-@property(nonatomic) _Bool isRulerActive; // @synthesize isRulerActive=_isRulerActive;
+@property(nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property(nonatomic) __weak id <PKPalettePopoverPresenting><PKPaletteToolPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property(nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
-- (void).cxx_destruct;
-- (void)didChangeAnnotationSupport:(id)arg1;
-- (id)_firstInkingTool;
+- (_Bool)_isAllToolsEdgeLocationEqualsTo:(unsigned long long)arg1;
+- (_Bool)_isAllToolsColorUserInterfaceStyleEqualsTo:(long long)arg1;
+@property(readonly, nonatomic, getter=isHandwritingToolSelected) _Bool handwritingToolSelected;
+- (void)_removeHandwritingTool;
+- (_Bool)_isHandwritingToolInstalled;
+- (void)_installHandwritingToolIfNeeded;
+- (id)_handwritingToolView;
 - (void)toggleBetweenLastSelectedToolAndCurrentlySelectedTool;
 - (void)toggleBetweenLastSelectedToolAndEraser;
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_updateToolsScaleFactor;
+- (_Bool)_useCompactSize;
+- (void)_updateToolsUI;
+- (double)_stackViewSpacing;
 - (void)_updateUI;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_toolAttributesDidChange:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
+- (void)updatePopoverUI;
 - (id)sourceViewForPopoverPresentationForTool:(id)arg1;
 - (struct CGRect)sourceRectForPopoverPresentationForTool:(id)arg1;
+- (_Bool)_canPresentToolAttributesPopover;
 - (void)_showToolAttributesPopover;
+@property(readonly, nonatomic, getter=isLassoToolSelected) _Bool lassoToolSelected;
 @property(readonly, nonatomic) _Bool selectedToolSupportsChangingColor;
 @property(readonly, nonatomic) _Bool selectedToolSupportsDisplayingSelectedColor;
-- (id)_eraserTool;
-- (id)_selectedTool;
-- (id)selectedToolIdentifier;
-- (void)setSelectedToolInkColor:(id)arg1;
-@property(retain, nonatomic) PKInk *selectedToolInk;
-- (void)setSelectedToolIdentifier:(id)arg1;
+- (id)_eraserToolView;
 - (id)_selectedToolView;
+- (void)setSelectedToolInkColor:(id)arg1 ignoreColorOpacity:(_Bool)arg2;
+@property(retain, nonatomic) PKInk *selectedToolInk;
+@property(readonly, nonatomic) unsigned long long _selectedToolsCount;
+- (void)_unselectAllTools;
+- (void)_selectToolView:(id)arg1;
+- (void)selectToolWithIdentifier:(id)arg1;
+- (_Bool)_canSelectToolWithIdentifier:(id)arg1;
+@property(readonly, nonatomic) PKPaletteToolView *selectedToolView;
 - (void)_toolTapGestureRecognizer:(id)arg1;
 - (void)updateConstraints;
-- (void)_installOverlayView;
-- (void)_installTools;
-- (void)_installStackView;
-- (void)_installScrollView;
+- (id)_toolViewWithIdentifier:(id)arg1;
+- (void)_rebuildAndActivateToolsLayoutConstraints;
+- (void)_removeToolView:(id)arg1;
+- (void)_insertToolView:(id)arg1 atUserInterfaceIndex:(unsigned long long)arg2;
+- (_Bool)_canInsertToolView:(id)arg1;
+- (void)_installToolViewsWithIdentifiers:(id)arg1;
+- (void)_installOverlayViewInView:(id)arg1;
+- (void)_installStackViewInScrollView:(id)arg1;
+- (void)_installScrollViewInView:(id)arg1;
 @property(copy, nonatomic) NSArray *toolProperties;
 @property(copy, nonatomic) NSArray *toolIdentifiers;
 - (id)toolsFromToolIdentifiers:(id)arg1;
-- (id)initWithPaletteViewStateObservable:(id)arg1;
+- (id)_firstInkingTool;
+- (void)_setupDefaultLastSelectedTool;
+- (void)_selectDefaultInkingTool;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

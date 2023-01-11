@@ -28,11 +28,11 @@ __attribute__((visibility("hidden")))
     CEKBadgeTextView *_badgeView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CEKBadgeTextView *badgeView; // @synthesize badgeView=_badgeView;
 @property(retain, nonatomic) PUAdjustmentsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic, setter=_setSnappingController:) PXUISnappingController *_snappingController; // @synthesize _snappingController=__snappingController;
 @property(retain, nonatomic) PUAutoAdjustmentController *autoAdjustmentController; // @synthesize autoAdjustmentController=_autoAdjustmentController;
-- (void).cxx_destruct;
 - (void)ppt_selectBWSlider:(CDUnknownBlockType)arg1;
 - (void)ppt_selectColorSlider:(CDUnknownBlockType)arg1;
 - (void)ppt_selectLightSlider:(CDUnknownBlockType)arg1;
@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)adjustmentsViewControllerDidUpdateSelectedControl:(id)arg1;
 - (void)compositionControllerDidChangeForAdjustments:(id)arg1;
 - (void)specDidChange;
+- (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (long long)toolControllerTag;
 - (void)didBecomeActiveTool;
 - (void)willBecomeActiveTool;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)setBackdropViewGroupName:(id)arg1;
 - (void)setUseGradientBackground:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_updateBackgroundAnimated:(_Bool)arg1;
+- (void)updateAdjustmentControls;
 - (void)mediaViewIsReady;
 - (void)setupWithAsset:(id)arg1 compositionController:(id)arg2 editSource:(id)arg3 overcaptureEditSource:(id)arg4 valuesCalculator:(id)arg5;
 - (void)viewDidLayoutSubviews;

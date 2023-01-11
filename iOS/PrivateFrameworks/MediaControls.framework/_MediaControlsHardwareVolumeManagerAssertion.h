@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface _MediaControlsHardwareVolumeManagerAssertion : NSObject <MediaControlsInvalidatable>
 {
     MediaControlsHardwareVolumeManager *_volumeManager;
+    NSString *_reason;
 }
 
-@property(nonatomic) __weak MediaControlsHardwareVolumeManager *volumeManager; // @synthesize volumeManager=_volumeManager;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
+@property(nonatomic) __weak MediaControlsHardwareVolumeManager *volumeManager; // @synthesize volumeManager=_volumeManager;
 - (void)dealloc;
 - (void)invalidate;
 

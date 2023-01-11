@@ -13,11 +13,13 @@
     _Bool _operationCancelled;
     _Bool _operationReady;
     int _notifyToken;
+    CDUnknownBlockType _listenerStartedBlock;
     unsigned long long _notificationType;
     double _timeOutPeriod;
     CDUnknownBlockType _notificationListenerCompletionBlock;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
 @property(nonatomic) _Bool operationReady; // @synthesize operationReady=_operationReady;
 @property(nonatomic) _Bool operationCancelled; // @synthesize operationCancelled=_operationCancelled;
@@ -26,7 +28,7 @@
 @property(copy, nonatomic) CDUnknownBlockType notificationListenerCompletionBlock; // @synthesize notificationListenerCompletionBlock=_notificationListenerCompletionBlock;
 @property(nonatomic) double timeOutPeriod; // @synthesize timeOutPeriod=_timeOutPeriod;
 @property(nonatomic) unsigned long long notificationType; // @synthesize notificationType=_notificationType;
-- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType listenerStartedBlock; // @synthesize listenerStartedBlock=_listenerStartedBlock;
 - (id)_notificationForNotificationType:(unsigned long long)arg1;
 - (id)_errorForNotificationType:(unsigned long long)arg1;
 - (void)_endOperation;

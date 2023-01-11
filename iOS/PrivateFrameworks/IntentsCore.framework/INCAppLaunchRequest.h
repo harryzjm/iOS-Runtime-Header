@@ -19,11 +19,11 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 - (void)observeForAppLaunchWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performWithService:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -33,7 +33,6 @@
 - (unsigned long long)hash;
 - (id)description;
 - (id)initWithBundleIdentifier:(id)arg1 options:(id)arg2 URL:(id)arg3 userActivity:(id)arg4;
-- (id)initWithSockPuppetApplicationProxy:(id)arg1 userActivity:(id)arg2;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (id)initWithAudioCallIntentForCarousel:(id)arg1 error:(id *)arg2;
 - (id)initWithIntent:(id)arg1 userActivity:(id)arg2 inBackground:(_Bool)arg3 error:(id *)arg4;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class DEDController, DEDSharingInbound, NSMutableDictionary, NSMutableSet, SFDeviceDiscovery, SFService;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_os_log;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface DEDSharingConnection : NSObject
 {
@@ -19,7 +19,6 @@
     NSMutableDictionary *_deviceSessions;
     NSMutableDictionary *_discoveredDevices;
     NSObject<OS_dispatch_queue> *_run_queue;
-    NSObject<OS_os_log> *_log;
     NSObject<OS_dispatch_semaphore> *_bluetoothSessionSemaphore;
     SFService *_pingService;
     SFDeviceDiscovery *_pingDiscovery;
@@ -30,6 +29,7 @@
 }
 
 + (void)checkIn;
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType deviceStatusCallback; // @synthesize deviceStatusCallback=_deviceStatusCallback;
 @property(retain, nonatomic) SFDeviceDiscovery *pongDiscovery; // @synthesize pongDiscovery=_pongDiscovery;
 @property(retain, nonatomic) SFService *workerService; // @synthesize workerService=_workerService;
@@ -37,7 +37,6 @@
 @property(retain, nonatomic) SFDeviceDiscovery *pingDiscovery; // @synthesize pingDiscovery=_pingDiscovery;
 @property(retain, nonatomic) SFService *pingService; // @synthesize pingService=_pingService;
 @property(retain) NSObject<OS_dispatch_semaphore> *bluetoothSessionSemaphore; // @synthesize bluetoothSessionSemaphore=_bluetoothSessionSemaphore;
-@property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(retain) NSObject<OS_dispatch_queue> *run_queue; // @synthesize run_queue=_run_queue;
 @property(retain) NSMutableDictionary *discoveredDevices; // @synthesize discoveredDevices=_discoveredDevices;
 @property(retain) NSMutableDictionary *deviceSessions; // @synthesize deviceSessions=_deviceSessions;
@@ -46,7 +45,6 @@
 @property _Bool listenForClients; // @synthesize listenForClients=_listenForClients;
 @property __weak DEDController *controller; // @synthesize controller=_controller;
 @property(retain) DEDSharingInbound *inbound; // @synthesize inbound=_inbound;
-- (void).cxx_destruct;
 - (void)addIncomingSFSession:(id)arg1 forIdentifier:(id)arg2;
 - (void)stopSession:(id)arg1;
 - (void)_verifyPairingForSession:(id)arg1 holdForPIN:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

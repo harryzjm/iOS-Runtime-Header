@@ -10,7 +10,7 @@
 #import <CoverSheet/CSScrollViewDelegate-Protocol.h>
 #import <CoverSheet/CSScrollableView-Protocol.h>
 
-@class CSFixedFooterView, CSLayoutStrategy, CSLocketForcePressGestureRecognizer, CSQuickActionsView, CSRegionsDebugView, CSScrollModifier, CSTeachableMomentsContainerView, NSArray, NSString, SBFLockScreenDateView, SBFPagedScrollView, SBFStatusBarLegibilityView, SBUIBackgroundView, UIColor, UIGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
+@class CSFixedFooterView, CSLayoutStrategy, CSQuickActionsView, CSRegionsDebugView, CSScrollModifier, CSTeachableMomentsContainerView, NSArray, NSString, SBFLockScreenDateView, SBFPagedScrollView, SBFStatusBarLegibilityView, SBUIBackgroundView, UIColor, UIGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
 @protocol CSCoverSheetViewDelegate, CSWallpaperView;
 
 @interface CSCoverSheetView : UIView <CSScrollViewDelegate, CSCoverSheetViewTransitionSource, CSScrollableView>
@@ -42,6 +42,7 @@
     CSFixedFooterView *_fixedFooterView;
     UIView *_proudLockContainerView;
     UIView *_cameraCoveredView;
+    UIView *_poseidonContainerView;
     CSTeachableMomentsContainerView *_teachableMomentsContainerView;
     CSQuickActionsView *_quickActionsView;
     long long _dateViewPageAlignment;
@@ -51,7 +52,6 @@
     long long _statusBarBackgroundPageAlignment;
     UIGestureRecognizer *_wallpaperGestureRecognizer;
     UITapGestureRecognizer *_quickNoteGestureRecognizer;
-    CSLocketForcePressGestureRecognizer *_locketGestureRecognizer;
     UIView *_scalableContentView;
     UIView *_modalPresentationView;
     UIView *_wakeEffectView;
@@ -68,6 +68,7 @@
     struct CGPoint _foregroundViewPositionOffset;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CSRegionsDebugView *regionsDebugView; // @synthesize regionsDebugView=_regionsDebugView;
 @property(nonatomic) unsigned long long targetPageIndexForDraggingEnded; // @synthesize targetPageIndexForDraggingEnded=_targetPageIndexForDraggingEnded;
 @property(nonatomic) _Bool statusBarLegibilityEnabled; // @synthesize statusBarLegibilityEnabled=_statusBarLegibilityEnabled;
@@ -84,7 +85,6 @@
 @property(retain, nonatomic) UIView *modalPresentationView; // @synthesize modalPresentationView=_modalPresentationView;
 @property(readonly, nonatomic) UIView *slideableContentView; // @synthesize slideableContentView=_slideableContentView;
 @property(retain, nonatomic) UIView *scalableContentView; // @synthesize scalableContentView=_scalableContentView;
-@property(retain, nonatomic) CSLocketForcePressGestureRecognizer *locketGestureRecognizer; // @synthesize locketGestureRecognizer=_locketGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *quickNoteGestureRecognizer; // @synthesize quickNoteGestureRecognizer=_quickNoteGestureRecognizer;
 @property(retain, nonatomic) UIGestureRecognizer *wallpaperGestureRecognizer; // @synthesize wallpaperGestureRecognizer=_wallpaperGestureRecognizer;
 @property(nonatomic) long long statusBarBackgroundPageAlignment; // @synthesize statusBarBackgroundPageAlignment=_statusBarBackgroundPageAlignment;
@@ -98,6 +98,7 @@
 @property(nonatomic) struct CGPoint dateViewOffset; // @synthesize dateViewOffset=_dateViewOffset;
 @property(retain, nonatomic) CSQuickActionsView *quickActionsView; // @synthesize quickActionsView=_quickActionsView;
 @property(retain, nonatomic) CSTeachableMomentsContainerView *teachableMomentsContainerView; // @synthesize teachableMomentsContainerView=_teachableMomentsContainerView;
+@property(retain, nonatomic) UIView *poseidonContainerView; // @synthesize poseidonContainerView=_poseidonContainerView;
 @property(retain, nonatomic) UIView *cameraCoveredView; // @synthesize cameraCoveredView=_cameraCoveredView;
 @property(retain, nonatomic) UIView *proudLockContainerView; // @synthesize proudLockContainerView=_proudLockContainerView;
 @property(retain, nonatomic) CSFixedFooterView *fixedFooterView; // @synthesize fixedFooterView=_fixedFooterView;
@@ -108,8 +109,6 @@
 @property(nonatomic) __weak CSLayoutStrategy *layoutStrategy; // @synthesize layoutStrategy=_layoutStrategy;
 @property(nonatomic) __weak id <CSCoverSheetViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIView *bottomPage; // @synthesize bottomPage=_bottomPage;
-- (void).cxx_destruct;
-- (void)_setupLocketGestureOnScrollView:(_Bool)arg1;
 - (void)_setupQuickNoteGestureOnScrollView:(_Bool)arg1;
 - (void)_setupWallpaperGestureOnScrollView:(_Bool)arg1;
 - (void)_updateLegibility;
@@ -122,6 +121,7 @@
 - (void)_addDateTimeContainer;
 - (void)_addScrollView;
 - (void)_removeScalableContentView;
+- (void)_addScalableContentViewWithContentView:(id)arg1;
 - (void)_addScalableContentView;
 - (void)_addHigherSlideableContentView;
 - (void)_addSlideableContentView;
@@ -167,6 +167,7 @@
 - (void)didAddSubview:(id)arg1;
 - (void)updateScalableContentTransformWithScale:(double)arg1;
 - (void)removeScalableContentView;
+- (void)addScalableContentViewWithCustomContentView:(id)arg1;
 - (void)addScalableContentView;
 - (struct CGRect)dateViewPresentationExtentForPageRelativeScrollOffset:(double)arg1;
 - (void)viewControllerDidDisappear;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-@class PUModalTransition, PUNavigationTransition, PUToolbarViewModel, PUViewModel, UIToolbar;
+@class PUModalTransition, PUNavigationTransition, PUToolbarViewModel, PUViewModel, UIColor, UIToolbar;
 @protocol PUDisplayAsset;
 
 @interface UIViewController (PHViewControllerChrome)
-+ (void)_pu_ensureLocalAssets:(id)arg1 forReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)pu_copyAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)pu_currentViewControllerStack;
 - (void)_ph_updateBarAppearanceAnimated:(_Bool)arg1;
 - (void)ph_enableChromeManagement;
@@ -35,6 +33,7 @@
 - (_Bool)pu_handleSecondTabTap;
 @property(readonly, nonatomic) PUToolbarViewModel *pu_toolbarViewModel;
 @property(nonatomic, setter=pu_debugSetTransient:) _Bool pu_debugIsTransient;
+- (_Bool)pu_dismissViewControllerIfAllowedAnimated:(_Bool)arg1 forced:(_Bool)arg2;
 - (void)pu_dismissViewControllerAnimated:(_Bool)arg1 interactive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)pu_presentViewController:(id)arg1 transition:(id)arg2 animated:(_Bool)arg3 interactive:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 @property(readonly, nonatomic) PUNavigationTransition *pu_currentInteractiveNavigationTransition;
@@ -49,21 +48,20 @@
 - (id)_pu_offersTableView;
 - (void)pu_removeFooterToolbar;
 - (void)pu_insertFooterToolbarWithItems:(id)arg1;
-- (void)pu_ensureLocalAssetsForCloudPhotoSharing:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)pu_copyAssets:(id)arg1;
 @property(readonly, nonatomic) _Bool pu_isPresenting;
 - (void)_pu_setPreferredStatusBarUpdateAnimation:(long long)arg1;
 - (void)_pu_setTabBarVisible:(_Bool)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
 - (void)_pu_setToolbarVisible:(_Bool)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
+- (void)_pu_setNavigationBarTintColor:(id)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
 - (void)_pu_setNavigationBarVisible:(_Bool)arg1 withAnimationSettings:(struct PUBarAnimationSettings)arg2;
 - (void)_pu_updateStatusBarVisibilityWithAnimationSettings:(struct PUBarAnimationSettings)arg1;
 - (void)_pu_performBarsVisibilityUpdatesWithAnimationSettings:(struct PUBarAnimationSettings)arg1 isStatusBarHidden:(_Bool)arg2;
 - (void)pu_performBarsVisibilityUpdatesWithAnimationSettings:(struct PUBarAnimationSettings)arg1;
 @property(readonly, nonatomic) long long pu_preferredStatusBarUpdateAnimation;
 - (void)pu_setupInitialBarsVisibilityOnViewWillAppearAnimated:(_Bool)arg1;
+@property(readonly, nonatomic) UIColor *pu_navigationBarTintColor;
 @property(readonly, nonatomic) _Bool pu_wantsTabBarVisible;
 @property(readonly, nonatomic) _Bool pu_wantsToolbarVisible;
 @property(readonly, nonatomic) _Bool pu_wantsNavigationBarVisible;
-- (_Bool)pu_isForceTouchEnabled;
 @end
 

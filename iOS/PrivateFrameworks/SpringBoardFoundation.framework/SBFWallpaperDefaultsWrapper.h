@@ -20,6 +20,7 @@
     NSString *_wallpaperName;
     NSData *_imageHashData;
     long long _wallpaperMode;
+    NSDictionary *_wallpaperKitData;
     double _stillTimeInVideo;
     NSString *_wallpaperIdentifier;
     NSDictionary *_wallpaperOptions;
@@ -31,6 +32,7 @@
 
 + (id)homeScreenWrapperForLegacyDefaults:(id)arg1;
 + (id)lockScreenWrapperForLegacyDefaults:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *gradientData; // @synthesize gradientData=_gradientData;
 @property(retain, nonatomic) NSString *colorName; // @synthesize colorName=_colorName;
 @property(retain, nonatomic) NSData *colorData; // @synthesize colorData=_colorData;
@@ -39,6 +41,7 @@
 @property(retain, nonatomic) NSString *wallpaperIdentifier; // @synthesize wallpaperIdentifier=_wallpaperIdentifier;
 @property(nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
 @property(nonatomic) _Bool hasVideo; // @synthesize hasVideo=_hasVideo;
+@property(retain, nonatomic) NSDictionary *wallpaperKitData; // @synthesize wallpaperKitData=_wallpaperKitData;
 @property(nonatomic) long long wallpaperMode; // @synthesize wallpaperMode=_wallpaperMode;
 @property(retain, nonatomic) NSData *imageHashData; // @synthesize imageHashData=_imageHashData;
 @property(retain, nonatomic) NSString *wallpaperName; // @synthesize wallpaperName=_wallpaperName;
@@ -48,7 +51,6 @@
 @property(nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property(nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 @property(nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
-- (void).cxx_destruct;
 - (id)wallpaperDefaultsDict;
 - (id)initWithWallpaperDefaultsDict:(id)arg1;
 

@@ -9,11 +9,11 @@
 
 @protocol ICLegacyContext
 + (id <ICLegacyContext>)newLegacyContext;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 - (void)reset;
 - (NSManagedObject *)existingObjectWithID:(NSManagedObjectID *)arg1 error:(id *)arg2;
 - (void)performBlockAndWait:(void (^)(void))arg1;
 - (void)performBlock:(void (^)(void))arg1;
-- (NSManagedObjectContext *)managedObjectContext;
 - (NSArray *)allVisibleNoteObjectIDsForAccountWithObjectID:(NSManagedObjectID *)arg1;
 - (unsigned long long)countOfVisibleNotesForAccountWithObjectID:(NSManagedObjectID *)arg1;
 - (NSArray *)allVisibleNotesForAccountWithObjectID:(NSManagedObjectID *)arg1;

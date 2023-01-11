@@ -14,7 +14,6 @@
 + (id)defaultMachServicesForBundleID:(id)arg1;
 + (id)resolveServiceName:(id)arg1;
 + (id)GSEventPortNameForBundleID:(id)arg1;
-+ (id)_GSEventPortNameForBundleID:(id)arg1;
 + (id)generateLaunchJobLabelForBundleID:(id)arg1;
 
 @end

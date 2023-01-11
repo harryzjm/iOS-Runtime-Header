@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <ActivityRingsUI/NSCopying-Protocol.h>
+
 @protocol MTLTexture;
 
-__attribute__((visibility("hidden")))
-@interface ARUISpriteTexture : NSObject
+@interface ARUISpriteTexture : NSObject <NSCopying>
 {
     float _height;
     float _width;
     id <MTLTexture> _texture;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <MTLTexture> texture; // @synthesize texture=_texture;
 @property(readonly, nonatomic) float width; // @synthesize width=_width;
 @property(readonly, nonatomic) float height; // @synthesize height=_height;
-- (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithImage:(id)arg1;
 
 @end

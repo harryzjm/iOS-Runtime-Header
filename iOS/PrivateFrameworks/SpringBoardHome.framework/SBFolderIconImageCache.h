@@ -30,12 +30,14 @@
 + (id)gridCellImageOfSize:(struct CGSize)arg1 forIconImage:(id)arg2;
 + (id)gridCellImageOfSize:(struct CGSize)arg1 forIcon:(id)arg2 iconImageInfo:(struct SBIconImageInfo)arg3;
 + (id)imageForPageAtIndex:(unsigned long long)arg1 inFolderIcon:(id)arg2 listLayout:(id)arg3 gridCellImageProvider:(id)arg4 pool:(id)arg5;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CPMemoryPool *pool; // @synthesize pool=_pool;
 @property(retain, nonatomic) SBHIconImageCache *iconImageCache; // @synthesize iconImageCache=_iconImageCache;
 @property(readonly, nonatomic) id <SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
-- (void).cxx_destruct;
+- (void)folder:(id)arg1 didMoveIcon:(id)arg2;
 - (void)folder:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (void)folder:(id)arg1 didAddIcons:(id)arg2 removedIcons:(id)arg3;
+- (void)folder:(id)arg1 didMoveList:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)folder:(id)arg1 didRemoveLists:(id)arg2 atIndexes:(id)arg3;
 - (void)folder:(id)arg1 didAddList:(id)arg2;
 - (void)iconImageCache:(id)arg1 didUpdateImageForIcon:(id)arg2;

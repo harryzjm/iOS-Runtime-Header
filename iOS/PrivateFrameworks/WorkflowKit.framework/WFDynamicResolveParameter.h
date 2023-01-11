@@ -6,20 +6,22 @@
 
 #import <WorkflowKit/WFCodableAttributeBackedParameter-Protocol.h>
 
-@class INCodableAttribute, NSString;
+@class INCodableAttribute, INStringLocalizer, NSString;
 @protocol WFDynamicResolveParameterDataSource, WFDynamicResolveParameterDelegate;
 
 @interface WFDynamicResolveParameter <WFCodableAttributeBackedParameter>
 {
     INCodableAttribute *_codableAttribute;
+    INStringLocalizer *_stringLocalizer;
     id <WFDynamicResolveParameterDataSource> _dataSource;
     id <WFDynamicResolveParameterDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <WFDynamicResolveParameterDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <WFDynamicResolveParameterDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 @property(retain, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
-- (void).cxx_destruct;
 - (void)localizedDisambiguationPromptForItems:(id)arg1 intent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)endResolutionSession;
 - (void)resolveOptionsForUserInput:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

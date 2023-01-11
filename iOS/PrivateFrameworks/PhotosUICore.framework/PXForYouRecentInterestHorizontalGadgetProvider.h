@@ -13,14 +13,14 @@
     NSDate *_cachedPriorityDate;
 }
 
-@property(retain, nonatomic) NSDate *cachedPriorityDate; // @synthesize cachedPriorityDate=_cachedPriorityDate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *cachedPriorityDate; // @synthesize cachedPriorityDate=_cachedPriorityDate;
 - (void)resetPriorityDate;
 @property(readonly, nonatomic) long long defaultPriority;
 @property(readonly, nonatomic) long long priorityType;
 @property(readonly, nonatomic) NSDate *priorityDate;
 - (_Bool)supportsDynamicRanking;
-- (id)initWithContentGadgetProviders:(id)arg1 title:(id)arg2;
+- (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long gadgetType;

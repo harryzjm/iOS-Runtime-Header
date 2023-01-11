@@ -17,8 +17,8 @@
     SGDHarvestQueue *_other;
 }
 
-@property(readonly, nonatomic) SGDHarvestQueue *other; // @synthesize other=_other;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SGDHarvestQueue *other; // @synthesize other=_other;
 - (void)_flushWithItemIdLockedAsync:(long long)arg1;
 - (void)_flushWithIndexLockedAsync:(unsigned long long)arg1;
 - (void)_deleteWithItemId:(long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -28,13 +28,17 @@
 - (void)deleteAllItemsDangerously;
 - (void)close;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;
+- (unsigned long long)countStructuredEventCandidates;
+- (unsigned long long)countInMemory;
 - (unsigned long long)count;
 - (void)_popCallback:(CDUnknownBlockType)arg1 where:(CDUnknownBlockType)arg2 or:(CDUnknownBlockType)arg3;
 - (void)popBySourceKey:(id)arg1 messageId:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)popByItemId:(long long)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)popByCustomPriorityCriteria:(unsigned char)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popHighPriority:(CDUnknownBlockType)arg1;
+- (void)popInMemory:(CDUnknownBlockType)arg1;
 - (void)pop:(CDUnknownBlockType)arg1;
-- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(_Bool)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(_Bool)arg3 customPriorityCriteria:(unsigned char)arg4 item:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)initWithLimit:(unsigned long long)arg1 ttl:(double)arg2 flushingToQueue:(id)arg3;
 
 @end

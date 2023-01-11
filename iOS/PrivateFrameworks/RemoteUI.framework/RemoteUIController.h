@@ -10,11 +10,12 @@
 #import <RemoteUI/RUIObjectModelDelegate-Protocol.h>
 #import <RemoteUI/RUIParserDelegate-Protocol.h>
 #import <RemoteUI/UINavigationControllerDelegate-Protocol.h>
+#import <RemoteUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, NSUUID, RUILoader, RUINavigationController, RUIPage, RUIStyle, UINavigationController, UIViewController;
 @protocol RemoteUIControllerDelegate;
 
-@interface RemoteUIController : NSObject <RUILoaderDelegate, RUIObjectModelDelegate, RUIParserDelegate, UINavigationControllerDelegate>
+@interface RemoteUIController : NSObject <RUILoaderDelegate, RUIObjectModelDelegate, RUIParserDelegate, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
 {
     RUINavigationController *_modalNavigationController;
     NSMutableArray *_objectModels;
@@ -34,6 +35,7 @@
     NSUUID *_UUID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property(retain, nonatomic) RUIStyle *style; // @synthesize style=_style;
 @property(copy, nonatomic) NSURLSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
@@ -42,7 +44,7 @@
 @property(copy, nonatomic) NSString *userAgentString; // @synthesize userAgentString=_userAgentString;
 @property(retain, nonatomic) RUILoader *loader; // @synthesize loader=_loader;
 @property(nonatomic) __weak UIViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
-- (void).cxx_destruct;
+- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 @property(nonatomic) __weak UINavigationController *navigationController;
 - (_Bool)isListeningForHSATokenAutoFill;
 - (void)stopListeningForHSATokenAutoFill;
@@ -63,10 +65,13 @@
 - (void)loader:(id)arg1 willLoadRequest:(id)arg2 redirectResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)sessionConfigurationForLoader:(id)arg1;
 - (void)refreshTopModelWithModel:(id)arg1;
+- (void)_presentModalRUIController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_replaceModalRUIController:(id)arg1 byController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)loader:(id)arg1 receivedObjectModel:(id)arg2 topActionSignal:(id)arg3;
+- (void)loader:(id)arg1 loadResourcesForObjectModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)loader:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)loader:(id)arg1 didReceiveHTTPResponse:(id)arg2;
-- (void)loader:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)loader:(id)arg1 didReceiveHTTPResponse:(id)arg2 forRequest:(id)arg3;
+- (void)loader:(id)arg1 didFinishLoadWithError:(id)arg2 forRequest:(id)arg3;
 - (void)setHandlerForButtonName:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)setHandlerForButtonsMatching:(CDUnknownBlockType)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeHandlerForKey:(id)arg1;
@@ -76,6 +81,7 @@
 @property(readonly, nonatomic) NSArray *displayedPages;
 - (void)_modalViewControllerWasPopped:(id)arg1;
 - (void)_modalNavigationWasDismissed;
+- (void)_invalidateModalObjectModels;
 - (id)dismissObjectModelsAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_replaceObjectModelWithObjectModel:(id)arg1;
 - (id)popObjectModelAnimated:(_Bool)arg1;

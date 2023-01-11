@@ -20,6 +20,7 @@
     NSError *_writeAttachmentError;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *writeAttachmentError; // @synthesize writeAttachmentError=_writeAttachmentError;
 @property(retain, nonatomic) NSFileHandle *localFileHandle; // @synthesize localFileHandle=_localFileHandle;
 @property(nonatomic) unsigned long long localFileLength; // @synthesize localFileLength=_localFileLength;
@@ -28,7 +29,6 @@
 @property(retain, nonatomic) NSString *messageID; // @synthesize messageID=_messageID;
 @property(retain, nonatomic) NSString *attachmentName; // @synthesize attachmentName=_attachmentName;
 @property(retain, nonatomic) NSString *attachmentUUID; // @synthesize attachmentUUID=_attachmentUUID;
-- (void).cxx_destruct;
 - (id)initForMessageUUID:(id)arg1;
 - (id)initForMessageServerID:(id)arg1 andAttachmentName:(id)arg2;
 - (_Bool)processContext:(id)arg1;

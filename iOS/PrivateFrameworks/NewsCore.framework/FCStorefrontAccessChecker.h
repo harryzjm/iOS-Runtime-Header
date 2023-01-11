@@ -4,12 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class FCPrivateChannelMembershipController;
+
 @interface FCStorefrontAccessChecker
 {
+    FCPrivateChannelMembershipController *_privateChannelMembershipController;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController; // @synthesize privateChannelMembershipController=_privateChannelMembershipController;
 - (_Bool)hasAccessToItem:(id)arg1 blockedReason:(unsigned long long *)arg2 error:(id *)arg3;
 - (_Bool)canSynchronouslyCheckAccessToItem:(id)arg1;
+- (id)initWithPrivateChannelMembershipController:(id)arg1;
 - (id)init;
 
 @end

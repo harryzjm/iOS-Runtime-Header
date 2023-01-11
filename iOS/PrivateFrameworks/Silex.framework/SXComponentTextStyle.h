@@ -35,7 +35,8 @@
 @property(readonly, nonatomic) _Bool hangingPunctuation; // @dynamic hangingPunctuation;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long hyphenation; // @dynamic hyphenation;
-@property(readonly, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) NSString *identifier; // @dynamic identifier;
+@property(readonly, nonatomic) _Bool lineBalancing; // @dynamic lineBalancing;
 @property(readonly, nonatomic) long long lineHeight; // @dynamic lineHeight;
 @property(readonly, nonatomic) SXTextStyle *linkStyle; // @dynamic linkStyle;
 @property(readonly, nonatomic) SXJSONArray *listStyle;

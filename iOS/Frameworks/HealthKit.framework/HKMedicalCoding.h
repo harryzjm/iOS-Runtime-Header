@@ -23,12 +23,17 @@
 + (id)medicalCodingWithSystem:(id)arg1 codingVersion:(id)arg2 code:(id)arg3 displayString:(id)arg4;
 + (id)ucum_centimeterUnitCoding;
 + (id)ucum_meterUnitCoding;
-+ (id)_ucumUnitWithCode:(id)arg1 displayString:(id)arg2;
++ (id)ucum_codingWithCode:(id)arg1 displayString:(id)arg2;
++ (id)loinc_systolicBloodPressureCoding;
++ (id)loinc_diastolicBloodPressureCoding;
++ (id)RxNormCodingWithCode:(id)arg1;
++ (id)RxNormCodingWithCode:(id)arg1 displayString:(id)arg2;
++ (id)text_codingWithDisplayString:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property(readonly, copy, nonatomic) NSString *code; // @synthesize code=_code;
 @property(readonly, copy, nonatomic) NSString *codingVersion; // @synthesize codingVersion=_codingVersion;
 @property(readonly, copy, nonatomic) HKMedicalCodingSystem *codingSystem; // @synthesize codingSystem=_codingSystem;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -36,6 +41,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)_validateConfiguration;
 - (id)description;
+- (_Bool)isEquivalent:(id)arg1;
 - (id)init;
 - (id)initWithCodingSystem:(id)arg1 codingVersion:(id)arg2 code:(id)arg3 displayString:(id)arg4;
 - (id)synthesizedIdentifier;

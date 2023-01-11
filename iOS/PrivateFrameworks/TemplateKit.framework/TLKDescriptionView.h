@@ -6,7 +6,7 @@
 
 #import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerBoxView, TLKImage, TLKImageView, TLKLabel, TLKMultilineText, TLKStackView, TLKTextButton, TLKTextView, UIBezierPath;
+@class NSString, NUIContainerBoxView, TLKImage, TLKImageView, TLKLabel, TLKMultilineText, TLKStackView, TLKTextButton, TLKTextView, UIBezierPath, UIView;
 @protocol TLKDescriptionViewDelegate;
 
 @interface TLKDescriptionView <NUIContainerViewDelegate>
@@ -15,6 +15,7 @@
     TLKMultilineText *_text;
     TLKMultilineText *_title;
     NSString *_footnoteButtonText;
+    NSString *_trailingFootnoteButtonText;
     NSString *_moreButtonText;
     id <TLKDescriptionViewDelegate> _delegate;
     TLKStackView *_stackView;
@@ -26,8 +27,15 @@
     UIBezierPath *_imageViewExclusionPath;
     UIBezierPath *_moreButtonExclusionPath;
     TLKTextButton *_footnoteButton;
+    TLKTextButton *_trailingFootnoteButton;
+    TLKStackView *_footnoteButtonStackView;
+    UIView *_footnoteButtonStackDummyView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *footnoteButtonStackDummyView; // @synthesize footnoteButtonStackDummyView=_footnoteButtonStackDummyView;
+@property(retain, nonatomic) TLKStackView *footnoteButtonStackView; // @synthesize footnoteButtonStackView=_footnoteButtonStackView;
+@property(retain, nonatomic) TLKTextButton *trailingFootnoteButton; // @synthesize trailingFootnoteButton=_trailingFootnoteButton;
 @property(retain, nonatomic) TLKTextButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
 @property(retain, nonatomic) UIBezierPath *moreButtonExclusionPath; // @synthesize moreButtonExclusionPath=_moreButtonExclusionPath;
 @property(retain, nonatomic) UIBezierPath *imageViewExclusionPath; // @synthesize imageViewExclusionPath=_imageViewExclusionPath;
@@ -39,30 +47,32 @@
 @property(retain, nonatomic) TLKStackView *stackView; // @synthesize stackView=_stackView;
 @property __weak id <TLKDescriptionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSString *moreButtonText; // @synthesize moreButtonText=_moreButtonText;
+@property(retain, nonatomic) NSString *trailingFootnoteButtonText; // @synthesize trailingFootnoteButtonText=_trailingFootnoteButtonText;
 @property(retain, nonatomic) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
 @property(retain, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 @property(retain, nonatomic) TLKMultilineText *text; // @synthesize text=_text;
 @property(retain, nonatomic) TLKImage *image; // @synthesize image=_image;
-- (void).cxx_destruct;
 - (id)exclusionPathsForTextView;
 - (_Bool)moreButtonIsHidden;
 - (long long)numberOfLines;
 - (id)detailTextViewText;
 - (id)imageExclusionPath;
 - (void)simulateMoreButtonPress;
+- (void)trailingFootnoteButtonPressed;
 - (void)footnoteButtonPressed;
 - (void)moreButtonPressed;
-- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (_Bool)shouldHideMoreButtonForTextView:(id)arg1;
 - (struct CGSize)textSizeForTextView:(id)arg1 width:(double)arg2 lineCount:(unsigned long long)arg3;
 - (void)setExclusionPathInContainer:(id)arg1 includeMoreButton:(_Bool)arg2;
 - (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (struct UIEdgeInsets)defaultBaselineRelativeLayoutMargins;
+- (id)viewForFirstBaselineLayout;
 - (void)observedPropertiesChanged;
+- (void)layoutSubviews;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
-- (_Bool)usesDefaultInsets;
 - (id)setupContentView;
 
 // Remaining properties

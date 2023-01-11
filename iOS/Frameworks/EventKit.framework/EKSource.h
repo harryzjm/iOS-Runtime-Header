@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKAvailabilityCache, EKSourceConstraints, NSDate, NSNumber, NSSet, NSString, REMObjectID;
+@class EKAvailabilityCache, EKSourceConstraints, NSData, NSDate, NSDictionary, NSError, NSNumber, NSSet, NSString, REMObjectID;
 
 @interface EKSource
 {
@@ -20,20 +20,36 @@
 + (long long)_calEventPrivacyLevelToEKPrivacyLevel:(int)arg1;
 + (int)_ekPrivacyLevelToCalEventPrivacyLevel:(long long)arg1;
 + (id)sourceWithEventStore:(id)arg1;
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (_Bool)isWeakRelationship;
 + (Class)frozenClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool snoozeAlarmRequiresDetach; // @synthesize snoozeAlarmRequiresDetach=_snoozeAlarmRequiresDetach;
 @property(nonatomic) _Bool isFacebook; // @synthesize isFacebook=_isFacebook;
 @property(retain, nonatomic) NSSet *cachedOwnerAddresses; // @synthesize cachedOwnerAddresses=_cachedOwnerAddresses;
 @property(nonatomic) long long cachedPort; // @synthesize cachedPort=_cachedPort;
 @property(retain, nonatomic) NSString *cachedHost; // @synthesize cachedHost=_cachedHost;
 @property(retain, nonatomic) NSDate *timeOfLastExternalIdentificationCache; // @synthesize timeOfLastExternalIdentificationCache=_timeOfLastExternalIdentificationCache;
-- (void).cxx_destruct;
 - (_Bool)_reset;
 - (_Bool)refresh;
+@property(readonly, nonatomic) _Bool isEnabledForEvents;
+@property(readonly, nonatomic) _Bool preferUsingEventOrganizerEmailWhenComposingMail;
+@property(readonly, nonatomic) _Bool supportsAttendeeEventForwarding;
+@property(readonly, nonatomic) _Bool prefersSuggestingNewTimeViaEmail;
+@property(readonly, nonatomic) _Bool supportsURLs;
+@property(readonly, nonatomic) _Bool supportsYearlyRecurrenceWithArbitraryInterval;
+@property(readonly, nonatomic) _Bool supportsMultipleDaysInMonthlyRecurrence;
+@property(readonly, nonatomic) _Bool supportsMultipleMonthsInYearlyRecurrence;
+@property(readonly, nonatomic) _Bool supportsMultipleAlarms;
+@property(readonly, nonatomic) _Bool supportsFloatingTimeZone;
+@property(readonly, nonatomic) _Bool supportsEventCalendarCreation;
+@property(readonly, nonatomic) _Bool supportsFreebusy;
 - (int)managedConfigurationAccountAccess;
 @property(readonly, nonatomic) _Bool isWritable;
+@property(readonly, nonatomic) NSString *preferredOwnerAddress;
 @property(readonly, nonatomic) NSSet *ownerAddresses;
+@property(readonly, nonatomic) _Bool serverUsesSSL;
 @property(readonly, nonatomic) long long serverPort;
 @property(readonly, nonatomic) NSString *serverHost;
 - (void)_cacheExternalIdentificationIfNeeded;
@@ -48,7 +64,17 @@
 @property(readonly, nonatomic) _Bool isSyncing;
 @property(retain, nonatomic) NSDate *lastSyncEndDate;
 @property(retain, nonatomic) NSDate *lastSyncStartDate;
-@property(nonatomic) unsigned long long lastSyncError;
+@property(retain, nonatomic) NSData *lastSyncErrorData;
+@property(readonly, copy, nonatomic) NSDictionary *lastSyncErrorUserInfo;
+- (void)setLastSyncErrorUserInfo:(id)arg1;
+@property(readonly, nonatomic) unsigned long long lastSyncError;
+- (void)setLastSyncError:(unsigned long long)arg1;
+- (void)setLastSyncError:(unsigned long long)arg1 userInfo:(id)arg2;
+@property(readonly, nonatomic) NSError *sourceError;
+- (id)_calDAVOfficeHoursFromEKOfficeHours:(id)arg1;
+- (void)setOfficeHours:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
+- (id)_ekOfficeHoursFromCalDAVOfficeHours:(id)arg1;
+- (void)fetchOfficeHoursWithCompletion:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 @property(readonly, nonatomic) NSString *personaIdentifier;
 @property(readonly, nonatomic) int displayOrderForNewCalendar;
 @property(readonly, nonatomic) EKSourceConstraints *constraints;
@@ -91,6 +117,9 @@
 @property(nonatomic) _Bool usesSelfAttendee;
 @property(nonatomic) _Bool showsNotifications;
 @property(nonatomic) _Bool wasMigrated;
+- (void)setFlag2:(int)arg1 value:(_Bool)arg2;
+- (_Bool)flag2:(int)arg1;
+@property(nonatomic) int flags2;
 - (void)setFlag:(int)arg1 value:(_Bool)arg2;
 - (_Bool)flag:(int)arg1;
 @property(nonatomic) int flags;
@@ -98,10 +127,15 @@
 @property(copy, nonatomic) NSString *creatorCodeSigningIdentity;
 @property(copy, nonatomic) NSString *creatorBundleID;
 @property(copy, nonatomic) NSString *externalModificationTag;
+@property(retain, nonatomic) NSString *constraintsDescriptionPathForUnitTesting;
+@property(retain, nonatomic) NSString *constraintsName;
+- (void)_setConstraintsNameWithoutValidation:(id)arg1;
 @property(retain, nonatomic) NSString *constraintsDescriptionPath;
 @property(copy, nonatomic) NSString *externalID;
 @property(readonly, nonatomic) REMObjectID *remAccountObjectID;
 @property(retain, nonatomic) NSString *sourceIdentifier;
+- (void)setUUID:(id)arg1;
+- (id)UUID;
 @property(copy, nonatomic) NSNumber *defaultAlarmOffset;
 @property(copy, nonatomic) NSString *title;
 @property(nonatomic) long long strictestEventPrivateValue;

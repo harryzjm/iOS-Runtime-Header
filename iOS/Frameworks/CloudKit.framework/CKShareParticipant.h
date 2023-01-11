@@ -13,17 +13,16 @@
 
 @interface CKShareParticipant : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _wantsNewInvitationToken;
     _Bool _isCurrentUser;
     _Bool _isOrgAdminUser;
     _Bool _createdInProcess;
     _Bool _acceptedInProcess;
-    _Bool _wantsNewInvitationToken;
     CKUserIdentity *_userIdentity;
     long long _role;
     long long _acceptanceStatus;
     long long _permission;
     long long _mutableInvitationTokenStatus;
-    NSString *_participantID;
     CKRecordID *_shareRecordID;
     NSString *_inviterID;
     long long _originalParticipantRole;
@@ -32,12 +31,14 @@
     NSData *_protectionInfo;
     NSData *_protectionInfoPublicKey;
     NSData *_encryptedPersonalInfo;
+    NSString *_participantID;
     CKDeviceToDeviceShareInvitationToken *_invitationToken;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) _Bool wantsNewInvitationToken; // @synthesize wantsNewInvitationToken=_wantsNewInvitationToken;
-@property(retain, nonatomic) CKDeviceToDeviceShareInvitationToken *invitationToken; // @synthesize invitationToken=_invitationToken;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CKDeviceToDeviceShareInvitationToken *invitationToken; // @synthesize invitationToken=_invitationToken;
+@property(copy, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property(retain, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
 @property(retain, nonatomic) NSData *protectionInfoPublicKey; // @synthesize protectionInfoPublicKey=_protectionInfoPublicKey;
 @property(retain, nonatomic) NSData *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
@@ -47,21 +48,20 @@
 @property(nonatomic) long long originalAcceptanceStatus; // @synthesize originalAcceptanceStatus=_originalAcceptanceStatus;
 @property(nonatomic) long long originalParticipantRole; // @synthesize originalParticipantRole=_originalParticipantRole;
 @property(retain, nonatomic) NSString *inviterID; // @synthesize inviterID=_inviterID;
+@property(retain, nonatomic) CKRecordID *shareRecordID; // @synthesize shareRecordID=_shareRecordID;
+@property(nonatomic) long long mutableInvitationTokenStatus; // @synthesize mutableInvitationTokenStatus=_mutableInvitationTokenStatus;
 @property(nonatomic) _Bool isOrgAdminUser; // @synthesize isOrgAdminUser=_isOrgAdminUser;
 @property(nonatomic) _Bool isCurrentUser; // @synthesize isCurrentUser=_isCurrentUser;
-@property(retain, nonatomic) CKRecordID *shareRecordID; // @synthesize shareRecordID=_shareRecordID;
-@property(retain, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
-@property(nonatomic) long long mutableInvitationTokenStatus; // @synthesize mutableInvitationTokenStatus=_mutableInvitationTokenStatus;
+@property(nonatomic) _Bool wantsNewInvitationToken; // @synthesize wantsNewInvitationToken=_wantsNewInvitationToken;
 @property(nonatomic) long long permission; // @synthesize permission=_permission;
 @property(nonatomic) long long acceptanceStatus; // @synthesize acceptanceStatus=_acceptanceStatus;
 @property(nonatomic) long long role; // @synthesize role=_role;
-@property(retain, nonatomic) CKUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
-- (void).cxx_destruct;
+@property(copy, nonatomic) CKUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)unifiedContactsInStore:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 @property(nonatomic) long long type;
-@property(readonly, nonatomic) long long invitationTokenStatus;
+- (long long)invitationTokenStatus;
 - (void)_stripPersonalInfo;
 - (id)debugDescription;
 - (id)description;

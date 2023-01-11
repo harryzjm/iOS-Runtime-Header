@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _basemapId;
     GEOLatLng *_center;
     unsigned long long _muid;
+    int _mapsResultType;
     int _resultProviderId;
     struct {
         unsigned int has_basemapId:1;
         unsigned int has_muid:1;
+        unsigned int has_mapsResultType:1;
         unsigned int has_resultProviderId:1;
     } _flags;
 }
@@ -37,8 +39,15 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsMapsResultType:(id)arg1;
+- (id)mapsResultTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasMapsResultType;
+@property(nonatomic) int mapsResultType;
 @property(nonatomic) _Bool hasBasemapId;
 @property(nonatomic) unsigned long long basemapId;
 @property(nonatomic) _Bool hasResultProviderId;

@@ -17,39 +17,47 @@
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerVariantListController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CNPhotoPickerProviderItemDelegate>
 {
-    _Bool _showSelection;
     _Bool _showPreview;
+    _Bool _showsToolbar;
+    _Bool _commitsChangesOnSelection;
+    _Bool _showsSelection;
     _Bool _shouldShowCaptions;
     id <CNPhotoPickerVariantListControllerDelegate> _delegate;
     CNPhotoPickerProviderItem *_originalItem;
+    UICollectionView *_collectionView;
+    UIView *_sectionHeaderView;
     CDUnknownBlockType _numberOfItemsPerRowProvider;
     unsigned long long _cellStyle;
     NSString *_rightBarButtonTitle;
-    UICollectionView *_collectionView;
     UIView *_headerView;
     UIImageView *_previewImageView;
     CNPhotoPickerPreviewView *_posePreview;
+    NSString *_selectedVariantIdentifier;
     NSArray *_providerItems;
     CNPhotoPickerVariantsManager *_variantsManager;
 }
 
 + (struct CGRect)frameForHeaderInBounds:(struct CGRect)arg1;
 + (long long)topMarginForBounds:(struct CGRect)arg1 shouldShowCaptions:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldShowCaptions; // @synthesize shouldShowCaptions=_shouldShowCaptions;
 @property(retain, nonatomic) CNPhotoPickerVariantsManager *variantsManager; // @synthesize variantsManager=_variantsManager;
 @property(retain, nonatomic) NSArray *providerItems; // @synthesize providerItems=_providerItems;
+@property(retain, nonatomic) NSString *selectedVariantIdentifier; // @synthesize selectedVariantIdentifier=_selectedVariantIdentifier;
 @property(retain, nonatomic) CNPhotoPickerPreviewView *posePreview; // @synthesize posePreview=_posePreview;
 @property(retain, nonatomic) UIImageView *previewImageView; // @synthesize previewImageView=_previewImageView;
 @property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
-@property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) NSString *rightBarButtonTitle; // @synthesize rightBarButtonTitle=_rightBarButtonTitle;
+@property(nonatomic) _Bool showsSelection; // @synthesize showsSelection=_showsSelection;
+@property(nonatomic) _Bool commitsChangesOnSelection; // @synthesize commitsChangesOnSelection=_commitsChangesOnSelection;
+@property(nonatomic) _Bool showsToolbar; // @synthesize showsToolbar=_showsToolbar;
 @property(nonatomic) unsigned long long cellStyle; // @synthesize cellStyle=_cellStyle;
 @property(nonatomic) _Bool showPreview; // @synthesize showPreview=_showPreview;
-@property(nonatomic) _Bool showSelection; // @synthesize showSelection=_showSelection;
 @property(copy, nonatomic) CDUnknownBlockType numberOfItemsPerRowProvider; // @synthesize numberOfItemsPerRowProvider=_numberOfItemsPerRowProvider;
+@property(retain, nonatomic) UIView *sectionHeaderView; // @synthesize sectionHeaderView=_sectionHeaderView;
+@property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(readonly, nonatomic) CNPhotoPickerProviderItem *originalItem; // @synthesize originalItem=_originalItem;
 @property(nonatomic) __weak id <CNPhotoPickerVariantListControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)providerItemDidUpdate:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
@@ -57,16 +65,21 @@ __attribute__((visibility("hidden")))
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)updatePreviewWithItem:(id)arg1;
-- (void)done;
+- (void)didFinishSelectingVariant;
 - (void)cancel:(id)arg1;
 - (void)generateProviderItems;
 - (void)updateFlowLayoutItemSize;
+- (id)scrollView;
+- (void)updateForNewOriginalItem:(id)arg1;
+@property(readonly, nonatomic) NSString *variantsDisplayTitle;
 - (void)viewDidLayoutSubviews;
 - (void)buildCollectionView;
 - (void)buildHeader;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (id)initWithVariantsManager:(id)arg1 originalItem:(id)arg2 selectedVariantIdentifier:(id)arg3;
 - (id)initWithVariantsManager:(id)arg1 originalItem:(id)arg2;
 
 // Remaining properties

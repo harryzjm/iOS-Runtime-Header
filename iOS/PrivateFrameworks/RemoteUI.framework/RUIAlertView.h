@@ -5,11 +5,12 @@
 //
 
 @class NSString, RUIObjectModel, UIAlertController;
-@protocol RUIAlertViewDelegate;
+@protocol RUIAlertViewDelegate, RUIPresentationHandling;
 
 @interface RUIAlertView
 {
     UIAlertController *_alertController;
+    id <RUIPresentationHandling> _presentationContext;
     RUIObjectModel<RUIAlertViewDelegate> *_objectModel;
     NSString *_title;
     NSString *_message;
@@ -18,13 +19,14 @@
 }
 
 + (void)_enableTestMode;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(readonly, nonatomic) long long buttonIndex; // @synthesize buttonIndex=_buttonIndex;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) __weak RUIObjectModel<RUIAlertViewDelegate> *objectModel; // @synthesize objectModel=_objectModel;
-- (void).cxx_destruct;
 - (void)runAlertInController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_dismissAlertController;
 - (id)alertController;
 - (void)addButtonWithTitle:(id)arg1 URL:(id)arg2 style:(long long)arg3 attributes:(id)arg4;
 - (void)dealloc;

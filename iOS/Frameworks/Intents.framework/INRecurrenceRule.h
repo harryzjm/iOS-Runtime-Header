@@ -13,9 +13,11 @@
 {
     unsigned long long _interval;
     long long _frequency;
+    unsigned long long _weeklyRecurrenceDays;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) unsigned long long weeklyRecurrenceDays; // @synthesize weeklyRecurrenceDays=_weeklyRecurrenceDays;
 @property(readonly, nonatomic) long long frequency; // @synthesize frequency=_frequency;
 @property(readonly, nonatomic) unsigned long long interval; // @synthesize interval=_interval;
 - (id)_dictionaryRepresentation;
@@ -26,6 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithInterval:(unsigned long long)arg1 frequency:(long long)arg2 weeklyRecurrenceDays:(unsigned long long)arg3;
 - (id)initWithInterval:(unsigned long long)arg1 frequency:(long long)arg2;
 
 @end

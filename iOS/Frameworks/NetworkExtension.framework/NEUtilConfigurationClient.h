@@ -8,7 +8,7 @@
 
 #import <NetworkExtension/NEConfigurationCommandHandling-Protocol.h>
 
-@class NEConfiguration, NEConfigurationManager, NEDNSProxyProviderProtocol, NEFilterProviderConfiguration, NSArray, NSMutableArray, NSString;
+@class NEAppPush, NEConfiguration, NEConfigurationManager, NEDNSProxyProviderProtocol, NEDNSSettingsBundle, NEFilterProviderConfiguration, NSArray, NSMutableArray, NSString;
 
 @interface NEUtilConfigurationClient : NSObject <NEConfigurationCommandHandling>
 {
@@ -24,6 +24,7 @@
 + (void)removeClientWithName:(id)arg1;
 + (id)clientWithName:(id)arg1;
 + (id)allClients;
+- (void).cxx_destruct;
 @property(readonly) _Bool isAlwaysOn; // @synthesize isAlwaysOn=_isAlwaysOn;
 @property(retain) NEConfiguration *currentConfiguration; // @synthesize currentConfiguration=_currentConfiguration;
 @property(retain) NSMutableArray *identities; // @synthesize identities=_identities;
@@ -31,12 +32,15 @@
 @property(retain) NSMutableArray *createdConfigurations; // @synthesize createdConfigurations=_createdConfigurations;
 @property(readonly) NEConfigurationManager *manager; // @synthesize manager=_manager;
 @property(readonly) NSString *clientName; // @synthesize clientName=_clientName;
-- (void).cxx_destruct;
 - (void)handleCommand:(int)arg1 forConfigWithName:(id)arg2 withParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)unsetProxyServer:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)setProxyServer:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)unsetProxyParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)setProxyParameters:(id)arg1 errorStr:(id *)arg2;
+- (_Bool)unsetAppPushParameters:(id)arg1 errorStr:(id *)arg2;
+- (_Bool)setAppPushParameters:(id)arg1 errorStr:(id *)arg2;
+- (_Bool)unsetDNSParameters:(id)arg1 errorStr:(id *)arg2;
+- (_Bool)setDNSParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)unsetAlwaysOnParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)setAlwaysOnParameters:(id)arg1 errorStr:(id *)arg2;
 - (void)reloadIdentityListWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -46,8 +50,6 @@
 - (id)readIndexFromDiskForGivenPatahWithError:(id)arg1 returnError:(id *)arg2 fileDecoder:(id *)arg3;
 - (void)loadConfigurationWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadConfigurationsForceRefresh:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)removePersonalDNSWithParameters:(id)arg1 errorStr:(id *)arg2;
-- (_Bool)addPersonalDNSWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)removeAppRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)addAppRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)removePathRuleWithParameters:(id)arg1 errorStr:(id *)arg2;
@@ -73,12 +75,15 @@
 - (_Bool)setProtocolWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)swapConfigurationTypeWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (_Bool)createConfigurationWithParameters:(id)arg1 errorStr:(id *)arg2;
+@property(readonly) NEAppPush *appPush;
+@property(readonly) NEDNSSettingsBundle *dnsSettingsBundle;
 @property(readonly) NEDNSProxyProviderProtocol *dnsProxyConfiguration;
 @property(readonly) NEFilterProviderConfiguration *filterConfiguration;
 - (id)protocolForParameters:(id)arg1;
 - (_Bool)isIsAlwaysOn;
 @property(copy) NSArray *onDemandRules;
 @property(nonatomic) _Bool disconnectOnDemandEnabled;
+@property _Bool onDemandUserOverrideDisabled;
 @property _Bool onDemandEnabled;
 @property _Bool enabled;
 - (void)dealloc;

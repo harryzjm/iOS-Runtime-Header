@@ -27,6 +27,7 @@
 + (id)macMetrics;
 + (void)initialize;
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didSetupConstraints; // @synthesize didSetupConstraints=_didSetupConstraints;
 @property(retain, nonatomic) UIView *pinnedBackdropView; // @synthesize pinnedBackdropView=_pinnedBackdropView;
 @property(nonatomic) double trailingMargin; // @synthesize trailingMargin=_trailingMargin;
@@ -44,7 +45,6 @@
 - (void)updateGutterConstraints;
 - (void)establishConstraints;
 - (void)updateConstraints;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

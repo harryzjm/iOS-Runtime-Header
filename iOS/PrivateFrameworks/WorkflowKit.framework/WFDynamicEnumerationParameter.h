@@ -4,31 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSError;
+@class INObjectCollection, NSArray, NSError;
 @protocol WFDynamicEnumerationDataSource;
 
 @interface WFDynamicEnumerationParameter
 {
     NSArray *_possibleStates;
+    INObjectCollection *_possibleStatesCollection;
     id _defaultSerializedRepresentation;
     id <WFDynamicEnumerationDataSource> _dataSource;
-    unsigned long long _possibleStatesLoadingState;
     unsigned long long _defaultValueLoadingState;
+    unsigned long long _possibleStatesLoadingState;
     NSError *_possibleStatesLoadingError;
 }
 
-@property(retain, nonatomic) NSError *possibleStatesLoadingError; // @synthesize possibleStatesLoadingError=_possibleStatesLoadingError;
-@property(nonatomic) unsigned long long defaultValueLoadingState; // @synthesize defaultValueLoadingState=_defaultValueLoadingState;
-@property(nonatomic) unsigned long long possibleStatesLoadingState; // @synthesize possibleStatesLoadingState=_possibleStatesLoadingState;
-@property(nonatomic) __weak id <WFDynamicEnumerationDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSError *possibleStatesLoadingError; // @synthesize possibleStatesLoadingError=_possibleStatesLoadingError;
+@property(readonly, nonatomic) unsigned long long possibleStatesLoadingState; // @synthesize possibleStatesLoadingState=_possibleStatesLoadingState;
+@property(nonatomic) unsigned long long defaultValueLoadingState; // @synthesize defaultValueLoadingState=_defaultValueLoadingState;
+@property(nonatomic) __weak id <WFDynamicEnumerationDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) INObjectCollection *possibleStatesCollection; // @synthesize possibleStatesCollection=_possibleStatesCollection;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)isAsynchronous;
 - (void)defaultSerializedRepresentationDidChange;
 - (void)loadPossibleStatesWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(retain, nonatomic) NSArray *possibleStates; // @synthesize possibleStates=_possibleStates;
+@property(readonly, nonatomic) NSArray *possibleStates; // @synthesize possibleStates=_possibleStates;
 - (id)accessoryColorForPossibleState:(id)arg1;
 - (id)defaultSerializedRepresentation;
 - (id)localizedLabelForPossibleState:(id)arg1;
+- (void)setPossibleStatesFromRemoteSource:(id)arg1;
+- (void)setPossibleStates:(id)arg1;
+- (void)reloadPossibleStates;
 - (void)clearPossibleStates;
 - (void)possibleStatesDidChange;
 - (_Bool)parameterStateIsValid:(id)arg1;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIColor *searchBarTextDisabledColor;
 @property(readonly, nonatomic) UIColor *searchBarTextColor;
 @property(readonly, nonatomic) UIColor *searchBarBackgroundColor;
+@property(readonly, nonatomic) _Bool usesInsetPlatterStyle;
 @property(readonly, nonatomic) _Bool tableIsOpaque;
 @property(readonly, nonatomic) long long tableSeparatorOverlayBlendMode;
 @property(readonly, nonatomic) long long tableSeparatorStyle;
@@ -43,6 +44,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIFont *cellNameTextFont;
 @property(readonly, nonatomic) UIColor *cellSearchResultTextDisabledColor;
 @property(readonly, nonatomic) UIColor *cellSearchResultTextColor;
+@property(readonly, nonatomic) UIColor *cellSearchBackgroundColor;
+@property(readonly, nonatomic) UIColor *cellNameTextHighlightedLightColor;
 @property(readonly, nonatomic) UIColor *cellNameTextHighlightedColor;
 @property(readonly, nonatomic) UIColor *cellNameTextColor;
 @property(readonly, nonatomic) UIColor *cellBackgroundSelectedColor;

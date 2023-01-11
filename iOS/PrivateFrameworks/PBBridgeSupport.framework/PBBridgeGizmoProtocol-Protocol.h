@@ -14,6 +14,7 @@
 - (void)popToControllerType:(IDSProtobuf *)arg1;
 - (void)pushControllerType:(IDSProtobuf *)arg1;
 - (void)setPasscodeRestrictions:(IDSProtobuf *)arg1;
+- (void)setMessagesInCloudEnabledForTinker:(IDSProtobuf *)arg1;
 - (void)setLocationEnabled:(IDSProtobuf *)arg1;
 - (void)enabledSiri:(IDSProtobuf *)arg1;
 - (void)gotSiriState:(IDSProtobuf *)arg1;

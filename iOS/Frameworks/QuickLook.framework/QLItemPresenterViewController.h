@@ -8,6 +8,7 @@
 #import <QuickLook/QLItemViewControllerPresentingDelegate-Protocol.h>
 
 @class DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController, QLPreviewContext, QLScreenTimeItemViewController;
+@protocol QLItemPresenterViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface QLItemPresenterViewController <QLDownloadingItemViewControllerDelegate, QLItemViewControllerPresentingDelegate>
@@ -29,12 +30,15 @@ __attribute__((visibility("hidden")))
     id _contents;
     QLPreviewContext *_context;
     NSString *_hostApplicationBundleIdentifier;
+    NSString *_parentApplicationDisplayIdentifier;
     DMFApplicationPolicyMonitor *_screenTimeApplicationMonitor;
     DMFCategoryPolicyMonitor *_screenTimeCategoryMonitor;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) DMFCategoryPolicyMonitor *screenTimeCategoryMonitor; // @synthesize screenTimeCategoryMonitor=_screenTimeCategoryMonitor;
 @property(retain, nonatomic) DMFApplicationPolicyMonitor *screenTimeApplicationMonitor; // @synthesize screenTimeApplicationMonitor=_screenTimeApplicationMonitor;
+@property(copy, nonatomic) NSString *parentApplicationDisplayIdentifier; // @synthesize parentApplicationDisplayIdentifier=_parentApplicationDisplayIdentifier;
 @property(copy, nonatomic) NSString *hostApplicationBundleIdentifier; // @synthesize hostApplicationBundleIdentifier=_hostApplicationBundleIdentifier;
 @property(nonatomic) _Bool printing; // @synthesize printing=_printing;
 @property(retain) QLPreviewContext *context; // @synthesize context=_context;
@@ -46,13 +50,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) QLLoadingItemViewController *loadingViewController; // @synthesize loadingViewController=_loadingViewController;
 @property(retain, nonatomic) QLErrorItemViewController *errorViewController; // @synthesize errorViewController=_errorViewController;
 @property(retain, nonatomic) QLItemViewController *previewProvider; // @synthesize previewProvider=_previewProvider;
-- (void).cxx_destruct;
+- (_Bool)_processIsEntitledToConfigureScreenTime;
 - (_Bool)_processIsEntitledToCheckScreenTimePolicy;
 - (_Bool)_shouldApplyScreenTimeMoviePolicyForItem:(id)arg1;
 - (id)screenTimePolicyBundleIdentifier;
 - (void)_hideScreenTimeViewControllerIfNeeded;
-- (void)_showScreenTimeViewController;
-- (void)_didReceiveNewScreenTimePolity:(long long)arg1;
+- (void)_showScreenTimeViewControllerWithPolicy:(long long)arg1;
+- (void)_didReceiveNewScreenTimePolicy:(long long)arg1;
 - (void)_didReceiveNewScreenTimeApplicationPolicies:(id)arg1 error:(id)arg2;
 - (void)_didReceiveNewScreenTimeCategoryPolicy:(id)arg1 error:(id)arg2;
 - (void)_queryScreenTimeCategoryPolicy;
@@ -71,10 +75,12 @@ __attribute__((visibility("hidden")))
 - (void)previewWillDisappear:(_Bool)arg1;
 - (void)previewDidAppear:(_Bool)arg1;
 - (void)previewWillAppear:(_Bool)arg1;
+- (_Bool)_currentPreviewControllerIsErrorViewController;
 - (_Bool)loadingFailed;
 - (_Bool)isLoading;
 - (_Bool)isLoaded;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
+- (_Bool)downloadingItemViewControllerShouldForceAutodownloadFile:(id)arg1;
 - (void)downloadingItemViewControllerDidFinishLoadingPreviewItem:(id)arg1 withContents:(id)arg2;
 - (void)_startLoadingPreviewWithContents:(id)arg1;
 - (_Bool)canAnimateFromDetailViewToFullScreenPreview;
@@ -86,15 +92,17 @@ __attribute__((visibility("hidden")))
 - (void)showErrorViewController;
 - (void)_performLoadingCompletionHandlerWithError:(id)arg1;
 - (void)_performReadyBlockIfNedded;
+- (struct CGSize)preferredContentSize;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_showReadyToDisplayPreviewViewControllerDeferredIfNeeded:(id)arg1;
 - (void)_showLoadingViewControllerDeferredIfNeeded;
 - (id)initForPrinting:(_Bool)arg1;
-- (id)initWithHostApplicationBundleIdentifier:(id)arg1;
+- (id)initWithHostApplicationBundleIdentifier:(id)arg1 parentApplicationDisplayIdentifier:(id)arg2;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <QLItemPresenterViewControllerDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

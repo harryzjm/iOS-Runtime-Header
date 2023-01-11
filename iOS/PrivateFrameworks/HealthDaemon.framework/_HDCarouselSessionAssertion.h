@@ -6,15 +6,16 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDCarouselSessionAssertion
 {
     _Bool _supportsAOT;
     NSString *_applicationBundleIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool supportsAOT; // @synthesize supportsAOT=_supportsAOT;
 @property(readonly, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
-- (void).cxx_destruct;
 - (id)initWithOwnerIdentifier:(id)arg1;
 
 @end

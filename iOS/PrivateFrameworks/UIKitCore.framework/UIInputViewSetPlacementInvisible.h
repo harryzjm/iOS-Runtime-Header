@@ -17,6 +17,10 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 + (id)placementWithPlacement:(id)arg1;
 - (void).cxx_destruct;
+- (id)description;
+- (unsigned long long)computeComparisonMask;
+- (unsigned long long)indexForPurpose:(unsigned long long)arg1;
+- (id)subPlacements;
 - (id)applicatorInfoForOwner:(id)arg1;
 - (Class)applicatorClassForKeyboard:(_Bool)arg1;
 - (struct CGAffineTransform)transform;
@@ -24,13 +28,14 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(_Bool)arg2;
 - (_Bool)accessoryViewWillAppear;
 - (_Bool)inputViewWillAppear;
-- (unsigned long long)notificationsForTransitionToPlacement:(id)arg1;
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)horizontalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (_Bool)isInteractive;
+- (_Bool)showsInputOrAssistantViews;
 - (_Bool)showsKeyboard;
 - (_Bool)showsInputViews;
+- (_Bool)isVisible;
 - (_Bool)isUndocked;
 - (_Bool)isEqual:(id)arg1;
 - (void)setDirty;

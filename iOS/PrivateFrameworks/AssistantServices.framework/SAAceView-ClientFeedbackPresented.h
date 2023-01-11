@@ -6,12 +6,13 @@
 
 #import <SAObjects/SAAceView.h>
 
-#import <AssistantServices/AFAceCommandDialogInfoExtracting-Protocol.h>
+#import <AssistantServices/AFAceCommandClientFeedbackEnumerating-Protocol.h>
 
-@interface SAAceView (ClientFeedbackPresented) <AFAceCommandDialogInfoExtracting>
-- (void)_af_extractDialogInfo:(CDUnknownBlockType)arg1;
+@interface SAAceView (ClientFeedbackPresented) <AFAceCommandClientFeedbackEnumerating>
+- (void)_af_enumerateClientFeedbackDetails:(CDUnknownBlockType)arg1;
 - (id)_af_dialogIdentifier;
 - (id)_af_dialogPhase;
+- (id)af_dialogIdentifiersForAnalyticsContext;
 - (void)af_addEntriesToAnalyticsContext:(id)arg1;
 @end
 

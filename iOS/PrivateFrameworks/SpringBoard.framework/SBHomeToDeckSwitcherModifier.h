@@ -8,22 +8,23 @@
 {
 }
 
-- (id)opacitySettings;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
 - (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)_opacitySettings;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)appLayoutToScrollToDuringTransition;

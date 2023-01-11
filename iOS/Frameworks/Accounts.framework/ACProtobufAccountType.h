@@ -21,21 +21,19 @@ __attribute__((visibility("hidden")))
     NSString *_owningBundleID;
     int _supportsAuthentication;
     int _visibility;
-    _Bool _encryptAccountProperties;
     _Bool _obsolete;
     _Bool _supportsMultipleAccounts;
     struct {
         unsigned int supportsAuthentication:1;
         unsigned int visibility:1;
-        unsigned int encryptAccountProperties:1;
         unsigned int obsolete:1;
         unsigned int supportsMultipleAccounts:1;
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool obsolete; // @synthesize obsolete=_obsolete;
 @property(retain, nonatomic) NSString *owningBundleID; // @synthesize owningBundleID=_owningBundleID;
-@property(nonatomic) _Bool encryptAccountProperties; // @synthesize encryptAccountProperties=_encryptAccountProperties;
 @property(nonatomic) _Bool supportsMultipleAccounts; // @synthesize supportsMultipleAccounts=_supportsMultipleAccounts;
 @property(nonatomic) int supportsAuthentication; // @synthesize supportsAuthentication=_supportsAuthentication;
 @property(retain, nonatomic) NSString *credentialProtectionPolicy; // @synthesize credentialProtectionPolicy=_credentialProtectionPolicy;
@@ -44,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) ACProtobufURL *objectID; // @synthesize objectID=_objectID;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSString *accountTypeDescription; // @synthesize accountTypeDescription=_accountTypeDescription;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -56,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 @property(nonatomic) _Bool hasObsolete;
 @property(readonly, nonatomic) _Bool hasOwningBundleID;
-@property(nonatomic) _Bool hasEncryptAccountProperties;
 @property(nonatomic) _Bool hasSupportsMultipleAccounts;
 @property(nonatomic) _Bool hasSupportsAuthentication;
 @property(readonly, nonatomic) _Bool hasCredentialProtectionPolicy;

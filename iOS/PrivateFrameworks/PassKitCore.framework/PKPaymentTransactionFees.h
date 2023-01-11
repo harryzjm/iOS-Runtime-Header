@@ -18,18 +18,22 @@
 
 + (id)_feesSetFromJsonString:(id)arg1;
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSSet *fees; // @synthesize fees=_fees;
++ (id)recordNamePrefix;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *fees; // @synthesize fees=_fees;
 - (id)description;
 - (_Bool)isEqualToFees:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)recordTypesAndNames;
+- (id)primaryIdentifier;
+- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
 - (unsigned long long)itemType;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)_feeItemsFromRecord:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (id)jsonString;
 - (id)jsonArrayRepresentation;

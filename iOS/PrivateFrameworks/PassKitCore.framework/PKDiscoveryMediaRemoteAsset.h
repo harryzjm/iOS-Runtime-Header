@@ -17,11 +17,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) NSString *sha1Hex; // @synthesize sha1Hex=_sha1Hex;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 
 @end

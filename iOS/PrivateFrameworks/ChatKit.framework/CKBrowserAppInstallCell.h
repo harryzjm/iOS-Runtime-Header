@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKBrowserIconView *browserIconView; // @synthesize browserIconView=_browserIconView;
 @property(retain, nonatomic) CKAppInstallation *installation; // @synthesize installation=_installation;
-- (void).cxx_destruct;
 - (id)iconView;
 - (void)layoutSubviews;
 

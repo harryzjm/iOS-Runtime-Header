@@ -21,13 +21,13 @@
 }
 
 + (id)sharedWebServiceProvider;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NPKPeerPaymentWebServiceCompanionTargetDevice *peerPaymentTargetDevice; // @synthesize peerPaymentTargetDevice=_peerPaymentTargetDevice;
 @property(retain, nonatomic) NPKCompanionAgentConnection *companionAgentConnection; // @synthesize companionAgentConnection=_companionAgentConnection;
 @property(retain, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
 @property(retain, nonatomic) PKPeerPaymentWebService *peerPaymentWebService; // @synthesize peerPaymentWebService=_peerPaymentWebService;
 @property(retain, nonatomic) NPKPaymentWebServiceCompanionTargetDevice *targetDevice; // @synthesize targetDevice=_targetDevice;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
-- (void).cxx_destruct;
 - (void)noteForegroundVerificationObserverActive:(_Bool)arg1;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (void)checkCompanionPeerPaymentRegistrationState;
@@ -42,6 +42,8 @@
 - (void)archiveWebServiceContext:(id)arg1;
 - (void)handlePreferredAID:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)handleUpdatePaymentPassWithTypeIdentifier:(id)arg1;
+- (void)handleCredentialsUpdate:(id)arg1 forUniqueID:(id)arg2;
+- (void)handleBalanceReminderUpdate:(id)arg1 balance:(id)arg2 forUniqueID:(id)arg3;
 - (void)handleBalanceUpdate:(id)arg1 forUniqueID:(id)arg2;
 - (void)handleRemoveTransactionsWithIdentifiers:(id)arg1;
 - (void)handleAppletState:(id)arg1 forUniqueID:(id)arg2;

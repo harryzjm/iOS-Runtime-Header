@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSNumber, NSPredicate, NSString;
+@class NSArray, NSDate, NSPredicate, NSString;
 @protocol SyncManagerProtocol;
 
 @interface CHManager
@@ -26,12 +26,11 @@
     id <SyncManagerProtocol> _syncManager;
     NSArray *_uncoalescedRecentCalls;
     NSArray *_uncoalescedUnFilteredRecentCalls;
-    NSNumber *_unreadCallCount;
 }
 
 + (unsigned int)CHCallStatusForCallWithDuration:(double)arg1 isOriginated:(_Bool)arg2 isAnswered:(_Bool)arg3;
 + (id)limitingCallKindsForCallType:(unsigned int)arg1;
-@property(retain) NSNumber *unreadCallCount; // @synthesize unreadCallCount=_unreadCallCount;
+- (void).cxx_destruct;
 @property(retain) NSArray *uncoalescedUnFilteredRecentCalls; // @synthesize uncoalescedUnFilteredRecentCalls=_uncoalescedUnFilteredRecentCalls;
 @property(retain, nonatomic, getter=uncoalescedRecentCallsSync) NSArray *uncoalescedRecentCalls; // @synthesize uncoalescedRecentCalls=_uncoalescedRecentCalls;
 @property _Bool reCoalesce; // @synthesize reCoalesce=_reCoalesce;
@@ -40,11 +39,11 @@
 @property long long numberOfUnseenMissedCalls; // @synthesize numberOfUnseenMissedCalls=_numberOfUnseenMissedCalls;
 @property(retain, nonatomic) NSArray *recentCalls; // @synthesize recentCalls=_recentCalls;
 @property(nonatomic) _Bool generateSyncTransactions; // @synthesize generateSyncTransactions=_generateSyncTransactions;
-- (void).cxx_destruct;
 - (id)latestCallMatchingNormalizedRemoteParticipantHandleValues:(id)arg1;
 - (id)latestRecentCallMatchingPredicate:(id)arg1;
 - (id)coalescedCallsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 offset:(unsigned long long)arg3 batchSize:(unsigned long long)arg4;
 - (unsigned long long)coalescedCallCountWithPredicate:(id)arg1;
+- (id)callIdentifiersWithPredicate:(id)arg1 limit:(unsigned long long)arg2 offset:(unsigned long long)arg3 batchSize:(unsigned long long)arg4;
 - (id)callsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 offset:(unsigned long long)arg3 batchSize:(unsigned long long)arg4;
 - (unsigned long long)callCountWithPredicate:(id)arg1;
 - (void)deleteCallsWithPredicate:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -80,14 +79,13 @@
 - (void)markAllCallsAsReadWithPredicate:(id)arg1;
 - (void)setOutgoingLocalParticipantUUID:(id)arg1 forRecentCallsMatchingPredicate:(id)arg2;
 - (void)addToCallHistory:(id)arg1;
-- (unsigned long long)fetchUnreadCallsCount;
 - (unsigned long long)countCallsWithPredicate:(id)arg1;
 - (unsigned long long)countCallsWithPredicateSync:(id)arg1;
 - (id)fetchRecentCallsSyncWithCoalescing:(_Bool)arg1;
 - (id)recentCallsWithPredicate:(id)arg1;
 - (id)applyPredicate:(id)arg1 toCalls:(id)arg2;
 - (id)unCoalesceCall:(id)arg1;
-- (id)coalesceCalls:(id)arg1;
+- (id)coalescedCallsWithCalls:(id)arg1 usingStrategy:(id)arg2;
 - (void)currentLocaleChanged:(id)arg1;
 - (void)handleCallHistoryDatabaseChangedInternalNotification:(id)arg1;
 - (void)handleCallHistoryContactStoreChangedInternalNotification:(id)arg1;

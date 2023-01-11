@@ -21,18 +21,19 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *containerIDs; // @synthesize containerIDs=_containerIDs;
 @property(nonatomic, getter=isRegistered) _Bool registered; // @synthesize registered=_registered;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property __weak id <HMUserCloudShareManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (id)messageDestination;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)_registerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reconnect;
 - (void)registerForContainerIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleDidReceiveRepairRequest:(id)arg1;
 - (void)_handleDidReceiveShare:(id)arg1;
 - (void)__registerForMessages;
 - (void)configure;

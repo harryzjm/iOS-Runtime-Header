@@ -12,6 +12,7 @@
 
 @interface AMSBiometricsTokenUpdateTask <AMSSecurityClientInterface, AMSBagConsumer>
 {
+    _Bool _shouldGenerateKeysOnly;
     _Bool _shouldRequestConfirmation;
     _Bool _shouldPromptUser;
     ACAccount *_account;
@@ -25,15 +26,16 @@
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldPromptUser; // @synthesize shouldPromptUser=_shouldPromptUser;
 @property(retain, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(nonatomic) _Bool shouldRequestConfirmation; // @synthesize shouldRequestConfirmation=_shouldRequestConfirmation;
+@property(nonatomic) _Bool shouldGenerateKeysOnly; // @synthesize shouldGenerateKeysOnly=_shouldGenerateKeysOnly;
 @property(nonatomic) __weak id <AMSRequestPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(retain, nonatomic) NSDictionary *additionalDialogMetrics; // @synthesize additionalDialogMetrics=_additionalDialogMetrics;
 @property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (id)initWithAccount:(id)arg1 bag:(id)arg2;
 - (void)handleDialogRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleAuthenticateRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

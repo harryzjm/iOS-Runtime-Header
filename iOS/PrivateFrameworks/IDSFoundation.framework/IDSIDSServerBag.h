@@ -11,6 +11,7 @@
 + (id)defaultBag;
 + (id)_bagCreationLock;
 - (unsigned long long)_bagDomain;
+- (_Bool)requiresIDSConnection;
 - (_Bool)isInDebilitatedMode;
 - (id)init;
 - (id)_bagDefaultsDomain;

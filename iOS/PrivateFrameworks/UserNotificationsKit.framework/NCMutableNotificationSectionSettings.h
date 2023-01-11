@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic) _Bool isAppClip; // @dynamic isAppClip;
 @property(nonatomic) _Bool hasProvisionalAuthorization; // @dynamic hasProvisionalAuthorization;
 @property(nonatomic) _Bool isDeliveredQuietly; // @dynamic isDeliveredQuietly;
 @property(nonatomic) _Bool showsCustomSettingsLink; // @dynamic showsCustomSettingsLink;

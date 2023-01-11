@@ -4,20 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/SBFluidSwitcherScrollProviding-Protocol.h>
-
-@class NSString;
-@protocol SBFluidSwitcherScrollProvidingDelegate;
-
-@interface SBDeckFloatingSwitcherModifier <SBFluidSwitcherScrollProviding>
+@interface SBDeckFloatingSwitcherModifier
 {
     unsigned long long _ongoingAppLayoutRemovals;
-    id <SBFluidSwitcherScrollProvidingDelegate> _scrollDelegate;
+    struct CGPoint _previousContentOffset;
+    _Bool _isScrollingForward;
 }
 
-@property(nonatomic) __weak id <SBFluidSwitcherScrollProvidingDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
-- (void).cxx_destruct;
 - (void)_applyPrototypeSettings;
+- (struct _NSRange)_visibleAppLayoutRangeForContentOffset:(struct CGPoint)arg1;
 - (unsigned long long)_numberOfItems;
 - (struct CGRect)_frameWithScaleAppliedForIndex:(unsigned long long)arg1 withCardSize:(struct CGSize)arg2 contentOffset:(struct CGPoint)arg3 contentSize:(struct CGSize)arg4 contentInsets:(struct UIEdgeInsets)arg5 switcherViewBounds:(struct CGRect)arg6;
 - (double)_distanceFromPreviousCardForCardAtIndex:(unsigned long long)arg1;
@@ -25,31 +20,23 @@
 - (double)_adjustedIndexForScaleForIndex:(unsigned long long)arg1 withCardSize:(struct CGSize)arg2 contentOffset:(struct CGPoint)arg3 contentSize:(struct CGSize)arg4 contentInsets:(struct UIEdgeInsets)arg5 switcherViewBounds:(struct CGRect)arg6;
 - (struct CGRect)_frameForIndex:(unsigned long long)arg1 withCardSize:(struct CGSize)arg2 scale:(double)arg3 adjustedIndexForScale:(double)arg4 contentOffset:(struct CGPoint)arg5 contentSize:(struct CGSize)arg6 contentInsets:(struct UIEdgeInsets)arg7 switcherViewBounds:(struct CGRect)arg8;
 - (struct UIEdgeInsets)_contentInsetsWithContainerViewBounds:(struct CGRect)arg1 switcherViewBounds:(struct CGRect)arg2;
-- (struct CGSize)_fittedContentSizeWithCardSize:(struct CGSize)arg1 contentInsets:(struct UIEdgeInsets)arg2 switcherViewBounds:(struct CGRect)arg3 numberOfItems:(unsigned long long)arg4;
 - (struct CGSize)_contentSizeWithWithCardSize:(struct CGSize)arg1 contentInsets:(struct UIEdgeInsets)arg2 switcherViewBounds:(struct CGRect)arg3 numberOfItems:(unsigned long long)arg4;
-- (_Bool)cardsNeedBackgroundWallpaperTreatment;
 - (void)resetAdjustedScrollingState;
 - (struct CGPoint)adjustedOffsetForOffset:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 startPoint:(struct CGPoint)arg3 locationInView:(struct CGPoint)arg4 horizontalVelocity:(inout double *)arg5 verticalVelocity:(inout double *)arg6;
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1;
 - (struct CGPoint)restingOffsetForScrollOffset:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
-- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1;
-- (struct CGSize)fittedContentSize;
-- (struct CGSize)contentSize;
-- (unsigned long long)scrollAxis;
-- (struct CGPoint)pagingOrigin;
-- (double)cardCornerRadiusInSwitcher;
-- (double)centerYOffsetWhenPresented;
-- (struct CGSize)interpageSpacingForPaging;
-- (_Bool)scrollViewPagingEnabled;
-- (double)decelerationRate;
-- (double)switcherCardScale;
-- (double)snapshotScale;
+- (unsigned long long)_indexForContentOffset:(struct CGPoint)arg1;
+- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 centered:(_Bool)arg2;
+- (struct CGSize)_contentSize;
+- (double)minimumTranslationToKillIndex:(unsigned long long)arg1;
+- (double)_cardCornerRadiusInSwitcher;
+- (id)scrollViewAttributes;
+- (double)contentPageViewScaleForAppLayout:(id)arg1;
+- (double)snapshotScaleForAppLayout:(id)arg1;
 - (_Bool)wantsAsynchronousSurfaceRetentionAssertion;
-- (_Bool)wantsMinificationFilter;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (long long)sceneDeactivationReason;
-- (_Bool)wantsResignActiveAssertion;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
 - (double)dockWindowLevel;
 - (unsigned long long)dockWindowLevelPriority;
 - (_Bool)wantsDockWindowLevelAssertion;
@@ -58,48 +45,49 @@
 - (_Bool)wantsDockBehaviorAssertion;
 - (_Bool)shouldConfigureInAppDockHiddenAssertion;
 - (_Bool)isIndexKillable:(unsigned long long)arg1;
-- (id)appLayoutsForInsertionOrRemoval;
+- (_Bool)isIndexSelectable:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
 - (_Bool)shouldBringCardToFrontDuringInsertionOrRemoval;
 - (_Bool)shouldAnimateInsertionOrRemovalAtIndex:(unsigned long long)arg1;
+- (id)appLayoutForReceivingHardwareButtonEvents;
+- (_Bool)shouldPerformCrossfadeForReduceMotion;
 - (_Bool)shouldPerformRotationAnimationForOrientationChange;
-- (_Bool)shouldTruncateAnimationsUponTransitionCompletion;
 - (_Bool)shouldFireTransitionCompletionInDefaultRunLoopMode;
-- (_Bool)shouldWaitForLayoutAndStyleUpdatesForTransactionCompletion;
-- (_Bool)shouldRubberbandHomeGrabberView;
+- (unsigned long long)transactionCompletionOptions;
+- (_Bool)shouldRubberbandFullScreenHomeGrabberView;
 - (_Bool)shouldAcceleratedHomeButtonPressBegin;
+- (id)appLayoutToScrollToBeforeReopeningClosedWindows;
 - (id)appLayoutToScrollToBeforeTransitioning;
-- (id)topMostAppLayouts;
-- (id)cornerRadiusSettingsForIndex:(unsigned long long)arg1;
-- (id)scaleSettingsForIndex:(unsigned long long)arg1;
-- (id)positionSettingsForIndex:(unsigned long long)arg1;
-- (id)layoutSettingsForIndex:(unsigned long long)arg1;
-- (id)opacitySettings;
-- (id)layoutSettings;
-- (long long)preferredSnapshotOrientation;
-- (struct _NSRange)fullSizeSnapshotsRange;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (unsigned long long)numberOfDefaultAppLayoutsToCacheSnapshots;
+- (id)topMostLayoutElements;
+- (long long)preferredSnapshotOrientationForAppLayout:(id)arg1;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
+- (_Bool)wantsHomeScreenPointerInteractions;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (_Bool)isHomeGrabberVisible;
+- (_Bool)isHomeGrabberVisibleForIndex:(unsigned long long)arg1;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (double)containerStatusBarAnimationDuration;
 - (_Bool)isContainerStatusBarVisible;
-- (unsigned long long)insertionStyle;
-- (double)baseHysteresisForStartingKillGesture;
-- (_Bool)isTetheredScrollingEnabled;
 - (_Bool)isScrollEnabled;
-- (_Bool)itemContainersAllowContentViewTouches;
-- (_Bool)itemContainersUseBrightMaterial;
-- (_Bool)dimmingViewBlocksTouches;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
-- (double)dimmingAlpha;
+- (long long)shadowStyleForAppLayout:(id)arg1;
+- (_Bool)shouldAllowContentViewTouchesForIndex:(unsigned long long)arg1;
+- (_Bool)shouldUseBackgroundWallpaperTreatmentForIndex:(unsigned long long)arg1;
+- (_Bool)isItemContainerPointerInteractionEnabled;
+- (_Bool)shouldUseBrightMaterialForIndex:(unsigned long long)arg1;
+- (_Bool)switcherDimmingViewBlocksTouches;
+- (double)switcherDimmingAlpha;
+- (_Bool)wantsSwitcherDimmingView;
+- (double)switcherBackdropBlurProgress;
+- (long long)switcherBackdropBlurType;
+- (_Bool)wantsSwitcherBackdropBlur;
+- (double)homeScreenBackdropBlurProgress;
+- (long long)homeScreenBackdropBlurType;
+- (double)homeScreenDimmingAlpha;
 - (double)wallpaperScale;
 - (double)homeScreenScale;
 - (double)homeScreenAlpha;
@@ -112,28 +100,31 @@
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
+- (_Bool)shouldScaleOverlayToFillBoundsAtIndex:(unsigned long long)arg1;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
+- (struct CGRect)fullyPresentedFrameForAppLayout:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
 - (double)contentViewScale;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (_Bool)_isIndexVisible:(unsigned long long)arg1;
+- (id)visibleAppLayouts;
+- (double)rotationAngleForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (long long)plusButtonStyle;
+- (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
+- (double)reopenClosedWindowsButtonScale;
 - (double)reopenClosedWindowsButtonAlpha;
 - (double)plusButtonAlpha;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
+- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleScrollEvent:(id)arg1;
 - (id)handleSwitcherSettingsChangedEvent:(id)arg1;
 - (id)handleTapOutsideToDismissEvent:(id)arg1;
 - (id)handleTapAppLayoutEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

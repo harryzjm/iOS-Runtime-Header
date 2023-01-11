@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (void)addToEnd:(id)arg1 withValue:(id)arg2;
 - (void)addToStart:(id)arg1 withValue:(id)arg2;
+- (void)replaceContactNamesWithString:(id)arg1 withValue:(id)arg2;
 - (void)transformFullwidthToHalfwidthASCII:(id)arg1;
 - (void)transformFullwidthToHalfwidth:(id)arg1;
 - (void)removeSymbolsWithExceptions:(id)arg1 withValue:(id)arg2;

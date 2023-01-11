@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSURL, PKPaymentSetupProduct;
 
 @interface NPKPaymentProvisioningFlowControllerTermsAndConditionsStepContext
 {
     _Bool _allowNonSecureHTTP;
+    PKPaymentSetupProduct *_product;
     NSURL *_termsURL;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowNonSecureHTTP; // @synthesize allowNonSecureHTTP=_allowNonSecureHTTP;
 @property(retain, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
-- (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 - (id)description;
 - (id)initWithRequestContext:(id)arg1;
 

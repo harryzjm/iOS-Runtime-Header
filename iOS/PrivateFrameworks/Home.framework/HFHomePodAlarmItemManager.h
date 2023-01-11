@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFAccessorySettingMobileTimerAdapter, HFHomePodAlarmItemModule;
+@class HFHomePodAlarmItemModule;
 @protocol HFMediaProfileContainer;
 
 @interface HFHomePodAlarmItemManager
@@ -13,14 +13,13 @@
     HFHomePodAlarmItemModule *_alarmItemModule;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HFHomePodAlarmItemModule *alarmItemModule; // @synthesize alarmItemModule=_alarmItemModule;
 @property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
-- (void).cxx_destruct;
 - (void)_unregisterForExternalUpdates;
 - (void)_registerForExternalUpdates;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
-@property(readonly, nonatomic) HFAccessorySettingMobileTimerAdapter *mobileTimerAdapter;
 - (id)initWithDelegate:(id)arg1 mediaProfileContainer:(id)arg2;
 
 @end

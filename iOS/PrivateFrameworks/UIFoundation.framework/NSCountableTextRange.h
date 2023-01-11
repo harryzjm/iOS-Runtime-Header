@@ -15,6 +15,7 @@
 + (void)setBaseClassTestingMode:(_Bool)arg1;
 + (_Bool)isBaseClassTestingMode;
 @property(readonly) struct _NSRange range; // @synthesize range=_range;
+@property(readonly, getter=isEndingAtEOD) _Bool endingAtEOD;
 - (id)textRangeByFormingUnionWithTextRange:(id)arg1;
 - (id)textRangeByIntersectingWithTextRange:(id)arg1;
 - (_Bool)intersectsWithTextRange:(id)arg1;
@@ -22,13 +23,14 @@
 - (_Bool)containsLocation:(id)arg1;
 - (_Bool)isEqualToTextRange:(id)arg1;
 - (_Bool)isEmpty;
-- (id)initWithLocation:(id)arg1 terminator:(id)arg2;
+- (unsigned long long)hash;
+- (id)initWithLocation:(id)arg1 endLocation:(id)arg2;
 - (id)initWithRange:(struct _NSRange)arg1;
 - (id)description;
 
 // Remaining properties
+@property(readonly) NSCountableTextLocation *endLocation; // @dynamic endLocation;
 @property(readonly) NSCountableTextLocation *location; // @dynamic location;
-@property(readonly) NSCountableTextLocation *terminator; // @dynamic terminator;
 
 @end
 

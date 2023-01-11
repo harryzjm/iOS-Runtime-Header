@@ -6,7 +6,7 @@
 
 #import <HelpKit/NSObject-Protocol.h>
 
-@class HLPHelpTopicItem, HLPHelpTopicViewController, NSError;
+@class HLPHelpTopicItem, HLPHelpTopicViewController, NSError, UITraitCollection;
 
 @protocol HLPHelpTopicViewControllerDelegate <NSObject>
 - (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(HLPHelpTopicViewController *)arg1;
@@ -14,6 +14,7 @@
 - (void)helpTopicViewController:(HLPHelpTopicViewController *)arg1 topicLoaded:(HLPHelpTopicItem *)arg2;
 - (void)helpTopicViewControllerDoneButtonTapped:(HLPHelpTopicViewController *)arg1;
 - (void)helpTopicViewControllerShowHelpBookInfo:(HLPHelpTopicViewController *)arg1;
+- (void)helpTopicViewController:(HLPHelpTopicViewController *)arg1 traitCollectionChanged:(UITraitCollection *)arg2;
 
 @optional
 - (void)helpTopicViewController:(HLPHelpTopicViewController *)arg1 selectedHelpTopicItem:(HLPHelpTopicItem *)arg2;

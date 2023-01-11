@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, FASharedServicesResponse, NSArray, NSOperationQueue, PSListController, PSSpecifier;
+@class ACAccount, FASharedServicesResponse, NSArray, NSDictionary, NSOperationQueue, PSListController, PSSpecifier;
 @protocol FASharedSubscriptionSpecifierProviderDelegeate;
 
 @interface FASharedSubscriptionSpecifierProvider : NSObject
@@ -18,19 +18,26 @@
     _Bool _updateSubsriptionSpecifiers;
     _Bool _isLoadingSpecifiers;
     NSOperationQueue *_networkActivityQueue;
+    NSDictionary *_cachedResourceDictionary;
+    unsigned long long _specifierState;
     NSArray *_specifiers;
     id <FASharedSubscriptionSpecifierProviderDelegeate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <FASharedSubscriptionSpecifierProviderDelegeate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSArray *specifiers; // @synthesize specifiers=_specifiers;
-- (void).cxx_destruct;
 - (void)reloadSpecifiers;
+- (id)_specifierNamed:(id)arg1;
+- (void)_delayedLoadIfNeeded;
+- (_Bool)_launchWithResourceDictionary:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleSubscriptionListResponse:(id)arg1;
 - (void)_loadSubscriptionServices;
 - (id)_valueForServiceSpecifier:(id)arg1;
 - (void)_serviceSpecifierWasTapped:(id)arg1;
 - (id)_iconURLStringForService:(id)arg1;
+- (id)_serviceSpecifiersFromArray:(id)arg1;
 - (id)_sharedSubscriptionGroupSpecifier;
 - (id)initWithAppleAccount:(id)arg1 presenter:(id)arg2;
 

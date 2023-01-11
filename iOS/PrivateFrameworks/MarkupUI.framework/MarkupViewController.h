@@ -29,6 +29,7 @@
     _Bool _needToPerformDocumentClosedTeardown;
     _Bool _observingAKCurrentPageIndex;
     _Bool _alreadyLoggedSavingForThisDocument;
+    _Bool _needsToolPickerVisibleWhenAnnotationControllerIsAvailable;
     _Bool _useFancyTransition;
     _Bool _isAnimatingMarkupExtensionTransition;
     _Bool _userDidCancel;
@@ -73,6 +74,7 @@
 + (id)cleanImageMetadataFromData:(id)arg1;
 + (_Bool)hasPrivateImageMetadata:(id)arg1;
 + (id)supportedOutputTypes;
+- (void).cxx_destruct;
 @property unsigned long long inkStyle; // @synthesize inkStyle=_inkStyle;
 @property(retain) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
 @property(nonatomic) _Bool showShareButtonInToolbar; // @synthesize showShareButtonInToolbar=_showShareButtonInToolbar;
@@ -92,6 +94,7 @@
 @property(retain) UIView *transitionDimmingView; // @synthesize transitionDimmingView=_transitionDimmingView;
 @property(retain) UIView *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
 @property(copy, nonatomic) NSString *preferredFileDisplayName; // @synthesize preferredFileDisplayName=_preferredFileDisplayName;
+@property(nonatomic) _Bool needsToolPickerVisibleWhenAnnotationControllerIsAvailable; // @synthesize needsToolPickerVisibleWhenAnnotationControllerIsAvailable=_needsToolPickerVisibleWhenAnnotationControllerIsAvailable;
 @property(nonatomic) _Bool alreadyLoggedSavingForThisDocument; // @synthesize alreadyLoggedSavingForThisDocument=_alreadyLoggedSavingForThisDocument;
 @property(retain) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property(retain) UIBarButtonItem *doneButton; // @synthesize doneButton=_doneButton;
@@ -117,7 +120,6 @@
 @property(retain, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property(nonatomic) long long toolbarPosition; // @synthesize toolbarPosition=_toolbarPosition;
 @property(nonatomic, getter=isToolbarHidden) _Bool toolbarHidden; // @synthesize toolbarHidden=_toolbarHidden;
-- (void).cxx_destruct;
 - (long long)toolbarController:(id)arg1 positionForBar:(id)arg2;
 - (void)_toolbarShareButtonTapped:(id)arg1;
 - (long long)positionForBar:(id)arg1;
@@ -151,6 +153,7 @@
 @property(copy) UIColor *toolbarItemTintColor;
 - (id)_effectiveBackgroundColor;
 @property(copy) UIColor *backgroundColor;
+- (void)_updateNavBarProperties;
 - (void)_updateAppearanceForTraitCollection:(id)arg1;
 - (void)_updateConstraintsForBarPosition:(long long)arg1;
 - (void)adjustContentInsetsForBars;
@@ -165,6 +168,7 @@
 - (void)_cleanupPlaceholderImage;
 - (void)_presentPlaceholderImage;
 - (void)_updateundoBarButtonWithController:(id)arg1;
+- (_Bool)_shouldShowUndoRedoButtonsInNavigationBar;
 - (void)_setupInitialBaseModelScaleFactorWithScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
 - (_Bool)_sourceImageMayContainBaseImageAndModel;
 - (void)_bailFailedAnimateEnterMarkup;
@@ -223,6 +227,7 @@
 - (void)documentDidCloseTeardown;
 - (void)fullTeardown;
 - (void)willBeginLoadingNewDocument;
+- (_Bool)_canShowWhileLocked;
 - (void)dealloc;
 - (void)_commonInit;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

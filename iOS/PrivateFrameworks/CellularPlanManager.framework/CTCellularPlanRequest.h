@@ -32,6 +32,13 @@
 + (void)initialize;
 + (_Bool)isRetriableErrorCode:(long long)arg1;
 + (id)connectionSettingsForServiceType:(long long)arg1;
++ (id)loadPlansRequestWithUrl:(id)arg1 postData:(id)arg2;
++ (id)newPurchaseWithSessionId:(id)arg1 receipt:(id)arg2 userId:(id)arg3 userName:(id)arg4;
++ (id)newInitiatePurchaseWithSessionId:(id)arg1 planId:(id)arg2;
++ (id)requestHandoffTokenWithSignIdMap:(id)arg1 urls:(id)arg2;
++ (id)plansRequestWithSignIdMap:(id)arg1 renewalIccid:(id)arg2 urls:(id)arg3;
++ (id)subscriptionDetailsRequestWithIccids:(id)arg1 signIdMap:(id)arg2 urls:(id)arg3;
++ (id)createSessionRequest;
 @property(retain, nonatomic) NSURLConnection *connection; // @synthesize connection=_connection;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(nonatomic) struct dispatch_queue_s *queue; // @synthesize queue=_queue;

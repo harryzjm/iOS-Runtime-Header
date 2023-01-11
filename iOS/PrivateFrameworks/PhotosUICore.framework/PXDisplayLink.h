@@ -15,9 +15,10 @@
     SEL _selector;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
 @property(readonly, nonatomic) __weak id target; // @synthesize target=_target;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) long long preferredFramesPerSecond;
 @property(readonly, nonatomic) double currentMediaTime;
 @property(readonly, nonatomic) double targetTimestamp;
 @property(readonly, nonatomic) double duration;

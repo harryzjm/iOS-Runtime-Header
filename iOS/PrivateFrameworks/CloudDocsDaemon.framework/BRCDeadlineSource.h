@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class BRCDeadlineScheduler, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCDeadlineSource : NSObject
@@ -19,12 +19,12 @@ __attribute__((visibility("hidden")))
     _Bool _signaled;
     NSString *_name;
     CDUnknownBlockType _eventHandler;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_workloop> *_workloop;
 }
 
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
+@property(copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
 - (void)signal;
 - (void)signalWithDeadline:(long long)arg1;
 - (void)runEventHandler;

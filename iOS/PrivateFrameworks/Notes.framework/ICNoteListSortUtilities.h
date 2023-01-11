@@ -10,6 +10,8 @@
 {
 }
 
++ (id)dateForCurrentSortTypeAccessibilityStringForNote:(id)arg1;
++ (id)dateForCurrentSortTypeForNote:(id)arg1;
 + (long long)tagForSortType:(long long)arg1;
 + (long long)sortTypeForTag:(long long)arg1;
 + (_Bool)isMenuItemCurrentSortTypeForTag:(long long)arg1;
@@ -20,7 +22,9 @@
 + (id)sortDescriptorsForCurrentTypeIncludingPinnedNotes:(_Bool)arg1;
 + (id)sortDescriptorsForPinnedNotes;
 + (id)sortDescriptorsForCurrentType;
++ (id)legacySortDescriptorsForType:(long long)arg1 ascending:(_Bool)arg2;
 + (id)sortDescriptorsForType:(long long)arg1 ascending:(_Bool)arg2;
++ (id)legacySortDescriptorsForType:(long long)arg1;
 + (id)sortDescriptorsForType:(long long)arg1;
 + (void)setCurrentNoteListSortType:(long long)arg1;
 + (long long)currentNoteListSortType;

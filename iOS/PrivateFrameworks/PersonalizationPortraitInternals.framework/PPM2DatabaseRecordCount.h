@@ -12,16 +12,16 @@
 
 @interface PPM2DatabaseRecordCount : PBCodable <NSCopying>
 {
+    NSString *_activeTreatments;
     unsigned int _schemaVersion;
     NSString *_tableName;
-    struct {
-        unsigned int schemaVersion:1;
-    } _has;
+    CDStruct_278ffb8f _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 @property(retain, nonatomic) NSString *tableName; // @synthesize tableName=_tableName;
 @property(nonatomic) unsigned int schemaVersion; // @synthesize schemaVersion=_schemaVersion;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -31,6 +31,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasActiveTreatments;
 @property(readonly, nonatomic) _Bool hasTableName;
 @property(nonatomic) _Bool hasSchemaVersion;
 

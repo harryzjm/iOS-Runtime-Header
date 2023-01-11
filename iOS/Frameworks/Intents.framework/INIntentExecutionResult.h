@@ -17,9 +17,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
-@property(readonly, copy, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
+@property(readonly, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 - (id)_dictionaryRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)description;

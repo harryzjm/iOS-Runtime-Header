@@ -14,6 +14,7 @@
 + (long long)zoomLevel;
 - (void).cxx_destruct;
 - (id)headerSpecForHeaderStyle:(long long)arg1 assetSectionLayout:(id)arg2;
+- (void)configureAssetSectionLayout:(id)arg1;
 - (id)createCardSpecWithExtendedTraitCollection:(id)arg1;
 - (id)initWithExtendedTraitCollection:(id)arg1 assetsSectionLayoutSpec:(id)arg2;
 

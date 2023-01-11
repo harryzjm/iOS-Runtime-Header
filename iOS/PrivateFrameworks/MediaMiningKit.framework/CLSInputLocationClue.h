@@ -20,6 +20,7 @@
 - (_Bool)isDefinite;
 - (struct CLLocationCoordinate2D)closestCoordinates;
 - (id)projectedLocation;
+- (double)gpsHorizontalAccuracy;
 - (id)location;
 - (id)regionInPlacemark;
 - (id)region;

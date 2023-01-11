@@ -21,15 +21,17 @@
     HMFNetAddress *_remoteAddress;
     NSObject<OS_tcp_connection> *_tcpConnection;
     HMDDataStreamFrameReader *_byteReader;
+    NSString *_logIdentifier;
 }
 
 + (id)logCategory;
-@property(retain, nonatomic) HMDDataStreamFrameReader *byteReader; // @synthesize byteReader=_byteReader;
-@property(retain, nonatomic) NSObject<OS_tcp_connection> *tcpConnection; // @synthesize tcpConnection=_tcpConnection;
-@property(retain, nonatomic) HMFNetAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(nonatomic) __weak id <HMDDataStreamTransportDelegate> delegate; // @synthesize delegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property(readonly, nonatomic) HMDDataStreamFrameReader *byteReader; // @synthesize byteReader=_byteReader;
+@property(retain, nonatomic) NSObject<OS_tcp_connection> *tcpConnection; // @synthesize tcpConnection=_tcpConnection;
+@property(readonly, nonatomic) HMFNetAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(nonatomic) __weak id <HMDDataStreamTransportDelegate> delegate; // @synthesize delegate;
 - (void)sendRawFrame:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)close;
 - (void)_doReceive;
@@ -38,7 +40,7 @@
 - (void)_start;
 - (void)connect;
 - (void)dealloc;
-- (id)initWithAddress:(id)arg1 port:(long long)arg2 workQueue:(id)arg3;
+- (id)initWithAddress:(id)arg1 port:(long long)arg2 workQueue:(id)arg3 logIdentifier:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

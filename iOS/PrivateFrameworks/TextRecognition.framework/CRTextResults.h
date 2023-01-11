@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CRTextDetectorResults, CRTextRecognizerResults, NSArray, NSDate;
+@class CRTextDetectorResults, CRTextFeature, CRTextRecognizerResults, NSArray, NSDate;
 
 @interface CRTextResults : NSObject
 {
@@ -15,14 +15,16 @@
     CRTextDetectorResults *_detectorResults;
     CRTextRecognizerResults *_recognizerResults;
     NSArray *_textFeatures;
+    CRTextFeature *_titleTextFeature;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CRTextFeature *titleTextFeature; // @synthesize titleTextFeature=_titleTextFeature;
 @property(retain, nonatomic) NSArray *textFeatures; // @synthesize textFeatures=_textFeatures;
 @property(retain, nonatomic) CRTextRecognizerResults *recognizerResults; // @synthesize recognizerResults=_recognizerResults;
 @property(retain, nonatomic) CRTextDetectorResults *detectorResults; // @synthesize detectorResults=_detectorResults;
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
-- (void).cxx_destruct;
 
 @end
 

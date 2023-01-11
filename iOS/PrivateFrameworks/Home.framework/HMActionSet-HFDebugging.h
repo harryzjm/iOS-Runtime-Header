@@ -7,13 +7,14 @@
 #import <HomeKit/HMActionSet.h>
 
 #import <Home/HFFavoritable-Protocol.h>
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
 @class NSDate, NSSet, NSString, NSUUID;
 @protocol HFIconDescriptor;
 
-@interface HMActionSet (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFReorderableHomeKitObject>
+@interface HMActionSet (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeKitObject, HFReorderableHomeKitObject>
 + (id)hf_standardIconDescriptorForActionSetType:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_updateIsFavorite:(_Bool)arg1;
@@ -28,6 +29,7 @@
 - (_Bool)hf_isAnonymous;
 - (_Bool)hf_affectsServiceWithIdentifier:(id)arg1;
 - (id)hf_affectedServices;
+- (id)hf_affectedProfiles;
 - (id)hf_affectedMediaSessions;
 - (id)hf_affectedCharacteristics;
 @property(readonly, copy, nonatomic) NSSet *hf_characteristicWriteActions;

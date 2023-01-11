@@ -6,17 +6,18 @@
 
 #import <PhotosGraph/PGGraphLocationCoordinates-Protocol.h>
 #import <PhotosGraph/PGGraphLocationNaming-Protocol.h>
+#import <PhotosGraph/PGGraphLocationOrArea-Protocol.h>
 
 @class NSString;
 
-@interface PGGraphLocationNode <PGGraphLocationNaming, PGGraphLocationCoordinates>
+@interface PGGraphLocationNode <PGGraphLocationOrArea, PGGraphLocationNaming, PGGraphLocationCoordinates>
 {
     PGGraphLocationNode *_densestCloseLocationNode;
     struct CLLocationCoordinate2D _centroidCoordinate;
 }
 
-@property(nonatomic) struct CLLocationCoordinate2D centroidCoordinate; // @synthesize centroidCoordinate=_centroidCoordinate;
 - (void).cxx_destruct;
+@property(nonatomic) struct CLLocationCoordinate2D centroidCoordinate; // @synthesize centroidCoordinate=_centroidCoordinate;
 - (id)deepParentLocationNodes;
 - (struct CLLocationCoordinate2D)coordinate;
 - (id)associatedNodesForRemoval;

@@ -7,23 +7,29 @@
 #import <UIKit/UIView.h>
 
 @class MISSING_TYPE, NSString;
+@protocol HRConceptTitleTableHeaderViewDelegate;
 
 @interface HRConceptTitleTableHeaderView : UIView
 {
     MISSING_TYPE *titleLabel;
+    MISSING_TYPE *actionButton;
     MISSING_TYPE *fontChoices;
     MISSING_TYPE *widthCache;
     MISSING_TYPE *titleCache;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *bottomExtraSpace;
 }
 
 - (void).cxx_destruct;
+- (void)actionButtonTappedWithSender:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, copy) NSString *buttonTitle;
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic) double bottomExtraSpace; // @synthesize bottomExtraSpace;
+@property(nonatomic) __weak id <HRConceptTitleTableHeaderViewDelegate> delegate; // @synthesize delegate;
 
 @end
 

@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (long long)accessibilityContainerType;
-- (_Bool)accessibilityScroll:(long long)arg1;
 - (_Bool)accessibilityPerformEscape;
 
 @end

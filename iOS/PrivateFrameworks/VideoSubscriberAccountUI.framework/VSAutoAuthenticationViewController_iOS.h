@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/VSAutoAuthenticationViewController-Protocol.h>
 
-@class NSString, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSFontCenter, VSIdentityProviderLogoView, VSViewModel;
+@class NSString, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSFontCenter, VSIdentityProviderLogoView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,10 +25,13 @@ __attribute__((visibility("hidden")))
     UILabel *_noticeLabel;
     UILabel *_manualSignInTitleLabel;
     UIButton *_manualSignInButton;
+    UILabel *_footerLabel;
     VSFontCenter *_fontCenter;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
+@property(retain, nonatomic) UILabel *footerLabel; // @synthesize footerLabel=_footerLabel;
 @property(retain, nonatomic) UIButton *manualSignInButton; // @synthesize manualSignInButton=_manualSignInButton;
 @property(retain, nonatomic) UILabel *manualSignInTitleLabel; // @synthesize manualSignInTitleLabel=_manualSignInTitleLabel;
 @property(retain, nonatomic) UILabel *noticeLabel; // @synthesize noticeLabel=_noticeLabel;
@@ -37,10 +40,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *accountNameLabel; // @synthesize accountNameLabel=_accountNameLabel;
 @property(retain, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property(readonly, nonatomic) VSViewModel *viewModel;
+@property(retain, nonatomic) VSAutoAuthenticationViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
-- (void).cxx_destruct;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -50,7 +52,6 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
 @property(readonly, nonatomic) struct CGSize preferredLogoSize;
-- (void)setViewModel:(id)arg1;
 - (void)_manualSignInButtonPressed:(id)arg1;
 - (void)_stopObservingViewModel:(id)arg1;
 - (void)_startObservingViewModel:(id)arg1;

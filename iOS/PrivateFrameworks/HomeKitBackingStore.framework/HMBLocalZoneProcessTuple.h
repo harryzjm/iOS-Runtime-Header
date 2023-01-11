@@ -6,31 +6,39 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMBModel, NSData, NSDictionary, NSUUID;
+@class HMBLocalSQLQueryTable, HMBLocalZoneProcessModelContext, HMBModel, NSArray, NSData, NSNumber, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface HMBLocalZoneProcessTuple : HMFObject
 {
-    HMBModel *_previous;
-    HMBModel *_update;
+    HMBLocalZoneProcessModelContext *_previousContext;
+    HMBLocalZoneProcessModelContext *_mergedContext;
+    HMBModel *_updateModel;
+    HMBModel *_outputModel;
+    NSNumber *_outputBlockRow;
     unsigned long long _recordRow;
     unsigned long long _itemRow;
     NSData *_externalID;
-    NSData *_externalData;
     NSUUID *_modelSchema;
-    NSDictionary *_encodedQueryableProperties;
+    NSString *_modelType;
+    HMBLocalSQLQueryTable *_queryTable;
+    NSArray *_encodedQueryableColumns;
 }
 
-@property(readonly, nonatomic) NSDictionary *encodedQueryableProperties; // @synthesize encodedQueryableProperties=_encodedQueryableProperties;
-@property(readonly, nonatomic) NSUUID *modelSchema; // @synthesize modelSchema=_modelSchema;
-@property(readonly, nonatomic) NSData *externalData; // @synthesize externalData=_externalData;
-@property(readonly, nonatomic) NSData *externalID; // @synthesize externalID=_externalID;
-@property(nonatomic) unsigned long long itemRow; // @synthesize itemRow=_itemRow;
-@property(nonatomic) unsigned long long recordRow; // @synthesize recordRow=_recordRow;
-@property(readonly, nonatomic) HMBModel *update; // @synthesize update=_update;
-@property(readonly, nonatomic) HMBModel *previous; // @synthesize previous=_previous;
 - (void).cxx_destruct;
-- (id)initWithPrevious:(id)arg1 update:(id)arg2 recordRow:(unsigned long long)arg3 itemRow:(unsigned long long)arg4 modelSchema:(id)arg5 externalID:(id)arg6 externalData:(id)arg7;
+@property(readonly, nonatomic) NSArray *encodedQueryableColumns; // @synthesize encodedQueryableColumns=_encodedQueryableColumns;
+@property(readonly, nonatomic) HMBLocalSQLQueryTable *queryTable; // @synthesize queryTable=_queryTable;
+@property(readonly, nonatomic) NSString *modelType; // @synthesize modelType=_modelType;
+@property(readonly, nonatomic) NSUUID *modelSchema; // @synthesize modelSchema=_modelSchema;
+@property(readonly, nonatomic) NSData *externalID; // @synthesize externalID=_externalID;
+@property(readonly, nonatomic) unsigned long long itemRow; // @synthesize itemRow=_itemRow;
+@property(readonly, nonatomic) unsigned long long recordRow; // @synthesize recordRow=_recordRow;
+@property(readonly, copy, nonatomic) NSNumber *outputBlockRow; // @synthesize outputBlockRow=_outputBlockRow;
+@property(readonly, copy, nonatomic) HMBModel *outputModel; // @synthesize outputModel=_outputModel;
+@property(readonly, copy, nonatomic) HMBModel *updateModel; // @synthesize updateModel=_updateModel;
+@property(readonly, nonatomic) HMBLocalZoneProcessModelContext *mergedContext; // @synthesize mergedContext=_mergedContext;
+@property(readonly, nonatomic) HMBLocalZoneProcessModelContext *previousContext; // @synthesize previousContext=_previousContext;
+- (id)initWithPreviousContext:(id)arg1 mergedContext:(id)arg2 updateModel:(id)arg3 outputModel:(id)arg4 outputBlockRow:(id)arg5 recordRow:(unsigned long long)arg6 itemRow:(unsigned long long)arg7 modelSchema:(id)arg8 modelType:(id)arg9 externalID:(id)arg10 queryTable:(id)arg11;
 
 @end
 

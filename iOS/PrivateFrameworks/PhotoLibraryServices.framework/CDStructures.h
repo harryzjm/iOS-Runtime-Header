@@ -39,8 +39,10 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
-struct NSObject {
-    Class _field1;
+struct PLCartesianCoordinate3D {
+    float _field1;
+    float _field2;
+    float _field3;
 };
 
 struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct_V1 {
@@ -79,6 +81,10 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct atomic_flag {
+    _Atomic _Bool _Value;
+};
+
 struct fsid {
     int val[2];
 };
@@ -114,6 +120,13 @@ struct tokenOutput_t {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    _Atomic unsigned int imageCacheHitCount;
+    _Atomic unsigned int imageCacheMissCount;
+    _Atomic unsigned int videoComplementCacheHitCount;
+    _Atomic unsigned int videoComplementCacheMissCount;
+} CDStruct_f4d52fe1;
+
+typedef struct {
     unsigned long long _field1;
     id *_field2;
     unsigned long long *_field3;
@@ -123,6 +136,11 @@ typedef struct {
 typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
+
+typedef struct {
+    char *_field1;
+    int _field2;
+} CDStruct_530518fa;
 
 typedef struct {
     int _field1;

@@ -12,13 +12,11 @@
     MISSING_TYPE *childOperations;
     MISSING_TYPE *currentQueue;
     MISSING_TYPE *dispatchChildOperationsCalled;
-    MISSING_TYPE *lock;
 }
 
 - (void).cxx_destruct;
+- (void)main;
 - (id)init;
-- (void)cancel;
-- (void)start;
 
 @end
 

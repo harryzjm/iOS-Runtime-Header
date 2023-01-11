@@ -6,14 +6,18 @@
 
 #import <PhotoLibraryServices/PLAssetsdResourceWriteOnlyServiceProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PLAssetsdConnectionAuthorization;
 
 @interface PLAssetsdResourceWriteOnlyService <PLAssetsdResourceWriteOnlyServiceProtocol>
 {
+    PLAssetsdConnectionAuthorization *_connectionAuthorization;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) PLAssetsdConnectionAuthorization *connectionAuthorization; // @synthesize connectionAuthorization=_connectionAuthorization;
 - (void)saveAssetWithDataAndPorts:(id)arg1 clientConnection:(id)arg2 imageSurface:(id)arg3 previewImageSurface:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)saveAssetWithDataAndPorts:(id)arg1 imageSurface:(id)arg2 previewImageSurface:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)initWithLibraryServicesManager:(id)arg1 connectionAuthorization:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

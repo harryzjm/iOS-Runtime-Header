@@ -6,15 +6,19 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class NSError, PGPictureInPictureProxy, UIWindow;
+@class NSError, PGCommand, PGPictureInPictureProxy, UIWindow;
 
 @protocol PGPictureInPictureProxyDelegate <NSObject>
 
 @optional
+- (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didRequestFaceTimeAction:(long long)arg2;
+- (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didUpdateResourcesUsageReductionReasons:(unsigned long long)arg2 oldReasons:(unsigned long long)arg3;
+- (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didReceivePlaybackCommand:(PGCommand *)arg2;
 - (void)pictureInPictureProxyPictureInPictureInterruptionEnded:(PGPictureInPictureProxy *)arg1;
 - (void)pictureInPictureProxyPictureInPictureInterruptionBegan:(PGPictureInPictureProxy *)arg1;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didStopPictureInPictureWithAnimationType:(long long)arg2 reason:(long long)arg3;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 willStopPictureInPictureWithAnimationType:(long long)arg2 reason:(long long)arg3;
+- (void)pictureInPictureProxyWillSetupPictureInPictureStop:(PGPictureInPictureProxy *)arg1;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(_Bool))arg2;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 failedToStartPictureInPictureWithAnimationType:(long long)arg2 error:(NSError *)arg3;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didStartPictureInPictureWithAnimationType:(long long)arg2;

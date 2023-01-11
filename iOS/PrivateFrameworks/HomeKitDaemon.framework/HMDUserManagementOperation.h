@@ -10,10 +10,11 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HAPPairingIdentity, HMDAccessory, HMDAccessoryInvitation, HMDUser, HMDUserManagementOperationManager, HMFTimer, NSArray, NSDate, NSDictionary, NSMutableArray, NSObject, NSString, NSUUID;
-@protocol HMDUserManagementOperationDelegate, OS_dispatch_queue;
+@protocol HMDUserManagementOperationDelegate, HMFLocking, OS_dispatch_queue;
 
 @interface HMDUserManagementOperation : HMFObject <HMFTimerDelegate, NSSecureCoding>
 {
+    id <HMFLocking> _lock;
     NSMutableArray *_dependencies;
     _Bool _executing;
     _Bool _backingOff;
@@ -28,10 +29,10 @@
     NSDate *_expirationDate;
     HAPPairingIdentity *_ownerPairingIdentity;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFTimer *_expirationTimer;
     double _backoffInterval;
     HMFTimer *_backoffTimer;
+    NSArray *_auditUsersToBeAdded;
 }
 
 + (id)operationWithDictionary:(id)arg1 home:(id)arg2;
@@ -39,11 +40,13 @@
 + (id)shortDescription;
 + (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
 + (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
++ (id)auditUserManagementOperationAccessory:(id)arg1 model:(id)arg2;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *auditUsersToBeAdded; // @synthesize auditUsersToBeAdded=_auditUsersToBeAdded;
 @property(retain, nonatomic) HMFTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
 @property(readonly, nonatomic) double backoffInterval; // @synthesize backoffInterval=_backoffInterval;
 @property(readonly, nonatomic) HMFTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(copy, nonatomic) HAPPairingIdentity *ownerPairingIdentity; // @synthesize ownerPairingIdentity=_ownerPairingIdentity;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
@@ -52,8 +55,10 @@
 @property(readonly, nonatomic) unsigned long long operationType; // @synthesize operationType=_operationType;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property __weak id <HMDUserManagementOperationDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)populateModelObjectWithChangeType:(id)arg1 version:(long long)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 parentUUID:(id)arg2;
+- (id)transactionWithObjectChangeType:(unsigned long long)arg1 parentUUID:(id)arg2;
 - (void)timerDidFire:(id)arg1;
 - (id)dictionaryEncoding;
 - (void)encodeWithCoder:(id)arg1;
@@ -62,8 +67,10 @@
 @property(readonly, nonatomic) HMDAccessoryInvitation *accessoryInvitation;
 - (long long)_accessoryInvitationState;
 - (_Bool)mergeWithOperation:(id)arg1;
+- (void)_auditPairingsForHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removePairingFromHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addPairingToHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_findConflictingAccessory:(id)arg1;
 - (void)executeWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancel;
 - (void)addDependency:(id)arg1;
@@ -73,6 +80,7 @@
 - (double)nextBackoffInterval;
 @property(nonatomic, getter=isBackingOff) _Bool backingOff; // @synthesize backingOff=_backingOff;
 @property(retain, nonatomic) HMDUserManagementOperationManager *operationManager; // @synthesize operationManager=_operationManager;
+- (void)updateDelegate:(id)arg1;
 @property(nonatomic) _Bool lastOperationFailed; // @synthesize lastOperationFailed=_lastOperationFailed;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
@@ -82,6 +90,9 @@
 @property(readonly, nonatomic, getter=isFinished) _Bool finished;
 @property(nonatomic, getter=isExecuting) _Bool executing; // @synthesize executing=_executing;
 - (_Bool)isValid;
+@property(readonly, nonatomic, getter=isAuditOperation) _Bool auditOperation;
+@property(readonly, nonatomic, getter=isRemoveOperation) _Bool removeOperation;
+@property(readonly, nonatomic, getter=isAddOperation) _Bool addOperation;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
 - (id)descriptionWithPointer:(_Bool)arg1;

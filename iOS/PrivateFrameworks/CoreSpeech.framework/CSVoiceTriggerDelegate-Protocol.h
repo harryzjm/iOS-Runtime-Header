@@ -12,10 +12,12 @@
 - (void)voiceTriggerDidDetectKeyword:(NSDictionary *)arg1 deviceId:(NSString *)arg2;
 
 @optional
+- (void)voiceTriggerDidRejected:(NSDictionary *)arg1;
 - (void)raiseToSpeakDetected:(NSDictionary *)arg1;
 - (void)voiceTriggerGotSuperVector:(NSData *)arg1;
 - (void)keywordDetectorDidDetectKeyword;
 - (void)voiceTriggerDidDetectSpeakerReject:(NSDictionary *)arg1;
 - (void)voiceTriggerDidDetectNearMiss:(NSDictionary *)arg1;
+- (void)voiceTriggerDidDetectKeyword:(NSDictionary *)arg1 deviceId:(NSString *)arg2 completion:(void (^)(void))arg3;
 @end
 

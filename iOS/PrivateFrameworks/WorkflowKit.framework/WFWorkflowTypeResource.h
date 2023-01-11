@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFWorkflowReferencingResource-Protocol.h>
+#import <WorkflowKit/WFWorkflowReferencing-Protocol.h>
 
 @class NSString, WFWorkflow;
 
-@interface WFWorkflowTypeResource <WFWorkflowReferencingResource>
+@interface WFWorkflowTypeResource <WFWorkflowReferencing>
 {
     WFWorkflow *_workflow;
 }
 
 + (_Bool)mustBeAvailableForDisplay;
-@property(nonatomic) __weak WFWorkflow *workflow; // @synthesize workflow=_workflow;
 - (void).cxx_destruct;
+@property(nonatomic) __weak WFWorkflow *workflow; // @synthesize workflow=_workflow;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)refreshAvailability;
 - (_Bool)workflowTypesAreValid;

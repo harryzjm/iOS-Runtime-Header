@@ -17,11 +17,12 @@
 }
 
 + (id)configurationWithIdentifier:(id)arg1 previewProvider:(CDUnknownBlockType)arg2 actionProvider:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *interactionURL; // @synthesize interactionURL;
 @property(copy, nonatomic) CDUnknownBlockType interactionViewControllerProvider; // @synthesize interactionViewControllerProvider;
 @property(nonatomic) _Bool expandPreviewOnInteraction; // @synthesize expandPreviewOnInteraction;
 @property(nonatomic) _Bool prefersActionMenuStyle; // @synthesize prefersActionMenuStyle;
-- (void).cxx_destruct;
+- (_Bool)performPreviewActionForMenuWithAnimator:(id)arg1;
 
 @end
 

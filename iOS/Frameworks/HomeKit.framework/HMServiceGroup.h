@@ -29,10 +29,10 @@
 
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMMutableArray *currentServices; // @synthesize currentServices=_currentServices;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_findService:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
@@ -53,17 +53,16 @@
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeServices:(id)arg1;
-- (void)setApplicationData:(id)arg1;
-@property(readonly, nonatomic) HMApplicationData *applicationData;
+@property(retain, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, copy, nonatomic) NSArray *services;
 - (void)setName:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)_invalidate;
-- (void)_unconfigure;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (id)initWithName:(id)arg1 uuid:(id)arg2;
 - (id)init;
 

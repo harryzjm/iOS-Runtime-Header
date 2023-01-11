@@ -13,6 +13,7 @@
     _IDSGroupSession *_internal;
 }
 
++ (void)requestNWConnectionforIDSGroupSessionUnicastParameter:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)unicastParameterForParticipantID:(unsigned long long)arg1 dataMode:(long long)arg2 connectionIndex:(unsigned long long)arg3;
 - (void)requestActiveParticipants;

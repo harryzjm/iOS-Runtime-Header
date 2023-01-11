@@ -26,8 +26,6 @@ __attribute__((visibility("hidden")))
 + (id)forImage:(id)arg1 usingContext:(id)arg2;
 + (id)withDictionary:(id)arg1;
 + (id)forImage:(id)arg1 downscaleToMax:(unsigned int)arg2 colorspace:(struct CGColorSpace *)arg3 usingContext:(id)arg4;
-+ (id)forImage:(id)arg1 downscaleToMax:(unsigned int)arg2 colorspace:(struct CGColorSpace *)arg3;
-+ (id)forImage:(id)arg1 downscaleToMax:(unsigned int)arg2;
 + (id)fromImage:(struct CGImage *)arg1;
 + (id)fromImageFile:(id)arg1;
 - (unsigned int)bytesPerPixel;

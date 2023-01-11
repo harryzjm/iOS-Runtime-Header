@@ -15,12 +15,14 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_subscriptionInfo;
+    NSMutableDictionary *_subscriptionContext;
     CoreTelephonyClient *_telephonyClient;
 }
 
 - (void).cxx_destruct;
 - (void)carrierBundleChange:(id)arg1;
 - (void)subscriptionInfoDidChange;
+- (id)subscriptionContextForSlot:(long long)arg1;
 - (id)subscriptionInfoForSlot:(long long)arg1;
 - (id)init;
 

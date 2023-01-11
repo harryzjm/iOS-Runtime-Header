@@ -8,31 +8,45 @@
 
 #import <NewsUI/NSCopying-Protocol.h>
 
-@class NSString, UIImage;
+@class NSAttributedString, NSString, UIImage;
 
 @interface NUFeedTitleViewUpdate : NSObject <NSCopying>
 {
+    NSString *_accessibilityTitle;
+    unsigned long long _type;
     unsigned long long _updateType;
     unsigned long long _storyCount;
     NSString *_feedName;
+    NSAttributedString *_attributedText;
     UIImage *_feedImage;
+    double _lingerTimeInterval;
 }
 
++ (id)feedTitleViewUpdateNewStoriesWithStoryForType:(unsigned long long)arg1 storyCount:(unsigned long long)arg2 linger:(_Bool)arg3;
++ (id)feedTitleViewUpdateNewStoriesWithStoryForType:(unsigned long long)arg1 storyCount:(unsigned long long)arg2;
 + (id)feedTitleViewUpdateForNewStoriesWithStoryCount:(unsigned long long)arg1;
++ (id)feedTitleViewUpdateCheckingForNewStoriesForType:(unsigned long long)arg1;
 + (id)feedTitleViewUpdateForCheckingForNewStories;
-+ (id)feedTitleViewUpdateForFeedImage:(id)arg1;
++ (id)feedTitleViewUpdateForFeedImage:(id)arg1 accessibilityTitle:(id)arg2;
++ (id)feedTitleViewUpdateForAttributedText:(id)arg1 forType:(unsigned long long)arg2;
++ (id)feedTitleViewUpdateForAttributedText:(id)arg1;
 + (id)feedTitleViewUpdateForFeedName:(id)arg1;
++ (id)feedTitleViewUpdateEmptyStateForType:(unsigned long long)arg1;
 + (id)feedTitleViewUpdateEmptyState;
+- (void).cxx_destruct;
+@property(nonatomic) double lingerTimeInterval; // @synthesize lingerTimeInterval=_lingerTimeInterval;
 @property(retain, nonatomic) UIImage *feedImage; // @synthesize feedImage=_feedImage;
+@property(copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property(copy, nonatomic) NSString *feedName; // @synthesize feedName=_feedName;
 @property(nonatomic) unsigned long long storyCount; // @synthesize storyCount=_storyCount;
 @property(readonly, nonatomic) unsigned long long updateType; // @synthesize updateType=_updateType;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(copy, nonatomic) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
 - (id)convertToTitleViewUpdateWithCompact:(_Bool)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithUpdateType:(unsigned long long)arg1;
+- (id)initWithType:(unsigned long long)arg1 updateType:(unsigned long long)arg2;
 - (id)init;
 
 @end

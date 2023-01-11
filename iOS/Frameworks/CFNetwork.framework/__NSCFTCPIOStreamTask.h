@@ -11,7 +11,7 @@
 {
     CDUnknownBlockType _disavow;
     struct shared_ptr<TCPIO_EstablishBase> _establish;
-    shared_ptr_ced42cc3 _ios;
+    struct shared_ptr<TransportConnectionObjCPP> _ios;
     unsigned char _captureStreamsUponCompletion;
     unsigned char _secure;
     NSData *__initialDataPayload;
@@ -30,6 +30,7 @@
     _Bool _writeInProgress;
     _Bool _writeClosed;
     _Bool _receivedServerTrustChallenge;
+    _Bool _receivedEof;
     CFNetworkTimer *_writeTimer;
     CFNetworkTimer *_readTimer;
     __NSCFURLLocalStreamTaskWorkWrite *_currentWriteTask;
@@ -37,11 +38,9 @@
     NSObject<OS_dispatch_queue> *_workQueueForStreamTask;
 }
 
-@property(retain, nonatomic) __NSCFURLLocalStreamTaskWorkRead *currentReadTask; // @synthesize currentReadTask=_currentReadTask;
-@property(retain, nonatomic) __NSCFURLLocalStreamTaskWorkWrite *currentWriteTask; // @synthesize currentWriteTask=_currentWriteTask;
-@property(copy) NSData *_initialDataPayload; // @synthesize _initialDataPayload=__initialDataPayload;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(copy) NSData *_initialDataPayload; // @synthesize _initialDataPayload=__initialDataPayload;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onSessionQueue_disavow;
 - (void)_onqueue_adjustLoadingPoolPriority;
@@ -87,7 +86,6 @@
 - (void)captureStreams;
 - (void)writeData:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (shared_ptr_ced42cc3)ios;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithTask:(id)arg1 connection:(shared_ptr_8da4e70b)arg2 extraBytes:(id)arg3 disavow:(CDUnknownBlockType)arg4;

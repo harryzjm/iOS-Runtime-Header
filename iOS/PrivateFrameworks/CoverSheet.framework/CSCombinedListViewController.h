@@ -12,6 +12,7 @@
 #import <CoverSheet/CSHomeGestureParticipating-Protocol.h>
 #import <CoverSheet/CSNotificationAdjunctListViewControllerDelegate-Protocol.h>
 #import <CoverSheet/CSNotificationDestination-Protocol.h>
+#import <CoverSheet/CSProximitySensorProviderObserver-Protocol.h>
 #import <CoverSheet/CSStatusBarBackgroundIntersecting-Protocol.h>
 #import <CoverSheet/DNDStateUpdateListener-Protocol.h>
 #import <CoverSheet/NCNotificationStructuredListContentObserver-Protocol.h>
@@ -19,11 +20,12 @@
 #import <CoverSheet/PTSettingsKeyObserver-Protocol.h>
 #import <CoverSheet/SBFMotionGestureObserver-Protocol.h>
 #import <CoverSheet/SBUICoronaAnimationControllerParticipant-Protocol.h>
+#import <CoverSheet/_UIGestureStudyInteractionDelegate-Protocol.h>
 
-@class BSTimer, CSComponent, CSDNDBedtimeController, CSDNDBedtimeGreetingViewController, CSLayoutStrategy, CSLockScreenSettings, CSNotificationAdjunctListViewController, DNDEventBehaviorResolutionService, DNDStateService, NCNotificationRequest, NCNotificationStructuredListViewController, NSMutableSet, NSSet, NSString, SBFTouchPassThroughView, UIColor, UIScrollView, UIViewController, _UILegibilitySettings;
-@protocol BSInvalidatable, CSApplicationInforming, CSCombinedListViewControllerDelegate, CSHomeAffordanceControlling, CSNotificationDispatcher, CSNotificationPresenting, CSPageViewControllerProtocol, CSUnlockRequesting, SBFActionProviding, SBFAuthenticationStatusProvider, SBUIBiometricResource;
+@class BSTimer, CSComponent, CSDNDBedtimeController, CSDNDBedtimeGreetingViewController, CSLayoutStrategy, CSLockScreenSettings, CSNotificationAdjunctListViewController, DNDEventBehaviorResolutionService, DNDStateService, NCNotificationRequest, NCNotificationStructuredListViewController, NSDate, NSMutableSet, NSSet, NSString, SBFTouchPassThroughView, UIColor, UIScrollView, UIViewController, _UIGestureStudyInteraction, _UILegibilitySettings;
+@protocol BSInvalidatable, CSApplicationInforming, CSCombinedListViewControllerDelegate, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSNotificationDispatcher, CSNotificationPresenting, CSPageViewControllerProtocol, CSProximitySensorProviding, CSUnlockRequesting, SBFActionProviding, SBFAuthenticationStatusProvider, SBUIBiometricResource;
 
-@interface CSCombinedListViewController <CSNotificationAdjunctListViewControllerDelegate, SBFMotionGestureObserver, NCNotificationStructuredListContentObserver, CSStatusBarBackgroundIntersecting, PTSettingsKeyObserver, CSHomeGestureParticipating, CSDNDBedtimeControllerObserver, DNDStateUpdateListener, CSDNDBedtimeGreetingDelegate, CSApplicationInformationObserving, NCNotificationStructuredListViewControllerDelegate, SBUICoronaAnimationControllerParticipant, CSNotificationDestination, CSDateViewScrolling, CSAppearanceProviding>
+@interface CSCombinedListViewController <CSNotificationAdjunctListViewControllerDelegate, SBFMotionGestureObserver, NCNotificationStructuredListContentObserver, CSStatusBarBackgroundIntersecting, PTSettingsKeyObserver, CSHomeGestureParticipating, CSDNDBedtimeControllerObserver, DNDStateUpdateListener, CSDNDBedtimeGreetingDelegate, CSApplicationInformationObserving, NCNotificationStructuredListViewControllerDelegate, SBUICoronaAnimationControllerParticipant, _UIGestureStudyInteractionDelegate, CSProximitySensorProviderObserver, CSNotificationDestination, CSDateViewScrolling, CSAppearanceProviding>
 {
     UIViewController *_captureOnlyMaterialViewController;
     NCNotificationStructuredListViewController *_structuredListViewController;
@@ -46,20 +48,36 @@
     CSComponent *_quickActionsComponent;
     CSDNDBedtimeController *_dndBedtimeController;
     CSDNDBedtimeGreetingViewController *_dndBedtimeGreetingViewController;
+    NSMutableSet *_backgroundAnimationDisabledReasons;
+    NSMutableSet *_footerCallToActionHiddenReasons;
+    NSMutableSet *_notificationListHiddenReasons;
+    NSMutableSet *_dismissGestureDisabledReasons;
     _UILegibilitySettings *_legibilitySettings;
+    _UIGestureStudyInteraction *_gestureStudyInteraction;
+    NSDate *_screenOnTime;
     _Bool _confirmedNotInPocket;
+    _Bool _shouldPadBottomSpacingWhileDragging;
     id <SBUIBiometricResource> _biometricResource;
     id <BSInvalidatable> _faceDetectWantedAssertion;
+    id <BSInvalidatable> _notificationLongPressProximitySensorAssertion;
+    id <BSInvalidatable> _deviceWakeProximitySensorAssertion;
     _Bool _faceInView;
+    _Bool _liftDetected;
+    _Bool _homeButtonPressDetected;
+    _Bool _lockButtonPressDetected;
     _Bool _screenOn;
-    _Bool _coverSheetWasPulledDown;
+    _Bool _coverSheetWasDismissed;
+    _Bool _historyWasRevealed;
+    _Bool _proximitySensorCoveredSinceWake;
+    _Bool _hasProximitySensor;
     _Bool _dndNotificationDeliveryDelayActive;
     _Bool _dndDrivingModeActive;
     _Bool _disableScrolling;
     _Bool _disableBackgroundAnimation;
     _Bool _footerCallToActionLabelHidden;
+    _Bool _notificationListHidden;
+    _Bool _dismissGestureDisabled;
     _Bool _presentationDirtiedAppearance;
-    _Bool _dismissGestureEnabled;
     id <CSCombinedListViewControllerDelegate> _delegate;
     id <CSApplicationInforming> _applicationInformer;
     id <CSNotificationDispatcher> _dispatcher;
@@ -69,6 +87,8 @@
     id <CSUnlockRequesting> _unlockRequester;
     id <CSNotificationPresenting> _notificationPresenter;
     id <SBFAuthenticationStatusProvider> _authenticationStatusProvider;
+    id <CSProximitySensorProviding> _proximitySensorProvider;
+    id <CSDeviceOrientationProviding> _deviceOrientationProvider;
     CSNotificationAdjunctListViewController *_adjunctListViewController;
     NCNotificationRequest *_activeRaiseToListenNotificationRequest;
     DNDEventBehaviorResolutionService *_dndEventBehaviorResolutionService;
@@ -78,10 +98,12 @@
     SBFTouchPassThroughView *_debugViewRight;
 }
 
-@property(nonatomic, getter=_dismissGestureEnabled, setter=_setDismissGestureEnabled:) _Bool dismissGestureEnabled; // @synthesize dismissGestureEnabled=_dismissGestureEnabled;
+- (void).cxx_destruct;
 @property(nonatomic, getter=hasPresentationDirtiedAppearance) _Bool presentationDirtiedAppearance; // @synthesize presentationDirtiedAppearance=_presentationDirtiedAppearance;
-@property(nonatomic, getter=_footerCallToActionLabelHidden, setter=_setFooterCallToActionLabelHidden:) _Bool footerCallToActionLabelHidden; // @synthesize footerCallToActionLabelHidden=_footerCallToActionLabelHidden;
-@property(nonatomic, getter=_disableBackgroundAnimation, setter=_setDisableBackgroundAnimation:) _Bool disableBackgroundAnimation; // @synthesize disableBackgroundAnimation=_disableBackgroundAnimation;
+@property(readonly, nonatomic) _Bool dismissGestureDisabled; // @synthesize dismissGestureDisabled=_dismissGestureDisabled;
+@property(readonly, nonatomic) _Bool notificationListHidden; // @synthesize notificationListHidden=_notificationListHidden;
+@property(readonly, nonatomic) _Bool footerCallToActionLabelHidden; // @synthesize footerCallToActionLabelHidden=_footerCallToActionLabelHidden;
+@property(readonly, nonatomic) _Bool disableBackgroundAnimation; // @synthesize disableBackgroundAnimation=_disableBackgroundAnimation;
 @property(nonatomic, getter=_disableScrolling, setter=_setDisableScrolling:) _Bool disableScrolling; // @synthesize disableScrolling=_disableScrolling;
 @property(retain, nonatomic) SBFTouchPassThroughView *debugViewRight; // @synthesize debugViewRight=_debugViewRight;
 @property(retain, nonatomic) SBFTouchPassThroughView *debugViewLeft; // @synthesize debugViewLeft=_debugViewLeft;
@@ -92,6 +114,8 @@
 @property(retain, nonatomic) DNDEventBehaviorResolutionService *dndEventBehaviorResolutionService; // @synthesize dndEventBehaviorResolutionService=_dndEventBehaviorResolutionService;
 @property(retain, nonatomic) NCNotificationRequest *activeRaiseToListenNotificationRequest; // @synthesize activeRaiseToListenNotificationRequest=_activeRaiseToListenNotificationRequest;
 @property(retain, nonatomic) CSNotificationAdjunctListViewController *adjunctListViewController; // @synthesize adjunctListViewController=_adjunctListViewController;
+@property(nonatomic) __weak id <CSDeviceOrientationProviding> deviceOrientationProvider; // @synthesize deviceOrientationProvider=_deviceOrientationProvider;
+@property(nonatomic) __weak id <CSProximitySensorProviding> proximitySensorProvider; // @synthesize proximitySensorProvider=_proximitySensorProvider;
 @property(nonatomic) __weak id <SBFAuthenticationStatusProvider> authenticationStatusProvider; // @synthesize authenticationStatusProvider=_authenticationStatusProvider;
 @property(nonatomic) __weak id <CSNotificationPresenting> notificationPresenter; // @synthesize notificationPresenter=_notificationPresenter;
 @property(nonatomic) __weak id <CSUnlockRequesting> unlockRequester; // @synthesize unlockRequester=_unlockRequester;
@@ -103,13 +127,15 @@
 @property(nonatomic) __weak id <CSApplicationInforming> applicationInformer; // @synthesize applicationInformer=_applicationInformer;
 @property(nonatomic) __weak id <CSCombinedListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) _Bool hasContent; // @synthesize hasContent=_listPresentingContent;
-- (void).cxx_destruct;
 - (void)_testingCoalesceExpandedBundleForNotificationRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_testingExpandCoalescedBundleForNotificationRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_testingNotificationRequestWithIdentifier:(id)arg1 sectionIdentifier:(id)arg2;
 - (void)migrateIncomingNotificationsToNotificationCenter;
 - (void)forceNotificationHistoryRevealed:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)_stopScreenOnTimer;
+- (void)_startScreenOnTimer;
+- (void)_toggleGestureStudyInteractionIfNecessary;
 - (void)updateForLegibilitySettings:(id)arg1;
 - (void)_setQuickActionsHidden:(_Bool)arg1 forReason:(id)arg2;
 - (void)coronaAnimationController:(id)arg1 willAnimateCoronaTransitionWithAnimator:(id)arg2;
@@ -139,11 +165,21 @@
 - (void)updateAppearanceForHidden:(_Bool)arg1 offset:(struct CGPoint)arg2;
 @property(readonly, nonatomic) double topContentInset;
 @property(readonly, nonatomic) double clippingOffset;
+- (void)_liftToWakeGestureDetected;
+- (void)_lockButtonPressDetected;
+- (void)_homeButtonPressDetected;
+- (id)_updateProximitySensorAssertion:(id)arg1 wantsAssertion:(_Bool)arg2 forReason:(id)arg3;
+- (void)_updateDeviceWakeProximitySensorAssertion;
+- (void)_updateNotificationLongPressProximitySensorAssertion;
 - (void)_updateFaceDetectAssertion;
 - (void)_handleBiometricEvent:(unsigned long long)arg1;
 - (_Bool)_isClockSnoozeAlarmNotificationRequest:(id)arg1;
 - (void)_requestAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (double)_statusBarHeight;
+- (void)_setDismissGestureDisabled:(_Bool)arg1 forReason:(id)arg2;
+- (void)_setNotificationListHidden:(_Bool)arg1 forReason:(id)arg2;
+- (void)_setFooterCallToActionLabelHidden:(_Bool)arg1 forReason:(id)arg2;
+- (void)_setDisableBackgroundAnimation:(_Bool)arg1 forReason:(id)arg2;
 - (void)_updateCaptureOnlyMaterialView;
 - (_Bool)_allowNotificationsRevealPolicy;
 - (struct CGPoint)_determineMaxContentOffsetForContentInset:(struct UIEdgeInsets)arg1;
@@ -153,6 +189,8 @@
 - (void)_updatePresentation;
 - (void)_performSelfCorrectingListViewAction:(CDUnknownBlockType)arg1;
 - (void)_setListHasContent:(_Bool)arg1;
+- (void)proximitySensorProvider:(id)arg1 objectWithinProximityDidChange:(_Bool)arg2;
+- (id)metadataForTriggeredInteraction:(id)arg1;
 - (void)layoutListView;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
@@ -188,6 +226,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (double)defaultRestingOffsetExcludingAdjunct;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)notificationStructuredListViewController:(id)arg1 didEndUserInteractionWithNotificationViewController:(id)arg2;
 - (void)notificationStructuredListViewController:(id)arg1 didBeginUserInteractionWithNotificationViewController:(id)arg2;
 - (void)notificationStructuredListViewControllerDidSignificantUserInteraction:(id)arg1;
@@ -203,6 +242,7 @@
 - (struct CGSize)sizeToMimicForAdjunctListViewController:(id)arg1;
 - (id)groupNameBaseForAdjunctListViewController:(id)arg1;
 - (void)applicationInformer:(id)arg1 updatedApplications:(id)arg2;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)withdrawNotificationRequest:(id)arg1;
 - (void)updateNotificationRequest:(id)arg1;
@@ -224,6 +264,7 @@
 @property(readonly, nonatomic) NSString *listViewControllerBackgroundGroupName;
 - (void)resetContentOffset;
 @property(readonly, nonatomic, getter=isShowingMediaControls) _Bool showingMediaControls;
+@property(readonly, nonatomic) _Bool hasVisibleContentToReveal;
 - (void)_addStateCaptureHandlers;
 @property(readonly, nonatomic) UIScrollView *notificationListScrollView;
 @property(readonly, nonatomic) UIViewController *notificationListViewController;

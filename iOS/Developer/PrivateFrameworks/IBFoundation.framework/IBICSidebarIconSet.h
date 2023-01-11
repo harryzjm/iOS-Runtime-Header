@@ -16,6 +16,7 @@
 + (id)catalogItemFileExtension;
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (id)defaultName;
++ (id)createDefaultInstancesForUnitTesting;
 + (Class)assetRepClass;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (_Bool)requiresRootNamespace;
@@ -28,6 +29,7 @@
 - (id)assetRepForIdentifier:(id)arg1;
 - (id)conflictFreeChildForSlot:(id)arg1;
 - (id)assetRepMatchingVariant:(id)arg1 forPlatform:(id)arg2;
+- (id)slotForChild:(id)arg1;
 - (id)assetRepForSlot:(id)arg1;
 
 @end

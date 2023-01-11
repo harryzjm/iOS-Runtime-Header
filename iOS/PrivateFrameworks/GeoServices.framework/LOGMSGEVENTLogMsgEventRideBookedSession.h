@@ -13,11 +13,13 @@
 @interface LOGMSGEVENTLogMsgEventRideBookedSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_intentResponseFailures;
     NSString *_rideAppId;
     NSString *_rideAppVersion;
     NSString *_rideBookedSessionId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _statusIssue;
     _Bool _bookedUsingMaps;
     _Bool _cancelled;
@@ -41,19 +43,7 @@
         unsigned int read_rideAppId:1;
         unsigned int read_rideAppVersion:1;
         unsigned int read_rideBookedSessionId:1;
-        unsigned int wrote_intentResponseFailures:1;
-        unsigned int wrote_rideAppId:1;
-        unsigned int wrote_rideAppVersion:1;
-        unsigned int wrote_rideBookedSessionId:1;
-        unsigned int wrote_statusIssue:1;
-        unsigned int wrote_bookedUsingMaps:1;
-        unsigned int wrote_cancelled:1;
-        unsigned int wrote_contactedDriver:1;
-        unsigned int wrote_invalidVehicleLocation:1;
-        unsigned int wrote_missingVehicleLocation:1;
-        unsigned int wrote_tappedProactiveTrayItem:1;
-        unsigned int wrote_viewedDetails:1;
-        unsigned int wrote_viewedInProactiveTray:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -68,15 +58,16 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)intentResponseFailureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)intentResponseFailuresCount;
-- (void)_addNoFlagsIntentResponseFailure:(id)arg1;
 - (void)addIntentResponseFailure:(id)arg1;
 - (void)clearIntentResponseFailures;
 @property(retain, nonatomic) NSMutableArray *intentResponseFailures;
-- (void)_readIntentResponseFailures;
 - (int)StringAsStatusIssue:(id)arg1;
 - (id)statusIssueAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatusIssue;
@@ -87,13 +78,10 @@
 @property(nonatomic) _Bool invalidVehicleLocation;
 @property(retain, nonatomic) NSString *rideAppVersion;
 @property(readonly, nonatomic) _Bool hasRideAppVersion;
-- (void)_readRideAppVersion;
 @property(retain, nonatomic) NSString *rideBookedSessionId;
 @property(readonly, nonatomic) _Bool hasRideBookedSessionId;
-- (void)_readRideBookedSessionId;
 @property(retain, nonatomic) NSString *rideAppId;
 @property(readonly, nonatomic) _Bool hasRideAppId;
-- (void)_readRideAppId;
 @property(nonatomic) _Bool hasViewedDetails;
 @property(nonatomic) _Bool viewedDetails;
 @property(nonatomic) _Bool hasTappedProactiveTrayItem;
@@ -106,6 +94,8 @@
 @property(nonatomic) _Bool cancelled;
 @property(nonatomic) _Bool hasBookedUsingMaps;
 @property(nonatomic) _Bool bookedUsingMaps;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

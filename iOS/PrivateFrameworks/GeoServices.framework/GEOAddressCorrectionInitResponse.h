@@ -13,10 +13,12 @@
 @interface GEOAddressCorrectionInitResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_addressID;
     GEOLocation *_addressLocation;
     NSMutableArray *_address;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _numberOfVisitsBucketSize;
     int _statusCode;
     struct {
@@ -25,11 +27,7 @@
         unsigned int read_addressID:1;
         unsigned int read_addressLocation:1;
         unsigned int read_address:1;
-        unsigned int wrote_addressID:1;
-        unsigned int wrote_addressLocation:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_numberOfVisitsBucketSize:1;
-        unsigned int wrote_statusCode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,27 +43,28 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)addressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)addressCount;
-- (void)_addNoFlagsAddress:(id)arg1;
 - (void)addAddress:(id)arg1;
 - (void)clearAddress;
 @property(retain, nonatomic) NSMutableArray *address;
-- (void)_readAddress;
 @property(nonatomic) _Bool hasNumberOfVisitsBucketSize;
 @property(nonatomic) unsigned int numberOfVisitsBucketSize;
 @property(retain, nonatomic) NSString *addressID;
 @property(readonly, nonatomic) _Bool hasAddressID;
-- (void)_readAddressID;
 @property(retain, nonatomic) GEOLocation *addressLocation;
 @property(readonly, nonatomic) _Bool hasAddressLocation;
-- (void)_readAddressLocation;
 - (int)StringAsStatusCode:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatusCode;
 @property(nonatomic) int statusCode;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

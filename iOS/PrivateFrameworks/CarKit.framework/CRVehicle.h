@@ -13,6 +13,9 @@
 @interface CRVehicle : NSObject <NSSecureCoding>
 {
     _Bool _supportsEnhancedIntegration;
+    _Bool _supportsUSBCarPlay;
+    _Bool _supportsWirelessCarPlay;
+    _Bool _supportsStartSessionRequest;
     NSUUID *_identifier;
     NSString *_vehicleName;
     NSSet *_accessoryProtocols;
@@ -26,11 +29,19 @@
     NSString *_PPID;
     NSString *_internalNotes;
     long long _albumArtUserPreference;
+    NSString *_wallpaperIdentifier;
+    NSString *_previousWallpaperIdentifier;
+    long long _appearanceModePreference;
 }
 
 + (id)vehicleForVehicleAccessory:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) long long appearanceModePreference; // @synthesize appearanceModePreference=_appearanceModePreference;
+@property(retain, nonatomic) NSString *previousWallpaperIdentifier; // @synthesize previousWallpaperIdentifier=_previousWallpaperIdentifier;
+@property(retain, nonatomic) NSString *wallpaperIdentifier; // @synthesize wallpaperIdentifier=_wallpaperIdentifier;
 @property(nonatomic) long long albumArtUserPreference; // @synthesize albumArtUserPreference=_albumArtUserPreference;
+@property(nonatomic) _Bool supportsStartSessionRequest; // @synthesize supportsStartSessionRequest=_supportsStartSessionRequest;
 @property(retain, nonatomic) NSString *internalNotes; // @synthesize internalNotes=_internalNotes;
 @property(retain, nonatomic) NSString *PPID; // @synthesize PPID=_PPID;
 @property(retain, nonatomic) NSString *vehicleModelName; // @synthesize vehicleModelName=_vehicleModelName;
@@ -39,12 +50,13 @@
 @property(retain, nonatomic) NSString *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property(nonatomic) unsigned long long pairingStatus; // @synthesize pairingStatus=_pairingStatus;
 @property(retain, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
+@property(nonatomic) _Bool supportsWirelessCarPlay; // @synthesize supportsWirelessCarPlay=_supportsWirelessCarPlay;
+@property(nonatomic) _Bool supportsUSBCarPlay; // @synthesize supportsUSBCarPlay=_supportsUSBCarPlay;
 @property(nonatomic) unsigned long long enhancedIntegrationStatus; // @synthesize enhancedIntegrationStatus=_enhancedIntegrationStatus;
 @property(nonatomic) _Bool supportsEnhancedIntegration; // @synthesize supportsEnhancedIntegration=_supportsEnhancedIntegration;
 @property(retain, nonatomic) NSSet *accessoryProtocols; // @synthesize accessoryProtocols=_accessoryProtocols;
 @property(retain, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;
 @property(retain, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)displayName;
 - (void)mergeAttributesFromVehicle:(id)arg1;
 - (id)description;

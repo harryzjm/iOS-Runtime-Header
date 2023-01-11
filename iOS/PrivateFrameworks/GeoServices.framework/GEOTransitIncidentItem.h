@@ -13,14 +13,15 @@
 @interface GEOTransitIncidentItem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_transitIncidentTitle;
     NSString *_transitLineMuid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_transitIncidentTitle:1;
         unsigned int read_transitLineMuid:1;
-        unsigned int wrote_transitIncidentTitle:1;
-        unsigned int wrote_transitLineMuid:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -34,14 +35,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *transitLineMuid;
 @property(readonly, nonatomic) _Bool hasTransitLineMuid;
-- (void)_readTransitLineMuid;
 @property(retain, nonatomic) NSString *transitIncidentTitle;
 @property(readonly, nonatomic) _Bool hasTransitIncidentTitle;
-- (void)_readTransitIncidentTitle;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

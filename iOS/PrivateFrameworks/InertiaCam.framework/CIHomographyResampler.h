@@ -11,9 +11,11 @@
     CIContext *_ctx;
     CIImage *_fillImage;
     struct CGRect _lastFillRect;
+    struct CGRect hightlightRect;
 }
 
 - (void).cxx_destruct;
+@property struct CGRect hightlightRect; // @synthesize hightlightRect;
 - (short)ResampleCVPixels:(struct __CVBuffer *)arg1 clipToRect:(struct CGRect)arg2 outputSize:(struct CGSize)arg3 toPixelBuffer:(struct __CVBuffer *)arg4;
 - (void)updateBackgroundFill:(struct CGRect)arg1;
 - (struct __CVBuffer *)ResampleCVPixels:(struct __CVBuffer *)arg1 clipToRect:(struct CGRect)arg2 outputSize:(struct CGSize)arg3 pixelBufferPool:(struct __CVPixelBufferPool *)arg4;

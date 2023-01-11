@@ -10,6 +10,7 @@
 {
 }
 
++ (void)notifyGroup:(id)arg1 onQueue:(id)arg2 withTimeout:(double)arg3 block:(CDUnknownBlockType)arg4;
 + (id)autoreleasingSerialQueueWithLabel:(const char *)arg1 qosClass:(unsigned int)arg2;
 + (id)autoreleasingSerialQueueWithLabel:(const char *)arg1;
 + (void)runSyncOnMainThreadWithBlock:(CDUnknownBlockType)arg1;

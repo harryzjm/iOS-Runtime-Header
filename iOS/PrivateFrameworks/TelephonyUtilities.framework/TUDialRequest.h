@@ -12,7 +12,7 @@
 #import <TelephonyUtilities/TUFilteredRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class BSProcessHandle, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
+@class BSProcessHandle, CNGeminiManager, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
 
 @interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, TUFilteredRequest, NSSecureCoding, NSCopying>
 {
@@ -26,8 +26,10 @@
     _Bool _sos;
     _Bool _redial;
     _Bool _shouldSuppressInCallUI;
+    int _originatingUIType;
     NSString *_uniqueProxyIdentifier;
     TUSenderIdentityClient *_senderIdentityClient;
+    CNGeminiManager *_contactGeminiManager;
     TUCallProvider *_provider;
     long long _dialType;
     TUHandle *_handle;
@@ -44,7 +46,6 @@
     NSString *_endpointRapportEffectiveIdentifier;
     NSUUID *_localSenderIdentityUUID;
     NSUUID *_localSenderIdentityAccountUUID;
-    long long _originatingUIType;
     NSString *_successNotification;
     NSString *_failureNotification;
     BSProcessHandle *_processHandle;
@@ -58,8 +59,8 @@
 + (void)setCallProviderManagerGeneratorBlock:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)callProviderManagerGeneratorBlock;
 + (id)contactStore;
-+ (long long)originatingUITypeForString:(id)arg1;
-+ (id)stringForOriginatingUIType:(long long)arg1;
++ (int)originatingUITypeForString:(id)arg1;
++ (id)stringForOriginatingUIType:(int)arg1;
 + (id)providerForIntentPreferredCallProvider:(long long)arg1 callCapability:(long long)arg2 providerManager:(id)arg3;
 + (long long)ttyTypeForIntentTTYType:(long long)arg1;
 + (long long)intentTTYTypeForTTYType:(long long)arg1;
@@ -69,13 +70,14 @@
 + (long long)handleTypeForQueryItem:(id)arg1;
 + (id)stringForDialType:(long long)arg1;
 + (long long)dialRequestTTYTypeForCHRecentCallTTYType:(long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) BSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
 @property(copy, nonatomic) NSString *failureNotification; // @synthesize failureNotification=_failureNotification;
 @property(copy, nonatomic) NSString *successNotification; // @synthesize successNotification=_successNotification;
 @property(nonatomic) _Bool shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property(nonatomic, getter=isRedial) _Bool redial; // @synthesize redial=_redial;
 @property(nonatomic, getter=isSOS, setter=setSOS:) _Bool sos; // @synthesize sos=_sos;
-@property(nonatomic) long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
+@property(nonatomic) int originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property(copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property(copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property(copy, nonatomic) NSString *endpointRapportEffectiveIdentifier; // @synthesize endpointRapportEffectiveIdentifier=_endpointRapportEffectiveIdentifier;
@@ -99,10 +101,10 @@
 @property(retain, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property(nonatomic) long long dialType; // @synthesize dialType=_dialType;
 @property(retain, nonatomic) TUCallProvider *provider; // @synthesize provider=_provider;
+@property(retain, nonatomic) CNGeminiManager *contactGeminiManager; // @synthesize contactGeminiManager=_contactGeminiManager;
 @property(nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property(nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property(copy, nonatomic) NSString *uniqueProxyIdentifier; // @synthesize uniqueProxyIdentifier=_uniqueProxyIdentifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -156,6 +158,7 @@
 - (id)destinationIDFromURL:(id)arg1;
 - (id)callProviderFromURLComponents:(id)arg1 video:(_Bool *)arg2;
 - (_Bool)boolValueForQueryItemWithName:(id)arg1 inURLComponents:(id)arg2;
+- (id)contactNamesByHandleWithContactsDataSource:(id)arg1;
 - (id)handles;
 - (id)bundleIdentifier;
 @property(readonly, nonatomic) IDSDestination *endpointIDSDestination;

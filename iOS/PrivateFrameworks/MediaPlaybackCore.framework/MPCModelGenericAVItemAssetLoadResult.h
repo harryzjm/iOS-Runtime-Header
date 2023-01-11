@@ -15,6 +15,7 @@
     _Bool _isHomeSharingAsset;
     _Bool _isHLSAsset;
     _Bool _isCloudStreamingAsset;
+    _Bool _onlineSubscriptionKeysRequired;
     _Bool _iTunesStoreStream;
     NSString *_assetPathExtension;
     long long _assetProtectionType;
@@ -32,6 +33,7 @@
 }
 
 + (id)assetLoadResultWithStoreAssetPlaybackResponse:(id)arg1 assetLoadProperties:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType willBecomeActivePlayerItemHandler; // @synthesize willBecomeActivePlayerItemHandler=_willBecomeActivePlayerItemHandler;
 @property(nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream; // @synthesize iTunesStoreStream=_iTunesStoreStream;
 @property(retain, nonatomic) id suzeLeaseID; // @synthesize suzeLeaseID=_suzeLeaseID;
@@ -42,6 +44,7 @@
 @property(copy, nonatomic) NSURL *streamingKeyCertificateURL; // @synthesize streamingKeyCertificateURL=_streamingKeyCertificateURL;
 @property(copy, nonatomic) NSDictionary *purchaseBundleDictionary; // @synthesize purchaseBundleDictionary=_purchaseBundleDictionary;
 @property(copy, nonatomic) NSURL *protectedContentSupportStorageFileURL; // @synthesize protectedContentSupportStorageFileURL=_protectedContentSupportStorageFileURL;
+@property(nonatomic) _Bool onlineSubscriptionKeysRequired; // @synthesize onlineSubscriptionKeysRequired=_onlineSubscriptionKeysRequired;
 @property(nonatomic) _Bool isCloudStreamingAsset; // @synthesize isCloudStreamingAsset=_isCloudStreamingAsset;
 @property(nonatomic) _Bool isHLSAsset; // @synthesize isHLSAsset=_isHLSAsset;
 @property(nonatomic) _Bool isHomeSharingAsset; // @synthesize isHomeSharingAsset=_isHomeSharingAsset;
@@ -51,7 +54,6 @@
 @property(copy, nonatomic) NSString *assetPathExtension; // @synthesize assetPathExtension=_assetPathExtension;
 @property(nonatomic) _Bool allowsAssetInfoCaching; // @synthesize allowsAssetInfoCaching=_allowsAssetInfoCaching;
 @property(nonatomic) _Bool allowsAssetCaching; // @synthesize allowsAssetCaching=_allowsAssetCaching;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasValidAsset;
 
 @end

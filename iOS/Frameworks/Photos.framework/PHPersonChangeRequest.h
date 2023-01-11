@@ -29,10 +29,10 @@
 + (id)changeRequestsForMergeCandidatePersons:(id)arg1;
 + (id)changeRequestForMergingPersons:(id)arg1 nominalTargetIdentifier:(id)arg2;
 + (id)changeRequestForMergingPersons:(id)arg1;
-+ (_Bool)canGenerateUUIDWithoutEntitlements;
 + (void)deletePersons:(id)arg1;
 + (id)changeRequestForPerson:(id)arg1;
 + (id)creationRequestForPerson;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *invalidMergeCandidatesHelper; // @synthesize invalidMergeCandidatesHelper=_invalidMergeCandidatesHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *mergeCandidatesHelper; // @synthesize mergeCandidatesHelper=_mergeCandidatesHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *rejectedFacesHelper; // @synthesize rejectedFacesHelper=_rejectedFacesHelper;
@@ -40,7 +40,6 @@
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) PHPerson *targetPerson; // @synthesize targetPerson=_targetPerson;
-- (void).cxx_destruct;
 - (void)_setGraphDedupePersons:(id)arg1;
 - (void)addInvalidMergeCandidatePersons:(id)arg1;
 - (void)rejectMergeCandidatePersons:(id)arg1;
@@ -48,6 +47,7 @@
 - (void)addMergeCandidatePersons:(id)arg1;
 - (void)mergePersons:(id)arg1;
 - (void)_setNominalMergeTargetUUID:(id)arg1;
+- (void)persistSuggestionForClient:(unsigned long long)arg1;
 - (void)removeRejectedFaces:(id)arg1;
 - (void)addRejectedFaces:(id)arg1;
 - (void)addRejectedFaces:(id)arg1 forCluster:(_Bool)arg2;
@@ -78,11 +78,13 @@
 - (_Bool)_containsUserMutations;
 @property(readonly, nonatomic) NSString *managedEntityName;
 @property(nonatomic, getter=isVerified) _Bool verified;
+@property(nonatomic) unsigned short sexType;
+@property(nonatomic) unsigned short suggestedForClientType;
 @property(nonatomic) short keyFacePickSource;
 @property(copy, nonatomic) NSDictionary *contactMatchingDictionary;
 @property(nonatomic) unsigned short genderType;
 @property(nonatomic) unsigned short ageType;
-@property(nonatomic) long long questionType;
+@property(nonatomic) unsigned short questionType;
 @property(nonatomic) long long verifiedType;
 @property(nonatomic, getter=isInPersonNamingModel) _Bool inPersonNamingModel;
 @property(copy, nonatomic) NSString *personUri;
@@ -93,23 +95,22 @@
 @property(nonatomic) unsigned long long manualOrder;
 @property(nonatomic) long long type;
 @property(readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedPerson;
-- (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initForNewObject;
 
 // Remaining properties
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSString *clientName;
-@property(readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) _Bool isNewRequest;
 @property(readonly, getter=isMutated) _Bool mutated;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(nonatomic) _Bool shouldPerformConcurrentWork;
 @property(readonly) Class superclass;
 
 @end

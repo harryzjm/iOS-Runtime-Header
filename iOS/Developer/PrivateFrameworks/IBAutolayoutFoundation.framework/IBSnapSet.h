@@ -8,19 +8,25 @@
 
 @interface IBSnapSet : NSObject
 {
+    double _maxValue;
     double *_values;
     unsigned char _count;
 }
 
-+ (void)initialize;
-@property(readonly) unsigned char count; // @synthesize count=_count;
++ (id)zeroRuleSnapSet;
++ (id)emptySnapSet;
+@property(readonly, nonatomic) double maxValue; // @synthesize maxValue=_maxValue;
+@property(readonly, nonatomic) unsigned char count; // @synthesize count=_count;
 - (id)description;
+- (id)stringRepresentation;
+- (id)snapSetByAddingSet:(id)arg1;
 - (void)enumerateUsingBlock:(CDUnknownBlockType)arg1;
-- (double)maxValue;
-- (void)setValue:(double)arg1 atIndex:(unsigned char)arg2;
 - (double)valueAtIndex:(unsigned char)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)dealloc;
-- (id)initWithCount:(unsigned long long)arg1;
+- (id)initWithValues:(id)arg1;
+- (id)initWithColonSeparatedString:(id)arg1;
 
 @end
 

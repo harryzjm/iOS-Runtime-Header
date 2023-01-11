@@ -15,12 +15,14 @@
     ACAccountStore *_accountStore;
 }
 
++ (id)observedAccountTypes;
 + (id)log;
-@property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 - (void)handleMailAccountsHaveChanged:(id)arg1 accountsNeedInitialization:(_Bool)arg2;
 - (void)handleCredentialChangeForAccountIdentifier:(id)arg1;
 - (void)handleAccountStoreChangeForAccountIdentifier:(id)arg1;
+- (_Bool)_shouldNotifyOnAccountChangeForNotification:(id)arg1;
 - (void)_mailAccountsChanged:(id)arg1;
 - (void)_credentialsDidChange:(id)arg1;
 - (void)_accountStoreDidChange:(id)arg1;

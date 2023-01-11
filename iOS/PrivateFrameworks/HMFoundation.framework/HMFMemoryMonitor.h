@@ -9,19 +9,20 @@
 
 @interface HMFMemoryMonitor
 {
-    HMFUnfairLock *_lock;
     _Bool _monitoring;
-    long long _memoryState;
+    HMFUnfairLock *_lock;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_source> *_memoryPressure;
+    NSObject<OS_dispatch_source> *_memoryPressureSource;
+    long long _systemMemoryState;
 }
 
 + (id)memoryMonitor;
-@property(nonatomic, getter=isMonitoring) _Bool monitoring; // @synthesize monitoring=_monitoring;
-@property(readonly, nonatomic) NSObject<OS_dispatch_source> *memoryPressure; // @synthesize memoryPressure=_memoryPressure;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long memoryState; // @synthesize memoryState=_memoryState;
+@property(nonatomic) long long systemMemoryState; // @synthesize systemMemoryState=_systemMemoryState;
+@property(nonatomic, getter=isMonitoring) _Bool monitoring; // @synthesize monitoring=_monitoring;
+@property(readonly, nonatomic) NSObject<OS_dispatch_source> *memoryPressureSource; // @synthesize memoryPressureSource=_memoryPressureSource;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 - (void)stop;
 - (void)start;
 - (void)dealloc;

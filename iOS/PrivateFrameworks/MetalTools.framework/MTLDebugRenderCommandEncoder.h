@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLDepthStencilDescriptor, MTLRenderPassDescriptor;
+@class MTLDebugCommandBuffer, MTLDepthStencilDescriptor, MTLRenderPassDescriptor, NSMutableSet;
 @protocol MTLDepthStencilState, MTLRenderPipelineState;
 
 @interface MTLDebugRenderCommandEncoder
@@ -28,7 +28,6 @@
     CDStruct_0f4bf8df _tileTextures[128];
     CDStruct_0f4bf8df _tileSamplers[16];
     CDStruct_0f4bf8df _threadgroupMemoryArguments[31];
-    CDStruct_886a8514 _limits;
     unsigned int _encoderState;
     unsigned int _unknownStoreActions;
     struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> *_visibilityOffsets;
@@ -37,9 +36,11 @@
     unsigned long long _amplificationMode;
     unsigned long long _amplificationValue;
     unsigned long long _vertexAmplificationCount;
-    struct ResourceTrackingDeferredAttachments _deferredAttachments;
     struct deque<id, std::__1::allocator<id>> _updatedFences;
-    _Bool _hasValidViewportsAndScissorRects;
+    NSMutableSet *_storingRenderTargets;
+    MTLDebugCommandBuffer *_commandBuffer;
+    unsigned long long _maxVertexBuffers;
+    unsigned long long _attachmentWriteMask;
     float _lineWidth;
     float _depthBias;
     float _depthBiasSlopeScale;
@@ -69,6 +70,8 @@
     CDStruct_0f4bf8df _tessellationFactorBufferArgument;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) float tessellationFactorScale; // @synthesize tessellationFactorScale=_tessellationFactorScale;
 @property(readonly, nonatomic) unsigned long long tessellationFactorBufferInstanceStride; // @synthesize tessellationFactorBufferInstanceStride=_tessellationFactorBufferInstanceStride;
 @property(readonly, nonatomic) CDStruct_0f4bf8df tessellationFactorBufferArgument; // @synthesize tessellationFactorBufferArgument=_tessellationFactorBufferArgument;
@@ -96,17 +99,14 @@
 @property(readonly, nonatomic) unsigned long long cullMode; // @synthesize cullMode=_cullMode;
 @property(readonly, nonatomic) unsigned long long frontFacingWinding; // @synthesize frontFacingWinding=_frontFacingWinding;
 @property(readonly, copy, nonatomic) MTLRenderPassDescriptor *descriptor; // @synthesize descriptor=_descriptor;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long attachmentWriteMask; // @synthesize attachmentWriteMask=_attachmentWriteMask;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
-- (void)_resourceTrackingRecordDispatchAccesses;
+- (void)textureBarrier;
 - (void)filterCounterRangeWithFirstBatch:(unsigned int)arg1 lastBatch:(unsigned int)arg2 filterIndex:(unsigned int)arg3;
-- (void)_resourceTrackingRecordBoundResourceAccesses;
-- (void)_resourceTrackingRecordRenderTargetAccessesForEndEncoding:(_Bool)arg1;
-- (void)_resourceTrackingRecordDrawAccesses;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchIndexBuffer:(id)arg2 patchIndexBufferOffset:(unsigned long long)arg3 controlPointIndexBuffer:(id)arg4 controlPointIndexBufferOffset:(unsigned long long)arg5 indirectBuffer:(id)arg6 indirectBufferOffset:(unsigned long long)arg7;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id)arg4 patchIndexBufferOffset:(unsigned long long)arg5 controlPointIndexBuffer:(id)arg6 controlPointIndexBufferOffset:(unsigned long long)arg7 instanceCount:(unsigned long long)arg8 baseInstance:(unsigned long long)arg9;
 - (void)drawPatches:(unsigned long long)arg1 patchIndexBuffer:(id)arg2 patchIndexBufferOffset:(unsigned long long)arg3 indirectBuffer:(id)arg4 indirectBufferOffset:(unsigned long long)arg5;
@@ -148,11 +148,11 @@
 - (void)setDepthStencilState:(id)arg1;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
 - (void)setTriangleFrontFillMode:(unsigned long long)arg1 backFillMode:(unsigned long long)arg2;
-- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_c0454aff *)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
 - (void)setTransformFeedbackState:(unsigned long long)arg1;
-- (void)setScissorRects:(const CDStruct_5f3a0cd7 *)arg1 count:(unsigned long long)arg2;
-- (void)setScissorRect:(CDStruct_5f3a0cd7)arg1;
+- (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;
+- (void)setScissorRect:(CDStruct_33dcf794)arg1;
 - (void)setDepthBias:(float)arg1 slopeScale:(float)arg2 clamp:(float)arg3;
 - (void)setLineWidth:(float)arg1;
 - (void)setDepthClipMode:(unsigned long long)arg1;
@@ -220,7 +220,7 @@
 - (void)enumerateVertexSamplersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateVertexTexturesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateVertexBuffersUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) CDStruct_5f3a0cd7 scissorRect;
+@property(readonly, nonatomic) CDStruct_33dcf794 scissorRect;
 @property(readonly, nonatomic) CDStruct_8727d297 viewport;
 @property(readonly, nonatomic) vector_dc8a7a87 *scissorRects;
 @property(readonly, nonatomic) vector_9706d78e *viewports;

@@ -6,25 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/RBSProcessMatching-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSProcessPredicateImpl : NSObject <RBSProcessMatching, BSXPCSecureCoding>
+@interface RBSProcessPredicateImpl : NSObject <RBSProcessMatching, RBSXPCSecureCoding>
 {
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
++ (_Bool)supportsRBSXPCSecureCoding;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
+- (id)processIdentifier;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

@@ -21,6 +21,7 @@
     NSDate *_dpidReconcileStartDate;
     CKRecordZoneID *_zoneID;
     CKRecordID *_recordID;
+    CKRecordID *_recordIDLegacy;
     CKContainer *_privateContainer;
     long long _qualityOfService;
     NSString *_DPID;
@@ -29,6 +30,7 @@
 
 + (id)DPIDOperationTypeToString:(unsigned long long)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool supportsDeviceToDeviceEncryption; // @synthesize supportsDeviceToDeviceEncryption=_supportsDeviceToDeviceEncryption;
 @property(nonatomic) _Bool sandboxEnvironment; // @synthesize sandboxEnvironment=_sandboxEnvironment;
 @property(retain, nonatomic) NSMutableArray *operationsInProgress; // @synthesize operationsInProgress=_operationsInProgress;
@@ -37,17 +39,18 @@
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property(nonatomic) _Bool isPrivateContainerSecure; // @synthesize isPrivateContainerSecure=_isPrivateContainerSecure;
 @property(retain, nonatomic) CKContainer *privateContainer; // @synthesize privateContainer=_privateContainer;
+@property(retain, nonatomic) CKRecordID *recordIDLegacy; // @synthesize recordIDLegacy=_recordIDLegacy;
 @property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property(retain, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 @property(retain) NSDate *dpidReconcileStartDate; // @synthesize dpidReconcileStartDate=_dpidReconcileStartDate;
 @property unsigned long long dpidReconcileState; // @synthesize dpidReconcileState=_dpidReconcileState;
 @property(readonly, nonatomic) _Bool isTest; // @synthesize isTest=_isTest;
-- (void).cxx_destruct;
 - (void)syncDPIDWithiCloud:(CDUnknownBlockType)arg1;
 - (void)saveDPIDtoiCloud:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleCloudKitError:(id)arg1;
 - (void)removeDPIDfromiCloud:(CDUnknownBlockType)arg1;
 - (void)fetchDPIDfromiCloud:(CDUnknownBlockType)arg1;
+- (id)conformDPIDToUseWithRecord:(id)arg1 legacyRecord:(id)arg2;
 - (void)createErrorForPrivateDB:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)teardowniCloudSubscription:(CDUnknownBlockType)arg1;
 - (void)setupiCloudSubscription:(CDUnknownBlockType)arg1;
@@ -67,7 +70,7 @@
 - (_Bool)iCloudAccountSubscribed;
 - (id)subscriptionIdentifier;
 - (void)writeDPIDtoKeychain;
-- (_Bool)limitAdTrackingEnabled;
+- (_Bool)devicePersonalizedAdsEnabled;
 - (_Bool)isRestrictedByApple;
 - (unsigned long long)primaryiCloudAccountSecurityLevel;
 - (id)primaryiCloudAccountAltDSID;

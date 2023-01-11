@@ -27,35 +27,18 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)_sharedCleanup;
 - (id)alreadylocked_createObserverUpdateMessageWithOperation:(int)arg1 forRole:(int *)arg2;
 - (int)alreadylocked_updateObservingRemoteChanges;
 - (long long)generationCount;
 - (long long)alreadylocked_generationCount;
 - (_Bool)synchronize;
-- (_Bool)volatilizeIfInvalidHomeDir;
 - (void)alreadylocked_clearCache;
-- (void)sendRequestNewDataMessage:(id)arg1 toConnection:(id)arg2 retryCount:(int)arg3 error:(_Bool *)arg4;
 - (void)handleReply:(id)arg1 toRequestNewDataMessage:(id)arg2 onConnection:(id)arg3 retryCount:(int)arg4 error:(_Bool *)arg5;
-- (void)requestPlistValidation;
 - (id)createRequestNewContentMessageForDaemon:(int)arg1;
-- (_Bool)alreadylocked_requestNewData;
-- (long long)sendMessageSettingValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3;
-- (void)sendFullyPreparedMessage:(id)arg1 toConnection:(id)arg2 settingValues:(const void **)arg3 forKeys:(const struct __CFString **)arg4 count:(long long)arg5 retryCount:(int)arg6;
-- (void)addPIDImpersonationIfNecessary:(id)arg1;
-- (_Bool)attachAccessTokenToMessage:(id)arg1 accessType:(int)arg2;
-- (_Bool)handleErrorReply:(id)arg1 fromMessageSettingKeys:(const struct __CFString **)arg2 toValues:(const void **)arg3 count:(long long)arg4 retryCount:(int)arg5 retryContinuation:(CDUnknownBlockType)arg6;
-- (void)handlePossibleOversizedMessage:(int)arg1;
-- (_Bool)handleErrorReply:(id)arg1 retryCount:(int)arg2 retryContinuation:(CDUnknownBlockType)arg3;
-- (void)goReadOnlyAfterTryingToWriteKeys:(const struct __CFString **)arg1 values:(const void **)arg2 count:(long long)arg3;
 - (_Bool)isDirectModeEnabled;
 - (void)transitionIntoDirectModeIfNeededWithRetryBlock:(CDUnknownBlockType)arg1;
-- (_Bool)_shouldEnableDirectMode;
 - (_Bool)isVolatile;
-- (void)goVolatileAfterTryingToWriteKeys:(const struct __CFString **)arg1 values:(const void **)arg2 count:(long long)arg3;
-- (void)writeFailedForKeys:(const struct __CFString **)arg1 values:(const void **)arg2 count:(long long)arg3;
 - (id)createSynchronizeMessage;
-- (_Bool)_isSharedInTheiOSSimulator;
 - (void)alreadylocked_setPrecopiedValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (struct __CFDictionary *)alreadylocked_copyDictionary;
 - (struct __CFArray *)alreadylocked_copyKeyList;
@@ -68,10 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDomain:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(_Bool)arg3 containerPath:(struct __CFString *)arg4 containingPreferences:(id)arg5;
 - (_Bool)isByHost;
 - (struct __CFString *)container;
-- (void)setContainer:(struct __CFString *)arg1;
-- (void)setDomainIdentifier:(struct __CFString *)arg1;
 - (struct __CFString *)domainIdentifier;
-- (void)setUserIdentifier:(struct __CFString *)arg1;
 - (struct __CFString *)userIdentifier;
 
 @end

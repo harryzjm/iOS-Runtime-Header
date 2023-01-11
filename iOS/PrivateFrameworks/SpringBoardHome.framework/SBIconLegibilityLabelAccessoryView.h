@@ -11,8 +11,10 @@
     UIImageView *_iconImageView;
 }
 
-@property(readonly, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
+- (id)lastBaselineAnchor;
+- (id)firstBaselineAnchor;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (double)baselineOffsetFromBottom;
 - (_Bool)hasBaseline;

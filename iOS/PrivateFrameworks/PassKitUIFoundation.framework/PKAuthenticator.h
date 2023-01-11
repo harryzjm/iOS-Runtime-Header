@@ -6,41 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, PKAuthenticatorDelegate;
+@protocol PKAuthenticatorDelegate;
 
 @interface PKAuthenticator : NSObject
 {
     unsigned long long _authenticationIdentifier;
-    NSObject<OS_dispatch_queue> *_contextMutationQueue;
+    struct os_unfair_lock_s _lock;
     _Bool _invalidated;
     id <PKAuthenticatorDelegate> _delegate;
-    double _fingerPresentTimeout;
 }
 
 + (id)viewServiceBundleID;
 + (unsigned long long)cachedStateForPolicy:(long long)arg1;
 + (unsigned long long)_currentStateForMechanisms:(id)arg1;
++ (_Bool)canPerformPSD2StyleBuyForAccessControlRef:(struct __SecAccessControl *)arg1;
 + (unsigned long long)currentStateForAccessControl:(struct __SecAccessControl *)arg1;
 + (unsigned long long)currentStateForPolicy:(long long)arg1;
-+ (void)delayCoachingStateTransition;
 + (void)removeUserIntentAvailable;
-+ (_Bool)isUserIntentAvailable;
++ (long long)userIntentStyle;
++ (_Bool)_isAccessibilityUserIntentEnabled;
++ (_Bool)isUserIntentAvailableWithStyle:(long long)arg1;
 + (void)resetSharedRootContextWithCompletion:(CDUnknownBlockType)arg1;
 + (void)preheatAuthenticator;
-@property(nonatomic) double fingerPresentTimeout; // @synthesize fingerPresentTimeout=_fingerPresentTimeout;
-@property(nonatomic) __weak id <PKAuthenticatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKAuthenticatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_delegateSupportsPassphrasePresentation;
 - (_Bool)_delegateSupportsPasscodePresentation;
-@property(readonly, nonatomic) _Bool fingerPresentTimeoutExpired;
-@property(readonly, nonatomic) _Bool fingerPresentTimeoutRequired;
 @property(readonly, nonatomic) _Bool passcodeWasPresented;
 @property(readonly, nonatomic) _Bool passphraseActive;
 @property(readonly, nonatomic) _Bool passcodeActive;
 @property(readonly, nonatomic) _Bool fingerPresent;
 @property(readonly, nonatomic) long long coachingState;
-@property(readonly, nonatomic) _Bool userIntentAvailable;
-- (void)setFingerPresentTimeout:(double)arg1 preventRestart:(_Bool)arg2;
+@property(readonly, nonatomic) long long evaluationState;
 @property(readonly, nonatomic) unsigned long long authenticationIdentifier;
 - (void)invalidate;
 - (void)accessExternalizedContextWithCompletion:(CDUnknownBlockType)arg1;

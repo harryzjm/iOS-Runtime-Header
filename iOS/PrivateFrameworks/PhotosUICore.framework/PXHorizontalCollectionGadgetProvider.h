@@ -7,26 +7,33 @@
 #import <PhotosUICore/PXGadgetProviderDelegate-Protocol.h>
 #import <PhotosUICore/PXHorizontalCollectionGadgetDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PXHorizontalCollectionGadget;
+@class NSDictionary, NSString, PXGadgetProvider, PXHorizontalCollectionGadget;
 
 @interface PXHorizontalCollectionGadgetProvider <PXGadgetProviderDelegate, PXHorizontalCollectionGadgetDelegate>
 {
     PXHorizontalCollectionGadget *_horizontalGadget;
     _Bool _hasLoaded;
     Class _horizontalCollectionGadgetClass;
-    NSArray *_contentGadgetProviders;
+    _Bool _prefersPagingEnabled;
+    _Bool _isFixedHeight;
     NSString *_title;
     unsigned long long _gadgetType;
+    unsigned long long _headerStyle;
     long long _defaultColumnSpan;
     NSDictionary *_columnSpanForTraitCollection;
+    PXGadgetProvider *_contentGadgetProvider;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) PXGadgetProvider *contentGadgetProvider; // @synthesize contentGadgetProvider=_contentGadgetProvider;
+@property(nonatomic) _Bool isFixedHeight; // @synthesize isFixedHeight=_isFixedHeight;
+@property(nonatomic) _Bool prefersPagingEnabled; // @synthesize prefersPagingEnabled=_prefersPagingEnabled;
 @property(copy, nonatomic) NSDictionary *columnSpanForTraitCollection; // @synthesize columnSpanForTraitCollection=_columnSpanForTraitCollection;
 @property(nonatomic) long long defaultColumnSpan; // @synthesize defaultColumnSpan=_defaultColumnSpan;
+@property(nonatomic) unsigned long long headerStyle; // @synthesize headerStyle=_headerStyle;
 @property(nonatomic) unsigned long long gadgetType; // @synthesize gadgetType=_gadgetType;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(readonly, nonatomic) NSArray *contentGadgetProviders; // @synthesize contentGadgetProviders=_contentGadgetProviders;
-- (void).cxx_destruct;
+- (id)_createHorizontalGadget;
 - (void)_updateHorizontalGadget;
 - (void)invalidateGadgets;
 - (void)horizontalCollectionGadgetDatasourceDidUpdate:(id)arg1;
@@ -35,8 +42,9 @@
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)loadDataForGadgets;
 - (void)loadDataForPriority;
-- (id)initWithContentGadgetProviders:(id)arg1 title:(id)arg2 horizontalCollectionGadgetClass:(Class)arg3;
-- (id)initWithContentGadgetProviders:(id)arg1 title:(id)arg2;
+- (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2 horizontalCollectionGadgetClass:(Class)arg3;
+- (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2;
+- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 
 // Remaining properties

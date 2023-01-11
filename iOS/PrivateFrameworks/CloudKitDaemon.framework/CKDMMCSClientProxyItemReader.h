@@ -10,16 +10,15 @@
 
 @class CKDMMCSItem, CKDMMCSItemGroupContext, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSClientProxyItemReader : NSObject <CKDMMCSItemReaderWriterProtocol>
 {
     CKDMMCSItemGroupContext *_MMCSRequest;
     CKDMMCSItem *_MMCSItem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKDMMCSItem *MMCSItem; // @synthesize MMCSItem=_MMCSItem;
 @property(retain, nonatomic) CKDMMCSItemGroupContext *MMCSRequest; // @synthesize MMCSRequest=_MMCSRequest;
-- (void).cxx_destruct;
 - (_Bool)writeBytesAtOffset:(unsigned long long)arg1 bytes:(char *)arg2 length:(unsigned long long)arg3 bytesWritten:(unsigned long long *)arg4 error:(id *)arg5;
 - (_Bool)readBytesAtOffset:(unsigned long long)arg1 bytes:(char *)arg2 length:(unsigned long long)arg3 bytesRead:(unsigned long long *)arg4 error:(id *)arg5;
 - (id)getFileMetadataWithError:(id *)arg1;

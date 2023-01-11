@@ -9,13 +9,15 @@
 @interface XBLaunchImageError : NSError
 {
     _Bool _fatal;
+    _Bool _shouldDeny;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly) _Bool shouldDeny; // @synthesize shouldDeny=_shouldDeny;
 @property(readonly, getter=isFatal) _Bool fatal; // @synthesize fatal=_fatal;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 fatal:(_Bool)arg4;
+- (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 fatal:(_Bool)arg4 shouldDeny:(_Bool)arg5;
 
 @end
 

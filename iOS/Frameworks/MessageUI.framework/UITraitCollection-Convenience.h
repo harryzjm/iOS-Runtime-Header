@@ -8,6 +8,7 @@
 
 @interface UITraitCollection (Convenience)
 - (long long)mf_correspondingBarMetrics;
+- (_Bool)mf_useSplitViewStyling;
 - (_Bool)mf_hasCompactDimension;
 - (_Bool)mf_supportsPopoverPresentation;
 @end

@@ -20,12 +20,12 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
-@property(nonatomic) _Bool listening; // @synthesize listening=_listening;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
-@property(retain, nonatomic) NSString *notificationName; // @synthesize notificationName=_notificationName;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool listening; // @synthesize listening=_listening;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
+@property(readonly, nonatomic) NSString *notificationName; // @synthesize notificationName=_notificationName;
 - (_Bool)_removeObserver;
 - (_Bool)_addObserver;
 - (void)_notificationWithNameReceived:(id)arg1;
@@ -34,6 +34,7 @@
 - (id)description;
 - (void)dealloc;
 - (id)initWithNotificationName:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (id)initWithNotificationName:(id)arg1 callback:(CDUnknownBlockType)arg2 queue:(id)arg3;
 
 @end
 

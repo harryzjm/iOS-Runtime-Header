@@ -12,8 +12,10 @@
 
 @interface PKPaymentCredential : NSObject <NSSecureCoding>
 {
+    _Bool _deletable;
     long long _credentialType;
     NSString *_sanitizedPrimaryAccountNumber;
+    NSString *_sanitizedPrimaryAccountName;
     NSString *_expiration;
     NSString *_longDescription;
     long long _cardType;
@@ -23,16 +25,25 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)fakeRemoteCredentials;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isDeletable) _Bool deletable; // @synthesize deletable=_deletable;
 @property(retain, nonatomic) PKPaymentEligibilityResponse *eligibilityResponse; // @synthesize eligibilityResponse=_eligibilityResponse;
 @property(retain, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
 @property(nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property(copy, nonatomic) NSString *longDescription; // @synthesize longDescription=_longDescription;
 @property(copy, nonatomic) NSString *expiration; // @synthesize expiration=_expiration;
+@property(copy, nonatomic) NSString *sanitizedPrimaryAccountName; // @synthesize sanitizedPrimaryAccountName=_sanitizedPrimaryAccountName;
 @property(copy, nonatomic) NSString *sanitizedPrimaryAccountNumber; // @synthesize sanitizedPrimaryAccountNumber=_sanitizedPrimaryAccountNumber;
 @property(nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
+- (id)issuerProvisioningExtensionCredential;
+- (_Bool)isIssuerProvisioningExtensionCredential;
+- (id)localAppletSubcredentialPassCredential;
+- (_Bool)isLocalAppletSubcredentialPassCredential;
+- (id)shareableCredential;
+- (_Bool)isShareableCredential;
 - (id)accountCredential;
 - (_Bool)isAccountCredential;
 - (id)purchasedProductCredential;

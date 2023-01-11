@@ -15,9 +15,9 @@
 }
 
 + (id)swatchColor:(id)arg1 identifier:(id)arg2;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) UIColor *color; // @synthesize color=_color;
 - (id)initWithColor:(id)arg1 identifier:(id)arg2;
 
 @end

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
+
 @class NSNumber, NSString;
 
-@interface INCodableBooleanAttributeMetadata
+@interface INCodableBooleanAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     NSNumber *_defaultValue;
     NSString *_falseDisplayName;
@@ -16,20 +18,42 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *trueDisplayNameID; // @synthesize trueDisplayNameID=_trueDisplayNameID;
 @property(copy, nonatomic) NSString *trueDisplayName; // @synthesize trueDisplayName=_trueDisplayName;
 @property(copy, nonatomic) NSString *falseDisplayNameID; // @synthesize falseDisplayNameID=_falseDisplayNameID;
 @property(copy, nonatomic) NSString *falseDisplayName; // @synthesize falseDisplayName=_falseDisplayName;
 @property(copy, nonatomic) NSNumber *defaultValue; // @synthesize defaultValue=_defaultValue;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)localizedFalseDisplayNameForLanguage:(id)arg1;
+- (id)localizedFalseDisplayNameWithLocalizer:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *localizedFalseDisplayName;
-- (id)localizedTrueDisplayNameForLanguage:(id)arg1;
+- (id)localizedTrueDisplayNameWithLocalizer:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *localizedTrueDisplayName;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)defaultValueForIntentDefaultValueProvider;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionFalseDisplayNameKey;
+- (id)__INIntentResponseCodableDescriptionFalseDisplayNameKey;
+- (id)__INTypeCodableDescriptionFalseDisplayNameKey;
+- (id)__INCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INIntentResponseCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INTypeCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INCodableDescriptionTrueDisplayNameKey;
+- (id)__INIntentResponseCodableDescriptionTrueDisplayNameKey;
+- (id)__INTypeCodableDescriptionTrueDisplayNameKey;
+- (id)__INCodableDescriptionTrueDisplayNameIDKey;
+- (id)__INIntentResponseCodableDescriptionTrueDisplayNameIDKey;
+- (id)__INTypeCodableDescriptionTrueDisplayNameIDKey;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

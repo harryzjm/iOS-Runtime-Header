@@ -11,6 +11,7 @@
 @protocol DDDetectionControllerInteractionDelegate <NSObject>
 
 @optional
+- (void)actionDidFinish:(DDAction *)arg1 shouldDismiss:(_Bool)arg2;
 - (void)actionDidFinish:(DDAction *)arg1;
 - (void)actionWillStart:(DDAction *)arg1;
 - (void)action:(DDAction *)arg1 didDismissAlertController:(UIAlertController *)arg2;

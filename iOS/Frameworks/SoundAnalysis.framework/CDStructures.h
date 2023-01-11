@@ -21,6 +21,18 @@ struct AudioBufferList {
     struct AudioBuffer _field2[1];
 };
 
+struct AudioQueueBuffer {
+    unsigned int _field1;
+    void *_field2;
+    unsigned int _field3;
+    void *_field4;
+    unsigned int _field5;
+    struct AudioStreamPacketDescription *_field6;
+    unsigned int _field7;
+};
+
+struct AudioRingBuffer;
+
 struct AudioStreamBasicDescription {
     double mSampleRate;
     unsigned int mFormatID;
@@ -31,6 +43,22 @@ struct AudioStreamBasicDescription {
     unsigned int mChannelsPerFrame;
     unsigned int mBitsPerChannel;
     unsigned int mReserved;
+};
+
+struct AudioStreamPacketDescription {
+    long long _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
+
+struct AudioTimeStamp {
+    double _field1;
+    unsigned long long _field2;
+    double _field3;
+    unsigned long long _field4;
+    struct SMPTETime _field5;
+    unsigned int _field6;
+    unsigned int _field7;
 };
 
 struct AudioUnitParameterInfo {
@@ -73,41 +101,7 @@ struct Box {
     long long _field25;
 };
 
-struct CoreMLBox {
-    CDUnknownFunctionPointerType *_field1;
-    struct Graph *_field2;
-    struct IsoGroup *_field3;
-    struct Subset *_field4;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
-    long long _field6;
-    struct vector<DSPGraph::InputPort, std::__1::allocator<DSPGraph::InputPort>> _field7;
-    struct vector<DSPGraph::OutputPort, std::__1::allocator<DSPGraph::OutputPort>> _field8;
-    struct unordered_set<DSPGraph::Box *, std::__1::hash<DSPGraph::Box *>, std::__1::equal_to<DSPGraph::Box *>, std::__1::allocator<DSPGraph::Box *>> _field9;
-    struct vector<DSPGraph::ParameterTap, std::__1::allocator<DSPGraph::ParameterTap>> _field10;
-    struct vector<DSPGraph::PropertyTap, std::__1::allocator<DSPGraph::PropertyTap>> _field11;
-    struct vector<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>>> _field12;
-    struct vector<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>>> _field13;
-    struct mutex _field14;
-    struct vector<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>>> _field15;
-    struct Set<DSPGraph::Analyzer *> _field16;
-    struct map<std::__1::pair<unsigned int, int>, long long, std::__1::less<std::__1::pair<unsigned int, int>>, std::__1::allocator<std::__1::pair<const std::__1::pair<unsigned int, int>, long long>>> _field17;
-    struct function<void (double)> _field18;
-    struct function<void (DSPGraph::Box *, int)> _field19;
-    struct function<void (DSPGraph::Box *, int)> _field20;
-    _Bool _field21;
-    _Bool _field22;
-    _Bool _field23;
-    _Bool _field24;
-    long long _field25;
-    id _field26;
-    id _field27;
-    int _field28;
-    int _field29;
-    int _field30;
-    _Bool _field31;
-    _Bool _field32;
-    struct vector<float, std::__1::allocator<float>> _field33;
-};
+struct CABufferList;
 
 struct FormatAndBlockSize {
     struct AudioStreamBasicDescription mFormat;
@@ -138,6 +132,8 @@ struct ProcessingTree {
     struct list<SoundAnalysis::AnalyzerNode, std::__1::allocator<SoundAnalysis::AnalyzerNode>> mAnalyzerNodes;
     struct RootNode mRootNode;
     int mMaxFramesPerSlice;
+    struct function<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> mWillInitializeCallback;
+    int mCurrentInputSampleTime;
 };
 
 struct PropertyTap;
@@ -149,6 +145,18 @@ struct RootNode {
     struct Box *mProcessingBox;
     struct FormatAndBlockSize mUpstreamFormat;
     struct FormatAndBlockSize mDownstreamFormat;
+};
+
+struct SMPTETime {
+    short _field1;
+    short _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    short _field6;
+    short _field7;
+    short _field8;
+    short _field9;
 };
 
 struct Set<DSPGraph::Analyzer *> {
@@ -202,16 +210,15 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -233,6 +240,13 @@ struct function<void (double)> {
         struct type _field1;
         struct __base<void (double)> *_field2;
     } _field1;
+};
+
+struct function<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> {
+    struct __value_func<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> {
+        struct type __buf_;
+        struct __base<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> *__f_;
+    } __f_;
 };
 
 struct list<SoundAnalysis::AnalyzerNode, std::__1::allocator<SoundAnalysis::AnalyzerNode>> {
@@ -284,9 +298,9 @@ struct map<std::__1::pair<unsigned int, int>, long long, std::__1::less<std::__1
 
 struct mutex {
     struct _opaque_pthread_mutex_t {
-        long long _field1;
-        char _field2[56];
-    } _field1;
+        long long __sig;
+        char __opaque[56];
+    } __m_;
 };
 
 struct shared_ptr<DSPGraph::Graph> {
@@ -295,7 +309,19 @@ struct shared_ptr<DSPGraph::Graph> {
 };
 
 struct type {
-    unsigned char _field1[32];
+    unsigned char __lx[24];
+};
+
+struct unique_ptr<AudioRingBuffer, std::__1::default_delete<AudioRingBuffer>> {
+    struct __compressed_pair<AudioRingBuffer *, std::__1::default_delete<AudioRingBuffer>> {
+        struct AudioRingBuffer *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CABufferList, std::__1::default_delete<CABufferList>> {
+    struct __compressed_pair<CABufferList *, std::__1::default_delete<CABufferList>> {
+        struct CABufferList *__value_;
+    } __ptr_;
 };
 
 struct unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>;

@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol MPSNNLossCallback;
+@class MPSMatrix;
+@protocol MPSNNLossCallback, MTLTexture;
 
 @interface MPSNNLossGradient
 {
+    _Bool _reduceAcrossBatch;
     id <MPSNNLossCallback> _propertyCallback;
+    MPSMatrix *_reductionBuffer;
+    id <MTLTexture> _firstLossGradientImage;
     _Bool _computeLabelGradients;
     unsigned int _lossType;
     int _reductionType;
@@ -19,18 +23,19 @@
     unsigned long long _numberOfClasses;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) _Bool computeLabelGradients; // @synthesize computeLabelGradients=_computeLabelGradients;
 @property(nonatomic) float delta; // @synthesize delta=_delta;
 @property(nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property(readonly, nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;
 @property(nonatomic) float labelSmoothing; // @synthesize labelSmoothing=_labelSmoothing;
 @property(nonatomic) float weight; // @synthesize weight=_weight;
+@property(readonly, nonatomic) _Bool reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property(readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property(readonly, nonatomic) unsigned int lossType; // @synthesize lossType=_lossType;
 - (unsigned long long)maxBatchSize;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceGradients:(struct NSArray *)arg2 sourceImages:(struct NSArray *)arg3 labels:(struct NSArray *)arg4 weights:(struct NSArray *)arg5 sourceStates:(struct NSArray *)arg6;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceGradients:(struct NSArray *)arg2 sourceImages:(struct NSArray *)arg3 labels:(struct NSArray *)arg4 weights:(struct NSArray *)arg5 sourceStates:(struct NSArray *)arg6 destinationGradients:(struct NSArray *)arg7;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceGradients:(id)arg2 sourceImages:(id)arg3 labels:(id)arg4 weights:(id)arg5 sourceStates:(id)arg6;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceGradients:(id)arg2 sourceImages:(id)arg3 labels:(id)arg4 weights:(id)arg5 sourceStates:(id)arg6 destinationGradients:(id)arg7;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2;
 - (id)debugDescription;
 - (void)dealloc;

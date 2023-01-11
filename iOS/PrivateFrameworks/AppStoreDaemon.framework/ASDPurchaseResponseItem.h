@@ -8,7 +8,7 @@
 
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class ASDPurchase, NSArray, NSDictionary, NSError;
+@class ASDPurchase, NSArray, NSDictionary, NSError, NSString;
 
 @interface ASDPurchaseResponseItem : NSObject <NSSecureCoding>
 {
@@ -16,6 +16,7 @@
     _Bool _cancelsPurchaseBatch;
     NSError *_error;
     ASDPurchase *_purchase;
+    NSString *_bundleID;
     NSArray *_results;
     double _requestStartTime;
     double _responseEndTime;
@@ -25,6 +26,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *transationIDs; // @synthesize transationIDs=_transationIDs;
 @property(readonly, nonatomic) NSDictionary *responseMetrics; // @synthesize responseMetrics=_responseMetrics;
 @property(nonatomic) double responseStartTime; // @synthesize responseStartTime=_responseStartTime;
@@ -33,14 +35,15 @@
 @property(readonly, nonatomic) _Bool cancelsPurchaseBatch; // @synthesize cancelsPurchaseBatch=_cancelsPurchaseBatch;
 @property(readonly, nonatomic) _Bool success; // @synthesize success=_success;
 @property(readonly, nonatomic) NSArray *results; // @synthesize results=_results;
+@property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly, copy, nonatomic) ASDPurchase *purchase; // @synthesize purchase=_purchase;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
-- (void).cxx_destruct;
 - (void)_setTransactionIDs:(id)arg1;
 - (void)_setSuccess:(_Bool)arg1;
 - (void)_setResponseMetrics:(id)arg1;
 - (void)_setPurchase:(id)arg1;
 - (void)_setError:(id)arg1;
+- (void)_setBundleID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

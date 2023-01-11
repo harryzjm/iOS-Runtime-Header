@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (_Bool)_axIsUsingFlash;
 - (_Bool)_axIsBackFacing;
 - (_Bool)_axIsFocusLocked;

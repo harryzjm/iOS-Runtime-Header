@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     double _headerTopPadding;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double headerTopPadding; // @synthesize headerTopPadding=_headerTopPadding;
 @property(readonly, nonatomic) double viewControllerBottomPadding; // @synthesize viewControllerBottomPadding=_viewControllerBottomPadding;
 @property(readonly, nonatomic) double viewControllerTopPadding; // @synthesize viewControllerTopPadding=_viewControllerTopPadding;
@@ -36,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOMapItemAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) UIViewController *annotatedItemListViewController; // @synthesize annotatedItemListViewController=_annotatedItemListViewController;
 @property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
-- (void).cxx_destruct;
 - (void)captureUserAction:(int)arg1;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)openAttribution;
 - (void)viewDidLoad;
 - (id)initWithTextItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
-- (id)initWithPictureItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
+- (id)initWithPictureItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3 presentingProtocol:(id)arg4;
 - (id)initWithChildViewController:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (_Bool)_canShowWhileLocked;
 

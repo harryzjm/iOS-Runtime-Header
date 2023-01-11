@@ -37,8 +37,8 @@
 + (id)predicateForEvaluatingTriggerOccurringBeforeSignificantEvent:(id)arg1 applyingOffset:(id)arg2;
 + (id)negateOffset:(id)arg1;
 + (_Bool)__validateRecurrences:(id)arg1;
-@property(retain, nonatomic) HMMutableArray *currentEvents; // @synthesize currentEvents=_currentEvents;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HMMutableArray *currentEvents; // @synthesize currentEvents=_currentEvents;
 - (_Bool)compatibleWithApp;
 - (_Bool)containsSharedTriggerActivationBits;
 - (_Bool)_updateCharacterisiticReferenceInNewEvent:(id)arg1;
@@ -46,13 +46,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)handleActivationStateNotification:(id)arg1;
-- (void)handleEventsRemovedNotification:(id)arg1;
-- (void)handleEventsUpdatedNotification:(id)arg1;
+- (void)_handleEventsRemovedFromResponse:(id)arg1;
+- (void)_updateEventsFromResponse:(id)arg1 responsePayload:(id)arg2;
 - (id)addedEvent:(id)arg1;
-- (void)handleEventAddedNotification:(id)arg1;
-- (void)_handleEventTriggerExecuteOnceNotification:(id)arg1;
-- (void)_handleEventTriggerRecurrencesNotification:(id)arg1;
-- (void)_handleEventTriggerConditionNotification:(id)arg1;
+- (void)_handleAddEventFromResponse:(id)arg1 newEventPayload:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (id)_serializeForAdd;
 - (void)_updateExecuteOnce:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

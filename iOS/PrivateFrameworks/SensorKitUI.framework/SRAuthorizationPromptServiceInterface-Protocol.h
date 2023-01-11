@@ -9,11 +9,10 @@
 @class NSSet, NSString;
 
 @protocol SRAuthorizationPromptServiceInterface <NSObject>
-- (void)deleteAllSamples;
+- (void)showFirstRunOnboarding;
 - (void)showResearchData;
 - (void)showStudyAuthorizationForBundlePath:(NSString *)arg1;
 - (void)showAppsAndStudies;
-- (void)showPendingAuthUIForBundlePath:(NSString *)arg1 services:(NSSet *)arg2;
 - (void)requestAuthorizationForBundle:(NSString *)arg1 services:(NSSet *)arg2;
 @end
 

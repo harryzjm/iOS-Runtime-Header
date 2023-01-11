@@ -14,6 +14,7 @@
 - (id)na_dictionaryWithKeyGenerator:(CDUnknownBlockType)arg1;
 - (id)na_arrayByFlattening;
 - (void)na_each:(CDUnknownBlockType)arg1;
+- (_Bool)na_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (_Bool)na_all:(CDUnknownBlockType)arg1;
 - (_Bool)na_any:(CDUnknownBlockType)arg1;
 - (id)na_filter:(CDUnknownBlockType)arg1;

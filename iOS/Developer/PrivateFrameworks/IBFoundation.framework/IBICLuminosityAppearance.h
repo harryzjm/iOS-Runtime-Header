@@ -10,7 +10,6 @@
 
 + (id)groupedAttributeValueForManifestArchiving;
 + (id)displayName;
-+ (id)contentsJSONKey;
 + (id)lightAppearance;
 + (id)darkAppearance;
 + (id)unspecifiedValuePlaceholder;

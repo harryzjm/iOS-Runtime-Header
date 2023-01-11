@@ -19,18 +19,22 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *dictionary_write_queue;
     NSMutableDictionary *auxLibraries;
     NSMutableDictionary *m_kernelCache_rw;
+    struct mutex setup_mutex;
     NSString *_kernelPrefix;
     NSDictionary *_m_kernelCache;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain) NSDictionary *m_kernelCache; // @synthesize m_kernelCache=_m_kernelCache;
 @property(retain, nonatomic) NSString *kernelPrefix; // @synthesize kernelPrefix=_kernelPrefix;
-- (void).cxx_destruct;
 - (_Bool)shouldUseTexArray;
 - (id)kernelForFunction:(const char *)arg1 cacheString:(const char *)arg2 withConstants:(id)arg3;
 - (id)kernelForFunction:(const char *)arg1;
 - (void)addLibraryAtPath:(id)arg1;
 - (void)loadLibraryNamed:(id)arg1;
+- (_Bool)wasSetup;
+- (void)lazySetup;
 - (id)initWithDevice:(id)arg1;
 
 @end

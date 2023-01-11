@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskRequest.h"
+#import <DeviceManagement/CATTaskRequest.h>
 
 @class DMFControlGroupIdentifier;
 
@@ -16,10 +16,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long colorType; // @synthesize colorType=_colorType;
 @property(nonatomic) unsigned long long mascotType; // @synthesize mascotType=_mascotType;
 @property(retain, nonatomic) DMFControlGroupIdentifier *courseIdentifier; // @synthesize courseIdentifier=_courseIdentifier;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

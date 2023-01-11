@@ -4,23 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKReminder;
+#import <ContentKit/WFContentItemClass-Protocol.h>
 
-@interface WFReminderContentItem
+@class REMReminder, REMStore;
+
+@interface WFReminderContentItem <WFContentItemClass>
 {
+    REMStore *_reminderStore;
 }
 
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
++ (id)contentCategories;
++ (id)outputTypes;
 + (id)ownedTypes;
++ (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)hasLibrary;
++ (id)defaultList;
++ (id)allLists;
 + (id)propertyBuilders;
-+ (id)itemWithEKReminder:(id)arg1 fromEventStore:(id)arg2;
++ (id)itemWithReminder:(id)arg1 fromReminderStore:(id)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) REMStore *reminderStore; // @synthesize reminderStore=_reminderStore;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
-@property(readonly, nonatomic) EKReminder *reminder;
+@property(readonly, nonatomic) REMReminder *reminder;
+- (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
+- (id)imageAttachment;
+- (id)URL;
+- (_Bool)flagged;
+- (_Bool)hasAlarms;
+- (id)subtasks;
+- (_Bool)hasSubtasks;
+- (id)parentReminder;
 - (_Bool)getListAltText:(CDUnknownBlockType)arg1;
 
 @end

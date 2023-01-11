@@ -11,7 +11,6 @@
 }
 
 + (id)alarmEngine;
-+ (id)reminders;
 + (id)calendar;
 + (id)defaultCategory;
 

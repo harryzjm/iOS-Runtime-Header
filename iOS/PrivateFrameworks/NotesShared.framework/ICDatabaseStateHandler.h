@@ -6,7 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@interface ICDatabaseStateHandler : NSObject
+#import <NotesShared/ICStateHandlerProvider-Protocol.h>
+
+@class NSString;
+
+@interface ICDatabaseStateHandler : NSObject <ICStateHandlerProvider>
 {
 }
 
@@ -14,7 +18,13 @@
 + (id)modernDatabaseState;
 + (id)miscState;
 + (id)stateDictionary;
-+ (void)addDatabaseStateHandler;
++ (void)registerStateHandler;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

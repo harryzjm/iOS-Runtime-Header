@@ -5,24 +5,21 @@
 //
 
 #import <NanoTimeKitCompanion/CLKCComplicationDataSourceDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/NTKComplicationTimelineDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
+#import <NanoTimeKitCompanion/TLTimelineDelegate-Protocol.h>
 
-@class CLKCComplicationDataSource, CLKComplicationTemplate, NSDate, NSMutableSet, NSString, NTKComplicationTimeline, NTKTimelineDataOperation;
+@class CLKCComplicationDataSource, CLKComplicationTemplate, NSDate, NSMutableSet, NSString, NTKTimelineDataOperation, TLTimeline;
 
-@interface NTKLocalTimelineComplicationController <CLKCComplicationDataSourceDelegate, NTKComplicationTimelineDelegate, NTKTimeTravel>
+@interface NTKLocalTimelineComplicationController <CLKCComplicationDataSourceDelegate, TLTimelineDelegate, NTKTimeTravel>
 {
     CLKCComplicationDataSource *_dataSource;
     NSDate *_timeTravelDate;
     _Bool _supportsTimeTravelForward;
-    _Bool _supportsTimeTravelBackward;
-    NSDate *_timelineStartDate;
     NSDate *_timelineEndDate;
     _Bool _hasQueuedAnimation;
     unsigned long long _queuedAnimation;
-    NTKComplicationTimeline *_timeline;
+    TLTimeline *_timeline;
     NTKTimelineDataOperation *_currentOperation;
-    NSMutableSet *_suspendedLeftBoundaryDates;
     NSMutableSet *_suspendedRightBoundaryDates;
     NSMutableSet *_delayedBlocks;
     CLKComplicationTemplate *_switcherTemplate;
@@ -33,6 +30,7 @@
 + (_Bool)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 + (Class)complicationDataSourceClassForComplication:(id)arg1 family:(long long)arg2 device:(id)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CLKComplicationTemplate *sharingTemplate;
 - (void)_updateDimStateForCurrentTimeline;
 - (id)lockedTemplate;
 - (id)activeDisplayTemplate;
@@ -43,31 +41,27 @@
 - (void)didTouchDownInView:(id)arg1;
 - (void)performTapAction;
 - (_Bool)hasTapAction;
-- (void)_startExtendLeftOperationFromDate:(id)arg1;
 - (void)_startExtendRightOperationFromDate:(id)arg1;
-- (void)_completeExtendLeftOperationWithBoundaryDate:(id)arg1 entries:(id)arg2;
 - (void)_completeExtendRightOperationWithBoundaryDate:(id)arg1 entries:(id)arg2;
 - (void)_cancelDelayedBlocks;
 - (void)_suspendRightBoundaryDate:(id)arg1;
-- (void)_suspendLeftBoundaryDate:(id)arg1;
-- (void)_startExtendOperationIfNecessaryForWindow:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
+- (void)_startExtendOperationIfNecessaryForTimeline:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
 - (void)_extendTimelineIfNecessaryAndPossible;
 - (id)alwaysOnTemplate;
 - (void)_startSetupOperationIfPossible;
-- (void)_completeSetupOperationWithDirections:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 currentEntry:(id)arg4;
+- (void)_completeSetupOperationWithEndDate:(id)arg1 currentEntry:(id)arg2;
 - (void)entriesDidChangeInTimeline:(id)arg1;
-- (void)timeTravelEntryDidChangeFrom:(id)arg1 to:(id)arg2;
-- (void)nowEntryDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)timeline:(id)arg1 didChangeNowEntryFrom:(id)arg2 to:(id)arg3;
 - (void)invalidateSwitcherTemplate;
+- (void)appendEntries:(id)arg1 withTritiumUpdatePriority:(long long)arg2;
 - (void)appendEntries:(id)arg1;
 - (void)setTimelineEndDate:(id)arg1;
-- (void)setTimelineStartDate:(id)arg1;
 - (void)invalidateEntries;
+- (void)invalidateEntriesWithTritiumUpdatePriority:(long long)arg1;
 - (double)minimumIntervalBetweenTimelineEntries;
 - (void)setCurrentTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (void)_queueAnimationForNextUpdate:(unsigned long long)arg1;
 - (void)_updateCurrentTemplateWithReason:(long long)arg1;
-- (void)_updateTimeTravelBoundaries;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
 - (void)addDisplayWrapper:(id)arg1;
 - (void)setShowsLockedUI:(_Bool)arg1;
@@ -80,7 +74,8 @@
 - (void)_resetTimelineForCachingChange;
 - (void)_deactivate;
 - (void)_activate;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
+- (void)setIgnoreNewTemplates:(_Bool)arg1;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 face:(id)arg3 slot:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

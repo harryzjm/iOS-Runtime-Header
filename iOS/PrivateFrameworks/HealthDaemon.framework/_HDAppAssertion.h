@@ -20,13 +20,14 @@
     HDAppAssertionManager *_assertionManager;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_pendingLaunchCompletions;
-    NSMutableSet *_processAssertions;
     NSObject<OS_dispatch_source> *_processDeathSource;
+    NSMutableSet *_processAssertions;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
+@property(readonly, nonatomic) NSMutableSet *processAssertions; // @synthesize processAssertions=_processAssertions;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *processDeathSource; // @synthesize processDeathSource=_processDeathSource;
-@property(retain, nonatomic) NSMutableSet *processAssertions; // @synthesize processAssertions=_processAssertions;
 @property(retain, nonatomic) NSMutableDictionary *pendingLaunchCompletions; // @synthesize pendingLaunchCompletions=_pendingLaunchCompletions;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak HDAppAssertionManager *assertionManager; // @synthesize assertionManager=_assertionManager;
@@ -35,7 +36,6 @@
 @property(readonly, nonatomic) double lastLaunchAttempt; // @synthesize lastLaunchAttempt=_lastLaunchAttempt;
 @property(readonly, nonatomic) NSMutableDictionary *pendingDataTypeCodesToAnchors; // @synthesize pendingDataTypeCodesToAnchors=_pendingDataTypeCodesToAnchors;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) double nextLaunchAttempt;

@@ -6,12 +6,7 @@
 
 @interface DVTMD5Digester
 {
-    struct CC_MD5state_st _ctxt;
 }
-
-- (id)digest;
-- (void)updateWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
-- (id)init;
 
 @end
 

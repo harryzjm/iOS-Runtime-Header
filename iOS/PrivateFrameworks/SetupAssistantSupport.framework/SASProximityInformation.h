@@ -14,6 +14,7 @@
 {
     _Bool _usesSameAccountForiTunes;
     _Bool _automaticTimeZoneEnabled;
+    _Bool _hasHomeButton;
     _Bool _restoring;
     _Bool _backupEnabled;
     _Bool _locationServicesOptIn;
@@ -49,6 +50,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property NSNumber *hasTransferrableTelephonyPlan; // @synthesize hasTransferrableTelephonyPlan=_hasTransferrableTelephonyPlan;
 @property(retain) NSNumber *preventSoftwareUpdateDeviceMigration; // @synthesize preventSoftwareUpdateDeviceMigration=_preventSoftwareUpdateDeviceMigration;
 @property(retain) NSNumber *storageCapacity; // @synthesize storageCapacity=_storageCapacity;
@@ -70,6 +72,7 @@
 @property(copy) NSString *backupUUID; // @synthesize backupUUID=_backupUUID;
 @property(copy) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property(getter=isRestoring) _Bool restoring; // @synthesize restoring=_restoring;
+@property _Bool hasHomeButton; // @synthesize hasHomeButton=_hasHomeButton;
 @property(copy) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;
 @property(copy) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property(copy) NSString *firstName; // @synthesize firstName=_firstName;
@@ -83,7 +86,6 @@
 @property _Bool usesSameAccountForiTunes; // @synthesize usesSameAccountForiTunes=_usesSameAccountForiTunes;
 @property(copy) NSString *appleID; // @synthesize appleID=_appleID;
 @property(copy) NSArray *keyboards; // @synthesize keyboards=_keyboards;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

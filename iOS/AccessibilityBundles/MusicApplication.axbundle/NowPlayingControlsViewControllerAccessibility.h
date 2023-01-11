@@ -11,17 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setControlsHidden:(_Bool)arg1 animator:(id)arg2;
 - (id)_axUpNextBadgeValue;
 - (id)_accessibilityLeftbuttonValueString;
-- (id)_accessibilityLeftButtonLabelString;
-- (id)_accessibilityPlayPauseButtonString;
 - (void)_axMediaRemoteCommandChanged:(id)arg1;
 - (void)_axLikedStateCommandChanged:(id)arg1;
 - (void)_axAudioRouteNameCommandChanged:(id)arg1;
 - (void)viewDidLoad;
 - (id)_axLikedBannedValueForState:(long long)arg1;
 - (_Bool)accessibilityPerformEscape;
-- (id)_axTrackList;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)axSetLikedStateNotificationRegistered:(_Bool)arg1;
 - (_Bool)axLikedStateNotificationRegistered;

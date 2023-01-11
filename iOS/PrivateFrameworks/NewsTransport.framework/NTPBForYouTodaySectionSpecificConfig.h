@@ -12,16 +12,19 @@
 {
     unsigned long long _cutoffTime;
     unsigned long long _headlinesPerFeedFetchCount;
+    unsigned long long _minimumUpdateInterval;
     unsigned long long _subscriptionsFetchCount;
     int _fetchingBin;
     struct {
         unsigned int cutoffTime:1;
         unsigned int headlinesPerFeedFetchCount:1;
+        unsigned int minimumUpdateInterval:1;
         unsigned int subscriptionsFetchCount:1;
         unsigned int fetchingBin:1;
     } _has;
 }
 
+@property(nonatomic) unsigned long long minimumUpdateInterval; // @synthesize minimumUpdateInterval=_minimumUpdateInterval;
 @property(nonatomic) unsigned long long headlinesPerFeedFetchCount; // @synthesize headlinesPerFeedFetchCount=_headlinesPerFeedFetchCount;
 @property(nonatomic) unsigned long long subscriptionsFetchCount; // @synthesize subscriptionsFetchCount=_subscriptionsFetchCount;
 @property(nonatomic) unsigned long long cutoffTime; // @synthesize cutoffTime=_cutoffTime;
@@ -33,6 +36,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasMinimumUpdateInterval;
 @property(nonatomic) _Bool hasFetchingBin;
 @property(nonatomic) int fetchingBin; // @synthesize fetchingBin=_fetchingBin;
 @property(nonatomic) _Bool hasHeadlinesPerFeedFetchCount;

@@ -11,8 +11,8 @@
     NSArray *_texs;
 }
 
-@property(retain, nonatomic) NSArray *texs; // @synthesize texs=_texs;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *texs; // @synthesize texs=_texs;
 
 @end
 

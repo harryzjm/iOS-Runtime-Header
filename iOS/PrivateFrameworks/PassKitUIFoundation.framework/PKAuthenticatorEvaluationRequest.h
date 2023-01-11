@@ -11,8 +11,9 @@
 @interface PKAuthenticatorEvaluationRequest : NSObject
 {
     _Bool _useStockAuthInterface;
+    _Bool _hasInitialAuthenticatorState;
     _Bool _assumeUserIntentAvailable;
-    long long _authenticatorPolicy;
+    long long _policy;
     NSString *_reason;
     NSString *_processName;
     NSNumber *_processIdentifier;
@@ -22,9 +23,13 @@
     struct __SecAccessControl *_accessControlRef;
     NSString *_physicalButtonTitle;
     NSString *_passcodeTitle;
+    unsigned long long _initialAuthenticatorState;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool assumeUserIntentAvailable; // @synthesize assumeUserIntentAvailable=_assumeUserIntentAvailable;
+@property(nonatomic) unsigned long long initialAuthenticatorState; // @synthesize initialAuthenticatorState=_initialAuthenticatorState;
+@property(nonatomic) _Bool hasInitialAuthenticatorState; // @synthesize hasInitialAuthenticatorState=_hasInitialAuthenticatorState;
 @property(copy, nonatomic) NSString *passcodeTitle; // @synthesize passcodeTitle=_passcodeTitle;
 @property(copy, nonatomic) NSString *physicalButtonTitle; // @synthesize physicalButtonTitle=_physicalButtonTitle;
 @property(nonatomic) _Bool useStockAuthInterface; // @synthesize useStockAuthInterface=_useStockAuthInterface;
@@ -35,8 +40,7 @@
 @property(copy, nonatomic) NSNumber *processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property(copy, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property(copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
-@property(readonly, nonatomic) long long authenticatorPolicy; // @synthesize authenticatorPolicy=_authenticatorPolicy;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) long long policy; // @synthesize policy=_policy;
 - (void)dealloc;
 - (id)initWithPolicy:(long long)arg1;
 - (id)init;

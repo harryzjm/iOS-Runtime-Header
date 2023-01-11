@@ -19,16 +19,17 @@
     id _decodedRepresentation;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id decodedRepresentation; // @synthesize decodedRepresentation=_decodedRepresentation;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) unsigned long long length;
+- (void)_replaceFileURL:(id)arg1;
 - (void)encodeToXPCDictionary:(id)arg1;
 - (void)dealloc;
-- (id)initWithXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithDecodedRepresentation:(id)arg1;
 - (id)initWithFileURL:(id)arg1;
 - (id)initWithData:(id)arg1;

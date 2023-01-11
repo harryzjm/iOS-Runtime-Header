@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTemplateComplicationDisplay-Protocol.h>
 
-@class CLKComplicationTemplate, CLKDevice, NSDate, NSString, NTKDigitalTimeLabel, UIColor;
+@class CLKComplicationTemplate, CLKDevice, NSDate, NSString, NTKDigitalTimeLabel, UIColor, UIFont;
 @protocol NTKComplicationDisplayObserver;
 
 @interface NTKDigitalTimeComplicationView : UIView <NTKComplicationDisplay, NTKTemplateComplicationDisplay>
@@ -24,18 +24,19 @@
 
 + (_Bool)supportsComplicationFamily:(long long)arg1;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
 @property(retain, nonatomic) CLKComplicationTemplate *template; // @synthesize template=_template;
 @property(retain, nonatomic) NTKDigitalTimeLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
-- (void).cxx_destruct;
 - (void)updateDate;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
 - (unsigned long long)timelineAnimationFadeTypeOverride;
 - (id)complicationTemplate;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
+@property(retain, nonatomic) UIFont *font;
 @property(retain, nonatomic) UIColor *textColor;
 - (void)setOverrideDate:(id)arg1;
 - (void)timeOffsetChanged;

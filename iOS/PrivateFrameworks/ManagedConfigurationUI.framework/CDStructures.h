@@ -25,15 +25,3 @@ struct CGSize {
     double height;
 };
 
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int installedThisLaunch:1;
-    unsigned int profileSuggestsReboot:1;
-} CDStruct_8422b130;
-

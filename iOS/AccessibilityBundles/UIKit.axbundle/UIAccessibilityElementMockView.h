@@ -16,13 +16,15 @@
     UIView *_view;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(nonatomic) long long subviewIndex; // @synthesize subviewIndex=_subviewIndex;
 @property(nonatomic) __weak id <UIAccessibilityElementMockViewDelegateProtocol> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)canBecomeFocused;
 - (unsigned long long)_accessibilityPositionInDirection:(long long)arg1 offset:(unsigned long long)arg2 forPosition:(unsigned long long)arg3;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
+- (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (_Bool)_accessibilityIsSpeakThisElement;
@@ -69,11 +71,13 @@
 - (id)accessibilityValue;
 - (id)accessibilityIdentifier;
 - (id)accessibilityIdentification;
+- (unsigned long long)_accessibilityAutomationType;
 - (struct _NSRange)accessibilityRowRange;
 - (id)accessibilityLanguage;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (void)revalidate;
+- (id)_accessibilityUserTestingProxyView;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2;
 - (_Bool)accessibilityScroll:(long long)arg1;

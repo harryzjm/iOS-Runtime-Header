@@ -4,34 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iTunesCloud/ICRadioContentReferenceContainable-Protocol.h>
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface ICRadioLibraryTrackContentReference <NSCopying, NSSecureCoding>
+@interface ICRadioLibraryTrackContentReference <ICRadioContentReferenceContainable, NSCopying, NSSecureCoding>
 {
+    NSString *_containerID;
     NSString *_albumArtistName;
     NSString *_albumName;
     NSString *_artistName;
     NSString *_composerName;
     NSString *_copyright;
-    NSString *_genreName;
-    NSString *_kind;
-    NSString *_name;
     NSNumber *_discCount;
     NSNumber *_discNumber;
     NSNumber *_fileSize;
+    NSString *_genreName;
     NSNumber *_compilation;
     NSNumber *_duration;
+    NSString *_kind;
+    NSString *_name;
     NSNumber *_storeAdamIdentifier;
     NSNumber *_storeCloudIdentifier;
     NSNumber *_trackCount;
     NSNumber *_trackNumber;
     NSNumber *_year;
+    NSString *_universalCloudLibraryID;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *universalCloudLibraryID; // @synthesize universalCloudLibraryID=_universalCloudLibraryID;
 @property(copy, nonatomic) NSNumber *year; // @synthesize year=_year;
 @property(copy, nonatomic) NSNumber *trackNumber; // @synthesize trackNumber=_trackNumber;
 @property(copy, nonatomic) NSNumber *trackCount; // @synthesize trackCount=_trackCount;
@@ -50,12 +55,19 @@
 @property(copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
 @property(copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property(copy, nonatomic) NSString *albumArtistName; // @synthesize albumArtistName=_albumArtistName;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)rawContentDictionary;
 - (id)matchDictionary;
 - (long long)contentType;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

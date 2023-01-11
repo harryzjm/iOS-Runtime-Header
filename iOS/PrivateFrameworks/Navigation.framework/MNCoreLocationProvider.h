@@ -10,7 +10,7 @@
 #import <Navigation/CLLocationManagerVehicleDelegate-Protocol.h>
 #import <Navigation/MNLocationProvider-Protocol.h>
 
-@class CLLocationManager, NSBundle, NSLock, NSRunLoop, NSString;
+@class CLLocationManager, MNLocationProviderCLParameters, NSBundle, NSLock, NSRunLoop, NSString;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
     NSLock *_authorizationLock;
     _Bool _alternate;
     CLLocationManager *_clLocationManager;
+    MNLocationProviderCLParameters *_clParameters;
     id <MNLocationProviderDelegate> _delegate;
     _Bool _locationServicesPreferencesDialogEnabled;
     int _authorizationStatus;
+    _Bool _coarseModeEnabled;
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
     CDUnknownBlockType _authorizationRequestBlock;
@@ -32,15 +34,16 @@ __attribute__((visibility("hidden")))
     _Bool _updatingLocations;
 }
 
-@property(nonatomic) _Bool updatingLocations; // @synthesize updatingLocations=_updatingLocations;
-@property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-@property(nonatomic) long long activityType;
+@property(nonatomic) _Bool updatingLocations; // @synthesize updatingLocations=_updatingLocations;
+@property(readonly, nonatomic) _Bool coarseModeEnabled; // @synthesize coarseModeEnabled=_coarseModeEnabled;
+@property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(id)arg2;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)requestWhenInUseAuthorization;
 @property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
@@ -73,8 +76,10 @@ __attribute__((visibility("hidden")))
 - (void)startUpdatingLocation;
 - (void)_updateAuthorizationStatus;
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
+- (void)_updateForCLParameters:(id)arg1;
 @property(readonly, nonatomic) CLLocationManager *_clLocationManager;
 - (void)_createCLLocationManager;
+- (void)setCLParameters:(id)arg1;
 - (void)_sharedInit;
 - (void)dealloc;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1;

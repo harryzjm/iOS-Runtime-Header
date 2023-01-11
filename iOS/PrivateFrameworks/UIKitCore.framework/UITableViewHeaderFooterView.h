@@ -7,8 +7,8 @@
 #import <UIKitCore/UITableConstantsHeaderFooterProviding-Protocol.h>
 #import <UIKitCore/UITableViewSubviewReusing-Protocol.h>
 
-@class NSString, UIImage, UILabel, UITableView, UIView, _UITableViewHeaderFooterViewLabel;
-@protocol UITable, UITableConstants;
+@class NSString, UIBackgroundConfiguration, UIImage, UILabel, UITableView, UIView, UIViewConfigurationState, _UIBackgroundViewConfiguration, _UISystemBackgroundView, _UITableViewHeaderFooterViewLabel;
+@protocol UIContentConfiguration, UITable, UITableConstants, _UIContentViewConfiguration, _UIContentViewInternal;
 
 @interface UITableViewHeaderFooterView <UITableConstantsHeaderFooterProviding, UITableViewSubviewReusing>
 {
@@ -24,6 +24,11 @@
     UIView *_contentView;
     double _leadingMarginWidth;
     double _trailingMarginWidth;
+    NSString *_contentViewConfigurationIdentifier;
+    id <_UIContentViewInternal> _viewForContentConfiguration;
+    CDUnknownBlockType _contentViewConfigurationProvider;
+    _UISystemBackgroundView *_systemBackgroundView;
+    CDUnknownBlockType _backgroundViewConfigurationProvider;
     id <UITableConstants> _constants;
     struct {
         unsigned int isHeader:1;
@@ -36,6 +41,12 @@
         unsigned int didSetupDefaults:1;
         unsigned int insetsContentViewsToSafeArea:1;
         unsigned int tableViewHasBeenExplicitlySet:1;
+        unsigned int hasCustomBackgroundView:1;
+        unsigned int hasCustomBackgroundViewConfigurationProvider:1;
+        unsigned int hasCustomBackgroundViewConfiguration:1;
+        unsigned int needsConfigurationStateUpdate:1;
+        unsigned int automaticallyUpdatesContentViewConfiguration:1;
+        unsigned int automaticallyUpdatesBackgroundViewConfiguration:1;
     } _headerFooterFlags;
     id <UITable> _table;
 }
@@ -46,13 +57,16 @@
 + (id)_defaultTextColorForTableViewStyle:(long long)arg1 isSectionHeader:(_Bool)arg2;
 + (id)_defaultFontForHeaderFooterView:(id)arg1;
 + (id)_defaultFontForTableViewStyle:(long long)arg1 isSectionHeader:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(nonatomic) double maxTitleWidth; // @synthesize maxTitleWidth=_maxTitleWidth;
 @property(nonatomic) __weak id <UITable> table; // @synthesize table=_table;
 @property(copy, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-- (void).cxx_destruct;
+- (id)_customViewForDefaultBackgroundAppearance;
+- (_Bool)_isSourceListOrMacIdiom;
 @property(retain, nonatomic, getter=_constants, setter=_setConstants:) id <UITableConstants> constants;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)_isTransparentFocusRegion;
 @property(nonatomic, getter=_isTopHeader, setter=_setTopHeader:) _Bool topHeader;
 @property(nonatomic, getter=_stripPadding, setter=_setStripPadding:) _Bool stripPadding;
@@ -63,13 +77,16 @@
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (struct CGRect)_updatedContentViewFrameForTargetWidth:(double)arg1;
 - (_Bool)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)layoutMarginsDidChange;
 - (void)setBackgroundColor:(id)arg1;
+- (void)setUserInteractionEnabled:(_Bool)arg1;
 @property(nonatomic) _Bool floating;
 - (_Bool)_isFloating;
 @property(nonatomic) long long tableViewStyle;
 - (void)_setTableViewStyle:(long long)arg1 updateFrame:(_Bool)arg2;
+- (_Bool)_tintColorAffectsBackgroundColor;
 - (void)_updateBackgroundView;
 - (struct UIEdgeInsets)_insetsToContentRect;
 - (struct UIEdgeInsets)_insetsToBounds;
@@ -86,6 +103,28 @@
 @property(retain, nonatomic) UIView *backgroundView;
 - (void)_setupBackgroundView;
 - (void)_updateBackgroundImage;
+- (void)updateConfigurationUsingState:(id)arg1;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
+- (void)_layoutSystemBackgroundView;
+- (void)_performConfigurationStateUpdate;
+- (void)_setNeedsConfigurationStateUpdate;
+- (void)setNeedsUpdateConfiguration;
+- (id)_configurationState;
+@property(readonly, nonatomic) UIViewConfigurationState *configurationState;
+@property(readonly, nonatomic) unsigned long long _viewConfigurationState;
+- (void)_updateBackgroundViewConfigurationForState:(id)arg1;
+- (void)_resetBackgroundViewConfiguration;
+- (void)_resetBackgroundViewsAndColor;
+- (void)_updateDefaultBackgroundAppearance;
+- (_Bool)_usingBackgroundConfigurationOrDefaultBackgroundConfiguration;
+- (id)_defaultBackgroundConfiguration;
+@property(copy, nonatomic, getter=_backgroundViewConfigurationProvider, setter=_setBackgroundViewConfigurationProvider:) CDUnknownBlockType _backgroundViewConfigurationProvider;
+@property(nonatomic) _Bool automaticallyUpdatesBackgroundConfiguration;
+@property(nonatomic, getter=_automaticallyUpdatesBackgroundViewConfiguration, setter=_setAutomaticallyUpdatesBackgroundViewConfiguration:) _Bool _automaticallyUpdatesBackgroundViewConfiguration;
+@property(copy, nonatomic, getter=_backgroundViewConfiguration, setter=_setBackgroundViewConfiguration:) _UIBackgroundViewConfiguration *_backgroundViewConfiguration;
+@property(copy, nonatomic) UIBackgroundConfiguration *backgroundConfiguration;
+- (void)_applyBackgroundViewConfiguration:(id)arg1 withState:(id)arg2;
+- (_Bool)_usingBackgroundViewConfiguration;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 stripPaddingForAbuttingView:(_Bool)arg2 isTopHeader:(_Bool)arg3;
 - (_Bool)_useDetailText;
@@ -111,9 +150,19 @@
 @property(nonatomic) __weak UITableView *tableView;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)_defaultTextColor;
-- (void)setContentView:(id)arg1;
+- (void)_resetContentViews;
+- (void)_updateContentViewConfigurationForState:(id)arg1;
+@property(copy, nonatomic, getter=_contentViewConfigurationProvider, setter=_setContentViewConfigurationProvider:) CDUnknownBlockType _contentViewConfigurationProvider;
+@property(nonatomic, getter=_automaticallyUpdatesContentViewConfiguration, setter=_setAutomaticallyUpdatesContentViewConfiguration:) _Bool _automaticallyUpdatesContentViewConfiguration;
+@property(nonatomic) _Bool automaticallyUpdatesContentConfiguration;
+@property(copy, nonatomic, getter=_contentViewConfiguration, setter=_setContentViewConfiguration:) id <_UIContentViewConfiguration> _contentViewConfiguration;
+@property(copy, nonatomic) id <UIContentConfiguration> contentConfiguration;
+- (void)_applyContentViewConfiguration:(id)arg1 withState:(id)arg2 usingSPI:(_Bool)arg3;
+- (id)defaultContentConfiguration;
+- (void)_setContentView:(id)arg1 insertAtBack:(_Bool)arg2;
 - (void)prepareForReuse;
 - (void)encodeWithCoder:(id)arg1;
+- (void)_populateArchivedSubviews:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;

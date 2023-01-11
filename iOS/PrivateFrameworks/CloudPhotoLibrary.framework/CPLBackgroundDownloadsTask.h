@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSMutableArray, NSObject;
+@class NSArray, NSError, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface CPLBackgroundDownloadsTask
@@ -14,12 +14,15 @@
     _Bool _shouldStop;
     NSError *_badError;
     NSError *_stopError;
+    _Bool _prioritizeNonDerivatives;
     _Bool _hasResetQueue;
     unsigned long long _successfullyDownloadedResourcesCount;
     unsigned long long _failedDownloadedResourcesCount;
     unsigned long long _total;
     unsigned long long _activeTransferTaskCount;
     unsigned long long _transportTaskCount;
+    NSArray *_intentsToDownload;
+    unsigned long long _currentIntentIndex;
 }
 
 - (void).cxx_destruct;
@@ -35,6 +38,7 @@
 - (void)_completeBackgroundDownloadForResource:(id)arg1 error:(id)arg2 withTransaction:(id)arg3;
 - (_Bool)_isErrorCountingForARetry:(id)arg1;
 - (void)_launchNecessaryDownloadTasksWithTransaction:(id)arg1;
+- (void)_getResourceTypesToDownload:(const unsigned long long **)arg1;
 - (void)_finishTaskLocked;
 - (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 

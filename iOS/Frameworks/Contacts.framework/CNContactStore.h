@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContainerCache, CNiOSAddressBook, CNiOSAddressBookDataMapper, NSData;
+@class CNContainerCache, CNResult, CNiOSAddressBook, CNiOSAddressBookDataMapper, NSData;
 
 @interface CNContactStore : NSObject
 {
@@ -14,7 +14,6 @@
 }
 
 + (_Bool)isAccessRestrictedForEntityType:(long long)arg1;
-+ (id)allLabelsForPropertyWithKey:(id)arg1;
 + (id)standardLabelsForPropertyWithKey:(id)arg1 options:(unsigned long long)arg2;
 + (id)standardLabelsForPropertyWithKey:(id)arg1;
 + (long long)authorizationStatusForEntityType:(long long)arg1;
@@ -27,13 +26,13 @@
 + (id)storeWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 + (id)storeWithOptions:(unsigned long long)arg1;
 + (void)initialize;
++ (id)storeWithDelegateInfo:(id)arg1;
 + (id)storeForFamilyMember:(id)arg1;
 + (_Bool)eraseAllDataAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)eraseAllDataAtLocationWithName:(id)arg1 error:(id *)arg2;
 + (_Bool)isXPCDataMapperStore:(id)arg1;
 + (id)contactStoreForPublicAddressBook:(void *)arg1;
 + (id)_contactStoreForPublicAddressBook:(void *)arg1;
-@property(retain, nonatomic) CNContainerCache *containerCache; // @synthesize containerCache=_containerCache;
 - (void).cxx_destruct;
 - (_Bool)hasAccountFirstSyncCompleted;
 - (id)authorizedKeysForContactKeys:(id)arg1;
@@ -48,6 +47,7 @@
 - (_Bool)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)registerChangeHistoryClientIdentifier:(id)arg1 forContainerIdentifier:(id)arg2 error:(id *)arg3;
 - (_Bool)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
+@property(readonly, copy, nonatomic) CNResult *currentHistoryAnchor;
 @property(readonly, copy, nonatomic) NSData *currentHistoryToken;
 - (id)contactIdentifierWithMatchingDictionary:(id)arg1;
 - (id)contactWithMatchingDictionary:(id)arg1 keysToFetch:(id)arg2;
@@ -55,10 +55,6 @@
 - (id)descriptorForRequiredKeysForMatchingDictionary;
 - (id)userActivityUserInfoForContact:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
-- (void)setLegacyTetheredSyncComputerAnchor:(id)arg1;
-- (id)legacyTetheredSyncComputerAnchor;
-- (void)setLegacyTetheredSyncDeviceAnchor:(id)arg1;
-- (id)legacyTetheredSyncDeviceAnchor;
 - (id)sectionListOffsetsForSortOrder:(long long)arg1 error:(id *)arg2;
 - (_Bool)setDefaultAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
@@ -99,7 +95,6 @@
 - (id)unifiedMeContactMatchingEmailAddresses:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)_crossPlatformUnifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (id)_ios_meContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
-- (id)_unifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (id)unifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (id)_ios_meContactIdentifierWithError:(id *)arg1;
 - (id)meContactIdentifiers:(id *)arg1;

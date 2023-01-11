@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSNumber, NSURL, PLAssetsdClient, PLAtomicObject, PLChangeHandlingContainer, PLConstraintsDirector, PLEmailAddressManager, PLIndicatorFileCoordinator, PLLazyObject, PLLibraryServicesManager, PLManagedObjectLookupItemCache, PLPersistentContainer, PLPersonInfoManager, PLPhotoAnalysisServiceClient, PLPhotoKitVariationCache, PLPhotoLibraryBundleController, PLPhotoLibraryPathManager;
+#import <PhotoLibraryServices/PLFileSystemVolumeUnmountObserver-Protocol.h>
 
-@interface PLPhotoLibraryBundle : NSObject
+@class NSArray, NSError, NSNumber, NSURL, PFTimeZoneLookup, PLAssetsdClient, PLAtomicObject, PLChangeHandlingContainer, PLClientSandboxExtensionCache, PLConstraintsDirector, PLEmailAddressManager, PLFileSystemVolumeUnmountMonitor, PLIndicatorFileCoordinator, PLLazyObject, PLLibraryServicesManager, PLManagedObjectLookupItemCache, PLPersistentContainer, PLPersonInfoManager, PLPhotoAnalysisServiceClient, PLPhotoKitVariationCache, PLPhotoLibraryBundleController, PLPhotoLibraryPathManager;
+
+@interface PLPhotoLibraryBundle : NSObject <PLFileSystemVolumeUnmountObserver>
 {
     NSURL *_libraryURL;
     struct os_unfair_lock_s _lock;
@@ -27,16 +29,21 @@
     PLLazyObject *_lazyBoundAssetsdServicesTable;
     PLLazyObject *_lazyPhotoAnalysisServiceClient;
     PLLazyObject *_lazyConstraintsDirector;
+    PLLazyObject *_lazyTimeZoneLookup;
     NSNumber *_sqliteErrorIndicatorFileExists;
     struct os_unfair_lock_s _sqliteErrorIndicatorLock;
+    PLFileSystemVolumeUnmountMonitor *_volumeUnmountMonitor;
     PLPhotoLibraryPathManager *_pathManager;
     PLPhotoLibraryBundleController *_bundleController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak PLPhotoLibraryBundleController *bundleController; // @synthesize bundleController=_bundleController;
 @property(readonly) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
 @property(readonly, copy) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
-- (void).cxx_destruct;
+- (void)setPhotoStreamEnabled:(_Bool)arg1;
+- (void)setSharedAlbumEnabled:(_Bool)arg1;
+- (void)setCloudPhotoLibraryEnabled:(_Bool)arg1;
 - (void)unbindAssetsdService:(id)arg1;
 - (_Bool)bindAssetsdService:(id)arg1 error:(id *)arg2;
 @property(readonly) NSArray *boundAssetsdServices;
@@ -44,17 +51,26 @@
 - (id)newLibraryServicesManager;
 - (id)newChangePublisher;
 - (id)newAssetsdClient;
+- (void)volumeWillUnmount:(id)arg1;
 @property(readonly) PLConstraintsDirector *constraintsDirector;
 @property(readonly) PLPhotoAnalysisServiceClient *photoAnalysisServiceClient;
 - (id)boundAssetsdServicesTable;
 @property(readonly) PLLibraryServicesManager *libraryServicesManager;
+- (void)touch;
 - (_Bool)sqliteErrorIndicatorFileExists;
 - (void)shutdownWithReason:(id)arg1;
 - (void)close;
+- (void)_invalidateClientSandboxExtensionCache;
+- (void)_invalidatePersistentContainer;
 - (void)_invalidateChangeHandlingContainer;
+- (void)_invalidatePhotoAnalysisServiceClient;
+- (void)distributeChangesSinceLastCheckpoint;
 - (void)initializeChangeHandling;
 - (id)newChangeHandlingContainer;
 @property(readonly) PLChangeHandlingContainer *changeHandlingContainer;
+- (void)resetClientSandboxExtensionCache;
+@property(readonly) PLClientSandboxExtensionCache *clientSandboxExtensionCache;
+@property(readonly) PFTimeZoneLookup *timeZoneLookup;
 @property(readonly) PLIndicatorFileCoordinator *indicatorFileCoordinator;
 @property(readonly) PLEmailAddressManager *emailAddressManager;
 @property(readonly) PLPersonInfoManager *personInfoManager;
@@ -63,7 +79,9 @@
 @property(readonly) PLManagedObjectLookupItemCache *uniformTypeIdentiferCache;
 @property(readonly) PLPhotoKitVariationCache *variationCache;
 @property(readonly) PLPersistentContainer *persistentContainer;
+@property(readonly, copy) NSError *shutdownReason;
 - (id)description;
+- (void)dealloc;
 - (id)initWithLibraryURL:(id)arg1 bundleController:(id)arg2;
 - (_Bool)registerPLPhotoLibrary:(id)arg1;
 

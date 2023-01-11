@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDLocationDirectedSearchParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDNearestTransitParameters *_nearestTransitParameters;
     GEOLatLng *_searchLocation;
     NSString *_searchString;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _maxResults;
     int _searchType;
     int _sortOrder;
@@ -32,14 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_searchLocation:1;
         unsigned int read_searchString:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_nearestTransitParameters:1;
-        unsigned int wrote_searchLocation:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_searchType:1;
-        unsigned int wrote_sortOrder:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -55,30 +50,31 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDNearestTransitParameters *nearestTransitParameters;
 @property(readonly, nonatomic) _Bool hasNearestTransitParameters;
-- (void)_readNearestTransitParameters;
 - (int)StringAsSearchType:(id)arg1;
 - (id)searchTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasSearchType;
 @property(nonatomic) int searchType;
 @property(retain, nonatomic) GEOLatLng *searchLocation;
 @property(readonly, nonatomic) _Bool hasSearchLocation;
-- (void)_readSearchLocation;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(retain, nonatomic) NSString *searchString;
 @property(readonly, nonatomic) _Bool hasSearchString;
-- (void)_readSearchString;
 @property(nonatomic) _Bool hasMaxResults;
 @property(nonatomic) unsigned int maxResults;
 - (int)StringAsSortOrder:(id)arg1;
 - (id)sortOrderAsString:(int)arg1;
 @property(nonatomic) _Bool hasSortOrder;
 @property(nonatomic) int sortOrder;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 
 @end

@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 
-@class NSString, PXForYouSuggestionsAssetsDataSource, PXSuggestionsDataSource, PXSuggestionsDataSourceManager;
+@class NSDictionary, NSString, PXForYouSuggestionsAssetsDataSource, PXPhotosDataSource, PXSuggestionsDataSource, PXSuggestionsDataSourceManager;
 @protocol PXDisplaySuggestion;
 
 @interface PXForYouSuggestionAssetsDataSourceManager <PXSectionedDataSourceManagerObserver, PXPhotoLibraryUIChangeObserver>
@@ -17,12 +17,14 @@
     PXSuggestionsDataSource *_suggestionsDataSource;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXSuggestionsDataSource *suggestionsDataSource; // @synthesize suggestionsDataSource=_suggestionsDataSource;
 @property(readonly, nonatomic) PXSuggestionsDataSourceManager *suggestionsDataSourceManager; // @synthesize suggestionsDataSourceManager=_suggestionsDataSourceManager;
 @property(retain, nonatomic) id <PXDisplaySuggestion> displayOriginalSuggestion; // @synthesize displayOriginalSuggestion=_displayOriginalSuggestion;
-- (void).cxx_destruct;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+@property(readonly, nonatomic) NSDictionary *snapshotAssetToSuggestionMap;
+@property(readonly, nonatomic) PXPhotosDataSource *photosDataSource;
 - (id)createInitialDataSource;
 - (id)initWithSuggestionsDataSourceManager:(id)arg1;
 

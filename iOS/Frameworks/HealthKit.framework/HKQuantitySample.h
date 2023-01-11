@@ -21,9 +21,10 @@
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 metadata:(id)arg5;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setCodableQuantitySample:) HDCodableQuantitySample *codableQuantitySample; // @synthesize codableQuantitySample=_codableQuantitySample;
 @property(readonly) long long count; // @synthesize count=_count;
-- (void).cxx_destruct;
+- (long long)_compareFreezeStateWithSample:(id)arg1;
 - (void)_setCount:(long long)arg1;
 - (void)_setFreezing;
 @property(nonatomic, getter=_frozen, setter=_setFrozen:) _Bool frozen;
@@ -33,7 +34,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)_valueDescription;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (_Bool)_shouldNotifyOnInsert;
 - (id)_init;
 

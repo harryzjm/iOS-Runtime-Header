@@ -11,13 +11,14 @@
 @class NSString;
 @protocol PSYSyncSessionObserverInterface;
 
+__attribute__((visibility("hidden")))
 @interface PSYSyncSessionObserverExportedObject : NSObject <PSYSyncSessionObserverInterface>
 {
     id <PSYSyncSessionObserverInterface> _delegate;
 }
 
-@property(nonatomic) __weak id <PSYSyncSessionObserverInterface> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PSYSyncSessionObserverInterface> delegate; // @synthesize delegate=_delegate;
 - (oneway void)invalidateSyncSession:(id)arg1;
 - (oneway void)updateSyncSession:(id)arg1;
 - (oneway void)syncSessionWillStart:(id)arg1;

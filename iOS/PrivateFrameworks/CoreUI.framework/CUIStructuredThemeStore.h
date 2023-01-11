@@ -9,7 +9,7 @@
 #import <CoreUI/CUIStructuredThemeStorage-Protocol.h>
 #import <CoreUI/CUIStructuredThemeStorage2-Protocol.h>
 
-@class CUICommonAssetStorage, NSCache, NSMutableDictionary, NSString;
+@class CUICommonAssetStorage, NSCache, NSDictionary, NSMutableDictionary, NSSet, NSString;
 
 @interface CUIStructuredThemeStore : NSObject <CUIStructuredThemeStorage, CUIStructuredThemeStorage2>
 {
@@ -21,9 +21,23 @@
     NSString *_bundleID;
     NSCache *_namedRenditionKeyCache;
     CDUnknownFunctionPointerType _attributePresent;
+    unsigned int _mainBundle:1;
+    NSDictionary *_aliasDictionary;
+    NSSet *_legacyFlippableSet;
 }
 
+@property(readonly, copy) NSString *debugDescription;
+- (id)store;
+- (unsigned long long)themeIndex;
+- (void)setThemeIndex:(unsigned long long)arg1;
+- (void)setBundleID:(id)arg1;
+- (id)bundleID;
+- (_Bool)imageNamedShouldFlip:(id)arg1;
+- (id)mappedAliases;
+- (id)aliasForName:(id)arg1;
 - (void)clearRenditionCache;
+- (_Bool)caAllowSubimageOfImage:(struct CGImage *)arg1;
+@property _Bool mainBundle;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (unsigned short)localizationIdentifierForName:(id)arg1;
 - (id)localizations;
@@ -32,22 +46,20 @@
 - (unsigned short)appearanceIdentifierForName:(id)arg1;
 - (id)catalogGlobals;
 - (id)imagesWithName:(id)arg1;
+- (_Bool)containsLookupForName:(id)arg1;
 - (id)allImageNames;
 - (id)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1 cursorHotSpot:(struct CGPoint *)arg2;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1;
-- (_Bool)_canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1 isFPO:(_Bool *)arg2 lookForSubstitutions:(_Bool)arg3;
-- (_Bool)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1 isFPO:(_Bool *)arg2;
 - (_Bool)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1 usingKeySignature:(id)arg2;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1;
-- (id)lookupAssetForKey:(struct _renditionkeytoken *)arg1;
+- (id)lookupAssetForKey:(const struct _renditionkeytoken *)arg1;
 - (id)debugDescriptionForKeyList:(const struct _renditionkeytoken *)arg1;
 - (const struct _renditionkeyfmt *)renditionKeyFormat;
-- (void)_getKeyForAssetClosestToKey:(struct _renditionkeytoken *)arg1 foundAsset:(_Bool *)arg2;
-- (id)convertRenditionKeyToKeyData:(struct _renditionkeytoken *)arg1;
-- (id)_newRenditionKeyDataFromKey:(struct _renditionkeytoken *)arg1;
-- (_Bool)_formatStorageKeyArrayBytes:(void *)arg1 length:(unsigned long long)arg2 fromKey:(struct _renditionkeytoken *)arg3;
+- (id)convertRenditionKeyToKeyData:(const struct _renditionkeytoken *)arg1;
+- (id)_newRenditionKeyDataFromKey:(const struct _renditionkeytoken *)arg1;
+- (_Bool)_formatStorageKeyArrayBytes:(void *)arg1 length:(unsigned long long)arg2 fromKey:(const struct _renditionkeytoken *)arg3;
 - (void)_updateKeyWithCompatibilityMapping:(struct _renditionkeytoken *)arg1;
 - (double)fontSizeForFontSizeType:(id)arg1;
 - (_Bool)getFontName:(id *)arg1 baselineOffset:(double *)arg2 forFontType:(id)arg3;
@@ -63,19 +75,16 @@
 - (id)initWithURL:(id)arg1;
 - (id)initWithPath:(id)arg1;
 - (void)_commonInit;
-- (_Bool)assetExistsForKey:(struct _renditionkeytoken *)arg1;
+- (_Bool)assetExistsForKey:(const struct _renditionkeytoken *)arg1;
 - (id)keySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (id)copyLookupKeySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (id)copyKeySignatureForKey:(const struct _renditionkeytoken *)arg1 withBytesNoCopy:(char *)arg2 length:(unsigned long long)arg3;
 - (id)baseGradationKeySignatureForKey:(const struct _renditionkeytoken *)arg1;
+- (const struct _renditionkeyattributeindex *)keyAttributeIndex;
 - (const struct _renditionkeyfmt *)keyFormat;
 - (_Bool)usesCUISystemThemeRenditionKey;
 - (long long)maximumRenditionKeyTokenCount;
 - (unsigned long long)colorSpaceID;
-@property(readonly, copy) NSString *debugDescription;
-- (id)store;
-@property(nonatomic) unsigned long long themeIndex;
-- (id)bundleID;
 
 // Remaining properties
 @property(readonly, copy) NSString *description;

@@ -91,18 +91,6 @@ struct CharacterStateSpecs {
     float hourElbowBend;
 };
 
-struct NSArray {
-    Class _field1;
-};
-
-struct NSNumber {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
-};
-
 struct NTKAstronomyFaceViewAnimationPose {
     float _field1;
     float _field2;
@@ -161,6 +149,17 @@ struct jetsam_info {
     long long currentKB;
     long long maxLifetimeKB;
     long long maxIntervalKB;
+};
+
+struct mach_header_64 {
+    unsigned int _field1;
+    int _field2;
+    int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
 };
 
 struct os_unfair_lock_s {
@@ -231,6 +230,12 @@ typedef struct {
     float _field2;
     float _field3;
 } CDStruct_869f9c67;
+
+typedef struct {
+    long long majorVersion;
+    long long minorVersion;
+    long long patchVersion;
+} CDStruct_f6aba300;
 
 typedef struct {
     _Bool smallTicksMatchingMinutes;

@@ -31,6 +31,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)applicationInfoForAuditToken:(id)arg1;
 - (id)applicationInfoForBundleIdentifier:(id)arg1;
 - (void)applicationsDidFailToUninstall:(id)arg1;
 - (void)applicationsWillUninstall:(id)arg1;
@@ -41,6 +42,7 @@
 - (void)applicationInstallsDidResume:(id)arg1;
 - (void)applicationInstallsDidPause:(id)arg1;
 - (void)applicationInstallsArePrioritized:(id)arg1 arePaused:(id)arg2;
+- (void)applicationsDidChangePersonas:(id)arg1;
 - (void)deviceManagementPolicyDidChange:(id)arg1;
 - (void)networkUsageChanged:(_Bool)arg1;
 - (void)applicationStateDidChange:(id)arg1;

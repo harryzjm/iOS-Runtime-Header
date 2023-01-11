@@ -52,9 +52,9 @@ struct proc_taskinfo {
 struct processor_basic_info {
     int _field1;
     int _field2;
-    unsigned int _field3;
+    int _field3;
     int _field4;
-    unsigned int _field5;
+    int _field5;
 };
 
 struct processor_cpu_load_info {
@@ -139,13 +139,6 @@ struct vm_statistics64 {
 typedef struct {
     unsigned long long _field1;
     unsigned long long _field2;
-    char *_field3;
-    unsigned long long _field4;
-} CDStruct_0bece6d5;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
 } CDStruct_4bcfbbae;
 
 typedef struct {
@@ -179,5 +172,9 @@ typedef struct {
     void *_field16;
     void *_field17;
     void **_field18;
-} CDStruct_8ec6d642;
+    _Bool _field19;
+    void *_field20;
+    double _field21;
+    double _field22;
+} CDStruct_33f31899;
 

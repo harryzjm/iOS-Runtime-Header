@@ -8,7 +8,7 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLPipelineBufferDescriptorArray, MTLTileRenderPipelineColorAttachmentDescriptorArray, NSString;
+@class MTLPipelineBufferDescriptorArray, MTLTileRenderPipelineColorAttachmentDescriptorArray, NSArray, NSString;
 @protocol MTLFunction;
 
 @interface MTLTileRenderPipelineDescriptor : NSObject <NSCopying>
@@ -21,6 +21,7 @@
 - (void)reset;
 
 // Remaining properties
+@property(copy, nonatomic) NSArray *binaryArchives; // @dynamic binaryArchives;
 @property(readonly) MTLTileRenderPipelineColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
 @property(nonatomic) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;

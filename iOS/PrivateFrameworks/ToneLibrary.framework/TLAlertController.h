@@ -21,6 +21,7 @@
 }
 
 + (_Bool)_shouldStopAlertForUserInterruption:(id)arg1;
++ (long long)_playbackBackEndForAlertType:(long long)arg1 topic:(id)arg2;
 + (long long)_playbackBackEndForAlert:(id)arg1;
 + (id)sharedAlertController;
 - (void).cxx_destruct;
@@ -28,13 +29,14 @@
 - (id)_systemSoundController;
 - (id)_queuePlayerController;
 - (id)_controllerForPlaybackBackEnd:(long long)arg1;
+- (void)preheatForAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_didCompletePlaybackOfAlert:(id)arg1;
 - (void)_didReachTimeoutForAlert:(id)arg1;
-- (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_prepareForPlayingAlert:(id)arg1;
 - (void)handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(_Bool)arg2;
 - (void)updateAudioVolumeDynamicallyForAlert:(id)arg1 toValue:(float)arg2;
-- (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)stopAllAlerts;
 - (void)_assertRunningOnAccessQueue;

@@ -13,9 +13,11 @@
 @interface GEOLogMsgEventUserAction : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_userActionEventKey;
     NSString *_userActionEventValue;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _userActionEventAction;
     int _userActionEventTarget;
     struct {
@@ -23,10 +25,7 @@
         unsigned int has_userActionEventTarget:1;
         unsigned int read_userActionEventKey:1;
         unsigned int read_userActionEventValue:1;
-        unsigned int wrote_userActionEventKey:1;
-        unsigned int wrote_userActionEventValue:1;
-        unsigned int wrote_userActionEventAction:1;
-        unsigned int wrote_userActionEventTarget:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,6 +39,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsUserActionEventAction:(id)arg1;
@@ -52,10 +54,10 @@
 @property(nonatomic) int userActionEventTarget;
 @property(retain, nonatomic) NSString *userActionEventValue;
 @property(readonly, nonatomic) _Bool hasUserActionEventValue;
-- (void)_readUserActionEventValue;
 @property(retain, nonatomic) NSString *userActionEventKey;
 @property(readonly, nonatomic) _Bool hasUserActionEventKey;
-- (void)_readUserActionEventKey;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

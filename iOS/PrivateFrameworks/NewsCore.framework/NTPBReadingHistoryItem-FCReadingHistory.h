@@ -17,35 +17,34 @@
 + (id)readingHistoryItemWithCKRecord:(id)arg1;
 - (void)writeToKeyValuePair:(id)arg1;
 @property(readonly, nonatomic) CKRecord *asCKRecord;
-- (void)setArticleLikingStatus:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long articleLikingStatus;
-- (void)setHasArticleBeenConsumed:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool hasArticleBeenConsumed;
-- (void)setHasArticleBeenMarkedOffensive:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool hasArticleBeenMarkedOffensive;
-- (void)setHasArticleBeenSeen:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool hasArticleBeenSeen;
-- (void)setHasArticleBeenRead:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool hasArticleBeenRead;
-- (void)setFirstSeenAtOfMaxVersionSeen:(id)arg1;
-@property(readonly, copy, nonatomic) NSDate *firstSeenAtOfMaxVersionSeen;
-- (void)setFirstSeenAt:(id)arg1;
-@property(readonly, copy, nonatomic) NSDate *firstSeenAt;
-- (void)setLastVisitedAt:(id)arg1;
-@property(readonly, copy, nonatomic) NSDate *lastVisitedAt;
+@property(nonatomic) unsigned long long articleLikingStatus;
+@property(nonatomic) _Bool hasArticleCompletedListening;
+@property(nonatomic) _Bool hasArticleBeenConsumed;
+@property(nonatomic) _Bool hasArticleBeenMarkedOffensive;
+@property(nonatomic) _Bool hasArticleBeenSeen;
+@property(nonatomic) _Bool hasArticleBeenRead;
+@property(copy, nonatomic) NSDate *firstSeenAtOfMaxVersionSeen;
+@property(copy, nonatomic) NSDate *firstSeenAt;
+@property(copy, nonatomic) NSDate *readingPositionSavedAt;
+@property(copy, nonatomic) NSDate *listeningProgressSavedAt;
+@property(copy, nonatomic) NSDate *lastListenedAt;
+@property(copy, nonatomic) NSDate *lastVisitedAt;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
-@property(readonly, copy, nonatomic) NSString *articleID;
+@property(copy, nonatomic) NSString *articleID;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, copy, nonatomic) NSString *deviceID;
+@property(copy, nonatomic) NSString *deviceID;
 @property(readonly, nonatomic) unsigned long long flags;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) long long maxVersionRead;
-@property(readonly, nonatomic) long long maxVersionSeen;
-@property(readonly, copy, nonatomic) NSString *sourceChannelTagID;
+@property(nonatomic) double listeningProgress;
+@property(nonatomic) long long maxVersionRead;
+@property(nonatomic) long long maxVersionSeen;
+@property(nonatomic) long long readCount;
+@property(copy, nonatomic) NSString *readingPosition;
+@property(copy, nonatomic) NSString *sourceChannelTagID;
 @property(readonly) Class superclass;
 @end
 

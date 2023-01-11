@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
++ (_Bool)canPerformOnSubsetOfSelection;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 + (id)_containedPerformerClasses;
 - (void)_handleActionPick:(id)arg1 forPerformerClass:(Class)arg2;

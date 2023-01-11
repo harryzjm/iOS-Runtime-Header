@@ -14,8 +14,8 @@
 }
 
 + (id)sharedInstance;
-@property(retain) NSXPCListener *anonymousListener; // @synthesize anonymousListener=_anonymousListener;
 - (void).cxx_destruct;
+@property(retain) NSXPCListener *anonymousListener; // @synthesize anonymousListener=_anonymousListener;
 - (void)invalidateTestListeners;
 - (id)sharedAnonymousListener;
 - (id)dedDirectory;
@@ -24,14 +24,6 @@
 - (id)classClusterAPIVersion;
 - (id)machServiceName;
 - (const char *)loggingSubsystem;
-- (id)uniqueDeviceSpecifier;
-- (id)deviceEnclosureColor;
-- (id)deviceColor;
-- (id)platform;
-- (id)deviceClass;
-- (id)deviceProductType;
-- (id)deviceModel;
-- (id)deviceName;
 - (id)errorDomain;
 
 @end

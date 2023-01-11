@@ -42,6 +42,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic, getter=_originalCardData, setter=_setOriginalCardData:) NSData *originalCardData; // @synthesize originalCardData=_originalCardData;
 @property(copy, nonatomic) NSArray *entityProtobufMessages; // @synthesize entityProtobufMessages=_entityProtobufMessages;
 @property(nonatomic) _Bool flexibleSectionOrder; // @synthesize flexibleSectionOrder=_flexibleSectionOrder;
@@ -61,7 +62,8 @@
 @property(copy) NSArray *cardSections; // @synthesize cardSections=_cardSections;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -73,14 +75,11 @@
 - (_Bool)hasType;
 - (void)loadCardSectionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadCardSectionsWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
-- (_Bool)isEqual:(id)arg1;
-- (void)recursiveSetQueryId:(unsigned long long)arg1;
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

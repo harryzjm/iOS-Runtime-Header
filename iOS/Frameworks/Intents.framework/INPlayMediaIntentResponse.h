@@ -31,6 +31,7 @@
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)init;
+- (void)_intents_prepareResponse;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

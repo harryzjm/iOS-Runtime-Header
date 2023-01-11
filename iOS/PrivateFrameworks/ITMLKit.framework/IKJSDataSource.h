@@ -22,12 +22,13 @@
 
 + (id)_titlesByIndexFromValue:(id)arg1;
 + (id)jsExportedProperties;
++ (id)makeDataSource:(id)arg1:(id)arg2:(long long)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableIndexSet *loadedSegmentIndexes; // @synthesize loadedSegmentIndexes=_loadedSegmentIndexes;
 @property(readonly, nonatomic) NSMutableDictionary *loadIndexesRequestsBySegmentIndex; // @synthesize loadIndexesRequestsBySegmentIndex=_loadIndexesRequestsBySegmentIndex;
 @property(readonly, nonatomic) NSMutableArray *dataSourceViewPointers; // @synthesize dataSourceViewPointers=_dataSourceViewPointers;
 @property(readonly, copy, nonatomic) NSDictionary *indexTitles; // @synthesize indexTitles=_indexTitles;
 @property(readonly, nonatomic) long long segmentSize; // @synthesize segmentSize=_segmentSize;
-- (void).cxx_destruct;
 - (void)_resetUsedIndexesAndMigrateItems:(id)arg1;
 - (void)_resetLoadedSegments;
 - (long long)_segmentIndexForItemIndex:(long long)arg1;
@@ -48,7 +49,6 @@
 - (void)update:(id)arg1:(id)arg2:(long long)arg3;
 - (id)item:(long long)arg1;
 @property(readonly, nonatomic) long long length;
-- (id)initConstructor:(id)arg1:(id)arg2:(long long)arg3;
 - (id)valuesForSubscripts:(struct _NSRange)arg1 boxed:(_Bool)arg2;
 - (id)initWithItems:(id)arg1 indexTitles:(id)arg2 segmentSize:(long long)arg3;
 - (id)initWithItems:(id)arg1 indexTitles:(id)arg2;

@@ -13,11 +13,13 @@
 @interface GEOWaypointTyped : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOWaypointID *_waypointId;
     GEOWaypointLocation *_waypointLocation;
     GEOWaypointPlace *_waypointPlace;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _waypointType;
     _Bool _isCurrentLocation;
     _Bool _isLocationOfInterest;
@@ -29,13 +31,7 @@
         unsigned int read_waypointId:1;
         unsigned int read_waypointLocation:1;
         unsigned int read_waypointPlace:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_waypointId:1;
-        unsigned int wrote_waypointLocation:1;
-        unsigned int wrote_waypointPlace:1;
-        unsigned int wrote_waypointType:1;
-        unsigned int wrote_isCurrentLocation:1;
-        unsigned int wrote_isLocationOfInterest:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,6 +48,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasIsLocationOfInterest;
@@ -60,17 +59,16 @@
 @property(nonatomic) _Bool isCurrentLocation;
 @property(retain, nonatomic) GEOWaypointLocation *waypointLocation;
 @property(readonly, nonatomic) _Bool hasWaypointLocation;
-- (void)_readWaypointLocation;
 @property(retain, nonatomic) GEOWaypointPlace *waypointPlace;
 @property(readonly, nonatomic) _Bool hasWaypointPlace;
-- (void)_readWaypointPlace;
 @property(retain, nonatomic) GEOWaypointID *waypointId;
 @property(readonly, nonatomic) _Bool hasWaypointId;
-- (void)_readWaypointId;
 - (int)StringAsWaypointType:(id)arg1;
 - (id)waypointTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasWaypointType;
 @property(nonatomic) int waypointType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)locationForWaypoint;
 - (void)clearLocations;
 

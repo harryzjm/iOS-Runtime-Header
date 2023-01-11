@@ -12,32 +12,35 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDBulletinBoardNotification, HMFMessageDispatcher, NSArray, NSHashTable, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDBulletinBoardNotificationServiceGroup : HMFObject <NSSecureCoding, HMFMessageReceiver, HMFLogging, HMFDumpState>
 {
+    id <HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     NSSet *_cameraProfileUUIDs;
     NSSet *_associatedServiceUUIDs;
     NSHashTable *_cameraProfilesTable;
     NSHashTable *_associatedServicesTable;
     HMDBulletinBoardNotification *_bulletinBoardNotification;
-    NSUUID *_targetUUID;
+    NSUUID *_messageTargetUUID;
     NSArray *_associatedServices;
     NSArray *_cameraProfiles;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_msgDispatcher;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSArray *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
 @property(retain, nonatomic) NSArray *associatedServices; // @synthesize associatedServices=_associatedServices;
 @property(readonly, nonatomic) __weak HMDBulletinBoardNotification *bulletinBoardNotification; // @synthesize bulletinBoardNotification=_bulletinBoardNotification;
-- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property(readonly, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
+- (id)logIdentifier;
 - (id)actionContextForCameraProfileID:(id)arg1;
 - (id)_cameraProfileWithID:(id)arg1;
 - (id)dumpState;
@@ -60,14 +63,8 @@
 - (_Bool)_isAlarmService:(id)arg1;
 - (_Bool)_isSupportedAssociationService:(id)arg1;
 - (void)_handleBulletinBoardNotificationServiceGroupRequest:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)_registerNotificationHandlers;
 - (void)configureMsgDispatcher:(id)arg1;
-- (id)logIdentifier;
-@property(readonly, copy, nonatomic) NSUUID *targetUUID; // @synthesize targetUUID=_targetUUID;
 - (void)dealloc;
 - (id)initWithBulletinBoardNotification:(id)arg1;
 - (id)init;

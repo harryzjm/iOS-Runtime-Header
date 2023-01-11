@@ -17,5 +17,6 @@
 
 @optional
 @property(readonly, nonatomic) struct CGSize minimumContentSize;
+- (void)setMaxVisibleContentInsetsWhenInEdit:(struct UIEdgeInsets)arg1;
 @end
 

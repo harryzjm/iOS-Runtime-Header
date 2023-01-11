@@ -9,7 +9,7 @@
 #import <ReminderKit/REMExternalSyncMetadataProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 
-@class NSOrderedSet, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContext, REMAccountStorage, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap, REMStore;
+@class NSData, NSOrderedSet, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContext, REMAccountStorage, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap, REMStore;
 
 @interface REMAccount : NSObject <REMObjectIDProviding, REMExternalSyncMetadataProviding>
 {
@@ -25,11 +25,11 @@
 + (id)newObjectID;
 + (id)localAccountID;
 + (id)localInternalAccountID;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool markedForRemoval; // @synthesize markedForRemoval=_markedForRemoval;
 @property(retain, nonatomic) REMAccountCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property(readonly, copy, nonatomic) REMAccountStorage *storage; // @synthesize storage=_storage;
 @property(retain, nonatomic) REMStore *store; // @synthesize store=_store;
-- (void).cxx_destruct;
 - (id)externalIdentifierForMarkedForDeletionObject;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, nonatomic) _Bool daSupportsPhoneNumbers;
@@ -38,6 +38,7 @@
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (_Bool)MCIsManagedWithResultPtr:(_Bool *)arg1 error:(id *)arg2;
 - (id)fetchListIncludingSpecialContainerWithExternalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)fetchListsIncludingSpecialContainersWithError:(id *)arg1;
 - (_Bool)isConsideredEmptyWithResultPtr:(_Bool *)arg1 withError:(id *)arg2;
@@ -59,7 +60,9 @@
 @property(readonly, nonatomic) NSString *daSyncToken; // @dynamic daSyncToken;
 @property(readonly, nonatomic) _Bool daWasMigrated; // @dynamic daWasMigrated;
 @property(readonly, nonatomic) _Bool didChooseToMigrate; // @dynamic didChooseToMigrate;
+@property(readonly, nonatomic) _Bool didChooseToMigrateLocally; // @dynamic didChooseToMigrateLocally;
 @property(readonly, nonatomic) _Bool didFinishMigration; // @dynamic didFinishMigration;
+@property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
 @property(readonly, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(readonly, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(readonly, nonatomic) _Bool inactive; // @dynamic inactive;
@@ -69,6 +72,7 @@
 @property(readonly, nonatomic) NSString *name; // @dynamic name;
 @property(readonly, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property(readonly, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property(readonly, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property(readonly, nonatomic) long long type; // @dynamic type;
 
 @end

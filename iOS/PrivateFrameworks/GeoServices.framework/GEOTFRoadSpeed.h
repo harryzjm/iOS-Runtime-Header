@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOTFRoadSpeed : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _geoIds;
     CDStruct_fae3dc92 _latitudeCoordinates;
     CDStruct_fae3dc92 _longitudeCoordinates;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     NSData *_openlr;
     NSMutableArray *_predictedSpeeds;
     NSData *_zilch;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _color;
     float _confidence;
     unsigned int _decayTimeWindowInMinutes;
@@ -43,20 +45,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_openlr:1;
         unsigned int read_predictedSpeeds:1;
         unsigned int read_zilch:1;
-        unsigned int wrote_geoIds:1;
-        unsigned int wrote_latitudeCoordinates:1;
-        unsigned int wrote_longitudeCoordinates:1;
-        unsigned int wrote_geoid:1;
-        unsigned int wrote_openlr:1;
-        unsigned int wrote_predictedSpeeds:1;
-        unsigned int wrote_zilch:1;
-        unsigned int wrote_color:1;
-        unsigned int wrote_confidence:1;
-        unsigned int wrote_decayTimeWindowInMinutes:1;
-        unsigned int wrote_endOffset:1;
-        unsigned int wrote_speedKph:1;
-        unsigned int wrote_startOffset:1;
-        unsigned int wrote_hidden:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -71,42 +60,37 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *openlr;
 @property(readonly, nonatomic) _Bool hasOpenlr;
-- (void)_readOpenlr;
 - (void)setGeoIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (long long)geoIdsAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsGeoIds:(long long)arg1;
 - (void)addGeoIds:(long long)arg1;
 - (void)clearGeoIds;
 @property(readonly, nonatomic) long long *geoIds;
 @property(readonly, nonatomic) unsigned long long geoIdsCount;
-- (void)_readGeoIds;
 - (void)setLongitudeCoordinates:(float *)arg1 count:(unsigned long long)arg2;
 - (float)longitudeCoordinatesAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsLongitudeCoordinates:(float)arg1;
 - (void)addLongitudeCoordinates:(float)arg1;
 - (void)clearLongitudeCoordinates;
 @property(readonly, nonatomic) float *longitudeCoordinates;
 @property(readonly, nonatomic) unsigned long long longitudeCoordinatesCount;
-- (void)_readLongitudeCoordinates;
 - (void)setLatitudeCoordinates:(float *)arg1 count:(unsigned long long)arg2;
 - (float)latitudeCoordinatesAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsLatitudeCoordinates:(float)arg1;
 - (void)addLatitudeCoordinates:(float)arg1;
 - (void)clearLatitudeCoordinates;
 @property(readonly, nonatomic) float *latitudeCoordinates;
 @property(readonly, nonatomic) unsigned long long latitudeCoordinatesCount;
-- (void)_readLatitudeCoordinates;
 @property(nonatomic) _Bool hasConfidence;
 @property(nonatomic) float confidence;
 @property(nonatomic) _Bool hasDecayTimeWindowInMinutes;
 @property(nonatomic) unsigned int decayTimeWindowInMinutes;
 @property(retain, nonatomic) NSData *zilch;
 @property(readonly, nonatomic) _Bool hasZilch;
-- (void)_readZilch;
 @property(nonatomic) _Bool hasSpeedKph;
 @property(nonatomic) unsigned int speedKph;
 - (int)StringAsColor:(id)arg1;
@@ -115,11 +99,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int color;
 - (id)predictedSpeedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)predictedSpeedsCount;
-- (void)_addNoFlagsPredictedSpeed:(id)arg1;
 - (void)addPredictedSpeed:(id)arg1;
 - (void)clearPredictedSpeeds;
 @property(retain, nonatomic) NSMutableArray *predictedSpeeds;
-- (void)_readPredictedSpeeds;
 @property(nonatomic) _Bool hasHidden;
 @property(nonatomic) _Bool hidden;
 @property(nonatomic) _Bool hasEndOffset;
@@ -128,6 +110,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float startOffset;
 @property(nonatomic) long long geoid;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <HealthUI/UIActivityItemSource-Protocol.h>
+
 @class HKHealthStore, HKLocationReadings, HKRouteView, HKWorkout, NSArray, NSString;
 
-@interface HKWorkoutRouteViewController : UIViewController
+@interface HKWorkoutRouteViewController : UIViewController <UIActivityItemSource>
 {
     HKLocationReadings *_locationReadings;
     HKWorkout *_workout;
@@ -21,13 +23,16 @@
     NSArray *_excludedActivityTypes;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(retain, nonatomic) NSString *shareText; // @synthesize shareText=_shareText;
 @property(nonatomic) _Bool sharingEnabled; // @synthesize sharingEnabled=_sharingEnabled;
 @property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(retain, nonatomic) HKLocationReadings *unsmoothedLocationReadings; // @synthesize unsmoothedLocationReadings=_unsmoothedLocationReadings;
 @property(retain, nonatomic) HKRouteView *routeView; // @synthesize routeView=_routeView;
-- (void).cxx_destruct;
+- (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
+- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
+- (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (void)_toggleRouteViewMapType:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)_shareButtonPressed:(id)arg1;
@@ -36,6 +41,12 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 - (id)initWithLocationReadings:(id)arg1 title:(id)arg2 sharingEnabled:(_Bool)arg3 shareText:(id)arg4 excludedActivityTypes:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

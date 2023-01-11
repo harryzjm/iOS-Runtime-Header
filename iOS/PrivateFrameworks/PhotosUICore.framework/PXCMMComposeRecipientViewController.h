@@ -16,7 +16,7 @@
 #import <PhotosUICore/UITableViewDataSource-Protocol.h>
 #import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
-@class NSMutableSet, NSProgress, NSString, PXCMMAddRecipientButton, PXCMMComposeRecipientDataSource, PXCMMComposeRecipientDataSourceManager, PXCMMComposeRecipientSelectionManager, PXCMMComposeRecipientValidationManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSession, PXCMMSpecManager, PXPhotoRecipientViewController, PXUpdater, UIButton, UILabel, UITableView, UIVisualEffectView;
+@class NSMutableSet, NSProgress, NSString, PXCMMComposeRecipientDataSource, PXCMMComposeRecipientDataSourceManager, PXCMMComposeRecipientSelectionManager, PXCMMComposeRecipientValidationManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSession, PXCMMSpecManager, PXPhotoRecipientViewController, PXUpdater, UIButton, UILabel, UITableView, UIVisualEffectView;
 @protocol PXCMMActionControllerDelegate, PXCMMComposeRecipientViewControllerDelegate, PXCMMPersonSuggestion;
 
 @interface PXCMMComposeRecipientViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PXPhotoRecipientViewControllerDelegate, PXCMMComposeRecipientDataSourceManagerDelegate, PXCMMComposeRecipientSelectionManagerDelegate, PXCMMComposeRecipientValidationManagerDelegate, CNContactViewControllerDelegate, PXSettingsKeyObserver, PXDiagnosticsEnvironment>
@@ -27,7 +27,6 @@
     PXCMMSpecManager *_specManager;
     PXUpdater *_updater;
     UITableView *_composeRecipientTableView;
-    PXCMMAddRecipientButton *_addRecipientButton;
     UIVisualEffectView *_footerVisualEffectView;
     UILabel *_privacyMessageLabel;
     UIButton *_sendButton;
@@ -45,6 +44,7 @@
     UIButton *_tapToRadarButton;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIButton *tapToRadarButton; // @synthesize tapToRadarButton=_tapToRadarButton;
 @property(retain, nonatomic) NSMutableSet *transientRecipientSelection; // @synthesize transientRecipientSelection=_transientRecipientSelection;
 @property(nonatomic) double maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
@@ -60,14 +60,12 @@
 @property(retain, nonatomic) UIButton *sendButton; // @synthesize sendButton=_sendButton;
 @property(retain, nonatomic) UILabel *privacyMessageLabel; // @synthesize privacyMessageLabel=_privacyMessageLabel;
 @property(retain, nonatomic) UIVisualEffectView *footerVisualEffectView; // @synthesize footerVisualEffectView=_footerVisualEffectView;
-@property(retain, nonatomic) PXCMMAddRecipientButton *addRecipientButton; // @synthesize addRecipientButton=_addRecipientButton;
 @property(retain, nonatomic) UITableView *composeRecipientTableView; // @synthesize composeRecipientTableView=_composeRecipientTableView;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property(readonly, nonatomic) PXCMMSpecManager *specManager; // @synthesize specManager=_specManager;
 @property(nonatomic) __weak id <PXCMMActionControllerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property(nonatomic) __weak id <PXCMMComposeRecipientViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PXCMMSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
@@ -81,9 +79,7 @@
 - (void)composeRecipientSelectionManager:(id)arg1 didUpdateSelectionSnapshotWithChangeDetails:(id)arg2;
 - (void)composeRecipientDataSourceManager:(id)arg1 didUpdateDataSourceWithChangeDetails:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

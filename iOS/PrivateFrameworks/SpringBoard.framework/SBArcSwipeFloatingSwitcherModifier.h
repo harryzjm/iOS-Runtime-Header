@@ -16,21 +16,22 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (_Bool)wantsResignActiveAssertion;
-- (id)layoutSettings;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
+- (_Bool)shouldPerformCrossfadeForReduceMotion;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
+- (id)topMostLayoutElements;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
 - (id)handleTimerEvent:(id)arg1;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;
-- (_Bool)asynchronouslyRendersUntilDelay:(inout double *)arg1;
+- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 floatingConfiguration:(long long)arg4 direction:(unsigned long long)arg5 needsOvershoot:(_Bool)arg6;
 
 @end

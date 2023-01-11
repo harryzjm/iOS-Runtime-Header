@@ -6,7 +6,7 @@
 
 #import <IMCore/IMVisibleAssociatedMessageHost-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString;
+@class IMMessageItem, NSArray, NSAttributedString, NSString;
 
 @interface IMMessagePartChatItem <IMVisibleAssociatedMessageHost>
 {
@@ -19,10 +19,11 @@
     _Bool _isBusiness;
     _Bool _chatInScrutinyMode;
     _Bool _whitelistedRichLinkSender;
+    unsigned long long _replyCount;
 }
 
 + (_Bool)isSiriEnabled;
-+ (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
++ (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2 indexesOfItemsDeleted:(id *)arg3 indexToRangeMapping:(id *)arg4;
 + (_Bool)_shouldAggregateForTransferType:(id)arg1;
 + (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(_Bool)arg2 isBusiness:(_Bool)arg3 parentChatIsSpam:(_Bool)arg4 hasKnownParticipants:(_Bool)arg5;
 + (_Bool)_supportsRichLinkURL:(id)arg1 forSender:(id)arg2 isWhitelistedRichLinkSender:(_Bool)arg3;
@@ -33,20 +34,24 @@
 + (id)_defaultRichLinkWhiteList;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
 + (id)_guidForMessage:(id)arg1 url:(id)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long replyCount; // @synthesize replyCount=_replyCount;
 @property(nonatomic, getter=isWhitelistedRichLinkSender) _Bool whitelistedRichLinkSender; // @synthesize whitelistedRichLinkSender=_whitelistedRichLinkSender;
 @property(readonly, copy, nonatomic) NSAttributedString *fallbackCorruptText; // @synthesize fallbackCorruptText=_fallbackCorruptText;
 @property(nonatomic) _Bool chatInScrutinyMode; // @synthesize chatInScrutinyMode=_chatInScrutinyMode;
 @property(readonly, nonatomic) NSArray *messageEditChatItems; // @synthesize messageEditChatItems=_messageEditChatItems;
 @property(retain, nonatomic, setter=_setVisibleAssociatedMessageChatItems:) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 @property(nonatomic) struct _NSRange messagePartRange; // @synthesize messagePartRange=_messagePartRange;
-@property(nonatomic) long long index; // @synthesize index=_index;
+@property(readonly, nonatomic) long long index; // @synthesize index=_index;
 @property(readonly, copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool requiresSiriAttribution;
+- (id)replyContextPreviewChatItemForReply:(id)arg1;
+@property(readonly, nonatomic) IMMessageItem *threadOriginator;
+@property(readonly, copy, nonatomic) NSString *threadIdentifier;
 - (_Bool)canSendMessageAcknowledgment;
 - (void)_setMessageEditChatItems:(id)arg1;
 - (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 visibleAssociatedMessageChatItems:(id)arg5;
-- (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;
+- (id)_initWithItem:(id)arg1 index:(long long)arg2 messagePartRange:(struct _NSRange)arg3;
 @property(readonly, nonatomic) _Bool isCorrupt;
 - (id)transcriptText;
 @property(nonatomic) _Bool isBusiness; // @synthesize isBusiness=_isBusiness;

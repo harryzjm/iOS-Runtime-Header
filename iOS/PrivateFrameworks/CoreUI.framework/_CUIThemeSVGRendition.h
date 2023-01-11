@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreUI/NSLocking-Protocol.h>
+
 @class NSArray, NSData;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeSVGRendition
+@interface _CUIThemeSVGRendition <NSLocking>
 {
     struct CGSVGDocument *_svgDocument;
     NSData *_fileData;
@@ -17,21 +19,28 @@ __attribute__((visibility("hidden")))
     double _capline;
     CDStruct_3c058996 _alignmentRectInsets;
     _Bool _isAlignmentRect;
+    struct CGSize _canvasSize;
+    float _templateVersion;
+    struct os_unfair_lock_s _lock;
 }
 
+- (float)vectorGlyphTemplateVersion;
 - (CDStruct_3c058996)vectorGlyphAlignmentRectInsets;
 - (double)vectorGlyphReferencePointSize;
 - (double)vectorGlyphCapLine;
 - (double)vectorGlyphBaseline;
 - (id)vectorGlyphAvailableSizes;
 - (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
+- (struct CGSize)canvasSize;
 - (struct CGSVGDocument *)svgDocument;
 - (id)rawData;
 - (id)metrics;
 - (int)pixelFormat;
+- (void)unlock;
+- (void)lock;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)dealloc;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 
 @end
 

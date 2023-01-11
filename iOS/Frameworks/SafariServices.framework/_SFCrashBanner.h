@@ -6,30 +6,36 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIButton, UIImageView, UILabel, _UIBackdropView;
+@class NSString, UIButton, UILabel, UIVisualEffectView, _SFBarTheme;
 
 @interface _SFCrashBanner : UIView
 {
-    _UIBackdropView *_backdrop;
-    UIImageView *_closeButtonOverlayImageView;
-    UILabel *_label;
+    UIVisualEffectView *_backdrop;
+    UIVisualEffectView *_contentEffectView;
     UIView *_separator;
-    UIView *_separatorOverlay;
+    UILabel *_label;
     struct CGSize _cachedLabelLayoutSize;
-    _Bool _usesLightControls;
+    _SFBarTheme *_theme;
     UIButton *_closeButton;
+    unsigned long long _type;
+    NSString *_bannerText;
+    NSString *_manuallyWrappedBannerText;
 }
 
-@property(readonly, nonatomic) _Bool usesLightControls; // @synthesize usesLightControls=_usesLightControls;
-@property(retain, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *manuallyWrappedBannerText; // @synthesize manuallyWrappedBannerText=_manuallyWrappedBannerText;
+@property(readonly, nonatomic) NSString *bannerText; // @synthesize bannerText=_bannerText;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(retain, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
+@property(retain, nonatomic) _SFBarTheme *theme; // @synthesize theme=_theme;
+- (void)setBannerText:(id)arg1 manuallyWrappedBannerText:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (void)_layoutCloseButton;
 - (struct CGSize)_labelLayoutSizeForWidth:(double)arg1;
 - (_Bool)_shouldUseManuallyWrappedCrashMessageForWidth:(double)arg1;
 @property(copy, nonatomic) NSString *backdropGroupName;
-- (id)initUsingLightControls:(_Bool)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

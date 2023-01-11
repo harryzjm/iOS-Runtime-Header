@@ -6,27 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class PKAccount, PKPaymentPass;
+@class PKAccount, PKBusinessChatController, PKTransactionSource, UIViewController;
 @protocol PKAccountBillPaymentObserver, PKAccountServiceAccountResolutionControllerDelegate;
 
 @interface PKAccountServiceAccountResolutionController : NSObject
 {
+    PKBusinessChatController *_businessChatController;
     PKAccount *_account;
-    PKPaymentPass *_pass;
+    PKTransactionSource *_transactionSource;
     id <PKAccountServiceAccountResolutionControllerDelegate> _delegate;
     id <PKAccountBillPaymentObserver> _billPaymentObserver;
+    UIViewController *_presentingViewController;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(nonatomic) __weak id <PKAccountBillPaymentObserver> billPaymentObserver; // @synthesize billPaymentObserver=_billPaymentObserver;
 @property(nonatomic) __weak id <PKAccountServiceAccountResolutionControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property(retain, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
+- (void)_openBusinessChatWithContext:(id)arg1;
+- (void)_callIssuer;
+- (id)_alertControllerForBusinessChatContext:(id)arg1;
 - (void)_handleAccountServiceAccountDidChangeNotification:(id)arg1;
 - (void)_presentViewController:(id)arg1;
-- (void)_presentAccountServiceAction:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)presentFlowForAccountResolution:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithAccount:(id)arg1 pass:(id)arg2;
+- (void)_presentAccountServiceAction:(unsigned long long)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentFlowForAccountResolution:(unsigned long long)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithAccount:(id)arg1 transactionSource:(id)arg2;
 
 @end
 

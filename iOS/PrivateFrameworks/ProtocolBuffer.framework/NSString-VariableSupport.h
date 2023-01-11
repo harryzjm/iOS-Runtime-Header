@@ -7,12 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (VariableSupport)
-- (id)intern;
-- (_Bool)isObjcReservedWord;
-- (id)stripQuotes;
-- (id)plural;
-- (id)camelCase;
-- (id)pascalCase;
 - (id)_pb_fixCase:(_Bool)arg1;
 @end
 

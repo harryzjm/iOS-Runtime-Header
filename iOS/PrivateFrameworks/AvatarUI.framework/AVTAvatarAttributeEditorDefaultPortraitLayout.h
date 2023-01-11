@@ -8,7 +8,8 @@
 {
 }
 
-- (id)backgroundColor;
+- (struct CGRect)sideGroupContainerFrame;
+- (struct CGRect)groupDialContainerFrame;
 - (struct UIEdgeInsets)attributesContentViewScrollIndicatorInsets;
 - (struct UIEdgeInsets)attributesContentViewInsets;
 - (struct CGRect)verticalRuleFrame;
@@ -17,7 +18,7 @@
 - (double)headerMaskingViewAlpha;
 - (struct CGRect)attributesContentViewFrame;
 - (struct CGRect)userInfoFrame;
-- (struct CGRect)groupDialContainerFrame;
+- (double)avatarContainerAlpha;
 - (struct CGRect)avatarContainerFrame;
 - (double)maxHeaderHeight;
 - (unsigned long long)supportedLayoutOrientation;

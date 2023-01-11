@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, SFActionItem, SFButton, SFFormattedText, SFImage, SFRichText, SFText;
+@class MKSearchFoundationResult, NSArray, NSString, SFActionItem, SFButton, SFFormattedText, SFImage, SFRichText;
 
 @interface SearchUIDetailedRowModel
 {
     _Bool _preventThumbnailImageScaling;
     _Bool _isLocalApplicationResult;
+    _Bool _truncateTitleMiddle;
     _Bool _secondaryTitleIsDetached;
+    _Bool _useCompactDisplay;
     SFImage *_leadingImage;
     SFImage *_fallbackImage;
     SFButton *_leadingButton;
     NSString *_applicationBundleIdentifier;
+    NSString *_nearbyBusinessesString;
     SFRichText *_title;
-    SFText *_secondaryTitle;
+    SFFormattedText *_secondaryTitle;
     SFImage *_secondaryTitleImage;
     NSArray *_details;
     SFRichText *_footnote;
@@ -25,30 +28,34 @@
     SFFormattedText *_trailingTopText;
     SFFormattedText *_trailingMiddleText;
     SFFormattedText *_trailingBottomText;
-    NSArray *_contactIdentifiersNeeded;
+    MKSearchFoundationResult *_mapsResult;
 }
 
 + (_Bool)urlIsDraggable:(id)arg1;
-@property(retain) NSArray *contactIdentifiersNeeded; // @synthesize contactIdentifiersNeeded=_contactIdentifiersNeeded;
+- (void).cxx_destruct;
+@property(retain) MKSearchFoundationResult *mapsResult; // @synthesize mapsResult=_mapsResult;
+@property _Bool useCompactDisplay; // @synthesize useCompactDisplay=_useCompactDisplay;
 @property(retain) SFFormattedText *trailingBottomText; // @synthesize trailingBottomText=_trailingBottomText;
 @property(retain) SFFormattedText *trailingMiddleText; // @synthesize trailingMiddleText=_trailingMiddleText;
 @property(retain) SFFormattedText *trailingTopText; // @synthesize trailingTopText=_trailingTopText;
 @property(retain) SFActionItem *action; // @synthesize action=_action;
 @property(retain) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
 @property(retain) SFRichText *footnote; // @synthesize footnote=_footnote;
-@property(retain) NSArray *details; // @synthesize details=_details;
+@property(retain, nonatomic) NSArray *details; // @synthesize details=_details;
 @property(retain) SFImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
 @property _Bool secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
-@property(retain) SFText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
+@property(retain) SFFormattedText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
+@property _Bool truncateTitleMiddle; // @synthesize truncateTitleMiddle=_truncateTitleMiddle;
 @property(retain) SFRichText *title; // @synthesize title=_title;
+@property(retain) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
 @property _Bool isLocalApplicationResult; // @synthesize isLocalApplicationResult=_isLocalApplicationResult;
 @property(retain) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property _Bool preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
 @property(retain) SFButton *leadingButton; // @synthesize leadingButton=_leadingButton;
 @property(retain) SFImage *fallbackImage; // @synthesize fallbackImage=_fallbackImage;
-@property(retain) SFImage *leadingImage; // @synthesize leadingImage=_leadingImage;
-- (void).cxx_destruct;
+@property(retain, nonatomic) SFImage *leadingImage; // @synthesize leadingImage=_leadingImage;
 - (Class)customCardSectionViewClass;
+- (_Bool)hasLeadingImage;
 - (int)separatorStyle;
 - (id)punchouts;
 - (_Bool)isDraggable;
@@ -63,7 +70,9 @@
 - (id)contactIdentifiers;
 - (void)fillOutPropertiesForCardSection:(id)arg1;
 - (id)richTextFromText:(id)arg1;
+- (id)populatedMapsCardSectionIfApplicable;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 isInline:(_Bool)arg3 queryId:(unsigned long long)arg4;
+- (id)initWithResult:(id)arg1 suggestion:(id)arg2 queryId:(unsigned long long)arg3;
 
 @end
 

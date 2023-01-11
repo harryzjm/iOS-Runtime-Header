@@ -8,25 +8,25 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class NSHashTable, NSOrderedSet, NSString;
+@class FBScene, NSHashTable, NSOrderedSet, NSString;
 
 @interface FBSceneLayerManager : NSObject <BSDescriptionProviding>
 {
     NSString *_identifier;
     NSOrderedSet *_layers;
     NSHashTable *_observers;
+    FBScene *_scene;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak FBScene *scene; // @synthesize scene=_scene;
 @property(readonly, nonatomic) NSOrderedSet *layers; // @synthesize layers=_layers;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
-- (void)_observer_didRepositionLayer:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
+- (void)_observer_sceneLayerManagerDidUpdateLayers;
 - (void)_observer_didStopTrackingLayers;
 - (void)_observer_didStartTrackingLayers;
-- (void)_observer_willStartTrackingLayers;
-- (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_setLayers:(id)arg1;
-- (id)_initWithIdentifier:(id)arg1;
+- (id)_initWithScene:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

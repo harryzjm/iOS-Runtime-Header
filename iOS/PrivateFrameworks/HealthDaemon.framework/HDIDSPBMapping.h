@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface HDIDSPBMapping : NSObject
 {
     Class _requestClass;
     Class _responseClass;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) Class responseClass; // @synthesize responseClass=_responseClass;
 @property(retain, nonatomic) Class requestClass; // @synthesize requestClass=_requestClass;
-- (void).cxx_destruct;
 
 @end
 

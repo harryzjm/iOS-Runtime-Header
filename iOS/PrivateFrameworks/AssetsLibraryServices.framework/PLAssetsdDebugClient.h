@@ -23,6 +23,8 @@
 - (void)pruneAssets:(id)arg1 resourceTypes:(id)arg2;
 - (_Bool)debugSidecarFileURLsForAsset:(id)arg1 debugSidecarFileURLs:(id *)arg2 error:(id *)arg3;
 - (_Bool)revertToOriginalForAsset:(id)arg1 error:(id *)arg2;
+- (void)enqueuePrefetch;
+- (void)clearPrefetchState;
 - (id)getCPLState;
 - (id)getXPCTransactionStatus;
 - (void)rebuildAllThumbnails;
@@ -39,6 +41,7 @@
 - (_Bool)rebuildMomentsDeletingExistingMoments:(_Bool)arg1 error:(id *)arg2;
 - (id)momentGenerationStatus;
 - (void)recoverAssetsInInconsistentCloudState;
+- (void)identifyAssetsWithInconsistentCloudState;
 - (void)unloadImageFilesForAsset:(id)arg1 minimumFormat:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getStatus;
 

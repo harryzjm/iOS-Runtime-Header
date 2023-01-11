@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <CoreHAP/HAPTLVBase.h>
+
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDSelectedAudioParameters, HMDSelectedVideoParameters, HMDSessionControl;
 
-@interface HMDSelectedStreamConfigurationWrite <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDSelectedStreamConfigurationWrite : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     HMDSessionControl *_sessionControl;
     HMDSelectedVideoParameters *_videoParameters;
@@ -17,10 +19,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) HMDSelectedAudioParameters *audioParameters; // @synthesize audioParameters=_audioParameters;
 @property(readonly, copy, nonatomic) HMDSelectedVideoParameters *videoParameters; // @synthesize videoParameters=_videoParameters;
 @property(readonly, copy, nonatomic) HMDSessionControl *sessionControl; // @synthesize sessionControl=_sessionControl;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)description:(id)arg1 indent:(id)arg2;

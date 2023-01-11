@@ -8,8 +8,6 @@
 
 @interface NTKTimelineSetupOperation
 {
-    unsigned long long _directions;
-    NSDate *_startDate;
     NSDate *_endDate;
     unsigned long long _privacyBehavior;
     unsigned long long _timelineAnimationBehavior;
@@ -18,16 +16,14 @@
     CDUnknownBlockType _handler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void)_invokeHandler;
 - (void)_getAlwaysOnTemplate;
 - (void)_getCurrentEntry;
 - (void)_getTimelineAnimationBehavior;
 - (void)_getPrivacyBehavior;
 - (void)_getEndDate;
-- (void)_getStartDate;
-- (void)_getTimeTravelDirections;
 - (void)_cancel;
 - (void)_start;
 

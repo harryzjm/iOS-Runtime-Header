@@ -22,12 +22,17 @@
     id <UICoordinateSpace> _coordinateSpace;
     _Bool _shouldDisableTouchCancellationOnRotation;
     _Bool _windowWasInitializedWithDefaultStoryboard;
+    _Bool _didMakeKeyAndVisible;
     id <_UISceneMetricsCalculating> _metricsCalculator;
     _Bool __isKeyWindowScene;
+    _Bool _excludedFromWindowsMenu;
     long long _screenRequestedOverscanCompensation;
     long long _avkitRequestedOverscanCompensation;
 }
 
++ (id)_findNewKeyWindowSceneOnScreen:(id)arg1;
++ (void)_setShouldRestoreKeyWindowSceneOnActivation:(_Bool)arg1;
++ (_Bool)_shouldRestoreKeyWindowSceneOnActivation;
 + (id)_keyWindowScene;
 + (id)_placeholderWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
 + (id)_keyboardWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
@@ -37,17 +42,18 @@
 + (void)initialize;
 + (void)_registerComponentClass:(Class)arg1 withKey:(id)arg2 predicate:(id)arg3;
 + (id)_canvasForScene:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isExcludedFromWindowsMenu) _Bool excludedFromWindowsMenu; // @synthesize excludedFromWindowsMenu=_excludedFromWindowsMenu;
 @property(nonatomic) _Bool _isKeyWindowScene; // @synthesize _isKeyWindowScene=__isKeyWindowScene;
 @property(nonatomic, getter=_avkitRequestedOverscanCompensation, setter=_setAVKitRequestedOverscanCompensation:) long long _avkitRequestedOverscanCompensation; // @synthesize _avkitRequestedOverscanCompensation;
 @property(readonly, nonatomic) _Bool _isPerformingSystemSnapshot; // @synthesize _isPerformingSystemSnapshot;
-- (void).cxx_destruct;
 - (void)_showProgressWhenFetchingUserActivityForTypes:(id)arg1;
 - (id)_inheritingWindowsIncludingInvisible:(_Bool)arg1;
 - (id)_windowSceneDelegate;
 @property(readonly, copy) NSString *description;
 - (_Bool)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
 - (void)_applySnapshotSettings:(id)arg1 forActions:(CDUnknownBlockType)arg2;
-- (void)_invalidateScreen;
+- (void)_noteDisplayIdentityDidChangeWithConfiguration:(id)arg1;
 @property(retain, nonatomic, getter=_displayConfigurationRequest, setter=_setDisplayConfigurationRequest:) FBSDisplayConfigurationRequest *_displayConfigurationRequest; // @dynamic _displayConfigurationRequest;
 - (void)_setAVKitRequestedRefreshRate:(double)arg1 HDRMode:(long long)arg2 overscanCompensation:(long long)arg3;
 @property(nonatomic, getter=_screenRequestedOverscanCompensation, setter=_setScreenRequestedOverscanCompensation:) long long _screenRequestedOverscanCompensation; // @synthesize _screenRequestedOverscanCompensation;
@@ -65,6 +71,7 @@
 @property(readonly, nonatomic) struct UIEdgeInsets _peripheryInsets;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (struct CGRect)_referenceBounds;
+- (void)_updateTraitCollection;
 - (void)_computeMetricsForWindows:(id)arg1 animated:(_Bool)arg2;
 - (void)_computeMetrics:(_Bool)arg1;
 - (void)_prepareForSuspend;
@@ -81,7 +88,9 @@
 - (_Bool)_windowIsFront:(id)arg1;
 @property(readonly, nonatomic) _UIContextBinder *_contextBinder;
 - (void)_makeKeyAndVisibleIfNeeded;
+- (_Bool)_needsMakeKeyAndVisible;
 - (void)_loadWindowWithStoryboardIfNeeded:(id)arg1;
+- (_Bool)_shouldLoadStoryboard;
 - (void)_readySceneForConnection;
 - (id)_allWindowsIncludingInternalWindows:(_Bool)arg1 onlyVisibleWindows:(_Bool)arg2;
 - (void)_windowUpdatedProperties:(id)arg1;
@@ -89,6 +98,8 @@
 - (void)_updateVisibleWindowOrderWithTest:(CDUnknownBlockType)arg1;
 - (void)_detachWindow:(id)arg1;
 - (void)_attachWindow:(id)arg1;
+- (void)_screenDidChangeFromScreen:(id)arg1 toScreen:(id)arg2;
+@property(readonly, nonatomic) UIStatusBarManager *_statusBarManager;
 @property(readonly, nonatomic) UITraitCollection *_traitCollection;
 @property(readonly, nonatomic) id <UICoordinateSpace> _coordinateSpace;
 @property(readonly, nonatomic) long long _interfaceOrientation;

@@ -4,16 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+#import <objc/NSObject.h>
 
-@interface SXWebCalAction
+#import <Silex/SXAction-Protocol.h>
+
+@class NSString, NSURL;
+
+@interface SXWebCalAction : NSObject <SXAction>
 {
     NSURL *_URL;
 }
 
-@property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property(readonly, nonatomic) NSString *type;
 - (id)initWithURL:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

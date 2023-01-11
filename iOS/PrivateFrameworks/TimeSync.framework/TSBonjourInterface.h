@@ -29,6 +29,7 @@
     TSBonjourNode *_node;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) TSBonjourNode *node; // @synthesize node=_node;
 @property(nonatomic) id <TSBonjourInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSArray *ipv6Addresses; // @synthesize ipv6Addresses=_ipv6Addresses;

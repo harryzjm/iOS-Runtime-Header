@@ -9,7 +9,7 @@
 }
 
 + (_Bool)isValidForTransitionRequest:(id)arg1;
-- (void)_sendActivationResultWithSuccess:(_Bool)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
 - (void)_didComplete;
 - (void)_begin;
 

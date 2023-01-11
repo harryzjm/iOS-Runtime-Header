@@ -4,30 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+#import <TemplateKit/TLKStoreButton.h>
 
-@class NSString, TLKEmbossedLabel;
+@class NSString;
 
-@interface SearchUIOfferButtonView : UIButton
+@interface SearchUIOfferButtonView : TLKStoreButton
 {
-    NSString *_offerTitle;
+    _Bool _adjustsFontSizeToFitWidth;
     NSString *_symbolImageName;
-    TLKEmbossedLabel *_label;
-    UIButton *_button;
 }
 
-@property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
-@property(retain, nonatomic) TLKEmbossedLabel *label; // @synthesize label=_label;
-@property(retain, nonatomic) NSString *symbolImageName; // @synthesize symbolImageName=_symbolImageName;
-@property(retain, nonatomic) NSString *offerTitle; // @synthesize offerTitle=_offerTitle;
 - (void).cxx_destruct;
-- (void)layoutSubviews;
-- (void)tlk_updateForAppearance:(id)arg1;
-- (void)didMoveToWindow;
-- (void)_dynamicUserInterfaceTraitDidChange;
-@property(nonatomic) _Bool adjustsFontSizeToFitWidth;
-- (void)updateSelectionState:(_Bool)arg1;
-- (void)setHighlighted:(_Bool)arg1;
+@property(retain, nonatomic) NSString *symbolImageName; // @synthesize symbolImageName=_symbolImageName;
+@property(nonatomic) _Bool adjustsFontSizeToFitWidth; // @synthesize adjustsFontSizeToFitWidth=_adjustsFontSizeToFitWidth;
+- (struct CGSize)intrinsicContentSize;
 - (id)init;
 
 @end

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSArray *_arrangedContentViewsDistributionConstraints;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *arrangedContentViewsDistributionConstraints; // @synthesize arrangedContentViewsDistributionConstraints=_arrangedContentViewsDistributionConstraints;
 @property(readonly, nonatomic) NSArray *arrangedContentSeparatorViews; // @synthesize arrangedContentSeparatorViews=_arrangedContentSeparatorViews;
 @property(readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
@@ -29,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long distribution; // @synthesize distribution=_distribution;
 @property(nonatomic) long long axis; // @synthesize axis=_axis;
 @property(retain, nonatomic) UIInterfaceActionVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
-- (void).cxx_destruct;
 - (_Bool)_isVerticalLayout;
 - (void)_setRoundedCornersOfView:(id)arg1 toCornerPosition:(unsigned long long)arg2;
 - (void)_markRoundedCornerPositionOnNoCornersOfView:(id)arg1;

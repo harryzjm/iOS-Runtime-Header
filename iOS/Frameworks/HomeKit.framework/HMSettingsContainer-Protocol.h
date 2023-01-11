@@ -9,6 +9,7 @@
 @class HMSettings;
 
 @protocol HMSettingsContainer <NSObject>
+@property(readonly) _Bool settingsInitialized;
 @property(readonly) HMSettings *privateSettings;
 @property(readonly) HMSettings *settings;
 @end

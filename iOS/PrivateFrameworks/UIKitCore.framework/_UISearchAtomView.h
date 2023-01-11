@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
     NSArray *_withoutImageConstraints;
 }
 
-+ (id)defaultAtomBackgroundColor;
++ (id)defaultAtomBackgroundColorForTraitCollection:(id)arg1;
++ (id)_defaultFont;
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *withoutImageConstraints; // @synthesize withoutImageConstraints=_withoutImageConstraints;
 @property(copy, nonatomic) NSArray *withImageConstraints; // @synthesize withImageConstraints=_withImageConstraints;
 @property(retain, nonatomic) NSLayoutConstraint *imageCenterYConstraint; // @synthesize imageCenterYConstraint=_imageCenterYConstraint;
@@ -36,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property(retain) UIImageView *leadingImage; // @synthesize leadingImage=_leadingImage;
 @property(retain) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(retain, nonatomic) UIColor *atomBackgroundColor; // @synthesize atomBackgroundColor=_atomBackgroundColor;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGRect selectionBounds;
 - (void)setSelectionStyle:(long long)arg1 animated:(_Bool)arg2;
 @property(nonatomic) long long selectionStyle;
@@ -48,9 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateColors;
 - (void)updateConstraints;
 @property(retain, nonatomic) UIFont *atomFont;
-- (double)_bottomMargin;
-- (double)_topToBaselineDelta;
-- (id)_font;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

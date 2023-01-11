@@ -14,9 +14,10 @@
 }
 
 + (double)defaultHeightForSuperview:(id)arg1;
-@property(retain, nonatomic) CALayer *separator; // @synthesize separator=_separator;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CALayer *separator; // @synthesize separator=_separator;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

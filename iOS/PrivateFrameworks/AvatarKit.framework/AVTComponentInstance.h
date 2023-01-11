@@ -10,28 +10,26 @@
 
 @interface AVTComponentInstance : NSObject
 {
-    SCNNode *_assetNode;
-    NSString *_assetImage;
     NSArray *_assets;
+    SCNNode *_assetNode;
+    NSString *_materialVariant;
+    NSString *_assetImage;
+    NSString *_assetImageVariant;
     NSDictionary *_layers;
 }
 
-@property(readonly) NSString *assetImage; // @synthesize assetImage=_assetImage;
-@property(readonly) SCNNode *assetNode; // @synthesize assetNode=_assetNode;
 - (void).cxx_destruct;
+@property(readonly) SCNNode *assetNode; // @synthesize assetNode=_assetNode;
 - (id)assetImageForAsset:(id)arg1;
 - (_Bool)has3DAsset;
+- (void)setMaterialVariant:(id)arg1;
+- (void)setImageVariant:(id)arg1;
+@property(readonly) NSString *assetImage; // @synthesize assetImage=_assetImage;
 - (_Bool)has2DAsset;
 - (void)updateMaterialsWithComponent:(id)arg1;
-- (id)initWithComponent:(id)arg1 forCaching:(_Bool)arg2;
-- (id)initWithComponent:(id)arg1;
-- (void)_commonInitForCaching:(_Bool)arg1 component:(id)arg2;
-@property(readonly) struct CGSize imageOffset;
-@property(readonly) _Bool imageMirror;
-@property(readonly) double imageScale;
+- (id)initWithComponent:(id)arg1 assetResourceCache:(id)arg2;
 @property(readonly) CDStruct_10883d13 uvRemappingInfo;
 - (id)assetImageWithLayerNamed:(id)arg1;
-- (void)dealloc;
 
 @end
 

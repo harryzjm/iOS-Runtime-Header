@@ -10,6 +10,9 @@
 @protocol UISearchBarDelegate><UISearchBarDelegate_Private;
 
 @protocol _UISearchBarVisualProvidingDelegate <NSObject>
+@property(readonly, nonatomic) Class _classForSearchTextField;
+@property(readonly, nonatomic) _Bool _effectivelySupportsDynamicType;
+@property(readonly, nonatomic) long long _expectedInterfaceOrientation;
 @property(readonly, nonatomic) UISearchController *_searchController;
 @property(readonly, nonatomic) long long barPosition;
 @property(readonly, nonatomic) _UINavigationControllerPalette *_containingNavigationPalette;

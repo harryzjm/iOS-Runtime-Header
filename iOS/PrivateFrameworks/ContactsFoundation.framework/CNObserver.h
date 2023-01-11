@@ -15,6 +15,7 @@
 + (void)sendArray:(id)arg1 error:(id)arg2 toObserver:(id)arg3 untilCanceled:(id)arg4;
 + (void)sendArray:(id)arg1 error:(id)arg2 toObserver:(id)arg3;
 + (id)observerWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (id)blockObserverOfClass:(Class)arg1 withResultBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
 + (id)observerWithResultBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 + (id)observerWithResultBlock:(CDUnknownBlockType)arg1;
 + (id)observerWithWeakTarget:(id)arg1 resultSelector:(SEL)arg2;

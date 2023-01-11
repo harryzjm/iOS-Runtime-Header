@@ -4,22 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 @protocol MTEventDataProviderDelegate;
 
 @interface MTEventDataProvider
 {
     id <MTEventDataProviderDelegate> _delegate;
     NSDictionary *_knownFieldMethods;
+    NSArray *_additionalData;
 }
 
+- (void).cxx_destruct;
+@property(retain) NSArray *additionalData; // @synthesize additionalData=_additionalData;
 @property(retain, nonatomic) NSDictionary *knownFieldMethods; // @synthesize knownFieldMethods=_knownFieldMethods;
 @property(nonatomic) __weak id <MTEventDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (SEL)knownFieldAccessorForFieldName:(id)arg1;
 - (id)processMetricsData:(id)arg1 performanceData:(id)arg2;
 - (id)knownFields;
 - (id)knownFieldMethodsForKnownFields:(id)arg1;
+- (id)flattenAdditionalData;
+- (void)addFieldsWithBlock:(CDUnknownBlockType)arg1;
+- (void)addFieldsWithPromise:(id)arg1;
+- (void)addFieldsWithDictionary:(id)arg1;
+- (void)addFields:(id)arg1;
 
 @end
 

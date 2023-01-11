@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)iterateAllPlacesWithBlock:(CDUnknownBlockType)arg1 finishedBlock:(CDUnknownBlockType)arg2;
 - (void)_iterateAllPlacesFilteringCacheKeyWithPredicate:(id)arg1 entryBlock:(CDUnknownBlockType)arg2 finishedBlock:(CDUnknownBlockType)arg3;
 - (void)close;
-- (void)_evictPlace:(id)arg1;
+- (void)_evictPlaceWithHash:(id)arg1;
 - (void)periodicCleanupAndAccessTimeUpdate;
 - (void)scheduleCleanup;
 - (void)enqueueAccessTimeUpdateForCacheKey:(id)arg1 accessTime:(long long)arg2;
@@ -65,9 +65,13 @@ __attribute__((visibility("hidden")))
 - (void)trackPlace:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)trackPlace:(id)arg1;
 - (id)_cacheKeyForHandle:(id)arg1;
-- (id)_cacheKeysForPlace:(id)arg1;
-- (void)_storePlace:(id)arg1 forRequestKeys:(id)arg2;
+- (id)_cacheKeysForPlace:(id)arg1 request:(id)arg2;
+- (void)_storePlace:(id)arg1 withHash:(id)arg2 forRequestKeys:(id)arg3;
 - (_Bool)_meetsManifestVersionPolicyForPlace:(id)arg1;
+- (_Bool)_deleteAndResetDB:(id)arg1;
+- (_Bool)_validateDBLocaleAndResetIfNecessary;
+- (void)_localeChanged:(id)arg1;
+- (void)dealloc;
 - (id)initWithCacheFilePath:(id)arg1 schedulingDelegate:(id)arg2 manifestInfoProvider:(id)arg3;
 
 @end

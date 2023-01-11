@@ -5,12 +5,11 @@
 //
 
 @class NSHashTable;
-@protocol HMFLocking;
 
 __attribute__((visibility("hidden")))
 @interface __HMFActivityManager
 {
-    id <HMFLocking> _lock;
+    struct os_unfair_lock_s _lock;
     NSHashTable *_activities;
 }
 

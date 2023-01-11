@@ -17,10 +17,10 @@
     MDLAnimatedMatrix4x4 *_animatedValue;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool inverse; // @synthesize inverse=_inverse;
 @property(readonly, nonatomic) MDLAnimatedMatrix4x4 *animatedValue; // @synthesize animatedValue=_animatedValue;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (CDStruct_14d5dc5e)double4x4AtTime:(double)arg1;
 - (CDStruct_14d5dc5e)float4x4AtTime:(double)arg1;
 - (_Bool)IsInverseOp;

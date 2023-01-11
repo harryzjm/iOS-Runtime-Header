@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
+#import <PersonalizationPortrait/PPRecord-Protocol.h>
 
-@class NSArray, NSString, NSUUID, PPLocation, PPSource;
+@class NSArray, NSSet, NSString, NSUUID, PPLocation, PPSource;
 
-@interface PPLocationRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface PPLocationRecord : NSObject <PPRecord, NSCopying, NSMutableCopying, NSSecureCoding, MLFeatureProvider>
 {
     NSUUID *_uuid;
     PPLocation *_location;
@@ -22,16 +24,22 @@
     float _decayRate;
     NSArray *_contextualNamedEntities;
     NSString *_extractionOsBuild;
-    unsigned short _extractionAssetVersion;
+    unsigned int _extractionAssetVersion;
     BOOL _bucketizedSentimentScore;
+    _Bool _isAmbiguous;
 }
 
++ (id)algorithmForName:(id)arg1;
 + (id)describeAlgorithm:(unsigned short)arg1;
 + (_Bool)supportsSecureCoding;
++ (id)sharedAmbiguousRecord;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isAmbiguous; // @synthesize isAmbiguous=_isAmbiguous;
 @property(readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property(readonly, nonatomic) NSArray *contextualNamedEntities; // @synthesize contextualNamedEntities=_contextualNamedEntities;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long extractionAssetVersion;
+- (id)featureValueForName:(id)arg1;
+@property(readonly, nonatomic) NSSet *featureNames;
+@property(readonly, nonatomic) unsigned int extractionAssetVersion;
 @property(readonly, nonatomic) double sentimentScore;
 @property(readonly, nonatomic) double decayRate;
 @property(readonly, nonatomic) double initialScore;
@@ -46,6 +54,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)supplementFieldsWithClusterID:(id)arg1 locationWithLatLong:(id)arg2;
+- (id)initAmbiguousRecord;
 - (id)init;
 - (id)init_;
 

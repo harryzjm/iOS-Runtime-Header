@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setNotifyButtonSelected:(_Bool)arg1;
+- (void)setNotifyOptionSelected:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 

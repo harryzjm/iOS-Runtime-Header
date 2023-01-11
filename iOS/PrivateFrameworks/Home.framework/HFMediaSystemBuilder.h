@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFMediaAccountArbitratingBuilderProtocol-Protocol.h>
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
-@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSString;
+@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSSet, NSString;
 @protocol HFIconDescriptor;
 
-@interface HFMediaSystemBuilder <HFServiceLikeBuilder>
+@interface HFMediaSystemBuilder <HFServiceLikeBuilder, HFMediaAccountArbitratingBuilderProtocol>
 {
     _Bool _isFavorite;
     _Bool _hasSetRoom;
@@ -23,6 +24,7 @@
 }
 
 + (Class)homeKitRepresentationClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isCreatingMediaSystem; // @synthesize isCreatingMediaSystem=_isCreatingMediaSystem;
 @property(nonatomic) _Bool hasSetRoom; // @synthesize hasSetRoom=_hasSetRoom;
 @property(retain, nonatomic) HFRoomBuilder *roomBuilder; // @synthesize roomBuilder=_roomBuilder;
@@ -32,7 +34,6 @@
 @property(retain, nonatomic) HFAppleMusicAccountArbitrator *accountArbitrator; // @synthesize accountArbitrator=_accountArbitrator;
 @property(retain, nonatomic) id <HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;
 @property(nonatomic) _Bool isFavorite; // @synthesize isFavorite=_isFavorite;
-- (void).cxx_destruct;
 - (id)_firstUnpopulatedRole;
 @property(retain, nonatomic) HFRoomBuilder *room;
 @property(readonly, nonatomic) _Bool supportsFavoriting;
@@ -47,7 +48,7 @@
 - (_Bool)swapRoles;
 - (_Bool)shouldAllowAddingAccessory:(id)arg1;
 - (id)removeItemFromHome;
-- (id)accessories;
+@property(readonly, nonatomic) NSSet *accessories;
 - (id)roleForAccessory:(id)arg1;
 - (id)accessoryForRole:(id)arg1;
 - (void)removeAccessory:(id)arg1;

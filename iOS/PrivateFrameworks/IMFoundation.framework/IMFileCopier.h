@@ -24,6 +24,7 @@
     CDUnknownBlockType _callback;
 }
 
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType _callback; // @synthesize _callback;
 @property(retain) NSObject<OS_dispatch_queue> *_queue; // @synthesize _queue;
 @property void *_BOMCopier; // @synthesize _BOMCopier;

@@ -10,7 +10,7 @@
 #import <EmailDaemon/EDPETMessageFrameTypeIntrospectable-Protocol.h>
 #import <EmailDaemon/NSCopying-Protocol.h>
 
-@class EDPBInteractionEventAppBackground, EDPBInteractionEventAppLaunch, EDPBInteractionEventAppResume, EDPBInteractionEventFlagChanged, EDPBInteractionEventForwardDraftStarted, EDPBInteractionEventForwardSent, EDPBInteractionEventLinkClicked, EDPBInteractionEventMarkedMuteThread, EDPBInteractionEventMessageCopied, EDPBInteractionEventMessageFetched, EDPBInteractionEventMessageMoved, EDPBInteractionEventMessageSent, EDPBInteractionEventMessageViewEnd, EDPBInteractionEventMessageViewStart, EDPBInteractionEventReadChanged, EDPBInteractionEventReplyDraftStarted, EDPBInteractionEventReplySent;
+@class EDPBInteractionEventAppBackground, EDPBInteractionEventAppLaunch, EDPBInteractionEventAppResume, EDPBInteractionEventCategoryInferred, EDPBInteractionEventCategoryMarked, EDPBInteractionEventFlagChanged, EDPBInteractionEventForwardDraftStarted, EDPBInteractionEventForwardSent, EDPBInteractionEventLinkClicked, EDPBInteractionEventMarkedMuteThread, EDPBInteractionEventMessageCopied, EDPBInteractionEventMessageFetched, EDPBInteractionEventMessageMoved, EDPBInteractionEventMessageSent, EDPBInteractionEventMessageViewEnd, EDPBInteractionEventMessageViewStart, EDPBInteractionEventReadChanged, EDPBInteractionEventReplyDraftStarted, EDPBInteractionEventReplySent;
 
 @interface EDPBInteractionEvent : PBCodable <EDPETMessageFrameTypeIntrospectable, EDPBDataSetters, NSCopying>
 {
@@ -18,6 +18,8 @@
     EDPBInteractionEventAppBackground *_appBackground;
     EDPBInteractionEventAppLaunch *_appLaunch;
     EDPBInteractionEventAppResume *_appResume;
+    EDPBInteractionEventCategoryInferred *_categoryInferred;
+    EDPBInteractionEventCategoryMarked *_categoryMarked;
     int _eventName;
     EDPBInteractionEventFlagChanged *_flagChanged;
     EDPBInteractionEventForwardDraftStarted *_forwardDraftStarted;
@@ -41,6 +43,9 @@
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) EDPBInteractionEventCategoryInferred *categoryInferred; // @synthesize categoryInferred=_categoryInferred;
+@property(retain, nonatomic) EDPBInteractionEventCategoryMarked *categoryMarked; // @synthesize categoryMarked=_categoryMarked;
 @property(retain, nonatomic) EDPBInteractionEventMarkedMuteThread *markedMuteThread; // @synthesize markedMuteThread=_markedMuteThread;
 @property(retain, nonatomic) EDPBInteractionEventForwardSent *forwardSent; // @synthesize forwardSent=_forwardSent;
 @property(retain, nonatomic) EDPBInteractionEventReplySent *replySent; // @synthesize replySent=_replySent;
@@ -60,7 +65,6 @@
 @property(retain, nonatomic) EDPBInteractionEventMessageFetched *messageFetched; // @synthesize messageFetched=_messageFetched;
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property(nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -70,6 +74,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCategoryInferred;
+@property(readonly, nonatomic) _Bool hasCategoryMarked;
 @property(readonly, nonatomic) _Bool hasMarkedMuteThread;
 @property(readonly, nonatomic) _Bool hasForwardSent;
 @property(readonly, nonatomic) _Bool hasReplySent;

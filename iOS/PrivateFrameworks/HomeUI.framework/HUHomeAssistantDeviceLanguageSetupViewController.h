@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
-
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUOnboardingWarningPresenter-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
-@interface HUHomeAssistantDeviceLanguageSetupViewController : OBWelcomeController <HUOnboardingWarningPresenter, HUConfigurationViewController, HUPreloadableViewController>
+@interface HUHomeAssistantDeviceLanguageSetupViewController <HUOnboardingWarningPresenter, HUConfigurationViewController, HUPreloadableViewController>
 {
     _Bool _maxNumberOfVoicesReached;
     _Bool _shouldSetMultiUserIsEnabled;
@@ -21,19 +19,33 @@
     OBTrayButton *_continueButton;
     OBLinkTrayButton *_customizeButton;
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
-    NSArray *_supportedMultiUserLanguages;
+    NSArray *_supportedVoiceRecognitionLanguages;
     NSArray *_homeAssistantDevicesHavingLanguageMismatch;
+    HMHome *_home;
+    NSString *_titleString;
+    NSString *_detailsString;
+    NSString *_continueButtonString;
+    SEL _continueSelector;
+    NSString *_customizeButtonString;
+    SEL _customizeSelector;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) SEL customizeSelector; // @synthesize customizeSelector=_customizeSelector;
+@property(nonatomic) NSString *customizeButtonString; // @synthesize customizeButtonString=_customizeButtonString;
+@property(nonatomic) SEL continueSelector; // @synthesize continueSelector=_continueSelector;
+@property(nonatomic) NSString *continueButtonString; // @synthesize continueButtonString=_continueButtonString;
+@property(nonatomic) NSString *detailsString; // @synthesize detailsString=_detailsString;
+@property(nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
 @property(nonatomic) _Bool shouldSetMultiUserIsEnabled; // @synthesize shouldSetMultiUserIsEnabled=_shouldSetMultiUserIsEnabled;
 @property(nonatomic) _Bool maxNumberOfVoicesReached; // @synthesize maxNumberOfVoicesReached=_maxNumberOfVoicesReached;
+@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) NSArray *homeAssistantDevicesHavingLanguageMismatch; // @synthesize homeAssistantDevicesHavingLanguageMismatch=_homeAssistantDevicesHavingLanguageMismatch;
-@property(retain, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property(retain, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 @property(retain, nonatomic) HUPersonalRequestsEditorItemManager *prEditorItemManager; // @synthesize prEditorItemManager=_prEditorItemManager;
 @property(retain, nonatomic) OBLinkTrayButton *customizeButton; // @synthesize customizeButton=_customizeButton;
 @property(retain, nonatomic) OBTrayButton *continueButton; // @synthesize continueButton=_continueButton;
 @property(nonatomic) __weak id <HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)_turnOffPersonalRequests;
@@ -45,7 +57,7 @@
 - (void)_cancelLanguageSetupWithoutWarningUser;
 - (void)_cancelLanguageSetup;
 - (id)hu_preloadContent;
-- (id)init;
+- (id)initWithHome:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

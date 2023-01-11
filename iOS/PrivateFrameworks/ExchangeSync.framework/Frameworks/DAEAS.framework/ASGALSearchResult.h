@@ -33,6 +33,7 @@
 + (_Bool)parsingWithSubItems;
 + (_Bool)parsingLeafNode;
 + (_Bool)acceptsTopLevelLeaves;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *mCollectionIDs; // @synthesize mCollectionIDs=_mCollectionIDs;
 @property(retain, nonatomic) NSMutableArray *mClasses; // @synthesize mClasses=_mClasses;
 @property(retain, nonatomic) NSDictionary *applicationData; // @synthesize applicationData=_applicationData;
@@ -50,7 +51,6 @@
 @property(retain, nonatomic) NSArray *collectionIDs; // @synthesize collectionIDs=_collectionIDs;
 @property(retain, nonatomic) NSArray *classes; // @synthesize classes=_classes;
 @property(retain, nonatomic) NSString *longID; // @synthesize longID=_longID;
-- (void).cxx_destruct;
 - (void)addCollectionID:(id)arg1;
 - (void)addClass:(id)arg1;
 - (id)convertToDAContactSearchResultElement;

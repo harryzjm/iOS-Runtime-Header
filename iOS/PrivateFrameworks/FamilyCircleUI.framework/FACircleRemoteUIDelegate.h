@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAUIServerUIHookHandler, FACircleContext, FARequestConfigurator, NSDictionary, NSString, NSURLRequest;
+@class AAUIServerUIHookHandler, FACircleContext, FAProfilePictureStore, FARequestConfigurator, NSDictionary, NSMutableDictionary, NSString, NSURLRequest, RUIPage;
 @protocol FACircleRemoteUIDelegateDelegate;
 
 @interface FACircleRemoteUIDelegate : NSObject <RemoteUIControllerDelegate>
@@ -17,13 +17,19 @@
     NSDictionary *_cachedServerInfo;
     AAUIServerUIHookHandler *_serverHookHandler;
     NSURLRequest *_cachedRequest;
+    NSMutableDictionary *_objectModelDecorators;
+    FAProfilePictureStore *_familyPictureStore;
+    NSDictionary *_dismissInfo;
+    _Bool _isReplacing;
+    RUIPage *_cachedPage;
     FACircleContext *_context;
     id <FACircleRemoteUIDelegateDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property __weak id <FACircleRemoteUIDelegateDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) FACircleContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
+- (void)_broadcastServicesDidChangeNotification;
 - (void)_broadcastFamilyDidChangeNotification;
 - (void)_reportRequestFailureWithResponse:(id)arg1;
 - (void)remoteUIController:(id)arg1 didRemoveObjectModel:(id)arg2;
@@ -32,12 +38,16 @@
 - (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)_handleObjectModelChangeForController:(id)arg1 objectModel:(id)arg2 isModal:(_Bool)arg3;
+- (void)remoteUIController:(id)arg1 didPresentObjectModel:(id)arg2 modally:(_Bool)arg3;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(_Bool)arg3;
 - (void)remoteUIController:(id)arg1 didRefreshObjectModel:(id)arg2;
+- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)_setUserInteractionForRUIPage:(id)arg1 enabled:(_Bool)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
+- (void)remoteUIController:(id)arg1 loadResourcesForObjectModel:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)_notifyDelegateOfCompletionWithSuccess:(_Bool)arg1 error:(id)arg2;
-- (id)initWithContext:(id)arg1 serverHookHandler:(id)arg2;
+- (id)initWithContext:(id)arg1 serverHookHandler:(id)arg2 pictureStore:(id)arg3;
 - (id)init;
 
 // Remaining properties

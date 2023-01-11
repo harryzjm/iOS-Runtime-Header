@@ -12,9 +12,8 @@
     id _delegate;
 }
 
-@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (id)aggregateDictionaryDomain;
+@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
 - (void)failWithError:(id)arg1;
 - (void)didParseData;
 - (void)parseData:(id)arg1;

@@ -18,6 +18,7 @@
     double _touchStartTime;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double touchStartTime; // @synthesize touchStartTime=_touchStartTime;
 @property(retain, nonatomic) id <ASVTouch> touch; // @synthesize touch=_touch;
 @property(readonly, nonatomic) unsigned long long enabledGestureTypes; // @synthesize enabledGestureTypes=_enabledGestureTypes;
@@ -25,7 +26,6 @@
 @property(nonatomic) MISSING_TYPE *latestTouchLocation; // @synthesize latestTouchLocation=_latestTouchLocation;
 @property(nonatomic) MISSING_TYPE *initialTouchLocation; // @synthesize initialTouchLocation=_initialTouchLocation;
 @property(nonatomic) _Bool panThresholdPassed; // @synthesize panThresholdPassed=_panThresholdPassed;
-- (void).cxx_destruct;
 - (void)finishGesture;
 - (_Bool)generatesTransforms;
 - (_Bool)generatesTaps;

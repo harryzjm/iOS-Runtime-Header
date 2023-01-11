@@ -13,19 +13,15 @@
     GEODaemon *_daemon;
 }
 
-+ (_Bool)canHandleIncomingMessage:(id)arg1;
-+ (Class)requestClassForMethod:(id)arg1;
-+ (_Bool)usesModernRequestReply;
 + (_Bool)shouldStartImmediately;
 + (Class)peerClass;
 + (id)identifier;
-@property(nonatomic) __weak GEODaemon *daemon; // @synthesize daemon=_daemon;
 - (void).cxx_destruct;
+@property(nonatomic) __weak GEODaemon *daemon; // @synthesize daemon=_daemon;
 - (id)description;
 - (void)peerDidDisconnect:(id)arg1;
 - (void)peerDidConnect:(id)arg1;
-- (void)handleRequest:(id)arg1;
-- (void)handleIncomingMessage:(id)arg1 fromPeer:(id)arg2;
+- (_Bool)handleIncomingMessage:(id)arg1 withObject:(id)arg2 fromPeer:(id)arg3;
 
 @end
 

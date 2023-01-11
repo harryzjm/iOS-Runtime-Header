@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexPath, NSLock, NSMutableArray, NSPointerArray, RTTUtterance;
+@class NSIndexPath, NSLock, NSMutableArray, NSMutableSet, NSPointerArray, RTTUtterance;
 @protocol OS_dispatch_queue;
 
 @interface RTTUIConversationControllerCoordinator : NSObject
@@ -17,19 +17,22 @@
     NSIndexPath *_inProgressRealTimeIndexPath;
     RTTUtterance *_inProgressRealTimeUtterance;
     struct __CTServerConnection *_ctConnection;
+    NSMutableSet *_registeredCalls;
     _Bool _processingUtteranceBuffer;
     NSMutableArray *_utteranceBuffer;
 }
 
 + (id)coordinator;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool processingUtteranceBuffer; // @synthesize processingUtteranceBuffer=_processingUtteranceBuffer;
 @property(retain, nonatomic) NSMutableArray *utteranceBuffer; // @synthesize utteranceBuffer=_utteranceBuffer;
 @property(readonly, nonatomic) RTTUtterance *inProgressRealTimeUtterance; // @synthesize inProgressRealTimeUtterance=_inProgressRealTimeUtterance;
 @property(readonly, nonatomic) NSIndexPath *inProgressRealTimeIndexPath; // @synthesize inProgressRealTimeIndexPath=_inProgressRealTimeIndexPath;
-- (void).cxx_destruct;
 - (void)processUtteranceQueue;
 - (void)_sendNewUtteranceString:(id)arg1 atIndex:(unsigned long long)arg2 forCellPath:(id)arg3 call:(id)arg4;
 - (_Bool)realtimeTextDidChange:(id)arg1 forUtterance:(id)arg2 lastRowPath:(id)arg3;
+- (void)registerForCallUpdates:(id)arg1;
+- (id)viewControllerForCallUUID:(id)arg1;
 - (void)sendNewUtteranceString:(id)arg1 controller:(id)arg2;
 - (id)conversationControllers;
 - (void)addConversationController:(id)arg1;

@@ -39,14 +39,21 @@
     NSDictionary *_messageSummaryInfo;
     NSDictionary *_bizIntent;
     NSString *_locale;
+    NSString *_threadIdentifier;
+    IMMessageItem *_threadOriginator;
     NSString *_retryToParticipant;
     NSString *_notificationIDSTokenURI;
     NSString *_suggestedAuthorName;
     NSString *_suggestedAuthorAvatarPath;
+    NSDictionary *_replyCountsByPart;
 }
 
++ (id)newMessageItemFrom:(id)arg1 withText:(id)arg2 deleteSubject:(_Bool)arg3 withFileTransferGUIDs:(id)arg4;
++ (id)_messageItemWithIndexesDeleted:(id)arg1 subRangesToDeleteMapping:(id)arg2 deleteSubject:(_Bool)arg3 deleteTransferCallback:(CDUnknownBlockType)arg4 createItemCallback:(CDUnknownBlockType)arg5 fromMessageItem:(id)arg6;
 + (_Bool)messageContainsSurfDD:(id)arg1;
 + (_Bool)supportsSecureCoding;
++ (unsigned long long)partKeyForAttachmentGUID:(id)arg1 inBody:(id)arg2;
+@property(copy, nonatomic) NSDictionary *replyCountsByPart; // @synthesize replyCountsByPart=_replyCountsByPart;
 @property(copy, nonatomic) NSString *suggestedAuthorAvatarPath; // @synthesize suggestedAuthorAvatarPath=_suggestedAuthorAvatarPath;
 @property(copy, nonatomic) NSString *suggestedAuthorName; // @synthesize suggestedAuthorName=_suggestedAuthorName;
 @property(nonatomic) _Bool shouldSendMeCard; // @synthesize shouldSendMeCard=_shouldSendMeCard;
@@ -58,6 +65,8 @@
 @property(retain, nonatomic) NSString *retryToParticipant; // @synthesize retryToParticipant=_retryToParticipant;
 @property(nonatomic) _Bool isBeingRetried; // @synthesize isBeingRetried=_isBeingRetried;
 @property(nonatomic) _Bool blockingRichLinks; // @synthesize blockingRichLinks=_blockingRichLinks;
+@property(retain, nonatomic) IMMessageItem *threadOriginator; // @synthesize threadOriginator=_threadOriginator;
+@property(copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property(retain, nonatomic) NSDictionary *messageSummaryInfo; // @synthesize messageSummaryInfo=_messageSummaryInfo;
@@ -77,6 +86,7 @@
 @property(nonatomic) unsigned int errorCode; // @synthesize errorCode=_error;
 @property(retain, nonatomic) NSString *plainBody; // @synthesize plainBody=_plainBody;
 @property(retain, nonatomic) NSString *subject; // @synthesize subject=_subject;
+- (_Bool)isReply;
 - (id)_localizedBackwardsCompatibleExpressiveSendText;
 - (_Bool)isLastMessageCandidate;
 - (_Bool)isFirstMessageCandidate;
@@ -94,6 +104,7 @@
 - (void)setWasDataDetected:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool wasDataDetected;
 @property(nonatomic) _Bool hasDataDetectorResults;
+@property(nonatomic) _Bool hasUnseenMention;
 @property(nonatomic) _Bool isSpam;
 @property(nonatomic) _Bool isCorrupt;
 @property(readonly, nonatomic) _Bool isFromExternalSource;
@@ -114,21 +125,24 @@
 @property(readonly, nonatomic) _Bool isAlert;
 - (id)sender;
 - (void)dealloc;
-- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 type:(long long)arg29;
-- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28;
+- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 type:(long long)arg29 threadIdentifier:(id)arg30;
+- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 threadIdentifier:(id)arg29;
 - (id)initWithSenderInfo:(id)arg1 time:(id)arg2 guid:(id)arg3 messageID:(long long)arg4 account:(id)arg5 accountID:(id)arg6 service:(id)arg7 handle:(id)arg8 roomName:(id)arg9 unformattedID:(id)arg10 countryCode:(id)arg11;
 - (id)initWithSender:(id)arg1 time:(id)arg2 guid:(id)arg3 type:(long long)arg4;
-- (id)initWithSender:(id)arg1 time:(id)arg2 body:(id)arg3 attributes:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 type:(long long)arg9;
-- (id)initWithSender:(id)arg1 time:(id)arg2 body:(id)arg3 attributes:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8;
+- (id)initWithSender:(id)arg1 time:(id)arg2 body:(id)arg3 attributes:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 type:(long long)arg9 threadIdentifier:(id)arg10;
+- (id)initWithSender:(id)arg1 time:(id)arg2 body:(id)arg3 attributes:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 threadIdentifier:(id)arg9;
 - (id)copyDictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithDictionary:(id)arg1 hint:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)attachmentGUIDAtIndex:(unsigned long long)arg1;
 - (void)enumerateAttachmentGUIDsWithBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)partKeyForAttachmentGUID:(id)arg1;
 - (id)copyForBackwardsCompatibility;
 - (id)copyWithFlags:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)powerLogMessageType;
 
 @end
 

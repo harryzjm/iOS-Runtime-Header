@@ -36,7 +36,13 @@
 - (void)xpcInvalidateSwitchAssertionWithIdentifier:(NSString *)arg1 block:(void (^)(NSError *))arg2;
 - (void)xpcSwitchActiveDeviceWithDeviceID:(NSUUID *)arg1 withAssertionHandler:(void (^)(NSError *, NSString *))arg2;
 - (void)xpcSwitchActiveDeviceWithDeviceID:(NSUUID *)arg1 isMagicSwitch:(_Bool)arg2 operationHasCompleted:(void (^)(NSError *))arg3;
+- (void)xpcSetWatchNeedsGraduation:(void (^)(NSError *))arg1;
+- (void)xpcClearWatchNeedsGraduation:(void (^)(NSError *))arg1;
+- (void)xpcWatchNeedsGraduation:(void (^)(_Bool))arg1;
+- (void)xpcPairingClientSetPairingParentName:(NSString *)arg1 pairingParentAltDSID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)xpcPairingClientSetAltAccountName:(NSString *)arg1 altDSID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)xpcPairingClientDidEnterPhase:(NSString *)arg1 withBlock:(void (^)(void))arg2;
+- (void)xpcSubmitRTCPairingMetricForMetricID:(NSString *)arg1 withSuccess:(void (^)(_Bool, NSError *))arg2;
 - (void)xpcSubmitAlbertPairingReport:(void (^)(void))arg1;
 - (void)xpcTriggerVersion4Workaround;
 - (void)xpcRetriggerUnpairInfoDialogWithBlock:(void (^)(void))arg1;

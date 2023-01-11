@@ -31,6 +31,8 @@
 + (id)newSecureHierarchyTokenFromParentToken:(id)arg1;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;
 + (_Bool)sendOneMessageWithSessionInfo:(id)arg1 userInfo:(id)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4 payload:(id)arg5 error:(id *)arg6;
++ (_Bool)closeEphemeralSessiontWithSessionId:(id)arg1;
++ (id)createEphemeralSessionWithSessionInfo:(id)arg1 userInfo:(id)arg2 error:(id *)arg3;
 + (id)getPersistentIdentifierForDNU:(_Bool)arg1;
 + (void)regeneratePersistentIdentifierForDNU:(_Bool)arg1;
 @property(copy, nonatomic) CDUnknownBlockType messageLoggingBlock; // @synthesize messageLoggingBlock=_loggingBlock;

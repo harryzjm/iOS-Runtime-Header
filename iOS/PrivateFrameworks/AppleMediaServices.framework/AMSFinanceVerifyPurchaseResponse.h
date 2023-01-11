@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AMSURLTaskInfo, NSDictionary;
+#import <objc/NSObject.h>
+
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
+
+@class AMSDialogRequest, AMSURLTaskInfo, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceVerifyPurchaseResponse
+@interface AMSFinanceVerifyPurchaseResponse : NSObject <AMSFinancePerformable>
 {
+    AMSDialogRequest *_dialogRequest;
     NSDictionary *_responseDictionary;
     AMSURLTaskInfo *_taskInfo;
     long long _verifyType;
@@ -18,10 +23,11 @@ __attribute__((visibility("hidden")))
 + (id)_dialogRequestForCVVFromPayload:(id)arg1 verifyType:(long long)arg2;
 + (id)_dialogRequestForCarrierFromPayload:(id)arg1 verifyType:(long long)arg2;
 + (_Bool)isVerifyPurchasePayload:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long verifyType; // @synthesize verifyType=_verifyType;
 @property(retain, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 @property(retain, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
-- (void).cxx_destruct;
+@property(retain, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
 - (id)_runCVVRequestForCode:(id)arg1 error:(id *)arg2;
 - (id)_runCarrierVerifyCode:(id)arg1 error:(id *)arg2;
 - (id)_runCarrierNewCodeWithError:(id *)arg1;
@@ -29,6 +35,12 @@ __attribute__((visibility("hidden")))
 - (id)_handleCarrierDialogResult:(id)arg1 shouldReattempt:(_Bool *)arg2;
 - (id)performWithTaskInfo:(id)arg1;
 - (id)initWithPayload:(id)arg1 taskInfo:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

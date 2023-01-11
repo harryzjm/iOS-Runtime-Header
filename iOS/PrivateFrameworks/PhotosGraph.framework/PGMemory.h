@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosGraph/PGMemoryCore-Protocol.h>
 #import <PhotosGraph/PGMemoryProtocol-Protocol.h>
 
 @class CLLocation, NSArray, NSDate, NSDictionary, NSMutableSet, NSSet, NSString, PGMemoryDebug, PHAsset, PHAssetCollection;
 
-@interface PGMemory : NSObject <PGMemoryProtocol>
+@interface PGMemory : NSObject <PGMemoryProtocol, PGMemoryCore>
 {
     NSDate *_creationDate;
     PHAssetCollection *_assetCollection;
-    PHAssetCollection *_curatedAssetCollection;
-    PHAssetCollection *_extendedCuratedAssetCollection;
+    NSArray *_curatedAssets;
+    NSArray *_extendedCuratedAssets;
     PHAsset *_curatedKeyAsset;
     NSDate *_localStartDate;
     NSDate *_localEndDate;
@@ -38,7 +39,6 @@
     NSSet *_features;
     NSMutableSet *_persistedFeatures;
     unsigned long long _aggregatedVersions;
-    NSString *_meUUID;
     PGMemoryDebug *_debug;
     long long _notificationQuality;
     NSSet *_momentIDs;
@@ -53,6 +53,7 @@
 + (id)greatMemoryCriteria;
 + (id)stellarMemoryCriteria;
 + (id)mustSeeMemoryCriteria;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *musicGenreDistribution; // @synthesize musicGenreDistribution=_musicGenreDistribution;
 @property(nonatomic) NSString *rejectionCause; // @synthesize rejectionCause=_rejectionCause;
 @property(retain, nonatomic) NSArray *blacklistableFeatures; // @synthesize blacklistableFeatures=_blacklistableFeatures;
@@ -60,7 +61,6 @@
 @property(retain, nonatomic) NSSet *momentIDs; // @synthesize momentIDs=_momentIDs;
 @property(nonatomic) long long notificationQuality; // @synthesize notificationQuality=_notificationQuality;
 @property(retain, nonatomic) PGMemoryDebug *debug; // @synthesize debug=_debug;
-@property(retain, nonatomic) NSString *meUUID; // @synthesize meUUID=_meUUID;
 @property(readonly, nonatomic) unsigned long long aggregatedVersions; // @synthesize aggregatedVersions=_aggregatedVersions;
 @property(retain, nonatomic) NSMutableSet *persistedFeatures; // @synthesize persistedFeatures=_persistedFeatures;
 @property(retain, nonatomic) NSSet *features; // @synthesize features=_features;
@@ -83,11 +83,13 @@
 @property(retain, nonatomic) NSDate *localEndDate; // @synthesize localEndDate=_localEndDate;
 @property(retain, nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
 @property(retain, nonatomic) PHAsset *curatedKeyAsset; // @synthesize curatedKeyAsset=_curatedKeyAsset;
-@property(retain, nonatomic) PHAssetCollection *extendedCuratedAssetCollection; // @synthesize extendedCuratedAssetCollection=_extendedCuratedAssetCollection;
-@property(retain, nonatomic) PHAssetCollection *curatedAssetCollection; // @synthesize curatedAssetCollection=_curatedAssetCollection;
+@property(retain, nonatomic) NSArray *extendedCuratedAssets; // @synthesize extendedCuratedAssets=_extendedCuratedAssets;
+@property(retain, nonatomic) NSArray *curatedAssets; // @synthesize curatedAssets=_curatedAssets;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long suggestedMood;
+@property(readonly, nonatomic) NSArray *moodKeywords;
+@property(readonly, nonatomic) NSArray *meaningLabels;
 - (void)addPersistedFeature:(id)arg1;
 @property(nonatomic) unsigned short memoriesAlgorithmsVersion;
 @property(nonatomic) unsigned short relatedAlgorithmsVersion;

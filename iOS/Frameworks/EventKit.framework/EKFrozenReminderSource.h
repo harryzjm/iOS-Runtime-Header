@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)meltedClass;
+- (_Bool)disabled;
+- (id)defaultAlarmOffset;
 - (int)flags;
 - (void)setLastSyncEndDate:(id)arg1;
 - (void)setLastSyncStartDate:(id)arg1;

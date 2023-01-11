@@ -12,6 +12,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowAutoPIP; // @dynamic allowAutoPIP;
+@property(readonly, nonatomic) _Bool visualizeKeyboardFrame; // @dynamic visualizeKeyboardFrame;
 
 @end
 

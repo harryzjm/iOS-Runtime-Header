@@ -9,28 +9,34 @@
 #import <SetupAssistant/AKAppleIDAuthenticationDelegate-Protocol.h>
 #import <SetupAssistant/BYNetworkObserver-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSString;
+@class AKAppleIDAuthenticationContext, NSDictionary, NSString;
 
 @interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate, BYNetworkObserver>
 {
     AKAppleIDAuthenticationContext *_authContext;
     _Bool _shouldRetrySilentLoginUpgrade;
     long long _silentLoginUpgradeRetryCount;
+    NSDictionary *_authenticationResults;
 }
 
++ (_Bool)isManagedAppleIDSignedIn;
 + (_Bool)isSettingUpMultiUser;
 + (_Bool)isFirstTimeLogin;
 + (_Bool)isMultiUser;
 + (id)delegateBundleIDsForManagedAccount;
 + (id)sharedManager;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;
 @property(nonatomic) long long silentLoginUpgradeRetryCount; // @synthesize silentLoginUpgradeRetryCount=_silentLoginUpgradeRetryCount;
 @property(nonatomic) _Bool shouldRetrySilentLoginUpgrade; // @synthesize shouldRetrySilentLoginUpgrade=_shouldRetrySilentLoginUpgrade;
-- (void).cxx_destruct;
+- (void)willSwitchUser;
+- (void)_modifyAuthenticationContextIfNeeded:(id)arg1;
 - (void)networkChangedFromNetworkType:(int)arg1 toNetworkType:(int)arg2;
+- (id)_fetchAKURLBagSynchronously;
 - (void)writeAccountConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_languageConfigurationDictionary;
 - (void)_upgradeShortLivedTokenCompletion:(CDUnknownBlockType)arg1;
-- (void)_createAppleAccountWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_createAppleAccountWithAuthenticationResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)recoverEMCSWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1 shortLivedTokenUpgradeCompletion:(CDUnknownBlockType)arg2 willNotCompleteBlock:(CDUnknownBlockType)arg3;
 - (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1 shortLivedTokenUpgradeCompletion:(CDUnknownBlockType)arg2;

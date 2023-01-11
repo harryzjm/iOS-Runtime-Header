@@ -15,8 +15,9 @@
     PKPassGroupView *_groupView;
 }
 
-@property(readonly, nonatomic) PKPassGroupView *groupView; // @synthesize groupView=_groupView;
++ (id)identifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKPassGroupView *groupView; // @synthesize groupView=_groupView;
 - (id)initWithGroupView:(id)arg1;
 
 // Remaining properties

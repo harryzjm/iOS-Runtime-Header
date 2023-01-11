@@ -6,18 +6,21 @@
 
 #import <AVFoundation/AVPlayerItem.h>
 
-@class AVEditBehaviorContext, AVMusicAppBehaviorContext;
+@class AVEditBehaviorContext, AVMusicAppBehaviorContext, NSString;
 
 @interface AVPlayerItem (AVKitAdditionsPrivate)
 - (id)avkit_data;
 - (id)avkit_dataOrNil;
 - (void)setExternalMetadata:(id)arg1;
 - (id)externalMetadata;
+- (void)avkit_airMessageSendToAppleTV;
+- (void)avkit_airMessageSendExternalMetadata;
 - (id)avkit_valueForAVKitProperty:(id)arg1;
 - (void)avkit_setValue:(id)arg1 forAVKitProperty:(id)arg2;
 - (void)avkit_setMusicBehaviorData:(id)arg1;
 @property(readonly, nonatomic) __weak AVMusicAppBehaviorContext *avkit_musicAppBehaviorContext;
 - (void)avkit_setCurrentEditBehaviorContext:(id)arg1;
 @property(readonly, nonatomic) __weak AVEditBehaviorContext *avkit_currentEditBehaviorContext;
+@property(readonly, nonatomic) NSString *avkitACMIdentifier;
 @end
 

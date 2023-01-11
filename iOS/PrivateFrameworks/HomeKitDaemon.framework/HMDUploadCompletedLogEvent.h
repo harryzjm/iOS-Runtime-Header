@@ -13,8 +13,8 @@
 
 + (id)uploadCompletedWithError:(id)arg1;
 + (id)uuid;
-@property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 - (id)initUploadWithError:(id)arg1;
 
 @end

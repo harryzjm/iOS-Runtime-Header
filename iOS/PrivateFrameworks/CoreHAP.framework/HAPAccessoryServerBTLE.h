@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CBPeripheral, HAPAccessoryServerBrowserBTLE, NSNumber;
+#import <CoreHAP/HAPAccessoryServerMetricProtocol-Protocol.h>
 
-@interface HAPAccessoryServerBTLE
+@class CBPeripheral, HAPAccessoryServerBrowserBTLE, NSArray, NSNumber, NSString;
+
+@interface HAPAccessoryServerBTLE <HAPAccessoryServerMetricProtocol>
 {
     unsigned char _connectReason;
     _Bool _stateChanged;
@@ -16,22 +18,29 @@
     CBPeripheral *_peripheral;
     unsigned long long _hapBLEProtocolVersion;
     unsigned long long _resumeSessionID;
+    unsigned long long _metricHAPBTLEConnectionCount;
+    unsigned long long _metricHAPBTLEDiscoveryCount;
+    unsigned long long _metricHAPBTLEConnectionPerReasonCount;
     HAPAccessoryServerBrowserBTLE *_browser;
 }
 
 + (id)hapUUIDFromBTLEUUID:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned char connectionIdleTime; // @synthesize connectionIdleTime=_connectionIdleTime;
 @property(readonly, nonatomic) __weak HAPAccessoryServerBrowserBTLE *browser; // @synthesize browser=_browser;
+@property(nonatomic) unsigned long long metricHAPBTLEConnectionPerReasonCount; // @synthesize metricHAPBTLEConnectionPerReasonCount=_metricHAPBTLEConnectionPerReasonCount;
+@property(nonatomic) unsigned long long metricHAPBTLEDiscoveryCount; // @synthesize metricHAPBTLEDiscoveryCount=_metricHAPBTLEDiscoveryCount;
+@property(nonatomic) unsigned long long metricHAPBTLEConnectionCount; // @synthesize metricHAPBTLEConnectionCount=_metricHAPBTLEConnectionCount;
 @property(readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;
 @property(readonly, nonatomic) unsigned long long hapBLEProtocolVersion; // @synthesize hapBLEProtocolVersion=_hapBLEProtocolVersion;
 @property(readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property(nonatomic) _Bool notifyingCharacteristicUpdated; // @synthesize notifyingCharacteristicUpdated=_notifyingCharacteristicUpdated;
 @property(nonatomic) _Bool stateChanged; // @synthesize stateChanged=_stateChanged;
-- (void).cxx_destruct;
+- (_Bool)isPaired;
 - (void)generateBroadcastKey:(unsigned char)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)configureCharacteristics:(id)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;
-- (_Bool)updatePeripheralIdentifier:(id *)arg1;
+- (_Bool)updatePeripheralIdentifier:(id *)arg1 isPairing:(_Bool)arg2;
 - (void)updatePeripheral:(id)arg1;
 - (_Bool)updateResumeSessionID:(unsigned long long)arg1;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -40,6 +49,19 @@
 @property(copy, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 - (long long)linkType;
 - (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
+- (id)readAndResetHAPMetrics:(_Bool)arg1;
+- (void)incrementHAPBTLEMetricsDiscoveryCount;
+- (void)incrementHAPBTLEMetricsConnectionCount;
+
+// Remaining properties
+@property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *privateDescription;
+@property(readonly, copy) NSString *propertyDescription;
+@property(readonly, copy) NSString *shortDescription;
+@property(readonly) Class superclass;
 
 @end
 

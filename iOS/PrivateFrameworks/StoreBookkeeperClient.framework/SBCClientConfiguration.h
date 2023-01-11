@@ -10,14 +10,15 @@
 
 @class SBCPlaybackPositionDomain;
 
+__attribute__((visibility("hidden")))
 @interface SBCClientConfiguration : NSObject <NSSecureCoding>
 {
     SBCPlaybackPositionDomain *_playbackPositionDomain;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) SBCPlaybackPositionDomain *playbackPositionDomain; // @synthesize playbackPositionDomain=_playbackPositionDomain;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SBCPlaybackPositionDomain *playbackPositionDomain; // @synthesize playbackPositionDomain=_playbackPositionDomain;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;

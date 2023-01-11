@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *fmfSession;
+    MISSING_TYPE *fences;
     MISSING_TYPE *locationShifter;
     MISSING_TYPE *updateQueue;
-    MISSING_TYPE *fences;
     MISSING_TYPE *locationAlertsOnMeByMe;
     MISSING_TYPE *locationAlertsOnMeByFriends;
     MISSING_TYPE *locationAlertsOnFriendsByMe;

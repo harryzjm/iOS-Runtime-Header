@@ -23,18 +23,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)controllerForCollectionView:(id)arg1 delegate:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UICollectionViewDragSourceControllerDragState *dragState; // @synthesize dragState=_dragState;
 @property(retain, nonatomic) _UICollectionViewDragSourceControllerSessionState *sessionState; // @synthesize sessionState=_sessionState;
 @property(nonatomic) __weak id <_UICollectionViewDragSourceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak UIDragInteraction *dragInteraction; // @synthesize dragInteraction=_dragInteraction;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-- (void).cxx_destruct;
 - (void)applyingRebasingUpdatesWithUpdateMap:(id)arg1;
 - (id)_filterCandidateIndexPaths:(id)arg1 forUserSelectedIndexPath:(id)arg2 session:(id)arg3;
 - (void)_sessionWillBegin:(id)arg1 forDragInteraction:(id)arg2;
 - (id)_previewParametersForItemAtIndexPath:(id)arg1;
 - (id)_queryForItemsFromClientForSession:(id)arg1 dataSourceIndexPath:(id)arg2 location:(struct CGPoint)arg3 isInitialQuery:(_Bool)arg4;
-- (_Bool)_isCompatibilityMode;
 - (void)_addDragItemsToExistingSession:(id)arg1 forDataSourceIndexPath:(id)arg2;
 - (_Bool)_delegateImplementsSelector:(SEL)arg1;
 - (_Bool)_delegateImplementsDragSourceDidAddItem;
@@ -67,8 +66,10 @@ __attribute__((visibility("hidden")))
 - (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (void)deactivate;
 - (void)setDragInteractionEnabled:(_Bool)arg1;
 - (id)indexPathForDragItem:(id)arg1;
+@property(readonly, nonatomic) _Bool dragItemsCreatedForReordering;
 @property(readonly, nonatomic) _Bool isActive;
 @property(readonly, nonatomic) NSIndexPath *dragFromIndexPath;
 @property(readonly, nonatomic) NSArray *dragFromIndexPaths;

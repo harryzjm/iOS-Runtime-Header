@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)shouldHighlight;
 + (id)reuseIdentifier;
-@property(retain, nonatomic) CKDetailsAddGroupNameView *groupNameView; // @synthesize groupNameView=_groupNameView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDetailsAddGroupNameView *groupNameView; // @synthesize groupNameView=_groupNameView;
 - (void)dealloc;
+- (id)_ckSymbolImageNamed:(id)arg1 preferredContentSizeCategory:(id)arg2 preferredFontTextStyle:(id)arg3;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,6 +7,9 @@
 #import <UIKit/UIButton.h>
 
 @interface UIButton (HUClipScrubberAdditions)
++ (void)hu_microphoneButton:(id)arg1 forTalkingState:(_Bool)arg2 usingStandardSymbolConfiguration:(_Bool)arg3;
++ (void)hu_doneStateForButton:(id)arg1 usingStandardSymbolConfiguration:(_Bool)arg2;
++ (void)hu_talkStateForButton:(id)arg1 usingStandardSymbolConfiguration:(_Bool)arg2;
 + (id)hu_clipScrubberNearbyAccessoryButton;
 + (id)hu_clipScrubberLiveButton;
 @end

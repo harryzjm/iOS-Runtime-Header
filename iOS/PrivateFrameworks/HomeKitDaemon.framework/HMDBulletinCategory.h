@@ -16,6 +16,7 @@
 + (_Bool)isSensorDetectedCharacteristic:(id)arg1;
 + (id)trimLeadingAndTailingSpacesInName:(id)arg1;
 + (id)localizedStateForCharacteristic:(id)arg1;
++ (id)localizedStringForItems:(id)arg1;
 + (id)_sensorMap;
 + (id)_secureStateMap;
 + (id)_enumerationValueLocalizationKeys;

@@ -18,8 +18,8 @@
     id <SBReusableViewMapDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBReusableViewMapDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBReusableViewMapDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -27,6 +27,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) unsigned long long viewRecyclingCount;
 @property(readonly, nonatomic) unsigned long long recycledViewCount;
+- (void)enumerateRecycledViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)addRecycledViewsOfClass:(Class)arg1 upToCount:(unsigned long long)arg2;
 - (void)invalidate;
 - (void)purgeAllViews;

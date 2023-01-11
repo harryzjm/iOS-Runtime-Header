@@ -10,6 +10,13 @@
 {
 }
 
++ (id)trialFolderResourcePath;
++ (id)metricsRootDirectory;
++ (id)biomeStreamsRootDirectory;
++ (id)feedbackRootDirectory;
++ (id)focusModesAppScoresFile;
++ (id)uiCachesRootDirectory;
++ (id)clientModelCachesRootDirectory;
 + (id)magicalMomentsPredictionTablesRootDirectory;
 + (id)appPredictionCacheDirectory;
 + (id)appPredictionDirectoryFile:(id)arg1;

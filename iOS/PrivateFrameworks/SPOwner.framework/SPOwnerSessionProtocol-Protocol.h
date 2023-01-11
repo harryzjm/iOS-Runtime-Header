@@ -14,7 +14,7 @@
 @property(copy, nonatomic) CDUnknownBlockType beaconRemovedBlock;
 @property(copy, nonatomic) CDUnknownBlockType beaconAddedBlock;
 @property(copy, nonatomic) CDUnknownBlockType beaconsChangedBlock;
-- (void)shareBeacon:(SPBeacon *)arg1 handles:(NSArray *)arg2 completion:(void (^)(NSDictionary *))arg3;
+@property(copy, nonatomic) NSSet *locationSources;
 - (void)executeCommand:(SPCommand *)arg1 completion:(void (^)(NSError *))arg2;
 - (FMFuture *)executeCommand:(SPCommand *)arg1;
 - (void)removeBeacon:(SPBeacon *)arg1 completion:(void (^)(NSError *))arg2;

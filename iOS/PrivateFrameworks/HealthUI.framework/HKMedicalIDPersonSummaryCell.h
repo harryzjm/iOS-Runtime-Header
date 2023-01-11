@@ -14,26 +14,33 @@
     UILabel *_nameLabel;
     UILabel *_birthdateLabel;
     UILabel *_organDonationLabel;
+    UILabel *_emergencyAccessLabel;
+    UIStackView *_fullContainerView;
     UIStackView *_mainContainerView;
     UIStackView *_labelContainerView;
     UIFont *_nameLabelFont;
     NSLayoutConstraint *_pictureWidthAnchor;
     NSCalendar *_gregorianCalendar;
     _Bool _resetFormatters;
+    _Bool _shareDuringEmergencyCalls;
+    _Bool _shareOnLockScreen;
     UIImage *_picture;
     NSString *_name;
     NSDateComponents *_gregorianBirthday;
     NSNumber *_organDonationStatus;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shareOnLockScreen; // @synthesize shareOnLockScreen=_shareOnLockScreen;
+@property(nonatomic) _Bool shareDuringEmergencyCalls; // @synthesize shareDuringEmergencyCalls=_shareDuringEmergencyCalls;
 @property(retain, nonatomic) NSNumber *organDonationStatus; // @synthesize organDonationStatus=_organDonationStatus;
 @property(retain, nonatomic) NSDateComponents *gregorianBirthday; // @synthesize gregorianBirthday=_gregorianBirthday;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) UIImage *picture; // @synthesize picture=_picture;
-- (void).cxx_destruct;
+- (void)buildEmergencyAccessTableItem;
 - (id)_cachedCalendar;
 - (id)notOrganDonorString;
-- (id)organDonorStringWithTemplate:(id)arg1;
+- (id)stringWithImageNamed:(id)arg1 withText:(id)arg2 andColor:(id)arg3;
 - (void)updateSubviewsFromData;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)timeZoneDidChange:(id)arg1;

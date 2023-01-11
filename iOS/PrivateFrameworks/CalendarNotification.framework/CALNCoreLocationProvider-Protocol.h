@@ -10,6 +10,8 @@
 
 @protocol CALNCoreLocationProvider <NSObject>
 - (void)markAsHavingReceivedLocationWithEffectiveBundleIdentifier:(NSString *)arg1;
+- (_Bool)preciseLocationAuthorizedForBundle:(NSBundle *)arg1;
+- (_Bool)preciseLocationAuthorizedForBundleIdentifier:(NSString *)arg1;
 - (int)authorizationStatusForBundle:(NSBundle *)arg1;
 - (int)authorizationStatusForBundleIdentifier:(NSString *)arg1;
 @end

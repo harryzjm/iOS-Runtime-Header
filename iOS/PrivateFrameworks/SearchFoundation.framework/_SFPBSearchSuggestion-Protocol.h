@@ -10,6 +10,8 @@
 
 @protocol _SFPBSearchSuggestion <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSDictionary *serverFeatures;
+@property(copy, nonatomic) NSString *detailText;
 @property(copy, nonatomic) NSString *utteranceText;
 @property(copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier;
 @property(copy, nonatomic) NSString *fbr;
@@ -24,6 +26,8 @@
 @property(copy, nonatomic) NSString *identifier;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(NSString *)arg2;
+- (_Bool)getServerFeatures:(double *)arg1 forKey:(NSString *)arg2;
 - (_SFPBSearchSuggestion *)duplicateSuggestionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)duplicateSuggestionsCount;
 - (void)addDuplicateSuggestions:(_SFPBSearchSuggestion *)arg1;

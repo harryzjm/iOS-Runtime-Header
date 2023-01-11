@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface WFStartTimerAction
+#import <WorkflowKit/WFHandleSystemIntentAction.h>
+
+@interface WFStartTimerAction : WFHandleSystemIntentAction
 {
 }
 
-- (void)constructAceCommandWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;
+- (_Bool)skipsProcessingHiddenParameters;
+- (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

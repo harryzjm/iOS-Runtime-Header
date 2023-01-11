@@ -6,12 +6,14 @@
 
 #import <EmailDaemon/NSObject-Protocol.h>
 
-@class EFQuery, EMContentRequestOptions, EMMailboxScope, EMMessageChangeAction, EMMessageObjectID, EMObjectID, NSArray, NSProgress, NSString;
-@protocol EMContentItemRequestDelegate, EMMessageListItemQueryResultsObserver, EMMessageRepositoryCountQueryObserver_xpc;
+@class EFQuery, EMContentRequestOptions, EMMailboxScope, EMMessageChangeAction, EMMessageObjectID, EMObjectID, NSArray, NSProgress, NSString, NSURL;
+@protocol EMContentItemRequestDelegate, EMMessageListItemQueryResultsObserver, EMMessageRepositoryCountQueryObserver_xpc, EMMessageRepositoryMailboxPredictionObserver_xpc;
 
 @protocol EMMessageRepositoryInterface <NSObject>
+- (void)messageObjectIDsForSearchableItemIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)messageObjectIDForURL:(NSURL *)arg1 completionHandler:(void (^)(EMMessageObjectID *, NSError *))arg2;
 - (void)loadOlderMessagesForMailboxes:(NSArray *)arg1;
-- (void)predictMailboxForMovingMessages:(NSArray *)arg1 completionHandler:(void (^)(EMMailbox *))arg2;
+- (void)predictMailboxForMovingMessages:(NSArray *)arg1 withObserver:(id <EMMessageRepositoryMailboxPredictionObserver_xpc>)arg2 completionHandler:(void (^)(id <EFCancelable>))arg3;
 - (void)getCachedMetadataJSONForKey:(NSString *)arg1 messageID:(EMMessageObjectID *)arg2 completionHandler:(void (^)(NSString *))arg3;
 - (void)setCachedMetadataJSON:(NSString *)arg1 forKey:(NSString *)arg2 messageID:(EMMessageObjectID *)arg3;
 - (void)resetPrecomputedThreadScopesForMailboxScope:(EMMailboxScope *)arg1;

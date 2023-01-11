@@ -6,13 +6,14 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureController, PGPictureInPictureViewController;
+@class NSString, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureController, PGPictureInPictureViewController;
 
 @protocol PGPictureInPictureControllerDelegate <NSObject>
 
 @optional
 - (_Bool)pictureInPictureController:(PGPictureInPictureController *)arg1 shouldDenyNewConnection:(NSXPCConnection *)arg2;
 - (_Bool)pictureInPictureController:(PGPictureInPictureController *)arg1 shouldCancelPictureInPictureForApplication:(PGPictureInPictureApplication *)arg2 whenStartingPictureInPictureForApplication:(PGPictureInPictureApplication *)arg3;
+- (void)pictureInPictureController:(PGPictureInPictureController *)arg1 didRequestStopForPictureInPictureViewController:(PGPictureInPictureViewController *)arg2 sourceSceneSessionIdentifier:(NSString *)arg3 animated:(_Bool)arg4;
 - (void)pictureInPictureController:(PGPictureInPictureController *)arg1 didHidePictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureController:(PGPictureInPictureController *)arg1 willHidePictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureController:(PGPictureInPictureController *)arg1 willDestroyPictureInPictureViewController:(PGPictureInPictureViewController *)arg2;

@@ -46,8 +46,11 @@ __attribute__((visibility("hidden")))
     id <_UIRemoteKeyboardControllerDelegate> _controllerDelegate;
     UIInputSetHostView *_hostView;
     id <UIInputViewSetPlacementApplicator> _applicator;
+    UIView *_floatingKeyboardMaskView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *floatingKeyboardMaskView; // @synthesize floatingKeyboardMaskView=_floatingKeyboardMaskView;
 @property(retain, nonatomic) id <UIInputViewSetPlacementApplicator> applicator; // @synthesize applicator=_applicator;
 @property(retain, nonatomic) UIInputSetHostView *hostView; // @synthesize hostView=_hostView;
 @property(retain, nonatomic) id <_UIRemoteKeyboardControllerDelegate> controllerDelegate; // @synthesize controllerDelegate=_controllerDelegate;
@@ -57,7 +60,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak UIInputWindowControllerHosting *container; // @synthesize container=_container;
 @property(readonly, nonatomic) _Bool scrollKeyboardActive; // @synthesize scrollKeyboardActive=_scrolling;
 @property(readonly, retain, nonatomic) UISplitKeyboardSupport *splitKeyboardController; // @synthesize splitKeyboardController=_cachedSplitKeyboardController;
-- (void).cxx_destruct;
 - (void)enumerateBoundingRects:(CDUnknownBlockType)arg1;
 - (void)clearInteractiveTransitionStateIfNecessary;
 - (void)finishScrollViewTransition;
@@ -70,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)resetVerticalConstraint;
 - (void)didFinishTranslationFromPlacement:(id)arg1 to:(id)arg2;
 - (void)willBeginTranslationFromPlacement:(id)arg1 to:(id)arg2;
+- (void)prepareTranslationFromPlacement:(id)arg1 to:(id)arg2;
 - (void)transitionDidFinish:(_Bool)arg1;
 - (void)setPlacement:(id)arg1 quietly:(_Bool)arg2 animated:(_Bool)arg3 generateSplitNotification:(_Bool)arg4;
 - (void)completeTransition:(id)arg1 withInfo:(id)arg2;
@@ -101,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)someViewDidLayoutSubviews;
 - (void)refreshApplicator;
 - (void)updateVisibilityConstraintsForPlacement:(id)arg1;
+- (void)clearVisibilityConstraints;
 - (void)updateKeyboardDockViewVisibility;
 - (void)configureDockViewController:(_Bool)arg1;
 - (void)updateSupportsDockViewController;

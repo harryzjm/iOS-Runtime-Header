@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImage;
+@class NSHashTable, UIImage;
 
 @interface TLKImage
 {
     _Bool _isTemplate;
-    _Bool _shouldCropToCircle;
     _Bool _useFastPathShadow;
     UIImage *_uiImage;
+    unsigned long long _cornerRoundingStyle;
     double _cornerRadius;
+    NSHashTable *_completionTable;
     struct CGSize _size;
 }
 
-@property(nonatomic) _Bool useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSHashTable *completionTable; // @synthesize completionTable=_completionTable;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property(nonatomic) _Bool shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
+@property(nonatomic) _Bool useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
+@property(nonatomic) unsigned long long cornerRoundingStyle; // @synthesize cornerRoundingStyle=_cornerRoundingStyle;
 @property(nonatomic) _Bool isTemplate; // @synthesize isTemplate=_isTemplate;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(retain, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
-- (void).cxx_destruct;
+- (void)didLoadImageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithImage:(id)arg1;
 - (id)init;
 @property(readonly, nonatomic) UIImage *uiImageToRender;

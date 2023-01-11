@@ -11,12 +11,12 @@
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
-@class NSString, UIButton, UIScrollView, UIVisualEffectView, WFAction, WFActionDescriptionTitleView, WFActionDocumentationView, WFActionDrawerState;
-@protocol WFActionDescriptionViewControllerDelegate;
+@class NSString, UIButton, UIScrollView, UIVisualEffectView, WFAction, WFActionDescriptionTitleView, WFActionDocumentationView, WFActionDrawerCoordinator, WFActionDrawerState;
 
 @interface WFActionDescriptionViewController : UIViewController <UIScrollViewDelegate, WFActionDocumentationViewDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
-    id <WFActionDescriptionViewControllerDelegate> _delegate;
+    WFAction *_action;
+    WFActionDrawerCoordinator *_coordinator;
     WFActionDescriptionTitleView *_titleView;
     UIButton *_dismissButton;
     UIScrollView *_scrollView;
@@ -24,13 +24,14 @@
     UIVisualEffectView *_blurView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
 @property(readonly, nonatomic) WFActionDocumentationView *documentationView; // @synthesize documentationView=_documentationView;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(readonly, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
 @property(readonly, nonatomic) WFActionDescriptionTitleView *titleView; // @synthesize titleView=_titleView;
-@property(nonatomic) __weak id <WFActionDescriptionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
+@property(nonatomic) __weak WFAction *action; // @synthesize action=_action;
 - (_Bool)moveToState:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) WFActionDrawerState *state;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
@@ -39,8 +40,7 @@
 - (void)actionDocumentationViewDidSelectAddToWorkflowWithAction:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-@property(nonatomic) __weak WFAction *action;
-- (id)init;
+- (id)initWithAction:(id)arg1 coordinator:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

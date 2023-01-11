@@ -15,7 +15,7 @@
 + (id)getHashForObject:(id)arg1;
 + (id)timestampIdentifierToName:(unsigned long long)arg1;
 + (_Bool)rollDiceWithSuccessRatio:(id)arg1;
-+ (id)getInterfaceTypeString:(int)arg1;
++ (id)getInterfaceTypeString:(long long)arg1;
 + (_Bool)compareAddressEndpoints:(id)arg1 endpoint2:(id)arg2 addressOnly:(_Bool)arg3;
 + (id)endpointFromString:(id)arg1 defaultPortString:(id)arg2;
 + (_Bool)printDictionaryAsJson:(id)arg1 debugName:(id)arg2;

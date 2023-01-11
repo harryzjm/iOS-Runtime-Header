@@ -23,11 +23,11 @@
 
 + (id)archivedClasses;
 + (id)sessionWithID:(id)arg1 withDeviceAtAddress:(id)arg2 connection:(id)arg3;
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(retain) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(retain) NSString *deviceAddress; // @synthesize deviceAddress=_deviceAddress;
 @property __weak DEDIDSConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)didCancelSession:(id)arg1;
 - (void)syncSessionStatusWithSession:(id)arg1;
 - (void)cancelNotificationForSession:(id)arg1;
@@ -40,6 +40,8 @@
 - (void)adoptFiles:(id)arg1 forSession:(id)arg2;
 - (void)hasCollected:(id)arg1 isCollecting:(id)arg2 withIdentifiers:(id)arg3 inSession:(id)arg4;
 - (void)hasCollected:(id)arg1 isCollecting:(id)arg2 inSession:(id)arg3;
+- (void)didGetState:(long long)arg1 info:(id)arg2 sessionID:(id)arg3;
+- (void)getSessionStateWithSession:(id)arg1;
 - (void)getSessionStatusWithSession:(id)arg1;
 - (void)finishedDiagnosticWithIdentifier:(id)arg1 result:(id)arg2 session:(id)arg3;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 deferRunUntil:(id)arg3 session:(id)arg4;

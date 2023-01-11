@@ -9,7 +9,6 @@
 @class AFApplicationInfo, AFAudioPlaybackRequest, AFClientConfiguration, AFMetrics, AFRequestInfo, AFSpeechRequestOptions, AFSpeechSynthesisRecord, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, SASPronunciationContext, SASetApplicationContext;
 
 @protocol AFClientService <NSObject>
-- (oneway void)_sendFeedbackToAppPreferencesPredictorForMetricsContext:(NSString *)arg1 selectedBundleId:(NSString *)arg2;
 - (oneway void)_refreshAssistantValidation;
 - (oneway void)_startSpeechWithURL:(NSURL *)arg1 isNarrowBand:(_Bool)arg2;
 - (oneway void)_requestBarrierWithReply:(void (^)(void))arg1;
@@ -23,6 +22,8 @@
 - (oneway void)_pingServiceForIdentifier:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (oneway void)_listInstalledServicesWithReply:(void (^)(NSDictionary *))arg1;
 - (oneway void)adviseSessionArbiterToContinueWithPreviousWinner:(_Bool)arg1;
+- (oneway void)reportIssueForType:(NSString *)arg1 subtype:(NSString *)arg2 context:(NSDictionary *)arg3;
+- (oneway void)reportIssueForError:(NSError *)arg1 type:(long long)arg2 subtype:(NSString *)arg3 context:(NSDictionary *)arg4;
 - (oneway void)reportIssueForError:(NSError *)arg1 type:(long long)arg2 context:(NSDictionary *)arg3;
 - (oneway void)updateSpeechSynthesisRecord:(AFSpeechSynthesisRecord *)arg1;
 - (oneway void)endUpdateOutputAudioPower;

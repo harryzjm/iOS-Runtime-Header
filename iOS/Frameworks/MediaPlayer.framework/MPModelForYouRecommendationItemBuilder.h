@@ -8,6 +8,7 @@
 
 @class MPModelForYouRecommendationGroupBuilder, MPModelStoreBrowseContentItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface MPModelForYouRecommendationItemBuilder : NSObject
 {
     struct {
@@ -16,6 +17,7 @@
         unsigned int backedByStoreItemMetadata:1;
         unsigned int album:1;
         unsigned int playlist:1;
+        unsigned int radioStation:1;
         unsigned int subgroup:1;
     } _requestedItemProperties;
     MPModelStoreBrowseContentItemBuilder *_contentItemBuilder;
@@ -26,11 +28,11 @@
 }
 
 + (id)allSupportedProperties;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MPMutableSectionedCollection *flatSectionedItems; // @synthesize flatSectionedItems=_flatSectionedItems;
 @property(readonly, nonatomic) NSDictionary *storeItemMetadataResults; // @synthesize storeItemMetadataResults=_storeItemMetadataResults;
 @property(readonly, nonatomic) MPPropertySet *requestedPropertySet; // @synthesize requestedPropertySet=_requestedPropertySet;
-- (void).cxx_destruct;
-- (id)modelObjectForRecommendationChildDictionary:(id)arg1 parentGroup:(id)arg2 subgroupsAccumulator:(id)arg3;
+- (id)modelObjectForRecommendationChildDictionary:(id)arg1 parentGroup:(id)arg2 subgroupsAccumulator:(id)arg3 userIdentity:(id)arg4;
 - (id)initWithRequestedPropertySet:(id)arg1 storeItemMetadataResults:(id)arg2 flatSectionedItems:(id)arg3;
 
 @end

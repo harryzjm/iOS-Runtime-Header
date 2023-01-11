@@ -8,14 +8,14 @@
 
 #import <PassKitCore/PKAccountServiceExportedInterface-Protocol.h>
 
-@class NSHashTable, NSLock, PKXPCService;
+@class NSHashTable, PKXPCService;
 @protocol OS_dispatch_queue;
 
 @interface PKAccountService : NSObject <PKAccountServiceExportedInterface>
 {
     PKXPCService *_remoteService;
     NSObject<OS_dispatch_queue> *_replyQueue;
-    NSLock *_lockObservers;
+    struct os_unfair_lock_s _lockObservers;
     NSHashTable *_observers;
     long long _accountChangedNotificationSuspensionCount;
 }
@@ -30,6 +30,8 @@
 - (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
+- (void)exportTransactionDataForAccountIdentifier:(id)arg1 withFileFormat:(id)arg2 beginDate:(id)arg3 endDate:(id)arg4 productTimeZone:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)markUserViewedIntroduction:(_Bool)arg1 forInstallmentIdentifiers:(id)arg2 accountIdentifier:(id)arg3;
 - (void)updateScheduledPaymentsWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)scheduledPaymentsWithAccountIdentifier:(id)arg1 includeFailedRecurringPayments:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scheduledPaymentsWithAccountIdentifier:(id)arg1 includeFailedRecurringPayments:(_Bool)arg2 allowFetchFromServer:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
@@ -53,17 +55,17 @@
 - (void)lastRedemptionEventToPeerPaymentForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)creditStatementsForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)insertEvents:(id)arg1 withAccountidentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)deleteEventsWithAccountIdentifier:(id)arg1 excludingTypes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteEventWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteEventsWithAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)eventsForAccountIdentifier:(id)arg1 types:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 orderedByDate:(long long)arg5 limit:(unsigned long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)eventsForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateUserInfoForAccountIdentifier:(id)arg1 contact:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)userInfoForAccountIdentifier:(id)arg1 forceFetch:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)updatePreferences:(id)arg1 forAccountWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)preferencesForAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAccountAction:(id)arg1 withAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)termsWithIdentifier:(id)arg1 accepted:(_Bool)arg2 withAccountIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)defaultAccountForFeature:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)scheduleSetupReminderForAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)noteAccountDeleted;
 - (void)deleteLocalAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

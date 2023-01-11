@@ -34,6 +34,8 @@
 @property(readonly) unsigned long long physicalMemory;
 @property(readonly) unsigned long long activeProcessorCount;
 @property(readonly) unsigned long long processorCount;
+- (_Bool)macCatalystVersionIsAtLeastVersion:(CDStruct_2ec95fd7)arg1;
+- (CDStruct_2ec95fd7)macCatalystVersion;
 - (_Bool)isOperatingSystemAtLeastVersion:(CDStruct_2ec95fd7)arg1;
 @property(readonly) CDStruct_2ec95fd7 operatingSystemVersion;
 @property(readonly, copy) NSString *operatingSystemVersionString;
@@ -59,6 +61,7 @@
 - (id)beginSuspensionOfSystemBehaviors:(unsigned long long)arg1 reason:(id)arg2;
 - (_Bool)isLowPowerModeEnabled;
 - (long long)thermalState;
+@property(readonly, getter=isiOSAppOnMac) _Bool iOSAppOnMac;
 @property(readonly, getter=isMacCatalystApp) _Bool macCatalystApp;
 
 // Remaining properties

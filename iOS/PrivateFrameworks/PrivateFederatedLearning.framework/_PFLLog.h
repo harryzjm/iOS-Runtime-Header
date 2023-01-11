@@ -10,6 +10,7 @@
 {
 }
 
++ (id)telemetry;
 + (id)framework;
 
 @end

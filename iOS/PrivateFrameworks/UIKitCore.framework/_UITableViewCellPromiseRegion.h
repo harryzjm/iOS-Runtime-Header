@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
     NSIndexPath *_indexPath;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
-- (void).cxx_destruct;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (id)_preferredFocusRegionCoordinateSpace;
@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(nonatomic) _Bool areChildrenFocused;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;

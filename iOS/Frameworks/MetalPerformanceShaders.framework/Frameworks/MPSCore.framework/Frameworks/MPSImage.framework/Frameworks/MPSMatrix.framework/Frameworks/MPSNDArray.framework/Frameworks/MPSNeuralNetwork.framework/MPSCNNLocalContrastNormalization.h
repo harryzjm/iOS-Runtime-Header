@@ -14,7 +14,7 @@
     float _ps;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float ps; // @synthesize ps=_ps;
 @property(nonatomic) float pm; // @synthesize pm=_pm;
 @property(nonatomic) float p0; // @synthesize p0=_p0;
@@ -24,9 +24,9 @@
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 destinationImages:(struct NSArray *)arg3;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationImages:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationImage:(id)arg3;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;

@@ -4,25 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
-
 __attribute__((visibility("hidden")))
 @interface _LSApplicationProxyEnumerator
 {
-    NSURL *_volumeURL;
-    unsigned long long _options;
-    vector_12da65de _bundleIdentifiers;
-    unsigned int _container;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
-- (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
-- (id)initWithVolumeURL:(id)arg1 options:(unsigned long long)arg2;
-- (id)_applicationProxyWithContext:(struct LSContext *)arg1 bundleIdentifier:(unsigned int)arg2;
-- (_Bool)_evaluateBundleNoIO:(unsigned int)arg1 data:(const struct LSBundleData *)arg2 context:(struct LSContext *)arg3;
-- (_Bool)_getContainer:(unsigned int *)arg1 context:(struct LSContext *)arg2 error:(id *)arg3;
 
 @end
 

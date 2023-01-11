@@ -6,16 +6,11 @@
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 
-@class CPLPlatformObject, CPLRejectedRecords, NSMutableArray, NSString;
+@class CPLPlatformObject, NSMutableArray, NSString;
 
 @interface CPLEngineQuarantinedRecords <CPLAbstractObject>
 {
-    CPLRejectedRecords *_rejectedRecords;
-    unsigned long long _rejectedCount;
-    _Bool _rejectedRecordsHasChanges;
-    CPLRejectedRecords *_newRejectedRecords;
     NSMutableArray *_quarantineMessages;
-    unsigned long long _newRejectedCount;
 }
 
 - (void).cxx_destruct;
@@ -23,12 +18,14 @@
 - (void)writeTransactionDidFail;
 - (_Bool)resetRejectedRecordsWithError:(id *)arg1;
 - (_Bool)bumpRejectedRecords:(id)arg1 error:(id *)arg2;
+- (_Bool)_quarantineRejectedRecords:(id)arg1 error:(id *)arg2;
 - (void)_sendQuarantineFeedbackWithRecordClass:(Class)arg1 reason:(id)arg2;
 - (unsigned long long)countOfQuarantinedRecordsInScopeWithIdentifier:(id)arg1;
 - (unsigned long long)countOfQuarantinedRecords;
+- (Class)classForQuarantinedRecordWithScopedIdentifier:(id)arg1;
 - (_Bool)isRecordWithScopedIdentifierQuarantined:(id)arg1;
-- (_Bool)removeQuarantinedRecordsWithScopedIdentifier:(id)arg1 notify:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)addQuarantinedRecordsWithScopedIdentifier:(id)arg1 reason:(id)arg2 error:(id *)arg3;
+- (_Bool)removeQuarantinedRecordWithScopedIdentifier:(id)arg1 notify:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)addQuarantinedRecordWithScopedIdentifier:(id)arg1 recordClass:(Class)arg2 reason:(id)arg3 error:(id *)arg4;
 - (_Bool)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (unsigned long long)scopeType;
 

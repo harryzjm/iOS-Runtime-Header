@@ -14,12 +14,12 @@
     NSData *_requestParameters;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned char flags; // @synthesize flags=_flags;
 @property(copy, nonatomic) NSData *requestParameters; // @synthesize requestParameters=_requestParameters;
 @property(nonatomic) unsigned long long customCommandCode; // @synthesize customCommandCode=_customCommandCode;
 @property(nonatomic) unsigned long long manufacturerCode; // @synthesize manufacturerCode=_manufacturerCode;
 - (id)asNSDataWithError:(id *)arg1;
-- (void)dealloc;
 - (id)initWithManufacturerCode:(unsigned long long)arg1 customCommandCode:(unsigned long long)arg2 requestParameters:(id)arg3 maximumRetries:(unsigned long long)arg4 retryInterval:(double)arg5;
 - (id)initWithManufacturerCode:(unsigned long long)arg1 customCommandCode:(unsigned long long)arg2 requestParameters:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;

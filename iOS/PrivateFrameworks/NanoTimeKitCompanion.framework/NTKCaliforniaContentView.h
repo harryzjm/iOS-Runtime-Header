@@ -12,12 +12,15 @@
 {
     _Bool _showingStatusIcon;
     _Bool _circularPillMarkersCenterPointsCalculated;
+    _Bool _circularTicksHidden;
     unsigned long long _style;
     unsigned long long _dial;
     unsigned long long _color;
     CLKDevice *_device;
     CALayer *_hourTicks;
     CALayer *_minuteTicks;
+    CALayer *_fullscreenTicksMulticolor;
+    CALayer *_circularTicksMulticolor;
     CALayer *_circularHourTicks;
     CALayer *_circularMinuteTicks;
     NSArray *_hourMarkers;
@@ -29,6 +32,8 @@
 }
 
 + (id)_disabledLayerActions;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool circularTicksHidden; // @synthesize circularTicksHidden=_circularTicksHidden;
 @property(nonatomic) _Bool circularPillMarkersCenterPointsCalculated; // @synthesize circularPillMarkersCenterPointsCalculated=_circularPillMarkersCenterPointsCalculated;
 @property(nonatomic) _Bool showingStatusIcon; // @synthesize showingStatusIcon=_showingStatusIcon;
 @property(retain, nonatomic) NTKCaliforniaStyleTransitionHandler *styleTransitionHandler; // @synthesize styleTransitionHandler=_styleTransitionHandler;
@@ -39,16 +44,18 @@
 @property(retain, nonatomic) NSArray *hourMarkers; // @synthesize hourMarkers=_hourMarkers;
 @property(retain, nonatomic) CALayer *circularMinuteTicks; // @synthesize circularMinuteTicks=_circularMinuteTicks;
 @property(retain, nonatomic) CALayer *circularHourTicks; // @synthesize circularHourTicks=_circularHourTicks;
+@property(retain, nonatomic) CALayer *circularTicksMulticolor; // @synthesize circularTicksMulticolor=_circularTicksMulticolor;
+@property(retain, nonatomic) CALayer *fullscreenTicksMulticolor; // @synthesize fullscreenTicksMulticolor=_fullscreenTicksMulticolor;
 @property(retain, nonatomic) CALayer *minuteTicks; // @synthesize minuteTicks=_minuteTicks;
 @property(retain, nonatomic) CALayer *hourTicks; // @synthesize hourTicks=_hourTicks;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(nonatomic) unsigned long long color; // @synthesize color=_color;
 @property(nonatomic) unsigned long long dial; // @synthesize dial=_dial;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromDial:(unsigned long long)arg2 toDial:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3;
+- (id)allTicksForStatus:(_Bool)arg1;
 - (id)hourTicksForStatus:(_Bool)arg1;
 - (void)setHourTicksColor:(id)arg1;
 - (void)setMinuteTicksColor:(id)arg1;
@@ -71,9 +78,8 @@
 - (void)removeHourMarkers;
 - (void)removeTemporaryHourMarkers;
 - (id)layerWithImage:(id)arg1;
-- (void)addCircularTicksIfNeeded;
-- (void)addFullscreenTicksIfNeeded;
-- (void)setCircularTicksHidden:(_Bool)arg1;
+- (void)addCircularTicksIfNeeded:(id)arg1;
+- (void)addFullscreenTicksIfNeeded:(id)arg1;
 - (struct CGPoint *)circularPillMarkersCenterPoints;
 - (struct CGPoint *)hourMarkersCenterPointConstantsForStyle:(unsigned long long)arg1 dial:(unsigned long long)arg2;
 - (void)_layoutHourMarkersLayers:(id)arg1 style:(unsigned long long)arg2 dialShape:(unsigned long long)arg3;

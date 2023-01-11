@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)finish;
-- (void)recordPrediction:(id)arg1 actionHash:(unsigned long long)arg2 totalScore:(float)arg3 scoreInputs:(const float *)arg4;
+- (void)recordPrediction:(id)arg1 actionHash:(unsigned long long)arg2 totalScore:(float)arg3 scoreInputs:(const float *)arg4 isMediumConfidenceForBlendingLayer:(_Bool)arg5 isHighConfidenceForBlendingLayer:(_Bool)arg6;
 - (id)init;
 - (id)initWithABGroup:(id)arg1 assetVersion:(long long)arg2;
 

@@ -13,13 +13,15 @@
 #import <MediaPlayer/MPMutableUniversalStoreIdentifiers-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPModelKind, NSArray, NSString;
 @protocol MPLocalLibraryIdentifiers, MPPersonalStoreIdentifiers, MPRadioIdentifiers, MPUniversalStoreIdentifiers;
 
-@interface MPIdentifierSet : NSObject <MPMutableLocalLibraryIdentifiers, MPMutablePersonalStoreIdentifiers, MPMutableUniversalStoreIdentifiers, MPMutableRadioIdentifiers, MPMutableIdentifierSet, NSCopying, NSSecureCoding>
+@interface MPIdentifierSet : NSObject <MPMutableLocalLibraryIdentifiers, MPMutablePersonalStoreIdentifiers, MPMutableUniversalStoreIdentifiers, MPMutableRadioIdentifiers, MPMutableIdentifierSet, _MPStateDumpPropertyListTransformable, NSCopying, NSSecureCoding>
 {
     _Bool _shouldExcludeFromShuffle;
+    _Bool _placeholder;
     NSString *_databaseID;
     long long _persistentID;
     long long _containedPersistentID;
@@ -50,6 +52,8 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)emptyIdentifierSet;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isPlaceholder) _Bool placeholder; // @synthesize placeholder=_placeholder;
 @property(nonatomic) _Bool shouldExcludeFromShuffle; // @synthesize shouldExcludeFromShuffle=_shouldExcludeFromShuffle;
 @property(readonly, nonatomic) MPModelKind *modelKind; // @synthesize modelKind=_modelKind;
 @property(copy, nonatomic) NSString *vendorID; // @synthesize vendorID=_vendorID;
@@ -57,42 +61,32 @@
 @property(copy, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
 @property(copy, nonatomic) NSString *handoffCorrelationID; // @synthesize handoffCorrelationID=_handoffCorrelationID;
 @property(copy, nonatomic) NSString *containerUniqueID; // @synthesize containerUniqueID=_containerUniqueID;
-- (void)setStationID:(long long)arg1;
-@property(readonly, nonatomic) long long stationID;
-- (void)setStationHash:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *stationHash;
-- (void)setStationStringID:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *stationStringID;
+@property(nonatomic) long long stationID; // @synthesize stationID=_stationID;
+@property(copy, nonatomic) NSString *stationHash; // @synthesize stationHash=_stationHash;
+@property(copy, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
 @property(copy, nonatomic) NSString *informalStaticAssetID; // @synthesize informalStaticAssetID=_informalStaticAssetID;
 @property(copy, nonatomic) NSString *informalMediaClipID; // @synthesize informalMediaClipID=_informalMediaClipID;
 @property(copy, nonatomic) NSString *socialProfileID; // @synthesize socialProfileID=_socialProfileID;
-- (void)setSubscriptionAdamID:(long long)arg1;
-@property(readonly, nonatomic) long long subscriptionAdamID;
-- (void)setPurchasedAdamID:(long long)arg1;
-@property(readonly, nonatomic) long long purchasedAdamID;
-- (void)setUniversalCloudLibraryID:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *universalCloudLibraryID;
-- (void)setFormerAdamIDs:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *formerAdamIDs;
-- (void)setAdamID:(long long)arg1;
-@property(readonly, nonatomic) long long adamID;
+@property(nonatomic) long long subscriptionAdamID; // @synthesize subscriptionAdamID=_subscriptionAdamID;
+@property(nonatomic) long long purchasedAdamID; // @synthesize purchasedAdamID=_purchasedAdamID;
+@property(copy, nonatomic) NSString *universalCloudLibraryID; // @synthesize universalCloudLibraryID=_universalCloudLibraryID;
+@property(copy, nonatomic) NSArray *formerAdamIDs; // @synthesize formerAdamIDs=_formerAdamIDs;
+@property(nonatomic) long long adamID; // @synthesize adamID=_adamID;
 @property(copy, nonatomic) NSString *globalPlaylistID; // @synthesize globalPlaylistID=_globalPlaylistID;
-- (void)setRecommendationID:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *recommendationID;
-- (void)setCloudAlbumID:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *cloudAlbumID;
-- (void)setCloudID:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long cloudID;
+@property(copy, nonatomic) NSString *recommendationID; // @synthesize recommendationID=_recommendationID;
+@property(copy, nonatomic) NSString *cloudAlbumID; // @synthesize cloudAlbumID=_cloudAlbumID;
+@property(nonatomic) unsigned long long cloudID; // @synthesize cloudID=_cloudID;
 @property(readonly, nonatomic) NSString *personID; // @synthesize personID=_personID;
-- (void)setContainedPersistentID:(long long)arg1;
-@property(readonly, nonatomic) long long containedPersistentID;
-- (void)setPersistentID:(long long)arg1;
-@property(readonly, nonatomic) long long persistentID;
+@property(nonatomic) long long containedPersistentID; // @synthesize containedPersistentID=_containedPersistentID;
+@property(nonatomic) long long persistentID; // @synthesize persistentID=_persistentID;
 @property(readonly, nonatomic) NSString *databaseID; // @synthesize databaseID=_databaseID;
-- (void).cxx_destruct;
 - (void)_setDefaultPersonIDIfNeeded;
 - (void)_setDefaultDatabaseIDIfNeeded;
-- (id)identifierDescriptions;
+@property(readonly, nonatomic) _Bool needsPersonalization;
+- (id)prioritizedStoreStringIdentifiersForPersonID:(id)arg1;
+- (id)preferredStoreStringIdentifierForPersonID:(id)arg1;
+- (id)identifierDescriptions:(_Bool)arg1;
+- (id)_stateDumpObject;
 @property(nonatomic) long long storeSubscriptionAdamID;
 @property(nonatomic) long long storePurchasedAdamID;
 @property(copy, nonatomic) NSString *storeRecommendationID;

@@ -7,10 +7,14 @@
 @interface PXPhotoPickerSettings
 {
     _Bool _useLibraryPresentation;
+    _Bool _useGadgetsAlbumsTab;
+    _Bool _hideSearchBarWhenScrolling;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool hideSearchBarWhenScrolling; // @synthesize hideSearchBarWhenScrolling=_hideSearchBarWhenScrolling;
+@property(nonatomic) _Bool useGadgetsAlbumsTab; // @synthesize useGadgetsAlbumsTab=_useGadgetsAlbumsTab;
 @property(nonatomic) _Bool useLibraryPresentation; // @synthesize useLibraryPresentation=_useLibraryPresentation;
 - (void)setDefaultValues;
 - (id)parentSettings;

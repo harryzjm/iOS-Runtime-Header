@@ -20,20 +20,31 @@
     MTLIndirectArgumentBufferEmulationData *_fragmentIABEmulationData;
     MTLDebugInstrumentationData *_vertexDebugInstrumentationData;
     MTLDebugInstrumentationData *_fragmentDebugInstrumentationData;
+    MTLDebugInstrumentationData *_tileDebugInstrumentationData;
     _Bool _supportIndirectCommandBuffers;
+    long long _textureWriteRoundingMode;
     unsigned long long _resourceIndex;
+    unsigned long long _gpuAddress;
+    unsigned long long _imageBlockSampleLength;
 }
 
-@property(nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
+@property(readonly) unsigned long long imageBlockSampleLength; // @synthesize imageBlockSampleLength=_imageBlockSampleLength;
 @property(readonly) _Bool threadgroupSizeMatchesTileSize; // @synthesize threadgroupSizeMatchesTileSize=_threadgroupSizeMatchesTileSize;
+@property(readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
+@property(retain, nonatomic) MTLDebugInstrumentationData *tileDebugInstrumentationData; // @synthesize tileDebugInstrumentationData=_tileDebugInstrumentationData;
 @property(retain, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData; // @synthesize fragmentDebugInstrumentationData=_fragmentDebugInstrumentationData;
 @property(retain, nonatomic) MTLDebugInstrumentationData *vertexDebugInstrumentationData; // @synthesize vertexDebugInstrumentationData=_vertexDebugInstrumentationData;
 @property(retain, nonatomic) MTLIndirectArgumentBufferEmulationData *fragmentIABEmulationData; // @synthesize fragmentIABEmulationData=_fragmentIABEmulationData;
 @property(retain, nonatomic) MTLIndirectArgumentBufferEmulationData *vertexIABEmulationData; // @synthesize vertexIABEmulationData=_vertexIABEmulationData;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
 @property(readonly) NSString *label; // @synthesize label=_label;
+- (long long)textureWriteFPRoundingMode;
+@property(readonly) long long textureWriteRoundingMode;
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly) _Bool supportIndirectCommandBuffers;
+@property(readonly) unsigned long long maxTotalThreadsPerThreadgroup;
+@property(readonly) unsigned long long imageblockSampleLength;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_da2e99ad)arg1;
 - (void)dealloc;
 - (id)initWithDeviceAndTileDesc:(id)arg1 tilePipelineStateDescriptor:(id)arg2;
@@ -43,8 +54,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly) unsigned long long imageblockSampleLength; // @dynamic imageblockSampleLength;
-@property(readonly) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
 @property(readonly) Class superclass;
 
 @end

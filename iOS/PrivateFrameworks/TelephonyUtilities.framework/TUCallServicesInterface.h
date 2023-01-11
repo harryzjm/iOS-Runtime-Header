@@ -19,6 +19,7 @@
 @interface TUCallServicesInterface : NSObject <TUCallServicesXPCClient, TUCallServicesProxyCallActions, TUCallServicesClientCapabilitiesActions, TUAudioDeviceControllerActions, TURouteControllerActions, TUCallFilterControllerActions>
 {
     _Bool _hasRequestedInitialState;
+    _Bool _hasReceivedInitialState;
     _Bool _hasServerLaunched;
     int _connectionRequestNotificationToken;
     id <TUCallServicesXPCServer> _server;
@@ -34,11 +35,13 @@
     NSArray *_localProxyCalls;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasServerLaunched; // @synthesize hasServerLaunched=_hasServerLaunched;
 @property(copy, nonatomic) NSArray *localProxyCalls; // @synthesize localProxyCalls=_localProxyCalls;
 @property(readonly, nonatomic) TUCallNotificationManager *callNotificationManager; // @synthesize callNotificationManager=_callNotificationManager;
 @property(readonly, nonatomic) NSMapTable *uniqueProxyIdentifierToProxyCall; // @synthesize uniqueProxyIdentifierToProxyCall=_uniqueProxyIdentifierToProxyCall;
 @property(copy, nonatomic) NSArray *currentCalls; // @synthesize currentCalls=_currentCalls;
+@property(nonatomic) _Bool hasReceivedInitialState; // @synthesize hasReceivedInitialState=_hasReceivedInitialState;
 @property(nonatomic) _Bool hasRequestedInitialState; // @synthesize hasRequestedInitialState=_hasRequestedInitialState;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(readonly, nonatomic) int connectionRequestNotificationToken; // @synthesize connectionRequestNotificationToken=_connectionRequestNotificationToken;
@@ -48,7 +51,6 @@
 @property(nonatomic) __weak TUCallCenter *callCenter; // @synthesize callCenter=_callCenter;
 @property(readonly, nonatomic) TUCallServicesClientCapabilities *callServicesClientCapabilities; // @synthesize callServicesClientCapabilities=_callServicesClientCapabilities;
 @property(nonatomic) __weak id <TUCallServicesXPCServer> server; // @synthesize server=_server;
-- (void).cxx_destruct;
 - (oneway void)handleNotificationName:(id)arg1 forCallWithUniqueProxyIdentifier:(id)arg2 userInfo:(id)arg3;
 - (oneway void)resetCallProvisionalStates;
 - (oneway void)_handleCurrentCallsChanged:(id)arg1 callsDisconnected:(id)arg2;
@@ -59,15 +61,19 @@
 - (oneway void)handleLocalRoutesByUniqueIdentifierUpdated:(id)arg1;
 - (oneway void)setClientCapabilities:(id)arg1;
 - (_Bool)isUnknownAddress:(id)arg1 normalizedAddress:(id)arg2 forBundleIdentifier:(id)arg3;
-- (_Bool)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (unsigned long long)filterStatusForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (_Bool)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(_Bool)arg3;
 - (_Bool)willRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)policyForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
-- (_Bool)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)pickRouteWithUniqueIdentifier:(id)arg1 forRouteController:(id)arg2;
+- (_Bool)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(_Bool)arg3;
+- (void)pickRouteWithUniqueIdentifier:(id)arg1 shouldWaitUntilAvailable:(_Bool)arg2 forRouteController:(id)arg3;
 - (id)routesByUniqueIdentifierForRouteController:(id)arg1;
 - (oneway void)setCurrentAudioOutputDeviceToDeviceWithUID:(id)arg1;
 - (oneway void)setCurrentAudioInputDeviceToDeviceWithUID:(id)arg1;
+- (oneway void)activateInCallUIWithActivityContinuationIdentifier:(id)arg1;
+- (oneway void)shouldAllowRingingCallStatusIndicator:(_Bool)arg1;
 - (oneway void)shouldSuppressInCallStatusBar:(_Bool)arg1;
+- (oneway void)setIsSendingVideo:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setDownlinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setUplinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)sendMMIOrUSSDCodeWithRequest:(id)arg1;

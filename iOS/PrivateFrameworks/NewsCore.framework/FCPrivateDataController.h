@@ -48,6 +48,7 @@
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
 + (void)configureKeyValueStoreForJSONHandling:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(readonly, nonatomic) FCCloudContext *context; // @synthesize context=_context;
@@ -61,7 +62,6 @@
 @property(copy, nonatomic) NSString *storeDirectory; // @synthesize storeDirectory=_storeDirectory;
 @property(retain, nonatomic) FCPushNotificationCenter *pushNotificationCenter; // @synthesize pushNotificationCenter=_pushNotificationCenter;
 @property(getter=isWaitingForFirstSync) _Bool waitingForFirstSync; // @synthesize waitingForFirstSync=_waitingForFirstSync;
-- (void).cxx_destruct;
 - (id)_newSyncState;
 - (void)_handleSyncDidResetLocalDataForSyncManager:(id)arg1;
 - (id)_allKnownRecordIDsForSyncManager:(id)arg1;
@@ -70,7 +70,7 @@
 - (long long)_qualityOfServiceForFirstSync:(_Bool)arg1;
 - (void)_notifyObservers;
 - (void)_markAsDirtyAndNotifyObservers:(_Bool)arg1;
-- (long long)commandQueue:(id)arg1 qualityOfServiceForCommand:(id)arg2;
+- (long long)qualityOfServiceForNextCommandInCommandQueue:(id)arg1;
 - (void)recordSyncManagerNotifyObservers:(id)arg1;
 - (void)recordSyncManager:(id)arg1 stateDidChange:(id)arg2;
 - (void)zoneSyncManagerNotifyObservers:(id)arg1;
@@ -96,6 +96,7 @@
 - (void)removeStateObserver:(id)arg1;
 - (void)addStateObserver:(id)arg1;
 - (void)saveWithCompletion:(CDUnknownBlockType)arg1;
+- (void)performFirstSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performFirstSyncWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;

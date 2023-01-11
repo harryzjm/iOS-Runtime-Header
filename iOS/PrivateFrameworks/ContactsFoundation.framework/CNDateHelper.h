@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isGregorianDerivedCalendarIdentifier:(id)arg1;
 + (_Bool)isGregorianDerivedCalendar:(id)arg1;
 + (id)dateComponentsFromDateComponents:(id)arg1 preservingUnits:(unsigned long long)arg2;
 + (id)dateComponentsInGregorianYearlessYearForYearlessDateComponents:(id)arg1 timeZone:(id)arg2;

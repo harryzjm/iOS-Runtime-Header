@@ -42,17 +42,18 @@
     AXMLiveContinuousTone *_trendlineScrubbingTone;
     AXMLiveContinuousTone *_liveContinuousDataTone;
     CDUnknownBlockType _trendlineFunction;
-    vector_3203cf93 *_scrubbingDiscreteDataRenderingContext;
-    vector_3203cf93 *_scrubbingPlaybackCallbackRenderingContext;
-    vector_3203cf93 *_liveTonePlaybackCallbackRenderingContext;
+    vector_12bd641b *_scrubbingDiscreteDataRenderingContext;
+    vector_12bd641b *_scrubbingPlaybackCallbackRenderingContext;
+    vector_12bd641b *_liveTonePlaybackCallbackRenderingContext;
     unsigned long long _playbackSampleCount;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long playbackSampleCount; // @synthesize playbackSampleCount=_playbackSampleCount;
-@property(readonly, nonatomic) vector_3203cf93 *liveTonePlaybackCallbackRenderingContext; // @synthesize liveTonePlaybackCallbackRenderingContext=_liveTonePlaybackCallbackRenderingContext;
-@property(readonly, nonatomic) vector_3203cf93 *scrubbingPlaybackCallbackRenderingContext; // @synthesize scrubbingPlaybackCallbackRenderingContext=_scrubbingPlaybackCallbackRenderingContext;
-@property(readonly, nonatomic) vector_3203cf93 *scrubbingDiscreteDataRenderingContext; // @synthesize scrubbingDiscreteDataRenderingContext=_scrubbingDiscreteDataRenderingContext;
+@property(readonly, nonatomic) vector_12bd641b *liveTonePlaybackCallbackRenderingContext; // @synthesize liveTonePlaybackCallbackRenderingContext=_liveTonePlaybackCallbackRenderingContext;
+@property(readonly, nonatomic) vector_12bd641b *scrubbingPlaybackCallbackRenderingContext; // @synthesize scrubbingPlaybackCallbackRenderingContext=_scrubbingPlaybackCallbackRenderingContext;
+@property(readonly, nonatomic) vector_12bd641b *scrubbingDiscreteDataRenderingContext; // @synthesize scrubbingDiscreteDataRenderingContext=_scrubbingDiscreteDataRenderingContext;
 @property(copy, nonatomic) CDUnknownBlockType trendlineFunction; // @synthesize trendlineFunction=_trendlineFunction;
 @property(readonly, nonatomic) AXMLiveContinuousTone *liveContinuousDataTone; // @synthesize liveContinuousDataTone=_liveContinuousDataTone;
 @property(readonly, nonatomic) AXMLiveContinuousTone *trendlineScrubbingTone; // @synthesize trendlineScrubbingTone=_trendlineScrubbingTone;
@@ -82,9 +83,8 @@
 @property(nonatomic) double playbackDuration; // @synthesize playbackDuration=_playbackDuration;
 @property(nonatomic) double maximumPlaybackFrequency; // @synthesize maximumPlaybackFrequency=_maximumPlaybackFrequency;
 @property(nonatomic) double minimumPlaybackFrequency; // @synthesize minimumPlaybackFrequency=_minimumPlaybackFrequency;
-- (void).cxx_destruct;
 - (id)_newContinuousToneEnvelope;
-- (void)_peakNormalizeBuffer:(vector_3203cf93 *)arg1 length:(unsigned long long)arg2 level:(double)arg3;
+- (void)_peakNormalizeBuffer:(vector_12bd641b *)arg1 length:(unsigned long long)arg2 level:(double)arg3;
 - (void)setLiveContinuousToneNormalizedFrequency:(double)arg1;
 - (void)endLiveContinuousToneSession;
 - (void)beginLiveContinuousToneSession;

@@ -12,23 +12,27 @@
 
 @interface HMDMPCResolveDestinationOperation : HMFOperation <HMFObject>
 {
+    _Bool _forceSingleGroup;
     MPCAssistantMutableRemoteControlDestination *_resolvedDestination;
     NSArray *_hashedRouteIDs;
     CDUnknownBlockType _resolveDestinationCompletionBlock;
+    long long _mediaApplicationDestination;
 }
 
 + (id)shortDescription;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool forceSingleGroup; // @synthesize forceSingleGroup=_forceSingleGroup;
+@property(readonly, nonatomic) long long mediaApplicationDestination; // @synthesize mediaApplicationDestination=_mediaApplicationDestination;
 @property(copy) CDUnknownBlockType resolveDestinationCompletionBlock; // @synthesize resolveDestinationCompletionBlock=_resolveDestinationCompletionBlock;
 @property(readonly, copy, nonatomic) NSArray *hashedRouteIDs; // @synthesize hashedRouteIDs=_hashedRouteIDs;
 @property(retain, nonatomic) MPCAssistantMutableRemoteControlDestination *resolvedDestination; // @synthesize resolvedDestination=_resolvedDestination;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *shortDescription;
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)main;
-- (id)initWithHashedRouteIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithHashedRouteIDs:(id)arg1 mediaApplicationDestination:(long long)arg2 forceSingleGroup:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

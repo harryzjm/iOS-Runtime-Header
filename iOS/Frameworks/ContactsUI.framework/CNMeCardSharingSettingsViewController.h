@@ -13,7 +13,7 @@
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CNContact, CNContactImage, CNContactStore, CNMeCardSharingAudienceDataSource, CNMeCardSharingContactAvatarProvider, CNMeCardSharingEnabledDataSource, CNMeCardSharingLogger, CNMeCardSharingPickerLayoutAttributes, CNMeCardSharingSettingsHeaderViewController, CNMeCardSharingSettingsNameDataSource, CNMutableContact, CNPhotoPickerViewController, NSArray, NSString, UISwitch, UITableView, UITextField;
+@class CNContact, CNContactImage, CNContactStore, CNMeCardSharingAudienceDataSource, CNMeCardSharingContactAvatarProvider, CNMeCardSharingEnabledDataSource, CNMeCardSharingPickerLayoutAttributes, CNMeCardSharingSettingsHeaderViewController, CNMeCardSharingSettingsNameDataSource, CNMutableContact, CNPhotoPickerViewController, CNSharingProfileLogger, CNSharingProfileMeCardUpdater, NSArray, NSString, UISwitch, UITableView, UITextField;
 @protocol CNMeCardSharingAvatarProvider, CNMeCardSharingNameProvider, CNMeCardSharingSettingsViewControllerDelegate;
 
 @interface CNMeCardSharingSettingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CNMeCardSharingSettingsHeaderViewControllerDelegate, CNMeCardSharingEnabledDelegate, CNPhotoPickerViewControllerDelegate>
@@ -26,6 +26,7 @@
     CNContactImage *_editingContactImage;
     NSString *_editingGivenName;
     NSString *_editingFamilyName;
+    CNSharingProfileMeCardUpdater *_meCardUpdater;
     CNMeCardSharingPickerLayoutAttributes *_layoutAttributes;
     CNMeCardSharingSettingsHeaderViewController *_headerViewController;
     id <CNMeCardSharingAvatarProvider> _avatarProvider;
@@ -41,13 +42,14 @@
     UITextField *_givenNameField;
     UITextField *_familyNameField;
     CNMeCardSharingContactAvatarProvider *_editingContactAvatarProvider;
-    CNMeCardSharingLogger *_logger;
+    CNSharingProfileLogger *_logger;
     double _keyboardHeight;
 }
 
 + (id)descriptorForRequiredKeys;
+- (void).cxx_destruct;
 @property(nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
-@property(readonly, nonatomic) CNMeCardSharingLogger *logger; // @synthesize logger=_logger;
+@property(readonly, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
 @property(nonatomic) _Bool shouldSetAsMeContact; // @synthesize shouldSetAsMeContact=_shouldSetAsMeContact;
 @property(retain, nonatomic) CNMeCardSharingContactAvatarProvider *editingContactAvatarProvider; // @synthesize editingContactAvatarProvider=_editingContactAvatarProvider;
 @property(retain, nonatomic) UITextField *familyNameField; // @synthesize familyNameField=_familyNameField;
@@ -64,6 +66,7 @@
 @property(readonly, nonatomic) id <CNMeCardSharingAvatarProvider> avatarProvider; // @synthesize avatarProvider=_avatarProvider;
 @property(retain, nonatomic) CNMeCardSharingSettingsHeaderViewController *headerViewController; // @synthesize headerViewController=_headerViewController;
 @property(readonly, nonatomic) CNMeCardSharingPickerLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+@property(retain, nonatomic) CNSharingProfileMeCardUpdater *meCardUpdater; // @synthesize meCardUpdater=_meCardUpdater;
 @property(retain, nonatomic) NSString *editingFamilyName; // @synthesize editingFamilyName=_editingFamilyName;
 @property(retain, nonatomic) NSString *editingGivenName; // @synthesize editingGivenName=_editingGivenName;
 @property(retain, nonatomic) CNContactImage *editingContactImage; // @synthesize editingContactImage=_editingContactImage;
@@ -71,7 +74,6 @@
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(nonatomic) __weak id <CNMeCardSharingSettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)sharingEnabledDataSource:(id)arg1 didChangeEnabledState:(_Bool)arg2;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
@@ -102,8 +104,10 @@
 - (void)familyNameDidChange:(id)arg1;
 - (void)givenNameDidChange:(id)arg1;
 - (void)notifyDelegateOfChangesWithDidSaveToMeCard:(_Bool)arg1;
+- (void)presentErrorAlertForEmptyPhotoIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithContactStore:(id)arg1 contact:(id)arg2 avatarProvider:(id)arg3 nameProvider:(id)arg4 sharingEnabled:(_Bool)arg5 selectedSharingAudience:(unsigned long long)arg6;

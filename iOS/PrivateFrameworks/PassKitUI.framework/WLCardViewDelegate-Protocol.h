@@ -11,6 +11,9 @@
 @protocol WLCardViewDelegate <NSObject>
 
 @optional
+- (void)faceFrameDidChangeForPassView:(PKPassView *)arg1;
+- (void)passViewExpandButtonTapped:(PKPassView *)arg1;
+- (void)passViewDidResize:(PKPassView *)arg1 animated:(_Bool)arg2;
 - (void)passView:(PKPassView *)arg1 didPresentPassDetailsViewController:(UIViewController *)arg2;
 - (void)passView:(PKPassView *)arg1 willPresentPassDetailsViewController:(UIViewController *)arg2;
 - (_Bool)passView:(PKPassView *)arg1 deleteButtonEnabledForPass:(PKPass *)arg2;

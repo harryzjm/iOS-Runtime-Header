@@ -18,12 +18,11 @@
     NSSet *_focusPeopleUUIDs;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *focusPeopleUUIDs; // @synthesize focusPeopleUUIDs=_focusPeopleUUIDs;
 @property(readonly, nonatomic) NSMutableSet *focusItems; // @synthesize focusItems=_focusItems;
 @property(nonatomic) _Bool allowsInterview; // @synthesize allowsInterview=_allowsInterview;
 @property(nonatomic) unsigned long long locationClusteringAlgorithm; // @synthesize locationClusteringAlgorithm=_locationClusteringAlgorithm;
-- (void).cxx_destruct;
-- (struct CGImage *)itemThumbnailInInvestigation:(id)arg1 atIndex:(unsigned long long)arg2 withResolution:(unsigned long long)arg3;
 - (unsigned long long)numberOfItemsInInvestigation:(id)arg1;
 - (id)prepareWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)_prepareFeederWithProgressBlock:(CDUnknownBlockType)arg1;
@@ -32,7 +31,6 @@
 - (double)behavioralScore;
 - (unsigned long long)numberOfRegularGemItems;
 - (unsigned long long)numberOfShinyGemItems;
-- (struct CGImage *)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;
 - (void)enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)itemAtIndex:(unsigned long long)arg1;

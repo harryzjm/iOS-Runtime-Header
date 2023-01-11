@@ -23,6 +23,7 @@
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *vendorID;
 @property(readonly, copy) NSNumber *quantity;
+@property(readonly, copy) NSNumber *subscriptionBundleID;
 @property(readonly) unsigned long long segment;
 @property(readonly, copy) NSNumber *purchaseDownloadID;
 @property(readonly, copy) NSNumber *purchasabilityType;
@@ -30,6 +31,7 @@
 @property(readonly, copy) NSString *offerID;
 @property(readonly, getter=isNewsAppPurchase) _Bool newsAppPurchase;
 @property(readonly) _Bool isPurchaser;
+@property(readonly) _Bool isOfferPeriod;
 @property(readonly) _Bool isTrialPeriod;
 @property(readonly, copy) NSString *inAppVersion;
 @property(readonly, copy) NSNumber *inAppAdamID;

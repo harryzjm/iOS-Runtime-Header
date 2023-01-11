@@ -26,21 +26,9 @@
 + (void)performAfter:(double)arg1 block:(CDUnknownBlockType)arg2;
 + (void)performSyncBlock:(CDUnknownBlockType)arg1;
 + (void)performAsyncBlock:(CDUnknownBlockType)arg1;
-+ (id)sharedInstance;
-@property __weak NSOperation *previousOperation; // @synthesize previousOperation=_previousOperation;
-@property(readonly) NSObject<OS_dispatch_queue> *underlyingQueue; // @synthesize underlyingQueue=_underlyingQueue;
-@property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
-- (void)addDependentOperationWithBlock:(CDUnknownBlockType)arg1;
-- (void)addOperationWithBlock:(CDUnknownBlockType)arg1;
-- (void)addOperations:(id)arg1 waitUntilFinished:(_Bool)arg2;
-- (void)addDependentOperation:(id)arg1;
-- (void)addOperation:(id)arg1;
-- (void)performAfter:(double)arg1 block:(CDUnknownBlockType)arg2;
-- (void)performSyncBlock:(CDUnknownBlockType)arg1;
-- (void)performAsyncBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

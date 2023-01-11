@@ -13,6 +13,11 @@
 {
     _Bool _shouldLoadProposedTimesInRange;
     _Bool _shouldLoadDefaultProperties;
+    _Bool _excludeAllDayEvents;
+    _Bool _excludeTimedEvents;
+    _Bool _excludeDeclined;
+    _Bool _excludeProposed;
+    _Bool _excludeDeclinedUnlessProposed;
 }
 
 + (id)predicateWithStartDate:(id)arg1 title:(id)arg2 calendars:(id)arg3;
@@ -20,6 +25,11 @@
 + (id)predicateWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 calendars:(id)arg4 loadDefaultProperties:(_Bool)arg5;
 + (id)predicateWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 calendars:(id)arg4;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool excludeDeclinedUnlessProposed; // @synthesize excludeDeclinedUnlessProposed=_excludeDeclinedUnlessProposed;
+@property(nonatomic) _Bool excludeProposed; // @synthesize excludeProposed=_excludeProposed;
+@property(nonatomic) _Bool excludeDeclined; // @synthesize excludeDeclined=_excludeDeclined;
+@property(nonatomic) _Bool excludeTimedEvents; // @synthesize excludeTimedEvents=_excludeTimedEvents;
+@property(nonatomic) _Bool excludeAllDayEvents; // @synthesize excludeAllDayEvents=_excludeAllDayEvents;
 @property(readonly, nonatomic) _Bool shouldLoadDefaultProperties; // @synthesize shouldLoadDefaultProperties=_shouldLoadDefaultProperties;
 @property(readonly, nonatomic) _Bool shouldLoadProposedTimesInRange; // @synthesize shouldLoadProposedTimesInRange=_shouldLoadProposedTimesInRange;
 - (_Bool)isEqual:(id)arg1;

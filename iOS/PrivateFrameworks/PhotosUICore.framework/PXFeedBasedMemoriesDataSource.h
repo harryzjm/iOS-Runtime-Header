@@ -11,8 +11,9 @@
     NSArray *_entries;
 }
 
-@property(readonly, copy, nonatomic) NSArray *entries; // @synthesize entries=_entries;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *entries; // @synthesize entries=_entries;
+- (id)sectionedObjectReferenceForMemoryUUID:(id)arg1;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;

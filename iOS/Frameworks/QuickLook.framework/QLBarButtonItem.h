@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property unsigned long long QLType; // @synthesize QLType=_QLType;
-- (_Bool)isEqual:(id)arg1;
+- (_Bool)_qlIsEqual:(id)arg1;
 
 @end
 

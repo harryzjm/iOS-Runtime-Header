@@ -12,13 +12,13 @@
     NSSet *_personNodes;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (_Bool)_useSplitTimeTitlesIfNeeded;
 - (id)_timeTitleForPeople;
 - (id)_birthdayTitleForPeople;
-- (_Bool)_person:(id)arg1 isPresentInAnyMomentOfMoments:(id)arg2;
+- (_Bool)_person:(id)arg1 isPresentInAnyMomentOfMomentNodes:(id)arg2;
 - (id)_timeTitleForEarlyMoments;
 - (id)_titleForEarlyMoments;
 - (id)_titleForSocialGroup;

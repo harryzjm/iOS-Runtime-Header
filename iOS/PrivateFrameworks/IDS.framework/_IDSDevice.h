@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUTWeakReference, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID;
+@class CUTWeakReference, IDSEndpointCapabilities, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID;
 
 @interface _IDSDevice : NSObject
 {
@@ -23,9 +23,12 @@
 - (void).cxx_destruct;
 - (void)_setService:(id)arg1;
 - (void)_setAccount:(id)arg1;
+- (void)_stateChanged;
 - (void)_cloudConnectedStateChanged;
 - (void)_connectedStateChanged;
 - (void)_nearbyStateChanged;
+- (_Bool)isTinker;
+@property(readonly, nonatomic) IDSEndpointCapabilities *capabilities;
 - (void)_addIdentity:(id)arg1;
 @property(readonly, nonatomic) NSArray *identities;
 @property(readonly, nonatomic) NSData *pushToken;
@@ -46,6 +49,7 @@
 @property(readonly, nonatomic) unsigned long long minCompatibilityVersion;
 @property(readonly, nonatomic) unsigned long long pairingProtocolVersion;
 @property(readonly, nonatomic) NSDate *lastActivityDate;
+@property(readonly, nonatomic) long long relationship;
 @property(readonly, nonatomic) _Bool isActive;
 @property(readonly, nonatomic) _Bool isLocallyPaired;
 @property(readonly, nonatomic) _Bool isDefaultPairedDevice;
@@ -53,6 +57,7 @@
 @property(readonly, nonatomic, getter=isCloudConnected) _Bool cloudConnected;
 @property(readonly, nonatomic, getter=isConnected) _Bool connected;
 @property(readonly, nonatomic, getter=isNearby) _Bool nearby;
+- (id)compactDescription;
 - (id)description;
 - (id)fullDescription;
 @property(readonly, nonatomic) NSString *service;

@@ -21,6 +21,7 @@
 - (id)appendPointer:(void *)arg1;
 - (id)appendObject:(id)arg1;
 - (id)appendClass:(Class)arg1;
+- (id)appendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)appendCGRect:(struct CGRect)arg1;
 - (id)appendCGSize:(struct CGSize)arg1;
 - (id)appendCGPoint:(struct CGPoint)arg1;

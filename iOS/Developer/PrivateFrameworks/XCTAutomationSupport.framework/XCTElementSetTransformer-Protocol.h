@@ -12,10 +12,10 @@
 @protocol XCTMatchingElementIterator;
 
 @protocol XCTElementSetTransformer <NSObject, NSCopying, XCTCapabilitiesProviding>
+@property(readonly, copy) NSSet *elementTypes;
 @property _Bool stopsOnFirstMatch;
 @property(readonly) _Bool supportsAttributeKeyPathAnalysis;
 @property(copy) NSString *transformationDescription;
-@property(readonly) _Bool supportsRemoteEvaluation;
 - (NSSet *)requiredKeyPathsOrError:(id *)arg1;
 - (_Bool)canBeRemotelyEvaluatedWithCapabilities:(XCTCapabilities *)arg1;
 - (id <XCTMatchingElementIterator>)iteratorForInput:(XCElementSnapshot *)arg1;

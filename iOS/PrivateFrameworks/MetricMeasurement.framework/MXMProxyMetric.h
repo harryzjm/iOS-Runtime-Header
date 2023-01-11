@@ -12,10 +12,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, retain) MXMMetric *_underlyingMetric; // @synthesize _underlyingMetric=__underlyingMetric;
 - (void).cxx_destruct;
+@property(readonly, retain) MXMMetric *_underlyingMetric; // @synthesize _underlyingMetric=__underlyingMetric;
+- (void)didStopAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 stopDate:(id)arg3;
 - (void)didStopAtTime:(unsigned long long)arg1 stopDate:(id)arg2;
 - (void)willStop;
+- (void)didStartAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 startDate:(id)arg3;
 - (void)didStartAtTime:(unsigned long long)arg1 startDate:(id)arg2;
 - (void)willStartAtEstimatedTime:(unsigned long long)arg1;
 - (_Bool)prepareWithOptions:(id)arg1 error:(id *)arg2;

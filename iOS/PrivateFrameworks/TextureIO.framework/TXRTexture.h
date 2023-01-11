@@ -21,12 +21,12 @@
     unsigned long long _alphaInfo;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long alphaInfo; // @synthesize alphaInfo=_alphaInfo;
 @property(readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(readonly, nonatomic) _Bool cubemap; // @synthesize cubemap=_cubemap;
 @property(readonly, nonatomic) MISSING_TYPE *dimensions; // @synthesize dimensions=_dimensions;
 @property(readonly, nonatomic) NSArray *mipmapLevels; // @synthesize mipmapLevels=_mipmapLevels;
-- (void).cxx_destruct;
 - (id)copyWithPixelFormat:(unsigned long long)arg1 options:(id)arg2 bufferAllocator:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)generateMipmapsForRange:(struct _NSRange)arg1 filter:(unsigned long long)arg2 error:(id *)arg3;

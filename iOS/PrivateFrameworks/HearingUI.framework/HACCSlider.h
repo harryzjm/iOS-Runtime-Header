@@ -8,13 +8,13 @@
 
 #import <HearingUI/HACCContentModule-Protocol.h>
 
-@class AXHAStepSlider, NSNumberFormatter, NSString, UILabel, UIVisualEffectView;
+@class HUIStepSlider, NSNumberFormatter, NSString, UILabel, UIView, UIVisualEffectView;
 @protocol HACCContentModuleDelegate;
 
 @interface HACCSlider : UIControl <HACCContentModule>
 {
     UIVisualEffectView *_titleContainer;
-    UIVisualEffectView *_subtitleContainer;
+    UIView *_subtitleContainer;
     unsigned long long module;
     id <HACCContentModuleDelegate> delegate;
     unsigned long long _numberOfSteps;
@@ -24,10 +24,11 @@
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UILabel *_statusLabel;
-    AXHAStepSlider *_slider;
+    HUIStepSlider *_slider;
 }
 
-@property(retain, nonatomic) AXHAStepSlider *slider; // @synthesize slider=_slider;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HUIStepSlider *slider; // @synthesize slider=_slider;
 @property(retain, nonatomic) UILabel *statusLabel; // @synthesize statusLabel=_statusLabel;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -36,7 +37,6 @@
 @property(nonatomic) double value; // @synthesize value=_value;
 @property(nonatomic) __weak id <HACCContentModuleDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) unsigned long long module; // @synthesize module;
-- (void).cxx_destruct;
 - (void)accessibilityIncrement;
 - (void)accessibilityDecrement;
 - (unsigned long long)accessibilityTraits;
@@ -49,7 +49,7 @@
 - (void)updateValueString;
 - (void)sliderDidChange:(id)arg1;
 @property(nonatomic) unsigned long long numberOfSteps; // @synthesize numberOfSteps=_numberOfSteps;
-- (void)updateConstraints;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 andStyle:(long long)arg2;
 
 // Remaining properties

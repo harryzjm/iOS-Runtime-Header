@@ -14,12 +14,14 @@
 {
     HMCameraStreamAudioPreferences *_audioPreferences;
     HMCameraStreamVideoPreferences *_videoPreferences;
+    long long _minimumRequiredAvailableOrInUseStreams;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property long long minimumRequiredAvailableOrInUseStreams; // @synthesize minimumRequiredAvailableOrInUseStreams=_minimumRequiredAvailableOrInUseStreams;
 @property(readonly, nonatomic) HMCameraStreamVideoPreferences *videoPreferences; // @synthesize videoPreferences=_videoPreferences;
 @property(readonly, nonatomic) HMCameraStreamAudioPreferences *audioPreferences; // @synthesize audioPreferences=_audioPreferences;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

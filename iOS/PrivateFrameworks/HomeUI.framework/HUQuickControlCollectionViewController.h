@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HFAccessoryObserver-Protocol.h>
 #import <HomeUI/HUQuickControlCollectionViewDelegateLayout-Protocol.h>
 #import <HomeUI/HUQuickControlContentCharacteristicWriting-Protocol.h>
 #import <HomeUI/HUQuickControlInteractiveContentContaining-Protocol.h>
@@ -13,7 +14,7 @@
 @class HUQuickControlCollectionItemManager, HUQuickControlCollectionViewControllerLayoutOptions, HUQuickControlCollectionViewLayout, HUQuickControlContentCharacteristicWritingUpdateAdapter, NSMapTable, NSSet, NSString;
 @protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting;
 
-@interface HUQuickControlCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlTouchContinuing>
+@interface HUQuickControlCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HFAccessoryObserver, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlTouchContinuing>
 {
     _Bool _userInteractionEnabled;
     _Bool _disableItemUpdatesForOverrideCharacteristicValueChanges;
@@ -25,6 +26,7 @@
     HUQuickControlContentCharacteristicWritingUpdateAdapter *_characteristicWritingAdapter;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HUQuickControlContentCharacteristicWritingUpdateAdapter *characteristicWritingAdapter; // @synthesize characteristicWritingAdapter=_characteristicWritingAdapter;
 @property(readonly, nonatomic) NSMapTable *viewControllersKeyedByItem; // @synthesize viewControllersKeyedByItem=_viewControllersKeyedByItem;
 @property(nonatomic) _Bool disableItemUpdatesForOverrideCharacteristicValueChanges; // @synthesize disableItemUpdatesForOverrideCharacteristicValueChanges=_disableItemUpdatesForOverrideCharacteristicValueChanges;
@@ -33,7 +35,7 @@
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property(nonatomic) __weak id <HUQuickControlContentHosting> quickControlHost; // @synthesize quickControlHost=_quickControlHost;
 @property(nonatomic) __weak id <HUQuickControlContentCharacteristicWritingDelegate> characteristicWritingDelegate; // @synthesize characteristicWritingDelegate=_characteristicWritingDelegate;
-- (void).cxx_destruct;
+- (void)accessoryDidUpdateControllable:(id)arg1;
 - (id)overrideValueForCharacteristic:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *affectedCharacteristics;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
@@ -41,6 +43,7 @@
 - (double)heightForSupplementaryViewAtIndexPath:(id)arg1;
 - (id)intrinsicSizeDescriptorForItemAtIndexPath:(id)arg1 itemSize:(unsigned long long)arg2;
 - (id)viewForTouchContinuation;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (id)_allContentViewControllers;
 - (id)_allViewControllers;
 - (void)_propagateInteractiveContentStateForChildViewControllers:(id)arg1;
@@ -55,6 +58,7 @@
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)viewLayoutMarginsDidChange;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithItemManager:(id)arg1;

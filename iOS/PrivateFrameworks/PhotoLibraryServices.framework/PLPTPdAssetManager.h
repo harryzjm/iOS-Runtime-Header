@@ -15,7 +15,6 @@
 {
     NSObject<PhotoLibraryPTPDelegate> *_delegate;
     PLPTPdFormatConversionManager *_formatConversionManager;
-    NSString *_firstDCIMFolderServiced;
     NSSet *_availableAssetIDs;
     PLPhotoLibrary *_photoLibrary;
     int _libraryStatus;
@@ -24,8 +23,8 @@
     NSFileManager *fileManager;
 }
 
-@property(retain, nonatomic) NSFileManager *fileManager; // @synthesize fileManager;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSFileManager *fileManager; // @synthesize fileManager;
 - (id)fetchObjectIDsForAssetsExposedToPTPFromObjectIDs:(id)arg1;
 - (id)managedObjectContext;
 - (id)_performResultTransactionAndWait:(CDUnknownBlockType)arg1;
@@ -34,17 +33,10 @@
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
 - (void)endSignpostForThumbnailGenerationForAsset:(id)arg1;
 - (void)beginSignpostForThumbnailGenerationForAsset:(id)arg1 inputResourceTypeLabel:(id)arg2;
-- (id)_ptpAssetEnumeratorAllAssets;
-- (id)_ptpInformationForAllAssets;
-- (id)_allAssetObjectIDs;
-- (id)ptpInformationForPhotosWithPrimaryKeys:(id)arg1;
-- (id)_ptpInformationForPhotoWithObjectID:(id)arg1;
-- (void)setPtpDelegate:(id)arg1;
-- (_Bool)_ptpDeletePhotoWithAssetID:(id)arg1 andExtension:(id)arg2;
-- (_Bool)ptpDeletePhotoWithKey:(id)arg1 andExtension:(id)arg2;
 - (id)dataByJPEGCompressingCGImage:(struct CGImage *)arg1 toLengthLimit:(long long)arg2 initialCompressionQuality:(float)arg3 size:(struct CGSize)arg4 orientation:(long long)arg5;
 - (id)_generateThumbnailForAsset:(id)arg1 fromOriginalImagePath:(id)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (id)dataForThumbnailFileAtPath:(id)arg1 rotatedToOrientation:(long long)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
+- (void)_inverseAffineTransformForExifOrientation:(long long)arg1 width:(double)arg2 height:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_ptpThumbnailForPenultimateImageWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (id)_ptpThumbnailForOriginalVideoWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (id)_ptpThumbnailForSpatialOverCaptureVideoWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
@@ -53,14 +45,9 @@
 - (id)_ptpThumbnailForOriginalWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (_Bool)requestedSize:(struct CGSize)arg1 fitsInSourceSize:(struct CGSize)arg2;
 - (struct CGSize)masterThumbSize;
-- (id)ptpThumbnailForPhotoWithKey:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (struct CGSize)_validateSize:(struct CGSize)arg1;
-- (id)ptpThumbnailForPhotoWithKey:(id)arg1;
-- (id)_ptpOriginalExifDataForAssetWithID:(id)arg1;
-- (id)ptpExifDataForPhotoWithKey:(id)arg1;
-- (id)ptpExifDataForAssetHandle:(id)arg1;
-- (void)enumeratePTPInformationForFilesInDirectory:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)ptpInformationForFilesInDirectory:(id)arg1;
+- (id)_ptpAssetEnumeratorAllAssets;
+- (id)_allAssetObjectIDs;
 - (_Bool)libraryIsAvailable;
 - (id)_ptpAssetsForAssetWithID:(id)arg1;
 - (void)ptpEnumerateAssetsWithPrimaryKeys:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -76,12 +63,6 @@
 @property(nonatomic) __weak NSObject<PhotoLibraryPTPDelegate> *delegate;
 - (void)managedObjectContext:(id)arg1 libraryChangedWithInsertedAssetIDs:(id)arg2 deletedAssetIDs:(id)arg3 changedAssetIDs:(id)arg4 adjustedAssetIDs:(id)arg5;
 @property(retain) PFMediaCapabilities *peerMediaCapabilities;
-- (void)deleteAsset:(id)arg1;
-- (id)infoForAsset:(struct NSObject *)arg1;
-- (id)assetsInAssociation:(struct NSObject *)arg1;
-- (id)associationsInAlbum:(struct NSObject *)arg1;
-- (id)infoForAlbum:(struct NSObject *)arg1;
-- (id)albumHandles;
 @property(readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 - (void)handlePhotoLibraryAvailableNotification;
 - (void)dealloc;

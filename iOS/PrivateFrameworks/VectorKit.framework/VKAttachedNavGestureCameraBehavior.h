@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_tapZoomAnimation;
 }
 
+- (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;
 - (void)updatePan:(struct CGPoint)arg1 lastScreenPoint:(struct CGPoint)arg2;

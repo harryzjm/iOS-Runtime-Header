@@ -14,15 +14,16 @@
     NSDateComponents *_fireTimeComponents;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDateComponents *fireTimeComponents; // @synthesize fireTimeComponents=_fireTimeComponents;
 @property(copy, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)_fireDateForTimeComponents:(id)arg1;
 @property(readonly, nonatomic) NSDate *effectiveFireDate;
 - (id)effectiveFireTimeComponents;
 - (void)updateBaseFireDateForTrigger;
 - (id)performValidation;
+- (id)naturalLanguageWithOptions:(id)arg1 recurrences:(id)arg2;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1 withHome:(id)arg2 recurrences:(id)arg3;
 - (id)buildNewEventFromCurrentState;
 - (id)initWithEvent:(id)arg1;

@@ -13,17 +13,22 @@
     unsigned long long _mode;
     NSIndexPath *_selectedColorIndexPath;
     HUQuickControlColorViewController *_colorViewController;
+    HUQuickControlColorViewController *_presentingColorViewController;
 }
 
 + (Class)controlItemClass;
+- (void).cxx_destruct;
+@property(nonatomic) __weak HUQuickControlColorViewController *presentingColorViewController; // @synthesize presentingColorViewController=_presentingColorViewController;
 @property(retain, nonatomic) HUQuickControlColorViewController *colorViewController; // @synthesize colorViewController=_colorViewController;
 @property(retain, nonatomic) NSIndexPath *selectedColorIndexPath; // @synthesize selectedColorIndexPath=_selectedColorIndexPath;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-- (void).cxx_destruct;
 - (struct CGSize)preferredContentSize;
 - (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
 - (void)doneButtonTapped;
 - (void)cancelButtonTapped;
+- (void)didSelectColorAtIndexPath:(id)arg1;
+- (void)interactionCoordinator:(id)arg1 viewValueDidChange:(id)arg2;
+- (void)interactionCoordinator:(id)arg1 didSelectColorAtIndexPath:(id)arg2;
 - (void)presentFullColorViewForInteractionCoordinator:(id)arg1 selectedColorIndexPath:(id)arg2;
 - (void)interactionCoordinator:(id)arg1 colorPaletteDidChange:(id)arg2;
 - (id)overrideStatusText;
@@ -31,6 +36,7 @@
 - (id)createViewProfile;
 - (id)createInteractionCoordinator;
 - (unsigned long long)_paletteType;
+- (void)updateValueFromControlItem;
 
 // Remaining properties
 @property(readonly, nonatomic) HFColorControlItem *controlItem; // @dynamic controlItem;

@@ -14,8 +14,7 @@
 - (void)cam_debugFocusState;
 @property(readonly, nonatomic) AVCaptureDeviceFormat *cam_formatForPortraitFrontFacingZoomed;
 - (id)cameraPanoramaFormatForConfiguration:(id)arg1;
-- (id)cameraVideoPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
 - (id)cam_highestQualityFormatForConfiguration:(long long)arg1 colorSpace:(long long)arg2;
-- (id)cameraVideoFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (void)cameraVideoFormat:(id *)arg1 orPreset:(id *)arg2 forVideoConfiguration:(long long)arg3 videoEncodingBehavior:(long long)arg4;
 @end
 

@@ -22,7 +22,6 @@
 - (id)initWithReply:(id)arg1;
 - (void)sendReply:(CDUnknownBlockType)arg1;
 - (id)initForMessage:(id)arg1;
-- (id)_initWithReply:(id)arg1;
 
 @end
 

@@ -25,6 +25,8 @@
 + (id)shareeWithName:(id)arg1 phoneNumber:(id)arg2;
 + (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3;
 + (id)shareeWithName:(id)arg1 emailAddress:(id)arg2;
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (Class)frozenClass;
 @property(nonatomic) unsigned long long shareeAccessLevel;
 - (void)setShareeAccessLevelRaw:(int)arg1;
@@ -42,6 +44,8 @@
 - (id)URL;
 @property(copy, nonatomic) NSString *address;
 @property(copy, nonatomic) NSString *name;
+- (void)setDisplayName:(id)arg1;
+- (id)displayName;
 - (void)setUUID:(id)arg1;
 @property(readonly, nonatomic) NSString *UUID;
 @property(readonly, nonatomic) EKCalendar *owner;

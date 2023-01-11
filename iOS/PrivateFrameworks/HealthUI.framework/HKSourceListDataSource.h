@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKSourceListDataModel, HKSynchronousObserverSet, NSMutableArray;
+@class HKHealthStore, HKSourceListDataModel, HKSynchronousObserverSet, NSArray, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 @interface HKSourceListDataSource : NSObject
@@ -14,6 +14,8 @@
     NSObject<OS_dispatch_queue> *_mainQueue;
     NSObject<OS_dispatch_queue> *_resultsQueue;
     NSMutableArray *_transformers;
+    NSMutableArray *_followupTransformers;
+    NSArray *_rawSources;
     HKSynchronousObserverSet *_observers;
     int _notifyToken;
     _Bool _hasInitiatedFetch;
@@ -27,6 +29,13 @@
     HKSourceListDataModel *_sources;
 }
 
++ (void)_remoteWatchAppPurposeStringsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)_performTransformations:(id)arg1 model:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (CDUnknownBlockType)_builtinPurposeStringsFetchTransformer;
++ (CDUnknownBlockType)_builtinIconFetchTransformer;
++ (CDUnknownBlockType)_builtinInstallationStatusTransformer;
++ (void)fetchIconForSource:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool deliverUpdates; // @synthesize deliverUpdates=_deliverUpdates;
 @property(nonatomic) _Bool shouldIncludeSpecialSources; // @synthesize shouldIncludeSpecialSources=_shouldIncludeSpecialSources;
 @property(nonatomic) _Bool shouldFetchPurposeStrings; // @synthesize shouldFetchPurposeStrings=_shouldFetchPurposeStrings;
@@ -34,16 +43,12 @@
 @property(nonatomic) _Bool shouldFetchAppInstallationStatus; // @synthesize shouldFetchAppInstallationStatus=_shouldFetchAppInstallationStatus;
 @property(readonly, nonatomic) HKSourceListDataModel *sources; // @synthesize sources=_sources;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-- (void).cxx_destruct;
 - (void)_fakeSourceForInstalledAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_specialAppBundleIdentifiers;
-- (void)_remoteWatchAppPurposeStringsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_throttledNotificationOfDataSourceUpdate;
+- (void)_notifyObserversForDataSourceUpdate;
 - (void)_didFetchSources:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_performTransformations:(id)arg1 model:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prependBuiltinTransformers;
-- (CDUnknownBlockType)_builtinPurposeStringsFetchTransformer;
-- (CDUnknownBlockType)_builtinIconFetchTransformer;
-- (CDUnknownBlockType)_builtinInstallationStatusTransformer;
 - (void)addFetchTransformer:(CDUnknownBlockType)arg1;
 - (void)fetchModelForSources:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSources;
@@ -51,6 +56,7 @@
 - (void)addObserver:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
+- (id)initWithHealthStore:(id)arg1 sources:(id)arg2 queue:(id)arg3;
 - (id)initWithHealthStore:(id)arg1 queue:(id)arg2;
 - (id)initWithHealthStore:(id)arg1;
 

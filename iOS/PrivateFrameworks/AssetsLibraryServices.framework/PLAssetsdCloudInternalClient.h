@@ -8,17 +8,20 @@
 {
 }
 
+- (unsigned long long)getResetSyncStatusWithError:(id *)arg1;
 - (void)queryParticipantsWithEmails:(id)arg1 phoneNumbers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forceSyncMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)acceptMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchMomentShareFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)publishMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)acceptShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchShareFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)publishShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)overrideSystemBudgetsForSyncSession:(_Bool)arg1 systemBudgets:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getSystemBudgetsWithReply:(CDUnknownBlockType)arg1;
+- (void)getNotUploadedCount:(CDUnknownBlockType)arg1;
 - (void)getCurrentTransferProgress:(CDUnknownBlockType)arg1;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)synchronouslySetCloudPhotoLibraryPauseState:(_Bool)arg1 reason:(short)arg2;
 - (void)setCloudPhotoLibraryPauseState:(_Bool)arg1 reason:(short)arg2;
+- (void)setCloudPhotoLibraryEnabledStateSync:(_Bool)arg1;
 - (void)setCloudPhotoLibraryEnabledState:(_Bool)arg1;
 - (void)syncCloudPhotoLibrary;
 - (_Bool)shouldAutoEnableiCPLOnOSXWithError:(id *)arg1;

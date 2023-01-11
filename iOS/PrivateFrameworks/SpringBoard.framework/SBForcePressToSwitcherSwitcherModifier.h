@@ -14,21 +14,24 @@
 }
 
 - (void).cxx_destruct;
+- (id)_dismissForEmptySwitcherResponseName;
 - (id)_appLayoutToScrollToDuringTransition;
 - (unsigned long long)_indexOfSelectedAppLayout;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (double)containerStatusBarAnimationDuration;
 - (_Bool)isContainerStatusBarVisible;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
+- (id)handleTimerEvent:(id)arg1;
 - (id)transitionWillBegin;
 - (id)initWithTransitionID:(id)arg1 selectedAppLayout:(id)arg2 effectiveStartingEnvironmentMode:(long long)arg3 multitaskingModifier:(id)arg4;
 

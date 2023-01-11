@@ -10,10 +10,11 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMDHomeManager, HMDUnassociatedMediaAccessory, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
-@protocol HMDMediaBrowserDelegate, OS_dispatch_queue;
+@protocol HMDMediaBrowserDataSource, HMDMediaBrowserDelegate, HMFLocking, OS_dispatch_queue;
 
 @interface HMDMediaBrowser : HMFObject <HMFLogging, HMFTimerDelegate>
 {
+    id <HMFLocking> _lock;
     NSMutableSet *_accessoryAdvertisements;
     _Bool _discoverUnassociatedAccessories;
     _Bool _discoverAssociatedAccessories;
@@ -21,28 +22,28 @@
     id <HMDMediaBrowserDelegate> _delegate;
     HMDHomeManager *_homeManager;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     void *_discoverySession;
     void *_discoverySessionCallbackToken;
     HMFTimer *_discoveryPollTimer;
     NSMutableSet *_identifiersOfAssociatedMediaAccessories;
     NSMutableSet *_mediaEndpoints;
+    id <HMDMediaBrowserDataSource> _dataSource;
 }
 
 + (id)logCategory;
 + (id)advertisementsFromOutputDevices:(struct __CFArray *)arg1;
 + (id)shortDescription;
+- (void).cxx_destruct;
+@property(readonly) id <HMDMediaBrowserDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) NSMutableSet *mediaEndpoints; // @synthesize mediaEndpoints=_mediaEndpoints;
 @property(retain, nonatomic) NSMutableSet *identifiersOfAssociatedMediaAccessories; // @synthesize identifiersOfAssociatedMediaAccessories=_identifiersOfAssociatedMediaAccessories;
 @property(nonatomic) _Bool updateAvailableOutputDevices; // @synthesize updateAvailableOutputDevices=_updateAvailableOutputDevices;
 @property(retain, nonatomic) HMFTimer *discoveryPollTimer; // @synthesize discoveryPollTimer=_discoveryPollTimer;
 @property(nonatomic) void *discoverySessionCallbackToken; // @synthesize discoverySessionCallbackToken=_discoverySessionCallbackToken;
 @property(readonly, nonatomic) void *discoverySession; // @synthesize discoverySession=_discoverySession;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property __weak id <HMDMediaBrowserDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (void)deregisterAccessories:(id)arg1;
 - (void)_updateSessionsForAccessories:(id)arg1;
@@ -72,6 +73,7 @@
 - (id)descriptionWithPointer:(_Bool)arg1 additionalDescription:(id)arg2;
 - (id)shortDescription;
 - (void)dealloc;
+- (id)initWithHomeManager:(id)arg1 dataSource:(id)arg2;
 - (id)initWithHomeManager:(id)arg1;
 
 // Remaining properties

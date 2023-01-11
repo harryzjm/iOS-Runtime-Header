@@ -11,11 +11,10 @@
     NSString *_workflowType;
 }
 
-@property(readonly, nonatomic) NSString *workflowType; // @synthesize workflowType=_workflowType;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *workflowType; // @synthesize workflowType=_workflowType;
 - (_Bool)isAppExtension;
 - (_Bool)isWatchOS;
-- (_Bool)isMemoryConstrained;
 - (id)initWithWorkflowType:(id)arg1;
 
 @end

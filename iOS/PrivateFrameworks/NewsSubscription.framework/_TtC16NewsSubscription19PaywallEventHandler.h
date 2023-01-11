@@ -13,6 +13,9 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *interactor;
     MISSING_TYPE *router;
+    MISSING_TYPE *tracker;
+    MISSING_TYPE *urlHandler;
+    MISSING_TYPE *paywallModel;
 }
 
 @end

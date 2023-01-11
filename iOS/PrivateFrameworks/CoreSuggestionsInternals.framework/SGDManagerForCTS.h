@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SGServiceContext, SGSqlEntityStore;
+@class PETEventTracker2, SGServiceContext, SGSqlEntityStore;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source, SGXPCActivityManagerProtocol;
 
 @interface SGDManagerForCTS : NSObject
@@ -19,7 +19,9 @@
     NSObject<OS_dispatch_semaphore> *_frontfillSemaphoreForTesting;
     struct SGDSuggestManagerCTSCriteriaState _ctsCriteriaState;
     struct _opaque_pthread_mutex_t _geocodeLock;
+    struct _opaque_pthread_mutex_t _verificationLock;
     double _lastFrontfillFinishTime;
+    PETEventTracker2 *_pet2tracker;
     id <SGXPCActivityManagerProtocol> _xpcActivityManager;
     NSObject<OS_dispatch_source> *_adjustActivitySource;
 }
@@ -40,13 +42,15 @@
 - (_Bool)hasAlreadyHarvestedSearchableItem:(id)arg1;
 - (_Bool)processSearchableItemForTesting:(id)arg1;
 - (_Bool)processSearchableItem:(id)arg1 pipeline:(id)arg2 context:(id)arg3;
+- (void)drainDefaultQueueWithStructuredEventsCandidatesPriorityOption;
 - (void)drainDefaultQueueCompletely;
-- (_Bool)drainHarvestQueue:(id)arg1 highPriorityOnly:(_Bool)arg2 continuingWhile:(CDUnknownBlockType)arg3;
+- (_Bool)drainHarvestQueue:(id)arg1 priorityOption:(unsigned char)arg2 continuingWhile:(CDUnknownBlockType)arg3;
 - (void)_doAdjustCriteriaForCTS;
 - (void)adjustCriteriaForCTS;
+- (void)_performProcessPendingVerificationActivity:(id)arg1 overrideVerificationStatus:(id)arg2;
+- (void)_registerProcessPendingVerificationActivity;
 - (void)_performProcessPendingGeocodesActivity:(id)arg1;
 - (void)_registerProcessPendingGeocodesActivity;
-- (void)performContactDetailCacheRebuildActivity:(id)arg1 usingContacts:(id)arg2;
 - (void)performContactDetailCacheRebuildActivity:(id)arg1;
 - (void)_registerForContactDetailCacheRebuildActivity;
 - (void)_performSendRTCActivity;
@@ -60,9 +64,6 @@
 - (void)_performHarvestActivity:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_registerForCTSHarvestActivity;
 - (void)_performCollectWeeklyStats:(id)arg1;
-- (struct SGMEventICSSourceType_)icsTypeForBundle:(id)arg1;
-- (id)accountTypeForBundle:(id)arg1;
-- (struct SGMEventICSSourceType_)accountTypeFor:(id)arg1;
 - (void)_registerForCollectWeeklyStats;
 - (void)_performMobileAssetMetadataDownloadActivity:(id)arg1;
 - (void)_registerMobileAssetMetadataDownloadActivity;

@@ -4,22 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CSStatusTextView, MCProfileConnection, NSString;
+#import <CoverSheet/SBFRemoteBasebandLoggingObserver-Protocol.h>
+
+@class CSStatusTextView, MCProfileConnection, NSString, SBFRemoteBasebandLoggingManager;
 @protocol CSStatusTextViewControllerDelegate;
 
-@interface CSStatusTextViewController
+@interface CSStatusTextViewController <SBFRemoteBasebandLoggingObserver>
 {
     CSStatusTextView *_view;
     NSString *_overrideFooterText;
     MCProfileConnection *_profileConnection;
+    SBFRemoteBasebandLoggingManager *_basebandLoggingManager;
     id <CSStatusTextViewControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CSStatusTextViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *overrideFooterText; // @synthesize overrideFooterText=_overrideFooterText;
-- (void).cxx_destruct;
+- (void)remoteBasebandLogCollectionStateDidChange:(_Bool)arg1;
 - (id)_legalContact;
 - (id)_legalString;
+- (_Bool)_isSecurityResearchDevice;
 - (void)_updateTextForLegal;
 - (void)_updateTextForProvisionalEnrollment;
 - (void)_updateTextForSupervision;
@@ -32,6 +37,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)statusTextView;
+- (void)dealloc;
 - (id)init;
 
 @end

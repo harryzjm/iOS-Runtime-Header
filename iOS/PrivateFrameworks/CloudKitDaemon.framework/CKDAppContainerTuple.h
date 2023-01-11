@@ -8,17 +8,15 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKContainerID, NSString;
+@class CKContainerID, CKDApplicationID, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDAppContainerTuple : NSObject <NSCopying>
 {
     _Bool _useZoneWidePCS;
     _Bool _bypassPCSEncryption;
     _Bool _forceEnableReadOnlyManatee;
     _Bool _wantsSiloedContext;
-    NSString *_applicationBundleID;
-    NSString *_sourceApplicationBundleID;
+    CKDApplicationID *_applicationID;
     CKContainerID *_containerID;
     NSString *_applicationContainerPath;
     NSString *_personaID;
@@ -26,6 +24,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _mmcsEncryptionSupport;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
 @property(nonatomic) _Bool wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 @property(retain, nonatomic) NSString *containerEncryptionServiceName; // @synthesize containerEncryptionServiceName=_containerEncryptionServiceName;
@@ -35,16 +34,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
 @property(readonly, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
 @property(readonly, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
-@property(readonly, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
-@property(readonly, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) CKDApplicationID *applicationID; // @synthesize applicationID=_applicationID;
 - (id)description;
 - (id)CKPropertiesDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 applicationContainerPath:(id)arg3 containerID:(id)arg4 personaID:(id)arg5;
-- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerID:(id)arg3 personaID:(id)arg4;
+- (id)initWithApplicationID:(id)arg1 applicationContainerPath:(id)arg2 containerID:(id)arg3 personaID:(id)arg4;
+- (id)initWithApplicationID:(id)arg1 containerID:(id)arg2 personaID:(id)arg3;
 - (id)initWithApplicationBundleID:(id)arg1 containerID:(id)arg2 personaID:(id)arg3;
 
 @end

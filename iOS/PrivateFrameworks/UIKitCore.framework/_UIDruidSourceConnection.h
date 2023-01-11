@@ -27,18 +27,18 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _dataTransferFinishedBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dataTransferFinishedBlock; // @synthesize dataTransferFinishedBlock=_dataTransferFinishedBlock;
 @property(copy, nonatomic) CDUnknownBlockType dragCompletionBlock; // @synthesize dragCompletionBlock=_dragCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType handOffCancelledItemsBlock; // @synthesize handOffCancelledItemsBlock=_handOffCancelledItemsBlock;
 @property(copy, nonatomic) CDUnknownBlockType canHandOffCancelledItemsBlock; // @synthesize canHandOffCancelledItemsBlock=_canHandOffCancelledItemsBlock;
 @property(copy, nonatomic) CDUnknownBlockType dragPreviewProviderBlock; // @synthesize dragPreviewProviderBlock=_dragPreviewProviderBlock;
-- (void).cxx_destruct;
 - (void)_internalDragFailed;
 - (oneway void)dataTransferSessionFinished;
 - (oneway void)dragFailed;
 - (oneway void)dragEndedWithOperation:(unsigned long long)arg1;
 - (oneway void)handOffCancelledItems:(id)arg1 withFence:(id)arg2;
-- (oneway void)checkCanHandOffCancelledItemsWithReply:(CDUnknownBlockType)arg1;
+- (oneway void)checkCanHandOffCancelledItems:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (oneway void)requestDragPreviewsForIndexSet:(id)arg1 reply:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
 - (void)cancelDrag;

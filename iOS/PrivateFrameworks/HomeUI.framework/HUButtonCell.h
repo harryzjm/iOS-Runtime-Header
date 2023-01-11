@@ -4,26 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <UIKit/UITableViewCell.h>
 
-@interface HUButtonCell
+#import <HomeUI/HUCellProtocol-Protocol.h>
+#import <HomeUI/HUDisableableCellProtocol-Protocol.h>
+
+@class HFItem, NSString;
+@protocol HUResizableCellDelegate;
+
+@interface HUButtonCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol>
 {
+    _Bool _disabled;
     _Bool _destructive;
     _Bool _textColorFollowsTintColor;
+    _Bool _hideTitle;
+    HFItem *_item;
     long long _textAlignment;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hideTitle; // @synthesize hideTitle=_hideTitle;
 @property(nonatomic) _Bool textColorFollowsTintColor; // @synthesize textColorFollowsTintColor=_textColorFollowsTintColor;
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(nonatomic, getter=isDestructive) _Bool destructive; // @synthesize destructive=_destructive;
+@property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
+@property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 - (void)updateTitle;
+- (void)updateUIWithAnimation:(_Bool)arg1;
 - (void)didMoveToSuperview;
 - (void)tintColorDidChange;
 - (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties
-@property(retain, nonatomic) NSString *descriptionText; // @dynamic descriptionText;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate;
+@property(readonly) Class superclass;
 
 @end
 

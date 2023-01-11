@@ -10,19 +10,19 @@
 {
     _Bool _senderIsAccountOwner;
     _Bool _senderIsBusinessChat;
-    _Bool _isSharingSenderLocation;
     CSPerson *_sender;
     NSArray *_recipients;
     NSString *_conversationIdentifier;
     NSString *_nickname;
     NSString *_photoPath;
+    NSString *_attachmentFilename;
 }
 
 + (_Bool)isSent:(id)arg1;
 + (id)_nicknameCustomKey;
 + (id)_photoPathCustomKey;
-+ (_Bool)_isSharingSenderLocation:(id)arg1 senderName:(id)arg2;
-@property(readonly) _Bool isSharingSenderLocation; // @synthesize isSharingSenderLocation=_isSharingSenderLocation;
+- (void).cxx_destruct;
+@property(readonly) NSString *attachmentFilename; // @synthesize attachmentFilename=_attachmentFilename;
 @property(readonly) _Bool senderIsBusinessChat; // @synthesize senderIsBusinessChat=_senderIsBusinessChat;
 @property(retain) NSString *photoPath; // @synthesize photoPath=_photoPath;
 @property(retain) NSString *nickname; // @synthesize nickname=_nickname;
@@ -30,10 +30,10 @@
 @property(retain) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property(retain) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(retain) CSPerson *sender; // @synthesize sender=_sender;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)spotlightDomainIdentifier;
 - (id)spotlightBundleIdentifier;
+- (id)author;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithSearchableItem:(id)arg1;
 

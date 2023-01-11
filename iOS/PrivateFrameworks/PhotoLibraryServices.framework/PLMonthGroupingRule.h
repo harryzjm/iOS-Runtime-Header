@@ -16,8 +16,8 @@
     NSCalendar *_calendar;
 }
 
-@property(readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 - (id)fallbackHighlightItemFromAllHighlightItems:(id)arg1;
 - (id)highlightItemsSortedByImportance:(id)arg1;
 - (_Bool)highlightItemHasMinimumRequirementToBePromoted:(id)arg1;
@@ -25,8 +25,8 @@
 - (_Bool)highlightItemList:(id)arg1 canBeMergedWithOtherHighlightItemList:(id)arg2;
 - (_Bool)highlightItem:(id)arg1 belongsToHighlightItemList:(id)arg2;
 - (id)dominantMonthDateComponentForStartDateComponents:(id)arg1 endDateComponents:(id)arg2 numberOfDaysInMonthOfStartDate:(long long)arg3;
-- (void)titlesForHighlightItemList:(id)arg1 forceUpdateLocale:(_Bool)arg2 resultBlock:(CDUnknownBlockType)arg3;
-- (void)titlesForHighlightItemList:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
+- (void)titlesForHighlightItemList:(id)arg1 dateRangeTitleGenerator:(id)arg2 forceUpdateLocale:(_Bool)arg3 resultBlock:(CDUnknownBlockType)arg4;
+- (void)titlesForHighlightItemList:(id)arg1 dateRangeTitleGenerator:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)init;
 
 // Remaining properties

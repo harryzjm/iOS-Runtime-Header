@@ -18,22 +18,28 @@
     UIImageView *_placeholderView;
     NSTimer *_placeholderViewRemovalTimer;
     double _placeholderOffset;
+    UIView *_contentObscuringView;
+    _Bool _obscuringContents;
+    _Bool _hasBeenInWindow;
     long long _navigationGesturePolicy;
     id <_SFWebViewDelegate> _delegate;
     UIView *_clippingView;
     struct UIEdgeInsets _hitTestInsets;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasBeenInWindow; // @synthesize hasBeenInWindow=_hasBeenInWindow;
+@property(nonatomic, getter=isObscuringContents) _Bool obscuringContents; // @synthesize obscuringContents=_obscuringContents;
 @property(nonatomic) __weak UIView *clippingView; // @synthesize clippingView=_clippingView;
 @property(nonatomic) __weak id <_SFWebViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long navigationGesturePolicy; // @synthesize navigationGesturePolicy=_navigationGesturePolicy;
 @property(nonatomic) struct UIEdgeInsets hitTestInsets; // @synthesize hitTestInsets=_hitTestInsets;
-- (void).cxx_destruct;
+- (_Bool)webui_canPromptForAccountSecurityRecommendation;
 - (void)safariKillWebContentProcessUIActivityKillWebProcess:(id)arg1;
 - (void)dismissDialogView:(id)arg1 withAdditionalAnimations:(CDUnknownBlockType)arg2 forDialogController:(id)arg3;
 - (void)presentDialogView:(id)arg1 withAdditionalAnimations:(CDUnknownBlockType)arg2 forDialogController:(id)arg3;
 - (int)webProcessIDForDialogController:(id)arg1;
-@property(readonly, nonatomic) UIView *effectiveViewToLayOut;
+- (void)setSuggestedFilenameForCurrentBackForwardListItem:(id)arg1;
 - (void)setPlaceholderImage:(id)arg1;
 - (void)setPlaceholderImage:(id)arg1 offset:(double)arg2;
 @property(readonly, copy, nonatomic) NSString *evOrganizationName;
@@ -49,6 +55,7 @@
 - (void)setAllowsBackForwardNavigationGestures:(_Bool)arg1;
 - (void)_updateNavigationGesturesAllowed;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;
+- (void)didMoveToWindow;
 - (void)dealloc;
 
 // Remaining properties

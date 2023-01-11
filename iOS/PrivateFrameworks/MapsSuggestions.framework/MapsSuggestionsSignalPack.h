@@ -17,12 +17,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)signalPackFromData:(id)arg1;
-+ (id)extractFromDestinationMapItem:(struct GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
++ (id)extractFromDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
 + (id)extractFromDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)description;
-- (struct SignalPack *)innerSignalPack;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

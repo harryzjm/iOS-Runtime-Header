@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     double _maximumTextWidth;
 }
 
+- (_Bool)selectFormAccessoryHasCheckedItemAtRow:(long long)arg1;
 - (void)selectRow:(long long)arg1 inComponent:(long long)arg2 extendingSelection:(_Bool)arg3;
 - (void)pickerView:(id)arg1 row:(int)arg2 column:(int)arg3 checked:(_Bool)arg4;
 - (long long)findItemIndexAt:(int)arg1;

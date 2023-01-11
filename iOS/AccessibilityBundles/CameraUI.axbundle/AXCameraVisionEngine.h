@@ -17,10 +17,10 @@
     _Bool __queue_appActive;
     _Bool _lastAnnouncementPartial;
     AVCaptureSession *_captureSession;
-    UIView *_sceneObjectElementContainerView;
-    NSObject<OS_dispatch_queue> *__resultsQueue;
-    AXMVisionEngine *_visionEngine;
     AXMAVCaptureSessionNode *_captureSessionNode;
+    UIView *_sceneObjectElementContainerView;
+    NSObject<OS_dispatch_queue> *_axResultsQueue;
+    AXMVisionEngine *_visionEngine;
     AXMVisionAnalysisOptions *_lastDesiredAnalysisOptions;
     unsigned long long _currentFrameCount;
     long long _interfaceOrientation;
@@ -54,6 +54,7 @@
 + (_Bool)_isContainedWithinScreenBoundsForNormalizedFrame:(struct CGRect)arg1;
 + (struct CGAffineTransform)_scaleNormalizedCoordinatesToSceneCoordinates:(struct CGRect)arg1;
 + (id)sharedEngine;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AXMCameraFrameContext *lastCameraFrameContext; // @synthesize lastCameraFrameContext=_lastCameraFrameContext;
 @property(retain, nonatomic) CMDeviceMotion *lastDeviceMotion; // @synthesize lastDeviceMotion=_lastDeviceMotion;
 @property(readonly, nonatomic) AXCameraLevelingMotionAnalyzer *_levelingMotionAnalyzer; // @synthesize _levelingMotionAnalyzer=__levelingMotionAnalyzer;
@@ -84,12 +85,11 @@
 @property(nonatomic) _Bool _queue_appActive; // @synthesize _queue_appActive=__queue_appActive;
 @property(nonatomic) unsigned long long currentFrameCount; // @synthesize currentFrameCount=_currentFrameCount;
 @property(retain, nonatomic) AXMVisionAnalysisOptions *lastDesiredAnalysisOptions; // @synthesize lastDesiredAnalysisOptions=_lastDesiredAnalysisOptions;
-@property(retain, nonatomic) AXMAVCaptureSessionNode *captureSessionNode; // @synthesize captureSessionNode=_captureSessionNode;
 @property(retain, nonatomic) AXMVisionEngine *visionEngine; // @synthesize visionEngine=_visionEngine;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_resultsQueue; // @synthesize _resultsQueue=__resultsQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *axResultsQueue; // @synthesize axResultsQueue=_axResultsQueue;
 @property(nonatomic, getter=isAppActive) _Bool appActive; // @synthesize appActive=_appActive;
 @property(nonatomic) __weak UIView *sceneObjectElementContainerView; // @synthesize sceneObjectElementContainerView=_sceneObjectElementContainerView;
-- (void).cxx_destruct;
+@property(retain, nonatomic) AXMAVCaptureSessionNode *captureSessionNode; // @synthesize captureSessionNode=_captureSessionNode;
 - (void)_handleCameraMetadataObjects:(id)arg1 fromConnection:(id)arg2;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 forMetadataObjectTypes:(id)arg3 fromConnection:(id)arg4;
 - (void)captureSessionNode:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;

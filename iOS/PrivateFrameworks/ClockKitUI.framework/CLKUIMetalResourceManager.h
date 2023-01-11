@@ -13,6 +13,7 @@
 }
 
 + (id)sharedNilTexture;
++ (id)sharedCommandQueue;
 + (id)sharedDevice;
 + (id)sharedMetalInstance;
 - (void).cxx_destruct;

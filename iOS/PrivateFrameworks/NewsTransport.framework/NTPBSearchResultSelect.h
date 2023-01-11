@@ -16,6 +16,7 @@
     NSString *_campaignId;
     NSString *_campaignType;
     NSMutableArray *_channelResultFeedIds;
+    NSString *_completedSearchString;
     NSString *_creativeId;
     NSMutableArray *_nonSelectedResultFeedIds;
     int _searchExecutionMethod;
@@ -60,6 +61,8 @@
 + (Class)topicResultFeedIdsType;
 + (Class)searchResultsType;
 + (Class)nonSelectedResultFeedIdType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *completedSearchString; // @synthesize completedSearchString=_completedSearchString;
 @property(retain, nonatomic) NSString *topResultTopicId; // @synthesize topResultTopicId=_topResultTopicId;
 @property(retain, nonatomic) NSString *topResultChannelId; // @synthesize topResultChannelId=_topResultChannelId;
 @property(retain, nonatomic) NSString *topResultArticleId; // @synthesize topResultArticleId=_topResultArticleId;
@@ -82,7 +85,6 @@
 @property(retain, nonatomic) NSString *selectedResultFeedId; // @synthesize selectedResultFeedId=_selectedResultFeedId;
 @property(retain, nonatomic) NSString *selectedResultString; // @synthesize selectedResultString=_selectedResultString;
 @property(retain, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -91,6 +93,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCompletedSearchString;
 @property(readonly, nonatomic) _Bool hasTopResultTopicId;
 @property(readonly, nonatomic) _Bool hasTopResultChannelId;
 @property(readonly, nonatomic) _Bool hasTopResultArticleId;

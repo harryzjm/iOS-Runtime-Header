@@ -22,17 +22,23 @@
     } _neckOrientation;
 }
 
++ (id)posesInPosePack:(id)arg1 avatarSelectionBlock:(CDUnknownBlockType)arg2;
++ (id)posesForAnimojiNamed:(id)arg1 inPosePack:(id)arg2;
++ (id)posesForMemojiInPosePack:(id)arg1;
++ (id)posesInPosePack:(id)arg1;
 + (id)friendlyPose;
 + (id)neutralPose;
+- (void).cxx_destruct;
 @property(nonatomic) double bakedAnimationBlendFactor; // @synthesize bakedAnimationBlendFactor=_bakedAnimationBlendFactor;
 @property(nonatomic) struct neckOrientation; // @synthesize neckOrientation=_neckOrientation;
 @property(nonatomic) MISSING_TYPE *neckPosition; // @synthesize neckPosition=_neckPosition;
-- (void).cxx_destruct;
 - (id)description;
 - (id)poseByMergingPose:(id)arg1;
 - (_Bool)affectsPhysicsSimulation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithScene:(id)arg1;
 - (id)initWithWeights:(id)arg1 neckPosition:(MISSING_TYPE **)arg2 neckOrientation:(struct *)arg3 bakedAnimationBlendFactor:(double)arg4;
+- (id)init;
 - (id)dictionaryRepresentation;
 - (void)setWeight:(double)arg1 forBlendShapeNamed:(id)arg2;
 - (double)weightForBlendShapeNamed:(id)arg1;

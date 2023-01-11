@@ -6,34 +6,32 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HFTriggerItem, UIColor, UILabel, WFAutomationSummaryIconsView, WFConfiguredTrigger, WFWorkflow;
+@class HFTriggerItem, NSString, UILabel, WFAutomationSummaryIconsView, WFConfiguredTrigger, WFWorkflow;
 
 @interface WFAutomationListCell : UITableViewCell
 {
     WFConfiguredTrigger *_configuredTrigger;
     WFWorkflow *_workflow;
     HFTriggerItem *_homeTrigger;
+    NSString *_identifier;
     WFAutomationSummaryIconsView *_summaryIconsView;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
-    UIColor *_normalBackgroundColor;
-    UIColor *_selectedBackgroundColor;
 }
 
-@property(readonly, nonatomic) UIColor *selectedBackgroundColor; // @synthesize selectedBackgroundColor=_selectedBackgroundColor;
-@property(readonly, nonatomic) UIColor *normalBackgroundColor; // @synthesize normalBackgroundColor=_normalBackgroundColor;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(readonly, nonatomic) WFAutomationSummaryIconsView *summaryIconsView; // @synthesize summaryIconsView=_summaryIconsView;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) HFTriggerItem *homeTrigger; // @synthesize homeTrigger=_homeTrigger;
 @property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(retain, nonatomic) WFConfiguredTrigger *configuredTrigger; // @synthesize configuredTrigger=_configuredTrigger;
-- (void).cxx_destruct;
 - (void)prepareForReuse;
-- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)updateUI;
 - (void)setConfiguredTrigger:(id)arg1 workflow:(id)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)configureWithModel:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

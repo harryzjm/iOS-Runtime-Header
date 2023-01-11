@@ -18,13 +18,16 @@
 }
 
 + (id)requestIdentifierForInvocation:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
+@property(nonatomic) SEL selector; // @synthesize selector=_selector;
+@property(nonatomic) unsigned long long savedHash; // @synthesize savedHash=_savedHash;
 - (id)description;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithInvocation:(id)arg1;
 - (id)_argumentsForInvocation:(id)arg1;
-- (void)dealloc;
 
 @end
 

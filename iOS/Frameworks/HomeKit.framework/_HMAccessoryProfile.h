@@ -26,12 +26,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *services; // @synthesize services=_services;
 @property(readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
 @property(readonly, nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, nonatomic) __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -42,10 +42,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)handleRuntimeStateUpdate:(id)arg1;
 - (void)_registerNotificationHandlers;
+- (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (id)initWithUUID:(id)arg1 services:(id)arg2;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

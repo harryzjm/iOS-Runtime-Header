@@ -29,11 +29,11 @@
     UICollectionView *_predictionsCollectionView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isHandlingKeyboardFrameChanged; // @synthesize isHandlingKeyboardFrameChanged=_isHandlingKeyboardFrameChanged;
 @property(retain, nonatomic) UICollectionView *predictionsCollectionView; // @synthesize predictionsCollectionView=_predictionsCollectionView;
 @property(retain, nonatomic) NSArray *ttyAbbreviations; // @synthesize ttyAbbreviations=_ttyAbbreviations;
 @property(nonatomic) _Bool showTTYPredictions; // @synthesize showTTYPredictions=_showTTYPredictions;
-- (void).cxx_destruct;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)_accessibilityIsRealtimeElement;
 - (id)accessibilityIdentifier;
@@ -45,15 +45,19 @@
 - (void)_tapTTYBarCell:(id)arg1;
 - (void)_updateTTYBarPosition;
 - (void)_resetTTYBarPosition;
+- (void)_updateTTYBarFrame;
 - (void)updateTTYBar;
 - (void)_updateBlackBarPositioning;
 - (_Bool)_isKeyboardPredictionsEnabled;
+- (_Bool)_shouldShowTTYPredictions;
+- (void)_inlineTTYAbbreviationSelected:(id)arg1;
+- (void)_showInlineRTTAbbreviations:(_Bool)arg1;
 - (void)overrideTTYPredictionsHidden:(_Bool)arg1;
 - (_Bool)disableInputBars;
 - (id)inputAccessoryView;
 - (long long)keyboardAppearance;
 - (id)keyCommands;
-- (void)_keyboardDidHide:(id)arg1;
+- (void)_keyboardWillHide:(id)arg1;
 - (void)_kbFrameChanged:(id)arg1;
 - (void)_didSwipeLeft:(id)arg1;
 - (void)_didPanPredictions:(id)arg1;
@@ -63,6 +67,7 @@
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (double)ttyBarHeight;
+- (void)_setupOverlayPredictions;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
 

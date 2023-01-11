@@ -8,17 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPAddressCorrections, GEORPAmenityCorrections, GEORPCategoryCorrections, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEORPAddressCorrections, GEORPAmenityCorrections, GEORPCategoryCorrections, GEORPPlaceContainmentCorrections, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPPoiCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPAddressCorrections *_address;
     GEORPAmenityCorrections *_amenity;
     NSMutableArray *_businessHours;
     GEORPCategoryCorrections *_category;
+    GEORPPlaceContainmentCorrections *_containmentCorrections;
     NSString *_hoursText;
     NSString *_name;
     NSString *_originalName;
@@ -26,9 +26,16 @@
     NSString *_originalUrl;
     NSString *_phone;
     NSString *_url;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    _Bool _flagBadCuratedCollectionDescription;
+    _Bool _flagBrokenCuratedCollectionUrl;
     _Bool _flagHoursIncorrect;
     _Bool _flagNotAtThisAddress;
     struct {
+        unsigned int has_flagBadCuratedCollectionDescription:1;
+        unsigned int has_flagBrokenCuratedCollectionUrl:1;
         unsigned int has_flagHoursIncorrect:1;
         unsigned int has_flagNotAtThisAddress:1;
         unsigned int read_unknownFields:1;
@@ -36,6 +43,7 @@
         unsigned int read_amenity:1;
         unsigned int read_businessHours:1;
         unsigned int read_category:1;
+        unsigned int read_containmentCorrections:1;
         unsigned int read_hoursText:1;
         unsigned int read_name:1;
         unsigned int read_originalName:1;
@@ -43,20 +51,7 @@
         unsigned int read_originalUrl:1;
         unsigned int read_phone:1;
         unsigned int read_url:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_amenity:1;
-        unsigned int wrote_businessHours:1;
-        unsigned int wrote_category:1;
-        unsigned int wrote_hoursText:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_originalName:1;
-        unsigned int wrote_originalPhone:1;
-        unsigned int wrote_originalUrl:1;
-        unsigned int wrote_phone:1;
-        unsigned int wrote_url:1;
-        unsigned int wrote_flagHoursIncorrect:1;
-        unsigned int wrote_flagNotAtThisAddress:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -73,49 +68,48 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasFlagBadCuratedCollectionDescription;
+@property(nonatomic) _Bool flagBadCuratedCollectionDescription;
+@property(nonatomic) _Bool hasFlagBrokenCuratedCollectionUrl;
+@property(nonatomic) _Bool flagBrokenCuratedCollectionUrl;
+@property(retain, nonatomic) GEORPPlaceContainmentCorrections *containmentCorrections;
+@property(readonly, nonatomic) _Bool hasContainmentCorrections;
 @property(retain, nonatomic) NSString *hoursText;
 @property(readonly, nonatomic) _Bool hasHoursText;
-- (void)_readHoursText;
 @property(retain, nonatomic) NSString *originalUrl;
 @property(readonly, nonatomic) _Bool hasOriginalUrl;
-- (void)_readOriginalUrl;
 @property(retain, nonatomic) NSString *originalPhone;
 @property(readonly, nonatomic) _Bool hasOriginalPhone;
-- (void)_readOriginalPhone;
 @property(retain, nonatomic) NSString *originalName;
 @property(readonly, nonatomic) _Bool hasOriginalName;
-- (void)_readOriginalName;
 @property(nonatomic) _Bool hasFlagNotAtThisAddress;
 @property(nonatomic) _Bool flagNotAtThisAddress;
 @property(nonatomic) _Bool hasFlagHoursIncorrect;
 @property(nonatomic) _Bool flagHoursIncorrect;
 @property(retain, nonatomic) GEORPAmenityCorrections *amenity;
 @property(readonly, nonatomic) _Bool hasAmenity;
-- (void)_readAmenity;
 @property(retain, nonatomic) GEORPCategoryCorrections *category;
 @property(readonly, nonatomic) _Bool hasCategory;
-- (void)_readCategory;
 @property(retain, nonatomic) NSString *url;
 @property(readonly, nonatomic) _Bool hasUrl;
-- (void)_readUrl;
 - (id)businessHoursAtIndex:(unsigned long long)arg1;
 - (unsigned long long)businessHoursCount;
-- (void)_addNoFlagsBusinessHours:(id)arg1;
 - (void)addBusinessHours:(id)arg1;
 - (void)clearBusinessHours;
 @property(retain, nonatomic) NSMutableArray *businessHours;
-- (void)_readBusinessHours;
 @property(retain, nonatomic) GEORPAddressCorrections *address;
 @property(readonly, nonatomic) _Bool hasAddress;
-- (void)_readAddress;
 @property(retain, nonatomic) NSString *phone;
 @property(readonly, nonatomic) _Bool hasPhone;
-- (void)_readPhone;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

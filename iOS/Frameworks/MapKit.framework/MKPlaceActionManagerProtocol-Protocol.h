@@ -6,9 +6,10 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class MKPlaceCardActionItem, NSDictionary;
+@class MKPlaceCardActionItem, NSArray, NSDictionary;
 
 @protocol MKPlaceActionManagerProtocol <NSObject>
 - (void)performAction:(MKPlaceCardActionItem *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(void))arg3;
+- (NSArray *)createRowActionsWithStyle:(unsigned long long)arg1;
 @end
 

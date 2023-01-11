@@ -10,6 +10,33 @@
 {
 }
 
++ (id)xpcServiceProvider;
++ (id)transportServiceMessageLedger;
++ (id)setupClient;
++ (id)remoteViewService;
++ (id)reactorTool;
++ (id)reactorDirectiveProcessor;
++ (id)reactorCore;
++ (id)reactor;
++ (id)promise;
++ (id)passcodeProviderService;
++ (id)organizationControllerConfigurationAdapter;
++ (id)messageTrackingTransportService;
++ (id)messageTrackingTransportEnvoy;
++ (id)idsTransportPrimitives;
++ (id)idsTransportMessageIdentifierMap;
++ (id)idsTransportMessageAddressMap;
++ (id)idsMessageTransport;
++ (id)fileBackedKeyValueStore;
++ (id)familyMemberGenesisStateStore;
++ (id)familyInformationProvider;
++ (id)familyCommunicationService;
++ (id)familyCirclePrimitives;
++ (id)coreDataObserver;
++ (id)coreDataTransformer;
++ (id)coreDataConfigurationStore;
++ (id)contactStorePrimitives;
++ (id)backgroundActivity;
 + (id)versionVector;
 + (id)utility;
 + (id)userNotifications;
@@ -42,10 +69,12 @@
 + (id)cloudkit;
 + (id)checkpoint;
 + (id)blueprint;
++ (id)awd;
 + (id)ask;
 + (id)apns;
 + (id)appMonitor;
 + (id)appInfo;
++ (id)accountState;
 + (id)logCategories;
 
 @end

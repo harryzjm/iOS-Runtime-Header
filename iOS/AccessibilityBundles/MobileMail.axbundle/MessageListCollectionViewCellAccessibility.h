@@ -17,6 +17,7 @@
 - (id)_accessibilityLabelWithoutAttributes;
 - (id)_accessibilityEquivalenceTag;
 - (id)_accessibilityUserTestingChildren;
+- (id)_accessibilityThreadedDisclosureButton;
 - (void)_axProcessMailLabel:(id)arg1 children:(id)arg2;
 - (unsigned long long)_accessibilityThreadCount;
 - (_Bool)_accessibilityIsThreadedChildCell;
@@ -24,6 +25,7 @@
 - (id)_accessibilityLinkedUIElements;
 - (id)_accessibilityScrollStatus;
 - (id)_privateAccessibilityCustomActions;
+- (void)accessibilityElementDidBecomeFocused;
 - (_Bool)_accessibilityToggleThreadAction:(id)arg1;
 - (_Bool)_accessibilityArchiveAction:(id)arg1;
 - (_Bool)_accessibilityMoreAction:(id)arg1;
@@ -40,6 +42,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
+- (void)_axSetDisclosureButtonTraits;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

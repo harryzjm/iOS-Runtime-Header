@@ -8,11 +8,15 @@
 {
     _Bool _disableSelectionOverlayView;
     _Bool _enableAutomaticTransitionToSelectMode;
+    _Bool _simulateLongTitles;
     long long _weightingScheme;
+    long long _simulatedNumberOfLocations;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) long long simulatedNumberOfLocations; // @synthesize simulatedNumberOfLocations=_simulatedNumberOfLocations;
+@property(nonatomic) _Bool simulateLongTitles; // @synthesize simulateLongTitles=_simulateLongTitles;
 @property(nonatomic) _Bool enableAutomaticTransitionToSelectMode; // @synthesize enableAutomaticTransitionToSelectMode=_enableAutomaticTransitionToSelectMode;
 @property(nonatomic) long long weightingScheme; // @synthesize weightingScheme=_weightingScheme;
 @property(nonatomic) _Bool disableSelectionOverlayView; // @synthesize disableSelectionOverlayView=_disableSelectionOverlayView;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDateFormatter, NSFileHandle;
+@class NSDateFormatter, NSFileHandle;
 
 @interface PFLoggerBackendFile
 {
@@ -12,17 +12,15 @@
     _Bool _shouldCloseFileHandle;
     _Bool _isStandardErrorFileBackend;
     NSFileHandle *_fileHandle;
-    NSData *_lineTerminator;
 }
 
 + (id)standardErrorFileBackend;
 + (id)backendsFromUserDefaultsWithLogLevel:(int)arg1;
+- (void).cxx_destruct;
 @property _Bool isStandardErrorFileBackend; // @synthesize isStandardErrorFileBackend=_isStandardErrorFileBackend;
 @property _Bool shouldCloseFileHandle; // @synthesize shouldCloseFileHandle=_shouldCloseFileHandle;
-@property(retain) NSData *lineTerminator; // @synthesize lineTerminator=_lineTerminator;
 @property(retain) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
-- (void).cxx_destruct;
-- (void)logFromCodeLocation:(CDStruct_98c8119d)arg1 facility:(id)arg2 subsystem:(id)arg3 level:(int)arg4 message:(id)arg5 format:(id)arg6 args:(struct __va_list_tag [1])arg7;
+- (void)logFromCodeLocation:(CDStruct_98c8119d)arg1 facility:(id)arg2 subsystem:(id)arg3 level:(int)arg4 message:(id)arg5 format:(id)arg6 args:(char *)arg7;
 - (id)writeOpenFileAtURL:(id)arg1;
 - (_Bool)outputsToDebuggerConsole;
 - (id)initWithFileHandle:(id)arg1;

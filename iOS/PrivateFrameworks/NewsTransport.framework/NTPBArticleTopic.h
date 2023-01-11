@@ -8,11 +8,12 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, NSString;
 
 @interface NTPBArticleTopic : PBCodable <NSCopying>
 {
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_cohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_conversionStats;
     NSString *_tagID;
     _Bool _isEligibleForGrouping;
     _Bool _isEligibleForGroupingIfFavorited;
@@ -20,6 +21,7 @@
     CDStruct_d00ad9e3 _has;
 }
 
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property(nonatomic) _Bool isEligibleForGroupingIfFavorited; // @synthesize isEligibleForGroupingIfFavorited=_isEligibleForGroupingIfFavorited;
 @property(nonatomic) _Bool isEligibleForGrouping; // @synthesize isEligibleForGrouping=_isEligibleForGrouping;
 @property(nonatomic) _Bool isHidden; // @synthesize isHidden=_isHidden;
@@ -33,6 +35,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasConversionStats;
 @property(nonatomic) _Bool hasIsEligibleForGroupingIfFavorited;
 @property(nonatomic) _Bool hasIsEligibleForGrouping;
 @property(nonatomic) _Bool hasIsHidden;

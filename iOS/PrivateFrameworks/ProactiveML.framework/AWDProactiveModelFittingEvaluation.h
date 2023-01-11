@@ -17,16 +17,18 @@
     AWDProactiveModelFittingMinibatchStats *_minibatchStats;
     AWDProactiveModelFittingModelInfo *_modelInfo;
     NSMutableArray *_precisionAtKs;
-    CDStruct_b5306035 _has;
+    struct {
+        unsigned int timestamp:1;
+    } _has;
 }
 
 + (Class)precisionAtKType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *precisionAtKs; // @synthesize precisionAtKs=_precisionAtKs;
 @property(retain, nonatomic) AWDProactiveModelFittingEvalMetrics *evaluationMetrics; // @synthesize evaluationMetrics=_evaluationMetrics;
 @property(retain, nonatomic) AWDProactiveModelFittingMinibatchStats *minibatchStats; // @synthesize minibatchStats=_minibatchStats;
 @property(retain, nonatomic) AWDProactiveModelFittingModelInfo *modelInfo; // @synthesize modelInfo=_modelInfo;
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

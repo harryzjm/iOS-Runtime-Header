@@ -10,5 +10,8 @@
 {
 }
 
++ (_Bool)isInternalBuild;
++ (_Bool)hasFullCDPSupport;
+
 @end
 

@@ -5,35 +5,20 @@
 //
 
 #import <PhotosUI/NUMediaViewDelegate-Protocol.h>
+#import <PhotosUI/PUCropGestureHandlerDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSObject, NSString, NUCropModel, NUMediaView, PHLivePhotoView, PLImageGeometry, PXImageLayerModulator, PXImageModulationManager;
-@protocol OS_dispatch_source;
+@class CALayer, CAShapeLayer, NSString, NUCropModel, PHLivePhotoView, PLImageGeometry, PUCropGestureHandler, PXImageLayerModulator, PXImageModulationManager;
 
 __attribute__((visibility("hidden")))
-@interface PUCropPerspectiveView <NUMediaViewDelegate, UIGestureRecognizerDelegate>
+@interface PUCropPerspectiveView <NUMediaViewDelegate, UIGestureRecognizerDelegate, PUCropGestureHandlerDelegate>
 {
     PLImageGeometry *_imageGeometry;
-    long long _lastGestureType;
     PHLivePhotoView *_livePhotoView;
-    NUMediaView *_mediaView;
     PXImageModulationManager *_imageModulationManager;
     PXImageLayerModulator *_imageLayerModulator;
     CDStruct_1b6d18a9 _cachedVideoSeekTime;
-    double _zoomOverflow;
-    CDStruct_0de14bd3 _panState;
-    struct {
-        struct CGRect startCropRect;
-        double scale;
-    } _pinchState;
-    CDStruct_0de14bd3 _pitchYawRollState;
-    double _gestureStartPitch;
-    double _gestureStartYaw;
-    double _gestureStartRoll;
-    struct CGVector _panRubberBandDelta;
-    struct CGVector _panRubberBandOffset;
-    struct CGPoint _panSlideVelocity;
-    NSObject<OS_dispatch_source> *_panSlideTimer;
+    PUCropGestureHandler *_gestureHandler;
     _Bool _muted;
     _Bool _needsLayerTransformUpdate;
     _Bool _layerTransformUpdateAnimated;
@@ -55,15 +40,19 @@ __attribute__((visibility("hidden")))
     double _lastImageZoomScale;
     struct CGVector _lastPanRubberBandOffset;
     struct CGPoint _lastModelCropCenter;
+    struct CGPoint _lastViewCropCenter;
     double _lastUICroppingRectToImageScale;
     struct CGRect _imageCropRect;
 }
 
-@property(readonly, nonatomic) struct CGRect imageCropRect; // @synthesize imageCropRect=_imageCropRect;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGRect imageCropRect; // @synthesize imageCropRect=_imageCropRect;
 - (void)handlePinchGesture:(id)arg1;
 - (void)handlePanGesture:(id)arg1;
-- (void)constrainedMoveCropRectBy:(struct CGVector)arg1 startRect:(struct CGRect)arg2 rubberband:(_Bool)arg3;
+- (void)didEndTrackingWithCropGestureHandler:(id)arg1;
+- (void)didTrackWithCropGestureHandler:(id)arg1;
+- (void)didBeginTrackingWithCropGestureHandler:(id)arg1;
+- (void)willBeginTrackingWithCropGestureHandler:(id)arg1;
 - (struct CGRect)_modelCropRectUnorientedInUICoords;
 - (struct CGRect)_croppingRect;
 - (void)setImageCropRectFromViewCropRect:(struct CGRect)arg1 animated:(_Bool)arg2;
@@ -84,13 +73,13 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateImageModulationManager;
 - (struct CGSize)_sizeRotatedIfNeeded:(struct CGSize)arg1;
 - (void)mediaViewDidFinishRendering:(id)arg1;
-- (void)setImageModulationOptions:(CDStruct_910f5d27)arg1;
+- (void)setImageModulationOptions:(CDStruct_0b004a15)arg1;
 - (void)_setupMediaWithComposition:(id)arg1;
 - (void)tearDownMediaViewAndLayers;
 - (void)setVideoComposition:(id)arg1 withSeekTime:(CDStruct_1b6d18a9)arg2;
 - (void)setAutoloopComposition:(id)arg1;
-- (void)_setLivePhotoView:(id)arg1;
 - (void)setLivePhoto:(id)arg1;
+- (void)setImageSize:(struct CGSize)arg1;
 - (void)setImage:(id)arg1;
 - (id)cropModel;
 - (void)_setCropModel:(id)arg1;
@@ -99,11 +88,6 @@ __attribute__((visibility("hidden")))
 - (void)setStraightenAngle:(double)arg1;
 - (void)setYawAngle:(double)arg1;
 - (void)setPitchAngle:(double)arg1;
-- (void)_setGestureType:(long long)arg1;
-- (void)_clearGestureTypePinch;
-- (void)_clearGestureTypePan;
-- (void)_setGestureTypePinch;
-- (void)_setGestureTypePan;
 - (void)layoutSubviews;
 - (void)setCanvasFrame:(struct CGRect)arg1;
 - (void)setMuted:(_Bool)arg1;
@@ -117,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (struct CATransform3D)_imageOrientationTransform;
 - (struct CATransform3D)_imageOrientationTransformWithoutTranslation;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

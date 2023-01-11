@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCNetworkAddress;
+@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCMediaStreamRateControlConfig, VCNetworkAddress;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaStreamConfig : NSObject
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_txPayloadMap;
     NSData *_receiveMasterKey;
     NSMutableDictionary *_rxPayloadMap;
+    _Bool _latencySensitiveModeEnabled;
     long long _SRTPCipherSuite;
     _Bool _rtpTimeOutEnabled;
     double _rtpTimeOutInterval;
@@ -37,8 +38,11 @@ __attribute__((visibility("hidden")))
     unsigned short _rtcpRemotePort;
     _Bool _rateAdaptationEnabled;
     VCMediaStreamMultiwayConfig *_multiwayConfig;
+    VCMediaStreamRateControlConfig *_rateControlConfig;
 }
 
+@property(retain, nonatomic) VCMediaStreamRateControlConfig *rateControlConfig; // @synthesize rateControlConfig=_rateControlConfig;
+@property(nonatomic, getter=isLatencySensitiveModeEnabled) _Bool latencySensitiveModeEnabled; // @synthesize latencySensitiveModeEnabled=_latencySensitiveModeEnabled;
 @property(nonatomic, getter=isRTCPReceiveCallbackEnabled) _Bool rtcpReceiveCallbackEnabled; // @synthesize rtcpReceiveCallbackEnabled=_rtcpReceiveCallbackEnabled;
 @property(retain, nonatomic) VCMediaStreamMultiwayConfig *multiwayConfig; // @synthesize multiwayConfig=_multiwayConfig;
 @property(nonatomic, getter=isRateAdaptationEnabled) _Bool rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;

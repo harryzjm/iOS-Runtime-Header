@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_annotationAtGestureLocation:(struct CGPoint)arg1;
 - (void)_annotationHitLongPress:(id)arg1 gestureState:(long long)arg2 location:(struct CGPoint)arg3;
 - (id)markupMenuPDFView:(id)arg1;
+- (void)markupMenuControllerLayoutDidChange:(id)arg1;
 - (void)markupMenuControllerDidHide:(id)arg1;
 - (void)markupMenuControllerShowTextSelectionMenu:(id)arg1;
 - (void)markupMenuControllerDeleteAnnotation:(id)arg1;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)highlight:(id)arg1;
 - (void)showPDFMarkupMenuView;
 - (void)_hidePDFMarkupMenuView;
+- (void)_clearTextSelectionMenuItems;
 - (id)_menuItemsForTextSelectionMenu:(unsigned long long)arg1;
 - (void)updateTextSelectionMenuAndShowMenu:(_Bool)arg1;
 - (void)showActiveMenus;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_postAnnotationHitNotification:(id)arg1;
 - (void)_postAnnotationWillHitNotification:(id)arg1;
 - (id)_pageViewForAnnotation:(id)arg1;
+- (_Bool)isUpdatingSelectionMarkups;
 - (void)removeNoteForAnnotation:(id)arg1;
 - (void)editNoteForAnnotation:(id)arg1;
 - (void)setMarkupStyle:(unsigned long long)arg1 forAnnotation:(id)arg2;

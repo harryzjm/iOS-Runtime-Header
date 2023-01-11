@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_isEligibleForFocusInteraction;
 - (_Bool)canBecomeFocused;
 - (struct CGSize)_accessibilityContentSize;
 - (id)_accessibilityScrollStatus;

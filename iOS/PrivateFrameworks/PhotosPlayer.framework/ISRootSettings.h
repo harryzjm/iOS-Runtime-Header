@@ -14,12 +14,12 @@
 }
 
 + (id)settingsControllerModule;
-+ (id)_archiveFileName;
++ (id)_defaultsKey;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) ISPerformanceDiagnosticsSettings *performanceDiagnosticsSettings; // @synthesize performanceDiagnosticsSettings=_performanceDiagnosticsSettings;
 @property(retain, nonatomic) ISVitalitySettings *vitalitySettings; // @synthesize vitalitySettings=_vitalitySettings;
 @property(retain, nonatomic) ISPlayerSettings *playerSettings; // @synthesize playerSettings=_playerSettings;
-- (void).cxx_destruct;
 - (void)save;
 - (void)setDefaultValues;
 

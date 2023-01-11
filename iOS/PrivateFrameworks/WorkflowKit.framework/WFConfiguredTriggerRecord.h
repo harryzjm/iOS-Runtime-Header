@@ -10,13 +10,17 @@
 {
     _Bool _shouldPrompt;
     _Bool _enabled;
+    int _source;
     NSData *_triggerData;
+    NSData *_suggestionData;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSData *suggestionData; // @synthesize suggestionData=_suggestionData;
+@property(nonatomic) int source; // @synthesize source=_source;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool shouldPrompt; // @synthesize shouldPrompt=_shouldPrompt;
 @property(copy, nonatomic) NSData *triggerData; // @synthesize triggerData=_triggerData;
-- (void).cxx_destruct;
 
 @end
 

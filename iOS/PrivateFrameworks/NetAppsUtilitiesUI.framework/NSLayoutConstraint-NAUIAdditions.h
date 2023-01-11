@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSLayoutConstraint.h>
+#import <CoreAutoLayout/NSLayoutConstraint.h>
 
 @interface NSLayoutConstraint (NAUIAdditions)
 + (id)naui_constraintsWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4 label:(id)arg5;

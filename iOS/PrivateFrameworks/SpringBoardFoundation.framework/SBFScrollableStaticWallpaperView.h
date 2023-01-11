@@ -25,8 +25,9 @@
 + (_Bool)_canDownscaleSampleImage;
 + (_Bool)_canCacheImages;
 + (_Bool)_shouldScaleForParallax;
-@property(nonatomic) _Bool automaticallyEnablesParallax; // @synthesize automaticallyEnablesParallax=_automaticallyEnablesParallax;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool automaticallyEnablesParallax; // @synthesize automaticallyEnablesParallax=_automaticallyEnablesParallax;
+- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

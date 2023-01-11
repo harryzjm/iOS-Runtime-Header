@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteParametersVenueSearch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     unsigned long long _buildingId;
     NSMutableArray *_categorys;
@@ -23,6 +22,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _sectionId;
     unsigned long long _venueId;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _maxResults;
     _Bool _highlightDiff;
     struct {
@@ -36,16 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_categorys:1;
         unsigned int read_query:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_buildingId:1;
-        unsigned int wrote_categorys:1;
-        unsigned int wrote_levelId:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_sectionId:1;
-        unsigned int wrote_venueId:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_highlightDiff:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -62,15 +55,16 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)categoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categorysCount;
-- (void)_addNoFlagsCategory:(id)arg1;
 - (void)addCategory:(id)arg1;
 - (void)clearCategorys;
 @property(retain, nonatomic) NSMutableArray *categorys;
-- (void)_readCategorys;
 @property(nonatomic) _Bool hasBuildingId;
 @property(nonatomic) unsigned long long buildingId;
 @property(nonatomic) _Bool hasSectionId;
@@ -85,10 +79,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int maxResults;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(retain, nonatomic) NSString *query;
 @property(readonly, nonatomic) _Bool hasQuery;
-- (void)_readQuery;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

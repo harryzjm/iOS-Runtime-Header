@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     _SYCountedSemaphore *_changeConcurrencySemaphore;
     NSObject<OS_os_activity> *_changeWaitActivity;
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     _Bool _errorIsLocal;
     _Bool _hasSentEnd;
     _SYMessageTimerTable *_timers;
@@ -28,12 +28,12 @@ __attribute__((visibility("hidden")))
     _Bool _cancelled;
 }
 
+- (void).cxx_destruct;
 - (_Bool)wasCancelled;
 - (void)setCanRollback:(_Bool)arg1;
 - (_Bool)canRollback;
 - (void)setCanRestart:(_Bool)arg1;
 - (_Bool)canRestart;
-- (void).cxx_destruct;
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (_Bool)_handleBatchSyncEndResponse:(id)arg1 error:(id *)arg2;
 - (_Bool)_handleBatchAck:(id)arg1 error:(id *)arg2;
@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_sendSyncRestart;
 - (void)_sendSyncCancelled;
 - (void)_sendSyncCompleteAndRunBlock:(CDUnknownBlockType)arg1;
-- (void)_sendSyncBatch:(id)arg1 nextState:(long long)arg2;
+- (void)_sendSyncBatch:(id)arg1 nextState:(unsigned int)arg2;
 - (void)_fetchNextBatch;
 - (void)_waitForMessageWindow;
 - (void)_setupChangeConcurrency;
@@ -58,9 +58,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)protocolVersion;
 - (_Bool)isSending;
 - (_Bool)isResetSync;
-- (void)_setStateQuietly:(long long)arg1;
-- (void)setState:(long long)arg1;
-- (long long)state;
+- (void)_setStateQuietly:(unsigned int)arg1;
+- (void)setState:(unsigned int)arg1;
+- (unsigned int)state;
 - (id)initWithService:(id)arg1;
 
 @end

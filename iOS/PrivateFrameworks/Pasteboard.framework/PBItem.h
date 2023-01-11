@@ -24,6 +24,7 @@
     NSMutableDictionary *_itemQueue_preferredRepresentationByType;
     NSMutableDictionary *_itemQueue_visibilityByType;
     NSMutableDictionary *_itemQueue_dataAvailabilityByType;
+    NSMutableDictionary *_itemQueue_patternDetections;
     id _itemQueue_localUserInfo;
     id <NSObject> _itemQueue_localObject;
     NSDictionary *_itemQueue_metadata;
@@ -36,11 +37,13 @@
 + (id)itemWithData:(id)arg1 type:(id)arg2;
 + (id)itemWithObject:(id)arg1;
 + (id)item;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property(nonatomic) _Bool itemQueue_isStoredOnServer; // @synthesize itemQueue_isStoredOnServer=_itemQueue_isStoredOnServer;
 @property(copy, nonatomic) NSDictionary *itemQueue_metadata; // @synthesize itemQueue_metadata=_itemQueue_metadata;
 @property(retain, nonatomic) id <NSObject> itemQueue_localObject; // @synthesize itemQueue_localObject=_itemQueue_localObject;
 @property(retain, nonatomic) id itemQueue_localUserInfo; // @synthesize itemQueue_localUserInfo=_itemQueue_localUserInfo;
+@property(retain, nonatomic) NSMutableDictionary *itemQueue_patternDetections; // @synthesize itemQueue_patternDetections=_itemQueue_patternDetections;
 @property(retain, nonatomic) NSMutableDictionary *itemQueue_dataAvailabilityByType; // @synthesize itemQueue_dataAvailabilityByType=_itemQueue_dataAvailabilityByType;
 @property(retain, nonatomic) NSMutableDictionary *itemQueue_visibilityByType; // @synthesize itemQueue_visibilityByType=_itemQueue_visibilityByType;
 @property(retain, nonatomic) NSMutableDictionary *itemQueue_preferredRepresentationByType; // @synthesize itemQueue_preferredRepresentationByType=_itemQueue_preferredRepresentationByType;
@@ -50,9 +53,10 @@
 @property(nonatomic) __weak id <PBItemDataTransferDelegate> itemQueue_dataTransferDelegate; // @synthesize itemQueue_dataTransferDelegate=_itemQueue_dataTransferDelegate;
 @property(retain, nonatomic) NSURL *itemQueue_primaryFileURL; // @synthesize itemQueue_primaryFileURL=_itemQueue_primaryFileURL;
 @property(retain, nonatomic) NSData *itemQueue_primaryData; // @synthesize itemQueue_primaryData=_itemQueue_primaryData;
-- (void).cxx_destruct;
 - (id)initWithNSItemProvider:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (void)addPatternDetections:(id)arg1;
+- (id)enumeratePatternDetectionsForPatterns:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)itemRepresentationFinishedDataTransfer:(id)arg1;
 - (void)itemRepresentation:(id)arg1 beganDataTransferWithProgress:(id)arg2;
 @property(nonatomic) __weak id <PBItemDataTransferDelegate> dataTransferDelegate; // @dynamic dataTransferDelegate;

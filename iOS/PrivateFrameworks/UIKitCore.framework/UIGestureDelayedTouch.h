@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/_UIGestureDelaying-Protocol.h>
 
-@class UIEvent, UITouch;
+@class NSString, UIEvent, UITouch;
 
 __attribute__((visibility("hidden")))
-@interface UIGestureDelayedTouch : NSObject <NSCopying>
+@interface UIGestureDelayedTouch : NSObject <NSCopying, _UIGestureDelaying>
 {
     UITouch *_touch;
     UITouch *_stateWhenDelayed;
@@ -21,21 +22,17 @@ __attribute__((visibility("hidden")))
     _Bool _cloneForSecondDelivery;
 }
 
-@property _Bool cloneForSecondDelivery; // @synthesize cloneForSecondDelivery=_cloneForSecondDelivery;
-@property(retain, nonatomic) UIEvent *event; // @synthesize event=_event;
-@property(retain, nonatomic) UITouch *stateWhenDelivered; // @synthesize stateWhenDelivered=_stateWhenDelivered;
-@property(retain, nonatomic) UITouch *stateWhenDelayed; // @synthesize stateWhenDelayed=_stateWhenDelayed;
-@property(retain, nonatomic) UITouch *touch; // @synthesize touch=_touch;
 - (void).cxx_destruct;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (double)timestampForDelivery;
 - (long long)phaseForDelivery;
-- (void)saveCurrentTouchState;
-- (long long)delayCount;
-- (void)incrementDelayCount;
-- (long long)decrementDelayCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

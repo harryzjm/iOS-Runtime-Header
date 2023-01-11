@@ -8,17 +8,19 @@
 
 #import <HomeKit/HMXPCMessageTransport-Protocol.h>
 
-@class NSString;
+@class HMXPCClient, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HMXPCClientConnectionProxy : HMFMessageTransport <HMXPCMessageTransport>
 {
+    HMXPCClient *_client;
     CDUnknownBlockType _refreshHandler;
 }
 
-+ (id)messageWithName:(id)arg1 identifier:(id)arg2 target:(id)arg3 payload:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
-@property(copy, nonatomic) CDUnknownBlockType refreshHandler; // @synthesize refreshHandler=_refreshHandler;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType refreshHandler; // @synthesize refreshHandler=_refreshHandler;
+@property __weak HMXPCClient *client; // @synthesize client=_client;
+- (void)fetchUserInfo:(CDUnknownBlockType)arg1;
 - (void)handleMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)handleMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

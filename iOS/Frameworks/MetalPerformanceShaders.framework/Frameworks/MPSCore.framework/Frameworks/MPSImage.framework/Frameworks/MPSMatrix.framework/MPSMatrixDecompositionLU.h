@@ -14,7 +14,7 @@
     unsigned long long _columns;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) unsigned long long columns; // @synthesize columns=_columns;
 @property(readonly, nonatomic) unsigned long long rows; // @synthesize rows=_rows;
 - (void)dealloc;

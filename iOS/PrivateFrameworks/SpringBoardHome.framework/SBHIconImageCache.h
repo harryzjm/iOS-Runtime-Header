@@ -9,17 +9,17 @@
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardHome/SBIconObserver-Protocol.h>
 
-@class CPMemoryPool, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, UIImage;
+@class CPMemoryPool, NSHashTable, NSMutableDictionary, NSString, UIImage;
 
 @interface SBHIconImageCache : NSObject <SBIconObserver, BSDescriptionProviding>
 {
     NSMutableDictionary *_images;
     NSMutableDictionary *_unmaskedImages;
-    NSMutableSet *_failedCacheKeys;
+    NSHashTable *_failedIcons;
     UIImage *_genericImage;
     UIImage *_overlayImage;
     UIImage *_unmaskedOverlayImage;
-    NSHashTable *_observeredIcons;
+    NSHashTable *_observedIcons;
     NSHashTable *_observers;
     NSString *_name;
     unsigned long long _poolingBypassCount;
@@ -32,11 +32,11 @@
 + (id)genericImageWithInfo:(struct SBIconImageInfo)arg1;
 + (_Bool)supportsMemoryPooling;
 + (id)_backgroundQueue;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CPMemoryPool *iconImagesMemoryPool; // @synthesize iconImagesMemoryPool=_iconImagesMemoryPool;
 @property(nonatomic) unsigned long long poolingBypassCount; // @synthesize poolingBypassCount=_poolingBypassCount;
 @property(readonly, nonatomic) struct SBIconImageInfo iconImageInfo; // @synthesize iconImageInfo=_iconImageInfo;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -53,6 +53,9 @@
 - (id)_iconImageOfSize:(struct CGSize)arg1 scale:(double)arg2 failGracefully:(_Bool)arg3 drawing:(CDUnknownBlockType)arg4;
 - (_Bool)_canPoolImage;
 - (id)_cacheKeyForIcon:(id)arg1;
+@property(readonly, nonatomic) unsigned long long numberOfUnmaskedCacheMisses;
+@property(readonly, nonatomic) unsigned long long numberOfUnmaskedCacheHits;
+@property(readonly, nonatomic) unsigned long long numberOfUnmaskedCachedImages;
 @property(readonly, nonatomic) unsigned long long numberOfCacheMisses;
 @property(readonly, nonatomic) unsigned long long numberOfCacheHits;
 @property(readonly, nonatomic) unsigned long long numberOfCachedImages;
@@ -64,7 +67,9 @@
 - (void)addObserver:(id)arg1;
 - (void)purgeAllCachedImages;
 - (void)purgeCachedImagesForIcons:(id)arg1;
+- (void)cacheUnmaskedImagesForIcons:(id)arg1;
 - (void)cacheImagesForIcons:(id)arg1;
+- (void)cacheImagesForIcons:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)cacheImageForIcon:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)cachedUnmaskedImageForIcon:(id)arg1;
 - (id)unmaskedImageForIcon:(id)arg1;

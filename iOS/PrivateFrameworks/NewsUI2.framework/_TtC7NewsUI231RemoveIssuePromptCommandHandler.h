@@ -15,6 +15,9 @@
     MISSING_TYPE *issueReadingHistory;
     MISSING_TYPE *isiCloudPrivateDataSyncingEnabled;
     MISSING_TYPE *store;
+    MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

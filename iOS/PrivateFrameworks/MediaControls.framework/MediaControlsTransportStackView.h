@@ -8,13 +8,14 @@
 
 #import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
 
-@class MPCPlayerResponse, MTVisualStylingProvider, MediaControlsTransportButton, NSArray, NSString;
+@class MPCPlayerResponse, MTVisualStylingProvider, MediaControlsTransportButton, NSString;
 @protocol MediaControlsActionsDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsTransportStackView : UIView <MTVisualStylingProviderObservingPrivate>
 {
     _Bool _empty;
+    _Bool _shouldShowTVRemoteButton;
     long long _style;
     MPCPlayerResponse *_response;
     MTVisualStylingProvider *_visualStylingProvider;
@@ -24,12 +25,10 @@ __attribute__((visibility("hidden")))
     MediaControlsTransportButton *_middleButton;
     MediaControlsTransportButton *_rightButton;
     MediaControlsTransportButton *_languageOptionsButton;
-    NSArray *_threeButtonContraints;
-    NSArray *_fiveButtonContraints;
 }
 
-@property(retain, nonatomic) NSArray *fiveButtonContraints; // @synthesize fiveButtonContraints=_fiveButtonContraints;
-@property(retain, nonatomic) NSArray *threeButtonContraints; // @synthesize threeButtonContraints=_threeButtonContraints;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldShowTVRemoteButton; // @synthesize shouldShowTVRemoteButton=_shouldShowTVRemoteButton;
 @property(retain, nonatomic) MediaControlsTransportButton *languageOptionsButton; // @synthesize languageOptionsButton=_languageOptionsButton;
 @property(retain, nonatomic) MediaControlsTransportButton *rightButton; // @synthesize rightButton=_rightButton;
 @property(retain, nonatomic) MediaControlsTransportButton *middleButton; // @synthesize middleButton=_middleButton;
@@ -40,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isEmpty) _Bool empty; // @synthesize empty=_empty;
 @property(retain, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 @property(nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (void)_updateButtonConfiguration;
 - (void)_updateButtonLayout;
 - (void)_resetTransportButton:(id)arg1;

@@ -19,7 +19,6 @@
         unsigned int reference:1;
         unsigned int sortOrder:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _mediaType;
     int _reference;
     int _sortOrder;
@@ -35,7 +34,7 @@
 + (_Bool)supportsSecureCoding;
 + (Class)moodNamesType;
 + (Class)genreNamesType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int sortOrder; // @synthesize sortOrder=_sortOrder;
 @property(retain, nonatomic) _INPBDateTimeRange *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(nonatomic) int reference; // @synthesize reference=_reference;
@@ -46,7 +45,6 @@
 @property(copy, nonatomic) NSArray *genreNames; // @synthesize genreNames=_genreNames;
 @property(retain, nonatomic) _INPBString *artistName; // @synthesize artistName=_artistName;
 @property(retain, nonatomic) _INPBString *albumName; // @synthesize albumName=_albumName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

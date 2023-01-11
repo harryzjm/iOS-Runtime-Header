@@ -40,6 +40,7 @@
     UIActivityIndicatorView *_activityIndicator;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) UIImage *cardImage; // @synthesize cardImage=_cardImage;
 @property(nonatomic) _Bool acceptedTerms; // @synthesize acceptedTerms=_acceptedTerms;
@@ -57,8 +58,7 @@
 @property(retain, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property(readonly, nonatomic) PKPaymentSetupPurchaseController *purchaseController; // @synthesize purchaseController=_purchaseController;
 @property(readonly, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
-- (void).cxx_destruct;
-- (struct CGSize)_imageSizeForScreenType:(unsigned long long)arg1 showingTransferButton:(_Bool)arg2;
+- (struct CGSize)_imageSizeShowingTransferButton:(_Bool)arg1;
 - (void)_presentTermsAndConditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_paymentRequestForAmount:(id)arg1;
 - (void)_presetPaymentRequest:(id)arg1 forResultType:(long long)arg2;

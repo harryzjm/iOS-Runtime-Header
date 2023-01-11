@@ -4,22 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKColoringLabel, NTKRichComplicationRingProgressView;
-
 @interface NTKRichComplicationCircularClosedGaugeTextView
 {
-    NTKColoringLabel *_centerLabel;
-    NTKRichComplicationRingProgressView *_progressView;
 }
 
 + (_Bool)supportsComplicationFamily:(long long)arg1;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-- (void).cxx_destruct;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_editingDidEnd;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)layoutSubviews;
 - (id)init;
 
 @end

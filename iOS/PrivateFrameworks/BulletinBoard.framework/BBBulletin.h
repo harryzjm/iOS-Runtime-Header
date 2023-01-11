@@ -22,7 +22,6 @@
     _Bool _ignoresQuietMode;
     _Bool _ignoresDowntime;
     _Bool _preemptsPresentedAlert;
-    _Bool _preemptsSTAR;
     _Bool _expiresOnPublisherDeath;
     _Bool _usesExternalSync;
     _Bool _loading;
@@ -72,7 +71,7 @@
     long long _lockScreenPriority;
     long long _backgroundStyle;
     NSString *_header;
-    unsigned long long realertCount_deprecated;
+    unsigned long long realertCount;
     NSSet *alertSuppressionAppIDs_deprecated;
 }
 
@@ -83,8 +82,9 @@
 + (void)vetSortDescriptor:(id)arg1;
 + (id)_observerAssociationSet;
 + (id)_lifeAssertionAssociationSet;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *alertSuppressionAppIDs_deprecated; // @synthesize alertSuppressionAppIDs_deprecated;
-@property(nonatomic) unsigned long long realertCount_deprecated; // @synthesize realertCount_deprecated;
+@property(nonatomic) unsigned long long realertCount; // @synthesize realertCount;
 @property(copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(nonatomic) long long lockScreenPriority; // @synthesize lockScreenPriority=_lockScreenPriority;
@@ -106,7 +106,6 @@
 @property(copy, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property(retain, nonatomic) NSMutableDictionary *supplementaryActionsByLayout; // @synthesize supplementaryActionsByLayout=_supplementaryActionsByLayout;
 @property(retain, nonatomic) NSMutableDictionary *actions; // @synthesize actions=_actions;
-@property(nonatomic) _Bool preemptsSTAR; // @synthesize preemptsSTAR=_preemptsSTAR;
 @property(nonatomic) _Bool preemptsPresentedAlert; // @synthesize preemptsPresentedAlert=_preemptsPresentedAlert;
 @property(nonatomic) _Bool ignoresDowntime; // @synthesize ignoresDowntime=_ignoresDowntime;
 @property(nonatomic) _Bool ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;
@@ -144,7 +143,6 @@
 @property(copy, nonatomic) NSString *recordID; // @synthesize recordID=_publisherRecordID;
 @property(copy, nonatomic) NSSet *subsectionIDs; // @synthesize subsectionIDs=_subsectionIDs;
 @property(copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
-- (void).cxx_destruct;
 - (id)shortDescription;
 - (id)safeDescription;
 - (id)description;
@@ -229,7 +227,6 @@
 @property(readonly, nonatomic) _Bool visuallyIndicatesWhenDateIsInFuture;
 @property(readonly, nonatomic) _Bool preservesUnlockActionCase;
 @property(readonly, nonatomic) _Bool inertWhenLocked;
-@property(readonly, nonatomic) unsigned long long realertCount;
 @property(readonly, nonatomic) _Bool suppressesMessageForPrivacy;
 @property(readonly, nonatomic) _Bool coalescesWhenLocked;
 @property(readonly, nonatomic) _Bool suppressesAlertsWhenAppIsActive;
@@ -249,8 +246,6 @@
 @property(readonly, nonatomic) _Bool showsSubtitle;
 @property(readonly, nonatomic) BBSectionIcon *sectionIcon;
 @property(readonly, nonatomic) NSString *sectionDisplayName;
-- (struct CGSize)composedAttachmentImageSizeWithObserver:(id)arg1;
-- (id)composedAttachmentImageWithObserver:(id)arg1;
 - (id)syncHash;
 
 @end

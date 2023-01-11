@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreMaterial/MTMaterialFiltering-Protocol.h>
+#import <CoreMaterial/MTMaterialFilteringInternal-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface MTTintingFilteringMaterialSettings <MTMaterialFiltering>
+@interface MTTintingFilteringMaterialSettings <MTMaterialFilteringInternal>
 {
+    struct CGImage *_variableBlurInputMask;
     _Bool _averageColorEnabled;
     _Bool _blurAtEnd;
     double _luminanceAmount;
@@ -20,9 +21,12 @@
     double _zoom;
     double _backdropScale;
     NSString *_blurInputQuality;
+    NSString *_variableBlurInputMaskName;
     struct CAColorMatrix _colorMatrix;
 }
 
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *variableBlurInputMaskName; // @synthesize variableBlurInputMaskName=_variableBlurInputMaskName;
 @property(readonly, nonatomic, getter=isBlurAtEnd) _Bool blurAtEnd; // @synthesize blurAtEnd=_blurAtEnd;
 @property(readonly, copy, nonatomic) NSString *blurInputQuality; // @synthesize blurInputQuality=_blurInputQuality;
 @property(readonly, nonatomic) double backdropScale; // @synthesize backdropScale=_backdropScale;
@@ -34,9 +38,10 @@
 @property(readonly, nonatomic) double blurRadius; // @synthesize blurRadius=_blurRadius;
 @property(readonly, copy, nonatomic) NSArray *luminanceValues; // @synthesize luminanceValues=_luminanceValues;
 @property(readonly, nonatomic) double luminanceAmount; // @synthesize luminanceAmount=_luminanceAmount;
-- (void).cxx_destruct;
-- (void)_processMaterialFilteringDescription:(id)arg1 defaultingToIdentity:(_Bool)arg2;
-- (id)initWithMaterialDescription:(id)arg1 andDescendantDescriptions:(id)arg2;
+- (struct CGImage *)variableBlurInputMask;
+- (void)_processMaterialFilteringDescription:(id)arg1 defaultingToIdentity:(_Bool)arg2 bundle:(id)arg3;
+- (void)dealloc;
+- (id)initWithMaterialDescription:(id)arg1 andDescendantDescriptions:(id)arg2 bundle:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

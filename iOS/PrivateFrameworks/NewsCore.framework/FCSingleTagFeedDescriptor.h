@@ -17,6 +17,7 @@
     id <FCPaidAccessCheckerType> _paidAccessChecker;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <FCPaidAccessCheckerType> paidAccessChecker; // @synthesize paidAccessChecker=_paidAccessChecker;
 @property(readonly, copy, nonatomic) id <FCTagProviding> masterTag; // @synthesize masterTag=_masterTag;
 - (long long)feedPersonalizationConfigurationSet;
@@ -25,9 +26,9 @@
 - (void)setFeedType:(long long)arg1;
 - (long long)feedType;
 @property(copy, nonatomic) id <FCTagProviding> tag; // @synthesize tag=_tag;
-- (void).cxx_destruct;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)allEmitterClasses;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)iAdSectionID;
 - (id)iAdFeedID;
 - (id)iAdPrimaryAudience;

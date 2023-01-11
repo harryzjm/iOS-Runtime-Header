@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (struct _renditionkeytoken *)renditionKeyForAssetWithName:(id)arg1 withDescription:(id)arg2;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1 usingKeySignature:(id)arg2;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1;
-- (_Bool)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1 isFPO:(_Bool *)arg2;
 - (_Bool)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;
 - (id)imagesWithName:(id)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1;

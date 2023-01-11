@@ -24,6 +24,7 @@
     NSString *_executableName;
     NSString *_localizedName;
     NSString *_proxyAppBundleID;
+    NSString *_userAgentSuffix;
     AMSMappedBundleInfo *_mappedBundleInfo;
 }
 
@@ -31,19 +32,22 @@
 + (void)_accessProcessInfoCache:(CDUnknownBlockType)arg1;
 + (id)_cachedProcessInfoForIdentifier:(id)arg1;
 + (void)_cacheProcessInfo:(id)arg1;
++ (id)_bundleRecordForIdentifier:(id)arg1;
++ (id)_bundleForIdentifier:(id)arg1 record:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (void)copyPropertiesFrom:(id)arg1 to:(id)arg2;
 + (id)valueForEntitlement:(id)arg1;
 + (id)stringForEntitlement:(id)arg1;
 + (void)setDefaultMediaTypeForCurrentProcess:(id)arg1;
-+ (id)bundleForIdentifier:(id)arg1;
 + (id)defaultMediaTypeForCurrentProcess;
 + (id)defaultMediaTypeAccessQueue;
 + (_Bool)boolForMachLookupAccess:(id)arg1;
 + (_Bool)boolForEntitlement:(id)arg1;
 + (_Bool)isBuddyRunning;
 + (id)currentProcess;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AMSMappedBundleInfo *mappedBundleInfo; // @synthesize mappedBundleInfo=_mappedBundleInfo;
+@property(retain, nonatomic) NSString *userAgentSuffix; // @synthesize userAgentSuffix=_userAgentSuffix;
 @property(retain, nonatomic) NSString *proxyAppBundleID; // @synthesize proxyAppBundleID=_proxyAppBundleID;
 @property(retain, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(retain, nonatomic) NSString *executableName; // @synthesize executableName=_executableName;
@@ -52,7 +56,6 @@
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain, nonatomic) NSData *auditTokenData; // @synthesize auditTokenData=_auditTokenData;
 @property(retain, nonatomic) NSString *accountMediaType; // @synthesize accountMediaType=_accountMediaType;
-- (void).cxx_destruct;
 - (id)generateConfigurationFromBagContract:(id)arg1;
 - (id)generateConfigurationFromBag:(id)arg1;
 - (id)generateConfiguration;
@@ -64,6 +67,7 @@
 @property(retain, nonatomic) NSString *partnerHeader;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic, getter=isAccountsDaemon) _Bool accountsDaemon;
 
 @end
 

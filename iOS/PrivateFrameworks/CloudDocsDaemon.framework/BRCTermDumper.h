@@ -6,7 +6,7 @@
 
 @interface BRCTermDumper
 {
-    int _fd;
+    struct __sFILE *_file;
     unsigned long long _termWidth;
     unsigned long long _usedTermWidth;
     int _curAttrs;

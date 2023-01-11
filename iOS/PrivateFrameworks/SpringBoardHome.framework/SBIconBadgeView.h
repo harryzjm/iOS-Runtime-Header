@@ -9,7 +9,7 @@
 #import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoardHome/SBIconAccessoryView-Protocol.h>
 
-@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBIconAccessoryImage, UIImageView;
+@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBHIconAccessoryCountedMapImageTuple, UIImageView;
 @protocol SBIconListLayout;
 
 @interface SBIconBadgeView : UIView <PTSettingsKeyObserver, SBIconAccessoryView>
@@ -17,9 +17,9 @@
     NSString *_text;
     UIImageView *_incomingTextView;
     _Bool _displayingAccessory;
-    SBIconAccessoryImage *_backgroundImage;
+    SBHIconAccessoryCountedMapImageTuple *_backgroundImageTuple;
+    SBHIconAccessoryCountedMapImageTuple *_textImageTuple;
     SBDarkeningImageView *_backgroundView;
-    SBIconAccessoryImage *_textImage;
     UIImageView *_textView;
     SBFParallaxSettings *_parallaxSettings;
     id <SBIconListLayout> _listLayout;
@@ -29,15 +29,14 @@
 + (id)_checkoutImageForText:(id)arg1 font:(id)arg2 highlighted:(_Bool)arg3;
 + (id)backgroundImageCache;
 + (double)_textPadding;
-+ (struct CGPoint)_textOffset;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
 @property(retain, nonatomic) SBFParallaxSettings *parallaxSettings; // @synthesize parallaxSettings=_parallaxSettings;
-- (void).cxx_destruct;
 - (void)_applyParallaxSettings;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)_resizeForTextImage:(id)arg1;
 - (void)_clearText;
-- (id)_checkoutBackgroundImage;
+- (id)_checkoutBackgroundImageTuple;
 - (struct CGSize)badgeSize;
 - (void)_zoomOutWithAnimator:(id)arg1;
 - (void)_zoomInWithTextImage:(id)arg1 animator:(id)arg2;
@@ -52,6 +51,8 @@
 - (_Bool)displayingAccessory;
 - (void)configureForIcon:(id)arg1 infoProvider:(id)arg2;
 - (void)configureAnimatedForIcon:(id)arg1 infoProvider:(id)arg2 animator:(id)arg3;
+- (double)badgeContentScale;
+- (void)_layOutTextImageView:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGPoint)layoutOffset;
 - (id)font;

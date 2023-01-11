@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSDictionary, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface UIDynamicSystemColor
 {
     NSDictionary *_colorsByThemeKey;
+    struct os_unfair_lock_s _cachedColorLock;
+    UIColor *_cachedColor;
+    unsigned long long _cachedThemeKey;
 }
 
 - (void).cxx_destruct;

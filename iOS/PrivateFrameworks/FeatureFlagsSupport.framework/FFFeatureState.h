@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface FFFeatureState : NSObject
 {
+    _Bool _hidden;
+    NSDictionary *_attributes;
     NSString *_domain;
     NSString *_feature;
     long long _value;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hidden; // @synthesize hidden=_hidden;
 @property(nonatomic) long long value; // @synthesize value=_value;
 @property(retain, nonatomic) NSString *feature; // @synthesize feature=_feature;
 @property(retain, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 - (id)description;
+- (id)initWithDomain:(id)arg1 feature:(id)arg2 value:(long long)arg3 hidden:(_Bool)arg4 attributes:(id)arg5;
 - (id)initWithDomain:(id)arg1 feature:(id)arg2 value:(long long)arg3;
 
 @end

@@ -12,24 +12,24 @@ __attribute__((visibility("hidden")))
     UITableViewCell *_cell;
     EKDayPreviewController *_containedDayViewController;
     EKEvent *_eventCopy;
-    _Bool _showsInlineDayView;
     _Bool _inlineDayViewRespectsSelectedCalendarsFilter;
     NSDate *_proposedTime;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
 @property(nonatomic) _Bool inlineDayViewRespectsSelectedCalendarsFilter; // @synthesize inlineDayViewRespectsSelectedCalendarsFilter=_inlineDayViewRespectsSelectedCalendarsFilter;
-@property(nonatomic) _Bool showsInlineDayView; // @synthesize showsInlineDayView=_showsInlineDayView;
-- (void).cxx_destruct;
 - (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (id)_dayPreviewViewController;
 - (void)_datesForPreviewViewControllerWithStartDate:(id *)arg1 endDate:(id *)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
+- (void)_createNewEventCopy;
 - (_Bool)configureWithCalendar:(id)arg1 preview:(_Bool)arg2;
 - (void)setEvent:(id)arg1 store:(id)arg2;
 - (void)reset;
+- (void)refreshCopiedEvents;
 
 @end
 

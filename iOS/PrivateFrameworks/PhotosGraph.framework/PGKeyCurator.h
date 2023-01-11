@@ -21,9 +21,10 @@
 - (_Bool)scoreLevelOfCluster:(id)arg1 isAboveScoreLevelOfCluster:(id)arg2;
 - (id)clusterWithSubclusters:(id)arg1 keyItem:(id)arg2;
 - (_Bool)item:(id)arg1 passesCriteria:(id)arg2 score:(double *)arg3;
-- (id)_keyItemWithFeeder:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
+- (id)_keyItemInItems:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)bestItemIdentifierWithItems:(id)arg1 options:(id)arg2 debugInfo:(out id *)arg3 criteria:(id)arg4 curationOptions:(id)arg5;
 - (id)keyItemIdentifierWithItems:(id)arg1 options:(id)arg2 debugInfo:(out id *)arg3;
+- (id)keyItemInItems:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)keyItemWithFeeder:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)init;
 

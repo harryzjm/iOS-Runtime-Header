@@ -6,22 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class _HKMobileAssetDownloadManager;
+@class NSUserDefaults, _HKMobileAssetDownloadManager;
 
 @interface ACHMobileAssetProvider : NSObject
 {
     _HKMobileAssetDownloadManager *_mobileAssetDownloadManager;
+    NSUserDefaults *_nanoUserDefaults;
+    double _downloadDelayOverride;
 }
 
-@property(retain, nonatomic) _HKMobileAssetDownloadManager *mobileAssetDownloadManager; // @synthesize mobileAssetDownloadManager=_mobileAssetDownloadManager;
 - (void).cxx_destruct;
+@property(nonatomic) double downloadDelayOverride; // @synthesize downloadDelayOverride=_downloadDelayOverride;
+@property(retain, nonatomic) NSUserDefaults *nanoUserDefaults; // @synthesize nanoUserDefaults=_nanoUserDefaults;
+@property(retain, nonatomic) _HKMobileAssetDownloadManager *mobileAssetDownloadManager; // @synthesize mobileAssetDownloadManager=_mobileAssetDownloadManager;
 - (id)_compatibilityVersionQueryParameters;
 - (void)_getCurrentAsssetAndOlderAssetsFromAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_assetsGroupedByUniqueNameAndType:(id)arg1;
 - (void)_processAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeAssets:(id)arg1;
 - (void)_downloadAssets:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_fetchAssetsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_downloadRemoteAssets:(id)arg1 installedAssets:(id)arg2;
+- (void)downloadRemoteCatalog;
+- (void)_fetchLocalAssetsWithCompletion:(CDUnknownBlockType)arg1;
+- (double)_downloadDelay;
+- (void)_downloadRemoteCatalogAndAssets;
 - (void)availableAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithMobileAssetDownloadManager:(id)arg1;

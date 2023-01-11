@@ -21,6 +21,8 @@
 + (id)orderedNamesFromProto:(const RepeatedPtrField_6c6d963a *)arg1;
 + (id)descriptionFromProto:(const RepeatedPtrField_6c6d963a *)arg1;
 + (id)populateConstraintsForFeatureDescription:(const struct FeatureDescription *)arg1;
++ (id)populateConstraintsForImageFeatureDescriptionElement:(struct _MLFeatureDescriptionSpecification *)arg1;
++ (id)populateConstraintsForImageFeatureDescription:(const struct FeatureDescription *)arg1;
 + (struct _NSRange)rangeFromAllowedSizeRangeProtoMessage:(const struct SizeRange *)arg1;
 + (_Bool)deserializeInterfaceFormat:(struct _MLModelDescriptionSpecification *)arg1 archive:(struct _MLModelInputArchiver *)arg2 error:(id *)arg3;
 + (_Bool)serializeInterfaceFormat:(struct _MLModelDescriptionSpecification *)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;

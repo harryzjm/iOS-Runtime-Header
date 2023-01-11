@@ -13,6 +13,7 @@
 {
     _Bool _destructive;
     _Bool _showBackgroundPlatter;
+    _Bool _wrapTitle;
     _Bool _canPerformAction;
     id <CNContactActionDelegate> _delegate;
     CNContact *_contact;
@@ -20,14 +21,18 @@
     id _target;
     SEL _selector;
     UIColor *_color;
+    UIColor *_glyphColor;
     long long _transportType;
 }
 
 + (id)contactActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3 destructive:(_Bool)arg4;
 + (id)contactActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool canPerformAction; // @synthesize canPerformAction=_canPerformAction;
+@property(nonatomic) _Bool wrapTitle; // @synthesize wrapTitle=_wrapTitle;
 @property(nonatomic) _Bool showBackgroundPlatter; // @synthesize showBackgroundPlatter=_showBackgroundPlatter;
 @property(nonatomic) long long transportType; // @synthesize transportType=_transportType;
+@property(retain, nonatomic) UIColor *glyphColor; // @synthesize glyphColor=_glyphColor;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(nonatomic, getter=isDestructive) _Bool destructive; // @synthesize destructive=_destructive;
 @property(readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
@@ -35,7 +40,6 @@
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(nonatomic) __weak id <CNContactActionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)description;
 - (void)performActionWithSender:(id)arg1;
 @property(readonly, nonatomic) CNMutableContact *mutableContact;

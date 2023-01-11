@@ -10,7 +10,7 @@
 #import <DoNotDisturbKit/DNDStateUpdateListener-Protocol.h>
 #import <DoNotDisturbKit/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class DNDBehaviorSettings, DNDBypassSettings, DNDModeAssertionService, DNDSettingsService, DNDState, DNDStateModeAssertionMetadata, DNDStateService, NSString, UNUserNotificationCenter;
+@class DNDBehaviorSettings, DNDBypassSettings, DNDModeAssertionService, DNDSettingsService, DNDState, DNDStateService, NSDate, NSString, UNUserNotificationCenter;
 @protocol OS_dispatch_queue;
 
 @interface DNDNotificationsService : NSObject <DNDStateUpdateListener, DNDSettingsUpdateListener, UNUserNotificationCenterDelegate>
@@ -22,10 +22,13 @@
     _Bool _doNotDisturbActive;
     _Bool _basicActive;
     _Bool _sleepActive;
-    _Bool _bedtimeActive;
+    _Bool _windDownActive;
+    _Bool _clockBedtimeActive;
+    _Bool _settingsBedtimeActive;
     _Bool _drivingActive;
     _Bool _workoutActive;
-    DNDStateModeAssertionMetadata *_longestAssertionMetadata;
+    NSDate *_transitionDate;
+    unsigned long long _transitionLifetimeType;
     DNDState *_currentState;
     DNDBehaviorSettings *_currentBehaviorSettings;
     DNDBypassSettings *_currentPhoneCallBypassSettings;

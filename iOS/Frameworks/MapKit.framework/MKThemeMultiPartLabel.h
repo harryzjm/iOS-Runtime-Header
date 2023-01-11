@@ -10,8 +10,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType __mapkit_themeColorProvider;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType _mapkit_themeColorProvider; // @synthesize _mapkit_themeColorProvider=__mapkit_themeColorProvider;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType _mapkit_themeColorProvider; // @synthesize _mapkit_themeColorProvider=__mapkit_themeColorProvider;
 - (void)infoCardThemeChanged;
 - (void)willMoveToWindow:(id)arg1;
 

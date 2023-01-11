@@ -13,20 +13,19 @@
 @interface GEORPFeedbackInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_feedbackComponents;
     NSString *_feedbackId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_status:1;
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackComponents:1;
         unsigned int read_feedbackId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_feedbackComponents:1;
-        unsigned int wrote_feedbackId:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,22 +42,24 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)feedbackComponentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)feedbackComponentsCount;
-- (void)_addNoFlagsFeedbackComponent:(id)arg1;
 - (void)addFeedbackComponent:(id)arg1;
 - (void)clearFeedbackComponents;
 @property(retain, nonatomic) NSMutableArray *feedbackComponents;
-- (void)_readFeedbackComponents;
 - (int)StringAsStatus:(id)arg1;
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;
 @property(nonatomic) int status;
 @property(retain, nonatomic) NSString *feedbackId;
 @property(readonly, nonatomic) _Bool hasFeedbackId;
-- (void)_readFeedbackId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

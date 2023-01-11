@@ -6,22 +6,45 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSString, UIFont;
+@class NSString, TLKImage, TLKImageView, TLKRichText, UIFont;
 
 @interface TLKTextButton : UIButton
 {
+    _Bool _matchesHeightForAlignmentRectWithIntrinsicContentSize;
+    _Bool _attributedTitleExplicitlySet;
     unsigned long long _prominence;
+    TLKRichText *_richTitle;
+    TLKImage *_tlkImage;
     NSString *_title;
+    long long _alignment;
+    TLKImageView *_tlkImageView;
 }
 
-@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 - (void).cxx_destruct;
+@property _Bool attributedTitleExplicitlySet; // @synthesize attributedTitleExplicitlySet=_attributedTitleExplicitlySet;
+@property(retain, nonatomic) TLKImageView *tlkImageView; // @synthesize tlkImageView=_tlkImageView;
+@property(nonatomic) long long alignment; // @synthesize alignment=_alignment;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property _Bool matchesHeightForAlignmentRectWithIntrinsicContentSize; // @synthesize matchesHeightForAlignmentRectWithIntrinsicContentSize=_matchesHeightForAlignmentRectWithIntrinsicContentSize;
+@property(copy, nonatomic) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
+@property(copy, nonatomic) TLKRichText *richTitle; // @synthesize richTitle=_richTitle;
+@property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
+- (_Bool)isImageMode;
+- (void)layoutSubviews;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 @property(retain, nonatomic) UIFont *font;
+- (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_updateSelectionViewForState:(unsigned long long)arg1;
+- (_Bool)hasTemplateUIImage;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)updateAttributedTitle;
+- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
+- (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
+- (void)matchHeightForAlignmentRectWithIntrinsicContentSizeIfNecessary;
 - (_Bool)allowsVibrancy;
 - (id)init;
 

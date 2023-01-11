@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PKAccountCredential, PKAccountService, PKPaymentProvisioningController;
+@class NSString, PKAccountCredential, PKPaymentProvisioningController;
 @protocol OS_dispatch_source, PKAccountProvisioningControllerDelegate;
 
 @interface PKAccountProvisioningController : NSObject
 {
-    PKAccountService *_accountService;
     PKAccountCredential *_accountCredential;
     PKPaymentProvisioningController *_provisioningController;
     _Bool _makeDefaultInAMP;
     NSObject<OS_dispatch_source> *_activationTimer;
+    _Bool _usingRemoteLibrary;
+    _Bool _passIsActivated;
     _Bool _didAddToAMP;
     double _passActivationTimeout;
     id <PKAccountProvisioningControllerDelegate> _delegate;
@@ -29,6 +30,7 @@
 }
 
 + (_Bool)_isPaymentPassActivated:(id)arg1 forAccountCredential:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long addToAMPState; // @synthesize addToAMPState=_addToAMPState;
 @property(readonly, nonatomic) unsigned long long makeAccountPassDefaultOnLocalDeviceState; // @synthesize makeAccountPassDefaultOnLocalDeviceState=_makeAccountPassDefaultOnLocalDeviceState;
 @property(readonly, nonatomic) unsigned long long addToIDMSState; // @synthesize addToIDMSState=_addToIDMSState;
@@ -39,14 +41,14 @@
 @property(copy, nonatomic) NSString *provisionedPassUniqueID; // @synthesize provisionedPassUniqueID=_provisionedPassUniqueID;
 @property(nonatomic) __weak id <PKAccountProvisioningControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double passActivationTimeout; // @synthesize passActivationTimeout=_passActivationTimeout;
-- (void).cxx_destruct;
 - (void)_informDelegateOfStateUpdate;
 - (void)_informDelegateOfError:(id)arg1;
 - (void)_handlePassActiviated;
 - (void)_passLibraryDidChange:(id)arg1;
 - (void)_stopPassActivationObserver;
 - (void)_startPassActivationObserver;
-- (void)_provisionAccountCredenital:(id)arg1 provisoningController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_notificationDidChangeNames;
+- (void)_provisionAccountCredenital:(id)arg1 provisioningController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processRemainingTasks;
 - (void)provisionAccountPassToWatchAsDefault:(_Bool)arg1;
 - (void)addToIDMS;
@@ -54,6 +56,7 @@
 - (void)makeAccountPassDefaultOnLocalDevice;
 - (void)provisionAccountPassToLocalDevice;
 - (void)dealloc;
+- (id)initWithAccountCredential:(id)arg1 provisioningController:(id)arg2 usingRemoteLibrary:(_Bool)arg3;
 - (id)initWithAccountCredential:(id)arg1 provisioningController:(id)arg2 accountService:(id)arg3;
 
 @end

@@ -6,45 +6,42 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class GKLabel, GKTextBubbleControl, GKTurnBasedMatch, NSLayoutConstraint, NSString;
+@class GKDashboardPlayerPhotoView, GKLabel, GKTurnBasedMatch, NSArray, NSString, UIButton, UILabel;
 
 @interface GKTurnBasedMatchDetailHeaderView : UICollectionReusableView
 {
-    _Bool _compactHeight;
     GKTurnBasedMatch *_match;
     NSString *_infoText;
-    id _bubbleTarget;
-    SEL _bubbleAction;
-    GKTextBubbleControl *_actionBubble;
-    GKLabel *_playingWithLabel;
+    id _actionTarget;
+    SEL _actionSelector;
+    UIButton *_actionButton;
+    UILabel *_playingWithLabel;
     GKLabel *_startedLabel;
     GKLabel *_lastTurnLabel;
     GKLabel *_infoLabel;
-    NSLayoutConstraint *_playingToTopConstraint;
-    NSLayoutConstraint *_bubbleToLastConstraint;
+    GKDashboardPlayerPhotoView *_avatarView;
+    NSArray *_constraints;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
-@property(nonatomic) NSLayoutConstraint *bubbleToLastConstraint; // @synthesize bubbleToLastConstraint=_bubbleToLastConstraint;
-@property(nonatomic) NSLayoutConstraint *playingToTopConstraint; // @synthesize playingToTopConstraint=_playingToTopConstraint;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property(retain, nonatomic) GKDashboardPlayerPhotoView *avatarView; // @synthesize avatarView=_avatarView;
 @property(retain, nonatomic) GKLabel *infoLabel; // @synthesize infoLabel=_infoLabel;
 @property(retain, nonatomic) GKLabel *lastTurnLabel; // @synthesize lastTurnLabel=_lastTurnLabel;
 @property(retain, nonatomic) GKLabel *startedLabel; // @synthesize startedLabel=_startedLabel;
-@property(retain, nonatomic) GKLabel *playingWithLabel; // @synthesize playingWithLabel=_playingWithLabel;
-@property(retain, nonatomic) GKTextBubbleControl *actionBubble; // @synthesize actionBubble=_actionBubble;
-@property(nonatomic) SEL bubbleAction; // @synthesize bubbleAction=_bubbleAction;
-@property(nonatomic) id bubbleTarget; // @synthesize bubbleTarget=_bubbleTarget;
+@property(retain, nonatomic) UILabel *playingWithLabel; // @synthesize playingWithLabel=_playingWithLabel;
+@property(retain, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
+@property(nonatomic) SEL actionSelector; // @synthesize actionSelector=_actionSelector;
+@property(nonatomic) __weak id actionTarget; // @synthesize actionTarget=_actionTarget;
 @property(retain, nonatomic) NSString *infoText; // @synthesize infoText=_infoText;
 @property(retain, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
-@property(nonatomic) _Bool compactHeight; // @synthesize compactHeight=_compactHeight;
-- (void)bubblePressed:(id)arg1;
-@property(nonatomic) long long bubbleType;
+- (void)actionPressed:(id)arg1;
 - (void)didUpdateModel;
 @property(readonly, nonatomic) NSString *playingWithString;
-@property(retain, nonatomic) NSString *bubbleText;
+@property(retain, nonatomic) NSString *actionText;
 - (void)setLabelAlpha:(double)arg1;
 - (void)establishConstraints;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -20,14 +20,18 @@ __attribute__((visibility("hidden")))
     struct DynamicArray<re::IDSDiscoveryView *> m_views;
     _Bool _isListeningForInvites;
     IDSService *_service;
-    struct Config _config;
+    struct Config {
+        struct ServiceLocator *serviceLocator;
+        struct queue dispatchQueue;
+        struct DynamicString serviceID;
+    } _config;
 }
 
-@property(nonatomic) _Bool isListeningForInvites; // @synthesize isListeningForInvites=_isListeningForInvites;
-@property(retain, nonatomic) IDSService *service; // @synthesize service=_service;
-@property(nonatomic) struct Config config; // @synthesize config=_config;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isListeningForInvites; // @synthesize isListeningForInvites=_isListeningForInvites;
+@property(retain, nonatomic) IDSService *service; // @synthesize service=_service;
+@property(nonatomic) Config_8ed34026 config; // @synthesize config=_config;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (_Bool)parseMessage:(id)arg1 payload:(id *)arg2 objectGUID:(id *)arg3 type:(id *)arg4;
 - (void)sendMessage:(id)arg1 type:(id)arg2 objectGUID:(id)arg3 to:(id)arg4;

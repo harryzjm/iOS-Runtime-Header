@@ -5,27 +5,30 @@
 //
 
 #import <HomeUI/HUDayOfWeekPickerCellDelegate-Protocol.h>
+#import <HomeUI/HUInlineDatePickerCellDelegate-Protocol.h>
 #import <HomeUI/HUTimerTriggerOffsetEditorDelegate-Protocol.h>
 #import <HomeUI/HUTriggerConditionEditorItemModuleControllerDelegate-Protocol.h>
 
-@class HFItem, HFTimerTriggerBuilder, HUTimerTriggerEditorItemManager, HUTriggerConditionEditorItemModuleController, NSArray, NSDateComponents, NSString;
+@class HFItem, HFTimerTriggerBuilder, HUGridLayoutOptions, HUTimerTriggerEditorItemManager, HUTriggerConditionEditorItemModuleController, NSArray, NSDateComponents, NSString;
 @protocol HUTriggerEditorDelegate;
 
-@interface HUTimerTriggerEditorViewController <HUDayOfWeekPickerCellDelegate, HUTimerTriggerOffsetEditorDelegate, HUTriggerConditionEditorItemModuleControllerDelegate>
+@interface HUTimerTriggerEditorViewController <HUDayOfWeekPickerCellDelegate, HUTimerTriggerOffsetEditorDelegate, HUTriggerConditionEditorItemModuleControllerDelegate, HUInlineDatePickerCellDelegate>
 {
     HFTimerTriggerBuilder *_timerTriggerBuilder;
     unsigned long long _mode;
     id <HUTriggerEditorDelegate> _delegate;
     HUTriggerConditionEditorItemModuleController *_conditionModuleController;
     HFItem *_selectedDateOptionItem;
+    HUGridLayoutOptions *_layoutOptions;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(retain, nonatomic) HFItem *selectedDateOptionItem; // @synthesize selectedDateOptionItem=_selectedDateOptionItem;
 @property(readonly, nonatomic) HUTriggerConditionEditorItemModuleController *conditionModuleController; // @synthesize conditionModuleController=_conditionModuleController;
 @property(nonatomic) __weak id <HUTriggerEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) HFTimerTriggerBuilder *timerTriggerBuilder; // @synthesize timerTriggerBuilder=_timerTriggerBuilder;
-- (void).cxx_destruct;
 - (void)conditionEditorModuleController:(id)arg1 dismissDetailViewController:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 presentDetailViewController:(id)arg2;
 - (id)_selectedSignificantEvent;
@@ -47,6 +50,7 @@
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)itemModuleControllers;
+- (void)datePickerCell:(id)arg1 didSelectDate:(id)arg2;
 - (void)_changeFireTime:(id)arg1;
 - (void)_cancel:(id)arg1;
 - (void)_showSummary:(id)arg1;
@@ -54,6 +58,7 @@
 @property(retain, nonatomic) NSArray *selectedRecurrences;
 @property(retain, nonatomic) NSDateComponents *selectedFireTimeComponents;
 @property(retain, nonatomic) NSDateComponents *selectedSignificantEventOffset;
+- (void)viewWillAppear:(_Bool)arg1;
 - (id)initWithTimerTriggerBuilder:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
 
 // Remaining properties

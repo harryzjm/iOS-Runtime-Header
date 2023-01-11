@@ -17,12 +17,11 @@
 @property(readonly, nonatomic) unsigned long long violationPolicy; // @synthesize violationPolicy=_violationPolicy;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic) unsigned long long percentage; // @synthesize percentage=_percentage;
-- (id)_initWithRole:(unsigned char)arg1 percentage:(unsigned long long)arg2 duration:(double)arg3 violationPolicy:(unsigned long long)arg4;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)succinctDescriptionBuilder;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)description;
 
 @end
 

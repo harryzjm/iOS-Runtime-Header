@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 - (void)augmentQueryContext:(id)arg1;
 - (unsigned long long)desiredCount;
 - (id)queryStringForMountPoint:(id)arg1;
+- (id)name;
 
 @end
 

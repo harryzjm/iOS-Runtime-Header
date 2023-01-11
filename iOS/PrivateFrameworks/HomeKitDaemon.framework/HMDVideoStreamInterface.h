@@ -22,6 +22,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(nonatomic) double rtcpSendIntervalSec; // @synthesize rtcpSendIntervalSec=_rtcpSendIntervalSec;
 @property(retain, nonatomic) HMFOSTransaction *snapshotDataTrasaction; // @synthesize snapshotDataTrasaction=_snapshotDataTrasaction;
 @property __weak id <HMDVideoStreamLastDecodedFrameDelegate> lastFrameDelegate; // @synthesize lastFrameDelegate=_lastFrameDelegate;
@@ -29,7 +30,6 @@
 @property(readonly) __weak id <HMDVideoStreamInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) AVCVideoStream *videoStream; // @synthesize videoStream=_videoStream;
 @property(readonly, nonatomic) HMDVideoStreamReconfigure *videoStreamReconfigure; // @synthesize videoStreamReconfigure=_videoStreamReconfigure;
-- (void).cxx_destruct;
 - (void)videoStreamReconfigureDidNetworkImprove:(id)arg1;
 - (void)videoStreamReconfigureDidNetworkDeteriorate:(id)arg1;
 - (void)streamDidRTCPTimeOut:(id)arg1;
@@ -46,14 +46,12 @@
 @property(nonatomic, getter=isRTCPTimeOutEnabled) _Bool rtcpTimeOutEnabled;
 @property(nonatomic, getter=isRTPTimeOutEnabled) _Bool rtpTimeOutEnabled;
 @property(nonatomic, getter=isRTCPEnabled) _Bool rtcpEnabled;
-@property(nonatomic) long long direction;
 - (void)_callDidGetLastDecodedFrame:(id)arg1;
 - (void)_callDidUpdateConfiguration;
 - (void)_callNetworkDeteriorated;
 - (void)_callNetworkImproved;
 - (void)_callStopped:(id)arg1;
 - (void)_callStarted:(id)arg1;
-- (void)_callRelayStarted:(id)arg1;
 - (void)captureSnapshot;
 - (void)setSnapshotDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (void)stopStream;

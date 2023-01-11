@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (HFAdditions)
++ (id)hf_fetchImageFromURL:(id)arg1;
 - (id)imageWithNormalizedOrientation;
 @property(readonly, nonatomic) struct CGSize hf_sizeInScreenScale;
 @end

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_nodeErrorsByZoneID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *nodeErrorsByZoneID; // @synthesize nodeErrorsByZoneID=_nodeErrorsByZoneID;
 @property(retain, nonatomic) NSMutableDictionary *requestResultsByRecordZoneID; // @synthesize requestResultsByRecordZoneID=_requestResultsByRecordZoneID;
 @property(retain, nonatomic) NSMutableDictionary *zoneIDsByRequestOperationUUID; // @synthesize zoneIDsByRequestOperationUUID=_zoneIDsByRequestOperationUUID;
@@ -29,17 +30,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property(retain, nonatomic) NSDictionary *configurationsByRecordZoneID; // @synthesize configurationsByRecordZoneID=_configurationsByRecordZoneID;
 @property(copy, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)_handleRecords:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
-- (int)operationType;
 @property(readonly, nonatomic) NSDictionary *resultsByRecordZoneID;
 @property(readonly, nonatomic) NSDictionary *zoneErrorsByZoneID;
-- (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
+- (id)initWithOperation:(id)arg1 recordZoneIDs:(id)arg2 configurationsByRecordZoneID:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -25,9 +25,11 @@
 - (id)CA_roundToIntegerFromValue:(id)arg1;
 - (id)CA_interpolateValue:(id)arg1 byFraction:(float)arg2;
 - (id)CA_addValue:(id)arg1 multipliedBy:(int)arg2;
+- (_Bool)CAMLTypeSupportedForKey:(id)arg1;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (id)CAMLType;
+- (_Bool)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (id)CA_archivingValueForKey:(id)arg1;
 
 // Remaining properties

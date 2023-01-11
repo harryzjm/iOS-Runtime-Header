@@ -7,26 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/ICQBannerViewDelegate-Protocol.h>
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
+#import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class ICQOffer, NSString, UIView;
-@protocol OS_dispatch_queue, PXCloudQuotaControllerDelegate;
+@class NSString, PXCloudQuotaOfferProvider, UIView;
+@protocol PXCloudQuotaControllerDelegate;
 
-@interface PXCloudQuotaController : NSObject <ICQBannerViewDelegate>
+@interface PXCloudQuotaController : NSObject <PXChangeObserver, ICQBannerViewDelegate, PXSettingsKeyObserver>
 {
-    ICQOffer *_currentOffer;
-    NSObject<OS_dispatch_queue> *_queue;
+    PXCloudQuotaOfferProvider *_offerProvider;
     UIView *_informationBanner;
     id <PXCloudQuotaControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PXCloudQuotaControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIView *informationBanner; // @synthesize informationBanner=_informationBanner;
-- (void).cxx_destruct;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)presentingViewControllerForBannerView:(id)arg1;
-- (void)_currentOfferChangedNotification:(id)arg1;
-- (void)_queue_getCurrentOffer;
-- (void)_updateCurrentOffer:(id)arg1;
-- (void)_queue_initialSetup;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)_updateInformationBanner;
+- (_Bool)_mockOfferIncludeAssetCounts;
+- (long long)_mockOfferLevel;
+- (void)setInformationBanner:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

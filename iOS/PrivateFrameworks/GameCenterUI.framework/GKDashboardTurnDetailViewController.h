@@ -40,7 +40,6 @@
 - (void)acceptInvitation:(id)arg1;
 - (void)refreshPresenter;
 - (id)preferredFocusEnvironments;
-- (id)playingWithString;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithTurnBasedMatch:(id)arg1;

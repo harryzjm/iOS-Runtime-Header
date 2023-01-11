@@ -8,11 +8,12 @@
 
 #import <MediaPlayer/MPRequestCancellationToken-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class NSArray, NSError, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPRequest : NSObject <MPRequestCancellationToken, NSCopying>
+@interface MPRequest : NSObject <MPRequestCancellationToken, _MPStateDumpPropertyListTransformable, NSCopying>
 {
     NSString *_label;
     long long _qualityOfService;
@@ -26,6 +27,7 @@
 
 + (double)expectedMaximumResponseTimeInterval;
 + (Class)responseClass;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *middlewareClasses; // @synthesize middlewareClasses=_middlewareClasses;
 @property(readonly, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *cleanupQueue; // @synthesize cleanupQueue=_cleanupQueue;
@@ -34,9 +36,9 @@
 @property(nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (void)cancel;
 - (void)_performWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_stateDumpObject;
 - (id)performWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareForResponseWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *description;

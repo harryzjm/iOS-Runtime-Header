@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SFCard;
+
 @interface SFCardViewDisappearFeedback
 {
+    SFCard *_card;
     unsigned long long _cardDisappearEvent;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long cardDisappearEvent; // @synthesize cardDisappearEvent=_cardDisappearEvent;
+@property(readonly, nonatomic) SFCard *card; // @synthesize card=_card;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEvent:(unsigned long long)arg1;
+- (id)initWithCard:(id)arg1 event:(unsigned long long)arg2;
 
 @end
 

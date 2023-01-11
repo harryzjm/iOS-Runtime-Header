@@ -8,17 +8,19 @@
 
 #import <UIKitCore/UISpringLoadedInteractionEffect-Protocol.h>
 
-@class NSString;
+@class NSString, NSTimer;
 @protocol UISpringLoadedInteractionEffect;
 
 __attribute__((visibility("hidden")))
 @interface _UITableViewSpringLoadedEffect : NSObject <UISpringLoadedInteractionEffect>
 {
     id <UISpringLoadedInteractionEffect> _blinkEffect;
+    NSTimer *_stateBlinkTimer;
 }
 
-@property(retain, nonatomic) id <UISpringLoadedInteractionEffect> blinkEffect; // @synthesize blinkEffect=_blinkEffect;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSTimer *stateBlinkTimer; // @synthesize stateBlinkTimer=_stateBlinkTimer;
+@property(retain, nonatomic) id <UISpringLoadedInteractionEffect> blinkEffect; // @synthesize blinkEffect=_blinkEffect;
 - (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;
 - (id)init;
 

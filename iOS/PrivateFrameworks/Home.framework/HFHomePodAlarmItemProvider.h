@@ -9,19 +9,19 @@
 
 @interface HFHomePodAlarmItemProvider
 {
+    id <HFMediaProfileContainer> _mediaProfileContainer;
     HFAccessorySettingMobileTimerAdapter *_mobileTimerAdapter;
     id <HFHomePodAlarmItemProviderDelegate> _delegate;
-    id <HFMediaProfileContainer> _mediaProfileContainer;
     NSMutableDictionary *_alarmIDToItemMap;
     NSMutableSet *_alarmItems;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *alarmItems; // @synthesize alarmItems=_alarmItems;
 @property(readonly, nonatomic) NSMutableDictionary *alarmIDToItemMap; // @synthesize alarmIDToItemMap=_alarmIDToItemMap;
-@property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property(nonatomic) __weak id <HFHomePodAlarmItemProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) HFAccessorySettingMobileTimerAdapter *mobileTimerAdapter; // @synthesize mobileTimerAdapter=_mobileTimerAdapter;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 - (id)reloadItems;
 - (id)items;
 - (id)initWithMediaProfileContainer:(id)arg1;

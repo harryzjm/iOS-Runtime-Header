@@ -11,7 +11,7 @@
 - (void)getExtensionIcon:(NSString *)arg1 reply:(void (^)(NSData *))arg2;
 - (void)setComponentUserTags:(NSDictionary *)arg1 tags:(NSArray *)arg2;
 - (void)getComponentUserTags:(NSDictionary *)arg1 reply:(void (^)(NSArray *))arg2;
-- (void)getExtensionComponentList:(NSString *)arg1 linkedSDKVersion:(int)arg2 reply:(void (^)(NSArray *))arg3;
-- (void)setExtensionComponentList:(NSString *)arg1 linkedSDKVersion:(int)arg2 components:(NSArray *)arg3 reply:(void (^)(int))arg4;
+- (void)getExtensionComponentList:(NSString *)arg1 linkedSDKRequiresEntitlement:(_Bool)arg2 reply:(void (^)(NSArray *))arg3;
+- (void)setExtensionComponentList:(NSString *)arg1 linkedSDKRequiresEntitlement:(_Bool)arg2 components:(NSArray *)arg3 reply:(void (^)(int))arg4;
 @end
 

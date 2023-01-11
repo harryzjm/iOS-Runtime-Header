@@ -16,6 +16,7 @@
     NSArray *_bundleIDs;
     long long _isFirstParty;
     long long _isHidden;
+    long long _isIOSBinaryMacOSCompatible;
     long long _isPreorder;
     NSString *_searchTerm;
     NSArray *_sortOptions;
@@ -23,15 +24,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 @property(copy) NSArray *sortOptions; // @synthesize sortOptions=_sortOptions;
 @property(copy) NSString *searchTerm; // @synthesize searchTerm=_searchTerm;
 @property long long isPreorder; // @synthesize isPreorder=_isPreorder;
+@property long long isIOSBinaryMacOSCompatible; // @synthesize isIOSBinaryMacOSCompatible=_isIOSBinaryMacOSCompatible;
 @property long long isHidden; // @synthesize isHidden=_isHidden;
 @property long long isFirstParty; // @synthesize isFirstParty=_isFirstParty;
 @property(copy) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property long long accountID; // @synthesize accountID=_accountID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

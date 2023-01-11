@@ -68,9 +68,9 @@
 - (_Bool)canRollback;
 - (void)setCanRestart:(_Bool)arg1;
 - (_Bool)canRestart;
-- (void)_setStateQuietly:(long long)arg1;
-- (void)setState:(long long)arg1;
-- (long long)state;
+- (void)_setStateQuietly:(unsigned int)arg1;
+- (void)setState:(unsigned int)arg1;
+- (unsigned int)state;
 @property(readonly, nonatomic) _Bool metadataModified;
 - (void)setSessionMetadata:(id)arg1;
 - (void)setDelegate:(id)arg1;

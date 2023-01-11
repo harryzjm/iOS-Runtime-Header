@@ -16,10 +16,10 @@
     NSTimer *_navigationInvalidationTimer;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak NSTimer *navigationInvalidationTimer; // @synthesize navigationInvalidationTimer=_navigationInvalidationTimer;
 @property(retain, nonatomic) PXGadgetNavigationItem *pendingNavigationItem; // @synthesize pendingNavigationItem=_pendingNavigationItem;
 @property(nonatomic) __weak id <PXGadgetNavigationHelperDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_pendingNavigationInvalidationTimerFired:(id)arg1;
 - (void)_stopPendingNavigationTimer;
 - (_Bool)_navigateToGadget:(id)arg1 animated:(_Bool)arg2 navigationBlock:(CDUnknownBlockType)arg3;
@@ -27,17 +27,22 @@
 - (void)startPendingNavigationTimer;
 - (void)navigateIfNeeded;
 - (_Bool)navigateToGadgetDeferIfNeeded:(id)arg1 animated:(_Bool)arg2 nestedNavigationBlock:(CDUnknownBlockType)arg3;
+- (_Bool)navigateToFirstGadgetMatchingCriteria:(CDUnknownBlockType)arg1 animated:(_Bool)arg2 nestedNavigationBlock:(CDUnknownBlockType)arg3;
 - (_Bool)navigateToGadgetWithIdDeferIfNeeded:(id)arg1 animated:(_Bool)arg2 nestedNavigationBlock:(CDUnknownBlockType)arg3;
 - (_Bool)navigateToFirstGadgetWithTypeDeferIfNeeded:(unsigned long long)arg1 animated:(_Bool)arg2 nestedNavigationBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool hasPendingNavigation;
+- (void)navigateToGadgetWithTypeSurveyCongratulations;
+- (void)navigateToSectionWithGadgetType:(unsigned long long)arg1 andGadget:(id)arg2 animated:(_Bool)arg3;
 - (void)navigateToGadgetForCMMSuggestions;
 - (void)navigateToGadgetForCMMInvitationWithIdentifier:(id)arg1;
+- (void)navigateToFeaturedPhotoWithSuggestionIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToSuggestionGadget:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToInvitationCMMWithUUID:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToSuggestedCMMWithUUID:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToRevealTheMostRecentMemoryAnimated:(_Bool)arg1;
 - (void)navigateToSharedAlbumInviteWithUUID:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToSharedAlbumInvitesAnimated:(_Bool)arg1;
+- (void)navigateToFirstGadgetAndFirstNestedGadget:(_Bool)arg1;
 
 @end
 

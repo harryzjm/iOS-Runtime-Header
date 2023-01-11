@@ -8,10 +8,10 @@
 {
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (unsigned long long)maxBatchSize;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 batchNormalizationState:(id)arg3;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 batchNormalizationState:(id)arg3;
 - (_Bool)appendBatchBarrier;
 - (_Bool)isResultStateReusedAcrossBatch;
 - (id)initWithDevice:(id)arg1;

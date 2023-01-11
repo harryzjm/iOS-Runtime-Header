@@ -9,7 +9,7 @@
 #import <HealthToolbox/HKMonthViewControllerDelegate-Protocol.h>
 #import <HealthToolbox/WDUserActivityResponder-Protocol.h>
 
-@class HKDisplayType, NSDate, NSString, UIActivityIndicatorView, UIBarButtonItem, WDProfile, _UIContentUnavailableView;
+@class HKDisplayType, NSDate, NSString, UIActivityIndicatorView, UIBarButtonItem, UITapGestureRecognizer, WDProfile, _UIContentUnavailableView;
 @protocol WDDataListViewControllerDataProvider;
 
 __attribute__((visibility("hidden")))
@@ -20,24 +20,30 @@ __attribute__((visibility("hidden")))
     UIActivityIndicatorView *_spinner;
     long long _cellStyle;
     _UIContentUnavailableView *_noContentView;
+    UITapGestureRecognizer *_navigationBarTapGestureRecognizer;
+    _Bool _showOriginalAppProvenance;
     id <WDDataListViewControllerDataProvider> _dataProvider;
     HKDisplayType *_displayType;
     NSDate *_scrollToDate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *scrollToDate; // @synthesize scrollToDate=_scrollToDate;
 @property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
 @property(readonly, nonatomic) id <WDDataListViewControllerDataProvider> dataProvider; // @synthesize dataProvider=_dataProvider;
-- (void).cxx_destruct;
 - (id)applyTransitionActivity:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;
 - (void)_updateActivityForViewDidAppear;
+- (void)_tapGestureRecognizerAction:(id)arg1;
 - (_Bool)_hasSpinnerRowRowAtIndexPath:(id)arg1;
 - (_Bool)_shouldShowSpinnerRowInSection:(long long)arg1;
 - (void)_updateRightBarButtonItems;
 - (id)_rightBarButtonItems;
+- (_Bool)isEditEnabled;
 - (void)_deleteAllWithOptions:(unsigned long long)arg1;
+- (void)_deleteWorkoutSamplesConfirmationPlural:(_Bool)arg1 deleteBlock:(CDUnknownBlockType)arg2;
 - (void)_deleteAssociatedSamplesConfirmationPlural:(_Bool)arg1 deleteBlock:(CDUnknownBlockType)arg2;
+- (id)_deleteAllDataAlertMessage;
 - (void)_deleteAllButtonTapped:(id)arg1;
 - (void)_calendarDateSelectorButtonTapped:(id)arg1;
 - (void)resetDataAndScrollToDate:(id)arg1;
@@ -48,9 +54,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)_sampleAtIndexPath:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)_defaultCellForTableView:(id)arg1 cellStyle:(long long)arg2 indexPath:(id)arg3 text:(id)arg4 secondaryText:(id)arg5 icon:(id)arg6;
+- (id)_overridenDisplayImageForSource:(id)arg1;
+- (id)_defaultCellForTableView:(id)arg1 cellStyle:(long long)arg2 indexPath:(id)arg3 object:(id)arg4;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 fetchError:(id)arg4;
 - (id)_quantityCellForTableView:(id)arg1 dataObjectSource:(id)arg2;
-- (id)_sourceIconForObject:(id)arg1;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
+- (void)_loadIconForSourceObject:(id)arg1 onCell:(id)arg2 ofTableView:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
@@ -71,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_localeDidChange:(id)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) WDProfile *profile;
+- (void)_updateNavigationTitle;
 - (id)initWithDisplayType:(id)arg1 profile:(id)arg2 dataProvider:(id)arg3 usingInsetStyling:(_Bool)arg4;
 
 // Remaining properties

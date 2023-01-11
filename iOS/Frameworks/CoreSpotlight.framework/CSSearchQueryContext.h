@@ -14,8 +14,9 @@
 @interface CSSearchQueryContext : NSObject <NSSecureCoding, NSCopying>
 {
     NSArray *_fetchAttributes;
-    unsigned char _flags;
+    unsigned short _flags;
     int _rankingType;
+    unsigned int _completionOptions;
     unsigned int _qos;
     NSString *_clientBundleID;
     NSArray *_protectionClasses;
@@ -44,11 +45,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) unsigned char flags; // @synthesize flags=_flags;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned short flags; // @synthesize flags=_flags;
 @property(retain, nonatomic) NSArray *scopes; // @synthesize scopes=_scopes;
 @property(retain, nonatomic) NSArray *mountPoints; // @synthesize mountPoints=_mountPoints;
 @property(nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property(nonatomic) unsigned int qos; // @synthesize qos=_qos;
+@property(nonatomic) unsigned int completionOptions; // @synthesize completionOptions=_completionOptions;
 @property(retain, nonatomic) NSArray *completionAttributes; // @synthesize completionAttributes=_completionAttributes;
 @property(retain, nonatomic) NSString *completionString; // @synthesize completionString=_completionString;
 @property(nonatomic) MISSING_TYPE *fuzzyMatch; // @synthesize fuzzyMatch=_fuzzyMatch;
@@ -71,7 +74,6 @@
 @property(retain, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property(retain, nonatomic) NSArray *protectionClasses; // @synthesize protectionClasses=_protectionClasses;
 @property(retain, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 @property(copy, nonatomic) NSDictionary *options;
@@ -80,6 +82,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)xpc_dictionary;
+@property(nonatomic) _Bool includeUserActivities;
+@property(nonatomic) _Bool playback;
+@property(nonatomic) _Bool fsOnly;
 @property(nonatomic) _Bool parseUserQuery;
 @property(nonatomic) _Bool lowPriority;
 @property(nonatomic) _Bool attribute;

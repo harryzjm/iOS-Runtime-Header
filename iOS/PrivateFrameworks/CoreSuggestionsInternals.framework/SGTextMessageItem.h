@@ -7,29 +7,35 @@
 #import <objc/NSObject.h>
 
 #import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
+#import <CoreSuggestionsInternals/SGConversationTurnProtocol-Protocol.h>
 
-@class NSArray, NSString, SGTextMessage;
+@class NSArray, NSDate, NSString, SGTextMessage;
 
-@interface SGTextMessageItem : NSObject <NSSecureCoding>
+@interface SGTextMessageItem : NSObject <NSSecureCoding, SGConversationTurnProtocol>
 {
     SGTextMessage *_message;
-    NSString *_content;
+    NSString *_text;
+    NSString *_senderID;
+    NSDate *_timestamp;
     NSString *_language;
     NSArray *_detectedData;
     NSArray *_features;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) NSArray *features; // @synthesize features=_features;
 @property(readonly) NSArray *detectedData; // @synthesize detectedData=_detectedData;
 @property(readonly) NSString *language; // @synthesize language=_language;
-@property(readonly) NSString *content; // @synthesize content=_content;
+@property(readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;
+@property(readonly, nonatomic) NSString *text; // @synthesize text=_text;
 @property(readonly) SGTextMessage *message; // @synthesize message=_message;
-- (void).cxx_destruct;
+- (_Bool)isEqualToConversationTurn:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTextMessage:(id)arg1;
-- (id)initWithTextMessage:(id)arg1 andDetectedData:(id)arg2;
+- (id)initWithTextMessage:(id)arg1 detectedData:(id)arg2;
 
 @end
 

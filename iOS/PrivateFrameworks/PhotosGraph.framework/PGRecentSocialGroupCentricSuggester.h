@@ -24,23 +24,25 @@
 + (id)suggestionTypes;
 - (void).cxx_destruct;
 - (void)usePotentialSuggestions:(id)arg1;
-- (id)assetsMatchingSocialGroup:(id)arg1 betweenStartDate:(id)arg2 andEndDate:(id)arg3;
-- (id)assetsWithPersonsBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
+- (id)assetsMatchingSocialGroup:(id)arg1 betweenStartDate:(id)arg2 andEndDate:(id)arg3 matchingAssetUUID:(id)arg4;
+- (id)assetsWithPersonsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 matchAssetUUID:(id)arg3;
 - (id)verifiedPersons;
-- (id)potentialSuggestionsWithOptions:(id)arg1;
-- (id)nextSocialGroupPotentialSuggestion;
-- (id)nextLongTimeNoSeeSocialGroupPotentialSuggestion;
-- (id)socialGroupPotentialSuggestionsWithOptions:(id)arg1;
-- (id)longTimeNoSeeSocialGroupPotentialSuggestionsWithOptions:(id)arg1;
+- (id)potentialSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (id)nextSocialGroupPotentialSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)nextLongTimeNoSeeSocialGroupPotentialSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)socialGroupPotentialSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (id)longTimeNoSeeSocialGroupPotentialSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (_Bool)canGenerateSuggestionWithAsset:(id)arg1 onDate:(id)arg2;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (void)reset;
-- (id)nextSuggestion;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool lastSuggestionWasColliding;
 @property(readonly) Class superclass;
 
 @end

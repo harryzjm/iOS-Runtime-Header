@@ -28,6 +28,7 @@
 - (void)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 didHideShowable:(id <SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 willHideShowable:(id <SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 didShowShowable:(id <SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
+- (void)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 willReturnToFullscreenForShowable:(id <SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
 - (_Bool)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 willShowShowable:(id <SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
 - (SXFullscreenCaption *)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 captionForShowable:(id <SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3;
 @end

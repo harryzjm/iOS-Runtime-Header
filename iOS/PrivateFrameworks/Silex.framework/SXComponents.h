@@ -7,21 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <Silex/NSCopying-Protocol.h>
+#import <Silex/NSFastEnumeration-Protocol.h>
 #import <Silex/NSMutableCopying-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface SXComponents : NSObject <NSCopying, NSMutableCopying>
+@interface SXComponents : NSObject <NSCopying, NSMutableCopying, NSFastEnumeration>
 {
     NSMutableArray *_components;
     NSMutableDictionary *_componentsByIdentifier;
     NSMutableDictionary *_childComponentsByParentIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *childComponentsByParentIdentifier; // @synthesize childComponentsByParentIdentifier=_childComponentsByParentIdentifier;
 @property(readonly, nonatomic) NSMutableDictionary *componentsByIdentifier; // @synthesize componentsByIdentifier=_componentsByIdentifier;
 @property(readonly, nonatomic) NSMutableArray *components; // @synthesize components=_components;
-- (void).cxx_destruct;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (_Bool)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,6 +35,7 @@
 - (id)componentForIdentifier:(id)arg1;
 - (unsigned long long)indexOfComponent:(id)arg1;
 - (id)componentAtIndex:(unsigned long long)arg1;
+- (void)enumerateComponentsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *allComponents;
 @property(readonly, nonatomic) unsigned long long count;
 - (id)initWithArray:(id)arg1;

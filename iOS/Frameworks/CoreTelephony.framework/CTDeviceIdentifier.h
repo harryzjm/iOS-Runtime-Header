@@ -15,18 +15,20 @@
     NSString *_deviceName;
     unsigned long long _deviceType;
     NSString *_EID;
+    NSString *_IMEI;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *IMEI; // @synthesize IMEI=_IMEI;
 @property(retain, nonatomic) NSString *EID; // @synthesize EID=_EID;
 @property(nonatomic) unsigned long long deviceType; // @synthesize deviceType=_deviceType;
 @property(retain, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithDeviceType:(unsigned long long)arg1 EID:(id)arg2;
+- (id)initWithDeviceType:(unsigned long long)arg1 EID:(id)arg2 IMEI:(id)arg3;
 - (id)init;
 
 @end

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (double)inputAssistantViewHeightForInputViewSet:(id)arg1;
 - (_Bool)inputViewWillAppear;
 - (_Bool)accessoryViewWillAppear;
+- (_Bool)showsInputOrAssistantViews;
 - (_Bool)showsInputViews;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (Class)applicatorClassForKeyboard:(_Bool)arg1;

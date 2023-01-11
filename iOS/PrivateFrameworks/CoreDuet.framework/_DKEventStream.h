@@ -22,10 +22,11 @@
 + (id)eventStreamWithName:(id)arg1 valueType:(id)arg2;
 + (id)eventStreamWithName:(id)arg1;
 + (id)fromPBCodable:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) _DKObjectType *eventValueType; // @synthesize eventValueType=_eventValueType;
 @property(readonly) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -35,7 +36,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

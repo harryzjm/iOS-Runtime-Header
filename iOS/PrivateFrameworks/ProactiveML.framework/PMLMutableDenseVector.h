@@ -14,8 +14,10 @@
     NSMutableData *_mutableData;
 }
 
-@property(readonly, nonatomic) NSMutableData *mutableData; // @synthesize mutableData=_mutableData;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableData *mutableData; // @synthesize mutableData=_mutableData;
+- (void)sumInPlaceWithVector:(id)arg1;
+- (void)scaleInPlaceWithFactor:(float)arg1;
 - (void)scaleInPlaceWithInversedFactor:(float)arg1;
 - (void)processValuesInPlaceWithBlock:(CDUnknownBlockType)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

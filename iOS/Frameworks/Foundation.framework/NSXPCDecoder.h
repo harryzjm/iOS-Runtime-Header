@@ -14,18 +14,23 @@ __attribute__((visibility("hidden")))
     struct {
         char *data;
         unsigned long long dataLen;
-        struct __CFString *tempString;
+        struct __CFDictionary *objectReferences;
     } _decoder;
     NSXPCConnection *_connection;
-    CDStruct_183601bc *_collections[128];
+    struct *_collections[272];
     CDStruct_1b1be194 _rootObject;
+    _Bool expectsUnnestedCollection;
+    _Bool decodedCollection;
     unsigned int _collectionPointer;
-    id _allowedClassesList[128];
+    id _allowedClassesList[272];
     long long _allowedClassesIndex;
     NSObject<OS_xpc_object> *_oolObjects;
 }
 
 @property NSXPCConnection *_connection; // @synthesize _connection;
+- (id)decodeDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 forKey:(id)arg3;
+- (id)decodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;
+- (id)_decodeCollectionOfClass:(Class)arg1 allowedClasses:(id)arg2 forKey:(id)arg3;
 - (id)decodeXPCObjectOfType:(struct _xpc_type_s *)arg1 forKey:(id)arg2;
 - (id)_xpcObjectForIndex:(long long)arg1;
 - (id)decodeXPCObjectForKey:(id)arg1;

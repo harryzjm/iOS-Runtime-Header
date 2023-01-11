@@ -23,7 +23,6 @@
         unsigned int unseen:1;
     } _has;
     _Bool _unseen;
-    _Bool __encodeLegacyGloryData;
     int _callType;
     int _preferredCallProvider;
     _INPBDateTimeRange *_dateCreated;
@@ -33,7 +32,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool unseen; // @synthesize unseen=_unseen;
 @property(retain, nonatomic) _INPBContact *targetContact; // @synthesize targetContact=_targetContact;
 @property(retain, nonatomic) _INPBContact *recipient; // @synthesize recipient=_recipient;
@@ -41,7 +40,6 @@
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBDateTimeRange *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property(nonatomic) int callType; // @synthesize callType=_callType;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

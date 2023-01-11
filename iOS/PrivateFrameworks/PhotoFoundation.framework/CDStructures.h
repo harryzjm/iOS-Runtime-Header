@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct PFAsyncDispatchMulticaster {
-    Class _field1;
-};
 
 struct PFChecksumBytes {
     unsigned char data[16];
@@ -30,21 +24,9 @@ struct __sbuf {
     int _field2;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct _opaque_pthread_mutex_t {
     long long __sig;
     char __opaque[56];
-};
-
-struct mach_timebase_info {
-    unsigned int numer;
-    unsigned int denom;
 };
 
 struct os_unfair_lock_s {

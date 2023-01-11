@@ -9,6 +9,9 @@
 @class GKGameInternal, GKPlayerInternal, NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol GKGameServicePrivate <GKGameService>
+- (oneway void)getGamesPlayedMetaData:(NSString *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)getGamesPlayedSummaries:(NSString *)arg1 limit:(NSNumber *)arg2 withinSecs:(NSNumber *)arg3 handler:(void (^)(NSArray *, NSError *))arg4;
+- (oneway void)getGamesPlayedSummaries:(NSString *)arg1 limit:(NSNumber *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)loadTellAFriendMessageForGameWithAdamID:(NSNumber *)arg1 handler:(void (^)(NSString *, NSString *, NSString *, NSError *))arg2;
 - (oneway void)submitRating:(float)arg1 forGame:(GKGameInternal *)arg2 handler:(void (^)(void))arg3;
 - (oneway void)getRatingForGameDescriptor:(NSDictionary *)arg1 handler:(void (^)(float, NSError *))arg2;

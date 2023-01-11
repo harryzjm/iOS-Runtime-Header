@@ -6,6 +6,7 @@
 
 @protocol CNFRegViewAccountControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegViewAccountController
 {
     id <CNFRegViewAccountControllerDelegate> _delegate;

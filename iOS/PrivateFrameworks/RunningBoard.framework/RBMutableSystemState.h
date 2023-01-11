@@ -9,11 +9,11 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)addPreventLaunchPredicate:(id)arg1;
 - (void)addTag:(id)arg1;
 - (void)removeAllPreventIdleSleepIdentifiers;
 - (void)removePreventIdleSleepIdentifier:(id)arg1;
 - (void)addPreventIdleSleepIdentifier:(id)arg1;
-- (void)setThrottleBestEffortNetworking:(_Bool)arg1;
 - (void)setPreventIdleSleep:(_Bool)arg1;
 - (void)setPreventLaunch:(_Bool)arg1;
 - (void)unionState:(id)arg1;

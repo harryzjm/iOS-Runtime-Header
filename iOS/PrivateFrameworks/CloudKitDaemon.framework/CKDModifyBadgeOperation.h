@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 + (long long)isPredominatelyDownload;
 @property(readonly, nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;
 - (void)main;
+- (int)operationType;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 

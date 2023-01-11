@@ -19,8 +19,8 @@
 + (id)_suggestionsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(long long)arg3 inManagedObjectContext:(id)arg4;
 + (id)suggestionsToPrefetchInManagedObjectContext:(id)arg1;
 + (id)suggestionsToUploadInPhotoLibrary:(id)arg1 limit:(long long)arg2;
-+ (_Bool)_shouldPrefetchSuggestionKeyAssetsInManagedObjectContext:(id)arg1;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(_Bool)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
++ (id)_syncablePredicate;
 + (id)predicateForAllMomentsFromRepresentativeAssetsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
 + (id)predicateForAllAssetsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
 + (id)_representativeAssetIDsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
@@ -35,7 +35,6 @@
 - (id)cplFullRecord;
 - (_Bool)isSyncableChange;
 - (_Bool)supportsCloudUpload;
-- (id)momentShare;
 - (_Bool)isEmpty;
 - (void)removeRepresentativeAsset:(id)arg1;
 - (void)replaceKeyAsset:(id)arg1;
@@ -61,19 +60,20 @@
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSDate *endDate; // @dynamic endDate;
 @property(retain, nonatomic) NSDate *expungeDate; // @dynamic expungeDate;
+@property(nonatomic) unsigned short featuredState; // @dynamic featuredState;
 @property(retain, nonatomic) NSData *featuresData; // @dynamic featuresData;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSSet *keyAssets; // @dynamic keyAssets;
-@property(nonatomic) short notificationState; // @dynamic notificationState;
+@property(nonatomic) unsigned short notificationState; // @dynamic notificationState;
 @property(retain, nonatomic) NSDate *relevantUntilDate; // @dynamic relevantUntilDate;
 @property(retain, nonatomic) NSSet *representativeAssets; // @dynamic representativeAssets;
 @property(retain, nonatomic) NSDate *startDate; // @dynamic startDate;
-@property(nonatomic) short state; // @dynamic state;
+@property(nonatomic) unsigned short state; // @dynamic state;
 @property(retain, nonatomic) NSString *subtitle; // @dynamic subtitle;
-@property(nonatomic) short subtype; // @dynamic subtype;
+@property(nonatomic) unsigned short subtype; // @dynamic subtype;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) NSString *title; // @dynamic title;
-@property(nonatomic) short type; // @dynamic type;
+@property(nonatomic) unsigned short type; // @dynamic type;
 @property(retain, nonatomic) NSString *uuid; // @dynamic uuid;
 @property(nonatomic) short version; // @dynamic version;
 

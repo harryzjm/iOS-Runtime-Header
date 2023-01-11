@@ -10,6 +10,38 @@
 
 @interface CAContext : NSObject
 {
+    struct Context {
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        struct Mutex;
+        struct Weak<const void *>;
+        id;
+        struct Context *;
+        struct CGColorSpace *;
+        struct __CFDictionary *;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        unsigned int;
+        struct ObjectCache *;
+        id;
+        id;
+        unsigned int;
+        float;
+        struct Commit *;
+        struct Generic;
+        struct __CFString *;
+        unsigned char;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+    } *_impl;
 }
 
 + (id)objectForSlot:(unsigned int)arg1;
@@ -20,6 +52,10 @@
 + (id)localContext;
 + (id)currentContext;
 + (id)allContexts;
+- (void *)contextImpl;
+- (struct Context *)retainRenderContext;
+- (struct Context *)renderContext;
+@property(copy) NSString *annotation;
 - (unsigned int)hitTestContext:(struct CGPoint)arg1;
 - (void)setObject:(id)arg1 forSlot:(unsigned int)arg2;
 - (void)deleteSlot:(unsigned int)arg1;
@@ -31,24 +67,27 @@
 - (void)setFencePort:(unsigned int)arg1 commitHandler:(CDUnknownBlockType)arg2;
 - (void)setFencePort:(unsigned int)arg1;
 - (unsigned int)createFencePort;
+- (_Bool)addFence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)addFence:(id)arg1;
+@property(readonly) _Bool valid;
+@property(readonly) NSDictionary *options;
+@property float desiredDynamicRange;
+@property(getter=isSecure) _Bool secure;
+@property(readonly) unsigned int displayId;
+@property float level;
 - (void)orderBelow:(unsigned int)arg1;
 - (void)orderAbove:(unsigned int)arg1;
+@property(retain) CALayer *layer;
+@property(copy) NSString *contentsFormat;
+@property _Bool colorMatchUntaggedContent;
+@property unsigned int commitPriority;
+@property struct CGColorSpace *colorSpace;
+@property(readonly) unsigned int contextId;
+- (void)dealloc;
 - (void)invalidate;
-
-// Remaining properties
-@property(copy) NSString *annotation; // @dynamic annotation;
-@property _Bool colorMatchUntaggedContent; // @dynamic colorMatchUntaggedContent;
-@property struct CGColorSpace *colorSpace; // @dynamic colorSpace;
-@property unsigned int commitPriority; // @dynamic commitPriority;
-@property(copy) NSString *contentsFormat; // @dynamic contentsFormat;
-@property(readonly) unsigned int contextId; // @dynamic contextId;
-@property float desiredDynamicRange; // @dynamic desiredDynamicRange;
-@property(readonly) unsigned int displayId; // @dynamic displayId;
-@property(retain) CALayer *layer; // @dynamic layer;
-@property float level; // @dynamic level;
-@property(readonly) NSDictionary *options; // @dynamic options;
-@property(getter=isSecure) _Bool secure; // @dynamic secure;
-@property(readonly) _Bool valid; // @dynamic valid;
+- (id)initRemoteWithOptions:(id)arg1;
+- (id)initWithOptions:(id)arg1 localContext:(_Bool)arg2;
+- (id)debugDescription;
 
 @end
 

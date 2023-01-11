@@ -11,6 +11,7 @@
 @interface MetalRANSACDispatcher : NSObject
 {
     float inlierLimit;
+    struct CGSize frameSize;
     id <MTLCommandQueue> m_metalCommandQueue;
     id <MTLDevice> m_metalDevice;
     id <MTLFunction> m_metalKernelFunction;
@@ -24,9 +25,9 @@
     id <MTLBuffer> _m_RansacParams;
     id <MTLBuffer> _m_RansacHomographies;
     id <MTLBuffer> _m_ModelScores;
-    struct CGSize frameSize;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <MTLBuffer> m_ModelScores; // @synthesize m_ModelScores=_m_ModelScores;
 @property(retain, nonatomic) id <MTLBuffer> m_RansacHomographies; // @synthesize m_RansacHomographies=_m_RansacHomographies;
 @property(retain, nonatomic) id <MTLBuffer> m_RansacParams; // @synthesize m_RansacParams=_m_RansacParams;
@@ -42,7 +43,6 @@
 @property(retain, nonatomic) id <MTLFunction> m_metalKernelFunction; // @synthesize m_metalKernelFunction;
 @property(retain, nonatomic) id <MTLDevice> m_metalDevice; // @synthesize m_metalDevice;
 @property(retain, nonatomic) id <MTLCommandQueue> m_metalCommandQueue; // @synthesize m_metalCommandQueue;
-- (void).cxx_destruct;
 - (void)assureSizeAndCopyToMetalBuffer:(id *)arg1 fromData:(const void *)arg2 dataSize:(unsigned long long)arg3 metalResourceOptions:(unsigned long long)arg4;
 - (void)performRansacOnData:(unsigned int)arg1 firstPointSet:(const float *)arg2 secondPointSet:(const float *)arg3 pointWeights:(const float *)arg4 homographies:(const struct ransac_homography_record *)arg5 numHomographies:(unsigned int)arg6 homScores:(float *)arg7;
 - (id)initWithMaxCorrespondences:(unsigned long long)arg1;

@@ -12,12 +12,14 @@
 {
 }
 
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (_Bool)canLowercaseTypeDescription;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)outputTypes;
++ (id)ownedPasteboardTypes;
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (id)propertyBuilders;

@@ -8,7 +8,20 @@
 {
 }
 
-- (id)_subclass_updateWithOptions:(id)arg1;
++ (id)serviceType;
+- (id)_formatStringTypeComponent;
+- (id)multipleUnknownServicesFormatString;
+- (id)oneUnknownServiceFormatString;
+- (id)multipleClosedServicesFormatString;
+- (id)oneClosedServiceFormatString;
+- (id)multipleClosingServicesFormatString;
+- (id)oneClosingServiceFormatString;
+- (id)multipleOpeningServicesFormatString;
+- (id)oneOpeningServiceFormatString;
+- (id)multipleOpenServicesFormatString;
+- (id)oneOpenServiceFormatString;
+- (id)multipleObstructedServicesFormatString;
+- (id)oneObstructedServiceFormatString;
 
 @end
 

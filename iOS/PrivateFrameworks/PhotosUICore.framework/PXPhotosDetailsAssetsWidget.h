@@ -23,7 +23,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSDate, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicUIViewTileAnimator, PXLayoutGenerator, PXOneUpPresentation, PXPhotoKitAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDataSourceStressTest, PXPhotosDetailsAssetsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsInlinePlaybackController, PXPhotosDetailsLoadCoordinationToken, PXSectionedLayoutEngine, PXSectionedSelectionManager, PXSwipeSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUIAssetsScene, PXUITapGestureRecognizer, PXWidgetSpec, UIPinchGestureRecognizer;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate, UIDragSession;
+@protocol PXAnonymousView, PXPhotosDetailsAssetsWidgetEventTracker, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate, UIDragSession;
 
 @interface PXPhotosDetailsAssetsWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXTilingControllerScrollDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXSwipeSelectionManagerDelegate, PXUIPlayButtonTileDelegate, UIGestureRecognizerDelegate, PXActionPerformerDelegate, PXPhotosDetailsInlinePlaybackControllerDelegate, UIDragInteractionDelegate, PXUIWidget, PXOneUpPresentationDelegate>
 {
@@ -38,8 +38,8 @@
     _Bool __showSelectionButton;
     _Bool __transitionWithoutAnimation;
     _Bool _hasLoadedContentData;
-    _Bool __needsAggdLoggingForCuratedAssetsCount;
-    _Bool __needsAggdLoggingForUncuratedAssetsCount;
+    _Bool _didLogCuratedAssetCount;
+    _Bool _didLogUncuratedAssetCount;
     PXOneUpPresentation *_oneUpPresentation;
     id <PXWidgetDelegate> _widgetDelegate;
     PXWidgetSpec *_spec;
@@ -53,6 +53,7 @@
     PXBasicUIViewTileAnimator *__tileAnimator;
     PXUIAssetsScene *__assetsScene;
     PXPhotosDetailsInlinePlaybackController *__inlinePlaybackController;
+    id <PXPhotosDetailsAssetsWidgetEventTracker> _eventTracker;
     PXLayoutGenerator *__layoutGenerator;
     PXSectionedLayoutEngine *__layoutEngine;
     PXAssetReference *__navigatedAssetReference;
@@ -70,9 +71,10 @@
     struct CGPoint __visibleOriginScrollTarget;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
-@property(nonatomic, setter=_setNeedsAggdLoggingForUncuratedAssetsCount:) _Bool _needsAggdLoggingForUncuratedAssetsCount; // @synthesize _needsAggdLoggingForUncuratedAssetsCount=__needsAggdLoggingForUncuratedAssetsCount;
-@property(nonatomic, setter=_setNeedsAggdLoggingForCuratedAssetsCount:) _Bool _needsAggdLoggingForCuratedAssetsCount; // @synthesize _needsAggdLoggingForCuratedAssetsCount=__needsAggdLoggingForCuratedAssetsCount;
+@property(nonatomic) _Bool didLogUncuratedAssetCount; // @synthesize didLogUncuratedAssetCount=_didLogUncuratedAssetCount;
+@property(nonatomic) _Bool didLogCuratedAssetCount; // @synthesize didLogCuratedAssetCount=_didLogCuratedAssetCount;
 @property(retain, nonatomic, setter=_setCurrentDataSourceStressTest:) PXPhotosDataSourceStressTest *_currentDataSourceStressTest; // @synthesize _currentDataSourceStressTest=__currentDataSourceStressTest;
 @property(nonatomic, setter=_setHasLoadedContentData:) _Bool hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property(retain, nonatomic, setter=_setLoadCoordinationToken:) PXPhotosDetailsLoadCoordinationToken *_loadCoordinationToken; // @synthesize _loadCoordinationToken=__loadCoordinationToken;
@@ -93,6 +95,7 @@
 @property(readonly, nonatomic) PXAssetReference *_navigatedAssetReference; // @synthesize _navigatedAssetReference=__navigatedAssetReference;
 @property(retain, nonatomic, setter=_setLayoutEngine:) PXSectionedLayoutEngine *_layoutEngine; // @synthesize _layoutEngine=__layoutEngine;
 @property(retain, nonatomic, setter=_setLayoutGenerator:) PXLayoutGenerator *_layoutGenerator; // @synthesize _layoutGenerator=__layoutGenerator;
+@property(readonly, nonatomic) id <PXPhotosDetailsAssetsWidgetEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property(readonly, nonatomic) PXPhotosDetailsInlinePlaybackController *_inlinePlaybackController; // @synthesize _inlinePlaybackController=__inlinePlaybackController;
 @property(readonly, nonatomic) PXUIAssetsScene *_assetsScene; // @synthesize _assetsScene=__assetsScene;
 @property(readonly, nonatomic) PXBasicUIViewTileAnimator *_tileAnimator; // @synthesize _tileAnimator=__tileAnimator;
@@ -108,9 +111,8 @@
 @property(retain, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
 @property(retain, nonatomic) PXOneUpPresentation *oneUpPresentation; // @synthesize oneUpPresentation=_oneUpPresentation;
-- (void).cxx_destruct;
-- (_Bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)dragInteraction:(id)arg1 sessionForAddingItems:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
@@ -173,9 +175,11 @@
 - (double)engineDrivenLayout:(id)arg1 aspectRatioForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (void)commitPreviewViewController:(id)arg1;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (_Bool)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(id)arg2;
 - (id)imageViewBasicTileForPreviewingAtPoint:(struct CGPoint)arg1;
+@property(readonly, nonatomic) _Bool cursorInteractionEnabled;
+- (id)bestCursorTileForLiftingAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)contentViewDidDisappear;
 - (void)contentViewWillAppear;
 - (void)environmentDidUpdateFocusInContext:(id)arg1;
@@ -204,7 +208,7 @@
 - (_Bool)_isLocationWithinCurrentLayoutBounds:(struct CGPoint)arg1;
 - (id)_assetReferenceAtPoint:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
 - (struct PXSimpleIndexPath)_assetIndexPathAtLocation:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
-- (void)_logAggdCounterForAssetCountsIfNecessary;
+- (void)_logAssetCountsIfNecessary;
 - (void)_updateShowSelectionButton;
 - (void)_updateShowCurationButton;
 - (void)_updateHasLoadedContentData;
@@ -224,10 +228,15 @@
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(readonly, nonatomic) _Bool hasContentForCurrentInput;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
+@property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool wantsFocus;
+@property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

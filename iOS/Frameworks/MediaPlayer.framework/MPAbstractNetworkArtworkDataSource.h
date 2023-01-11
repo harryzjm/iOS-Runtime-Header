@@ -6,54 +6,78 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/AVAssetResourceLoaderDelegate-Protocol.h>
 #import <MediaPlayer/MPArtworkDataSource-Protocol.h>
 #import <MediaPlayer/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSCache, NSMapTable, NSMutableDictionary, NSString, NSURLSession, NSURLSessionConfiguration;
+@class NSCache, NSMapTable, NSMutableDictionary, NSString, NSURL, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
-@interface MPAbstractNetworkArtworkDataSource : NSObject <NSURLSessionDataDelegate, MPArtworkDataSource>
+@interface MPAbstractNetworkArtworkDataSource : NSObject <NSURLSessionDataDelegate, AVAssetResourceLoaderDelegate, MPArtworkDataSource>
 {
     _Bool _usesFallbackCache;
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSURLSessionConfiguration *_URLSessionConfiguration;
+    NSURL *_videoArtworkCacheURL;
+    NSObject<OS_dispatch_queue> *_imageAccessQueue;
+    NSObject<OS_dispatch_queue> *_videoAccessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSCache *_fallbackArtworkRepresentationCache;
+    NSCache *_fallbackImageArtworkRepresentationCache;
     NSMapTable *_catalogTaskMap;
-    NSMutableDictionary *_pendingRequestToCompletionHandlers;
-    NSURLSession *_URLSession;
+    NSMutableDictionary *_pendingRequestURLToCompletionHandlers;
+    NSURLSession *_imageURLSession;
+    NSURLSession *_videoURLSession;
 }
 
-+ (void)_applyURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
-@property(retain, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
-@property(retain, nonatomic) NSMutableDictionary *pendingRequestToCompletionHandlers; // @synthesize pendingRequestToCompletionHandlers=_pendingRequestToCompletionHandlers;
-@property(retain, nonatomic) NSMapTable *catalogTaskMap; // @synthesize catalogTaskMap=_catalogTaskMap;
-@property(retain, nonatomic) NSCache *fallbackArtworkRepresentationCache; // @synthesize fallbackArtworkRepresentationCache=_fallbackArtworkRepresentationCache;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
-@property(nonatomic) _Bool usesFallbackCache; // @synthesize usesFallbackCache=_usesFallbackCache;
++ (void)_applyVideoCacheURL:(id)arg1 toConfiguration:(id)arg2;
++ (void)_applyImageURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
++ (void)setIgnoreUserAgentInURLCache:(_Bool)arg1;
++ (_Bool)ignoreUserAgentInURLCache;
 - (void).cxx_destruct;
-- (void)_performSyncBlock:(CDUnknownBlockType)arg1;
-- (void)_performAsyncBarrierBlock:(CDUnknownBlockType)arg1;
-- (id)_existingRepresentativeObjectForArtworkCatalog:(id)arg1 handler:(CDUnknownBlockType)arg2;
+@property(retain, nonatomic) NSURLSession *videoURLSession; // @synthesize videoURLSession=_videoURLSession;
+@property(retain, nonatomic) NSURLSession *imageURLSession; // @synthesize imageURLSession=_imageURLSession;
+@property(retain, nonatomic) NSMutableDictionary *pendingRequestURLToCompletionHandlers; // @synthesize pendingRequestURLToCompletionHandlers=_pendingRequestURLToCompletionHandlers;
+@property(retain, nonatomic) NSMapTable *catalogTaskMap; // @synthesize catalogTaskMap=_catalogTaskMap;
+@property(retain, nonatomic) NSCache *fallbackImageArtworkRepresentationCache; // @synthesize fallbackImageArtworkRepresentationCache=_fallbackImageArtworkRepresentationCache;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *videoAccessQueue; // @synthesize videoAccessQueue=_videoAccessQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *imageAccessQueue; // @synthesize imageAccessQueue=_imageAccessQueue;
+@property(retain, nonatomic) NSURL *videoArtworkCacheURL; // @synthesize videoArtworkCacheURL=_videoArtworkCacheURL;
+@property(nonatomic) _Bool usesFallbackCache; // @synthesize usesFallbackCache=_usesFallbackCache;
+@property(readonly, nonatomic) NSURLSessionConfiguration *URLSessionConfiguration; // @synthesize URLSessionConfiguration=_URLSessionConfiguration;
+- (_Bool)_subclassImplementsSelector:(SEL)arg1;
+- (struct CGSize)_bestAvailableSizeForCatalog:(id)arg1 kind:(long long)arg2;
+- (id)_cacheKeyForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
+- (id)_bestVideoArtworkRepresentationForCatalog:(id)arg1;
+- (void)_performSyncBlockOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_performAsyncBarrierBlockOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)_requestForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
+- (id)_existingRepresentativeObjectForArtworkCatalog:(id)arg1 kind:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)_isRepresentationSize:(struct CGSize)arg1 validForCatalog:(id)arg2;
 - (id)_existingRepresentationFromURLCacheForArtworkCatalog:(id)arg1 immediateImageDecompressionAllowed:(_Bool)arg2;
 - (id)_artworkRepresentationWithImageFromData:(id)arg1 forURLResponse:(id)arg2 size:(struct CGSize)arg3 immediateImageDecompressionAllowed:(_Bool)arg4;
+- (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
+- (_Bool)respondsToSelector:(SEL)arg1;
+- (void)loadRepresentationOfKind:(long long)arg1 forArtworkCatalog:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)existingRepresentationOfKind:(long long)arg1 forArtworkCatalog:(id)arg2;
 - (void)loadArtworkEffectResultForEffectType:(long long)arg1 catalog:(id)arg2 options:(id)arg3 systemEffectHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(id)arg2 options:(id)arg3;
 - (id)visualIdenticalityIdentifierForCatalog:(id)arg1;
 - (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;
 - (void)loadRepresentationForArtworkCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)isRepresentation:(id)arg1 bestRepresentationForArtworkCatalog:(id)arg2;
 - (id)existingRepresentationForArtworkCatalog:(id)arg1;
+- (_Bool)isRepresentation:(id)arg1 bestRepresentationForArtworkCatalog:(id)arg2;
+- (id)cacheKeyForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
+- (struct CGSize)bestAvailableSizeForCatalog:(id)arg1;
+- (id)requestForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
+- (_Bool)areRepresentationsOfKind:(long long)arg1 availableForCatalog:(id)arg2;
 - (_Bool)wantsBackgroundImageDecompression;
-- (_Bool)shouldLookForLargerRepresentationsWhenBestRepresentationIsUnavailable;
+- (_Bool)shouldLookForLargerImageRepresentationsWhenBestRepresentationIsUnavailable;
 - (id)sortedSupportedSizesForCatalog:(id)arg1;
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (id)requestForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (id)supportedSizesForCatalog:(id)arg1;
 - (_Bool)areRepresentationsAvailableForCatalog:(id)arg1;
 - (void)updateURLSessionWithCachePolicy:(unsigned long long)arg1 cachePath:(id)arg2;
-@property(readonly, nonatomic) NSURLSessionConfiguration *URLSessionConfiguration;
 - (id)init;
 
 // Remaining properties

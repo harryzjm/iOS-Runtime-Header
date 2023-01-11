@@ -17,6 +17,7 @@
 + (id)kilovolts;
 + (id)megavolts;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

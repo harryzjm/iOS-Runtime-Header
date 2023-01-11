@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GKGameDescriptor, GKStoreItemInternal, NSDictionary, NSString;
+@class GKGameDescriptor, GKStoreItemInternal, NSDictionary, NSSet, NSString;
 
 @interface GKGameInternal
 {
@@ -24,7 +24,9 @@
             unsigned int _valid:1;
             unsigned int _unused:1;
             unsigned int _supportsTurnBasedMultiplayer:1;
-            unsigned int _reserved:15;
+            unsigned int _isArcadeGame:1;
+            unsigned int _supportsChallenges:1;
+            unsigned int _reserved:13;
         } ;
         unsigned int _value;
     } _flags;
@@ -32,9 +34,11 @@
     unsigned short _numberOfLeaderboardSets;
     unsigned short _numberOfAchievements;
     unsigned short _maxAchievementPoints;
+    NSSet *_compatiblePlatforms;
 }
 
 + (id)secureCodedPropertyKeys;
+@property(retain, nonatomic) NSSet *compatiblePlatforms; // @synthesize compatiblePlatforms=_compatiblePlatforms;
 @property(retain, nonatomic) GKStoreItemInternal *storeItem; // @synthesize storeItem=_storeItem;
 @property(nonatomic) unsigned short maxAchievementPoints; // @synthesize maxAchievementPoints=_maxAchievementPoints;
 @property(nonatomic) unsigned short numberOfAchievements; // @synthesize numberOfAchievements=_numberOfAchievements;
@@ -43,6 +47,8 @@
 @property(retain, nonatomic) NSString *defaultLeaderboardIdentifier; // @synthesize defaultLeaderboardIdentifier=_defaultLeaderboardIdentifier;
 @property(retain, nonatomic) NSDictionary *icons; // @synthesize icons=_icons;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) _Bool supportsChallenges; // @dynamic supportsChallenges;
+@property(nonatomic) _Bool isArcadeGame; // @dynamic isArcadeGame;
 @property(readonly, nonatomic) GKGameDescriptor *gameDescriptor;
 @property(nonatomic) unsigned int flags; // @dynamic flags;
 @property(nonatomic) _Bool supportsTurnBasedMultiplayer; // @dynamic supportsTurnBasedMultiplayer;

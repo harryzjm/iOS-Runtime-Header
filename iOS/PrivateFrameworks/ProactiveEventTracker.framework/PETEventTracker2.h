@@ -6,51 +6,69 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, NSString, NSUUID, PETAggregateState, PETConfig;
+@class NSDictionary, NSMutableDictionary, NSString, PETAggregateState, PETConfig, RBSAssertion, RBSTarget;
+@protocol OS_dispatch_queue;
 
 @interface PETEventTracker2 : NSObject
 {
-    _Bool _isInternalDevice;
-    _Bool _isWhitelistEnabled;
-    NSUUID *_deviceId;
-    NSDate *_lastCheckConfigTime;
+    PETAggregateState *_aggregateState;
+    NSObject<OS_dispatch_queue> *_loggingQueue;
+    int _loggingQueueSize;
+    struct _opaque_pthread_mutex_t _loggingQueueLock;
+    _Bool _inited;
+    RBSTarget *_rbsTarget;
+    RBSAssertion *_rbsAssertion;
+    _Bool _rbsShouldInvalidate;
+    struct _opaque_pthread_mutex_t _rbsAssertionLock;
+    _Bool _isDaemon;
+    _Bool _isAsyncEnabled;
     NSString *_rootDir;
     NSString *_logStoresDir;
     PETConfig *_config;
-    PETAggregateState *_aggregateState;
     NSMutableDictionary *_storeCache;
+    NSDictionary *_pet1HistogramBuckets;
 }
 
++ (id)formattedTextForUnaggregatedMessage:(id)arg1 messageGroup:(id)arg2 config:(id)arg3;
++ (id)formattedTextForAggregatedMessage:(id)arg1;
 + (double)roundToSigFigs:(double)arg1 sigFigs:(unsigned long long)arg2;
++ (_Bool)_isPET1Key:(id)arg1;
 + (unsigned int)typeIdForMessageName:(id)arg1;
++ (id)defaultRootDir;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain) NSDictionary *pet1HistogramBuckets; // @synthesize pet1HistogramBuckets=_pet1HistogramBuckets;
 @property(retain) NSMutableDictionary *storeCache; // @synthesize storeCache=_storeCache;
-@property(retain) PETAggregateState *aggregateState; // @synthesize aggregateState=_aggregateState;
+@property(readonly, nonatomic) PETAggregateState *aggregateState; // @synthesize aggregateState=_aggregateState;
 @property(retain) PETConfig *config; // @synthesize config=_config;
 @property(retain) NSString *logStoresDir; // @synthesize logStoresDir=_logStoresDir;
 @property(retain) NSString *rootDir; // @synthesize rootDir=_rootDir;
-- (void).cxx_destruct;
+@property _Bool isAsyncEnabled; // @synthesize isAsyncEnabled=_isAsyncEnabled;
+- (void)clearLogStores;
 - (void)enumerateAggregatedMessagesWithBlock:(CDUnknownBlockType)arg1 clearStore:(_Bool)arg2;
 - (double)_roundToSigFigs:(double)arg1 forRawMessage:(id)arg2;
 - (void)enumerateMessagesWithBlock:(CDUnknownBlockType)arg1 messageGroup:(id)arg2 clearStore:(_Bool)arg3;
 - (void)enumerateMessagesWithBlock:(CDUnknownBlockType)arg1 clearStore:(_Bool)arg2;
 - (void)enumerateMessageGroups:(CDUnknownBlockType)arg1;
+- (void)_logMessage:(id)arg1 subGroup:(id)arg2;
+- (id)_getLogStore:(id)arg1;
+- (void)_trackDistributionForMessage:(id)arg1 value:(double)arg2;
+- (id)_findBucketsForPET1Key:(id)arg1;
+- (void)_trackScalarForMessage:(id)arg1 count:(int)arg2 overwrite:(_Bool)arg3;
+- (id)_writeMessage:(id)arg1;
+- (void)logMessage:(id)arg1 subGroup:(id)arg2;
+- (void)logMessage:(id)arg1;
 - (void)trackDistributionForMessage:(id)arg1 value:(double)arg2;
+- (void)trackScalarForMessage:(id)arg1 updateCount:(int)arg2;
 - (void)trackScalarForMessage:(id)arg1 count:(int)arg2;
 - (void)trackScalarForMessage:(id)arg1;
-- (void)logMessage:(id)arg1;
-- (_Bool)checkMessageSampling:(id)arg1;
-- (_Bool)checkSampling:(id)arg1 deviceId:(id)arg2;
-- (_Bool)_checkSampling:(id)arg1;
-- (_Bool)_canLog:(id)arg1;
-- (void)_checkConfigUpdate;
-- (id)_writeMessage:(id)arg1 withWhitelist:(id)arg2;
-- (id)_filteredDataForMessage:(id)arg1 withWhitelist:(id)arg2;
-- (void)markAsPublicDevice;
-- (void)forceEnableWhitelist;
-- (id)_getLogStore:(id)arg1;
+- (void)_runBlockWithRBSAssertion:(CDUnknownBlockType)arg1;
+- (void)_dispatchAsyncForLogging:(CDUnknownBlockType)arg1 txnName:(const char *)arg2;
+- (void)_initWithRootDir:(id)arg1 config:(id)arg2;
 - (id)initWithRootDir:(id)arg1 config:(id)arg2;
-- (id)initWithRootDir:(id)arg1;
+- (id)initForTestingWithRootDir:(id)arg1;
+- (void)_init;
+- (id)initWithAsyncEnabled:(_Bool)arg1;
 
 @end
 

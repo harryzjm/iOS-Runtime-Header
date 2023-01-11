@@ -13,18 +13,16 @@
 
 @interface HFCharacteristicNotificationManager : NSObject <HFHomeManagerObserver, HFHomeObserver>
 {
-    _Bool _hasRegisteredForMediaAccessoryControl;
     NSDate *_lastNotificationsEnableRequestDate;
     NSMutableSet *_notificationsEnabledReasons;
     HMHome *_notificationsEnabledHome;
 }
 
 + (id)sharedManager;
-@property(nonatomic) _Bool hasRegisteredForMediaAccessoryControl; // @synthesize hasRegisteredForMediaAccessoryControl=_hasRegisteredForMediaAccessoryControl;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMHome *notificationsEnabledHome; // @synthesize notificationsEnabledHome=_notificationsEnabledHome;
 @property(readonly, nonatomic) NSMutableSet *notificationsEnabledReasons; // @synthesize notificationsEnabledReasons=_notificationsEnabledReasons;
 @property(retain, nonatomic) NSDate *lastNotificationsEnableRequestDate; // @synthesize lastNotificationsEnableRequestDate=_lastNotificationsEnableRequestDate;
-- (void).cxx_destruct;
 - (void)_updateNotificationsEnabled;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;

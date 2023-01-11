@@ -21,12 +21,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property _Bool drawWithSplines; // @synthesize drawWithSplines;
-- (void)setDrawEdgesFirst:(_Bool)arg1;
-@property(readonly) _Bool drawEdgesFirst;
-- (void)setSeparation:(struct CGSize)arg1;
-@property(readonly) struct CGSize separation;
-- (void)setDirection:(int)arg1;
-@property(readonly) int direction;
+@property _Bool drawEdgesFirst; // @synthesize drawEdgesFirst;
+@property struct CGSize separation; // @synthesize separation;
+@property int direction; // @synthesize direction;
 - (void)flushRender;
 - (void)drawEdge:(id)arg1 withPath:(id)arg2;
 - (void)_drawCubicSpline:(id)arg1;

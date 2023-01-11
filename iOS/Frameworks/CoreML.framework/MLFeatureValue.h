@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <CoreML/NSCopying-Protocol.h>
+#import <CoreML/NSSecureCoding-Protocol.h>
 
 @class MLMultiArray, MLSequence, NSDictionary, NSString;
 
-@interface MLFeatureValue : NSObject <NSCopying>
+@interface MLFeatureValue : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _undefined;
     long long _type;
@@ -18,6 +19,7 @@
     NSObject *_objectValue;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)featureValueOfType:(long long)arg1 fromObject:(id)arg2 error:(id *)arg3;
 + (id)featureValueWithInt64KeyDictionary:(id)arg1;
 + (id)featureValueWithStringKeyDictionary:(id)arg1;
@@ -39,11 +41,13 @@
 + (id)featureValueWithImageAtURL:(id)arg1 pixelsWide:(long long)arg2 pixelsHigh:(long long)arg3 pixelFormatType:(unsigned int)arg4 options:(id)arg5 error:(id *)arg6;
 + (struct CGRect)cropRectFromOptions:(id)arg1;
 + (unsigned long long)visionCropAndScaleOptionFromOptions:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject *objectValue; // @synthesize objectValue=_objectValue;
 @property(retain) id value; // @synthesize value=_value;
 @property(readonly, nonatomic, getter=isUndefined) _Bool undefined; // @synthesize undefined=_undefined;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)getFeatureSize:(id *)arg1 ndArrayMode:(_Bool)arg2;
 - (id)getFeatureSize:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

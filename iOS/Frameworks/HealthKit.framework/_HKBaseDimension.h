@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)_uniquedDefinedDimensionWithName:(id)arg1;
 + (id)_uniquedDimensionWithName:(id)arg1 configuration:(CDUnknownBlockType)arg2;
 + (id)nullDimension;
++ (id)electricPotentialDifference;
 + (id)titer;
 + (id)soundPressureLevel;
 + (id)hearingSensitivity;
@@ -35,13 +36,14 @@ __attribute__((visibility("hidden")))
 + (id)volume;
 + (id)length;
 + (id)mass;
+- (void).cxx_destruct;
 @property(nonatomic) double reductionCoefficient; // @synthesize reductionCoefficient=_reductionCoefficient;
 @property(retain, nonatomic) HKUnit *reducedUnit; // @synthesize reducedUnit=_reducedUnit;
 @property(retain, nonatomic) HKBaseUnit *reducibleBaseUnit; // @synthesize reducibleBaseUnit=_reducibleBaseUnit;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)_baseDimensions;
 - (id)_initWithName:(id)arg1;
+- (id)dimension;
 - (id)unitString;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

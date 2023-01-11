@@ -13,7 +13,9 @@
 + (void)cleanupAfterMockSuggestion:(id)arg1;
 + (id)contactMatchesWithContact:(id)arg1;
 + (id)originFromRecordId:(id)arg1;
++ (_Bool)isMockRecordId:(id)arg1;
 + (_Bool)isMockSuggestion:(id)arg1;
++ (id)createRealtimeReminder:(id)arg1 error:(id *)arg2;
 + (id)createRealtimeEvent:(id)arg1 error:(id *)arg2;
 + (id)createRealtimeContact:(id)arg1 error:(id *)arg2;
 + (id)createSuggestion:(id)arg1 error:(id *)arg2;

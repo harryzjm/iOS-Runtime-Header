@@ -39,6 +39,7 @@
     double _scrollCompletionBlockOffsetThreshold;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double scrollCompletionBlockOffsetThreshold; // @synthesize scrollCompletionBlockOffsetThreshold=_scrollCompletionBlockOffsetThreshold;
 @property(copy, nonatomic) CDUnknownBlockType scrollCompletionBlock; // @synthesize scrollCompletionBlock=_scrollCompletionBlock;
 @property(retain, nonatomic) NCNotificationStructuredSectionList *missedSectionList; // @synthesize missedSectionList=_missedSectionList;
@@ -57,14 +58,14 @@
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property(nonatomic, getter=isDeviceAuthenticated) _Bool deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property(copy, nonatomic) NSString *logDescription; // @synthesize logDescription=_logDescription;
-- (void).cxx_destruct;
-- (void)_migrateNotificationsFromList:(id)arg1 toList:(id)arg2 passingTest:(CDUnknownBlockType)arg3 hideToList:(_Bool)arg4 clearRequests:(_Bool)arg5;
+- (id)_filterNotificationsInGroupLists:(id)arg1 withDestinationsForSectionList:(id)arg2;
+- (void)_migrateNotificationsFromList:(id)arg1 toList:(id)arg2 passingTest:(CDUnknownBlockType)arg3 hideToList:(_Bool)arg4 clearRequests:(_Bool)arg5 filterPersistentRequests:(_Bool)arg6;
 - (void)_insertNotificationRequest:(id)arg1;
+- (void)_sortNotificationGroupsIfNecessary;
 - (void)_regroupAllNotificationGroups;
 - (id)_sectionForNotificationRequest:(id)arg1;
 - (_Bool)_shouldDNDDelayDeliveryOfNotificationRequest:(id)arg1;
-- (_Bool)_isNotificationRequestForHistorySection:(id)arg1;
-- (_Bool)_isNotificationRequestForIncomingSection:(id)arg1;
+- (_Bool)_isNotificationRequest:(id)arg1 forSectionList:(id)arg2;
 - (id)_newMissedSectionListForReason:(unsigned long long)arg1;
 - (void)_setupNotificationSectionLists;
 - (id)_newNotificationSectionListWithTitle:(id)arg1 notificationListViewRevealed:(_Bool)arg2 logDescription:(id)arg3;
@@ -88,12 +89,14 @@
 - (_Bool)notificationListViewIsGroup:(id)arg1;
 - (id)notificationListView:(id)arg1 viewForItemAtIndex:(unsigned long long)arg2;
 - (double)notificationListView:(id)arg1 heightForItemAtIndex:(unsigned long long)arg2;
+- (_Bool)notificationStructuredSectionList:(id)arg1 shouldScrollToTopForGroupList:(id)arg2;
 - (void)notificationStructuredSectionList:(id)arg1 requestsScrollingToContentOffset:(double)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (_Bool)notificationStructuredSectionList:(id)arg1 shouldFilterNotificationRequest:(id)arg2;
 - (id)notificationStructuredSectionList:(id)arg1 requestsAuxiliaryOptionsContentProviderForNotificationRequest:(id)arg2 isLongLook:(_Bool)arg3;
 - (void)notificationListComponentRequestsClearingAllNotificationRequests:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)reloadNotificationRequest:(id)arg1;
 - (void)modifyNotificationRequest:(id)arg1;
@@ -101,6 +104,7 @@
 - (void)insertNotificationRequest:(id)arg1;
 @property(readonly, nonatomic) unsigned long long notificationCount;
 @property(readonly, nonatomic) unsigned long long count;
+@property(readonly, nonatomic) _Bool hasVisibleContentToReveal;
 - (void)collapseGroupForNotificationRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)expandGroupForNotificationRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)notificationRequestWithNotificationIdentifier:(id)arg1 sectionIdentifier:(id)arg2;

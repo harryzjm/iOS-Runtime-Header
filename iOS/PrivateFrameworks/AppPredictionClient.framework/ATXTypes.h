@@ -17,7 +17,7 @@
 + (unsigned char)consumerSubtypeForString:(id)arg1 found:(_Bool *)arg2;
 + (unsigned long long)consumerTypeForString:(id)arg1 found:(_Bool *)arg2;
 + (unsigned long long)engagementTypeForString:(id)arg1 found:(_Bool *)arg2;
-+ (id)uiTypeForConsumerSubType:(unsigned char)arg1;
++ (id)uiTypeForActionConsumerSubType:(unsigned char)arg1;
 + (id)validConsumerSubTypeList;
 + (id)validConsumerSubTypes;
 + (id)validConsumerTypeList;
@@ -25,6 +25,7 @@
 + (id)inverseConsumerSubtypeMapping;
 + (id)consumerSubtypeMapping;
 + (id)consumerMapping;
++ (id)safeStringForConsumerSubtype:(unsigned char)arg1;
 + (id)stringForConsumerSubtype:(unsigned char)arg1;
 + (id)stringForConsumerType:(unsigned long long)arg1;
 + (id)stringForEngagementType:(unsigned long long)arg1;

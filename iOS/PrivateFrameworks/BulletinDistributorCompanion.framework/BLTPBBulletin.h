@@ -32,6 +32,7 @@
     BLTPBAction *_dismissAction;
     NSString *_dismissalID;
     unsigned int _feed;
+    NSString *_header;
     BLTPBSectionIcon *_icon;
     NSString *_messageTitle;
     NSMutableArray *_peopleIDs;
@@ -91,8 +92,11 @@
 + (Class)subsectionIDsType;
 + (Class)supplementaryActionsType;
 + (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 attachOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
-+ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 attachNoData:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
++ (id)imageContentTypeForImageAttachment:(id)arg1;
++ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 attachOption:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 + (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 shouldUseExpirationDate:(_Bool)arg7 replyToken:(id)arg8 gizmoLegacyPublisherBulletinID:(id)arg9 gizmoLegacyCategoryID:(id)arg10 gizmoSectionID:(id)arg11 gizmoSectionSubtype:(id)arg12 useUserInfoForContext:(_Bool)arg13 removeSubtitleForOlderWatches:(_Bool)arg14 attachOption:(unsigned long long)arg15 completion:(CDUnknownBlockType)arg16;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *header; // @synthesize header=_header;
 @property(nonatomic) _Bool containsUpdateIcon; // @synthesize containsUpdateIcon=_containsUpdateIcon;
 @property(retain, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
 @property(nonatomic) _Bool suppressDelayForForwardedBulletins; // @synthesize suppressDelayForForwardedBulletins=_suppressDelayForForwardedBulletins;
@@ -145,7 +149,6 @@
 @property(retain, nonatomic) NSString *sectionDisplayName; // @synthesize sectionDisplayName=_sectionDisplayName;
 @property(retain, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property(retain, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -155,6 +158,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasHeader;
 @property(nonatomic) _Bool hasContainsUpdateIcon;
 @property(readonly, nonatomic) _Bool hasIcon;
 @property(nonatomic) _Bool hasSuppressDelayForForwardedBulletins;

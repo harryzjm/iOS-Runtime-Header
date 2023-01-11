@@ -19,6 +19,7 @@
 + (id)minutes;
 + (id)hours;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

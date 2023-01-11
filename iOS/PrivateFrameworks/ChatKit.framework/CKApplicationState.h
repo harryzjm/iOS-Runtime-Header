@@ -12,6 +12,7 @@
 
 + (_Bool)_isUIExtension;
 + (void)setActive:(_Bool)arg1;
++ (_Bool)isResizing;
 + (_Bool)isBackground;
 + (_Bool)isActive;
 

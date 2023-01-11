@@ -11,7 +11,7 @@
 #import <HealthDaemon/HDTaskServer-Protocol.h>
 #import <HealthDaemon/HKQueryServerInterface-Protocol.h>
 
-@class HDDaemonTransaction, HDDataCollectionAssertion, HDHealthStoreClient, HDProfile, HDQueryServerClientState, HKObjectType, HKQuantityType, HKQueryServerConfiguration, HKSampleType, NSArray, NSDictionary, NSSet, NSString, NSUUID, _HKFilter;
+@class HDDaemonTransaction, HDDataCollectionAssertion, HDDatabaseTransactionContextStatistics, HDHealthStoreClient, HDProfile, HDQueryServerClientState, HKObjectType, HKQuantityType, HKQueryServerConfiguration, HKSampleType, NSArray, NSDictionary, NSSet, NSString, NSUUID, _HKFilter;
 @protocol HDQueryServerDelegate, HKQueryClientInterface><NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface HDQueryServer : NSObject <HDDatabaseProtectedDataObserver, HKQueryServerInterface, HDDataObserver, HDTaskServer>
@@ -30,15 +30,16 @@
     _Atomic _Bool _shouldFinish;
     _Atomic _Bool _shouldPause;
     NSObject<OS_dispatch_queue> *_unitTestQueryQueue;
+    HDDatabaseTransactionContextStatistics *_transactionStatistics;
     id <HDQueryServerDelegate> _delegate;
     NSUUID *_queryUUID;
     HDHealthStoreClient *_client;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queryQueue;
     double _collectionInterval;
-    _HKFilter *_filter;
     HKObjectType *_objectType;
     long long _dataCount;
+    _HKFilter *_filter;
     CDUnknownBlockType _unitTest_queryServerSetShouldPauseHandler;
     CDUnknownBlockType _unitTest_queryServerWillChangeStateHandler;
 }
@@ -50,12 +51,13 @@
 + (_Bool)supportsAnchorBasedAuthorization;
 + (Class)queryClass;
 + (id)builtInQueryServerClasses;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType unitTest_queryServerWillChangeStateHandler; // @synthesize unitTest_queryServerWillChangeStateHandler=_unitTest_queryServerWillChangeStateHandler;
 @property(copy, nonatomic) CDUnknownBlockType unitTest_queryServerSetShouldPauseHandler; // @synthesize unitTest_queryServerSetShouldPauseHandler=_unitTest_queryServerSetShouldPauseHandler;
+@property(readonly, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property(nonatomic) long long dataCount; // @synthesize dataCount=_dataCount;
 @property(copy, nonatomic) HDQueryServerClientState *clientState; // @synthesize clientState=_clientState;
 @property(readonly, copy, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
-@property(readonly, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property(nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queryQueue; // @synthesize queryQueue=_queryQueue;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
@@ -63,10 +65,9 @@
 @property(readonly, copy, nonatomic) HKQueryServerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, copy, nonatomic) NSUUID *queryUUID; // @synthesize queryUUID=_queryUUID;
 @property(nonatomic) __weak id <HDQueryServerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (double)_queue_logThresholdHardwareFactor;
 - (double)_queue_queryLogThreshold;
-- (void)_queue_logQueryWithDuration:(double)arg1;
+- (void)_queue_logQueryWithDuration:(double)arg1 statistics:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (id)_queryStateString;
 - (id)diagnosticDescription;

@@ -7,6 +7,7 @@
 @class NSArray, PKPaymentSelectPassesViewController;
 
 @protocol PKPaymentSelectPassesViewControllerDelegate
+- (void)selectPassesViewControllerDidTapBackButton:(PKPaymentSelectPassesViewController *)arg1;
 - (void)selectPassesViewController:(PKPaymentSelectPassesViewController *)arg1 didSelectPasses:(NSArray *)arg2 completion:(void (^)(void))arg3;
 @end
 

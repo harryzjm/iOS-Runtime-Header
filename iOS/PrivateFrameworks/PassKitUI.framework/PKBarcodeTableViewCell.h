@@ -10,16 +10,19 @@
 
 @interface PKBarcodeTableViewCell : UITableViewCell
 {
-    PKPass *_pass;
     PKBarcodeStickerView *_barcodeStickerView;
     struct CGSize _maximumBarcodeSize;
+    PKPass *_pass;
+    long long _barcodeStyle;
 }
 
-@property(nonatomic) struct CGSize maximumBarcodeSize; // @synthesize maximumBarcodeSize=_maximumBarcodeSize;
 - (void).cxx_destruct;
+@property(nonatomic) long long barcodeStyle; // @synthesize barcodeStyle=_barcodeStyle;
+@property(retain, nonatomic) PKPass *pass; // @synthesize pass=_pass;
+- (void)_computeMaxBarcodeSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (id)initWithPass:(id)arg1;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

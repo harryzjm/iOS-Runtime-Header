@@ -11,15 +11,19 @@
 @protocol MSPSharedTripXPCServer <NSObject>
 - (void)blockSharedTrip:(NSString *)arg1;
 - (void)fetchSharedTripsWithCompletion:(void (^)(NSArray *))arg1;
-- (void)unsubscribeFromSharedTripUpdatesWithIdentifier:(NSString *)arg1;
-- (void)subscribeToSharedTripUpdatesWithIdentifier:(NSString *)arg1;
+- (void)unsubscribeFromSharedTripUpdatesWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)subscribeToSharedTripUpdatesWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)fetchActiveHandlesWithCompletion:(void (^)(NSArray *))arg1;
 - (void)stopSharingTrip;
 - (void)stopSharingTripWithMessagesGroup:(NSString *)arg1;
-- (void)startSharingTripWithMessagesGroup:(NSString *)arg1;
+- (void)startSharingTripWithMessagesGroup:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)stopSharingTripWithMessagesContacts:(NSArray *)arg1;
-- (void)startSharingTripWithMessagesContacts:(NSArray *)arg1;
+- (void)startSharingTripWithMessagesContacts:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)stopSharingTripWithContacts:(NSArray *)arg1;
-- (void)startSharingTripWithContacts:(NSArray *)arg1;
-- (void)checkin;
+- (void)startSharingTripWithContacts:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)reportUserConfirmationOfSharingIdentity:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)fetchRequiresUserConfirmationOfSharingIdentityWithCompletion:(void (^)(_Bool, NSString *, NSError *))arg1;
+- (void)fetchSharingIdentityWithCompletion:(void (^)(MSPSharedTripSharingIdentity *))arg1;
+- (void)checkinWithCompletion:(void (^)(MSPSharedTripSharingIdentity *, NSArray *, NSArray *, unsigned long long))arg1;
 @end
 

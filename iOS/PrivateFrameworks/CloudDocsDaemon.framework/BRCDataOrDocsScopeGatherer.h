@@ -14,20 +14,22 @@ __attribute__((visibility("hidden")))
     BRCNotificationPipe *_pipe;
     CDUnknownBlockType _gatherReply;
     NSMutableArray *_gatheringAppLibraries;
-    unsigned long long _gatheringRankCur;
+    unsigned long long _gatheringRankMin;
     unsigned long long _gatheringRankMax;
+    unsigned long long _lastSentRank;
     NSString *_gatheringNamePrefix;
     BRCAccountSession *_session;
+    _Bool _includesDeadItems;
     BRCItemGlobalID *_gatheredChildrenItemGlobalID;
 }
 
-@property(retain, nonatomic) BRCItemGlobalID *gatheredChildrenItemGlobalID; // @synthesize gatheredChildrenItemGlobalID=_gatheredChildrenItemGlobalID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BRCItemGlobalID *gatheredChildrenItemGlobalID; // @synthesize gatheredChildrenItemGlobalID=_gatheredChildrenItemGlobalID;
 - (void)invalidate;
 - (void)done;
 - (CDUnknownBlockType)_popGatherReply;
 - (void)gatherWithBatchSize:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithNotificationPipe:(id)arg1 appLibraries:(id)arg2 startingRank:(unsigned long long)arg3 maxRank:(unsigned long long)arg4 gatherReply:(CDUnknownBlockType)arg5;
+- (id)initWithNotificationPipe:(id)arg1 appLibraries:(id)arg2 startingRank:(unsigned long long)arg3 maxRank:(unsigned long long)arg4 withDeadItems:(_Bool)arg5 gatherReply:(CDUnknownBlockType)arg6;
 
 @end
 

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDMessageLink : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_hoursOfOperations;
     NSString *_messageId;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     NSString *_navBackgroundColor;
     NSString *_navTintColor;
     GEOTimezone *_timezone;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _responseTime;
     _Bool _isVerified;
     struct {
@@ -34,15 +36,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_navBackgroundColor:1;
         unsigned int read_navTintColor:1;
         unsigned int read_timezone:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_hoursOfOperations:1;
-        unsigned int wrote_messageId:1;
-        unsigned int wrote_messageUrl:1;
-        unsigned int wrote_navBackgroundColor:1;
-        unsigned int wrote_navTintColor:1;
-        unsigned int wrote_timezone:1;
-        unsigned int wrote_responseTime:1;
-        unsigned int wrote_isVerified:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -60,36 +54,34 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *navTintColor;
 @property(readonly, nonatomic) _Bool hasNavTintColor;
-- (void)_readNavTintColor;
 @property(retain, nonatomic) NSString *navBackgroundColor;
 @property(readonly, nonatomic) _Bool hasNavBackgroundColor;
-- (void)_readNavBackgroundColor;
 @property(nonatomic) _Bool hasIsVerified;
 @property(nonatomic) _Bool isVerified;
 @property(retain, nonatomic) GEOTimezone *timezone;
 @property(readonly, nonatomic) _Bool hasTimezone;
-- (void)_readTimezone;
 - (id)hoursOfOperationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hoursOfOperationsCount;
-- (void)_addNoFlagsHoursOfOperation:(id)arg1;
 - (void)addHoursOfOperation:(id)arg1;
 - (void)clearHoursOfOperations;
 @property(retain, nonatomic) NSMutableArray *hoursOfOperations;
-- (void)_readHoursOfOperations;
 - (int)StringAsResponseTime:(id)arg1;
 - (id)responseTimeAsString:(int)arg1;
 @property(nonatomic) _Bool hasResponseTime;
 @property(nonatomic) int responseTime;
 @property(retain, nonatomic) NSString *messageUrl;
 @property(readonly, nonatomic) _Bool hasMessageUrl;
-- (void)_readMessageUrl;
 @property(retain, nonatomic) NSString *messageId;
 @property(readonly, nonatomic) _Bool hasMessageId;
-- (void)_readMessageId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

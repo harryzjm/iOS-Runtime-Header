@@ -6,15 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class WFPlaceholderTextView;
+@class UITextView;
 
 @interface WFTextViewCell : UITableViewCell
 {
-    WFPlaceholderTextView *_textView;
+    UITextView *_textView;
 }
 
-@property(retain, nonatomic) WFPlaceholderTextView *textView; // @synthesize textView=_textView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

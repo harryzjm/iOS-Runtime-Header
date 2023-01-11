@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBViewControllerTransitionContextDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSSet, NSString, SBHUDController;
+@class NSMutableArray, NSMutableSet, NSString, SBHUDController;
 @protocol _SBHUDHostViewControllerDelegate;
 
 @interface _SBHUDHostViewController : SBFTouchPassThroughViewController <SBViewControllerTransitionContextDelegate>
@@ -22,10 +22,6 @@
     id <_SBHUDHostViewControllerDelegate> _delegate;
 }
 
-@property(readonly, nonatomic) NSSet *presentingHUDs; // @synthesize presentingHUDs=_presentingHUDs;
-@property(readonly, nonatomic) NSSet *presentedHUDs; // @synthesize presentedHUDs=_presentedHUDs;
-@property(nonatomic) __weak id <_SBHUDHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) __weak SBHUDController *HUDController; // @synthesize HUDController=_HUDController;
 - (void).cxx_destruct;
 - (void)_executeViewControllerTransitionContext:(id)arg1;
 - (void)_executeDismissHUD:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -33,23 +29,13 @@
 - (id)_buildTransitionContextToPresentHUD:(id)arg1 dismissHUD:(id)arg2 animated:(_Bool)arg3 delegate:(id)arg4 containerView:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)_transitionContextMatchingHUD:(id)arg1 withinContainer:(id)arg2;
 - (void)transitionDidFinish:(id)arg1;
-- (void)dismissHUDs:(_Bool)arg1;
-- (void)reverseHUDPresentation:(id)arg1;
-- (void)reverseHUDDismissal:(id)arg1;
-- (void)dismissHUD:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)presentHUD:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)knownHUDForIdentifier:(id)arg1;
-- (_Bool)isHUDBeingPresented:(id)arg1;
-- (_Bool)isHUDBeingDismissed:(id)arg1;
-@property(readonly, nonatomic) unsigned long long numberOfActiveTransitions;
+@property(readonly, copy) NSString *description;
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
-- (id)initWithHUDController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

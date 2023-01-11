@@ -12,38 +12,48 @@
 {
     PLJournalFile *_snapshotJournal;
     PLJournalFile *_changeJournal;
-    unsigned char _prepareMode;
+    unsigned char _snapshotMode;
     NSURL *_baseURL;
     Class _payloadClass;
-    PLJournalFile *_pendingJournal;
+    PLJournalFile *_pendingSnapshotJournal;
+    PLJournalFile *_pendingChangeJournal;
     PLJournalFile *_prepareMarker;
 }
 
++ (_Bool)_finishFullSnapshotForBaseURL:(id)arg1 snapshotSucceeded:(_Bool)arg2 snapshotMode:(unsigned char)arg3 journals:(id)arg4 error:(id *)arg5;
++ (_Bool)_performSnapshotsForBaseURL:(id)arg1 snapshotMode:(unsigned char)arg2 payloadClasses:(id)arg3 snapshotJournalBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
++ (_Bool)appendSnapshotsForBaseURL:(id)arg1 payloadClasses:(id)arg2 snapshotJournalBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
++ (_Bool)createSnapshotsForBaseURL:(id)arg1 payloadClasses:(id)arg2 snapshotJournalBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 + (_Bool)recoverJournalsIfNecessaryForBaseURL:(id)arg1 payloadClasses:(id)arg2 error:(id *)arg3;
-+ (_Bool)finishSnapshotForBaseURL:(id)arg1 snapshotSucceeded:(_Bool)arg2 journals:(id)arg3 error:(id *)arg4;
 + (_Bool)snapshotFinishMarkerExistsForBaseURL:(id)arg1;
 + (_Bool)removeSnapshotFinishMarkerForBaseURL:(id)arg1 error:(id *)arg2;
 + (_Bool)createSnapshotFinishMarkerForBaseURL:(id)arg1 error:(id *)arg2;
 + (id)snapshotFinishMarkerURLForBaseURL:(id)arg1;
 + (id)metadataURLForBaseURL:(id)arg1 payloadClassId:(id)arg2 pending:(_Bool)arg3;
 + (id)journalURLForBaseURL:(id)arg1 payloadClassId:(id)arg2 journalType:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PLJournalFile *prepareMarker; // @synthesize prepareMarker=_prepareMarker;
-@property(readonly, nonatomic) PLJournalFile *pendingJournal; // @synthesize pendingJournal=_pendingJournal;
+@property(readonly, nonatomic) PLJournalFile *pendingChangeJournal; // @synthesize pendingChangeJournal=_pendingChangeJournal;
+@property(readonly, nonatomic) PLJournalFile *pendingSnapshotJournal; // @synthesize pendingSnapshotJournal=_pendingSnapshotJournal;
 @property(readonly, nonatomic) Class payloadClass; // @synthesize payloadClass=_payloadClass;
 @property(readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
-- (void).cxx_destruct;
+- (id)_payloadTooNewErrorWithPayloadVersion:(long long)arg1;
 - (_Bool)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1 decodePayload:(_Bool)arg2 error:(id *)arg3;
 - (unsigned long long)currentPayloadVersionWithError:(id *)arg1;
 - (unsigned long long)countOfInsertEntriesWithError:(id *)arg1;
 - (_Bool)enumeratePayloadsUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) PLJournalFile *changeJournal;
 @property(readonly, nonatomic) PLJournalFile *snapshotJournal;
+- (_Bool)snapshotJournalFileSize:(unsigned long long *)arg1 changeJournalFileSize:(unsigned long long *)arg2 error:(id *)arg3;
 - (_Bool)appendChangeEntries:(id)arg1 error:(id *)arg2;
 - (_Bool)coalesceChangesToSnapshotWithError:(id *)arg1;
+- (_Bool)appendSnapshotUsingNextEntryBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (_Bool)createSnapshotUsingNextPayloadBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
-- (_Bool)finishSnapshot:(_Bool)arg1 error:(id *)arg2;
-- (_Bool)prepareForSnapshotWithError:(id *)arg1;
-- (_Bool)_finishSnapshot:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)finishCreateSnapshot:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)prepareForCreateSnapshotWithError:(id *)arg1;
+- (_Bool)_performSnapshotWithMode:(unsigned char)arg1 usingNextEntryBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (_Bool)_finishSnapshotWithMode:(unsigned char)arg1 snapshotSuccess:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)_prepareForSnapshotWithMode:(unsigned char)arg1 error:(id *)arg2;
 - (_Bool)_recoverJournalWithError:(id *)arg1;
 - (_Bool)_isPendingJournalAuthoritative;
 - (_Bool)removeJournalFilesWithError:(id *)arg1;
@@ -55,6 +65,7 @@
 @property(readonly, nonatomic) NSDictionary *metadata;
 - (void)removeMetadata;
 - (id)initWithBaseURL:(id)arg1 payloadClass:(Class)arg2;
+- (_Bool)appendUpdatePayloadWithPayloadID:(id)arg1 attributes:(id)arg2 error:(id *)arg3;
 
 @end
 

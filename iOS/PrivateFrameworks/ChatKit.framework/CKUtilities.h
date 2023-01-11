@@ -10,8 +10,13 @@
 {
 }
 
++ (unsigned long long)messageJunkStatus;
 + (id)deviceSpecificNameForKey:(id)arg1;
++ (id)imMessageForIMMessageItem:(id)arg1;
++ (id)threadOriginatorForMessagePart:(id)arg1;
++ (id)threadIdentifierForMessagePart:(id)arg1;
 + (_Bool)isIpad;
++ (_Bool)carrierDefaultBoolForKey:(id)arg1;
 + (_Bool)carrierDefaultBoolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 + (_Bool)userDefaultBoolForKey:(id)arg1;
 + (_Bool)deviceHasMultipleSubscriptions;

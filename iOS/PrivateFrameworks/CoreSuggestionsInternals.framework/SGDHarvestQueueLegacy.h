@@ -19,7 +19,7 @@
 - (void)popBySourceKey:(id)arg1 messageId:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)popByItemId:(long long)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)pop:(CDUnknownBlockType)arg1;
-- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(_Bool)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(_Bool)arg3 item:(id)arg4 customPriorityCriteria:(unsigned char)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)initWithDirectory:(id)arg1 highPriority:(_Bool)arg2;
 
 @end

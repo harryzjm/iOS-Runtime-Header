@@ -14,14 +14,20 @@
     struct _NSRange _currentChunk;
     _Bool _predictedByTagger;
     void *_nlTagger;
+    void *_namedEntityTagger;
     _Bool _tagged;
     NSMutableArray *_tags;
     NSMutableOrderedSet *_unpredictedAmbiguousLangMaps;
     NSString *_userPreferredLangID;
     NSMutableOrderedSet *_predictedSecondaryLangMaps;
     NSMutableString *_contentString;
+    NSArray *_shorthandDateMatches;
+    unsigned long long _nextShorthandDateIndex;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long nextShorthandDateIndex; // @synthesize nextShorthandDateIndex=_nextShorthandDateIndex;
+@property(retain, nonatomic) NSArray *shorthandDateMatches; // @synthesize shorthandDateMatches=_shorthandDateMatches;
 @property(retain, nonatomic) NSArray *currentDialects; // @synthesize currentDialects=_currentDialects;
 @property(retain, nonatomic) NSMutableString *contentString; // @synthesize contentString=_contentString;
 @property(retain, nonatomic) NSMutableOrderedSet *predictedSecondaryLangMaps; // @synthesize predictedSecondaryLangMaps=_predictedSecondaryLangMaps;
@@ -29,7 +35,6 @@
 @property(retain, nonatomic) NSMutableOrderedSet *unpredictedAmbiguousLangMaps; // @synthesize unpredictedAmbiguousLangMaps=_unpredictedAmbiguousLangMaps;
 @property(nonatomic, getter=isTagged) _Bool tagged; // @synthesize tagged=_tagged;
 @property(retain, nonatomic) NSMutableArray *tags; // @synthesize tags=_tags;
-- (void).cxx_destruct;
 - (void)updateTagsForLocalePrefChange;
 - (id)primaryUnambiguousDialect;
 - (id)primaryAmbiguousDialect;
@@ -46,6 +51,8 @@
 - (void)tagContent;
 - (_Bool)_addLanguageTagForCurrentChunk;
 - (_Bool)_addLanguageTagForDateIfNecessary;
+- (_Bool)_isNamedEntity:(id)arg1;
+- (void)_searchForShorthandDates;
 - (id)_overrideLanguageDetection:(id)arg1;
 - (CDStruct_3a8d9e70 *)_languageHintsEvenlyDistributedWithProbability:(float)arg1 excludingHints:(id)arg2;
 - (id)_allLangIDs;

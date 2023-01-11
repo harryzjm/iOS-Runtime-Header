@@ -17,18 +17,20 @@
     NSDate *_creationDate;
     long long _captureOrientation;
     long long _captureDevice;
+    double _timelapseDuration;
     void *_previewImageSurface;
     struct CGSize _videoDimensions;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) void *previewImageSurface; // @synthesize previewImageSurface=_previewImageSurface;
+@property(readonly, nonatomic) double timelapseDuration; // @synthesize timelapseDuration=_timelapseDuration;
 @property(readonly, nonatomic) struct CGSize videoDimensions; // @synthesize videoDimensions=_videoDimensions;
 @property(readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property(readonly, nonatomic) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property(readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) unsigned short sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property(readonly, nonatomic) NSURL *irisVideoPersistenceURL;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo;
@@ -45,7 +47,7 @@
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType;
 - (void)dealloc;
-- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(long long)arg4 captureDevice:(long long)arg5 videoDimensions:(struct CGSize)arg6 previewImageSurface:(void *)arg7;
+- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(long long)arg4 captureDevice:(long long)arg5 videoDimensions:(struct CGSize)arg6 duration:(double)arg7 previewImageSurface:(void *)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

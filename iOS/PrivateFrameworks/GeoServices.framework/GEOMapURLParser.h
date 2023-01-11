@@ -50,11 +50,18 @@
     GEOMuninViewState *_muninViewState;
     NSString *_label;
     _Bool _showCarDestinations;
+    unsigned long long _curatedCollectionMUID;
+    unsigned long long _publisherMUID;
+    _Bool _showAllCuratedCollections;
 }
 
 + (_Bool)isValidMapsURLForAppendingSharedSessionID:(id)arg1;
 + (_Bool)isValidMapsCategoryURL:(id)arg1;
 + (_Bool)isValidMapURL:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool showAllCuratedCollections; // @synthesize showAllCuratedCollections=_showAllCuratedCollections;
+@property(readonly, nonatomic) unsigned long long publisherMUID; // @synthesize publisherMUID=_publisherMUID;
+@property(readonly, nonatomic) unsigned long long curatedCollectionMUID; // @synthesize curatedCollectionMUID=_curatedCollectionMUID;
 @property(readonly, nonatomic) _Bool showCarDestinations; // @synthesize showCarDestinations=_showCarDestinations;
 @property(readonly, nonatomic) GEOMuninViewState *muninViewState; // @synthesize muninViewState=_muninViewState;
 @property(readonly, nonatomic) GEOURLExtraStorage *extraStorage; // @synthesize extraStorage=_extraStorage;
@@ -91,7 +98,6 @@
 @property(readonly, nonatomic) int trackingMode; // @synthesize trackingMode=_trackingMode;
 @property(readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property(readonly, nonatomic) int mapType; // @synthesize mapType=_mapType;
-- (void).cxx_destruct;
 - (id)restoreCodableOfClass:(Class)arg1 queryItem:(id)arg2 key:(id)arg3 compressedKey:(id)arg4;
 - (_Bool)parseIncludingCustomParameters:(_Bool)arg1;
 - (id)initWithURL:(id)arg1;

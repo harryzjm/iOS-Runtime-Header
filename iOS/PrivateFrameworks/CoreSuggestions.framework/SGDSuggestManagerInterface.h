@@ -10,6 +10,7 @@
 {
 }
 
++ (id)realtimeSuggestionsClasses;
 + (void)interface:(id)arg1 returnsArrayOf:(Class)arg2 forSelector:(SEL)arg3;
 + (void)interface:(id)arg1 returns:(Class)arg2 forSelector:(SEL)arg3;
 + (void)_whitelistXPCInterface:(id)arg1 forProtocol:(id)arg2 alreadyWhitelisted:(id)arg3;

@@ -15,6 +15,7 @@
 
 @interface FCBundleSubscriptionManager : NSObject <FCAppActivityObserving, FCBundleChannelProviderDelegate, FCBundleSubscriptionManagerType>
 {
+    _Bool _hasRunEntitlementOnce;
     id <FCBundleEntitlementsProviderType> _bundleEntitlementsProvider;
     FCPurchaseLookupRecordSource *_purchaseLookupRecordSource;
     FCBundleSubscription *_cachedSubscription;
@@ -26,6 +27,8 @@
     id <FCCoreConfigurationManager> _configurationManager;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasRunEntitlementOnce; // @synthesize hasRunEntitlementOnce=_hasRunEntitlementOnce;
 @property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property(retain, nonatomic) id <FCBundleChannelProviderType> bundleChannelProvider; // @synthesize bundleChannelProvider=_bundleChannelProvider;
 @property(retain, nonatomic) NFMutexLock *accessLock; // @synthesize accessLock=_accessLock;
@@ -35,7 +38,6 @@
 @property(retain, nonatomic) FCBundleSubscription *cachedSubscription; // @synthesize cachedSubscription=_cachedSubscription;
 @property(readonly, nonatomic) FCPurchaseLookupRecordSource *purchaseLookupRecordSource; // @synthesize purchaseLookupRecordSource=_purchaseLookupRecordSource;
 @property(readonly, nonatomic) id <FCBundleEntitlementsProviderType> bundleEntitlementsProvider; // @synthesize bundleEntitlementsProvider=_bundleEntitlementsProvider;
-- (void).cxx_destruct;
 - (void)prepareForUseWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) FCBundleSubscription *bundleSubscription;
 - (id)changeSetBetween:(id)arg1 newSubscription:(id)arg2;
@@ -44,11 +46,13 @@
 - (void)notifyObserversForSubscribedStateWithSubscription:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)silentExpireBundleSubscription;
 - (void)forceExpireBundleSubscriptionBasedOnInternalSettings;
 - (void)prewarmBundleTagIDsWithPurchaseID:(id)arg1;
 - (void)renewalNoticeShownWithPurchaseID:(id)arg1;
 - (id)bundleSubscriptionLookupEntry;
 - (void)updateCachedSubscriptionWithSubscription:(id)arg1;
+- (void)updateHasRunEntitlementOnce:(_Bool)arg1;
 - (void)clearBundleSubscription;
 - (void)expireBundleSubscription;
 - (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;

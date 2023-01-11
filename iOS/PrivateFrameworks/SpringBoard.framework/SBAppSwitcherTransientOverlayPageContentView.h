@@ -8,12 +8,12 @@
 
 #import <SpringBoard/SBAppSwitcherPageContentView-Protocol.h>
 
-@class NSString, SBAppLayout;
+@class NSString, SBAppLayout, SBOrientationTransformWrapperView;
 @protocol SBAppSwitcherTransientOverlayPageContentViewDelegate;
 
 @interface SBAppSwitcherTransientOverlayPageContentView : UIView <SBAppSwitcherPageContentView>
 {
-    UIView *_contentWrapperView;
+    SBOrientationTransformWrapperView *_contentWrapperView;
     long long _orientation;
     _Bool _active;
     _Bool _visible;
@@ -22,14 +22,15 @@
     id <SBAppSwitcherTransientOverlayPageContentViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBAppSwitcherTransientOverlayPageContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, copy, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
-- (void).cxx_destruct;
 @property(nonatomic) double cornerRadius;
 @property(nonatomic) long long orientation;
+@property(nonatomic) long long contentOrientation;
 - (void)invalidate;
 @property(readonly, nonatomic) _Bool contentRequiresGroupOpacity;
 - (void)layoutSubviews;

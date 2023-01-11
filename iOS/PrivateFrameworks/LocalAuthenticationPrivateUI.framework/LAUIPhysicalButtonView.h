@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel;
+@class LAUIPhysicalButtonViewAnimation, NSString, UILabel;
 @protocol UICoordinateSpace;
 
 @interface LAUIPhysicalButtonView : UIView
@@ -19,26 +19,24 @@
     UILabel *_instructionLabel;
     UIView *_buttonView;
     _Bool _animating;
-    double _animationLength;
-    NSString *_periodicAnimationKey;
+    LAUIPhysicalButtonViewAnimation *_animation;
     long long _style;
+    long long _animationStyle;
     NSString *_instruction;
 }
 
-@property(copy, nonatomic) NSString *instruction; // @synthesize instruction=_instruction;
-@property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
-@property(readonly, nonatomic) long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *instruction; // @synthesize instruction=_instruction;
+@property(readonly, nonatomic) unsigned int edge; // @synthesize edge=_edge;
+@property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
+@property(nonatomic) long long animationStyle; // @synthesize animationStyle=_animationStyle;
+@property(nonatomic) long long style; // @synthesize style=_style;
 - (void)_setOnScreen:(_Bool)arg1;
-- (void)_removePeriodicAnimationForKey:(id)arg1 fromLayer:(id)arg2;
-- (void)_endAnimationIfNecessary;
-- (void)_animateWithLength:(double)arg1 delay:(double)arg2;
-- (void)_animateWithLength:(double)arg1;
-- (void)_beginAnimationIfNecessaryWithDelay:(double)arg1;
-- (void)_beginAnimationIfNecessary;
+- (id)_colorForStyle:(long long)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
+- (struct CGRect)_physicalButtonNormalizedFrame;
 - (void)updateFrame;
 - (void)didMoveToWindow;
 - (id)initWithStyle:(long long)arg1;

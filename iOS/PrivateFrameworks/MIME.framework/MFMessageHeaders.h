@@ -24,8 +24,8 @@
 + (_Bool)shouldDecodeHeaderForKey:(id)arg1;
 + (_Bool)isStructuredHeaderKey:(id)arg1;
 + (id)basicHeaders;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, copy) NSString *description;
 - (void)appendHeaderData:(id)arg1 andRecipients:(id)arg2;
 - (id)encodedHeaders;
@@ -59,9 +59,11 @@
 - (id)_capitalizedKeyForKey:(id)arg1;
 - (void)_setCapitalizedKey:(id)arg1 forKey:(id)arg2;
 - (id)headersDictionary;
+- (void)enumerateKeysAndBytesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)allHeaderKeys;
 - (_Bool)_isStructuredHeaderKey:(id)arg1;
 @property(nonatomic) unsigned int preferredEncoding;
+- (id)headersRequiringSMTPUTF8Support;
 - (id)headerData;
 - (id)mutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;

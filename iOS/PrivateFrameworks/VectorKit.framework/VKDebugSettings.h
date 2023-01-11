@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, NSString;
 
 @interface VKDebugSettings : NSObject
 {
@@ -26,6 +26,7 @@
     _Bool _paintLoadReason;
     _Bool _disableRoute;
     _Bool _labelHighlighting;
+    _Bool _showClientStyleAttributes;
     _Bool _transitHighlighting;
     _Bool _labelCollisionDisabled;
     _Bool _labelFacingCullDisabled;
@@ -33,6 +34,7 @@
     _Bool _labelFlipAlternatePositionsEnable;
     _Bool _labelTileDecodeEnabled;
     _Bool _disableBackgroundLabelLayout;
+    _Bool _enableLegacyLineLabeling;
     _Bool _labelAllowDefaultStyle;
     _Bool _labelUpdateMapTilesContinuously;
     _Bool _labelStyleOverridesDisabled;
@@ -47,10 +49,11 @@
     _Bool _paintLabelBounds;
     _Bool _paintLabelRoadFeatures;
     _Bool _displayTextureAtlas;
-    _Bool _disableGlyphTextureAtlas;
     _Bool _disableIconTextureAtlas;
     unsigned char _textureAtlasIndex;
     unsigned short _textureAtlasPageIndex;
+    unsigned int _POIDensityMinNeighbors;
+    unsigned int _POIDensityMaxNeighbors;
     _Bool _paintLabelCollisionLines;
     _Bool _paintLabelCounts;
     unsigned char _labelerOutputIndex;
@@ -95,7 +98,8 @@
     _Bool _showNavCameraDebugConsoleAttributes;
     _Bool _showNavCameraDebugLegend;
     float _ribbonCrispness;
-    _Bool _useGeoResourceLib;
+    int _debugOverlayOffsetX;
+    int _debugOverlayOffsetY;
     float _altitudeLodScale;
     float _altitudeTileQualityThreshold;
     float _altitudeHideMeshTime;
@@ -124,6 +128,7 @@
     _Bool _disableRoadSignLimit;
     _Bool _showNavLabelOverlay;
     _Bool _enableTrafficFeatureLabelDebugging;
+    _Bool _disableRouteAnnotationLimit;
     _Bool _enableEtaLabelDebugging;
     _Bool _enableRouteShareSectionDebugging;
     _Bool _enableEtaLabelRectDebugging;
@@ -143,6 +148,7 @@
     _Bool _paintStandardLabelMapData;
     _Bool _paintPolygonLayerData;
     _Bool _paintRoadTileData;
+    _Bool _enableRoadSignArtworkDebugging;
     _Bool _muninDebugLayer;
     _Bool _muninGraphConnections;
     _Bool _muninShowRigTransitionInfo;
@@ -204,6 +210,14 @@
     _Bool _shouldUseSDFSuperSampling;
     _Bool _shouldFreezeLayoutCamera;
     _Bool _decodeStyleNames;
+    _Bool _disableContinuousMultiSectionRoutes;
+    _Bool _showRouteLineDebugPoints;
+    unsigned int _continuousMultiSectionRouteAdditionalOverlap;
+    _Bool _enableNavRoadSignOrientationDebugging;
+    _Bool _debugCaptureNextGPUFrame;
+    NSString *_debugGPUFrameCaptureURL;
+    _Bool _slowAnimations;
+    _Bool _slowTransitions;
     struct unique_ptr<(anonymous namespace)::CustomLandmarksContainer, std::__1::default_delete<(anonymous namespace)::CustomLandmarksContainer>> _customLandmarks;
     _Bool _paintPoiTiles;
     _Bool _paintLandcoverTiles;
@@ -228,6 +242,16 @@
 }
 
 + (id)sharedSettings;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool slowTransitions; // @synthesize slowTransitions=_slowTransitions;
+@property(nonatomic) _Bool slowAnimations; // @synthesize slowAnimations=_slowAnimations;
+@property(copy, nonatomic) NSString *debugGPUFrameCaptureURL; // @synthesize debugGPUFrameCaptureURL=_debugGPUFrameCaptureURL;
+@property(nonatomic) _Bool debugCaptureNextGPUFrame; // @synthesize debugCaptureNextGPUFrame=_debugCaptureNextGPUFrame;
+@property(nonatomic) unsigned int continuousMultiSectionRouteAdditionalOverlap; // @synthesize continuousMultiSectionRouteAdditionalOverlap=_continuousMultiSectionRouteAdditionalOverlap;
+@property(nonatomic) _Bool showRouteLineDebugPoints; // @synthesize showRouteLineDebugPoints=_showRouteLineDebugPoints;
+@property(nonatomic) _Bool disableContinuousMultiSectionRoutes; // @synthesize disableContinuousMultiSectionRoutes=_disableContinuousMultiSectionRoutes;
+@property(nonatomic) _Bool enableNavRoadSignOrientationDebugging; // @synthesize enableNavRoadSignOrientationDebugging=_enableNavRoadSignOrientationDebugging;
 @property(nonatomic) _Bool shouldFreezeLayoutCamera; // @synthesize shouldFreezeLayoutCamera=_shouldFreezeLayoutCamera;
 @property(nonatomic) _Bool shouldUseSDFSuperSampling; // @synthesize shouldUseSDFSuperSampling=_shouldUseSDFSuperSampling;
 @property(nonatomic) float sdfGlyphSuperSampleKernelSize; // @synthesize sdfGlyphSuperSampleKernelSize=_sdfGlyphSuperSampleKernelSize;
@@ -293,6 +317,7 @@
 @property(nonatomic) _Bool muninShowRigTransitionInfo; // @synthesize muninShowRigTransitionInfo=_muninShowRigTransitionInfo;
 @property(nonatomic) _Bool muninGraphConnections; // @synthesize muninGraphConnections=_muninGraphConnections;
 @property(nonatomic) _Bool muninDebugLayer; // @synthesize muninDebugLayer=_muninDebugLayer;
+@property(nonatomic) _Bool enableRoadSignArtworkDebugging; // @synthesize enableRoadSignArtworkDebugging=_enableRoadSignArtworkDebugging;
 @property(nonatomic) _Bool paintRoadTileData; // @synthesize paintRoadTileData=_paintRoadTileData;
 @property(nonatomic) _Bool paintPolygonLayerData; // @synthesize paintPolygonLayerData=_paintPolygonLayerData;
 @property(nonatomic) _Bool paintStandardLabelMapData; // @synthesize paintStandardLabelMapData=_paintStandardLabelMapData;
@@ -314,6 +339,7 @@
 @property(nonatomic) _Bool enableEtaLabelRectDebugging; // @synthesize enableEtaLabelRectDebugging=_enableEtaLabelRectDebugging;
 @property(nonatomic) _Bool enableRouteShareSectionDebugging; // @synthesize enableRouteShareSectionDebugging=_enableRouteShareSectionDebugging;
 @property(nonatomic) _Bool enableEtaLabelDebugging; // @synthesize enableEtaLabelDebugging=_enableEtaLabelDebugging;
+@property(nonatomic) _Bool disableRouteAnnotationLimit; // @synthesize disableRouteAnnotationLimit=_disableRouteAnnotationLimit;
 @property(nonatomic) _Bool enableTrafficFeatureLabelDebugging; // @synthesize enableTrafficFeatureLabelDebugging=_enableTrafficFeatureLabelDebugging;
 @property(nonatomic) _Bool showNavLabelOverlay; // @synthesize showNavLabelOverlay=_showNavLabelOverlay;
 @property(nonatomic) _Bool disableRoadSignLimit; // @synthesize disableRoadSignLimit=_disableRoadSignLimit;
@@ -322,6 +348,8 @@
 @property(nonatomic) _Bool shouldUseTestTileLoader; // @synthesize shouldUseTestTileLoader=_shouldUseTestTileLoader;
 @property(nonatomic) shared_ptr_a3c46825 debugStyleManager; // @synthesize debugStyleManager=_debugStyleManager;
 @property(nonatomic) CDStruct_7a997382 landmark2DStrokeSettings; // @synthesize landmark2DStrokeSettings=_landmark2DStrokeSettings;
+@property(nonatomic) int debugOverlayOffsetY; // @synthesize debugOverlayOffsetY=_debugOverlayOffsetY;
+@property(nonatomic) int debugOverlayOffsetX; // @synthesize debugOverlayOffsetX=_debugOverlayOffsetX;
 @property(nonatomic) _Bool suppressFootprints; // @synthesize suppressFootprints=_suppressFootprints;
 @property(retain, nonatomic) NSMutableArray *footprintsToSuppress; // @synthesize footprintsToSuppress=_footprintsToSuppress;
 @property(nonatomic) _Bool labelOcclusionDisabled; // @synthesize labelOcclusionDisabled=_labelOcclusionDisabled;
@@ -346,7 +374,6 @@
 @property(nonatomic) float altitudeHideMeshTime; // @synthesize altitudeHideMeshTime=_altitudeHideMeshTime;
 @property(nonatomic) float altitudeTileQualityThreshold; // @synthesize altitudeTileQualityThreshold=_altitudeTileQualityThreshold;
 @property(nonatomic) float altitudeLodScale; // @synthesize altitudeLodScale=_altitudeLodScale;
-@property(nonatomic) _Bool useGeoResourceLib; // @synthesize useGeoResourceLib=_useGeoResourceLib;
 @property(nonatomic) float ribbonCrispness; // @synthesize ribbonCrispness=_ribbonCrispness;
 @property(nonatomic) _Bool showNavCameraDebugOverlay; // @synthesize showNavCameraDebugOverlay=_showNavCameraDebugOverlay;
 @property(nonatomic) _Bool showNavCameraDebugLegend; // @synthesize showNavCameraDebugLegend=_showNavCameraDebugLegend;
@@ -393,10 +420,11 @@
 @property(nonatomic) _Bool paintTransitCounts; // @synthesize paintTransitCounts=_paintTransitCounts;
 @property(nonatomic) unsigned char labelerOutputIndex; // @synthesize labelerOutputIndex=_labelerOutputIndex;
 @property(nonatomic) _Bool paintLabelCounts; // @synthesize paintLabelCounts=_paintLabelCounts;
+@property(nonatomic) unsigned int POIDensityMaxNeighbors; // @synthesize POIDensityMaxNeighbors=_POIDensityMaxNeighbors;
+@property(nonatomic) unsigned int POIDensityMinNeighbors; // @synthesize POIDensityMinNeighbors=_POIDensityMinNeighbors;
 @property(nonatomic) unsigned short textureAtlasPageIndex; // @synthesize textureAtlasPageIndex=_textureAtlasPageIndex;
 @property(nonatomic) unsigned char textureAtlasIndex; // @synthesize textureAtlasIndex=_textureAtlasIndex;
 @property(nonatomic) _Bool disableIconTextureAtlas; // @synthesize disableIconTextureAtlas=_disableIconTextureAtlas;
-@property(nonatomic) _Bool disableGlyphTextureAtlas; // @synthesize disableGlyphTextureAtlas=_disableGlyphTextureAtlas;
 @property(nonatomic) _Bool displayTextureAtlas; // @synthesize displayTextureAtlas=_displayTextureAtlas;
 @property(nonatomic) _Bool paintLabelCollisionLines; // @synthesize paintLabelCollisionLines=_paintLabelCollisionLines;
 @property(nonatomic) _Bool paintLabelRoadFeatures; // @synthesize paintLabelRoadFeatures=_paintLabelRoadFeatures;
@@ -411,6 +439,7 @@
 @property(nonatomic) _Bool labelUpdateMapTilesContinuously; // @synthesize labelUpdateMapTilesContinuously=_labelUpdateMapTilesContinuously;
 @property(nonatomic) _Bool labelStyleOverridesDisabled; // @synthesize labelStyleOverridesDisabled=_labelStyleOverridesDisabled;
 @property(nonatomic) _Bool labelAllowDefaultStyle; // @synthesize labelAllowDefaultStyle=_labelAllowDefaultStyle;
+@property(nonatomic) _Bool enableLegacyLineLabeling; // @synthesize enableLegacyLineLabeling=_enableLegacyLineLabeling;
 @property(nonatomic) _Bool disableBackgroundLabelLayout; // @synthesize disableBackgroundLabelLayout=_disableBackgroundLabelLayout;
 @property(nonatomic) _Bool labelTileDecodeEnabled; // @synthesize labelTileDecodeEnabled=_labelTileDecodeEnabled;
 @property(nonatomic) _Bool labelFlipAlternatePositionsEnable; // @synthesize labelFlipAlternatePositionsEnable=_labelFlipAlternatePositionsEnable;
@@ -419,6 +448,7 @@
 @property(nonatomic) _Bool labelDedupingDisabled; // @synthesize labelDedupingDisabled=_labelDedupingDisabled;
 @property(nonatomic) _Bool labelFacingCullDisabled; // @synthesize labelFacingCullDisabled=_labelFacingCullDisabled;
 @property(nonatomic) _Bool transitHighlighting; // @synthesize transitHighlighting=_transitHighlighting;
+@property(nonatomic) _Bool showClientStyleAttributes; // @synthesize showClientStyleAttributes=_showClientStyleAttributes;
 @property(nonatomic) _Bool labelHighlighting; // @synthesize labelHighlighting=_labelHighlighting;
 @property(nonatomic) _Bool disableRoute; // @synthesize disableRoute=_disableRoute;
 @property(nonatomic) _Bool paintLoadReason; // @synthesize paintLoadReason=_paintLoadReason;
@@ -438,8 +468,8 @@
 @property(nonatomic) _Bool paintSelectedMapTiles; // @synthesize paintSelectedMapTiles=_paintSelectedMapTiles;
 @property(nonatomic) _Bool paintMapTiles; // @synthesize paintMapTiles=_paintMapTiles;
 @property(nonatomic) _Bool disableOverlayTextConsole; // @synthesize disableOverlayTextConsole=_disableOverlayTextConsole;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) float transitionTimeMultiplier;
+@property(readonly, nonatomic) float animationTimeMultiplier;
 - (void)removeTileToPaint;
 - (void)addTileToPaint:(struct GEOTileSetRegion)arg1;
 - (void)clearFootprintsToSuppress;
@@ -456,6 +486,7 @@
 @property(nonatomic) _Bool decodeStyleNames;
 - (_Bool)overlaysShouldDrawDebug;
 - (_Bool)shouldDrawDebug;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)init;
 

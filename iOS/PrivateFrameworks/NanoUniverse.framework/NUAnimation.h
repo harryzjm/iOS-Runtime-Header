@@ -31,6 +31,7 @@
     MISSING_TYPE *_to;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <NUAnimationObserver> observer; // @synthesize observer=_observer;
 @property(nonatomic) __weak id <NUAnimatable> animatable; // @synthesize animatable=_animatable;
 @property(nonatomic) unsigned long long key; // @synthesize key=_key;
@@ -43,7 +44,6 @@
 @property(nonatomic) float delay; // @synthesize delay=_delay;
 @property(nonatomic) float duration; // @synthesize duration=_duration;
 @property(nonatomic) float startTime; // @synthesize startTime=_startTime;
-- (void).cxx_destruct;
 - (void)apply:(float)arg1;
 - (_Bool)update:(float)arg1;
 - (id)initWithAnimatable:(id)arg1 value:(unsigned long long)arg2 key: /* Error: Ran out of types for this method. */;

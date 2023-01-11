@@ -19,7 +19,6 @@
         unsigned int propertyName:1;
         unsigned int qualifier:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _entityType;
     int _propertyName;
     int _qualifier;
@@ -28,13 +27,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int qualifier; // @synthesize qualifier=_qualifier;
 @property(nonatomic) int propertyName; // @synthesize propertyName=_propertyName;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property(retain, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -8,12 +8,19 @@
 
 @interface NSDictionary (SafariCoreExtras)
 + (id)safari_dictionaryWithObjectsInFastEnumerationCollection:(id)arg1 groupedUsingBlock:(CDUnknownBlockType)arg2;
++ (id)safari_dictionaryWithJSONOrPropertyListData:(id)arg1;
++ (id)safari_dictionaryWithJSONData:(id)arg1 options:(unsigned long long)arg2;
 + (id)safari_dictionaryWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
 + (id)safari_dictionaryWithPropertyListData:(id)arg1;
+- (_Bool)safari_containsObject:(id)arg1;
+- (id)safari_dictionaryByRemovingNullObjects;
 - (id)safari_diffWithDictionary:(id)arg1;
 - (id)_safari_sortedTupleArray;
+- (id)safari_mapAndFilterKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_mapAndFilterKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_mapTableForKey:(id)arg1;
+- (id)safari_dictionaryWithLowercaseKeys;
+- (id)safari_dictionaryByMergingWithDictionary:(id)arg1;
 - (id)safari_userActivityForKey:(id)arg1;
 - (id)safari_setForKey:(id)arg1;
 - (id)safari_UUIDForKey:(id)arg1;

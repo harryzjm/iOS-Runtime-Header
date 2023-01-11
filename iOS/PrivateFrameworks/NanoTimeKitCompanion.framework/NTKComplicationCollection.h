@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/NTKComplicationStoreClient-Protocol.h>
+
 @class NSHashTable, NSLock, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSUUID, NSXPCConnection;
 
-@interface NTKComplicationCollection : NSObject
+@interface NTKComplicationCollection : NSObject <NTKComplicationStoreClient>
 {
     NSXPCConnection *_connection;
     _Bool _registrationNeeded;
     NSNumber *_seqId;
     NSMutableDictionary *_localizeableSampleDataTemplates;
     NSLock *_templatesLock;
+    NSMutableDictionary *_complicationDescriptors;
+    NSLock *_descriptorsLock;
     NSHashTable *_observers;
+    NSMutableArray *_loadCallbacks;
     NSLock *_observersLock;
     _Bool _updatesSuspended;
     NSMutableArray *_updatesEnqueuedWhileSuspended;
@@ -25,38 +30,54 @@
 }
 
 + (id)sharedRemoteCollection;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property(readonly, nonatomic) NSUUID *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
 @property(readonly, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
-- (void).cxx_destruct;
 - (void)_performOrEnqueueUpdate:(CDUnknownBlockType)arg1;
 - (void)_throwIfNotLoaded:(SEL)arg1;
 - (void)_handleConnectionInterrupted;
 - (void)_registerIfNeeded;
+- (void)_register;
+- (id)_sampleDataForClientIdentifier:(id)arg1 descriptor:(id)arg2;
 - (void)_notifyLoaded;
-- (void)_notifyRemovedComplicationForClientIdentifier:(id)arg1;
-- (void)_notifyUpdateComplicationSampleTemplateForClientIdentifier:(id)arg1;
-- (void)removeComplicationForClientIdentifier:(id)arg1 seqId:(id)arg2;
-- (void)updateLocalizableSampleTemplate:(id)arg1 forClientIdentifier:(id)arg2 family:(long long)arg3 seqId:(id)arg4;
-- (void)loadFullCollectionWithLocalizableSampleTemplates:(id)arg1 seqId:(id)arg2;
-- (void)_sendToDaemonRemoveComplicationforClientIdentifier:(id)arg1;
-- (void)_sendToDaemonUpdatedSampleDataTemplate:(id)arg1 forClientIdentifier:(id)arg2 family:(long long)arg3;
+- (void)_notifyRemovedComplicationSampleTemplatesForClientIdentifier:(id)arg1 descriptor:(id)arg2;
+- (void)_notifyUpdateComplicationDescriptorsForClientIdentifier:(id)arg1;
+- (void)_notifyUpdateComplicationSampleTemplateForClientIdentifier:(id)arg1 descriptor:(id)arg2;
+- (void)removeComplicationSampleTemplatesForClientIdentifier:(id)arg1 descriptor:(id)arg2 seqId:(id)arg3;
+- (void)updateComplicationDescriptors:(id)arg1 forClientIdentifier:(id)arg2 seqId:(id)arg3;
+- (void)updateLocalizableSampleTemplate:(id)arg1 forClientIdentifier:(id)arg2 descriptor:(id)arg3 family:(long long)arg4 seqId:(id)arg5;
+- (void)loadFullCollectionWithLocalizableSampleTemplates:(id)arg1 complicationDescriptors:(id)arg2 seqId:(id)arg3;
+- (void)_sendToDaemonRemoveComplicationSampleTemplatesForClientIdentifier:(id)arg1 descriptor:(id)arg2;
+- (void)_sendToDaemonUpdatedComplicationDescriptors:(id)arg1 forClientIdentifier:(id)arg2;
+- (void)_sendToDaemonUpdatedSampleDataTemplate:(id)arg1 forClientIdentifier:(id)arg2 descriptor:(id)arg3 family:(long long)arg4;
 - (void)resumeUpdatesFromDaemon;
 - (void)suspendUpdatesFromDaemon;
-- (void)_removeComplicationForClientIdentifier:(id)arg1;
-- (void)_setLocalizedSampleTemplate:(id)arg1 forClientIdentifier:(id)arg2 family:(long long)arg3;
-- (void)removeAllComplicationsExceptThoseWithClientIdentifiers:(id)arg1;
-- (void)removeComplicationForClientIdentifier:(id)arg1;
-- (void)setLocalizableSampleTemplate:(id)arg1 forClientIdentifier:(id)arg2 family:(long long)arg3;
+- (void)_removeComplicationSampleTemplatesForClientIdentifier:(id)arg1 descriptor:(id)arg2;
+- (void)_setComplicationDescriptors:(id)arg1 forClientIdentifier:(id)arg2;
+- (void)_setLocalizedSampleTemplate:(id)arg1 forClientIdentifier:(id)arg2 descriptor:(id)arg3 family:(long long)arg4;
+- (void)removeAllComplicationSampleTemplatesExceptThoseWithClientIdentifiers:(id)arg1;
+- (void)removeComplicationSampleTemplatesForClientIdentifier:(id)arg1 descriptor:(id)arg2;
+- (void)setComplicationDescriptors:(id)arg1 forClientIdentifier:(id)arg2;
+- (void)setLocalizableSampleTemplate:(id)arg1 forClientIdentifier:(id)arg2 descriptor:(id)arg3 family:(long long)arg4;
 - (id)_bundleForWatchKitAppID:(id)arg1;
-- (id)sampleTemplateForClientIdentifier:(id)arg1 applicationID:(id)arg2 family:(long long)arg3;
-- (id)supportedTemplateFamiliesForClientIdentifier:(id)arg1;
+- (id)complicationDescriptorsForClientIdentifier:(id)arg1;
+- (id)sampleTemplateForClientIdentifier:(id)arg1 descriptor:(id)arg2 applicationID:(id)arg3 family:(long long)arg4;
+- (_Bool)hasSampleTemplateForClientIdentifier:(id)arg1 descriptor:(id)arg2 family:(long long)arg3;
+- (id)supportedTemplateFamiliesForClientIdentifier:(id)arg1 descriptor:(id)arg2;
 - (id)clientsSupportingFamily:(long long)arg1;
 - (id)clients;
+- (void)performAfterLoad:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)initWithCollectionIdentifier:(id)arg1 deviceUUID:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

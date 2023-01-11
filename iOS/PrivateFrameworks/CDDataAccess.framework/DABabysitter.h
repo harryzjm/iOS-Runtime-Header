@@ -18,17 +18,21 @@
 }
 
 + (id)sharedBabysitter;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) NSMutableDictionary *l_restrictedWaiters; // @synthesize l_restrictedWaiters=_l_restrictedWaiters;
 @property(retain, nonatomic) NSMutableDictionary *l_failedWaiters; // @synthesize l_failedWaiters=_l_failedWaiters;
 @property(retain, nonatomic) NSMutableDictionary *l_refreshingWaiters; // @synthesize l_refreshingWaiters=_l_refreshingWaiters;
 @property(retain, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
-- (void).cxx_destruct;
+- (id)_populatedStringDictionaryWithWaitersDictionary:(id)arg1;
+- (void)statusReportWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)_diagnosticReportWithWaiterID:(id)arg1 failureCount:(int)arg2;
 - (void)giveAccountWithIDAnotherChance:(id)arg1;
 - (void)_l_giveAccountWithIDAnotherChance:(id)arg1;
 - (_Bool)accountShouldContinue:(id)arg1;
 - (_Bool)accountWithIDShouldContinue:(id)arg1;
 - (void)unregisterAccount:(id)arg1 forOperationWithName:(id)arg2;
+- (id)tokenByRegisteringAccount:(id)arg1 forOperationWithName:(id)arg2;
 - (_Bool)registerAccount:(id)arg1 forOperationWithName:(id)arg2;
 - (void)_l_decrementRefreshCountForWaiterID:(id)arg1 operationName:(id)arg2;
 - (void)_l_decrementRefreshCountForWaiter:(id)arg1 forOperationWithName:(id)arg2;

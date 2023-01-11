@@ -22,16 +22,12 @@
     id <RBPowerAssertionManagerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <RBPowerAssertionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <RBPowerAssertionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_unitTest_nameOfPowerAssertionForProcess:(id)arg1;
 - (id)_unitTest_nameOfPowerAssertionForSystem;
 - (_Bool)_unitTest_hasPowerAssertionForProcess:(id)arg1;
 - (_Bool)_unitTest_hasSystemPowerAssertion;
-- (void)_queue_willInvalidateAssertion;
-- (void)_queue_didAcquireAssertion;
-- (void)_queue_invalidateAssertion:(id)arg1;
-- (void)_queue_updateProcessAssertion:(id)arg1 withState:(id)arg2;
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;
 - (void)removeProcess:(id)arg1;

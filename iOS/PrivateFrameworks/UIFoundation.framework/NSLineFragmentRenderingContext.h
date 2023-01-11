@@ -56,8 +56,6 @@
 - (void)dealloc;
 - (id)initWithTextStorage:(id)arg1 runs:(struct __CFArray *)arg2 glyphOrigin:(double)arg3 lineFragmentWidth:(double)arg4 elasticWidth:(double)arg5 usesScreenFonts:(_Bool)arg6 isRTL:(_Bool)arg7;
 - (oneway void)release;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

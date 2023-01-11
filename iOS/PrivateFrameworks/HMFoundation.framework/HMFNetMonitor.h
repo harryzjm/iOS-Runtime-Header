@@ -7,20 +7,20 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 
 @class HMFNetAddress, NSString;
-@protocol HMFLocking, HMFNetMonitorDelegate;
+@protocol HMFNetMonitorDelegate;
 
 @interface HMFNetMonitor <HMFLogging>
 {
-    id <HMFLocking> _lock;
+    struct os_unfair_lock_s _lock;
     _Bool _reachable;
     id <HMFNetMonitorDelegate> _delegate;
     HMFNetAddress *_netAddress;
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) HMFNetAddress *netAddress; // @synthesize netAddress=_netAddress;
 @property __weak id <HMFNetMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long reachabilityPath;
 @property(getter=isReachable) _Bool reachable;
 - (id)initWithNetService:(id)arg1;

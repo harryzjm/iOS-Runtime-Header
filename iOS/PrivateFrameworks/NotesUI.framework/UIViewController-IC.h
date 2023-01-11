@@ -6,13 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
-@class ICViewControllerManager, UINavigationController;
+@class ICViewControllerManager, UINavigationController, UIWindowScene;
 
 @interface UIViewController (IC)
 + (void)ic_enableUIViewAnimations:(_Bool)arg1 forBlock:(CDUnknownBlockType)arg2;
+- (void)ic_dismissViewControllerOfClass:(Class)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) _Bool ic_isBeingRevealedFromPoppingViewController;
+@property(readonly, nonatomic) UIWindowScene *ic_windowScene;
 @property(readonly, nonatomic) UINavigationController *ic_rootNavigationController;
 - (id)ic_embedInNavigationControllerForModalPresentation;
 - (id)ic_topViewController;
+- (void)ic_showSingleButtonAlertWithTitle:(id)arg1 message:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)ic_showSingleButtonAlertWithTitle:(id)arg1 message:(id)arg2;
 - (id)ic_safeAreaLayoutGuide;
 - (double)ic_safeAreaDistanceFromBottom;

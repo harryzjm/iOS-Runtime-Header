@@ -8,15 +8,16 @@
 
 @class MPSectionedIdentifierListItemEntry, NSMutableSet;
 
+__attribute__((visibility("hidden")))
 @interface _MPSectionedIdentifierListCloneIndexEntry : NSObject
 {
     MPSectionedIdentifierListItemEntry *_rootEntry;
     NSMutableSet *_clonedEntries;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *clonedEntries; // @synthesize clonedEntries=_clonedEntries;
 @property(retain, nonatomic) MPSectionedIdentifierListItemEntry *rootEntry; // @synthesize rootEntry=_rootEntry;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

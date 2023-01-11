@@ -24,8 +24,9 @@
 - (_Bool)updateHandle:(id)arg1 forMessage:(id)arg2 WithPC:(id)arg3 onService:(id)arg4;
 - (_Bool)updatePersonCentricIDForHandlesInChatWithMessage:(id)arg1 fromIdentifier:(id)arg2 personCentricID:(id)arg3 chat:(id)arg4;
 - (id)_chatRegistry;
-- (void)setChatIsFiltered:(_Bool)arg1 withChatGuid:(id)arg2;
+- (void)setChatIsFiltered:(long long)arg1 withChatGuid:(id)arg2;
 - (void)deleteChat:(id)arg1;
+- (void)remapMessageError:(unsigned int)arg1 toError:(unsigned int)arg2 forChat:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeMessageWithGUID:(id)arg1 fromChat:(id)arg2;
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2 deferSpotlightIndexing:(_Bool)arg3;
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2;
@@ -37,6 +38,9 @@
 - (unsigned long long)unreadCountForChat:(id)arg1;
 - (id)storeChat:(id)arg1;
 - (id)loadAllChats;
+- (void)_addGroupPhotoToTransferCenterForChat:(id)arg1;
+- (void)unblackholeChat:(id)arg1;
+- (void)blackholeChat:(id)arg1;
 - (void)unarchiveChat:(id)arg1;
 - (void)archiveChat:(id)arg1;
 - (void)_updateModificationDate;

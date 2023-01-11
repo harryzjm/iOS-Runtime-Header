@@ -10,18 +10,20 @@
 
 @interface INCodableObjectAttribute <NSSecureCoding>
 {
+    NSString *_originalTypeName;
     NSString *_typeName;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
+@property(copy, nonatomic, setter=_setOriginalTypeName:) NSString *_originalTypeName; // @synthesize _originalTypeName;
 - (void)setClassName:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *className;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -30,6 +32,12 @@
 @property(readonly, nonatomic) NSValueTransformer *valueTransformer;
 - (Class)resolutionResultClass;
 - (Class)objectClass;
+- (id)__INCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionTypeKey;
 
 @end
 

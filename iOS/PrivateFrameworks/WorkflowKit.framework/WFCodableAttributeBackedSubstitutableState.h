@@ -4,19 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class INCodableAttribute;
+@class INCodableAttribute, INStringLocalizer, NSString;
 
 @interface WFCodableAttributeBackedSubstitutableState
 {
     INCodableAttribute *_codableAttribute;
+    INStringLocalizer *_stringLocalizer;
+    NSString *_readableTitle;
+    NSString *_readableSubtitle;
 }
 
-@property(readonly, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
++ (id)processingValueClasses;
 - (void).cxx_destruct;
-- (void)processWithVariableSource:(id)arg1 parameter:(id)arg2 userInputRequiredHandler:(CDUnknownBlockType)arg3 valueHandler:(CDUnknownBlockType)arg4;
+@property(copy, nonatomic) NSString *readableSubtitle; // @synthesize readableSubtitle=_readableSubtitle;
+@property(copy, nonatomic) NSString *readableTitle; // @synthesize readableTitle=_readableTitle;
+@property(readonly, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
+@property(readonly, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
+- (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)serializedRepresentation;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
-- (id)initWithValue:(id)arg1 codableAttribute:(id)arg2;
+- (id)initWithValue:(id)arg1 codableAttribute:(id)arg2 stringLocalizer:(id)arg3;
 
 @end
 

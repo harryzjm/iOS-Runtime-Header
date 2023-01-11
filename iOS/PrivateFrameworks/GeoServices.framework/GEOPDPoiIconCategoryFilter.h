@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDPoiIconCategoryFilter : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _excludeCategoryFilters;
     CDStruct_9f2792e4 _includeCategoryFilters;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_excludeCategoryFilters:1;
         unsigned int read_includeCategoryFilters:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_excludeCategoryFilters:1;
-        unsigned int wrote_includeCategoryFilters:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,25 +40,26 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setExcludeCategoryFilters:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)excludeCategoryFilterAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsExcludeCategoryFilter:(unsigned int)arg1;
 - (void)addExcludeCategoryFilter:(unsigned int)arg1;
 - (void)clearExcludeCategoryFilters;
 @property(readonly, nonatomic) unsigned int *excludeCategoryFilters;
 @property(readonly, nonatomic) unsigned long long excludeCategoryFiltersCount;
-- (void)_readExcludeCategoryFilters;
 - (void)setIncludeCategoryFilters:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)includeCategoryFilterAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsIncludeCategoryFilter:(unsigned int)arg1;
 - (void)addIncludeCategoryFilter:(unsigned int)arg1;
 - (void)clearIncludeCategoryFilters;
 @property(readonly, nonatomic) unsigned int *includeCategoryFilters;
 @property(readonly, nonatomic) unsigned long long includeCategoryFiltersCount;
-- (void)_readIncludeCategoryFilters;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -8,21 +8,31 @@
 
 #import <NotesShared/ICLegacyAccount-Protocol.h>
 
-@class NSString;
+@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
+@protocol ICLegacyFolder;
 
 @interface NoteAccountObject (ICLegacyAccount) <ICLegacyAccount>
-- (id)localizedAttachmentsNotSupportedReason;
-- (_Bool)isManaged;
-- (_Bool)supportsAttachments;
-- (id)defaultFolder;
-- (id)folders;
-- (id)emailAddress;
-- (id)objectIdentifier;
+@property(readonly, copy, nonatomic) NSString *localizedAttachmentsNotSupportedReason;
+@property(readonly, nonatomic) _Bool isManaged;
+@property(readonly, nonatomic) _Bool supportsAttachments;
+@property(readonly, nonatomic) id <ICLegacyFolder> defaultFolder;
+@property(readonly, nonatomic) NSSet *folders;
+@property(readonly, copy, nonatomic) NSString *emailAddress;
+@property(readonly, nonatomic) long long legacyAccountType;
+@property(readonly, copy, nonatomic) NSString *objectIdentifier;
+@property(readonly, copy, nonatomic) NSString *allItemsFolderLocalizedTitle;
+@property(readonly, nonatomic) _Bool enabled;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSString *accountIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool didChooseToMigrate;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(readonly, nonatomic) _Bool preventMovingNotesToOtherAccounts;
 @property(readonly) Class superclass;
 @end
 

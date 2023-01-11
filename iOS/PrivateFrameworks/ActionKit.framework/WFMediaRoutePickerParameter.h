@@ -16,16 +16,20 @@
     WFMediaRoutePicker *_routePicker;
 }
 
-@property(retain, nonatomic) WFMediaRoutePicker *routePicker; // @synthesize routePicker=_routePicker;
 - (void).cxx_destruct;
+@property(retain, nonatomic) WFMediaRoutePicker *routePicker; // @synthesize routePicker=_routePicker;
 - (void)routePickerDidUpdateAvailableRoutes:(id)arg1;
+- (void)stopLiveUpdatingPossibleStates;
+- (void)startLiveUpdatingPossibleStates;
+- (_Bool)liveUpdatesPossibleStatesInEditor;
+- (_Bool)hidesAccessoryIconInEditor;
 - (id)accessoryIconForPossibleState:(id)arg1;
 - (_Bool)parameterStateIsValid:(id)arg1;
 - (id)sortedStatesForAvailableRoutes:(id)arg1;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (_Bool)shouldDefaultToLocalDeviceEndpoint;
-- (_Bool)preferItemPickerSheet;
-- (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)preferParameterValuePicker;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)defaultSerializedRepresentationForEnumeration:(id)arg1;
 - (void)stopDiscoveringRoutes;
 - (void)startDiscoveringRoutes;

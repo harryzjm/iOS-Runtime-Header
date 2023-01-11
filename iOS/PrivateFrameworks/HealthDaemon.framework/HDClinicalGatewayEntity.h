@@ -8,6 +8,7 @@
 {
 }
 
++ (id)disambiguatedSQLForProperty:(id)arg1;
 + (id)propertyForSyncAnchor;
 + (id)propertyForSyncProvenance;
 + (id)uniquedColumns;

@@ -9,7 +9,7 @@
 #import <DocumentManagerCore/NSCopying-Protocol.h>
 #import <DocumentManagerCore/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, UIColor;
+@class NSNumber, NSString;
 
 @interface DOCTag : NSObject <NSSecureCoding, NSCopying>
 {
@@ -22,14 +22,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)tagColorWithLabelIndex:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *sidebarPinned; // @synthesize sidebarPinned=_sidebarPinned;
 @property(readonly, nonatomic) NSNumber *sidebarVisible; // @synthesize sidebarVisible=_sidebarVisible;
 @property(readonly, nonatomic) long long itemCount; // @synthesize itemCount=_itemCount;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) long long labelIndex; // @synthesize labelIndex=_labelIndex;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -37,7 +36,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)mergeWithTag:(id)arg1 options:(long long)arg2;
-@property(readonly, nonatomic) UIColor *displayColor;
 - (id)iCloudTagAttributes;
 - (id)description;
 - (id)initWithDisplayName:(id)arg1 labelIndex:(long long)arg2 type:(long long)arg3 itemCount:(long long)arg4 sidebarVisible:(id)arg5 sidebarPinned:(id)arg6;

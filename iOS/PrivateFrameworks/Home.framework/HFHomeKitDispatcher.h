@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFHomeAppInstallStateArbiterObserver-Protocol.h>
+#import <Home/HFHomeManagerCreatorDelegate-Protocol.h>
 #import <Home/HFLocationSensingCoordinatorDelegate-Protocol.h>
 #import <Home/HFStateRestorationSettingsObserver-Protocol.h>
 #import <Home/_HFSettingsObserverTupleOwning-Protocol.h>
 
-@class HFLocationSensingCoordinator, HMHome, HMHomeManager, NADelegateDispatcher, NAFuture, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
+@class HFHomeManagerCreator, HFLocationSensingCoordinator, HMHome, HMHomeManager, NADelegateDispatcher, NAFuture, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
 
-@interface HFHomeKitDispatcher : NSObject <HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, _HFSettingsObserverTupleOwning, HFStateRestorationSettingsObserver>
+@interface HFHomeKitDispatcher : NSObject <HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, _HFSettingsObserverTupleOwning, HFStateRestorationSettingsObserver, HFHomeManagerCreatorDelegate>
 {
     _Bool _hasLoadedHomes;
+    _Bool _willAcceptHomeFutures;
     int _homeKitPreferencesChangedNotifyToken;
     HMHomeManager *_homeManager;
     HMHome *_home;
@@ -41,6 +43,8 @@
     NADelegateDispatcher *_networkConfigurationObserverDispatcher;
     NADelegateDispatcher *_networkRouterObserverDispatcher;
     NADelegateDispatcher *_televisionObserverDispatcher;
+    NADelegateDispatcher *_homePersonManagerDispatcher;
+    NADelegateDispatcher *_lightObserverDispatcher;
     NSMutableArray *_settingsObserverTuples;
     NSMutableArray *_requestedSoftwareDownloads;
     NSMutableArray *_requestedSoftwareInstalls;
@@ -48,15 +52,18 @@
     NSMutableArray *_firstHomeAddedPromises;
     NSMutableArray *_allHomesPromises;
     NAFuture *_locationCoordinatorSetupFuture;
+    HFHomeManagerCreator *_homeManagerCreator;
 }
 
 + (id)_logSettingsWithFormatter:(CDUnknownBlockType)arg1;
 + (id)_defaultLogSettings;
 + (id)sharedDispatcher;
-+ (unsigned long long)_homeManagerCreationPolicy;
 + (void)setConfiguration:(id)arg1;
 + (id)configuration;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool willAcceptHomeFutures; // @synthesize willAcceptHomeFutures=_willAcceptHomeFutures;
+@property(retain, nonatomic) HFHomeManagerCreator *homeManagerCreator; // @synthesize homeManagerCreator=_homeManagerCreator;
 @property(retain, nonatomic) NAFuture *locationCoordinatorSetupFuture; // @synthesize locationCoordinatorSetupFuture=_locationCoordinatorSetupFuture;
 @property(retain, nonatomic) NSMutableArray *allHomesPromises; // @synthesize allHomesPromises=_allHomesPromises;
 @property(retain, nonatomic) NSMutableArray *firstHomeAddedPromises; // @synthesize firstHomeAddedPromises=_firstHomeAddedPromises;
@@ -64,6 +71,8 @@
 @property(readonly, nonatomic) NSMutableArray *requestedSoftwareInstalls; // @synthesize requestedSoftwareInstalls=_requestedSoftwareInstalls;
 @property(readonly, nonatomic) NSMutableArray *requestedSoftwareDownloads; // @synthesize requestedSoftwareDownloads=_requestedSoftwareDownloads;
 @property(retain, nonatomic) NSMutableArray *settingsObserverTuples; // @synthesize settingsObserverTuples=_settingsObserverTuples;
+@property(retain, nonatomic) NADelegateDispatcher *lightObserverDispatcher; // @synthesize lightObserverDispatcher=_lightObserverDispatcher;
+@property(retain, nonatomic) NADelegateDispatcher *homePersonManagerDispatcher; // @synthesize homePersonManagerDispatcher=_homePersonManagerDispatcher;
 @property(retain, nonatomic) NADelegateDispatcher *televisionObserverDispatcher; // @synthesize televisionObserverDispatcher=_televisionObserverDispatcher;
 @property(retain, nonatomic) NADelegateDispatcher *networkRouterObserverDispatcher; // @synthesize networkRouterObserverDispatcher=_networkRouterObserverDispatcher;
 @property(retain, nonatomic) NADelegateDispatcher *networkConfigurationObserverDispatcher; // @synthesize networkConfigurationObserverDispatcher=_networkConfigurationObserverDispatcher;
@@ -90,7 +99,6 @@
 @property(nonatomic) _Bool hasLoadedHomes; // @synthesize hasLoadedHomes=_hasLoadedHomes;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-- (void).cxx_destruct;
 - (void)stateRestorationSettings:(id)arg1 selectedHomeIdentifierDidUpdateExternally:(id)arg2;
 - (void)installStateArbiter:(id)arg1 installStateDidChange:(_Bool)arg2;
 - (void)settingsObserverTupleWasInvalidated:(id)arg1;
@@ -98,6 +106,7 @@
 - (void)startHomeSensingIdleTimer;
 - (void)updateStopHomeSensingIdleTimerState;
 - (id)homeSensingActiveFuture;
+- (void)setHomePersonManagerObservationEnabled:(_Bool)arg1;
 - (void)_setDelegationEnabled:(_Bool)arg1 forUser:(id)arg2;
 - (void)_setDelegationEnabled:(_Bool)arg1 forMediaProfileContainer:(id)arg2 session:(id)arg3;
 - (void)_setDelegationEnabled:(_Bool)arg1 forAccessoryHierarchy:(id)arg2;
@@ -107,7 +116,6 @@
 - (void)_finishAllHomesPromises:(id)arg1;
 - (void)_finishHomePromises:(id)arg1;
 - (void)_updateRemoteAccessStateForHome:(id)arg1 notifyingObservers:(_Bool)arg2;
-- (void)setHomeManagerAndUpdateDelegate:(id)arg1;
 - (void)coordinator:(id)arg1 homeSensingStatusDidChange:(_Bool)arg2;
 - (void)coordinator:(id)arg1 locationSensingAvailabilityDidChange:(_Bool)arg2;
 - (void)_handleHomeManagerDidUpdateHomes:(id)arg1;
@@ -126,9 +134,11 @@
 - (void)setSelectedHome:(id)arg1 userInitiated:(_Bool)arg2;
 - (void)updateHome;
 - (void)warmup;
+- (void)dispatchHomePersonManagerObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchNetworkRouterObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchNetworkConfigurationObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomeKitSettingsObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (void)dispatchLightObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchTelevisionObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchUserObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchSymptomsHandlerMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
@@ -143,6 +153,10 @@
 - (void)dispatchAccessoryObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomeObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomeManagerObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (void)removeLightObserver:(id)arg1;
+- (void)addLightObserver:(id)arg1;
+- (void)removeHomePersonManagerObserver:(id)arg1;
+- (void)addHomePersonManagerObserver:(id)arg1;
 - (void)removeTelevisionObserver:(id)arg1;
 - (void)addTelevisionObserver:(id)arg1;
 - (void)removeSymptomsHandlerObserver:(id)arg1;
@@ -185,8 +199,10 @@
 - (void)addHomeObserver:(id)arg1;
 - (void)removeHomeManagerObserver:(id)arg1;
 - (void)addHomeManagerObserver:(id)arg1;
-- (void)_setupStateDumpHandlers;
+- (void)homeManagerWasCreated:(id)arg1;
+- (void)setHomeManagerAndUpdateDelegate:(id)arg1;
 - (void)_createHomeManagerIfNecessary;
+- (void)_setupStateDumpHandlers;
 - (void)_setupSymptomFixSessionObserver;
 - (void)_setupSoftwareUpdateObserver;
 - (void)_setupMediaSessionObserver;

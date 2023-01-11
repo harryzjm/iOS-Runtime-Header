@@ -20,7 +20,7 @@
 + (const CDStruct_7d93034e *)revisionAvailability;
 @property(readonly) NSArray *supportedImageSizeSet;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (_Bool)hasCancellationHook;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
@@ -28,9 +28,9 @@
 @property(nonatomic) _Bool useCenterTileOnly;
 @property(nonatomic) _Bool returnAllResults;
 @property(readonly, copy) NSString *description;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
-- (id)_applicableDetectorAndReturnError:(id *)arg1;
-- (id)_applicableDetectorForRequestRevision:(unsigned long long)arg1 applicableDetectorOptions:(id *)arg2 error:(id *)arg3;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+- (id)_applicableDetectorLoadedInSession:(id)arg1 error:(id *)arg2;
+- (id)_applicableDetectorForRequestRevision:(unsigned long long)arg1 applicableDetectorOptions:(id *)arg2 loadedInSession:(id)arg3 error:(id *)arg4;
 - (id)_detectorTypeForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
 
 // Remaining properties

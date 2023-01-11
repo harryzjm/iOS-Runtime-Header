@@ -12,6 +12,7 @@
 @protocol NSFileProviderExtension_Private <NSObject>
 
 @optional
+- (NSProgress *)performActionWithIdentifier:(NSString *)arg1 onItemsWithIdentifiers:(NSArray *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)fetchTrashIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)materializedItemsDidChange;
 - (NSArray *)customPushTopics;

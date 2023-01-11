@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFAccount.h>
-
 @class NSString;
 
-@interface WFPasswordAccount : WFAccount
+@interface WFPasswordAccount
 {
     NSString *_username;
     NSString *_password;
 }
 
 + (id)accountWithUsername:(id)arg1 password:(id)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
-- (void).cxx_destruct;
 - (_Bool)isValid;
 - (id)localizedName;
 

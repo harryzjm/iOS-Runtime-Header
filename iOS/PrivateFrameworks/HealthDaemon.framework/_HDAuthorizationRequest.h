@@ -8,6 +8,7 @@
 
 @class NSSet, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDAuthorizationRequest : NSObject
 {
     CDUnknownBlockType _completionHandler;
@@ -16,10 +17,10 @@
     NSSet *_typesToRead;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSSet *typesToRead; // @synthesize typesToRead=_typesToRead;
 @property(readonly, copy, nonatomic) NSSet *typesToWrite; // @synthesize typesToWrite=_typesToWrite;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (void)invokeCompletionHandlerWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 typesToWrite:(id)arg2 typesToRead:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

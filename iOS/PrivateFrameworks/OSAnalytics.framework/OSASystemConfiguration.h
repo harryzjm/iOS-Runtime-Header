@@ -85,6 +85,8 @@
 @property(readonly) NSMutableDictionary *submissionMetadata;
 - (id)assembleMetadataAt:(double)arg1 withOptions:(unsigned int)arg2;
 - (_Bool)isProxy;
+@property(readonly) _Bool optIn3rdParty;
+@property(readonly) _Bool optInApple;
 
 @end
 

@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 #import <MetricsKit/MTConfigDelegate-Protocol.h>
 
 @class NSString;
 @protocol AMSBagProtocol;
 
-@interface MTConfigAMSMetricsDelegate <MTConfigDelegate>
+@interface MTConfigAMSMetricsDelegate : NSObject <MTConfigDelegate>
 {
     id <AMSBagProtocol> _bag;
 }
 
-@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (id)sources;
 - (id)initWithAMSBag:(id)arg1;
 

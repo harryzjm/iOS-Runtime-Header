@@ -4,22 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ASPasswordCredentialIdentity;
+#import <AuthenticationServices/_ASCredentialProviderExtensionHostContextDelegate-Protocol.h>
+
+@class ASPasswordCredentialIdentity, NSString;
 @protocol _ASPasswordCredentialAuthenticationViewControllerDelegate;
 
-@interface _ASPasswordCredentialAuthenticationViewController
+@interface _ASPasswordCredentialAuthenticationViewController <_ASCredentialProviderExtensionHostContextDelegate>
 {
     ASPasswordCredentialIdentity *_credentialIdentity;
     id <_ASPasswordCredentialAuthenticationViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <_ASPasswordCredentialAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_ASPasswordCredentialAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)prepareToCompleteRequestWithHostContext:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_requestDidFailWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_finishWithCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_finishWithCredential:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_nonUIRequestDidRequireUserInteraction;
 - (id)initWithExtension:(id)arg1 credentialIdentity:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

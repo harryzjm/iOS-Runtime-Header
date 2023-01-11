@@ -17,12 +17,13 @@
     UILabel *_organizationLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *organizationLabel; // @synthesize organizationLabel=_organizationLabel;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(retain, nonatomic) UIImageView *contactImageView; // @synthesize contactImageView=_contactImageView;
 @property(retain, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
 @property(retain, nonatomic) CKMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
-- (void).cxx_destruct;
+- (void)addOverlaySubview:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (id)_truncateNameIfNeeded:(id)arg1;
 - (void)prepareForDisplay;

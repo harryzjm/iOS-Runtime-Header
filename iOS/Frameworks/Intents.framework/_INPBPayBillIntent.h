@@ -17,7 +17,6 @@
     struct {
         unsigned int billType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _billType;
     _INPBBillPayeeValue *_billPayee;
     _INPBDateTimeRange *_dueDate;
@@ -29,7 +28,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDateTimeRange *transactionScheduledDate; // @synthesize transactionScheduledDate=_transactionScheduledDate;
 @property(retain, nonatomic) _INPBString *transactionNote; // @synthesize transactionNote=_transactionNote;
 @property(retain, nonatomic) _INPBPaymentAmountValue *transactionAmount; // @synthesize transactionAmount=_transactionAmount;
@@ -38,7 +37,6 @@
 @property(retain, nonatomic) _INPBDateTimeRange *dueDate; // @synthesize dueDate=_dueDate;
 @property(nonatomic) int billType; // @synthesize billType=_billType;
 @property(retain, nonatomic) _INPBBillPayeeValue *billPayee; // @synthesize billPayee=_billPayee;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

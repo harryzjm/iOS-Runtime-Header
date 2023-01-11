@@ -9,29 +9,25 @@
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
 #import <ActionKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, UIColor;
+@class NSDictionary, NSString, WFColor;
 
 @interface WFTodoistProject : MTLModel <NSSecureCoding, MTLJSONSerializing>
 {
     _Bool _collapsed;
     long long _projectId;
     NSString *_name;
-    UIColor *_color;
-    long long _indent;
-    long long _order;
+    WFColor *_color;
 }
 
 + (id)collapsedJSONTransformer;
 + (id)colorJSONTransformer;
 + (id)JSONKeyPathsByPropertyKey;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool collapsed; // @synthesize collapsed=_collapsed;
-@property(readonly, nonatomic) long long order; // @synthesize order=_order;
-@property(readonly, nonatomic) long long indent; // @synthesize indent=_indent;
-@property(readonly, nonatomic) UIColor *color; // @synthesize color=_color;
+@property(readonly, nonatomic) WFColor *color; // @synthesize color=_color;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) long long projectId; // @synthesize projectId=_projectId;
-- (void).cxx_destruct;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

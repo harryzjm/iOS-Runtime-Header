@@ -15,7 +15,6 @@
 @interface _INPBStartVideoCallIntent : PBCodable <_INPBStartVideoCallIntent, NSSecureCoding, NSCopying>
 {
     CDStruct_fbf2c6cd _has;
-    _Bool __encodeLegacyGloryData;
     int _audioRoute;
     NSArray *_contacts;
     _INPBIntentMetadata *_intentMetadata;
@@ -25,12 +24,11 @@
 + (_Bool)supportsSecureCoding;
 + (Class)targetContactsType;
 + (Class)contactType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *targetContacts; // @synthesize targetContacts=_targetContacts;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property(nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldAutoPlay;
 - (_Bool)releaseDecodingResourcesIfInactive;
 - (void)setPlaying:(_Bool)arg1;
+- (void)beginLoadingMediaForPreroll;
 - (void)didFailToPlay;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)resetToPlaceholderView;

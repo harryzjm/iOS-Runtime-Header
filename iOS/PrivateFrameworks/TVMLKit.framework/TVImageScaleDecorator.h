@@ -18,6 +18,7 @@
     struct TVCornerRadii _cornerRadii;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool preservesAlpha; // @synthesize preservesAlpha=_preservesAlpha;
 @property(copy, nonatomic) UIColor *bgColor; // @synthesize bgColor=_bgColor;
 @property(nonatomic) _Bool cornerContinuous; // @synthesize cornerContinuous=_cornerContinuous;
@@ -26,7 +27,6 @@
 @property(nonatomic) double focusedSizeIncrease; // @synthesize focusedSizeIncrease=_focusedSizeIncrease;
 @property(nonatomic) long long scaleMode; // @synthesize scaleMode=_scaleMode;
 @property(nonatomic) struct CGSize scaleToSize; // @synthesize scaleToSize=_scaleToSize;
-- (void).cxx_destruct;
 - (void)_applyCornerMaskForRect:(struct CGRect)arg1 toContext:(struct CGContext *)arg2;
 - (struct UIEdgeInsets)_paddingAdjustedForUpscaling;
 - (struct CGSize)_scaleToSizeAdjustedForUpscaling;
@@ -40,6 +40,7 @@
 - (id)decoratorIdentifier;
 @property(nonatomic) double upscaleAdjustment;
 @property(nonatomic) _Bool cropToFit;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithScaleToSize:(struct CGSize)arg1 cropToFit:(_Bool)arg2;
 - (id)initWithScaleToSize:(struct CGSize)arg1 scaleMode:(long long)arg2;

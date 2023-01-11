@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)removeObjectAtIndex:(unsigned long long)arg1 forSection:(unsigned long long)arg2 sectionRemoved:(_Bool *)arg3;
 - (id)secondaryTextForObject:(id)arg1;
 - (id)textForObject:(id)arg1;
+- (id)_durationFormatter;
 - (id)objectAtIndex:(unsigned long long)arg1 forSection:(unsigned long long)arg2;
 - (id)_sleepSampleAtIndex:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (unsigned long long)numberOfObjectsForSection:(unsigned long long)arg1;

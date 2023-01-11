@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableSet, PGGraphNode;
+@class NSArray, NSMutableSet, PGGraphPersonNode;
 
 @interface PGPotentialPeopleMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    PGGraphNode *_peopleNode;
+    PGGraphPersonNode *_personNode;
     long long _year;
-    NSArray *_facedAssets;
+    NSArray *_facedAssetLocalIdentifiers;
 }
 
-@property(retain) NSArray *facedAssets; // @synthesize facedAssets=_facedAssets;
-@property(readonly) long long year; // @synthesize year=_year;
-@property(retain) PGGraphNode *peopleNode; // @synthesize peopleNode=_peopleNode;
 - (void).cxx_destruct;
+@property(retain) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
+@property(readonly) long long year; // @synthesize year=_year;
+@property(retain) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithSubcategory:(unsigned long long)arg1 peopleNode:(id)arg2 year:(long long)arg3;
 

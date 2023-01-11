@@ -23,16 +23,15 @@
     id <_SFSaveToFilesOperationDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <_SFSaveToFilesOperationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_SFSaveToFilesOperationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)importPlaceholderForDownload:(id)arg1 fromURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)documentPickerWasCancelled:(id)arg1;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
 - (void)_copyFileData:(CDUnknownBlockType)arg1;
-- (id)_suggestedFilenameFromWebView;
 - (id)_temporaryFileWithName:(id)arg1;
 - (void)_finishWithURL:(id)arg1;
-- (void)_showDocumentPickerForFileURL:(id)arg1 sourceURL:(id)arg2;
+- (void)_showDocumentPickerForFileURL:(id)arg1 sourceURL:(id)arg2 willStartDownload:(_Bool)arg3;
 - (void)start;
 - (void)dealloc;
 - (id)initWithActivityItemProviderCollection:(id)arg1;

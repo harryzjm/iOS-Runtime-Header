@@ -36,7 +36,6 @@
 - (id)initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 diskPath:(id)arg3;
 - (id)initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 directoryURL:(id)arg3;
 - (id)_initWithExistingCFURLCache:(struct _CFURLCache *)arg1;
-- (id)initWithExistingSharedCFURLCache:(struct _CFURLCache *)arg1;
 - (id)_initVaryHeaderEnabledWithPath:(id)arg1;
 - (id)init;
 - (id)_initWithIdentifier:(id)arg1 memoryCapacity:(long long)arg2 diskCapacity:(long long)arg3 private:(_Bool)arg4;
@@ -48,8 +47,8 @@
 - (void)_nscfBridgeURLCacheSetDiskCapacity:(long long)arg1;
 - (void)_nscfBridgeURLCacheSetMemoryCapacity:(long long)arg1;
 - (long long)_nscfBridgeURLCacheDiskCapacity;
-- (void)_nscfBridgeURLCacheStoreCachedResponse:(struct _CFCachedURLResponse *)arg1 forRequest:(id)arg2;
-- (struct _CFCachedURLResponse *)_nscfBridgeURLCacheCopyResponseForRequest:(id)arg1;
+- (void)_nscfBridgeURLCacheStoreCachedResponse:(struct _CFCachedURLResponse *)arg1 forRequest:(struct _CFURLRequest *)arg2;
+- (struct _CFCachedURLResponse *)_nscfBridgeURLCacheCopyResponseForRequest:(struct _CFURLRequest *)arg1;
 - (void)removeCachedResponseForDataTask:(id)arg1;
 - (void)getCachedResponseForDataTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)storeCachedResponse:(id)arg1 forDataTask:(id)arg2;

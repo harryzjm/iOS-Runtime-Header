@@ -11,7 +11,6 @@
 
 @class NSDictionary, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MIStoreMetadataSubGenre : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_genre;
@@ -19,9 +18,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *genreID; // @synthesize genreID=_genreID;
 @property(copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;

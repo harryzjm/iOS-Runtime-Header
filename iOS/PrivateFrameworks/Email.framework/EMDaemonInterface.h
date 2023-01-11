@@ -8,16 +8,19 @@
 
 #import <Email/EFLoggable-Protocol.h>
 
-@class EMAccountRepository, EMActivityRegistry, EMBlockedSenderManager, EMClientState, EMDonationController, EMFetchController, EMInteractionLogger, EMMailboxRepository, EMMessageRepository, EMOutgoingMessageRepository, EMSearchableIndex, NSHashTable, NSString;
+@class EMAccountRepository, EMActivityRegistry, EMBlockedSenderManager, EMClientState, EMDonationController, EMFetchController, EMInteractionLogger, EMMailboxRepository, EMMessageRepository, EMOutgoingMessageRepository, EMSearchableIndex, NSHashTable, NSString, NSXPCConnection;
 @protocol EFCancelable, EMVIPManager, NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface EMDaemonInterface : NSObject <EFLoggable>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSXPCConnection *_connection;
     NSHashTable *_connections;
     long long _connectionState;
     id <EFCancelable> _daemonLaunchToken;
+    _Bool _allowsBackgroundResume;
     struct os_unfair_lock_s _lock;
+    _Atomic _Bool _invalidated;
     EMMessageRepository *_messageRepository;
     EMOutgoingMessageRepository *_outgoingMessageRepository;
     EMMailboxRepository *_mailboxRepository;
@@ -30,16 +33,14 @@
     id <EMVIPManager> _vipManager;
     EMBlockedSenderManager *_blockedSenderManager;
     EMSearchableIndex *_searchableIndex;
-    id <NSXPCProxyCreating> _proxyCreator;
 }
 
 + (void)setCachedMailAppIsInstalled:(_Bool)arg1;
 + (_Bool)cachedMailAppIsInstalled;
 + (id)_mailUninstalledFile;
-+ (id)_remoteConnection;
 + (id)remoteObjectInterface;
 + (id)log;
-@property(readonly) id <NSXPCProxyCreating> proxyCreator; // @synthesize proxyCreator=_proxyCreator;
+- (void).cxx_destruct;
 @property(readonly) EMSearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
 @property(readonly) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
 @property(readonly) id <EMVIPManager> vipManager; // @synthesize vipManager=_vipManager;
@@ -52,14 +53,20 @@
 @property(readonly) EMMailboxRepository *mailboxRepository; // @synthesize mailboxRepository=_mailboxRepository;
 @property(readonly) EMOutgoingMessageRepository *outgoingMessageRepository; // @synthesize outgoingMessageRepository=_outgoingMessageRepository;
 @property(readonly) EMMessageRepository *messageRepository; // @synthesize messageRepository=_messageRepository;
-- (void).cxx_destruct;
 - (void)handleDaemonAvailability;
+@property _Bool allowsBackgroundResume;
+- (void)launchDaemon;
 - (void)resetProtocolConnections;
 - (id)connectionForProtocol:(id)arg1;
 - (id)_connectionForProtocol:(id)arg1 error:(id *)arg2;
+@property(readonly) id <NSXPCProxyCreating> proxyCreator;
+@property(readonly, nonatomic) NSXPCConnection *test_connection;
+- (void)test_tearDown;
+- (void)_invalidate;
 - (void)dealloc;
 - (id)initForTesting;
-- (id)initWithProxyCreator:(id)arg1;
+- (id)_initByAdoptingConnection:(id)arg1;
+- (id)initWithListenerEndpoint:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -15,6 +15,7 @@
 - (_Bool)isPortrait;
 - (_Bool)allowsCameraPress;
 - (_Bool)hasCamera;
+- (_Bool)allowsFlashlightInteraction;
 - (_Bool)allowsFlashlight;
 - (_Bool)hasFlashlight;
 @end

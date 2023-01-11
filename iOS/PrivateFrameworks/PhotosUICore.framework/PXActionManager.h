@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSSet;
 @protocol PXActionPerformerDelegate;
 
 @interface PXActionManager : NSObject
 {
     id <PXActionPerformerDelegate> _performerDelegate;
+    NSSet *_allowedActionTypes;
 }
 
 + (CDUnknownBlockType)_unlockDeviceHandler;
 + (void)setEnsureUnlockedDeviceHandler:(CDUnknownBlockType)arg1;
-@property(nonatomic) __weak id <PXActionPerformerDelegate> performerDelegate; // @synthesize performerDelegate=_performerDelegate;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *allowedActionTypes; // @synthesize allowedActionTypes=_allowedActionTypes;
+@property(nonatomic) __weak id <PXActionPerformerDelegate> performerDelegate; // @synthesize performerDelegate=_performerDelegate;
+- (_Bool)isActionTypeAllowed:(id)arg1;
 - (id)systemImageNameForActionType:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)actionPerformerForActionType:(id)arg1;

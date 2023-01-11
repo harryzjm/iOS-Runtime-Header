@@ -34,6 +34,7 @@
 - (id)vehicleInfoInitialData;
 - (void)setVehicleInfoSupportedTypes:(id)arg1;
 - (id)vehicleInfoSupportedTypes;
+- (void)sendWiredCarPlayAvailable:(id)arg1 usbIdentifier:(id)arg2 wirelessCarPlayAvailable:(id)arg3 bluetoothIdentifier:(id)arg4;
 - (void)sendDeviceIdentifierNotification:(id)arg1 usbIdentifier:(id)arg2;
 - (void)requestIAPAccessoryWiFiCredentials;
 - (void)_OOBBTPairingCompletedWithStatus:(unsigned char)arg1 forAccessoryWithMACAddress:(id)arg2;
@@ -95,6 +96,7 @@
 - (unsigned int)accessoryCapabilities;
 - (id)coreAccessoriesPrimaryUUID;
 - (_Bool)createdByCoreAccessories;
+- (_Bool)supportsCarPlayConnectionRequest;
 - (_Bool)supportsCarPlayAppLinks;
 - (_Bool)supportsWirelessCarPlay;
 - (_Bool)supportsUSBCarPlay;
@@ -108,6 +110,7 @@
 @property(readonly, nonatomic) NSArray *protocolStrings;
 - (id)wakeToken;
 @property(readonly, nonatomic) NSString *dockType;
+- (long long)transportType;
 @property(readonly, nonatomic) NSString *hardwareRevision;
 - (id)firmwareRevisionPending;
 - (id)firmwareRevisionActive;

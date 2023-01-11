@@ -11,7 +11,7 @@
 @interface PUActivityItemSourceConfiguration : NSObject
 {
     _Bool _requiresAssetExport;
-    CDStruct_7f880b36 _sharingPreferences;
+    CDStruct_915a387c _sharingPreferences;
     unsigned long long _maxFileSizeLimit;
     long long _outputType;
     long long _assetExportKind;
@@ -29,8 +29,6 @@
 + (_Bool)shouldExcludeAlternateVariantForActivityType:(id)arg1;
 + (_Bool)shouldProvideAlternateVariantForActivityType:(id)arg1 forAsset:(id)arg2 withAvailableSharingVariants:(id)arg3;
 + (_Bool)shouldProvideCompatibleFormatForActivityType:(id)arg1 andAvailableSharingVariants:(id)arg2;
-+ (id)_activitiesThatSupportWideColorInLivePhotos;
-+ (id)_activitiesThatSupportWideColorInImages;
 + (id)_activitiesThatSupportHEIFHEVC;
 + (id)_activitiesThatOnlySupportMomentShareLinks;
 + (id)_activitiesThatDontSupportMomentShareLinks;
@@ -43,7 +41,8 @@
 + (_Bool)supportsAssetLocalIdentifierForActivityType:(id)arg1;
 + (_Bool)isAssetBundleSupportedByActivityType:(id)arg1;
 + (_Bool)isLivePhotoBundleSupportedByActivityType:(id)arg1;
-@property(nonatomic) CDStruct_2a4d9400 sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
+- (void).cxx_destruct;
+@property(nonatomic) CDStruct_df7f102b sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
 @property(copy, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
 @property(copy, nonatomic) NSDictionary *sharingVariants; // @synthesize sharingVariants=_sharingVariants;
 @property(retain, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
@@ -52,11 +51,8 @@
 @property(readonly, nonatomic) _Bool requiresAssetExport; // @synthesize requiresAssetExport=_requiresAssetExport;
 @property(readonly, nonatomic) long long outputType; // @synthesize outputType=_outputType;
 @property(readonly, nonatomic) unsigned long long maxFileSizeLimit; // @synthesize maxFileSizeLimit=_maxFileSizeLimit;
-- (void).cxx_destruct;
 - (_Bool)_wantsAssetBundleForActivityType:(id)arg1;
 - (_Bool)_wantsLivePhotoBundleForActivityType:(id)arg1;
-- (_Bool)_wantsLivePhotoColorSpaceConversionForActivityType:(id)arg1;
-- (_Bool)_wantsColorSpaceConversionForActivityType:(id)arg1;
 - (id)_customAccessibilityLabel;
 - (id)_videoExportFileTypeForActivityType:(id)arg1;
 - (id)_videoExportPresetForActivityType:(id)arg1;
@@ -64,7 +60,7 @@
 - (_Bool)_requiresAssetExportForAsset:(id)arg1 forActivityType:(id)arg2;
 - (_Bool)_requiresAssetsLibraryURLForAsset:(id)arg1 forActivityType:(id)arg2;
 - (void)_configure;
-- (id)initWithAsset:(id)arg1 availableSharingVariants:(id)arg2 activityType:(id)arg3 preferences:(CDStruct_2a4d9400)arg4;
+- (id)initWithAsset:(id)arg1 availableSharingVariants:(id)arg2 activityType:(id)arg3 preferences:(CDStruct_df7f102b)arg4;
 
 @end
 

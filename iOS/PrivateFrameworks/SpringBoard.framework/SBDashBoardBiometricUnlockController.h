@@ -22,12 +22,18 @@
     id <SBBiometricUnlockBehaviorDelegate> _biometricUnlockBehaviorDelegate;
 }
 
-@property(nonatomic) __weak id <SBBiometricUnlockBehaviorDelegate> biometricUnlockBehaviorDelegate; // @synthesize biometricUnlockBehaviorDelegate=_biometricUnlockBehaviorDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBBiometricUnlockBehaviorDelegate> biometricUnlockBehaviorDelegate; // @synthesize biometricUnlockBehaviorDelegate=_biometricUnlockBehaviorDelegate;
+- (_Bool)isRestToOpenAvailable;
+- (void)resetRestToOpen;
+- (void)fillRestToOpenWithDuration:(double)arg1;
+- (int)lockScreenWakeSource;
+- (void)startRestToOpenCoachingWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)isLockScreenShowingDefaultContent;
 - (void)biometricUnlockBehaviorConfigurationDidChange:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
+- (void)conformsToCSEventHandling;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (_Bool)biometricUnlockBehavior:(id)arg1 requestsUnlock:(id)arg2 withFeedback:(id)arg3;
@@ -38,6 +44,7 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)_mesaUnlockBehavior;
+- (void)noteLockButtonDown;
 - (void)setAuthenticated:(_Bool)arg1;
 - (void)noteMenuButtonUp;
 - (void)noteMenuButtonDown;

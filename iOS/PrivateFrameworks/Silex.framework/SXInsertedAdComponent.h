@@ -20,6 +20,7 @@
     SXJSONArray *_behaviors;
     unsigned long long _bannerType;
     unsigned long long _adType;
+    NSString *_placementIdentifier;
     NSString *_style;
     id <SXComponentAnchor> _anchor;
     NSString *_layout;
@@ -29,6 +30,7 @@
     SXJSONArray *_additions;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hidden; // @synthesize hidden=_hidden;
 @property(readonly, nonatomic) SXJSONArray *additions; // @synthesize additions=_additions;
 @property(readonly, nonatomic) SXJSONDictionary *analytics; // @synthesize analytics=_analytics;
@@ -37,12 +39,12 @@
 @property(retain, nonatomic) NSString *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) id <SXComponentAnchor> anchor; // @synthesize anchor=_anchor;
 @property(readonly, nonatomic) NSString *style; // @synthesize style=_style;
+@property(readonly, nonatomic) NSString *placementIdentifier; // @synthesize placementIdentifier=_placementIdentifier;
 @property(readonly, nonatomic) unsigned long long adType; // @synthesize adType=_adType;
 @property(readonly, nonatomic) unsigned long long bannerType; // @synthesize bannerType=_bannerType;
 @property(readonly, nonatomic) SXJSONArray *behaviors; // @synthesize behaviors=_behaviors;
 @property(readonly, nonatomic) SXComponentAnimation *animation; // @synthesize animation=_animation;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long placementType;
 @property(readonly, nonatomic) UIColor *debugColor;
 @property(readonly, nonatomic) unsigned long long traits;

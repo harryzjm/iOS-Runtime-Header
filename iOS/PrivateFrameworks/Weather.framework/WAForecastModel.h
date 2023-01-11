@@ -8,10 +8,11 @@
 
 #import <Weather/NSCopying-Protocol.h>
 
-@class City, NSArray, NSDate, NSURL, WACurrentForecast, WFAirQualityConditions, WFLocation, WFWeatherConditions;
+@class City, NSArray, NSDate, NSURL, WACurrentForecast, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFWeatherConditions;
 
 @interface WAForecastModel : NSObject <NSCopying>
 {
+    int _unit;
     City *_city;
     WFLocation *_location;
     WACurrentForecast *_currentConditions;
@@ -22,14 +23,22 @@
     NSDate *_sunset;
     NSURL *_deepLink;
     NSURL *_link;
+    NSArray *_severeWeatherEvents;
+    NSArray *_changeForecasts;
+    WFNextHourPrecipitation *_nextHourPrecipitation;
     WFWeatherConditions *_underlyingCurrentConditions;
     NSArray *_underlyingHourlyConditions;
     NSArray *_underlyingDailyConditions;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *underlyingDailyConditions; // @synthesize underlyingDailyConditions=_underlyingDailyConditions;
 @property(retain, nonatomic) NSArray *underlyingHourlyConditions; // @synthesize underlyingHourlyConditions=_underlyingHourlyConditions;
 @property(retain, nonatomic) WFWeatherConditions *underlyingCurrentConditions; // @synthesize underlyingCurrentConditions=_underlyingCurrentConditions;
+@property(nonatomic) int unit; // @synthesize unit=_unit;
+@property(copy, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
+@property(copy, nonatomic) NSArray *changeForecasts; // @synthesize changeForecasts=_changeForecasts;
+@property(copy, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
 @property(retain, nonatomic) NSURL *link; // @synthesize link=_link;
 @property(retain, nonatomic) NSURL *deepLink; // @synthesize deepLink=_deepLink;
 @property(retain, nonatomic) NSDate *sunset; // @synthesize sunset=_sunset;
@@ -40,7 +49,6 @@
 @property(retain, nonatomic) WACurrentForecast *currentConditions; // @synthesize currentConditions=_currentConditions;
 @property(retain, nonatomic) WFLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) City *city; // @synthesize city=_city;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isPopulated;
 - (id)description;
 - (unsigned long long)hash;

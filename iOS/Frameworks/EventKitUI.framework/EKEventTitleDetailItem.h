@@ -6,13 +6,13 @@
 
 #import <EventKitUI/EKEventDetailTitleCellDelegate-Protocol.h>
 
-@class NSDate, NSObject, UIColor, UITableViewCell;
+@class EKEventDetailTitleCell, NSDate, NSObject, UIColor, UIView;
 @protocol EKEventTitleDetailItemDelegate;
 
 __attribute__((visibility("hidden")))
 @interface EKEventTitleDetailItem <EKEventDetailTitleCellDelegate>
 {
-    UITableViewCell *_cell;
+    EKEventDetailTitleCell *_cell;
     UIColor *_color;
     _Bool _showDot;
     _Bool _cellNeedsUpdate;
@@ -23,16 +23,18 @@ __attribute__((visibility("hidden")))
     unsigned long long _numberOfTitleLines;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long numberOfTitleLines; // @synthesize numberOfTitleLines=_numberOfTitleLines;
 @property(nonatomic) _Bool hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
 @property(nonatomic) __weak NSObject<EKEventTitleDetailItemDelegate> *editDelegate; // @synthesize editDelegate=_editDelegate;
 @property(retain, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
 @property(nonatomic) _Bool hidesSeparator; // @synthesize hidesSeparator=_hidesSeparator;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *sourceViewForPopover;
 - (_Bool)minimalMode;
 - (void)predictionWasActedOn;
 - (_Bool)shouldShowEditButtonInline;
 - (void)editButtonPressed;
+- (void)refreshCopiedEvents;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (double)titleHeight;

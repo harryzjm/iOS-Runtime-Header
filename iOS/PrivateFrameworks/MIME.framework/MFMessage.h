@@ -18,7 +18,7 @@
     NSString *_senderAddressComment;
     unsigned int _dateSentInterval;
     unsigned int _dateReceivedInterval;
-    unsigned long long _generationNumber;
+    _Atomic unsigned long long _generationNumber;
     NSArray *_to;
     NSArray *_cc;
     NSArray *_bcc;
@@ -44,8 +44,8 @@
 + (id)messageWithRFC822Data:(id)arg1 withParentPart:(id)arg2;
 + (id)messageWithRFC822Data:(id)arg1;
 + (Class)dataMessageStoreToUse;
-@property(retain, nonatomic) MFMimePart *parentPart; // @synthesize parentPart=_parentPart;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MFMimePart *parentPart; // @synthesize parentPart=_parentPart;
 - (id)additionalHeadersForForward;
 - (id)additionalHeadersForReply;
 - (_Bool)isLibraryMessage;
@@ -58,7 +58,6 @@
 - (void)setNumberOfAttachments:(unsigned long long)arg1;
 - (void)setNumberOfAttachments:(unsigned long long)arg1 isSigned:(_Bool)arg2 isEncrypted:(_Bool)arg3;
 - (void)calculateAttachmentInfoFromBody:(id)arg1;
-- (void)deleteBodyData;
 - (id)dataPathForMimePart:(id)arg1;
 - (_Bool)fetchDataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 withConsumer:(id)arg3 isComplete:(_Bool *)arg4 downloadIfNecessary:(_Bool)arg5;
 - (id)dataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 isComplete:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4 didDownload:(_Bool *)arg5;
@@ -76,8 +75,8 @@
 - (unsigned int)uid;
 - (id)remoteID;
 - (void)setMessagePropertiesFromMessage:(id)arg1;
-- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 messageIDHash:(long long)arg8 conversationIDHash:(long long)arg9 summary:(id)arg10 withOptions:(unsigned int)arg11;
-- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 messageIDHash:(long long)arg8 conversationIDHash:(long long)arg9 summary:(id)arg10;
+- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 summary:(id)arg8 withOptions:(unsigned int)arg9;
+- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 summary:(id)arg8;
 - (void)setMessageInfo:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceivedTimeIntervalSince1970:(double)arg6 dateSentTimeIntervalSince1970:(double)arg7 messageIDHash:(long long)arg8 conversationID:(long long)arg9 summary:(id)arg10;
 - (id)uniqueArray:(id)arg1 withStore:(id)arg2;
 - (id)summary;

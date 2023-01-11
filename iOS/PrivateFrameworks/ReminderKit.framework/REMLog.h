@@ -23,6 +23,7 @@
 + (id)migration;
 + (id)cloudkitCollaboration;
 + (id)cloudkit;
++ (id)suggestedAttributes;
 + (id)utility;
 + (id)accountPlugin;
 + (id)alarmEngine;

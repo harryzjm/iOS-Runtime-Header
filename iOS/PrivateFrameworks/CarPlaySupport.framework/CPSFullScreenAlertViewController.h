@@ -13,8 +13,8 @@
     NSArray *_alertButtons;
 }
 
-@property(retain, nonatomic) NSArray *alertButtons; // @synthesize alertButtons=_alertButtons;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *alertButtons; // @synthesize alertButtons=_alertButtons;
 - (id)preferredFocusEnvironments;
 - (void)didSelectButton:(id)arg1;
 - (id)_titleFont;
@@ -22,7 +22,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_viewDidLoad;
 @property(readonly, nonatomic) CPAlertTemplate *alert;
-- (id)initWithAlert:(id)arg1 alertDelegate:(id)arg2;
+- (id)initWithAlert:(id)arg1 alertDelegate:(id)arg2 templateEnvironment:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

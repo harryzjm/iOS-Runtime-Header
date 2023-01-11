@@ -13,6 +13,7 @@
 {
     _Bool _usesDarkMode;
     _Bool _usesVibrancy;
+    _Bool _createAppleIDAllowed;
     long long _blurEffectStyle;
     NSString *_secondaryButtonTitle;
     NSString *_tertiaryButtonTitle;
@@ -30,6 +31,7 @@
     UIActivityIndicatorView *_spinner;
 }
 
+- (void).cxx_destruct;
 @property(retain) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property(retain) UIButton *createAppleIDButton; // @synthesize createAppleIDButton=_createAppleIDButton;
 @property(retain) UIButton *iforgotButton; // @synthesize iforgotButton=_iforgotButton;
@@ -40,7 +42,6 @@
 @property(retain, nonatomic) UIColor *fieldBackgroundColor; // @synthesize fieldBackgroundColor=_fieldBackgroundColor;
 @property(readonly) NSString *primaryButtonTitle; // @synthesize primaryButtonTitle=_primaryButtonTitle;
 @property _Bool wantsAuthenticationProgress; // @synthesize wantsAuthenticationProgress=_wantsAuthenticationProgress;
-- (void).cxx_destruct;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)context:(id)arg1 needsPasswordWithCompletion:(CDUnknownBlockType)arg2;
@@ -51,8 +52,8 @@
 - (void)_passwordTextFieldDidChange:(id)arg1;
 - (void)_appleIDTextFieldDidChange:(id)arg1;
 - (void)_setPasswordFieldHidden:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)_hidebusyWorkUI;
-- (void)_startBusyWorkUI;
+- (void)stopAnimating;
+- (void)startAnimating;
 - (void)_beginAuthenticationIfPossibleWithOption:(unsigned long long)arg1;
 - (void)createAppleIDButtonWasTapped:(id)arg1;
 - (void)iForgotButtonWasTapped:(id)arg1;
@@ -68,6 +69,7 @@
 - (id)context;
 - (void)setTertiaryButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setSecondaryButtonTarget:(id)arg1 action:(SEL)arg2;
+- (void)refreshCreateAppleIDButton;
 @property(copy) NSString *tertiaryButtonTitle;
 @property(copy) NSString *secondaryButtonTitle;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

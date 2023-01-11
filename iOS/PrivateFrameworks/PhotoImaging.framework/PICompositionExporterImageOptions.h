@@ -9,16 +9,20 @@
 @interface PICompositionExporterImageOptions
 {
     _Bool _optimizeForSharing;
+    _Bool _applyImageOrientationAsMetadata;
     NUImageExportFormat *_imageExportFormat;
+    double _JPEGCompressionQuality;
     CDUnknownBlockType _metadataProcessor;
 }
 
+- (void).cxx_destruct;
+@property _Bool applyImageOrientationAsMetadata; // @synthesize applyImageOrientationAsMetadata=_applyImageOrientationAsMetadata;
 @property _Bool optimizeForSharing; // @synthesize optimizeForSharing=_optimizeForSharing;
 @property(copy) CDUnknownBlockType metadataProcessor; // @synthesize metadataProcessor=_metadataProcessor;
+@property double JPEGCompressionQuality; // @synthesize JPEGCompressionQuality=_JPEGCompressionQuality;
 @property(copy) NUImageExportFormat *imageExportFormat; // @synthesize imageExportFormat=_imageExportFormat;
-- (void).cxx_destruct;
 - (id)imageExportFormatForURL:(id)arg1;
-- (void)setImageExportFormatJpegWithQuality:(double)arg1;
+- (id)init;
 
 @end
 

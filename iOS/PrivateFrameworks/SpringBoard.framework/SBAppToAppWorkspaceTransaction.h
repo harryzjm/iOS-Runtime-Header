@@ -16,8 +16,8 @@
     _Bool _preventWhitePointAdaptationStrengthUpdateOnComplete;
 }
 
-@property(nonatomic) _Bool preventWhitePointAdaptationStrengthUpdateOnComplete; // @synthesize preventWhitePointAdaptationStrengthUpdateOnComplete=_preventWhitePointAdaptationStrengthUpdateOnComplete;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool preventWhitePointAdaptationStrengthUpdateOnComplete; // @synthesize preventWhitePointAdaptationStrengthUpdateOnComplete=_preventWhitePointAdaptationStrengthUpdateOnComplete;
 - (id)_setupAnimationFrom:(id)arg1 to:(id)arg2;
 - (void)_cleanUpAfterAnimation;
 - (void)_clearAnimation;
@@ -31,6 +31,7 @@
 - (_Bool)_hasPreAnimationTasks;
 - (id)_setupAnimation;
 - (_Bool)_shouldResignActiveForAnimation;
+- (unsigned long long)_concurrentOverlayDismissalOptions;
 - (unsigned long long)_serialOverlayPreDismissalOptions;
 - (_Bool)_transitionWasCancelled;
 - (void)_beginTransition;

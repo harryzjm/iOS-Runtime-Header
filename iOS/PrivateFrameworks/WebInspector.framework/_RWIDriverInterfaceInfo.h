@@ -6,25 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _RWIRelayClientConnection;
+@class NSSet, NSString, RWIDriverConfiguration, RWIDriverState, _RWIRelayClientConnection;
 
 __attribute__((visibility("hidden")))
 @interface _RWIDriverInterfaceInfo : NSObject
 {
-    _Bool _isActive;
-    NSString *_identifier;
-    NSString *_name;
+    RWIDriverConfiguration *_configuration;
+    RWIDriverState *_state;
     _RWIRelayClientConnection *_connection;
+    NSSet *_sessionIdentifiers;
 }
 
-@property(readonly, nonatomic) _Bool isActive; // @synthesize isActive=_isActive;
-@property(readonly, nonatomic) _RWIRelayClientConnection *connection; // @synthesize connection=_connection;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
-- (_Bool)updateDriverState:(_Bool)arg1;
+@property(readonly, copy, nonatomic) NSSet *sessionIdentifiers; // @synthesize sessionIdentifiers=_sessionIdentifiers;
+@property(readonly, nonatomic) _RWIRelayClientConnection *connection; // @synthesize connection=_connection;
+- (void)updateDriverState:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 connection:(id)arg3;
+@property(readonly, nonatomic, getter=isActive) _Bool active;
+@property(readonly, copy, nonatomic) NSString *version;
+@property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, copy, nonatomic) NSString *identifier;
+- (id)initWithConfiguration:(id)arg1 connection:(id)arg2;
 
 @end
 

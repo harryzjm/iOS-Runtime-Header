@@ -10,7 +10,7 @@
 
 + (id)typeStrings;
 - (id)subtitle1Description;
-- (id)description;
+- (id)verboseDescription;
 - (id)initWithContentsOfPayload:(id)arg1 profile:(id)arg2;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 

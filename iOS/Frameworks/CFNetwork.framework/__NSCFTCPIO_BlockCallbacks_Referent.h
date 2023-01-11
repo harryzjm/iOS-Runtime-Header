@@ -12,9 +12,6 @@
     struct TCPIO_BlockCallbacks_Listener *_writeListener;
 }
 
-- (_Bool)withListeners:(CDUnknownBlockType)arg1;
-- (void)setWriteListener:(struct TCPIO_BlockCallbacks_Listener *)arg1;
-- (void)setReadListener:(struct TCPIO_BlockCallbacks_Listener *)arg1;
 - (void)dealloc;
 - (id)init;
 

@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)apiKey;
-- (id)environment;
-- (id)container;
-- (id)urlForQueryActionAPI;
-- (id)urlForLookupActionAPI;
+- (id)apiKeyWithType:(long long)arg1;
+- (id)environmentWithType:(long long)arg1;
+- (id)containerWithType:(long long)arg1;
+- (id)urlForQueryActionAPIWithType:(long long)arg1;
+- (id)urlForLookupActionAPIWithType:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

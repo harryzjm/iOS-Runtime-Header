@@ -20,5 +20,6 @@
 @property(readonly, nonatomic) long long presentationType;
 @property(readonly, nonatomic) long long presentationStyle;
 @property(nonatomic) __weak id <CSCoverSheetViewPresenting> presenter;
+- (void)conformsToCSCoverSheetViewControlling;
 @end
 

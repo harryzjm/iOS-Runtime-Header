@@ -33,9 +33,7 @@
     NSMapTable *_persistentMapSceneIdentityToSceneHandle;
     NSMapTable *_transientMapSceneIdentityToSceneHandle;
     BSCopyingCacheSet *_allScenes;
-    BSCopyingCacheSet *_windowScenes;
     BSCopyingCacheSet *_daemonScenes;
-    BSCopyingCacheSet *_pluginScenes;
     BSCopyingCacheSet *_workspaceScenes;
     BSCopyingCacheSet *_externalApplicationSceneHandles;
     BSCopyingCacheSet *_externalForegroundApplicationSceneHandles;
@@ -52,8 +50,8 @@
 + (Class)_sceneLayoutWindowClass;
 + (Class)_applicationSceneHandleClass;
 + (Class)_layoutStateManagerClass;
-@property(retain, nonatomic) SBLayoutState *currentLayoutState; // @synthesize currentLayoutState=_currentLayoutState;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBLayoutState *currentLayoutState; // @synthesize currentLayoutState=_currentLayoutState;
 - (void)sceneManager:(id)arg1 interceptUpdateForScene:(id)arg2 withNewSettings:(id)arg3;
 - (id)sceneManager:(id)arg1 createDefaultTransitionContextForScene:(id)arg2;
 - (void)scene:(id)arg1 didCompleteUpdateWithContext:(id)arg2 error:(id)arg3;
@@ -65,8 +63,7 @@
 - (void)sceneManager:(id)arg1 willDestroyScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneLayoutController:(id)arg1 noteHasVisibleElements:(_Bool)arg2;
-- (id)_fetchOrCreateApplicationSceneHandleForApplication:(id)arg1 withIdentity:(id)arg2 orScene:(id)arg3;
-- (id)fetchOrCreateApplicationSceneHandleForApplication:(id)arg1 withIdentity:(id)arg2;
+- (id)fetchOrCreateApplicationSceneHandleForRequest:(id)arg1;
 - (id)_sceneIdentifierForBundleIdentifier:(id)arg1;
 - (id)sceneIdentityForApplication:(id)arg1 uniqueIdentifier:(id)arg2 targetContentIdentifier:(id)arg3;
 - (id)sceneIdentityForApplication:(id)arg1 excludingIdentifiers:(id)arg2;
@@ -92,6 +89,7 @@
 - (void)_scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (void)_scene:(id)arg1 willUpdateWithSettings:(id)arg2 transitionContext:(id)arg3;
 - (void)_scene:(id)arg1 interceptUpdateWithNewSettings:(id)arg2;
+- (void)_reconnectSceneRemnant:(id)arg1 forProcess:(id)arg2 sceneManager:(id)arg3;
 - (_Bool)_handleAction:(id)arg1 forScene:(id)arg2;
 - (_Bool)_shouldTrackScenesForDeactivation;
 - (_Bool)_shouldAutoHostScene:(id)arg1;
@@ -115,11 +113,9 @@
 - (id)existingSceneHandleForSceneIdentity:(id)arg1;
 - (id)existingSceneHandleForScene:(id)arg1;
 - (id)scenesForWorkspaceWithID:(id)arg1;
-- (id)pluginScenes;
 - (id)daemonScenes;
 - (id)externalForegroundApplicationSceneHandles;
 - (id)externalApplicationSceneHandles;
-- (id)windowScenes;
 - (id)allScenes;
 @property(readonly, nonatomic) SBPolicyAggregator *policyAggregator;
 @property(readonly, nonatomic) SBSceneLayoutViewController *sceneLayoutViewController;

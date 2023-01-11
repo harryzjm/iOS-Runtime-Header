@@ -9,9 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface WebInspectorFrontend : NSObject
 {
-    struct WebInspectorFrontendClient *m_frontendClient;
+    NakedPtr_fc424271 m_frontendClient;
 }
 
+- (id).cxx_construct;
 - (void)showConsole;
 - (void)setTimelineProfilingEnabled:(_Bool)arg1;
 - (_Bool)isTimelineProfilingEnabled;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)close;
 - (void)detach;
 - (void)attach;
-- (id)initWithFrontendClient:(struct WebInspectorFrontendClient *)arg1;
+- (id)initWithFrontendClient:(NakedPtr_fc424271)arg1;
 
 @end
 

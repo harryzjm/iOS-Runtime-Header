@@ -27,6 +27,7 @@
 - (NSIndexSet *)highlightableSelectionCharacterIndexesOnPageAtIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (void)controller:(AKController *)arg1 performActionForMode:(unsigned long long)arg2 fromSender:(long long)arg3 withAttribute:(long long)arg4 onPageAtIndex:(unsigned long long)arg5;
 - (_Bool)hasHighlightableSelectionForAnnotationController:(AKController *)arg1;
+- (_Bool)requestPermissionForController:(AKController *)arg1 toPerformActionFromSender:(long long)arg2;
 - (void)rotateLeft:(AKController *)arg1;
 - (void)rotateRight:(AKController *)arg1;
 - (NSArray *)controller:(AKController *)arg1 willSetToolbarItems:(NSArray *)arg2;

@@ -19,13 +19,15 @@
     id _objectReference;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id objectReference; // @synthesize objectReference=_objectReference;
 @property(nonatomic) _Bool isDynamic; // @synthesize isDynamic=_isDynamic;
 @property(nonatomic) __weak PXGLayout *layout; // @synthesize layout=_layout;
 @property(nonatomic) long long layoutVersion; // @synthesize layoutVersion=_layoutVersion;
 @property(nonatomic) unsigned int spriteIndex; // @synthesize spriteIndex=_spriteIndex;
-- (void).cxx_destruct;
 - (void)adjustReferencedSpriteIndexesWithChangeDetails:(id)arg1 appliedToLayout:(id)arg2;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool hasObjectReference;
 @property(readonly, nonatomic) _Bool isValid;
@@ -34,7 +36,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

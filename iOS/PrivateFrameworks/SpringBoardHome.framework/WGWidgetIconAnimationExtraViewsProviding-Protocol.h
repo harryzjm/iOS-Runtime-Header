@@ -6,11 +6,12 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSArray, UIView;
+@class NSArray;
 
 @protocol WGWidgetIconAnimationExtraViewsProviding <NSObject>
+@property(readonly, nonatomic) _Bool shouldAnimateFirstTwoViewsAsOne;
 @property(readonly, nonatomic) _Bool shouldAnimateLastTwoViewsAsOne;
 @property(readonly, copy, nonatomic) NSArray *extraViews;
-@property(readonly, nonatomic) UIView *extraViewsContainer;
+@property(readonly, copy, nonatomic) NSArray *extraViewsContainers;
 @end
 

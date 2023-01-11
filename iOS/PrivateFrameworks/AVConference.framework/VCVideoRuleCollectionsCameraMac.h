@@ -15,14 +15,21 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-- (void)resetEncodingRulesForCameraIsHD:(_Bool)arg1 isWVGA:(_Bool)arg2;
+- (void)resetEncodingRulesForCameraIsHD:(_Bool)arg1 isWVGA:(_Bool)arg2 is1080:(_Bool)arg3;
+- (void)_resetJ92EncodingRulesForCameraIsHD:(_Bool)arg1 isWVGA:(_Bool)arg2 is1080:(_Bool)arg3;
+- (void)_removeRulesGreaterThan720p;
+- (void)_removeRulesGreaterThanVGA;
+- (void)_addWVGAEncodingRules;
 - (_Bool)useSoftFramerateSwitching;
 - (_Bool)setupRules;
+- (_Bool)setUp1080pRules:(int)arg1;
 - (_Bool)setupH264Rules;
 - (_Bool)setupH264WifiRules;
 - (void)computeDecodingScore;
 - (void)computeEncodingScore;
+- (double)preferredAspectRatio;
 - (void)initSupportedPayloads;
+- (void)dealloc;
 - (id)initWithHardwareSettings:(id)arg1;
 
 @end

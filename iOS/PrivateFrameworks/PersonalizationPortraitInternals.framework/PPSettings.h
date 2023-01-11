@@ -27,6 +27,7 @@
 + (id)cloudSyncDisabledFirstPartyBundleIds;
 + (id)sharedInstance;
 + (void)initialize;
++ (_Bool)isCloudSyncEnabled;
 + (_Bool)isVoiceAssistantEnabled;
 - (void).cxx_destruct;
 - (_Bool)isAuthorizedToLogLocation;
@@ -37,6 +38,11 @@
 - (_Bool)queryPlanLoggingEnabled;
 - (void)setQueryPlanLoggingEnabled:(_Bool)arg1;
 - (id)assetDefaultBundleOverridePathForAssetIdentifier:(id)arg1;
+- (void)setTrialPathOverrideForNamespaceName:(id)arg1 factorName:(id)arg2 path:(id)arg3;
+- (id)trialPathOverrideForNamespaceName:(id)arg1 factorName:(id)arg2;
+- (void)setTrialUseDefaultFiles:(_Bool)arg1;
+- (_Bool)trialUseDefaultFiles;
+- (id)trialPathOverrides;
 - (void)setAssetDefaultBundleOverridePath:(id)arg1 assetIdentifier:(id)arg2;
 - (double)assetMetadataRefreshIntervalSeconds;
 - (void)clearAssetMetadataRefreshIntervalSeconds;
@@ -61,6 +67,7 @@
 - (id)_cloudKitDisabledBundleIds;
 - (id)_donationDisabledBundleIds;
 - (void)_refreshDisabledBundleIds;
+- (void)_handleCloudStorageDeletedByUser;
 - (void)_invokeChangeHandlersAsync;
 - (void)deregisterDisabledBundleIdentifierChangeHandlerWithToken:(int)arg1;
 - (int)registerDisabledBundleIdentifierChangeHandler:(CDUnknownBlockType)arg1;

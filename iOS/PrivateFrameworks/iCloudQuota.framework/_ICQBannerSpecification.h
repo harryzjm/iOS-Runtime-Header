@@ -6,21 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @interface _ICQBannerSpecification : NSObject
 {
     NSDictionary *_serverDict;
-    NSString *_messageFormat;
-    NSArray *_messageLinks;
+    _Bool _isDetailBannerInfoAvailable;
+    _Bool _placeholderExists;
+    NSDictionary *_messageTemplates;
+    NSDictionary *_titleTemplates;
+    NSString *_linksFormat;
+    NSArray *_links;
+    NSURL *_remoteUIURL;
 }
 
 + (id)bannerSpecificationSampleForLevel:(long long)arg1;
-@property(retain, nonatomic) NSArray *messageLinks; // @synthesize messageLinks=_messageLinks;
-@property(retain, nonatomic) NSString *messageFormat; // @synthesize messageFormat=_messageFormat;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *serverDict;
+@property(retain, nonatomic) NSURL *remoteUIURL; // @synthesize remoteUIURL=_remoteUIURL;
+@property(readonly, nonatomic) _Bool placeholderExists; // @synthesize placeholderExists=_placeholderExists;
+@property(readonly, nonatomic) _Bool isDetailBannerInfoAvailable; // @synthesize isDetailBannerInfoAvailable=_isDetailBannerInfoAvailable;
+@property(retain, nonatomic) NSArray *links; // @synthesize links=_links;
+@property(retain, nonatomic) NSString *linksFormat; // @synthesize linksFormat=_linksFormat;
+@property(readonly, nonatomic) NSDictionary *titleTemplates; // @synthesize titleTemplates=_titleTemplates;
+@property(readonly, nonatomic) NSDictionary *messageTemplates; // @synthesize messageTemplates=_messageTemplates;
+- (id)messageWithKey:(id)arg1;
+- (id)titleWithKey:(id)arg1;
 - (void)setMessageWithServerMessage:(id)arg1;
+- (id)initWithDetailBannerInfo:(id)arg1;
 - (id)initWithServerDictionary:(id)arg1;
 
 @end

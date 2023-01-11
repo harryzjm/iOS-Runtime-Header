@@ -15,10 +15,14 @@
 {
     id <MTLDevice> _device;
     NSString *_label;
+    unsigned long long _pixelFormat;
     unsigned long long _resourceIndex;
+    unsigned long long _gpuAddress;
 }
 
-@property(nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
+@property(readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(readonly) NSString *label; // @synthesize label=_label;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
 @property(readonly, copy) NSString *description;

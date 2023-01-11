@@ -11,12 +11,15 @@
 @interface SOKerberosExtensionData : NSObject
 {
     _Bool _useSiteAutoDiscovery;
+    _Bool _includeManagedAppsInBundleIdACL;
     _Bool _isDefaultRealm;
     _Bool _allowPasswordChange;
     _Bool _allowAutomaticLogin;
     _Bool _requireUserPresence;
     _Bool _pwReqComplexity;
     _Bool _syncLocalPassword;
+    _Bool _monitorCredentialsCache;
+    _Bool _delayUserSetup;
     NSString *_cacheName;
     NSString *_principalName;
     NSString *_siteCode;
@@ -30,9 +33,18 @@
     NSNumber *_pwReqMinAge;
     NSNumber *_pwReqHistory;
     NSString *_pwReqText;
+    NSString *_helpText;
+    NSString *_customUsernameLabel;
+    NSNumber *_replicationTime;
 }
 
+- (void).cxx_destruct;
+@property _Bool delayUserSetup; // @synthesize delayUserSetup=_delayUserSetup;
+@property _Bool monitorCredentialsCache; // @synthesize monitorCredentialsCache=_monitorCredentialsCache;
 @property _Bool syncLocalPassword; // @synthesize syncLocalPassword=_syncLocalPassword;
+@property(retain, nonatomic) NSNumber *replicationTime; // @synthesize replicationTime=_replicationTime;
+@property(retain, nonatomic) NSString *customUsernameLabel; // @synthesize customUsernameLabel=_customUsernameLabel;
+@property(retain, nonatomic) NSString *helpText; // @synthesize helpText=_helpText;
 @property(retain, nonatomic) NSString *pwReqText; // @synthesize pwReqText=_pwReqText;
 @property(retain, nonatomic) NSNumber *pwReqHistory; // @synthesize pwReqHistory=_pwReqHistory;
 @property(retain, nonatomic) NSNumber *pwReqMinAge; // @synthesize pwReqMinAge=_pwReqMinAge;
@@ -46,13 +58,13 @@
 @property(nonatomic) _Bool allowPasswordChange; // @synthesize allowPasswordChange=_allowPasswordChange;
 @property(nonatomic) _Bool isDefaultRealm; // @synthesize isDefaultRealm=_isDefaultRealm;
 @property(retain, nonatomic) NSDictionary *domainRealmMapping; // @synthesize domainRealmMapping=_domainRealmMapping;
+@property(nonatomic) _Bool includeManagedAppsInBundleIdACL; // @synthesize includeManagedAppsInBundleIdACL=_includeManagedAppsInBundleIdACL;
 @property(retain, nonatomic) NSArray *credentialBundleIdACL; // @synthesize credentialBundleIdACL=_credentialBundleIdACL;
 @property(nonatomic) _Bool useSiteAutoDiscovery; // @synthesize useSiteAutoDiscovery=_useSiteAutoDiscovery;
 @property(retain, nonatomic) NSString *certificateUUID; // @synthesize certificateUUID=_certificateUUID;
 @property(retain, nonatomic) NSString *siteCode; // @synthesize siteCode=_siteCode;
 @property(retain, nonatomic) NSString *principalName; // @synthesize principalName=_principalName;
 @property(retain, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initAndPopulateExtensionData;
 

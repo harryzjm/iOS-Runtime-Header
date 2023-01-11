@@ -8,36 +8,16 @@
 
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSSet, NSUUID, PRCollaborationData, PRPeer;
-
 @interface ARCollaborationData : NSObject <NSSecureCoding>
 {
     long long _priority;
-    double _timestamp;
-    NSData *_vioData;
-    long long _vioDataType;
-    unsigned long long _vioSessionID;
-    NSUUID *_anchorIdentifier;
-    NSSet *_anchors;
-    PRCollaborationData *_prCollaborationData;
-    PRPeer *_prPeer;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) PRPeer *prPeer; // @synthesize prPeer=_prPeer;
-@property(retain, nonatomic) PRCollaborationData *prCollaborationData; // @synthesize prCollaborationData=_prCollaborationData;
-@property(retain, nonatomic) NSSet *anchors; // @synthesize anchors=_anchors;
-@property(retain, nonatomic) NSUUID *anchorIdentifier; // @synthesize anchorIdentifier=_anchorIdentifier;
-@property(readonly, nonatomic) unsigned long long vioSessionID; // @synthesize vioSessionID=_vioSessionID;
-@property(readonly, nonatomic) long long vioDataType; // @synthesize vioDataType=_vioDataType;
-@property(readonly, nonatomic) NSData *vioData; // @synthesize vioData=_vioData;
-@property(readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
-- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithProximityCollaborationData:(id)arg1 sessionID:(unsigned long long)arg2;
-- (id)initWithVIOData:(id)arg1 type:(long long)arg2 sessionID:(unsigned long long)arg3;
 
 @end
 

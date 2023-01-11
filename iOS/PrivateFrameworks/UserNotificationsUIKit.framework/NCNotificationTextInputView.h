@@ -6,30 +6,36 @@
 
 #import <UIKit/UIView.h>
 
+#import <UserNotificationsUIKit/UIScribbleInteractionDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UITextViewDelegate-Protocol.h>
 
-@class NCNotificationAction, NSString, UIButton, UIStackView, UITextView;
+@class NCNotificationAction, NSString, UIButton, UIScribbleInteraction, UIStackView, UITextView;
 @protocol NCNotificationTextInputViewDelegate;
 
-@interface NCNotificationTextInputView : UIView <UITextViewDelegate>
+@interface NCNotificationTextInputView : UIView <UITextViewDelegate, UIScribbleInteractionDelegate>
 {
     id <NCNotificationTextInputViewDelegate> _delegate;
     NCNotificationAction *_action;
     UIStackView *_horizontalStack;
     UITextView *_textView;
     UIButton *_button;
+    UIScribbleInteraction *_scribbleInteraction;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIScribbleInteraction *scribbleInteraction; // @synthesize scribbleInteraction=_scribbleInteraction;
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
 @property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 @property(retain, nonatomic) UIStackView *horizontalStack; // @synthesize horizontalStack=_horizontalStack;
 @property(retain, nonatomic) NCNotificationAction *action; // @synthesize action=_action;
 @property(nonatomic) __weak id <NCNotificationTextInputViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_updateForTextChange;
 - (void)_buttonPressed:(id)arg1;
+- (double)_pencilModeHeight;
 - (double)_maximumTextViewHeight;
+- (double)_textViewHeight;
 - (double)_textViewWidth;
+- (void)scribbleInteractionDidFinishWriting:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)isFirstResponder;

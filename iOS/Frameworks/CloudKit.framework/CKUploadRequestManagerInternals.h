@@ -9,10 +9,9 @@
 #import <CloudKit/CKAssetRepairSchedulerDelegate-Protocol.h>
 #import <CloudKit/CKSyncEngineDataSource-Protocol.h>
 
-@class CKAssetRepairScheduler, CKContainer, CKSchedulerActivity, CKSyncEngine, CKUploadRequestConfiguration, CKUploadRequestManagerStateMachine, CKUploadRequestPersistentStore, NSMutableDictionary, NSString;
+@class CKAssetRepairScheduler, CKContainer, CKSchedulerActivity, CKSyncEngine, CKUploadRequestConfiguration, CKUploadRequestManagerResponseActionThrottler, CKUploadRequestManagerStateMachine, CKUploadRequestPersistentStore, NSMutableDictionary, NSString;
 @protocol NSObject, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKUploadRequestManagerInternals : NSObject <CKAssetRepairSchedulerDelegate, CKSyncEngineDataSource>
 {
     _Bool _ignoringSystemConditions;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _scheduledAccountStatusCheck;
     CDUnknownBlockType _repairActivityHandler;
     CKSchedulerActivity *_observedRepairActivity;
+    CKUploadRequestManagerResponseActionThrottler *_responseActionThrottler;
     NSObject<OS_dispatch_queue> *_stateMachineQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -42,12 +42,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _packageRequestCallback;
 }
 
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType packageRequestCallback; // @synthesize packageRequestCallback=_packageRequestCallback;
 @property(copy) CDUnknownBlockType assetRequestCallback; // @synthesize assetRequestCallback=_assetRequestCallback;
 @property(retain, nonatomic) NSMutableDictionary *callbackForOverridePoint; // @synthesize callbackForOverridePoint=_callbackForOverridePoint;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *stateQueue; // @synthesize stateQueue=_stateQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *stateMachineQueue; // @synthesize stateMachineQueue=_stateMachineQueue;
+@property(retain, nonatomic) CKUploadRequestManagerResponseActionThrottler *responseActionThrottler; // @synthesize responseActionThrottler=_responseActionThrottler;
 @property(retain, nonatomic) CKSchedulerActivity *observedRepairActivity; // @synthesize observedRepairActivity=_observedRepairActivity;
 @property(copy, nonatomic) CDUnknownBlockType repairActivityHandler; // @synthesize repairActivityHandler=_repairActivityHandler;
 @property(nonatomic) int fetchAllToken; // @synthesize fetchAllToken=_fetchAllToken;
@@ -63,14 +65,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKSyncEngine *repairZoneSyncEngine; // @synthesize repairZoneSyncEngine=_repairZoneSyncEngine;
 @property(retain, nonatomic) CKUploadRequestConfiguration *repairContainerOverrides; // @synthesize repairContainerOverrides=_repairContainerOverrides;
 @property(retain, nonatomic) CKContainer *repairContainer; // @synthesize repairContainer=_repairContainer;
-@property(nonatomic) __weak CKContainer *container; // @synthesize container=_container;
+@property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property(readonly, nonatomic) _Bool ignoringSystemConditions; // @synthesize ignoringSystemConditions=_ignoringSystemConditions;
-- (void).cxx_destruct;
 - (void)invokeCallbackForOverridePoint:(long long)arg1 withError:(id)arg2 onCallbackQueue:(_Bool)arg3;
 - (void)setCallback:(CDUnknownBlockType)arg1 forOverridePoint:(long long)arg2;
 - (void)dispatchEvent:(long long)arg1 synchronously:(_Bool)arg2;
 - (void)manuallyTriggerUploadRequests;
 - (void)fetchServerChanges:(CDUnknownBlockType)arg1;
+- (id)createDatabase;
 @property(retain, nonatomic) CKUploadRequestManagerStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 - (id)repairZoneID;
 @property(copy) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;

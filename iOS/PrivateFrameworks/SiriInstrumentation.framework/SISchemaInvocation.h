@@ -6,35 +6,41 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaInvocation-Protocol.h>
+@class NSData, SISchemaCarPlayInvocationContext, SISchemaViewContainer;
 
-@class NSData, NSString, SISchemaViewContainer;
-
-@interface SISchemaInvocation : PBCodable <SISchemaInvocation, NSSecureCoding>
+@interface SISchemaInvocation : PBCodable
 {
     int _invocationAction;
     int _invocationSource;
     SISchemaViewContainer *_viewContainer;
+    SISchemaCarPlayInvocationContext *_carPlayInvocationContext;
+    struct {
+        unsigned int invocationAction:1;
+        unsigned int invocationSource:1;
+    } _has;
+    _Bool _hasViewContainer;
+    _Bool _hasCarPlayInvocationContext;
+    unsigned long long _whichInvocationcontext;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasCarPlayInvocationContext; // @synthesize hasCarPlayInvocationContext=_hasCarPlayInvocationContext;
+@property(nonatomic) _Bool hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
 @property(retain, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 @property(nonatomic) int invocationSource; // @synthesize invocationSource=_invocationSource;
 @property(nonatomic) int invocationAction; // @synthesize invocationAction=_invocationAction;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long whichInvocationcontext; // @synthesize whichInvocationcontext=_whichInvocationcontext;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+@property(retain, nonatomic) SISchemaCarPlayInvocationContext *carPlayInvocationContext; // @synthesize carPlayInvocationContext=_carPlayInvocationContext;
+@property(nonatomic) _Bool hasInvocationSource;
+@property(nonatomic) _Bool hasInvocationAction;
 
 @end
 

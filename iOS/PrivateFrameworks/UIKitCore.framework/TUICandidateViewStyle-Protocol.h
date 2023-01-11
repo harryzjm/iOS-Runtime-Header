@@ -9,10 +9,19 @@
 @class NSString, UIColor, UIFont, UIImage;
 
 @protocol TUICandidateViewStyle <NSObject>
+@property(readonly, nonatomic) long long minimumNumberOfCandidates;
+@property(readonly, nonatomic) _Bool hidesPartialCandidates;
+@property(readonly, nonatomic) _Bool skipInlineCandidate;
+@property(readonly, nonatomic) _Bool disableSwitchingSortingMethodByTabKey;
+@property(readonly, nonatomic) _Bool showOneMoreCandidate;
+@property(readonly, nonatomic) _Bool dontSelectLastItemByBackwardMoving;
 @property(readonly, nonatomic) _Bool fillGridWithLines;
+@property(readonly, nonatomic) _Bool showExtraLineBeforeFirstRow;
 @property(readonly, nonatomic) _Bool showsIndex;
+@property(readonly, nonatomic) _Bool allowCandidateGridExpanding;
 @property(readonly, nonatomic) _Bool scrollDisabled;
 @property(readonly, nonatomic) _Bool darkBackdrop;
+@property(readonly, nonatomic) long long alternativeTextAlignment;
 @property(readonly, nonatomic) long long cellTextAlignment;
 @property(readonly, nonatomic) struct UIEdgeInsets sortControlPadding;
 @property(readonly, nonatomic) struct CGPoint gridLineOffset;
@@ -25,6 +34,7 @@
 @property(readonly, nonatomic) double minimumCellPadding;
 @property(readonly, nonatomic) unsigned long long maxNumberOfProactiveCells;
 @property(readonly, nonatomic) unsigned long long columnsCount;
+@property(readonly, nonatomic) long long layoutOrientation;
 @property(readonly, nonatomic) _Bool doNotClipToBounds;
 @property(readonly, nonatomic) double backgroundOpacity;
 @property(readonly, nonatomic) double foregroundOpacity;
@@ -33,6 +43,7 @@
 @property(readonly, nonatomic) double cornerRadius;
 @property(readonly, nonatomic) double arrowButtonHeight;
 @property(readonly, nonatomic) double rowHeight;
+@property(readonly, nonatomic) UIImage *transliterationCandidateBackgroundImage;
 @property(readonly, nonatomic) UIImage *highlightedCellBackgroundImage;
 @property(readonly, nonatomic) UIImage *cellBackgroundImage;
 @property(readonly, nonatomic) UIImage *arrowButtonSeparatorImage;
@@ -45,6 +56,7 @@
 @property(readonly, nonatomic) UIColor *sortControlColor;
 @property(readonly, nonatomic) UIColor *lineColor;
 @property(readonly, nonatomic) UIColor *groupHeaderBackgroundColor;
+@property(readonly, nonatomic) UIColor *transliterationCandidateBackgroundColor;
 @property(readonly, nonatomic) UIColor *highlightedRowBackgroundColor;
 @property(readonly, nonatomic) UIColor *highlightedBackgroundColor;
 @property(readonly, nonatomic) UIColor *gridBackgroundColor;

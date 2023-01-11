@@ -13,23 +13,29 @@
 
 @interface SBHSidebarVisualConfiguration : NSObject <NSCopying, BSDescriptionProviding>
 {
+    _Bool _contentFullscreen;
     double _contentWidth;
+    double _searchBarTopOffset;
     struct NSDirectionalEdgeInsets _insets;
 }
 
 @property(nonatomic) struct NSDirectionalEdgeInsets insets; // @synthesize insets=_insets;
+@property(nonatomic, getter=isContentFullscreen) _Bool contentFullscreen; // @synthesize contentFullscreen=_contentFullscreen;
+@property(nonatomic) double searchBarTopOffset; // @synthesize searchBarTopOffset=_searchBarTopOffset;
 @property(nonatomic) double contentWidth; // @synthesize contentWidth=_contentWidth;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)effectiveContentWidthWithContainerWidth:(double)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

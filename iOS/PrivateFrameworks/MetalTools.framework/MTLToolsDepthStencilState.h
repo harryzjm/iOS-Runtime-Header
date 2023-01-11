@@ -19,8 +19,6 @@
 @property(readonly) _Bool readsDepth;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSString *label;
-- (void)dealloc;
-- (void)acceptVisitor:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

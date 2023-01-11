@@ -16,6 +16,8 @@
 @interface NEPathController : NSObject <NEConfigurationValidating, NEPrettyDescription, NSSecureCoding, NSCopying>
 {
     _Bool _enabled;
+    _Bool _ignoreRouteRules;
+    _Bool _ignoreFallback;
     long long _cellularFallbackFlags;
     NSArray *_pathRules;
     NSArray *_payloadAppRules;
@@ -23,11 +25,13 @@
 
 + (id)copyAggregatePathRules;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy) NSArray *payloadAppRules; // @synthesize payloadAppRules=_payloadAppRules;
 @property(copy) NSArray *pathRules; // @synthesize pathRules=_pathRules;
 @property long long cellularFallbackFlags; // @synthesize cellularFallbackFlags=_cellularFallbackFlags;
+@property _Bool ignoreFallback; // @synthesize ignoreFallback=_ignoreFallback;
+@property _Bool ignoreRouteRules; // @synthesize ignoreRouteRules=_ignoreRouteRules;
 @property(getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasNonDefaultRules;
 - (id)copyPathRuleSigningIdentifiers;
 - (_Bool)removePathRuleBySigningIdentifier:(id)arg1;

@@ -22,12 +22,12 @@
     unsigned long long _generationCounter;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isBrowsing) _Bool browsing; // @synthesize browsing=_browsing;
 @property(nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
 @property(retain, nonatomic) HMMutableArray *accessories; // @synthesize accessories=_accessories;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)_handleNewAccessoriesRemoved:(id)arg1;
@@ -37,7 +37,8 @@
 - (void)_fetchNewAccessories;
 - (void)_fetchNewAccessoriesWithPrivacyCheck;
 - (void)_start;
-- (void)_stopSearchingForNewAccessories;
+- (void)_stopSearchingForNewAccessoriesWithError:(id)arg1;
+- (void)stopSearchingForNewAccessoriesWithError:(id)arg1;
 - (void)stopSearchingForNewAccessories;
 - (void)handleStartWithError:(id)arg1 response:(id)arg2;
 - (void)_startSearchingForNewAccessories;

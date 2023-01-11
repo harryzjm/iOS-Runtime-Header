@@ -6,36 +6,37 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSString, RBSProcessInstance, RBSXPCServiceDefinition;
+@class NSString, NSUUID, RBSProcessInstance, RBSXPCServiceDefinition;
 
-__attribute__((visibility("hidden")))
-@interface RBSXPCServiceIdentity : NSObject <BSXPCSecureCoding, NSSecureCoding>
+@interface RBSXPCServiceIdentity : NSObject <RBSXPCSecureCoding, NSSecureCoding>
 {
     RBSXPCServiceDefinition *_definition;
     NSString *_sessionID;
     RBSProcessInstance *_host;
+    NSUUID *_uuid;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (_Bool)supportsSecureCoding;
-+ (id)identityWithDefinition:(id)arg1 sessionID:(id)arg2 host:(id)arg3;
++ (id)identityWithDefinition:(id)arg1 sessionID:(id)arg2 host:(id)arg3 UUID:(id)arg4;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly, nonatomic) RBSProcessInstance *host; // @synthesize host=_host;
 @property(readonly, copy, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly, nonatomic) RBSXPCServiceDefinition *definition; // @synthesize definition=_definition;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

@@ -17,6 +17,7 @@
 + (id)renderSingleRingUsingRingsView:(id)arg1 forPercentage:(double)arg2 withDiameter:(double)arg3 thickness:(double)arg4 topColor:(id)arg5 bottomColor:(id)arg6;
 + (id)renderRingGroupController:(id)arg1 withBackgroundColor:(id)arg2 andRenderer:(id)arg3;
 + (id)renderRingGroupController:(id)arg1 withRenderer:(id)arg2;
++ (id)renderRingGroup:(id)arg1 withRenderer:(id)arg2;
 
 @end
 

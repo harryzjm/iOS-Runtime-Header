@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_updateTiles;
+- (void)_pageChangedPageRef:(id)arg1;
 - (void)_pageDidRotate:(id)arg1;
 - (void)_renderingPropertyUpdate:(id)arg1;
 - (void)_printRectsArray:(id)arg1;

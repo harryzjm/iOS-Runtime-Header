@@ -24,6 +24,7 @@
     _Bool _isValueMutable;
 }
 
++ (CDUnknownBlockType)Value;
 + (_Bool)supportsSecureCoding;
 + (id)firstLabeledValueWithValue:(id)arg1 inArray:(id)arg2;
 + (id)labeledValueWithIdentifier:(id)arg1 inArray:(id)arg2;
@@ -36,23 +37,18 @@
 + (id)valueForIdentifier:(id)arg1 inArray:(id)arg2;
 + (id)labelForIdentifier:(id)arg1 inArray:(id)arg2;
 + (id)localizedStringForLabel:(id)arg1;
-+ (id)propertyDescriptionOwnersByLabel;
 + (id)entryForIdentifier:(id)arg1 inArray:(id)arg2;
 + (CDUnknownBlockType)testMatchingIdentifier:(id)arg1;
-+ (id)makeIdentifier;
-+ (id)identifierProvider;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *linkedIdentifiers; // @synthesize linkedIdentifiers=_linkedIdentifiers;
 @property(copy, nonatomic) NSDictionary *storeInfo; // @synthesize storeInfo=_storeInfo;
 @property(copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property(readonly) CNLabelValuePair *labelValuePair; // @synthesize labelValuePair=_labelValuePair;
 @property(nonatomic) int iOSLegacyIdentifier; // @synthesize iOSLegacyIdentifier=_iOSLegacyIdentifier;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualIgnoringIdentifiers:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToLabeledValue:(id)arg1 includeIdentifiers:(_Bool)arg2;
-- (_Bool)isEqualToLabeledValue:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

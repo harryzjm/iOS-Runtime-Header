@@ -4,44 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoverSheet/CSCoverSheetViewControllerBase.h>
-
-#import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
-#import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/SBViewControllerTransitionContextDelegate-Protocol.h>
+#import <SpringBoard/_SBDashBoardSpotlightViewControllerDelegate-Protocol.h>
 
-@class FBDisplayLayoutTransition, NSString, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant, SBSearchBackdropView, UIViewController, _SBDashBoardSpotlightViewController;
-@protocol SBUISpotlightInitiating, SPUIRemoteSearchViewDelegate;
+@class FBDisplayLayoutTransition, NSString, SBSearchBackdropView, UIViewController, _SBDashBoardSpotlightViewController, _UILegibilitySettings;
+@protocol SBDashBoardSpotlightViewControllerDelegate, SBUISpotlightInitiating, SPUIRemoteSearchViewDelegate;
 
-@interface SBDashBoardSpotlightViewController : CSCoverSheetViewControllerBase <SBHomeGestureParticipantDelegate, SBSystemGestureRecognizerDelegate, SBViewControllerTransitionContextDelegate>
+@interface SBDashBoardSpotlightViewController <_SBDashBoardSpotlightViewControllerDelegate, SBViewControllerTransitionContextDelegate>
 {
     SBSearchBackdropView *_backdropView;
+    _UILegibilitySettings *_spotlightLegibilitySettings;
     UIViewController<SBUISpotlightInitiating> *_initiatingViewController;
+    id <SBDashBoardSpotlightViewControllerDelegate> _delegate;
     _SBDashBoardSpotlightViewController *_spotlightViewController;
-    SBHomeGesturePanGestureRecognizer *_bottomEdgeRecognizer;
-    SBHomeGestureParticipant *_homeGestureParticipant;
     FBDisplayLayoutTransition *_displayLayoutTransition;
 }
 
-@property(retain, nonatomic) FBDisplayLayoutTransition *displayLayoutTransition; // @synthesize displayLayoutTransition=_displayLayoutTransition;
-@property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
-@property(retain, nonatomic) SBHomeGesturePanGestureRecognizer *bottomEdgeRecognizer; // @synthesize bottomEdgeRecognizer=_bottomEdgeRecognizer;
-@property(retain, nonatomic) _SBDashBoardSpotlightViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
-@property(retain, nonatomic) UIViewController<SBUISpotlightInitiating> *initiatingViewController; // @synthesize initiatingViewController=_initiatingViewController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) FBDisplayLayoutTransition *displayLayoutTransition; // @synthesize displayLayoutTransition=_displayLayoutTransition;
+@property(retain, nonatomic) _SBDashBoardSpotlightViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
+@property(nonatomic) __weak id <SBDashBoardSpotlightViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) UIViewController<SBUISpotlightInitiating> *initiatingViewController; // @synthesize initiatingViewController=_initiatingViewController;
+@property(retain, nonatomic) _UILegibilitySettings *spotlightLegibilitySettings; // @synthesize spotlightLegibilitySettings=_spotlightLegibilitySettings;
+- (unsigned long long)remoteSearchViewPresentationSourceForSpotlightViewController:(id)arg1;
+- (unsigned long long)spotlightMultiplexingLevelForSpotlightViewController:(id)arg1;
 - (_Bool)_shouldCancelInteractiveDismissGesture:(id)arg1;
-- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)viewForSystemGestureRecognizer:(id)arg1;
-- (void)_handleBottomEdgeGestureEnded:(id)arg1;
-- (void)_handleBottomEdgeGestureChanged:(id)arg1;
-- (void)_handleBottomEdgeGestureBegan:(id)arg1;
-- (void)_handleBottomEdgeGesture:(id)arg1;
-- (void)_addOrRemoveGestureForCurrentSettings;
-- (void)_relinquishHomeGestureOwnership;
-- (void)_requestHomeGestureOwnership;
-- (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
+- (long long)homeGestureParticipantIdentifier;
+- (_Bool)shouldDismissForHomeGestureRecognizer:(id)arg1;
 - (_Bool)_initiallyTransitioningToSpotlight:(id)arg1;
 - (_Bool)_transitioningIntoSpotlight:(id)arg1;
 - (_Bool)_isTransitioning;
@@ -62,8 +51,7 @@
 - (id)transitionContextToShowSpotlight:(_Bool)arg1 animated:(_Bool)arg2 interactive:(_Bool)arg3;
 @property(nonatomic) __weak id <SPUIRemoteSearchViewDelegate> spotlightDelegate;
 - (void)viewWillLayoutSubviews;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)init;
 

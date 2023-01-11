@@ -7,10 +7,13 @@
 @interface PXGridKitSettings
 {
     _Bool _pauseWhenIdle;
+    _Bool _enableXcodeCustomDebugHierarchy;
+    _Bool _sortSpritesInXcodeCustomDebugHierarchy;
+    _Bool _includeLayoutsLocalSpritesInDebugHierarchy;
     _Bool _enableMetalRenderer;
     _Bool _enableViewRenderer;
-    _Bool _enableAccessibilityRenderer;
     _Bool _lowLatency;
+    _Bool _lowMemoryMode;
     _Bool _enableRoundedCorners;
     _Bool _enableColorMatching;
     _Bool _debugExtendedColorRange;
@@ -18,8 +21,12 @@
     _Bool _debugResolution;
     _Bool _debugColorTransform;
     _Bool _colorCopiedImages;
+    _Bool _colorCachedThumbnails;
     _Bool _requestThumbnailsOnly;
     _Bool _requestMasterThumbsOnly;
+    _Bool _disableLowResThumbnails;
+    _Bool _simulateSomeAssetsInCloud;
+    _Bool _loadThumbnailsAsync;
     _Bool _allowBlockingDuringScrolling;
     _Bool _allowBlockingDueToFences;
     _Bool _wantsOrthogonalProjection;
@@ -27,6 +34,8 @@
     _Bool _wantsRectDiagnosticsDebugHUD;
     _Bool _enableAnchoringRectDiagnostics;
     _Bool _enableAssetsRectDiagnostics;
+    _Bool _enableFocusRectDiagnostics;
+    _Bool _enableCurrentFocusRectDiagnostics;
     _Bool _enableRectDiagnosticsForUndefinedSprites;
     _Bool _enableRectDiagnosticsForNamedImageSprites;
     _Bool _enableRectDiagnosticsForDisplayAssetSprites;
@@ -39,8 +48,13 @@
     _Bool _enableRectDiagnosticsForViewSprites;
     _Bool _wantsPerspectiveDebug;
     _Bool _shouldShowBoundariesOfTextTextures;
-    _Bool _shouldIncludeSpecialCharactersInTextTextures;
+    double _inactivityTimeout;
     long long _sampleCount;
+    long long _thumbnailCacheSize;
+    double _opportunisticPreheatRequiredIdleTime;
+    double _blockingWhileScrollingTimeout;
+    double _blockingWhileScrubbingTimeout;
+    double _blockingWhileInitialLoadTimeout;
     long long _blockOnMissingThumbnailsAtSpeedRegime;
     long long _videoAllowedAtOrBelowSpeed;
     long long _videoAllowedAtOrBelowSpeedForLowSpec;
@@ -49,11 +63,12 @@
     double _maxCornerRadius;
     double _cameraZoomFactor;
     double _perspectiveAngle;
+    double _livePhotoInitialCrossfadeDuration;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
-@property(nonatomic) _Bool shouldIncludeSpecialCharactersInTextTextures; // @synthesize shouldIncludeSpecialCharactersInTextTextures=_shouldIncludeSpecialCharactersInTextTextures;
+@property(nonatomic) double livePhotoInitialCrossfadeDuration; // @synthesize livePhotoInitialCrossfadeDuration=_livePhotoInitialCrossfadeDuration;
 @property(nonatomic) _Bool shouldShowBoundariesOfTextTextures; // @synthesize shouldShowBoundariesOfTextTextures=_shouldShowBoundariesOfTextTextures;
 @property(nonatomic) double perspectiveAngle; // @synthesize perspectiveAngle=_perspectiveAngle;
 @property(nonatomic) _Bool wantsPerspectiveDebug; // @synthesize wantsPerspectiveDebug=_wantsPerspectiveDebug;
@@ -67,6 +82,8 @@
 @property(nonatomic) _Bool enableRectDiagnosticsForDisplayAssetSprites; // @synthesize enableRectDiagnosticsForDisplayAssetSprites=_enableRectDiagnosticsForDisplayAssetSprites;
 @property(nonatomic) _Bool enableRectDiagnosticsForNamedImageSprites; // @synthesize enableRectDiagnosticsForNamedImageSprites=_enableRectDiagnosticsForNamedImageSprites;
 @property(nonatomic) _Bool enableRectDiagnosticsForUndefinedSprites; // @synthesize enableRectDiagnosticsForUndefinedSprites=_enableRectDiagnosticsForUndefinedSprites;
+@property(nonatomic) _Bool enableCurrentFocusRectDiagnostics; // @synthesize enableCurrentFocusRectDiagnostics=_enableCurrentFocusRectDiagnostics;
+@property(nonatomic) _Bool enableFocusRectDiagnostics; // @synthesize enableFocusRectDiagnostics=_enableFocusRectDiagnostics;
 @property(nonatomic) _Bool enableAssetsRectDiagnostics; // @synthesize enableAssetsRectDiagnostics=_enableAssetsRectDiagnostics;
 @property(nonatomic) _Bool enableAnchoringRectDiagnostics; // @synthesize enableAnchoringRectDiagnostics=_enableAnchoringRectDiagnostics;
 @property(nonatomic) _Bool wantsRectDiagnosticsDebugHUD; // @synthesize wantsRectDiagnosticsDebugHUD=_wantsRectDiagnosticsDebugHUD;
@@ -80,9 +97,18 @@
 @property(nonatomic) long long videoAllowedAtOrBelowSpeedForLowSpec; // @synthesize videoAllowedAtOrBelowSpeedForLowSpec=_videoAllowedAtOrBelowSpeedForLowSpec;
 @property(nonatomic) long long videoAllowedAtOrBelowSpeed; // @synthesize videoAllowedAtOrBelowSpeed=_videoAllowedAtOrBelowSpeed;
 @property(nonatomic) long long blockOnMissingThumbnailsAtSpeedRegime; // @synthesize blockOnMissingThumbnailsAtSpeedRegime=_blockOnMissingThumbnailsAtSpeedRegime;
+@property(nonatomic) double blockingWhileInitialLoadTimeout; // @synthesize blockingWhileInitialLoadTimeout=_blockingWhileInitialLoadTimeout;
+@property(nonatomic) double blockingWhileScrubbingTimeout; // @synthesize blockingWhileScrubbingTimeout=_blockingWhileScrubbingTimeout;
+@property(nonatomic) double blockingWhileScrollingTimeout; // @synthesize blockingWhileScrollingTimeout=_blockingWhileScrollingTimeout;
 @property(nonatomic) _Bool allowBlockingDuringScrolling; // @synthesize allowBlockingDuringScrolling=_allowBlockingDuringScrolling;
+@property(nonatomic) double opportunisticPreheatRequiredIdleTime; // @synthesize opportunisticPreheatRequiredIdleTime=_opportunisticPreheatRequiredIdleTime;
+@property(nonatomic) long long thumbnailCacheSize; // @synthesize thumbnailCacheSize=_thumbnailCacheSize;
+@property(nonatomic) _Bool loadThumbnailsAsync; // @synthesize loadThumbnailsAsync=_loadThumbnailsAsync;
+@property(nonatomic) _Bool simulateSomeAssetsInCloud; // @synthesize simulateSomeAssetsInCloud=_simulateSomeAssetsInCloud;
+@property(nonatomic) _Bool disableLowResThumbnails; // @synthesize disableLowResThumbnails=_disableLowResThumbnails;
 @property(nonatomic) _Bool requestMasterThumbsOnly; // @synthesize requestMasterThumbsOnly=_requestMasterThumbsOnly;
 @property(nonatomic) _Bool requestThumbnailsOnly; // @synthesize requestThumbnailsOnly=_requestThumbnailsOnly;
+@property(nonatomic) _Bool colorCachedThumbnails; // @synthesize colorCachedThumbnails=_colorCachedThumbnails;
 @property(nonatomic) _Bool colorCopiedImages; // @synthesize colorCopiedImages=_colorCopiedImages;
 @property(nonatomic) _Bool debugColorTransform; // @synthesize debugColorTransform=_debugColorTransform;
 @property(nonatomic) _Bool debugResolution; // @synthesize debugResolution=_debugResolution;
@@ -91,10 +117,14 @@
 @property(nonatomic) long long sampleCount; // @synthesize sampleCount=_sampleCount;
 @property(nonatomic) _Bool enableColorMatching; // @synthesize enableColorMatching=_enableColorMatching;
 @property(nonatomic) _Bool enableRoundedCorners; // @synthesize enableRoundedCorners=_enableRoundedCorners;
+@property(nonatomic) double inactivityTimeout; // @synthesize inactivityTimeout=_inactivityTimeout;
+@property(nonatomic) _Bool lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
 @property(nonatomic) _Bool lowLatency; // @synthesize lowLatency=_lowLatency;
-@property(nonatomic) _Bool enableAccessibilityRenderer; // @synthesize enableAccessibilityRenderer=_enableAccessibilityRenderer;
 @property(nonatomic) _Bool enableViewRenderer; // @synthesize enableViewRenderer=_enableViewRenderer;
 @property(nonatomic) _Bool enableMetalRenderer; // @synthesize enableMetalRenderer=_enableMetalRenderer;
+@property(nonatomic) _Bool includeLayoutsLocalSpritesInDebugHierarchy; // @synthesize includeLayoutsLocalSpritesInDebugHierarchy=_includeLayoutsLocalSpritesInDebugHierarchy;
+@property(nonatomic) _Bool sortSpritesInXcodeCustomDebugHierarchy; // @synthesize sortSpritesInXcodeCustomDebugHierarchy=_sortSpritesInXcodeCustomDebugHierarchy;
+@property(nonatomic) _Bool enableXcodeCustomDebugHierarchy; // @synthesize enableXcodeCustomDebugHierarchy=_enableXcodeCustomDebugHierarchy;
 @property(nonatomic) _Bool pauseWhenIdle; // @synthesize pauseWhenIdle=_pauseWhenIdle;
 - (void)setDefaultValues;
 - (_Bool)anySpritesRectDiagnosticsEnabled;

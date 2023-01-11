@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (void)conformsToCSEventHandling;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (void)dealloc;

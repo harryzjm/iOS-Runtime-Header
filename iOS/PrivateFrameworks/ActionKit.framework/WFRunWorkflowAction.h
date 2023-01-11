@@ -15,18 +15,19 @@
     WFWorkflowController *_workflowController;
 }
 
-@property(nonatomic) __weak WFWorkflowController *workflowController; // @synthesize workflowController=_workflowController;
 - (void).cxx_destruct;
+@property(nonatomic) __weak WFWorkflowController *workflowController; // @synthesize workflowController=_workflowController;
+- (id)targetContentAttribution;
 - (id)workflowController:(id)arg1 userInterfaceForAction:(id)arg2;
 - (_Bool)workflowController:(id)arg1 handleUnsupportedEnvironmentForAction:(id)arg2 currentState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)workflowController:(id)arg1 handleUnsupportedUserInterfaceForAction:(id)arg2 currentState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)workflowController:(id)arg1 parameterInputProviderForAction:(id)arg2;
 - (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(_Bool)arg3;
+- (void)workflowController:(id)arg1 prepareToRunAction:(id)arg2 withInput:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)finishRunningWithError:(id)arg1;
 - (void)cancel;
 - (void)stop;
-- (void)runWorkflowWithInput:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)getHandoffWorkflowControllerState:(CDUnknownBlockType)arg1;
 - (void)setHandoffWorkflowControllerState:(id)arg1;

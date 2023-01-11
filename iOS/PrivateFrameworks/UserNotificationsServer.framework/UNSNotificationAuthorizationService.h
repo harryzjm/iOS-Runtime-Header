@@ -19,12 +19,16 @@
 }
 
 - (void).cxx_destruct;
+- (void)_queue_requestRemoveAuthorizationForNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_queue_isSpokenAvailableForApplication:(id)arg1;
 - (_Bool)_queue_isCarPlayAvailableForApplication:(id)arg1;
 - (void)_queue_requestCriticalAlertAuthorizationForNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_queue_requestAuthorizationWithOptions:(unsigned long long)arg1 forNotificationSourceDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)authorizedBundleIdentifiersForBundleIdentifiers:(id)arg1;
+- (void)_queue_requestAuthorizationWithOptions:(unsigned long long)arg1 forNotificationSourceDescription:(id)arg2 withExpirationDate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_didForegroundApplicationWithBundleIdentifier:(id)arg1;
+- (void)didChangeApplicationState:(unsigned int)arg1 forBundleIdentifier:(id)arg2;
 - (void)requestCriticalAlertAuthorizationForNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestRemoveAuthorizationForNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestAuthorizationWithOptions:(unsigned long long)arg1 expirationDate:(id)arg2 forNotificationSourceDescription:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 forNotificationSourceDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithDataProviderFactory:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebUI/WBSAnalyticsLogger.h>
+#import <SafariSharedUI/WBSAnalyticsLogger.h>
 
 @interface WBSAnalyticsLogger (_SFAnalyticsLogger)
 - (void)_sf_didCloseTabsAutomaticallyWithCount:(unsigned long long)arg1 tabClosingInterval:(id)arg2;

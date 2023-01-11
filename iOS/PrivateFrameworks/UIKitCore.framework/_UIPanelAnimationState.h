@@ -6,26 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class UISlidingBarStateRequest, UIViewPropertyAnimator;
+@class UISlidingBarStateRequest, _UIPanelCoordinatingAnimator;
 
 __attribute__((visibility("hidden")))
 @interface _UIPanelAnimationState : NSObject
 {
+    _Bool _isFinishingAnimation;
+    _Bool _shouldAssignOffscreenWidthsToStateRequest;
+    _Bool _animatorShouldCoordinate;
     UISlidingBarStateRequest *_fromRequest;
     UISlidingBarStateRequest *_toRequest;
     double _progress;
     long long _affectedSides;
-    UIViewPropertyAnimator *_animator;
+    _UIPanelCoordinatingAnimator *_animator;
 }
 
 + (double)defaultDuration;
++ (id)timingCurveProviderWithVelocity:(double)arg1;
 + (id)timingCurveProvider;
-@property(retain, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool animatorShouldCoordinate; // @synthesize animatorShouldCoordinate=_animatorShouldCoordinate;
+@property(retain, nonatomic) _UIPanelCoordinatingAnimator *animator; // @synthesize animator=_animator;
+@property(nonatomic) _Bool shouldAssignOffscreenWidthsToStateRequest; // @synthesize shouldAssignOffscreenWidthsToStateRequest=_shouldAssignOffscreenWidthsToStateRequest;
 @property(nonatomic) long long affectedSides; // @synthesize affectedSides=_affectedSides;
+@property(nonatomic, setter=setFinishingAnimation:) _Bool isFinishingAnimation; // @synthesize isFinishingAnimation=_isFinishingAnimation;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(copy, nonatomic) UISlidingBarStateRequest *toRequest; // @synthesize toRequest=_toRequest;
 @property(copy, nonatomic) UISlidingBarStateRequest *fromRequest; // @synthesize fromRequest=_fromRequest;
-- (void).cxx_destruct;
+- (id)description;
 @property(readonly, nonatomic) UISlidingBarStateRequest *stateRequest;
 
 @end

@@ -19,8 +19,8 @@
     CCUIToggleModule *_module;
 }
 
-@property(nonatomic) __weak CCUIToggleModule *module; // @synthesize module=_module;
 - (void).cxx_destruct;
+@property(nonatomic) __weak CCUIToggleModule *module; // @synthesize module=_module;
 - (_Bool)shouldFinishTransitionToExpandedContentModule;
 @property(readonly, nonatomic) double preferredExpandedContentHeight;
 - (void)reconfigureView;
@@ -38,6 +38,8 @@
 @property(readonly, nonatomic) double preferredExpandedContentWidth;
 @property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property(readonly, nonatomic) _Bool providesOwnPlatter;
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
 @property(readonly) Class superclass;
 
 @end

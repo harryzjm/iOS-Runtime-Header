@@ -96,6 +96,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (double)_defaultGutterWidthInView:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_detailFocusContainerGuide) UIFocusContainerGuide *detailFocusContainerGuide; // @synthesize detailFocusContainerGuide=_detailFocusContainerGuide;
 @property(readonly, nonatomic, getter=_masterFocusContainerGuide) UIFocusContainerGuide *masterFocusContainerGuide; // @synthesize masterFocusContainerGuide=_masterFocusContainerGuide;
 @property(copy, nonatomic, setter=_setClearPreventRotationHook:) CDUnknownBlockType _clearPreventRotationHook; // @synthesize _clearPreventRotationHook=__clearPreventRotationHook;
@@ -106,9 +107,12 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic, setter=_setDisplayModeButtonItemTitle:) NSString *_displayModeButtonItemTitle; // @synthesize _displayModeButtonItemTitle;
 @property(nonatomic) _Bool presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
 @property(nonatomic) __weak id <UISplitViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (double)_supplementaryDividerPosition;
+- (double)_primaryDividerPosition;
+- (_Bool)_isAnimating;
+@property(readonly, nonatomic) _Bool lockedForDelegateCallback;
+@property(readonly, nonatomic) long long style;
 @property(nonatomic) long long primaryBackgroundStyle;
-- (long long)primaryIsSidebar;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (id)_additionalViewControllersToCheckForUserActivity;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
@@ -145,6 +149,7 @@ __attribute__((visibility("hidden")))
 - (long long)preferredLeadingStatusBarStyle;
 - (id)childViewControllerForStatusBarStyle;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (id)_multitaskingDragExclusionRects;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (id)preferredFocusEnvironments;
@@ -208,6 +213,7 @@ __attribute__((visibility("hidden")))
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)_removeCollapsingSnapshotViews;
+- (id)_deepestUnambiguousResponder;
 - (_Bool)_disableAutomaticKeyboardBehavior;
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (void)_didTransitionTraitCollection;
@@ -223,6 +229,7 @@ __attribute__((visibility("hidden")))
 - (id)_childContainingSender:(id)arg1;
 - (void)_setMasterOverrideTraitCollectionActive:(_Bool)arg1;
 @property(copy, nonatomic) NSArray *viewControllers;
+@property(readonly, nonatomic) _Bool inCollapsingToProposedTopColumnCallback;
 - (_Bool)_isBasicallyHorizontallyCompact;
 - (_Bool)_canDisplayHostedMaster;
 - (id)_separateSecondaryViewControllerFromPrimaryViewController:(id)arg1;

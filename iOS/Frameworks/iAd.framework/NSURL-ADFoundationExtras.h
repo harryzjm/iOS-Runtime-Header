@@ -15,6 +15,7 @@
 - (_Bool)_iAd_isHttpOnly;
 - (id)_iad_URLByRemovingDuplicateSlashes;
 - (id)_iAd_URLByReplacingQueryStringWithString:(id)arg1;
+- (_Bool)isNews;
 - (id)decodePercentEscapesEncoding;
 @end
 

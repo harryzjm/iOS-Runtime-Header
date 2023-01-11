@@ -16,13 +16,15 @@ __attribute__((visibility("hidden")))
 @interface GEOPDDeparture : PBCodable <GEOTransitDeparture, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _absDepartureTime;
     double _absLiveDepartureTime;
     GEOFormattedString *_realTimeStatus;
     unsigned long long _referenceTripId;
     NSString *_vehicleNumber;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _isCanceled;
     struct {
         unsigned int has_absDepartureTime:1;
@@ -32,13 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_realTimeStatus:1;
         unsigned int read_vehicleNumber:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_absDepartureTime:1;
-        unsigned int wrote_absLiveDepartureTime:1;
-        unsigned int wrote_realTimeStatus:1;
-        unsigned int wrote_referenceTripId:1;
-        unsigned int wrote_vehicleNumber:1;
-        unsigned int wrote_isCanceled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,11 +50,13 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) GEOFormattedString *realTimeStatus;
 @property(readonly, nonatomic) _Bool hasRealTimeStatus;
-- (void)_readRealTimeStatus;
 @property(nonatomic) _Bool hasReferenceTripId;
 @property(nonatomic) unsigned long long referenceTripId;
 @property(nonatomic) _Bool hasIsCanceled;
@@ -67,9 +65,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double absLiveDepartureTime;
 @property(retain, nonatomic) NSString *vehicleNumber;
 @property(readonly, nonatomic) _Bool hasVehicleNumber;
-- (void)_readVehicleNumber;
 @property(nonatomic) _Bool hasAbsDepartureTime;
 @property(nonatomic) double absDepartureTime;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (_Bool)isPastDepartureRelativeToDate:(id)arg1 usingGracePeriod:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool isPastDeparture;
 @property(readonly, nonatomic) unsigned long long tripIdentifier;

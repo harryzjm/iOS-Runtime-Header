@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, UIFont, UIImage, UIImageView, UILabel;
+@class NSArray, NSLayoutConstraint, NSString, UIFont, UIImage, UIImageView, UILabel;
 
 @interface HUTitleDescriptionCell
 {
@@ -14,6 +14,8 @@
     _Bool _adjustsTextColorWhenDisabled;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
+    NSLayoutConstraint *_titleTrailingConstraint;
+    NSLayoutConstraint *_descriptionTrailingConstraint;
     NSString *_titleText;
     UIFont *_titleFont;
     unsigned long long _maxNumberOfTitleLines;
@@ -27,6 +29,7 @@
     UIImageView *_descriptionIconView;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImageView *descriptionIconView; // @synthesize descriptionIconView=_descriptionIconView;
 @property(retain, nonatomic) NSArray *horizontalLabelConstraints; // @synthesize horizontalLabelConstraints=_horizontalLabelConstraints;
 @property(retain, nonatomic) NSArray *verticalLabelConstraints; // @synthesize verticalLabelConstraints=_verticalLabelConstraints;
@@ -42,7 +45,8 @@
 @property(nonatomic) _Bool hideTitle; // @synthesize hideTitle=_hideTitle;
 @property(retain, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property(retain, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSLayoutConstraint *descriptionTrailingConstraint; // @synthesize descriptionTrailingConstraint=_descriptionTrailingConstraint;
+@property(readonly, nonatomic) NSLayoutConstraint *titleTrailingConstraint; // @synthesize titleTrailingConstraint=_titleTrailingConstraint;
 - (void)updateTitle;
 - (void)_addDescriptionIconView;
 - (void)_addDescriptionLabel;

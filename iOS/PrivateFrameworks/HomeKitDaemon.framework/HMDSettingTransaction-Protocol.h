@@ -6,9 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
+@class HMBModel, NSUUID;
 @protocol HMDSettingModelBaseProtocol;
 
 @protocol HMDSettingTransaction <NSObject>
-- (void)addModel:(id <HMDSettingModelBaseProtocol>)arg1;
+- (void)removeModelWithIdentifier:(NSUUID *)arg1;
+- (void)addModel:(HMBModel *)arg1;
+- (void)addSettingModel:(id <HMDSettingModelBaseProtocol>)arg1;
 @end
 

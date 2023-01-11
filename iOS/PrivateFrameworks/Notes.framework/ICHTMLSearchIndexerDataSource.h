@@ -8,9 +8,11 @@
 {
 }
 
+- (id)addNotesFromSubtree:(id)arg1;
+- (_Bool)isFolderWithServerShareChanged:(id)arg1;
 - (void)contextWillSave:(id)arg1;
-- (id)indexableObjectIDsMatchingPredicate:(id)arg1 sortByReversedReindexingOrder:(_Bool)arg2;
-- (id)allIndexableObjectIDsInReversedReindexingOrder;
+- (id)indexableObjectIDsMatchingPredicate:(id)arg1 sortByReversedReindexingOrder:(_Bool)arg2 context:(id)arg3;
+- (id)allIndexableObjectIDsInReversedReindexingOrderWithContext:(id)arg1;
 - (id)newManagedObjectContext;
 - (id)persistentStoreCoordinator;
 - (unsigned long long)indexingPriority;

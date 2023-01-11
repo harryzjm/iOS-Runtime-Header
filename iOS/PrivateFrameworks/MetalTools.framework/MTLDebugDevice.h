@@ -4,42 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableSet;
-
 @interface MTLDebugDevice
 {
-    _Bool _prevResourceTrackingEnabled;
-    NSMutableSet *_buffersAlreadyChecksummedInFrame;
     struct MTLSamplerDescriptorHashMap _argumentBufferSamplers;
-    _Bool _resourceTrackingEnabled;
-    _Bool _resourceTrackingChecksummingEnabled;
-    _Bool _resourceTrackingChecksummingForceAll;
-    unsigned int _frameNum;
+    struct os_unfair_lock_s _referenceTrackingCommandBufferLock;
+    struct unordered_set<MTLDebugCommandBuffer *, std::__1::hash<MTLDebugCommandBuffer *>, std::__1::equal_to<MTLDebugCommandBuffer *>, std::__1::allocator<MTLDebugCommandBuffer *>> _referenceTrackingCommandBuffers;
+    struct CheckerboardRenderTargetPipelineCache _checkerboardRTPipelineCache;
+    _Bool _storeValidationEnabled;
+    _Bool _loadValidationEnabled;
 }
 
 + (_Bool)complainAboutSloppyTextureUsage;
-@property(readonly, nonatomic) _Bool resourceTrackingChecksummingForceAll; // @synthesize resourceTrackingChecksummingForceAll=_resourceTrackingChecksummingForceAll;
-@property(readonly, nonatomic) _Bool resourceTrackingChecksummingEnabled; // @synthesize resourceTrackingChecksummingEnabled=_resourceTrackingChecksummingEnabled;
-@property(nonatomic) unsigned int frameNum; // @synthesize frameNum=_frameNum;
-@property(readonly, nonatomic) _Bool resourceTrackingEnabled; // @synthesize resourceTrackingEnabled=_resourceTrackingEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)eventSignaled:(id)arg1 value:(unsigned long long)arg2;
+@property(readonly) _Bool loadValidationEnabled; // @synthesize loadValidationEnabled=_loadValidationEnabled;
+@property(readonly) _Bool storeValidationEnabled; // @synthesize storeValidationEnabled=_storeValidationEnabled;
+- (void)clearRenderEncoder:(id)arg1 writeMask:(unsigned long long)arg2 withCheckerboard:(float *)arg3;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (id)newAccelerationStructureWithDescriptor:(id)arg1;
+- (id)newAccelerationStructureWithSize:(unsigned long long)arg1;
+- (CDStruct_14f26992)accelerationStructureSizesWithDescriptor:(id)arg1;
+- (void)notifyExternalReferencesNonZeroOnDealloc:(id)arg1;
+- (void)removeReferenceTrackingCommandBuffer:(id)arg1;
+- (void)addReferenceTrackingCommandBuffer:(id)arg1;
+- (id)newFence;
 - (id)newSharedEventWithHandle:(id)arg1;
 - (id)newSharedEventWithMachPort:(unsigned int)arg1;
-- (id)_newSharedEventWithParent:(id)arg1;
 - (id)newSharedEvent;
 - (id)newEvent;
+- (id)newCounterSampleBufferWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newRasterizationRateMapWithDescriptor:(id)arg1;
 - (unsigned long long)minimumLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
 - (unsigned long long)minLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
+- (const struct MTLTargetDeviceArch *)targetDeviceInfo;
 - (id)newTextureLayoutWithDescriptor:(id)arg1 isHeapOrBufferBacked:(_Bool)arg2;
-- (unsigned int)checksumBuffer:(id)arg1;
-- (void)_resourceTrackingChecksummingEndOfFrame;
-- (void)bufferChecksummedInFrame:(id)arg1;
-- (_Bool)restoreResourceTrackingEnabled;
-- (_Bool)overrideResourceTrackingEnabled:(_Bool)arg1;
-- (void)resourceTrackingEndOfFrame;
 - (id)newBufferWithIOSurface:(struct __IOSurface *)arg1;
 - (id)newTextureWithDescriptor:(id)arg1 iosurface:(struct __IOSurface *)arg2 plane:(unsigned long long)arg3;
 - (id)newPipelineLibraryWithFilePath:(id)arg1 error:(id *)arg2;
@@ -50,6 +49,7 @@
 - (id)newLibraryWithFile:(id)arg1 error:(id *)arg2;
 - (id)newComputePipelineStateWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
 - (id)newLibraryWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (id)newLibraryWithDAG:(id)arg1 functions:(id)arg2 error:(id *)arg3;
 - (void)newRenderPipelineStateWithTileDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)newRenderPipelineStateWithTileDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_newRenderPipelineStateWithTileDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -66,6 +66,7 @@
 - (void)newComputePipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)newComputePipelineStateWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_newComputePipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
+- (void)validateLinkedFunctions:(id)arg1;
 - (id)newComputePipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)newComputePipelineStateWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)_newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -75,6 +76,16 @@
 - (id)newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)_newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (void)validateTraceBuffer:(unsigned long long)arg1 maxBufferCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (_Bool)validateDynamicLibraryURL:(id)arg1 error:(id *)arg2;
+- (_Bool)validateDynamicLibrary:(id)arg1 state:(_Bool)arg2 error:(id *)arg3;
+- (id)loadDynamicLibrariesForComputeDescriptor:(id)arg1 error:(id *)arg2;
+- (id)newDynamicLibrary:(id)arg1 error:(id *)arg2;
+- (id)newDynamicLibrary:(id)arg1 computeDescriptor:(id)arg2 error:(id *)arg3;
+- (id)newDynamicLibraryWithURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)newDynamicLibraryWithURL:(id)arg1 error:(id *)arg2;
+- (id)newDynamicLibraryFromURL:(id)arg1 error:(id *)arg2;
+- (id)newBinaryLibraryWithOptions:(unsigned long long)arg1 url:(id)arg2 error:(id *)arg3;
+- (id)newBinaryArchiveWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newDefaultLibrary;
 - (id)newDefaultLibraryWithBundle:(id)arg1 error:(id *)arg2;
 - (void)notifySamplerStateDeallocated:(id)arg1;
@@ -88,16 +99,15 @@
 - (id)newBufferWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
-- (void)validateNewBufferArgs:(unsigned long long)arg1 options:(unsigned long long)arg2;
-- (void)validateResourceOptions:(unsigned long long)arg1 isTexture:(_Bool)arg2 isIOSurface:(_Bool)arg3;
-- (void)validateMemorylessResource:(id)arg1;
+- (void)validateNewBufferArgs:(unsigned long long)arg1 options:(unsigned long long)arg2 context:(struct _MTLMessageContext *)arg3;
+- (void)validateResourceOptions:(unsigned long long)arg1 isTexture:(_Bool)arg2 isIOSurface:(_Bool)arg3 context:(struct _MTLMessageContext *)arg4;
+- (void)validateMemorylessResource:(id)arg1 context:(struct _MTLMessageContext *)arg2;
 - (id)newHeapWithDescriptor:(id)arg1;
 - (CDStruct_4bcfbbae)heapBufferSizeAndAlignWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (CDStruct_4bcfbbae)heapTextureSizeAndAlignWithDescriptor:(id)arg1;
 - (id)newCommandQueueWithDescriptor:(id)arg1;
 - (id)newCommandQueueWithMaxCommandBufferCount:(unsigned long long)arg1;
 - (id)newCommandQueue;
-- (void)dealloc;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 
 @end

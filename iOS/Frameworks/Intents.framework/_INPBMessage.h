@@ -19,7 +19,6 @@
         unsigned int effect:1;
         unsigned int type:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _effect;
     int _type;
     NSString *_content;
@@ -36,14 +35,16 @@
     NSArray *_recipients;
     _INPBMessage *_referencedMessage;
     _INPBContact *_sender;
+    NSString *_serviceName;
     _INPBDataString *_speakableGroupName;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)recipientType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(retain, nonatomic) _INPBDataString *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
+@property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(retain, nonatomic) _INPBContact *sender; // @synthesize sender=_sender;
 @property(retain, nonatomic) _INPBMessage *referencedMessage; // @synthesize referencedMessage=_referencedMessage;
 @property(copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
@@ -59,7 +60,6 @@
 @property(retain, nonatomic) _INPBDateTime *dateLastMessageRead; // @synthesize dateLastMessageRead=_dateLastMessageRead;
 @property(copy, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property(copy, nonatomic) NSString *content; // @synthesize content=_content;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -73,6 +73,7 @@
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(readonly, nonatomic) _Bool hasSpeakableGroupName;
+@property(readonly, nonatomic) _Bool hasServiceName;
 @property(readonly, nonatomic) _Bool hasSender;
 @property(readonly, nonatomic) _Bool hasReferencedMessage;
 - (id)recipientAtIndex:(unsigned long long)arg1;

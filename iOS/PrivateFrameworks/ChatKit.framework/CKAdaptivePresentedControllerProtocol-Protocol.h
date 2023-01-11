@@ -7,10 +7,11 @@
 #import <ChatKit/NSObject-Protocol.h>
 
 @protocol CKAdaptivePresentedControllerProtocol <NSObject>
-- (_Bool)preserveModalPresentationStyle;
-- (_Bool)wantsWindowedPresentation;
+@property(nonatomic) _Bool preserveModalPresentationStyle;
+@property(nonatomic) _Bool wantsWindowedPresentation;
 
 @optional
+@property(nonatomic) _Bool shouldHidePresentingWindow;
 - (_Bool)forceWindowedPresentation;
 - (_Bool)constrainToPresentingVCBounds;
 @end

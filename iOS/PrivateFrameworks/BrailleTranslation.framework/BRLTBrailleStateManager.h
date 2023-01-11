@@ -27,6 +27,7 @@
     struct _NSRange _brailleSelection;
     struct _NSRange _brailleFocus;
     _Bool _brailleDirty;
+    _Bool _brailleDirtyForMixedMode;
     _Bool _scriptDirty;
     id <BRLTBrailleStateManagerDelegate> _delegate;
     id <BRLTBrailleTranslationDelegateProtocol> _translationDelegate;
@@ -39,10 +40,10 @@
     unsigned long long _outputTranslationMode;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long outputTranslationMode; // @synthesize outputTranslationMode=_outputTranslationMode;
 @property(nonatomic) unsigned long long inputTranslationMode; // @synthesize inputTranslationMode=_inputTranslationMode;
 @property(nonatomic) _Bool editable; // @synthesize editable=_editable;
-- (void).cxx_destruct;
 - (struct _NSRange)scriptRangeOfBrailleCellRepresentingCharacterAtScriptIndex:(unsigned long long)arg1;
 - (struct _NSRange)scriptRangeForBrailleRange:(struct _NSRange)arg1;
 - (struct _NSRange)brailleRangeForScriptRange:(struct _NSRange)arg1;
@@ -58,22 +59,22 @@
 - (void)translate;
 - (struct _NSRange)_brailleRangeForTextRange:(struct _NSRange)arg1 textPositions:(id)arg2 brailleLength:(unsigned long long)arg3;
 - (struct _NSRange)_textRangeForBrailleRange:(struct _NSRange)arg1 textPositions:(id)arg2 scriptLength:(long long)arg3;
-- (_Bool)_setBrailleSelection:(struct _NSRange)arg1;
+- (_Bool)_setBrailleSelection:(struct _NSRange)arg1 newScriptLocation:(out unsigned long long *)arg2;
 - (void)setBrailleSelection:(struct _NSRange)arg1;
-- (void)setBrailleSelection:(struct _NSRange)arg1 needsForwardToScreenReader:(out _Bool *)arg2;
+- (void)setBrailleSelection:(struct _NSRange)arg1 needsForwardToScreenReader:(out _Bool *)arg2 newScriptLocation:(out unsigned long long *)arg3;
 - (_Bool)_forwardDeleteBrailleCharSilently:(_Bool)arg1;
 - (_Bool)forwardDeleteBrailleCharSilently;
 - (_Bool)forwardDeleteBrailleChar;
 - (_Bool)_deleteBrailleCharSilently:(_Bool)arg1;
 - (_Bool)deleteBrailleCharSilently;
 - (_Bool)deleteBrailleChar;
-- (void)_generateBrailleBuffer:(_Bool)arg1;
+- (_Bool)_generateBrailleBuffer:(_Bool)arg1;
 - (_Bool)_selectionIsValidForInsert;
 - (_Bool)_selectionIsValidForDelete;
 - (struct _NSRange)deleteMergeAtomForScriptString:(id)arg1;
 - (struct _NSRange)backwardEditingAtomForScriptString:(id)arg1;
 - (struct _NSRange)forwardEditingAtomForScriptString:(id)arg1;
-- (void)_generateBrailleBufferForDelete;
+- (_Bool)_generateBrailleBufferForDelete;
 - (void)_generateBrailleBufferForInsert;
 - (void)insertBrailleChar:(id)arg1 silently:(_Bool)arg2;
 - (void)insertBrailleChar:(id)arg1;

@@ -17,21 +17,24 @@
     long long _type;
     UIScrollView *_scrollView;
     UIStackView *_stackView;
+    _Bool _expanded;
     id <MKPlaceServiceHoursViewControllerProtocol> _placeServiceDelegate;
     MKMapItem *_mapItem;
 }
 
 + (id)titleString;
 + (id)placeServiceHoursWithMapItem:(id)arg1 type:(long long)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(nonatomic) __weak id <MKPlaceServiceHoursViewControllerProtocol> placeServiceDelegate; // @synthesize placeServiceDelegate=_placeServiceDelegate;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-- (void).cxx_destruct;
 - (void)captureCloseAnalytics;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 - (void)_updateServiceHourRows;
 - (void)_contentSizeDidChange;
+- (unsigned long long)_maxRows;
 - (void)_showAllHeaderButtonTapped;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

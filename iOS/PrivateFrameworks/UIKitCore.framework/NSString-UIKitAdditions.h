@@ -56,10 +56,9 @@
 - (struct CGSize)_legacy_sizeWithFont:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4;
 - (struct CGSize)_legacy_sizeWithFont:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3;
 - (struct CGSize)_legacy_sizeWithFont:(id)arg1;
-- (id)_adjustedFontFromFont:(id)arg1 withinFrame:(struct CGRect)arg2 minimumSize:(double)arg3 textSize:(struct CGSize *)arg4;
 - (struct CGSize)_optimizedSizeWithFont:(id)arg1;
 - (id)_initWithUTF8String:(const char *)arg1 maxLength:(unsigned long long)arg2;
-- (id)_ui_secureString;
+- (id)_uikit_stringByRemovingFirstMatchFromPrefixes:(id)arg1;
 - (id)_uikit_stringWithWritingDirection:(long long)arg1 asOverride:(_Bool)arg2;
 - (id)_uikit_stringByTrimmingWhitespaceAndNewlines;
 

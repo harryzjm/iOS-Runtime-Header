@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     _Bool _drawsOwnRowSeparators;
 }
 
-@property(nonatomic) _Bool drawsOwnRowSeparators; // @synthesize drawsOwnRowSeparators=_drawsOwnRowSeparators;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool drawsOwnRowSeparators; // @synthesize drawsOwnRowSeparators=_drawsOwnRowSeparators;
 - (void)_setDrawsOwnRowSeparatorsForCell:(id)arg1;
 - (id)searchStringForEventAutocomplete;
 - (_Bool)textFieldShouldClear:(id)arg1;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)textFieldDidChange:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
+- (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;
 - (_Bool)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;

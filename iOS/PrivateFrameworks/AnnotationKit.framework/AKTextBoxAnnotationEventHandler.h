@@ -8,7 +8,7 @@
 {
 }
 
-- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1;
+- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1 options:(unsigned long long)arg2;
 - (_Bool)canLockAspectRatio;
 
 @end

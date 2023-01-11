@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

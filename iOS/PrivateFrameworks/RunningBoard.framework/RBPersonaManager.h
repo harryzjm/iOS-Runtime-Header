@@ -18,8 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_fetchData;
-- (long long)personaIDForManagedPersona:(id)arg1;
 - (id)init;
 
 @end

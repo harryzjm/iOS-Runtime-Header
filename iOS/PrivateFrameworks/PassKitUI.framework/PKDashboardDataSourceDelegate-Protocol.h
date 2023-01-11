@@ -10,6 +10,7 @@
 @protocol PKDashboardItem;
 
 @protocol PKDashboardDataSourceDelegate <NSObject>
+- (void)updateContent;
 - (void)reloadSections:(NSIndexSet *)arg1;
 - (void)deleteSections:(NSIndexSet *)arg1;
 - (void)insertSections:(NSIndexSet *)arg1;

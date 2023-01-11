@@ -13,6 +13,9 @@
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 sendMessageAcknowledgment:(long long)arg2 forChatItem:(CKMessagePartChatItem *)arg3;
 
 @optional
+- (struct CGRect)fullScreenBalloonViewControllerSafeAreaLayoutFrame:(CKFullScreenBalloonViewController *)arg1;
+- (_Bool)fullScreenBalloonViewControllerShouldShowReplyButton:(CKFullScreenBalloonViewController *)arg1;
+- (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 replyButtonPressedForChatItem:(CKChatItem *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 deleteStickerWithTransferGUID:(NSString *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 stickerPackTappedWithAdamID:(NSNumber *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 verticallyScrollTranscriptByAmount:(double)arg2 animated:(_Bool)arg3 completion:(void (^)(void))arg4;

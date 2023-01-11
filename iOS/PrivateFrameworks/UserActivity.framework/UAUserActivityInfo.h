@@ -9,7 +9,7 @@
 #import <UserActivity/NSCopying-Protocol.h>
 #import <UserActivity/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SFPeerDevice, _LSUserActivityWasContinuedInfo;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SFPeerDevice, UAUserActivityAnalyticsInfo;
 
 @interface UAUserActivityInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,7 +24,8 @@
     _Bool _dirty;
     _Bool _payloadAvailable;
     _Bool _payloadRequested;
-    _Bool _isActive;
+    _Bool _active;
+    _Bool _universalLink;
     NSUUID *_uuid;
     unsigned long long _type;
     NSString *_title;
@@ -48,16 +49,18 @@
     SFPeerDevice *_peerDevice;
     NSString *_peerDeviceType;
     NSString *_bundleIdentifier;
-    _LSUserActivityWasContinuedInfo *_wasContinuedInfo;
+    UAUserActivityAnalyticsInfo *_wasContinuedInfo;
 }
 
 + (id)encodedInfoToOldEncodedInfo:(id)arg1;
 + (_Bool)supportsSecureCoding;
-@property(retain) _LSUserActivityWasContinuedInfo *wasContinuedInfo; // @synthesize wasContinuedInfo=_wasContinuedInfo;
+- (void).cxx_destruct;
+@property(retain) UAUserActivityAnalyticsInfo *wasContinuedInfo; // @synthesize wasContinuedInfo=_wasContinuedInfo;
 @property(copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy) NSString *peerDeviceType; // @synthesize peerDeviceType=_peerDeviceType;
 @property(retain) SFPeerDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
-@property _Bool isActive; // @synthesize isActive=_isActive;
+@property(getter=isUniversalLink) _Bool universalLink; // @synthesize universalLink=_universalLink;
+@property _Bool active; // @synthesize active=_active;
 @property(getter=isPayloadRequested) _Bool payloadRequested; // @synthesize payloadRequested=_payloadRequested;
 @property(getter=isPayloadAvailable) _Bool payloadAvailable; // @synthesize payloadAvailable=_payloadAvailable;
 @property(readonly, getter=isDirty) _Bool dirty; // @synthesize dirty=_dirty;
@@ -88,7 +91,6 @@
 @property(copy) NSString *title; // @synthesize title=_title;
 @property unsigned long long type; // @synthesize type=_type;
 @property(copy) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (id)statusString;
 - (id)description;
 - (id)logString;

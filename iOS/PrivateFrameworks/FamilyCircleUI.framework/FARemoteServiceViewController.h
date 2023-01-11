@@ -4,18 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardUIServices/SBUIRemoteAlertServiceViewController.h>
+#import <UIKit/UIViewController.h>
 
-@class FACircleContext;
+#import <FamilyCircleUI/FARemoteServiceProtocol-Protocol.h>
+#import <FamilyCircleUI/RUIPresentationHandling-Protocol.h>
 
-@interface FARemoteServiceViewController : SBUIRemoteAlertServiceViewController
+@class FACircleContext, NSString, NSXPCConnection;
+
+@interface FARemoteServiceViewController : UIViewController <FARemoteServiceProtocol, RUIPresentationHandling>
 {
     FACircleContext *_circleContext;
+    NSXPCConnection *_lookupConnection;
+    _Bool _isFlowStarted;
 }
 
++ (id)_exportedInterface;
++ (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
-- (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)_main_dismissAndExit;
+- (void)_dismissAndExit;
+- (void)_presentAsChildViewController:(id)arg1;
+- (unsigned long long)supportedInterfaceOrientations;
+- (void)dealloc;
+- (void)_showFamilyFlow;
+- (void)startFlowWithContext:(id)arg1;
+- (void)ruiDidDismissAlertController:(id)arg1;
+- (void)ruiPresentAlertController:(id)arg1;
+- (void)replaceModalRUIController:(id)arg1 byController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dismissModalRUIController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentModalRUIController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

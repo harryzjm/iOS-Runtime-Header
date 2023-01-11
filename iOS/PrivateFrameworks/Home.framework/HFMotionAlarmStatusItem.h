@@ -8,8 +8,15 @@
 {
 }
 
+- (id)multipleTriggeredWithRoomsFormatString;
+- (id)oneTriggeredWithRoomFormatString;
+- (id)multipleTriggeredFormatString;
+- (id)oneTriggeredFormatString;
+- (id)multipleReadyFormatString;
+- (id)oneReadyFormatString;
 - (id)_singleTriggeredRoomFormatString;
 - (id)_entireHomeString;
+- (id)iconDescriptorForRepresentedHomeKitObjects:(id)arg1;
 - (id)_serviceType;
 
 @end

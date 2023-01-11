@@ -10,13 +10,10 @@
 {
 }
 
-+ (void)initAssertionServices;
 + (void)initAuthKit;
 + (void)initAppleIDSSOAuthentication;
 + (void)initUserManagement;
-+ (void)initSpringBoardUIServices;
 + (void)initSpringBoardServices;
-+ (void)initCoreServices;
 + (void)initSetupAssistant;
 + (void)initLoggingSupport;
 + (void)initExchangeSyncExpress;

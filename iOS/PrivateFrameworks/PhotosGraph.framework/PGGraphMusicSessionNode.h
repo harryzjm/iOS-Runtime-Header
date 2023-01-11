@@ -8,14 +8,25 @@
 
 @interface PGGraphMusicSessionNode
 {
+    NSDate *_localStartDate;
+    NSDate *_localEndDate;
 }
 
 + (id)musicSessionDateSortDescriptors;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *localEndDate; // @synthesize localEndDate=_localEndDate;
+@property(readonly, nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
 - (void)enumerateMusicTrackNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSSet *trackNodes;
 @property(readonly, nonatomic) NSSet *momentNodes;
-@property(readonly, nonatomic) NSDate *localEndDate;
-@property(readonly, nonatomic) NSDate *localStartDate;
+- (unsigned short)domain;
+- (id)label;
+- (id)description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 @end
 

@@ -13,6 +13,7 @@
 }
 
 - (_Bool)_gestureRecognizer:(id)arg1 canBePreventedByGestureRecognizer:(id)arg2;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

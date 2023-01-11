@@ -9,20 +9,23 @@
 #import <HealthRecordServices/NSCopying-Protocol.h>
 #import <HealthRecordServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString, NSURL;
+@class HKFHIRVersion, NSData, NSURL;
 
 @interface HDFHIRResourceData : NSObject <NSSecureCoding, NSCopying>
 {
     NSData *_data;
     NSURL *_sourceURL;
-    NSString *_FHIRVersion;
+    HKFHIRVersion *_FHIRVersion;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSString *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
+- (void).cxx_destruct;
+@property(copy, nonatomic) HKFHIRVersion *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
 @property(copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property(copy, nonatomic) NSData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
+- (id)debugDescription;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

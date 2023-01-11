@@ -20,9 +20,12 @@
     MPAVRoute *_route;
     NSString *_routeTitle;
     UIColor *_overrideColor;
+    long long _routeLabelAxis;
     struct UIEdgeInsets _hitRectInsets;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long routeLabelAxis; // @synthesize routeLabelAxis=_routeLabelAxis;
 @property(retain, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 @property(nonatomic) _Bool forcesUppercaseText; // @synthesize forcesUppercaseText=_forcesUppercaseText;
 @property(nonatomic, getter=isRouteLabelHidden) _Bool routeLabelHidden; // @synthesize routeLabelHidden=_routeLabelHidden;
@@ -31,7 +34,6 @@
 @property(nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(nonatomic) double accessoryImageSpacing; // @synthesize accessoryImageSpacing=_accessoryImageSpacing;
-- (void).cxx_destruct;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 @property(retain, nonatomic) UIImage *accessoryImage;
 - (void)tintColorDidChange;

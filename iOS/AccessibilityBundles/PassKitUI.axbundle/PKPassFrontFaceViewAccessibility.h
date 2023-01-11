@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)setBottomRightItem:(long long)arg1;
 - (void)createBodyContentViews;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -15,20 +15,21 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)shouldKeepIconVisibleForActivityType:(long long)arg1;
++ (_Bool)_identifierContainsItemImage:(id)arg1;
 + (id)pillCombinedDisplayIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatusBarPillView *combinedView; // @synthesize combinedView=_combinedView;
 @property(nonatomic) long long previousType; // @synthesize previousType=_previousType;
 @property(nonatomic) struct CGSize pillSize; // @synthesize pillSize=_pillSize;
-- (void).cxx_destruct;
 - (_Bool)shouldUpdateIndicatorForIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 - (void)_create_combinedView;
 - (_Bool)_shouldBounceWhenTransitioningFromType:(long long)arg1 toType:(long long)arg2;
 - (id)_backgroundColorForActivityType:(long long)arg1;
-- (id)imageForUpdate:(id)arg1;
 - (void)updatedDisplayItemsWithData:(id)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)_backgroundActivityViewForIdentifier:(id)arg1;
+- (id)_textLabelForActivityType:(long long)arg1;
 - (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 

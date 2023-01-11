@@ -9,7 +9,6 @@
 @class NSData, NSDate, NSString;
 
 @protocol PVAssetProtocol <NSObject>
-@property(readonly, nonatomic) NSDate *clsDistanceIdentity;
 @property(readonly, nonatomic) NSData *distanceIdentity;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D locationCoordinate;
 @property(readonly, nonatomic) NSDate *creationDate;

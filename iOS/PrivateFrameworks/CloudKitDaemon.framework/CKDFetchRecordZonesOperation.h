@@ -5,6 +5,7 @@
 //
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchRecordZonesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordZonesOperation
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_zoneIDsNeedingDugongKeyRoll;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool ignorePCSFailures; // @synthesize ignorePCSFailures=_ignorePCSFailures;
 @property(retain, nonatomic) NSMutableSet *zoneIDsNeedingDugongKeyRoll; // @synthesize zoneIDsNeedingDugongKeyRoll=_zoneIDsNeedingDugongKeyRoll;
 @property(nonatomic) _Bool onlyFetchPCSInfo; // @synthesize onlyFetchPCSInfo=_onlyFetchPCSInfo;
@@ -33,11 +35,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isFetchAllRecordZonesOperation; // @synthesize isFetchAllRecordZonesOperation=_isFetchAllRecordZonesOperation;
 @property(retain, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneFetchedProgressBlock; // @synthesize recordZoneFetchedProgressBlock=_recordZoneFetchedProgressBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)checkPCSIdentity;
 - (void)fetchZonesFromServer;
+- (int)operationType;
 - (void)_cachePCSOnRecordZone:(id)arg1;
 - (void)_continueHandlingFetchedRecordZone:(id)arg1 zoneID:(id)arg2;
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;
@@ -46,10 +48,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)_locked_checkAndUpdateZonePCSIfNeededForZone:(id)arg1 error:(id *)arg2;
 - (void)_locked_callbackForRecordZone:(id)arg1 zoneID:(id)arg2 error:(id)arg3;
 - (void)_sendErrorForFailedZones;
+- (id)relevantZoneIDs;
 - (id)activityCreate;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKFetchRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

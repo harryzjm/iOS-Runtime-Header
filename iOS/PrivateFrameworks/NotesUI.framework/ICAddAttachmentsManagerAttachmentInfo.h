@@ -10,6 +10,7 @@
 
 @interface ICAddAttachmentsManagerAttachmentInfo : NSObject
 {
+    _Bool _usesTemporaryFile;
     ICAttachment *_attachment;
     NSString *_title;
     NSURL *_mediaURL;
@@ -17,10 +18,12 @@
     NSData *_mediaData;
     NSDictionary *_metadata;
     NSString *_mediaFilenameExtension;
-    struct UIImage *_image;
+    UIImage *_image;
     NSAttributedString *_attributedContentText;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool usesTemporaryFile; // @synthesize usesTemporaryFile=_usesTemporaryFile;
 @property(retain, nonatomic) NSAttributedString *attributedContentText; // @synthesize attributedContentText=_attributedContentText;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) NSString *mediaFilenameExtension; // @synthesize mediaFilenameExtension=_mediaFilenameExtension;
@@ -30,7 +33,7 @@
 @property(retain, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
-- (void).cxx_destruct;
+- (void)deleteTemporaryImageFileIfNecessary;
 - (id)description;
 @property(readonly, nonatomic) _Bool isVideo;
 @property(readonly, nonatomic) _Bool isPhoto;

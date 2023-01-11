@@ -4,16 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PXApplicationSettings
 {
-    double _defaultUserInterfaceTimeoutDuration;
+    _Bool _wantsPseudostringsWithSpecialCharacters;
+    double _defaultNavigationTimeoutDuration;
+    NSString *_stringWithSpecialCharacters;
 }
 
-+ (id)timeoutTitles;
-+ (id)timeoutPossibleValues;
 + (id)sharedInstance;
 + (id)settingsControllerModule;
-@property(nonatomic) double defaultUserInterfaceTimeoutDuration; // @synthesize defaultUserInterfaceTimeoutDuration=_defaultUserInterfaceTimeoutDuration;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *stringWithSpecialCharacters; // @synthesize stringWithSpecialCharacters=_stringWithSpecialCharacters;
+@property(nonatomic) _Bool wantsPseudostringsWithSpecialCharacters; // @synthesize wantsPseudostringsWithSpecialCharacters=_wantsPseudostringsWithSpecialCharacters;
+@property(nonatomic) double defaultNavigationTimeoutDuration; // @synthesize defaultNavigationTimeoutDuration=_defaultNavigationTimeoutDuration;
 - (void)setDefaultValues;
 - (id)parentSettings;
 

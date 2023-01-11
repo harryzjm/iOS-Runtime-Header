@@ -27,6 +27,7 @@
     NSArray *_IMCloudKitSyncErrors;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSArray *IMCloudKitSyncErrors; // @synthesize IMCloudKitSyncErrors=_IMCloudKitSyncErrors;
 @property long long IMCloudKitSyncControllerSyncRecordType; // @synthesize IMCloudKitSyncControllerSyncRecordType=_IMCloudKitSyncControllerSyncRecordType;
 @property long long IMCloudKitSyncControllerSyncType; // @synthesize IMCloudKitSyncControllerSyncType=_IMCloudKitSyncControllerSyncType;
@@ -42,7 +43,6 @@
 @property _Bool IMCloudKitSyncPaused; // @synthesize IMCloudKitSyncPaused=_IMCloudKitSyncPaused;
 @property _Bool IMCloudKitIsSyncing; // @synthesize IMCloudKitIsSyncing=_IMCloudKitIsSyncing;
 @property _Bool IMCloudKitSyncingEnabled; // @synthesize IMCloudKitSyncingEnabled=_IMCloudKitSyncingEnabled;
-- (void).cxx_destruct;
 - (id)convertToDictionary;
 
 @end

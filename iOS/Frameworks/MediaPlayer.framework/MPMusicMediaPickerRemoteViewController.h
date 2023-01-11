@@ -17,12 +17,13 @@
 
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
-@property(nonatomic) __weak MPMediaPickerController *mediaPickerController; // @synthesize mediaPickerController=_mediaPickerController;
 - (void).cxx_destruct;
+@property(nonatomic) __weak MPMediaPickerController *mediaPickerController; // @synthesize mediaPickerController=_mediaPickerController;
 - (void)remoteMediaPickerDidPickPlaybackArchive:(id)arg1;
 - (void)remoteMediaPickerDidPickMediaItems:(id)arg1;
 - (void)remoteMediaPickerDidCancel;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

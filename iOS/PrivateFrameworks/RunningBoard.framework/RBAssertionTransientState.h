@@ -6,35 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/NSCopying-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class NSMutableDictionary, NSMutableSet, NSSet;
 
-@interface RBAssertionTransientState : NSObject <NSCopying, BSDescriptionProviding>
+@interface RBAssertionTransientState : NSObject <NSCopying>
 {
     NSMutableDictionary *_cpuUsageViolationPoliciesByRole;
     NSMutableSet *_tags;
 }
 
-@property(readonly, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 - (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSSet *tags; // @synthesize tags=_tags;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)unionState:(id)arg1;
 - (void)addTag:(id)arg1;
 - (void)setMaxCPUUsageViolationPolicy:(unsigned long long)arg1 forRole:(unsigned char)arg2;
 - (unsigned long long)maxCPUUsageViolationPolicyForRole:(unsigned char)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

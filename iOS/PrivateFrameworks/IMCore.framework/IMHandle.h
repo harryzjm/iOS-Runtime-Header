@@ -8,7 +8,7 @@
 
 #import <IMCore/NSSecureCoding-Protocol.h>
 
-@class CNContact, IMAccount, IMPerson, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
+@class CNContact, IMAccount, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
 
 @interface IMHandle : NSObject <NSSecureCoding>
 {
@@ -22,11 +22,10 @@
     NSDictionary *_extraProps;
     NSDictionary *_certs;
     NSSet *_groups;
-    IMPerson *_person;
-    NSString *_abFirstName;
-    NSString *_abLastName;
-    NSString *_abFullName;
-    NSString *_abNickname;
+    NSString *_cnFirstName;
+    NSString *_cnLastName;
+    NSString *_cnFullName;
+    NSString *_cnNickname;
     NSString *_displayID;
     NSString *_firstName;
     NSString *_lastName;
@@ -60,7 +59,6 @@
     _Bool _isBot;
     _Bool _isAnonymous;
     _Bool _beingTornDown;
-    _Bool _hasCheckedCardMap;
     _Bool _hasCheckedPhoneNumber;
     long long _priority;
     int _addressBookIdentifier;
@@ -68,6 +66,7 @@
     NSNumber *_isBusiness;
     NSNumber *_isMako;
     NSNumber *_isApple;
+    _Bool _hasSuggestedName;
     _Bool _hasCheckedForSuggestions;
     NSString *_personCentricID;
     NSString *_guid;
@@ -76,22 +75,27 @@
     NSData *_mapItemBannerImageData;
     CNContact *_cnContact;
     NSString *_suggestedName;
+    NSString *_cachedDisplayNameWithAbbreviation;
 }
 
++ (id)imageManager;
 + (id)filterIMHandlesForBestAccountSiblings:(id)arg1;
 + (id)filterIMHandlesForAccountSiblings:(id)arg1 onAccount:(id)arg2;
 + (id)bestIMHandleInArray:(id)arg1;
-+ (id)imHandlesForIMPerson:(id)arg1;
++ (id)handlesForCNContact:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)nameOfStatus:(unsigned long long)arg1;
 + (void)_loadStatusNames;
++ (id)cnPhoneticKeys;
 + (_Bool)notificationsEnabled;
 + (void)setNotificationsEnabled:(_Bool)arg1;
-+ (void)handlesForPersons:(id)arg1 useBestHandle:(_Bool)arg2 useExtendedAsyncLookup:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)validHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)validHandlesForPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)bestHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)bestHandlesForPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)handlesForCNContacts:(id)arg1 useBestHandle:(_Bool)arg2 useExtendedAsyncLookup:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)validHandlesForCNContacts:(id)arg1 useExtendedAsyncLookup:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)validHandlesForCNContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)bestHandlesForCNContacts:(id)arg1 useExtendedAsyncLookup:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)bestHandlesForCNContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *cachedDisplayNameWithAbbreviation; // @synthesize cachedDisplayNameWithAbbreviation=_cachedDisplayNameWithAbbreviation;
 @property(nonatomic) _Bool hasCheckedForSuggestions; // @synthesize hasCheckedForSuggestions=_hasCheckedForSuggestions;
 @property(copy, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
 @property(nonatomic) long long IDStatus; // @synthesize IDStatus=_IDStatus;
@@ -100,7 +104,6 @@
 @property(retain, nonatomic) NSData *mapItemImageData; // @synthesize mapItemImageData=_mapItemImageData;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(readonly, retain, nonatomic) NSString *guid; // @synthesize guid=_guid;
-@property(readonly, nonatomic) int addressBookIdentifier; // @synthesize addressBookIdentifier=_addressBookIdentifier;
 @property(retain, nonatomic) NSDictionary *otherServiceIDs; // @synthesize otherServiceIDs=_otherServiceIDs;
 @property(readonly, retain, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
 @property(readonly, nonatomic) _Bool isMobile; // @synthesize isMobile=_isMobile;
@@ -109,6 +112,7 @@
 @property(readonly, retain, nonatomic) NSDate *feedUpdatedDate; // @synthesize feedUpdatedDate=_feedUpdatedDate;
 @property(readonly, nonatomic) unsigned int authRequestStatus; // @synthesize authRequestStatus=_authRequestStatus;
 @property(readonly, retain, nonatomic) IMAccount *account; // @synthesize account=_account;
+@property(nonatomic) _Bool hasSuggestedName; // @synthesize hasSuggestedName=_hasSuggestedName;
 @property(readonly, retain, nonatomic) NSString *uniqueName; // @synthesize uniqueName=_uniqueName;
 @property(retain, nonatomic) NSString *personCentricID; // @synthesize personCentricID=_personCentricID;
 @property(readonly, retain, nonatomic) NSString *ID; // @synthesize ID=_id;
@@ -117,10 +121,9 @@
 @property(readonly, nonatomic) unsigned long long previousStatus; // @synthesize previousStatus=_prevStatus;
 @property(readonly, retain, nonatomic) NSDictionary *extraProperties; // @synthesize extraProperties=_extraProps;
 @property(readonly, retain, nonatomic) NSString *originalID; // @synthesize originalID=_uncanonicalID;
-- (void).cxx_destruct;
-- (void)_mapItemBannerImageDataFetchedWithResponse:(id)arg1 statusCode:(long long)arg2 resultData:(id)arg3 remoteURLConnectionError:(id)arg4;
+- (void)_mapItemBannerImageDataFetchedWithResultData:(id)arg1 error:(id)arg2;
 - (void)_fetchMapItemBannerImageDataForMapItem:(id)arg1;
-- (void)_mapItemImageDataFetchedWithResponse:(id)arg1 statusCode:(long long)arg2 resultData:(id)arg3 remoteURLConnectionError:(id)arg4;
+- (void)_mapItemImageDataFetchedWithResultData:(id)arg1 error:(id)arg2;
 - (void)_fetchMapItemImageDataForMapItem:(id)arg1;
 - (void)_postOnScreenChangedNotificationForProperty:(id)arg1;
 - (void)_mapItemFetchedWithMapItems:(id)arg1 error:(id)arg2;
@@ -204,6 +207,7 @@
 @property(readonly, retain, nonatomic) id bestAccountSibling;
 - (id)bestIMHandleForAccount:(id)arg1;
 - (id)bestIMHandleForService:(id)arg1;
+- (_Bool)isBetterThanIMHandle:(id)arg1 nonPhoneNumbersPreferred:(_Bool)arg2;
 - (_Bool)isBetterThanIMHandle:(id)arg1;
 - (void)setHasTemporaryWatch:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool watchingIMHandle;
@@ -225,23 +229,22 @@
 - (void)setIsMobile:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isSystemUser;
 @property(readonly, nonatomic) _Bool canBeAdded;
-- (void)_contactStoreDidChange:(id)arg1;
 - (void)updateCNContact:(id)arg1;
 - (id)_fallbackCNContactWithAllKeys;
-- (id)__imcnContactWithKeys:(id)arg1;
 - (id)cnContactWithKeys:(id)arg1;
 - (void)setEmails:(id)arg1;
 - (void)setEmail:(id)arg1;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2;
 @property(readonly, retain, nonatomic) NSArray *emails;
-- (void)setEmails:(id)arg1 andUpdateABPerson:(_Bool)arg2;
 @property(readonly, retain, nonatomic) NSString *email;
 - (void)setEmail:(id)arg1 andUpdateABPerson:(_Bool)arg2;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 andUpdateABPerson:(_Bool)arg4;
 - (void)setLocalNickname:(id)arg1;
 - (void)setImageData:(id)arg1;
 - (void)_setBaseFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3;
-- (void)_setABPersonFirstName:(id)arg1 lastName:(id)arg2;
+@property(readonly, retain, nonatomic) NSString *phoneticFullName;
+@property(readonly, retain, nonatomic) NSString *phoneticLastName;
+@property(readonly, retain, nonatomic) NSString *phoneticFirstName;
 @property(readonly, retain, nonatomic) NSString *lastName;
 @property(readonly, retain, nonatomic) NSString *firstName;
 @property(readonly, retain, nonatomic) NSString *nickname;
@@ -254,6 +257,7 @@
 @property(readonly, retain, nonatomic) NSString *normalizedID;
 @property(readonly, retain, nonatomic) NSString *displayID;
 - (id)_displayNameWithNicknameIfAvailable;
+- (_Bool)_allowedByScreenTime;
 - (id)_displayNameWithContact:(id)arg1;
 - (id)immediateNameWithNeedsSuggestedNameFetch:(_Bool *)arg1 useSuggestedName:(_Bool)arg2;
 - (void)scheduleSuggestedNameFetchIfNecessary;
@@ -261,15 +265,10 @@
 - (_Bool)_hasABName;
 - (_Bool)_hasServiceNameProperties;
 - (id)_IDWithTrimmedServer;
-@property(retain, nonatomic, setter=setIMPerson:) IMPerson *person;
-- (id)_cachedPerson;
-- (void)_clearABPersonLookup;
-- (void)resetABProperties;
-- (void)_clearABProperties;
-- (_Bool)areABPropertiesRecent;
-- (id)_abPersonCreateIfNeeded;
-- (_Bool)resetABPerson;
-- (void)clearABPerson;
+- (void)resetCNContactProperties;
+- (void)_clearCNContactProperties;
+- (_Bool)areCNContactPropertiesRecent;
+- (_Bool)resetCNContact;
 - (_Bool)isContact;
 - (unsigned long long)hash;
 @property(readonly, retain, nonatomic) IMServiceImpl *service;

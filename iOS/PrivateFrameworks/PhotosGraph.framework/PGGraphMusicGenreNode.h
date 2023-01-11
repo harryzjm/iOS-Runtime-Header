@@ -10,9 +10,15 @@
 
 @interface PGGraphMusicGenreNode <PGGraphGenre>
 {
+    NSString *_label;
 }
 
+- (void).cxx_destruct;
+- (id)label;
 @property(readonly, nonatomic) NSString *name;
+- (unsigned short)domain;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

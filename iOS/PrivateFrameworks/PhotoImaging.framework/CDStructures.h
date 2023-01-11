@@ -77,10 +77,6 @@ struct FigLivePhotoMetadataV1Struct {
     struct FigLivePhotoDetectedFaceV1Struct _field13[0];
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
 struct Session {
     CDUnknownFunctionPointerType *_field1;
     CDStruct_1b6d18a9 _field2;
@@ -189,6 +185,11 @@ typedef struct {
     CDStruct_145c54d4 _field2;
     double _field3;
 } CDStruct_92960315;
+
+typedef struct {
+    CDStruct_1b6d18a9 start;
+    CDStruct_1b6d18a9 duration;
+} CDStruct_e83c9415;
 
 typedef struct {
     struct {

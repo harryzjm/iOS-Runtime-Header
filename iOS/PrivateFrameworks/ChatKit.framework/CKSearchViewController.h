@@ -7,14 +7,17 @@
 #import <ChatKit/CKSearchControllerDelegate-Protocol.h>
 #import <ChatKit/CKSearchResultsTitleHeaderCellDelegate-Protocol.h>
 #import <ChatKit/UICollectionViewDelegate-Protocol.h>
+#import <ChatKit/UICollectionViewDragDelegate-Protocol.h>
+#import <ChatKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <ChatKit/UISearchResultsUpdating-Protocol.h>
-#import <ChatKit/_UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CKSearchCollectionView, IMTimingCollection, NSArray, NSMutableSet, NSString, UICollectionViewCompositionalLayout, UICollectionViewCompositionalLayoutConfiguration, UICollectionViewDiffableDataSource, _UIContextMenuInteraction;
+@class CKSearchCollectionView, IMTimingCollection, NSArray, NSMutableSet, NSString, UICollectionViewCompositionalLayout, UICollectionViewDiffableDataSource, UIContextMenuInteraction;
 @protocol CKContainerSearchControllerDelegate;
 
-@interface CKSearchViewController <CKSearchResultsTitleHeaderCellDelegate, _UIContextMenuInteractionDelegate, UISearchResultsUpdating, UICollectionViewDelegate, CKSearchControllerDelegate>
+@interface CKSearchViewController <CKSearchResultsTitleHeaderCellDelegate, UIContextMenuInteractionDelegate, UICollectionViewDragDelegate, UISearchResultsUpdating, UICollectionViewDelegate, CKSearchControllerDelegate>
 {
+    _Bool _insetCollectionViewForMacToolbar;
+    _Bool _searchInProgress;
     _Bool _isInitialLoad;
     id <CKContainerSearchControllerDelegate> _delegate;
     unsigned long long _mode;
@@ -26,12 +29,11 @@
     CDUnknownBlockType _performAfterInitialLoadBlock;
     NSMutableSet *_searchCompleteControllerSet;
     IMTimingCollection *_timingCollection;
-    UICollectionViewCompositionalLayoutConfiguration *_layoutConfiguration;
-    _UIContextMenuInteraction *_contextMenuInteraction;
+    UIContextMenuInteraction *_contextMenuInteraction;
 }
 
-@property(retain, nonatomic) _UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
-@property(retain, nonatomic) UICollectionViewCompositionalLayoutConfiguration *layoutConfiguration; // @synthesize layoutConfiguration=_layoutConfiguration;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
 @property(retain, nonatomic) IMTimingCollection *timingCollection; // @synthesize timingCollection=_timingCollection;
 @property(retain, nonatomic) NSMutableSet *searchCompleteControllerSet; // @synthesize searchCompleteControllerSet=_searchCompleteControllerSet;
 @property(copy, nonatomic) CDUnknownBlockType performAfterInitialLoadBlock; // @synthesize performAfterInitialLoadBlock=_performAfterInitialLoadBlock;
@@ -39,24 +41,37 @@
 @property(retain, nonatomic) UICollectionViewCompositionalLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) CKSearchCollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(nonatomic) _Bool searchInProgress; // @synthesize searchInProgress=_searchInProgress;
 @property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property(retain, nonatomic) NSArray *searchControllers; // @synthesize searchControllers=_searchControllers;
+@property(nonatomic) _Bool insetCollectionViewForMacToolbar; // @synthesize insetCollectionViewForMacToolbar=_insetCollectionViewForMacToolbar;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(nonatomic) __weak id <CKContainerSearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)contextMenuInteractionShouldBegin:(id)arg1;
-- (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint)arg2 withSuggestedActions:(id)arg3;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (_Bool)_currentModeIsDetails;
 - (Class)_searchResultsHeaderClass;
+- (_Bool)_needsIndexing;
+- (_Bool)_isInternalInstall;
 - (id)globalLayoutConfiguration;
 - (id)footerBoundryItemsForController:(id)arg1 withEnvironment:(id)arg2;
 - (id)headerBoundryItemsForController:(id)arg1 withEnvironment:(id)arg2;
+- (id)layoutSectionForController:(id)arg1 withEnvironment:(id)arg2;
 - (id)_layoutSectionForController:(id)arg1 withEnvironment:(id)arg2;
 - (id)_identifiersToAppendForResults:(id)arg1;
 - (id)_newSnapshotForCurrentControllerState;
 - (void)reloadData;
+- (long long)rowIndexFindPreviousForIndex:(long long)arg1 numberOfTotalItems:(long long)arg2;
+- (long long)rowIndexFindNextForIndex:(long long)arg1 numberOfTotalItems:(long long)arg2;
+- (void)_selectItemForFindAtIndexPath:(id)arg1;
+- (_Bool)_hasSelectedItemAtIndexPath:(id *)arg1;
+- (_Bool)conversationSearchHasResult;
+- (void)findPrevious;
+- (void)findNext;
 - (void)searchEnded;
 - (void)cancelCurrentQuery;
 - (id)containerTraitCollectionForController:(id)arg1;
@@ -64,6 +79,7 @@
 - (struct UIEdgeInsets)parentMarginInsetsForSearchController:(id)arg1;
 - (void)deleteMessageItem:(id)arg1;
 - (void)deleteTransferGUID:(id)arg1;
+- (void)searchController:(id)arg1 requestsItemDeletionAtIndexPath:(id)arg2;
 - (void)searchController:(id)arg1 requestsPresentationOfAlertController:(id)arg2 atRect:(struct CGRect)arg3;
 - (void)searchController:(id)arg1 requestsPresentationOfShareController:(id)arg2 atRect:(struct CGRect)arg3;
 - (id)searchController:(id)arg1 conversationForChatGUID:(id)arg2;
@@ -71,10 +87,13 @@
 - (void)_searchImmediately;
 - (void)searchWithText:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
+- (struct UIEdgeInsets)navigationBarInsetsWithoutPalette;
 - (id)scrollView;
+- (void)_searchResultHeaderButtonTapped:(id)arg1;
 - (void)searchResultsTitleCellShowAllButtonTapped:(id)arg1;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)_configureIndexingCell:(id)arg1;
@@ -82,9 +101,10 @@
 - (id)cellForItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 withIdentifier:(id)arg3;
 - (id)layoutSectionForSection:(long long)arg1 withEnvironment:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewWillDissapeaer:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillLayoutSubviews;
 - (void)viewLayoutMarginsDidChange;
 - (void)_registerCells;
 - (void)loadView;

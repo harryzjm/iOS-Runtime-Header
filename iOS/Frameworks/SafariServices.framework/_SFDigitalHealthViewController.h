@@ -6,36 +6,25 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SafariServices/STLockoutViewControllerDelegate-Protocol.h>
-
-@class NSMutableDictionary, NSString, NSURL, STLockoutViewController;
+@class NSURL, STBlockingViewController;
 @protocol _SFDigitalHealthViewControllerDelegate;
 
-@interface _SFDigitalHealthViewController : UIViewController <STLockoutViewControllerDelegate>
+@interface _SFDigitalHealthViewController : UIViewController
 {
     NSURL *_url;
-    STLockoutViewController *_currentLockOutViewController;
-    NSMutableDictionary *_urlsToLockOutViewControllers;
+    STBlockingViewController *_blockingViewController;
     id <_SFDigitalHealthViewControllerDelegate> _digitalHealthViewControllerDelegate;
     double _additionalVerticalSafeAreaMargin;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double additionalVerticalSafeAreaMargin; // @synthesize additionalVerticalSafeAreaMargin=_additionalVerticalSafeAreaMargin;
 @property(nonatomic) __weak id <_SFDigitalHealthViewControllerDelegate> digitalHealthViewControllerDelegate; // @synthesize digitalHealthViewControllerDelegate=_digitalHealthViewControllerDelegate;
-- (void).cxx_destruct;
-- (void)lockoutViewControllerDidFinishDismissing:(id)arg1;
-- (id)_urlStringForLockOutGivenURL:(id)arg1;
-- (void)hideLockOutForURL:(id)arg1;
+- (void)_blockingViewDidHide:(id)arg1;
+- (void)hideBlockingViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateCurrentLockViewControllerInsetsHorizontalForSizeClass:(long long)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (id)showLockOutForURL:(id)arg1;
-- (void)viewDidLoad;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)showBlockingViewControllerForURL:(id)arg1 withPolicy:(long long)arg2 animated:(_Bool)arg3;
 
 @end
 

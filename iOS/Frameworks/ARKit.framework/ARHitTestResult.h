@@ -17,15 +17,12 @@
     CDStruct_14d5dc5e _worldTransform;
 }
 
-@property(retain, nonatomic) ARAnchor *anchor; // @synthesize anchor=_anchor;
-@property(nonatomic) CDStruct_14d5dc5e worldTransform; // @synthesize worldTransform=_worldTransform;
-@property(nonatomic) CDStruct_14d5dc5e localTransform; // @synthesize localTransform=_localTransform;
-@property(nonatomic) double distance; // @synthesize distance=_distance;
-@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 - (void).cxx_destruct;
-- (id)debugQuickLookObject;
-- (id)description;
-- (id)_description:(_Bool)arg1;
+@property(readonly, nonatomic) ARAnchor *anchor; // @synthesize anchor=_anchor;
+@property(readonly, nonatomic) CDStruct_14d5dc5e worldTransform; // @synthesize worldTransform=_worldTransform;
+@property(readonly, nonatomic) CDStruct_14d5dc5e localTransform; // @synthesize localTransform=_localTransform;
+@property(readonly, nonatomic) double distance; // @synthesize distance=_distance;
+@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 - (id)initWithType:(unsigned long long)arg1;
 
 @end

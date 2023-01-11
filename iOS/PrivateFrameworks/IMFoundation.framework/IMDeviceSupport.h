@@ -19,6 +19,7 @@
 
 + (id)marketingNameForModel:(id)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *deviceInformationString;
 @property(readonly, nonatomic) NSString *productBuildVersion;
 @property(readonly, nonatomic) NSString *productVersion;
@@ -26,7 +27,6 @@
 @property(readonly, nonatomic) NSString *userAgentString;
 - (void)_generateProductInformation;
 @property(readonly, nonatomic) NSString *model;
-- (void)dealloc;
 - (id)init;
 
 @end

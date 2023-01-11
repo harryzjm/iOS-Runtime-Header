@@ -43,6 +43,8 @@
 @property(readonly, nonatomic) NSString *dictationDisplayName;
 - (_Bool)isDesiredForTraits:(id)arg1;
 - (_Bool)isAllowedForTraits:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsEmojiSearch;
+@property(readonly, nonatomic) _Bool isEmojiInputMode;
 - (_Bool)includeBarHeight;
 @property(readonly, nonatomic) NSString *containingBundleDisplayName;
 @property(readonly, nonatomic) NSBundle *containingBundle;

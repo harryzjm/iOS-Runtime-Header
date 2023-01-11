@@ -29,9 +29,10 @@
 - (void)_mergeUpdatedPersons:(id)arg1 inLibrary:(id)arg2;
 - (void)_processNotificationUpdatesForMemories:(id)arg1;
 - (void)_processNotificationUpdatesForSuggestions:(id)arg1;
-- (void)_handleSuggestionRecords:(id)arg1 inLibrary:(id)arg2;
-- (void)_handleMemoryRecords:(id)arg1 inLibrary:(id)arg2;
+- (id)_handleSuggestionRecords:(id)arg1 inLibrary:(id)arg2;
+- (id)_handleMemoryRecords:(id)arg1 inLibrary:(id)arg2;
 - (id)_handleAssetRecords:(id)arg1 inSyncContext:(id)arg2 withChangeBatch:(id)arg3 dedupeGraphPersons:(id *)arg4;
+- (void)_assetsAndCloudMastersFromAssetRecords:(id)arg1 assetsByScopedIdentifier:(id *)arg2 mastersByScopedIdentifier:(id *)arg3;
 - (id)_findMaster:(id)arg1 fromAdditionalRecordInBatch:(id)arg2 inLibrary:(id)arg3;
 - (id)_handleMasterRecords:(id)arg1 inLibrary:(id)arg2;
 - (void)_handleAlbumRecords:(id)arg1 inLibrary:(id)arg2;

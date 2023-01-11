@@ -13,17 +13,17 @@
 
 @interface SBNewsstandMonitor : NSObject <FBProcessManagerObserver, FBProcessObserver>
 {
-    NSArray *_blacklistedBundleIdentifiers;
+    NSArray *_deniedBundleIdentifiers;
 }
 
-+ (id)_blacklistedBundleIdentifiers;
++ (id)_deniedBundleIdentifiers;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)process:(id)arg1 stateDidChangeFromState:(id)arg2 toState:(id)arg3;
 - (void)processManager:(id)arg1 didRemoveProcess:(id)arg2;
 - (void)processManager:(id)arg1 didAddProcess:(id)arg2;
-- (void)_handleBackgroundUpdateBlacklistChange;
-- (void)_addObserverForBackgroundUpdateBlacklistChange;
+- (void)_handleBackgroundUpdateDenyListChange;
+- (void)_addObserverForBackgroundUpdateDenyListChange;
 - (id)init;
 
 // Remaining properties

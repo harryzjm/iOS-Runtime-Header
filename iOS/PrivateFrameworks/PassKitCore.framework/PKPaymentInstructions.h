@@ -10,15 +10,21 @@
 
 @interface PKPaymentInstructions : NSObject
 {
+    long long _version;
     NSData *_instructionsData;
     NSData *_signatureData;
+    NSData *_fortifiedInstructionsData;
+    NSData *_fortifiedSignatureData;
     NSDictionary *_instructionsDictionary;
 }
 
-@property(retain, nonatomic) NSDictionary *instructionsDictionary; // @synthesize instructionsDictionary=_instructionsDictionary;
-@property(readonly, nonatomic) NSData *signatureData; // @synthesize signatureData=_signatureData;
-@property(readonly, nonatomic) NSData *instructionsData; // @synthesize instructionsData=_instructionsData;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *instructionsDictionary; // @synthesize instructionsDictionary=_instructionsDictionary;
+@property(retain, nonatomic) NSData *fortifiedSignatureData; // @synthesize fortifiedSignatureData=_fortifiedSignatureData;
+@property(retain, nonatomic) NSData *fortifiedInstructionsData; // @synthesize fortifiedInstructionsData=_fortifiedInstructionsData;
+@property(retain, nonatomic) NSData *signatureData; // @synthesize signatureData=_signatureData;
+@property(retain, nonatomic) NSData *instructionsData; // @synthesize instructionsData=_instructionsData;
+@property(readonly, nonatomic) long long version; // @synthesize version=_version;
 - (id)_imageDataForImageWithKey:(id)arg1 format:(id *)arg2;
 - (struct CGDataProvider *)_createImageDataProviderForImageKey:(id)arg1;
 - (void)_pruneDirectoryAtURL:(id)arg1;
@@ -26,7 +32,7 @@
 - (struct CGImage *)imageForKey:(id)arg1;
 @property(readonly, nonatomic) NSArray *allImageKeys;
 - (id)description;
-- (id)initWithInstructions:(id)arg1 signature:(id)arg2;
+- (id)initWithDictionary:(id)arg1;
 
 @end
 

@@ -8,12 +8,15 @@
 
 #import <TransparencyDetailsView/WKNavigationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, UIActivityIndicatorView, UILabel, UINavigationBar, WKWebView;
+@class NSDictionary, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UINavigationBar, UINavigationItem, WKWebView;
 @protocol NewsTransparencyViewControllerDelegate;
 
 @interface NewsTransparencyViewController : UIViewController <WKNavigationDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
+    UINavigationItem *navBarItem;
+    UIBarButtonItem *leftButton;
+    UIViewController *debugViewController;
     id <NewsTransparencyViewControllerDelegate> _delegate;
     _Bool _isiPad;
     _Bool _isClientTodayWidget;
@@ -26,6 +29,7 @@
     UINavigationBar *_transparencyNavBar;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isClientTodayWidget; // @synthesize isClientTodayWidget=_isClientTodayWidget;
 @property(nonatomic) _Bool isiPad; // @synthesize isiPad=_isiPad;
 @property(retain, nonatomic) UINavigationBar *transparencyNavBar; // @synthesize transparencyNavBar=_transparencyNavBar;
@@ -36,11 +40,11 @@
 @property(readonly, nonatomic) NSString *transparencyRendererPayload; // @synthesize transparencyRendererPayload=_transparencyRendererPayload;
 @property(readonly, nonatomic) NSString *transparencyDetailsUnavailableMessage; // @synthesize transparencyDetailsUnavailableMessage=_transparencyDetailsUnavailableMessage;
 @property(retain, nonatomic) id <NewsTransparencyViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (id)bundleForTransparencyDetailsViewFramework;
-- (id)normalizeChineseLanguage:(id)arg1;
+- (void)_openDebugView:(id)arg1;
+- (void)debugDetailsViewControllerReady:(id)arg1;
+- (void)displayDebugButtonWaitingIndicator;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)errorDelegate;
 - (void)presentViewDelegate;

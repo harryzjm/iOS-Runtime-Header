@@ -16,9 +16,12 @@
     long long _source;
     NSString *_sourceIdentifier;
     NSString *_variant;
+    NSString *_displayString;
     struct CGRect _cropRect;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property(retain, nonatomic) NSString *variant; // @synthesize variant=_variant;
 @property(retain, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(nonatomic) long long source; // @synthesize source=_source;
@@ -26,7 +29,6 @@
 @property(readonly, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 @property(readonly, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)copyWithNewImageData:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 imageData:(id)arg2 cropRect:(struct CGRect)arg3 lastUsedDate:(id)arg4;
 - (id)initWithImageData:(id)arg1 cropRect:(struct CGRect)arg2 lastUsedDate:(id)arg3;

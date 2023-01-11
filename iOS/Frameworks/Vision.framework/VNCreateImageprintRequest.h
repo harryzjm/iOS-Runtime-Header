@@ -15,7 +15,7 @@
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 @property(retain, nonatomic) NSNumber *timeStamp;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <Foundation/NSXPCConnectionDelegate-Protocol.h>
 #import <Foundation/NSXPCListenerDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
+@class NSMapTable, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,15 +22,12 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_presenterMessengersByID;
     NSMutableSet *_providers;
     NSMapTable *_providerMessengersByID;
-    NSMutableArray *_providerListeners;
     _Bool _disableFileProviderReregistration;
 }
 
 + (id)_fileReactorDebuggingInformation;
 + (id)_willBeginOperationForReactor:(id)arg1 withDescription:(id)arg2;
 + (void)_accessPresenterOperationRecordsUsingBlock:(CDUnknownBlockType)arg1;
-+ (id)_fetchProviderMessengerForListener:(id)arg1;
-+ (void)_setProviderMessenger:(id)arg1 forListener:(id)arg2;
 + (id)_idForReactor:(id)arg1;
 - (void)handleCanceledServer;
 - (void)performBarrierAsync:(CDUnknownBlockType)arg1;
@@ -43,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (id)_onqueue_fileProviders;
 - (void)removeFileProvider:(id)arg1;
 - (void)addFileProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)filePresenters;
 - (id)_onqueue_filePresenters;
 - (void)removeFilePresenter:(id)arg1;

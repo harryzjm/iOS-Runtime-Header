@@ -11,6 +11,7 @@
     id _internal;
 }
 
+- (long long)simulateMotionStateYouthWithState:(long long)arg1;
 - (long long)simulateMotionState:(_Bool)arg1 withState:(long long)arg2;
 - (long long)overrideOscarSideband:(_Bool)arg1 withState:(long long)arg2;
 @property(readonly, nonatomic, getter=isActivityAvailable) _Bool activityAvailable;

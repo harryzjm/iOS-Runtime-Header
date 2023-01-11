@@ -15,21 +15,25 @@
 
 // Remaining properties
 @property(nonatomic) _Bool allowsSnooze; // @dynamic allowsSnooze;
-@property(nonatomic) _Bool bedtimeDoNotDisturb; // @dynamic bedtimeDoNotDisturb;
-@property(nonatomic) unsigned long long bedtimeDoNotDisturbOptions; // @dynamic bedtimeDoNotDisturbOptions;
 @property(nonatomic) unsigned long long bedtimeHour; // @dynamic bedtimeHour;
 @property(nonatomic) unsigned long long bedtimeMinute; // @dynamic bedtimeMinute;
 @property(copy, nonatomic) NSNumber *bedtimeReminder; // @dynamic bedtimeReminder;
 @property(nonatomic) unsigned long long bedtimeReminderMinutes; // @dynamic bedtimeReminderMinutes;
+@property(nonatomic) unsigned long long day; // @dynamic day;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @dynamic enabled;
 @property(nonatomic) unsigned long long hour; // @dynamic hour;
 @property(nonatomic) unsigned long long minute; // @dynamic minute;
+@property(nonatomic) unsigned long long month; // @dynamic month;
 @property(nonatomic) unsigned long long playOptions; // @dynamic playOptions;
 @property(nonatomic) unsigned long long repeatSchedule; // @dynamic repeatSchedule;
+@property(nonatomic) _Bool sleepMode; // @dynamic sleepMode;
+@property(nonatomic) unsigned long long sleepModeOptions; // @dynamic sleepModeOptions;
 @property(nonatomic) _Bool sleepSchedule; // @dynamic sleepSchedule;
+@property(nonatomic) _Bool sleepTracking; // @dynamic sleepTracking;
 @property(copy, nonatomic) MTSound *sound; // @dynamic sound;
 @property(nonatomic) _Bool timeInBedTracking; // @dynamic timeInBedTracking;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
+@property(nonatomic) unsigned long long year; // @dynamic year;
 
 @end
 

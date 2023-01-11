@@ -11,7 +11,6 @@
 
 @interface PLPhotoAnalysisServiceClient : NSObject
 {
-    NSURL *_libraryURL;
     NSDictionary *_cachedRequestContextDictionary;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     NSXPCConnection *_xpcConnection;
@@ -19,18 +18,20 @@
     unsigned long long _graphLoadcount;
     _Bool _graphLoadWasSent;
     struct os_unfair_lock_s _lock;
+    NSURL *_libraryURL;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 - (void)dispatchOnQueue:(id)arg1 blockWithoutBoost:(CDUnknownBlockType)arg2;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)requestContextDictionaryWithOperationId:(_Bool)arg1;
 - (id)requestContextDictionary;
-- (id)xpcConnection;
+@property(readonly, nonatomic) NSXPCConnection *xpcConnection;
 - (id)_xpcConnection;
 - (void)_setupXPCConnection;
-- (id)backgroundQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue;
 - (void)writeQALog:(id)arg1;
 - (void)notifyLibraryAvailableAtURL:(id)arg1;
 - (void)cancelOperationsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -43,37 +44,39 @@
 - (void)loadGraph;
 - (_Bool)isGraphReady;
 - (void)_sendGraphLoadIfNeeded;
+- (id)requestOnDemandFaceCropsForFaceLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (_Bool)rebuildPersonsWithOptions:(id)arg1 error:(id *)arg2;
 - (id)faceCandidatesForKeyFaceForPersonsWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (void)personPromoterAdvancedStatus:(CDUnknownBlockType)arg1;
 - (void)personPromoterStatus:(CDUnknownBlockType)arg1;
 - (id)requestSuggestedMePersonIdentifierWithError:(id *)arg1;
-- (void)faceProcessingStatusForUserInterface:(CDUnknownBlockType)arg1;
 - (id)differencesBetweenClustersInClusterCacheAndLibrary:(id *)arg1;
 - (id)faceClusteringInformation:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)processPersonsWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)reclusterFacesWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)resetFaceClassificationModel:(id *)arg1;
-- (_Bool)resetPeople:(id *)arg1;
 - (_Bool)resetFaceClusteringState:(id *)arg1;
 - (long long)updateKeyFacesOfPersonsWithLocalIdentifiers:(id)arg1 forceUpdate:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)renderFaceTilesForFaceLocalIdentifiers:(id)arg1 inAssetWithLocalIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)renderFaceTilesForFaceLocalIdentifiers:(id)arg1 inAssetWithLocalIdentifier:(id)arg2 error:(id *)arg3;
-- (long long)suggestVerifiedPersonLocalIdentifierForPersonWithLocalIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (long long)suggestVerifiedPersonLocalIdentifierForFaceWithLocalIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)suggestedPersonsForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedPersonSuggestions:(id)arg2 toBeRejectedPersonSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)performFaceProcessingOnAssetWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)localizedLabelForSceneIdentifier:(unsigned int)arg1 error:(id *)arg2;
 - (id)searchResultNodesForSceneIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)searchResultNodesForSceneClassifications:(id)arg1 error:(id *)arg2;
 - (id)sceneNodesForSceneIdentifiers:(id)arg1 error:(id *)arg2;
+- (void)recordFeatureUsageFromCounts:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)reloadWidgetTimelineWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)turboIsEnabled;
 - (void)stopTurboAnalysis;
 - (void)runTurboAnalysis;
 - (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)scheduleAssetForOnDemandAnalysisWithUUID:(id)arg1 workerType:(short)arg2 workerFlags:(int)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)requestSuggestedPersonsWithOptions:(id)arg1 error:(id *)arg2;
+- (id)requestRelationshipInferencesForPersonLocalIdentifiers:(id)arg1 error:(id *)arg2;
+- (id)requestContactInferencesForPersonLocalIdentifiers:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (void)requestRunPFLWithAttachments:(id)arg1 recipeUserInfo:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (_Bool)reportMetricsWithOptions:(id)arg1 error:(id *)arg2;
 - (id)runCurationWithItems:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)requestM5CompatibleMemoriesReturningError:(id *)arg1;
 - (id)requestTextFeaturesForMomentLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)requestPeopleSuggestionLearningWithError:(id *)arg1;
 - (id)requestPeopleSuggestionLearningStatisticsWithError:(id *)arg1;
@@ -135,15 +138,16 @@
 - (id)requestSynonymsDictionariesWithError:(id *)arg1;
 - (id)requestZeroKeywordsWithOptions:(id)arg1 error:(id *)arg2;
 - (void)invalidateGraphWithReply:(CDUnknownBlockType)arg1;
-- (void)enrichDataModelWithProgress:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rebuildGraphWithOptions:(id)arg1 progress:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)notifyWhenGraphReadyWithCoalescingIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)requestSignalModelInfosWithError:(id *)arg1;
 - (id)requestAssetsForPersonIdentifiers:(id)arg1 withError:(id *)arg2;
 - (id)requestRelatedMomentsForPersonIdentifiers:(id)arg1 withError:(id *)arg2;
 - (id)requestSocialGroupsForPersonIdentifiers:(id)arg1 withError:(id *)arg2;
 - (id)requestAllSocialGroupsForPersonIdentifier:(id)arg1 withError:(id *)arg2;
 - (id)requestSortedArrayOfPersonIdentifiers:(id)arg1 withError:(id *)arg2;
-- (void)generateQuestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)requestLastQuestionGenerationJobDateWithError:(id *)arg1;
+- (void)requestGenerateQuestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)generateSuggestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)simulateMemoriesNotificationWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)generateMemoriesWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;

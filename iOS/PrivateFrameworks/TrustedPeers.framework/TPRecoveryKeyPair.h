@@ -10,14 +10,15 @@
 
 @interface TPRecoveryKeyPair : NSObject
 {
-    NSData *_signingSPKI;
-    NSData *_encryptionSPKI;
+    NSData *_signingKeyData;
+    NSData *_encryptionKeyData;
 }
 
-@property(readonly, retain) NSData *encryptionSPKI; // @synthesize encryptionSPKI=_encryptionSPKI;
-@property(readonly, retain) NSData *signingSPKI; // @synthesize signingSPKI=_signingSPKI;
 - (void).cxx_destruct;
-- (id)initWithSigningSPKI:(id)arg1 encryptionSPKI:(id)arg2;
+@property(readonly, retain) NSData *encryptionKeyData; // @synthesize encryptionKeyData=_encryptionKeyData;
+@property(readonly, retain) NSData *signingKeyData; // @synthesize signingKeyData=_signingKeyData;
+- (id)initWithStableInfo:(id)arg1;
+- (id)initWithSigningKeyData:(id)arg1 encryptionKeyData:(id)arg2;
 
 @end
 

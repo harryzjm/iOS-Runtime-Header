@@ -14,6 +14,7 @@
 - (void)libraryManagerStatusDidChange:(CPLLibraryManager *)arg1;
 
 @optional
+- (void)libraryManager:(CPLLibraryManager *)arg1 pushAllChangesWithCompletionHandler:(void (^)(NSError *))arg2;
 - (void)libraryManager:(CPLLibraryManager *)arg1 provideLocalResource:(CPLResource *)arg2 recordClass:(Class)arg3 completionHandler:(void (^)(CPLResource *, unsigned long long))arg4;
 - (NSString *)displayableNameForLibraryManager:(CPLLibraryManager *)arg1;
 - (void)libraryManagerHasStatusChanges:(CPLLibraryManager *)arg1;

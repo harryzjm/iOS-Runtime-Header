@@ -18,7 +18,6 @@
     NSArray *_blacklistedMemories;
     NSSet *_blacklistedFeatures;
     NSArray *_existingSuggestions;
-    unsigned long long _precision;
     NSDate *_lastMemoryCreationUniversalDate;
     NSDate *_baseMemoryCreationUniversalDate;
     NSDictionary *_extraParameters;
@@ -27,12 +26,12 @@
 }
 
 + (id)stringForReason:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) double forcedBeta; // @synthesize forcedBeta=_forcedBeta;
 @property(nonatomic) unsigned long long randomSeed; // @synthesize randomSeed=_randomSeed;
 @property(retain, nonatomic) NSDictionary *extraParameters; // @synthesize extraParameters=_extraParameters;
 @property(retain, nonatomic) NSDate *baseMemoryCreationUniversalDate; // @synthesize baseMemoryCreationUniversalDate=_baseMemoryCreationUniversalDate;
 @property(retain, nonatomic) NSDate *lastMemoryCreationUniversalDate; // @synthesize lastMemoryCreationUniversalDate=_lastMemoryCreationUniversalDate;
-@property(nonatomic) unsigned long long precision; // @synthesize precision=_precision;
 @property(retain, nonatomic) NSArray *existingSuggestions; // @synthesize existingSuggestions=_existingSuggestions;
 @property(retain, nonatomic) NSSet *blacklistedFeatures; // @synthesize blacklistedFeatures=_blacklistedFeatures;
 @property(retain, nonatomic) NSArray *blacklistedMemories; // @synthesize blacklistedMemories=_blacklistedMemories;
@@ -41,7 +40,6 @@
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) NSDate *universalDate; // @synthesize universalDate=_universalDate;
 @property unsigned long long reason; // @synthesize reason=_reason;
-- (void).cxx_destruct;
 - (id)description;
 - (id)initWithReason:(unsigned long long)arg1 universalDate:(id)arg2 location:(id)arg3 peopleNames:(id)arg4;
 

@@ -6,10 +6,16 @@
 
 #import <objc/NSObject.h>
 
+@class PPNamedEntityFilter;
+
 @interface PPLocalNamedEntityStoreGuardedData : NSObject
 {
     _Bool _pendingNamedEntityChangeNotification;
+    PPNamedEntityFilter *_filter;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

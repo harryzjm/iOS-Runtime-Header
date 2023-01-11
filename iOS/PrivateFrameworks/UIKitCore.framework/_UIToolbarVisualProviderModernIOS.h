@@ -42,8 +42,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_backgroundFrame;
 - (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (void)_itemDidChangeWidth:(id)arg1;
-- (void)_itemDidChangeSecondaryActionState:(id)arg1;
-- (void)_itemDidChangeSecondaryActions:(id)arg1;
 - (void)_itemDidChangeEnabledState:(id)arg1;
 - (void)_itemDidChangeHiddenState:(id)arg1;
 - (void)_itemDidChangeSelectionState:(id)arg1;
@@ -55,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_setViewOwnersAndUpdateContentViewForItems:(id)arg1 withOldItems:(id)arg2 animated:(_Bool)arg3;
 - (void)setItemDistribution:(long long)arg1;
 - (long long)itemDistribution;
+- (void)prepare;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

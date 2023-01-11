@@ -11,18 +11,18 @@ __attribute__((visibility("hidden")))
 @interface SYIncomingFullSyncSession
 {
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     _Bool canRestart;
     _Bool canRollback;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_os_activity> *sessionActivity; // @synthesize sessionActivity=_sessionActivity;
 - (void)setCanRollback:(_Bool)arg1;
 - (_Bool)canRollback;
 - (void)setCanRestart:(_Bool)arg1;
 - (_Bool)canRestart;
-- (void).cxx_destruct;
 - (void)_handleEndSync:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleBatchChunk:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelWithError:(id)arg1;
@@ -38,9 +38,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)protocolVersion;
 - (_Bool)isSending;
 - (_Bool)isResetSync;
-- (void)_setStateQuietly:(long long)arg1;
-- (void)setState:(long long)arg1;
-- (long long)state;
+- (void)_setStateQuietly:(unsigned int)arg1;
+- (void)setState:(unsigned int)arg1;
+- (unsigned int)state;
 - (id)initWithService:(id)arg1;
 
 @end

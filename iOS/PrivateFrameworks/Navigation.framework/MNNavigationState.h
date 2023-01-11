@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MNNavigationStateManager, MNNavigationTraceManager;
+@class MNLocationProviderCLParameters, MNNavigationStateManager, MNNavigationTraceManager, MNSimulationLocationProvider;
 
 @interface MNNavigationState : NSObject
 {
@@ -15,10 +15,10 @@
     MNNavigationStateManager *_stateManager;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak MNNavigationStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property(readonly, nonatomic) double suggestionUpdateFrequency; // @synthesize suggestionUpdateFrequency=_suggestionUpdateFrequency;
 @property(readonly, nonatomic) double locationUpdateInterval; // @synthesize locationUpdateInterval=_locationUpdateInterval;
-- (void).cxx_destruct;
 - (_Bool)_isSelectorValidForForwarding:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
@@ -29,9 +29,11 @@
 - (void)dealloc;
 - (id)initWithStateManager:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic) MNSimulationLocationProvider *simulationLocationProvider;
 @property(readonly, nonatomic) MNNavigationTraceManager *traceManager;
-@property(readonly, nonatomic) unsigned long long desiredLocationProviderType;
 @property(readonly, nonatomic) _Bool shouldClearStoredRoutes;
+@property(readonly, nonatomic) MNLocationProviderCLParameters *clParameters;
+@property(readonly, nonatomic) unsigned long long desiredLocationProviderType;
 @property(readonly, nonatomic) _Bool requiresLocationAccess;
 @property(readonly, nonatomic) _Bool requiresHighMemoryThreshold;
 @property(readonly, nonatomic) unsigned long long type;

@@ -11,8 +11,10 @@
 }
 
 + (id)asset;
-+ (id)dictionaryWithPlistAssetPath:(id)arg1;
 + (id)dictionaryWithPlistFilename:(id)arg1;
++ (id)nameDetectorRules;
++ (id)dpRecorderRules;
++ (id)signatureRules;
 + (id)metricsConfig;
 + (id)quickResponses;
 + (id)mappings;

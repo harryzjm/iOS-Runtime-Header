@@ -11,7 +11,7 @@
 @interface AXMAudioDataSource : NSObject
 {
     _Bool _circular;
-    vector_3203cf93 *_sampleBuffer;
+    vector_12bd641b *_sampleBuffer;
     unsigned long long _length;
     unsigned long long _currentSampleIndex;
     double _level;
@@ -20,6 +20,7 @@
     double _sampleRate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSArray *effectsChain; // @synthesize effectsChain=_effectsChain;
@@ -27,8 +28,7 @@
 @property(nonatomic, getter=isCircular) _Bool circular; // @synthesize circular=_circular;
 @property(nonatomic) unsigned long long currentSampleIndex; // @synthesize currentSampleIndex=_currentSampleIndex;
 @property(nonatomic) unsigned long long length; // @synthesize length=_length;
-@property(readonly, nonatomic) vector_3203cf93 *sampleBuffer; // @synthesize sampleBuffer=_sampleBuffer;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) vector_12bd641b *sampleBuffer; // @synthesize sampleBuffer=_sampleBuffer;
 - (void)normalizeAudio;
 - (id)description;
 - (void)processEffects:(unsigned long long)arg1;

@@ -8,28 +8,28 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSString, PBDataReader;
+@class GEOLocation, GEOStructuredAddress, NSString, PBDataReader;
 
 @interface GEOSignificantLocation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
+    GEOStructuredAddress *_address;
     double _confidence;
     NSString *_identifier;
     GEOLocation *_location;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _locationIndex;
     unsigned int _numberOfVisitsBucket;
     struct {
         unsigned int has_confidence:1;
         unsigned int has_locationIndex:1;
         unsigned int has_numberOfVisitsBucket:1;
+        unsigned int read_address:1;
         unsigned int read_identifier:1;
         unsigned int read_location:1;
-        unsigned int wrote_confidence:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_locationIndex:1;
-        unsigned int wrote_numberOfVisitsBucket:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,20 +44,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOStructuredAddress *address;
+@property(readonly, nonatomic) _Bool hasAddress;
 @property(nonatomic) _Bool hasConfidence;
 @property(nonatomic) double confidence;
 @property(retain, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) _Bool hasIdentifier;
-- (void)_readIdentifier;
 @property(nonatomic) _Bool hasNumberOfVisitsBucket;
 @property(nonatomic) unsigned int numberOfVisitsBucket;
 @property(nonatomic) _Bool hasLocationIndex;
 @property(nonatomic) unsigned int locationIndex;
 @property(retain, nonatomic) GEOLocation *location;
 @property(readonly, nonatomic) _Bool hasLocation;
-- (void)_readLocation;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

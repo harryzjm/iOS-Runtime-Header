@@ -10,7 +10,7 @@
 #import <SpringBoardUIServices/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBSUIWallpaperPreviewViewDelegate-Protocol.h>
 
-@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperOptions, SBSUIProgressHUD, UIImage, _UILegibilitySettings;
+@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperOptions, SBSUIProgressHUD, UIImage, _SBSUIOrientedImageView, _UILegibilitySettings;
 @protocol SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewControllerDelegate;
 
 @interface SBSUIWallpaperPreviewViewController : UIViewController <SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewDelegate, SBFLegibilitySettingsProvider>
@@ -31,11 +31,11 @@
     double _stillTimeInVideo;
     SBFWallpaperOptions *_options;
     NSDictionary *_optionsDict;
-    _Bool _disableSegmentedControl;
     _Bool _enableButtons;
     _Bool _disableContents;
-    _Bool _disableDimming;
+    _Bool _disableParallax;
     SBSUIProgressHUD *_hud;
+    _SBSUIOrientedImageView *_homeScreenPreviewView;
     _Bool _motionEnabled;
     _Bool _irisEnabled;
     id <SBFLegibilitySettingsProviderDelegate> _delegate;
@@ -46,6 +46,7 @@
     struct CGRect _cropRect;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) SBFWallpaperConfiguration *wallpaperConfiguration; // @synthesize wallpaperConfiguration=_wallpaperConfiguration;
 @property(nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
 @property(nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
@@ -55,7 +56,6 @@
 @property(readonly) UIImage *wallpaperImage; // @synthesize wallpaperImage=_wallpaperImage;
 @property(nonatomic) __weak id <SBSUIWallpaperPreviewViewControllerDelegate> previewDelegate; // @synthesize previewDelegate=_previewDelegate;
 @property(nonatomic) __weak id <SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)colorSamplingEnabled;
 - (void)setColorSamplingEnabled:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -63,8 +63,11 @@
 - (void)_stopDateTimer;
 - (void)_updateDateView;
 - (id)_dateView;
+- (void)_enableIrisOrParallaxIfEligible;
 - (void)_displaySettingWallpaperHUD;
+- (id)_wallpaperViewIfLoaded;
 - (id)_wallpaperView;
+- (id)_previewViewIfLoaded;
 - (id)_previewView;
 - (id)_colorWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 configuration:(id)arg3;
 - (id)_proceduralWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 configuration:(id)arg3;
@@ -78,6 +81,8 @@
 - (void)providerLegibilitySettingsChanged:(id)arg1;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 - (void)setMotionEnabled:(_Bool)arg1 updateParallaxOnWallpaperView:(_Bool)arg2;
+@property(readonly, copy, nonatomic) SBFWallpaperOptions *wallpaperOptions;
+- (void)_applyHomeScreenPreview;
 - (void)_setProceduralWallpaperForLocationsOnMainThread:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setImageWallpaperForLocationsOnMainThread:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setImageWallpaperForLocations:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -101,6 +106,7 @@
 - (void)dealloc;
 - (id)initWithScrollableImage:(id)arg1 video:(id)arg2 time:(double)arg3;
 - (id)initWithScrollableImage:(id)arg1;
+- (id)initWithImages:(id)arg1 videos:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(_Bool)arg5 enableButtons:(_Bool)arg6 disableContents:(_Bool)arg7 disableParallax:(_Bool)arg8;
 - (id)initWithImages:(id)arg1 videos:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(_Bool)arg5 enableButtons:(_Bool)arg6 disableContents:(_Bool)arg7;
 - (id)initWithImage:(id)arg1 video:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(_Bool)arg5 enableButtons:(_Bool)arg6 disableContents:(_Bool)arg7;
 - (id)initWithImage:(id)arg1 name:(id)arg2 video:(id)arg3 time:(double)arg4;

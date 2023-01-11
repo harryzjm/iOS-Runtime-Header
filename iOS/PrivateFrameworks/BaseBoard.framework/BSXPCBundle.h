@@ -25,8 +25,8 @@
 + (id)bundleWithPath:(id)arg1;
 + (id)bundleForPID:(int)arg1;
 + (id)mainBundle;
-@property(readonly, nonatomic) NSObject<OS_xpc_object> *xpcBundle; // @synthesize xpcBundle=_xpcBundle;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *xpcBundle; // @synthesize xpcBundle=_xpcBundle;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -36,7 +36,6 @@
 @property(readonly, copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property(readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (id)initWithXPCBundle:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

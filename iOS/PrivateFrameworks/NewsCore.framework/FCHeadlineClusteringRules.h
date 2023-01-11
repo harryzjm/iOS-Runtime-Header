@@ -35,6 +35,7 @@
 
 + (id)rulesWithTreatment:(id)arg1 configurationSet:(long long)arg2 deviceIsiPad:(_Bool)arg3 limitUnpaidArticles:(_Bool)arg4 enforcePublisherCap:(_Bool)arg5;
 + (id)rulesWithTreatment:(id)arg1 deviceIsiPad:(_Bool)arg2 limitUnpaidArticles:(_Bool)arg3 enforcePublisherCap:(_Bool)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long maxIdealClusterSizeAutoFavorite; // @synthesize maxIdealClusterSizeAutoFavorite=_maxIdealClusterSizeAutoFavorite;
 @property(nonatomic) unsigned long long minIdealClusterSizeAutoFavorite; // @synthesize minIdealClusterSizeAutoFavorite=_minIdealClusterSizeAutoFavorite;
 @property(nonatomic) unsigned long long maxClusterSizeAutoFavorite; // @synthesize maxClusterSizeAutoFavorite=_maxClusterSizeAutoFavorite;
@@ -56,7 +57,6 @@
 @property(readonly, nonatomic) unsigned long long minIdealClusterSize; // @synthesize minIdealClusterSize=_minIdealClusterSize;
 @property(readonly, nonatomic) unsigned long long maxClusterSize; // @synthesize maxClusterSize=_maxClusterSize;
 @property(readonly, nonatomic) unsigned long long minClusterSize; // @synthesize minClusterSize=_minClusterSize;
-- (void).cxx_destruct;
 - (id)init;
 - (id)initWithMinClusterSize:(unsigned long long)arg1 maxClusterSize:(unsigned long long)arg2 minIdealClusterSize:(unsigned long long)arg3 maxIdealClusterSize:(unsigned long long)arg4 minClusterSizeAutoFavorite:(unsigned long long)arg5 maxClusterSizeAutoFavorite:(unsigned long long)arg6 minIdealClusterSizeAutoFavorite:(unsigned long long)arg7 maxIdealClusterSizeAutoFavorite:(unsigned long long)arg8 maxPublisherOccurrences:(unsigned long long)arg9 enforcePublisherCap:(_Bool)arg10 maxUnpaidArticles:(unsigned long long)arg11 enableOptimizedLayout:(_Bool)arg12 optimizedLayoutSizeThreshold:(unsigned long long)arg13 optimizedLayoutIncrementUnit:(unsigned long long)arg14 solConfiguration:(id)arg15 minSubscribedChannelRatioForUGroup:(double)arg16 maxExpandedAutofavoriteGroupCandidateRatio:(double)arg17 expandedAutofavoriteClusterMinSizeMultiplier:(double)arg18 expandedAutofavoriteClusterMaxSizeMultiplier:(double)arg19;
 

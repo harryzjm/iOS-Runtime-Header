@@ -46,7 +46,7 @@
 - (id)privateCacheDirectoryWithSubType:(unsigned char)arg1;
 - (id)privateDirectoryWithSubType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;
 - (id)extendedPathsWithError:(id *)arg1;
-- (id)corePathsWithError:(id *)arg1;
+- (id)corePathsWithError:(id *)arg1 directDatabaseAccess:(_Bool)arg2 limitedLibrary:(_Bool)arg3;
 - (_Bool)createPathsForNewLibrariesWithError:(id *)arg1;
 - (id)pathsForExternalWriters;
 - (id)pathsForPermissionCheck;
@@ -56,8 +56,7 @@
 - (id)addToPath:(id)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;
 - (id)convertPhotoLibraryPathType:(unsigned char)arg1;
 - (id)_externalDirectoryWithBundleIdentifier:(id)arg1 createIfNeeded:(_Bool)arg2;
-- (id)_privateDirectoryWithBundleIdentifier:(id)arg1 createIfNeeded:(_Bool)arg2;
-- (id)_basePrivateDirectoryPath;
+- (id)basePrivateDirectoryPath;
 - (id)initWithLibraryURL:(id)arg1;
 
 @end

@@ -26,8 +26,15 @@
     _Bool _isAttemptingToPlayVideoOverlayDidChange;
     _Bool _isScrubbingActivationDidChange;
     _Bool _isVideoContentAllowedDidChange;
+    _Bool _reviewScreenSelectionDidChange;
+    _Bool _navigationBarTitleDidChange;
+    _Bool _resizeTaskDescriptorViewModelDidChange;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setResizeTaskDescriptorViewModelDidChange:) _Bool resizeTaskDescriptorViewModelDidChange; // @synthesize resizeTaskDescriptorViewModelDidChange=_resizeTaskDescriptorViewModelDidChange;
+@property(nonatomic, setter=_setNavigationBarTitleDidChange:) _Bool navigationBarTitleDidChange; // @synthesize navigationBarTitleDidChange=_navigationBarTitleDidChange;
+@property(nonatomic, setter=_setReviewScreenSelectionDidChange:) _Bool reviewScreenSelectionDidChange; // @synthesize reviewScreenSelectionDidChange=_reviewScreenSelectionDidChange;
 @property(nonatomic) _Bool isVideoContentAllowedDidChange; // @synthesize isVideoContentAllowedDidChange=_isVideoContentAllowedDidChange;
 @property(nonatomic, setter=_setIsScrubbingActivationDidChange:) _Bool isScrubbingActivationDidChange; // @synthesize isScrubbingActivationDidChange=_isScrubbingActivationDidChange;
 @property(nonatomic, setter=_setIsAttemptingToPlayVideoOverlayDidChange:) _Bool isAttemptingToPlayVideoOverlayDidChange; // @synthesize isAttemptingToPlayVideoOverlayDidChange=_isAttemptingToPlayVideoOverlayDidChange;
@@ -44,7 +51,6 @@
 @property(nonatomic, setter=_setCurrentAssetTransitionProgressDidChange:) _Bool currentAssetTransitionProgressDidChange; // @synthesize currentAssetTransitionProgressDidChange=_currentAssetTransitionProgressDidChange;
 @property(nonatomic, setter=_setCurrentAssetDidChange:) _Bool currentAssetDidChange; // @synthesize currentAssetDidChange=_currentAssetDidChange;
 @property(nonatomic, setter=_setAssetsDataSourceDidChange:) _Bool assetsDataSourceDidChange; // @synthesize assetsDataSourceDidChange=_assetsDataSourceDidChange;
-- (void).cxx_destruct;
 - (_Bool)hasChanges;
 @property(readonly, nonatomic) NSMapTable *assetSharedViewModelChangesByAsset;
 @property(readonly, nonatomic) NSMapTable *_mutableSharedViewModelChangesByAsset;

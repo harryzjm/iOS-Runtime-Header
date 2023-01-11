@@ -30,8 +30,8 @@
     struct CGSize _wallpaperSize;
 }
 
-+ (long long)currentDeviceWallpaperSizeType;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isCachedVariantsShareWallpaperConfigurationValid) _Bool cachedVariantsShareWallpaperConfigurationValid; // @synthesize cachedVariantsShareWallpaperConfigurationValid=_cachedVariantsShareWallpaperConfigurationValid;
 @property(nonatomic) _Bool cachedVariantsShareWallpaperConfiguration; // @synthesize cachedVariantsShareWallpaperConfiguration=_cachedVariantsShareWallpaperConfiguration;
 @property(retain, nonatomic) SBFMagnifyMode *magnifyMode; // @synthesize magnifyMode=_magnifyMode;
@@ -43,7 +43,6 @@
 @property(readonly, nonatomic) struct CGSize wallpaperSize; // @synthesize wallpaperSize=_wallpaperSize;
 @property(nonatomic) __weak id <SBFWallpaperConfigurationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSArray *dataStores; // @synthesize dataStores=_dataStores;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -68,6 +67,7 @@
 - (void)removeProceduralWallpaperForVariants:(long long)arg1;
 - (_Bool)setProceduralWallpaperIdentifier:(id)arg1 options:(id)arg2 forVariants:(long long)arg3;
 - (id)proceduralWallpaperInfoForVariant:(long long)arg1;
+- (id)cleanedProceduralWallpaperInfo:(id)arg1;
 - (_Bool)isProceduralWallpaperInfoValid:(id)arg1;
 - (Class)proceduralWallpaperClassForIdentifier:(id)arg1;
 - (void)removeVideoForVariants:(long long)arg1;
@@ -83,9 +83,10 @@
 - (void)migrateWallpaperOptionsForImageIfNecessaryForVariant:(long long)arg1 representingVariants:(long long)arg2;
 - (void)performMigrationWithFailureHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfCachedStaticImages;
+- (void)clearCacheForVariants:(long long)arg1 memoryOnly:(_Bool)arg2;
 - (void)clearCacheForVariants:(long long)arg1;
-- (_Bool)setWallpaperConfigurationFromDefaultWallpaperConfiguration:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3;
-- (_Bool)setWallpaperConfigurationFromDefaultWallpaperConfigurationSet:(id)arg1;
+- (_Bool)setWallpaperConfigurationFromDefaultWallpaperConfiguration:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3 name:(id)arg4;
+- (void)setWallpaperBundle:(id)arg1 appearance:(id)arg2;
 - (void)restoreDefaultWallpaperForAllVariantsAndNotify:(_Bool)arg1;
 - (long long)wallpaperTypeForSharedWallpaperConfigurationForTypes:(unsigned long long)arg1;
 - (_Bool)variantsShareWallpaperConfigurationForTypes:(unsigned long long)arg1;
@@ -104,13 +105,11 @@
 - (_Bool)setWallpaperThumbnailData:(id)arg1 forVariant:(long long)arg2;
 - (_Bool)setWallpaperThumbnailFromFullsizeImage:(id)arg1 forVariant:(long long)arg2 wallpaperMode:(long long)arg3;
 - (double)thumbnailWidth;
-- (id)hashDataForImage:(id)arg1;
 - (id)thumbnailDataForImage:(id)arg1;
-- (id)thumbnailImageForImage:(id)arg1;
 - (id)normalizeImage:(id)arg1;
-- (_Bool)setWallpaperImage:(id)arg1 originalImage:(id)arg2 wallpaperOptions:(id)arg3 forVariants:(long long)arg4 options:(unsigned long long)arg5 wallpaperMode:(long long)arg6 isMigrating:(_Bool)arg7;
+- (_Bool)setWallpaperImage:(id)arg1 originalImage:(id)arg2 thumbnailData:(id)arg3 imageHashData:(id)arg4 wallpaperOptions:(id)arg5 forVariants:(long long)arg6 options:(unsigned long long)arg7 wallpaperMode:(long long)arg8 isMigrating:(_Bool)arg9;
 - (_Bool)setWallpaperImage:(id)arg1 originalImage:(id)arg2 forVariants:(long long)arg3 options:(unsigned long long)arg4;
-- (_Bool)setWallpaperImage:(id)arg1 wallpaperOptions:(id)arg2 forVariants:(long long)arg3 wallpaperMode:(long long)arg4;
+- (_Bool)setWallpaperImage:(id)arg1 adjustedImage:(id)arg2 thumbnailData:(id)arg3 imageHashData:(id)arg4 wallpaperOptions:(id)arg5 forVariants:(long long)arg6 wallpaperMode:(long long)arg7;
 - (_Bool)setWallpaperImage:(id)arg1 wallpaperOptions:(id)arg2 forVariants:(long long)arg3;
 - (long long)effectiveSharedVariantForVariants:(long long)arg1;
 - (id)wallpaperThumbnailImageDataForFulfillingLookupForConfiguration:(id)arg1;
@@ -136,7 +135,7 @@
 - (void)endChangeBatch;
 - (void)beginChangeBatch;
 @property(readonly, nonatomic) struct CGSize wallpaperSizeIncludingParallaxOverhang;
-- (long long)parallaxDeviceType;
+@property(readonly, nonatomic) long long parallaxDeviceType;
 - (void)dealloc;
 - (id)init;
 - (id)initWithWallpaperDataStores:(id)arg1;

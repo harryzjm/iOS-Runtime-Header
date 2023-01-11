@@ -18,8 +18,8 @@
 + (id)_encodeSensitivityPoints:(id)arg1;
 + (_Bool)_isConcreteObjectClass;
 + (id)audiogramSampleWithSensitivityPoints:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 metadata:(id)arg4;
-@property(retain, nonatomic) NSData *encodedSensitivityPoints; // @synthesize encodedSensitivityPoints=_encodedSensitivityPoints;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *encodedSensitivityPoints; // @synthesize encodedSensitivityPoints=_encodedSensitivityPoints;
 - (id)maximumSensitivity;
 - (id)minimumSensitivity;
 - (id)averageRightEarSensitivity;
@@ -38,7 +38,7 @@
 - (id)payload;
 @property(readonly, copy) NSArray *sensitivityPoints;
 - (id)_validateSensitivityPointsOrderedAscending;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,19 +4,50 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSUUID;
+#import <objc/NSObject.h>
 
-@interface HMDCameraClipSignificantEventBulletin
+@class HMDAccessory, HMDCameraProfile, HMDHome, HMDService, NSDate, NSDictionary, NSSet, NSString, NSURL, NSUUID;
+
+@interface HMDCameraClipSignificantEventBulletin : NSObject
 {
-    NSArray *_notificationUUIDs;
+    _Bool _shouldShowProvideFeedbackButton;
+    NSSet *_significantEvents;
+    NSUUID *_previewImageNotificationUUID;
+    NSURL *_previewImageFilePathURL;
+    NSDate *_dateOfOccurrence;
+    HMDCameraProfile *_camera;
+    HMDHome *_home;
+    HMDAccessory *_accessory;
+    HMDService *_service;
     NSUUID *_clipUUID;
+    NSString *_title;
+    NSString *_body;
+    NSString *_threadIdentifier;
+    NSString *_requestIdentifier;
 }
 
-@property(readonly, copy) NSUUID *clipUUID; // @synthesize clipUUID=_clipUUID;
-@property(readonly, copy) NSArray *notificationUUIDs; // @synthesize notificationUUIDs=_notificationUUIDs;
++ (id)actionURLForHomeUUID:(id)arg1 cameraUUID:(id)arg2;
++ (id)localizedMessageForSignificantEvents:(id)arg1 cameraName:(id)arg2;
++ (unsigned long long)effectiveReasonForSignificantEvent:(id)arg1;
 - (void).cxx_destruct;
-- (id)userInfo;
-- (id)initWithNotificationUUIDs:(id)arg1 previewImageFilePathURL:(id)arg2 significantEvent:(unsigned long long)arg3 dateOfOccurrence:(id)arg4 camera:(id)arg5 home:(id)arg6 accessory:(id)arg7 recordingService:(id)arg8 clipUUID:(id)arg9;
+@property(readonly, copy) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property(readonly, copy) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
+@property(readonly, copy) NSString *body; // @synthesize body=_body;
+@property(readonly, copy) NSString *title; // @synthesize title=_title;
+@property(readonly) _Bool shouldShowProvideFeedbackButton; // @synthesize shouldShowProvideFeedbackButton=_shouldShowProvideFeedbackButton;
+@property(readonly, copy) NSUUID *clipUUID; // @synthesize clipUUID=_clipUUID;
+@property(readonly) HMDService *service; // @synthesize service=_service;
+@property(readonly) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property(readonly) HMDHome *home; // @synthesize home=_home;
+@property(readonly) HMDCameraProfile *camera; // @synthesize camera=_camera;
+@property(readonly, copy) NSDate *dateOfOccurrence; // @synthesize dateOfOccurrence=_dateOfOccurrence;
+@property(readonly) NSURL *previewImageFilePathURL; // @synthesize previewImageFilePathURL=_previewImageFilePathURL;
+@property(readonly, copy) NSUUID *previewImageNotificationUUID; // @synthesize previewImageNotificationUUID=_previewImageNotificationUUID;
+@property(readonly, copy) NSSet *significantEvents; // @synthesize significantEvents=_significantEvents;
+@property(readonly, copy) NSDictionary *userInfo;
+- (id)initWithSignificantEvent:(id)arg1 previewImageFilePathURL:(id)arg2 dateOfOccurrence:(id)arg3 camera:(id)arg4 home:(id)arg5 accessory:(id)arg6 recordingService:(id)arg7 shouldShowProvideFeedbackButton:(_Bool)arg8;
+- (id)initWithSignificantEvents:(id)arg1 previewImageNotificationUUID:(id)arg2 previewImageFilePathURL:(id)arg3 dateOfOccurrence:(id)arg4 camera:(id)arg5 home:(id)arg6 accessory:(id)arg7 recordingService:(id)arg8 clipUUID:(id)arg9 shouldShowProvideFeedbackButton:(_Bool)arg10;
+- (id)initWithSignificantEvents:(id)arg1 previewImageNotificationUUID:(id)arg2 previewImageFilePathURL:(id)arg3 dateOfOccurrence:(id)arg4 camera:(id)arg5 home:(id)arg6 accessory:(id)arg7 recordingService:(id)arg8 requestIdentifier:(id)arg9 clipUUID:(id)arg10 shouldShowProvideFeedbackButton:(_Bool)arg11;
 
 @end
 

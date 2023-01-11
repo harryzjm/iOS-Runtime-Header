@@ -6,7 +6,7 @@
 
 #import <Pegasus/NSObject-Protocol.h>
 
-@class PGPictureInPictureRemoteObject, PGPictureInPictureViewController;
+@class NSString, PGPictureInPictureRemoteObject, PGPictureInPictureViewController;
 
 @protocol PGPictureInPictureRemoteObjectDelegate <NSObject>
 
@@ -17,6 +17,7 @@
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 didShowPictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 willShowPictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 didCreatePictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
+- (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 didRequestPictureInPictureStopForViewController:(PGPictureInPictureViewController *)arg2 sourceSceneSessionIdentifier:(NSString *)arg3 animated:(_Bool)arg4;
 - (_Bool)pictureInPictureRemoteObjectShouldCancelActivePictureInPictureOnStart:(PGPictureInPictureRemoteObject *)arg1;
 - (_Bool)pictureInPictureRemoteObjectShouldUpdateCancellationPolicyOnStart:(PGPictureInPictureRemoteObject *)arg1;
 - (_Bool)pictureInPictureRemoteObjectShouldAcceptSetupRequest:(PGPictureInPictureRemoteObject *)arg1;

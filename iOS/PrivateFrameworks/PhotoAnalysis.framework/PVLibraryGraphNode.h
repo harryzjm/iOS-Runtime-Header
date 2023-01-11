@@ -21,6 +21,7 @@
 + (id)dateForTimeInterval:(double)arg1;
 + (double)timeIntervalForDate:(id)arg1;
 @property(readonly) NSString *localIdentifier;
+@property(readonly, nonatomic) _Bool isCoarse;
 @property(readonly, nonatomic) NSDate *endDate;
 @property(readonly, nonatomic) NSDate *startDate;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D approximateCoordinate;
@@ -47,7 +48,6 @@
 @property(readonly, nonatomic) long long verifiedType;
 @property(readonly, nonatomic) NSString *anonymizedName;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D locationCoordinate;
-@property(readonly, nonatomic) NSDate *clsDistanceIdentity;
 @property(readonly, nonatomic) NSData *distanceIdentity;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;

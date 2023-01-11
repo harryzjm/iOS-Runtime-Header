@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HMFoundation/HMFActivityMarking-Protocol.h>
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class HMFUnfairLock, NSArray, NSDate, NSMutableSet, NSObject, NSString, NSUUID;
+@class HMFLogEventSession, NSArray, NSDate, NSMutableSet, NSObject, NSString, NSUUID;
 @protocol OS_os_activity, OS_voucher;
 
-@interface HMFActivity <HMFLogging, HMFObject>
+@interface HMFActivity <HMFLogging, HMFObject, HMFActivityMarking>
 {
-    HMFUnfairLock *_lock;
     NSObject<OS_os_activity> *_internal;
-    struct os_activity_scope_state_s *_state;
     NSObject<OS_voucher> *_voucher;
     NSMutableSet *_threadContexts;
+    struct os_unfair_lock_s _lock;
     _Bool _valid;
     NSUUID *_identifier;
     HMFActivity *_parent;
@@ -28,6 +28,10 @@
 
 + (id)logCategory;
 + (id)shortDescription;
++ (void)markCurrentActivityWithFormat:(id)arg1;
++ (void)markCurrentActivityWithReason:(id)arg1;
++ (void)markCurrentActivity;
++ (id)currentActivityForMarking;
 + (id)currentActivity;
 + (void)initialize;
 + (id)bundleIdentifier;
@@ -35,15 +39,15 @@
 + (void)activityWithName:(id)arg1 parent:(id)arg2 assertions:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 + (void)activityWithName:(id)arg1 parent:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (void)activityWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
-@property(readonly) NSDate *startDate; // @synthesize startDate=_startDate;
-@property(readonly, nonatomic) NSArray *internalAssertions; // @synthesize internalAssertions=_internalAssertions;
+- (void).cxx_destruct;
 @property(readonly) unsigned long long options; // @synthesize options=_options;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly) __weak HMFActivity *parent; // @synthesize parent=_parent;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)performBlock:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)blockWithQualityOfService:(long long)arg1 block:(CDUnknownBlockType)arg2;
+- (CDUnknownBlockType)blockWithBlock:(CDUnknownBlockType)arg1;
 - (void)markWithReason:(id)arg1;
 - (void)markWithFormat:(id)arg1;
 - (void)mark;
@@ -54,13 +58,19 @@
 @property(readonly, copy) NSString *shortDescription;
 - (void)invalidate;
 @property(readonly, getter=isValid) _Bool valid; // @synthesize valid=_valid;
+@property(readonly, getter=hasStarted) _Bool started;
 @property(readonly) unsigned long long hash;
 - (void)dealloc;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 parent:(id)arg3 options:(unsigned long long)arg4;
 - (id)initWithName:(id)arg1 parent:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithName:(id)arg1 parent:(id)arg2 assertions:(unsigned long long)arg3;
 - (id)initWithName:(id)arg1 parent:(id)arg2;
 - (id)initWithName:(id)arg1;
 - (id)init;
+- (void)enableReportingWithServiceName:(id)arg1 rootUUID:(id)arg2;
+- (void)enableReportingWithServiceName:(id)arg1;
+@property(getter=isEventReportingEnabled) _Bool eventReportingEnabled;
+@property(readonly) HMFLogEventSession *logSession;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

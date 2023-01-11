@@ -9,16 +9,24 @@
 @interface CARScreenViewArea : NSObject
 {
     _Bool _displaysTransitionControl;
+    _Bool _supportsFocusTransfer;
+    unsigned long long _statusBarEdge;
     struct CGRect _visibleFrame;
     struct CGRect _safeFrame;
+    struct CGRect _unadjustedSafeFrame;
 }
 
-@property(readonly, nonatomic) _Bool displaysTransitionControl; // @synthesize displaysTransitionControl=_displaysTransitionControl;
++ (struct NSEdgeInsets)insetsForOEMUIWithDisplaySize:(struct CGSize)arg1 originalFrame:(struct CGRect)arg2;
+@property(nonatomic) _Bool supportsFocusTransfer; // @synthesize supportsFocusTransfer=_supportsFocusTransfer;
+@property(nonatomic) struct CGRect unadjustedSafeFrame; // @synthesize unadjustedSafeFrame=_unadjustedSafeFrame;
+@property(nonatomic) unsigned long long statusBarEdge; // @synthesize statusBarEdge=_statusBarEdge;
+@property(nonatomic) _Bool displaysTransitionControl; // @synthesize displaysTransitionControl=_displaysTransitionControl;
 @property(readonly, nonatomic) struct CGRect safeFrame; // @synthesize safeFrame=_safeFrame;
 @property(readonly, nonatomic) struct CGRect visibleFrame; // @synthesize visibleFrame=_visibleFrame;
 - (_Bool)isEqualToViewArea:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 additionalInsets:(struct NSEdgeInsets)arg2 scale:(double)arg3 viewAreaDictionary:(id)arg4 displayPixelSize:(struct CGSize)arg5 wantsCornerMasks:(_Bool)arg6;
 - (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 additionalInsets:(struct NSEdgeInsets)arg2;
 - (id)initWithPropertySupplier:(CDUnknownBlockType)arg1;
 

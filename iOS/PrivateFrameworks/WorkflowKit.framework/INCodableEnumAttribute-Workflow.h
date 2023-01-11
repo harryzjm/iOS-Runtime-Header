@@ -12,7 +12,7 @@
 - (void)wf_getProcessedIntentValueForParameterValue:(id)arg1 parameter:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)wf_updateParameterDictionary:(id)arg1 parameterClass:(Class)arg2;
 - (Class)wf_parameterClass;
-- (id)wf_outputDisplayName;
+- (id)wf_outputDisplayNameWithLocalizer:(id)arg1;
 - (Class)wf_objectClass;
 @end
 

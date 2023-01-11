@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (_Bool)shouldPerformBehavior:(long long)arg1;
-- (unsigned int)_minimumVersionForBehavior:(long long)arg1;
+- (id)_minimumVersionsForBehavior:(long long)arg1;
 
 @end
 

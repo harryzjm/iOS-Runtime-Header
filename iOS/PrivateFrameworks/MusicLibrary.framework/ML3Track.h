@@ -32,6 +32,7 @@
 + (_Bool)deleteFromLibrary:(id)arg1 deletionType:(int)arg2 persistentIDs:(const long long *)arg3 count:(unsigned long long)arg4;
 + (_Bool)_writeSyncDeletesToPlistWithLibrary:(id)arg1 forPersistentIDs:(id)arg2;
 + (_Bool)libraryDynamicChangeForProperty:(id)arg1;
++ (_Bool)assistantLibraryContentsChangeForProperty:(id)arg1;
 + (_Bool)libraryContentsChangeForProperty:(id)arg1;
 + (id)persistentIDColumnForTable:(id)arg1;
 + (id)extraTablesToInsert;

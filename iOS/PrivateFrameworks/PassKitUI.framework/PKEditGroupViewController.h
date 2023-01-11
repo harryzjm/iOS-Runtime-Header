@@ -19,6 +19,7 @@
     UIBarButtonItem *_flexibleSpace;
     PKPass *_viewingPass;
     UITableView *_tableView;
+    long long _editStyle;
     struct CGSize _imageSizeNeeded;
     id <PKEditGroupViewControllerDelegate> _delegate;
 }
@@ -33,6 +34,8 @@
 - (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint)arg2 withSuggestedActions:(id)arg3;
 - (_Bool)contextMenuInteractionShouldBegin:(id)arg1;
 - (id)viewControllerForRowAtIndexPath:(id)arg1;
+- (void)_presentAlertForUpdatedExpressPass:(id)arg1;
+- (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
@@ -50,7 +53,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 placeholders:(id)arg3 delegate:(id)arg4;
+- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 style:(long long)arg3 placeholders:(id)arg4 delegate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

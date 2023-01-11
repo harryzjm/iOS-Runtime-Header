@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class STLocalOrganization;
+@class NSString, STLocalOrganization;
 
 __attribute__((visibility("hidden")))
 @interface STLocalOrganizationSettings
@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
 - (void)setPasscode:(id)arg1;
 - (id)dictionaryRepresentation;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
-- (id)computeUniqueIdentifier;
 
 // Remaining properties
 @property(retain, nonatomic) STLocalOrganization *organization; // @dynamic organization;
+@property(copy, nonatomic) NSString *recoveryAltDSID; // @dynamic recoveryAltDSID;
 
 @end
 

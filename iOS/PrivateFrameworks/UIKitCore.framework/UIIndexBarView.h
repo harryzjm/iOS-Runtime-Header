@@ -26,6 +26,7 @@
     NSArray *_displayEntries;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *displayEntries; // @synthesize displayEntries=_displayEntries;
 @property(retain, nonatomic) id <UIIndexBarVisualStyle> visualStyle; // @synthesize visualStyle=_visualStyle;
 @property(retain, nonatomic) UIAccessibilityHUDGestureManager *axHUDGestureManager; // @synthesize axHUDGestureManager=_axHUDGestureManager;
@@ -38,11 +39,11 @@
 @property(copy, nonatomic) UIColor *trackingBackgroundColor; // @synthesize trackingBackgroundColor=_trackingBackgroundColor;
 @property(nonatomic) __weak id <UIIndexBarViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSArray *entries; // @synthesize entries=_entries;
-- (void).cxx_destruct;
 - (_Bool)_accessibilityHUDGestureManagerCancelsTouchesInView:(id)arg1;
 - (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
 - (_Bool)_accessibilityHUDGestureManager:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
 - (void)_setupAXHUDGestureIfNecessary;
 - (_Bool)_selectEntry:(id)arg1 atIndex:(long long)arg2;
 - (_Bool)_didSelectEntry:(id)arg1 atIndex:(long long)arg2;

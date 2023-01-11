@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) NSArray *downloads;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)processAutomaticDownloadsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)addRestoreDownloadsWithMetadata:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)addDownloadsWithMetadata:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)cancelAllActiveDownloadsWithCompletion:(void (^)(NSError *))arg1;

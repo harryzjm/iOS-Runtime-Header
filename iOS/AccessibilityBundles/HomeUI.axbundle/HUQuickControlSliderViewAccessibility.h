@@ -11,9 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilitySummaryView;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)_axHasSecondarySlider;
+- (id)_accessibilityControlName;
+- (id)_accessibilityControlItem;
+- (id)_accessibilitySingleControlHostViewController;
 - (void)_axUpdateControlValue:(double)arg1 incrementing:(_Bool)arg2;
 - (double)_axCurrentSecondary;
 - (double)_axCurrentPrimary;

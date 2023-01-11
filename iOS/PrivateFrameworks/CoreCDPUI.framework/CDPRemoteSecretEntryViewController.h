@@ -21,9 +21,9 @@
     CDPRemoteValidationEscapeOffer *_escapeOffer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CDPRemoteValidationEscapeOffer *escapeOffer; // @synthesize escapeOffer=_escapeOffer;
 @property(readonly, nonatomic) CDPRemoteDeviceSecretValidator *validator; // @synthesize validator=_validator;
-- (void).cxx_destruct;
 - (void)enableUserInteractionAndStopSpinner;
 - (void)disableUserInteractionAndStartSpinner;
 - (void)didCancelEnteringPIN;
@@ -39,6 +39,7 @@
 - (_Bool)useProgressiveDelays;
 - (id)initWithValidator:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (id)initWithIsNumeric:(_Bool)arg1 numericLength:(id)arg2 validator:(id)arg3 delegate:(id)arg4;
 - (id)initWithDevice:(id)arg1 validator:(id)arg2 delegate:(id)arg3;
 

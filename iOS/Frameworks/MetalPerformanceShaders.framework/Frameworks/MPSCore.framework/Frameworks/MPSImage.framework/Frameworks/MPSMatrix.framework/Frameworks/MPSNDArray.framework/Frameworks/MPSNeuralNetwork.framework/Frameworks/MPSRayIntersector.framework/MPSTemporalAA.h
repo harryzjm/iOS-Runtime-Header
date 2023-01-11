@@ -15,7 +15,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)encodeToCommandBuffer:(id)arg1 sourceTexture:(id)arg2 previousTexture:(id)arg3 destinationTexture:(id)arg4 motionVectorTexture:(id)arg5 depthTexture:(id)arg6;
 - (unsigned long long)channelCount:(id)arg1;
 - (struct MPSTemporalAAParams)params;

@@ -43,6 +43,7 @@
 + (id)predicateForMailboxAccount:(id)arg1;
 + (id)predicateForMailboxType:(long long)arg1;
 + (id)predicateForMailboxName:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool canArchive; // @synthesize canArchive=_canArchive;
 @property(nonatomic) _Bool canContainMessages; // @synthesize canContainMessages=_canContainMessages;
 @property(nonatomic) long long type; // @synthesize type=_type;
@@ -51,7 +52,8 @@
 @property(retain, nonatomic) EMMailboxCollection *children; // @synthesize children=_children;
 @property(nonatomic) __weak EMMailbox *parent; // @synthesize parent=_parent;
 @property(readonly, nonatomic) EMObjectID *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
-- (void).cxx_destruct;
+- (_Bool)_shouldArchiveByDefault;
+@property(readonly, nonatomic) _Bool shouldArchiveByDefault;
 - (_Bool)_canArchiveForMailboxType:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -68,8 +70,7 @@
 @property(readonly, nonatomic) EMMailboxObjectID *parentID; // @synthesize parentID=_parentID;
 - (void)setParentFromMailboxes:(id)arg1;
 @property(readonly, nonatomic) EMReceivingAccount *account;
-- (void)setRepository:(id)arg1;
-@property(readonly, nonatomic) EMMailboxRepository *repository;
+@property(retain, nonatomic) EMMailboxRepository *repository;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_commonInitName:(id)arg1 accountIdentifier:(id)arg2 type:(long long)arg3 canContainMessages:(_Bool)arg4 children:(id)arg5 parentID:(id)arg6 builder:(CDUnknownBlockType)arg7;
 - (id)initWithObjectID:(id)arg1 name:(id)arg2 accountIdentifier:(id)arg3 type:(long long)arg4 builder:(CDUnknownBlockType)arg5;

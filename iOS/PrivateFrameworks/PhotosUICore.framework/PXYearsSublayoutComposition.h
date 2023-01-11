@@ -12,8 +12,9 @@
     PXYearsLayoutMetrics *_metrics;
 }
 
-@property(copy, nonatomic) PXYearsLayoutMetrics *metrics; // @synthesize metrics=_metrics;
 - (void).cxx_destruct;
+@property(copy, nonatomic) PXYearsLayoutMetrics *metrics; // @synthesize metrics=_metrics;
+- (struct UIEdgeInsets)sublayoutInsetsForStylableType:(long long)arg1;
 @property(readonly, nonatomic) long long presentedNumberOfColumns;
 - (id)configuredLayoutGenerator;
 

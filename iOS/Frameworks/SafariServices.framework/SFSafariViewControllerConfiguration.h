@@ -12,6 +12,7 @@
 @interface SFSafariViewControllerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _ephemeral;
+    _Bool _performingAccountSecurityUpgrade;
     _Bool _entersReaderIfAvailable;
     _Bool _barCollapsingEnabled;
     long long _redirectNotificationBehavior;
@@ -21,6 +22,8 @@
 @property(nonatomic) _Bool barCollapsingEnabled; // @synthesize barCollapsingEnabled=_barCollapsingEnabled;
 @property(nonatomic) _Bool entersReaderIfAvailable; // @synthesize entersReaderIfAvailable=_entersReaderIfAvailable;
 @property(nonatomic) long long _redirectNotificationBehavior; // @synthesize _redirectNotificationBehavior;
+- (void)_setPerformingAccountSecurityUpgrade:(_Bool)arg1;
+- (_Bool)_isPerformingAccountSecurityUpgrade;
 - (void)_setEphemeral:(_Bool)arg1;
 - (_Bool)_isEphemeral;
 - (void)encodeWithCoder:(id)arg1;

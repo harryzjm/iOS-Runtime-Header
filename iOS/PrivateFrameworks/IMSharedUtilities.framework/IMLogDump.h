@@ -15,9 +15,9 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldCollectPowerWifiStats; // @synthesize shouldCollectPowerWifiStats=_shouldCollectPowerWifiStats;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *logDumpQueue; // @synthesize logDumpQueue=_logDumpQueue;
-- (void).cxx_destruct;
 - (id)createTodaysStatisticDictionaryIfNeeded;
 - (void)_noteSyncEndedForDurationKey:(id)arg1 dateKey:(id)arg2;
 - (void)noteAHDASyncEnded;
@@ -38,7 +38,7 @@
 - (void)_includeCloudKitDebugFilesAtPath:(id)arg1;
 - (id)logShowCommandToFilePath:(id)arg1 lastHours:(int)arg2 predicate:(id)arg3;
 - (void)dumpLogsToFolderAtPath:(id)arg1 withFileName:(id)arg2 lastHours:(int)arg3 predicate:(id)arg4 includeCKDebug:(_Bool)arg5 withCompletion:(CDUnknownBlockType)arg6;
-- (_Bool)_checkArgumentValidity:(id)arg1 withFileName:(id)arg2 withError:(id *)arg3;
+- (_Bool)_checkArgumentValidity:(id)arg1 withFileName:(id)arg2 withPredicate:(id)arg3 withError:(id *)arg4;
 - (void)_compressAndDeleteFilesAtPath:(id)arg1 destinationFilePath:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)dumpMOCLoggingMetaData;
 - (id)_lastHoursToAppend:(int)arg1;

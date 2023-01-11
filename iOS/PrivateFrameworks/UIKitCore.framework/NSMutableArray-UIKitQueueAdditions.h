@@ -20,6 +20,5 @@
 - (id)_syncQueue;
 - (void)_set_listContainsOrderedItems:(_Bool)arg1;
 - (_Bool)_listContainsOrderedItems;
-- (void)_addObjectsFromArray:(id)arg1 range:(struct _NSRange)arg2;
 @end
 

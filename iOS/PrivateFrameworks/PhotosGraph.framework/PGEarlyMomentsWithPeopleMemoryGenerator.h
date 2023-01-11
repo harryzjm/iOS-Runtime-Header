@@ -12,11 +12,11 @@
     NSDate *_localDate;
 }
 
-+ (id)earlyMomentsByPeopleNodes:(id)arg1;
++ (id)earlyMomentNodesByPersonNodeWithPersonNodes:(id)arg1;
 + (unsigned long long)numberOfPotentialMemoriesForGraph:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldGenerateAllMemories; // @synthesize shouldGenerateAllMemories=_shouldGenerateAllMemories;
 @property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
-- (void).cxx_destruct;
 - (id)_potentialMemoriesForDryTesting;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;

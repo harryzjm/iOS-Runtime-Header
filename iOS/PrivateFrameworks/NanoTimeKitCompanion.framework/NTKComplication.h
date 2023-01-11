@@ -8,9 +8,14 @@
 
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
+#import <NanoTimeKitCompanion/NTKComplicationItem-Protocol.h>
 
-@interface NTKComplication : CLKCComplication <NSSecureCoding, NSCopying>
+@class NSString;
+
+@interface NTKComplication : CLKCComplication <NTKComplicationItem, NSSecureCoding, NSCopying>
 {
+    NSString *_uniqueIdentifier;
+    NSString *_appIdentifier;
     unsigned long long _complicationType;
 }
 
@@ -21,7 +26,10 @@
 + (id)nullComplication;
 + (id)anyComplicationOfType:(unsigned long long)arg1;
 + (id)allComplicationsOfType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long complicationType; // @synthesize complicationType=_complicationType;
+@property(readonly, copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property(copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -29,19 +37,32 @@
 - (void)_addKeysToJSONDictionary:(id)arg1;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (id)JSONObjectRepresentation;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1 subclassesAllowed:(_Bool)arg2;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)localizedRichDetailText;
 - (id)localizedDetailText;
 - (id)localizedRichKeylineLabelText;
 - (id)localizedKeylineLabelText;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (_Bool)appearsInDailySnapshotForFamily:(long long)arg1;
+- (_Bool)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
+- (void)_handleAddedFromFaceSharing;
+- (void)handleAddedFromFaceSharing;
 - (void)_setComplicationType:(unsigned long long)arg1;
+- (id)_generateAppIdentifier;
 - (id)initWithComplicationType:(unsigned long long)arg1;
+- (id)localizedSectionHeaderName;
+@property(readonly, nonatomic) unsigned long long ntk_itemType;
+@property(readonly, nonatomic) NSString *ntk_sectionIdentifier;
+- (id)ntk_localizedNameWithOptions:(unsigned long long)arg1 forRichComplicationSlot:(_Bool)arg2;
+@property(readonly, nonatomic) NSString *ntk_contactIdentifier;
+@property(readonly, nonatomic) NSString *ntk_identifier;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

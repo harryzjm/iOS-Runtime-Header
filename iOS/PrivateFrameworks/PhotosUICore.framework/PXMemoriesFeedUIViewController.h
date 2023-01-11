@@ -22,7 +22,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSString, PXBasicUIViewTileAnimator, PXMemoriesFeedDataSourceManager, PXMemoriesFeedViewControllerHelper, PXMemoriesOnboardingUIViewController, PXMemoriesUITileSource, PXPhotoAnalysisStatusController, PXSectionedDataSource, PXTouchingUIGestureRecognizer, PXUIScrollViewController, PXUITapGestureRecognizer, UIBarButtonItem, UIScrollView, _UIContentUnavailableView;
+@class NSString, PXBasicUIViewTileAnimator, PXMemoriesFeedDataSourceManager, PXMemoriesFeedViewControllerHelper, PXMemoriesOnboardingUIViewController, PXMemoriesUITileSource, PXPhotoAnalysisStatusController, PXPhotosDetailsContext, PXSectionedDataSource, PXTouchingUIGestureRecognizer, PXUIScrollViewController, PXUITapGestureRecognizer, UIBarButtonItem, UIScrollView, _UIContentUnavailableView;
 
 @interface PXMemoriesFeedUIViewController : UIViewController <UIContextMenuInteractionDelegate, PXReusableObjectPoolDelegate, PXChangeObserver, UIGestureRecognizerDelegate, PXAssetCollectionActionPerformerDelegate, PXScrollViewControllerObserver, PXUIViewControllerZoomTransitionEndPoint, PXTilingControllerZoomAnimationCoordinatorDelegate, PXSectionedDataSourceManagerObserver, UIPopoverPresentationControllerDelegate, PXMemoriesFeedViewControllerHelperDelegate, PXMemoriesOnboardingViewControllerDelegate, PXMemoriesUITileSourceDelegate, PXUserInterfaceFeatureViewController, PXSettingsKeyObserver>
 {
@@ -40,6 +40,7 @@
     PXPhotoAnalysisStatusController *__graphStatusController;
     PXMemoriesOnboardingUIViewController *__onboardingViewController;
     _UIContentUnavailableView *__contentUnavailableView;
+    PXPhotosDetailsContext *__selectedItemDetailsContext;
     PXMemoriesUITileSource *__tileSource;
     PXUITapGestureRecognizer *__tapRecognizer;
     PXTouchingUIGestureRecognizer *__touchRecognizer;
@@ -47,10 +48,12 @@
 }
 
 + (void)_setCurrentFeedViewController:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=setScrollTargetMemoryUUID:) NSString *scrollTargetMemoryUUID; // @synthesize scrollTargetMemoryUUID=_scrollTargetMemoryUUID;
 @property(readonly, nonatomic) PXTouchingUIGestureRecognizer *_touchRecognizer; // @synthesize _touchRecognizer=__touchRecognizer;
 @property(readonly, nonatomic) PXUITapGestureRecognizer *_tapRecognizer; // @synthesize _tapRecognizer=__tapRecognizer;
 @property(readonly, nonatomic) PXMemoriesUITileSource *_tileSource; // @synthesize _tileSource=__tileSource;
+@property(retain, nonatomic, setter=_setSelectedItemDetailsContext:) PXPhotosDetailsContext *_selectedItemDetailsContext; // @synthesize _selectedItemDetailsContext=__selectedItemDetailsContext;
 @property(retain, nonatomic, setter=_setContentUnavailableView:) _UIContentUnavailableView *_contentUnavailableView; // @synthesize _contentUnavailableView=__contentUnavailableView;
 @property(retain, nonatomic, setter=_setOnboardingViewController:) PXMemoriesOnboardingUIViewController *_onboardingViewController; // @synthesize _onboardingViewController=__onboardingViewController;
 @property(readonly, nonatomic) PXPhotoAnalysisStatusController *_graphStatusController; // @synthesize _graphStatusController=__graphStatusController;
@@ -58,7 +61,6 @@
 @property(readonly, nonatomic) PXMemoriesFeedViewControllerHelper *_helper; // @synthesize _helper=__helper;
 @property(readonly, nonatomic) PXBasicUIViewTileAnimator *_tileAnimator; // @synthesize _tileAnimator=__tileAnimator;
 @property(readonly, nonatomic) PXUIScrollViewController *_scrollViewController; // @synthesize _scrollViewController=__scrollViewController;
-- (void).cxx_destruct;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)ppt_navigateToMemoryWithReference:(id)arg1 animated:(_Bool)arg2;
 - (void)ppt_revealMemoryWithReference:(id)arg1 animated:(_Bool)arg2;
@@ -73,7 +75,7 @@
 - (_Bool)memoriesFeedViewControllerHelperFeedIsVisible:(id)arg1;
 - (id)_memoryTileViewForLocation:(struct CGPoint)arg1;
 - (id)_previewActionMenusForInteraction:(id)arg1;
-- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)tilingControllerZoomAnimationCoordinator:(id)arg1 enumerateTilesToAnimateInLayerWithType:(long long)arg2 layout:(id)arg3 zoomAnimationContext:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
@@ -91,15 +93,14 @@
 - (void)_updateNavigationItemIfNeeded;
 - (void)_invalidateNavigationItem;
 - (void)_handleSpecChange;
-- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_updateIfNeeded;
 - (void)_setNeedsUpdate;
 - (_Bool)_needsUpdate;
 - (id)_sourceViewForMemoryActionsController;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
-- (_Bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (struct PXSimpleIndexPath)_memoryIndexPathForViewController:(id)arg1;
 - (void)_startRefreshWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_refreshBarButtonItemAction:(id)arg1;
@@ -114,7 +115,9 @@
 - (id)_showMemoryDetailsForContext:(id)arg1 animated:(_Bool)arg2;
 - (void)_updateBarAppearance;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)preferredFocusEnvironments;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_preloadFontSpecs;
 - (void)_updateScrollViewControllerContentInset;

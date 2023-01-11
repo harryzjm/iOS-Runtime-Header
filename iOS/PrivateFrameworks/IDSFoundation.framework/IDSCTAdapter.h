@@ -26,13 +26,13 @@
 
 + (_Bool)isPhoneNumber:(id)arg1 equivalentToExistingPhoneNumber:(id)arg2;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) IMSystemMonitor *systemMonitor; // @synthesize systemMonitor=_systemMonitor;
 @property(retain, nonatomic) NSMutableDictionary *registrationStateByLabelID; // @synthesize registrationStateByLabelID=_registrationStateByLabelID;
 @property(nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) IDSCTAdapterCache *cache; // @synthesize cache=_cache;
 @property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property(retain, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
-- (void).cxx_destruct;
 - (void)systemApplicationDidBecomeActive;
 - (void)operatorBundleChange:(id)arg1;
 - (void)carrierBundleChange:(id)arg1;
@@ -50,6 +50,8 @@
 - (void)addListener:(id)arg1;
 - (id)CTPNRForSIM:(id)arg1;
 - (_Bool)isPhoneNumberEmergencyNumber:(id)arg1;
+- (_Bool)isPNRNumber:(id)arg1 andPhoneBookNumber:(id)arg2 differentEnoughFromSIMIdentifier:(id)arg3 toReregisterWithNewNumber:(id *)arg4;
+- (id)contextForSim:(id)arg1;
 - (id)SIMForIdentifier:(id)arg1;
 - (id)currentSIMsWithError:(id *)arg1;
 - (id)_unlocked_currentSIMsWithError:(id *)arg1;

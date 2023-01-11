@@ -5,18 +5,19 @@
 //
 
 #import <PhotosUI/ISChangeObserver-Protocol.h>
+#import <PhotosUI/PXActivityCoordinatorItem-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXVideoSessionDelegate-Protocol.h>
 
-@class AVPlayerItem, ISWrappedAVPlayer, NSError, NSHashTable, NSMutableSet, NSString, PUBrowsingVideoPlayerChange, PUMediaProvider, PXUpdater, PXVideoSession;
+@class AVPlayerItem, ISWrappedAVPlayer, NSError, NSHashTable, NSMutableSet, NSString, PUBrowsingVideoPlayerChange, PUMediaProvider, PXActivityCoordinator, PXUpdater, PXVideoSession;
 @protocol PUDisplayAsset;
 
-@interface PUBrowsingVideoPlayer <ISChangeObserver, PXChangeObserver, PXVideoSessionDelegate>
+@interface PUBrowsingVideoPlayer <ISChangeObserver, PXChangeObserver, PXVideoSessionDelegate, PXActivityCoordinatorItem>
 {
     PXUpdater *_updater;
-    NSMutableSet *_pauseReasons;
     CDStruct_1b6d18a9 _pendingSeekTime;
     CDUnknownBlockType _pendingSeekCompletionHandler;
+    void *_videoSessionPresenter;
     _Bool _isPlayingAllowed;
     _Bool _alwaysRespectsMuteSwitch;
     _Bool _isMuted;
@@ -24,7 +25,11 @@
     _Bool _isActivated;
     _Bool __isUpdatingAudioSession;
     _Bool _shouldLoadVideoSession;
+    _Bool _shouldRegisterForPlayback;
     float _volume;
+    unsigned long long _activityCoordinatorQueuePosition;
+    NSHashTable *_timeObservers;
+    NSHashTable *_videoOutputs;
     id <PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
     long long _desiredPlayState;
@@ -35,11 +40,13 @@
     NSMutableSet *__playerLoadingDisablingReasons;
     NSMutableSet *__playingDisablingReasons;
     unsigned long long _nextPlayerLoadingEnabledUpdateID;
-    NSHashTable *__timeObservers;
+    PXActivityCoordinator *_playbackCoordinator;
     CDStruct_1b6d18a9 _desiredSeekTime;
 }
 
-@property(readonly, nonatomic) NSHashTable *_timeObservers; // @synthesize _timeObservers=__timeObservers;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldRegisterForPlayback; // @synthesize shouldRegisterForPlayback=_shouldRegisterForPlayback;
+@property(readonly, nonatomic) PXActivityCoordinator *playbackCoordinator; // @synthesize playbackCoordinator=_playbackCoordinator;
 @property(nonatomic) _Bool shouldLoadVideoSession; // @synthesize shouldLoadVideoSession=_shouldLoadVideoSession;
 @property(nonatomic) unsigned long long nextPlayerLoadingEnabledUpdateID; // @synthesize nextPlayerLoadingEnabledUpdateID=_nextPlayerLoadingEnabledUpdateID;
 @property(nonatomic, setter=_setUpdatingAudioSession:) _Bool _isUpdatingAudioSession; // @synthesize _isUpdatingAudioSession=__isUpdatingAudioSession;
@@ -59,26 +66,29 @@
 @property(nonatomic) long long desiredPlayState; // @synthesize desiredPlayState=_desiredPlayState;
 @property(readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(retain, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long activityCoordinatorQueuePosition; // @synthesize activityCoordinatorQueuePosition=_activityCoordinatorQueuePosition;
 - (void)_performPendingSeekIfNeeded;
 - (void)_updatePlayerVolume;
 - (void)_updateVideoSessionDesiredPlayState;
+- (long long)_videoSessionDesiredPlayState;
+- (void)_updateShouldRegisterForPlayback;
 - (void)_updateVideoSession;
+- (void)_updatePlayerLoadingAllowedWithUpdateID:(unsigned long long)arg1;
 - (void)_updateAudioSessionCategory;
+@property(readonly, nonatomic) NSHashTable *videoOutputs; // @synthesize videoOutputs=_videoOutputs;
+@property(readonly, nonatomic) NSHashTable *timeObservers; // @synthesize timeObservers=_timeObservers;
+- (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
 - (void)_handleDidBecomeActiveNotification:(id)arg1;
 - (void)_handleWillResignActiveNotification:(id)arg1;
 - (void)videoSessionAudioSessionOutputVolumeDidChange:(id)arg1 fromVolume:(float)arg2 toVolume:(float)arg3;
 - (void)videoSessionDidPlayToEnd:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)unregisterVideoOutput:(id)arg1;
+- (void)registerVideoOutput:(id)arg1;
 - (void)unregisterTimeObserver:(id)arg1;
 - (void)registerTimeObserver:(id)arg1;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
-- (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
-- (void)unregisterChangeObserver:(id)arg1;
-- (void)registerChangeObserver:(id)arg1;
-@property(readonly, nonatomic) PUBrowsingVideoPlayerChange *currentChange;
-- (id)newViewModelChange;
 - (void)rewindExistingPlayer;
 - (void)setPlayingDisabled:(_Bool)arg1 forReason:(id)arg2;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -89,21 +99,22 @@
 @property(readonly, nonatomic) _Bool isAtEnd;
 @property(readonly, nonatomic) _Bool isAtBeginning;
 @property(readonly, nonatomic) _Bool isPlaybackDesired;
-- (void)endPauseForReason:(id)arg1;
-- (void)beginPauseForReason:(id)arg1;
-- (void)_updatePlayerLoadingAllowedWithUpdateID:(unsigned long long)arg1;
 - (void)setPlayerLoadingDisabled:(_Bool)arg1 forReason:(id)arg2;
 @property(readonly, nonatomic) ISWrappedAVPlayer *avPlayer;
 - (void)assetContentDidChange;
 - (void)invalidateExistingPlayer;
+- (void)unregisterChangeObserver:(id)arg1;
+- (void)registerChangeObserver:(id)arg1;
+@property(readonly, nonatomic) PUBrowsingVideoPlayerChange *currentChange;
+- (id)newViewModelChange;
 - (void)didPerformChanges;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
 - (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

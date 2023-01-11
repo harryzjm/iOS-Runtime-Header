@@ -6,26 +6,23 @@
 
 #import <SpringBoardHome/SBLeafIcon.h>
 
-@class NSString, SBApplication;
+@class SBApplication;
 
 @interface SBApplicationIcon : SBLeafIcon
 {
     SBApplication *_application;
-    NSString *_masqueradeIdentifier;
 }
 
 + (_Bool)canGenerateIconsInBackground;
 - (void).cxx_destruct;
-- (id)masqueradeIdentifier;
+- (_Bool)isEqual:(id)arg1;
+- (id)iTunesCategoriesOrderedByRelevancy;
 - (id)application;
 - (_Bool)isApplicationIcon;
 - (void)_noteActiveDataSourceDidChangeAndReloadIcon:(_Bool)arg1;
 - (void)possibleUserTapDidCancel;
 - (void)possibleUserTapBeganWithAbsoluteTime:(unsigned long long)arg1 andContinuousTime:(unsigned long long)arg2;
 - (id)folderFallbackTitle;
-- (id)iconFileSizeDescription;
-- (id)iconCategoryDescription;
-- (id)descriptionForLocation:(id)arg1;
 - (id)folderTitleOptions;
 - (void)setBadge:(id)arg1;
 - (id)automationID;

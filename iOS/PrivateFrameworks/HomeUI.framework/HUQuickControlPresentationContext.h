@@ -8,26 +8,32 @@
 
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HFItem, HMHome, NSSet, UIViewController;
+@class HFItem, HMHome, HUQuickControlPresentationItemManager, NSSet, UIViewController;
 @protocol NSCopying;
 
 @interface HUQuickControlPresentationContext : NSObject <NSCopying>
 {
+    _Bool _didAuthenticate;
+    _Bool _prefersSystemTransitions;
     unsigned long long _colorStyle;
     HFItem<NSCopying> *_item;
     NSSet *_controlItems;
+    HUQuickControlPresentationItemManager *_itemManager;
     HMHome *_home;
     UIViewController *_sourceViewController;
     struct CGRect _sourceRect;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool prefersSystemTransitions; // @synthesize prefersSystemTransitions=_prefersSystemTransitions;
+@property(nonatomic) _Bool didAuthenticate; // @synthesize didAuthenticate=_didAuthenticate;
 @property(nonatomic) __weak UIViewController *sourceViewController; // @synthesize sourceViewController=_sourceViewController;
 @property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
+@property(retain, nonatomic) HUQuickControlPresentationItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property(copy, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
 @property(retain, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
 @property(nonatomic) unsigned long long colorStyle; // @synthesize colorStyle=_colorStyle;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

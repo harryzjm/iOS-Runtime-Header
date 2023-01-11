@@ -9,18 +9,17 @@
 #import <NanoWeatherComplicationsCompanion/NWMDataFormatter-Protocol.h>
 
 @class NSLocale, NSMeasurement, NSMeasurementFormatter, NSNumberFormatter, NSString;
-@protocol OS_dispatch_queue;
 
 @interface NWMTemperatureFormatter : NSObject <NWMDataFormatter>
 {
-    _Bool _isCelsiusPreferred;
-    _Bool _shouldAvoidDegreeSymbolOnly;
-    NSLocale *_referenceLocale;
-    NSObject<OS_dispatch_queue> *_queue;
+    _Bool _celsiusPreferred;
+    _Bool _avoidDegreeSymbolOnly;
+    int _temperatureUnit;
+    NSLocale *_locale;
+    NSMeasurement *_noMeasurement;
     NSNumberFormatter *_noUnitFormatter;
     NSMeasurementFormatter *_degreeSymbolOnlyFormatter;
     NSMeasurementFormatter *_unitFormatter;
-    NSMeasurement *_noMeasurement;
     NSString *_formattedStaleTemperatureWithDegreeSymbol;
     NSString *_formattedStaleTemperatureWithDegreeSymbolRoundedVariant;
     NSString *_formattedStaleTemperatureWithUnit;
@@ -29,37 +28,39 @@
     NSString *_formattedStaleTemperatureWithoutUnitRoundedVariant;
 }
 
-+ (id)sharedFormatter;
++ (id)autoupdatingFormatter;
++ (id)autoupdatingSharedFormatter;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *formattedStaleTemperatureWithoutUnitRoundedVariant; // @synthesize formattedStaleTemperatureWithoutUnitRoundedVariant=_formattedStaleTemperatureWithoutUnitRoundedVariant;
 @property(retain, nonatomic) NSString *formattedStaleTemperatureWithoutUnit; // @synthesize formattedStaleTemperatureWithoutUnit=_formattedStaleTemperatureWithoutUnit;
 @property(retain, nonatomic) NSString *formattedStaleTemperatureWithUnitRoundedVariant; // @synthesize formattedStaleTemperatureWithUnitRoundedVariant=_formattedStaleTemperatureWithUnitRoundedVariant;
 @property(retain, nonatomic) NSString *formattedStaleTemperatureWithUnit; // @synthesize formattedStaleTemperatureWithUnit=_formattedStaleTemperatureWithUnit;
 @property(retain, nonatomic) NSString *formattedStaleTemperatureWithDegreeSymbolRoundedVariant; // @synthesize formattedStaleTemperatureWithDegreeSymbolRoundedVariant=_formattedStaleTemperatureWithDegreeSymbolRoundedVariant;
 @property(retain, nonatomic) NSString *formattedStaleTemperatureWithDegreeSymbol; // @synthesize formattedStaleTemperatureWithDegreeSymbol=_formattedStaleTemperatureWithDegreeSymbol;
-@property(retain, nonatomic) NSMeasurement *noMeasurement; // @synthesize noMeasurement=_noMeasurement;
 @property(retain, nonatomic) NSMeasurementFormatter *unitFormatter; // @synthesize unitFormatter=_unitFormatter;
 @property(retain, nonatomic) NSMeasurementFormatter *degreeSymbolOnlyFormatter; // @synthesize degreeSymbolOnlyFormatter=_degreeSymbolOnlyFormatter;
 @property(retain, nonatomic) NSNumberFormatter *noUnitFormatter; // @synthesize noUnitFormatter=_noUnitFormatter;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) NSLocale *referenceLocale; // @synthesize referenceLocale=_referenceLocale;
-- (void).cxx_destruct;
-- (id)_locked_unitFormatter;
-- (id)_locked_degreeSymbolOnlyFormatter;
-- (id)_locked_noUnitFormatter;
-@property(readonly) _Bool shouldAvoidDegreeSymbolOnly; // @synthesize shouldAvoidDegreeSymbolOnly=_shouldAvoidDegreeSymbolOnly;
-@property(readonly) _Bool isCelsiusPreferred; // @synthesize isCelsiusPreferred=_isCelsiusPreferred;
-- (void)_locked_updateStaleTemperatureWithUnit;
-- (id)_localizedMeasurementForTemperature:(id)arg1;
+@property(retain, nonatomic) NSMeasurement *noMeasurement; // @synthesize noMeasurement=_noMeasurement;
+@property(readonly, nonatomic) int temperatureUnit; // @synthesize temperatureUnit=_temperatureUnit;
+@property(readonly) NSLocale *locale; // @synthesize locale=_locale;
+@property(getter=shouldAvoidDegreeSymbolOnly) _Bool avoidDegreeSymbolOnly; // @synthesize avoidDegreeSymbolOnly=_avoidDegreeSymbolOnly;
+@property(getter=isCelsiusPreferred) _Bool celsiusPreferred; // @synthesize celsiusPreferred=_celsiusPreferred;
+- (void)_localeChanged:(id)arg1;
+- (double)_value:(id)arg1;
+- (id)_measurementForTemperature:(id)arg1;
 - (id)_formattedStaleTemperatureWithoutUnit:(unsigned long long)arg1;
 - (id)_formattedStaleTemperatureWithUnit:(unsigned long long)arg1;
 - (id)_formattedStaleTemperatureWithDegreeSymbol:(unsigned long long)arg1;
-- (double)value:(id)arg1;
+- (void)reloadWithLocale:(id)arg1;
 - (id)formattedWithoutUnit:(id)arg1 style:(unsigned long long)arg2;
 - (id)formattedWithoutUnit:(id)arg1;
 - (id)formattedWithUnit:(id)arg1 style:(unsigned long long)arg2;
 - (id)formattedWithUnit:(id)arg1;
 - (id)formattedWithDegreeSymbol:(id)arg1 style:(unsigned long long)arg2 fallbackStyle:(unsigned long long)arg3;
 - (id)formattedWithDegreeSymbol:(id)arg1 fallbackStyle:(unsigned long long)arg2;
+- (void)dealloc;
+- (id)initWithLocale:(id)arg1 temperatureUnit:(int)arg2;
+- (id)initWithLocale:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -11,9 +11,10 @@
     NSArray *_subparts;
 }
 
-@property(copy, nonatomic) NSArray *subparts; // @synthesize subparts=_subparts;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *subparts; // @synthesize subparts=_subparts;
 @property(readonly, copy, nonatomic) NSString *title;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)pasteboardItems;
 - (Class)balloonViewClass;
 - (id)loadTranscriptText;

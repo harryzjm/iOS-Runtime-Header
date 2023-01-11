@@ -7,5 +7,8 @@
 @interface (null) (HealthVisualization)
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)associatedObjectTypeButtonTapped:(id)arg1;
+- (void)allItemsTapped;
+- (void)closeButtonTapped;
 @end
 

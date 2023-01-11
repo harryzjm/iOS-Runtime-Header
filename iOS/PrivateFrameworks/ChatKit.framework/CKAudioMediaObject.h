@@ -14,7 +14,6 @@
 + (id)_cachedPowerLevelsForKey:(id)arg1;
 + (void)_cachePowerLevels:(id)arg1 forKey:(id)arg2;
 + (_Bool)shouldUseTranscoderGeneratedPreviewSize;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
@@ -34,6 +33,8 @@
 @property(retain, nonatomic) NSArray *powerLevels; // @dynamic powerLevels;
 - (_Bool)shouldBeQuickLooked;
 - (int)mediaType;
+- (id)attachmentSummary:(unsigned long long)arg1;
+- (id)metricsCollectorMediaType;
 
 @end
 

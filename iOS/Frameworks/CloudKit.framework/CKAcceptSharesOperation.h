@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary;
+#import <CloudKit/CKAcceptSharesOperationCallbacks-Protocol.h>
 
-@interface CKAcceptSharesOperation
+@class CKAcceptSharesOperationInfo, NSArray, NSMutableDictionary;
+@protocol CKAcceptSharesOperationCallbacks;
+
+@interface CKAcceptSharesOperation <CKAcceptSharesOperationCallbacks>
 {
     CDUnknownBlockType _perShareCompletionBlock;
     CDUnknownBlockType _acceptSharesCompletionBlock;
@@ -15,13 +18,14 @@
     NSMutableDictionary *_shareMetadatasByShareURL;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *shareMetadatasByShareURL; // @synthesize shareMetadatasByShareURL=_shareMetadatasByShareURL;
 @property(retain, nonatomic) NSMutableDictionary *errorsByShareURL; // @synthesize errorsByShareURL=_errorsByShareURL;
 @property(copy, nonatomic) NSArray *shareMetadatas; // @synthesize shareMetadatas=_shareMetadatas;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleShareAcceptanceForURL:(id)arg1 share:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -31,6 +35,10 @@
 @property(copy, nonatomic) CDUnknownBlockType perShareCompletionBlock; // @synthesize perShareCompletionBlock=_perShareCompletionBlock;
 - (id)initWithShareMetadatas:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKAcceptSharesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKAcceptSharesOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

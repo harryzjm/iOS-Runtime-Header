@@ -6,35 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
+#import <RunningBoardServices/NSSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSDate, NSString, RBSProcessExitStatus, RBSTerminateContext;
 
-@interface RBSProcessExitContext : NSObject <BSXPCSecureCoding>
+@interface RBSProcessExitContext : NSObject <RBSXPCSecureCoding, NSSecureCoding>
 {
+    int _legacyCode;
     NSDate *_timestamp;
     long long _type;
     RBSProcessExitStatus *_status;
     RBSTerminateContext *_terminationContext;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
++ (id)exitContextForNamespace:(unsigned int)arg1 code:(unsigned long long)arg2 wait4Status:(int)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) RBSTerminateContext *terminationContext; // @synthesize terminationContext=_terminationContext;
+@property(readonly, nonatomic) int legacyCode; // @synthesize legacyCode=_legacyCode;
 @property(retain, nonatomic) RBSProcessExitStatus *status; // @synthesize status=_status;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

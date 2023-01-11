@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 + (Class)queueFeederClass;
-@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 - (void).cxx_destruct;
-- (_Bool)containsTransportableContent;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

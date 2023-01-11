@@ -27,7 +27,7 @@
 - (id)globalLayoutKey;
 - (void)setMetrics:(id)arg1 forSection:(long long)arg2;
 - (id)metricsForSection:(long long)arg1;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)initWithMetrics:(id)arg1 dataSource:(id)arg2;

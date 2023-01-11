@@ -13,20 +13,19 @@
 @interface GEORPTileFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPCorrectedCoordinate *_coordinate;
     GEORPCorrectedLabel *_label;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _type;
     struct {
         unsigned int has_type:1;
         unsigned int read_unknownFields:1;
         unsigned int read_coordinate:1;
         unsigned int read_label:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_label:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,6 +41,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsType:(id)arg1;
@@ -50,10 +52,10 @@
 @property(nonatomic) int type;
 @property(retain, nonatomic) GEORPCorrectedCoordinate *coordinate;
 @property(readonly, nonatomic) _Bool hasCoordinate;
-- (void)_readCoordinate;
 @property(retain, nonatomic) GEORPCorrectedLabel *label;
 @property(readonly, nonatomic) _Bool hasLabel;
-- (void)_readLabel;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

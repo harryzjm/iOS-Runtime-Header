@@ -12,8 +12,15 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)isAccessibilityElement;
+- (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
+- (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (_Bool)_axCanZoomOut;
+- (_Bool)_axCanZoomIn;
+- (_Bool)_axIsZoomable;
+- (id)_axZoomableView;
 - (_Bool)_axHasVideo;
 
 @end

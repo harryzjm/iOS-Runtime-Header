@@ -13,7 +13,6 @@
 @interface GEOClientACSuggestionEntry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     double _contactRelevanceScore;
     double _fractionOfMatch;
     double _mapsSuggestionsContactRevelanceScore;
@@ -21,6 +20,9 @@
     double _mapsSuggestionsPoiRevelanceScore;
     GEOSubactionMetaData *_subactionMetaData;
     NSString *_suggestionSectionType;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _age;
     int _autocompleteResultCellType;
     int _distanceToSuggestion;
@@ -67,32 +69,7 @@
         unsigned int has_shownToUser:1;
         unsigned int read_subactionMetaData:1;
         unsigned int read_suggestionSectionType:1;
-        unsigned int wrote_contactRelevanceScore:1;
-        unsigned int wrote_fractionOfMatch:1;
-        unsigned int wrote_mapsSuggestionsContactRevelanceScore:1;
-        unsigned int wrote_mapsSuggestionsIsTouristScore:1;
-        unsigned int wrote_mapsSuggestionsPoiRevelanceScore:1;
-        unsigned int wrote_subactionMetaData:1;
-        unsigned int wrote_suggestionSectionType:1;
-        unsigned int wrote_age:1;
-        unsigned int wrote_autocompleteResultCellType:1;
-        unsigned int wrote_distanceToSuggestion:1;
-        unsigned int wrote_peopleSuggesterRank:1;
-        unsigned int wrote_poiOpenState:1;
-        unsigned int wrote_serverEntryType:1;
-        unsigned int wrote_serverItemIndexInSection:1;
-        unsigned int wrote_serverSectionIndex:1;
-        unsigned int wrote_suggestionType:1;
-        unsigned int wrote_tapBehavior:1;
-        unsigned int wrote_discreteFeatureValuesAvailable:1;
-        unsigned int wrote_isFavorite:1;
-        unsigned int wrote_isProminentResult:1;
-        unsigned int wrote_matchedUsingAddress:1;
-        unsigned int wrote_matchedUsingEventName:1;
-        unsigned int wrote_matchedUsingLabel:1;
-        unsigned int wrote_matchedUsingName:1;
-        unsigned int wrote_matchedUsingOrganization:1;
-        unsigned int wrote_shownToUser:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -106,6 +83,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsTapBehavior:(id)arg1;
@@ -122,12 +102,10 @@
 @property(nonatomic) int autocompleteResultCellType;
 @property(retain, nonatomic) GEOSubactionMetaData *subactionMetaData;
 @property(readonly, nonatomic) _Bool hasSubactionMetaData;
-- (void)_readSubactionMetaData;
 @property(nonatomic) _Bool hasIsProminentResult;
 @property(nonatomic) _Bool isProminentResult;
 @property(retain, nonatomic) NSString *suggestionSectionType;
 @property(readonly, nonatomic) _Bool hasSuggestionSectionType;
-- (void)_readSuggestionSectionType;
 @property(nonatomic) _Bool hasDiscreteFeatureValuesAvailable;
 @property(nonatomic) _Bool discreteFeatureValuesAvailable;
 @property(nonatomic) _Bool hasMapsSuggestionsIsTouristScore;
@@ -172,6 +150,8 @@
 - (id)suggestionTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasSuggestionType;
 @property(nonatomic) int suggestionType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

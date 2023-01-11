@@ -8,52 +8,28 @@
 
 #import <GameCenterUI/GKLocalPlayerAuthenticationUIPersonality-Protocol.h>
 
-@class NSString, UIViewController;
-@protocol GKAuthenticateViewController;
+@class NSString;
 
 @interface GKLocalPlayer (GKFaceTimeSupport) <GKLocalPlayerAuthenticationUIPersonality>
 + (id)accountName;
 + (_Bool)hasAuthenticatedAccount;
-+ (id)sharedLocalPlayerAuthenticator;
-+ (void)setAuthenticationPersonality:(id)arg1;
-+ (id)authenticationPersonality;
 - (id)deleteAvatarAlertControllerWithHandler:(CDUnknownBlockType)arg1;
 - (void)deleteMonogramsWithHandler:(CDUnknownBlockType)arg1;
 - (void)setPhotoFromCNContactImage:(id)arg1 pendingContact:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setPhoto:(id)arg1 avatarType:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)deletePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deletePhoto;
-- (void)removeActiveViewControllerAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)showViewController:(id)arg1 usingPresentingViewController:(id)arg2 wrapInNavController:(_Bool)arg3;
-@property(retain, nonatomic) UIViewController<GKAuthenticateViewController> *signInViewController;
-@property(retain, nonatomic) UIViewController *rootViewController;
-@property(retain, nonatomic) UIViewController *activeViewController;
-- (void)startLegacyAuthenticationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_showViewControllerForLegacyApps:(id)arg1;
-- (void)applicationDidEnterBackground:(id)arg1;
-- (void)applicationWillEnterForeground:(id)arg1;
-- (void)showAuthenticateViewControllerForGameCenter;
-- (void)validateAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)cancelAuthentication;
-- (void)authenticationShowSignInUIForLocalPlayer:(id)arg1;
-- (void)authenticationShowGreenBuddyUIForLocalPlayer:(id)arg1;
-- (void)showOnboardingUIFromViewController:(id)arg1;
-- (_Bool)shouldShowPersonalization;
-- (_Bool)shouldShowPrivacyNotice;
-- (void)authenticationDidCompleteWithError:(id)arg1;
-- (_Bool)shouldShowOnBoardingUI;
-- (void)startAuthenticationForExistingPrimaryPlayer;
-- (void)_showWelcomeBanner;
-- (_Bool)isAuthenticating;
-- (_Bool)alertUserInStoreDemoModeEnabled;
+- (void)reloadAccessPoint;
+- (void)hideAccessPoint;
+- (void)showAccessPoint;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)showAlertForTag:(unsigned long long)arg1;
 - (void)showLoginFailedAlert;
-- (void)showSignInAccountRestrictedAlert;
-- (void)showEditAccountRestrictedAlert;
-- (void)showCreateAccountRestrictedAlert;
-- (void)_showActionRestrictedAlertWithTitle:(id)arg1 message:(id)arg2;
-- (void)showCancelledAlertForPlayer:(id)arg1;
+- (void)authenticationShowSignInUIForLocalPlayer:(id)arg1 dismiss:(CDUnknownBlockType)arg2;
+- (void)authenticationShowGreenBuddyUIForLocalPlayer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)showOnboardingUIFromViewController:(id)arg1;
+- (_Bool)shouldShowOnBoardingUI;
+- (void)showWelcomeBannerWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

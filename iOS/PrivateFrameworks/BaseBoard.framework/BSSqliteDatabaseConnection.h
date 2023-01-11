@@ -17,21 +17,11 @@
     NSHashTable *_queue_observers;
 }
 
-+ (int)_sqliteOpenFlagsForDataProtectionClass:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_closeConnection;
-- (void)_queue_close;
-- (id)_sqliteErrorForResult:(int)arg1 errorMessage:(id)arg2;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
 - (void)close;
-- (id)lastErrorMessage;
-- (void)performSyncWithDatabase:(CDUnknownBlockType)arg1;
-- (void)performWithDatabase:(CDUnknownBlockType)arg1;
 - (_Bool)truncateDatabaseAndReturnError:(out id *)arg1;
 - (id)prepareStatement:(id)arg1;
 - (void)dealloc;
-- (id)_initWithSqlitePath:(id)arg1 dataProtectionClass:(unsigned long long)arg2;
 - (id)initWithFileURL:(id)arg1 dataProtectionClass:(unsigned long long)arg2;
 - (id)initWithInMemoryDatabase;
 - (id)init;

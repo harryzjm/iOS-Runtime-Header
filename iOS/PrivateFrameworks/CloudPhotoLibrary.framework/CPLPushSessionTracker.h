@@ -21,6 +21,7 @@
     NSMutableArray *_changesWithResourceChanges;
     NSMutableDictionary *_fullRecords;
     NSMutableDictionary *_resourcesToUpload;
+    NSMutableDictionary *_recordWithStatusChangesToNotify;
     _Bool _checkScopeIdentifier;
     NSMutableSet *_validScopeIdentifiers;
     NSMutableSet *_invalidScopeIdentifiers;
@@ -37,21 +38,23 @@
     NSDate *_now;
 }
 
++ (_Bool)notifyClientOfStore:(id)arg1 ofStatusChanges:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool applyHasBeenSuccessful; // @synthesize applyHasBeenSuccessful=_applyHasBeenSuccessful;
 @property(readonly, nonatomic) _Bool diffHasBeenSuccessful; // @synthesize diffHasBeenSuccessful=_diffHasBeenSuccessful;
 @property(readonly, nonatomic) _Bool expandHasBeenSuccessful; // @synthesize expandHasBeenSuccessful=_expandHasBeenSuccessful;
 @property(copy, nonatomic) NSDate *now; // @synthesize now=_now;
 @property(readonly, nonatomic) _Bool diffedBatchCanLowerQuota; // @synthesize diffedBatchCanLowerQuota=_diffedBatchCanLowerQuota;
 @property(readonly, nonatomic) unsigned long long ignoredRecordCount; // @synthesize ignoredRecordCount=_ignoredRecordCount;
+@property(readonly, nonatomic) NSDictionary *recordWithStatusChangesToNotify; // @synthesize recordWithStatusChangesToNotify=_recordWithStatusChangesToNotify;
 @property(readonly, nonatomic) CPLChangeBatch *diffedBatch; // @synthesize diffedBatch=_diffedBatch;
 @property(readonly, nonatomic) CPLPushChangeTasks *pushChangeTasks; // @synthesize pushChangeTasks=_pushChangeTasks;
 @property(readonly, nonatomic) NSSet *unquarantinedRecordScopedIdentifiers; // @synthesize unquarantinedRecordScopedIdentifiers=_unquarantinedRecordScopedIdentifiers;
 @property(readonly, nonatomic) CPLChangeBatch *expandedBatch; // @synthesize expandedBatch=_expandedBatch;
 @property(readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
 @property(readonly, nonatomic) CPLChangeBatch *incomingBatch; // @synthesize incomingBatch=_incomingBatch;
-- (void).cxx_destruct;
 - (_Bool)shouldCancelSyncSessionTryingToUploadChange:(id)arg1;
-- (_Bool)applyChangesToClientCacheWithError:(id *)arg1;
+- (_Bool)notifyClientOfStatusChangesIfNecessaryWithError:(id *)arg1;
 @property(readonly, nonatomic) NSDictionary *resourcesToUpload;
 - (id)deletedRecordIdentifiers;
 @property(readonly, nonatomic) NSArray *deletedRecordScopedIdentifiers;
@@ -62,11 +65,13 @@
 - (_Bool)computeExpandedBatchWithError:(id *)arg1;
 - (id)_realChangeFromChange:(id)arg1 comparedToStoredRecord:(id)arg2 changeType:(unsigned long long)arg3;
 - (_Bool)hasCloudRecordWithLocalScopedIdentifier:(id)arg1;
+- (void)acknowledgeNewClientRecord:(id)arg1 withScopedIdentifier:(id)arg2;
 - (id)storedCloudRecordWithLocalScopedIdentifier:(id)arg1;
 - (_Bool)hasClientRecordWithLocalScopedIdentifier:(id)arg1;
 - (id)storedClientRecordWithLocalScopedIdentifier:(id)arg1;
 - (_Bool)checkScopeIdentifier:(id)arg1;
 - (id)resourceIdentitiesForRecordWithLocalScopedIdentifier:(id)arg1;
+- (id)enqueuedOrStoredRecordWithLocalScopedIdentifier:(id)arg1;
 - (id)_resourceIdentitiesFromChange:(id)arg1;
 - (_Bool)knowsClientRecordWithScopedIdentifier:(id)arg1;
 @property(readonly, nonatomic) _Bool hasPushChangeTasks;

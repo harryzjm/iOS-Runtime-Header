@@ -21,15 +21,17 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
 @property(copy, nonatomic) CDUnknownBlockType presentationHandler; // @synthesize presentationHandler=_presentationHandler;
 @property(retain, nonatomic) CKPresentationControllerWindow *presentationWindow; // @synthesize presentationWindow=_presentationWindow;
 @property(retain, nonatomic) UIPopoverPresentationController *currentPresentationController; // @synthesize currentPresentationController=_currentPresentationController;
 @property(retain, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
-- (void).cxx_destruct;
 - (void)_cleanup;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentViewController:(id)arg1 fromViewController:(id)arg2 presentationHandler:(CDUnknownBlockType)arg3 barButtonItemPresentationHandler:(CDUnknownBlockType)arg4 dismissalHandler:(CDUnknownBlockType)arg5 animated:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)presentViewController:(id)arg1 fromViewController:(id)arg2 presentationHandler:(CDUnknownBlockType)arg3 dismissalHandler:(CDUnknownBlockType)arg4 animated:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)presentViewController:(id)arg1 fromViewController:(id)arg2 barButtonItemPresentationHandler:(CDUnknownBlockType)arg3 dismissalHandler:(CDUnknownBlockType)arg4 animated:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)alertControllerViewDidDisappear:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;

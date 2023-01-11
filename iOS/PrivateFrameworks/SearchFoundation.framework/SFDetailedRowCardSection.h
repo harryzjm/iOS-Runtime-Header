@@ -19,12 +19,14 @@
         unsigned int separatorStyle:1;
         unsigned int preventThumbnailImageScaling:1;
         unsigned int isSecondaryTitleDetached:1;
+        unsigned int shouldUseCompactDisplay:1;
     } _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
     _Bool _preventThumbnailImageScaling;
     _Bool _isSecondaryTitleDetached;
+    _Bool _shouldUseCompactDisplay;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -45,6 +47,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property(retain, nonatomic) SFButton *button; // @synthesize button=_button;
 @property(retain, nonatomic) SFActionItem *action; // @synthesize action=_action;
 @property(retain, nonatomic) SFFormattedText *trailingBottomText; // @synthesize trailingBottomText=_trailingBottomText;
@@ -58,21 +62,21 @@
 @property(retain, nonatomic) SFRichText *title; // @synthesize title=_title;
 @property(nonatomic) _Bool preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
 @property(retain, nonatomic) SFImage *thumbnail; // @synthesize thumbnail=_thumbnail;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
-@property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
-- (void).cxx_destruct;
+@property(retain, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property(nonatomic) _Bool hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property(nonatomic) _Bool hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
+@property(nonatomic) _Bool canBeHidden; // @synthesize canBeHidden=_canBeHidden;
+@property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
+@property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasShouldUseCompactDisplay;
 - (_Bool)hasIsSecondaryTitleDetached;
 - (_Bool)hasPreventThumbnailImageScaling;
 - (_Bool)hasSeparatorStyle;

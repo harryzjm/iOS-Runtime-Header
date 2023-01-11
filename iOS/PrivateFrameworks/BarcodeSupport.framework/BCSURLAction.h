@@ -4,31 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LSApplicationProxy, NSArray, NSURL;
+@class LSApplicationRecord, NSArray, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface BCSURLAction
 {
     NSArray *_appLinks;
-    LSApplicationProxy *_applicationProxy;
+    LSApplicationRecord *_applicationRecord;
     _Bool _deviceDataIsUnavailable;
     NSURL *_appStoreSearchURLForUnsupportedScheme;
     _Bool _hasPreferredAppLink;
 }
 
-@property(readonly, nonatomic) _Bool hasPreferredAppLink; // @synthesize hasPreferredAppLink=_hasPreferredAppLink;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasPreferredAppLink; // @synthesize hasPreferredAppLink=_hasPreferredAppLink;
 - (_Bool)_isCodeFromQRScanner;
 - (_Bool)_shouldBlockHandlingURL:(id)arg1;
 - (_Bool)_shouldOpenInAppForAppLink:(id)arg1;
 - (id)_actionDescriptionWithoutTargetApplicationForURL:(id)arg1;
 - (id)_actionDescriptionForURL:(id)arg1 application:(id)arg2 shouldShowHostNameForSafariURL:(_Bool)arg3;
-@property(readonly, nonatomic) LSApplicationProxy *targetApplication;
+- (id)_actionDescriptionForAppClip;
+@property(readonly, nonatomic) LSApplicationRecord *targetApplication;
 - (void)_resolveTargetApplicationForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) unsigned long long appLinkCount;
 - (id)appLinks;
 @property(readonly, nonatomic) _Bool mustOpenAppLinkInApp;
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_resolveAppClipForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAction;
 - (void)performDefaultAction;
 - (void)performDefaultActionWithFBOptions:(id)arg1;

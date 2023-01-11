@@ -7,14 +7,19 @@
 #import <MetalTools/NSObject-Protocol.h>
 
 @class NSString;
-@protocol MTLArgumentEncoder, MTLBuffer, MTLComputePipelineState, MTLDevice, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLSamplerState, MTLTexture;
+@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBuffer, MTLComputePipelineState, MTLDevice, MTLIndirectCommandBuffer, MTLIntersectionFunctionTable, MTLRenderPipelineState, MTLSamplerState, MTLTexture, MTLVisibleFunctionTable;
 
 @protocol MTLArgumentEncoder <NSObject>
 @property(readonly) unsigned long long alignment;
 @property(readonly) unsigned long long encodedLength;
 @property(copy) NSString *label;
 @property(readonly) id <MTLDevice> device;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id <MTLIntersectionFunctionTable>)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id <MTLVisibleFunctionTable>)arg1 atIndex:(unsigned long long)arg2;
 - (id <MTLArgumentEncoder>)newArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
+- (void)setAccelerationStructure:(id <MTLAccelerationStructure>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setIndirectCommandBuffers:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setIndirectCommandBuffer:(id <MTLIndirectCommandBuffer>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setComputePipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;

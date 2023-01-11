@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDateInterval, NSMutableSet, PLFrequentLocationManager, PLHighlightHierarchy, PLLocalCreationDateCreator, PLPhotosHighlightClusterGenerator;
+@class NSDateInterval, NSMutableSet, PLDateRangeTitleGenerator, PLFrequentLocationManager, PLHighlightHierarchy, PLLocalCreationDateCreator, PLPhotosHighlightClusterGenerator;
 @protocol PLMomentGenerationDataManagement><PLHighlightItemModelReader;
 
 @interface PLPhotosHighlightGenerator : NSObject
@@ -15,6 +15,7 @@
     NSDateInterval *_recentHighlightsDateInterval;
     PLFrequentLocationManager *_frequentLocationManager;
     PLLocalCreationDateCreator *_localCreationDateCreator;
+    PLDateRangeTitleGenerator *_dateRangeTitleGenerator;
     PLHighlightHierarchy *_entitiesToUpdate;
     NSMutableSet *_highlightsWithDeletedAssets;
     NSMutableSet *_upsertedHighlights;
@@ -36,7 +37,8 @@
 + (void)_updateParentHighlighNeedingNewKeyAsset:(id)arg1 withProvisionalKeyAsset:(id)arg2 updatedHighlights:(id)arg3;
 + (_Bool)_shouldUpdateKeyAssetForParentHighlight:(id)arg1 withKeyAssetObjectID:(id)arg2;
 + (_Bool)assetEligibleForRecents:(id)arg1;
-+ (void)updateTitleForHighlights:(id)arg1 forKind:(unsigned short)arg2 forceUpdateLocale:(_Bool)arg3;
++ (void)updateTitleForHighlights:(id)arg1 forKind:(unsigned short)arg2 forceUpdateLocale:(_Bool)arg3 dateRangeTitleGenerator:(id)arg4;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *highlightsNeedingNewKeyAsset; // @synthesize highlightsNeedingNewKeyAsset=_highlightsNeedingNewKeyAsset;
 @property(nonatomic) __weak id <PLMomentGenerationDataManagement><PLHighlightItemModelReader> dataManager; // @synthesize dataManager=_dataManager;
 @property(nonatomic) _Bool didCallBeginGeneration; // @synthesize didCallBeginGeneration=_didCallBeginGeneration;
@@ -44,9 +46,9 @@
 @property(retain, nonatomic) NSMutableSet *upsertedHighlights; // @synthesize upsertedHighlights=_upsertedHighlights;
 @property(retain, nonatomic) NSMutableSet *highlightsWithDeletedAssets; // @synthesize highlightsWithDeletedAssets=_highlightsWithDeletedAssets;
 @property(retain, nonatomic) PLHighlightHierarchy *entitiesToUpdate; // @synthesize entitiesToUpdate=_entitiesToUpdate;
+@property(readonly, nonatomic) PLDateRangeTitleGenerator *dateRangeTitleGenerator; // @synthesize dateRangeTitleGenerator=_dateRangeTitleGenerator;
 @property(readonly, nonatomic) PLLocalCreationDateCreator *localCreationDateCreator; // @synthesize localCreationDateCreator=_localCreationDateCreator;
 @property(readonly, nonatomic) PLFrequentLocationManager *frequentLocationManager; // @synthesize frequentLocationManager=_frequentLocationManager;
-- (void).cxx_destruct;
 - (id)_collectMomentsRequiringReprocessingFromMoments:(id)arg1 withAllMoments:(id)arg2;
 - (id)_highlightMomentClustersForMoments:(id)arg1 excludingMomentIds:(id)arg2;
 - (void)_setLastHighlightTitlesUpdateDay:(id)arg1;
@@ -66,7 +68,7 @@
 - (void)_insertDayPhotosHighlightCluster:(id)arg1;
 - (id)_highlightToReuseForMoments:(id)arg1;
 - (void)generateHighlightsForUpsertedMoments:(id)arg1 frequentLocationsDidChange:(_Bool)arg2;
-@property(readonly, nonatomic) PLPhotosHighlightClusterGenerator *highlightClusterGeneratorForAllMoments;
+@property(readonly, nonatomic) PLPhotosHighlightClusterGenerator *highlightClusterGenerator;
 - (void)registerHighlightsWithDeletedMoments:(id)arg1;
 - (void)beginGenerationWithAssets:(id)arg1 hiddenAssets:(id)arg2;
 - (void)_resetProperties;
@@ -80,10 +82,11 @@
 - (void)updateCurationForHighlight:(id)arg1 withAssetsBelongingToCuration:(id)arg2;
 - (void)resetPreviousRecentHighlightCurationForHighlight:(id)arg1;
 - (void)updateRecentHighlightCurationForHighlight:(id)arg1;
+- (id)fetchAllOngoingTripDayGroupHighlights;
 - (id)fetchAllRecentHighlights;
 - (void)_consumeHighlightItemListChanges:(id)arg1 forKind:(unsigned short)arg2 rule:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
 - (void)generateHighlightListForUpdatedHighlights:(id)arg1 deletedHighlights:(id)arg2;
-- (void)updateElectedEventForUpdatedMonths:(id)arg1;
+- (id)updateElectedEventForUpdatedMonths:(id)arg1;
 
 @end
 

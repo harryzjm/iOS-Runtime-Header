@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLSPerson, PHPhotoLibrary;
+@class CLSPersonIdentity, PHPhotoLibrary;
 
 @interface CLSInputPeopleClue
 {
-    CLSPerson *_person;
+    CLSPersonIdentity *_person;
     PHPhotoLibrary *_photoLibrary;
     unsigned long long _numberOfFaces;
 }
@@ -17,13 +17,13 @@
 + (id)clueWithPeopleUUID:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)cluesWithPeoples:(id)arg1;
 + (id)clueWithPeople:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long numberOfFaces; // @synthesize numberOfFaces=_numberOfFaces;
 @property(nonatomic) __weak PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
-- (void).cxx_destruct;
 - (_Bool)isEqualToClue:(id)arg1;
 - (void)_prepareWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)description;
-@property(retain, nonatomic) CLSPerson *person; // @synthesize person=_person;
+@property(retain, nonatomic) CLSPersonIdentity *person; // @synthesize person=_person;
 - (id)name;
 
 @end

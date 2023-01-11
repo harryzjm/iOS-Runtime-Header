@@ -25,7 +25,7 @@
 - (void)addAttributes:(id)arg1 forLocation:(unsigned long long)arg2;
 @property(readonly, nonatomic) NSString *layoutKey;
 @property(readonly, nonatomic) GKSectionMetrics *sectionMetrics;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
 - (id)localDescription;
 - (void)dealloc;

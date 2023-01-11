@@ -16,8 +16,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain) NSMeasurementFormatter *measurementFormatter; // @synthesize measurementFormatter=_measurementFormatter;
 - (void).cxx_destruct;
+@property(retain) NSMeasurementFormatter *measurementFormatter; // @synthesize measurementFormatter=_measurementFormatter;
+- (id)dictionaryRepresentation;
 - (id)DictionaryRepresentation;
 - (id)JSONRepresentation;
 - (id)toDictionary;

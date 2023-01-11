@@ -6,10 +6,14 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBIntentMetadata;
+@class NSString, _INPBIntentMetadata;
 
 @protocol _INPBAnswerCallIntent <NSObject>
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property(nonatomic) _Bool hasAudioRoute;
+@property(nonatomic) int audioRoute;
+- (int)StringAsAudioRoute:(NSString *)arg1;
+- (NSString *)audioRouteAsString:(int)arg1;
 @end
 

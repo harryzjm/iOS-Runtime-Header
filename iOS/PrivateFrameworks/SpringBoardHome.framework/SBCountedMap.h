@@ -20,6 +20,7 @@
 - (void)checkinValues:(id)arg1;
 - (_Bool)checkinValue:(id)arg1;
 - (id)checkoutValueForKey:(id)arg1 creationBlock:(CDUnknownBlockType)arg2;
+- (id)description;
 - (id)init;
 
 @end

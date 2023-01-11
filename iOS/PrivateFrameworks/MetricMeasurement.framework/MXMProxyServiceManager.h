@@ -15,9 +15,12 @@
 }
 
 + (id)shared;
-@property(readonly) NSXPCConnection *_serviceConnection; // @synthesize _serviceConnection=__serviceConnection;
 - (void).cxx_destruct;
+@property(readonly) NSXPCConnection *_serviceConnection; // @synthesize _serviceConnection=__serviceConnection;
 - (void)dealloc;
+- (void)_quiesceBeforeIteration:(double)arg1 timeout:(double)arg2 response:(CDUnknownBlockType)arg3;
+- (void)_stopPerformanceTrace:(CDUnknownBlockType)arg1;
+- (void)_startPerformanceTrace:(id)arg1 response:(CDUnknownBlockType)arg2;
 - (id)_sampleWithProxyMetric:(id)arg1 timeout:(double)arg2 stopReason:(unsigned long long *)arg3;
 - (_Bool)wake;
 @property(readonly) id <MetricMeasurementHelperProtocol_Internal> _proxyObject;

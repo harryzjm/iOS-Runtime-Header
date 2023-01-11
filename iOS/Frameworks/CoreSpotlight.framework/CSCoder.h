@@ -17,9 +17,9 @@
     struct _MDPlistContainer *_container;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool finalized; // @synthesize finalized=_finalized;
 @property(readonly, nonatomic) struct _MDPlistContainer *container; // @synthesize container=_container;
-- (void).cxx_destruct;
 - (void)endDictionary;
 - (void)beginDictionary;
 - (void)endType;
@@ -34,6 +34,7 @@
 - (void)encodeData:(const void *)arg1 length:(long long)arg2;
 - (void)encodeString:(const char *)arg1 length:(long long)arg2;
 - (void)encodeString:(const char *)arg1;
+- (void)encodeDouble:(double)arg1;
 - (void)encodeInt64:(long long)arg1;
 - (void)encodeInt32:(int)arg1;
 - (void)encodeBool:(_Bool)arg1;

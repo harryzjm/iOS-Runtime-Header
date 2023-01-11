@@ -11,16 +11,22 @@
 @interface BYAnalyticsManager : NSObject
 {
     NSMutableArray *_events;
-    NSMutableDictionary *_producers;
+    NSMutableDictionary *_lazyEvents;
 }
 
 + (id)sharedManager;
-@property(retain, nonatomic) NSMutableDictionary *producers; // @synthesize producers=_producers;
-@property(retain, nonatomic) NSMutableArray *events; // @synthesize events=_events;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *lazyEvents; // @synthesize lazyEvents=_lazyEvents;
+@property(retain, nonatomic) NSMutableArray *events; // @synthesize events=_events;
+- (void)_sendEvent:(id)arg1 payload:(id)arg2;
+- (void)_gatherDataFromProducers;
+- (void)reset;
+- (void)removeNonPersistentEvents;
 - (void)commit;
-- (void)addEvent:(id)arg1 withPayloadBlock:(CDUnknownBlockType)arg2;
-- (void)addEvent:(id)arg1 withPayload:(id)arg2;
+- (void)stash:(id)arg1;
+- (void)removeEventsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)addEvent:(id)arg1 withPayloadBlock:(CDUnknownBlockType)arg2 persist:(_Bool)arg3;
+- (void)addEvent:(id)arg1 withPayload:(id)arg2 persist:(_Bool)arg3;
 - (void)addEvent:(id)arg1;
 - (id)init;
 

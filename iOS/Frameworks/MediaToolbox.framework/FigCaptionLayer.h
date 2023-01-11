@@ -19,6 +19,8 @@
 - (void)processCaptionCommand:(unsigned int)arg1 data:(id)arg2;
 - (void)resetCaptions;
 - (void)dealloc;
+- (void)setCaptionsAvoidanceMargins:(struct FigGeometryMargins)arg1;
+- (void)setVideoRelativeToViewport:(struct CGRect)arg1;
 - (void)setFontName:(const char *)arg1;
 - (id)init;
 

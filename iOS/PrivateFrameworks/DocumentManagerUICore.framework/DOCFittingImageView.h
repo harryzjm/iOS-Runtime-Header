@@ -19,11 +19,11 @@
     struct CGSize _fittingSize;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *aspectRatioConstraint; // @synthesize aspectRatioConstraint=_aspectRatioConstraint;
 @property(nonatomic) struct CGSize fittingSize; // @synthesize fittingSize=_fittingSize;
 @property(retain, nonatomic) id <DOCThumbnail> thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(nonatomic) __weak id <DOCFittingImageViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -32,6 +32,7 @@
 - (void)initCommon;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithImage:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

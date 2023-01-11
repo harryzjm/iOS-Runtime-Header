@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 + (Class)frozenClass;
 + (_Bool)canCommitSelf;
 + (id)uniqueIdentifierForREMObject:(id)arg1;
-@property(copy, nonatomic) NSArray *path; // @synthesize path=_path;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *path; // @synthesize path=_path;
 - (_Bool)existsInStore;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1 ignoringProperties:(id)arg2;
 - (_Bool)isCompletelyEqual:(id)arg1;
 - (_Bool)isPropertyUnavailable:(id)arg1;
-- (EKPersistentObject_556b3b22 *)frozenObject;
+- (id)frozenObject;
 - (id)existingMeltedObject;
 - (id)changeSet;
 - (id)semanticIdentifier;

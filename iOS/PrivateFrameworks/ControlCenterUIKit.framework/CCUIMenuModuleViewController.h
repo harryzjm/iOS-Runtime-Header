@@ -12,6 +12,7 @@
 @interface CCUIMenuModuleViewController <UIGestureRecognizerDelegate, CCUIContentModuleContentViewController>
 {
     UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
     UIView *_transformView;
     UIView *_headerSeparatorView;
     UIView *_footerSeparatorView;
@@ -25,23 +26,31 @@
     UIActivityIndicatorView *_busyIndicatorView;
     UILongPressGestureRecognizer *_pressGestureRecognizer;
     UISelectionFeedbackGenerator *_feedbackGenerator;
+    _Bool _allowsMenuInteraction;
     _Bool _ignoreMenuItemAtTouchLocationAfterExpanded;
     struct CGPoint _touchLocationToIgnore;
     CCUIMenuModuleItemView *_footerButtonView;
     _Bool _shouldShowFooterButton;
+    UIView *_customContentView;
+    _Bool _customContentViewScrolls;
+    _Bool _forceLimitContentSizeCategory;
     _Bool _busy;
     _Bool _shouldProvideOwnPlatter;
     _Bool _useTrailingCheckmarkLayout;
     _Bool _useTrailingInset;
     _Bool _useTallLayout;
+    _Bool _hideGlyphInHeader;
     UIView *_contentView;
+    NSString *_subtitle;
     unsigned long long _minimumMenuItems;
     double _visibleMenuItems;
     unsigned long long _indentation;
     CCUIContentModuleContext *_contentModuleContext;
 }
 
-+ (id)checkmarkImage;
++ (id)checkmarkImageForPreferredContentSizeCategory:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hideGlyphInHeader; // @synthesize hideGlyphInHeader=_hideGlyphInHeader;
 @property(nonatomic) __weak CCUIContentModuleContext *contentModuleContext; // @synthesize contentModuleContext=_contentModuleContext;
 @property(nonatomic) _Bool useTallLayout; // @synthesize useTallLayout=_useTallLayout;
 @property(nonatomic) _Bool useTrailingInset; // @synthesize useTrailingInset=_useTrailingInset;
@@ -51,33 +60,41 @@
 @property(nonatomic) unsigned long long indentation; // @synthesize indentation=_indentation;
 @property(nonatomic) double visibleMenuItems; // @synthesize visibleMenuItems=_visibleMenuItems;
 @property(nonatomic) unsigned long long minimumMenuItems; // @synthesize minimumMenuItems=_minimumMenuItems;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 - (_Bool)_shouldShowFooterChin;
 - (_Bool)_shouldShowFooterSeparator;
+- (double)_aggregateModuleHeight;
 - (double)_footerHeight;
+- (void)_updateLeadingAndTrailingViews;
+- (void)_updateSubtitleFont;
 - (void)_updateTitleFont;
 - (void)_contentSizeCategoryDidChange;
+- (void)_setForceLimitContentSizeCategory:(_Bool)arg1;
 - (double)_menuItemsHeightForWidth:(double)arg1;
 - (double)scrollViewContentHeightForWidth:(double)arg1;
 - (double)_defaultMenuItemHeight;
 - (id)_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2;
+- (_Bool)_shouldHideGlyphForLimitedContentSizeCategory;
 - (_Bool)_shouldLimitContentSizeCategory;
+- (id)_subtitleFont;
 - (id)_titleFont;
 - (double)_separatorHeight;
 - (void)_handlePressGesture:(id)arg1;
 - (_Bool)_toggleSelectionForMenuItem:(id)arg1;
 - (void)_updateMenuItemsSeparatorVisiblity;
-- (void)_updateMenuItemsTallness;
+- (void)_setupSubtitleLabel;
 - (void)_setupTitleLabel;
 - (void)_layoutContentViewForSize:(struct CGSize)arg1;
-- (void)_setupRootView;
+- (void)_setTransformViewClipsToBounds:(_Bool)arg1;
+- (void)_setRootViewClipsToBounds:(_Bool)arg1;
+- (void)_setView:(id)arg1 clipsToBounds:(_Bool)arg2;
 - (double)_contentScaleForSize:(struct CGSize)arg1;
 - (double)_titleWidthForContainerWidth:(double)arg1;
 - (void)_layoutFooterSeparatorForSize:(struct CGSize)arg1;
 - (void)_layoutHeaderSeparatorForSize:(struct CGSize)arg1;
 - (void)_layoutBusyIndicatorForSize:(struct CGSize)arg1;
 - (void)_layoutFooterButtonForSize:(struct CGSize)arg1;
-- (void)_updateTouchLocationToIgnore;
+- (void)_layoutSubtitleLabelForSize:(struct CGSize)arg1;
 - (void)_layoutTitleLabelForSize:(struct CGSize)arg1;
 - (void)_layoutGlyphViewForSize:(struct CGSize)arg1;
 - (void)_layoutTransformViewForSize:(struct CGSize)arg1;
@@ -87,13 +104,14 @@
 - (void)setGlyphImage:(id)arg1;
 - (id)viewForTouchContinuation;
 - (_Bool)shouldBeginTransitionToExpandedContentModule;
+- (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)willTransitionToExpandedContentMode:(_Bool)arg1;
 - (double)preferredExpandedContentHeightWithWidth:(double)arg1;
 @property(readonly, nonatomic) double preferredExpandedContentHeight;
 @property(readonly, nonatomic) double preferredExpandedContentWidth;
-- (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)contentModuleWillTransitionToExpandedContentMode:(_Bool)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (double)_desiredExpandedHeight;
 - (double)_maximumHeight;
 - (void)scrollToTop:(_Bool)arg1;
@@ -104,6 +122,8 @@
 - (void)_layoutViewSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (void)setCustomContentView:(id)arg1;
+- (_Bool)hasGlyph;
 @property(readonly, nonatomic) _Bool hasFooterButton;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (double)headerHeightForWidth:(double)arg1;
@@ -128,7 +148,6 @@
 - (void)addActionWithTitle:(id)arg1 subtitle:(id)arg2 glyph:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)addActionWithTitle:(id)arg1 glyph:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_busyIndicatorView;
-- (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties
@@ -138,6 +157,8 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property(readonly, nonatomic) _Bool providesOwnPlatter;
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
 @property(readonly) Class superclass;
 
 @end

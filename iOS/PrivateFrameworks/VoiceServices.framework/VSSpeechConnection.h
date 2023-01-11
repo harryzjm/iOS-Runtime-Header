@@ -19,11 +19,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_threadSafeQueue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *threadSafeQueue; // @synthesize threadSafeQueue=_threadSafeQueue;
 @property(retain, nonatomic) VSSpeechConnectionDelegateWrapper *delegateWrapper; // @synthesize delegateWrapper=_delegateWrapper;
 @property(nonatomic) __weak id <VSSpeechConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (void)killDaemon;
+- (void)invokeDaemon:(CDUnknownBlockType)arg1;
+- (void)cancelDownloads:(CDUnknownBlockType)arg1;
 - (void)forwardStreamObject:(id)arg1;
 - (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getLogToFile:(CDUnknownBlockType)arg1;
@@ -33,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)getAutoDownloadedVoiceAssetsWithClientID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutoDownloadedVoiceAssets:(id)arg1 withClientID:(id)arg2;
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
-- (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
+- (void)getLocalVoiceAssetsForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
 - (void)continueCurrentSpeechRequest;
 - (void)pauseCurrentSpeechRequestAtMark:(long long)arg1;
@@ -49,8 +52,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)isSystemSpeaking;
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
 - (id)availableVoicesForLanguageCode:(id)arg1;
+- (void)estimateDurationWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)queryPhaticCapabilityWithRequest:(id)arg1;
-- (void)prewarmIfNeededWithRequest:(id)arg1;
+- (void)prewarmIfNeededWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)updateWithConnectionIdentifier:(id)arg1;
 @property(readonly, nonatomic) VSPresynthesizedAudioRequest *presynthesizedAudioRequest;
 - (void)setPresynthesizedAudioRequest:(id)arg1;
@@ -59,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)setRequest:(id)arg1;
 - (void)_connectionInvalidated;
 - (id)_remoteObjectWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_remoteObjectSync;
 - (id)_remoteObject;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (void)dealloc;

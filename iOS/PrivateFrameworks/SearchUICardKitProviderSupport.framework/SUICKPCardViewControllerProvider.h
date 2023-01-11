@@ -20,10 +20,11 @@
     NSMutableArray *_pendingDismissalCommands;
     long long _preferredPunchoutIndex;
     NSMutableDictionary *_feedbackDelegateDemultiplexersByCardIdentifiers;
+    struct CGSize _preferredContentSize;
 }
 
-@property(retain, nonatomic) NSMutableDictionary *feedbackDelegateDemultiplexersByCardIdentifiers; // @synthesize feedbackDelegateDemultiplexersByCardIdentifiers=_feedbackDelegateDemultiplexersByCardIdentifiers;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *feedbackDelegateDemultiplexersByCardIdentifiers; // @synthesize feedbackDelegateDemultiplexersByCardIdentifiers=_feedbackDelegateDemultiplexersByCardIdentifiers;
 - (void)cardSectionViewDidDisappearForCardSection:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
@@ -33,9 +34,11 @@
 - (void)cardSectionViewController:(id)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;
 - (void)presentViewController:(id)arg1 forCardSectionViewController:(id)arg2;
 - (_Bool)performCommand:(id)arg1 forCardSectionViewController:(id)arg2;
+- (id)_createCardViewControllerForCard:(id)arg1;
 - (_Bool)_askDelegateToPerformReferentialCommand:(id)arg1 forCardSection:(id)arg2;
 - (id)_cardViewControllerForCardSection:(id)arg1;
 - (void)presentViewController:(id)arg1;
+- (void)cardViewController:(id)arg1 preferredContentSizeDidChange:(struct CGSize)arg2 animated:(_Bool)arg3;
 - (id)customViewControllerForCardSection:(id)arg1;
 - (void)presentation:(id)arg1 didApplyCardSectionViewSource:(id)arg2 toCardViewController:(id)arg3;
 - (unsigned long long)displayPriorityForCard:(id)arg1;

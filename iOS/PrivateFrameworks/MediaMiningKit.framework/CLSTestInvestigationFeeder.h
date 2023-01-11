@@ -11,6 +11,7 @@
     NSArray *_items;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;

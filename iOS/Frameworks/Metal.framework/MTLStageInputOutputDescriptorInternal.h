@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)vertexDescriptor;
-- (_Bool)validateWithVertexFunction:(id)arg1 error:(id *)arg2;
+- (_Bool)validateWithVertexFunction:(id)arg1 error:(id *)arg2 renderPipelineDescriptor:(id)arg3;
 - (id)newSerializedDescriptor;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

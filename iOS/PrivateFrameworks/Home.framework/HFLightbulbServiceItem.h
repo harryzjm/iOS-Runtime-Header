@@ -9,6 +9,9 @@
 }
 
 + (id)supportedServiceTypes;
+- (id)lightProfile;
+- (id)currentStateActionBuildersForHome:(id)arg1;
+- (_Bool)containsActions;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)createControlItems;
 

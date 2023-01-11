@@ -12,7 +12,6 @@
 @interface NTKCUpNextDataSourcesManager : NSObject
 {
     RERelevanceEngine *_relevanceEngine;
-    unsigned int _watchVersion;
     NSArray *_firstPartyDataSourceEntries;
     NSArray *_thirdPartyDataSourceEntries;
     NSArray *_sportsDataSourceEntries;
@@ -20,8 +19,10 @@
     id <NTKCUpNextDataSourcesManagerIdentifiersDelegate> _thirdPartyIdentifiersDelegate;
     id <NTKCUpNextDataSourcesManagerIdentifiersDelegate> _sportsIdentifiersDelegate;
     NSObject<OS_dispatch_queue> *_fetchQueue;
+    CDStruct_f6aba300 _watchVersion;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
 @property(nonatomic) __weak id <NTKCUpNextDataSourcesManagerIdentifiersDelegate> sportsIdentifiersDelegate; // @synthesize sportsIdentifiersDelegate=_sportsIdentifiersDelegate;
 @property(nonatomic) __weak id <NTKCUpNextDataSourcesManagerIdentifiersDelegate> thirdPartyIdentifiersDelegate; // @synthesize thirdPartyIdentifiersDelegate=_thirdPartyIdentifiersDelegate;
@@ -29,20 +30,20 @@
 @property(copy) NSArray *sportsDataSourceEntries; // @synthesize sportsDataSourceEntries=_sportsDataSourceEntries;
 @property(copy) NSArray *thirdPartyDataSourceEntries; // @synthesize thirdPartyDataSourceEntries=_thirdPartyDataSourceEntries;
 @property(copy) NSArray *firstPartyDataSourceEntries; // @synthesize firstPartyDataSourceEntries=_firstPartyDataSourceEntries;
-@property(readonly, nonatomic) unsigned int watchVersion; // @synthesize watchVersion=_watchVersion;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) CDStruct_f6aba300 watchVersion; // @synthesize watchVersion=_watchVersion;
 - (void)_buildRows;
 - (void)_fetchThirdPartyBundleIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_dedupeAndSortThirdPartyDataSourcesFromIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_phoneDedupeFromIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_firstPartyDataSourceEntries;
 - (id)_dedupeAndSortFirstPartyDataSourcesFromIdentifiers:(id)arg1;
+- (_Bool)_isNanoWeatherAppID:(id)arg1;
 - (id)_preGraceThirdPartyBundleIdentifiers;
 - (void)fetchIdentifiers;
 - (void)_dataSourcesChangedNotification:(id)arg1;
 - (void)_appsChangedNotification:(id)arg1;
 - (void)dealloc;
-- (id)initWatchVersion:(unsigned int)arg1;
+- (id)initWatchVersion:(CDStruct_f6aba300)arg1;
 
 @end
 

@@ -6,12 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@interface EDMailDropMetadataGenerator : NSObject
+#import <EmailDaemon/WKNavigationDelegate-Protocol.h>
+
+@class EFPromise, NSMutableArray, NSString, WKWebView;
+
+@interface EDMailDropMetadataGenerator : NSObject <WKNavigationDelegate>
 {
+    WKWebView *_webView;
+    NSMutableArray *_scriptHandlers;
+    EFPromise *_activePromise;
 }
 
-- (void)insertMaildropAttachmentViewForContentURL:(id)arg1 HTMLByContentID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+@property(retain, nonatomic) EFPromise *activePromise; // @synthesize activePromise=_activePromise;
+@property(retain, nonatomic) NSMutableArray *scriptHandlers; // @synthesize scriptHandlers=_scriptHandlers;
+@property(retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
+- (void)_addScriptHandlerForKey:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)insertMailDropAttachmentViewForContentURL:(id)arg1 HTMLByContentID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
+- (void)webViewWebContentProcessDidTerminate:(id)arg1;
+- (void)_findMailDropNodesInFileURL:(id)arg1 promise:(id)arg2;
+- (_Bool)_shouldSearchForMailDropNodesInFileURL:(id)arg1;
+- (void)tearDownWebView;
 - (void)generateMailDropMetadataForContentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)withTimeout:(double)arg1 do:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

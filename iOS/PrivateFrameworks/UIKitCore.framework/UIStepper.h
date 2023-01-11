@@ -28,6 +28,7 @@
 + (id)visualElementForTraitCollection:(id)arg1;
 + (Class)visualElementClassForTraitCollection:(id)arg1;
 + (Class)_fallbackVisualElementClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView<UIStepperVisualElement> *visualElement; // @synthesize visualElement=_visualElement;
 @property(nonatomic) _Bool wraps; // @synthesize wraps=_wraps;
 @property(nonatomic) _Bool autorepeat; // @synthesize autorepeat=_autorepeat;
@@ -36,7 +37,6 @@
 @property(nonatomic) double maximumValue; // @synthesize maximumValue=_maximumValue;
 @property(nonatomic) double minimumValue; // @synthesize minimumValue=_minimumValue;
 @property(nonatomic) double value; // @synthesize value=_value;
-- (void).cxx_destruct;
 - (void)tintColorDidChange;
 - (void)setTintColor:(id)arg1;
 - (id)decrementImageForState:(unsigned long long)arg1;
@@ -48,6 +48,10 @@
 - (id)backgroundImageForState:(unsigned long long)arg1;
 - (void)setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_emitValueChanged;
 - (void)visualElementSendValueChangedEvent:(id)arg1;

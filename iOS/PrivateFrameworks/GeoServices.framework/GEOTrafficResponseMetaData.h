@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficResponseMetaData : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_codeVersion;
     NSString *_dataVersion;
     NSString *_hspVersion;
     GEOTrafficTrafficIncidentsMetaData *_incidentsMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_codeVersion:1;
         unsigned int read_dataVersion:1;
         unsigned int read_hspVersion:1;
         unsigned int read_incidentsMetadata:1;
-        unsigned int wrote_codeVersion:1;
-        unsigned int wrote_dataVersion:1;
-        unsigned int wrote_hspVersion:1;
-        unsigned int wrote_incidentsMetadata:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,20 +40,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOTrafficTrafficIncidentsMetaData *incidentsMetadata;
 @property(readonly, nonatomic) _Bool hasIncidentsMetadata;
-- (void)_readIncidentsMetadata;
 @property(retain, nonatomic) NSString *hspVersion;
 @property(readonly, nonatomic) _Bool hasHspVersion;
-- (void)_readHspVersion;
 @property(retain, nonatomic) NSString *dataVersion;
 @property(readonly, nonatomic) _Bool hasDataVersion;
-- (void)_readDataVersion;
 @property(retain, nonatomic) NSString *codeVersion;
 @property(readonly, nonatomic) _Bool hasCodeVersion;
-- (void)_readCodeVersion;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

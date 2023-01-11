@@ -4,26 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthDaemon/HDCloudSyncCoordinatorObserver-Protocol.h>
+#import <HealthDaemon/HDCloudSyncManagerObserver-Protocol.h>
 #import <HealthDaemon/HKCloudSyncObserverServerInterface-Protocol.h>
 
 @class HKCloudSyncObserverStatus, NSObject, NSObservation, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDCloudSyncObserverTaskServer <HKCloudSyncObserverServerInterface, HDCloudSyncCoordinatorObserver>
+@interface HDCloudSyncObserverTaskServer <HKCloudSyncObserverServerInterface, HDCloudSyncManagerObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
     HKCloudSyncObserverStatus *_status;
     NSObservation *_waitForSyncObservations;
+    _Bool _observingSyncStatus;
+    _Bool _hasRestoreCompleted;
 }
 
++ (_Bool)validateClient:(id)arg1 error:(id *)arg2;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-- (void)cloudSyncCoordinatorObserver:(id)arg1 didUpdateRestoreCompletionDate:(id)arg2;
-- (void)cloudSyncCoordinatorObserver:(id)arg1 didUpdateErrorRequiringUserAction:(id)arg2;
-- (void)cloudSyncCoordinatorObserver:(id)arg1 didUpdateLastPushDate:(id)arg2 lastPullDate:(id)arg3;
-- (void)cloudSyncCoordinatorObserver:(id)arg1 didUpdateSyncEnabled:(_Bool)arg2;
+- (void)cloudSyncManager:(id)arg1 didUpdateDataUploadRequestStatus:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
+- (void)cloudSyncManager:(id)arg1 didUpdateRestoreCompletionDate:(id)arg2;
+- (void)cloudSyncManager:(id)arg1 didUpdateErrorRequiringUserAction:(id)arg2;
+- (void)cloudSyncManager:(id)arg1 didUpdateLastPullDate:(id)arg2;
+- (void)cloudSyncManager:(id)arg1 didUpdateLastPushDate:(id)arg2;
+- (void)cloudSyncManager:(id)arg1 didUpdateSyncEnabled:(_Bool)arg2;
+- (id)_readErrorRequiringUserActionOnCloudSyncError:(id *)arg1;
+- (id)_readRestoreCompletionDateWithError:(id *)arg1;
+- (_Bool)_persistRestoreCompletionDate:(id)arg1;
 - (void)_queue_mergeCloudSyncJournalsForProfile:(id)arg1 progress:(id)arg2 taskTree:(id)arg3;
 - (void)_queue_mergeCloudSyncJournalsWithTaskTree:(id)arg1 progress:(id)arg2;
 - (long long)_queue_checkCloudSyncEarlyExitConditionsWithError:(id *)arg1;
@@ -35,9 +43,10 @@
 - (void)_queue_didUpdateSyncStatus;
 - (void)_queue_didUpdateSyncStatusWithErrorRequiringUserAction:(id)arg1;
 - (void)_queue_didUpdateSyncStatusWithRestoreCompleteDate:(id)arg1;
-- (void)_queue_didUpdateSyncStatusWithLastPushDate:(id)arg1 lastPullDate:(id)arg2;
+- (void)_queue_didUpdateSyncStatusWithLastPullDate:(id)arg1;
+- (void)_queue_didUpdateSyncStatusWithLastPushDate:(id)arg1;
 - (void)_queue_didUpdateSyncStatusWithSyncEnabled:(_Bool)arg1;
-- (void)_queue_didStartObservingSyncWithStatus:(id)arg1;
+- (void)_queue_startObservingSync;
 - (id)remote_startSyncIfRestoreNotCompletedWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_startObservingSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)exportedInterface;

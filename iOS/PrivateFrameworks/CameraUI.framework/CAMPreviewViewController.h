@@ -21,7 +21,8 @@
     _Bool __userLockedFocusAndExposure;
     _Bool __shouldSuppressExistingFaceIndicators;
     _Bool _showingStandardControls;
-    float __cachedExposureTargetBias;
+    float _baselineExposureBias;
+    float _cachedExposureTargetBias;
     float __exposureBiasPanStartValue;
     id <CAMPreviewViewControllerDelegate> _delegate;
     long long _layoutStyle;
@@ -54,6 +55,7 @@
     CAMMotionController *__motionController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isShowingStandardControls) _Bool showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
 @property(readonly, nonatomic) CAMMotionController *_motionController; // @synthesize _motionController=__motionController;
 @property(readonly, nonatomic) CAMStageLightOverlayView *_stageLightOverlayView; // @synthesize _stageLightOverlayView=__stageLightOverlayView;
@@ -62,7 +64,6 @@
 @property(nonatomic, setter=_setExposureBiasVirtualSliderPointsForFirstStop:) double _exposureBiasVirtualSliderPointsForFirstStop; // @synthesize _exposureBiasVirtualSliderPointsForFirstStop=__exposureBiasVirtualSliderPointsForFirstStop;
 @property(nonatomic, setter=_setExposureBiasVirtualSliderExponent:) double _exposureBiasVirtualSliderExponent; // @synthesize _exposureBiasVirtualSliderExponent=__exposureBiasVirtualSliderExponent;
 @property(readonly, nonatomic) float _exposureBiasPanStartValue; // @synthesize _exposureBiasPanStartValue=__exposureBiasPanStartValue;
-@property(nonatomic, setter=_setCachedExposureTargetBias:) float _cachedExposureTargetBias; // @synthesize _cachedExposureTargetBias=__cachedExposureTargetBias;
 @property(readonly, nonatomic) UITapGestureRecognizer *_aspectRatioToggleDoubleTapGestureRecognizer; // @synthesize _aspectRatioToggleDoubleTapGestureRecognizer=__aspectRatioToggleDoubleTapGestureRecognizer;
 @property(readonly, nonatomic) UIPanGestureRecognizer *_exposureBiasPanGestureRecognizer; // @synthesize _exposureBiasPanGestureRecognizer=__exposureBiasPanGestureRecognizer;
 @property(readonly, nonatomic) UILongPressGestureRecognizer *_longPressToLockGestureRecognizer; // @synthesize _longPressToLockGestureRecognizer=__longPressToLockGestureRecognizer;
@@ -88,8 +89,9 @@
 @property(nonatomic) long long stagePreviewStatus; // @synthesize stagePreviewStatus=_stagePreviewStatus;
 @property(nonatomic) long long shallowDepthOfFieldStatus; // @synthesize shallowDepthOfFieldStatus=_shallowDepthOfFieldStatus;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property(nonatomic, setter=setCachedExposureTargetBias:) float cachedExposureTargetBias; // @synthesize cachedExposureTargetBias=_cachedExposureTargetBias;
+@property(nonatomic) float baselineExposureBias; // @synthesize baselineExposureBias=_baselineExposureBias;
 @property(nonatomic) __weak id <CAMPreviewViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)_shouldShowIndicatorsAsInactive;
 - (_Bool)_isPortraitEffectActive;
 - (void)_updatePortraitModeViewsAnimated:(_Bool)arg1;
@@ -120,11 +122,15 @@
 - (void)_validateLastExposureBiasModificationTime;
 - (void)_validateExposureTargetBiasFromExposureResult:(id)arg1;
 - (void)_validateInternalProperties;
+- (void)_updateCaptureControllerExposureTargetBias;
+@property(readonly, nonatomic) float totalExposureBias;
+- (_Bool)_isExposureTargetBiasAtBaseline:(float)arg1;
 - (_Bool)_shouldDisableFocusUI;
 @property(readonly, nonatomic, getter=isExposureLockedByUser) _Bool exposureLockedByUser;
 @property(readonly, nonatomic, getter=isFocusLockedByUser) _Bool focusLockedByUser;
 - (void)_setUserLockedFocusAndExposure:(_Bool)arg1 shouldAnimate:(_Bool)arg2;
-- (_Bool)captureControllerUserHasAdjustedExposureTargetBias:(id)arg1;
+- (float)baselineExposureValueForCaptureController:(id)arg1;
+- (_Bool)captureControllerUserHasAdjustedExposureTargetBiasFromBaseline:(id)arg1;
 - (void)captureController:(id)arg1 didOutputExposureResult:(id)arg2;
 - (void)captureController:(id)arg1 didOutputFocusResult:(id)arg2;
 - (_Bool)_shouldResetFocusAndExposureForSubjectAreaDidChange;
@@ -145,7 +151,6 @@
 - (float)_exposureTargetBiasMaximum;
 - (float)_exposureTargetBiasMinimum;
 - (_Bool)_showExposureBiasSliderForPointView;
-- (_Bool)_allowExposureBiasForMode:(long long)arg1;
 - (_Bool)_canModifyExposureBias;
 @property(readonly, nonatomic) UIPanGestureRecognizer *activeExposureBiasPanGestureRecognizer;
 - (void)_lockFocusAndExposure;
@@ -167,7 +172,7 @@
 - (void)_updatePortraitModeViewsForResults:(id)arg1;
 - (_Bool)_shouldAllowFaceIndicators;
 - (void)_updateFaceIndicatorsForResults:(id)arg1;
-- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2;
+- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2 bodyResults:(id)arg3;
 - (_Bool)_shouldSuppressNewFaces;
 - (void)_hideIndicatorsOfViewType:(id)arg1 animated:(_Bool)arg2;
 - (void)_fadeOutIndicatorsOfViewType:(id)arg1;

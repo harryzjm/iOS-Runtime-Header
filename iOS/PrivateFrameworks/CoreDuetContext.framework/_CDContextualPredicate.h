@@ -35,6 +35,7 @@
 + (id)predicateForKeyPath:(id)arg1 equalToValue:(id)arg2;
 + (id)predicateForChangeAtKeyPaths:(id)arg1;
 + (id)predicateForChangeAtKeyPath:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *circularLocationRegions; // @synthesize circularLocationRegions=_circularLocationRegions;
 @property(retain, nonatomic) NSOrderedSet *timeBasedPredicateEvaluationIntervals; // @synthesize timeBasedPredicateEvaluationIntervals=_timeBasedPredicateEvaluationIntervals;
 @property(nonatomic) _Bool evaluateOnEveryKeyPathUpdate; // @synthesize evaluateOnEveryKeyPathUpdate=_evaluateOnEveryKeyPathUpdate;
@@ -42,13 +43,13 @@
 @property(retain, nonatomic) NSPredicate *predicateForPreviousState; // @synthesize predicateForPreviousState=_predicateForPreviousState;
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(copy, nonatomic) NSSet *keyPaths; // @synthesize keyPaths=_keyPaths;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)evaluateWithState:(id)arg1 previousValue:(id)arg2;
 - (_Bool)evaluateWithObject:(id)arg1;
 @property(readonly, nonatomic) _Bool firesOnAnyChange;
 - (id)initForChangeAtKeyPath:(id)arg1 equalToValue:(id)arg2;

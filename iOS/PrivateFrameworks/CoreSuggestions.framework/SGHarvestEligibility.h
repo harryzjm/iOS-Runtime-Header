@@ -14,6 +14,8 @@
 + (CDUnknownBlockType)genericItemIneligibleBlock;
 + (CDUnknownBlockType)messagesAppItemEligibilityCheckBlock;
 + (CDUnknownBlockType)mailAppItemEligibilityCheckBlock;
++ (_Bool)searchableItemIsEligibleForHarvestingWithGetterBlock:(CDUnknownBlockType)arg1 bundleIdentifier:(id)arg2 eligibleExceptForAge:(_Bool *)arg3;
++ (_Bool)searchableItemIsStoredEncryptedWithGetterBlock:(CDUnknownBlockType)arg1 bundleIdentifier:(id)arg2;
 + (_Bool)searchableItemIsEligibleForHarvesting:(id)arg1 eligibleExceptForAge:(_Bool *)arg2;
 + (_Bool)searchableItemIsEligibleForDissectorPipeline:(id)arg1;
 + (_Bool)searchableItemIsEligibleForDeferredHarvesting:(id)arg1;

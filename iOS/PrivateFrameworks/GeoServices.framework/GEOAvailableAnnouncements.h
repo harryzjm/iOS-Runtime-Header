@@ -13,14 +13,15 @@
 @interface GEOAvailableAnnouncements : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_announcements;
     NSString *_languageCode;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_announcements:1;
         unsigned int read_languageCode:1;
-        unsigned int wrote_announcements:1;
-        unsigned int wrote_languageCode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -35,18 +36,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *languageCode;
 @property(readonly, nonatomic) _Bool hasLanguageCode;
-- (void)_readLanguageCode;
 - (id)announcementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)announcementsCount;
-- (void)_addNoFlagsAnnouncement:(id)arg1;
 - (void)addAnnouncement:(id)arg1;
 - (void)clearAnnouncements;
 @property(retain, nonatomic) NSMutableArray *announcements;
-- (void)_readAnnouncements;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -8,28 +8,38 @@
 
 #import <Navigation/MNNavigationSessionObserver-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSError, NSMutableDictionary, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationSessionLogger : NSObject <MNNavigationSessionObserver>
 {
     NSUUID *_lastGuidanceSignID;
+    NSError *_previousSuppressedRerouteError;
+    NSMutableDictionary *_displayETALookup;
 }
 
 - (void).cxx_destruct;
 - (id)_stringForLocationType:(unsigned long long)arg1;
 - (void)navigationSession:(id)arg1 updateSignsWithInfo:(id)arg2;
 - (void)navigationSession:(id)arg1 didUpdateDestination:(id)arg2;
+- (void)navigationSession:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
 - (void)navigationSession:(id)arg1 didFailRerouteWithError:(id)arg2;
-- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4;
+- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4 rerouteReason:(unsigned long long)arg5;
+- (void)navigationSessionDidCancelReroute:(id)arg1;
+- (void)navigationSession:(id)arg1 didSuppressReroute:(id)arg2;
 - (void)navigationSessionWillReroute:(id)arg1;
-- (void)navigationSession:(id)arg1 didUpdateDisplayETA:(id)arg2 displayRemainingMinutes:(unsigned long long)arg3 forRoute:(id)arg4;
-- (void)navigationSessionDidTimeoutInArrivalRegion:(id)arg1;
+- (void)navigationSession:(id)arg1 didUpdateETAResponseForRoute:(id)arg2;
+- (void)navigationSession:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3;
 - (void)navigationSessionDidArrive:(id)arg1;
 - (void)navigationSessionDidEnterPreArrivalState:(id)arg1;
+- (void)navigationSession:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSession:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSession:(id)arg1 didEnterPreArrivalStateForWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didUpdateMatchedLocation:(id)arg2;
+- (void)navigationSession:(id)arg1 shouldEndWithReason:(unsigned long long)arg2;
 - (void)navigationSessionDidStop:(id)arg1;
-- (void)navigationSessionDidStart:(id)arg1;
+- (void)navigationSession:(id)arg1 didChangeNavigationState:(int)arg2;
+- (void)startLoggingWithRouteInfo:(id)arg1 navigationType:(int)arg2 isReconnecting:(_Bool)arg3;
 - (id)init;
 
 // Remaining properties

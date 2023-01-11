@@ -11,10 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)VNAssert:(_Bool)arg1 log:(id)arg2;
 + (void)logInternalError:(id)arg1;
 + (id)errorForOSStatus:(int)arg1 localizedDescription:(id)arg2;
 + (id)errorForCVReturnCode:(int)arg1 localizedDescription:(id)arg2;
 + (id)errorForEspressoReturnStatus:(int)arg1 localizedDescription:(id)arg2;
++ (id)errorForUnavailableSession;
 + (id)errorForDataUnavailableWithLocalizedDescription:(id)arg1;
 + (id)errorForUnsupportedPrivateRevision:(unsigned long long)arg1 ofRequestClass:(Class)arg2;
 + (id)errorForUnsupportedPrivateRevision:(unsigned long long)arg1 ofRequest:(id)arg2;
@@ -29,12 +31,14 @@ __attribute__((visibility("hidden")))
 + (id)errorForInvalidModelWithLocalizedDescription:(id)arg1;
 + (id)errorForInvalidArgument:(id)arg1 named:(id)arg2;
 + (id)errorForInvalidArgumentWithLocalizedDescription:(id)arg1;
++ (id)errorForInvalidOptionWithLocalizedDescription:(id)arg1;
 + (id)errorForInvalidOption:(id)arg1 named:(id)arg2 localizedDescription:(id)arg3;
 + (id)errorForInvalidOption:(id)arg1 named:(id)arg2;
 + (id)errorForMissingOptionNamed:(id)arg1;
 + (id)errorForInvalidOperationForRequestClass:(Class)arg1 revision:(unsigned long long)arg2;
 + (id)errorForInvalidOperationWithLocalizedDescription:(id)arg1;
 + (id)errorForOutOfBoundsErrorWithLocalizedDescription:(id)arg1;
++ (id)errorForUnimplementedMethod:(SEL)arg1 ofObject:(id)arg2;
 + (id)errorForUnimplementedFunctionWithLocalizedDescription:(id)arg1;
 + (id)errorForInvalidFormatErrorWithLocalizedDescription:(id)arg1;
 + (id)errorForInternalErrorWithLocalizedDescription:(id)arg1 underlyingError:(id)arg2;

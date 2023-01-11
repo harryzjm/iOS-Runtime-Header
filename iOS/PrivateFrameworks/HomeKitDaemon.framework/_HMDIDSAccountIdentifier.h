@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 + (id)namespace;
-@property(readonly, copy) NSString *identifierString; // @synthesize identifierString=_identifierString;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *identifierString; // @synthesize identifierString=_identifierString;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)senderCorrelationIdentifier;
 - (_Bool)isAuthenticated;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithIdentifierString:(id)arg1;

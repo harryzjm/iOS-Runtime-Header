@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIBarButtonItem, UIView;
+@class UIBarButtonItem, UIMenu, UIView;
 
 @protocol _UIBarButtonItemViewOwner <NSObject>
 - (void)_itemDidChangeEnabledState:(UIBarButtonItem *)arg1;
@@ -15,5 +15,8 @@
 - (void)_itemDidChangeWidth:(UIBarButtonItem *)arg1;
 - (void)_itemStandardViewNeedsUpdate:(UIBarButtonItem *)arg1;
 - (void)_itemCustomViewDidChange:(UIBarButtonItem *)arg1 fromView:(UIView *)arg2;
+
+@optional
+- (_Bool)_itemDidUpdateMenu:(UIBarButtonItem *)arg1 fromMenu:(UIMenu *)arg2;
 @end
 

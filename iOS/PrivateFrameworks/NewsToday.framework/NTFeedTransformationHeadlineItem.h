@@ -8,7 +8,7 @@
 
 #import <NewsToday/NTFeedTransformationItem-Protocol.h>
 
-@class NSDate, NSString, NTPBFeedItem, SFSearchResult;
+@class NSDate, NSString, NSURL, NTPBFeedItem, SFSearchResult;
 @protocol FCFeedTransformationItem, FCHeadlineProviding;
 
 @interface NTFeedTransformationHeadlineItem : NSObject <NTFeedTransformationItem>
@@ -16,18 +16,19 @@
     NSDate *_cacheExpirationDate;
     SFSearchResult *_searchResult;
     id <FCHeadlineProviding> _headline;
+    NSURL *_actionURL;
 }
 
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property(copy, nonatomic) id <FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property(readonly, copy, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property(readonly, copy, nonatomic) NSDate *cacheExpirationDate; // @synthesize cacheExpirationDate=_cacheExpirationDate;
-- (void).cxx_destruct;
 - (id)protoitemWithFetchedFeedItemHeadline:(id)arg1;
 @property(readonly, copy, nonatomic) NTPBFeedItem *feedItemForHeadlineFetch;
 @property(readonly, nonatomic) _Bool needsFeedItemHeadlinesFetch;
 @property(readonly, nonatomic) id <FCFeedTransformationItem> feedTransformationItem;
 @property(readonly, nonatomic) _Bool usesDynamicSlotAllocation;
-@property(readonly, nonatomic, getter=isEligibleForLeadingCellAppearance) _Bool eligibleForLeadingCellAppearance;
 @property(readonly, copy, nonatomic) NSDate *cacheCutoffTimeRelativeDate;
 @property(readonly, copy, nonatomic) NSString *clusterID;
 @property(readonly, nonatomic) unsigned long long todayItemType;
@@ -35,8 +36,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithCacheExpirationDate:(id)arg1 searchResult:(id)arg2;
-- (id)initWithHeadline:(id)arg1 cacheExpirationDate:(id)arg2 searchResult:(id)arg3;
+- (id)initWithHeadline:(id)arg1 cacheExpirationDate:(id)arg2 searchResult:(id)arg3 actionURL:(id)arg4;
 - (id)init;
 
 // Remaining properties

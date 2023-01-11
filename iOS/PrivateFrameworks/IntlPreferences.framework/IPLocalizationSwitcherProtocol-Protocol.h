@@ -7,6 +7,8 @@
 @class NSString;
 
 @protocol IPLocalizationSwitcherProtocol
+- (void)preferredLanguagesForBundleID:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
+- (void)notifyPreferredLanguageChangedForBundleID:(NSString *)arg1;
 - (void)setPreferredLanguage:(NSString *)arg1 forBundleID:(NSString *)arg2 andRelaunchWithReply:(void (^)(NSError *))arg3;
 @end
 

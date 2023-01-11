@@ -24,6 +24,12 @@
     _Bool _isStreaming;
     _Bool _isStaticCorrection;
     _Bool _isFuzzyMatch;
+    _Bool _noGoTakeover;
+    _Bool _shouldUseCompactDisplay;
+    _Bool _preferTopPlatter;
+    _Bool _wasCompact;
+    _Bool _didTakeoverGo;
+    _Bool _usesCompactDisplay;
     _Bool _publiclyIndexable;
     _Bool _doNotFold;
     int _auxiliaryBottomTextColor;
@@ -71,10 +77,7 @@
     unsigned long long _minimumRankOfTopHitToSuppressResult;
     NSString *_mediaType;
     double _serverScore;
-    NSDictionary *_topicDistribution;
-    NSDictionary *_featureScaling;
     double _personalizationScore;
-    unsigned long long _origRank;
     SFCustom *_customProperties;
     NSString *_resultType;
     NSString *_resultTemplate;
@@ -86,9 +89,12 @@
     NSString *_resultBundleId;
     SFImage *_icon;
     NSDictionary *_localFeatures;
+    NSDictionary *_serverFeatures;
     NSString *_intendedQuery;
     NSString *_correctedQuery;
     NSString *_completedQuery;
+    SFCard *_compactCard;
+    NSArray *_alternativeURLs;
     unsigned long long _queryId;
     NSString *_userInput;
     NSArray *_itemProviderDataTypes;
@@ -105,6 +111,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
 @property(nonatomic) unsigned long long blockId; // @synthesize blockId=_blockId;
 @property(nonatomic) _Bool doNotFold; // @synthesize doNotFold=_doNotFold;
@@ -120,9 +127,18 @@
 @property(copy, nonatomic) NSString *userInput; // @synthesize userInput=_userInput;
 @property(nonatomic) _Bool publiclyIndexable; // @synthesize publiclyIndexable=_publiclyIndexable;
 @property(nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
+@property(copy, nonatomic) NSArray *alternativeURLs; // @synthesize alternativeURLs=_alternativeURLs;
+@property(retain, nonatomic) SFCard *compactCard; // @synthesize compactCard=_compactCard;
+@property(nonatomic) _Bool usesCompactDisplay; // @synthesize usesCompactDisplay=_usesCompactDisplay;
+@property(nonatomic) _Bool didTakeoverGo; // @synthesize didTakeoverGo=_didTakeoverGo;
+@property(nonatomic) _Bool wasCompact; // @synthesize wasCompact=_wasCompact;
+@property(nonatomic) _Bool preferTopPlatter; // @synthesize preferTopPlatter=_preferTopPlatter;
+@property(nonatomic) _Bool shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
+@property(nonatomic) _Bool noGoTakeover; // @synthesize noGoTakeover=_noGoTakeover;
 @property(copy, nonatomic) NSString *completedQuery; // @synthesize completedQuery=_completedQuery;
 @property(copy, nonatomic) NSString *correctedQuery; // @synthesize correctedQuery=_correctedQuery;
 @property(copy, nonatomic) NSString *intendedQuery; // @synthesize intendedQuery=_intendedQuery;
+@property(copy, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property(copy, nonatomic) NSDictionary *localFeatures; // @synthesize localFeatures=_localFeatures;
 @property(nonatomic) _Bool isFuzzyMatch; // @synthesize isFuzzyMatch=_isFuzzyMatch;
 @property(nonatomic) _Bool isStaticCorrection; // @synthesize isStaticCorrection=_isStaticCorrection;
@@ -138,10 +154,7 @@
 @property(copy, nonatomic) NSString *resultTemplate; // @synthesize resultTemplate=_resultTemplate;
 @property(copy, nonatomic) NSString *resultType; // @synthesize resultType=_resultType;
 @property(retain, nonatomic) SFCustom *customProperties; // @synthesize customProperties=_customProperties;
-@property(nonatomic) unsigned long long origRank; // @synthesize origRank=_origRank;
 @property(nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
-@property(copy, nonatomic) NSDictionary *featureScaling; // @synthesize featureScaling=_featureScaling;
-@property(copy, nonatomic) NSDictionary *topicDistribution; // @synthesize topicDistribution=_topicDistribution;
 @property(nonatomic) double serverScore; // @synthesize serverScore=_serverScore;
 @property(copy, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property(nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult; // @synthesize minimumRankOfTopHitToSuppressResult=_minimumRankOfTopHitToSuppressResult;
@@ -192,7 +205,7 @@
 @property(nonatomic) _Bool preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
 @property(retain, nonatomic) SFImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (_Bool)compareWithResult:(id)arg1 logger:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

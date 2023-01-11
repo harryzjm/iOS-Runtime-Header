@@ -17,13 +17,14 @@
     struct {
         unsigned int deviceType:1;
         unsigned int entityType:1;
+        unsigned int hasAllQuantifier:1;
         unsigned int isExcludeFilter:1;
         unsigned int outerDeviceType:1;
         unsigned int serviceType:1;
         unsigned int subServiceType:1;
     } _has;
+    _Bool _hasAllQuantifier;
     _Bool _isExcludeFilter;
-    _Bool __encodeLegacyGloryData;
     int _deviceType;
     int _entityType;
     int _outerDeviceType;
@@ -42,7 +43,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDataString *zone; // @synthesize zone=_zone;
 @property(nonatomic) int subServiceType; // @synthesize subServiceType=_subServiceType;
 @property(nonatomic) int serviceType; // @synthesize serviceType=_serviceType;
@@ -53,13 +54,13 @@
 @property(retain, nonatomic) _INPBDataString *outerDeviceName; // @synthesize outerDeviceName=_outerDeviceName;
 @property(nonatomic) _Bool isExcludeFilter; // @synthesize isExcludeFilter=_isExcludeFilter;
 @property(retain, nonatomic) _INPBDataString *home; // @synthesize home=_home;
+@property(nonatomic) _Bool hasAllQuantifier; // @synthesize hasAllQuantifier=_hasAllQuantifier;
 @property(retain, nonatomic) _INPBDataString *group; // @synthesize group=_group;
 @property(nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property(retain, nonatomic) _INPBDataString *entityName; // @synthesize entityName=_entityName;
 @property(copy, nonatomic) NSArray *entityIdentifiers; // @synthesize entityIdentifiers=_entityIdentifiers;
 @property(nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
 @property(retain, nonatomic) _INPBDataString *accessory; // @synthesize accessory=_accessory;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -84,6 +85,7 @@
 @property(readonly, nonatomic) _Bool hasOuterDeviceName;
 @property(nonatomic) _Bool hasIsExcludeFilter;
 @property(readonly, nonatomic) _Bool hasHome;
+@property(nonatomic) _Bool hasHasAllQuantifier;
 @property(readonly, nonatomic) _Bool hasGroup;
 - (int)StringAsEntityType:(id)arg1;
 - (id)entityTypeAsString:(int)arg1;

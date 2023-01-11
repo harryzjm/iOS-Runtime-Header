@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AVConference/VCConnectionProtocol-Protocol.h>
 
 @class IDSDataChannelLinkContext, NSData, NSString, NSUUID, VCDatagramChannelIDS;
 
 __attribute__((visibility("hidden")))
-@interface VCConnectionIDS : NSObject <VCConnectionProtocol>
+@interface VCConnectionIDS <VCConnectionProtocol>
 {
     IDSDataChannelLinkContext *_linkContext;
     unsigned int _datagramChannelToken;
@@ -25,9 +23,17 @@ __attribute__((visibility("hidden")))
     unsigned int _downlinkBitrateCap;
     _Bool _isLocalConstrained;
     _Bool _isRemoteConstrained;
+    _Bool _isLocalExpensive;
+    _Bool _isRemoteExpensive;
+    _Bool _isLocalDelegated;
+    _Bool _isRemoteDelegated;
 }
 
 + (unsigned int)worstCaseNetworkOverheadInBytesWithNumOfStreamId:(int)arg1 isPriorityIncluded:(_Bool)arg2;
+@property(readonly) _Bool isRemoteDelegated; // @synthesize isRemoteDelegated=_isRemoteDelegated;
+@property(readonly) _Bool isLocalDelegated; // @synthesize isLocalDelegated=_isLocalDelegated;
+@property(readonly) _Bool isRemoteExpensive; // @synthesize isRemoteExpensive=_isRemoteExpensive;
+@property(readonly) _Bool isLocalExpensive; // @synthesize isLocalExpensive=_isLocalExpensive;
 @property(readonly) _Bool isRemoteConstrained; // @synthesize isRemoteConstrained=_isRemoteConstrained;
 @property(readonly) _Bool isLocalConstrained; // @synthesize isLocalConstrained=_isLocalConstrained;
 @property unsigned int downlinkBitrateCap; // @synthesize downlinkBitrateCap=_downlinkBitrateCap;
@@ -36,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property int priority; // @synthesize priority=_priority;
 @property(readonly) VCDatagramChannelIDS *datagramChannel; // @synthesize datagramChannel=_datagramChannel;
 @property(readonly) unsigned int datagramChannelToken; // @synthesize datagramChannelToken=_datagramChannelToken;
+- (int)cellTechForSoMask:(unsigned int)arg1 fallbackTo:(int)arg2;
 - (_Bool)matchesChannelTokenWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (_Bool)matchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 @property(readonly) unsigned char linkID;

@@ -13,11 +13,11 @@
     vector_e654105b _prevPoints;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) vector_80ea899f prevPoints; // @synthesize prevPoints=_prevPoints;
 @property(nonatomic) float spacing; // @synthesize spacing=_spacing;
 @property(nonatomic) unsigned long long width; // @synthesize width=_width;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)clear;
 - (void)flush;
 - (void)addPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2;

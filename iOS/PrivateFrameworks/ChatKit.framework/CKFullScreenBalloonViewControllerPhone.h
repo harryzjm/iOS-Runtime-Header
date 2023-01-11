@@ -7,10 +7,11 @@
 #import <ChatKit/CKActionSheetMenuViewDelegate-Protocol.h>
 #import <ChatKit/CKBalloonViewDelegate-Protocol.h>
 #import <ChatKit/CKStickerDetailViewControllerDelegate-Protocol.h>
+#import <ChatKit/PHLivePhotoViewDelegate-Protocol.h>
 
-@class CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, NSArray, NSString, UIView;
+@class CAShapeLayer, CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, CKLivePhotoBalloonView, NSArray, NSString, UIView, UIVisualEffectView;
 
-@interface CKFullScreenBalloonViewControllerPhone <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate>
+@interface CKFullScreenBalloonViewControllerPhone <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate, PHLivePhotoViewDelegate>
 {
     _Bool _shouldLayoutViews;
     _Bool _animationsDisabledForTesting;
@@ -18,28 +19,51 @@
     CKGroupAcknowledgmentVotingViewController *_votingViewController;
     UIView *_balloonView;
     NSArray *_interfaceActions;
+    CKLivePhotoBalloonView *_livePhotoBalloonView;
+    UIVisualEffectView *_replyButtonEffectView;
+    CAShapeLayer *_replyButtonBorderLayer;
+    CAShapeLayer *_replyButtonMaskLayer;
+    CAShapeLayer *_tintViewMaskLayer;
+    UIView *_replyButtonView;
     double _balloonYOffsetFromTranscript;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool animationsDisabledForTesting; // @synthesize animationsDisabledForTesting=_animationsDisabledForTesting;
 @property(nonatomic) double balloonYOffsetFromTranscript; // @synthesize balloonYOffsetFromTranscript=_balloonYOffsetFromTranscript;
+@property(retain, nonatomic) UIView *replyButtonView; // @synthesize replyButtonView=_replyButtonView;
+@property(retain, nonatomic) CAShapeLayer *tintViewMaskLayer; // @synthesize tintViewMaskLayer=_tintViewMaskLayer;
+@property(retain, nonatomic) CAShapeLayer *replyButtonMaskLayer; // @synthesize replyButtonMaskLayer=_replyButtonMaskLayer;
+@property(retain, nonatomic) CAShapeLayer *replyButtonBorderLayer; // @synthesize replyButtonBorderLayer=_replyButtonBorderLayer;
+@property(retain, nonatomic) UIVisualEffectView *replyButtonEffectView; // @synthesize replyButtonEffectView=_replyButtonEffectView;
+@property(retain, nonatomic) CKLivePhotoBalloonView *livePhotoBalloonView; // @synthesize livePhotoBalloonView=_livePhotoBalloonView;
 @property(copy, nonatomic) NSArray *interfaceActions; // @synthesize interfaceActions=_interfaceActions;
 @property(retain, nonatomic) UIView *balloonView; // @synthesize balloonView=_balloonView;
 @property(retain, nonatomic) CKGroupAcknowledgmentVotingViewController *votingViewController; // @synthesize votingViewController=_votingViewController;
 @property(retain, nonatomic) CKActionSheetMenuView *menuView; // @synthesize menuView=_menuView;
-- (void).cxx_destruct;
+- (void)updateReplyButtonColor;
+- (void)updateReplyButtonSize:(struct CGRect)arg1;
+- (void)setupReplyButton;
 - (void)disableAnimationsForTesting;
 - (_Bool)_shouldShowVotingView;
+- (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)_stickerDetailViewControllerCloseButtonPressed:(id)arg1;
 - (void)stickerDetailViewController:(id)arg1 deletedStickerWithTransferGUID:(id)arg2;
 - (void)stickerDetailViewController:(id)arg1 selectedStickerPackWithAdamID:(id)arg2;
+- (void)balloonViewShouldCopyToPasteboard:(id)arg1;
+- (void)balloonView:(id)arg1 userDidDragOutsideBalloonWithPoint:(struct CGPoint)arg2;
+- (void)balloonViewSelected:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)balloonViewTextViewDidChangeSelection:(id)arg1 selectedText:(id)arg2 textView:(id)arg3;
+- (void)balloonViewSelected:(id)arg1 keyModifierFlags:(long long)arg2 selectedText:(id)arg3;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)liveBalloonTouched:(id)arg1;
+- (void)balloonViewShowInlineReply:(id)arg1;
 - (void)balloonViewLongTouched:(id)arg1;
 - (void)balloonViewDoubleTapped:(id)arg1;
-- (void)balloonViewTapped:(id)arg1;
-- (void)performClosingAnimationsWithSendAnimation:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)balloonViewTapped:(id)arg1 withModifierFlags:(long long)arg2 selectedText:(id)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)performClosingAnimationsAnimated:(_Bool)arg1 withSendAnimation:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)dismissTapGestureRecognized:(id)arg1;
 - (void)balloonEditMenuViewWasDismissed:(id)arg1;
 - (void)viewDidLayoutSubviews;
@@ -48,6 +72,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)presentStickerDetailControllerWithStickers:(id)arg1;
 - (void)performInitialAnimations;
+- (void)loadLivePhotoBalloonViewIfNeeded;
 - (id)initWithChatItem:(id)arg1 title:(id)arg2 interfaceActions:(id)arg3 gradientReferenceView:(id)arg4 isGroupConversation:(_Bool)arg5 showActionMenu:(_Bool)arg6 pluginBalloonSnapshot:(id)arg7 delegate:(id)arg8;
 - (void)dealloc;
 

@@ -29,7 +29,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (_Bool)isEqualToCornerRadiusConfiguration:(id)arg1;
 @property(readonly, nonatomic) _Bool isCongruent;
 - (id)initWithTopLeft:(double)arg1 bottomLeft:(double)arg2 bottomRight:(double)arg3 topRight:(double)arg4;
 - (id)initWithCornerRadius:(double)arg1;

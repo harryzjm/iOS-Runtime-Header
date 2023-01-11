@@ -5,8 +5,10 @@
 //
 
 @class CSSearchableItem;
+@protocol CSIndexQueuableItem;
 
 @protocol CSIndexQueuableItem
+- (void)updateWithItem:(id <CSIndexQueuableItem>)arg1;
 - (CSSearchableItem *)searchableItem;
 @end
 

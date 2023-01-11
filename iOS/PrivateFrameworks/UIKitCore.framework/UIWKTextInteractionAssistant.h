@@ -7,6 +7,7 @@
 #import <UIKitCore/UIResponderStandardEditActions-Protocol.h>
 
 @class NSString, UILongPressGestureRecognizer, UITapGestureRecognizer, UITextChecker, _UITextServiceSession;
+@protocol UITextCursorAssertion;
 
 @interface UIWKTextInteractionAssistant <UIResponderStandardEditActions>
 {
@@ -17,6 +18,7 @@
     _UITextServiceSession *_lookupSession;
     UITextChecker *_textChecker;
     unsigned long long _options;
+    id <UITextCursorAssertion> _blinkAssertion;
     _Bool _shouldDelayActivatingSelectionView;
     _Bool _hadCaretSelectionBeforeTap;
     NSString *_wordBeforeTap;
@@ -27,10 +29,13 @@
 @property(nonatomic) _Bool shouldDelayActivatingSelectionView; // @synthesize shouldDelayActivatingSelectionView=_shouldDelayActivatingSelectionView;
 @property(nonatomic) struct CGRect caretBeforeTap; // @synthesize caretBeforeTap=_caretBeforeTap;
 @property(retain, nonatomic) NSString *wordBeforeTap; // @synthesize wordBeforeTap=_wordBeforeTap;
-- (_Bool)shouldEnqueueObserverUpdates;
+- (void)willChangeSelection;
+- (void)didEndScrollingOverflow;
+- (void)willStartScrollingOverflow;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)lookup:(id)arg1 withRange:(struct _NSRange)arg2 fromRect:(struct CGRect)arg3;
 - (void)showShareSheetFor:(id)arg1 fromRect:(struct CGRect)arg2;
+- (_Bool)shouldSuppressSelectionCommands;
 - (void)showTextServiceFor:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)showDictionaryFor:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)hideTextStyleOptions;
@@ -57,17 +62,17 @@
 - (void)scheduleReplacementsForText:(id)arg1;
 - (void)scheduleReplacementsWithOptions:(unsigned long long)arg1;
 - (void)scheduleChineseTransliterationForText:(id)arg1;
-- (void)scrollSelectionToVisible;
+- (long long)currentCursorBehavior;
+- (void)scrollSelectionToVisible:(_Bool)arg1;
 - (_Bool)wantsLinkInteraction;
 - (_Bool)containerIsBrowserView;
 - (_Bool)containerAllowsSelectionTintOnly;
 - (_Bool)containerAllowsSelection;
-- (_Bool)containerIsPlainStyleAtom;
 - (_Bool)containerIsAtom;
 - (void)addGestureRecognizersToView:(id)arg1;
 - (_Bool)overrideGestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)overrideGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (Class)loupeInteractionClass;
+- (_Bool)usesAsynchronousSelectionController;
 - (Class)selectionInteractionClass;
 - (void)dealloc;
 - (id)initWithView:(id)arg1;

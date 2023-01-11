@@ -18,10 +18,15 @@
 - (id)messageAcknowledgmentBalloonBorderColor;
 - (id)attachmentBalloonSubtitleTextColor;
 - (id)attachmentBalloonTitleTextColor;
+- (id)reply_gray_balloonTextColor;
+- (id)transcriptReplyCountColor;
+- (id)replyLineColor;
+- (id)reply_gray_balloonColors;
 - (id)gray_unfilledBalloonColor;
 - (id)transcriptDeemphasizedTextColor;
 - (id)transcriptBigEmojiColor;
 - (id)transcriptNicknameTextColor;
+- (id)transcriptBreadcrumpTextColor;
 - (id)transcriptTextColor;
 - (id)transcriptBackgroundColor;
 - (id)blue_sendButtonColor;

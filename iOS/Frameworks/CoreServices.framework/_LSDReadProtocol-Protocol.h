@@ -13,6 +13,18 @@
 - (void)getResourceValuesForKeys:(NSSet *)arg1 URL:(NSURL *)arg2 preferredLocalizations:(NSArray *)arg3 completionHandler:(void (^)(NSDictionary *, NSSet *, NSError *))arg4;
 - (void)getAllUserActivityTypesAndDomainNamesWithCompletionHandler:(void (^)(NSSet *, NSSet *, NSError *))arg1;
 - (void)getBoundIconInfoForDocumentProxy:(LSDocumentProxy *)arg1 completionHandler:(void (^)(_LSBoundIconInfo *, NSError *))arg2;
+- (void)getWhetherTypeIdentifier:(NSString *)arg1 conformsToTypeIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (void)getRelatedTypesOfTypeWithIdentifier:(NSString *)arg1 maximumDegreeOfSeparation:(long long)arg2 completionHandler:(void (^)(NSArray *, NSArray *))arg3;
+- (void)getTypeRecordForImportedTypeWithIdentifier:(NSString *)arg1 conformingToIdentifier:(NSString *)arg2 completionHandler:(void (^)(UTTypeRecord *))arg3;
+- (void)getTypeRecordsWithTag:(NSString *)arg1 ofClass:(NSString *)arg2 conformingToIdentifier:(NSString *)arg3 completionHandler:(void (^)(NSArray *))arg4;
+- (void)getTypeRecordWithTag:(NSString *)arg1 ofClass:(NSString *)arg2 conformingToIdentifier:(NSString *)arg3 completionHandler:(void (^)(UTTypeRecord *))arg4;
+- (void)getTypeRecordsWithIdentifiers:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;
+- (void)getTypeRecordWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(UTTypeRecord *))arg2;
+- (void)getExtensionPointRecordForCurrentProcessWithCompletionHandler:(void (^)(LSExtensionPointRecord *))arg1;
+- (void)getExtensionPointRecordWithIdentifier:(NSString *)arg1 platform:(unsigned int)arg2 completionHandler:(void (^)(LSExtensionPointRecord *, NSError *))arg3;
+- (void)getBundleRecordForCoreTypesWithCompletionHandler:(void (^)(LSBundleRecord *))arg1;
+- (void)getBundleProxyForCurrentProcessWithCompletionHandler:(void (^)(LSBundleProxy *, NSError *))arg1;
+- (void)getBundleRecordForCurrentProcessWithCompletionHandler:(void (^)(LSBundleRecord *, NSError *))arg1;
 - (void)resolveQueries:(NSSet *)arg1 legacySPI:(_Bool)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(void (^)(NSUUID *, NSNumber *))arg1;
 - (void)getDiskUsage:(_LSDiskUsage *)arg1 completionHandler:(void (^)(_LSDiskUsage *, NSError *))arg2;

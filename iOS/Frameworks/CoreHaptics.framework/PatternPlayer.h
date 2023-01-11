@@ -7,20 +7,32 @@
 #import <objc/NSObject.h>
 
 #import <CoreHaptics/CHHapticPatternPlayer-Protocol.h>
+#import <CoreHaptics/PatternPlayerDetails-Protocol.h>
 
-@class NSString;
+@class AVHapticPlayerChannel, CHHapticEngine, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PatternPlayer : NSObject <CHHapticPatternPlayer>
+@interface PatternPlayer : NSObject <CHHapticPatternPlayer, PatternPlayerDetails>
 {
+    CHHapticEngine *_engine;
+    AVHapticPlayerChannel *_channel;
+    NSArray *_events;
+    double _patternDuration;
+    int _muteState;
+    unsigned char _previousAction;
 }
 
+- (void).cxx_destruct;
+@property(readonly) double patternDuration; // @synthesize patternDuration=_patternDuration;
 @property _Bool isMuted;
 - (_Bool)scheduleParameterCurve:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)cancelAndReturnError:(id *)arg1;
 - (_Bool)sendParameters:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)stopAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)startAtTime:(double)arg1 error:(id *)arg2;
+- (void)clearExternalResources:(id)arg1;
+- (_Bool)needsResetForAction:(unsigned char)arg1;
+- (void)doSetMute:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithPlayable:(id)arg1 engine:(id)arg2 privileged:(_Bool)arg3 error:(id *)arg4;
 - (id)init;

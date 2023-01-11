@@ -10,14 +10,16 @@ __attribute__((visibility("hidden")))
 @interface ARUIRingsRenderPipelineConfiguration : NSObject
 {
     _Bool _hasVisibleRings;
-    _Bool _ringsAreEmpty;
+    _Bool _hasEmptyRing;
+    _Bool _hasFilledRing;
     _Bool _needsAlphaReductionPass;
     _Bool _hasOverlappingRing;
 }
 
 @property(nonatomic) _Bool hasOverlappingRing; // @synthesize hasOverlappingRing=_hasOverlappingRing;
 @property(nonatomic) _Bool needsAlphaReductionPass; // @synthesize needsAlphaReductionPass=_needsAlphaReductionPass;
-@property(nonatomic) _Bool ringsAreEmpty; // @synthesize ringsAreEmpty=_ringsAreEmpty;
+@property(nonatomic) _Bool hasFilledRing; // @synthesize hasFilledRing=_hasFilledRing;
+@property(nonatomic) _Bool hasEmptyRing; // @synthesize hasEmptyRing=_hasEmptyRing;
 @property(nonatomic) _Bool hasVisibleRings; // @synthesize hasVisibleRings=_hasVisibleRings;
 
 @end

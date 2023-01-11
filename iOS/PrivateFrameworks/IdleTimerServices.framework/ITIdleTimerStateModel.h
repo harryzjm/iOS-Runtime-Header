@@ -21,10 +21,10 @@
 
 - (void).cxx_destruct;
 - (void)_addStateCaptureHandler;
-- (id)_access_newIdleTimerAssertionWithConfiguration:(id)arg1 forReason:(id)arg2;
+- (id)_access_newIdleTimerAssertionWithConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
 - (_Bool)handleIdleEvent:(unsigned long long)arg1 usingConfigurationWithIdentifier:(id)arg2;
 - (void)resendIdleTimerAssertions;
-- (id)newIdleTimerAssertionWithConfiguration:(id)arg1 forReason:(id)arg2;
+- (id)newIdleTimerAssertionWithConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
 @property(readonly, getter=isIdleTimerServiceAvailable) _Bool idleTimerServiceAvailable;
 - (void)dealloc;
 - (id)init;

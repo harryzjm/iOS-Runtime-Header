@@ -11,16 +11,15 @@
 #import <PhotosUICore/PXCMMActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMAssetsViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
-#import <PhotosUICore/PXMovieProviderDelegate-Protocol.h>
 #import <PhotosUICore/PXPhotosDetailsActionMenuDelegate-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXToastViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSProgress, NSString, PXCMMAssetsViewController, PXCMMSession, PXCMMSpecManager, PXMomentShareStatusPresentation, PXMovieProvider, PXOneUpPresentation, PXPhotoDetailsActionMenuController, PXUpdater, UIActivityIndicatorView, UIBarButtonItem, UINavigationBar;
+@class NSArray, NSProgress, NSString, PXCMMAssetsViewController, PXCMMSession, PXCMMSpecManager, PXMiroMoviePresenter, PXMomentShareStatusPresentation, PXOneUpPresentation, PXPhotoDetailsActionMenuController, PXUpdater, UIActivityIndicatorView, UIBarButtonItem, UINavigationBar;
 @protocol PXCMMActionControllerDelegate, PXCMMViewControllerDelegate;
 
-@interface PXCMMViewController : UIViewController <PXChangeObserver, PXCMMAssetsViewControllerDelegate, PXCMMActionControllerDelegate, PXPhotosDetailsActionMenuDelegate, UIPopoverPresentationControllerDelegate, PXSectionedDataSourceManagerObserver, PXAssetsDataSourceManagerObserver, PXToastViewControllerDelegate, PXMovieProviderDelegate, PXCMMActionPerformerDelegate>
+@interface PXCMMViewController : UIViewController <PXChangeObserver, PXCMMAssetsViewControllerDelegate, PXCMMActionControllerDelegate, PXPhotosDetailsActionMenuDelegate, UIPopoverPresentationControllerDelegate, PXSectionedDataSourceManagerObserver, PXAssetsDataSourceManagerObserver, PXToastViewControllerDelegate, PXCMMActionPerformerDelegate>
 {
     PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     _Bool _hasStartedPreloadingTasks;
@@ -41,10 +40,11 @@
     UIBarButtonItem *_progressButton;
     UIBarButtonItem *_actionMenuButtonItem;
     PXPhotoDetailsActionMenuController *_activeActionMenuController;
-    PXMovieProvider *_movieProvider;
+    PXMiroMoviePresenter *_miroMoviePresenter;
 }
 
-@property(retain, nonatomic) PXMovieProvider *movieProvider; // @synthesize movieProvider=_movieProvider;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PXMiroMoviePresenter *miroMoviePresenter; // @synthesize miroMoviePresenter=_miroMoviePresenter;
 @property(nonatomic, getter=isLoadingPeopleSuggestions) _Bool loadingPeopleSuggestions; // @synthesize loadingPeopleSuggestions=_loadingPeopleSuggestions;
 @property(retain, nonatomic) PXPhotoDetailsActionMenuController *activeActionMenuController; // @synthesize activeActionMenuController=_activeActionMenuController;
 @property(retain, nonatomic) UIBarButtonItem *actionMenuButtonItem; // @synthesize actionMenuButtonItem=_actionMenuButtonItem;
@@ -61,13 +61,11 @@
 @property(nonatomic) __weak id <PXCMMActionControllerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property(nonatomic) __weak id <PXCMMViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PXCMMSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
 - (void)ppt_setSelecting:(_Bool)arg1;
 - (void)didDismissToastViewController:(id)arg1;
-- (_Bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)presentingViewControllerForMovieProvider:(id)arg1;
 - (void)actionMenu:(id)arg1 assetCollectionActionPerformer:(id)arg2 playMovieForAssetCollection:(id)arg3;
 - (void)actionMenu:(id)arg1 actionPerformer:(id)arg2 didChangeState:(unsigned long long)arg3;
 - (_Bool)actionMenu:(id)arg1 actionPerformer:(id)arg2 dismissViewController:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -109,6 +107,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLoad;
+- (void)didMoveToParentViewController:(id)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)dealloc;
 - (id)initWithSession:(id)arg1;

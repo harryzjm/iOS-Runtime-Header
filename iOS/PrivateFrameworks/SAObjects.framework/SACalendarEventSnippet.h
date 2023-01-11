@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSDate, NSString;
 
 @interface SACalendarEventSnippet
 {
@@ -12,6 +12,9 @@
 
 + (id)eventSnippetWithDictionary:(id)arg1 context:(id)arg2;
 + (id)eventSnippet;
+@property(copy, nonatomic) NSString *timeZoneId;
+@property(copy, nonatomic) NSDate *snippetStartDate;
+@property(copy, nonatomic) NSDate *snippetEndDate;
 @property(copy, nonatomic) NSArray *events;
 - (id)encodedClassName;
 - (id)groupIdentifier;

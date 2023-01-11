@@ -13,13 +13,12 @@
     SXTextLayouter *_textLayouter;
 }
 
-@property(readonly, nonatomic) SXTextLayouter *textLayouter; // @synthesize textLayouter=_textLayouter;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SXTextLayouter *textLayouter; // @synthesize textLayouter=_textLayouter;
 - (id)textStyleForIdentifier:(id)arg1;
 - (id)contentSizeCategoryForTextSource:(id)arg1;
 - (id)textRulesForTextSource:(id)arg1;
 - (id)additionsForTextSource:(id)arg1;
-- (id)linkStyleForTextSource:(id)arg1;
 - (id)inlineTextStylesForTextSource:(id)arg1;
 - (id)defaultComponentTextStylesForTextSource:(id)arg1;
 - (id)defaultComponentTextStyleForTextSource:(id)arg1;

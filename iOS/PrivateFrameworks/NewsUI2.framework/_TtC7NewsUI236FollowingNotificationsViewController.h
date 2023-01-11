@@ -8,12 +8,12 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI236FollowingNotificationsViewController : UIViewController
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
+    MISSING_TYPE *blueprintReadableContentGuide;
     MISSING_TYPE *headerView;
     MISSING_TYPE *disabledViewProvider;
     MISSING_TYPE *followingNotificationsPrewarm;

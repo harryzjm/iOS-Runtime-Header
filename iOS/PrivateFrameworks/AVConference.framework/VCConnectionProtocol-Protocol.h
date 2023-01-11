@@ -27,10 +27,17 @@
 @property(readonly) int connectionId;
 @property int connectionMTU;
 @property(readonly) _Bool isIPv6;
+@property(readonly) _Bool isRemoteDelegated;
+@property(readonly) _Bool isLocalDelegated;
+@property(readonly) _Bool isRemoteConstrained;
+@property(readonly) _Bool isLocalConstrained;
+@property(readonly) _Bool isRemoteExpensive;
+@property(readonly) _Bool isLocalExpensive;
 @property(readonly) _Bool isRemoteOnCellular;
 @property(readonly) _Bool isLocalOnCellular;
 @property(readonly) _Bool isRemoteOnWiFi;
 @property(readonly) _Bool isLocalOnWiFi;
+- (long long)compare:(id <VCConnectionProtocol>)arg1 isPrimary:(_Bool)arg2 selectionPolicy:(CDStruct_2a4d9400 *)arg3;
 - (_Bool)matchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (_Bool)isOnSameInterfacesWithConnection:(id <VCConnectionProtocol>)arg1;

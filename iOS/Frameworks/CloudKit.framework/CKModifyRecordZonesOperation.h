@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKModifyRecordZonesOperationCallbacks-Protocol.h>
 
-@interface CKModifyRecordZonesOperation
+@class CKModifyRecordZonesOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifyRecordZonesOperationCallbacks;
+
+@interface CKModifyRecordZonesOperation <CKModifyRecordZonesOperationCallbacks>
 {
     _Bool _markZonesAsUserPurged;
     CDUnknownBlockType _modifyRecordZonesCompletionBlock;
@@ -18,6 +21,8 @@
     NSMutableDictionary *_recordZoneErrors;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool markZonesAsUserPurged; // @synthesize markZonesAsUserPurged=_markZonesAsUserPurged;
 @property(retain, nonatomic) NSMutableDictionary *recordZoneErrors; // @synthesize recordZoneErrors=_recordZoneErrors;
 @property(retain, nonatomic) NSMutableDictionary *recordZonesByZoneIDs; // @synthesize recordZonesByZoneIDs=_recordZonesByZoneIDs;
@@ -25,18 +30,23 @@
 @property(retain, nonatomic) NSMutableArray *savedRecordZones; // @synthesize savedRecordZones=_savedRecordZones;
 @property(copy, nonatomic) NSArray *recordZoneIDsToDelete; // @synthesize recordZoneIDsToDelete=_recordZoneIDsToDelete;
 @property(copy, nonatomic) NSArray *recordZonesToSave; // @synthesize recordZonesToSave=_recordZonesToSave;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleDeleteForRecordZoneID:(id)arg1 error:(id)arg2;
+- (void)handleSaveForRecordZoneID:(id)arg1 recordZone:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (id)activityCreate;
+- (id)relevantZoneIDs;
 @property(copy, nonatomic) CDUnknownBlockType modifyRecordZonesCompletionBlock; // @synthesize modifyRecordZonesCompletionBlock=_modifyRecordZonesCompletionBlock;
 - (id)initWithRecordZonesToSave:(id)arg1 recordZoneIDsToDelete:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKModifyRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKModifyRecordZonesOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

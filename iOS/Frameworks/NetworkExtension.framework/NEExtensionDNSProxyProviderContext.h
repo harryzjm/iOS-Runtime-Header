@@ -13,6 +13,7 @@
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
+- (Class)requiredProviderSuperClass;
 - (id)extensionPoint;
 - (void)setSystemDNSSettings:(id)arg1;
 

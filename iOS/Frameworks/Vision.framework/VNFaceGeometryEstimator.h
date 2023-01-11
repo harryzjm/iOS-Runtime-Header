@@ -7,12 +7,11 @@
 __attribute__((visibility("hidden")))
 @interface VNFaceGeometryEstimator
 {
-    float mCameraCalibrationMatrix[9];
 }
 
-+ (id)configurationOptionKeysForDetectorKey;
++ (const vector_3203cf93 *)allLandmarksPointsIndexes;
+- (_Bool)_buildCalibrationMatrix:(id)arg1 calibrationMatrix:(float *)arg2 error:(id *)arg3;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
 
 @end
 

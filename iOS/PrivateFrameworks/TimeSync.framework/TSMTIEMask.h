@@ -21,9 +21,9 @@
 + (id)gPTPMask1;
 + (id)UDPSoftwareMask;
 + (id)UDPHardwareMask;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSArray *elements; // @synthesize elements=_elements;
-- (void)dealloc;
 - (id)mtieMaskFromStart:(double)arg1 toEnd:(double)arg2 withStep:(double)arg3;
 - (_Bool)mtieConformsToMask:(id)arg1 withErrors:(id *)arg2;
 - (id)initWithDictionary:(id)arg1;

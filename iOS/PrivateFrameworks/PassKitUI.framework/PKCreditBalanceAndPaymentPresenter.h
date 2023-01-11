@@ -31,12 +31,12 @@
 - (void)paymentButtonTappedForItem:(id)arg1;
 - (id)_accountServiceResoultionControllerWithItem:(id)arg1;
 - (_Bool)_useAccessibilityLayoutForCollectionView:(id)arg1;
-- (void)_configureActivityCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
+- (void)_configureActivityCell:(id)arg1 forItem:(id)arg2 sizing:(_Bool)arg3 inCollectionView:(id)arg4 forIndexPath:(id)arg5;
 - (void)_configureBalanceCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (void)_configurePaymentDueCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (_Bool)cellIsIndependentForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)cellIsStackableForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;

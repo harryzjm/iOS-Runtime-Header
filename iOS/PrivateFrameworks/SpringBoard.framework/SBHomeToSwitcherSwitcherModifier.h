@@ -5,19 +5,20 @@
 //
 
 @class SBSwitcherModifier;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBHomeToSwitcherSwitcherModifier
 {
     long long _direction;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
 }
 
-@property(readonly, nonatomic) SBSwitcherModifier<SBFluidSwitcherScrollProviding> *multitaskingModifier; // @synthesize multitaskingModifier=_multitaskingModifier;
-@property(readonly, nonatomic) long long direction; // @synthesize direction=_direction;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SBSwitcherModifier *multitaskingModifier; // @synthesize multitaskingModifier=_multitaskingModifier;
+@property(readonly, nonatomic) long long direction; // @synthesize direction=_direction;
+- (id)_dismissForEmptySwitcherResponseName;
 - (id)appLayoutToScrollToDuringTransition;
 - (_Bool)isEffectivelyHome;
+- (id)handleTimerEvent:(id)arg1;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;
 - (double)containerStatusBarAnimationDuration;

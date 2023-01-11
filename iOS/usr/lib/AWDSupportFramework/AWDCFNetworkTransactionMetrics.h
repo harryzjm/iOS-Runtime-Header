@@ -17,9 +17,12 @@
     unsigned long long _responseEnd;
     unsigned long long _responseStart;
     unsigned long long _timestamp;
+    unsigned long long _totalBytesExpectedToRead;
+    unsigned long long _totalBytesExpectedToWrite;
     unsigned long long _totalBytesRead;
     unsigned long long _totalBytesWritten;
     NSString *_connectionUUID;
+    int _http3Status;
     int _networkLoadType;
     int _networkProtocolName;
     _Bool _apsRelayAttempted;
@@ -32,8 +35,11 @@
         unsigned int responseEnd:1;
         unsigned int responseStart:1;
         unsigned int timestamp:1;
+        unsigned int totalBytesExpectedToRead:1;
+        unsigned int totalBytesExpectedToWrite:1;
         unsigned int totalBytesRead:1;
         unsigned int totalBytesWritten:1;
+        unsigned int http3Status:1;
         unsigned int networkLoadType:1;
         unsigned int networkProtocolName:1;
         unsigned int apsRelayAttempted:1;
@@ -43,6 +49,8 @@
     } _has;
 }
 
+@property(nonatomic) unsigned long long totalBytesExpectedToRead; // @synthesize totalBytesExpectedToRead=_totalBytesExpectedToRead;
+@property(nonatomic) unsigned long long totalBytesExpectedToWrite; // @synthesize totalBytesExpectedToWrite=_totalBytesExpectedToWrite;
 @property(nonatomic) _Bool apsRelaySucceeded; // @synthesize apsRelaySucceeded=_apsRelaySucceeded;
 @property(nonatomic) _Bool apsRelayAttempted; // @synthesize apsRelayAttempted=_apsRelayAttempted;
 @property(retain, nonatomic) NSString *connectionUUID; // @synthesize connectionUUID=_connectionUUID;
@@ -64,6 +72,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsHttp3Status:(id)arg1;
+- (id)http3StatusAsString:(int)arg1;
+@property(nonatomic) _Bool hasHttp3Status;
+@property(nonatomic) int http3Status; // @synthesize http3Status=_http3Status;
+@property(nonatomic) _Bool hasTotalBytesExpectedToRead;
+@property(nonatomic) _Bool hasTotalBytesExpectedToWrite;
 @property(nonatomic) _Bool hasApsRelaySucceeded;
 @property(nonatomic) _Bool hasApsRelayAttempted;
 @property(readonly, nonatomic) _Bool hasConnectionUUID;

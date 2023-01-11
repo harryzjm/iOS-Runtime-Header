@@ -8,15 +8,15 @@
 #import <PencilKit/PKPaletteSelectingTool-Protocol.h>
 
 @class NSString, PKInk;
-@protocol PKPaletteInkingTool;
+@protocol PKPaletteErasingTool, PKPaletteInkingTool;
 
 @interface PKPaletteSelectingToolView <PKPaletteInkingTool, PKPaletteSelectingTool>
 {
     id <PKPaletteInkingTool> _inkTool;
 }
 
-@property(retain, nonatomic) id <PKPaletteInkingTool> inkTool; // @synthesize inkTool=_inkTool;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PKPaletteInkingTool> inkTool; // @synthesize inkTool=_inkTool;
 - (id)attributeViewController;
 - (void)setInkWeight:(double)arg1;
 - (void)setInkColor:(id)arg1;
@@ -27,8 +27,11 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *toolIdentifier;
 
 @end
 

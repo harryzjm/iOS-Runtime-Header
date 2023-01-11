@@ -14,6 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDPlaceCollectionFilter : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    unsigned int _expectedResultCount;
+    _Bool _isCollectionView;
+    _Bool _partiallyClientize;
+    struct {
+        unsigned int has_expectedResultCount:1;
+        unsigned int has_isCollectionView:1;
+        unsigned int has_partiallyClientize:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -28,8 +36,17 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsCollectionView;
+@property(nonatomic) _Bool isCollectionView;
+@property(nonatomic) _Bool hasPartiallyClientize;
+@property(nonatomic) _Bool partiallyClientize;
+@property(nonatomic) _Bool hasExpectedResultCount;
+@property(nonatomic) unsigned int expectedResultCount;
 
 @end
 

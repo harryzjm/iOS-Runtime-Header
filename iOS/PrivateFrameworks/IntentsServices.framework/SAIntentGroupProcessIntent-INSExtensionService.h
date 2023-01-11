@@ -14,6 +14,8 @@
 - (void)_confirmIntentWithExtensionProxy:(id)arg1 onQueue:(id)arg2 processIntentCompleted:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_resolveIntentSlotsWithExtensionProxy:(id)arg1 onQueue:(id)arg2 processIntentCompleted:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)ins_sendIntent:(id)arg1 toExtensionProxy:(id)arg2 onQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)ins_setJSONEncodedIntent:(id)arg1;
+- (void)ins_setProtobufEncodedIntent:(id)arg1;
 - (id)ins_protobufEncodedIntent;
 - (id)ins_jsonEncodedIntent;
 @end

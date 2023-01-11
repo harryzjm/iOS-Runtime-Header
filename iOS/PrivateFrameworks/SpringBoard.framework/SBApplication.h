@@ -11,20 +11,21 @@
 #import <SpringBoard/UISApplicationStateServiceDataSource-Protocol.h>
 #import <SpringBoard/XBApplicationSnapshotManifestDelegate-Protocol.h>
 
-@class FBApplicationProcess, FBProcessExitContext, FBSApplicationDataStore, NSArray, NSDate, NSHashTable, NSMapTable, NSSet, NSString, NSUserDefaults, SBApplicationInfo, SBApplicationProcessState, SBApplicationSupportServiceRequestContext, SBApplicationWakeScheduler, XBApplicationSnapshotManifest;
+@class FBApplicationProcess, FBProcessExitContext, FBSApplicationDataStore, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSString, NSUserDefaults, SBApplicationInfo, SBApplicationProcessState, SBApplicationSupportServiceRequestContext, SBApplicationWakeScheduler, XBApplicationSnapshotManifest;
 
 @interface SBApplication : NSObject <XBApplicationSnapshotManifestDelegate, SBLeafIconDataSource, UISApplicationStateServiceDataSource, BSDescriptionProviding>
 {
     FBApplicationProcess *_process;
     FBSApplicationDataStore *_dataStore;
-    XBApplicationSnapshotManifest *_snapshotManifest;
     NSUserDefaults *_lazy_defaults;
+    XBApplicationSnapshotManifest *_synchronized_snapshotManifest;
     SBApplicationProcessState *_threadUnsafe_processState;
     FBProcessExitContext *_lastExitContext;
     unsigned long long _displayedLaunchAlerts;
     SBApplicationSupportServiceRequestContext *_initializationContext;
     unsigned int _isRecentlyUpdated:3;
     unsigned int _isNewlyInstalled:3;
+    unsigned int _terminationAssertionState:2;
     _Bool _uninstalled;
     unsigned int _hasBadgeValue:3;
     unsigned int _dataFlags:8;
@@ -33,7 +34,7 @@
     _Bool _hasShownDataPlanAlertSinceLock;
     NSHashTable *_statusBarStyleOverridesAssertions;
     NSMapTable *_statusBarStyleOverridesAssertionsByStyleOverride;
-    NSSet *_suppressVolumeHudCategories;
+    NSMutableDictionary *_suppressVolumeHUDCategoriesBySceneIdentifier;
     int _showsProgressCount;
     _Bool _isRestoringApplicationFromHiding;
     int _applicationRestorationCheckState;
@@ -48,15 +49,19 @@
     SBApplicationInfo *_appInfo;
     long long _appSnapshotSequenceID;
     _Bool _calculatedSupportedTypes;
-    int _supportedTypes;
+    unsigned long long _supportedTypes;
     long long _defaultClassicModeOverride;
     long long _currentClassicMode;
 }
 
 + (id)_appStateKeysToPrefetch;
 + (id)restrictedClassicModeDisplayConfigurationForDisplayConfiguration:(id)arg1 classicMode:(long long)arg2;
++ (unsigned long long)_niceScreenTypeForClassicType:(unsigned long long)arg1 matchingAValidDisplayZoomModeOnScreenType:(unsigned long long)arg2;
++ (unsigned long long)_canonicalScreenTypeForClassicMode:(long long)arg1;
++ (long long)_bestAvailableClassicModeForHostingExtensionContainedInApplication:(_Bool)arg1;
 + (long long)_classicModeForLaunchingSize:(struct CGSize)arg1;
 + (struct CGSize)_defaultLaunchingSizeForDisplayConfiguration:(id)arg1 classicMode:(long long)arg2;
++ (id)snapshotSortDescriptorForCustomSafeAreaInsets:(id)arg1;
 + (id)snapshotSortDescriptorForUIUserInterfaceStyle:(long long)arg1;
 + (id)snapshotSortDescriptorForCreationDate;
 + (id)snapshotSortDescriptorForRequiredOSVersion:(id)arg1;
@@ -69,8 +74,10 @@
 + (id)snapshotSortDescriptorForScheme:(id)arg1;
 + (id)snapshotSortDescriptorForNames:(id)arg1;
 + (id)snapshotSortDescriptorsForNames:(id)arg1 scheme:(id)arg2 imageScale:(double)arg3 userInterfaceStyle:(long long)arg4 statusBarStateMask:(unsigned long long)arg5 interfaceOrientationMask:(unsigned long long)arg6 requiredOSVersion:(id)arg7;
++ (id)_deviceSafeAreaInsets;
 + (void)_reingestStaticDefaultImagesForAllApps;
 + (void)_markAllManifestsForReingestion;
+- (void).cxx_destruct;
 @property(retain, getter=_internalProcessState, setter=_setInternalProcessState:) SBApplicationProcessState *internalProcessState; // @synthesize internalProcessState=_threadUnsafe_processState;
 @property(nonatomic, getter=isConnectedToExternalAccessory) _Bool connectedToExternalAccessory; // @synthesize connectedToExternalAccessory=_isConnectedToExternalAccessory;
 @property(nonatomic, getter=isNowRecordingApplication) _Bool nowRecordingApplication; // @synthesize nowRecordingApplication=_isNowRecordingApplication;
@@ -78,12 +85,9 @@
 @property(nonatomic) unsigned long long failedAutoLaunchCountForVOIP; // @synthesize failedAutoLaunchCountForVOIP=_failedAutoLaunchCountForVOIP;
 @property(nonatomic) _Bool hasShownDataPlanAlertSinceLock; // @synthesize hasShownDataPlanAlertSinceLock=_hasShownDataPlanAlertSinceLock;
 @property(nonatomic, getter=isRestoringIcon) _Bool restoringIcon; // @synthesize restoringIcon=_isRestoringApplicationFromHiding;
-@property(nonatomic, getter=isUninstalled) _Bool uninstalled; // @synthesize uninstalled=_uninstalled;
-@property(retain, nonatomic) SBApplicationInfo *info; // @synthesize info=_appInfo;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) unsigned long long failedLaunchCount; // @synthesize failedLaunchCount=_failedLaunchCount;
 @property(readonly, nonatomic) FBProcessExitContext *lastExitContext; // @synthesize lastExitContext=_lastExitContext;
-- (void).cxx_destruct;
 - (void)_noteIconDataSourceDidChange;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -95,6 +99,7 @@
 - (_Bool)iconAllowsLaunch:(id)arg1;
 - (_Bool)iconCompleteUninstall:(id)arg1;
 - (_Bool)iconSupportsUninstall:(id)arg1;
+- (unsigned long long)supportedGridSizeClassesForIcon:(id)arg1;
 - (long long)labelAccessoryTypeForIcon:(id)arg1;
 - (id)formattedAccessoryStringForIcon:(id)arg1;
 - (id)badgeNumberOrStringForIcon:(id)arg1;
@@ -103,6 +108,7 @@
 - (_Bool)iconCanTruncateLabel:(id)arg1;
 - (id)icon:(id)arg1 unmaskedImageWithInfo:(struct SBIconImageInfo)arg2;
 - (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 - (unsigned long long)priorityForIcon:(id)arg1;
 - (id)icon:(id)arg1 displayNameForObscuredDisabledLaunchForLocation:(id)arg2;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
@@ -123,6 +129,7 @@
 - (void)_processWillLaunch:(id)arg1;
 - (void)_noteProcess:(id)arg1 didChangeToState:(id)arg2;
 - (id)_initializationContext;
+@property(retain, nonatomic) SBApplicationInfo *info; // @synthesize info=_appInfo;
 - (void)_setApplicationRestorationCheckState:(int)arg1;
 - (int)_applicationRestorationCheckState;
 - (void)_terminationAssertionEfficacyChangedTo:(unsigned long long)arg1;
@@ -138,10 +145,9 @@
 - (void)preHeatForUserLaunchIfNecessaryWithAbsoluteTime:(unsigned long long)arg1 andContinuousTime:(unsigned long long)arg2;
 - (void)markRecentlyUpdated;
 - (void)markNewlyInstalled;
-- (id)_sceneIdentifierForDisplayIdentity:(id)arg1;
 - (_Bool)shouldReceiveSourceApplicationContextFromOriginatingApplication:(id)arg1;
-- (_Bool)canShowSystemVolumeHUDForCategory:(id)arg1;
-- (void)setAudioCategoriesThatDisableSystemVolumeHUD:(id)arg1;
+- (_Bool)canShowSystemVolumeHUDForCategory:(id)arg1 forSceneIdentifier:(id)arg2;
+- (void)setAudioCategoriesThatDisableSystemVolumeHUD:(id)arg1 forSceneIdentifier:(id)arg2;
 - (id)statusBarStyleOverridesAssertionsByStyleOverride;
 - (void)releaseStatusBarStyleOverridesAssertion:(id)arg1;
 - (void)takeStatusBarStyleOverridesAssertion:(id)arg1;
@@ -156,6 +162,7 @@
 @property(nonatomic) _Bool showsProgress;
 @property(readonly, nonatomic) SBApplicationWakeScheduler *legacyVOIPPeriodicWakeScheduler;
 @property(copy, nonatomic) NSArray *dynamicApplicationShortcutItems;
+@property(nonatomic, getter=isUninstalled) _Bool uninstalled;
 @property(readonly, nonatomic, getter=isUninstallSupported) _Bool uninstallSupported;
 @property(readonly, nonatomic, getter=isCacheCleaningTerminationAssertionHeld) _Bool cacheCleaningTerminationAssertionHeld;
 @property(readonly, nonatomic, getter=isAnyTerminationAssertionHeld) _Bool terminationAssertionHeld;
@@ -171,6 +178,7 @@
 - (id)initWithApplicationInfo:(id)arg1;
 - (id)restrictedClassicModeDisplayConfigurationForDisplayConfiguration:(id)arg1;
 - (struct CGSize)defaultLaunchingSizeForDisplayConfiguration:(id)arg1;
+@property(readonly, nonatomic) _Bool classicAppScaledWithAspectRatioCloseEnoughToBeTreatedAsFullScreen;
 @property(readonly, nonatomic) _Bool isInsetForHomeAffordance;
 @property(readonly, nonatomic) _Bool classicAppInsetForHomeAffordance;
 @property(readonly, nonatomic) _Bool ignoreScalingOfJailedStatusBar;
@@ -183,8 +191,10 @@
 @property(nonatomic, setter=_setClassicAppZoomedIn:) _Bool classicAppZoomedIn;
 @property(readonly, nonatomic) _Bool isClassic;
 @property(readonly, nonatomic) _Bool isMedusaCapable;
-@property(readonly, nonatomic) _Bool mainSceneWantsFullscreen;
-- (long long)_classicModeForHostingExtenstionContainedInApplication:(id)arg1;
+@property(readonly, nonatomic) _Bool wantsLegacyFullscreenInterfaceOrientationBehaviors;
+- (unsigned long long)_screenTypeForClassicMode:(long long)arg1;
+- (long long)_classicModeForHostingExtensionContainedInThisApplicationInUnknownHostingHierarchy;
+- (long long)_classicModeForHostingExtensionContainedInApplication:(id)arg1;
 - (void)_recalculateApplicationSupportedTypes;
 - (_Bool)_canLaunchInClassicMode:(long long)arg1;
 - (_Bool)_exposeRealDisplayCornerRadii;
@@ -195,15 +205,12 @@
 - (long long)_classicModeFromSupportedTypes;
 - (void)_calculateSupportedTypesForSplashBoard;
 - (_Bool)_useSupportedTypesForSplashBoard;
-- (long long)_classicModeFromSplashBoard;
-- (long long)_phone_classicModeFromSplashBoard;
-- (long long)_phoneOnPad_classicModeFromSplashBoard;
-- (long long)_pad_classicModeFromSplashBoard;
+- (_Bool)KJHKJHw39rq9w87q903475q0983rskjd;
 - (_Bool)_isNewEnoughToKnowAboutRoundPads;
 - (_Bool)_isClassicViaOverride;
 - (_Bool)_bypassesClassicMode;
-- (int)_supportedTypeForClassicModeNone;
-- (_Bool)_supportsApplicationType:(int)arg1;
+- (unsigned long long)_supportedTypeForClassicModeNone;
+- (_Bool)_supportsApplicationType:(unsigned long long)arg1;
 - (void)_calculateSupportedTypesLazilyIfNecessary;
 - (_Bool)_classicAppScaledPadOnPad;
 - (_Bool)_classicAppScaledPhoneOnPad;
@@ -213,7 +220,7 @@
 - (void)__noteSnapshotDidUpdate:(long long)arg1 forSceneIdentifier:(id)arg2;
 - (void)_noteSnapshotDidUpdateForSceneIdentifiers:(id)arg1;
 - (void)_noteSnapshotDidUpdateForSceneIdentifier:(id)arg1;
-- (void)_saveSnapshotForSceneHandle:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_xbactivity_saveSnapshotForSceneHandle:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)manifest:(id)arg1 didPurgeProtectedContentSnapshotsWithGroupIdentifiers:(id)arg2;
 - (void)deleteSnapshotForContext:(id)arg1;
 - (void)deleteAllSnapshots;
@@ -226,9 +233,9 @@
 - (_Bool)isWebApplication;
 - (id)cachedImageForSnapshot:(id)arg1 interfaceOrientation:(long long)arg2;
 - (id)imageForSnapshot:(id)arg1 interfaceOrientation:(long long)arg2;
-- (id)_snapshotsWithImageName:(id)arg1 sceneHandle:(id)arg2 launchingSize:(struct CGSize)arg3 launchingScale:(double)arg4 contentTypeMask:(unsigned long long)arg5 statusBarStateMask:(unsigned long long)arg6 launchingOrientation:(long long)arg7 contentOverridesContext:(id)arg8 userInterfaceStyle:(long long)arg9;
+- (id)_snapshotsWithImageName:(id)arg1 sceneHandle:(id)arg2 launchingSize:(struct CGSize)arg3 launchingScale:(double)arg4 contentTypeMask:(unsigned long long)arg5 statusBarStateMask:(unsigned long long)arg6 launchingOrientation:(long long)arg7 contentOverridesContext:(id)arg8 userInterfaceStyle:(long long)arg9 displayEdgeInfo:(id)arg10;
 - (id)mostRecentSceneSnapshotsForSceneHandle:(id)arg1 scale:(double)arg2 launchingOrientation:(long long)arg3;
-- (id)bestSnapshotWithImageName:(id)arg1 sceneHandle:(id)arg2 variantID:(id)arg3 scale:(double)arg4 size:(struct CGSize)arg5 contentTypeMask:(unsigned long long)arg6 statusBarStateMask:(unsigned long long)arg7 launchingOrientation:(long long)arg8 contentOverridesContext:(id)arg9 userInterfaceStyle:(long long)arg10;
+- (id)bestSnapshotWithImageName:(id)arg1 sceneHandle:(id)arg2 variantID:(id)arg3 scale:(double)arg4 size:(struct CGSize)arg5 contentTypeMask:(unsigned long long)arg6 statusBarStateMask:(unsigned long long)arg7 launchingOrientation:(long long)arg8 contentOverridesContext:(id)arg9 userInterfaceStyle:(long long)arg10 displayEdgeInfo:(id)arg11;
 - (id)_defaultPNGNameFromSuspensionSettingsWithExpiration:(double *)arg1 sceneID:(id)arg2;
 - (id)_defaultPNGNameUsingFallbacksWithSceneID:(id)arg1 contentOverridesContext:(id)arg2;
 - (id)_normalizeSnapshotName:(id)arg1;
@@ -248,6 +255,7 @@
 @property(readonly, nonatomic) _Bool isSpringBoard;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

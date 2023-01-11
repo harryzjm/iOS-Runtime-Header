@@ -34,9 +34,12 @@
     NSData *_iconTemplateImageData;
     unsigned long long _maximumCallGroups;
     unsigned long long _maximumCallsPerCallGroup;
+    long long _sandboxExtensionHandle;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
 @property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(nonatomic) _Bool supportsCurrentPlatform; // @synthesize supportsCurrentPlatform=_supportsCurrentPlatform;
 @property(nonatomic) _Bool supportsRecents; // @synthesize supportsRecents=_supportsRecents;
@@ -58,7 +61,6 @@
 @property(nonatomic) _Bool supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -78,6 +80,7 @@
 - (_Bool)supportsShowingInCallUI;
 - (_Bool)isSystemProvider;
 - (_Bool)isTinCanProvider;
+@property(readonly, nonatomic, getter=isSuperboxProvider) _Bool superboxProvider;
 @property(readonly, nonatomic, getter=isFaceTimeProvider) _Bool faceTimeProvider;
 @property(readonly, nonatomic, getter=isTelephonyProvider) _Bool telephonyProvider;
 - (_Bool)supportsHandleType:(long long)arg1;

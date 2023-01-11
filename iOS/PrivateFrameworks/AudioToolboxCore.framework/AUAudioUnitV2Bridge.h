@@ -13,19 +13,27 @@
     struct AUListenerBase *_eventListener;
     struct AUListenerBase *_parameterListener;
     _Bool _removingObserverWithContext;
+    struct atomic<bool> _willSetFullState;
+    semaphore_e8b15a0e _parameterListenerSemaphore;
+    struct atomic<unsigned long long> _expectedEventMessages;
+    struct atomic<unsigned int> _eventsTriggeringParameterTreeInvalidation;
+    NSObject<OS_dispatch_queue> *_parameterTreeRebuildQueue;
+    struct OpaqueAudioComponentInstance *_audioUnit;
     _Bool _audioUnitIsOwned;
     AUV2BridgeBusArray *_inputBusses;
     AUV2BridgeBusArray *_outputBusses;
     AUParameterTree *_cachedParameterTree;
     struct unique_ptr<AUAudioUnitV2Bridge_Renderer, std::__1::default_delete<AUAudioUnitV2Bridge_Renderer>> _renderer;
     CDUnknownBlockType _MIDIOutputEventBlock;
-    struct OpaqueAudioComponentInstance *_audioUnit;
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
-@property(readonly, nonatomic) struct OpaqueAudioComponentInstance *audioUnit; // @synthesize audioUnit=_audioUnit;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)osWorkgroup;
+- (void)_setValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (id)_valueForProperty:(id)arg1 error:(id *)arg2;
+- (void)setCurrentPreset:(id)arg1;
 - (void)setFullStateForDocument:(id)arg1;
 - (void)setFullState:(id)arg1;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
@@ -33,10 +41,13 @@
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (id)channelCapabilities;
 - (id)parameterTree;
+- (id)_createParameterTree;
 - (void)_createEventListenerQueue;
 - (void)reset;
-- (void)deallocateRenderResources;
+- (void)internalDeallocateRenderResources;
 - (_Bool)allocateRenderResourcesAndReturnError:(id *)arg1;
+- (void)setTransportStateBlock:(CDUnknownBlockType)arg1;
+- (void)setMusicalContextBlock:(CDUnknownBlockType)arg1;
 - (void)setMIDIOutputEventBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)MIDIOutputEventBlock;
 - (CDUnknownBlockType)internalRenderBlock;
@@ -44,11 +55,11 @@
 - (id)inputBusses;
 - (void)dealloc;
 - (void)invalidateAudioUnit;
+- (struct OpaqueAudioComponentInstance *)audioUnit;
 - (id)initWithAudioUnit:(struct OpaqueAudioComponentInstance *)arg1 description:(struct AudioComponentDescription)arg2;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 - (void)init2;
-- (void)_invalidateParameterTree;
-- (void)_addOrRemoveParameterListeners:(_Bool)arg1;
+- (void)_invalidateParameterTree:(unsigned int)arg1;
 - (int)enableBus:(unsigned int)arg1 scope:(unsigned int)arg2 enable:(_Bool)arg3;
 - (void)_rebuildBusses:(unsigned int)arg1;
 - (_Bool)_setElementCount:(unsigned int)arg1 count:(unsigned int)arg2 error:(id *)arg3;

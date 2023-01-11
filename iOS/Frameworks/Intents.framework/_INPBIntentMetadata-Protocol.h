@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBImageValue, _INPBPair, _INPBString;
+@class NSArray, NSData, NSString, _INPBImageValue, _INPBPair, _INPBString;
 
 @protocol _INPBIntentMetadata <NSObject>
 + (Class)parameterImagesType;
@@ -18,6 +18,10 @@
 @property(nonatomic) int triggerMethod;
 @property(readonly, nonatomic) _Bool hasSuggestedInvocationPhrase;
 @property(copy, nonatomic) NSString *suggestedInvocationPhrase;
+@property(nonatomic) _Bool hasShowsWhenRun;
+@property(nonatomic) _Bool showsWhenRun;
+@property(readonly, nonatomic) unsigned long long shortcutAvailabilitiesCount;
+@property(readonly, nonatomic) int *shortcutAvailabilities;
 @property(readonly, nonatomic) unsigned long long parameterImagesCount;
 @property(copy, nonatomic) NSArray *parameterImages;
 @property(readonly, nonatomic) _Bool hasOriginatingDeviceRapportMediaSystemId;
@@ -36,10 +40,16 @@
 @property(copy, nonatomic) NSString *intentDescription;
 @property(nonatomic) _Bool hasIdiom;
 @property(nonatomic) int idiom;
+@property(readonly, nonatomic) unsigned long long forceNeedsValueForParametersCount;
+@property(copy, nonatomic) NSArray *forceNeedsValueForParameters;
 @property(nonatomic) _Bool hasConfirmed;
 @property(nonatomic) _Bool confirmed;
 @property(nonatomic) _Bool hasBackgroundLaunch;
 @property(nonatomic) _Bool backgroundLaunch;
+@property(readonly, nonatomic) _Bool hasAuditTokenData;
+@property(copy, nonatomic) NSData *auditTokenData;
+@property(readonly, nonatomic) unsigned long long airPlayRouteIdsCount;
+@property(copy, nonatomic) NSArray *airPlayRouteIds;
 @property(readonly, nonatomic) _Bool hasSystemUIExtensionBundleId;
 @property(copy, nonatomic) NSString *systemUIExtensionBundleId;
 @property(readonly, nonatomic) _Bool hasSystemExtensionBundleId;
@@ -60,11 +70,23 @@
 @property(copy, nonatomic) NSString *categoryVerb;
 - (int)StringAsTriggerMethod:(NSString *)arg1;
 - (NSString *)triggerMethodAsString:(int)arg1;
+- (int)StringAsShortcutAvailabilities:(NSString *)arg1;
+- (NSString *)shortcutAvailabilitiesAsString:(int)arg1;
+- (void)setShortcutAvailabilities:(int *)arg1 count:(unsigned long long)arg2;
+- (int)shortcutAvailabilityAtIndex:(unsigned long long)arg1;
+- (void)addShortcutAvailability:(int)arg1;
+- (void)clearShortcutAvailabilities;
 - (_INPBPair *)parameterImagesAtIndex:(unsigned long long)arg1;
 - (void)addParameterImages:(_INPBPair *)arg1;
 - (void)clearParameterImages;
 - (int)StringAsIdiom:(NSString *)arg1;
 - (NSString *)idiomAsString:(int)arg1;
+- (NSString *)forceNeedsValueForParameterAtIndex:(unsigned long long)arg1;
+- (void)addForceNeedsValueForParameter:(NSString *)arg1;
+- (void)clearForceNeedsValueForParameters;
+- (NSString *)airPlayRouteIdsAtIndex:(unsigned long long)arg1;
+- (void)addAirPlayRouteIds:(NSString *)arg1;
+- (void)clearAirPlayRouteIds;
 - (int)StringAsRequiredEntitlements:(NSString *)arg1;
 - (NSString *)requiredEntitlementsAsString:(int)arg1;
 - (void)setRequiredEntitlements:(int *)arg1 count:(unsigned long long)arg2;

@@ -10,6 +10,7 @@
 
 @protocol _CPVisibleResultsFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _CPSearchResultForFeedback *goTakeoverResult;
 @property(nonatomic) int triggerEvent;
 @property(copy, nonatomic) NSArray *results;
 @property(nonatomic) unsigned long long timestamp;

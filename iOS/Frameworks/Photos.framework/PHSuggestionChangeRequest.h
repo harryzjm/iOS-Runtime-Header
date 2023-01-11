@@ -17,12 +17,11 @@
 
 + (void)deleteSuggestions:(id)arg1;
 + (id)changeRequestForSuggestion:(id)arg1;
-+ (_Bool)canGenerateUUIDWithoutEntitlements;
 + (id)creationRequestForSuggestion;
 + (id)creationRequestForSuggestionWithType:(unsigned short)arg1 subtype:(unsigned short)arg2 keyAssets:(id)arg3 representativeAssets:(id)arg4 creationDate:(id)arg5 relevantUntilDate:(id)arg6 version:(long long)arg7;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *representativeAssetsHelper; // @synthesize representativeAssetsHelper=_representativeAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetsHelper; // @synthesize keyAssetsHelper=_keyAssetsHelper;
-- (void).cxx_destruct;
 - (void)_calculateAndSetExpungeDate;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (void)markReactivated;
@@ -55,6 +54,7 @@
 - (id)creationDate;
 - (void)setVersion:(long long)arg1;
 - (long long)version;
+@property(nonatomic) unsigned short featuredState;
 @property(nonatomic) unsigned short notificationState;
 - (void)setState:(unsigned short)arg1;
 - (unsigned short)state;
@@ -67,8 +67,6 @@
 @property(readonly, nonatomic) NSString *managedEntityName;
 - (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
-- (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
@@ -76,15 +74,16 @@
 @property(readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedSuggestion;
 
 // Remaining properties
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSString *clientName;
-@property(readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) _Bool isNewRequest;
 @property(readonly, getter=isMutated) _Bool mutated;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(nonatomic) _Bool shouldPerformConcurrentWork;
 @property(readonly) Class superclass;
 
 @end

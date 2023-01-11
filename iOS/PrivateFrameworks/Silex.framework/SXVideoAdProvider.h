@@ -9,39 +9,43 @@
 #import <Silex/ADBannerViewInternalDelegate-Protocol.h>
 #import <Silex/SXVideoAdProviding-Protocol.h>
 
-@class NSString, SVTimeline, SXPrerollAdResponse, SXVideoAdStateManager;
-@protocol SVVideoMetadata, SVVisibilityMonitoring, SXAnalyticsReporting, SXVASTAnalyticsEventInfoFactory, SXVideoAdProviderDataSource, SXVideoAdViewControllerProviding;
+@class NSString, SXAdController, SXPrerollAdResponse, SXVideoAdStateManager, SXVideoComponent, UIButton, UIView;
+@protocol SVVideoMetadata, SVVisibilityMonitoring, SXAnalyticsReporting, SXVASTAnalyticsEventInfoFactory, SXVideoAdViewControllerProviding;
 
 @interface SXVideoAdProvider : NSObject <ADBannerViewInternalDelegate, SXVideoAdProviding>
 {
-    id <SXVideoAdProviderDataSource> _dataSource;
     id <SXAnalyticsReporting> _analyticsReporter;
     SXPrerollAdResponse *_response;
     id <SVVideoMetadata> _metadata;
-    SVTimeline *_timeline;
     id <SXVideoAdViewControllerProviding> _fullscreenViewControllerProvider;
     SXVideoAdStateManager *_stateManager;
     id <SVVisibilityMonitoring> _videoVisibilityMonitor;
     id <SVVisibilityMonitoring> _videoPlayerVisibilityMonitor;
     id <SXVASTAnalyticsEventInfoFactory> _analyticsEventInfoFactory;
+    SXAdController *_adController;
+    SXVideoComponent *_component;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) SXVideoComponent *component; // @synthesize component=_component;
+@property(readonly, nonatomic) SXAdController *adController; // @synthesize adController=_adController;
 @property(readonly, nonatomic) id <SXVASTAnalyticsEventInfoFactory> analyticsEventInfoFactory; // @synthesize analyticsEventInfoFactory=_analyticsEventInfoFactory;
 @property(readonly, nonatomic) id <SVVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
 @property(readonly, nonatomic) id <SVVisibilityMonitoring> videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
 @property(readonly, nonatomic) SXVideoAdStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property(readonly, nonatomic) id <SXVideoAdViewControllerProviding> fullscreenViewControllerProvider; // @synthesize fullscreenViewControllerProvider=_fullscreenViewControllerProvider;
-@property(readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
 @property(nonatomic) __weak id <SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) SXPrerollAdResponse *response; // @synthesize response=_response;
 @property(retain, nonatomic) id <SXAnalyticsReporting> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
-@property(nonatomic) __weak id <SXVideoAdProviderDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (id)viewControllerForStoryboardPresentationFromBannerView:(id)arg1;
 - (void)adVisibilityStateChanged;
 - (void)reportEngagementEventWithType:(unsigned long long)arg1;
-- (void)configureTimelineForImpressionReporting;
-- (void)nextVideoStartPlaying;
+- (void)playbackPassedQuartile:(unsigned long long)arg1;
+- (void)playbackPassedImpressionThreshold;
+@property(readonly, nonatomic) double impressionThreshold;
+@property(readonly, nonatomic) UIButton *privacyMarker;
+@property(readonly, nonatomic) UIView *metricsView;
+- (void)nextVideoStartedPlaying;
 - (void)presentPrivacyStatement;
 - (void)presentAction;
 @property(readonly, nonatomic) _Bool hasAction;
@@ -49,18 +53,17 @@
 @property(readonly, nonatomic) unsigned long long skipThreshold;
 - (void)skipped;
 - (void)muteStateChanged:(_Bool)arg1;
-- (void)tappedToToggleControls;
+- (void)tappedToToggleControlVisibility:(_Bool)arg1;
 - (void)exitedFullscreen;
 - (void)enteredFullscreen;
-- (void)timeElapsed:(double)arg1 duration:(double)arg2;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
 - (void)playbackResumed;
 - (void)playbackPaused;
 - (void)playbackStarted;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(_Bool)arg1;
 - (CDUnknownBlockType)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)initWithViewControllerProvider:(id)arg1 analyticsEventInfoFactory:(id)arg2 videoPlayerVisibilityMonitor:(id)arg3 videoVisibilityMonitor:(id)arg4;
+- (id)initWithViewControllerProvider:(id)arg1 analyticsEventInfoFactory:(id)arg2 videoPlayerVisibilityMonitor:(id)arg3 videoVisibilityMonitor:(id)arg4 adController:(id)arg5 component:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,13 +6,14 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions;
 @protocol UIScrollViewDelegate;
 
 @protocol _MKInfoCardController <NSObject>
 + (double)headerHeightInMinimalMode;
 @property(nonatomic) double contentAlpha;
 @property(nonatomic) __weak id <UIScrollViewDelegate> scrollViewDelegate;
+@property(retain, nonatomic) GEOCyclingOptions *cyclingOptions;
 @property(retain, nonatomic) GEOTransitOptions *transitOptions;
 @property(retain, nonatomic) GEOAutomobileOptions *automobileOptions;
 - (void)updateMaskAlpha:(double)arg1 onHeight:(double)arg2 withOffset:(double)arg3;

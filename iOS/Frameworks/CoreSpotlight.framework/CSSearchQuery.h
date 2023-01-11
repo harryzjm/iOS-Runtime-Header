@@ -8,20 +8,24 @@
 
 #import <CoreSpotlight/MDSearchQueryResultProcessor-Protocol.h>
 
-@class CSSearchQueryContext, NSArray, NSMapTable, NSString;
+@class CSSearchQueryContext, NSArray, NSKnownKeysMappingStrategy, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CSSearchQuery : NSObject <MDSearchQueryResultProcessor>
 {
     unsigned long long _foundItemCount;
     short _requestedAttributeCount;
-    short _attrInfo[9];
+    short _attrInfo[12];
     _Bool _started;
     _Bool _finished;
     _Bool _cancelled;
     _Bool _gatherEnded;
+    struct os_unfair_lock_s _liveItemLock;
+    NSKnownKeysMappingStrategy *_mappingStrategy;
+    unsigned long long *_attrKeys;
     _Bool _privateIndex;
     _Bool _userFSIndex;
+    _Bool _suspended;
     CDUnknownBlockType _foundItemsHandler;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_queue;
@@ -38,16 +42,29 @@
     CDUnknownBlockType _countChangedHandler;
     CDUnknownBlockType _resolvedAttributeNamesHandler;
     CDUnknownBlockType _completionsHandler;
+    CDUnknownBlockType _completionScoresHandler;
     CDUnknownBlockType _foundItemHandler;
+    CDUnknownBlockType _interruptedHandler;
+    CDUnknownBlockType _restartedHandler;
+    CDUnknownBlockType _restartGatherEndedHandler;
     NSString *_privateBundleID;
 }
 
 + (void)userEngagedWithUniqueIdentifier:(id)arg1 bundleId:(id)arg2 forUserQuery:(id)arg3 interactionType:(int)arg4;
 + (id)_makeQueryErrorWithErrorCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
++ (void)preheat:(id)arg1;
++ (void)initialize;
++ (void)setConnectionName:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *privateBundleID; // @synthesize privateBundleID=_privateBundleID;
+@property(nonatomic) _Bool suspended; // @synthesize suspended=_suspended;
 @property(nonatomic) _Bool userFSIndex; // @synthesize userFSIndex=_userFSIndex;
 @property(nonatomic) _Bool privateIndex; // @synthesize privateIndex=_privateIndex;
+@property(copy) CDUnknownBlockType restartGatherEndedHandler; // @synthesize restartGatherEndedHandler=_restartGatherEndedHandler;
+@property(copy) CDUnknownBlockType restartedHandler; // @synthesize restartedHandler=_restartedHandler;
+@property(copy) CDUnknownBlockType interruptedHandler; // @synthesize interruptedHandler=_interruptedHandler;
 @property(copy) CDUnknownBlockType foundItemHandler; // @synthesize foundItemHandler=_foundItemHandler;
+@property(copy) CDUnknownBlockType completionScoresHandler; // @synthesize completionScoresHandler=_completionScoresHandler;
 @property(copy) CDUnknownBlockType completionsHandler; // @synthesize completionsHandler=_completionsHandler;
 @property(copy) CDUnknownBlockType resolvedAttributeNamesHandler; // @synthesize resolvedAttributeNamesHandler=_resolvedAttributeNamesHandler;
 @property(copy) CDUnknownBlockType countChangedHandler; // @synthesize countChangedHandler=_countChangedHandler;
@@ -64,7 +81,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy) CDUnknownBlockType foundItemsHandler; // @synthesize foundItemsHandler=_foundItemsHandler;
-- (void).cxx_destruct;
 - (void)didFinishWithError:(id)arg1;
 - (void)didReturnResults:(long long)arg1 resultsData:(id)arg2 oidData:(id)arg3 protectionClass:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3;
@@ -72,12 +88,13 @@
 - (void)processResultsData:(id)arg1 protectionClass:(id)arg2;
 - (void)handleFoundItems:(id)arg1;
 - (id)copyResultFromPlist:(id)arg1 protectionClass:(id)arg2;
-- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 items:(id)arg6;
+- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 addItems:(id *)arg6 updateItems:(id *)arg7 moveItems:(id *)arg8;
 - (_Bool)removeUserFSLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
-- (void)updateUserFSLiveOID:(long long)arg1 identifier:(id)arg2;
-- (void)updateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
+- (id)addOrUpdateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
+- (_Bool)addOrUpdateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
 - (_Bool)removeLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
 - (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;
+- (void)_removeIdentifiers:(id)arg1 withBundleID:(id)arg2 andQueryID:(long long)arg3;
 - (void)processAttributesData:(id)arg1 update:(_Bool)arg2 protectionClass:(id)arg3;
 - (void)didResolveFriendlyAttributeNames:(id)arg1 fromFetchAttributes:(id)arg2;
 - (void)userEngagedWithResult:(id)arg1 interactionType:(int)arg2;
@@ -106,6 +123,7 @@
 - (void)setBundleIDs:(id)arg1;
 - (id)bundleIDs;
 @property(copy) NSArray *protectionClasses;
+- (void)dealloc;
 - (id)initWithQueryString:(id)arg1 options:(id)arg2;
 - (id)initWithQueryString:(id)arg1 attributes:(id)arg2;
 - (id)initWithQueryString:(id)arg1 context:(id)arg2;

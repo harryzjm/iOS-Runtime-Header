@@ -6,10 +6,10 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSDateInterval, NSSet;
+@class NSArray, NSDateInterval;
 
 @protocol PLFrequentLocationProtocol <NSObject>
-@property(readonly) NSSet *items;
+@property(readonly) NSArray *sortedMoments;
 @property(readonly) NSDateInterval *dateInterval;
 @property(readonly) struct CLLocationCoordinate2D coordinate;
 @end

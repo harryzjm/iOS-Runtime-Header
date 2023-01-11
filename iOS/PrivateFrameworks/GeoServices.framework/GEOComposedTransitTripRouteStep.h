@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOComposedTransitTripRouteLeg, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
+@class GEOComposedTransitTripRouteSegment, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
 @protocol GEOTransitLine, GEOTransitSystem;
 
 @interface GEOComposedTransitTripRouteStep
@@ -24,6 +24,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isBus; // @synthesize isBus=_isBus;
 @property(readonly, nonatomic) _Bool isRail; // @synthesize isRail=_isRail;
 @property(readonly, nonatomic) NSArray *routeLineArtwork; // @synthesize routeLineArtwork=_routeLineArtwork;
@@ -35,7 +36,6 @@
 @property(readonly, nonatomic) NSArray *arrivalTimes; // @synthesize arrivalTimes=_arrivalTimes;
 @property(readonly, nonatomic) NSArray *departureTimes; // @synthesize departureTimes=_departureTimes;
 @property(readonly, nonatomic) NSArray *arrivalTimesAtOrigin; // @synthesize arrivalTimesAtOrigin=_arrivalTimesAtOrigin;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
@@ -47,8 +47,8 @@
 @property(readonly, nonatomic) NSDate *arrivalTimeAtOrigin;
 @property(readonly, nonatomic) NSTimeZone *arrivalTimeZone;
 @property(readonly, nonatomic) NSTimeZone *departureTimeZone;
-@property(readonly, nonatomic) GEOComposedTransitTripRouteLeg *tripLeg;
-- (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4 line:(id)arg5 maneuverType:(int)arg6 significance:(int)arg7;
+@property(readonly, nonatomic) GEOComposedTransitTripRouteSegment *tripSegment;
+- (id)initWithComposedRoute:(id)arg1 routeSegmentType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4 line:(id)arg5 maneuverType:(int)arg6 significance:(int)arg7;
 - (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
 
 @end

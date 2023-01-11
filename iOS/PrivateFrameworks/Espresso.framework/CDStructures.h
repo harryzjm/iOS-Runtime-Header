@@ -113,7 +113,7 @@ struct abstract_context;
 
 struct abstract_espresso_plan;
 
-struct abstract_interpreter_t;
+struct abstract_executor_t;
 
 struct base_kernel;
 
@@ -122,16 +122,15 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long __cap_;
-                    unsigned long long __size_;
                     char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
                 } __l;
                 struct __short {
-                    union {
-                        unsigned char __size_;
-                        char __lx;
-                    } ;
                     char __data_[23];
+                    struct {
+                        unsigned char __size_;
+                    } ;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -155,8 +154,6 @@ struct blob_cpu;
 
 struct blob_storage_abstract;
 
-struct cv_pixel_buffer_io;
-
 struct fast_pyramid_resizer;
 
 struct float_buffer_t {
@@ -176,20 +173,24 @@ struct generic_load_constant_kernel;
 
 struct gradient_builder;
 
+struct info_needed_to_reload_network_t;
+
 struct kernels_validation_status_t;
 
 struct layer {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
     int _field3;
-    basic_string_23d93216 _field4;
-    basic_string_23d93216 _field5;
+    basic_string_90719d97 _field4;
+    basic_string_90719d97 _field5;
     struct shared_ptr<Espresso::base_kernel> _field6;
     struct layer_data _field7;
     struct layer_data _field8;
-    basic_string_23d93216 _field9;
+    basic_string_90719d97 _field9;
     _Bool _field10;
     struct function<void (const std::__1::shared_ptr<Espresso::abstract_batch>&, const Espresso::layer &)> _field11;
+    unsigned long long _field12;
+    basic_string_90719d97 _field13;
 };
 
 struct layer_data {
@@ -423,6 +424,13 @@ struct map<std::__1::basic_string<char>, vImage_Buffer, std::__1::less<std::__1:
     } __tree_;
 };
 
+struct mutex {
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } __m_;
+};
+
 struct net {
     struct weak_ptr<Espresso::net> _field1;
     shared_ptr_ae8b808b _field2;
@@ -440,44 +448,45 @@ struct net {
     struct map<std::__1::basic_string<char>, Espresso::vimage2espresso_param, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, Espresso::vimage2espresso_param>>> _field14;
     struct map<std::__1::basic_string<char>, Espresso::blob_numerical_properties, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, Espresso::blob_numerical_properties>>> _field15;
     struct map<Espresso::platform, std::__1::map<std::__1::basic_string<char>, Espresso::blob_numerical_properties, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, Espresso::blob_numerical_properties>>>, std::__1::less<Espresso::platform>, std::__1::allocator<std::__1::pair<const Espresso::platform, std::__1::map<std::__1::basic_string<char>, Espresso::blob_numerical_properties, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, Espresso::blob_numerical_properties>>>>>> _field16;
-    basic_string_23d93216 _field17;
-    struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field18;
-    int _field19;
-    _Bool _field20;
-    struct map<int, bool, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, bool>>> _field21;
-    struct shared_ptr<Espresso::net_compiler> _field22;
-    struct shared_ptr<Espresso::cv_pixel_buffer_io> _field23;
+    basic_string_90719d97 _field17;
+    basic_string_90719d97 _field18;
+    struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field19;
+    int _field20;
+    _Bool _field21;
+    struct map<int, bool, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, bool>>> _field22;
+    struct shared_ptr<Espresso::net_compiler> _field23;
     _Bool _field24;
     struct shared_ptr<Espresso::blob_storage_abstract> _field25;
-    basic_string_23d93216 _field26;
+    basic_string_90719d97 _field26;
     vector_ebb6ef3e _field27;
     vector_ebb6ef3e _field28;
     vector_ebb6ef3e _field29;
     struct shared_ptr<Espresso::kernels_validation_status_t> _field30;
-    basic_string_23d93216 _field31;
+    basic_string_90719d97 _field31;
     struct map<std::__1::basic_string<char>, Espresso::net_configuration, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, Espresso::net_configuration>>> _field32;
     struct net_configuration _field33;
     struct unordered_set<std::__1::shared_ptr<Espresso::abstract_blob_container>, std::__1::hash<std::__1::shared_ptr<Espresso::abstract_blob_container>>, std::__1::equal_to<std::__1::shared_ptr<Espresso::abstract_blob_container>>, std::__1::allocator<std::__1::shared_ptr<Espresso::abstract_blob_container>>> _field34;
     struct unordered_map<unsigned long, Espresso::net::basic_block_t, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, Espresso::net::basic_block_t>>> _field35;
     struct unordered_map<std::__1::basic_string<char>, unsigned long, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, unsigned long>>> _field36;
-    struct shared_ptr<Espresso::abstract_interpreter_t> _field37;
+    struct shared_ptr<Espresso::abstract_executor_t> _field37;
     struct unordered_map<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::net>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::net>>>> _field38;
-    basic_string_23d93216 _field39;
-    struct unordered_map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field40;
-    struct unordered_map<std::__1::basic_string<char>, std::__1::unordered_set<unsigned long, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<unsigned long>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::unordered_set<unsigned long, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<unsigned long>>>>> _field41;
-    struct weak_ptr<Espresso::net> _field42;
-    struct shared_ptr<Espresso::per_network_phi_state_t> _field43;
-    struct unordered_map<std::__1::type_index, std::__1::shared_ptr<Espresso::analysis_result>, std::__1::hash<std::__1::type_index>, std::__1::equal_to<std::__1::type_index>, std::__1::allocator<std::__1::pair<const std::__1::type_index, std::__1::shared_ptr<Espresso::analysis_result>>>> _field44;
-    struct shared_ptr<Espresso::net_fast_reshaper> _field45;
-    struct unordered_map<std::__1::basic_string<char>, unsigned long, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, unsigned long>>> _field46;
-    struct unordered_map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field47;
-    basic_string_23d93216 _field48;
-    struct abstract_espresso_plan *_field49;
-    int _field50;
-    shared_ptr_ae8b808b _field51;
-    unsigned long long _field52;
+    basic_string_90719d97 _field39;
+    struct unordered_map<std::__1::basic_string<char>, std::__1::unordered_set<unsigned long, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<unsigned long>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::unordered_set<unsigned long, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<unsigned long>>>>> _field40;
+    struct weak_ptr<Espresso::net> _field41;
+    struct shared_ptr<Espresso::per_network_phi_state_t> _field42;
+    struct unordered_map<std::__1::type_index, std::__1::shared_ptr<Espresso::analysis_result>, std::__1::hash<std::__1::type_index>, std::__1::equal_to<std::__1::type_index>, std::__1::allocator<std::__1::pair<const std::__1::type_index, std::__1::shared_ptr<Espresso::analysis_result>>>> _field43;
+    struct shared_ptr<Espresso::net_fast_reshaper> _field44;
+    struct unordered_map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field45;
+    basic_string_90719d97 _field46;
+    struct abstract_espresso_plan *_field47;
+    int _field48;
+    shared_ptr_ae8b808b _field49;
+    unsigned long long _field50;
+    _Bool _field51;
+    _Bool _field52;
     _Bool _field53;
-    struct unordered_map<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::abstract_blob_container>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::abstract_blob_container>>>> _field54;
+    struct shared_ptr<Espresso::net::info_needed_to_reload_network_t> _field54;
+    struct unordered_map<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::abstract_blob_container>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::abstract_blob_container>>>> _field55;
 };
 
 struct net_compiler;
@@ -516,8 +525,8 @@ struct pair<unsigned long long, unsigned long long> {
 struct per_network_phi_state_t;
 
 struct postprocessing_settings_t {
-    basic_string_23d93216 name;
-    basic_string_23d93216 network;
+    basic_string_90719d97 name;
+    basic_string_90719d97 network;
     int do_blend;
     float blend_alpha;
     int grayscale_i0;
@@ -567,8 +576,8 @@ struct shared_ptr<Espresso::abstract_context> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<Espresso::abstract_interpreter_t> {
-    struct abstract_interpreter_t *_field1;
+struct shared_ptr<Espresso::abstract_executor_t> {
+    struct abstract_executor_t *_field1;
     struct __shared_weak_count *_field2;
 };
 
@@ -612,11 +621,6 @@ struct shared_ptr<Espresso::blob_storage_abstract> {
     struct __shared_weak_count *_field2;
 };
 
-struct shared_ptr<Espresso::cv_pixel_buffer_io> {
-    struct cv_pixel_buffer_io *_field1;
-    struct __shared_weak_count *_field2;
-};
-
 struct shared_ptr<Espresso::fast_pyramid_resizer> {
     struct fast_pyramid_resizer *_field1;
     struct __shared_weak_count *_field2;
@@ -638,6 +642,11 @@ struct shared_ptr<Espresso::kernels_validation_status_t> {
 };
 
 struct shared_ptr<Espresso::layer>;
+
+struct shared_ptr<Espresso::net::info_needed_to_reload_network_t> {
+    struct info_needed_to_reload_network_t *_field1;
+    struct __shared_weak_count *_field2;
+};
 
 struct shared_ptr<Espresso::net> {
     struct net *__ptr_;
@@ -665,14 +674,14 @@ struct shared_ptr<float> {
 };
 
 struct shared_ptr<std::__1::basic_string<char>> {
-    basic_string_23d93216 *_field1;
+    basic_string_90719d97 *_field1;
     struct __shared_weak_count *_field2;
 };
 
 struct shared_ptr<unsigned char>;
 
 struct type {
-    unsigned char _field1[32];
+    unsigned char _field1[24];
 };
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, Espresso::layer_shape>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, Espresso::layer_shape>, void *>*>*>>> {
@@ -1037,10 +1046,10 @@ struct vector<int, std::__1::allocator<int>> {
 };
 
 struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    basic_string_23d93216 *__begin_;
-    basic_string_23d93216 *__end_;
+    basic_string_90719d97 *__begin_;
+    basic_string_90719d97 *__end_;
     struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        basic_string_23d93216 *__value_;
+        basic_string_90719d97 *__value_;
     } __end_cap_;
 };
 
@@ -1147,8 +1156,8 @@ struct wisdom_trainer2 {
     float _field5;
     float _field6;
     float _field7;
-    basic_string_23d93216 _field8;
-    basic_string_23d93216 _field9;
+    basic_string_90719d97 _field8;
+    basic_string_90719d97 _field9;
     _Bool _field10;
     struct map<std::__1::basic_string<char>, std::__1::vector<int, std::__1::allocator<int>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<int, std::__1::allocator<int>>>>> _field11;
     struct vector<int, std::__1::allocator<int>> _field12;
@@ -1198,16 +1207,15 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long __cap_;
-                    unsigned long long __size_;
                     char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
                 } __l;
                 struct __short {
-                    union {
-                        unsigned char __size_;
-                        char __lx;
-                    } ;
                     char __data_[23];
+                    struct {
+                        unsigned char __size_;
+                    } ;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -1215,7 +1223,7 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
             } ;
         } __value_;
     } __r_;
-} basic_string_23d93216;
+} basic_string_90719d97;
 
 typedef struct map<std::__1::basic_string<char>, float_buffer_t, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float_buffer_t>>> {
     struct __tree<std::__1::__value_type<std::__1::basic_string<char>, float_buffer_t>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, float_buffer_t>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, float_buffer_t>>> {
@@ -1240,18 +1248,6 @@ typedef struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::b
         } _field3;
     } _field1;
 } map_6aef7db1;
-
-typedef struct map<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-} map_8a5bf7af;
 
 typedef struct map<std::__1::basic_string<char>, vImage_Buffer, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, vImage_Buffer>>> {
     struct __tree<std::__1::__value_type<std::__1::basic_string<char>, vImage_Buffer>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, vImage_Buffer>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, vImage_Buffer>>> {
@@ -1326,7 +1322,7 @@ typedef struct shared_ptr<float> {
 } shared_ptr_6c49034a;
 
 typedef struct shared_ptr<std::__1::basic_string<char>> {
-    basic_string_23d93216 *_field1;
+    basic_string_90719d97 *_field1;
     struct __shared_weak_count *_field2;
 } shared_ptr_210dbb06;
 
@@ -1384,10 +1380,10 @@ typedef struct vector<FaceLandmarkDetectorPoint, std::__1::allocator<FaceLandmar
 } vector_72a15614;
 
 typedef struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    basic_string_23d93216 *__begin_;
-    basic_string_23d93216 *__end_;
+    basic_string_90719d97 *__begin_;
+    basic_string_90719d97 *__end_;
     struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        basic_string_23d93216 *__value_;
+        basic_string_90719d97 *__value_;
     } __end_cap_;
 } vector_ebb6ef3e;
 

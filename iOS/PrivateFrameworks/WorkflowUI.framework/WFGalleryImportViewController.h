@@ -34,6 +34,7 @@
     UIActivityIndicatorView *_activityIndicator;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showSharingManagement; // @synthesize showSharingManagement=_showSharingManagement;
 @property(nonatomic) __weak UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(nonatomic) __weak UIBarButtonItem *rightButtonItem; // @synthesize rightButtonItem=_rightButtonItem;
@@ -51,7 +52,8 @@
 @property(readonly, nonatomic) WFSharedShortcut *sharedShortcut; // @synthesize sharedShortcut=_sharedShortcut;
 @property(readonly, nonatomic) WFGalleryWorkflow *galleryWorkflow; // @synthesize galleryWorkflow=_galleryWorkflow;
 @property(nonatomic) __weak id <WFGalleryImportViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (int)eventSourceForShortcut;
+- (void)trackAddEvent;
 - (_Bool)presentationControllerShouldDismiss:(id)arg1;
 - (void)shortcutViewControllerDidCancel:(id)arg1;
 - (void)shortcutViewController:(id)arg1 didFinishWithName:(id)arg2;
@@ -59,7 +61,6 @@
 - (void)importQuestionViewControllerDidSelectSkip:(id)arg1;
 - (void)importQuestionViewControllerDidSelectBack:(id)arg1;
 - (void)importQuestionViewControllerDidSelectCancel:(id)arg1;
-- (void)logEvent:(id)arg1 withObjects:(id)arg2;
 - (void)showNextImportQuestionAnimated:(_Bool)arg1 backButtonHidden:(_Bool)arg2;
 - (void)showNextImportQuestion;
 - (void)didFinish;

@@ -25,7 +25,7 @@
 - (_Bool)popChangeBatch:(id *)arg1 error:(id *)arg2;
 - (_Bool)appendChangeBatch:(id)arg1 error:(id *)arg2;
 - (_Bool)hasQueuedBatches;
-@property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+- (_Bool)isEmpty;
 @property(readonly, nonatomic) unsigned long long countOfQueuedBatches;
 - (_Bool)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (unsigned long long)scopeType;

@@ -35,7 +35,7 @@
 + (Class)sectionsType;
 + (Class)currentLanguageOptionsType;
 + (Class)availableLanguageOptionsType;
-+ (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) int artworkDataHeight; // @synthesize artworkDataHeight=_artworkDataHeight;
 @property(nonatomic) int artworkDataWidth; // @synthesize artworkDataWidth=_artworkDataWidth;
 @property(retain, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
@@ -50,7 +50,6 @@
 @property(retain, nonatomic) NSData *artworkData; // @synthesize artworkData=_artworkData;
 @property(retain, nonatomic) _MRContentItemMetadataProtobuf *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -83,8 +82,6 @@
 @property(readonly, nonatomic) _Bool hasArtworkData;
 @property(readonly, nonatomic) _Bool hasMetadata;
 @property(readonly, nonatomic) _Bool hasIdentifier;
-- (id)_initWithData:(id)arg1;
-- (id)_init;
 
 @end
 

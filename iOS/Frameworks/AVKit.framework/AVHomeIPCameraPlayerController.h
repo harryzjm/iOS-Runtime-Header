@@ -9,17 +9,21 @@
 __attribute__((visibility("hidden")))
 @interface AVHomeIPCameraPlayerController
 {
+    double _volume;
     _Bool _muted;
     id <AVHomeIPCameraActionButtonHandling> _delegate;
     struct CGSize _presentationSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isMuted) _Bool muted; // @synthesize muted=_muted;
 @property(nonatomic) struct CGSize presentationSize; // @synthesize presentationSize=_presentationSize;
 @property(nonatomic) __weak id <AVHomeIPCameraActionButtonHandling> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)endReducingResourcesForPictureInPicturePlayerLayer:(id)arg1;
+- (void)beginReducingResourcesForPictureInPicturePlayerLayer:(id)arg1;
 - (_Bool)isPlaying;
 - (void)setVolume:(double)arg1;
+- (double)volume;
 - (void)togglePlaybackEvenWhenInBackground:(id)arg1;
 - (long long)timeControlStatus;
 - (long long)status;

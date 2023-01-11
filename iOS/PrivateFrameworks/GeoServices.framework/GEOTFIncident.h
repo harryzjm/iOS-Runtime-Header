@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOTFIncident : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _geoids;
     NSString *_crossStreet;
     unsigned long long _durationMin;
@@ -29,6 +28,9 @@ __attribute__((visibility("hidden")))
     NSString *_street;
     long long _updateTime;
     NSData *_zilch;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _alertCCode;
     int _color;
     float _delay;
@@ -76,36 +78,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_openlr:1;
         unsigned int read_street:1;
         unsigned int read_zilch:1;
-        unsigned int wrote_geoids:1;
-        unsigned int wrote_crossStreet:1;
-        unsigned int wrote_durationMin:1;
-        unsigned int wrote_endOffset:1;
-        unsigned int wrote_incidentId:1;
-        unsigned int wrote_infos:1;
-        unsigned int wrote_latitude:1;
-        unsigned int wrote_longitude:1;
-        unsigned int wrote_openlr:1;
-        unsigned int wrote_startOffset:1;
-        unsigned int wrote_startTime:1;
-        unsigned int wrote_street:1;
-        unsigned int wrote_updateTime:1;
-        unsigned int wrote_zilch:1;
-        unsigned int wrote_alertCCode:1;
-        unsigned int wrote_color:1;
-        unsigned int wrote_delay:1;
-        unsigned int wrote_laneClosureCount:1;
-        unsigned int wrote_laneClosureType:1;
-        unsigned int wrote_maxZoomLevel:1;
-        unsigned int wrote_minZoomLevel:1;
-        unsigned int wrote_significance:1;
-        unsigned int wrote_speed:1;
-        unsigned int wrote_trafficTrend:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_blocked:1;
-        unsigned int wrote_endTimeReliable:1;
-        unsigned int wrote_hardBlocked:1;
-        unsigned int wrote_hidden:1;
-        unsigned int wrote_navigationAlert:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -120,18 +93,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *openlr;
 @property(readonly, nonatomic) _Bool hasOpenlr;
-- (void)_readOpenlr;
 @property(nonatomic) _Bool hasNavigationAlert;
 @property(nonatomic) _Bool navigationAlert;
 @property(nonatomic) _Bool hasAlertCCode;
 @property(nonatomic) unsigned int alertCCode;
 @property(retain, nonatomic) NSData *zilch;
 @property(readonly, nonatomic) _Bool hasZilch;
-- (void)_readZilch;
 @property(nonatomic) _Bool hasDurationMin;
 @property(nonatomic) unsigned long long durationMin;
 - (int)StringAsColor:(id)arg1;
@@ -172,10 +146,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int laneClosureCount;
 @property(retain, nonatomic) NSString *crossStreet;
 @property(readonly, nonatomic) _Bool hasCrossStreet;
-- (void)_readCrossStreet;
 @property(retain, nonatomic) NSString *street;
 @property(readonly, nonatomic) _Bool hasStreet;
-- (void)_readStreet;
 @property(nonatomic) _Bool hasBlocked;
 @property(nonatomic) _Bool blocked;
 @property(nonatomic) _Bool hasUpdateTime;
@@ -188,27 +160,24 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double latitude;
 @property(retain, nonatomic) NSString *incidentId;
 @property(readonly, nonatomic) _Bool hasIncidentId;
-- (void)_readIncidentId;
 - (id)infoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)infosCount;
-- (void)_addNoFlagsInfo:(id)arg1;
 - (void)addInfo:(id)arg1;
 - (void)clearInfos;
 @property(retain, nonatomic) NSMutableArray *infos;
-- (void)_readInfos;
 - (void)setGeoids:(long long *)arg1 count:(unsigned long long)arg2;
 - (long long)geoidAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsGeoid:(long long)arg1;
 - (void)addGeoid:(long long)arg1;
 - (void)clearGeoids;
 @property(readonly, nonatomic) long long *geoids;
 @property(readonly, nonatomic) unsigned long long geoidsCount;
-- (void)_readGeoids;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

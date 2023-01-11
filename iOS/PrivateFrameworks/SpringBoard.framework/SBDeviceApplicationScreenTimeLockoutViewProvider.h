@@ -4,31 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/LOViewControllerDelegate-Protocol.h>
+@class STBlockingViewController;
 
-@class NSString, UIViewController;
-@protocol LOViewController;
-
-@interface SBDeviceApplicationScreenTimeLockoutViewProvider <LOViewControllerDelegate>
+@interface SBDeviceApplicationScreenTimeLockoutViewProvider
 {
-    UIViewController<LOViewController> *_lockoutViewController;
+    STBlockingViewController *_blockingViewController;
+    _Bool _isActive;
 }
 
 - (void).cxx_destruct;
-- (id)_newLockoutViewControllerWithBundleIdentifier:(id)arg1;
+- (id)_newBlockingViewControllerWithBundleIdentifier:(id)arg1;
 - (id)_realOverlayViewController;
 - (void)_deactivateIfPossible;
 - (void)_activateIfPossible;
-- (void)lockoutViewControllerDidFinishDismissing:(id)arg1;
+- (void)hideContentWithAnimation:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showContentWithAnimation:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleInstalledAppsChanged:(id)arg1;
+- (long long)priority;
 - (void)dealloc;
 - (id)initWithSceneHandle:(id)arg1 delegate:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

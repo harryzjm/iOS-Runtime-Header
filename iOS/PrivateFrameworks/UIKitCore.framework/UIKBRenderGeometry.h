@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
     long long _flickDirection;
     NSValue *_splitLeftRect;
     NSValue *_splitRightRect;
+    long long _popupDirection;
+    double _layeredBackgroundRoundRectRadius;
+    double _layeredForegroundRoundRectRadius;
     struct CGPoint _popupSource;
     struct CGSize _concaveCornerOffset;
     struct CGRect _frame;
@@ -29,11 +32,18 @@ __attribute__((visibility("hidden")))
     struct CGRect _displayFrame;
     struct CGRect _symbolFrame;
     struct UIEdgeInsets _layoutMargins;
+    struct CGRect _layeredBackgroundPaddedFrame;
+    struct CGRect _layeredForegroundPaddedFrame;
 }
 
 + (id)sortedGeometries:(id)arg1 leftToRight:(_Bool)arg2;
 + (id)geometryWithFrame:(struct CGRect)arg1 paddedFrame:(struct CGRect)arg2;
 + (id)geometryWithShape:(id)arg1;
+@property(nonatomic) double layeredForegroundRoundRectRadius; // @synthesize layeredForegroundRoundRectRadius=_layeredForegroundRoundRectRadius;
+@property(nonatomic) struct CGRect layeredForegroundPaddedFrame; // @synthesize layeredForegroundPaddedFrame=_layeredForegroundPaddedFrame;
+@property(nonatomic) double layeredBackgroundRoundRectRadius; // @synthesize layeredBackgroundRoundRectRadius=_layeredBackgroundRoundRectRadius;
+@property(nonatomic) struct CGRect layeredBackgroundPaddedFrame; // @synthesize layeredBackgroundPaddedFrame=_layeredBackgroundPaddedFrame;
+@property(nonatomic) long long popupDirection; // @synthesize popupDirection=_popupDirection;
 @property(retain, nonatomic) NSValue *splitRightRect; // @synthesize splitRightRect=_splitRightRect;
 @property(retain, nonatomic) NSValue *splitLeftRect; // @synthesize splitLeftRect=_splitLeftRect;
 @property(nonatomic) _Bool tallPopup; // @synthesize tallPopup=_tallPopup;

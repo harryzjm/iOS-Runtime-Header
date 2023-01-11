@@ -19,16 +19,19 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     _CDInteractionStoreNotifier *_notifier;
     NSObject<OS_dispatch_queue> *_pendingShareInteractionQueue;
+    _Bool _inMaintenanceMode;
+    _Bool _readConcurrently;
     _CDInteraction *_pendingShareSheetInteraction;
     id <_DKLocationHistorian> _locationHistorian;
 }
 
 + (id)defaultDatabaseDirectory;
 + (id)storeWithDirectory:(id)arg1 readOnly:(_Bool)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool readConcurrently; // @synthesize readConcurrently=_readConcurrently;
 @property(readonly, nonatomic) _DKCoreDataStorage *storage; // @synthesize storage=_storage;
 @property(retain) id <_DKLocationHistorian> locationHistorian; // @synthesize locationHistorian=_locationHistorian;
 @property(retain, nonatomic) _CDInteraction *pendingShareSheetInteraction; // @synthesize pendingShareSheetInteraction=_pendingShareSheetInteraction;
-- (void).cxx_destruct;
 - (void)anonymizeContactsWithSalt:(id)arg1;
 - (void)anonymizeKeywordsWithSalt:(id)arg1;
 - (void)anonymizeInteractionsWithSalt:(id)arg1;
@@ -50,6 +53,8 @@
 - (unsigned long long)deleteInteractionsOlderThanDate:(id)arg1 limit:(unsigned long long)arg2;
 - (unsigned long long)deleteUnreferencedContacts;
 - (unsigned long long)deleteUnreferencedKeywords;
+- (void)exitMaintenanceMode;
+- (void)enterMaintenanceMode;
 - (id)interactionCountPerMechanism;
 - (id)histogramContactInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (id)queryContactInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
@@ -61,12 +66,14 @@
 - (void)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 error:(id *)arg5;
+- (id)queryInteractionsUsingPredicate:(id)arg1 matchingNameTokens:(id)arg2 sortDescriptors:(id)arg3 limit:(unsigned long long)arg4 error:(id *)arg5;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 - (unsigned long long)numberOfInteractionsMatchingPredicate:(id)arg1;
 - (void)countContactsUsingPredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)countContactsUsingPredicate:(id)arg1 error:(id *)arg2;
 - (void)countInteractionsUsingPredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)countInteractionsUsingPredicate:(id)arg1 error:(id *)arg2;
+- (id)recipientArrayWithMostRecentSenderFirstFromIncomingInteraction:(id)arg1 outgoingInteraction:(id)arg2;
 - (_Bool)openAndCheckIfReadable;
 - (_Bool)recordInteractionsBatch:(id)arg1 error:(id *)arg2;
 - (void)recordInteractions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

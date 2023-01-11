@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIButton, UIImageView, UILabel, UIView;
+@class NSString, UIButton, UIImageView, UILabel, UIView, UIVisualEffectView;
 @protocol CKLocationShareBalloonViewDelegate;
 
 @interface CKLocationShareBalloonView
@@ -19,8 +19,11 @@
     UIView *_horizontalSeparator;
     UIView *_verticalSeparator;
     UIImageView *_chevron;
+    UIVisualEffectView *_effectView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property(retain, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
 @property(retain, nonatomic) UIView *verticalSeparator; // @synthesize verticalSeparator=_verticalSeparator;
 @property(retain, nonatomic) UIView *horizontalSeparator; // @synthesize horizontalSeparator=_horizontalSeparator;
@@ -31,18 +34,17 @@
 @property(copy, nonatomic) NSString *locationString; // @synthesize locationString=_locationString;
 @property(copy, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
 @property(nonatomic) long long offerState; // @synthesize offerState=_offerState;
-- (void).cxx_destruct;
 - (void)_ignoreButtonHit:(id)arg1;
 - (void)_shareButtonHit:(id)arg1;
+@property(nonatomic) __weak id <CKLocationShareBalloonViewDelegate> delegate; // @dynamic delegate;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)prepareForDisplay;
+- (void)clearFilters;
+- (void)addFilter:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)configureForLocationShareOfferChatItem:(id)arg1;
-
-// Remaining properties
-@property(nonatomic) __weak id <CKLocationShareBalloonViewDelegate> delegate; // @dynamic delegate;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBHomeAttributeValue-Protocol.h>
 
-@class NSString;
+@class NSString, _INPBHomeAttributeRange;
 
 @interface _INPBHomeAttributeValue : PBCodable <_INPBHomeAttributeValue, NSSecureCoding, NSCopying>
 {
@@ -23,25 +23,25 @@
         unsigned int valueType:1;
     } _has;
     _Bool _booleanValue;
-    _Bool __encodeLegacyGloryData;
     int _limitValue;
     int _unit;
     int _valueType;
     double _doubleValue;
     long long _integerValue;
+    _INPBHomeAttributeRange *_rangeValue;
     NSString *_stringValue;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int valueType; // @synthesize valueType=_valueType;
 @property(nonatomic) int unit; // @synthesize unit=_unit;
 @property(copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
+@property(retain, nonatomic) _INPBHomeAttributeRange *rangeValue; // @synthesize rangeValue=_rangeValue;
 @property(nonatomic) int limitValue; // @synthesize limitValue=_limitValue;
 @property(nonatomic) long long integerValue; // @synthesize integerValue=_integerValue;
 @property(nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property(nonatomic) _Bool booleanValue; // @synthesize booleanValue=_booleanValue;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -57,6 +57,7 @@
 - (id)unitAsString:(int)arg1;
 @property(nonatomic) _Bool hasUnit;
 @property(readonly, nonatomic) _Bool hasStringValue;
+@property(readonly, nonatomic) _Bool hasRangeValue;
 - (int)StringAsLimitValue:(id)arg1;
 - (id)limitValueAsString:(int)arg1;
 @property(nonatomic) _Bool hasLimitValue;

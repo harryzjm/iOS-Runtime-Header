@@ -26,6 +26,7 @@
     struct CGRect _presentationRect;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <AKAnnotationEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool editsOnLaunch; // @synthesize editsOnLaunch=_editsOnLaunch;
 @property(retain, nonatomic) UIView *presentationView; // @synthesize presentationView=_presentationView;
@@ -34,19 +35,16 @@
 @property(retain, nonatomic) AKAnnotationTheme *annotationTheme; // @synthesize annotationTheme=mAnnotationTheme;
 @property(retain, nonatomic) AKPageController *annotationPageController; // @synthesize annotationPageController=mAnnotationPageController;
 @property(retain, nonatomic) AKAnnotation *annotation; // @synthesize annotation=mAnnotation;
-- (void).cxx_destruct;
 - (void)hide;
 - (void)didHide;
 - (void)willHide;
 - (void)didShow;
 - (void)willShow;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)hideAnimation:(id)arg1 finished:(id)arg2 context:(void *)arg3;
 - (void)presentFromRect:(struct CGRect)arg1 view:(id)arg2;
 - (int)willPresentInPosition:(struct CGRect)arg1 view:(id)arg2;
 - (struct CGRect)p_containerFrameForView:(id)arg1;
 - (_Bool)canPresentInPosition:(int)arg1;
-- (void)popInAnimation:(id)arg1 finished:(id)arg2 context:(void *)arg3;
 - (void)didReceiveMemoryWarning;
 - (void)viewDidLoad;
 - (void)dealloc;

@@ -9,7 +9,7 @@
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICStoreRequestContext;
+@class ICStoreRequestContext, NSUUID;
 
 @interface ICMusicSubscriptionStatusRequest : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,25 +17,30 @@
     _Bool _allowsFallbackToExpiredStatus;
     _Bool _allowsFallbackToStatusNeedingReload;
     _Bool _shouldReturnLastKnownStatusOnly;
+    _Bool _shouldBypassEnforcementOfPrivacyAcknowledgement;
     ICStoreRequestContext *_storeRequestContext;
     long long _reason;
-    long long _maximumRetryCount;
     long long _carrierBundleProvisioningStyle;
+    NSUUID *_requestIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldBypassEnforcementOfPrivacyAcknowledgement; // @synthesize shouldBypassEnforcementOfPrivacyAcknowledgement=_shouldBypassEnforcementOfPrivacyAcknowledgement;
+@property(readonly, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property(nonatomic) long long carrierBundleProvisioningStyle; // @synthesize carrierBundleProvisioningStyle=_carrierBundleProvisioningStyle;
 @property(nonatomic) _Bool shouldReturnLastKnownStatusOnly; // @synthesize shouldReturnLastKnownStatusOnly=_shouldReturnLastKnownStatusOnly;
 @property(nonatomic) _Bool allowsFallbackToStatusNeedingReload; // @synthesize allowsFallbackToStatusNeedingReload=_allowsFallbackToStatusNeedingReload;
 @property(nonatomic) _Bool allowsFallbackToExpiredStatus; // @synthesize allowsFallbackToExpiredStatus=_allowsFallbackToExpiredStatus;
-@property(nonatomic) long long maximumRetryCount; // @synthesize maximumRetryCount=_maximumRetryCount;
 @property(nonatomic) _Bool shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property(nonatomic) long long reason; // @synthesize reason=_reason;
 @property(copy, nonatomic) ICStoreRequestContext *storeRequestContext; // @synthesize storeRequestContext=_storeRequestContext;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)description;
 - (id)initWithStoreRequestContext:(id)arg1;
 
 @end

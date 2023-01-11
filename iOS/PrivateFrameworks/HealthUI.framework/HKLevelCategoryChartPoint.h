@@ -13,17 +13,19 @@
 
 @interface HKLevelCategoryChartPoint : NSObject <HKChartPoint>
 {
-    NSDate *_xValue;
+    NSDate *_startDate;
+    NSDate *_endDate;
     NSNumber *_yValue;
     long long _pointStyle;
     id <HKGraphSeriesBlockCoordinateInfo> _userInfo;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <HKGraphSeriesBlockCoordinateInfo> userInfo; // @synthesize userInfo=_userInfo;
 @property(nonatomic) long long pointStyle; // @synthesize pointStyle=_pointStyle;
 @property(retain, nonatomic) NSNumber *yValue; // @synthesize yValue=_yValue;
-@property(retain, nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, copy) NSString *description;
 - (id)allYValues;
 - (id)maxYValue;

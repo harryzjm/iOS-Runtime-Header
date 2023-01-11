@@ -26,10 +26,10 @@
     NSString *_networkStatus;
 }
 
-@property(readonly, nonatomic) NSString *networkStatus; // @synthesize networkStatus=_networkStatus;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *networkStatus; // @synthesize networkStatus=_networkStatus;
 @property(nonatomic) _Bool useProcessLocalCache; // @synthesize useProcessLocalCache=_useProcessLocalCache;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-- (void).cxx_destruct;
 - (void)storeEntries:(id)arg1 inLocalCacheWithFileName:(id)arg2;
 - (id)localCacheWithFileName:(id)arg1;
 - (id)hardcodedMappedProducts;
@@ -55,6 +55,8 @@
 - (void)onqueue_getAssetBundleForDeviceQuery:(id)arg1 withRequestConfiguration:(id)arg2;
 - (void)onqueue_getCachedAssetBundleForTask:(id)arg1;
 - (void)getAssetBundleForDeviceQuery:(id)arg1 withRequestConfiguration:(id)arg2;
+- (void)onqueue_variantsMatchingQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)variantsMatchingQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)onqueue_invalidate;
 - (void)invalidate;
 - (void)onqueue_updateSharingManagementAssetIfNecessary;

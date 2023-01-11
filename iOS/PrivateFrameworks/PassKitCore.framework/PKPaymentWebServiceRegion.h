@@ -22,6 +22,7 @@
     NSURL *_paymentServicesURL;
     NSURL *_inAppPaymentServicesURL;
     NSURL *_paymentServicesMerchantURL;
+    NSURL *_partnerServiceURL;
     NSURL *_trustedServiceManagerURL;
     NSString *_trustedServiceManagerPushTopic;
     long long _consistencyCheckBackoffLevel;
@@ -34,12 +35,19 @@
     NSURL *_applyServiceURL;
     NSString *_applyServicePushTopic;
     NSString *_productsPushTopic;
+    NSString *_transactionZonePushTopic;
+    NSString *_provisioningTargetsPushTopic;
+    NSString *_lastDeviceUpgradeTaskBuildVersion;
     NSURL *_peerPaymentServiceURL;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasPeerPaymentAccount; // @synthesize hasPeerPaymentAccount=_hasPeerPaymentAccount;
 @property(retain, nonatomic) NSURL *peerPaymentServiceURL; // @synthesize peerPaymentServiceURL=_peerPaymentServiceURL;
+@property(copy, nonatomic) NSString *lastDeviceUpgradeTaskBuildVersion; // @synthesize lastDeviceUpgradeTaskBuildVersion=_lastDeviceUpgradeTaskBuildVersion;
+@property(copy, nonatomic) NSString *provisioningTargetsPushTopic; // @synthesize provisioningTargetsPushTopic=_provisioningTargetsPushTopic;
+@property(copy, nonatomic) NSString *transactionZonePushTopic; // @synthesize transactionZonePushTopic=_transactionZonePushTopic;
 @property(copy, nonatomic) NSString *productsPushTopic; // @synthesize productsPushTopic=_productsPushTopic;
 @property(nonatomic) _Bool hasApplications; // @synthesize hasApplications=_hasApplications;
 @property(retain, nonatomic) NSString *applyServicePushTopic; // @synthesize applyServicePushTopic=_applyServicePushTopic;
@@ -54,6 +62,7 @@
 @property(nonatomic) long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
 @property(retain, nonatomic) NSString *trustedServiceManagerPushTopic; // @synthesize trustedServiceManagerPushTopic=_trustedServiceManagerPushTopic;
 @property(retain, nonatomic) NSURL *trustedServiceManagerURL; // @synthesize trustedServiceManagerURL=_trustedServiceManagerURL;
+@property(retain, nonatomic) NSURL *partnerServiceURL; // @synthesize partnerServiceURL=_partnerServiceURL;
 @property(retain, nonatomic) NSURL *paymentServicesMerchantURL; // @synthesize paymentServicesMerchantURL=_paymentServicesMerchantURL;
 @property(retain, nonatomic) NSURL *inAppPaymentServicesURL; // @synthesize inAppPaymentServicesURL=_inAppPaymentServicesURL;
 @property(retain, nonatomic) NSURL *paymentServicesURL; // @synthesize paymentServicesURL=_paymentServicesURL;
@@ -61,7 +70,6 @@
 @property(retain, nonatomic) NSURL *brokerURL; // @synthesize brokerURL=_brokerURL;
 @property(retain, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
 @property(retain, nonatomic) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
-- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

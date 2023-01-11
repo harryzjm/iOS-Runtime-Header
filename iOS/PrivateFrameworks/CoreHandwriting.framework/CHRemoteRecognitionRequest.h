@@ -13,10 +13,13 @@
 @interface CHRemoteRecognitionRequest : NSObject <NSSecureCoding>
 {
     _Bool _shouldUseTextReplacements;
-    _Bool _shouldEnableCachingIfAvailable;
+    _Bool _enableCachingIfAvailable;
+    _Bool _enableGen2ModelIfAvailable;
+    _Bool _enableGen2CharacterLMIfAvailable;
     _Bool _hasBeenSubmitted;
     int _recognitionMode;
     int _contentType;
+    int _autoCapitalizationMode;
     NSLocale *_locale;
     NSCharacterSet *_activeCharacterSet;
     unsigned long long _maxRecognitionResultCount;
@@ -29,12 +32,15 @@
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(nonatomic) _Bool hasBeenSubmitted; // @synthesize hasBeenSubmitted=_hasBeenSubmitted;
-@property(nonatomic) _Bool shouldEnableCachingIfAvailable; // @synthesize shouldEnableCachingIfAvailable=_shouldEnableCachingIfAvailable;
+@property(nonatomic) _Bool enableGen2CharacterLMIfAvailable; // @synthesize enableGen2CharacterLMIfAvailable=_enableGen2CharacterLMIfAvailable;
+@property(nonatomic) _Bool enableGen2ModelIfAvailable; // @synthesize enableGen2ModelIfAvailable=_enableGen2ModelIfAvailable;
+@property(nonatomic) _Bool enableCachingIfAvailable; // @synthesize enableCachingIfAvailable=_enableCachingIfAvailable;
 @property(nonatomic) _Bool shouldUseTextReplacements; // @synthesize shouldUseTextReplacements=_shouldUseTextReplacements;
 @property(copy, nonatomic) CHDrawing *drawing; // @synthesize drawing=_drawing;
 @property(copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(nonatomic) unsigned long long maxRecognitionResultCount; // @synthesize maxRecognitionResultCount=_maxRecognitionResultCount;
 @property(copy, nonatomic) NSCharacterSet *activeCharacterSet; // @synthesize activeCharacterSet=_activeCharacterSet;
+@property(nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property(nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) struct CGSize minimumDrawingSize; // @synthesize minimumDrawingSize=_minimumDrawingSize;
 @property(nonatomic) int recognitionMode; // @synthesize recognitionMode=_recognitionMode;

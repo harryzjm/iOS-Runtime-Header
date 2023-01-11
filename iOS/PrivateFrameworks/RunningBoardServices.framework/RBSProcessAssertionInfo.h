@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSProcessAssertionInfo : NSObject <NSCopying, BSXPCSecureCoding>
+@interface RBSProcessAssertionInfo : NSObject <NSCopying, RBSXPCSecureCoding>
 {
     unsigned char _type;
     unsigned long long _reason;
@@ -20,20 +20,16 @@
     NSString *_name;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property(copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
 @property(nonatomic) unsigned long long reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) unsigned char type; // @synthesize type=_type;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;

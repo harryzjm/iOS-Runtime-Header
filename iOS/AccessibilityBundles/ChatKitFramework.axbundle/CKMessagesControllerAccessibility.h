@@ -11,7 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_chatItemsDidChange:(id)arg1;
+- (void)setChatController:(id)arg1;
+- (void)loadView;
+- (void)_accessibilityReloadElementRelations:(_Bool)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

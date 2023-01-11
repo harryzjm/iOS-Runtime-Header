@@ -15,9 +15,9 @@
     NSString *_appBundleIdentifier;
 }
 
-@property(copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 - (void).cxx_destruct;
-- (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;

@@ -8,14 +8,25 @@
 
 #import <PhotosUICore/PXGadgetRankStorage-Protocol.h>
 
+@class NSString;
+
 @interface PXForYouGadgetRankStorage : NSObject <PXGadgetRankStorage>
 {
+    NSString *_prefix;
 }
 
++ (id)customStorage;
++ (id)defaultStorage;
++ (id)rankableGadgetTypes;
+- (void).cxx_destruct;
+- (_Bool)hasAnyStoredRank;
 - (id)_keyForGadgetType:(unsigned long long)arg1;
 - (void)setRank:(long long)arg1 forGadgetType:(unsigned long long)arg2;
+- (unsigned long long)gadgetTypeForRank:(long long)arg1;
 - (long long)rankForGadgetType:(unsigned long long)arg1;
 - (void)resetStoredRanks;
+- (id)init;
+- (id)_initWithPrefix:(id)arg1;
 
 @end
 

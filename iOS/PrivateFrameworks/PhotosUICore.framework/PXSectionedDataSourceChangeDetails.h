@@ -15,6 +15,7 @@
     NSDictionary *_itemChangeDetailsBySection;
     NSDictionary *_itemsWithSubitemChangesBySection;
     NSDictionary *_subitemChangeDetailsByItemBySection;
+    NSNumber *_hasAnyChangesCache;
     NSNumber *_hasAnyInsertionsRemovalsOrMovesCache;
     unsigned long long _fromDataSourceIdentifier;
     unsigned long long _toDataSourceIdentifier;
@@ -23,6 +24,7 @@
 }
 
 + (void)debug_assertValidChangeDetails:(id)arg1 fromDataSource:(id)arg2 toDataSource:(id)arg3;
++ (_Bool)changeDetailsAreOnlyInsertionsOrOnlyRemovalsAtEnd:(id)arg1 fromDataSource:(id)arg2 toDataSource:(id)arg3;
 + (id)changeDetailsWithNoChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
 + (id)changeDetailsWithoutIncrementalChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
 + (_Bool)changesHaveAnyInsertionsRemovalsOrMoves:(id)arg1;
@@ -30,11 +32,11 @@
 + (id)indexPathSetAfterApplyingChanges:(id)arg1 toIndexPathSet:(id)arg2 hasIncrementalChanges:(out _Bool *)arg3;
 + (struct PXSimpleIndexPath)indexPathAfterRevertingChanges:(id)arg1 fromIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out _Bool *)arg3 objectChanged:(out _Bool *)arg4;
 + (struct PXSimpleIndexPath)indexPathAfterApplyingChanges:(id)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out _Bool *)arg3 objectChanged:(out _Bool *)arg4;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSIndexSet *sectionsWithItemChanges; // @synthesize sectionsWithItemChanges=_sectionsWithItemChanges;
 @property(readonly, nonatomic) PXArrayChangeDetails *sectionChanges; // @synthesize sectionChanges=_sectionChanges;
 @property(readonly, nonatomic) unsigned long long toDataSourceIdentifier; // @synthesize toDataSourceIdentifier=_toDataSourceIdentifier;
 @property(readonly, nonatomic) unsigned long long fromDataSourceIdentifier; // @synthesize fromDataSourceIdentifier=_fromDataSourceIdentifier;
-- (void).cxx_destruct;
 - (id)changedItemsInSection:(long long)arg1;
 - (id)insertedItemsInSection:(long long)arg1;
 - (id)deletedItemsInSection:(long long)arg1;
@@ -44,6 +46,7 @@
 - (struct PXSimpleIndexPath)indexPathAfterRevertingChangesFromIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out _Bool *)arg2 objectChanged:(out _Bool *)arg3;
 - (struct PXSimpleIndexPath)indexPathAfterApplyingChangesToIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out _Bool *)arg2 objectChanged:(out _Bool *)arg3;
 @property(readonly, nonatomic) _Bool hasAnyInsertionsRemovalsOrMoves;
+@property(readonly, nonatomic) _Bool hasAnyChanges;
 - (id)subitemChangesInItem:(long long)arg1 section:(long long)arg2;
 - (id)itemsWithSubitemChangesInSection:(long long)arg1;
 - (id)itemChangesInSection:(long long)arg1;

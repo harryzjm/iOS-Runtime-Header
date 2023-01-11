@@ -27,6 +27,7 @@
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long controlState; // @synthesize controlState=_controlState;
 @property(retain, nonatomic) UILabel *buttonLabel; // @synthesize buttonLabel=_buttonLabel;
 @property(retain, nonatomic) HUIconView *decorationIconView; // @synthesize decorationIconView=_decorationIconView;
@@ -38,13 +39,12 @@
 @property(copy, nonatomic) HUQuickControlPushButtonViewProfile *profile; // @synthesize profile=_profile;
 @property(nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property(nonatomic) __weak id <HUQuickControlViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-- (void).cxx_destruct;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 @property(retain, nonatomic) id value;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
-- (void)_actuateTapticFeedbackIfAvailableWithIntensity:(double)arg1;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_actuateTapticFeedbackWithIntensity:(double)arg1;
+- (void)_prepareForTapticFeedback;
 - (void)_animateToShrinkView;
 - (void)_animateToEnlargeView;
 - (void)_updateDecorationIconDescriptorAnimated:(_Bool)arg1;

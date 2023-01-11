@@ -7,7 +7,7 @@
 #import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
 
 @class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSDictionary, NSMutableArray, NSObject, NSSet, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol CKQueryOperationCallbacks, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDQueryOperation <CKDOperationPipelining>
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_assetTransferOptionsByKey;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasCalledQueryCursorUpdatedBlock; // @synthesize hasCalledQueryCursorUpdatedBlock=_hasCalledQueryCursorUpdatedBlock;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
 @property(retain, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;
@@ -46,9 +47,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(readonly, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property(readonly, nonatomic) CKQuery *query; // @synthesize query=_query;
-- (void).cxx_destruct;
-- (void)fillOutOperationResult:(id)arg1;
-- (Class)operationResultClass;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_sendQueryRequestWithCursor:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
@@ -57,10 +55,12 @@ __attribute__((visibility("hidden")))
 - (void)_handleQueryRequestFinishedWithSchedulerInfo:(id)arg1;
 - (id)activityCreate;
 @property(readonly, nonatomic) NSString *pipeliningDescription;
+- (int)operationType;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
+@property(retain, nonatomic) id <CKQueryOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

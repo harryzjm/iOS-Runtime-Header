@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, SBFLockScreenAlternateDateLabel;
+@class NSDate, NSTimeZone, SBFLockScreenAlternateDateLabel;
 
 @interface SBFLockScreenDateSubtitleDateView
 {
+    NSTimeZone *_timeZone;
     _Bool _useCompactDateFormat;
     NSDate *_date;
     SBFLockScreenAlternateDateLabel *_alternateDateLabel;
@@ -18,11 +19,11 @@
 + (double)subtitleLabelToLunarDateLabelBaselineDifferenceY;
 + (CDStruct_91d2e2b9)dateTimeLunarDateFontMetrics;
 + (id)dateTimeLunarDateFont;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool useCompactDateFormat; // @synthesize useCompactDateFormat=_useCompactDateFormat;
 @property(nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
 @property(retain, nonatomic) SBFLockScreenAlternateDateLabel *alternateDateLabel; // @synthesize alternateDateLabel=_alternateDateLabel;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (double)_lunarDateLabelYOffsetFromDateLabel;
 - (void)_updateDateLabelForCompact;
@@ -32,6 +33,7 @@
 - (void)layoutSubviews;
 - (void)setStrength:(double)arg1;
 - (void)setLegibilitySettings:(id)arg1;
+- (void)_setDate:(id)arg1 inTimeZone:(id)arg2;
 - (void)dealloc;
 - (void)_setupAlternateDateLabel;
 - (void)_overlayCalendarDidChange;

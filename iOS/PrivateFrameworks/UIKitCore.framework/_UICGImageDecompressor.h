@@ -14,10 +14,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)flushCaches;
-- (long long)waitForOrientation;
 - (struct CGImage *)waitForImageRef;
 - (void)dealloc;
-@property(readonly, nonatomic) _Bool _isHardwareBased;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithData:(id)arg1 immediateLoadWithMaxSize:(struct CGSize)arg2 renderingIntent:(unsigned long long)arg3 cache:(_Bool)arg4;

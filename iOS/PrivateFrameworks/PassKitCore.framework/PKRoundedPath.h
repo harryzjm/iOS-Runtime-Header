@@ -6,27 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
-
 @interface PKRoundedPath : NSObject
 {
     struct CGPath *_CGPath;
-    NSMutableArray *_points;
 }
 
 + (id)pathWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
-+ (id)pathWithEllipseInRect:(struct CGRect)arg1;
-+ (id)pathWithRect:(struct CGRect)arg1;
-@property(retain, nonatomic) NSMutableArray *points; // @synthesize points=_points;
-@property(retain) struct CGPath *CGPath; // @synthesize CGPath=_CGPath;
-- (void).cxx_destruct;
+@property(readonly) struct CGPath *CGPath; // @synthesize CGPath=_CGPath;
 - (void)addContinuousCornerToPath:(struct CGPath *)arg1 trueCorner:(struct CGPoint)arg2 cornerRadius:(struct CGSize)arg3 corners:(unsigned long long)arg4 portion:(unsigned long long)arg5 clockwise:(_Bool)arg6 fullRadius:(_Bool)arg7;
 - (id)initWithRect:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadii:(id)arg3 smoothPillShapes:(_Bool)arg4;
-- (struct CGRect)boundingRect;
-- (void)closeSubpath;
-- (void)addLineToPointX:(double)arg1 y:(double)arg2;
+- (id)init;
 - (void)dealloc;
-- (id)initWithPoints:(struct CGPoint *)arg1 count:(long long)arg2;
 
 @end
 

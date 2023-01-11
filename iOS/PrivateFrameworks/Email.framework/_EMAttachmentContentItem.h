@@ -8,7 +8,7 @@
 #import <Email/EMMutableContentItem-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class EMObjectID, NSArray, NSDate, NSString;
+@class EMMailDropMetadata, EMObjectID, NSArray, NSString;
 
 @interface _EMAttachmentContentItem <EFPubliclyDescribable, EMMutableContentItem, NSSecureCoding>
 {
@@ -22,31 +22,23 @@
     CDUnknownBlockType _loaderBlock;
     long long _storageByteCount;
     NSString *_UTType;
-    NSDate *_expiryDate;
+    EMMailDropMetadata *_mailDropMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
-- (void)setExchangeEventUID:(int)arg1;
-@property(readonly, nonatomic) int exchangeEventUID;
-- (void)setExpiryDate:(id)arg1;
-@property(readonly, nonatomic) NSDate *expiryDate;
-@property(nonatomic) _Bool isSinglePagePDF; // @synthesize isSinglePagePDF=_isSinglePagePDF;
-- (void)setUTType:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *UTType;
-- (void)setStorageByteCount:(long long)arg1;
-@property(readonly, nonatomic) long long storageByteCount;
-@property(copy, nonatomic) CDUnknownBlockType loaderBlock; // @synthesize loaderBlock=_loaderBlock;
-- (void)setIsAvailableLocally:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool isAvailableLocally;
-- (void)setDisplayName:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *displayName;
-- (void)setDataTransferByteCount:(long long)arg1;
-@property(readonly, nonatomic) long long dataTransferByteCount;
-- (void)setContentID:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *contentID;
-- (void)setAvailableRepresentations:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *availableRepresentations;
 - (void).cxx_destruct;
+@property(nonatomic) int exchangeEventUID; // @synthesize exchangeEventUID=_exchangeEventUID;
+@property(copy, nonatomic) EMMailDropMetadata *mailDropMetadata; // @synthesize mailDropMetadata=_mailDropMetadata;
+@property(nonatomic) _Bool isSinglePagePDF; // @synthesize isSinglePagePDF=_isSinglePagePDF;
+@property(copy, nonatomic) NSString *UTType; // @synthesize UTType=_UTType;
+@property(nonatomic) long long storageByteCount; // @synthesize storageByteCount=_storageByteCount;
+@property(copy, nonatomic) CDUnknownBlockType loaderBlock; // @synthesize loaderBlock=_loaderBlock;
+@property(nonatomic) _Bool isAvailableLocally; // @synthesize isAvailableLocally=_isAvailableLocally;
+@property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property(nonatomic) long long dataTransferByteCount; // @synthesize dataTransferByteCount=_dataTransferByteCount;
+@property(copy, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property(copy, nonatomic) NSArray *availableRepresentations; // @synthesize availableRepresentations=_availableRepresentations;
+- (_Bool)_isSinglePagePDFWithContentURL:(id)arg1;
 - (id)requestRepresentationWithOptions:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)requestRepresentationWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;

@@ -9,7 +9,7 @@
 #import <VideosUI/UITableViewDataSource-Protocol.h>
 #import <VideosUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, PSSpecifier, UITextField;
+@class NSString, NSURL, PSSpecifier, UITextField;
 
 __attribute__((visibility("hidden")))
 @interface VUIAccountSettingsViewController : PSListController <UITableViewDataSource, UITextFieldDelegate>
@@ -22,8 +22,11 @@ __attribute__((visibility("hidden")))
     PSSpecifier *_createAccountSpecifier;
     UITextField *_credentialsAppleIDTextField;
     UITextField *_credentialsPasswordTextField;
+    NSURL *_addFundsUrl;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *addFundsUrl; // @synthesize addFundsUrl=_addFundsUrl;
 @property(retain, nonatomic) UITextField *credentialsPasswordTextField; // @synthesize credentialsPasswordTextField=_credentialsPasswordTextField;
 @property(retain, nonatomic) UITextField *credentialsAppleIDTextField; // @synthesize credentialsAppleIDTextField=_credentialsAppleIDTextField;
 @property(retain, nonatomic) PSSpecifier *createAccountSpecifier; // @synthesize createAccountSpecifier=_createAccountSpecifier;
@@ -32,14 +35,15 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSSpecifier *credentialsAppleIDSpecifier; // @synthesize credentialsAppleIDSpecifier=_credentialsAppleIDSpecifier;
 @property(nonatomic) long long watchListAppsCount; // @synthesize watchListAppsCount=_watchListAppsCount;
 @property(nonatomic) _Bool authenticationInProgress; // @synthesize authenticationInProgress=_authenticationInProgress;
-- (void).cxx_destruct;
 - (void)_dismissViewController;
 - (long long)_alertStyle;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)_getConnectedAppsCountString;
-- (void)_checkConnectedApps;
+- (void)_checkExternalLinksWithDispatchGroup:(id)arg1;
+- (void)_checkConnectedAppsWithDispatchGroup:(id)arg1;
+- (void)_loadDynamicIdentifiers;
 - (void)_openiForgotAppleURL;
 - (void)_clearPlayHistory:(id)arg1;
 - (void)_didSelectSpecifier:(id)arg1;

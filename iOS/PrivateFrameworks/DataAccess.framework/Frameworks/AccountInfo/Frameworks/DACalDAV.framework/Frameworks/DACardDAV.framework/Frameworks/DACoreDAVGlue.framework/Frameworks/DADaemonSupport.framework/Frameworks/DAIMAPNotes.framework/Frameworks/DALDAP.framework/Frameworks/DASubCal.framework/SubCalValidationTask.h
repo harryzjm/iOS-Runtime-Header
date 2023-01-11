@@ -6,7 +6,7 @@
 
 #import <DASubCal/SubCalURLRequestDelegate-Protocol.h>
 
-@class NSData, NSString, NSURL, SubCalURLRequest;
+@class ICSDocument, NSData, NSString, NSURL, SubCalURLRequest;
 @protocol SubCalValidationTaskDelegate;
 
 @interface SubCalValidationTask <SubCalURLRequestDelegate>
@@ -20,14 +20,17 @@
     NSString *_password;
     SubCalURLRequest *_request;
     NSData *_icsData;
+    ICSDocument *_icsDocument;
     NSString *_calendarName;
     unsigned long long _searchIndex;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long searchIndex; // @synthesize searchIndex=_searchIndex;
 @property(nonatomic) _Bool foundCalName; // @synthesize foundCalName=_foundCalName;
 @property(nonatomic) _Bool foundBeginVCal; // @synthesize foundBeginVCal=_foundBeginVCal;
 @property(retain, nonatomic) NSString *calendarName; // @synthesize calendarName=_calendarName;
+@property(retain, nonatomic) ICSDocument *icsDocument; // @synthesize icsDocument=_icsDocument;
 @property(retain, nonatomic) NSData *icsData; // @synthesize icsData=_icsData;
 @property(retain, nonatomic) SubCalURLRequest *request; // @synthesize request=_request;
 @property(nonatomic) _Bool performQuickValidation; // @synthesize performQuickValidation=_performQuickValidation;
@@ -35,7 +38,6 @@
 @property(retain, nonatomic) NSString *username; // @synthesize username=_username;
 @property(retain, nonatomic) NSURL *subscriptionURL; // @synthesize subscriptionURL=_subscriptionURL;
 @property(nonatomic) __weak id <SubCalValidationTaskDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_tryQuickValidationCurrentData:(id)arg1;
 - (id)_searchForCalNameInConnectionData:(id)arg1;
 - (id)_stringBeforeNewline:(const char *)arg1 length:(unsigned long long)arg2;
@@ -43,6 +45,7 @@
 - (void)subCalURLRequest:(id)arg1 finishedWithData:(id)arg2 error:(id)arg3;
 - (void)subCalURLRequest:(id)arg1 didRedirectToURL:(id)arg2;
 - (void)subCalURLRequest:(id)arg1 updatedData:(id)arg2;
+- (void)subCalURLRequestNeedsUsernameAndPasswordForHost:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (void)handleTrustChallenge:(id)arg1 forSubCalURLRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleTrustChallenge:(id)arg1 forSubCalURLRequest:(id)arg2;
 - (void)performTask;

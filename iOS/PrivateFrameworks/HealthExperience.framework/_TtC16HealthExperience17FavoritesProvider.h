@@ -6,19 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+#import <HealthExperience/_TtP14HealthPlatform18FavoritesProviding_-Protocol.h>
 
-@interface _TtC16HealthExperience17FavoritesProvider : NSObject
+@class MISSING_TYPE, NSSet;
+
+@interface _TtC16HealthExperience17FavoritesProvider : NSObject <_TtP14HealthPlatform18FavoritesProviding_>
 {
     MISSING_TYPE *observers;
     MISSING_TYPE *favoriteDisplayTypesController;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *nonspecificUpdatesDisabled;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, readonly) _Bool isCycleTrackingFavorited;
+- (_Bool)isFavoriteWithObject:(id)arg1;
+@property(nonatomic, readonly) _Bool isReady;
 - (void)favoritesChangedRemotely:(id)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
+@property(nonatomic, readonly) NSSet *favorites;
 
 @end
 

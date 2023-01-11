@@ -11,8 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilitySpeakThisViewController;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axApplyDisplayModeLabel;
+- (void)_accessibilityUpdateSecondaryOnlyShortcutButtonItem;
+- (void)_accessibilityUpdateSideBarToggleButtonItem;
+- (void)_updateDisplayModeButtonItem;
+- (void)_axApplyDisplayModeLabelToButtonItem:(id)arg1;
 - (id)displayModeButtonItem;
 - (void)setViewControllers:(id)arg1;
 - (void)loadView;

@@ -17,6 +17,7 @@
     _Bool _locked;
     _Bool _sendActionsBeforeDismiss;
     _Bool _hidden;
+    _Bool _shouldAlwaysCollapse;
     float _priority;
     UIBarButtonItem *_representativeItem;
     id <_UIBarButtonItemGroupOwner> _owner;
@@ -26,6 +27,8 @@
     unsigned long long _expandStyle;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, getter=_shouldAlwaysCollapse, setter=_setShouldAlwaysCollapse:) _Bool shouldAlwaysCollapse; // @synthesize shouldAlwaysCollapse=_shouldAlwaysCollapse;
 @property(nonatomic, getter=_expandStyle, setter=_setExpandStyle:) unsigned long long expandStyle; // @synthesize expandStyle=_expandStyle;
 @property(nonatomic, getter=_minimumTrailingSpace, setter=_setMinimumTrailingSpace:) double minimumTrailingSpace; // @synthesize minimumTrailingSpace=_minimumTrailingSpace;
 @property(nonatomic, getter=_minimumLeadingSpace, setter=_setMinimumLeadingSpace:) double minimumLeadingSpace; // @synthesize minimumLeadingSpace=_minimumLeadingSpace;
@@ -36,9 +39,9 @@
 @property(nonatomic, getter=_owner, setter=_setOwner:) __weak id <_UIBarButtonItemGroupOwner> owner; // @synthesize owner=_owner;
 @property(nonatomic, getter=_priority, setter=_setPriority:) float priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) UIBarButtonItem *representativeItem; // @synthesize representativeItem=_representativeItem;
-- (void).cxx_destruct;
 - (void)_validateAllItems;
 @property(readonly, nonatomic, getter=_items) NSArray *items;
+@property(readonly, nonatomic, getter=_isSystemGroup) _Bool systemGroup;
 - (id)description;
 @property(readonly, nonatomic, getter=isDisplayingRepresentativeItem) _Bool displayingRepresentativeItem;
 @property(copy, nonatomic) NSArray *barButtonItems;

@@ -12,6 +12,7 @@
     _Bool _captiveBypass;
     _Bool _isWEP;
     _Bool _isWPA;
+    _Bool _disableAssociationMACRandomization;
     _Bool _passwordRequired;
     _Bool _usernameRequired;
     _Bool _autoJoin;
@@ -47,11 +48,14 @@
     NSNumber *_proxyPACFallbackAllowedNum;
     NSNumber *_isHotspotNum;
     NSNumber *_serviceProviderRoamingEnabledNum;
+    NSNumber *_disableAssociationMACRandomizationNum;
 }
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *disableAssociationMACRandomizationNum; // @synthesize disableAssociationMACRandomizationNum=_disableAssociationMACRandomizationNum;
 @property(retain, nonatomic) NSNumber *serviceProviderRoamingEnabledNum; // @synthesize serviceProviderRoamingEnabledNum=_serviceProviderRoamingEnabledNum;
 @property(retain, nonatomic) NSNumber *isHotspotNum; // @synthesize isHotspotNum=_isHotspotNum;
 @property(retain, nonatomic) NSNumber *proxyPACFallbackAllowedNum; // @synthesize proxyPACFallbackAllowedNum=_proxyPACFallbackAllowedNum;
@@ -83,6 +87,7 @@
 @property(nonatomic) _Bool usernameRequired; // @synthesize usernameRequired=_usernameRequired;
 @property(retain, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) _Bool passwordRequired; // @synthesize passwordRequired=_passwordRequired;
+@property(nonatomic) _Bool disableAssociationMACRandomization; // @synthesize disableAssociationMACRandomization=_disableAssociationMACRandomization;
 @property(retain, nonatomic) NSDictionary *qosMarkingConfig; // @synthesize qosMarkingConfig=_qosMarkingConfig;
 @property(retain, nonatomic) NSDictionary *eapClientConfig; // @synthesize eapClientConfig=_eapClientConfig;
 @property(nonatomic) _Bool isWPA; // @synthesize isWPA=_isWPA;
@@ -91,11 +96,10 @@
 @property(nonatomic) _Bool captiveBypass; // @synthesize captiveBypass=_captiveBypass;
 @property(nonatomic) _Bool isHidden; // @synthesize isHidden=_isHidden;
 @property(retain, nonatomic) NSString *ssid; // @synthesize ssid=_ssid;
-- (void).cxx_destruct;
 - (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)userInputFields;
 - (id)installationWarnings;
-- (id)description;
+- (id)verboseDescription;
 - (id)payloadDescriptionKeyValueSections;
 - (id)subtitle2Description;
 - (id)_localizedEncryptionTypeString;

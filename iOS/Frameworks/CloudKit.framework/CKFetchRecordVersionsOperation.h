@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary, NSString;
+#import <CloudKit/CKFetchRecordVersionsOperationCallbacks-Protocol.h>
 
-@interface CKFetchRecordVersionsOperation
+@class CKFetchRecordVersionsOperationInfo, NSArray, NSMutableDictionary, NSString;
+@protocol CKFetchRecordVersionsOperationCallbacks;
+
+@interface CKFetchRecordVersionsOperation <CKFetchRecordVersionsOperationCallbacks>
 {
     _Bool _isDeleted;
     _Bool _shouldFetchAssetContent;
@@ -18,24 +21,30 @@
     NSMutableDictionary *_recordErrors;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property(nonatomic) _Bool isDeleted; // @synthesize isDeleted=_isDeleted;
 @property(retain, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property(copy, nonatomic) NSString *minimumVersionETag; // @synthesize minimumVersionETag=_minimumVersionETag;
 @property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleFetchForRecordID:(id)arg1 isDeleted:(_Bool)arg2 versions:(id)arg3 error:(id)arg4;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType fetchRecordVersionsCompletionBlock; // @synthesize fetchRecordVersionsCompletionBlock=_fetchRecordVersionsCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType fetchRecordVersionsProgressBlock; // @synthesize fetchRecordVersionsProgressBlock=_fetchRecordVersionsProgressBlock;
 - (id)initWithRecordIDs:(id)arg1;
+- (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchRecordVersionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKFetchRecordVersionsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

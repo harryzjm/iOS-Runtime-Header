@@ -21,21 +21,29 @@
     NSMutableDictionary *_dict;
 }
 
-+ (id)_filteredDictionaryForKeySet:(struct __CFSet *)arg1 plistData:(id)arg2;
++ (id)_filteredDictionaryForKeySet:(id)arg1 plistData:(id)arg2;
 + (id)aceObjectWithPlistData:(id)arg1;
 + (id)dictionaryWithAceObjectDictionary:(id)arg1;
 + (id)dictionaryArrayWithAceObjectArray:(id)arg1;
++ (id)aceObjectDictionaryWithDictionary:(id)arg1 baseProtocol:(id)arg2;
 + (id)aceObjectDictionaryWithDictionary:(id)arg1 baseProtocol:(id)arg2 context:(id)arg3;
++ (id)aceObjectArrayWithDictionaryArray:(id)arg1 baseProtocol:(id)arg2;
 + (id)aceObjectArrayWithDictionaryArray:(id)arg1 baseProtocol:(id)arg2 context:(id)arg3;
++ (id)aceObjectDictionaryWithDictionary:(id)arg1 baseClass:(Class)arg2;
 + (id)aceObjectDictionaryWithDictionary:(id)arg1 baseClass:(Class)arg2 context:(id)arg3;
++ (id)aceObjectArrayWithDictionaryArray:(id)arg1 baseClass:(Class)arg2;
 + (id)aceObjectArrayWithDictionaryArray:(id)arg1 baseClass:(Class)arg2 context:(id)arg3;
++ (id)_aceObjectWithMutableDictionary:(id)arg1;
 + (id)_newAceObjectWithMutableDictionary:(id)arg1;
 + (id)_aceObjectWithMutableDictionary:(id)arg1 context:(id)arg2;
 + (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)newAceObjectWithGenericCommand:(id)arg1 context:(id)arg2;
 + (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithDictionary:(id)arg1;
 + (id)aceObjectWithGenericCommand:(id)arg1 context:(id)arg2;
++ (id)aceObjectWithGenericCommand:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *dict; // @synthesize dict=_dict;
 @property(readonly, nonatomic) NSData *plistData; // @synthesize plistData=_plistData;
 @property(copy, nonatomic) NSNumber *usefulnessScore; // @synthesize usefulnessScore=_usefulnessScore;
@@ -71,7 +79,6 @@
 - (id)initWithDictionary:(id)arg1 context:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)_initWithPlistData:(id)arg1 aceId:(id)arg2 refId:(id)arg3 usefulnessScore:(id)arg4 mutatingCommand:(id)arg5;
-- (void)dealloc;
 - (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

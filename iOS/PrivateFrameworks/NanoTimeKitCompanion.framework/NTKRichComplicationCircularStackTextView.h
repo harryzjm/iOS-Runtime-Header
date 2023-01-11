@@ -4,27 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKColoringLabel;
-
 @interface NTKRichComplicationCircularStackTextView
 {
-    NTKColoringLabel *_line1Label;
-    NTKColoringLabel *_line2Label;
-    unsigned long long _highlightMode;
 }
 
 + (_Bool)supportsComplicationFamily:(long long)arg1;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-- (void).cxx_destruct;
-- (long long)_line2FilterStyle;
-- (long long)_line1FilterStyle;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_editingDidEnd;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)layoutSubviews;
-- (id)_desiredFontForLabel:(id)arg1;
-- (id)_createAndAddLabel;
+- (void)makeBackgroundTransparent;
 - (id)init;
 
 @end

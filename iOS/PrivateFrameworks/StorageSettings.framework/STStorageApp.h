@@ -6,20 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class FPProviderDomain, LSApplicationProxy, NSArray, NSDate, NSString, PSUsageBundleApp;
+@class FPProviderDomain, LSApplicationProxy, LSApplicationRecord, NSArray, NSDate, NSString, PSUsageBundleApp;
 
 @interface STStorageApp : NSObject
 {
+    LSApplicationRecord *_appRecord;
     long long _purgeableSize;
     _Bool _isDeleting;
     _Bool _isDemoting;
+    NSString *_appPath;
+    NSString *_dataPath;
+    NSString *_vendorName;
+    struct os_unfair_lock_s _recLock;
+    _Bool _isAppClip;
     _Bool _isUserApp;
     _Bool _isSystemApp;
     _Bool _isInternalApp;
     _Bool _isDocumentApp;
     _Bool _specialSizePending;
     _Bool _isPseudoApp;
-    LSApplicationProxy *_appProxy;
+    _Bool _isApple;
+    NSString *_appIdentifier;
+    NSString *_bundleIdentifier;
+    NSString *_name;
     FPProviderDomain *_fpDomain;
     PSUsageBundleApp *_usageBundleApp;
     NSArray *_mediaTypes;
@@ -32,6 +41,8 @@
 + (void)notifyAppsUpdated;
 + (void)_notifyAppsUpdated:(id)arg1;
 + (void)setLaunchDatesNeedUpdating;
+- (void).cxx_destruct;
+@property _Bool isApple; // @synthesize isApple=_isApple;
 @property _Bool isPseudoApp; // @synthesize isPseudoApp=_isPseudoApp;
 @property long long coreMLDataSize; // @synthesize coreMLDataSize=_coreMLDataSize;
 @property long long specialSize; // @synthesize specialSize=_specialSize;
@@ -44,9 +55,13 @@
 @property _Bool isInternalApp; // @synthesize isInternalApp=_isInternalApp;
 @property _Bool isSystemApp; // @synthesize isSystemApp=_isSystemApp;
 @property _Bool isUserApp; // @synthesize isUserApp=_isUserApp;
+@property(readonly) _Bool isAppClip; // @synthesize isAppClip=_isAppClip;
 @property(retain) FPProviderDomain *fpDomain; // @synthesize fpDomain=_fpDomain;
-@property(retain, nonatomic) LSApplicationProxy *appProxy; // @synthesize appProxy=_appProxy;
-- (void).cxx_destruct;
+@property(retain, nonatomic) LSApplicationRecord *appRecord; // @synthesize appRecord=_appRecord;
+@property(retain) NSString *name; // @synthesize name=_name;
+@property(retain) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(retain) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+- (void)refreshAppState;
 - (void)updateSpecialSize;
 @property(readonly) NSDate *installDate;
 @property(readonly) NSDate *lastUsedDate;
@@ -64,12 +79,10 @@
 @property(readonly) NSString *bundleVersion;
 @property(readonly) NSString *versionString;
 @property(readonly) NSString *vendorName;
-@property(readonly) NSString *appIdentifier;
-@property(readonly) NSString *bundleIdentifier;
-@property(readonly) NSString *name;
-- (_Bool)valueForBooleanInfoKey:(id)arg1;
-- (void)reloadProxy;
-- (id)initWithApplicationProxy:(id)arg1;
+@property(readonly, nonatomic) LSApplicationProxy *appProxy;
+- (void)loadInfo;
+- (id)initWithApplicationIdentifier:(id)arg1;
+- (id)initWithApplicationRecord:(id)arg1;
 
 @end
 

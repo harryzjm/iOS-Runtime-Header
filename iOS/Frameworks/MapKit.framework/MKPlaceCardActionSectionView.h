@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKPlaceCardActionItem, MKPlatterView, NSLayoutConstraint, UIButton;
+@class MKPlaceCardActionItem, NSLayoutConstraint, UIButton, UIView;
 @protocol MKPlaceCardActionSectionViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,19 +22,19 @@ __attribute__((visibility("hidden")))
     UIButton *_rightButton;
     UIButton *_leftButton;
     id <MKPlaceCardActionSectionViewDelegate> _delegate;
-    MKPlatterView *_platterView;
+    UIView *_accessoryView;
 }
 
 + (void)_setButtonString:(id)arg1 forActionItem:(id)arg2 isLeftItem:(_Bool)arg3;
 + (id)_font:(_Bool)arg1;
-@property(retain, nonatomic) MKPlatterView *platterView; // @synthesize platterView=_platterView;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(nonatomic) __weak id <MKPlaceCardActionSectionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIButton *leftButton; // @synthesize leftButton=_leftButton;
 @property(retain, nonatomic) UIButton *rightButton; // @synthesize rightButton=_rightButton;
 @property(nonatomic) _Bool singleItemIsFullWidth; // @synthesize singleItemIsFullWidth=_singleItemIsFullWidth;
 @property(retain, nonatomic) MKPlaceCardActionItem *rightItem; // @synthesize rightItem=_rightItem;
 @property(retain, nonatomic) MKPlaceCardActionItem *leftItem; // @synthesize leftItem=_leftItem;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (void)_rightButtonIsPressed:(id)arg1;

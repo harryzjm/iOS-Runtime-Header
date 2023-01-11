@@ -16,9 +16,11 @@
     GEORPFeedbackResult *_feedbackResult;
     int _feedbackRequestType;
     int _status;
+    _Bool _discardLogs;
     struct {
         unsigned int has_feedbackRequestType:1;
         unsigned int has_status:1;
+        unsigned int has_discardLogs:1;
     } _flags;
 }
 
@@ -34,8 +36,13 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDiscardLogs;
+@property(nonatomic) _Bool discardLogs;
 @property(retain, nonatomic) GEORPFeedbackResult *feedbackResult;
 @property(readonly, nonatomic) _Bool hasFeedbackResult;
 - (int)StringAsFeedbackRequestType:(id)arg1;

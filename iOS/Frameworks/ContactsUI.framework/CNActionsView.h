@@ -7,38 +7,37 @@
 #import <UIKit/UIView.h>
 
 #import <ContactsUI/CNActionViewDelegate-Protocol.h>
+#import <ContactsUI/NUIContainerViewDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSObject, NSString, NUIContainerStackView, UIFont;
 @protocol CNActionsViewProtocol;
 
-@interface CNActionsView : UIView <CNActionViewDelegate>
+@interface CNActionsView : UIView <CNActionViewDelegate, NUIContainerViewDelegate>
 {
     NSObject<CNActionsViewProtocol> *_actionsDelegate;
     NSArray *_sortedActionTypes;
     double _spacing;
     long long _style;
-    NUIContainerStackView *_stackView;
     NSMutableDictionary *_actionItemsByType;
     NSMutableDictionary *_actionViewsByType;
     UIFont *_titleFont;
+    NUIContainerStackView *_containerView;
 }
 
-+ (struct CGSize)intrinsicContentSizeForHorizontalLayoutForActionsViews:(id)arg1 spacing:(double)arg2;
-+ (struct CGSize)intrinsicContentSizeForVerticalLayoutForActionsViews:(id)arg1 spacing:(double)arg2;
 + (long long)axisWithTitlesPresent:(_Bool)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NUIContainerStackView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property(retain, nonatomic) NSMutableDictionary *actionViewsByType; // @synthesize actionViewsByType=_actionViewsByType;
 @property(retain, nonatomic) NSMutableDictionary *actionItemsByType; // @synthesize actionItemsByType=_actionItemsByType;
-@property(retain, nonatomic) NUIContainerStackView *stackView; // @synthesize stackView=_stackView;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) double spacing; // @synthesize spacing=_spacing;
 @property(copy, nonatomic) NSArray *sortedActionTypes; // @synthesize sortedActionTypes=_sortedActionTypes;
 @property(nonatomic) __weak NSObject<CNActionsViewProtocol> *actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
-- (void).cxx_destruct;
+- (_Bool)actionViewShouldPresentDisambiguationUI:(id)arg1;
 - (void)didPressActionView:(id)arg1 longPress:(_Bool)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
-- (void)didMoveToWindow;
 - (void)resetActions;
 - (void)updateAxis;
 - (void)updateActionItem:(id)arg1;

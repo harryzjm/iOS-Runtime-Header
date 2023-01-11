@@ -6,12 +6,13 @@
 
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
 #import <MarkupUI/PDFAKControllerDelegateProtocol-Protocol.h>
+#import <MarkupUI/PDFDocumentDelegate-Protocol.h>
 #import <MarkupUI/PDFViewDelegatePrivate-Protocol.h>
 #import <MarkupUI/_UIViewBoundingPathChangeObserver-Protocol.h>
 
 @class MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIScrollView, UIView;
 
-@interface MUPDFContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, MUContentViewControllerProtocol>
+@interface MUPDFContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, PDFDocumentDelegate, MUContentViewControllerProtocol>
 {
     PDFDocument *_pdfDocument;
     _Bool _showsThumbnailView;
@@ -36,6 +37,7 @@
     struct UIEdgeInsets _cachedThumnailViewInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets cachedThumnailViewInsets; // @synthesize cachedThumnailViewInsets=_cachedThumnailViewInsets;
 @property _Bool didSetup; // @synthesize didSetup=_didSetup;
 @property _Bool viewTransitionPreviousAutoscalingState; // @synthesize viewTransitionPreviousAutoscalingState=_viewTransitionPreviousAutoscalingState;
@@ -57,7 +59,6 @@
 @property(retain) NSArray *sourceContentReplacedAnnotationMaps; // @synthesize sourceContentReplacedAnnotationMaps=_sourceContentReplacedAnnotationMaps;
 @property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property(readonly) PDFDocument *pdfDocument; // @synthesize pdfDocument=_pdfDocument;
-- (void).cxx_destruct;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_userChangedScrollViewMagnificationNotification:(id)arg1;
 - (void)_updateMinMaxZoomFactor;
@@ -107,6 +108,7 @@
 - (_Bool)_canShowWhileLocked;
 - (void)dealloc;
 - (id)initWithPDFDocument:(id)arg1 delegate:(id)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
 
 // Remaining properties
 @property(nonatomic) _Bool centersIgnoringContentInsets;

@@ -30,7 +30,7 @@
 - (id)initWithContextGroupRef:(struct OpaqueJSContextGroup *)arg1;
 - (id)init;
 - (_Bool)isWebThreadAware;
-- (struct VM *)vm;
+@property(readonly) struct OpaqueJSContextGroup *JSContextGroupRef;
 - (void)shrinkFootprintWhenIdle;
 - (id)externalRememberedSet;
 - (id)externalObjectGraph;

@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class UIColor;
+
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateViewConfiguration : NSObject
 {
@@ -18,11 +20,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldUsePredictionViewSecureRenderTraits; // @synthesize shouldUsePredictionViewSecureRenderTraits=_shouldUsePredictionViewSecureRenderTraits;
 @property(readonly, nonatomic) _Bool shouldAlwaysShowSortControl; // @synthesize shouldAlwaysShowSortControl=_shouldAlwaysShowSortControl;
 @property(nonatomic) _Bool darkKeyboard; // @synthesize darkKeyboard=_darkKeyboard;
+@property(readonly, nonatomic) int inlineFloatingViewAdjustMode;
+@property(readonly, nonatomic) UIColor *highlightedBackgroundColor;
 @property(readonly, nonatomic) struct CGSize preferredInlineFloatingViewSize;
 @property(readonly, nonatomic) _Bool allowsPullDownGesture;
 @property(readonly, nonatomic) _Bool willCoverKeyboardLayout;
 - (_Bool)usesReducedFontSize;
 - (double)candidateDefaultFontSize;
+- (id)candidateFontWithSize:(double)arg1 language:(id)arg2;
 - (id)candidateFontWithSize:(double)arg1;
 @property(readonly, nonatomic) _Bool shouldResizeKeyboardBackdrop;
 @property(readonly, nonatomic) unsigned long long maxNumberOfProactiveCandidates;

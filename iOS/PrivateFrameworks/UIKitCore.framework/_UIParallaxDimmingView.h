@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, UIView, UIVisualEffectView;
+@class UIColor, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UIParallaxDimmingView
 {
-    UIVisualEffectView *leftEdgeFade;
+    UIImageView *leftEdgeFade;
     _Bool _backgroundIsDimmed;
     UIColor *_dimmingColor;
     UIView *_addingSubview;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *addingSubview; // @synthesize addingSubview=_addingSubview;
 @property(nonatomic) _Bool backgroundIsDimmed; // @synthesize backgroundIsDimmed=_backgroundIsDimmed;
 @property(retain, nonatomic) UIColor *dimmingColor; // @synthesize dimmingColor=_dimmingColor;
-- (void).cxx_destruct;
 - (void)crossFade;
 - (id)_basicAnimationWithKeyPath:(id)arg1;
 - (void)didMoveToWindow;

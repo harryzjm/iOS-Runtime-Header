@@ -48,6 +48,7 @@
     int _coverArticleDisplayRank;
     int _coverArticleFeatureType;
     NSString *_creativeId;
+    NSString *_curatedBatchId;
     int _curatedContentType;
     int _displayRank;
     NSString *_exposedGroupSourceChannelId;
@@ -67,6 +68,7 @@
     int _groupPresentationReason;
     int _groupType;
     NSData *_groupViewExposureId;
+    int _heroArticleType;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
@@ -98,6 +100,7 @@
     NSString *_previousWebEmbedId;
     int _previousWebEmbedLocation;
     int _publisherArticleVersion;
+    NSMutableArray *_purchaseOffersItems;
     int _rankInVideoPlaylist;
     NSString *_referencedArticleId;
     NSString *_referringSourceApplication;
@@ -114,8 +117,10 @@
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
     int _topStoryType;
+    NSMutableArray *_topicIds;
     NSString *_userActivityType;
     NSString *_viewFrameInScreen;
+    NSString *_webEmbedId;
     int _widgetArticleRank;
     COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement *_widgetEngagement;
     int _widgetSection;
@@ -126,6 +131,8 @@
     _Bool _didBounce;
     _Bool _didExpandDuringView;
     _Bool _didOpenInSafari;
+    _Bool _isAudioEligible;
+    _Bool _isAudioEngaged;
     _Bool _isBreakingNewsArticle;
     _Bool _isCoverArticle;
     _Bool _isDigitalReplicaAd;
@@ -144,12 +151,21 @@
     _Bool _isVideoInFeed;
     _Bool _subscriptionOnlyArticle;
     _Bool _viewFromNotificationDirectOpen;
-    CDStruct_803929fe _has;
+    CDStruct_5b8c9b53 _has;
 }
 
++ (Class)purchaseOffersItemType;
++ (Class)topicIdsType;
 + (Class)surfacedByTagIdsType;
 + (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *purchaseOffersItems; // @synthesize purchaseOffersItems=_purchaseOffersItems;
+@property(retain, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;
+@property(nonatomic) _Bool isAudioEngaged; // @synthesize isAudioEngaged=_isAudioEngaged;
+@property(nonatomic) _Bool isAudioEligible; // @synthesize isAudioEligible=_isAudioEligible;
+@property(retain, nonatomic) NSString *curatedBatchId; // @synthesize curatedBatchId=_curatedBatchId;
+@property(retain, nonatomic) NSString *webEmbedId; // @synthesize webEmbedId=_webEmbedId;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSIssueViewContextData *issueViewContextData; // @synthesize issueViewContextData=_issueViewContextData;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSChannelData *channelData; // @synthesize channelData=_channelData;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
@@ -257,7 +273,6 @@
 @property(nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property(retain, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property(retain, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -267,6 +282,22 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)purchaseOffersItemAtIndex:(unsigned long long)arg1;
+- (unsigned long long)purchaseOffersItemsCount;
+- (void)addPurchaseOffersItem:(id)arg1;
+- (void)clearPurchaseOffersItems;
+- (id)topicIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicIdsCount;
+- (void)addTopicIds:(id)arg1;
+- (void)clearTopicIds;
+@property(nonatomic) _Bool hasIsAudioEngaged;
+@property(nonatomic) _Bool hasIsAudioEligible;
+@property(readonly, nonatomic) _Bool hasCuratedBatchId;
+@property(readonly, nonatomic) _Bool hasWebEmbedId;
+- (int)StringAsHeroArticleType:(id)arg1;
+- (id)heroArticleTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasHeroArticleType;
+@property(nonatomic) int heroArticleType; // @synthesize heroArticleType=_heroArticleType;
 @property(readonly, nonatomic) _Bool hasIssueViewContextData;
 @property(readonly, nonatomic) _Bool hasChannelData;
 - (int)StringAsRole:(id)arg1;

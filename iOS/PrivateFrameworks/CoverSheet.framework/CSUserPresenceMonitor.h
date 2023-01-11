@@ -8,7 +8,7 @@
 
 #import <CoverSheet/CSEventHandling-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSHashTable, NSMutableSet, NSString;
 @protocol BSInvalidatable, SBUIBiometricResource;
 
 @interface CSUserPresenceMonitor : NSObject <CSEventHandling>
@@ -16,17 +16,22 @@
     id <SBUIBiometricResource> _biometricResource;
     NSMutableSet *_activationReasons;
     id <BSInvalidatable> _faceDetectAssertion;
+    NSHashTable *_observers;
     _Bool _userPresenceDetectedSinceWake;
 }
 
-@property(readonly, nonatomic) _Bool userPresenceDetectedSinceWake; // @synthesize userPresenceDetectedSinceWake=_userPresenceDetectedSinceWake;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool userPresenceDetectedSinceWake; // @synthesize userPresenceDetectedSinceWake=_userPresenceDetectedSinceWake;
 - (void)_updateFaceDetectionState;
 - (_Bool)_isFaceDetectPermitted;
 - (_Bool)_handleBiometricEvent:(unsigned long long)arg1;
+- (void)_setUserPresenceDetectedSinceWake:(_Bool)arg1;
 - (_Bool)handleEvent:(id)arg1;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
+- (void)conformsToCSEventHandling;
 - (_Bool)isUserPresenceDetectionSupported;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)disableDetectionForReason:(id)arg1;
 - (void)enableDetectionForReason:(id)arg1;
 - (void)dealloc;

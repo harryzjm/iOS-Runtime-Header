@@ -4,24 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVVoiceTriggerClient;
+#import <CoreSpeech/CSAudioServerCrashEventProvidingDelegate-Protocol.h>
 
-@interface CSAudioServerCrashMonitor
+@class AVVoiceTriggerClient, NSString;
+
+@interface CSAudioServerCrashMonitor <CSAudioServerCrashEventProvidingDelegate>
 {
     unsigned long long _serverState;
     AVVoiceTriggerClient *_alwaysOnProcessorController;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVVoiceTriggerClient *alwaysOnProcessorController; // @synthesize alwaysOnProcessorController=_alwaysOnProcessorController;
 @property(nonatomic) unsigned long long serverState; // @synthesize serverState=_serverState;
-- (void).cxx_destruct;
+- (void)audioServerCrashEventProvidingLostMediaserverd;
 - (void)_notifyObserver:(id)arg1 withMediaserverState:(unsigned long long)arg2;
 - (void)_didReceiveMediaserverNotification:(unsigned long long)arg1;
 - (void)_mediaserverdDidRestart;
 - (void)_startMonitoringWithQueue:(id)arg1;
-- (void)notifyAudioServerCrash;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

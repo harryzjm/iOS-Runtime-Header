@@ -16,13 +16,14 @@
     UIViewController *_viewController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(nonatomic) __weak HUServiceDetailsItemManager *itemManager; // @synthesize itemManager=_itemManager;
-- (void).cxx_destruct;
 - (id)unifiedIdentifiersForSectionIdentifier:(id)arg1;
 - (id)privacyIdentifierForSectionIdentifier:(id)arg1;
 - (void)displayPrivacyInformationWithIdentifier:(id)arg1;
 - (void)displayUnifiedPrivacyInformationWithIdentifiers:(id)arg1;
+- (void)dismissTextViewController;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 
 // Remaining properties

@@ -11,10 +11,12 @@
 @protocol PXGItemsLayoutDelegate <NSObject>
 
 @optional
-- (struct _NSRange)rangeOfItemsToPreventUnloadingInItemsLayout:(PXGItemsLayout *)arg1;
 - (void)itemsLayout:(PXGItemsLayout *)arg1 updateTagsInSpriteInfos:(CDStruct_9d1ebe49 *)arg2 forItemsInRange:(struct _NSRange)arg3;
+- (unsigned short)itemsLayout:(PXGItemsLayout *)arg1 effectIdForItem:(long long)arg2;
 - (struct CGRect)itemsLayout:(PXGItemsLayout *)arg1 bestCropRectForItem:(long long)arg2 withAspectRatio:(double)arg3;
 - (double)itemsLayout:(PXGItemsLayout *)arg1 aspectRatioForItem:(long long)arg2;
-- (long long)itemsLayout:(PXGItemsLayout *)arg1 itemForObjectReference:(id)arg2;
+- (id)itemsLayout:(PXGItemsLayout *)arg1 objectReferenceForAccessoryItem:(long long)arg2;
+- (id)itemsLayout:(PXGItemsLayout *)arg1 objectReferenceForItem:(long long)arg2;
+- (long long)itemsLayout:(PXGItemsLayout *)arg1 itemForObjectReference:(id)arg2 options:(unsigned long long)arg3;
 @end
 

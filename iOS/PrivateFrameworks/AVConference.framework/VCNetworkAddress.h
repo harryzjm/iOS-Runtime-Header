@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned short port; // @synthesize port=_port;
 @property(copy, nonatomic) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
 @property(copy, nonatomic) NSString *ip; // @synthesize ip=_ip;
+- (int)getSockaddrStorage:(struct sockaddr_storage *)arg1 size:(unsigned long long *)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (_Bool)isEqual:(id)arg1;
 - (_Bool)isIPv6;
 - (void)dealloc;
 

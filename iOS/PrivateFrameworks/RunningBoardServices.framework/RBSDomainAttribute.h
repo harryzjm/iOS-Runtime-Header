@@ -15,14 +15,14 @@
 
 + (id)attributeWithDomain:(id)arg1 name:(id)arg2 sourceEnvironment:(id)arg3;
 + (id)attributeWithDomain:(id)arg1 name:(id)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *sourceEnvironment; // @synthesize sourceEnvironment=_sourceEnvironment;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (void).cxx_destruct;
 - (id)_initWithDomain:(id)arg1 name:(id)arg2 sourceEnvironment:(id)arg3;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)succinctDescriptionBuilder;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *fullyQualifiedName;

@@ -14,9 +14,9 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 @property(retain, nonatomic) NSNumber *maxEntries; // @synthesize maxEntries=_maxEntries;
-- (void).cxx_destruct;
 
 @end
 

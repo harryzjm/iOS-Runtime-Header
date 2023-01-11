@@ -8,17 +8,20 @@
 
 @interface SBIconDotLabelAccessoryView
 {
-    UIImageView *_plusLView;
-    UIImageView *_plusDView;
+    UIImageView *_imageView;
 }
 
-+ (id)_dotPlusDColor;
-+ (id)_dotPlusLColor;
++ (void)_setCachedDotImage:(id)arg1;
++ (id)_cachedDotImage;
++ (struct CAColorMatrix)_vibrantColorMatrixInput;
++ (id)_dotColor;
 + (id)labelAccessorySystemImageName;
 - (void).cxx_destruct;
+- (id)lastBaselineAnchor;
+- (id)firstBaselineAnchor;
 - (struct CGSize)intrinsicContentSize;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)updateWithBaseImage:(id)arg1 legibilitySettings:(id)arg2;
+- (void)updateWithLegibilitySettings:(id)arg1 labelFont:(id)arg2;
 
 @end
 

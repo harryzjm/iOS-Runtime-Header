@@ -17,6 +17,7 @@
     UIScrollView *_scrollView;
     unsigned long long _state;
     unsigned long long _stateOnRetry;
+    _Bool _startedInitialIngestion;
     PKContactlessCardIngester *_cardIngester;
     PKPaymentContactlessProductCredential *_paymentCredential;
     PKPaymentPass *_paymentPass;
@@ -38,13 +39,13 @@
     PKPaymentWebService *_webService;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 @property(readonly, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 @property(readonly, nonatomic) PKPaymentSetupFieldsModel *fieldsModel; // @synthesize fieldsModel=_fieldsModel;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property(nonatomic) long long context; // @synthesize context=_context;
 @property(readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
-- (void).cxx_destruct;
 - (id)newPaymentProvisioningRequest;
 - (id)newPaymentEligibilityRequest;
 - (void)_showError:(id)arg1 retry:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -81,7 +82,7 @@
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)_setIdleTimerDisabled:(_Bool)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;

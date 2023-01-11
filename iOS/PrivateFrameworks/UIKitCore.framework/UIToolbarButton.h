@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, UILabel, UIView;
+@class UIColor, UILabel, _UIToolbarNavigationButton;
 
 @interface UIToolbarButton
 {
     struct CGRect _hitRect;
-    UIView *_info;
+    _UIToolbarNavigationButton *_info;
     UILabel *_label;
     long long _barStyle;
     long long _style;

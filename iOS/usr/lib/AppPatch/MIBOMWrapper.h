@@ -11,7 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)extractZipArchiveAtURL:(id)arg1 toURL:(id)arg2 withError:(id *)arg3 extractionProgressBlock:(CDUnknownBlockType)arg4;
 + (_Bool)extractZipArchiveAtURL:(id)arg1 toURL:(id)arg2 withError:(id *)arg3;
++ (_Bool)_countFilesAndBytesInArchiveAtURL:(id)arg1 withBOMCopier:(struct _BOMCopier *)arg2 totalFiles:(unsigned long long *)arg3 totalUncompressedBytes:(unsigned long long *)arg4 error:(id *)arg5;
 
 @end
 

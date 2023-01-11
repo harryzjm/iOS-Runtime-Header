@@ -9,23 +9,27 @@
 #import <PhotosUI/PUPhotoPickerSelectionHandler-Protocol.h>
 #import <PhotosUI/PUPhotoPickerServicesConsumer-Protocol.h>
 #import <PhotosUI/PUVideoPlayerViewDelegate-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ISAnimatedImageView, NSString, NSURL, PHAsset, PHLivePhotoView, PUBrowsingIrisPlayer, PUVideoPlayerView;
-@protocol PUPhotoPicker;
+@class ISAnimatedImageView, NSString, NSURL, PHAsset, PHLivePhotoView, PUBrowsingIrisPlayer, PUPhotoPickerResizeTaskDescriptorViewModel, PUVideoPlayerView;
+@protocol PUPhotoPicker, PUUIImageViewControllerFileResizingDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUUIImageViewController : PLUIImageViewController <UIGestureRecognizerDelegate, PUVideoPlayerViewDelegate, PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler>
+@interface PUUIImageViewController : PLUIImageViewController <UIGestureRecognizerDelegate, PUVideoPlayerViewDelegate, PXChangeObserver, PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler>
 {
     _Bool _isIris;
     _Bool _isAutoloop;
     _Bool _isAnimatedImage;
     _Bool _wantsLivePhotoResult;
     _Bool _wantsVideoURLResult;
+    _Bool _showFileResizingOption;
     PHAsset *_asset;
     int __imageManagerVideoRequestID;
     int __animatedImageRequestID;
     id <PUPhotoPicker> _photoPicker;
+    id <PUUIImageViewControllerFileResizingDelegate> _fileResizingDelegate;
+    PUPhotoPickerResizeTaskDescriptorViewModel *_resizeTaskDescriptorViewModel;
     PUBrowsingIrisPlayer *__irisPlayer;
     PHLivePhotoView *__livePhotoView;
     PUVideoPlayerView *__autoloopView;
@@ -34,6 +38,7 @@ __attribute__((visibility("hidden")))
     NSURL *__assetURL;
 }
 
+- (void).cxx_destruct;
 @property(setter=_setAnimatedImageRequestID:) int _animatedImageRequestID; // @synthesize _animatedImageRequestID=__animatedImageRequestID;
 @property(setter=_setImageManagerVideoRequestID:) int _imageManagerVideoRequestID; // @synthesize _imageManagerVideoRequestID=__imageManagerVideoRequestID;
 @property(retain, nonatomic, setter=_setAssetURL:) NSURL *_assetURL; // @synthesize _assetURL=__assetURL;
@@ -42,11 +47,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setAutoloopView:) PUVideoPlayerView *_autoloopView; // @synthesize _autoloopView=__autoloopView;
 @property(retain, nonatomic, setter=_setLivePhotoView:) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
 @property(retain, nonatomic) PUBrowsingIrisPlayer *_irisPlayer; // @synthesize _irisPlayer=__irisPlayer;
+@property(nonatomic) __weak PUPhotoPickerResizeTaskDescriptorViewModel *resizeTaskDescriptorViewModel; // @synthesize resizeTaskDescriptorViewModel=_resizeTaskDescriptorViewModel;
+@property(nonatomic) __weak id <PUUIImageViewControllerFileResizingDelegate> fileResizingDelegate; // @synthesize fileResizingDelegate=_fileResizingDelegate;
 @property(nonatomic) __weak id <PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
-- (void).cxx_destruct;
 - (_Bool)_isPhotosPickerExtensionAvailable;
 - (void)performPhotoPickerSelection;
 - (void)setPhotoPickerMediaTypes:(id)arg1;
+- (_Bool)pu_wantsNavigationBarVisible;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)cropOverlayFileResizingSelected:(id)arg1;
+- (int)cropOverlayMode;
 - (_Bool)isDisplayedInPhotoPicker;
 - (_Bool)uiipc_useTelephonyUI;
 - (_Bool)wantsLegacyImageUI;
@@ -90,8 +100,10 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)setIrisPlayer:(id)arg1;
 - (void)loadView;
+- (void)dealloc;
 - (id)initWithPhoto:(id)arg1 imagePickerProperties:(id)arg2 expectsLivePhoto:(_Bool)arg3;
 
 // Remaining properties

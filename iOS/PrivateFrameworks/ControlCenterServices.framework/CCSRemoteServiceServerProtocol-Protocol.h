@@ -10,7 +10,9 @@
 
 @protocol CCSRemoteServiceServerProtocol <NSObject>
 - (void)presentModuleWithIdentifier:(NSString *)arg1 options:(CCSModulePresentationOptions *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (void)requestEnableModuleWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)setVisibility:(_Bool)arg1 forModuleWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)requestDisableModuleWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)requestEnableModuleWithIdentifier:(NSString *)arg1 force:(_Bool)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)getEnabledStateOfModuleWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(unsigned long long))arg2;
 - (void)requestAvailableModuleIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 @end

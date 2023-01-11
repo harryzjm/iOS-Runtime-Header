@@ -9,6 +9,7 @@
 @class NSBundle, NSString, UIApplication, UIWindow, WFApplicationContext;
 
 @protocol WFApplicationContextProvider <NSObject>
+- (_Bool)shouldReverseLayoutDirection;
 - (UIApplication *)applicationForWFApplicationContext:(WFApplicationContext *)arg1;
 - (UIWindow *)keyWindowForWFApplicationContext:(WFApplicationContext *)arg1;
 - (NSString *)notificationNameForApplicationStateEvent:(long long)arg1 applicationContext:(WFApplicationContext *)arg2;
@@ -16,6 +17,7 @@
 - (NSBundle *)bundleForWFApplicationContext:(WFApplicationContext *)arg1;
 
 @optional
+@property(readonly, nonatomic) long long userInterfaceStyle;
 @property(nonatomic) _Bool wfIdleTimerDisabled;
 - (long long)currentApplicationStateForWFApplicationContext:(WFApplicationContext *)arg1;
 @end

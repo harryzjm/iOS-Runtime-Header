@@ -18,11 +18,15 @@
     _Bool _wantsDockWindowLevelAssertion;
     SBCoplanarSwitcherModifier *_coplanarModifier;
     _Bool _shouldAcceleratedHomeButtonPressBegin;
+    _Bool _shouldUpdateIconViewVisibility;
+    _Bool _shouldMatchMoveToIconView;
 }
 
 - (void).cxx_destruct;
-- (double)_normalizedHomeScreenTargetZoomPercentBetweenCenterAndEdge;
-- (double)_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom;
+@property(nonatomic) _Bool shouldMatchMoveToIconView; // @synthesize shouldMatchMoveToIconView=_shouldMatchMoveToIconView;
+@property(nonatomic) _Bool shouldUpdateIconViewVisibility; // @synthesize shouldUpdateIconViewVisibility=_shouldUpdateIconViewVisibility;
+- (double)_normalizedHomeScreenTargetZoomPercentBetweenCenterAndEdge:(struct CGPoint)arg1;
+- (double)_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom:(struct CGPoint)arg1;
 - (id)_settingsByInterpolatingBetween:(id)arg1 and:(id)arg2 progress:(double)arg3;
 - (_Bool)_isIndexZoomAppLayout:(unsigned long long)arg1;
 - (_Bool)_isEffectivelyHome;
@@ -33,25 +37,28 @@
 - (_Bool)wantsDockBehaviorAssertion;
 - (_Bool)shouldFireTransitionCompletionInDefaultRunLoopMode;
 - (_Bool)shouldAcceleratedHomeButtonPressBegin;
-- (id)topMostAppLayouts;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)topMostLayoutElements;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)homeScreenAlpha;
+- (_Bool)shouldScaleOverlayToFillBoundsAtIndex:(unsigned long long)arg1;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)layoutSettingsForTargetCenter:(struct CGPoint)arg1;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;
-- (_Bool)asynchronouslyRendersUntilDelay:(inout double *)arg1;
+- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 direction:(unsigned long long)arg3;
 

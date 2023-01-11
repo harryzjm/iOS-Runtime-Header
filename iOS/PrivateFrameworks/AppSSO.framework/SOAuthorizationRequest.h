@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSError, NSString, NSURL, SOAuthorizationCredential, SOAuthorizationRequestParameters, SORemoteExtensionContext;
+@class NSData, NSDictionary, NSError, NSString, NSURL, SOAuthorizationCredential, SOAuthorizationRequestParameters;
+@protocol SOHostExtensionContextProtocol;
 
 @interface SOAuthorizationRequest : NSObject
 {
     SOAuthorizationRequestParameters *_requestParameters;
-    SORemoteExtensionContext *_remoteExtensionContext;
+    id <SOHostExtensionContextProtocol> _hostExtensionContext;
     _Bool _authorizationCanceled;
     SOAuthorizationCredential *_canceledAuthorizationCredential;
     NSError *_canceledAuthorizationError;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *canceledAuthorizationError; // @synthesize canceledAuthorizationError=_canceledAuthorizationError;
 @property(retain, nonatomic) SOAuthorizationCredential *canceledAuthorizationCredential; // @synthesize canceledAuthorizationCredential=_canceledAuthorizationCredential;
 @property(nonatomic, getter=isAuthorizationCanceled) _Bool authorizationCanceled; // @synthesize authorizationCanceled=_authorizationCanceled;
-- (void).cxx_destruct;
 - (_Bool)_isUserInterfaceAllowed;
-- (id)_hostExtensionContext;
+@property(retain, nonatomic) NSString *localizedCallerDisplayName;
+@property(retain, nonatomic) NSString *callerTeamIdentifier;
+@property(nonatomic, getter=isCallerManaged) _Bool callerManaged;
 @property(retain, nonatomic) NSDictionary *authorizationOptions;
+@property(retain, nonatomic) NSData *auditTokenData;
 @property(retain, nonatomic) NSString *callerBundleIdentifier;
 @property(retain, nonatomic) NSDictionary *extensionData;
 @property(retain, nonatomic) NSString *realm;
@@ -38,7 +42,7 @@
 - (void)complete;
 - (void)cancel;
 - (void)doNotHandle;
-- (id)initWithRequestParameters:(id)arg1 remoteExtensionContext:(id)arg2;
+- (id)initWithRequestParameters:(id)arg1 hostExtensionContext:(id)arg2;
 
 @end
 

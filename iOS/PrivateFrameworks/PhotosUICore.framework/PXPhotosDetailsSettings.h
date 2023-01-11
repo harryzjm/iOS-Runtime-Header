@@ -8,6 +8,7 @@
 {
     _Bool _showHeaderWidget;
     _Bool _showAssetsWidget;
+    _Bool _showCaptionHashtagsWidget;
     _Bool _showDemoTilingViewWidget;
     _Bool _showVariationsWidget;
     _Bool _showDemoViewWidget;
@@ -24,6 +25,7 @@
     _Bool _allowMultiColumnLayout;
     _Bool _allowZoomTransitions;
     _Bool _allowPinchTransitions;
+    _Bool _allowsTopTrailingSelectCancelButton;
     _Bool _purgeOnMemoryWarning;
     _Bool _useCuratedLibraryLayout;
     _Bool _editorialLayoutEdit;
@@ -31,6 +33,10 @@
     _Bool _allowEditorialLayoutStressTest;
     _Bool _enableDebugCurationBadge;
     _Bool _placesWidgetShowOnlyPlaceholder;
+    _Bool _captionWidgetEnableHashtags;
+    _Bool _captionWidgetEnableVScrollingInEdit;
+    _Bool _captionWidgetEnableFadeInEffect;
+    _Bool _captionWidgetEnableDirectAttachToMaster;
     _Bool _peopleWidgetDisableSocialGroup;
     _Bool _addToTabSimulate;
     double _defaultPriorityWidgetsLoadingDelay;
@@ -41,6 +47,7 @@
     long long _editorialLayoutActivityFeedItemCountThreshold;
     double _assetsWidgetPlaceholderAspectRatio;
     long long _debugBadgeInfoType;
+    double _captionWidgetFadeInDuration;
     long long _peopleWidgetMaximumNumberOfPeople;
     double _addToTabOpacity;
     double _addToTabDuration;
@@ -64,6 +71,11 @@
 @property(nonatomic) _Bool addToTabSimulate; // @synthesize addToTabSimulate=_addToTabSimulate;
 @property(nonatomic) long long peopleWidgetMaximumNumberOfPeople; // @synthesize peopleWidgetMaximumNumberOfPeople=_peopleWidgetMaximumNumberOfPeople;
 @property(nonatomic) _Bool peopleWidgetDisableSocialGroup; // @synthesize peopleWidgetDisableSocialGroup=_peopleWidgetDisableSocialGroup;
+@property(nonatomic) _Bool captionWidgetEnableDirectAttachToMaster; // @synthesize captionWidgetEnableDirectAttachToMaster=_captionWidgetEnableDirectAttachToMaster;
+@property(nonatomic) double captionWidgetFadeInDuration; // @synthesize captionWidgetFadeInDuration=_captionWidgetFadeInDuration;
+@property(nonatomic) _Bool captionWidgetEnableFadeInEffect; // @synthesize captionWidgetEnableFadeInEffect=_captionWidgetEnableFadeInEffect;
+@property(nonatomic) _Bool captionWidgetEnableVScrollingInEdit; // @synthesize captionWidgetEnableVScrollingInEdit=_captionWidgetEnableVScrollingInEdit;
+@property(nonatomic) _Bool captionWidgetEnableHashtags; // @synthesize captionWidgetEnableHashtags=_captionWidgetEnableHashtags;
 @property(nonatomic) _Bool placesWidgetShowOnlyPlaceholder; // @synthesize placesWidgetShowOnlyPlaceholder=_placesWidgetShowOnlyPlaceholder;
 @property(nonatomic) long long debugBadgeInfoType; // @synthesize debugBadgeInfoType=_debugBadgeInfoType;
 @property(nonatomic) _Bool enableDebugCurationBadge; // @synthesize enableDebugCurationBadge=_enableDebugCurationBadge;
@@ -78,6 +90,7 @@
 @property(nonatomic) long long curationAlgorithm; // @synthesize curationAlgorithm=_curationAlgorithm;
 @property(nonatomic) long long detailViewsToKeepLoaded; // @synthesize detailViewsToKeepLoaded=_detailViewsToKeepLoaded;
 @property(nonatomic) _Bool purgeOnMemoryWarning; // @synthesize purgeOnMemoryWarning=_purgeOnMemoryWarning;
+@property(nonatomic) _Bool allowsTopTrailingSelectCancelButton; // @synthesize allowsTopTrailingSelectCancelButton=_allowsTopTrailingSelectCancelButton;
 @property(nonatomic) _Bool allowPinchTransitions; // @synthesize allowPinchTransitions=_allowPinchTransitions;
 @property(nonatomic) _Bool allowZoomTransitions; // @synthesize allowZoomTransitions=_allowZoomTransitions;
 @property(nonatomic) _Bool allowMultiColumnLayout; // @synthesize allowMultiColumnLayout=_allowMultiColumnLayout;
@@ -95,6 +108,7 @@
 @property(nonatomic) _Bool showDemoViewWidget; // @synthesize showDemoViewWidget=_showDemoViewWidget;
 @property(nonatomic) _Bool showVariationsWidget; // @synthesize showVariationsWidget=_showVariationsWidget;
 @property(nonatomic) _Bool showDemoTilingViewWidget; // @synthesize showDemoTilingViewWidget=_showDemoTilingViewWidget;
+@property(nonatomic) _Bool showCaptionHashtagsWidget; // @synthesize showCaptionHashtagsWidget=_showCaptionHashtagsWidget;
 @property(nonatomic) _Bool showAssetsWidget; // @synthesize showAssetsWidget=_showAssetsWidget;
 @property(nonatomic) _Bool showHeaderWidget; // @synthesize showHeaderWidget=_showHeaderWidget;
 - (struct PXAssetBadgeInfo)debugBadgeInfo;

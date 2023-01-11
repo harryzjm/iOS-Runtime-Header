@@ -8,13 +8,11 @@
 
 @interface SXContainerComponentBlueprint
 {
-    SXLayoutBlueprint *_parentLayoutBlueprint;
     SXLayoutBlueprint *_layoutBlueprint;
 }
 
-@property(retain, nonatomic) SXLayoutBlueprint *layoutBlueprint; // @synthesize layoutBlueprint=_layoutBlueprint;
-- (id)parentLayoutBlueprint;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SXLayoutBlueprint *layoutBlueprint; // @synthesize layoutBlueprint=_layoutBlueprint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setParentLayoutBlueprint:(id)arg1;
 

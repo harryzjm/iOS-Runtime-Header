@@ -13,17 +13,18 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAccessory, HMDSoftwareUpdateModel, HMFMessageDispatcher, HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSArray, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDSoftwareUpdate : HMFObject <HMFLogging, HMFObject, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
 {
+    id <HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     long long _state;
     HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
     NSUUID *_identifier;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    double _installDuration;
     HMFMessageDispatcher *_messageDispatcher;
     HMDAccessory *_accessory;
 }
@@ -32,14 +33,13 @@
 + (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)modelNamespace;
+- (void).cxx_destruct;
 @property __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property(retain, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property(readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property(readonly) double installDuration; // @synthesize installDuration=_installDuration;
 @property(readonly) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;
 @property(readonly, copy) HMFSoftwareVersion *version; // @synthesize version=_version;
 @property(copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
@@ -56,6 +56,8 @@
 - (void)setDocumentationMetadata:(id)arg1;
 @property(readonly) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @synthesize documentationMetadata=_documentationMetadata;
 - (void)_handleUpdateState:(id)arg1;
+- (void)_updateState:(long long)arg1 message:(id)arg2 options:(id)arg3;
+- (void)updateLocalState:(long long)arg1;
 - (void)setState:(long long)arg1;
 @property(readonly) long long state; // @synthesize state=_state;
 - (void)registerForMessages;
@@ -65,7 +67,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)dealloc;
-- (id)__init;
+- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5;
 - (id)initWithModel:(id)arg1;
 
 // Remaining properties

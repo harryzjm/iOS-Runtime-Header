@@ -13,11 +13,10 @@
     unsigned long long _size;
 }
 
-+ (_Bool)supportsSecureCoding;
 @property(nonatomic) unsigned long long size; // @synthesize size=_size;
 - (_Bool)isValid;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

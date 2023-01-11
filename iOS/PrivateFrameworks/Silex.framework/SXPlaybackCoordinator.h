@@ -8,7 +8,7 @@
 
 #import <Silex/SVVideoMetadata-Protocol.h>
 
-@class NSArray, NSError, NSHashTable, NSString, SVKeyValueObserver, SXAVPlayer;
+@class NSArray, NSError, NSHashTable, NSString, SVKeyValueObserver, SVTimeline, SXAVPlayer;
 @protocol SXAVPlayerFactory, SXVideoPlaybackHost, SXVideoProviding;
 
 @interface SXPlaybackCoordinator : NSObject <SVVideoMetadata>
@@ -31,9 +31,14 @@
     SVKeyValueObserver *_muteStateObserver;
     SVKeyValueObserver *_playbackLikelyToKeepUpObserver;
     SVKeyValueObserver *_playbackBufferFullObserver;
+    SVTimeline *_timeline;
+    double _pausedAtTime;
     struct CGSize _dimensions;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
+@property(readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
 @property(retain, nonatomic) SVKeyValueObserver *playbackBufferFullObserver; // @synthesize playbackBufferFullObserver=_playbackBufferFullObserver;
 @property(retain, nonatomic) SVKeyValueObserver *playbackLikelyToKeepUpObserver; // @synthesize playbackLikelyToKeepUpObserver=_playbackLikelyToKeepUpObserver;
 @property(retain, nonatomic) SVKeyValueObserver *muteStateObserver; // @synthesize muteStateObserver=_muteStateObserver;
@@ -53,7 +58,11 @@
 @property(readonly, nonatomic) id <SXVideoProviding> video; // @synthesize video=_video;
 @property(readonly, nonatomic) _Bool playbackBufferFull; // @synthesize playbackBufferFull=_playbackBufferFull;
 @property(readonly, nonatomic) _Bool playbackLikelyToKeepUp; // @synthesize playbackLikelyToKeepUp=_playbackLikelyToKeepUp;
-- (void).cxx_destruct;
+- (_Bool)supportsQuartileTracking;
+- (_Bool)supportImpressionTracking;
+- (void)playbackResumedAtTime:(double)arg1;
+- (void)playbackPausedAtTime:(double)arg1;
+- (void)configureTimeline;
 - (void)removePlayerItemPresentationSizeObserver;
 - (void)addPlayerItemPresentationSizeObserver;
 - (void)muteStateChanged;
@@ -70,7 +79,8 @@
 - (void)playbackResumed;
 - (void)playbackPaused;
 - (void)playbackStarted;
-- (void)playbackInitiated;
+- (void)playbackReadyToStart;
+- (void)playbackInitiatedWithButtonTapped:(_Bool)arg1;
 - (void)setupPlayerWithURL:(id)arg1;
 - (void)loadVideoIfNeeded;
 - (void)load;
@@ -85,7 +95,7 @@
 - (void)removePlaybackObserver:(id)arg1;
 - (void)addPlaybackObserver:(id)arg1;
 - (void)pause;
-- (void)play;
+- (void)playWithButtonTapped:(_Bool)arg1;
 - (id)initWithVideo:(id)arg1 playerFactory:(id)arg2;
 
 // Remaining properties

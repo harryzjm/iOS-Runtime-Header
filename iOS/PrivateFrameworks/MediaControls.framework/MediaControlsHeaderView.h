@@ -6,14 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel;
+#import <MediaControls/_UICursorInteractionDelegate-Protocol.h>
+
+@class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel, _UICursorInteraction;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsHeaderView : UIView
+@interface MediaControlsHeaderView : UIView <_UICursorInteractionDelegate>
 {
     _Bool _transitioning;
+    _Bool _showPlaceholderString;
     _Bool _marqueeEnabled;
     _Bool _routing;
+    _Bool _scalePlaceholderImage;
     _Bool _shouldUseOverrideSize;
     MPCPlayerPath *_playerPath;
     UIImageView *_artworkView;
@@ -22,35 +26,46 @@ __attribute__((visibility("hidden")))
     MPRouteLabel *_routeLabel;
     NSString *_primaryString;
     NSString *_secondaryString;
+    NSString *_placeholderString;
     MediaControlsRoutingButtonView *_routingButton;
     MPButton *_doneButton;
     UIButton *_launchNowPlayingAppButton;
     long long _buttonType;
     MTVisualStylingProvider *_visualStylingProvider;
+    _UICursorInteraction *_cursorInteraction;
     MTMaterialView *_artworkBackground;
     UIView *_shadow;
     MPUMarqueeView *_primaryMarqueeView;
     UILabel *_primaryLabel;
     MPUMarqueeView *_secondaryMarqueeView;
     UILabel *_secondaryLabel;
+    UILabel *_placeholderLabel;
+    UIView *_artworkContentView;
     struct CGSize _overrideSize;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *artworkContentView; // @synthesize artworkContentView=_artworkContentView;
 @property(nonatomic) _Bool shouldUseOverrideSize; // @synthesize shouldUseOverrideSize=_shouldUseOverrideSize;
+@property(retain, nonatomic) UILabel *placeholderLabel; // @synthesize placeholderLabel=_placeholderLabel;
 @property(retain, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property(retain, nonatomic) MPUMarqueeView *secondaryMarqueeView; // @synthesize secondaryMarqueeView=_secondaryMarqueeView;
 @property(retain, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property(retain, nonatomic) MPUMarqueeView *primaryMarqueeView; // @synthesize primaryMarqueeView=_primaryMarqueeView;
 @property(retain, nonatomic) UIView *shadow; // @synthesize shadow=_shadow;
 @property(retain, nonatomic) MTMaterialView *artworkBackground; // @synthesize artworkBackground=_artworkBackground;
+@property(retain, nonatomic) _UICursorInteraction *cursorInteraction; // @synthesize cursorInteraction=_cursorInteraction;
 @property(nonatomic) struct CGSize overrideSize; // @synthesize overrideSize=_overrideSize;
 @property(retain, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
+@property(nonatomic) _Bool scalePlaceholderImage; // @synthesize scalePlaceholderImage=_scalePlaceholderImage;
 @property(nonatomic, getter=isRouting) _Bool routing; // @synthesize routing=_routing;
 @property(nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
 @property(nonatomic) _Bool marqueeEnabled; // @synthesize marqueeEnabled=_marqueeEnabled;
 @property(retain, nonatomic) UIButton *launchNowPlayingAppButton; // @synthesize launchNowPlayingAppButton=_launchNowPlayingAppButton;
 @property(retain, nonatomic) MPButton *doneButton; // @synthesize doneButton=_doneButton;
 @property(retain, nonatomic) MediaControlsRoutingButtonView *routingButton; // @synthesize routingButton=_routingButton;
+@property(nonatomic) _Bool showPlaceholderString; // @synthesize showPlaceholderString=_showPlaceholderString;
+@property(copy, nonatomic) NSString *placeholderString; // @synthesize placeholderString=_placeholderString;
 @property(copy, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;
 @property(copy, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
 @property(retain, nonatomic) MPRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
@@ -59,7 +74,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImageView *placeholderArtworkView; // @synthesize placeholderArtworkView=_placeholderArtworkView;
 @property(retain, nonatomic) UIImageView *artworkView; // @synthesize artworkView=_artworkView;
 @property(copy, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
-- (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (void)launchNowPlayingAppButtonPressed;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_updateRTL;
@@ -73,6 +90,12 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

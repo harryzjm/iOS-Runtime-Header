@@ -5,17 +5,17 @@
 //
 
 #import <PhotosUI/PUMagnfiedViewControllerDelegate-Protocol.h>
-#import <PhotosUI/PXCPLServiceUIDelegate-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXCloudQuotaControllerDelegate-Protocol.h>
 #import <PhotosUI/PXPhotosLibraryFooterViewModelPresentationDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLServiceUI, PXCloudQuotaController, UITapGestureRecognizer;
+@class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLUIStatusProvider, PXCloudQuotaController, UITapGestureRecognizer;
 
-@interface PUZoomableGridViewController <PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate>
+@interface PUZoomableGridViewController <PXChangeObserver, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate>
 {
     _Bool _isDisplayingGlobalFooterView;
     _Bool _isDisplayingEmptyPlaceholderView;
-    PXCPLServiceUI *_cplServiceUI;
+    PXCPLUIStatusProvider *_cplUIStatusProvider;
     PXCloudQuotaController *_cloudQuotaController;
     _Bool _iCPLEnabled;
     _Bool _globalFooterDidAutoScroll;
@@ -40,6 +40,8 @@
     struct CGPoint __frozeMagnifierAtPosition;
 }
 
++ (id)_createCPLUIStatusProvider;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setDynamicLayoutTransitionAnchorIndexPath:) NSIndexPath *_dynamicLayoutTransitionAnchorIndexPath; // @synthesize _dynamicLayoutTransitionAnchorIndexPath=__dynamicLayoutTransitionAnchorIndexPath;
 @property(nonatomic, setter=_setFrozeMagnifierAtPosition:) struct CGPoint _frozeMagnifierAtPosition; // @synthesize _frozeMagnifierAtPosition=__frozeMagnifierAtPosition;
 @property(nonatomic, setter=_setMagnifierState:) unsigned long long _magnifierState; // @synthesize _magnifierState=__magnifierState;
@@ -55,7 +57,6 @@
 @property(retain, nonatomic) PUZoomableGridViewControllerSpec *zoomableGridSpec; // @synthesize zoomableGridSpec=_zoomableGridSpec;
 @property(readonly, nonatomic) unsigned long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 @property(readonly, nonatomic) PUMomentsZoomLevelManager *zoomLevelManager; // @synthesize zoomLevelManager=_zoomLevelManager;
-- (void).cxx_destruct;
 - (_Bool)canDragIn;
 - (id)imageWithSize:(struct CGSize)arg1 forIndexPath:(id)arg2;
 - (_Bool)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 contentMode:(long long *)arg3 cropInsets:(struct UIEdgeInsets *)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;
@@ -75,9 +76,7 @@
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_accountStoreDidChange:(id)arg1;
-- (_Bool)serviceUI:(id)arg1 performAction:(long long)arg2;
-- (void)serviceUI:(id)arg1 progressDidChange:(float)arg2;
-- (void)serviceUI:(id)arg1 statusDidChange:(id)arg2;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)presentingViewControllerForViewModel:(id)arg1;
 - (void)collectionView:(id)arg1 didEndDisplayingSupplementaryView:(id)arg2 forElementOfKind:(id)arg3 atIndexPath:(id)arg4;
 - (void)_didEndDisplayingGlobalFooterView;
@@ -102,16 +101,17 @@
 - (_Bool)wantsGlobalFooter;
 - (void)_globalFooterDidChange;
 - (id)presentingViewControllerForCloudQuotaController:(id)arg1;
-- (void)cloudQuotaController:(id)arg1 presentInformationBanner:(id)arg2;
+- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
 - (_Bool)shouldPreventRevealInMomentAction;
 - (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 buttonAction:(CDUnknownBlockType *)arg4;
 - (void)didEndDisplayingEmptyPlaceholderView;
 - (void)willDisplayEmptyPlaceholderView;
 - (_Bool)wantsPlaceholderView;
 - (void)_needsCPLInformationDidChange;
+- (void)_setCplUIStatusProvider:(id)arg1;
 - (double)cellAspectRatioHint;
 - (void)preheatAssets;
-- (unsigned long long)dateRangeFormatterPreset;
+- (long long)dateRangeFormatterPreset;
 - (long long)imageDeliveryMode;
 - (struct CGSize)contentSizeForPreheating;
 - (struct CGPoint)contentOffsetForPreheating;
@@ -137,16 +137,9 @@
 @property(readonly, copy) NSString *description;
 - (void)interactionProgress:(id)arg1 didEnd:(_Bool)arg2;
 - (void)interactionProgressDidUpdate:(id)arg1;
-- (_Bool)respondsToSelector:(SEL)arg1;
-- (void)animateRevealWithInteractionProgress:(id)arg1 forPreviewingAtLocation:(struct CGPoint)arg2 inSourceView:(id)arg3 containerView:(id)arg4;
-- (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpPreviewViewController:(id)arg2;
 - (long long)oneUpPresentationOrigin;
-- (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
-- (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)_handlePreviewGesture:(id)arg1;
 - (_Bool)pu_shouldActAsTabRootViewController;
-- (_Bool)px_isSnapBackDestination;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)didReceiveMemoryWarning;
 - (void)viewWillDisappear:(_Bool)arg1;

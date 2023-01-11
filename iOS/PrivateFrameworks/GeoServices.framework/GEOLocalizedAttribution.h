@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOLocalizedAttribution : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_displayName;
     NSString *_language;
     NSMutableArray *_logoURLs;
     NSMutableArray *_snippetLogoURLs;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_displayName:1;
         unsigned int read_language:1;
         unsigned int read_logoURLs:1;
         unsigned int read_snippetLogoURLs:1;
-        unsigned int wrote_displayName:1;
-        unsigned int wrote_language:1;
-        unsigned int wrote_logoURLs:1;
-        unsigned int wrote_snippetLogoURLs:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,28 +42,27 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)snippetLogoURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)snippetLogoURLsCount;
-- (void)_addNoFlagsSnippetLogoURLs:(id)arg1;
 - (void)addSnippetLogoURLs:(id)arg1;
 - (void)clearSnippetLogoURLs;
 @property(retain, nonatomic) NSMutableArray *snippetLogoURLs;
-- (void)_readSnippetLogoURLs;
 - (id)logoURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logoURLsCount;
-- (void)_addNoFlagsLogoURLs:(id)arg1;
 - (void)addLogoURLs:(id)arg1;
 - (void)clearLogoURLs;
 @property(retain, nonatomic) NSMutableArray *logoURLs;
-- (void)_readLogoURLs;
 @property(retain, nonatomic) NSString *displayName;
 @property(readonly, nonatomic) _Bool hasDisplayName;
-- (void)_readDisplayName;
 @property(retain, nonatomic) NSString *language;
 @property(readonly, nonatomic) _Bool hasLanguage;
-- (void)_readLanguage;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)bestURLForLogos:(id)arg1 scale:(double)arg2;
 
 @end

@@ -10,7 +10,7 @@
 
 @protocol ITIdleTimerStateRequestHandling <NSObject>
 - (void)removeIdleTimerConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2;
-- (void)addIdleTimerConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2;
+- (void)addIdleTimerConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2 error:(id *)arg3;
 - (_Bool)isIdleTimerServiceAvailable;
 @end
 

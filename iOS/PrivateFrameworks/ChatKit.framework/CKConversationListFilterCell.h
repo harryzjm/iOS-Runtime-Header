@@ -6,20 +6,34 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UISegmentedControl;
+#import <ChatKit/CKConversationListFilterCellCommon-Protocol.h>
+
+@class NSString, UISegmentedControl;
+@protocol CKConversationListFilterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKConversationListFilterCell : UITableViewCell
+@interface CKConversationListFilterCell : UITableViewCell <CKConversationListFilterCellCommon>
 {
+    id <CKConversationListFilterDelegate> _filterDelegate;
     UISegmentedControl *_filterControl;
 }
 
-+ (double)defaultHeight;
++ (long long)defaultCellStyle;
++ (double)defaultHeight:(long long)arg1;
 + (id)identifier;
-@property(retain, nonatomic) UISegmentedControl *filterControl; // @synthesize filterControl=_filterControl;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UISegmentedControl *filterControl; // @synthesize filterControl=_filterControl;
+@property(nonatomic) __weak id <CKConversationListFilterDelegate> filterDelegate; // @synthesize filterDelegate=_filterDelegate;
+- (void)_filterCellSelectionChanged:(id)arg1;
+- (void)updateControl:(id)arg1 selectedIndex:(unsigned long long)arg2 isEnabeld:(_Bool)arg3;
 - (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

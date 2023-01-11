@@ -7,14 +7,22 @@
 #import <SpringBoardHome/SBFolderViewDelegate-Protocol.h>
 
 @class SBRootFolderView, UIView;
+@protocol UIViewImplicitlyAnimating;
 
 @protocol SBRootFolderViewDelegate <SBFolderViewDelegate>
 
 @optional
-- (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
+- (void)rootFolderViewDidDismissPageManagement:(SBRootFolderView *)arg1;
+- (void)rootFolderView:(SBRootFolderView *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
+- (void)rootFolderView:(SBRootFolderView *)arg1 willPresentPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
+- (void)rootFolderViewWantsWidgetEditingViewControllerPresented:(SBRootFolderView *)arg1;
+- (void)rootFolderViewWantsToEndEditing:(SBRootFolderView *)arg1;
+- (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
+- (void)rootFolderView:(SBRootFolderView *)arg1 didOverscrollOnLastPageByAmount:(double)arg2;
+- (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
-- (_Bool)rootFolderViewShouldAllowOverscrollOnFirstPage:(SBRootFolderView *)arg1;
-- (void)rootFolderViewDidChangeSidebarPinned:(SBRootFolderView *)arg1;
+- (void)rootFolderView:(SBRootFolderView *)arg1 didEndSidebarVisibilityTransitionWithEffectiveProgress:(double)arg2;
+- (void)rootFolderView:(SBRootFolderView *)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
 - (UIView *)backgroundViewForEditingDoneButtonForRootFolderView:(SBRootFolderView *)arg1;
 - (UIView *)backgroundViewForDockForRootFolderView:(SBRootFolderView *)arg1;

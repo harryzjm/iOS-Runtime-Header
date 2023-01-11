@@ -8,31 +8,33 @@
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHome, HMFTimer, NSMutableSet, NSString, NSUUID;
+@class HMDHome, HMFTimer, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
+@protocol HMFLocking;
 
 @interface HMDDeviceNotificationHandler : HMFObject <HMFTimerDelegate>
 {
+    id <HMFLocking> _lock;
     _Bool _delaySupported;
     HMDHome *_home;
+    NSMutableDictionary *_updatedMediaPropertiesByMediaProfile;
     NSString *_destination;
     NSString *_requestIdentifier;
     NSMutableSet *_updatedCharacteristics;
-    NSMutableSet *_updatedMediaProperties;
     HMFTimer *_coalesceTimer;
     HMFTimer *_delayTimer;
     NSUUID *_notificationUpdateIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *notificationUpdateIdentifier; // @synthesize notificationUpdateIdentifier=_notificationUpdateIdentifier;
 @property(nonatomic) _Bool delaySupported; // @synthesize delaySupported=_delaySupported;
 @property(retain, nonatomic) HMFTimer *delayTimer; // @synthesize delayTimer=_delayTimer;
 @property(retain, nonatomic) HMFTimer *coalesceTimer; // @synthesize coalesceTimer=_coalesceTimer;
-@property(retain, nonatomic) NSMutableSet *updatedMediaProperties; // @synthesize updatedMediaProperties=_updatedMediaProperties;
 @property(retain, nonatomic) NSMutableSet *updatedCharacteristics; // @synthesize updatedCharacteristics=_updatedCharacteristics;
 @property(retain, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property(retain, nonatomic) NSString *destination; // @synthesize destination=_destination;
+@property(retain, nonatomic) NSMutableDictionary *updatedMediaPropertiesByMediaProfile; // @synthesize updatedMediaPropertiesByMediaProfile=_updatedMediaPropertiesByMediaProfile;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (id)_dispatchNotification;
 - (id)_beginCoalesce:(_Bool)arg1;

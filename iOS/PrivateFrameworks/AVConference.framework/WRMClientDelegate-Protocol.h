@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDictionary;
+
 @protocol WRMClientDelegate
 - (void)setPreWarmState:(_Bool)arg1;
-- (void)setWRMNotification:(CDStruct_0693755d *)arg1;
+- (void)setWRMCoexMetrics:(NSDictionary *)arg1;
+- (void)setWRMNotification:(CDStruct_b018697d *)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
 @end
 

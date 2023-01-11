@@ -14,8 +14,6 @@
     double _statusBarHeight;
 }
 
-@property(nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
-@property(nonatomic) id <_SBProximityTouchHandlingDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end

@@ -13,23 +13,21 @@
 @interface GEORPPhotoWithMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     double _creationDate;
     NSData *_data;
     GEOLatLng *_geotagCoordinate;
     double _geotagHorizontalAccuracy;
     double _geotagTimestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_creationDate:1;
         unsigned int has_geotagHorizontalAccuracy:1;
         unsigned int has_geotagTimestamp:1;
         unsigned int read_data:1;
         unsigned int read_geotagCoordinate:1;
-        unsigned int wrote_creationDate:1;
-        unsigned int wrote_data:1;
-        unsigned int wrote_geotagCoordinate:1;
-        unsigned int wrote_geotagHorizontalAccuracy:1;
-        unsigned int wrote_geotagTimestamp:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,6 +41,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasGeotagTimestamp;
@@ -51,12 +52,12 @@
 @property(nonatomic) double geotagHorizontalAccuracy;
 @property(retain, nonatomic) GEOLatLng *geotagCoordinate;
 @property(readonly, nonatomic) _Bool hasGeotagCoordinate;
-- (void)_readGeotagCoordinate;
 @property(nonatomic) _Bool hasCreationDate;
 @property(nonatomic) double creationDate;
 @property(retain, nonatomic) NSData *data;
 @property(readonly, nonatomic) _Bool hasData;
-- (void)_readData;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

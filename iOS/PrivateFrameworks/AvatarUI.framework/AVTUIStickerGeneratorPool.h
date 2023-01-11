@@ -17,19 +17,21 @@
     id <AVTUILogger> _logger;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) NSMutableDictionary *inUseStickerGenerators; // @synthesize inUseStickerGenerators=_inUseStickerGenerators;
 @property(readonly, nonatomic) NSMutableDictionary *availableStickerGenerators; // @synthesize availableStickerGenerators=_availableStickerGenerators;
 @property(readonly, nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;
-- (void).cxx_destruct;
 - (void)flush;
 - (void)flushGeneratorForRecord:(id)arg1;
 - (void)didStopUsingStickerGeneratorForRecord:(id)arg1;
 - (id)dequeueStickerGeneratorForAvatarRecord:(id)arg1 needAvatar:(_Bool)arg2;
+- (id)dequeueStickerGeneratorForAvatarRecord:(id)arg1;
 - (id)stealGeneratorForAvatarRecord:(id)arg1 inGenerators:(id)arg2 needAvatar:(_Bool)arg3;
 - (id)generatorForAvatarRecord:(id)arg1 inGenerators:(id)arg2;
 - (id)avatarForRecord:(id)arg1;
 - (id)initWithMaxStickerGeneratorCount:(long long)arg1 logger:(id)arg2;
+- (id)initWithMaxStickerGeneratorCount:(long long)arg1;
 
 @end
 

@@ -9,7 +9,6 @@
 @interface NSFileManager (RTExtensions)
 + (id)sortFilesByName:(id)arg1;
 + (id)sortedContentsOfDirectoryAtURL:(id)arg1 withExtension:(id)arg2;
-+ (id)routineLogsPath;
 + (id)crashReporterPath;
 + (id)routinePreferencesPath;
 + (id)userPreferencesPath;

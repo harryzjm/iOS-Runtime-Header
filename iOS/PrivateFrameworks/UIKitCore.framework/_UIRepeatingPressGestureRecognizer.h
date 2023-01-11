@@ -17,6 +17,7 @@
 @property(nonatomic) unsigned long long changeCount; // @synthesize changeCount=_changeCount;
 @property(readonly, nonatomic) double _force; // @synthesize _force;
 @property(nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
+- (_Bool)_isGestureType:(long long)arg1;
 - (void)_finishNextStep:(id)arg1;
 - (void)_nextStep:(id)arg1;
 - (void)_scheduleNextTimer;

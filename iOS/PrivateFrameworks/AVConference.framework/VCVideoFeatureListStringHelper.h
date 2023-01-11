@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)newLocalFeaturesStringWithType:(unsigned char)arg1;
++ (_Bool)findFeatureString:(const char *)arg1 value:(char *)arg2 valueLength:(unsigned long long)arg3 withPrefix:(const char *)arg4;
 + (id)deriveAspectRatioFLS;
 + (id)retrieveRawFeaturesStringWithType:(unsigned char)arg1;
 

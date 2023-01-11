@@ -6,29 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <CoreAudioKit/AUAudioUnitRemoteViewProtocol-Protocol.h>
+@class AURemoteExtensionContext;
 
-@class AURemoteExtensionContext, NSString;
-
-@interface AUAudioUnitViewService : UIViewController <AUAudioUnitRemoteViewProtocol>
+@interface AUAudioUnitViewService : UIViewController
 {
-    AURemoteExtensionContext *_extensionContext;
+    AURemoteExtensionContext *_auRemoteExtensionContext;
 }
 
-+ (id)_exportedInterface;
-+ (id)_remoteViewControllerInterface;
-@property AURemoteExtensionContext *extensionContext; // @synthesize extensionContext=_extensionContext;
-- (void)connectToContextWithSessionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_connectChildView:(CDUnknownBlockType)arg1;
-- (id)exportedInterface;
-- (id)remoteViewControllerInterface;
+@property AURemoteExtensionContext *auRemoteExtensionContext; // @synthesize auRemoteExtensionContext=_auRemoteExtensionContext;
+- (void)dealloc;
 - (void)loadView;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)initializeBlankView;
+- (void)connectChildView;
 
 @end
 

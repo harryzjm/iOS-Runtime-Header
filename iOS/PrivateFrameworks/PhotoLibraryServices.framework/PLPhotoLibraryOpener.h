@@ -15,12 +15,12 @@
 }
 
 + (_Bool)canAutomaticallyCreateLibrary;
-@property(readonly) PLLibraryServicesManager *libraryServicesManager; // @synthesize libraryServicesManager=_libraryServicesManager;
 - (void).cxx_destruct;
+@property(readonly) PLLibraryServicesManager *libraryServicesManager; // @synthesize libraryServicesManager=_libraryServicesManager;
 - (_Bool)lightweightPermissionCheckWithPath:(id)arg1 isDir:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)lightweightPermissionCheckWithError:(id *)arg1;
 - (_Bool)openPhotoLibraryDatabase:(id *)arg1;
-- (_Bool)createPhotoLibraryDatabase:(id *)arg1;
+- (_Bool)createPhotoLibraryDatabaseWithOptions:(id)arg1 error:(id *)arg2;
 - (id)initWithLibraryServicesManager:(id)arg1 reportInProgressUpgrades:(_Bool)arg2;
 
 @end

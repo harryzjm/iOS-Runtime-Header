@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)keyboardWillChangeFrameWithNotification:(id)arg1;
 - (void)doDone;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;

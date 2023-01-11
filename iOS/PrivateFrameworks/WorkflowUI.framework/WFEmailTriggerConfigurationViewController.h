@@ -6,49 +6,39 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFEmailContactsTableViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFTriggerTextConfigurationViewControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFRecipientFieldViewControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFTriggerTableViewControllerDelegate-Protocol.h>
 
-@class CSSearchQuery, NSArray, NSMutableSet, NSString, UITableView;
+@class NSArray, NSString, UITableView, UIViewController;
 
-@interface WFEmailTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFTriggerTextConfigurationViewControllerDelegate, WFEmailContactsTableViewControllerDelegate>
+@interface WFEmailTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFRecipientFieldViewControllerDelegate, WFTriggerTableViewControllerDelegate>
 {
     _Bool _showingAccounts;
     _Bool _showingRecipients;
-    _Bool _showingAttachments;
     UITableView *_tableView;
     NSArray *_sections;
-    NSMutableSet *_allRecipients;
-    NSMutableSet *_allSenders;
     NSArray *_allAccounts;
-    NSMutableSet *_allAccountsUsernames;
-    CSSearchQuery *_query;
+    UIViewController *_senderFieldViewController;
+    UIViewController *_recipientFieldViewController;
 }
 
-@property(nonatomic) _Bool showingAttachments; // @synthesize showingAttachments=_showingAttachments;
+- (void).cxx_destruct;
+@property(nonatomic) __weak UIViewController *recipientFieldViewController; // @synthesize recipientFieldViewController=_recipientFieldViewController;
+@property(nonatomic) __weak UIViewController *senderFieldViewController; // @synthesize senderFieldViewController=_senderFieldViewController;
 @property(nonatomic) _Bool showingRecipients; // @synthesize showingRecipients=_showingRecipients;
 @property(nonatomic) _Bool showingAccounts; // @synthesize showingAccounts=_showingAccounts;
-@property(retain, nonatomic) CSSearchQuery *query; // @synthesize query=_query;
-@property(retain, nonatomic) NSMutableSet *allAccountsUsernames; // @synthesize allAccountsUsernames=_allAccountsUsernames;
 @property(retain, nonatomic) NSArray *allAccounts; // @synthesize allAccounts=_allAccounts;
-@property(retain, nonatomic) NSMutableSet *allSenders; // @synthesize allSenders=_allSenders;
-@property(retain, nonatomic) NSMutableSet *allRecipients; // @synthesize allRecipients=_allRecipients;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void).cxx_destruct;
-- (id)accountFromUsername:(id)arg1;
-- (void)didSelectContacts:(id)arg1 ofType:(unsigned long long)arg2;
-- (void)triggerTextConfigurationViewControllerDidCancel:(id)arg1;
-- (void)triggerTextConfigurationViewController:(id)arg1 didSelectText:(id)arg2;
+- (id)accountFromAccountIdentifier:(id)arg1;
+- (void)triggerTableViewControllerDidCancel:(id)arg1;
+- (void)triggerTableViewController:(id)arg1 didFinishWithAnySelected:(_Bool)arg2 orSelectedOptions:(id)arg3;
+- (void)recipientViewControllerDidFinish:(id)arg1 cancelled:(_Bool)arg2;
+- (void)showSubjectContainsAlert;
 - (void)presentNavControllerWithRootViewController:(id)arg1;
-- (id)displayForSelectedContacts:(id)arg1;
-- (_Bool)additionalSectionRowWithinHasAttachment:(long long)arg1;
-- (long long)firstRowOfHasAttachment;
-- (long long)firstRowOfRecipient;
-- (_Bool)additionalSectionRowWithinRecipient:(long long)arg1;
-- (_Bool)additionalSectionRowWithinAccounts:(long long)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -56,7 +46,6 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)updateUI;
-- (void)startQuery:(id)arg1;
 - (void)setUpAccounts;
 - (id)supportedAccountTypeIdentifiers;
 - (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;

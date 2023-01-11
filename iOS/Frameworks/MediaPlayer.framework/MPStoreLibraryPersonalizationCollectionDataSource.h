@@ -11,6 +11,7 @@
 @class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
@@ -31,7 +32,9 @@
 + (id)_lightweightPersonalizedStoreAssetWithUnpersonalizedAsset:(id)arg1 libraryAsset:(id)arg2 personalizationProperties:(id)arg3;
 + (id)_lightweightPersonalizedPlaybackPositionWithUnpersonalizedPlaybackPosition:(id)arg1 identifiers:(id)arg2 personalizationProperties:(id)arg3;
 + (id)_lightweightPersonalizedPlaybackPositionWithUnpersonalizedPlaybackPosition:(id)arg1 libraryPlaybackPosition:(id)arg2 personalizationProperties:(id)arg3;
-@property(copy, nonatomic) NSMutableDictionary *sectionToLibraryAddedOverride; // @synthesize sectionToLibraryAddedOverride=_sectionToLibraryAddedOverride;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *sectionToLibraryAddedOverride; // @synthesize sectionToLibraryAddedOverride=_sectionToLibraryAddedOverride;
 @property(copy, nonatomic) NSMapTable *relativeModelClassToMappingResponse; // @synthesize relativeModelClassToMappingResponse=_relativeModelClassToMappingResponse;
 @property(retain, nonatomic) MPMediaLibraryEntityTranslationContext *translatingContext; // @synthesize translatingContext=_translatingContext;
 @property(copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
@@ -39,8 +42,6 @@
 @property(copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
 @property(copy, nonatomic) MPPropertySet *itemProperties; // @synthesize itemProperties=_itemProperties;
 @property(retain, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (shared_ptr_1c86f238)_entityCacheForEntityClass:(struct EntityClass *)arg1 propertiesToFetch:(vector_90d4f7ff)arg2;
 - (id)_libraryObjectWithRelativeModelClass:(Class)arg1 identifierSet:(id)arg2 propertySet:(id)arg3;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;

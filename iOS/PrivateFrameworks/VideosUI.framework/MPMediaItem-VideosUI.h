@@ -6,23 +6,21 @@
 
 #import <MediaPlayer/MPMediaItem.h>
 
-@class HSHomeSharingLibrary, NSDate, NSNumber, NSObject, NSSet, NSString, NSURL, VUIMediaEntityType, VUIMediaItemCredits, _TVContentRating;
+@class HSHomeSharingLibrary, NSDate, NSNumber, NSObject, NSString, NSURL, VUIMediaEntityType, VUIMediaItemCredits, _TVContentRating;
 @protocol VUIMediaEntityIdentifier;
 
 @interface MPMediaItem (VideosUI)
 + (_Bool)_vui_isNetworkPlayableWithPropertyValues:(id)arg1;
 + (_Bool)_vui_isLocalWithPropertyValues:(id)arg1;
++ (id)vui_mediaItemForStoreIdentifier:(id)arg1;
++ (id)vui_mediaItemForStoreIdentifierString:(id)arg1;
++ (id)vui_mediaItemForPersistentIdentifier:(id)arg1;
 + (unsigned long long)vui_VUIMediaEntityAudioCapabilityFromMPMediaItemAudioCapability:(long long)arg1;
 + (long long)vui_MPMediaItemAudioCapabilityFromVUIMediaEntityAudioCapability:(unsigned long long)arg1;
 + (unsigned long long)vui_VUIMediaEntityColorCapabilityFromMPMediaItemColorCapability:(long long)arg1;
 + (long long)vui_MPMediaItemColorCapabilityFromVUIMediaEntityColorCapability:(unsigned long long)arg1;
 + (unsigned long long)vui_VUIMediaEntityResolutionFromMPMediaItemVideoQuality:(long long)arg1;
 + (long long)vui_MPMediaItemVideoQualityFromVUIMediaEntityResolution:(unsigned long long)arg1;
-+ (id)wlk_JStvShowProperties;
-+ (id)wlk_JSmovieProperties;
-+ (id)wlk_JSgenericProperties;
-+ (id)wlk_mediaItemForStoreIdentifier:(id)arg1;
-+ (id)wlk_mediaItemForPersistentIdentifier:(id)arg1;
 - (id)_vui_imageIdentifierWithImageType:(unsigned long long)arg1;
 - (id)vui_imageLoadParamsWithImageType:(unsigned long long)arg1;
 - (id)vui_artworkCatalogWithImageType:(unsigned long long)arg1;
@@ -52,10 +50,5 @@
 @property(readonly, nonatomic) NSNumber *vui_colorCapability;
 @property(readonly, nonatomic) NSNumber *vui_resolution;
 @property(readonly, nonatomic) VUIMediaEntityType *vui_mediaEntityType;
-- (id)wlk_stringIdentifierForSeason;
-@property(readonly, copy, nonatomic, getter=wlk_playState) NSString *playState;
-- (id)wlk_stringIdentifierForProperty:(id)arg1;
-@property(readonly, copy, nonatomic, getter=wlk_mediaTypeString) NSString *mediaTypeString;
-@property(readonly, nonatomic, getter=wlk_jsPropertyStrings) NSSet *jsPropertyStrings;
 @end
 

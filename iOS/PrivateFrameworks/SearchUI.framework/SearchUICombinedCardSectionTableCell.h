@@ -10,6 +10,7 @@
 {
 }
 
+- (void)updateChevronVisible:(_Bool)arg1 leaveSpaceForChevron:(_Bool)arg2;
 - (void)updateWithRowModel:(id)arg1;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)oneShotPortraitV2ExportFilter;
 + (id)spatialOvercaptureVideoSourceFilter;
 + (id)primarySourceFilter;
 + (id)overcaptureSourceFilter;
@@ -17,9 +18,11 @@
 + (id)applyOrientationFilter;
 + (id)stopAtTagIncludeOrientationFilter:(id)arg1;
 + (id)stopAtTagIncludeGeometryFilter:(id)arg1;
++ (id)inputToCropFilter;
 + (id)postGeometryFilter;
 + (id)preGeometryFilter;
 + (id)perspectiveStraightenWithoutCropFilter;
++ (id)noOrientationFilter;
 + (id)noGeometryFilter;
 + (id)stripAllTimeAdjustmentsFilter;
 + (id)iosCropToolFilter;

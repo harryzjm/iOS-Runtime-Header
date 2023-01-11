@@ -16,24 +16,21 @@
 + (id)issueReadingHistoryItemWithCKRecord:(id)arg1;
 - (void)writeToKeyValuePair:(id)arg1;
 - (id)asCKRecord;
-@property(readonly, copy, nonatomic) NSDate *lastRemovedFromMyMagazinesDate;
-- (void)setLastRemovedFromMyMagazinesDate:(id)arg1;
-@property(readonly, copy, nonatomic) NSDate *lastEngagedDate;
-- (void)setLastEngagedDate:(id)arg1;
-@property(readonly, copy, nonatomic) NSDate *lastBadgedDate;
-- (void)setLastBadgedDate:(id)arg1;
-@property(readonly, copy, nonatomic) NSDate *lastVisitedDate;
-- (void)setLastVisitedDate:(id)arg1;
+@property(copy, nonatomic) NSDate *lastRemovedFromMyMagazinesDate;
+@property(copy, nonatomic) NSDate *lastSeenDate;
+@property(copy, nonatomic) NSDate *lastEngagedDate;
+@property(copy, nonatomic) NSDate *lastBadgedDate;
+@property(copy, nonatomic) NSDate *lastVisitedDate;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, copy, nonatomic) NSString *identifier;
-@property(readonly, copy, nonatomic) NSString *issueID;
-@property(readonly, copy, nonatomic) NSString *lastVisitedArticleID;
-@property(readonly, copy, nonatomic) NSString *lastVisitedPageID;
+@property(copy, nonatomic) NSString *identifier;
+@property(copy, nonatomic) NSString *issueID;
+@property(copy, nonatomic) NSString *lastVisitedArticleID;
+@property(copy, nonatomic) NSString *lastVisitedPageID;
 @property(readonly) Class superclass;
 @end
 

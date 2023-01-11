@@ -11,7 +11,7 @@
 @protocol PLAssetsdDebugServiceProtocol <NSObject>
 - (void)updateSiriVocabulary;
 - (void)coalesceJournalsForPayloadClassIDs:(NSSet *)arg1 withChangeJournalOverThreshold:(float)arg2 reply:(void (^)(void))arg3;
-- (void)snapshotJournalsForPayloadClassIDs:(NSSet *)arg1 reply:(void (^)(void))arg2;
+- (void)snapshotJournalsForPayloadClassIDs:(NSSet *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)privateDownloadCloudPhotoLibraryAsset:(NSURL *)arg1 resourceType:(unsigned long long)arg2 highPriority:(_Bool)arg3 reply:(void (^)(void))arg4;
 - (void)invalidateHighlightSubtitlesAndRegenerateHighlightTitlesWithCompletionBlock:(void (^)(void))arg1;
 - (void)cleanupEmptyHighlightsWithReply:(void (^)(void))arg1;
@@ -24,6 +24,8 @@
 - (void)pruneAssetsWithUUID:(NSArray *)arg1 resourceTypes:(NSArray *)arg2 reply:(void (^)(void))arg3;
 - (void)debugSidecarURLsWithObjectURI:(NSURL *)arg1 reply:(void (^)(_Bool, NSDictionary *, NSError *))arg2;
 - (void)revertToOriginalWithObjectURI:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)enqueuePrefetch;
+- (void)clearPrefetchState;
 - (void)getCPLStateWithReply:(void (^)(NSString *))arg1;
 - (void)getXPCTransactionStatusWithReply:(void (^)(NSString *))arg1;
 - (void)rebuildAllThumbnails;
@@ -39,6 +41,7 @@
 - (void)rebuildMomentsDeletingExistingMoments:(_Bool)arg1 reply:(void (^)(NSError *))arg2;
 - (void)momentGenerationStatusWithReply:(void (^)(NSString *))arg1;
 - (void)recoverAssetsInInconsistentCloudState;
+- (void)identifyAssetsWithInconsistentCloudState;
 - (void)asynchronousUnloadImageFilesForAssetWithObjectURI:(NSURL *)arg1 minimumFormat:(unsigned short)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)statusWithReply:(void (^)(NSString *))arg1;
 @end

@@ -19,8 +19,10 @@
 - (_Bool)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(_Bool)arg2;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
+- (id)accessibilityCustomContent;
 - (id)_accessibilityElementStoredUserLabel;
 - (_Bool)_accessibilitySavePhotoLabel:(id)arg1;
+- (_Bool)_accessibilitySkipImageTraitDescription;
 - (id)_axPHAsset;
 
 @end

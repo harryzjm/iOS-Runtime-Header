@@ -17,15 +17,16 @@ __attribute__((visibility("hidden")))
     long long _maxZoneSaveAttempts;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long maxZoneSaveAttempts; // @synthesize maxZoneSaveAttempts=_maxZoneSaveAttempts;
 @property(nonatomic) long long numZoneSaveAttempts; // @synthesize numZoneSaveAttempts=_numZoneSaveAttempts;
 @property _Bool isHandlingPCSOplockFailure; // @synthesize isHandlingPCSOplockFailure=_isHandlingPCSOplockFailure;
 @property(retain, nonatomic) NSMutableDictionary *zonePCSDataByZoneID; // @synthesize zonePCSDataByZoneID=_zonePCSDataByZoneID;
 @property(retain, nonatomic) CKRecordZone *targetZone; // @synthesize targetZone=_targetZone;
 @property(retain, nonatomic) NSArray *sourceZoneIDs; // @synthesize sourceZoneIDs=_sourceZoneIDs;
-- (void).cxx_destruct;
 - (void)_setPermanentOplockFailure;
 - (void)_handleZoneSavedWithID:(id)arg1 responseCode:(id)arg2;
+- (int)operationType;
 - (_Bool)_saveTargetZone;
 - (void)_prepareTargetZonePCS;
 - (void)_fetchPCSDataForZoneID:(id)arg1;
@@ -33,8 +34,12 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
+- (id)relevantZoneIDs;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

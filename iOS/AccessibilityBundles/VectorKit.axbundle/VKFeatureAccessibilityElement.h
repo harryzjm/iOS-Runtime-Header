@@ -23,6 +23,7 @@
     NSString *_shieldText;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int sortKey; // @synthesize sortKey=_sortKey;
 @property(retain, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property(nonatomic) float strokeWidth; // @synthesize strokeWidth=_strokeWidth;
@@ -34,7 +35,6 @@
 @property(readonly, nonatomic) NSMutableSet *featureSet; // @synthesize featureSet=_featureSet;
 @property(nonatomic) unsigned long long shieldType; // @synthesize shieldType=_shieldType;
 @property(nonatomic) int style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (id)_accessibilityMapDetailedInfoAtPoint:(struct CGPoint)arg1;
 - (id)_distanceStringForPoint:(CDStruct_31142d93)arg1;
 - (id)_distanceAwayString;
@@ -57,12 +57,12 @@
 - (_Bool)pointInside:(struct CGPoint)arg1;
 - (void)addFeaturesFromElement:(id)arg1;
 - (void)addFeatureWrapper:(id)arg1;
-- (void)addFeature:(CDStruct_123780e2 *)arg1;
+- (void)addFeature:(CDStruct_66740237 *)arg1;
 - (void)removeFeatures;
 - (id)accessibilityLabel;
 - (void)_updateElementStatus;
 - (_Bool)_allowCustomActionHintSpeakOverride;
-- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_123780e2 *)arg2 ignoreMissingName:(_Bool)arg3 useLocalizedLabels:(_Bool)arg4;
+- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_66740237 *)arg2 ignoreMissingName:(_Bool)arg3 useLocalizedLabels:(_Bool)arg4;
 
 @end
 

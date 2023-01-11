@@ -10,10 +10,13 @@
 {
 }
 
++ (id)cloudSharedCommentsWithCommentDate:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)cloudSharedCommentWithGUID:(id)arg1 inLibrary:(id)arg2;
-+ (id)cloudSharedCommentWithGUIDs:(id)arg1 inLibrary:(id)arg2;
++ (id)cloudSharedCommentsWithGUIDs:(id)arg1 inLibrary:(id)arg2;
++ (id)_cloudSharedCommentsWithPredicate:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)insertNewCommentIntoAsset:(id)arg1 commentDate:(id)arg2 withText:(id)arg3 isLike:(_Bool)arg4 isMyComment:(_Bool)arg5 inLibrary:(id)arg6;
 + (id)entityName;
+- (_Bool)matchesCommentText:(id)arg1 isLike:(_Bool)arg2;
 @property(readonly, nonatomic) __weak NSString *commenterFullName;
 @property(readonly, nonatomic) __weak NSString *commenterLastName;
 @property(readonly, nonatomic) __weak NSString *commenterFirstName;

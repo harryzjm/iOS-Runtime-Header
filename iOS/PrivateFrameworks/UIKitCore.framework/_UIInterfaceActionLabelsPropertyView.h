@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
     UIInterfaceAction *_action;
 }
 
-@property(readonly, nonatomic) UIInterfaceAction *action; // @synthesize action=_action;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIInterfaceAction *action; // @synthesize action=_action;
 - (id)_newLabel;
 - (id)_classificationLabelIfVisible;
 - (void)_reloadContentClassificationLabelDisplayProperties;

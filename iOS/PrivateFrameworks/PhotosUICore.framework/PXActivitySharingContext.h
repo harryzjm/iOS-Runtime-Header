@@ -19,10 +19,11 @@
     NSString *_title;
     NSString *_subtitle;
     id <PXDisplayAsset> _keyAsset;
-    unsigned long long _sourceOrigin;
+    long long _sourceOrigin;
 }
 
-@property(nonatomic) unsigned long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+- (void).cxx_destruct;
+@property(nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
 @property(retain, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -31,7 +32,6 @@
 @property(copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property(readonly, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property(readonly, copy, nonatomic) PHFetchResult *assetCollectionsFetchResult; // @synthesize assetCollectionsFetchResult=_assetCollectionsFetchResult;
-- (void).cxx_destruct;
 - (id)init;
 - (id)initWithAssetCollection:(id)arg1 assetsDataSource:(id)arg2;
 - (id)initWithAssetCollection:(id)arg1 photosDataSource:(id)arg2;

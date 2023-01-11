@@ -16,8 +16,10 @@
 {
     _Bool _needsReload;
     _Bool _needsLabelSizeCalculation;
+    _Bool _shouldUseConstrainedMaxHeight;
     _Bool _alwaysShowsMonogram;
     _Bool _visibleToScrollViews;
+    _Bool _showMonogramsOnly;
     _Bool _shouldShowBelowNavigationTitle;
     NSDictionary *_nameTextAttributes;
     id <CNPresenterDelegate> _presenterDelegate;
@@ -29,18 +31,24 @@
     NSLayoutConstraint *_photoHeightConstraint;
     CNContactHeaderViewSizeAttributes *_sizeAttributes;
     double _lastViewWidth;
+    double _constrainedMaxHeight;
     CNContactPhotoView *_photoView;
 }
 
++ (id)sizeAttributesShowingNavBar:(_Bool)arg1;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(_Bool)arg2 shouldAllowImageDrops:(_Bool)arg3 monogramOnly:(_Bool)arg4;
 + (struct CGSize)defaultPhotoSize;
 + (_Bool)requiresConstraintBasedLayout;
 + (id)descriptorForRequiredKeysIncludingAvatarViewDescriptors:(_Bool)arg1;
 + (id)descriptorForRequiredKeys;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldShowBelowNavigationTitle; // @synthesize shouldShowBelowNavigationTitle=_shouldShowBelowNavigationTitle;
+@property(nonatomic) _Bool showMonogramsOnly; // @synthesize showMonogramsOnly=_showMonogramsOnly;
 @property(nonatomic) _Bool visibleToScrollViews; // @synthesize visibleToScrollViews=_visibleToScrollViews;
 @property(nonatomic) _Bool alwaysShowsMonogram; // @synthesize alwaysShowsMonogram=_alwaysShowsMonogram;
 @property(readonly, nonatomic) CNContactPhotoView *photoView; // @synthesize photoView=_photoView;
+@property(nonatomic) _Bool shouldUseConstrainedMaxHeight; // @synthesize shouldUseConstrainedMaxHeight=_shouldUseConstrainedMaxHeight;
+@property(nonatomic) double constrainedMaxHeight; // @synthesize constrainedMaxHeight=_constrainedMaxHeight;
 @property(nonatomic) double lastViewWidth; // @synthesize lastViewWidth=_lastViewWidth;
 @property(nonatomic) _Bool needsLabelSizeCalculation; // @synthesize needsLabelSizeCalculation=_needsLabelSizeCalculation;
 @property(retain, nonatomic) CNContactHeaderViewSizeAttributes *sizeAttributes; // @synthesize sizeAttributes=_sizeAttributes;
@@ -52,7 +60,6 @@
 @property(nonatomic) __weak id <CNContactHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <CNPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate=_presenterDelegate;
 @property(copy, nonatomic) NSDictionary *nameTextAttributes; // @synthesize nameTextAttributes=_nameTextAttributes;
-- (void).cxx_destruct;
 - (void)prepareForReuse;
 - (id)contactViewCache;
 - (id)viewControllerForPhotoView:(id)arg1;
@@ -60,23 +67,30 @@
 - (void)photoViewDidUpdate:(id)arg1;
 - (void)updateSizeDependentAttributes;
 - (void)layoutSubviews;
+- (double)currentHeightPercentMaximizedForMaxHeight:(double)arg1;
+- (double)currentHeightPercentMaximizedForPhoto;
 - (double)currentHeightPercentMaximized;
 - (_Bool)canBecomeFirstResponder;
 - (void)reloadDataPreservingChanges:(_Bool)arg1;
 - (void)reloadDataIfNeeded;
 - (void)setNeedsReload;
 - (void)updateFontSizes;
+- (void)didFinishUsing;
 - (void)calculateLabelSizesIfNeeded;
 - (void)updateWithContacts:(id)arg1;
 - (void)updateWithNewContact:(id)arg1;
 - (void)updateConstraints;
+- (void)setConstrainedMaxHeight:(double)arg1 enabled:(_Bool)arg2;
+- (double)defaultMaxHeight;
+- (double)defaultMaxBaseHeight;
 @property(readonly, nonatomic) double maxHeight;
 @property(readonly, nonatomic) double minHeight;
 - (double)safeAreaPhotoOffset;
 - (double)safeAreaTop;
 - (id)contactStyle;
 - (void)dealloc;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowTakePhotoAction:(_Bool)arg4 shouldAllowImageDrops:(_Bool)arg5 monogramOnly:(_Bool)arg6 delegate:(id)arg7;
+- (void)updateForShowingNavBar:(_Bool)arg1;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowTakePhotoAction:(_Bool)arg4 shouldAllowImageDrops:(_Bool)arg5 showingNavBar:(_Bool)arg6 monogramOnly:(_Bool)arg7 delegate:(id)arg8;
 - (id)descriptorForRequiredKeys;
 
 // Remaining properties

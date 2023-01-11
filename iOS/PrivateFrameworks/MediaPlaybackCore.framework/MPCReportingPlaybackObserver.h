@@ -16,8 +16,10 @@
     _Bool _isReloadingWithPlaybackContext;
     _Bool _itemDidChangeWhenReloadingPlaybackContext;
     _Bool _isScrubbing;
+    _Bool _currentItemIsHLS;
     MPAVItem *_itemForCurrentTimeChange;
     NSOperationQueue *_recordEventOperationQueue;
+    NSString *_itemContentItemIDForLastPlayEventEndTime;
     double _lastPlayEventEndTimeForCurrentItem;
     double _lastPlayEventTimeStamp;
     _Bool _shouldReportAsPlaying;
@@ -30,16 +32,16 @@
     NSString *_storeFrontID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *storeFrontID; // @synthesize storeFrontID=_storeFrontID;
 @property(nonatomic) unsigned long long storeAccountID; // @synthesize storeAccountID=_storeAccountID;
 @property(nonatomic, getter=isSBEnabled) _Bool SBEnabled; // @synthesize SBEnabled=_SBEnabled;
 @property(readonly, nonatomic) MPCReportingController *reportingController; // @synthesize reportingController=_reportingController;
 @property(nonatomic, getter=isOffline) _Bool offline; // @synthesize offline=_offline;
 @property(readonly, nonatomic) MPAVController *player; // @synthesize player=_player;
-- (void).cxx_destruct;
 - (double)_itemStartTimeForItem:(id)arg1;
 - (double)_itemEndTimeForItem:(id)arg1 withProposedEndTime:(double)arg2;
-- (void)_setLastPlayEventEndTimeForCurrentItem:(double)arg1;
+- (void)_setLastPlayEventEndTime:(double)arg1 forItemContentItemID:(id)arg2;
 - (void)_sendPlaybackEndNotification:(double)arg1 endTime:(double)arg2;
 - (void)_sendPlaybackStartNotification;
 - (void)_reportPlaybackEndedForTimeoutWithItem:(id)arg1;

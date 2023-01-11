@@ -13,9 +13,11 @@
     PKApplyController *_applyController;
     NSString *_termsIdentifier;
     CLInUseAssertion *_inUseAssertion;
+    _Bool _preflightPDFTerms;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool preflightPDFTerms; // @synthesize preflightPDFTerms=_preflightPDFTerms;
 - (void)_terminateSetupFlow;
 - (void)presentErrorAlert;
 - (void)termsAccepted:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;

@@ -22,10 +22,10 @@
 + (id)invalidResponseErrorWithResponse:(id)arg1;
 + (id)serviceUnavailableError;
 + (id)errorWithCode:(unsigned long long)arg1;
-@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (_Bool)receivedValidResponse:(id)arg1;
-- (void)failWithError:(id)arg1;
+@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
+- (_Bool)receivedValidResponse:(id)arg1 forRequest:(id)arg2;
+- (void)failWithError:(id)arg1 forRequest:(id)arg2;
 - (void)parseData:(id)arg1;
 - (void)didParseData;
 - (void)willParseData;

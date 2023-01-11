@@ -9,28 +9,33 @@
 #import <Widgets/MTMaterialGrouping-Protocol.h>
 #import <Widgets/UITextViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, UIFont, WGNewWidgetsButton, WGShortLookStyleButton, _UILegibilitySettings;
+@class MTMaterialView, NSMutableDictionary, NSString, UIButton, UIFont, WGNewWidgetsButton, WGShortLookStyleButton, _UILegibilitySettings;
 @protocol WGWidgetListFooterViewDelegate;
 
 @interface WGWidgetListFooterView : UIView <UITextViewDelegate, MTMaterialGrouping>
 {
-    WGShortLookStyleButton *_editButton;
-    WGNewWidgetsButton *_newWidgetsButton;
     NSMutableDictionary *_widgetIDsToAttributionViews;
     UIFont *_referenceFont;
+    MTMaterialView *_customizeButtonBackground;
     _Bool _shouldSizeContent;
     UIView *_contentView;
     long long _layoutMode;
     _UILegibilitySettings *_legibilitySettings;
+    WGShortLookStyleButton *_editButton;
+    UIButton *_customizeButton;
     id <WGWidgetListFooterViewDelegate> _delegate;
+    WGNewWidgetsButton *_widgetAvailableButton;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) WGNewWidgetsButton *widgetAvailableButton; // @synthesize widgetAvailableButton=_widgetAvailableButton;
 @property(nonatomic) __weak id <WGWidgetListFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) UIButton *customizeButton; // @synthesize customizeButton=_customizeButton;
+@property(retain, nonatomic) WGShortLookStyleButton *editButton; // @synthesize editButton=_editButton;
 @property(nonatomic) _Bool shouldSizeContent; // @synthesize shouldSizeContent=_shouldSizeContent;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic) long long layoutMode; // @synthesize layoutMode=_layoutMode;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *materialGroupNameBase;
 - (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldInteractWithTextAttachment:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
@@ -42,7 +47,7 @@
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)addTarget:(id)arg1 action:(SEL)arg2;
+- (void)_addCustomizeButton;
 - (void)_setAttributedString:(id)arg1 forWidgetIdentifier:(id)arg2;
 - (void)setVisibleWidgetsIDs:(id)arg1;
 @property(nonatomic) _Bool shouldBlurContent; // @dynamic shouldBlurContent;

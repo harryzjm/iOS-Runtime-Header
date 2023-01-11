@@ -16,10 +16,10 @@
 + (id)closedJSONTransformer;
 + (id)JSONKeyPathsByPropertyKey;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool closed; // @synthesize closed=_closed;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, nonatomic) NSString *itemDescription; // @synthesize itemDescription=_itemDescription;
-- (void).cxx_destruct;
 
 @end
 

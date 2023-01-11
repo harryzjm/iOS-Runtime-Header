@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICSQLiteConnectionOptions, NSError, NSMapTable, NSMutableArray;
+@class ICSQLiteConnectionOptions, NSError, NSMapTable, NSMutableArray, NSNumber;
 @protocol ICSQLiteConnectionDelegate;
 
 @interface ICSQLiteConnection : NSObject
@@ -21,9 +21,9 @@
     ICSQLiteConnectionOptions *_options;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) ICSQLiteConnectionOptions *options; // @synthesize options=_options;
 @property(nonatomic) __weak id <ICSQLiteConnectionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_verifiedStatementForSQL:(id)arg1 error:(id *)arg2;
 - (id)_verifiedStatementForPreparedStatement:(id)arg1 error:(id *)arg2;
 - (id)_statementForPreparedStatement:(id)arg1 error:(id *)arg2;
@@ -41,6 +41,8 @@
 - (id)prepareStatement:(id)arg1 error:(id *)arg2;
 - (void)performTransaction:(CDUnknownBlockType)arg1;
 - (_Bool)open;
+- (_Bool)setUserVersion:(id)arg1;
+@property(readonly, copy, nonatomic) NSNumber *userVersion;
 @property(readonly, nonatomic) long long lastChangeCount;
 - (_Bool)executeStatement:(id)arg1 error:(id *)arg2 bindings:(CDUnknownBlockType)arg3;
 - (_Bool)executeStatement:(id)arg1 error:(id *)arg2;

@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HAPAccessory, HAPDeviceID, HMFVersion, NSArray, NSData, NSHashTable, NSNumber, NSObject, NSString;
+@class HAPAccessory, HAPDeviceID, HMFActivity, HMFVersion, NSArray, NSData, NSHashTable, NSNumber, NSObject, NSString;
 @protocol HAPAccessoryServerDelegate, HAPKeyStore, HMFLocking, OS_dispatch_queue;
 
 @interface HAPAccessoryServer : HMFObject
@@ -17,6 +17,8 @@
     _Bool _hasPairings;
     _Bool _reachable;
     _Bool _securitySessionOpen;
+    _Bool _reachablilityPingNotificationEnabled;
+    _Bool _reachabilityPingEnabled;
     _Bool _supportsTimedWrite;
     _Bool _bleLinkConnected;
     _Bool _incompatibleUpdate;
@@ -26,6 +28,9 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSData *_setupHash;
     unsigned long long _authMethod;
+    NSString *_productData;
+    unsigned long long _pendingRemovePairing;
+    NSHashTable *_notificationClients;
     HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
     long long _linkType;
@@ -33,14 +38,20 @@
     NSHashTable *_internalDelegates;
     NSObject<OS_dispatch_queue> *_internalDelegateQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
+    unsigned long long _stateNumber;
+    unsigned long long _compatibilityFeatures;
     id <HAPKeyStore> _keyStore;
     unsigned long long _pairSetupType;
+    HMFActivity *_pairingActivity;
 }
 
-+ (_Bool)isAccessoryServerWithIdentifierPaired:(id)arg1 keyStore:(id)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) __weak HMFActivity *pairingActivity; // @synthesize pairingActivity=_pairingActivity;
 @property(nonatomic) unsigned long long pairSetupType; // @synthesize pairSetupType=_pairSetupType;
 @property(readonly, nonatomic) __weak id <HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
 @property(nonatomic, getter=isIncompatibleUpdate) _Bool incompatibleUpdate; // @synthesize incompatibleUpdate=_incompatibleUpdate;
+@property(nonatomic) unsigned long long compatibilityFeatures; // @synthesize compatibilityFeatures=_compatibilityFeatures;
+@property(nonatomic) unsigned long long stateNumber; // @synthesize stateNumber=_stateNumber;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalDelegateQueue; // @synthesize internalDelegateQueue=_internalDelegateQueue;
 @property(readonly, nonatomic) NSHashTable *internalDelegates; // @synthesize internalDelegates=_internalDelegates;
@@ -50,8 +61,15 @@
 @property(readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property(copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
 @property(retain, nonatomic) HAPAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
+@property(retain, nonatomic) NSHashTable *notificationClients; // @synthesize notificationClients=_notificationClients;
 @property(nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
-- (void).cxx_destruct;
+- (void)notifyClients:(unsigned long long)arg1 withDictionary:(id)arg2;
+- (void)unregisterForNotifications:(id)arg1;
+- (void)registerForNotifications:(id)arg1;
+- (_Bool)isPinging;
+- (void)stopPing;
+- (void)startPing;
+- (_Bool)pingSupported;
 - (void)enumerateInternalDelegatesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)removeInternalDelegate:(id)arg1;
 - (void)addInternalDelegate:(id)arg1;
@@ -73,10 +91,13 @@
 - (void)continuePairingAfterAuthPrompt;
 - (_Bool)matchesSetupID:(id)arg1 serverIdentifier:(id)arg2;
 - (_Bool)matchesSetupID:(id)arg1;
-- (id)productData;
-@property(readonly, nonatomic, getter=isPaired) _Bool paired;
-- (void)tearDownSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)isPaired;
+- (void)tearDownSessionOnAuthCompletion;
+- (void)provisionToken:(id)arg1;
+- (void)continueAuthAfterValidation:(_Bool)arg1;
+- (void)authenticateAccessory;
 - (void)reconfirm;
+@property(retain, nonatomic) NSString *productData; // @synthesize productData=_productData;
 @property(copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
@@ -84,7 +105,10 @@
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy) HAPDeviceID *deviceID;
 @property(nonatomic) _Bool hasPairings; // @synthesize hasPairings=_hasPairings;
+@property(nonatomic) unsigned long long pendingRemovePairing; // @synthesize pendingRemovePairing=_pendingRemovePairing;
 @property(getter=isSecuritySessionOpen) _Bool securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
+@property(nonatomic) _Bool reachabilityPingEnabled; // @synthesize reachabilityPingEnabled=_reachabilityPingEnabled;
+@property(nonatomic) _Bool reachablilityPingNotificationEnabled; // @synthesize reachablilityPingNotificationEnabled=_reachablilityPingNotificationEnabled;
 @property(nonatomic, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly) __weak id <HAPAccessoryServerDelegate> delegate; // @synthesize delegate=_delegate;

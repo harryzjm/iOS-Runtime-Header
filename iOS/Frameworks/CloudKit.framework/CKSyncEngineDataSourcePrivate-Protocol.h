@@ -11,6 +11,8 @@
 @protocol CKSyncEngineDataSourcePrivate <CKSyncEngineDataSource>
 
 @optional
+- (void)syncEngineDidEndFetchingChanges:(CKSyncEngine *)arg1;
+- (void)syncEngineDidBeginFetchingChanges:(CKSyncEngine *)arg1;
 - (_Bool)syncEngine:(CKSyncEngine *)arg1 shouldFetchChangesForZoneID:(CKRecordZoneID *)arg2;
 @end
 

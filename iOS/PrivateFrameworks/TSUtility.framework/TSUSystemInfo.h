@@ -10,6 +10,7 @@
 {
 }
 
++ (id)hwModel;
 + (id)systemVersion;
 + (id)processorName;
 + (id)macAddress;

@@ -10,16 +10,21 @@
 @protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
 
 @protocol VUIMediaEntityAssetController <NSObject>
+@property(readonly, nonatomic) _Bool contentAllowsCellularDownload;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue;
 @property(readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state;
+@property(readonly, nonatomic) _Bool supportsRedownloadingContent;
 @property(readonly, nonatomic) _Bool supportsStartingDownload;
 @property(nonatomic) __weak id <VUIMediaEntityAssetControllerDelegate> delegate;
 @property(readonly, copy, nonatomic) VUIMediaEntityType *mediaEntityType;
 @property(readonly, copy, nonatomic) NSObject<VUIMediaEntityIdentifier> *mediaEntityIdentifier;
+- (void)cancelKeyFetch;
 - (void)cancelAndRemoveDownload;
 - (void)resumeDownload;
 - (void)pauseDownload;
-- (void)startDownloadWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)fetchNewKeysForDownloadedVideo;
+- (void)deleteAndRedownloadAllowingCellular:(_Bool)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)startDownloadAllowingCellular:(_Bool)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)invalidate;
 @end
 

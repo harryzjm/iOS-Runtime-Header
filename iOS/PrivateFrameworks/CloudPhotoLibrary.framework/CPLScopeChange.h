@@ -7,52 +7,49 @@
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class CPLEngineScope, CPLScopedIdentifier, NSData, NSDate, NSDictionary, NSString;
+@class CPLAccountFlags, CPLEngineScope, CPLLibraryInfo, CPLLibraryState, CPLScopedIdentifier, CPLShare, NSDate, NSString;
 
 @interface CPLScopeChange <NSSecureCoding, NSCopying>
 {
-    _Bool _disabled;
+    _Bool _activated;
     long long _scopeType;
-    NSDictionary *_assetCountPerType;
-    NSDate *_disabledDate;
-    NSDate *_deleteDate;
-    NSData *_accountFlagsData;
+    CPLShare *_share;
+    CPLLibraryState *_libraryState;
+    CPLLibraryInfo *_libraryInfo;
     unsigned long long _pullTaskItem;
     CPLEngineScope *_scope;
 }
 
-+ (long long)defaultFlagsForScopeType:(long long)arg1;
 + (id)newDeleteScopeChangeWithScopeIdentifier:(id)arg1 type:(long long)arg2;
++ (id)newScopeChangeInferClassWithScopeIdentifier:(id)arg1 type:(long long)arg2;
 + (id)newScopeChangeWithScopeIdentifier:(id)arg1 type:(long long)arg2;
 + (_Bool)shouldAutoActivateScopeWithType:(long long)arg1;
 + (Class)scopeChangeClassForType:(long long)arg1;
 + (id)descriptionForScopeType:(long long)arg1;
 + (id)mappingForScopeTypeDescription;
-+ (_Bool)supportsSecureCoding;
 + (_Bool)cplShouldIgnorePropertyForEquality:(id)arg1;
-+ (_Bool)cplShouldIgnorePropertyForCoding:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CPLEngineScope *scope; // @synthesize scope=_scope;
 @property(nonatomic) unsigned long long pullTaskItem; // @synthesize pullTaskItem=_pullTaskItem;
-@property(copy, nonatomic) NSData *accountFlagsData; // @synthesize accountFlagsData=_accountFlagsData;
-@property(retain, nonatomic) NSDate *deleteDate; // @synthesize deleteDate=_deleteDate;
-@property(retain, nonatomic) NSDate *disabledDate; // @synthesize disabledDate=_disabledDate;
-@property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
-@property(copy, nonatomic) NSDictionary *assetCountPerType; // @synthesize assetCountPerType=_assetCountPerType;
+@property(retain, nonatomic) CPLLibraryInfo *libraryInfo; // @synthesize libraryInfo=_libraryInfo;
+@property(retain, nonatomic) CPLLibraryState *libraryState; // @synthesize libraryState=_libraryState;
+@property(nonatomic, getter=isActivated) _Bool activated; // @synthesize activated=_activated;
+@property(retain, nonatomic) CPLShare *share; // @synthesize share=_share;
 @property(nonatomic) long long scopeType; // @synthesize scopeType=_scopeType;
-- (void).cxx_destruct;
+- (void)udpateScopeFromScopeChange:(id)arg1 direction:(unsigned long long)arg2 didHaveChanges:(_Bool *)arg3;
+- (long long)defaultFlags;
+- (id)redactedDescription;
 - (id)description;
-- (id)accountFlags;
+@property(readonly, nonatomic) CPLAccountFlags *accountFlags;
+@property(readonly, nonatomic) NSDate *deleteDate;
+@property(readonly, nonatomic) NSDate *disabledDate;
+@property(readonly, nonatomic, getter=isDisabled) _Bool disabled;
+- (id)assetCountPerType;
 - (id)scopeIdentifier;
 - (id)_scopedIdentifier;
 - (id)initWithScopeIdentifier:(id)arg1 type:(long long)arg2;
 - (void)_setChangeType:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)updatedLibraryInfoFromLibraryInfo:(id)arg1 didUpdate:(_Bool *)arg2;
-- (id)initWithScopeIdentifier:(id)arg1 type:(long long)arg2 libraryInfo:(id)arg3 state:(id)arg4;
-- (void)_setupWithLibraryState:(id)arg1;
-- (void)_setupWithLibraryInfo:(id)arg1;
 
 // Remaining properties
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;

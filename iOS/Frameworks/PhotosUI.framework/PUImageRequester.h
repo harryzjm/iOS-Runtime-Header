@@ -12,6 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface PUImageRequester : NSObject
 {
+    _Bool _shouldRequestPenultimateVersion;
+    _Bool _useLowMemoryMode;
     _Bool _networkAccessAllowed;
     _Bool _imageIsFullQuality;
     _Bool _imageIsPlaceholder;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
     struct CGSize __lastRequestedImageSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setShouldUpdateImageOnCurrentRequestCompletion:) _Bool _shouldUpdateImageOnCurrentRequestCompletion; // @synthesize _shouldUpdateImageOnCurrentRequestCompletion=__shouldUpdateImageOnCurrentRequestCompletion;
 @property(nonatomic, setter=_setCurrentImageRequestID:) int _currentImageRequestID; // @synthesize _currentImageRequestID=__currentImageRequestID;
 @property(nonatomic, setter=_setLastRequestedImageSize:) struct CGSize _lastRequestedImageSize; // @synthesize _lastRequestedImageSize=__lastRequestedImageSize;
@@ -51,10 +54,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(retain, nonatomic) NSArray *requestFullSizeImageDataUTTypes; // @synthesize requestFullSizeImageDataUTTypes=_requestFullSizeImageDataUTTypes;
+@property(nonatomic) _Bool useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
+@property(nonatomic) _Bool shouldRequestPenultimateVersion; // @synthesize shouldRequestPenultimateVersion=_shouldRequestPenultimateVersion;
 @property(nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property(readonly, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property(readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
-- (void).cxx_destruct;
 - (void)_handleResultOfFullsizeImageDataRequestWithID:(int)arg1 imageData:(id)arg2 imageURL:(id)arg3 dataUTI:(id)arg4 orientation:(long long)arg5 info:(id)arg6;
 - (void)_handleResultOfImageRequestWithID:(int)arg1 image:(id)arg2 info:(id)arg3;
 - (void)cancelAllImageRequests;

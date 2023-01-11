@@ -17,6 +17,7 @@
 - (_Bool)shouldMatchElement:(RUIElement *)arg1;
 
 @optional
+@property(retain, nonatomic) RUIObjectModel *objectModel;
 @property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse;
 - (void)harvestDataFromResponse:(NSHTTPURLResponse *)arg1;
 @end

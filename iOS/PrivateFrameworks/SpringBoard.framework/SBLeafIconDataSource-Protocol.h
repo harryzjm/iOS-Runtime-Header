@@ -13,6 +13,12 @@
 - (unsigned long long)priorityForIcon:(SBLeafIcon *)arg1;
 
 @optional
+@property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
+- (unsigned long long)supportedGridSizeClassesForIcon:(SBLeafIcon *)arg1;
+- (_Bool)iconShouldIgnoreOtherDataSources:(SBLeafIcon *)arg1;
+- (_Bool)iconSupportsRasterization:(SBLeafIcon *)arg1;
+- (_Bool)iconSupportsConfiguration:(SBLeafIcon *)arg1;
 - (_Bool)icon:(SBLeafIcon *)arg1 launchFromLocation:(NSString *)arg2 context:(id)arg3;
 - (NSString *)icon:(SBLeafIcon *)arg1 displayNameForObscuredDisabledLaunchForLocation:(NSString *)arg2;
 - (_Bool)iconDisallowsLaunchForObscuredReason:(SBLeafIcon *)arg1;

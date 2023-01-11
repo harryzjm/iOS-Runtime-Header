@@ -8,28 +8,34 @@
 
 #import <DistributedEvaluation/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface DESRecipe : NSObject <NSCopying>
 {
     NSDictionary *_recipeUserInfo;
+    NSData *_certificate;
     NSArray *_attachments;
+    NSArray *_attachmentSignatures;
     NSDictionary *_parametersUsed;
     NSString *_recipeId;
     NSString *_recipeType;
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *recipeType; // @synthesize recipeType=_recipeType;
 @property(copy, nonatomic) NSString *recipeId; // @synthesize recipeId=_recipeId;
 @property(readonly, copy, nonatomic) NSDictionary *parametersUsed; // @synthesize parametersUsed=_parametersUsed;
+@property(readonly, copy, nonatomic) NSArray *attachmentSignatures; // @synthesize attachmentSignatures=_attachmentSignatures;
 @property(copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+@property(readonly, copy, nonatomic) NSData *certificate; // @synthesize certificate=_certificate;
 @property(readonly, copy, nonatomic) NSDictionary *recipeUserInfo; // @synthesize recipeUserInfo=_recipeUserInfo;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *secureAggregationRecipeInfo;
+@property(readonly, nonatomic) _Bool supportsSecureAggregation;
 - (id)_initWithRecipeResponse:(id)arg1 recipeId:(id)arg2 recipeType:(id)arg3 error:(id *)arg4;
-- (id)_initWithRecipeUserInfo:(id)arg1;
-- (id)_inithWithContentsOfFile:(id)arg1 error:(id *)arg2;
+- (id)_initWithRecipeUserInfo:(id)arg1 recipeId:(id)arg2 recipeType:(id)arg3;
+- (id)_inithWithContentsOfFile:(id)arg1 recipeId:(id)arg2 recipeType:(id)arg3 error:(id *)arg4;
 
 @end
 

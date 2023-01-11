@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class MPPlaybackArchiveConfiguration, NSArray, NSString;
 
 @interface MPMediaPickerConfiguration : NSObject <NSSecureCoding>
 {
@@ -16,18 +16,21 @@
     _Bool _showsCloudItems;
     _Bool _showsItemsWithProtectedAssets;
     _Bool _picksSingleCollectionEntity;
-    _Bool _showsCatalogContent;
     _Bool _pickingForExternalPlayer;
     unsigned int _watchCompatibilityVersion;
     unsigned long long _mediaTypes;
     NSString *_prompt;
     NSArray *_typeIdentifiers;
     long long _selectionMode;
+    MPPlaybackArchiveConfiguration *_playbackArchiveConfiguration;
+    long long _supportedContentOptions;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) long long supportedContentOptions; // @synthesize supportedContentOptions=_supportedContentOptions;
+@property(retain, nonatomic) MPPlaybackArchiveConfiguration *playbackArchiveConfiguration; // @synthesize playbackArchiveConfiguration=_playbackArchiveConfiguration;
 @property(nonatomic) _Bool pickingForExternalPlayer; // @synthesize pickingForExternalPlayer=_pickingForExternalPlayer;
-@property(nonatomic) _Bool showsCatalogContent; // @synthesize showsCatalogContent=_showsCatalogContent;
 @property(nonatomic) long long selectionMode; // @synthesize selectionMode=_selectionMode;
 @property(copy, nonatomic) NSArray *typeIdentifiers; // @synthesize typeIdentifiers=_typeIdentifiers;
 @property(nonatomic) unsigned int watchCompatibilityVersion; // @synthesize watchCompatibilityVersion=_watchCompatibilityVersion;
@@ -37,9 +40,11 @@
 @property(nonatomic) _Bool showsCloudItems; // @synthesize showsCloudItems=_showsCloudItems;
 @property(nonatomic) _Bool allowsPickingMultipleItems; // @synthesize allowsPickingMultipleItems=_allowsPickingMultipleItems;
 @property(nonatomic) unsigned long long mediaTypes; // @synthesize mediaTypes=_mediaTypes;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+@property(nonatomic) _Bool supportsUnavailableContent;
+@property(nonatomic) _Bool showsLibraryContent;
+@property(nonatomic) _Bool showsCatalogContent;
 - (id)init;
 
 @end

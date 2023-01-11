@@ -48,13 +48,16 @@
 + (id)fallbackImageURLForIdentifier:(id)arg1 account:(id)arg2;
 + (void)ensureFallbackImageDirectoryExistsForAccount:(id)arg1;
 + (id)fallbackImageDirectoryURL;
++ (unsigned long long)countOfAttachmentsMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)newFetchRequestForAttachments;
 + (id)notDeletedPredicate;
 + (id)predicateForInlineDrawing;
 + (id)predicateForPasswordProtected:(_Bool)arg1;
-+ (id)predicateForSearchableAttachments;
-+ (id)predicateForAttachmentBrowser;
-+ (id)predicateForVisibleAttachments;
++ (id)predicateForSearchableAttachmentsInContext:(id)arg1;
++ (id)predicateForAttachmentBrowserWithContext:(id)arg1;
++ (id)predicateForVisibleAttachmentsIncludingTrashInContext:(id)arg1;
++ (id)predicateForVisibleAttachmentsInContext:(id)arg1;
++ (id)predicateForVisibleAttachmentsIncludingTrash:(_Bool)arg1 inContext:(id)arg2;
 + (id)predicateForVisibleObjects;
 + (id)attachmentTypeUTIsToHideFromAttachmentBrowser;
 + (id)attachmentsMatchingPredicate:(id)arg1 context:(id)arg2;
@@ -67,10 +70,10 @@
 + (void)undeleteAttachment:(id)arg1;
 + (void)deleteAttachment:(id)arg1;
 + (id)newAttachmentWithIdentifier:(id)arg1 note:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVAsset *movie; // @synthesize movie=_movie;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(nonatomic, getter=isSettingMergeableData) _Bool settingMergeableData; // @synthesize settingMergeableData;
-- (void).cxx_destruct;
 - (id)ic_loggingValues;
 - (_Bool)locationNeedsUpdate;
 - (void)attachmentDidChange;
@@ -111,6 +114,7 @@
 @property(retain, nonatomic) NSString *userTitle; // @dynamic userTitle;
 @property(retain, nonatomic) NSString *title; // @dynamic title;
 @property(retain, nonatomic) NSString *urlString; // @dynamic urlString;
+- (_Bool)isUnsupported;
 - (_Bool)isLoadingFromCloud;
 - (void)accountWillChangeToAccount:(id)arg1;
 - (void)willSave;
@@ -227,6 +231,7 @@
 - (id)searchDomainIdentifier;
 - (id)searchIndexingIdentifier;
 - (id)contentIdentifier;
+- (id)dataSourceIdentifier;
 - (_Bool)isMovable;
 - (_Bool)isHiddenFromSearch;
 - (_Bool)searchResultCanBeDeletedFromNoteContext;
@@ -260,6 +265,7 @@
 @property(retain, nonatomic) NSData *metadataData; // @dynamic metadataData;
 @property(nonatomic) long long minimumSupportedNotesVersion; // @dynamic minimumSupportedNotesVersion;
 @property(retain, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
+@property(nonatomic) _Bool needsInitialRelationshipSetup; // @dynamic needsInitialRelationshipSetup;
 @property(retain, nonatomic) ICNote *noteUsingTitleForNoteTitle; // @dynamic noteUsingTitleForNoteTitle;
 @property(nonatomic) short ocrSummaryVersion; // @dynamic ocrSummaryVersion;
 @property(nonatomic) double originX; // @dynamic originX;

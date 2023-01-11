@@ -6,11 +6,12 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-@class NSArray, UICollectionViewLayoutAttributes;
+@class NSArray, NSValue, UICollectionViewLayoutAttributes;
 @protocol CKAvatarPickerLayoutDelegate;
 
 @interface CKAvatarPickerLayout : UICollectionViewLayout
 {
+    _Bool _isInEditingMode;
     unsigned long long _layoutMode;
     id <CKAvatarPickerLayoutDelegate> _delegate;
     UICollectionViewLayoutAttributes *_titleSupplementaryAttr;
@@ -19,8 +20,12 @@
     NSArray *_cutoutAttrCollection;
     UICollectionViewLayoutAttributes *_leftShadowDecorationAttr;
     UICollectionViewLayoutAttributes *_rightShadowDecorationAttr;
+    NSValue *_editingFrameValue;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSValue *editingFrameValue; // @synthesize editingFrameValue=_editingFrameValue;
+@property(nonatomic) _Bool isInEditingMode; // @synthesize isInEditingMode=_isInEditingMode;
 @property(retain, nonatomic) UICollectionViewLayoutAttributes *rightShadowDecorationAttr; // @synthesize rightShadowDecorationAttr=_rightShadowDecorationAttr;
 @property(retain, nonatomic) UICollectionViewLayoutAttributes *leftShadowDecorationAttr; // @synthesize leftShadowDecorationAttr=_leftShadowDecorationAttr;
 @property(copy, nonatomic) NSArray *cutoutAttrCollection; // @synthesize cutoutAttrCollection=_cutoutAttrCollection;
@@ -29,8 +34,11 @@
 @property(retain, nonatomic) UICollectionViewLayoutAttributes *titleSupplementaryAttr; // @synthesize titleSupplementaryAttr=_titleSupplementaryAttr;
 @property(nonatomic) __weak id <CKAvatarPickerLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long layoutMode; // @synthesize layoutMode=_layoutMode;
-- (void).cxx_destruct;
+- (_Bool)wantsChromelessAppearance;
+- (_Bool)_usesGroupAvatar;
+- (_Bool)_shouldShowCutouts;
 - (_Bool)_shouldShowContactNames;
+- (_Bool)_shouldShowTitle;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
@@ -45,9 +53,7 @@
 - (struct CGSize)collectionViewContentSize;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (void)_setupBannerLayout;
-- (void)_setupPancakeLayout;
-- (double)_avatarBoundWidthLayoutMode:(unsigned long long)arg1;
-- (double)_avatarBoundWidth;
+- (void)_setupDefaultLayout;
 - (unsigned long long)_itemCount;
 - (_Bool)_canShowShadowClipping;
 - (id)nameLayoutAttributesCollectionAtPoint:(struct CGPoint)arg1;

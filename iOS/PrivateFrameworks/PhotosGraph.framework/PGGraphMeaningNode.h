@@ -12,11 +12,17 @@
 
 @interface PGGraphMeaningNode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport>
 {
+    NSString *_label;
     long long _isVeryMeaningfulCachedValue;
 }
 
++ (id)momentOfMeaning;
++ (id)eventOfMeaning;
++ (id)submeaningOfMeaning;
 + (id)meaningLabelsForMeaningNodes:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long isVeryMeaningfulCachedValue; // @synthesize isVeryMeaningfulCachedValue=_isVeryMeaningfulCachedValue;
+- (id)label;
 - (id)associatedNodesForRemoval;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 - (id)_localizationKeyForMeaningLabel:(id)arg1;
@@ -31,6 +37,9 @@
 - (id)momentNodes;
 - (void)enumerateHighlightNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)highlightNodes;
+- (unsigned short)domain;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1;
 @property(readonly, nonatomic) NSString *pg_topic;
 
 // Remaining properties

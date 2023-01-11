@@ -9,18 +9,17 @@
 #import <RunningBoard/RBProcessManaging-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSMapTable, NSMutableDictionary, NSString, RBLaunchdJobRegistry, RBProcessIndex, RBProcessMap, RBSystemState;
+@class NSMapTable, NSMutableDictionary, NSString, RBLaunchdJobManager, RBProcessIndex, RBProcessMap, RBSystemState;
 @protocol RBBundlePropertiesManaging, RBEntitlementManaging, RBJetsamBandProviding, RBProcessManagerDelegate;
 
 @interface RBProcessManager : NSObject <RBProcessManaging, RBStateCapturing>
 {
-    RBLaunchdJobRegistry *_jobRegistry;
+    RBLaunchdJobManager *_jobManager;
     id <RBBundlePropertiesManaging> _bundlePropertiesManager;
     id <RBEntitlementManaging> _entitlementManager;
     id <RBJetsamBandProviding> _jetsamBandProvider;
     id <RBProcessManagerDelegate> _delegate;
     struct os_unfair_lock_s _lock;
-    struct os_unfair_recursive_lock_s _resolutionLock;
     struct os_unfair_lock_s _pendingExitBlockLock;
     _Atomic unsigned long long _counter;
     RBProcessIndex *_processIndex;
@@ -35,9 +34,7 @@
 + (id)stateApplicationQueue;
 - (void).cxx_destruct;
 - (void)_removeProcess:(id)arg1;
-- (id)_lifecycleQueue_addProcessInstance:(id)arg1 job:(id)arg2 properties:(id)arg3;
 - (id)_lifecycleQueue_addProcessWithInstance:(id)arg1 properties:(id)arg2;
-- (id)_lifecycleQueue_addProcessWithJob:(id)arg1;
 - (id)_getLifecycleQueueForIdentity:(id)arg1;
 - (void)_executeLifecycleEventForIdentity:(id)arg1 sync:(_Bool)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)_resolveProcessWithIdentifier:(id)arg1 auditToken:(id)arg2 properties:(id *)arg3;
@@ -49,8 +46,10 @@
 - (void)applySystemState:(id)arg1;
 - (void)didUpdateProcessStates:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)busyExtensionInstancesFromSet:(id)arg1;
-- (_Bool)executeTerminateRequest:(id)arg1 withError:(out id *)arg2;
+- (void)executeTerminateRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_canTerminateProcess:(id)arg1 withContext:(id)arg2 error:(out id *)arg3;
 - (id)executeLaunchRequest:(id)arg1 withError:(out id *)arg2;
+- (void)_validateBundleIDForProcess:(id)arg1 launchedWithContext:(id)arg2;
 - (void)systemPreventIdleSleepStateDidChange:(_Bool)arg1;
 - (_Bool)isActiveProcess:(id)arg1;
 - (id)processesMatchingPredicate:(id)arg1;

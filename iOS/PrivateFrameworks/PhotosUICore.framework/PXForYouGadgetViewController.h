@@ -6,35 +6,35 @@
 
 #import <PhotosUICore/PXNavigableForYouViewController-Protocol.h>
 #import <PhotosUICore/PXNavigableSharedAlbumActivityFeedHostViewController-Protocol.h>
-#import <PhotosUICore/PXNavigationRoot-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSString, PXForYouBadgeManager, PXForYouGadgetPriorityManager, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
+@class NSString, PXForYouBadgeManager, PXForYouGadgetPriorityManager;
 
-@interface PXForYouGadgetViewController <PXSettingsKeyObserver, PXNavigationRoot, PXNavigableForYouViewController, PXNavigableSharedAlbumActivityFeedHostViewController>
+@interface PXForYouGadgetViewController <PXSettingsKeyObserver, PXNavigableForYouViewController, PXNavigableSharedAlbumActivityFeedHostViewController>
 {
     _Bool _needsRefresh;
-    UIBarButtonItem *_navigationDisplayModeButtonItem;
     PXForYouBadgeManager *_badgeManager;
     PXForYouGadgetPriorityManager *_priorityManager;
 }
 
 + (id)lastExitedForYouDate;
 + (void)setLastExitedForYouDate:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool needsRefresh; // @synthesize needsRefresh=_needsRefresh;
 @property(retain, nonatomic) PXForYouGadgetPriorityManager *priorityManager; // @synthesize priorityManager=_priorityManager;
 @property(retain, nonatomic) PXForYouBadgeManager *badgeManager; // @synthesize badgeManager=_badgeManager;
-@property(retain, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem; // @synthesize navigationDisplayModeButtonItem=_navigationDisplayModeButtonItem;
-- (void).cxx_destruct;
 - (void)ppt_navigateToFirstInvitationCMM:(_Bool)arg1 withCompleteHandler:(CDUnknownBlockType)arg2;
 - (void)ppt_navigateToFirstSuggestedCMMComposeRecipientViewAfterOneSecondWithCompleteHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_navigateToFirstSuggestedCMMAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)px_navigationDestination;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)routingOptionsForDestination:(id)arg1;
 - (void)navigateToSharedAlbumActivityFeedAnimated:(_Bool)arg1 configuration:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)navigateToShowAllMemoriesFeedAnimated:(_Bool)arg1;
-- (id)navigateToDetailsForMemoryWithLocalIdentifier:(id)arg1;
-@property(readonly, nonatomic) NSString *navigationIdentifier;
-@property(readonly, nonatomic) NSString *navigationTitle;
+- (void)navigateToDetailsForMemoryWithLocalIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)_userDidViewCloudFeedContent;
 - (id)_suggestionDumpURL;
+- (void)_handleTapToRadar;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (long long)scrollAnimationIdentifier;
 - (void)configureSectionHeader:(id)arg1;
@@ -46,8 +46,6 @@
 - (void)viewDidLoad;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)_lastSeenBadgeDateChanged;
-- (void)_calendarDayChanged;
-@property(readonly, nonatomic) NSString *currentDateText;
 - (void)reloadContent;
 - (id)initWithBadgeManager:(id)arg1;
 
@@ -55,8 +53,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
-@property(readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager;
 @property(readonly) Class superclass;
 
 @end

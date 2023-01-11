@@ -13,7 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_viewToAddFocusLayer;
 - (id)accessibilityPath;
-- (void)_axToggleSwitch;
+- (void)_keyboardActivate;
 - (void)_fkaSwitchOff;
 - (void)_fkaSwitchOn;
 - (id)_accessibilityKeyCommands;
@@ -24,6 +24,7 @@
 - (_Bool)isAccessibilityElement;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(_Bool)arg1;
+- (struct CGPoint)accessibilityActivationPoint;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (_Bool)accessibilityActivate;
 @property(nonatomic, setter=_accessibilitySetIsAccessibleViaTableViewCell:) _Bool _accessibilityIsAccessibleViaTableViewCell;

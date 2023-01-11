@@ -20,9 +20,10 @@
     NSProtocolChecker *_protocol;
     NSString *_listenerID;
     NSObject<OS_dispatch_queue> *_listenerLockQueue;
-    NSObject<OS_dispatch_queue> *_remoteDaemonLockQueue;
+    struct os_unfair_recursive_lock_s _remoteDaemonLock;
     NSObject<OS_dispatch_queue> *_localObjectLockQueue;
     NSObject<OS_dispatch_queue> *_remoteMessageQueue;
+    NSObject<OS_dispatch_queue> *_daemonConnectionQueue;
     NSRecursiveLock *_connectionLock;
     NSArray *_servicesToAllow;
     NSArray *_servicesToDeny;
@@ -48,6 +49,7 @@
 + (_Bool)_applicationWillTerminate;
 + (id)sharedController;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType prewarmingBlock; // @synthesize prewarmingBlock=_prewarmingBlock;
 @property(retain, nonatomic) NSMutableDictionary *requestQOSClassCompletionBlocks; // @synthesize requestQOSClassCompletionBlocks=_requestQOSClassCompletionBlocks;
 @property(readonly, nonatomic, getter=isRequestingConnection) _Bool requestingConnection; // @synthesize requestingConnection=_requestingConnection;
@@ -60,13 +62,16 @@
 @property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, setter=_setBlocksConnectionAtResume:) _Bool _blocksConnectionAtResume; // @synthesize _blocksConnectionAtResume;
 @property(readonly, nonatomic) IMDaemonListener *listener; // @synthesize listener=_daemonListener;
-- (void).cxx_destruct;
 - (void)systemApplicationDidResume;
 - (void)systemApplicationWillEnterForeground;
 - (void)systemApplicationDidEnterBackground;
 - (void)systemApplicationDidSuspend;
 - (void)forwardInvocation:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (_Bool)consumeQueryContext:(id)arg1;
+- (void)unsetQueryContext:(id)arg1;
+- (void)setQueryContext:(id)arg1;
+- (void)sendQueryWithReply:(_Bool)arg1 query:(CDUnknownBlockType)arg2;
 - (void)setDaemonLogsOutWithoutStatusListeners:(_Bool)arg1;
 - (void)setDaemonTerminatesWithoutListeners:(_Bool)arg1;
 - (void)listener:(id)arg1 setValue:(id)arg2 ofPersistentProperty:(id)arg3;
@@ -80,7 +85,7 @@
 - (void)_localObjectCleanup;
 - (_Bool)localObjectExists;
 - (_Bool)remoteObjectExists;
-- (_Bool)__isRemoteObjectValidOnQueue:(id)arg1;
+- (_Bool)__isRemoteObjectValid;
 - (_Bool)__isLocalObjectValidOnQueue:(id)arg1;
 - (void)_noteSetupComplete;
 - (void)blockUntilConnected;

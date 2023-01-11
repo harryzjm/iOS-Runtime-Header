@@ -11,8 +11,8 @@
     NSDateFormatter *_dateFormatter;
 }
 
-@property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 - (void)getStringRepresentation:(CDUnknownBlockType)arg1 withInput:(id)arg2 parameters:(id)arg3;
 - (id)initWithDefinition:(id)arg1;
 

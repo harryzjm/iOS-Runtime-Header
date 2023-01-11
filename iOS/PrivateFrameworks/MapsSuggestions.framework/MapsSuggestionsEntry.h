@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <MapsSuggestions/MapsSuggestionsJSONable-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 #import <MapsSuggestions/NSCopying-Protocol.h>
 #import <MapsSuggestions/NSSecureCoding-Protocol.h>
 
 @class GEOMapItemStorage, NSData, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 
-@interface MapsSuggestionsEntry : NSObject <NSCopying, NSSecureCoding, MapsSuggestionsObject>
+@interface MapsSuggestionsEntry : NSObject <NSCopying, NSSecureCoding, MapsSuggestionsObject, MapsSuggestionsJSONable>
 {
     NSMutableSet *_typeHistory;
     NSMutableDictionary *_sourceSpecificInfo;
@@ -29,8 +30,8 @@
     NSString *_undecoratedSubtitleWhenLocked;
     double _weight;
     NSDate *_expires;
-    struct GEOMapItemStorage *_geoMapItem;
-    struct NSString *_originatingSourceName;
+    GEOMapItemStorage *_geoMapItem;
+    NSString *_originatingSourceName;
 }
 
 + (id)entryFromSerializedString:(id)arg1;
@@ -40,6 +41,7 @@
 + (_Bool)supportsSecureCoding;
 + (int)defaultDirectionsTransportType;
 + (id)entryWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *originatingSourceName; // @synthesize originatingSourceName=_originatingSourceName;
 @property(retain, nonatomic) GEOMapItemStorage *geoMapItem; // @synthesize geoMapItem=_geoMapItem;
 @property(nonatomic) _Bool deleted; // @synthesize deleted=_deleted;
@@ -55,10 +57,10 @@
 @property(retain, nonatomic) NSString *titleWhenLocked; // @synthesize titleWhenLocked=_titleWhenLocked;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (_Bool)_wasEverOneOfTypes:(id)arg1;
 - (_Bool)_wasEverOfType:(long long)arg1;
 - (void)_overrideType:(long long)arg1;
+- (id)objectForJSON;
 @property(readonly, copy, nonatomic) NSString *serializedBase64String;
 @property(readonly, copy, nonatomic) NSString *serializedHexString;
 - (void)resetAvailableRemovalBehavior:(long long)arg1;
@@ -69,7 +71,7 @@
 @property(readonly, copy, nonatomic) NSString *shortDescription;
 @property(readonly, copy, nonatomic) NSString *description;
 - (id)contacts;
-- (struct NSData *)mapItemHandleData;
+- (id)mapItemHandleData;
 - (id)ETAForKey:(id)arg1;
 - (id)UUIDForKey:(id)arg1;
 - (id)URLForKey:(id)arg1;
@@ -79,12 +81,10 @@
 - (unsigned long long)uint64ForKey:(id)arg1;
 - (long long)integerForKey:(id)arg1;
 - (id)numberForKey:(id)arg1;
-- (struct NSArray *)stringArrayForKey:(id)arg1;
 - (id)stringForKey:(id)arg1;
-- (id)_valueForKey:(id)arg1 class:(Class)arg2;
 - (_Bool)containsKey:(id)arg1;
 - (void)setContacts:(id)arg1;
-- (void)setMapItemHandleData:(struct NSData *)arg1;
+- (void)setMapItemHandleData:(id)arg1;
 - (void)setETA:(id)arg1 forKey:(id)arg2;
 - (void)setUUID:(id)arg1 forKey:(id)arg2;
 - (void)setURL:(id)arg1 forKey:(id)arg2;
@@ -92,9 +92,7 @@
 - (void)setBoolean:(_Bool)arg1 forKey:(id)arg2;
 - (void)setInteger:(long long)arg1 forKey:(id)arg2;
 - (void)setNumber:(id)arg1 forKey:(id)arg2;
-- (void)setStringArray:(struct NSArray *)arg1 forKey:(id)arg2;
 - (void)setString:(id)arg1 forKey:(id)arg2;
-- (void)_setValue:(id)arg1 forKey:(id)arg2 class:(Class)arg3;
 - (void)setSourceSpecificInfo:(id)arg1;
 - (id)sourceSpecificInfo;
 @property(readonly, nonatomic) NSString *uniqueIdentifier;
@@ -103,8 +101,7 @@
 - (_Bool)isEqualToEntry:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 geoMapItem:(struct GEOMapItemStorage *)arg6 sourceSpecificInfo:(id)arg7;
-- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
+- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 geoMapItem:(id)arg6 sourceSpecificInfo:(id)arg7;
 - (id)initWithType:(long long)arg1 title:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -126,7 +123,6 @@
 - (_Bool)updateUndecoratedSubtitle:(id)arg1;
 - (_Bool)updateUndecoratedTitle:(id)arg1;
 - (id)departingAirportCode;
-- (id)fullFlightCode;
 - (_Bool)hasFullFlightInfoAndGate;
 - (_Bool)hasEssentialFlightInfo;
 @property(readonly, nonatomic) NSString *shortcutIdentifier;

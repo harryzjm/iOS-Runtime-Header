@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
-@property(nonatomic) __weak SKStoreProductViewController *productViewController; // @synthesize productViewController=_productViewController;
 - (void).cxx_destruct;
+@property(nonatomic) __weak SKStoreProductViewController *productViewController; // @synthesize productViewController=_productViewController;
 - (void)setStatusBarStyle:(id)arg1 animated:(id)arg2;
 - (void)setStatusBarHidden:(id)arg1 withAnimation:(id)arg2;
 - (void)promptForStarRating;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)loadDidFinishWithResult:(id)arg1 error:(id)arg2;
 - (void)didReceiveTitle:(id)arg1;
 - (void)didFinishWithResult:(id)arg1;
+- (void)didFinishDismissal;
 - (void)didFinish;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;

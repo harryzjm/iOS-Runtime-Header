@@ -36,6 +36,7 @@
 + (id)_festivalCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_concertCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_entertainmentCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
++ (id)_climbingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_beachingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_winterSportCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)_divingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
@@ -44,6 +45,8 @@
 + (id)_anniversaryCriteriaWithPersonIdentifier:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
 + (id)_birthdayCriteriaWithPersonIdentifier:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
 + (id)_weddingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
++ (id)foodieCurationCriteriaWithPersonLocalIdentifier:(id)arg1 graph:(id)arg2 client:(unsigned long long)arg3;
++ (id)foodieCurationCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
 + (id)curationCriteriaWithGraph:(id)arg1 seasonName:(id)arg2 client:(unsigned long long)arg3;
 + (id)tripCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
 + (id)petCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;

@@ -16,9 +16,10 @@ __attribute__((visibility("hidden")))
     NSString *_bundleIdentifier;
 }
 
-@property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (_Bool)updateBundleRecord:(id *)arg1;
+- (void)parseManagedPersonaIDs:(id)arg1 containsSystemPersona:(_Bool)arg2;
 - (void)parsePlaceholderMetadata:(id)arg1;
 - (void)parseSINFDictionary:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;

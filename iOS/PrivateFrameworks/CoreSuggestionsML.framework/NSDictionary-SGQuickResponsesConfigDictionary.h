@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (SGQuickResponsesConfigDictionary)
+- (id)dictAssertedForKey:(id)arg1;
 - (id)arrayAssertedForKey:(id)arg1;
 - (id)stringAssertedForKey:(id)arg1;
 - (id)numberAssertedForKey:(id)arg1;

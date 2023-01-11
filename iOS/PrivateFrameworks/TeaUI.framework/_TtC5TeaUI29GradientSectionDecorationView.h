@@ -10,16 +10,17 @@
 
 @interface _TtC5TeaUI29GradientSectionDecorationView : UICollectionReusableView
 {
-    MISSING_TYPE *gradientDescriptor;
+    MISSING_TYPE *gradientView;
+    MISSING_TYPE *gradientSize;
+    MISSING_TYPE *overscrollPinPosition;
 }
 
-+ (Class)layerClass;
 - (void).cxx_destruct;
+- (void)gutterViewBoundsDidChange;
+- (void)applyLayoutAttributes:(id)arg1;
+- (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)gutterViewBoundsDidChange;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)applyLayoutAttributes:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)willMoveToSuperview:(id)arg1;
 

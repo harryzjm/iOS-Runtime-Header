@@ -12,6 +12,7 @@
 
 
 // Remaining properties
+@property(nonatomic) long long compatibilityVersion; // @dynamic compatibilityVersion;
 @property(nonatomic) double confidence; // @dynamic confidence;
 @property(retain, nonatomic) NSSet *customMetadata; // @dynamic customMetadata;
 @property(nonatomic) double endDate; // @dynamic endDate;

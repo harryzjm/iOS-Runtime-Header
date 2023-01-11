@@ -4,22 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <VoiceShortcutClient/WFDatabaseObjectDescriptor.h>
 
-@class NSString;
-@protocol NSObject;
+@class NSData, NSDate, NSString;
 
-@interface WFTriggerEvent : NSObject
+@interface WFTriggerEvent : WFDatabaseObjectDescriptor
 {
+    _Bool _confirmed;
     NSString *_triggerID;
-    id <NSObject> _currentValue;
+    NSData *_eventInfo;
+    NSDate *_dateCreated;
 }
 
-@property(readonly, nonatomic) id <NSObject> currentValue; // @synthesize currentValue=_currentValue;
-@property(readonly, copy, nonatomic) NSString *triggerID; // @synthesize triggerID=_triggerID;
 - (void).cxx_destruct;
-- (id)description;
-- (id)initWithTriggerID:(id)arg1 currentValue:(id)arg2;
+@property(nonatomic) _Bool confirmed; // @synthesize confirmed=_confirmed;
+@property(readonly, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property(readonly, copy, nonatomic) NSData *eventInfo; // @synthesize eventInfo=_eventInfo;
+@property(readonly, copy, nonatomic) NSString *triggerID; // @synthesize triggerID=_triggerID;
+- (id)initWithIdentifier:(id)arg1 triggerID:(id)arg2 eventInfo:(id)arg3 confirmed:(_Bool)arg4 dateCreated:(id)arg5;
 
 @end
 

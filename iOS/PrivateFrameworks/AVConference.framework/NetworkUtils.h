@@ -16,8 +16,13 @@ __attribute__((visibility("hidden")))
 + (id)securityKeyMaterialWithMasterKeyIndex:(id)arg1;
 + (id)newRTPSocketDictionary:(_Bool)arg1 rtpSourcePort:(short)arg2;
 + (int)socketWithIPAddress:(id)arg1 srcPort:(short)arg2 shouldConnect:(_Bool)arg3 error:(id *)arg4;
++ (int)nonConnectedSocketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
 + (int)connectedSocketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
 + (int)socketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
++ (id)newNWConnectionWithIPAddress:(id)arg1 srcPort:(short)arg2;
++ (_Bool)createNWPathEvaluator:(id *)arg1 withIPAddress:(id)arg2 localPort:(int *)arg3 remotePort:(int)arg4 shouldRunInProcess:(_Bool)arg5;
++ (void)setUniquePIDOnParameters:(id)arg1 shouldRunInProcess:(_Bool)arg2;
++ (_Bool)createAndStartListener:(id *)arg1 withParameters:(id)arg2;
 
 @end
 

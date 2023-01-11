@@ -15,6 +15,7 @@
 - (void)invalidate;
 
 @optional
+- (_Bool)hasSceneOverlayView;
 - (void)setShowingIconOverlayView:(_Bool)arg1;
 - (void)setShouldUseBrightMaterial:(_Bool)arg1;
 @end

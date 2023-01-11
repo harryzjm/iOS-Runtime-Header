@@ -21,7 +21,6 @@
 - (id)combinedDateLabelWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 allDay:(_Bool)arg4 forStyle:(long long)arg5;
 - (id)endLabelWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 allDay:(_Bool)arg4 forStyle:(long long)arg5;
 - (id)startLabelWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 allDay:(_Bool)arg4 forStyle:(long long)arg5;
-- (id)_labelWithStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 allDay:(_Bool)arg4 forStyle:(long long)arg5 forType:(long long)arg6;
 - (void)dealloc;
 - (id)init;
 

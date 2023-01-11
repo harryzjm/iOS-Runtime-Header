@@ -37,6 +37,8 @@
     NSNumber *_instanceID;
     HMMutableArray *_currentCharacteristics;
     NSNumber *_lastKnownDiscoveryMode;
+    NSNumber *_lastKnownOperatingStateValue;
+    NSNumber *_lastKnownOperatingStateAbnormalReasonsValue;
     NSUUID *_uuid;
     NSArray *_linkedServiceInstanceIDs;
     NSArray *_mediaSourceDisplayOrder;
@@ -54,10 +56,13 @@
 + (void)initializeCharacteristicDictionaries;
 + (id)serviceWithServiceReference:(id)arg1 home:(id)arg2;
 + (id)serviceWithSerializedDictionaryRepresentation:(id)arg1 home:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool mediaSourceDisplayOrderModifiable; // @synthesize mediaSourceDisplayOrderModifiable=_mediaSourceDisplayOrderModifiable;
 @property(retain, nonatomic) NSArray *mediaSourceDisplayOrder; // @synthesize mediaSourceDisplayOrder=_mediaSourceDisplayOrder;
 @property(readonly, copy, nonatomic) NSArray *linkedServiceInstanceIDs; // @synthesize linkedServiceInstanceIDs=_linkedServiceInstanceIDs;
 @property(copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(copy, nonatomic) NSNumber *lastKnownOperatingStateAbnormalReasonsValue; // @synthesize lastKnownOperatingStateAbnormalReasonsValue=_lastKnownOperatingStateAbnormalReasonsValue;
+@property(copy, nonatomic) NSNumber *lastKnownOperatingStateValue; // @synthesize lastKnownOperatingStateValue=_lastKnownOperatingStateValue;
 @property(copy, nonatomic) NSNumber *lastKnownDiscoveryMode; // @synthesize lastKnownDiscoveryMode=_lastKnownDiscoveryMode;
 @property(copy, nonatomic) HMMutableArray *currentCharacteristics; // @synthesize currentCharacteristics=_currentCharacteristics;
 @property(readonly, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
@@ -65,7 +70,6 @@
 @property(readonly, nonatomic, getter=isPrimaryService) _Bool primaryService; // @synthesize primaryService=_primaryService;
 @property(readonly, nonatomic, getter=isUserInteractive) _Bool userInteractive; // @synthesize userInteractive=_userInteractive;
 @property _Bool nameModifiable; // @synthesize nameModifiable=_nameModifiable;
-- (void).cxx_destruct;
 - (_Bool)_hasCharacteristicOfType:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *localizedDescription;
 - (id)_serviceTypeDescription;
@@ -81,6 +85,7 @@
 - (void)_handleMarkServiceInteractive:(id)arg1;
 - (void)_handleUpdateServicePrimary:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_addLastKnownOperatingStateWithResponsesDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (void)_addLastKnownSleepDiscoveryModeDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_findCharacteristicWithUniqueIdentifier:(id)arg1;
@@ -100,10 +105,13 @@
 @property(readonly, nonatomic) NSURL *homeObjectURLInternal; // @synthesize homeObjectURLInternal=_homeObjectURLInternal;
 - (id)bulletinBoardNotification;
 @property(readonly, nonatomic) HMBulletinBoardNotification *bulletinBoardNotificationInternal; // @synthesize bulletinBoardNotificationInternal=_bulletinBoardNotificationInternal;
-- (void)setApplicationData:(id)arg1;
-@property(readonly, nonatomic) HMApplicationData *applicationData;
+@property(retain, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 - (_Bool)isNameModifiable;
 @property(retain, nonatomic) NSNumber *mediaSourceIdentifier; // @synthesize mediaSourceIdentifier=_mediaSourceIdentifier;
+- (unsigned long long)lastKnownOperatingStateAbnormalReasons;
+- (long long)lastKnownOperatingState;
+- (_Bool)hasOperatingStateAbnormalReasons;
+- (_Bool)hasOperatingState;
 - (long long)lastKnownSleepDiscoveryMode;
 - (_Bool)hasSleepDiscoveryMode;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -118,6 +126,9 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(nonatomic) __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
+- (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;

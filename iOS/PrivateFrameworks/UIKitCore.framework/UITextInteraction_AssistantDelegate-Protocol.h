@@ -7,16 +7,20 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/UITextAutoscrolling-Protocol.h>
 
-@class NSTextAlternatives, UIDragRecognizer, UIGestureRecognizer, UIResponder, UITextRange, UITextSelectionView, UITouch, UIView;
+@class NSTextAlternatives, UIDragRecognizer, UIGestureRecognizer, UITextCursorAssertionController, UITextRange, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController;
 @protocol UITextInput;
 
 @protocol UITextInteraction_AssistantDelegate <UITextAutoscrolling, NSObject>
+@property(retain, nonatomic) id keyboardSuppressionAssertion;
+@property(retain, nonatomic) id grabberSuppressionAssertion;
+@property(readonly, nonatomic) UITextCursorAssertionController *_assertionController;
+@property(readonly, nonatomic) _UIKeyboardTextSelectionController *activeSelectionController;
 @property(nonatomic) _Bool expectingCommit;
 @property(readonly, nonatomic) _Bool willHandoffLoupeMagnifier;
 @property(nonatomic) _Bool needsGestureUpdate;
 @property(nonatomic) struct CGPoint loupeGestureEndPoint;
 @property(nonatomic) _Bool autoscrolled;
-- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3;
+- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3 forTouchType:(long long)arg4;
 - (void)endFloatingCursor;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
@@ -24,6 +28,8 @@
 - (void)resetWillHandoffLoupeMagnifier;
 - (void)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleDictationReplacementsForAlternatives:(NSTextAlternatives *)arg1 range:(UITextRange *)arg2;
+- (void)setAutomaticSelectionCommandsSuppressedForPointerTouchType:(_Bool)arg1;
+- (void)showSelectionCommandsForSecondaryClickAtPoint:(struct CGPoint)arg1;
 - (void)selectWordWithoutShowingCommands;
 - (void)updateWithMagnifierTerminalPoint:(_Bool)arg1;
 - (void)setGestureRecognizers;
@@ -31,23 +37,26 @@
 - (void)extendSelectionToPoint:(struct CGPoint)arg1;
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;
 - (void)notifyKeyboardSelectionChanged;
+- (void)setFirstResponderIfNecessaryActivatingSelection:(_Bool)arg1;
 - (void)setFirstResponderIfNecessary;
 - (void)checkEditabilityAndSetFirstResponderIfNecessary;
 - (void)scrollSelectionToVisible;
+- (_Bool)hasActiveSelectionInteraction;
 - (void)didEndSelectionInteraction;
 - (void)willBeginSelectionInteraction;
 - (void)clearStashedSelection;
 - (void)stashCurrentSelection;
+- (_Bool)supportsIndirectInteractions;
+- (_Bool)usesAsynchronousSelectionController;
 - (_Bool)didUseStashedSelection;
 - (void)canBeginDragCursor:(UIDragRecognizer *)arg1;
-- (_Bool)viewCouldBecomeEditable:(UIResponder<UITextInput> *)arg1;
+- (_Bool)viewCouldBecomeEditable:(id <UITextInput>)arg1;
 - (UITextRange *)rangeForTextReplacement:(UITextRange *)arg1;
 - (void)setSuppressSystemUI:(_Bool)arg1;
 - (_Bool)useGesturesForEditableContent;
 - (UITextSelectionView *)selectionView;
 - (_Bool)containerAllowsSelectionTintOnly;
 - (_Bool)containerIsTextField;
-- (_Bool)containerIsPlainStyleAtom;
 - (UIView *)view;
 
 @optional

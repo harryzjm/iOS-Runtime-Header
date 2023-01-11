@@ -18,7 +18,9 @@
 - (void).cxx_destruct;
 - (id)_asynchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_callRepairServiceWithOptions:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)repairAppWithOptions:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)refreshKeybagWithReplyHandler:(CDUnknownBlockType)arg1;
 - (id)initWithServiceBroker:(id)arg1;
 
 @end

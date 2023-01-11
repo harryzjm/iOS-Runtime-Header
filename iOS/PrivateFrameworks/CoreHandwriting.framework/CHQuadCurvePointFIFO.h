@@ -22,6 +22,8 @@
 }
 
 + (MISSING_TYPE *)interpolateFromPoint:(float)arg1 toPoint:controlPoint:time: /* Error: Ran out of types for this method. */;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <CHPointFIFODrawingTarget> drawingTarget; // @synthesize drawingTarget=_drawingTarget;
 @property(nonatomic) MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
 @property(nonatomic) vector_027a6188 controlPoints; // @synthesize controlPoints=_controlPoints;
@@ -32,8 +34,6 @@
 @property(copy) CDUnknownBlockType emissionHandler; // @synthesize emissionHandler=_emissionHandler;
 @property(nonatomic) _Bool emitInterpolatedPoints; // @synthesize emitInterpolatedPoints=_emitInterpolatedPoints;
 @property(nonatomic) float unitScale; // @synthesize unitScale=_unitScale;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)clear;
 - (void)flush;
 - (void)addPoint: /* Error: Ran out of types for this method. */;

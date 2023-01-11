@@ -12,25 +12,13 @@
 {
 }
 
-+ (id)_ams_cookiesForURL:(id)arg1;
 - (id)_activeItunesAccount;
 - (id)_connectionType;
-- (id)_userType;
-- (id)userType;
 - (id)userAgent;
 - (id)storeFrontHeader;
-- (id)osBuildNumber;
-- (id)hardwareModel;
 - (id)dsId;
-- (id)_cookies;
 - (id)cookies;
 - (id)connectionType;
-- (id)capacitySystemAvailable;
-- (id)capacitySystem;
-- (id)capacityDisk;
-- (id)capacityDataAvailable;
-- (id)capacityData;
-- (id)_diskUsage;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

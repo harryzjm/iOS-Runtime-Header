@@ -16,8 +16,8 @@
     CDPContext *_cdpContext;
 }
 
-@property(readonly, nonatomic) CDPContext *cdpContext; // @synthesize cdpContext=_cdpContext;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDPContext *cdpContext; // @synthesize cdpContext=_cdpContext;
 - (id)_pairingChannelContext;
 - (id)pairingChannelAcceptor:(id *)arg1;
 - (id)pairingChannelInitiator:(id *)arg1;
@@ -34,6 +34,7 @@
 - (_Bool)viewMemberForAutofillPasswords:(id *)arg1;
 - (_Bool)requestToResetCloudKitDataForReason:(id)arg1 error:(id *)arg2;
 - (_Bool)requestToResetCircle:(id *)arg1;
+- (id)requestToResetProtectedData:(id *)arg1;
 - (_Bool)requestToJoinCircleAfterRestore:(id *)arg1;
 - (_Bool)requestToJoinCircle:(id *)arg1;
 - (_Bool)removeThisDeviceFromCircle:(id *)arg1;
@@ -42,7 +43,6 @@
 - (id)generateVerifierWithRecoveryKey:(id)arg1 error:(id *)arg2;
 - (id)generateRecoveryKeyWithInfo:(id)arg1 error:(id *)arg2;
 - (id)peerDeviceNamesByPeerID;
-- (unsigned long long)peerCount;
 - (id)peerId;
 - (int)_sos_circleStatus:(id *)arg1;
 - (int)_sos_authenticatedCircleStatus:(id *)arg1;
@@ -54,8 +54,10 @@
 - (id)contextType;
 - (void)reportFailure:(id)arg1;
 - (void)reportSuccess;
+- (void)waitForUpdate;
 - (unsigned long long)circleStatus:(id *)arg1;
-- (unsigned long long)cachedCircleStatus:(id *)arg1;
+- (int)cachedCircleStatus:(id *)arg1;
+- (unsigned long long)cachedCliqueStatus:(id *)arg1;
 - (void)didJoinCircleAfterRecovery:(id)arg1;
 - (id)initWithContext:(id)arg1;
 

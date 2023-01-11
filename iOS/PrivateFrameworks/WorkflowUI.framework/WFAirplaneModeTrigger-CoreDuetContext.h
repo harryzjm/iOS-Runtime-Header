@@ -7,6 +7,10 @@
 #import <WorkflowKit/WFAirplaneModeTrigger.h>
 
 @interface WFAirplaneModeTrigger (CoreDuetContext)
++ (id)offLabel;
++ (id)onLabel;
++ (id)offIcon;
++ (id)onIcon;
 + (id)triggerTypeIcon;
 @end
 

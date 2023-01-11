@@ -4,22 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NTKRingsAndDotsView;
-
 @interface NTKWellnessRichComplicationCircularView
 {
-    NTKRingsAndDotsView *_ringsView;
-    NSMutableArray *_ringsFillFractions;
-    struct CGRect _prevLayoutBounds;
 }
 
-- (void).cxx_destruct;
-- (void)_updateRingWithTemplate:(id)arg1;
-- (void)_showEmptyViews;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)layoutSubviews;
++ (_Bool)supportsComplicationFamily:(long long)arg1;
 - (id)init;
 
 @end

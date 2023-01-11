@@ -20,12 +20,12 @@
     SXDragManager *_dragManager;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SXDragManager *dragManager; // @synthesize dragManager=_dragManager;
 @property(retain, nonatomic) SXAnimatedImageController *animatedImageController; // @synthesize animatedImageController=_animatedImageController;
 @property(readonly, nonatomic) SXImageView *imageView; // @synthesize imageView=_imageView;
 @property(readonly, nonatomic) id <SXMediaSharingPolicyProvider> mediaSharingPolicyProvider; // @synthesize mediaSharingPolicyProvider=_mediaSharingPolicyProvider;
 @property(readonly, nonatomic) id <SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (unsigned long long)analyticsMediaType;
 @property(readonly, copy) NSString *description;
@@ -42,7 +42,7 @@
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (struct CGRect)imageFrame;
 - (void)layoutImageView;
 - (void)loadComponent:(id)arg1;

@@ -8,19 +8,14 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC16NewsSubscription17PaywallInteractor : NSObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *coordinator;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *paywallModel;
     MISSING_TYPE *purchaseSessionID;
-    MISSING_TYPE *dataManager;
-    MISSING_TYPE *purchaseStarter;
     MISSING_TYPE *webAccessAuthenticatorFactory;
     MISSING_TYPE *webAccessAuthenticator;
-    MISSING_TYPE *purchaseConversionLocation;
-    MISSING_TYPE *paywallType;
 }
 
 - (void).cxx_destruct;

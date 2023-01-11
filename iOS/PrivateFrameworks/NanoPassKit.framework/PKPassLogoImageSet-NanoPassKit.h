@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitCore/PKPassLogoImageSet.h>
+#import <PassKit/PKPassLogoImageSet.h>
 
 @interface PKPassLogoImageSet (NanoPassKit)
 - (_Bool)npkHasValidPaymentCardAssets;
 - (void)loadPDFArtFromBundle:(id)arg1 targetSize:(struct CGSize)arg2 scale:(double)arg3;
 - (void)loadPDFArtFromBundle:(id)arg1;
+- (void)memoryMapImageData;
 - (void)resizeWithScreenSize:(struct CGSize)arg1;
 @end
 

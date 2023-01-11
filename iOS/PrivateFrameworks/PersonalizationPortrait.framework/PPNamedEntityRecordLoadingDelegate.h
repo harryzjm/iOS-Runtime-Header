@@ -15,6 +15,7 @@
     CDUnknownBlockType _resetNamedEntityRecordData;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType resetNamedEntityRecordData; // @synthesize resetNamedEntityRecordData=_resetNamedEntityRecordData;
 @property(copy, nonatomic) CDUnknownBlockType recentNamedEntityRecordsCompletion; // @synthesize recentNamedEntityRecordsCompletion=_recentNamedEntityRecordsCompletion;
 @property(copy, nonatomic) CDUnknownBlockType recentNamedEntityRecordsHandler; // @synthesize recentNamedEntityRecordsHandler=_recentNamedEntityRecordsHandler;
@@ -22,7 +23,6 @@
 @property(copy, nonatomic) CDUnknownBlockType namedEntityRecordsCompletion; // @synthesize namedEntityRecordsCompletion=_namedEntityRecordsCompletion;
 @property(copy, nonatomic) CDUnknownBlockType namedEntityRecordsHandler; // @synthesize namedEntityRecordsHandler=_namedEntityRecordsHandler;
 @property(copy, nonatomic) CDUnknownBlockType namedEntityRecordsSetup; // @synthesize namedEntityRecordsSetup=_namedEntityRecordsSetup;
-- (void).cxx_destruct;
 - (void)resetRecordData;
 - (void)recentRecordLoadingCompletion;
 - (unsigned char)recentRecordLoadingHandler:(id)arg1;

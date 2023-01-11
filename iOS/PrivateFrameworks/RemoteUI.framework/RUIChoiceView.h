@@ -6,26 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class BFFPaneHeaderView_RemoteUI, RUIChoiceViewElement, RUIElement, RUISubHeaderElement, UIButton, UIScrollView, _UIBackdropView;
+@class NSLayoutConstraint, RUIChoiceViewElement, RUIElement, RUIModernHeaderView, RUISubHeaderElement, UIButton, UIScrollView, UIVisualEffectView;
 @protocol RUIHeader;
 
 @interface RUIChoiceView : UIView
 {
-    BFFPaneHeaderView_RemoteUI *_headerView;
+    RUIModernHeaderView *_headerView;
     UIButton *_bigChoice;
     UIButton *_smallChoice;
-    _UIBackdropView *_trayBackdrop;
+    UIVisualEffectView *_trayBackdrop;
     UIView *_buttonTray;
     UIScrollView *_scrollView;
     long long _currentStyle;
+    NSLayoutConstraint *_trayHeightConstraint;
     _Bool _usesTwoButtonLayout;
     RUIChoiceViewElement *_target;
     RUIElement *_header;
     RUISubHeaderElement *_subHeader;
-    struct UIEdgeInsets _customSafeAreaInsets;
 }
 
-@property(nonatomic) struct UIEdgeInsets customSafeAreaInsets; // @synthesize customSafeAreaInsets=_customSafeAreaInsets;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *buttonTray; // @synthesize buttonTray=_buttonTray;
 @property(readonly, nonatomic) UIButton *smallChoice; // @synthesize smallChoice=_smallChoice;
 @property(readonly, nonatomic) UIButton *bigChoice; // @synthesize bigChoice=_bigChoice;
@@ -33,17 +33,18 @@
 @property(retain, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
 @property(retain, nonatomic) RUIElement *header; // @synthesize header=_header;
 @property(nonatomic) __weak RUIChoiceViewElement *target; // @synthesize target=_target;
-- (void).cxx_destruct;
+- (_Bool)headerUsesModernHeaderView;
 - (void)setHeaderTitle:(id)arg1;
 - (id)titleLabel;
-- (void)_updateTrayBackdrop;
 - (void)layoutSubviews;
 - (void)choiceTapped:(id)arg1;
 - (void)setHelpLinkTitle:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
 - (void)setImage:(id)arg1;
-- (void)setSecondChoiceTitle:(id)arg1;
-- (void)setFirstChoiceTitle:(id)arg1;
+- (void)setSecondChoiceTitle:(id)arg1 withColor:(id)arg2;
+- (void)setFirstChoiceTitle:(id)arg1 withColor:(id)arg2;
 @property(readonly, nonatomic) UIView<RUIHeader> *headerView;
+- (void)_setupTrayConstraints;
 - (id)init;
 
 @end

@@ -4,18 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PHCollection;
+
 @interface PXNavigationListGroupItem
 {
     _Bool _group;
     _Bool _draggable;
     _Bool _expandable;
+    PHCollection *_collection;
 }
 
 + (id)titleForIdentifier:(id)arg1;
+- (void).cxx_destruct;
+- (id)collection;
 - (_Bool)isExpandable;
 - (_Bool)isDraggable;
 - (_Bool)isGroup;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithIdentifier:(id)arg1 collection:(id)arg2;
 - (id)initWithIdentifier:(id)arg1;
 
 @end

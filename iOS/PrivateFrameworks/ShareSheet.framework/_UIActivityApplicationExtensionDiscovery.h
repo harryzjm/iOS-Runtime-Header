@@ -6,29 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, _UIMatchingExtensionsResult;
-@protocol OS_dispatch_queue;
+@class NSArray;
 
 @interface _UIActivityApplicationExtensionDiscovery : NSObject
 {
     NSArray *_extensionPointIdentifiers;
     CDUnknownBlockType _fetchShortcutsBlock;
-    NSObject<OS_dispatch_queue> *_primedExtensionsQueue;
-    _UIMatchingExtensionsResult *_primedExtensionsResult;
 }
 
 + (id)extensionMatchingDictionariesForExtensionItems:(id)arg1;
 + (id)extensionBasedActivityForExtension:(id)arg1;
-@property(retain) _UIMatchingExtensionsResult *primedExtensionsResult; // @synthesize primedExtensionsResult=_primedExtensionsResult;
-@property(retain) NSObject<OS_dispatch_queue> *primedExtensionsQueue; // @synthesize primedExtensionsQueue=_primedExtensionsQueue;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType fetchShortcutsBlock; // @synthesize fetchShortcutsBlock=_fetchShortcutsBlock;
 @property(copy, nonatomic) NSArray *extensionPointIdentifiers; // @synthesize extensionPointIdentifiers=_extensionPointIdentifiers;
-- (void).cxx_destruct;
+- (id)reportExtensionsCacheResult;
 - (id)activitiesForMatchingContext:(id)arg1 error:(id *)arg2;
 - (void)primeWithDiscoveryContext:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithExtensionPointIdentifiers:(id)arg1;
+- (void)registerPendingContinuousExtensionsDiscovery;
 
 @end
 

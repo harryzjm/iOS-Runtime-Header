@@ -5,9 +5,9 @@
 //
 
 @protocol DDRemoteActionPresenter
-- (void)actionBecameCancellable:(_Bool)arg1;
+- (void)actionCanBeCancelledExternally:(_Bool)arg1;
 - (void)viewControllerReady;
-- (void)actionDidFinish;
+- (void)actionDidFinishShouldDismiss:(_Bool)arg1;
 - (void)getIsBeingPresentedInPopover:(void (^)(_Bool))arg1;
 @end
 

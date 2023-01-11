@@ -6,10 +6,13 @@
 
 #import <IDS/NSObject-Protocol.h>
 
-@class IDSURI, NSData, NSString;
+@class IDSURI, NSData, NSDictionary, NSString;
 
 @protocol IDSXPCInternalTesting <NSObject>
+- (void)assertTransportThreadRealTimeMode:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchStoredUserDescriptions:(void (^)(NSString *))arg1;
+- (void)deviceChangedForDeviceID:(NSString *)arg1 isNearby:(_Bool)arg2 isConnected:(_Bool)arg3 isCloudConnected:(_Bool)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)removeConnectionWithConnectionName:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)nukeTransparencyStateWithCompletion:(void (^)(NSError *))arg1;
 - (void)nukeCloudKitTransparencyStateWithCompletion:(void (^)(NSError *))arg1;
 - (void)fetchCloudKitTransparencyStateWithCompletion:(void (^)(NSArray *, NSError *))arg1;
@@ -22,7 +25,8 @@
 - (void)fetchTransparentEndpointsForServiceIdentifier:(NSString *)arg1 localURI:(IDSURI *)arg2 remoteURI:(IDSURI *)arg3 verifyAgainstTrustCircle:(_Bool)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
 - (void)fetchEndpointCacheStateForServiceIdentifier:(NSString *)arg1 localURI:(IDSURI *)arg2 remoteURI:(IDSURI *)arg3 completion:(void (^)(IDSQueryKeyTransparencyContext *, NSArray *, NSError *))arg4;
 - (void)autoBugCaptureWithCompletion:(void (^)(NSError *))arg1;
-- (void)tapToRadarWithTitle:(NSString *)arg1 message:(NSString *)arg2 completion:(void (^)(void))arg3;
+- (void)popupPromptWithTitle:(NSString *)arg1 message:(NSString *)arg2 defaultButton:(NSString *)arg3 defaultUrl:(NSString *)arg4 alternateButton:(NSString *)arg5 alternatrUrl:(NSString *)arg6 completion:(void (^)(void))arg7;
+- (void)tapToRadarWithTitle:(NSString *)arg1 message:(NSString *)arg2 context:(NSDictionary *)arg3 completion:(void (^)(void))arg4;
 - (void)checkServerStorageForService:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)setECVersion:(unsigned int)arg1 withCompletion:(void (^)(void))arg2;
 - (void)currentECVersionWithBlock:(void (^)(unsigned int))arg1;

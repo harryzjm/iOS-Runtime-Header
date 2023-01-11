@@ -15,16 +15,22 @@
     EKCalendarItem *_owner;
 }
 
++ (_Bool)canonicalizedEqualityTestValue1:(id)arg1 value2:(id)arg2 key:(id)arg3 object1:(id)arg4 object2:(id)arg5;
++ (_Bool)doesParticipantURL:(id)arg1 email:(id)arg2 andPhoneNumber:(id)arg3 matchParticipantURL:(id)arg4 email:(id)arg5 andPhoneNumber:(id)arg6;
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (id)participantWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 url:(id)arg4;
 + (id)participantWithName:(id)arg1 url:(id)arg2;
-@property(readonly, nonatomic) EKCalendarItem *owner; // @synthesize owner=_owner;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) EKCalendarItem *owner; // @synthesize owner=_owner;
 @property(readonly, copy) NSString *description;
 - (id)semanticIdentifier;
+- (id)existingContact;
 - (id)setInviterNameString;
 @property(copy, nonatomic) NSString *inviterNameString; // @dynamic inviterNameString;
 - (id)invitedBy;
 @property(nonatomic) int proposedStartDateStatus;
+- (_Bool)hasProposedStartDate;
 - (void)setProposedStartDate:(id)arg1 forEvent:(id)arg2;
 - (id)proposedStartDateForEvent:(id)arg1;
 - (void)setProposedStartDate:(id)arg1;
@@ -47,11 +53,12 @@
 @property(copy, nonatomic) NSString *phoneNumber;
 @property(copy, nonatomic) NSString *emailAddress;
 - (void)setDisplayName:(id)arg1;
+- (void)setDisplayNameRaw:(id)arg1;
 - (id)displayNameRaw;
+- (id)nameUsingAddressAsBackup;
 @property(readonly, nonatomic) NSString *name;
 - (void)setUUID:(id)arg1;
 @property(readonly, nonatomic) NSString *UUID;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 url:(id)arg4;
 @property(readonly, nonatomic) NSPredicate *contactPredicate; // @dynamic contactPredicate;
 

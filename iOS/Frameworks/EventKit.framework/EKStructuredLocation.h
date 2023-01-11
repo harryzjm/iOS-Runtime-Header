@@ -15,13 +15,17 @@
 }
 
 + (id)displayLabelForContact:(id)arg1 unlocalizedLabel:(id)arg2;
++ (id)locationWithGEOMapItem:(id)arg1;
 + (id)locationWithMapItem:(id)arg1;
++ (id)locationWithPlacemark:(id)arg1;
 + (id)_stringByStrippingControlCharactersFromString:(id)arg1;
 + (id)locationWithTitle:(id)arg1;
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (Class)frozenClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) EKPredictedLocationOfInterest *predictedLOI; // @synthesize predictedLOI=_predictedLOI;
 @property(nonatomic, getter=isImprecise) _Bool imprecise; // @synthesize imprecise=_imprecise;
-- (void).cxx_destruct;
 - (id)semanticIdentifier;
 @property(copy, nonatomic) NSString *derivedFrom;
 @property(readonly, nonatomic, getter=isPrediction) _Bool prediction;
@@ -32,6 +36,7 @@
 - (id)description;
 - (_Bool)isEqualToLocation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)_reset;
 @property(copy, nonatomic) NSData *mapKitHandle;
 @property(copy, nonatomic) NSString *contactLabel;
 @property(nonatomic) double radius;

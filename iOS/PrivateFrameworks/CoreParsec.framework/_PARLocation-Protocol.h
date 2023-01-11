@@ -6,10 +6,11 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, _PARRevGeoResolution;
 
 @protocol _PARLocation <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _PARRevGeoResolution *revGeoResolution;
 @property(nonatomic) float horizontalAccuracy;
 @property(nonatomic) int source;
 @property(nonatomic) float longitude;

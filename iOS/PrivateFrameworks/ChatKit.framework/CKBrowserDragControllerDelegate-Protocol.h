@@ -17,7 +17,6 @@
 - (void)dragManager:(CKBrowserDragManager *)arg1 didDragItem:(id)arg2 toDragTarget:(CKBrowserDragControllerTarget *)arg3;
 
 @optional
-- (void)dragManager:(CKBrowserDragManager *)arg1 didEndDraggingItem:(id)arg2 toDragTarget:(CKBrowserDragControllerTarget *)arg3 dropArea:(int)arg4 wasCancelled:(_Bool *)arg5;
 - (void)dragManager:(CKBrowserDragManager *)arg1 didBeginDraggingItem:(id)arg2;
 @end
 

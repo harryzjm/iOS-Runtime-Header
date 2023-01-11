@@ -9,22 +9,24 @@
 #import <ProactiveML/PMLAWDMetricQueryDelegate-Protocol.h>
 #import <ProactiveML/PMLTrainingProtocol-Protocol.h>
 
-@class DESRecordStore, NSSet, NSString, PMLAWDAvailableSessionsTracker, PMLTrainingStore;
+@class DESRecordStore, NSDictionary, NSString, PMLAWDAvailableSessionsTracker, PMLTrainingStore;
 
 @interface PMLTraining : NSObject <PMLAWDMetricQueryDelegate, PMLTrainingProtocol>
 {
     DESRecordStore *_fidesStore;
     PMLAWDAvailableSessionsTracker *_availableSessionsTracker;
-    NSSet *_multiLabelModels;
+    NSDictionary *_isMultiLabel;
     PMLTrainingStore *_store;
 }
 
 + (id)sharedSingletonWithDirectory:(id)arg1;
-@property(readonly) PMLTrainingStore *store; // @synthesize store=_store;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PMLTrainingStore *store; // @synthesize store=_store;
 - (void)setSourceRecoverer:(CDUnknownBlockType)arg1;
+- (id)planReceivedWithRecipe:(id)arg1 attachments:(id)arg2 error:(id *)arg3;
 - (id)planReceivedWithPayload:(id)arg1 error:(id *)arg2;
-- (void)trimDb;
+- (id)_trainWithRecipe:(id)arg1 chunkData:(id)arg2 args:(id)arg3 error:(id *)arg4;
+- (void)trimDbWithDeferralBlock:(CDUnknownBlockType)arg1;
 - (void)updateLastTrainingFeaturizationForModel:(id)arg1 andData:(id)arg2;
 - (id)lastTrainingFeaturizationForModelName:(id)arg1 andLocale:(id)arg2;
 - (void)updateSessionsAndLabelForModel:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -33,13 +35,12 @@
 - (void)deleteSessionsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)_deleteAllSavedRecordsFromFidesStoreSync;
 - (void)_sendStatsToFidesForMultiLabelModel:(id)arg1 sessionCount:(unsigned long long)arg2 labeledStats:(id)arg3;
-- (void)_sendStatsToFidesForModel:(id)arg1 sessionCount:(unsigned long long)arg2 positivesCount:(unsigned long long)arg3 support:(float)arg4;
+- (void)_sendStatsToFidesForModel:(id)arg1 sessionCount:(unsigned long long)arg2 positivesCount:(unsigned long long)arg3 negativesCount:(unsigned long long)arg4 support:(float)arg5;
 - (void)sendSessionStatsToFides;
 - (_Bool)isMultiLabelModel:(id)arg1;
 - (void)addSessionWithCovariates:(id)arg1 source:(id)arg2 label:(long long)arg3 sessionDescriptor:(id)arg4 spotlightReference:(id)arg5 isInternal:(_Bool)arg6;
 - (void)addSessionWithCovariates:(id)arg1 label:(long long)arg2 sessionDescriptor:(id)arg3 spotlightReference:(id)arg4 isInternal:(_Bool)arg5;
 - (void)availableSessionsStatsReportedToAWD;
-- (void)enumerateAvailableSessionsStatsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithStore:(id)arg1 fidesStore:(id)arg2 availableSessionsTracker:(id)arg3;
 - (id)init;
 

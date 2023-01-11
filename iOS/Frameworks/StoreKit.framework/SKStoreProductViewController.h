@@ -6,12 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <StoreKit/SKRemoteDismissingViewController-Protocol.h>
 #import <StoreKit/SKScreenTrackingDelegate-Protocol.h>
+#import <StoreKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSDictionary, NSString, SKInvocationQueueProxy, SKRemoteProductViewController, SKScrollDetector, _UIAsyncInvocation;
 @protocol SKStoreProductViewControllerDelegate, SKStoreProductViewControllerDelegatePrivate, SKUIServiceProductPageViewController;
 
-@interface SKStoreProductViewController : UIViewController <SKScreenTrackingDelegate>
+@interface SKStoreProductViewController : UIViewController <SKScreenTrackingDelegate, UIViewControllerTransitioningDelegate, SKRemoteDismissingViewController>
 {
     NSString *_additionalBuyParameters;
     NSString *_affiliateIdentifier;
@@ -33,13 +35,16 @@
     NSString *_promptString;
     SKScrollDetector *_scrollDetector;
     _Bool _viewWasOnScreen;
+    CDUnknownBlockType _dismissalCompleted;
+    NSString *_hostBundleIdentifier;
+    NSString *_usageContext;
 }
 
 + (void)_validateURL:(id)arg1 withSheetInfo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)_defaultIXStoreSheetDictionary;
 + (void)getCanLoadURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)getCanLoadURL:(id)arg1 withURLBag:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool automaticallyDismisses; // @synthesize automaticallyDismisses=_automaticallyDismisses;
 @property(copy, nonatomic) NSString *promptString; // @synthesize promptString=_promptString;
 @property(nonatomic) _Bool showsRightBarButton; // @synthesize showsRightBarButton=_showsRightBarButton;
@@ -47,13 +52,16 @@
 @property(copy, nonatomic) NSString *cancelButtonTitle; // @synthesize cancelButtonTitle=_cancelButtonTitle;
 @property(nonatomic) _Bool showsStoreButton; // @synthesize showsStoreButton=_showsStoreButton;
 @property(nonatomic) _Bool askToBuy; // @synthesize askToBuy=_askToBuy;
+@property(copy, nonatomic) NSString *usageContext; // @synthesize usageContext=_usageContext;
 @property(nonatomic) long long productPageStyle; // @synthesize productPageStyle=_productPageStyle;
 @property(copy, nonatomic) NSDictionary *scriptContextDictionary; // @synthesize scriptContextDictionary=_scriptContextDictionary;
+@property(copy, nonatomic) NSString *hostBundleIdentifier; // @synthesize hostBundleIdentifier=_hostBundleIdentifier;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(copy, nonatomic) NSString *affiliateIdentifier; // @synthesize affiliateIdentifier=_affiliateIdentifier;
 @property(copy, nonatomic) NSString *additionalBuyParameters; // @synthesize additionalBuyParameters=_additionalBuyParameters;
 @property(nonatomic) __weak id <SKStoreProductViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)dismissRemoteViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (id)animationControllerForDismissedController:(id)arg1;
 - (void)sk_didBecomeOffScreen:(id)arg1;
 - (void)sk_didBecomeOnScreen:(id)arg1;
 - (void)_throwUnsupportedPresentationException;
@@ -63,12 +71,14 @@
 - (void)_forceOrientationBackToSupportedOrientation;
 - (void)_fireLoadBlockBeforeFinishing;
 - (void)_addRemoteView;
+- (void)setNoClippingIfNeeded;
 - (void)setPresentationStyleIfNeeded;
 - (void)setParentViewController:(id)arg1;
 - (_Bool)_isPeeking;
 - (void)_resetRemoteViewController;
 - (void)_presentPageWithRequest:(id)arg1 animated:(_Bool)arg2;
 - (void)_loadDidFinishWithResult:(_Bool)arg1 error:(id)arg2;
+- (void)_didFinishDismissal;
 - (void)_didFinishWithResult:(long long)arg1;
 - (void)_didFinish;
 - (void)loadProductWithURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -80,13 +90,16 @@
 - (int)_preferredStatusBarVisibility;
 - (long long)preferredStatusBarStyle;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
+- (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
+- (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)_viewTapped:(id)arg1;
 - (void)loadView;
 - (void)loadProductWithParameters:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (long long)modalTransitionStyle;

@@ -6,6 +6,9 @@
 
 #import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
+@class PLExpandedPlatterView;
+
 @protocol PLExpandedPlatterViewDelegate <UIScrollViewDelegate>
+- (_Bool)associatedViewControllerDidAppearForExpandedPlatterView:(PLExpandedPlatterView *)arg1;
 @end
 

@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
     id <CHHapticPatternPlayer> _coreHapticsPlayer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <CHHapticPatternPlayer> coreHapticsPlayer; // @synthesize coreHapticsPlayer=_coreHapticsPlayer;
 @property(nonatomic) __weak _UIFeedbackCoreHapticsEngine *hapticEngine; // @synthesize hapticEngine=_hapticEngine;
 @property(copy, nonatomic) CDUnknownBlockType invalidationBlock; // @synthesize invalidationBlock=_invalidationBlock;
-- (void).cxx_destruct;
 - (void)_internal_stopFeedbackData:(id)arg1 forFeedback:(id)arg2;
 - (void)_stopFeedback:(id)arg1;
 - (_Bool)_internal_playFeedbackData:(id)arg1 forFeedback:(id)arg2 atTime:(double)arg3;
@@ -31,8 +31,10 @@ __attribute__((visibility("hidden")))
 - (void)_internal_updateValueForParameters:(id)arg1 withKey:(id)arg2;
 - (void)_updateValueForParameters:(id)arg1 withKey:(id)arg2;
 - (id)_internal_createFixedParameterForParameters:(id)arg1 withKey:(id)arg2 forEventType:(id)arg3;
-- (id)_internal_createPatternForFeedbackData:(id)arg1 feedback:(id)arg2;
-- (id)_internal_createEventForFeedbackData:(id)arg1;
+- (id)_internal_createPatternForFeedbackData:(id)arg1 feedback:(id)arg2 engine:(id)arg3;
+- (id)_internal_createEventsForFeedbackData:(id)arg1 engine:(id)arg2 parameters:(id *)arg3 parameterCurves:(id *)arg4;
+- (id)_internal_createEventsForLegacyFeedbackData:(id)arg1;
+- (id)_internal_createEventsForFileFeedbackData:(id)arg1 engine:(id)arg2 parameters:(id *)arg3 parameterCurves:(id *)arg4;
 - (id)_internal_createPlayerWithPattern:(id)arg1;
 - (id)initWithEngine:(id)arg1;
 

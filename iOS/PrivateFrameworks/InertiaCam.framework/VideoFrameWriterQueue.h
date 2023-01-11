@@ -11,33 +11,34 @@
 
 @interface VideoFrameWriterQueue : NSObject
 {
+    AVAssetWriter *videoWriter;
+    AVAssetWriterInput *writerInput;
+    AVAssetWriterInputPixelBufferAdaptor *inputAdaptor;
+    NSMutableArray *frameArray;
+    NSLock *frameArrayLock;
+    NSObject<OS_dispatch_queue> *frameWriteQueue;
+    CDStruct_1b6d18a9 startTime;
+    CDStruct_1b6d18a9 endTime;
+    NSConditionLock *_writingDoneLock;
+    NSError *writeError;
     _Bool writeSuccess;
+    unsigned long long nextFrameIndex;
     _Bool canceled;
     _Bool _doneQueueing;
     unsigned int _drainMinimum;
     unsigned int _drainMaximum;
-    AVAssetWriterInputPixelBufferAdaptor *inputAdaptor;
-    AVAssetWriter *videoWriter;
-    AVAssetWriterInput *writerInput;
-    NSMutableArray *frameArray;
-    NSLock *frameArrayLock;
-    NSObject<OS_dispatch_queue> *frameWriteQueue;
-    NSError *writeError;
-    unsigned long long nextFrameIndex;
-    id <VideoFrameWriterProgressRecipient> frameWriterUpdateCallback;
-    NSConditionLock *_writingDoneLock;
     NSConditionLock *_drainConditionLock;
     unsigned long long _drainTarget;
-    CDStruct_1b6d18a9 startTime;
-    CDStruct_1b6d18a9 endTime;
+    id <VideoFrameWriterProgressRecipient> frameWriterUpdateCallback;
 }
 
-@property unsigned long long drainTarget; // @synthesize drainTarget=_drainTarget;
-@property(retain) NSConditionLock *drainConditionLock; // @synthesize drainConditionLock=_drainConditionLock;
-@property unsigned int drainMaximum; // @synthesize drainMaximum=_drainMaximum;
-@property unsigned int drainMinimum; // @synthesize drainMinimum=_drainMinimum;
-@property _Bool doneQueueing; // @synthesize doneQueueing=_doneQueueing;
+- (void).cxx_destruct;
 @property(retain) NSConditionLock *writingDoneLock; // @synthesize writingDoneLock=_writingDoneLock;
+@property unsigned long long drainTarget; // @synthesize drainTarget=_drainTarget;
+@property unsigned int drainMinimum; // @synthesize drainMinimum=_drainMinimum;
+@property unsigned int drainMaximum; // @synthesize drainMaximum=_drainMaximum;
+@property(retain) NSConditionLock *drainConditionLock; // @synthesize drainConditionLock=_drainConditionLock;
+@property _Bool doneQueueing; // @synthesize doneQueueing=_doneQueueing;
 @property __weak id <VideoFrameWriterProgressRecipient> frameWriterUpdateCallback; // @synthesize frameWriterUpdateCallback;
 @property _Bool canceled; // @synthesize canceled;
 @property unsigned long long nextFrameIndex; // @synthesize nextFrameIndex;
@@ -51,7 +52,6 @@
 @property(retain, nonatomic) AVAssetWriterInput *writerInput; // @synthesize writerInput;
 @property(retain, nonatomic) AVAssetWriter *videoWriter; // @synthesize videoWriter;
 @property(retain, nonatomic) AVAssetWriterInputPixelBufferAdaptor *inputAdaptor; // @synthesize inputAdaptor;
-- (void).cxx_destruct;
 - (void)DrainIfAbove:(unsigned int)arg1 downTo:(unsigned int)arg2;
 - (void)StartWatchingForFrames;
 - (void)FrameRequestCallback;

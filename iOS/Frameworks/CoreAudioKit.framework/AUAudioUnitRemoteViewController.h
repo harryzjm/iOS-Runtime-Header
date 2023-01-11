@@ -6,27 +6,12 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <CoreAudioKit/AUAudioUnitHostViewProtocol-Protocol.h>
-
-@class NSString;
-
-@interface AUAudioUnitRemoteViewController : _UIRemoteViewController <AUAudioUnitHostViewProtocol>
+@interface AUAudioUnitRemoteViewController : _UIRemoteViewController
 {
 }
 
 + (void)_fetchViewController:(id)arg1 requestIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (_Bool)isIOSMacExtension:(id)arg1;
 + (void)_fetchViewControllerForExtension:(id)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (id)exportedInterface;
-+ (id)serviceViewControllerInterface;
-- (id)exportedInterface;
-- (id)serviceViewControllerInterface;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

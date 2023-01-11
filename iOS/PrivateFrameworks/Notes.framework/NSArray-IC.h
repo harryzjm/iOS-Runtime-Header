@@ -19,6 +19,8 @@
 - (_Bool)ic_indexIsValid:(long long)arg1;
 - (unsigned long long)ic_indexOfSortedObject:(id)arg1 insertionIndex:(out unsigned long long *)arg2 usingComparator:(CDUnknownBlockType)arg3;
 - (id)ic_arrayByGroupingIntoArraysWithMaxCount:(unsigned long long)arg1;
+- (id)ic_objectsConformingToProtocol:(id)arg1;
+- (id)ic_firstObjectOfClass:(Class)arg1;
 - (id)ic_objectsOfClass:(Class)arg1;
 - (id)ic_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)ic_containsObjectPassingTest:(CDUnknownBlockType)arg1;

@@ -4,65 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKAvatarView, NSArray, NSDictionary, NSString, UIButton, UIImageView, UITextView, UIVisualEffectView;
+@class NSArray, NSString, UIButton, UIView;
 @protocol CKNicknameBannerViewDelegate;
 
-@interface CKNicknameBannerView : UIView <UITextViewDelegate>
+@interface CKNicknameBannerView <UITextViewDelegate>
 {
-    _Bool _useNamedTitles;
-    _Bool _useNamedSubtitles;
-    _Bool _inUpdatesMode;
     id <CKNicknameBannerViewDelegate> _delegate;
-    unsigned long long _style;
     NSArray *_nicknameUpdates;
-    UITextView *_titleLabel;
-    UITextView *_subtitleLabel;
-    NSDictionary *_contactMap;
-    UIVisualEffectView *_blurView;
-    CKAvatarView *_avatarView;
-    CKAvatarView *_secondaryAvatarView;
-    UIView *_avatarCutoutView;
-    UIImageView *_contactsIconView;
-    UIButton *_cancelButton;
+    UIButton *_updateButton;
+    UIView *_bottomSeparatorView;
+    UIView *_topSeparatorView;
 }
 
-@property(retain, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-@property(retain, nonatomic) UIImageView *contactsIconView; // @synthesize contactsIconView=_contactsIconView;
-@property(retain, nonatomic) UIView *avatarCutoutView; // @synthesize avatarCutoutView=_avatarCutoutView;
-@property(retain, nonatomic) CKAvatarView *secondaryAvatarView; // @synthesize secondaryAvatarView=_secondaryAvatarView;
-@property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
-@property(retain, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
-@property(nonatomic) _Bool inUpdatesMode; // @synthesize inUpdatesMode=_inUpdatesMode;
-@property(retain, nonatomic) NSDictionary *contactMap; // @synthesize contactMap=_contactMap;
-@property(retain, nonatomic) UITextView *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) UITextView *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(readonly, nonatomic) _Bool useNamedSubtitles; // @synthesize useNamedSubtitles=_useNamedSubtitles;
-@property(nonatomic) _Bool useNamedTitles; // @synthesize useNamedTitles=_useNamedTitles;
-@property(retain, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
-@property(nonatomic) unsigned long long style; // @synthesize style=_style;
-@property(nonatomic) id <CKNicknameBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
+@property(retain, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
+@property(retain, nonatomic) UIButton *updateButton; // @synthesize updateButton=_updateButton;
+@property(retain, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
+@property(nonatomic) id <CKNicknameBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)contactStore;
 - (id)nicknameController;
+- (void)updateButtonTapped:(id)arg1;
 - (void)cancelButtonTapped:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (id)createContactForOutgoingShare;
 - (id)createContactFromNickname:(id)arg1;
+- (id)setCatalystAttributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1;
+- (id)setAttributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1 withActionButtonString:(id)arg2;
 - (void)_updateSubtitleLabel;
+- (void)overlayUpdateButtonOnSubtitleLinkAttribute;
 - (void)_updateTitleLabel;
-- (id)_avatarContactForUpdate:(id)arg1;
-- (void)_updateAvatarView;
 - (void)layoutSubviews;
-@property(readonly, nonatomic) double titleLabelAlignmentX;
+- (double)avatarViewAlignmentX;
+- (double)titleLabelAlignmentX;
 - (double)maxLabelWidthForSize:(struct CGSize)arg1;
 - (struct UIEdgeInsets)layoutMargins;
-- (id)cancelGlyph;
 - (void)setupViews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)_avatarContactForUpdate:(id)arg1;
+- (void)_updateAvatarView;
+- (id)cancelGlyph;
 - (id)initWithFrame:(struct CGRect)arg1 style:(unsigned long long)arg2 updates:(id)arg3 useNamedTitles:(_Bool)arg4 inUpdatesMode:(_Bool)arg5;
 
 // Remaining properties

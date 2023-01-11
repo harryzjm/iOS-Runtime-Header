@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
-@class AMSMetricsEvent, NSMutableDictionary, NSString, NSURL, NSURLRequest;
+@class AMSDialogRequest, AMSMetricsEvent, NSDictionary, NSMutableDictionary, NSString, NSURL, NSURLRequest;
 
-@interface AMSDialogAction : NSObject <NSSecureCoding>
+@interface AMSDialogAction : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _inferLinkDestination;
     _Bool _shouldRetry;
-    _Bool _createAskPermissionRequest;
     NSURL *_deepLink;
     NSString *_identifier;
     AMSMetricsEvent *_metricsEvent;
     NSURLRequest *_request;
     long long _style;
+    AMSDialogRequest *_dialogRequest;
     NSString *_title;
     NSMutableDictionary *_userInfo;
 }
@@ -28,23 +29,29 @@
 + (id)actionWithTitle:(id)arg1 identifier:(id)arg2;
 + (id)actionWithTitle:(id)arg1 style:(long long)arg2;
 + (id)actionWithTitle:(id)arg1;
-@property(nonatomic) _Bool createAskPermissionRequest; // @synthesize createAskPermissionRequest=_createAskPermissionRequest;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldRetry; // @synthesize shouldRetry=_shouldRetry;
 @property(copy, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(copy, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
 @property(nonatomic) long long style; // @synthesize style=_style;
-@property(nonatomic) _Bool shouldRetry; // @synthesize shouldRetry=_shouldRetry;
 @property(copy, nonatomic) NSURLRequest *request; // @synthesize request=_request;
 @property(copy, nonatomic) AMSMetricsEvent *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
 @property(nonatomic) _Bool inferLinkDestination; // @synthesize inferLinkDestination=_inferLinkDestination;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSURL *deepLink; // @synthesize deepLink=_deepLink;
-- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (id)init;
 @property(nonatomic, setter=ams_setURLType:) long long ams_URLType;
+@property(retain, nonatomic, setter=ams_setRawURL:) NSURL *ams_rawURL;
 @property(retain, nonatomic, setter=ams_setSubtarget:) NSString *ams_subtarget;
+@property(nonatomic, setter=ams_setResolvedInterruption:) _Bool ams_resolvedInterruption;
+@property(nonatomic, setter=ams_setCommerceUIURL:) _Bool ams_commerceUIURL;
+@property(retain, nonatomic, setter=ams_setButtonDictionary:) NSDictionary *ams_buttonDictionary;
+@property(retain, nonatomic, setter=ams_setBuyParams:) NSString *ams_buyParams;
 @property(nonatomic, setter=ams_setActionType:) long long ams_actionType;
 
 @end

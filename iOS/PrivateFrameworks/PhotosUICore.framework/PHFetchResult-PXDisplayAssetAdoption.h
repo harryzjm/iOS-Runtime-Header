@@ -14,6 +14,10 @@
 
 @interface PHFetchResult (PXDisplayAssetAdoption) <PXDisplayAssetFetchResult, PXPeopleFetchResult>
 - (id)thumbnailAssetAtIndex:(unsigned long long)arg1;
+- (id)px_fetchAssetSortDatesWithDateRangeEliminationBlock:(CDUnknownBlockType)arg1;
+- (long long)px_indexOfSortedAssetNearestToAsset:(id)arg1;
+@property(readonly, nonatomic) unsigned long long px_sortOrder;
+- (Class)px_sortByDatePropertySetClass;
 
 // Remaining properties
 @property(readonly, nonatomic) long long count;
@@ -21,6 +25,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <PXDisplayAsset> firstObject;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PXDisplayAsset> lastObject;
 @property(readonly) Class superclass;
 @end
 

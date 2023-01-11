@@ -24,11 +24,12 @@
     double _verticalLabelSpacing;
     double _verticalSpacingForLineView;
     double _verticalSpacingForLipElements;
-    UIFont *_continueLabelFont;
+    UIFont *_footerViewLabelFont;
 }
 
 + (id)defaultOptionsForCellSizeSubclass:(long long)arg1;
-@property(retain, nonatomic) UIFont *continueLabelFont; // @synthesize continueLabelFont=_continueLabelFont;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIFont *footerViewLabelFont; // @synthesize footerViewLabelFont=_footerViewLabelFont;
 @property(nonatomic) double verticalSpacingForLipElements; // @synthesize verticalSpacingForLipElements=_verticalSpacingForLipElements;
 @property(nonatomic) double verticalSpacingForLineView; // @synthesize verticalSpacingForLineView=_verticalSpacingForLineView;
 @property(nonatomic) double verticalLabelSpacing; // @synthesize verticalLabelSpacing=_verticalLabelSpacing;
@@ -45,9 +46,8 @@
 @property(nonatomic) double horizontalItemSpacing; // @synthesize horizontalItemSpacing=_horizontalItemSpacing;
 @property(nonatomic) double trailingInset; // @synthesize trailingInset=_trailingInset;
 @property(nonatomic) double titleInterLineSpacing; // @synthesize titleInterLineSpacing=_titleInterLineSpacing;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)statusBannerCellHeightForWidth:(double)arg1 havingTitleAndDescription:(id)arg2 forContentSizeCategory:(id)arg3;
+- (double)statusBannerCellHeightForWidth:(double)arg1 title:(id)arg2 description:(id)arg3 forContentSizeCategory:(id)arg4;
 
 @end
 

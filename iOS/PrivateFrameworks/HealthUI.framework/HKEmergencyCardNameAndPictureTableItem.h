@@ -18,13 +18,14 @@
     id <HKEmergencyCardRowHeightChangeDelegate> _rowHeightChangeDelegate;
 }
 
-@property(nonatomic) __weak id <HKEmergencyCardRowHeightChangeDelegate> rowHeightChangeDelegate; // @synthesize rowHeightChangeDelegate=_rowHeightChangeDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <HKEmergencyCardRowHeightChangeDelegate> rowHeightChangeDelegate; // @synthesize rowHeightChangeDelegate=_rowHeightChangeDelegate;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
-- (void)_editPhotoTapped:(id)arg1;
 - (void)medicalIDEditorCellDidChangeValue:(id)arg1;
+- (id)_makeMedicalIDPhotoMenu;
+- (void)_updateMedicalIDPhotoMenu;
 - (void)setData:(id)arg1;
 - (void)commitEditing;
 - (void)medicalIDEditorCellDidChangeSelection:(id)arg1 keepRectVisible:(struct CGRect)arg2 inView:(id)arg3;
@@ -34,6 +35,7 @@
 - (double)tableView:(id)arg1 heightForRowAtIndex:(long long)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndex:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
+- (void)_editPhotoTapped:(id)arg1;
 - (id)_cell;
 - (id)title;
 - (id)initInEditMode:(_Bool)arg1;

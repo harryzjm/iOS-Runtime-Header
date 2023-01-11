@@ -87,8 +87,8 @@
 - (id)initWithIndex:(unsigned long long)arg1;
 - (id)init;
 - (id)_init;
-- (id)replacementObjectForPortCoder:(id)arg1;
 - (unsigned long long)_indexAtIndex:(unsigned long long)arg1;
+- (id)replacementObjectForPortCoder:(id)arg1;
 
 @end
 

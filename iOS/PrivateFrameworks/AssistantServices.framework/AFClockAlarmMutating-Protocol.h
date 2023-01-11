@@ -17,6 +17,7 @@
 - (void)setRepeatOptions:(unsigned long long)arg1;
 - (void)setMinute:(unsigned long long)arg1;
 - (void)setHour:(unsigned long long)arg1;
+- (void)setType:(unsigned long long)arg1;
 - (void)setTitle:(NSString *)arg1;
 - (void)setIsFiring:(_Bool)arg1;
 - (void)setAlarmURL:(NSURL *)arg1;

@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString;
+#import <XCTest/XCTIssueHandling-Protocol.h>
 
-@interface XCTestSuite
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, XCTTestIdentifier, XCTestConfiguration;
+
+@interface XCTestSuite <XCTIssueHandling>
 {
-    id _internalImplementation;
+    NSString *_name;
+    XCTTestIdentifier *_identifier;
+    NSMutableArray *_mutableTests;
+    XCTestConfiguration *_testConfiguration;
+    NSMutableDictionary *_mutableActivityAggregateStatistics;
 }
 
 + (id)testClassSuitesForTestIdentifiers:(id)arg1 skippingTestIdentifiers:(id)arg2 testExecutionOrdering:(long long)arg3;
@@ -26,6 +32,11 @@
 + (id)testSuiteWithName:(id)arg1;
 + (id)testCaseNamesForScopeNames:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly) NSMutableDictionary *mutableActivityAggregateStatistics; // @synthesize mutableActivityAggregateStatistics=_mutableActivityAggregateStatistics;
+@property(retain) XCTestConfiguration *testConfiguration; // @synthesize testConfiguration=_testConfiguration;
+@property(retain) NSMutableArray *mutableTests; // @synthesize mutableTests=_mutableTests;
+@property(readonly, copy) XCTTestIdentifier *_identifier; // @synthesize _identifier;
+@property(copy) NSString *name; // @synthesize name=_name;
 - (id)_initWithTestConfiguration:(id)arg1;
 - (void)_applyRandomExecutionOrdering;
 - (void)_sortTestsUsingDefaultExecutionOrdering;
@@ -35,6 +46,7 @@
 - (void)performTest:(id)arg1;
 - (void)_performProtectedSectionForTest:(id)arg1 testSection:(CDUnknownBlockType)arg2;
 - (void)_recordUnexpectedFailureForTestRun:(id)arg1 description:(id)arg2 exception:(id)arg3;
+- (void)handleIssue:(id)arg1;
 - (void)recordFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(_Bool)arg4;
 - (Class)testRunClass;
 - (Class)_requiredTestRunBaseClass;
@@ -44,11 +56,15 @@
 @property(readonly, copy) NSArray *tests;
 - (void)addTest:(id)arg1;
 - (id)_testSuiteWithIdentifier:(id)arg1;
-- (id)description;
-@property(copy) NSString *name;
+@property(readonly, copy) NSString *description;
 - (id)initWithName:(id)arg1;
 - (id)init;
 - (void)removeTestsWithNames:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

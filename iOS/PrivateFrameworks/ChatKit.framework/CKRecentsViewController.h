@@ -23,6 +23,7 @@
     CDUnknownBlockType _draggingCompletionHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType draggingCompletionHandler; // @synthesize draggingCompletionHandler=_draggingCompletionHandler;
 @property(nonatomic, getter=isPreparingForDisplay) _Bool preparingForDisplay; // @synthesize preparingForDisplay=_preparingForDisplay;
 @property(nonatomic) _Bool isLoadingRecents; // @synthesize isLoadingRecents=_isLoadingRecents;
@@ -32,7 +33,7 @@
 @property(retain, nonatomic) NSMutableArray *recentItems; // @synthesize recentItems=_recentItems;
 @property(nonatomic) _Bool hasStickerRecents; // @synthesize hasStickerRecents=_hasStickerRecents;
 @property(nonatomic) _Bool hasHandwritingRecents; // @synthesize hasHandwritingRecents=_hasHandwritingRecents;
-- (void).cxx_destruct;
+- (long long)_userInterfaceStyle;
 - (_Bool)stickerBrowserView:(id)arg1 shouldDrawBorderAroundSticker:(id)arg2;
 - (_Bool)dragManager:(id)arg1 canPeelItem:(id)arg2;
 - (_Bool)dragManager:(id)arg1 canRotateItem:(id)arg2;
@@ -40,6 +41,8 @@
 - (void)dragManager:(id)arg1 didEndDraggingItem:(id)arg2 toDragTarget:(id)arg3 dropArea:(int)arg4;
 - (_Bool)dragManager:(id)arg1 shouldCancelDraggingForItem:(id)arg2 toDragTarget:(id)arg3 dropArea:(int)arg4;
 - (void)dragManager:(id)arg1 didDragItem:(id)arg2 toDragTarget:(id)arg3;
+- (void)stickerDragCanceled;
+- (void)stickerDragMoved:(id)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 fence:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)startDragSticker:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)insertSticker:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
@@ -49,6 +52,7 @@
 - (id)stickerBrowserView:(id)arg1 stickerAtIndex:(long long)arg2;
 - (long long)numberOfStickersInStickerBrowserView:(id)arg1;
 - (_Bool)shouldShowChatChrome;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;

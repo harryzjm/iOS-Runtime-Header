@@ -14,6 +14,7 @@
 {
 }
 
++ (_Bool)_releasesObservationBlockOnInvalidation;
 + (void)_setRequiresSilencingExceptions:(_Bool)arg1;
 + (void)_noteProcessHasUsedKVOSwiftOverlay;
 

@@ -6,7 +6,8 @@
 
 #import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 
-@class CLKDevice, CLKFullColorImageProvider;
+@class CLKDevice, CLKFullColorImageProvider, NSObject;
+@protocol OS_dispatch_group;
 
 @protocol CLKFullColorImageView <CLKMonochromeComplicationView>
 - (void)configureWithImageProvider:(CLKFullColorImageProvider *)arg1 reason:(long long)arg2;
@@ -16,5 +17,7 @@
 
 @optional
 + (_Bool)tritium_wantsCrossfadeAnimation;
+- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(NSObject<OS_dispatch_group> *)arg2;
+- (void)enumerateQuadViewsWithBlock:(void (^)(CLKUIQuadView *))arg1;
 @end
 

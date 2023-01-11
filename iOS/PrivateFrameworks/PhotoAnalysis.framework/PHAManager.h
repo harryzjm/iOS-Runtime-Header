@@ -8,7 +8,7 @@
 
 #import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 
-@class NSMutableDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
+@class CPAnalytics, NSMutableDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
 
 @interface PHAManager : NSObject <PHAServiceOperationHandling>
 {
@@ -20,20 +20,23 @@
     NSURL *_libraryURL;
     PHPhotoLibrary *_photoLibrary;
     PHAJobCoordinator *_jobCoordinator;
+    CPAnalytics *_analytics;
     NSMutableDictionary *_photoAnalysisWorkersByType;
 }
 
 + (id)allWorkerClasses;
 + (void)enumerateWorkerClassesUsingBlock:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *photoAnalysisWorkersByType; // @synthesize photoAnalysisWorkersByType=_photoAnalysisWorkersByType;
+@property(readonly) CPAnalytics *analytics; // @synthesize analytics=_analytics;
 @property(readonly) PHAGraphManager *graphManager; // @synthesize graphManager=_graphManager;
 @property(readonly) PHAJobCoordinator *jobCoordinator; // @synthesize jobCoordinator=_jobCoordinator;
 @property(retain) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(retain) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 @property(readonly) PHAExecutive *executive; // @synthesize executive=_executive;
-- (void).cxx_destruct;
 - (id)monitoring;
 - (void)enumerateWorkersUsingBlock:(CDUnknownBlockType)arg1;
+- (id)presentationWorker;
 - (id)faceProcessingServiceWorker;
 - (id)faceClassificationServiceWorker;
 - (id)graphServiceWorker;
@@ -49,7 +52,7 @@
 - (void)checkForQuiescence;
 - (id)statusAsDictionary;
 - (void)shutdown;
-- (_Bool)isInitialSyncActive;
+- (_Bool)isReadyForAnalysis;
 - (_Bool)photosIsConnected;
 - (_Bool)turboIsEnabled;
 - (void)turboConstraintsWereRemoved;

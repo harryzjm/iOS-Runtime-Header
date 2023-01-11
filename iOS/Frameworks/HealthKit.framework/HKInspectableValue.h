@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKCodedQuantity, HKCodedValueCollection, HKMedicalDate, HKMedicalDateInterval, HKRatioValue, HKUCUMUnitDisplayConverter, NSArray, NSDateComponents, NSString;
+@class HKCodedQuantity, HKCodedValueCollection, HKConcept, HKMedicalDate, HKMedicalDateInterval, HKRatioValue, HKUCUMUnitDisplayConverter, NSArray, NSDateComponents, NSString;
 @protocol NSObject><NSSecureCoding;
 
-@interface HKInspectableValue : NSObject <NSSecureCoding, NSCopying>
+@interface HKInspectableValue : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
     long long _valueType;
     id <NSObject><NSSecureCoding> _value;
+    HKConcept *_concept;
+    HKConcept *_dataAbsentReason;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -30,18 +33,25 @@
 + (id)inspectableValueWithCodedQuantity:(id)arg1;
 + (id)inspectableValueWithString:(id)arg1;
 + (id)inspectableValueWithValueType:(long long)arg1 value:(id)arg2;
-@property(readonly, nonatomic) long long valueType; // @synthesize valueType=_valueType;
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long valueType; // @synthesize valueType=_valueType;
+- (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_unitStringForCodedValueCollection:(id)arg1;
 - (void)_assertValueType;
 - (void)_assertValueClass:(Class)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, copy, nonatomic) HKConcept *dataAbsentReason;
+@property(readonly, copy, nonatomic) HKConcept *concept;
 @property(readonly, nonatomic) NSString *unitString;
 @property(readonly, nonatomic) HKUCUMUnitDisplayConverter *converter;
+- (void)_setDataAbsentReason:(id)arg1;
+- (void)_setConcept:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *dataAbsentReasonCodings;
 @property(readonly, copy, nonatomic) HKCodedValueCollection *codedValueCollection;
 @property(readonly, copy, nonatomic) NSArray *medicalCodings;
@@ -52,9 +62,13 @@
 @property(readonly, copy, nonatomic) HKCodedQuantity *codedQuantityValue;
 @property(readonly, copy, nonatomic) NSString *stringValue;
 @property(readonly, nonatomic) id <NSObject><NSSecureCoding> value;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)_initWithValueType:(long long)arg1 value:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

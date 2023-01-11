@@ -14,17 +14,16 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_recordZoneIDByRequestID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *recordZoneIDByRequestID; // @synthesize recordZoneIDByRequestID=_recordZoneIDByRequestID;
 @property(retain, nonatomic) NSMutableDictionary *zoneIDToRecordIDs; // @synthesize zoneIDToRecordIDs=_zoneIDToRecordIDs;
 @property(copy, nonatomic) CDUnknownBlockType recordArchivedBlock; // @synthesize recordArchivedBlock=_recordArchivedBlock;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
-- (int)operationType;
-- (id)initWithRecordIDsToArchive:(id)arg1;
+- (id)initWithOperation:(id)arg1 recordIDsToArchive:(id)arg2;
 
 @end
 

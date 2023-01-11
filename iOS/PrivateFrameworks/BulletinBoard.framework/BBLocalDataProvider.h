@@ -19,16 +19,13 @@
 
 + (id)dataProviderWithDataProvider:(id)arg1 serverQueue:(id)arg2;
 + (id)dataProviderWithPrincipalClass:(Class)arg1 serverQueue:(id)arg2 initializationCompletion:(CDUnknownBlockType)arg3;
-@property(retain, nonatomic) id <BBDataProvider> dataProvider; // @synthesize dataProvider=_dataProvider;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <BBDataProvider> dataProvider; // @synthesize dataProvider=_dataProvider;
 - (void)deliverMessageWithName:(id)arg1 userInfo:(id)arg2;
 - (void)noteSectionInfoDidChange:(id)arg1;
 - (void)reloadIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)migrateSectionInfo:(id)arg1 oldSectionInfo:(id)arg2;
 - (_Bool)canPerformMigration;
-- (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(_Bool)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-- (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)updateSectionInfoWithSectionInfo:(id)arg1 handler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateClearedInfoWithClearedInfo:(id)arg1 handler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

@@ -15,9 +15,12 @@
 }
 
 - (void).cxx_destruct;
+- (id)passLocalizedStringForKey:(id)arg1;
 - (id)displayProfileOfType:(long long)arg1;
 @property(readonly, nonatomic) PKRemoteAssetManager *remoteAssetManager;
+- (id)remoteAssetManagerForSEIDs:(id)arg1;
 - (_Bool)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;
+- (_Bool)remoteAssetsDownloadedForSEIDs:(id)arg1;
 @property(readonly, nonatomic) _Bool remoteAssetsDownloaded;
 - (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -39,6 +42,7 @@
 - (void)noteShared;
 - (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(_Bool)arg5;
 - (id)imageSetForType:(long long)arg1 displayProfile:(id)arg2 preheat:(_Bool)arg3;
+- (id)cachedImageSetForType:(long long)arg1 withDisplayProfile:(id)arg2 displayTraits:(id)arg3;
 - (id)dictionary;
 - (id)content;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;

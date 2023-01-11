@@ -7,7 +7,7 @@
 #import <AssetExplorer/NSProgressReporting-Protocol.h>
 #import <AssetExplorer/PUReviewAssetProviderRequest-Protocol.h>
 
-@class AEAssetPackage, NSError, NSObject, NSProgress, NSString, PHAsset, PHResourceDownloadRequest, PXAssetReference;
+@class AEAssetPackage, NSError, NSObject, NSProgress, NSString, PHAsset, PHAssetExportRequest, PXAssetReference;
 @protocol OS_dispatch_group, OS_dispatch_queue, PUDisplayAsset;
 
 @interface AEPhotosAssetPackageGenerator <NSProgressReporting, PUReviewAssetProviderRequest>
@@ -15,30 +15,33 @@
     PXAssetReference *_sourceAssetReference;
     NSObject<OS_dispatch_queue> *__packagerIvarIsolationQueue;
     NSObject<OS_dispatch_group> *__packagerWorkGroup;
-    PHResourceDownloadRequest *__downloadRequest;
+    PHAssetExportRequest *__exportRequest;
     AEAssetPackage *__ivarQueue_currentPackage;
     NSError *__ivarQueue_lastError;
     PHAsset *__asset;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PHAsset *_asset; // @synthesize _asset=__asset;
 @property(retain, nonatomic, setter=_setIvarQueueLastError:) NSError *_ivarQueue_lastError; // @synthesize _ivarQueue_lastError=__ivarQueue_lastError;
 @property(retain, nonatomic, setter=_setIvarQueueCurrentPackage:) AEAssetPackage *_ivarQueue_currentPackage; // @synthesize _ivarQueue_currentPackage=__ivarQueue_currentPackage;
-@property(readonly, nonatomic) PHResourceDownloadRequest *_downloadRequest; // @synthesize _downloadRequest=__downloadRequest;
+@property(readonly, nonatomic) PHAssetExportRequest *_exportRequest; // @synthesize _exportRequest=__exportRequest;
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *_packagerWorkGroup; // @synthesize _packagerWorkGroup=__packagerWorkGroup;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_packagerIvarIsolationQueue; // @synthesize _packagerIvarIsolationQueue=__packagerIvarIsolationQueue;
 @property(readonly, copy, nonatomic) PXAssetReference *sourceAssetReference; // @synthesize sourceAssetReference=_sourceAssetReference;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) id <PUDisplayAsset> sourceAsset;
 - (void)cancelReviewAssetRequest;
 - (void)requestReviewAssetWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_beginGeneratingWithResourceInfo:(id)arg1 error:(id)arg2 finalizer:(id)arg3;
-- (void)_downloadBeforeBeforeGeneratingWithFinalizer:(id)arg1;
-- (void)_downloadIfNeededBeforeGeneratingWithFinalizer:(id)arg1;
+- (id)_assetPackageforPHAsset:(id)arg1 withAssetExportRequestFileURLs:(id)arg2 error:(id *)arg3;
+- (id)_copyAssetExportFileURLs:(id)arg1 forAsset:(id)arg2 error:(id *)arg3;
+- (id)_copyItemAtURL:(id)arg1 toOutputDirectory:(id)arg2 error:(id *)arg3;
+- (id)_createOutputDirectoryBaseURLWithIdentifier:(id)arg1 error:(id *)arg2;
+- (id)_generatePackageFromAsset:(id)arg1;
+- (void)_generatePackageWithAssetExportFileURLs:(id)arg1 error:(id)arg2;
 - (void)_callCompletionWithResult:(CDUnknownBlockType)arg1;
 @property(readonly) NSProgress *progress;
 - (_Bool)retrieveGeneratedPackageWithCompletion:(CDUnknownBlockType)arg1;
-- (void)beginGeneratingWithFinalizer:(id)arg1;
+- (id)beginGenerating;
 - (id)initWithAsset:(id)arg1;
 - (id)initWithAssetReference:(id)arg1;
 - (void)_commonAEPhotosAssetPackageGeneratorInitWithAsset:(id)arg1 assetReference:(id)arg2;

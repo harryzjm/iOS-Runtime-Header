@@ -7,8 +7,8 @@
 #import <TelephonyUI/NSObject-Protocol.h>
 
 @protocol TPNumberPadButtonProtocol <NSObject>
-@property unsigned int character;
-- (id)initForCharacter:(unsigned int)arg1;
+@property long long character;
+- (id)initForCharacter:(long long)arg1;
 
 @optional
 - (void)loadImagesForCurrentCharacter;

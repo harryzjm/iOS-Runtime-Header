@@ -17,12 +17,18 @@
     int _triggerEvent;
     unsigned long long _timestamp;
     NSString *_input;
+    NSString *_experimentId;
+    NSString *_treatmentId;
+    NSString *_experimentNamespaceId;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *experimentNamespaceId; // @synthesize experimentNamespaceId=_experimentNamespaceId;
+@property(copy, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
+@property(copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property(nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property(nonatomic) unsigned long long timestamp;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
@@ -32,6 +38,7 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)init;
+- (id)initWithTriggerEvent:(int)arg1 input:(id)arg2 experimentId:(id)arg3 treatmentId:(id)arg4;
 - (id)initWithTriggerEvent:(int)arg1 input:(id)arg2;
 
 // Remaining properties

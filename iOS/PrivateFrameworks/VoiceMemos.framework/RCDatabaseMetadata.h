@@ -17,8 +17,9 @@ __attribute__((visibility("hidden")))
     _Bool _dirty;
 }
 
-@property(readonly) _Bool dirty; // @synthesize dirty=_dirty;
 - (void).cxx_destruct;
+@property(readonly) _Bool dirty; // @synthesize dirty=_dirty;
+- (void)migrate:(id)arg1;
 - (void)save;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;

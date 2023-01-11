@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, SKPaymentQueueClient, SKXPCConnection;
-@protocol SKPaymentQueueDelegate;
+@protocol OS_dispatch_queue, SKPaymentQueueDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SKPaymentQueueInternal : NSObject
 {
     _Bool _checkedIn;
+    _Bool _isRedemptionSheetShowing;
     _Bool _isRefreshing;
     _Bool _restoreFinishedDuringRefresh;
     _Bool _restoringCompletedTransactions;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_localTransactions;
     NSMutableArray *_transactions;
     NSMutableArray *_weakObservers;
+    NSObject<OS_dispatch_queue> *_observerQueue;
     SKXPCConnection *_requestConnection;
     SKXPCConnection *_responseConnection;
     id <SKPaymentQueueDelegate> _delegate;

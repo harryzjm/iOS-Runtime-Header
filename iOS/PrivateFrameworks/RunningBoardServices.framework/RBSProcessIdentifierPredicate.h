@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
     id <RBSProcessIdentifier> _identifier;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-@property(readonly, nonatomic) id <RBSProcessIdentifier> identifier; // @synthesize identifier=_identifier;
++ (_Bool)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+@property(readonly, nonatomic) id <RBSProcessIdentifier> identifier; // @synthesize identifier=_identifier;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

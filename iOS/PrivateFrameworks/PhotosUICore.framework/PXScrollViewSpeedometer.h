@@ -24,6 +24,7 @@
     struct CGRect __lastVisibleRect;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasRampedUpForCurrentAnimatedScroll; // @synthesize hasRampedUpForCurrentAnimatedScroll=_hasRampedUpForCurrentAnimatedScroll;
 @property(nonatomic) struct CGPoint scrollAcceleration; // @synthesize scrollAcceleration=_scrollAcceleration;
 @property(nonatomic, setter=_setNextRegimeCount:) long long _nextRegimeCount; // @synthesize _nextRegimeCount=__nextRegimeCount;
@@ -36,9 +37,10 @@
 @property(readonly, nonatomic) long long regime; // @synthesize regime=_regime;
 @property(nonatomic) struct CGPoint scrollVelocity; // @synthesize scrollVelocity=_scrollVelocity;
 @property(readonly, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
-- (void).cxx_destruct;
 - (void)_handleTimeoutTimer:(id)arg1;
 - (void)_rescheduleTimeout;
+- (void)_handleScrubbingTimeout;
+- (void)_scheduleScrubbingTimeout;
 - (double)fastUpperThreshold;
 - (double)fastLowerThreshold;
 - (double)mediumUpperThreshold;

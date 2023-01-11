@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDatabase, HMBCloudID, NSDate;
+@class CKDatabase, HMBCloudID, NSData, NSDate, NSSet;
 
 @interface HMBCloudDatabaseStateModel
 {
@@ -12,14 +12,15 @@
 }
 
 + (id)hmbProperties;
-@property(nonatomic) __weak CKDatabase *database; // @synthesize database=_database;
 - (void).cxx_destruct;
+@property(nonatomic) __weak CKDatabase *database; // @synthesize database=_database;
+@property(copy, nonatomic) NSSet *subscriptions;
 - (id)initWithModelID:(id)arg1 parentModelID:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) HMBCloudID *cloudID; // @dynamic cloudID;
 @property(retain, nonatomic) NSDate *lastAdministrativeFetch; // @dynamic lastAdministrativeFetch;
-@property(retain, nonatomic) NSDate *lastSubscriptionPush; // @dynamic lastSubscriptionPush;
+@property(retain, nonatomic) NSData *subscriptionsData; // @dynamic subscriptionsData;
 
 @end
 

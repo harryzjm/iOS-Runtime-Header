@@ -16,12 +16,13 @@ __attribute__((visibility("hidden")))
     ACDAccountStore *_backingAccountStore;
 }
 
-+ (id)_whiteList;
 + (id)new;
-@property(readonly, nonatomic) ACDAccountStore *backingAccountStore; // @synthesize backingAccountStore=_backingAccountStore;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) ACDAccountStore *backingAccountStore; // @synthesize backingAccountStore=_backingAccountStore;
+- (void)registerMonitorForAccountsOfTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
+- (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
-- (void)reportTelemetryForLandmarkEvent:(CDUnknownBlockType)arg1;
 - (void)triggerKeychainMigrationIfNecessary:(CDUnknownBlockType)arg1;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)saveAccount:(id)arg1 toPairedDeviceWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)isPushSupportedForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isTetheredSyncingEnabledForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)migrateCredentialForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)verifyCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearAllPermissionsGrantedForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -97,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (id)_appPermissionsForAccountTypeIdentifier:(id)arg1;
 - (_Bool)_wildCardAuthorizationMatchingForAccountTypeIdentifier:(id)arg1;
 - (_Bool)_isClientPermittedToAccessAccountTypeWithIdentifier:(id)arg1;
+- (_Bool)isClientEntitledToAccessAccountTypeWithIdentifier:(id)arg1;
 - (_Bool)_accessGrantedForBundleID:(id)arg1 onAccountTypeID:(id)arg2;
 - (_Bool)_accessGrantedForClient:(id)arg1 onAccountTypeID:(id)arg2;
 - (id)initWithBackingAccountStore:(id)arg1;

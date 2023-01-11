@@ -8,7 +8,7 @@
 {
 }
 
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
 
 @end
 

@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceRegionMap, VNFaceSegments, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
+@class NSArray, NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceLegacyFaceCore, VNFaceRegionMap, VNFaceSegments, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
 
 @interface VNFaceObservation
 {
     VNFaceLandmarks2D *_cachedLandmarks;
+    struct os_unfair_lock_s _cachedLandmarksLock;
     VNFaceLandmarks2D *_cachedLandmarks65;
+    struct os_unfair_lock_s _cachedLandmarks65Lock;
     VNFaceLandmarks3D *_cachedLandmarks3d;
+    struct os_unfair_lock_s _cachedLandmarks3dLock;
     VNFaceRegionMap *_faceRegionMap;
     VNFaceAttributes *_faceAttributes;
     VNFaceprint *_faceprint;
@@ -43,6 +46,7 @@
     unsigned long long _landmarksRequestRevision;
     unsigned long long _landmarks3DRequestRevision;
     VNFaceLandmarks2D *_landmarks;
+    VNFaceLegacyFaceCore *_legacyFaceCore;
 }
 
 + (_Bool)computeYawPitchRollFromPoseMatrix:(CDStruct_f1db2b5e)arg1 outputYaw:(float *)arg2 outputPitch:(float *)arg3 outputRoll:(float *)arg4;
@@ -56,9 +60,11 @@
 + (id)faceObservationWithBoundingBox:(struct CGRect)arg1 andAlignedBoundingBox:(struct CGRect)arg2;
 + (_Bool)_exifOrientationFromFaceRollAngle:(float)arg1 exifOrientation:(int *)arg2 error:(id *)arg3;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) VNFaceSegments *faceSegments; // @synthesize faceSegments=_faceSegments;
 @property(retain, nonatomic) VNFaceprint *faceprint; // @synthesize faceprint=_faceprint;
 @property(nonatomic) unsigned long long faceId; // @synthesize faceId=_faceId;
+@property(readonly, nonatomic) VNFaceLegacyFaceCore *legacyFaceCore; // @synthesize legacyFaceCore=_legacyFaceCore;
 @property(readonly, nonatomic) VNFaceAttributes *faceAttributes; // @synthesize faceAttributes=_faceAttributes;
 @property(readonly, nonatomic) VNFaceRegionMap *faceRegionMap; // @synthesize faceRegionMap=_faceRegionMap;
 @property(readonly, nonatomic) struct CGRect unalignedBoundingBox; // @synthesize unalignedBoundingBox=_unalignedBoundingBox;
@@ -80,8 +86,8 @@
 @property(retain, nonatomic) NSNumber *yaw; // @synthesize yaw=_yaw;
 @property(retain, nonatomic) NSNumber *roll; // @synthesize roll=_roll;
 @property(readonly, nonatomic) NSNumber *faceCaptureQuality; // @synthesize faceCaptureQuality=_faceCaptureQuality;
-- (void).cxx_destruct;
 - (_Bool)getFaceEXIFOrientation:(int *)arg1 error:(id *)arg2;
+- (void)setLegacyFaceCore:(id)arg1;
 - (void)setUnalignedBoundingBox:(struct CGRect)arg1;
 @property(retain, nonatomic) VNFaceTorsoprint *faceTorsoprint;
 @property(retain, nonatomic) VNTorsoprint *torsoprint;
@@ -116,6 +122,8 @@
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)_initLocks;
+- (id)initWithRequestRevision:(unsigned long long)arg1;
 - (id)VNPersonsModelFaceprintWithRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 
 @end

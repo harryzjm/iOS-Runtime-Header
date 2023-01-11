@@ -21,9 +21,9 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)cachedRecordZoneIDWithName:(id)arg1 ownerName:(id)arg2;
-@property(readonly, nonatomic) NSString *ownerName; // @synthesize ownerName=_ownerName;
-@property(readonly, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *ownerName; // @synthesize ownerName=_ownerName;
+@property(readonly, copy, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 - (_Bool)isDefaultRecordZoneID;
 - (long long)compareToRecordZoneID:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -41,6 +41,7 @@
 - (id)initWithZoneName:(id)arg1 ownerName:(id)arg2;
 - (id)_initWithZoneName:(id)arg1 ownerName:(id)arg2;
 - (id)init;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)CKXPCSuitableString;
 
 // Remaining properties

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLKDevice, CLKFont, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, UIColor, UIView;
+@class CLKDevice, CLKFont, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, UIColor, UITraitCollection, UIView;
 
 @protocol _CLKUITimeLabelManager
 @property(nonatomic) _Bool showSeconds;
@@ -16,6 +16,7 @@
 - (void)enumerateUnderlyingLabelsWithBlock:(void (^)(UILabel *, _Bool))arg1;
 - (NSAttributedString *)effectiveAttributedText;
 - (CLKFont *)effectiveFont;
+- (void)traitCollectionDidChange:(UITraitCollection *)arg1;
 - (void)sizeViewToFit;
 - (struct CGSize)sizeThatFits;
 - (UIView *)viewForLastBaselineLayout;

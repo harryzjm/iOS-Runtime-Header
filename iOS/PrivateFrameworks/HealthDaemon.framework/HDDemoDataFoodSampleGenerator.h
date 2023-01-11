@@ -10,11 +10,6 @@
 {
     HDDemoDataFoodDatabase *_foodDatabase;
     double _nextMealTime;
-    double _nextBreakfastTime;
-    double _nextLunchTime;
-    double _nextSnackTime;
-    double _nextDinnerTime;
-    double _lastMealTime;
     NSArray *_lastMeal;
     double _nextBloodGlucoseSampleTime;
     double _nextBloodGlucoseFingerStickSampleTime;
@@ -25,9 +20,20 @@
     double _bloodGlucoseCarbohydrateGlycemicRate;
     double _bloodGlucoseDecreaseRateDueToInsulin;
     double _nextWaterConsumedSampleTime;
+    double _nextBreakfastTime;
+    double _nextLunchTime;
+    double _nextSnackTime;
+    double _nextDinnerTime;
+    double _lastMealTime;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double lastMealTime; // @synthesize lastMealTime=_lastMealTime;
+@property(readonly, nonatomic) double nextDinnerTime; // @synthesize nextDinnerTime=_nextDinnerTime;
+@property(readonly, nonatomic) double nextSnackTime; // @synthesize nextSnackTime=_nextSnackTime;
+@property(readonly, nonatomic) double nextLunchTime; // @synthesize nextLunchTime=_nextLunchTime;
+@property(readonly, nonatomic) double nextBreakfastTime; // @synthesize nextBreakfastTime=_nextBreakfastTime;
 @property(nonatomic) double nextWaterConsumedSampleTime; // @synthesize nextWaterConsumedSampleTime=_nextWaterConsumedSampleTime;
 @property(nonatomic) double bloodGlucoseDecreaseRateDueToInsulin; // @synthesize bloodGlucoseDecreaseRateDueToInsulin=_bloodGlucoseDecreaseRateDueToInsulin;
 @property(nonatomic) double bloodGlucoseCarbohydrateGlycemicRate; // @synthesize bloodGlucoseCarbohydrateGlycemicRate=_bloodGlucoseCarbohydrateGlycemicRate;
@@ -38,14 +44,8 @@
 @property(nonatomic) double nextBloodGlucoseFingerStickSampleTime; // @synthesize nextBloodGlucoseFingerStickSampleTime=_nextBloodGlucoseFingerStickSampleTime;
 @property(nonatomic) double nextBloodGlucoseSampleTime; // @synthesize nextBloodGlucoseSampleTime=_nextBloodGlucoseSampleTime;
 @property(copy, nonatomic) NSArray *lastMeal; // @synthesize lastMeal=_lastMeal;
-@property(nonatomic) double lastMealTime; // @synthesize lastMealTime=_lastMealTime;
-@property(nonatomic) double nextDinnerTime; // @synthesize nextDinnerTime=_nextDinnerTime;
-@property(nonatomic) double nextSnackTime; // @synthesize nextSnackTime=_nextSnackTime;
-@property(nonatomic) double nextLunchTime; // @synthesize nextLunchTime=_nextLunchTime;
-@property(nonatomic) double nextBreakfastTime; // @synthesize nextBreakfastTime=_nextBreakfastTime;
 @property(nonatomic) double nextMealTime; // @synthesize nextMealTime=_nextMealTime;
 @property(retain, nonatomic) HDDemoDataFoodDatabase *foodDatabase; // @synthesize foodDatabase=_foodDatabase;
-- (void).cxx_destruct;
 - (id)_lastMeal;
 - (void)_generateRandomLastMeal;
 - (double)_computeNutrientForDemoPerson:(id)arg1 atTime:(double)arg2 mealItem:(id)arg3 quantityType:(id)arg4;

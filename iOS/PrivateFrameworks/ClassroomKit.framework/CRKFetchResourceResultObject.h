@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskResultObject.h"
+#import <DeviceManagement/CATTaskResultObject.h>
 
 @class NSData;
 
@@ -14,8 +14,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSData *resourceData; // @synthesize resourceData=_resourceData;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *resourceData; // @synthesize resourceData=_resourceData;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

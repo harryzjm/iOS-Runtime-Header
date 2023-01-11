@@ -6,35 +6,39 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaServerEventMetadata-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaServerEventMetadata : PBCodable <SISchemaServerEventMetadata, NSSecureCoding>
+@interface SISchemaServerEventMetadata : PBCodable
 {
     NSData *_turnID;
     long long _timestampNs;
     NSData *_siriDeviceID;
+    NSString *_serverPod;
+    struct {
+        unsigned int timestampNs:1;
+    } _has;
+    _Bool _hasTurnID;
+    _Bool _hasSiriDeviceID;
+    _Bool _hasServerPod;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasServerPod; // @synthesize hasServerPod=_hasServerPod;
+@property(nonatomic) _Bool hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
+@property(nonatomic) _Bool hasTurnID; // @synthesize hasTurnID=_hasTurnID;
+@property(copy, nonatomic) NSString *serverPod; // @synthesize serverPod=_serverPod;
 @property(copy, nonatomic) NSData *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;
 @property(nonatomic) long long timestampNs; // @synthesize timestampNs=_timestampNs;
 @property(copy, nonatomic) NSData *turnID; // @synthesize turnID=_turnID;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+@property(nonatomic) _Bool hasTimestampNs;
 
 @end
 

@@ -11,7 +11,9 @@
 @protocol SXComponentExposureMonitor <NSObject>
 - (void)conditionsChanged;
 - (void)stopTrackingExposureOfComponentView:(SXComponentView *)arg1;
-- (void)onExposureOf:(SXComponentView *)arg1 then:(void (^)(long long))arg2 when:(_Bool (^)(void))arg3;
-- (void)onExposureOf:(SXComponentView *)arg1 then:(void (^)(long long))arg2;
+- (void)onExposureOf:(SXComponentView *)arg1 traits:(unsigned long long)arg2 then:(void (^)(long long, double))arg3 when:(_Bool (^)(void))arg4;
+- (void)onExposureOf:(SXComponentView *)arg1 then:(void (^)(long long, double))arg2 when:(_Bool (^)(void))arg3;
+- (void)onExposureOf:(SXComponentView *)arg1 traits:(unsigned long long)arg2 then:(void (^)(long long, double))arg3;
+- (void)onExposureOf:(SXComponentView *)arg1 then:(void (^)(long long, double))arg2;
 @end
 

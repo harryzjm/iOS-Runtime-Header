@@ -14,7 +14,7 @@
     unsigned long long _batchSize;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property(nonatomic) unsigned long long batchStart; // @synthesize batchStart=_batchStart;
 @property(readonly, nonatomic) unsigned long long distributionType; // @synthesize distributionType=_distributionType;

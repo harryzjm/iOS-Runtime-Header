@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PKPaymentApplication, PKPaymentTransaction;
+@class NSString, PKPaymentTransaction;
 
 @interface PKPaymentTransactionProcessorItem : NSObject
 {
     struct os_unfair_lock_s _transactionLock;
     _Bool _foundOptimalLocation;
     _Bool _useBackgroundLocation;
+    _Bool _isClearingAttempt;
     PKPaymentTransaction *_paymentTransaction;
-    PKPaymentApplication *_paymentApplication;
-    NSString *_passUniqueIdentifier;
+    NSString *_transactionSourceIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isClearingAttempt; // @synthesize isClearingAttempt=_isClearingAttempt;
 @property(nonatomic) _Bool useBackgroundLocation; // @synthesize useBackgroundLocation=_useBackgroundLocation;
 @property(nonatomic) _Bool foundOptimalLocation; // @synthesize foundOptimalLocation=_foundOptimalLocation;
-@property(retain, nonatomic) NSString *passUniqueIdentifier; // @synthesize passUniqueIdentifier=_passUniqueIdentifier;
-@property(retain, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *transactionSourceIdentifier; // @synthesize transactionSourceIdentifier=_transactionSourceIdentifier;
 @property(retain, nonatomic) PKPaymentTransaction *paymentTransaction; // @synthesize paymentTransaction=_paymentTransaction;
 - (id)init;
 

@@ -23,12 +23,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SFImage *image; // @synthesize image=_image;
 @property(nonatomic) _Bool isEnabled; // @synthesize isEnabled=_isEnabled;
 @property(copy, nonatomic) NSString *offerIdentifier; // @synthesize offerIdentifier=_offerIdentifier;
 @property(copy, nonatomic) NSString *sublabel; // @synthesize sublabel=_sublabel;
 @property(retain, nonatomic) SFActionItem *actionItem; // @synthesize actionItem=_actionItem;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -41,11 +41,14 @@
 @property(copy, nonatomic) NSString *applicationBundleIdentifier;
 @property(retain, nonatomic) SFImage *baseIcon;
 @property(copy, nonatomic) NSString *contactIdentifier;
+@property(retain, nonatomic) SFPunchout *customDirectionsPunchout;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) int directionsMode;
 @property(copy, nonatomic) NSString *email;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) SFImage *icon;
+@property(copy, nonatomic) NSString *interactionContentType;
 @property(nonatomic) _Bool isITunes;
 @property(nonatomic) _Bool isOverlay;
 @property(copy, nonatomic) NSString *label;
@@ -65,9 +68,11 @@
 @property(copy, nonatomic) NSString *provider;
 @property(retain, nonatomic) SFPunchout *punchout;
 @property(nonatomic) _Bool requiresLocalMedia;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute;
 @property(copy, nonatomic) NSArray *storeIdentifiers;
 @property(readonly) Class superclass;
 @property(copy, nonatomic) NSString *type;
+@property(copy, nonatomic) NSString *universalLibraryID;
 
 @end
 

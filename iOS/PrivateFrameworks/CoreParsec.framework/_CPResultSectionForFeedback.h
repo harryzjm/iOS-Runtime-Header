@@ -13,6 +13,7 @@
 
 @interface _CPResultSectionForFeedback : PBCodable <_CPResultSectionForFeedback, NSSecureCoding>
 {
+    _Bool _isInitiallyHidden;
     int _knownBundleIdentifier;
     NSArray *_results;
     NSString *_identifier;
@@ -22,12 +23,13 @@
     unsigned long long _whichBundleid;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long whichBundleid; // @synthesize whichBundleid=_whichBundleid;
+@property(nonatomic) _Bool isInitiallyHidden; // @synthesize isInitiallyHidden=_isInitiallyHidden;
 @property(copy, nonatomic) NSData *fallbackResultSection; // @synthesize fallbackResultSection=_fallbackResultSection;
 @property(nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSArray *results; // @synthesize results=_results;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

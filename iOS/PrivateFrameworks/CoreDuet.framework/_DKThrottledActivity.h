@@ -16,8 +16,8 @@
 }
 
 + (id)standardInstance;
-@property(retain, nonatomic) id <_DKSimpleKeyValueStore> store; // @synthesize store=_store;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <_DKSimpleKeyValueStore> store;
 - (void)setDate:(id)arg1 forName:(id)arg2;
 - (void)clearHistoryForName:(id)arg1;
 - (id)description;
@@ -37,7 +37,6 @@
 - (void)performNoMoreOftenInMinutesThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3;
 - (void)performNoMoreOftenInSecondsThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3 throttleBlock:(CDUnknownBlockType)arg4;
 - (void)performNoMoreOftenInSecondsThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3;
-- (id)activityThrottler;
 - (id)initWithStore:(id)arg1 namespace:(id)arg2;
 
 @end

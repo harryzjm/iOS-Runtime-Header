@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UISceneComponentProviding-Protocol.h>
 
-@class NSString, UIScene, UIWindowScene;
+@class NSArray, NSString, UIScene, UIWindowScene;
 
 __attribute__((visibility("hidden")))
 @interface _UISystemAppearanceManager : NSObject <_UISceneComponentProviding>
@@ -17,15 +17,18 @@ __attribute__((visibility("hidden")))
     unsigned long long _screenEdgesDeferringSystemGestures;
     long long _userInterfaceStyle;
     long long _whitePointAdaptivityStyle;
+    NSArray *_multitaskingDragExclusionRects;
     UIWindowScene *_windowScene;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
+@property(readonly, nonatomic) NSArray *multitaskingDragExclusionRects; // @synthesize multitaskingDragExclusionRects=_multitaskingDragExclusionRects;
 @property(readonly, nonatomic) long long whitePointAdaptivityStyle; // @synthesize whitePointAdaptivityStyle=_whitePointAdaptivityStyle;
 @property(readonly, nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(readonly, nonatomic) unsigned long long screenEdgesDeferringSystemGestures; // @synthesize screenEdgesDeferringSystemGestures=_screenEdgesDeferringSystemGestures;
 @property(readonly, nonatomic) _Bool homeIndicatorAutoHidden; // @synthesize homeIndicatorAutoHidden=_homeIndicatorAutoHidden;
-- (void).cxx_destruct;
+- (void)updateMultitaskingDragExclusionRects;
 - (void)updateWhitePointAdaptivityStyle;
 - (void)updateUserInterfaceStyle;
 - (void)updateScreenEdgesDeferringSystemGestures;

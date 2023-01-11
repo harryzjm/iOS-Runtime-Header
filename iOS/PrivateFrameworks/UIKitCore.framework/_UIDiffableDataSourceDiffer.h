@@ -8,27 +8,43 @@
 
 #import <UIKitCore/_UIDiffableDataSourceDiffer-Protocol.h>
 
-@protocol UIDiffableDataSourceInfo;
+@class NSArray, NSHashTable, NSIndexSet, _UIIdentifierDiffer;
+@protocol _UIDiffableDataSourceState;
 
 __attribute__((visibility("hidden")))
 @interface _UIDiffableDataSourceDiffer : NSObject <_UIDiffableDataSourceDiffer>
 {
-    id <UIDiffableDataSourceInfo> _beforeDataSourceInfo;
-    id <UIDiffableDataSourceInfo> _afterDataSourceInfo;
+    id <_UIDiffableDataSourceState> _beforeDataSourceState;
+    id <_UIDiffableDataSourceState> _afterDataSourceState;
+    NSArray *_updates;
+    _UIIdentifierDiffer *_itemIdentifierDiffer;
+    _UIIdentifierDiffer *_sectionIdentifierDiffer;
+    NSIndexSet *_deletedSections;
+    NSIndexSet *_insertedSections;
+    NSHashTable *_affectedSectionIdentifiers;
 }
 
-+ (id)differWithBeforeDataSourceInfo:(id)arg1 afterDataSourceInfo:(id)arg2;
-@property(retain, nonatomic) id <UIDiffableDataSourceInfo> afterDataSourceInfo; // @synthesize afterDataSourceInfo=_afterDataSourceInfo;
-@property(retain, nonatomic) id <UIDiffableDataSourceInfo> beforeDataSourceInfo; // @synthesize beforeDataSourceInfo=_beforeDataSourceInfo;
++ (id)differWithBeforeDataSourceState:(id)arg1 afterDataSourceState:(id)arg2 itemIdentifierDiffer:(id)arg3;
++ (id)differWithBeforeDataSourceState:(id)arg1 afterDataSourceState:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSHashTable *affectedSectionIdentifiers; // @synthesize affectedSectionIdentifiers=_affectedSectionIdentifiers;
+@property(retain, nonatomic) NSIndexSet *insertedSections; // @synthesize insertedSections=_insertedSections;
+@property(retain, nonatomic) NSIndexSet *deletedSections; // @synthesize deletedSections=_deletedSections;
+@property(retain, nonatomic) _UIIdentifierDiffer *sectionIdentifierDiffer; // @synthesize sectionIdentifierDiffer=_sectionIdentifierDiffer;
+@property(retain, nonatomic) _UIIdentifierDiffer *itemIdentifierDiffer; // @synthesize itemIdentifierDiffer=_itemIdentifierDiffer;
+@property(retain, nonatomic) NSArray *updates; // @synthesize updates=_updates;
+@property(retain, nonatomic) id <_UIDiffableDataSourceState> afterDataSourceState; // @synthesize afterDataSourceState=_afterDataSourceState;
+@property(retain, nonatomic) id <_UIDiffableDataSourceState> beforeDataSourceState; // @synthesize beforeDataSourceState=_beforeDataSourceState;
+@property(readonly, nonatomic) _Bool hasDifferences;
+@property(readonly, nonatomic) _Bool snapshotsAreRelated;
 - (_Bool)_verifyForUpdates:(id)arg1;
 - (id)_sectionUpdatesForDiffResults:(id)arg1 deletedSections:(id)arg2 insertedSections:(id)arg3;
 - (id)_itemUpdatesForDiffResults:(id)arg1 sectionBoundaryMoves:(id)arg2 deletedSections:(id)arg3 insertedSections:(id)arg4;
 - (id)_computeSectionBoundaryMovesForItemDiffer:(id)arg1;
 - (id)_computeUpdatesForIdentifierBasedDiff;
-- (id)computeUpdates;
+- (void)_computeUpdates;
 - (id)description;
-- (id)initWithBeforeDataSource:(id)arg1 afterDataSource:(id)arg2;
+- (id)initWithBeforeDataSource:(id)arg1 afterDataSource:(id)arg2 itemIdentifierDiffer:(id)arg3;
 
 @end
 

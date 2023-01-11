@@ -7,7 +7,7 @@
 #import <Foundation/NSInvocation.h>
 
 @interface NSInvocation (MKAdditions)
-+ (id)_mapkit_invocationWithSelector:(SEL)arg1 target:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
++ (id)_mapkit_invocationWithSelector:(SEL)arg1 target:(id)arg2 arguments:(char *)arg3;
 + (id)_mapkit_invocationWithSelector:(SEL)arg1 target:(id)arg2;
 @end
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITapGestureRecognizer;
+#import <SpringBoardHome/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString, UITapGestureRecognizer;
 @protocol SBCloseBoxViewDelegate, SBIconListLayout;
 
-@interface SBCloseBoxView
+@interface SBCloseBoxView <UIPointerInteractionDelegate>
 {
     UITapGestureRecognizer *_actionTapGestureRecognizer;
     id <SBCloseBoxViewDelegate> _delegate;
@@ -15,13 +17,22 @@
 }
 
 + (struct UIEdgeInsets)backgroundInsets;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
 @property(nonatomic) __weak id <SBCloseBoxViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UITapGestureRecognizer *actionTapGestureRecognizer; // @synthesize actionTapGestureRecognizer=_actionTapGestureRecognizer;
-- (void).cxx_destruct;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+@property(readonly, nonatomic) struct UIEdgeInsets hitTestPadding;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (_Bool)shouldTrack;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

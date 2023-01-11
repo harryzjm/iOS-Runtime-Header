@@ -5,10 +5,11 @@
 //
 
 #import <ChatKit/CKAudioBalloonView-Protocol.h>
+#import <ChatKit/CKBalloonVibrancy-Protocol.h>
 
 @class CKAudioProgressView, CKWaveformProgressView, NSString, UILabel;
 
-@interface CKAudioBalloonView <CKAudioBalloonView>
+@interface CKAudioBalloonView <CKBalloonVibrancy, CKAudioBalloonView>
 {
     _Bool _playing;
     _Bool _played;
@@ -19,6 +20,7 @@
     CKWaveformProgressView *_waveformProgressView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKWaveformProgressView *waveformProgressView; // @synthesize waveformProgressView=_waveformProgressView;
 @property(retain, nonatomic) CKAudioProgressView *progressView; // @synthesize progressView=_progressView;
 @property(retain, nonatomic) UILabel *timeLabel; // @synthesize timeLabel=_timeLabel;
@@ -26,7 +28,8 @@
 @property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 @property(nonatomic) double time; // @synthesize time=_time;
-- (void).cxx_destruct;
+- (void)vibrantContainerWillReparentNonVibrantSubviews:(id)arg1;
+- (id)nonVibrantSubViews;
 - (void)updateProgress;
 - (void)updateTimeString;
 @property(nonatomic) long long waveformContentMode;
@@ -36,6 +39,7 @@
 - (void)prepareForDisplay;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (void)addOverlaySubview:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;

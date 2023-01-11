@@ -4,19 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableSet;
-
 __attribute__((visibility("hidden")))
 @interface _UISearchBarFieldEditor
 {
     struct {
         unsigned int inLayoutSubviews:1;
     } _flags;
-    NSMutableSet *_atomViews;
 }
 
-@property(retain) NSMutableSet *_atomViews; // @synthesize _atomViews;
-- (void).cxx_destruct;
 - (id)selectionRectsForRange:(id)arg1;
 - (void)_updateTokenViews;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(_Bool)arg3;
@@ -24,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_usedRectWithLayoutManager:(id)arg1 textContainer:(id)arg2;
 - (void)deactivateEditorDiscardingEdits:(_Bool)arg1;
 - (void)activateEditor;
-- (double)_uiatom_currentScreenScale;
 - (void)layoutSubviews;
 
 @end

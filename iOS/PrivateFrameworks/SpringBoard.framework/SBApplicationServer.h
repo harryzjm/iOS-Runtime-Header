@@ -17,19 +17,13 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBApplicationServerMultiwindowDelegate> multiwindowDelegate; // @synthesize multiwindowDelegate=_multiwindowDelegate;
 @property(nonatomic) __weak id <SBApplicationServerShortcutDelegate> shortcutDelegate; // @synthesize shortcutDelegate=_shortcutDelegate;
 @property(nonatomic) __weak id <SBApplicationServerHarmonyDelegate> harmonyDelegate; // @synthesize harmonyDelegate=_harmonyDelegate;
 @property(nonatomic) __weak id <SBApplicationServerMiscDelegate> miscDelegate; // @synthesize miscDelegate=_miscDelegate;
-- (void).cxx_destruct;
-- (void)_handleMultiwindowShortcutServiceClientMessage:(id)arg1 fromClient:(id)arg2;
-- (void)_handleShortcutUpdateDynamicApplicationShortcutItemsMessage:(id)arg1 fromClient:(id)arg2;
-- (void)_handleShortcutFetchApplicationShortcutItemsMessage:(id)arg1 fromClient:(id)arg2;
-- (void)_handleHarmonyFetchWhitePointAdaptivityStyleMessage:(id)arg1 fromClient:(id)arg2;
-- (void)_handleDeleteApplicationSnapshots:(id)arg1 fromClient:(id)arg2;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 - (void)dealloc;
-- (id)_init;
 
 @end
 

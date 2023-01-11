@@ -8,11 +8,12 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class HDProfile, HDXPCAlarm, NSDate, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDRestorableAlarmScheduler : NSObject <HDDiagnosticObject, HDDatabaseProtectedDataObserver>
+@interface HDRestorableAlarmScheduler : NSObject <HDDiagnosticObject, HDDatabaseProtectedDataObserver, HDHealthDaemonReadyObserver>
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -29,11 +30,11 @@
     NSDate *__unitTest_currentDate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isRegisteredForLockStateUpdates; // @synthesize isRegisteredForLockStateUpdates=_isRegisteredForLockStateUpdates;
 @property(readonly, nonatomic) _Bool isRegisteredForOnWristUpdates; // @synthesize isRegisteredForOnWristUpdates=_isRegisteredForOnWristUpdates;
 @property(copy, nonatomic) NSDate *_unitTest_currentDate; // @synthesize _unitTest_currentDate=__unitTest_currentDate;
 @property(readonly, nonatomic) HDXPCAlarm *systemScheduler; // @synthesize systemScheduler=_systemScheduler;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)_enumerateAllAlarmEventsWithError:(id *)arg1 enumerationHandler:(CDUnknownBlockType)arg2;
@@ -52,8 +53,8 @@
 - (void)_queue_fetchCurrentWristStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_currentDate;
 - (void)_queue_beginReceivingSystemEventsIfNecessary;
-- (void)_runMaintenanceNotifyAndSchedule;
-- (void)_queue_enqueueMaintenanceNotifyAndSchedule;
+- (void)_queue_runMaintenanceNotifyAndScheduleWithReason:(id)arg1;
+- (void)_queue_enqueueMaintenanceNotifyAndScheduleWithReason:(id)arg1;
 - (void)_queue_updateProtectedDataObserverStateIfRequired;
 - (void)_queue_registerForLockStateUpdates:(_Bool)arg1;
 - (void)_queue_setNeedsMaintenanceNotifyAndSchedule:(_Bool)arg1;
@@ -61,6 +62,7 @@
 - (void)_queue_significantTimeChangeDidOccur;
 - (void)_stopObservingSignificantTimeChangeNotification;
 - (void)_startObservingSignificantTimeChangeNotification;
+- (void)daemonReady:(id)arg1;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 

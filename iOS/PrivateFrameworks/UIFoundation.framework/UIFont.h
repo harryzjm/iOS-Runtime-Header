@@ -15,12 +15,16 @@
 {
 }
 
-+ (void)initialize;
++ (id)_fontWithName:(id)arg1 size:(double)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)classFallbacksForKeyedArchiver;
++ (void)_setSystemFontSize:(double)arg1;
 + (double)systemFontSize;
++ (void)_setSmallSystemFontSize:(double)arg1;
 + (double)smallSystemFontSize;
++ (void)_setButtonFontSize:(double)arg1;
 + (double)buttonFontSize;
++ (void)_setLabelFontSize:(double)arg1;
 + (double)labelFontSize;
 + (id)fontWithDescriptor:(id)arg1 size:(double)arg2;
 + (id)monospacedDigitSystemFontOfSize:(double)arg1 weight:(double)arg2;
@@ -46,6 +50,7 @@
 + (id)_preferredFontForTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)_supportedDynamicFontStyles;
 + (_Bool)_isSupportedDynamicFontTextStyle:(id)arg1;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 weight:(id)arg3 symbolicTraits:(unsigned int)arg4 maximumContentSizeCategory:(id)arg5 compatibleWithTraitCollection:(id)arg6 pointSize:(double)arg7 pointSizeForScaling:(double)arg8;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5 pointSize:(double)arg6 pointSizeForScaling:(double)arg7;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 compatibleWithTraitCollection:(id)arg4;
@@ -59,7 +64,7 @@
 + (id)preferredFontForTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)preferredFontForTextStyle:(id)arg1;
 + (id)_systemFontsOfSize:(double)arg1 traits:(int)arg2;
-+ (id)_fontWithDescriptor:(id)arg1 size:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 forIB:(_Bool)arg6;
++ (id)_fontWithDescriptor:(id)arg1 size:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 forIB:(_Bool)arg6 legibilityWeight:(long long)arg7;
 + (id)fontNamesForFamilyName:(id)arg1;
 + (id)familyNames;
 + (id)fontWithMarkupDescription:(id)arg1;
@@ -78,7 +83,6 @@
 @property(readonly, nonatomic) double xHeight;
 @property(readonly, nonatomic) double capHeight;
 - (double)_ascenderDeltaForBehavior:(long long)arg1;
-- (double)_bodyLeading;
 @property(readonly, nonatomic) double leading;
 @property(readonly, nonatomic) double lineHeight;
 @property(readonly, nonatomic) double descender;
@@ -96,19 +100,22 @@
 @property(readonly, nonatomic) NSString *familyName;
 @property(readonly, nonatomic) NSString *fontName;
 - (id)fontWithSize:(double)arg1;
+- (double)_bodyLeading;
 - (Class)classForCoder;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)_isUIFont;
-- (Class)classForKeyedArchiver;
 - (id)_fontScaledByScaleFactor:(double)arg1;
 - (id)htmlMarkupDescription;
 - (id)markupDescription;
-- (id)familyNameForCSSFontFamilyValue;
+- (id)markupDescriptionForWebKit:(_Bool)arg1 pointSize:(float)arg2 sizeUnit:(id)arg3;
+- (id)familyNameForCSSFontFamilyValueForWebKit:(_Bool)arg1;
 - (id)initWithMarkupDescription:(id)arg1;
 - (id)initWithFamilyName:(id)arg1 traits:(int)arg2 size:(double)arg3;
 - (id)initWithName:(id)arg1 size:(double)arg2;
 - (double)_scaledValueForValue:(double)arg1;
+- (id)_textStyle;
+- (_Bool)_isTextStyleFont;
 - (double)readableWidth;
 - (id)_fontScaledLikeTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3 forIB:(_Bool)arg4;
 - (id)_fontAdjustedForContentSizeCategoryCompatibleWithTraitCollection:(id)arg1;

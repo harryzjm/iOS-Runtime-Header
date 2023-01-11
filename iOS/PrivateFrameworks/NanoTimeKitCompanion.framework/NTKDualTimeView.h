@@ -8,19 +8,19 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAReplicatorLayer, CLKDevice, NSArray, NSCalendar, NSDate, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
+@class CALayer, CAReplicatorLayer, CLKClockTimerToken, CLKDevice, CLKFont, NSArray, NSCalendar, NSDate, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
 
 @interface NTKDualTimeView : UIView <NTKTimeView>
 {
     NSDate *_overrideDate;
     NSCalendar *_calendar;
-    struct NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
     CAReplicatorLayer *_hourTickReplicatorLayer;
     CAReplicatorLayer *_minuteTickReplicatorLayer;
-    UIView *_digitalContainerView;
     CALayer *_digitalTicksContainer;
     NSArray *_digitalTicks;
     NTKDigitalTimeLabelStyle *_digitalStyle;
+    CLKFont *_digitalLabelFont;
     _Bool _frozen;
     _Bool _editing;
     _Bool _hideActiveTicks;
@@ -31,14 +31,17 @@
     UIView *_dialBackgroundView;
     NTKAnalogHandsView *_analogHandsView;
     NTKDigitalTimeLabel *_digitalTimeLabel;
+    UIView *_digitalContainerView;
     UIView *_dialContainerView;
     UIView *_analogContainerView;
     UIView *_analogTickContainerView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *analogTickContainerView; // @synthesize analogTickContainerView=_analogTickContainerView;
 @property(retain, nonatomic) UIView *analogContainerView; // @synthesize analogContainerView=_analogContainerView;
 @property(retain, nonatomic) UIView *dialContainerView; // @synthesize dialContainerView=_dialContainerView;
+@property(readonly, nonatomic) UIView *digitalContainerView; // @synthesize digitalContainerView=_digitalContainerView;
 @property(readonly, nonatomic) NTKDigitalTimeLabel *digitalTimeLabel; // @synthesize digitalTimeLabel=_digitalTimeLabel;
 @property(retain, nonatomic) NTKAnalogHandsView *analogHandsView; // @synthesize analogHandsView=_analogHandsView;
 @property(retain, nonatomic) UIView *dialBackgroundView; // @synthesize dialBackgroundView=_dialBackgroundView;
@@ -49,7 +52,6 @@
 @property(nonatomic) _Bool editing; // @synthesize editing=_editing;
 @property(nonatomic, getter=isFrozen) _Bool frozen; // @synthesize frozen=_frozen;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (void)setTimeOffset:(double)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (id)_secondTickInactiveColorForColor:(unsigned long long)arg1;
@@ -73,10 +75,13 @@
 - (void)setSecondsHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3 ignoreTimeView:(_Bool)arg4;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
+- (void)_applyColorToAnalogHands;
 - (id)_activeTimeView;
+- (void)_updateDigitalLabelFont;
 - (id)_digitalLabelFont;
 - (void)_colorizeDigitalTicksWithActiveColor:(id)arg1 inactiveColor:(id)arg2 now:(id)arg3 secondFraction:(double)arg4;
 - (void)_refreshDigitalTicksWithNow:(id)arg1 secondFraction:(double)arg2;
+- (void)_refreshDigitalTicks;
 - (void)_endDigitalTicksTimer;
 - (void)_startDigitalTicksTimer;
 - (void)_setupDigitalTicks;

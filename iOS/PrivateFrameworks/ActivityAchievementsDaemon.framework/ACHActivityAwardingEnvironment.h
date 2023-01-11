@@ -11,14 +11,16 @@
 @interface ACHActivityAwardingEnvironment : NSObject
 {
     _Bool _valueForKeyLoggingEnabled;
+    unsigned long long _experienceType;
     ACHActivityAwardingDataProvider *_dataProvider;
     ACHActivityAwardingDateCache *_dateCache;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ACHActivityAwardingDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property(retain, nonatomic) ACHActivityAwardingDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
+@property(nonatomic) unsigned long long experienceType; // @synthesize experienceType=_experienceType;
 @property(nonatomic) _Bool valueForKeyLoggingEnabled; // @synthesize valueForKeyLoggingEnabled=_valueForKeyLoggingEnabled;
-- (void).cxx_destruct;
 - (id)requiredDaysOfActivityHistoryForStreaks;
 - (id)requiredDaysOfActivityHistoryForRecords;
 - (id)dayOfMonthForToday;
@@ -52,6 +54,16 @@
 - (id)yesterdayExerciseValue;
 - (id)todayExerciseGoal;
 - (id)todayExerciseValue;
+- (id)previousMoveTimePercentage;
+- (id)currentMoveTimePercentage;
+- (id)bestMoveTimeGoal;
+- (id)previousBestMoveTimeGoal;
+- (id)bestMoveTimeValue;
+- (id)yesterdayMoveTimeValue;
+- (id)todayMoveTimeGoal;
+- (id)todayMoveTimeValue;
+- (id)todayAgnosticMoveGoal;
+- (id)todayAgnosticMoveValue;
 - (id)previousMovePercentage;
 - (id)currentMovePercentage;
 - (id)previousBestMoveStreak;
@@ -65,6 +77,7 @@
 - (id)yesterdayMoveValue;
 - (id)todayMoveGoal;
 - (id)todayMoveValue;
+- (long long)todayActivityMoveMode;
 - (id)valueForUndefinedKey:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (void)setCurrentDateComponents:(id)arg1;

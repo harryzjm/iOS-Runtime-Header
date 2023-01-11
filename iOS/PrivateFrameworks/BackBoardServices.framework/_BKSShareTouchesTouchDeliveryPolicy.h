@@ -15,13 +15,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int hostContextId; // @synthesize hostContextId=_hostContextId;
 @property(readonly, nonatomic) unsigned int childContextId; // @synthesize childContextId=_childContextId;
 - (void)setAssertionEndpoint:(id)arg1;
 - (id)assertionEndpoint;
-- (void).cxx_destruct;
 - (id)matchSharingTouchesPolicy:(CDUnknownBlockType)arg1 orCancelTouchesPolicy:(CDUnknownBlockType)arg2 orCombinedPolicy:(CDUnknownBlockType)arg3;
-- (id)description;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;

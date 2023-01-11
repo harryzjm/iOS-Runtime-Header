@@ -7,26 +7,31 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSLock, NSMutableDictionary, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface RTTSettings : NSObject
 {
     NSLock *_synchronizeDomainsLock;
-    NSMutableDictionary *_serverCachedSettings;
+    NSMutableDictionary *_cachedSettings;
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
+    NSObject<OS_dispatch_queue> *_nanoSynchronizeQueue;
 }
 
 + (id)sharedInstance;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *nanoSynchronizeQueue; // @synthesize nanoSynchronizeQueue=_nanoSynchronizeQueue;
 @property(retain, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
 @property(retain, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
 @property(retain, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
-- (void).cxx_destruct;
 @property(nonatomic) _Bool internalOverrideTTYAvailability;
 - (void)resetCannedResponses;
 @property(retain, nonatomic) NSArray *cannedResponses;
 @property(nonatomic) _Bool continuityRTTIsSupported;
+@property(nonatomic) _Bool rttInlineAbbreviationBarEnabled;
+@property(nonatomic) _Bool rttNotificationsEnabled;
 @property(nonatomic) _Bool hasReceivedRTTCall;
 - (void)setPreferredRelayNumber:(id)arg1 forContext:(id)arg2;
 - (id)preferredRelayNumberForContext:(id)arg1;

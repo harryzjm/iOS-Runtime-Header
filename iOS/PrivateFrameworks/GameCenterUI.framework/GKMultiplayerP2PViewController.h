@@ -10,32 +10,39 @@
 @interface GKMultiplayerP2PViewController
 {
     _Bool _hosted;
-    id <GKMultiplayerP2PViewControllerDelegate> _delegateWeak;
+    id <GKMultiplayerP2PViewControllerDelegate> _delegate;
     long long _mode;
     GKInvite *_acceptedInvite;
     double _inviteeConnectionTimeStamp;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double inviteeConnectionTimeStamp; // @synthesize inviteeConnectionTimeStamp=_inviteeConnectionTimeStamp;
-@property(copy, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
+@property(retain, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
+@property(nonatomic) __weak id <GKMultiplayerP2PViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isHosted) _Bool hosted; // @synthesize hosted=_hosted;
 - (void)cancelAlertWithoutDelegateCallback;
+- (void)showMatchDisconnectedAlertForPlayer:(id)arg1;
 - (void)showAutomatchingErrorAlert;
 - (void)showInviterDisconnectedAlert;
+- (void)showParentalControlsRestrictionAlert;
 - (void)processStatusUpdateMessageFromBytes:(const char *)arg1 withLength:(unsigned int)arg2;
 - (void)sendStatusUpdate;
 - (void)playerDisconnected:(id)arg1;
 - (void)playerConnected:(id)arg1;
 - (void)removedPlayer:(id)arg1;
+- (void)performActionsForButtonCancelCurrentMatching;
+- (void)resetInviteesStatus;
 - (void)cancelPendingInvites;
 - (void)invitePlayers:(id)arg1;
-- (void)shareFinishedWithContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
-- (void)willShare;
+- (void)setShareInvitees;
+- (void)sendInvitesToContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
 - (void)loadShareURLWithCompletion:(CDUnknownBlockType)arg1;
-- (void)willQueryGKIDs;
 - (void)willPresentPlayerPicker:(id)arg1;
 - (void)startGame;
+- (void)displayCancelConfirmationDialog;
+- (void)startGameButtonPressed;
 - (void)playNow;
 - (_Bool)canStartForcedAutomatch;
 - (void)applicationWillEnterForeground;
@@ -45,18 +52,23 @@
 - (void)setInvitesFailedWithError:(id)arg1;
 - (void)setPlayer:(id)arg1 sentData:(id)arg2;
 - (void)setPlayer:(id)arg1 connected:(_Bool)arg2;
+- (void)setConnectingStateForPlayer:(id)arg1;
 - (void)setPlayer:(id)arg1 responded:(long long)arg2;
 - (void)setAutomatchPlayerCount:(long long)arg1;
 - (void)setExistingPlayers:(id)arg1;
 - (_Bool)havePendingPlayers;
 - (_Bool)haveInvitedPlayers;
+- (void)updateStartGameButtonTitle;
+- (_Bool)isCanceling;
+- (long long)automatchParticipantStatus;
+- (_Bool)isInSetupMode;
+- (void)updateForNewMode;
 - (void)finishWithError:(id)arg1;
 - (void)cancel;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (void)configureDataSource;
-@property(nonatomic) id <GKMultiplayerP2PViewControllerDelegate> delegate; // @synthesize delegate=_delegateWeak;
 - (void)dealloc;
+- (void)configureDataSource;
 - (id)initWithAcceptedInvite:(id)arg1;
 
 @end

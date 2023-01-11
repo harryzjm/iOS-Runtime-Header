@@ -7,17 +7,20 @@
 #import <UIKit/UIView.h>
 
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
+#import <SpringBoardHome/SBCrossfadingIconImageSource-Protocol.h>
 #import <SpringBoardHome/SBHIconImageCacheObserver-Protocol.h>
 #import <SpringBoardHome/SBIconObserver-Protocol.h>
 #import <SpringBoardHome/SBIconProgressViewDelegate-Protocol.h>
 #import <SpringBoardHome/SBReusableView-Protocol.h>
 
-@class NSString, SBHIconImageCache, SBIcon, SBIconProgressView, SBIconView, UIImage, UIImageView;
+@class CAFilter, NSString, SBHIconImageCache, SBIcon, SBIconProgressView, SBIconView, UIImage;
 
-@interface SBIconImageView : UIView <SBIconObserver, SBIconProgressViewDelegate, SBHIconImageCacheObserver, SBReusableView, BSDescriptionProviding>
+@interface SBIconImageView : UIView <SBIconObserver, SBIconProgressViewDelegate, SBHIconImageCacheObserver, SBReusableView, SBCrossfadingIconImageSource, BSDescriptionProviding>
 {
-    UIImageView *_overlayView;
+    CAFilter *_multiplyFilter;
     SBIconProgressView *_progressView;
+    struct SBIconImageInfo _iconImageInfo;
+    _Bool _hasSetIconImageInfo;
     _Bool _paused;
     _Bool _showsSquareCorners;
     _Bool _jittering;
@@ -29,6 +32,7 @@
     double _overlayAlpha;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
 @property(nonatomic, getter=isJittering) _Bool jittering; // @synthesize jittering=_jittering;
 @property(nonatomic) _Bool showsSquareCorners; // @synthesize showsSquareCorners=_showsSquareCorners;
@@ -38,31 +42,27 @@
 @property(nonatomic) __weak SBIconView *iconView; // @synthesize iconView=_iconView;
 @property(copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property(readonly, nonatomic) SBIcon *icon; // @synthesize icon=_icon;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+@property(readonly, nonatomic) double continuousCornerRadius;
+- (id)sourceView;
 @property(readonly, copy) NSString *description;
-- (id)_iconSquareOverlayImage;
-- (id)_iconBasicOverlayImage;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)iconImageCache:(id)arg1 didUpdateImageForIcon:(id)arg2;
 - (void)iconImageDidUpdate:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)iconViewFolderIconImageCacheDidChange;
 - (void)iconViewLegibilitySettingsDidChange;
-- (struct CGRect)visibleBounds;
+@property(readonly, nonatomic) struct CGRect visibleBounds;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) UIImage *displayedImage;
-- (id)squareDarkeningOverlayImage;
-- (id)darkeningOverlayImage;
 - (id)squareContentsImage;
 - (id)contentsImage;
 - (void)clearCachedImages;
 - (id)_generateSquareContentsImage;
 - (void)_updateProgressMask;
-- (void)_updateOverlayImage;
-- (id)_currentOverlayImage;
 - (void)updateImageAnimated:(_Bool)arg1;
 - (id)snapshot;
 - (void)prepareForReuse;
@@ -72,7 +72,7 @@
 - (void)progressViewCanBeRemoved:(id)arg1;
 - (void)setProgressState:(long long)arg1 paused:(_Bool)arg2 percent:(double)arg3 animated:(_Bool)arg4;
 - (void)_updateOverlayAlpha;
-- (struct SBIconImageInfo)iconImageInfo;
+@property(nonatomic) struct SBIconImageInfo iconImageInfo;
 - (void)setIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

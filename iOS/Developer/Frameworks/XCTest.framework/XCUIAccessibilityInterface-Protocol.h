@@ -8,20 +8,22 @@
 #import <XCTest/XCTElementSnapshotAttributeDataSource-Protocol.h>
 #import <XCTest/XCUIAXNotificationHandling-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, XCAccessibilityElement, XCElementSnapshot, XCUIAccessibilityAction, XCUIApplicationProcess, XCUIElementSnapshotRequestResult;
+@class NSArray, NSDictionary, NSString, XCAccessibilityElement, XCElementSnapshot, XCTestExpectation, XCUIAccessibilityAction, XCUIApplicationProcess, XCUIElementSnapshotRequestResult;
 
 @protocol XCUIAccessibilityInterface <NSObject, XCUIAXNotificationHandling, XCTElementSnapshotAttributeDataSource>
+@property(readonly, nonatomic) XCAccessibilityElement *systemApplication;
 @property(readonly) _Bool supportsAnimationsInactiveNotifications;
 @property double AXTimeout;
 - (XCAccessibilityElement *)accessibilityElementForElementAtPoint:(struct CGPoint)arg1 error:(id *)arg2;
 - (void)performWhenMenuOpens:(XCAccessibilityElement *)arg1 block:(void (^)(void))arg2;
 - (void)removeObserver:(id)arg1 forAXNotification:(NSString *)arg2;
 - (id)addObserverForAXNotification:(NSString *)arg1 handler:(void (^)(XCAccessibilityElement *, NSDictionary *))arg2;
-- (void)registerForAXNotificationsForApplicationWithPID:(int)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)unregisterForAXNotificationsForApplicationWithPID:(int)arg1;
+- (void)registerForAXNotificationsForApplicationWithPID:(int)arg1 timeout:(double)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (NSArray *)localizableStringsDataForActiveApplications;
 - (_Bool)enableFauxCollectionViewCells:(id *)arg1;
 - (void)notifyWhenViewControllerViewDidDisappearReply:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)notifyWhenViewControllerViewDidAppearReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (XCTestExpectation *)viewDidAppearExpectationForElement:(XCAccessibilityElement *)arg1 viewControllerName:(NSString *)arg2;
 - (void)notifyWhenNoAnimationsAreActiveForApplication:(XCUIApplicationProcess *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)notifyOnNextOccurrenceOfUserTestingEvent:(NSString *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
 - (_Bool)cachedAccessibilityLoadedValueForPID:(int)arg1;

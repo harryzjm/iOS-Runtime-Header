@@ -9,12 +9,12 @@
 #import <CloudKitDaemon/CKDFlowControllable-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestAuthRetryDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestMetricsDelegate-Protocol.h>
+#import <CloudKitDaemon/CKThrottlingCriteria-Protocol.h>
 
-@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationResult, NSDate, NSError, NSMutableArray, NSNumber, NSObject, NSString;
-@protocol NSObject, OS_dispatch_group, OS_dispatch_queue, OS_os_activity;
+@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationMetrics, NSDate, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSObject, NSString;
+@protocol CKOperationCallbacks, NSObject, OS_dispatch_group, OS_dispatch_queue, OS_os_activity;
 
-__attribute__((visibility("hidden")))
-@interface CKDOperation : NSOperation <CKDURLRequestMetricsDelegate, CKDURLRequestAuthRetryDelegate, CKDFlowControllable>
+@interface CKDOperation : NSOperation <CKDURLRequestMetricsDelegate, CKDURLRequestAuthRetryDelegate, CKThrottlingCriteria, CKDFlowControllable>
 {
     unsigned long long _state;
     NSObject<OS_os_activity> *_osActivity;
@@ -22,11 +22,12 @@ __attribute__((visibility("hidden")))
     _Bool _isExecuting;
     _Bool _useEncryption;
     _Bool _useClearAssetEncryption;
-    _Bool _isProxyOperation;
+    _Bool _isLongLivedCallbackRelayOperation;
     _Bool _shouldPipelineFetchAllChangesRequests;
     _Bool _didAttemptDugongKeyRoll;
     _Atomic int _pcsWaitCount;
     CKDURLRequest *_request;
+    id <CKOperationCallbacks> _clientOperationCallbackProxy;
     NSDate *_startDate;
     CKDOperation *_parentOperation;
     CKDClientContext *_context;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 
 + (long long)isPredominatelyDownload;
 + (id)_globalOperationCallbackQueueForQOS:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didAttemptDugongKeyRoll; // @synthesize didAttemptDugongKeyRoll=_didAttemptDugongKeyRoll;
 @property(nonatomic) _Atomic int pcsWaitCount; // @synthesize pcsWaitCount=_pcsWaitCount;
 @property(retain, nonatomic) NSString *clientSuppliedDeviceIdentifier; // @synthesize clientSuppliedDeviceIdentifier=_clientSuppliedDeviceIdentifier;
@@ -66,7 +68,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(nonatomic) _Bool shouldPipelineFetchAllChangesRequests; // @synthesize shouldPipelineFetchAllChangesRequests=_shouldPipelineFetchAllChangesRequests;
-@property(readonly, nonatomic) _Bool isProxyOperation; // @synthesize isProxyOperation=_isProxyOperation;
+@property(readonly, nonatomic) _Bool isLongLivedCallbackRelayOperation; // @synthesize isLongLivedCallbackRelayOperation=_isLongLivedCallbackRelayOperation;
 @property(nonatomic) _Bool useClearAssetEncryption; // @synthesize useClearAssetEncryption=_useClearAssetEncryption;
 @property(nonatomic) _Bool useEncryption; // @synthesize useEncryption=_useEncryption;
 @property(nonatomic) __weak CKDClientProxy *proxy; // @synthesize proxy=_proxy;
@@ -75,7 +77,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(nonatomic) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
 @property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
-- (void).cxx_destruct;
+- (int)operationType;
 - (id)analyticsPayload;
 - (id)dugongKeyRollAnalyticsPayloadWithError:(id)arg1;
 - (id)baseOperationAndErrorInfoCoreAnalyticsPayloadWithError:(id)arg1;
@@ -86,15 +88,15 @@ __attribute__((visibility("hidden")))
 - (id)CKStatusReportProperties;
 - (id)_startDateString;
 - (id)_runDurationString;
-@property(readonly, nonatomic) CKOperationResult *operationResult;
-- (void)fillOutOperationResult:(id)arg1;
-- (Class)operationResultClass;
+@property(readonly, nonatomic) CKOperationMetrics *operationMetrics;
 - (void)requestDidEndWaitingForUserAuth:(id)arg1;
 - (void)requestDidBeginWaitingForUserAuth:(id)arg1;
 - (void)request:(id)arg1 didFinishWithMetrics:(id)arg2 w3cNavigationTiming:(id)arg3;
 - (void)configureRequest:(id)arg1;
 @property(retain, nonatomic) CKDURLRequest *request; // @synthesize request=_request;
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) id <CKOperationCallbacks> clientOperationCallbackProxy; // @synthesize clientOperationCallbackProxy=_clientOperationCallbackProxy;
+@property(readonly, nonatomic) _Bool expectDelayBeforeRequestBegins;
 @property(readonly, nonatomic) _Bool usesBackgroundSession;
 - (_Bool)isConcurrent;
 - (void)setQualityOfService:(long long)arg1;
@@ -117,7 +119,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 @property(nonatomic) unsigned long long state;
 - (void)cancel;
-- (_Bool)isTopLevelDaemonOperationForMetrics;
+- (_Bool)isTopLevelDaemonOperation;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
@@ -144,8 +146,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *operationGroupQuantityNumber;
 @property(readonly, nonatomic) NSString *operationGroupName;
 @property(readonly, nonatomic) NSString *operationGroupID;
+@property(readonly, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass;
 @property(readonly, nonatomic) _Bool isCloudKitSupportOperation;
-@property(readonly, nonatomic) _Bool shouldSkipZonePCSUpdate;
 - (id)additionalRequestHTTPHeaders;
 @property(readonly, nonatomic) double timeoutIntervalForResource;
 @property(readonly, nonatomic) double timeoutIntervalForRequest;
@@ -158,13 +160,17 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool automaticallyRetryNetworkFailures;
 @property(readonly, nonatomic) NSString *authPromptReason;
 @property(readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
+- (_Bool)checkAndClearUnitTestOverrides:(id)arg1;
+@property(readonly, nonatomic) NSMutableDictionary *unitTestOverrides;
 @property(readonly, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions;
 @property(readonly, nonatomic) _Bool isLongLived;
 @property(readonly, nonatomic) NSString *operationID;
+- (id)containerID;
 @property(readonly, nonatomic) unsigned long long resolvedDiscretionaryNetworkBehavior;
 @property(readonly, nonatomic) _Bool resolvedAutomaticallyRetryNetworkFailures;
 @property(readonly, nonatomic) _Bool allowsPowerNapScheduling;
-@property(readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifierForNetworkAttribution;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifierForContainerAccess;
 @property(readonly, nonatomic) _Bool allowsCellularAccess;
 @property(readonly, nonatomic) NSString *deviceIdentifier;
 - (id)createInactiveConcurrentQueue;

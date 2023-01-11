@@ -6,7 +6,6 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Silex/STScrollViewDelegate-Protocol.h>
 #import <Silex/SXAdControllerPresentationDelegate-Protocol.h>
 #import <Silex/SXComponentHosting-Protocol.h>
 #import <Silex/SXContextMenuManagerDelegate-Protocol.h>
@@ -16,14 +15,15 @@
 #import <Silex/SXPresentationDelegate-Protocol.h>
 #import <Silex/SXPresentationEnvironment-Protocol.h>
 #import <Silex/SXScrollPositionRestoring-Protocol.h>
+#import <Silex/SXScrollViewDelegate-Protocol.h>
 #import <Silex/SXTangierControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSOrderedSet, NSString, SXComponentAnimationController, SXComponentBehaviorController, SXComponentView, SXContext, SXDocumentProvider, SXFontIndex, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXScrollPosition, SXTangierController, SXVideoPlayerViewControllerManager, SXViewControllerPresentingManager, SXViewport, SXViewportDebugger, UIScrollView, UITraitCollection;
+@class NSMutableArray, NSOrderedSet, NSString, SXComponentAnimationController, SXComponentBehaviorController, SXComponentView, SXContext, SXDocumentProvider, SXFontIndex, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXScrollPosition, SXTangierController, SXVideoPlayerViewControllerManager, SXViewControllerPresentingManager, SXViewport, SXViewportDebugger, UIColor, UIResponder, UIScrollView, UITraitCollection;
 @protocol SXAdControllerContainer, SXAdDocumentStateManager, SXAnalyticsReportingContainer, SXAppStateMonitor, SXComponentController, SXComponentInteractionManager, SXContextMenuManager, SXDOMObjectProviding, SXDocumentControllerContainer, SXDocumentSectionBlueprint, SXDocumentSectionManager, SXDocumentStyleRenderer, SXFormatInteractor, SXMediaSharingPolicyProvider, SXPresentationAttributesManager, SXPresentationDelegateContainer, SXResourceDataSourceContainer, SXScrollPositionManager, SXScrollReporting, SXScrollViewControllerDelegate, SXTextSelectionManager, SXTransitionDataSourceProvider, UIViewControllerPreviewing;
 
-@interface SXScrollViewController : UIViewController <SXFormatInteractorDelegate, SXDocumentSectionHosting, SXPresentationDelegate, STScrollViewDelegate, SXComponentHosting, UIGestureRecognizerDelegate, SXTangierControllerDelegate, SXViewportChangeListener, SXAdControllerPresentationDelegate, SXContextMenuManagerDelegate, SXPresentationEnvironment, SXKeyboardSupport, SXScrollPositionRestoring>
+@interface SXScrollViewController : UIViewController <SXFormatInteractorDelegate, SXDocumentSectionHosting, SXPresentationDelegate, SXScrollViewDelegate, SXComponentHosting, UIGestureRecognizerDelegate, SXTangierControllerDelegate, SXViewportChangeListener, SXAdControllerPresentationDelegate, SXContextMenuManagerDelegate, SXPresentationEnvironment, SXKeyboardSupport, SXScrollPositionRestoring>
 {
     _Bool _restoreScrollPositionOnNextLayout;
     _Bool _isPreviewing;
@@ -63,6 +63,7 @@
     SXFullscreenCanvasViewController *_fullscreenCanvasViewController;
     SXFullscreenCanvasController *_currentCanvasController;
     SXScrollPosition *_restoredScrollPosition;
+    SXScrollPosition *_previouslyRestoredScrollPosition;
     NSOrderedSet *_snapLines;
     id <SXDocumentStyleRenderer> _documentStyleRenderer;
     SXTangierController *_tangierController;
@@ -77,6 +78,7 @@
     id <SXDOMObjectProviding> _DOMObjectProvider;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property(nonatomic) _Bool transitioning; // @synthesize transitioning=_transitioning;
 @property(nonatomic) double contentOverlayTopOffset; // @synthesize contentOverlayTopOffset=_contentOverlayTopOffset;
@@ -92,6 +94,7 @@
 @property(readonly, nonatomic) id <SXDocumentStyleRenderer> documentStyleRenderer; // @synthesize documentStyleRenderer=_documentStyleRenderer;
 @property(retain, nonatomic) NSOrderedSet *snapLines; // @synthesize snapLines=_snapLines;
 @property(nonatomic) _Bool restoreScrollPositionOnNextLayout; // @synthesize restoreScrollPositionOnNextLayout=_restoreScrollPositionOnNextLayout;
+@property(retain, nonatomic) SXScrollPosition *previouslyRestoredScrollPosition; // @synthesize previouslyRestoredScrollPosition=_previouslyRestoredScrollPosition;
 @property(retain, nonatomic) SXScrollPosition *restoredScrollPosition; // @synthesize restoredScrollPosition=_restoredScrollPosition;
 @property(retain, nonatomic) SXFullscreenCanvasController *currentCanvasController; // @synthesize currentCanvasController=_currentCanvasController;
 @property(retain, nonatomic) SXFullscreenCanvasViewController *fullscreenCanvasViewController; // @synthesize fullscreenCanvasViewController=_fullscreenCanvasViewController;
@@ -124,9 +127,6 @@
 @property(readonly, nonatomic) id <SXAdDocumentStateManager> adDocumentStateManager; // @synthesize adDocumentStateManager=_adDocumentStateManager;
 @property(readonly, nonatomic) SXFullscreenVideoPlaybackManager *fullscreenVideoPlaybackManager; // @synthesize fullscreenVideoPlaybackManager=_fullscreenVideoPlaybackManager;
 @property(readonly, nonatomic) SXMediaPlaybackController *mediaPlaybackController; // @synthesize mediaPlaybackController=_mediaPlaybackController;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsets;
-@property(readonly, nonatomic) struct CGSize viewportSize;
 - (id)canvasViewController;
 - (id)interactiveCanvasController;
 - (_Bool)isValidBlueprintForCurrentSize:(id)arg1;
@@ -153,7 +153,9 @@
 - (void)scrollToRect:(struct CGRect)arg1 animated:(_Bool)arg2;
 - (_Bool)isScrolling;
 - (void)dismissFullscreenCanvasForComponent:(id)arg1;
+- (void)willDismissFullscreenCanvasForComponent:(id)arg1;
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 canvasController:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)willReturnToFullscreenForComponent:(id)arg1;
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)removeInteractivityFocusForComponent:(id)arg1;
 - (_Bool)addInteractivityFocusForComponent:(id)arg1;
@@ -169,6 +171,7 @@
 - (id)scrollPositionForComponentViews:(id)arg1;
 - (id)scrollPosition;
 - (id)headlineAccessibilityElement;
+@property(nonatomic) _Bool textSelectionEnabled;
 - (id)videoComponentViewForVideoPlayerViewController:(id)arg1;
 - (struct CGRect)frameOfComponentWithVideoPlayerViewController:(id)arg1;
 @property(readonly, nonatomic) _Bool isPresentingFullscreenCanvas;
@@ -179,18 +182,26 @@
 - (void)displayContentsAfterLayoutWithInteractor:(id)arg1;
 - (void)hideContentsForLayoutWithInteractor:(id)arg1;
 - (void)interactor:(id)arg1 didIntegrateBlueprint:(id)arg2;
+@property(readonly, nonatomic) UIColor *documentBackgroundColor;
 - (void)interactor:(id)arg1 willIntegrateBlueprint:(id)arg2;
 - (void)interactor:(id)arg1 willLayoutWithOptions:(id)arg2;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (id)sectionHostingView;
 - (id)sectionHostingViewController;
+@property(readonly, nonatomic) UITraitCollection *presentationTraitCollection;
+@property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsets;
+@property(readonly, nonatomic) struct CGSize viewportSize;
 - (void)updateStickyHeaders;
 - (void)applyContentOverlayBlueprint:(id)arg1 topOffset:(double)arg2;
 - (void)applyFooterBlueprint:(id)arg1;
 - (void)applyHeaderBlueprint:(id)arg1;
+@property(readonly, nonatomic) UIResponder *responder;
+- (_Bool)resignFirstResponder;
+- (_Bool)becomeFirstResponder;
 - (void)dealloc;
 - (void)assistiveTechnologyStatusDidChange:(id)arg1;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
+- (void)screenTraitCollectionDidChange:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
@@ -212,7 +223,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) UITraitCollection *traitCollection;
 @property(readonly, nonatomic) unsigned long long viewingLocation;
 
 @end

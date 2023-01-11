@@ -11,6 +11,11 @@
 
 @protocol PGGraphEvent <NSObject>
 @property(readonly) PGGraphHighlightGroupNode *highlightGroupNode;
+@property(readonly) _Bool isSmartInteresting;
+@property(readonly) _Bool isInterestingWithAlternateJunking;
+@property(readonly) _Bool isInteresting;
+@property(readonly) double timestampUTCEnd;
+@property(readonly) double timestampUTCStart;
 @property(readonly) _Bool petIsPresent;
 @property(readonly) _Bool babyIsPresent;
 @property(readonly) _Bool isTrip;
@@ -22,6 +27,7 @@
 @property(readonly) NSDate *localStartDate;
 @property(readonly) double contentScore;
 @property(readonly) NSString *UUID;
+@property(readonly) NSString *name;
 - (NSDictionary *)debugDictionary;
 - (PGGraphNode<PGGraphRelatableEvent> *)relatableEvent;
 - (id <PGEventEnrichment>)enrichableEvent;

@@ -18,9 +18,10 @@
     CDUnknownBlockType _responseHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) MPStoreModelRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
+- (id)_URLLoadRequestWithRequest:(id)arg1 requestContext:(id)arg2;
 - (void)_tearDownTimeoutTimerSource;
 - (void)_handleTimeout;
 - (void)_executeURLLoadWithRequests:(id)arg1 storeBagDictionary:(id)arg2 requestContext:(id)arg3;

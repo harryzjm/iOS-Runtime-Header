@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) double elapsedTimeWithNoSpeech;
 @property(readonly, nonatomic) NSString *endpointerModelVersion;
 - (void)handleVoiceTriggerWithActivationInfo:(NSDictionary *)arg1;
+- (void)logFeaturesWithEvent:(NSString *)arg1 locale:(NSString *)arg2;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(void (^)(_Bool, NSArray *))arg2;
 - (void)updateEndpointerDelayedTrigger:(_Bool)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;

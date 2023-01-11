@@ -14,6 +14,7 @@
 + (id)photoAssetPresenceHeuristicReason;
 + (id)eligibleShareSheetTargets;
 + (id)mobileMessagesComposeBundleId;
++ (id)mobileSafariBundleId;
 + (id)shareSheetTargetBundleIdMail;
 + (id)shareSheetTargetBundleIdMessages;
 + (id)mobilePhoneOrFacetimeBundleId;

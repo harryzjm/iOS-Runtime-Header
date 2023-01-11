@@ -6,29 +6,31 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDSyncOperationManager, HMFExponentialBackoffTimer, NSMutableArray, NSString;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@interface HMDSyncOperationQueue : HMFObject
+@class HMDSyncOperationManager, HMFExponentialBackoffTimer, NSArray, NSMutableArray, NSString;
+
+@interface HMDSyncOperationQueue : HMFObject <HMFLogging>
 {
+    struct os_unfair_lock_s _lock;
+    NSMutableArray *_stagedOperations;
+    NSMutableArray *_waitingOperations;
     _Bool _hasExponentialBackoff;
     NSString *_name;
     HMFExponentialBackoffTimer *_backoffTimer;
     HMDSyncOperationManager *_manager;
-    NSMutableArray *_stagedOperations;
-    NSMutableArray *_waitingOperations;
     double _initialDelay;
     double _initialBackoff;
 }
 
++ (id)logCategory;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasExponentialBackoff; // @synthesize hasExponentialBackoff=_hasExponentialBackoff;
 @property(nonatomic) double initialBackoff; // @synthesize initialBackoff=_initialBackoff;
 @property(nonatomic) double initialDelay; // @synthesize initialDelay=_initialDelay;
-@property(retain, nonatomic) NSMutableArray *waitingOperations; // @synthesize waitingOperations=_waitingOperations;
-@property(retain, nonatomic) NSMutableArray *stagedOperations; // @synthesize stagedOperations=_stagedOperations;
 @property(nonatomic) __weak HMDSyncOperationManager *manager; // @synthesize manager=_manager;
 @property(retain, nonatomic) HMFExponentialBackoffTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)operationsToCancel;
 - (id)allOperations;
 - (id)nextOperation;
@@ -43,8 +45,19 @@
 - (void)_createBackoffTimer;
 @property(readonly, nonatomic) long long count;
 @property(readonly, nonatomic) long long countTotal;
-- (id)description;
+@property(readonly, copy) NSString *description;
+- (void)_removeWaitingOperation:(id)arg1;
+- (void)_addWaitingOperation:(id)arg1;
+- (void)_removeStagedOperation:(id)arg1;
+- (void)_addStagedOperation:(id)arg1;
+@property(readonly, copy) NSArray *waitingOperations;
+@property(readonly, copy) NSArray *stagedOperations;
 - (id)initName:(id)arg1 syncManager:(id)arg2 initialDelay:(double)arg3 initialBackoff:(double)arg4 hasBackoff:(_Bool)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

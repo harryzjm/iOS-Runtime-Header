@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VUIMPMediaLibrary;
+@class NSMutableDictionary, VUIMPMediaLibrary;
 
 __attribute__((visibility("hidden")))
 @interface VUIMPDeviceMediaLibrary
 {
+    _Bool _updatingRentalPlaybackStartDates;
     VUIMPMediaLibrary *_mediaLibrary;
+    NSMutableDictionary *_rentalPlaybackStartDatesToSave;
 }
 
 + (_Bool)_isInitialUpdateInProgress;
 + (_Bool)_isUpdateInProgress;
-@property(retain, nonatomic) VUIMPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool updatingRentalPlaybackStartDates; // @synthesize updatingRentalPlaybackStartDates=_updatingRentalPlaybackStartDates;
+@property(retain, nonatomic) NSMutableDictionary *rentalPlaybackStartDatesToSave; // @synthesize rentalPlaybackStartDatesToSave=_rentalPlaybackStartDatesToSave;
+@property(retain, nonatomic) VUIMPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 - (void)_handleApplicationWillResignActiveNotification:(id)arg1;
 - (void)_handleApplicationDidBecomeActiveNotification:(id)arg1;
 - (void)_handleMediaLibraryIsUpdateInProgressDidChangeNotification:(id)arg1;

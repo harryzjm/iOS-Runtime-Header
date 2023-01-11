@@ -15,6 +15,9 @@
 @property(readonly, nonatomic, getter=_balloonCalloutStyle) long long balloonCalloutStyle;
 
 @optional
+@property(readonly, nonatomic, getter=_balloonCalloutShouldCenterWhenOffscreen) _Bool balloonCalloutShouldCenterWhenOffscreen;
+@property(readonly, nonatomic, getter=_balloonCalloutShouldShowArrow) _Bool balloonCalloutShouldShowArrow;
+@property(readonly, nonatomic, getter=_balloonImageTintColor) UIColor *balloonImageTintColor;
 @property(readonly, nonatomic, getter=_balloonInnerStrokeColor) UIColor *balloonInnerStrokeColor;
 @property(readonly, nonatomic, getter=_balloonContentView) UIView *balloonContentView;
 - (_Bool)_balloonCalloutShouldOriginateFromSmallSize:(double *)arg1;

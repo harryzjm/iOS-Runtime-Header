@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)initWithContext:(long long)arg1 featuredPaymentNetworks:(id)arg2;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;

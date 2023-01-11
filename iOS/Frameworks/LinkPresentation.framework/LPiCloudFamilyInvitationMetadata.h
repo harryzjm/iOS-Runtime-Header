@@ -15,16 +15,20 @@
     NSString *_title;
     NSString *_subtitle;
     NSString *_action;
+    NSString *_kind;
     LPImage *_image;
+    LPImage *_icon;
 }
 
 + (id)keyPathsForValuesAffecting_dummyPropertyForObservation;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) LPImage *icon; // @synthesize icon=_icon;
 @property(retain, nonatomic) LPImage *image; // @synthesize image=_image;
+@property(copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property(copy, nonatomic) NSString *action; // @synthesize action=_action;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (void)_enumerateAsynchronousFields:(CDUnknownBlockType)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

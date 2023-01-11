@@ -13,7 +13,6 @@
 + (_Bool)is64bitCapable;
 + (id)copyNEHelperUUIDs;
 + (id)copyDNSUUIDs;
-+ (id)getApplicationNameFromPlugin:(id)arg1 userUID:(unsigned int)arg2;
 + (void)clearUUIDCache;
 + (id)copyUUIDsForExecutable:(id)arg1;
 + (id)copyUUIDsFromExecutable:(const char *)arg1;

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFOAuth2Account.h>
-
 @class NSString;
 
-@interface WFSlackAccount : WFOAuth2Account
+@interface WFSlackAccount
 {
     NSString *_username;
     NSString *_teamName;
@@ -22,9 +20,9 @@
 + (id)sessionManager;
 + (id)localizedServiceName;
 + (id)serviceID;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *teamName; // @synthesize teamName=_teamName;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
-- (void).cxx_destruct;
 - (void)refreshWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)localizedName;
 

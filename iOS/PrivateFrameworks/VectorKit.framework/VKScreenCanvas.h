@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ARSession, VKCamera, VKCameraController;
+@class ARSession, VKCameraController;
 @protocol MDMapControllerDelegate, MDRenderTarget;
 
 __attribute__((visibility("hidden")))
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     struct RunLoopController *_runLoopController;
     struct AnimationRunner *_animationRunner;
     shared_ptr_e963992e _taskContext;
-    VKCamera *_camera;
+    _retain_ptr_c0a21da9 _camera;
     id <MDRenderTarget> _displayTarget;
     _Bool _userIsGesturing;
     VKCameraController *_cameraController;
@@ -27,11 +27,12 @@ __attribute__((visibility("hidden")))
         CDUnknownFunctionPointerType *;
         shared_ptr_e963992e;
         struct unique_ptr<md::PassList, std::__1::default_delete<md::PassList>>;
-        struct unique_ptr<md::RenderTargetRegistry, std::__1::default_delete<md::RenderTargetRegistry>>;
+        struct unique_ptr<md::FrameGraphResourceRegistry, std::__1::default_delete<md::FrameGraphResourceRegistry>>;
         struct vector<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>, std::__1::allocator<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>>>;
         struct linear_map<md::CommandBufferLocation, md::RenderLayer *, std::__1::equal_to<md::CommandBufferLocation>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>, std::__1::vector<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>>>;
         struct RunLoopController *;
         struct MapEngine *;
+        id;
     } *_mapRenderer;
     struct LayoutContext *_layoutContext;
     id <MDMapControllerDelegate> _mapDelegate;
@@ -39,12 +40,12 @@ __attribute__((visibility("hidden")))
     ARSession *_arSession;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct MapEngine *mapEngine; // @synthesize mapEngine=_mapEngine;
 @property(nonatomic) id <MDMapControllerDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
 @property(nonatomic) struct VKEdgeInsets fullyOccludedEdgeInsets; // @synthesize fullyOccludedEdgeInsets=_fullyOccludedEdgeInsets;
-@property(readonly, nonatomic) VKCamera *camera; // @synthesize camera=_camera;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+@property(nonatomic) _retain_ptr_c0a21da9 camera; // @synthesize camera=_camera;
 - (long long)tileSize;
 - (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
@@ -62,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)updateCameraForFrameResize;
 - (void)didPresent;
 @property(nonatomic) struct VKEdgeInsets edgeInsets;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 - (_Bool)wantsTimerTick;
 - (void)dealloc;
 - (id)initWithMapEngine:(struct MapEngine *)arg1 inBackground:(_Bool)arg2;

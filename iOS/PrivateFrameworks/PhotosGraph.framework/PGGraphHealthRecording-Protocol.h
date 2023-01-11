@@ -9,13 +9,11 @@
 @class NSDate;
 
 @protocol PGGraphHealthRecording <NSObject>
-- (void)recordNumberOfHighlightEnrichmentTimeouts:(unsigned long long)arg1;
-- (void)recordNumberOfHighlightEnrichmentsCancelled:(unsigned long long)arg1;
+- (void)recordHighlightEnrichmentsCancellation;
 - (void)recordTimeBetweenHighlightEnrichmentsWithLastEnrichmentDate:(NSDate *)arg1 currentEnrichmentDate:(NSDate *)arg2;
-- (void)recordNumberOfGraphRebuildsCancelled:(unsigned long long)arg1;
-- (void)recordNumberOfUnscheduledRebuilds:(unsigned long long)arg1;
-- (void)recordNumberOfGraphRebuildTimeouts:(unsigned long long)arg1;
-- (void)recordNumberOfGraphRebuildFailures:(unsigned long long)arg1;
+- (void)recordGraphRebuildsCancellation;
+- (void)recordGraphRebuildTimeout;
+- (void)recordGraphRebuildFailure;
 - (void)recordTimeBetweenGraphRebuildsWithLastRebuildDate:(NSDate *)arg1 currentRebuildDate:(NSDate *)arg2;
 @end
 

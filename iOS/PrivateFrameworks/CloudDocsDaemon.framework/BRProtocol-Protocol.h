@@ -11,33 +11,15 @@
 
 @protocol BRProtocol <CKXPCShareDaemon>
 - (void)scheduleDeepScanForContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_removePackageExtension:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_addPackageExtension:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_t_extractMetadataForAllContainersWithReply:(void (^)(NSError *))arg1;
+- (void)_t_getEntitledContainerIDsForBundleID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_t_getEntitlementsForBundleID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)lookupMinFileSizeForThumbnailTransferWithReply:(void (^)(NSNumber *, NSError *))arg1;
 - (void)lookupExcludedExtensionsForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
 - (void)lookupExcludedFilenamesForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
-- (void)_t_getPerfValuesWithReply:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)_t_isAutomaticallyEvictable:(NSURL *)arg1 reply:(void (^)(NSNumber *, NSError *))arg2;
-- (void)_t_copyItemIDFromItemAtURL:(NSURL *)arg1 toItemAtURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)_t_migrateAllZonesToClouddocsWithReset:(_Bool)arg1 onlyPrepare:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
-- (void)_t_getPCSChainStateAtURL:(NSURL *)arg1 reply:(void (^)(unsigned int, NSError *))arg2;
-- (void)_t_noopWithReply:(void (^)(NSError *))arg1;
-- (void)_t_waitForLostScanToFinishWithReply:(void (^)(NSError *))arg1;
-- (void)_t_copyGlobalProgressInfoWithReply:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)_t_resumeDownloadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_suspendDownloadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resumeUploadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_suspendUploadsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resetAllZonesWithReply:(void (^)(NSError *))arg1;
-- (void)_t_resetZoneForContainerID:(NSString *)arg1 waitUntilIdle:(_Bool)arg2 includingSharedZones:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
-- (void)_t_setFSEventProcessingState:(_Bool)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resumeSyncUpOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_pauseSyncUpOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_resumeSyncDownOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_pauseSyncDownOfContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_removeAllSyncUpBlockingForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_blockSyncForContainerID:(NSString *)arg1 withPendingUpgradeToOSName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)_t_blockSyncUpOfItemWithID:(NSString *)arg1 containerID:(NSString *)arg2 withPendingUpgradeToOSName:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)getURLForItemIdentifier:(NSString *)arg1 reply:(void (^)(NSURL *, NSError *))arg2;
+- (void)getShareOptionsOfItemIdentifier:(NSString *)arg1 reply:(void (^)(_Bool, _Bool, _Bool, NSString *, NSError *))arg2;
+- (void)checkIfItemIsShareableWithInode:(unsigned long long)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(NSURL *)arg1 toNewParent:(NSURL *)arg2 reply:(void (^)(unsigned short, NSError *))arg3;
 - (void)moveBRSecurityBookmarkAtURL:(NSURL *)arg1 toURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)refreshSharingStateForItemIdentifier:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
@@ -48,6 +30,7 @@
 - (void)trashItemAtURL:(NSURL *)arg1 reply:(void (^)(NSURL *, NSError *))arg2;
 - (void)removeItemFromDisk:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)presentAcceptDialogsForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)getCreatorNameComponentsForURL:(NSURL *)arg1 reply:(void (^)(NSPersonNameComponents *, NSError *))arg2;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareURLForShare:(CKShare *)arg2 appName:(NSString *)arg3 reply:(void (^)(CKShare *, NSURL *, NSError *))arg4;
 - (void)copyBulkShareIDsAtURLs:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareInfoAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSString *, NSError *))arg3;
@@ -63,7 +46,7 @@
 - (void)copyCurrentUserNameAndEmailWithReply:(void (^)(NSPersonNameComponents *, NSString *, NSError *))arg1;
 - (void)copyCurrentUserIdentifierWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toEvictItemAtURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCleanShareSubitemsAtURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toProcessSubitemsAtURL:(NSURL *)arg2 maxSubsharesFailures:(unsigned long long)arg3 processType:(unsigned long long)arg4 reply:(void (^)(NSError *))arg5;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toPrepFolderForSharingAt:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toUploadAllFilesInContainer:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyAvailableQuotaWithReply:(void (^)(NSNumber *, NSError *))arg2;
@@ -130,6 +113,7 @@
 - (void)getContainerForURL:(NSURL *)arg1 reply:(void (^)(BRContainer *, NSError *))arg2;
 - (void)getContainersByID:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)createContainerWithID:(NSString *)arg1 ownerName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)launchTelemetryConsistencyChecksAtURL:(NSURL *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)waitForFileSystemChangeProcessingWithReply:(void (^)(void))arg1;
 - (void)readerThrottleBackoffForDocumentAtPath:(NSString *)arg1 containerID:(NSString *)arg2 reply:(void (^)(double, NSError *))arg3;
 - (void)dropSpotlightIndexWithReply:(void (^)(NSError *))arg1;
@@ -138,7 +122,6 @@
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(void (^)(NSDictionary *, NSNumber *, NSError *))arg1;
 - (void)iWorkForceSyncContainerID:(NSString *)arg1 ownedByMe:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
 - (void)forceSyncContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)_t_waitUntilIdle:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)forceSyncZoneHealthWithBarrierWithTimeout:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;
 - (void)forceSyncWithBarrierContainerID:(NSString *)arg1 timeout:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)zoneNameForContainer:(NSString *)arg1 reply:(void (^)(NSString *, NSError *))arg2;

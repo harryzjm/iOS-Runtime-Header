@@ -20,7 +20,9 @@
 - (id)domain;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
-- (id)init;
+- (void)setAudioRoute:(long long)arg1;
+@property(readonly, nonatomic) long long audioRoute;
+- (id)initWithAudioRoute:(long long)arg1;
 - (void)_setMetadata:(id)arg1;
 - (id)_metadata;
 - (id)_typedBackingStore;

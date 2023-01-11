@@ -6,11 +6,13 @@
 
 #import <PersistentConnection/NSObject-Protocol.h>
 
-@class CTDataConnectionStatus, CTDataSettings, CTDataStatus, CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSArray;
+@class CTDataConnectionStatus, CTDataSettings, CTDataStatus, CTServiceDescriptor, CTServiceDisconnectionStatus, CTTetheringStatus, CTXPCServiceSubscriptionContext, NSArray;
 
 @protocol CoreTelephonyClientDataDelegate <NSObject>
 
 @optional
+- (void)serviceDisconnection:(CTXPCServiceSubscriptionContext *)arg1 status:(CTServiceDisconnectionStatus *)arg2;
+- (void)tetheringStatus:(CTTetheringStatus *)arg1;
 - (void)internetConnectionAvailability:(_Bool)arg1;
 - (void)internetDataStatus:(CTDataStatus *)arg1;
 - (void)internetConnectionActivationError:(int)arg1;

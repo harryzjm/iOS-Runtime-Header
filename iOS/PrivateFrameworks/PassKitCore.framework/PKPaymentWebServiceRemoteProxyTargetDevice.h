@@ -19,14 +19,15 @@
     NSXPCConnection *_connection;
 }
 
-@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)deleteApplePayTrustKeyWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)createApplePayTrustKeyWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)applePayTrustKeyForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)invalidateRemoteProxyTargetDevice;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
+- (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)passOwnershipTokenWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
@@ -38,10 +39,12 @@
 - (void)appleAccountInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setDefaultPaymentPassUniqueIdentifier:(id)arg1;
+- (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deviceMetadataWithFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (void)supportedFeatureIdentifiersForAccountProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportedFeatureIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportsAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportsPeerPaymentRegistrationWithCompletion:(CDUnknownBlockType)arg1;
@@ -62,10 +65,11 @@
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningUserInterfaceDidDisappear;
 - (void)noteProvisioningUserInterfaceDidAppear;
+- (void)registrationSupportedInCurrentRegionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)paymentSupportedInCurrentRegion:(CDUnknownBlockType)arg1;
 - (void)didRegisterWithRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
 - (void)deleteApplicationWithAID:(id)arg1;
-- (void)getProvisioningDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getProvisioningDataIncludingDeviceMetadata:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;

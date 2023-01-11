@@ -10,17 +10,21 @@
 @protocol ICLegacyFolder;
 
 @protocol ICLegacyAccount <NSObject>
-- (NSString *)localizedAttachmentsNotSupportedReason;
-- (_Bool)preventMovingNotesToOtherAccounts;
-- (_Bool)isManaged;
-- (_Bool)supportsAttachments;
-- (NSManagedObjectID *)objectID;
-- (NSManagedObjectContext *)managedObjectContext;
-- (id <ICLegacyFolder>)defaultFolder;
-- (NSSet *)folders;
-- (NSString *)emailAddress;
-- (NSString *)accountIdentifier;
-- (NSString *)objectIdentifier;
-- (NSString *)name;
+@property(readonly, copy, nonatomic) NSString *localizedAttachmentsNotSupportedReason;
+@property(readonly, nonatomic) _Bool preventMovingNotesToOtherAccounts;
+@property(readonly, nonatomic) _Bool isManaged;
+@property(readonly, nonatomic) _Bool supportsAttachments;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(readonly, nonatomic) id <ICLegacyFolder> defaultFolder;
+@property(readonly, nonatomic) NSSet *folders;
+@property(readonly, copy, nonatomic) NSString *emailAddress;
+@property(readonly, nonatomic) long long legacyAccountType;
+@property(readonly, copy, nonatomic) NSString *accountIdentifier;
+@property(readonly, copy, nonatomic) NSString *objectIdentifier;
+@property(readonly, copy, nonatomic) NSString *allItemsFolderLocalizedTitle;
+@property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, nonatomic) _Bool didChooseToMigrate;
+@property(readonly, nonatomic) _Bool enabled;
 @end
 

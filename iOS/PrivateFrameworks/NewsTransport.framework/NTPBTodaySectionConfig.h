@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBDiscoverMoreVideosInfo, NTPBForYouTodaySectionSpecificConfig, NTPBItemsTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig;
+@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBForYouTodaySectionSpecificConfig, NTPBItemsTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig, NTPBTagTodaySectionSpecificConfig;
 
 @interface NTPBTodaySectionConfig : PBCodable <NSCopying>
 {
@@ -28,32 +28,33 @@
     unsigned long long _seenArticlesMinimumTimeSinceFirstSeenToFilter;
     NTPBArticleIDsTodaySectionSpecificConfig *_articleIDsTodaySectionConfig;
     NTPBArticleListTodaySectionSpecificConfig *_articleListTodaySectionConfig;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSString *_backgroundGradientColor;
     NSString *_compactName;
-    NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NTPBForYouTodaySectionSpecificConfig *_forYouTodaySectionConfig;
     NSString *_groupActionTitle;
     NSString *_groupActionUrl;
+    NSString *_groupNameActionUrl;
     NSString *_identifier;
     NTPBItemsTodaySectionSpecificConfig *_itemsTodaySectionConfig;
-    int _leadingCellPromotionPolicy;
+    NSString *_mutingTagID;
     NSString *_name;
-    NSString *_nameColor;
+    NSString *_nameColorDark;
+    NSString *_nameColorLight;
     NSString *_personalizationFeatureID;
     NTPBPersonalizedSectionPresenceConfig *_personalizedPresenceConfig;
     NSString *_personalizedPresenceFeatureID;
     NTPBPersonalizedTodaySectionSpecificConfig *_personalizedTodaySectionConfig;
+    int _promotionCriterion;
     int _readArticlesFilterMethod;
     NSString *_referralBarName;
     int _sectionType;
     int _seenArticlesFilterMethod;
-    _Bool _displaysAsVideoPlaylist;
+    NTPBTagTodaySectionSpecificConfig *_tagTodaySectionConfig;
     _Bool _glanceable;
-    _Bool _openVideoPlaylistInApp;
     _Bool _presenceDeterminedByPersonalization;
     _Bool _shownInFavoritesOnlyMode;
-    _Bool _useNameColorInWidget;
-    _Bool _videoPlaysMutedByDefault;
     struct {
         unsigned int cachedResultCutoffTime:1;
         unsigned int fallbackOrder:1;
@@ -64,23 +65,22 @@
         unsigned int personalizedPresenceFeatureClickPrior:1;
         unsigned int personalizedPresenceFeatureImpressionPrior:1;
         unsigned int seenArticlesMinimumTimeSinceFirstSeenToFilter:1;
-        unsigned int leadingCellPromotionPolicy:1;
+        unsigned int promotionCriterion:1;
         unsigned int readArticlesFilterMethod:1;
         unsigned int sectionType:1;
         unsigned int seenArticlesFilterMethod:1;
-        unsigned int displaysAsVideoPlaylist:1;
         unsigned int glanceable:1;
-        unsigned int openVideoPlaylistInApp:1;
         unsigned int presenceDeterminedByPersonalization:1;
         unsigned int shownInFavoritesOnlyMode:1;
-        unsigned int useNameColorInWidget:1;
-        unsigned int videoPlaysMutedByDefault:1;
     } _has;
 }
 
-@property(retain, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
-@property(nonatomic) _Bool openVideoPlaylistInApp; // @synthesize openVideoPlaylistInApp=_openVideoPlaylistInApp;
-@property(nonatomic) _Bool useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
+@property(retain, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property(retain, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
+@property(retain, nonatomic) NSString *groupNameActionUrl; // @synthesize groupNameActionUrl=_groupNameActionUrl;
+@property(retain, nonatomic) NSString *mutingTagID; // @synthesize mutingTagID=_mutingTagID;
+@property(retain, nonatomic) NTPBTagTodaySectionSpecificConfig *tagTodaySectionConfig; // @synthesize tagTodaySectionConfig=_tagTodaySectionConfig;
+@property(retain, nonatomic) NSString *nameColorDark; // @synthesize nameColorDark=_nameColorDark;
 @property(retain, nonatomic) NTPBItemsTodaySectionSpecificConfig *itemsTodaySectionConfig; // @synthesize itemsTodaySectionConfig=_itemsTodaySectionConfig;
 @property(retain, nonatomic) NSString *groupActionUrl; // @synthesize groupActionUrl=_groupActionUrl;
 @property(retain, nonatomic) NSString *groupActionTitle; // @synthesize groupActionTitle=_groupActionTitle;
@@ -89,16 +89,14 @@
 @property(nonatomic) unsigned long long personalizedPresenceFeatureImpressionPrior; // @synthesize personalizedPresenceFeatureImpressionPrior=_personalizedPresenceFeatureImpressionPrior;
 @property(retain, nonatomic) NSString *personalizedPresenceFeatureID; // @synthesize personalizedPresenceFeatureID=_personalizedPresenceFeatureID;
 @property(retain, nonatomic) NSString *compactName; // @synthesize compactName=_compactName;
-@property(nonatomic) _Bool videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 @property(nonatomic) _Bool glanceable; // @synthesize glanceable=_glanceable;
 @property(retain, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
 @property(retain, nonatomic) NTPBPersonalizedSectionPresenceConfig *personalizedPresenceConfig; // @synthesize personalizedPresenceConfig=_personalizedPresenceConfig;
 @property(nonatomic) _Bool presenceDeterminedByPersonalization; // @synthesize presenceDeterminedByPersonalization=_presenceDeterminedByPersonalization;
-@property(nonatomic) _Bool displaysAsVideoPlaylist; // @synthesize displaysAsVideoPlaylist=_displaysAsVideoPlaylist;
 @property(retain, nonatomic) NSString *personalizationFeatureID; // @synthesize personalizationFeatureID=_personalizationFeatureID;
 @property(nonatomic) unsigned long long seenArticlesMinimumTimeSinceFirstSeenToFilter; // @synthesize seenArticlesMinimumTimeSinceFirstSeenToFilter=_seenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property(retain, nonatomic) NTPBPersonalizedTodaySectionSpecificConfig *personalizedTodaySectionConfig; // @synthesize personalizedTodaySectionConfig=_personalizedTodaySectionConfig;
-@property(retain, nonatomic) NSString *nameColor; // @synthesize nameColor=_nameColor;
+@property(retain, nonatomic) NSString *nameColorLight; // @synthesize nameColorLight=_nameColorLight;
 @property(nonatomic) _Bool shownInFavoritesOnlyMode; // @synthesize shownInFavoritesOnlyMode=_shownInFavoritesOnlyMode;
 @property(retain, nonatomic) NTPBArticleIDsTodaySectionSpecificConfig *articleIDsTodaySectionConfig; // @synthesize articleIDsTodaySectionConfig=_articleIDsTodaySectionConfig;
 @property(nonatomic) unsigned long long interSectionFilteringOptions; // @synthesize interSectionFilteringOptions=_interSectionFilteringOptions;
@@ -118,9 +116,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasDiscoverMoreVideosInfo;
-@property(nonatomic) _Bool hasOpenVideoPlaylistInApp;
-@property(nonatomic) _Bool hasUseNameColorInWidget;
+@property(readonly, nonatomic) _Bool hasBackgroundColorDark;
+@property(readonly, nonatomic) _Bool hasBackgroundColorLight;
+@property(readonly, nonatomic) _Bool hasGroupNameActionUrl;
+@property(readonly, nonatomic) _Bool hasMutingTagID;
+@property(readonly, nonatomic) _Bool hasTagTodaySectionConfig;
+@property(readonly, nonatomic) _Bool hasNameColorDark;
+@property(nonatomic) _Bool hasPromotionCriterion;
+@property(nonatomic) int promotionCriterion; // @synthesize promotionCriterion=_promotionCriterion;
 @property(readonly, nonatomic) _Bool hasItemsTodaySectionConfig;
 @property(readonly, nonatomic) _Bool hasGroupActionUrl;
 @property(readonly, nonatomic) _Bool hasGroupActionTitle;
@@ -129,9 +132,6 @@
 @property(nonatomic) _Bool hasPersonalizedPresenceFeatureImpressionPrior;
 @property(readonly, nonatomic) _Bool hasPersonalizedPresenceFeatureID;
 @property(readonly, nonatomic) _Bool hasCompactName;
-@property(nonatomic) _Bool hasVideoPlaysMutedByDefault;
-@property(nonatomic) _Bool hasLeadingCellPromotionPolicy;
-@property(nonatomic) int leadingCellPromotionPolicy; // @synthesize leadingCellPromotionPolicy=_leadingCellPromotionPolicy;
 @property(nonatomic) _Bool hasGlanceable;
 @property(readonly, nonatomic) _Bool hasBackgroundGradientColor;
 - (void)setQueueMemberships:(unsigned long long *)arg1 count:(unsigned long long)arg2;
@@ -142,11 +142,10 @@
 @property(readonly, nonatomic) unsigned long long queueMembershipsCount;
 @property(readonly, nonatomic) _Bool hasPersonalizedPresenceConfig;
 @property(nonatomic) _Bool hasPresenceDeterminedByPersonalization;
-@property(nonatomic) _Bool hasDisplaysAsVideoPlaylist;
 @property(readonly, nonatomic) _Bool hasPersonalizationFeatureID;
 @property(nonatomic) _Bool hasSeenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property(readonly, nonatomic) _Bool hasPersonalizedTodaySectionConfig;
-@property(readonly, nonatomic) _Bool hasNameColor;
+@property(readonly, nonatomic) _Bool hasNameColorLight;
 @property(nonatomic) _Bool hasShownInFavoritesOnlyMode;
 @property(readonly, nonatomic) _Bool hasArticleIDsTodaySectionConfig;
 @property(nonatomic) _Bool hasSeenArticlesFilterMethod;

@@ -12,9 +12,9 @@
     NSString *_merchantIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property(copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
-- (void).cxx_destruct;
 - (id)_performCardRegistration;
 - (id)performCardRegistration;
 - (id)initWithCountryCode:(id)arg1 merchantIdentifier:(id)arg2;

@@ -8,7 +8,6 @@
 
 @class NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface VUIMetricsPageEventData : NSObject
 {
     NSString *_pageId;
@@ -19,10 +18,10 @@ __attribute__((visibility("hidden")))
 + (id)createWithMetricsData:(id)arg1;
 + (id)createWithPageId:(id)arg1 andPageType:(id)arg2 andEventData:(id)arg3;
 + (id)createWithPageType:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *eventData; // @synthesize eventData=_eventData;
 @property(retain, nonatomic) NSString *pageType; // @synthesize pageType=_pageType;
 @property(retain, nonatomic) NSString *pageId; // @synthesize pageId=_pageId;
-- (void).cxx_destruct;
 - (id)generateMetricsDataDictionary;
 
 @end

@@ -6,17 +6,17 @@
 
 #import <ActionKit/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIColor, WFEnumerationParameter, WFVariableSubstitutableParameterState;
+@class NSArray, NSString, WFColor, WFEnumerationParameter, WFVariableSubstitutableParameterState;
 
 @protocol WFDynamicEnumerationDataSource <NSObject>
 - (NSString *)enumeration:(WFEnumerationParameter *)arg1 localizedLabelForPossibleState:(WFVariableSubstitutableParameterState *)arg2;
 
 @optional
-- (UIColor *)enumeration:(WFEnumerationParameter *)arg1 accessoryColorForPossibleState:(WFVariableSubstitutableParameterState *)arg2;
+- (WFColor *)enumeration:(WFEnumerationParameter *)arg1 accessoryColorForPossibleState:(WFVariableSubstitutableParameterState *)arg2;
 - (_Bool)enumerationAllowsMultipleValues:(WFEnumerationParameter *)arg1;
 - (void)loadDefaultSerializedRepresentationForEnumeration:(WFEnumerationParameter *)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (id)defaultSerializedRepresentationForEnumeration:(WFEnumerationParameter *)arg1;
-- (void)loadPossibleStatesForEnumeration:(WFEnumerationParameter *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)loadPossibleStatesForEnumeration:(WFEnumerationParameter *)arg1 searchTerm:(NSString *)arg2 completionHandler:(void (^)(INObjectCollection *, NSError *))arg3;
 - (NSArray *)possibleStatesForEnumeration:(WFEnumerationParameter *)arg1;
 @end
 

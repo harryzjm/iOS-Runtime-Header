@@ -7,16 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <PencilKit/PKPaletteHostingWindowScene-Protocol.h>
+#import <PencilKit/PKPaletteTapToRadarCommandDelegate-Protocol.h>
 #import <PencilKit/UIEditingOverlayInteractionWithView-Protocol.h>
+#import <PencilKit/UIInputResponderControllerVisibilityObserver-Protocol.h>
 #import <PencilKit/UIInteraction-Protocol.h>
+#import <PencilKit/_UISceneComponentProviding-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKPaletteHostView, UIView, UIWindowScene;
-@protocol PKPaletteViewDelegate;
+@class NSLayoutConstraint, NSString, PKDrawingPaletteView, PKPaletteHostView, UIScene, UIView, UIWindowScene;
+@protocol PKPaletteViewDelegate, PKPaletteViewInteractionDelegate;
 
-@interface PKPaletteViewInteraction : NSObject <UIEditingOverlayInteractionWithView, PKPaletteHostingWindowScene, UIInteraction>
+@interface PKPaletteViewInteraction : NSObject <UIEditingOverlayInteractionWithView, PKPaletteHostingWindowScene, UIInputResponderControllerVisibilityObserver, _UISceneComponentProviding, PKPaletteTapToRadarCommandDelegate, UIInteraction>
 {
-    _Bool _paletteDidHideForCanvasState;
+    UIScene *_scene;
+    id <PKPaletteViewInteractionDelegate> _delegate;
     PKPaletteHostView *_paletteHostView;
+    PKDrawingPaletteView *_paletteView;
     UIWindowScene *_windowScene;
     UIView *_view;
     NSLayoutConstraint *_paletteHostViewWidthConstraint;
@@ -29,7 +34,9 @@
 
 + (_Bool)isHostedWindow:(id)arg1;
 + (id)paletteViewInteractionForWindow:(id)arg1 windowScene:(id)arg2;
++ (id)existingPaletteViewInteractionForWindowScene:(id)arg1;
 + (id)paletteViewInteractionForCanvas:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect textEffectsWindowFrame; // @synthesize textEffectsWindowFrame=_textEffectsWindowFrame;
 @property(retain, nonatomic) NSLayoutConstraint *paletteHostViewLeftConstraint; // @synthesize paletteHostViewLeftConstraint=_paletteHostViewLeftConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *paletteHostViewTopConstraint; // @synthesize paletteHostViewTopConstraint=_paletteHostViewTopConstraint;
@@ -37,29 +44,41 @@
 @property(retain, nonatomic) NSLayoutConstraint *paletteHostViewWidthConstraint; // @synthesize paletteHostViewWidthConstraint=_paletteHostViewWidthConstraint;
 @property(nonatomic) struct CGRect sceneBounds; // @synthesize sceneBounds=_sceneBounds;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
-@property(nonatomic) _Bool paletteDidHideForCanvasState; // @synthesize paletteDidHideForCanvasState=_paletteDidHideForCanvasState;
 @property(nonatomic) __weak UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
+@property(retain, nonatomic) PKDrawingPaletteView *paletteView; // @synthesize paletteView=_paletteView;
 @property(retain, nonatomic) PKPaletteHostView *paletteHostView; // @synthesize paletteHostView=_paletteHostView;
-- (void).cxx_destruct;
-- (struct CGRect)paletteHostingWindowSceneBounds;
+@property(nonatomic) __weak id <PKPaletteViewInteractionDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)paletteTapToRadarCommandConfiguration:(id)arg1;
+@property(readonly, nonatomic) struct CGRect paletteHostingWindowSceneBounds;
 - (id)hostingWindow;
-- (void)_updatePaletteTraitCollection:(id)arg1;
 - (id)_traitCollectionForHostingWindow;
+- (_Bool)_isCompactHostedWindow;
+- (void)_updatePaletteTraitCollection:(id)arg1;
+- (void)_updatePaletteUserInterfaceStyle:(long long)arg1;
 - (void)_updatePaletteViewConstraints;
-- (void)_updatePaletteViewSize;
+- (void)_updateSceneBounds;
+- (void)_updateSceneWithBounds:(struct CGRect)arg1;
+- (struct CGRect)_sceneBoundsForUpdateWithFollowsHostingWindowOut:(_Bool *)arg1;
 - (void)editingOverlayContainerDidChangeToSceneBounds:(struct CGRect)arg1;
 - (id)_viewControllerForPalette;
 - (void)_updateForRotation:(id)arg1;
 - (void)_updateForWillRotate:(id)arg1;
-- (void)_hidePaletteForInactiveWindowScene:(id)arg1;
-- (void)_showPaletteForActiveWindowScene:(id)arg1;
-- (void)hidePaletteViewWithCompletion:(CDUnknownBlockType)arg1;
-- (void)showPaletteViewWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_sceneWillEnterForegroundNotification:(id)arg1;
+- (void)_sceneDidActivateNotification:(id)arg1;
+- (void)inputResponderController:(id)arg1 inputViewSetVisibilityDidChange:(_Bool)arg2 includedReset:(_Bool)arg3;
+- (_Bool)_shouldDeferPaletteVisibilityUpdate;
+- (void)hidePaletteViewAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setPaletteVisible:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)showPaletteViewAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic, getter=isPaletteVisible) _Bool paletteVisible;
-@property(nonatomic) __weak id <PKPaletteViewDelegate> delegate;
+@property(readonly, nonatomic, getter=isActive) _Bool active;
+@property(nonatomic) __weak id <PKPaletteViewDelegate> paletteViewDelegate;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;
 - (id)initWithWindowSize:(struct CGSize)arg1;
+- (void)_sceneWillInvalidate:(id)arg1;
+@property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene;
+- (id)initWithScene:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

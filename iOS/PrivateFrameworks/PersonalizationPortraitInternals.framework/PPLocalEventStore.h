@@ -8,21 +8,22 @@
 
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 
-@class PPEventCache, PPEventStorage, PPM2FeedbackPortraitRegistered, PPMFeedbackRegistered, _PASNotificationToken;
+@class PPEventCache, PPEventStorage, _PASNotificationToken;
 
 @interface PPLocalEventStore : NSObject <PPFeedbackAccepting>
 {
     PPEventCache *_eventCache;
     PPEventStorage *_storage;
     _PASNotificationToken *_assetUpdateNotificationToken;
-    PPMFeedbackRegistered *_feedbackTracker;
-    PPM2FeedbackPortraitRegistered *_feedbackTracker2;
 }
 
 + (id)defaultStore;
 - (void).cxx_destruct;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (id)tripEventsWithQuery:(id)arg1;
+- (id)highlightedEventsWithQuery:(id)arg1;
+- (id)suggestedEventsWithQuery:(id)arg1;
+- (id)scoredEventsWithQuery:(id)arg1;
 - (id)eventsFromDate:(id)arg1 toDate:(id)arg2;
 - (id)eventMetaDataFromDate:(id)arg1 toDate:(id)arg2;
 - (id)eventHighlightForEvent:(id)arg1 usingScorer:(id)arg2 date:(id)arg3 rankingOptions:(int)arg4 loadedFromEventKit:(_Bool *)arg5;

@@ -13,11 +13,13 @@
 @interface GEOLogMsgStatePlaceCard : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _possibleActions;
     CDStruct_95bda58d _unactionableUiElements;
     GEOPlaceActionDetails *_placeActionDetails;
     NSString *_placecardCategory;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _placecardType;
     _Bool _transitAdvisoryBanner;
     struct {
@@ -27,12 +29,7 @@
         unsigned int read_unactionableUiElements:1;
         unsigned int read_placeActionDetails:1;
         unsigned int read_placecardCategory:1;
-        unsigned int wrote_possibleActions:1;
-        unsigned int wrote_unactionableUiElements:1;
-        unsigned int wrote_placeActionDetails:1;
-        unsigned int wrote_placecardCategory:1;
-        unsigned int wrote_placecardType:1;
-        unsigned int wrote_transitAdvisoryBanner:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,6 +43,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasTransitAdvisoryBanner;
@@ -56,31 +56,27 @@
 @property(nonatomic) int placecardType;
 @property(retain, nonatomic) NSString *placecardCategory;
 @property(readonly, nonatomic) _Bool hasPlacecardCategory;
-- (void)_readPlacecardCategory;
 - (int)StringAsUnactionableUiElements:(id)arg1;
 - (id)unactionableUiElementsAsString:(int)arg1;
 - (void)setUnactionableUiElements:(int *)arg1 count:(unsigned long long)arg2;
 - (int)unactionableUiElementAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsUnactionableUiElement:(int)arg1;
 - (void)addUnactionableUiElement:(int)arg1;
 - (void)clearUnactionableUiElements;
 @property(readonly, nonatomic) int *unactionableUiElements;
 @property(readonly, nonatomic) unsigned long long unactionableUiElementsCount;
-- (void)_readUnactionableUiElements;
 - (int)StringAsPossibleActions:(id)arg1;
 - (id)possibleActionsAsString:(int)arg1;
 - (void)setPossibleActions:(int *)arg1 count:(unsigned long long)arg2;
 - (int)possibleActionAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsPossibleAction:(int)arg1;
 - (void)addPossibleAction:(int)arg1;
 - (void)clearPossibleActions;
 @property(readonly, nonatomic) int *possibleActions;
 @property(readonly, nonatomic) unsigned long long possibleActionsCount;
-- (void)_readPossibleActions;
 @property(retain, nonatomic) GEOPlaceActionDetails *placeActionDetails;
 @property(readonly, nonatomic) _Bool hasPlaceActionDetails;
-- (void)_readPlaceActionDetails;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

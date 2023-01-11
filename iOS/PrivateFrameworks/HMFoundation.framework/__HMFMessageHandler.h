@@ -7,7 +7,7 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class HMFMessageDestination, NSArray, NSObject, NSString;
+@class HMFMessageDestination, HMFObjectObserver, NSArray, NSObject, NSString;
 @protocol HMFMessageReceiver, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -19,17 +19,19 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     HMFMessageDestination *_destination;
     NSArray *_policies;
+    HMFObjectObserver *_observer;
 }
 
 + (id)logCategory;
 + (id)handlerWithReceiver:(id)arg1 name:(id)arg2 policies:(id)arg3 selector:(SEL)arg4;
 + (id)handlerWithReceiver:(id)arg1 name:(id)arg2 policies:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
+@property(readonly) HMFObjectObserver *observer; // @synthesize observer=_observer;
 @property(readonly, copy) NSArray *policies; // @synthesize policies=_policies;
 @property(readonly, copy) HMFMessageDestination *destination; // @synthesize destination=_destination;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly) __weak id <HMFMessageReceiver> receiver; // @synthesize receiver=_receiver;
 @property(readonly) unsigned long long hash; // @synthesize hash=_hash;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (_Bool)isEqual:(id)arg1;

@@ -18,12 +18,13 @@
     _Bool _simulateResults;
     CNCancelationToken *_fetchRequestToken;
     CNPromise *_fetchRequestPromise;
-    struct NSNumber *_shouldIncludeGroupResults;
+    NSNumber *_shouldIncludeGroupResults;
     CNAutocompleteFetchContext *_fetchContext;
     CNAutocompleteStore *_autocompleteStore;
 }
 
 + (id)operationWithOwner:(id)arg1 text:(id)arg2 taskID:(id)arg3 autocompleteStore:(id)arg4;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNAutocompleteStore *autocompleteStore; // @synthesize autocompleteStore=_autocompleteStore;
 @property(copy, nonatomic) CNAutocompleteFetchContext *fetchContext; // @synthesize fetchContext=_fetchContext;
 @property(nonatomic) _Bool simulateResults; // @synthesize simulateResults=_simulateResults;
@@ -35,7 +36,6 @@
 @property(nonatomic) _Bool includeContacts; // @synthesize includeContacts=_includeContacts;
 @property(retain, nonatomic) CNPromise *fetchRequestPromise; // @synthesize fetchRequestPromise=_fetchRequestPromise;
 @property(retain, nonatomic) CNCancelationToken *fetchRequestToken; // @synthesize fetchRequestToken=_fetchRequestToken;
-- (void).cxx_destruct;
 - (void)autocompleteFetchDidFinish:(id)arg1;
 - (id)unifyingIdentifierForRecipient:(id)arg1;
 - (id)unifyRecipientsIfNeccesary:(id)arg1;

@@ -12,8 +12,10 @@
 
 @interface COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement : PBCodable <NSCopying>
 {
+    long long _contentFetchDate;
     NSString *_articleId;
     NSData *_articleViewingSessionId;
+    NSString *_contentId;
     NSString *_engagementTargetUrl;
     NSMutableArray *_otherVisibleSections;
     NSString *_sourceChannelId;
@@ -22,16 +24,22 @@
     int _widgetArticleCountInSection;
     int _widgetArticleRank;
     int _widgetArticleRankInSection;
+    NSString *_widgetContentId;
     int _widgetContentType;
+    int _widgetDisplayMode;
     int _widgetEngagementType;
     int _widgetSectionDisplayRank;
     NSString *_widgetSectionId;
     NSString *_widgetUserId;
     int _widgetVideoPresentationReason;
-    CDStruct_de6d94e7 _has;
+    CDStruct_7b5281db _has;
 }
 
 + (Class)otherVisibleSectionsType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *widgetContentId; // @synthesize widgetContentId=_widgetContentId;
+@property(nonatomic) long long contentFetchDate; // @synthesize contentFetchDate=_contentFetchDate;
+@property(retain, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property(retain, nonatomic) NSString *engagementTargetUrl; // @synthesize engagementTargetUrl=_engagementTargetUrl;
 @property(retain, nonatomic) NSString *webEmbedId; // @synthesize webEmbedId=_webEmbedId;
 @property(retain, nonatomic) NSString *widgetUserId; // @synthesize widgetUserId=_widgetUserId;
@@ -45,7 +53,6 @@
 @property(retain, nonatomic) NSString *widgetSectionId; // @synthesize widgetSectionId=_widgetSectionId;
 @property(retain, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property(retain, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -55,6 +62,13 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasWidgetContentId;
+- (int)StringAsWidgetDisplayMode:(id)arg1;
+- (id)widgetDisplayModeAsString:(int)arg1;
+@property(nonatomic) _Bool hasWidgetDisplayMode;
+@property(nonatomic) int widgetDisplayMode; // @synthesize widgetDisplayMode=_widgetDisplayMode;
+@property(nonatomic) _Bool hasContentFetchDate;
+@property(readonly, nonatomic) _Bool hasContentId;
 @property(readonly, nonatomic) _Bool hasEngagementTargetUrl;
 @property(readonly, nonatomic) _Bool hasWebEmbedId;
 - (int)StringAsWidgetContentType:(id)arg1;

@@ -54,7 +54,13 @@
     NSDictionary *_savedUserInfo;
     _Bool _invalidated;
     _Bool _userInfoContainsFileURLs;
+    _Bool _universalLink;
     _Bool _canCreateStreams;
+    NSDate *_madeCurrentDate;
+    NSDate *_madeCurrentEndDate;
+    double _madeCurrentInterval;
+    NSDate *_madeInitiallyCurrentDate;
+    NSDate *_sentToIndexerDate;
     NSData *_cachedEncodedUserInfo;
     NSSet *_keywords;
     NSSet *_requiredUserInfoKeys;
@@ -101,6 +107,7 @@
 + (void)deleteAllSavedUserActivitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)deleteSavedUserActivitiesWithPersistentIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)mainBundleIdentifier;
+- (void).cxx_destruct;
 @property(readonly, retain) NSObject<OS_dispatch_queue> *willCallSaveSerializationQueue; // @synthesize willCallSaveSerializationQueue=_willCallSaveSerializationQueue;
 @property(retain) NSMutableSet *dirtyPayloadIdentifiers; // @synthesize dirtyPayloadIdentifiers=_dirtyPayloadIdentifiers;
 @property(retain) NSMutableDictionary *payloadDataCache; // @synthesize payloadDataCache=_payloadDataCache;
@@ -115,6 +122,7 @@
 @property(copy) NSString *dynamicIdentifier; // @synthesize dynamicIdentifier=_dynamicIdentifier;
 @property(copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property(readonly) __weak UAUserActivityManager *manager; // @synthesize manager=_manager;
+@property(getter=isUniversalLink) _Bool universalLink; // @synthesize universalLink=_universalLink;
 @property(copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
 @property(copy) NSSet *keywords; // @synthesize keywords=_keywords;
 @property _Bool userInfoContainsFileURLs; // @synthesize userInfoContainsFileURLs=_userInfoContainsFileURLs;
@@ -128,7 +136,10 @@
 @property _Bool forceImmediateSendToServer; // @synthesize forceImmediateSendToServer=_forceImmediateSendToServer;
 @property _Bool sendToServerPending; // @synthesize sendToServerPending=_sendToServerPending;
 @property(copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
-- (void).cxx_destruct;
+@property(copy) NSDate *sentToIndexerDate; // @synthesize sentToIndexerDate=_sentToIndexerDate;
+@property(readonly, copy) NSDate *madeInitiallyCurrentDate; // @synthesize madeInitiallyCurrentDate=_madeInitiallyCurrentDate;
+@property(copy) NSDate *madeCurrentEndDate; // @synthesize madeCurrentEndDate=_madeCurrentEndDate;
+@property(copy) NSDate *madeCurrentDate; // @synthesize madeCurrentDate=_madeCurrentDate;
 - (id)stateString;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -147,6 +158,7 @@
 - (_Bool)archiveURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 @property(readonly, getter=isInvalidated) _Bool invalidated; // @synthesize invalidated=_invalidated;
+@property(readonly) double madeCurrentInterval; // @synthesize madeCurrentInterval=_madeCurrentInterval;
 - (void)resignCurrent;
 - (void)_resignCurrent;
 - (void)becomeCurrent;

@@ -6,28 +6,36 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNResult-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface SNClassificationResult : NSObject <SNTimeRangeProvidingWritable, SNResult>
+@interface SNClassificationResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNResult>
 {
     NSArray *_classifications;
     CDStruct_e83c9415 _timeRange;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)new;
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(copy, nonatomic) NSArray *classifications; // @synthesize classifications=_classifications;
-- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToClassificationResult:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_init;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

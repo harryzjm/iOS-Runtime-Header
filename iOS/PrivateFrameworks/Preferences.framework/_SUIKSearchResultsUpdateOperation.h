@@ -14,14 +14,12 @@
     NSArray *_results;
     UICollectionViewDiffableDataSource *_diffableDataSource;
     id <SUIKSearchResultsCollectionViewControllerDelegate> _delegate;
-    NSArray *_categories;
 }
 
-@property(retain, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SUIKSearchResultsCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property(nonatomic) __weak NSArray *results; // @synthesize results=_results;
-- (void).cxx_destruct;
 - (void)main;
 - (id)initWithResults:(id)arg1 diffableDataSource:(id)arg2 delegate:(id)arg3;
 

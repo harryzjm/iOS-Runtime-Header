@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol _SBDashBoardSpotlightViewControllerDelegate;
+
 @interface _SBDashBoardSpotlightViewController
 {
+    id <_SBDashBoardSpotlightViewControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <_SBDashBoardSpotlightViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (unsigned long long)remoteSearchViewPresentationSource;
 - (unsigned long long)level;
 - (_Bool)_canShowWhileLocked;

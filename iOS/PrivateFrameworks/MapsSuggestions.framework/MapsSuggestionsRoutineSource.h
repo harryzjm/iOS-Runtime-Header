@@ -4,35 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MapsSuggestions/MapsSuggestionsParkedCarObserver-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsPreloadableSource-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 
-@class MapsSuggestionsRoutine, NSObject, NSString;
-@protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue, OS_dispatch_source;
+@class MapsSuggestionsRoutine, NSString;
+@protocol MapsSuggestionsSourceDelegate;
 
-@interface MapsSuggestionsRoutineSource <MapsSuggestionsSource, MapsSuggestionsPreloadableSource>
+@interface MapsSuggestionsRoutineSource <MapsSuggestionsParkedCarObserver, MapsSuggestionsSource, MapsSuggestionsPreloadableSource>
 {
     MapsSuggestionsRoutine *_routine;
-    struct NSArray *_previouslyAddedEntries;
-    NSObject<OS_dispatch_queue> *_queue;
-    _Bool _running;
-    NSObject<OS_dispatch_source> *_updateTimer;
+    struct Queue _queue;
 }
 
 + (unsigned long long)disposition;
 + (_Bool)isEnabled;
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_requestTouristInfoFromRoutineIfNeededForLocation:(id)arg1;
-- (_Bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)updatedParkedCar;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)canProduceEntriesOfType:(long long)arg1;
-- (_Bool)suggestionsEntriesAtLocation:(id)arg1 period:(struct NSDateInterval *)arg2 handler:(CDUnknownBlockType)arg3;
-- (double)updateSuggestionEntries;
+- (BOOL)suggestionsEntriesAtLocation:(id)arg1 period:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
 - (void)start;
-- (void)_startMonitoringVehicleEvents;
-- (void)_updateSuggestionEntries;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
+- (id)initWithRoutine:(id)arg1 delegate:(id)arg2 name:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

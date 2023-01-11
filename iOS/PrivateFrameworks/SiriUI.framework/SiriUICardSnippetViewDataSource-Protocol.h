@@ -9,7 +9,7 @@
 @class NSLocale, SiriUICardSnippetView, SiriUISashItem;
 
 @protocol SiriUICardSnippetViewDataSource <NSObject>
-- (double)contentHeightForWidth:(double)arg1;
+- (double)preferredContentHeight;
 - (NSLocale *)localeForCardSnippetView:(SiriUICardSnippetView *)arg1;
 - (SiriUISashItem *)sashItemForCardSnippetView:(SiriUICardSnippetView *)arg1;
 @end

@@ -29,6 +29,7 @@
     SBFWallpaperParallaxSettings *_parallaxSettings;
     _Bool _wantsRasterization;
     long long _disallowRasterizationBlockCount;
+    _Bool _needsWallpaperDimmingTreatment;
     _Bool _parallaxEnabled;
     _Bool _continuousColorSamplingEnabled;
     _Bool _wallpaperAnimationEnabled;
@@ -42,7 +43,6 @@
     UIImage *_untreatedWallpaperImage;
     double _parallaxFactor;
     NSString *_wallpaperName;
-    long long _logicalContentOrientation;
     NSString *_cacheGroup;
     id <SBFWallpaperViewInternalObserver> _internalObserver;
 }
@@ -52,9 +52,9 @@
 + (_Bool)_allowsParallax;
 + (Class)wallpaperViewClassForWallpaperType:(long long)arg1;
 + (Class)wallpaperViewClassForConfiguration:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBFWallpaperViewInternalObserver> internalObserver; // @synthesize internalObserver=_internalObserver;
 @property(readonly, copy, nonatomic) NSString *cacheGroup; // @synthesize cacheGroup=_cacheGroup;
-@property(nonatomic) long long logicalContentOrientation; // @synthesize logicalContentOrientation=_logicalContentOrientation;
 @property(nonatomic) unsigned long long transformOptions; // @synthesize transformOptions=_transformOptions;
 @property(nonatomic) _Bool sharesContentsAcrossVariants; // @synthesize sharesContentsAcrossVariants=_sharesContentsAcrossVariants;
 @property(readonly, nonatomic) _Bool hasVideo; // @synthesize hasVideo=_hasVideo;
@@ -67,18 +67,20 @@
 @property(nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
 @property(retain, nonatomic) UIImage *untreatedWallpaperImage; // @synthesize untreatedWallpaperImage=_untreatedWallpaperImage;
 @property(nonatomic) __weak id <SBFWallpaperViewDelegate> wallpaperDelegate; // @synthesize wallpaperDelegate=_wallpaperDelegate;
+@property(readonly, nonatomic) _Bool needsWallpaperDimmingTreatment; // @synthesize needsWallpaperDimmingTreatment=_needsWallpaperDimmingTreatment;
 @property(readonly, nonatomic) long long wallpaperMode; // @synthesize wallpaperMode=_wallpaperMode;
 @property(nonatomic) long long variant; // @synthesize variant=_variant;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) __weak id <SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)legibilitySettingsDidChange;
 - (void)_updateContentViewScale;
 - (void)_updateScaleFactor;
 - (void)_removeParallax;
 - (void)_addParallax;
 - (void)_applyParallaxSettings;
-- (void)_updateParallaxSettings;
+- (void)_updateParallax;
+- (_Bool)_isParallaxActive;
+- (_Bool)_isParallaxEnabled;
 - (void)_updateGeneratingBlurs;
 - (void)_updateRasterizationState;
 - (void)_endDisallowRasterizationBlock;

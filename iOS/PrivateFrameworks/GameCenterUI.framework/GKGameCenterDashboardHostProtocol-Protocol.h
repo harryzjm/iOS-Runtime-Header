@@ -18,6 +18,7 @@
 - (void)finishWithMatch:(GKTurnBasedMatchInternal *)arg1;
 - (void)getMethodsImplementedByChallengeEventHandlerDelegate:(void (^)(NSArray *, NSError *))arg1;
 - (void)playPressedForChallenge:(GKChallengeInternal *)arg1;
+- (void)remoteControllerDidSelectLeaderboardPlayerScope:(NSNumber *)arg1;
 - (void)remoteControllerDidSelectLeaderboardTimeScope:(NSNumber *)arg1;
 - (void)remoteControllerDidSelectLeaderboardIdentifier:(NSString *)arg1;
 - (void)remoteControllerDidChangeViewState:(NSNumber *)arg1;

@@ -40,6 +40,7 @@
 + (double)_lineWidthAndInterspaceForIconSize:(long long)arg1;
 + (struct CGSize)_pinSizeForIconSize:(long long)arg1;
 + (struct CGSize)_batterySizeForIconSize:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) double pinColorAlpha; // @synthesize pinColorAlpha=_pinColorAlpha;
 @property(nonatomic) double bodyColorAlpha; // @synthesize bodyColorAlpha=_bodyColorAlpha;
 @property(nonatomic) _Bool showsPercentage; // @synthesize showsPercentage=_showsPercentage;
@@ -57,7 +58,6 @@
 @property(nonatomic) _Bool saverModeActive; // @synthesize saverModeActive=_saverModeActive;
 @property(nonatomic) long long chargingState; // @synthesize chargingState=_chargingState;
 @property(nonatomic) double chargePercent; // @synthesize chargePercent=_chargePercent;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 - (struct CGSize)intrinsicContentSize;
 - (void)applyStyleAttributes:(id)arg1;
@@ -80,8 +80,10 @@
 - (void)_updateBolt;
 - (double)_batteryBoltSmallScaleFactor;
 - (double)_batteryBoltLargeScaleFactor;
+- (double)_batteryBoltScaleFactorMultiplier;
 - (void)_fillLayerFrame:(struct CGRect *)arg1 cornerRadius:(double *)arg2;
 - (void)_updateFillLayer;
+- (void)__resetBoltLayers;
 - (void)__updateFillLayer;
 - (void)_updateBatteryFillColor;
 - (void)_updateFillColor;

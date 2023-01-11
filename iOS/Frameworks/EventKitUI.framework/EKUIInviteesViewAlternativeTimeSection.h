@@ -16,6 +16,7 @@
     _Bool _availabilityRequestInProgress;
     _Bool _initialSearchInProgress;
     _Bool _searchExhausted;
+    _Bool _searcherHasError;
     CDUnknownBlockType _showMoreAlternativeTimesTapped;
     NSTimeZone *_timeZone;
     NSString *_cachedTimeCellReuseIdentifier;
@@ -31,6 +32,8 @@
     EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool searcherHasError; // @synthesize searcherHasError=_searcherHasError;
 @property(nonatomic) _Bool searchExhausted; // @synthesize searchExhausted=_searchExhausted;
 @property(nonatomic) _Bool initialSearchInProgress; // @synthesize initialSearchInProgress=_initialSearchInProgress;
 @property(retain, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
@@ -48,7 +51,6 @@
 @property(retain, nonatomic) NSString *cachedTimeCellReuseIdentifier; // @synthesize cachedTimeCellReuseIdentifier=_cachedTimeCellReuseIdentifier;
 @property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(copy, nonatomic) CDUnknownBlockType showMoreAlternativeTimesTapped; // @synthesize showMoreAlternativeTimesTapped=_showMoreAlternativeTimesTapped;
-- (void).cxx_destruct;
 - (id)_alternativeTimeAtIndex:(long long)arg1;
 - (unsigned long long)_numberOfTimeSlotsShown;
 - (_Bool)_isConflictSearchRow:(long long)arg1;

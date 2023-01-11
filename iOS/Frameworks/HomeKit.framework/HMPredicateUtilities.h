@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface HMPredicateUtilities : NSObject
 {
 }
 
-+ (id)notificationTriggersInPredicate:(id)arg1;
++ (id)bitwiseAndValueWithKeyPath:(id)arg1 inComparisonPredicate:(id)arg2 validValues:(long long)arg3;
++ (id)bitwiseAndValueWithKeyPath:(id)arg1 inPredicate:(id)arg2 validValues:(long long)arg3;
++ (id)personFamiliarityOptionsInComparisonPredicate:(id)arg1;
++ (id)significantEventTypesInComparisonPredicate:(id)arg1;
 + (_Bool)containsPresenceEvents:(id)arg1;
 + (id)rewritePredicateForDaemon:(id)arg1 characteristicIsInvalid:(_Bool *)arg2;
 + (id)rewritePredicateForClient:(id)arg1 home:(id)arg2;

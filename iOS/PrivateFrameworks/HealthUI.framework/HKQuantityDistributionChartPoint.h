@@ -22,6 +22,7 @@
     NSNumber *_maximumY;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *maximumY; // @synthesize maximumY=_maximumY;
 @property(readonly, nonatomic) NSNumber *minimumY; // @synthesize minimumY=_minimumY;
 @property(readonly, nonatomic) NSDate *bucketDate; // @synthesize bucketDate=_bucketDate;
@@ -29,7 +30,6 @@
 @property(readonly, nonatomic) NSArray *bucketCounts; // @synthesize bucketCounts=_bucketCounts;
 @property(readonly, nonatomic) double bucketIncrement; // @synthesize bucketIncrement=_bucketIncrement;
 @property(readonly, nonatomic) double minimumBucketValue; // @synthesize minimumBucketValue=_minimumBucketValue;
-- (void).cxx_destruct;
 - (id)maxYValue;
 - (id)minYValue;
 - (id)allYValues;
@@ -40,8 +40,8 @@
 - (id)xValueAsGenericType;
 @property(readonly, copy) NSString *description;
 - (id)_quickDate:(id)arg1;
-- (id)initWithHistogramData:(id)arg1 unit:(id)arg2;
-- (id)initWithHistogramData:(id)arg1 bucketIncrement:(double)arg2 unit:(id)arg3;
+- (id)initWithHistogramData:(id)arg1 unit:(id)arg2 displayType:(id)arg3;
+- (id)initWithHistogramData:(id)arg1 bucketIncrement:(double)arg2 unit:(id)arg3 displayType:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

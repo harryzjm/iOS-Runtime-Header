@@ -9,34 +9,40 @@
 #import <AppleAccountUI/RUILoaderDelegate-Protocol.h>
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSMutableArray, NSString, RUILoader, UINavigationController, UIViewController;
+@class ACAccount, ACAccountStore, NSMutableArray, NSSet, NSString, RUILoader, UINavigationController, UIViewController;
 @protocol AAUIGenericTermsRemoteUIDelegate;
 
 @interface AAUIGenericTermsRemoteUI : NSObject <RUILoaderDelegate, RUIObjectModelDelegate>
 {
     UINavigationController *_parentNavController;
-    UIViewController *_originatingViewController;
     UINavigationController *_genericTermsUIViewController;
     RUILoader *_loader;
     NSMutableArray *_objectModels;
     ACAccount *_account;
     ACAccountStore *_accountStore;
+    NSSet *_termsEntries;
     _Bool _isModal;
     _Bool _isPreferringPassword;
+    _Bool _didRenewCredentials;
     id <AAUIGenericTermsRemoteUIDelegate> _delegate;
+    UIViewController *_originatingViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property(readonly, nonatomic) __weak UIViewController *originatingViewController; // @synthesize originatingViewController=_originatingViewController;
 @property(nonatomic) __weak id <AAUIGenericTermsRemoteUIDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)_authContextForRenewCredentials;
+- (void)_renewCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_addHeadersToRequest:(id)arg1;
 - (void)_displayConnectionErrorAndDismiss;
 - (void)_popObjectModelAnimated:(_Bool)arg1;
 - (void)_cleanupRUILoader;
 - (void)_cleanUpAndDismissWithSuccess:(_Bool)arg1 agreeURL:(id)arg2;
+- (void)_sendAcceptedTermsInfo:(id)arg1;
 - (void)_agreeToTermsWithURLString:(id)arg1 preferPassword:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_cancelButtonTapped:(id)arg1;
+- (id)viewControllerForAlertPresentation;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
 - (id)parentViewControllerForObjectModel:(id)arg1;
 - (void)objectModelPressedBack:(id)arg1;
@@ -48,6 +54,7 @@
 - (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(unsigned long long)arg3;
 - (void)_loadRequestPreferringPassword:(_Bool)arg1;
 - (void)presentFromViewController:(id)arg1 modal:(_Bool)arg2;
+- (id)initWithAccount:(id)arg1 inStore:(id)arg2 termsEntries:(id)arg3;
 - (id)initWithAccount:(id)arg1 inStore:(id)arg2;
 
 // Remaining properties

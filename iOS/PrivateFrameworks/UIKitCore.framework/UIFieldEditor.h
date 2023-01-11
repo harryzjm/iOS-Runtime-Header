@@ -57,12 +57,12 @@
 + (id)excludedElementsForHTML;
 + (id)activeFieldEditor;
 + (id)sharedFieldEditor;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool _shouldObscureNextInput; // @synthesize _shouldObscureNextInput=__shouldObscureNextInput;
 @property(nonatomic) struct CGPoint autoscrollContentOffset; // @synthesize autoscrollContentOffset=_autoscrollContentOffset;
 @property(copy, nonatomic, setter=_setScrollAnimationEndedAction:) CDUnknownBlockType _scrollAnimationEndedAction; // @synthesize _scrollAnimationEndedAction;
 @property(nonatomic) _Bool allowsAttachments; // @synthesize allowsAttachments=_allowsAttachments;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
-- (void).cxx_destruct;
 - (_Bool)_shouldIgnoreAutofillSave;
 - (_Bool)_hasDictationPlaceholder;
 - (id)methodSignatureForSelector:(SEL)arg1;
@@ -72,6 +72,7 @@
 - (_Bool)_shouldObscureInput;
 @property(nonatomic) _Bool displaySecureEditsUsingPlainText;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
+- (id)attributedSubstringForMarkedRange;
 @property(nonatomic) struct _NSRange markedRange;
 - (id)linkTextAttributes;
 - (void)updateInsertionPointStateAndRestartTimer:(_Bool)arg1;
@@ -82,6 +83,7 @@
 - (void)setConstrainedFrameSize:(struct CGSize)arg1;
 - (struct UIEdgeInsets)textContainerInset;
 - (struct CGPoint)textContainerOrigin;
+- (struct CGPoint)textContainerOriginForTextAlignment:(long long)arg1;
 - (struct CGRect)visibleRect;
 - (void)setLayoutOrientation:(long long)arg1;
 @property(readonly, nonatomic) long long layoutOrientation;
@@ -156,8 +158,6 @@
 @property(readonly, nonatomic) NSLayoutManager *layoutManager;
 @property(nonatomic) long long nonEditingLinebreakMode;
 - (id)undoManager;
-- (int)atomStyle;
-- (_Bool)drawsAsAtom;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)scrollSelectionToVisible:(_Bool)arg1;
@@ -165,7 +165,6 @@
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(_Bool)arg2;
 - (void)_performWhileSuppressingDelegateNotifications:(CDUnknownBlockType)arg1;
 - (_Bool)hasMarkedText;
-- (unsigned long long)characterOffsetAtPoint:(struct CGPoint)arg1;
 - (void)setSelection:(struct _NSRange)arg1;
 - (struct _NSRange)selectionRange;
 - (void)setScrollXOffset:(int)arg1 scrollYOffset:(int)arg2 adjustForPurpleCaret:(_Bool)arg3;
@@ -216,6 +215,7 @@
 - (_Bool)isFirstResponder;
 - (id)_responderForBecomeFirstResponder;
 - (void)selectAll;
+- (_Bool)textInputShouldExtendCaretHeight:(id)arg1;
 - (void)textInputDidAnimatePaste:(id)arg1;
 - (void)textInputWillAnimatePaste:(id)arg1;
 - (void)textInput:(id)arg1 prepareAttributedTextForInsertion:(id)arg2;
@@ -236,7 +236,7 @@
 - (void)_applyCorrectTextContainerSize;
 - (void)_textStorageDidProcessEditing:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)_canvasView;
+- (id)_textCanvasView;
 - (id)_textInputController;
 - (id)_textStorage;
 - (id)_textContainer;
@@ -253,12 +253,14 @@
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property(nonatomic) _Bool contentsIsSingleValue;
+@property(readonly, nonatomic) long long cursorBehavior;
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
@@ -288,6 +290,7 @@
 @property(nonatomic) _Bool learnsCorrections;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
@@ -305,6 +308,7 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;

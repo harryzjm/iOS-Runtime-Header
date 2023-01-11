@@ -9,7 +9,9 @@
 @class NSDictionary, NSNumber, NSString, SSLookupItem;
 
 @protocol SKProductPageExtensionServiceInterface <NSObject>
+- (void)setPreview:(NSNumber *)arg1;
 - (void)setVisibleInClientWindow:(NSNumber *)arg1;
+- (void)setUsageContext:(NSString *)arg1;
 - (void)setAskToBuy:(_Bool)arg1;
 - (void)setPromptString:(NSString *)arg1;
 - (void)setShowsRightBarButton:(_Bool)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVOutputContext, AVOutputDevice, MRAVInputStream, MRAVOutputDevice, MRAVOutputStream, NSError, NSObject, _MRDeviceInfoMessageProtobuf;
+@class AVOutputContext, AVOutputDevice, MRAVInputStream, MRAVOutputDevice, MRAVOutputStream, MRDeviceInfo, NSError, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface MRAVOutputContextTransport
@@ -12,7 +12,7 @@
     unsigned long long _state;
     NSObject<OS_dispatch_queue> *_serialQueue;
     AVOutputContext *_outputContext;
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRDeviceInfo *_deviceInfo;
     NSError *_error;
     MRAVInputStream *_inputStream;
     MRAVOutputStream *_outputStream;
@@ -21,19 +21,13 @@
     AVOutputDevice *_avOutputDevice;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AVOutputDevice *avOutputDevice; // @synthesize avOutputDevice=_avOutputDevice;
 @property(readonly, nonatomic) MRAVOutputDevice *outputDevice; // @synthesize outputDevice=_outputDevice;
-- (void).cxx_destruct;
-- (id)_onQueue_createRemoteControlContextWithID:(id)arg1;
-- (void)_destroyRemoteControlContext;
-- (void)_unregisterNotificationsForOutputContext:(id)arg1;
-- (void)_registerNotificationsForOutputContext:(id)arg1;
-- (void)_onQueue_resetStreams;
-- (void)_onQueue_initializeOutputContext;
 - (void)_outputContextDevicesDidChangeNotification:(id)arg1;
 - (_Bool)requiresCustomPairing;
 - (void)reset;
-- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 - (id)error;
 - (void)setShouldUseSystemAuthenticationPrompt:(_Bool)arg1;
 - (_Bool)shouldUseSystemAuthenticationPrompt;

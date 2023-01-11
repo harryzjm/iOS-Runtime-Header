@@ -18,7 +18,6 @@
     struct CGVector _gravity;
 }
 
-+ (id)copyWithZone:(struct _NSZone *)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) id <SKPhysicsContactDelegate> contactDelegate; // @synthesize contactDelegate=_contactDelegate;

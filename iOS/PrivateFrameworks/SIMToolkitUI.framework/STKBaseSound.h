@@ -8,20 +8,25 @@
 
 #import <SIMToolkitUI/STKSound-Protocol.h>
 
-@class NSString, NSTimer;
+@class BSTimer, NSString;
 
+__attribute__((visibility("hidden")))
 @interface STKBaseSound : NSObject <STKSound>
 {
-    NSTimer *_timer;
+    BSTimer *_timer;
     double _duration;
     _Bool _playsOnce;
     _Bool _isPlaying;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isPlaying; // @synthesize isPlaying=_isPlaying;
 @property(readonly, nonatomic) _Bool playsOnce; // @synthesize playsOnce=_playsOnce;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
-- (void).cxx_destruct;
+- (void)_sync_stopSound;
+- (void)_sync_playSound;
+- (void)_reallyStopSound;
+- (void)_reallyPlaySound;
 - (void)stopSound;
 - (void)playSound;
 - (void)dealloc;

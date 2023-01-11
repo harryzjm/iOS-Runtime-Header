@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class AVAppStorePlayerLayerView, AVBackdropView, AVButton, AVObservationController, AVPlayer, AVPlayerViewController, AVStyleSheet, NSMutableDictionary, NSString;
+@class AVAppStorePlayerLayerView, AVButton, AVLayoutView, AVObservationController, AVPlayer, AVPlayerViewController, AVStyleSheet, NSMutableDictionary, NSString;
 @protocol AVPlayerViewControllerDelegate;
 
 @interface AVAppStorePlayerView : UIView
@@ -24,18 +24,19 @@
     id <AVPlayerViewControllerDelegate> _playerViewControllerDelegate;
     AVPlayerViewController *_playerViewController;
     AVButton *_prominentPlayButton;
-    AVBackdropView *_prominentPlayButtonBackdropView;
+    AVLayoutView *_prominentPlayButtonLayoutView;
     AVStyleSheet *_styleSheet;
     AVAppStorePlayerLayerView *_playerLayerView;
     NSMutableDictionary *_videoGravityForLayoutClassDictionary;
     AVObservationController *_observationController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property(retain, nonatomic) NSMutableDictionary *videoGravityForLayoutClassDictionary; // @synthesize videoGravityForLayoutClassDictionary=_videoGravityForLayoutClassDictionary;
 @property(retain, nonatomic) AVAppStorePlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
 @property(retain, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
-@property(retain, nonatomic) AVBackdropView *prominentPlayButtonBackdropView; // @synthesize prominentPlayButtonBackdropView=_prominentPlayButtonBackdropView;
+@property(retain, nonatomic) AVLayoutView *prominentPlayButtonLayoutView; // @synthesize prominentPlayButtonLayoutView=_prominentPlayButtonLayoutView;
 @property(retain, nonatomic) AVButton *prominentPlayButton; // @synthesize prominentPlayButton=_prominentPlayButton;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 @property(nonatomic) __weak id <AVPlayerViewControllerDelegate> playerViewControllerDelegate; // @synthesize playerViewControllerDelegate=_playerViewControllerDelegate;
@@ -49,7 +50,6 @@
 @property(nonatomic) _Bool showsMinimalPlaybackControlsWhenEmbeddedInline; // @synthesize showsMinimalPlaybackControlsWhenEmbeddedInline=_showsMinimalPlaybackControlsWhenEmbeddedInline;
 @property(nonatomic) _Bool updatesNowPlayingInfoCenter; // @synthesize updatesNowPlayingInfoCenter=_updatesNowPlayingInfoCenter;
 @property(nonatomic) _Bool showsPlaybackControls; // @synthesize showsPlaybackControls=_showsPlaybackControls;
-- (void).cxx_destruct;
 - (void)_prominentPlayButtonTouchUpInside:(id)arg1;
 - (void)_makePlayerViewControllerWithPlayer:(id)arg1;
 - (void)_makePlayerLayerViewWithPlayer:(id)arg1;

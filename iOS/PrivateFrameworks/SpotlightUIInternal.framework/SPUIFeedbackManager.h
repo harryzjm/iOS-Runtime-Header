@@ -11,10 +11,11 @@
 }
 
 + (id)feedbackListener;
++ (void)flushFeedbackWithCompletion:(CDUnknownBlockType)arg1;
 + (void)didDisappearWithReason:(unsigned long long)arg1 withQueryId:(unsigned long long)arg2;
 + (void)cardViewDidDisappearWithEvent:(unsigned long long)arg1 withQueryId:(unsigned long long)arg2;
 + (void)didClearInputWithEvent:(unsigned long long)arg1 withQueryId:(unsigned long long)arg2;
-+ (void)didAppearFromSource:(unsigned long long)arg1 withQueryId:(unsigned long long)arg2;
++ (void)didAppearFromSource:(unsigned long long)arg1 withQueryId:(unsigned long long)arg2 queryString:(id)arg3;
 
 @end
 

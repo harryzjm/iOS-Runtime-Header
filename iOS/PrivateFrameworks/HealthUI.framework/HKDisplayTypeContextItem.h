@@ -11,6 +11,7 @@
 @interface HKDisplayTypeContextItem : NSObject
 {
     _Bool _infoHidden;
+    _Bool _useTightSpacingBetweenValueAndUnit;
     NSString *_title;
     NSString *_unit;
     NSString *_value;
@@ -21,6 +22,7 @@
     HKUIMetricColors *_selectedMetricColors;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKUIMetricColors *selectedMetricColors; // @synthesize selectedMetricColors=_selectedMetricColors;
 @property(retain, nonatomic) HKUIMetricColors *metricColors; // @synthesize metricColors=_metricColors;
 @property(copy, nonatomic) NSString *dateString; // @synthesize dateString=_dateString;
@@ -28,9 +30,10 @@
 @property(copy, nonatomic) NSString *valueContext; // @synthesize valueContext=_valueContext;
 @property(copy, nonatomic) NSString *value; // @synthesize value=_value;
 @property(copy, nonatomic) NSString *unit; // @synthesize unit=_unit;
+@property(nonatomic) _Bool useTightSpacingBetweenValueAndUnit; // @synthesize useTightSpacingBetweenValueAndUnit=_useTightSpacingBetweenValueAndUnit;
 @property(nonatomic) _Bool infoHidden; // @synthesize infoHidden=_infoHidden;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
+- (id)debugDescription;
 - (_Bool)isEqualToContextItem:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

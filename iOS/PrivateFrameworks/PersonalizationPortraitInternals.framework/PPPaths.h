@@ -10,6 +10,8 @@
 {
 }
 
++ (id)defaultAssetPathForNamespaceId:(unsigned int)arg1 factorName:(id)arg2;
++ (id)resourcesDirectory;
 + (id)filename:(id)arg1 logSubdirectory:(id)arg2 createIfNeeded:(_Bool)arg3;
 + (id)logSubdirectory:(id)arg1 createIfNeeded:(_Bool)arg2;
 + (id)logDirectoryCreateIfNeeded:(_Bool)arg1;

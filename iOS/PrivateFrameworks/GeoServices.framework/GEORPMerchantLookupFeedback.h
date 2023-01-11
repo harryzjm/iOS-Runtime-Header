@@ -13,18 +13,13 @@
 @interface GEORPMerchantLookupFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPMerchantLookupContext *_context;
     GEORPMerchantLookupCorrections *_corrections;
-    struct {
-        unsigned int read_unknownFields:1;
-        unsigned int read_context:1;
-        unsigned int read_corrections:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_context:1;
-        unsigned int wrote_corrections:1;
-    } _flags;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    CDStruct_c6f0c348 _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -39,14 +34,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPMerchantLookupCorrections *corrections;
 @property(readonly, nonatomic) _Bool hasCorrections;
-- (void)_readCorrections;
 @property(retain, nonatomic) GEORPMerchantLookupContext *context;
 @property(readonly, nonatomic) _Bool hasContext;
-- (void)_readContext;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

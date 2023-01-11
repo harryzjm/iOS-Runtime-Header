@@ -22,13 +22,14 @@
     id <ITIdleTimerStateServerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <ITIdleTimerStateServerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <ITIdleTimerStateServerDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_hasIdleTimerServicesEntitlementForProcess:(id)arg1 missingEntitlementError:(id *)arg2;
 - (void)_removeConnection:(id)arg1;
 - (void)_addConnection:(id)arg1;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
-- (void)removeIdleTimerConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
-- (void)addIdleTimerConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
+- (void)removeIdleTimerServiceConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
+- (void)addIdleTimerServiceConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
 - (_Bool)isIdleTimerServiceAvailableWithError:(id *)arg1;
 - (_Bool)clientConfiguration:(id)arg1 handleIdleEvent:(unsigned long long)arg2;
 - (id)initWithCalloutQueue:(id)arg1 delegate:(id)arg2;

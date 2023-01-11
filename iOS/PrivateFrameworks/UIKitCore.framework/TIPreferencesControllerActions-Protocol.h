@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol TIPreferencesControllerActions <NSObject>
 @property(nonatomic) unsigned long long floatingKeyboardDockedEdge;
@@ -16,6 +16,7 @@
 @property(nonatomic) _Bool automaticMinimizationEnabled;
 @property(nonatomic) _Bool predictionEnabled;
 @property(copy, nonatomic) NSArray *inputModeSelectionSequence;
+- (void)updateVisceral:(NSNumber *)arg1;
 - (void)updateLastUsedDictationLanguages:(NSDictionary *)arg1;
 - (void)updateEnabledDictationLanguages:(NSDictionary *)arg1;
 - (void)updateEnableProKeyboard:(_Bool)arg1;

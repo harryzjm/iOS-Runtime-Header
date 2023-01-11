@@ -19,14 +19,15 @@
 + (id)boundedQueueWithCapacity:(unsigned long long)arg1;
 + (id)boundedQueueWithCapacity:(unsigned long long)arg1 overflowHandler:(CDUnknownBlockType)arg2;
 + (id)priorityQueueWithComparator:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <EFQueueingStrategy> strategy; // @synthesize strategy=_strategy;
 @property(readonly, nonatomic) NSMutableArray *buffer; // @synthesize buffer=_buffer;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *allObjects;
 - (id)drain;
 - (void)dequeueObject:(id)arg1;
 - (id)dequeue;
 - (id)peek;
+- (void)enqueue:(id)arg1 replaceIfExists:(_Bool)arg2;
 - (void)enqueue:(id)arg1;
 @property(readonly, nonatomic) unsigned long long count;
 - (id)description;

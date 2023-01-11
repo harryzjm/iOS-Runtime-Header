@@ -25,9 +25,8 @@
 + (_Bool)isBreadcrumbDebugEnabled;
 + (unsigned long long)purgeSpace:(unsigned long long)arg1;
 + (unsigned long long)purgeableSpace;
-+ (void)countOfAssetsInMstreamdSharingDownloadQueueWithCompletionBlock:(CDUnknownBlockType)arg1;
-+ (void)isMstreamdBusyPerformingSharingActivityWithCompletionBlock:(CDUnknownBlockType)arg1;
-+ (void)pruneNonRecentlyViewedCloudSharingAssetsInLibrary:(id)arg1;
++ (void)_markStreamVideosAsPurgeable;
++ (void)pruneCloudSharingContentIfNecessaryInLibrary:(id)arg1;
 + (void)applicationIsInForeground:(_Bool)arg1 photoLibraryURL:(id)arg2;
 + (double)intervalBetweenAlbumPolls;
 + (double)intervalBetweenPolls;
@@ -81,10 +80,10 @@
 + (void)deleteCloudSharedAlbumFromServer:(id)arg1;
 + (void)_userDidDeleteSharedAlbum:(id)arg1;
 + (void)publishCloudSharedAlbumToServer:(id)arg1;
++ (void)deleteLocalAlbumsForMSASAlbumsWithGUID:(id)arg1 inviterAddress:(id)arg2;
 + (void)deleteLocalAlbumsForMSASAlbumsWithGUIDs:(id)arg1;
 + (void)resetAllLocalState;
 + (void)updateLocalAlbumMetadataForMSASAlbum:(id)arg1 info:(id)arg2;
-+ (void)trackUploadBatchSize:(unsigned long long)arg1;
 + (id)_localizationKeyForAssets:(id)arg1;
 + (_Bool)canSetUserCloudSharedLiked:(_Bool)arg1 forAssets:(id)arg2 error:(id *)arg3;
 + (_Bool)canAcceptPendingInvitationForAlbum:(id)arg1 error:(id *)arg2;
@@ -112,8 +111,12 @@
 + (void)initializeMSPlatform;
 + (void)forgetSharingPersonID:(id)arg1;
 + (void)retryOutstandingActivities;
++ (void)pollForAlbumListUpdatesIfNecessary;
 + (void)pollForAlbumListUpdates;
 + (_Bool)accountMatchesEmail:(id)arg1;
++ (id)sharingDisplayNameIncludingEmail:(_Bool)arg1 allowsEmail:(_Bool)arg2;
++ (id)sharingLastName;
++ (id)sharingFirstName;
 + (id)sharingUsername;
 + (id)sharingPersonID;
 + (_Bool)sharedStreamsExplictlyDisabledForPhotoLibraryURL:(id)arg1;

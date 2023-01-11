@@ -9,25 +9,30 @@
 @interface OBSetupAssistantFinishedController
 {
     UILabel *_titleLabel;
+    UILabel *_detailLabel;
     OBButtonTray *_buttonTray;
     OBBoldTrayButton *_boldButton;
     CDUnknownBlockType _boldButtonBlock;
     UILabel *_instructionalLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *instructionalLabel; // @synthesize instructionalLabel=_instructionalLabel;
 @property(copy, nonatomic) CDUnknownBlockType boldButtonBlock; // @synthesize boldButtonBlock=_boldButtonBlock;
 @property(retain, nonatomic) OBBoldTrayButton *boldButton; // @synthesize boldButton=_boldButton;
 @property(retain, nonatomic) OBButtonTray *buttonTray; // @synthesize buttonTray=_buttonTray;
+@property(retain, nonatomic) UILabel *detailLabel; // @synthesize detailLabel=_detailLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
 - (void)buttonTapped:(id)arg1;
 - (id)_instructionFont;
+- (id)_detailFont;
 - (id)_headerFont;
 - (void)setInstructionalText:(id)arg1;
 - (void)setButtonTitle:(id)arg1 action:(CDUnknownBlockType)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (struct NSDirectionalEdgeInsets)directionalLayoutMargins;
 - (void)viewDidLoad;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2;
 - (id)initWithTitle:(id)arg1;
 
 @end

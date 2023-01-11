@@ -13,7 +13,7 @@
 #import <CarPlaySupport/UISearchControllerDelegate-Protocol.h>
 #import <CarPlaySupport/UISearchResultsUpdating-Protocol.h>
 
-@class CPSearchTemplate, CPTemplate, NAFuture, NSString;
+@class CPListTemplate, CPSearchTemplate, CPTemplate, NAFuture, NSString;
 @protocol CPSTemplateViewControllerDelegate, CPSearchClientTemplateDelegate, CPTemplateDelegate;
 
 @interface CPSSearchTemplateViewController : UISearchContainerViewController <UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, CPListTemplateDelegate, CPSBaseTemplateViewController, CPSearchTemplateProviding>
@@ -24,17 +24,21 @@
     id <CPSTemplateViewControllerDelegate> _viewControllerDelegate;
     CPTemplate *_associatedTemplate;
     id <CPTemplateDelegate> _templateDelegate;
+    CPListTemplate *_listTemplate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didDisappear; // @synthesize didDisappear=_didDisappear;
 @property(nonatomic) _Bool didPop; // @synthesize didPop=_didPop;
+@property(retain, nonatomic) CPListTemplate *listTemplate; // @synthesize listTemplate=_listTemplate;
 @property(retain, nonatomic) id <CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
 @property(retain, nonatomic) CPTemplate *associatedTemplate; // @synthesize associatedTemplate=_associatedTemplate;
 @property(nonatomic) __weak id <CPSTemplateViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
 @property(readonly, nonatomic) NAFuture *templateProviderFuture; // @synthesize templateProviderFuture=_templateProviderFuture;
-- (void).cxx_destruct;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)didDismissSearchController:(id)arg1;
+- (_Bool)_isSceneActive;
+- (_Bool)searchBarShouldEndEditing:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)listTemplate:(id)arg1 didSelectListItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_cps_viewControllerWasPopped;
@@ -46,7 +50,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)_cleanup;
-- (id)initWithSearchController:(id)arg1 searchTemplate:(id)arg2 templateDelegate:(id)arg3;
+- (id)initWithSearchTemplate:(id)arg1 templateDelegate:(id)arg2 templateEnvironment:(id)arg3 interactionModel:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

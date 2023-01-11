@@ -16,7 +16,7 @@
 #import <PreferencesUI/UISearchControllerDelegate-Protocol.h>
 #import <PreferencesUI/UISearchResultsUpdating-Protocol.h>
 
-@class AAUIProfilePictureStore, ACAccountStore, AIDAServiceOwnersManager, CNMonogrammer, CoreTelephonyClient, EAAccessory, HFHomeSettingsVisibilityArbitrator, NSArray, NSDictionary, NSObject, NSSet, NSString, PSKeyboardNavigationSearchController, PSSpecifier, PSUIClassKitVisibilityArbitrator, PSUIClassroomVisibilityArbitrator, SUIKSearchResultsCollectionViewController, UIImage, VSAccountStore;
+@class AAUIProfilePictureStore, ACAccountStore, AIDAServiceOwnersManager, CNMonogrammer, CoreTelephonyClient, EAAccessory, HFHomeSettingsVisibilityArbitrator, NSArray, NSDictionary, NSObject, NSSet, NSString, PSKeyboardNavigationSearchController, PSSpecifier, PSUIClassKitVisibilityArbitrator, PSUIClassroomVisibilityArbitrator, SUIKSearchResultsCollectionViewController, UIImage, VSAccountStore, _TtC17WallpaperSettings30WSWallpaperSettingsCoordinator;
 @protocol OS_dispatch_queue;
 
 @interface PSUIPrefsListController : PSListController <AAUISignInControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, CoreTelephonyClientSubscriberDelegate, SUIKSearchResultsCollectionViewControllerDelegate, RadiosPreferencesDelegate, DevicePINControllerDelegate, PSTopLevelController>
@@ -43,6 +43,7 @@
     PSSpecifier *_notificationsSpecifier;
     PSSpecifier *_wallpaperSpecifier;
     PSSpecifier *_passcodeSpecifier;
+    PSSpecifier *_homeScreenSpecifier;
     UIImage *_appleAccountSpecifierCachedIcon;
     PSSpecifier *_appleAccountSpecifier;
     PSSpecifier *_videoSubscriberGroupSpecifier;
@@ -59,6 +60,7 @@
     PSSpecifier *_homeKitSpecifier;
     PSSpecifier *_healthKitSpecifier;
     PSSpecifier *_emergencySOSSpecifier;
+    PSSpecifier *_exposureNotificationSpecifier;
     _Bool _wifiValueIsClean;
     _Bool _bluetoothValueIsClean;
     NSArray *_originalSpecifiers;
@@ -71,16 +73,27 @@
     CoreTelephonyClient *_coreTelephonyClient;
     _Bool skipSelectingDefaultCategoryOnLaunch;
     _Bool _deferredURLLoadForThirdPartyApp;
+    _Bool __cellularDataSettingInitialized;
+    _Bool __cellularDataSetting;
     NSString *_bluetoothString;
     NSArray *_followupSpecifiers;
     PSKeyboardNavigationSearchController *_spotlightSearchController;
     SUIKSearchResultsCollectionViewController *_searchResultsController;
     NSString *_wifiString;
+    struct __CTServerConnection *__ctConnection;
+    _TtC17WallpaperSettings30WSWallpaperSettingsCoordinator *_wallpaperCoordinator;
+    NSString *_spotlightSearchTerm;
 }
 
 + (void)setAirplaneMode:(_Bool)arg1;
 + (_Bool)airplaneMode;
 + (id)radiosPreferences;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *spotlightSearchTerm; // @synthesize spotlightSearchTerm=_spotlightSearchTerm;
+@property(retain, nonatomic) _TtC17WallpaperSettings30WSWallpaperSettingsCoordinator *wallpaperCoordinator; // @synthesize wallpaperCoordinator=_wallpaperCoordinator;
+@property(nonatomic) struct __CTServerConnection *_ctConnection; // @synthesize _ctConnection=__ctConnection;
+@property(nonatomic) _Bool _cellularDataSetting; // @synthesize _cellularDataSetting=__cellularDataSetting;
+@property(nonatomic) _Bool _cellularDataSettingInitialized; // @synthesize _cellularDataSettingInitialized=__cellularDataSettingInitialized;
 @property(nonatomic) _Bool deferredURLLoadForThirdPartyApp; // @synthesize deferredURLLoadForThirdPartyApp=_deferredURLLoadForThirdPartyApp;
 @property(copy, nonatomic) NSString *wifiString; // @synthesize wifiString=_wifiString;
 @property(retain, nonatomic) SUIKSearchResultsCollectionViewController *searchResultsController; // @synthesize searchResultsController=_searchResultsController;
@@ -88,9 +101,13 @@
 @property(retain, nonatomic) NSArray *followupSpecifiers; // @synthesize followupSpecifiers=_followupSpecifiers;
 @property(copy, nonatomic) NSString *bluetoothString; // @synthesize bluetoothString=_bluetoothString;
 @property(nonatomic) _Bool skipSelectingDefaultCategoryOnLaunch; // @synthesize skipSelectingDefaultCategoryOnLaunch;
-- (void).cxx_destruct;
+- (_Bool)isCellularDataEnabled;
+- (void)fetchCellularDataEnabled;
+- (_Bool)_allowsBorderForCell:(id)arg1;
 - (void)_configureImageViewForRow:(id)arg1;
 - (void)didDismissSearchController:(id)arg1;
+- (void)willDismissSearchController:(id)arg1;
+- (void)willPresentSearchController:(id)arg1;
 - (_Bool)searchBarShouldEndEditing:(id)arg1;
 - (void)searchBarTextDidEndEditing:(id)arg1;
 - (void)dismissPopover;
@@ -104,6 +121,8 @@
 - (_Bool)searchResultsCollectionViewController:(id)arg1 shouldShowCategory:(id)arg2;
 - (long long)searchResultsCollectionViewController:(id)arg1 sortCategory1:(id)arg2 sortCategory2:(id)arg3;
 - (void)searchResultsCollectionViewController:(id)arg1 didSelectURL:(id)arg2;
+- (void)continueSearchInSettingsWithTerm:(id)arg1;
+- (void)_delayedSpotlightSearch;
 - (void)_handleOnsiteProfileInstallation;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)indexManifests;
@@ -178,16 +197,18 @@
 - (id)categoryController;
 - (id)specifierForBundle:(id)arg1;
 - (void)loadPPTTestSpecifiers:(int)arg1;
-- (void)_reallyLoadThirdPartySpecifiersForApps:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_reallyLoadThirdPartySpecifiersForApps:(id)arg1 shouldAddAppClipSpecifier:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)loadThirdPartySpecifierIfNeededForBundleID:(id)arg1;
 - (void)_loadThirdPartySpecifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadThirdPartySpecifiersIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setDesiredVerticalContentOffsetItemNamed:(id)arg1;
+- (_Bool)isAppClipsAllowed;
 - (_Bool)handlePendingURL;
 - (id)specifiers;
 - (_Bool)shouldShowSimulatorSettings;
 - (id)bundle;
 - (id)passbookSpecifier;
+- (void)showSecurityResearchDeviceInfo;
 - (void)showDeviceSupervisionInfo;
 - (void)updateAccountSpecifiers;
 - (void)updateHomeKitSpecifierWithCompletion:(CDUnknownBlockType)arg1;
@@ -204,11 +225,14 @@
 - (void)insertMovedThirdPartySpecifiersAnimated:(_Bool)arg1;
 - (id)_specifierDictionaryForDeveloperBundlePath:(id)arg1 identifier:(id)arg2;
 - (id)_specifierDictionaryForBundlePath:(id)arg1 identifier:(id)arg2 internalIcon:(_Bool)arg3 searchPlist:(id)arg4;
+- (_Bool)_exposureNotificationAvailable;
 - (_Bool)_showSOS;
+- (_Bool)_shouldPresentModernThirdPartyAppListForBundleIdentifier:(id)arg1;
 - (id)selectSpecifier:(id)arg1;
 - (void)_showControllerFromSpecifier:(id)arg1;
 - (id)_sidebarSpecifierForCategoryController;
 - (void)showPINSheet:(id)arg1;
+- (void)didSelectRowAtIndexPath:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -218,8 +242,10 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)testSpecifierCountAfterBlock:(CDUnknownBlockType)arg1;
 - (void)reloadAsyncSpecifiersWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateResearchDeviceTextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSupervisedTextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateApplePayWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateExposureNotificationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSOSWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateVPNWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateFollowupSpecifiersWithCompletion:(CDUnknownBlockType)arg1;
@@ -240,6 +266,8 @@
 - (id)_primarySpecifierOrdering;
 - (void)rerootNavigationController;
 - (void)reloadSpecifiers;
+- (void)viewDidLayoutSubviews;
+- (long long)tableViewStyle;
 - (void)clearCache;
 - (void)setSpeakerAccessory:(id)arg1 eqAvailable:(_Bool)arg2;
 

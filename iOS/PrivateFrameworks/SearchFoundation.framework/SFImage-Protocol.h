@@ -11,6 +11,7 @@
 @protocol SFImage <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int cornerRoundingStyle;
 @property(nonatomic) int source;
 @property(copy, nonatomic) NSString *identifier;
 @property(copy, nonatomic) NSString *keyColor;

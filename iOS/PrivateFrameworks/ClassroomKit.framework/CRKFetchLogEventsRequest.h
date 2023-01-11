@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskRequest.h"
+#import <DeviceManagement/CATTaskRequest.h>
 
 @class NSDate, NSString;
 
@@ -16,9 +16,9 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *sessionToken; // @synthesize sessionToken=_sessionToken;
 @property(copy, nonatomic) NSDate *cursorDate; // @synthesize cursorDate=_cursorDate;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

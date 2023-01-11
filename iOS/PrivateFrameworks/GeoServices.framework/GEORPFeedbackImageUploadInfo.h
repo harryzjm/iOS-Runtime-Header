@@ -13,20 +13,21 @@
 @interface GEORPFeedbackImageUploadInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_clientImageUuid;
     NSString *_imageId;
+    NSString *_imageUploadHttpMethod;
     NSString *_imageUploadUrl;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_clientImageUuid:1;
         unsigned int read_imageId:1;
+        unsigned int read_imageUploadHttpMethod:1;
         unsigned int read_imageUploadUrl:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientImageUuid:1;
-        unsigned int wrote_imageId:1;
-        unsigned int wrote_imageUploadUrl:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,17 +43,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *imageUploadHttpMethod;
+@property(readonly, nonatomic) _Bool hasImageUploadHttpMethod;
 @property(retain, nonatomic) NSString *imageUploadUrl;
 @property(readonly, nonatomic) _Bool hasImageUploadUrl;
-- (void)_readImageUploadUrl;
 @property(retain, nonatomic) NSString *clientImageUuid;
 @property(readonly, nonatomic) _Bool hasClientImageUuid;
-- (void)_readClientImageUuid;
 @property(retain, nonatomic) NSString *imageId;
 @property(readonly, nonatomic) _Bool hasImageId;
-- (void)_readImageId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

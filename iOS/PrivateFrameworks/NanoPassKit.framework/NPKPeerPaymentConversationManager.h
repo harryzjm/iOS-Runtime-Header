@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSConversation, NPKPeerPaymentConversationContext, NSString, PKPeerPaymentController, PKPeerPaymentRecipient;
+@class MSConversation, NPKPeerPaymentConversationContext, NSString, PKPeerPaymentController, PKPeerPaymentRecipient, PKPeerPaymentService;
 @protocol OS_dispatch_queue;
 
 @interface NPKPeerPaymentConversationManager : NSObject
@@ -17,13 +17,15 @@
     NPKPeerPaymentConversationContext *_conversationContext;
     NSString *_currentRecipientAddressLookup;
     PKPeerPaymentController *_currentPeerPaymentController;
+    PKPeerPaymentService *_peerPaymentService;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PKPeerPaymentService *peerPaymentService; // @synthesize peerPaymentService=_peerPaymentService;
 @property(nonatomic) __weak PKPeerPaymentController *currentPeerPaymentController; // @synthesize currentPeerPaymentController=_currentPeerPaymentController;
 @property(retain, nonatomic) NSString *currentRecipientAddressLookup; // @synthesize currentRecipientAddressLookup=_currentRecipientAddressLookup;
 @property(retain, nonatomic) NPKPeerPaymentConversationContext *conversationContext; // @synthesize conversationContext=_conversationContext;
-- (void).cxx_destruct;
 - (id)_newPeerPaymentController;
 - (id)_sharedPeerPaymentWebService;
 - (void)_postNotificationWithRecipient:(id)arg1 error:(id)arg2;
@@ -33,6 +35,10 @@
 - (id)_ambiguousSenderAddressErrorWithUnderlyingError:(id)arg1;
 - (id)_negativeBalanceErrorWithUnderlyingError:(id)arg1;
 - (id)_displayableErrorWithError:(id)arg1;
+- (void)_accountDidChange;
+- (void)_internalQueue_performRequestWithAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performRequestWithAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_internalQueue_forceLookupRecipientInformation;
 - (void)_internalQueue_lookupRecipientInformationWithAddress:(id)arg1 senderAddress:(id)arg2;
 - (void)lookupRecipientInformationWithAddress:(id)arg1 senderAddress:(id)arg2;
 - (void)_internalQueue_performPaymentWithAmount:(id)arg1 requestToken:(id)arg2 completion:(CDUnknownBlockType)arg3;

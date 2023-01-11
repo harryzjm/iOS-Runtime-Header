@@ -4,30 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
-
-@class NSString;
-
-@interface AMSCardEnrollmentVerificationTask <AMSBagConsumer>
+@interface AMSCardEnrollmentVerificationTask
 {
 }
 
 + (id)_performSilentEnrollmentPaymentSessionWithContext:(id)arg1;
-+ (id)_bagKeySet;
-+ (void)addRequiredBagKeysToAggregator:(id)arg1;
-+ (id)bagSubProfileVersion;
-+ (id)bagSubProfile;
-+ (id)bagKeySet;
 + (id)performPaymentVerificationForPayment:(id)arg1 isDefault:(_Bool)arg2 bag:(id)arg3;
 + (id)performPaymentVerificationForPayment:(id)arg1 isDefault:(_Bool)arg2;
 + (void)verifyPayment:(id)arg1 isDefault:(_Bool)arg2 bag:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)verifyPayment:(id)arg1 isDefault:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

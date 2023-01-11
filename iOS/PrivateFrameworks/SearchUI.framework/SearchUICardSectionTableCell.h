@@ -10,6 +10,9 @@
 {
 }
 
+- (id)leadingTextView;
+- (id)leadingView;
+- (void)tabKeyPressed;
 - (void)updateChevronVisible:(_Bool)arg1 leaveSpaceForChevron:(_Bool)arg2;
 - (void)updateWithRowModel:(id)arg1;
 - (void)setDelegate:(id)arg1;

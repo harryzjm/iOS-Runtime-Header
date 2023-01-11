@@ -17,6 +17,7 @@
     _Bool _observing;
     long long _targetDotPosition;
     _Bool _showsFullSignalStrength;
+    _Bool _tritiumIsOn;
     id <CLKMonochromeFilterProvider> _filterProvider;
     NTKExplorerDotLayoutConstraints *_dotLayoutConstraints;
     NTKExplorerDotColorOptions *_dotColorOptions;
@@ -30,16 +31,18 @@
 + (double)dotBorderWidth;
 + (double)dotSpacing;
 + (double)dotDiameter;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool tritiumIsOn; // @synthesize tritiumIsOn=_tritiumIsOn;
 @property(nonatomic) _Bool showsFullSignalStrength; // @synthesize showsFullSignalStrength=_showsFullSignalStrength;
 @property(nonatomic) long long signalStrengthBars; // @synthesize signalStrengthBars=_signalStrengthBars;
 @property(readonly, nonatomic) long long position; // @synthesize position=_position;
 @property(retain, nonatomic) NTKExplorerDotColorOptions *dotColorOptions; // @synthesize dotColorOptions=_dotColorOptions;
 @property(retain, nonatomic) NTKExplorerDotLayoutConstraints *dotLayoutConstraints; // @synthesize dotLayoutConstraints=_dotLayoutConstraints;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
 - (void)_layoutDotLayers;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (id)connectivityDotBackingColor;
 @property(readonly, nonatomic) UIColor *noServiceDotColor;
 @property(readonly, nonatomic) UIColor *connectedDotBackgroundColor;
 @property(readonly, nonatomic) UIColor *connectedDotColor;

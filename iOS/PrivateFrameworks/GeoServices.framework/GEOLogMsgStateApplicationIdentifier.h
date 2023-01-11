@@ -13,20 +13,19 @@
 @interface GEOLogMsgStateApplicationIdentifier : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _appDarkMode;
     struct {
         unsigned int has_appDarkMode:1;
         unsigned int read_appIdentifier:1;
         unsigned int read_appMajorVersion:1;
         unsigned int read_appMinorVersion:1;
-        unsigned int wrote_appIdentifier:1;
-        unsigned int wrote_appMajorVersion:1;
-        unsigned int wrote_appMinorVersion:1;
-        unsigned int wrote_appDarkMode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,19 +39,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasAppDarkMode;
 @property(nonatomic) _Bool appDarkMode;
 @property(retain, nonatomic) NSString *appMinorVersion;
 @property(readonly, nonatomic) _Bool hasAppMinorVersion;
-- (void)_readAppMinorVersion;
 @property(retain, nonatomic) NSString *appMajorVersion;
 @property(readonly, nonatomic) _Bool hasAppMajorVersion;
-- (void)_readAppMajorVersion;
 @property(retain, nonatomic) NSString *appIdentifier;
 @property(readonly, nonatomic) _Bool hasAppIdentifier;
-- (void)_readAppIdentifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

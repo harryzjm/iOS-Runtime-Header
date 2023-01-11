@@ -23,9 +23,9 @@
     CDUnknownBlockType _dismissalBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
 @property(retain, nonatomic) NSArray *previousViewControllers; // @synthesize previousViewControllers=_previousViewControllers;
-- (void).cxx_destruct;
 - (id)activeDocument;
 - (void)updatePreferredFocusedViewStateForFocus:(_Bool)arg1;
 - (void)_dismissForLastViewController:(_Bool)arg1;
@@ -49,6 +49,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;

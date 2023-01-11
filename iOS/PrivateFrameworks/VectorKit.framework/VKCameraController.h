@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _regionChangeCount;
     _Bool _inProgressRegionChangeIsAnimated;
     struct VKEdgeInsets _edgeInsets;
+    _Bool _edgeInsetsAnimating;
     struct MapDataAccess *_mapDataAccess;
     struct AnimationRunner *_animationRunner;
     struct RunLoopController *_runLoopController;
@@ -28,13 +29,11 @@ __attribute__((visibility("hidden")))
     _Bool _staysCenteredDuringRotation;
     _Bool _isPitchEnabled;
     _Bool _isRotateEnabled;
-    _Bool _allowDatelineWraparound;
 }
 
 @property(readonly, nonatomic) struct RunLoopController *runLoopController; // @synthesize runLoopController=_runLoopController;
 @property(readonly, nonatomic) struct AnimationRunner *animationRunner; // @synthesize animationRunner=_animationRunner;
 @property(readonly, nonatomic) struct MapDataAccess *mapDataAccess; // @synthesize mapDataAccess=_mapDataAccess;
-@property(nonatomic) _Bool allowDatelineWraparound; // @synthesize allowDatelineWraparound=_allowDatelineWraparound;
 @property(nonatomic) _Bool isRotateEnabled; // @synthesize isRotateEnabled=_isRotateEnabled;
 @property(nonatomic) _Bool isPitchEnabled; // @synthesize isPitchEnabled=_isPitchEnabled;
 @property(nonatomic) _Bool staysCenteredDuringRotation; // @synthesize staysCenteredDuringRotation=_staysCenteredDuringRotation;
@@ -47,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)viewportInfo;
 @property(readonly, nonatomic) double altitude;
 @property(readonly, nonatomic) double maxPitch;
+@property(readonly, nonatomic) double minPitch;
 @property(nonatomic) double pitch;
 @property(readonly, nonatomic) double presentationHeading;
 @property(nonatomic) double heading;
@@ -72,8 +72,8 @@ __attribute__((visibility("hidden")))
 - (double)currentZoomLevel;
 - (double)maximumZoomLevel;
 - (double)minimumZoomLevel;
-- (void)edgeInsetsDidEndAnimating;
-- (void)edgeInsetsWillBeginAnimating;
+- (_Bool)edgeInsetsAnimating;
+- (void)setEdgeInsetsAnimating:(_Bool)arg1;
 - (struct VKEdgeInsets)edgeInsets;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 - (Matrix_443f5d51)cursorFromScreenPoint:(struct CGPoint)arg1;

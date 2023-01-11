@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <coreroutine/RTPersistenceContainerDelegate-Protocol.h>
 #import <coreroutine/RTPersistenceContextDelegate-Protocol.h>
 #import <coreroutine/RTPersistenceModelProvider-Protocol.h>
 
 @class NSArray, NSManagedObjectModel, NSMutableArray, NSPointerArray, NSRecursiveLock, NSString, NSURL, RTPersistenceContainer, RTPersistenceStore;
 @protocol RTPersistenceDelegate, RTPersistenceMirroringDelegate;
 
-@interface RTPersistenceManager <RTPersistenceModelProvider, RTPersistenceContextDelegate>
+@interface RTPersistenceManager <RTPersistenceContainerDelegate, RTPersistenceModelProvider, RTPersistenceContextDelegate>
 {
     NSURL *_modelsDirectory;
     NSURL *_storesDirectory;
@@ -29,10 +30,13 @@
 
 + (id)defaultStoresDirectory;
 + (id)defaultModelsDirectory;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <RTPersistenceMirroringDelegate> mirroringDelegate; // @synthesize mirroringDelegate=_mirroringDelegate;
 @property(nonatomic) __weak id <RTPersistenceDelegate> delegate; // @synthesize delegate=_delegate;
 @property unsigned long long availability; // @synthesize availability=_availability;
-- (void).cxx_destruct;
+- (void)_updateAvailabilityAfterSetupAttemptWithAvailability:(unsigned long long)arg1;
+- (void)container:(id)arg1 failedToActivateRequestsQueue:(id)arg2;
+- (void)container:(id)arg1 willActivateRequestsQueue:(id)arg2;
 - (unsigned long long)countOfPersistenceStores;
 - (id)persistenceStoreForType:(unsigned long long)arg1;
 - (id)historyTokenForStoreType:(unsigned long long)arg1;
@@ -44,7 +48,7 @@
 - (void)performImportMirroringRequestWithQualityOfService:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)performMirroringRequestOfType:(long long)arg1 qualityOfService:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)persistenceContextShouldExecute:(id)arg1;
-- (void)persistenceContextPerformedSave:(id)arg1;
+- (_Bool)persistenceContextPerformedSave:(id)arg1 error:(id *)arg2;
 - (void)persistenceContext:(id)arg1 encounteredError:(id)arg2;
 - (id)modelNamed:(id)arg1;
 - (id)urlForModelWithName:(id)arg1;
@@ -66,7 +70,7 @@
 - (void)setContainer:(id)arg1;
 - (void)trackContext:(id)arg1;
 - (id)waitForPersistenceContext;
-- (id)persistenceContextWithOptions:(long long)arg1;
+- (id)persistenceContextWithOptions:(unsigned long long)arg1;
 - (id)managedObjectContext;
 - (void)createManagedObjectContext:(CDUnknownBlockType)arg1;
 - (_Bool)initializeContainer;

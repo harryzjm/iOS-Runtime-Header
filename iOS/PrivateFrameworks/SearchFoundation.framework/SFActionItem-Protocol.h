@@ -11,6 +11,11 @@
 @protocol SFActionItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int directionsMode;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute;
+@property(retain, nonatomic) SFPunchout *customDirectionsPunchout;
+@property(copy, nonatomic) NSString *interactionContentType;
+@property(copy, nonatomic) NSString *universalLibraryID;
 @property(nonatomic) int mediaEntityType;
 @property(copy, nonatomic) NSString *persistentID;
 @property(copy, nonatomic) NSURL *messageURL;

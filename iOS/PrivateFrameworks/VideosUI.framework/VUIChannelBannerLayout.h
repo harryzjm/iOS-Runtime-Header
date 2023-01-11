@@ -6,27 +6,33 @@
 
 #import <TVMLKit/TVViewLayout.h>
 
-@class VUIAppleTVChannelLogoLayout, VUIButtonLayout, VUITextLayout;
+@class VUIAppleTVChannelLogoLayout, VUIButtonLayout, VUIProductUberBackgroundViewLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIChannelBannerLayout : TVViewLayout
 {
     _Bool _isSubscribed;
+    _Bool _descriptionPreferredOnPhoneSizeClass;
     VUIAppleTVChannelLogoLayout *_channelLogoLayout;
     VUITextLayout *_descriptionTextLayout;
     VUITextLayout *_textLayout;
     VUITextLayout *_disclaimerTextLayout;
     VUIButtonLayout *_subscribeButtonLayout;
+    VUIProductUberBackgroundViewLayout *_uberBackgroundViewLayout;
 }
 
++ (void)_updateTextColorForDisclaimerLayout:(id)arg1 hasBgImage:(_Bool)arg2;
++ (void)_updateTextColorForDescriptionLayout:(id)arg1 hasBgImage:(_Bool)arg2;
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) VUIProductUberBackgroundViewLayout *uberBackgroundViewLayout; // @synthesize uberBackgroundViewLayout=_uberBackgroundViewLayout;
 @property(retain, nonatomic) VUIButtonLayout *subscribeButtonLayout; // @synthesize subscribeButtonLayout=_subscribeButtonLayout;
 @property(retain, nonatomic) VUITextLayout *disclaimerTextLayout; // @synthesize disclaimerTextLayout=_disclaimerTextLayout;
 @property(retain, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 @property(retain, nonatomic) VUITextLayout *descriptionTextLayout; // @synthesize descriptionTextLayout=_descriptionTextLayout;
 @property(retain, nonatomic) VUIAppleTVChannelLogoLayout *channelLogoLayout; // @synthesize channelLogoLayout=_channelLogoLayout;
+@property(nonatomic) _Bool descriptionPreferredOnPhoneSizeClass; // @synthesize descriptionPreferredOnPhoneSizeClass=_descriptionPreferredOnPhoneSizeClass;
 @property(nonatomic) _Bool isSubscribed; // @synthesize isSubscribed=_isSubscribed;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

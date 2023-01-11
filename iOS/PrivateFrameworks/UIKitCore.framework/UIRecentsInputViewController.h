@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UIViewController *_headerContainerViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *headerContainerViewController; // @synthesize headerContainerViewController=_headerContainerViewController;
 @property(retain, nonatomic) UIView *headerContainerView; // @synthesize headerContainerView=_headerContainerView;
 @property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
@@ -38,10 +39,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long containingEffectStyle; // @synthesize containingEffectStyle=_containingEffectStyle;
 @property(retain, nonatomic) UILexicon *recentInputs; // @synthesize recentInputs=_recentInputs;
 @property(nonatomic) __weak id <UIRecentsInputViewControllerDelegate> recentInputDelegate; // @synthesize recentInputDelegate=_recentInputDelegate;
-- (void).cxx_destruct;
-- (id)_uiktest_UnfocusedCellBackgroundView;
-- (id)_uiktest_FocusedCellLabel;
-- (id)_uiktest_UnfocusedCellLabel;
 - (void)_overrideTraitCollectionForHeaderViewController;
 - (void)_delete:(id)arg1;
 - (void)scrollViewDidChangeContentSize:(id)arg1;

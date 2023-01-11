@@ -17,6 +17,7 @@
     unsigned int _filterType;
     NSString *_mailboxId;
     unsigned int _type;
+    NSString *_url;
     _Bool _syncEnabled;
     _Bool _syncRequested;
     struct {
@@ -28,6 +29,8 @@
 }
 
 + (id)protoMailboxFromMailbox:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *url; // @synthesize url=_url;
 @property(nonatomic) _Bool syncRequested; // @synthesize syncRequested=_syncRequested;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
 @property(nonatomic) _Bool syncEnabled; // @synthesize syncEnabled=_syncEnabled;
@@ -35,7 +38,6 @@
 @property(retain, nonatomic) NSString *customName; // @synthesize customName=_customName;
 @property(retain, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property(retain, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -45,6 +47,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasUrl;
 @property(nonatomic) _Bool hasSyncRequested;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) _Bool hasSyncEnabled;

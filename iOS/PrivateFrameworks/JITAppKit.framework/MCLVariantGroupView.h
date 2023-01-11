@@ -8,6 +8,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface MCLVariantGroupView : UIView
 {
     NSMutableArray *_buttons;
@@ -20,12 +21,12 @@
     long long _variantsPerLine;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool actionVariant; // @synthesize actionVariant=_actionVariant;
 @property(nonatomic) long long variantsPerLine; // @synthesize variantsPerLine=_variantsPerLine;
 @property(nonatomic) long long variantCount; // @synthesize variantCount=_variantCount;
 @property(nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
 @property(retain, nonatomic) Class buttonClass; // @synthesize buttonClass=_buttonClass;
-- (void).cxx_destruct;
 - (void)selectItemAtIndex:(long long)arg1;
 - (void)selectVariant:(id)arg1;
 - (id)createVariantButton:(Class)arg1 type:(long long)arg2;

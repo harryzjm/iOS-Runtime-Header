@@ -29,10 +29,12 @@
 - (void).cxx_destruct;
 - (void)_queue_sessionFinished;
 - (void)_queue_sessionPrepared;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)hktest_setStateTransitionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishAggregationWithDate:(id)arg1;
 - (_Bool)storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) id <HDWorkoutDataAccumulator> workoutDataAccumulator;
+- (void)generateConfigurationUpdate:(id)arg1;
 - (void)generateMetadata:(id)arg1;
 - (void)generateError:(id)arg1;
 - (void)generateEvent:(id)arg1;

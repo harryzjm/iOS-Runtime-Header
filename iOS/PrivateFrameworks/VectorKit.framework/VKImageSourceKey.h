@@ -24,9 +24,17 @@
     _Bool _hasDataValue;
     unsigned int _dataValue;
     struct CGPoint _imageCenter;
+    long long _sizeGroup;
+    float _contentScale;
+    struct IconVariant _iconVariant;
+    unsigned int _countryCode;
     NSArray *_fallbackImageKeys;
 }
 
+- (id).cxx_construct;
+@property(readonly, nonatomic) unsigned int countryCode; // @synthesize countryCode=_countryCode;
+@property(readonly, nonatomic) float contentScale; // @synthesize contentScale=_contentScale;
+@property(nonatomic) long long sizeGroup; // @synthesize sizeGroup=_sizeGroup;
 @property(retain, nonatomic) NSArray *fallbackImageKeys; // @synthesize fallbackImageKeys=_fallbackImageKeys;
 @property(nonatomic) struct CGPoint imageCenter; // @synthesize imageCenter=_imageCenter;
 @property(nonatomic) unsigned int dataValue; // @synthesize dataValue=_dataValue;
@@ -41,8 +49,9 @@
 @property(readonly, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property(readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property(readonly, nonatomic) unsigned int keyType; // @synthesize keyType=_keyType;
-- (id).cxx_construct;
 - (void)dealloc;
+@property(readonly, nonatomic) unsigned int secondaryVariant;
+@property(readonly, nonatomic) unsigned int variant;
 @property(readonly, nonatomic) CDStruct_83984b6f transitLineColor;
 - (id)initWithLabelImageKey:(const shared_ptr_85e81048 *)arg1;
 - (id)initWithIconName:(const char *)arg1;

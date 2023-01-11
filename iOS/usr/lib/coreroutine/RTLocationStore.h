@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSObject, RTTimer, RTTimerManager;
+#import <coreroutine/RTEnumerableStore-Protocol.h>
+
+@class NSMutableArray, NSObject, NSString, RTTimer, RTTimerManager;
 @protocol OS_os_transaction;
 
-@interface RTLocationStore
+@interface RTLocationStore <RTEnumerableStore>
 {
     RTTimerManager *_timerManager;
     NSObject<OS_os_transaction> *_flushTransaction;
@@ -15,9 +17,11 @@
     RTTimer *_flushTimer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) RTTimer *flushTimer; // @synthesize flushTimer=_flushTimer;
 @property(readonly, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
-- (void).cxx_destruct;
+- (id)fetchRequestFromStoredLocationOptions:(id)arg1;
+- (id)fetchRequestFromOptions:(id)arg1 offset:(unsigned long long)arg2 error:(id *)arg3;
 - (void)fetchMetricsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchMetricsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeLocationsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -38,6 +42,12 @@
 - (id)initWithPersistenceManager:(id)arg1 timerManager:(id)arg2;
 - (id)initWithPersistenceManager:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

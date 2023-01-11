@@ -15,15 +15,15 @@
     long long _maximumZoom;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long maximumZoom; // @synthesize maximumZoom=_maximumZoom;
 @property(nonatomic) long long minimumZoom; // @synthesize minimumZoom=_minimumZoom;
 @property(nonatomic) __weak id <HKGraphSeriesDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (CDStruct_6ca94699)blockPathForX:(id)arg1 zoom:(long long)arg2;
 - (void)invalidateCache;
 - (_Bool)hasAvailableBlocksBetweenStartPath:(CDStruct_6ca94699)arg1 endPath:(CDStruct_6ca94699)arg2;
 - (_Bool)hasPendingQueriesBetweenStartPath:(CDStruct_6ca94699)arg1 endPath:(CDStruct_6ca94699)arg2;
-- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2;
+- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2 priorityDelegate:(id)arg3;
 - (id)cachedBlockForPath:(CDStruct_6ca94699)arg1 context:(id)arg2;
 - (id)init;
 

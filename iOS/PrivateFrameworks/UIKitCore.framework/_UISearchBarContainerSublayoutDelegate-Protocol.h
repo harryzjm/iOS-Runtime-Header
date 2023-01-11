@@ -11,6 +11,7 @@
 @protocol _UISearchBarContainerSublayoutDelegate <NSObject>
 @property(nonatomic, getter=isHostingNavBarTransitionActive) _Bool hostingNavBarTransitionActive;
 @property(readonly, nonatomic, getter=isProspective) _Bool prospective;
+- (double)layout:(_UISearchBarLayoutBase *)arg1 fontScaledValueForValue:(double)arg2;
 - (void)containerLayoutWillUpdateLayout:(_UISearchBarLayoutBase *)arg1;
 @end
 

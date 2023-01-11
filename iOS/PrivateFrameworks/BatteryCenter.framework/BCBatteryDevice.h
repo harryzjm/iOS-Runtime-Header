@@ -9,7 +9,7 @@
 #import <BatteryCenter/NSCopying-Protocol.h>
 #import <BatteryCenter/NSSecureCoding-Protocol.h>
 
-@class NSString, UIImage;
+@class NSString;
 
 @interface BCBatteryDevice : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,7 +17,6 @@
     NSString *_matchIdentifier;
     long long _percentCharge;
     _Bool _charging;
-    UIImage *_glyph;
     _Bool _connected;
     _Bool _batterySaverModeActive;
     _Bool _lowBattery;
@@ -31,6 +30,7 @@
     long long _productIdentifier;
     NSString *_accessoryIdentifier;
     NSString *_name;
+    NSString *_modelNumber;
     unsigned long long _parts;
     unsigned long long _accessoryCategory;
     NSString *_groupName;
@@ -39,6 +39,7 @@
 
 + (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isFake) _Bool fake; // @synthesize fake=_fake;
 @property(nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property(readonly, copy, nonatomic) NSString *matchIdentifier; // @synthesize matchIdentifier=_matchIdentifier;
@@ -54,17 +55,15 @@
 @property(nonatomic, getter=isCharging) _Bool charging; // @synthesize charging=_charging;
 @property(nonatomic, getter=isConnected) _Bool connected; // @synthesize connected=_connected;
 @property(nonatomic) long long percentCharge; // @synthesize percentCharge=_percentCharge;
+@property(copy, nonatomic) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
 @property(readonly, nonatomic) long long productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property(nonatomic) long long powerSourceState; // @synthesize powerSourceState=_powerSourceState;
 @property(readonly, nonatomic) long long vendor; // @synthesize vendor=_vendor;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) UIImage *glyph;
-- (id)_lazyGlyph;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;

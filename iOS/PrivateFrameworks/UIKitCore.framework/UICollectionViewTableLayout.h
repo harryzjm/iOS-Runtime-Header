@@ -57,6 +57,7 @@
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
+- (void).cxx_destruct;
 @property(nonatomic, getter=_showsAdditionalSeparators, setter=_setShowsAdditionalSeparators:) _Bool showsAdditionalSeparators; // @synthesize showsAdditionalSeparators=_showsAdditionalSeparators;
 @property(retain, nonatomic) NSIndexPath *deletedIndexPath; // @synthesize deletedIndexPath=_deletedIndexPath;
 @property(retain, nonatomic, getter=_swipeActionController, setter=_setSwipeActionController:) UISwipeActionController *swipeActionController; // @synthesize swipeActionController=_swipeActionController;
@@ -71,8 +72,8 @@
 @property(nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
 @property(readonly, nonatomic, getter=_rowSpacing) double rowSpacing; // @synthesize rowSpacing=_rowSpacing;
 @property(retain, nonatomic, getter=_constants) id <UITableConstants> constants; // @synthesize constants=_constants;
-@property(readonly, nonatomic, getter=_multiselectCheckmarkColor) UIColor *multiselectCheckmarkColor;
-@property(readonly, nonatomic, getter=_accessoryBaseColor) UIColor *accessoryBaseColor;
+@property(readonly, nonatomic, getter=_multiselectCheckmarkColor) UIColor *multiselectCheckmarkColor; // @synthesize multiselectCheckmarkColor=_multiselectCheckmarkColor;
+@property(readonly, nonatomic, getter=_accessoryBaseColor) UIColor *accessoryBaseColor; // @synthesize accessoryBaseColor=_accessoryBaseColor;
 @property(readonly, nonatomic, getter=_indexFrame) struct CGRect indexFrame; // @synthesize indexFrame=_indexFrame;
 @property(readonly, nonatomic, getter=_isShowingIndex) _Bool showingIndex; // @synthesize showingIndex=_showingIndex;
 @property(readonly, nonatomic, getter=_bottomPadding) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
@@ -86,7 +87,6 @@
 @property(nonatomic) double sectionFooterHeight; // @synthesize sectionFooterHeight=_sectionFooterHeight;
 @property(nonatomic) double sectionHeaderHeight; // @synthesize sectionHeaderHeight=_sectionHeaderHeight;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
-- (void).cxx_destruct;
 - (void)_swipeToDeleteCell:(id)arg1;
 - (void)_cellAccessoryButtonTappedAtIndexPath:(id)arg1;
 - (void)_setHeight:(double)arg1 forRowAtIndexPath:(id)arg2 usingPresentationValues:(_Bool)arg3;
@@ -97,8 +97,6 @@
 - (double)_maxTitleWidthForHeaderInSection:(long long)arg1;
 - (long long)_titleAlignmentForFooterInSection:(long long)arg1;
 - (long long)_titleAlignmentForHeaderInSection:(long long)arg1;
-- (id)_viewForFooterInSection:(long long)arg1;
-- (id)_viewForHeaderInSection:(long long)arg1;
 - (id)_detailTextForHeaderInSection:(long long)arg1;
 - (id)_titleForFooterInSection:(long long)arg1;
 - (id)_titleForHeaderInSection:(long long)arg1;
@@ -110,6 +108,7 @@
 - (_Bool)_shouldHaveViewForElementOfKind:(id)arg1 atSection:(long long)arg2 useRowData:(_Bool)arg3;
 - (void)_applyContentSizeDeltaImmediately:(double)arg1;
 - (void)_coalesceContentSizeUpdateWithDelta:(double)arg1;
+- (void)_prepareForRowDataHeaderFooterSizing;
 - (double)_dataSourceHeightForFooterInSection:(long long)arg1;
 - (double)_dataSourceHeightForHeaderInSection:(long long)arg1;
 - (double)_dataSourceHeightForRowAtIndexPath:(id)arg1;
@@ -130,6 +129,8 @@
 @property(readonly, nonatomic, getter=_heightForTableHeader) double heightForTableHeader;
 @property(readonly, nonatomic, getter=_isTableHeaderAutohiding) _Bool isTableHeaderAutohiding;
 @property(readonly, nonatomic, getter=_cellSafeAreaInsets) struct UIEdgeInsets cellSafeAreaInsets;
+@property(readonly, nonatomic, getter=_sectionFooterPadding) double sectionFooterPadding;
+@property(readonly, nonatomic, getter=_sectionHeaderPadding) double sectionHeaderPadding;
 @property(readonly, nonatomic, getter=_tableContentInset) struct UIEdgeInsets tableContentInset;
 @property(readonly, nonatomic, getter=_contentInset) struct UIEdgeInsets _contentInset;
 @property(readonly, nonatomic, getter=_sidePadding) double sidePadding;
@@ -160,7 +161,7 @@
 - (void)swipeActionController:(id)arg1 willBeginSwipeForItemAtIndexPath:(id)arg2;
 - (_Bool)swipeActionController:(id)arg1 mayBeginSwipeForItemAtIndexPath:(id)arg2;
 - (void)swipeActionController:(id)arg1 animateView:(id)arg2 actionsView:(id)arg3 forDestructiveAction:(id)arg4 atIndexPath:(id)arg5 withSwipeInfo:(CDStruct_9b6dff2a)arg6 completion:(CDUnknownBlockType)arg7;
-- (void)swipeActionController:(id)arg1 didPerformAction:(id)arg2 canceled:(_Bool)arg3 atIndexPath:(id)arg4;
+- (void)swipeActionController:(id)arg1 didCompleteAction:(id)arg2 cancelled:(_Bool)arg3 atIndexPath:(id)arg4;
 - (void)swipeActionController:(id)arg1 willPerformAction:(id)arg2 atIndexPath:(id)arg3;
 - (id)swipeActionController:(id)arg1 viewForItemAtIndexPath:(id)arg2;
 - (id)swipeActionController:(id)arg1 indexPathForTouchLocation:(struct CGPoint)arg2;

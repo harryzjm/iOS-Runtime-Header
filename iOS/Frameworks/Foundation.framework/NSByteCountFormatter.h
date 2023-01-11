@@ -4,7 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NSByteCountFormatter
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
+
+@class NSString;
+
+@interface NSByteCountFormatter <NSObservable, NSObserver>
 {
     unsigned int _allowedUnits;
     BOOL _countStyle;
@@ -40,6 +45,13 @@
 - (unsigned long long)_options;
 @property long long countStyle;
 @property unsigned long long allowedUnits;
+- (void)receiveObservedValue:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

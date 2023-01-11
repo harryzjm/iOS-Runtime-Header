@@ -13,6 +13,6 @@
 - (void)performAsync:(void (^)(void))arg1 withHandoff:(NSObject<OS_xpc_object> *)arg2;
 - (void)performAsync:(void (^)(void))arg1;
 - (NSObject<OS_dispatch_queue> *)backingQueueIfExists;
-- (void)assertOnQueue;
+- (void)assertBarrierOnQueue;
 @end
 

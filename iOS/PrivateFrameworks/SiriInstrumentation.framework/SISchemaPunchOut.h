@@ -6,37 +6,37 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaPunchOut-Protocol.h>
-
 @class NSData, NSString, SISchemaViewContainer;
 
-@interface SISchemaPunchOut : PBCodable <SISchemaPunchOut, NSSecureCoding>
+@interface SISchemaPunchOut : PBCodable
 {
     NSString *_appID;
     NSString *_urlScheme;
     SISchemaViewContainer *_viewContainer;
     NSData *_viewElementID;
+    _Bool _hasAppID;
+    _Bool _hasUrlScheme;
+    _Bool _hasViewContainer;
+    _Bool _hasViewElementID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasViewElementID; // @synthesize hasViewElementID=_hasViewElementID;
+@property(nonatomic) _Bool hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
+@property(nonatomic) _Bool hasUrlScheme; // @synthesize hasUrlScheme=_hasUrlScheme;
+@property(nonatomic) _Bool hasAppID; // @synthesize hasAppID=_hasAppID;
 @property(copy, nonatomic) NSData *viewElementID; // @synthesize viewElementID=_viewElementID;
 @property(retain, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 @property(copy, nonatomic) NSString *urlScheme; // @synthesize urlScheme=_urlScheme;
 @property(copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
 
 @end
 

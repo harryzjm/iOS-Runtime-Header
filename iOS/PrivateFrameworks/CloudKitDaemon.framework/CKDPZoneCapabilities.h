@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     _Bool _ckql;
     _Bool _fetchChanges;
     _Bool _hierarchicalSharing;
-    _Bool _sharing;
     _Bool _zoneSharing;
     struct {
         unsigned int sharingType:1;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
         unsigned int ckql:1;
         unsigned int fetchChanges:1;
         unsigned int hierarchicalSharing:1;
-        unsigned int sharing:1;
         unsigned int zoneSharing:1;
     } _has;
 }
@@ -32,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hierarchicalSharing; // @synthesize hierarchicalSharing=_hierarchicalSharing;
 @property(nonatomic) _Bool zoneSharing; // @synthesize zoneSharing=_zoneSharing;
 @property(nonatomic) _Bool ckql; // @synthesize ckql=_ckql;
-@property(nonatomic) _Bool sharing; // @synthesize sharing=_sharing;
 @property(nonatomic) _Bool fetchChanges; // @synthesize fetchChanges=_fetchChanges;
 @property(nonatomic) _Bool atomicSaves; // @synthesize atomicSaves=_atomicSaves;
 - (void)mergeFrom:(id)arg1;
@@ -51,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasSharingType;
 @property(nonatomic) int sharingType; // @synthesize sharingType=_sharingType;
 @property(nonatomic) _Bool hasCkql;
-@property(nonatomic) _Bool hasSharing;
 @property(nonatomic) _Bool hasFetchChanges;
 @property(nonatomic) _Bool hasAtomicSaves;
 

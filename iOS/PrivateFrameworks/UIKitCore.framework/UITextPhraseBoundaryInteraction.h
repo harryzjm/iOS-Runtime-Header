@@ -5,11 +5,13 @@
 //
 
 @class UITextGestureTuning;
+@protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
 @interface UITextPhraseBoundaryInteraction
 {
     UITextGestureTuning *_gestureTuning;
+    id <UITextCursorAssertion> _blinkAssertion;
 }
 
 - (void).cxx_destruct;

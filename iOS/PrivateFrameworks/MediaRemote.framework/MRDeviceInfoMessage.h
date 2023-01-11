@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MRSupportedProtocolMessages, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRSupportedProtocolMessages;
 
 @interface MRDeviceInfoMessage
 {
@@ -12,12 +12,10 @@
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)_lastSupportedMessageTypeBeforeSupportedMessagesWereAddedToDeviceInfo;
-- (unsigned long long)_lastSupportedMessageType;
 - (unsigned long long)type;
 - (unsigned long long)encryptionType;
 @property(readonly, nonatomic) MRSupportedProtocolMessages *supportedProtocolMessages;
-@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property(readonly, nonatomic) MRDeviceInfo *deviceInfo;
 - (id)initWithDeviceInfo:(id)arg1;
 
 @end

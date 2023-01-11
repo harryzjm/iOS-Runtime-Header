@@ -36,11 +36,15 @@
 - (void)removeConfirmationHistoryForEvent:(id)arg1;
 - (_Bool)isRejectedEvent:(id)arg1;
 - (_Bool)isConfirmedEvent:(id)arg1;
+- (_Bool)isConfirmedEventWithoutTimeStamp:(id)arg1;
 - (_Bool)isUpdatableContact:(id)arg1;
+- (_Bool)isValidCancelledEvent:(id)arg1;
 - (_Bool)isValidNewEvent:(id)arg1;
 - (_Bool)hasStorageContact:(id)arg1;
 - (_Bool)hasContact:(id)arg1;
 - (_Bool)_anyHash:(id)arg1 inSet:(id)arg2;
+- (void)rejectReminderFromExternalDevice:(id)arg1;
+- (void)confirmReminderFromExternalDevice:(id)arg1;
 - (void)writeAndPushRejectedReminderHashes:(id)arg1;
 - (void)rejectReminder:(id)arg1;
 - (void)writeAndPushConfirmedReminderHashes:(id)arg1;
@@ -48,6 +52,7 @@
 - (void)writeAndPushRejectedEventHashes:(id)arg1;
 - (void)rejectStorageEvent:(id)arg1;
 - (void)rejectEvent:(id)arg1;
+- (void)writeAndPushConfirmedEventWithoutTimestampHashes:(id)arg1;
 - (void)writeAndPushConfirmedEventHashes:(id)arg1;
 - (void)confirmStorageEvent:(id)arg1;
 - (void)confirmEvent:(id)arg1;
@@ -55,7 +60,6 @@
 - (void)confirmOrRejectContact:(id)arg1;
 - (void)rejectRealtimeContact:(id)arg1;
 - (void)confirmOrRejectRecordForContact:(id)arg1;
-- (void)confirmOrRejectCuratedDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetailHashes:(id)arg1;
 - (void)handleSyncedDataChanged:(id)arg1;
@@ -64,6 +68,7 @@
 - (id)hashesForPseudoEventByKey:(id)arg1 forMatching:(_Bool)arg2;
 - (id)hashesForOpaqueKey:(id)arg1 forMatching:(_Bool)arg2;
 - (id)rejectHashesForOpaqueKey:(id)arg1 forMatching:(_Bool)arg2;
+- (id)confirmHashesForOpaqueKeyWithoutTimestamp:(id)arg1 forMatching:(_Bool)arg2;
 - (id)confirmHashesForOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2 forMatching:(_Bool)arg3;
 - (id)confirmHashesForRemindersOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2 forMatching:(_Bool)arg3;
 - (id)identityBasedHashesForPseudoReminder:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2;
@@ -86,10 +91,12 @@
 - (void)pushDontUpdate:(id)arg1;
 - (void)pushStorageDetails:(id)arg1;
 - (void)pushContacts:(id)arg1;
+- (void)pushConfirmedEventWithoutTimestampFields:(id)arg1;
 - (void)pushConfirmedEventFields:(id)arg1;
 - (void)pushRejectedReminders:(id)arg1;
 - (void)pushConfirmedReminders:(id)arg1;
 - (void)pushRejectedEvents:(id)arg1;
+- (void)pushConfirmedEventsWithoutTimestamp:(id)arg1;
 - (void)pushConfirmedEvents:(id)arg1;
 - (void)_setHashes:(id)arg1 forKey:(id)arg2;
 - (void)_tellObserversHashesDidChange;

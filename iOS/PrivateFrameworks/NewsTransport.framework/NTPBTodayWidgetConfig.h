@@ -8,28 +8,35 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface NTPBTodayWidgetConfig : PBCodable <NSCopying>
 {
     long long _minimumArticleExposureDurationToBePreseen;
     double _prerollLoadingTimeout;
+    NSString *_audioIndicatorColor;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSData *_externalAnalyticsConfigurationsData;
     unsigned int _minimumNumberOfTimesPreseenToBeSeen;
-    NSData *_videoGroupsConfigData;
+    _Bool _contentPrefetchEnabled;
     struct {
         unsigned int minimumArticleExposureDurationToBePreseen:1;
         unsigned int prerollLoadingTimeout:1;
         unsigned int minimumNumberOfTimesPreseenToBeSeen:1;
+        unsigned int contentPrefetchEnabled:1;
     } _has;
 }
 
-@property(retain, nonatomic) NSData *videoGroupsConfigData; // @synthesize videoGroupsConfigData=_videoGroupsConfigData;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *audioIndicatorColor; // @synthesize audioIndicatorColor=_audioIndicatorColor;
+@property(nonatomic) _Bool contentPrefetchEnabled; // @synthesize contentPrefetchEnabled=_contentPrefetchEnabled;
+@property(retain, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property(retain, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
 @property(retain, nonatomic) NSData *externalAnalyticsConfigurationsData; // @synthesize externalAnalyticsConfigurationsData=_externalAnalyticsConfigurationsData;
 @property(nonatomic) double prerollLoadingTimeout; // @synthesize prerollLoadingTimeout=_prerollLoadingTimeout;
 @property(nonatomic) unsigned int minimumNumberOfTimesPreseenToBeSeen; // @synthesize minimumNumberOfTimesPreseenToBeSeen=_minimumNumberOfTimesPreseenToBeSeen;
 @property(nonatomic) long long minimumArticleExposureDurationToBePreseen; // @synthesize minimumArticleExposureDurationToBePreseen=_minimumArticleExposureDurationToBePreseen;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -38,7 +45,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasVideoGroupsConfigData;
+@property(readonly, nonatomic) _Bool hasAudioIndicatorColor;
+@property(nonatomic) _Bool hasContentPrefetchEnabled;
+@property(readonly, nonatomic) _Bool hasBackgroundColorDark;
+@property(readonly, nonatomic) _Bool hasBackgroundColorLight;
 @property(readonly, nonatomic) _Bool hasExternalAnalyticsConfigurationsData;
 @property(nonatomic) _Bool hasPrerollLoadingTimeout;
 @property(nonatomic) _Bool hasMinimumNumberOfTimesPreseenToBeSeen;

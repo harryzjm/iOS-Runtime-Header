@@ -16,20 +16,9 @@
 - (id)_gkRecursiveDescriptionForKey:(id)arg1 depth:(long long)arg2;
 - (id)_gkRecursiveDescriptionForKey:(id)arg1;
 - (void)_gkRecursivelyApplyBlock:(CDUnknownBlockType)arg1 depth:(long long)arg2;
-- (_Bool)_gkSuperviewHasPerspectiveTransform;
-- (double)_gkPerspectiveTransformEZ;
-- (void)_gkClearPerspectiveTransform;
-- (void)_gkApplyPerspectiveTransform;
 @property(nonatomic) struct CGPoint integralCenter;
 - (void)_gkSetNeedsRender;
-- (void)_gkPerformWithoutAnimationWhenRotating:(CDUnknownBlockType)arg1;
-- (struct UIEdgeInsets)_gkPopoverPresentationInsets;
-- (struct CGRect)_gkPopoverPresentationRect;
-- (struct CGRect)_gkPopoverPresentationArea;
-- (void)_gkAddStandardFadeTransition;
-- (void)_gkEnumerateSubviewsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)_gkRemovePositionConstraintsForBubble:(id)arg1;
-- (void)_gkAddPositionConstraints:(struct CGPoint)arg1 forBubble:(id)arg2;
+- (void)_gkRemoveAllConstraints;
 - (void)_gkUseAsModalSheetBackgroundWithGroupName:(id)arg1;
 - (void)_gkApplyBackdropViewIfNeededWithGroupName:(id)arg1;
 - (void)_gkApplyBackdropViewWithGroupName:(id)arg1;
@@ -37,5 +26,8 @@
 - (id)_gkApplyFakeStatusBarView;
 - (void)_gkSetDrawsAsKnockout:(_Bool)arg1 inBackdrop:(id)arg2;
 - (void)_gkSetDrawsAsBackdropOverlay:(_Bool)arg1;
+@property(nonatomic, readonly) double lastBaselineMaxY;
+@property(nonatomic, readonly) double lastBaselineFromBottom;
+@property(nonatomic, readonly) double firstBaselineFromTop;
 @end
 

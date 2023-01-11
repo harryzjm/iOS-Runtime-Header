@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
-__attribute__((visibility("hidden")))
-@interface WDImprovementDataCollectionAboutPrivacyViewController : UIViewController
+@interface WDImprovementDataCollectionAboutPrivacyViewController
 {
 }
 
-- (void)done:(id)arg1;
-- (unsigned long long)supportedInterfaceOrientations;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+@property(nonatomic, readonly) unsigned long long supportedInterfaceOrientations;
 - (void)viewDidLoad;
-- (void)loadView;
 
 @end
 

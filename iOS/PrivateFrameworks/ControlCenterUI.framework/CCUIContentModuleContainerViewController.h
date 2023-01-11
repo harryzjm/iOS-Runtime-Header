@@ -9,12 +9,13 @@
 #import <ControlCenterUI/CCUIContentModuleContainer-Protocol.h>
 #import <ControlCenterUI/CCUISafeAppearancePropagationProvider-Protocol.h>
 #import <ControlCenterUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <ControlCenterUI/UIPointerInteractionDelegate-Protocol.h>
 #import <ControlCenterUI/_UIClickPresentationInteractionDelegate-Protocol.h>
 
 @class CCUIContentModuleBackgroundView, CCUIContentModuleContainerPresentationController, CCUIContentModuleContentContainerView, NSArray, NSString, UITapGestureRecognizer, UIView, _UIClickPresentationInteraction;
 @protocol CCUIContentModule, CCUIContentModuleBackgroundViewController, CCUIContentModuleContainerViewControllerDelegate, CCUIContentModuleContentViewController;
 
-@interface CCUIContentModuleContainerViewController : UIViewController <_UIClickPresentationInteractionDelegate, UIGestureRecognizerDelegate, CCUIContentModuleContainer, CCUISafeAppearancePropagationProvider>
+@interface CCUIContentModuleContainerViewController : UIViewController <_UIClickPresentationInteractionDelegate, UIGestureRecognizerDelegate, CCUIContentModuleContainer, CCUISafeAppearancePropagationProvider, UIPointerInteractionDelegate>
 {
     _Bool _expanded;
     _Bool _contentModuleProvidesOwnPlatter;
@@ -34,9 +35,12 @@
     UIView *_maskView;
     UITapGestureRecognizer *_tapRecognizer;
     _UIClickPresentationInteraction *_clickPresentationInteraction;
+    UITapGestureRecognizer *_expandModuleOnTouchTapRecognizer;
     struct UIEdgeInsets _expandedContentEdgeInsets;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UITapGestureRecognizer *expandModuleOnTouchTapRecognizer; // @synthesize expandModuleOnTouchTapRecognizer=_expandModuleOnTouchTapRecognizer;
 @property(nonatomic, getter=isTransitioning) _Bool transitioning; // @synthesize transitioning=_transitioning;
 @property(retain, nonatomic) _UIClickPresentationInteraction *clickPresentationInteraction; // @synthesize clickPresentationInteraction=_clickPresentationInteraction;
 @property(retain, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
@@ -56,7 +60,6 @@
 @property(retain, nonatomic) UIViewController<CCUIContentModuleContentViewController> *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(nonatomic) struct UIEdgeInsets expandedContentEdgeInsets; // @synthesize expandedContentEdgeInsets=_expandedContentEdgeInsets;
 @property(copy, nonatomic) NSString *moduleIdentifier; // @synthesize moduleIdentifier=_moduleIdentifier;
-- (void).cxx_destruct;
 - (void)_didEndTransitionWithContentModuleContainerTransition:(id)arg1 completed:(_Bool)arg2;
 - (void)_configureForContentModuleGroupRenderingIfNecessary;
 - (void)_configureMaskViewIfNecessary;
@@ -71,8 +74,12 @@
 - (struct CGRect)_contentBoundsForExpandedState;
 - (struct CGRect)_contentFrameForRestState;
 - (void)_setDidExpandModulePreference;
+- (void)_handleExpandModuleForTapGestureRecognizer:(id)arg1;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (_Bool)_isForceTouchAvailable;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)willDismissViewController:(id)arg1;
 - (void)willPresentViewController:(id)arg1;
 - (_Bool)definesContentModuleContainer;
@@ -82,12 +89,14 @@
 - (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(_Bool)arg2;
 - (_Bool)clickPresentationInteractionShouldPresent:(id)arg1;
 - (_Bool)clickPresentationInteractionShouldBegin:(id)arg1;
+- (_Bool)ccui_shouldPropagateAppearanceCalls;
 - (void)viewWillLayoutSubviews;
 - (void)_addTopLevelGestureRecognizersFromViewAndSubviews:(id)arg1 toBlockingGestureRecognizers:(id)arg2;
 - (void)_findTopLevelGestureRecognizersForView:(id)arg1 installOnView:(id)arg2;
 - (_Bool)_canShowWhileLocked;
 - (void)loadView;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)willResignActive;
 - (void)willBecomeActive;

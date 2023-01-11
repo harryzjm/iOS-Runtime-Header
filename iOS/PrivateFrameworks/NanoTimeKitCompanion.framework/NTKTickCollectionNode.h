@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIColor;
+
 @interface NTKTickCollectionNode
 {
+    UIColor *_customSmallTickColor;
     unsigned int _ticks;
     unsigned int _l1mod;
     unsigned int _l2mod;
@@ -17,6 +20,7 @@
     struct CGSize _largeSizeInPoints;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int l2mod; // @synthesize l2mod=_l2mod;
 @property(nonatomic) unsigned int l1mod; // @synthesize l1mod=_l1mod;
 @property(nonatomic) double largeFilterWidth; // @synthesize largeFilterWidth=_largeFilterWidth;

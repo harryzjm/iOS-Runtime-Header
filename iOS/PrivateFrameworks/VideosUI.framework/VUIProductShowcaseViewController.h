@@ -6,32 +6,37 @@
 
 #import <TVMLKit/_TVStackTemplateController.h>
 
-@class CAGradientLayer, NSArray, UIView, _TVImageView;
+@class CAGradientLayer, NSArray, UIView, UIViewController;
 @protocol VUIProductUberBackgroundInterface;
 
 __attribute__((visibility("hidden")))
 @interface VUIProductShowcaseViewController : _TVStackTemplateController
 {
     _Bool _lightStatusBar;
-    _TVImageView *_heroImage;
-    id <VUIProductUberBackgroundInterface> _productBanner;
+    UIViewController<VUIProductUberBackgroundInterface> *_productBanner;
     UIView *_navBarGradientView;
     CAGradientLayer *_gradientLayer;
     NSArray *_navBarButtons;
+    UIView *_transitionBackgroundView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *transitionBackgroundView; // @synthesize transitionBackgroundView=_transitionBackgroundView;
 @property(retain, nonatomic) NSArray *navBarButtons; // @synthesize navBarButtons=_navBarButtons;
 @property(retain, nonatomic) CAGradientLayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
 @property(retain, nonatomic) UIView *navBarGradientView; // @synthesize navBarGradientView=_navBarGradientView;
-@property(retain, nonatomic) id <VUIProductUberBackgroundInterface> productBanner; // @synthesize productBanner=_productBanner;
+@property(retain, nonatomic) UIViewController<VUIProductUberBackgroundInterface> *productBanner; // @synthesize productBanner=_productBanner;
 @property(nonatomic) _Bool lightStatusBar; // @synthesize lightStatusBar=_lightStatusBar;
-@property(retain, nonatomic) _TVImageView *heroImage; // @synthesize heroImage=_heroImage;
-- (void).cxx_destruct;
+- (void)_setUserActivityData;
 - (id)_gradientLayer;
 - (void)_configureNavigationBarGradient;
+- (void)_handleAppWillEnterForeground:(id)arg1;
+- (void)_handleAutoHighlightScroll:(id)arg1;
+- (void)_configureTransitionBackgroundView;
 - (void)_configureBannerView:(id)arg1;
 - (void)_setupProductBanner;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)configureAppearanceTransition;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
@@ -39,6 +44,8 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)updateWithViewElement:(id)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 
 @end
 

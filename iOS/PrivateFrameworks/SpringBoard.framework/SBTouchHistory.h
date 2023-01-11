@@ -23,6 +23,7 @@
 - (double)peakSpeed;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (void)reset;
 - (void)updateWithLocation:(struct CGPoint)arg1 timestamp:(double)arg2;
 - (id)init;

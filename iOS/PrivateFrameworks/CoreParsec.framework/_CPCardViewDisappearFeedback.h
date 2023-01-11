@@ -10,14 +10,17 @@
 #import <CoreParsec/_CPCardViewDisappearFeedback-Protocol.h>
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, _CPCardForFeedback;
 
 @interface _CPCardViewDisappearFeedback : PBCodable <_CPProcessableFeedback, _CPCardViewDisappearFeedback, NSSecureCoding>
 {
     int _cardDisappearEvent;
     unsigned long long _timestamp;
+    _CPCardForFeedback *_card;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) _CPCardForFeedback *card; // @synthesize card=_card;
 @property(nonatomic) int cardDisappearEvent; // @synthesize cardDisappearEvent=_cardDisappearEvent;
 @property(nonatomic) unsigned long long timestamp;
 - (id)initWithDictionary:(id)arg1;

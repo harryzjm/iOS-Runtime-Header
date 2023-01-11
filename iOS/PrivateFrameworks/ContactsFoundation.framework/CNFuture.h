@@ -18,6 +18,9 @@
     NSMutableArray *_calculationDependencies;
 }
 
++ (id)_joinMany:(id)arg1;
++ (id)_joinOne:(id)arg1;
++ (id)_joinZero;
 + (id)join:(id)arg1;
 + (id)sequence:(id)arg1;
 + (id)chain:(id)arg1;

@@ -19,17 +19,17 @@
 }
 
 + (id)sharedController;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setGestureRecognizer:) UITapGestureRecognizer *_gestureRecognizer; // @synthesize _gestureRecognizer=__gestureRecognizer;
 @property(readonly, nonatomic) NSArray *_diagnosticsServicesClasses; // @synthesize _diagnosticsServicesClasses=__diagnosticsServicesClasses;
 @property(readonly, nonatomic) UIWindow *_window; // @synthesize _window=__window;
-- (void).cxx_destruct;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)_executeService:(id)arg1;
 - (id)_currentRootViewController;
-- (void)_presentContextualViewControllerFromPoint:(struct CGPoint)arg1;
-- (void)_handleShowContextualDiagnostics;
+- (void)_presentContextualViewControllerFromPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (void)presentContextualDiagnostics;
 - (void)_handleGestureRecognizer:(id)arg1;
 - (void)_updateGestureRecognizer;
 - (void)_loadDiagnosticsServicesClasses;

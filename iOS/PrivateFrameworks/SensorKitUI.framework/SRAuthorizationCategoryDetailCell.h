@@ -30,6 +30,7 @@
     UIColor *_fontColor;
 }
 
++ (id)categoryDetailCellForAuthGroup:(id)arg1 bundle:(id)arg2 titleFont:(id)arg3 bodyFont:(id)arg4 textColor:(id)arg5 OBKStyle:(_Bool)arg6;
 @property(nonatomic) _Bool OBKStyle; // @synthesize OBKStyle=_OBKStyle;
 @property(retain, nonatomic) UIColor *fontColor; // @synthesize fontColor=_fontColor;
 @property(retain, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;

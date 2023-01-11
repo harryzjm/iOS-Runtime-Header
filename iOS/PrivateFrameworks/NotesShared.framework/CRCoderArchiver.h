@@ -14,7 +14,7 @@
     NSMutableOrderedSet *_encodedObjects;
     struct Document {
         CDUnknownFunctionPointerType *;
-        basic_string_a1f69cfb;
+        basic_string_7c0a1c0b;
         unsigned int [1];
         int;
         struct VectorTimestamp *;
@@ -29,12 +29,12 @@
 
 + (id)encodedDataWithDocument:(id)arg1;
 + (void)initialize;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) struct Document *currentDocument; // @synthesize currentDocument=_currentDocument;
 @property(retain, nonatomic) NSMutableOrderedSet *encodedObjects; // @synthesize encodedObjects=_encodedObjects;
 @property(retain, nonatomic) NSMutableOrderedSet *keySet; // @synthesize keySet=_keySet;
 @property(retain, nonatomic) NSMutableOrderedSet *uuidSet; // @synthesize uuidSet=_uuidSet;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (int)indexForKey:(id)arg1;
 - (struct Document_DocObject *)currentDocumentObjectForEncoding;
 - (struct Document_CustomObject *)currentCustomObjectForEncoding;

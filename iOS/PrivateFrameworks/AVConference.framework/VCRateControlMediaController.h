@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, SenderLargeFrameInfo;
+@class AVCStatisticsCollector, SenderLargeFrameInfo, VCRateControlServerBag;
 
 __attribute__((visibility("hidden")))
 @interface VCRateControlMediaController : NSObject
@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
     double _lastAudioFractionChangeTime;
     double _lastAudioEnoughRateTime;
     unsigned char _videoPayloadType;
-    unsigned short _videoTransactionID;
     unsigned int _videoRefreshFrameTimestamp;
     unsigned int _videoRefreshFramePacketCount;
     double _lastVideoKeyFrameTime;
@@ -42,6 +41,9 @@ __attribute__((visibility("hidden")))
     _Bool _shouldDisableLargeFrameRequestsWhenInitialRampUp;
     _Bool _isRateLimitedMaxTimeExceeded;
     _Bool _isSenderProbingEnabled;
+    _Bool _enableAggressiveProbingSequence;
+    VCRateControlServerBag *_serverBag;
+    double _minProbingSpacingAggressive;
     int _basebandFlushCount;
     int _basebandFlushedVideoCount;
     int _basebandFlushedAudioCount;
@@ -60,9 +62,12 @@ __attribute__((visibility("hidden")))
     double _lastBasebandHighNBDCDTime;
     _Bool _isBasebandQueuingDelayHigh;
     void *_logBasebandDump;
+    void *_logBWEDump;
     unsigned int _afrcRemoteEstimatedBandwidth;
 }
 
+@property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
+@property(nonatomic) _Bool enableAggressiveProbingSequence; // @synthesize enableAggressiveProbingSequence=_enableAggressiveProbingSequence;
 @property(readonly, nonatomic) double lastVideoKeyFrameTime; // @synthesize lastVideoKeyFrameTime=_lastVideoKeyFrameTime;
 @property(nonatomic) int audioFractionTier; // @synthesize audioFractionTier=_audioFractionTier;
 @property(nonatomic) _Bool isRTPFlushBasebandFromVCRateControl; // @synthesize isRTPFlushBasebandFromVCRateControl=_isRTPFlushBasebandFromVCRateControl;
@@ -86,13 +91,12 @@ __attribute__((visibility("hidden")))
 - (void)updateLargeFrameSizeWithBandwidth:(unsigned int)arg1;
 - (void)updateProbingLargeFrameSizeCap;
 - (_Bool)isProbingLargeFrameRequiredAtTime:(double)arg1;
-- (void)printLargeFrameStatsAtTime:(double)arg1 timeSinceLastProbingSequence:(double)arg2 frameSize:(unsigned int)arg3 wastedBytes:(unsigned int)arg4 isFrameRequested:(_Bool)arg5;
+- (void)printLargeFrameStatsAtTime:(double)arg1 timestamp:(unsigned int)arg2 timeSinceLastProbingSequence:(double)arg3 frameSize:(unsigned int)arg4 wastedBytes:(unsigned int)arg5 fecRatio:(double)arg6 isFrameRequested:(_Bool)arg7;
 - (void)scheduleProbingSequenceAtTime:(double)arg1;
 - (void)increaseBasebandFlushCountInternallyWithSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
 - (_Bool)increaseFlushCountForVideoRefresh:(int)arg1 transactionID:(unsigned short)arg2;
 - (void)recordVideoRefreshFrameWithTimestamp:(unsigned int)arg1 payloadType:(unsigned char)arg2 packetCount:(unsigned int)arg3 isKeyFrame:(_Bool)arg4;
-- (void)resetAFRCVideoSendingBitrate;
-- (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 isProbingSequenceScheduled:(_Bool *)arg3;
+- (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 timestamp:(unsigned int)arg3 fecRatio:(double)arg4 isProbingSequenceScheduled:(_Bool *)arg5;
 @property(readonly, nonatomic) unsigned int probingSequencePacketSize; // @synthesize probingSequencePacketSize=_probingSequencePacketSize;
 @property(readonly, nonatomic) unsigned int probingSequencePacketCount; // @synthesize probingSequencePacketCount=_probingSequencePacketCount;
 @property(readonly, nonatomic) unsigned int probingLargeFrameSize; // @synthesize probingLargeFrameSize=_probingLargeFrameSize;
@@ -104,10 +108,11 @@ __attribute__((visibility("hidden")))
 - (void)resumeVideoByVCRateControl;
 - (void)stopVideoByVCRateControl;
 - (void)pauseVideoByUser:(_Bool)arg1;
-- (void)updateBasebandSuggestionWithStatistics:(CDStruct_b21f1e06)arg1;
+- (void)updateBasebandSuggestionWithStatistics:(CDStruct_56e8fa21)arg1;
 - (void)computePacketLossWithRemoteInfo:(struct VCRCMediaPLPFromRemoteInfo *)arg1;
 - (void)getMediaQueueRateChangeCounter:(unsigned int *)arg1 rateChangeTime:(double *)arg2;
 - (void)getMediaQueueInVideoBitrate:(double *)arg1 outVideoBitrate:(double *)arg2 inAudioBitrate:(double *)arg3 outAudioBitrate:(double *)arg4;
+- (void)enableBWELogDump:(void *)arg1;
 - (void)enableBasebandLogDump:(void *)arg1;
 - (void)dealloc;
 - (id)initWithMediaQueue:(struct tagHANDLE *)arg1 delegate:(id)arg2;

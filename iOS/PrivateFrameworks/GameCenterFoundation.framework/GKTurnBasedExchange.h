@@ -11,7 +11,7 @@
 @interface GKTurnBasedExchange : NSObject
 {
     GKTurnBasedParticipant *_sender;
-    GKTurnBasedMatch *_matchWeak;
+    GKTurnBasedMatch *_match;
     GKTurnBasedExchangeInternal *_internal;
     NSArray *_replies;
     NSArray *_recipients;
@@ -19,9 +19,11 @@
 
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(retain, nonatomic) NSArray *replies; // @synthesize replies=_replies;
 @property(retain) GKTurnBasedExchangeInternal *internal; // @synthesize internal=_internal;
+@property(nonatomic) __weak GKTurnBasedMatch *match; // @synthesize match=_match;
 @property(retain, nonatomic) GKTurnBasedParticipant *sender; // @synthesize sender=_sender;
 - (void)replyWithLocalizableMessageKey:(id)arg1 arguments:(id)arg2 data:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)cancelWithLocalizableMessageKey:(id)arg1 arguments:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -34,8 +36,6 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
-@property(nonatomic) GKTurnBasedMatch *match; // @synthesize match=_matchWeak;
 @property(readonly, nonatomic) BOOL status;
 @property(readonly, nonatomic) NSString *message; // @dynamic message;
 - (id)init;

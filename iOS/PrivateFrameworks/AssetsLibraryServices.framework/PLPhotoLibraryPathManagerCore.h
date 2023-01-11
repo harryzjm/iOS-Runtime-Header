@@ -8,17 +8,17 @@
 
 #import <AssetsLibraryServices/PLPhotoLibraryPathManager-Protocol.h>
 
-@class NSFileManager, NSString, NSURL;
+@class NSString, NSURL, PLFileSystemCapabilities;
 
 @interface PLPhotoLibraryPathManagerCore : NSObject <PLPhotoLibraryPathManager>
 {
-    struct os_unfair_lock_s _folderCreationLock;
+    struct os_unfair_lock_s _folderCreationAndCapabilitiesLock;
     unsigned int _photoDirectoriesExists;
     unsigned int _privateSubDirectoriesExists;
     unsigned int _privateCacheSubDirectoriesExists;
     unsigned int _externalDirectoriesExists;
     unsigned int _persistedAlbumDataDirectoryExists;
-    NSFileManager *_fm;
+    PLFileSystemCapabilities *_capabilities;
     NSURL *_libraryURL;
     NSString *_baseDirectory;
     NSString *_assetUUIDRecoveryMappingPath;
@@ -28,28 +28,32 @@
 }
 
 + (id)basenameForSpatialOverCaptureFromOriginalBasename:(id)arg1;
++ (void)_persistSystemPhotoLibraryPath:(id)arg1;
++ (void)recordPrevSystemLibraryPath:(id)arg1;
 + (_Bool)isSystemLibraryURLDefined;
 + (_Bool)setSystemLibraryURL:(id)arg1 options:(unsigned short)arg2 error:(id *)arg3;
 + (id)systemLibraryURLIfResolvable;
 + (id)systemLibraryURL;
++ (id)_constructLegacySystemPhotoLibraryURLFromUnresolvableBookmark:(id)arg1;
 + (id)_legacySystemLibraryPath;
 + (id)_legacySystemLibraryBookmarkData;
 + (void)_updateSystemLibraryURLWithOldValue:(id)arg1;
 + (id)systemLibraryBaseDirectory;
-+ (_Bool)isValidSystemPhotoLibraryURL:(id)arg1;
++ (_Bool)isSupportedFileSystemAtURL:(id)arg1;
 + (_Bool)isSystemPhotoLibraryURL:(id)arg1;
 + (id)systemLibraryPathManager;
 + (void)listenForSystemPhotoLibraryURLChanges;
++ (id)libraryURLFromDatabaseURL:(id)arg1;
 + (_Bool)setTimeMachineExclusionAttribute:(_Bool)arg1 url:(id)arg2 error:(id *)arg3;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *legacyMemoriesRelatedSnapshotDirectory; // @synthesize legacyMemoriesRelatedSnapshotDirectory=_legacyMemoriesRelatedSnapshotDirectory;
 @property(retain, nonatomic) NSString *legacyModelInterestDatabasePath; // @synthesize legacyModelInterestDatabasePath=_legacyModelInterestDatabasePath;
 @property(retain, nonatomic) NSString *iTunesPhotosDirectory; // @synthesize iTunesPhotosDirectory=_iTunesPhotosDirectory;
 @property(copy) NSString *assetUUIDRecoveryMappingPath; // @synthesize assetUUIDRecoveryMappingPath=_assetUUIDRecoveryMappingPath;
 @property(copy) NSString *baseDirectory; // @synthesize baseDirectory=_baseDirectory;
 @property(copy) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
-- (void).cxx_destruct;
-- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1;
+- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1 populateInvalidAdjustmentPaths:(id)arg2;
 - (id)assetBaseFilenameForAdjustmentFilePath:(id)arg1;
 - (id)photoMetadataDirectoryForMediaInMainDirectory:(id)arg1;
 - (id)persistedAlbumDataDirectoryCreateIfNeeded:(_Bool)arg1 error:(id *)arg2;
@@ -61,6 +65,10 @@
 - (id)iTunesPhotosSyncMetadataFilePath;
 - (id)iTunesPhotosSyncCurrentLibraryUUIDPath;
 - (id)iTunesPhotosLastSyncMetadataFilePath;
+- (id)modelRestorePostProcessingCompleteTokenPath;
+- (id)cloudRestoreCompleteTokenPath;
+- (id)cloudRestoreBackgroundPhaseInProgressTokenPath;
+- (id)cloudRestoreForegroundPhaseCompleteTokenPath;
 - (id)pathToAssetAlbumOrderStructure;
 - (id)assetAbbreviatedMetadataDirectoryForDirectory:(id)arg1 type:(unsigned char)arg2;
 - (void)setDataProtectionComplete:(_Bool)arg1;
@@ -101,6 +109,8 @@
 - (id)photosDatabasePath;
 - (id)baseDirectoryForBundleScope:(unsigned char)arg1;
 - (id)convertPhotoLibraryPathType:(unsigned char)arg1;
+- (id)privateDirectoryWithBundleIdentifier:(id)arg1 createIfNeeded:(_Bool)arg2;
+- (id)basePrivateDirectoryPath;
 - (_Bool)createDirectoryOnceWithPath:(id)arg1 mask:(unsigned char)arg2 type:(unsigned char)arg3 error:(id *)arg4;
 - (_Bool)updateTimeMachineExclusionAttributeForExcludePath:(id)arg1 error:(id *)arg2;
 - (void)externalDirectoryCreationMaskResetWithSubType:(unsigned char)arg1;
@@ -108,6 +118,7 @@
 - (void)privateDirectoryCreationMaskResetWithSubType:(unsigned char)arg1;
 - (void)photoDirectoryCreationMaskResetWithType:(unsigned char)arg1;
 - (void)postInit;
+@property(readonly, nonatomic) PLFileSystemCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 - (id)initWithLibraryURL:(id)arg1;
 - (id)initWithBaseDirectory:(id)arg1;
 - (id)init;

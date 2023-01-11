@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, NSString;
 
-@interface HMDNetworkRouterAccessViolation : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterAccessViolation : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_clientIdentifier;
-    HMDTLVUnsignedNumberValue *_lastViolationTimestamp;
-    HMDTLVUnsignedNumberValue *_lastResetTimestamp;
+    HAPTLVUnsignedNumberValue *_clientIdentifier;
+    HAPTLVUnsignedNumberValue *_lastViolationTimestamp;
+    HAPTLVUnsignedNumberValue *_lastResetTimestamp;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *lastResetTimestamp; // @synthesize lastResetTimestamp=_lastResetTimestamp;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *lastViolationTimestamp; // @synthesize lastViolationTimestamp=_lastViolationTimestamp;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *lastResetTimestamp; // @synthesize lastResetTimestamp=_lastResetTimestamp;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *lastViolationTimestamp; // @synthesize lastViolationTimestamp=_lastViolationTimestamp;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

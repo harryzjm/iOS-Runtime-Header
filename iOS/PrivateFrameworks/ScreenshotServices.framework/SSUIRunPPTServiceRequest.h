@@ -9,11 +9,13 @@
 @interface SSUIRunPPTServiceRequest
 {
     NSString *_testName;
+    unsigned long long _numberOfRequiredScreenshots;
 }
 
 + (id)entitlement;
-@property(copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long numberOfRequiredScreenshots; // @synthesize numberOfRequiredScreenshots=_numberOfRequiredScreenshots;
+@property(copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 

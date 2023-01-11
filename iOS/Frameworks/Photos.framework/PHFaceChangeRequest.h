@@ -16,16 +16,16 @@
     _Bool _shouldClearFaceCropGenerationState;
 }
 
-+ (_Bool)canGenerateUUIDWithoutEntitlements;
 + (void)deleteFaces:(id)arg1;
 + (id)changeRequestForFace:(id)arg1;
 + (id)creationRequestForFace;
-@property(nonatomic) _Bool shouldClearFaceCropGenerationState; // @synthesize shouldClearFaceCropGenerationState=_shouldClearFaceCropGenerationState;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldClearFaceCropGenerationState; // @synthesize shouldClearFaceCropGenerationState=_shouldClearFaceCropGenerationState;
 @property(retain, nonatomic) PHFaceprint *faceprint;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) NSString *managedEntityName;
+@property(nonatomic) unsigned short sexType;
 @property(copy, nonatomic) id adjustmentVersion;
 @property(retain, nonatomic) NSString *groupingIdentifier;
 @property(nonatomic) unsigned short lipMakeupType;
@@ -51,6 +51,7 @@
 @property(nonatomic) _Bool manual;
 @property(nonatomic, getter=isInTrash) _Bool inTrash;
 @property(nonatomic, getter=isHidden) _Bool hidden;
+@property(nonatomic) _Bool isInVIPModel;
 @property(nonatomic) double yaw;
 @property(nonatomic) double roll;
 @property(nonatomic) double mouthY;
@@ -65,23 +66,22 @@
 @property(nonatomic) double centerX;
 @property(nonatomic) double size;
 @property(readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedFace;
-- (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initForNewObject;
 
 // Remaining properties
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSString *clientName;
-@property(readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) _Bool isNewRequest;
 @property(readonly, getter=isMutated) _Bool mutated;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(nonatomic) _Bool shouldPerformConcurrentWork;
 @property(readonly) Class superclass;
 
 @end

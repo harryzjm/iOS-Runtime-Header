@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordZoneID, CKServerChangeToken, NSArray, NSData, NSMutableDictionary;
+#import <CloudKit/CKFetchRecordChangesOperationCallbacks-Protocol.h>
 
-@interface CKFetchRecordChangesOperation
+@class CKFetchRecordZoneChangesOperationInfo, CKRecordZoneID, CKServerChangeToken, NSArray, NSData, NSMutableDictionary;
+@protocol CKFetchRecordChangesOperationCallbacks;
+
+@interface CKFetchRecordChangesOperation <CKFetchRecordChangesOperationCallbacks>
 {
     _Bool _shouldFetchAssetContents;
     _Bool _fetchAllChanges;
@@ -25,6 +28,10 @@
     NSMutableDictionary *_recordErrors;
 }
 
++ (SEL)daemonCallbackCompletionSelector;
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
++ (Class)operationInfoClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property(nonatomic) _Bool fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property(nonatomic) _Bool shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;
@@ -35,18 +42,19 @@
 @property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(copy, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 @property(copy, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleOperationDidCompleteWithServerChangeToken:(id)arg1 clientChangeTokenData:(id)arg2 recordChangesStatus:(long long)arg3 metrics:(id)arg4 error:(id)arg5;
+- (void)handleChangeSetCompletionWithServerChangeToken:(id)arg1 clientChangeTokenData:(id)arg2 recordChangesStatus:(long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)handleDeleteForRecordID:(id)arg1;
+- (void)handleChangeForRecordID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
 - (long long)changeTypesFromSetCallbacks;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
-- (Class)operationInfoClass;
+- (id)relevantZoneIDs;
 @property(readonly, nonatomic) _Bool moreComing;
 @property(copy, nonatomic) CDUnknownBlockType changeTokensUpdatedBlock; // @synthesize changeTokensUpdatedBlock=_changeTokensUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType serverChangeTokenFetchedBlock; // @synthesize serverChangeTokenFetchedBlock=_serverChangeTokenFetchedBlock;
@@ -55,6 +63,10 @@
 @property(copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
 - (id)initWithRecordZoneID:(id)arg1 previousServerChangeToken:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchRecordChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKFetchRecordZoneChangesOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

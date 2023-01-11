@@ -4,63 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BKSProcessAssertion, FBProcessWatchdog, FBProcessWatchdogEventContext, FBSProcessExecutionProvision, FBSProcessTerminationRequest, FBSProcessWatchdogPolicy, NSMutableArray, RBSAssertion;
+@class BKSProcessAssertion, FBProcessCPUStatistics;
 
 @interface FBApplicationProcess
 {
-    FBSProcessTerminationRequest *_terminationRequest;
-    FBProcessWatchdogEventContext *_terminationWatchdogContext;
-    long long _terminationReason;
-    NSMutableArray *_queue_terminateRequestCompletionBlocks;
-    long long _watchdogReportType;
-    FBProcessWatchdog *_watchdog;
-    FBSProcessWatchdogPolicy *_sceneCreateWatchdogPolicy;
-    FBSProcessExecutionProvision *_latestViolatedProvision;
-    RBSAssertion *_gracefulKillAssertion;
-    BKSProcessAssertion *_mediaAssertion;
-    BKSProcessAssertion *_audioAssertion;
-    BKSProcessAssertion *_accessoryAssertion;
+    FBProcessCPUStatistics *_cpuStatistics;
+    BKSProcessAssertion *_queue_mediaAssertion;
+    BKSProcessAssertion *_queue_audioAssertion;
+    BKSProcessAssertion *_queue_accessoryAssertion;
     _Bool _recordingAudio;
     _Bool _nowPlayingWithAudio;
     _Bool _connectedToExternalAccessory;
 }
 
++ (id)_internalDebugEnvironmentVariables;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isConnectedToExternalAccessory) _Bool connectedToExternalAccessory; // @synthesize connectedToExternalAccessory=_connectedToExternalAccessory;
 @property(nonatomic, getter=isNowPlayingWithAudio) _Bool nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
 @property(nonatomic, getter=isRecordingAudio) _Bool recordingAudio; // @synthesize recordingAudio=_recordingAudio;
-- (void).cxx_destruct;
-- (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;
-- (_Bool)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
-- (void)_watchdogStopped:(id)arg1;
-- (void)_watchdogStarted:(id)arg1;
-- (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;
-- (void)_queue_dropAssertions;
-- (long long)_watchdogReportType;
-- (long long)_exceptionCodeForKillReason:(int)arg1;
-- (_Bool)_queue_shouldWatchdogWithDeclineReason:(id *)arg1;
-- (void)_queue_cancelWatchdogTimer;
-- (void)_queue_startWatchdogTimerForContext:(id)arg1;
-- (void)_queue_killForReason:(long long)arg1 andReport:(_Bool)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_queue_terminateWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_executeKillForRequest:(id)arg1;
-- (id)_queue_composeContextWithValue:(id)arg1 key:(id)arg2;
-- (id)_queue_crashReportThermalsInfo;
-- (void)_queue_doGracefulKillWithDeliveryConfirmation:(CDUnknownBlockType)arg1;
-- (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_queue_internalDebugEnvironmentVariables;
-- (void)_queue_noteLaunchDidComplete:(_Bool)arg1;
-- (void)_queue_noteLaunchWillComplete;
-- (id)_queue_createBootstrapContext;
-- (id)_watchdogProvider;
-- (void)_queue_executeTerminateRequestCompletionBlocksIfNecessaryForSucccess:(_Bool)arg1;
+- (void)_noteLaunchDidComplete;
+- (void)_bootstrapDidComplete;
+- (id)_createBootstrapContext;
 - (_Bool)_wantsStateUpdates;
-- (void)invalidate;
-- (void)_queue_noteProcessDidExit:(id)arg1;
+- (void)_noteProcessDidExit:(id)arg1;
+- (id)_queue_createLegacyAssertionForReason:(unsigned int)arg1 withName:(id)arg2;
 @property(readonly, nonatomic) double elapsedCPUTime;
 - (_Bool)isApplicationProcess;
 - (void)killForReason:(long long)arg1 andReport:(_Bool)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)killForReason:(long long)arg1 andReport:(_Bool)arg2 withDescription:(id)arg3;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
+- (void)_finishInit;
 
 @end
 

@@ -51,7 +51,9 @@
 + (id)readableCharacteristicTypes;
 + (id)readableSampleTypeIdentifierFromSampleTypeIdentifier:(id)arg1;
 + (id)sampleTypeIdentifierFromReadableTypeIdentifier:(id)arg1;
++ (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2 quantityTypeIdentifier:(id)arg3;
 + (id)localizedDisplayNameForUnit:(id)arg1 quantityTypeIdentifier:(id)arg2;
++ (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2;
 + (void)validUnitsForQuantityType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)localizedSampleTypes;
 + (id)readableSampleTypes;

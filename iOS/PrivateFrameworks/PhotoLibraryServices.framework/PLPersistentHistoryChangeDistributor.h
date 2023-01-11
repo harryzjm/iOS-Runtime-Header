@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSPersistentHistoryToken, NSPersistentStoreCoordinator, PLCoreDataChangeMerger;
+@class NSPersistentHistoryToken, NSPersistentStoreCoordinator, PLChangeHandlingNotificationObserver, PLCoreDataChangeMerger;
 @protocol OS_dispatch_queue;
 
 @interface PLPersistentHistoryChangeDistributor : NSObject
 {
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     PLCoreDataChangeMerger *_changeMerger;
-    NSObject<OS_dispatch_queue> *_notifyQueue;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
     NSPersistentHistoryToken *_lastToken;
-    int _notifyToken;
+    PLChangeHandlingNotificationObserver *_notificationObserver;
 }
 
 - (void).cxx_destruct;
 - (id)localEventFromTransactions:(id)arg1;
-- (void)distributeTransactions:(id)arg1;
+- (void)distributeTransactions:(id)arg1 withXPCTransaction:(id)arg2;
 - (void)forceUserInterfaceReload;
 - (id)makeManagedObjectContext;
 - (id)fetchTransactionsSinceLastToken;
+- (void)_inq_distributeNewTransactionsSinceLastTokenWithReason:(id)arg1 xpcTransaction:(id)arg2;
 - (void)distributeNewTransactionsSinceLastToken;
-- (void)_inq_stopObservingRemoteNotifications;
+- (void)invalidate;
 - (void)stopObservingRemoteNotifications;
+- (void)handleRemoteNotificationOfType:(long long)arg1 withTransaction:(id)arg2;
 - (void)_inq_startObservingRemoteNotifications;
 - (void)startObservingRemoteNotifications;
 - (void)dealloc;

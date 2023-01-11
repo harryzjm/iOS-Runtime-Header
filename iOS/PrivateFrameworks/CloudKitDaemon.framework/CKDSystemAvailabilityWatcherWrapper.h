@@ -13,15 +13,18 @@ __attribute__((visibility("hidden")))
 @interface CKDSystemAvailabilityWatcherWrapper : NSObject
 {
     id <CKDSystemAvailabilityWatcher> _delegate;
+    unsigned long long _savedDelegateHash;
     NSString *_personaID;
 }
 
-@property(copy, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
-@property(nonatomic) __weak id <CKDSystemAvailabilityWatcher> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
+@property(nonatomic) unsigned long long savedDelegateHash; // @synthesize savedDelegateHash=_savedDelegateHash;
+@property(nonatomic) __weak id <CKDSystemAvailabilityWatcher> delegate; // @synthesize delegate=_delegate;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)performWithDelegate:(CDUnknownBlockType)arg1;
+- (void)postSystemAvailabilityChanged:(unsigned long long)arg1;
 - (id)initWithDelegate:(id)arg1;
 
 @end

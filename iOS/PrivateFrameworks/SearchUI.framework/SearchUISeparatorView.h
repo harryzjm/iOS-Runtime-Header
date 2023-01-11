@@ -11,7 +11,11 @@
     double _separatorHeight;
 }
 
++ (unsigned long long)separatorProminenceForAppearance:(id)arg1;
 @property(nonatomic) double separatorHeight; // @synthesize separatorHeight=_separatorHeight;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (id)init;

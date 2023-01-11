@@ -10,11 +10,13 @@
 {
 }
 
++ (id)cdpUIControllerWithPresentingViewController:(id)arg1;
 + (id)cdpStateUIController;
 + (id)accountRecoveryControllerWithPresentingViewController:(id)arg1;
 + (id)cdpIDMSRecordPRKKey;
 + (id)cdpIDMSRecordMIDKey;
 + (id)cdpErrorDomain;
++ (_Bool)cdpAccountIsICDPEnabledForDSID:(id)arg1;
 + (id)followUpController;
 + (id)followUpRepairContext;
 + (id)recoveryControllerWithContext:(id)arg1;

@@ -15,9 +15,9 @@
     unsigned long long _options;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) PXExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_setSpec:(id)arg1;
 - (void)_updateSpec;
@@ -26,6 +26,7 @@
 - (id)createSpec;
 - (Class)specClass;
 - (_Bool)shouldUpdateSpecForExtendedTraitCollection:(id)arg1 change:(unsigned long long)arg2;
+@property(readonly, nonatomic) unsigned long long defaultChangesToUpdateFor;
 @property(readonly, nonatomic) PXFeatureSpec *spec; // @synthesize spec=_spec;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithExtendedTraitCollection:(id)arg1;

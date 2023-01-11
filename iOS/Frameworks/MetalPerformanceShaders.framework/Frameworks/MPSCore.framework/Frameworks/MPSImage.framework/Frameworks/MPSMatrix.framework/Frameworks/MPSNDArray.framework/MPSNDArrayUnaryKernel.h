@@ -6,17 +6,23 @@
 
 @interface MPSNDArrayUnaryKernel
 {
+    unsigned long long _edgeMode;
+    CDStruct_f52b1b8f _offsets;
+    CDStruct_129fbded _kernelSizes;
+    CDStruct_f52b1b8f _strides;
+    CDStruct_129fbded _dilationRates;
 }
 
++ (unsigned long long)expectedVirtualSourceCount;
+@property(nonatomic) CDStruct_129fbded dilationRates; // @synthesize dilationRates=_dilationRates;
+@property(nonatomic) CDStruct_f52b1b8f strides; // @synthesize strides=_strides;
+@property(nonatomic) CDStruct_129fbded kernelSizes; // @synthesize kernelSizes=_kernelSizes;
+@property(nonatomic) unsigned long long edgeMode; // @synthesize edgeMode=_edgeMode;
+@property(nonatomic) CDStruct_f52b1b8f offsets; // @synthesize offsets=_offsets;
 - (void)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 resultState:(id)arg3 destinationArray:(id)arg4;
 - (id)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 resultState:(id *)arg3 outputStateIsTemporary:(_Bool)arg4;
 - (void)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 destinationArray:(id)arg3;
 - (id)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2;
-@property(nonatomic) CDStruct_27bd5d57 dilationRates;
-@property(nonatomic) CDStruct_df9f7954 strides;
-@property(nonatomic) CDStruct_27bd5d57 kernelSizes;
-@property(nonatomic) CDStruct_df9f7954 offsets;
-@property(nonatomic) unsigned long long edgeMode;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 

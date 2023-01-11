@@ -17,6 +17,7 @@
 {
     _Bool _useFileCache;
     _Bool _wasUserRequested;
+    _Bool _useShortTimeoutInterval;
     _Bool _sendDataUpdateCallback;
     _Bool _finished;
     NSURL *_url;
@@ -26,6 +27,8 @@
     double _timestamp;
     NSString *_filePath;
     DAStatusReport *_statusReport;
+    long long _expectedDataSize;
+    long long _receivedDataSize;
     NSURLSession *_session;
     NSURLSessionDataTask *_task;
     NSMutableData *_connectionData;
@@ -37,6 +40,7 @@
 
 + (void)_initializeFileCache;
 + (id)_cachedICSFilesDirectory;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(retain, nonatomic) NSString *startRunloopDescriptionString; // @synthesize startRunloopDescriptionString=_startRunloopDescriptionString;
 @property(retain, nonatomic) NSTimer *idleTimer; // @synthesize idleTimer=_idleTimer;
@@ -46,6 +50,9 @@
 @property(retain, nonatomic) NSMutableData *connectionData; // @synthesize connectionData=_connectionData;
 @property(retain, nonatomic) NSURLSessionDataTask *task; // @synthesize task=_task;
 @property(retain, nonatomic) NSURLSession *session; // @synthesize session=_session;
+@property(nonatomic) _Bool useShortTimeoutInterval; // @synthesize useShortTimeoutInterval=_useShortTimeoutInterval;
+@property(readonly, nonatomic) long long receivedDataSize; // @synthesize receivedDataSize=_receivedDataSize;
+@property(readonly, nonatomic) long long expectedDataSize; // @synthesize expectedDataSize=_expectedDataSize;
 @property(nonatomic) _Bool wasUserRequested; // @synthesize wasUserRequested=_wasUserRequested;
 @property(retain, nonatomic) DAStatusReport *statusReport; // @synthesize statusReport=_statusReport;
 @property(retain, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
@@ -55,7 +62,6 @@
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(nonatomic) __weak id <SubCalURLRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (void)_receivedDataForFile:(id)arg1;
 - (void)_openFileHandle;
 - (void)_handleAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -9,8 +9,8 @@
 }
 
 + (id)_avAssetForURL:(id)arg1;
-+ (Class)__AVAssetImageGeneratorClass;
-+ (Class)__AVURLAssetClass;
++ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 outSize:(struct CGSize *)arg3 error:(id *)arg4;
++ (_Bool)writesToDisk;
 + (struct CGSize)sizePreviewAtSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (_Bool)isAutoloopAsset:(id)arg1;

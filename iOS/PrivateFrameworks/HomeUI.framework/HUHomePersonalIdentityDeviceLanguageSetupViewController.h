@@ -9,31 +9,37 @@
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, NSArray, NSDictionary, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUHomePersonalIdentityDeviceLanguageSetupViewController : OBWelcomeController <HUConfigurationViewController, HUPreloadableViewController>
 {
     id <HUConfigurationViewControllerDelegate> _delegate;
+    NSString *_overrideTargetLanguage;
+    HMHome *_home;
+    NSString *_targetLanguage;
     OBTrayButton *_continueButton;
     OBLinkTrayButton *_customizeButton;
-    NSArray *_supportedMultiUserLanguages;
+    NSArray *_supportedVoiceRecognitionLanguages;
     NSDictionary *_languageToHomePodsMapping;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *languageToHomePodsMapping; // @synthesize languageToHomePodsMapping=_languageToHomePodsMapping;
-@property(retain, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property(retain, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 @property(retain, nonatomic) OBLinkTrayButton *customizeButton; // @synthesize customizeButton=_customizeButton;
 @property(retain, nonatomic) OBTrayButton *continueButton; // @synthesize continueButton=_continueButton;
+@property(retain, nonatomic) NSString *targetLanguage; // @synthesize targetLanguage=_targetLanguage;
+@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
+@property(retain, nonatomic) NSString *overrideTargetLanguage; // @synthesize overrideTargetLanguage=_overrideTargetLanguage;
 @property(nonatomic) __weak id <HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)hu_preloadContent;
 - (void)_changeSiriLanguage;
 - (void)_completeLanguageSetup;
 - (void)_cancelLanguageSetup;
-- (id)init;
+- (id)initWithHome:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

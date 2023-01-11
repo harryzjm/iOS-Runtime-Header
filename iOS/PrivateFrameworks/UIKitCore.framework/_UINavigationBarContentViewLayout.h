@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSLayoutConstraint, UIBarButtonItemGroup, UILabel, UILayoutGuide, UIView, _UIBarButtonItemData, _UIButtonBar, _UIButtonBarButton, _UINavigationBarContentView, _UITAMICAdaptorView;
+@class NSArray, NSLayoutConstraint, UIBarButtonItemGroup, UILabel, UILayoutGuide, UITraitCollection, UIView, _UIBarButtonItemData, _UIButtonBar, _UIButtonBarButton, _UINavigationBarContentView, _UITAMICAdaptorView;
 @protocol _UINavigationBarAugmentedTitleView;
 
 __attribute__((visibility("hidden")))
@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
     _UITAMICAdaptorView *_titleViewWrapperView;
     UIView<_UINavigationBarAugmentedTitleView> *_augmentedTitleView;
     double _largeTitleHeight;
+    UITraitCollection *_augmentedTitleNavigationBarTraits;
     _UIButtonBar *_leadingBar;
     _UIButtonBar *_trailingBar;
     _UIBarButtonItemData *_plainItemAppearance;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
     struct NSDirectionalEdgeInsets _layoutMargins;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool keepsSnapshotsInHierarchy; // @synthesize keepsSnapshotsInHierarchy=_keepsSnapshotsInHierarchy;
 @property(readonly, nonatomic) UIView *backButtonSnapshot; // @synthesize backButtonSnapshot=_backButtonSnapshot;
 @property(readonly, nonatomic) UIView *titleViewSnapshot; // @synthesize titleViewSnapshot=_titleViewSnapshot;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) _UIBarButtonItemData *plainItemAppearance; // @synthesize plainItemAppearance=_plainItemAppearance;
 @property(retain, nonatomic) _UIButtonBar *trailingBar; // @synthesize trailingBar=_trailingBar;
 @property(retain, nonatomic) _UIButtonBar *leadingBar; // @synthesize leadingBar=_leadingBar;
+@property(retain, nonatomic) UITraitCollection *augmentedTitleNavigationBarTraits; // @synthesize augmentedTitleNavigationBarTraits=_augmentedTitleNavigationBarTraits;
 @property(nonatomic) CDStruct_c3b9c2ee largeTitleHeightRange; // @synthesize largeTitleHeightRange=_largeTitleHeightRange;
 @property(nonatomic) double largeTitleHeight; // @synthesize largeTitleHeight=_largeTitleHeight;
 @property(retain, nonatomic) UIView<_UINavigationBarAugmentedTitleView> *augmentedTitleView; // @synthesize augmentedTitleView=_augmentedTitleView;
@@ -99,12 +102,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UILayoutGuide *leadingBarGuide; // @synthesize leadingBarGuide=_leadingBarGuide;
 @property(readonly, nonatomic) UILayoutGuide *backButtonGuide; // @synthesize backButtonGuide=_backButtonGuide;
 @property(readonly, nonatomic) _UINavigationBarContentView *contentView; // @synthesize contentView=_contentView;
-- (void).cxx_destruct;
 - (void)removeContent;
 - (void)replaceBackButtonWithSnapshot;
 - (void)replaceTitleViewWithSnapshot;
 - (void)replaceTrailingBarWithSnapshot;
 - (void)replaceLeadingBarWithSnapshot;
+- (id)traitOverridesForChild:(id)arg1;
 - (void)updateSpacingConstraints;
 @property(retain, nonatomic) NSArray *trailingBarItems;
 @property(retain, nonatomic) NSArray *leadingBarItems;

@@ -27,6 +27,7 @@
     float _maxIOUForObjectAbsence;
     NSData *_anchorBoxes;
     unsigned long long _numberOfAnchorBoxes;
+    _Bool _reduceAcrossBatch;
 }
 
 + (id)cnnLossDescriptorWithXYLossType:(unsigned int)arg1 WHLossType:(unsigned int)arg2 confidenceLossType:(unsigned int)arg3 classesLossType:(unsigned int)arg4 reductionType:(int)arg5 anchorBoxes:(id)arg6 numberOfAnchorBoxes:(unsigned long long)arg7;
@@ -40,6 +41,7 @@
 @property(nonatomic) float scaleWH; // @synthesize scaleWH=_scaleWH;
 @property(nonatomic) float scaleXY; // @synthesize scaleXY=_scaleXY;
 @property(nonatomic) _Bool rescore; // @synthesize rescore=_rescore;
+@property(nonatomic) _Bool reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property(nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property(retain, nonatomic) MPSCNNLossDescriptor *classesLossDescriptor; // @synthesize classesLossDescriptor=_classesLossDescriptor;
 @property(retain, nonatomic) MPSCNNLossDescriptor *confidenceLossDescriptor; // @synthesize confidenceLossDescriptor=_confidenceLossDescriptor;

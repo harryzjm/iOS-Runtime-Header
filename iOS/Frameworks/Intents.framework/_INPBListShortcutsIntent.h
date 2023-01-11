@@ -17,7 +17,6 @@
     struct {
         unsigned int originDevice:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _originDevice;
     NSArray *_appTitles;
     _INPBIntentMetadata *_intentMetadata;
@@ -25,11 +24,10 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)appTitleType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int originDevice; // @synthesize originDevice=_originDevice;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(copy, nonatomic) NSArray *appTitles; // @synthesize appTitles=_appTitles;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

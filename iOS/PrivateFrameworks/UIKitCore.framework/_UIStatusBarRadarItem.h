@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIStatusBarFocusableImageView;
+@class _UIStatusBarRadarView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarRadarItem
 {
-    _UIStatusBarFocusableImageView *_radarItemView;
+    _UIStatusBarRadarView *_radarItemView;
 }
 
-@property(retain, nonatomic) _UIStatusBarFocusableImageView *radarItemView; // @synthesize radarItemView=_radarItemView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _UIStatusBarRadarView *radarItemView; // @synthesize radarItemView=_radarItemView;
 - (id)viewForIdentifier:(id)arg1;
 - (id)imageView;
 - (void)_create_radarItemView;

@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setSecondaryStatusText:(id)arg1;
-- (void)setPrimaryStatusText:(id)arg1;
+- (void)setSecondaryText:(id)arg1;
+- (void)setPrimaryText:(id)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;

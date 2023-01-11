@@ -60,6 +60,7 @@
 - (void)lineToPoint:(struct CGPoint)arg1;
 - (struct CGPath *)_pathRef;
 - (id)description;
+- (void)_addRoundedCornerWithTrueCorner:(struct CGPoint)arg1 radius:(struct CGSize)arg2 corner:(unsigned long long)arg3 clockwise:(_Bool)arg4 leadInIsContinuous:(_Bool)arg5 leadOutIsContinuous:(_Bool)arg6;
 - (void)_addRoundedCornerWithTrueCorner:(struct CGPoint)arg1 radius:(struct CGSize)arg2 corner:(unsigned long long)arg3 clockwise:(_Bool)arg4;
 - (struct CGPath *)_createMutablePathByDecodingData:(id)arg1;
 - (struct CGPath *)_mutablePath;

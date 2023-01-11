@@ -15,6 +15,8 @@
     NSString *_renderOriginatingSignature;
     NSString *_livePhotoPairingIdentifier;
     long long _locationMetadataStatus;
+    long long _captionMetadataStatus;
+    long long _accessibilityDescriptionMetadataStatus;
     id _hevcTrackFormatDescription;
     struct CGSize _imageDimensions;
 }
@@ -25,7 +27,10 @@
 + (id)imageSourceForFileURL:(id)arg1;
 + (id)videoSourceForFileURL:(id)arg1;
 + (id)sourceForFileURL:(id)arg1 mediaType:(long long)arg2 imageDimensions:(struct CGSize)arg3;
+- (void).cxx_destruct;
 @property(retain) id hevcTrackFormatDescription; // @synthesize hevcTrackFormatDescription=_hevcTrackFormatDescription;
+@property long long accessibilityDescriptionMetadataStatus; // @synthesize accessibilityDescriptionMetadataStatus=_accessibilityDescriptionMetadataStatus;
+@property long long captionMetadataStatus; // @synthesize captionMetadataStatus=_captionMetadataStatus;
 @property long long locationMetadataStatus; // @synthesize locationMetadataStatus=_locationMetadataStatus;
 @property _Bool didCheckForLivePhotoPairingIdentifier; // @synthesize didCheckForLivePhotoPairingIdentifier=_didCheckForLivePhotoPairingIdentifier;
 @property(retain, nonatomic) NSString *livePhotoPairingIdentifier; // @synthesize livePhotoPairingIdentifier=_livePhotoPairingIdentifier;
@@ -34,11 +39,20 @@
 @property _Bool preflighted; // @synthesize preflighted=_preflighted;
 @property struct CGSize imageDimensions; // @synthesize imageDimensions=_imageDimensions;
 @property(copy) NSString *renderOriginatingSignature; // @synthesize renderOriginatingSignature=_renderOriginatingSignature;
-- (void).cxx_destruct;
+- (void)markAccessibilityDescriptionMetadataAsCheckedWithStatus:(long long)arg1;
+- (long long)videoSourceAccessibilityDescriptionMetadataStatus;
+- (long long)imageSourceAccessibilityDescriptionMetadataStatus;
+- (void)checkForAccessibilityDescriptionData;
+- (void)markCaptionMetadataAsCheckedWithStatus:(long long)arg1;
+- (long long)videoSourceCaptionMetadataStatus;
+- (long long)imageSourceCaptionMetadataStatus;
+- (void)checkForCaptionData;
 - (void)markLocationMetadataAsCheckedWithStatus:(long long)arg1;
 - (long long)videoSourceLocationMetadataStatus;
 - (long long)imageSourceLocationMetadataStatus;
 - (void)checkForLocationData;
+- (_Bool)valueExistsInDictionary:(id)arg1 byTraversingKeys:(id)arg2 value:(id *)arg3;
+- (_Bool)imageSourceMetadataByTraversingKeys:(id)arg1 metadataValue:(id *)arg2;
 - (void)checkForLivePhotoPairingIdentifier;
 - (void)markLivePhotoPairingIdentifierAsCheckedWithValue:(id)arg1;
 - (_Bool)preflightWithError:(id *)arg1;

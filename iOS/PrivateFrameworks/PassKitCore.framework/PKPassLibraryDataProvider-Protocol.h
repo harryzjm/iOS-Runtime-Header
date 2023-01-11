@@ -6,10 +6,11 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, PKPass;
+@class NSArray, NSString, PKAddSecureElementPassConfiguration, PKPass;
 
 @protocol PKPassLibraryDataProvider <NSObject>
 @property(readonly, nonatomic) _Bool canAddPaymentPass;
+- (_Bool)canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg1;
 - (NSString *)peerPaymentPassUniqueID;
 - (PKPass *)passWithPassTypeIdentifier:(NSString *)arg1 serialNumber:(NSString *)arg2;
 - (PKPass *)passWithUniqueID:(NSString *)arg1;

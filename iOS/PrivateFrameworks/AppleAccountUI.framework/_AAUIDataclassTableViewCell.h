@@ -11,8 +11,8 @@
     NSString *_dataclass;
 }
 
-@property(copy, nonatomic) NSString *dataclass; // @synthesize dataclass=_dataclass;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *dataclass; // @synthesize dataclass=_dataclass;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <MetalTools/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLFence, MTLIndirectCommandBuffer, MTLResource, MTLTexture;
+@protocol MTLBuffer, MTLCounterSampleBuffer, MTLFence, MTLIndirectCommandBuffer, MTLResource, MTLTexture;
 
 @protocol MTLBlitCommandEncoder <MTLCommandEncoder>
+- (void)resolveCounters:(id <MTLCounterSampleBuffer>)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id <MTLBuffer>)arg3 destinationOffset:(unsigned long long)arg4;
+- (void)sampleCountersInBuffer:(id <MTLCounterSampleBuffer>)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)optimizeIndirectCommandBuffer:(id <MTLIndirectCommandBuffer>)arg1 withRange:(struct _NSRange)arg2;
 - (void)copyIndirectCommandBuffer:(id <MTLIndirectCommandBuffer>)arg1 sourceRange:(struct _NSRange)arg2 destination:(id <MTLIndirectCommandBuffer>)arg3 destinationIndex:(unsigned long long)arg4;
 - (void)resetCommandsInBuffer:(id <MTLIndirectCommandBuffer>)arg1 withRange:(struct _NSRange)arg2;

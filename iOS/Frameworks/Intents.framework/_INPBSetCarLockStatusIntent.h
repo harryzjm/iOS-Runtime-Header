@@ -16,17 +16,15 @@
 {
     CDStruct_b1e20226 _has;
     _Bool _locked;
-    _Bool __encodeLegacyGloryData;
     _INPBDataString *_carName;
     _INPBIntentMetadata *_intentMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool locked; // @synthesize locked=_locked;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

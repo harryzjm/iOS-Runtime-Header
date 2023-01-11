@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property _Bool phonetic; // @synthesize phonetic=_phonetic;
 @property long long style; // @synthesize style=_style;
 - (void)dealloc;
-- (_Bool)isEqualToFormatterData:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

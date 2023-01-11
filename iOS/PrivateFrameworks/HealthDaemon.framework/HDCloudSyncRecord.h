@@ -6,20 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class CKRecord;
+@class CKRecord, CKRecordID, NSData;
 
 @interface HDCloudSyncRecord : NSObject
 {
     CKRecord *_record;
+    _Bool _repaired;
+    _Bool _unsaved;
+    CKRecordID *_recordID;
 }
 
-+ (_Bool)_validateOptionalValueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(_Bool)arg4 error:(id *)arg5;
-+ (id)_valueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(_Bool)arg4 error:(id *)arg5;
 + (_Bool)hasFutureSchema:(id)arg1;
++ (id)recordType;
++ (_Bool)requiresUnderlyingMessage;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) CKRecord *record; // @synthesize record=_record;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool unsaved; // @synthesize unsaved=_unsaved;
+@property(nonatomic) _Bool repaired; // @synthesize repaired=_repaired;
+@property(readonly, copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)serializeUnderlyingMessage;
+@property(readonly, copy, nonatomic) NSData *underlyingMessage;
+@property(readonly, nonatomic) long long schemaVersion;
+@property(readonly, nonatomic) CKRecord *record;
+- (_Bool)validateWithError:(id *)arg1;
 - (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2;
+- (id)init;
 
 @end
 

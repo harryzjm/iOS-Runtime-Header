@@ -12,9 +12,12 @@
 
 + (id)datedFilenameForFormat:(long long)arg1;
 + (id)fileTypeForFormat:(long long)arg1;
++ (id)userInterfaceXPCInterface;
++ (id)userInterfaceProtocol;
 @property(readonly, nonatomic) double recordingDuration;
 @property(readonly, nonatomic) _Bool startImmediately;
 @property(readonly, nonatomic) long long outputFormat;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 
 @end
 

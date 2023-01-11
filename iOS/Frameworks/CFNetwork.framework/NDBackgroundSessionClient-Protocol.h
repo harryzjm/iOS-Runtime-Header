@@ -18,9 +18,10 @@
 - (void)credStorage_getInitialCredentialDictionariesWithReply:(void (^)(NSDictionary *, NSDictionary *))arg1;
 - (void)backgroundSessionDidFinishAppWake:(NSString *)arg1 reply:(void (^)(void))arg2;
 - (void)backgroundSessionDidStartAppWake:(NSString *)arg1 reply:(void (^)(void))arg2;
+- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didFinishDownloadForMediaSelectionPropertyList:(NSDictionary *)arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 willDownloadToURL:(NSURL *)arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didResolveMediaSelectionProperyList:(id)arg2 reply:(void (^)(void))arg3;
-- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(NSValue *)arg2 totalTimeRangesLoaded:(NSArray *)arg3 timeRangeExpectedToLoad:(NSValue *)arg4;
+- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(NSValue *)arg2 totalTimeRangesLoaded:(NSArray *)arg3 timeRangeExpectedToLoad:(NSValue *)arg4 forMediaSelectionPropertyList:(NSDictionary *)arg5;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didReceiveDownloadToken:(unsigned long long)arg2;
 - (void)backgroundAVAssetDownloadTaskDidUpdateProgress:(unsigned long long)arg1 totalBytesWritten:(unsigned long long)arg2 totalBytesExpectedToWrite:(unsigned long long)arg3;
 - (void)openFileAtPath:(NSString *)arg1 mode:(int)arg2 withReply:(void (^)(NSFileHandle *))arg3;
@@ -29,7 +30,7 @@
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didWriteData:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;
 - (void)willRetryBackgroundDataTask:(unsigned long long)arg1 withError:(NSError *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3;
 - (void)backgroundDataTaskDidBecomeDownloadTask:(unsigned long long)arg1;
-- (void)backgroundTask:(unsigned long long)arg1 getAuthHeadersForResponse:(NSURLResponse *)arg2 reply:(void (^)(_Bool, NSDictionary *))arg3;
+- (void)backgroundTask:(unsigned long long)arg1 getAuthHeadersForResponse:(NSURLResponse *)arg2 reply:(void (^)(_Bool, NSDictionary *, NSURLRequest *))arg3;
 - (void)backgroundDataTask:(unsigned long long)arg1 didReceiveData:(NSData *)arg2 withReply:(void (^)(void))arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didCompleteWithError:(NSError *)arg2 taskMetrics:(__CFN_TaskMetrics *)arg3 info:(NSDictionary *)arg4 reply:(void (^)(void))arg5;
 - (void)backgroundTask:(unsigned long long)arg1 needNewBodyStream:(_Bool)arg2 withReply:(void (^)(NSFileHandle *))arg3;

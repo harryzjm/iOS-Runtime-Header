@@ -30,8 +30,8 @@
 + (id)currentEvent;
 + (_Bool)hasLandscapeOrientation;
 + (void)setOrientationProvider:(id)arg1;
-@property(nonatomic) _Bool useOrientationDependentFontAntialiasing; // @synthesize useOrientationDependentFontAntialiasing=_useOrientationDependentFontAntialiasing;
 - (id).cxx_construct;
+@property(nonatomic) _Bool useOrientationDependentFontAntialiasing; // @synthesize useOrientationDependentFontAntialiasing=_useOrientationDependentFontAntialiasing;
 - (id)recursiveDescription;
 - (id)description;
 - (void)setTileControllerShouldUseLowScaleTiles:(_Bool)arg1;
@@ -91,7 +91,8 @@
 - (struct CGRect)frame;
 - (void)setFrame:(struct CGRect)arg1 display:(_Bool)arg2;
 - (_Bool)makeFirstResponder:(id)arg1;
-- (int)keyViewSelectionDirection;
+- (_Bool)resignFirstResponder;
+- (unsigned long long)keyViewSelectionDirection;
 - (void)setVisible:(_Bool)arg1;
 - (_Bool)isVisible;
 - (void)makeKeyWindow;

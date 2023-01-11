@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)monitorBufferPool;
 - (void)returnBufferToPool:(char *)arg1;
 - (char *)getBufferFromPool:(int)arg1;
-- (void)finalize;
 - (void)dealloc;
 - (id)init;
 

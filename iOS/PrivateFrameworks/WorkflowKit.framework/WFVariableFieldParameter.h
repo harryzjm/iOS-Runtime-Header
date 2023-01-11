@@ -8,7 +8,7 @@
 {
 }
 
-- (_Bool)supportsImportQuestions;
+- (id)importQuestionBehavior;
 - (id)defaultSupportedVariableTypes;
 - (Class)singleStateClass;
 

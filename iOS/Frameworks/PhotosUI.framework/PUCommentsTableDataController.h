@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 {
     NSCache *_commentsHeightCache;
     PUPhotoCommentEntryView *_entryView;
+    _Bool _hasPendingChanges;
     _Bool _editing;
     _Bool _shouldUseCompactCommentSeparators;
     UITableView *_tableView;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
     PLCloudSharedComment *_justInsertedComment;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PLCloudSharedComment *justInsertedComment; // @synthesize justInsertedComment=_justInsertedComment;
 @property(retain, nonatomic) PLManagedAsset *managedAsset; // @synthesize managedAsset=_managedAsset;
 @property(nonatomic) __weak id <PUCommentsTableDataControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -35,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
 @property(retain, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void).cxx_destruct;
 - (void)cloudCommentsDidChange:(id)arg1;
 - (void)photoCommentEntryViewDidEndEditing:(id)arg1;
 - (_Bool)photoCommentEntryViewShouldEndEditing:(id)arg1;

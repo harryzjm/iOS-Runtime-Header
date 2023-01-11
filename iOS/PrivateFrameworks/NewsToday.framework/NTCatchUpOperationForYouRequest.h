@@ -23,8 +23,13 @@
     long long _cutoffTime;
     unsigned long long _headlinesPerFeedFetchCount;
     long long _fetchingBin;
+    NSString *_throttlingIdentifier;
+    double _minimumUpdateInterval;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double minimumUpdateInterval; // @synthesize minimumUpdateInterval=_minimumUpdateInterval;
+@property(readonly, copy, nonatomic) NSString *throttlingIdentifier; // @synthesize throttlingIdentifier=_throttlingIdentifier;
 @property(readonly, nonatomic) long long fetchingBin; // @synthesize fetchingBin=_fetchingBin;
 @property(readonly, nonatomic) unsigned long long headlinesPerFeedFetchCount; // @synthesize headlinesPerFeedFetchCount=_headlinesPerFeedFetchCount;
 @property(readonly, nonatomic) long long cutoffTime; // @synthesize cutoffTime=_cutoffTime;
@@ -35,9 +40,8 @@
 @property(readonly, copy, nonatomic) NSString *paidBundleFeedID; // @synthesize paidBundleFeedID=_paidBundleFeedID;
 @property(readonly, copy, nonatomic) NSSet *hiddenFeedIDs; // @synthesize hiddenFeedIDs=_hiddenFeedIDs;
 @property(readonly, copy, nonatomic) NSString *topStoriesChannelID; // @synthesize topStoriesChannelID=_topStoriesChannelID;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithForYouTodaySectionSpecificConfig:(id)arg1 topStoriesChannelID:(id)arg2 hiddenFeedIDs:(id)arg3 paidBundleFeedID:(id)arg4 mutedTagIDs:(id)arg5 purchasedTagIDs:(id)arg6 subscribedTagIDs:(id)arg7 bundleSubscriptionProvider:(id)arg8;
+- (id)initWithForYouTodaySectionSpecificConfig:(id)arg1 appConfiguration:(id)arg2 topStoriesChannelID:(id)arg3 hiddenFeedIDs:(id)arg4 paidBundleFeedID:(id)arg5 mutedTagIDs:(id)arg6 purchasedTagIDs:(id)arg7 subscribedTagIDs:(id)arg8 bundleSubscriptionProvider:(id)arg9 throttlingIdentifier:(id)arg10;
 - (id)init;
 
 @end

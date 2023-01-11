@@ -14,19 +14,13 @@
     int _type;
 }
 
-@property(nonatomic) long long typeCode; // @synthesize typeCode=_typeCode;
-@property(nonatomic) int type; // @synthesize type=_type;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsType:(id)arg1;
-- (id)typeAsString:(int)arg1;
 
 @end
 

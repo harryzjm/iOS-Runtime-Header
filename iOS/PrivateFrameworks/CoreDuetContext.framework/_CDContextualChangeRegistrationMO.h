@@ -12,12 +12,15 @@
 {
 }
 
++ (id)predicateForActiveRegistrationsInBootSession:(id)arg1;
 + (id)materializedRegistrationFrom:(id)arg1;
 + (void)hydrateMO:(id)arg1 fromRegistration:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property(retain, nonatomic) NSString *identifier; // @dynamic identifier;
+@property(nonatomic) _Bool isActive; // @dynamic isActive;
+@property(nonatomic) _Bool isMultiDeviceRegistration; // @dynamic isMultiDeviceRegistration;
 @property(retain, nonatomic) NSData *properties; // @dynamic properties;
 
 @end

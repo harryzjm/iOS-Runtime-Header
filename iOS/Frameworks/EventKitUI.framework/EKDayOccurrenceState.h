@@ -17,8 +17,8 @@
     _Bool _isProposedTime;
     _Bool _isSelected;
     _Bool _isDimmed;
-    _Bool _usesSmallText;
     _Bool _isVibrant;
+    _Bool _usesSmallText;
     EKEvent *_occurrence;
     UIColor *_displayColor;
     UITraitCollection *_traitCollection;
@@ -29,7 +29,7 @@
     double _visibleHeight;
     double _topYBoundaryForText;
     struct CGRect _backgroundRect;
-    struct CGRect _textRect;
+    struct CGRect _estimatedTextFrame;
     struct UIEdgeInsets _padding;
 }
 
@@ -37,8 +37,10 @@
 + (_Bool)shouldShowTimeStringForOccurrence:(id)arg1;
 + (id)languageAwareInsetsCache;
 + (id)locationCache;
+- (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
-@property(nonatomic) struct CGRect textRect; // @synthesize textRect=_textRect;
+@property(nonatomic) struct CGRect estimatedTextFrame; // @synthesize estimatedTextFrame=_estimatedTextFrame;
+@property(nonatomic) _Bool usesSmallText; // @synthesize usesSmallText=_usesSmallText;
 @property(nonatomic) double topYBoundaryForText; // @synthesize topYBoundaryForText=_topYBoundaryForText;
 @property(nonatomic) double visibleHeight; // @synthesize visibleHeight=_visibleHeight;
 @property(nonatomic) double travelTimeHeight; // @synthesize travelTimeHeight=_travelTimeHeight;
@@ -47,14 +49,12 @@
 @property(nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
 @property(nonatomic) long long birthdayCount; // @synthesize birthdayCount=_birthdayCount;
 @property(nonatomic) _Bool isVibrant; // @synthesize isVibrant=_isVibrant;
-@property(nonatomic) _Bool usesSmallText; // @synthesize usesSmallText=_usesSmallText;
 @property(nonatomic) _Bool isDimmed; // @synthesize isDimmed=_isDimmed;
 @property(nonatomic) _Bool isSelected; // @synthesize isSelected=_isSelected;
 @property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(retain, nonatomic) UIColor *displayColor; // @synthesize displayColor=_displayColor;
 @property(nonatomic) _Bool isProposedTime; // @synthesize isProposedTime=_isProposedTime;
 @property(retain, nonatomic) EKEvent *occurrence; // @synthesize occurrence=_occurrence;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -96,7 +96,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(nonatomic) struct UIEdgeInsets margin;
 @property(readonly) Class superclass;
 
 @end

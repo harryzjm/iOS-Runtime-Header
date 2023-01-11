@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CCUIAppLauncherModule, SBFApplication, SCUIAssetProvider;
+@class CCUIAppLauncherModule, SCUIAssetProvider;
 
 @interface CCUIAppLauncherViewController
 {
-    SBFApplication *_application;
     SCUIAssetProvider *_assetProvider;
     CCUIAppLauncherModule *_module;
 }
 
-@property(nonatomic) __weak CCUIAppLauncherModule *module; // @synthesize module=_module;
 - (void).cxx_destruct;
+@property(nonatomic) __weak CCUIAppLauncherModule *module; // @synthesize module=_module;
 - (void)_activateApplicationForShortcutItem:(id)arg1;
 - (id)_menuItemForShortcutItem:(id)arg1;
 - (void)_updateApplicationShortcutsActions;
 - (_Bool)shouldBeginTransitionToExpandedContentModule;
 - (_Bool)_canShowWhileLocked;
+- (id)_assetProvider;
 - (void)viewDidLoad;
 - (id)leadingImageForMenuItem:(id)arg1;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;

@@ -25,6 +25,7 @@
 }
 
 + (id)newInkOverlayDrawingUndoTargetWithPageController:(id)arg1;
+- (void).cxx_destruct;
 @property double lastStrokeEndTime; // @synthesize lastStrokeEndTime=_lastStrokeEndTime;
 @property(copy) CDUnknownBlockType delayedShapeDetectionBlock; // @synthesize delayedShapeDetectionBlock=_delayedShapeDetectionBlock;
 @property _Bool onlyPencilDraws; // @synthesize onlyPencilDraws=_onlyPencilDraws;
@@ -32,7 +33,6 @@
 @property(nonatomic) __weak id <PKRulerHostingDelegate> rulerHostingDelegate; // @synthesize rulerHostingDelegate=_rulerHostingDelegate;
 @property(retain) AKShapeDetectionController *shapeDetectionController; // @synthesize shapeDetectionController=_shapeDetectionController;
 @property __weak AKPageController *pageController; // @synthesize pageController=_pageController;
-- (void).cxx_destruct;
 - (id)_convertCHDrawing:(id)arg1 fromDrawingInCanvasView:(id)arg2 toInkOverlayView:(id)arg3;
 - (struct CGRect)_convertRect:(struct CGRect)arg1 fromDrawingInCanvasView:(id)arg2 toPageControllerModelSpace:(id)arg3;
 - (struct CGSize)scaleFromDrawingInCanvasView:(id)arg1 toPageControllerModelSpace:(id)arg2;
@@ -42,6 +42,7 @@
 - (void)_updateAllowedTouchTypesAllEnabled:(_Bool)arg1 pencilEnabled:(_Bool)arg2;
 - (void)_controllerWillSave:(id)arg1;
 - (void)_toolStatusUpdated:(id)arg1;
+- (void)_inkCanvasAnnotationUpdated:(id)arg1;
 - (void)_enclosingScrollViewDidScroll:(id)arg1;
 - (void)didToggleRuler;
 - (void)_inkDidChangeNotification:(id)arg1;
@@ -58,7 +59,7 @@
 - (void)inputViewDidBeginStroke:(id)arg1;
 - (_Bool)inputViewCanBeginDrawing:(id)arg1 withTouch:(id)arg2;
 @property(retain) AKInkOverlayView *inkOverlayView; // @synthesize inkOverlayView=_inkOverlayView;
-- (void)annotationEditingDidEnd;
+- (void)annotationEditingDidEndWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_partialTeardown;
 - (void)teardown;
 - (void)_fullSetup;

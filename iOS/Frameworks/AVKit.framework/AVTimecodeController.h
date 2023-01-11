@@ -8,7 +8,6 @@
 
 @class AVAssetTrack, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface AVTimecodeController : NSObject
 {
     long long _frameCount;
@@ -21,9 +20,9 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _observationInterval;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 observationInterval; // @synthesize observationInterval=_observationInterval;
 @property(retain, nonatomic) AVAssetTrack *timecodeTrack; // @synthesize timecodeTrack=_timecodeTrack;
-- (void).cxx_destruct;
 - (_Bool)timecodeAvailable;
 - (_Bool)readTimecodes;
 - (_Bool)validateCMTime:(CDStruct_1b6d18a9)arg1;
@@ -31,8 +30,10 @@ __attribute__((visibility("hidden")))
 - (double)timeIntervalForFrameNumber:(long long)arg1;
 - (long long)calculateFrameNumberAtTimeInterval:(double)arg1;
 - (struct CVSMPTETime)timecodeForOffset:(long long)arg1 from:(long long)arg2 timecode:(id)arg3;
+- (long long)offsetFor:(id)arg1 fromTimecode:(id)arg2;
 - (struct CVSMPTETime)timecodeForFrameNumber64UsingCachedDescription:(long long)arg1;
 - (id)timecodeForFrameNumber32UsingFormatDescription:(struct opaqueCMFormatDescription *)arg1 timecodeStartFrame:(long long)arg2;
+- (long long)calculateFrameNumberAtTimecode:(id)arg1;
 - (id)calculateTimecodeAtFrame:(long long)arg1;
 - (long long)calculateFrameNumberAtCMTime:(CDStruct_1b6d18a9)arg1;
 - (id)maxFrameCountString;

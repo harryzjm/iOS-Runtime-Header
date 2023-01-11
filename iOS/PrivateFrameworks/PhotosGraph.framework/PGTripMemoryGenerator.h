@@ -14,13 +14,15 @@
     unsigned long long _subcategory;
 }
 
+- (void).cxx_destruct;
 @property(readonly) unsigned long long subcategory; // @synthesize subcategory=_subcategory;
 @property(retain, nonatomic) PGGraphHighlightGroupNode *tripNode; // @synthesize tripNode=_tripNode;
 @property(retain, nonatomic) NSDate *lowerBoundLocalDate; // @synthesize lowerBoundLocalDate=_lowerBoundLocalDate;
-- (void).cxx_destruct;
 - (id)_potentialMemoriesForDryTesting;
 - (id)_tripNodeForPotentialMemory:(id)arg1;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)curationOptionsWithKeyAsset:(id)arg1;
+- (unsigned long long)durationForCuration;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)potentialMemoryWithTripNode:(id)arg1;
 - (id)initWithSubcategory:(unsigned long long)arg1 controller:(id)arg2;

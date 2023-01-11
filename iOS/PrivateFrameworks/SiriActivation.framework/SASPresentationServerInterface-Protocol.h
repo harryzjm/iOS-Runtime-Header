@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AFUISiriLockStateTransport, SASActivationRequest, SASButtonIdentifierTransport, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriPresentationActivationCancelReasonTransport, SiriPresentationOptions;
+@class NSNumber, NSString, SASActivationRequest, SASButtonIdentifierTransport, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriPresentationActivationCancelReasonTransport, SiriPresentationOptions, SiriUILockStateTransport;
 
 @protocol SASPresentationServerInterface
+- (oneway void)ping;
+- (oneway void)pocketStateFetchDeterminedShouldCancelWake:(NSNumber *)arg1;
+- (oneway void)deviceWonMyriadElection;
 - (oneway void)bulletinManagerDidChangeBulletins;
-- (oneway void)updateCurrentLockState:(AFUISiriLockStateTransport *)arg1;
-- (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
+- (oneway void)updateActiveInterfaceOrientation:(NSNumber *)arg1 willAnimationWithDuration:(SASTimeIntervalTransport *)arg2;
+- (oneway void)updateCurrentLockState:(SiriUILockStateTransport *)arg1;
+- (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
 - (oneway void)handleButtonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
-- (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
+- (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
 - (oneway void)handleButtonDownFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
 - (_Bool)handleTestingActivation:(SASActivationRequest *)arg1;
-- (oneway void)turnOnScreenAfterPocketStateFetch;
+- (oneway void)wakeScreenAfterActivation;
 - (oneway void)cancelPendingActivationEventWithReason:(SiriPresentationActivationCancelReasonTransport *)arg1;
 - (oneway void)cancelPreheat;
 - (oneway void)preheat;

@@ -4,17 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CAMLivePhotoAnimationCache;
+
 @interface CAMLivePhotoStatusIndicator
 {
     long long _livePhotoMode;
+    CAMLivePhotoAnimationCache *__animationCache;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CAMLivePhotoAnimationCache *_animationCache; // @synthesize _animationCache=__animationCache;
 @property(nonatomic) long long livePhotoMode; // @synthesize livePhotoMode=_livePhotoMode;
+- (_Bool)shouldShowSlashForCurrentState;
+- (_Bool)shouldUseSlash;
+- (_Bool)canAnimate;
 - (_Bool)shouldUseOutline;
 - (_Bool)shouldUseActiveTintForCurrentState;
 - (struct CGSize)intrinsicContentSize;
-- (id)_imageNameForLivePhotoMode:(long long)arg1;
+- (id)imageAnimationFramesForCurrentState;
 - (id)imageNameForCurrentState;
+- (void)preloadAnimationFrames;
+- (void)setLivePhotoMode:(long long)arg1 animated:(_Bool)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

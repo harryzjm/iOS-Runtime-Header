@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class CAFilter, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PGBackdropView
 {
+    CAFilter *_gaussianBlurFilter;
+    CAFilter *_averageColorFilter;
 }
 
 + (Class)layerClass;
-@property(nonatomic) double scale;
-@property(nonatomic) double saturationAmount;
+- (void).cxx_destruct;
+@property(nonatomic) double backdropScale;
 @property(nonatomic) double gaussianBlurRadius;
 @property(copy, nonatomic) NSString *groupName;
+- (void)_updateFilters;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

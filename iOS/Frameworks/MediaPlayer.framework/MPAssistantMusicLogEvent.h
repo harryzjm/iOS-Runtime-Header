@@ -10,17 +10,19 @@
 
 @class NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPAssistantMusicLogEvent : NSObject <MPAssistantLogEvent>
 {
     unsigned int _sessionID;
     NSString *_siriSessionIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *siriSessionIdentifier; // @synthesize siriSessionIdentifier=_siriSessionIdentifier;
 @property(nonatomic) unsigned int sessionID; // @synthesize sessionID=_sessionID;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *eventPayload;
 @property(readonly, nonatomic) long long eventCode;
+@property(readonly, nonatomic) NSString *eventName;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

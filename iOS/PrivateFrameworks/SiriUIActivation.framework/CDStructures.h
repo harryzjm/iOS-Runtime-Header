@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -23,6 +25,21 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
+};
+
+struct InstrumentationDismissalState {
+    _Bool fluidDismissalSet;
+    _Bool punchedOut;
+    _Bool incomingPhoneCallDetected;
+    _Bool outgoingPhoneCallDetected;
+    NSString *attemptedAppLaunchIdentifier;
+};
+
+struct UIEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct os_unfair_lock_s {

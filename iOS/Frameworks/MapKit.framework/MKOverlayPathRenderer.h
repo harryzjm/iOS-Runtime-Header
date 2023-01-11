@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary, UIColor;
+@class MKUsageCounter, NSArray, NSMutableDictionary, UIColor;
 
 @interface MKOverlayPathRenderer
 {
@@ -21,13 +21,15 @@
     struct os_unfair_lock_s _runningVectorGeometryAnimationsLock;
     NSMutableDictionary *_runningVectorGeometryAnimations;
     _Bool _externalSubclassOverridesDrawingMethods;
+    MKUsageCounter *_usageCounter;
 }
 
 + (_Bool)_externalSubclassOverridesDrawingMethods;
 + (Class)_mapkitLeafClass;
+- (void).cxx_destruct;
+@property(nonatomic, getter=_usageCounter, setter=_setUsageCounter:) __weak MKUsageCounter *usageCounter; // @synthesize usageCounter=_usageCounter;
 @property(nonatomic) _Bool shouldRasterize; // @synthesize shouldRasterize=_shouldRasterize;
 @property(readonly, nonatomic, getter=_externalSubclassOverridesDrawingMethods) _Bool externalSubclassOverridesDrawingMethods; // @synthesize externalSubclassOverridesDrawingMethods=_externalSubclassOverridesDrawingMethods;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (_Bool)canDrawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2;
 - (void)drawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2 inContext:(struct CGContext *)arg3;

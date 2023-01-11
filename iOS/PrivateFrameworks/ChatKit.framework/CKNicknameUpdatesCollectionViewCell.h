@@ -6,37 +6,55 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class CALayer, CKNicknameBannerView, UIButton;
+#import <ChatKit/CKNicknameUpdateInterface-Protocol.h>
+
+@class CKAvatarView, CKNicknameUpdate, NSLayoutConstraint, NSString, UIButton, UIImageView, UILabel, UIView;
 @protocol CKNicknameUpdatesCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKNicknameUpdatesCollectionViewCell : UICollectionViewCell
+@interface CKNicknameUpdatesCollectionViewCell : UICollectionViewCell <CKNicknameUpdateInterface>
 {
+    _Bool _needsContextualMenu;
     id <CKNicknameUpdatesCollectionViewCellDelegate> _delegate;
-    CKNicknameBannerView *_bannerView;
+    CKAvatarView *_avatarView;
+    UIImageView *_imageView;
+    UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
     UIButton *_updateButton;
     UIButton *_ignoreButton;
-    CALayer *_topKeyline;
-    CALayer *_bottomKeyline;
-    unsigned long long _order;
+    UIView *_topSeparator;
+    UIView *_bottomSeparator;
+    NSLayoutConstraint *_bottomSeparatorLeadingConstraint;
+    CKNicknameUpdate *_nicknameUpdate;
 }
 
 + (id)reuseIdentifier;
-@property(nonatomic) unsigned long long order; // @synthesize order=_order;
-@property(retain, nonatomic) CALayer *bottomKeyline; // @synthesize bottomKeyline=_bottomKeyline;
-@property(retain, nonatomic) CALayer *topKeyline; // @synthesize topKeyline=_topKeyline;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CKNicknameUpdate *nicknameUpdate; // @synthesize nicknameUpdate=_nicknameUpdate;
+@property(nonatomic) _Bool needsContextualMenu; // @synthesize needsContextualMenu=_needsContextualMenu;
+@property(retain, nonatomic) NSLayoutConstraint *bottomSeparatorLeadingConstraint; // @synthesize bottomSeparatorLeadingConstraint=_bottomSeparatorLeadingConstraint;
+@property(retain, nonatomic) UIView *bottomSeparator; // @synthesize bottomSeparator=_bottomSeparator;
+@property(retain, nonatomic) UIView *topSeparator; // @synthesize topSeparator=_topSeparator;
 @property(retain, nonatomic) UIButton *ignoreButton; // @synthesize ignoreButton=_ignoreButton;
 @property(retain, nonatomic) UIButton *updateButton; // @synthesize updateButton=_updateButton;
-@property(retain, nonatomic) CKNicknameBannerView *bannerView; // @synthesize bannerView=_bannerView;
+@property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property(nonatomic) id <CKNicknameUpdatesCollectionViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
-- (void)layoutSubviews;
-- (void)prepareForReuse;
-- (void)configureWithNicknameUpdate:(id)arg1;
 - (void)_ignoreButtonTapped:(id)arg1;
 - (void)_updateButtonTapped:(id)arg1;
+- (void)updateInterfaceSelectedAction:(unsigned long long)arg1;
+- (void)updateSeparatorsForOrder:(unsigned long long)arg1;
+- (void)configureWithNicknameUpdate:(id)arg1 order:(unsigned long long)arg2;
+- (void)remakeUpdateButton;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

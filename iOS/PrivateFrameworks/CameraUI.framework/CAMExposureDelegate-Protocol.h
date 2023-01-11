@@ -9,9 +9,10 @@
 @class CAMExposureResult, CUCaptureController;
 
 @protocol CAMExposureDelegate <NSObject>
+- (float)baselineExposureValueForCaptureController:(CUCaptureController *)arg1;
 - (void)captureController:(CUCaptureController *)arg1 didOutputExposureResult:(CAMExposureResult *)arg2;
 
 @optional
-- (_Bool)captureControllerUserHasAdjustedExposureTargetBias:(CUCaptureController *)arg1;
+- (_Bool)captureControllerUserHasAdjustedExposureTargetBiasFromBaseline:(CUCaptureController *)arg1;
 @end
 

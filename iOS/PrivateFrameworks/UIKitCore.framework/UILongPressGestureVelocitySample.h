@@ -12,17 +12,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint start;
     struct CGPoint end;
     double dt;
-    double force;
-    double majorRadius;
 }
-
-@property double majorRadius; // @synthesize majorRadius;
-@property double force; // @synthesize force;
-@property double dt; // @synthesize dt;
-@property struct CGPoint end; // @synthesize end;
-@property struct CGPoint start; // @synthesize start;
-- (void)resetValues;
-- (void)pullValuesFrom:(id)arg1;
 
 @end
 

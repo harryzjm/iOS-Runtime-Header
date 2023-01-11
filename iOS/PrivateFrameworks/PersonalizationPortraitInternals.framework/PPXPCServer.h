@@ -11,6 +11,7 @@
 }
 
 + (void)registerXPCListeners;
++ (void)_registerStringDonationListener;
 + (void)_registerInternalListener;
 + (void)_registerConfigListener;
 + (void)_registerConnectionsListener;

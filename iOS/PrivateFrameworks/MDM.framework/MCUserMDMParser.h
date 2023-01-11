@@ -8,6 +8,7 @@
 {
 }
 
+- (void)_sendAnalyticsMDMCommandEventWithRequest:(id)arg1 response:(id)arg2;
 - (void)_performQuery:(id)arg1 withResultDictionary:(id)arg2;
 - (id)_allowedDeviceQueriesForAccessRights:(int)arg1;
 - (id)_restrictions:(id)arg1;

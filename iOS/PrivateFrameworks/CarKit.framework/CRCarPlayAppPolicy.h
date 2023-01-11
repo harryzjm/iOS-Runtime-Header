@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface CRCarPlayAppPolicy : NSObject
 {
@@ -18,13 +18,16 @@
     _Bool _badgesAppIcon;
     _Bool _showsNotifications;
     _Bool _handlesCarIntents;
-    _Bool _launchUsingMapsTemplateUI;
+    _Bool _launchUsingTemplateUI;
     NSDictionary *_siriActivationOptions;
+    NSString *_bundlePath;
     unsigned long long _applicationCategory;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long applicationCategory; // @synthesize applicationCategory=_applicationCategory;
-@property(nonatomic) _Bool launchUsingMapsTemplateUI; // @synthesize launchUsingMapsTemplateUI=_launchUsingMapsTemplateUI;
+@property(readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
+@property(nonatomic) _Bool launchUsingTemplateUI; // @synthesize launchUsingTemplateUI=_launchUsingTemplateUI;
 @property(nonatomic) _Bool handlesCarIntents; // @synthesize handlesCarIntents=_handlesCarIntents;
 @property(nonatomic) _Bool showsNotifications; // @synthesize showsNotifications=_showsNotifications;
 @property(nonatomic) _Bool badgesAppIcon; // @synthesize badgesAppIcon=_badgesAppIcon;
@@ -34,7 +37,6 @@
 @property(nonatomic) _Bool launchUsingSiri; // @synthesize launchUsingSiri=_launchUsingSiri;
 @property(nonatomic) _Bool canDisplayOnCarScreen; // @synthesize canDisplayOnCarScreen=_canDisplayOnCarScreen;
 @property(nonatomic, getter=isCarPlaySupported) _Bool carPlaySupported; // @synthesize carPlaySupported=_carPlaySupported;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

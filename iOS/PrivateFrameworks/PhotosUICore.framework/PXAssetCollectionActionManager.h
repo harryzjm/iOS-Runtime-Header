@@ -4,21 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHFetchResult, PXDisplayTitleInfo;
-@protocol PXDisplayAssetCollection;
+@class PHFetchResult, PXAssetCollectionReference, PXAssetReference, PXAssetsDataSourceManager, PXDisplayTitleInfo;
+@protocol UIDragSession, UIDropSession;
 
 @interface PXAssetCollectionActionManager
 {
-    id <PXDisplayAssetCollection> _assetCollection;
+    PXAssetCollectionReference *_initialAssetCollectionReference;
     PXDisplayTitleInfo *_displayTitleInfo;
     PHFetchResult *_people;
+    PXAssetReference *_dropTargetAssetReference;
+    id <UIDragSession> _dragSession;
+    id <UIDropSession> _dropSession;
+    PXAssetsDataSourceManager *_assetsDataSourceManager;
+    PHFetchResult *_assetsFetchResult;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PHFetchResult *assetsFetchResult; // @synthesize assetsFetchResult=_assetsFetchResult;
+@property(retain, nonatomic) PXAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
+@property(retain, nonatomic) id <UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
+@property(retain, nonatomic) id <UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
+@property(retain, nonatomic) PXAssetReference *dropTargetAssetReference; // @synthesize dropTargetAssetReference=_dropTargetAssetReference;
 @property(retain, nonatomic) PHFetchResult *people; // @synthesize people=_people;
 @property(readonly, nonatomic) PXDisplayTitleInfo *displayTitleInfo; // @synthesize displayTitleInfo=_displayTitleInfo;
-@property(readonly, nonatomic) id <PXDisplayAssetCollection> assetCollection; // @synthesize assetCollection=_assetCollection;
-- (void).cxx_destruct;
+- (id)systemImageNameForActionType:(id)arg1;
+- (id)systemImageNameForActionType:(id)arg1 assetCollectionReference:(id)arg2;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2 assetCollectionReference:(id)arg3;
+- (id)actionPerformerForActionType:(id)arg1;
+- (id)actionPerformerForActionType:(id)arg1 assetCollectionReference:(id)arg2;
+- (_Bool)canPerformActionType:(id)arg1;
+- (_Bool)canPerformActionType:(id)arg1 assetCollectionReference:(id)arg2;
+- (id)displayTitleInfoForAssetCollection:(id)arg1;
+@property(readonly, nonatomic) PXAssetCollectionReference *assetCollectionReference;
 - (id)initWithAssetCollection:(id)arg1 displayTitleInfo:(id)arg2;
+- (id)initWithAssetCollectionReference:(id)arg1 displayTitleInfo:(id)arg2;
 - (id)init;
 
 @end

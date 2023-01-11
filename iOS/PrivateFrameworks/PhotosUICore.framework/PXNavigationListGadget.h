@@ -12,30 +12,28 @@
 
 @interface PXNavigationListGadget <PXGadget, PXNavigableCollectionContainer>
 {
-    _Bool _visibleContentRectIsStale;
-    PXGadgetSpec *_gadgetSpec;
     id <PXGadgetDelegate> _delegate;
+    PXGadgetSpec *_gadgetSpec;
     struct CGRect _visibleContentRect;
 }
 
-@property(nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
-@property(nonatomic) __weak id <PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 - (void).cxx_destruct;
-- (void)_updateTableViewForVisibleContentRect;
+@property(nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
+@property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
+@property(nonatomic) __weak id <PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateTableViewLayoutMargins;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (id)_listItemForCollection:(id)arg1;
 - (void)navigateToCollection:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)canNavigateToCollection:(id)arg1;
 @property(readonly, nonatomic) unsigned long long headerStyle;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 @property(readonly, nonatomic) NSString *localizedTitle;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-@property(readonly, nonatomic) _Bool hasContentToDisplay;
+@property(readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property(readonly, nonatomic) unsigned long long gadgetType;
-- (void)tableViewContentSizeDidChange;
-- (void)viewWillLayoutSubviews;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)contentHeightDidChange;
 - (void)viewDidLoad;
 
 // Remaining properties
@@ -47,9 +45,6 @@
 @property(readonly) unsigned long long hash;
 @property(nonatomic) long long priority;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool supportsAssetsDrop;
-@property(readonly, nonatomic) _Bool supportsHighlighting;
-@property(readonly, nonatomic) _Bool supportsSelection;
 
 @end
 

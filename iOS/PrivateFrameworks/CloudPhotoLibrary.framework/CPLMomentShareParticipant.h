@@ -23,7 +23,10 @@
     NSPersonNameComponents *_nameComponents;
 }
 
++ (id)shareParticipantsFromMomentShareParticipants:(id)arg1;
++ (id)momentShareParticipantsFromParticipants:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) short status; // @synthesize status=_status;
 @property(nonatomic) short type; // @synthesize type=_type;
 @property(nonatomic) _Bool isCurrentUser; // @synthesize isCurrentUser=_isCurrentUser;
@@ -32,10 +35,11 @@
 @property(copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(copy, nonatomic) NSString *email; // @synthesize email=_email;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)asShareParticipant;
+- (id)initWithShareParticipant:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

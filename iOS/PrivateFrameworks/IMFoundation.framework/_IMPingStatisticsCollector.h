@@ -16,6 +16,7 @@
     IMPingStatistics *_stats;
 }
 
+- (void).cxx_destruct;
 - (double)_computeStandardDeviation:(id)arg1 numPings:(int)arg2 averageRTT:(double)arg3;
 - (double)_computeMedianTime:(id)arg1;
 - (id)pingStatsForLastNSeconds:(double)arg1;

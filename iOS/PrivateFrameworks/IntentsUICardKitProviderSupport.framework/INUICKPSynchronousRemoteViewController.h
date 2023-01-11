@@ -22,11 +22,11 @@
 }
 
 + (void)requestInstanceWithInfo:(id)arg1 configuration:(id)arg2 synchronousRemoteViewControllerDelegate:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <INUICKPSynchronousRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <INUICKPInterfaceSectionOrganizing> interfaceSectionOrganizer; // @synthesize interfaceSectionOrganizer=_interfaceSectionOrganizer;
 @property(retain, nonatomic) INUIRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property(nonatomic) __weak id <CRKCardSectionViewControllingDelegate> cardSectionViewControllingDelegate; // @synthesize cardSectionViewControllingDelegate;
-- (void).cxx_destruct;
 - (struct CGSize)preferredContentSize;
 - (struct CGSize)cachedSizeForSynchronousRemoteView:(id)arg1;
 - (id)interfaceSectionsForRemoteViewController:(id)arg1;
@@ -36,6 +36,7 @@
 - (id)_minimumSizesBySystemVersion;
 - (id)_interaction;
 @property(readonly, copy, nonatomic) NSSet *cachedRepresentedParameters;
+- (_Bool)_canShowWhileLocked;
 - (void)loadView;
 
 // Remaining properties

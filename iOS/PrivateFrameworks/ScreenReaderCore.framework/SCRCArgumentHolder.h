@@ -6,30 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class SCRCArgumentHolderPrivate;
+@class NSString;
 
 @interface SCRCArgumentHolder : NSObject
 {
-    SCRCArgumentHolderPrivate *_private;
+    _Bool _required;
+    NSString *_option;
+    NSString *_argument;
+    NSString *_argumentDescription;
+    id _target;
+    SEL _action;
 }
 
 - (void).cxx_destruct;
-- (_Bool)isRequired;
-- (void)setIsRequired:(_Bool)arg1;
-- (id)argumentDescription;
-- (void)setArgumentDescription:(id)arg1;
-- (SEL)action;
-- (void)setAction:(SEL)arg1;
-- (id)target;
-- (void)setTarget:(id)arg1;
-- (id)argument;
-- (void)setArgument:(id)arg1;
-- (id)option;
-- (void)setOption:(id)arg1;
+@property(readonly, nonatomic) _Bool required; // @synthesize required=_required;
+@property(readonly, nonatomic) SEL action; // @synthesize action=_action;
+@property(readonly, nonatomic) __weak id target; // @synthesize target=_target;
+@property(readonly, copy, nonatomic) NSString *argumentDescription; // @synthesize argumentDescription=_argumentDescription;
+@property(copy, nonatomic) NSString *argument; // @synthesize argument=_argument;
+@property(readonly, copy, nonatomic) NSString *option; // @synthesize option=_option;
 - (long long)compare:(id)arg1;
-- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)process;
+- (id)initWithArgument:(id)arg1 option:(id)arg2 description:(id)arg3 target:(id)arg4 action:(SEL)arg5 required:(_Bool)arg6;
 - (id)init;
 
 @end

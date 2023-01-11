@@ -19,6 +19,7 @@
 - (unsigned long long)hk_countOfUUIDs;
 - (void)hk_enumerateUUIDBytesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)hk_enumerateUUIDsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)hk_SHA256;
 - (id)hk_MD5;
 
 // Remaining properties

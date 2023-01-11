@@ -9,6 +9,9 @@
 @class NSArray, NSString, RWIProtocolDOMHighlightConfig;
 
 @protocol RWIProtocolDOMDomainHandler <NSObject>
+
+@optional
+- (void)setAllowEditingUserAgentShadowTreesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 allow:(_Bool)arg3;
 - (void)setInspectedNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3;
 - (void)focusWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3;
 - (void)markUndoableStateWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
@@ -38,8 +41,6 @@
 - (void)setBreakpointForEventListenerWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3;
 - (void)setEventListenerDisabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3 disabled:(_Bool)arg4;
 - (void)getEventListenersForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
-- (void)getAssociatedDataForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(id *))arg2 nodeId:(int)arg3;
-- (void)getDataBindingsForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getSupportedEventNamesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;
 - (void)removeAttributeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 name:(NSString *)arg4;
 - (void)setAttributesAsTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 text:(NSString *)arg4 name:(id *)arg5;

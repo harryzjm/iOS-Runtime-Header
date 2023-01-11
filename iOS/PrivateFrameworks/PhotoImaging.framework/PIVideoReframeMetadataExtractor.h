@@ -18,8 +18,9 @@
     NSArray *timedMetadataArray;
 }
 
-@property(readonly, nonatomic) NSArray *timedMetadataArray; // @synthesize timedMetadataArray;
++ (_Bool)canProvideMetadataForAVAsset:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *timedMetadataArray; // @synthesize timedMetadataArray;
 - (id)extractMetadata;
 - (CDStruct_8e0628e6)trajectoryeHomographyFromMetadata:(const struct FigLivePhotoMetadata *)arg1 containsV3Metadata:(_Bool *)arg2;
 - (struct CGVector)motionBlurVectorFromMetadata:(const struct FigLivePhotoMetadata *)arg1;

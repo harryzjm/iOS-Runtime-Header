@@ -10,21 +10,41 @@
 
 @interface PGGraphBusinessNode <PGGraphPortraitNamedEntity>
 {
+    NSString *_name;
+    NSString *_uuid;
+    long long _venueCapacity;
+    double _latitude;
+    double _longitude;
+    double _radius;
 }
 
++ (id)categoryOfBusiness;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double radius; // @synthesize radius=_radius;
+@property(readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property(readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
+@property(readonly, nonatomic) long long venueCapacity; // @synthesize venueCapacity=_venueCapacity;
+@property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_uuid;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)associatedNodesForRemoval;
 - (id)keywordDescription;
+@property(readonly, nonatomic) NSSet *momentNodes;
 @property(readonly, nonatomic) NSSet *publicEventNodes;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateBusinessCategoryNodesUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) long long venueCapacity;
-@property(readonly, copy, nonatomic) NSSet *businessCategories;
-@property(readonly, nonatomic) NSString *name;
+@property(readonly, nonatomic) NSSet *businessCategories;
+- (unsigned short)domain;
+- (id)label;
+@property(readonly, copy) NSString *description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 @property(readonly, nonatomic) PPNamedEntity *pg_namedEntity;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

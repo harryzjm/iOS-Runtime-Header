@@ -10,6 +10,12 @@
 {
 }
 
++ (struct PLCartesianCoordinate3D)cartesianCoordinateFromLatitude:(float)arg1 longitude:(float)arg2;
++ (_Bool)horizontalAccuracyIsCoarse:(double)arg1;
++ (_Bool)locationIsCoarse:(id)arg1;
++ (id)predicateForMomentWithLocation;
++ (id)predicateForAssetWithLocation;
++ (struct CLLocationCoordinate2D)defaultLocationCoordinate2D;
 + (_Bool)canUseCoordinate:(struct CLLocationCoordinate2D)arg1;
 
 @end

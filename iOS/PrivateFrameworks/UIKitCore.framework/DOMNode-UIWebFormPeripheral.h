@@ -22,6 +22,9 @@
 - (void)populateCell:(id)arg1;
 - (id)createPickerCell;
 - (id)createSelectedItem;
+- (id)_responderWindow;
+- (id)inputAssistantItem;
+- (id)_textInteraction;
 - (id)_selectableText;
 - (_Bool)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(_Bool)arg3;
 - (void)_unmarkText;
@@ -75,6 +78,7 @@
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToStartOfLine;
+- (void)_deleteForwardByWord;
 - (void)_deleteByWord;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (id)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(id)arg2;
@@ -106,6 +110,7 @@
 - (void)_selectAll;
 - (struct _NSRange)_selectedRangeWithinMarkedText;
 - (struct _NSRange)_selectedNSRange;
+@property(nonatomic) long long _textInputSource;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 - (id)_keyInput;
 @property(readonly, nonatomic, getter=_proxyTextInput) UIResponder<UITextInput> *__content;
@@ -248,6 +253,8 @@
 - (void)confirmMarkedText:(id)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (unsigned short)characterInRelationToCaretSelection:(int)arg1;
+- (void)removeTextPlaceholder:(id)arg1;
+- (id)insertTextPlaceholderWithSize:(struct CGSize)arg1;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(_Bool)arg2;
 @property(readonly, nonatomic) id insertDictationResultPlaceholder;
@@ -269,21 +276,23 @@
 - (void)setSecure:(_Bool)arg1;
 - (id)textInputTraits;
 - (void)setupPlaceholderTextIfNeeded;
+@property(nonatomic) _Bool isSingleLineDocument;
 - (_Bool)hasContent;
 - (void)takeTraitsFrom:(id)arg1;
 
 // Remaining properties
 @property(copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property(readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
-@property(nonatomic) long long _textInputSource;
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType;
 @property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) long long autocorrectionType;
+@property(readonly, nonatomic) long long cursorBehavior;
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
@@ -308,11 +317,11 @@
 @property(retain, nonatomic) UIColor *insertionPointColor;
 @property(nonatomic) unsigned long long insertionPointWidth;
 @property(nonatomic) _Bool isCarPlayIdiom;
-@property(nonatomic) _Bool isSingleLineDocument;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) _Bool learnsCorrections;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
@@ -328,6 +337,7 @@
 @property(nonatomic) long long smartQuotesType;
 @property(nonatomic) long long spellCheckingType;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType;
 @property(nonatomic) long long textScriptType;

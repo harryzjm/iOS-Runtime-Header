@@ -7,20 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
-#import <Photos/PHUpdateChangeRequest-Protocol.h>
 
 @class NSManagedObjectID, NSString, PHChangeRequestHelper, PHPhotoLibrary;
 
-@interface PHChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
+@interface PHChangeRequest : NSObject <PHInsertChangeRequest>
 {
     PHChangeRequestHelper *_helper;
+    _Bool _shouldPerformConcurrentWork;
     PHPhotoLibrary *_photoLibrary;
 }
 
-+ (_Bool)canGenerateUUIDWithoutEntitlements;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldPerformConcurrentWork; // @synthesize shouldPerformConcurrentWork=_shouldPerformConcurrentWork;
 - (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
@@ -28,7 +28,7 @@
 - (id)initForNewObject;
 - (id)init;
 - (void)finalizeRequestWithBatchSuccess:(_Bool)arg1;
-@property(readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
+- (void)performConcurrentWork;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)encodeToXPCDict:(id)arg1;
 - (void)didMutate;
@@ -44,6 +44,7 @@
 @property(readonly, nonatomic) NSString *clientName;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(readonly, nonatomic) long long accessScopeOptionsRequirement;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

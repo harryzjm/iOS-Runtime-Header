@@ -22,7 +22,7 @@
     unsigned long long _outputFeatureChannels;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
 @property(readonly, nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
 @property(nonatomic) unsigned long long bidirectionalCombineMode; // @synthesize bidirectionalCombineMode=_bidirectionalCombineMode;

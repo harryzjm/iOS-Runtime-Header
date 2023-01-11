@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)layerClass;
-@property(nonatomic) __weak id <_UITextCanvasViewContext> context; // @synthesize context=_context;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_UITextCanvasViewContext> context; // @synthesize context=_context;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (void)setNeedsLayout;

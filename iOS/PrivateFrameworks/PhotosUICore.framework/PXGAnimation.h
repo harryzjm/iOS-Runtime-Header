@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, PXGLayout, PXGTransition;
+@class CASpringAnimation, NSDictionary, PXGLayout, PXGTransition;
 @protocol PXGAnimationDelegate;
 
 @interface PXGAnimation : NSObject
@@ -15,20 +15,29 @@
     _Bool _isDoubleSided;
     _Bool _supportsPresentationAdjustment;
     float _dampingRatio;
+    float _springAnimationInitialProgress;
+    float _springAnimationProgressMultiplier;
     double _duration;
     long long _curve;
     long long _numberOfOscillations;
     double _maximumDistance;
+    long long _scope;
     id <PXGAnimationDelegate> _delegate;
     NSDictionary *_userData;
     PXGLayout *_layout;
     PXGTransition *_transition;
+    CASpringAnimation *_springAnimation;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) float springAnimationProgressMultiplier; // @synthesize springAnimationProgressMultiplier=_springAnimationProgressMultiplier;
+@property(nonatomic) float springAnimationInitialProgress; // @synthesize springAnimationInitialProgress=_springAnimationInitialProgress;
+@property(retain, nonatomic) CASpringAnimation *springAnimation; // @synthesize springAnimation=_springAnimation;
 @property(nonatomic) __weak PXGTransition *transition; // @synthesize transition=_transition;
 @property(readonly, nonatomic) __weak PXGLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) NSDictionary *userData; // @synthesize userData=_userData;
 @property(retain, nonatomic) id <PXGAnimationDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) long long scope; // @synthesize scope=_scope;
 @property(nonatomic) _Bool supportsPresentationAdjustment; // @synthesize supportsPresentationAdjustment=_supportsPresentationAdjustment;
 @property(nonatomic, setter=setDoubleSided:) _Bool isDoubleSided; // @synthesize isDoubleSided=_isDoubleSided;
 @property(nonatomic) _Bool supportsSpriteTransfer; // @synthesize supportsSpriteTransfer=_supportsSpriteTransfer;
@@ -37,7 +46,6 @@
 @property(nonatomic) float dampingRatio; // @synthesize dampingRatio=_dampingRatio;
 @property(nonatomic) long long curve; // @synthesize curve=_curve;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
-- (void).cxx_destruct;
 - (void)noteDidComplete;
 @property(readonly, nonatomic) double effectiveDuration;
 - (id)description;

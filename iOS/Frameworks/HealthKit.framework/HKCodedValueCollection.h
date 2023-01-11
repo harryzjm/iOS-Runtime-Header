@@ -6,27 +6,36 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
-@interface HKCodedValueCollection : NSObject <NSSecureCoding, NSCopying>
+@interface HKCodedValueCollection : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
     NSArray *_codedValues;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)codedValueCollectionWithCodedValues:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *codedValues; // @synthesize codedValues=_codedValues;
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *codedValues; // @synthesize codedValues=_codedValues;
+- (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCodedValues:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

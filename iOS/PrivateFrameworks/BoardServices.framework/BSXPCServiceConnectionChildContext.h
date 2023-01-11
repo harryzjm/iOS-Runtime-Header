@@ -9,12 +9,10 @@
 @interface BSXPCServiceConnectionChildContext
 {
     BSXPCServiceConnectionRootContext *_parent;
-    unsigned long long _identifier;
     _Bool _remote;
+    unsigned long long _identifier;
 }
 
-@property(readonly, nonatomic, getter=isRemote) _Bool remote; // @synthesize remote=_remote;
-@property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (_Bool)isEqual:(id)arg1;
@@ -23,7 +21,6 @@
 - (_Bool)isClient;
 - (_Bool)isServer;
 - (id)endpointDescription;
-- (id)_initWithParent:(id)arg1 identifier:(unsigned long long)arg2 remote:(_Bool)arg3 proem:(id)arg4;
 
 @end
 

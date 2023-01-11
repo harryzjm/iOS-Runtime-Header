@@ -7,7 +7,7 @@
 #import <SpringBoardHome/SBIconListLayoutDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconListModelObserver-Protocol.h>
 
-@class NSString, SBFolderController, SBHCenterZoomSettings, UIView;
+@class NSArray, NSString, SBFolderController, SBHCenterZoomSettings, UIView;
 @protocol SBDockOffscreenFractionModifying;
 
 @interface SBCenterIconZoomAnimator <SBIconListLayoutDelegate, SBIconListModelObserver>
@@ -15,7 +15,8 @@
     UIView *_zoomView;
     UIView *_folderView;
     double _iconZoomedZ;
-    UIView *_extraViewsContainer;
+    NSArray *_extraViewsContainers;
+    NSArray *_extraViews;
     double _centerRow;
     double _centerCol;
     struct CGPoint _cameraPosition;
@@ -23,26 +24,22 @@
     id <SBDockOffscreenFractionModifying> _dockOffscreenFractionModifier;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool animatingIcons; // @synthesize animatingIcons=_animatingIcons;
 @property(readonly, nonatomic) double centerCol; // @synthesize centerCol=_centerCol;
 @property(readonly, nonatomic) double centerRow; // @synthesize centerRow=_centerRow;
 @property(readonly, nonatomic) struct CGPoint cameraPosition; // @synthesize cameraPosition=_cameraPosition;
 @property(readonly, nonatomic) UIView *zoomView; // @synthesize zoomView=_zoomView;
 @property(retain, nonatomic) id <SBDockOffscreenFractionModifying> dockOffscreenFractionModifier; // @synthesize dockOffscreenFractionModifier=_dockOffscreenFractionModifier;
-- (void).cxx_destruct;
 - (void)_calculateCentersAndCameraPosition;
 - (void)_calculateCenters;
 - (id)_animationFactoryForFolderView;
 - (id)_animationFactoryForDock;
 - (id)_animationFactoryForIcon:(id)arg1;
 - (void)_positionView:(id)arg1 forIcon:(id)arg2;
-- (void)iconList:(id)arg1 didRemoveIcon:(id)arg2;
-- (void)iconList:(id)arg1 didMoveIcon:(id)arg2;
 - (void)iconList:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (void)iconList:(id)arg1 didAddIcon:(id)arg2;
-- (void)iconListViewIsNotDisplayingAnyIcons:(id)arg1;
-- (struct CGPoint)iconListView:(id)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 proposedOrigin:(struct CGPoint)arg3;
-- (void)enumerateExtraViewsWithHandler:(CDUnknownBlockType)arg1;
+- (struct CGPoint)iconListView:(id)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(id)arg3 proposedOrigin:(struct CGPoint)arg4;
 - (double)_iconZoomDelay;
 - (void)_performAnimationToFraction:(double)arg1 withCentralAnimationSettings:(id)arg2 delay:(double)arg3 alreadyAnimating:(_Bool)arg4 sharedCompletion:(CDUnknownBlockType)arg5;
 - (unsigned long long)_numberOfSignificantAnimations;

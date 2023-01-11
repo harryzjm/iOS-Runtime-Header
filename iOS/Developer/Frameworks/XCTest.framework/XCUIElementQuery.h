@@ -8,11 +8,12 @@
 
 #import <XCTest/XCTElementSnapshotProvider-Protocol.h>
 #import <XCTest/XCUIElementTypeQueryProvider-Protocol.h>
+#import <XCTest/XCUIElementTypeQueryProvider_Private-Protocol.h>
 
 @class NSArray, NSOrderedSet, NSSet, NSString, XCElementSnapshot, XCUIApplication, XCUIElement;
 @protocol XCTElementSetTransformer, XCTElementSnapshotAttributeDataSource;
 
-@interface XCUIElementQuery : NSObject <XCTElementSnapshotProvider, XCUIElementTypeQueryProvider>
+@interface XCUIElementQuery : NSObject <XCTElementSnapshotProvider, XCUIElementTypeQueryProvider_Private, XCUIElementTypeQueryProvider>
 {
     _Bool _changesScope;
     _Bool _stopsOnFirstMatch;
@@ -27,6 +28,7 @@
     id <XCTElementSetTransformer> _transformer;
 }
 
+- (void).cxx_destruct;
 @property(retain) id <XCTElementSetTransformer> transformer; // @synthesize transformer=_transformer;
 @property(readonly, copy) NSString *queryDescription; // @synthesize queryDescription=_queryDescription;
 @property(retain) XCElementSnapshot *rootElementSnapshot; // @synthesize rootElementSnapshot=_rootElementSnapshot;
@@ -38,7 +40,6 @@
 @property _Bool stopsOnFirstMatch; // @synthesize stopsOnFirstMatch=_stopsOnFirstMatch;
 @property _Bool changesScope; // @synthesize changesScope=_changesScope;
 @property(readonly) XCUIElementQuery *inputQuery; // @synthesize inputQuery=_inputQuery;
-- (void).cxx_destruct;
 @property(readonly, copy) XCUIElementQuery *statusItems;
 @property(readonly, copy) XCUIElementQuery *otherElements;
 @property(readonly, copy) XCUIElementQuery *handles;
@@ -115,6 +116,7 @@
 @property(readonly, copy) XCUIElementQuery *radioButtons;
 @property(readonly, copy) XCUIElementQuery *buttons;
 @property(readonly, copy) XCUIElementQuery *dialogs;
+@property(readonly, copy) XCUIElementQuery *bannerNotifications;
 @property(readonly, copy) XCUIElementQuery *alerts;
 @property(readonly, copy) XCUIElementQuery *drawers;
 @property(readonly, copy) XCUIElementQuery *sheets;
@@ -165,6 +167,7 @@
 - (id)_childrenMatchingTypes:(id)arg1;
 - (id)childrenMatchingType:(unsigned long long)arg1;
 - (id)_descendantsMatchingTypes:(id)arg1;
+- (id)_descendantsMatchingPredicate:(id)arg1;
 - (id)descendantsMatchingType:(unsigned long long)arg1;
 - (id)debugDescriptionWithSnapshot:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
@@ -172,7 +175,9 @@
 @property(readonly, copy) NSString *elementDescription;
 - (id)_derivedExpressedIdentifiers;
 - (id)_derivedExpressedTypes;
+@property(readonly, copy) NSSet *allExpressedTypes;
 @property(readonly) XCUIApplication *application;
+- (id)device;
 @property(readonly) unsigned long long count;
 - (id)initWithInputQuery:(id)arg1 queryDescription:(id)arg2 transformer:(id)arg3;
 - (id)init;

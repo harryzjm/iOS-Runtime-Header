@@ -6,23 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class CPLEngineLibrary, CPLSyncSession, NSString;
+@class CPLEngineLibrary, CPLSyncSession, NSDate, NSString;
 @protocol CPLEngineSyncTaskDelegate, NSCoding;
 
 @interface CPLEngineSyncTask : NSObject
 {
+    struct os_unfair_lock_s _phaseDescriptionLock;
+    NSDate *_lastChangeDateForPhaseDescription;
     _Bool _foreground;
     _Bool _forceSync;
     _Bool _cancelled;
+    NSString *_phaseDescription;
     id <CPLEngineSyncTaskDelegate> _delegate;
     CPLEngineLibrary *_engineLibrary;
     CPLSyncSession *_session;
     id <NSCoding> _transportUserIdentifier;
-    NSString *_phaseDescription;
 }
 
 + (id)taskWithEngineLibrary:(id)arg1 session:(id)arg2;
-@property(readonly) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
+- (void).cxx_destruct;
 @property(getter=isCancelled, setter=_setCancelled:) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(nonatomic) _Bool forceSync; // @synthesize forceSync=_forceSync;
 @property(nonatomic) _Bool foreground; // @synthesize foreground=_foreground;
@@ -30,14 +32,16 @@
 @property(readonly, nonatomic) CPLSyncSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(retain) id <CPLEngineSyncTaskDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)description;
+@property(copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
+- (id)phaseDescriptionLastChangeDate:(id *)arg1;
 - (void)taskDidProgress:(float)arg1 userInfo:(id)arg2;
 - (void)taskDidFinishWithError:(id)arg1;
 - (void)cancel;
 - (void)launch;
 @property(readonly, nonatomic) NSString *taskIdentifier;
 - (unsigned long long)diskPressureState;
+- (void)launchTransportTask:(id)arg1 withTransportGroup:(id)arg2;
 - (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 
 @end

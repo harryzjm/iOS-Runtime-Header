@@ -18,24 +18,26 @@
     _Bool _expectsPeerResponse;
     _Bool _wantsAppAck;
     _Bool _compressed;
+    _Bool _didWakeHint;
     NSString *_peerResponseIdentifier;
     NSString *_messageUUID;
     NSDate *_expiryDate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property(nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
+@property(nonatomic) _Bool didWakeHint; // @synthesize didWakeHint=_didWakeHint;
 @property(retain, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
 @property(readonly, nonatomic) _Bool wantsAppAck; // @synthesize wantsAppAck=_wantsAppAck;
 @property(readonly, nonatomic) NSString *peerResponseIdentifier; // @synthesize peerResponseIdentifier=_peerResponseIdentifier;
 @property(readonly, nonatomic) _Bool expectsPeerResponse; // @synthesize expectsPeerResponse=_expectsPeerResponse;
 @property(readonly, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
 @property(nonatomic) _Bool compressed; // @synthesize compressed=_compressed;
-- (void).cxx_destruct;
 - (id)_nonHeaderData;
 @property(readonly, nonatomic) NSData *data;
 - (unsigned char)command;
-- (id)initWithSequenceNumber:(unsigned int)arg1 streamID:(unsigned short)arg2 expectsPeerResponse:(_Bool)arg3 wantsAppAck:(_Bool)arg4 compressed:(_Bool)arg5 peerResponseIdentifier:(id)arg6 messageUUID:(id)arg7 data:(id)arg8 expiryDate:(id)arg9;
+- (id)initWithSequenceNumber:(unsigned int)arg1 streamID:(unsigned short)arg2 expectsPeerResponse:(_Bool)arg3 wantsAppAck:(_Bool)arg4 compressed:(_Bool)arg5 didWakeHint:(_Bool)arg6 peerResponseIdentifier:(id)arg7 messageUUID:(id)arg8 data:(id)arg9 expiryDate:(id)arg10;
 - (id)initWithCommand:(unsigned char)arg1 underlyingData:(id)arg2;
 
 @end

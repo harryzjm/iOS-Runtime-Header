@@ -11,8 +11,8 @@
     NSArray *_credentials;
 }
 
-@property(readonly, copy, nonatomic) NSArray *credentials; // @synthesize credentials=_credentials;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *credentials; // @synthesize credentials=_credentials;
 - (id)initWithData:(id)arg1;
 
 @end

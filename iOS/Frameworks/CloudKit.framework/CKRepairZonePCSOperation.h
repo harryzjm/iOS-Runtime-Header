@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <CloudKit/CKRepairZonePCSOperationCallbacks-Protocol.h>
 
-@interface CKRepairZonePCSOperation
+@class CKRepairZonePCSOperationInfo, NSArray;
+@protocol CKRepairZonePCSOperationCallbacks;
+
+@interface CKRepairZonePCSOperation <CKRepairZonePCSOperationCallbacks>
 {
     CDUnknownBlockType _zoneRepairedBlock;
     NSArray *_zoneIDs;
 }
 
-@property(retain, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
-- (void)_handleProgressCallback:(id)arg1;
+@property(retain, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
+- (void)handleZonePCSRepairForID:(id)arg1 pcsInfo:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)hasCKOperationCallbacksSet;
 - (void)fillFromOperationInfo:(id)arg1;
@@ -22,6 +26,10 @@
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType zoneRepairedBlock; // @synthesize zoneRepairedBlock=_zoneRepairedBlock;
 - (id)initWithZoneIDsToRepair:(id)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKRepairZonePCSOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKRepairZonePCSOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CalendarEventAlarmTable, EKAlarmsViewModel, NSArray;
+@class EKAlarmsViewModel, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface EKCalendarItemAlarmEditItem
 {
-    CalendarEventAlarmTable *_alarmTable;
     unsigned long long _disclosedSubitem;
     NSArray *_alarms;
     _Bool _userChangedAlarm;
@@ -18,10 +17,11 @@ __attribute__((visibility("hidden")))
     EKAlarmsViewModel *_alarmsViewModel;
 }
 
-@property(retain, nonatomic) EKAlarmsViewModel *alarmsViewModel; // @synthesize alarmsViewModel=_alarmsViewModel;
 - (void).cxx_destruct;
+@property(retain, nonatomic) EKAlarmsViewModel *alarmsViewModel; // @synthesize alarmsViewModel=_alarmsViewModel;
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;
 - (_Bool)_alarmsMatchCalendarItem;
+- (void)ttlLocationStatusChanged:(id)arg1;
 - (void)refreshFromCalendarItemAndStore;
 - (void)_updateAlarms;
 - (_Bool)_calendarItemHasLeaveNowAlarm;
@@ -30,9 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)editItemViewControllerSave:(id)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (unsigned long long)numberOfSubitems;
-- (void)updateInternalTravelTimeStateForCalendarItem:(id)arg1;
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
-- (id)init;
 
 @end
 

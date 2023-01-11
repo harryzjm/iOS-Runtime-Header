@@ -14,7 +14,7 @@
 + (unsigned long long)_playHeadMillis:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_handleSeek:(id)arg1;
+- (void)_handleSeek_iOS:(id)arg1;
 - (void)_handleDisplaySizeChange:(id)arg1;
 - (void)_handlePIPChange:(id)arg1;
 - (void)_setSessionMetadataValue:(id)arg1 forKey:(id)arg2 player:(id)arg3;
@@ -22,9 +22,12 @@
 - (id)_sensitiveContentInfoForPlayer:(id)arg1;
 - (_Bool)_isDelegatedForPlayer:(id)arg1;
 - (id)_delegatedInfoForPlayer:(id)arg1;
+- (id)_audioFormatForPlayer:(id)arg1;
 - (id)_colorRangeForPlayer:(id)arg1;
+- (id)_subtitleInfoForPlayer:(id)arg1;
 - (id)_metricsForPlayer:(id)arg1;
 - (id)_focusInfoForSession:(id)arg1;
+- (id)_skipIntroActionForSession:(id)arg1 consume:(_Bool)arg2;
 - (id)_videoDisplayInfoForSession:(id)arg1;
 - (id)_connectionInfo;
 - (id)_screenInfo;

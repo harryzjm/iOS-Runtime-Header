@@ -23,12 +23,12 @@
     NSMutableDictionary *_bulletinFeeds;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *bulletinFeeds; // @synthesize bulletinFeeds=_bulletinFeeds;
 @property(retain, nonatomic) NSMutableDictionary *sectionInfoById; // @synthesize sectionInfoById=_sectionInfoById;
 @property(retain, nonatomic) NCNotificationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property(retain, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 @property(retain, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
-- (void).cxx_destruct;
 - (unsigned long long)_updateFeedForCoverSheetDestination:(unsigned long long)arg1 storedFeed:(unsigned long long)arg2;
 - (id)_bulletinsToClearPerSectionIdForNotificationRequests:(id)arg1 removingDestinations:(id)arg2;
 - (id)_bulletinsPerSectionIdForNotificationRequests:(id)arg1;
@@ -41,9 +41,7 @@
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequestsInSections:(id)arg2;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequests:(id)arg2 fromDestinations:(id)arg3;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequests:(id)arg2;
-- (id)observer:(id)arg1 composedAttachmentImageForType:(long long)arg2 thumbnailData:(id)arg3 key:(id)arg4;
-- (id)observer:(id)arg1 thumbnailSizeConstraintsForAttachmentType:(long long)arg2;
-- (_Bool)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(id)arg1;
+- (void)observer:(id)arg1 noteBulletinsLoadedForSectionID:(id)arg2;
 - (void)observer:(id)arg1 noteServerConnectionStateChanged:(_Bool)arg2;
 - (void)observer:(id)arg1 removeSection:(id)arg2;
 - (void)observer:(id)arg1 updateSectionInfo:(id)arg2;

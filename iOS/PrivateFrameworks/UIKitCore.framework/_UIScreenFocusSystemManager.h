@@ -6,38 +6,36 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BKSHIDEventDeliveryPolicyObserving-Protocol.h>
 #import <UIKitCore/_UIFocusMovementPerformerDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusSystemDelegate-Protocol.h>
 
-@class BKSHIDEventDeliveryPolicyObserver, NSString, UIFocusSystem, UIScreen, _UIFocusScrollManager;
+@class NSString, UIWindowScene, _UIFocusScrollManager;
 
 __attribute__((visibility("hidden")))
-@interface _UIScreenFocusSystemManager : NSObject <BKSHIDEventDeliveryPolicyObserving, _UIFocusSystemDelegate, _UIFocusMovementPerformerDelegate>
+@interface _UIScreenFocusSystemManager : NSObject <_UIFocusSystemDelegate, _UIFocusMovementPerformerDelegate>
 {
-    BKSHIDEventDeliveryPolicyObserver *_observer;
+    _Bool _disableFocusDeferral;
+    _Bool _handlesFocusMovementAction;
     _Bool _allowsForwardingFocusMovementActions;
-    UIScreen *_screen;
-    UIFocusSystem *_focusSystem;
+    UIWindowScene *_windowScene;
     _UIFocusScrollManager *_scrollManager;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_uiktest_allowsForwardingFocusMovementActions, setter=_uiktest_setAllowsForwardingFocusMovementActions:) _Bool allowsForwardingFocusMovementActions; // @synthesize allowsForwardingFocusMovementActions=_allowsForwardingFocusMovementActions;
 @property(readonly, nonatomic) _UIFocusScrollManager *scrollManager; // @synthesize scrollManager=_scrollManager;
-@property(readonly, nonatomic) UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
-@property(readonly, nonatomic) __weak UIScreen *screen; // @synthesize screen=_screen;
-- (void).cxx_destruct;
-- (void)observerDeliveryPolicyDidChange:(id)arg1;
+@property(readonly, nonatomic) __weak UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
 - (_Bool)_shouldForwardFocusMovementRequest:(id)arg1;
 - (_Bool)_handleFailedFocusMovementRequest:(id)arg1 withPerformer:(id)arg2;
+- (_Bool)_focusSystem:(id)arg1 performFocusMovementWithInfo:(id)arg2;
+- (_Bool)_shouldWaitForFocusMovementActionToEnableFocusSystem:(id)arg1;
 - (id)_focusItemContainerForFocusSystem:(id)arg1;
 - (id)_focusMapContainerForFocusSystem:(id)arg1;
 - (void)_focusSystem:(id)arg1 didFinishUpdatingFocusInContext:(id)arg2;
 - (_Bool)_focusSystem:(id)arg1 shouldRestoreFocusInContext:(id)arg2;
 - (_Bool)_focusSystem:(id)arg1 prefersDeferralForFocusUpdateInContext:(id)arg2;
 - (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
-- (void)dealloc;
-- (id)initWithScreen:(id)arg1 scrollManager:(id)arg2;
+- (id)initWithScene:(id)arg1 scrollManager:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

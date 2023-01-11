@@ -13,10 +13,10 @@
     double _navigationBarTopInset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double navigationBarTopInset; // @synthesize navigationBarTopInset=_navigationBarTopInset;
 @property(retain, nonatomic) UIScrollView *widgetMajorScrollView; // @synthesize widgetMajorScrollView=_widgetMajorScrollView;
 @property(retain, nonatomic) UIView *todayView; // @synthesize todayView=_todayView;
-- (void).cxx_destruct;
 - (void)_layoutTodayView;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

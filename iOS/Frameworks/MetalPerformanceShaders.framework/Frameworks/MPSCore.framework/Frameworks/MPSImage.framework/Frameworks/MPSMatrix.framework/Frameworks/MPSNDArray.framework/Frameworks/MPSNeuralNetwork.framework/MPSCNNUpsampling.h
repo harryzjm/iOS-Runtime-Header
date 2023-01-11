@@ -12,7 +12,7 @@
     _Bool _alignCorners;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) _Bool alignCorners; // @synthesize alignCorners=_alignCorners;
 @property(readonly, nonatomic) double scaleFactorY; // @synthesize scaleFactorY=_scaleFactorY;
 @property(readonly, nonatomic) double scaleFactorX; // @synthesize scaleFactorX=_scaleFactorX;

@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBSwitcherModifier;
+@class NSSet, SBAppExposeGridSwitcherModifier;
 
 @interface SBSwitcherToAppExposeSwitcherModifier
 {
-    unsigned long long _slideDirection;
-    SBSwitcherModifier *_multitaskingModifier;
+    SBAppExposeGridSwitcherModifier *_appExposeModifier;
+    NSSet *_appLayoutsVisibleBeforeTransition;
 }
 
 - (void).cxx_destruct;
+- (id)_newAppExposeModifier;
 - (double)_offsetForPushingCardsOffscreenAtIndex:(unsigned long long)arg1;
-- (id)layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)transitionWillUpdate;
+- (id)handleTimerEvent:(id)arg1;
 - (id)transitionWillBegin;
-- (id)initWithTransitionID:(id)arg1 slideDirection:(unsigned long long)arg2 multitaskingModifier:(id)arg3;
+- (id)initWithTransitionID:(id)arg1 bundleIdentifier:(id)arg2 appExposeModifier:(id)arg3;
 
 @end
 

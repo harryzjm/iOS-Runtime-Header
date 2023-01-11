@@ -7,26 +7,29 @@
 #import <PencilKit/PKPaletteErasingAttributesViewControllerDelegate-Protocol.h>
 #import <PencilKit/PKPaletteErasingTool-Protocol.h>
 
-@class NSString, UIViewController;
+@class NSString, PKPaletteAttributeViewController;
+@protocol PKPaletteErasingTool, PKPaletteInkingTool;
 
 @interface PKPaletteErasingToolView <PKPaletteErasingTool, PKPaletteErasingAttributesViewControllerDelegate>
 {
     _Bool _bitmapEraser;
-    UIViewController *_attributeViewController;
+    PKPaletteAttributeViewController *_attributeViewController;
 }
 
-@property(nonatomic, getter=isBitmapEraser) _Bool bitmapEraser; // @synthesize bitmapEraser=_bitmapEraser;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isBitmapEraser) _Bool bitmapEraser; // @synthesize bitmapEraser=_bitmapEraser;
 - (void)erasingAttributesViewControllerDidChangeErasingType:(id)arg1;
 - (void)_updateAttributesViewController;
 - (id)attributeViewController;
-- (id)toolIdentifier;
+@property(readonly, nonatomic) NSString *toolIdentifier;
 - (id)initWithToolIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly) Class superclass;
 
 @end

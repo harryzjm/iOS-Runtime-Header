@@ -32,6 +32,7 @@
 + (_Bool)deleteFromLibrary:(id)arg1 deletionType:(int)arg2 persistentIDs:(const long long *)arg3 count:(unsigned long long)arg4;
 + (_Bool)_deleteRowForPersistentIDs:(const long long *)arg1 count:(unsigned long long)arg2 library:(id)arg3 table:(id)arg4 usingColumn:(id)arg5 usingConnection:(id)arg6;
 + (_Bool)libraryDynamicChangeForProperty:(id)arg1;
++ (_Bool)assistantLibraryContentsChangeForProperty:(id)arg1;
 + (_Bool)libraryContentsChangeForProperty:(id)arg1;
 + (void)_didChangeValueForProperties:(id)arg1 inLibrary:(id)arg2;
 + (_Bool)setValues:(id)arg1 forProperties:(id)arg2 forEntityPersistentIDs:(id)arg3 inLibrary:(id)arg4 usingConnection:(id)arg5;
@@ -88,9 +89,9 @@
 + (id)anyInLibrary:(id)arg1 predicate:(id)arg2;
 + (id)aggregateQueryWithUnitQuery:(id)arg1 foreignPersistentIDProperty:(id)arg2;
 + (id)replacerWithProperties:(id)arg1 library:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly) long long persistentID; // @synthesize persistentID=_persistentID;
 @property __weak ML3MusicLibrary *library; // @synthesize library=_library;
-- (void).cxx_destruct;
 - (void)incrementRevision;
 - (_Bool)deleteFromLibrary;
 - (void)didChangeValueForProperties:(id)arg1;

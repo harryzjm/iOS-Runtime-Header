@@ -16,20 +16,24 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callBackQueue;
     NSMapTable *_observers;
-    PSYInitialSyncStateObserver *_initialSyncStateObserver;
     NSString *_pairingIDPropertyName;
+    NSString *_pairedDeviceGUID;
+    NSString *_pairedDeviceMediaGUID;
+    PSYInitialSyncStateObserver *_initialSyncStateObserver;
     _Bool _isInitialSyncComplete;
 }
 
 + (id)sharedMonitor;
-@property(nonatomic) _Bool isInitialSyncComplete; // @synthesize isInitialSyncComplete=_isInitialSyncComplete;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isInitialSyncComplete; // @synthesize isInitialSyncComplete=_isInitialSyncComplete;
 - (void)initialSyncStateObserver:(id)arg1 initialSyncDidCompleteForPairingIdentifier:(id)arg2;
 - (void)deviceBecameActive:(id)arg1;
 - (void)_handlePairedDeviceChangedNotification;
 - (id)_activePairedDevice;
 - (id)_allObservers;
 @property(readonly, nonatomic, getter=isMediaSyncingSupported) _Bool mediaSyncingSupported;
+@property(readonly, copy, nonatomic) NSString *pairedDeviceMediaGUID;
+@property(readonly, copy, nonatomic) NSString *pairedDeviceGUID;
 @property(readonly, copy, nonatomic) NSArray *allPairedDevicePairingIDs;
 @property(readonly, copy, nonatomic) NSUUID *pairedDevicePairingID;
 @property(readonly, copy, nonatomic) NSUUID *activePairedDevicePairingID;

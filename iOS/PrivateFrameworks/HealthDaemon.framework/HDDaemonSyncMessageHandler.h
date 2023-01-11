@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDSyncMessageHandler-Protocol.h>
 
-@class HDSyncAnchorMap, HDSyncSession, NSError;
+@class HDSyncAnchorMap, HDSyncSession, NSError, NSMutableArray;
 
 @interface HDDaemonSyncMessageHandler : NSObject <HDSyncMessageHandler>
 {
@@ -16,18 +16,25 @@
     struct HDSyncAnchorRange _anchorRange;
     HDSyncSession *_session;
     HDSyncAnchorMap *_requiredAnchorMap;
+    _Bool _done;
     long long _nextSequence;
+    NSMutableArray *_changes;
+    long long _accumulatedChangeSetSize;
+    long long _lastAnchor;
     long long _currentAnchor;
     long long _sendChangesStatus;
     NSError *_sendChangesError;
 }
 
++ (long long)_sendChanges:(id)arg1 session:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSError *sendChangesError; // @synthesize sendChangesError=_sendChangesError;
 @property(readonly, nonatomic) long long sendChangesStatus; // @synthesize sendChangesStatus=_sendChangesStatus;
 @property(readonly, nonatomic) long long currentAnchor; // @synthesize currentAnchor=_currentAnchor;
-- (void).cxx_destruct;
-- (long long)_sendChanges:(id)arg1 error:(id *)arg2;
-- (_Bool)sendCodableObjects:(id)arg1 resultAnchor:(long long)arg2 done:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)_sendChangesWithError:(id *)arg1;
+- (_Bool)sendCodableChange:(id)arg1 resultAnchor:(long long)arg2 sequence:(long long)arg3 done:(_Bool)arg4 error:(id *)arg5;
+- (id)description;
+- (void)dealloc;
 - (id)initWithSyncEntityClass:(Class)arg1 anchorRange:(struct HDSyncAnchorRange)arg2 session:(id)arg3 requiredAnchorMap:(id)arg4;
 
 @end

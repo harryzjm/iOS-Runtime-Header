@@ -8,9 +8,11 @@
 {
 }
 
+- (id)multipleNormalServicesFormatString;
 - (id)multipleAbnormalServicesFormatString;
 - (id)multipleAbnormalServicesWithRoomFormatString;
 - (id)oneAbnormalServiceWithRoomFormatString;
+- (id)oneNormalServiceFormatString;
 - (id)oneAbnormalServiceFormatString;
 - (id)serviceTypes;
 

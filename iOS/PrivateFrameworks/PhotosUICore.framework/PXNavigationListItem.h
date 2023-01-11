@@ -15,13 +15,15 @@
     NSString *_identifier;
     NSString *_title;
     NSString *_accessoryTitle;
+    NSString *_badgeString;
     long long _itemCount;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long itemCount; // @synthesize itemCount=_itemCount;
+@property(copy, nonatomic) NSString *badgeString; // @synthesize badgeString=_badgeString;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -29,13 +31,16 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSString *visualDescription;
 @property(readonly, nonatomic) id representedObject;
+@property(readonly, nonatomic) long long style;
 @property(readonly, nonatomic) PHCollection *collection;
 @property(readonly, nonatomic) long long indentationLevel;
 @property(readonly, nonatomic, getter=isExpanded) _Bool expanded;
 @property(readonly, nonatomic, getter=isGroup) _Bool group;
+@property(readonly, nonatomic, getter=isDeletable) _Bool deletable;
 @property(readonly, nonatomic, getter=isExpandable) _Bool expandable;
 @property(readonly, nonatomic, getter=isRenamable) _Bool renamable;
 @property(readonly, nonatomic, getter=isRemovable) _Bool removable;
+@property(readonly, nonatomic, getter=isReorderable) _Bool reorderable;
 @property(readonly, nonatomic, getter=isDraggable) _Bool draggable;
 @property(readonly, nonatomic) NSString *glyphImageName;
 @property(readonly, nonatomic) NSString *accessoryTitle; // @synthesize accessoryTitle=_accessoryTitle;

@@ -22,6 +22,7 @@
     _Bool _editAsOvercapture;
     _Bool _loadResourcesToFlip;
     _Bool _skipDisplaySizeImage;
+    _Bool _skipLivePhotoImageAndAVAsset;
     CDUnknownBlockType _canHandleAdjustmentData;
     CDUnknownBlockType _progressHandler;
     long long _contentMode;
@@ -31,6 +32,8 @@
     struct CGSize _targetSize;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool skipLivePhotoImageAndAVAsset; // @synthesize skipLivePhotoImageAndAVAsset=_skipLivePhotoImageAndAVAsset;
 @property(nonatomic) _Bool skipDisplaySizeImage; // @synthesize skipDisplaySizeImage=_skipDisplaySizeImage;
 @property(nonatomic) _Bool loadResourcesToFlip; // @synthesize loadResourcesToFlip=_loadResourcesToFlip;
 @property(nonatomic) _Bool editAsOvercapture; // @synthesize editAsOvercapture=_editAsOvercapture;
@@ -47,7 +50,6 @@
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(copy, nonatomic) CDUnknownBlockType canHandleAdjustmentData; // @synthesize canHandleAdjustmentData=_canHandleAdjustmentData;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isSynchronous;
 

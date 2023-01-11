@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 @class NSDictionary, NSRegularExpression, _PASNotificationToken;
 
-@interface SGReminderExtractionModel : NSObject
+@interface SGReminderExtractionModel
 {
     _PASNotificationToken *_assetUpdateToken;
     NSDictionary *_enrichments;
@@ -19,17 +17,17 @@
 }
 
 + (id)enrichTaggedCharacterRangesWithModelOutput:(id)arg1 usingInputCharacterRanges:(id)arg2;
-+ (id)inputFromTaggedCharacterRanges:(id)arg1 usingTokenMapping:(id)arg2;
-+ (id)loadLazyPlistWithBasename:(id)arg1;
-+ (id)currentModelURL;
-+ (id)compileModelAtPath:(id)arg1 toCompiledPath:(id)arg2;
-+ (id)currentModelName;
++ (id)inputFromTaggedCharacterRanges:(id)arg1 usingTokenMapping:(id)arg2 forModel:(id)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)argMaxForOutputIndex:(id)arg1 index:(int)arg2 shape:(id)arg3;
-- (id)argMaxForLastOutput:(id)arg1;
-- (id)argMaxForSequence:(id)arg1;
+- (void)setReminderOverridesForTesting:(id)arg1;
+- (id)modelDescription;
+- (id)whitelistedRangesInContent:(id)arg1;
+- (struct _NSRange)_whitelistedVerbRangeInContent:(id)arg1;
+- (id)whitelistedVerbInContent:(id)arg1;
 - (_Bool)hasWhitelistedVerbInContent:(id)arg1;
+- (id)outputConfig;
+- (id)inputTokenMapping;
 - (id)reminderOverrides;
 - (id)enrichments;
 - (id)modelInferences:(id)arg1;

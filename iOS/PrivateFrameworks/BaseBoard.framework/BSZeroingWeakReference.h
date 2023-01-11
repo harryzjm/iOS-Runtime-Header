@@ -14,8 +14,6 @@
 }
 
 + (id)referenceWithObject:(id)arg1;
-@property(nonatomic) unsigned long long objectAddress; // @synthesize objectAddress=_objectAddress;
-@property(nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id object;
 - (_Bool)isEqual:(id)arg1;

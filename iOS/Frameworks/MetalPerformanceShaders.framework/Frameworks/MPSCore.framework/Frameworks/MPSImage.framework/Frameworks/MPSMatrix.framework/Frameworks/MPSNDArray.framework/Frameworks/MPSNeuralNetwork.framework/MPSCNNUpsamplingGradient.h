@@ -11,7 +11,7 @@
     double _scaleFactorY;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) double scaleFactorY; // @synthesize scaleFactorY=_scaleFactorY;
 @property(readonly, nonatomic) double scaleFactorX; // @synthesize scaleFactorX=_scaleFactorX;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2;

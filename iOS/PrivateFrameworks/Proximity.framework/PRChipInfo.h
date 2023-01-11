@@ -16,11 +16,13 @@
     unsigned char _securityDomain;
     unsigned short _chipID;
     unsigned short _boardID;
+    unsigned short _chipRevision;
     unsigned int _bootMode;
     unsigned long long _ECID;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) unsigned short chipRevision; // @synthesize chipRevision=_chipRevision;
 @property(readonly, nonatomic) unsigned char securityDomain; // @synthesize securityDomain=_securityDomain;
 @property(readonly, nonatomic) unsigned char secureMode; // @synthesize secureMode=_secureMode;
 @property(readonly, nonatomic) unsigned char prodMode; // @synthesize prodMode=_prodMode;
@@ -33,7 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithECID:(unsigned long long)arg1 chipID:(unsigned short)arg2 boardID:(unsigned short)arg3 bootMode:(unsigned int)arg4 prodMode:(unsigned char)arg5 secureMode:(unsigned char)arg6 securityDomain:(unsigned char)arg7;
+- (id)initWithECID:(unsigned long long)arg1 chipID:(unsigned short)arg2 boardID:(unsigned short)arg3 bootMode:(unsigned int)arg4 prodMode:(unsigned char)arg5 secureMode:(unsigned char)arg6 securityDomain:(unsigned char)arg7 chipRevision:(unsigned short)arg8;
 
 @end
 

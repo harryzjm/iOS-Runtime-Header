@@ -14,6 +14,13 @@
     CDStruct_56a8f59f _transformStruct;
 }
 
++ (id)transformWithFlipUsingHeight:(double)arg1;
++ (id)transformWithTransformStruct:(CDStruct_56a8f59f)arg1;
++ (id)transformWithRotationInRadians:(double)arg1;
++ (id)transformWithRotationInDegrees:(double)arg1;
++ (id)transformWithXTranslation:(double)arg1 yTranslation:(double)arg2;
++ (id)transformWithXScale:(double)arg1 yScale:(double)arg2;
++ (id)transformWithScale:(double)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)transform;
 - (id)debugDescription;

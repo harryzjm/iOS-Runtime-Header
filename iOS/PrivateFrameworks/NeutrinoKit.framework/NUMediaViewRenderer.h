@@ -8,7 +8,7 @@
 
 #import <NeutrinoKit/NUMediaPlayer-Protocol.h>
 
-@class AVComposition, NSArray, NSString, NUAVPlayerController, NUCoalescer, NUColorSpace, NUComposition, NULivePhotoRenderClient, NUMediaView, NUObservatory, NUPixelFormat, NUResponse, NUSurfaceRenderClient, NUVideoRenderClient, UIView;
+@class NSArray, NSString, NUAVPlayerController, NUCoalescer, NUColorSpace, NUComposition, NULivePhotoRenderClient, NUMediaView, NUObservatory, NUPixelFormat, NUResponse, NUSurfaceRenderClient, NUVideoRenderClient, UIView;
 @protocol NURenderStatistics, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NUMediaViewRenderer : NSObject <NUMediaPlayer>
@@ -24,6 +24,7 @@
     _Bool _canRenderLoopingVideoLive;
     long long _playbackMode;
     _Bool _muted;
+    _Bool _didReleaseAVObjects;
     _Atomic int _videoRenderInFlightCount;
     NSObject<OS_dispatch_group> *_renderGroup;
     NSObject<OS_dispatch_queue> *_renderQueue;
@@ -47,14 +48,17 @@
     NUAVPlayerController *_nuAVPlayerController;
     unsigned long long _displayType;
     unsigned long long _computedDisplayType;
-    AVComposition *_previousVideo;
+    double _overrideZoomScale;
     NSArray *_previousPipelineFilters;
+    struct CGSize _overrideZoomToFitSize;
 }
 
 + (_Bool)_forceUpdateForNewVideoComposition:(id)arg1 previousComposition:(id)arg2 newAsset:(id)arg3 previousAsset:(id)arg4 isPlaying:(_Bool)arg5;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *previousPipelineFilters; // @synthesize previousPipelineFilters=_previousPipelineFilters;
-@property(retain, nonatomic) AVComposition *previousVideo; // @synthesize previousVideo=_previousVideo;
 @property(nonatomic, getter=_isVideoEnabled, setter=_setVideoEnabled:) _Bool _videoEnabled; // @synthesize _videoEnabled=__videoEnabled;
+@property(nonatomic) double overrideZoomScale; // @synthesize overrideZoomScale=_overrideZoomScale;
+@property(nonatomic) struct CGSize overrideZoomToFitSize; // @synthesize overrideZoomToFitSize=_overrideZoomToFitSize;
 @property(readonly, nonatomic) unsigned long long computedDisplayType; // @synthesize computedDisplayType=_computedDisplayType;
 @property(nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
 @property(readonly, nonatomic) NUAVPlayerController *nuAVPlayerController; // @synthesize nuAVPlayerController=_nuAVPlayerController;
@@ -65,7 +69,6 @@
 @property(retain, nonatomic) NUPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(retain, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(copy, nonatomic) NUComposition *composition; // @synthesize composition=_composition;
-- (void).cxx_destruct;
 - (void)livePhotoViewDidEndScrubbing:(id)arg1;
 - (void)livePhotoViewDidBeginScrubbing:(id)arg1;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
@@ -73,6 +76,8 @@
 - (void)removeObserver:(id)arg1;
 - (void)_notifyPlaybackTimeChange:(CDStruct_198678f7)arg1;
 - (id)addPlaybackTimeObserver:(CDUnknownBlockType)arg1;
+- (void)_notifyExternalPlaybackChange:(_Bool)arg1;
+- (id)addExternalPlaybackObserver:(CDUnknownBlockType)arg1;
 - (void)_notifyPlaybackStateChange:(long long)arg1;
 - (id)addPlaybackStateObserver:(CDUnknownBlockType)arg1;
 @property(nonatomic, getter=isMuted) _Bool muted;
@@ -81,12 +86,16 @@
 - (void)pause;
 - (void)play;
 - (void)stepByCount:(long long)arg1;
+- (void)seekToTime:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
+- (void)seekToTime:(CDStruct_198678f7)arg1 exact:(_Bool)arg2;
+@property(readonly) NSArray *loadedTimeRanges;
 - (void)seekToTime:(CDStruct_198678f7)arg1;
 @property(readonly, nonatomic) CDStruct_198678f7 currentTime;
 - (long long)_playbackStateFromPlayerStatus:(long long)arg1 rate:(float)arg2;
 @property(readonly, nonatomic) long long playbackState;
 @property(readonly, nonatomic) CDStruct_198678f7 mediaDuration;
-@property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled;
+@property(readonly, nonatomic, getter=isVideoEnabled) _Bool videoEnabled;
+- (void)setVideoEnabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_addFullExtentConstraintsForView:(id)arg1;
 - (id)_backfillRenderRequestForComposition:(id)arg1;
 - (double)_lastRenderDuration;
@@ -100,6 +109,7 @@
 - (void)_coalesceUpdateVideoComposition:(id)arg1;
 - (void)_updateVideoViewLayoutWithGeometry:(id)arg1;
 - (void)_updateVideoComposition:(id)arg1;
+- (id)_scalePolicyForVideoCompositionRender;
 - (void)_updateVideoWithResult:(id)arg1;
 - (id)cacheVideoRenderFilter;
 - (void)_tearDownAVPlayerController;
@@ -140,6 +150,7 @@
 - (id)newRenderRequestForComposition:(id)arg1 scalePolicy:(id)arg2 regionPolicy:(id)arg3;
 - (id)init;
 - (id)initWithMediaView:(id)arg1;
+- (_Bool)_didReleaseAVObjects;
 - (void)_releaseAVObjects;
 - (void)_withComposition:(id)arg1 visitRenderClient:(CDUnknownBlockType)arg2;
 

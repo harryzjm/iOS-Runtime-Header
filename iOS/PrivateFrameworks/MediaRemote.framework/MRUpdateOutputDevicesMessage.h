@@ -15,6 +15,7 @@
 - (unsigned long long)type;
 @property(readonly, nonatomic) NSArray *outputDevices;
 - (id)initWithOutputDevices:(id)arg1;
+@property(readonly, nonatomic) NSArray *externalOutputDevices;
 
 @end
 

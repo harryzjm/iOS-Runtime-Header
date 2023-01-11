@@ -6,19 +6,19 @@
 
 #import <CryptoTokenKit/TKTokenDriverProtocol-Protocol.h>
 
-@class NSString, NSXPCConnection, TKTokenDriver;
+@class NSString, TKTokenConfigurationConnection, TKTokenDriver;
+@protocol TKTokenDriverHostProtocol;
 
 __attribute__((visibility("hidden")))
 @interface TKTokenDriverContext <TKTokenDriverProtocol>
 {
-    NSXPCConnection *_configurationConnection;
+    TKTokenConfigurationConnection *_configurationConnection;
     id _initialKeepAlive;
     TKTokenDriver *_driver;
 }
 
-@property(readonly, nonatomic) TKTokenDriver *driver; // @synthesize driver=_driver;
 - (void).cxx_destruct;
-- (void)dealloc;
+@property(readonly, nonatomic) TKTokenDriver *driver; // @synthesize driver=_driver;
 - (void)releaseTokenWithInstanceID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)configureWithReply:(CDUnknownBlockType)arg1;
 - (void)acquireTokenWithSlot:(id)arg1 AID:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -26,8 +26,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)startRequestWithError:(id *)arg1;
 - (void)setup;
 @property(readonly, nonatomic) double idleTimeout;
+- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 success:(_Bool)arg3;
 - (id)configurationForTokenID:(id)arg1;
-- (id)configurationProxy;
+@property(readonly, nonatomic) TKTokenConfigurationConnection *configurationConnection;
+@property(readonly, nonatomic) id <TKTokenDriverHostProtocol> host;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

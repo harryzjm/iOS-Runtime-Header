@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     CALayer *_maskLayer;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool blendingEnabled; // @synthesize blendingEnabled=_blendingEnabled;
 @property(retain, nonatomic) CALayer *maskLayer; // @synthesize maskLayer=_maskLayer;
 @property(retain, nonatomic) CALayer *blurredEmojiLayer; // @synthesize blurredEmojiLayer=_blurredEmojiLayer;
@@ -31,12 +32,15 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CALayer *emojiLayer; // @synthesize emojiLayer=_emojiLayer;
 @property(retain, nonatomic) CALayer *emojiContainerLayer; // @synthesize emojiContainerLayer=_emojiContainerLayer;
 @property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
-- (void).cxx_destruct;
 - (void)setSuspended:(_Bool)arg1;
 - (void)setPaused:(_Bool)arg1;
+- (void)endEmittersForTouchesCancelled:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)endEmittersForTouchesEnded:(id)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)moveEmittersForTouchesMoved:(id)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)moveEmittersForTouchesBegan:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)endTouches;
 - (void)endDustEmitterLayerFingerEffects;

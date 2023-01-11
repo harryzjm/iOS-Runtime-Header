@@ -8,7 +8,6 @@
 
 @class NSNumber, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetVolume : CKObject
 {
     NSNumber *_volumeIndex;
@@ -16,9 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)CKSQLiteClassName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *volumeUUID; // @synthesize volumeUUID=_volumeUUID;
 @property(retain, nonatomic) NSNumber *volumeIndex; // @synthesize volumeIndex=_volumeIndex;
-- (void).cxx_destruct;
 - (id)description;
 - (id)CKPropertiesDescription;
 

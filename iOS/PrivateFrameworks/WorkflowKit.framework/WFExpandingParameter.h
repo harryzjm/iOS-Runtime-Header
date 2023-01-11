@@ -13,9 +13,9 @@
     id <WFExpandingParameterHintProvider> _hintProvider;
 }
 
-@property(nonatomic) __weak id <WFExpandingParameterHintProvider> hintProvider; // @synthesize hintProvider=_hintProvider;
 - (void).cxx_destruct;
-- (_Bool)supportsImportQuestions;
+@property(nonatomic) __weak id <WFExpandingParameterHintProvider> hintProvider; // @synthesize hintProvider=_hintProvider;
+- (id)importQuestionBehavior;
 - (id)defaultSupportedVariableTypes;
 @property(readonly, nonatomic) NSString *hintLabel; // @synthesize hintLabel=_hintLabel;
 - (id)initWithDefinition:(id)arg1;

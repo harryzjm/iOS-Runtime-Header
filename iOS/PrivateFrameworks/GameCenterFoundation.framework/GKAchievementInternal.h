@@ -40,6 +40,7 @@
 @property(retain, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)descriptionSubstitutionMap;
+@property(readonly, nonatomic, getter=isCompleted) _Bool completed;
 @property(nonatomic, getter=isReplayable) _Bool replayable; // @dynamic replayable;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @dynamic hidden;
 @property(nonatomic) unsigned short maximumPoints; // @dynamic maximumPoints;

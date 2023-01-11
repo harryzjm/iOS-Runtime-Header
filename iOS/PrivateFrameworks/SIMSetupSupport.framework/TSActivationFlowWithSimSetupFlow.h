@@ -27,14 +27,14 @@
     _Bool _isPreinstallingViewControllerActive;
 }
 
-@property _Bool isPreinstallingViewControllerActive; // @synthesize isPreinstallingViewControllerActive=_isPreinstallingViewControllerActive;
 - (void).cxx_destruct;
+@property _Bool isPreinstallingViewControllerActive; // @synthesize isPreinstallingViewControllerActive=_isPreinstallingViewControllerActive;
 - (void)_requestPendingInstallItems;
 - (void)_requestTransferPlanList;
 - (void)_maybeShowPreinstallConsentOnViewController:(id)arg1;
 - (void)accountPendingRelease;
 - (void)accountCancelled;
-- (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5 state:(id)arg6;
+- (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 srcIccid:(id)arg5 alternateSDMP:(id)arg6 state:(id)arg7;
 - (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5;
 - (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
 - (void)popViewController:(id)arg1;

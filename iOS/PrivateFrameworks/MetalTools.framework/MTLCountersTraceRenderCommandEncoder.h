@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)setStencilStoreAction:(unsigned long long)arg1;
 - (void)setDepthStoreAction:(unsigned long long)arg1;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
-- (void)setScissorRects:(const CDStruct_5f3a0cd7 *)arg1 count:(unsigned long long)arg2;
+- (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;
 - (void)setViewports:(const CDStruct_8727d297 *)arg1 count:(unsigned long long)arg2;
 - (void)setTessellationFactorScale:(float)arg1;
 - (void)setTessellationFactorBuffer:(id)arg1 offset:(unsigned long long)arg2 instanceStride:(unsigned long long)arg3;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)setTriangleFillMode:(unsigned long long)arg1;
 - (void)setStencilReferenceValue:(unsigned int)arg1;
 - (void)setStencilFrontReferenceValue:(unsigned int)arg1 backReferenceValue:(unsigned int)arg2;
-- (void)setScissorRect:(CDStruct_5f3a0cd7)arg1;
+- (void)setScissorRect:(CDStruct_33dcf794)arg1;
 - (void)setRenderPipelineState:(id)arg1;
 - (void)setFrontFacingWinding:(unsigned long long)arg1;
 - (void)setFragmentTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;

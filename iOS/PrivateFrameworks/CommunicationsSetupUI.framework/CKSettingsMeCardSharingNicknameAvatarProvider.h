@@ -10,13 +10,14 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKSettingsMeCardSharingNicknameAvatarProvider : NSObject <CNMeCardSharingAvatarProvider>
 {
     NSData *_imageData;
 }
 
-@property(readonly, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 - (void)generateAvatarImageOfSize:(struct CGSize)arg1 imageHandler:(CDUnknownBlockType)arg2;
 - (id)initWithImageData:(id)arg1;
 

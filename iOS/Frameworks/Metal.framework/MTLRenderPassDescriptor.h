@@ -8,7 +8,7 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLRenderPassColorAttachmentDescriptorArray, MTLRenderPassDepthAttachmentDescriptor, MTLRenderPassStencilAttachmentDescriptor;
+@class MTLRenderPassColorAttachmentDescriptorArray, MTLRenderPassDepthAttachmentDescriptor, MTLRenderPassSampleBufferAttachmentDescriptorArray, MTLRenderPassStencilAttachmentDescriptor;
 @protocol MTLBuffer, MTLRasterizationRateMap;
 
 @interface MTLRenderPassDescriptor : NSObject <NSCopying>
@@ -38,6 +38,7 @@
 @property(nonatomic) unsigned long long renderTargetArrayLength; // @dynamic renderTargetArrayLength;
 @property(nonatomic) unsigned long long renderTargetHeight; // @dynamic renderTargetHeight;
 @property(nonatomic) unsigned long long renderTargetWidth; // @dynamic renderTargetWidth;
+@property(readonly) MTLRenderPassSampleBufferAttachmentDescriptorArray *sampleBufferAttachments; // @dynamic sampleBufferAttachments;
 @property(copy, nonatomic) MTLRenderPassStencilAttachmentDescriptor *stencilAttachment; // @dynamic stencilAttachment;
 @property(retain, nonatomic) id <MTLBuffer> visibilityResultBuffer; // @dynamic visibilityResultBuffer;
 

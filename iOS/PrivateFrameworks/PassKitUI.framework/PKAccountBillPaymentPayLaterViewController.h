@@ -12,17 +12,16 @@
 #import <PassKitUI/UIPickerViewDataSource-Protocol.h>
 #import <PassKitUI/UIPickerViewDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSCalendar, NSDate, NSDateFormatter, NSDecimalNumber, NSString, PKAccount, PKAccountBillPaymentController, PKAccountBillPaymentPayInterestDescriptionView, PKAddBankAccountInformationViewController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKPaymentPass, UILabel, UIPickerView;
+@class CLInUseAssertion, NSCalendar, NSDate, NSDateFormatter, NSDecimalNumber, NSString, PKAccount, PKAccountBillPaymentController, PKAccountBillPaymentPayInterestDescriptionView, PKAddBankAccountInformationViewController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKTransactionSource, UILabel, UIPickerView;
 @protocol PKAccountBillPaymentObserver;
 
 @interface PKAccountBillPaymentPayLaterViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKAccountBillPaymentPayInterestDescriptionViewDelegate>
 {
     CLInUseAssertion *_CLInUse;
     PKAccount *_account;
-    PKPaymentPass *_pass;
+    PKTransactionSource *_transactionSource;
     PKAccountBillPaymentController *_billPaymentCoordinator;
     PKBillPaymentSuggestedAmountList *_suggestionList;
-    unsigned long long _screenType;
     NSDate *_minDate;
     NSDate *_maxDate;
     long long _numDays;
@@ -46,8 +45,8 @@
     id <PKAccountBillPaymentObserver> _observer;
 }
 
-@property(nonatomic) __weak id <PKAccountBillPaymentObserver> observer; // @synthesize observer=_observer;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKAccountBillPaymentObserver> observer; // @synthesize observer=_observer;
 - (void)_presentAlertControllerForError:(id)arg1;
 - (void)_dismissViewControllerWithSuccess:(_Bool)arg1;
 - (id)_addBankAccountInformationViewController;
@@ -77,7 +76,7 @@
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithAccount:(id)arg1 billPaymentController:(id)arg2 paymentPass:(id)arg3 suggestionList:(id)arg4 selectedAmount:(id)arg5;
+- (id)initWithAccount:(id)arg1 billPaymentController:(id)arg2 transactionSource:(id)arg3 suggestionList:(id)arg4 selectedAmount:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

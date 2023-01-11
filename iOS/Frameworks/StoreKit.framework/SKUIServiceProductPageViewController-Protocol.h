@@ -9,6 +9,8 @@
 @class NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol SKUIServiceProductPageViewController <NSObject>
+- (void)dismissViewControllerAnimated:(NSNumber *)arg1;
+- (void)setUsageContext:(NSString *)arg1;
 - (void)setPresentationStyle:(NSNumber *)arg1;
 - (void)setVisibleInClientWindow:(NSNumber *)arg1;
 - (void)setPromptString:(NSString *)arg1;
@@ -20,6 +22,7 @@
 - (void)setPreview:(NSNumber *)arg1;
 - (void)setScriptContextDictionary:(NSDictionary *)arg1;
 - (void)setProductPageStyle:(NSNumber *)arg1;
+- (void)setHostBundleIdentifier:(NSString *)arg1;
 - (void)setClientIdentifier:(NSString *)arg1;
 - (void)setAffiliateIdentifier:(NSString *)arg1;
 - (void)setAdditionalBuyParameters:(NSString *)arg1;

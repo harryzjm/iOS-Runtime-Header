@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLSEvent, CLSPerson, CLSPlace, NSMutableArray;
+@class CLSEvent, CLSPersonIdentity, CLSPlace, NSMutableArray;
 
 @interface CLSOutputClue
 {
@@ -12,16 +12,16 @@
     NSMutableArray *_relatedInputLocationClues;
     NSMutableArray *_relatedInputPeopleClues;
     CLSEvent *_relatedEvent;
-    CLSPerson *_relatedPerson;
+    CLSPersonIdentity *_relatedPerson;
     CLSPlace *_relatedPlace;
 }
 
 + (id)clueWithValue:(id)arg1 forKey:(id)arg2 confidence:(double)arg3 relevance:(double)arg4;
 + (id)clueWithValue:(id)arg1 forKey:(id)arg2;
-@property(retain) CLSPlace *relatedPlace; // @synthesize relatedPlace=_relatedPlace;
-@property(retain) CLSPerson *relatedPerson; // @synthesize relatedPerson=_relatedPerson;
-@property(retain) CLSEvent *relatedEvent; // @synthesize relatedEvent=_relatedEvent;
 - (void).cxx_destruct;
+@property(retain) CLSPlace *relatedPlace; // @synthesize relatedPlace=_relatedPlace;
+@property(retain) CLSPersonIdentity *relatedPerson; // @synthesize relatedPerson=_relatedPerson;
+@property(retain) CLSEvent *relatedEvent; // @synthesize relatedEvent=_relatedEvent;
 - (_Bool)isEqualToClue:(id)arg1;
 - (id)description;
 - (id)relatedInputTimeClues;

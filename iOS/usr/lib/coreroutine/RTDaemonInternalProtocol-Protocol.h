@@ -6,10 +6,12 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
 
 @protocol RTDaemonInternalProtocol <NSObject>
 - (void)logDatabasesWithReply:(void (^)(NSError *))arg1;
+- (void)extendLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 toExpireOn:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)expireLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 expirationDate:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)submitMetrics:(NSDictionary *)arg1 metricName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)fetchMotionActivitiesFromStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchFMCEnabledWithReply:(void (^)(_Bool, NSError *))arg1;
@@ -21,18 +23,20 @@
 - (void)queryProvider:(NSString *)arg1 options:(RTPlaceInferenceOptions *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchInferredMapItemForVisitIdentifier:(NSUUID *)arg1 reply:(void (^)(RTInferredMapItem *, NSError *))arg2;
 - (void)fetchFusionCandidatesForVisitIdentifier:(NSUUID *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
-- (void)submitHintAtLocation:(CLLocation *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)submitHintAtLocation:(RTLocation *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)tearDownPersistenceStack:(void (^)(NSError *))arg1;
 - (void)mirroringDelegateSetupState:(void (^)(long long, NSError *))arg1;
 - (void)performZoneResetMirroringRequest:(void (^)(NSError *))arg1;
 - (void)performExportMirroringRequest:(void (^)(NSError *))arg1;
 - (void)performImportMirroringRequest:(void (^)(NSError *))arg1;
+- (void)injectRealtimeVisit:(RTVisit *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)fetchVisitsBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)simulateVisit:(RTVisit *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)reconstructTransitionsWithReply:(void (^)(NSError *))arg1;
 - (void)updateTransitionWithIdentifier:(NSUUID *)arg1 modeOfTransportation:(long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)injectSignalForSignalGeneratorOptions:(RTSignalGeneratorOptions *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)injectLocations:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)storeHints:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)forceEventModelRefreshWithReply:(void (^)(NSError *))arg1;
 - (void)updateAssetServerURL:(NSURL *)arg1 assetType:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)forceUpdateAssetMetadataWithReply:(void (^)(NSError *))arg1;

@@ -7,35 +7,37 @@
 #import <UIKit/UISlider.h>
 
 #import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
+#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 #import <AVKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, UIImageView, UIScrollView, UISelectionFeedbackGenerator, UIView;
+@class AVLayoutItemAttributes, NSArray, NSMutableArray, NSString, NSTimer, UIImageView, UIScrollView, UISelectionFeedbackGenerator, UIView;
 @protocol AVScrubberDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVScrubber : UISlider <UIScrollViewDelegate, AVExternalGestureRecognizerPreventing>
+@interface AVScrubber : UISlider <UIScrollViewDelegate, AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
 {
     double _trackingStartTime;
     float _previousValue;
     double _previousValueChangeTime;
     double _currentValueChangedTime;
     _Bool _didHaveLessThanFullScrubbingSpeedSinceTrackingBegin;
-    _Bool _scrollScrubbing;
-    _Bool _slowKnobMovementDetected;
-    _Bool _shouldRecoverFromPrecisionScrubbingIfNeeded;
-    _Bool _scrubsWhenTappedAnywhere;
-    _Bool _canChangeScrubbingSpeed;
     _Bool _collapsed;
     _Bool _included;
     _Bool _removed;
     _Bool _hasAlternateAppearance;
     _Bool _hasFullScreenAppearance;
+    _Bool _scrollScrubbing;
+    _Bool _slowKnobMovementDetected;
+    _Bool _shouldRecoverFromPrecisionScrubbingIfNeeded;
+    _Bool _scrubsWhenTappedAnywhere;
+    _Bool _canChangeScrubbingSpeed;
     _Bool _hasChangedLocationAtLeastOnce;
     float _estimatedFrameRate;
     float _rate;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     UIView *_loadedTrackOverlayView;
     NSMutableArray *_previousScrubberVelocities;
+    AVLayoutItemAttributes *_layoutAttributes;
     id <AVScrubberDelegate> _delegate;
     NSArray *_loadedTimeRanges;
     long long _scrubbingSpeed;
@@ -49,13 +51,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingLocalizedScrubbingSpeedName;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
-@property(nonatomic) _Bool hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
-@property(nonatomic) _Bool hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
-@property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
-@property(nonatomic, getter=isIncluded) _Bool included; // @synthesize included=_included;
-@property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
-@property(nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
 @property(nonatomic) _Bool canChangeScrubbingSpeed; // @synthesize canChangeScrubbingSpeed=_canChangeScrubbingSpeed;
 @property(nonatomic) _Bool scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
 @property(nonatomic) double timestampWhenTrackingEnded; // @synthesize timestampWhenTrackingEnded=_timestampWhenTrackingEnded;
@@ -72,8 +69,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long scrubbingSpeed; // @synthesize scrubbingSpeed=_scrubbingSpeed;
 @property(copy, nonatomic) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
 @property(nonatomic) __weak id <AVScrubberDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
+@property(nonatomic) _Bool hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
+@property(nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
+@property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
+@property(nonatomic, getter=isIncluded) _Bool included; // @synthesize included=_included;
+@property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
+@property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property(retain, nonatomic) NSMutableArray *previousScrubberVelocities; // @synthesize previousScrubberVelocities=_previousScrubberVelocities;
-- (void).cxx_destruct;
+- (void)_updateLayoutItem;
 - (void)_updateSlowKnobMovementDetectedForTargetValue:(float)arg1;
 - (void)_updateSlowKnobMovementDetected;
 - (_Bool)_shouldTrackTouchAtPoint:(struct CGPoint)arg1;
@@ -102,8 +106,8 @@ __attribute__((visibility("hidden")))
 - (void)setValue:(float)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
-- (void)setHidden:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
+- (void)layoutAttributesDidChange;
 @property(readonly, nonatomic) double timeIntervalSinceTrackingEnded;
 @property(readonly, nonatomic) NSString *localizedScrubbingSpeedName;
 - (float)clampedEstimatedFrameRate;

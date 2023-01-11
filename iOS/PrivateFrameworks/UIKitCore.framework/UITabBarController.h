@@ -10,11 +10,12 @@
 #import <UIKitCore/UITabBarDelegate-Protocol.h>
 #import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 #import <UIKitCore/_UITVScrollViewManagerDelegate-Protocol.h>
+#import <UIKitCore/_UITabBarDelegateInternal-Protocol.h>
 
 @class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIFocusGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView, UIViewController, _UITVScrollViewManager;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UITabBarController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, UITabBarDelegate, NSCoding>
+@interface UITabBarController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, _UITabBarDelegateInternal, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
     UILayoutContainerView *_containerView;
@@ -49,10 +50,12 @@
         unsigned int delegateSupportedInterfaceOrientations:1;
         unsigned int delegatePreferredInterfaceOrientationForPresentation:1;
         unsigned int preferTabBarFocused:1;
+        unsigned int notifySplitViewControllerForSelectionChange:1;
         unsigned int offscreen:1;
         unsigned int hidNavBar:1;
     } _tabBarControllerFlags;
     _Bool __shouldFocusViewControllerAfterTransition;
+    _Bool __allowLateralFocusMovementOutOfTabBar;
     NSMutableArray *_moreChildViewControllers;
     UIView *_accessoryView;
     NSMapTable *_rememberedFocusedItemsByViewController;
@@ -66,6 +69,8 @@
 + (Class)_moreNavigationControllerClass;
 + (_Bool)_directlySetsContentOverlayInsetsForChildren;
 + (_Bool)doesOverridePreferredInterfaceOrientationForPresentation;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setAllowLateralFocusMovementOutOfTabBar:) _Bool _allowLateralFocusMovementOutOfTabBar; // @synthesize _allowLateralFocusMovementOutOfTabBar=__allowLateralFocusMovementOutOfTabBar;
 @property(nonatomic) _Bool _shouldFocusViewControllerAfterTransition; // @synthesize _shouldFocusViewControllerAfterTransition=__shouldFocusViewControllerAfterTransition;
 @property(retain, nonatomic, setter=_setInteractor:) id <UIViewControllerInteractiveTransitioning> _interactor; // @synthesize _interactor=__interactor;
 @property(retain, nonatomic, setter=_setAnimator:) id <UIViewControllerAnimatedTransitioning> _animator; // @synthesize _animator=__animator;
@@ -73,8 +78,8 @@
 @property(nonatomic) __weak id <UITabBarControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic, setter=_setAccessoryView:) UIView *_accessoryView; // @synthesize _accessoryView;
 @property(retain, nonatomic) NSMutableArray *moreChildViewControllers; // @synthesize moreChildViewControllers=_moreChildViewControllers;
-- (void).cxx_destruct;
 - (void)_setBadgeValue:(id)arg1 forTabBarItem:(id)arg2;
+- (id)_tabBarWindowForInterfaceOrientation:(id)arg1;
 - (id)rotatingSnapshotViewForWindow:(id)arg1;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(long long)arg1 duration:(double)arg2;
@@ -116,6 +121,8 @@
 - (id)transitionCoordinator;
 - (struct CGRect)_frameForViewController:(id)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(_Bool *)arg2;
+- (double)_childViewControllerModernTVTabBarTopInset;
+- (struct UIEdgeInsets)_overlayInsetsAdjustment;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (id)_transitionView;
 - (void)transitionFromViewController:(id)arg1 toViewController:(id)arg2;
@@ -128,6 +135,11 @@
 @property(readonly, nonatomic) UITabBar *tabBar;
 - (id)_viewControllersInTabBar;
 - (id)allViewControllers;
+- (_Bool)_wrapsNavigationController:(id *)arg1;
+- (_Bool)_notifySplitViewControllerForSelectionChange;
+- (void)_setNotifySplitViewControllerForSelectionChange:(_Bool)arg1;
+- (id)_traitCollectionForChildEnvironment:(id)arg1;
+- (id)_overrideTraitCollectionToPassDuringTraitChangeToChildViewController:(id)arg1;
 - (void)showBarWithTransition:(int)arg1;
 - (void)showBarWithTransition:(int)arg1 duration:(double)arg2;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(_Bool)arg2 duration:(double)arg3;
@@ -151,6 +163,8 @@
 - (id)_existingMoreNavigationController;
 - (_Bool)_allowsCustomizing;
 - (_Bool)_transitionsChildViewControllers;
+- (id)_childViewControllerForMultitaskingDragExclusionRects;
+- (id)childViewControllerForPointerLock;
 - (id)childViewControllerForUserInterfaceStyle;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
@@ -211,6 +225,8 @@
 - (void)_setSelectedTabBarItem:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
+- (void)_toggleAccessibilityHUDLongPressRecognizerIfNecessary;
 - (id)_accessibilityHUDLongPressRecognizer;
 - (void)_accessibilityLongPressChanged:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;

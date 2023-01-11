@@ -11,7 +11,6 @@
 @class HMCameraView, HMFUnfairLock, NSNumber, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface _HMCameraSource : NSObject <HMFMessageReceiver>
 {
     HMFUnfairLock *_lock;
@@ -23,12 +22,12 @@ __attribute__((visibility("hidden")))
     NSString *_sessionID;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly, copy, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSNumber *aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 @property(nonatomic) __weak HMCameraView *cameraView; // @synthesize cameraView=_cameraView;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;

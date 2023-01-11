@@ -17,7 +17,10 @@
 }
 
 + (id)interface;
++ (void)uninstallApp:(id)arg1 requestUserConfirmation:(_Bool)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 + (void)uninstallApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
++ (void)lookupItemIDsForDeletableSystemAppsWithBundleIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
++ (void)lookupBundleIDsForDeletableSystemAppsWithItemIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (void)launchMessagesExtensionForApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (long long)launchMessagesExtensionForApp:(id)arg1;
 + (void)launchApp:(id)arg1 onPairedDevice:(id)arg2 withResultHandler:(CDUnknownBlockType)arg3;

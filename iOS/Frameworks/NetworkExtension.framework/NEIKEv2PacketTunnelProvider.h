@@ -15,13 +15,14 @@
     _Bool _sessionDidConnect;
     _Bool _mobikeCapable;
     _Bool _authenticationPrompted;
+    _Bool _isObserving;
     unsigned int _flags;
     NSArray *_ikeConfig;
     NSArray *_localTrafficSelectors;
     NSArray *_remoteTrafficSelectors;
     NSDictionary *_options;
     struct NEVirtualInterface_s *_virtualInterface;
-    NEIKEv2Server *_serverAddresses;
+    NEIKEv2Server *_server;
     NWResolver *_resolver;
     NSObject<OS_dispatch_source> *_resolverWaitTimer;
     NEIKEv2Rekey *_rekey;
@@ -39,12 +40,14 @@
     NWPathEvaluator *_scopedPathEvaluator;
 }
 
+- (void).cxx_destruct;
 @property(retain) NWPathEvaluator *scopedPathEvaluator; // @synthesize scopedPathEvaluator=_scopedPathEvaluator;
 @property unsigned int flags; // @synthesize flags=_flags;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property long long pathStatus; // @synthesize pathStatus=_pathStatus;
 @property unsigned long long ifIndex; // @synthesize ifIndex=_ifIndex;
 @property(retain) NEIKEv2Session *session; // @synthesize session=_session;
+@property _Bool isObserving; // @synthesize isObserving=_isObserving;
 @property(retain) NEUserNotification *g_notification; // @synthesize g_notification=_g_notification;
 @property _Bool authenticationPrompted; // @synthesize authenticationPrompted=_authenticationPrompted;
 @property(retain) NWPath *path; // @synthesize path=_path;
@@ -59,7 +62,7 @@
 @property(retain) NEIKEv2Rekey *rekey; // @synthesize rekey=_rekey;
 @property(retain) NSObject<OS_dispatch_source> *resolverWaitTimer; // @synthesize resolverWaitTimer=_resolverWaitTimer;
 @property(retain) NWResolver *resolver; // @synthesize resolver=_resolver;
-@property(retain) NEIKEv2Server *serverAddresses; // @synthesize serverAddresses=_serverAddresses;
+@property(retain) NEIKEv2Server *server; // @synthesize server=_server;
 @property _Bool hasNAT; // @synthesize hasNAT=_hasNAT;
 @property _Bool isIfCellular; // @synthesize isIfCellular=_isIfCellular;
 @property struct NEVirtualInterface_s *virtualInterface; // @synthesize virtualInterface=_virtualInterface;
@@ -67,7 +70,6 @@
 @property(retain) NSArray *remoteTrafficSelectors; // @synthesize remoteTrafficSelectors=_remoteTrafficSelectors;
 @property(retain) NSArray *localTrafficSelectors; // @synthesize localTrafficSelectors=_localTrafficSelectors;
 @property(retain) NSArray *ikeConfig; // @synthesize ikeConfig=_ikeConfig;
-- (void).cxx_destruct;
 - (_Bool)NEIKEv2ProviderAuthenticate:(id)arg1;
 - (_Bool)tryAlternateServerAddresses;
 - (void)setTunnelNetworkSettings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -97,6 +99,7 @@
 - (void)startTunnelWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startIKEv2TunnelWithOptions:(id)arg1;
 - (void)dealloc;
+- (void)stopObserving;
 - (void)reset:(_Bool)arg1;
 - (id)init;
 - (void)ignoreSigPipe;

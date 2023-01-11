@@ -6,30 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoTimeKitCompanion/NTKBundleComplicationProvider-Protocol.h>
+@class NTKBundleComplicationDataSourceLoader;
 
-@class NSString, NTKBundleComplicationDataSourceLoader;
-
-@interface NTKBundleComplicationManager : NSObject <NTKBundleComplicationProvider>
+@interface NTKBundleComplicationManager : NSObject
 {
     NTKBundleComplicationDataSourceLoader *_loader;
 }
 
 + (id)sharedManager;
-@property(readonly, nonatomic) NTKBundleComplicationDataSourceLoader *loader; // @synthesize loader=_loader;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NTKBundleComplicationDataSourceLoader *loader; // @synthesize loader=_loader;
 - (void)enumerateBundlesForComplicationFamily:(long long)arg1 device:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (id)localizedComplicationNameForBundleIdentifier:(id)arg1;
+- (id)groupIdentifierForBundleIdentifier:(id)arg1;
 - (id)localizedAppNameForBundleIdentifier:(id)arg1;
 - (_Bool)bundleExistsWithIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
 - (Class)dataSourceClassForBundleComplication:(id)arg1;
 - (_Bool)bundleComplicationExistsForAppBundleIdentifier:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -6,10 +6,16 @@
 
 #import <SystemStatusServer/NSObject-Protocol.h>
 
-@protocol STStatusDomainData;
+@protocol STStatusDomainData, STStatusDomainPublisherClientHandle;
 
 @protocol STStatusDomainPublisherServerHandle <NSObject>
-- (void)publishData:(id <STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2;
+- (void)updateVolatileDataForPublisherClient:(id <STStatusDomainPublisherClientHandle>)arg1 domain:(unsigned long long)arg2 usingBlock:(void (^)(id <STMutableStatusDomainData>))arg3 fallbackDataProvider:(id <STStatusDomainData> (^)(void))arg4 completion:(void (^)(void))arg5;
+- (void)updateDataForPublisherClient:(id <STStatusDomainPublisherClientHandle>)arg1 domain:(unsigned long long)arg2 usingBlock:(void (^)(id <STMutableStatusDomainData>))arg3 fallbackDataProvider:(id <STStatusDomainData> (^)(void))arg4 completion:(void (^)(void))arg5;
+- (void)publishVolatileData:(id <STStatusDomainData>)arg1 forPublisherClient:(id <STStatusDomainPublisherClientHandle>)arg2 domain:(unsigned long long)arg3 completion:(void (^)(void))arg4;
+- (void)publishData:(id <STStatusDomainData>)arg1 forPublisherClient:(id <STStatusDomainPublisherClientHandle>)arg2 domain:(unsigned long long)arg3 completion:(void (^)(void))arg4;
+- (void)removePublisherClient:(id <STStatusDomainPublisherClientHandle>)arg1 forDomain:(unsigned long long)arg2;
+- (void)registerPublisherClient:(id <STStatusDomainPublisherClientHandle>)arg1 forDomain:(unsigned long long)arg2;
+- (id <STStatusDomainData>)publishedVolatileDataForDomain:(unsigned long long)arg1;
 - (id <STStatusDomainData>)publishedDataForDomain:(unsigned long long)arg1;
 @end
 

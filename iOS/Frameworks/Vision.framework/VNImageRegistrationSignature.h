@@ -4,24 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <Vision/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VNImageRegistrationSignature : NSObject <NSSecureCoding>
+@interface VNImageRegistrationSignature
 {
-    struct FastRegistration_Signatures mSignature_;
 }
-
-+ (_Bool)supportsSecureCoding;
-- (const struct FastRegistration_Signatures *)signature;
-- (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithImageBuffer:(id)arg1 andOptions:(id)arg2 error:(id *)arg3;
 
 @end
 

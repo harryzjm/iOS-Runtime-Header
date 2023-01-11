@@ -6,7 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
+@class UIKBTree;
+
 @protocol UIKBEmojiHitTestResponder <NSObject>
+- (void)updateState:(int)arg1 forKey:(UIKBTree *)arg2;
 - (void)finishSliderBehaviorFeedback;
 - (void)provideSliderBehaviorFeedback;
 - (void)prepareSliderBehaviorFeedback;

@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HDDatabaseTransactionContextStatistics;
+
 @interface HDMutableDatabaseTransactionContext
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(retain, nonatomic) HDDatabaseTransactionContextStatistics *statistics; // @dynamic statistics;
 @property(nonatomic) _Bool requiresNewDatabaseConnection; // @dynamic requiresNewDatabaseConnection;
 @property(nonatomic) _Bool skipJournalMerge; // @dynamic skipJournalMerge;
 @property(nonatomic) _Bool highPriority; // @dynamic highPriority;

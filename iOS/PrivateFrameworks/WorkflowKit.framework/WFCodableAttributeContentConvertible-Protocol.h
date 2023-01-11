@@ -10,7 +10,6 @@
 
 @protocol WFCodableAttributeContentConvertible <NSObject>
 + (Class)wf_contentItemClass;
-- (void)wf_transformUsingCodableAttribute:(INCodableAttribute *)arg1 completionHandler:(void (^)(id))arg2;
 - (WFContentItem *)wf_contentItemWithCodableAttribute:(INCodableAttribute *)arg1;
 @end
 

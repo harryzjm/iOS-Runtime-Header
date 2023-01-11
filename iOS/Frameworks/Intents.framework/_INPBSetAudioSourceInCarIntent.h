@@ -18,18 +18,16 @@
         unsigned int audioSource:1;
         unsigned int relativeAudioSourceReference:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _audioSource;
     int _relativeAudioSourceReference;
     _INPBIntentMetadata *_intentMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int relativeAudioSourceReference; // @synthesize relativeAudioSourceReference=_relativeAudioSourceReference;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) int audioSource; // @synthesize audioSource=_audioSource;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -19,9 +19,12 @@
 }
 
 - (void).cxx_destruct;
+- (void)clearAllCachedImages;
 - (void)clearCachedImagesForRequestIDs:(id)arg1;
 - (void)cacheImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 forRequestID:(int)arg3;
 - (struct CGImage *)cachedImageWithOrientation:(unsigned int *)arg1 forAsset:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 forRequestID:(int)arg5;
+- (id)debugDescription;
+- (id)description;
 - (id)init;
 
 @end

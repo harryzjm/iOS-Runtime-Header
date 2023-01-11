@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOFeatureStyleAttributes, MKWalletMerchantStylingInfo, NSString, UIColor, UIImage, UIImageView, UILabel, UIView, _MKBezierPathView;
+@class GEOFeatureStyleAttributes, MKWalletMerchantStylingInfo, NSString, UIColor, UIImage, UIImageView, UIView, _MKBezierPathView, _MKUILabel;
 
 @interface MKMarkerAnnotationView
 {
-    UIImageView *_shadowView;
+    UIImageView *_shadow;
     _MKBezierPathView *_markerView;
     UIImageView *_glyphImageView;
-    UILabel *_glyphLabel;
+    _MKUILabel *_glyphLabel;
     _MKBezierPathView *_selectedMarkerView;
     UIImageView *_selectedGlyphImageView;
-    UILabel *_selectedGlyphLabel;
+    _MKUILabel *_selectedGlyphLabel;
     _MKBezierPathView *_selectedDotView;
     UIView *_contentMaskView;
     GEOFeatureStyleAttributes *_customStyleAttributes;
@@ -32,6 +32,7 @@
 
 + (float)_defaultDisplayPriority;
 + (Class)_mapkitLeafClass;
+- (void).cxx_destruct;
 @property(nonatomic) double markerStrokeWidth; // @synthesize markerStrokeWidth=_markerStrokeWidth;
 @property(copy, nonatomic) UIColor *markerStrokeTintColor; // @synthesize markerStrokeTintColor=_markerStrokeTintColor;
 @property(nonatomic) _Bool animatesWhenAdded; // @synthesize animatesWhenAdded=_animatesWhenAdded;
@@ -41,7 +42,6 @@
 @property(copy, nonatomic) UIColor *glyphTintColor; // @synthesize glyphTintColor=_glyphTintColor;
 @property(copy, nonatomic) UIColor *markerTintColor; // @synthesize markerTintColor=_markerTintColor;
 @property(retain, nonatomic, getter=_styleAttributes, setter=_setStyleAttributes:) GEOFeatureStyleAttributes *styleAttributes; // @synthesize styleAttributes=_customStyleAttributes;
-- (void).cxx_destruct;
 - (struct UIEdgeInsets)_defaultCollisionAlignmentRectInsets;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)_effectiveSubtitlesIsCollidable:(_Bool *)arg1;
@@ -56,7 +56,9 @@
 - (void)_setupNormalViewsIfNeeded;
 - (void)_didDragWithVelocity:(struct CGPoint)arg1;
 - (long long)_stateForIsSelected:(_Bool)arg1;
-- (void)_configureViewsForState:(long long)arg1 usesCallout:(_Bool)arg2;
+- (void)_setShadowAlpha:(double)arg1 transform:(struct CGAffineTransform)arg2 duration:(double)arg3;
+- (void)_configureViewsForState:(long long)arg1 usesCallout:(_Bool)arg2 animated:(_Bool)arg3;
+- (CDStruct_45683352)_metricsForState:(long long)arg1;
 - (void)prepareForSnapshotting;
 - (void)_unhideForDisplay;
 - (void)prepareForDisplay;

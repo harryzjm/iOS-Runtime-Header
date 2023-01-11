@@ -9,8 +9,8 @@
 #import <HelpKit/NSURLSessionDataDelegate-Protocol.h>
 #import <HelpKit/NSURLSessionDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSURLSession;
-@protocol OS_dispatch_queue, TPSURLSessionDelegate, TPSURLSessionManagerDelegate;
+@class NSMutableDictionary, NSString, NSURLSession, PPCRedirect;
+@protocol OS_dispatch_queue, TPSURLSessionCustomAuthHandling, TPSURLSessionDelegate, TPSURLSessionManagerDelegate;
 
 @interface TPSURLSessionManager : NSObject <NSURLSessionDelegate, NSURLSessionDataDelegate>
 {
@@ -22,12 +22,16 @@
     _Bool _coalesceRequests;
     id <TPSURLSessionManagerDelegate> _delegate;
     id <TPSURLSessionDelegate> _defaultSessionDelegate;
+    id <TPSURLSessionCustomAuthHandling> _authenticationHandler;
     NSMutableDictionary *_coalesceTaskURLMap;
     NSMutableDictionary *_uncoalesceTaskMap;
     NSURLSession *_URLSession;
+    PPCRedirect *_urlRedirector;
 }
 
 + (id)defaultManager;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PPCRedirect *urlRedirector; // @synthesize urlRedirector=_urlRedirector;
 @property(retain, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property(retain, nonatomic) NSMutableDictionary *uncoalesceTaskMap; // @synthesize uncoalesceTaskMap=_uncoalesceTaskMap;
 @property(retain, nonatomic) NSMutableDictionary *coalesceTaskURLMap; // @synthesize coalesceTaskURLMap=_coalesceTaskURLMap;
@@ -35,9 +39,9 @@
 @property(nonatomic) _Bool respondsToDidReceiveChallenge; // @synthesize respondsToDidReceiveChallenge=_respondsToDidReceiveChallenge;
 @property(nonatomic) _Bool respondsToRequestCompleted; // @synthesize respondsToRequestCompleted=_respondsToRequestCompleted;
 @property(nonatomic) _Bool respondsToRequestResumed; // @synthesize respondsToRequestResumed=_respondsToRequestResumed;
+@property(retain, nonatomic) id <TPSURLSessionCustomAuthHandling> authenticationHandler; // @synthesize authenticationHandler=_authenticationHandler;
 @property(nonatomic) __weak id <TPSURLSessionDelegate> defaultSessionDelegate; // @synthesize defaultSessionDelegate=_defaultSessionDelegate;
 @property(nonatomic) __weak id <TPSURLSessionManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
@@ -55,6 +59,7 @@
 - (id)newURLSessionItemWithRequest:(id)arg1 identifier:(id)arg2 networkDelegate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)newURLSessionItemWithRequest:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newURLSessionItemWithRequest:(id)arg1 identifier:(id)arg2 networkDelegate:(id)arg3;
+- (id)_mappedURLRequest:(id)arg1;
 - (id)init;
 - (void)dealloc;
 

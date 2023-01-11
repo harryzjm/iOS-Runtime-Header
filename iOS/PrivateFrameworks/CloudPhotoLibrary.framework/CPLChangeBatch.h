@@ -41,6 +41,7 @@
 - (void)_setAdditionalRecords:(id)arg1;
 - (id)additionalRecordWithIdentifier:(id)arg1;
 - (id)additionalRecordWithScopedIdentifier:(id)arg1;
+- (id)filterScopeChangeFromBatch;
 - (_Bool)hasChangeWithIdentifier:(id)arg1;
 - (id)recordWithScopedIdentifier:(id)arg1;
 - (_Bool)hasChangeWithScopedIdentifier:(id)arg1;

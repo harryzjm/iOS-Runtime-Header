@@ -16,18 +16,20 @@
     Class _modelClass;
 }
 
++ (id)_kindWithModelClass:(Class)arg1 cacheKey:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (_Bool)supportsSecureCoding;
++ (id)kindWithModelClass:(Class)arg1 cacheKey:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (id)kindWithModelClass:(Class)arg1;
 + (id)identityKind;
-@property(readonly, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
+- (id)_initWithModelClass:(Class)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *humanDescription;
 - (id)debugDescription;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_init;
 @property(readonly, nonatomic) MPModelKind *identityKind;
 - (shared_ptr_cf7b8a22)predicateWithBaseProperty:(struct ModelPropertyBase *)arg1;
 - (shared_ptr_cf7b8a22)representedSearchScopePredicate;

@@ -12,10 +12,10 @@
 
 @interface SBSceneLayoutLiveContentOverlay : NSObject <SBSwitcherLiveContentOverlay>
 {
-    _Bool _rendersAsynchronously;
     _Bool _wantsMinificationFilter;
     _Bool _asynchronousRenderingTemporarilyDisabled;
     long long _containerOrientation;
+    long long _rasterizationStyle;
     SBMainDisplaySceneLayoutViewController *_sceneLayoutViewController;
     SBWindowSelfHostWrapper *_sceneLayoutWindowHostWrapper;
     SBOrientationTransformWrapperView *_sceneLayoutOrientationWrapperView;
@@ -23,6 +23,7 @@
     NSMutableDictionary *_statusBarAssertions;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool asynchronousRenderingTemporarilyDisabled; // @synthesize asynchronousRenderingTemporarilyDisabled=_asynchronousRenderingTemporarilyDisabled;
 @property(readonly, nonatomic) _Bool wantsMinificationFilter; // @synthesize wantsMinificationFilter=_wantsMinificationFilter;
 @property(retain, nonatomic) NSMutableDictionary *statusBarAssertions; // @synthesize statusBarAssertions=_statusBarAssertions;
@@ -30,13 +31,19 @@
 @property(readonly, nonatomic) SBOrientationTransformWrapperView *sceneLayoutOrientationWrapperView; // @synthesize sceneLayoutOrientationWrapperView=_sceneLayoutOrientationWrapperView;
 @property(readonly, nonatomic) SBWindowSelfHostWrapper *sceneLayoutWindowHostWrapper; // @synthesize sceneLayoutWindowHostWrapper=_sceneLayoutWindowHostWrapper;
 @property(readonly, nonatomic) __weak SBMainDisplaySceneLayoutViewController *sceneLayoutViewController; // @synthesize sceneLayoutViewController=_sceneLayoutViewController;
-@property(readonly, nonatomic) _Bool rendersAsynchronously; // @synthesize rendersAsynchronously=_rendersAsynchronously;
+@property(readonly, nonatomic) long long rasterizationStyle; // @synthesize rasterizationStyle=_rasterizationStyle;
 @property(nonatomic) long long containerOrientation; // @synthesize containerOrientation=_containerOrientation;
-- (void).cxx_destruct;
+- (id)_sceneHandleForHardwareButtonEvents;
+- (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
+- (_Bool)handleVolumeDownButtonPress;
+- (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleLockButtonPress;
+- (_Bool)handleHomeButtonLongPress;
+- (_Bool)handleHomeButtonDoublePress;
+- (_Bool)handleHomeButtonPress;
 - (void)_evaluateAsynchronousRenderingEnablement;
 - (void)disableAsynchronousRenderingForNextCommit;
-- (void)setRendersAsynchronously:(_Bool)arg1 withMinificationFilterEnabled:(_Bool)arg2;
-- (void)setRendersAsynchronously:(_Bool)arg1;
+- (void)setRasterizationStyle:(long long)arg1 withMinificationFilterEnabled:(_Bool)arg2;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (void)setUsesBrightSceneViewBackgroundMaterial:(_Bool)arg1;
 - (void)setHomeGrabberHidden:(_Bool)arg1 animated:(_Bool)arg2;

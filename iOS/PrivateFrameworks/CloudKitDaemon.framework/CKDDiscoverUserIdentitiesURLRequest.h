@@ -15,18 +15,17 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_submittedInfos;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *submittedInfos; // @synthesize submittedInfos=_submittedInfos;
 @property(retain, nonatomic) NSArray *infosToDiscover; // @synthesize infosToDiscover=_infosToDiscover;
 @property(copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property(nonatomic) _Bool wantsProtectionInfo; // @synthesize wantsProtectionInfo=_wantsProtectionInfo;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
-- (int)operationType;
 - (long long)databaseScope;
-- (id)initWithLookupInfos:(id)arg1;
+- (id)initWithOperation:(id)arg1 lookupInfos:(id)arg2;
 
 @end
 

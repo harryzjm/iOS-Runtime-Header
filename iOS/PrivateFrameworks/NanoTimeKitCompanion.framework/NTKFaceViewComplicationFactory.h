@@ -21,6 +21,7 @@
 }
 
 + (id)_genericComplicationAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) double contentSpecificAnimationDuration; // @synthesize contentSpecificAnimationDuration=_contentSpecificAnimationDuration;
 @property(nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property(retain, nonatomic) UIColor *platterColor; // @synthesize platterColor=_platterColor;
@@ -29,7 +30,6 @@
 @property(copy, nonatomic) CDUnknownBlockType platterColorProviderBlock; // @synthesize platterColorProviderBlock=_platterColorProviderBlock;
 @property(copy, nonatomic) CDUnknownBlockType foregroundColorProviderBlock; // @synthesize foregroundColorProviderBlock=_foregroundColorProviderBlock;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (id)createComplicationContentSpecificAttributesAnimationWithAttributes:(unsigned long long)arg1 faceView:(id)arg2 forSlots:(id)arg3;
 - (void)applyComplicationContentSpecificAttributesAnimated:(_Bool)arg1 attributes:(unsigned long long)arg2 faceView:(id)arg3;
 - (void)applyComplicationContentSpecificAttributesAnimated:(_Bool)arg1 faceView:(id)arg2;
@@ -41,6 +41,7 @@
 - (id)detachedComplicationDisplaysForFaceView:(id)arg1;
 - (long long)keylineStyleForComplicationSlot:(id)arg1;
 - (double)keylineCornerRadiusForComplicationSlot:(id)arg1 faceView:(id)arg2;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (id)keylineViewForComplicationSlot:(id)arg1;
 - (double)minimumBreathingScaleForComplicationSlot:(id)arg1 faceView:(id)arg2;
 - (_Bool)fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2 faceView:(id)arg3;

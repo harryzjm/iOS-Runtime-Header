@@ -6,12 +6,28 @@
 
 #import <KnowledgeGraphKit/MAEdge.h>
 
-@interface PGGraphEdge : MAEdge
+#import <PhotosGraph/PGGraphElement-Protocol.h>
+
+@class NSString, PGGraph;
+
+@interface PGGraphEdge : MAEdge <PGGraphElement>
 {
 }
 
++ (id)filter;
+- (unsigned long long)propertiesCount;
+- (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
+- (id)propertyForKey:(id)arg1;
+- (void)setWeight:(float)arg1;
 - (id)keywordDescription;
-- (id)name;
+- (void)concreteEdgeSuperAccess_setPropertyValue:(id)arg1 forKey:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) PGGraph *graph;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

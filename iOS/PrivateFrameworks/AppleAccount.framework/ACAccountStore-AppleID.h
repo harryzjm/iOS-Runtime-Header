@@ -12,9 +12,10 @@
 - (id)aa_authKitAccountForAltDSID:(id)arg1;
 - (id)aa_grandSlamAccountForAltDSID:(id)arg1;
 - (id)aa_grandSlamAccountForiCloudAccount:(id)arg1;
-- (void)aa_registerAppleAccountWithHSA:(id)arg1 usingCookieHeaders:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)aa_registerAppleAccountWithHSA:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)aa_registerAppleAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)aa_loginAndUpdateiCloudAccount:(id)arg1 delegateParams:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)aa_loginAndUpdateiCloudAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_performUpdateRequestWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)aa_updatePropertiesForAppleAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)aa_updatePropertiesForAppleAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;

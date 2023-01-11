@@ -11,11 +11,11 @@
 @interface NUHistogramRenderRequest <NUTimeBased>
 {
     NUHistogramParameters *_parameters;
-    NUColorSpace *_colorSpace;
+    NUColorSpace *_histogramCalculationColorSpace;
 }
 
-@property(retain, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NUColorSpace *histogramCalculationColorSpace; // @synthesize histogramCalculationColorSpace=_histogramCalculationColorSpace;
 @property(copy, nonatomic) NUHistogramParameters *parameters;
 - (void)submit:(CDUnknownBlockType)arg1;
 - (id)newRenderJob;

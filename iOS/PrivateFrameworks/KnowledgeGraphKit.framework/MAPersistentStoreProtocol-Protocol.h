@@ -23,6 +23,7 @@
 @property(nonatomic) unsigned long long graphVersion;
 @property(readonly, nonatomic) NSUUID *graphIdentifier;
 @property(readonly, nonatomic) _Bool hasMarker;
+- (_Bool)copyToURL:(NSURL *)arg1 error:(id *)arg2;
 - (_Bool)migrateToURL:(NSURL *)arg1 error:(id *)arg2;
 - (void)removeModelEdgePropertyForKey:(NSString *)arg1 andIdentifier:(long long)arg2;
 - (void)removeModelNodePropertyForKey:(NSString *)arg1 andIdentifier:(long long)arg2;
@@ -30,6 +31,8 @@
 - (void)removeModelNodesPropertiesForIdentifiers:(NSSet *)arg1;
 - (void)removeModelEdgePropertiesForIdentifier:(long long)arg1;
 - (void)removeModelNodePropertiesForIdentifier:(long long)arg1;
+- (void)setEdgeWeight:(float)arg1 forIdentifier:(long long)arg2;
+- (void)setNodeWeight:(float)arg1 forIdentifier:(long long)arg2;
 - (void)setModelEdgePropertyValue:(id <MAPropertyTypeProtocol>)arg1 forKey:(NSString *)arg2 andIdentifier:(long long)arg3;
 - (void)setModelNodePropertyValue:(id <MAPropertyTypeProtocol>)arg1 forKey:(NSString *)arg2 andIdentifier:(long long)arg3;
 - (void)setModelEdgeProperties:(NSDictionary *)arg1 forIdentifier:(long long)arg2 clobberExisting:(_Bool)arg3;

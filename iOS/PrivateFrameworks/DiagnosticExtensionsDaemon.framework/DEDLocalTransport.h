@@ -19,10 +19,11 @@
     NSObject<OS_os_log> *_log;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property __weak id <DEDWorkerProtocol> workerDelegate; // @synthesize workerDelegate=_workerDelegate;
 @property __weak id <DEDClientProtocol> clientDelegate; // @synthesize clientDelegate=_clientDelegate;
-- (void).cxx_destruct;
+- (void)didGetState:(long long)arg1 info:(id)arg2 sessionID:(id)arg3;
 - (void)hasCollected:(id)arg1 isCollecting:(id)arg2 withIdentifiers:(id)arg3 inSession:(id)arg4;
 - (void)hasCollected:(id)arg1 isCollecting:(id)arg2 inSession:(id)arg3;
 - (void)didCancelSession:(id)arg1;
@@ -30,7 +31,6 @@
 - (void)finishedDiagnosticWithIdentifier:(id)arg1 result:(id)arg2 session:(id)arg3;
 - (void)deviceSupportsDiagnosticExtensions:(id)arg1 session:(id)arg2;
 - (void)pongSession:(id)arg1;
-- (void)syncSessionStatusWithSession:(id)arg1;
 - (void)cancelNotificationForSession:(id)arg1;
 - (void)scheduleNotificationForSession:(id)arg1;
 - (void)cancelSession:(id)arg1;
@@ -39,6 +39,8 @@
 - (void)didAdoptFilesWithError:(id)arg1 forSession:(id)arg2;
 - (void)adoptFiles:(id)arg1 forSession:(id)arg2;
 - (void)getSessionStatusWithSession:(id)arg1;
+- (void)syncSessionStatusWithSession:(id)arg1;
+- (void)getSessionStateWithSession:(id)arg1;
 - (void)terminateExtension:(id)arg1 info:(id)arg2 session:(id)arg3;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 deferRunUntil:(id)arg3 session:(id)arg4;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;

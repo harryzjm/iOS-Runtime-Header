@@ -34,6 +34,7 @@
 + (_Bool)dontConnectToServer;
 + (id)sharedManager;
 + (void)initialize;
+- (void).cxx_destruct;
 @property CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(retain) NSDictionary *typeAliases; // @synthesize typeAliases=_typeAliases;
 @property(retain) NSDictionary *typeBOMs; // @synthesize typeBOMs=_typeBOMs;
@@ -50,8 +51,8 @@
 @property(retain) NSObject<OS_dispatch_queue> *serverQ; // @synthesize serverQ=_serverQ;
 @property(retain) UAPasteboardGeneration *currentGeneration; // @synthesize currentGeneration=_currentGeneration;
 @property(copy) CDUnknownBlockType localPasteboardWasFetched; // @synthesize localPasteboardWasFetched=_localPasteboardWasFetched;
-- (void).cxx_destruct;
 - (void)tellClientDebuggingEnabled:(_Bool)arg1 logFileHandle:(id)arg2;
+- (id)fetchRemoteName;
 - (void)fetchPasteboardStatus:(CDUnknownBlockType)arg1;
 - (void)fetchPasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)doClearLocalPasteboardInfo;
@@ -59,6 +60,7 @@
 - (_Bool)requestPasteboardFetchReturnEarly;
 - (void)requestRemotePasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)requestRemotePasteboardTypesForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)currentRemoteDeviceName;
 - (_Bool)isRemotePasteboardAvaliable;
 - (id)serializeType:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3;
 - (id)serializeFileType:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3 intoDir:(id)arg4;
@@ -68,6 +70,7 @@
 - (void)clearLocalPasteboardInformation;
 - (void)sendUpdateToServer:(id)arg1;
 - (_Bool)addData:(id)arg1 toItemAtIndex:(unsigned long long)arg2 generation:(unsigned long long)arg3;
+- (_Bool)typeIsDisallowed:(id)arg1;
 - (void)stopPreventingPasteboardSharing;
 - (void)startPreventingPasteboardSharing;
 - (void)dealloc;

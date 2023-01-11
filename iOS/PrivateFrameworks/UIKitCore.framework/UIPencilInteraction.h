@@ -19,11 +19,14 @@
     UIView *_view;
 }
 
++ (_Bool)hasSeenPencilPairingUI;
++ (void)_setPrefersPencilOnlyDrawing:(_Bool)arg1;
++ (_Bool)prefersPencilOnlyDrawing;
 + (long long)preferredTapAction;
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak id <UIPencilInteractionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;

@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface NEHelper : NSObject
 {
-    NSObject<OS_xpc_object> *_connection;
+    struct os_unfair_lock_s _lock;
+    _Bool _isSynchronous;
+    int _classID;
     CDUnknownBlockType _incomingMessageHandler;
+    NSObject<OS_xpc_object> *_connection;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_xpc_object> *_initMessage;
+    NSDictionary *_additionalProperties;
 }
 
-@property(readonly) NSObject<OS_xpc_object> *initMessage; // @synthesize initMessage=_initMessage;
-@property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(copy) CDUnknownBlockType incomingMessageHandler; // @synthesize incomingMessageHandler=_incomingMessageHandler;
 - (void).cxx_destruct;
+@property(readonly, retain, nonatomic) NSDictionary *additionalProperties; // @synthesize additionalProperties=_additionalProperties;
+@property(readonly, nonatomic) int classID; // @synthesize classID=_classID;
+@property(readonly, retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(retain, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
+@property(nonatomic) _Bool isSynchronous; // @synthesize isSynchronous=_isSynchronous;
+@property(copy) CDUnknownBlockType incomingMessageHandler; // @synthesize incomingMessageHandler=_incomingMessageHandler;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
-- (id)connection;
+- (id)getConnection;
 - (void)dealloc;
-- (id)initWithDelegateClassID:(int)arg1 queue:(id)arg2 initialMessage:(id)arg3;
+- (id)initWithDelegateClassID:(int)arg1 queue:(id)arg2 additionalProperties:(id)arg3;
 - (id)initWithDelegateClassID:(int)arg1 queue:(id)arg2;
 
 @end

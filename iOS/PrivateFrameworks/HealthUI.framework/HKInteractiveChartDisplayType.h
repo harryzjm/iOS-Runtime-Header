@@ -8,26 +8,26 @@
 
 @interface HKInteractiveChartDisplayType
 {
-    UIColor *_color;
     HKGraphSeries *_graphSeries;
+    UIColor *_color;
     NSString *_specifiedDisplayName;
     NSString *_specifiedUnitName;
     HKInteractiveChartDataFormatter *_specifiedValueFormatter;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HKInteractiveChartDataFormatter *specifiedValueFormatter; // @synthesize specifiedValueFormatter=_specifiedValueFormatter;
 @property(readonly, nonatomic) NSString *specifiedUnitName; // @synthesize specifiedUnitName=_specifiedUnitName;
 @property(readonly, nonatomic) NSString *specifiedDisplayName; // @synthesize specifiedDisplayName=_specifiedDisplayName;
-@property(readonly, nonatomic) HKGraphSeries *graphSeries; // @synthesize graphSeries=_graphSeries;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) HKGraphSeries *graphSeries; // @synthesize graphSeries=_graphSeries;
 - (long long)_internalDisplayTypeIdentifier;
 - (id)description;
 - (id)hk_interactiveChartsFormatterForTimeScope:(long long)arg1;
 - (id)colorWithDisplayCategoryController:(id)arg1;
 - (id)unitNameForValue:(id)arg1 unitPreferenceController:(id)arg2;
 - (id)displayName;
-- (id)_initWithGraphSeries:(id)arg1 displayName:(id)arg2 unitDisplayNameOverrides:(id)arg3 chartingRules:(id)arg4 unitName:(id)arg5 valueFormatter:(id)arg6 dataTypeCode:(long long)arg7;
+- (id)_initWithGraphSeries:(id)arg1 displayName:(id)arg2 unitDisplayNameOverrides:(id)arg3 localizationTableOverride:(id)arg4 chartingRules:(id)arg5 unitName:(id)arg6 valueFormatter:(id)arg7 dataTypeCode:(long long)arg8;
 - (id)initWithGraphSeries:(id)arg1 displayName:(id)arg2 unitName:(id)arg3 valueFormatter:(id)arg4 dataTypeCode:(long long)arg5;
 - (id)initWithGraphSeries:(id)arg1 baseDisplayType:(id)arg2 valueFormatter:(id)arg3 dataTypeCode:(long long)arg4;
 

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (float *)dataAtIndex:(unsigned long long)arg1 key:(const basic_string_23d93216 *)arg2;
+- (float *)dataAtIndex:(unsigned long long)arg1 key:(const basic_string_90719d97 *)arg2;
 - (void)setBlobs:(const map_6aef7db1 *)arg1 numberOfDataPoints:(int)arg2 nonBatches:(const vector_ebb6ef3e *)arg3;
 - (id)dataPointAtIndex:(int)arg1;
 - (int)numberOfDataPoints;

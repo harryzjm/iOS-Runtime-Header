@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)supportsQueryingAllMountPoints;
 - (id)queryStringForMountPoint:(id)arg1;
+- (id)name;
 
 @end
 

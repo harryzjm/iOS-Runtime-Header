@@ -16,14 +16,11 @@
     _Bool _isOpaque;
 }
 
-@property(readonly, nonatomic, getter=isOpaque) _Bool opaque; // @synthesize opaque=_isOpaque;
 - (void).cxx_destruct;
-- (struct CGImage *)_buildImage;
-- (id)_surface;
+@property(readonly, nonatomic, getter=isOpaque) _Bool opaque; // @synthesize opaque=_isOpaque;
 - (struct CGImage *)buildCGImage;
 - (id)setOpaque:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithIOSurface:(id)arg1;
 
 @end
 

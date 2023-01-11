@@ -12,7 +12,7 @@
 #import <VideoSubscriberAccountUI/VSRemoteNotifierDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSSupportedAppsViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSOperationQueue, NSString, VSAppDescription, VSDevice, VSIdentityProviderRequestManager, VSPersistentStorage, VSPreferences, VSRemoteNotifier;
+@class NSArray, NSOperationQueue, NSString, VSAccountSerializationCenter, VSAppDescription, VSDevice, VSIdentityProviderRequestManager, VSPersistentStorage, VSPreferences, VSRemoteNotifier;
 @protocol VSSetupFlowControllerDelegate;
 
 @interface VSSetupFlowController : NSObject <VSIdentityProviderPickerViewControllerDelegate, VSIdentityProviderViewControllerDelegate, VSRemoteNotifierDelegate, VSSupportedAppsViewControllerDelegate, VSIdentityProviderRequestManagerDelegate>
@@ -31,8 +31,11 @@
     VSIdentityProviderRequestManager *_requestManager;
     CDUnknownBlockType _goingBackActivationCompletionBlock;
     VSDevice *_currentDevice;
+    VSAccountSerializationCenter *_serializationCenter;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) VSAccountSerializationCenter *serializationCenter; // @synthesize serializationCenter=_serializationCenter;
 @property(retain, nonatomic) VSDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property(copy, nonatomic) CDUnknownBlockType goingBackActivationCompletionBlock; // @synthesize goingBackActivationCompletionBlock=_goingBackActivationCompletionBlock;
 @property(nonatomic) _Bool notifyDelegateFromActivation; // @synthesize notifyDelegateFromActivation=_notifyDelegateFromActivation;
@@ -47,7 +50,6 @@
 @property(retain, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property(nonatomic) _Bool isInSTBMode; // @synthesize isInSTBMode=_isInSTBMode;
 @property(nonatomic) __weak id <VSSetupFlowControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)supportedAppsViewControllerDidFinish:(id)arg1;
 - (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
 - (void)identityProviderViewController:(id)arg1 didAuthenticateAccount:(id)arg2 forRequest:(id)arg3;
@@ -69,7 +71,7 @@
 - (void)finishSTBSuccessFlowForProvider:(id)arg1;
 - (void)startSigningIn;
 - (void)_startLoadingAfterOfferingOptions:(_Bool)arg1 endingUndoGrouping:(_Bool)arg2 arrivedViaNotNowButton:(_Bool)arg3 arrivedAfterSigningIn:(_Bool)arg4 goingBack:(_Bool)arg5;
-- (void)startLoadingWhenGoingBack:(_Bool)arg1;
+- (void)startLoadingWhenGoingBack:(_Bool)arg1 serializedAccountDataToImport:(id)arg2;
 - (void)markSTBProviderAppForInstallation:(id)arg1 withAppPlacementPosition:(id)arg2;
 - (void)_obtainConsentForBundleIDs:(id)arg1 vouchers:(id)arg2 withAppleAccount:(id)arg3 identityProvider:(id)arg4 endingUndoGrouping:(_Bool)arg5 arrivedViaNotNowButton:(_Bool)arg6 arrivedAfterSigningIn:(_Bool)arg7 goingBack:(_Bool)arg8;
 - (void)_presentError:(id)arg1;

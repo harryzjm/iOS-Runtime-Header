@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)_axMarkupCellWithAXInfo:(id)arg1 indexPath:(id)arg2;
+- (void)loadView;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

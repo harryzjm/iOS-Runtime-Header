@@ -23,6 +23,8 @@
 @property(readonly, copy) NSArray *allObservers;
 @property(readonly) unsigned long long count;
 - (void)notifyObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_notifyObserversInGroup:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)notifyObserversInGroup:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)notifyObservers:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)_registerObserver:(id)arg1 queue:(id)arg2;

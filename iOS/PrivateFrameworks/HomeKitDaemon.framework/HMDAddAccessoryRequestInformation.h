@@ -22,6 +22,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMFTimer *cleanupTimer; // @synthesize cleanupTimer=_cleanupTimer;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) HMSetupAccessoryDescription *accessoryDescription; // @synthesize accessoryDescription=_accessoryDescription;
@@ -29,10 +30,9 @@
 @property(readonly, nonatomic) HMAccessoryCategory *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
 @property(readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
 - (void)storeIdentifierFromUnassociatedAccessory:(id)arg1 setupCode:(id)arg2;
 - (void)cancelCleanupTimer;
-- (void)startCleanupTimerForDelegate:(id)arg1;
+- (void)startCleanupTimerForDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithAccessoryName:(id)arg1 category:(id)arg2 bundleID:(id)arg3 accessoryDescription:(id)arg4;

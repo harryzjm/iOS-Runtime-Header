@@ -11,6 +11,7 @@
     MFSMTPConnection *_connection;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 - (id)deliverMessageData:(id)arg1 toRecipients:(id)arg2;
 - (void)setAccount:(id)arg1;

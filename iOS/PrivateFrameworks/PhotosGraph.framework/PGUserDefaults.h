@@ -15,11 +15,11 @@
 + (unsigned long long)maximumNumberOfVisibleRegularItems;
 + (void)setExtendedCurationOptions:(id)arg1;
 + (id)extendedCurationOptions;
++ (_Bool)isPhotosChallengeEnabled;
 + (_Bool)isBehavioralCurationEnabled;
 + (_Bool)onThisDayHighlightKeyAssetRotationIsEnabled;
 + (_Bool)peopleSuggestionLearningIsEnabled;
 + (_Bool)suppressGraphLiveUpdate;
-+ (_Bool)incrementalHighlightEnrichmentIsEnabled;
 + (_Bool)isPublicEventsEnabled;
 + (_Bool)boundTextFeaturesPerEvent;
 + (unsigned long long)maximumNumberOfTextFeaturesPerEvent;
@@ -37,6 +37,7 @@
 + (unsigned long long)minimumNumberOfCuratedAssetsForMemories;
 + (_Bool)isAlwaysShowingHolidayCalendarEvents;
 + (_Bool)isShowingHolidayCalendarEvents;
++ (_Bool)useExtendedCurationAssetCountForLocationTitles;
 + (void)_registerDefaults;
 + (void)initialize;
 

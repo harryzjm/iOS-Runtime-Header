@@ -7,19 +7,20 @@
 #import <Foundation/NSExtensionContext.h>
 
 #import <AuthenticationServices/_ASCredentialProviderExtensionHostContextProtocol-Protocol.h>
+#import <AuthenticationServices/_ASExtensionHostContext-Protocol.h>
 
 @class NSString;
 @protocol _ASCredentialProviderExtensionHostContextDelegate;
 
-@interface _ASCredentialProviderExtensionHostContext : NSExtensionContext <_ASCredentialProviderExtensionHostContextProtocol>
+@interface _ASCredentialProviderExtensionHostContext : NSExtensionContext <_ASCredentialProviderExtensionHostContextProtocol, _ASExtensionHostContext>
 {
     id <_ASCredentialProviderExtensionHostContextDelegate> _delegate;
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
-@property(nonatomic) __weak id <_ASCredentialProviderExtensionHostContextDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_ASCredentialProviderExtensionHostContextDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)prepareToCompleteExtensionConfigurationRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareToCancelRequestWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prepareToCompleteRequestWithSelectedCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;

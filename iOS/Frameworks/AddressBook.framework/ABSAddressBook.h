@@ -25,13 +25,13 @@
 + (_Bool)eraseAllDataAtLocationName:(id)arg1 error:(id *)arg2;
 + (void)ABInitialize;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) ABSAddressBookContextStorage *sources; // @synthesize sources=_sources;
 @property(retain, nonatomic) ABSAddressBookContextStorage *groups; // @synthesize groups=_groups;
 @property(readonly, nonatomic) ABSBulkFaultHandler *faultHandler; // @synthesize faultHandler=_faultHandler;
 @property(readonly, nonatomic) CNFuture *storeFuture; // @synthesize storeFuture=_storeFuture;
 @property(readonly) ABSChangeCallbacks *changeCallbacks; // @synthesize changeCallbacks=_changeCallbacks;
 @property(retain, nonatomic) ABSAddressBookContextStorage *contacts; // @synthesize contacts=_contacts;
-- (void).cxx_destruct;
 - (int)saveSequenceCount;
 - (id)uniqueDatabaseVersionIdentifier;
 - (id)groupsInSource:(id)arg1;
@@ -55,7 +55,7 @@
 - (id)peopleMatchingNameString:(id)arg1;
 - (id)peopleInGroup:(id)arg1 sortOrder:(unsigned int)arg2;
 - (id)peopleInSource:(id)arg1 sortOrder:(unsigned int)arg2;
-- (id)_peoplePreferringExistingRecordsFetchedWithPredicate:(id)arg1 sortOrder:(unsigned int)arg2;
+- (id)_peoplePreferringExistingRecordsForFetchRequest:(id)arg1;
 - (id)_resultRecordsFromFetchedCNImpls:(id)arg1 mergedWithStorage:(id)arg2 creationBlock:(CDUnknownBlockType)arg3;
 - (void)completePerson:(id)arg1 withKeysToFetch:(id)arg2;
 - (void)updatePeople:(id)arg1 refetchingProperties:(id)arg2;

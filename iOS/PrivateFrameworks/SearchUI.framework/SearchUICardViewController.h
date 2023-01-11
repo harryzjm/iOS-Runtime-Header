@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSTimer, NUIContainerBoxView, SFCard, SearchUIBackgroundView, SearchUICardTableViewController, TLKLabel, UIActivityIndicatorView;
+#import <SearchUI/SearchUISizingDelegate-Protocol.h>
+
+@class NSString, NSTimer, NUIContainerBoxView, SFCard, SearchUIBackgroundView, SearchUICardTableViewController, TLKLabel, UIActivityIndicatorView;
 @protocol SFFeedbackListener, SearchUICardViewDelegate;
 
-@interface SearchUICardViewController : UIViewController
+@interface SearchUICardViewController : UIViewController <SearchUISizingDelegate>
 {
     NUIContainerBoxView *_loadingView;
     UIActivityIndicatorView *_loadingSpinner;
@@ -19,16 +21,19 @@
     SearchUICardTableViewController *_tableViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SearchUICardTableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
 @property(nonatomic) unsigned long long level; // @synthesize level=_level;
 @property(retain, nonatomic) NSTimer *loadingScreenTimer; // @synthesize loadingScreenTimer=_loadingScreenTimer;
 @property(retain, nonatomic) TLKLabel *loadingLabel; // @synthesize loadingLabel=_loadingLabel;
 @property(retain, nonatomic) UIActivityIndicatorView *loadingSpinner; // @synthesize loadingSpinner=_loadingSpinner;
 @property(retain, nonatomic) NUIContainerBoxView *loadingView; // @synthesize loadingView=_loadingView;
-- (void).cxx_destruct;
+- (struct CGSize)preferredContentSize;
+- (void)contentSizeDidChange:(struct CGSize)arg1 animated:(_Bool)arg2;
 - (_Bool)_canShowWhileLocked;
 - (id)testingTableViewController;
 @property(nonatomic) _Bool threeDTouchEnabled;
+@property(readonly, nonatomic) _Bool topRowWillFillBackgroundWithContent;
 - (void)updateWithCardSections:(id)arg1;
 - (void)updateTimerAndCardSections:(id)arg1;
 @property(retain, nonatomic) SFCard *card;
@@ -39,12 +44,17 @@
 @property(nonatomic) __weak id <SearchUICardViewDelegate> delegate;
 - (double)contentHeightForWidth:(double)arg1;
 @property(nonatomic, getter=isInPreviewPlatter) _Bool inPreviewPlatter;
+@property(nonatomic) _Bool rowSelectionAppearanceEnabled;
 @property(nonatomic) _Bool shouldUseInsetRoundedSections;
 - (id)initWithCard:(id)arg1 feedbackListener:(id)arg2;
 - (id)initWithCard:(id)arg1 style:(unsigned long long)arg2 feedbackListener:(id)arg3;
 - (id)init;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @property(retain, nonatomic) SearchUIBackgroundView *view; // @dynamic view;
 
 @end

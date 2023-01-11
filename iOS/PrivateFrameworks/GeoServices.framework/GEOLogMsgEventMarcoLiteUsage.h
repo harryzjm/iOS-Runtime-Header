@@ -14,8 +14,10 @@
 {
     NSMutableArray *_usageStates;
     unsigned int _totalNavTime;
+    int _vioTrigger;
     struct {
         unsigned int has_totalNavTime:1;
+        unsigned int has_vioTrigger:1;
     } _flags;
 }
 
@@ -30,8 +32,15 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsVioTrigger:(id)arg1;
+- (id)vioTriggerAsString:(int)arg1;
+@property(nonatomic) _Bool hasVioTrigger;
+@property(nonatomic) int vioTrigger;
 - (id)usageStatesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)usageStatesCount;
 - (void)addUsageStates:(id)arg1;

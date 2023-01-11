@@ -16,7 +16,9 @@
     _Bool _isOverlay;
     _Bool _requiresLocalMedia;
     _Bool _isITunes;
+    _Bool _shouldSearchDirectionsAlongCurrentRoute;
     int _mediaEntityType;
+    int _directionsMode;
     NSString *_label;
     NSString *_labelForLocalMedia;
     NSArray *_storeIdentifiers;
@@ -39,8 +41,17 @@
     NSString *_messageIdentifier;
     _SFPBURL *_messageURL;
     NSString *_persistentID;
+    NSString *_universalLibraryID;
+    NSString *_interactionContentType;
+    _SFPBPunchout *_customDirectionsPunchout;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) int directionsMode; // @synthesize directionsMode=_directionsMode;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute; // @synthesize shouldSearchDirectionsAlongCurrentRoute=_shouldSearchDirectionsAlongCurrentRoute;
+@property(retain, nonatomic) _SFPBPunchout *customDirectionsPunchout; // @synthesize customDirectionsPunchout=_customDirectionsPunchout;
+@property(copy, nonatomic) NSString *interactionContentType; // @synthesize interactionContentType=_interactionContentType;
+@property(copy, nonatomic) NSString *universalLibraryID; // @synthesize universalLibraryID=_universalLibraryID;
 @property(nonatomic) int mediaEntityType; // @synthesize mediaEntityType=_mediaEntityType;
 @property(copy, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property(retain, nonatomic) _SFPBURL *messageURL; // @synthesize messageURL=_messageURL;
@@ -67,7 +78,6 @@
 @property(nonatomic) _Bool isOverlay; // @synthesize isOverlay=_isOverlay;
 @property(copy, nonatomic) NSString *labelForLocalMedia; // @synthesize labelForLocalMedia=_labelForLocalMedia;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

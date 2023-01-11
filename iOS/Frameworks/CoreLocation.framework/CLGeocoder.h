@@ -13,6 +13,7 @@
     CLGeocoderInternal *_internal;
 }
 
++ (void)hydrateGeoMapItemLocallyFromHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)_timeZoneAtLocation:(id)arg1;
 - (void)_notifyError:(id)arg1;
 - (void)_notifyCancel;

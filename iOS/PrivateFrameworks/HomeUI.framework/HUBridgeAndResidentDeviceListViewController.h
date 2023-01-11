@@ -13,11 +13,13 @@
 }
 
 - (id)finishPresentation:(id)arg1 animated:(_Bool)arg2;
+- (id)_presentBridgeSettingsForItem:(id)arg1 animated:(_Bool)arg2;
 - (Class)_bridgeDetailsViewControllerClass;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (id)presentBridgeSettingsForAccessory:(id)arg1 animated:(_Bool)arg2;
 - (id)initWithHome:(id)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 

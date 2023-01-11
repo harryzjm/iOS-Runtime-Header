@@ -9,11 +9,12 @@
 #import <PBBridgeSupport/PBBridgeCompanionProtocol-Protocol.h>
 #import <PBBridgeSupport/RUILoaderDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableData, NSMutableDictionary, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
-@protocol PBBridgeConnectionDelegate, RUILoaderDelegate;
+@class NSDictionary, NSMutableData, NSMutableDictionary, NSMutableURLRequest, NSObject, NSString, NSURLConnection, RUILoader, RUIStyle;
+@protocol OS_dispatch_queue, OS_dispatch_source, PBBridgeConnectionDelegate, RUILoaderDelegate;
 
 @interface PBBridgeCompanionController <IDSServiceDelegate, NSURLConnectionDelegate, RUILoaderDelegate, PBBridgeCompanionProtocol>
 {
+    NSObject<OS_dispatch_queue> *_timeoutTrackerQueue;
     _Bool _nonSilentActivation;
     _Bool _connectionFailed;
     _Bool _awaitingCustomResponse;
@@ -35,13 +36,16 @@
     RUILoader *_ruiLoader;
     NSString *_contentType;
     NSDictionary *_allHeaders;
-    NSTimer *_activationTimeout;
+    NSObject<OS_dispatch_source> *_activationTimeout;
     NSString *_internalLastSendMessageID;
     NSString *_remoteActivationUserAgent;
     CDUnknownBlockType _lockedOnAnimationCompletion;
     CDUnknownBlockType _initialSyncPrepCompletion;
     CDUnknownBlockType _languageLocaleCompletion;
     CDUnknownBlockType _prepareWatchForForcedSUCompletion;
+    CDUnknownBlockType _remoteAccountForDeviceCompletion;
+    CDUnknownBlockType _tinkerCredentialsIngestedCompletion;
+    CDUnknownBlockType _tinkerWiFiCredentialsIngestedCompletion;
     CDUnknownBlockType _buysOnWatchCredentialsIngestedCompletion;
     NSMutableDictionary *_reportMapping;
 }
@@ -49,6 +53,7 @@
 + (id)displayNameWithFirstName:(id)arg1 lastName:(id)arg2;
 + (void)iCloudFirstName:(id *)arg1 lastName:(id *)arg2;
 + (void)meCardFirstName:(id *)arg1 lastName:(id *)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) int activationRetries; // @synthesize activationRetries=_activationRetries;
 @property(nonatomic) _Bool selectedPairedUnlock; // @synthesize selectedPairedUnlock=_selectedPairedUnlock;
 @property(nonatomic) _Bool passcodeSet; // @synthesize passcodeSet=_passcodeSet;
@@ -56,6 +61,9 @@
 @property(nonatomic) _Bool sentActivationRequest; // @synthesize sentActivationRequest=_sentActivationRequest;
 @property(nonatomic) _Bool sentSessionRequest; // @synthesize sentSessionRequest=_sentSessionRequest;
 @property(copy, nonatomic) CDUnknownBlockType buysOnWatchCredentialsIngestedCompletion; // @synthesize buysOnWatchCredentialsIngestedCompletion=_buysOnWatchCredentialsIngestedCompletion;
+@property(copy, nonatomic) CDUnknownBlockType tinkerWiFiCredentialsIngestedCompletion; // @synthesize tinkerWiFiCredentialsIngestedCompletion=_tinkerWiFiCredentialsIngestedCompletion;
+@property(copy, nonatomic) CDUnknownBlockType tinkerCredentialsIngestedCompletion; // @synthesize tinkerCredentialsIngestedCompletion=_tinkerCredentialsIngestedCompletion;
+@property(copy, nonatomic) CDUnknownBlockType remoteAccountForDeviceCompletion; // @synthesize remoteAccountForDeviceCompletion=_remoteAccountForDeviceCompletion;
 @property(copy, nonatomic) CDUnknownBlockType prepareWatchForForcedSUCompletion; // @synthesize prepareWatchForForcedSUCompletion=_prepareWatchForForcedSUCompletion;
 @property(copy, nonatomic) CDUnknownBlockType languageLocaleCompletion; // @synthesize languageLocaleCompletion=_languageLocaleCompletion;
 @property(copy, nonatomic) CDUnknownBlockType initialSyncPrepCompletion; // @synthesize initialSyncPrepCompletion=_initialSyncPrepCompletion;
@@ -63,7 +71,7 @@
 @property(copy, nonatomic) NSString *remoteActivationUserAgent; // @synthesize remoteActivationUserAgent=_remoteActivationUserAgent;
 @property(nonatomic) _Bool allowAnyHTTPSCertificate; // @synthesize allowAnyHTTPSCertificate=_allowAnyHTTPSCertificate;
 @property(retain, nonatomic) NSString *internalLastSendMessageID; // @synthesize internalLastSendMessageID=_internalLastSendMessageID;
-@property(retain, nonatomic) NSTimer *activationTimeout; // @synthesize activationTimeout=_activationTimeout;
+@property(retain, nonatomic) NSObject<OS_dispatch_source> *activationTimeout; // @synthesize activationTimeout=_activationTimeout;
 @property(nonatomic) unsigned short granularActivationState; // @synthesize granularActivationState=_granularActivationState;
 @property(nonatomic) _Bool isEstablishingPairing; // @synthesize isEstablishingPairing=_isEstablishingPairing;
 @property(nonatomic) int activationState; // @synthesize activationState=_activationState;
@@ -79,7 +87,13 @@
 @property(nonatomic) __weak id <PBBridgeConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <RUILoaderDelegate> ruiDelegate; // @synthesize ruiDelegate=_ruiDelegate;
 @property(retain, nonatomic) RUIStyle *remoteUIStyle; // @synthesize remoteUIStyle=_remoteUIStyle;
-- (void).cxx_destruct;
+- (void)acknowledgeBuysOnWatchCredentialIngestion:(id)arg1;
+- (void)tinkerFinishedHealthSharingOptIn:(id)arg1;
+- (void)tinkerWatchIngestedCredentials:(id)arg1;
+- (void)sendTinkerAccountCredentialsWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendComputedTimeZoneToGizmo;
+- (void)returnedRemoteAccountForDevice:(id)arg1;
+- (void)requestProxiedDeviceForWatchWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sendBuysOnWatchUsername:(id)arg1 andPassword:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)reporterForConnection:(id)arg1;
 - (void)setReporter:(id)arg1 forConnection:(id)arg2;
@@ -87,6 +101,7 @@
 - (void)tellWatchToPrepareForForcedSUWithCompletion:(CDUnknownBlockType)arg1;
 - (void)watchDidIngestWirelessCredentials:(id)arg1;
 - (id)currentWiFiNetworkName;
+- (void)sendAllTinkerWirelessCredentials:(_Bool)arg1;
 - (void)sendDemoWatchWirelessCredentials;
 - (void)tellWatchToChangeDeviceNameFor:(id)arg1;
 - (void)transportBecameUnreachable;
@@ -100,9 +115,9 @@
 - (void)queryGizmoForShowWarrantySentinelAndRestoreDeviceName:(id)arg1;
 - (void)handleRemoteActivationDetails:(id)arg1;
 - (void)tellGizmoToKeepAliveForActivationEvent;
-- (void)activationTimeout:(id)arg1;
-- (void)refreshTimeoutTimer;
-- (void)invalidateTimeoutTimer;
+- (void)activationTimedOut;
+- (void)refreshTimeoutTimerWithNewActivationGranularState:(unsigned short)arg1;
+- (void)invalidateTimeoutTimerWithNewActivationGranularState:(unsigned short)arg1;
 - (void)tellGizmoToRetryActivation;
 - (void)tellGizmoToBeginActivation;
 - (void)startEstablishingPairing;
@@ -111,7 +126,9 @@
 - (void)tellGizmoToShowLockedOnAnimationTimeToFlash:(double)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)tellGizmoToPopToControllerType:(unsigned long long)arg1;
 - (void)tellGizmoToPushControllerType:(unsigned long long)arg1;
+- (void)tellGizmoToSetMessagesinCloudEnabled:(_Bool)arg1;
 - (void)tellWatchToSetSiriEnabled:(_Bool)arg1;
+- (void)tellGizmoToSetFitnessRouteTrackingEnabled:(_Bool)arg1;
 - (void)tellGizmoToSetLocationEnabled:(_Bool)arg1;
 - (void)tellGizmoToSetDiagnosticsEnabled:(_Bool)arg1;
 - (void)sendGizmoPasscodeRestrictions;

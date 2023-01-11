@@ -12,10 +12,16 @@
 
 + (id)unmodifiableSystemAssistantItem;
 + (id)systemDefaultAssistantItem;
-+ (id)imageSymbolConfigurationForAssistantBar;
++ (id)newPencilTextInputLeadingGroupWithTarget:(id)arg1;
++ (id)newPencilTextInputTrailingGroupWithTarget:(id)arg1;
++ (id)imageSymbolConfigurationForAssistantBarWithPointSize:(double)arg1;
++ (id)configuredSymbolImageWithName:(id)arg1 size:(double)arg2;
 + (id)barButtonItemForAssistantItemStyle:(long long)arg1 target:(id)arg2;
 + (_Bool)_isShowKeyboardButtonVisible;
 + (_Bool)_isDismissButtonVisible;
++ (_Bool)_isDictationButtonVisible;
++ (_Bool)_isEmojiButtonVisible;
++ (_Bool)_isKeyboardGroupVisible;
 
 @end
 

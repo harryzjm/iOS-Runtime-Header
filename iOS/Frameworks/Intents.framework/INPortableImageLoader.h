@@ -14,13 +14,10 @@
 
 @interface INPortableImageLoader : NSObject <INImageLoading, NSSecureCoding>
 {
-    NSString *_helperClassName;
     id <INPortableImageLoaderHelping> _helper;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) id <INPortableImageLoaderHelping> helper; // @synthesize helper=_helper;
-@property(copy, nonatomic, setter=_setHelperClassName:) NSString *_helperClassName; // @synthesize _helperClassName;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -29,6 +26,8 @@
 - (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(CDStruct_8caa76fc)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)canLoadImageDataForImage:(id)arg1;
 - (void)loadImageDataFromImage:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_helperClassName;
+@property(readonly, copy, nonatomic) id <INPortableImageLoaderHelping> helper; // @synthesize helper=_helper;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

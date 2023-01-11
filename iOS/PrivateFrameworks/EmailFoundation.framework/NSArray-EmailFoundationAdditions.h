@@ -6,11 +6,11 @@
 
 #import <Foundation/NSArray.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
 
 @class NSString;
 
-@interface NSArray (EmailFoundationAdditions) <EFSQLExpressable>
+@interface NSArray (EmailFoundationAdditions) <EFSQLValueCollectionExpressable>
 @property(readonly, nonatomic) NSArray *ef_reverse;
 @property(readonly, nonatomic) NSArray *ef_permutations;
 - (id)ef_subarraysOfSize:(unsigned long long)arg1;
@@ -40,9 +40,13 @@
 - (void)ef_enumerateObjectsInBatchesOfSize:(unsigned long long)arg1 objectArrayBlock:(CDUnknownBlockType)arg2;
 - (id)ef_indicesOfStringsWithPrefix:(id)arg1;
 - (id)ef_arrayByAddingAbsentObjectsFromArray:(id)arg1;
+- (id)ef_suffix:(unsigned long long)arg1;
 - (id)ef_prefix:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *ef_tail;
 @property(readonly, nonatomic) NSArray *ef_notEmpty;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1 conjoiner:(id)arg2;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 
 // Remaining properties

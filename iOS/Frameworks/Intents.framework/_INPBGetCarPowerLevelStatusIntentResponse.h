@@ -10,29 +10,54 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBGetCarPowerLevelStatusIntentResponse-Protocol.h>
 
-@class NSString, _INPBDistance, _INPBDouble, _INPBInteger;
+@class NSString, _INPBDateTime, _INPBDistance, _INPBDouble, _INPBEnergy, _INPBInteger, _INPBJSONDictionary;
 
 @interface _INPBGetCarPowerLevelStatusIntentResponse : PBCodable <_INPBGetCarPowerLevelStatusIntentResponse, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int activeConnector:1;
         unsigned int charging:1;
     } _has;
     _Bool _charging;
-    _Bool __encodeLegacyGloryData;
+    int _activeConnector;
+    NSString *_carIdentifier;
     _INPBDouble *_chargePercentRemaining;
+    _INPBJSONDictionary *_chargingFormulaArguments;
+    _INPBJSONDictionary *_consumptionFormulaArguments;
+    _INPBEnergy *_currentBatteryCapacity;
+    _INPBDateTime *_dateOfLastStateUpdate;
     _INPBDistance *_distanceRemaining;
+    _INPBDistance *_distanceRemainingElectric;
+    _INPBDistance *_distanceRemainingFuel;
     _INPBDouble *_fuelPercentRemaining;
+    _INPBEnergy *_maximumBatteryCapacity;
+    _INPBDistance *_maximumDistance;
+    _INPBDistance *_maximumDistanceElectric;
+    _INPBDistance *_maximumDistanceFuel;
+    _INPBEnergy *_minimumBatteryCapacity;
     _INPBInteger *_minutesToFull;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBInteger *minutesToFull; // @synthesize minutesToFull=_minutesToFull;
+@property(retain, nonatomic) _INPBEnergy *minimumBatteryCapacity; // @synthesize minimumBatteryCapacity=_minimumBatteryCapacity;
+@property(retain, nonatomic) _INPBDistance *maximumDistanceFuel; // @synthesize maximumDistanceFuel=_maximumDistanceFuel;
+@property(retain, nonatomic) _INPBDistance *maximumDistanceElectric; // @synthesize maximumDistanceElectric=_maximumDistanceElectric;
+@property(retain, nonatomic) _INPBDistance *maximumDistance; // @synthesize maximumDistance=_maximumDistance;
+@property(retain, nonatomic) _INPBEnergy *maximumBatteryCapacity; // @synthesize maximumBatteryCapacity=_maximumBatteryCapacity;
 @property(retain, nonatomic) _INPBDouble *fuelPercentRemaining; // @synthesize fuelPercentRemaining=_fuelPercentRemaining;
+@property(retain, nonatomic) _INPBDistance *distanceRemainingFuel; // @synthesize distanceRemainingFuel=_distanceRemainingFuel;
+@property(retain, nonatomic) _INPBDistance *distanceRemainingElectric; // @synthesize distanceRemainingElectric=_distanceRemainingElectric;
 @property(retain, nonatomic) _INPBDistance *distanceRemaining; // @synthesize distanceRemaining=_distanceRemaining;
+@property(retain, nonatomic) _INPBDateTime *dateOfLastStateUpdate; // @synthesize dateOfLastStateUpdate=_dateOfLastStateUpdate;
+@property(retain, nonatomic) _INPBEnergy *currentBatteryCapacity; // @synthesize currentBatteryCapacity=_currentBatteryCapacity;
+@property(retain, nonatomic) _INPBJSONDictionary *consumptionFormulaArguments; // @synthesize consumptionFormulaArguments=_consumptionFormulaArguments;
+@property(retain, nonatomic) _INPBJSONDictionary *chargingFormulaArguments; // @synthesize chargingFormulaArguments=_chargingFormulaArguments;
 @property(nonatomic) _Bool charging; // @synthesize charging=_charging;
 @property(retain, nonatomic) _INPBDouble *chargePercentRemaining; // @synthesize chargePercentRemaining=_chargePercentRemaining;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *carIdentifier; // @synthesize carIdentifier=_carIdentifier;
+@property(nonatomic) int activeConnector; // @synthesize activeConnector=_activeConnector;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -42,10 +67,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasMinutesToFull;
+@property(readonly, nonatomic) _Bool hasMinimumBatteryCapacity;
+@property(readonly, nonatomic) _Bool hasMaximumDistanceFuel;
+@property(readonly, nonatomic) _Bool hasMaximumDistanceElectric;
+@property(readonly, nonatomic) _Bool hasMaximumDistance;
+@property(readonly, nonatomic) _Bool hasMaximumBatteryCapacity;
 @property(readonly, nonatomic) _Bool hasFuelPercentRemaining;
+@property(readonly, nonatomic) _Bool hasDistanceRemainingFuel;
+@property(readonly, nonatomic) _Bool hasDistanceRemainingElectric;
 @property(readonly, nonatomic) _Bool hasDistanceRemaining;
+@property(readonly, nonatomic) _Bool hasDateOfLastStateUpdate;
+@property(readonly, nonatomic) _Bool hasCurrentBatteryCapacity;
+@property(readonly, nonatomic) _Bool hasConsumptionFormulaArguments;
+@property(readonly, nonatomic) _Bool hasChargingFormulaArguments;
 @property(nonatomic) _Bool hasCharging;
 @property(readonly, nonatomic) _Bool hasChargePercentRemaining;
+@property(readonly, nonatomic) _Bool hasCarIdentifier;
+- (int)StringAsActiveConnector:(id)arg1;
+- (id)activeConnectorAsString:(int)arg1;
+@property(nonatomic) _Bool hasActiveConnector;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

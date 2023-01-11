@@ -20,13 +20,8 @@
 + (void)stopListeningForService:(id)arg1;
 + (void)listenForService:(id)arg1 onQueue:(id)arg2 withHandler:(id)arg3;
 + (id)defaultHandlerQueue;
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_removeService:(id)arg1;
-- (void)_addService:(id)arg1 withHandler:(id)arg2 onQueue:(id)arg3;
-- (id)_defaultHandlerQueue;
 - (void)dealloc;
-- (id)_init;
 - (id)init;
 
 @end

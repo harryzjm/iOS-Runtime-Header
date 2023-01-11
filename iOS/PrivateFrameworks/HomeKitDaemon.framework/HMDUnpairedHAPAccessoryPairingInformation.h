@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HAPAccessoryConfiguration, HMFTimer, NSData, NSString, NSUUID;
+@class HAPAccessoryConfiguration, HMFActivity, HMFTimer, NSData, NSString, NSUUID;
 
 @interface HMDUnpairedHAPAccessoryPairingInformation : HMFObject
 {
@@ -14,6 +14,8 @@
     _Bool _provideNetworkCredentialsToAccessory;
     _Bool _setupCodeProvided;
     _Bool _needsUserConsent;
+    _Bool _wacAccessory;
+    _Bool _legacyWAC;
     long long _linkType;
     HMFTimer *_pairingInterruptionTimer;
     CDUnknownBlockType _addAccessoryCompletionHandler;
@@ -21,6 +23,7 @@
     CDUnknownBlockType _setupCodeProviderCompletionHandler;
     HMFTimer *_pairingRetryTimer;
     HMFTimer *_reconfirmTimer;
+    HMFActivity *_pairingActivity;
     HAPAccessoryConfiguration *_hapAccessoryConfiguration;
     NSString *_accessoryName;
     NSUUID *_accessoryUUID;
@@ -31,6 +34,9 @@
     NSData *_ownershipToken;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool legacyWAC; // @synthesize legacyWAC=_legacyWAC;
+@property(nonatomic) _Bool wacAccessory; // @synthesize wacAccessory=_wacAccessory;
 @property(retain, nonatomic) NSData *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
 @property(retain, nonatomic) NSString *setupID; // @synthesize setupID=_setupID;
 @property(retain, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
@@ -39,6 +45,7 @@
 @property(retain, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
 @property(retain, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property(readonly, nonatomic) HAPAccessoryConfiguration *hapAccessoryConfiguration; // @synthesize hapAccessoryConfiguration=_hapAccessoryConfiguration;
+@property(nonatomic) __weak HMFActivity *pairingActivity; // @synthesize pairingActivity=_pairingActivity;
 @property(nonatomic) _Bool needsUserConsent; // @synthesize needsUserConsent=_needsUserConsent;
 @property(nonatomic) _Bool setupCodeProvided; // @synthesize setupCodeProvided=_setupCodeProvided;
 @property(nonatomic) _Bool provideNetworkCredentialsToAccessory; // @synthesize provideNetworkCredentialsToAccessory=_provideNetworkCredentialsToAccessory;
@@ -50,7 +57,6 @@
 @property(copy, nonatomic) CDUnknownBlockType addAccessoryCompletionHandler; // @synthesize addAccessoryCompletionHandler=_addAccessoryCompletionHandler;
 @property(retain, nonatomic) HMFTimer *pairingInterruptionTimer; // @synthesize pairingInterruptionTimer=_pairingInterruptionTimer;
 @property(nonatomic) long long linkType; // @synthesize linkType=_linkType;
-- (void).cxx_destruct;
 - (_Bool)matchesAccessoryServer:(id)arg1;
 - (_Bool)matchesUnpairedAccessory:(id)arg1;
 - (id)description;

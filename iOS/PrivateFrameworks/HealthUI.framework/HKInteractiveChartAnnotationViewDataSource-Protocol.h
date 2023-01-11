@@ -14,5 +14,8 @@
 - (long long)numberOfValuesForAnnotationView:(HKInteractiveChartAnnotationView *)arg1;
 - (UIView *)leftMarginViewWithOrientation:(long long)arg1;
 - (UIView *)dateViewWithOrientation:(long long)arg1;
+
+@optional
+- (_Bool)pendingData;
 @end
 

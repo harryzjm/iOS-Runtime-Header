@@ -27,6 +27,13 @@
 + (id)localizedParenthesizedFormDescriptionForPayloadCount:(unsigned long long)arg1;
 + (id)localizedDescriptionForPayloadCount:(unsigned long long)arg1;
 + (id)typeStrings;
++ (id)_minimumWatchVersionRequirementsForPayloads;
++ (id)remoteQueueableWatchPayloadClasses;
++ (id)installableWatchConfigurationPayloadClasses;
++ (id)_sharedWatchPayloadClasses;
++ (id)remoteQueueableHomePodPayloadClasses;
++ (id)installableHomePodConfigurationPayloadClasses;
++ (id)_sharedHomePodPayloadClasses;
 + (id)wrapperPayloadDictionary;
 + (id)conflictingFieldValueErrorWithUnderlyingError:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1 underlyingError:(id)arg2;
@@ -41,9 +48,8 @@
 + (id)supervisedRequiredPayloads;
 + (id)cellularRequiredPayloads;
 + (id)mdmAdoptablePayloads;
-+ (id)applicablePayloadsForHomePod;
-+ (id)minimumWatchVersionRequirementsForPayloads;
 + (id)unavailablePayloadsInEphemeralMultiUser;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool mustInstallNonInteractively; // @synthesize mustInstallNonInteractively=_mustInstallNonInteractively;
 @property(retain, nonatomic) NSString *persistentResourceID; // @synthesize persistentResourceID=_persistentResourceID;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
@@ -54,7 +60,6 @@
 @property(readonly, retain, nonatomic) NSString *payloadDescription; // @synthesize payloadDescription=_payloadDescription;
 @property(readonly, retain, nonatomic) NSString *type; // @synthesize type=_type;
 @property(readonly, nonatomic) __weak MCProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool containsSensitiveUserInformation;
 - (id)payloadDescriptionKeyValueSections;
 - (id)subtitle2Description;
@@ -63,9 +68,12 @@
 - (id)subtitle1Label;
 - (id)title;
 @property(readonly, retain, nonatomic) NSArray *installationWarnings;
+- (id)serializedDictionary;
+- (id)verboseDescription;
 - (id)description;
 @property(readonly, retain, nonatomic) NSString *friendlyName;
 @property(readonly, nonatomic) NSDictionary *restrictions;
+- (_Bool)isSupportedByWatchVersions:(id)arg1;
 - (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)stubDictionary;
 - (id)malformedPayloadErrorWithError:(id)arg1;

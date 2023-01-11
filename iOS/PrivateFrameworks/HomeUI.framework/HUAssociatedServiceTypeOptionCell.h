@@ -8,25 +8,20 @@
 
 #import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
-@class NSString, UILabel;
+@class NSString;
 
 @interface HUAssociatedServiceTypeOptionCell : UITableViewCell <HUDisableableCellProtocol>
 {
     _Bool _disabled;
     _Bool _checked;
     _Bool _suggestion;
-    UILabel *_titleLabel;
 }
 
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic, getter=isSuggestion) _Bool suggestion; // @synthesize suggestion=_suggestion;
 @property(nonatomic, getter=isChecked) _Bool checked; // @synthesize checked=_checked;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
-- (void).cxx_destruct;
 - (id)colorForCurrentState;
-@property(copy, nonatomic) NSString *title;
 - (void)prepareForReuse;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

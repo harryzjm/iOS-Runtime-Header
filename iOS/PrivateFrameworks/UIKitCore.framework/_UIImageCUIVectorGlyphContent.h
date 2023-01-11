@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     struct CGSize _sizeInPixels;
 }
 
-@property(nonatomic) double glyphScaleFactor; // @synthesize glyphScaleFactor=_glyphScaleFactor;
 - (void).cxx_destruct;
+@property(nonatomic) double glyphScaleFactor; // @synthesize glyphScaleFactor=_glyphScaleFactor;
 - (struct CGImage *)_CGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (double)vectorScale;
-@property(readonly) CUINamedVectorGlyph *_vectorGlyph;
 - (id)initWithScale:(double)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 CUIVectorGlyph:(id)arg2 scale:(double)arg3;
 

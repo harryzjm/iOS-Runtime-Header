@@ -7,12 +7,23 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (HUAdditions)
++ (id)hu_gearImageWithBadgeCount:(unsigned long long)arg1;
++ (id)hu_settingsImageUsingStandardSymbolConfiguration:(_Bool)arg1;
++ (id)hu_microphoneGlyphForTalkingState:(_Bool)arg1 usingStandardSymbolConfiguration:(_Bool)arg2;
++ (id)hu_recordingDeleteButton;
++ (id)hu_stopButtonImage;
++ (id)hu_pauseButton;
++ (id)hu_playButton;
++ (id)hu_closeButtonImage;
++ (id)hu_cellCheckmarkImage;
 + (id)hu_cameraErrorImage;
 + (id)hu_smallQRBadgeTemplateImage;
 + (id)hu_largeQRBadgeTemplateImage;
 + (id)hu_navigationBarGlyphList;
 + (id)hu_navigationBarGlyphPlus;
 + (id)hu_navigationBarGlyphHouse;
++ (id)hu_largeSymbolConfiguration;
++ (id)hu_standardSymbolConfiguration;
 + (struct CGSize)hu_scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2 contentMode:(long long)arg3;
 + (id)hu_locationArrowTemplate;
 + (id)hu_flatWhiteResizableTemplateImage;

@@ -6,6 +6,8 @@
 
 #import <Foundation/NSURL.h>
 
+@class EFPathComponent;
+
 @interface NSURL (EmailFoundationAdditions)
 + (id)ef_yahooAuthAllowedCharacterSet;
 + (id)ef_gmailAuthAllowedCharacterSet;
@@ -16,5 +18,8 @@
 - (_Bool)ef_isHTTPOrHTTPSURL;
 - (_Bool)ef_hasHost:(id)arg1;
 - (_Bool)ef_hasScheme:(id)arg1;
+- (id)ef_URLByAppendingPathComponent:(id)arg1 isDirectory:(_Bool)arg2;
+- (id)ef_URLByAppendingPathComponent:(id)arg1;
+@property(readonly, nonatomic) EFPathComponent *ef_lastPathComponent;
 @end
 

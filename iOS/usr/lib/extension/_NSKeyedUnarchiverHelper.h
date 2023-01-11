@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     unsigned int _lastRef;
     NSMutableArray *_allowedClasses;
     NSError *_decodeError;
+    _Bool expectsUnnestedCollection;
+    _Bool decodedCollection;
 }
 
 @property(copy) NSError *decodeError; // @synthesize decodeError=_decodeError;

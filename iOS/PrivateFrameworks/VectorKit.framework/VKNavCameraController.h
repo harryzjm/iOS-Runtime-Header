@@ -23,10 +23,10 @@ __attribute__((visibility("hidden")))
     CameraFrame_406dbd31 _lastCalculatedCameraFrame;
     CameraFrame_406dbd31 _cameraFrame;
     _Bool _needsUpdate;
-    struct Spring<double, 1, mdc::SpringType::Linear> _pitchSpring;
-    struct Spring<double, 1, mdc::SpringType::Angular> _headingSpring;
-    struct Spring<double, 1, mdc::SpringType::Linear> _distanceFromTargetSpring;
-    struct Spring<double, 2, mdc::SpringType::Linear> _screenPositionSpring;
+    struct Spring<double, 1, gdc::SpringType::Linear> _pitchSpring;
+    struct Spring<double, 1, gdc::SpringType::Angular> _headingSpring;
+    struct Spring<double, 1, gdc::SpringType::Linear> _distanceFromTargetSpring;
+    struct Spring<double, 2, gdc::SpringType::Linear> _screenPositionSpring;
     struct Unit<MeterUnitDescription, double> _cameraDistanceFromTarget;
     Unit_3d259e8a _cameraPitch;
     double _previousUpdateTime;
@@ -44,10 +44,11 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_snapPitchAnimation;
     VKTimedAnimation *_snapHeadingAnimation;
     CameraFrame_406dbd31 _transitionFrame;
-    basic_string_23d93216 _currentStyleName;
+    basic_string_90719d97 _currentStyleName;
     vector_36073df6 _coordinatesToFrame;
     unsigned char _styleManeuversToFrame;
     unsigned char _maneuversToFrame;
+    unsigned char _styleLegsToFrame;
     double _minCameraHeight;
     double _maxCameraHeight;
     Unit_3d259e8a _minCameraPitch;
@@ -80,7 +81,6 @@ __attribute__((visibility("hidden")))
     _Bool _frameAllGroupedManeuvers;
     unsigned char _maxManeuversToFrame;
     _Bool _ignorePointsBehind;
-    _Bool _insetsAnimating;
     Coordinate3D_bc242218 _routeFocusCoordinate;
     unsigned long long _lastTargetStyleIdentifier;
     double _desiredZoomScale;
@@ -90,17 +90,22 @@ __attribute__((visibility("hidden")))
     double _depthNear;
     _Bool _leftHanded;
     _Bool _sentZoomNotification;
+    _Bool _enableDynamicFrameRate;
+    Coordinate3D_bc242218 _cornerCoordinates[4];
+    struct WindowedSampler<60> _pixelSamples;
     VKScreenCanvas<VKInteractiveMap> *_screenCanvas;
     VKSceneConfiguration *_sceneConfiguration;
     long long _baseDisplayRate;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) long long baseDisplayRate; // @synthesize baseDisplayRate=_baseDisplayRate;
 @property(nonatomic) struct VKEdgeInsets clientFramingInsets; // @synthesize clientFramingInsets=_clientFramingInsets;
 @property(nonatomic) VKSceneConfiguration *sceneConfiguration; // @synthesize sceneConfiguration=_sceneConfiguration;
 @property(nonatomic) VKScreenCanvas<VKInteractiveMap> *screenCanvas; // @synthesize screenCanvas=_screenCanvas;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+- (float)_currentRoadSignOffset;
+- (void)_setNavCameraIsDetached:(_Bool)arg1;
 - (unsigned char)cameraHeadingType;
 - (void)canvasDidLayout;
 - (void)setCamera:(id)arg1;
@@ -109,9 +114,8 @@ __attribute__((visibility("hidden")))
 - (CameraFrame_406dbd31)cameraFrame;
 - (void)_snapHeading;
 - (void)_snapPitch;
-- (void)edgeInsetsDidEndAnimating;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
-- (void)edgeInsetsWillBeginAnimating;
+- (void)setEdgeInsetsAnimating:(_Bool)arg1;
 - (Unit_3d259e8a)maxCameraPitch;
 - (Unit_3d259e8a)minCameraPitch;
 - (double)maxZoomHeight;
@@ -171,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (id)_debugText:(_Bool)arg1 showNavCameraDebugConsoleAttributes:(_Bool)arg2;
 - (id)detailedDescription;
 - (_Bool)_hasRunningAnimation;
+- (double)_calculateMaxPixelChangeAndUpdateCorners;
 - (void)updateWithTimestamp:(double)arg1;
 - (void)resetSpringsToResting;
 - (void)updateCameraState;
@@ -184,6 +189,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
 - (void)transferGestureState:(id)arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopRotatingWithFocusPoint:(struct CGPoint)arg1;
@@ -214,6 +220,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct MapDataAccess *mapDataAccess;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
 @property(readonly, nonatomic) double maxPitch;
+@property(readonly, nonatomic) double minPitch;
 @property(readonly, nonatomic) struct RunLoopController *runLoopController;
 @property(readonly) Class superclass;
 

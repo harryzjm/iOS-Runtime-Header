@@ -14,13 +14,13 @@
 + (id)eventWithRandomUUID;
 - (void)setFiredTTL:(_Bool)arg1;
 - (_Bool)firedTTL;
-- (void)setSuggestedEventInfo:(id)arg1;
-- (id)suggestedEventInfo;
 - (void)setSuggestionInfo:(id)arg1;
 - (id)suggestionInfo;
 - (_Bool)pushDirtyProperties:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)participationStatusModifiedDate;
+- (void)setParticipationStatusModifiedDate:(id)arg1;
 - (void)setRecurrenceSet:(id)arg1;
 - (id)recurrenceSet;
 - (void)setBirthdayContactName:(id)arg1;
@@ -64,6 +64,8 @@
 - (id)proposedStartDate;
 - (void)setTravelTime:(id)arg1;
 - (id)travelTime;
+- (void)setEndDateRaw:(id)arg1;
+- (id)endDateRaw;
 - (void)setEndDate:(id)arg1;
 - (id)endDate;
 - (void)setBirthdayID:(id)arg1;

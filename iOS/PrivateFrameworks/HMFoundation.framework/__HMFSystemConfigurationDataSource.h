@@ -6,23 +6,23 @@
 
 #import <HMFoundation/HMFSystemInfoNameDataSource-Protocol.h>
 
-@class HMFUnfairLock, NSObject, NSString;
+@class NSObject, NSString;
 @protocol HMFSystemInfoNameDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface __HMFSystemConfigurationDataSource <HMFSystemInfoNameDataSource>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     id <HMFSystemInfoNameDataSourceDelegate> _delegate;
     NSString *_name;
     NSObject<OS_dispatch_queue> *_queue;
     struct __SCDynamicStore *_store;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct __SCDynamicStore *store; // @synthesize store=_store;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property __weak id <HMFSystemInfoNameDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)dealloc;
 - (id)init;

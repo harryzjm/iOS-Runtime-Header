@@ -12,10 +12,12 @@
     _Bool _springLoadingEnabled;
     _Bool _useFileProvider;
     long long _reorderCadence;
+    double _dropGestureSpeedLimit;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) double dropGestureSpeedLimit; // @synthesize dropGestureSpeedLimit=_dropGestureSpeedLimit;
 @property(nonatomic) long long reorderCadence; // @synthesize reorderCadence=_reorderCadence;
 @property(nonatomic) _Bool useFileProvider; // @synthesize useFileProvider=_useFileProvider;
 @property(nonatomic) _Bool springLoadingEnabled; // @synthesize springLoadingEnabled=_springLoadingEnabled;

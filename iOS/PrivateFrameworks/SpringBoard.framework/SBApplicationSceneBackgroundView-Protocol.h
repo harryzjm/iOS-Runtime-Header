@@ -9,8 +9,10 @@
 @protocol SBApplicationSceneBackgroundView <NSObject>
 
 @optional
+@property(nonatomic) unsigned long long transformOptions;
 @property(nonatomic) _Bool shouldUseBrightMaterial;
 @property(nonatomic) _Bool needsClassicModeBackground;
 @property(nonatomic) long long wallpaperStyle;
+@property(nonatomic, getter=isFullscreen) _Bool fullscreen;
 @end
 

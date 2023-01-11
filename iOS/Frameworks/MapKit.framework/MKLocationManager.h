@@ -9,7 +9,7 @@
 #import <MapKit/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <MapKit/MKLocationProviderDelegate-Protocol.h>
 
-@class CLHeading, CLLocation, GEOLocation, GEOLocationShifter, NSBundle, NSError, NSHashTable, NSLock, NSMutableArray, NSString, NSTimer;
+@class CLHeading, CLLocation, GEOLocation, GEOLocationShifter, NSBundle, NSError, NSHashTable, NSLock, NSMutableArray, NSString, NSTimer, geo_isolater;
 @protocol MKLocationProvider, MNLocationRecorder;
 
 @interface MKLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MKLocationProviderDelegate>
@@ -50,12 +50,14 @@
     double _navCourse;
     CDUnknownBlockType _locationCorrector;
     double _minimumLocationUpdateInterval;
-    _Bool _allowOldLocations;
     _Bool _continuedAfterBecomingInactive;
     _Bool _suspended;
     NSMutableArray *_recentLocationUpdateIntervals;
     NSLock *_lastLocationLock;
     NSLock *_observersLock;
+    int _preciseLocationAuthorizationState;
+    _Bool _temporaryPreciseLocationAuthorizationPromptShown;
+    geo_isolater *_authorizedForPreciseLocationIsolater;
     _Bool _hasCustomDesiredAccuracy;
     _Bool _continuesWhileInactive;
     _Bool _logStartStopLocationUpdates;
@@ -65,9 +67,9 @@
 + (id)timeoutError;
 + (id)sharedLocationManager;
 + (void)setCanMonitorWiFiStatus:(_Bool)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool logStartStopLocationUpdates; // @synthesize logStartStopLocationUpdates=_logStartStopLocationUpdates;
 @property(nonatomic) double minimumLocationUpdateInterval; // @synthesize minimumLocationUpdateInterval=_minimumLocationUpdateInterval;
-@property(nonatomic) _Bool allowOldLocations; // @synthesize allowOldLocations=_allowOldLocations;
 @property(readonly, nonatomic, getter=wasLastLocationPushed) _Bool lastLocationPushed; // @synthesize lastLocationPushed=_lastLocationPushed;
 @property(copy, nonatomic) CDUnknownBlockType locationCorrector; // @synthesize locationCorrector=_locationCorrector;
 @property(readonly, nonatomic) double navigationCourse; // @synthesize navigationCourse=_navCourse;
@@ -80,7 +82,6 @@
 @property(copy, nonatomic) CDUnknownBlockType networkActivity; // @synthesize networkActivity=_networkActivity;
 @property(readonly, nonatomic) NSError *locationError; // @synthesize locationError=_locationError;
 @property(readonly, nonatomic) _Bool isLastLocationStale; // @synthesize isLastLocationStale=_isLastLocationStale;
-- (void).cxx_destruct;
 - (void)stopVehicleHeadingUpdate;
 - (void)startVehicleHeadingUpdate;
 - (void)stopVehicleSpeedUpdate;
@@ -93,7 +94,7 @@
 - (id)singleLocationUpdateWithDesiredAccuracy:(double)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)singleLocationUpdateWithHandler:(CDUnknownBlockType)arg1;
 - (void)_waitForAccurateLocationsTimerFired:(id)arg1;
-- (void)waitForAccurateLocationWithHandler:(CDUnknownBlockType)arg1;
+- (void)waitForAccurateLocationWithTimeout:(double)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)observersDescription;
 - (void)stopLocationUpdateWithObserver:(id)arg1;
 - (void)startLocationUpdateWithObserver:(id)arg1;
@@ -119,6 +120,7 @@
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 @property(nonatomic) long long activityType;
+@property(nonatomic) _Bool fusionInfoEnabled;
 @property(nonatomic) _Bool matchInfoEnabled;
 @property(nonatomic) double distanceFilter;
 @property(nonatomic) double desiredAccuracy;
@@ -137,9 +139,9 @@
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)resetAfterResumeIfNecessary;
 - (_Bool)_isTimeToResetOnResume;
-@property(readonly, nonatomic) _Bool locationShiftEnabled;
 @property(readonly, nonatomic) _Bool hasLocation;
 - (void)setHeading:(id)arg1;
+- (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) double vehicleHeadingOrCourse;
 @property(readonly, nonatomic) double currentVehicleSpeed;
 @property(readonly, nonatomic) double currentVehicleHeading;
@@ -160,6 +162,8 @@
 @property(copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property(retain, nonatomic) NSBundle *effectiveBundle;
 @property(nonatomic, getter=isLocationServicesPreferencesDialogEnabled) _Bool locationServicesPreferencesDialogEnabled;
+@property(readonly, nonatomic) _Bool isTemporaryPreciseLocationAuthorizationPromptShown;
+@property(readonly, nonatomic) _Bool isAuthorizedForPreciseLocation;
 @property(readonly, nonatomic) _Bool isHeadingServicesAvailable;
 @property(readonly, nonatomic) _Bool isLocationServicesPossiblyAvailable;
 @property(readonly, nonatomic) _Bool isLocationServicesAvailable;
@@ -170,8 +174,9 @@
 @property(readonly, nonatomic) _Bool isLocationServicesEnabled;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)dealloc;
+- (id)initWithCLLocationManager:(id)arg1;
 - (id)init;
-- (void)_useCoreLocationProvider;
+- (void)_useDefaultCoreLocationProvider;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

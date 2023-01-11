@@ -9,7 +9,7 @@
 #import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVVolumeWarningView, NSNumber, NSString, UIImageView;
+@class AVLayoutItemAttributes, AVVolumeWarningView, NSNumber, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface AVVolumeSlider : UISlider <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
@@ -25,14 +25,17 @@ __attribute__((visibility("hidden")))
     float _effectiveVolumeLimit;
     UIImageView *_thumbView;
     NSNumber *_unclampedValue;
+    AVLayoutItemAttributes *_layoutAttributes;
     AVVolumeWarningView *_volumeWarningView;
     struct CGSize _extrinsicContentSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
 @property(nonatomic) _Bool hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
 @property(nonatomic) __weak AVVolumeWarningView *volumeWarningView; // @synthesize volumeWarningView=_volumeWarningView;
 @property(nonatomic, getter=isAnimatingVolumeChange) _Bool animatingVolumeChange; // @synthesize animatingVolumeChange=_animatingVolumeChange;
+@property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
 @property(retain, nonatomic) NSNumber *unclampedValue; // @synthesize unclampedValue=_unclampedValue;
 @property(nonatomic) float effectiveVolumeLimit; // @synthesize effectiveVolumeLimit=_effectiveVolumeLimit;
@@ -42,9 +45,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 @property(nonatomic, getter=isIncluded) _Bool included; // @synthesize included=_included;
 @property(nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
-- (void).cxx_destruct;
+- (void)_updateLayoutItem;
 - (_Bool)_shouldTrackTouchAtPoint:(struct CGPoint)arg1;
 - (void)_endTracking;
+- (void)layoutAttributesDidChange;
 - (void)setValue:(float)arg1 animated:(_Bool)arg2;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
@@ -61,8 +65,8 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
-- (void)setHidden:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
+- (struct CGSize)minimumSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

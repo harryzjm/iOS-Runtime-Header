@@ -10,10 +10,12 @@
 @protocol CHStrokeIdentifier, CHStrokeProvider, CHStrokeProviderVersion;
 
 @protocol CHRecognitionSessionDataSource <NSObject>
+- (id <CHStrokeProvider>)strokeProviderSnapshot;
+
+@optional
 - (id <CHStrokeIdentifier>)strokeIdentifierFromData:(NSData *)arg1;
 - (NSData *)dataRepresentationForStrokeIdentifier:(id <CHStrokeIdentifier>)arg1;
 - (id <CHStrokeProviderVersion>)strokeProviderVersionFromData:(NSData *)arg1;
 - (NSData *)dataRepresentationForStrokeProviderVersion:(id <CHStrokeProviderVersion>)arg1;
-- (id <CHStrokeProvider>)strokeProviderSnapshot;
 @end
 

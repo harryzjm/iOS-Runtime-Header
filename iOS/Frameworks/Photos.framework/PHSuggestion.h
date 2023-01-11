@@ -19,6 +19,7 @@
     unsigned short _subtype;
     unsigned short _state;
     unsigned short _notificationState;
+    unsigned short _featuredState;
     NSDictionary *_actionProperties;
     NSDictionary *_featuresProperties;
     long long _version;
@@ -34,6 +35,7 @@
 + (id)fetchSuggestionsWithState:(unsigned short)arg1 ofType:(unsigned short)arg2 withOptions:(id)arg3;
 + (id)fetchSuggestionsWithState:(unsigned short)arg1 withOptions:(id)arg2;
 + (id)fetchSuggestionsWithOptions:(id)arg1;
++ (id)predicateForAllFeaturedStateEnabledSuggestionTypes;
 + (double)lifetimeAfterBecomingActive;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyMap;
@@ -45,16 +47,17 @@
 + (id)localIdentifierWithUUID:(id)arg1;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) NSDate *expungeDate; // @synthesize expungeDate=_expungeDate;
 @property(readonly, nonatomic) NSDate *relevantUntilDate; // @synthesize relevantUntilDate=_relevantUntilDate;
 @property(readonly, nonatomic) NSDate *activationDate; // @synthesize activationDate=_activationDate;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
+@property(readonly, nonatomic) unsigned short featuredState; // @synthesize featuredState=_featuredState;
 @property(readonly, nonatomic) unsigned short notificationState; // @synthesize notificationState=_notificationState;
 @property(readonly, nonatomic) unsigned short state; // @synthesize state=_state;
 @property(readonly, nonatomic) unsigned short subtype; // @synthesize subtype=_subtype;
 @property(readonly, nonatomic) unsigned short type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)assets;
 @property(readonly, nonatomic) _Bool containsUnverifiedPersons;
 - (id)description;

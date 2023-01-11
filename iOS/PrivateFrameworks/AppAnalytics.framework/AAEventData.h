@@ -14,12 +14,14 @@
     MISSING_TYPE *eventDate;
     MISSING_TYPE *eventPath;
     MISSING_TYPE *sessionID;
+    MISSING_TYPE *appSessionID;
 }
 
 + (id)dataName;
 - (void).cxx_destruct;
 - (id)init;
 - (id)toDict;
+@property(nonatomic, readonly) NSString *appSessionID;
 @property(nonatomic, readonly) NSString *sessionID;
 @property(nonatomic, readonly) NSString *eventPath;
 @property(nonatomic, readonly) NSDate *eventDate;

@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol UITextCursorAssertion;
+
 __attribute__((visibility("hidden")))
 @interface UIKeyboardAutomatic
 {
     _Bool showsCandidateBar;
     _Bool showsCandidateInline;
     _Bool receivedCandidatesInCurrentInputMode;
-    _Bool caretBlinks;
+    id <UITextCursorAssertion> _blinkAssertion;
 }
 
 + (id)activeInstance;
 + (id)sharedInstance;
-@property(nonatomic) _Bool caretBlinks; // @synthesize caretBlinks;
+- (void).cxx_destruct;
+@property(retain, nonatomic) id <UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property(nonatomic) _Bool receivedCandidatesInCurrentInputMode; // @synthesize receivedCandidatesInCurrentInputMode;
 @property(nonatomic) _Bool showsCandidateInline; // @synthesize showsCandidateInline;
 @property(nonatomic) _Bool showsCandidateBar; // @synthesize showsCandidateBar;

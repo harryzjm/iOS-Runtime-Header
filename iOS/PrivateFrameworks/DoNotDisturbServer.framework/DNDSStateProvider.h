@@ -7,18 +7,15 @@
 #import <objc/NSObject.h>
 
 @class DNDState;
-@protocol DNDSStateProviderDataSource;
 
 @interface DNDSStateProvider : NSObject
 {
     DNDState *_lastCalculatedState;
-    id <DNDSStateProviderDataSource> _dataSource;
 }
 
-@property(nonatomic) __weak id <DNDSStateProviderDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(copy) DNDState *lastCalculatedState; // @synthesize lastCalculatedState=_lastCalculatedState;
 - (void).cxx_destruct;
-- (void)recalculateState;
+@property(copy) DNDState *lastCalculatedState; // @synthesize lastCalculatedState=_lastCalculatedState;
+- (id)recalculateStateForSnapshot:(id)arg1;
 
 @end
 

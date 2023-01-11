@@ -17,8 +17,6 @@
     ABRequestHandler *_requestHandler;
 }
 
-@property(retain) ABRequestHandler *requestHandler; // @synthesize requestHandler=_requestHandler;
-@property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)dealloc;
 - (id)init;

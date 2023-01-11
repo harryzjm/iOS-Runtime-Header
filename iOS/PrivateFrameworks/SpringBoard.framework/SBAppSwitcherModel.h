@@ -20,8 +20,8 @@
 }
 
 + (id)appSwitcherHeaderIconImageDescriptorName;
-@property(nonatomic) __weak id <SBAppSwitcherModelDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBAppSwitcherModelDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_recentAppLayoutsController;
 - (void)recentAppLayouts:(id)arg1 didRemoveAppLayoutForFallingOffList:(id)arg2;
 - (id)recentDisplayItemsForBundleIdentifier:(id)arg1 includingHiddenAppLayouts:(_Bool)arg2;
@@ -36,7 +36,7 @@
 - (void)addToFront:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithIconController:(id)arg1 applicationController:(id)arg2;
+- (id)initWithIconController:(id)arg1 applicationController:(id)arg2 recents:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,55 +6,69 @@
 
 #import <UIKit/UIView.h>
 
+#import <MobileMailUI/_UICursorInteractionDelegate-Protocol.h>
+
 @class EMCachingContactStore, MFMessageDisplayMetrics, NSString, UIButton, UIVisualEffectView;
 @protocol MFMessageFooterViewDelegate;
 
-@interface MFConversationItemFooterView : UIView
+@interface MFConversationItemFooterView : UIView <_UICursorInteractionDelegate>
 {
-    _Bool _shouldArchiveByDefault;
+    _Bool _allowsCursorSnapping;
     UIVisualEffectView *_backgroundView;
-    UIButton *_seeMoreButton;
+    UIButton *_revealActionsButton;
     id <MFMessageFooterViewDelegate> _delegate;
     MFMessageDisplayMetrics *_displayMetrics;
     NSString *_senderName;
     double _defaultRevealActionButtonOriginY;
-    double _defaultTrashButtonOriginY;
     double _defaultSeeMoreButtonOriginY;
-    UIButton *_trashButton;
     EMCachingContactStore *_contactStore;
-    UIButton *_revealActionsButton;
+    double _currentYOffset;
+    UIButton *_seeMoreButton;
 }
 
 + (id)nameFont;
 + (id)prefixFont;
-@property(retain, nonatomic) UIButton *revealActionsButton; // @synthesize revealActionsButton=_revealActionsButton;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIButton *seeMoreButton; // @synthesize seeMoreButton=_seeMoreButton;
+@property(nonatomic) double currentYOffset; // @synthesize currentYOffset=_currentYOffset;
 @property(retain, nonatomic) EMCachingContactStore *contactStore; // @synthesize contactStore=_contactStore;
-@property(retain, nonatomic) UIButton *trashButton; // @synthesize trashButton=_trashButton;
 @property(nonatomic) double defaultSeeMoreButtonOriginY; // @synthesize defaultSeeMoreButtonOriginY=_defaultSeeMoreButtonOriginY;
-@property(nonatomic) double defaultTrashButtonOriginY; // @synthesize defaultTrashButtonOriginY=_defaultTrashButtonOriginY;
 @property(nonatomic) double defaultRevealActionButtonOriginY; // @synthesize defaultRevealActionButtonOriginY=_defaultRevealActionButtonOriginY;
-@property(nonatomic) _Bool shouldArchiveByDefault; // @synthesize shouldArchiveByDefault=_shouldArchiveByDefault;
+@property(nonatomic) _Bool allowsCursorSnapping; // @synthesize allowsCursorSnapping=_allowsCursorSnapping;
 @property(copy, nonatomic) NSString *senderName; // @synthesize senderName=_senderName;
 @property(retain, nonatomic) MFMessageDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
 @property(nonatomic) __weak id <MFMessageFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIButton *seeMoreButton; // @synthesize seeMoreButton=_seeMoreButton;
+@property(retain, nonatomic) UIButton *revealActionsButton; // @synthesize revealActionsButton=_revealActionsButton;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
-- (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (void)moveOriginYByOffset:(double)arg1;
-- (void)_updateButtonsForTraitCollection:(id)arg1;
+- (void)_updateButtons;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutActionButtonWithBounds:(struct CGRect)arg1;
-- (void)layoutTrashButtonWithBounds:(struct CGRect)arg1;
 - (void)_fontMetricCacheDidInvalidate:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldHideStickyFooterView;
 - (void)layoutSeeMoreButton;
 - (void)setBounds:(struct CGRect)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)hideAttribution;
 - (void)showAttributionWithSenderName:(id)arg1;
 - (void)addTarget:(id)arg1 action:(SEL)arg2 toButton:(long long)arg3;
+@property(readonly, nonatomic) double seeMoreButtonHeight;
+@property(nonatomic) double seeMoreButtonAlpha;
+@property(nonatomic, getter=isSeeMoreButtonHidden) _Bool seeMoreButtonHidden;
+- (void)_updateSeeMoreButton;
+- (void)_updateBackgroundView;
 - (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

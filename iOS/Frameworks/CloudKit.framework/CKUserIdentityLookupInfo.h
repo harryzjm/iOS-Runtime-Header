@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKXPCSuitableString-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKRecordID, NSData, NSString;
 
-@interface CKUserIdentityLookupInfo : NSObject <NSSecureCoding, NSCopying>
+@interface CKUserIdentityLookupInfo : NSObject <CKXPCSuitableString, NSSecureCoding, NSCopying>
 {
     _Bool _shouldReportMissingIdentity;
     NSString *_emailAddress;
@@ -24,12 +25,12 @@
 + (id)lookupInfosWithRecordIDs:(id)arg1;
 + (id)lookupInfosWithEmails:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
 @property(nonatomic) _Bool shouldReportMissingIdentity; // @synthesize shouldReportMissingIdentity=_shouldReportMissingIdentity;
 @property(copy, nonatomic) CKRecordID *userRecordID; // @synthesize userRecordID=_userRecordID;
 @property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -45,6 +46,7 @@
 - (id)initWithPhoneNumber:(id)arg1;
 - (id)initWithUserRecordID:(id)arg1;
 - (id)initWithEmailAddress:(id)arg1;
+- (id)CKXPCSuitableString;
 
 @end
 

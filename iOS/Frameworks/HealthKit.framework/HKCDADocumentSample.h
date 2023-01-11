@@ -17,10 +17,11 @@
 + (_Bool)_isValidOperatorType:(unsigned long long)arg1;
 + (_Bool)_isValidCDAKeyPath:(id)arg1;
 + (_Bool)supportsSecureCoding;
++ (_Bool)_isConcreteObjectClass;
 + (id)CDADocumentSampleWithData:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 metadata:(id)arg4 validationError:(id *)arg5;
-@property(readonly) HKCDADocument *document; // @synthesize document=_document;
 - (void).cxx_destruct;
-- (_Bool)_predicateMatchForKeyPath:(id)arg1 operatorType:(unsigned long long)arg2 pattern:(id)arg3;
+@property(readonly) HKCDADocument *document; // @synthesize document=_document;
+- (_Bool)_predicateMatchForKeyPath:(id)arg1 pattern:(id)arg2;
 - (id)_fieldValueForKeyPath:(id)arg1;
 - (void)_applyPropertiesWithOmittedFlags:(long long)arg1 compressedDocumentData:(id)arg2 title:(id)arg3 patientName:(id)arg4 authorName:(id)arg5 custodianName:(id)arg6;
 - (void)encodeWithCoder:(id)arg1;
@@ -30,7 +31,7 @@
 - (_Bool)_validateDocumentContentWithError:(id *)arg1;
 - (_Bool)prepareForDelivery:(id *)arg1;
 - (_Bool)prepareForSaving:(id *)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)description;
 
 @end

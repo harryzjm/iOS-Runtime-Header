@@ -15,9 +15,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *referenceSignatures; // @synthesize referenceSignatures=_referenceSignatures;
-@property(readonly, nonatomic) NSArray *fileSignatures; // @synthesize fileSignatures=_fileSignatures;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *referenceSignatures; // @synthesize referenceSignatures=_referenceSignatures;
+@property(readonly, copy, nonatomic) NSArray *fileSignatures; // @synthesize fileSignatures=_fileSignatures;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

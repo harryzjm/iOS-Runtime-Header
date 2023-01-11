@@ -16,11 +16,11 @@
     NSDictionary *_interfaces;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *interfaces; // @synthesize interfaces=_interfaces;
 @property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)dealloc;
 - (void)removedFromInterface:(unsigned int)arg1 named:(id)arg2;
 - (void)addedOnInterface:(unsigned int)arg1 named:(id)arg2;
 - (id)initWithServiceName:(id)arg1 type:(id)arg2 andDomain:(id)arg3;

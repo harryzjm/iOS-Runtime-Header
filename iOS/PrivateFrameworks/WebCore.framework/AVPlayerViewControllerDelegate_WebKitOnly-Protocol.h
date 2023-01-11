@@ -11,6 +11,8 @@
 @protocol AVPlayerViewControllerDelegate_WebKitOnly <AVPlayerViewControllerDelegate>
 
 @optional
+- (void)playerViewControllerEndReducingResourcesForPictureInPicture:(AVPlayerViewController *)arg1;
+- (void)playerViewControllerBeginReducingResourcesForPictureInPicture:(AVPlayerViewController *)arg1;
 - (_Bool)playerViewControllerShouldStartPictureInPictureFromInlineWhenEnteringBackground:(AVPlayerViewController *)arg1;
 - (_Bool)playerViewController:(AVPlayerViewController *)arg1 shouldExitFullScreenWithReason:(long long)arg2;
 @end

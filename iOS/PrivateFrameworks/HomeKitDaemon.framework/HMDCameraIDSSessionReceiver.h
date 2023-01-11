@@ -18,10 +18,11 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDCameraIDSSessionInviterDeviceVerifier *sessionInviterDeviceVerifier; // @synthesize sessionInviterDeviceVerifier=_sessionInviterDeviceVerifier;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <HMDCameraIDSSessionReceiverDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)logIdentifier;
 - (void)sessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
 - (void)sessionStarted:(id)arg1;
 - (void)_receivedIDSSession:(id)arg1;
@@ -32,7 +33,6 @@
 - (void)dealloc;
 @property(readonly, nonatomic) NSString *remoteDestination;
 @property(readonly, nonatomic) IDSSession *session;
-- (id)logIdentifier;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 sessionInviterDeviceVerifier:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 
 // Remaining properties

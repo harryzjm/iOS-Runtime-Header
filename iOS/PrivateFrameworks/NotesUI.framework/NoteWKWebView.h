@@ -13,9 +13,8 @@
     NoteHTMLEditorView *_noteHTMLEditorView;
 }
 
-@property(nonatomic) __weak NoteHTMLEditorView *noteHTMLEditorView; // @synthesize noteHTMLEditorView=_noteHTMLEditorView;
 - (void).cxx_destruct;
-- (id)ic_evaluateJavaScriptAndWait:(id)arg1 error:(id *)arg2;
+@property(nonatomic) __weak NoteHTMLEditorView *noteHTMLEditorView; // @synthesize noteHTMLEditorView=_noteHTMLEditorView;
 - (void)ic_evaluateJavaScript:(id)arg1;
 - (void)paste:(id)arg1;
 - (void)strikethrough:(id)arg1;

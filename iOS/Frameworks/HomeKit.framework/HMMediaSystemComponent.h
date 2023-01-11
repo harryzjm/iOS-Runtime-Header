@@ -27,8 +27,8 @@
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 + (id)mediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
-@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
@@ -41,12 +41,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_updateAccessoryReference:(id)arg1;
-- (void)_invalidate;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)logIdentifier;
+- (void)_unconfigure;
 - (id)initWithUUID:(id)arg1 mediaProfile:(id)arg2 role:(id)arg3;
 - (id)initWithMediaProfile:(id)arg1 role:(id)arg2;
 - (id)init;

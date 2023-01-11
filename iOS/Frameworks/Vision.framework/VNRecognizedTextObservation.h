@@ -8,14 +8,16 @@
 
 @interface VNRecognizedTextObservation
 {
+    _Bool _isTitle;
     NSArray *_textObjects;
     NSString *_text;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
-@property(copy, nonatomic) NSArray *textObjects; // @synthesize textObjects=_textObjects;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
+@property(nonatomic) _Bool isTitle; // @synthesize isTitle=_isTitle;
+@property(copy, nonatomic) NSArray *textObjects; // @synthesize textObjects=_textObjects;
 - (void)setText:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

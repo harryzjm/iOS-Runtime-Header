@@ -10,15 +10,15 @@
 #import <AVKit/AVFullScreenViewControllerDelegate-Protocol.h>
 #import <AVKit/AVPictureInPictureContentSource-Protocol.h>
 #import <AVKit/AVPictureInPictureControllerDelegate-Protocol.h>
-#import <AVKit/AVPlaybackControlsVisibilityControllerDelegate-Protocol.h>
+#import <AVKit/AVPlaybackControlsViewVisibilityDelegate-Protocol.h>
 #import <AVKit/AVTransitionControllerDelegate-Protocol.h>
 #import <AVKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <AVKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AVBehaviorStorage, AVContentOverlayView, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlaybackControlsVisibilityController, AVPlayer, AVPlayerController, AVPlayerControllerVolumeAnimator, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVPresentationContext, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSValue, UIGestureRecognizer, UIPopoverPresentationController, UIView, UIWindow, __AVPlayerLayerView;
+@class AVBehaviorStorage, AVContentOverlayView, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlayer, AVPlayerController, AVPlayerControllerVolumeAnimator, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVPresentationContext, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSValue, UIHoverGestureRecognizer, UIPopoverPresentationController, UIView, UIWindow, __AVPlayerLayerView;
 @protocol AVPlayerViewControllerContentTransitioning_NewsOnly, AVPlayerViewControllerDelegate;
 
-@interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVPlaybackControlsVisibilityControllerDelegate, AVFullScreenViewControllerDelegate, AVTransitionControllerDelegate, AVPictureInPictureContentSource, AVContentOverlayViewDelegate>
+@interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVFullScreenViewControllerDelegate, AVTransitionControllerDelegate, AVPictureInPictureContentSource, AVContentOverlayViewDelegate, AVPlaybackControlsViewVisibilityDelegate>
 {
     _Bool _playerShouldAutoplay;
     _Bool _showsPlaybackControls;
@@ -32,7 +32,6 @@
     AVPictureInPictureController *_pictureInPictureController;
     UIPopoverPresentationController *_mediaSelectionPopoverPresentationController;
     AVTransitionController *_transitionController;
-    AVPlaybackControlsVisibilityController *_playbackControlsVisibilityController;
     AVPlaybackControlsController *_playbackControlsController;
     AVPlayerView *_playerViewControllerView;
     NSValue *_overrideLayoutMarginsWhenEmbeddedInline;
@@ -40,6 +39,7 @@
     _Bool _canToggleVideoGravityWhenEmbeddedInline;
     _Bool _playbackControlsShouldControlSystemVolume;
     _Bool _updatesNowPlayingInfoCenter;
+    _Bool _showsTimecodes;
     _Bool _readyForDisplay;
     _Bool _entersFullScreenWhenPlaybackBegins;
     _Bool _exitsFullScreenWhenPlaybackEnds;
@@ -48,7 +48,6 @@
     _Bool _hasPerformedInitialSetup;
     _Bool _wasInitializedUsingWebKitSPI;
     _Bool _requiresImmediateAssetInspection;
-    _Bool _showsTimecodes;
     _Bool _canPausePlaybackWhenExitingFullScreen;
     _Bool _playbackControlsIncludeVolumeControls;
     _Bool _canIncludePlaybackControlsWhenInline;
@@ -60,11 +59,12 @@
     AVContentOverlayView *__actualContentOverlayView;
     NSNumber *__defaultPlaybackRateStorage;
     CDUnknownBlockType _finishPreparingForInteractiveDismissalHandler;
+    CDUnknownBlockType _pendingRestoreUserInterfaceForPictureInPictureStopHandler;
     CDUnknownBlockType _interactiveDismissalCompletionHandler;
     AVObservationController *__observationController;
     AVBehaviorStorage *__behaviorStorage;
     long long __numberOfTrackedUserInteractions;
-    UIGestureRecognizer *_hoverGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     NSMutableDictionary *__localizedDiscoverabilityTitleForKeyCommandLocalizationKey;
     unsigned long long _overrideRouteSharingPolicy;
     AVPlayerControllerVolumeAnimator *_volumeAnimator;
@@ -83,13 +83,13 @@
 + (id)keyPathsForValuesAffectingPictureInPictureSuspended;
 + (id)keyPathsForValuesAffectingPictureInPictureActive;
 + (id)keyPathsForValuesAffectingPictureInPicturePossible;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property(nonatomic) _Bool canIncludePlaybackControlsWhenInline; // @synthesize canIncludePlaybackControlsWhenInline=_canIncludePlaybackControlsWhenInline;
 @property(copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property(copy, nonatomic) NSArray *customControlItems; // @synthesize customControlItems=_customControlItems;
 @property(nonatomic) _Bool playbackControlsIncludeVolumeControls; // @synthesize playbackControlsIncludeVolumeControls=_playbackControlsIncludeVolumeControls;
 @property(nonatomic) _Bool canPausePlaybackWhenExitingFullScreen; // @synthesize canPausePlaybackWhenExitingFullScreen=_canPausePlaybackWhenExitingFullScreen;
-@property(nonatomic) _Bool showsTimecodes; // @synthesize showsTimecodes=_showsTimecodes;
 @property(nonatomic) _Bool requiresImmediateAssetInspection; // @synthesize requiresImmediateAssetInspection=_requiresImmediateAssetInspection;
 @property(copy, nonatomic) NSString *overrideRoutingContextUID; // @synthesize overrideRoutingContextUID=_overrideRoutingContextUID;
 @property(nonatomic) _Bool wasInitializedUsingWebKitSPI; // @synthesize wasInitializedUsingWebKitSPI=_wasInitializedUsingWebKitSPI;
@@ -99,12 +99,13 @@
 @property(nonatomic) struct CGSize secondScreenConnectionDisplaySize; // @synthesize secondScreenConnectionDisplaySize=_secondScreenConnectionDisplaySize;
 @property(nonatomic) unsigned long long overrideRouteSharingPolicy; // @synthesize overrideRouteSharingPolicy=_overrideRouteSharingPolicy;
 @property(readonly, nonatomic) NSMutableDictionary *_localizedDiscoverabilityTitleForKeyCommandLocalizationKey; // @synthesize _localizedDiscoverabilityTitleForKeyCommandLocalizationKey=__localizedDiscoverabilityTitleForKeyCommandLocalizationKey;
-@property(retain, nonatomic) UIGestureRecognizer *hoverGestureRecognizer; // @synthesize hoverGestureRecognizer=_hoverGestureRecognizer;
+@property(retain, nonatomic) UIHoverGestureRecognizer *hoverGestureRecognizer; // @synthesize hoverGestureRecognizer=_hoverGestureRecognizer;
 @property(nonatomic, setter=_setNumberOfTrackedUserInteractions:) long long _numberOfTrackedUserInteractions; // @synthesize _numberOfTrackedUserInteractions=__numberOfTrackedUserInteractions;
 @property(nonatomic) _Bool _hasBegunObservation; // @synthesize _hasBegunObservation=__hasBegunObservation;
 @property(readonly, nonatomic) AVBehaviorStorage *_behaviorStorage; // @synthesize _behaviorStorage=__behaviorStorage;
 @property(readonly, nonatomic) AVObservationController *_observationController; // @synthesize _observationController=__observationController;
 @property(copy, nonatomic) CDUnknownBlockType interactiveDismissalCompletionHandler; // @synthesize interactiveDismissalCompletionHandler=_interactiveDismissalCompletionHandler;
+@property(copy, nonatomic) CDUnknownBlockType pendingRestoreUserInterfaceForPictureInPictureStopHandler; // @synthesize pendingRestoreUserInterfaceForPictureInPictureStopHandler=_pendingRestoreUserInterfaceForPictureInPictureStopHandler;
 @property(copy, nonatomic) CDUnknownBlockType finishPreparingForInteractiveDismissalHandler; // @synthesize finishPreparingForInteractiveDismissalHandler=_finishPreparingForInteractiveDismissalHandler;
 @property(nonatomic) _Bool shouldUseNetworkingResourcesForLiveStreamingWhilePaused; // @synthesize shouldUseNetworkingResourcesForLiveStreamingWhilePaused=_shouldUseNetworkingResourcesForLiveStreamingWhilePaused;
 @property(retain, nonatomic) NSNumber *_defaultPlaybackRateStorage; // @synthesize _defaultPlaybackRateStorage=__defaultPlaybackRateStorage;
@@ -114,10 +115,10 @@
 @property(nonatomic) _Bool entersFullScreenWhenPlaybackBegins; // @synthesize entersFullScreenWhenPlaybackBegins=_entersFullScreenWhenPlaybackBegins;
 @property(nonatomic) struct CGRect videoBounds; // @synthesize videoBounds=_videoBounds;
 @property(nonatomic, getter=isReadyForDisplay) _Bool readyForDisplay; // @synthesize readyForDisplay=_readyForDisplay;
+@property(nonatomic) _Bool showsTimecodes; // @synthesize showsTimecodes=_showsTimecodes;
 @property(nonatomic) _Bool updatesNowPlayingInfoCenter; // @synthesize updatesNowPlayingInfoCenter=_updatesNowPlayingInfoCenter;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property(retain, nonatomic) AVPlayer *player; // @synthesize player=_player;
-- (void).cxx_destruct;
 - (void)contentOverlayViewDidAddOrRemoveSubview:(id)arg1;
 - (id)keyCommandResponderForFullScreenViewController:(id)arg1;
 - (long long)preferredStatusStyleForFullScreenViewController:(id)arg1;
@@ -127,8 +128,8 @@
 - (id)viewForFullScreenViewController:(id)arg1;
 - (void)fullScreenViewControllerWillEndFullScreenPresentation:(id)arg1;
 - (void)fullScreenViewControllerWillBeginFullScreenPresentation:(id)arg1;
-- (void)playbackControlsVisibilityController:(id)arg1 animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg2 appearingViews:(id)arg3 disappearingViews:(id)arg4;
-- (void)playbackControlsVisibilityController:(id)arg1 updateStatusBarAppearanceUsingAnimator:(id)arg2;
+- (void)playbackControlsView:(id)arg1 animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg2 appearingViews:(id)arg3 disappearingViews:(id)arg4;
+- (void)playbackControlsViewNeedsUpdateStatusBarAppearance:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
@@ -138,6 +139,9 @@
 - (void)pictureInPictureController:(id)arg1 failedToStartPictureInPictureWithError:(id)arg2;
 - (void)pictureInPictureControllerDidStartPictureInPicture:(id)arg1;
 - (void)pictureInPictureControllerWillStartPictureInPicture:(id)arg1;
+- (void)avkit_willBeginStoppingPictureInPictureForPictureInPictureViewController:(id)arg1;
+- (void)avkit_endReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
+- (void)avkit_beginReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
 - (void)avkit_stopRoutingVideoToPictureInPictureViewController:(id)arg1;
 - (void)avkit_startRoutingVideoToPictureInPictureViewController:(id)arg1;
 - (id)avkit_makePlayerControllerIfNeeded:(id)arg1;
@@ -195,7 +199,7 @@
 - (void)_updatePlaybackControlsController;
 - (void)_updateExternalPlaybackIndicatorView;
 - (void)_updateAudioOnlyIndicatorView;
-- (_Bool)_isAudioOnlyContent;
+@property(readonly, nonatomic, getter=isAudioOnlyContent) _Bool audioOnlyContent;
 - (void)_updateUnsupportedContentIndicatorView;
 - (_Bool)_isUnsupportedContent;
 - (void)_addObservers;
@@ -241,6 +245,7 @@
 - (void)_ensureBehaviorStorage;
 @property(readonly, nonatomic) UIViewController *viewControllerForFullScreenPresentation;
 - (id)_activeViewControllerForContentView;
+@property(retain, nonatomic) NSValue *overrideLayoutMarginsWhenEmbeddedInline;
 @property(nonatomic) double defaultPlaybackRate;
 @property(copy, nonatomic) CDUnknownBlockType playButtonHandlerForLazyPlayerLoading;
 - (void)flashPlaybackControlsWithDuration:(double)arg1;
@@ -271,7 +276,25 @@
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)toggleMuted:(id)arg1;
+- (void)pictureInPictureButtonTapped:(id)arg1;
+- (void)fullScreenButtonTapped:(id)arg1;
+- (void)mediaSelectionButtonTapped:(id)arg1;
+- (void)togglePlayback:(id)arg1;
+- (void)videoGravityButtonTapped:(id)arg1;
+- (void)doneButtonTapped:(id)arg1;
+- (void)activeContentViewDidChange;
+@property(nonatomic) _Bool canShowPictureInPictureButton;
+@property(readonly, nonatomic) AVPlaybackControlsController *playbackControlsController;
+@property(readonly, nonatomic) AVPresentationContext *presentationContext;
+@property(readonly, nonatomic, getter=isPresentedFullScreen) _Bool presentedFullScreen;
+@property(readonly, nonatomic, getter=isPresentingFullScreenFromInline) _Bool presentingFullScreenFromInline;
+- (void)prepareForFinishingInteractiveTransition:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) AVPlayerViewControllerContentView *contentView;
+@property(readonly, nonatomic) _Bool hasActiveTransition;
 @property(readonly, nonatomic) UIView *iAdPrerollView;
+@property(nonatomic) _Bool canToggleVideoGravityWhenEmbeddedInline;
+@property(nonatomic) struct CGAffineTransform overrideTransformForProminentPlayButton;
 - (void)setWebKitOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;
 @property(readonly, nonatomic) _Bool pictureInPictureWasStartedWhenEnteringBackground;
 @property(readonly, nonatomic, getter=isPictureInPictureSuspended) _Bool pictureInPictureSuspended;
@@ -283,26 +306,6 @@
 @property(nonatomic) _Bool playbackControlsShouldControlSystemVolume;
 @property(nonatomic) _Bool showsExitFullScreenButton;
 - (id)initWithPlayerLayerView:(id)arg1;
-@property(nonatomic) _Bool canToggleVideoGravityWhenEmbeddedInline;
-@property(retain, nonatomic) NSValue *overrideLayoutMarginsWhenEmbeddedInline;
-@property(nonatomic) struct CGAffineTransform overrideTransformForProminentPlayButton;
-- (void)activeContentViewDidChange;
-@property(nonatomic) _Bool canShowPictureInPictureButton;
-@property(readonly, nonatomic) AVPlaybackControlsController *playbackControlsController;
-@property(readonly, nonatomic) AVPlaybackControlsVisibilityController *playbackControlsVisibilityController;
-- (void)toggleMuted:(id)arg1;
-- (void)pictureInPictureButtonTapped:(id)arg1;
-- (void)fullScreenButtonTapped:(id)arg1;
-- (void)mediaSelectionButtonTapped:(id)arg1;
-- (void)togglePlayback:(id)arg1;
-- (void)videoGravityButtonTapped:(id)arg1;
-- (void)doneButtonTapped:(id)arg1;
-@property(readonly, nonatomic) AVPresentationContext *presentationContext;
-@property(readonly, nonatomic, getter=isPresentedFullScreen) _Bool presentedFullScreen;
-@property(readonly, nonatomic, getter=isPresentingFullScreenFromInline) _Bool presentingFullScreenFromInline;
-- (void)prepareForFinishingInteractiveTransition:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) AVPlayerViewControllerContentView *contentView;
-@property(readonly, nonatomic) _Bool hasActiveTransition;
 @property(nonatomic) _Bool entersFullScreenWhenTapped;
 - (void)flashAutoplayControls;
 - (void)exitAutoplayPhase;

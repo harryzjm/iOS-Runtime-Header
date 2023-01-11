@@ -20,6 +20,7 @@
     EFObservable<EFObserver> *_inputObservable;
     EFObservable *_contentObservable;
     EFFuture *_futureContentRepresentation;
+    _Atomic _Bool _hasError;
     unsigned long long _retyAttempt;
     _Bool _includeSuggestionItems;
     struct os_unfair_lock_s _contentRepresentationLock;
@@ -30,11 +31,12 @@
 + (id)defaultScheduler;
 + (id)signpostLog;
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) EFFuture *messageFuture; // @synthesize messageFuture=_messageFuture;
 @property(readonly, nonatomic) id <EMCollectionItemID> itemID; // @synthesize itemID=_itemID;
-- (void).cxx_destruct;
 - (id)addLoadObserver:(CDUnknownBlockType)arg1;
 - (id)onScheduler:(id)arg1 addLoadObserver:(CDUnknownBlockType)arg2;
+@property(readonly) unsigned long long state;
 @property(readonly) _Bool isFinished;
 @property(readonly) _Bool hasStarted;
 - (id)waitForResult;

@@ -24,12 +24,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long preferredSampleMode; // @synthesize preferredSampleMode=_preferredSampleMode;
 @property(retain, nonatomic) MXMSampleFilter *filter; // @synthesize filter=_filter;
-- (void).cxx_destruct;
 - (_Bool)harvestData:(id *)arg1 error:(id *)arg2;
+- (void)didStopAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 stopDate:(id)arg3;
 - (void)didStopAtTime:(unsigned long long)arg1 stopDate:(id)arg2;
 - (void)willStop;
+- (void)didStartAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 startDate:(id)arg3;
 - (void)didStartAtTime:(unsigned long long)arg1 startDate:(id)arg2;
 - (void)willStartAtEstimatedTime:(unsigned long long)arg1;
 - (_Bool)prepareWithOptions:(id)arg1 error:(id *)arg2;

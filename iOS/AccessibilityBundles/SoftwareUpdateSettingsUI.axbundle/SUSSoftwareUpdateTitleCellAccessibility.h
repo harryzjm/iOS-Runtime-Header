@@ -14,6 +14,7 @@
 - (id)newProgressBar;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axApplyProgressViewLabel:(id)arg1;
+- (id)accessibilityValue;
 
 @end
 

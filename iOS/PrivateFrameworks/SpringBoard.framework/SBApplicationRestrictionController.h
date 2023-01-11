@@ -29,10 +29,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_postRestrictionStateToObservers:(id)arg1;
-- (void)_postRestrictionState;
-- (void)_updateVisibilityPreferences;
-- (void)_updateRestrictionsAndForcePost:(_Bool)arg1;
 - (void)beginPostingChanges;
 - (void)carrierBundleInfoDidChangeForStateProvider:(id)arg1 slot:(long long)arg2;
 - (void)noteRestrictionsMayHaveChanged;

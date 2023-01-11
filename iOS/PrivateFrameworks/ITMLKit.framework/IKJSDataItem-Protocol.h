@@ -9,8 +9,8 @@
 @class JSValue, NSString;
 
 @protocol IKJSDataItem <JSExport>
++ (JSValue *)makeDataItem:(JSValue *)arg1:(JSValue *)arg2;
 @property(readonly, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) NSString *type;
-- (id)initConstructor:(JSValue *)arg1:(JSValue *)arg2;
 @end
 

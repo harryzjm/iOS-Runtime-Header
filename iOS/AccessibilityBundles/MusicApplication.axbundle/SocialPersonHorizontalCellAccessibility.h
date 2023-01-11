@@ -11,12 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axFollowButton;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityCustomActions;
 - (void)_accessibilityDeclineButtonAction:(id)arg1;
 - (void)_accessibilityApproveButtonAction:(id)arg1;
-- (unsigned long long)accessibilityTraits;
-- (_Bool)accessibilityActivate;
-- (id)accessibilityValue;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (void)setAccessibilitySocialPersonCustomActions:(id)arg1;

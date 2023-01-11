@@ -15,18 +15,21 @@
     NSObject<OS_dispatch_queue> *_queue;
     HKMCAnalysisQuery *_analysisQuery;
     HKMCAnalysis *_analysis;
+    _Bool _didUpdate;
     HKHealthStore *_healthStore;
     HKMCAnalysis *__test_analysis;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKMCAnalysis *_test_analysis; // @synthesize _test_analysis=__test_analysis;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-- (void).cxx_destruct;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
+- (id)description;
 - (void)_updateAnalysis:(id)arg1;
 - (void)_startAnalysisQuery;
+- (id)initWithHealthStore:(id)arg1 initialAnalysisForTest:(id)arg2;
 - (id)initWithHealthStore:(id)arg1;
 
 @end

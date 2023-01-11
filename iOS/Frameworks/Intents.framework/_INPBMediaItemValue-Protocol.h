@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBImageValue, _INPBScoredValue, _INPBValueMetadata;
+@class NSArray, NSString, _INPBImageValue, _INPBPrivateMediaItemValueData, _INPBScoredValue, _INPBValueMetadata;
 
 @protocol _INPBMediaItemValue <NSObject>
 + (Class)topicsType;
@@ -19,10 +19,14 @@
 @property(copy, nonatomic) NSArray *topics;
 @property(readonly, nonatomic) _Bool hasTitle;
 @property(copy, nonatomic) NSString *title;
+@property(readonly, nonatomic) _Bool hasPrivateMediaItemValueData;
+@property(retain, nonatomic) _INPBPrivateMediaItemValueData *privateMediaItemValueData;
 @property(readonly, nonatomic) unsigned long long namedEntitiesCount;
 @property(copy, nonatomic) NSArray *namedEntities;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 @property(copy, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) _Bool hasAssetInfo;
+@property(copy, nonatomic) NSString *assetInfo;
 @property(readonly, nonatomic) _Bool hasArtwork;
 @property(retain, nonatomic) _INPBImageValue *artwork;
 @property(readonly, nonatomic) _Bool hasArtist;

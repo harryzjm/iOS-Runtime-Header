@@ -18,19 +18,20 @@
 
 + (id)detailAreaGroupPathForIdiom:(id)arg1 role:(id)arg2 size:(id)arg3;
 + (id)orderedComponentClasses;
++ (id)genesisSlotsForSlots:(id)arg1;
 + (id)slotWithIdiom:(id)arg1 size:(id)arg2 role:(id)arg3 subtype:(id)arg4 scale:(id)arg5;
 + (id)slotWithIdiom:(id)arg1 size:(id)arg2 scale:(id)arg3 role:(id)arg4;
 + (id)slotWithIdiom:(id)arg1 size:(id)arg2 scale:(id)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (Class)assetRepClass;
 + (Class)assetSetClass;
+- (void).cxx_destruct;
 @property(readonly) IBICSubtype *subtype; // @synthesize subtype=_subtype;
 @property(readonly) IBICRole *role; // @synthesize role=_role;
 @property(readonly) IBICScale *scale; // @synthesize scale=_scale;
 @property(readonly) IBICSize *size; // @synthesize size=_size;
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
 @property(readonly) IBICPlatform *platform; // @synthesize platform=_platform;
-- (void).cxx_destruct;
 - (id)requiredPixelSize;
 - (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;
 - (id)detailAreaPath;

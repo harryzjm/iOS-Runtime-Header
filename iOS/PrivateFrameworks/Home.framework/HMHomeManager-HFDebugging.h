@@ -8,12 +8,15 @@
 
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface HMHomeManager (HFDebugging) <HFStateDumpBuildable>
 + (id)hf_homeFutureForName:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_updateApplicationDataFuture;
 @property(readonly, nonatomic) _Bool hf_hasDetectediCloudIssue;
+- (id)hf_setSeenNewFeaturesViewVersion:(long long)arg1;
+- (long long)hf_lastNewFeaturesViewVersionSeen;
 - (id)hf_setHasSeenNewFeaturesView:(_Bool)arg1;
 - (_Bool)hf_hasSeenNewFeaturesView;
 - (id)hf_setHasSeenOnboardingWelcomeView:(_Bool)arg1;
@@ -24,6 +27,8 @@
 - (id)hf_orderedHomesList;
 - (id)hf_mutableOrderedHomesList;
 - (id)hf_homeWithIdentifier:(id)arg1;
+@property(retain) NSNumber *_cached_lastOnboardingNewFeaturesVersionSeenNumber;
+@property(retain) NSNumber *_cached_hasSeenOnboardingWelcomeViewNumber;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

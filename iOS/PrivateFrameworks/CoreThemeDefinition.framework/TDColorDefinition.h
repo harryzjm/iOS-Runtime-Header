@@ -8,7 +8,7 @@
 
 #import <CoreThemeDefinition/TDElementAttributes-Protocol.h>
 
-@class NSDate, NSNumber, TDColorName, TDThemeLook;
+@class NSDate, NSNumber, TDColorName;
 
 @interface TDColorDefinition : NSManagedObject <TDElementAttributes>
 {
@@ -24,7 +24,6 @@
 // Remaining properties
 @property(retain, nonatomic) NSManagedObject *colorStatus; // @dynamic colorStatus;
 @property(retain, nonatomic) NSDate *dateOfLastChange; // @dynamic dateOfLastChange;
-@property(retain, nonatomic) TDThemeLook *look; // @dynamic look;
 @property(retain, nonatomic) TDColorName *name; // @dynamic name;
 @property(retain, nonatomic) NSNumber *physicalColor; // @dynamic physicalColor;
 

@@ -6,23 +6,25 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AuthenticationServices/_ASCredentialProviderExtensionHostContextDelegate-Protocol.h>
+#import <AuthenticationServices/_ASExtensionHostContextDelegate-Protocol.h>
 
-@class NSExtension, NSString, NSTimer, _ASCredentialProviderExtensionHostContext;
+@class NSExtension, NSExtensionContext, NSString, NSTimer;
+@protocol _ASExtensionHostContext;
 
-@interface _ASExtensionViewController : UIViewController <_ASCredentialProviderExtensionHostContextDelegate>
+@interface _ASExtensionViewController : UIViewController <_ASExtensionHostContextDelegate>
 {
     UIViewController *_remoteViewController;
-    _ASCredentialProviderExtensionHostContext *_nonUIHostContext;
+    NSExtensionContext<_ASExtensionHostContext> *_nonUIHostContext;
     NSTimer *_nonUIRequestTimer;
     _Bool _allowRequestingUIFromNonUIRequest;
     _Bool _dismissOnBackground;
     NSExtension *_extension;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSExtensionContext *nonUIHostContext; // @synthesize nonUIHostContext=_nonUIHostContext;
 @property(readonly, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(nonatomic) _Bool dismissOnBackground; // @synthesize dismissOnBackground=_dismissOnBackground;
-- (void).cxx_destruct;
 - (id)childViewControllerForWhitePointAdaptivityStyle;
 - (id)childViewControllerForStatusBarStyle;
 - (id)childViewControllerForStatusBarHidden;
@@ -32,10 +34,12 @@
 - (void)_nonUIRequestTimedOut;
 - (void)_invalidateNonUIRequestTimerIfNeeded;
 - (void)_nonUIRequestDidRequireUserInteraction;
+- (_Bool)_shouldUseNonUIRequestTimer;
 - (void)_beginNonUIRequest:(_Bool)arg1 connectionHandler:(CDUnknownBlockType)arg2;
 - (void)_beginRequestWithConnectionHandler:(CDUnknownBlockType)arg1;
 - (void)_requestDidFailWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setRemoteViewController:(id)arg1;
+- (void)_extensionRequestDidFinish:(_Bool)arg1;
 - (id)initWithExtension:(id)arg1;
 
 // Remaining properties

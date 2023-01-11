@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString;
+@class NSAttributedString, NSString;
 
 @interface NSParagraphArbitrator : NSObject
 {
+    struct __CFStringTokenizer *_tokenizer;
+    struct UBreakIterator *_breaker;
+    NSString *_breakerString;
+    NSString *_breakerLocale;
     NSAttributedString *_attributedString;
     CDUnknownBlockType _lineWidth;
     CDUnknownBlockType _validateLineBreakContext;
     unsigned long long _lineBreakStrategy;
     double _hyphenationFactor;
     long long _typesetterBehavior;
+    NSString *_preferredLanguage;
     struct _NSRange _paragraphRange;
     struct _NSRange _previousLineRange;
 }
 
 + (id)paragraphArbitratorWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;
+@property(copy) NSString *preferredLanguage; // @synthesize preferredLanguage=_preferredLanguage;
 @property struct _NSRange previousLineRange; // @synthesize previousLineRange=_previousLineRange;
 @property long long typesetterBehavior; // @synthesize typesetterBehavior=_typesetterBehavior;
 @property double hyphenationFactor; // @synthesize hyphenationFactor=_hyphenationFactor;
@@ -29,9 +35,13 @@
 @property(copy) CDUnknownBlockType lineWidth; // @synthesize lineWidth=_lineWidth;
 @property struct _NSRange paragraphRange; // @synthesize paragraphRange=_paragraphRange;
 @property(retain) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
+@property(readonly) struct __CFStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 - (unsigned long long)adjustedLineBreakIndexForProposedIndex:(unsigned long long)arg1;
 - (CDStruct_f03de906)lineBreakContextBeforeIndex:(unsigned long long)arg1 lineFragmentWidth:(double)arg2 range:(struct _NSRange)arg3;
+- (_Bool)prepareTokenizerForPreferredLanguage:(id)arg1;
+- (_Bool)prepareBreakIteratorForAttributedString:(id)arg1 characterIndex:(unsigned long long)arg2;
 - (void)reset;
+- (void)resetBreaker;
 - (void)dealloc;
 - (id)init;
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;

@@ -10,26 +10,33 @@
 
 @interface CKCodeFunctionInvokeOperationInfo <NSSecureCoding>
 {
-    _Bool _local;
+    _Bool _shouldSendRecordPCSKeys;
+    _Bool _enqueuedOnContainerService;
+    _Bool _legacyIsLocalBit;
     _Bool _shouldFetchAssetContentInMemory;
     NSString *_serviceName;
     NSString *_functionName;
     NSArray *_requestLocalSerializations;
     NSArray *_requestLocalEnvelopes;
     NSData *_permittedRemoteMeasurement;
-    NSURL *_explicitBaseURL;
+    NSURL *_clientRuntimeProvidedServiceURL;
+    NSURL *_resolvedBaseURL;
 }
 
 + (_Bool)supportsSecureCoding;
++ (void)applyDefaultParametersToServiceURLComponents:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
-@property(nonatomic) _Bool local; // @synthesize local=_local;
-@property(copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
+@property(copy, nonatomic) NSURL *resolvedBaseURL; // @synthesize resolvedBaseURL=_resolvedBaseURL;
+@property(nonatomic) _Bool legacyIsLocalBit; // @synthesize legacyIsLocalBit=_legacyIsLocalBit;
+@property(copy, nonatomic) NSURL *clientRuntimeProvidedServiceURL; // @synthesize clientRuntimeProvidedServiceURL=_clientRuntimeProvidedServiceURL;
+@property(nonatomic) _Bool enqueuedOnContainerService; // @synthesize enqueuedOnContainerService=_enqueuedOnContainerService;
+@property(nonatomic) _Bool shouldSendRecordPCSKeys; // @synthesize shouldSendRecordPCSKeys=_shouldSendRecordPCSKeys;
 @property(copy, nonatomic) NSData *permittedRemoteMeasurement; // @synthesize permittedRemoteMeasurement=_permittedRemoteMeasurement;
 @property(copy, nonatomic) NSArray *requestLocalEnvelopes; // @synthesize requestLocalEnvelopes=_requestLocalEnvelopes;
 @property(copy, nonatomic) NSArray *requestLocalSerializations; // @synthesize requestLocalSerializations=_requestLocalSerializations;
 @property(copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

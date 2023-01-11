@@ -26,7 +26,6 @@
 + (id)__unurl;
 - (void)stopAccessingSecurityScopedResource;
 - (_Bool)startAccessingSecurityScopedResource;
-- (id)bookmarkDataWithAliasRecord:(id)arg1;
 - (id)bookmarkDataWithOptions:(unsigned long long)arg1 includingResourceValuesForKeys:(id)arg2 relativeToURL:(id)arg3 error:(id *)arg4;
 @property(readonly, copy) NSURL *filePathURL;
 - (id)fileReferenceURL;

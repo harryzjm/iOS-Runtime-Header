@@ -8,19 +8,21 @@
 
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 
-@class HFCameraPlaybackEngine, HUCameraView, NSString;
+@class HFCameraPlaybackEngine, HUCameraMicrophoneControl, HUCameraView, NSString;
 
 @interface HUCameraPlayerLiveContentViewController : UIViewController <HFCameraPlaybackEngineObserver>
 {
     HFCameraPlaybackEngine *_playbackEngine;
     double _cornerRadius;
     HUCameraView *_cameraView;
+    HUCameraMicrophoneControl *_microphoneControl;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HUCameraMicrophoneControl *microphoneControl; // @synthesize microphoneControl=_microphoneControl;
 @property(retain, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(readonly, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-- (void).cxx_destruct;
 - (void)_updateCameraCornerRadius;
 - (void)playbackEngine:(id)arg1 didUpdateLiveCameraSource:(id)arg2;
 - (void)viewDidLoad;

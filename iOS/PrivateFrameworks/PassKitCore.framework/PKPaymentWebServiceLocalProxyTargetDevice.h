@@ -18,15 +18,17 @@
     NSXPCConnection *_connection;
 }
 
-@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
+- (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)paymentWebService:(id)arg1 passOwnershipTokenWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 storePassOwnershipToken:(id)arg2 withIdentifier:(id)arg3;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)paymentWebService:(id)arg1 requestPassUpgrade:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 setDefaultPaymentPassUniqueIdentifier:(id)arg2;
+- (_Bool)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 - (void)deleteApplePayTrustKeyWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)createApplePayTrustKeyWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)applePayTrustKeyForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -34,6 +36,7 @@
 - (void)paymentWebService:(id)arg1 deviceMetadataWithFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (id)supportedFeatureIdentifiersForAccountProvisioningWithPaymentWebService:(id)arg1;
 - (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (_Bool)paymentWebServiceSupportsAccounts:(id)arg1;
 - (_Bool)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
@@ -64,18 +67,20 @@
 - (void)noteProvisioningUserInterfaceDidAppear;
 - (_Bool)supportsAutomaticPassPresentation;
 - (id)deviceRegion;
+- (id)osVersion;
 - (id)deviceVersion;
 - (id)deviceClass;
 - (id)bridgedClientInfo;
 - (id)deviceName;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
+- (int)registrationSupportedInCurrentRegionForWebService:(id)arg1;
 - (int)paymentSupportedInCurrentRegionForWebService:(id)arg1;
 - (id)appleAccountInformation;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)paymentWebService:(id)arg1 filterVerificationChannels:(id)arg2;
 - (void)paymentWebService:(id)arg1 didRegisterWithRegionMap:(id)arg2 primaryRegionTopic:(id)arg3;
 - (void)paymentWebService:(id)arg1 deleteApplicationWithAID:(id)arg2;
-- (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 provisioningDataIncludingDeviceMetadata:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 signData:(id)arg2 signatureEntanglementMode:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 configurationDataWithCompletionHandler:(CDUnknownBlockType)arg2;

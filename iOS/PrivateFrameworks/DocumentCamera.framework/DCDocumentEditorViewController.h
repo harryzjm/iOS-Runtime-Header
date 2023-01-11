@@ -11,7 +11,7 @@
 #import <DocumentCamera/UINavigationControllerDelegate-Protocol.h>
 #import <DocumentCamera/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class DCScannedDocument, ICDocCamDocumentInfoCollection, ICDocCamExtractedDocumentViewController, ICDocCamImageCache, NSIndexPath, NSString, UIImage, UIView;
+@class ICDocCamDocumentInfoCollection, ICDocCamExtractedDocumentViewController, ICDocCamImageCache, NSIndexPath, NSString, UIImage, UIView, VNDocumentCameraScan;
 @protocol DCDocumentEditorViewControllerDelegate;
 
 @interface DCDocumentEditorViewController : UINavigationController <ICDocCamExtractedDocumentControllerDelegate, ICDocCamViewControllerDelegate, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
@@ -19,7 +19,7 @@
     _Bool _useCustomRecropTransition;
     ICDocCamExtractedDocumentViewController *_extractedDocumentController;
     id <DCDocumentEditorViewControllerDelegate> _docCamDelegate;
-    DCScannedDocument *_scannedDocument;
+    VNDocumentCameraScan *_scannedDocument;
     ICDocCamDocumentInfoCollection *_docInfoCollection;
     ICDocCamImageCache *_imageCache;
     long long _orientationForRecrop;
@@ -32,6 +32,7 @@
 + (id)activityTypeOrder;
 + (id)docInfoCollectionFromScannedDocument:(id)arg1 imageCache:(id)arg2;
 + (_Bool)isAvailable;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *sourceViewForZoomTransition; // @synthesize sourceViewForZoomTransition=_sourceViewForZoomTransition;
 @property(retain, nonatomic) UIImage *unfilteredImageForRecrop; // @synthesize unfilteredImageForRecrop=_unfilteredImageForRecrop;
 @property(retain, nonatomic) UIImage *filteredImageForRecrop; // @synthesize filteredImageForRecrop=_filteredImageForRecrop;
@@ -40,10 +41,10 @@
 @property(nonatomic) _Bool useCustomRecropTransition; // @synthesize useCustomRecropTransition=_useCustomRecropTransition;
 @property(retain, nonatomic) ICDocCamImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property(retain, nonatomic) ICDocCamDocumentInfoCollection *docInfoCollection; // @synthesize docInfoCollection=_docInfoCollection;
-@property(retain, nonatomic) DCScannedDocument *scannedDocument; // @synthesize scannedDocument=_scannedDocument;
+@property(retain, nonatomic) VNDocumentCameraScan *scannedDocument; // @synthesize scannedDocument=_scannedDocument;
 @property(nonatomic) __weak id <DCDocumentEditorViewControllerDelegate> docCamDelegate; // @synthesize docCamDelegate=_docCamDelegate;
 @property(retain, nonatomic) ICDocCamExtractedDocumentViewController *extractedDocumentController; // @synthesize extractedDocumentController=_extractedDocumentController;
-- (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (id)scanDataDelegateWithIdentifier:(id)arg1;
 - (id)documentCameraControllerCreateDataCryptorIfNecessary;

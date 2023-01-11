@@ -14,14 +14,28 @@
 }
 
 - (void).cxx_destruct;
+- (void)updateMobileAssetNamesDownloadedPast24Hours:(id)arg1;
+- (void)updateCountMobileAssetsDownloadedPast24Hours:(long long)arg1;
+- (void)updateCountAnalyzedTachogramsPast24Hours:(long long)arg1;
+- (void)updateCountRecordedTachogramsPast24Hours:(long long)arg1;
+- (void)updateWasWatchWornPast24Hours:(_Bool)arg1;
+- (void)updateIRNOnboardingCountryCode:(id)arg1;
+- (void)updateECGOnboardingCountryCode:(id)arg1;
+- (void)updateECGUpdateVersionWatch:(id)arg1;
+- (void)updateECGUpdateVersionPhone:(id)arg1;
+- (void)updateECGActiveAlgorithmVersion:(id)arg1;
 - (id)_ecgClassificationWithin24HoursPostIRNKeyFromClassification:(unsigned long long)arg1;
 - (id)_weeksBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (void)updateWithElectrocardiogramClassifications:(id)arg1;
 - (void)updateWeeksSinceElectrocardiogramOnboardedWithFirstOnboardingCompletedDate:(id)arg1;
 - (void)submit;
+- (void)updateActiveWatchProductType:(id)arg1;
+- (void)updateIsBradycardiaDetectionEnabled:(_Bool)arg1;
+- (void)updateIsTachycardiaDetectionEnabled:(_Bool)arg1;
 - (void)updateIrregularRhythmNotificationClassificationCount:(long long)arg1;
 - (void)updateElectrocardiogramClassificationCount:(long long)arg1;
 - (void)updateIsImproveHealthAndActivityAllowed:(_Bool)arg1;
+- (void)updateIsIrnOnboarded:(_Bool)arg1;
 - (void)updateIsEcgOnboarded:(_Bool)arg1;
 - (id)init;
 

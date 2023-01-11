@@ -18,8 +18,8 @@
     id <CKBrowserAppManagerViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <CKBrowserAppManagerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CKBrowserAppManagerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (id)animationControllerForDismissedController:(id)arg1;
@@ -35,7 +35,9 @@
 - (_Bool)shouldShowChatChrome;
 - (long long)browserPresentationStyle;
 - (void)dismiss;
+- (void)delegate_BrowserAppManagerDidSelectPlugin:(id)arg1;
 - (void)browserAppManagerDidSelectPlugin:(id)arg1;
+- (_Bool)appAllowedByScreenTimeWithBundleIdentifier:(id)arg1;
 - (void)appManagerViewControllerDidFinish:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(_Bool)arg1;

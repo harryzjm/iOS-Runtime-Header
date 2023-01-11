@@ -28,13 +28,13 @@ __attribute__((visibility("hidden")))
     NSString *_serviceIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 @property(copy, nonatomic) NSSet *destinations; // @synthesize destinations=_destinations;
 @property(nonatomic) __weak ASReachabilityStatusCache *statusCache; // @synthesize statusCache=_statusCache;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
-- (void).cxx_destruct;
-- (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)_queryTimedOut;
 - (void)finish;
 - (void)start;

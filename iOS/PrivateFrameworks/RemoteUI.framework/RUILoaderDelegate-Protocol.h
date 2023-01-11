@@ -17,7 +17,10 @@
 - (void)loader:(RUILoader *)arg1 willLoadRequest:(NSURLRequest *)arg2 redirectResponse:(NSURLResponse *)arg3 completionHandler:(void (^)(NSURLRequest *, NSError *))arg4;
 - (NSURLRequest *)loader:(RUILoader *)arg1 willLoadRequest:(NSURLRequest *)arg2 redirectResponse:(NSURLResponse *)arg3;
 - (void)loader:(RUILoader *)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 completionHandler:(void (^)(long long, NSURLCredential *))arg3;
+- (void)loader:(RUILoader *)arg1 loadResourcesForObjectModel:(RUIObjectModel *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)loader:(RUILoader *)arg1 didReceiveHTTPResponse:(NSHTTPURLResponse *)arg2 forRequest:(NSURLRequest *)arg3;
 - (void)loader:(RUILoader *)arg1 didReceiveHTTPResponse:(NSHTTPURLResponse *)arg2;
+- (void)loader:(RUILoader *)arg1 didFinishLoadWithError:(NSError *)arg2 forRequest:(NSURLRequest *)arg3;
 - (void)loader:(RUILoader *)arg1 didFinishLoadWithError:(NSError *)arg2;
 - (void)loader:(RUILoader *)arg1 receivedObjectModel:(RUIObjectModel *)arg2 topActionSignal:(RUIActionSignal *)arg3;
 @end

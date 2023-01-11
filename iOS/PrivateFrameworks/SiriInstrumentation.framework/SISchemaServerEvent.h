@@ -6,12 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaServerEvent-Protocol.h>
+@class NSData, SISchemaConversationTrace, SISchemaDeviceFixedContext, SISchemaServerEventMetadata, SISchemaServerGeneratedDismissal, SISchemaSpeechResultSelected, SISchemaTurnInteraction, SISchemaUserSpeechDuration;
 
-@class NSData, NSString, SISchemaConversationTrace, SISchemaDeviceFixedContext, SISchemaServerEventMetadata, SISchemaSpeechResultSelected, SISchemaTurnInteraction, SISchemaUserSpeechDuration;
-
-@interface SISchemaServerEvent : PBCodable <SISchemaServerEvent, NSSecureCoding>
+@interface SISchemaServerEvent : PBCodable
 {
     SISchemaServerEventMetadata *_eventMetadata;
     SISchemaUserSpeechDuration *_userSpeechDuration;
@@ -19,33 +16,42 @@
     SISchemaTurnInteraction *_turnInteraction;
     SISchemaSpeechResultSelected *_speechResultSelected;
     SISchemaDeviceFixedContext *_serverDeviceFixedContext;
+    SISchemaServerGeneratedDismissal *_serverGeneratedDismissal;
+    _Bool _hasEventMetadata;
+    _Bool _hasUserSpeechDuration;
+    _Bool _hasServerConversationTrace;
+    _Bool _hasTurnInteraction;
+    _Bool _hasSpeechResultSelected;
+    _Bool _hasServerDeviceFixedContext;
+    _Bool _hasServerGeneratedDismissal;
     unsigned long long _whichEvent_Type;
 }
 
-+ (id)getTagForEventTypeClass:(Class)arg1;
-+ (Class)getEventTypeClassForTag:(int)arg1;
-@property(readonly, nonatomic) unsigned long long whichEvent_Type; // @synthesize whichEvent_Type=_whichEvent_Type;
-@property(retain, nonatomic) SISchemaServerEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
 - (void).cxx_destruct;
-- (void)setEventType:(id)arg1;
+@property(nonatomic) _Bool hasServerGeneratedDismissal; // @synthesize hasServerGeneratedDismissal=_hasServerGeneratedDismissal;
+@property(nonatomic) _Bool hasServerDeviceFixedContext; // @synthesize hasServerDeviceFixedContext=_hasServerDeviceFixedContext;
+@property(nonatomic) _Bool hasSpeechResultSelected; // @synthesize hasSpeechResultSelected=_hasSpeechResultSelected;
+@property(nonatomic) _Bool hasTurnInteraction; // @synthesize hasTurnInteraction=_hasTurnInteraction;
+@property(nonatomic) _Bool hasServerConversationTrace; // @synthesize hasServerConversationTrace=_hasServerConversationTrace;
+@property(nonatomic) _Bool hasUserSpeechDuration; // @synthesize hasUserSpeechDuration=_hasUserSpeechDuration;
+@property(nonatomic) _Bool hasEventMetadata; // @synthesize hasEventMetadata=_hasEventMetadata;
+@property(retain, nonatomic) SISchemaServerEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
+@property(readonly, nonatomic) unsigned long long whichEvent_Type; // @synthesize whichEvent_Type=_whichEvent_Type;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(retain, nonatomic) SISchemaServerGeneratedDismissal *serverGeneratedDismissal; // @synthesize serverGeneratedDismissal=_serverGeneratedDismissal;
 @property(retain, nonatomic) SISchemaDeviceFixedContext *serverDeviceFixedContext; // @synthesize serverDeviceFixedContext=_serverDeviceFixedContext;
 @property(retain, nonatomic) SISchemaSpeechResultSelected *speechResultSelected; // @synthesize speechResultSelected=_speechResultSelected;
 @property(retain, nonatomic) SISchemaTurnInteraction *turnInteraction; // @synthesize turnInteraction=_turnInteraction;
 @property(retain, nonatomic) SISchemaConversationTrace *serverConversationTrace; // @synthesize serverConversationTrace=_serverConversationTrace;
 @property(retain, nonatomic) SISchemaUserSpeechDuration *userSpeechDuration; // @synthesize userSpeechDuration=_userSpeechDuration;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+- (int)getAnyEventType;
 
 @end
 

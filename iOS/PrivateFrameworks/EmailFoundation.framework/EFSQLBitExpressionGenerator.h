@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLBitExpressionGenerator
 {
-    id <EFSQLExpressable> _bitExpression;
+    id <EFSQLValueExpressable> _bitExpression;
 }
 
-@property(readonly, nonatomic) id <EFSQLExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <EFSQLValueExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
 - (void)bitExpressionWithKeyColumn:(id)arg1;
 - (id)initWithTableRelationship:(id)arg1 whereExpression:(id)arg2 previousExpressionGenerator:(id)arg3 bitExpression:(id)arg4;
 

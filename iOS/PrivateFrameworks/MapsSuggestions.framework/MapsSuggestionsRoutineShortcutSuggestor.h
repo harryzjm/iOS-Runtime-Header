@@ -16,7 +16,8 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)suggestShortcutsOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)suggestShortcutsOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initFromResourceDepot:(id)arg1;
 - (id)initWithRoutine:(id)arg1;
 
 // Remaining properties

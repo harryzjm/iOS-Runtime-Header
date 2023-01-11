@@ -12,5 +12,6 @@
 - (void)setReduceTransparencyButtonColor:(UIColor *)arg1;
 - (NSString *)stringCharacter;
 - (int)characterType;
+- (void)conformsToSBUIPasscodeNumberPadButton;
 @end
 

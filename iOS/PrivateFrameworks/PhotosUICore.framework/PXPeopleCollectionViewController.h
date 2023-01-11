@@ -55,6 +55,7 @@
     struct CGRect _ppt_visibleCollectionViewRect;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect ppt_visibleCollectionViewRect; // @synthesize ppt_visibleCollectionViewRect=_ppt_visibleCollectionViewRect;
 @property(nonatomic) unsigned long long ppt_sampledCountOfFrames; // @synthesize ppt_sampledCountOfFrames=_ppt_sampledCountOfFrames;
 @property(nonatomic) unsigned long long ppt_sampledCountOfEmptyCells; // @synthesize ppt_sampledCountOfEmptyCells=_ppt_sampledCountOfEmptyCells;
@@ -87,8 +88,10 @@
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) UILongPressGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
 @property _Bool ignoreChangeUpdates; // @synthesize ignoreChangeUpdates=_ignoreChangeUpdates;
-- (void).cxx_destruct;
 - (void)statusDebugRecognizerTapped:(id)arg1;
+- (id)px_navigationDestination;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)swipeSelectionManager:(id)arg1 didSelectIndexPaths:(id)arg2;
 - (id)swipeSelectionManager:(id)arg1 itemIndexPathAtLocation:(struct CGPoint)arg2;
 - (id)swipeSelectionManager:(id)arg1 indexPathSetFromIndexPath:(id)arg2 toIndexPath:(id)arg3;
@@ -131,7 +134,6 @@
 - (id)_rightBarItemsForMode:(unsigned long long)arg1;
 - (id)_toolBarItemsForMode:(unsigned long long)arg1;
 - (void)_selectAction:(id)arg1;
-- (void)_presentAllPeopleViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

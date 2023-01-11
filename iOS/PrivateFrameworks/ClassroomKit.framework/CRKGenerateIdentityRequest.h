@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskRequest.h"
+#import <DeviceManagement/CATTaskRequest.h>
 
 @class NSString;
 
@@ -15,8 +15,8 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
-@property(copy, nonatomic) NSString *commonName; // @synthesize commonName=_commonName;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *commonName; // @synthesize commonName=_commonName;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

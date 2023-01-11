@@ -4,21 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
 
-@interface SGNaturalLanguageDissector
+@class NSMutableDictionary, NSString;
+
+@interface SGNaturalLanguageDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
     NSMutableDictionary *_conversations;
 }
 
-+ (id)ipsosMessageWithEntity:(id)arg1 store:(id)arg2;
++ (id)ipsosMessageWithTextMessage:(id)arg1 store:(id)arg2;
++ (id)ipsosMessageWithMailMessage:(id)arg1 store:(id)arg2;
++ (id)_personForCSPerson:(id)arg1;
 + (_Bool)allowNaturalLanguageDissector;
 - (void).cxx_destruct;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)_tagNaturalLanguageEnrichmentsForEntity:(id)arg1;
+- (_Bool)_shouldProcessMessage:(id)arg1 entity:(id)arg2;
 - (id)conversationWithIdentifier:(id)arg1;
 - (void)addEnrichmentForEvents:(id)arg1 forMessage:(id)arg2 toEntity:(id)arg3;
+- (void)clearConversations;
 - (id)initWithoutSharedInstance;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

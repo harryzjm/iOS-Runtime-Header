@@ -28,7 +28,6 @@
 - (id)objectForKey:(long long)arg1;
 - (id)allKeys;
 @property(readonly, nonatomic) unsigned long long count;
-- (id)_initWithMapTable:(id)arg1 zeroIndexValue:(id)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, REMAlarm;
+@class EKFrozenReminderStructuredLocation, NSArray, NSString, REMAlarm;
 
 __attribute__((visibility("hidden")))
 @interface EKFrozenReminderAlarm
@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
     REMAlarm *_locationAlarm;
 }
 
++ (id)semanticIdentifierFromDateComponents:(id)arg1;
++ (id)semanticIdentifierFromREMAlarm:(id)arg1;
 + (id)uniqueIdentifierForREMObject:(id)arg1;
 + (id)triggersFromAbsoluteDate:(id)arg1 relativeOffset:(double)arg2 timeValuesRelevant:(_Bool)arg3 structuredLocation:(id)arg4 proximity:(long long)arg5;
 + (long long)ekAlarmProximityToEKAlarmProximity:(long long)arg1;
@@ -31,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)_remStructuredLocation;
 @property(readonly) NSString *externalID;
 - (id)modifiedStructuredLocation;
-- (id)structuredLocation;
+@property(readonly) EKFrozenReminderStructuredLocation *structuredLocation;
 - (id)absoluteDate;
 - (double)relativeOffset;
 - (id)uniqueIdentifier;
@@ -42,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)_setTimeOrLocationAlarm:(id)arg1;
 - (void)_setTimeAndLocationAlarms:(id)arg1;
 - (id)updatedFrozenObjectWithChanges:(id)arg1 updatedChildren:(id)arg2;
-- (id)initWithAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
+- (id)initWithAlternateUniverseObject:(id)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (id)initWithAlarms:(id)arg1 inStore:(id)arg2 withChanges:(id)arg3;
 - (id)initWithAlarms:(id)arg1 inStore:(id)arg2;
 - (id)initWithREMObject:(id)arg1 inStore:(id)arg2 withChanges:(id)arg3;

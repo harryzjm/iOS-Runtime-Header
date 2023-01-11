@@ -13,8 +13,11 @@
     SOAuthorizationRequest *_authorizationRequest;
 }
 
-@property(readonly, nonatomic) SOAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SOAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
+@property(readonly, nonatomic) NSString *localizedCallerDisplayName;
+@property(readonly, nonatomic) NSString *callerTeamIdentifier;
+@property(readonly, nonatomic, getter=isCallerManaged) _Bool callerManaged;
 @property(readonly, nonatomic) NSDictionary *authorizationOptions;
 @property(readonly, copy, nonatomic) NSString *callerBundleIdentifier;
 @property(readonly, nonatomic) NSDictionary *extensionData;

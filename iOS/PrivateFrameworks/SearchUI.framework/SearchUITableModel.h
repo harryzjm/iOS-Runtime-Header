@@ -26,13 +26,16 @@
 + (id)tableModelWithResult:(id)arg1;
 + (id)tableModelWithCardSections:(id)arg1 isInline:(_Bool)arg2 queryId:(unsigned long long)arg3;
 + (_Bool)resultHasHorizontallyScrollingCardSections:(id)arg1;
-+ (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2 queryId:(unsigned long long)arg3;
++ (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) NSArray *tableRowModel; // @synthesize tableRowModel=_tableRowModel;
 @property(readonly) unsigned long long queryId; // @synthesize queryId=_queryId;
-- (void).cxx_destruct;
 - (id)description;
-- (id)indexPathForResult:(id)arg1;
+- (id)indexPathForResultInFirstTwoSections:(id)arg1;
+- (id)indexPathForRowModel:(id)arg1;
+- (_Bool)rowWillFillBackgroundWithContentAtIndexPath:(id)arg1;
+- (int)separatorStyleForIndexPath:(id)arg1;
 - (_Bool)shouldLeaveSpaceForChevronForIndexPath:(id)arg1;
 - (_Bool)shouldDisplayChevronForIndexPath:(id)arg1;
 - (id)cardSectionForIndexPath:(id)arg1;
@@ -42,9 +45,10 @@
 - (id)rowModelForIndexPath:(id)arg1;
 - (_Bool)indexPathExists:(id)arg1;
 - (long long)numberOfRowsForSection:(long long)arg1;
+- (id)removeRowModel:(id)arg1;
 - (void)replaceResult:(id)arg1 withResult:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)numberOfSections;
-- (id)updatedTableModelWithExpandedSections:(id)arg1;
+- (id)updatedTableModelWithExpandedSections:(id)arg1 hiddenSections:(id)arg2 atSectionIndex:(unsigned long long)arg3;
 - (id)initWithQueryId:(unsigned long long)arg1;
 
 @end

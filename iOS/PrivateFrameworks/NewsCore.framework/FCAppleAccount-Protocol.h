@@ -6,20 +6,29 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSString;
+@class ACAccount, NFPromise, NSString;
+@protocol FCAppleAccountObserver;
 
 @protocol FCAppleAccount <NSObject>
+@property(readonly, nonatomic) ACAccount *activeiTunesAccount;
 @property(readonly, nonatomic) NSString *endpointConnectionClientID;
 @property(readonly, nonatomic, getter=isUserSignedInToiCloud) _Bool userSignedInToiCloud;
 @property(readonly, nonatomic, getter=isPrivateDataSyncingEnabled) _Bool privateDataSyncingEnabled;
 @property(readonly, nonatomic) NSString *supportedContentStoreFrontID;
+@property(readonly, nonatomic) _Bool isSignedInStoreFrontSupported;
 @property(readonly, nonatomic) _Bool isContentStoreFrontSupported;
+@property(readonly, nonatomic) long long supportedContentLanguage;
 @property(readonly, nonatomic) NSString *primaryLanguageCode;
 @property(readonly, nonatomic) NSString *contentStoreFrontID;
 @property(readonly, nonatomic) NSString *userStoreFrontID;
 @property(readonly, nonatomic) NSString *DSID;
+- (void)removeObserver:(id <FCAppleAccountObserver>)arg1;
+- (void)addObserver:(id <FCAppleAccountObserver>)arg1;
 - (_Bool)isPrimaryAccountEmailAddress;
 - (NSString *)currentStoreFrontID;
+- (void)invalidateGSTokenCache;
+- (NFPromise *)getGSToken;
+- (void)getGSTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)checkAllDevicesRunningMinimumiOSVersion:(CDStruct_912cb5d2)arg1 macOSVersion:(CDStruct_912cb5d2)arg2 orInactiveForTimeInterval:(double)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)checkAlliOSDevicesRunningMinimumOSVersion:(CDStruct_912cb5d2)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)loadStoreFrontWithCompletionHandler:(void (^)(void))arg1;

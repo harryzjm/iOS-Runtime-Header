@@ -14,10 +14,15 @@
 @interface PARRequest : NSObject <NSSecureCoding>
 {
     unsigned long long _queryId;
+    _Bool _isClientOnlyExperiment;
+    _Bool _isInReservedAllocationForExperiment;
     _Bool _verboseReply;
     _Bool _pretend;
     double _scale;
     NSString *_keyboardInputMode;
+    NSString *_experimentNamespaceId;
+    NSString *_experimentId;
+    NSString *_treatmentId;
     unsigned long long _triggerEvent;
     NSArray *_queryItems;
     NSDictionary *_headerItems;
@@ -35,10 +40,11 @@
 + (id)cardRequestWithURL:(id)arg1;
 + (id)moreResultsRequestWithURL:(id)arg1 queryId:(unsigned long long)arg2;
 + (id)moreResultsRequestWithURL:(id)arg1;
-+ (id)searchRequestWithEngagedSuggestion:(id)arg1 queryId:(unsigned long long)arg2;
++ (id)searchReplayRequestWithString:(id)arg1;
++ (id)searchRequestWithEngagedSuggestion:(id)arg1 triggerEvent:(unsigned long long)arg2 queryId:(unsigned long long)arg3;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2 queryId:(unsigned long long)arg3;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2;
-+ (id)searchRequestWithString:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) char *nwActivityToken; // @synthesize nwActivityToken=_nwActivityToken;
 @property(retain, nonatomic) NSObject<OS_nw_activity> *nwActivity; // @synthesize nwActivity=_nwActivity;
 @property(copy, nonatomic) NSDictionary *headerItems; // @synthesize headerItems=_headerItems;
@@ -46,10 +52,14 @@
 @property(nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(nonatomic) _Bool pretend; // @synthesize pretend=_pretend;
 @property(nonatomic) _Bool verboseReply; // @synthesize verboseReply=_verboseReply;
+@property(copy, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
+@property(copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+@property(nonatomic) _Bool isInReservedAllocationForExperiment; // @synthesize isInReservedAllocationForExperiment=_isInReservedAllocationForExperiment;
+@property(nonatomic) _Bool isClientOnlyExperiment; // @synthesize isClientOnlyExperiment=_isClientOnlyExperiment;
+@property(copy, nonatomic) NSString *experimentNamespaceId; // @synthesize experimentNamespaceId=_experimentNamespaceId;
 @property(copy, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int nwActivityLabel;
 - (Class)responseClass;
 - (void)setQueryId:(unsigned long long)arg1;

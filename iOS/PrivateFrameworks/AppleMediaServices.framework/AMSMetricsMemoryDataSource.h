@@ -8,16 +8,17 @@
 
 #import <AppleMediaServices/AMSMetricsDataSource-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface AMSMetricsMemoryDataSource : NSObject <AMSMetricsDataSource>
 {
-    NSMutableArray *_sortedEvents;
+    NSMutableDictionary *_batches;
 }
 
-@property(retain, nonatomic) NSMutableArray *sortedEvents; // @synthesize sortedEvents=_sortedEvents;
++ (id)batchesFromEvents:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *batches; // @synthesize batches=_batches;
 - (void)willStartBatchingWithLogKey:(id)arg1 error:(id *)arg2;
 - (void)skipEvents:(id)arg1 error:(id *)arg2;
 - (void)removeEvents:(id)arg1 error:(id *)arg2;

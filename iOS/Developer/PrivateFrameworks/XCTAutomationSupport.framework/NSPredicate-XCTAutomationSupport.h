@@ -9,6 +9,7 @@
 @class NSSet;
 
 @interface NSPredicate (XCTAutomationSupport)
+- (id)xct_matchedValuesOfClass:(Class)arg1 forKeyPath:(id)arg2;
 - (id)_xct_requiredKeyPathsOrError:(id *)arg1;
 @property(readonly, copy) NSSet *_xct_allExpressions;
 @property(readonly) _Bool _xct_containsBlockOrFunctionPredicatesOrExpressions;

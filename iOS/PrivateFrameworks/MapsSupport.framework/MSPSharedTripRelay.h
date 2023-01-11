@@ -8,8 +8,8 @@
 
 #import <MapsSupport/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, MSPSharedTripGroupSession, MSPSharedTripStorageController, NSMutableDictionary, NSString;
-@protocol MSPSharedTripRelayDelegate;
+@class IDSService, MSPSharedTripGroupSession, MSPSharedTripSharingIdentity, MSPSharedTripStorageController, NSArray, NSMutableDictionary, NSString;
+@protocol MSPSharedTripAvailabiltyDelegate, MSPSharedTripRelayDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MSPSharedTripRelay : NSObject <IDSServiceDelegate>
@@ -22,12 +22,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_packetBuckets;
     MSPSharedTripStorageController *_storageController;
     id <MSPSharedTripRelayDelegate> _delegate;
+    id <MSPSharedTripAvailabiltyDelegate> _availabilityDelegate;
 }
 
-+ (id)sharedRelay;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <MSPSharedTripAvailabiltyDelegate> availabilityDelegate; // @synthesize availabilityDelegate=_availabilityDelegate;
 @property(nonatomic) __weak id <MSPSharedTripRelayDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) MSPSharedTripStorageController *storageController; // @synthesize storageController=_storageController;
-- (void).cxx_destruct;
+- (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 fromID:(id)arg4 hasBeenDeliveredWithContext:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(_Bool)arg4 error:(id)arg5 context:(id)arg6;
 - (void)service:(id)arg1 account:(id)arg2 receivedGroupSessionParticipantUpdate:(id)arg3;
@@ -43,7 +45,13 @@ __attribute__((visibility("hidden")))
 - (id)removeSharingWith:(id)arg1;
 - (id)startSharingGroupSessionWithTripIdentifer:(id)arg1;
 - (void)_startService;
+@property(readonly, nonatomic) NSArray *accountAliases;
+@property(readonly, nonatomic) _Bool hasValidIDSAccount;
+@property(readonly, nonatomic) NSString *sharingHandle;
+@property(readonly, nonatomic) NSString *sharingName;
+@property(readonly, nonatomic) MSPSharedTripSharingIdentity *sharingIdentity;
 - (void)_fetchDisplayName;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

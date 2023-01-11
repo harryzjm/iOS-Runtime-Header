@@ -17,18 +17,18 @@
     FCPurchaseLookupResult *_lookupResult;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCPurchaseLookupResult *lookupResult; // @synthesize lookupResult=_lookupResult;
 @property(copy, nonatomic) NSNumber *externalVersionID; // @synthesize externalVersionID=_externalVersionID;
 @property(copy, nonatomic) NSNumber *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
 - (id)createAMSLookupWithProfile:(id)arg1;
 - (id)promiseBundleIDWithAppAdamID:(id)arg1;
-- (id)promiseProductLookupWithLookupResult:(id)arg1 externalVersionID:(id)arg2 restorePurcase:(_Bool)arg3;
+- (id)promiseProductLookupWithLookupResult:(id)arg1 externalVersionID:(id)arg2 restorePurchase:(_Bool)arg3;
 - (id)promiseStoreExternalVersionWithAppAdamID:(id)arg1;
 - (id)checkIfOfferUsedAlreadyWithAppAdamID:(id)arg1;
 - (id)promiseStoreExternalVersionWithLookupResult:(id)arg1;
 - (id)promisePurchaseLookupWithAppAdamID:(id)arg1;
-- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurcase:(_Bool)arg2;
+- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurchase:(_Bool)arg2;
 
 @end
 

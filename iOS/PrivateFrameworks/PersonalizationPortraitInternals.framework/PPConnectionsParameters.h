@@ -6,25 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary;
 @protocol OS_dispatch_queue;
 
 @interface PPConnectionsParameters : NSObject
 {
-    NSString *_abGroupIdentifier;
     NSDictionary *_assets;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)donationBlacklistApps;
-- (id)donationWhitelistApps;
-- (id)donationBlacklistWebsites;
-- (id)donationWhitelistWebsites;
-- (id)locationPredictionBlacklistApps;
-- (_Bool)shouldUseWhitelistApps;
-- (_Bool)shouldUseWhitelistWebsite;
+- (id)donationBlockedApps;
+- (id)donationAllowedApps;
+- (id)donationBlockedWebsites;
+- (id)donationAllowedWebsites;
+- (id)locationPredictionBlockedApps;
+- (_Bool)shouldUseAllowedApps;
+- (_Bool)shouldUseAllowedWebsite;
 - (double)locationAppLastUseTimeoutSeconds;
 - (double)pasteboardItemExpirySeconds;
 - (double)linguisticTriggerExpirySeconds;

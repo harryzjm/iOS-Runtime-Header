@@ -18,7 +18,7 @@
 @property(nonatomic) unsigned long long framesRendered; // @synthesize framesRendered=_framesRendered;
 @property(nonatomic) _Bool muted; // @synthesize muted=_muted;
 @property(readonly, nonatomic) double phase; // @synthesize phase=_phase;
-- (void)renderInBuffer:(vector_3203cf93 *)arg1 atFrame:(unsigned long long)arg2 numSamples:(unsigned long long)arg3;
+- (void)renderInBuffer:(vector_12bd641b *)arg1 atFrame:(unsigned long long)arg2 numSamples:(unsigned long long)arg3;
 - (id)initWithSampleRate:(double)arg1 envelope:(id)arg2;
 - (void)startRelease;
 - (void)resetRelease;

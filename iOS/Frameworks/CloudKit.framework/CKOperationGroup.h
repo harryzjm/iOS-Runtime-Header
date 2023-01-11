@@ -12,23 +12,22 @@
 
 @interface CKOperationGroup : NSObject <NSSecureCoding>
 {
+    CKOperationGroupSystemImposedInfo *_systemImposedInfo_locked;
     long long _expectedSendSize;
     long long _expectedReceiveSize;
     CKOperationConfiguration *_defaultConfiguration;
     NSString *_operationGroupID;
     NSString *_name;
-    CKOperationGroupSystemImposedInfo *_systemImposedInfo;
     NSNumber *_quantityNumber;
     NSString *_authPromptReason;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy) NSString *authPromptReason; // @synthesize authPromptReason=_authPromptReason;
 @property(copy, nonatomic) NSNumber *quantityNumber; // @synthesize quantityNumber=_quantityNumber;
-@property(retain, nonatomic) CKOperationGroupSystemImposedInfo *systemImposedInfo; // @synthesize systemImposedInfo=_systemImposedInfo;
 @property(copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *operationGroupID; // @synthesize operationGroupID=_operationGroupID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
@@ -41,6 +40,7 @@
 @property long long expectedReceiveSize; // @synthesize expectedReceiveSize=_expectedReceiveSize;
 @property long long expectedSendSize; // @synthesize expectedSendSize=_expectedSendSize;
 @property unsigned long long quantity;
+@property(copy, nonatomic) CKOperationGroupSystemImposedInfo *systemImposedInfo;
 - (id)init;
 
 @end

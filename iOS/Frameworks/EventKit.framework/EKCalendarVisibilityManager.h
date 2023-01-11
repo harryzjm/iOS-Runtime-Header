@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <EventKit/CalActivatable-Protocol.h>
+
 @class CalDarwinNotificationListener, EKEventStore, EKSource, NSArray;
 
-@interface EKCalendarVisibilityManager : NSObject
+@interface EKCalendarVisibilityManager : NSObject <CalActivatable>
 {
+    _Bool _active;
     NSArray *_invisibleCalendars;
     EKSource *_limitedToSource;
     EKEventStore *_eventStore;
@@ -17,22 +20,28 @@
     CalDarwinNotificationListener *_notificationListener;
 }
 
++ (id)_defaultQueue;
 + (id)visibilityChangedNotificationName;
-@property(retain, nonatomic) CalDarwinNotificationListener *notificationListener; // @synthesize notificationListener=_notificationListener;
-@property(copy, nonatomic) CDUnknownBlockType visibilityChangedCallback; // @synthesize visibilityChangedCallback=_visibilityChangedCallback;
-@property(retain, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
+- (void).cxx_destruct;
+@property _Bool active; // @synthesize active=_active;
+@property(readonly, nonatomic) CalDarwinNotificationListener *notificationListener; // @synthesize notificationListener=_notificationListener;
+@property(readonly, nonatomic) CDUnknownBlockType visibilityChangedCallback; // @synthesize visibilityChangedCallback=_visibilityChangedCallback;
+@property(readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property(retain, nonatomic) EKSource *limitedToSource; // @synthesize limitedToSource=_limitedToSource;
 @property(retain, nonatomic) NSArray *invisibleCalendars; // @synthesize invisibleCalendars=_invisibleCalendars;
-- (void).cxx_destruct;
+- (id)initWithEventStore:(id)arg1 limitedToSource:(id)arg2 visibilityChangedCallback:(CDUnknownBlockType)arg3;
+- (id)initWithEventStore:(id)arg1 visibilityChangedCallback:(CDUnknownBlockType)arg2;
 - (id)_deselectedCalendarIdentifiers;
 - (id)_calendarsThatAreVisible:(_Bool)arg1 filteredByIdentity:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *invisibleCalendarsForAllIdentities;
 @property(readonly, nonatomic) NSArray *visibleCalendarsForAllIdentities;
 @property(readonly, nonatomic) NSArray *visibleCalendars;
 - (void)dealloc;
-- (id)initWithEventStore:(id)arg1 limitedToSource:(id)arg2 visibilityChangedCallback:(CDUnknownBlockType)arg3;
-- (id)initWithEventStore:(id)arg1 visibilityChangedCallback:(CDUnknownBlockType)arg2;
-- (id)init;
+- (void)deactivate;
+- (void)activate;
+- (id)initWithEventStore:(id)arg1 limitedToSource:(id)arg2 visibilityChangedCallback:(CDUnknownBlockType)arg3 queue:(id)arg4 activate:(_Bool)arg5;
+- (id)initWithEventStore:(id)arg1 limitedToSource:(id)arg2 visibilityChangedCallback:(CDUnknownBlockType)arg3 queue:(id)arg4;
+- (id)initWithEventStore:(id)arg1 visibilityChangedCallback:(CDUnknownBlockType)arg2 queue:(id)arg3;
 
 @end
 

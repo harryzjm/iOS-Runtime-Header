@@ -8,6 +8,7 @@
 
 @interface HKPointLabelEngine : NSObject
 {
+    _Bool _isLabelShiftingEnabled;
     _Bool _lastRenderOverlapped;
     CDUnknownBlockType _sizeForValue;
     long long _state;
@@ -20,6 +21,7 @@
     CDStruct_d6e4b0bd _currentRenderingData;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool lastRenderOverlapped; // @synthesize lastRenderOverlapped=_lastRenderOverlapped;
 @property(nonatomic) CDStruct_d6e4b0bd currentRenderingData; // @synthesize currentRenderingData=_currentRenderingData;
 @property(nonatomic) CDStruct_d6e4b0bd previousRenderingData; // @synthesize previousRenderingData=_previousRenderingData;
@@ -29,14 +31,16 @@
 @property(nonatomic) struct CGPoint previousTransformedPoint; // @synthesize previousTransformedPoint=_previousTransformedPoint;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, copy, nonatomic) CDUnknownBlockType sizeForValue; // @synthesize sizeForValue=_sizeForValue;
+@property(nonatomic) _Bool isLabelShiftingEnabled; // @synthesize isLabelShiftingEnabled=_isLabelShiftingEnabled;
 @property(readonly, nonatomic) struct CGRect boundingRegion; // @synthesize boundingRegion=_boundingRegion;
-- (void).cxx_destruct;
+- (void)_transformRectIfNeededForData:(CDStruct_d6e4b0bd *)arg1 withTransformedPoint:(struct CGPoint)arg2;
+- (void)_layoutTransformRectVerticallyForData:(CDStruct_d6e4b0bd *)arg1 withTransformedPoint:(struct CGPoint)arg2;
 - (CDStruct_d6e4b0bd)_computeRenderingDataForValue:(double)arg1 transformedPoint:(struct CGPoint)arg2 previousSlope:(long long)arg3 nextSlope:(long long)arg4 previousOptions:(long long)arg5;
 - (long long)_slopeForPoint:(struct CGPoint)arg1 otherPoint:(struct CGPoint)arg2;
 - (CDStruct_d6e4b0bd)renderingData;
 - (_Bool)processLastPoint;
 - (_Bool)processTransformedPoint:(struct CGPoint)arg1 untransformedPoint:(struct CGPoint)arg2;
-- (id)initWithBoundingRegion:(struct CGRect)arg1 labelSizeBlock:(CDUnknownBlockType)arg2;
+- (id)initWithBoundingRegion:(struct CGRect)arg1 isLabelShiftingEnabled:(_Bool)arg2 labelSizeBlock:(CDUnknownBlockType)arg3;
 
 @end
 

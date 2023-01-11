@@ -7,27 +7,30 @@
 #import <UIKit/UIView.h>
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
+#import <PhotosUICore/UITextViewDelegate-Protocol.h>
 
-@class NSString, PXMomentShareStatusPresentation, UILabel, UIProgressView, UIVisualEffectView;
-@protocol PXCMMProgressBannerViewLayoutDelegate;
+@class NSString, PXMomentShareStatusPresentation, UIAlertController, UILabel, UIProgressView, UITextView, UIVisualEffectView;
+@protocol PXCMMProgressBannerViewDelegate;
 
-@interface PXCMMProgressBannerView : UIView <PXChangeObserver>
+@interface PXCMMProgressBannerView : UIView <PXChangeObserver, UITextViewDelegate>
 {
     PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     UIVisualEffectView *_visualEffectView;
-    UILabel *_activityLabel;
+    UITextView *_activityTextView;
     UILabel *_pauseLabel;
     UIProgressView *_progressView;
     double _layoutHeight;
-    id <PXCMMProgressBannerViewLayoutDelegate> _layoutDelegate;
+    id <PXCMMProgressBannerViewDelegate> _delegate;
+    UIAlertController *_alertController;
 }
 
-@property(readonly, nonatomic) double layoutHeight; // @synthesize layoutHeight=_layoutHeight;
-@property(nonatomic) __weak id <PXCMMProgressBannerViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+@property(readonly, nonatomic) double layoutHeight; // @synthesize layoutHeight=_layoutHeight;
+@property(nonatomic) __weak id <PXCMMProgressBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)_updateFonts;
 - (struct CGSize)_performLayoutInWidth:(double)arg1 updateSubviewFrames:(_Bool)arg2;
 - (void)_updateProgress;
 - (void)_updatePauseTitle;

@@ -16,7 +16,9 @@
     MISSING_TYPE *expandButton;
     MISSING_TYPE *isSmall;
     MISSING_TYPE *isExpanded;
+    MISSING_TYPE *customCornerRadius;
     MISSING_TYPE *isMomentsAvailable;
+    MISSING_TYPE *recordingLocalVideo;
     MISSING_TYPE *delegate;
 }
 

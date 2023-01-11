@@ -26,6 +26,8 @@
     PXCMMPreviewAsset *_previewAsset;
     PXCMMPreviewUIImageProvider *_previewImageProvider;
     _Bool _readyForBubbleStateTransitions;
+    _Bool _isExpungingAndRefetching;
+    _Bool _triggeredForcedSync;
     _Bool _isSender;
     _Bool _isPending;
     _Bool _highlighted;
@@ -38,6 +40,7 @@
 
 + (_Bool)_isPermanentFailureURL:(id)arg1;
 + (void)_registerPermanentFailureURL:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXMomentShareStatusPresentation *momentShareStatusPresentation; // @synthesize momentShareStatusPresentation=_momentShareStatusPresentation;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
@@ -47,7 +50,6 @@
 @property(readonly, nonatomic) _Bool isPending; // @synthesize isPending=_isPending;
 @property(readonly, nonatomic) _Bool isSender; // @synthesize isSender=_isSender;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)touchingUIGestureRecognizerWillEndTouching:(id)arg1;
@@ -64,10 +66,12 @@
 - (void)_doubleTapGesture:(id)arg1;
 - (void)_panGesture:(id)arg1;
 - (void)_tapGesture:(id)arg1;
+- (_Bool)_shouldOpenCloudSettings;
 - (_Bool)_shouldOpenInSafari;
 - (_Bool)_shouldRetryOnTap;
 - (_Bool)_shouldNavigateToContent;
 - (void)_retryMomentShareFetch;
+- (void)_triggerForcedSyncIfNeeded;
 - (void)_acceptMomentShareIfNeeded:(id)arg1;
 - (void)_autoAcceptMomentShareIfNeeded:(id)arg1;
 - (void)_momentShareURL:(id)arg1 fetchDidFailWithError:(id)arg2;

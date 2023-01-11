@@ -15,8 +15,10 @@
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
++ (_Bool)supportsCustomUserReportRequestAfforance;
 + (_Bool)supportsRecyclingForCardSection:(id)arg1;
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
+- (void)didPressTrailingFootnoteButton;
 - (void)didPressFootnoteButton;
 - (void)didPressMoreButton;
 - (void)updateWithRowModel:(id)arg1;

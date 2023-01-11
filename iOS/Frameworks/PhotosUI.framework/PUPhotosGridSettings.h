@@ -10,7 +10,6 @@
 {
     _Bool _badgeAllItemsAsFavorites;
     _Bool _displayAllItemsAsBursts;
-    _Bool _simulateLongTitles;
     _Bool _allowDynamicDetailsTitles;
     _Bool _forceJPEGThumbnailsInDefaultGrid;
     _Bool _flashDegradedImages;
@@ -51,7 +50,6 @@
 @property(nonatomic) _Bool forceJPEGThumbnailsInDefaultGrid; // @synthesize forceJPEGThumbnailsInDefaultGrid=_forceJPEGThumbnailsInDefaultGrid;
 @property(nonatomic) double simulatedDetailsAttributesLoadingDelay; // @synthesize simulatedDetailsAttributesLoadingDelay=_simulatedDetailsAttributesLoadingDelay;
 @property(nonatomic) _Bool allowDynamicDetailsTitles; // @synthesize allowDynamicDetailsTitles=_allowDynamicDetailsTitles;
-@property(nonatomic) _Bool simulateLongTitles; // @synthesize simulateLongTitles=_simulateLongTitles;
 @property(nonatomic) _Bool displayAllItemsAsBursts; // @synthesize displayAllItemsAsBursts=_displayAllItemsAsBursts;
 @property(nonatomic) _Bool badgeAllItemsAsFavorites; // @synthesize badgeAllItemsAsFavorites=_badgeAllItemsAsFavorites;
 @property(nonatomic) double maximumSpacing; // @synthesize maximumSpacing=_maximumSpacing;

@@ -9,7 +9,7 @@
 #import <MTLSimDriver/MTLTexture-Protocol.h>
 #import <MTLSimDriver/MTLTextureImplementation-Protocol.h>
 
-@class MTLResourceAllocationInfo, MTLSimBuffer, NSString;
+@class MTLSimBuffer, NSString;
 @protocol MTLBuffer, MTLDevice, MTLHeap, MTLResource, MTLTexture;
 
 __attribute__((visibility("hidden")))
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
     _Bool _isDrawable;
     unsigned long long rotation;
     unsigned long long iosurfacePlane;
+    unsigned long long _uniqueIdentifier;
     unsigned long long parentRelativeSlice;
     id <MTLResource> rootResource;
 }
@@ -108,30 +109,30 @@ __attribute__((visibility("hidden")))
 - (void)decompressPlaceholder:(const char *)arg1 expandedTex:(char *)arg2 srcFormat:(unsigned long long)arg3 destFormat:(unsigned long long)arg4 width:(unsigned long long)arg5 height:(unsigned long long)arg6 destRowBytes:(unsigned long long)arg7 srcRowBytes:(unsigned long long)arg8;
 @property(readonly) _Bool isSparse;
 @property(readonly) id <MTLTexture> decompressedTextureView;
+@property(readonly) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly) id <MTLBuffer> backingBuffer;
 @property(readonly) long long compressionFeedback; // @dynamic compressionFeedback;
 
 // Remaining properties
 @property(readonly) unsigned long long allocatedSize;
-@property(readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
+@property(readonly) unsigned long long allocationID;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) id <MTLDevice> device;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly) unsigned long long hash;
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) unsigned long long heapOffset;
 @property(copy) NSString *label;
 @property(readonly) unsigned long long protectionOptions;
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) unsigned long long resourceOptions;
-@property(readonly) unsigned int resourceRef;
 @property int responsibleProcess;
-@property(readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
+@property(readonly) unsigned int serializerResourceRef;
 @property(readonly) unsigned long long sparseSurfaceDefaultValue;
 @property(readonly) unsigned long long storageMode;
 @property(readonly) Class superclass;
 @property(readonly) unsigned long long unfilteredResourceOptions;
-@property(readonly) unsigned long long uniqueIdentifier;
 
 @end
 

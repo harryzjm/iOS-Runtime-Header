@@ -30,6 +30,7 @@
     NSSet *_providers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *providers; // @synthesize providers=_providers;
 @property(retain, nonatomic) NSMutableArray *evalPredictedExitDates; // @synthesize evalPredictedExitDates=_evalPredictedExitDates;
 @property(retain, nonatomic) NSMutableArray *evalPredictedLocationsOfInterest; // @synthesize evalPredictedLocationsOfInterest=_evalPredictedLocationsOfInterest;
@@ -47,7 +48,6 @@
 @property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property(retain, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
 @property(retain, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
-- (void).cxx_destruct;
 - (void)onLearnedLocationManagerNotification:(id)arg1;
 - (void)_onLearnedLocationManagerNotification:(id)arg1;
 - (void)_updateEvalMode;
@@ -59,10 +59,10 @@
 - (void)fetchPredictedLocationsOfInterestOnDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 handler:(CDUnknownBlockType)arg4;
-- (id)_sortedAndMergedPredictedLocationsOfInterest:(id)arg1;
-- (id)_sortedPredictedLocationsOfInterest:(id)arg1;
-- (id)_mergedPredictedLocationsOfInterest:(id)arg1;
-- (id)_mergePredictedLocationOfInterest:(id)arg1 otherPredictedLocationOfInterest:(id)arg2;
+- (id)_sortAndDedupePredictedLocationsOfInterest:(id)arg1;
+- (id)_sortPredictedLocationsOfInterest:(id)arg1;
+- (id)_dedupePredictedLocationsOfInterest:(id)arg1;
+- (id)_mergePredictedLocationsOfInterest:(id)arg1;
 - (id)_mergedLocationOfInterest:(id)arg1 otherLocationOfInterest:(id)arg2;
 - (void)purgeWithReferenceDate:(id)arg1;
 - (void)_purgeWithReferenceDate:(id)arg1;

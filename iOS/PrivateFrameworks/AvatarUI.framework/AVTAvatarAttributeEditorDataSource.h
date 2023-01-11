@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarAttributeEditorState, AVTUIEnvironment, NSArray, NSMutableDictionary;
+#import <AvatarUI/AVTAvatarAttributeEditorModelManagerDelegateInternal-Protocol.h>
+
+@class AVTUIEnvironment, NSArray, NSMutableDictionary, NSString;
 @protocol AVTTaskScheduler;
 
-@interface AVTAvatarAttributeEditorDataSource : NSObject
+@interface AVTAvatarAttributeEditorDataSource : NSObject <AVTAvatarAttributeEditorModelManagerDelegateInternal>
 {
     unsigned long long _currentCategoryIndex;
-    AVTAvatarAttributeEditorState *_editorState;
     NSArray *_categories;
     NSMutableDictionary *_sectionControllers;
     AVTUIEnvironment *_environment;
@@ -21,14 +22,12 @@
 
 + (unsigned long long)indexForCurrentCategoryGivenPreferredIdentifier:(id)arg1 categories:(id)arg2;
 + (id)sectionControllerForSection:(id)arg1 renderingScheduler:(id)arg2 environment:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) NSMutableDictionary *sectionControllers; // @synthesize sectionControllers=_sectionControllers;
 @property(retain, nonatomic) NSArray *categories; // @synthesize categories=_categories;
-@property(readonly, nonatomic) AVTAvatarAttributeEditorState *editorState; // @synthesize editorState=_editorState;
 @property(nonatomic) unsigned long long currentCategoryIndex; // @synthesize currentCategoryIndex=_currentCategoryIndex;
-- (void).cxx_destruct;
-- (_Bool)shouldDisplaySectionForCategory:(long long)arg1;
 - (_Bool)shouldDisplaySectionWithDisplayCondition:(id)arg1 inCategoryAtIndex:(unsigned long long)arg2;
 - (id)currentCategoryIdentifier;
 - (id)indexesForSectionsPresentIn:(id)arg1 butNotIn:(id)arg2;
@@ -39,11 +38,18 @@
 - (id)sectionControllerForSectionIndex:(long long)arg1 inCategoryAtIndex:(long long)arg2;
 - (long long)numberOfSectionsForCategoryAtIndex:(long long)arg1;
 - (id)categoryAtIndex:(long long)arg1;
-- (id)namesForCategories;
+- (id)groupPickerItemsForCategories;
 - (long long)numberOfCategories;
 - (void)discardControllersForNonCurrentCategory;
 - (void)reloadWithCategories:(id)arg1 currentCategoryIndex:(unsigned long long)arg2;
-- (id)initWithCategories:(id)arg1 currentCategoryIdentifier:(id)arg2 renderingScheduler:(id)arg3 editorState:(id)arg4 environment:(id)arg5;
+- (id)initWithCategories:(id)arg1 currentCategoryIdentifier:(id)arg2 renderingScheduler:(id)arg3 environment:(id)arg4;
+- (id)initWithCategories:(id)arg1 currentCategoryIdentifier:(id)arg2 renderingScheduler:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

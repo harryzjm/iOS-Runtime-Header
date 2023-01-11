@@ -15,6 +15,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)readableTrialTreatmentsMappingWithError:(id *)arg1;
 - (id)variantNameWithError:(id *)arg1;
 - (unsigned long long)assetVersionWithError:(id *)arg1;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

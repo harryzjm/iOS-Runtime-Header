@@ -13,17 +13,17 @@
 @interface GEOLogMsgStateDeviceLocale : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_deviceInputLocale;
     NSString *_deviceOutputLocale;
     NSString *_deviceSettingsLocale;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_deviceInputLocale:1;
         unsigned int read_deviceOutputLocale:1;
         unsigned int read_deviceSettingsLocale:1;
-        unsigned int wrote_deviceInputLocale:1;
-        unsigned int wrote_deviceOutputLocale:1;
-        unsigned int wrote_deviceSettingsLocale:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,17 +37,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *deviceOutputLocale;
 @property(readonly, nonatomic) _Bool hasDeviceOutputLocale;
-- (void)_readDeviceOutputLocale;
 @property(retain, nonatomic) NSString *deviceInputLocale;
 @property(readonly, nonatomic) _Bool hasDeviceInputLocale;
-- (void)_readDeviceInputLocale;
 @property(retain, nonatomic) NSString *deviceSettingsLocale;
 @property(readonly, nonatomic) _Bool hasDeviceSettingsLocale;
-- (void)_readDeviceSettingsLocale;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

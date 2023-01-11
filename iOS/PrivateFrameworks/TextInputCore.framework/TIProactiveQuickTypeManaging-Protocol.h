@@ -4,22 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TextInputCore/NSObject-Protocol.h>
+@class NSArray, NSDictionary, NSSet, NSString, TIKeyboardSecureCandidateRenderTraits, TIKeyboardSecureCandidateRenderer, TIKeyboardState;
 
-@class NSArray, NSSet, NSString, TIKeyboardSecureCandidateRenderTraits, TIKeyboardSecureCandidateRenderer;
-
-@protocol TIProactiveQuickTypeManaging <NSObject>
-- (NSArray *)getMeCardEmailAddresses;
+@protocol TIProactiveQuickTypeManaging
+- (NSArray *)searchForMeCardRegions;
+- (NSArray *)searchForMeCardEmailAddresses;
+- (void)propogateMetrics:(NSString *)arg1 data:(NSDictionary *)arg2;
+- (void)provideFeedbackForString:(NSString *)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)suggestionNotAccepted:(NSArray *)arg1;
 - (void)suggestionAccepted:(NSString *)arg1 fieldType:(NSString *)arg2;
 - (void)userActionWithNoNewTriggers:(NSString *)arg1 fieldType:(NSString *)arg2;
+- (_Bool)usePQT2Flow;
 - (_Bool)isAutoCompleteEnabled;
 - (_Bool)isAutoPopupEnabled;
 - (_Bool)isEnabled;
 - (void)reset;
 - (NSArray *)generateAndRenderProactiveSuggestionsWithInput:(NSString *)arg1 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg2 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg3 textContentType:(NSString *)arg4;
 - (void)generateAndRenderProactiveSuggestionsWithInput:(NSString *)arg1 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg2 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg3 textContentType:(NSString *)arg4 async:(_Bool)arg5 completion:(void (^)(NSArray *))arg6;
-- (NSArray *)generateAndRenderProactiveSuggestionsWithTriggers:(NSArray *)arg1 withAdditionalPredictions:(NSArray *)arg2 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg3 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg4 withInput:(NSString *)arg5 withRecipient:(NSString *)arg6 withApplication:(NSString *)arg7 withLocale:(NSString *)arg8 withTextContentType:(NSString *)arg9 withAvailableApps:(NSSet *)arg10 logBlock:(void (^)(NSString *))arg11;
-- (void)generateAndRenderProactiveSuggestionsWithTriggers:(NSArray *)arg1 withAdditionalPredictions:(NSArray *)arg2 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg3 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg4 withInput:(NSString *)arg5 withRecipient:(NSString *)arg6 withApplication:(NSString *)arg7 withLocale:(NSString *)arg8 withTextContentType:(NSString *)arg9 withAvailableApps:(NSSet *)arg10 logBlock:(void (^)(NSString *))arg11 async:(_Bool)arg12 completion:(void (^)(NSArray *))arg13;
+- (NSArray *)generateAndRenderProactiveSuggestionsWithTriggers:(NSArray *)arg1 withKeyboardState:(TIKeyboardState *)arg2 withAdditionalPredictions:(NSArray *)arg3 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg4 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg5 withInput:(NSString *)arg6 withRecipient:(NSString *)arg7 withApplication:(NSString *)arg8 withLocale:(NSString *)arg9 nextInputWillInsertAutospace:(_Bool)arg10 withAvailableApps:(NSSet *)arg11 logBlock:(void (^)(NSString *))arg12;
+- (void)generateAndRenderProactiveSuggestionsForInput:(NSArray *)arg1 withKeyboardState:(TIKeyboardState *)arg2 withAdditionalPredictions:(NSArray *)arg3 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg4 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg5 withInput:(NSString *)arg6 withRecipient:(NSString *)arg7 withApplication:(NSString *)arg8 withLocale:(NSString *)arg9 nextInputWillInsertAutospace:(_Bool)arg10 withIsResponseDenyListed:(_Bool)arg11 withShouldDisableAutoCaps:(_Bool)arg12 withAvailableApps:(NSSet *)arg13 logBlock:(void (^)(NSString *))arg14 async:(_Bool)arg15 completion:(void (^)(NSArray *))arg16;
 @end
 

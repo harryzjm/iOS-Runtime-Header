@@ -17,9 +17,10 @@
 
 + (id)enabledKey;
 + (id)autoKey;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NUAdjustment *adjustment; // @synthesize adjustment=_adjustment;
 @property(retain, nonatomic) NUIdentifier *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (id)debugDescription;
 - (_Bool)_isDefault;
 @property(readonly, nonatomic) NSDictionary *settings;
 - (id)_primitiveValueForKey:(id)arg1;
@@ -27,6 +28,9 @@
 - (_Bool)isSettingEqual:(id)arg1 forKey:(id)arg2;
 - (_Bool)isEqual:(id)arg1 forKeys:(id)arg2;
 - (_Bool)isEqual:(id)arg1 visualChangesOnly:(_Bool)arg2;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToAdjustmentController:(id)arg1;
+- (unsigned long long)hash;
 - (id)visualInputKeys;
 - (CDStruct_1b6d18a9)timeFromInputKey:(id)arg1 timescaleKey:(id)arg2;
 - (void)interpolateFromStart:(id)arg1 toEnd:(id)arg2 progress:(double)arg3;

@@ -15,7 +15,6 @@
 @interface _INPBTrainTrip : PBCodable <_INPBTrainTrip, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     NSString *_arrivalPlatform;
     _INPBLocationValue *_arrivalStationLocation;
     NSString *_departurePlatform;
@@ -28,7 +27,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDateTimeRange *tripDuration; // @synthesize tripDuration=_tripDuration;
 @property(copy, nonatomic) NSString *trainNumber; // @synthesize trainNumber=_trainNumber;
 @property(copy, nonatomic) NSString *trainName; // @synthesize trainName=_trainName;
@@ -38,7 +37,6 @@
 @property(copy, nonatomic) NSString *departurePlatform; // @synthesize departurePlatform=_departurePlatform;
 @property(retain, nonatomic) _INPBLocationValue *arrivalStationLocation; // @synthesize arrivalStationLocation=_arrivalStationLocation;
 @property(copy, nonatomic) NSString *arrivalPlatform; // @synthesize arrivalPlatform=_arrivalPlatform;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

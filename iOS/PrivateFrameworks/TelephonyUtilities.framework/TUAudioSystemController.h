@@ -48,8 +48,9 @@
 + (id)sourceIdentifierForRouteID:(id)arg1;
 + (id)sharedAudioSystemController;
 + (id)sharedSystemController;
-@property(nonatomic) __weak id <TUAudioSystemControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <TUAudioSystemControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) _Bool otherSessionsRequestNoRingtoneInterruption;
 - (_Bool)shouldSuppressCallUsingRoute:(id)arg1;
 - (id)pickableRouteWithUniqueIdentifier:(id)arg1;
 - (_Bool)pickRoute:(id)arg1 error:(id *)arg2;

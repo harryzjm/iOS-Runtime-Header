@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) double min; // @synthesize min=_min;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)description;
 @property(readonly, nonatomic) _Bool enabled;
 - (_Bool)isSingleThreshold;

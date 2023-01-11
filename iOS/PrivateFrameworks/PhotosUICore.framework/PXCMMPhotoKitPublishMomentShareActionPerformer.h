@@ -37,7 +37,6 @@
 - (void)_createMomentShare;
 - (void)_presentInternalSharingAlert;
 - (void)performUserInteractionTask;
-- (id)_creationRequestForMomentShareParticipant:(id)arg1;
 - (id)_keyAssetForMomentShareCreationWithAssets:(id)arg1;
 - (void)_requestPreviewImagesForAsset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 

@@ -6,14 +6,17 @@
 
 #import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, UIAccessibilityHUDGestureManager, UIColor, UIGestureRecognizer, UIScreen, UIView, _UIStatusBarAction, _UIStatusBarData, _UIStatusBarDataAggregator, _UIStatusBarStyleAttributes;
+@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, UIAccessibilityHUDGestureManager, UIColor, UIGestureRecognizer, UIPointerInteraction, UIScreen, UIView, _UIStatusBarAction, _UIStatusBarData, _UIStatusBarDataAggregator, _UIStatusBarStyleAttributes;
 @protocol _UIStatusBarActionable, _UIStatusBarVisualProvider;
 
-@interface _UIStatusBar <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate>
+@interface _UIStatusBar <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, UIPointerInteractionDelegate>
 {
     id <_UIStatusBarVisualProvider> _visualProvider;
+    _Bool _needsLayoutUpdateForPartFrames;
     UIScreen *_targetScreen;
+    NSDictionary *_visualProviderInfo;
     long long _style;
     UIColor *_foregroundColor;
     long long _mode;
@@ -26,6 +29,8 @@
     CDUnknownBlockType _updateCompletionHandler;
     UIView *_foregroundView;
     id <_UIStatusBarActionable> _targetActionable;
+    UIPointerInteraction *_pointerInteraction;
+    id <_UIStatusBarActionable> _hoveredActionable;
     UIAccessibilityHUDGestureManager *_accessibilityHUDGestureManager;
     Class _visualProviderClass;
     NSDictionary *_regions;
@@ -33,11 +38,17 @@
     _UIStatusBarData *_currentAggregatedData;
     _UIStatusBarStyleAttributes *_styleAttributes;
     _UIStatusBarAction *_action;
+    CDUnknownBlockType _regionActionValidationBlock;
     struct CGRect _avoidanceFrame;
 }
 
-+ (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2;
++ (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2 onLockScreen:(_Bool)arg3;
++ (id)sensorActivityIndicatorPartIdentifier;
++ (id)sensorActivityIndicator;
++ (void)setSensorActivityIndicator:(id)arg1;
 + (id)stringForStatusBarStyle:(long long)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType regionActionValidationBlock; // @synthesize regionActionValidationBlock=_regionActionValidationBlock;
 @property(retain, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
 @property(retain, nonatomic) _UIStatusBarStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property(readonly, nonatomic) _UIStatusBarData *currentAggregatedData; // @synthesize currentAggregatedData=_currentAggregatedData;
@@ -45,6 +56,8 @@
 @property(readonly, nonatomic) NSDictionary *regions; // @synthesize regions=_regions;
 @property(retain, nonatomic, getter=_visualProviderClass, setter=_setVisualProviderClass:) Class visualProviderClass; // @synthesize visualProviderClass=_visualProviderClass;
 @property(retain, nonatomic) UIAccessibilityHUDGestureManager *accessibilityHUDGestureManager; // @synthesize accessibilityHUDGestureManager=_accessibilityHUDGestureManager;
+@property(nonatomic) __weak id <_UIStatusBarActionable> hoveredActionable; // @synthesize hoveredActionable=_hoveredActionable;
+@property(retain, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property(nonatomic) __weak id <_UIStatusBarActionable> targetActionable; // @synthesize targetActionable=_targetActionable;
 @property(retain, nonatomic) UIView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property(copy, nonatomic) CDUnknownBlockType updateCompletionHandler; // @synthesize updateCompletionHandler=_updateCompletionHandler;
@@ -58,14 +71,15 @@
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(copy, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(nonatomic) long long style; // @synthesize style=_style;
+@property(retain, nonatomic) NSDictionary *visualProviderInfo; // @synthesize visualProviderInfo=_visualProviderInfo;
 @property(retain, nonatomic) UIScreen *targetScreen; // @synthesize targetScreen=_targetScreen;
-- (void).cxx_destruct;
 - (void)_dismissAccessibilityHUDForGestureManager:(id)arg1;
 - (void)_accessibilityHUDGestureManager:(id)arg1 showHUDItem:(id)arg2;
 - (_Bool)_accessibilityHUDGestureManager:(id)arg1 shouldTerminateHUDGestureForOtherGestureRecognizer:(id)arg2;
 - (_Bool)_accessibilityHUDGestureManager:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
 - (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
+- (_Bool)_accessibilityHUDGestureManager:(id)arg1 shouldBeginAtPoint:(struct CGPoint)arg2;
 - (id)_statusBarWindowForAccessibilityHUD;
 - (id)dataEntryKeysForItemsWithIdentifiers:(id)arg1;
 - (id)itemIdentifiersInRegionsWithIdentifiers:(id)arg1;
@@ -99,9 +113,17 @@
 - (_Bool)_gestureRecognizer:(id)arg1 pressInsideActionable:(id)arg2;
 - (_Bool)_gestureRecognizer:(id)arg1 touchInsideActionable:(id)arg2;
 - (_Bool)_gestureRecognizer:(id)arg1 isInsideActionable:(id)arg2;
+- (void)_updateActionGestureRecognizerAllowableTouchTypesIfNeeded;
 - (struct CGRect)_frameForActionable:(id)arg1 actionInsets:(struct UIEdgeInsets)arg2;
 - (struct CGRect)_pressFrameForActionable:(id)arg1;
 - (struct CGRect)_frameForActionable:(id)arg1;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (_Bool)_cursorLocation:(struct CGPoint)arg1 isInsideHoverableActionable:(id)arg2;
+- (_Bool)_cursorLocation:(struct CGPoint)arg1 isInsideActionable:(id)arg2;
+- (struct CGRect)_extendedHoverFrameForActionable:(id)arg1;
 - (void)_rearrangeOverflowedItems;
 - (void)_updateRegionItems;
 - (void)layoutSubviews;

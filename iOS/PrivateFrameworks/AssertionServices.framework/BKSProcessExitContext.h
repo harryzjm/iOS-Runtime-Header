@@ -15,8 +15,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)contextWithRBSContext:(id)arg1;
-@property(nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
+@property(readonly, nonatomic) unsigned long long exitReason;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

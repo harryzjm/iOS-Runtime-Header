@@ -7,7 +7,7 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSString, PHImportAsset, PHImportAssetDataRequest, PXImportAssetCollection;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSString, PHImportAsset, PHImportAssetDataRequest, PXImportAssetCollection;
 @protocol PXImportDisplayDelegate;
 
 @interface PXImportItemViewModel <PXDisplayAsset, NSCopying>
@@ -40,6 +40,7 @@
 + (id)dateFormatter;
 + (_Bool)hasPanoramaImageDimensions:(struct CGSize)arg1;
 + (id)importAssetsFromModels:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *thumbnailRequestsBySize; // @synthesize thumbnailRequestsBySize=_thumbnailRequestsBySize;
 @property(retain, nonatomic) NSMutableDictionary *assetRequestsBySize; // @synthesize assetRequestsBySize=_assetRequestsBySize;
 @property(retain, nonatomic) NSMutableDictionary *imageRepresentationsBySize; // @synthesize imageRepresentationsBySize=_imageRepresentationsBySize;
@@ -61,7 +62,6 @@
 @property(nonatomic) __weak PXImportAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
 @property(readonly, nonatomic) PHImportAsset *importAsset; // @synthesize importAsset=_importAsset;
 @property(nonatomic) __weak id <PXImportDisplayDelegate> displayDelegate; // @synthesize displayDelegate=_displayDelegate;
-- (void).cxx_destruct;
 - (id)accessibilityLabel;
 - (id)groupIdentifier;
 @property(readonly, nonatomic) NSDate *fileCreationDate;
@@ -118,7 +118,8 @@
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long burstSelectionTypes;
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;

@@ -27,25 +27,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
-@property(nonatomic) double periodicSyncInterval; // @synthesize periodicSyncInterval=_periodicSyncInterval;
-@property(nonatomic) _Bool didDeleteSyncedEvents; // @synthesize didDeleteSyncedEvents=_didDeleteSyncedEvents;
-@property(nonatomic) _Bool didAddSyncedEvents; // @synthesize didAddSyncedEvents=_didAddSyncedEvents;
-@property(nonatomic) _Bool didReceivePush; // @synthesize didReceivePush=_didReceivePush;
-@property(nonatomic) _Bool didActivatePeer; // @synthesize didActivatePeer=_didActivatePeer;
-@property(nonatomic) unsigned long long urgency; // @synthesize urgency=_urgency;
-@property(nonatomic) _Bool isTriggeredSync; // @synthesize isTriggeredSync=_isTriggeredSync;
-@property(nonatomic) _Bool isPeriodicSync; // @synthesize isPeriodicSync=_isPeriodicSync;
-@property(nonatomic) _Bool isInitialSync; // @synthesize isInitialSync=_isInitialSync;
-@property(nonatomic) _Bool forceSync; // @synthesize forceSync=_forceSync;
-@property(readonly, nonatomic) _Bool isSingleDevice; // @synthesize isSingleDevice=_isSingleDevice;
 - (void).cxx_destruct;
-- (_Bool)isEqualToSyncType:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
-- (void)mergeType:(id)arg1;
-- (id)initWithIsSingleDevice:(_Bool)arg1;
 
 @end
 

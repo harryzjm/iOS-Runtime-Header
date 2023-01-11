@@ -14,7 +14,8 @@
     GKDashboardPlayerPhotoView *_photoView;
 }
 
-@property(nonatomic) GKDashboardPlayerPhotoView *photoView; // @synthesize photoView=_photoView;
+- (void).cxx_destruct;
+@property(retain, nonatomic) GKDashboardPlayerPhotoView *photoView; // @synthesize photoView=_photoView;
 @property(nonatomic) UICollectionViewCell *parentCell; // @synthesize parentCell=_parentCell;
 - (void)layoutSubviews;
 @property(readonly, nonatomic) _Bool isUsingPlaceholder; // @dynamic isUsingPlaceholder;

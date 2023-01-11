@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 {
     CDUnknownBlockType _callbackBlock;
     NSObject<OS_dispatch_source> *_timer;
-    int _intervalSeconds;
+    unsigned int _intervalSeconds;
     _Bool _running;
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)stop;
 - (void)start;
 - (void)dealloc;
-- (id)initWithIntervalSeconds:(int)arg1 callbackBlock:(CDUnknownBlockType)arg2 clientQueue:(id)arg3;
-- (id)initWithIntervalSeconds:(int)arg1 callbackBlock:(CDUnknownBlockType)arg2;
+- (id)initWithIntervalSeconds:(unsigned int)arg1 callbackBlock:(CDUnknownBlockType)arg2 clientQueue:(id)arg3;
+- (id)initWithIntervalSeconds:(unsigned int)arg1 callbackBlock:(CDUnknownBlockType)arg2;
 
 @end
 

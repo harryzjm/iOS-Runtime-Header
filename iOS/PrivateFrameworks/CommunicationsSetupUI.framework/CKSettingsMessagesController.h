@@ -5,13 +5,15 @@
 //
 
 #import <CommunicationsSetupUI/AKAppleIDAuthenticationDelegate-Protocol.h>
+#import <CommunicationsSetupUI/CKOnboardingControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNMeCardSharingSettingsViewControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
 
-@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, IMCTXPCServiceSubscriptionInfo, NSString;
+@class CKBlackholeConversationListViewController, CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString;
 
-@interface CKSettingsMessagesController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface CKSettingsMessagesController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate>
 {
     _Bool _showingChildViewController;
     int _profileToken;
@@ -20,20 +22,26 @@
     CKMultipleCTSubscriptionsController *_mmsMessagingController;
     CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
     IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
+    CKOnboardingController *_onboardingController;
+    CKBlackholeConversationListViewController *_blackholeConversationListViewController;
     CKNSExtension *_ckExtension;
 }
 
 + (id)currentKeepMessages;
-+ (id)removeFirstPartyExtensionFromArray:(id)arg1;
++ (_Bool)shouldShowFirstPartyExtension;
++ (id)removeFirstPartyExtensionFromArrayIfNecessary:(id)arg1;
++ (id)getDefaultExtension;
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
 + (_Bool)currentMessageAutoKeepForType:(int)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKNSExtension *ckExtension; // @synthesize ckExtension=_ckExtension;
+@property(retain, nonatomic) CKBlackholeConversationListViewController *blackholeConversationListViewController; // @synthesize blackholeConversationListViewController=_blackholeConversationListViewController;
+@property(retain, nonatomic) CKOnboardingController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsMessagingController; // @synthesize mmsMessagingController=_mmsMessagingController;
 @property(retain) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 @property(retain, nonatomic) CKFilteringListController *filteringController; // @synthesize filteringController=_filteringController;
-- (void).cxx_destruct;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)controllerForSpecifier:(id)arg1;
 - (id)_smsRelayDevicesController;
@@ -63,12 +71,18 @@
 - (_Bool)shouldShowMadridAccounts;
 - (id)sendAsSMSIdentifiers;
 - (_Bool)shouldShowSendAsSMS;
+- (void)setJunkFilteringReceiptsEnabled:(id)arg1 specifier:(id)arg2;
+- (id)areJunkFilteringReceiptsEnabled:(id)arg1;
+- (_Bool)shouldShowJunkFilteringReceipts;
 - (void)setReadReceiptsEnabled:(id)arg1 specifier:(id)arg2;
 - (id)areReadReceiptsEnabled:(id)arg1;
 - (id)readReceiptSpecifierIdentifiers;
 - (_Bool)shouldShowReadReceipts;
+- (id)mentionsSettingsSpecifierIdentifiers;
+- (_Bool)shouldShowMentionsSettings;
 - (id)smsRelaySettingsSpecifierIdentifiers;
 - (_Bool)shouldShowSMSRelaySettings;
+- (void)_setUpBusinessChatGroupSpecifiers:(id)arg1;
 - (void)sharingSettingsViewController:(id)arg1 didUpdateWithSharingResult:(id)arg2;
 - (void)sharingSettingsViewController:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
 - (void)sharingSettingsViewController:(id)arg1 didUpdateSharingState:(_Bool)arg2;
@@ -77,8 +91,12 @@
 - (unsigned long long)_meCardSharingAudience;
 - (_Bool)_meCardSharingEnabled;
 - (void)_showSetupMeCardAlert;
+- (id)getNameAndPhotoSharingFooterText;
 - (id)getNameAndPhotoSharingSpecifierSummary:(id)arg1;
 - (void)showMeCardViewControllerWithNickname:(id)arg1;
+- (void)onboardingControllerDidFinish:(id)arg1;
+- (id)presentingViewControllerForOnboardingController:(id)arg1;
+- (void)showNicknameOnboardingController;
 - (void)nameAndPhotoSharingForSpecifier:(id)arg1;
 - (void)showMultiplePhoneNumbersAlerForNicknames;
 - (void)showAccountsMismatchedAlertForNicknames;
@@ -93,8 +111,11 @@
 - (id)siriSettingsIdentifiers;
 - (_Bool)isPersonalCompanionEnabled;
 - (_Bool)shouldShowSiriSettings;
+- (_Bool)shouldShowJunkConversationsRow;
 - (void)setConversationListFilteringEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isConversationListFilteringEnabled:(id)arg1;
+- (id)junkFilterReceiptsRowIdentifier;
+- (id)junkConversationsRowIdentifier;
 - (id)spamFilteringSpecifierIdentifiers;
 - (id)iMessageFilteringSpecifierIdentifiers;
 - (_Bool)shouldShowiMessageFilteringSettings:(id)arg1;
@@ -105,8 +126,8 @@
 - (id)raiseToListenSpecifierIdentifiers;
 - (_Bool)shouldShowRaiseToListenSwitch;
 - (_Bool)_isRaiseGestureSupported;
-- (id)blacklistSettingsSpecifierIdentifiers;
-- (_Bool)shouldShowBlacklistSettings;
+- (id)blocklistSettingsSpecifierIdentifiers;
+- (_Bool)shouldShowBlocklistSettings;
 - (id)characterCountSpecifierIdentifiers;
 - (_Bool)shouldShowCharacterCount;
 - (id)genericSettingsSpecifierIdentifiers;
@@ -138,7 +159,8 @@
 - (void)_setupMultipleSubscriptionsMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(_Bool)arg2;
 - (void)_setupMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(_Bool)arg2;
 - (id)specifiers;
-- (void)_showPrivacySheet:(id)arg1;
+- (void)_showPrivacySheetForBusinessChat:(id)arg1;
+- (void)_showPrivacySheetForiMessageFaceTime:(id)arg1;
 - (void)newCarrierNotification;
 - (_Bool)shouldReloadSpecifiersOnResume;
 - (void)systemApplicationDidEnterBackground;

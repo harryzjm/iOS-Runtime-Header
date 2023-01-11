@@ -16,16 +16,17 @@
     NSArray *_systemLanguages;
 }
 
++ (_Bool)canRemoveLanguages:(id)arg1 fromPreferredLanguages:(id)arg2;
 + (id)effectiveSystemLanguagesWithUnsupportedVariant:(_Bool)arg1 forPreferredLanguages:(id)arg2;
 + (void)sortByLocalizedLanguage:(id)arg1;
 + (id)regionalVariantLanguagesForSystemLanguages;
 + (id)regionalVariantLanguagesForBaseLanguage:(id)arg1;
 + (void)preheat;
 + (id)generator;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *systemLanguages; // @synthesize systemLanguages=_systemLanguages;
 @property(readonly, nonatomic) NSLocale *preferredLocale; // @synthesize preferredLocale=_preferredLocale;
 @property(readonly, nonatomic) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *systemDisplayLanguage; // @synthesize systemDisplayLanguage=_systemDisplayLanguage;
 - (id)otherLanguages;
 - (id)deviceLanguagesForChangingDeviceLanguage:(_Bool)arg1;

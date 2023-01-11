@@ -26,10 +26,11 @@ __attribute__((visibility("hidden")))
     _Bool _showingProgress;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) float progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic, getter=isIndeterminate) _Bool indeterminate; // @synthesize indeterminate=_indeterminate;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-- (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateEnabledState;
 - (void)_updateInnerProgressLayerStroke;
 - (void)_toggleToPlayState;

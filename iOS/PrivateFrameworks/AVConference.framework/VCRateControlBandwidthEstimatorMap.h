@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, VCRateControlBandwidthEstimator, VCRateControlServerBag;
 
 __attribute__((visibility("hidden")))
 @interface VCRateControlBandwidthEstimatorMap : NSObject
@@ -18,11 +18,20 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_estimatorMap;
     unsigned int _currentActiveEstimatorID;
     int _state;
+    VCRateControlBandwidthEstimator *_defaultEstimator;
+    int _bandwidthEstimationState;
+    _Bool _fastSuddenBandwidthDetectionEnabled;
+    VCRateControlServerBag *_serverBag;
+    void *_logBWEDump;
 }
 
+@property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
+@property(nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
 @property(nonatomic) double estimatedBandwidthUncapped; // @synthesize estimatedBandwidthUncapped=_estimatedBandwidthUncapped;
 @property(nonatomic) unsigned int mode; // @synthesize mode=_mode;
 @property(nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
+- (void)enableBWELogDump:(void *)arg1;
+@property(readonly, nonatomic) int bandwidthEstimationState;
 @property(nonatomic) double estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
 - (void)deregisterBandwidthEstimatorWithID:(unsigned int)arg1;
 - (id)bandwidthEstimatorWithID:(unsigned int)arg1 isProbingSequence:(_Bool)arg2 isEndOfProbingSequence:(_Bool)arg3;

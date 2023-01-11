@@ -6,25 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSSet, NSString;
 @protocol REMChangeTrackingClientIdentifying, REMDaemonController;
 
 @interface REMChangeTracking : NSObject
 {
     id <REMChangeTrackingClientIdentifying> _changeTrackingClientID;
     id <REMDaemonController> _daemonController;
+    NSString *_entityName;
+    unsigned long long _transactionFetchLimit;
     NSSet *_transactionAuthorKeysToExclude;
 }
 
 + (id)defaultTransactionAuthorKeysToExclude;
 + (id)internalTransactionAuthorKeysToExclude;
 + (id)entityNamesToIncludeFromTrackingWithOptionProvider:(Class)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *transactionAuthorKeysToExclude; // @synthesize transactionAuthorKeysToExclude=_transactionAuthorKeysToExclude;
+@property(nonatomic) unsigned long long transactionFetchLimit; // @synthesize transactionFetchLimit=_transactionFetchLimit;
+@property(retain, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
 @property(readonly, nonatomic) id <REMDaemonController> daemonController; // @synthesize daemonController=_daemonController;
 @property(readonly, nonatomic) id <REMChangeTrackingClientIdentifying> changeTrackingClientID; // @synthesize changeTrackingClientID=_changeTrackingClientID;
-- (void).cxx_destruct;
-- (id)changeSetByFilteringTransactionAuthorKeysToExcludeFromChangeSet:(id)arg1;
-- (void)_performChangeTrackingWithBlock:(CDUnknownBlockType)arg1 xpcErrorHandler:(CDUnknownBlockType)arg2;
+- (void)_performChangeTrackingWithReason:(id)arg1 block:(CDUnknownBlockType)arg2 xpcErrorHandler:(CDUnknownBlockType)arg3;
 - (id)persistenceStoreIDForAccountID:(id)arg1 error:(id *)arg2;
 - (void)deleteHistoryBeforeDate:(id)arg1 error:(id *)arg2;
 - (void)deleteHistoryBeforeToken:(id)arg1 error:(id *)arg2;
@@ -32,6 +35,7 @@
 - (id)fetchHistoryAfterToken:(id)arg1 error:(id *)arg2;
 - (void)saveTrackingState:(id)arg1 error:(id *)arg2;
 - (id)getTrackingStateWithError:(id *)arg1;
+- (id)earliestChangeTokenWithError:(id *)arg1;
 - (id)currentChangeTokenWithError:(id *)arg1;
 - (id)currentChangeTokenForAccountTypes:(long long)arg1 error:(id *)arg2;
 - (id)currentChangeTokenForAllAccountsWithError:(id *)arg1;

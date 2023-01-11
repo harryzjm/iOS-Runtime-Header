@@ -6,17 +6,12 @@
 
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSUUID;
-
 __attribute__((visibility("hidden")))
 @interface NRSwitchRecord <NSSecureCoding>
 {
 }
 
-+ (id)switchRecordWithHistoryEntry:(id)arg1;
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSUUID *activeDeviceID;
-@property(retain, nonatomic) NSDate *date;
 - (id)initWithDeviceID:(id)arg1 date:(id)arg2 switchIndex:(unsigned int)arg3;
 
 @end

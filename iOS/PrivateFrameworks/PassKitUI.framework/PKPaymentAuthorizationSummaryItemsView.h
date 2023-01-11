@@ -6,29 +6,40 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, NSString, PKPaymentAuthorizationLayout, UILabel;
+@class NSMutableArray, NSString, PKPaymentAuthorizationLayout, UIFont, UILabel;
 
 @interface PKPaymentAuthorizationSummaryItemsView : UIView
 {
     NSMutableArray *_labelViews;
     NSMutableArray *_valueViews;
+    NSMutableArray *_titleViews;
     NSMutableArray *_hasBottomPadding;
+    NSMutableArray *_usesLargeFont;
     UILabel *_titleLabel;
+    UIFont *_titleFont;
+    UIFont *_labelLargeFont;
+    UIFont *_labelRegularFont;
+    UIView *_separatorView;
     _Bool _showsBoldValueText;
+    _Bool _showsTopSeparator;
+    _Bool _occludesBodyView;
     PKPaymentAuthorizationLayout *_layout;
     NSString *_title;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool occludesBodyView; // @synthesize occludesBodyView=_occludesBodyView;
+@property(nonatomic) _Bool showsTopSeparator; // @synthesize showsTopSeparator=_showsTopSeparator;
 @property(nonatomic) _Bool showsBoldValueText; // @synthesize showsBoldValueText=_showsBoldValueText;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-@property(nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
+@property(nonatomic) __weak PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
 - (id)_valueAttributedStringWithString:(id)arg1 type:(unsigned long long)arg2;
-- (id)_labelAttributedStringWithString:(id)arg1 withDarkColor:(_Bool)arg2;
+- (id)_labelAttributedStringWithString:(id)arg1 withDarkColor:(_Bool)arg2 largeFont:(_Bool)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 andLayout:(_Bool)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)addLabel:(id)arg1 value:(id)arg2 itemType:(unsigned long long)arg3 maxLabelLines:(long long)arg4 maxValueLines:(long long)arg5 hasBottomPadding:(_Bool)arg6 useDarkColor:(_Bool)arg7;
+- (id)makeTitleLabel;
+- (void)addLabel:(id)arg1 value:(id)arg2 title:(id)arg3 itemType:(unsigned long long)arg4 maxLabelLines:(long long)arg5 maxValueLines:(long long)arg6 hasBottomPadding:(_Bool)arg7 useDarkColor:(_Bool)arg8 useLargeFont:(_Bool)arg9;
 - (void)removeLabelsAndValues;
 - (id)titleLabel;
 - (void)dealloc;

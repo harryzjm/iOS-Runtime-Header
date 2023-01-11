@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HDDataProvenanceManager, HDEntityEncoder, HDProfile, HDSQLiteDatabase, NSMutableDictionary;
+@class HDDataProvenanceManager, HDDatabaseTransaction, HDEntityEncoder, HDProfile, NSMutableDictionary;
 
 @interface HDDataProvenanceCache : NSObject
 {
     HDProfile *_profile;
     HDDataProvenanceManager *_provenanceManager;
-    HDSQLiteDatabase *_database;
+    HDDatabaseTransaction *_transaction;
     HDEntityEncoder *_sourceEncoder;
     NSMutableDictionary *_provenanceByID;
     NSMutableDictionary *_codableSourcesByID;
@@ -21,10 +21,13 @@
     NSMutableDictionary *_sourceRevisionByDataProvenanceIDCache;
     NSMutableDictionary *_sourceRevisionsDictionaryBySourceCache;
     NSMutableDictionary *_deviceByPersistentIDCache;
+    NSMutableDictionary *_contributorByReferenceCache;
     NSMutableDictionary *_codableObjectCollectionsByProvenance;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *codableObjectCollectionsByProvenance; // @synthesize codableObjectCollectionsByProvenance=_codableObjectCollectionsByProvenance;
+@property(retain, nonatomic) NSMutableDictionary *contributorByReferenceCache; // @synthesize contributorByReferenceCache=_contributorByReferenceCache;
 @property(retain, nonatomic) NSMutableDictionary *deviceByPersistentIDCache; // @synthesize deviceByPersistentIDCache=_deviceByPersistentIDCache;
 @property(retain, nonatomic) NSMutableDictionary *sourceRevisionsDictionaryBySourceCache; // @synthesize sourceRevisionsDictionaryBySourceCache=_sourceRevisionsDictionaryBySourceCache;
 @property(retain, nonatomic) NSMutableDictionary *sourceRevisionByDataProvenanceIDCache; // @synthesize sourceRevisionByDataProvenanceIDCache=_sourceRevisionByDataProvenanceIDCache;
@@ -33,10 +36,11 @@
 @property(retain, nonatomic) NSMutableDictionary *codableSourcesByID; // @synthesize codableSourcesByID=_codableSourcesByID;
 @property(retain, nonatomic) NSMutableDictionary *provenanceByID; // @synthesize provenanceByID=_provenanceByID;
 @property(retain, nonatomic) HDEntityEncoder *sourceEncoder; // @synthesize sourceEncoder=_sourceEncoder;
-@property(retain, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
+@property(retain, nonatomic) HDDatabaseTransaction *transaction; // @synthesize transaction=_transaction;
 @property(retain, nonatomic) HDDataProvenanceManager *provenanceManager; // @synthesize provenanceManager=_provenanceManager;
 @property(retain, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
+- (id)_provenanceWithSyncableContributor:(id)arg1 error:(id *)arg2;
+- (id)contributorForReference:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)deviceForPersistentID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)sourceRevisionForProvenanceID:(id)arg1 dataProvenance:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 - (id)_sourceForPersistentID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
@@ -47,7 +51,7 @@
 - (id)deviceUUIDBytesWithProvenance:(id)arg1;
 - (id)codableSourceWithProvenance:(id)arg1;
 - (id)provenanceWithID:(id)arg1;
-- (id)initWithProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3;
+- (id)initWithProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3;
 
 @end
 

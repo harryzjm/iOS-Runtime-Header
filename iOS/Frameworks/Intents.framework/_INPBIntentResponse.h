@@ -21,7 +21,6 @@
     } _has;
     _Bool _requiresAuthentication;
     _Bool _requiresProtectedData;
-    _Bool __encodeLegacyGloryData;
     int _type;
     _INPBIntentResponsePayloadFailure *_payloadFailure;
     _INPBIntentResponsePayloadSuccess *_payloadSuccess;
@@ -29,14 +28,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(nonatomic) _Bool requiresProtectedData; // @synthesize requiresProtectedData=_requiresProtectedData;
 @property(nonatomic) _Bool requiresAuthentication; // @synthesize requiresAuthentication=_requiresAuthentication;
 @property(retain, nonatomic) _INPBIntentResponsePayloadSuccess *payloadSuccess; // @synthesize payloadSuccess=_payloadSuccess;
 @property(retain, nonatomic) _INPBIntentResponsePayloadFailure *payloadFailure; // @synthesize payloadFailure=_payloadFailure;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -6,12 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue;
+#import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
-@interface VSDevice : NSObject
+@class MCProfileConnection, NSOperationQueue, NSString, VSRemoteNotifier;
+@protocol VSDeviceDelegate;
+
+@interface VSDevice : NSObject <VSRemoteNotifierDelegate>
 {
+    id <VSDeviceDelegate> _delegate;
     CDUnknownFunctionPointerType _copyAnswer;
     NSOperationQueue *_privateQueue;
+    VSRemoteNotifier *_setTopBoxStateRemoteNotifier;
+    MCProfileConnection *_profileConnection;
 }
 
 + (unsigned long long)_deviceTypeWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
@@ -19,16 +25,30 @@
 + (_Bool)_runningACustomerBuildWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (_Bool)_runningAnInternalBuildWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (id)currentDevice;
+- (void).cxx_destruct;
+@property(retain, nonatomic) MCProfileConnection *profileConnection; // @synthesize profileConnection=_profileConnection;
+@property(retain, nonatomic) VSRemoteNotifier *setTopBoxStateRemoteNotifier; // @synthesize setTopBoxStateRemoteNotifier=_setTopBoxStateRemoteNotifier;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(nonatomic) CDUnknownFunctionPointerType copyAnswer; // @synthesize copyAnswer=_copyAnswer;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <VSDeviceDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)cloudConfigurationDidChange;
+- (void)refreshSetTopBoxProfile:(CDUnknownBlockType)arg1;
+- (_Bool)setIgnoreSetTopBoxProfile:(_Bool)arg1;
 @property(readonly, nonatomic) unsigned long long deviceType;
 @property(readonly, nonatomic, getter=isRunningACustomerBuild) _Bool runningACustomerBuild;
 @property(readonly, nonatomic, getter=isRunningAnInternalBuild) _Bool runningAnInternalBuild;
+- (void)fetchDeviceManagedSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (id)accountDeletionConfirmationMessageForIdentityProviderDisplayName:(id)arg1;
 - (id)developerIdentityProviderDeletionConfirmationMessage;
+- (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,12 +6,21 @@
 
 #import <Foundation/NSUserDefaults.h>
 
-__attribute__((visibility("hidden")))
-@interface BCSUserDefaults : NSUserDefaults
+#import <BusinessChatService/BCSUserDefaultsProviding-Protocol.h>
+
+@class NSString;
+
+@interface BCSUserDefaults : NSUserDefaults <BCSUserDefaultsProviding>
 {
 }
 
 + (id)sharedDefaults;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,29 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIDocumentInteractionController.h>
+#import <objc/NSObject.h>
 
-#import <WorkflowKit/LSOpenResourceOperationDelegate-Protocol.h>
+@class NSURL;
 
-@class NSString;
-
-@interface DCDocument : UIDocumentInteractionController <LSOpenResourceOperationDelegate>
+@interface DCDocument : NSObject
 {
-    CDUnknownBlockType _openedHandler;
+    NSURL *_fileURL;
+    id _annotation;
 }
 
++ (id)documentWithURL:(id)arg1 annotation:(id)arg2;
 + (id)documentWithURL:(id)arg1;
-@property(copy, nonatomic) CDUnknownBlockType openedHandler; // @synthesize openedHandler=_openedHandler;
 - (void).cxx_destruct;
-- (void)openResourceOperation:(id)arg1 didFailWithError:(id)arg2;
-- (void)openResourceOperationDidComplete:(id)arg1;
+@property(readonly, copy, nonatomic) id annotation; // @synthesize annotation=_annotation;
+@property(readonly, copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 - (void)openWithAppBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithURL:(id)arg1 annotation:(id)arg2;
 
 @end
 

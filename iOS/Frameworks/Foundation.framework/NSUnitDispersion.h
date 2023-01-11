@@ -12,6 +12,7 @@
 
 + (id)partsPerMillion;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

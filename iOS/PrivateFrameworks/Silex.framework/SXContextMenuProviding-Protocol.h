@@ -6,9 +6,10 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXViewport, UIContextMenuConfiguration, UIViewController;
+@class SXViewport, UIContextMenuConfiguration, UITargetedPreview, UIViewController;
 
 @protocol SXContextMenuProviding <NSObject>
+- (UITargetedPreview *)targetedPreviewAtLocation:(struct CGPoint)arg1 viewport:(SXViewport *)arg2;
 - (void)commitPreviewViewController:(UIViewController *)arg1;
 - (UIContextMenuConfiguration *)contextMenuAtLocation:(struct CGPoint)arg1 viewport:(SXViewport *)arg2;
 @end

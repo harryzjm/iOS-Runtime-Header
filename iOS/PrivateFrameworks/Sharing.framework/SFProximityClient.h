@@ -35,6 +35,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool wantsUpdates; // @synthesize wantsUpdates=_wantsUpdates;
 @property(copy, nonatomic) CDUnknownBlockType deviceUpdateHandler; // @synthesize deviceUpdateHandler=_deviceUpdateHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceWasDismissedHandler; // @synthesize deviceWasDismissedHandler=_deviceWasDismissedHandler;
@@ -50,7 +51,6 @@
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-- (void).cxx_destruct;
 - (void)proximityClientDeviceUpdated:(id)arg1 rssi:(long long)arg2 state:(long long)arg3;
 - (void)proximityClientDeviceWillTriggerHandler:(id)arg1;
 - (void)proximityClientDeviceDidUntriggerHandler:(id)arg1;
@@ -60,6 +60,7 @@
 - (void)proximityClientDeviceEnteredNearby:(id)arg1;
 - (void)proximityClientDeviceExitedImmediate:(id)arg1;
 - (void)proximityClientDeviceEnteredImmediate:(id)arg1;
+- (void)requestScannerTimerReset;
 - (void)_updateContent:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateContent:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_provideContent:(id)arg1 forDevice:(id)arg2 force:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;

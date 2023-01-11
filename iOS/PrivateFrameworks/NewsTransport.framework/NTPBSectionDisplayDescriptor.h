@@ -8,36 +8,31 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSString;
 
 @interface NTPBSectionDisplayDescriptor : PBCodable <NSCopying>
 {
     NSString *_actionTitle;
     NSString *_actionURLString;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSString *_backgroundGradientColor;
-    NSData *_discoverMoreVideosInfoData;
     NSString *_name;
-    NSString *_nameColor;
-    _Bool _displaysAsVideoPlaylist;
-    _Bool _useNameColorInWidget;
-    _Bool _videoPlaysMutedByDefault;
-    struct {
-        unsigned int displaysAsVideoPlaylist:1;
-        unsigned int useNameColorInWidget:1;
-        unsigned int videoPlaysMutedByDefault:1;
-    } _has;
+    NSString *_nameActionURLString;
+    NSString *_nameColorDark;
+    NSString *_nameColorLight;
 }
 
-@property(retain, nonatomic) NSData *discoverMoreVideosInfoData; // @synthesize discoverMoreVideosInfoData=_discoverMoreVideosInfoData;
-@property(nonatomic) _Bool useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property(retain, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
+@property(retain, nonatomic) NSString *nameActionURLString; // @synthesize nameActionURLString=_nameActionURLString;
+@property(retain, nonatomic) NSString *nameColorDark; // @synthesize nameColorDark=_nameColorDark;
 @property(retain, nonatomic) NSString *actionURLString; // @synthesize actionURLString=_actionURLString;
 @property(retain, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
-@property(nonatomic) _Bool videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 @property(retain, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
-@property(nonatomic) _Bool displaysAsVideoPlaylist; // @synthesize displaysAsVideoPlaylist=_displaysAsVideoPlaylist;
-@property(retain, nonatomic) NSString *nameColor; // @synthesize nameColor=_nameColor;
+@property(retain, nonatomic) NSString *nameColorLight; // @synthesize nameColorLight=_nameColorLight;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -46,14 +41,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasDiscoverMoreVideosInfoData;
-@property(nonatomic) _Bool hasUseNameColorInWidget;
+@property(readonly, nonatomic) _Bool hasBackgroundColorDark;
+@property(readonly, nonatomic) _Bool hasBackgroundColorLight;
+@property(readonly, nonatomic) _Bool hasNameActionURLString;
+@property(readonly, nonatomic) _Bool hasNameColorDark;
 @property(readonly, nonatomic) _Bool hasActionURLString;
 @property(readonly, nonatomic) _Bool hasActionTitle;
-@property(nonatomic) _Bool hasVideoPlaysMutedByDefault;
 @property(readonly, nonatomic) _Bool hasBackgroundGradientColor;
-@property(nonatomic) _Bool hasDisplaysAsVideoPlaylist;
-@property(readonly, nonatomic) _Bool hasNameColor;
+@property(readonly, nonatomic) _Bool hasNameColorLight;
 @property(readonly, nonatomic) _Bool hasName;
 
 @end

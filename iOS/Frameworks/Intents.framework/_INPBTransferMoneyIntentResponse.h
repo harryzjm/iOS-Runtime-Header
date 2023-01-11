@@ -15,7 +15,6 @@
 @interface _INPBTransferMoneyIntentResponse : PBCodable <_INPBTransferMoneyIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBFinancialAccountValue *_fromAccount;
     _INPBFinancialAccountValue *_toAccount;
     _INPBPaymentAmountValue *_transactionAmount;
@@ -25,14 +24,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBCurrencyAmountValue *transferFee; // @synthesize transferFee=_transferFee;
 @property(retain, nonatomic) _INPBDateTimeRange *transactionScheduledDate; // @synthesize transactionScheduledDate=_transactionScheduledDate;
 @property(copy, nonatomic) NSString *transactionNote; // @synthesize transactionNote=_transactionNote;
 @property(retain, nonatomic) _INPBPaymentAmountValue *transactionAmount; // @synthesize transactionAmount=_transactionAmount;
 @property(retain, nonatomic) _INPBFinancialAccountValue *toAccount; // @synthesize toAccount=_toAccount;
 @property(retain, nonatomic) _INPBFinancialAccountValue *fromAccount; // @synthesize fromAccount=_fromAccount;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -7,6 +7,12 @@
 #import <ViceroyTrace/NSObject-Protocol.h>
 
 @protocol SegmentStatsDelegate <NSObject>
+- (unsigned short)minVideoFrameRate;
+- (unsigned short)maxJBTargetSizeChanges;
+- (double)avgJBTargetSizeChanges;
+- (double)averageJitterBufferDelay;
+- (unsigned short)maxVideoStallCount;
+- (unsigned short)maxAudioErasureCount;
 - (double)timeWeightedNumberOfParticipants;
 - (double)audioErasureTotalTime;
 - (unsigned int)audioErasureCount;

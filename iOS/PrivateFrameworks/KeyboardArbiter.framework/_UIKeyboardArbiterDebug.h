@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     int _importantCount;
     NSMutableArray *_entries;
+    _Bool _disable;
+    _Bool _pause;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool pause; // @synthesize pause=_pause;
 - (void)getDebugInfoDictionariesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addAsynchronousData:(CDUnknownBlockType)arg1;
 - (void)errorWithFormat:(const char *)arg1;

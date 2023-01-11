@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCEditorialOperation, FCForYouConfig, FCMyArticlesOperation, FCSpotlightOperationResult, FCTopStoriesOperation, FCTopStoriesOperationResult, FCVideoArticlesOperationResult, NFUnfairLock, NSArray, NSDictionary, NSError, NSHashTable, NSMapTable, NSOperationQueue;
+@class FCEditorialOperation, FCForYouConfig, FCForYouConfigHeadlinesOperation, FCMyArticlesOperation, FCSpotlightOperationResult, FCTopStoriesOperation, FCTopStoriesOperationResult, NFUnfairLock, NSArray, NSDictionary, NSError, NSHashTable, NSMapTable, NSOperationQueue;
 @protocol FCChannelProviding;
 
 @interface FCForYouCatchUpOperation
@@ -13,38 +13,39 @@
     FCMyArticlesOperation *_myArticlesOperation;
     FCTopStoriesOperation *_topStoriesOperation;
     FCEditorialOperation *_editorialOperation;
+    FCForYouConfigHeadlinesOperation *_forYouConfigOperation;
     NSOperationQueue *_operationQueue;
     NSHashTable *_conditionWaiters;
     NFUnfairLock *_conditionWaitersLock;
 }
 
 + (id)sharedCatchUpOperationForEdition:(id)arg1 contentTypes:(long long)arg2 configuration:(id)arg3 context:(id)arg4;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NFUnfairLock *conditionWaitersLock; // @synthesize conditionWaitersLock=_conditionWaitersLock;
 @property(retain, nonatomic) NSHashTable *conditionWaiters; // @synthesize conditionWaiters=_conditionWaiters;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(retain, nonatomic) FCForYouConfigHeadlinesOperation *forYouConfigOperation; // @synthesize forYouConfigOperation=_forYouConfigOperation;
 @property(retain, nonatomic) FCEditorialOperation *editorialOperation; // @synthesize editorialOperation=_editorialOperation;
 @property(retain, nonatomic) FCTopStoriesOperation *topStoriesOperation; // @synthesize topStoriesOperation=_topStoriesOperation;
 @property(retain, nonatomic) FCMyArticlesOperation *myArticlesOperation; // @synthesize myArticlesOperation=_myArticlesOperation;
 @property(nonatomic) long long contentTypes; // @synthesize contentTypes=_contentTypes;
-- (void).cxx_destruct;
 - (void)_serviceConditionWaiters;
 - (void)_addConditionWaiter:(id)arg1;
 @property(readonly, copy) NSDictionary *feedContextByFeedID;
 - (id)catchUpErrorForContentTypes:(long long)arg1;
 @property(readonly, copy, nonatomic) NSError *catchUpError;
 @property(readonly, copy, nonatomic) FCSpotlightOperationResult *spotlightResult;
-@property(readonly, copy, nonatomic) FCVideoArticlesOperationResult *moreVideosResult;
-@property(readonly, copy, nonatomic) FCVideoArticlesOperationResult *topVideosResult;
 - (void)enumerateEditorialSectionsByRecencyAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)orphanedEditorialHeadlinesAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2;
 @property(readonly, copy, nonatomic) NSMapTable *nonEditorialScoreProfiles;
 @property(readonly, copy, nonatomic) NSArray *nonEditorialFeedItems;
-- (id)allNonEditorialFeedItemsAfterTransformation:(id)arg1;
+- (id)nonEditorialFeedItemsAfterTransformation:(id)arg1;
 - (id)allFeedItemsAfterTransformation:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *trendingHeadlines;
 @property(readonly, copy, nonatomic) FCTopStoriesOperationResult *topStoriesResult;
 @property(readonly, copy, nonatomic) id <FCChannelProviding> topStoriesChannel;
 @property(readonly, copy, nonatomic) FCForYouConfig *forYouConfig;
+- (_Bool)isWaitingForContentTypes:(long long)arg1;
 - (id)waiterForContentTypes:(long long)arg1;
 - (id)waiterForCondition:(id)arg1;
 - (void)operationDidFinishWithError:(id)arg1;

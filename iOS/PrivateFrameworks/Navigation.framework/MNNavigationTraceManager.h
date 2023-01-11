@@ -24,6 +24,7 @@
     id <GEOMotionContextProviderDelegate> _motionContextProviderDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
 @property(readonly, nonatomic) MNTraceEventRecorder *traceEventRecorder; // @synthesize traceEventRecorder=_traceEventRecorder;
 @property(readonly, nonatomic) MNTraceRecorder *traceRecorder; // @synthesize traceRecorder=_traceRecorder;
@@ -31,7 +32,6 @@
 @property(nonatomic) __weak id <MNNavigationTraceManagerDelegate> traceManagerDelegate; // @synthesize traceManagerDelegate=_traceManagerDelegate;
 @property(nonatomic) __weak id <GEOMotionContextProviderDelegate> motionDelegate; // @synthesize motionDelegate=_motionContextProviderDelegate;
 @property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_locationProviderDelegate;
-- (void).cxx_destruct;
 - (void)stopMotionUpdates;
 - (void)startMotionUpdates;
 @property(readonly, nonatomic) double timeScale;
@@ -39,7 +39,7 @@
 @property(readonly, nonatomic) _Bool isTracePlayer;
 @property(readonly, nonatomic) _Bool isSimulation;
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
-@property(nonatomic) long long activityType;
+@property(readonly, nonatomic) _Bool coarseModeEnabled;
 @property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 - (void)requestWhenInUseAuthorizationWithPrompt;
@@ -81,15 +81,14 @@
 - (void)_recordStylesheet:(id)arg1;
 - (void)_recordEnvironmentInfo:(id)arg1;
 - (id)_defaultTraceExtension;
-- (id)_defaultTraceNameForDestination:(id)arg1;
+- (id)_defaultTraceNameForDestination:(id)arg1 isSimulation:(_Bool)arg2;
 - (id)_tracePathForTraceName:(id)arg1;
 - (id)_validFilenameForTraceName:(id)arg1;
 - (unsigned long long)_startIndexForNavigation;
 - (_Bool)_isNavigating;
 - (void)close;
-- (void)startSimulationWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5 traceNameOverride:(id)arg6;
 - (void)openForSimulationWithRoute:(id)arg1 traceRecordingData:(id)arg2 traceNameOverride:(id)arg3;
-- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceNameOverride:(id)arg2;
+- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceName:(id)arg2 isReconnecting:(_Bool)arg3 isSimulation:(_Bool)arg4;
 - (void)openForPlaybackWithTracePath:(id)arg1;
 - (void)dealloc;
 

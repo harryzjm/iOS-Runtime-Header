@@ -16,14 +16,17 @@
     NSArray *_cachedExtensions;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSArray *cachedExtensions; // @synthesize cachedExtensions=_cachedExtensions;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property unsigned long long collectionTimeout; // @synthesize collectionTimeout=_collectionTimeout;
-- (void).cxx_destruct;
 - (id)extensionManager;
 - (id)availableDiagnosticExtensions;
 - (id)extensionForIdentifier:(id)arg1;
 - (_Bool)isDiagnosticExtensionAvailable;
+- (void)cleanupItemsWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
+- (void)prepareItemsWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
+- (void)prepareItemsWithDeferredExtensionInfo:(id)arg1;
 - (id)collectItemsWithIdentifier:(id)arg1 parameters:(id)arg2;
 - (id)init;
 

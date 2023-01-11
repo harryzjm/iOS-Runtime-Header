@@ -12,17 +12,18 @@
     _Bool _shouldPrioritize;
 }
 
++ (void)deleteAllRecoveryEventsWithPathManager:(id)arg1;
 + (id)recoveredEventsWithPathManager:(id)arg1;
-@property(nonatomic) _Bool shouldPrioritize; // @synthesize shouldPrioritize=_shouldPrioritize;
++ (id)highPriorityOperationQueue;
++ (id)lowPriorityOperationQueue;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldPrioritize; // @synthesize shouldPrioritize=_shouldPrioritize;
 - (void)runAndWaitForMessageToBeSent;
 - (void)runDaemonSide;
 - (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
-- (void)deleteAllRecoveryEvents;
 - (_Bool)shouldArchiveXPCToDisk;
 - (void)archiveXPCToDisk:(id)arg1;
 @property(readonly, nonatomic) PLPhotoLibrary *transientPhotoLibrary;
-- (id)serialOperationQueue;
 - (id)initWithAssetsdClient:(id)arg1;
 
 @end

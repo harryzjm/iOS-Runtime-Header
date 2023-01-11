@@ -10,6 +10,9 @@
 {
 }
 
++ (id)homeOccupancy;
++ (id)associatedAccessoryUUIDs;
++ (id)source;
 + (id)sceneName;
 + (id)clientName;
 + (id)actionSetType;

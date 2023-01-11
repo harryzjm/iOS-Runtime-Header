@@ -5,6 +5,6 @@
 //
 
 @interface (null) (NewsFeed)
-- (void)transformWithMotionData:(id)arg1;
+- (void)loadInRegistry:(id)arg1;
 @end
 

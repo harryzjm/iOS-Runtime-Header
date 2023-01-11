@@ -19,14 +19,17 @@
     CKRegistrationViewController *_madridRegistrationController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldShowRegistrationOverride; // @synthesize shouldShowRegistrationOverride=_shouldShowRegistrationOverride;
 @property(retain, nonatomic) CKRegistrationViewController *madridRegistrationController; // @synthesize madridRegistrationController=_madridRegistrationController;
 @property(retain, nonatomic) CKSceneDelegateState *storedState; // @synthesize storedState=_storedState;
 @property(nonatomic, getter=isLocked) _Bool locked; // @synthesize locked=_locked;
 @property(nonatomic, getter=isSuspended) _Bool suspended; // @synthesize suspended=_suspended;
 @property(readonly, nonatomic) CKMessagesController *messagesController; // @synthesize messagesController=_messagesController;
-- (void).cxx_destruct;
+- (id)_oldInputContextIdentifiers;
+- (void)_clearOldInputContextIdentifiersIfNeeded;
 - (id)sharedConversationList;
+- (_Bool)_messageUnknownFilteringEnabled;
 - (void)messagesController:(id)arg1 didUpdateCurrentConversation:(id)arg2;
 - (id)canActivatePredicate;
 - (id)prefersToActivatePredicate;
@@ -51,6 +54,7 @@
 - (id)validIntentDictionaryWithURLParameters:(id)arg1;
 - (_Bool)hasBusinessRecipientWithRecipientIDs:(id)arg1;
 - (void)loadConversationWithMessageGUID:(id)arg1;
+- (void)_setMessageFilterModeBy:(id)arg1;
 - (void)openSMSURL:(id)arg1;
 - (void)openSURFURL:(id)arg1;
 - (void)openURL:(id)arg1 sourceApplication:(id)arg2;

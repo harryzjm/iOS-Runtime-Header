@@ -13,6 +13,7 @@
 @interface PXCuratedLibraryOverlayButtonConfiguration : NSObject <PXGViewUserData>
 {
     _Bool _isSystemSymbolIcon;
+    _Bool _forcePointerInteractionEnabled;
     UIColor *_contentColor;
     UIColor *_highlightedContentColor;
     UIImage *_iconImage;
@@ -26,24 +27,33 @@
     NSString *_iconImageName;
     NSString *_title;
     NSSet *_possibleTitles;
+    NSString *_caption;
+    UIColor *_tintColor;
+    UIColor *_backgroundColor;
     struct UIEdgeInsets _imageEdgeInsets;
+    struct UIEdgeInsets _hitTestOutsets;
 }
 
 + (id)tintedImageCache;
 + (id)configurationWithIconImageName:(id)arg1 title:(id)arg2 spec:(id)arg3;
 + (id)configurationWithTitle:(id)arg1 spec:(id)arg2;
 + (id)configurationWithIconImageName:(id)arg1 spec:(id)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property(nonatomic) _Bool forcePointerInteractionEnabled; // @synthesize forcePointerInteractionEnabled=_forcePointerInteractionEnabled;
+@property(copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
 @property(copy, nonatomic) NSSet *possibleTitles; // @synthesize possibleTitles=_possibleTitles;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool isSystemSymbolIcon; // @synthesize isSystemSymbolIcon=_isSystemSymbolIcon;
 @property(readonly, nonatomic) NSString *iconImageName; // @synthesize iconImageName=_iconImageName;
+@property(nonatomic) struct UIEdgeInsets hitTestOutsets; // @synthesize hitTestOutsets=_hitTestOutsets;
 @property(nonatomic) struct UIEdgeInsets imageEdgeInsets; // @synthesize imageEdgeInsets=_imageEdgeInsets;
 @property(nonatomic) long long segment; // @synthesize segment=_segment;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(retain, nonatomic) PXCuratedLibraryActionPerformer *actionPerformer; // @synthesize actionPerformer=_actionPerformer;
 @property(readonly, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *spec; // @synthesize spec=_spec;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *highlightedIconImage; // @synthesize highlightedIconImage=_highlightedIconImage;
 @property(readonly, nonatomic) UIImage *tintedIconImage; // @synthesize tintedIconImage=_tintedIconImage;
 - (id)_tintedImage:(id)arg1 name:(id)arg2 withColor:(id)arg3;

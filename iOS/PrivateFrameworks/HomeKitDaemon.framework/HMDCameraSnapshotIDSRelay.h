@@ -9,26 +9,27 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDCameraSnapshotSessionID, HMFOSTransaction, IDSService, NSObject, NSString;
+@class HMFOSTransaction, IDSService, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraSnapshotIDSRelay : HMFObject <IDSServiceDelegate, HMFLogging>
+@interface HMDCameraSnapshotIDSRelay : HMFObject <HMFLogging, IDSServiceDelegate>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDCameraSnapshotSessionID *_sessionID;
+    NSUUID *_sessionID;
     IDSService *_idsStreamService;
     HMFOSTransaction *_snapshotRelayTransaction;
+    NSString *_logIdentifier;
 }
 
 + (id)logCategory;
-@property(retain, nonatomic) HMFOSTransaction *snapshotRelayTransaction; // @synthesize snapshotRelayTransaction=_snapshotRelayTransaction;
-@property(readonly, nonatomic) IDSService *idsStreamService; // @synthesize idsStreamService=_idsStreamService;
-@property(readonly, nonatomic) HMDCameraSnapshotSessionID *sessionID; // @synthesize sessionID=_sessionID;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 - (void).cxx_destruct;
+@property(readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property(readonly) HMFOSTransaction *snapshotRelayTransaction; // @synthesize snapshotRelayTransaction=_snapshotRelayTransaction;
+@property(readonly) IDSService *idsStreamService; // @synthesize idsStreamService=_idsStreamService;
+@property(readonly) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 - (void)dealloc;
-- (id)logIdentifier;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2;
+- (id)initWithSessionID:(id)arg1 logIdentifier:(id)arg2 workQueue:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

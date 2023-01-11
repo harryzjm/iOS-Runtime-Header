@@ -15,10 +15,14 @@
     unsigned long long _timestamp;
     int _dataSyncState;
     unsigned int _fetchCount;
+    unsigned int _homeDataMegabytesFetched;
+    unsigned int _homeDataMegabytesPushed;
     unsigned int _homeManagerFetchCount;
     unsigned int _homeManagerUploadCount;
     unsigned int _homeZoneFetchCount;
     unsigned int _homeZoneUploadCount;
+    unsigned int _legacyHomeDataMegabytesFetched;
+    unsigned int _legacyHomeDataMegabytesPushed;
     unsigned int _pushCount;
     NSMutableArray *_topErrors;
     NSMutableArray *_topReasons;
@@ -31,10 +35,14 @@
         unsigned int timestamp:1;
         unsigned int dataSyncState:1;
         unsigned int fetchCount:1;
+        unsigned int homeDataMegabytesFetched:1;
+        unsigned int homeDataMegabytesPushed:1;
         unsigned int homeManagerFetchCount:1;
         unsigned int homeManagerUploadCount:1;
         unsigned int homeZoneFetchCount:1;
         unsigned int homeZoneUploadCount:1;
+        unsigned int legacyHomeDataMegabytesFetched:1;
+        unsigned int legacyHomeDataMegabytesPushed:1;
         unsigned int pushCount:1;
         unsigned int uploadCount:1;
         unsigned int uploadErrorCount:1;
@@ -46,6 +54,11 @@
 
 + (Class)topErrorsType;
 + (Class)topReasonsType;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned int legacyHomeDataMegabytesPushed; // @synthesize legacyHomeDataMegabytesPushed=_legacyHomeDataMegabytesPushed;
+@property(nonatomic) unsigned int legacyHomeDataMegabytesFetched; // @synthesize legacyHomeDataMegabytesFetched=_legacyHomeDataMegabytesFetched;
+@property(nonatomic) unsigned int homeDataMegabytesPushed; // @synthesize homeDataMegabytesPushed=_homeDataMegabytesPushed;
+@property(nonatomic) unsigned int homeDataMegabytesFetched; // @synthesize homeDataMegabytesFetched=_homeDataMegabytesFetched;
 @property(nonatomic) unsigned int homeZoneUploadCount; // @synthesize homeZoneUploadCount=_homeZoneUploadCount;
 @property(nonatomic) unsigned int homeManagerUploadCount; // @synthesize homeManagerUploadCount=_homeManagerUploadCount;
 @property(nonatomic) unsigned int homeZoneFetchCount; // @synthesize homeZoneFetchCount=_homeZoneFetchCount;
@@ -60,7 +73,6 @@
 @property(nonatomic) unsigned int fetchCount; // @synthesize fetchCount=_fetchCount;
 @property(nonatomic) unsigned int pushCount; // @synthesize pushCount=_pushCount;
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -70,6 +82,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasLegacyHomeDataMegabytesPushed;
+@property(nonatomic) _Bool hasLegacyHomeDataMegabytesFetched;
+@property(nonatomic) _Bool hasHomeDataMegabytesPushed;
+@property(nonatomic) _Bool hasHomeDataMegabytesFetched;
 @property(nonatomic) _Bool hasHomeZoneUploadCount;
 @property(nonatomic) _Bool hasHomeManagerUploadCount;
 @property(nonatomic) _Bool hasHomeZoneFetchCount;

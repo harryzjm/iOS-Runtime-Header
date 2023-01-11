@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSString;
 @protocol EFSQLExpressable;
 
-@interface _EFSQLDistinctExpression : NSObject <EFSQLExpressable>
+@interface _EFSQLDistinctExpression : NSObject <EFSQLValueExpressable>
 {
     id <EFSQLExpressable> _expression;
 }
 
-@property(readonly, nonatomic) id <EFSQLExpressable> expression; // @synthesize expression=_expression;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <EFSQLExpressable> expression; // @synthesize expression=_expression;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 - (id)initWithExpression:(id)arg1;
 

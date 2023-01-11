@@ -16,8 +16,8 @@
     _Bool _expanded;
 }
 
-@property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 - (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)willTransitionToExpandedContentMode:(_Bool)arg1;
 @property(readonly, nonatomic) double preferredExpandedContentHeight;
@@ -46,6 +46,8 @@
 @property(readonly, nonatomic) double preferredExpandedContentWidth;
 @property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property(readonly, nonatomic) _Bool providesOwnPlatter;
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
 @property(readonly) Class superclass;
 
 @end

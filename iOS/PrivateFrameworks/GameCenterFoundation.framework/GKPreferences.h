@@ -19,9 +19,9 @@
 + (id)displayNameForEnvironment:(long long)arg1;
 + (id)hostNameForEnvironment:(long long)arg1;
 + (id)shared;
-@property(copy) NSDictionary *overrideValues; // @synthesize overrideValues=_overrideValues;
 @property(nonatomic, getter=isWebKitInspectElementEnabled) _Bool webKitInspectElementEnabled; // @synthesize webKitInspectElementEnabled=_webKitInspectElementEnabled;
 @property(nonatomic) _Bool _shouldSynchronizeOnNextRead; // @synthesize _shouldSynchronizeOnNextRead;
+@property(copy) NSDictionary *overrideValues; // @synthesize overrideValues=_overrideValues;
 @property(nonatomic) long long tournamentServer;
 @property(nonatomic) _Bool restrictToTournamentPlayers;
 @property(nonatomic) long long tournamentCreationMethod;
@@ -45,6 +45,12 @@
 @property(nonatomic) long long tournamentMaxSimulatedPlayers;
 @property(nonatomic) _Bool tournamentDemoModeEnabled;
 @property(nonatomic) _Bool tournamentsDebuggingEnabled;
+@property(nonatomic) _Bool supportsChallenges;
+@property(nonatomic) long long accessPointLocation;
+@property(nonatomic) _Bool accessPointShowHighlights;
+@property(nonatomic) _Bool accessPointIsOnAutomatically;
+@property(nonatomic) _Bool dashboardDeepLinkEnabled;
+@property(nonatomic) _Bool newDashboardUI;
 @property(nonatomic, getter=isComprehensiveLoggingEnabled) _Bool comprehensiveLoggingEnabled;
 @property(nonatomic, getter=isClipGestureEnabled) _Bool clipGestureEnabled;
 @property(readonly, nonatomic) _Bool HTTPShouldUsePipelining;
@@ -56,7 +62,9 @@
 @property(readonly, nonatomic) unsigned long long maxDefaultPlayersP2P;
 @property(nonatomic) double maxRecentPlayersTime;
 @property(nonatomic) unsigned long long maxRecentPlayersCount;
+@property(readonly, nonatomic) _Bool shouldAllowCustomCommunication;
 @property(nonatomic) _Bool shouldAddPlayerInfoToAddressBook;
+@property(readonly, nonatomic) _Bool shouldAllowSharing;
 @property(nonatomic) _Bool shouldAllowNearbyMultiplayer;
 @property(readonly, nonatomic) _Bool shouldDisallowInvitesFromStrangers;
 @property(nonatomic) _Bool shouldLinkPlayerToFacebook;
@@ -94,8 +102,15 @@
 @property(nonatomic) double operationRetryDelay;
 @property(nonatomic) double operationTimeout;
 @property(nonatomic) unsigned long long loginDisableThreshold;
+@property(nonatomic) long long networkManagerStateOverride;
+@property(nonatomic) NSString *networkManagerUserOverride;
+@property(nonatomic) unsigned long long coreRecentMultiplier;
+@property(nonatomic) unsigned long long coreRecentUpperLimit;
 @property(nonatomic) unsigned long long mescalSetupRetries;
+@property(nonatomic) _Bool forceUnderage;
+@property(nonatomic) _Bool forceDefaultPrivacy;
 @property(nonatomic) _Bool forceDefaultNickname;
+@property(nonatomic) _Bool enterSandbox;
 @property(nonatomic) _Bool useTestProtocols;
 @property(nonatomic) _Bool allowUnsignedBag;
 @property(retain, nonatomic) NSString *storeBagURL;
@@ -123,14 +138,21 @@
 - (id)initWithoutUIKitNotifications;
 - (id)initWithUIKitNotifications;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (id)valueRestrictionForKey:(id)arg1;
 - (_Bool)restrictionEnabledForKey:(id)arg1;
+@property(readonly, nonatomic, getter=isProfilePrivacyModificationRestricted) _Bool profilePrivacyModificationRestricted;
+@property(readonly, nonatomic, getter=isNearbyMultiplayerRestricted) _Bool nearbyMultiplayerRestricted;
+@property(readonly, nonatomic, getter=isCustomizedCommunicationRestricted) _Bool customizedCommunicationRestricted;
+@property(readonly, nonatomic, getter=isProfileModificationRestricted) _Bool profileModificationRestricted;
+@property(readonly, nonatomic, getter=isSharingRestricted) _Bool sharingRestricted;
 @property(readonly, nonatomic, getter=isGameCenterRestricted) _Bool gameCenterRestricted;
 @property(readonly, nonatomic, getter=isAccountModificationRestricted) _Bool accountModificationRestricted;
 @property(readonly, nonatomic, getter=isAppInstallationRestricted) _Bool appInstallationRestricted;
 @property(readonly, nonatomic, getter=isAddingFriendsRestricted) _Bool addingFriendsRestricted;
+@property(readonly, nonatomic) unsigned long long multiplayerAllowedPlayerType;
 @property(readonly, nonatomic, getter=isMultiplayerGamingRestricted) _Bool multiplayerGamingRestricted;
 @property(readonly, nonatomic, getter=isStoreDemoModeEnabled) _Bool storeDemoModeEnabled;
-@property(nonatomic) id <GKPreferencesDelegate> preferencesDelegate;
+@property(nonatomic) __weak id <GKPreferencesDelegate> preferencesDelegate;
 
 @end
 

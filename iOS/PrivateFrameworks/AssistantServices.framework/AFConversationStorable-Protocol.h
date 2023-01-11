@@ -10,6 +10,9 @@
 
 @protocol AFConversationStorable <NSObject>
 - (AFDataStore *)associatedDataStore;
+- (_Bool)isImmersiveExperience;
+- (_Bool)isSupplemental;
+- (_Bool)isTransient;
 - (_Bool)isVirgin;
 - (long long)presentationState;
 - (NSString *)aceCommandIdentifier;

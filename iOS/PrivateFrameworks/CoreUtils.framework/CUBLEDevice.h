@@ -14,13 +14,16 @@
     unsigned char _objectDiscoveryBatteryState;
     unsigned char _objectSetupBatteryState;
     unsigned char _objectSetupColorCode;
+    unsigned char _proximityPairingAudioSourceCount;
     unsigned short _objectDiscoveryProductID;
     unsigned short _proximityPairingProductID;
+    CDStruct_ae2970c9 _proximityPairingLastConnectedHost;
+    unsigned int _changeFlags;
+    unsigned int _deviceFlags;
     unsigned int _lgFlags;
     int _nearbyActionType;
     unsigned int _nearbyFlags;
     int _objectDiscoveryMode;
-    int _objectDiscoveryType;
     int _objectSetupBatteryPerformance;
     unsigned int _objectSetupFlags;
     int _proximityPairingSubType;
@@ -35,17 +38,23 @@
     NSData *_nearbyAuthTag;
     NSData *_objectDiscoveryNearOwnerID;
     NSData *_objectDiscoveryPublicKeyData;
+    NSString *_objectSetupFontCode;
+    NSString *_objectSetupMessage;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int scanFlags; // @synthesize scanFlags=_scanFlags;
 @property(readonly, nonatomic) int rawRSSI; // @synthesize rawRSSI=_rawRSSI;
+@property(readonly, nonatomic) unsigned char proximityPairingAudioSourceCount; // @synthesize proximityPairingAudioSourceCount=_proximityPairingAudioSourceCount;
 @property(readonly, nonatomic) int proximityPairingSubType; // @synthesize proximityPairingSubType=_proximityPairingSubType;
 @property(readonly, nonatomic) unsigned short proximityPairingProductID; // @synthesize proximityPairingProductID=_proximityPairingProductID;
+@property(readonly, nonatomic) CDStruct_ae2970c9 proximityPairingLastConnectedHost; // @synthesize proximityPairingLastConnectedHost=_proximityPairingLastConnectedHost;
+@property(readonly, copy, nonatomic) NSString *objectSetupMessage; // @synthesize objectSetupMessage=_objectSetupMessage;
+@property(readonly, copy, nonatomic) NSString *objectSetupFontCode; // @synthesize objectSetupFontCode=_objectSetupFontCode;
 @property(readonly, nonatomic) unsigned int objectSetupFlags; // @synthesize objectSetupFlags=_objectSetupFlags;
 @property(readonly, nonatomic) unsigned char objectSetupColorCode; // @synthesize objectSetupColorCode=_objectSetupColorCode;
 @property(readonly, nonatomic) unsigned char objectSetupBatteryState; // @synthesize objectSetupBatteryState=_objectSetupBatteryState;
 @property(readonly, nonatomic) int objectSetupBatteryPerformance; // @synthesize objectSetupBatteryPerformance=_objectSetupBatteryPerformance;
-@property(readonly, nonatomic) int objectDiscoveryType; // @synthesize objectDiscoveryType=_objectDiscoveryType;
 @property(readonly, copy, nonatomic) NSData *objectDiscoveryPublicKeyData; // @synthesize objectDiscoveryPublicKeyData=_objectDiscoveryPublicKeyData;
 @property(readonly, nonatomic) unsigned short objectDiscoveryProductID; // @synthesize objectDiscoveryProductID=_objectDiscoveryProductID;
 @property(readonly, copy, nonatomic) NSData *objectDiscoveryNearOwnerID; // @synthesize objectDiscoveryNearOwnerID=_objectDiscoveryNearOwnerID;
@@ -60,11 +69,13 @@
 @property(readonly, copy, nonatomic) NSData *lgDeviceID; // @synthesize lgDeviceID=_lgDeviceID;
 @property(readonly, copy, nonatomic) NSData *lgBTAddress; // @synthesize lgBTAddress=_lgBTAddress;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
+@property(nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
 @property(readonly, copy, nonatomic) NSData *appleManufacturerData; // @synthesize appleManufacturerData=_appleManufacturerData;
 @property(readonly, copy, nonatomic) NSData *addressData; // @synthesize addressData=_addressData;
-- (void).cxx_destruct;
 - (void)_parseLGManufacturerPtr:(const char *)arg1 end:(const char *)arg2 fields:(id)arg3;
 - (void)_parseAppleProximityPairingObjectSetupPtr:(const char *)arg1 end:(const char *)arg2;
+- (void)_parseAppleProximityPairingStatusPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseAppleProximityPairingPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseAppleObjectDiscoveryPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseAppleNearbyInfoPtr:(const char *)arg1 end:(const char *)arg2;

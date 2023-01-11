@@ -11,17 +11,30 @@
 @interface ICDefaults : NSObject
 {
     NSUserDefaults *_userDefaults;
+    NSUserDefaults *_musicUserDefaults;
     _Bool _bypassBagSanityChecks;
     NSUserDefaults *_internalDefaults;
 }
 
 + (id)standardDefaults;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property(nonatomic) _Bool bypassBagSanityChecks; // @synthesize bypassBagSanityChecks=_bypassBagSanityChecks;
-- (void).cxx_destruct;
 - (void)_setOrRemoveObject:(id)arg1 forKey:(id)arg2;
 - (_Bool)_shouldSpoofIPhoneRequestProperties;
+- (id)_musicUserDefaults;
 - (void)synchronize;
+@property(readonly, nonatomic) _Bool allowLowAffinityRecommendations;
+- (void)deleteAutomaticDownloadsKey;
+@property(nonatomic) _Bool automaticDownloadsEnabled;
+@property(readonly, nonatomic) _Bool shouldTreatInitialSagaImportAsFailed;
+@property(readonly, nonatomic) _Bool shouldTreatSagaAddComputerCallAsFailed;
+@property(readonly, nonatomic) _Bool shouldTreatSubscriptionStatusCheckAsIncomplete;
+@property(readonly, nonatomic) _Bool shouldTreatSubscriptionStatusAsExpired;
+@property(readonly, nonatomic) _Bool shouldReduceLibraryRecommendationsXPCInterval;
+@property(readonly, nonatomic) _Bool shouldForceLibraryRecommendationAnalysis;
+@property(readonly, nonatomic, getter=isLegacyStoreCacheBusterEnabled) _Bool legacyStoreCacheBusterEnabled;
+@property(readonly, nonatomic, getter=isPrivacyAcknowledgementDisabledForMusic) _Bool privacyAcknowledgementDisabledForMusic;
 @property(nonatomic, getter=isGrazingPathEnabled) _Bool grazingPathEnabled;
 @property(nonatomic, getter=isExplicitContentAllowedForExpirationYear) _Bool explicitContentAllowedForExpirationYear;
 @property(nonatomic, getter=isExplicitContentAllowedForCurrentYear) _Bool explicitContentAllowedForCurrentYear;
@@ -36,6 +49,9 @@
 @property(readonly, copy, nonatomic) NSString *deviceModelOverride;
 @property(readonly, copy, nonatomic) NSNumber *deviceClassOverride;
 @property(nonatomic) _Bool ignoreExtendedCertificateValidation;
+@property(copy, nonatomic) NSDictionary *accountNotificationsShowInLibraryDictionary;
+@property(copy, nonatomic) NSDictionary *lastKnownSubscriptionStatusBaseCacheKey;
+@property(copy, nonatomic) NSDictionary *lastKnownLocalStoreAccountProperties;
 @property(copy, nonatomic) NSDictionary *lastKnownUserAgeVerificationState;
 @property(nonatomic) double lastAuthenticationDialogResponseTime;
 @property(copy, nonatomic) NSDictionary *authServiceClientTokenCache;
@@ -47,7 +63,7 @@
 @property(copy, nonatomic) NSDictionary *pushNotificationState;
 @property(copy, nonatomic) NSDictionary *cachedMusicUserTokens;
 @property(copy, nonatomic) NSDictionary *cachedSubscriptionStatus;
-@property(copy, nonatomic) NSString *defaultStoreFront;
+@property(readonly, nonatomic) NSString *defaultStoreFront;
 @property(copy, nonatomic) NSString *cloudMediaLibraryUID;
 - (id)init;
 

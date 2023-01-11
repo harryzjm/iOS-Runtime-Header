@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIBarButtonItem;
+@class NSString, UIBarButtonItem;
 
 @interface RUIBarButtonItem
 {
@@ -12,9 +12,11 @@
     CDUnknownBlockType _action;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
 - (void)setEnabled:(_Bool)arg1;
+@property(readonly, nonatomic) NSString *itemType;
+- (id)_labelColor;
 @property(readonly, nonatomic) UIBarButtonItem *barButtonItem;
 - (void)_buttonPressed:(id)arg1;
 

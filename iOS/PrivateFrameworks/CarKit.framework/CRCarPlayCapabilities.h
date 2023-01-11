@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSValue;
+#import <CarKit/NSSecureCoding-Protocol.h>
 
-@interface CRCarPlayCapabilities : NSObject
+@class NSString, NSValue;
+
+@interface CRCarPlayCapabilities : NSObject <NSSecureCoding>
 {
     _Bool _persisted;
     unsigned long long _disabledFeature;
@@ -16,25 +18,38 @@
     NSValue *_viewAreaInsets;
     NSValue *_dashboardRoundedCorners;
     long long _userInterfaceStyle;
+    NSString *_version;
 }
 
++ (id)carPlayCapabilitiesCache;
++ (void)setCarPlayCapabilitiesCache:(id)arg1;
++ (void)invalidateCarPlayCapabilitiesCache;
++ (void)waitForCarCapabilitiesValues;
++ (void)_resetCapabilitiesGlobalDomain;
 + (id)newCapabilitiesFromGlobalDomain;
 + (id)fetchCarCapabilities;
++ (_Bool)supportsSecureCoding;
++ (id)capabilitiesVersion;
++ (void)setCapabilitiesVersion:(id)arg1;
 + (void)setCapabilitiesIdentifier:(id)arg1;
 + (id)capabilitiesIdentifier;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool persisted; // @synthesize persisted=_persisted;
+@property(nonatomic) NSString *version; // @synthesize version=_version;
 @property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(retain, nonatomic) NSValue *dashboardRoundedCorners; // @synthesize dashboardRoundedCorners=_dashboardRoundedCorners;
 @property(retain, nonatomic) NSValue *viewAreaInsets; // @synthesize viewAreaInsets=_viewAreaInsets;
 @property(nonatomic) long long nowPlayingAlbumArtMode; // @synthesize nowPlayingAlbumArtMode=_nowPlayingAlbumArtMode;
 @property(nonatomic) unsigned long long disabledFeature; // @synthesize disabledFeature=_disabledFeature;
-- (void).cxx_destruct;
 - (void)persistCapabilitiesToGlobalDomain;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToCapabilities:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)informativeText;
 - (id)description;
 - (id)init;
 

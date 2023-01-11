@@ -8,7 +8,7 @@
 #import <HMFoundation/NSMutableCopying-Protocol.h>
 #import <HMFoundation/NSSecureCoding-Protocol.h>
 
-@class HMFActivity, HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFLogEventSession, HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMessage <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -26,8 +26,8 @@
 + (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3;
 + (id)messageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 + (id)messageWithName:(id)arg1 messagePayload:(id)arg2;
-@property(readonly, nonatomic) HMFMessageInternal *internal; // @synthesize internal=_internal;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMFMessageInternal *internal; // @synthesize internal=_internal;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -35,7 +35,10 @@
 - (_Bool)respondWithPayload:(id)arg1 error:(id)arg2;
 - (_Bool)respondWithError:(id)arg1;
 - (_Bool)respondWithPayload:(id)arg1;
+- (_Bool)respondWithSuccess;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler;
+- (void)setLogEventSession:(id)arg1;
+@property(readonly, nonatomic) HMFLogEventSession *logEventSession;
 @property(copy, nonatomic) NSDictionary *messagePayload;
 @property(readonly, copy, nonatomic) NSDictionary *headers;
 @property(readonly, copy, nonatomic) NSDictionary *userInfo;
@@ -57,6 +60,7 @@
 - (id)initWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
+- (id)unarchivedObjectForKey:(id)arg1 ofClasses:(id)arg2;
 - (id)arrayOfDateComponentsForKey:(id)arg1;
 - (id)predicateForKey:(id)arg1;
 - (id)calendarForKey:(id)arg1;
@@ -66,6 +70,7 @@
 - (id)nullForKey:(id)arg1;
 - (id)dateForKey:(id)arg1;
 - (id)dataForKey:(id)arg1;
+- (id)setForKey:(id)arg1;
 - (id)arrayForKey:(id)arg1;
 - (id)dictionaryForKey:(id)arg1;
 - (_Bool)boolForKey:(id)arg1 keyPresent:(_Bool *)arg2;

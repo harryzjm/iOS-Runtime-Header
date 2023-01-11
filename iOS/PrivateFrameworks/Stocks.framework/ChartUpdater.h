@@ -17,11 +17,10 @@
 }
 
 + (id)_rangeStringForInterval:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly) long long interval; // @synthesize interval=_interval;
 @property(nonatomic) __weak id <ChartUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)dataSeries;
-- (id)aggregateDictionaryDomain;
 - (void)failWithError:(id)arg1;
 - (void)didParseData;
 - (void)parseDataSeriesDictionary:(id)arg1;

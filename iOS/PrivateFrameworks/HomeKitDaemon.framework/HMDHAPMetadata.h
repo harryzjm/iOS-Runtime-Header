@@ -48,6 +48,7 @@
 + (id)getBuiltinInstance;
 + (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 + (id)initWithURL:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *assistantUnits; // @synthesize assistantUnits=_assistantUnits;
 @property(retain, nonatomic) NSDictionary *assistantChrHAPTypeNameMap; // @synthesize assistantChrHAPTypeNameMap=_assistantChrHAPTypeNameMap;
 @property(retain, nonatomic) NSDictionary *assistantCharacteristics; // @synthesize assistantCharacteristics=_assistantCharacteristics;
@@ -69,7 +70,6 @@
 @property(nonatomic) _Bool incomplete; // @synthesize incomplete=_incomplete;
 @property(retain, nonatomic) NSNumber *schemaVersion; // @synthesize schemaVersion=_schemaVersion;
 @property(retain, nonatomic) NSNumber *version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (id)protoBufObjectWithEncodingOption:(id)arg1;
 - (id)statusHAPCharacteristicTypesForServiceType;
 - (id)aliasedHAPServiceTypes;
@@ -107,14 +107,16 @@
 - (id)mapToAssistantServiceName:(id)arg1;
 - (_Bool)supportsLocalization:(id)arg1;
 - (id)serviceSubtypeForValue:(id)arg1 forServiceType:(id)arg2;
+- (id)categoryTypeFromName:(id)arg1;
 - (id)categoryForType:(id)arg1;
 - (id)categoryForIdentifier:(id)arg1;
 - (id)audioAccessoryCategory;
 - (id)categoryForOther;
+- (_Bool)shouldRefreshValueForCharacteristicWithType:(id)arg1 serviceType:(id)arg2;
 - (_Bool)shouldFilterEnableNotificationsForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (_Bool)shouldFilterChangeNotificationsForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (_Bool)shouldHomeAppShowTileForServiceType:(id)arg1;
-- (_Bool)shouldAllowHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
+- (_Bool)shouldEnableHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (_Bool)shouldAutoEnableNotificationForCharacteristic:(id)arg1 ofService:(id)arg2;
 - (_Bool)isSecondsDownCounterCharacteristicType:(id)arg1;
 - (_Bool)generateNotificationOnConfigurationForCharacteristicType:(id)arg1 serviceType:(id)arg2;

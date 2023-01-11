@@ -36,6 +36,8 @@
 - (_Bool)signal:(int)arg1;
 - (_Bool)terminate;
 - (_Bool)isRunning;
+- (id)platformName;
+- (unsigned int)platform;
 - (_Bool)isNative;
 - (int)cpuType;
 - (_Bool)isCFM;

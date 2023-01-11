@@ -13,15 +13,17 @@
     NSPointerArray *_backdrops;
     _Bool _disableInPlaceFiltering;
     NSString *_groupName;
+    NSString *_groupNamespace;
     double _scale;
     double _minimumScale;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool disableInPlaceFiltering; // @synthesize disableInPlaceFiltering=_disableInPlaceFiltering;
 @property(nonatomic) double minimumScale; // @synthesize minimumScale=_minimumScale;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
+@property(copy, nonatomic) NSString *groupNamespace; // @synthesize groupNamespace=_groupNamespace;
 @property(copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)allowInPlaceFiltering;
 - (void)applyScaleHint:(double)arg1;
@@ -30,6 +32,7 @@
 - (void)addBackdrop:(id)arg1 update:(_Bool)arg2;
 - (long long)indexOfBackdropView:(id)arg1;
 - (id)initWithBackdrop:(id)arg1;
+- (id)initWithName:(id)arg1 scale:(double)arg2;
 - (id)init;
 
 @end

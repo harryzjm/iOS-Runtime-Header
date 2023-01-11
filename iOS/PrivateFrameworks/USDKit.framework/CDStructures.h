@@ -14,42 +14,62 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct ArAsset;
 
+struct Handle {
+    unsigned int value;
+};
+
 struct SdfAssetPath {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _assetPath;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _resolvedPath;
 };
 
-struct SdfPath {
-    struct intrusive_ptr<const pxrInternal_v0_19__pxrReserved__usdkit__::Sdf_PathNode> _pathNode;
+struct SdfLayerOffset {
+    double _offset;
+    double _scale;
 };
 
-struct Sdf_PathNode;
+struct SdfPath {
+    struct Sdf_PathNodeHandleImpl<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_Pool<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathPrimTag, 24, 8, 16384>::Handle, true, const pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathNode> _primPart;
+    struct Sdf_PathNodeHandleImpl<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_Pool<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathPropTag, 24, 8, 16384>::Handle, false, const pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathNode> _propPart;
+};
 
-struct TfPointerAndBits<const pxrInternal_v0_19__pxrReserved__usdkit__::TfToken::_Rep> {
+struct SdfTimeCode {
+    double _time;
+};
+
+struct Sdf_PathNodeHandleImpl<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_Pool<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathPrimTag, 24, 8, 16384>::Handle, true, const pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathNode> {
+    struct Handle _poolHandle;
+};
+
+struct Sdf_PathNodeHandleImpl<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_Pool<pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathPropTag, 24, 8, 16384>::Handle, false, const pxrInternal_v0_20__pxrReserved__usdkit__::Sdf_PathNode> {
+    struct Handle _poolHandle;
+};
+
+struct TfPointerAndBits<const pxrInternal_v0_20__pxrReserved__usdkit__::TfToken::_Rep> {
     struct _Rep *_ptrAndBits;
 };
 
-struct TfPointerAndBits<const pxrInternal_v0_19__pxrReserved__usdkit__::VtValue::_TypeInfo> {
+struct TfPointerAndBits<const pxrInternal_v0_20__pxrReserved__usdkit__::VtValue::_TypeInfo> {
     struct _TypeInfo *_ptrAndBits;
 };
 
 struct TfRefBase;
 
-struct TfRefPtr<pxrInternal_v0_19__pxrReserved__usdkit__::Tf_Remnant> {
+struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::Tf_Remnant> {
     struct TfRefBase *_field1;
 };
 
-struct TfRefPtr<pxrInternal_v0_19__pxrReserved__usdkit__::UsdStage> {
+struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
     struct TfRefBase *_refBase;
 };
 
 struct TfToken {
-    struct TfPointerAndBits<const pxrInternal_v0_19__pxrReserved__usdkit__::TfToken::_Rep> _rep;
+    struct TfPointerAndBits<const pxrInternal_v0_20__pxrReserved__usdkit__::TfToken::_Rep> _rep;
 };
 
-struct TfWeakPtr<pxrInternal_v0_19__pxrReserved__usdkit__::UsdStage> {
+struct TfWeakPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
     struct UsdStage *_field1;
-    struct TfRefPtr<pxrInternal_v0_19__pxrReserved__usdkit__::Tf_Remnant> _field2;
+    struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::Tf_Remnant> _field2;
 };
 
 struct UsdPrim {
@@ -86,7 +106,7 @@ struct UsdStage;
 struct Usd_PrimData;
 
 struct Usd_PrimDataHandle {
-    struct intrusive_ptr<const pxrInternal_v0_19__pxrReserved__usdkit__::Usd_PrimData> _p;
+    struct intrusive_ptr<const pxrInternal_v0_20__pxrReserved__usdkit__::Usd_PrimData> _p;
 };
 
 struct Usd_PrimFlagsPredicate {
@@ -97,7 +117,7 @@ struct Usd_PrimFlagsPredicate {
 
 struct VtValue {
     struct type _storage;
-    struct TfPointerAndBits<const pxrInternal_v0_19__pxrReserved__usdkit__::VtValue::_TypeInfo> _info;
+    struct TfPointerAndBits<const pxrInternal_v0_20__pxrReserved__usdkit__::VtValue::_TypeInfo> _info;
 };
 
 struct _Rep;
@@ -111,16 +131,15 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long __cap_;
-                    unsigned long long __size_;
                     char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
                 } __l;
                 struct __short {
-                    union {
-                        unsigned char __size_;
-                        char __lx;
-                    } ;
                     char __data_[23];
+                    struct {
+                        unsigned char __size_;
+                    } ;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -134,11 +153,7 @@ struct bitset<13> {
     unsigned long long __first_;
 };
 
-struct intrusive_ptr<const pxrInternal_v0_19__pxrReserved__usdkit__::Sdf_PathNode> {
-    struct Sdf_PathNode *px;
-};
-
-struct intrusive_ptr<const pxrInternal_v0_19__pxrReserved__usdkit__::Usd_PrimData> {
+struct intrusive_ptr<const pxrInternal_v0_20__pxrReserved__usdkit__::Usd_PrimData> {
     struct Usd_PrimData *px;
 };
 
@@ -151,7 +166,7 @@ struct iterator {
     _Bool _isPost;
 };
 
-struct iterator_range<pxrInternal_v0_19__pxrReserved__usdkit__::UsdPrimSiblingIterator> {
+struct iterator_range<pxrInternal_v0_20__pxrReserved__usdkit__::UsdPrimSiblingIterator> {
     struct UsdPrimSiblingIterator m_Begin;
     struct UsdPrimSiblingIterator m_End;
 };
@@ -161,7 +176,7 @@ struct shared_ptr<const char> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<pxrInternal_v0_19__pxrReserved__usdkit__::ArAsset> {
+struct shared_ptr<pxrInternal_v0_20__pxrReserved__usdkit__::ArAsset> {
     struct ArAsset *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
@@ -170,10 +185,10 @@ struct type {
     unsigned char __lx[8];
 };
 
-struct vector<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty, std::__1::allocator<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty>> {
+struct vector<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
     struct UsdProperty *__begin_;
     struct UsdProperty *__end_;
-    struct __compressed_pair<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty *, std::__1::allocator<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty>> {
+    struct __compressed_pair<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty *, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
         struct UsdProperty *__value_;
     } __end_cap_;
 };
@@ -185,25 +200,25 @@ typedef struct {
 } CDStruct_f1db2b5e;
 
 // Template types
-typedef struct TfRefPtr<pxrInternal_v0_19__pxrReserved__usdkit__::UsdStage> {
+typedef struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
     struct TfRefBase *_refBase;
-} TfRefPtr_a9ae0d85;
+} TfRefPtr_8a332644;
 
-typedef struct TfWeakPtr<pxrInternal_v0_19__pxrReserved__usdkit__::UsdStage> {
+typedef struct TfWeakPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
     struct UsdStage *_field1;
-    struct TfRefPtr<pxrInternal_v0_19__pxrReserved__usdkit__::Tf_Remnant> _field2;
-} TfWeakPtr_db1cbf17;
+    struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::Tf_Remnant> _field2;
+} TfWeakPtr_163a6a2f;
 
-typedef struct iterator_range<pxrInternal_v0_19__pxrReserved__usdkit__::UsdPrimSiblingIterator> {
+typedef struct iterator_range<pxrInternal_v0_20__pxrReserved__usdkit__::UsdPrimSiblingIterator> {
     struct UsdPrimSiblingIterator m_Begin;
     struct UsdPrimSiblingIterator m_End;
-} iterator_range_599edad9;
+} iterator_range_68be7782;
 
-typedef struct vector<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty, std::__1::allocator<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty>> {
+typedef struct vector<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
     struct UsdProperty *__begin_;
     struct UsdProperty *__end_;
-    struct __compressed_pair<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty *, std::__1::allocator<pxrInternal_v0_19__pxrReserved__usdkit__::UsdProperty>> {
+    struct __compressed_pair<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty *, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
         struct UsdProperty *__value_;
     } __end_cap_;
-} vector_8221fbb7;
+} vector_6f2ba469;
 

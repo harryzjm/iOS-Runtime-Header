@@ -29,15 +29,11 @@
         double angle;
         double radius;
     } _selectedColorCoordinate;
-    struct {
-        double r;
-        double g;
-        double b;
-        double temperature;
-    } _selectedColor;
+    CDStruct_dbd0f16f _selectedColor;
 }
 
-@property(nonatomic) CDStruct_d2b197d1 selectedColor; // @synthesize selectedColor=_selectedColor;
+- (void).cxx_destruct;
+@property(nonatomic) CDStruct_dbd0f16f selectedColor; // @synthesize selectedColor=_selectedColor;
 @property(nonatomic) CDStruct_c3b9c2ee selectedColorCoordinate; // @synthesize selectedColorCoordinate=_selectedColorCoordinate;
 @property(nonatomic) double touchDownTimestamp; // @synthesize touchDownTimestamp=_touchDownTimestamp;
 @property(retain, nonatomic) UILongPressGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
@@ -50,7 +46,6 @@
 @property(nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property(copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
 @property(nonatomic) __weak id <HUQuickControlColorPickerViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (void)_updateMagnifierTransformForTouchLocation:(struct CGPoint)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -63,7 +58,6 @@
 - (void)_updateMagnifierPosition;
 - (void)_updateDerivedSelectedColorCoordinate;
 - (id)_colorWheelSpaceForMode:(unsigned long long)arg1;
-- (void)_setColorPickerMode:(unsigned long long)arg1 notifyDelegate:(_Bool)arg2;
 @property(nonatomic) struct CGPoint magnifierLocation;
 - (void)_updateMagnifierView;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;

@@ -14,8 +14,12 @@
     NSXPCConnection *_connection;
 }
 
++ (CDUnknownBlockType)factory;
 - (void).cxx_destruct;
 - (id)_daemonConnection;
+- (void)cancelInternalSkipInfo;
+- (void)getInternalSkipInfo:(CDUnknownBlockType)arg1;
+- (void)setInternalShouldSkipFlows:(_Bool)arg1 skipExceptions:(id)arg2;
 - (void)cancelDataMigratorDeferredExit;
 - (void)deferDataMigratorExit;
 - (void)performSilentICDPUpgrade;

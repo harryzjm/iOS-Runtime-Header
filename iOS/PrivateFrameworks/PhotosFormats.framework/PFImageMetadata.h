@@ -10,8 +10,19 @@
 {
 }
 
++ (struct CGImage *)createImageRefFromAuxiliaryImagePixelBuffer:(struct __CVBuffer *)arg1 applyingOrientation:(unsigned int)arg2 scaleFactor:(double)arg3;
++ (id)cIImageFromAuxiliaryImageInfo:(id)arg1 applyingOrientation:(unsigned int)arg2 scaleFactor:(double)arg3;
++ (struct __CVBuffer *)createPixelBufferFromAuxiliaryImageInfo:(id)arg1;
++ (id)cIImageFromPixelBuffer:(struct __CVBuffer *)arg1 applyingOrientation:(unsigned int)arg2 scaleFactor:(double)arg3;
++ (struct CGImage *)createImageRefFromAuxiliaryImageInfo:(id)arg1 applyingOrientation:(unsigned int)arg2 scaleFactor:(double)arg3;
++ (id)dictionaryRepresentationForAuxiliaryImagePixelBuffer:(struct __CVBuffer *)arg1 metadata:(struct CGImageMetadata *)arg2;
++ (id)transformAuxiliaryImages:(id)arg1 scaleFactor:(double)arg2 applyingOrientation:(unsigned int)arg3;
++ (id)auxiliaryImageIdentifiersToPreserveForDerivatives;
++ (id)auxiliaryImagesToPreserveForDerivativesFromImageSource:(struct CGImageSource *)arg1 imageIndex:(unsigned long long)arg2;
++ (_Bool)enumerateImageSourceIndexesOfFileAtURL:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 + (_Bool)queryImagePropertiesOfFileAtURL:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 + (_Bool)writeMetadataType:(unsigned char)arg1 value:(id)arg2 toCGImageProperties:(id)arg3 error:(id *)arg4;
++ (_Bool)metadataTypeRequiresImageSourceAuxiliaryImage:(unsigned char)arg1;
 + (_Bool)readMetadataType:(unsigned char)arg1 fromCGImageProperties:(id)arg2 value:(id *)arg3 error:(id *)arg4;
 + (_Bool)readMetadataType:(unsigned char)arg1 fromFileURL:(id)arg2 value:(id *)arg3 error:(id *)arg4;
 + (id)imagePropertiesByRemovingKey:(const void *)arg1 dictionaryKey:(const void *)arg2 fromImageProperties:(id)arg3;

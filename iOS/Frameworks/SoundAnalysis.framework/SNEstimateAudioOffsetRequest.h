@@ -6,28 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
 @class NSString, SNAudioOffsetEstimator;
-@protocol SNAnalyzing;
 
-@interface SNEstimateAudioOffsetRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNEstimateAudioOffsetRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
     SNAudioOffsetEstimator *_detector;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-- (double)offset;
-@property(readonly, nonatomic) double maximumObservableOffset;
-@property(readonly, nonatomic) double minimumObservableOffset;
-@property(readonly, nonatomic) __weak id <SNAnalyzing> analyzer;
-- (id)init;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToEstimateAudioOffsetRequest:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

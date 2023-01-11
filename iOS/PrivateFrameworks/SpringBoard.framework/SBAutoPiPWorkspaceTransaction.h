@@ -16,14 +16,11 @@
 }
 
 + (long long)transitionStyleForProcessIdentifier:(int)arg1 entityToPiP:(id)arg2 withTransitionContext:(id)arg3 request:(id)arg4;
-+ (_Bool)isSystemGesture:(id)arg1;
-+ (_Bool)_shouldAutoPiPEnteringBackgroundForRequest:(id)arg1 transientOverlayEntityFoundBlock:(CDUnknownBlockType)arg2 appEntityFoundBlock:(CDUnknownBlockType)arg3;
 + (_Bool)shouldAutoPiPEnteringBackgroundForRequest:(id)arg1 entityFoundBlock:(CDUnknownBlockType)arg2;
 + (_Bool)shouldAutoPiPEnteringBackgroundForRequest:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) SBWorkspaceEntity *entityToPiP; // @synthesize entityToPiP=_entityToPiP;
 @property(nonatomic) long long transitionStyle; // @synthesize transitionStyle=_transitionStyle;
-- (void).cxx_destruct;
-- (long long)_transitionStyle;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (_Bool)_canBeInterrupted;

@@ -6,23 +6,24 @@
 
 #import <GeoServices/GEOServiceRequestConfiguring-Protocol.h>
 
-@class NSNumber, NSString;
+@class GEODirectionsRequest, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEODirectionsRequestConfig <GEOServiceRequestConfiguring>
 {
     NSNumber *_requestPriority;
+    GEODirectionsRequest *_request;
 }
 
 - (void).cxx_destruct;
+- (id)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
-- (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (id)serviceTypeNumber;
 - (id)additionalHTTPHeaders;
 - (id)additionalURLQueryItems;
 - (unsigned long long)urlType;
-- (id)initWithRequestPriority:(id)arg1;
+- (id)initWithRequest:(id)arg1 requestPriority:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

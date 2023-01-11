@@ -9,9 +9,6 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(copy, nonatomic, setter=_setRegisterLegacyPostInitCallbackBlock:) CDUnknownBlockType _registerLegacyPostInitCallbackBlock; // @dynamic _registerLegacyPostInitCallbackBlock;
-@property(copy, nonatomic, setter=_setRegisterPostCheckInPreServiceInitializationCallbackBlock:) CDUnknownBlockType _registerPostCheckInPreServiceInitializationCallbackBlock; // @dynamic _registerPostCheckInPreServiceInitializationCallbackBlock;
-@property(nonatomic, setter=_setIsLegacyFBSystemApp:) _Bool _isLegacyFBSystemApp; // @dynamic _isLegacyFBSystemApp;
 @property(copy, nonatomic) CDUnknownBlockType registerAdditionalServicesBlock; // @dynamic registerAdditionalServicesBlock;
 @property(nonatomic) double systemSleepInterval; // @dynamic systemSleepInterval;
 @property(nonatomic) _Bool shouldWaitForMigrator; // @dynamic shouldWaitForMigrator;

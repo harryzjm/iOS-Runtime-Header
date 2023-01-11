@@ -19,6 +19,7 @@
 }
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
++ (Class)_timeViewClass;
 - (void).cxx_destruct;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (id)_colorComplicationViewForSlot:(id)arg1;

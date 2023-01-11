@@ -15,6 +15,7 @@
 @property(nonatomic) double cardScale; // @synthesize cardScale=_cardScale;
 @property(nonatomic) unsigned long long scrollAxis; // @synthesize scrollAxis=_scrollAxis;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
 
 @end

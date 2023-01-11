@@ -11,6 +11,7 @@
 + (id)deviceMyriadConfigurationWithDictionary:(id)arg1 context:(id)arg2;
 + (id)deviceMyriadConfiguration;
 - (_Bool)requiresResponse;
+@property(nonatomic) double deviceVTEndtimeDistanceThreshold;
 @property(nonatomic) double deviceTrumpDelay;
 @property(nonatomic) double deviceDelay;
 @property(nonatomic) double deviceClass;

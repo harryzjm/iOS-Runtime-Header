@@ -10,14 +10,16 @@
 
 @interface BYAnalyticsEvent : NSObject
 {
+    _Bool _persist;
     NSString *_name;
     NSDictionary *_payload;
 }
 
-+ (id)eventWithName:(id)arg1 withPayload:(id)arg2;
++ (id)eventWithName:(id)arg1 withPayload:(id)arg2 persist:(_Bool)arg3;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool persist; // @synthesize persist=_persist;
 @property(retain, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)description;
 
 @end

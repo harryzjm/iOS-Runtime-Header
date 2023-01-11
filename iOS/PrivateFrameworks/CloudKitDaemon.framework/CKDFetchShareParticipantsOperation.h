@@ -5,6 +5,7 @@
 //
 
 @class CKDPublicIdentityLookupRequest, NSArray;
+@protocol CKFetchShareParticipantsOperationCallbacks;
 
 @interface CKDFetchShareParticipantsOperation
 {
@@ -13,17 +14,21 @@
     NSArray *_userIdentityLookupInfos;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
 @property(retain, nonatomic) CKDPublicIdentityLookupRequest *pendingRequest; // @synthesize pendingRequest=_pendingRequest;
 @property(copy, nonatomic) CDUnknownBlockType shareParticipantFetchedBlock; // @synthesize shareParticipantFetchedBlock=_shareParticipantFetchedBlock;
-- (void).cxx_destruct;
 - (void)finishWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_fetchIdentities;
+- (int)operationType;
 - (void)_handleFetchedInfo:(id)arg1 withIdentity:(id)arg2 error:(id)arg3;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKFetchShareParticipantsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

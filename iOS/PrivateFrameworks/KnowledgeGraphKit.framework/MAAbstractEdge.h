@@ -4,11 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MAAbstractNode;
+
 @interface MAAbstractEdge
 {
+    MAAbstractNode *_sourceAbstractNode;
+    MAAbstractNode *_targetAbstractNode;
 }
 
-- (_Bool)isAbstract;
+- (void).cxx_destruct;
+- (id)oppositeNode:(id)arg1;
+- (id)targetNode;
+- (id)sourceNode;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
 
 @end
 

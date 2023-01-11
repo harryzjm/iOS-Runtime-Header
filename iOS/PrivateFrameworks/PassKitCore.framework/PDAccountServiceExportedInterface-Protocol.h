@@ -6,9 +6,11 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class CNContact, NSArray, NSData, NSDate, NSSet, NSString, PKAccount, PKAccountAction, PKAccountPreferences, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKApplePayTrustSignature, PKPaymentDeviceMetadata, PKPhysicalCardAction, PKPhysicalCardOrder, PKVirtualCard;
+@class CNContact, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, PKAccount, PKAccountAction, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKApplePayTrustSignature, PKPaymentDeviceMetadata, PKPhysicalCardAction, PKPhysicalCardOrder, PKVirtualCard;
 
 @protocol PDAccountServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)exportTransactionDataForAccountIdentifier:(NSString *)arg1 withFileFormat:(NSString *)arg2 beginDate:(NSDate *)arg3 endDate:(NSDate *)arg4 productTimeZone:(NSTimeZone *)arg5 completion:(void (^)(PKAccountWebServiceExportTransactionDataResponse *, NSError *))arg6;
+- (void)markUserViewedIntroduction:(_Bool)arg1 forInstallmentIdentifiers:(NSSet *)arg2 accountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)scheduledPaymentsWithAccountIdentifier:(NSString *)arg1 includeFailedRecurringPayments:(_Bool)arg2 allowFetchFromServer:(_Bool)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)updateScheduledPaymentsWithAccount:(PKAccount *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)billPaymentSelectedSuggestedAmountDataEventsForAccountIdentifier:(NSString *)arg1 withStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
@@ -24,11 +26,13 @@
 - (void)creditStatementsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)lastRedemptionEventToPeerPaymentForAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKAccountEvent *, NSError *))arg2;
 - (void)insertEvents:(NSSet *)arg1 withAccountidentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)deleteEventsWithAccountIdentifier:(NSString *)arg1 excludingTypes:(NSSet *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteEventWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deleteEventsWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)eventsForAccountIdentifier:(NSString *)arg1 types:(NSArray *)arg2 startDate:(NSDate *)arg3 endDate:(NSDate *)arg4 orderedByDate:(long long)arg5 limit:(unsigned long long)arg6 completion:(void (^)(NSArray *, NSError *))arg7;
 - (void)eventsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)noteAccountDeletedWithCompletion:(void (^)(void))arg1;
+- (void)scheduleSetupReminderForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)activatePhysicalCardWithIdentifier:(NSString *)arg1 activationCode:(NSString *)arg2 completion:(void (^)(long long))arg3;
 - (void)inactivatePhysicalCardForFeatureIdentifier:(unsigned long long)arg1 completion:(void (^)(PKPhysicalCard *))arg2;
 - (void)activatePhysicalCardWithActivationCode:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
@@ -38,8 +42,6 @@
 - (void)beginPhysicalCardRequestWithOrder:(PKPhysicalCardOrder *)arg1 forAccountWithIdentifier:(NSString *)arg2 deviceMetadata:(PKPaymentDeviceMetadata *)arg3 completion:(void (^)(PKApplePayTrustSignatureRequest *, PKAccountWebServiceRequestPhysicalCardRequest *, PKPhysicalCard *, PKAccount *, NSError *))arg4;
 - (void)updateUserInfoForAccountIdentifier:(NSString *)arg1 contact:(CNContact *)arg2 completion:(void (^)(CNContact *, NSError *))arg3;
 - (void)userInfoForAccountIdentifier:(NSString *)arg1 forceFetch:(_Bool)arg2 completion:(void (^)(CNContact *, NSError *))arg3;
-- (void)preferencesForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAccountPreferences *, NSError *))arg2;
-- (void)updatePreferences:(PKAccountPreferences *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(PKAccountPreferences *, NSError *))arg3;
 - (void)termsWithIdentifier:(NSString *)arg1 accepted:(_Bool)arg2 withAccountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)performAccountAction:(PKAccountAction *)arg1 withAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKAccount *, NSError *))arg3;
 - (void)defaultAccountForFeature:(unsigned long long)arg1 completion:(void (^)(PKAccount *, NSError *))arg2;

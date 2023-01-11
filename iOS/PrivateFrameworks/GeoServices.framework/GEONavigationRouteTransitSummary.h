@@ -13,14 +13,15 @@
 @interface GEONavigationRouteTransitSummary : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_possibleStops;
     NSMutableArray *_scheduledLinks;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_possibleStops:1;
         unsigned int read_scheduledLinks:1;
-        unsigned int wrote_possibleStops:1;
-        unsigned int wrote_scheduledLinks:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -36,22 +37,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)possibleStopAtIndex:(unsigned long long)arg1;
 - (unsigned long long)possibleStopsCount;
-- (void)_addNoFlagsPossibleStop:(id)arg1;
 - (void)addPossibleStop:(id)arg1;
 - (void)clearPossibleStops;
 @property(retain, nonatomic) NSMutableArray *possibleStops;
-- (void)_readPossibleStops;
 - (id)scheduledLinkAtIndex:(unsigned long long)arg1;
 - (unsigned long long)scheduledLinksCount;
-- (void)_addNoFlagsScheduledLink:(id)arg1;
 - (void)addScheduledLink:(id)arg1;
 - (void)clearScheduledLinks;
 @property(retain, nonatomic) NSMutableArray *scheduledLinks;
-- (void)_readScheduledLinks;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithRoute:(id)arg1;
 
 @end

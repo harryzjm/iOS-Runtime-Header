@@ -13,8 +13,8 @@
 
 @interface PHObject : NSObject <PLLocalUUIDConverter, NSCopying>
 {
-    _Bool _deleted;
     NSString *_uuid;
+    _Bool _deleted;
     NSManagedObjectID *_objectID;
     unsigned long long _propertyHint;
     PHPhotoLibrary *_photoLibrary;
@@ -32,6 +32,8 @@
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)entityKeyMap;
 + (id)identifierCode;
++ (_Bool)managedObjectSupportsContributor;
++ (_Bool)managedObjectSupportsAllowedForAnalysis;
 + (_Bool)managedObjectSupportsMontage;
 + (_Bool)managedObjectSupportsSavedAssetType;
 + (_Bool)managedObjectSupportsFaceState;
@@ -42,8 +44,8 @@
 + (_Bool)managedObjectSupportsPendingState;
 + (_Bool)managedObjectSupportsVisibilityState;
 + (_Bool)managedObjectSupportsHiddenState;
-+ (_Bool)managedObjectSupportsMomentShareExpiredState;
-+ (_Bool)managedObjectSupportsMomentShareTrashedState;
++ (_Bool)managedObjectSupportsShareExpiredState;
++ (_Bool)managedObjectSupportsShareTrashedState;
 + (_Bool)managedObjectSupportsTrashedState;
 + (id)fetchType;
 + (id)managedEntityName;
@@ -55,12 +57,12 @@
 + (id)propertySetAccessorsByPropertySet;
 + (id)propertySetsForPropertyFetchHints:(unsigned long long)arg1;
 + (unsigned long long)propertyFetchHintsForPropertySets:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property unsigned long long propertyHint; // @synthesize propertyHint=_propertyHint;
+@property(readonly, getter=isDeleted) _Bool deleted; // @synthesize deleted=_deleted;
 @property(readonly) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 @property(readonly) NSString *uuid; // @synthesize uuid=_uuid;
-@property(readonly, getter=isDeleted) _Bool deleted; // @synthesize deleted=_deleted;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 @property(readonly, getter=isTransient) _Bool transient;
 @property(readonly) unsigned long long hash;

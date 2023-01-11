@@ -11,19 +11,19 @@
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
 #import <Rapport/RPMessageable-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableOrderedSet, NSString, NSXPCConnection, RPCompanionLinkDevice;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection, RPCompanionLinkDevice;
 @protocol OS_dispatch_queue;
 
 @interface RPCompanionLinkClient : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPAuthenticatable, RPMessageable>
 {
     _Bool _activateCalled;
-    struct NSMutableSet *_assertions;
-    struct NSMutableDictionary *_deviceDictionary;
-    struct NSMutableDictionary *_eventRegistrations;
+    NSMutableSet *_assertions;
+    NSMutableDictionary *_deviceDictionary;
+    NSMutableDictionary *_eventRegistrations;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
     NSMutableOrderedSet *_registeredProfileIDs;
-    struct NSMutableDictionary *_requestRegistrations;
+    NSMutableDictionary *_requestRegistrations;
     NSXPCConnection *_xpcCnx;
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;
@@ -38,6 +38,7 @@
     CDUnknownBlockType _hidePasswordHandler;
     CDUnknownBlockType _promptForPasswordHandler;
     NSString *_appID;
+    long long _bleClientUseCase;
     NSString *_cloudServiceID;
     unsigned long long _controlFlags;
     RPCompanionLinkDevice *_destinationDevice;
@@ -54,6 +55,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int internalAuthFlags; // @synthesize internalAuthFlags=_internalAuthFlags;
 @property(nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
 @property(copy, nonatomic) NSDictionary *siriInfo; // @synthesize siriInfo=_siriInfo;
@@ -70,6 +72,7 @@
 @property(retain, nonatomic) RPCompanionLinkDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property(nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
 @property(copy, nonatomic) NSString *cloudServiceID; // @synthesize cloudServiceID=_cloudServiceID;
+@property(nonatomic) long long bleClientUseCase; // @synthesize bleClientUseCase=_bleClientUseCase;
 @property(copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
 @property(copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
 @property(copy, nonatomic) CDUnknownBlockType hidePasswordHandler; // @synthesize hidePasswordHandler=_hidePasswordHandler;
@@ -80,7 +83,6 @@
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
-- (void).cxx_destruct;
 - (void)deregisterProfileID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_reregisterProfileIDs;
 - (void)_registerProfileID:(id)arg1 reregister:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

@@ -6,11 +6,12 @@
 
 @interface MPSImageEuclideanDistanceTransform
 {
-    unsigned long long _width;
-    unsigned long long _height;
+    float _searchLimitRadius;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+@property(nonatomic) float searchLimitRadius; // @synthesize searchLimitRadius=_searchLimitRadius;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 

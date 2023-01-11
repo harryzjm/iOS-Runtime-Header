@@ -10,6 +10,9 @@
 @class FCIAdConfiguration, FCPrefetchConfiguration, NSArray, NSString, NTPBDiscoverMoreVideosInfo;
 
 @protocol FCNewsAppConfiguration <FCCoreConfiguration, NFCopying>
+@property(readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
+@property(readonly, nonatomic) long long subscriptionsPlacardGlobalMaximumPerDay;
+@property(readonly, nonatomic) long long subscriptionsPlacardPublisherFrequencyInSeconds;
 @property(readonly, nonatomic) NSString *articleRecirculationComponentPlacementConfigJSON;
 @property(readonly, nonatomic) NTPBDiscoverMoreVideosInfo *shareDiscoverMoreVideosInfo;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
@@ -52,6 +55,20 @@
 @property(readonly, nonatomic) NSArray *onboardingFeedIDs;
 
 @optional
+@property(readonly, nonatomic) _Bool notificationAssetPrefetchingRequiresWatch;
+@property(readonly, nonatomic) _Bool notificationEnableAssetPrefetching;
+@property(readonly, nonatomic) _Bool widgetContentPrefetchEnabled;
+@property(readonly, nonatomic) double adRequestThrottle;
+@property(readonly, nonatomic) _Bool forYouGroupShouldPromoteAccessibleHeadline;
+@property(readonly, nonatomic) long long articleReadCountThreshold;
+@property(readonly, nonatomic) NSString *userVectorModelResourceId;
+@property(readonly, nonatomic) NSString *userVectorWhitelistResourceId;
+@property(readonly, nonatomic) NSString *tagFeedLayoutConfigurationResourceId;
+@property(readonly, nonatomic) NSString *localAreasMappingResourceId;
+@property(readonly, nonatomic) _Bool enableLocationBasedAutofavorites;
+@property(readonly, nonatomic) long long newsletterSubscriptionType;
+@property(readonly, nonatomic) double newsletterSubscriptionStatusCacheTimeout;
+@property(readonly, nonatomic) long long emailSignupRequiredAppLaunchCount;
 @property(readonly, nonatomic) unsigned long long bestOfBundleFeedGroupKind;
 @property(readonly, nonatomic) unsigned long long likeDislikeBehavior;
 @property(readonly, nonatomic) long long maximumTrendingGroupSizeiPhone;
@@ -63,8 +80,8 @@
 @property(readonly, nonatomic) NSString *issueArticleRecirculationConfigJSON;
 @property(readonly, nonatomic) NSString *translationMapResourceID;
 @property(readonly, nonatomic) _Bool enableBadgeInSpotlightTabBar;
-@property(readonly, nonatomic) NSString *description;
 @property(readonly, nonatomic) NSString *anfRenderingConfiguration;
+@property(readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property(readonly, nonatomic) NSString *webEmbedContentBlockers;
 @property(readonly, nonatomic) NSString *feedNavigationConfigJSON;
 @property(readonly, nonatomic) _Bool disableThumbnailsForArticleRecirculation;

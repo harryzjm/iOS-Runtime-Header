@@ -8,25 +8,26 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPPageInfo, GEORPSortParameters, PBDataReader, PBUnknownFields;
+@class GEORPFilter, GEORPPageInfo, GEORPSortParameters, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackQueryParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _feedbackComponentTypes;
+    GEORPFilter *_filter;
     GEORPPageInfo *_pageInfo;
     GEORPSortParameters *_sortParameters;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackComponentTypes:1;
+        unsigned int read_filter:1;
         unsigned int read_pageInfo:1;
         unsigned int read_sortParameters:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_feedbackComponentTypes:1;
-        unsigned int wrote_pageInfo:1;
-        unsigned int wrote_sortParameters:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,25 +43,28 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPFilter *filter;
+@property(readonly, nonatomic) _Bool hasFilter;
 - (int)StringAsFeedbackComponentTypes:(id)arg1;
 - (id)feedbackComponentTypesAsString:(int)arg1;
 - (void)setFeedbackComponentTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (int)feedbackComponentTypeAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsFeedbackComponentType:(int)arg1;
 - (void)addFeedbackComponentType:(int)arg1;
 - (void)clearFeedbackComponentTypes;
 @property(readonly, nonatomic) int *feedbackComponentTypes;
 @property(readonly, nonatomic) unsigned long long feedbackComponentTypesCount;
-- (void)_readFeedbackComponentTypes;
 @property(retain, nonatomic) GEORPPageInfo *pageInfo;
 @property(readonly, nonatomic) _Bool hasPageInfo;
-- (void)_readPageInfo;
 @property(retain, nonatomic) GEORPSortParameters *sortParameters;
 @property(readonly, nonatomic) _Bool hasSortParameters;
-- (void)_readSortParameters;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

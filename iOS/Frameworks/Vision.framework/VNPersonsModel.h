@@ -35,6 +35,9 @@
 - (void).cxx_destruct;
 - (id)faceCountsForAllPersons;
 - (id)faceCountsForPersonsWithUniqueIdentifiers:(id)arg1;
+- (unsigned long long)indexOfFaceprintObjectFrom:(id)arg1 withEquivalentDescriptorTo:(id)arg2;
+- (id)trainingFaceObservationsForPersonWithUniqueIdentifier:(id)arg1 canceller:(id)arg2 error:(id *)arg3;
+- (id)faceObservationsForPersonWithUniqueIdentifier:(id)arg1 error:(id *)arg2;
 - (unsigned long long)faceCountForPersonWithUniqueIdentifier:(id)arg1;
 - (id)personUniqueIdentifiers;
 - (unsigned long long)personCount;
@@ -44,6 +47,7 @@
 - (id)description;
 - (_Bool)updateInternalConfigurationWithModelFaceprintRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (id)initWithConfiguration:(id)arg1 dataSource:(id)arg2;
+- (id)_dataSourceAndReturnError:(id *)arg1;
 
 @end
 

@@ -16,18 +16,21 @@
     _SFBookmarkInfoViewController *_infoViewController;
     WebBookmarkCollection *_collection;
     _Bool _delegateNotifiedOfResult;
+    _Bool _bookmarkCollectionLocked;
     id <_SFSingleBookmarkNavigationControllerDelegate> _bookmarkNavDelegate;
 }
 
-@property(nonatomic) __weak id <_SFSingleBookmarkNavigationControllerDelegate> bookmarkNavDelegate; // @synthesize bookmarkNavDelegate=_bookmarkNavDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_SFSingleBookmarkNavigationControllerDelegate> bookmarkNavDelegate; // @synthesize bookmarkNavDelegate=_bookmarkNavDelegate;
 - (_Bool)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;
 - (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(_Bool)arg2;
 - (_Bool)prepareForPresentationForAddingBookmark:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)_releaseBookmarkLockIfNeeded;
 - (id)addBookmarkWithTitle:(id)arg1 address:(id)arg2 parentBookmark:(id)arg3;
 - (id)_lastSelectedFolder;
+- (void)dealloc;
 - (id)initForAddingToFavoritesInCollection:(id)arg1;
 - (id)initWithFolderOfBookmarks:(id)arg1 inCollection:(id)arg2;
 - (id)initWithCollection:(id)arg1;

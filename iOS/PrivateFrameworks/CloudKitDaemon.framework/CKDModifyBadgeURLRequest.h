@@ -14,8 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
-- (int)operationType;
-- (id)initWithBadgeValue:(unsigned long long)arg1;
+- (id)initWithOperation:(id)arg1 badgeValue:(unsigned long long)arg2;
 
 @end
 

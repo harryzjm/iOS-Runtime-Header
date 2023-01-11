@@ -16,9 +16,9 @@
 + (_Bool)shouldUseXPCServiceForRendering;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_coerceImageIntoData:(id)arg1;
-- (id)applyMaterialRecipe:(id)arg1 recipeName:(id)arg2 weighting:(double)arg3 downsampleFactor:(double)arg4;
-- (id)treatWallpaperImage:(id)arg1 needsLuminanceTreatment:(_Bool)arg2 needsDimmingTreatment:(_Bool)arg3 downsampleFactor:(double)arg4;
+- (void)warmup;
+- (id)applyMaterialRecipe:(id)arg1 recipeName:(id)arg2 containingBundle:(id)arg3 weighting:(double)arg4 downsampleFactor:(double)arg5;
+- (id)treatWallpaperImage:(id)arg1 needsLuminanceTreatment:(_Bool)arg2 needsDimmingTreatment:(_Bool)arg3 downsampleFactor:(double)arg4 averageColor:(id)arg5;
 - (id)_remoteObjectProxy;
 - (void)_createConnection;
 

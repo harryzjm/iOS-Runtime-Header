@@ -11,7 +11,6 @@
 
 @class CKDMMCS, CKDMMCSItem, CKDMMCSItemGroup, CKDOperation, NSMapTable, NSNumber;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemGroupContext : NSObject <CKDCancelling, CKDMMCSItemReaderWriterDelegateProtocol>
 {
     CKDOperation *_operation;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
     long long _mmcsOperationType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long mmcsOperationType; // @synthesize mmcsOperationType=_mmcsOperationType;
 @property(retain, nonatomic) NSMapTable *MMCSItemsByItemID; // @synthesize MMCSItemsByItemID=_MMCSItemsByItemID;
 @property(retain, nonatomic) CKDMMCSItem *MMCSPackageSectionItem; // @synthesize MMCSPackageSectionItem=_MMCSPackageSectionItem;
@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *hasConformingOperation; // @synthesize hasConformingOperation=_hasConformingOperation;
 @property(retain, nonatomic) id operationInfo; // @synthesize operationInfo=_operationInfo;
 @property(nonatomic) __weak CKDOperation *operation; // @synthesize operation=_operation;
-- (void).cxx_destruct;
 - (_Bool)didReadFromItemReaderWriter:(id)arg1 offset:(unsigned long long)arg2 bytes:(char *)arg3 length:(unsigned long long)arg4 bytesRead:(unsigned long long *)arg5 error:(id *)arg6;
 - (_Bool)willReadFromItemReaderWriter:(id)arg1 offset:(unsigned long long)arg2 bytes:(char *)arg3 length:(unsigned long long)arg4 bytesRead:(unsigned long long *)arg5 error:(id *)arg6;
 - (id)didGetFileMetadataItemReaderWriter:(id)arg1 fileMetadata:(id)arg2 error:(id)arg3;

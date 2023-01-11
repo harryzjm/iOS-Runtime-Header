@@ -7,9 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray;
+@class INConnectedCall, NSArray;
 
 @protocol INAnswerCallIntentResponseExport <NSObject, JSExport>
+@property(copy, nonatomic) INConnectedCall *answeredCall;
 @property(copy, nonatomic) NSArray *callRecords;
 @property(nonatomic) long long statusCode;
 @property(readonly, nonatomic) long long code;

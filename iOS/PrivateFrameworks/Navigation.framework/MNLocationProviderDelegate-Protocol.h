@@ -15,6 +15,7 @@
 - (void)locationProviderDidResumeLocationUpdates:(id <MNLocationProvider>)arg1;
 - (void)locationProviderDidPauseLocationUpdates:(id <MNLocationProvider>)arg1;
 - (_Bool)locationProviderShouldPauseLocationUpdates:(id <MNLocationProvider>)arg1;
+- (void)locationProvider:(id <MNLocationProvider>)arg1 didChangeCoarseMode:(_Bool)arg2;
 - (void)locationProviderDidChangeAuthorizationStatus:(id <MNLocationProvider>)arg1;
 - (void)locationProvider:(id <MNLocationProvider>)arg1 didReceiveError:(NSError *)arg2;
 - (void)locationProvider:(id <MNLocationProvider>)arg1 didUpdateHeading:(CLHeading *)arg2;

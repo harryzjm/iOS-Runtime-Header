@@ -20,9 +20,9 @@
     NSDate *_cachedPriorityDate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *cachedPriorityDate; // @synthesize cachedPriorityDate=_cachedPriorityDate;
 @property(readonly, nonatomic) id <PXCMMWorkflowPresenting> workflowPresenter; // @synthesize workflowPresenter=_workflowPresenter;
-- (void).cxx_destruct;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)resetPriorityDate;
@@ -37,6 +37,7 @@
 - (void)_updateGadgets;
 - (void)_configureDataSourceManager;
 - (id)initWithWorkflowPresenter:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 
 // Remaining properties

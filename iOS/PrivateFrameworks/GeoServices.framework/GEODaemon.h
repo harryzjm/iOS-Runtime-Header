@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet;
+@class NSMutableDictionary, NSMutableSet, NSSet;
 @protocol OS_dispatch_source, OS_xpc_object;
 
 @interface GEODaemon : NSObject
 {
-    NSMutableSet *_servers;
+    NSMutableDictionary *_servers;
     NSMutableSet *_peers;
     NSObject<OS_dispatch_source> *_sigInfoSrc;
     NSObject<OS_dispatch_source> *_sigTermSrc;
     NSObject<OS_xpc_object> *_listener;
 }
 
-@property(readonly, nonatomic) NSSet *peers; // @synthesize peers=_peers;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *peers; // @synthesize peers=_peers;
 - (id)description;
 - (void)_localeChanged:(id)arg1;
 - (void)dealloc;

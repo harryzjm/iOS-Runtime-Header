@@ -61,6 +61,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool editableFieldInterruptedByAlert; // @synthesize editableFieldInterruptedByAlert=_editableFieldInterruptedByAlert;
 @property(retain, nonatomic) NSMutableArray *pendingBrailleStringDictionaries; // @synthesize pendingBrailleStringDictionaries=_pendingBrailleStringDictionaries;
 @property(nonatomic) __weak id <BRLTBrailleStateManagerDelegate> translationDelegate; // @synthesize translationDelegate=_translationDelegate;
@@ -71,7 +72,6 @@
 @property(nonatomic) long long lineOffset; // @synthesize lineOffset=_lineOffset;
 @property(nonatomic) _Bool displayEnabled; // @synthesize displayEnabled=_displayEnabled;
 @property(readonly, nonatomic) _Bool needsDisplayFlush; // @synthesize needsDisplayFlush=_needsDisplayFlush;
-- (void).cxx_destruct;
 - (void)brailleDisplayDeletedCharacter:(id)arg1;
 - (void)brailleDisplayInsertedCharacter:(id)arg1;
 - (void)didInsertScriptString:(id)arg1;
@@ -90,7 +90,7 @@
 - (id)_translatedTextInIsolationForBraille:(id)arg1 contracted:(_Bool)arg2;
 - (_Bool)_insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2 silently:(_Bool)arg3;
 - (_Bool)insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2;
-- (_Bool)moveCursorToRouterIndex:(unsigned long long)arg1 forwardToScreenReader:(out _Bool *)arg2;
+- (_Bool)moveCursorToRouterIndex:(unsigned long long)arg1 forwardToScreenReader:(out _Bool *)arg2 updateRouterLocation:(long long *)arg3;
 - (_Bool)moveCursorRight;
 - (_Bool)moveCursorLeft;
 - (_Bool)_forwardDeleteAtCursorSilently:(_Bool)arg1;
@@ -149,6 +149,7 @@
 - (void)setAppToken:(id)arg1;
 - (void)dealloc;
 - (id)initWithDriver:(id)arg1 mainSize:(long long)arg2 statusSize:(long long)arg3;
+@property(readonly, nonatomic) BRLTBrailleStateManager *stateManager;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

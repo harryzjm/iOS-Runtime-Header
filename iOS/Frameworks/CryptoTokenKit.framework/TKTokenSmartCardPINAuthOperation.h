@@ -13,17 +13,19 @@
     long long _PINByteOffset;
     TKSmartCard *_smartCard;
     NSString *_PIN;
-    NSString *_localizedDescription;
+    NSString *_localizedPINLabel;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
+- (void).cxx_destruct;
+@property(copy) NSString *localizedPINLabel; // @synthesize localizedPINLabel=_localizedPINLabel;
 @property(copy) NSString *PIN; // @synthesize PIN=_PIN;
 @property(retain) TKSmartCard *smartCard; // @synthesize smartCard=_smartCard;
 @property long long PINByteOffset; // @synthesize PINByteOffset=_PINByteOffset;
 @property(copy) NSData *APDUTemplate; // @synthesize APDUTemplate=_APDUTemplate;
 @property(retain) TKSmartCardPINFormat *PINFormat; // @synthesize PINFormat=_PINFormat;
-- (void).cxx_destruct;
+- (void)importOperation:(id)arg1;
+- (Class)baseClassForUI;
 - (_Bool)finishWithError:(id *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

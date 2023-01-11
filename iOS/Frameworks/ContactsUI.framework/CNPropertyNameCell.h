@@ -15,10 +15,11 @@ __attribute__((visibility("hidden")))
     id <CNPropertyCellDelegate> _delegate;
 }
 
++ (_Bool)shouldIndentWhileEditing;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CNPropertyCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIResponder *firstResponderItem; // @synthesize firstResponderItem=_firstResponderItem;
 @property(readonly, nonatomic) UITextField *textField; // @synthesize textField=_textField;
-- (void).cxx_destruct;
 - (double)minCellHeight;
 - (void)setBackgroundColor:(id)arg1;
 @property(retain, nonatomic) CNPropertyGroupItem *propertyItem;
@@ -27,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)constantConstraints;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)textFieldChanged:(id)arg1;
-- (_Bool)shouldIndentWhileEditing;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

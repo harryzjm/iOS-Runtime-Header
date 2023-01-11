@@ -13,17 +13,16 @@ __attribute__((visibility("hidden")))
     long long _discoverableTrinary;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long discoverableTrinary; // @synthesize discoverableTrinary=_discoverableTrinary;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (_Bool)requiresTokenRegistration;
 - (id)requestOperationClasses;
-- (int)operationType;
 - (long long)databaseScope;
 - (void)setDiscoverable:(_Bool)arg1;
-- (id)init;
+- (id)initWithOperation:(id)arg1;
 
 @end
 

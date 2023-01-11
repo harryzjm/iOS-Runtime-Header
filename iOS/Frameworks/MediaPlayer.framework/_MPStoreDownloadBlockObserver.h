@@ -10,6 +10,7 @@
 
 @class MPStoreDownload, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPStoreDownloadBlockObserver : NSObject <MPStoreDownloadManagerObserver>
 {
     CDUnknownBlockType _didFinishDownloadHandler;
@@ -17,10 +18,10 @@
     MPStoreDownload *_download;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MPStoreDownload *download; // @synthesize download=_download;
 @property(copy, nonatomic) CDUnknownBlockType didFinishPurchaseHandler; // @synthesize didFinishPurchaseHandler=_didFinishPurchaseHandler;
 @property(copy, nonatomic) CDUnknownBlockType didFinishDownloadHandler; // @synthesize didFinishDownloadHandler=_didFinishDownloadHandler;
-- (void).cxx_destruct;
 - (void)downloadManager:(id)arg1 downloadPurchaseDidFinish:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadDidFinish:(id)arg2;
 - (id)initWithDownload:(id)arg1;

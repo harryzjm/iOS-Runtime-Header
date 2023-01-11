@@ -14,11 +14,12 @@
     NSDateComponents *_significantEventOffset;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDateComponents *significantEventOffset; // @synthesize significantEventOffset=_significantEventOffset;
 @property(copy, nonatomic) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)performValidation;
+- (id)naturalLanguageWithOptions:(id)arg1 recurrences:(id)arg2;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1 withHome:(id)arg2 recurrences:(id)arg3;
 - (id)buildNewEventFromCurrentState;
 - (id)initWithEvent:(id)arg1;

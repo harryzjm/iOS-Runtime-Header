@@ -13,12 +13,7 @@
     _Bool _isSingleDevice;
 }
 
-+ (id)sharedInstance;
 - (id)description;
-- (_Bool)isSupergreenDisabledForTransports:(long long)arg1;
-- (_Bool)isSiriPortraitDisabled;
-- (_Bool)isIDSMessageGatingDisabled;
-- (_Bool)isDigitalHealthDisabledWithIsSingleDevice:(_Bool)arg1 forTransports:(long long)arg2;
 - (id)init;
 
 @end

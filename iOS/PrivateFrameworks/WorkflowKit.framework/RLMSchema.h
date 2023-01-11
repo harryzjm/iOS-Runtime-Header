@@ -20,12 +20,13 @@
 + (Class)classForString:(id)arg1;
 + (id)dynamicSchemaFromObjectStoreSchema:(const struct Schema *)arg1;
 + (id)sharedSchema;
++ (id)partialPrivateSharedSchema;
 + (id)partialSharedSchema;
 + (id)sharedSchemaForClass:(Class)arg1;
 + (id)schemaWithObjectClasses:(id)arg1;
-@property(retain, nonatomic) NSMutableDictionary *objectSchemaByName; // @synthesize objectSchemaByName=_objectSchemaByName;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *objectSchemaByName; // @synthesize objectSchemaByName=_objectSchemaByName;
 - (struct Schema)objectStoreCopy;
 - (id)description;
 - (_Bool)isEqualToSchema:(id)arg1;

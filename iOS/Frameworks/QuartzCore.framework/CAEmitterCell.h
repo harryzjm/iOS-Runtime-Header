@@ -75,6 +75,8 @@
 @property double duration;
 @property double timeOffset;
 @property double beginTime;
+- (_Bool)CA_validateValue:(id)arg1 forKey:(id)arg2;
+- (_Bool)CAMLTypeSupportedForKey:(id)arg1;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;

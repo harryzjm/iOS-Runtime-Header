@@ -6,6 +6,7 @@
 
 @class MPMediaLibraryView;
 
+__attribute__((visibility("hidden")))
 @interface _MPModelLibraryRequestItemsQueryOperation
 {
     MPMediaLibraryView *_libraryView;
@@ -13,11 +14,11 @@
     shared_ptr_34add297 _query;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 @property(nonatomic) shared_ptr_34add297 query; // @synthesize query=_query;
 @property(retain, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)execute;
 
 @end

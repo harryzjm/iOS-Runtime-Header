@@ -63,10 +63,10 @@
 + (_Bool)_isSpineLocation:(long long)arg1 supportedForTransitionStyle:(long long)arg2;
 + (_Bool)_isNavigationOrientation:(long long)arg1 supportedForTransitionStyle:(long long)arg2;
 + (_Bool)_isSupportedTransitionStyle:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_isInterfaceRotating) _Bool _interfaceRotating; // @synthesize _interfaceRotating;
 @property(retain, nonatomic, setter=_setViewControllersStashedForRotation:) NSArray *_viewControllersStashedForRotation; // @synthesize _viewControllersStashedForRotation;
 @property(retain, nonatomic, setter=_setViewControllers:) NSArray *_viewControllers; // @synthesize _viewControllers;
-- (void).cxx_destruct;
 - (void)_pageControlValueChanged:(id)arg1;
 - (_Bool)queuingScrollViewShouldLayoutSubviews:(id)arg1;
 - (void)queuingScrollView:(id)arg1 attemptToPageInDirection:(long long)arg2;
@@ -81,7 +81,7 @@
 - (void)queuingScrollView:(id)arg1 didCommitManualScroll:(_Bool)arg2 toRevealView:(id)arg3 concealView:(id)arg4 direction:(long long)arg5 animated:(_Bool)arg6 canComplete:(_Bool)arg7;
 - (void)queuingScrollView:(id)arg1 willManuallyScroll:(_Bool)arg2 toRevealView:(id)arg3 concealView:(id)arg4 animated:(_Bool)arg5;
 - (void)_updatePageControlViaDataSourceIfNecessary;
-- (void)_handlePagingInDirection:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handlePagingInDirection:(long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleTapGesture:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
 - (_Bool)_shouldCompleteManualCurlWithSuggestedVelocity:(double *)arg1;

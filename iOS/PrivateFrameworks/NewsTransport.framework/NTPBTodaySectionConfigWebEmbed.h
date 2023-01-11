@@ -8,21 +8,18 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSString;
 
 @interface NTPBTodaySectionConfigWebEmbed : PBCodable <NSCopying>
 {
     unsigned long long _preferredSlotAllocation;
-    NSMutableArray *_embedFonts;
     NSString *_urlString;
     struct {
         unsigned int preferredSlotAllocation:1;
     } _has;
 }
 
-+ (Class)embedFontsType;
 @property(nonatomic) unsigned long long preferredSlotAllocation; // @synthesize preferredSlotAllocation=_preferredSlotAllocation;
-@property(retain, nonatomic) NSMutableArray *embedFonts; // @synthesize embedFonts=_embedFonts;
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -33,10 +30,6 @@
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasPreferredSlotAllocation;
-- (id)embedFontsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)embedFontsCount;
-- (void)addEmbedFonts:(id)arg1;
-- (void)clearEmbedFonts;
 @property(readonly, nonatomic) _Bool hasUrlString;
 - (void)dealloc;
 

@@ -4,26 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuartzCore/CALayer.h>
+#import <QuartzCore/CAGradientLayer.h>
 
+#import <MapKit/MKUserLocationHeadingAnimatableIndicator-Protocol.h>
 #import <MapKit/MKUserLocationHeadingIndicator-Protocol.h>
 
-@class NSString, _MKPuckAnnotationView;
+@class CAShapeLayer, NSString, UIColor, UITraitCollection, _MKPuckAnnotationView;
 
 __attribute__((visibility("hidden")))
-@interface MKUserLocationHeadingConeLayer : CALayer <MKUserLocationHeadingIndicator>
+@interface MKUserLocationHeadingConeLayer : CAGradientLayer <MKUserLocationHeadingIndicator, MKUserLocationHeadingAnimatableIndicator>
 {
     _MKPuckAnnotationView *_userLocationView;
-    CALayer *_maskLayer;
+    CAShapeLayer *_maskLayer;
+    double _headingAccuracy;
+    _Bool _shouldMatchAccuracyRadius;
+    UIColor *_tintColor;
+    double _halfMinAngle;
+    UITraitCollection *_traitCollection;
+    double _lastAccuracyRadius;
+    double _minimumAccuracyRadius;
+    unsigned long long _mapType;
 }
 
 - (void).cxx_destruct;
-- (id)_headingImage:(struct CGPoint *)arg1;
-- (void)_updateHeadingImage;
-- (void)updateTintColor:(id)arg1;
+@property(nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
+@property(nonatomic) double minimumAccuracyRadius; // @synthesize minimumAccuracyRadius=_minimumAccuracyRadius;
+@property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+- (void)animateToSetVisible:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setAccuracyRadius:(double)arg1 duration:(double)arg2;
+- (void)_animateToOpacity:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (double)_opacityForAccuracy:(double)arg1 locationAccuracy:(double)arg2;
+- (void)_updateShowHeadingForAccuracy:(double)arg1;
+- (void)_updateHeadingMaskForAccuracy:(double)arg1 previousAccuracy:(double)arg2;
+- (_Bool)_shouldShowHeadingForAccuracy:(double)arg1;
+- (void)_createMaskLayer;
 - (void)updateHeadingAccuracy:(double)arg1 previousAccuracy:(double)arg2;
+- (id)_accuracyGradientLocationsForAccuracyRadius:(double)arg1;
+- (id)_colorsForAccuracyRadius:(double)arg1;
+- (void)_updateColors;
+- (void)updateTintColor:(id)arg1;
 - (void)updateHeading:(double)arg1;
-- (id)initWithUserLocationView:(id)arg1;
+- (id)initWithUserLocationView:(id)arg1 shouldMatchAccuracyRadius:(_Bool)arg2 minimumPresentationAngle:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,43 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAnalyticMetadata, GEOPDClientMetadata, GEORPClientCapabilities, GEORPProblem, GEORPUserCredentials, NSData, NSString, PBDataReader;
+@class GEOPDAnalyticMetadata, GEOPDClientMetadata, GEORPClientCapabilities, GEORPDebugSettings, GEORPProblem, GEORPUserCredentials, NSData, NSString, PBDataReader;
 
 @interface GEORPProblemRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDAnalyticMetadata *_analyticMetadata;
     GEORPClientCapabilities *_clientCapabilities;
     GEOPDClientMetadata *_clientMetadata;
+    GEORPDebugSettings *_debugSettings;
     NSData *_devicePushToken;
     NSString *_inputLanguage;
     NSString *_problemUuid;
     GEORPProblem *_problem;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
-    int _debugUserType;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
-        unsigned int has_debugUserType:1;
         unsigned int read_analyticMetadata:1;
         unsigned int read_clientCapabilities:1;
         unsigned int read_clientMetadata:1;
+        unsigned int read_debugSettings:1;
         unsigned int read_devicePushToken:1;
         unsigned int read_inputLanguage:1;
         unsigned int read_problemUuid:1;
         unsigned int read_problem:1;
         unsigned int read_userCredentials:1;
         unsigned int read_userEmail:1;
-        unsigned int wrote_analyticMetadata:1;
-        unsigned int wrote_clientCapabilities:1;
-        unsigned int wrote_clientMetadata:1;
-        unsigned int wrote_devicePushToken:1;
-        unsigned int wrote_inputLanguage:1;
-        unsigned int wrote_problemUuid:1;
-        unsigned int wrote_problem:1;
-        unsigned int wrote_userCredentials:1;
-        unsigned int wrote_userEmail:1;
-        unsigned int wrote_debugUserType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -60,40 +53,33 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsDebugUserType:(id)arg1;
-- (id)debugUserTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasDebugUserType;
-@property(nonatomic) int debugUserType;
+@property(retain, nonatomic) GEORPDebugSettings *debugSettings;
+@property(readonly, nonatomic) _Bool hasDebugSettings;
 @property(retain, nonatomic) NSString *problemUuid;
 @property(readonly, nonatomic) _Bool hasProblemUuid;
-- (void)_readProblemUuid;
 @property(retain, nonatomic) GEORPClientCapabilities *clientCapabilities;
 @property(readonly, nonatomic) _Bool hasClientCapabilities;
-- (void)_readClientCapabilities;
 @property(retain, nonatomic) NSString *inputLanguage;
 @property(readonly, nonatomic) _Bool hasInputLanguage;
-- (void)_readInputLanguage;
 @property(retain, nonatomic) NSString *userEmail;
 @property(readonly, nonatomic) _Bool hasUserEmail;
-- (void)_readUserEmail;
 @property(retain, nonatomic) NSData *devicePushToken;
 @property(readonly, nonatomic) _Bool hasDevicePushToken;
-- (void)_readDevicePushToken;
 @property(retain, nonatomic) GEOPDClientMetadata *clientMetadata;
 @property(readonly, nonatomic) _Bool hasClientMetadata;
-- (void)_readClientMetadata;
 @property(retain, nonatomic) GEOPDAnalyticMetadata *analyticMetadata;
 @property(readonly, nonatomic) _Bool hasAnalyticMetadata;
-- (void)_readAnalyticMetadata;
 @property(retain, nonatomic) GEORPUserCredentials *userCredentials;
 @property(readonly, nonatomic) _Bool hasUserCredentials;
-- (void)_readUserCredentials;
 @property(retain, nonatomic) GEORPProblem *problem;
 @property(readonly, nonatomic) _Bool hasProblem;
-- (void)_readProblem;
-- (id)initWithProblem:(id)arg1 userCredentials:(id)arg2 pushToken:(id)arg3 allowContactBackAtEmailAddress:(id)arg4 traits:(id)arg5;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

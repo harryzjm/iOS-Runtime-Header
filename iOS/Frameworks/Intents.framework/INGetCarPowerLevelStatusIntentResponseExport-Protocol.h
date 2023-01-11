@@ -7,14 +7,27 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSMeasurement, NSNumber;
+@class NSDateComponents, NSDictionary, NSMeasurement, NSNumber, NSString;
 
 @protocol INGetCarPowerLevelStatusIntentResponseExport <NSObject, JSExport>
+@property(copy, nonatomic) NSMeasurement *minimumBatteryCapacity;
+@property(copy, nonatomic) NSMeasurement *currentBatteryCapacity;
+@property(copy, nonatomic) NSMeasurement *maximumBatteryCapacity;
+@property(copy, nonatomic) NSString *activeConnector;
+@property(copy, nonatomic) NSDateComponents *dateOfLastStateUpdate;
+@property(copy, nonatomic) NSDictionary *chargingFormulaArguments;
+@property(copy, nonatomic) NSDictionary *consumptionFormulaArguments;
+@property(copy, nonatomic) NSMeasurement *maximumDistanceFuel;
+@property(copy, nonatomic) NSMeasurement *distanceRemainingFuel;
+@property(copy, nonatomic) NSMeasurement *maximumDistanceElectric;
+@property(copy, nonatomic) NSMeasurement *distanceRemainingElectric;
+@property(copy, nonatomic) NSMeasurement *maximumDistance;
 @property(copy, nonatomic) NSNumber *minutesToFull;
 @property(copy, nonatomic) NSNumber *charging;
 @property(copy, nonatomic) NSMeasurement *distanceRemaining;
 @property(copy, nonatomic) NSNumber *chargePercentRemaining;
 @property(copy, nonatomic) NSNumber *fuelPercentRemaining;
+@property(copy, nonatomic) NSString *carIdentifier;
 @property(readonly, nonatomic) long long code;
 @end
 

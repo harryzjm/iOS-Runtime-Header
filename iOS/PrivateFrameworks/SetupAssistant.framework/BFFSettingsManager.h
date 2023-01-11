@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber;
+@class NSArray, NSData, NSMutableArray, NSMutableDictionary, NSNumber;
 
 @interface BFFSettingsManager : NSObject
 {
@@ -16,15 +16,17 @@
     NSMutableArray *_stashedButtonHaptics;
     NSNumber *_stashedAssistantEnabled;
     NSNumber *_stashedAssistantVoiceTriggerEnabled;
+    NSNumber *_stashedSiriDataSharingOptInStatus;
     NSNumber *_stashedLocationServicesEnabled;
     NSData *_stashedLocationServicesSettings;
     NSData *_stashedWatchData;
     NSArray *_stashedFlowSkipIdentifiers;
     NSNumber *_stashedScreenTimeEnabled;
     NSNumber *_stashedAutoUpdateEnabled;
+    NSNumber *_stashedAutoDownloadEnabled;
     NSData *_stashedAccessibilityData;
-    NSDictionary *_stashedDeviceToDeviceMigrationSuccessInfo;
     NSNumber *_stashedUserInterfaceStyleMode;
+    NSMutableArray *_stashedAnalytics;
 }
 
 + (id)sharedManager;
@@ -32,11 +34,12 @@
 - (_Bool)removeSafeHaven;
 - (id)_shovePath:(id)arg1 toPath:(id)arg2;
 - (id)_preferencesForDomain:(id)arg1;
+- (void)_restoreAnalyticsData;
 - (void)_applyUserInterfaceStyleMode;
 - (void)_restoreAccessibilityData;
 - (void)_restoreWatchData;
 - (void)_restoreStashedFiles;
-- (void)_applyAutoUpdatePreferences;
+- (void)_applyUpdatePreferences;
 - (void)_applyScreenTimePreferences;
 - (void)_applyStashedFlowSkipIdentifiers;
 - (void)_applyLocationServicesSettings;
@@ -55,12 +58,13 @@
 - (_Bool)_stashConfiguration:(_Bool)arg1;
 - (_Bool)hideStashInSafeHavenAsProvisional:(_Bool)arg1;
 - (_Bool)hideStashInSafeHaven;
+- (void)stashAnalyticEvent:(id)arg1 payload:(id)arg2;
 - (void)setUserInterfaceStyleMode:(long long)arg1;
 - (void)stashAccessibilityData:(id)arg1;
+- (void)setAutoDownloadEnabled:(_Bool)arg1;
 - (void)setAutoUpdateEnabled:(_Bool)arg1;
 - (void)setScreenTimeEnabled:(_Bool)arg1;
 - (void)stashFlowSkipIdentifiers:(id)arg1;
-- (void)stashDeviceToDeviceMigrationSuccessInfo:(id)arg1;
 - (void)setAssistantVoiceTriggerEnabled:(_Bool)arg1;
 - (void)setAssistantEnabled:(_Bool)arg1;
 - (void)stashWatchData:(id)arg1;

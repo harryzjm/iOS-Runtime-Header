@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexSet;
+@class NSDictionary;
 
 @interface ECIMAPCopyInfo : NSObject
 {
     unsigned int _uidValidity;
-    NSIndexSet *_sourceUIDs;
-    NSIndexSet *_destinationUIDs;
+    NSDictionary *_sourceUIDsToDestinationUIDs;
 }
 
-@property(retain, nonatomic) NSIndexSet *destinationUIDs; // @synthesize destinationUIDs=_destinationUIDs;
-@property(retain, nonatomic) NSIndexSet *sourceUIDs; // @synthesize sourceUIDs=_sourceUIDs;
-@property(nonatomic) unsigned int uidValidity; // @synthesize uidValidity=_uidValidity;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *sourceUIDsToDestinationUIDs; // @synthesize sourceUIDsToDestinationUIDs=_sourceUIDsToDestinationUIDs;
+@property(nonatomic) unsigned int uidValidity; // @synthesize uidValidity=_uidValidity;
 
 @end
 

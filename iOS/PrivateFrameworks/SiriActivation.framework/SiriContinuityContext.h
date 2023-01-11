@@ -4,23 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AFRequestInfo, AFSpeechRequestOptions, NSDictionary;
+@class AFRequestInfo, NSDictionary, NSNumber;
 
 @interface SiriContinuityContext
 {
-    AFSpeechRequestOptions *_speechRequestOptions;
+    NSNumber *_isTemporaryDevice;
     AFRequestInfo *_requestInfo;
     NSDictionary *_userActivity;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *userActivity; // @synthesize userActivity=_userActivity;
 @property(readonly, nonatomic) AFRequestInfo *requestInfo; // @synthesize requestInfo=_requestInfo;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-@property(readonly, nonatomic) AFSpeechRequestOptions *speechRequestOptions;
+- (_Bool)isTemporaryDevice;
+- (id)speechRequestOptions;
 - (id)initWithUserActivity:(id)arg1;
 - (id)initWithRequestInfo:(id)arg1;
 - (id)initWithSpeechRequestOptions:(id)arg1;

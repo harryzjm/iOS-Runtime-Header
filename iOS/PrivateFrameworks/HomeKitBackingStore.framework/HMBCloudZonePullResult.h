@@ -10,12 +10,12 @@
 
 @interface HMBCloudZonePullResult : HMFObject
 {
-    NAFuture *_processResult;
+    NAFuture *_processingFuture;
 }
 
-@property(readonly, nonatomic) NAFuture *processResult; // @synthesize processResult=_processResult;
 - (void).cxx_destruct;
-- (id)initWithProcessResult:(id)arg1;
+@property(readonly) NAFuture *processingFuture; // @synthesize processingFuture=_processingFuture;
+- (id)initWithProcessingFuture:(id)arg1;
 
 @end
 

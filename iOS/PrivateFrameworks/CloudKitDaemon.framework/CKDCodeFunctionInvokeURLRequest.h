@@ -17,21 +17,21 @@ __attribute__((visibility("hidden")))
     NSArray *_pccWrappedInvocationKeys;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *pccWrappedInvocationKeys; // @synthesize pccWrappedInvocationKeys=_pccWrappedInvocationKeys;
 @property(retain, nonatomic) NSData *attestationEntropy; // @synthesize attestationEntropy=_attestationEntropy;
 @property(retain, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
 @property(copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(copy, nonatomic) CDUnknownBlockType serializedResultsCallback; // @synthesize serializedResultsCallback=_serializedResultsCallback;
-- (void).cxx_destruct;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (_Bool)requestGETPreAuth;
 - (id)requestOperationClasses;
-- (int)operationType;
+- (long long)databaseScope;
 - (_Bool)allowsAnonymousAccount;
-- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 attestationEntropy:(id)arg4 pccWrappedInvocationKeys:(id)arg5;
+- (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 attestationEntropy:(id)arg5 pccWrappedInvocationKeys:(id)arg6;
 
 @end
 

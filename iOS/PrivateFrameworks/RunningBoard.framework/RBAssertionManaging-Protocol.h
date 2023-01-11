@@ -7,12 +7,14 @@
 #import <RunningBoard/NSObject-Protocol.h>
 #import <RunningBoard/RBDomainAttributeManaging-Protocol.h>
 
-@class NSSet, RBAssertion, RBAssertionAcquisitionContext, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations;
+@class NSSet, RBAssertion, RBAssertionAcquisitionContext, RBAssertionBatchContext, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations, RBSystemState;
 
 @protocol RBAssertionManaging <NSObject, RBDomainAttributeManaging>
+@property(readonly, copy, nonatomic) RBSystemState *systemState;
 - (RBProcess *)processForIdentity:(RBSProcessIdentity *)arg1;
 - (RBProcessState *)stateForIdentity:(RBSProcessIdentity *)arg1;
 - (void)revalidateAssertionsForProcessIdentities:(NSSet *)arg1;
+- (_Bool)isProcessForeground:(RBProcess *)arg1;
 - (void)processDidTerminate:(RBProcess *)arg1;
 - (void)processDidLaunch:(RBProcess *)arg1;
 - (_Bool)hasAssertionWithIdentifier:(RBSAssertionIdentifier *)arg1;
@@ -24,5 +26,6 @@
 - (_Bool)invalidateAssertion:(RBAssertion *)arg1;
 - (_Bool)invalidateAssertionFromOriginator:(RBSProcessIdentifier *)arg1 withIdentifier:(RBSAssertionIdentifier *)arg2;
 - (void)acquireAssertionWithContext:(RBAssertionAcquisitionContext *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)commitBatchWithContext:(RBAssertionBatchContext *)arg1 completion:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg2;
 @end
 

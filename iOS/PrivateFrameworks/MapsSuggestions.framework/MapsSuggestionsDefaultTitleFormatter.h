@@ -12,7 +12,6 @@
 {
 }
 
-- (id)_subtitleStringFromEntry:(id)arg1 andETA:(id)arg2;
 - (_Bool)formatTitlesForEntry:(id)arg1 eta:(id)arg2;
 
 // Remaining properties

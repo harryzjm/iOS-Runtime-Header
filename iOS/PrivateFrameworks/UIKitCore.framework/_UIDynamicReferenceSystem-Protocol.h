@@ -9,7 +9,7 @@
 @class UIView;
 
 @protocol _UIDynamicReferenceSystem <NSObject>
-- (struct CGRect)bounds;
+@property(readonly, nonatomic) struct CGRect bounds;
 
 @optional
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(UIView *)arg2;

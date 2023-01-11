@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
     struct vector<LineCostProxy, std::__1::allocator<LineCostProxy>> vClusterOutliersProxies;
     struct vector<LineCostProxy, std::__1::allocator<LineCostProxy>> hClusterOutliersProxies;
     MISSING_TYPE *initialSimplexVerticesXYZ[64];
-    MISSING_TYPE *initialSimplexVerticesXZ[64];
-    MISSING_TYPE *initialSimplexVerticesYZ[64];
+    MISSING_TYPE *initialSimplexVerticesXZ[16];
+    MISSING_TYPE *initialSimplexVerticesYZ[16];
     int solutionType;
     struct Solution solution;
     double unlimitedPitch;
@@ -38,11 +38,11 @@ __attribute__((visibility("hidden")))
     double unlimitedRoll;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly) double unlimitedRoll; // @synthesize unlimitedRoll;
 @property(readonly) double unlimitedYaw; // @synthesize unlimitedYaw;
 @property(readonly) double unlimitedPitch; // @synthesize unlimitedPitch;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)computeConfidence;
 - (void)runOptimization;
 - (float)evaluateCostYZ: /* Error: Ran out of types for this method. */;

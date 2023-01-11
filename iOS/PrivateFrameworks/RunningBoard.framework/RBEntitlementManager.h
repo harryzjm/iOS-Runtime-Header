@@ -20,12 +20,9 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)_secTask:(struct __SecTask *)arg1 hasEntitlement:(id)arg2;
-- (id)_hardCodedEntitlements;
-- (id)_entitlementsForProcess:(id)arg1;
-- (void)_removeRestrictedEntitlements:(id)arg1 forProcess:(id)arg2;
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;
+- (void)purgeEntitlementsForProcess:(id)arg1;
 - (id)entitlementsForProcess:(id)arg1;
 - (id)allEntitlements;
 @property(readonly, copy) NSString *debugDescription;

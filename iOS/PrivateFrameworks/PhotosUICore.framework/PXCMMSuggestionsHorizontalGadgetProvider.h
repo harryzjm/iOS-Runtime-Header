@@ -9,21 +9,22 @@
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSDate, NSString, PXCMMSuggestionsDataSourceManager;
+@class NSDate, NSString, PXCMMSuggestionsDataSourceManager, PXCPLStatusProvider;
 @protocol PXCMMWorkflowPresenting;
 
 @interface PXCMMSuggestionsHorizontalGadgetProvider <PXSettingsKeyObserver, PXChangeObserver, PXSectionedDataSourceManagerObserver, PXForYouRankable>
 {
     PXCMMSuggestionsDataSourceManager *_dataSourceManager;
-    CDUnknownBlockType _pendingNavigationBlock;
     _Bool _didGenerateGadgets;
+    PXCPLStatusProvider *_cplStatusProvider;
+    _Bool _cmmIsAvailable;
     id <PXCMMWorkflowPresenting> _workflowPresenter;
     NSDate *_cachedPriorityDate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *cachedPriorityDate; // @synthesize cachedPriorityDate=_cachedPriorityDate;
 @property(readonly, nonatomic) id <PXCMMWorkflowPresenting> workflowPresenter; // @synthesize workflowPresenter=_workflowPresenter;
-- (void).cxx_destruct;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)resetPriorityDate;
@@ -38,6 +39,7 @@
 - (void)_updateGadgets;
 - (void)_configureDataSourceManager;
 - (id)initWithWorkflowPresenter:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 
 // Remaining properties

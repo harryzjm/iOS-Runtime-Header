@@ -16,7 +16,7 @@
     NSString *_loggingFacility;
 }
 
-+ (_Bool)requestETAFromOrigin:(id)arg1 toDestinations:(id)arg2 transportType:(int)arg3 timepoint:(struct GEOTimepoint)arg4 includeDistance:(_Bool)arg5 commonOptions:(id)arg6 automobileOptions:(id)arg7 walkingOptions:(id)arg8 transitOptions:(id)arg9 auditToken:(id)arg10 handler:(CDUnknownBlockType)arg11 callbackQueue:(id)arg12;
++ (_Bool)requestETAFromOrigin:(id)arg1 toDestinations:(id)arg2 transportType:(int)arg3 timepoint:(struct GEOTimepoint)arg4 includeDistance:(_Bool)arg5 commonOptions:(id)arg6 automobileOptions:(id)arg7 walkingOptions:(id)arg8 transitOptions:(id)arg9 cyclingOptions:(id)arg10 auditToken:(id)arg11 handler:(CDUnknownBlockType)arg12 callbackQueue:(id)arg13;
 + (_Bool)requestTrafficAndETAFromWaypoint:(id)arg1 toWaypoints:(id)arg2 transportType:(int)arg3 automobileOptions:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 - (void)cancel;

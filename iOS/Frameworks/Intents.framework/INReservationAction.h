@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INCacheableContainer-Protocol.h>
 #import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INDateComponentsRange, NSString, NSUserActivity;
 
-@interface INReservationAction : NSObject <INCacheableContainer, INJSONSerializable, NSCopying, NSSecureCoding>
+@interface INReservationAction : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     long long _type;
     INDateComponentsRange *_validDuration;
@@ -22,10 +21,10 @@
 
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 @property(readonly, copy, nonatomic) INDateComponentsRange *validDuration; // @synthesize validDuration=_validDuration;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
@@ -36,8 +35,6 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithType:(long long)arg1 validDuration:(id)arg2 userActivity:(id)arg3;
-- (void)_intents_updateContainerWithCache:(id)arg1;
-- (id)_intents_cacheableObjects;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,38 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/SBGridSwitcherScrollProviding-Protocol.h>
+@class SBAppLayout, SBGridLayoutSwitcherModifier, _SBGridFloorSwitcherModifier;
 
-@class NSString, SBAppLayout, SBGridLayoutSwitcherModifier, _SBGridFloorSwitcherModifier;
-@protocol SBFluidSwitcherScrollProvidingDelegate;
-
-@interface SBGridSwitcherModifier <SBGridSwitcherScrollProviding>
+@interface SBGridSwitcherModifier
 {
     SBGridLayoutSwitcherModifier *_gridLayoutModifier;
     _SBGridFloorSwitcherModifier *_floorModifier;
     unsigned long long _ongoingAppLayoutRemovals;
     SBAppLayout *_activeAppLayoutInSwitcher;
-    id <SBFluidSwitcherScrollProvidingDelegate> _scrollDelegate;
 }
 
-@property(nonatomic) __weak id <SBFluidSwitcherScrollProvidingDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
 - (void).cxx_destruct;
 - (id)handleTapOutsideToDismissEvent:(id)arg1;
 - (id)handleTapAppLayoutEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
-- (id)forwardingTargetForSelector:(SEL)arg1;
-- (_Bool)respondsToSelector:(SEL)arg1;
-@property(readonly, nonatomic) double effectiveHorizontalSpacing;
-@property(readonly, nonatomic) unsigned long long numberOfRows;
+- (unsigned long long)numberOfRows;
 - (id)gridLayoutModifier;
 - (void)didMoveToParentModifier:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

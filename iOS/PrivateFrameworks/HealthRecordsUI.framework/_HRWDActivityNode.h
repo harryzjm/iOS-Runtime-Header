@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSMapTable, NSMutableDictionary;
-@protocol WDUserActivityResponder;
+@protocol HRWDUserActivityResponder;
 
 __attribute__((visibility("hidden")))
 @interface _HRWDActivityNode : NSObject
@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_responderActivity;
     NSDictionary *_nextResponderActivity;
     NSMapTable *_responderTable;
-    id <WDUserActivityResponder> _responder;
-    id <WDUserActivityResponder> _nextResponder;
+    id <HRWDUserActivityResponder> _responder;
+    id <HRWDUserActivityResponder> _nextResponder;
 }
 
-@property(nonatomic) __weak id <WDUserActivityResponder> nextResponder; // @synthesize nextResponder=_nextResponder;
-@property(nonatomic) __weak id <WDUserActivityResponder> responder; // @synthesize responder=_responder;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <HRWDUserActivityResponder> nextResponder; // @synthesize nextResponder=_nextResponder;
+@property(nonatomic) __weak id <HRWDUserActivityResponder> responder; // @synthesize responder=_responder;
 - (id)_nextNode;
 - (void)addActivitiesToArray:(id)arg1 currentNode:(id)arg2;
 - (id)transitionActivityForResponder:(id)arg1 newResponder:(id)arg2 transitionDictionary:(id)arg3;

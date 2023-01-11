@@ -10,20 +10,9 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct NSHashTable {
-    Class _field1;
-};
-
-struct NSMapTable {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
-};
-
-struct NSObject {
-    Class _field1;
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct os_unfair_lock_s {

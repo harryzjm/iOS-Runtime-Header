@@ -23,9 +23,11 @@
 }
 
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *language; // @synthesize language=_language;
 @property(nonatomic) long long version; // @synthesize version=_version;
 @property(nonatomic) long long signatureType; // @synthesize signatureType=_signatureType;
@@ -35,7 +37,6 @@
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(retain, nonatomic) NSString *caller; // @synthesize caller=_caller;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
-- (void).cxx_destruct;
 - (void)setContract:(id)arg1;
 - (id)contract;
 - (id)initWithBagContract:(id)arg1 caller:(id)arg2 keyProfile:(id)arg3;

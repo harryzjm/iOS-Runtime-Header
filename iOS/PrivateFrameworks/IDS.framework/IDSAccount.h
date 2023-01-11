@@ -14,8 +14,8 @@
     NSString *_loginID;
 }
 
-@property(retain, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
 - (void)deactivateAlias:(id)arg1;
 - (void)activateAlias:(id)arg1;
 @property(readonly, nonatomic) NSSet *activeAliases;
@@ -23,6 +23,7 @@
 - (void)_callNearbyDevicesChanged;
 - (void)deactivateAndPurgeIdentify;
 - (void)_reregisterAndReidentify:(_Bool)arg1;
+- (void)forceRemoveAccount;
 - (void)unregisterAccount;
 - (void)registerAccount;
 - (void)unvalidateAliases:(id)arg1;

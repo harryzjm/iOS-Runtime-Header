@@ -9,15 +9,17 @@
 __attribute__((visibility("hidden")))
 @interface WebAVSampleBufferStatusChangeListener : NSObject
 {
-    struct MediaPlayerPrivateMediaStreamAVFObjC *_parent;
+    struct WeakPtr<WebCore::LocalSampleBufferDisplayLayer, WTF::EmptyCounter> _parent;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)stopObservingLayers;
-- (void)beginObservingLayers;
+- (void)stop;
+- (void)begin;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithParent:(struct MediaPlayerPrivateMediaStreamAVFObjC *)arg1;
+- (id)initWithParent:(struct LocalSampleBufferDisplayLayer *)arg1;
 
 @end
 

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain) CIImage *inputBlurMap; // @synthesize inputBlurMap;
 @property(retain) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
+- (id)unifiedRenderingOutputImage:(struct CGImageMetadata *)arg1;
 
 @end
 

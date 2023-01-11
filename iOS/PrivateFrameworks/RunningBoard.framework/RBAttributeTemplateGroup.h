@@ -6,32 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, RBEntitlementPredicate;
 
 __attribute__((visibility("hidden")))
-@interface RBAttributeTemplateGroup : NSObject <BSDescriptionProviding>
+@interface RBAttributeTemplateGroup : NSObject
 {
     NSArray *_attributes;
-    NSDictionary *_originatorEntitlements;
     NSDictionary *_targetBundleProperties;
+    RBEntitlementPredicate *_originatorEntitlements;
+    RBEntitlementPredicate *_targetEntitlements;
+    NSDictionary *_additionalRestrictions;
 }
 
-@property(copy, nonatomic) NSDictionary *targetBundleProperties; // @synthesize targetBundleProperties=_targetBundleProperties;
-@property(copy, nonatomic) NSDictionary *originatorEntitlements; // @synthesize originatorEntitlements=_originatorEntitlements;
-@property(retain, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
 - (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-@property(readonly, copy) NSString *description;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(copy, nonatomic) NSDictionary *targetBundleProperties; // @synthesize targetBundleProperties=_targetBundleProperties;
+@property(retain, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
+- (id)description;
 
 @end
 

@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableSet, PGGraphNode;
+@class NSArray, NSMutableSet, PGGraphPersonNode;
 
 @interface PGPotentialPetMemory
 {
     NSMutableSet *_mutableMomentNodes;
-    NSArray *_petAssets;
-    PGGraphNode *_owner;
+    NSArray *_petAssetLocalIdentifiers;
+    PGGraphPersonNode *_ownerPersonNode;
     long long _year;
 }
 
-@property(readonly) long long year; // @synthesize year=_year;
-@property(readonly) PGGraphNode *owner; // @synthesize owner=_owner;
-@property(retain) NSArray *petAssets; // @synthesize petAssets=_petAssets;
 - (void).cxx_destruct;
+@property(readonly) long long year; // @synthesize year=_year;
+@property(readonly) PGGraphPersonNode *ownerPersonNode; // @synthesize ownerPersonNode=_ownerPersonNode;
+@property(retain) NSArray *petAssetLocalIdentifiers; // @synthesize petAssetLocalIdentifiers=_petAssetLocalIdentifiers;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithOwner:(id)arg1 year:(long long)arg2;
 

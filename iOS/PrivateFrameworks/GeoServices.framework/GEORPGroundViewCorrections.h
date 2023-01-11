@@ -15,9 +15,7 @@
     PBUnknownFields *_unknownFields;
     GEORPFeedbackAddressFields *_addressToCensor;
     int _correctionType;
-    struct {
-        unsigned int has_correctionType:1;
-    } _flags;
+    CDStruct_ef3e2236 _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -32,6 +30,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPFeedbackAddressFields *addressToCensor;

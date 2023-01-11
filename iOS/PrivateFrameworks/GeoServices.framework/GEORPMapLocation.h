@@ -13,11 +13,13 @@
 @interface GEORPMapLocation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_coordinate;
     NSData *_image;
     NSString *_mapScreenshotId;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     float _zoomLevel;
     struct {
         unsigned int has_zoomLevel:1;
@@ -25,11 +27,7 @@
         unsigned int read_image:1;
         unsigned int read_mapScreenshotId:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_image:1;
-        unsigned int wrote_mapScreenshotId:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_zoomLevel:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,22 +41,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *mapScreenshotId;
 @property(readonly, nonatomic) _Bool hasMapScreenshotId;
-- (void)_readMapScreenshotId;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(nonatomic) _Bool hasZoomLevel;
 @property(nonatomic) float zoomLevel;
 @property(retain, nonatomic) GEOLatLng *coordinate;
 @property(readonly, nonatomic) _Bool hasCoordinate;
-- (void)_readCoordinate;
 @property(retain, nonatomic) NSData *image;
 @property(readonly, nonatomic) _Bool hasImage;
-- (void)_readImage;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (void)_setMapMode:(int)arg1 region:(id)arg2;
 
 @end

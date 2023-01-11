@@ -18,10 +18,12 @@
     UIViewController<SRRemoteAuthorizationPromptViewController> *_viewController;
     CDUnknownBlockType _completionHandler;
     NSError *_error;
+    long long _reason;
 }
 
 + (id)sharedInstance;
 + (void)initialize;
+@property(nonatomic) long long reason; // @synthesize reason=_reason;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) _Bool hostNavigationBarHidden; // @synthesize hostNavigationBarHidden=_hostNavigationBarHidden;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -30,21 +32,20 @@
 - (id)presentingViewControllerFromRoot:(id)arg1;
 - (id)navigationControllerFromRoot:(id)arg1;
 - (void)completePromptWithError:(id)arg1;
+- (void)viewControllerCleanUp;
 - (void)authorizationRequestDidDisappear;
 - (void)authorizationRequestWillDisappear;
 - (_Bool)isViewControllerPresentedModally;
-- (void)authorizationPresentDownloadPath:(id)arg1 sandboxExtensionToken:(id)arg2;
-- (void)authorizationPresentDeleteAllAlertWithTitle:(id)arg1 actionTitle:(id)arg2 cancelTitle:(id)arg3;
 - (void)authorizationRequestFailedWithError:(id)arg1;
 - (void)authorizationRequestCompleted;
 - (void)authorizationUIReadyForDisplayModally:(_Bool)arg1;
 - (id)presentationAnchor;
+- (void)presentFirstRunOnboardingViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentResearchDataViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentStudyAuthorizationPromptViewController:(id)arg1 bundlePath:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentAppsAndStudiesPromptViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)presentPendingAuthorizationPromptViewController:(id)arg1 withDesiredServices:(id)arg2 bundlePath:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentPromptViewController:(id)arg1 withDesiredServices:(id)arg2 bundleIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)presentAnyViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)presentAnyViewController:(id)arg1 reason:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 
 // Remaining properties

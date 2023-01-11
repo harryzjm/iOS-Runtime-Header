@@ -11,6 +11,9 @@
 }
 
 + (id)primaryQueue;
++ (void)releaseCancellableOperation:(unsigned long long)arg1;
++ (void)cancelDelayedOperation:(unsigned long long)arg1;
++ (unsigned long long)addCancellableDelayedOperation:(double)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addDelayedOperation:(double)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addOperation:(CDUnknownBlockType)arg1;
 + (void)initialize;

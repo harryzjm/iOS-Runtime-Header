@@ -8,33 +8,35 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDSQLitePredicate, HKSampleType, NSDictionary, NSPredicate, NSSet, _HKFilter;
+@class HDSQLitePredicate, NSDictionary, NSPredicate, NSSet, _HKFilter;
 
 @interface HDSampleQueryDescription : NSObject <NSCopying>
 {
-    HKSampleType *_sampleType;
+    NSSet *_sampleTypes;
     NSPredicate *_predicate;
     NSDictionary *_encodingOptions;
     NSSet *_restrictedSourceEntities;
     CDUnknownBlockType _authorizationFilter;
-    _HKFilter *_filter;
     HDSQLitePredicate *_sqlitePredicate;
+    _HKFilter *_filter;
 }
 
++ (id)sampleQueryDescriptionWithSampleTypes:(id)arg1 predicate:(id)arg2;
 + (id)sampleQueryDescriptionWithSampleType:(id)arg1 predicate:(id)arg2;
 + (id)sampleQueryDescriptionWithSampleType:(id)arg1;
-@property(readonly, copy, nonatomic) HDSQLitePredicate *sqlitePredicate; // @synthesize sqlitePredicate=_sqlitePredicate;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
+@property(readonly, copy, nonatomic) HDSQLitePredicate *sqlitePredicate; // @synthesize sqlitePredicate=_sqlitePredicate;
 @property(readonly, copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
 @property(readonly, copy, nonatomic) NSSet *restrictedSourceEntities; // @synthesize restrictedSourceEntities=_restrictedSourceEntities;
 @property(readonly, copy, nonatomic) NSDictionary *encodingOptions; // @synthesize encodingOptions=_encodingOptions;
 @property(readonly, copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-@property(readonly, copy, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
-- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSSet *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithSampleType:(id)arg1 predicate:(id)arg2 encodingOptions:(id)arg3 restrictedSourceEntities:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5 filter:(id)arg6 sqlitePredicate:(id)arg7;
+- (id)initWithSampleTypes:(id)arg1 predicate:(id)arg2 encodingOptions:(id)arg3 restrictedSourceEntities:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5 filter:(id)arg6 sqlitePredicate:(id)arg7;
+- (id)initWithSampleTypes:(id)arg1 predicate:(id)arg2 encodingOptions:(id)arg3 restrictedSourceEntities:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5 sqlitePredicate:(id)arg6;
 - (id)init;
 
 @end

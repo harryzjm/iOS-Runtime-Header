@@ -20,6 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *unavailablePackages; // @synthesize unavailablePackages=_unavailablePackages;
 @property(retain, nonatomic) NSArray *unavailableAssets; // @synthesize unavailableAssets=_unavailableAssets;
 @property(retain, nonatomic) NSArray *packageMetadata; // @synthesize packageMetadata=_packageMetadata;
@@ -27,7 +28,6 @@
 @property(retain, nonatomic) NSArray *packages; // @synthesize packages=_packages;
 @property(retain, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 @property(retain, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

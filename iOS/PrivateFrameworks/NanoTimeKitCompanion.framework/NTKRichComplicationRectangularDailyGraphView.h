@@ -20,6 +20,7 @@
 
 + (struct CGSize)graphSize;
 + (id)dailyFormattedNoData;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *timeMarkerLabels; // @synthesize timeMarkerLabels=_timeMarkerLabels;
 @property(readonly, nonatomic) UIColor *graphLabelAndGridColor; // @synthesize graphLabelAndGridColor=_graphLabelAndGridColor;
 @property(readonly, nonatomic) UIColor *noDataTextColor; // @synthesize noDataTextColor=_noDataTextColor;
@@ -28,12 +29,12 @@
 @property(readonly, nonatomic) UILabel *dailyLowLabel; // @synthesize dailyLowLabel=_dailyLowLabel;
 @property(readonly, nonatomic) UILabel *dailyHighLabel; // @synthesize dailyHighLabel=_dailyHighLabel;
 @property(readonly, nonatomic) NTKColoringLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 @property(readonly, nonatomic) double timeMarkerPadding;
 - (struct CGRect)drawableGraphRect;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)_applyPausedUpdate;
 - (void)_updateTimeMarkerLabelsForDates:(id)arg1 timezone:(id)arg2;
 - (double)_lineStrokeWidthGivenRect:(struct CGRect)arg1;
 - (void)_drawVerticalHourLines:(struct CGContext *)arg1 rect:(struct CGRect)arg2 bottomLabelPadding:(double)arg3;

@@ -35,6 +35,7 @@
 + (_Bool)imageClassificationEnabled;
 + (_Bool)ocrGenerationEnabled;
 + (id)sharedGenerator;
+- (void).cxx_destruct;
 @property(nonatomic) _Atomic _Bool shouldGenerateAttachmentsWhenReachable; // @synthesize shouldGenerateAttachmentsWhenReachable=_shouldGenerateAttachmentsWhenReachable;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *previewProgressQueue; // @synthesize previewProgressQueue=_previewProgressQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *previewQueue; // @synthesize previewQueue=_previewQueue;
@@ -49,7 +50,6 @@
 @property(retain, nonatomic) ICAttachmentPreviewGeneratorOperationQueue *generatorQueue; // @synthesize generatorQueue=_generatorQueue;
 @property(retain, nonatomic) ICAttachmentPreviewGeneratorOperationQueue *costlyGeneratorQueue; // @synthesize costlyGeneratorQueue=_costlyGeneratorQueue;
 @property(retain, nonatomic) ICAttachmentPreviewGeneratorOperationQueue *asyncGeneratorQueue; // @synthesize asyncGeneratorQueue=_asyncGeneratorQueue;
-- (void).cxx_destruct;
 - (void)cancelIfNeededForAttachment:(id)arg1;
 - (void)generatePendingPreviewForAttachment:(id)arg1;
 - (void)generatePendingPreviews;
@@ -60,7 +60,7 @@
 - (void)suspend;
 - (void)disableAutomaticPreviewGeneration;
 - (void)enableAutomaticPreviewGeneration;
-- (void)didRecieveMemoryWarning;
+- (void)didReceiveMemoryWarning;
 - (void)cancelGenerationOfPendingPreviews;
 - (void)reachabilityChanged:(id)arg1;
 - (void)managedObjectContextDidSave:(id)arg1;
@@ -68,6 +68,7 @@
 - (void)attachmentWillBeDeleted:(id)arg1;
 - (void)attachmentNeedsPreviewGenerationNotification:(id)arg1;
 - (void)attachmentDidLoad:(id)arg1;
+- (void)adjustUserTitleIfNecessaryForAttachment:(id)arg1;
 - (void)postProcessPreviewForAttachment:(id)arg1;
 - (void)postProcessPendingPreviews;
 - (void)beginPostProcessingAfterDelayIfNecessaryWithForceDelay:(_Bool)arg1;
@@ -76,9 +77,9 @@
 - (void)generatePreviewIfNeededForAttachmentWithObjectID:(id)arg1;
 - (void)generatePreviewIfNeededForAttachment:(id)arg1;
 - (void)generateMissingOrOutdatedAttachmentMetaDataIfNeededInContext:(id)arg1;
-- (id)missingOrOutdatedMetaDataAttachmentsInContext:(id)arg1;
-- (id)missingOrOutdatedOCRSummaryAttachmentsInContext:(id)arg1;
-- (id)missingOrOutdatedImageClassificationSummaryAttachmentsInContext:(id)arg1;
+- (id)missingOrOutdatedMetaDataAttachmentIDsInContext:(id)arg1;
+- (id)missingOrOutdatedOCRSummaryAttachmentIDsInContext:(id)arg1;
+- (id)missingOrOutdatedImageClassificationSummaryAttachmentIDsInContext:(id)arg1;
 - (void)generatePreviewsIfNeeded;
 @property(readonly, nonatomic) _Bool previewOperationsIdle;
 - (_Bool)isPreviewGenerationSupported;

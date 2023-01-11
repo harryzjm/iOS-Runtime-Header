@@ -54,12 +54,15 @@
     NSArray *_backFieldBuckets;
     NSDecimalNumber *_lastAddValueAmount;
     NSDate *_pendingAddValueDate;
+    NSSet *_subcredentials;
 }
 
 + (void)setCachingEnabled:(_Bool)arg1;
 + (_Bool)isCachingEnabled;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool lazyLoadEncodedImages; // @synthesize lazyLoadEncodedImages=_lazyLoadEncodedImages;
+@property(retain, nonatomic) NSSet *subcredentials; // @synthesize subcredentials=_subcredentials;
 @property(nonatomic) _Bool hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
 @property(retain, nonatomic) NSDate *pendingAddValueDate; // @synthesize pendingAddValueDate=_pendingAddValueDate;
 @property(retain, nonatomic) NSDecimalNumber *lastAddValueAmount; // @synthesize lastAddValueAmount=_lastAddValueAmount;
@@ -96,7 +99,6 @@
 @property(retain, nonatomic) NSNumber *groupID; // @synthesize groupID=_groupID;
 @property(retain, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property(nonatomic) unsigned long long expressPassTypesMask; // @synthesize expressPassTypesMask=_expressPassTypesMask;
-- (void).cxx_destruct;
 - (_Bool)hasValidNFCPayload;
 - (_Bool)isEnroute;
 - (_Bool)isAddValuePending;

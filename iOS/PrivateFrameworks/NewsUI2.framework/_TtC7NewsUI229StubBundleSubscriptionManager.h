@@ -17,6 +17,7 @@
 }
 
 - (void)prepareForUseWithCompletion:(CDUnknownBlockType)arg1;
+- (void)silentExpireBundleSubscription;
 - (void)clearBundleSubscription;
 - (void)prewarmBundleTagIDsWithPurchaseID:(id)arg1;
 - (void)forceExpireBundleSubscriptionBasedOnInternalSettings;

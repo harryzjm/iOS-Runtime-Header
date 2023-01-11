@@ -11,6 +11,7 @@
 @interface UIView (CNContactStyle)
 - (void)_cnui_applyContactStyle;
 @property(readonly, nonatomic) CNContactStyle *_cnui_contactStyle;
+- (id)tintColorOverrideDarkened;
 - (id)tintColorOverride;
 - (void)abSetLayoutDebuggingColor:(id)arg1;
 @end

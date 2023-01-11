@@ -23,6 +23,7 @@
 + (long long)pixelEncodingForBitsPerComponent:(unsigned long long)arg1;
 + (unsigned long long)bytesPerComponentForPixelEncoding:(long long)arg1;
 + (unsigned long long)bytesPerComponentForColorModel:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool generateMipmaps; // @synthesize generateMipmaps=_generateMipmaps;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) long long fileType; // @synthesize fileType=_fileType;
@@ -30,7 +31,6 @@
 @property(nonatomic) long long downsamplingFactor; // @synthesize downsamplingFactor=_downsamplingFactor;
 @property(readonly, nonatomic) CDStruct_e791d03f originalPixelFormat; // @synthesize originalPixelFormat=_originalPixelFormat;
 @property(readonly, nonatomic) MISSING_TYPE *originalSize; // @synthesize originalSize=_originalSize;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool requiresDownsampling;
 - (id)debugDescription;
 @property(readonly, nonatomic) MISSING_TYPE *destinationSize;

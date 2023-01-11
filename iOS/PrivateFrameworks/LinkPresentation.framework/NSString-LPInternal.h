@@ -7,8 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (LPInternal)
+@property(nonatomic, setter=_lp_setStringType:) unsigned long long _lp_stringType;
 - (float)_lp_similarityToString:(id)arg1;
 - (id)_lp_directionallyIsolatedString;
+- (_Bool)_lp_hasCaseInsensitiveSuffix:(id)arg1;
 - (_Bool)_lp_isEqualToAnyIgnoringCase:(id)arg1;
 - (_Bool)_lp_isEqualIgnoringCase:(id)arg1;
 - (_Bool)_lp_isEqualToAny:(id)arg1;

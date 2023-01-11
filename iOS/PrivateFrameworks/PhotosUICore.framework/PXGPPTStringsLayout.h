@@ -14,9 +14,10 @@
     NSDictionary *_attributes;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property(copy, nonatomic) NSArray *strings; // @synthesize strings=_strings;
-- (void).cxx_destruct;
+- (id)attributedStringForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (long long)verticalAlignmentForStringAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)stringAttributesAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)stringAtIndex:(unsigned int)arg1 inLayout:(id)arg2;

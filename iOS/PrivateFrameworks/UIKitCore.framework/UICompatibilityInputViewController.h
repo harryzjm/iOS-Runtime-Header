@@ -6,7 +6,8 @@
 
 #import <UIKitCore/_UIKBDelegateAwareInputController-Protocol.h>
 
-@class NSArray, NSString, UIKeyboard, UIKeyboardInputMode, UIViewController;
+@class NSArray, NSString, UIKeyboard, UIKeyboardInputMode, UILayoutGuide, UIViewController;
+@protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
 @interface UICompatibilityInputViewController <_UIKBDelegateAwareInputController>
@@ -21,8 +22,11 @@ __attribute__((visibility("hidden")))
     _Bool _shouldSuppressRemoteInputController;
     _Bool _tearingDownInputController;
     double _resetInputModeTime;
+    unsigned long long _latestDelayTime;
+    UILayoutGuide *_focusSafeAreaLayoutGuide;
     UIViewController *_inputController;
     NSArray *_internalEdgeMatchConstraints;
+    id <UITextCursorAssertion> _blinkAssertion;
 }
 
 + (id)inputSnapshotViewForInputMode:(id)arg1 orientation:(long long)arg2;
@@ -30,8 +34,10 @@ __attribute__((visibility("hidden")))
 + (_Bool)_requiresProxyInterface;
 + (id)deferredInputModeControllerWithKeyboard:(id)arg1;
 + (id)inputViewControllerWithView:(id)arg1;
+@property(retain, nonatomic) id <UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property(retain, nonatomic) NSArray *internalEdgeMatchConstraints; // @synthesize internalEdgeMatchConstraints=_internalEdgeMatchConstraints;
 @property(retain, nonatomic) UIViewController *inputController; // @synthesize inputController=_inputController;
+@property(readonly, nonatomic) UILayoutGuide *focusSafeAreaLayoutGuide;
 - (void)_tvUpdateAppearanceForUserInterfaceStyle;
 - (void)viewDidLayoutSubviews;
 - (void)didFinishTranslation;
@@ -49,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)preferredFocusedView;
 - (void)setInputMode:(id)arg1;
 - (void)setTearingDownInputController;
+- (void)validateInputModeIsDisplayed;
 - (void)assertCurrentInputModeIfNecessary;
 - (void)resetInputMode;
 - (void)resetInputModeInMainThread;
@@ -62,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)generateCompatibleSizeConstraintsIfNecessary;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)willResume:(id)arg1;
+- (void)isHosted:(id)arg1;
 - (void)didSuspend:(id)arg1;
 - (void)killIncomingExtension;
 - (id)_compatView;

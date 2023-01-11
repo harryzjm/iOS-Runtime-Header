@@ -14,6 +14,7 @@
 
 @interface SFResultSection : NSObject <SFJSONSerializable, NSSecureCoding, NSCopying>
 {
+    _Bool _isInitiallyHidden;
     NSArray *_results;
     unsigned long long _maxInitiallyVisibleResults;
     NSString *_identifier;
@@ -24,14 +25,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
 @property(copy, nonatomic) NSString *moreText; // @synthesize moreText=_moreText;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) _Bool isInitiallyHidden; // @synthesize isInitiallyHidden=_isInitiallyHidden;
 @property(nonatomic) unsigned long long maxInitiallyVisibleResults; // @synthesize maxInitiallyVisibleResults=_maxInitiallyVisibleResults;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
-- (void).cxx_destruct;
+- (_Bool)compareWithSection:(id)arg1 logger:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

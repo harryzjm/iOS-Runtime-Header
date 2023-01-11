@@ -7,13 +7,19 @@
 __attribute__((visibility("hidden")))
 @interface _UISearchControllerATVSearchBarAnimator
 {
+    _Bool _shouldLayoutTabBar;
 }
 
+@property(nonatomic) _Bool shouldLayoutTabBar; // @synthesize shouldLayoutTabBar=_shouldLayoutTabBar;
 - (void)willFocusOffscreenViewForController:(id)arg1 withHeading:(unsigned long long)arg2;
 - (void)didUnfocusSearchBarForController:(id)arg1;
 - (void)didFocusSearchBarForController:(id)arg1;
 - (void)didRelayoutSearchBarForController:(id)arg1;
+- (void)_updateLayoutForGridKeyboard:(id)arg1 animated:(_Bool)arg2;
 - (void)animateTransition:(id)arg1;
+- (void)updateViewsWithSearchController:(id)arg1 reloadInputViewController:(_Bool)arg2;
+- (void)updateViewsWithSearchController:(id)arg1;
+- (id)init;
 
 @end
 

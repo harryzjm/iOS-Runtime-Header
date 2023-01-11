@@ -14,7 +14,7 @@
 
 @interface ECEmailAddressComponents : NSObject <ECEmailAddressConvertible, EFPubliclyDescribable, NSCopying>
 {
-    NSString *_address;
+    NSString *_simpleAddress;
     NSString *_localPart;
     NSString *_domain;
     NSString *_idnaDomain;
@@ -24,11 +24,11 @@
 
 + (id)componentsWithEmailAddress:(id)arg1;
 + (id)componentsWithString:(id)arg1;
-@property(copy) NSString *displayName; // @synthesize displayName=_displayName;
 - (void).cxx_destruct;
+@property(copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly) NSString *stringValue;
 @property(readonly) ECEmailAddress *emailAddressValue;
-@property(readonly) NSString *address; // @synthesize address=_address;
+@property(readonly) NSString *simpleAddress; // @synthesize simpleAddress=_simpleAddress;
 - (_Bool)_nts_isValid;
 - (_Bool)_nts_isValidDomain;
 - (_Bool)_nts_getValidatedLocalPart:(id *)arg1 domain:(id *)arg2 idnaDomain:(id *)arg3 displayName:(id *)arg4;

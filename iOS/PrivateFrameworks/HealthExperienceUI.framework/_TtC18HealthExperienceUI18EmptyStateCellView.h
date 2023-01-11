@@ -13,9 +13,11 @@
     MISSING_TYPE *item;
     MISSING_TYPE *$__lazy_storage_$_label;
     MISSING_TYPE *$__lazy_storage_$_spinner;
+    MISSING_TYPE *$__lazy_storage_$_spinnerTrailingConstraint;
 }
 
 - (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

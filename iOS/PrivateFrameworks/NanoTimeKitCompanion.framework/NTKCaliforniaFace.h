@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKCaliforniaFace
+#import <NanoTimeKitCompanion/NTKFaceComplicationPreviewable-Protocol.h>
+
+@class NSString;
+
+@interface NTKCaliforniaFace <NTKFaceComplicationPreviewable>
 {
 }
 
 + (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
-+ (id)_richComplicationSlotsForDevice:(id)arg1;
-+ (id)_orderedComplicationSlots;
-+ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
-+ (id)_complicationSlotDescriptors;
++ (id)complicationConfiguration;
+- (void)applyPreviewConfigurationWithFamily:(long long)arg1 faceColor:(long long)arg2;
 - (_Bool)isFullscreenConfiguration;
 - (id)complicationSlotsHiddenByEditOption:(id)arg1;
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -22,9 +24,13 @@
 - (id)defaultColorForDevice:(id)arg1;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_customEditModes;
-- (_Bool)complicationExistenceInvalidatesSnapshot;
-- (id)_localizedNameForComplicationSlot:(id)arg1;
 - (void)setIsLibraryFace:(_Bool)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,7 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@interface HMDPersistentStore : HMFObject
+#import <HomeKitDaemon/HMDPersistentStore-Protocol.h>
+
+@class NSString;
+
+@interface HMDPersistentStore : HMFObject <HMDPersistentStore>
 {
 }
 
@@ -16,8 +20,10 @@
 + (id)encryptDataWithControllerKey:(id)arg1 error:(id *)arg2;
 + (id)_decryptData:(id)arg1 withKey:(id)arg2 error:(id *)arg3;
 + (id)_encryptData:(id)arg1 withKey:(id)arg2 error:(id *)arg3;
++ (id)unarchiveDataStoreWithPath:(id)arg1 forKey:(id)arg2;
++ (id)archiveDataStoreWithPath:(id)arg1 serializedData:(id)arg2 forKey:(id)arg3;
 + (id)unarchiveBulletinBoard;
-+ (id)archiveBulletinBoard:(id)arg1;
++ (void)archiveBulletinBoard:(id)arg1;
 + (id)unarchiveIDSDataSyncJournal;
 + (id)archiveIDSDataSyncJournal:(id)arg1;
 + (void)removeTransactionJournal;
@@ -40,6 +46,12 @@
 + (_Bool)writeDictionary:(id)arg1 toStorePath:(id)arg2;
 + (id)_writeData:(id)arg1 toStorePath:(id)arg2 dataLabel:(id)arg3;
 + (id)writeData:(id)arg1 toStorePath:(id)arg2 dataLabel:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

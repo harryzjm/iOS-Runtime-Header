@@ -12,18 +12,18 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarLayoutManager : NSObject
 {
     int _region;
-    UIStatusBarItemView *_itemViews[48];
+    UIStatusBarItemView *_itemViews[49];
     _Bool _persistentAnimationsEnabled;
     _Bool _usesVerticalLayout;
     UIStatusBarForegroundView *_foregroundView;
     NSNumber *_assignedStartPosition;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *assignedStartPosition; // @synthesize assignedStartPosition=_assignedStartPosition;
 @property(readonly, nonatomic) _Bool usesVerticalLayout; // @synthesize usesVerticalLayout=_usesVerticalLayout;
 @property(nonatomic) _Bool persistentAnimationsEnabled; // @synthesize persistentAnimationsEnabled=_persistentAnimationsEnabled;
 @property(nonatomic) __weak UIStatusBarForegroundView *foregroundView; // @synthesize foregroundView=_foregroundView;
-- (void).cxx_destruct;
 - (id)visibleItemViewAtPoint:(struct CGPoint)arg1 inForegroundView:(id)arg2;
 - (id)itemViewOfType:(int)arg1;
 - (id)allItemViews;

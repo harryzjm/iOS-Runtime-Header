@@ -8,6 +8,7 @@
 
 @class UILabel;
 
+__attribute__((visibility("hidden")))
 @interface CKMultipleIDSSubscriptionsTableCell : PSTableCell
 {
     UILabel *_nameLabel;
@@ -16,10 +17,10 @@
 }
 
 + (long long)cellStyle;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *centeredNameLabel; // @synthesize centeredNameLabel=_centeredNameLabel;
 @property(retain, nonatomic) UILabel *numberLabel; // @synthesize numberLabel=_numberLabel;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
-- (void).cxx_destruct;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (_Bool)canBeChecked;
 - (_Bool)canReload;

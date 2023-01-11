@@ -10,7 +10,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableEnumValue, NSString;
+@class INCodableEnum, INCodableEnumValue, NSString;
 
 @interface INCodableEnumValueSynonym : NSObject <NSSecureCoding, NSCopying, INCodableCoding>
 {
@@ -22,26 +22,31 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *synonymLocID; // @synthesize synonymLocID=_synonymLocID;
 @property(copy, nonatomic) NSString *synonym; // @synthesize synonym=_synonym;
 @property(copy, nonatomic) NSString *pronunciationHintLocID; // @synthesize pronunciationHintLocID=_pronunciationHintLocID;
 @property(copy, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
 @property(nonatomic, setter=_setCodableEnumValue:) __weak INCodableEnumValue *_codableEnumValue; // @synthesize _codableEnumValue;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+@property(readonly, nonatomic) __weak INCodableEnum *_codableEnum;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (id)dictionaryRepresentation;
 - (void)updateWithDictionary:(id)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
-- (id)keyPrefix;
+- (id)localizedPronunciationHintWithLocalizer:(id)arg1;
 - (id)localizedPronunciationHintForLanguage:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *localizedPronunciationHint;
+- (id)localizedSynonymWithLocalizer:(id)arg1;
 - (id)localizedSynonymForLanguage:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *localizedSynonym;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)__INCodableEnumPronunciationHintKey;
+- (id)__INCodableEnumPronunciationHintIDKey;
+- (id)__INCodableEnumSynonymKey;
+- (id)__INCodableEnumSynonymIDKey;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,6 +14,7 @@
 - (void)cancelSession:(NSString *)arg1;
 - (void)commitSession:(NSString *)arg1;
 - (void)adoptFiles:(NSArray *)arg1 forSession:(NSString *)arg2;
+- (void)getSessionStateWithSession:(NSString *)arg1;
 - (void)syncSessionStatusWithSession:(NSString *)arg1;
 - (void)getSessionStatusWithSession:(NSString *)arg1;
 - (void)terminateExtension:(NSString *)arg1 info:(NSDictionary *)arg2 session:(NSString *)arg3;

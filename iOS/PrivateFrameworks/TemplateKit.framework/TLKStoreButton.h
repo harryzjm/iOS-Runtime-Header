@@ -6,25 +6,35 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSString, TLKLabel, TLKProminenceView;
+@class NSString, TLKLabel, TLKProminenceView, TLKRichText, UIFont, UIView;
 
 @interface TLKStoreButton : UIButton
 {
+    _Bool _useCompactMode;
+    _Bool _isEmphasized;
+    TLKRichText *_richTitle;
     TLKLabel *_label;
+    UIView *_backgroundView;
     TLKProminenceView *_highlightView;
 }
 
-@property(retain) TLKProminenceView *highlightView; // @synthesize highlightView=_highlightView;
-@property(retain) TLKLabel *label; // @synthesize label=_label;
 - (void).cxx_destruct;
+@property _Bool isEmphasized; // @synthesize isEmphasized=_isEmphasized;
+@property(retain) TLKProminenceView *highlightView; // @synthesize highlightView=_highlightView;
+@property(retain) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(retain) TLKLabel *label; // @synthesize label=_label;
+@property(copy, nonatomic) TLKRichText *richTitle; // @synthesize richTitle=_richTitle;
+@property(nonatomic) _Bool useCompactMode; // @synthesize useCompactMode=_useCompactMode;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
 @property(copy, nonatomic) NSString *title;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (void)setHighlighted:(_Bool)arg1;
+@property(nonatomic) double cornerRadius;
+@property(copy, nonatomic) UIFont *font;
 - (id)init;
 
 @end

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityIsVerticalAdjustableElement;
 - (id)accessibilityLabel;
 - (void)_hideZoomSlider:(id)arg1;
 - (_Bool)isAccessibilityElement;

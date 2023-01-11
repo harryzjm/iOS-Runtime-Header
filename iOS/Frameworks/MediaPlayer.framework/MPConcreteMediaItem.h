@@ -10,6 +10,7 @@
 @class MPConcreteMediaEntityPropertiesCache, MPMediaLibrary, NSObject;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPConcreteMediaItem <NSCopying, MPCacheableConcreteMediaEntity>
 {
     MPMediaLibrary *_library;
@@ -19,6 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)createUncachedConcreteMediaItemWithPersistentID:(unsigned long long)arg1 library:(id)arg2;
 + (id)concreteMediaItemWithPersistentID:(unsigned long long)arg1 library:(id)arg2;
 + (id)concreteMediaItemWithPersistentID:(unsigned long long)arg1;
 - (void).cxx_destruct;
@@ -41,7 +43,6 @@
 - (unsigned long long)persistentID;
 - (id)mediaLibrary;
 - (_Bool)existsInLibrary;
-- (Class)itemArrayCoderPIDDataCodingClass;
 - (Class)classForCoder;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

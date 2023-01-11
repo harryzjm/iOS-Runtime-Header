@@ -23,6 +23,7 @@
     long long _responseContentVersion;
 }
 
+- (void).cxx_destruct;
 @property long long responseContentVersion; // @synthesize responseContentVersion=_responseContentVersion;
 @property(copy) NSData *responseContentBody; // @synthesize responseContentBody=_responseContentBody;
 @property(copy) NSString *authURLString; // @synthesize authURLString=_authURLString;

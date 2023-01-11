@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AXDialectMap, NSArray, NSCharacterSet, NSLocale, NSSet, NSString;
+@class AXDialectMap, NSArray, NSCharacterSet, NSLocale, NSMutableDictionary, NSSet, NSString;
 
 @interface AXLanguageManager : NSObject
 {
     AXDialectMap *_dialectForSystemLanguage;
     AXDialectMap *_dialectForCurrentLocale;
     AXDialectMap *_dialectForCurrentRegion;
+    struct os_unfair_lock_s _languageFallbackLock;
+    NSMutableDictionary *_languageFallbacks;
     _Bool __unitTest_didUpdateForLocaleChange;
     NSArray *_langMaps;
     NSCharacterSet *_commonCharacters;
@@ -28,11 +30,11 @@
 + (id)nonlocalizedNameForLanguage:(id)arg1;
 + (_Bool)voiceOverSupportedInCurrentLanguage;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool _unitTest_didUpdateForLocaleChange; // @synthesize _unitTest_didUpdateForLocaleChange=__unitTest_didUpdateForLocaleChange;
 @property(copy, nonatomic) NSLocale *userLocale; // @synthesize userLocale=_userLocale;
 @property(retain, nonatomic) NSCharacterSet *commonCharacters; // @synthesize commonCharacters=_commonCharacters;
 @property(retain, nonatomic) NSArray *langMaps; // @synthesize langMaps=_langMaps;
-- (void).cxx_destruct;
 - (_Bool)didUpdateForLocaleChange;
 - (void)_handleUserLocaleDidChange:(id)arg1;
 - (id)_loadLangMaps;
@@ -43,8 +45,13 @@
 - (_Bool)isStringComposedByCommonCharacters:(id)arg1;
 - (_Bool)isCharacterCommon:(unsigned short)arg1;
 - (id)ambiguousDialectsFromUserKeyboardPreferences;
+- (id)outputLanguageIdentifierForLanguage:(id)arg1;
 - (id)dialectThatCanSpeakCharacter:(unsigned short)arg1;
+- (id)dialectsThatCanSpeakString:(id)arg1 overridePreferredLanguages:(id)arg2;
 - (id)dialectsThatCanSpeakString:(id)arg1;
+- (id)dialectsThatCanSpeakCharacter:(unsigned short)arg1 overridePreferredLanguages:(id)arg2 allowTransliteration:(_Bool)arg3;
+- (id)dialectsThatCanSpeak:(CDUnknownBlockType)arg1 dialectIsSecondary:(CDUnknownBlockType)arg2 overridePreferredLanguages:(id)arg3;
+- (id)dialectsThatCanSpeakCharacter:(unsigned short)arg1 overridePreferredLanguages:(id)arg2;
 - (id)dialectsThatCanSpeakCharacter:(unsigned short)arg1;
 - (id)dialectForLanguageID:(id)arg1;
 @property(nonatomic) __weak AXDialectMap *dialectForCurrentRegion;

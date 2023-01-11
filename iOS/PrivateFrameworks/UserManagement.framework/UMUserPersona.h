@@ -17,6 +17,8 @@
     _Bool shouldFetchAttributes;
     _Bool _isSystemPersona;
     _Bool _isDefaultPersona;
+    _Bool _isGuestPersona;
+    _Bool _isDataSeparatedPersona;
     _Bool _isEnterprisePersona;
     _Bool _isPersonalPersona;
     _Bool _isDisabled;
@@ -29,6 +31,7 @@
 
 + (_Bool)currentPersonaMatchesPath:(id)arg1;
 + (id)currentPersona;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long userPersonaType; // @synthesize userPersonaType=_userPersonaType;
 @property(copy, nonatomic) NSString *userPersonaNickName; // @synthesize userPersonaNickName=_userPersonaNickName;
 @property(copy, nonatomic) NSString *userPersonaUniqueString; // @synthesize userPersonaUniqueString=_userPersonaUniqueString;
@@ -37,9 +40,10 @@
 @property(nonatomic) _Bool isEnterprisePersona; // @synthesize isEnterprisePersona=_isEnterprisePersona;
 @property(nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property(nonatomic) unsigned int uid; // @synthesize uid=_uid;
+@property(nonatomic) _Bool isDataSeparatedPersona; // @synthesize isDataSeparatedPersona=_isDataSeparatedPersona;
+@property(nonatomic) _Bool isGuestPersona; // @synthesize isGuestPersona=_isGuestPersona;
 @property(nonatomic) _Bool isDefaultPersona; // @synthesize isDefaultPersona=_isDefaultPersona;
 @property(nonatomic) _Bool isSystemPersona; // @synthesize isSystemPersona=_isSystemPersona;
-- (void).cxx_destruct;
 - (_Bool)isEqualToPersona:(id)arg1;
 - (_Bool)commitChangesWithError:(id *)arg1;
 - (_Bool)commitChanges;

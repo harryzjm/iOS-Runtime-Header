@@ -13,20 +13,24 @@
     HKHealthStore *_healthStore;
     _HKDateRangeQuery *_dateRangeQuery;
     NSHashTable *_observers;
+    _Bool _applicationIsInForeground;
+    _Bool _lastQuerySufferedError;
     NSString *_name;
-    struct NSDictionary *_dateRangesBySampleType;
+    NSDictionary *_dateRangesBySampleType;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *dateRangesBySampleType; // @synthesize dateRangesBySampleType=_dateRangesBySampleType;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-- (void)_updateHandlerDidReceiveError:(id)arg1 retryCount:(long long)arg2;
-- (void)_resultsDidUpdate:(struct NSDictionary *)arg1;
-- (void)_beginUpdatesWithRetryAttemptCount:(long long)arg1;
+- (void)_updateHandlerDidReceiveError:(id)arg1;
+- (void)_resultsDidUpdate:(id)arg1;
+- (void)_beginUpdates;
 - (void)_alertObserverDidUpdateDateRanges:(id)arg1;
 - (void)_alertObserversDidUpdateDateRanges;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)_applicationMovingToBackground:(id)arg1;
+- (void)_applicationMovingToForeground:(id)arg1;
 - (id)dateRangeForSampleType:(id)arg1;
 - (void)dealloc;
 - (id)initWithHealthStore:(id)arg1;

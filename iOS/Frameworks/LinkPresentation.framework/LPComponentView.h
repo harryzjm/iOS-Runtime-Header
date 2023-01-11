@@ -6,11 +6,17 @@
 
 #import <UIKit/UIView.h>
 
+@protocol LPComponentViewDelegate;
+
 __attribute__((visibility("hidden")))
 @interface LPComponentView : UIView
 {
+    id <LPComponentViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <LPComponentViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)shouldAllowHighlightToRecognizeSimultaneouslyWithGesture:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)componentViewDidMoveToWindow;
 - (void)layoutComponentView;

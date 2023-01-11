@@ -19,9 +19,9 @@
 }
 
 + (id)sharedServer;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AAURLSession *signingSession; // @synthesize signingSession=_signingSession;
 @property(retain, nonatomic) AAURLSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
 - (void)_fetchConfigurationAndResponseWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_configurationLock_configurationCacheInvalidatingIfNecessary;
 - (id)_configurationCacheInvalidatingIfNecessary;
@@ -35,7 +35,6 @@
 - (id)_redactedBodyStringWithPropertyList:(id)arg1;
 - (id)_bodyDictionaryWithProtocolVersion:(id)arg1;
 - (void)loginDelegates:(id)arg1 parameters:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)registerAccount:(id)arg1 withHSA:(_Bool)arg2 usingCookieHeaders:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)registerAccount:(id)arg1 withHSA:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)authenticateAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

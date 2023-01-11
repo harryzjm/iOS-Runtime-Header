@@ -14,7 +14,7 @@
 #import <ContactsUI/CNUIObjectViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNVCardImportControllerDelegate-Protocol.h>
 #import <ContactsUI/CNVCardImportControllerPresentationDelegate-Protocol.h>
-#import <ContactsUI/INKContentControllerObserver-Protocol.h>
+#import <ContactsUI/TPKContentControllerDelegate-Protocol.h>
 #import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ContactsUI/UISearchBarDelegate-Protocol.h>
 #import <ContactsUI/UISearchControllerDelegate-Protocol.h>
@@ -22,19 +22,20 @@
 #import <ContactsUI/UITableViewDragDestinationDelegate-Protocol.h>
 #import <ContactsUI/UITableViewDragSourceDelegate-Protocol.h>
 
-@class CNAvatarCardController, CNAvatarViewController, CNContact, CNContactFormatter, CNContactListBannerView, CNContactListStyleApplier, CNUIContactsEnvironment, CNVCardImportController, INKContent, INKContentController, NSArray, NSObject, NSSet, NSString, UISearchBar, UISearchController, UIView, _UIContentUnavailableView;
+@class CNAvatarCardController, CNAvatarViewController, CNContact, CNContactFormatter, CNContactListBannerView, CNContactListStyleApplier, CNUIContactsEnvironment, CNVCardImportController, NSArray, NSObject, NSSet, NSString, TPKContent, TPKContentController, UISearchBar, UISearchController, UIView, _UIContentUnavailableView;
 @protocol CNCancelable, CNContactDataSource, CNContactListViewControllerDelegate, CNHealthStoreManagerToken;
 
-@interface CNContactListViewController : UITableViewController <CNAvatarCardControllerDelegate, CNContactDataSourceDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, CNContactListBannerViewDelegate, CNContactViewControllerDelegate, UIGestureRecognizerDelegate, CNUIObjectViewControllerDelegate, UITableViewDragSourceDelegate, UITableViewDragDestinationDelegate, CNVCardImportControllerPresentationDelegate, CNVCardImportControllerDelegate, CNAvatarViewControllerDelegate, INKContentControllerObserver>
+@interface CNContactListViewController : UITableViewController <CNAvatarCardControllerDelegate, CNContactDataSourceDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, CNContactListBannerViewDelegate, CNContactViewControllerDelegate, UIGestureRecognizerDelegate, CNUIObjectViewControllerDelegate, UITableViewDragSourceDelegate, UITableViewDragDestinationDelegate, CNVCardImportControllerPresentationDelegate, CNVCardImportControllerDelegate, CNAvatarViewControllerDelegate, TPKContentControllerDelegate>
 {
     CNContact *_preferredForNameMeContact;
     _Bool _shouldDisplayMeContactBanner;
     _Bool _shouldAutoHideMeContactBanner;
-    _Bool _allowsSearching;
-    _Bool _shouldDisplayInfoContentView;
+    _Bool _shouldDisplayTipContentView;
     _Bool _presentsSearchUI;
+    _Bool _isHandlingSearch;
     _Bool _pendingSearchControllerActivation;
     _Bool _shouldUseLargeTitle;
+    _Bool _pendingRefreshNoContactsView;
     _Bool _shouldDisplayGroupsGrid;
     _Bool _shouldDisplayCount;
     _Bool _shouldAllowDrags;
@@ -50,9 +51,9 @@
     UISearchController *_searchController;
     UISearchBar *_searchBar;
     CDUnknownBlockType _searchCompletionBlock;
-    UIView *_infoContentView;
-    INKContentController *_infoContentController;
-    INKContent *_infoContent;
+    UIView *_tipContentView;
+    TPKContentController *_tipContentController;
+    TPKContent *_tipContent;
     CNContactListBannerView *_meContactBanner;
     double _contentOffsetDueToMeContactBanner;
     CNUIContactsEnvironment *_environment;
@@ -71,6 +72,7 @@
 
 + (id)emptyContact;
 + (id)descriptorForRequiredKeysForPreferredForNameMeContact;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
 @property(nonatomic) _Bool shouldDisplayEmergencyContacts; // @synthesize shouldDisplayEmergencyContacts=_shouldDisplayEmergencyContacts;
 @property(nonatomic) _Bool shouldAllowDrops; // @synthesize shouldAllowDrops=_shouldAllowDrops;
@@ -78,6 +80,7 @@
 @property(nonatomic) _Bool shouldDisplayCount; // @synthesize shouldDisplayCount=_shouldDisplayCount;
 @property(nonatomic) _Bool shouldDisplayGroupsGrid; // @synthesize shouldDisplayGroupsGrid=_shouldDisplayGroupsGrid;
 @property(retain, nonatomic) CNContactListViewController *searchResultsController; // @synthesize searchResultsController=_searchResultsController;
+@property(nonatomic) _Bool pendingRefreshNoContactsView; // @synthesize pendingRefreshNoContactsView=_pendingRefreshNoContactsView;
 @property(retain, nonatomic) CNContactListStyleApplier *defaultContactListStyleApplier; // @synthesize defaultContactListStyleApplier=_defaultContactListStyleApplier;
 @property(retain, nonatomic) id <CNCancelable> medicalIDLookupToken; // @synthesize medicalIDLookupToken=_medicalIDLookupToken;
 @property(retain, nonatomic) id <CNHealthStoreManagerToken> medicalIDLookupRegistrationToken; // @synthesize medicalIDLookupRegistrationToken=_medicalIDLookupRegistrationToken;
@@ -90,24 +93,24 @@
 @property(retain, nonatomic) NSArray *pendingLayoutBlocks; // @synthesize pendingLayoutBlocks=_pendingLayoutBlocks;
 @property(retain, nonatomic) CNAvatarViewController *meBannerAvatarController; // @synthesize meBannerAvatarController=_meBannerAvatarController;
 @property(readonly, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
+@property(nonatomic) _Bool isHandlingSearch; // @synthesize isHandlingSearch=_isHandlingSearch;
 @property(readonly, nonatomic) _Bool presentsSearchUI; // @synthesize presentsSearchUI=_presentsSearchUI;
 @property(readonly, nonatomic) double contentOffsetDueToMeContactBanner; // @synthesize contentOffsetDueToMeContactBanner=_contentOffsetDueToMeContactBanner;
 @property(retain, nonatomic) CNContactListBannerView *meContactBanner; // @synthesize meContactBanner=_meContactBanner;
-@property(retain, nonatomic) INKContent *infoContent; // @synthesize infoContent=_infoContent;
-@property(retain, nonatomic) INKContentController *infoContentController; // @synthesize infoContentController=_infoContentController;
-@property(retain, nonatomic) UIView *infoContentView; // @synthesize infoContentView=_infoContentView;
-@property(nonatomic) _Bool shouldDisplayInfoContentView; // @synthesize shouldDisplayInfoContentView=_shouldDisplayInfoContentView;
+@property(retain, nonatomic) TPKContent *tipContent; // @synthesize tipContent=_tipContent;
+@property(retain, nonatomic) TPKContentController *tipContentController; // @synthesize tipContentController=_tipContentController;
+@property(retain, nonatomic) UIView *tipContentView; // @synthesize tipContentView=_tipContentView;
+@property(nonatomic) _Bool shouldDisplayTipContentView; // @synthesize shouldDisplayTipContentView=_shouldDisplayTipContentView;
 @property(copy, nonatomic) CDUnknownBlockType searchCompletionBlock; // @synthesize searchCompletionBlock=_searchCompletionBlock;
 @property(retain, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(retain, nonatomic) CNAvatarCardController *cardController; // @synthesize cardController=_cardController;
 @property(retain, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
-@property(nonatomic) _Bool allowsSearching; // @synthesize allowsSearching=_allowsSearching;
 @property(copy, nonatomic) NSString *meContactBannerFootnoteValue; // @synthesize meContactBannerFootnoteValue=_meContactBannerFootnoteValue;
 @property(copy, nonatomic) NSString *meContactBannerFootnoteLabel; // @synthesize meContactBannerFootnoteLabel=_meContactBannerFootnoteLabel;
 @property(nonatomic) _Bool shouldAutoHideMeContactBanner; // @synthesize shouldAutoHideMeContactBanner=_shouldAutoHideMeContactBanner;
 @property(nonatomic) __weak id <CNContactListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)getVisibleIndexPaths;
 - (void)startHandlingEmergencyContacts;
 - (void)vCardImportControllerDidCompleteQueue:(id)arg1;
 - (void)vCardImportController:(id)arg1 didSaveContacts:(id)arg2;
@@ -162,9 +165,11 @@
 - (void)contactDataSourceMeContactDidChange:(id)arg1;
 - (void)contactDataSourceDidChangeDisplayName:(id)arg1;
 - (void)contactDataSourceDidChange:(id)arg1;
-- (_Bool)updateFrameAndDisplayNoContactsViewIfNeeded;
-- (_Bool)hasNoContacts;
+- (void)performDelayedRefreshNoContactsView;
 - (void)refreshNoContactsViewIfVisible;
+- (_Bool)refreshNoContactsViewIfNeeded;
+- (_Bool)canShowNoContactsView;
+- (_Bool)hasNoContacts;
 @property(readonly, nonatomic) _UIContentUnavailableView *noContactsView; // @synthesize noContactsView=_noContactsView;
 - (void)avatarCardControllerWillBeginPreviewInteraction:(id)arg1;
 - (long long)avatarCardController:(id)arg1 presentationResultForLocation:(struct CGPoint)arg2;
@@ -189,6 +194,7 @@
 - (_Bool)selectContact:(id)arg1 animated:(_Bool)arg2 scrollPosition:(long long)arg3;
 @property(readonly, nonatomic) NSArray *selectedContacts;
 - (void)setupForMultiSelection;
+- (void)disableSearchUI;
 - (void)performWhenViewIsLaidOut:(CDUnknownBlockType)arg1;
 - (void)applyStyle;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -204,7 +210,6 @@
 - (id)contactStore;
 @property(readonly, nonatomic) id <CNContactDataSource> originalDataSource;
 @property(retain, nonatomic) NSObject<CNContactDataSource> *dataSource; // @synthesize dataSource=_dataSource;
-- (_Bool)isHandlingSearch;
 - (_Bool)canBecomeFirstResponder;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1;

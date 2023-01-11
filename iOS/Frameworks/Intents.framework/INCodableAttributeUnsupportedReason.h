@@ -12,18 +12,27 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSString *code; // @synthesize code=_code;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *code; // @synthesize code=_code;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
-- (id)keyPrefix;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy, nonatomic) NSString *predicateFormat;
+- (id)__INCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INCodableDescriptionCodeKey;
+- (id)__INTypeCodableDescriptionCodeKey;
+- (id)__INIntentResponseCodableDescriptionCodeKey;
+- (id)__INCodableDescriptionFormatStringKey;
+- (id)__INCodableDescriptionFormatStringDictionaryKey;
+- (id)__INCodableDescriptionFormatStringDictionaryLanguageCodeKey;
+- (id)__INCodableDescriptionFormatStringIDKey;
+- (id)__INCodableDescriptionFormatStringLanguageCodeKey;
 
 @end
 

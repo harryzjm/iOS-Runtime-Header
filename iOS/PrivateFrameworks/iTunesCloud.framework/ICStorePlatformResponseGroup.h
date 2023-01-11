@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy, nonatomic) id rawResponse;
 @property(readonly, copy, nonatomic) NSString *storefrontIdentifier;
 - (id)itemForIdentifier:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *expirationDate;

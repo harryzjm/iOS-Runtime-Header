@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARImageSensorSettings, ARWorldMap, NSSet, NSString;
+@class ARWorldMap, NSSet;
 
 @interface ARWorldTrackingConfiguration
 {
@@ -12,36 +12,20 @@
     _Bool _automaticImageScaleEstimationEnabled;
     _Bool _collaborationEnabled;
     _Bool _userFaceTrackingEnabled;
-    _Bool _relocalizationEnabled;
-    _Bool _mlModelEnabled;
-    _Bool _deliverRawSceneUnderstandingResults;
-    _Bool _skeletonDetectionEnabled;
-    _Bool _shouldUseSuperWideIfAvailable;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
     ARWorldMap *_initialWorldMap;
     NSSet *_detectionImages;
     long long _maximumNumberOfTrackedImages;
     NSSet *_detectionObjects;
-    NSString *_slamConfiguration;
-    double _minVergenceAngle;
+    unsigned long long _sceneReconstruction;
 }
 
-+ (_Bool)supportsFrameSemantics:(unsigned long long)arg1;
-+ (_Bool)supportsFrontCameraFaceAnchors;
-+ (_Bool)supportsUserFaceTracking;
-+ (id)supportedVideoFormatsForSuperWide;
-+ (id)supportedVideoFormatsForUserFaceTracking;
-+ (id)supportedVideoFormats;
 + (id)new;
-+ (_Bool)isSupported;
-@property(nonatomic) _Bool shouldUseSuperWideIfAvailable; // @synthesize shouldUseSuperWideIfAvailable=_shouldUseSuperWideIfAvailable;
-@property(nonatomic, getter=isSkeletonDetectionEnabled) _Bool skeletonDetectionEnabled; // @synthesize skeletonDetectionEnabled=_skeletonDetectionEnabled;
-@property(nonatomic) _Bool deliverRawSceneUnderstandingResults; // @synthesize deliverRawSceneUnderstandingResults=_deliverRawSceneUnderstandingResults;
-@property(nonatomic, getter=isMLModelEnabled) _Bool mlModelEnabled; // @synthesize mlModelEnabled=_mlModelEnabled;
-@property(nonatomic) double minVergenceAngle; // @synthesize minVergenceAngle=_minVergenceAngle;
-@property(copy, nonatomic) NSString *slamConfiguration; // @synthesize slamConfiguration=_slamConfiguration;
-@property(nonatomic) _Bool relocalizationEnabled; // @synthesize relocalizationEnabled=_relocalizationEnabled;
++ (_Bool)supportsSceneReconstruction:(unsigned long long)arg1;
++ (_Bool)supportsUserFaceTracking;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long sceneReconstruction; // @synthesize sceneReconstruction=_sceneReconstruction;
 @property(nonatomic, getter=userFaceTrackingEnabled) _Bool userFaceTrackingEnabled; // @synthesize userFaceTrackingEnabled=_userFaceTrackingEnabled;
 @property(nonatomic, getter=isCollaborationEnabled) _Bool collaborationEnabled; // @synthesize collaborationEnabled=_collaborationEnabled;
 @property(copy, nonatomic) NSSet *detectionObjects; // @synthesize detectionObjects=_detectionObjects;
@@ -52,21 +36,6 @@
 @property(nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
 @property(nonatomic) _Bool wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
 @property(nonatomic) long long environmentTexturing; // @synthesize environmentTexturing=_environmentTexturing;
-- (void).cxx_destruct;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)isEqual:(id)arg1;
-- (void)setFrontCameraFaceAnchorsEnabled:(_Bool)arg1;
-- (id)_trackingOptions;
-- (id)secondaryTechniques;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
-- (_Bool)shouldEnableVisionDataForImageSensorSettings:(id)arg1;
-- (id)visionDataParametersForWorldTrackingOptions:(id)arg1;
-- (_Bool)shouldUseSuperWide;
-@property(readonly, nonatomic) ARImageSensorSettings *imageSensorSettingsForSuperWide;
-- (id)imageSensorSettingsForUserFaceTracking;
-- (id)imageSensorSettings;
-- (id)parentImageSensorSettings;
 - (id)init;
 
 // Remaining properties

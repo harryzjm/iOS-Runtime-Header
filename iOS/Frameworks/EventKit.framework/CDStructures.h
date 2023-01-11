@@ -10,33 +10,9 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct NSObject {
-    Class _field1;
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
-#if 0
-// Names with conflicting types:
-typedef struct {
-    Class _field1;
-} EKPersistentObject_556b3b22;
-
-typedef struct {
-    Class _field1;
-    struct _opaque_pthread_mutex_t _field2;
-    id _field3;
-    id _field4;
-    id _field5;
-    unsigned int _field6;
-    id _field7;
-    id _field8;
-} EKPersistentObject_e5dd8935;
-
-#endif
 
 #pragma mark Typedef'd Structures
 
@@ -112,7 +88,8 @@ typedef struct {
     unsigned int supportsRecurrenceSplit:1;
     unsigned int requiresOpeningAttachmentAsLink:1;
     unsigned int shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars:1;
-} CDStruct_6a9d2bb3;
+    unsigned int supportsInvitationModificationsWithoutNotification:1;
+} CDStruct_9e0d2422;
 
 typedef struct {
     unsigned int _field1;
@@ -127,15 +104,6 @@ typedef struct {
     char _field5;
     double _field6;
 } CDStruct_79f9e052;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    double _field6;
-} CDStruct_deff9ab7;
 
 typedef struct {
     long long _field1;

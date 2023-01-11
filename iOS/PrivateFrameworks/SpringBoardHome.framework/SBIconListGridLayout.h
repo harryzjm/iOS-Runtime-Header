@@ -9,7 +9,7 @@
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardHome/SBIconListLayout-Protocol.h>
 
-@class NSMutableDictionary, NSString, SBHClockIconVisualConfiguration, SBHFloatyFolderVisualConfiguration, SBHFolderIconVisualConfiguration, SBHIconAccessoryVisualConfiguration, SBHSidebarVisualConfiguration, SBIconListGridLayoutConfiguration, UIFont;
+@class NSMutableDictionary, NSString, SBHAppLibraryVisualConfiguration, SBHFloatyFolderVisualConfiguration, SBHFolderIconVisualConfiguration, SBHIconAccessoryVisualConfiguration, SBHRootFolderVisualConfiguration, SBHSidebarVisualConfiguration, SBIconListGridLayoutConfiguration, UIFont;
 
 @interface SBIconListGridLayout : NSObject <SBIconListLayout, BSDescriptionProviding>
 {
@@ -19,17 +19,19 @@
     SBIconListGridLayoutConfiguration *_layoutConfiguration;
 }
 
-@property(readonly, copy, nonatomic) SBIconListGridLayoutConfiguration *layoutConfiguration; // @synthesize layoutConfiguration=_layoutConfiguration;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) SBIconListGridLayoutConfiguration *layoutConfiguration; // @synthesize layoutConfiguration=_layoutConfiguration;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
-- (struct SBIconCoordinate)iconCoordinateForIndex:(unsigned long long)arg1 forOrientation:(long long)arg2 inList:(id)arg3;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, copy, nonatomic) SBHAppLibraryVisualConfiguration *appLibraryVisualConfiguration;
+@property(readonly, copy, nonatomic) SBHRootFolderVisualConfiguration *rootFolderVisualConfiguration;
 @property(readonly, copy, nonatomic) SBHSidebarVisualConfiguration *sidebarVisualConfiguration;
 @property(readonly, copy, nonatomic) SBHFloatyFolderVisualConfiguration *floatyFolderVisualConfiguration;
-@property(readonly, copy, nonatomic) SBHClockIconVisualConfiguration *clockIconVisualConfiguration;
 @property(readonly, copy, nonatomic) SBHFolderIconVisualConfiguration *folderIconVisualConfiguration;
 - (id)accessoryBoldFont;
 - (id)accessoryFont;
@@ -39,17 +41,18 @@
 - (id)labelFontForContentSizeCategory:(id)arg1 options:(unsigned long long)arg2;
 - (void)noteIcons:(id)arg1 didDropAtCoordinate:(struct SBIconCoordinate)arg2 inList:(id)arg3;
 @property(readonly, nonatomic) _Bool usesAlternateLayout;
+@property(readonly, nonatomic) unsigned long long supportedIconGridSizeClasses;
+@property(readonly, nonatomic) struct SBHIconGridSizeClassSizes iconGridSizeClassSizes;
 - (struct UIEdgeInsets)layoutInsetsForOrientation:(long long)arg1;
-@property(readonly, nonatomic) unsigned long long maximumIconCount;
 - (unsigned long long)numberOfRowsForOrientation:(long long)arg1;
 - (unsigned long long)numberOfColumnsForOrientation:(long long)arg1;
+- (struct SBIconImageInfo)iconImageInfoForGridSizeClass:(unsigned long long)arg1;
 @property(readonly, nonatomic) struct SBIconImageInfo iconImageInfo;
 - (id)init;
 - (id)initWithLayoutConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

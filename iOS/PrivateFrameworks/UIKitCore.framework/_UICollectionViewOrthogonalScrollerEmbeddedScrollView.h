@@ -10,10 +10,14 @@ __attribute__((visibility("hidden")))
 @interface _UICollectionViewOrthogonalScrollerEmbeddedScrollView
 {
     UICollectionView *_collectionView;
+    long long _section;
 }
 
-@property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 - (void).cxx_destruct;
+@property(nonatomic) long long section; // @synthesize section=_section;
+@property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+- (void)_focusedItem:(id)arg1 isMinX:(_Bool *)arg2 isMaxX:(_Bool *)arg3 isMinY:(_Bool *)arg4 isMaxY:(_Bool *)arg5;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

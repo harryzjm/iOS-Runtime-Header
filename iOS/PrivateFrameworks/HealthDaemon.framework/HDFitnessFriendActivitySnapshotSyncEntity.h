@@ -8,6 +8,8 @@
 {
 }
 
++ (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
++ (Class)_syncedSampleTypeClass;
 + (_Bool)supportsSyncStore:(id)arg1;
 + (Class)healthEntityClass;
 + (id)syncEntityIdentifier;

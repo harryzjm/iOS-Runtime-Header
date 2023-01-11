@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class ICSelectorDelayer, NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSTimer;
-@protocol ICCloudContextDelegate, OS_dispatch_queue;
+#import <NotesShared/ICStateHandlerProvider-Protocol.h>
 
-@interface ICCloudContext : NSObject
+@class ICSelectorDelayer, NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSTimer;
+@protocol ICCloudAnalyticsDelegate, ICCloudContextDelegate, OS_dispatch_queue;
+
+@interface ICCloudContext : NSObject <ICStateHandlerProvider>
 {
     _Bool _fetchOperationsPending;
     _Bool _needsToUpdateSubscriptions;
     _Bool _enableLongLivedOperations;
     _Bool _disableAutomaticallyRetryNetworkFailures;
     _Bool _disableRetryTimer;
+    _Bool _syncOnlyIfReachable;
     _Bool _disabled;
     _Bool _disabledInternal;
     _Bool _needsToProcessAllObjects;
@@ -24,6 +27,7 @@
     _Bool _syncDisabledByServer;
     _Bool _didCheckForLongLivedOperations;
     id <ICCloudContextDelegate> _cloudContextDelegate;
+    id <ICCloudAnalyticsDelegate> _cloudAnalyticsDelegate;
     long long _qualityOfService;
     unsigned long long _discretionaryNetworkBehavior;
     NSOperationQueue *_operationQueue;
@@ -34,7 +38,7 @@
     NSMutableDictionary *_retryCountsByOperationType;
     NSMutableSet *_objectIDsToProcess;
     ICSelectorDelayer *_processingSelectorDelayer;
-    ICSelectorDelayer *_pollingSelectorDelayer;
+    ICSelectorDelayer *_syncSelectorDelayer;
     NSDictionary *_containersByAccountID;
     NSMutableDictionary *_accountZoneIDsNeedingFetchChanges;
     NSMutableDictionary *_accountZoneIDsFetchingChanges;
@@ -61,11 +65,13 @@
 + (id)errorFromErrors:(id)arg1;
 + (id)errorForWaitingForRetryTimer;
 + (id)errorForDisabledCloudSyncing;
++ (void)registerStateHandler;
 + (id)metadataZoneID;
 + (id)notesZoneID;
 + (id)newNotesContainerForAccountID:(id)arg1;
 + (id)newNotesContainer;
 + (id)sharedContext;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didCheckForLongLivedOperations; // @synthesize didCheckForLongLivedOperations=_didCheckForLongLivedOperations;
 @property(retain) NSMutableSet *subscribedSubscriptionIDs; // @synthesize subscribedSubscriptionIDs=_subscribedSubscriptionIDs;
 @property(retain, nonatomic) NSMutableDictionary *accountZoneIDsNeedingToBeSaved; // @synthesize accountZoneIDsNeedingToBeSaved=_accountZoneIDsNeedingToBeSaved;
@@ -75,7 +81,7 @@
 @property(nonatomic) _Bool syncDisabledByServer; // @synthesize syncDisabledByServer=_syncDisabledByServer;
 @property(nonatomic, getter=isFetchingEnabled) _Bool fetchingEnabled; // @synthesize fetchingEnabled=_fetchingEnabled;
 @property(nonatomic) _Bool didAddObservers; // @synthesize didAddObservers=_didAddObservers;
-@property(retain) ICSelectorDelayer *pollingSelectorDelayer; // @synthesize pollingSelectorDelayer=_pollingSelectorDelayer;
+@property(retain) ICSelectorDelayer *syncSelectorDelayer; // @synthesize syncSelectorDelayer=_syncSelectorDelayer;
 @property(retain) ICSelectorDelayer *processingSelectorDelayer; // @synthesize processingSelectorDelayer=_processingSelectorDelayer;
 @property(retain, nonatomic) NSMutableSet *objectIDsToProcess; // @synthesize objectIDsToProcess=_objectIDsToProcess;
 @property(nonatomic) _Bool needsToProcessAllObjects; // @synthesize needsToProcessAllObjects=_needsToProcessAllObjects;
@@ -87,6 +93,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
+@property(nonatomic) _Bool syncOnlyIfReachable; // @synthesize syncOnlyIfReachable=_syncOnlyIfReachable;
 @property(nonatomic) _Bool disableRetryTimer; // @synthesize disableRetryTimer=_disableRetryTimer;
 @property(nonatomic) _Bool disableAutomaticallyRetryNetworkFailures; // @synthesize disableAutomaticallyRetryNetworkFailures=_disableAutomaticallyRetryNetworkFailures;
 @property(nonatomic) _Bool enableLongLivedOperations; // @synthesize enableLongLivedOperations=_enableLongLivedOperations;
@@ -94,8 +101,8 @@
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property _Bool needsToUpdateSubscriptions; // @synthesize needsToUpdateSubscriptions=_needsToUpdateSubscriptions;
 @property(readonly, nonatomic) _Bool fetchOperationsPending; // @synthesize fetchOperationsPending=_fetchOperationsPending;
+@property(nonatomic) __weak id <ICCloudAnalyticsDelegate> cloudAnalyticsDelegate; // @synthesize cloudAnalyticsDelegate=_cloudAnalyticsDelegate;
 @property(nonatomic) __weak id <ICCloudContextDelegate> cloudContextDelegate; // @synthesize cloudContextDelegate=_cloudContextDelegate;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)serverChangeTokenForChangedZonesInDatabase:(id)arg1 accountID:(id)arg2;
 - (void)deleteServerChangeTokenForChangedZonesInDatabase:(id)arg1 accountID:(id)arg2;
@@ -109,7 +116,6 @@
 - (void)clearRetryCountForOperationType:(id)arg1;
 - (void)incrementRetryCountForOperationType:(id)arg1;
 - (void)checkForLongLivedOperations;
-- (void)updateCloudContextStateOnlyIfReachable:(_Bool)arg1;
 - (void)updateCloudContextState;
 - (_Bool)isInForeground;
 - (void)clearSubscribedSubscriptionIDs;
@@ -127,8 +133,8 @@
 - (id)operationToFetchDatabaseChangesForDatabase:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDatabaseChangesForDatabases:(id)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchDatabaseChangesWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)firePollingSyncRequest;
-- (void)pollIfNecessary;
+- (void)fireSyncRequest;
+- (void)syncIfNeeded;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 zoneID:(id)arg2 accountID:(id)arg3 changeTokenUpdated:(id)arg4;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 recordWasDeletedWithRecordID:(id)arg2 recordType:(id)arg3 context:(id)arg4;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 recordChanged:(id)arg2 context:(id)arg3;
@@ -153,9 +159,11 @@
 - (void)contextDidSave:(id)arg1;
 - (id)operationToSaveZonesForZoneIDs:(id)arg1 accountID:(id)arg2;
 - (id)operationToSaveZonesIfNecessaryForAccountID:(id)arg1;
+- (void)informCloudAnalyticsDelegateForOperationDidEnd:(id)arg1 recordsByRecordID:(id)arg2 operationError:(id)arg3;
 - (void)addDependenciesForModifyRecordsOperation:(id)arg1;
 - (void)recursiveCancelDependentOperations:(id)arg1;
 - (_Bool)partialError:(id)arg1 containsErrorCode:(long long)arg2;
+- (void)resetZoneForCloudAccount:(id)arg1 withReason:(id)arg2;
 - (void)handleGenericPartialFailuresForError:(id)arg1 operation:(id)arg2;
 - (void)modifyRecordsOperation:(id)arg1 didCompleteWithSavedRecords:(id)arg2 deletedRecordIDs:(id)arg3 rootRecordIDsByShareID:(id)arg4 error:(id)arg5;
 - (void)modifyRecordsOperation:(id)arg1 perDeleteRecordIDCompletion:(id)arg2 rootRecordIDsByShareID:(id)arg3 error:(id)arg4;
@@ -199,12 +207,10 @@
 - (void)clearPendingActivity;
 - (void)cancelEverythingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_syncWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)syncWithReason:(id)arg1 onlyIfReachable:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)syncWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)allCloudObjectsInContext:(id)arg1;
 - (void)receivedZoneNotFound:(id)arg1 operation:(id)arg2;
 - (id)allZoneIDs;
-- (void)addStateHandler;
 - (void)printOperationQueue;
 - (_Bool)hasPendingOperations;
 - (void)cloudKitAccountChanged:(id)arg1;
@@ -220,6 +226,12 @@
 - (id)containerForAccountID:(id)arg1;
 - (void)clearContainers;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -9,6 +9,7 @@
 @class NSArray, NSString;
 
 @protocol MTMaterialFiltering <NSObject>
+@property(readonly, copy, nonatomic) NSString *variableBlurInputMaskName;
 @property(readonly, nonatomic, getter=isBlurAtEnd) _Bool blurAtEnd;
 @property(readonly, copy, nonatomic) NSString *blurInputQuality;
 @property(readonly, nonatomic) double backdropScale;

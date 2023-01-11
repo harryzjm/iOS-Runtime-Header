@@ -4,16 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <WorkflowKit/WFWorkflowReferencing-Protocol.h>
 
-@interface WFWorkflowPickerParameter
+@class NSArray, NSString, WFWorkflow;
+
+@interface WFWorkflowPickerParameter <WFWorkflowReferencing>
 {
     NSArray *_possibleStates;
+    WFWorkflow *_workflow;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak WFWorkflow *workflow; // @synthesize workflow=_workflow;
+- (_Bool)parameterStateIsValid:(id)arg1;
+- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)localizedLabelForPossibleState:(id)arg1;
+- (id)workflowForState:(id)arg1;
 - (id)possibleStates;
 - (Class)singleStateClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

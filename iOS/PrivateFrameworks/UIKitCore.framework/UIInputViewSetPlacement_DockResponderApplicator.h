@@ -10,14 +10,19 @@ __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacement_DockResponderApplicator
 {
     UIKeyboardPopoverContainer *_popover;
+    struct CGRect _popoverRectPlaceholder;
 }
 
-@property(retain, nonatomic) UIKeyboardPopoverContainer *popover; // @synthesize popover=_popover;
 - (void).cxx_destruct;
+@property(nonatomic) struct CGRect popoverRectPlaceholder; // @synthesize popoverRectPlaceholder=_popoverRectPlaceholder;
+@property(retain, nonatomic) UIKeyboardPopoverContainer *popover; // @synthesize popover=_popover;
+- (_Bool)isEqual:(id)arg1;
 - (struct CGRect)popoverFrame;
 - (void)invalidate;
+- (void)invalidatePopover;
 - (void)prepare;
 - (void)applyChanges:(id)arg1;
+- (_Bool)isPopoverRequired;
 - (struct UIEdgeInsets)contentInsets;
 - (_Bool)isGesture:(id)arg1 inDraggableView:(struct CGPoint)arg2;
 - (_Bool)preBeginGesture:(id)arg1 shouldBegin:(_Bool *)arg2;

@@ -19,7 +19,6 @@
 - (id)mainPluginManager;
 - (void)registerPluginsFromBundle:(id)arg1;
 - (void)registerPlugins;
-- (id)_init;
 
 @end
 

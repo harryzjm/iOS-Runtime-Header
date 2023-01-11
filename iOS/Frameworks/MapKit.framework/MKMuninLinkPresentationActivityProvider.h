@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKActivityItemLinkPresentationSource-Protocol.h>
+#import <MapKit/UIActivityItemLinkPresentationSource-Protocol.h>
 
-@class NSString;
+@class LPLinkMetadata, NSString;
 
-@interface MKMuninLinkPresentationActivityProvider <MKActivityItemLinkPresentationSource>
+@interface MKMuninLinkPresentationActivityProvider <UIActivityItemLinkPresentationSource>
 {
+    LPLinkMetadata *_cachedMetadata;
 }
 
+- (void).cxx_destruct;
 - (id)mapMetadataSpecialization;
 - (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
 

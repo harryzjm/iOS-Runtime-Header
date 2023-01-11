@@ -4,10 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PKPaymentSetupProduct;
+
 @interface NPKPaymentProvisioningFlowControllerDigitalIssuancePaymentStepContext
 {
+    PKPaymentSetupProduct *_product;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestContext:(id)arg1;
 
 @end

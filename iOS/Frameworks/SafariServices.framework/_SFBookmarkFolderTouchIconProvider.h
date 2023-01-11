@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebUI/WBSBookmarkFolderTouchIconProvider.h>
+#import <SafariSharedUI/WBSBookmarkFolderTouchIconProvider.h>
 
 @class NSObject, WebBookmarkCollection;
 @protocol OS_dispatch_queue;

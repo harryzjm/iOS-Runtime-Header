@@ -19,12 +19,16 @@
     _Bool _animating;
     _Bool _pushWithoutDeferringTransitionsWhileInBackground;
     _Bool _inBackground;
+    _Bool _ignoreDismissals;
+    struct CGSize _forcedPreferredContentSize;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool ignoreDismissals; // @synthesize ignoreDismissals=_ignoreDismissals;
 @property(nonatomic, getter=isInBackground) _Bool inBackground; // @synthesize inBackground=_inBackground;
 @property(nonatomic) _Bool pushWithoutDeferringTransitionsWhileInBackground; // @synthesize pushWithoutDeferringTransitionsWhileInBackground=_pushWithoutDeferringTransitionsWhileInBackground;
 @property(readonly, nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
-- (void).cxx_destruct;
+@property(nonatomic) struct CGSize forcedPreferredContentSize; // @synthesize forcedPreferredContentSize=_forcedPreferredContentSize;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)removeDelegateObserver:(id)arg1;
@@ -32,6 +36,7 @@
 - (void)addDelegateObserver:(id)arg1;
 - (void)_reapObservers;
 - (void)setDelegate:(id)arg1;
+- (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
 - (void)popToViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -39,11 +44,14 @@
 - (id)popToViewController:(id)arg1 animated:(_Bool)arg2;
 - (id)popViewControllerAnimated:(_Bool)arg1;
 - (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
+- (struct CGSize)preferredContentSize;
+- (_Bool)prefersStatusBarHidden;
 - (long long)preferredStatusBarStyle;
 @property(retain, nonatomic) UIColor *backgroundColor;
 - (_Bool)_canShowTextServices;
 - (_Bool)_usesTransitionController;
 - (unsigned long long)supportedInterfaceOrientations;
+- (id)initIgnoringDismissals:(_Bool)arg1;
 - (id)init;
 
 // Remaining properties

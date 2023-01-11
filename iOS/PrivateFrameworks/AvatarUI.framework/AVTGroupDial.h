@@ -6,20 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+#import <AvatarUI/AVTGroupPicker-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSource-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegate-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTCenteringCollectionViewDelegate, AVTGroupDialMaskingView, AVTUIEnvironment, NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewFlowLayout;
-@protocol AVTGroupDialDelegate;
+@protocol AVTGroupPickerDelegate;
 
-@interface AVTGroupDial : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface AVTGroupDial : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AVTGroupPicker>
 {
     _Bool _isMoving;
     _Bool _hasFinalizedSelection;
-    id <AVTGroupDialDelegate> _delegate;
+    id <AVTGroupPickerDelegate> delegate;
+    NSArray *_groupItems;
     AVTUIEnvironment *_environment;
-    NSArray *_groupTitles;
     NSArray *_cachedGroupTitleSizes;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_collectionViewLayout;
@@ -32,6 +33,7 @@
 
 + (_Bool)shouldScrollGivenTitleSizes:(id)arg1 fittingWidth:(double)arg2;
 + (double)estimatedContentWidthForTitleSizes:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) NSIndexPath *shimmeringItemIndexPath; // @synthesize shimmeringItemIndexPath=_shimmeringItemIndexPath;
 @property(retain, nonatomic) AVTGroupDialMaskingView *maskingView; // @synthesize maskingView=_maskingView;
 @property(nonatomic) _Bool hasFinalizedSelection; // @synthesize hasFinalizedSelection=_hasFinalizedSelection;
@@ -42,10 +44,9 @@
 @property(retain, nonatomic) UICollectionViewFlowLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
 @property(readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(readonly, nonatomic) NSArray *cachedGroupTitleSizes; // @synthesize cachedGroupTitleSizes=_cachedGroupTitleSizes;
-@property(readonly, nonatomic) NSArray *groupTitles; // @synthesize groupTitles=_groupTitles;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
-@property(nonatomic) __weak id <AVTGroupDialDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *groupItems; // @synthesize groupItems=_groupItems;
+@property(nonatomic) __weak id <AVTGroupPickerDelegate> delegate; // @synthesize delegate;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
@@ -74,7 +75,7 @@
 - (void)setupDial;
 - (void)cacheTitleSizes;
 - (void)setupMasking;
-- (id)initWithGroupTitles:(id)arg1 environment:(id)arg2;
+- (id)initWithGroupItems:(id)arg1 environment:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,8 +14,8 @@
 }
 
 + (id)timeErrorSequenceWithTimestamps:(unsigned long long *)arg1 timeError:(long long *)arg2 count:(long long)arg3;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *timeErrors; // @synthesize timeErrors=_timeErrors;
-- (void)dealloc;
 - (_Bool)exportTimeErrorsToDirectoryURL:(id)arg1 withFilename:(id)arg2;
 - (_Bool)exportTimeErrorsToDirectoryURL:(id)arg1;
 - (id)generatePythonScriptWithOutputPath:(id)arg1 fileName:(id)arg2 titleName:(id)arg3 plotPath:(id)arg4 showPlot:(_Bool)arg5;

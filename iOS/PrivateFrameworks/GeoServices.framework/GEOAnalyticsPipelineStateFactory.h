@@ -25,6 +25,13 @@ __attribute__((visibility("hidden")))
 - (id)sessionStateForType:(long long)arg1;
 - (id)_emptyUserSessionState;
 - (id)stateForType:(long long)arg1;
+- (int)logMsgStateTypeForType:(long long)arg1;
+- (id)market;
+- (id)mapsUser;
+- (id)mapLaunch;
+- (id)ugc;
+- (id)curatedCollection;
+- (id)mapRestore;
 - (id)suggestions;
 - (id)muninResourceLog;
 - (id)lookAroundView;
@@ -51,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)deviceLocale;
 - (id)deviceLocaleLimited;
 - (id)applicationIdentifier;
+- (id)deviceIdentifierNoHardware;
 - (id)deviceIndentifierInternal;
 - (id)deviceIdentifier;
 - (void)dealloc;

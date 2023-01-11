@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
     struct TextMarkerData _textMarkerData;
 }
 
-+ (id)startOrEndTextMarkerForRange:(RefPtr_033e7b31)arg1 isStart:(_Bool)arg2 cache:(struct AXObjectCache *)arg3;
++ (id)startOrEndTextMarkerForRange:(const Optional_b9c62d53 *)arg1 isStart:(_Bool)arg2 cache:(struct AXObjectCache *)arg3;
 + (id)textMarkerWithCharacterOffset:(struct CharacterOffset *)arg1 cache:(struct AXObjectCache *)arg2;
 + (id)textMarkerWithVisiblePosition:(struct VisiblePosition *)arg1 cache:(struct AXObjectCache *)arg2;
 - (id).cxx_construct;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (struct CharacterOffset)characterOffset;
 - (struct VisiblePosition)visiblePosition;
 - (id)dataRepresentation;
-- (id)initWithData:(id)arg1 accessibilityObject:(struct WebAccessibilityObjectWrapper *)arg2;
+- (id)initWithData:(id)arg1 accessibilityObject:(id)arg2;
 - (id)initWithData:(id)arg1 cache:(struct AXObjectCache *)arg2;
 - (id)initWithTextMarker:(struct TextMarkerData *)arg1 cache:(struct AXObjectCache *)arg2;
 

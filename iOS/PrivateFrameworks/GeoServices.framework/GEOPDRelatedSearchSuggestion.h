@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDRelatedSearchSuggestion : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_displayString;
     NSString *_searchBarDisplayToken;
     NSData *_suggestionEntryMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_displayString:1;
         unsigned int read_searchBarDisplayToken:1;
         unsigned int read_suggestionEntryMetadata:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayString:1;
-        unsigned int wrote_searchBarDisplayToken:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,17 +42,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *searchBarDisplayToken;
 @property(readonly, nonatomic) _Bool hasSearchBarDisplayToken;
-- (void)_readSearchBarDisplayToken;
 @property(retain, nonatomic) NSData *suggestionEntryMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-- (void)_readSuggestionEntryMetadata;
 @property(retain, nonatomic) NSString *displayString;
 @property(readonly, nonatomic) _Bool hasDisplayString;
-- (void)_readDisplayString;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

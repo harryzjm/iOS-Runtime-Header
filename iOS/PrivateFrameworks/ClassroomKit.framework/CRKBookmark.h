@@ -8,25 +8,42 @@
 
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, NSURL;
 
 @interface CRKBookmark : NSObject <NSSecureCoding>
 {
     NSString *_name;
-    NSString *_urlString;
-    NSArray *_childBookmarks;
+    NSURL *_URL;
+    NSArray *_children;
+    NSString *_identifier;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)bookmarkFromDMFBookmark:(id)arg1;
-@property(copy, nonatomic) NSArray *childBookmarks; // @synthesize childBookmarks=_childBookmarks;
-@property(copy, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
++ (id)leafBookmarkWithName:(id)arg1 URL:(id)arg2;
++ (id)folderWithName:(id)arg1 children:(id)arg2 identifier:(id)arg3;
++ (id)folderWithName:(id)arg1 children:(id)arg2;
++ (id)readingListFolderWithChildren:(id)arg1;
++ (id)favoritesFolderWithChildren:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSArray *children; // @synthesize children=_children;
+@property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (_Bool)isFolderWithIdentifier:(id)arg1;
+- (void)setChildBookmarks:(id)arg1;
+- (id)childBookmarks;
+- (void)setUrlString:(id)arg1;
+- (id)urlString;
+- (void)setName:(id)arg1;
+@property(readonly, nonatomic, getter=isReadingListFolder) _Bool readingListFolder;
+@property(readonly, nonatomic, getter=isFavoritesFolder) _Bool favoritesFolder;
 - (_Bool)isFolder;
+- (id)initWithName:(id)arg1 URL:(id)arg2 children:(id)arg3 identifier:(id)arg4;
 
 @end
 

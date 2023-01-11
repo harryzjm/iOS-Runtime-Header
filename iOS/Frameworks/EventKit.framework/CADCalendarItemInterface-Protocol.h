@@ -12,7 +12,7 @@
 - (void)CADDatabaseRemoveContactIdentifier:(NSString *)arg1 forCalendarItem:(CADObjectID *)arg2 withReply:(void (^)(int))arg3;
 - (void)CADDatabaseAddContactWithIdentifier:(NSString *)arg1 forCalendarItem:(CADObjectID *)arg2 withReply:(void (^)(int))arg3;
 - (void)CADDatabaseGetContactIdentifierForCalendarItem:(CADObjectID *)arg1 reply:(void (^)(int, NSArray *))arg2;
-- (void)CADDatabaseExportCalendarItemAsICS:(CADObjectID *)arg1 reply:(void (^)(int, NSData *))arg2;
+- (void)CADDatabaseExportCalendarItemAsICS:(CADObjectID *)arg1 withOptions:(long long)arg2 reply:(void (^)(int, NSData *))arg3;
 - (void)CADDatabaseCancelFetchRequestWithIdentifier:(unsigned int)arg1;
 - (void)CADDatabaseFetchCalendarItemsWithPredicate:(NSPredicate *)arg1 entityType:(int)arg2 fetchIdentifier:(int)arg3 reply:(void (^)(int, NSArray *))arg4;
 - (void)CADDatabaseGetCalendarItemsWithUniqueIdentifier:(NSString *)arg1 inCalendar:(CADObjectID *)arg2 reply:(void (^)(int, NSArray *))arg3;

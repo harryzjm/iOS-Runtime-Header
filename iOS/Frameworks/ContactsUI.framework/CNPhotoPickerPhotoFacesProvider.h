@@ -8,22 +8,22 @@
 
 #import <ContactsUI/CNPhotoPickerProvider-Protocol.h>
 
-@class CNContact, NSString;
+@class CNVisualIdentity, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerPhotoFacesProvider : NSObject <CNPhotoPickerProvider>
 {
-    NSString *identifier;
-    CNContact *_contact;
+    NSString *_identifier;
+    CNVisualIdentity *_visualIdentity;
 }
 
-@property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (struct CGRect)cropRectForAsset:(id)arg1 face:(id)arg2;
 - (id)getItemsFromPhotoLibraryWithItemDelegate:(id)arg1;
 - (id)loadItemsForSize:(struct CGSize)arg1 scale:(double)arg2 RTL:(_Bool)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5 itemDelegate:(id)arg6;
-- (id)initWithContact:(id)arg1;
+- (id)initWithVisualIdentity:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

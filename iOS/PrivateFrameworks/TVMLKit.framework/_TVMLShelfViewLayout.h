@@ -8,9 +8,11 @@ __attribute__((visibility("hidden")))
 @interface _TVMLShelfViewLayout
 {
     double _showcaseFactor;
+    double _cachedTallestHeaderHeight;
     struct TVCellMetrics _cellMetrics;
 }
 
+@property(nonatomic) double cachedTallestHeaderHeight; // @synthesize cachedTallestHeaderHeight=_cachedTallestHeaderHeight;
 @property(nonatomic) double showcaseFactor; // @synthesize showcaseFactor=_showcaseFactor;
 @property(nonatomic) struct TVCellMetrics cellMetrics; // @synthesize cellMetrics=_cellMetrics;
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned long long)arg3;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)contentRowMetricsForShowcase:(_Bool)arg1;
 - (double)headerAllowance;
 - (double)expectedLineSpacing;
+- (id)init;
 
 @end
 

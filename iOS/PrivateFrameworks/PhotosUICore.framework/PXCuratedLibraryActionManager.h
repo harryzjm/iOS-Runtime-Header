@@ -8,28 +8,27 @@
 
 @interface PXCuratedLibraryActionManager
 {
+    PXCuratedLibraryViewModel *_viewModel;
     NSDictionary *_actionPerformersByType;
     NSDictionary *_assetCollectionActionPerformersByType;
     NSDictionary *_constructorSpecificActionPerformersByType;
-    PXCuratedLibraryViewModel *_viewModel;
 }
 
 + (id)actionsWithActionPerformers;
-@property(readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *constructorSpecificActionPerformersByType; // @synthesize constructorSpecificActionPerformersByType=_constructorSpecificActionPerformersByType;
 @property(readonly, nonatomic) NSDictionary *assetCollectionActionPerformersByType; // @synthesize assetCollectionActionPerformersByType=_assetCollectionActionPerformersByType;
 @property(readonly, nonatomic) NSDictionary *actionPerformersByType; // @synthesize actionPerformersByType=_actionPerformersByType;
-- (void).cxx_destruct;
-- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
+@property(readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (id)actionPerformerForHitTestResult:(id)arg1;
+- (id)curationDebugPerformerAssetCollectionReference:(id)arg1 diagnosticLayout:(id)arg2;
 - (id)tapToRadarPerformerAssetCollectionReference:(id)arg1 diagnosticLayout:(id)arg2;
-- (id)showMapPerformerWithAssetCollectionReference:(id)arg1 fetchResult:(id)arg2;
-- (id)toggleAspectFitPerformerWithLayout:(id)arg1;
-- (id)ellipsisButtonActionPerformerWithAssetCollectionReference:(id)arg1;
 - (id)showAllActionPerformerWithAssetCollectionReference:(id)arg1;
+- (id)ellipsisButtonActionPerformerWithAssetCollectionReference:(id)arg1;
 - (id)actionPerformerForActionType:(id)arg1 withAssetCollectionReference:(id)arg2;
 - (id)actionPerformerForActionType:(id)arg1;
 - (_Bool)canPerformActionType:(id)arg1;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)initWithViewModel:(id)arg1;
 - (id)init;
 

@@ -11,6 +11,7 @@
 + (id)documentStateOfDocumentWithRecentInputIdentifier:(id)arg1;
 + (id)documentStateOfDocumentWithParagraph:(id)arg1;
 + (id)documentStateOfDocument:(id)arg1;
+- (struct _NSRange)_selectedTextRange;
 - (id)fullString;
 - (id)initWithSecureTextDocument:(id)arg1;
 - (id)initWithDocumentWithRecentInputIdentifier:(id)arg1;

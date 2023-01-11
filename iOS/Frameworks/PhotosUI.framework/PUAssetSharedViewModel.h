@@ -10,17 +10,23 @@
 __attribute__((visibility("hidden")))
 @interface PUAssetSharedViewModel
 {
+    _Bool _needsDeferredProcessing;
+    unsigned short _deferredProcessingNeeded;
     id <PUDisplayAsset> _asset;
     PUOperationStatus *_loadingStatus;
     NSProgress *_saveProgress;
     long long _saveState;
+    long long _flippingFullSizeRenderState;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long flippingFullSizeRenderState; // @synthesize flippingFullSizeRenderState=_flippingFullSizeRenderState;
+@property(nonatomic) unsigned short deferredProcessingNeeded; // @synthesize deferredProcessingNeeded=_deferredProcessingNeeded;
+@property(nonatomic) _Bool needsDeferredProcessing; // @synthesize needsDeferredProcessing=_needsDeferredProcessing;
 @property(nonatomic) long long saveState; // @synthesize saveState=_saveState;
 @property(retain, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
 @property(retain, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
-@property(readonly, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
+@property(retain, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)registerChangeObserver:(id)arg1;
 @property(readonly, nonatomic) PUAssetSharedViewModelChange *currentChange;

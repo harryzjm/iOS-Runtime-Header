@@ -7,6 +7,7 @@
 #import <SearchFoundation/SFButtonCardSection.h>
 
 @interface SFButtonCardSection (SearchUIViewClass)
+- (Class)_searchUIViewClass;
 - (Class)_searchUIHorizontallyScrollingButtonControllerClass;
 @end
 

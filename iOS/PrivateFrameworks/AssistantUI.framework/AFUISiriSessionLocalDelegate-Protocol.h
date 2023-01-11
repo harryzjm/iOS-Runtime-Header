@@ -6,12 +6,16 @@
 
 #import <AssistantUI/AFUISiriSessionListener-Protocol.h>
 
-@class AFUISiriSession, NSString, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand;
+@class AFUISiriSession, NSString, SAUIAppPunchOut, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand;
 
 @protocol AFUISiriSessionLocalDelegate <AFUISiriSessionListener>
+- (void)siriSessionAudioOutputDidChangePowerLevel:(float)arg1;
+- (void)siriSessionAudioRecordingDidChangePowerLevel:(float)arg1;
 - (void)siriSessionShouldEndExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionShouldExtendAudioSessionForImminentPhoneCall;
 - (void)siriSession:(AFUISiriSession *)arg1 speechRecordingDidBeginOnAVRecordRoute:(NSString *)arg2;
+- (void)siriSession:(AFUISiriSession *)arg1 failedToLaunchAppWithBundleIdentifier:(NSString *)arg2;
+- (void)siriSession:(AFUISiriSession *)arg1 willProcessAppLaunchWithBundleIdentifier:(NSString *)arg2;
 - (void)siriSessionDidEnd:(AFUISiriSession *)arg1;
 - (void)siriSessionWillEnd:(AFUISiriSession *)arg1;
 - (void)siriSessionDidResetContext:(AFUISiriSession *)arg1;
@@ -21,5 +25,9 @@
 - (void)siriSession:(AFUISiriSession *)arg1 didReceiveDeviceUnlockRequestWithCompletion:(void (^)(long long))arg2;
 - (void)siriSession:(AFUISiriSession *)arg1 didReceiveDeviceUnlockRequestAndCancelRequest:(_Bool)arg2 withCompletion:(void (^)(long long))arg3;
 - (void)siriSession:(AFUISiriSession *)arg1 didChangeToState:(long long)arg2;
+
+@optional
+- (void)handlePunchoutCommand:(SAUIAppPunchOut *)arg1 completion:(void (^)(_Bool))arg2;
+- (_Bool)shouldNonLocalDelegateHandlePunchouts;
 @end
 

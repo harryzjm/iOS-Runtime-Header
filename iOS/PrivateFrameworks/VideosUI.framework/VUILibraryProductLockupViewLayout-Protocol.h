@@ -13,15 +13,15 @@
 - (int)contentDescriptionNumberOfLines;
 - (_Bool)shouldShowTitleLabel;
 - (long long)downloadButtonPosition;
-- (double)buttonModuleTopMargin;
-- (double)contentDescriptionBottomMargin;
-- (double)contentDescriptionTopMargin;
+- (double)buttonModuleTopMarginForWindowWidth:(double)arg1;
+- (double)contentDescriptionBottomMarginForWindowWidth:(double)arg1;
+- (double)contentDescriptionTopMarginForWindowWidth:(double)arg1;
 - (double)metadataTopMargin;
-- (double)subtitleTopMargin;
+- (double)subtitleTopMarginForWindowWidth:(double)arg1;
 - (double)titleTopMargin;
 - (double)coverArtBottomPadding;
 - (double)coverArtImageRightMargin;
 - (struct CGSize)coverArtImageSize;
-- (long long)layoutType;
+- (long long)layoutTypeForWindowWidth:(double)arg1;
 @end
 

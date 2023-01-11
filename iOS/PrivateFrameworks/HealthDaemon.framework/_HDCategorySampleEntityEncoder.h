@@ -6,6 +6,7 @@
 
 @interface _HDCategorySampleEntityEncoder
 {
+    _Bool _overrideMCCategorySampleValue;
 }
 
 + (long long)estimatedEncodedSize;
@@ -13,6 +14,7 @@
 - (id)createBareObject;
 - (id)codableRepresentationForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 error:(id *)arg3;
 - (id)orderedProperties;
+- (id)initWithHealthEntityClass:(Class)arg1 profile:(id)arg2 database:(id)arg3 purpose:(long long)arg4 encodingOptions:(id)arg5 authorizationFilter:(CDUnknownBlockType)arg6;
 
 @end
 

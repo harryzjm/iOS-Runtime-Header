@@ -10,14 +10,13 @@
 
 @interface BSUIEmojiLabelView : UIView
 {
-    UILabel *_contentLabel;
     UILabel *_emojiLabel;
     NSString *_rawText;
+    UILabel *_contentLabel;
 }
 
-@property(readonly, nonatomic) UILabel *contentLabel; // @synthesize contentLabel=_contentLabel;
 - (void).cxx_destruct;
-- (id)_newLabel;
+@property(readonly, nonatomic) UILabel *contentLabel; // @synthesize contentLabel=_contentLabel;
 @property(nonatomic) _Bool adjustsFontSizeToFitWidth;
 @property(nonatomic) long long lineBreakMode;
 @property(nonatomic) long long textAlignment;

@@ -8,20 +8,20 @@
 
 @interface BSMachPortTaskNameRight
 {
-    int _pid;
     BSAuditToken *_critical_auditToken;
+    int _pid;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)taskNameForPID:(int)arg1;
-@property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) BSAuditToken *auditToken; // @dynamic auditToken;
+@property(readonly, nonatomic) BSAuditToken *auditToken;
 - (id)initWithPID:(int)arg1;
 - (id)init;
 

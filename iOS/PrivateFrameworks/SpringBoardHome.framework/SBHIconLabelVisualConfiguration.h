@@ -16,10 +16,10 @@
     double _fontSize;
     double _baselineOffsetFromImage;
     double _height;
-    double _widthDelta;
+    double _extraWidth;
 }
 
-@property(nonatomic) double widthDelta; // @synthesize widthDelta=_widthDelta;
+@property(nonatomic) double extraWidth; // @synthesize extraWidth=_extraWidth;
 @property(nonatomic) double height; // @synthesize height=_height;
 @property(nonatomic) double baselineOffsetFromImage; // @synthesize baselineOffsetFromImage=_baselineOffsetFromImage;
 @property(nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
@@ -28,12 +28,13 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

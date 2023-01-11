@@ -16,20 +16,19 @@ __attribute__((visibility("hidden")))
     NSArray *_assetPutReceipts;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *assetPutReceipts; // @synthesize assetPutReceipts=_assetPutReceipts;
 @property(retain, nonatomic) NSArray *assetSizes; // @synthesize assetSizes=_assetSizes;
 @property(nonatomic) _Bool isPackage; // @synthesize isPackage=_isPackage;
 @property(nonatomic) _Bool recovered; // @synthesize recovered=_recovered;
 @property(copy, nonatomic) CKRecordID *repairRecordID; // @synthesize repairRecordID=_repairRecordID;
-- (void).cxx_destruct;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
-- (int)operationType;
-- (id)initWithRepairRecordID:(id)arg1 recovered:(_Bool)arg2 package:(_Bool)arg3 sizes:(id)arg4 putReceipts:(id)arg5;
-- (id)initWithRecoveredPackageRepairRecordID:(id)arg1 sizes:(id)arg2 putReceipts:(id)arg3;
-- (id)initWithRecoveredAssetRepairRecordID:(id)arg1 size:(unsigned long long)arg2 putReceipt:(id)arg3;
-- (id)initWithUnrecoveredRepairRecordID:(id)arg1;
+- (id)initWithOperation:(id)arg1 repairRecordID:(id)arg2 recovered:(_Bool)arg3 package:(_Bool)arg4 sizes:(id)arg5 putReceipts:(id)arg6;
+- (id)initWithOperation:(id)arg1 recoveredPackageRepairRecordID:(id)arg2 sizes:(id)arg3 putReceipts:(id)arg4;
+- (id)initWithOperation:(id)arg1 recoveredAssetRepairRecordID:(id)arg2 size:(unsigned long long)arg3 putReceipt:(id)arg4;
+- (id)initWithOperation:(id)arg1 unrecoveredRepairRecordID:(id)arg2;
 
 @end
 

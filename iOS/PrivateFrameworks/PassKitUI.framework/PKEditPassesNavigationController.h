@@ -9,6 +9,7 @@
 }
 
 - (void)_done;
+- (id)initWithExistingGroupsController:(id)arg1 specificGroup:(id)arg2 delegate:(id)arg3;
 - (id)initWithExistingGroupsController:(id)arg1;
 - (id)init;
 

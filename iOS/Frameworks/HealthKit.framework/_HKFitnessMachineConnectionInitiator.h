@@ -7,22 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <HealthKit/HKFitnessMachineConnectionInitiatorClientInterface-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, NSString, NSUUID;
+@class HKTaskServerProxyProvider, NSString, NSUUID;
 @protocol _HKFitnessMachineConnectionInitiatorDelegate;
 
-@interface _HKFitnessMachineConnectionInitiator : NSObject <HKFitnessMachineConnectionInitiatorClientInterface>
+@interface _HKFitnessMachineConnectionInitiator : NSObject <HKFitnessMachineConnectionInitiatorClientInterface, _HKXPCExportable>
 {
-    NSUUID *_UUID;
+    HKTaskServerProxyProvider *_proxyProvider;
     id <_HKFitnessMachineConnectionInitiatorDelegate> _delegate;
-    HKHealthStore *_healthStore;
 }
 
-@property(nonatomic) __weak HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-@property(nonatomic) __weak id <_HKFitnessMachineConnectionInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
++ (id)taskIdentifier;
 - (void).cxx_destruct;
-- (void)_simulateDisconnect;
+@property(nonatomic) __weak id <_HKFitnessMachineConnectionInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_simulateAccept;
 - (void)_simulateTapWithFitnessMachineType:(unsigned long long)arg1;
 - (void)clientRemote_encounteredError:(id)arg1;
@@ -30,12 +28,16 @@
 - (void)clientRemote_updatedFitnessMachineState:(unsigned long long)arg1 fitnessMachineSessionUUID:(id)arg2;
 - (void)clientRemote_updatedFitnessMachine:(id)arg1 fitnessMachineSessionUUID:(id)arg2;
 - (void)clientRemote_updatedConnectionState:(unsigned long long)arg1 fitnessMachineSessionUUID:(id)arg2;
-- (void)peformServerOperation:(CDUnknownBlockType)arg1;
+- (void)_fetchProxyWithHandler:(CDUnknownBlockType)arg1;
 - (void)forbidConnectionForFitnessMachineSessionUUID:(id)arg1;
 - (void)permitConnectionForFitnessMachineSessionUUID:(id)arg1 activityType:(unsigned long long)arg2;
 - (void)registerClient;
-- (void)_connectionInterruptedWithError:(id)arg1;
-- (id)_initWithHealthStore:(id)arg1;
+- (void)connectionInvalidated;
+- (void)connectionInterrupted;
+- (id)remoteInterface;
+- (id)exportedInterface;
+@property(readonly, nonatomic) NSUUID *UUID;
+- (id)initWithHealthStore:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

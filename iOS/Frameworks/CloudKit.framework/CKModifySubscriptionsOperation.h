@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKModifySubscriptionsOperationCallbacks-Protocol.h>
 
-@interface CKModifySubscriptionsOperation
+@class CKModifySubscriptionsOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKModifySubscriptionsOperationCallbacks;
+
+@interface CKModifySubscriptionsOperation <CKModifySubscriptionsOperationCallbacks>
 {
     CDUnknownBlockType _modifySubscriptionsCompletionBlock;
     NSArray *_subscriptionsToSave;
@@ -17,15 +20,17 @@
     NSMutableDictionary *_subscriptionErrors;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *subscriptionErrors; // @synthesize subscriptionErrors=_subscriptionErrors;
 @property(retain, nonatomic) NSMutableDictionary *subscriptionsBySubscriptionIDs; // @synthesize subscriptionsBySubscriptionIDs=_subscriptionsBySubscriptionIDs;
 @property(retain, nonatomic) NSMutableArray *deletedSubscriptionIDs; // @synthesize deletedSubscriptionIDs=_deletedSubscriptionIDs;
 @property(retain, nonatomic) NSMutableArray *savedSubscriptions; // @synthesize savedSubscriptions=_savedSubscriptions;
 @property(copy, nonatomic) NSArray *subscriptionIDsToDelete; // @synthesize subscriptionIDsToDelete=_subscriptionIDsToDelete;
 @property(copy, nonatomic) NSArray *subscriptionsToSave; // @synthesize subscriptionsToSave=_subscriptionsToSave;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleSubscriptionDeleteForSubscriptionID:(id)arg1 error:(id)arg2;
+- (void)handleSubscriptionSaveForSubscriptionID:(id)arg1 error:(id)arg2;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -35,6 +40,10 @@
 @property(copy, nonatomic) CDUnknownBlockType modifySubscriptionsCompletionBlock; // @synthesize modifySubscriptionsCompletionBlock=_modifySubscriptionsCompletionBlock;
 - (id)initWithSubscriptionsToSave:(id)arg1 subscriptionIDsToDelete:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKModifySubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKModifySubscriptionsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

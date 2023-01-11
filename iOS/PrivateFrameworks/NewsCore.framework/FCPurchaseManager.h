@@ -11,11 +11,12 @@
 #import <NewsCore/FCPurchaseManagerType-Protocol.h>
 
 @class FCKeyValueStore, FCPurchaseController, NSMutableDictionary, NSString;
-@protocol FCBundleSubscriptionManagerType, FCCoreConfigurationManager, FCPaymentTransactionManager, FCPurchaseIntegrityChecker, FCPurchaseManagerDelegate, FCPurchaseReceiptProvider;
+@protocol FCBundleSubscriptionManagerType, FCCoreConfigurationManager, FCPaymentTransactionManager, FCPurchaseFlowOverrideProviderType, FCPurchaseIntegrityChecker, FCPurchaseManagerDelegate, FCPurchaseReceiptProvider;
 
 @interface FCPurchaseManager : NSObject <FCAppActivityObserving, FCPaymentTransactionManagerDelegate, FCPurchaseManagerType>
 {
     id <FCPurchaseManagerDelegate> _delegate;
+    id <FCPurchaseFlowOverrideProviderType> purchaseFlowOverrideProvider;
     FCKeyValueStore *_localStore;
     id <FCPaymentTransactionManager> _paymentTransactionManager;
     id <FCPurchaseIntegrityChecker> _purchaseIntegrityChecker;
@@ -27,6 +28,7 @@
     NSString *_lastSignedInItunesAccountDSID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *lastSignedInItunesAccountDSID; // @synthesize lastSignedInItunesAccountDSID=_lastSignedInItunesAccountDSID;
 @property(retain, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property(retain, nonatomic) NSMutableDictionary *ongoingPurchaseEntriesByProductID; // @synthesize ongoingPurchaseEntriesByProductID=_ongoingPurchaseEntriesByProductID;
@@ -36,8 +38,8 @@
 @property(readonly, nonatomic) id <FCPurchaseIntegrityChecker> purchaseIntegrityChecker; // @synthesize purchaseIntegrityChecker=_purchaseIntegrityChecker;
 @property(readonly, nonatomic) id <FCPaymentTransactionManager> paymentTransactionManager; // @synthesize paymentTransactionManager=_paymentTransactionManager;
 @property(retain, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
+@property(retain, nonatomic) id <FCPurchaseFlowOverrideProviderType> purchaseFlowOverrideProvider; // @synthesize purchaseFlowOverrideProvider;
 @property(nonatomic) __weak id <FCPurchaseManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)simulateFailurePurchaseWithProductID:(id)arg1 transactionState:(long long)arg2 error:(id)arg3;
 - (void)simulateSuccessfulPurchaseWithProductID:(id)arg1 tagID:(id)arg2 purchaseID:(id)arg3;
 - (void)simulateSuccessfulPurchaseWithProductID:(id)arg1 tagID:(id)arg2;
@@ -49,7 +51,6 @@
 - (id)_ongoingPurchaseEntryIDForProductID:(id)arg1;
 - (_Bool)anyOngoingPurchases;
 - (_Bool)isPurchaseOngoingForTagID:(id)arg1;
-- (void)authenticateAppleIDWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)signInDetected;
 - (void)finishPurchaseTransactionWithProductID:(id)arg1;
 - (void)performEntitlementWithTagID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -59,7 +60,7 @@
 - (void)startPurchaseWithTagID:(id)arg1 productID:(id)arg2 purchaseID:(id)arg3 appAdamID:(id)arg4 storeExternalVersion:(id)arg5 price:(id)arg6 webAccessOptIn:(_Bool)arg7 payment:(id)arg8 error:(id *)arg9;
 - (void)startPurchaseWithTagID:(id)arg1 purchase:(id)arg2 webAccessOptIn:(_Bool)arg3 error:(id *)arg4;
 - (void)startBundlePurchaseWithPurchase:(id)arg1 error:(id *)arg2;
-- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurcase:(_Bool)arg2;
+- (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurchase:(_Bool)arg2;
 - (void)saveToDisk;
 - (void)activityObservingApplicationDidEnterBackground;
 - (void)loadLocalCachesFromStore;

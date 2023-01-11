@@ -8,7 +8,6 @@
 
 @class CKAsset, CKAssetDownloadPreauthorization, CKDAssetZoneKey, CKDMMCSItemCommandWriter, CKPackage, CKRecordID, NSData, NSDictionary, NSError, NSFileHandle, NSMutableArray, NSNumber, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItem : NSObject
 {
     _Bool _inMemoryDownloadLooksOkay;
@@ -66,6 +65,7 @@ __attribute__((visibility("hidden")))
     NSString *_trackingUUID;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isRereferencedAssetUpload; // @synthesize isRereferencedAssetUpload=_isRereferencedAssetUpload;
 @property(nonatomic) _Bool isReaderReadFrom; // @synthesize isReaderReadFrom=_isReaderReadFrom;
 @property(nonatomic) _Bool isAlreadyRegistered; // @synthesize isAlreadyRegistered=_isAlreadyRegistered;
@@ -119,7 +119,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *fileID; // @synthesize fileID=_fileID;
 @property(retain, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-- (void).cxx_destruct;
 - (id)readBytesOfInMemoryAssetContentWithProxy:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 error:(id *)arg4;
 - (id)getFileMetadataWithFileHandle:(id)arg1 error:(id *)arg2;
 - (id)getFileMetadataWithProxy:(id)arg1 fileHandle:(id)arg2 error:(id *)arg3;
@@ -133,7 +132,7 @@ __attribute__((visibility("hidden")))
 - (void)clearFileSize;
 - (_Bool)canBeRegistered;
 - (id)initWithPackage:(id)arg1;
-- (void)setupForGetChunkKeysWithAsset:(id)arg1;
+- (void)setupForGetChunkKeysWithAsset:(id)arg1 destinationDatabaseScope:(long long)arg2;
 - (id)initWithAsset:(id)arg1;
 - (id)init;
 

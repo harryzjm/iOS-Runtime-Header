@@ -13,13 +13,14 @@
 
 + (id)slotWithLevel:(long long)arg1;
 + (id)baseSlot;
++ (id)genesisSlotsForSlots:(id)arg1;
 + (id)slotWithMipmapLevel:(id)arg1;
 + (id)orderedComponentClasses;
 + (id)slotFilterWithLevelFilter:(id)arg1;
 + (Class)assetRepClass;
 + (Class)assetSetClass;
-@property(readonly) IBICMipmapLevel *mipmapLevel; // @synthesize mipmapLevel=_mipmapLevel;
 - (void).cxx_destruct;
+@property(readonly) IBICMipmapLevel *mipmapLevel; // @synthesize mipmapLevel=_mipmapLevel;
 - (id)detailAreaPath;
 - (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;
 - (long long)compareDisplayOrder:(id)arg1;

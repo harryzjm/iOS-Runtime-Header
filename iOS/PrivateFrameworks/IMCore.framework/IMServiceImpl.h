@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IMAccount, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
+@class IMAccount, NSArray, NSData, NSDictionary, NSString;
 
 @interface IMServiceImpl
 {
     NSString *_name;
     NSString *_localizedName;
     NSString *_localizedShortName;
-    NSMutableDictionary *_cardMap;
-    NSDictionary *_personToIDMap;
     NSString *_countryCode;
     IMAccount *_bestAccount;
     NSDictionary *_serviceDefaults;
-    NSDictionary *_serviceProps;
     NSDictionary *_defaultSettings;
     NSData *_imageData;
-    NSArray *_abProperties;
     NSArray *_emailDomains;
     NSArray *_siblingServiceNames;
     unsigned int _screenNameSensitivity;
@@ -44,6 +40,10 @@
     _Bool _isPersistent;
     _Bool _isPlugInService;
     _Bool _allowsMultipleConnections;
+    NSArray *_abProperties;
+    NSDictionary *_serviceProps;
+    NSArray *_addressBookProperties;
+    NSString *_addressBookProperty;
 }
 
 + (_Bool)systemSupportsSendingAttachmentsOfTypes:(id)arg1 error:(long long *)arg2;
@@ -52,6 +52,7 @@
 + (_Bool)iMessageEnabled;
 + (_Bool)mmsEnabled;
 + (_Bool)_readMMSUserOverride;
++ (_Bool)_deviceIsAltAccount;
 + (_Bool)smsEnabled;
 + (_Bool)iMessageEnabledForSenderLastAddressedHandle:(id)arg1 simID:(id)arg2 previousService:(id)arg3;
 + (_Bool)_iMessageEnabledForMultipleSubscriptionsForSenderLastAddressedHandle:(id)arg1 simID:(id)arg2 previousService:(id)arg3;
@@ -73,10 +74,13 @@
 + (id)allServices;
 + (void)setServiceClass:(Class)arg1;
 + (Class)serviceClass;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property(readonly, nonatomic) NSString *addressBookProperty; // @synthesize addressBookProperty=_addressBookProperty;
+@property(readonly, nonatomic) NSArray *addressBookProperties; // @synthesize addressBookProperties=_addressBookProperties;
 @property(readonly, nonatomic) NSString *shortName; // @synthesize shortName=_localizedShortName;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSArray *emailDomains; // @synthesize emailDomains=_emailDomains;
-@property(readonly, nonatomic) NSArray *addressBookProperties; // @synthesize addressBookProperties=_abProperties;
 @property(readonly, nonatomic) unsigned int IDSensitivity; // @synthesize IDSensitivity=_screenNameSensitivity;
 @property(readonly, nonatomic) _Bool shouldDisableDeactivation; // @synthesize shouldDisableDeactivation=_shouldDisableDeactivation;
 @property(readonly, nonatomic) _Bool allowsMultipleConnections; // @synthesize allowsMultipleConnections=_allowsMultipleConnections;
@@ -97,32 +101,14 @@
 @property(readonly, nonatomic) _Bool supportsIDStatusLookup; // @synthesize supportsIDStatusLookup=_supportsIDStatusLookup;
 @property(retain, nonatomic) NSDictionary *defaultAccountSettings; // @synthesize defaultAccountSettings=_defaultSettings;
 @property(retain, nonatomic) NSDictionary *serviceDefaults; // @synthesize serviceDefaults=_serviceDefaults;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) Class accountClass;
 - (void)activeAccountsChanged:(id)arg1;
 - (void)defaultsChanged:(id)arg1;
-- (id)screenNamesForPerson:(id)arg1;
-- (id)screenNamesForIMPerson:(id)arg1;
-- (id)_personToIDMap;
-- (id)peopleWithScreenName:(id)arg1;
-- (id)imABPeopleWithScreenName:(id)arg1 options:(unsigned long long)arg2;
-- (id)imABPeopleWithScreenName:(id)arg1;
-- (id)imABPeopleWithScreenName:(id)arg1 identifier:(int *)arg2;
-- (id)imABPeopleWithScreenName:(id)arg1 countryCode:(id)arg2 identifier:(int *)arg3;
-@property(readonly, nonatomic) NSDictionary *cardMap;
-- (void)clearIDToCardMap;
-@property(retain, nonatomic) NSString *countryCode;
-- (void)updateIDToCardMapWithNotification:(id)arg1;
-- (id)_newIDToCardMap;
-- (void)_dumpCardMap;
-- (void)_addAddressBookCards:(id)arg1 toMap:(id)arg2;
-- (id)_IDsToMapForIMPerson:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) NSArray *accountIDs;
 @property(readonly, nonatomic) long long buddyNotesMaxByteLength;
 @property(readonly, nonatomic) NSString *internalName;
 @property(readonly, nonatomic) NSArray *siblingServices;
-@property(readonly, nonatomic) NSString *addressBookProperty;
 - (id)localizedShortName;
 - (id)localizedName;
 @property(readonly, nonatomic) _Bool _wantsInternationizedNumbers;
@@ -134,7 +120,6 @@
 - (id)subtypeInformationForAccount:(id)arg1;
 @property(retain, nonatomic) NSDictionary *serviceProperties;
 - (void)_loadPropertiesIfNeeded;
-- (id)_abPropertiesBySanitizingABProperties:(id)arg1;
 - (id)myScreenNames;
 - (id)infoForPreferredScreenNames;
 - (id)infoForAllScreenNames;

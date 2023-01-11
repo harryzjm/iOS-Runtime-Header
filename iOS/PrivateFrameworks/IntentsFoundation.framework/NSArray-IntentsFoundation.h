@@ -10,7 +10,9 @@
 + (id)if_arrayWithObjectIfNonNil:(id)arg1;
 + (id)_inf_arrayWithObjectIfNonNil:(id)arg1;
 - (id)_if_firstObjectMatchingPredicate:(id)arg1;
+- (void)if_enumerateAsynchronouslyInSequenceOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)if_enumerateAsynchronouslyInSequence:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)if_enumerateAsynchronouslyOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)if_enumerateAsynchronously:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)if_objectsNotOfClass:(Class)arg1;
 - (id)if_objectsOfClass:(Class)arg1;
@@ -23,6 +25,8 @@
 - (id)if_objectsWithValue:(id)arg1 forKey:(id)arg2;
 - (id)if_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)_inf_objectsPassingTest:(CDUnknownBlockType)arg1;
+- (id)if_arrayByRemovingObjectsInArray:(id)arg1;
+- (id)if_arrayByRemovingObject:(id)arg1;
 - (id)if_escapedComponentsJoinedByString:(id)arg1 forLocale:(id)arg2;
 - (void)if_flatMapAsynchronouslyOnQueue:(id)arg1 transform:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)if_flatMapAsynchronously:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;

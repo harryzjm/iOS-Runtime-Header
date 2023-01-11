@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface NUColorSpace : NSObject
 {
     struct CGColorSpace *_CGColorSpace;
+    NSString *_descriptionName;
 }
 
 + (id)colorSpaceFromColorPrimaries:(id)arg1 transferFunction:(id)arg2 yccMatrix:(id)arg3;
@@ -18,6 +19,7 @@
 + (struct CGColorSpace *)_newLinearWideGamutColorSpace;
 + (id)linearWideGamutColorSpace;
 + (id)workingColorSpace;
++ (id)rec709ColorSpace;
 + (id)displayP3LinearColorSpace;
 + (id)displayP3ColorSpace;
 + (id)genericGrayColorSpace;
@@ -25,15 +27,23 @@
 + (id)genericRGBColorSpace;
 + (id)adobeRGBColorSpace;
 + (id)sRGBLinearColorSpace;
++ (id)itur2100HLGColorSpace;
 + (id)sRGBColorSpace;
 + (id)_loadICCProfileDataWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *descriptionName; // @synthesize descriptionName=_descriptionName;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpace; // @synthesize CGColorSpace=_CGColorSpace;
+- (void)applyAttachmentsToCVPixelBuffer:(struct __CVBuffer *)arg1;
+@property(readonly, nonatomic) NSDictionary *cvPixelBufferAttachments;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, nonatomic) NSString *name;
 - (id)description;
 - (void)dealloc;
-- (id)initWithICCProfileData:(id)arg1;
+- (_Bool)isWideGamut;
+- (_Bool)isHDR;
+- (id)initWithICCProfileData:(id)arg1 descriptionName:(id)arg2;
+- (id)initWithCGColorSpace:(struct CGColorSpace *)arg1 descriptionName:(id)arg2;
 - (id)initWithCGColorSpace:(struct CGColorSpace *)arg1;
 - (id)init;
 - (void)nu_updateDigest:(id)arg1;

@@ -42,13 +42,15 @@
 + (void)_removeUserScriptsFromGroup:(id)arg1 world:(id)arg2;
 + (void)_removeUserStyleSheetFromGroup:(id)arg1 world:(id)arg2 url:(id)arg3;
 + (void)_removeUserScriptFromGroup:(id)arg1 world:(id)arg2 url:(id)arg3;
++ (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 includeMatchPatternStrings:(id)arg5 excludeMatchPatternStrings:(id)arg6 injectedFrames:(int)arg7;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectedFrames:(int)arg7;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6;
++ (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 includeMatchPatternStrings:(id)arg5 excludeMatchPatternStrings:(id)arg6 injectionTime:(int)arg7 injectedFrames:(int)arg8;
 + (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectionTime:(int)arg7 injectedFrames:(int)arg8;
 + (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectionTime:(int)arg7;
-+ (void)_resetOriginAccessWhitelists;
-+ (void)_removeOriginAccessWhitelistEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(_Bool)arg4;
-+ (void)_addOriginAccessWhitelistEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(_Bool)arg4;
++ (void)_resetOriginAccessAllowLists;
++ (void)_removeOriginAccessAllowListEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(_Bool)arg4;
++ (void)_addOriginAccessAllowListEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(_Bool)arg4;
 + (void)_doNotStartObservingNetworkReachability;
 + (id)_productivityDocumentMIMETypes;
 + (_Bool)_shouldUseFontSmoothing;
@@ -86,7 +88,7 @@
 + (unsigned long long)_cacheModel;
 + (void)_setCacheModel:(unsigned long long)arg1;
 + (_Bool)shouldIncludeInWebKitStatistics;
-+ (void)_setFontWhitelist:(id)arg1;
++ (void)_setFontAllowList:(id)arg1;
 + (void)_setPDFViewClass:(Class)arg1;
 + (Class)_getPDFViewClass;
 + (void)_setPDFRepresentationClass:(Class)arg1;
@@ -208,10 +210,7 @@
 - (void)_setUseFixedLayout:(_Bool)arg1;
 - (float)_viewScaleFactor;
 - (void)_scaleWebView:(float)arg1 atOrigin:(struct CGPoint)arg2;
-- (void)setCSSAnimationsSuspended:(_Bool)arg1;
-- (_Bool)cssAnimationsSuspended;
-- (void)setAllowsNewCSSAnimationsWhileSuspended:(_Bool)arg1;
-- (_Bool)allowsNewCSSAnimationsWhileSuspended;
+- (void)_forceRepaintForTesting;
 - (void)_updateActiveState;
 - (void)_updateVisibilityState;
 - (_Bool)_isViewVisible;
@@ -309,7 +308,7 @@
 - (void)_setFormDelegate:(id)arg1;
 - (void)_loadBackForwardListFromOtherView:(id)arg1;
 - (void)_mouseDidMoveOverElement:(id)arg1 modifierFlags:(unsigned long long)arg2;
-- (struct Page *)page;
+- (NakedPtr_4f2b354f)page;
 - (void)_setHostApplicationProcessIdentifier:(int)arg1 auditToken:(CDStruct_6ad76789)arg2;
 - (void)setShowingInspectorIndication:(_Bool)arg1;
 - (void)setAllowsRemoteInspection:(_Bool)arg1;
@@ -358,6 +357,7 @@
 - (void)_viewWillDrawInternal;
 - (id)_initWithFrame:(struct CGRect)arg1 frameName:(id)arg2 groupName:(id)arg3;
 - (void)_commonInitializationWithFrameName:(id)arg1 groupName:(id)arg2;
+- (void)_injectLaBanquePostaleQuirks;
 - (void)_dispatchPendingLoadRequests;
 - (void)_setUIWebViewUserAgentWithBuildVersion:(id)arg1;
 - (void)_setBrowserUserAgentProductVersion:(id)arg1 buildVersion:(id)arg2 bundleVersion:(id)arg3;
@@ -379,6 +379,8 @@
 - (void)takeStringURLFrom:(id)arg1;
 - (void)removeVisitedLink:(id)arg1;
 - (void)addVisitedLinks:(id)arg1;
+- (void)resumeAllMediaPlayback;
+- (void)suspendAllMediaPlayback;
 - (float)mediaVolume;
 - (void)setMediaVolume:(float)arg1;
 - (void)resetPageZoom:(id)arg1;
@@ -419,12 +421,12 @@
 @property(nonatomic) _Bool smartInsertDeleteEnabled;
 @property(retain, nonatomic) DOMCSSStyleDeclaration *typingStyle;
 @property(nonatomic, getter=isEditable) _Bool editable;
-@property(readonly, nonatomic) int selectionAffinity;
+@property(readonly, nonatomic) unsigned long long selectionAffinity;
 @property(readonly, nonatomic) DOMRange *selectedDOMRange;
-- (void)setSelectedDOMRange:(id)arg1 affinity:(int)arg2;
+- (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2;
 @property(readonly, nonatomic) _Bool maintainsInactiveSelection;
 - (void)_setMaintainsInactiveSelection:(_Bool)arg1;
-- (_Bool)_shouldChangeSelectedDOMRange:(id)arg1 toDOMRange:(id)arg2 affinity:(int)arg3 stillSelecting:(_Bool)arg4;
+- (_Bool)_shouldChangeSelectedDOMRange:(id)arg1 toDOMRange:(id)arg2 affinity:(unsigned long long)arg3 stillSelecting:(_Bool)arg4;
 - (id)editableDOMRangeForPoint:(struct CGPoint)arg1;
 - (_Bool)isAutomaticSpellingCorrectionEnabled;
 - (_Bool)isAutomaticTextReplacementEnabled;
@@ -586,11 +588,15 @@
 - (void)showFormValidationMessage:(id)arg1 withAnchorRect:(struct CGRect)arg2;
 - (struct CGRect)_convertRectFromRootView:(struct CGRect)arg1;
 - (struct CGPoint)_convertPointFromRootView:(struct CGPoint)arg1;
+- (Vector_05504c84)_dictationAlternatives:(ObjectIdentifier_2e565102)arg1;
+- (void)_removeDictationAlternatives:(ObjectIdentifier_2e565102)arg1;
+- (void)_showDictationAlternativeUI:(const struct FloatRect *)arg1 forDictationContext:(ObjectIdentifier_2e565102)arg2;
+- (void)_getWebCoreDictationAlternatives:(Vector_4aeed4b7 *)arg1 fromTextAlternatives:(const Vector_15b552f4 *)arg2;
 - (void)_exitVideoFullscreen;
-- (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement *)arg1 mode:(unsigned int)arg2;
-- (void)_scheduleLayerFlushForPendingTileCacheRepaint;
+- (void)_enterVideoFullscreenForVideoElement:(NakedPtr_311734dd)arg1 mode:(unsigned int)arg2;
+- (void)_scheduleRenderingUpdateForPendingTileCacheRepaint;
 - (_Bool)_flushCompositingChanges;
-- (void)_scheduleCompositingLayerFlush;
+- (void)_scheduleUpdateRendering;
 - (void)_setNeedsOneShotDrawingSynchronization:(_Bool)arg1;
 - (_Bool)_needsOneShotDrawingSynchronization;
 - (void)_clearCredentials;
@@ -615,6 +621,9 @@
 - (void)_notificationDidShow:(unsigned long long)arg1;
 - (id)_notificationProvider;
 - (void)_setNotificationProvider:(id)arg1;
+- (void)_installVisualIdentificationOverlayForViewIfNeeded:(id)arg1 kind:(id)arg2;
+- (void)revealCurrentSelection;
+- (id)_editableElementsInRect:(struct CGRect)arg1;
 - (id)fullScreenPlaceholderView;
 
 @end

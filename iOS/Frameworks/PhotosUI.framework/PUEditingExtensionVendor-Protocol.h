@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHAdjustmentData;
+@class NSXPCListenerEndpoint, PHAdjustmentData;
 
 @protocol PUEditingExtensionVendor
 - (void)querySDKVersionWithResponseHandler:(void (^)(unsigned int))arg1;
 - (void)cancelContentEditingWithResponseHandler:(void (^)(void))arg1;
 - (void)finishContentEditing;
 - (void)beginContentEditingWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)setupUndoProxyWithXPCListenerEndpoint:(NSXPCListenerEndpoint *)arg1 attemptUndoManagerAutoSetup:(_Bool)arg2;
 - (void)queryShouldShowCancelConfirmationWithResponseHandler:(void (^)(_Bool))arg1;
 - (void)queryHandlingCapabilityForAdjustmentData:(PHAdjustmentData *)arg1 withResponseHandler:(void (^)(_Bool))arg2;
 @end

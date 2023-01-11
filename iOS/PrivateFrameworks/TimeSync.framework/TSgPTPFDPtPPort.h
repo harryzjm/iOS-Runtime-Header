@@ -15,20 +15,20 @@
     TSgPTPPortStatistics *_statistics;
 }
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool measuringPDelay; // @synthesize measuringPDelay=_measuringPDelay;
 @property(nonatomic) _Bool multipleRemotes; // @synthesize multipleRemotes=_multipleRemotes;
 @property(nonatomic) BOOL remotePDelayLogMeanInterval; // @synthesize remotePDelayLogMeanInterval=_remotePDelayLogMeanInterval;
 @property(nonatomic) BOOL localPDelayLogMeanInterval; // @synthesize localPDelayLogMeanInterval=_localPDelayLogMeanInterval;
 @property(retain, nonatomic) TSgPTPPortStatistics *statistics; // @synthesize statistics=_statistics;
-- (void)dealloc;
 - (_Bool)_measuringPDelay;
 - (_Bool)_multipleRemotes;
 - (BOOL)_remotePDelayLogMeanInterval;
 - (BOOL)_localPDelayLogMeanInterval;
 - (id)_statistics;
 - (void)updateProperties;
-- (_Bool)_commonInitWithService:(unsigned int)arg1;
+- (_Bool)_commonInitWithService:(id)arg1;
 
 @end
 

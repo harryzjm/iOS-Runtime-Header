@@ -17,7 +17,6 @@
 + (const struct CFURLProtocolImplementation *)pimpl;
 - (void)stopLoading;
 - (void)startLoading;
-- (struct CFURLProtocolClient *)cfurlClient;
 - (void)dealloc;
 - (id)initWithRequest:(id)arg1 cachedResponse:(id)arg2 client:(id)arg3;
 

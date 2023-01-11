@@ -11,23 +11,25 @@
 @interface _SFNavigationIntent : NSObject
 {
     id _value;
-    _Bool _isUnifiedFieldNavigation;
     _Bool _shouldRelateToSourceTab;
     unsigned long long _type;
     long long _policy;
+    long long _provenance;
     NSUUID *_sourceTabUUID;
     NSUUID *_sourceWindowUUID;
     _WKActivatedElementInfo *_sourceElementInfo;
 }
 
++ (long long)defaultTabOrder;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldRelateToSourceTab; // @synthesize shouldRelateToSourceTab=_shouldRelateToSourceTab;
 @property(retain, nonatomic) _WKActivatedElementInfo *sourceElementInfo; // @synthesize sourceElementInfo=_sourceElementInfo;
 @property(retain, nonatomic) NSUUID *sourceWindowUUID; // @synthesize sourceWindowUUID=_sourceWindowUUID;
 @property(retain, nonatomic) NSUUID *sourceTabUUID; // @synthesize sourceTabUUID=_sourceTabUUID;
-@property(nonatomic) _Bool isUnifiedFieldNavigation; // @synthesize isUnifiedFieldNavigation=_isUnifiedFieldNavigation;
+@property(nonatomic) long long provenance; // @synthesize provenance=_provenance;
 @property(nonatomic) long long policy; // @synthesize policy=_policy;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool externalURLSourceApplicationIsSpotlight;
 @property(readonly, copy, nonatomic) NSString *privacyPreservingDescription;
 @property(readonly, nonatomic) _Bool canUseExistingBlankTab;
 @property(readonly, nonatomic) _Bool opensInNewWindow;

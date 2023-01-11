@@ -11,8 +11,13 @@
 + (id)deviceConfigurationWithDictionary:(id)arg1 context:(id)arg2;
 + (id)deviceConfiguration;
 - (_Bool)requiresResponse;
+@property(nonatomic) double mediaPlaybackVolumeThresholdForAudioSessionActivationDelay;
 @property(nonatomic) double initialInterstitialDelayForVoiceTriggerOneShotWithoutAudioDucking;
+@property(nonatomic) double initialInterstitialDelayForCarPlay;
 @property(nonatomic) double initialInterstitialDelay;
+@property(nonatomic) _Bool hasAudioSessionActivationDelay;
+@property(nonatomic) double audioSessionActivationDelayAboveMediaPlaybackVolumeThreshold;
+@property(nonatomic) double audioSessionActivationDelay;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

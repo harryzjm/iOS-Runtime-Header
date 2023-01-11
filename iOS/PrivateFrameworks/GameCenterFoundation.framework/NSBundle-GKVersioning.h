@@ -14,6 +14,7 @@
 + (id)_gkBundleWithIdentifier:(id)arg1;
 - (id)_gkFrameworkVersionDescription;
 - (_Bool)_gkIsDaemon;
+- (_Bool)_gkIsFirstParty;
 - (_Bool)_gkIsPreferences;
 - (_Bool)_gkIsGameCenterExtension;
 - (_Bool)_gkIsGameCenter;
@@ -30,7 +31,6 @@
 - (id)_gkPathForMessageImage;
 - (id)_gkPathForImageWithName:(id)arg1;
 - (id)_gkPathForSoundWithName:(id)arg1;
-- (_Bool)_gkShouldAddQuickActions;
 - (_Bool)_gkIsBadgingEnabled;
 @end
 

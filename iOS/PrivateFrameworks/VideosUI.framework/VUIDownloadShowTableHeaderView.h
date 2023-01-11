@@ -6,23 +6,32 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSString, VUILabel, VUISeparatorView;
+@class NSString, UIButton, VUILabel, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadShowTableHeaderView : UITableViewHeaderFooterView
 {
     NSString *_headerTitle;
+    NSString *_buttonTitle;
+    CDUnknownBlockType _selectionHandler;
     VUILabel *_titleLabel;
+    UIButton *_headerButton;
     VUISeparatorView *_separatorView;
 }
 
-@property(retain, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
-@property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
+@property(retain, nonatomic) UIButton *headerButton; // @synthesize headerButton=_headerButton;
+@property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(copy, nonatomic) CDUnknownBlockType selectionHandler; // @synthesize selectionHandler=_selectionHandler;
+@property(retain, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
+@property(retain, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+- (void)_selectButtonAction:(id)arg1;
+- (id)_buttonWithString:(id)arg1 existingButton:(id)arg2;
 - (struct CGSize)_layoutWithSize:(struct CGSize)arg1 metricsOnly:(_Bool)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)prepareForReuse;
 - (id)initWithReuseIdentifier:(id)arg1;
 
 @end

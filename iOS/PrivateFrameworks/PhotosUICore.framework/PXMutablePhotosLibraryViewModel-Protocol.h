@@ -6,37 +6,31 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, PXAssetCollectionReference, PXAssetReference, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView, UIBarButtonItem;
-@protocol PXCuratedLibraryViewModelPresenter;
+@class NSMutableSet, NSNumber, NSObject, NSSet, PXAssetCollectionReference, PXAssetReference, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView;
+@protocol PXCuratedLibraryViewModelPresenter, PXFilterState;
 
 @protocol PXMutablePhotosLibraryViewModel <NSObject>
+@property(copy, nonatomic) NSNumber *userWantsAspectFitContent;
+@property(nonatomic) _Bool wantsSidebarVisible;
+@property(nonatomic) _Bool sidebarCanBecomeVisible;
+@property(retain, nonatomic) Class cplActionManagerClass;
 @property(nonatomic) _Bool wantsDarkStatusBar;
-@property(retain, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem;
+@property(nonatomic) _Bool wantsOptionalChromeVisible;
+@property(copy, nonatomic) NSObject<PXFilterState> *allPhotosFilterState;
 @property(nonatomic) long long zoomLevel;
-@property(copy, nonatomic) NSString *selectModeCaption;
-@property(nonatomic) unsigned long long libraryState;
 @property(copy, nonatomic) NSSet *draggedAssetReferences;
 @property(retain, nonatomic) PXCuratedLibraryAssetCollectionSkimmingInfo *skimmingInfo;
-@property(nonatomic) _Bool allPhotosLayoutIsAnimating;
-@property(nonatomic) _Bool allPhotosAspectFit;
-@property(nonatomic) _Bool isInteractiveZooming;
 @property(nonatomic) double daysMarginScale;
-@property(nonatomic) _Bool isPinching;
 @property(nonatomic) _Bool isSelecting;
 @property(nonatomic) _Bool viewBasedDecorationsEnabled;
 @property(readonly, nonatomic) NSMutableSet *visibleAssetCollections;
 @property(nonatomic) long long zoomLevelTransitionPhase;
 @property(nonatomic) _Bool isAppearing;
-- (void)endAnimationToToggleChromeVisibility;
-- (void)startAnimationToToggleChromeVisibility;
+- (void)setWantsOptionalChromeVisible:(_Bool)arg1 changeReason:(long long)arg2;
 - (void)toggleSelectionForAssetCollectionReference:(PXAssetCollectionReference *)arg1;
+- (void)toggleSelectionForAssetReference:(PXAssetReference *)arg1 updateCursorIndexPath:(_Bool)arg2;
 - (void)toggleSelectionForAssetReference:(PXAssetReference *)arg1;
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath)arg1;
-- (void)resetAllPhotosColumns;
-- (void)zoomInAllPhotosToLastRememberedWithAnchorAssetReference:(PXAssetReference *)arg1 animated:(_Bool)arg2;
-- (void)zoomAllPhotosToColumnIndex:(long long)arg1 withAnchorAssetReference:(PXAssetReference *)arg2 animated:(_Bool)arg3;
-- (void)setInteractiveZoomColumnIndex:(double)arg1 withAnchorAssetReference:(PXAssetReference *)arg2;
-- (void)setPinchState:(CDStruct_7c4e768e)arg1 withAnchorAssetReference:(PXAssetReference *)arg2;
 - (void)removeView:(PXGView *)arg1;
 - (void)addView:(PXGView *)arg1;
 - (void)removePresenter:(id <PXCuratedLibraryViewModelPresenter>)arg1;

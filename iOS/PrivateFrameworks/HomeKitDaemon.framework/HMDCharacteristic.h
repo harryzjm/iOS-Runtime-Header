@@ -16,9 +16,12 @@
 @interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
     id <HMFLocking> _lock;
-    _Bool _broadcastNotificationEnabled;
+    NSMutableSet *_notificationRegistrations;
     _Bool _notificationRegisteredWithRemoteGateway;
+    _Bool _broadcastNotificationEnabled;
     NSSet *_hapCharacteristicTuples;
+    HMDCharacteristicMetadata *_metadata;
+    NSDate *_notificationEnabledTime;
     HMDHAPAccessory *_accessory;
     HMDService *_service;
     NSNumber *_stateNumber;
@@ -28,18 +31,12 @@
     NSDate *_lastKnownValueUpdateTime;
     NSNumber *_characteristicInstanceID;
     long long _characteristicProperties;
-    HMDCharacteristicMetadata *_characteristicMetadata;
-    NSMutableSet *_notificationRegistrations;
-    NSDate *_notificationEnabledTime;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)value:(id)arg1 differentThan:(id)arg2;
 + (CDUnknownBlockType)sortComparatorForCharacteristicDictionary;
-@property(nonatomic) _Bool notificationRegisteredWithRemoteGateway; // @synthesize notificationRegisteredWithRemoteGateway=_notificationRegisteredWithRemoteGateway;
-@property(retain, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
-@property(retain, nonatomic) NSMutableSet *notificationRegistrations; // @synthesize notificationRegistrations=_notificationRegistrations;
-@property(retain, nonatomic) HMDCharacteristicMetadata *characteristicMetadata; // @synthesize characteristicMetadata=_characteristicMetadata;
+- (void).cxx_destruct;
 @property(nonatomic) long long characteristicProperties; // @synthesize characteristicProperties=_characteristicProperties;
 @property(retain, nonatomic) NSNumber *characteristicInstanceID; // @synthesize characteristicInstanceID=_characteristicInstanceID;
 @property(retain, nonatomic) NSDate *lastKnownValueUpdateTime; // @synthesize lastKnownValueUpdateTime=_lastKnownValueUpdateTime;
@@ -50,12 +47,13 @@
 @property(copy, nonatomic, setter=setStateNumber:) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property(readonly, nonatomic) __weak HMDService *service; // @synthesize service=_service;
 @property(readonly, nonatomic) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly) _Bool shouldIgnoreCacheValueForRead;
 - (void)updateService:(id)arg1 accessory:(id)arg2;
 - (_Bool)deregisterNotificationForClientIdentifier:(id)arg1;
 - (void)setNotificationEnabled:(_Bool)arg1 forClientIdentifier:(id)arg2;
+@property(retain, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
 - (_Bool)isNotificationEnabledForClientIdentifierPrefix:(id)arg1;
 - (_Bool)isNotificationEnabledForClientIdentifier:(id)arg1;
 - (_Bool)isNonClientNotificationEnabled;
@@ -68,7 +66,6 @@
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;
 - (id)validateValueForNotify:(id)arg1 outValue:(id *)arg2;
 - (id)validateValueForWrite:(id)arg1 outValue:(id *)arg2;
-@property(readonly, nonatomic) HMDCharacteristicMetadata *metadata;
 - (_Bool)isValueUpdatedFromHAPCharacteristic:(id)arg1;
 - (void)updateLastKnownValue;
 - (void)updateValue:(id)arg1 updatedTime:(id)arg2 stateNumber:(id)arg3;
@@ -86,8 +83,11 @@
 @property(readonly, nonatomic) NSString *serializedIdentifier;
 - (id)dumpState;
 - (id)characteristicTypeDescription;
+@property(readonly, copy, nonatomic) NSSet *notificationRegistrations;
 - (id)shortTypeDescription;
+@property(readonly, nonatomic) HMDCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) NSSet *hapCharacteristicTuples; // @synthesize hapCharacteristicTuples=_hapCharacteristicTuples;
+@property(nonatomic) _Bool notificationRegisteredWithRemoteGateway; // @synthesize notificationRegisteredWithRemoteGateway=_notificationRegisteredWithRemoteGateway;
 @property(readonly, copy) NSString *description;
 - (id)initWithCharacteristic:(id)arg1 service:(id)arg2 accessory:(id)arg3;
 - (id)init;

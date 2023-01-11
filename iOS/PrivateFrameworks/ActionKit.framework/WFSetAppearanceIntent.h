@@ -6,12 +6,22 @@
 
 #import <Intents/INIntent.h>
 
-@interface WFSetAppearanceIntent : INIntent
+#import <ActionKit/WFBooleanSettingIntent-Protocol.h>
+
+@class NSNumber;
+
+__attribute__((visibility("hidden")))
+@interface WFSetAppearanceIntent : INIntent <WFBooleanSettingIntent>
 {
 }
 
+- (void)applyWithSettingsClient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(retain, nonatomic) NSNumber *state;
+@property(readonly, nonatomic) Class settingsClientClass;
 
 // Remaining properties
+@property(nonatomic) long long operation; // @dynamic operation;
 @property(nonatomic) long long style; // @dynamic style;
+
 @end
 

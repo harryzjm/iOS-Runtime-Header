@@ -8,7 +8,7 @@
 
 #import <ProgressUI/CALayerDelegate-Protocol.h>
 
-@class CAContext, CALayer, NSString;
+@class CAContext, CALayer, CATextLayer, NSString;
 
 @interface PUIProgressWindow : NSObject <CALayerDelegate>
 {
@@ -16,6 +16,8 @@
     CAContext *_context;
     int _deviceClass;
     int _screenClass;
+    int _productType;
+    _Bool _isSecurityResearchDevice;
     struct CGSize _displaySize;
     struct CGSize _framebufferSize;
     struct CGSize _layerPositioningSize;
@@ -29,17 +31,19 @@
     double _progressXDelta;
     double _progressYDelta;
     double _progressWidth;
+    double _progressHeight;
     _Bool _forceInverted;
     _Bool _white;
     _Bool _showsProgressBar;
     CALayer *_progressLayer;
+    CATextLayer *_statusTextLayer;
     CALayer *_layer;
 }
 
 + (_Bool)_usesPreBoardAppearance;
 + (void)setUsesPreBoardAppearance;
-@property(readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
 - (struct CGImage *)_createImageWithName:(const char *)arg1 scale:(int)arg2 displayHeight:(int)arg3;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)_drawProgressLayerInContext:(struct CGContext *)arg1;
@@ -49,6 +53,7 @@
 - (unsigned long long)_nanoDeviceType;
 - (const char *)_appleTVProductSuffix;
 - (const char *)_productSuffix;
+- (void)setStatusText:(id)arg1;
 - (void)setProgressValue:(float)arg1;
 - (void)setVisible:(_Bool)arg1;
 - (void)_updateIOSurface;

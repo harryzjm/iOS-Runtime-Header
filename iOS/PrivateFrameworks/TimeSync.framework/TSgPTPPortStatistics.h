@@ -46,9 +46,14 @@
     unsigned int _transmittedDelayRequestCounter;
     unsigned int _attemptedDelayRequestCounter;
     unsigned int _receivedDelayResponseCounter;
+    unsigned int _supersededSyncCounter;
+    unsigned int _supersededDelayCounter;
     NSString *_portIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned int supersededDelayCounter; // @synthesize supersededDelayCounter=_supersededDelayCounter;
+@property(readonly, nonatomic) unsigned int supersededSyncCounter; // @synthesize supersededSyncCounter=_supersededSyncCounter;
 @property(readonly, nonatomic) unsigned int receivedDelayResponseCounter; // @synthesize receivedDelayResponseCounter=_receivedDelayResponseCounter;
 @property(readonly, nonatomic) unsigned int attemptedDelayRequestCounter; // @synthesize attemptedDelayRequestCounter=_attemptedDelayRequestCounter;
 @property(readonly, nonatomic) unsigned int transmittedDelayRequestCounter; // @synthesize transmittedDelayRequestCounter=_transmittedDelayRequestCounter;
@@ -86,7 +91,6 @@
 @property(readonly, nonatomic) int portRole; // @synthesize portRole=_portRole;
 @property(readonly, nonatomic) int portType; // @synthesize portType=_portType;
 @property(readonly, copy, nonatomic) NSString *portIdentifier; // @synthesize portIdentifier=_portIdentifier;
-- (void)dealloc;
 - (id)initWithPort:(id)arg1;
 - (id)init;
 

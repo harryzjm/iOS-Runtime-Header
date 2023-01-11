@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSuggestionCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFRichText, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFSuggestionCardSection <SFSuggestionCardSection, NSSecureCoding, NSCopying>
 {
@@ -33,23 +33,27 @@
     SFColor *_backgroundColor;
     SFRichText *_suggestionText;
     NSString *_scopedSearchSectionBundleIdentifier;
+    SFRichText *_detailText;
+    SFImage *_thumbnail;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) SFImage *thumbnail; // @synthesize thumbnail=_thumbnail;
+@property(retain, nonatomic) SFRichText *detailText; // @synthesize detailText=_detailText;
 @property(nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 @property(copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier; // @synthesize scopedSearchSectionBundleIdentifier=_scopedSearchSectionBundleIdentifier;
 @property(nonatomic) _Bool isContact; // @synthesize isContact=_isContact;
 @property(retain, nonatomic) SFRichText *suggestionText; // @synthesize suggestionText=_suggestionText;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
-@property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
-- (void).cxx_destruct;
+@property(retain, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property(nonatomic) _Bool hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property(nonatomic) _Bool hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
+@property(nonatomic) _Bool canBeHidden; // @synthesize canBeHidden=_canBeHidden;
+@property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
+@property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;

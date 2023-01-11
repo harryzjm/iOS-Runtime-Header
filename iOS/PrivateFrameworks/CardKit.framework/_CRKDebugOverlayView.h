@@ -13,9 +13,9 @@
     NSString *_debugText;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *debugText; // @synthesize debugText=_debugText;
 @property(copy, nonatomic) UIColor *color; // @synthesize color=_color;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

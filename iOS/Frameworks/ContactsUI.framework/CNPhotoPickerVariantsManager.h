@@ -8,24 +8,31 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CNPhotoPickerVariantsManager : NSObject
 {
     NSArray *_avatarBackgrounds;
+    NSArray *_defaultEmojis;
 }
 
++ (id)generateMonogramGradientColorsByColor;
 + (id)generateGradientColorsByColor;
++ (id)gradientBackgroundImageForColor:(id)arg1;
 + (id)compositeColorForTopColor:(id)arg1 bottomColor:(id)arg2;
 + (id)nonAlphaColorForBackgroundColor:(id)arg1;
 + (id)gradientStartColor:(id)arg1;
 + (id)colorGradientBackground:(id)arg1;
++ (id)monogramColorGradientBackground:(id)arg1;
++ (id)sharingProfileAvatarPoseConfigurationForAvatarRecord:(id)arg1;
++ (id)avatarPoseConfigurationsForAvatarRecord:(id)arg1;
 + (id)colorVariantWithColorNamed:(id)arg1;
 + (id)colorFromRGBString:(id)arg1;
 + (id)colorFromRGBArray:(id)arg1;
++ (id)defaultEmojisFromDictionary:(id)arg1;
 + (id)avatarBackgroundsFromDictionary:(id)arg1;
-@property(retain, nonatomic) NSArray *avatarBackgrounds; // @synthesize avatarBackgrounds=_avatarBackgrounds;
 - (void).cxx_destruct;
-- (id)avatarPoseConfigurationsForAvatarRecord:(id)arg1;
+@property(retain, nonatomic) NSArray *defaultEmojis; // @synthesize defaultEmojis=_defaultEmojis;
+@property(retain, nonatomic) NSArray *avatarBackgrounds; // @synthesize avatarBackgrounds=_avatarBackgrounds;
+- (id)randomColorVariant;
 - (id)init;
 
 @end

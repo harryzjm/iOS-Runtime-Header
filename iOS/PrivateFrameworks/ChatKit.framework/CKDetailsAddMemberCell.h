@@ -4,22 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UILabel;
+@class UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CKDetailsAddMemberCell
 {
     UILabel *_addLabel;
-    UIImageView *_addIcon;
 }
 
 + (double)preferredHeight;
 + (id)reuseIdentifier;
 + (Class)cellClass;
-@property(retain, nonatomic) UIImageView *addIcon; // @synthesize addIcon=_addIcon;
-@property(retain, nonatomic) UILabel *addLabel; // @synthesize addLabel=_addLabel;
 - (void).cxx_destruct;
-- (void)setEnabled:(_Bool)arg1;
+@property(retain, nonatomic) UILabel *addLabel; // @synthesize addLabel=_addLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

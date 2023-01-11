@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)_isContentEqualToContent:(id)arg1;
+- (_Bool)isEqualToContent:(id)arg1 byAttribute:(id)arg2;
 - (_Bool)isEqualToAttributedString:(id)arg1;
 - (_Bool)isEqualToString:(id)arg1;
 - (id)attributedString;
@@ -27,9 +29,9 @@ __attribute__((visibility("hidden")))
 - (id)defaultValueForAttribute:(id)arg1;
 - (_Bool)isAttribute:(id)arg1 uniformlyEqualToValue:(id)arg2;
 - (id)contentByApplyingAttribute:(id)arg1 value:(id)arg2 toRange:(struct _NSRange)arg3;
-- (id)contentByApplyingAttributeToEntireRange:(id)arg1 value:(id)arg2;
+- (id)contentWithAttributedString:(id)arg1;
 - (id)contentWithString:(id)arg1;
-- (id)initWithAttributedString:(id)arg1 defaultAttributesProvider:(id)arg2;
+- (id)initWithAttributedString:(id)arg1 defaultAttributes:(id)arg2;
 
 @end
 

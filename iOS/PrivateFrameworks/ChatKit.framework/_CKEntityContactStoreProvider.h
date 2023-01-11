@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-- (void *)addressBook;
 - (id)contactStore;
 
 // Remaining properties

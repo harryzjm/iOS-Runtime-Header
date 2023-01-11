@@ -14,14 +14,13 @@
 {
 }
 
-+ (id)searchableIndexItemsFromMessages:(id)arg1 type:(long long)arg2;
 + (id)log;
 - (id)verificationDataSamplesFromMessageIDTransactionIDDictionary:(id)arg1;
 - (id)_verificationDataFromMessage:(id)arg1 messageIDTransactionIDDictionary:(id)arg2;
-- (void)attachmentItemMetadataForAttachmentID:(id)arg1 messagePersistentID:(id)arg2 name:(id)arg3 result:(CDUnknownBlockType)arg4;
+- (void)attachmentItemMetadataForAttachmentID:(id)arg1 messagePersistentID:(id)arg2 name:(id)arg3 mailboxID:(long long)arg4 result:(CDUnknownBlockType)arg5;
 - (id)searchableIndexItemsFromMessages:(id)arg1 type:(long long)arg2;
 - (id)messagesWhere:(id)arg1 sortedBy:(id)arg2 limit:(long long)arg3;
-- (id)messagesRowIDWhereSubClause;
+- (id)additionalFilterClause;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

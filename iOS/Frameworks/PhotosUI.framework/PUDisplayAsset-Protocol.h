@@ -28,6 +28,7 @@
 @property(readonly, nonatomic) NSDate *modificationDate;
 @property(readonly, nonatomic) NSDate *localCreationDate;
 @property(readonly, nonatomic) NSDate *creationDate;
+@property(readonly, nonatomic, getter=isHidden) _Bool hidden;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) CLLocation *location;
@@ -41,6 +42,8 @@
 - (unsigned long long)isContentEqualTo:(id <PUDisplayAsset>)arg1;
 
 @optional
+@property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
+@property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 @end
 

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)notificationViewControllerWillBeginUserInteraction:(id)arg1;
 - (void)_dismissBannerCompleted:(id)arg1;
 
 @end

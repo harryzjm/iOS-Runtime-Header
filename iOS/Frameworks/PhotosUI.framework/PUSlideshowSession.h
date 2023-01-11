@@ -10,7 +10,7 @@
 #import <PhotosUI/PUSlideshowViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 
-@class NSString, OKMediaFeederPhotoKit, OKPresentationViewController, OKProducerPreset, PHAssetCollection, PHFetchResult, PUSlideshowContextRegistry, PUSlideshowSettingsViewModel, PUSlideshowViewModel;
+@class NSString, NSUUID, OKMediaFeederPhotoKit, OKPresentationViewController, OKProducerPreset, PHAssetCollection, PHFetchResult, PUSlideshowContextRegistry, PUSlideshowSettingsViewModel, PUSlideshowViewModel;
 
 __attribute__((visibility("hidden")))
 @interface PUSlideshowSession : NSObject <PUSlideshowViewModelChangeObserver, PUSlideshowSettingsViewModelChangeObserver, PXSettingsKeyObserver>
@@ -19,14 +19,21 @@ __attribute__((visibility("hidden")))
     PUSlideshowContextRegistry *_contextRegistry;
     OKProducerPreset *_currentPreset;
     _Bool __disablingIdleTimer;
+    _Bool _didStartOnce;
     PHFetchResult *_fetchResult;
     PHAssetCollection *_assetCollection;
     PUSlideshowViewModel *_viewModel;
     PUSlideshowSettingsViewModel *_settingsViewModel;
     OKPresentationViewController *_presentationViewController;
     id __disablingIdleTimerToken;
+    NSUUID *_uuid;
+    long long _currentState;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didStartOnce; // @synthesize didStartOnce=_didStartOnce;
+@property(nonatomic) long long currentState; // @synthesize currentState=_currentState;
+@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic, setter=_setDisablingIdleTimerToken:) id _disablingIdleTimerToken; // @synthesize _disablingIdleTimerToken=__disablingIdleTimerToken;
 @property(nonatomic, setter=_setDisablingIdleTimer:) _Bool _disablingIdleTimer; // @synthesize _disablingIdleTimer=__disablingIdleTimer;
 @property(readonly, nonatomic) OKPresentationViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
@@ -34,11 +41,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) PUSlideshowViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
 @property(readonly, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
-- (void).cxx_destruct;
 - (void)_endDisablingIdleTimerIfNecessary;
 - (void)_beginDisablingIdleTimer;
 - (void)_slideshowSettingsViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_slideshowViewModel:(id)arg1 didChange:(id)arg2;
+- (void)_updateCurrentState;
+- (void)_invalidateCurrentState;
+- (void)_addCurrentSettingsToPayload:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)_configurePresentationViewController:(id)arg1;
 - (id)_resolutionSizes;

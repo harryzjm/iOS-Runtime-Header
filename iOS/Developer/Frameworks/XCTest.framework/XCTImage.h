@@ -8,24 +8,29 @@
 
 #import <XCTest/NSCopying-Protocol.h>
 
-@class NSData, NSString, UIImage, _XCTImageImplementation;
+@class NSData, NSString, UIImage;
 
 @interface XCTImage : NSObject <NSCopying>
 {
-    _XCTImageImplementation *_internalImplementation;
+    UIImage *_platformImage;
+    NSData *_originalData;
+    NSString *_name;
+    double _scale;
 }
 
++ (id)_dataForImage:(id)arg1 uti:(id)arg2 compressionQuality:(double)arg3;
 + (id)_dataForImage:(id)arg1 quality:(long long)arg2;
 + (double)_scaleForImage:(id)arg1;
 + (id)UTIForQuality:(long long)arg1;
 + (double)compressionQualityForQuality:(long long)arg1;
 + (id)emptyImageWithSize:(struct CGSize)arg1;
-@property(retain) _XCTImageImplementation *internalImplementation; // @synthesize internalImplementation=_internalImplementation;
 - (void).cxx_destruct;
+@property(readonly) double scale; // @synthesize scale=_scale;
+@property(copy) NSString *name; // @synthesize name=_name;
+@property(copy) NSData *originalData; // @synthesize originalData=_originalData;
+@property(copy) UIImage *platformImage; // @synthesize platformImage=_platformImage;
 - (id)debugQuickLookObject;
 - (void)_ensureImage;
-@property(readonly) double scale;
-@property(copy) NSString *name;
 - (id)attachment;
 @property(readonly, copy) UIImage *image;
 @property(readonly, copy) NSData *data;
@@ -33,7 +38,6 @@
 - (id)initWithData:(id)arg1 scale:(double)arg2;
 - (id)initWithImage:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_init;
 
 @end
 

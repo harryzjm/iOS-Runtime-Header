@@ -9,7 +9,7 @@
 #import <SiriActivation/NSCopying-Protocol.h>
 #import <SiriActivation/NSSecureCoding-Protocol.h>
 
-@class AFBulletin, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSDictionary, NSNumber, NSString, NSURL, SAGuidanceCheckForGuideUpdateContext, SASPronunciationContext;
+@class AFBulletin, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL, NSUUID, SAGuidanceCheckForGuideUpdateContext, SASPronunciationContext;
 
 @interface SASRequestOptions : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,16 +17,18 @@
     _Bool _pronunciationRequest;
     _Bool _isForCarDND;
     _Bool _isConnectedToCarPlay;
+    _Bool _rightHandDrive;
     _Bool _initialBringUp;
     _Bool _useAutomaticEndpointing;
     _Bool _useStreamingDictation;
     _Bool _acousticIdEnabled;
     _Bool _releaseAudioSessionOnRecordingCompletion;
     _Bool _predictedRecordRouteIsZLL;
+    _Bool _shortButtonPressAction;
     NSString *_activationDeviceIdentifier;
     AFBulletin *_bulletin;
     NSString *_appBundleIdentifier;
-    NSDictionary *_messagesDirectActionContext;
+    NSDictionary *_directActionContextPayload;
     SAGuidanceCheckForGuideUpdateContext *_checkForGuideUpdateContext;
     long long _directActionEvent;
     NSString *_serverCommandId;
@@ -43,15 +45,27 @@
     AFRequestInfo *_requestInfo;
     AFSpeechRequestOptions *_speechRequestOptions;
     NSString *_uiPresentationIdentifier;
+    NSMutableArray *_instrumentationEvents;
+    NSUUID *_previousTurnIdentifier;
     NSArray *_contextAppInfosForSiriViewController;
     NSDictionary *_testingContext;
     unsigned long long _currentLockState;
+    NSString *_startRecordingSoundId;
+    SASRequestOptions *_originalRequestOptions;
+    long long _presentationMode;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
+@property(copy, nonatomic) SASRequestOptions *originalRequestOptions; // @synthesize originalRequestOptions=_originalRequestOptions;
+@property(nonatomic, getter=isShortButtonPressAction) _Bool shortButtonPressAction; // @synthesize shortButtonPressAction=_shortButtonPressAction;
+@property(copy, nonatomic) NSString *startRecordingSoundId; // @synthesize startRecordingSoundId=_startRecordingSoundId;
 @property(nonatomic) unsigned long long currentLockState; // @synthesize currentLockState=_currentLockState;
 @property(retain, nonatomic) NSDictionary *testingContext; // @synthesize testingContext=_testingContext;
 @property(retain, nonatomic) NSArray *contextAppInfosForSiriViewController; // @synthesize contextAppInfosForSiriViewController=_contextAppInfosForSiriViewController;
+@property(retain, nonatomic) NSUUID *previousTurnIdentifier; // @synthesize previousTurnIdentifier=_previousTurnIdentifier;
+@property(retain, nonatomic) NSMutableArray *instrumentationEvents; // @synthesize instrumentationEvents=_instrumentationEvents;
 @property(retain, nonatomic) NSString *uiPresentationIdentifier; // @synthesize uiPresentationIdentifier=_uiPresentationIdentifier;
 @property(nonatomic) _Bool predictedRecordRouteIsZLL; // @synthesize predictedRecordRouteIsZLL=_predictedRecordRouteIsZLL;
 @property(nonatomic) _Bool releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
@@ -63,6 +77,7 @@
 @property(nonatomic) _Bool useStreamingDictation; // @synthesize useStreamingDictation=_useStreamingDictation;
 @property(nonatomic) _Bool useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property(nonatomic, getter=isInitialBringUp) _Bool initialBringUp; // @synthesize initialBringUp=_initialBringUp;
+@property(nonatomic, getter=isRightHandDrive) _Bool rightHandDrive; // @synthesize rightHandDrive=_rightHandDrive;
 @property(nonatomic) unsigned long long carDNDStatus; // @synthesize carDNDStatus=_carDNDStatus;
 @property(nonatomic) _Bool isConnectedToCarPlay; // @synthesize isConnectedToCarPlay=_isConnectedToCarPlay;
 @property(nonatomic) _Bool isForCarDND; // @synthesize isForCarDND=_isForCarDND;
@@ -77,15 +92,19 @@
 @property(copy, nonatomic) NSString *serverCommandId; // @synthesize serverCommandId=_serverCommandId;
 @property(nonatomic) long long directActionEvent; // @synthesize directActionEvent=_directActionEvent;
 @property(copy, nonatomic) SAGuidanceCheckForGuideUpdateContext *checkForGuideUpdateContext; // @synthesize checkForGuideUpdateContext=_checkForGuideUpdateContext;
-@property(copy, nonatomic) NSDictionary *messagesDirectActionContext; // @synthesize messagesDirectActionContext=_messagesDirectActionContext;
+@property(copy, nonatomic) NSDictionary *directActionContextPayload; // @synthesize directActionContextPayload=_directActionContextPayload;
 @property(copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property(retain, nonatomic) AFBulletin *bulletin; // @synthesize bulletin=_bulletin;
 @property(copy, nonatomic) NSString *activationDeviceIdentifier; // @synthesize activationDeviceIdentifier=_activationDeviceIdentifier;
-- (void).cxx_destruct;
 - (_Bool)_isTypeToSiriPermittedAndEnabledForRequestOptions;
+- (long long)_presentationIdentifierFromUIPresentationIdentifier:(id)arg1;
+- (void)_updateWithSystemState:(id)arg1 forcefully:(_Bool)arg2;
+- (void)updateIfNeededWithSystemState:(id)arg1;
 - (_Bool)isHTTRequestSource;
-@property(readonly, nonatomic, getter=isMessagesDirectAction) _Bool messagesDirectAction;
+- (_Bool)isB288Activation;
+@property(readonly, nonatomic) _Bool isForEyesFree;
 @property(readonly, nonatomic, getter=isForStark) _Bool forStark;
+@property(readonly, nonatomic) _Bool isForAppleTV;
 @property(readonly, nonatomic, getter=isForSpeechRequest) _Bool forSpeechRequest;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -94,8 +113,9 @@
 - (void)_configureStreamingDictationForSource:(long long)arg1;
 @property(nonatomic) long long requestSource;
 - (id)init;
-- (id)initWithRequestSource:(long long)arg1;
+- (id)initWithRequestSource:(long long)arg1 uiPresentationIdentifier:(id)arg2 systemState:(id)arg3;
 - (id)initWithRequestSource:(long long)arg1 uiPresentationIdentifier:(id)arg2;
+- (id)initWithRequestSource:(long long)arg1;
 
 @end
 

@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputHueMagBM;
     CIFilter *inputLinearSpaceFilter;
     NSNumber *inputEnableEDRMode;
+    NSNumber *inputReturnDemosaiced;
 }
 
 + (id)customAttributes;
@@ -138,6 +139,8 @@ __attribute__((visibility("hidden")))
 - (id)defaultInputColorNoiseReductionAmount;
 - (id)defaultInputLuminanceNoiseReductionAmount;
 - (void)setInputEnableEDRMode:(id)arg1;
+- (id)defaultInputReturnDemosaiced;
+- (void)setInputReturnDemosaiced:(id)arg1;
 - (void)setInputIgnoreOrientation:(id)arg1;
 - (void)setInputImageOrientation:(id)arg1;
 - (void)setInputDecoderVersion:(id)arg1;

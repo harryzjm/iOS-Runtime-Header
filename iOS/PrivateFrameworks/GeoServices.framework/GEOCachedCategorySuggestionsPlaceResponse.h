@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOCachedCategorySuggestionsPlaceResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_countryCode;
     NSString *_language;
     GEOPDPlaceResponse *_response;
     NSString *_sourceURL;
     double _timestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_timestamp:1;
         unsigned int read_unknownFields:1;
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_language:1;
         unsigned int read_response:1;
         unsigned int read_sourceURL:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_language:1;
-        unsigned int wrote_response:1;
-        unsigned int wrote_sourceURL:1;
-        unsigned int wrote_timestamp:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -50,22 +47,23 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *language;
 @property(readonly, nonatomic) _Bool hasLanguage;
-- (void)_readLanguage;
 @property(retain, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) _Bool hasCountryCode;
-- (void)_readCountryCode;
 @property(retain, nonatomic) NSString *sourceURL;
 @property(readonly, nonatomic) _Bool hasSourceURL;
-- (void)_readSourceURL;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) double timestamp;
 @property(retain, nonatomic) GEOPDPlaceResponse *response;
 @property(readonly, nonatomic) _Bool hasResponse;
-- (void)_readResponse;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

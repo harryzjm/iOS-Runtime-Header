@@ -4,9 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BCSBusinessItem, NSArray, NSString;
+@class BCSBusinessItem, NSArray, NSString, NSURL;
 
 @protocol BCSXPCDaemonProtocol
+- (void)clearCachesForLinkItemsAssociatedWithBundleID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)clearExpiredCachesForType:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)clearCachesForType:(long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)prefetchConfigsWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)prefetchBloomFilterAndConfigsWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)fetchLinkItemModelWithHash:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSLinkItemModel *, NSError *))arg3;
+- (void)isBusinessRegisteredForURL:(NSURL *)arg1 chopURL:(_Bool)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)fetchLinkItemModelWithURL:(NSURL *)arg1 chopURL:(_Bool)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(BCSLinkItemModel *, NSError *))arg4;
 - (void)_deleteInMemoryCache;
 - (void)fetchSquareIconDataForBusinessItem:(BCSBusinessItem *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)warmCacheIfNecessaryForPhoneNumbers:(NSArray *)arg1 forClientBundleID:(NSString *)arg2;

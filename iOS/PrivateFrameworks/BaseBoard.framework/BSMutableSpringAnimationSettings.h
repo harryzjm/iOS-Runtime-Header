@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAMediaTimingFunction;
+#import <BaseBoard/BSAnimationSettingsMutating-Protocol.h>
 
-@interface BSMutableSpringAnimationSettings
+@class CAMediaTimingFunction, NSString;
+
+@interface BSMutableSpringAnimationSettings <BSAnimationSettingsMutating>
 {
 }
 
@@ -15,11 +17,16 @@
 @property(nonatomic) double damping; // @dynamic damping;
 @property(nonatomic) double stiffness; // @dynamic stiffness;
 @property(nonatomic) double mass; // @dynamic mass;
-@property(nonatomic) float speed; // @dynamic speed;
-@property(retain, nonatomic) CAMediaTimingFunction *timingFunction; // @dynamic timingFunction;
-@property(nonatomic) double frameInterval; // @dynamic frameInterval;
-@property(nonatomic) double delay; // @dynamic delay;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) float speed;
+@property(retain, nonatomic) CAMediaTimingFunction *timingFunction;
+@property(nonatomic) double frameInterval;
+@property(nonatomic) double delay;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

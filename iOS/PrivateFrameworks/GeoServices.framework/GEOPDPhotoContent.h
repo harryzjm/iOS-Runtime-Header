@@ -16,8 +16,13 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     NSString *_url;
     unsigned int _height;
+    int _urlType;
     unsigned int _width;
-    CDStruct_a1cdbaa7 _flags;
+    struct {
+        unsigned int has_height:1;
+        unsigned int has_urlType:1;
+        unsigned int has_width:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -32,8 +37,15 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsUrlType:(id)arg1;
+- (id)urlTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasUrlType;
+@property(nonatomic) int urlType;
 @property(retain, nonatomic) NSString *url;
 @property(readonly, nonatomic) _Bool hasUrl;
 @property(nonatomic) _Bool hasHeight;

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+#import <CloudKit/CKFetchRecordZoneChangesOperationCallbacks-Protocol.h>
 
-@interface CKFetchRecordZoneChangesOperation
+@class CKFetchRecordZoneChangesOperationInfo, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchRecordZoneChangesOperationCallbacks;
+
+@interface CKFetchRecordZoneChangesOperation <CKFetchRecordZoneChangesOperationCallbacks>
 {
     _Bool _fetchAllChanges;
     _Bool _shouldFetchAssetContents;
@@ -25,6 +28,8 @@
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(retain, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
@@ -34,17 +39,19 @@
 @property(nonatomic) _Bool fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property(copy, nonatomic) NSDictionary *configurationsByRecordZoneID; // @synthesize configurationsByRecordZoneID=_configurationsByRecordZoneID;
 @property(copy, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (id)partialFailureForItemsInZone:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleChangeSetCompletionForRecordZoneID:(id)arg1 serverChangeToken:(id)arg2 clientChangeTokenData:(id)arg3 recordChangesStatus:(long long)arg4 hasPendingArchivedRecords:(_Bool)arg5 error:(id)arg6 reply:(CDUnknownBlockType)arg7;
+- (void)handleDeleteForRecordID:(id)arg1 recordType:(id)arg2;
+- (void)handleChangeForRecordID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
 - (long long)changeTypesFromSetCallbacks;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (id)relevantZoneIDs;
 - (id)recordZoneIDsWithPendingArchivedRecords;
 - (id)recordZoneChangesStatusByZoneID;
 @property(copy, nonatomic) CDUnknownBlockType fetchRecordZoneChangesCompletionBlock; // @synthesize fetchRecordZoneChangesCompletionBlock=_fetchRecordZoneChangesCompletionBlock;
@@ -57,6 +64,10 @@
 - (id)init;
 @property(copy, nonatomic) NSDictionary *optionsByRecordZoneID;
 - (id)initWithRecordZoneIDs:(id)arg1 optionsByRecordZoneID:(id)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchRecordZoneChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKFetchRecordZoneChangesOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

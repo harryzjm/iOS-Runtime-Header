@@ -14,10 +14,6 @@
 + (_Bool)isErrorStatusCode:(long long)arg1;
 + (id)localizedStringForStatusCode:(long long)arg1;
 + (_Bool)supportsSecureCoding;
-- (struct __SecTrust *)_peerTrust;
-- (void)_setPeerTrust:(struct __SecTrust *)arg1;
-- (id)_clientCertificateState;
-- (id)_clientCertificateChain;
 - (id)_peerCertificateChain;
 - (void)dealloc;
 @property(readonly) long long statusCode;
@@ -29,7 +25,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1 statusCode:(long long)arg2 HTTPVersion:(id)arg3 headerFields:(id)arg4;
 - (id)initWithURL:(id)arg1 statusCode:(long long)arg2 headerFields:(id)arg3 requestTime:(double)arg4;
-- (id)_initWithCFURLResponse:(id)arg1;
+- (id)_initWithCFURLResponse:(struct _CFURLResponse *)arg1;
 
 @end
 

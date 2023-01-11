@@ -26,6 +26,7 @@
     NSObject<OS_dispatch_queue> *_userInteractiveQueue;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isFaceProcessingComplete) _Bool faceProcessingComplete; // @synthesize faceProcessingComplete=_faceProcessingComplete;
 @property(readonly, nonatomic) _Bool isFaceProcessingComplete; // @synthesize isFaceProcessingComplete=_isFaceProcessingComplete;
 @property(getter=isCountCacheValid) _Bool countCacheValid; // @synthesize countCacheValid=_countCacheValid;
@@ -37,18 +38,17 @@
 @property(nonatomic) unsigned long long processedCount; // @synthesize processedCount=_processedCount;
 @property(nonatomic) unsigned long long pendingCount; // @synthesize pendingCount=_pendingCount;
 @property(nonatomic) unsigned long long cachedUnlockValue; // @synthesize cachedUnlockValue=_cachedUnlockValue;
-- (void).cxx_destruct;
 - (void)_appWillEnterForeground;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
-- (double)_progressFromWorkerDictionary:(id)arg1;
+- (double)_updateProgressFromFaceAnalysisProgressDictionary:(id)arg1;
 @property(readonly, nonatomic) _Bool isPersonPromoterDone;
 @property(readonly, nonatomic) unsigned long long totalAssetCount;
 @property(readonly, nonatomic) unsigned long long homeMembersCount;
 @property(readonly, nonatomic) unsigned long long processedAssetCount;
 @property(readonly, nonatomic) unsigned long long pendingAssetCount;
-- (void)asyncPeopleScanningProgress:(CDUnknownBlockType)arg1;
-- (void)syncPeopleScanningProgress:(CDUnknownBlockType)arg1;
-- (void)updateProgressIfNeededWithWorkBlock:(CDUnknownBlockType)arg1;
+- (void)asyncUpdatePeopleProgressWithReportBlock:(CDUnknownBlockType)arg1;
+- (void)syncUpdatePeopleProgressWithReportBlock:(CDUnknownBlockType)arg1;
+- (void)updateProgressIfNeededWithReportBlock:(CDUnknownBlockType)arg1;
 - (void)loadQueryData;
 - (void)dealloc;
 - (id)init;

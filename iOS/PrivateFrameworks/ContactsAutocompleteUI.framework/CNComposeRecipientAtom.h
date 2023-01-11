@@ -16,9 +16,10 @@
     id <CNComposeRecipientAtomDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNComposeRecipient *recipient; // @synthesize recipient=_recipient;
 @property(nonatomic) __weak id <CNComposeRecipientAtomDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)menuConfigurationForChevronButton;
 - (void)moveRight:(id)arg1;
 - (void)moveLeft:(id)arg1;
 - (id)keyCommands;

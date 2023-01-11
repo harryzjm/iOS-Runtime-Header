@@ -8,11 +8,12 @@
 #import <UIKitCore/UIFocusItem-Protocol.h>
 #import <UIKitCore/UIFocusItemContainer-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
+#import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 
 @class NSArray, NSString, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface UIAccessibilityElement <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UIAccessibilityIdentification>
+@interface UIAccessibilityElement <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, UIAccessibilityIdentification>
 {
     _Bool _areChildrenFocused;
     struct CGRect _accessibilityFrameInContainerSpace;
@@ -24,6 +25,9 @@
 @property(nonatomic) _Bool areChildrenFocused;
 @property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
 - (id)focusItemsInRect:(struct CGRect)arg1;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (id)_preferredFocusRegionCoordinateSpace;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
 @property(readonly, nonatomic) struct CGRect frame;
 @property(readonly, nonatomic) _Bool canBecomeFocused;
 - (void)_updateFocusLayerFrame;
@@ -50,6 +54,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;

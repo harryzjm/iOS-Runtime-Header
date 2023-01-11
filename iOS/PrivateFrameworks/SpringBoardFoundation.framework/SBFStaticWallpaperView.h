@@ -10,7 +10,6 @@
 {
     double _overallContrast;
     SBFColorBoxes *_colorBoxes;
-    _Bool _needsWallpaperDimmingTreatment;
     UIImage *_displayedImage;
     UIImage *_sampleImage;
     NSData *_displayedImageHashData;
@@ -21,11 +20,11 @@
 + (_Bool)_allowsParallax;
 + (_Bool)_canDownscaleSampleImage;
 + (_Bool)_canCacheImages;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *displayedImageHashString; // @synthesize displayedImageHashString=_displayedImageHashString;
 @property(copy, nonatomic) NSData *displayedImageHashData; // @synthesize displayedImageHashData=_displayedImageHashData;
 @property(retain, nonatomic, getter=_sampleImage, setter=_setSampleImage:) UIImage *sampleImage; // @synthesize sampleImage=_sampleImage;
 @property(retain, nonatomic, getter=_displayedImage, setter=_setDisplayedImage:) UIImage *displayedImage; // @synthesize displayedImage=_displayedImage;
-- (void).cxx_destruct;
 @property(retain, nonatomic) SBFColorBoxes *colorBoxes;
 - (void)_updateColorBoxesWithKey:(id)arg1 image:(id)arg2;
 - (id)_createColorBoxes;
@@ -51,7 +50,7 @@
 - (void)preheatImageData;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 - (id)cacheUniqueIdentifier;
-- (void)_generateImageForImage:(id)arg1 cacheKey:(id)arg2 options:(unsigned long long)arg3 downsampleFactor:(double)arg4 needsDimmingTreatment:(_Bool)arg5 generationHandler:(CDUnknownBlockType)arg6;
+- (void)_generateImageForImage:(id)arg1 cacheKey:(id)arg2 options:(unsigned long long)arg3 downsampleFactor:(double)arg4 needsDimmingTreatment:(_Bool)arg5 averageColor:(id)arg6 generationHandler:(CDUnknownBlockType)arg7;
 - (void)_setupWallpaperImageFromConfiguration:(id)arg1 options:(unsigned long long)arg2;
 - (long long)wallpaperType;
 

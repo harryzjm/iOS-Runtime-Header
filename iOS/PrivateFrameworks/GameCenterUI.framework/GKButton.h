@@ -8,17 +8,20 @@
 
 #import <GameCenterUI/GKTextStyleReplay-Protocol.h>
 
-@class GKTextStyle, NSString;
+@class GKButtonStyle, GKTextStyle, NSString;
 
 @interface GKButton : UIButton <GKTextStyleReplay>
 {
     GKTextStyle *_baseStyle;
     GKTextStyle *_appliedStyle;
+    GKButtonStyle *_appliedButtonStyle;
 }
 
 + (void)initialize;
-@property(retain, nonatomic) GKTextStyle *appliedStyle; // @synthesize appliedStyle=_appliedStyle;
 - (void).cxx_destruct;
+@property(retain, nonatomic) GKTextStyle *appliedStyle; // @synthesize appliedStyle=_appliedStyle;
+- (struct CGSize)intrinsicContentSize;
+- (void)applyButtonStyle:(id)arg1;
 - (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)applyTextStyle:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

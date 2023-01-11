@@ -27,8 +27,8 @@
     TSClock *_clock;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSClock *clock; // @synthesize clock=_clock;
-- (void)dealloc;
 - (void)didChangeLocalPortWithGrandmasterID:(unsigned long long)arg1 localPort:(unsigned short)arg2 forClock:(id)arg3;
 - (void)didEndClockGrandmasterChangeWithGrandmasterID:(unsigned long long)arg1 localPort:(unsigned short)arg2 forClock:(id)arg3;
 - (void)didEndClockGrandmasterChangeForClock:(id)arg1;

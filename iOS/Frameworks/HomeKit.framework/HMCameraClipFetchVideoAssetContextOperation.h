@@ -18,22 +18,25 @@
     CDUnknownBlockType _downloadProgressHandler;
     CDUnknownBlockType _fetchVideoAssetContextCompletionBlock;
     id <HMCameraClipFetchAssetContextOperationDataSource> _dataSource;
+    struct _NSRange _videoDataSegmentsRange;
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly) id <HMCameraClipFetchAssetContextOperationDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(copy) CDUnknownBlockType fetchVideoAssetContextCompletionBlock; // @synthesize fetchVideoAssetContextCompletionBlock=_fetchVideoAssetContextCompletionBlock;
 @property(copy) CDUnknownBlockType downloadProgressHandler; // @synthesize downloadProgressHandler=_downloadProgressHandler;
 @property(copy) NSURL *hlsPlaylistDestinationFileURL; // @synthesize hlsPlaylistDestinationFileURL=_hlsPlaylistDestinationFileURL;
 @property(copy) NSURL *clipDestinationFileURL; // @synthesize clipDestinationFileURL=_clipDestinationFileURL;
+@property struct _NSRange videoDataSegmentsRange; // @synthesize videoDataSegmentsRange=_videoDataSegmentsRange;
 @property(readonly) HMCameraClip *clip; // @synthesize clip=_clip;
 @property(readonly) HMCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (id)writeHLSPlaylistForVideoAssetContext:(id)arg1;
 - (id)decryptData:(id)arg1;
 - (id)downloadVideoSegment:(id)arg1 forDataTask:(id)arg2 andAppendToOutputStream:(id)arg3;
 - (id)downloadVideoAsset:(id)arg1;
+- (id)videoSegmentsToDownload;
 - (void)updateDownloadProgressToPercentageComplete:(unsigned long long)arg1;
 - (id)fetchVideoAssetContext;
 - (void)main;
@@ -42,7 +45,6 @@
 - (id)description;
 - (id)initWithClipManager:(id)arg1 clip:(id)arg2 dataSource:(id)arg3;
 - (id)initWithClipManager:(id)arg1 clip:(id)arg2;
-- (id)initWithClip:(id)arg1;
 
 @end
 

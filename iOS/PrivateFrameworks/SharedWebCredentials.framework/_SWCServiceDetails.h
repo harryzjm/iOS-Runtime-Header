@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SharedWebCredentials/NSSecureCoding-Protocol.h>
+#import <SharedWebCredentials/SWCRedactedDescription-Protocol.h>
 
-@class _SWCServiceSpecifier;
+@class NSNumber, _SWCServiceSpecifier;
 
-@interface _SWCServiceDetails : NSObject <NSSecureCoding>
+@interface _SWCServiceDetails : NSObject <SWCRedactedDescription, NSSecureCoding>
 {
     struct SWCFields _fields;
     _SWCServiceSpecifier *_serviceSpecifier;
@@ -18,14 +19,26 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)new;
++ (id)serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 auditToken:(CDStruct_6ad76789)arg4 error:(id *)arg5;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
++ (id)serviceDetailsWithServiceSpecifier:(id)arg1 limit:(unsigned long long)arg2 auditToken:(CDStruct_6ad76789)arg3 error:(id *)arg4;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 error:(id *)arg2;
-+ (id)_serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
-@property(readonly) _SWCServiceSpecifier *serviceSpecifier; // @synthesize serviceSpecifier=_serviceSpecifier;
++ (_Bool)auditTokenHasWriteAccess:(CDStruct_6ad76789)arg1;
++ (_Bool)currentProcessHasWriteAccess;
++ (_Bool)auditTokenHasReadAccess:(CDStruct_6ad76789)arg1;
++ (_Bool)currentProcessHasReadAccess;
++ (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)setDeveloperModeEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (_Bool)isDeveloperModeEnabled;
++ (id)_serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 callerAuditToken:(const CDStruct_6ad76789 *)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
+@property(readonly) _SWCServiceSpecifier *serviceSpecifier; // @synthesize serviceSpecifier=_serviceSpecifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)redactedDescription;
+- (id)debugDescription;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)_initWithServiceSpecifier:(id)arg1 fields:(const struct SWCFields *)arg2;
@@ -36,9 +49,13 @@
 - (_Bool)setUserApprovalState:(unsigned char)arg1 error:(id *)arg2;
 @property(nonatomic) unsigned char userApprovalState;
 @property(readonly, getter=isApproved) _Bool approved;
+@property(readonly) BOOL modeOfOperation;
 @property(readonly, getter=isEnterpriseManaged) _Bool enterpriseManaged;
+@property(readonly, getter=isSystemPlaceholder) _Bool systemPlaceholder;
 @property(readonly, getter=isWatchKitExtension) _Bool watchKitExtension;
+@property(readonly, getter=isEnabledByDefault) NSNumber *enabledByDefault;
 @property(readonly, getter=isAlwaysEnabled) _Bool alwaysEnabled;
+@property(readonly, getter=wasReadFromAlternateLocationOnDisk) _Bool readFromAlternateLocationOnDisk;
 @property(readonly, getter=wasReadFromDisk) _Bool readFromDisk;
 @property(readonly, getter=isSystemApplication) _Bool systemApplication;
 @property(readonly, getter=isUpdating) _Bool updating;

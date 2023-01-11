@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SBHardwareButtonGestureParametersObserver-Protocol.h>
 
-@class NSString, SBHardwareButtonActionList, SBHardwareButtonGestureParameters, SBHardwareButtonService, SBNotificationBannerDestination, SBProximitySensorManager;
+@class NSString, SBHardwareButtonActionList, SBHardwareButtonGestureParameters, SBHardwareButtonService, SBProximitySensorManager;
 @protocol SBHardwareButtonInteraction><SBHardwareButtonGestureParametersProvider;
 
 @interface SBHomeHardwareButtonActions <SBHardwareButtonGestureParametersObserver>
@@ -26,13 +26,11 @@
     SBHardwareButtonGestureParameters *_siriGestureParameters;
     _Bool _buttonDown;
     double _currentLongPressDuration;
-    SBNotificationBannerDestination *_bannerDestination;
 }
 
-@property(nonatomic) __weak SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_bannerDestination;
+- (void).cxx_destruct;
 @property(nonatomic) double currentLongPressDuration; // @synthesize currentLongPressDuration=_currentLongPressDuration;
 @property(nonatomic, getter=isButtonDown) _Bool buttonDown; // @synthesize buttonDown=_buttonDown;
-- (void).cxx_destruct;
 - (void)provider:(id)arg1 didUpdateButtonGestureParameters:(id)arg2;
 - (id)hardwareButtonGestureParameters;
 - (void)_logMenuButtonHoldTime;
@@ -44,6 +42,7 @@
 - (void)performTriplePressUpActions;
 - (void)performDoublePressDownActions;
 - (void)performLongPressActions;
+- (void)performSinglePressUpActionsWithSourceType:(unsigned long long)arg1;
 - (void)performSinglePressUpActions;
 - (_Bool)_shouldIgnorePressesDueToProxOrIdle:(id *)arg1;
 - (_Bool)_performButtonPreflightActions;

@@ -9,7 +9,7 @@
 #import <ContactsUI/CNContactNavigationControllerDelegate-Protocol.h>
 #import <ContactsUI/CNContactPickerContentViewController-Protocol.h>
 
-@class CNContactNavigationController, CNContactStoreDataSource, CNManagedConfiguration, FAFamilyMember, NSArray, NSMutableArray, NSPredicate, NSString, UINavigationController;
+@class CNContactNavigationController, CNContactStoreDataSource, CNContainer, CNManagedConfiguration, FAFamilyMember, NSArray, NSMutableArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController;
 @protocol CNContactPickerContentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,11 +26,13 @@ __attribute__((visibility("hidden")))
     _Bool _allowsEditing;
     _Bool _allowsCancel;
     _Bool _allowsDeletion;
+    _Bool _allowsDone;
     _Bool _hidesPromptInLandscape;
     id <CNContactPickerContentDelegate> _delegate;
     CNContactNavigationController *_contactNavigationController;
     CNContactStoreDataSource *_dataSource;
     NSMutableArray *_contactProperties;
+    CNContainer *_parentContainer;
     NSArray *_displayedPropertyKeys;
     long long _cardActions;
     NSString *_prompt;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)descriptorForContactPropertiesSupportingPredicateEvaluation;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property(retain, nonatomic) FAFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *bannerTitle; // @synthesize bannerTitle=_bannerTitle;
 @property(nonatomic) _Bool hidesPromptInLandscape; // @synthesize hidesPromptInLandscape=_hidesPromptInLandscape;
 @property(copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property(nonatomic) _Bool allowsDone; // @synthesize allowsDone=_allowsDone;
 @property(nonatomic) _Bool allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property(nonatomic) _Bool allowsCancel; // @synthesize allowsCancel=_allowsCancel;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
@@ -63,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hidesSearchableSources; // @synthesize hidesSearchableSources=_hidesSearchableSources;
 @property(nonatomic) long long cardActions; // @synthesize cardActions=_cardActions;
 @property(copy, nonatomic) NSArray *displayedPropertyKeys; // @synthesize displayedPropertyKeys=_displayedPropertyKeys;
+@property(retain, nonatomic) CNContainer *parentContainer; // @synthesize parentContainer=_parentContainer;
 @property(retain, nonatomic) NSMutableArray *contactProperties; // @synthesize contactProperties=_contactProperties;
 @property(retain, nonatomic) CNContactStoreDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) CNContactNavigationController *contactNavigationController; // @synthesize contactNavigationController=_contactNavigationController;
@@ -72,7 +77,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool clientWantsSingleProperty; // @synthesize clientWantsSingleProperty=_clientWantsSingleProperty;
 @property(nonatomic) _Bool clientWantsSingleContact; // @synthesize clientWantsSingleContact=_clientWantsSingleContact;
 @property(nonatomic) __weak id <CNContactPickerContentDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_selectedProperties:(id)arg1;
 - (void)_selectedContacts:(id)arg1;
 - (void)_selectedProperty:(id)arg1;
@@ -89,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)contactNavigationControllerShouldAddNewContact:(id)arg1;
 - (void)invalidate;
 - (void)invalidateSelectionAnimated:(_Bool)arg1;
+@property(readonly, nonatomic) UIBarButtonItem *addContactBarButtonItem;
 @property(readonly, nonatomic) UINavigationController *navigationController;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_updatePromptWithViewSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;

@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBPunchout;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBMessageAttachment, _SFPBPunchout, _SFPBURL;
 
 @protocol _SFPBMessageCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBMessageAttachment *messageAttachment;
+@property(retain, nonatomic) _SFPBURL *audioMessageURL;
 @property(nonatomic) int messageServiceType;
 @property(nonatomic) int messageStatus;
 @property(copy, nonatomic) NSString *messageText;

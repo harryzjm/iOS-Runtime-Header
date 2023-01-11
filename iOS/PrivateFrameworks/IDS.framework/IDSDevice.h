@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSDestination, NSArray, NSData, NSDate, NSString, NSUUID, _IDSDevice;
+@class IDSDestination, IDSEndpointCapabilities, NSArray, NSData, NSDate, NSString, NSUUID, _IDSDevice;
 
 @interface IDSDevice : NSObject
 {
@@ -38,6 +38,8 @@
 @property(readonly, nonatomic) NSArray *linkedUserURIs;
 @property(readonly, nonatomic) IDSDestination *destination;
 @property(readonly, nonatomic) _Bool isHSATrusted;
+@property(readonly, nonatomic) long long relationship;
+@property(readonly, nonatomic) IDSEndpointCapabilities *capabilities;
 @property(readonly, nonatomic) _Bool isActive;
 @property(readonly, nonatomic) _Bool isLocallyPaired;
 @property(readonly, nonatomic) _Bool isDefaultPairedDevice;
@@ -55,6 +57,7 @@
 @property(readonly, nonatomic) NSString *uniqueIDOverride;
 @property(readonly, nonatomic) NSString *uniqueID;
 - (id)description;
+- (id)compactDescription;
 - (id)fullDescription;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1;

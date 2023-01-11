@@ -15,7 +15,7 @@
 }
 
 + (id)logCategory;
-+ (Class)modelClass;
++ (id)modelForChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 - (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)associateToHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

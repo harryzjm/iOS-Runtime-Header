@@ -15,7 +15,7 @@
     unsigned long long _numberOfRightHandSides;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long numberOfRightHandSides; // @synthesize numberOfRightHandSides=_numberOfRightHandSides;
 @property(nonatomic) unsigned long long order; // @synthesize order=_order;
 @property(readonly, nonatomic) _Bool upper; // @synthesize upper=_upper;

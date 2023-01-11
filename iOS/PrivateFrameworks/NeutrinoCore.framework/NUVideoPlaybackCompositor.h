@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface NUVideoPlaybackCompositor
 {
+    NSString *_label;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 - (void)fulfillVideoCompositionRequest:(id)arg1;
 
 @end

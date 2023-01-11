@@ -19,13 +19,12 @@
 }
 
 + (id)_manifestsByIdentity;
-+ (unsigned long long)maximumInFlightDataSize;
 + (void)deleteAllSystemSnapshots;
 + (id)debugDescription;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak XBApplicationSnapshotManifestImpl *manifestImpl; // @synthesize manifestImpl=_manifestImpl;
 @property(nonatomic) __weak id <XBApplicationSnapshotManifestDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)manifest:(id)arg1 didPurgeProtectedContentSnapshotsWithGroupIdentifiers:(id)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -42,7 +41,10 @@
 - (void)deleteSnapshots:(id)arg1;
 - (void)deleteSnapshot:(id)arg1;
 - (void)deleteAllSnapshots;
+- (id)_allSnapshotGroups;
 - (void)saveSnapshot:(id)arg1 atPath:(id)arg2 withContext:(id)arg3;
+- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 options:(unsigned long long)arg3 imageGeneratedHandler:(CDUnknownBlockType)arg4 imageDataSavedHandler:(CDUnknownBlockType)arg5;
+- (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(_Bool)arg3 imageGeneratedHandler:(CDUnknownBlockType)arg4 imageDataSavedHandler:(CDUnknownBlockType)arg5;
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(_Bool)arg3 didGenerateImage:(CDUnknownBlockType)arg4 didSaveImage:(CDUnknownBlockType)arg5;
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)createVariantForSnapshot:(id)arg1 withIdentifier:(id)arg2;

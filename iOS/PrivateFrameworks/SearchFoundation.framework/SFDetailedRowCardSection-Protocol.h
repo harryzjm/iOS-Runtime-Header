@@ -11,6 +11,7 @@
 @protocol SFDetailedRowCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool shouldUseCompactDisplay;
 @property(retain, nonatomic) SFButton *button;
 @property(retain, nonatomic) SFActionItem *action;
 @property(retain, nonatomic) SFFormattedText *trailingBottomText;

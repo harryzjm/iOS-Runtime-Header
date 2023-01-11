@@ -11,8 +11,8 @@
     NSData *_xmlUIData;
 }
 
-@property(readonly, nonatomic) NSData *xmlUIData; // @synthesize xmlUIData=_xmlUIData;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSData *xmlUIData; // @synthesize xmlUIData=_xmlUIData;
 - (_Bool)bodyIsPlist;
 - (id)responseXMLData;
 - (id)initWithHTTPResponse:(id)arg1 data:(id)arg2;

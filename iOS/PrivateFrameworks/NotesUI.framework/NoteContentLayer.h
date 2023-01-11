@@ -12,31 +12,33 @@
 #import <NotesUI/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSString, NoteDateLabel, NoteHTMLEditorView;
-@protocol NoteContentLayerDelegate, NotesTextureScrolling;
+@protocol NoteContentLayerAttachmentPresentationDelegate, NoteContentLayerDelegate;
 
 @interface NoteContentLayer : UIView <NoteHTMLEditorViewDelegate, NoteHTMLEditorViewActionDelegate, NoteHTMLEditorViewLayoutDelegate, UIScrollViewDelegate>
 {
     _Bool _containsCJK;
     _Bool _tracksMaximumContentLength;
     _Bool _allowsAttachments;
+    _Bool _showsDateLabel;
     _Bool _updatedTitleRange;
     id <NoteContentLayerDelegate> _delegate;
-    id <NotesTextureScrolling> _textureScrollingDelegate;
+    id <NoteContentLayerAttachmentPresentationDelegate> _attachmentPresentationDelegate;
     NoteHTMLEditorView *_noteHTMLEditorView;
     NSArray *_horizontalConstraints;
     NoteDateLabel *_dateLabel;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool updatedTitleRange; // @synthesize updatedTitleRange=_updatedTitleRange;
 @property(retain, nonatomic) NoteDateLabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property(retain, nonatomic) NSArray *horizontalConstraints; // @synthesize horizontalConstraints=_horizontalConstraints;
+@property(nonatomic) _Bool showsDateLabel; // @synthesize showsDateLabel=_showsDateLabel;
 @property(nonatomic) _Bool allowsAttachments; // @synthesize allowsAttachments=_allowsAttachments;
 @property(retain, nonatomic) NoteHTMLEditorView *noteHTMLEditorView; // @synthesize noteHTMLEditorView=_noteHTMLEditorView;
 @property(nonatomic) _Bool tracksMaximumContentLength; // @synthesize tracksMaximumContentLength=_tracksMaximumContentLength;
-@property(nonatomic) __weak id <NotesTextureScrolling> textureScrollingDelegate; // @synthesize textureScrollingDelegate=_textureScrollingDelegate;
 @property(nonatomic) _Bool containsCJK; // @synthesize containsCJK=_containsCJK;
+@property(nonatomic) __weak id <NoteContentLayerAttachmentPresentationDelegate> attachmentPresentationDelegate; // @synthesize attachmentPresentationDelegate=_attachmentPresentationDelegate;
 @property(nonatomic) __weak id <NoteContentLayerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)processMapAttachmentItemProvider:(id)arg1;
 - (void)processAttachmentItemProviders:(id)arg1;
 - (void)chosenUTI:(id *)arg1 andChosenMIMEType:(id *)arg2 forItemProvider:(id)arg3;
@@ -50,7 +52,6 @@
 - (void)insertImageInNoteHTMLEditorView:(id)arg1;
 - (_Bool)canInsertImagesInNoteHTMLEditorView:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
-- (void)noteHTMLEditorView:(id)arg1 webScrollViewDidScroll:(id)arg2;
 - (id)noteHTMLEditorView:(id)arg1 updateAttachments:(id)arg2;
 - (void)noteHTMLEditorView:(id)arg1 didInvokeStyleFormattingOption:(long long)arg2;
 - (void)noteHTMLEditorView:(id)arg1 didInvokeFormattingCalloutOption:(long long)arg2;
@@ -64,6 +65,7 @@
 - (void)noteHTMLEditorViewDidChange:(id)arg1;
 - (_Bool)noteHTMLEditorViewShouldBeginEditing:(id)arg1 isUserInitiated:(_Bool)arg2;
 - (void)noteHTMLEditorView:(id)arg1 didAddAttachmentForMimeType:(id)arg2 filename:(id)arg3 data:(id)arg4;
+- (id)noteHTMLEditorView:(id)arg1 createAttachmentPresentationWithFileWrapper:(id)arg2 mimeType:(id)arg3;
 - (void)noteHTMLEditorView:(id)arg1 addAttachmentItemProviders:(id)arg2;
 - (_Bool)noteHTMLEditorView:(id)arg1 canAddAttachmentItemProviders:(id)arg2;
 - (_Bool)allowsAttachmentsInNoteHTMLEditorView:(id)arg1;
@@ -73,11 +75,11 @@
 - (void)scrollToTopAnimated:(_Bool)arg1;
 - (void)setSelectionToStart;
 - (id)viewPrintFormatter;
-- (id)contentAsPasteboardItems;
+- (void)copyNoteHTMLToPasteboard;
 - (id)webArchive;
 - (void)replaceSelectionWithAttachmentPresentation:(id)arg1;
 - (struct CGRect)rectForDOMNode:(id)arg1;
-- (struct CGRect)rectForSelection;
+- (void)getRectForSelectionWithCompletion:(CDUnknownBlockType)arg1;
 @property(nonatomic) struct CGPoint contentOffset;
 - (_Bool)isFirstResponder;
 - (_Bool)resignFirstResponder;
@@ -100,6 +102,7 @@
 - (void)forcedSetContainsCJK:(_Bool)arg1;
 - (void)setContent:(id)arg1 isPlainText:(_Bool)arg2 isCJK:(_Bool)arg3 attachments:(id)arg4;
 - (void)setTimestampDate:(id)arg1;
+- (void)updateObscuredInsets;
 - (void)updateDateLabel;
 - (void)reloadInterface;
 - (void)updateConstraints;

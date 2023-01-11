@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIColor *darkHighlightedDescriptionText; // @synthesize darkHighlightedDescriptionText=_darkHighlightedDescriptionText;
 @property(readonly, nonatomic) UIColor *highlightedDescriptionText; // @synthesize highlightedDescriptionText=_highlightedDescriptionText;
 @property(readonly, nonatomic) UIColor *darkSeeMoreTextColor; // @synthesize darkSeeMoreTextColor=_darkSeeMoreTextColor;
@@ -34,8 +35,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VUITextLayout *infoBodyTextLayout; // @synthesize infoBodyTextLayout=_infoBodyTextLayout;
 @property(readonly, nonatomic) VUITextLayout *infoHeaderTextLayout; // @synthesize infoHeaderTextLayout=_infoHeaderTextLayout;
 @property(readonly, nonatomic) VUITextLayout *headerTextLayout; // @synthesize headerTextLayout=_headerTextLayout;
-- (void).cxx_destruct;
 - (void)_setupLayouts;
+@property(readonly, nonatomic) double verticalSpacing;
+@property(readonly, nonatomic) double bottomPadding;
 @property(readonly, nonatomic) _Bool isTVOS;
 @property(readonly, nonatomic) _Bool isDynamicTextEnabled;
 @property(readonly, nonatomic) _Bool isHorizontal;

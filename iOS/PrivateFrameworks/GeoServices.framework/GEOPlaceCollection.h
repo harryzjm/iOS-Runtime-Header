@@ -6,26 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapItemAttribution, GEOPDAttribution, GEOPDPlaceCollection, NSData, NSString;
+@class GEOCollectionPublisherAttribution, GEOMapItemIdentifier, GEOPDPlaceCollection, GEOPublisher, NSArray, NSDate, NSString, NSURL;
+@protocol GEOMapItemPhoto;
 
 @interface GEOPlaceCollection : NSObject
 {
     GEOPDPlaceCollection *_collection;
-    GEOPDAttribution *_dataAttribution;
-    GEOMapItemAttribution *_attribution;
+    GEOPublisher *_publisher;
+    GEOCollectionPublisherAttribution *_publisherAttribution;
+    NSString *_publisherAttributionIdentifierString;
 }
 
-+ (id)placeCollectionForData:(id)arg1;
 - (void).cxx_destruct;
-- (id)imageURLforSize:(struct CGSize)arg1;
-@property(readonly, nonatomic) unsigned long long placeCount;
-@property(readonly, nonatomic) NSString *description;
-@property(readonly, nonatomic) NSString *name;
-@property(readonly, nonatomic) NSString *actionURLString;
-@property(readonly, nonatomic) unsigned long long muid;
-@property(readonly, nonatomic) NSData *storageData;
-- (void)loadAttribution;
-- (id)initWithCollection:(id)arg1 attribution:(id)arg2;
+@property(readonly, nonatomic) NSString *publisherAttributionIdentifierString; // @synthesize publisherAttributionIdentifierString=_publisherAttributionIdentifierString;
+@property(readonly, nonatomic) GEOCollectionPublisherAttribution *publisherAttribution; // @synthesize publisherAttribution=_publisherAttribution;
+@property(readonly, nonatomic) GEOPublisher *publisher; // @synthesize publisher=_publisher;
+@property(readonly, nonatomic, getter=isBlocked) _Bool blocked;
+@property(readonly, nonatomic, getter=isSuppressed) _Bool suppressed;
+@property(readonly, nonatomic) NSURL *collectionURL;
+@property(readonly, nonatomic) id <GEOMapItemPhoto> authorPhoto;
+@property(readonly, nonatomic) NSString *authorName;
+@property(readonly, nonatomic) NSDate *lastModifiedDate;
+@property(readonly, nonatomic) unsigned long long numberOfItems;
+@property(readonly, nonatomic) NSArray *itemIds;
+@property(readonly, nonatomic) NSArray *photos;
+@property(readonly, nonatomic) GEOMapItemIdentifier *collectionIdentifier;
+@property(readonly, nonatomic) NSString *collectionDescription;
+@property(readonly, nonatomic) NSString *collectionTitle;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithCollection:(id)arg1 usingAttribution:(id)arg2;
 
 @end
 

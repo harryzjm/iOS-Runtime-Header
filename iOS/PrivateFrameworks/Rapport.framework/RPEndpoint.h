@@ -8,10 +8,11 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class CUBonjourDevice, IDSDevice, NSArray, NSString, SFDevice;
+@class CUBonjourDevice, IDSDevice, NSArray, NSDictionary, NSString, SFDevice;
 
 @interface RPEndpoint : NSObject <NSSecureCoding>
 {
+    NSString *_accountID;
     SFDevice *_bleDevice;
     CUBonjourDevice *_bonjourDevice;
     unsigned int _hotspotInfo;
@@ -28,12 +29,14 @@
     _Bool _present;
     int _proximity;
     NSString *_homeKitUserIdentifier;
+    NSDictionary *_serviceInfo;
     NSString *_serviceType;
     IDSDevice *_idsDevice;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)nullEndpoint;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool present; // @synthesize present=_present;
 @property(nonatomic) int linkType; // @synthesize linkType=_linkType;
 @property(retain, nonatomic) IDSDevice *idsDevice; // @synthesize idsDevice=_idsDevice;
@@ -43,6 +46,7 @@
 @property(nonatomic) unsigned long long statusFlags; // @synthesize statusFlags=_statusFlags;
 @property(copy, nonatomic) NSArray *serviceTypes; // @synthesize serviceTypes=_serviceTypes;
 @property(readonly, copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property(readonly, copy, nonatomic) NSDictionary *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
 @property(readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *model; // @synthesize model=_model;
@@ -52,7 +56,7 @@
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) unsigned int hotspotInfo; // @synthesize hotspotInfo=_hotspotInfo;
 @property(readonly, copy, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 - (_Bool)removeSFDevice:(id)arg1;
 - (unsigned int)updateWithSFDevice:(id)arg1;
 - (unsigned int)removeIDSDevice;

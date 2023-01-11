@@ -9,6 +9,7 @@
 @class MPMediaLibrary, MPMediaQueryCriteria, MPMediaQuerySectionInfo, NSMutableArray, NSObject;
 @protocol MPMediaLibraryResultSet, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPMediaEntityResultSetArray <NSCopying>
 {
     id <MPMediaLibraryResultSet> _resultSet;
@@ -21,9 +22,9 @@
     long long _revision;
 }
 
+- (void).cxx_destruct;
 - (id)sectionInfo;
 @property(readonly, nonatomic) id <MPMediaLibraryResultSet> resultSet; // @synthesize resultSet=_resultSet;
-- (void).cxx_destruct;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (_Bool)isQueryResultSetInvalidated;
 - (unsigned long long)count;

@@ -17,9 +17,9 @@
     id <_MSMessageComposeExtensionProtocol> _appContext;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <_MSMessageComposeExtensionProtocol> appContext; // @synthesize appContext=_appContext;
 @property(nonatomic) __weak id <_MSMessageComposeHostProtocol> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_stageAssetArchive:(id)arg1 skipShelf:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_contentDidLoad;
@@ -29,7 +29,10 @@
 - (void)_updateSnapshotForNextLaunch:(id)arg1;
 - (void)_dismissAndPresentPhotosApp;
 - (void)_dismiss;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_requestPresentationStyle:(unsigned long long)arg1;
+- (void)_dragMediaItemCanceled;
+- (void)_dragMediaItemMoved:(id)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_startDragMediaItem:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_stageRichLink:(id)arg1 skipShelf:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_stageMediaItem:(id)arg1 skipShelf:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;

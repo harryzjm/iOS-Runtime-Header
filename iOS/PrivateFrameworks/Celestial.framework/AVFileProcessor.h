@@ -9,6 +9,7 @@
 @interface AVFileProcessor : NSObject
 {
     float _percentComplete;
+    CDUnknownBlockType _progressBlock;
 }
 
 + (id)fileProcessor;
@@ -19,6 +20,7 @@
 - (id)processPurchasedItem:(id)arg1 withAttributes:(id)arg2 resultInfo:(id *)arg3;
 - (id)processPurchasedItem:(id)arg1 withAttributes:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)processPurchasedItem:(id)arg1 withAttributes:(id)arg2;
+- (void)dealloc;
 
 @end
 

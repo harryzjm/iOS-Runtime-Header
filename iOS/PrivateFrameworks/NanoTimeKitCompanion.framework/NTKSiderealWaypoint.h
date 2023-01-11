@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@interface NTKSiderealWaypoint : NSObject
+#import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
+
+@interface NTKSiderealWaypoint : NSObject <NSSecureCoding>
 {
     double _degree;
     long long _type;
 }
 
 + (long long)_waypointTypeFromSolarEventType:(long long)arg1;
++ (_Bool)supportsSecureCoding;
 + (id)waypointWithType:(long long)arg1 degree:(double)arg2;
 + (id)waypointFromSolarEvent:(id)arg1;
 @property(nonatomic) long long type; // @synthesize type=_type;
@@ -20,6 +23,8 @@
 - (id)localizedName;
 - (id)debugDescription;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 degree:(double)arg2;
 
 @end

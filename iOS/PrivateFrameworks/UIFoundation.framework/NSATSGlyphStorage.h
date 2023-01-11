@@ -66,21 +66,7 @@
 - (struct __CTGlyphStorage *)createCopy:(CDStruct_627e0f85)arg1;
 - (void)finalize;
 - (void)dealloc;
-- (const CDStruct_ec8253cd *)_attributeRunForCharacterAtIndex:(long long)arg1;
-- (double)_widthForStringRange:(struct _NSRange)arg1;
-- (struct _NSRange)_collectElasticRangeSurroundingCharacterAtIndex:(long long)arg1 minimumCharacterIndex:(long long)arg2;
-- (_Bool)_resolvePositionalStakeGlyphsForLineFragment:(struct __CTLine *)arg1 lineFragmentRect:(struct CGRect)arg2 minPosition:(double)arg3 maxPosition:(double)arg4 maxLineFragmentWidth:(double)arg5 breakHint:(long long *)arg6;
-- (struct __CTRun *)_createEllipsisRunWithStringRange:(CDStruct_627e0f85)arg1 attributes:(struct __CFDictionary *)arg2;
-- (id)childGlyphStorageWithCharacterRange:(struct _NSRange)arg1;
-- (struct __CTTypesetter *)createCTTypesetter;
-- (void)setGlyphRange:(struct _NSRange)arg1 characterRange:(struct _NSRange)arg2;
-- (id)typesetter;
-- (id)initWithTypesetter:(id)arg1;
-- (void)_invalidate;
-- (void)_flushCachedObjects;
 - (oneway void)release;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
 
 @end
 

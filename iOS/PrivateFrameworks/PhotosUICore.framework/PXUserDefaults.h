@@ -7,36 +7,57 @@
 #import <objc/NSObject.h>
 
 @class NSDate, NSNumber;
-@protocol PXUserDefaultsDataSource;
+@protocol PXUserDefaultsDataSource, PXZoomablePhotosUserDefaults;
 
 @interface PXUserDefaults : NSObject
 {
-    NSDate *_allPhotosColumnsDate;
     NSNumber *_allPhotosColumns;
-    double _defaultUserInterfaceTimeoutDuration;
     NSNumber *_curatedLibraryZoomLevel;
     NSNumber *_daysMarginScale;
+    NSNumber *_allPhotosCaptionsVisible;
     NSNumber *_allPhotosPreferredIndividualItemsColumns;
     NSNumber *_allPhotosAspectFit;
+    NSNumber *_allPhotosAspectFitInCompact;
+    NSNumber *_photosGridColumns;
+    NSNumber *_photosGridPreferredIndividualItemsColumns;
+    NSNumber *_photosGridAspectFit;
+    NSNumber *_photosGridAspectFitInCompact;
     NSNumber *_didShowCurationFooter;
     NSNumber *_didShowCompletedCurationFooterAnimation;
+    NSNumber *_lastRadarPromptAnsweredQuestionCount;
+    NSDate *_lastSurveyQuestionsRadarPromptDate;
+    NSDate *_surveyQuestionsHideDate;
+    NSNumber *_axExposeAllVisibleElements;
     id <PXUserDefaultsDataSource> _dataSource;
 }
 
 + (id)standardUserDefaults;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <PXUserDefaultsDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(copy, nonatomic) NSNumber *axExposeAllVisibleElements; // @synthesize axExposeAllVisibleElements=_axExposeAllVisibleElements;
+@property(copy, nonatomic) NSDate *surveyQuestionsHideDate; // @synthesize surveyQuestionsHideDate=_surveyQuestionsHideDate;
+@property(copy, nonatomic) NSDate *lastSurveyQuestionsRadarPromptDate; // @synthesize lastSurveyQuestionsRadarPromptDate=_lastSurveyQuestionsRadarPromptDate;
+@property(copy, nonatomic) NSNumber *lastRadarPromptAnsweredQuestionCount; // @synthesize lastRadarPromptAnsweredQuestionCount=_lastRadarPromptAnsweredQuestionCount;
 @property(copy, nonatomic) NSNumber *didShowCompletedCurationFooterAnimation; // @synthesize didShowCompletedCurationFooterAnimation=_didShowCompletedCurationFooterAnimation;
 @property(copy, nonatomic) NSNumber *didShowCurationFooter; // @synthesize didShowCurationFooter=_didShowCurationFooter;
+@property(copy, nonatomic) NSNumber *photosGridAspectFitInCompact; // @synthesize photosGridAspectFitInCompact=_photosGridAspectFitInCompact;
+@property(copy, nonatomic) NSNumber *photosGridAspectFit; // @synthesize photosGridAspectFit=_photosGridAspectFit;
+@property(copy, nonatomic) NSNumber *photosGridPreferredIndividualItemsColumns; // @synthesize photosGridPreferredIndividualItemsColumns=_photosGridPreferredIndividualItemsColumns;
+@property(copy, nonatomic) NSNumber *photosGridColumns; // @synthesize photosGridColumns=_photosGridColumns;
+@property(copy, nonatomic) NSNumber *allPhotosAspectFitInCompact; // @synthesize allPhotosAspectFitInCompact=_allPhotosAspectFitInCompact;
 @property(copy, nonatomic) NSNumber *allPhotosAspectFit; // @synthesize allPhotosAspectFit=_allPhotosAspectFit;
 @property(copy, nonatomic) NSNumber *allPhotosPreferredIndividualItemsColumns; // @synthesize allPhotosPreferredIndividualItemsColumns=_allPhotosPreferredIndividualItemsColumns;
+@property(copy, nonatomic) NSNumber *allPhotosCaptionsVisible; // @synthesize allPhotosCaptionsVisible=_allPhotosCaptionsVisible;
 @property(copy, nonatomic) NSNumber *daysMarginScale; // @synthesize daysMarginScale=_daysMarginScale;
 @property(copy, nonatomic) NSNumber *curatedLibraryZoomLevel; // @synthesize curatedLibraryZoomLevel=_curatedLibraryZoomLevel;
-@property(readonly, nonatomic) double defaultUserInterfaceTimeoutDuration; // @synthesize defaultUserInterfaceTimeoutDuration=_defaultUserInterfaceTimeoutDuration;
-- (void).cxx_destruct;
-- (_Bool)_isDateStillValid:(id)arg1;
 @property(copy, nonatomic) NSNumber *allPhotosColumns; // @synthesize allPhotosColumns=_allPhotosColumns;
+- (void)setNumberOfAnsweredQuestionsFromLastRadarPrompt:(id)arg1;
+- (void)setSurveyQuestionsRadarPromptDate:(id)arg1;
+- (void)setallPhotosAspectFitInCompact:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic) id <PXZoomablePhotosUserDefaults> photosGridsUserDefaults;
+@property(readonly, nonatomic) id <PXZoomablePhotosUserDefaults> curatedLibraryUserDefaults;
 
 @end
 

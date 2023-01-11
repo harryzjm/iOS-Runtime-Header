@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddress, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddress, NSData, NSString;
 
-@interface HMDNetworkRouterClientStatusIdentifier : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientStatusIdentifier : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_clientIdentifier;
+    HAPTLVUnsignedNumberValue *_clientIdentifier;
+    NSData *_macAddress;
     HMDNetworkRouterIPAddress *_ipAddress;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) HMDNetworkRouterIPAddress *ipAddress; // @synthesize ipAddress=_ipAddress;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HMDNetworkRouterIPAddress *ipAddress; // @synthesize ipAddress=_ipAddress;
+@property(retain, nonatomic) NSData *macAddress; // @synthesize macAddress=_macAddress;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithError:(id *)arg1;
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
-- (id)initWithClientIdentifier:(id)arg1 ipAddress:(id)arg2;
+- (id)initWithClientIdentifier:(id)arg1 macAddress:(id)arg2 ipAddress:(id)arg3;
 - (id)init;
 
 // Remaining properties

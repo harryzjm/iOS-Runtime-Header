@@ -6,24 +6,40 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMFUnfairLock, NSMutableDictionary;
+@class HMDHome, HMFUnfairLock, NSHashTable, NSMutableDictionary, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HMDNotificationRegistry : HMFObject <NSSecureCoding>
+@interface HMDNotificationRegistry : HMFObject <HMFLogging, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSMutableDictionary *_notificationRegistry;
+    NSHashTable *_delegates;
+    HMDHome *_home;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_reachabilityEventNotificationRegistryKeysForAccessoryUUIDs:(id)arg1;
++ (id)_reachabilityEventNotificationRegistryKeyForAccessoryUUID:(id)arg1;
 + (_Bool)doesKey:(id)arg1 matchMediaProfile:(id)arg2;
 + (id)keyForProperty:(id)arg1 mediaProfile:(id)arg2;
 + (id)_createCharacteristicsMapForCharacteristics:(id)arg1;
 + (id)keyForCharacteristic:(id)arg1;
++ (id)logCategory;
 - (void).cxx_destruct;
+@property(retain) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly) __weak HMDHome *home; // @synthesize home=_home;
+- (void)addDelegate:(id)arg1;
+- (void)notifyDelegatesOfRegistryUpdates;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)removeAllReachabilityEventNotificationRegistrations;
+- (id)userIDsRegisteredForReachabilityEventNotificationsForAccessoryUUIDs:(id)arg1;
+- (_Bool)disableReachabilityEventNotificationForAccessoryUUIDs:(id)arg1 forUserID:(id)arg2;
+- (_Bool)enableReachabilityEventNotificationForAccessoryUUIDs:(id)arg1 forUserID:(id)arg2;
 - (void)auditUsersForNotifications:(id)arg1 forHome:(id)arg2;
 - (void)disableNotification:(id)arg1 user:(id)arg2 ignoreLockReq:(_Bool)arg3 home:(id)arg4;
 - (void)deregisterUsers:(id)arg1 forHome:(id)arg2;
@@ -36,11 +52,21 @@
 - (_Bool)removeRegistrationsForMediaProfile:(id)arg1;
 - (_Bool)disableNotificationForProperties:(id)arg1 forUser:(id)arg2;
 - (_Bool)enableNotificationForProperties:(id)arg1 forUser:(id)arg2;
+- (_Bool)removeRegistrationsForCharacteristic:(id)arg1;
 - (_Bool)disableNotificationForCharacteristics:(id)arg1 forUser:(id)arg2 characteristicsToDisableEvents:(id *)arg3;
 - (_Bool)enableNotificationForCharacteristics:(id)arg1 forUser:(id)arg2;
 - (id)shortDescription;
+- (void)clearAllRegistrations;
 @property(readonly, nonatomic) NSMutableDictionary *notificationRegistry; // @synthesize notificationRegistry=_notificationRegistry;
+@property(copy) NSHashTable *delegates; // @synthesize delegates=_delegates;
+- (void)configureWithHome:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

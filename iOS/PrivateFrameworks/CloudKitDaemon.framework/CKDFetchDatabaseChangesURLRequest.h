@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSData *_previousServerChangeTokenData;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *previousServerChangeTokenData; // @synthesize previousServerChangeTokenData=_previousServerChangeTokenData;
 @property(retain, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
 @property(copy, nonatomic) CDUnknownBlockType zonePurgedBlock; // @synthesize zonePurgedBlock=_zonePurgedBlock;
@@ -35,13 +36,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *purgedZoneIDs; // @synthesize purgedZoneIDs=_purgedZoneIDs;
 @property(readonly, nonatomic) NSArray *deletedZoneIDs; // @synthesize deletedZoneIDs=_deletedZoneIDs;
 @property(readonly, nonatomic) NSArray *changedZoneIDs; // @synthesize changedZoneIDs=_changedZoneIDs;
-- (void).cxx_destruct;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
-- (int)operationType;
 - (_Bool)allowsAnonymousAccount;
-- (id)initWithPreviousServerChangeTokenData:(id)arg1;
+- (id)initWithOperation:(id)arg1 previousServerChangeTokenData:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

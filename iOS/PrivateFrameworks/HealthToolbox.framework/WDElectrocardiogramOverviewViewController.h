@@ -17,6 +17,7 @@
 
 @interface WDElectrocardiogramOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HROnboardingManagerDelegate, WDElectrocardiogramFilterDataProviderDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
 {
+    _Bool _firstViewDidLayoutSubviews;
     _Bool _previousElectrocardiogramDisabledCacheValue;
     long long _placeholderCellCount;
     HKDisplayType *_displayType;
@@ -29,6 +30,7 @@
     UITapGestureRecognizer *_tripleTapToSettingsRecognizer;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool previousElectrocardiogramDisabledCacheValue; // @synthesize previousElectrocardiogramDisabledCacheValue=_previousElectrocardiogramDisabledCacheValue;
 @property(retain, nonatomic) UITapGestureRecognizer *tripleTapToSettingsRecognizer; // @synthesize tripleTapToSettingsRecognizer=_tripleTapToSettingsRecognizer;
 @property(retain, nonatomic) id <HKDataMetadataSectionProtocol> educationSection; // @synthesize educationSection=_educationSection;
@@ -38,8 +40,8 @@
 @property(retain, nonatomic) HROnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property(nonatomic) __weak WDProfile *profile; // @synthesize profile=_profile;
 @property(retain, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
+@property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property(nonatomic) long long placeholderCellCount; // @synthesize placeholderCellCount=_placeholderCellCount;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)_showDataSourcesAndAccessController;
@@ -47,13 +49,12 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)didDismissOnboarding;
 - (void)didCompleteOnboarding;
-- (void)didTapOnAtrialFibrillationNotificationLearnMore;
 - (void)didTapOnElectrocardiogram:(id)arg1;
 - (void)didSelectReenableFeatureForProductName:(id)arg1;
 - (void)beginOnboardingForOnboardingSetupView:(id)arg1;
 - (void)electrocardiogramFilterDataProvider:(id)arg1 didUpdateCount:(long long)arg2 type:(long long)arg3;
 - (void)isFavorited:(_Bool)arg1;
-- (_Bool)_isPrimaryProfile;
+- (_Bool)isPrimaryProfile;
 - (long long)_filterTypeForDataSectionRow:(long long)arg1;
 - (id)_cellWithDisclosureIndicatorAndText:(id)arg1 value:(id)arg2;
 - (id)_cellForDescription;
@@ -64,6 +65,7 @@
 - (id)_showAllResultsCellForType:(long long)arg1;
 - (id)_cellForSampleAtIndex:(long long)arg1 section:(long long)arg2;
 - (id)_electrocardiogramSetupContainerView;
+- (void)_reloadAllSections;
 - (void)_reloadElectrocardiogramSetupTableHeaderView;
 - (_Bool)_shouldShowElectrocardiogramSetupTableHeaderView;
 - (id)_recordingDisabledHeaderView;
@@ -81,7 +83,9 @@
 - (void)protectedDataDidBecomeAvailable:(id)arg1;
 - (void)heartRhythmAvailabilityDidUpdate;
 - (void)_reloadTableViewAndScrollToTop;
+- (double)adjustedSafeAreaInsetTop;
 - (void)showInternalSettings;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;

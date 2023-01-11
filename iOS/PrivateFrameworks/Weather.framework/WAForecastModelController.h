@@ -9,7 +9,6 @@
 @class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, WFServiceConnection, WFWeatherStoreService;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface WAForecastModelController : NSObject
 {
     NSOperationQueue *_forecastOperationQueue;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
     WFWeatherStoreService *_store;
 }
 
+- (void).cxx_destruct;
 @property(readonly) WFWeatherStoreService *store; // @synthesize store=_store;
 @property(copy) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 @property(nonatomic) struct ct_green_tea_logger_s *greenTeaLogger; // @synthesize greenTeaLogger=_greenTeaLogger;
@@ -32,12 +32,13 @@ __attribute__((visibility("hidden")))
 @property(retain) NSObject<OS_dispatch_queue> *completionHandlerQueue; // @synthesize completionHandlerQueue=_completionHandlerQueue;
 @property(retain) NSObject<OS_dispatch_queue> *incomingRequestQueue; // @synthesize incomingRequestQueue=_incomingRequestQueue;
 @property(retain) NSOperationQueue *forecastOperationQueue; // @synthesize forecastOperationQueue=_forecastOperationQueue;
-- (void).cxx_destruct;
 - (id)_commaSeparatedUpdatingCitiesNames;
 - (void)_handleForecastOperationCompletion:(id)arg1;
 - (void)cancelAllFetchRequests;
+- (id)_queue_executeFetchForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_queue_executeFetchForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)fetchForecastForCities:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)fetchForecastForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)fetchForecastForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)isCityBeingUpdated:(id)arg1;
 - (void)dealloc;

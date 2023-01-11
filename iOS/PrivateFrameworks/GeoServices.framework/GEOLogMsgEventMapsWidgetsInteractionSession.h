@@ -13,10 +13,12 @@
 @interface GEOLogMsgEventMapsWidgetsInteractionSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOMapsDestinationsWidget *_mapsDestinationsWidget;
     GEOMapsNearbyWidget *_mapsNearbyWidget;
     GEOMapsTransitWidget *_mapsTransitWidget;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _duration;
     int _endState;
     int _localDayOfWeek;
@@ -33,15 +35,7 @@
         unsigned int read_mapsDestinationsWidget:1;
         unsigned int read_mapsNearbyWidget:1;
         unsigned int read_mapsTransitWidget:1;
-        unsigned int wrote_mapsDestinationsWidget:1;
-        unsigned int wrote_mapsNearbyWidget:1;
-        unsigned int wrote_mapsTransitWidget:1;
-        unsigned int wrote_duration:1;
-        unsigned int wrote_endState:1;
-        unsigned int wrote_localDayOfWeek:1;
-        unsigned int wrote_localHour:1;
-        unsigned int wrote_mapsWidgetType:1;
-        unsigned int wrote_lockedMode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -55,6 +49,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasDuration;
@@ -67,13 +64,10 @@
 @property(nonatomic) _Bool lockedMode;
 @property(retain, nonatomic) GEOMapsNearbyWidget *mapsNearbyWidget;
 @property(readonly, nonatomic) _Bool hasMapsNearbyWidget;
-- (void)_readMapsNearbyWidget;
 @property(retain, nonatomic) GEOMapsTransitWidget *mapsTransitWidget;
 @property(readonly, nonatomic) _Bool hasMapsTransitWidget;
-- (void)_readMapsTransitWidget;
 @property(retain, nonatomic) GEOMapsDestinationsWidget *mapsDestinationsWidget;
 @property(readonly, nonatomic) _Bool hasMapsDestinationsWidget;
-- (void)_readMapsDestinationsWidget;
 - (int)StringAsEndState:(id)arg1;
 - (id)endStateAsString:(int)arg1;
 @property(nonatomic) _Bool hasEndState;
@@ -82,6 +76,8 @@
 - (id)mapsWidgetTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasMapsWidgetType;
 @property(nonatomic) int mapsWidgetType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

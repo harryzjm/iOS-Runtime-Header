@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPRTCReportingAVItemDeallocationHandler : NSObject
 {
     CDUnknownBlockType _handler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void)dealloc;
 
 @end

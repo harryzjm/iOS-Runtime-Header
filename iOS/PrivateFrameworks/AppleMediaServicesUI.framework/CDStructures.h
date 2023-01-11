@@ -11,29 +11,17 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGPoint {
-    double _field1;
-    double _field2;
+    double x;
+    double y;
 };
 
 struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct UIImage {
-    Class _field1;
-};
-
-struct UITextField {
-    Class _field1;
-};
-
-struct UIViewController {
-    Class _field1;
+    double width;
+    double height;
 };
 

@@ -6,33 +6,35 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaTextToSpeechBegin-Protocol.h>
+@class NSData, NSString, SISchemaHardwareInterfaceIdentifier;
 
-@class NSData, NSString;
-
-@interface SISchemaTextToSpeechBegin : PBCodable <SISchemaTextToSpeechBegin, NSSecureCoding>
+@interface SISchemaTextToSpeechBegin : PBCodable
 {
-    int _audioOutputRoute;
     NSString *_aceID;
+    int _audioOutputRoute;
+    SISchemaHardwareInterfaceIdentifier *_hardwareInterfaceVendorID;
+    struct {
+        unsigned int audioOutputRoute:1;
+    } _has;
+    _Bool _hasAceID;
+    _Bool _hasHardwareInterfaceVendorID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasHardwareInterfaceVendorID; // @synthesize hasHardwareInterfaceVendorID=_hasHardwareInterfaceVendorID;
+@property(nonatomic) _Bool hasAceID; // @synthesize hasAceID=_hasAceID;
+@property(retain, nonatomic) SISchemaHardwareInterfaceIdentifier *hardwareInterfaceVendorID; // @synthesize hardwareInterfaceVendorID=_hardwareInterfaceVendorID;
 @property(nonatomic) int audioOutputRoute; // @synthesize audioOutputRoute=_audioOutputRoute;
 @property(copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+@property(nonatomic) _Bool hasAudioOutputRoute;
 
 @end
 

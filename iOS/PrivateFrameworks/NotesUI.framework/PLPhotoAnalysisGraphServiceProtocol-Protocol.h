@@ -9,8 +9,18 @@
 @protocol PLPhotoAnalysisGraphServiceProtocol
 
 @optional
+- (void)requestOnDiskSuggestedPersonsWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)requestOnDiskRelationshipInferencesForPersonLocalIdentifiers:(NSSet *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)requestOnDiskContactInferencesForPersonLocalIdentifiers:(NSSet *)arg1 options:(NSDictionary *)arg2 context:(NSDictionary *)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)requestOnDiskSuggestedRecipientsForAssetLocalIdentifiers:(NSArray *)arg1 momentLocalIdentifiers:(NSArray *)arg2 options:(NSDictionary *)arg3 context:(NSDictionary *)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
+- (void)requestOnDiskSuggestedContributionsForAssetsMetadata:(NSArray *)arg1 options:(NSDictionary *)arg2 context:(NSDictionary *)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
+- (void)requestSuggestedPersonsWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)requestRelationshipInferencesForPersonLocalIdentifiers:(NSSet *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)requestContactInferencesForPersonLocalIdentifiers:(NSSet *)arg1 options:(NSDictionary *)arg2 context:(NSDictionary *)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)requestRunPFLWithAttachments:(NSArray *)arg1 recipeUserInfo:(NSDictionary *)arg2 context:(NSDictionary *)arg3 resultBlock:(void (^)(NSData *, NSDictionary *, NSError *))arg4;
 - (void)runCurationWithItems:(NSDictionary *)arg1 options:(NSDictionary *)arg2 context:(NSDictionary *)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)reportMetricsWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)requestM5CompatibleMemoriesWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)requestTextFeaturesForMomentLocalIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)requestPeopleSuggestionLearningWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)requestSharingSuggestionsFromMessageStrings:(NSArray *)arg1 participantPHIdentifiers:(NSSet *)arg2 options:(NSDictionary *)arg3 context:(NSDictionary *)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
@@ -72,15 +82,16 @@
 - (void)requestZeroKeywordsWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)notifyWhenGraphReadyWithCoalescingIdentifier:(NSString *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)invalidateGraphWithContext:(NSDictionary *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (void)enrichDataModelWithContext:(NSDictionary *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)rebuildGraphWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)requestSignalModelInfosWithContext:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)requestAssetsForPersonIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)requestRelatedMomentsForPersonIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)requestSocialGroupsForPersonIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)requestAllSocialGroupsForPersonIdentifier:(NSString *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)requestSortedArrayOfPersonIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)simulateMemoriesNotificationWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
-- (void)generateQuestionsWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)requestLastQuestionGenerationJobDateWithContext:(NSDictionary *)arg1 reply:(void (^)(NSDate *, NSError *))arg2;
+- (void)requestGenerateQuestionsWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)generateSuggestionsWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)generateMemoriesWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)requestRepresentativeAssetsForAssetCollectionWithLocalIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 context:(NSDictionary *)arg3 reply:(void (^)(NSArray *, NSError *))arg4;

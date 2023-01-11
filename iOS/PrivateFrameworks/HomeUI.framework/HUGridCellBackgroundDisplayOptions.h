@@ -9,20 +9,20 @@
 #import <HomeUI/HUGridDisplayOptions-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class NSString, UIVisualEffect;
+@class NSString;
 
 @interface HUGridCellBackgroundDisplayOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
     unsigned long long _contentColorStyle;
+    NSString *_contentSizeCategory;
     unsigned long long _displayStyle;
-    UIVisualEffect *_backgroundVisualEffect;
 }
 
 + (id)defaultOptions;
-@property(retain, nonatomic) UIVisualEffect *backgroundVisualEffect; // @synthesize backgroundVisualEffect=_backgroundVisualEffect;
 @property(nonatomic) unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;
+@property(nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) double gutter;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties

@@ -28,6 +28,7 @@
 
 + (unsigned long long)maximumResourceDownloadSizeForResourceType:(unsigned long long)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *transportIdentifier; // @synthesize transportIdentifier=_transportIdentifier;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly, copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
@@ -40,14 +41,13 @@
 @property(nonatomic) unsigned long long taskIdentifierForQueue; // @synthesize taskIdentifierForQueue=_taskIdentifierForQueue;
 @property(retain, nonatomic) NSData *transportScope; // @synthesize transportScope=_transportScope;
 @property(retain, nonatomic) CPLResource *cloudResource; // @synthesize cloudResource=_cloudResource;
-- (void).cxx_destruct;
 - (void)noteTaskHasBeenPreempted;
 - (void)noteActiveQueuesStatusAtEnqueingTime:(id)arg1;
 - (void)noteStateDidProgress:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool willGenerateReport;
 - (void)cancelTask;
 - (void)launch;
-- (id)initWithLaunchHandler:(CDUnknownBlockType)arg1 cancelHandler:(CDUnknownBlockType)arg2 didStartHandler:(CDUnknownBlockType)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithResource:(id)arg1 taskIdentifier:(id)arg2 launchHandler:(CDUnknownBlockType)arg3 cancelHandler:(CDUnknownBlockType)arg4 didStartHandler:(CDUnknownBlockType)arg5 progressHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 
 @end
 

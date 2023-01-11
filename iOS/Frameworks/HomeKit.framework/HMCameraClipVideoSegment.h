@@ -6,29 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFObject-Protocol.h>
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@interface HMCameraClipVideoSegment : NSObject <NSCopying, NSSecureCoding>
+@class NSArray, NSString;
+
+@interface HMCameraClipVideoSegment : NSObject <HMFObject, NSCopying, NSSecureCoding>
 {
-    _Bool _initSegment;
-    double _duration;
     unsigned long long _byteLength;
     unsigned long long _byteOffset;
 }
 
++ (id)shortDescription;
 + (_Bool)supportsSecureCoding;
-@property(readonly, getter=isInitSegment) _Bool initSegment; // @synthesize initSegment=_initSegment;
 @property(readonly) unsigned long long byteOffset; // @synthesize byteOffset=_byteOffset;
 @property(readonly) unsigned long long byteLength; // @synthesize byteLength=_byteLength;
-@property(readonly) double duration; // @synthesize duration=_duration;
+@property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *privateDescription;
+@property(readonly, copy) NSString *shortDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
-- (id)initWithDuration:(double)arg1 byteLength:(unsigned long long)arg2 byteOffset:(unsigned long long)arg3 isInitSegment:(_Bool)arg4;
+- (id)initWithByteLength:(unsigned long long)arg1 byteOffset:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *propertyDescription;
+@property(readonly) Class superclass;
 
 @end
 

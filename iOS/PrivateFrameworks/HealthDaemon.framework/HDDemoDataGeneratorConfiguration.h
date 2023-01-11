@@ -14,6 +14,7 @@
     _Bool _shouldGenerateMedicalID;
     _Bool _shouldEnsureRecentWorkoutHasRoute;
     _Bool _shouldGenerateRecentLiquidsIntake;
+    _Bool _shouldGenerateLoudHeadphoneData;
     long long _profileType;
     long long _generationPeriodInDays;
     long long _biologicalSex;
@@ -23,6 +24,7 @@
 }
 
 + (id)configurationFromDefaults:(id)arg1;
+@property(nonatomic) _Bool shouldGenerateLoudHeadphoneData; // @synthesize shouldGenerateLoudHeadphoneData=_shouldGenerateLoudHeadphoneData;
 @property(nonatomic) _Bool shouldGenerateRecentLiquidsIntake; // @synthesize shouldGenerateRecentLiquidsIntake=_shouldGenerateRecentLiquidsIntake;
 @property(nonatomic) _Bool shouldEnsureRecentWorkoutHasRoute; // @synthesize shouldEnsureRecentWorkoutHasRoute=_shouldEnsureRecentWorkoutHasRoute;
 @property(nonatomic) _Bool shouldGenerateMedicalID; // @synthesize shouldGenerateMedicalID=_shouldGenerateMedicalID;

@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIStackView;
+@class NSLayoutConstraint;
 
 @interface CKDetailsContactsLargeTextTableViewCell
 {
-    UIStackView *_buttonStackView;
     NSLayoutConstraint *_buttonsTopConstraint;
 }
 
 + (double)estimatedHeight;
 + (double)preferredHeight;
-@property(retain, nonatomic) NSLayoutConstraint *buttonsTopConstraint; // @synthesize buttonsTopConstraint=_buttonsTopConstraint;
-@property(retain, nonatomic) UIStackView *buttonStackView; // @synthesize buttonStackView=_buttonStackView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *buttonsTopConstraint; // @synthesize buttonsTopConstraint=_buttonsTopConstraint;
+- (void)_hideAllButtons;
 - (void)_updateVisibleButtons;
 - (void)configureWithViewModel:(id)arg1;
 - (void)setShowsLocation:(_Bool)arg1;

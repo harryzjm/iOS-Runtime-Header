@@ -8,7 +8,6 @@
 
 @class AVPlayerController, AVValueTiming, NSArray, NSString, WebAVMediaSelectionOption;
 
-__attribute__((visibility("hidden")))
 @interface WebAVPlayerController : NSObject
 {
     WebAVMediaSelectionOption *_currentAudioMediaSelectionOption;
@@ -17,7 +16,9 @@ __attribute__((visibility("hidden")))
     _Bool _muted;
     _Bool _liveStreamEventModePossible;
     _Bool _isScrubbing;
+    _Bool _allowsPictureInPicture;
     _Bool _canScanBackward;
+    _Bool _hasContentChapters;
     _Bool _canPlay;
     _Bool _canPause;
     _Bool _canTogglePlayback;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
     _Bool _playingOnSecondScreen;
     _Bool _externalPlaybackActive;
     _Bool _allowsExternalPlayback;
-    _Bool _pictureInPicturePossible;
     AVPlayerController *_playerControllerProxy;
     struct PlaybackSessionModel *_delegate;
     struct PlaybackSessionInterfaceAVKit *_playbackSessionInterface;
@@ -67,7 +67,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVValueTiming *minTiming; // @synthesize minTiming=_minTiming;
 @property double liveUpdateInterval; // @synthesize liveUpdateInterval=_liveUpdateInterval;
 @property double seekableTimeRangesLastModifiedTime; // @synthesize seekableTimeRangesLastModifiedTime=_seekableTimeRangesLastModifiedTime;
-@property(getter=isPictureInPicturePossible) _Bool pictureInPicturePossible; // @synthesize pictureInPicturePossible=_pictureInPicturePossible;
 @property _Bool allowsExternalPlayback; // @synthesize allowsExternalPlayback=_allowsExternalPlayback;
 @property(retain) NSString *externalPlaybackAirPlayDeviceLocalizedName; // @synthesize externalPlaybackAirPlayDeviceLocalizedName=_externalPlaybackAirPlayDeviceLocalizedName;
 @property long long externalPlaybackType; // @synthesize externalPlaybackType=_externalPlaybackType;
@@ -90,6 +89,7 @@ __attribute__((visibility("hidden")))
 @property _Bool canTogglePlayback; // @synthesize canTogglePlayback=_canTogglePlayback;
 @property _Bool canPause; // @synthesize canPause=_canPause;
 @property _Bool canPlay; // @synthesize canPlay=_canPlay;
+@property(readonly) _Bool hasContentChapters; // @synthesize hasContentChapters=_hasContentChapters;
 @property _Bool canScanBackward; // @synthesize canScanBackward=_canScanBackward;
 @property struct PlaybackSessionInterfaceAVKit *playbackSessionInterface; // @synthesize playbackSessionInterface=_playbackSessionInterface;
 @property struct PlaybackSessionModel *delegate; // @synthesize delegate=_delegate;
@@ -102,12 +102,16 @@ __attribute__((visibility("hidden")))
 - (void)toggleMuted:(id)arg1;
 @property(getter=isMuted) _Bool muted;
 @property(getter=isPictureInPictureInterrupted) _Bool pictureInPictureInterrupted;
+@property(readonly, getter=isPictureInPicturePossible) _Bool pictureInPicturePossible;
+- (void)setAllowsPictureInPicture:(_Bool)arg1;
 @property(readonly, getter=isPlayingOnExternalScreen) _Bool playingOnExternalScreen;
 @property(retain) WebAVMediaSelectionOption *currentLegibleMediaSelectionOption;
 @property(retain) WebAVMediaSelectionOption *currentAudioMediaSelectionOption;
 @property(readonly) _Bool hasLegibleMediaSelectionOptions;
 @property(readonly) _Bool hasAudioMediaSelectionOptions;
 @property(readonly) _Bool hasMediaSelectionOptions;
+@property(readonly) _Bool canSeekFrameForward;
+@property(readonly) _Bool canSeekFrameBackward;
 - (void)seekChapterForward:(id)arg1;
 - (void)seekToEnd:(id)arg1;
 @property(readonly) _Bool canSeekToEnd;

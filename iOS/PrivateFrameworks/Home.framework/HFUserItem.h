@@ -25,6 +25,7 @@
 
 + (id)_fakeHMSettings;
 + (void)set_fakeHMSettings:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMHome *hf_home; // @synthesize hf_home=_hf_home;
 @property(readonly, nonatomic) HFUserNameFormatter *userNameFormatter; // @synthesize userNameFormatter=_userNameFormatter;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -33,15 +34,22 @@
 @property(readonly, nonatomic) _Bool isItemGroup; // @synthesize isItemGroup=_isItemGroup;
 @property(readonly, nonatomic) HMUser *user; // @synthesize user=_user;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
+- (id)incrementAddSceneButtonPresentedCount;
+- (_Bool)shouldHideAddSceneButton;
+- (_Bool)hasCompletedNonOwnerUserHomeSwitchingUI;
+- (id)setCompletedNonOwnerUserHomeSwitchingUI:(_Bool)arg1;
 - (_Bool)hasDismissedUserSplitMediaAccountWarning;
 - (id)setDismissUserSplitMediaAccountWarning:(_Bool)arg1;
+- (_Bool)isPlaybackInfluencesForYouEnabled;
+- (id)setPlaybackInfluencesForYou:(_Bool)arg1;
 - (_Bool)isIdentifyVoiceEnabled;
 - (id)setEnableIdentifyVoice:(_Bool)arg1;
 - (id)setDismissCameraRecordingReminderBanner:(_Bool)arg1;
 - (_Bool)hasDismissedCameraRecordingReminderBanner;
 - (id)setDismissCameraRecordingOnboarding:(_Bool)arg1;
 - (_Bool)hasDismissedCameraRecordingOnboarding;
+- (id)setDismissNaturalLightingOnboarding:(_Bool)arg1;
+- (_Bool)hasDismissedNaturalLightingOnboarding;
 - (id)setDismissTVViewingProfilesReminderBanner:(_Bool)arg1;
 - (_Bool)hasDismissedTVViewingProfilesReminderBanner;
 - (id)setDismissTVViewingProfilesOnboarding:(_Bool)arg1;
@@ -52,8 +60,12 @@
 - (_Bool)hasDismissedVoiceProfileOnboarding;
 - (void)_setFakeBoolSettingsValueForKeyPath:(id)arg1 newValue:(_Bool)arg2;
 - (_Bool)_getFakeBoolSettingsValueForKeyPath:(id)arg1 defaultValue:(_Bool)arg2;
+- (id)_incrementSettingsValueForKeyPath:(id)arg1 stepValue:(long long)arg2 maximumValue:(long long)arg3 settingsType:(unsigned long long)arg4;
+- (_Bool)_isSettingsValueForKeyPath:(id)arg1 atMaximumValue:(long long)arg2 settingsType:(unsigned long long)arg3;
 - (id)_setBoolSettingsValueForKeyPath:(id)arg1 newValue:(_Bool)arg2 settingsType:(unsigned long long)arg3;
 - (_Bool)_getBoolSettingsValueForKeyPath:(id)arg1 defaultValue:(_Bool)arg2 settingsType:(unsigned long long)arg3;
+- (id)_setSettingsValueForKeyPath:(id)arg1 settingsType:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)_getSettingsValueForKeyPath:(id)arg1 defaultValue:(id)arg2 settingsType:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (_Bool)_hasValidPrivateSettings;
 - (id)_privateSettings;
 - (id)_privateSettingsValueManager;

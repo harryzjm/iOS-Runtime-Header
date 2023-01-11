@@ -28,6 +28,7 @@
 @property float lifetime;
 @property float birthRate;
 @property(copy) NSArray *emitterCells;
+- (_Bool)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (unsigned int)_renderLayerPropertyAnimationFlags:(unsigned int)arg1;
 - (_Bool)_renderLayerDefinesProperty:(unsigned int)arg1;
 - (void)_colorSpaceDidChange;

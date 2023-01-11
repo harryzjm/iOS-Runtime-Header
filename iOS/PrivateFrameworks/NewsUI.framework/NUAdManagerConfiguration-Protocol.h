@@ -8,5 +8,6 @@
 
 @protocol NUAdManagerConfiguration <NSCopying>
 @property(nonatomic) double timeout;
+@property(nonatomic) _Bool enabled;
 @end
 

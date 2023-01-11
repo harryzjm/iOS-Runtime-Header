@@ -13,15 +13,15 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)entryWithStringValue:(id)arg1;
-@property(copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 - (id)_ui_descriptionBuilder;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (id)initFromData:(const CDStruct_0942cde0 *)arg1 type:(int)arg2 string:(const char *)arg3 maxLength:(int)arg4;
+- (id)initFromData:(const CDStruct_3fd7985f *)arg1 type:(int)arg2 string:(const char *)arg3 maxLength:(int)arg4;
 
 @end
 

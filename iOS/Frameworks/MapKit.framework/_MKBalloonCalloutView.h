@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer, CAShapeLayer, UIColor, UIImage, UIImageView, UIView;
+@class UIColor, UIImage, UIImageView, UIView, _MKBezierPathView;
 
 @interface _MKBalloonCalloutView
 {
@@ -13,8 +13,7 @@
     UIColor *_balloonTintColor;
     UIColor *_strokeColor;
     UIColor *_innerStrokeColor;
-    CAShapeLayer *_balloonShape;
-    CALayer *_balloonInnerStrokeLayer;
+    UIColor *_imageTintColor;
     UIImageView *_balloonBodyImageView;
     UIImageView *_tailView;
     UIView *_innerBackgroundView;
@@ -24,29 +23,39 @@
     _Bool _originatesAsSmallBalloon;
     double _croppedImageScale;
     UIImageView *_contentViewMaskView;
+    _MKBezierPathView *_backgroundView;
+    _Bool _centerAnnotationWhenOffscreen;
+    _Bool _showsArrow;
+    _Bool _dismissed;
     UIView *_contentView;
     long long _style;
     UIImage *_image;
     double _smallBalloonScale;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) UIColor *imageTintColor; // @synthesize imageTintColor=_imageTintColor;
 @property(copy, nonatomic) UIColor *innerStrokeColor; // @synthesize innerStrokeColor=_innerStrokeColor;
 @property(copy, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property(nonatomic) double smallBalloonScale; // @synthesize smallBalloonScale=_smallBalloonScale;
 @property(nonatomic) _Bool originatesAsSmallBalloon; // @synthesize originatesAsSmallBalloon=_originatesAsSmallBalloon;
 @property(copy, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
+@property(nonatomic) _Bool showsArrow; // @synthesize showsArrow=_showsArrow;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(copy, nonatomic) UIColor *balloonTintColor; // @synthesize balloonTintColor=_balloonTintColor;
-- (void).cxx_destruct;
 - (_Bool)calloutContainsPoint:(struct CGPoint)arg1;
 - (void)dismissAnimated:(_Bool)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_showAnimated:(_Bool)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)showAnimated:(_Bool)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)hideCalloutAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)showCalloutAnimated:(_Bool)arg1;
 - (void)_updateCroppedImage;
 - (void)didMoveToWindow;
-- (id)_generateInnerStrokeImage;
+- (void)updateWithNewCalloutOffset;
+- (struct CGRect)_idealFrame;
+- (void)setShowsArrow:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_configureForArrowStateWithDuration:(double)arg1;
 - (void)layoutSubviews;
 - (double)_innerDiameter;
 - (struct CGRect)_centerFrame;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)_shouldAllowViewingDetailsForCalendar:(id)arg1;
 - (_Bool)_calendarCanBeChanged;
 - (_Bool)editItemViewControllerSave:(id)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;

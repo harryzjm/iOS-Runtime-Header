@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)setTitle:(id)arg1;
 - (id)_accessibilityCustomActions;
-- (id)accessibilityPath;
 - (void)_accessibilityLongPressActionView:(id)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUserInputLabels;

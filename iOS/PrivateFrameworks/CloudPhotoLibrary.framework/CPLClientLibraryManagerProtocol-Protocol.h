@@ -10,6 +10,7 @@
 
 @protocol CPLClientLibraryManagerProtocol <NSObject>
 - (void)libraryManagerHasBeenReplaced;
+- (void)pushAllChangesWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)provideLocalResource:(CPLResource *)arg1 recordClassString:(NSString *)arg2 completionHandler:(void (^)(CPLResource *, unsigned long long))arg3;
 - (void)forceSyncDidFinishForTask:(NSString *)arg1 withErrors:(NSDictionary *)arg2;
 - (void)libraryManagerDidUpdateSizeOfResourcesToUploadToSize:(unsigned long long)arg1 sizeOfOriginalResourcesToUpload:(unsigned long long)arg2 numberOfImages:(unsigned long long)arg3 numberOfVideos:(unsigned long long)arg4 numberOfOtherItems:(unsigned long long)arg5;

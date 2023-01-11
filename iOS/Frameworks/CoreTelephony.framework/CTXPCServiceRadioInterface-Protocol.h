@@ -5,6 +5,7 @@
 //
 
 @protocol CTXPCServiceRadioInterface
+- (void)getBasebandRadioFrequencyFrontEndScanData:(void (^)(CTRadioFrequencyFrontEndScanData *, NSError *))arg1;
 - (void)checkRadioBootHealth:(void (^)(_Bool, NSError *))arg1;
 @end
 

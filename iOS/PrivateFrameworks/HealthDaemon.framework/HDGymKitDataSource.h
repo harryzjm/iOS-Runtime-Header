@@ -29,11 +29,13 @@
 - (_Bool)_shouldAddSample:(id)arg1;
 - (void)_setupTypes;
 @property(readonly, nonatomic) id <HDWorkoutDataAccumulator> workoutDataAccumulator;
+- (void)updateWorkoutConfiguration:(id)arg1 dataSource:(id)arg2;
 - (void)addMetadata:(id)arg1 dataSource:(id)arg2;
 - (void)addWorkoutEvents:(id)arg1 dataSource:(id)arg2;
 - (void)addSamples:(id)arg1 dataSource:(id)arg2;
 @property(readonly) unsigned long long workoutDataDestinationState;
 - (id)quantityTypesToIncludeWhilePaused;
+- (void)workoutDataDestination:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 requestsFinalDataFrom:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)workoutDataDestination:(id)arg1 requestsDataFrom:(id)arg2 to:(id)arg3;

@@ -33,13 +33,14 @@
 @property(readonly) unsigned long long hash;
 - (void)_performNextFromRunLoopSource;
 - (void)_setSynchronizingEnqueueSemaphore:(id)arg1 forWorkspaceWithName:(unsigned long long)arg2;
-- (_Bool)_queue_performNextIfPossible;
+- (_Bool)_targetQueue_performNextIfPossible;
 - (_Bool)_performNext;
 - (_Bool)_hasNext;
 - (void)_queue_performAsync:(CDUnknownBlockType)arg1;
-- (void)performAfter:(double)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)backingQueueIfExists;
 - (void)performAsync:(CDUnknownBlockType)arg1 withHandoff:(id)arg2;
+- (id)backingQueueIfExists;
+- (void)assertBarrierOnQueue;
+- (void)performAfter:(double)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)performAsync:(CDUnknownBlockType)arg1;
 - (void)assertOnQueue;
 - (void)dealloc;

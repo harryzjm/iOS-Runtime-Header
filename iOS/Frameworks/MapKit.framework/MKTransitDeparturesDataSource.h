@@ -20,11 +20,11 @@
     UITableView *_tableView;
     NSMapTable *_cachedSectionHeaders;
     NSMapTable *_cachedSectionFooters;
+    NSMutableDictionary *_cachedImageOptions;
     NSMutableDictionary *_cachedMaxImageWidths;
     NSMutableDictionary *_cachedColumnCenteringWidths;
-    _Bool _isTransitioningSize;
-    struct CGSize _newSize;
     _Bool _animatingRowInsertion;
+    struct CGSize _transitioningSize;
     struct CGRect _lastMaxWidthBounds;
     _Bool _showingIncidents;
     _Bool _limitInteraction;
@@ -37,6 +37,7 @@
     MKTransitDeparturesDataProvider *_dataProvider;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MKTransitDeparturesDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property(nonatomic, getter=supportsSystemSectionCollapsing) _Bool supportSystemSectionCollapsing; // @synthesize supportSystemSectionCollapsing=_supportSystemSectionCollapsing;
 @property(nonatomic, getter=allowsTransitLineSelection) _Bool allowTransitLineSelection; // @synthesize allowTransitLineSelection=_allowTransitLineSelection;
@@ -44,7 +45,6 @@
 @property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property(nonatomic) __weak id <MKTransitDeparturesDataSourceHosting> host; // @synthesize host=_host;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
-- (void).cxx_destruct;
 - (long long)_departureSequenceFrequencyTypeForAllDeparturesSections;
 - (int)_transitCategoryForSequence:(id)arg1;
 - (int)transitCategoryForFrequencyType:(long long)arg1;
@@ -74,8 +74,6 @@
 - (id)_viewForHeaderInSection:(long long)arg1;
 - (_Bool)sectionHasFooter:(long long)arg1;
 - (_Bool)sectionHasHeader:(long long)arg1;
-- (void)didTransition;
-- (void)willTransitionToSize:(struct CGSize)arg1;
 - (id)_departureSequenceForIndexPath:(id)arg1 outIsNewLine:(_Bool *)arg2 outNextLineIsSame:(_Bool *)arg3;
 - (id)_departureSequenceForIndexPath:(id)arg1;
 - (id)_indexPathWithHeader:(id)arg1;
@@ -94,18 +92,18 @@
 - (id)_existingCellAtIndexPath:(id)arg1;
 - (id)_cellForRowAtIndexPath:(id)arg1;
 - (long long)_numberOfRowsInSection:(long long)arg1;
-- (double)_maxImageWidthForSection:(long long)arg1;
-- (id)_imageForLine:(id)arg1 inSection:(long long)arg2;
+- (double)_maxImageWidthForSystem:(id)arg1;
 - (id)_imageForLine:(id)arg1;
 - (id)_imageForLine:(id)arg1 size:(long long)arg2;
 - (long long)_lineImageSizeForSystem:(id)arg1;
-- (long long)_lineImageSizeForSection:(long long)arg1;
-- (_Bool)_isCompressedWidthTraits:(id)arg1;
-- (_Bool)_isCompressed;
+- (double)_availableWidth;
+- (id)_imageWithArtworkDataSource:(id)arg1 size:(long long)arg2;
 - (id)_imageWithArtworkDataSource:(id)arg1;
 - (id)_smallerImageWithArtworkDataSource:(id)arg1;
+- (id)_smallestImageWithArtworkDataSource:(id)arg1;
 @property(readonly, nonatomic) MKArtworkDataSourceCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 - (id)imageForTransitLine:(id)arg1;
+- (id)_imageOptionSizeArraysForEnumeration;
 - (id)_pagingPromptForSection:(long long)arg1;
 - (_Bool)_shouldPageSection:(long long)arg1;
 - (void)_incrementPageControlValueForSection:(long long)arg1 identifier:(id)arg2;
@@ -116,6 +114,8 @@
 - (void)reloadData;
 - (void)reloadSections;
 - (void)invalidateLayout;
+- (void)didTransition;
+- (void)willTransitionToSize:(struct CGSize)arg1;
 - (_Bool)allowsSystemSectionCollapsing;
 @property(nonatomic, getter=isActive) _Bool active;
 - (id)initWithTableView:(id)arg1 mapItem:(id)arg2;

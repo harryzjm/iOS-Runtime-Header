@@ -7,26 +7,30 @@
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUPersonalRequestsCustomizeViewController <HUConfigurationViewController, HUPreloadableViewController>
 {
     id <HUConfigurationViewControllerDelegate> _delegate;
+    HMHome *_home;
     OBTrayButton *_usePRButton;
     OBLinkTrayButton *_customizeButton;
+    NSString *_finePrintFooterText;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *finePrintFooterText; // @synthesize finePrintFooterText=_finePrintFooterText;
 @property(retain, nonatomic) OBLinkTrayButton *customizeButton; // @synthesize customizeButton=_customizeButton;
 @property(retain, nonatomic) OBTrayButton *usePRButton; // @synthesize usePRButton=_usePRButton;
+@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(nonatomic) __weak id <HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)_setupPersonalRequests:(id)arg1;
 - (void)_dontSetupPersonalRequests:(id)arg1;
 - (id)hu_preloadContent;
-- (id)initWithLocationDevice:(id)arg1;
+- (id)initWithLocationDevice:(id)arg1 home:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

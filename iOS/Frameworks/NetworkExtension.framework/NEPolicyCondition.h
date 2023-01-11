@@ -15,11 +15,15 @@
     _Bool _negative;
     unsigned char _prefix;
     unsigned short _ipProtocol;
+    unsigned short _packetFilterTags;
     int _pid;
     unsigned int _uid;
     unsigned int _trafficClassStart;
     unsigned int _trafficClassEnd;
     unsigned int _clientFlags;
+    unsigned int _platform;
+    unsigned int _sdkVersion;
+    unsigned int _minSDKVersion;
     long long _conditionType;
     NSUUID *_applicationUUID;
     NSString *_accountIdentifier;
@@ -30,18 +34,24 @@
     NSString *_customEntitlement;
     NSString *_agentDomain;
     NSString *_agentType;
+    NSString *_signingIdentifier;
 }
 
 + (id)flowRemoteAddressEmpty;
 + (id)flowLocalAddressEmpty;
 + (id)usesModernNetworkAPI;
++ (id)isSystemProxyConnection;
 + (id)isListener;
 + (id)isInbound;
 + (id)clientProhibitsExpensive;
 + (id)clientProhibitsContrained;
 + (id)fallbackTraffic;
++ (id)signingIdentifier:(id)arg1;
 + (id)clientFlags:(unsigned int)arg1;
++ (id)packetFilterTags:(unsigned short)arg1;
 + (id)requiredAgentDomain:(id)arg1 agentType:(id)arg2;
++ (id)sdkVersion:(unsigned int)arg1 minSDKVersion:(unsigned int)arg2 platform:(unsigned int)arg3;
++ (id)platformBinary;
 + (id)customEntitlement:(id)arg1;
 + (id)entitlement;
 + (id)flowRemoteAddressStart:(id)arg1 end:(id)arg2;
@@ -64,6 +74,12 @@
 + (id)effectivePID:(int)arg1;
 + (id)realApplication:(id)arg1;
 + (id)effectiveApplication:(id)arg1;
+- (void).cxx_destruct;
+@property unsigned short packetFilterTags; // @synthesize packetFilterTags=_packetFilterTags;
+@property(copy) NSString *signingIdentifier; // @synthesize signingIdentifier=_signingIdentifier;
+@property unsigned int minSDKVersion; // @synthesize minSDKVersion=_minSDKVersion;
+@property unsigned int sdkVersion; // @synthesize sdkVersion=_sdkVersion;
+@property unsigned int platform; // @synthesize platform=_platform;
 @property(copy) NSString *agentType; // @synthesize agentType=_agentType;
 @property(copy) NSString *agentDomain; // @synthesize agentDomain=_agentDomain;
 @property(copy) NSString *customEntitlement; // @synthesize customEntitlement=_customEntitlement;
@@ -82,7 +98,6 @@
 @property(copy) NSUUID *applicationUUID; // @synthesize applicationUUID=_applicationUUID;
 @property(getter=isNegative) _Bool negative; // @synthesize negative=_negative;
 @property long long conditionType; // @synthesize conditionType=_conditionType;
-- (void).cxx_destruct;
 - (_Bool)addTLVsToMessage:(id)arg1;
 - (unsigned char)conditionTypeValue;
 - (id)conditionTypeString;

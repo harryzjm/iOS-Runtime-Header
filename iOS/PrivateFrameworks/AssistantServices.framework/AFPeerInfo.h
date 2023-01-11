@@ -6,30 +6,61 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
+#import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface AFPeerInfo : NSObject <NSSecureCoding>
+@interface AFPeerInfo : NSObject <NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     _Bool _isDeviceOwnedByCurrentUser;
+    _Bool _isCommunalDevice;
     NSString *_idsIdentifier;
-    NSString *_idsFirstRoutableInternetDestination;
+    NSString *_idsDeviceUniqueIdentifier;
     NSString *_rapportEffectiveIdentifier;
     NSString *_mediaSystemIdentifier;
+    NSString *_mediaRouteIdentifier;
+    NSString *_roomName;
+    NSString *_name;
+    NSString *_productType;
+    NSString *_buildVersion;
+    NSString *_userInterfaceIdiom;
+    NSString *_aceVersion;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSString *mediaSystemIdentifier; // @synthesize mediaSystemIdentifier=_mediaSystemIdentifier;
-@property(copy, nonatomic) NSString *rapportEffectiveIdentifier; // @synthesize rapportEffectiveIdentifier=_rapportEffectiveIdentifier;
-@property(copy, nonatomic) NSString *idsFirstRoutableInternetDestination; // @synthesize idsFirstRoutableInternetDestination=_idsFirstRoutableInternetDestination;
-@property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
-@property(nonatomic, setter=setDeviceOwnedByCurrentUser:) _Bool isDeviceOwnedByCurrentUser; // @synthesize isDeviceOwnedByCurrentUser=_isDeviceOwnedByCurrentUser;
++ (id)newWithBuilder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *aceVersion; // @synthesize aceVersion=_aceVersion;
+@property(readonly, copy, nonatomic) NSString *userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property(readonly, copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
+@property(readonly, copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
+@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, copy, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
+@property(readonly, nonatomic) _Bool isCommunalDevice; // @synthesize isCommunalDevice=_isCommunalDevice;
+@property(readonly, copy, nonatomic) NSString *mediaRouteIdentifier; // @synthesize mediaRouteIdentifier=_mediaRouteIdentifier;
+@property(readonly, copy, nonatomic) NSString *mediaSystemIdentifier; // @synthesize mediaSystemIdentifier=_mediaSystemIdentifier;
+@property(readonly, copy, nonatomic) NSString *rapportEffectiveIdentifier; // @synthesize rapportEffectiveIdentifier=_rapportEffectiveIdentifier;
+@property(readonly, copy, nonatomic) NSString *idsDeviceUniqueIdentifier; // @synthesize idsDeviceUniqueIdentifier=_idsDeviceUniqueIdentifier;
+@property(readonly, copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
+@property(readonly, nonatomic) _Bool isDeviceOwnedByCurrentUser; // @synthesize isDeviceOwnedByCurrentUser=_isDeviceOwnedByCurrentUser;
+- (id)buildDictionaryRepresentation;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)description;
-- (id)_init;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (id)_descriptionWithIndent:(unsigned long long)arg1;
+@property(readonly, copy) NSString *description;
+- (id)initWithIsDeviceOwnedByCurrentUser:(_Bool)arg1 idsIdentifier:(id)arg2 idsDeviceUniqueIdentifier:(id)arg3 rapportEffectiveIdentifier:(id)arg4 mediaSystemIdentifier:(id)arg5 mediaRouteIdentifier:(id)arg6 isCommunalDevice:(_Bool)arg7 roomName:(id)arg8 name:(id)arg9 productType:(id)arg10 buildVersion:(id)arg11 userInterfaceIdiom:(id)arg12 aceVersion:(id)arg13;
+- (id)ad_shortDescription;
+- (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

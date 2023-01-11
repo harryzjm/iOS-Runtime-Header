@@ -29,8 +29,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 @property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
 - (void)_rotateToHeadingAnimated:(_Bool)arg1 duration:(double)arg2;
-- (void)_goToAnnotationAnimated:(_Bool)arg1 duration:(double)arg2 isInitial:(_Bool)arg3;
+- (void)_goToAnnotationAnimated:(_Bool)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3 isInitial:(_Bool)arg4;
 - (Matrix_443f5d51)_centerCursor;
+- (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
+- (struct VKEdgeInsets)_effectiveEdgeInsets;
 - (Matrix_443f5d51)_nonOffsetCenterCursor;
 - (void)dealloc;
 - (id)init;

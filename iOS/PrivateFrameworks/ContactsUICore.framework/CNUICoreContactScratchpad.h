@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUICore/CNUICoreFamilyMemberCandidateContactsContainer-Protocol.h>
+@class NSSet;
 
-@class NSSet, NSString;
-
-@interface CNUICoreContactScratchpad : NSObject <CNUICoreFamilyMemberCandidateContactsContainer>
+@interface CNUICoreContactScratchpad : NSObject
 {
     NSSet *_edits;
 }
@@ -21,10 +19,10 @@
 + (id)scratchpadBySettingModifiedContact:(id)arg1 onExistingEditInScratchpad:(id)arg2;
 + (id)scratchpadByAddingUneditedContact:(id)arg1 toScratchpad:(id)arg2;
 + (id)emptyScratchpad;
-@property(readonly, nonatomic) NSSet *edits; // @synthesize edits=_edits;
 - (void).cxx_destruct;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSSet *edits; // @synthesize edits=_edits;
+- (id)description;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSSet *allContacts;
 @property(readonly, nonatomic) NSSet *modifiedContacts;
@@ -36,10 +34,6 @@
 - (id)scratchpadByAddingContacts:(id)arg1;
 - (id)initWithEdits:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) Class superclass;
 
 @end
 

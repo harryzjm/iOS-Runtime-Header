@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+#import <NanoTimeKitCompanion/NTKZeudleColorPalette-Protocol.h>
 
-@interface NTKZeusColorPalette : NSObject
+@class NSString, UIColor;
+
+@interface NTKZeusColorPalette : NSObject <NTKZeudleColorPalette>
 {
     unsigned long long _color;
+    UIColor *_handInlayColorForNonDetailedDensity;
+    UIColor *_bottomComplicationColor;
     UIColor *_dialColor;
-    UIColor *_complicationColor;
     UIColor *_secondHandColor;
     UIColor *_minuteHandColor;
     UIColor *_hourHandColor;
@@ -27,12 +30,23 @@
 + (id)swatchImageForColor:(unsigned long long)arg1;
 + (id)swatchColorForColor:(unsigned long long)arg1;
 + (id)paletteForColor:(unsigned long long)arg1;
++ (id)blancSecondHandColor;
++ (id)blancDialTextColor;
++ (id)zeusBlancColor;
++ (id)noirDualToneHandInlayTextColor;
++ (id)noirDualToneBackgroundColor;
++ (id)noirDualToneSplitColor;
 + (id)noirSecondHandColor;
 + (id)noirHandStrokeColor;
 + (id)noirColor;
 + (id)briqueColor;
 + (id)etainColor;
 + (id)encreColor;
++ (id)zeusAnemoneColor;
++ (id)zeusNavyColor;
++ (id)zeusBambouColor;
++ (id)zeusJauneAmbreColor;
++ (id)zeusRougePimentColor;
 + (id)roseExtremeColor;
 + (id)roseAzaleeColor;
 + (id)offWhiteColor;
@@ -51,6 +65,7 @@
 + (id)ambreColor;
 + (id)zeusSilverColor;
 + (id)zeusOrangeColor;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIColor *splitColor; // @synthesize splitColor=_splitColor;
 @property(readonly, nonatomic) unsigned long long bleed; // @synthesize bleed=_bleed;
 @property(readonly, nonatomic) double secondHandAlpha; // @synthesize secondHandAlpha=_secondHandAlpha;
@@ -60,10 +75,18 @@
 @property(readonly, nonatomic) UIColor *hourHandColor; // @synthesize hourHandColor=_hourHandColor;
 @property(readonly, nonatomic) UIColor *minuteHandColor; // @synthesize minuteHandColor=_minuteHandColor;
 @property(readonly, nonatomic) UIColor *secondHandColor; // @synthesize secondHandColor=_secondHandColor;
-@property(readonly, nonatomic) UIColor *complicationColor; // @synthesize complicationColor=_complicationColor;
 @property(readonly, nonatomic) UIColor *dialColor; // @synthesize dialColor=_dialColor;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) UIColor *bottomComplicationColor; // @synthesize bottomComplicationColor=_bottomComplicationColor;
 - (id)initWithColor:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool wantsStatusBarIconShadow;
+- (id)handInlayColorForDensity:(unsigned long long)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) UIColor *bottomComplicationBackgroundColor;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

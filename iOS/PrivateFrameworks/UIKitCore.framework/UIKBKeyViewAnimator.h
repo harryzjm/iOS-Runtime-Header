@@ -50,8 +50,8 @@ __attribute__((visibility("hidden")))
 - (void)_fadeInKeyView:(id)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fadeOutKeyView:(id)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (double)delayedDeactivationTimeForKeyView:(id)arg1;
-- (Class)keyViewClassForKey:(id)arg1 traits:(id)arg2;
-- (Class)_keyViewClassForSpecialtyKey:(id)arg1;
+- (Class)keyViewClassForKey:(id)arg1 renderTraits:(id)arg2 screenTraits:(id)arg3;
+- (Class)_keyViewClassForSpecialtyKey:(id)arg1 screenTraits:(id)arg2;
 @property(readonly, nonatomic) _Bool shouldPurgeKeyViews;
 
 // Remaining properties

@@ -22,6 +22,7 @@
 }
 
 + (void)updateMailVIP:(id)arg1 phoneFavorites:(id)arg2 meEmailAddresses:(id)arg3;
+- (void).cxx_destruct;
 @property MISSING_TYPE *fuzzyMatchCheck; // @synthesize fuzzyMatchCheck=_fuzzyMatchCheck;
 @property MISSING_TYPE *fuzzyMatchMask; // @synthesize fuzzyMatchMask=_fuzzyMatchMask;
 @property _Bool allowAnonymousDataCollection; // @synthesize allowAnonymousDataCollection=_allowAnonymousDataCollection;
@@ -31,7 +32,6 @@
 @property unsigned long long strongRankingQueryCount; // @synthesize strongRankingQueryCount=_strongRankingQueryCount;
 @property(retain) NSArray *rankingQueries; // @synthesize rankingQueries=_rankingQueries;
 @property(retain) NSOrderedSet *requiredAttributes; // @synthesize requiredAttributes=_requiredAttributes;
-- (void).cxx_destruct;
 
 @end
 

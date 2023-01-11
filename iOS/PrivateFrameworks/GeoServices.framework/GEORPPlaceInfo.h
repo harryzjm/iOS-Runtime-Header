@@ -13,20 +13,19 @@
 @interface GEORPPlaceInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDPlaceRequest *_placeRequest;
     GEOPDPlaceResponse *_placeResponse;
     NSString *_sourceApplication;
     NSString *_sourceUrl;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_placeRequest:1;
         unsigned int read_placeResponse:1;
         unsigned int read_sourceApplication:1;
         unsigned int read_sourceUrl:1;
-        unsigned int wrote_placeRequest:1;
-        unsigned int wrote_placeResponse:1;
-        unsigned int wrote_sourceApplication:1;
-        unsigned int wrote_sourceUrl:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,20 +39,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *sourceUrl;
 @property(readonly, nonatomic) _Bool hasSourceUrl;
-- (void)_readSourceUrl;
 @property(retain, nonatomic) NSString *sourceApplication;
 @property(readonly, nonatomic) _Bool hasSourceApplication;
-- (void)_readSourceApplication;
 @property(retain, nonatomic) GEOPDPlaceResponse *placeResponse;
 @property(readonly, nonatomic) _Bool hasPlaceResponse;
-- (void)_readPlaceResponse;
 @property(retain, nonatomic) GEOPDPlaceRequest *placeRequest;
 @property(readonly, nonatomic) _Bool hasPlaceRequest;
-- (void)_readPlaceRequest;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (void)clearLocations;
 - (void)_clearLocationsFromPlaceResponse;
 - (void)_clearLocationsFromPlaceRequest;

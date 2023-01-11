@@ -8,7 +8,7 @@
 
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMHome, NSString, NSUUID;
+@class HMAccessoryCategory, HMHome, HMSetupAccessoryDescription, NSString, NSUUID;
 
 @interface HMAddAccessoryRequest : NSObject <NSSecureCoding>
 {
@@ -18,16 +18,18 @@
     NSString *_accessoryName;
     HMAccessoryCategory *_accessoryCategory;
     NSUUID *_requestIdentifier;
+    HMSetupAccessoryDescription *_accessoryDescription;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HMSetupAccessoryDescription *accessoryDescription; // @synthesize accessoryDescription=_accessoryDescription;
 @property(readonly, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property(readonly, nonatomic) _Bool requiresOwnershipToken; // @synthesize requiresOwnershipToken=_requiresOwnershipToken;
 @property(readonly, nonatomic) _Bool requiresSetupPayloadURL; // @synthesize requiresSetupPayloadURL=_requiresSetupPayloadURL;
 @property(readonly, nonatomic) HMAccessoryCategory *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
 @property(readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

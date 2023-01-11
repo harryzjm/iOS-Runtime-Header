@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VUIImageView, VUILabel, VUISeparatorView;
+@class NSString, VUIImageView, VUILabel, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryMenuItemViewCell
 {
     VUIImageView *_imageView;
     _Bool _hideChevron;
+    _Bool _shouldAppearAsHeader;
+    NSString *_title;
+    NSString *_imageName;
     VUILabel *_titleLabel;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldAppearAsHeader; // @synthesize shouldAppearAsHeader=_shouldAppearAsHeader;
 @property(nonatomic) _Bool hideChevron; // @synthesize hideChevron=_hideChevron;
 @property(readonly, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property(retain, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 @property(readonly, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

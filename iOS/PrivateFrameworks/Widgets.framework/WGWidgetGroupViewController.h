@@ -13,7 +13,7 @@
 #import <Widgets/WGWidgetIconAnimationExtraViewsProviding-Protocol.h>
 #import <Widgets/WGWidgetListViewControllerDelegatePrivate-Protocol.h>
 
-@class NSArray, NSString, UIControl, UILabel, UIScrollView, UIView, WGCarouselListViewController, WGWidgetDiscoveryController;
+@class NSArray, NSString, UIControl, UILabel, UIScrollView, WGCarouselListViewController, WGWidgetDiscoveryController;
 @protocol WGWidgetGroupViewControllerDelegate;
 
 @interface WGWidgetGroupViewController : UIViewController <WGWidgetDebugging, WGWidgetDiscoveryObserving, WGWidgetListViewControllerDelegatePrivate, WGMajorListViewControllerDelegate, WGWidgetExtensionVisibilityProviding, WGWidgetIconAnimationExtraViewsProviding>
@@ -30,19 +30,17 @@
     struct UIEdgeInsets _contentOccludingInset;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIControl *editButton; // @synthesize editButton=_editButton;
 @property(nonatomic) struct WGWidgetListSettings listSettings; // @synthesize listSettings=_listSettings;
 @property(nonatomic) struct UIEdgeInsets contentOccludingInset; // @synthesize contentOccludingInset=_contentOccludingInset;
 @property(nonatomic) _Bool shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
 @property(nonatomic) unsigned long long location; // @synthesize location=_location;
 @property(nonatomic) __weak id <WGWidgetGroupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)isWidgetExtensionVisible:(id)arg1;
 - (struct UIEdgeInsets)widgetListViewController:(id)arg1 contentOccludingInsetsForInterfaceOrientation:(long long)arg2;
 - (struct CGSize)widgetListViewController:(id)arg1 sizeForInterfaceOrientation:(long long)arg2;
 - (void)majorListViewControllerDidChangeHeaderVisibility:(id)arg1;
-- (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeHiddenInGroup:(id)arg3;
-- (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeVisibleInGroup:(id)arg3;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (_Bool)scrollViewShouldScrollToTop:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
@@ -60,9 +58,10 @@
 - (void)_loadWidgetListViewController;
 - (long long)_activeLayoutMode;
 - (long long)_layoutModeForSize:(struct CGSize)arg1;
-@property(readonly, nonatomic) UIView *extraViewsContainer;
+@property(readonly, nonatomic) _Bool shouldAnimateFirstTwoViewsAsOne;
 @property(readonly, nonatomic) _Bool shouldAnimateLastTwoViewsAsOne;
 @property(readonly, copy, nonatomic) NSArray *extraViews;
+@property(readonly, copy, nonatomic) NSArray *extraViewsContainers;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -72,7 +71,6 @@
 @property(nonatomic, getter=isEditingIcons) _Bool editingIcons;
 @property(readonly, nonatomic, getter=isHeaderVisible) _Bool headerVisible;
 @property(retain, nonatomic) UIViewController *headerContentViewController;
-- (void)invalidateVisibleWidgets;
 - (void)setLegibilitySettings:(id)arg1;
 @property(readonly, nonatomic) unsigned long long widgetCount;
 @property(readonly, nonatomic) UIScrollView *majorScrollView;

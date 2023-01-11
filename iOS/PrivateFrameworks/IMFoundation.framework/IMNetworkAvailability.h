@@ -12,15 +12,16 @@
 {
     NSString *_guid;
     NSTimer *_timer;
-    void *_context;
     double _timeout;
     double _wifiTimeout;
     double _startTime;
     unsigned long long _flags;
     unsigned long long _options;
     CDUnknownBlockType _completionBlock;
+    void *_context;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) void *context; // @synthesize context=_context;
 - (void)cancel;
 - (void)start;

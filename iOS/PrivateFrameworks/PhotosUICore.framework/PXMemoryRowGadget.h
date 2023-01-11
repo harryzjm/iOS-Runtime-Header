@@ -31,6 +31,7 @@
 + (unsigned long long)numberOfColumnsForCurrentVisibility:(long long)arg1 rowType:(unsigned long long)arg2 numberOfMemories:(unsigned long long)arg3;
 + (long long)visibilityForGadgetSpec:(id)arg1 numberOfMemories:(unsigned long long)arg2;
 + (struct _NSRange)dataSourceRangeForRowType:(unsigned long long)arg1 currentVisibility:(long long)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasAppeared; // @synthesize hasAppeared=_hasAppeared;
 @property(nonatomic) unsigned long long currentNumberOfColumns; // @synthesize currentNumberOfColumns=_currentNumberOfColumns;
 @property(retain, nonatomic) id <PXUIViewControllerZoomTransitionEndPoint> currentTransitionEndPoint; // @synthesize currentTransitionEndPoint=_currentTransitionEndPoint;
@@ -40,7 +41,6 @@
 @property(nonatomic) __weak id <PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
-- (void).cxx_destruct;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (long long)_columnSpanForRowType:(unsigned long long)arg1;
 - (struct CGRect)_frameForRowType:(unsigned long long)arg1 inRect:(struct CGRect)arg2;
@@ -50,6 +50,7 @@
 - (void)_refreshViewControllerForRowType:(unsigned long long)arg1 visibility:(long long)arg2;
 - (void)_fillViewControllerEntryForRowType:(unsigned long long)arg1;
 - (void)_transitionFromCurrentVisibility:(long long)arg1 toNewVisibility:(long long)arg2;
+- (void)prepareToNavigateToDetailsForMemoryUUID:(id)arg1;
 - (id)px_endPointForTransition:(id)arg1;
 - (_Bool)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
@@ -58,16 +59,17 @@
 - (void)forYouMemoriesViewController:(id)arg1 configureMetrics:(id)arg2;
 - (void)forYouMemoriesViewController:(id)arg1 transitionToViewController:(id)arg2 animated:(_Bool)arg3;
 - (id)showAllMemoriesFeedAnimated:(_Bool)arg1;
-- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
+- (void)userDidSelectAccessoryButton:(id)arg1;
 - (void)gadgetControllerHasDisappeared;
 - (void)gadgetControllerHasAppeared;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 @property(readonly, nonatomic) NSString *localizedTitle;
+@property(readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property(readonly, nonatomic) unsigned long long gadgetType;
+- (id)uniqueGadgetIdentifier;
 @property(readonly, nonatomic) NSString *accessoryButtonTitle;
 @property(readonly, nonatomic) unsigned long long accessoryButtonType;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-@property(readonly, nonatomic) _Bool hasContentToDisplay;
 - (void)_updateScrollingBehaviorIfNeeded;
 - (void)_updateNumberOfColumnsIfNeeded;
 - (void)_updateVisibilityIfNeeded;
@@ -86,9 +88,6 @@
 @property(readonly, nonatomic) unsigned long long headerStyle;
 @property(readonly, nonatomic) _Bool keepsSourceRegionOfInterestContent;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool supportsAssetsDrop;
-@property(readonly, nonatomic) _Bool supportsHighlighting;
-@property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic) struct CGRect visibleContentRect;
 
 @end

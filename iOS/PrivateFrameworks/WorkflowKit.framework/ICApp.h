@@ -6,27 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, UIImage;
+@class NSArray, NSDictionary, NSString, WFImage;
+@protocol OS_dispatch_queue;
 
 @interface ICApp : NSObject
 {
     _Bool _installed;
     _Bool _checkedInstallStatus;
     NSArray *_schemes;
-    NSArray *_shareExtensions;
     NSString *_localizedName;
+    WFImage *_icon;
     NSString *_identifier;
     NSDictionary *_definition;
-    UIImage *_icon;
-    UIImage *_homeScreenIcon;
+    NSObject<OS_dispatch_queue> *_stateAccessQueue;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;
 @property(nonatomic) _Bool checkedInstallStatus; // @synthesize checkedInstallStatus=_checkedInstallStatus;
-@property(retain, nonatomic) UIImage *homeScreenIcon; // @synthesize homeScreenIcon=_homeScreenIcon;
-@property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property(readonly, nonatomic) NSDictionary *definition; // @synthesize definition=_definition;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)identifierFromDictionaryForCurrentIdiom:(id)arg1;
 - (void)loadAppInStoreController:(id)arg1 withCampaignToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openFile:(id)arg1 withAnnotation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -40,12 +39,12 @@
 - (void)loadIconWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *iconName;
 @property(readonly, nonatomic) NSArray *metadata;
-@property(readonly, nonatomic) NSArray *shareExtensions; // @synthesize shareExtensions=_shareExtensions;
 @property(readonly, nonatomic) NSArray *documentActions;
 @property(readonly, nonatomic) NSArray *documentTypes;
 @property(readonly, nonatomic) NSArray *exportedFileTypes;
 - (id)schemeNamed:(id)arg1;
 @property(readonly, nonatomic) NSArray *schemes; // @synthesize schemes=_schemes;
+@property(retain, nonatomic) WFImage *icon; // @synthesize icon=_icon;
 @property(readonly, nonatomic) NSString *iTunesIdentifier;
 - (id)localizedString:(id)arg1 identifier:(id)arg2;
 @property(readonly, nonatomic) NSString *localizedShortName;

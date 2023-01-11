@@ -16,6 +16,7 @@
 - (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)arg1;
 - (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)arg1;
 - (void)locationManager:(CLLocationManager *)arg1 didStartMonitoringForRegion:(CLRegion *)arg2;
+- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)arg1;
 - (void)locationManager:(CLLocationManager *)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 monitoringDidFailForRegion:(CLRegion *)arg2 withError:(NSError *)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didFailWithError:(NSError *)arg2;

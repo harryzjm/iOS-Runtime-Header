@@ -20,8 +20,8 @@
     HDDataCollectionManager *_dataCollectionManager;
 }
 
-@property(readonly, nonatomic) __weak HDDataCollectionManager *dataCollectionManager; // @synthesize dataCollectionManager=_dataCollectionManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak HDDataCollectionManager *dataCollectionManager; // @synthesize dataCollectionManager=_dataCollectionManager;
 - (id)diagnosticDescription;
 - (void)daemonReady:(id)arg1;
 - (id)configurationForCollector:(id)arg1;
@@ -33,14 +33,14 @@
 - (void)_considerStartingCollectors;
 - (_Bool)didPersistObjects:(id)arg1 lastDatum:(id)arg2 collector:(id)arg3 error:(id *)arg4;
 - (_Bool)persistForCollector:(id)arg1 usedDatums:(id)arg2 source:(id)arg3 device:(id)arg4 error:(id *)arg5 persistenceHandler:(CDUnknownBlockType)arg6;
-- (_Bool)persistObjects:(id)arg1 usedDatums:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 error:(id *)arg6;
+- (_Bool)persistObjects:(id)arg1 usedDatums:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 resolveAssociations:(_Bool)arg6 error:(id *)arg7;
 - (void)dataCollector:(id)arg1 didCollectSensorDatum:(id)arg2 device:(id)arg3;
 - (void)dataCollector:(id)arg1 didChangeState:(id)arg2;
 - (id)allCollectors;
 - (void)unregisterDataCollector:(id)arg1;
 - (void)registerDataCollector:(id)arg1 state:(id)arg2;
 @property(copy) HDDataAggregatorConfiguration *configuration;
-- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 freezeSeries:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)resume;
 - (id)initWithDataCollectionManager:(id)arg1;
 

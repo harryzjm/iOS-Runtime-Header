@@ -12,6 +12,8 @@
 - (_Bool)harvestData:(id *)arg1 error:(id *)arg2;
 
 @optional
+- (void)didStopAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 stopDate:(NSDate *)arg3;
+- (void)didStartAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 startDate:(NSDate *)arg3;
 - (void)didStopAtTime:(unsigned long long)arg1 stopDate:(NSDate *)arg2;
 - (void)willStop;
 - (void)didStartAtTime:(unsigned long long)arg1 startDate:(NSDate *)arg2;

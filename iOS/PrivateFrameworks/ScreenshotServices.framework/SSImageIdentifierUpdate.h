@@ -13,13 +13,15 @@
 
 @interface SSImageIdentifierUpdate : NSObject <BSXPCCoding, SSLoggable>
 {
+    _Bool _success;
     NSString *_imageIdentifier;
     NSString *_environmentDescriptionIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool success; // @synthesize success=_success;
 @property(copy, nonatomic) NSString *environmentDescriptionIdentifier; // @synthesize environmentDescriptionIdentifier=_environmentDescriptionIdentifier;
 @property(copy, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *loggableDescription;
 @property(readonly, nonatomic) BSSettings *bsSettings;
 - (void)encodeWithXPCDictionary:(id)arg1;

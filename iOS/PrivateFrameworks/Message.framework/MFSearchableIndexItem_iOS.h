@@ -14,11 +14,16 @@
 {
 }
 
++ (id)searchableIndexItemWithIdentifier:(id)arg1 message:(id)arg2 type:(long long)arg3;
++ (id)searchableIndexItemsFromMessages:(id)arg1 type:(long long)arg2;
++ (id)suggestionsSearchableItemWithMessage:(id)arg1;
 + (id)log;
 - (id)fetchIndexableAttachments;
 - (_Bool)_shouldAutoDownloadAttachment:(id)arg1;
 - (void)addAttachmentAttributesToAttributeSet:(id)arg1;
+- (void)setNeedsAllAttributesIndexingType;
 - (_Bool)shouldExcludeFromIndex;
+- (void)preprocess;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

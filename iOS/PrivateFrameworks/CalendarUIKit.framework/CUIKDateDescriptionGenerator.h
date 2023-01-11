@@ -43,7 +43,6 @@
 - (id)dayFormatter;
 - (id)timeFormatter;
 - (id)_customFormatter;
-- (void)_invalidateFormatters;
 - (void)_initializeFormatters;
 - (id)init;
 

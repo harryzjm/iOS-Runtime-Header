@@ -22,8 +22,11 @@
     unsigned long long _updateReasons;
 }
 
++ (id)recordNamePrefix;
 + (_Bool)supportsSecureCoding;
++ (long long)accountEventTypeFromRecord:(id)arg1;
 + (id)eventIdentifierFromRecordName:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long updateReasons; // @synthesize updateReasons=_updateReasons;
 @property(retain, nonatomic) NSSet *items; // @synthesize items=_items;
 @property(nonatomic) _Bool blockNotification; // @synthesize blockNotification=_blockNotification;
@@ -32,16 +35,17 @@
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqualToAccountEvent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (unsigned long long)itemType;
+- (id)primaryIdentifier;
 - (id)recordNameForItem:(id)arg1;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

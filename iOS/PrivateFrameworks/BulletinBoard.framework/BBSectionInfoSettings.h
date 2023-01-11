@@ -9,11 +9,15 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
+@class NSDate, NSDictionary;
+
 @interface BBSectionInfoSettings : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _showsOnExternalDevices;
     _Bool _showsCustomSettingsLink;
     long long _authorizationStatus;
+    NSDate *_authorizationExpirationDate;
+    NSDate *_lastUserGrantedAuthorizationDate;
     long long _notificationCenterSetting;
     long long _lockScreenSetting;
     long long _contentPreviewSetting;
@@ -27,6 +31,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)sectionInfoSettingsForManagedBundleID:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long bulletinGroupingSetting; // @synthesize bulletinGroupingSetting=_bulletinGroupingSetting;
 @property(nonatomic) long long spokenNotificationSetting; // @synthesize spokenNotificationSetting=_spokenNotificationSetting;
 @property(nonatomic) long long criticalAlertSetting; // @synthesize criticalAlertSetting=_criticalAlertSetting;
@@ -38,8 +43,11 @@
 @property(nonatomic) _Bool showsOnExternalDevices; // @synthesize showsOnExternalDevices=_showsOnExternalDevices;
 @property(nonatomic) long long lockScreenSetting; // @synthesize lockScreenSetting=_lockScreenSetting;
 @property(nonatomic) long long notificationCenterSetting; // @synthesize notificationCenterSetting=_notificationCenterSetting;
+@property(retain, nonatomic) NSDate *lastUserGrantedAuthorizationDate; // @synthesize lastUserGrantedAuthorizationDate=_lastUserGrantedAuthorizationDate;
+@property(retain, nonatomic) NSDate *authorizationExpirationDate; // @synthesize authorizationExpirationDate=_authorizationExpirationDate;
 @property(nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property(nonatomic) _Bool allowsNotifications;
+@property(readonly, nonatomic) _Bool isAuthorizedTemporarily;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -50,6 +58,7 @@
 - (id)_alertTypeDescription;
 - (id)_authorizationStatusDescription;
 - (id)description;
+@property(readonly, copy, nonatomic) NSDictionary *stateCapture;
 - (id)initWithDefaultsForSectionType:(long long)arg1;
 @property(nonatomic) _Bool showsInLockScreen;
 @property(nonatomic) _Bool showsInNotificationCenter;

@@ -63,7 +63,7 @@
 - (_Bool)scrollView:(id)arg1 shouldScrollToPoint:(struct CGPoint)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct Frame *)_web_frame;
+- (NakedPtr_4ac97545)_web_frame;
 - (float)_verticalKeyboardScrollDistance;
 - (void)_frameSizeChanged;
 - (void)_install;

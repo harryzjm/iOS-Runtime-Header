@@ -6,9 +6,11 @@
 
 #import <CloudServices/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, SecureBackup;
+@class NSArray, NSData, NSDictionary, NSSet, NSString, OTEscrowRecord, OTICDPRecordContext, SecureBackup;
 
 @protocol SecureBackupProtocol <NSObject>
+- (void)getCertificatesWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSData *, NSData *, NSError *))arg2;
+- (void)createICDPRecordWithRequest:(SecureBackup *)arg1 recordContents:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)recoverRecordContentsWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)beginHSA2PasscodeRequest:(SecureBackup *)arg1 desirePasscodeImmediately:(_Bool)arg2 uuid:(NSString *)arg3 reply:(void (^)(SecureBackupBeginPasscodeRequestResults *, NSError *))arg4;
 - (void)prepareHSA2EscrowRecordContents:(SecureBackup *)arg1 usesComplexPassphrase:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
@@ -29,6 +31,9 @@
 - (void)updateMetadataWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)disableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)stashRecoveryDataWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)restoreKeychainAsyncWithPasswordInDaemon:(NSData *)arg1 keybagDigest:(NSData *)arg2 haveBottledPeer:(_Bool)arg3 viewsNotToBeRestored:(NSSet *)arg4 reply:(void (^)(NSError *))arg5;
+- (void)recoverSilentWithCDPContextInDaemon:(OTICDPRecordContext *)arg1 allRecords:(NSArray *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)recoverWithCDPContextInDaemon:(OTICDPRecordContext *)arg1 escrowRecord:(OTEscrowRecord *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)recoverWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)enableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)getAccountInfoWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;

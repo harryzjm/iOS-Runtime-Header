@@ -8,18 +8,24 @@
 
 #import <CoreML/ETDataProvider-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface _MLDataSource : NSObject <ETDataProvider>
 {
     NSDictionary *_dataTensorDictionary;
 }
 
-@property(retain, nonatomic) NSDictionary *dataTensorDictionary; // @synthesize dataTensorDictionary=_dataTensorDictionary;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *dataTensorDictionary; // @synthesize dataTensorDictionary=_dataTensorDictionary;
 - (unsigned long long)numberOfDataPoints;
 - (id)dataPointAtIndex:(unsigned long long)arg1 error:(id *)arg2;
-- (id)initWithMLFeatureProvider:(id)arg1 neuralNetworkEngine:(id)arg2 error:(id *)arg3;
+- (id)initWithMLFeatureProvider:(id)arg1 forPrediction:(_Bool)arg2 neuralNetworkEngine:(id)arg3 error:(id *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

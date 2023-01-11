@@ -39,7 +39,9 @@
 - (void)insertObject:(id)arg1 inChildCollectionsAtIndex:(unsigned long long)arg2;
 @property(readonly, retain, nonatomic) NSString *_typeDescription;
 @property(readonly, retain, nonatomic) NSString *_prettyDescription;
-- (void)enforceFixedOrderKeyCompliance;
+- (void)_enforceFixedOrderKeyComplianceWithRelationshipOrderManager:(id)arg1;
+- (void)_enforceFixedOrderKeyCompliance;
+- (void)enforceFixedOrderKeyComplianceWithRelationshipOrderManager:(id)arg1;
 - (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (_Bool)isValidForPersistence;
@@ -51,7 +53,7 @@
 - (_Bool)needsReordering;
 - (void)setNeedsReordering;
 @property(readonly, copy, nonatomic) CDUnknownBlockType albumsSortingComparator;
-- (_Bool)albumHasFixedOrder:(struct NSObject *)arg1;
+- (_Bool)albumHasFixedOrder:(id)arg1;
 - (_Bool)canEditAlbums;
 - (short)albumListType;
 - (_Bool)hasAtLeastOneAlbum;

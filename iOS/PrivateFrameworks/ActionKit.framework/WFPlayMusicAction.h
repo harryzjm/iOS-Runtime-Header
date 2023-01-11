@@ -19,6 +19,8 @@
 - (void)playContentViaMusicPlayer:(id)arg1;
 - (void)sendPlaybackArchive:(id)arg1 orPlaybackQueue:(id)arg2 toDestination:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)playContentViaMPCAssistant:(id)arg1 routeDescriptor:(id)arg2;
+- (id)mediaQueryFromMediaCollection:(id)arg1;
+- (void)getRemoteControlDestinationForPlaybackArchive:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)getContentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 

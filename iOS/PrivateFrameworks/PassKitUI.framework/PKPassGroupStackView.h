@@ -14,7 +14,7 @@
 #import <PassKitUI/PKPassGroupViewReceiver-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSNumber, NSObject, NSString, NSTimer, PKBackdropView, PKDiscoveryDataSource, PKNavigationDashboardPassViewController, PKPGSVSectionHeaderContext, PKPGSVTransitionInterstitialView, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassthroughView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor, UIImageView, UIView, _UIDynamicValueAnimation;
+@class NSMutableArray, NSMutableDictionary, NSNumber, NSObject, NSString, NSTimer, PKBackdropView, PKDiscoveryDataSource, PKGroupsController, PKNavigationDashboardPassViewController, PKPGSVSectionHeaderContext, PKPGSVTransitionInterstitialView, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassthroughView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor, UIImageView, UIView, _UIDynamicValueAnimation;
 @protocol OS_dispatch_source, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate><UIScrollViewDelegate;
 
 @interface PKPassGroupStackView : UIScrollView <PKPassGroupViewDelegate, PKPassDeleteAnimationControllerDelegate, PKPaymentServiceDelegate, PKPassFooterViewDelegate, PKDashboardPassViewControllerDelegate, PKPassDeleteHandler, PKPassGroupViewReceiver>
@@ -123,6 +123,7 @@
     _Bool _paused;
     id <PKPassGroupStackViewDatasource> _datasource;
     PKDiscoveryDataSource *_discoveryDatasource;
+    PKGroupsController *_groupsController;
     long long _coachingState;
     UIColor *_pageIndicatorTintColor;
     UIColor *_currentPageIndicatorTintColor;
@@ -132,6 +133,7 @@
 + (id)backdropEndBackgroundColor;
 + (id)backdropStartBackgroundColor;
 + (id)backgroundColor;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic) _Bool staggerPileAnimations; // @synthesize staggerPileAnimations=_staggerPileAnimations;
 @property(nonatomic) double topContentSeparatorHeight; // @synthesize topContentSeparatorHeight=_topContentSeparatorHeight;
@@ -140,17 +142,19 @@
 @property(readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property(nonatomic) _Bool externalFooterSuppressed; // @synthesize externalFooterSuppressed=_externalFooterSuppressed;
 @property(nonatomic) _Bool footerSuppressed; // @synthesize footerSuppressed=_footerSuppressed;
+@property(retain, nonatomic) PKGroupsController *groupsController; // @synthesize groupsController=_groupsController;
 @property(retain, nonatomic) PKDiscoveryDataSource *discoveryDatasource; // @synthesize discoveryDatasource=_discoveryDatasource;
 @property(nonatomic) unsigned long long modalGroupIndex; // @synthesize modalGroupIndex=_modalGroupIndex;
 @property(nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
-@property(nonatomic) id <PKPassGroupStackViewDatasource> datasource; // @synthesize datasource=_datasource;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPassGroupStackViewDatasource> datasource; // @synthesize datasource=_datasource;
+- (void)_updatePassViewMotionState;
+- (void)_pauseDynamicPassIfNecessaryWithGroupView:(id)arg1;
 - (void)_updateBackdropViewFilters;
 - (void)_resetBackdropViewToStart:(_Bool)arg1;
 - (void)_hideBackdropViewAnimated:(_Bool)arg1 delay:(double)arg2;
 - (void)_presentBackdropViewAnimated:(_Bool)arg1 delay:(double)arg2;
 - (void)_moveBackdropViewToFront;
-- (void)dashboardPassViewController:(id)arg1 didRequestPaymentForPass:(id)arg2;
+- (void)dashboardPassViewController:(id)arg1 didRequestPaymentForPass:(id)arg2 fromButton:(_Bool)arg3;
 - (void)didDeletePass:(id)arg1;
 - (void)willDeletePass:(id)arg1;
 - (void)modalPresentationIsPending;
@@ -165,6 +169,8 @@
 - (_Bool)presentedPassCanPerformPayment;
 - (void)_rampBacklightIfNecessary:(_Bool)arg1;
 - (void)_refreshBacklightForFrontmostPassGroup;
+- (_Bool)_shouldRampForPass:(id)arg1;
+- (_Bool)_shouldRampForFrontmostPassView:(id)arg1;
 - (void)_resetBrightness;
 - (void)resetBrightness;
 - (void)evaluateBrightness;
@@ -172,13 +178,16 @@
 - (_Bool)handleDeletePassRequestWithPass:(id)arg1 forViewController:(id)arg2;
 - (void)deleteAnimationController:(id)arg1 didComplete:(_Bool)arg2;
 - (void)deleteAnimationControllerWillBeginDeleteAnimation:(id)arg1;
+- (void)passFooterViewDidEndAuthorization:(id)arg1;
+- (void)passFooterViewDidSucceedAtAuthorization:(id)arg1;
 - (void)passFooterViewDidChangePileSuppressionRequirement:(id)arg1;
 - (unsigned long long)suppressedContentForPassFooter:(id)arg1;
 - (_Bool)isPassFooterViewInGroup:(id)arg1;
 - (void)_updateCoachingState;
 - (void)passFooterViewDidChangeCoachingState:(id)arg1;
-- (void)passFooterViewDidChangeUserIntentRequirement:(id)arg1 withContext:(id)arg2;
-- (void)passFooterViewDidChangeUserIntentRequirement:(id)arg1;
+- (void)passFooterViewDidChangePhysicalButtonRequirement:(id)arg1 withContext:(id)arg2;
+- (void)passFooterViewDidChangePhysicalButtonRequirement:(id)arg1;
+- (void)groupViewExpandButtonTapped:(id)arg1;
 - (void)groupViewDidUpdatePageControlVisibility:(id)arg1;
 - (_Bool)groupView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;
 - (void)groupView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
@@ -218,7 +227,7 @@
 - (id)_groupViewAtIndex:(unsigned long long)arg1;
 - (void)_reverseEnumerateLoadedGroupViews:(CDUnknownBlockType)arg1;
 - (void)_enumerateLoadedGroupViews:(CDUnknownBlockType)arg1;
-- (id)_sortedGroupViewIndexes;
+- (id)_createSortedGroupViewIndexes;
 - (id)_separatorGroup;
 - (id)_firstHeaderContext;
 - (_Bool)_isModalPresentationAllowedForSingleGroup;
@@ -325,7 +334,7 @@
 - (unsigned long long)_edgeStylesObscuredByTopCornersOfPassStyle:(long long)arg1;
 - (unsigned long long)_edgeStylesObscuredByTopMiddleOfPassStyle:(long long)arg1;
 - (struct _NSRange)_rangeOfEagerLoadedIndexes;
-- (id)_stackedIndices;
+- (id)_createStackedIndices;
 - (struct _NSRange)_rangeOfVisibleIndexesIgnoringBottomInset:(_Bool)arg1;
 - (struct _NSRange)_rangeOfVisibleIndexes;
 - (unsigned long long)_startVisibleIndex;
@@ -338,7 +347,7 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)invalidate;
 - (void)updatePeerPaymentFooterViewIfNecessary;
-@property(nonatomic) id <PKPassGroupStackViewDelegate><UIScrollViewDelegate> delegate; // @dynamic delegate;
+@property(nonatomic) __weak id <PKPassGroupStackViewDelegate><UIScrollViewDelegate> delegate; // @dynamic delegate;
 @property(readonly, nonatomic) _Bool isPresentingPassViewFront;
 @property(readonly, nonatomic) _Bool isReordering;
 @property(readonly, nonatomic) _Bool isModallyPresentedPassAuthorized;

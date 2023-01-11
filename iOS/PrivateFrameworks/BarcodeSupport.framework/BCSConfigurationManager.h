@@ -13,8 +13,9 @@
     NSXPCConnection *_serviceConnection;
 }
 
-@property(retain, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
+- (void)processAppClipImageWithURL:(id)arg1 scale:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setUpQRCodeControlCenterModuleWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

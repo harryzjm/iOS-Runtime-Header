@@ -47,6 +47,7 @@
 + (id)_formatterForDateYMD;
 + (id)_timeZoneAdjustedDateFromDate:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property(retain, nonatomic) RUIDetailButtonElement *detailButton; // @synthesize detailButton=_detailButton;
 @property(nonatomic) __weak RUIPage *linkedPage; // @synthesize linkedPage=_linkedPage;
@@ -66,7 +67,7 @@
 @property(retain, nonatomic) NSDictionary *deleteAction; // @synthesize deleteAction=_deleteAction;
 @property(nonatomic) _Bool rowInvalid; // @synthesize rowInvalid=_rowInvalid;
 @property(nonatomic) __weak id <RUITableViewRowDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)_checkmarkAccessoryViewWithSelected:(_Bool)arg1;
 - (void)webContainerView:(id)arg1 didClickLinkWithURL:(id)arg2;
 - (void)detailLabelActivatedLinkFromCell:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)sourceURL;
@@ -95,6 +96,8 @@
 - (void)setValueFromString:(id)arg1 notify:(_Bool)arg2;
 - (_Bool)setSelectPageRowValue:(id)arg1;
 - (void)setSelectRowValue:(id)arg1;
+- (void)setSelectedRowTextColor;
+- (void)setDetailAndPlaceholderText;
 - (id)tableCell;
 - (_Bool)loadAccessoryImage;
 - (void)accessoryImageLoaded;
@@ -111,6 +114,7 @@
 - (id)dateFormatterCalendarIdentifier;
 - (void)setAttributes:(id)arg1;
 - (id)_datePickerFormatter;
+- (id)viewForElementIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

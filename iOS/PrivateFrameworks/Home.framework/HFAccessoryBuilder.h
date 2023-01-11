@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFNamedItemBuilder-Protocol.h>
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
 @class HFNamingComponents, HFRoomBuilder, HMAccessory, NSArray, NSString;
 @protocol HFIconDescriptor;
 
-@interface HFAccessoryBuilder <HFServiceLikeBuilder>
+@interface HFAccessoryBuilder <HFServiceLikeBuilder, HFNamedItemBuilder>
 {
     _Bool isFavorite;
     _Bool _skipPropagateFavoriteToServices;
@@ -19,17 +20,18 @@
 }
 
 + (Class)homeKitRepresentationClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HFNamingComponents *namingComponent; // @synthesize namingComponent=_namingComponent;
 @property(nonatomic) _Bool skipPropagateFavoriteToServices; // @synthesize skipPropagateFavoriteToServices=_skipPropagateFavoriteToServices;
 @property(nonatomic) _Bool isFavorite; // @synthesize isFavorite;
 @property(retain, nonatomic) HFRoomBuilder *room; // @synthesize room;
 @property(copy, nonatomic) NSString *name; // @synthesize name;
-- (void).cxx_destruct;
 - (id)_lazilyUpdateFavorite;
 - (id)_lazilyUpdateRoom;
 - (id)_lazilyUpdateName;
 - (id)commitItem;
 - (id)_performValidation;
+- (_Bool)_shouldUpdateNilNameWithRoomName;
 - (id)removeItemFromHome;
 @property(readonly, nonatomic) _Bool supportsFavoriting;
 - (id)accessories;

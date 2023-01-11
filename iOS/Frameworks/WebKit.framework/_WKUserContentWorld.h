@@ -12,14 +12,18 @@
 
 @interface _WKUserContentWorld : NSObject <WKObject>
 {
-    struct ObjectStorage<API::UserContentWorld> _userContentWorld;
+    struct RetainPtr<WKContentWorld> _contentWorld;
 }
 
 + (id)normalWorld;
 + (id)worldWithName:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly) struct Object *_apiObject;
 @property(readonly, copy, nonatomic) NSString *name;
-- (void)dealloc;
+- (id)_initWithContentWorld:(id)arg1;
+- (id)_init;
+- (id)_initWithName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -13,7 +13,6 @@
 @property(nonatomic) double topYBoundaryForText;
 @property(nonatomic) double visibleHeight;
 @property(nonatomic) double travelTimeHeight;
-@property(nonatomic) struct UIEdgeInsets margin;
 @property(nonatomic) struct CGRect backgroundRect;
 @property(nonatomic) long long colorBackgroundStyle;
 @property(nonatomic) double travelTime;

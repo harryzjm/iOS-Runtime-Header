@@ -14,7 +14,7 @@
 #import <PhotosUI/UIActivityItemImageDataProvider-Protocol.h>
 #import <PhotosUI/UIActivityItemSource-Protocol.h>
 
-@class NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSURL, PHAsset, PHAssetExportRequest, PUActivityItemSourceAnchorOperation, PUActivityItemSourceConfiguration, PUActivityItemSourceOperation;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSURL, PHAsset, PHAssetExportRequest, PUActivityItemSourceAnchorOperation, PUActivityItemSourceConfiguration, PUActivityItemSourceOperation;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PUActivityItemSource : PXObservable <PHAssetExportRequestDelegate, PUActivityItemSourceOperationDelegate, PUMutableActivityItemSource, UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemImageDataProvider, UIActivityItemSource>
@@ -30,7 +30,7 @@
     PUActivityItemSourceAnchorOperation *_anchorOperation;
     _Bool _shouldSkipPreparation;
     _Bool _shouldAnchorPreparation;
-    CDStruct_7f880b36 _sharingPreferences;
+    CDStruct_915a387c _sharingPreferences;
     unsigned long long _state;
     CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _completionHandler;
@@ -42,20 +42,23 @@
     CDUnknownBlockType __exportProgressHandler;
     NSDictionary *__pasteboardRepresentation;
     NSURL *__assetsLibraryURL;
+    unsigned long long _signpostId;
+    NSMutableDictionary *_preparationStepTimingInfo;
+    NSDate *_preparationStepSignpostIntervalStartTime;
+    long long _prepareItemEventCPAnalyticsSignpostId;
     NSObject<OS_dispatch_queue> *_externalIsolation;
 }
 
 + (id)activityItemSourceLog;
-+ (unsigned long long)assetBundleReframeVariationFromPHAssetReframeVariation:(unsigned long long)arg1;
-+ (unsigned short)assetBundleVideoComplementVisibilityStateFromPHVideoComplementVisibilityState:(unsigned short)arg1;
-+ (unsigned long long)assetBundlePlaybackVariationFromPHAssetPlaybackVariation:(unsigned short)arg1;
-+ (long long)assetBundlePlaybackStyleFromPHAssetPlaybackStyle:(long long)arg1;
-+ (unsigned long long)assetBundleMediaSubtypesFromPHAssetMediaSubtypes:(unsigned long long)arg1;
-+ (long long)assetBundleMediaTypeFromPHAssetMediaType:(long long)arg1;
 + (void)initialize;
 + (id)_sharingErrorWithCode:(long long)arg1 underlyingError:(id)arg2 localizedDescription:(id)arg3 additionalInfo:(id)arg4;
 + (_Bool)supportsAssetLocalIdentifierForActivityType:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *externalIsolation; // @synthesize externalIsolation=_externalIsolation;
+@property(readonly, nonatomic) long long prepareItemEventCPAnalyticsSignpostId; // @synthesize prepareItemEventCPAnalyticsSignpostId=_prepareItemEventCPAnalyticsSignpostId;
+@property(retain, nonatomic) NSDate *preparationStepSignpostIntervalStartTime; // @synthesize preparationStepSignpostIntervalStartTime=_preparationStepSignpostIntervalStartTime;
+@property(readonly, nonatomic) NSMutableDictionary *preparationStepTimingInfo; // @synthesize preparationStepTimingInfo=_preparationStepTimingInfo;
+@property(readonly, nonatomic) unsigned long long signpostId; // @synthesize signpostId=_signpostId;
 @property(retain, setter=_setAssetsLibraryURL:) NSURL *_assetsLibraryURL; // @synthesize _assetsLibraryURL=__assetsLibraryURL;
 @property(retain, setter=_setPasteboardRepresentation:) NSDictionary *_pasteboardRepresentation; // @synthesize _pasteboardRepresentation=__pasteboardRepresentation;
 @property(copy, nonatomic, setter=_setExportProgressHandler:) CDUnknownBlockType _exportProgressHandler; // @synthesize _exportProgressHandler=__exportProgressHandler;
@@ -69,12 +72,9 @@
 @property(copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property(readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
-@property(readonly, nonatomic) CDStruct_2a4d9400 sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
+@property(readonly, nonatomic) CDStruct_df7f102b sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
 @property(readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
-- (void)_removeTempAssetBundleFile;
-- (void)_removeTempLivePhotoBundleFile;
-- (void)_removeTempFiles;
+- (void)cleanUpExportedFiles;
 - (void)_setResourceURL:(id)arg1 forType:(long long)arg2;
 - (id)_resourceURLForType:(long long)arg1;
 - (id)_createManagedURLForResourceAtURL:(id)arg1 shouldMove:(_Bool)arg2 forType:(long long)arg3;
@@ -83,11 +83,16 @@
 - (id)_outboundResourcesDirectoryURL;
 - (id)activityViewControllerOperation:(id)arg1;
 - (id)activityViewControllerApplicationExtensionItem:(id)arg1;
-- (void)_runOnDemandExportForAsset:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_runOnDemandSingleFileExportForAsset:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_runOnDemandExportForAsset:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)activityViewController:(id)arg1 thumbnailImageDataForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
+- (id)_generateAnalyticsPayloadWithTimingInfo:(id)arg1;
+- (void)sendPreparationCompletedEventForActivityType:(id)arg1 preparationTimingInfo:(id)arg2 withError:(id)arg3 didCancel:(_Bool)arg4;
+- (id)finalizeTotalPreparationDurationTimingInfoDictionary;
+- (void)commitTimingInfoForPreparationStep:(id)arg1 fromStartTime:(id)arg2;
 - (void)assetExportRequest:(id)arg1 didChangeToState:(unsigned long long)arg2 fromState:(unsigned long long)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_stopObservingExportRequest;
@@ -98,17 +103,14 @@
 - (void)_fetchVideoWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchImageWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_runExportRequestWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)_createTempAssetBundleForAsset:(id)arg1 withError:(id *)arg2;
-- (id)_createTempLivePhotoBundleWithError:(id *)arg1;
 - (void)activityItemSourceOperation:(id)arg1 prepareItemForActivityType:(id)arg2;
 - (id)_newPasteboardRepresentationForURL:(id)arg1;
 - (id)_newOperationForActivityType:(id)arg1;
 - (id)_uniformTypeIdentifierForActivityType:(id)arg1;
-- (id)_customAccessibilityLabel;
 - (void)signalAnchorCompletion;
 - (void)cancel;
 - (void)_resetState;
-- (void)setSharingPreferences:(CDStruct_2a4d9400)arg1;
+- (void)setSharingPreferences:(CDStruct_df7f102b)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (void)_fetchSharingVariants;
 - (id)_sharingVariants;
@@ -116,7 +118,7 @@
 - (id)_activityOperationQueue;
 - (void)dealloc;
 @property(readonly, nonatomic) NSString *sharingUUID;
-- (id)initWithAsset:(id)arg1 sharingPreferences:(CDStruct_2a4d9400)arg2;
+- (id)initWithAsset:(id)arg1 sharingPreferences:(CDStruct_df7f102b)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

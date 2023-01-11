@@ -23,15 +23,15 @@
     RUIStyle *_serverFlowStyle;
 }
 
-@property(retain, nonatomic) RUIStyle *serverFlowStyle; // @synthesize serverFlowStyle=_serverFlowStyle;
 - (void).cxx_destruct;
+@property(retain, nonatomic) RUIStyle *serverFlowStyle; // @synthesize serverFlowStyle=_serverFlowStyle;
 - (void)_termsDisagree;
 - (void)_acceptedTermsVersion:(id)arg1;
 - (void)_acceptedTermsFromAsset;
 - (void)_handleAgreeFromObjectModel:(id)arg1;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(_Bool)arg3;
-- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2 forRequest:(id)arg3;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (void)_loadTermsRemoteUIFailureWithError:(id)arg1;
 - (void)_loadRemoteUITermsWithCloudAtURL:(id)arg1;

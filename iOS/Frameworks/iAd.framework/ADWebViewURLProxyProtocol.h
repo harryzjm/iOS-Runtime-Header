@@ -20,17 +20,22 @@
     ADNSURLSessionDemultiplexer *_sessionDemux;
 }
 
++ (id)buildTrimmedUrlStringFromUrl:(id)arg1 byRemovingBytes:(unsigned long long)arg2;
++ (id)buildTrimmedUrlStringFromUrl:(id)arg1 toReduceEncodedSizeBy:(unsigned long long)arg2;
++ (unsigned long long)decodedSizeForEncodedLength:(unsigned long long)arg1;
++ (unsigned long long)basicProxyAuthHeaderSizeForUser:(id)arg1 withPassword:(id)arg2;
++ (void)createLongProxyAuthHeaderRecordForRequest:(id)arg1 proxyAuthHeaderSize:(unsigned long long)arg2;
 + (id)canonicalRequestForRequest:(id)arg1;
 + (_Bool)canInitWithRequest:(id)arg1;
 + (void)unregister;
 + (void)registerProtocol;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain) ADNSURLSessionDemultiplexer *sessionDemux; // @synthesize sessionDemux=_sessionDemux;
 @property(retain) NSURLSessionDataTask *task; // @synthesize task=_task;
 @property double startTime; // @synthesize startTime=_startTime;
 @property(copy) NSArray *modes; // @synthesize modes=_modes;
 @property(retain) NSThread *clientThread; // @synthesize clientThread=_clientThread;
-- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;

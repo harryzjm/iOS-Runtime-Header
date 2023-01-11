@@ -17,10 +17,14 @@
 - (void)link:(id)arg1 didAddQREvent:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didReceiveReportEvent:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 relayGroupID:(NSString *)arg3 relaySessionID:(NSString *)arg4 success:(_Bool)arg5;
+- (void)link:(id)arg1 didSoMaskChange:(unsigned int)arg2;
+- (void)link:(id)arg1 didGetLinkProbingStatus:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didCellularMTUChange:(unsigned short)arg2;
 - (void)link:(id)arg1 didRATChange:(unsigned char)arg2;
+- (void)link:(id)arg1 didCellularNWPathFlagsChanged:(unsigned short)arg2;
+- (void)link:(id)arg1 didWiFiNWPathFlagsChanged:(unsigned short)arg2;
 - (void)link:(id)arg1 didDefaultUnderlyingLinkChangeSucceeded:(_Bool)arg2 currentDefaultLinkID:(BOOL)arg3;
-- (void)link:(id)arg1 didDisconnectUnderlyingLinkID:(BOOL)arg2 linkUUID:(NSUUID *)arg3;
+- (void)link:(id)arg1 didDisconnectUnderlyingLinkID:(BOOL)arg2 linkUUID:(NSUUID *)arg3 reason:(unsigned char)arg4;
 - (void)link:(id)arg1 didConnectUnderlyingLink:(BOOL)arg2 linkUUID:(NSUUID *)arg3 localAttributes:(NSDictionary *)arg4 remoteAttributes:(NSDictionary *)arg5;
 - (void)link:(id)arg1 didReceiveSKEData:(NSData *)arg2;
 - (void)link:(id)arg1 didDisconnectOverCloud:(NSString *)arg2 cbuuid:(NSString *)arg3;

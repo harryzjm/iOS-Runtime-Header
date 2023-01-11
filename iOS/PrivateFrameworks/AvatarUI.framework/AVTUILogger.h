@@ -18,10 +18,10 @@
     NSObject<OS_os_log> *_backendLog;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_os_log> *backendLog; // @synthesize backendLog=_backendLog;
 @property(readonly, nonatomic) NSObject<OS_os_log> *interactionLog; // @synthesize interactionLog=_interactionLog;
 @property(readonly, nonatomic) NSObject<OS_os_log> *generalLog; // @synthesize generalLog=_generalLog;
-- (void).cxx_destruct;
 - (void)logCarouselEndsDraggingWithVelocity:(double)arg1 willSwitchIndexPathInsteadOfScrollBack:(_Bool)arg2 forHighVelocity:(_Bool)arg3;
 - (void)logCarouselDelegateDidUpdateRecord:(id)arg1;
 - (void)logCarouselDelegateNearnessFactorDidChange:(double)arg1 towardRecord:(_Bool)arg2 editable:(_Bool)arg3;
@@ -49,8 +49,9 @@
 - (void)logCarouselChangesCenterItemTo:(id)arg1;
 - (void)logCarouselChangingToMultiMode;
 - (void)logCarouselChangingToSingleMode;
+- (void)logStickerViewSnapshotForBounds:(struct CGRect)arg1 offset:(struct CGPoint)arg2;
 - (void)logRenderingStickerEnd:(id)arg1;
-- (void)logRenderingStickerStart:(id)arg1;
+- (void)logRenderingStickerStart:(id)arg1 forRecord:(id)arg2;
 - (void)logPaddleViewVideoPlayerFailed:(id)arg1;
 - (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
 - (void)logDeduplicateRecordWithIdentifier:(id)arg1 toNewRecordWithIdentifier:(id)arg2;
@@ -80,6 +81,7 @@
 - (void)logErrorMergingCopiedAsideContent:(id)arg1;
 - (void)logErrorCopyingStorageAside:(id)arg1;
 - (void)logResetSyncReason:(unsigned long long)arg1;
+- (void)logPersistentChangeNotOfInterest:(id)arg1;
 - (void)logMissingTombstonedIdentifier;
 - (void)logMissingResetSyncReasonKey;
 - (void)logStartObservingResetSync;
@@ -87,7 +89,10 @@
 - (void)copyingStorageAside:(CDUnknownBlockType)arg1;
 - (void)processingDidResetSyncNotification:(CDUnknownBlockType)arg1;
 - (void)processingWillResetSyncNotification:(CDUnknownBlockType)arg1;
-- (void)logErrorSettingUserDirSuffix;
+- (void)logWarningNoHOME;
+- (void)logErrorSandboxInit:(char *)arg1;
+- (void)logGenericSandboxError:(id)arg1 error:(int)arg2;
+- (void)logErrorSettingUserDirSuffixForSandbox:(int)arg1;
 - (void)logNotImportingOnLaunchWithRemainingTime:(double)arg1;
 - (void)logPostingChangeNotificationForIdentifiers:(id)arg1;
 - (void)postingAvatarStoreChangeNotification:(CDUnknownBlockType)arg1;
@@ -119,7 +124,7 @@
 - (void)logChangesRequireExport;
 - (void)logNotificationDoesntContainChangeHistoryToken;
 - (void)logErrorFetchingChangeHistory:(id)arg1;
-- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1;
+- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1 handlersCount:(unsigned long long)arg2;
 - (void)logReceivedRemoteChange:(id)arg1;
 - (void)logStartObservingRemoteChangeNotificationFrom:(id)arg1;
 - (void)processingRemoteChangeNotification:(CDUnknownBlockType)arg1;
@@ -155,6 +160,7 @@
 - (void)logAvatarPreloadEnd;
 - (void)logAvatarPreloadBeginForIdentifier:(id)arg1;
 - (void)logCarouselSnapshotForIndex:(unsigned long long)arg1 size:(struct CGSize)arg2;
+- (void)logErrorSnapshottingAVTView:(id)arg1;
 - (void)logUnthrottlingAVTView;
 - (void)logThrottlingAVTView;
 - (void)logRequestingThumbnailForIndex:(unsigned long long)arg1 section:(id)arg2;
@@ -195,6 +201,7 @@
 - (void)deletingRecords:(CDUnknownBlockType)arg1;
 - (void)savingRecords:(CDUnknownBlockType)arg1;
 - (void)logPerformedRecentStickersMigration:(_Bool)arg1;
+- (void)logFetchedRecentStickerWithNoStickerConfiguration:(id)arg1;
 - (void)logFetchedOrphanedRecentSticker:(id)arg1;
 - (void)logErrorFetchingRecentStickers:(id)arg1;
 - (void)logErrorSavingRecentSticker:(id)arg1;

@@ -14,17 +14,17 @@
 @interface CKUploadRequestConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_containerIdentifier;
-    NSString *_sourceApplicationBundleID;
+    NSString *_applicationBundleIdentifierOverride;
     CKRecordZoneID *_repairZoneID;
 }
 
 + (id)configurationFromBaseContainer:(id)arg1;
 + (id)resolvedConfigurationWithBaseContainer:(id)arg1 overrides:(id)arg2;
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) CKRecordZoneID *repairZoneID; // @synthesize repairZoneID=_repairZoneID;
-@property(copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
-@property(copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CKRecordZoneID *repairZoneID; // @synthesize repairZoneID=_repairZoneID;
+@property(copy, nonatomic) NSString *applicationBundleIdentifierOverride; // @synthesize applicationBundleIdentifierOverride=_applicationBundleIdentifierOverride;
+@property(copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

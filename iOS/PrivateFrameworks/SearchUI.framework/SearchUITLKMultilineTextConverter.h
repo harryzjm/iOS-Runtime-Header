@@ -12,7 +12,7 @@
 
 + (id)formattedTextForSearchUIText:(id)arg1;
 + (_Bool)richTextOverridesAsyncLoader:(id)arg1;
-+ (void)applyRichText:(id)arg1 toTLKRichText:(id)arg2;
++ (void)applyRichText:(id)arg1 toTLKRichText:(id)arg2 isAsync:(_Bool)arg3;
 + (id)richTextForSearchUIText:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)textForSearchUIString:(id)arg1;
 + (id)richTextForSearchUIText:(id)arg1;

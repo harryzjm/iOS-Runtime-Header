@@ -13,6 +13,7 @@
 @interface HDSQLiteQueryDescriptor : NSObject <NSCopying>
 {
     _Bool _returnsDistinctEntities;
+    _Bool _shouldExpandLastSQLStatement;
     Class _entityClass;
     long long _limitCount;
     NSArray *_orderingTerms;
@@ -21,6 +22,8 @@
     NSArray *_preferredEntityJoinOrder;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldExpandLastSQLStatement; // @synthesize shouldExpandLastSQLStatement=_shouldExpandLastSQLStatement;
 @property(copy, nonatomic) NSArray *preferredEntityJoinOrder; // @synthesize preferredEntityJoinOrder=_preferredEntityJoinOrder;
 @property(copy, nonatomic) NSString *groupBy; // @synthesize groupBy=_groupBy;
 @property(copy, nonatomic) HDSQLitePredicate *predicate; // @synthesize predicate=_predicate;
@@ -28,7 +31,6 @@
 @property(copy, nonatomic) NSArray *orderingTerms; // @synthesize orderingTerms=_orderingTerms;
 @property(nonatomic) long long limitCount; // @synthesize limitCount=_limitCount;
 @property(nonatomic) Class entityClass; // @synthesize entityClass=_entityClass;
-- (void).cxx_destruct;
 - (id)_SQLForDeleteWithError:(id *)arg1;
 - (id)_joinClauseForProperties:(id)arg1;
 - (id)_SQLForSelectWithProperties:(id)arg1 columns:(id)arg2;

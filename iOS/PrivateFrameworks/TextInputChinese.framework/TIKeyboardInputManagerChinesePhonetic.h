@@ -18,6 +18,7 @@
     _Bool _isInAmbiguousMode;
     _Bool _lockingFirstPinyinSyllable;
     _Bool _filterCandidatesUsingInputIndex;
+    _Bool _shouldClearBeforeContinuousPath;
     _Bool _skipSetMarkedTextDuringInput;
     TIConversionHistory *_conversionHistory;
     NSString *_remainingInput;
@@ -36,7 +37,9 @@
 + (id)ambiguousDefaults;
 + (id)ambiguousPinyinSet;
 + (Class)wordSearchClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool skipSetMarkedTextDuringInput; // @synthesize skipSetMarkedTextDuringInput=_skipSetMarkedTextDuringInput;
+@property(nonatomic) _Bool shouldClearBeforeContinuousPath; // @synthesize shouldClearBeforeContinuousPath=_shouldClearBeforeContinuousPath;
 @property(retain, nonatomic) TIKeyboardCandidateResultSet *mostRecentCandidateResultSetPendingDisplay; // @synthesize mostRecentCandidateResultSetPendingDisplay=_mostRecentCandidateResultSetPendingDisplay;
 @property(nonatomic) _Bool filterCandidatesUsingInputIndex; // @synthesize filterCandidatesUsingInputIndex=_filterCandidatesUsingInputIndex;
 @property(retain, nonatomic) TIMecabraIMLogger *logger; // @synthesize logger=_logger;
@@ -47,7 +50,6 @@
 @property(copy, nonatomic) NSString *replacedAmbiguousPinyinSyllable; // @synthesize replacedAmbiguousPinyinSyllable=_replacedAmbiguousPinyinSyllable;
 @property(copy, nonatomic) NSString *remainingInput; // @synthesize remainingInput=_remainingInput;
 @property(retain, nonatomic) TIConversionHistory *conversionHistory; // @synthesize conversionHistory=_conversionHistory;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool usesGeometryModelData;
 - (_Bool)generateReanalysisCandidatesIfAppropriate;
 - (id)locale;
@@ -67,7 +69,7 @@
 @property(readonly, nonatomic) NSString *unconvertedInput;
 - (id)inputStringForSearch;
 - (struct _NSRange)analysisStringRange;
-- (_Bool)updateCandidates;
+- (_Bool)updateCandidatesByWaitingForResults:(_Bool)arg1;
 - (_Bool)shouldLookForCompletionCandidates;
 - (void)clearDynamicDictionary;
 - (void)lastAcceptedCandidateCorrected;
@@ -91,6 +93,7 @@
 - (id)phoneticSortingMethod;
 - (id)sortingMethods;
 - (_Bool)hasExtensionEmojiCandidates;
+- (id)candidateResultSetByWaitingForResults:(_Bool)arg1;
 - (id)candidateResultSet;
 - (unsigned long long)phraseBoundary;
 - (void)setPhraseBoundary:(unsigned long long)arg1;
@@ -112,6 +115,7 @@
 - (void)addInputToInternal:(id)arg1;
 - (_Bool)handleDirectlyCommitForInput:(id)arg1 withContext:(id)arg2;
 - (id)remapInput:(id)arg1 isFacemarkInput:(_Bool *)arg2;
+- (long long)addTouch:(id)arg1 shouldHitTest:(_Bool)arg2;
 - (void)addInput:(id)arg1 withContext:(id)arg2;
 - (id)addInput:(id)arg1 flags:(unsigned int)arg2 point:(struct CGPoint)arg3 firstDelete:(unsigned long long *)arg4;
 - (_Bool)_shouldCommitInputDirectly:(id)arg1;

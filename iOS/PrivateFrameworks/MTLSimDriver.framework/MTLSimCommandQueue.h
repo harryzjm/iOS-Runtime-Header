@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setBackgroundGPUPriority:(unsigned long long)arg1;
 - (unsigned long long)getGPUPriority;
 - (unsigned long long)getBackgroundGPUPriority;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (id)commandBufferWithUnretainedReferences;
 - (id)commandBuffer;
 - (void)dealloc;
@@ -58,7 +59,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool disableCrossQueueHazardTracking;
 @property _Bool executionEnabled;
 @property(readonly) unsigned long long hash;
-@property _Bool isOpenGLQueue;
+@property(readonly) _Bool isOpenGLQueue;
 @property(copy) NSString *label;
 @property(readonly) unsigned long long maxCommandBufferCount;
 @property(getter=isProfilingEnabled) _Bool profilingEnabled;

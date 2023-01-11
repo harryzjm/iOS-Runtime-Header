@@ -19,19 +19,23 @@ __attribute__((visibility("hidden")))
     CAEmitterLayer *_dustEmitterLayer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CAEmitterLayer *dustEmitterLayer; // @synthesize dustEmitterLayer=_dustEmitterLayer;
 @property(retain, nonatomic) CALayer *dustEmitterContainerLayer; // @synthesize dustEmitterContainerLayer=_dustEmitterContainerLayer;
 @property(retain, nonatomic) CAEmitterLayer *drawEmitterLayer; // @synthesize drawEmitterLayer=_drawEmitterLayer;
 @property(retain, nonatomic) CALayer *drawEmitterContainerLayer; // @synthesize drawEmitterContainerLayer=_drawEmitterContainerLayer;
 @property(retain, nonatomic) CALayer *blurredImageContainerLayer; // @synthesize blurredImageContainerLayer=_blurredImageContainerLayer;
 @property(retain, nonatomic) CALayer *blurredImageLayer; // @synthesize blurredImageLayer=_blurredImageLayer;
-- (void).cxx_destruct;
 - (void)setPaused:(_Bool)arg1;
 - (void)setSuspended:(_Bool)arg1;
 - (void)reset;
+- (void)endEmittersForTouchesCancelled:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)endEmittersForTouchesEnded:(id)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)moveEmittersForTouchesMoved:(id)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)moveEmittersForTouchesBegan:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)moveEmittersWithTouches:(id)arg1;
 - (void)endDustEmitterFingerEffects;

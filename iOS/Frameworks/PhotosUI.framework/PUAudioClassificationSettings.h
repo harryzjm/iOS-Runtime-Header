@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
-- (void)performPostSaveActions;
 - (void)setDefaultValues;
 - (id)parentSettings;
 

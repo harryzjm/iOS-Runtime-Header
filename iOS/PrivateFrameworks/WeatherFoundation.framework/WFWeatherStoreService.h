@@ -28,6 +28,7 @@
     WFNetworkRetryManager *_retryManager;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) WFNetworkRetryManager *retryManager; // @synthesize retryManager=_retryManager;
 @property(retain) WFWeatherStoreCache *cache; // @synthesize cache=_cache;
 @property(retain) NSMutableDictionary *URLToCallbackMap; // @synthesize URLToCallbackMap=_URLToCallbackMap;
@@ -41,7 +42,6 @@
 @property(copy, nonatomic) CDUnknownBlockType locationGeocodeForCoordinateRequestStartingCallback; // @synthesize locationGeocodeForCoordinateRequestStartingCallback=_locationGeocodeForCoordinateRequestStartingCallback;
 @property(copy, nonatomic) CDUnknownBlockType forecastRequestStartingCallback; // @synthesize forecastRequestStartingCallback=_forecastRequestStartingCallback;
 @property(copy, nonatomic) WFWeatherStoreServiceConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)_cleanupCallbacksAndTasksForURL:(id)arg1;
 - (void)_executeCallbacksForURL:(id)arg1 parsedForecastData:(id)arg2 error:(id)arg3;
 - (void)_addCallback:(CDUnknownBlockType)arg1 requestIdentifier:(id)arg2 forURL:(id)arg3;
@@ -51,26 +51,33 @@
 - (void)requestFailureForAPIVersion:(id)arg1 error:(id)arg2;
 - (void)requestSuccessForAPIVersion:(id)arg1;
 - (id)apiVersionForSettings:(id)arg1;
-- (void)_submitRequest:(id)arg1 withIdentifier:(id)arg2 forLocation:(id)arg3 forecastTypes:(unsigned long long)arg4 configuration:(id)arg5 locale:(id)arg6 date:(id)arg7 apiVersion:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
+- (void)_submitRequest:(id)arg1 withIdentifier:(id)arg2 forLocation:(id)arg3 forecastTypes:(unsigned long long)arg4 configuration:(id)arg5 units:(int)arg6 locale:(id)arg7 date:(id)arg8 apiVersion:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
 - (void)_enumerateForecastTypesIn:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_cacheParsedForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5;
 - (void)_cacheObject:(id)arg1 type:(unsigned long long)arg2 date:(id)arg3 forLocation:(id)arg4;
+- (void)_forecastConditionsForTWCAQIAndTypes:(unsigned long long)arg1 location:(id)arg2 locale:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_forecastConditionsForTypes:(unsigned long long)arg1 location:(id)arg2 units:(int)arg3 locale:(id)arg4 date:(id)arg5 requestIdentifier:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)_forecastConditionsForTypes:(unsigned long long)arg1 location:(id)arg2 locale:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (_Bool)_isConnectivityAvailableForWeatherHost:(id *)arg1;
 - (id)_cachedData:(unsigned long long)arg1 forLocation:(id)arg2 date:(id)arg3;
+- (id)_cachedNextHourPrecipitationForLocation:(id)arg1 date:(id)arg2;
+- (id)_cachedSevereWeatherEventsForLocation:(id)arg1 date:(id)arg2;
+- (id)_cachedChangeForecastForLocation:(id)arg1 date:(id)arg2;
 - (id)_cachedHistoricalObservationsForLast24hForLocation:(id)arg1 date:(id)arg2;
 - (id)_cachedDailyPollenForecastedConditionsForLocation:(id)arg1 date:(id)arg2;
 - (id)_cachedDailyForecastedConditionsForLocation:(id)arg1 date:(id)arg2;
 - (id)_cachedHourlyForecastedConditionsForLocation:(id)arg1 date:(id)arg2;
 - (id)_cachedCurrentObservationsForLocation:(id)arg1 date:(id)arg2;
 - (id)_cachedAirQualityConditionsForLocation:(id)arg1 date:(id)arg2;
+- (void)forecast:(unsigned long long)arg1 forLocation:(id)arg2 withUnits:(int)arg3 locale:(id)arg4 requestIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)forecast:(unsigned long long)arg1 forLocation:(id)arg2 locale:(id)arg3 requestIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)airQualityForLocation:(id)arg1 locale:(id)arg2 requestIdentifier:(id)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)dailyForecastForLocation:(id)arg1 locale:(id)arg2 requestIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)hourlyForecastForLocation:(id)arg1 locale:(id)arg2 requestIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)forecastForLocation:(id)arg1 locale:(id)arg2 atDate:(id)arg3 requestIdentifier:(id)arg4 options:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)forecastForLocation:(id)arg1 locale:(id)arg2 onDate:(id)arg3 requestIdentifier:(id)arg4 options:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)completeErroneousForecastRequestWithHandler:(CDUnknownBlockType)arg1 requestIdentifier:(id)arg2 error:(id)arg3;
 - (void)cancelTaskWithIdentifier:(id)arg1;
+- (void)dealloc;
 - (void)invalidateCacheWithIdentifier:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
 - (id)initWithConfiguration:(id)arg1;

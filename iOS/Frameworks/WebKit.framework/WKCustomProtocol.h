@@ -9,16 +9,16 @@
 __attribute__((visibility("hidden")))
 @interface WKCustomProtocol : NSURLProtocol
 {
-    unsigned long long _customProtocolID;
+    ObjectIdentifier_93c10595 _customProtocolID;
     struct RetainPtr<__CFRunLoop *> _initializationRunLoop;
 }
 
 + (_Bool)requestIsCacheEquivalent:(id)arg1 toRequest:(id)arg2;
 + (id)canonicalRequestForRequest:(id)arg1;
 + (_Bool)canInitWithRequest:(id)arg1;
-@property(readonly, nonatomic) unsigned long long customProtocolID; // @synthesize customProtocolID=_customProtocolID;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) ObjectIdentifier_93c10595 customProtocolID; // @synthesize customProtocolID=_customProtocolID;
 - (void)stopLoading;
 - (void)startLoading;
 @property(readonly, nonatomic) struct __CFRunLoop *initializationRunLoop;

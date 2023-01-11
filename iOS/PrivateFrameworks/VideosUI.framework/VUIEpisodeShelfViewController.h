@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) _Bool isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
+- (id)indexTitlesForCollectionView:(id)arg1;
 - (unsigned long long)selectedIndexTitleForItemIndexPath:(id)arg1;
 - (void)_updateEpisodeHeaderWithLeftMostItem;
 - (id)_episodeHeaderView;
+- (void)seasonPickerButtonMenuSelected:(id)arg1 selectedTitle:(id)arg2 selectedIndex:(unsigned long long)arg3;
 - (void)seasonPickerButtonTapped:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;

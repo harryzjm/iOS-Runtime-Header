@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/SessionConnectionDelegate-Protocol.h>
+#import <CFNetwork/__NSCFURLSessionConnectionDelegate-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface __NSCFURLLocalStreamTaskFromDataTask <SessionConnectionDelegate>
+@interface __NSCFURLLocalStreamTaskFromDataTask <__NSCFURLSessionConnectionDelegate>
 {
     struct __CFReadStream *_myReadToHisWrite;
     _Bool _myReadToHisWriteEOF;
@@ -31,7 +31,6 @@
 - (void)connection:(id)arg1 sentBodyBytes:(id)arg2 totalBytes:(id)arg3 expectedBytes:(id)arg4;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 challenged:(id)arg2 authCallback:(CDUnknownBlockType)arg3;
-- (void)connection:(id)arg1 didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg2;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
 - (void)connectionWillFinishLoading:(id)arg1;
 - (void)connection:(id)arg1 didFinishCollectingMetrics:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -39,16 +38,10 @@
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 wasRedirected:(id)arg2 newRequest:(id)arg3 responseCallback:(CDUnknownBlockType)arg4;
-- (void)_unimp:(const char *)arg1;
-- (void)_onqueue_didFinishLoadingWithError:(id)arg1;
 - (void)dealloc;
 - (id)initWithTask:(id)arg1 inputStream:(id)arg2 ouptutStream:(id)arg3 disavow:(CDUnknownBlockType)arg4;
 - (id)initWithTask:(id)arg1 remainingInputStream:(id)arg2 remainingOutputStream:(id)arg3 disavow:(CDUnknownBlockType)arg4;
 - (id)initWithTask:(id)arg1 disavow:(CDUnknownBlockType)arg2;
-- (void)_onqueue_stFromDataTaskWriteCallback:(unsigned long long)arg1;
-- (void)_onqueue_stFromDataTaskReadCallback:(unsigned long long)arg1;
-- (void)_onqueue_ioTickFromDataTaskConversion:(const char *)arg1;
-- (void)_onqueue_ioTickFromDataTask;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

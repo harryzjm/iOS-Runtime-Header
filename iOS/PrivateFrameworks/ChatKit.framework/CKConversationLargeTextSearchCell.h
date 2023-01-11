@@ -25,6 +25,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(nonatomic) double widthForDeterminingAvatarVisibility;
 
 @end
 

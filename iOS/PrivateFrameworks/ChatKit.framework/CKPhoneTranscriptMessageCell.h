@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKAvatarView;
+@class CKAvatarView, UIImageView;
 
 @interface CKPhoneTranscriptMessageCell
 {
     CKAvatarView *_avatarView;
+    UIImageView *_printableAvatarView;
 }
 
-@property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *printableAvatarView; // @synthesize printableAvatarView=_printableAvatarView;
+@property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 - (void)setShowAvatarView:(_Bool)arg1 withContact:(id)arg2 preferredHandle:(id)arg3 avatarViewDelegate:(id)arg4;
 - (void)layoutSubviewsForContents;
 - (id)contactImageView;

@@ -6,31 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class BMManagedObjectConverter, NSError, NSManagedObjectContext, NSPersistentContainer, NSURL;
+@class BMBehaviorDatabaseMetadata, BMManagedObjectConverter, NSManagedObjectContext, NSPersistentContainer, NSURL;
 
 @interface BMBehaviorStorage : NSObject
 {
-    struct os_unfair_lock_s _setupLock;
     _Bool _readOnly;
     NSURL *_URL;
-    NSError *_setupError;
+    BMBehaviorDatabaseMetadata *_metadata;
     NSPersistentContainer *_container;
     NSManagedObjectContext *_context;
     BMManagedObjectConverter *_converter;
 }
 
 + (id)defaultURL;
+- (void).cxx_destruct;
 @property(retain, nonatomic) BMManagedObjectConverter *converter; // @synthesize converter=_converter;
 @property(retain, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSPersistentContainer *container; // @synthesize container=_container;
-@property(copy, nonatomic) NSError *setupError; // @synthesize setupError=_setupError;
+@property(retain, nonatomic) BMBehaviorDatabaseMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) _Bool readOnly; // @synthesize readOnly=_readOnly;
 @property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-- (void).cxx_destruct;
-- (void)deleteAllWithError:(id *)arg1;
+- (id)description;
+- (void)resetStorageWithMetadata:(id)arg1 error:(id *)arg2;
 - (void)saveRules:(id)arg1 error:(id *)arg2;
+- (id)fetchRulesWithAbsoluteSupport:(unsigned long long)arg1 support:(double)arg2 confidence:(double)arg3 conviction:(double)arg4 lift:(double)arg5 rulePowerFactor:(double)arg6 uniqueDaysLastWeek:(unsigned long long)arg7 uniqueDaysTotal:(unsigned long long)arg8 filters:(id)arg9 limit:(unsigned long long)arg10 error:(id *)arg11;
+- (id)fetchRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3 limit:(unsigned long long)arg4 error:(id *)arg5;
 - (id)fetchRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3 error:(id *)arg4;
-- (void)setupStorage;
+- (id)initWithURL:(id)arg1 readOnly:(_Bool)arg2 error:(id *)arg3;
 - (id)initWithURL:(id)arg1 readOnly:(_Bool)arg2;
 - (id)init;
 

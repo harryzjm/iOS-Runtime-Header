@@ -15,10 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_reevaluateMasterVolumeControlCapabilities;
-- (unsigned int)_calculateMasterVolumeCapabilities;
-- (void)_reevaluateMasterVolume;
-- (float)_calculateMasterVolume;
 - (id)outputDevices;
 - (void)updateVolumeControlCapabilities:(unsigned int)arg1 outputDeviceUID:(id)arg2;
 - (void)updateVolume:(float)arg1 outputDeviceUID:(id)arg2;

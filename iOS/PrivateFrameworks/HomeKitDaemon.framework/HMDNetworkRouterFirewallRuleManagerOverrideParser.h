@@ -14,6 +14,8 @@
 {
 }
 
++ (id)_parseOverridePairedMetadataWithProductGroup:(id)arg1 productNumber:(id)arg2 productNumberDictionary:(id)arg3 accessoryIdentifier:(id)arg4;
++ (id)_parseOverrideNetworkDeclarationsWithProductGroup:(id)arg1 productNumber:(id)arg2 productNumberDictionary:(id)arg3 accessoryIdentifier:(id)arg4;
 + (id)parseFromData:(id)arg1;
 + (id)logCategory;
 

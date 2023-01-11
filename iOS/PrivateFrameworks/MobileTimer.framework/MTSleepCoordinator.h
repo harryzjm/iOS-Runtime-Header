@@ -11,11 +11,12 @@
 #import <MobileTimer/MTSleepCoordinatorStateMachineDelegate-Protocol.h>
 #import <MobileTimer/MTSleepCoordinatorStateMachineInfoProvider-Protocol.h>
 #import <MobileTimer/MTSource-Protocol.h>
+#import <MobileTimer/MTTimeObserver-Protocol.h>
 
-@class MTAlarm, MTBedtimeDNDMonitor, MTObserverStore, MTSleepCoordinatorStateMachine, MTXPCScheduler, NAFuture, NSDate, NSString;
+@class MTAlarm, MTObserverStore, MTSleepCoordinatorStateMachine, MTSleepModeMonitor, MTXPCScheduler, NAFuture, NSDate, NSString;
 @protocol MTAlarmStorage, NAScheduler;
 
-@interface MTSleepCoordinator : NSObject <MTSource, MTSleepCoordinatorStateMachineDelegate, MTSleepCoordinatorStateMachineInfoProvider, MTAlarmObserver, MTAgentDiagnosticDelegate>
+@interface MTSleepCoordinator : NSObject <MTSource, MTSleepCoordinatorStateMachineDelegate, MTSleepCoordinatorStateMachineInfoProvider, MTAlarmObserver, MTTimeObserver, MTAgentDiagnosticDelegate>
 {
     MTSleepCoordinatorStateMachine *_stateMachine;
     MTAlarm *_cachedSleepAlarm;
@@ -24,12 +25,13 @@
     MTObserverStore *_observers;
     id <MTAlarmStorage> _alarmStorage;
     MTXPCScheduler *_alarmTimeoutScheduler;
-    MTBedtimeDNDMonitor *_bedtimeDNDMonitor;
+    MTSleepModeMonitor *_sleepModeMonitor;
     CDUnknownBlockType _currentDateProvider;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
-@property(retain, nonatomic) MTBedtimeDNDMonitor *bedtimeDNDMonitor; // @synthesize bedtimeDNDMonitor=_bedtimeDNDMonitor;
+@property(retain, nonatomic) MTSleepModeMonitor *sleepModeMonitor; // @synthesize sleepModeMonitor=_sleepModeMonitor;
 @property(retain, nonatomic) MTXPCScheduler *alarmTimeoutScheduler; // @synthesize alarmTimeoutScheduler=_alarmTimeoutScheduler;
 @property(copy, nonatomic) id <MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
 @property(retain, nonatomic) MTObserverStore *observers; // @synthesize observers=_observers;
@@ -37,14 +39,14 @@
 @property(retain, nonatomic) id <NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property(retain, nonatomic) MTAlarm *cachedSleepAlarm; // @synthesize cachedSleepAlarm=_cachedSleepAlarm;
 @property(retain, nonatomic) MTSleepCoordinatorStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
-- (void).cxx_destruct;
 - (id)gatherDiagnostics;
 - (void)printDiagnostics;
 - (id)sourceIdentifier;
 - (void)pairedDevicePreferencesChanged:(id)arg1;
 - (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)handlesNotification:(id)arg1 ofType:(long long)arg2;
-- (void)handleBedtimeSessionEndedForAlarm:(id)arg1 date:(id)arg2 reason:(unsigned long long)arg3;
+- (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)handleSleepSessionEndedForAlarm:(id)arg1 date:(id)arg2 reason:(unsigned long long)arg3;
 - (void)handleDismissForAlarm:(id)arg1 dismissAction:(unsigned long long)arg2 date:(id)arg3;
 - (void)handleSnoozeForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleWakeUpAlarmForAlarm:(id)arg1 date:(id)arg2;
@@ -53,7 +55,7 @@
 - (void)handleSnoozeOfGoToBedNotificationForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleConfirmationOfGoToBedNotificationForAlarm:(id)arg1 date:(id)arg2;
 - (void)handleBedtimeReminderForAlarm:(id)arg1 date:(id)arg2;
-- (void)bedtimeSessionTracker:(id)arg1 sessionDidComplete:(id)arg2;
+- (void)sleepSessionTracker:(id)arg1 sessionDidComplete:(id)arg2;
 - (void)source:(id)arg1 didDismissAlarm:(id)arg2 dismissAction:(unsigned long long)arg3;
 - (void)source:(id)arg1 didSnoozeAlarm:(id)arg2 snoozeAction:(unsigned long long)arg3;
 - (void)source:(id)arg1 didChangeNextAlarm:(id)arg2;
@@ -72,8 +74,8 @@
 @property(readonly, nonatomic) unsigned long long sleepTimeOutMinutes;
 @property(readonly, nonatomic) NSDate *currentDate;
 @property(readonly, nonatomic) MTAlarm *sleepAlarm;
-- (_Bool)isBedtimeDNDOn;
-- (_Bool)inUserDefinedSleepWindow;
+- (_Bool)isSleepModeOn;
+- (_Bool)isUserAsleep;
 - (void)updateSleepStateWithSleepAlarm:(id)arg1;
 - (void)updateSleepState;
 - (id)initWithAlarmStorage:(id)arg1 currentDateProvider:(CDUnknownBlockType)arg2;

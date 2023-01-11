@@ -6,7 +6,7 @@
 
 #import <SceneKit/NSObject-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, NSArray, NSDictionary, SCNNode, SCNScene, SKScene, SKTransition;
+@class AVAudioEngine, AVAudioEnvironmentNode, MTLRenderPassDescriptor, NSArray, NSDictionary, SCNNode, SCNScene, SKScene, SKTransition;
 @protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, SCNSceneRendererDelegate;
 
 @protocol SCNSceneRenderer <NSObject>
@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) unsigned long long depthPixelFormat;
 @property(readonly, nonatomic) unsigned long long colorPixelFormat;
 @property(readonly, nonatomic) id <MTLDevice> device;
+@property(readonly, nonatomic) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 @property(readonly, nonatomic) id <MTLRenderCommandEncoder> currentRenderCommandEncoder;
 @property(readonly, nonatomic) void *context;
 @property(readonly, nonatomic) unsigned long long renderingAPI;

@@ -8,15 +8,16 @@
 
 @class HDCodableRoutineRequestMessage;
 
+__attribute__((visibility("hidden")))
 @interface HDRemoteRoutineRequestContext : NSObject
 {
     HDCodableRoutineRequestMessage *_request;
     CDUnknownBlockType _completion;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(retain, nonatomic) HDCodableRoutineRequestMessage *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 
 @end
 

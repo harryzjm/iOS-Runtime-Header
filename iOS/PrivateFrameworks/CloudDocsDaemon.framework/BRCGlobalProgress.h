@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_keyPathsToObserve;
-@property(readonly, nonatomic) __weak BRCAccountSession *session; // @synthesize session=_session;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak BRCAccountSession *session; // @synthesize session=_session;
 - (void)_deleteDocument:(id)arg1 reason:(BOOL)arg2;
 - (void)_updateDocument:(id)arg1;
 - (void)_updateAppLibraryID:(id)arg1;
@@ -66,7 +66,6 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)initWithSession:(id)arg1;
-- (id)_t_globalProgressInfo;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

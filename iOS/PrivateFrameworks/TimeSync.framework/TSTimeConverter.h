@@ -13,6 +13,7 @@
     NSArray *_taiutc;
 }
 
+- (void).cxx_destruct;
 - (double)leapSecondForTAIDate:(id)arg1;
 - (double)leapSecondForUTCDate:(id)arg1;
 - (id)utcDateFromTAIDate:(id)arg1;

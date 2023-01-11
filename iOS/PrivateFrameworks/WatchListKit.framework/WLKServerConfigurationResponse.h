@@ -20,11 +20,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *endpointsDictionary; // @synthesize endpointsDictionary=_endpointsDictionary;
 @property(readonly, nonatomic) unsigned long long environmentHash; // @synthesize environmentHash=_environmentHash;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,6 +32,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)utsc;
+- (_Bool)isValidIgnoringExpiration;
 - (_Bool)isValid;
 - (id)dictionaryRepresentation;
 @property(readonly, copy, nonatomic) NSNumber *vppaSessionDurationInMillis;

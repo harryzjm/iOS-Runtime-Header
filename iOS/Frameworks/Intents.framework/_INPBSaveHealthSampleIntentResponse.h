@@ -15,7 +15,6 @@
 @interface _INPBSaveHealthSampleIntentResponse : PBCodable <_INPBSaveHealthSampleIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBString *_defaultUnit;
     _INPBString *_punchoutUrl;
     _INPBDateTimeRange *_recordDate;
@@ -29,7 +28,7 @@
 + (Class)valuesUserProvidedUnitType;
 + (Class)valuesDefaultUnitType;
 + (Class)sampleUuidsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *valuesUserProvidedUnits; // @synthesize valuesUserProvidedUnits=_valuesUserProvidedUnits;
 @property(copy, nonatomic) NSArray *valuesDefaultUnits; // @synthesize valuesDefaultUnits=_valuesDefaultUnits;
 @property(retain, nonatomic) _INPBString *userProvidedUnit; // @synthesize userProvidedUnit=_userProvidedUnit;
@@ -37,7 +36,6 @@
 @property(retain, nonatomic) _INPBDateTimeRange *recordDate; // @synthesize recordDate=_recordDate;
 @property(retain, nonatomic) _INPBString *punchoutUrl; // @synthesize punchoutUrl=_punchoutUrl;
 @property(retain, nonatomic) _INPBString *defaultUnit; // @synthesize defaultUnit=_defaultUnit;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

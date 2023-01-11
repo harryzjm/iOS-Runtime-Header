@@ -14,7 +14,7 @@
     void *ctx;
     void *plan;
     CDStruct_2bc666a5 net;
-    basic_string_23d93216 output_layer_name;
+    basic_string_90719d97 output_layer_name;
     id <MTLCommandQueue> queue;
     id <MTLDevice> device;
     NSObject<OS_dispatch_queue> *dispatch_queue;
@@ -46,10 +46,10 @@
 + (_Bool)loadStylesConfigAtDefaultsKey:(id)arg1;
 + (_Bool)loadStylesConfigAtPath:(id)arg1;
 + (void)setDefaultOption:(id)arg1 toValue:(id)arg2;
-@property(nonatomic) int flip_y; // @synthesize flip_y=_flip_y;
-@property(nonatomic) int rotation_degrees; // @synthesize rotation_degrees=_rotation_degrees;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) int flip_y; // @synthesize flip_y=_flip_y;
+@property(nonatomic) int rotation_degrees; // @synthesize rotation_degrees=_rotation_degrees;
 - (float)benchmark;
 - (void)aggregateWisdom:(struct wisdom_trainer2 *)arg1;
 - (void)_tune;

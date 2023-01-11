@@ -15,15 +15,19 @@
     NSData *_pdfData;
     double _baseline;
     double _capHeight;
+    double _leftInset;
+    double _rightInset;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double rightInset; // @synthesize rightInset=_rightInset;
+@property(readonly, nonatomic) double leftInset; // @synthesize leftInset=_leftInset;
 @property(readonly, nonatomic) double capHeight; // @synthesize capHeight=_capHeight;
 @property(readonly, nonatomic) double baseline; // @synthesize baseline=_baseline;
 @property(readonly, nonatomic) NSData *pdfData; // @synthesize pdfData=_pdfData;
-- (void).cxx_destruct;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (id)initWithPDFData:(id)arg1 baseline:(double)arg2 capHeight:(double)arg3;
+- (id)initWithPDFData:(id)arg1 baseline:(double)arg2 capHeight:(double)arg3 leftInset:(double)arg4 rightInset:(double)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

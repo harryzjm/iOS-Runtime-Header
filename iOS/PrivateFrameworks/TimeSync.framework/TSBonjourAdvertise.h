@@ -15,6 +15,7 @@
     id <TSBonjourAdvertiseDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) id <TSBonjourAdvertiseDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
 - (_Bool)stopAdvertising;

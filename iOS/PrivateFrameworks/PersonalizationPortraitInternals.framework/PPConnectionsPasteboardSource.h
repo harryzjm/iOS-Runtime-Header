@@ -19,7 +19,6 @@
     NSLocale *_testLocale;
 }
 
-+ (id)identifier;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 consumer:(unsigned long long)arg5 explanationSet:(id)arg6;
@@ -34,6 +33,7 @@
 - (id)cacheValueForKey:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)identifier;
 - (void)setTestLocale:(id)arg1;
 - (void)unsetPasteboardTextForTestingAndClearCache;
 - (void)setPasteboardTextForTesting:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class EAAccessoryManager, NSMutableDictionary;
+@class CARObserverHashTable, EAAccessoryManager, NSMutableDictionary;
 @protocol CRVehicleAccessoryManagerDelegate;
 
 @interface CRVehicleAccessoryManager : NSObject
@@ -14,16 +14,20 @@
     id <CRVehicleAccessoryManagerDelegate> _vehicleAccessoryDelegate;
     EAAccessoryManager *_accessoryManager;
     NSMutableDictionary *_vehiclesBySerialNumber;
+    CARObserverHashTable *_observers;
 }
 
 + (id)_certificateSerialNumberForAccessory:(id)arg1;
 + (_Bool)_isVehicleAccessory:(id)arg1;
 + (_Bool)_isValidAccessoryMacAddress:(id)arg1;
++ (id)managerInfoDataCache;
 + (id)vehicleAccessQueue;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CARObserverHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSMutableDictionary *vehiclesBySerialNumber; // @synthesize vehiclesBySerialNumber=_vehiclesBySerialNumber;
 @property(retain, nonatomic) EAAccessoryManager *accessoryManager; // @synthesize accessoryManager=_accessoryManager;
 @property(nonatomic) __weak id <CRVehicleAccessoryManagerDelegate> vehicleAccessoryDelegate; // @synthesize vehicleAccessoryDelegate=_vehicleAccessoryDelegate;
-- (void).cxx_destruct;
 - (id)vehicleAccessoryForiAPConnectionIdentifier:(unsigned long long)arg1;
 - (id)vehicleAccessoryForCertificateSerial:(id)arg1;
 - (id)connectedVehicleAccessories;
@@ -31,9 +35,12 @@
 - (void)handleAccessoryInformationUpdate:(id)arg1;
 - (void)handleAccessoryDisconnect:(id)arg1;
 - (void)handleAccessoryConnect:(id)arg1;
+- (id)_vehicleInfoDataForAccessory:(id)arg1;
 - (void)_updateVehicle:(id)arg1 usingAccessory:(id)arg2;
 - (id)_vehicleForAccessory:(id)arg1;
 - (void)_primeConnectedVehicleAccessories;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

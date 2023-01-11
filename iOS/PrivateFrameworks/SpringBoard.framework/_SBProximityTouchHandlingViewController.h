@@ -6,20 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
-@protocol _SBProximityTouchHandlingDelegate;
-
 @interface _SBProximityTouchHandlingViewController : UIViewController
 {
     double _statusBarHeight;
 }
 
-@property(nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
 - (id)_view;
 - (unsigned long long)supportedInterfaceOrientations;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (_Bool)shouldAutorotate;
 - (void)loadView;
-@property(nonatomic) id <_SBProximityTouchHandlingDelegate> delegate;
 
 @end
 

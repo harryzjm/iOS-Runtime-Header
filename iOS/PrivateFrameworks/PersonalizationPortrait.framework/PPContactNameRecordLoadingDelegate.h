@@ -15,6 +15,7 @@
     CDUnknownBlockType _resetContactNameRecordData;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType resetContactNameRecordData; // @synthesize resetContactNameRecordData=_resetContactNameRecordData;
 @property(copy, nonatomic) CDUnknownBlockType recentContactNameRecordsCompletion; // @synthesize recentContactNameRecordsCompletion=_recentContactNameRecordsCompletion;
 @property(copy, nonatomic) CDUnknownBlockType recentContactNameRecordsHandler; // @synthesize recentContactNameRecordsHandler=_recentContactNameRecordsHandler;
@@ -22,7 +23,6 @@
 @property(copy, nonatomic) CDUnknownBlockType contactNameRecordsCompletion; // @synthesize contactNameRecordsCompletion=_contactNameRecordsCompletion;
 @property(copy, nonatomic) CDUnknownBlockType contactNameRecordsHandler; // @synthesize contactNameRecordsHandler=_contactNameRecordsHandler;
 @property(copy, nonatomic) CDUnknownBlockType contactNameRecordsSetup; // @synthesize contactNameRecordsSetup=_contactNameRecordsSetup;
-- (void).cxx_destruct;
 - (void)resetRecordData;
 - (void)recentRecordLoadingCompletion;
 - (unsigned char)recentRecordLoadingHandler:(id)arg1;

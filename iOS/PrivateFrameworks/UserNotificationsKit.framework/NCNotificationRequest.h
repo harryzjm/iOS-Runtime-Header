@@ -31,6 +31,7 @@
     NSDictionary *_context;
     NSSet *_settingsSections;
     NCNotificationSound *_sound;
+    NCNotificationAction *_cancelAction;
     NCNotificationAction *_clearAction;
     NCNotificationAction *_closeAction;
     NCNotificationAction *_defaultAction;
@@ -73,6 +74,7 @@
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 subSectionIds:(id)arg4 title:(id)arg5 message:(id)arg6 timestamp:(id)arg7 destinations:(id)arg8 options:(id)arg9;
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 title:(id)arg4 message:(id)arg5 timestamp:(id)arg6 destinations:(id)arg7;
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 title:(id)arg4 message:(id)arg5 timestamp:(id)arg6 destination:(id)arg7;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isCriticalAlert) _Bool criticalAlert; // @synthesize criticalAlert=_criticalAlert;
 @property(readonly, copy, nonatomic) NSDictionary *sourceInfo; // @synthesize sourceInfo=_sourceInfo;
 @property(readonly, nonatomic) unsigned long long collapsedNotificationsCount; // @synthesize collapsedNotificationsCount=_collapsedNotificationsCount;
@@ -83,6 +85,7 @@
 @property(readonly, nonatomic) NCNotificationAction *defaultAction; // @synthesize defaultAction=_defaultAction;
 @property(readonly, nonatomic) NCNotificationAction *closeAction; // @synthesize closeAction=_closeAction;
 @property(readonly, nonatomic) NCNotificationAction *clearAction; // @synthesize clearAction=_clearAction;
+@property(readonly, nonatomic) NCNotificationAction *cancelAction; // @synthesize cancelAction=_cancelAction;
 @property(readonly, nonatomic) NCNotificationSound *sound; // @synthesize sound=_sound;
 @property(readonly, copy, nonatomic) NSSet *settingsSections; // @synthesize settingsSections=_settingsSections;
 @property(readonly, copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
@@ -100,7 +103,6 @@
 @property(readonly, copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property(readonly, copy, nonatomic) NSString *notificationIdentifier; // @synthesize notificationIdentifier=_notificationIdentifier;
 @property(readonly, copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

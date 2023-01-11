@@ -8,17 +8,40 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIView, _UIButtonBarButton;
+@class UIBarButtonItem, UIView, _UIButtonBarButton;
 
 @interface _UIButtonBarButtonVisualProvider : NSObject <NSCopying>
 {
     _UIButtonBarButton *_button;
+    UIBarButtonItem *_barButtonItem;
 }
 
+- (void).cxx_destruct;
+- (id)buttonSpringLoadedInteractionEffect;
+- (id)buttonSpringLoadedInteractionBehavior;
+- (void)updateMenu;
+- (_Bool)canUpdateMenuInPlace;
+- (struct CGPoint)menuAnchorPoint;
+- (id)buttonContextMenuStyleFromDefaultStyle:(id)arg1;
+- (id)buttonContextMenuTargetedPreview;
+- (id)buttonContextMenuInteractionConfiguration;
+- (void)pointerWillExit:(id)arg1;
+- (void)pointerWillEnter:(id)arg1;
+- (void)cursorWillExit:(id)arg1;
+- (void)cursorWillEnter:(id)arg1;
+- (_Bool)shouldLift;
+- (id)matchingPointerShapeForView:(id)arg1 rect:(struct CGRect)arg2 inContainer:(id)arg3;
+- (id)pointerShapeInContainer:(id)arg1;
+- (id)contentCursorInContainer:(id)arg1;
+- (id)pointerPreviewParameters;
+- (_Bool)useLocalPointerInteraction;
+@property(readonly, nonatomic) UIView *alignmentViewForStaticNavBarButtonTrailing;
+@property(readonly, nonatomic) UIView *alignmentViewForStaticNavBarButtonLeading;
 - (void)resetButtonHasHighlighted;
 - (struct UIEdgeInsets)buttonAlignmentRectInsets:(id)arg1;
 - (struct CGSize)buttonIntrinsicContentSize:(id)arg1;
-- (void)button:(id)arg1 traitCollectionDidChange:(id)arg2;
+- (_Bool)shouldButtonAdjustToTraitCollection:(id)arg1;
+- (void)traitCollectionChangedInSubtreeFrom:(id)arg1 to:(id)arg2;
 - (void)buttonWillMoveToSuperview:(id)arg1;
 - (void)buttonWillMoveToWindow:(id)arg1;
 - (void)buttonLayoutSubviews:(id)arg1 baseImplementation:(CDUnknownBlockType)arg2;
@@ -32,6 +55,7 @@
 - (_Bool)buttonEnabledState:(id)arg1 forRequestedState:(_Bool)arg2;
 - (_Bool)buttonHighlitedState:(id)arg1 forRequestedState:(_Bool)arg2;
 - (_Bool)buttonSelectionState:(id)arg1 forRequestedState:(_Bool)arg2;
+@property(nonatomic) _Bool backButtonMaskEnabled;
 @property(nonatomic) _Bool backButtonConstraintsActive;
 @property(readonly, nonatomic) UIView *contentView;
 @property(readonly, nonatomic) UIView *backIndicatorView;

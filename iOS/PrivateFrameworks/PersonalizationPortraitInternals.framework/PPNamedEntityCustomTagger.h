@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, _PASLock;
+@class NSDictionary, NSSet, _PASLock;
 
 @interface PPNamedEntityCustomTagger : NSObject
 {
     _PASLock *_lock;
     NSDictionary *_categoryMapping;
+    NSSet *_dynamicCategories;
 }
 
 + (id)sharedInstance;
@@ -20,6 +21,8 @@
 - (void)enumerateNamedEntitiesInText:(id)arg1 range:(struct _NSRange)arg2 addNamedEntity:(CDUnknownBlockType)arg3;
 - (void)enumerateNamedEntitiesInText:(id)arg1 addNamedEntity:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithFilePath:(id)arg1 dynamicCategories:(id)arg2 trialWrapper:(id)arg3;
+- (void *)_loadTaggerWithDynamicCategories:(id)arg1 filePath:(id)arg2 trialWrapper:(id)arg3;
 
 @end
 

@@ -4,37 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NTKColoringLabel, NTKRichComplicationDialView, UIImageView;
-
 @interface NTKTimerRichComplicationCircularView
 {
-    NTKRichComplicationDialView *_backgroundDial;
-    NTKRichComplicationDialView *_foregroundDial;
-    UIImageView *_timerImageView;
-    NTKColoringLabel *_timerLabel;
-    NSDate *_timerDate;
-    double _timerDuration;
-    struct NSNumber *_updateToken;
-    struct {
-        long long numberTicks;
-        struct CGSize tickSize;
-        double dialDiameter;
-        double timerLabelBottom;
-        double timerLabelFontSize;
-        double timerLabelMaxWidth;
-    } _layoutConstants;
 }
 
-- (void).cxx_destruct;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_pause;
-- (void)_resume;
-- (void)_updateDialProgress;
-- (void)_applyPausedUpdate;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)layoutSubviews;
-- (void)dealloc;
++ (_Bool)supportsComplicationFamily:(long long)arg1;
 - (id)init;
 
 @end

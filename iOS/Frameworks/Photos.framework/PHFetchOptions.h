@@ -8,7 +8,7 @@
 
 #import <Photos/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableSet, NSNumber, NSPredicate, NSSet, NSString, PHPhotoLibrary;
+@class NSArray, NSMutableSet, NSNumber, NSPredicate, NSSet, NSString, PHPhotoLibrary, PHQueryChangeDetectionCriteria;
 
 @interface PHFetchOptions : NSObject <NSCopying>
 {
@@ -27,13 +27,14 @@
     NSNumber *_includeRejectedMemoriesNumber;
     NSNumber *_personContextNumber;
     NSNumber *_includeTrashedAssetsNumber;
-    NSNumber *_includeTrashedMomentSharesNumber;
-    NSNumber *_includeExpiredMomentSharesNumber;
+    NSNumber *_includeTrashedSharesNumber;
+    NSNumber *_includeExpiredSharesNumber;
     NSNumber *_includeFavoriteMemoriesCollectionListNumber;
     NSNumber *_includePlacesSmartAlbumNumber;
     NSNumber *_includeAllPhotosSmartAlbumNumber;
     NSNumber *_includeRecentlyEditedSmartAlbumNumber;
     NSNumber *_includeScreenRecordingsSmartAlbumNumber;
+    NSNumber *_includeTrashBinAlbumNumber;
     NSNumber *_includeRootFolderNumber;
     NSNumber *_excludeMontageAssetsNumber;
     NSNumber *_minimumVerifiedFaceCountNumber;
@@ -49,34 +50,40 @@
     NSNumber *_highlightCurationTypeNumber;
     NSNumber *_sharingStreamNumber;
     NSNumber *_includeUserSmartAlbumsNumber;
-    _Bool _includeRecentsSmartAlbum;
+    NSNumber *_includeOnlyAssetsAllowedForAnalysisNumber;
+    NSNumber *_includeOnlyContentContributedByCurrentUserNumber;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     NSArray *_customObjectIDSortOrder;
+    PHQueryChangeDetectionCriteria *_changeDetectionCriteria;
     NSString *_transientIdentifier;
     NSPredicate *_internalPredicate;
     NSArray *_internalSortDescriptors;
     NSPredicate *_internalInclusionPredicate;
     NSSet *_verifiedPersonTypes;
     PHPhotoLibrary *_photoLibrary;
+    NSString *_importantFetchName;
 }
 
 + (id)effectivePhotoLibraryForFetchOptions:(id)arg1 object:(id)arg2;
 + (id)fetchOptionsWithPhotoLibrary:(id)arg1 orObject:(id)arg2;
 + (id)fetchOptionsWithInclusiveDefaultsForPhotoLibrary:(id)arg1;
 + (id)fetchOptionsWithInclusiveDefaults;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *importantFetchName; // @synthesize importantFetchName=_importantFetchName;
 @property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(copy, nonatomic) NSSet *verifiedPersonTypes; // @synthesize verifiedPersonTypes=_verifiedPersonTypes;
-@property(nonatomic) _Bool includeRecentsSmartAlbum; // @synthesize includeRecentsSmartAlbum=_includeRecentsSmartAlbum;
 @property(retain, nonatomic) NSPredicate *internalInclusionPredicate; // @synthesize internalInclusionPredicate=_internalInclusionPredicate;
 @property(retain, nonatomic) NSArray *internalSortDescriptors; // @synthesize internalSortDescriptors=_internalSortDescriptors;
 @property(retain, nonatomic) NSPredicate *internalPredicate; // @synthesize internalPredicate=_internalPredicate;
 @property(retain, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
+@property(copy) PHQueryChangeDetectionCriteria *changeDetectionCriteria; // @synthesize changeDetectionCriteria=_changeDetectionCriteria;
 @property(retain, nonatomic) NSArray *customObjectIDSortOrder; // @synthesize customObjectIDSortOrder=_customObjectIDSortOrder;
 @property(retain, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-- (void).cxx_destruct;
 - (id)description;
+@property(nonatomic) _Bool includeOnlyContentContributedByCurrentUser;
+@property(nonatomic) _Bool includeOnlyAssetsAllowedForAnalysis;
 @property(nonatomic) _Bool includeUserSmartAlbums;
 @property(nonatomic) unsigned long long sharingStream;
 @property(nonatomic) unsigned short highlightCurationType;
@@ -91,13 +98,14 @@
 @property(nonatomic) unsigned long long minimumVerifiedFaceCount;
 @property(nonatomic) _Bool excludeMontageAssets;
 @property(nonatomic) _Bool includeRootFolder;
+@property(nonatomic) _Bool includeTrashBinAlbum;
 @property(nonatomic) _Bool includeScreenRecordingsSmartAlbum;
 @property(nonatomic) _Bool includeRecentlyEditedSmartAlbum;
 @property(nonatomic) _Bool includeAllPhotosSmartAlbum;
 @property(nonatomic) _Bool includePlacesSmartAlbum;
 @property(nonatomic) _Bool includeFavoriteMemoriesCollectionList;
-@property(nonatomic) _Bool includeExpiredMomentShares;
-@property(nonatomic) _Bool includeTrashedMomentShares;
+@property(nonatomic) _Bool includeExpiredShares;
+@property(nonatomic) _Bool includeTrashedShares;
 @property(nonatomic) _Bool includeTrashedAssets;
 @property(nonatomic) long long personContext;
 @property(nonatomic) long long curationType;

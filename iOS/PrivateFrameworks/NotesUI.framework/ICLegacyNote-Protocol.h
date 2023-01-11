@@ -7,22 +7,23 @@
 #import <NotesUI/NSObject-Protocol.h>
 
 @class NSArray, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString;
-@protocol ICLegacyAttachment, ICLegacyFolder;
+@protocol ICLegacyAccount, ICLegacyAttachment, ICLegacyFolder;
 
 @protocol ICLegacyNote <NSObject>
+@property(readonly, nonatomic) _Bool isDeletedOrInTrash;
+@property(readonly, nonatomic) _Bool isMarkedForDeletion;
+@property(readonly, nonatomic) _Bool isPlainText;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(readonly, nonatomic) NSArray *attachments;
+@property(readonly, copy, nonatomic) NSDate *modificationDate;
+@property(readonly, copy, nonatomic) NSDate *creationDate;
+@property(readonly, copy, nonatomic) NSString *title;
+@property(readonly, copy, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) id <ICLegacyFolder> folder;
+@property(readonly, nonatomic) id <ICLegacyAccount> account;
+@property(copy, nonatomic) NSString *htmlString;
 - (void)markForDeletion;
-- (_Bool)isMarkedForDeletion;
-- (void)setHtmlString:(NSString *)arg1;
 - (id <ICLegacyAttachment>)createAttachmentWithName:(NSString *)arg1;
-- (_Bool)isPlainText;
-- (NSManagedObjectContext *)managedObjectContext;
-- (NSManagedObjectID *)objectID;
-- (NSArray *)attachments;
-- (NSDate *)modificationDate;
-- (NSDate *)creationDate;
-- (NSString *)title;
-- (NSString *)identifier;
-- (id <ICLegacyFolder>)folder;
-- (NSString *)htmlString;
 @end
 

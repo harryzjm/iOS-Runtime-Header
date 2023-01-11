@@ -18,15 +18,17 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _responseHandler;
     unsigned long long _sendTicks;
     NSObject<OS_dispatch_source> *_timer;
+    unsigned long long _length;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long length; // @synthesize length=_length;
 @property(nonatomic) unsigned int xpcID; // @synthesize xpcID=_xpcID;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
 @property(nonatomic) unsigned long long sendTicks; // @synthesize sendTicks=_sendTicks;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
 @property(copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
-- (void).cxx_destruct;
 
 @end
 

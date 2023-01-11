@@ -23,6 +23,11 @@
     _Bool _supportsMMS;
     _Bool _mmsConfigured;
     long long _supportsApplePayState;
+    long long _supportsManateeForAppleCash;
+    long long _supportsRegionForAppleCash;
+    long long _supportsFMDV2State;
+    long long _supportsKeySharingState;
+    long long _supportsHarmonyState;
     _Bool _supportsHandoff;
     _Bool _supportsTethering;
     _Bool _supportsFT;
@@ -46,6 +51,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool commCenterDead; // @synthesize commCenterDead=_commCenterDead;
 @property(readonly, nonatomic) _Bool mmsConfigured; // @synthesize mmsConfigured=_mmsConfigured;
 @property(readonly, nonatomic) _Bool supportsMMS; // @synthesize supportsMMS=_supportsMMS;
@@ -58,13 +64,17 @@
 @property(readonly, nonatomic) _Bool supportsTethering; // @synthesize supportsTethering=_supportsTethering;
 @property(readonly, nonatomic) _Bool supportsHandoff; // @synthesize supportsHandoff=_supportsHandoff;
 @property(readonly, nonatomic) _Bool isGreenTea; // @synthesize isGreenTea=_isGreenTea;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool supportsFunCam;
 - (_Bool)_enoughPowerToSupportEffects;
 - (long long)memorySize;
 @property(readonly, nonatomic) _Bool lowRAMDevice;
 - (int)cpuFamily;
 @property(readonly, nonatomic) _Bool slowCPUDevice;
+@property(readonly, nonatomic) _Bool supportsHarmony;
+@property(readonly, nonatomic) _Bool supportsKeySharing;
+@property(readonly, nonatomic) _Bool supportsFMDV2;
+@property(readonly, nonatomic) _Bool supportsRegionForAppleCash;
+@property(readonly, nonatomic) _Bool supportsManateeForAppleCash;
 @property(readonly, nonatomic) _Bool supportsApplePay;
 @property(readonly, nonatomic) _Bool isInMultiUserMode;
 @property(readonly, nonatomic) _Bool nonWifiCallingAvailable;
@@ -109,11 +119,14 @@
 - (void)_initializeSIMInsertedCachedValue;
 @property(readonly, nonatomic) _Bool SIMInserted;
 @property(readonly, nonatomic) _Bool supportsSimultaneousVoiceAndDataRightNow;
+@property(readonly, nonatomic) _Bool supportsHDRdecoding;
 @property(readonly, nonatomic) _Bool isC2KEquipment;
 @property(readonly, nonatomic) NSDictionary *telephonyCapabilities;
 @property(readonly, nonatomic) NSString *deviceTypeIDPrefix;
 @property(readonly, nonatomic) NSString *deviceIDPrefix;
 @property(readonly, nonatomic) NSString *model;
+@property(readonly, nonatomic) _Bool supportsHEIFEncoding;
+@property(readonly, nonatomic) _Bool supportsAnimojiV2;
 @property(readonly, nonatomic) _Bool accountModificationRestricted;
 @property(readonly, nonatomic) _Bool registrationSupported;
 @property(readonly, nonatomic) _Bool conferencingAllowed;

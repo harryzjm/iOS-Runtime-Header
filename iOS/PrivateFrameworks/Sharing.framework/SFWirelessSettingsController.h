@@ -12,6 +12,7 @@
 {
     id _delegate;
     _Bool _wifiEnabled;
+    _Bool _airplaneModeEnabled;
     _Bool _bluetoothEnabled;
     _Bool _deviceSupportsWAPI;
     _Bool _firstCallbackCompleted;
@@ -20,13 +21,14 @@
     struct __SFOperation *_information;
 }
 
-@property __weak id <SFWirelessSettingsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property __weak id <SFWirelessSettingsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)invalidate;
 - (void)dealloc;
 @property(readonly, getter=isWirelessCarPlayEnabled) _Bool wirelessCarPlayEnabled;
 @property(getter=isWirelessAccessPointEnabled) _Bool wirelessAccessPointEnabled;
 @property(readonly) _Bool deviceSupportsWAPI;
+@property(getter=isAirplaneModeEnabled) _Bool airplaneModeEnabled;
 @property(getter=isBluetoothEnabled) _Bool bluetoothEnabled;
 @property(getter=isWifiEnabled) _Bool wifiEnabled;
 - (void)handleOperationCallback:(struct __SFOperation *)arg1 event:(long long)arg2 withResults:(id)arg3;

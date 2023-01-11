@@ -36,8 +36,9 @@
 - (void)logCarouselChangesCenterItemTo:(NSString *)arg1;
 - (void)logCarouselChangingToMultiMode;
 - (void)logCarouselChangingToSingleMode;
+- (void)logStickerViewSnapshotForBounds:(struct CGRect)arg1 offset:(struct CGPoint)arg2;
 - (void)logRenderingStickerEnd:(NSString *)arg1;
-- (void)logRenderingStickerStart:(NSString *)arg1;
+- (void)logRenderingStickerStart:(NSString *)arg1 forRecord:(NSString *)arg2;
 - (void)logPaddleViewVideoPlayerFailed:(NSError *)arg1;
 - (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
 - (void)logDeduplicateRecordWithIdentifier:(NSString *)arg1 toNewRecordWithIdentifier:(NSString *)arg2;
@@ -67,6 +68,7 @@
 - (void)logErrorMergingCopiedAsideContent:(NSString *)arg1;
 - (void)logErrorCopyingStorageAside:(NSString *)arg1;
 - (void)logResetSyncReason:(unsigned long long)arg1;
+- (void)logPersistentChangeNotOfInterest:(NSString *)arg1;
 - (void)logMissingTombstonedIdentifier;
 - (void)logMissingResetSyncReasonKey;
 - (void)logStartObservingResetSync;
@@ -74,7 +76,10 @@
 - (void)copyingStorageAside:(void (^)(void (^)(void)))arg1;
 - (void)processingDidResetSyncNotification:(void (^)(void (^)(void)))arg1;
 - (void)processingWillResetSyncNotification:(void (^)(void (^)(void)))arg1;
-- (void)logErrorSettingUserDirSuffix;
+- (void)logWarningNoHOME;
+- (void)logErrorSandboxInit:(char *)arg1;
+- (void)logGenericSandboxError:(NSString *)arg1 error:(int)arg2;
+- (void)logErrorSettingUserDirSuffixForSandbox:(int)arg1;
 - (void)logNotImportingOnLaunchWithRemainingTime:(double)arg1;
 - (void)logPostingChangeNotificationForIdentifiers:(NSArray *)arg1;
 - (void)postingAvatarStoreChangeNotification:(void (^)(void (^)(void)))arg1;
@@ -106,7 +111,7 @@
 - (void)logChangesRequireExport;
 - (void)logNotificationDoesntContainChangeHistoryToken;
 - (void)logErrorFetchingChangeHistory:(NSString *)arg1;
-- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1;
+- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1 handlersCount:(unsigned long long)arg2;
 - (void)logReceivedRemoteChange:(NSString *)arg1;
 - (void)logStartObservingRemoteChangeNotificationFrom:(NSString *)arg1;
 - (void)processingRemoteChangeNotification:(void (^)(void (^)(void)))arg1;
@@ -141,6 +146,7 @@
 - (void)logAvatarPreloadEnd;
 - (void)logAvatarPreloadBeginForIdentifier:(NSString *)arg1;
 - (void)logCarouselSnapshotForIndex:(unsigned long long)arg1 size:(struct CGSize)arg2;
+- (void)logErrorSnapshottingAVTView:(NSString *)arg1;
 - (void)logUnthrottlingAVTView;
 - (void)logThrottlingAVTView;
 - (void)logRequestingThumbnailForIndex:(unsigned long long)arg1 section:(NSString *)arg2;
@@ -172,6 +178,7 @@
 - (void)logCreatingImageStoreForPath:(NSString *)arg1;
 - (void)logFileSystemError:(NSString *)arg1;
 - (void)logPerformedRecentStickersMigration:(_Bool)arg1;
+- (void)logFetchedRecentStickerWithNoStickerConfiguration:(NSString *)arg1;
 - (void)logFetchedOrphanedRecentSticker:(NSString *)arg1;
 - (void)logErrorFetchingRecentStickers:(NSString *)arg1;
 - (void)logErrorSavingRecentSticker:(NSString *)arg1;

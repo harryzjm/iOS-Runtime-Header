@@ -8,5 +8,6 @@
 
 @protocol SBIdleTimerActivation <SBIdleTimer>
 @property(nonatomic, getter=isActivated) _Bool activated;
+- (void)conformsToSBIdleTimerActivation;
 @end
 

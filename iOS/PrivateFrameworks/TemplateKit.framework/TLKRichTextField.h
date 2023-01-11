@@ -14,27 +14,28 @@
 __attribute__((visibility("hidden")))
 @interface TLKRichTextField <NUIContainerViewDelegate, TLKObservable, TLKObserver>
 {
-    _Bool inBatchUpdate;
     id <TLKObserver> observer;
+    long long batchUpdateCount;
     TLKRichText *_richText;
+    unsigned long long _roundedCornerLabelSizeConfiguration;
     TLKLabel *_textLabel;
     TLKRoundedCornerLabels *_roundedCornerLabels;
     TLKStarsView *_starRatingView;
     TLKIconsView *_iconView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKIconsView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) TLKStarsView *starRatingView; // @synthesize starRatingView=_starRatingView;
 @property(retain, nonatomic) TLKRoundedCornerLabels *roundedCornerLabels; // @synthesize roundedCornerLabels=_roundedCornerLabels;
 @property(retain, nonatomic) TLKLabel *textLabel; // @synthesize textLabel=_textLabel;
+@property(nonatomic) unsigned long long roundedCornerLabelSizeConfiguration; // @synthesize roundedCornerLabelSizeConfiguration=_roundedCornerLabelSizeConfiguration;
 @property(retain, nonatomic) TLKRichText *richText; // @synthesize richText=_richText;
-@property _Bool inBatchUpdate; // @synthesize inBatchUpdate;
+@property(nonatomic) long long batchUpdateCount; // @synthesize batchUpdateCount;
 @property __weak id <TLKObserver> observer; // @synthesize observer;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)attributedString;
 - (id)viewForLastBaselineLayout;
-- (id)viewForFirstBaselineLayout;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (void)updateRoundedCornerLabels:(id)arg1;
 - (void)updateIcons:(id)arg1;

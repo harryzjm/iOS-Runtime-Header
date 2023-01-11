@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface CKNSExtension : NSObject
 {
     id _beginMappingID;
 }
 
-@property(retain, nonatomic) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 - (void)endMatchingExtensions;
 - (void)beginMatchingExtensions:(CDUnknownBlockType)arg1;
 - (void)dealloc;

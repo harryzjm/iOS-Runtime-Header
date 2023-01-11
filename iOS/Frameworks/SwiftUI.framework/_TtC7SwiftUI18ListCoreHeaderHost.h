@@ -11,14 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI18ListCoreHeaderHost : UITableViewHeaderFooterView
 {
+    MISSING_TYPE *configuration;
     MISSING_TYPE *host;
+    MISSING_TYPE *outlineRootSeed;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
 - (void)_setHiddenForReuse:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)prepareForReuse;
 
 @end
 

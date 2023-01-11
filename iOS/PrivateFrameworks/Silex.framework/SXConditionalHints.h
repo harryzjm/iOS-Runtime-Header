@@ -12,27 +12,27 @@
 {
 }
 
-- (_Bool)BOOLValueForJSONValue:(id)arg1 type:(int)arg2;
-- (_Bool)textStylesWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)documentStyleWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)componentTextStylesWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)componentStylesWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)componentLayoutsWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)componentsWithValue:(id)arg1 withType:(int)arg2;
-- (_Bool)autoplacementWithValue:(id)arg1 withType:(int)arg2;
+- (long long)ternaryValueForJSONValue:(id)arg1 type:(int)arg2;
+- (long long)textStylesWithValue:(id)arg1 withType:(int)arg2;
+- (long long)documentStyleWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentTextStylesWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentStylesWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentLayoutsWithValue:(id)arg1 withType:(int)arg2;
+- (long long)componentsWithValue:(id)arg1 withType:(int)arg2;
+- (long long)autoplacementWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
-@property(readonly, nonatomic) _Bool autoplacement; // @dynamic autoplacement;
-@property(readonly, nonatomic) _Bool componentLayouts; // @dynamic componentLayouts;
-@property(readonly, nonatomic) _Bool componentStyles; // @dynamic componentStyles;
-@property(readonly, nonatomic) _Bool componentTextStyles; // @dynamic componentTextStyles;
-@property(readonly, nonatomic) _Bool components; // @dynamic components;
+@property(readonly, nonatomic) long long autoplacement; // @dynamic autoplacement;
+@property(readonly, nonatomic) long long componentLayouts; // @dynamic componentLayouts;
+@property(readonly, nonatomic) long long componentStyles; // @dynamic componentStyles;
+@property(readonly, nonatomic) long long componentTextStyles; // @dynamic componentTextStyles;
+@property(readonly, nonatomic) long long components; // @dynamic components;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) _Bool documentStyle; // @dynamic documentStyle;
+@property(readonly, nonatomic) long long documentStyle; // @dynamic documentStyle;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool textStyles; // @dynamic textStyles;
+@property(readonly, nonatomic) long long textStyles; // @dynamic textStyles;
 
 @end
 

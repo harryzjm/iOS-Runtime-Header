@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BKSHIDEventDeferringEnvironment, BKSHIDEventDeferringToken, BKSHIDEventDisplay;
+@class BKSHIDEventDeferringEnvironment, BKSHIDEventDeferringToken, BKSHIDEventDisplay, NSString;
 
 @interface BKSMutableHIDEventDeferringResolution
 {
@@ -12,8 +12,10 @@
 
 + (id)new;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @dynamic bundleIdentifier;
 @property(copy, nonatomic) BKSHIDEventDeferringToken *token; // @dynamic token;
 @property(nonatomic) int pid; // @dynamic pid;
+@property(nonatomic) long long versionedPID; // @dynamic versionedPID;
 @property(copy, nonatomic) BKSHIDEventDeferringEnvironment *environment; // @dynamic environment;
 @property(copy, nonatomic) BKSHIDEventDisplay *display; // @dynamic display;
 - (id)init;

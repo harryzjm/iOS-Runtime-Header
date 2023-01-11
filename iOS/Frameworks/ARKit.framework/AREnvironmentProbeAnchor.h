@@ -4,36 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSData, NSUUID;
+@class MISSING_TYPE;
 @protocol MTLTexture;
 
 @interface AREnvironmentProbeAnchor
 {
-    float _opaquePixelPercentage;
     id <MTLTexture> _environmentTexture;
-    NSData *_colorHistogram;
-    NSUUID *_trackedPlaneIdentifier;
     MISSING_TYPE *_extent;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSUUID *trackedPlaneIdentifier; // @synthesize trackedPlaneIdentifier=_trackedPlaneIdentifier;
-@property(nonatomic) float opaquePixelPercentage; // @synthesize opaquePixelPercentage=_opaquePixelPercentage;
-@property(retain, nonatomic) NSData *colorHistogram; // @synthesize colorHistogram=_colorHistogram;
-@property(readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
-@property(retain, nonatomic) id <MTLTexture> environmentTexture; // @synthesize environmentTexture=_environmentTexture;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
+@property(readonly, nonatomic) id <MTLTexture> environmentTexture; // @synthesize environmentTexture=_environmentTexture;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAnchor:(id)arg1;
-- (id)description;
-- (id)initWithIdentifier:(id)arg1 onPlane:(struct ARTexturedPlane)arg2;
-- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 extent: /* Error: Ran out of types for this method. */;
 - (id)initWithName:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 extent: /* Error: Ran out of types for this method. */;
 - (id)initWithTransform:(CDStruct_14d5dc5e)arg1 extent: /* Error: Ran out of types for this method. */;
-- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
-- (id)initWithName:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
-- (id)initWithTransform:(CDStruct_14d5dc5e)arg1;
 
 @end
 

@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSString, TICursorEvent, TIKeyboardCandidate, TIKeyboardInput;
+@class NSArray, NSMutableArray, NSString, TIKeyboardCandidate, TIKeyboardInput, TIUserAction;
 
 @interface TIWordEntry
 {
+    _Bool _extendsPriorWord;
     _Bool _includesCursorEdits;
     _Bool _includesOrientationChange;
     _Bool _isRetrocorrection;
     _Bool _isMultilingual;
     _Bool _isOOV;
     _Bool _isContinuousPathCompletion;
+    _Bool _candidateContainsEmoji;
     _Bool _isPunctuationEntryFollowingAWord;
     int _wordEntryType;
     int _wordAlignmentConf;
@@ -32,7 +34,7 @@
     NSString *_inputStem;
     NSString *_inputContext;
     TIWordEntry *_editedEntry;
-    TICursorEvent *_editAction;
+    TIUserAction *_editAction;
     NSMutableArray *_allEdits;
     unsigned long long _sessionIndex;
     unsigned long long _alignmentConflicts;
@@ -40,12 +42,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isPunctuationEntryFollowingAWord; // @synthesize isPunctuationEntryFollowingAWord=_isPunctuationEntryFollowingAWord;
 @property long long candidateIndex; // @synthesize candidateIndex=_candidateIndex;
 @property(nonatomic) unsigned long long alignmentConflicts; // @synthesize alignmentConflicts=_alignmentConflicts;
 @property(nonatomic) unsigned long long sessionIndex; // @synthesize sessionIndex=_sessionIndex;
 @property(retain, nonatomic) NSMutableArray *allEdits; // @synthesize allEdits=_allEdits;
-@property(retain, nonatomic) TICursorEvent *editAction; // @synthesize editAction=_editAction;
+@property(retain, nonatomic) TIUserAction *editAction; // @synthesize editAction=_editAction;
 @property(retain, nonatomic) TIWordEntry *editedEntry; // @synthesize editedEntry=_editedEntry;
 @property(copy, nonatomic) NSString *inputContext; // @synthesize inputContext=_inputContext;
 @property(copy, nonatomic) NSString *inputStem; // @synthesize inputStem=_inputStem;
@@ -59,17 +62,18 @@
 @property(nonatomic) int touchAlignmentConf; // @synthesize touchAlignmentConf=_touchAlignmentConf;
 @property(nonatomic) int wordAlignmentConf; // @synthesize wordAlignmentConf=_wordAlignmentConf;
 @property(retain, nonatomic) TIKeyboardInput *inputTriggeredTextAccepted; // @synthesize inputTriggeredTextAccepted=_inputTriggeredTextAccepted;
+@property(nonatomic) _Bool candidateContainsEmoji; // @synthesize candidateContainsEmoji=_candidateContainsEmoji;
 @property(nonatomic) _Bool isContinuousPathCompletion; // @synthesize isContinuousPathCompletion=_isContinuousPathCompletion;
 @property(nonatomic) _Bool isOOV; // @synthesize isOOV=_isOOV;
 @property(nonatomic) _Bool isMultilingual; // @synthesize isMultilingual=_isMultilingual;
 @property(nonatomic) _Bool isRetrocorrection; // @synthesize isRetrocorrection=_isRetrocorrection;
 @property(nonatomic) _Bool includesOrientationChange; // @synthesize includesOrientationChange=_includesOrientationChange;
 @property(nonatomic) _Bool includesCursorEdits; // @synthesize includesCursorEdits=_includesCursorEdits;
+@property(nonatomic) _Bool extendsPriorWord; // @synthesize extendsPriorWord=_extendsPriorWord;
 @property(nonatomic) int wordEntryType; // @synthesize wordEntryType=_wordEntryType;
 @property(copy, nonatomic) NSString *orientation; // @synthesize orientation=_orientation;
 @property(copy, nonatomic) NSString *originalAcceptedString; // @synthesize originalAcceptedString=_originalAcceptedString;
 @property(copy, nonatomic) NSString *acceptedString; // @synthesize acceptedString=_acceptedString;
-- (void).cxx_destruct;
 - (_Bool)isEntryFollowingANewLine;
 @property(readonly, nonatomic) NSArray *touchLayouts;
 @property(readonly, nonatomic) NSArray *candidatesOffered;

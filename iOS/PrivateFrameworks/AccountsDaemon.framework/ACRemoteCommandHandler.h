@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)_localAccountMatchingRemoteAccount:(id)arg1;
 - (void)_invalidateFetchedAccountsCacheWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

@@ -11,14 +11,17 @@
 @interface STStorageCacheDelete : NSObject
 {
     int _cdNotifyToken;
-    NSDictionary *_cdDict;
+    struct os_unfair_lock_s _updateLock;
+    long long _totalPurgeable;
+    NSDictionary *_itemsDict;
+    _Bool _inited;
 }
 
 + (id)sharedMonitor;
-@property(retain) NSDictionary *cdDict; // @synthesize cdDict=_cdDict;
 - (void).cxx_destruct;
-- (void)refreshPurgeableSpace;
+- (long long)totalPurgeable;
 - (id)cacheDeleteDict;
+- (void)refreshPurgeableSpace;
 - (void)stopMonitor;
 - (void)startMonitor;
 - (void)dealloc;

@@ -9,27 +9,31 @@
 #import <DoNotDisturb/NSCopying-Protocol.h>
 #import <DoNotDisturb/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDate;
 
 @interface DNDState : NSObject <NSCopying, NSSecureCoding>
 {
-    unsigned long long _suppressionState;
     NSArray *_activeModeAssertionMetadata;
+    unsigned long long _suppressionState;
+    NSDate *_userVisibleTransitionDate;
+    unsigned long long _userVisibleTransitionLifetimeType;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSArray *activeModeAssertionMetadata; // @synthesize activeModeAssertionMetadata=_activeModeAssertionMetadata;
-@property(readonly, nonatomic) unsigned long long suppressionState; // @synthesize suppressionState=_suppressionState;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long userVisibleTransitionLifetimeType; // @synthesize userVisibleTransitionLifetimeType=_userVisibleTransitionLifetimeType;
+@property(readonly, copy, nonatomic) NSDate *userVisibleTransitionDate; // @synthesize userVisibleTransitionDate=_userVisibleTransitionDate;
+@property(readonly, nonatomic) unsigned long long suppressionState; // @synthesize suppressionState=_suppressionState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-@property(readonly, nonatomic, getter=isActive) _Bool active; // @dynamic active;
-- (id)initWithSuppressionState:(unsigned long long)arg1 activeModeAssertionMetadata:(id)arg2;
 @property(readonly, copy, nonatomic) NSArray *activeModeIdentifiers; // @dynamic activeModeIdentifiers;
+@property(readonly, nonatomic, getter=isActive) _Bool active; // @dynamic active;
+- (id)initWithSuppressionState:(unsigned long long)arg1 activeModeAssertionMetadata:(id)arg2 userVisibleTransitionDate:(id)arg3 userVisibleTransitionLifetimeType:(unsigned long long)arg4;
+@property(readonly, copy, nonatomic) NSArray *activeModeAssertionMetadata; // @dynamic activeModeAssertionMetadata;
 @property(readonly, nonatomic) _Bool willSuppressInterruptions; // @dynamic willSuppressInterruptions;
 
 @end

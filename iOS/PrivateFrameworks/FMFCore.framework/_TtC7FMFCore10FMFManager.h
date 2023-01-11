@@ -17,12 +17,11 @@
     MISSING_TYPE *systemStateController;
     MISSING_TYPE *genericUpdatesHandler;
     MISSING_TYPE *refreshController;
-    MISSING_TYPE *serverInteractionController;
+    MISSING_TYPE *interactionController;
     MISSING_TYPE *actionsController;
     MISSING_TYPE *myLocationController;
     MISSING_TYPE *selectedFriend;
     MISSING_TYPE *isInitialized;
-    MISSING_TYPE *isBackgrounded;
 }
 
 @end

@@ -32,6 +32,7 @@
 - (struct __CTLine *)_createTruncationToken;
 - (struct __CTTypesetter *)_retainTypesetter;
 - (id)_createStringDict;
+- (_Bool)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (void)didChangeValueForKey:(id)arg1;
 - (void)dealloc;
 - (id)init;

@@ -8,32 +8,33 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSString, PBDataReader, PBUnknownFields;
+@class GEOLocation, NSString, PBDataReader;
 
 @interface GEORPPhotoMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
-    PBUnknownFields *_unknownFields;
     NSString *_clientImageUuid;
     GEOLocation *_geotag;
     NSString *_imageDescription;
+    NSString *_mediaType;
+    unsigned long long _size;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    int _source;
     struct {
-        unsigned int read_unknownFields:1;
+        unsigned int has_size:1;
+        unsigned int has_source:1;
         unsigned int read_clientImageUuid:1;
         unsigned int read_geotag:1;
         unsigned int read_imageDescription:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientImageUuid:1;
-        unsigned int wrote_geotag:1;
-        unsigned int wrote_imageDescription:1;
+        unsigned int read_mediaType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -42,17 +43,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsSource:(id)arg1;
+- (id)sourceAsString:(int)arg1;
+@property(nonatomic) _Bool hasSource;
+@property(nonatomic) int source;
+@property(retain, nonatomic) NSString *mediaType;
+@property(readonly, nonatomic) _Bool hasMediaType;
+@property(nonatomic) _Bool hasSize;
+@property(nonatomic) unsigned long long size;
 @property(retain, nonatomic) GEOLocation *geotag;
 @property(readonly, nonatomic) _Bool hasGeotag;
-- (void)_readGeotag;
 @property(retain, nonatomic) NSString *imageDescription;
 @property(readonly, nonatomic) _Bool hasImageDescription;
-- (void)_readImageDescription;
 @property(retain, nonatomic) NSString *clientImageUuid;
 @property(readonly, nonatomic) _Bool hasClientImageUuid;
-- (void)_readClientImageUuid;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

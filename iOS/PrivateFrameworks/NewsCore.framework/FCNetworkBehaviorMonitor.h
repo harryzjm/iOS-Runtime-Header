@@ -9,7 +9,7 @@
 #import <NewsCore/FCNetworkReachabilityObserving-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 
-@class FCKeyValueStore, NSArray, NSMutableArray, NSMutableIndexSet, NSString;
+@class FCKeyValueStore, NSArray, NSHashTable, NSMutableArray, NSMutableIndexSet, NSString;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
 @interface FCNetworkBehaviorMonitor : NSObject <FCNetworkReachabilityObserving, FCOperationThrottlerDelegate>
@@ -20,6 +20,7 @@
     NSMutableArray *_events;
     FCKeyValueStore *_localStore;
     id <FCOperationThrottler> _saveThrottler;
+    NSHashTable *_observers;
 }
 
 - (void).cxx_destruct;
@@ -30,6 +31,8 @@
 - (id)_respondingPOPFromEvent:(id)arg1;
 - (void)_sanitizeNetworkEvent:(id)arg1;
 - (_Bool)_shouldFilterNetworkEvent:(id)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)logNetworkEvent:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *networkEvents;
 @property(readonly, copy, nonatomic) NSArray *sessions;

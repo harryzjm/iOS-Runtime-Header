@@ -18,6 +18,7 @@
     NSString *_merchantSessionIdentifier;
     NSString *_nonce;
     NSString *_merchantIdentifier;
+    NSString *_operationalAnalyticsIdentifier;
     NSString *_domain;
     NSString *_displayName;
     NSString *_initiativeContext;
@@ -31,6 +32,7 @@
 + (_Bool)supportsSecureCoding;
 + (long long)version;
 + (id)paymentMerchantSessionWithProtobuf:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *retryNonce; // @synthesize retryNonce=_retryNonce;
 @property(readonly, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property(readonly, nonatomic) NSArray *signedFields; // @synthesize signedFields=_signedFields;
@@ -39,12 +41,12 @@
 @property(readonly, nonatomic) NSString *initiativeContext; // @synthesize initiativeContext=_initiativeContext;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property(readonly, nonatomic) NSString *operationalAnalyticsIdentifier; // @synthesize operationalAnalyticsIdentifier=_operationalAnalyticsIdentifier;
 @property(readonly, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property(readonly, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 @property(readonly, nonatomic) NSString *merchantSessionIdentifier; // @synthesize merchantSessionIdentifier=_merchantSessionIdentifier;
 @property(readonly, nonatomic) unsigned long long expiresAt; // @synthesize expiresAt=_expiresAt;
 @property(readonly, nonatomic) unsigned long long epochTimestamp; // @synthesize epochTimestamp=_epochTimestamp;
-- (void).cxx_destruct;
 - (id)signedData;
 - (_Bool)_isModern;
 - (_Bool)supportsURL:(id)arg1;
@@ -52,10 +54,11 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithMerchantIdentifier:(id)arg1 merchantSessionIdentifier:(id)arg2 nonce:(id)arg3 epochTimestamp:(unsigned long long)arg4 expiresAt:(unsigned long long)arg5 displayName:(id)arg6 initiativeContext:(id)arg7 initiative:(id)arg8 ampEnrollmentPinning:(id)arg9 signedFields:(id)arg10 signature:(id)arg11;
+- (id)initWithMerchantIdentifier:(id)arg1 merchantSessionIdentifier:(id)arg2 nonce:(id)arg3 epochTimestamp:(unsigned long long)arg4 expiresAt:(unsigned long long)arg5 displayName:(id)arg6 initiativeContext:(id)arg7 initiative:(id)arg8 ampEnrollmentPinning:(id)arg9 operationalAnalyticsIdentifier:(id)arg10 signedFields:(id)arg11 signature:(id)arg12;
 - (id)initWithMerchantIdentifier:(id)arg1 merchantSessionIdentifier:(id)arg2 nonce:(id)arg3 epochTimestamp:(unsigned long long)arg4 expiresAt:(unsigned long long)arg5 displayName:(id)arg6 initiativeContext:(id)arg7 initiative:(id)arg8 signedFields:(id)arg9 signature:(id)arg10;
 - (id)initWithMerchantIdentifier:(id)arg1 merchantSessionIdentifier:(id)arg2 nonce:(id)arg3 epochTimestamp:(unsigned long long)arg4 expiresAt:(unsigned long long)arg5 domain:(id)arg6 displayName:(id)arg7 signature:(id)arg8;
 - (id)initWithMerchantIdentifier:(id)arg1 merchantSessionIdentifier:(id)arg2 nonce:(id)arg3 epochTimestamp:(unsigned long long)arg4 domain:(id)arg5 displayName:(id)arg6 signature:(id)arg7;

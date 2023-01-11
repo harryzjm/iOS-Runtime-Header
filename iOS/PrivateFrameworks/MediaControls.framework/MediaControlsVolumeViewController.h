@@ -12,35 +12,39 @@
 #import <MediaControls/MediaControlsVolumeControllerObserver-Protocol.h>
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, MediaControlsVolumeController, MediaControlsVolumeSliderView, NSArray, NSString, UIImageView, UIViewPropertyAnimator, UIWindowScene;
+@class CALayer, MediaControlsVolumeController, MediaControlsVolumeSliderView, NSArray, NSString, UIViewPropertyAnimator, UIWindowScene;
 @protocol MediaControlsVolumeViewControllerDelegate;
 
 @interface MediaControlsVolumeViewController : UIViewController <MediaControlsVolumeControllerObserver, MPVolumeDisplaying, CCUIGroupRendering, UIGestureRecognizerDelegate, CCUIContentModuleContentViewController>
 {
     MediaControlsVolumeSliderView *_primarySlider;
     MediaControlsVolumeSliderView *_secondarySlider;
-    UIImageView *_affordanceImageView;
+    NSString *_packageName;
     _Bool _isExpanded;
     id <MediaControlsVolumeViewControllerDelegate> _delegate;
     MediaControlsVolumeController *_volumeController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) MediaControlsVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property(nonatomic) __weak id <MediaControlsVolumeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (id)_glyphStateForVolumeLevel:(double)arg1;
 - (void)_dismissMediaControlsVolumeViewController;
 - (void)_performWithoutAnimationWhileHidden:(CDUnknownBlockType)arg1;
+- (void)_updateVisibility;
+- (void)_updateGlyphPackageDescription;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_secondarySliderValueDidChange:(id)arg1;
 - (void)_primarySliderValueDidChange:(id)arg1;
-- (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(_Bool)arg2 effectiveVolume:(float)arg3 forRoute:(unsigned long long)arg4;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(_Bool)arg2 effectiveVolume:(float)arg3 forRoute:(long long)arg4;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeUserInteractionEnabled:(_Bool)arg2 forRoute:(long long)arg3;
 - (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(_Bool)arg2;
 @property(readonly, nonatomic) NSString *volumeAudioCategory;
 @property(readonly, nonatomic, getter=isOnScreen) _Bool onScreen;
 @property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 @property(readonly, nonatomic) NSArray *punchOutRootLayers;
 @property(readonly, nonatomic, getter=isGroupRenderingRequired) _Bool groupRenderingRequired;
+- (_Bool)shouldExpandModuleOnTouch:(id)arg1;
+- (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)willTransitionToExpandedContentMode:(_Bool)arg1;
 @property(readonly, nonatomic) double preferredExpandedContentWidth;
 @property(readonly, nonatomic) double preferredExpandedContentHeight;
@@ -49,6 +53,7 @@
 - (void)dealloc;
 - (struct CGRect)secondaryFrame;
 - (struct CGRect)primaryFrame;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
@@ -63,6 +68,8 @@
 @property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
 @property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property(readonly, nonatomic) CALayer *punchOutRootLayer;
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
 @property(readonly) Class superclass;
 
 @end

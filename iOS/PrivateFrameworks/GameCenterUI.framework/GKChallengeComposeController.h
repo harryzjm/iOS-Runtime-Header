@@ -27,6 +27,7 @@
 - (void)dealloc;
 - (id)initWithChallenge:(id)arg1 defaultMessage:(id)arg2 players:(id)arg3;
 - (id)init;
+- (void)viewDidLoad;
 
 @end
 

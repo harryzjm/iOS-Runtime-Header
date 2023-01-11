@@ -10,22 +10,22 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBAnswerCallIntentResponse-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, _INPBConnectedCall;
 
 @interface _INPBAnswerCallIntentResponse : PBCodable <_INPBAnswerCallIntentResponse, NSSecureCoding, NSCopying>
 {
     CDStruct_bcb1eac0 _has;
-    _Bool __encodeLegacyGloryData;
     int _statusCode;
+    _INPBConnectedCall *_answeredCall;
     NSArray *_callRecords;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)callRecordsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 @property(copy, nonatomic) NSArray *callRecords; // @synthesize callRecords=_callRecords;
-- (void).cxx_destruct;
+@property(retain, nonatomic) _INPBConnectedCall *answeredCall; // @synthesize answeredCall=_answeredCall;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -41,6 +41,7 @@
 @property(readonly, nonatomic) unsigned long long callRecordsCount;
 - (void)addCallRecords:(id)arg1;
 - (void)clearCallRecords;
+@property(readonly, nonatomic) _Bool hasAnsweredCall;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

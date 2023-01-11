@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (long long)queuePriority;
 - (void)main;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

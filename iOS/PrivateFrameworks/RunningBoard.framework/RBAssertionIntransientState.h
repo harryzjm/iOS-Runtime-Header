@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/NSCopying-Protocol.h>
 
 @class NSMutableSet, NSString;
 
-@interface RBAssertionIntransientState : NSObject <NSCopying, BSDescriptionProviding>
+@interface RBAssertionIntransientState : NSObject <NSCopying>
 {
     _Bool _invalidatesSynchronously;
     _Bool _isPersistent;
@@ -30,6 +29,7 @@
     double _warningDuration;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool suspendsOnOriginatorSuspension; // @synthesize suspendsOnOriginatorSuspension=_suspendsOnOriginatorSuspension;
 @property(nonatomic) double warningDuration; // @synthesize warningDuration=_warningDuration;
 @property(nonatomic) double invalidationDuration; // @synthesize invalidationDuration=_invalidationDuration;
@@ -44,20 +44,10 @@
 @property(retain, nonatomic) NSString *domainAttributes; // @synthesize domainAttributes=_domainAttributes;
 @property(nonatomic) unsigned long long legacyReason; // @synthesize legacyReason=_legacyReason;
 @property(nonatomic) unsigned long long runningReason; // @synthesize runningReason=_runningReason;
-- (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-@property(readonly, copy) NSString *description;
+- (id)description;
 @property(readonly, nonatomic) NSMutableSet *sourceEnvironments; // @synthesize sourceEnvironments=_sourceEnvironments;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

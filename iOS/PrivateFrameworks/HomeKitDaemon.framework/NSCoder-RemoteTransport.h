@@ -10,6 +10,8 @@
 
 @interface NSCoder (RemoteTransport)
 - (id)supportedFeatures;
+- (_Bool)isAtLeastDataVersion4;
+- (long long)dataVersion;
 @property(readonly, getter=isSharedUser) _Bool sharedUser;
 - (id)user;
 - (_Bool)isForNonAdminSharedUser;
@@ -27,6 +29,7 @@
 - (_Bool)isAuthorizedForLocationAccess;
 - (_Bool)isEntitledForSPIAccess;
 - (id)applicationBundleIdentifier;
+@property(readonly) unsigned long long hmd_entitlements;
 @property(readonly) unsigned long long hmd_homeManagerOptions;
 @property(readonly) HMFMessage *hmd_message;
 @property(readonly, getter=isXPCTransport) _Bool xpcTransport;

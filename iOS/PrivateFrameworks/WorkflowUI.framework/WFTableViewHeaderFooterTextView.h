@@ -6,16 +6,21 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class UILabel;
+@class NSArray, NSString, UILabel;
 
 @interface WFTableViewHeaderFooterTextView : UITableViewHeaderFooterView
 {
+    double _horizontalPadding;
     UILabel *_label;
+    NSArray *_horizontalConstraints;
 }
 
-@property(readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 - (void).cxx_destruct;
-- (void)setText:(id)arg1;
+@property(readonly, nonatomic) NSArray *horizontalConstraints; // @synthesize horizontalConstraints=_horizontalConstraints;
+@property(readonly, nonatomic) UILabel *label; // @synthesize label=_label;
+@property(nonatomic) double horizontalPadding; // @synthesize horizontalPadding=_horizontalPadding;
+@property(copy, nonatomic) NSString *text;
+- (id)initWithReuseIdentifier:(id)arg1;
 - (id)init;
 
 @end

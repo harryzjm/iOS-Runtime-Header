@@ -17,14 +17,17 @@
     UIView *_largeTitleView;
     UIView *_promptView;
     UIBarButtonItem *_backBarButtonItem;
+    UIBarButtonItem *_staticBarButtonItem;
     NSArray *_cancelBarButtonItems;
     NSArray *_otherBarButtonItems;
     NSArray *_viewsRepresentingContentBackground;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *viewsRepresentingContentBackground; // @synthesize viewsRepresentingContentBackground=_viewsRepresentingContentBackground;
 @property(copy, nonatomic) NSArray *otherBarButtonItems; // @synthesize otherBarButtonItems=_otherBarButtonItems;
 @property(copy, nonatomic) NSArray *cancelBarButtonItems; // @synthesize cancelBarButtonItems=_cancelBarButtonItems;
+@property(retain, nonatomic) UIBarButtonItem *staticBarButtonItem; // @synthesize staticBarButtonItem=_staticBarButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
 @property(retain, nonatomic) UIView *promptView; // @synthesize promptView=_promptView;
 @property(retain, nonatomic) UIView *largeTitleView; // @synthesize largeTitleView=_largeTitleView;
@@ -32,7 +35,6 @@
 @property(copy, nonatomic) NSArray *viewsRepresentingBackButton; // @synthesize viewsRepresentingBackButton=_viewsRepresentingBackButton;
 @property(retain, nonatomic) UINavigationItem *backItem; // @synthesize backItem=_backItem;
 @property(retain, nonatomic) UINavigationItem *topItem; // @synthesize topItem=_topItem;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

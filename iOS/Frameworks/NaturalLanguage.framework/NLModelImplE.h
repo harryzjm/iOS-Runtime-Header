@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)embeddingData;
 - (id)embedding;
 - (unsigned long long)systemVersion;
-- (id)initWithModelTrainer:(id)arg1;
-- (id)initWithModelData:(id)arg1 configuration:(id)arg2 labelMap:(id)arg3 vocabularyMap:(id)arg4 documentFrequencyMap:(id)arg5 customEmbeddingData:(id)arg6 trainingInfo:(id)arg7;
+- (id)initWithModelTrainer:(id)arg1 error:(id *)arg2;
+- (id)initWithModelData:(id)arg1 configuration:(id)arg2 labelMap:(id)arg3 vocabularyMap:(id)arg4 documentFrequencyMap:(id)arg5 customEmbeddingData:(id)arg6 trainingInfo:(id)arg7 error:(id *)arg8;
 
 @end
 

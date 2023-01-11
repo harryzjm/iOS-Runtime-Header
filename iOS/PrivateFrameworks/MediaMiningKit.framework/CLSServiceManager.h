@@ -8,7 +8,7 @@
 
 #import <MediaMiningKit/CLSSocialServiceContactsDelegate-Protocol.h>
 
-@class CLSLRUMemoryCache, CLSPerson, CLSRoutineService, CLSSocialServiceCalendar, CLSSocialServiceContacts, CLSSocialServiceCoreDuet, CLSSocialServiceCoreNameParser, NSDateInterval, NSString, NSURL;
+@class CLSLRUMemoryCache, CLSPersonIdentity, CLSRoutineService, CLSSocialServiceCalendar, CLSSocialServiceContacts, CLSSocialServiceCoreDuet, CLSSocialServiceCoreNameParser, NSDateInterval, NSString, NSURL;
 
 @interface CLSServiceManager : NSObject <CLSSocialServiceContactsDelegate>
 {
@@ -18,7 +18,7 @@
     CLSSocialServiceCalendar *_calendarService;
     CLSSocialServiceCoreDuet *_coreDuetService;
     CLSSocialServiceCoreNameParser *_coreNameParserService;
-    CLSPerson *_mePerson;
+    CLSPersonIdentity *_mePerson;
     NSObject *_routineServiceLockObject;
     NSDateInterval *_validDateInterval;
     NSURL *_applicationDataURL;
@@ -26,15 +26,15 @@
 
 + (id)sharedManagerWithURL:(id)arg1;
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *applicationDataURL; // @synthesize applicationDataURL=_applicationDataURL;
 @property(retain, nonatomic) NSDateInterval *validDateInterval; // @synthesize validDateInterval=_validDateInterval;
 @property(readonly, nonatomic) NSObject *routineServiceLockObject; // @synthesize routineServiceLockObject=_routineServiceLockObject;
-@property(retain, nonatomic) CLSPerson *mePerson; // @synthesize mePerson=_mePerson;
-- (void).cxx_destruct;
+@property(retain, nonatomic) CLSPersonIdentity *mePerson; // @synthesize mePerson=_mePerson;
 - (void)flushSocialServicesAtURL:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (unsigned long long)relationshipHintForPerson:(id)arg1 usingLocales:(id)arg2;
-- (unsigned long long)genderHintForPerson:(id)arg1 usingLocales:(id)arg2;
+- (unsigned long long)sexHintForPerson:(id)arg1 usingLocales:(id)arg2;
 - (id)mePersonAddressesOfType:(unsigned long long)arg1;
 - (_Bool)hasAddressesForMePerson;
 - (id)personForIdentifier:(id)arg1;
@@ -44,7 +44,6 @@
 - (id)eventsForClueCollection:(id)arg1;
 - (void)prefetchEventsFromUniversalDate:(id)arg1 toUniversalDate:(id)arg2 forAssetCollectionsSortedByStartDate:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateEventsFromUniversalDate:(id)arg1 toUniversalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (id)_traceStringForType:(unsigned long long)arg1;
 - (id)lastLocationOfInterestVisit;
 - (void)postProcessLocationsOfInterest;
 - (id)fetchImportantLocationsOfInterest;
@@ -78,6 +77,7 @@
 @property(readonly, nonatomic) CLSSocialServiceCalendar *calendarService; // @synthesize calendarService=_calendarService;
 @property(readonly, nonatomic) CLSSocialServiceCoreDuet *coreDuetService; // @synthesize coreDuetService=_coreDuetService;
 @property(readonly, nonatomic) CLSSocialServiceContacts *contactsService; // @synthesize contactsService=_contactsService;
+- (_Bool)shutdownForPhotoLibraryURL:(id)arg1;
 - (id)init;
 - (double)pinningVisitsRatio;
 - (unsigned long long)numberOfMatchRequests;

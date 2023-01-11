@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
     CKDPListPosition *_right;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKDPListPosition *right; // @synthesize right=_right;
 @property(retain, nonatomic) CKDPListPosition *left; // @synthesize left=_left;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 @property(readonly, nonatomic) _Bool hasRight;
 @property(readonly, nonatomic) _Bool hasLeft;
+- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 
 @end
 

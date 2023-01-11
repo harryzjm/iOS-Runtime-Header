@@ -14,10 +14,12 @@
 @interface GEOTimestampData : PBCodable <GEOServerFormatTokenTimeStampValue, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_formatPattern;
     NSString *_timezone;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _timestampVal;
     _Bool _displayTimezone;
     struct {
@@ -26,11 +28,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_formatPattern:1;
         unsigned int read_timezone:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_formatPattern:1;
-        unsigned int wrote_timezone:1;
-        unsigned int wrote_timestampVal:1;
-        unsigned int wrote_displayTimezone:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,18 +44,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSString *formatPattern;
 @property(readonly, nonatomic) _Bool hasFormatPattern;
-- (void)_readFormatPattern;
 @property(nonatomic) _Bool hasDisplayTimezone;
 @property(nonatomic) _Bool displayTimezone;
 @property(retain, nonatomic) NSString *timezone;
 @property(readonly, nonatomic) _Bool hasTimezone;
-- (void)_readTimezone;
 @property(nonatomic) _Bool hasTimestampVal;
 @property(nonatomic) unsigned int timestampVal;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSTimeZone *timeZone;
 @property(readonly, nonatomic) double timeStamp;
 - (_Bool)displayTimeZone;

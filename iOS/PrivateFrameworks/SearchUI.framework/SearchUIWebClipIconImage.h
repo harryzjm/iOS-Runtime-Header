@@ -11,8 +11,9 @@
     UIWebClip *_webClip;
 }
 
-@property(retain, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
++ (id)convertImage:(id)arg1 ofSize:(struct CGSize)arg2 withShape:(unsigned long long)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 - (id)uniqueIdentifier;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

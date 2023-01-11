@@ -26,23 +26,28 @@ __attribute__((visibility("hidden")))
 + (id)detectorKeyComponentForDetectorConfigurationOptionKey:(id)arg1 value:(id)arg2;
 + (id)keyForDetectorWithConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
-+ (id)detectorWithConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (id)detectorWithConfigurationOptions:(id)arg1 forSession:(id)arg2 error:(id *)arg3;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (id)fullyPopulatedConfigurationOptionsWithOverridingOptions:(id)arg1;
 + (void)fullyPopulateConfigurationOptions:(id)arg1;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 + (id)detectorName;
++ (Class)detectorClassForDetectorType:(id)arg1 configuredWithOptions:(id)arg2 error:(id *)arg3;
++ (Class)detectorClassForDetectorType:(id)arg1 error:(id *)arg2;
++ (Class)_detectorClassForDetectorType:(id)arg1 options:(id)arg2 detectorCreationOptions:(id *)arg3 error:(id *)arg4;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *synchronizationQueue; // @synthesize synchronizationQueue=_synchronizationQueue;
 @property(readonly, nonatomic) unsigned long long backingStore; // @synthesize backingStore=_backingStore;
 @property(readonly, nonatomic) VNMetalContext *metalContext; // @synthesize metalContext=_metalContext;
 @property(readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property(readonly, copy) NSDictionary *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
-- (void).cxx_destruct;
 - (void)updateConfigurationOptionsWithObject:(id)arg1 forKey:(id)arg2;
 - (id)validatedProcessingDeviceInOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)supportsProcessingDevice:(id)arg1;
 - (id)requiredCancellerInOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)getOptionalCanceller:(id *)arg1 inOptions:(id)arg2 error:(id *)arg3;
+- (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 - (id)newMetalContextForConfigurationOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)needsMetalContext;
 - (id)validatedImageBufferFromOptions:(id)arg1 error:(id *)arg2;
@@ -50,9 +55,11 @@ __attribute__((visibility("hidden")))
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (_Bool)currentQueueIsSynchronizationQueue;
 - (id)processInSynchronizationQueueUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
-- (_Bool)warmUpWithOptions:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (_Bool)useGPU;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)shouldBeReplacedByDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
+- (_Bool)canBehaveAsDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (id)initWithConfigurationOptions:(id)arg1;
 
 // Remaining properties

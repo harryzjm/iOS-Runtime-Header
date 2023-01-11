@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) _SFUserMediaPermissionController *sharedUserMediaPermissionController;
 @property(readonly, nonatomic) _SFContentBlockersPreferenceManager *contentBlockersPreferenceManager; // @synthesize contentBlockersPreferenceManager=_contentBlockersPreferenceManager;
 @property(readonly, nonatomic) WBSAutomaticReaderActivationManager *automaticReaderActivationManager; // @synthesize automaticReaderActivationManager=_automaticReaderPreferenceManager;
+- (void)dealloc;
 
 @end
 

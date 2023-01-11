@@ -17,9 +17,11 @@
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
-@property(nonatomic) __weak id <_SBUIPopoverExtensionHostDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_SBUIPopoverExtensionHostDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (_Bool)__shouldRemoteViewControllerFenceOperations;
+- (_Bool)_canShowWhileLocked;
 - (void)_extensionRequestsDismiss;
 
 @end

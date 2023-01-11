@@ -44,9 +44,7 @@
 - (id)serializedData;
 - (id)description;
 - (id)initWithImages:(id)arg1 format:(unsigned short)arg2 orientation:(int *)arg3 options:(id)arg4 delegate:(id)arg5;
-- (id)initWithContentsOfFile:(id)arg1 format:(unsigned short)arg2;
 - (id)initWithContentsOfFile:(id)arg1 format:(unsigned short)arg2 readOnly:(_Bool)arg3;
-- (id)initWithData:(id)arg1 format:(unsigned short)arg2;
 - (id)initWithData:(id)arg1 format:(unsigned short)arg2 readOnly:(_Bool)arg3;
 
 @end

@@ -21,6 +21,7 @@
 - (_Bool)_accessibilityOverridesInvalidFrames;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (_Bool)accessibilityActivate;
 - (_Bool)isAccessibilityElement;
 
 @end

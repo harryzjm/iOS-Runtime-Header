@@ -11,7 +11,6 @@
 }
 
 + (_Bool)setSkipBackupAttribute:(_Bool)arg1 toItemAtPath:(id)arg2;
-+ (id)iTunesAccountHashForUniqueIdentifier:(id)arg1;
 
 @end
 

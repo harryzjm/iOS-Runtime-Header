@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlayServices/BSInvalidatable-Protocol.h>
 #import <CarPlayServices/CRSAppHistoryServerToClientInterface-Protocol.h>
 
 @class BSServiceConnection, NSString;
 @protocol OS_dispatch_queue;
 
-@interface CRSAppHistoryController : NSObject <CRSAppHistoryServerToClientInterface>
+@interface CRSAppHistoryController : NSObject <CRSAppHistoryServerToClientInterface, BSInvalidatable>
 {
     BSServiceConnection *_connection;
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
++ (id)availableFeatureKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) BSServiceConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
+- (void)invalidate;
+- (void)fetchSessionFeatureKeysWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setSessionFeatureKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSessionUIContexts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSessionEchoContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSessionUIContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUIContextsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

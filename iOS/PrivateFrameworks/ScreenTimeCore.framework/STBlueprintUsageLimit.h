@@ -24,12 +24,14 @@
 @property(retain, nonatomic) STBlueprintUsageLimitScheduleRepresentation *budgetLimitScheduleRepresentation;
 - (void)setBudgetLimit:(double)arg1 forDay:(unsigned long long)arg2;
 - (void)setBudgetLimit:(double)arg1;
-- (void)_usageLimitDidChangeFromOldApplicationIdentifiers:(id)arg1 oldCategoryIdentifiers:(id)arg2 oldWebDomains:(id)arg3 oldItemIdentifiers:(id)arg4 oldItemType:(id)arg5 toNewApplicationIdentifiers:(id)arg6 newCategoryIdentifiers:(id)arg7 newWebDomains:(id)arg8 newItemIdentifiers:(id)arg9 newItemType:(id)arg10;
+- (void)_usageLimitDidChangeFromOldApplicationIdentifiers:(id)arg1 oldCategoryIdentifiers:(id)arg2 oldCategoryIdentifiersVersion2:(id)arg3 oldWebDomains:(id)arg4 oldItemIdentifiers:(id)arg5 oldItemType:(id)arg6 toNewApplicationIdentifiers:(id)arg7 newCategoryIdentifiers:(id)arg8 newCategoryIdentifiersVersion2:(id)arg9 newWebDomains:(id)arg10 newItemIdentifiers:(id)arg11 newItemType:(id)arg12;
 @property(copy, nonatomic) NSString *usageItemType; // @dynamic usageItemType;
 @property(copy, nonatomic) NSArray *itemIdentifiers; // @dynamic itemIdentifiers;
 @property(copy, nonatomic) NSArray *websiteIdentifiers; // @dynamic websiteIdentifiers;
+@property(copy, nonatomic) NSArray *categoryIdentifiersVersion2; // @dynamic categoryIdentifiersVersion2;
 @property(copy, nonatomic) NSArray *categoryIdentifiers; // @dynamic categoryIdentifiers;
 @property(copy, nonatomic) NSArray *applicationIdentifiers; // @dynamic applicationIdentifiers;
+- (void)awakeFromFetch;
 
 // Remaining properties
 @property(readonly, nonatomic) STBlueprint *blueprint; // @dynamic blueprint;

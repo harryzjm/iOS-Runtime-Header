@@ -10,6 +10,8 @@
 {
 }
 
++ (id)shortcutAvailability;
++ (id)beginningOfActivity;
 + (id)suggestedInvocationPhrase;
 + (id)contentDescription;
 + (id)userActivityRequiredString;

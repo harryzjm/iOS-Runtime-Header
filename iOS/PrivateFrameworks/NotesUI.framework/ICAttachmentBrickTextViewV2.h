@@ -14,6 +14,7 @@
     _Bool _detail1Dark;
     _Bool _vibrant;
     _Bool _disableVibrancy;
+    _Bool _selected;
     NSString *_titleString;
     NSString *_detail1String;
     NSString *_detail2String;
@@ -27,11 +28,13 @@
     NSLayoutConstraint *_textBoxBottomConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *textBoxBottomConstraint; // @synthesize textBoxBottomConstraint=_textBoxBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *textBoxTrailingConstraint; // @synthesize textBoxTrailingConstraint=_textBoxTrailingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *textBoxLeadingConstraint; // @synthesize textBoxLeadingConstraint=_textBoxLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *textBoxTopConstraint; // @synthesize textBoxTopConstraint=_textBoxTopConstraint;
 @property(retain, nonatomic) UILayoutGuide *textBoxLayoutGuide; // @synthesize textBoxLayoutGuide=_textBoxLayoutGuide;
+@property(nonatomic) _Bool selected; // @synthesize selected=_selected;
 @property(nonatomic) _Bool disableVibrancy; // @synthesize disableVibrancy=_disableVibrancy;
 @property(nonatomic) _Bool vibrant; // @synthesize vibrant=_vibrant;
 @property(retain, nonatomic) ICAttachmentBrickLabelV2 *detail2View; // @synthesize detail2View=_detail2View;
@@ -42,7 +45,6 @@
 @property(copy, nonatomic) NSString *detail2String; // @synthesize detail2String=_detail2String;
 @property(copy, nonatomic) NSString *detail1String; // @synthesize detail1String=_detail1String;
 @property(copy, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
-- (void).cxx_destruct;
 - (void)didMoveToWindow;
 - (void)updateMargins;
 - (void)updateTextColors;

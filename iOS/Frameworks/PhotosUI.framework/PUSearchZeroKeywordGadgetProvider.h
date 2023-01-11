@@ -6,32 +6,21 @@
 
 #import <PhotosUICore/PXGadgetProvider.h>
 
-#import <PhotosUI/PUSearchZeroKeywordChangeDelegate-Protocol.h>
-
-@class NSString, PUSearchZeroKeywordDataSource;
+@class PUSearchZeroKeywordDataSource;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchZeroKeywordGadgetProvider : PXGadgetProvider <PUSearchZeroKeywordChangeDelegate>
+@interface PUSearchZeroKeywordGadgetProvider : PXGadgetProvider
 {
     PUSearchZeroKeywordDataSource *_zeroKeywordDataSource;
+    long long _sectionType;
 }
 
-@property(readonly, nonatomic) PUSearchZeroKeywordDataSource *zeroKeywordDataSource; // @synthesize zeroKeywordDataSource=_zeroKeywordDataSource;
 - (void).cxx_destruct;
-- (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
-- (void)didUpdateSections:(id)arg1;
+@property(readonly, nonatomic) long long sectionType; // @synthesize sectionType=_sectionType;
+@property(readonly, nonatomic) PUSearchZeroKeywordDataSource *zeroKeywordDataSource; // @synthesize zeroKeywordDataSource=_zeroKeywordDataSource;
 - (void)generateGadgets;
 - (unsigned long long)estimatedNumberOfGadgets;
-- (_Bool)zeroKeywordsAvailable;
-- (void)loadDataForGadgets;
-- (void)refreshData;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithZeroKeywordDataSource:(id)arg1 sectionType:(long long)arg2;
 
 @end
 

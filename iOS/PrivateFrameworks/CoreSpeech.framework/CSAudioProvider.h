@@ -15,26 +15,28 @@
 #import <CoreSpeech/CSAudioSessionProviding-Protocol.h>
 #import <CoreSpeech/CSAudioStreamProviding-Protocol.h>
 #import <CoreSpeech/CSTriggerInfoProviding-Protocol.h>
-#import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
 
-@class CSAudioCircularBuffer, CSAudioPreprocessor, CSAudioRecordContext, CSAudioRecorder, CSOSTransaction, NSHashTable, NSMutableArray, NSString, NSUUID;
+@class CSAudioCircularBuffer, CSAudioPreprocessor, CSAudioRecordContext, CSAudioRecorder, CSOSTransaction, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
 @protocol CSAudioAlertProvidingDelegate, CSAudioProviderDelegate, CSAudioSessionProvidingDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface CSAudioProvider : NSObject <CSAudioRecorderDelegate, CSAudioServerCrashMonitorDelegate, CSAudioPreprocessorDelegate, CSAudioStreamProviding, CSAudioSessionProviding, CSAudioMetricProviding, CSAudioAlertProviding, CSAudioMeterProviding, CSTriggerInfoProviding, CSVoiceTriggerDelegate>
+@interface CSAudioProvider : NSObject <CSAudioRecorderDelegate, CSAudioServerCrashMonitorDelegate, CSAudioPreprocessorDelegate, CSAudioStreamProviding, CSAudioSessionProviding, CSAudioMetricProviding, CSAudioAlertProviding, CSAudioMeterProviding, CSTriggerInfoProviding>
 {
     _Bool _audioSystemRecovering;
     _Bool _waitingForAlertFinish;
     NSString *_UUID;
     NSObject<OS_dispatch_queue> *_recordQueue;
+    NSObject<OS_dispatch_queue> *_loggingQueue;
     CSAudioRecorder *_audioRecorder;
     unsigned long long _streamState;
     NSHashTable *_startPendingStreams;
+    NSHashTable *_startPendingOnStoppingStreams;
     NSHashTable *_alertPlaybackFinishWaitingStreams;
     NSHashTable *_streams;
     NSHashTable *_stopPendingStreams;
     NSMutableArray *_pendingStartCompletions;
     NSMutableArray *_alertPlaybackFinishWaitingCompletions;
     NSMutableArray *_pendingStopCompletions;
+    NSMutableDictionary *_startPendingOnStoppingStreamToCompletionDict;
     id <CSAudioProviderDelegate> _providerDelegate;
     id <CSAudioSessionProvidingDelegate> _sessionDelegate;
     NSMutableArray *_streamHolders;
@@ -53,6 +55,7 @@
     unsigned long long _circularBufferStartSampleCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long circularBufferStartSampleCount; // @synthesize circularBufferStartSampleCount=_circularBufferStartSampleCount;
 @property(nonatomic) unsigned long long circularBufferStartHostTime; // @synthesize circularBufferStartHostTime=_circularBufferStartHostTime;
 @property(retain, nonatomic) NSUUID *stopRecordingWatchDogToken; // @synthesize stopRecordingWatchDogToken=_stopRecordingWatchDogToken;
@@ -71,24 +74,28 @@
 @property(retain, nonatomic) NSMutableArray *streamHolders; // @synthesize streamHolders=_streamHolders;
 @property(nonatomic) __weak id <CSAudioSessionProvidingDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
 @property(nonatomic) __weak id <CSAudioProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property(retain, nonatomic) NSMutableDictionary *startPendingOnStoppingStreamToCompletionDict; // @synthesize startPendingOnStoppingStreamToCompletionDict=_startPendingOnStoppingStreamToCompletionDict;
 @property(retain, nonatomic) NSMutableArray *pendingStopCompletions; // @synthesize pendingStopCompletions=_pendingStopCompletions;
 @property(retain, nonatomic) NSMutableArray *alertPlaybackFinishWaitingCompletions; // @synthesize alertPlaybackFinishWaitingCompletions=_alertPlaybackFinishWaitingCompletions;
 @property(retain, nonatomic) NSMutableArray *pendingStartCompletions; // @synthesize pendingStartCompletions=_pendingStartCompletions;
 @property(retain, nonatomic) NSHashTable *stopPendingStreams; // @synthesize stopPendingStreams=_stopPendingStreams;
 @property(retain, nonatomic) NSHashTable *streams; // @synthesize streams=_streams;
 @property(retain, nonatomic) NSHashTable *alertPlaybackFinishWaitingStreams; // @synthesize alertPlaybackFinishWaitingStreams=_alertPlaybackFinishWaitingStreams;
+@property(retain, nonatomic) NSHashTable *startPendingOnStoppingStreams; // @synthesize startPendingOnStoppingStreams=_startPendingOnStoppingStreams;
 @property(retain, nonatomic) NSHashTable *startPendingStreams; // @synthesize startPendingStreams=_startPendingStreams;
 @property(nonatomic) unsigned long long streamState; // @synthesize streamState=_streamState;
 @property(retain, nonatomic) CSAudioRecorder *audioRecorder; // @synthesize audioRecorder=_audioRecorder;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *loggingQueue; // @synthesize loggingQueue=_loggingQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *recordQueue; // @synthesize recordQueue=_recordQueue;
 @property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
+- (_Bool)_shouldHandleStartPendingOnStopping:(unsigned long long)arg1 withStopReason:(long long)arg2;
 - (void)_clearDidStopRecordingDelegateWatchDog;
 - (void)_scheduleDidStopRecordingDelegateWatchDog:(id)arg1;
 - (void)_scheduleDidStopRecordingDelegateWatchDog;
 - (void)_clearDidStartRecordingDelegateWatchDog;
 - (void)_schduleDidStartRecordingDelegateWatchDogWithToken:(id)arg1;
 - (void)_scheduleDidStartRecordingDelegateWatchDog;
+- (void)_holdRecordingExceptionIfNeeded:(_Bool)arg1;
 - (void)_releaseRecordingTransactionIfNeeded;
 - (void)_holdRecordingTransactionIfNeeded;
 - (id)_streamStateName:(unsigned long long)arg1;
@@ -111,8 +118,8 @@
 - (_Bool)isRecording;
 - (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3;
 - (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 atTime:(unsigned long long)arg5;
-- (void)_forwardAudioChunk:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3 toStream:(id)arg4;
 - (void)_processAudioBuffer:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3;
+- (void)_fetchHistoricalAudioAndForwardToStream:(id)arg1 remoteVAD:(id)arg2;
 - (void)audioRecorderWillBeDestroyed:(id)arg1;
 - (void)audioRecorderStreamHandleIdInvalidated:(unsigned long long)arg1;
 - (void)audioRecorderDidStopRecord:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 reason:(long long)arg3;
@@ -136,10 +143,11 @@
 - (void)enableMiniDucking:(_Bool)arg1;
 - (void)setDuckOthersOption:(_Bool)arg1;
 - (_Bool)duckOthersOption;
+- (void)enableSmartRoutingConsideration:(_Bool)arg1;
 - (_Bool)_deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)_activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
-- (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
+- (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 dynamicAttribute:(unsigned long long)arg2 bundleID:(id)arg3 error:(id *)arg4;
 - (_Bool)prewarmAudioSessionWithError:(id *)arg1;
 - (void)setAudioSessionDelegate:(id)arg1;
 - (id)playbackRoute;
@@ -157,8 +165,12 @@
 - (void)_stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleDidStopAudioStreamWithReason:(long long)arg1;
+- (void)_postEpilogueAudioStream;
+- (void)_preEpilogueAudioStream;
 - (void)_handleDidStartAudioStreamWithResult:(_Bool)arg1 error:(id)arg2;
 - (void)_resetCircularBufferStartTime;
+- (void)_switchToListeningMode;
+- (void)_switchToRecordingMode;
 - (void)_startAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)prepareAudioStream:(id)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)prepareAudioStreamSync:(id)arg1 request:(id)arg2 error:(id *)arg3;
@@ -173,6 +185,7 @@
 - (_Bool)setCurrentContext:(id)arg1 error:(id *)arg2;
 - (void)setAudioProviderDelegate:(id)arg1;
 - (void)start;
+- (void)dealloc;
 - (id)initWithAudioStreamHandleId:(unsigned long long)arg1 audioRecorder:(id)arg2;
 
 // Remaining properties

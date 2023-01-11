@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)setIsContentManaged:(_Bool)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(_Bool)arg2;
+- (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
 - (void)setLoadingString:(id)arg1;
 - (void)setAllowInteractiveTransitions:(_Bool)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;

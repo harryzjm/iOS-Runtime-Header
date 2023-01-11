@@ -13,6 +13,7 @@
     OSABinaryImageSegment *_absolute_segment;
     OSABinaryImageSegment *_kernel_cache_segment;
     NSMutableArray *_kernel_segments;
+    NSMutableArray *_kernel_text_exec_segments;
     NSMutableArray *_rootedCacheLibs;
     OSABinaryImageSegment *_targeted_cache;
     unsigned long long _targeted_slide;
@@ -21,15 +22,18 @@
     NSMutableArray *_notes;
 }
 
++ (_Bool)isApplePath:(id)arg1 orBundle:(id)arg2;
 - (void).cxx_destruct;
+- (id)reportUsedImagesLegacyInfo;
 - (id)reportUsedImages;
-- (id)searchFrame:(unsigned long long)arg1 in:(id)arg2 result:(_Bool *)arg3;
+- (id)searchFrame:(unsigned long long)arg1 in:(id)arg2 result:(id *)arg3;
 - (void)appendNotesTo:(id)arg1;
 - (_Bool)isAddressInTargetedCache:(unsigned long long)arg1;
 - (void)targetSharedCache:(unsigned char [16])arg1 withSlide:(unsigned long long)arg2 atBaseAddress:(unsigned long long)arg3;
 - (unsigned long long)markImageAsUsed:(id)arg1 from:(int)arg2;
 - (void)setRootedCacheLibs:(struct dyld_uuid_info_64 *)arg1 count:(unsigned int)arg2;
 - (void)setKernelCache:(unsigned char [16])arg1 address:(unsigned long long)arg2 size:(unsigned long long)arg3;
+- (void)setKernelTextExecImages:(id)arg1;
 - (void)setKernelImages:(id)arg1;
 - (id)init;
 

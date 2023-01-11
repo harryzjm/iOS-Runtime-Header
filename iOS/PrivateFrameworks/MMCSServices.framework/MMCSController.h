@@ -27,13 +27,13 @@
 - (void)_cancelRequest:(id)arg1;
 - (void)removeRequestorContext:(id)arg1 transferID:(id)arg2;
 - (void)addRequestorContext:(id)arg1 transferID:(id)arg2;
-- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 transferID:(id)arg4 authToken:(id)arg5 preauthenticate:(_Bool)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (void)getFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 authToken:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 transferID:(id)arg4 sourceAppID:(id)arg5 authToken:(id)arg6 preauthenticate:(_Bool)arg7 completionBlock:(CDUnknownBlockType)arg8;
+- (void)getFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 sourceAppID:(id)arg4 authToken:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (_Bool)unregisterFiles:(id)arg1;
 - (void)registerFilesForUpload:(id)arg1 withPreauthentication:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)registerFilesForDownload:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 @property(readonly) _Bool isActive;
-- (id)_optionsForFiles:(id)arg1;
+- (id)_optionsForFiles:(id)arg1 sourceAppID:(id)arg2;
 - (void)_addPreauthorizationOptions:(id)arg1 forFiles:(id)arg2;
 - (void)dealloc;
 - (void)_registerPowerAssertionIfNeeded;

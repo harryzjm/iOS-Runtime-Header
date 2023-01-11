@@ -14,7 +14,7 @@
     MPSImageHistogram *histogramKernel;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)encodeToCommandBuffer:(id)arg1 sourceTexture:(id)arg2 regions:(const CDStruct_1e3be3a8 *)arg3 numberOfRegions:(unsigned long long)arg4 keypointCountBuffer:(id)arg5 keypointCountBufferOffset:(unsigned long long)arg6 keypointDataBuffer:(id)arg7 keypointDataBufferOffset:(unsigned long long)arg8;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

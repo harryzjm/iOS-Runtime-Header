@@ -20,9 +20,12 @@
     _Bool _shouldNeverLock;
     _Bool _forSimulator;
     _Bool _isLoginSession;
+    long long _homeButtonType;
     SBBootDefaults *_bootDefaults;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long homeButtonType; // @synthesize homeButtonType=_homeButtonType;
 @property(nonatomic, getter=isForSimulator) _Bool forSimulator; // @synthesize forSimulator=_forSimulator;
 @property(retain, nonatomic) SBBootDefaults *bootDefaults; // @synthesize bootDefaults=_bootDefaults;
 @property(nonatomic, getter=isLoginSession) _Bool loginSession; // @synthesize loginSession=_isLoginSession;
@@ -32,7 +35,6 @@
 @property(nonatomic, getter=isBlocked) _Bool blocked; // @synthesize blocked=_isBlocked;
 @property(nonatomic, getter=isInLostMode) _Bool inLostMode; // @synthesize inLostMode=_isInLostMode;
 @property(nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_isAuthenticated;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

@@ -4,34 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBAppLayout;
+
 @interface SBGridToFullScreenSwitcherModifier
 {
+    long long _direction;
+    SBAppLayout *_fullScreenAppLayout;
 }
 
-- (double)_unselectedCardScale;
-- (_Bool)_isIndexFullScreenAppLayout:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (_Bool)isSwitcherWindowUserInteractionEnabled;
-- (_Bool)isSwitcherWindowVisible;
-- (_Bool)isHomeScreenContentRequired;
-- (long long)wallpaperStyle;
-- (_Bool)isWallpaperRequiredForSwitcher;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (double)titleOpacityForIndex:(unsigned long long)arg1;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
-- (double)wallpaperScale;
-- (double)homeScreenScale;
-- (double)homeScreenAlpha;
-- (double)opacityForIndex:(unsigned long long)arg1;
-- (double)scaleForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
-- (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (id)appLayoutToScrollToBeforeTransitioning;
 - (id)transitionWillBegin;
-- (id)appLayoutToScrollToDuringTransition;
+- (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 gridModifier:(id)arg4;
 
 @end
 

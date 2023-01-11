@@ -6,14 +6,18 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDHome, HMDMediaProfile, HMFMessageDispatcher, NSArray, NSObject, NSUUID;
+@class HMDDevice, HMDHome, HMDLogEventDispatcher, HMDMediaProfile, HMFMessageDispatcher, NSArray, NSObject, NSUUID;
 @protocol OS_dispatch_queue;
 
 @protocol HMDMediaActionRouterDataSource <NSObject>
 @property(readonly) __weak HMDHome *home;
+@property(readonly, nonatomic) HMDLogEventDispatcher *logEventDispatcher;
 @property(readonly, nonatomic) HMFMessageDispatcher *msgDispatcher;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue;
 @property(readonly, nonatomic) NSUUID *uuid;
+@property(readonly, nonatomic, getter=isCompanionReachable) _Bool companionReachable;
+@property(readonly, nonatomic) __weak HMDDevice *companionDevice;
+@property(readonly, copy, nonatomic) NSArray *appleMediaAccessories;
 @property(readonly, copy, nonatomic) NSArray *enabledResidents;
 - (HMDMediaProfile *)mediaProfileWithUUID:(NSUUID *)arg1;
 @end

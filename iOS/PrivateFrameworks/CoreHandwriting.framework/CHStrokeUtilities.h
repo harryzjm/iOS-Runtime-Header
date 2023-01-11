@@ -10,6 +10,7 @@
 {
 }
 
++ (vector_2e7754b6)regularizedPathFromPoints:(const vector_2e7754b6 *)arg1 delta:(double)arg2 gamma:(double)arg3 outError:(double *)arg4;
 + (double)distanceFromPoint:(struct CGPoint)arg1 toRectangle:(struct CGRect)arg2;
 + (double)distanceFromPoint:(struct CGPoint)arg1 toSegmentFromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3;
 + (double)threePointsOrientationWithOrigin:(struct CGPoint)arg1 pointA:(struct CGPoint)arg2 pointB:(struct CGPoint)arg3;
@@ -23,6 +24,9 @@
 + (struct CGRect)unionStrokeBounds:(const vector_ea45b3ba *)arg1 aroundXPosition:(double)arg2 usingOneSideStrokeCountLimit:(long long)arg3;
 + (struct CGRect)unionStrokeBounds:(const vector_ea45b3ba *)arg1 usingStrokeCountLimit:(long long)arg2 reverseOrder:(_Bool)arg3;
 + (struct CGRect)boundingBoxOfPoints:(const vector_2e7754b6 *)arg1 rotatedAroundPoint:(struct CGPoint)arg2 byAngle:(double)arg3;
++ (double)arcLengthForStroke:(id)arg1;
++ (double)speedForFinalTimeRange:(double)arg1 stroke:(id)arg2;
++ (double)durationOfStrokesInStrokeGroup:(id)arg1 strokeProvider:(id)arg2;
 + (_Bool)isPointEnumerationSupportedForStroke:(id)arg1;
 + (void)enumeratePointsForStroke:(id)arg1 interpolationType:(long long)arg2 resolution:(long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 + (id)strokeForIdentifier:(id)arg1 inStrokeProvider:(id)arg2;

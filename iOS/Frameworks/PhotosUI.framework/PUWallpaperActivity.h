@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
     _Bool __needsUpdateWallpaperModificationAllowed;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setNeedsUpdateWallpaperModificationAllowed:) _Bool _needsUpdateWallpaperModificationAllowed; // @synthesize _needsUpdateWallpaperModificationAllowed=__needsUpdateWallpaperModificationAllowed;
 @property(nonatomic, getter=_isWallpaperModificationAllowed, setter=_setWallpaperModificationAllowed:) _Bool _wallpaperModificationAllowed; // @synthesize _wallpaperModificationAllowed=__wallpaperModificationAllowed;
-- (void).cxx_destruct;
 - (void)wallpaperPreviewViewControllerSetButtonPressed:(id)arg1;
 - (void)wallpaperPreviewViewControllerCancelButtonPressed:(id)arg1;
 - (void)_updateWallpaperModificationAllowedIfNeeded;
@@ -28,10 +28,11 @@ __attribute__((visibility("hidden")))
 - (void)_handleSetWallpaperActionWithController:(id)arg1 locations:(long long)arg2;
 - (void)_fetchImageForWallPaperAsset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (id)activityViewController;
+- (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)_activityImageName;
-- (id)_activityBundleImageConfiguration;
+- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (void)dealloc;

@@ -18,6 +18,7 @@
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (id)pinInstructionsPrompt;
 - (id)title;
 - (void)viewDidLoad;

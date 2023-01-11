@@ -21,6 +21,7 @@
         unsigned long long bufferStride;
     } _vertexDescriptorLayouts[31];
     _Bool _threadgroupSizeMatchesTileSize;
+    unsigned long long _attachmentWriteMask;
     MTLRenderPipelineDescriptor *_descriptor;
     MTLRenderPipelineReflection *_reflection;
     MTLTileRenderPipelineDescriptor *_tileDescriptor;
@@ -29,10 +30,12 @@
 @property(readonly, nonatomic) MTLTileRenderPipelineDescriptor *tileDescriptor; // @synthesize tileDescriptor=_tileDescriptor;
 @property(readonly, nonatomic) MTLRenderPipelineReflection *reflection; // @synthesize reflection=_reflection;
 @property(readonly, nonatomic) MTLRenderPipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+@property(readonly, nonatomic) unsigned long long attachmentWriteMask; // @synthesize attachmentWriteMask=_attachmentWriteMask;
 - (id)getParameter:(id)arg1;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)_updateCachedPipelineState:(id)arg1;
+@property(readonly, nonatomic) _Bool rasterizationEnabled;
 - (void)dealloc;
 - (_Bool)isImageBlockLayoutInputCompatibleWithOutputOf:(id)arg1;
 - (id)outputImageBlockData;

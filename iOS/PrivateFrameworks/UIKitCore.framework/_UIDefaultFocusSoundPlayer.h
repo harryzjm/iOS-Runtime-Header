@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UIFocusSoundPlayer-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,17 +17,20 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_urlPools;
     NSMutableDictionary *_focusSoundPools;
     NSObject<OS_dispatch_queue> *_soundQueue;
+    NSTimer *_unregisterTimer;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSTimer *unregisterTimer; // @synthesize unregisterTimer=_unregisterTimer;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *soundQueue; // @synthesize soundQueue=_soundQueue;
 @property(retain, nonatomic) NSMutableDictionary *focusSoundPools; // @synthesize focusSoundPools=_focusSoundPools;
 @property(retain, nonatomic) NSMutableDictionary *urlPools; // @synthesize urlPools=_urlPools;
-- (void).cxx_destruct;
 - (void)_playSystemSound:(unsigned int)arg1 withVolume:(double)arg2 pan:(double)arg3;
 - (void)playSoundWithFocusSound:(long long)arg1 volume:(double)arg2 pan:(double)arg3;
 - (void)playSoundWithURL:(id)arg1 volume:(double)arg2 pan:(double)arg3;
 - (void)dealloc;
+- (void)_registerForSystemSoundsIfNecessary;
 - (id)_init;
 
 // Remaining properties

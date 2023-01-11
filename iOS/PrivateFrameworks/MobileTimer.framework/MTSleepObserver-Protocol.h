@@ -12,8 +12,8 @@
 
 @optional
 - (void)sleepCoordinator:(MTSleepCoordinator *)arg1 sleepAlarmDidChange:(MTAlarm *)arg2;
-- (void)sleepCoordinator:(MTSleepCoordinator *)arg1 bedtimeSessionEnded:(NSDate *)arg2 reason:(unsigned long long)arg3 sleepAlarm:(MTAlarm *)arg4;
-- (void)sleepCoordinator:(MTSleepCoordinator *)arg1 bedtimeDNDManuallyExited:(NSDate *)arg2 sleepAlarm:(MTAlarm *)arg3;
+- (void)sleepCoordinator:(MTSleepCoordinator *)arg1 sleepSessionEnded:(NSDate *)arg2 reason:(unsigned long long)arg3 sleepAlarm:(MTAlarm *)arg4;
+- (void)sleepCoordinator:(MTSleepCoordinator *)arg1 sleepModeManuallyExited:(NSDate *)arg2 sleepAlarm:(MTAlarm *)arg3;
 - (void)sleepCoordinator:(MTSleepCoordinator *)arg1 wakeUpAlarmWasSnoozed:(NSDate *)arg2 sleepAlarm:(MTAlarm *)arg3;
 - (void)sleepCoordinator:(MTSleepCoordinator *)arg1 wakeUpAlarmWasDismissed:(NSDate *)arg2 dismissAction:(unsigned long long)arg3 sleepAlarm:(MTAlarm *)arg4;
 - (void)sleepCoordinator:(MTSleepCoordinator *)arg1 wakeUpAlarmDidFire:(NSDate *)arg2 sleepAlarm:(MTAlarm *)arg3;

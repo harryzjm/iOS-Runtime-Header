@@ -7,6 +7,7 @@
 @class NSString, NSURL, TKAdaptiveImage_Trait, UIColor, UIImage;
 @protocol TKNetworkTask;
 
+__attribute__((visibility("hidden")))
 @interface TKAdaptiveImage
 {
     _Bool _supportsTraits;
@@ -24,6 +25,7 @@
 }
 
 + (id)zeroTrait;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(retain, nonatomic) NSURL *currentURL; // @synthesize currentURL=_currentURL;
 @property(readonly, nonatomic) _Bool loading; // @synthesize loading=_loading;
@@ -33,7 +35,6 @@
 @property(copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property(copy, nonatomic) NSString *priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (id)url:(id)arg1 withTrait:(id)arg2;
 - (id)imageTraitForMetrics;
 - (id)traits;

@@ -9,13 +9,12 @@
 #import <GeoServices/GEOMapItemPrivate-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOLatLng, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapItemStorageUserValues, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPDResultDetourInfo, GEOPlace, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL, PBDataReader, PBUnknownFields, _GEOMapItemStorageNotificationTrampoline;
+@class GEOAddress, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOLatLng, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapItemStorageUserValues, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPDResultDetourInfo, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL, PBDataReader, PBUnknownFields, _GEOMapItemStorageNotificationTrampoline, geo_isolater;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @interface GEOMapItemStorage : PBCodable <GEOMapItemPrivate, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapItemClientAttributes *_clientAttributes;
     GEOPDResultDetourInfo *_internalDetourInfo;
@@ -25,6 +24,9 @@
     GEOPlaceResult *_placeResult;
     GEOPlace *_place;
     GEOMapItemStorageUserValues *_userValues;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_clientAttributes:1;
@@ -35,18 +37,11 @@
         unsigned int read_placeResult:1;
         unsigned int read_place:1;
         unsigned int read_userValues:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientAttributes:1;
-        unsigned int wrote_internalDetourInfo:1;
-        unsigned int wrote_mapsURL:1;
-        unsigned int wrote_originatingCoordinate:1;
-        unsigned int wrote_placeData:1;
-        unsigned int wrote_placeResult:1;
-        unsigned int wrote_place:1;
-        unsigned int wrote_userValues:1;
+        unsigned int wrote_anyField:1;
     } _flags;
     _GEOMapItemStorageNotificationTrampoline *_trampoline;
     id <GEOMapItem> _geoMapItem;
+    geo_isolater *_geoMapItemIsolater;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -76,33 +71,41 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) GEOMapItemStorageUserValues *userValues;
 @property(readonly, nonatomic) _Bool hasUserValues;
-- (void)_readUserValues;
 @property(retain, nonatomic) NSString *mapsURL;
 @property(readonly, nonatomic) _Bool hasMapsURL;
-- (void)_readMapsURL;
 @property(retain, nonatomic) GEOPDResultDetourInfo *internalDetourInfo;
 @property(readonly, nonatomic) _Bool hasInternalDetourInfo;
-- (void)_readInternalDetourInfo;
 @property(retain, nonatomic) GEOLatLng *originatingCoordinate;
 @property(readonly, nonatomic) _Bool hasOriginatingCoordinate;
-- (void)_readOriginatingCoordinate;
 @property(retain, nonatomic) GEOPlaceResult *placeResult;
 @property(readonly, nonatomic) _Bool hasPlaceResult;
-- (void)_readPlaceResult;
 @property(retain, nonatomic) GEOMapItemClientAttributes *clientAttributes;
 @property(readonly, nonatomic) _Bool hasClientAttributes;
-- (void)_readClientAttributes;
 @property(retain, nonatomic) GEOPlace *place;
 @property(readonly, nonatomic) _Bool hasPlace;
-- (void)_readPlace;
 @property(retain, nonatomic) GEOPDPlace *placeData;
 @property(readonly, nonatomic) _Bool hasPlaceData;
-- (void)_readPlaceData;
+- (id)initWithData:(id)arg1;
+- (id)init;
+@property(readonly, nonatomic, getter=_totalPhotoCount) unsigned long long totalPhotoCount;
+@property(readonly, nonatomic, getter=_canDownloadMorePhotos) _Bool canDownloadMorePhotos;
+@property(readonly, nonatomic, getter=_identifierHistory) NSArray *identifierHistory;
+@property(readonly, nonatomic, getter=_placeQuestionnaire) GEOPlaceQuestionnaire *placeQuestionnaire;
+@property(readonly, nonatomic, getter=_hasPlaceQuestionnaire) _Bool hasPlaceQuestionnaire;
+@property(readonly, nonatomic, getter=_overallAppleRating) GEOAppleRating *overallRating;
+@property(readonly, nonatomic, getter=_appleRatings) NSArray *appleRatings;
+@property(readonly, nonatomic, getter=_supportsAppleRatings) _Bool supportsAppleRatings;
 @property(readonly, nonatomic, getter=_showSuggestAnEditButton) _Bool showSuggestAnEditButton;
+@property(readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
+@property(readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
+@property(readonly, nonatomic, getter=_alternateSearchableNames) NSArray *alternateSearchableNames;
 @property(readonly, nonatomic, getter=_enableRAPLightweightFeedback) _Bool enableRAPLightweightFeedback;
 @property(readonly, nonatomic, getter=_walletPlaceStyling) GEOStyleAttributes *walletPlaceStyling;
 @property(readonly, nonatomic, getter=_walletPlaceLocalizedString) NSString *walletPlaceLocalizedString;
@@ -144,7 +147,9 @@
 @property(readonly, nonatomic) GEOMapItemDetourInfo *detourInfo;
 @property(readonly, nonatomic, getter=_placecardLayoutConfiguration) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
 @property(readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
+@property(readonly, nonatomic, getter=_placeCollectionsIds) NSArray *placeCollectionsIds;
 @property(readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
+@property(readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property(readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
 @property(readonly, nonatomic, getter=_messageLink) GEOMessageLink *messageLink;
 @property(readonly, nonatomic, getter=_brandMUID) unsigned long long brandMUID;
@@ -267,6 +272,7 @@
 @property(readonly, nonatomic, getter=_tips) NSArray *tips;
 @property(readonly, nonatomic, getter=_reviews) NSArray *reviews;
 - (_Bool)isEqualToMapItem:(id)arg1;
+- (void)initAdditionalFields;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

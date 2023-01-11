@@ -10,7 +10,8 @@
 {
 }
 
-+ (id)SessionMultiplexer;
++ (id)Multiplexer;
++ (id)TransportLevelAgent;
 + (id)ConnectivityMonitor;
 + (id)interface;
 + (id)IDSUDPLink;
@@ -19,7 +20,9 @@
 + (id)IDSMessageStore;
 + (id)RealTimeEncryptionController;
 + (id)SessionController;
-+ (id)GlobalLinkZUDP;
++ (id)NonFTGL;
++ (id)GFTGL;
++ (id)FTGL;
 + (id)GlobalLink;
 + (id)Stun;
 + (id)QRAllocator_oversized;

@@ -11,6 +11,7 @@
 @protocol _CPResultSectionForFeedback <NSObject>
 @property(readonly, nonatomic) unsigned long long whichBundleid;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool isInitiallyHidden;
 @property(nonatomic) int knownBundleIdentifier;
 @property(copy, nonatomic) NSString *bundleIdentifier;
 @property(copy, nonatomic) NSData *fallbackResultSection;

@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (AuthenticationServicesExtras)
+- (id)_as_viewControllerToPresentFrom;
 @property(copy, nonatomic, setter=_as_setApplicationBackgroundBlock:) CDUnknownBlockType _as_applicationBackgroundBlock;
 @end
 

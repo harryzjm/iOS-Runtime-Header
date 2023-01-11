@@ -21,15 +21,16 @@ __attribute__((visibility("hidden")))
     UIScenePresentationContext *_presentationContext;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak FBScene *scene; // @synthesize scene=_scene;
 @property(readonly, nonatomic) __weak id <_UISceneLayerHostContainerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (id)_presentationContextForLayer:(id)arg1;
 - (void)_updateRenderingMode;
 - (void)_rebuildLayersForReason:(id)arg1;
 - (id)_filteredLayersToPresent;
 - (void)_adjustHostViewFrameAlignment:(id)arg1;
 - (id)_createHostViewForLayer:(id)arg1;
+- (_Bool)_canShowKeyboardLayer;
 - (void)_toggleClippingDisabledWithNewContext:(id)arg1;
 - (void)_presentationContextChangedFrom:(id)arg1 toContext:(id)arg2 force:(_Bool)arg3;
 - (void)_setPresentationContext:(id)arg1;
@@ -41,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)succinctDescription;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-- (void)sceneLayerManager:(id)arg1 didRepositionLayer:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
+- (void)sceneLayerManagerDidUpdateLayers:(id)arg1;
 - (id)window;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;

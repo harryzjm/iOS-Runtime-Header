@@ -13,17 +13,17 @@
 @interface GEOAddressCorrectionInitRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_personID;
     NSString *_token;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _supportsMultipleAddresses;
     struct {
         unsigned int has_supportsMultipleAddresses:1;
         unsigned int read_personID:1;
         unsigned int read_token:1;
-        unsigned int wrote_personID:1;
-        unsigned int wrote_token:1;
-        unsigned int wrote_supportsMultipleAddresses:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,16 +39,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasSupportsMultipleAddresses;
 @property(nonatomic) _Bool supportsMultipleAddresses;
 @property(retain, nonatomic) NSString *personID;
 @property(readonly, nonatomic) _Bool hasPersonID;
-- (void)_readPersonID;
 @property(retain, nonatomic) NSString *token;
 @property(readonly, nonatomic) _Bool hasToken;
-- (void)_readToken;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

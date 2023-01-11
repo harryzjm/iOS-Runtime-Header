@@ -10,6 +10,9 @@
 
 @interface UINavigationItem (PXNavigationBanner)
 @property(retain, nonatomic, setter=px_setBannerView:) UIView *px_bannerView;
+@property(nonatomic, setter=px_setBackButtonDisplayMode:) long long px_backButtonDisplayMode;
+- (void)px_updateBackButtonVisibilityForTraitCollection:(id)arg1;
+@property(nonatomic, setter=px_setHidesBackButtonInRegularWidth:) _Bool px_hidesBackButtonInRegularWidth;
 - (void)_updateFinalLargeTitleDisplayMode;
 @property(nonatomic, setter=px_setPreferredLargeTitleDisplayMode:) long long px_preferredLargeTitleDisplayMode;
 @property(nonatomic, setter=px_setDisableLargeTitle:) _Bool px_disableLargeTitle;

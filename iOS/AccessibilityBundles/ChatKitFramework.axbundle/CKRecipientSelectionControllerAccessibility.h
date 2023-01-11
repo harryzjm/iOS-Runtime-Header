@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)loadView;
+- (void)addRecipient:(id)arg1;
+- (void)viewDidLoad;
+- (id)accessibilityElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateLabelOnToField;
 

@@ -14,9 +14,9 @@
     MISSING_TYPE *_centroid;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSMutableSet *probes; // @synthesize probes=_probes;
 @property MISSING_TYPE *centroid; // @synthesize centroid=_centroid;
-- (void).cxx_destruct;
 - (void)calculateCentroidNotIncludingSamplesinArray:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

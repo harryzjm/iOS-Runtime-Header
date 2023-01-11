@@ -13,17 +13,11 @@
 
 @interface __CFN_SessionMetrics : NSObject <_NSURLSessionEventDelegate>
 {
-    id <_NSURLSessionEventDelegate> delegate;
+    id <_NSURLSessionEventDelegate> _delegate;
     NSUUID *_UUID;
 }
 
-@property(retain, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 - (void).cxx_destruct;
-- (void)taskCreate:(id)arg1 request:(id)arg2;
-- (void)delegateEnd:(SEL)arg1;
-- (void)delegateBegin:(SEL)arg1;
-- (void)delegateEvent:(SEL)arg1;
-- (id)initWithSession:(id)arg1;
 - (void)taskCompletionHandlerEvent:(id)arg1 absoluteTime:(double)arg2;
 - (void)taskDelegateEnd:(id)arg1 selector:(SEL)arg2 absoluteTime:(double)arg3;
 - (void)taskDelegateBegin:(id)arg1 selector:(SEL)arg2 absoluteTime:(double)arg3;

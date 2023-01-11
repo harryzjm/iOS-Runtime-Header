@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSSet;
+
 @interface PGTitleSpecPeopleArgument
 {
     unsigned long long _type;
+    NSSet *_personNodes;
 }
 
++ (id)argumentWithPeopleType:(unsigned long long)arg1 personNodes:(id)arg2;
 + (id)argumentWithPeopleType:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(readonly) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 @property(readonly) unsigned long long type; // @synthesize type=_type;
-- (id)_peopleNodesWithMomentNodes:(id)arg1;
+- (id)_personNodesWithMomentNodes:(id)arg1;
 - (id)_personTitleWithFeature:(id)arg1 graph:(id)arg2;
 - (id)_personTitleWithMomentNodes:(id)arg1;
 - (id)_groupTitleWithFeature:(id)arg1 graph:(id)arg2 allowedGroupsFormat:(unsigned long long)arg3;
@@ -20,6 +26,7 @@
 - (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2;
 - (id)_resolvedStringWithMomentNodes:(id)arg1;
 - (id)initWithPeopleType:(unsigned long long)arg1;
+- (id)_initWithPeopleType:(unsigned long long)arg1 personNodes:(id)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MRPasscodeCredentials, NSArray, NSData, NSMutableData, NSMutableDictionary, NSObject, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRPasscodeCredentials, NSArray, NSData, NSMutableData, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRCoreUtilsPairingSession
@@ -32,6 +32,7 @@
     NSMutableData *_outputNonce;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableData *outputNonce; // @synthesize outputNonce=_outputNonce;
 @property(retain, nonatomic) NSData *outputKey; // @synthesize outputKey=_outputKey;
 @property(retain, nonatomic) NSMutableData *inputNonce; // @synthesize inputNonce=_inputNonce;
@@ -39,31 +40,14 @@
 @property(nonatomic) unsigned int pairingFlags; // @synthesize pairingFlags=_pairingFlags;
 @property(readonly, nonatomic) _Bool hasExchangedMessage; // @synthesize hasExchangedMessage=_hasExchangedMessage;
 @property(readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
-- (void)_onQueueDeriveEncryptionKeys;
-- (void)_handleSetupExchangeComplete;
-- (void)_delegateDidEnterPasscode:(id)arg1;
-- (id)_onQueuePerformPairingExchangeWithInputData:(id)arg1 error:(id *)arg2;
-- (id)_onQueueInitializePairingSessionWithState:(unsigned long long)arg1;
-- (void)_handlePairingCompleteWithError:(id)arg1;
-- (void)_handlePairingFailureWithError:(id)arg1;
-- (int)_promptForSetupCodeWithDelay:(double)arg1;
-- (void)_hideSetupCode;
-- (int)_displaySetupCode:(id)arg1;
-- (id)_generateSetupCodeWithMaximumLength:(unsigned long long)arg1;
-- (id)extendedPeerInfo;
-- (void *)_createDeviceFromPeer:(id)arg1;
-- (id)_createPeerDeviceFromPeer:(id)arg1;
 @property(readonly, nonatomic) NSMutableDictionary *mediaRemotePairedDevices;
 @property(readonly, nonatomic) NSArray *pairedPeerDevices;
-@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *pairedPeerDevice;
+@property(readonly, nonatomic) MRDeviceInfo *pairedPeerDevice;
 @property(readonly, nonatomic) NSString *peerIdentifier;
 - (id)updatePeer;
 - (id)removePeer;
 - (id)addPeer;
 - (id)initializePairingSession:(struct PairingSessionPrivate *)arg1;
-- (void)retry;
-- (_Bool)shouldAutoRetry;
 - (_Bool)shouldAutoRetryPairingExchange:(id)arg1;
 - (void)openInState:(unsigned long long)arg1;
 - (_Bool)deleteIdentityWithError:(id *)arg1;

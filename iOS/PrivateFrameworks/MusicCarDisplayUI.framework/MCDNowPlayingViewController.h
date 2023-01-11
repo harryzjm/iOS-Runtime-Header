@@ -4,40 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <CarPlayUI/CPUINowPlayingViewController.h>
 
-#import <MusicCarDisplayUI/CARSessionObserving-Protocol.h>
 #import <MusicCarDisplayUI/MCDNowPlayingContentManagerDelegate-Protocol.h>
 
-@class CARSessionStatus, MPWeakTimer, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UITableViewController, _MCDNowPlayingViewController;
+@class MPWeakTimer, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UITableViewController;
 @protocol MCDNowPlayingContentManagerProtocol;
 
-@interface MCDNowPlayingViewController : UIViewController <CARSessionObserving, MCDNowPlayingContentManagerDelegate>
+@interface MCDNowPlayingViewController : CPUINowPlayingViewController <MCDNowPlayingContentManagerDelegate>
 {
     _Bool _showNavigationBar;
     _Bool _trackBuffering;
     _Bool _handledWillAppear;
     _Bool _shouldShowPlaybackQueue;
-    _MCDNowPlayingViewController *_nowPlayingViewController;
+    UITableViewController *_playbackQueueViewController;
+    id <MCDNowPlayingContentManagerProtocol> _contentManager;
     UIBarButtonItem *_backButton;
     UIActivityIndicatorView *_activityIndicator;
     UIBarButtonItem *_activityIndicatorBarButtonItem;
-    NSString *_bundleID;
     NSString *_appName;
     MPWeakTimer *_activityTimer;
     UILabel *_rightTitleLabel;
     UIBarButtonItem *_rightTitleLabelBarButtonItem;
     UIBarButtonItem *_playbackQueueBarButtonItem;
-    CARSessionStatus *_carSessionStatus;
-    id <MCDNowPlayingContentManagerProtocol> _contentManager;
-    UITableViewController *_playbackQueueViewController;
-    CDUnknownBlockType _albumViewControllerProvider;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType albumViewControllerProvider; // @synthesize albumViewControllerProvider=_albumViewControllerProvider;
-@property(retain, nonatomic) UITableViewController *playbackQueueViewController; // @synthesize playbackQueueViewController=_playbackQueueViewController;
-@property(retain, nonatomic) id <MCDNowPlayingContentManagerProtocol> contentManager; // @synthesize contentManager=_contentManager;
-@property(retain, nonatomic) CARSessionStatus *carSessionStatus; // @synthesize carSessionStatus=_carSessionStatus;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldShowPlaybackQueue; // @synthesize shouldShowPlaybackQueue=_shouldShowPlaybackQueue;
 @property(nonatomic) _Bool handledWillAppear; // @synthesize handledWillAppear=_handledWillAppear;
 @property(retain, nonatomic) UIBarButtonItem *playbackQueueBarButtonItem; // @synthesize playbackQueueBarButtonItem=_playbackQueueBarButtonItem;
@@ -45,15 +37,13 @@
 @property(retain, nonatomic) UILabel *rightTitleLabel; // @synthesize rightTitleLabel=_rightTitleLabel;
 @property(retain, nonatomic) MPWeakTimer *activityTimer; // @synthesize activityTimer=_activityTimer;
 @property(retain, nonatomic) NSString *appName; // @synthesize appName=_appName;
-@property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(nonatomic) _Bool trackBuffering; // @synthesize trackBuffering=_trackBuffering;
 @property(retain, nonatomic) UIBarButtonItem *activityIndicatorBarButtonItem; // @synthesize activityIndicatorBarButtonItem=_activityIndicatorBarButtonItem;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) UIBarButtonItem *backButton; // @synthesize backButton=_backButton;
-@property(retain, nonatomic) _MCDNowPlayingViewController *nowPlayingViewController; // @synthesize nowPlayingViewController=_nowPlayingViewController;
+@property(retain, nonatomic) id <MCDNowPlayingContentManagerProtocol> contentManager; // @synthesize contentManager=_contentManager;
+@property(retain, nonatomic) UITableViewController *playbackQueueViewController; // @synthesize playbackQueueViewController=_playbackQueueViewController;
 @property(nonatomic) _Bool showNavigationBar; // @synthesize showNavigationBar=_showNavigationBar;
-- (void).cxx_destruct;
-- (void)session:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)_invalidateActivityTimer;
 - (void)_setupActivityTimer;
 - (void)_popViewControllerAnimated;
@@ -63,10 +53,8 @@
 - (void)contentManager:(id)arg1 sectionName:(id)arg2;
 - (void)contentManager:(id)arg1 shouldShowPlaybackQueue:(_Bool)arg2;
 - (void)contentManager:(id)arg1 presentViewController:(id)arg2;
-- (void)albumArtistButtonTapped:(id)arg1;
 - (void)contentManagerReloadData:(id)arg1;
 - (void)contentManager:(id)arg1 bufferingItem:(_Bool)arg2;
-- (id)preferredFocusEnvironments;
 - (void)_adjustRightTitleLabelToFit;
 - (void)setRightTitle:(id)arg1;
 - (void)_updateBackButton;

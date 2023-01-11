@@ -10,6 +10,9 @@
 @protocol CSIndexExtensionDelegate, CSSearchableIndexServiceInterface;
 
 @protocol MDIndexer <CSSearchableIndexInterface>
+- (NSString *)delegateServiceName;
+- (NSString *)indexServiceName;
+- (NSString *)searchServiceName;
 - (void)runMigration;
 - (double)lastUpdateTime;
 - (void)userPerformedAction:(CSUserAction *)arg1 withItem:(CSSearchableItem *)arg2 protectionClass:(NSString *)arg3 forBundleID:(NSString *)arg4;
@@ -22,6 +25,7 @@
 - (void)deleteAllInteractionsWithBundleID:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteAllUserActivities:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteAllSearchableItemsWithBundleID:(NSString *)arg1 protectionClass:(NSString *)arg2 shouldGC:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)queryPreheat:(NSArray *)arg1;
 - (void)recordEngagementForBundleID:(NSString *)arg1 uniqueIdentifier:(NSString *)arg2 protectionClass:(NSString *)arg3 userQuery:(NSString *)arg4 date:(NSDate *)arg5;
 - (void)startQueryTask:(SPCoreSpotlightTask *)arg1;
 -     // Error parsing type: @"SPCoreSpotlightTask"56@0:8@"NSString"16@"CSSearchQueryContext"24@?<^v@?i{?=(?={?=^vI}{?=^vQ}{?=*Q}{?=*I}*BCSIQTcsiqtdfdq^v)}Q^v>32@?<v@?iQ^{__MDStoreOIDArray=}^{__MDPlistBytes=}@"NSString">40@?<v@?@"NSError">48, name: taskForQueryWithQueryString:queryContext:eventHandler:resultsHandler:completionHandler:

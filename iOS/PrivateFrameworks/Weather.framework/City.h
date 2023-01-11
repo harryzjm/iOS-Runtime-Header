@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFAQIScaleCategory, WFGeocodeRequest, WFLocation, WFTemperature;
+#import <Weather/WAIdentifiable-Protocol.h>
 
-@interface City : NSObject
+@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFAQIScaleCategory, WFGeocodeRequest, WFLocation, WFNextHourPrecipitation, WFTemperature, WeatherAQIAttribution;
+
+@interface City : NSObject <WAIdentifiable>
 {
     _Bool _isDay;
     _Bool _isLocalWeatherCity;
     _Bool _transient;
     _Bool _autoUpdate;
+    _Bool _airQualityTemporarilyUnavailable;
     _Bool _isUpdating;
     _Bool _isRequestedByFrameworkClient;
     _Bool _lockedForDemoMode;
@@ -44,14 +47,24 @@
     NSURL *_link;
     NSURL *_deeplink;
     CLLocation *_location;
+    NSString *_searchTitle;
+    NSString *_searchSubtitle;
     NSTimeZone *_timeZone;
     NSDate *_timeZoneUpdateDate;
     NSError *_lastUpdateError;
     NSDate *_updateTime;
     unsigned long long _pressureRising;
+    NSArray *_severeWeatherEvents;
+    WFNextHourPrecipitation *_nextHourPrecipitation;
+    NSURL *_severeWeatherEventLearnMoreURL;
     NSNumber *_airQualityIdx;
     NSNumber *_airQualityCategory;
+    NSString *_airQualityScale;
     WFAQIScaleCategory *_airQualityScaleCategory;
+    unsigned long long _airQualitySignificance;
+    NSString *_airQualityLocalizedRecommendation;
+    WeatherAQIAttribution *_airQualityAttribution;
+    NSURL *_airQualityProviderURL;
     WFLocation *_wfLocation;
     unsigned long long _lastUpdateStatus;
     long long _updateInterval;
@@ -59,10 +72,23 @@
     WFGeocodeRequest *_activeGeocodeRequest;
     NSHashTable *_cityUpdateObservers;
     NSString *_fullName;
+    unsigned long long _aqiDataAvailabilityStatusOverride;
+    NSNumber *_airQualityIdxOverride;
+    NSNumber *_airQualityCategoryOverride;
+    unsigned long long _airQualitySignificanceOverride;
+    NSString *_weatherDisplayName;
+    NSString *_weatherLocationName;
 }
 
 + (id)cityContainingLocation:(id)arg1 expectedName:(id)arg2 fromCities:(id)arg3;
 + (id)_ISO8601Calendar;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *weatherLocationName; // @synthesize weatherLocationName=_weatherLocationName;
+@property(copy, nonatomic) NSString *weatherDisplayName; // @synthesize weatherDisplayName=_weatherDisplayName;
+@property(nonatomic) unsigned long long airQualitySignificanceOverride; // @synthesize airQualitySignificanceOverride=_airQualitySignificanceOverride;
+@property(retain, nonatomic) NSNumber *airQualityCategoryOverride; // @synthesize airQualityCategoryOverride=_airQualityCategoryOverride;
+@property(retain, nonatomic) NSNumber *airQualityIdxOverride; // @synthesize airQualityIdxOverride=_airQualityIdxOverride;
+@property(nonatomic) unsigned long long aqiDataAvailabilityStatusOverride; // @synthesize aqiDataAvailabilityStatusOverride=_aqiDataAvailabilityStatusOverride;
 @property(copy, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property(retain, nonatomic) NSHashTable *cityUpdateObservers; // @synthesize cityUpdateObservers=_cityUpdateObservers;
 @property(retain, nonatomic) WFGeocodeRequest *activeGeocodeRequest; // @synthesize activeGeocodeRequest=_activeGeocodeRequest;
@@ -73,10 +99,19 @@
 @property(nonatomic) _Bool isUpdating; // @synthesize isUpdating=_isUpdating;
 @property(nonatomic) unsigned long long lastUpdateStatus; // @synthesize lastUpdateStatus=_lastUpdateStatus;
 @property(retain, nonatomic) WFLocation *wfLocation; // @synthesize wfLocation=_wfLocation;
-@property(nonatomic) _Bool autoUpdate; // @synthesize autoUpdate=_autoUpdate;
+@property(copy, nonatomic) NSURL *airQualityProviderURL; // @synthesize airQualityProviderURL=_airQualityProviderURL;
+@property(retain, nonatomic) WeatherAQIAttribution *airQualityAttribution; // @synthesize airQualityAttribution=_airQualityAttribution;
+@property(nonatomic) _Bool airQualityTemporarilyUnavailable; // @synthesize airQualityTemporarilyUnavailable=_airQualityTemporarilyUnavailable;
+@property(copy, nonatomic) NSString *airQualityLocalizedRecommendation; // @synthesize airQualityLocalizedRecommendation=_airQualityLocalizedRecommendation;
+@property(nonatomic) unsigned long long airQualitySignificance; // @synthesize airQualitySignificance=_airQualitySignificance;
 @property(retain, nonatomic) WFAQIScaleCategory *airQualityScaleCategory; // @synthesize airQualityScaleCategory=_airQualityScaleCategory;
+@property(copy, nonatomic) NSString *airQualityScale; // @synthesize airQualityScale=_airQualityScale;
 @property(retain, nonatomic) NSNumber *airQualityCategory; // @synthesize airQualityCategory=_airQualityCategory;
 @property(retain, nonatomic) NSNumber *airQualityIdx; // @synthesize airQualityIdx=_airQualityIdx;
+@property(copy, nonatomic) NSURL *severeWeatherEventLearnMoreURL; // @synthesize severeWeatherEventLearnMoreURL=_severeWeatherEventLearnMoreURL;
+@property(copy, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
+@property(copy, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
+@property(nonatomic) _Bool autoUpdate; // @synthesize autoUpdate=_autoUpdate;
 @property(nonatomic) float heatIndex; // @synthesize heatIndex=_heatIndex;
 @property(nonatomic) float dewPoint; // @synthesize dewPoint=_dewPoint;
 @property(nonatomic) unsigned long long pressureRising; // @synthesize pressureRising=_pressureRising;
@@ -90,6 +125,8 @@
 @property(retain, nonatomic) NSError *lastUpdateError; // @synthesize lastUpdateError=_lastUpdateError;
 @property(retain, nonatomic) NSDate *timeZoneUpdateDate; // @synthesize timeZoneUpdateDate=_timeZoneUpdateDate;
 @property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property(copy, nonatomic) NSString *searchSubtitle; // @synthesize searchSubtitle=_searchSubtitle;
+@property(copy, nonatomic) NSString *searchTitle; // @synthesize searchTitle=_searchTitle;
 @property(copy) CLLocation *location; // @synthesize location=_location;
 @property(copy, nonatomic) NSURL *deeplink; // @synthesize deeplink=_deeplink;
 @property(copy, nonatomic) NSURL *link; // @synthesize link=_link;
@@ -108,8 +145,15 @@
 @property(nonatomic) _Bool isLocalWeatherCity; // @synthesize isLocalWeatherCity=_isLocalWeatherCity;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *updateTimeString; // @synthesize updateTimeString=_updateTimeString;
-- (void).cxx_destruct;
+- (_Bool)airQualityCanUseDefaultAttribution;
+@property(readonly, nonatomic) _Bool airQualityForceHideRecommendationString;
+- (unsigned long long)aqiDataAvailabilityStatusFromAppConfig;
+@property(readonly, nonatomic) unsigned long long aqiDataAvailabilityStatus;
+@property(readonly, nonatomic) NSString *countryCode;
+@property(readonly, nonatomic) NSString *identifier;
 - (_Bool)_dataIsValid;
+- (_Bool)_isValidLearnMoreURLForSevereEvent:(id)arg1;
+- (void)updateCityForSevereWeatherEvents:(id)arg1;
 - (void)updateCityForModel:(id)arg1;
 - (void)_generateLocalizableStrings;
 - (unsigned long long)precipitationForecast;
@@ -131,6 +175,7 @@
 - (void)setCoordinate:(struct CLLocationCoordinate2D)arg1;
 @property(nonatomic) long long conditionCode; // @synthesize conditionCode=_conditionCode;
 - (id)getName;
+@property(readonly, nonatomic) NSString *weatherLocationCitationName;
 - (id)cityAndState;
 - (_Bool)isUpdatingOrNoData;
 - (_Bool)_isUpdating;
@@ -152,14 +197,18 @@
 - (void)removeUpdateObserver:(id)arg1;
 - (void)addUpdateObserver:(id)arg1;
 - (id)detailedDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)init;
 @property(readonly) NSDictionary *urlComponents;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

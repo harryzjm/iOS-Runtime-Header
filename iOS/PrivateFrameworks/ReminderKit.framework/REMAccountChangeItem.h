@@ -10,7 +10,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
 
-@class NSSet, NSString, REMAccountCapabilities, REMAccountGroupContextChangeItem, REMAccountStorage, REMCRMergeableOrderedSet, REMChangedKeysObserver, REMObjectID, REMResolutionTokenMap, REMSaveRequest;
+@class NSData, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContextChangeItem, REMAccountStorage, REMCRMergeableOrderedSet, REMChangedKeysObserver, REMObjectID, REMResolutionTokenMap, REMSaveRequest;
 
 @interface REMAccountChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
 {
@@ -21,10 +21,10 @@
 
 + (id)_emptyListIDsOrderingWithAccountID:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) REMChangedKeysObserver *changedKeysObserver; // @synthesize changedKeysObserver=_changedKeysObserver;
 @property(readonly, copy, nonatomic) REMAccountStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
-- (void).cxx_destruct;
 - (void)_editListIDsOrderingUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_lowLevelApplyUndoToOrdering:(id)arg1;
 - (void)_lowLevelAddListChangeItemToOrdering:(id)arg1 atIndexOfSibling:(id)arg2 isAfter:(_Bool)arg3 withParentListChangeItem:(id)arg4;
@@ -61,7 +61,9 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool didChooseToMigrate; // @dynamic didChooseToMigrate;
+@property(nonatomic) _Bool didChooseToMigrateLocally; // @dynamic didChooseToMigrateLocally;
 @property(nonatomic) _Bool didFinishMigration; // @dynamic didFinishMigration;
+@property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
 @property(copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(readonly) unsigned long long hash;
@@ -74,6 +76,7 @@
 @property(retain, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property(readonly, nonatomic) REMObjectID *remObjectID; // @dynamic remObjectID;
 @property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property(retain, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) long long type; // @dynamic type;
 

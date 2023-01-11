@@ -20,12 +20,12 @@
 - (id)gtm_stringByEscapingForAsciiHTML;
 - (id)gtm_stringByEscapingForHTML;
 - (id)gtm_stringByEscapingHTMLUsingTable:(CDStruct_6a59ab51 *)arg1 ofSize:(unsigned long long)arg2 escapingUnicode:(_Bool)arg3;
+- (_Bool)wf_hasStrongRTLCharacter;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)wf_stringByTrimmingTrailingWhitespaceAndNewlineCharacters;
 - (id)wf_stringByTrimmingLeadingWhitespaceAndNewlineCharacters;
 - (id)wf_stringByTrimmingTrailingCharactersInSet:(id)arg1;
 - (id)wf_stringByTrimmingLeadingCharactersInSet:(id)arg1;
-- (_Bool)wf_hasStrongRTLCharacter;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

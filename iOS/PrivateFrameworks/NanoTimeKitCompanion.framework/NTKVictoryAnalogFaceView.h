@@ -59,6 +59,7 @@
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (id)_keylineViewForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(_Bool)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_applyDataMode;
 - (id)_additionalPrelaunchApplicationIdentifiers;

@@ -6,9 +6,11 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, _INPBConnectedCall;
 
 @protocol _INPBStartCallIntentResponse <NSObject>
+@property(readonly, nonatomic) _Bool hasStartedCall;
+@property(retain, nonatomic) _INPBConnectedCall *startedCall;
 @property(nonatomic) _Bool hasShouldDoEmergencyCountdown;
 @property(nonatomic) _Bool shouldDoEmergencyCountdown;
 @property(nonatomic) _Bool hasConfirmationReason;

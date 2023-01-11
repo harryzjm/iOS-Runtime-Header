@@ -6,9 +6,10 @@
 
 #import <AudioToolboxCore/_AURemoteParameterSynchronization-Protocol.h>
 
-@class MIDICIProfile, NSArray;
+@class AVSpeechSynthesisProviderRequest, MIDICIProfile, NSArray;
 
 @protocol AUAudioUnitHostProtocol <_AURemoteParameterSynchronization>
+- (void)speechSynthesisMetadataAvailable:(NSArray *)arg1 speechRequest:(AVSpeechSynthesisProviderRequest *)arg2;
 - (void)MIDICIProfileChanged:(unsigned char)arg1 channel:(unsigned char)arg2 profile:(MIDICIProfile *)arg3 enabled:(_Bool)arg4;
 - (void)propertiesChanged:(NSArray *)arg1;
 @end

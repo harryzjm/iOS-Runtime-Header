@@ -8,21 +8,28 @@
 
 #import <Weather/WeatherPreferencesPersistence-Protocol.h>
 
-@class NSString, NSUbiquitousKeyValueStore;
+@class NSString, NSUbiquitousKeyValueStore, WeatherCloudMigrator;
 @protocol WeatherCloudPersistenceDelegate;
 
-__attribute__((visibility("hidden")))
 @interface WeatherCloudPersistence : NSObject <WeatherPreferencesPersistence>
 {
     id <WeatherCloudPersistenceDelegate> _delegate;
-    NSUbiquitousKeyValueStore *_cloudStore;
+    WeatherCloudMigrator *_migrator;
+    NSUbiquitousKeyValueStore *_activeCloudStore;
+    NSUbiquitousKeyValueStore *_nonEncryptedStore;
+    NSUbiquitousKeyValueStore *_encryptedStore;
 }
 
 + (id)cloudPersistenceWithDelegate:(id)arg1;
 + (_Bool)processIsWhitelistedForSync;
-@property(retain) NSUbiquitousKeyValueStore *cloudStore; // @synthesize cloudStore=_cloudStore;
-@property __weak id <WeatherCloudPersistenceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUbiquitousKeyValueStore *encryptedStore; // @synthesize encryptedStore=_encryptedStore;
+@property(retain, nonatomic) NSUbiquitousKeyValueStore *nonEncryptedStore; // @synthesize nonEncryptedStore=_nonEncryptedStore;
+@property(retain, nonatomic) NSUbiquitousKeyValueStore *activeCloudStore; // @synthesize activeCloudStore=_activeCloudStore;
+@property(readonly, nonatomic) WeatherCloudMigrator *migrator; // @synthesize migrator=_migrator;
+@property __weak id <WeatherCloudPersistenceDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)encryptedStoreChanged:(id)arg1;
+- (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)synchronize;
 - (void)setBool:(_Bool)arg1 forKey:(id)arg2;
 - (_Bool)boolForKey:(id)arg1;

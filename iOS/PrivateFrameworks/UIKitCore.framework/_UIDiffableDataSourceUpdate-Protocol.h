@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) _Bool destinationIdentifierIsSectionIdentifier;
 @property(readonly, nonatomic) id destinationIdentifier;
 @property(readonly, nonatomic) long long relativePosition;
+@property(readonly, nonatomic) _Bool isDeleteAll;
 @property(readonly, nonatomic) long long action;
 @property(readonly, nonatomic) NSOrderedSet *identifiers;
 @property(readonly, nonatomic) _Bool isSectionOperation;

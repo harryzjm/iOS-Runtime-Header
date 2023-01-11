@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SPUISpotlightSearchBarView;
+@class NSLayoutConstraint, _UINavigationBarTitleView;
 @protocol SPUISearchBarDelegate;
 
 @interface SPUISearchBarController
 {
     _Bool _roundedCornerVisible;
     id <SPUISearchBarDelegate> _delegate;
-    double _heightOfBar;
+    NSLayoutConstraint *_heightAnchor;
 }
 
 + (id)notificationCenterSearchBar;
 + (id)todayViewSearchBar;
-@property double heightOfBar; // @synthesize heightOfBar=_heightOfBar;
+- (void).cxx_destruct;
+@property(retain) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property(nonatomic) _Bool roundedCornerVisible; // @synthesize roundedCornerVisible=_roundedCornerVisible;
 @property(nonatomic) __weak id <SPUISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)setSceneFrameOnRotation;
 - (void)updateSceneSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (id)backgroundBlurView;
 - (void)setBlurProgress:(double)arg1 animated:(_Bool)arg2;
@@ -30,7 +31,7 @@
 - (void)loadView;
 
 // Remaining properties
-@property(retain) SPUISpotlightSearchBarView *view; // @dynamic view;
+@property(retain) _UINavigationBarTitleView *view; // @dynamic view;
 
 @end
 

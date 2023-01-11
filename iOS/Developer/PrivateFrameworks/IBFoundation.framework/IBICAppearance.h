@@ -13,14 +13,12 @@
     long long _coreUIValue;
 }
 
-+ (void)populateAppearanceUnavailableWarning:(id)arg1 context:(id)arg2 forCatalog:(id)arg3;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUIValue:(long long)arg4 displayOrder:(double)arg5;
 + (id)displayName;
 + (id)groupedAttributeValueForManifestArchiving;
 + (id)groupingKeyForManifestArchiving;
-+ (long long)encodingType;
 + (id)contentsJSONKey;
-+ (void)setComponentID:(long long)arg1;
++ (long long)encodingType;
 + (long long)componentID;
 @property(readonly, nonatomic) long long coreUIValue; // @synthesize coreUIValue=_coreUIValue;
 - (_Bool)isEqualToSlotComponentCounterpartWithKnownEqualClass:(id)arg1;
@@ -30,7 +28,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUIValue:(long long)arg4 displayOrder:(double)arg5;
-- (long long)componentID;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

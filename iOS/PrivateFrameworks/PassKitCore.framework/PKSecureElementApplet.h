@@ -13,18 +13,24 @@
 @interface PKSecureElementApplet : NSObject <NSSecureCoding>
 {
     _Bool _locked;
+    _Bool _containsSubKeys;
     NSString *_identifier;
+    NSString *_packageIdentifier;
     unsigned long long _lifecycleState;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool containsSubKeys; // @synthesize containsSubKeys=_containsSubKeys;
 @property(readonly, nonatomic, getter=isLocked) _Bool locked; // @synthesize locked=_locked;
 @property(readonly, nonatomic) unsigned long long lifecycleState; // @synthesize lifecycleState=_lifecycleState;
+@property(readonly, nonatomic) NSString *packageIdentifier; // @synthesize packageIdentifier=_packageIdentifier;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 lifecycleState:(unsigned long long)arg2 locked:(_Bool)arg3;
+- (id)jsonDictionaryRepresentation;
+- (id)initWithIdentifier:(id)arg1 packageIdentifier:(id)arg2 lifecycleState:(unsigned long long)arg3 locked:(_Bool)arg4 containsSubKeys:(_Bool)arg5;
+- (id)initWithIdentifier:(id)arg1 packageIdentifier:(id)arg2 lifecycleState:(unsigned long long)arg3;
 - (id)initWithIdentifier:(id)arg1 lifecycleState:(unsigned long long)arg2;
 
 @end

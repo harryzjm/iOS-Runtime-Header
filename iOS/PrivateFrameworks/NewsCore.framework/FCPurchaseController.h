@@ -29,6 +29,7 @@
     FCAsyncSerialQueue *_entitlementQueue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCAsyncSerialQueue *entitlementQueue; // @synthesize entitlementQueue=_entitlementQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property(copy, nonatomic) NSDate *lastEntitlementCheckTime; // @synthesize lastEntitlementCheckTime=_lastEntitlementCheckTime;
@@ -40,7 +41,6 @@
 @property(retain, nonatomic) id <FCEntitlementsOverrideProviderType> entitlementsOverrideProvider; // @synthesize entitlementsOverrideProvider=_entitlementsOverrideProvider;
 @property(retain, nonatomic) NSMutableDictionary *webAccessEntriesByTagID; // @synthesize webAccessEntriesByTagID=_webAccessEntriesByTagID;
 @property(retain, nonatomic) NSSet *purchasesDiscoveredTagIDs; // @synthesize purchasesDiscoveredTagIDs=_purchasesDiscoveredTagIDs;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
 - (void)submitWebAccessWithTagID:(id)arg1 purchaseID:(id)arg2 emailAddress:(id)arg3 purchaseReceipt:(id)arg4 serialCompletion:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)handleWebAcccessFailureWithTagID:(id)arg1 purchaseID:(id)arg2 email:(id)arg3 purchaseReceipt:(id)arg4;
@@ -73,6 +73,8 @@
 - (_Bool)isTagPurchased:(id)arg1;
 - (_Bool)isTagIDPurchased:(id)arg1;
 - (id)allAppStorePurchasedTagIDs;
+- (void)_enumerateValidPurchasesUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSSet *allPurchaseIDs;
 - (id)_allPurchasedTagIDs;
 @property(readonly, nonatomic) NSSet *allPurchasedTagIDs;
 @property(readonly, nonatomic) NSSet *allTagIDs;
@@ -87,6 +89,7 @@
 - (id)webAccessOptedInTagIDs;
 - (id)subscriptionNotSupportedChannelIDs;
 - (id)expiredPurchaseChannelIDs;
+- (void)silentExpireInAppSubscriptions;
 - (void)forceExpireAllSubscriptionsIfNeeded;
 - (_Bool)hasPurchaseTypeAppStore;
 - (_Bool)isPaidSubscriberFromWeb;

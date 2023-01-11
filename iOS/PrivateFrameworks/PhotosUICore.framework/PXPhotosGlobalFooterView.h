@@ -15,6 +15,7 @@
 @interface PXPhotosGlobalFooterView : UICollectionReusableView <UITextViewDelegate, PXChangeObserver>
 {
     UIView *_accessoryView;
+    UIView *_filterView;
     _Bool _hasAnimatedIconView;
     PXFooterAnimatedIconView *_animatedIconView;
     PXGradientView *_backgroundView;
@@ -27,19 +28,19 @@
         _Bool photosGlobalFooterViewDidChangeHeight;
     } _delegateRespondsTo;
     _Bool _isPerformingChanges;
+    _Bool _needsWorkaroundFor53444616;
     double _currentHeight;
     PXFooterViewModel *_viewModel;
     id <PXPhotosGlobalFooterViewDelegate> _delegate;
     id <PXPhotosGlobalFooterViewLayoutDelegate> _layoutDelegate;
 }
 
-+ (id)attributedStringForInputString:(id)arg1 actionTitle:(id)arg2 textAttributes:(id)arg3 linkTextAttributes:(id)arg4;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool needsWorkaroundFor53444616; // @synthesize needsWorkaroundFor53444616=_needsWorkaroundFor53444616;
 @property(nonatomic) __weak id <PXPhotosGlobalFooterViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property(nonatomic) __weak id <PXPhotosGlobalFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PXFooterViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(readonly, nonatomic) double currentHeight; // @synthesize currentHeight=_currentHeight;
-- (void).cxx_destruct;
-- (void)textViewDidChangeSelection:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)layoutSubviews;
@@ -54,6 +55,7 @@
 - (void)_configurePhotoCollectionGlobalFooterSubtitleLabel:(id)arg1;
 - (void)_configurePhotoCollectionGlobalFooterTitleLabel:(id)arg1;
 - (void)_configurePhotoCollectionGlobalFooterLabel:(id)arg1 withFont:(id)arg2 textColor:(id)arg3;
+- (void)_updateFilterView;
 - (void)_updateAccessory;
 - (void)_updateProgressAnimated:(_Bool)arg1;
 - (void)_updateSubtitle2;

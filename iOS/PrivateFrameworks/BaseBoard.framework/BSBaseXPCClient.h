@@ -21,14 +21,8 @@
     _Bool _suspended;
 }
 
-- (void)queue_invalidateAndFlush:(_Bool)arg1;
-- (void)queue_reconnectToResumedServerIfNecessary;
-- (_Bool)queue_isSuspended;
 - (id)queue_connection;
-- (void)queue_registerWithServerIfNecessary;
 - (id)_connectionInstanceUUID;
-- (void)queue_suspendConnection;
-- (void)queue_resumeConnection;
 - (void)queue_clientWasInvalidated;
 - (void)queue_connectionWasInvalidated;
 - (void)queue_connectionWasInterrupted;
@@ -40,7 +34,6 @@
 - (void)queue_handleMessage:(id)arg1;
 - (void)_setEndpoint:(id)arg1;
 - (id)_connection;
-- (id)_notifyTokenName;
 - (void)_sendMessage:(CDUnknownBlockType)arg1 withReplyHandler:(CDUnknownBlockType)arg2 waitForReply:(_Bool)arg3 waitDuration:(unsigned long long)arg4;
 - (void)_sendMessage:(CDUnknownBlockType)arg1;
 - (void)_sendReplyForMessage:(id)arg1 messagePacker:(CDUnknownBlockType)arg2;

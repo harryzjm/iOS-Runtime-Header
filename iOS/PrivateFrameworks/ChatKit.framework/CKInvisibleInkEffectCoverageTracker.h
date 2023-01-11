@@ -17,17 +17,18 @@ __attribute__((visibility("hidden")))
     unsigned long long _height;
     double _cellWidth;
     double _cellHeight;
-    _Bool _uncovered;
     NSTimer *_recoverTimer;
+    _Bool _uncovered;
     id <CKInvisibleInkEffectCoverageTrackerDelegate> _delegate;
     double _touchLifetime;
     struct CGSize _size;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, getter=isUncovered) _Bool uncovered; // @synthesize uncovered=_uncovered;
 @property(readonly, nonatomic) double touchLifetime; // @synthesize touchLifetime=_touchLifetime;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic) __weak id <CKInvisibleInkEffectCoverageTrackerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_checkForCover:(id)arg1;
 - (void)recordTouchAtPoint:(struct CGPoint)arg1;
 - (void)reset;

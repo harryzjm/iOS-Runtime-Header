@@ -9,6 +9,7 @@
 @interface NSSet (WFMapping)
 - (id)mapAndFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)setByRemovingObject:(id)arg1;
 - (id)wf_combinationsWithRepetitionsOfSize:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSSet *wf_combinations;
 @end

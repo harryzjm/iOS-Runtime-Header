@@ -8,6 +8,7 @@
 
 @class NSURL;
 
+__attribute__((visibility("hidden")))
 @interface TKAdaptiveImage_Trait : NSObject
 {
     _Bool _useReadableWidth;
@@ -22,6 +23,7 @@
     struct CGRect _crop;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double quality; // @synthesize quality=_quality;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
@@ -32,7 +34,6 @@
 @property(nonatomic) _Bool useReadableWidth; // @synthesize useReadableWidth=_useReadableWidth;
 @property(nonatomic) long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;
 @property(nonatomic) long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
-- (void).cxx_destruct;
 - (_Bool)compatibleWithTrait:(id)arg1;
 - (id)init;
 

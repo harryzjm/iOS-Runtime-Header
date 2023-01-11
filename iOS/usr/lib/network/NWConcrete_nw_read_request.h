@@ -8,16 +8,19 @@
 
 #import <network/OS_nw_read_request-Protocol.h>
 
-@class NSString;
+@class NSString, NWConcrete_nw_connection;
 @protocol OS_dispatch_data, OS_nw_array, OS_nw_content_context, OS_nw_error;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_read_request : NSObject <OS_nw_read_request>
 {
     NWConcrete_nw_read_request *next;
+    NWConcrete_nw_read_request *tail;
     CDUnknownBlockType data_completion;
     CDUnknownBlockType data_multiple_completion;
     CDUnknownBlockType buffer_completion;
+    NWConcrete_nw_connection *connection;
+    unsigned int qos_class;
     int variant;
     unsigned long long min;
     unsigned long long max;
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_content_context> *repliable_message;
     NSObject<OS_nw_error> *error;
     NSObject<OS_nw_array> *read_array;
+    NSObject<OS_nw_array> *context_array;
     unsigned int reported:1;
     unsigned int is_complete:1;
 }

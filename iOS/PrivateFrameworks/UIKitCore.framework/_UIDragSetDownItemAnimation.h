@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class UIDragItem, UITargetedDragPreview, UIView, UIViewPropertyAnimator, UIWindow, _DUIVisibleDroppedItem, _UIPlatterContainerView, _UIPlatterView, _UIPortalView;
-@protocol _UIDragSetDownAnimationTarget, _UIDragSetDownItemAnimationDelegate;
+@protocol UIViewSpringAnimationBehaviorDescribing, _UIDragSetDownAnimationTarget, _UIDragSetDownItemAnimationDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIDragSetDownItemAnimation : NSObject
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     int _animationCount;
     UIDragItem *_item;
     _DUIVisibleDroppedItem *_droppedItem;
+    id <UIViewSpringAnimationBehaviorDescribing> _customSpringAnimationBehavior;
     id <_UIDragSetDownItemAnimationDelegate> _delegate;
     UIWindow *_window;
     id <_UIDragSetDownAnimationTarget> _visualTarget;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
     _UIPlatterView *_updatedAppPlatterView;
     _UIPlatterView *_druidPlatterView;
     _UIPlatterContainerView *_platterContainerView;
+    _UIPlatterView *_defaultPlatterView;
     CDUnknownBlockType _positionHandler;
     CDUnknownBlockType _morphHandler;
     CDUnknownBlockType _midpointHandler;
@@ -49,11 +51,13 @@ __attribute__((visibility("hidden")))
     struct CGRect _targetFrame;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType nearCompletionHandler; // @synthesize nearCompletionHandler=_nearCompletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType nonAnimatedMidpointHandler; // @synthesize nonAnimatedMidpointHandler=_nonAnimatedMidpointHandler;
 @property(copy, nonatomic) CDUnknownBlockType midpointHandler; // @synthesize midpointHandler=_midpointHandler;
 @property(copy, nonatomic) CDUnknownBlockType morphHandler; // @synthesize morphHandler=_morphHandler;
 @property(copy, nonatomic) CDUnknownBlockType positionHandler; // @synthesize positionHandler=_positionHandler;
+@property(retain, nonatomic) _UIPlatterView *defaultPlatterView; // @synthesize defaultPlatterView=_defaultPlatterView;
 @property(retain, nonatomic) _UIPlatterContainerView *platterContainerView; // @synthesize platterContainerView=_platterContainerView;
 @property(retain, nonatomic) _UIPlatterView *druidPlatterView; // @synthesize druidPlatterView=_druidPlatterView;
 @property(retain, nonatomic) _UIPlatterView *updatedAppPlatterView; // @synthesize updatedAppPlatterView=_updatedAppPlatterView;
@@ -80,11 +84,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <_UIDragSetDownAnimationTarget> visualTarget; // @synthesize visualTarget=_visualTarget;
 @property(retain, nonatomic) UIWindow *window; // @synthesize window=_window;
 @property(nonatomic) __weak id <_UIDragSetDownItemAnimationDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) id <UIViewSpringAnimationBehaviorDescribing> customSpringAnimationBehavior; // @synthesize customSpringAnimationBehavior=_customSpringAnimationBehavior;
 @property(readonly, nonatomic) _Bool done; // @synthesize done=_done;
 @property(readonly, nonatomic) _Bool reachedTarget; // @synthesize reachedTarget=_reachedTarget;
 @property(readonly, nonatomic) _DUIVisibleDroppedItem *droppedItem; // @synthesize droppedItem=_droppedItem;
 @property(readonly, nonatomic) UIDragItem *item; // @synthesize item=_item;
-- (void).cxx_destruct;
 - (void)_setCenterAndVelocityFromDroppedItem:(id)arg1;
 - (void)updateDroppedItem:(id)arg1;
 - (void)updateTargetedDropPreview:(id)arg1;
@@ -100,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)configureCrossfadingAnimationToTargetedPreview;
 - (void)configureSystemDefaultAnimation;
 - (void)configureAnimation;
+@property(readonly, nonatomic) UIWindow *targetContainerWindow;
 - (void)animationCompleted;
 - (void)animationReachedTarget;
 - (void)beginAnimation;

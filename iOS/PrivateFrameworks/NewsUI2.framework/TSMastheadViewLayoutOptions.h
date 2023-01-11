@@ -14,11 +14,13 @@
     MISSING_TYPE *layoutMargins;
     MISSING_TYPE *traitCollection;
     MISSING_TYPE *statusBarFrame;
+    MISSING_TYPE *navigationBarFrame;
+    MISSING_TYPE *displayOptions;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithBounds:(struct CGRect)arg1 layoutMargins:(struct UIEdgeInsets)arg2 traitCollection:(id)arg3 statusBarFrame:(struct CGRect)arg4;
+- (id)initWithBounds:(struct CGRect)arg1 layoutMargins:(struct UIEdgeInsets)arg2 traitCollection:(id)arg3 statusBarFrame:(struct CGRect)arg4 navigationBarFrame:(struct CGRect)arg5 displayOptions:(id)arg6;
 @property(nonatomic, readonly) UITraitCollection *traitCollection; // @synthesize traitCollection;
 @property(nonatomic, readonly) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins;
 

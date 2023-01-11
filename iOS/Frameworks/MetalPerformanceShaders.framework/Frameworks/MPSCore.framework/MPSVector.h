@@ -19,12 +19,13 @@
     struct MPSAutoBuffer _buffer;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 @property(readonly, nonatomic) unsigned long long vectorBytes; // @synthesize vectorBytes=_vectorBytes;
 @property(readonly, nonatomic) unsigned long long vectors; // @synthesize vectors=_vectors;
 @property(readonly, nonatomic) unsigned long long length; // @synthesize length=_length;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (unsigned long long)resourceSize;
 - (void)synchronizeOnCommandBuffer:(id)arg1;
 @property(readonly, nonatomic) id <MTLBuffer> data;

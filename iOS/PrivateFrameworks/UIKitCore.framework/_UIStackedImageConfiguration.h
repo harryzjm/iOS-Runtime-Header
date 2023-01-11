@@ -15,6 +15,7 @@
     _Bool _overlayFixedFrame;
     _Bool _adjustMotionForSize;
     _Bool _flatImageContainsCornerRadius;
+    _Bool _useSeparateUnfocusedShadowImage;
     _Bool _allowsNonOpaqueShadow;
     _Bool _boostBrightness;
     _Bool _hueShift;
@@ -28,6 +29,7 @@
     double _rotationAmount;
     double _scaleSizeIncrease;
     double _pressedScaleAdjustment;
+    double _unmaskedOverlayScaleFactor;
     double _cornerRadius;
     double _continuousCornerRadiusEnabled;
     double _specularHighlightHorizontalPositionSensitivity;
@@ -67,6 +69,7 @@
 
 + (id)newAppIconConfiguration;
 + (id)newStandardConfiguration;
+- (void).cxx_destruct;
 @property(nonatomic) double fullBleedOffset; // @synthesize fullBleedOffset=_fullBleedOffset;
 @property(nonatomic) _Bool fullBleedCenteredGrowth; // @synthesize fullBleedCenteredGrowth=_fullBleedCenteredGrowth;
 @property(nonatomic) double unpressedDuration; // @synthesize unpressedDuration=_unpressedDuration;
@@ -86,6 +89,7 @@
 @property(nonatomic) _Bool boostBrightness; // @synthesize boostBrightness=_boostBrightness;
 @property(nonatomic) _Bool allowsNonOpaqueShadow; // @synthesize allowsNonOpaqueShadow=_allowsNonOpaqueShadow;
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
+@property(nonatomic) _Bool useSeparateUnfocusedShadowImage; // @synthesize useSeparateUnfocusedShadowImage=_useSeparateUnfocusedShadowImage;
 @property(nonatomic) double defaultSelectedShadowVerticalOffset; // @synthesize defaultSelectedShadowVerticalOffset=_defaultSelectedShadowVerticalOffset;
 @property(nonatomic) double defaultUnfocusedShadowVerticalOffset; // @synthesize defaultUnfocusedShadowVerticalOffset=_defaultUnfocusedShadowVerticalOffset;
 @property(nonatomic) double defaultHighlightedShadowVerticalOffset; // @synthesize defaultHighlightedShadowVerticalOffset=_defaultHighlightedShadowVerticalOffset;
@@ -108,6 +112,7 @@
 @property(nonatomic) _Bool flatImageContainsCornerRadius; // @synthesize flatImageContainsCornerRadius=_flatImageContainsCornerRadius;
 @property(nonatomic, getter=isContinuousCornerRadiusEnabled) double continuousCornerRadiusEnabled; // @synthesize continuousCornerRadiusEnabled=_continuousCornerRadiusEnabled;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(nonatomic) double unmaskedOverlayScaleFactor; // @synthesize unmaskedOverlayScaleFactor=_unmaskedOverlayScaleFactor;
 @property(nonatomic) struct CGPoint translationOffset; // @synthesize translationOffset=_translationOffset;
 @property(nonatomic) double pressedScaleAdjustment; // @synthesize pressedScaleAdjustment=_pressedScaleAdjustment;
 @property(nonatomic) double scaleSizeIncrease; // @synthesize scaleSizeIncrease=_scaleSizeIncrease;
@@ -118,7 +123,6 @@
 @property(nonatomic) double overlayDepth; // @synthesize overlayDepth=_overlayDepth;
 @property(nonatomic) double maximumParallaxDepth; // @synthesize maximumParallaxDepth=_maximumParallaxDepth;
 @property(nonatomic) unsigned long long maximumParallaxImages; // @synthesize maximumParallaxImages=_maximumParallaxImages;
-- (void).cxx_destruct;
 - (void)_highContrastFocusIndicatorChanged:(id)arg1;
 @property(readonly, copy, nonatomic) _UIFocusAnimationConfiguration *focusAnimationConfiguration;
 - (_Bool)isEqual:(id)arg1;

@@ -32,12 +32,6 @@ struct FCEdgeInsets {
     double right;
 };
 
-struct FCShallowCopyPair {
-    Class _field1;
-    id _field2;
-    id _field3;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -45,13 +39,6 @@ struct _NSRange {
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NTPBKeyValuePair_ValueType, Class<FCKeyValueStoreCoding>>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NTPBKeyValuePair_ValueType, Class<FCKeyValueStoreCoding>>, void *>*> *__next_;
-};
-
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
 };
 
 struct os_unfair_lock_s {
@@ -88,8 +75,20 @@ struct unordered_map<NTPBKeyValuePair_ValueType, Class<FCKeyValueStoreCoding>, s
 
 typedef struct {
     long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+
+typedef struct {
+    long long _field1;
     long long _field2;
 } CDStruct_912cb5d2;
+
+typedef struct {
+    CDStruct_198678f7 _field1;
+    CDStruct_198678f7 _field2;
+} CDStruct_3c1748cc;
 
 // Ambiguous groups
 typedef struct {

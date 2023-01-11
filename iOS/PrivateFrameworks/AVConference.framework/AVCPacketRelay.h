@@ -20,7 +20,6 @@
 
 @property(retain) id <AVCPacketRelayConnectionProtocol> multiplexedConnection; // @synthesize multiplexedConnection=_multiplexedConnection;
 @property(retain) NSArray *connections; // @synthesize connections=_connections;
-@property(nonatomic) id <AVCPacketRelayDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)findConnectionToForwardData:(const void *)arg1 size:(int)arg2;
 - (_Bool)stopAllConnections;
 - (int)startAllConnections;
@@ -28,6 +27,7 @@
 - (void)dealloc;
 - (void)stop;
 - (void)start;
+@property(nonatomic) id <AVCPacketRelayDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)initWithConnections:(id)arg1 multiplexedConnection:(id)arg2 error:(id *)arg3;
 - (id)initWithConnection:(id)arg1 connection:(id)arg2 error:(id *)arg3;
 

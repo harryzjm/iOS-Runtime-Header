@@ -27,7 +27,6 @@
 - (id)accessibilityCustomActions;
 - (_Bool)_accessibilityCanCloseApp;
 - (_Bool)_accessibilityIsNotFirstElement;
-- (id)accessibilityValue;
 - (id)accessibilityLabel;
 
 @end

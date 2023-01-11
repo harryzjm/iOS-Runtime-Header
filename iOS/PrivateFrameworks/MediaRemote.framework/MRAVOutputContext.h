@@ -27,25 +27,17 @@
     AVOutputContext *_avOutputContext;
 }
 
-+ (void)_initializeAVFNotificationForwarding;
-+ (id)_sharedOutputContextFromType:(unsigned int)arg1;
-+ (id)_notificationQueue;
 + (id)createOutputContextWithUniqueIdentifier:(id)arg1;
 + (id)sharedSystemScreenContext;
 + (id)sharedSystemAudioContext;
 + (id)sharedAudioPresentationContext;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AVOutputContext *avOutputContext; // @synthesize avOutputContext=_avOutputContext;
 @property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, nonatomic) unsigned int type; // @synthesize type=_type;
-- (void).cxx_destruct;
-- (void)_scheduleOutputContextDevicesDidChangeNotification;
-- (void)_scheduleOutputContextDeviceDidChangeNotification;
-- (void)_reloadOutputDevicesForInitialLoad:(_Bool)arg1;
-- (void)_unregisterNotifications;
 - (void)_handleOutputDeviceSupportsVolumeDidChangeNotification:(id)arg1;
 - (void)_handleOutputDeviceCanSetVolumeDidChangeNotification:(id)arg1;
 - (void)_handleOutputDeviceVolumeDidChangeNotification:(id)arg1;
-- (void)_registerNotifications;
 - (void)_outputContextChangeInitiatedNotification:(id)arg1;
 - (void)_handleDiscoverySessionOutputDevicesDidChangeNotification:(id)arg1;
 - (void)_handleOutputDevicesDidChangeNotification:(id)arg1;
@@ -59,14 +51,13 @@
 - (void)removeOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)addOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (void)setOutputDevices:(id)arg1 password:(id)arg2 initiator:(id)arg3 withCallbackQueue:(id)arg4 block:(CDUnknownBlockType)arg5;
 - (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
-- (void)setOutputDevices:(id)arg1 withPassword:(id)arg2 callbackQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)setOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (id)localDevice;
-- (void)setOutputDevicesSnapshot:(id)arg1;
 @property(copy, nonatomic) NSArray *outputDevices;
 @property(readonly, nonatomic) NSArray *outputDevicesSnapshot;
+@property(readonly, nonatomic) NSArray *personalDeviceUIDs;
+@property(readonly, nonatomic) NSArray *personalDevices;
+@property(readonly, nonatomic) NSArray *outputDeviceUIDs;
 - (id)description;
 - (void)dealloc;
 - (id)initWithAVOutputContext:(id)arg1 type:(unsigned int)arg2;

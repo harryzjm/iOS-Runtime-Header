@@ -14,10 +14,14 @@ __attribute__((visibility("hidden")))
 + (id)_stringForNotificationType:(int)arg1;
 + (_Bool)_storeIsDelegate:(const void *)arg1;
 + (void)_logNotificationCountsForNotificationTypes:(id)arg1;
-+ (_Bool)_event:(const void *)arg1 hasOccurrenceEndingAfterDate:(double)arg2 database:(struct CalDatabase *)arg3;
-+ (_Bool)_shouldSkipNotificationForStore:(const void *)arg1 forSourceWithExternalIdentifier:(id)arg2 excludingDelegateSources:(_Bool)arg3 filteredByShowsNotificationsFlag:(_Bool)arg4;
 + (_Bool)storeIsReadOnlyDelegate:(const void *)arg1;
-+ (void)CADDatabaseGetEventNotificationItemsWithDatabase:(struct CalDatabase *)arg1 forSourceWithExternalIdentifier:(id)arg2 excludingDelegateSources:(_Bool)arg3 filteredByShowsNotificationsFlag:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
++ (int)_gatherSuggestionResourceChangeNotification:(const void *)arg1 withContext:(id)arg2;
++ (int)_gatherSharedCalendarResourceChangeNotification:(const void *)arg1 withContext:(id)arg2;
++ (int)_gatherSharedCalendarInviteReplyNotification:(const void *)arg1 withContext:(id)arg2;
++ (int)_gatherSharedCalendarResponsesAndResourceChangesWithContext:(id)arg1;
++ (int)_gatherSharedCalendarInvitationsWithContext:(id)arg1;
++ (int)_gatherEventInvitationsAndRepliesWithContext:(id)arg1;
++ (int)CADDatabaseGetEventNotificationItemsWithDatabase:(struct CalDatabase *)arg1 forSourceWithExternalIdentifier:(id)arg2 excludingDelegateSources:(_Bool)arg3 filteredByShowsNotificationsFlag:(_Bool)arg4 earliestExpirationDate:(id *)arg5 notificationTypes:(id *)arg6 rowIDs:(id *)arg7 occurrenceDates:(id *)arg8;
 
 @end
 

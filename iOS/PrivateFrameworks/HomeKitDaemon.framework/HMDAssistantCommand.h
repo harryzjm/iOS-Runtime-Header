@@ -31,6 +31,7 @@
 
 + (void)initialize;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
 @property(retain, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property(nonatomic) _Bool completionHandlerCalled; // @synthesize completionHandlerCalled=_completionHandlerCalled;
@@ -44,7 +45,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) HMDAssistantGather *gather; // @synthesize gather=_gather;
 @property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-- (void).cxx_destruct;
 - (void)timeoutAndReportResults;
 - (void)performWithGather:(id)arg1 queue:(id)arg2 msgDispatcher:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleGetColor:(id)arg1 forObjects:(id)arg2 serviceType:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -68,6 +68,8 @@
 - (id)updateValue:(id)arg1 forAction:(id)arg2;
 - (id)updateValueToBoundary:(id)arg1 valueType:(id)arg2 fudgeMinimum:(_Bool)arg3 metadata:(id)arg4;
 - (void)handleSetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)handleSetNaturalLightingAction:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)handleGetNaturalLightingAction:(id)arg1 forObjects:(id)arg2 serviceType:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)compareForBoundary:(id)arg1 withMetadata:(id)arg2;
 - (id)compareCurrentValue:(id)arg1 newValue:(id)arg2 withMetadata:(id)arg3;
 - (void)handleGetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -85,11 +87,11 @@
 - (id)filterObjects:(id)arg1 forCharacteristicTypes:(id)arg2;
 - (id)objectsWithSearchFilter:(id)arg1 inHome:(id)arg2 serviceTypeIsATV:(_Bool)arg3 overrideServiceTypeIfNeeded:(id *)arg4;
 - (id)getoverridingHomeUUIDFromName:(id)arg1;
-- (id)filterObjects:(id)arg1 byCharacteristicType:(id)arg2;
-- (id)filterObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
-- (id)filterObjects:(id)arg1 forGroup:(id)arg2;
-- (id)filterObjects:(id)arg1 forRoom:(id)arg2 andZone:(id)arg3;
-- (id)objectsWithIdentifierList:(id)arg1;
+- (id)filteredObjectsFromObjects:(id)arg1 byCharacteristicType:(id)arg2;
+- (id)filteredObjectsFromObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
+- (id)filteredObjectsFromObjects:(id)arg1 forGroup:(id)arg2;
+- (id)filteredObjectsFromObjects:(id)arg1 forHomeName:(id)arg2 roomName:(id)arg3 zoneName:(id)arg4;
+- (id)objectsWithIdentifierList:(id)arg1 error:(id *)arg2;
 - (id)adjustGetValue:(id)arg1 type:(id)arg2 units:(id)arg3 attribute:(id)arg4;
 - (id)adjustSetValue:(id)arg1 type:(id)arg2 units:(id)arg3 attribute:(id)arg4;
 - (_Bool)isAttributeValue:(id)arg1 equalTo:(id)arg2;

@@ -20,6 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) double lastPeripheralPerfusionIndexValue; // @synthesize lastPeripheralPerfusionIndexValue=_lastPeripheralPerfusionIndexValue;
 @property(nonatomic) double nextPeripheralPerfusionIndexSampleTime; // @synthesize nextPeripheralPerfusionIndexSampleTime=_nextPeripheralPerfusionIndexSampleTime;
 @property(nonatomic) double nextOxygenSaturationSampleTime; // @synthesize nextOxygenSaturationSampleTime=_nextOxygenSaturationSampleTime;
@@ -29,14 +30,14 @@
 @property(nonatomic) double nextHeartRateSampleTime; // @synthesize nextHeartRateSampleTime=_nextHeartRateSampleTime;
 @property(copy, nonatomic) NSArray *diurnalTempVariationTable; // @synthesize diurnalTempVariationTable=_diurnalTempVariationTable;
 @property(copy, nonatomic) NSArray *diurnalBPVariationTable; // @synthesize diurnalBPVariationTable=_diurnalBPVariationTable;
-- (void).cxx_destruct;
 - (double)_computeBodyTempInCelsiusForDemoPerson:(id)arg1 atTime:(double)arg2 addNoise:(_Bool)arg3;
 - (long long)_computeBloodPressureForDemoPerson:(id)arg1 atTime:(double)arg2 baseBloodPressure:(double)arg3 stdDev:(double)arg4;
 - (long long)_computeRespirationRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (struct HDDemoDataHeartRate)_computeHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (long long)_computeMaxHRForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)peripheralPerfusionIndexForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (id)oxygenSaturationForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (id)averageHeartRateForOxygenSaturation:(id)arg1 atTime:(double)arg2;
+- (id)oxygenSaturationForDemoPerson:(id)arg1 atTime:(double)arg2 currentDate:(id)arg3;
 - (id)bodyTempInCelsiusForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (struct HDDemoDataBloodPressure)bloodPressureForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)respirationRateForDemoPerson:(id)arg1 atTime:(double)arg2;

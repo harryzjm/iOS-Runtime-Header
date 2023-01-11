@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, __NSHostExtraIvars;
+@class NSArray, NSString;
 
 @interface NSHost : NSObject
 {
@@ -21,7 +21,6 @@
 + (id)hostWithAddress:(id)arg1;
 + (id)hostWithName:(id)arg1;
 + (id)currentHost;
-@property(retain, nonatomic) __NSHostExtraIvars *reserved; // @synthesize reserved;
 - (void)dealloc;
 - (id)description;
 @property(readonly, copy) NSString *localizedName;
@@ -30,12 +29,7 @@
 @property(readonly, copy) NSArray *names;
 @property(readonly, copy) NSString *name;
 - (_Bool)isEqualToHost:(id)arg1;
-- (void)resolveCurrentHostWithHandler:(CDUnknownBlockType)arg1;
-- (void)__resolveWithFlags:(int)arg1 resultArray:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)blockingResolveUntil:(int)arg1;
-- (void)resolve:(CDUnknownBlockType)arg1;
 - (id)_thingToResolve;
-- (id)initToResolve:(id)arg1 as:(int)arg2;
 
 @end
 

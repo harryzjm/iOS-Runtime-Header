@@ -18,7 +18,6 @@
     NSMutableArray *_bitmaps;
     NSMutableArray *_metrics;
     NSMutableArray *_layerReferences;
-    _Bool _isFPOHint;
     _Bool _isExcludedFromFilter;
     _Bool _isVectorBased;
     long long _templateRenderingMode;
@@ -81,12 +80,14 @@
     unsigned int _standardVectorSize;
     float _baseline;
     float _capHeight;
+    float _templateVersion;
     CDStruct_3c058996 _alignmentRectInsets;
 }
 
 + (int)fileEncoding;
 + (void)setFileEncoding:(int)arg1;
 + (void)initialize;
+@property(nonatomic) float templateVersion; // @synthesize templateVersion=_templateVersion;
 @property(nonatomic) CDStruct_3c058996 alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
 @property(nonatomic) float capHeight; // @synthesize capHeight=_capHeight;
 @property(nonatomic) float baseline; // @synthesize baseline=_baseline;
@@ -139,25 +140,11 @@
 @property(nonatomic, getter=isExcludedFromContrastFilter) _Bool excludedFromContrastFilter; // @synthesize excludedFromContrastFilter=_isExcludedFromFilter;
 @property(nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
 @property(nonatomic) _Bool isVectorBased; // @synthesize isVectorBased=_isVectorBased;
-@property(nonatomic) _Bool isRenditionFPO; // @synthesize isRenditionFPO=_isFPOHint;
 @property(nonatomic) struct CGSize physicalSizeInMeters; // @synthesize physicalSizeInMeters=_physicalSizeInMeters;
 @property(copy, nonatomic) NSString *utiType; // @synthesize utiType=_utiType;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 - (id)CSIRepresentationWithCompression:(_Bool)arg1;
-- (unsigned long long)writeRecognitionObjectToData:(id)arg1;
-- (unsigned long long)writeTextureToData:(id)arg1;
-- (unsigned long long)writeExternalLinkToData:(id)arg1;
-- (unsigned long long)writeRawDataToData:(id)arg1;
-- (unsigned long long)writeMultisizeImageSetToData:(id)arg1;
-- (unsigned long long)writeTextStyleToData:(id)arg1;
-- (unsigned long long)writeColorToData:(id)arg1;
-- (unsigned long long)writeGradientToData:(id)arg1;
-- (void)_addNodes:(id)arg1 toNodeList:(struct _csigradientdatanode *)arg2;
-- (unsigned long long)writeBitmap:(id)arg1 toData:(id)arg2 compress:(_Bool)arg3;
-- (unsigned long long)writeResourcesToData:(id)arg1;
-- (void)writeHeader:(struct _csiheader *)arg1 toData:(id)arg2;
-- (void)formatCSIHeader:(struct _csiheader *)arg1;
 - (void)addSubmeshReference:(id)arg1;
 - (void)addMeshReference:(id)arg1;
 - (void)addMipReference:(id)arg1;
@@ -168,8 +155,6 @@
 @property long long compressionType;
 @property(nonatomic) double compressionQuality;
 - (void)addBitmap:(id)arg1;
-- (void)_updateCompressionInfoFor:(id)arg1;
-- (_Bool)_shouldUseCompactCompressionForBitmap:(id)arg1;
 - (id)rawData;
 - (void)dealloc;
 - (id)initWithModelSubmesh:(id)arg1;

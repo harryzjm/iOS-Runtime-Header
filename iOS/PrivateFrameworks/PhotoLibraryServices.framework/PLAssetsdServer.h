@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/NSXPCListenerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, NSXPCListener, PLBackgroundJobService, PLDistributedNotificationHandler, PLPhotoLibraryBundleController, PLXPCMessageLogger;
+@class NSMutableSet, NSString, NSXPCInterface, NSXPCListener, PLBackgroundJobService, PLDistributedNotificationHandler, PLPhotoLibraryBundleController, PLTCCObserver, PLXPCMessageLogger;
 
 @interface PLAssetsdServer : NSObject <NSXPCListenerDelegate>
 {
@@ -19,19 +19,18 @@
     PLPhotoLibraryBundleController *_libraryBundleController;
     PLBackgroundJobService *_backgroundJobService;
     PLDistributedNotificationHandler *_distributedNotificationHandler;
-    NSArray *_previewRenderedContentURLs;
-    NSArray *_previewAssetLocalIdentifiers;
+    PLTCCObserver *_tccObserver;
+    NSXPCInterface *_assetsdInterface;
+    CDStruct_f4d52fe1 _resourceCacheMetrics;
 }
 
 + (id)sharedServer;
-@property(retain, nonatomic) NSArray *previewAssetLocalIdentifiers; // @synthesize previewAssetLocalIdentifiers=_previewAssetLocalIdentifiers;
 - (void).cxx_destruct;
-- (id)previewRenderedContentURLAtIndex:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long previewRenderedContentURLCount;
-- (void)setPreviewRenderedContentURLs:(id)arg1;
+@property(nonatomic) CDStruct_f4d52fe1 resourceCacheMetrics; // @synthesize resourceCacheMetrics=_resourceCacheMetrics;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)handleInvalidation:(id)arg1;
 - (void)handleInterruption:(id)arg1;
+- (void)_collectCacheMetricsDataFromService:(id)arg1;
 - (void)removeService:(id)arg1;
 - (void)addService:(id)arg1;
 - (void)logStatus;

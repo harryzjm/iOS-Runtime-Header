@@ -14,23 +14,21 @@ __attribute__((visibility("hidden")))
 @interface GEOSnapScoreMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_destinationAccessPoints;
     NSMutableArray *_destinationPoints;
     NSMutableArray *_originAccessPoints;
     GEOSnapScorePoint *_originPoint;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_destinationAccessPoints:1;
         unsigned int read_destinationPoints:1;
         unsigned int read_originAccessPoints:1;
         unsigned int read_originPoint:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_destinationAccessPoints:1;
-        unsigned int wrote_destinationPoints:1;
-        unsigned int wrote_originAccessPoints:1;
-        unsigned int wrote_originPoint:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,32 +47,30 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)destinationAccessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)destinationAccessPointsCount;
-- (void)_addNoFlagsDestinationAccessPoint:(id)arg1;
 - (void)addDestinationAccessPoint:(id)arg1;
 - (void)clearDestinationAccessPoints;
 @property(retain, nonatomic) NSMutableArray *destinationAccessPoints;
-- (void)_readDestinationAccessPoints;
 - (id)destinationPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)destinationPointsCount;
-- (void)_addNoFlagsDestinationPoint:(id)arg1;
 - (void)addDestinationPoint:(id)arg1;
 - (void)clearDestinationPoints;
 @property(retain, nonatomic) NSMutableArray *destinationPoints;
-- (void)_readDestinationPoints;
 - (id)originAccessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)originAccessPointsCount;
-- (void)_addNoFlagsOriginAccessPoint:(id)arg1;
 - (void)addOriginAccessPoint:(id)arg1;
 - (void)clearOriginAccessPoints;
 @property(retain, nonatomic) NSMutableArray *originAccessPoints;
-- (void)_readOriginAccessPoints;
 @property(retain, nonatomic) GEOSnapScorePoint *originPoint;
 @property(readonly, nonatomic) _Bool hasOriginPoint;
-- (void)_readOriginPoint;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

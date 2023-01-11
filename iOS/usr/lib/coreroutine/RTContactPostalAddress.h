@@ -15,15 +15,15 @@
 }
 
 + (id)labelTypeToString:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long labelType; // @synthesize labelType=_labelType;
 @property(readonly, copy, nonatomic) NSString *contactsIdentifier; // @synthesize contactsIdentifier=_contactsIdentifier;
-- (void).cxx_destruct;
 - (id)description;
 - (id)geoDictionaryRepresentation;
 - (id)dictionaryRepresentation;
 - (id)initWithIdentifier:(id)arg1 lableType:(unsigned long long)arg2 geoDictionary:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(_Bool)arg15 creationDate:(id)arg16 expirationDate:(id)arg17 contactsIdentifier:(id)arg18 labelType:(unsigned long long)arg19;
-- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(_Bool)arg15 creationDate:(id)arg16 expirationDate:(id)arg17;
+- (id)initWithIdentifier:(id)arg1 subPremises:(id)arg2 subThoroughfare:(id)arg3 thoroughfare:(id)arg4 subLocality:(id)arg5 locality:(id)arg6 subAdministrativeArea:(id)arg7 administrativeArea:(id)arg8 administrativeAreaCode:(id)arg9 postalCode:(id)arg10 country:(id)arg11 countryCode:(id)arg12 inlandWater:(id)arg13 ocean:(id)arg14 areasOfInterest:(id)arg15 isIsland:(_Bool)arg16 creationDate:(id)arg17 expirationDate:(id)arg18 contactsIdentifier:(id)arg19 labelType:(unsigned long long)arg20 iso3166CountryCode:(id)arg21 iso3166SubdivisionCode:(id)arg22;
+- (id)initWithIdentifier:(id)arg1 subPremises:(id)arg2 subThoroughfare:(id)arg3 thoroughfare:(id)arg4 subLocality:(id)arg5 locality:(id)arg6 subAdministrativeArea:(id)arg7 administrativeArea:(id)arg8 administrativeAreaCode:(id)arg9 postalCode:(id)arg10 country:(id)arg11 countryCode:(id)arg12 inlandWater:(id)arg13 ocean:(id)arg14 areasOfInterest:(id)arg15 isIsland:(_Bool)arg16 creationDate:(id)arg17 expirationDate:(id)arg18 iso3166CountryCode:(id)arg19 iso3166SubdivisionCode:(id)arg20;
 - (id)init;
 
 @end

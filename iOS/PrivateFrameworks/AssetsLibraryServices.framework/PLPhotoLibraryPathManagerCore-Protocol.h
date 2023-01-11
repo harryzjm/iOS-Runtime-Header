@@ -6,15 +6,17 @@
 
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, PLPhotoLibraryFileIdentifier;
+@class NSArray, NSString, NSURL, PLFileSystemCapabilities, PLPhotoLibraryFileIdentifier;
 
 @protocol PLPhotoLibraryPathManagerCore <NSObject>
++ (NSURL *)libraryURLFromDatabaseURL:(NSURL *)arg1;
 + (_Bool)isSystemPhotoLibraryURL:(NSURL *)arg1;
 + (_Bool)isSystemLibraryURLDefined;
 + (_Bool)setSystemLibraryURL:(NSURL *)arg1 options:(unsigned short)arg2 error:(id *)arg3;
 + (NSString *)systemLibraryBaseDirectory;
 + (NSURL *)systemLibraryURL;
 @property(readonly, copy) NSString *assetUUIDRecoveryMappingPath;
+@property(readonly, nonatomic) PLFileSystemCapabilities *capabilities;
 @property(readonly, copy) NSString *baseDirectory;
 @property(readonly, copy) NSURL *libraryURL;
 - (void)setExtendedAttributesWithIdentifier:(PLPhotoLibraryFileIdentifier *)arg1 andURL:(NSURL *)arg2;

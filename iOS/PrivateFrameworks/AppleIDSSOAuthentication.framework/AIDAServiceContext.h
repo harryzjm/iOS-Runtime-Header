@@ -10,23 +10,33 @@
 #import <AppleIDSSOAuthentication/NSMutableCopying-Protocol.h>
 
 @class NSDictionary, UIViewController;
-@protocol CDPStateUIProvider;
+@protocol AASignInFlowControllerDelegate, AASignOutFlowControllerDelegate, CDPStateUIProvider;
 
 @interface AIDAServiceContext : NSObject <NSMutableCopying, NSCopying>
 {
     NSDictionary *_authenticationResults;
     _Bool _shouldForceOperation;
+    long long _operationUIPermissions;
     UIViewController *_viewController;
+    id <AASignInFlowControllerDelegate> _aaSignInFlowControllerDelegate;
+    id <AASignOutFlowControllerDelegate> _aaSignOutFlowControllerDelegate;
+    NSDictionary *_signInContexts;
+    NSDictionary *_signOutContexts;
     id <CDPStateUIProvider> _cdpUiProvider;
 }
 
 + (id)contextWithContext:(id)arg1;
 + (_Bool)accessInstanceVariablesDirectly;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <CDPStateUIProvider> cdpUiProvider; // @synthesize cdpUiProvider=_cdpUiProvider;
+@property(readonly, nonatomic) id <AASignOutFlowControllerDelegate> aaSignOutFlowControllerDelegate; // @synthesize aaSignOutFlowControllerDelegate=_aaSignOutFlowControllerDelegate;
+@property(readonly, nonatomic) id <AASignInFlowControllerDelegate> aaSignInFlowControllerDelegate; // @synthesize aaSignInFlowControllerDelegate=_aaSignInFlowControllerDelegate;
+@property(readonly, nonatomic) NSDictionary *signOutContexts; // @synthesize signOutContexts=_signOutContexts;
+@property(readonly, nonatomic) NSDictionary *signInContexts; // @synthesize signInContexts=_signInContexts;
 @property(readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
+@property(readonly, nonatomic) long long operationUIPermissions; // @synthesize operationUIPermissions=_operationUIPermissions;
 @property(readonly, nonatomic) _Bool shouldForceOperation; // @synthesize shouldForceOperation=_shouldForceOperation;
 @property(readonly, copy, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;
-- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

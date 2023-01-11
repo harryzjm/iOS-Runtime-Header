@@ -7,6 +7,10 @@
 #import <WorkflowKit/WFCarPlayConnectionTrigger.h>
 
 @interface WFCarPlayConnectionTrigger (CoreDuetContext)
++ (id)offLabel;
++ (id)onLabel;
++ (id)offIcon;
++ (id)onIcon;
 + (id)triggerTypeIcon;
 @end
 

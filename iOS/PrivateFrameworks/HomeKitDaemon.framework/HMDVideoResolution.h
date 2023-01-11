@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreHAP/HAPNumberParser.h>
+
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSNumber;
 
-@interface HMDVideoResolution <NSSecureCoding, NSCopying>
+@interface HMDVideoResolution : HAPNumberParser <NSSecureCoding, NSCopying>
 {
     NSNumber *_imageWidth;
     NSNumber *_imageHeight;
@@ -18,10 +20,10 @@
 
 + (id)arrayWithResolutions:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long resolutionType; // @synthesize resolutionType=_resolutionType;
 @property(readonly, copy, nonatomic) NSNumber *imageHeight; // @synthesize imageHeight=_imageHeight;
 @property(readonly, copy, nonatomic) NSNumber *imageWidth; // @synthesize imageWidth=_imageWidth;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_extractWidthAndHeight;
 - (id)initWithResolution:(unsigned long long)arg1;

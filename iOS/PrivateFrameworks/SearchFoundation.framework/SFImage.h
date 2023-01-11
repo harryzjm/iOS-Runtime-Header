@@ -21,10 +21,12 @@
         unsigned int scale:1;
         unsigned int size:1;
         unsigned int source:1;
+        unsigned int cornerRoundingStyle:1;
     } _has;
     _Bool _isTemplate;
     _Bool _shouldCropToCircle;
     int _source;
+    int _cornerRoundingStyle;
     NSData *_imageData;
     double _cornerRadius;
     double _scale;
@@ -36,6 +38,8 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)imageWithData:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) int cornerRoundingStyle; // @synthesize cornerRoundingStyle=_cornerRoundingStyle;
 @property(nonatomic) int source; // @synthesize source=_source;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *keyColor; // @synthesize keyColor=_keyColor;
@@ -46,12 +50,12 @@
 @property(nonatomic) _Bool shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
 @property(nonatomic) _Bool isTemplate; // @synthesize isTemplate=_isTemplate;
 @property(copy) NSData *imageData; // @synthesize imageData=_imageData;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasCornerRoundingStyle;
 - (_Bool)hasSource;
 - (_Bool)hasSize;
 - (_Bool)hasScale;

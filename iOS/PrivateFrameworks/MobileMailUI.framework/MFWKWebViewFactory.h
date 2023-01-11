@@ -15,10 +15,11 @@
 }
 
 + (id)sharedWebViewFactory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) WKProcessPool *processPool; // @synthesize processPool=_processPool;
 @property(retain, nonatomic) EFQueue *preallocatedWebViews; // @synthesize preallocatedWebViews=_preallocatedWebViews;
-- (void).cxx_destruct;
 - (id)webView;
+- (void)preallocateWebViewIfNeeded;
 - (void)preallocateWebViews;
 - (id)_instantiateWebView;
 - (void)_didReceiveMemoryWarning:(id)arg1;

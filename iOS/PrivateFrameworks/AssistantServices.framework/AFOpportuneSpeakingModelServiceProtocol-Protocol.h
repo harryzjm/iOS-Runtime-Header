@@ -7,7 +7,7 @@
 @class NSDate, NSString;
 
 @protocol AFOpportuneSpeakingModelServiceProtocol
-- (void)recordNotificationUsageForSpeakableId:(NSString *)arg1 withStartDate:(NSDate *)arg2 withEndDate:(NSDate *)arg3 withCompletion:(void (^)(_Bool))arg4;
+- (void)recordNotificationUsageForSpeakableId:(NSString *)arg1 withStartDate:(NSDate *)arg2 withEndDate:(NSDate *)arg3 withCompletion:(void (^)(_Bool, _Bool))arg4;
 - (void)recordRecommendedAction:(NSString *)arg1 forSpeakableId:(NSString *)arg2 withModelIdentifier:(NSString *)arg3;
 - (void)recordFeedbackOfType:(long long)arg1 forSpeakableId:(NSString *)arg2;
 - (void)createModelWithType:(long long)arg1 completion:(void (^)(id <AFOpportuneSpeakingModel>, NSString *))arg2;

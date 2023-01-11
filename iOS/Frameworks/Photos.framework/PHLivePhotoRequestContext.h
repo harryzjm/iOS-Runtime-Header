@@ -10,19 +10,18 @@
 {
     NSProgress *_imageProgress;
     NSProgress *_videoProgress;
-    PHImageRequest *_initialImageRequest;
-    PHImageRequest *_finalImageRequest;
-    PHVideoRequest *_videoRequest;
     PHLivePhotoResult *_livePhotoResult;
-    _Atomic _Bool _finalImageRequestStarted;
-    _Atomic _Bool _finalImageReceived;
-    _Atomic _Bool _finalVideoReceived;
+    PHImageRequest *_fastImageRequest;
+    PHImageRequest *_highQualityImageRequest;
+    PHVideoRequest *_videoRequest;
+    struct os_unfair_lock_s _lock;
+    _Bool _imagePartCompleted;
+    _Bool _videoPartCompleted;
     PHLivePhotoRequestOptions *_livePhotoOptions;
 }
 
-+ (long long)type;
-@property(readonly, nonatomic) PHLivePhotoRequestOptions *livePhotoOptions; // @synthesize livePhotoOptions=_livePhotoOptions;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHLivePhotoRequestOptions *livePhotoOptions; // @synthesize livePhotoOptions=_livePhotoOptions;
 - (void)processMediaResult:(id)arg1 forRequest:(id)arg2;
 - (id)progresses;
 - (CDUnknownBlockType)progressHandler;
@@ -31,7 +30,7 @@
 - (id)initialRequests;
 - (_Bool)representsShareableHighQualityResource;
 - (_Bool)isNetworkAccessAllowed;
-- (void)_setFinalImageRequestFromRequest:(id)arg1;
+- (long long)type;
 - (id)_lazyVideoProgress;
 - (id)_lazyImageProgress;
 - (_Bool)_shouldRequestVideo;

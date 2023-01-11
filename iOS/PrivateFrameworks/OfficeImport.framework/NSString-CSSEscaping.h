@@ -15,7 +15,7 @@
 + (id)tsu_stringWithHexFromBytes:(const char *)arg1 length:(unsigned long long)arg2;
 + (id)tsu_stringByIndentingString:(id)arg1;
 + (id)tsu_stringByIndentingString:(id)arg1 times:(unsigned long long)arg2;
-+ (id)tsu_stringWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
++ (id)tsu_stringWithFormat:(id)arg1 arguments:(char *)arg2;
 + (id)tsu_stringWithUUID;
 + (id)tsu_localizedDisplayNameWithPersonNameComponents:(id)arg1;
 + (id)tsu_fogFilenameFromShareToken:(id)arg1;
@@ -53,7 +53,6 @@
 - (id)tsu_stringByRemovingEscapedCharactersFromNumberFormatPattern;
 - (id)tsu_newRangesOfEscapedCharactersInNumberFormatPattern;
 - (_Bool)tsu_isNumberFormatPattern;
-- (void)sfu_appendJsonStringToString:(id)arg1;
 - (id)tsu_stringWithNormalizedQuotationMarks;
 - (id)tsu_stringWithNormalizedHyphens;
 - (id)tsu_stringWithNormalizedHyphensAndQuotationMarks;
@@ -108,8 +107,8 @@
 - (id)tsu_keyPathByRemovingLastKey;
 - (id)tsu_initUnRedactedWithFormat:(id)arg1;
 - (id)tsu_initRedactedWithFormat:(id)arg1;
-- (id)tsu_initUnRedactedWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
-- (id)tsu_initRedactedWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
+- (id)tsu_initUnRedactedWithFormat:(id)arg1 arguments:(char *)arg2;
+- (id)tsu_initRedactedWithFormat:(id)arg1 arguments:(char *)arg2;
 - (unsigned short)tsu_spaceCharacterInCustomNumberFormatSpaceToken;
 - (unsigned short)tsu_scaleCharacterInCustomNumberFormatScaleToken;
 - (id)tsu_formatStringFromCustomNumberFormatScaleToken;
@@ -122,6 +121,7 @@
 - (unsigned long long)tsu_numberOfDigitsInCustomNumberFormatIntegerToken;
 - (_Bool)tsu_isSpecialCustomNumberFormatTokenOfType:(int)arg1;
 - (_Bool)tsu_isSpecialCustomNumberFormatToken;
+- (void)sfu_appendJsonStringToString:(id)arg1;
 - (_Bool)tsu_pathExtensionConformsToUTI:(id)arg1;
 - (_Bool)tsu_pathConformsToUTI:(id)arg1;
 @property(readonly, nonatomic) NSString *tsu_pathUTI;

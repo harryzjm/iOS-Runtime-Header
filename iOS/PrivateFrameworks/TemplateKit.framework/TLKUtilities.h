@@ -10,13 +10,16 @@
 {
 }
 
++ (_Bool)isMacOS;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(_Bool)arg2;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1;
 + (_Bool)recursivelyCheckIfSubviewTapped:(id)arg1 forTappedView:(id)arg2;
++ (id)testImageWithSize:(struct CGSize)arg1 text:(id)arg2 color:(id)arg3;
 + (id)testImageWithSize:(struct CGSize)arg1 text:(id)arg2;
++ (id)testImageWithSize:(struct CGSize)arg1 color:(id)arg2;
 + (id)testImageWithSize:(struct CGSize)arg1;
-+ (struct UIEdgeInsets)standardInsets;
++ (double)appIconCornerRadiusRatio;
 + (double)onePixelForCurrentScreenResolution;
 + (_Bool)deviceSupportsRotation;
 + (double)standardTableCellContentInset;

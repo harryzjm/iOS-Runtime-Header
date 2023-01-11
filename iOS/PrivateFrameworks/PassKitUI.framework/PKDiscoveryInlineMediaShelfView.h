@@ -18,6 +18,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_loadImageFromFileURL;
 - (void)_loadImageFromBundle;
 - (void)setImage:(id)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;

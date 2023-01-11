@@ -6,16 +6,11 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI10ImageLayer : CALayer
 {
-    MISSING_TYPE *lastResolvedImage;
-    MISSING_TYPE *lastResolvedSize;
 }
 
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
 - (id)init;

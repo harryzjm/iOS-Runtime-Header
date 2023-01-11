@@ -35,9 +35,9 @@
 }
 
 + (double)defaultDurationForTransition:(int)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool ignoreDirectTouchEvents; // @synthesize ignoreDirectTouchEvents=_ignoreDirectTouchEvents;
 @property(nonatomic) long long animationTimingCurve; // @synthesize animationTimingCurve=_animationTimingCurve;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)safeAreaInsetsDidChange;
@@ -66,6 +66,7 @@
 @property(nonatomic) _Bool shouldNotifyDidCompleteImmediately;
 - (void)_didStartTransition;
 - (double)durationForTransition:(int)arg1;
+- (int)textEffectsVisibilityLevel;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

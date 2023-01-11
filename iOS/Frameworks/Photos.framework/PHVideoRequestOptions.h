@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/PHMediaRequestLiveRenderingOptions-Protocol.h>
 #import <Photos/PHMediaRequestThreadingOptions-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface PHVideoRequestOptions : NSObject <PHMediaRequestThreadingOptions>
+@interface PHVideoRequestOptions : NSObject <PHMediaRequestLiveRenderingOptions, PHMediaRequestThreadingOptions>
 {
     _Bool _networkAccessAllowed;
     _Bool _streamingAllowed;
     _Bool _videoComplementAllowed;
     _Bool _allowMediumHighQuality;
     _Bool _restrictToPlayableOnCurrentDevice;
+    _Bool _liveRenderVideoIfNeeded;
+    _Bool _liveRenderAndOnDemandRenderVideoConcurrently;
     long long _version;
     long long _deliveryMode;
     CDUnknownBlockType _progressHandler;
@@ -27,7 +30,10 @@
     struct CGSize _targetSize;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
+@property(nonatomic) _Bool liveRenderAndOnDemandRenderVideoConcurrently; // @synthesize liveRenderAndOnDemandRenderVideoConcurrently=_liveRenderAndOnDemandRenderVideoConcurrently;
+@property(nonatomic) _Bool liveRenderVideoIfNeeded; // @synthesize liveRenderVideoIfNeeded=_liveRenderVideoIfNeeded;
 @property(nonatomic) _Bool restrictToPlayableOnCurrentDevice; // @synthesize restrictToPlayableOnCurrentDevice=_restrictToPlayableOnCurrentDevice;
 @property(nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property(nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
@@ -39,10 +45,11 @@
 @property(nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property(nonatomic) long long version; // @synthesize version=_version;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+- (id)renderResultHandlerQueue;
+- (_Bool)isCurrentVersion;
 - (_Bool)isSynchronous;
 
 // Remaining properties

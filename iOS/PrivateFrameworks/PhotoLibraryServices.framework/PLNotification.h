@@ -41,6 +41,7 @@
     NSString *_suggestedCMMUUID;
     NSString *_keyMomentShareUUID;
     NSArray *_momentShareUUIDs;
+    NSString *_momentShareOwnerLocalizedName;
     NSString *_albumUUID;
     NSString *_albumCloudGUID;
     NSDate *_date;
@@ -52,6 +53,7 @@
 
 + (id)_UNCategoryFromNotificationType:(long long)arg1;
 + (id)requestIdentifierByNotificationType:(long long)arg1 keyObjectUUID:(id)arg2 photosBatchID:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly) NSString *commentText; // @synthesize commentText=_commentText;
 @property(readonly) NSString *photosBatchID; // @synthesize photosBatchID=_photosBatchID;
 @property(readonly) _Bool offerToReportAsJunk; // @synthesize offerToReportAsJunk=_offerToReportAsJunk;
@@ -67,8 +69,6 @@
 @property(readonly, copy) NSString *albumCloudGUID; // @synthesize albumCloudGUID=_albumCloudGUID;
 @property(readonly, copy) NSString *albumUUID; // @synthesize albumUUID=_albumUUID;
 @property(readonly) long long notificationType; // @synthesize notificationType=_notificationType;
-- (void).cxx_destruct;
-- (id)_localizedCountFormatter;
 - (_Bool)assetWithUUID:(id)arg1 didChangePlaceholderKindTo:(short)arg2 fromOldKind:(short)arg3;
 @property(readonly) NSString *requestIdentifier;
 @property(readonly) NSString *keyObjectUUID;

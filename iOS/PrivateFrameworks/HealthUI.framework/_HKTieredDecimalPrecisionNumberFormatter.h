@@ -16,6 +16,8 @@
 
 + (id)sharedInstance;
 - (id)stringFromNumber:(id)arg1 displayType:(id)arg2 unitController:(id)arg3;
+- (id)_numberFormatterForNumber:(id)arg1 displayType:(id)arg2;
+- (unsigned long long)style;
 - (_Bool)returnsUnitWithValueForDisplay;
 
 // Remaining properties

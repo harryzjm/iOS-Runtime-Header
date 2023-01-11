@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property(nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

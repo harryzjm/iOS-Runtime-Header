@@ -8,30 +8,28 @@
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
-@class NSString, SNSystemConfiguration;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SNDetectSignalThresholdRequestImpl : NSObject <SNAnalyzing>
 {
-    SNSystemConfiguration *_systemConfiguration;
     shared_ptr_f6ac7592 _graph;
     unsigned int _blockSize;
     double _sampleRate;
     double _magnitudeThreshold;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) double magnitudeThreshold; // @synthesize magnitudeThreshold=_magnitudeThreshold;
 @property(nonatomic) unsigned int blockSize; // @synthesize blockSize=_blockSize;
 @property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)sharedProcessorConfiguration;
 @property(readonly, nonatomic) struct Box *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (void)updateGraph;
-- (id)init;
+- (id)initWithSampleRate:(double)arg1 blockSize:(int)arg2 magnitudeThreshold:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

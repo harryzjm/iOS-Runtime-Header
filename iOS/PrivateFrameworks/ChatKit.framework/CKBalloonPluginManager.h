@@ -8,8 +8,7 @@
 
 #import <ChatKit/CKAppInstallationWatcherObserver-Protocol.h>
 
-@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSCache, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
-@protocol CKExtensionConsumer;
+@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSCache, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 
 @interface CKBalloonPluginManager : NSObject <CKAppInstallationWatcherObserver>
 {
@@ -25,11 +24,11 @@
     _Bool _keepingEmptySections;
     _Bool _isAppInstallationObserver;
     NSString *_lastLaunchedIdentifier;
-    id <CKExtensionConsumer> _currentExtensionConsumer;
     IMBalloonPlugin *_lastViewedPlugin;
     NSArray *_visiblePlugins;
     NSArray *_cachedPotentiallyVisiblePlugins;
     NSArray *_favoriteAppStripPlugins;
+    NSHashTable *_currentExtensionConsumers;
     NSDictionary *_pluginVersionMap;
     NSDictionary *_pluginSeenMap;
     NSDictionary *_pluginIndexPathMap;
@@ -49,6 +48,7 @@
 + (id)morePlugin;
 + (id)recentPlugin;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *activeBrowsers; // @synthesize activeBrowsers=_activeBrowsers;
 @property(retain, nonatomic) CKPreviewDispatchCache *snapshotCache; // @synthesize snapshotCache=_snapshotCache;
 @property(retain, nonatomic) NSCache *iconCache; // @synthesize iconCache=_iconCache;
@@ -64,6 +64,7 @@
 @property(retain, nonatomic) NSDictionary *pluginIndexPathMap; // @synthesize pluginIndexPathMap=_pluginIndexPathMap;
 @property(retain, nonatomic) NSDictionary *pluginSeenMap; // @synthesize pluginSeenMap=_pluginSeenMap;
 @property(retain, nonatomic) NSDictionary *pluginVersionMap; // @synthesize pluginVersionMap=_pluginVersionMap;
+@property(retain, nonatomic) NSHashTable *currentExtensionConsumers; // @synthesize currentExtensionConsumers=_currentExtensionConsumers;
 @property(retain, nonatomic) NSArray *favoriteAppStripPlugins; // @synthesize favoriteAppStripPlugins=_favoriteAppStripPlugins;
 @property(retain, nonatomic) NSArray *visibleSwitcherPlugins; // @synthesize visibleSwitcherPlugins=_visibleSwitcherPlugins;
 @property(retain, nonatomic) NSArray *cachedPotentiallyVisiblePlugins; // @synthesize cachedPotentiallyVisiblePlugins=_cachedPotentiallyVisiblePlugins;
@@ -73,9 +74,7 @@
 @property(nonatomic) _Bool isAppRemovalEnabled; // @synthesize isAppRemovalEnabled=_isAppRemovalEnabled;
 @property(nonatomic) _Bool isAppInstallationEnabled; // @synthesize isAppInstallationEnabled=_isAppInstallationEnabled;
 @property(nonatomic) __weak IMBalloonPlugin *lastViewedPlugin; // @synthesize lastViewedPlugin=_lastViewedPlugin;
-@property(nonatomic) __weak id <CKExtensionConsumer> currentExtensionConsumer; // @synthesize currentExtensionConsumer=_currentExtensionConsumer;
 @property(retain, nonatomic) NSString *lastLaunchedIdentifier; // @synthesize lastLaunchedIdentifier=_lastLaunchedIdentifier;
-- (void).cxx_destruct;
 - (_Bool)_shouldShowActivity;
 - (_Bool)_shouldShowSURF;
 - (_Bool)isPluginVisible:(id)arg1;
@@ -90,7 +89,6 @@
 - (unsigned long long)badgeValueForPlugin:(id)arg1;
 - (id)launchTimeForPlugin:(id)arg1;
 - (void)updateLaunchTimeForPlugin:(id)arg1;
-- (id)lastLaunchedPlugin;
 - (long long)lastViewedPluginIndex;
 - (void)updateLaunchStatus:(unsigned long long)arg1 forPlugin:(id)arg2 withNotification:(_Bool)arg3;
 - (unsigned long long)launchStatusForPlugin:(id)arg1;
@@ -122,6 +120,7 @@
 - (struct __CFString *)healthKitAchievementAvailabilityChangedNotification;
 - (void)reloadInstalledApps:(id)arg1;
 - (void)refreshPlugins;
+- (void)addExtensionConsumer:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)viewControllerForPluginIdentifier:(id)arg1 dataSource:(id)arg2;
@@ -135,6 +134,7 @@
 - (void)invalidateAllActivePlugins;
 - (void)invalidateAllActiveSwitcherPlugins;
 - (void)forceTearDownRemoteViewsSkippingCameraApp:(_Bool)arg1;
+- (id)bundleIdentifiersForCurrentExtensionConsumers;
 - (void)forceKillNonCameraRemoteExtensionsImmediately;
 - (void)forceKillRemoteExtensionsWithDelay:(_Bool)arg1 skipCameraApp:(_Bool)arg2;
 - (void)forceKillRemoteExtensionsWithDelay:(_Bool)arg1;

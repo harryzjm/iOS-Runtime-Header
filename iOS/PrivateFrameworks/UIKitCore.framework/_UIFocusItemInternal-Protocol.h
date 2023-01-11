@@ -13,7 +13,9 @@
 
 @optional
 @property(readonly, nonatomic, getter=_focusTouchSensitivityStyle) long long focusTouchSensitivityStyle;
+- (struct CGRect)_globalFocusCastingFrameForHeading:(unsigned long long)arg1;
 - (_Bool)_drawsFocusRingWhenChildrenFocused;
+- (unsigned long long)_insertionIndexOfFocusLayerInView;
 - (UIView *)_viewToAddFocusLayer;
 @end
 

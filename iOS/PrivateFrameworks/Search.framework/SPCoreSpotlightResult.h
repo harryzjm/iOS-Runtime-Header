@@ -20,16 +20,19 @@
     long long *_outgoingCount;
     NSString *_relatedBundleID;
     NSString *_mailConversationIdentifier;
+    NSString *_stringForDedupe;
     NSArray *_launchDates;
     NSDate *_contentCreationDate;
     NSString *_bundleID;
     MISSING_TYPE *_buddyScore;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) NSDate *contentCreationDate; // @synthesize contentCreationDate=_contentCreationDate;
 @property(retain, nonatomic) NSArray *launchDates; // @synthesize launchDates=_launchDates;
 @property(nonatomic) _Bool hasAssociatedUserActivity; // @synthesize hasAssociatedUserActivity=_hasAssociatedUserActivity;
+@property(retain) NSString *stringForDedupe; // @synthesize stringForDedupe=_stringForDedupe;
 @property(retain) NSString *mailConversationIdentifier; // @synthesize mailConversationIdentifier=_mailConversationIdentifier;
 @property(retain) NSString *relatedBundleID; // @synthesize relatedBundleID=_relatedBundleID;
 @property long long *outgoingCount; // @synthesize outgoingCount=_outgoingCount;
@@ -40,7 +43,6 @@
 @property(retain) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property MISSING_TYPE *buddyScore; // @synthesize buddyScore=_buddyScore;
 @property(retain) NSString *relatedUniqueIdentifier; // @synthesize relatedUniqueIdentifier=_relatedUniqueIdentifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (Class)classForCoder;

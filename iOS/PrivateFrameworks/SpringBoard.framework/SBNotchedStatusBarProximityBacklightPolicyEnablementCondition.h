@@ -30,10 +30,10 @@
     _Bool _invalidated;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double enabledStatusBarHeight; // @synthesize enabledStatusBarHeight=_statusBarHeight;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_isEnabled;
 @property(nonatomic) __weak id <SBNotchedStatusBarProximityBacklightPolicyEnablementConditionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_evaluateEnablement;
 - (void)_setEnabled:(_Bool)arg1 statusBarHeight:(double)arg2;
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
@@ -43,7 +43,7 @@
 - (void)statusBarServer:(id)arg1 didReceiveDoubleHeightStatusString:(id)arg2 forStyle:(long long)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveGlowAnimationState:(_Bool)arg2 forStyle:(long long)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveStyleOverrides:(int)arg2;
-- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_0942cde0 *)arg2 withActions:(int)arg3;
+- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_3fd7985f *)arg2 withActions:(int)arg3;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)invalidate;

@@ -17,11 +17,12 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-- (void).cxx_destruct;
 - (id)_doConnectWithOptions:(unsigned long long)arg1;
 - (_Bool)_connectToService;
+- (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)realmsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)configurationWithCompletion:(CDUnknownBlockType)arg1;
@@ -29,6 +30,7 @@
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 
 // Remaining properties

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSSet, SFDevice, SFDeviceOperationHomeKitSetup, SFSession, TROperationQueue, TRSession, UIViewController;
+@class NSMutableArray, NSSet, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceSetupWHASession : NSObject
@@ -19,6 +19,8 @@
     int _pairVerifyState;
     int _pairSetupState;
     int _infoExchangeState;
+    unsigned long long _peerFeatureFlags;
+    unsigned long long _peerProblemsFlags;
     int _trSessionState;
     TRSession *_trSession;
     NSMutableArray *_trOperations;
@@ -28,6 +30,10 @@
     NSSet *_trUnauthServices;
     _Bool _trAuthenticationEnabled;
     int _trAuthenticationState;
+    _Bool _cdpEnabled;
+    SFDeviceOperationCDPSetup *_cdpSetupOperation;
+    double _cdpSetupSecs;
+    int _cdpState;
     SFDeviceOperationHomeKitSetup *_homeKitSetup;
     int _homeKitState;
     _Bool _homeKitDoFullSetup;
@@ -41,6 +47,7 @@
     CDUnknownBlockType _promptForRoomHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType promptForRoomHandler; // @synthesize promptForRoomHandler=_promptForRoomHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForHomeHandler; // @synthesize promptForHomeHandler=_promptForHomeHandler;
@@ -48,10 +55,10 @@
 @property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(retain, nonatomic) SFDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-- (void).cxx_destruct;
 - (_Bool)_verifyiCloudMatch:(unsigned long long)arg1 error:(id *)arg2;
 - (int)_runFinish;
 - (int)_runHomeKitSetup;
+- (int)_runCDPSetup;
 - (int)_runTRAuthentication;
 - (int)_runTRSetupConfiguration;
 - (int)_runTRSessionStart;

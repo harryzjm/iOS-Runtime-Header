@@ -11,6 +11,7 @@
 - (_Bool)wantsCompleteStage;
 - (id)result;
 - (_Bool)render:(out id *)arg1;
+- (id)renderer:(out id *)arg1;
 - (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
 - (_Bool)wantsPrepareNodeCached;
 - (_Bool)wantsRenderNodeCached;

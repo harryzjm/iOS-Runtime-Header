@@ -13,12 +13,14 @@
 @interface GEOLocalizedName : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_languageCode;
     NSString *_nameType;
     NSString *_name;
     NSString *_phoneticName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _nameRank;
     _Bool _isDefault;
     struct {
@@ -29,13 +31,7 @@
         unsigned int read_nameType:1;
         unsigned int read_name:1;
         unsigned int read_phoneticName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_languageCode:1;
-        unsigned int wrote_nameType:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_phoneticName:1;
-        unsigned int wrote_nameRank:1;
-        unsigned int wrote_isDefault:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -51,24 +47,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *phoneticName;
 @property(readonly, nonatomic) _Bool hasPhoneticName;
-- (void)_readPhoneticName;
 @property(nonatomic) _Bool hasNameRank;
 @property(nonatomic) unsigned int nameRank;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
 @property(retain, nonatomic) NSString *nameType;
 @property(readonly, nonatomic) _Bool hasNameType;
-- (void)_readNameType;
 @property(retain, nonatomic) NSString *languageCode;
 @property(readonly, nonatomic) _Bool hasLanguageCode;
-- (void)_readLanguageCode;
 @property(nonatomic) _Bool hasIsDefault;
 @property(nonatomic) _Bool isDefault;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithPlaceDataLocalizedString:(id)arg1;
 
 @end

@@ -9,51 +9,62 @@
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardHome/NSCopying-Protocol.h>
 
-@class NSMutableDictionary, NSString, SBHClockIconVisualConfiguration, SBHFloatyFolderVisualConfiguration, SBHFolderIconVisualConfiguration, SBHIconAccessoryVisualConfiguration, SBHSidebarVisualConfiguration;
+@class NSMutableDictionary, NSString, SBHAppLibraryVisualConfiguration, SBHFloatyFolderVisualConfiguration, SBHFolderIconVisualConfiguration, SBHIconAccessoryVisualConfiguration, SBHRootFolderVisualConfiguration, SBHSidebarVisualConfiguration;
 
 @interface SBIconListGridLayoutConfiguration : NSObject <NSCopying, BSDescriptionProviding>
 {
     NSMutableDictionary *_iconLabelVisualConfigurations;
+    struct SBHIconGridSizeClassIconImageInfos _iconGridSizeClassIconImageInfos;
     unsigned long long _numberOfPortraitColumns;
     unsigned long long _numberOfPortraitRows;
     unsigned long long _numberOfLandscapeColumns;
     unsigned long long _numberOfLandscapeRows;
+    unsigned long long _supportedIconGridSizeClasses;
     SBHIconAccessoryVisualConfiguration *_iconAccessoryVisualConfiguration;
     SBHFolderIconVisualConfiguration *_folderIconVisualConfiguration;
-    SBHClockIconVisualConfiguration *_clockIconVisualConfiguration;
     SBHFloatyFolderVisualConfiguration *_floatyFolderVisualConfiguration;
+    SBHAppLibraryVisualConfiguration *_appLibraryVisualConfiguration;
     SBHSidebarVisualConfiguration *_sidebarVisualConfiguration;
+    SBHRootFolderVisualConfiguration *_rootFolderVisualConfiguration;
+    struct SBHIconGridSizeClassSizes _iconGridSizeClassSizes;
+    struct CGSize _listSizeForIconSpacingCalculation;
     struct UIEdgeInsets _portraitLayoutInsets;
     struct UIEdgeInsets _landscapeLayoutInsets;
-    struct SBIconImageInfo _iconImageInfo;
 }
 
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) SBHRootFolderVisualConfiguration *rootFolderVisualConfiguration; // @synthesize rootFolderVisualConfiguration=_rootFolderVisualConfiguration;
 @property(copy, nonatomic) SBHSidebarVisualConfiguration *sidebarVisualConfiguration; // @synthesize sidebarVisualConfiguration=_sidebarVisualConfiguration;
+@property(copy, nonatomic) SBHAppLibraryVisualConfiguration *appLibraryVisualConfiguration; // @synthesize appLibraryVisualConfiguration=_appLibraryVisualConfiguration;
 @property(copy, nonatomic) SBHFloatyFolderVisualConfiguration *floatyFolderVisualConfiguration; // @synthesize floatyFolderVisualConfiguration=_floatyFolderVisualConfiguration;
-@property(copy, nonatomic) SBHClockIconVisualConfiguration *clockIconVisualConfiguration; // @synthesize clockIconVisualConfiguration=_clockIconVisualConfiguration;
 @property(copy, nonatomic) SBHFolderIconVisualConfiguration *folderIconVisualConfiguration; // @synthesize folderIconVisualConfiguration=_folderIconVisualConfiguration;
 @property(copy, nonatomic) SBHIconAccessoryVisualConfiguration *iconAccessoryVisualConfiguration; // @synthesize iconAccessoryVisualConfiguration=_iconAccessoryVisualConfiguration;
-@property(nonatomic) struct SBIconImageInfo iconImageInfo; // @synthesize iconImageInfo=_iconImageInfo;
+@property(nonatomic) struct CGSize listSizeForIconSpacingCalculation; // @synthesize listSizeForIconSpacingCalculation=_listSizeForIconSpacingCalculation;
 @property(nonatomic) struct UIEdgeInsets landscapeLayoutInsets; // @synthesize landscapeLayoutInsets=_landscapeLayoutInsets;
 @property(nonatomic) struct UIEdgeInsets portraitLayoutInsets; // @synthesize portraitLayoutInsets=_portraitLayoutInsets;
+@property(nonatomic) unsigned long long supportedIconGridSizeClasses; // @synthesize supportedIconGridSizeClasses=_supportedIconGridSizeClasses;
+@property(nonatomic) struct SBHIconGridSizeClassSizes iconGridSizeClassSizes; // @synthesize iconGridSizeClassSizes=_iconGridSizeClassSizes;
 @property(nonatomic) unsigned long long numberOfLandscapeRows; // @synthesize numberOfLandscapeRows=_numberOfLandscapeRows;
 @property(nonatomic) unsigned long long numberOfLandscapeColumns; // @synthesize numberOfLandscapeColumns=_numberOfLandscapeColumns;
 @property(nonatomic) unsigned long long numberOfPortraitRows; // @synthesize numberOfPortraitRows=_numberOfPortraitRows;
 @property(nonatomic) unsigned long long numberOfPortraitColumns; // @synthesize numberOfPortraitColumns=_numberOfPortraitColumns;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setIconImageInfo:(struct SBIconImageInfo)arg1 forGridSizeClass:(unsigned long long)arg2;
+- (struct SBIconImageInfo)iconImageInfoForGridSizeClass:(unsigned long long)arg1;
+@property(nonatomic) struct SBIconImageInfo iconImageInfo;
 - (void)setIconLabelVisualConfiguration:(id)arg1 forContentSizeCategory:(id)arg2;
 - (id)iconLabelVisualConfigurationForContentSizeCategory:(id)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

@@ -33,7 +33,6 @@
 - (void)incrementMonthlyResetCount;
 - (void)notifyActiveRecordChanged;
 - (void)deleteRecords:(CDUnknownBlockType)arg1;
-- (void)handleIDFAReset:(CDUnknownBlockType)arg1;
 - (void)prepareForPushNotification;
 - (void)setDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDSID:(id)arg1 withoutRestrictions:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;

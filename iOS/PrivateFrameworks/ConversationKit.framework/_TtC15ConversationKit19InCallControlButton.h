@@ -21,10 +21,12 @@
     MISSING_TYPE *image;
     MISSING_TYPE *colorConfiguration;
     MISSING_TYPE *contentAlpha;
+    MISSING_TYPE *menuDataSource;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic) _Bool highlighted;

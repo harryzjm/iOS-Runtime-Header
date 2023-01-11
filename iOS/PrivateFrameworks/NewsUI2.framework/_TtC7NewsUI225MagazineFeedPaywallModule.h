@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *offerManager;
 }
 
 @end

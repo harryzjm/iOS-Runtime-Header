@@ -14,14 +14,16 @@ __attribute__((visibility("hidden")))
     UIView *_candidateView;
 }
 
-@property(retain, nonatomic) UIView *candidateView; // @synthesize candidateView=_candidateView;
++ (double)preferredCandidateBarHeightForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *candidateView; // @synthesize candidateView=_candidateView;
 - (void)viewDidLayoutSubviews;
 - (long long)overrideUserInterfaceStyle;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 @property(readonly, nonatomic) NSArray *displayedCandidates;
 - (_Bool)hidesExpandableButton;
+- (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (_Bool)_canShowWhileLocked;
 

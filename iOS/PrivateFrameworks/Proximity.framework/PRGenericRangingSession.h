@@ -17,12 +17,12 @@
     id <PRGenericRangingSessionDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <PRGenericRangingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PRGenericRangingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)stopP2PRanging:(id)arg1 error:(id *)arg2;
 - (_Bool)startP2PRanging:(id)arg1 error:(id *)arg2;
 - (void)configureForP2PRanging:(id)arg1 options:(id)arg2;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
 - (void)remoteDevice:(id)arg1 didChangeState:(long long)arg2;
 - (void)didReceiveNewSolutions:(id)arg1;

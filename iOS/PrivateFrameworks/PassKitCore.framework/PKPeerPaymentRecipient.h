@@ -16,6 +16,7 @@
     _Bool _allowsFormalPaymentRequests;
     NSString *_identifier;
     unsigned long long _status;
+    unsigned long long _statusReason;
     unsigned long long _receiveMethod;
     NSString *_receiveCurrency;
     NSDecimalNumber *_minimumReceiveAmount;
@@ -27,6 +28,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)recipientWithDictionary:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *phoneOrEmail; // @synthesize phoneOrEmail=_phoneOrEmail;
 @property(copy, nonatomic) NSDate *cacheUntil; // @synthesize cacheUntil=_cacheUntil;
@@ -35,9 +37,9 @@
 @property(copy, nonatomic) NSDecimalNumber *minimumReceiveAmount; // @synthesize minimumReceiveAmount=_minimumReceiveAmount;
 @property(copy, nonatomic) NSString *receiveCurrency; // @synthesize receiveCurrency=_receiveCurrency;
 @property(nonatomic) unsigned long long receiveMethod; // @synthesize receiveMethod=_receiveMethod;
+@property(nonatomic) unsigned long long statusReason; // @synthesize statusReason=_statusReason;
 @property(nonatomic) unsigned long long status; // @synthesize status=_status;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

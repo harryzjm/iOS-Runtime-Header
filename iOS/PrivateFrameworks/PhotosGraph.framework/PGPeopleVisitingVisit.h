@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, PGGraphNode;
+@class NSArray, NSMutableArray, PGGraphAddressNode;
 
 @interface PGPeopleVisitingVisit : NSObject
 {
     NSMutableArray *_momentNodes;
     _Bool _hasVeryCloseMoments;
-    PGGraphNode *_addressNode;
+    PGGraphAddressNode *_addressNode;
 }
 
-@property(readonly) NSArray *momentNodes; // @synthesize momentNodes=_momentNodes;
-@property(readonly) PGGraphNode *addressNode; // @synthesize addressNode=_addressNode;
 - (void).cxx_destruct;
+@property(readonly) NSArray *momentNodes; // @synthesize momentNodes=_momentNodes;
+@property(readonly) PGGraphAddressNode *addressNode; // @synthesize addressNode=_addressNode;
 - (id)description;
 @property(readonly) _Bool matchesCloseVisitCriteria;
 @property(readonly) _Bool matchesFarVisitCriteria;

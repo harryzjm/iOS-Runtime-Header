@@ -4,26 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ARKit/NSSecureCoding-Protocol.h>
+@class MISSING_TYPE;
 
-@class AR2DSkeletonDetectionResult, MISSING_TYPE;
-
-@interface ARSkeleton2D <NSSecureCoding>
+@interface ARSkeleton2D
 {
-    AR2DSkeletonDetectionResult *_skeleton;
+    const MISSING_TYPE **_jointLandmarks;
 }
 
-+ (_Bool)supportsSecureCoding;
-- (void).cxx_destruct;
-- (_Bool)isEqual:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) const MISSING_TYPE **jointLandmarks; // @synthesize jointLandmarks=_jointLandmarks;
 - (MISSING_TYPE *)landmarkForJointNamed:(id)arg1;
-- (_Bool)isJointTracked:(long long)arg1;
-- (unsigned long long)jointCount;
-@property(readonly, nonatomic) const MISSING_TYPE **jointLandmarks;
-- (id)initWithDetectedSkeleton:(id)arg1;
-- (id)definition;
 
 @end
 

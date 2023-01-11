@@ -7,12 +7,13 @@
 #import <WorkflowKit/MTLModel.h>
 
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
+#import <ActionKit/NSSecureCoding-Protocol.h>
 #import <ActionKit/WFNaming-Protocol.h>
 #import <ActionKit/WFSerializableContent-Protocol.h>
 
 @class NSDictionary, NSString, NSURL;
 
-@interface WFGiphyObject : MTLModel <WFNaming, WFSerializableContent, MTLJSONSerializing>
+@interface WFGiphyObject : MTLModel <NSSecureCoding, WFNaming, WFSerializableContent, MTLJSONSerializing>
 {
     NSString *_objectId;
     NSString *_type;
@@ -26,12 +27,14 @@
 + (id)imagesJSONTransformer;
 + (id)urlJSONTransformer;
 + (id)JSONKeyPathsByPropertyKey;
++ (id)allowedSecureCodingClassesByPropertyKey;
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *images; // @synthesize images=_images;
 @property(readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
 @property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *objectId; // @synthesize objectId=_objectId;
-- (void).cxx_destruct;
 - (id)wfSerializedRepresentation;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)smallestImage;

@@ -19,8 +19,6 @@
 }
 
 - (id)description;
-- (const char *)_static_description;
-- (id)initWithDescription:(const char *)arg1;
 
 @end
 

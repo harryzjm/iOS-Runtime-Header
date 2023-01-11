@@ -4,14 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface NTKCompanionSinglePHAssetEditor
 {
+    NSString *_albumIdentifier;
+    NSString *_albumName;
+    _Bool _albumNameValid;
 }
 
-+ (id)_assetForResourceDirectoryForDevice:(id)arg1;
-+ (id)_createResourceDirectoryForSinglePHAssetForDevice:(id)arg1 previewOnly:(_Bool)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *albumIdentifier; // @synthesize albumIdentifier=_albumIdentifier;
+- (id)_fetchAlbumName;
+- (id)_fetchSingleAsset;
+- (id)_createResourceDirectoryForSinglePHAssetWithPreviewOnly:(_Bool)arg1;
+- (id)optionsForSingleAsset;
 - (void)finalizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSString *albumName;
 @property(nonatomic) _Bool shouldFinalize;
 - (id)initWithResourceDirectory:(id)arg1 forDevice:(id)arg2 shouldFinalize:(_Bool)arg3;
 

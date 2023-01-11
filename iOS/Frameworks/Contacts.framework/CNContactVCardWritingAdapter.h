@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
 + (id)adapterWithContact:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) NSArray *unknownProperties;
+@property(readonly) NSData *imageHash;
+@property(readonly) NSString *imageType;
 @property(readonly) NSString *preferredApplePersonaIdentifier;
 @property(readonly) NSString *preferredLikenessSource;
-@property(readonly) NSString *downtimeWhitelist;
+@property(readonly) int downtimeWhitelistAuthorization;
 @property(readonly) NSString *phonemeData;
 @property(readonly) NSString *uid;
 @property(readonly) NSString *cardDAVUID;

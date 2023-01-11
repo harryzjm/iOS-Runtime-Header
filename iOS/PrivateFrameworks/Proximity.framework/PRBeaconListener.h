@@ -17,15 +17,15 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) __weak id <PRBeaconListenerDelegate> delegate; // @synthesize delegate=_delegate;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)_updateState:(unsigned long long)arg1;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
 - (void)didReceiveNewSolutions:(id)arg1;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (void)didFailWithError:(id)arg1;
 - (void)deamonConnectionInterrupted;
 - (void)deamonConnectionInvalidated;

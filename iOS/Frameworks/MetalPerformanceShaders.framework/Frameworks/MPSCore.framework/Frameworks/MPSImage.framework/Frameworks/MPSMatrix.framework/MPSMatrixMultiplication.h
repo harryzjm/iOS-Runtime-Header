@@ -13,11 +13,6 @@
     _Bool _useTiling;
     id <MPSExternalMatrixMultiplication> _plugin;
     CDUnknownFunctionPointerType _encode;
-    unsigned long long _MPlugin;
-    unsigned long long _NPlugin;
-    unsigned long long _KPlugin;
-    double _alphaPlugin;
-    double _betaPlugin;
     _Bool _transA;
     _Bool _transB;
     unsigned long long _batchStart;
@@ -32,7 +27,7 @@
     CDStruct_67e7699a _rightMatrixOrigin;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long K; // @synthesize K=_K;
 @property(nonatomic) unsigned long long N; // @synthesize N=_N;
 @property(nonatomic) unsigned long long M; // @synthesize M=_M;

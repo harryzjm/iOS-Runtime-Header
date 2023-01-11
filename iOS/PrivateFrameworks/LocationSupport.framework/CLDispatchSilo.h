@@ -12,6 +12,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_operationQueue;
     double _currentLatchedAbsoluteTimestamp;
+    _Bool _useCLPermissiveTimer;
+    _Bool _isQueueSuspended;
 }
 
 - (void).cxx_destruct;
@@ -25,12 +27,15 @@
 - (double)currentLatchedAbsoluteTimestamp;
 - (void)updateLatchedAbsoluteTimestamp;
 - (void)_setLatchedAbsoluteTimestamp:(double)arg1;
+- (_Bool)isSuspended;
 - (void)resume;
 - (void)suspend;
 - (void)assertOutside;
 - (void)assertInside;
+- (_Bool)inPermissiveMode;
 - (id)getTimeCoercibleVariantInstance;
 - (id)initMain;
+- (id)initWithUnderlyingQueue:(id)arg1 bePermissive:(_Bool)arg2;
 - (id)initWithUnderlyingQueue:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 

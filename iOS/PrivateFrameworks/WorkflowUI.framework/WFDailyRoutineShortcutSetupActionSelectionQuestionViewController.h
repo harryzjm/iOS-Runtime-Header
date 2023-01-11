@@ -6,25 +6,24 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDelegate-Protocol.h>
+#import <WorkflowUI/WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate-Protocol.h>
 #import <WorkflowUI/WFDailyRoutineShortcutSetupQuestionChildViewController-Protocol.h>
 
 @class NSString, WFActionDrawerResults, WFDailyRoutineShortcutSetupActionSelectionQuestion;
 @protocol WFDailyRoutineShortcutSetupQuestionChildViewControllerDelegate;
 
-@interface WFDailyRoutineShortcutSetupActionSelectionQuestionViewController : UITableViewController <WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFDailyRoutineShortcutSetupQuestionChildViewController>
+@interface WFDailyRoutineShortcutSetupActionSelectionQuestionViewController : UITableViewController <WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate, WFDailyRoutineShortcutSetupQuestionChildViewController>
 {
     id <WFDailyRoutineShortcutSetupQuestionChildViewControllerDelegate> _delegate;
     WFDailyRoutineShortcutSetupActionSelectionQuestion *_question;
     WFActionDrawerResults *_results;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) WFActionDrawerResults *results; // @synthesize results=_results;
 @property(readonly, nonatomic) WFDailyRoutineShortcutSetupActionSelectionQuestion *question; // @synthesize question=_question;
 @property(nonatomic) __weak id <WFDailyRoutineShortcutSetupQuestionChildViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)siriSuggestionsTableViewCell:(id)arg1 infoButtonTappedForSuggestion:(id)arg2;
-- (void)siriSuggestionsTableViewCell:(id)arg1 didSelectAction:(id)arg2;
+- (void)siriSuggestionsTableViewCell:(id)arg1 didAppendAction:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

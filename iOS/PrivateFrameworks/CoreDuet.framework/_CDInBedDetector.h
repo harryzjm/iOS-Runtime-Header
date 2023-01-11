@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@protocol _DKKnowledgeQuerying;
+@protocol OS_os_log, _DKKnowledgeQuerying;
 
 @interface _CDInBedDetector : NSObject
 {
+    NSObject<OS_os_log> *_log;
     id <_DKKnowledgeQuerying> _knowledge;
     unsigned long long _method;
 }
@@ -18,16 +19,18 @@
 + (id)simpleLockBasedInBedDetector;
 + (id)inBedDetectorWithKnowledge:(id)arg1 method:(unsigned long long)arg2;
 + (id)inBedDetectorWithKnowledge:(id)arg1;
+- (void).cxx_destruct;
 @property unsigned long long method; // @synthesize method=_method;
 @property(retain) id <_DKKnowledgeQuerying> knowledge; // @synthesize knowledge=_knowledge;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 - (id)findDateIntervalOfEventInStream:(id)arg1 datePredicate:(id)arg2 valuePredicate:(id)arg3 sortDescriptor:(id)arg4 error:(id *)arg5;
 - (id)findLastTimeDeviceWasPluggedInBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 - (id)findLastTimeDeviceWasLockedBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (id)findLatestEndOfWalkingActivityBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (struct NSArray *)detectInBedWithPolicyV1BetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (struct NSArray *)lockedTimesBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (struct NSArray *)detectInBedBetweenBedtimeDate:(id)arg1 wakupDate:(id)arg2 error:(id *)arg3;
+- (id)stationaryIntervalsBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)findLatestEndOfMovementBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)detectInBedWithPolicyV1BetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)lockedTimesBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)detectInBedBetweenBedtimeDate:(id)arg1 wakupDate:(id)arg2 error:(id *)arg3;
 - (id)initWithKnowledge:(id)arg1 method:(unsigned long long)arg2;
 
 @end

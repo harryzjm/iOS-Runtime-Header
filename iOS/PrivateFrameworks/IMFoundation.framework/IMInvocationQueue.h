@@ -19,6 +19,7 @@
     NSProtocolChecker *_protocolChecker;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool holdQueue; // @synthesize holdQueue=_holdQueue;
 @property(readonly, retain, nonatomic) NSProtocolChecker *protocolChecker; // @synthesize protocolChecker=_protocolChecker;
 @property(readonly, retain, nonatomic) NSMutableArray *options; // @synthesize options=_options;

@@ -16,10 +16,10 @@
     NSString *_peerResponseIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *peerResponseIdentifier; // @synthesize peerResponseIdentifier=_peerResponseIdentifier;
 @property(nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property(nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
-- (void).cxx_destruct;
 - (id)_nonHeaderData;
 - (unsigned char)command;
 - (id)initWithSequenceNumber:(unsigned int)arg1 streamID:(unsigned short)arg2 peerResponseIdentifier:(id)arg3;
@@ -27,6 +27,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) NSData *data;
+@property(readonly, nonatomic) _Bool didWakeHint;
 @property(readonly, nonatomic) _Bool expectsPeerResponse;
 @property(retain, nonatomic) NSDate *expiryDate;
 @property(readonly, nonatomic) NSString *messageUUID;

@@ -21,7 +21,17 @@
     unsigned int _payloadSize;
     unsigned int _receiveOffset;
     NSString *_topic;
-    CDStruct_f8f5923d _has;
+    int _wakeStatus;
+    struct {
+        unsigned int timestamp:1;
+        unsigned int connectionType:1;
+        unsigned int dualChannelState:1;
+        unsigned int isFromStorage:1;
+        unsigned int linkQuality:1;
+        unsigned int payloadSize:1;
+        unsigned int receiveOffset:1;
+        unsigned int wakeStatus:1;
+    } _has;
 }
 
 @property(retain, nonatomic) NSString *topic; // @synthesize topic=_topic;
@@ -42,6 +52,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsWakeStatus:(id)arg1;
+- (id)wakeStatusAsString:(int)arg1;
+@property(nonatomic) _Bool hasWakeStatus;
+@property(nonatomic) int wakeStatus; // @synthesize wakeStatus=_wakeStatus;
 @property(readonly, nonatomic) _Bool hasTopic;
 @property(nonatomic) _Bool hasDualChannelState;
 @property(nonatomic) _Bool hasIsFromStorage;

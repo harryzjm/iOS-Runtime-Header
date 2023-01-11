@@ -6,11 +6,14 @@
 
 #import <CoreLocation/CLLocation.h>
 
-@class GEONavigationMatchInfo, GEORoadMatch, GEORouteMatch, NSDate, NSString;
+#import <Navigation/NSSecureCoding-Protocol.h>
 
-@interface MNLocation : CLLocation
+@class GEONavigationMatchInfo, GEORoadMatch, GEORouteMatch, NSDate, NSString, NSUUID;
+
+@interface MNLocation : CLLocation <NSSecureCoding>
 {
     unsigned long long _state;
+    NSUUID *_routeID;
     GEORouteMatch *_routeMatch;
     GEORoadMatch *_roadMatch;
     CLLocation *_rawLocation;
@@ -20,6 +23,7 @@
     NSString *_shieldText;
     long long _shieldType;
     unsigned int _roadLineType;
+    int _rampType;
     unsigned long long _speedLimit;
     _Bool _speedLimitIsMPH;
     long long _speedLimitShieldType;
@@ -29,9 +33,10 @@
     NSDate *_originalDate;
     unsigned long long _traceIndex;
     _Bool _isLeeched;
-    int _rampType;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isLeeched; // @synthesize isLeeched=_isLeeched;
 @property(nonatomic) struct CLLocationCoordinate2D rawShiftedCoordinate; // @synthesize rawShiftedCoordinate=_rawShiftedCoordinate;
 @property(retain, nonatomic) NSDate *originalDate; // @synthesize originalDate=_originalDate;
@@ -50,8 +55,10 @@
 @property(retain, nonatomic) CLLocation *rawLocation; // @synthesize rawLocation=_rawLocation;
 @property(retain, nonatomic) GEORoadMatch *roadMatch; // @synthesize roadMatch=_roadMatch;
 @property(retain, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
+@property(readonly, nonatomic) NSUUID *routeID; // @synthesize routeID=_routeID;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)_referenceFrameAsString:(int)arg1;
 - (id)description;
 - (id)_navigation_detailedMatchInfo;
@@ -59,13 +66,12 @@
 - (id)_navigation_routeMatch;
 - (_Bool)_navigation_hasValidCourse;
 - (_Bool)_navigation_isStale;
-- (CDStruct_123780e2 *)_roadFeature;
+- (CDStruct_66740237 *)_roadFeature;
 - (id)matchInfo;
 @property(readonly, nonatomic) _Bool isProjected;
 @property(readonly, nonatomic) unsigned long long stepIndex;
+- (_Bool)isEqualToLocation:(id)arg1;
 - (id)propagatedLocationForTimeInterval:(double)arg1 shouldProjectAlongRoute:(_Bool)arg2;
-- (id)initWithLocationDetails:(id)arg1;
-- (id)initWithLocationDetails:(id)arg1 route:(id)arg2;
 - (id)initWithRawLocation:(id)arg1;
 - (id)initWithRawLocation:(id)arg1 locationMatchType:(unsigned long long)arg2;
 - (id)initWithRoadMatch:(id)arg1 rawLocation:(id)arg2 locationMatchType:(unsigned long long)arg3;

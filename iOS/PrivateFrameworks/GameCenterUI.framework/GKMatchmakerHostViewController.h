@@ -11,11 +11,13 @@
 
 @interface GKMatchmakerHostViewController <GKMatchmakerHostProtocol, GKMatchmakerServiceProtocol>
 {
-    GKMatchmakerViewController *_delegateWeak;
+    GKMatchmakerViewController *_delegate;
 }
 
 + (_Bool)dismissAutomaticallyAfterExtensionCompletion;
 + (id)matchmakerExtension;
+- (void).cxx_destruct;
+@property(nonatomic) __weak GKMatchmakerViewController *delegate; // @synthesize delegate=_delegate;
 - (void)extensionIsCanceling;
 - (void)shareMatchWithRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)messageFromExtension:(id)arg1;
@@ -27,16 +29,16 @@
 - (void)setInvitesFailedWithError:(id)arg1;
 - (void)setPlayer:(id)arg1 sentData:(id)arg2;
 - (void)setPlayer:(id)arg1 connected:(_Bool)arg2;
+- (void)setConnectingStateForPlayer:(id)arg1;
 - (void)setPlayer:(id)arg1 responded:(long long)arg2;
 - (void)setAutomatchPlayerCount:(long long)arg1;
 - (void)setDefaultInvitationMessage:(id)arg1;
 - (void)setExistingPlayers:(id)arg1;
+- (void)setMatchmakingMode:(long long)arg1;
 - (void)setHosted:(_Bool)arg1;
 - (void)setAcceptedInviteInternal:(id)arg1;
 - (void)setMatchRequestInternal:(id)arg1;
 - (id)extensionObjectProxy;
-@property(nonatomic) GKMatchmakerViewController *delegate; // @synthesize delegate=_delegateWeak;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

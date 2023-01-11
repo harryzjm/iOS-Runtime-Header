@@ -10,7 +10,7 @@
 #import <ScreenReaderOutput/SCROBrailleDisplayCommandDispatcherDelegate-Protocol.h>
 #import <ScreenReaderOutput/SCROBrailleDriverDelegate-Protocol.h>
 
-@class NSAttributedString, NSLock, NSMutableArray, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
+@class NSAttributedString, NSLock, NSMutableArray, NSString, NSTimer, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
 @protocol SCROBrailleDisplayCommandDispatcherProtocol, SCROBrailleDisplayDelegate, SCROBrailleDriverProtocol, SCROIOElementProtocol;
 
 @interface SCROBrailleDisplay : NSObject <SCROBrailleDisplayCommandDispatcherDelegate, SCROBrailleDriverDelegate, BRLTBrailleStateManagerDelegate>
@@ -29,6 +29,8 @@
     _Bool _needsUpdating;
     _Bool _automaticBrailleTranslationEnabled;
     _Bool _wordWrapEnabled;
+    _Bool _autoAdvanceEnabled;
+    double _autoAdvanceDuration;
     NSString *_driverIdentifier;
     NSString *_driverModelIdentifier;
     long long _mainSize;
@@ -52,10 +54,13 @@
     unsigned int _persistentKeyModifiers;
     CDUnknownBlockType _eventHandled;
     double _brailleKeyDebounceTimeout;
+    NSTimer *_autoAdvanceTimer;
 }
 
 + (id)displayWithIOElement:(id)arg1 driverIdentifier:(id)arg2 delegate:(id)arg3;
 + (_Bool)brailleDriverClassIsValid:(Class)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSTimer *autoAdvanceTimer; // @synthesize autoAdvanceTimer=_autoAdvanceTimer;
 @property(nonatomic) double brailleKeyDebounceTimeout; // @synthesize brailleKeyDebounceTimeout=_brailleKeyDebounceTimeout;
 @property(copy, nonatomic) CDUnknownBlockType eventHandled; // @synthesize eventHandled=_eventHandled;
 @property(nonatomic) unsigned int persistentKeyModifiers; // @synthesize persistentKeyModifiers=_persistentKeyModifiers;
@@ -63,9 +68,9 @@
 @property(nonatomic) _Bool inputShowEightDot; // @synthesize inputShowEightDot=_inputShowEightDot;
 @property(nonatomic) int outputContractionMode; // @synthesize outputContractionMode=_outputContractionMode;
 @property(nonatomic) int inputContractionMode; // @synthesize inputContractionMode=_inputContractionMode;
+@property(nonatomic) double autoAdvanceDuration; // @synthesize autoAdvanceDuration=_autoAdvanceDuration;
 @property(nonatomic) _Bool automaticBrailleTranslationEnabled; // @synthesize automaticBrailleTranslationEnabled=_automaticBrailleTranslationEnabled;
 @property(nonatomic) _Bool inputAllowed; // @synthesize inputAllowed=_inputAllowed;
-- (void).cxx_destruct;
 - (void)brailleDisplayDeletedCharacter:(id)arg1;
 - (void)brailleDisplayInsertedCharacter:(id)arg1;
 - (void)didInsertScriptString:(id)arg1;
@@ -107,6 +112,7 @@
 @property(readonly, nonatomic) long long lineOffset;
 @property(readonly, nonatomic) unsigned long long brailleLineGenerationID;
 - (void)_panHandler:(id)arg1;
+- (void)_autoAdvancePanHandler:(id)arg1;
 - (void)_processKeyEvents:(id)arg1;
 - (void)_replaceRange:(struct _NSRange)arg1 withString:(id)arg2 cursor:(unsigned long long)arg3;
 - (void)_unpauseInput;
@@ -161,6 +167,8 @@
 - (void)beginUpdates;
 - (void)requestFlushLine;
 - (id)configuration;
+- (void)_beginAutoAdvanceIfEnabled;
+@property(nonatomic) _Bool autoAdvanceEnabled;
 @property(nonatomic) _Bool wordWrapEnabled;
 - (long long)statusSize;
 - (long long)mainSize;

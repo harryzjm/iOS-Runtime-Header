@@ -21,6 +21,7 @@
     _Bool _isInvalidated;
     _Bool _isExpectingConfigBlock;
     _Bool _hasContactedConfigurationDelegate;
+    _Bool _hasOutboundRequestInFlight;
     unsigned short _initiatorFragmentCount;
     unsigned short _responderFragmentCount;
     int _lastRequestMessageID;
@@ -58,7 +59,7 @@
     NSObject<OS_dispatch_source> *_sendTimer;
     NSObject<OS_dispatch_source> *_receiveTimer;
     unsigned long long _uniqueIndex;
-    NSMutableArray *_pendingInformationalContexts;
+    NSMutableArray *_pendingRequestContexts;
     struct NEVirtualInterface_s *_ipsecInterface;
     NEIKEv2IKESA *_ikeSA;
     id <NEIKEv2ConfigurationDelegate> _configurationDelegate;
@@ -70,6 +71,8 @@
 }
 
 + (unsigned int)getNewChildSAID;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasOutboundRequestInFlight; // @synthesize hasOutboundRequestInFlight=_hasOutboundRequestInFlight;
 @property(retain, nonatomic) NEIKEv2IKESAConfiguration *ikeConfig; // @synthesize ikeConfig=_ikeConfig;
 @property(retain) NEIKEv2Packet *previousMOBIKERequest; // @synthesize previousMOBIKERequest=_previousMOBIKERequest;
 @property int previousMOBIKEMessageID; // @synthesize previousMOBIKEMessageID=_previousMOBIKEMessageID;
@@ -83,7 +86,7 @@
 @property __weak id <NEIKEv2ConfigurationDelegate> configurationDelegate; // @synthesize configurationDelegate=_configurationDelegate;
 @property(retain) NEIKEv2IKESA *ikeSA; // @synthesize ikeSA=_ikeSA;
 @property struct NEVirtualInterface_s *ipsecInterface; // @synthesize ipsecInterface=_ipsecInterface;
-@property(retain, nonatomic) NSMutableArray *pendingInformationalContexts; // @synthesize pendingInformationalContexts=_pendingInformationalContexts;
+@property(retain, nonatomic) NSMutableArray *pendingRequestContexts; // @synthesize pendingRequestContexts=_pendingRequestContexts;
 @property(nonatomic) unsigned long long uniqueIndex; // @synthesize uniqueIndex=_uniqueIndex;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *receiveTimer; // @synthesize receiveTimer=_receiveTimer;
 @property(retain) NSObject<OS_dispatch_source> *sendTimer; // @synthesize sendTimer=_sendTimer;
@@ -123,11 +126,8 @@
 @property(retain) NEIKEv2ConfigurationMessage *assignedConfiguration; // @synthesize assignedConfiguration=_assignedConfiguration;
 @property unsigned long long state; // @synthesize state=_state;
 @property(retain) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-- (void).cxx_destruct;
-- (void)sendPendingInformationalContext;
-- (void)enqueuePendingInformationalContext:(id)arg1;
-@property(readonly, nonatomic) _Bool hasOutboundRequestInFlight;
-- (_Bool)skipKeepaliveMessage:(id)arg1;
+- (void)sendPendingRequestContext;
+- (void)enqueuePendingRequestContext:(id)arg1;
 - (void)resetChild:(id)arg1;
 - (void)resetAll;
 - (void)invalidate;
@@ -151,7 +151,7 @@
 - (_Bool)sendReply:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (int)sendRequest:(id)arg1 retry:(_Bool)arg2 sendCompletionHandler:(CDUnknownBlockType)arg3 replyHandler:(CDUnknownBlockType)arg4;
 - (int)sendRequest:(id)arg1 retry:(_Bool)arg2 replyHandler:(CDUnknownBlockType)arg3;
-- (int)sendRequest:(id)arg1 isKeepalive:(_Bool)arg2 retryIntervalInMilliseconds:(unsigned long long)arg3 maxRetries:(unsigned int)arg4 timeoutError:(id)arg5 resend:(_Bool)arg6 sendMessageID:(int)arg7 sendCompletionHandler:(CDUnknownBlockType)arg8 replyHandler:(CDUnknownBlockType)arg9;
+- (int)sendRequest:(id)arg1 retryIntervalInMilliseconds:(unsigned long long)arg2 maxRetries:(unsigned int)arg3 timeoutError:(id)arg4 resend:(_Bool)arg5 sendMessageID:(int)arg6 sendCompletionHandler:(CDUnknownBlockType)arg7 replyHandler:(CDUnknownBlockType)arg8;
 - (void)cancelDPDTimer;
 - (void)cancelSendTimer;
 - (_Bool)sendReplyForMessageID:(int)arg1;
@@ -176,6 +176,7 @@
 @property(readonly) NSString *interfaceName;
 @property(readonly) _Bool hasInterface;
 - (void)addEmptyInterface;
+- (id)copyChildWithRekeyedSPI:(id)arg1;
 - (id)copyChildWithSPI:(id)arg1;
 - (id)copyChildWithID:(unsigned int)arg1;
 @property(readonly) NEIKEv2ChildSA *firstChildSA;
@@ -207,18 +208,16 @@
 - (void)deleteSA:(id)arg1;
 - (void)expireSA:(id)arg1;
 - (void)dealloc;
-- (void)initiateDelete:(_Bool)arg1 sendCompleteBlock:(CDUnknownBlockType)arg2;
-- (void)initiateDelete:(_Bool)arg1 replyCompleteBlock:(CDUnknownBlockType)arg2;
 - (void)initiateDeleteChildSA:(id)arg1;
-- (void)receiveDeleteChildSA:(id)arg1 packet:(id)arg2;
+- (void)receiveDeleteChildSA:(id)arg1;
 - (void)receiveDeleteIKESA:(id)arg1;
 - (void)receiveRedirect:(id)arg1;
 - (void)receiveMOBIKE:(id)arg1;
-- (void)initiateMOBIKEWithRetries:(unsigned int)arg1 retryInterval:(unsigned long long)arg2 invalidateTransport:(_Bool)arg3 callbackQueue:(id)arg4 callback:(CDUnknownBlockType)arg5;
-- (void)initiateMOBIKEInnerWithRetries:(unsigned int)arg1 retryInterval:(unsigned long long)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4;
-- (void)resendPreviousMOBIKEInnerWithRetries:(unsigned int)arg1 retryInterval:(unsigned long long)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)initiateMOBIKE:(id)arg1;
+- (void)initiateMOBIKEInner:(id)arg1;
+- (void)resendPreviousMOBIKEInnerWithRetries:(unsigned int)arg1 retryInterval:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)receiveRekeyIKESA:(id)arg1;
-- (void)initiateRekeyIKESA;
+- (void)initiateRekeyIKESA:(id)arg1;
 - (void)receiveRekeyChildSA:(id)arg1 packet:(id)arg2;
 - (void)initiateRekeyChildSA:(id)arg1;
 - (void)receiveNewChildSA:(id)arg1 packet:(id)arg2;
@@ -230,15 +229,12 @@
 - (void)handleEAPIKESA:(id)arg1 childSA:(id)arg2 authPacket:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)retryDHForIKESA:(id)arg1 validated:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)retryCookieForIKESA:(id)arg1 validated:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)initiateNotify:(unsigned long long)arg1 data:(id)arg2;
 - (void)receiveInformational:(id)arg1;
 - (void)initiateInformational:(id)arg1;
-- (void)initiatePrivateNotifies:(id)arg1 maxRetries:(unsigned int)arg2 retryIntervalInMilliseconds:(unsigned long long)arg3 callbackQueue:(id)arg4 callback:(CDUnknownBlockType)arg5;
-- (void)initiateKeepaliveWithRetries:(unsigned int)arg1 retryIntervalInMilliseconds:(unsigned long long)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4;
 - (_Bool)receiveDeleteChildSPI:(id)arg1 remoteSPI:(id)arg2 packet:(id)arg3;
-- (_Bool)initiateDeleteChildSPI:(id)arg1 remoteSPI:(id)arg2;
+- (void)initiateDeleteChildSPI:(id)arg1 remoteSPI:(id)arg2 deleteCompletionCallback:(CDUnknownBlockType)arg3;
 - (_Bool)innerReceiveDeleteIKESA:(id)arg1;
-- (_Bool)initiateDelete:(CDUnknownBlockType)arg1 sendCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)initiateDelete:(id)arg1;
 - (void)reportAdditionalAddressesInPacket:(id)arg1;
 - (void)reportPrivateNotifiesInPacket:(id)arg1;
 

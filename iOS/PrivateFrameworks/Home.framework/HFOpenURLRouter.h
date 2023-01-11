@@ -14,8 +14,10 @@
 }
 
 + (id)sharedInstance;
-@property(nonatomic) __weak id <HFApplicationURLHandling> applicationURLHandler; // @synthesize applicationURLHandler=_applicationURLHandler;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <HFApplicationURLHandling> applicationURLHandler; // @synthesize applicationURLHandler=_applicationURLHandler;
+- (void)_sendAnalyticsEventForURL:(id)arg1;
+- (id)openSensitiveURL:(id)arg1;
 - (id)openURL:(id)arg1;
 
 @end

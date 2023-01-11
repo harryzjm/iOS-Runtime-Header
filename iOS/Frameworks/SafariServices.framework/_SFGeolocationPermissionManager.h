@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebUI/WBSGeolocationPreferenceManager.h>
+#import <SafariSharedUI/WBSGeolocationPreferenceManager.h>
 
-@class UIWebGeolocationPolicyDecider;
+@class CLLocationManager, UIWebGeolocationPolicyDecider;
 
 @interface _SFGeolocationPermissionManager : WBSGeolocationPreferenceManager
 {
     UIWebGeolocationPolicyDecider *_policyDecider;
+    CLLocationManager *_locationManager;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (_Bool)hasPreciseLocationPermission;
 - (void)_showDialogRequestingPermissionForURL:(id)arg1 frame:(id)arg2 dialogPresenter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestPermissionForURL:(id)arg1 frame:(id)arg2 dialogPresenter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

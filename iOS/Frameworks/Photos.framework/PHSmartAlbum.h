@@ -8,8 +8,11 @@
 {
 }
 
++ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
++ (id)albumKindFromSmartAlbumSubtype:(long long)arg1;
 + (id)fetchType;
 + (id)managedEntityName;
++ (id)_collectionSubtypeExpressionForFetchRequests;
 - (_Bool)collectionHasFixedOrder;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PDFAnnotation, PDFPageView, PDFView, UITextView, UIViewController;
+@class NSString, NSUndoManager, PDFAnnotation, PDFPageView, PDFView, UITextView, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface PDFKitPopupViewPrivate : NSObject
@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     PDFPageView *pageView;
     PDFView *view;
     UITextView *popupTextView;
+    NSUndoManager *popupTextViewUndoManager;
     UIViewController *popupController;
     NSString *contents;
     _Bool deviceIsiPhone;
     _Bool deviceIsiPad;
+    id savedFirstResponder;
 }
 
 - (void).cxx_destruct;

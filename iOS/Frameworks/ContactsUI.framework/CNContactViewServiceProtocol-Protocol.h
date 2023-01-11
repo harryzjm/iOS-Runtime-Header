@@ -9,8 +9,10 @@
 @class NSDictionary;
 
 @protocol CNContactViewServiceProtocol <NSObject>
+- (void)performConfirmedCancel;
 - (void)toggleEditing;
 - (void)editCancel;
+- (void)didChangeToShowTitle:(_Bool)arg1;
 - (void)didChangeToEditMode:(_Bool)arg1;
 - (void)setupWithOptions:(NSDictionary *)arg1 readyBlock:(void (^)(NSError *))arg2;
 @end

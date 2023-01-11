@@ -8,8 +8,6 @@
 
 @interface NSString (HomeKit)
 + (id)stringWithSQLite3Column:(struct sqlite3_stmt *)arg1 column:(int)arg2;
-+ (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (id)generateSHA1;
-- (id)serializeWithError:(id *)arg1;
 @end
 

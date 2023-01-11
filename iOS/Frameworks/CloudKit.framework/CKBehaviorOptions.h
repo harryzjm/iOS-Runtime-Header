@@ -21,6 +21,7 @@
 }
 
 + (id)sharedOptions;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUserDefaults *automatedDeviceGroupDefaults; // @synthesize automatedDeviceGroupDefaults=_automatedDeviceGroupDefaults;
 @property(retain, nonatomic) NSString *automatedDeviceGroup; // @synthesize automatedDeviceGroup=_automatedDeviceGroup;
 @property _Bool didReadAutomatedDeviceGroup; // @synthesize didReadAutomatedDeviceGroup=_didReadAutomatedDeviceGroup;
@@ -28,7 +29,13 @@
 @property(nonatomic) int mcToken; // @synthesize mcToken=_mcToken;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cachedPrefsQueue; // @synthesize cachedPrefsQueue=_cachedPrefsQueue;
 @property(retain, nonatomic) NSMutableDictionary *cachedPrefs; // @synthesize cachedPrefs=_cachedPrefs;
-- (void).cxx_destruct;
+- (void)setTranscoderPermittedRemoteMeasurement:(id)arg1;
+- (id)transcoderPermittedRemoteMeasurement;
+- (void)setTranscoderFunctionName:(id)arg1;
+- (id)transcoderFunctionName;
+- (void)setTranscoderServiceName:(id)arg1;
+- (id)transcoderServiceName;
+- (id)containerIdentifierPrefixesUsingDebugBinaries;
 - (void)setDeviceCountOverride:(id)arg1;
 - (id)deviceCountOverride;
 - (void)setForceUploadRequestActivitiesToRunImmediately:(_Bool)arg1;
@@ -70,8 +77,8 @@
 - (id)productName;
 - (_Bool)_buildIsOverridden;
 - (long long)maxRecordPCSMasterKeyRolls;
-- (void)setContainerIDToForceFatalManateeZoneDecryptionFailure:(id)arg1;
-- (id)containerIDToForceFatalManateeZoneDecryptionFailure;
+- (void)setContainerIdentifierToForceFatalManateeZoneDecryptionFailure:(id)arg1;
+- (id)containerIdentifierToForceFatalManateeZoneDecryptionFailure;
 - (void)setUseEnhancedPCSEncryptionContext:(_Bool)arg1;
 - (_Bool)useEnhancedPCSEncryptionContext;
 - (void)setRollZoneSharingKeys:(_Bool)arg1;
@@ -104,13 +111,8 @@
 - (unsigned long long)assetEvictionGracePeriodOnHighWatermarkWithDefaultValue:(unsigned long long)arg1;
 - (unsigned long long)assetEvictionGracePeriodWithDefaultValue:(unsigned long long)arg1;
 - (_Bool)evictRecentAssets;
-- (id)otherAccountsWithDefaultValue:(id)arg1;
 - (id)testRunIDHeader;
 - (void)setTestRunIDHeader:(id)arg1;
-- (void)setPrimaryAccountPasswordOverride:(id)arg1;
-- (id)primaryAccountPasswordOverride;
-- (void)setPrimaryAccountEmailOverride:(id)arg1;
-- (id)primaryAccountEmailOverride;
 - (void)setCustomMetricsServiceBaseURL:(id)arg1;
 - (id)customMetricsServiceBaseURL;
 - (void)setCustomCodeServiceBaseURL:(id)arg1;
@@ -131,8 +133,6 @@
 - (_Bool)pipelineFetchAllChangesRequests;
 - (_Bool)logTraffic;
 - (void)setLogTraffic:(_Bool)arg1;
-- (_Bool)logTrafficToTextFile;
-- (void)setLogTrafficToTextFile:(_Bool)arg1;
 - (_Bool)sendDebugHeader;
 - (void)setModTimeInAssetCacheEviction:(_Bool)arg1;
 - (_Bool)useModTimeInAssetCacheEviction;
@@ -156,6 +156,7 @@
 - (void)setCachedRecordExpiryTime:(int)arg1;
 - (int)cachedRecordExpiryTime;
 - (void)_setPref:(id)arg1 forKey:(id)arg2;
+- (id)_getDataOptionForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)_getArrayOptionForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)_getStringOptionForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)_getStringOptionLockedForKey:(id)arg1 defaultValue:(id)arg2;

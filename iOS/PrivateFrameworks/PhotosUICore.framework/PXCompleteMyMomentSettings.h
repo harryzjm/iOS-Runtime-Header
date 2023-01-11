@@ -11,10 +11,10 @@
 @interface PXCompleteMyMomentSettings <PXCMMWorkflowCoordinatorDelegate>
 {
     _Bool _cmmFeatureEnabled;
-    _Bool _showCMMSettingsAtTopLevel;
     _Bool _alwaysSortAfterAddMore;
     _Bool _preventNilTitles;
     _Bool _enableLightCuration;
+    _Bool _simulateMomentShareCreationError;
     _Bool _showTitle;
     _Bool _showSubtitle;
     _Bool _showOtherTitle;
@@ -26,6 +26,16 @@
     _Bool _allowSwipeSelection;
     _Bool _simulateImport;
     _Bool _simulateImportFailure;
+    _Bool _simulateShouldPromptUserToIgnoreBudgets;
+    _Bool _simulateCPLAlertOnPublish;
+    _Bool _emulatesEmptyMomentShare;
+    _Bool _disableOneUpDescriptiveAdd;
+    _Bool _disableDescriptiveWaiting;
+    _Bool _disableClickyOrb;
+    _Bool _disableShareAction;
+    _Bool _disableShowInAllPhotosAction;
+    _Bool _disableCopyAction;
+    _Bool _disableDetailView;
     _Bool _allowLayoutTransitionGesture;
     _Bool _shouldShowInlineAddButton;
     _Bool _showAttachedHeaderView;
@@ -46,6 +56,7 @@
     _Bool _showDebugStatus;
     _Bool _alwaysTapToRetry;
     _Bool _useDebugColors;
+    _Bool _simulateMomentShareBubbleError;
     _Bool _showMessageTextEntryGadget;
     _Bool _insertNewRecipientsAtTheEnd;
     _Bool _graphSuggestionEnabled;
@@ -67,6 +78,7 @@
     long long _suggestionsDataSourceType;
     unsigned long long _suggestionsMatchingStrategy;
     long long _suggestionsScrollDirection;
+    long long _simulatedMomentShareCreationErrorType;
     long long _publishTransport;
     long long _peopleSuggestionsDataSourceType;
     long long _sendBackDataSourceType;
@@ -75,12 +87,17 @@
     long long _reviewFlowDataSourceType;
     long long _overrideNumberOfColumnsInPortrait;
     long long _overrideNumberOfColumnsInLandscape;
+    long long _simulatedMomentShareBubbleErrorType;
     long long _sharingLinkType;
     double _peopleSuggestionsTimeout;
     long long _sidebarType;
 }
 
 + (id)sharedInstance;
++ (id)_enabledAllCmmImprovementsActionPredicate;
++ (id)_enableAllCmmImprovementsAction;
++ (id)simulatedMomentShareErrorLabels;
++ (id)simulatedMomentShareErrorValues;
 + (id)transientProperties;
 + (id)settingsControllerModule;
 @property(nonatomic) _Bool shouldIncludeSpatialOvercaptureResources; // @synthesize shouldIncludeSpatialOvercaptureResources=_shouldIncludeSpatialOvercaptureResources;
@@ -100,6 +117,8 @@
 @property(nonatomic) long long sharingLinkType; // @synthesize sharingLinkType=_sharingLinkType;
 @property(nonatomic) _Bool insertNewRecipientsAtTheEnd; // @synthesize insertNewRecipientsAtTheEnd=_insertNewRecipientsAtTheEnd;
 @property(nonatomic) _Bool showMessageTextEntryGadget; // @synthesize showMessageTextEntryGadget=_showMessageTextEntryGadget;
+@property(nonatomic) long long simulatedMomentShareBubbleErrorType; // @synthesize simulatedMomentShareBubbleErrorType=_simulatedMomentShareBubbleErrorType;
+@property(nonatomic) _Bool simulateMomentShareBubbleError; // @synthesize simulateMomentShareBubbleError=_simulateMomentShareBubbleError;
 @property(nonatomic) _Bool useDebugColors; // @synthesize useDebugColors=_useDebugColors;
 @property(nonatomic) long long overrideNumberOfColumnsInLandscape; // @synthesize overrideNumberOfColumnsInLandscape=_overrideNumberOfColumnsInLandscape;
 @property(nonatomic) long long overrideNumberOfColumnsInPortrait; // @synthesize overrideNumberOfColumnsInPortrait=_overrideNumberOfColumnsInPortrait;
@@ -124,6 +143,16 @@
 @property(nonatomic) _Bool allowLayoutTransitionGesture; // @synthesize allowLayoutTransitionGesture=_allowLayoutTransitionGesture;
 @property(nonatomic) long long reviewFlowDataSourceType; // @synthesize reviewFlowDataSourceType=_reviewFlowDataSourceType;
 @property(nonatomic) long long reviewFlow; // @synthesize reviewFlow=_reviewFlow;
+@property(nonatomic) _Bool disableDetailView; // @synthesize disableDetailView=_disableDetailView;
+@property(nonatomic) _Bool disableCopyAction; // @synthesize disableCopyAction=_disableCopyAction;
+@property(nonatomic) _Bool disableShowInAllPhotosAction; // @synthesize disableShowInAllPhotosAction=_disableShowInAllPhotosAction;
+@property(nonatomic) _Bool disableShareAction; // @synthesize disableShareAction=_disableShareAction;
+@property(nonatomic) _Bool disableClickyOrb; // @synthesize disableClickyOrb=_disableClickyOrb;
+@property(nonatomic) _Bool disableDescriptiveWaiting; // @synthesize disableDescriptiveWaiting=_disableDescriptiveWaiting;
+@property(nonatomic) _Bool disableOneUpDescriptiveAdd; // @synthesize disableOneUpDescriptiveAdd=_disableOneUpDescriptiveAdd;
+@property(nonatomic) _Bool emulatesEmptyMomentShare; // @synthesize emulatesEmptyMomentShare=_emulatesEmptyMomentShare;
+@property(nonatomic) _Bool simulateCPLAlertOnPublish; // @synthesize simulateCPLAlertOnPublish=_simulateCPLAlertOnPublish;
+@property(nonatomic) _Bool simulateShouldPromptUserToIgnoreBudgets; // @synthesize simulateShouldPromptUserToIgnoreBudgets=_simulateShouldPromptUserToIgnoreBudgets;
 @property(nonatomic) _Bool simulateImportFailure; // @synthesize simulateImportFailure=_simulateImportFailure;
 @property(nonatomic) _Bool simulateImport; // @synthesize simulateImport=_simulateImport;
 @property(nonatomic) _Bool allowSwipeSelection; // @synthesize allowSwipeSelection=_allowSwipeSelection;
@@ -139,6 +168,8 @@
 @property(nonatomic) _Bool showOtherTitle; // @synthesize showOtherTitle=_showOtherTitle;
 @property(nonatomic) _Bool showSubtitle; // @synthesize showSubtitle=_showSubtitle;
 @property(nonatomic) _Bool showTitle; // @synthesize showTitle=_showTitle;
+@property(nonatomic) long long simulatedMomentShareCreationErrorType; // @synthesize simulatedMomentShareCreationErrorType=_simulatedMomentShareCreationErrorType;
+@property(nonatomic) _Bool simulateMomentShareCreationError; // @synthesize simulateMomentShareCreationError=_simulateMomentShareCreationError;
 @property(nonatomic) _Bool enableLightCuration; // @synthesize enableLightCuration=_enableLightCuration;
 @property(nonatomic) long long suggestionsScrollDirection; // @synthesize suggestionsScrollDirection=_suggestionsScrollDirection;
 @property(nonatomic) unsigned long long suggestionsMatchingStrategy; // @synthesize suggestionsMatchingStrategy=_suggestionsMatchingStrategy;
@@ -149,7 +180,6 @@
 @property(nonatomic) unsigned long long shareSheetLinkTotalFileSizeThresholdMB; // @synthesize shareSheetLinkTotalFileSizeThresholdMB=_shareSheetLinkTotalFileSizeThresholdMB;
 @property(nonatomic) long long shareSheetLinkAssetCountThreshold; // @synthesize shareSheetLinkAssetCountThreshold=_shareSheetLinkAssetCountThreshold;
 @property(nonatomic) long long cmmShareSheetBehavior; // @synthesize cmmShareSheetBehavior=_cmmShareSheetBehavior;
-@property(nonatomic) _Bool showCMMSettingsAtTopLevel; // @synthesize showCMMSettingsAtTopLevel=_showCMMSettingsAtTopLevel;
 @property(nonatomic) _Bool cmmFeatureEnabled; // @synthesize cmmFeatureEnabled=_cmmFeatureEnabled;
 - (void)setDefaultValues;
 - (id)parentSettings;

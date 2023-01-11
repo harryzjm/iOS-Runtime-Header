@@ -18,6 +18,7 @@
 + (id)vectorGlyphComponentWithWeight:(long long)arg1 size:(long long)arg2 fromGlyphReader:(id)arg3;
 + (_Bool)getPreferredWeight:(long long *)arg1 preferredSize:(long long *)arg2 passingTest:(CDUnknownBlockType)arg3;
 + (id)representativeGlyphWithData:(id)arg1 error:(id *)arg2;
++ (id)vectorGlyphReaderWithData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;

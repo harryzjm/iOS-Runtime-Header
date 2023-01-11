@@ -13,10 +13,12 @@
     UIViewController *_presentingViewController;
 }
 
++ (id)_logStringForAppleIDServiceType:(long long)arg1;
++ (long long)_appleIDServiceTypeForTRAccountServices:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(retain, nonatomic) NSSet *targetedServices; // @synthesize targetedServices=_targetedServices;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (void)_handleProxyAuthenticationResponse:(id)arg1;
 - (void)_performProxyAuthenticationWithProxiedDevice:(id)arg1;
 - (void)_handleProxyDeviceResponse:(id)arg1;

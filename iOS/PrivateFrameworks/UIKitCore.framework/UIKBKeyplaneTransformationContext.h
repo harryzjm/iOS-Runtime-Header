@@ -13,17 +13,21 @@ __attribute__((visibility("hidden")))
 {
     _Bool _usesScriptSwitch;
     UIKBTree *_activeKeyboard;
+    UIKBTree *_activeKeyplane;
     NSString *_currentKeyplaneName;
     UIKBScreenTraits *_screenTraits;
     double _resizingOffset;
+    struct CGSize _keyboardSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double resizingOffset; // @synthesize resizingOffset=_resizingOffset;
 @property(nonatomic) _Bool usesScriptSwitch; // @synthesize usesScriptSwitch=_usesScriptSwitch;
 @property(retain, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
 @property(retain, nonatomic) NSString *currentKeyplaneName; // @synthesize currentKeyplaneName=_currentKeyplaneName;
+@property(nonatomic) struct CGSize keyboardSize; // @synthesize keyboardSize=_keyboardSize;
+@property(retain, nonatomic) UIKBTree *activeKeyplane; // @synthesize activeKeyplane=_activeKeyplane;
 @property(retain, nonatomic) UIKBTree *activeKeyboard; // @synthesize activeKeyboard=_activeKeyboard;
-- (void).cxx_destruct;
 
 @end
 

@@ -18,6 +18,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *localizedSectionHeaderLine; // @synthesize localizedSectionHeaderLine=_localizedSectionHeaderLine;
 @property(retain, nonatomic) NSString *localizedLede; // @synthesize localizedLede=_localizedLede;
 @property(retain, nonatomic) NSString *localizedBody; // @synthesize localizedBody=_localizedBody;
@@ -25,10 +26,11 @@
 @property(readonly, nonatomic) NSString *ledeKey; // @synthesize ledeKey=_ledeKey;
 @property(readonly, nonatomic) NSString *bodyKey; // @synthesize bodyKey=_bodyKey;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)localizeWithBundle:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

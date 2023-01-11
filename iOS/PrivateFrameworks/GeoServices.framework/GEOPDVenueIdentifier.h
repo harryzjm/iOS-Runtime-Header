@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDVenueIdentifier : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _containedBys;
     CDStruct_62a50c50 _sectionIds;
@@ -26,6 +25,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _unitId;
     unsigned long long _venueGeminiId;
     unsigned long long _venueId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _levelOrdinal;
     struct {
         unsigned int has_buildingId:1;
@@ -40,18 +42,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_containedBys:1;
         unsigned int read_sectionIds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_containedBys:1;
-        unsigned int wrote_sectionIds:1;
-        unsigned int wrote_buildingId:1;
-        unsigned int wrote_featureId:1;
-        unsigned int wrote_fixtureId:1;
-        unsigned int wrote_geminiId:1;
-        unsigned int wrote_levelId:1;
-        unsigned int wrote_unitId:1;
-        unsigned int wrote_venueGeminiId:1;
-        unsigned int wrote_venueId:1;
-        unsigned int wrote_levelOrdinal:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -67,6 +58,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasVenueGeminiId;
@@ -75,12 +69,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long geminiId;
 - (void)setContainedBys:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)containedByAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsContainedBy:(unsigned long long)arg1;
 - (void)addContainedBy:(unsigned long long)arg1;
 - (void)clearContainedBys;
 @property(readonly, nonatomic) unsigned long long *containedBys;
 @property(readonly, nonatomic) unsigned long long containedBysCount;
-- (void)_readContainedBys;
 @property(nonatomic) _Bool hasFeatureId;
 @property(nonatomic) unsigned long long featureId;
 @property(nonatomic) _Bool hasLevelOrdinal;
@@ -91,12 +83,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long unitId;
 - (void)setSectionIds:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)sectionIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsSectionId:(unsigned long long)arg1;
 - (void)addSectionId:(unsigned long long)arg1;
 - (void)clearSectionIds;
 @property(readonly, nonatomic) unsigned long long *sectionIds;
 @property(readonly, nonatomic) unsigned long long sectionIdsCount;
-- (void)_readSectionIds;
 @property(nonatomic) _Bool hasLevelId;
 @property(nonatomic) unsigned long long levelId;
 @property(nonatomic) _Bool hasBuildingId;
@@ -104,9 +94,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasVenueId;
 @property(nonatomic) unsigned long long venueId;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithIdentifier:(id)arg1;
-- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2 componentIdentifier:(id)arg3;
-- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2;
+- (id)initWithVenueID:(unsigned long long)arg1 featureID:(unsigned long long)arg2 businessID:(unsigned long long)arg3 componentIdentifier:(id)arg4;
+- (id)initWithVenueID:(unsigned long long)arg1 featureID:(unsigned long long)arg2 businessID:(unsigned long long)arg3;
 
 @end
 

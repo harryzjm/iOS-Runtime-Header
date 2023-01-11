@@ -13,15 +13,19 @@
 
 @interface EKPersistentObject : NSObject <EKProtocolObject, EKFrozenMeltedPair>
 {
-    struct _opaque_pthread_mutex_t _lock;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _lock;
     EKEventStore *_eventStore;
     EKObjectID *_objectID;
-    NSMutableSet *_dirtyProperties;
     unsigned int _flags;
+    NSMutableSet *_coCommitObjects;
     NSMutableDictionary *_loadedProperties;
-    NSMutableDictionary *_committedProperties;
+    NSMutableDictionary *_updatedProperties;
 }
 
++ (id)allObjectsWithChangesRelatedToObjects:(id)arg1;
 + (_Bool)_shouldRetainPropertyForKey:(id)arg1;
 + (id)_relationForKey:(id)arg1;
 + (Class)meltedClass;
@@ -30,7 +34,6 @@
 + (Class)alternateUniverseClass;
 + (id)relations;
 + (id)defaultPropertiesToLoad;
-@property(retain, nonatomic) NSMutableDictionary *committedProperties; // @synthesize committedProperties=_committedProperties;
 - (void).cxx_destruct;
 - (id)dump;
 - (void)_loadDefaultPropertiesIfNeeded;
@@ -42,8 +45,6 @@
 - (_Bool)_loadRelationForKey:(id)arg1 value:(id *)arg2;
 - (void)primitiveSetDataValue:(id)arg1 forKey:(id)arg2;
 - (id)primitiveDataValueForKey:(id)arg1;
-- (void)primitiveSetURLValue:(id)arg1 forKey:(id)arg2;
-- (id)primitiveURLValueForKey:(id)arg1;
 - (void)primitiveSetStringValue:(id)arg1 forKey:(id)arg2;
 - (id)primitiveStringValueForKey:(id)arg1;
 - (id)_loadStringValueForKey:(id)arg1;
@@ -65,14 +66,18 @@
 - (void)_removeObjectCore:(id)arg1 fromValues:(id)arg2 relation:(id)arg3;
 - (void)_addObjectCore:(id)arg1 toValues:(id)arg2 relation:(id)arg3;
 - (id)primitiveRelationValueForKey:(id)arg1;
-- (id)committedValueForKey:(id)arg1;
 - (void)unloadPropertyForKey:(id)arg1;
 - (void)_releaseLoadedProperties;
-- (void)_setProperty:(id)arg1 forKey:(id)arg2 forRelation:(id)arg3;
-- (void)_setProperty:(id)arg1 forKey:(id)arg2 isRelation:(_Bool)arg3;
-- (void)_setProperty:(id)arg1 forKey:(id)arg2;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 forRelation:(id)arg3 isUpdatedProperty:(_Bool)arg4;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 isRelation:(_Bool)arg3 isUpdatedProperty:(_Bool)arg4;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 isUpdatedProperty:(_Bool)arg3;
+- (void)_createUpdatedPropertiesIfNeeded;
 - (void)_createLoadedPropertiesIfNeeded;
 - (id)_propertyForKey:(id)arg1;
+- (id)_loadedPropertyForKey:(id)arg1;
+- (id)loadedPropertyForKey:(id)arg1;
+- (void)addCoCommitObject:(id)arg1;
+- (id)coCommitObjects;
 - (_Bool)_areDefaultPropertiesLoaded;
 - (void)_setDefaultPropertiesLoaded:(_Bool)arg1;
 - (_Bool)_isPendingDelete;
@@ -87,8 +92,6 @@
 - (_Bool)setAttributes:(id)arg1 relations:(id)arg2 objectID:(id)arg3 eventStore:(id)arg4 error:(id *)arg5;
 - (_Bool)pushDirtyProperties:(id *)arg1;
 - (_Bool)isPropertyLoaded:(id)arg1;
-- (void)_addDirtyProperty:(id)arg1;
-- (id)dirtyProperties;
 - (_Bool)isPropertyDirty:(id)arg1;
 - (_Bool)refresh;
 - (id)_loadedPropertyKeys;
@@ -104,7 +107,7 @@
 - (_Bool)isEqual:(id)arg1 ignoringProperties:(id)arg2;
 - (_Bool)isCompletelyEqual:(id)arg1;
 - (id)meltedObjectInStore:(id)arg1;
-- (struct EKPersistentObject *)frozenObject;
+- (id)frozenObject;
 - (Class)frozenClass;
 - (id)existingMeltedObject;
 - (id)changeSet;
@@ -119,7 +122,7 @@
 @property(readonly, nonatomic) _Bool canBeConvertedToFullObject;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
-- (id)initWithAlternateUniverseObject:(struct EKPersistentObject *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
+- (id)initWithAlternateUniverseObject:(id)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (id)init;
 
 // Remaining properties

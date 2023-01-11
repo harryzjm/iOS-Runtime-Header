@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
     struct CGPoint _initialCentroidInSourceWindow;
 }
 
++ (id)configurationWithItems:(id)arg1 dataOwner:(long long)arg2 pointerTouch:(id)arg3 requiredContextIds:(id)arg4 sourceView:(id)arg5;
 + (id)configurationWithItems:(id)arg1 dataOwner:(long long)arg2 initialCentroidInSourceWindow:(struct CGPoint)arg3 requiredContextIds:(id)arg4 sourceView:(id)arg5 accessibilityEndpoint:(id)arg6;
 + (id)configurationWithItems:(id)arg1 dataOwner:(long long)arg2 touches:(id)arg3 requiredContextIds:(id)arg4 sourceView:(id)arg5;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(nonatomic) struct CGPoint initialCentroidInSourceWindow; // @synthesize initialCentroidInSourceWindow=_initialCentroidInSourceWindow;
 @property(readonly, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(readonly, nonatomic) long long dataOwner; // @synthesize dataOwner=_dataOwner;
-- (void).cxx_destruct;
 - (id)initWithItems:(id)arg1 dataOwner:(long long)arg2 requiredContextIds:(id)arg3 sourceView:(id)arg4;
 
 @end

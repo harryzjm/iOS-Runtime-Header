@@ -8,11 +8,10 @@
 #import <PhotosGraph/NSObject-Protocol.h>
 #import <PhotosGraph/PLRegionsClusteringItem-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
-@protocol CLSItemScoringContext;
+@class CLLocation, CLSAssetScoringContext, NSArray, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
 
 @protocol CLSInvestigationItem <NSObject, PLRegionsClusteringItem, CLSSimilarlyStackableItem>
-+ (id <CLSItemScoringContext>)contextForItems:(NSArray *)arg1;
+@property(readonly, nonatomic) double clsSquareCropScore;
 @property(readonly) _Bool clsHasInterestingScenes;
 @property(readonly) _Bool clsHasPoorResolution;
 @property(readonly) _Bool clsAvoidIfPossibleForKeyItem;
@@ -21,7 +20,6 @@
 @property(readonly, nonatomic) NSDate *cls_universalDate;
 @property(readonly, nonatomic) NSDateComponents *cls_localDateComponents;
 @property(readonly, nonatomic) VNSceneprint *clsSceneprint;
-@property(readonly, nonatomic) NSData *clsDistanceIdentity;
 @property(readonly, copy, nonatomic) NSSet *clsSceneClassifications;
 @property(readonly, nonatomic) _Bool clsIsInterestingReframe;
 @property(readonly, nonatomic) double clsDuration;
@@ -35,12 +33,12 @@
 @property(readonly, nonatomic) _Bool clsIsInterestingVideo;
 @property(readonly, nonatomic) _Bool clsIsLongExposure;
 @property(readonly, nonatomic) _Bool clsIsLoopOrBounce;
-@property(readonly, nonatomic) _Bool isBlurry;
+@property(readonly, nonatomic) _Bool clsIsBlurry;
 @property(readonly, nonatomic) _Bool clsIsAestheticallyPrettyGood;
 @property(readonly, nonatomic) _Bool isVideo;
 @property(readonly, nonatomic) _Bool isFavorite;
-@property(readonly, nonatomic) _Bool isScreenshotOrScreenRecording;
-@property(readonly, nonatomic) _Bool isUtility;
+@property(readonly, nonatomic) _Bool clsIsScreenshotOrScreenRecording;
+@property(readonly, nonatomic) _Bool clsIsUtility;
 @property(readonly, nonatomic) double clsFaceScore;
 @property(readonly, nonatomic) double clsAutoplaySuggestionScore;
 @property(readonly, nonatomic) double clsHighlightVisibilityScore;
@@ -58,7 +56,6 @@
 @property(readonly, nonatomic) NSArray *clsUnprefetchedPeopleNames;
 @property(readonly, nonatomic) NSArray *clsPeopleNames;
 @property(readonly, nonatomic) CLLocation *clsLocation;
-- (double)scoreWithContext:(id <CLSItemScoringContext>)arg1;
-- (struct CGImage *)createThumbnailWithResolution:(unsigned long long)arg1 fillMode:(_Bool)arg2 networkAllowed:(_Bool)arg3;
+- (double)scoreInContext:(CLSAssetScoringContext *)arg1;
 @end
 

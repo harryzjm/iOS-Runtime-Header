@@ -18,12 +18,14 @@
     CDUnknownBlockType _extensionRequestedViewControllerPresentation;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType extensionRequestedViewControllerPresentation; // @synthesize extensionRequestedViewControllerPresentation=_extensionRequestedViewControllerPresentation;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType extensionRequestedViewControllerPresentation; // @synthesize extensionRequestedViewControllerPresentation=_extensionRequestedViewControllerPresentation;
 - (void)dealloc;
 @property(readonly, copy) NSString *description;
+- (void)extensionDidFinishWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)extensionDidFinishWithError:(id)arg1;
 - (void)extensionDidFinish;
+- (void)extensionDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleExtensionBasedAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_extensionLoader;
 

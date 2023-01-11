@@ -6,25 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString, TKTokenConfigurationProxy, TKTokenID;
+@class NSArray, NSData, NSString, TKTokenConfigurationConnection, TKTokenID;
 
 @interface TKTokenConfiguration : NSObject
 {
-    TKTokenConfigurationProxy *_proxy;
+    TKTokenConfigurationConnection *_configurationConnection;
     NSArray *_keychainItems;
     TKTokenID *_tokenID;
 }
 
++ (void)set_hasSeparateKeysAndCertificatesObjectIDSpace:(_Bool)arg1;
++ (_Bool)_hasSeparateKeysAndCertificatesObjectIDSpace;
 + (id)interfaceForProtocol;
-@property(readonly, nonatomic) TKTokenID *tokenID; // @synthesize tokenID=_tokenID;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) TKTokenID *tokenID; // @synthesize tokenID=_tokenID;
 - (id)certificateForObjectID:(id)arg1 error:(id *)arg2;
 - (id)keyForObjectID:(id)arg1 error:(id *)arg2;
 @property(copy, nonatomic) NSArray *keychainItems;
 @property(copy, nonatomic) NSData *configurationData;
 - (id)beginTransaction;
 @property(readonly, nonatomic) NSString *instanceID;
-- (id)initWithTokenID:(id)arg1 proxy:(id)arg2;
+- (id)initWithTokenID:(id)arg1 configurationConnection:(id)arg2;
 
 @end
 

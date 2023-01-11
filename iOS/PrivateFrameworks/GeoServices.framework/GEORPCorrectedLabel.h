@@ -13,13 +13,15 @@
 @interface GEORPCorrectedLabel : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_coordinate;
     NSString *_correctedValue;
     NSMutableArray *_featureHandles;
     GEOMapRegion *_featureRegion;
     NSString *_originalValue;
     unsigned long long _uid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _localizedLabels;
     struct {
         unsigned int has_uid:1;
@@ -29,13 +31,7 @@
         unsigned int read_featureHandles:1;
         unsigned int read_featureRegion:1;
         unsigned int read_originalValue:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_correctedValue:1;
-        unsigned int wrote_featureHandles:1;
-        unsigned int wrote_featureRegion:1;
-        unsigned int wrote_originalValue:1;
-        unsigned int wrote_uid:1;
-        unsigned int wrote_localizedLabels:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -50,6 +46,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasLocalizedLabels;
@@ -58,23 +57,19 @@
 @property(nonatomic) unsigned long long uid;
 @property(retain, nonatomic) GEOLatLng *coordinate;
 @property(readonly, nonatomic) _Bool hasCoordinate;
-- (void)_readCoordinate;
 - (id)featureHandleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)featureHandlesCount;
-- (void)_addNoFlagsFeatureHandle:(id)arg1;
 - (void)addFeatureHandle:(id)arg1;
 - (void)clearFeatureHandles;
 @property(retain, nonatomic) NSMutableArray *featureHandles;
-- (void)_readFeatureHandles;
 @property(retain, nonatomic) GEOMapRegion *featureRegion;
 @property(readonly, nonatomic) _Bool hasFeatureRegion;
-- (void)_readFeatureRegion;
 @property(retain, nonatomic) NSString *correctedValue;
 @property(readonly, nonatomic) _Bool hasCorrectedValue;
-- (void)_readCorrectedValue;
 @property(retain, nonatomic) NSString *originalValue;
 @property(readonly, nonatomic) _Bool hasOriginalValue;
-- (void)_readOriginalValue;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -20,13 +20,16 @@ __attribute__((visibility("hidden")))
     NSArray *_subPlacements;
 }
 
++ (id)deactivatedKeyboardPlacementWithCurrentPlacement:(CDUnknownBlockType)arg1;
 + (id)placement;
 + (id)encodablePlacementsForXPC;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *subPlacements; // @synthesize subPlacements=_subPlacements;
 @property(nonatomic) double extendedHeight; // @synthesize extendedHeight=_extendedHeight;
 @property(nonatomic) id <UIInputViewSetPlacementDelegate> delegate; // @synthesize delegate;
-- (void).cxx_destruct;
+- (unsigned long long)computeComparisonMask;
+- (void)setOtherPlacement:(id)arg1;
 - (struct CGRect)adjustBoundsForNotificationsWithOwner:(id)arg1;
 - (id)expiringPlacement;
 - (unsigned long long)indexForPurpose:(unsigned long long)arg1;
@@ -41,15 +44,20 @@ __attribute__((visibility("hidden")))
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)horizontalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
+@property(readonly, nonatomic) _Bool requiresWindowBasedSafeAreaInsets;
 @property(readonly, nonatomic) _Bool isInteractive;
+@property(readonly, nonatomic) _Bool showsInputOrAssistantViews;
 @property(readonly, nonatomic) _Bool showsKeyboard;
 @property(readonly, nonatomic) _Bool showsInputViews;
+@property(readonly, nonatomic) _Bool isHiddenForFloatingTransition;
+@property(readonly, nonatomic) _Bool isVisible;
 @property(readonly, nonatomic) _Bool isFloating;
 @property(readonly, nonatomic) _Bool isUndocked;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGAffineTransform)transform;
 @property(readonly, nonatomic) double alpha;
 - (void)setDirty;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

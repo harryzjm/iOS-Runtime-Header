@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIApplicationSceneSettings.h>
+#import <UIKit/UICarPlayApplicationSceneSettings.h>
 
 #import <CarPlayUIServices/CRSUIApplicationSceneSettings-Protocol.h>
 
 @class NSString;
 
-@interface CRSUIApplicationSceneSettings : UIApplicationSceneSettings <CRSUIApplicationSceneSettings>
+@interface CRSUIApplicationSceneSettings : UICarPlayApplicationSceneSettings <CRSUIApplicationSceneSettings>
 {
 }
 
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) long long mapStyle;
 @property(readonly, nonatomic) double bannerHeight;
 
 // Remaining properties

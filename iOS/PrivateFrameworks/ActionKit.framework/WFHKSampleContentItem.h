@@ -36,7 +36,7 @@
 - (id)startDate;
 - (id)categorySample;
 - (id)unit;
-- (id)categorySampleValue;
+- (id)localizedCategorySampleValue;
 - (id)sampleValue;
 - (id)readableTypeIdentifier;
 - (id)quantitySample;

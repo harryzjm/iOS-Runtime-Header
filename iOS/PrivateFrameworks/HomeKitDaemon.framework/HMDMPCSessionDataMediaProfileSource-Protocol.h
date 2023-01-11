@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDMediaProfile, NSUUID;
+@class HMDHome, HMDMediaProfile, NSUUID;
 
 @protocol HMDMPCSessionDataMediaProfileSource
+@property(readonly) __weak HMDHome *home;
 - (HMDMediaProfile *)mediaProfileWithUUID:(NSUUID *)arg1;
 @end
 

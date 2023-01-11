@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityServesAsFirstElement;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (id)_axSiblingScrollView;
@@ -21,6 +22,7 @@
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (void)_updateSegmentedControl;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

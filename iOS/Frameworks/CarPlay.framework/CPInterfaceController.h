@@ -9,7 +9,7 @@
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 #import <CarPlay/CPTemplateServiceClientInterface-Protocol.h>
 
-@class CPTemplate, CPWindow, NSArray, NSMutableArray, NSString, NSXPCConnection;
+@class CPTemplate, CPWindow, NSArray, NSMutableArray, NSString, NSXPCConnection, UITraitCollection;
 @protocol CPInterfaceControllerDelegate, CPTemplateProviding, CPWindowProviding;
 
 @interface CPInterfaceController : NSObject <CPTemplateDelegate, CPTemplateServiceClientInterface>
@@ -29,6 +29,7 @@
 + (id)_templateClientInterface;
 + (void)_whitelistClassesForBaseTemplateProvider:(id)arg1;
 + (id)_templateProvidingInterface;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CPWindowProviding> windowProvider; // @synthesize windowProvider=_windowProvider;
 @property(retain, nonatomic) CPWindow *carWindow; // @synthesize carWindow=_carWindow;
 @property(retain, nonatomic) CPTemplate *lastPresentedTemplate; // @synthesize lastPresentedTemplate=_lastPresentedTemplate;
@@ -39,14 +40,17 @@
 @property(retain, nonatomic) CPTemplate *rootTemplate; // @synthesize rootTemplate=_rootTemplate;
 @property(nonatomic) _Bool prefersDarkUserInterfaceStyle; // @synthesize prefersDarkUserInterfaceStyle=_prefersDarkUserInterfaceStyle;
 @property(nonatomic) __weak id <CPInterfaceControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)bannerTappedWithIdentifier:(id)arg1;
 - (void)bannerDidDisappearWithIdentifier:(id)arg1;
 - (void)bannerDidAppearWithIdentifier:(id)arg1;
 - (id)_activeMapTemplate;
 - (void)templateIdentifierDidDismiss:(id)arg1;
 - (void)templateIdentifierDidPop:(id)arg1;
+- (void)clientExceededAudioMetadataThrottleLimit;
+- (void)clientExceededTabBarTabLimit;
+- (void)clientPushedIllegalTemplateOfClass:(id)arg1;
 - (void)clientExceededHierarchyDepthLimit;
+- (void)clientPushNowPlayingTemplateAnimated:(_Bool)arg1;
 - (void)updateInterestingLayoutGuideWithInsets:(struct UIEdgeInsets)arg1;
 - (_Bool)isCarPlayCanvasActive;
 - (void)templateDidDismiss:(id)arg1;
@@ -55,6 +59,7 @@
 - (void)templateDidAppear:(id)arg1 animated:(_Bool)arg2;
 - (void)templateWillAppear:(id)arg1 animated:(_Bool)arg2;
 - (void)handleActionForControlIdentifier:(id)arg1;
+@property(readonly, nonatomic) UITraitCollection *carTraitCollection;
 - (id)_synchronousTemplateProvider;
 - (id)_listenerEndpointForSettings:(id)arg1;
 - (void)_connectionInterrupted;
@@ -62,24 +67,36 @@
 - (void)_connectToListenerEndpoint:(id)arg1;
 - (void)_invalidate;
 - (void)_sceneConnect:(id)arg1;
-- (_Bool)_applicationHasMapsEntitlement;
-- (void)_presentAlertTemplate:(id)arg1 animated:(_Bool)arg2;
-- (void)_presentActionSheetTemplate:(id)arg1 animated:(_Bool)arg2;
-- (void)_pushSearchTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
-- (void)_pushListTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
-- (void)_pushMapTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
-- (void)_pushGridTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
-- (void)_pushVoiceControlTemplate:(id)arg1 animated:(_Bool)arg2;
+- (void)_presentAlertTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_presentActionSheetTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateTabBarTemplate:(id)arg1;
+- (void)_pushEntityTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushTabBarTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_pushNowPlayingTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushSearchTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushListTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushMapTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushInformationTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushGridTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_pushVoiceControlTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleCompletion:(CDUnknownBlockType)arg1 withSuccess:(_Bool)arg2 error:(id)arg3;
+- (void)popToRootTemplateAnimated:(_Bool)arg1;
+- (void)popTemplateAnimated:(_Bool)arg1;
+- (void)dismissTemplateAnimated:(_Bool)arg1;
+- (void)setRootTemplate:(id)arg1 animated:(_Bool)arg2;
+- (void)pushTemplate:(id)arg1 animated:(_Bool)arg2;
+- (void)popToTemplate:(id)arg1 animated:(_Bool)arg2;
+- (void)presentTemplate:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *templates;
 @property(readonly, nonatomic) CPTemplate *topTemplate;
-- (void)dismissTemplateAnimated:(_Bool)arg1;
-- (void)presentTemplate:(id)arg1 animated:(_Bool)arg2;
-- (void)popToTemplate:(id)arg1 animated:(_Bool)arg2;
-- (void)popTemplateAnimated:(_Bool)arg1;
-- (void)popToRootTemplateAnimated:(_Bool)arg1;
-- (void)_pushTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
-- (void)pushTemplate:(id)arg1 animated:(_Bool)arg2;
-- (void)setRootTemplate:(id)arg1 animated:(_Bool)arg2;
+- (void)dismissTemplateAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)popToTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)popTemplateAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)popToRootTemplateAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_pushTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)pushTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setRootTemplate:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_init;
 
 // Remaining properties

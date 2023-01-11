@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary;
+@class NSArray, NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MTLComputePipelineReflectionInternal
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_performanceStatistics;
     CDStruct_596dc0d1 _flags;
     unsigned int _traceBufferIndex;
+    NSData *_pluginReturnData;
     NSArray *_constantSamplerUniqueIdentifiers;
     NSArray *_constantSamplerDescriptors;
 }
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)setConstantSamplerUniqueIdentifiers:(id)arg1;
 - (id)constantSamplerDescriptors;
 - (id)constantSamplerUniqueIdentifiers;
+- (id)pluginReturnData;
 - (unsigned int)traceBufferIndex;
 - (CDStruct_596dc0d1)usageFlags;
 - (void)setPerformanceStatistics:(id)arg1;

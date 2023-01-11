@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BLPurchaseRequest, NSArray, NSDictionary, NSString, NSURL;
+@class BLDownloadManifestRequest, BLPurchaseRequest, NSArray, NSDictionary, NSString, NSURL;
+@protocol BLUIHostServiceProtocol;
 
 @protocol BLServiceProtocol
 - (void)getValueSimulateDeviceOutOfSpaceWithReply:(void (^)(_Bool, NSError *))arg1;
@@ -15,10 +16,17 @@
 - (void)setValueSimulateCrashAtInstallDuringUnzip:(_Bool)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)setValueSimulateCrashAtInstallDuringDecrypt:(_Bool)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)setValueSimulateCrashAtInstallStart:(_Bool)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)flushMetricsWithReply:(void (^)(NSError *))arg1;
+- (void)reloadFromServerWithReply:(void (^)(NSError *))arg1;
+- (void)setAutomaticDownloadEnabled:(_Bool)arg1 uiHostProxy:(id <BLUIHostServiceProtocol>)arg2 reply:(void (^)(NSError *))arg3;
+- (void)processAutomaticDownloadsWithReply:(void (^)(NSArray *, NSError *))arg1;
+- (void)requestDownloadsWithManifestRequest:(BLDownloadManifestRequest *)arg1 uiHostProxy:(id <BLUIHostServiceProtocol>)arg2 reply:(void (^)(BLDownloadManifestResponse *, NSError *))arg3;
+- (void)requestDownloadsWithRestoreContentRequestItems:(NSArray *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)requestDownloadsWithMetadata:(NSArray *)arg1 areRestore:(_Bool)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)requestDownloadWithMetadata:(NSDictionary *)arg1 isRestore:(_Bool)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)requestDownloadWithParameters:(NSDictionary *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
 - (void)downloadWithPermlink:(NSURL *)arg1 title:(NSString *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
+- (void)purchaseWithRequest:(BLPurchaseRequest *)arg1 uiHostProxy:(id <BLUIHostServiceProtocol>)arg2 reply:(void (^)(NSString *, BLPurchaseResponse *, NSError *))arg3;
 - (void)purchaseWithRequest:(BLPurchaseRequest *)arg1 reply:(void (^)(NSString *, BLPurchaseResponse *, NSError *))arg2;
 - (void)cancelAllActiveDownloadsWithReply:(void (^)(NSError *))arg1;
 - (void)cancelDownloadWithID:(NSString *)arg1 withReply:(void (^)(NSError *))arg2;

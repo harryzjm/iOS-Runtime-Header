@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDVendorSpecificPlaceRefinementParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOStructuredAddress *_addressHint;
     NSData *_addressObjectHint;
@@ -24,6 +23,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _muid;
     NSString *_placeNameHint;
     NSString *_vendorId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _addressGeocodeAccuracyHint;
     int _placeTypeHint;
     int _resultProviderId;
@@ -40,18 +42,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_locationHint:1;
         unsigned int read_placeNameHint:1;
         unsigned int read_vendorId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressHint:1;
-        unsigned int wrote_addressObjectHint:1;
-        unsigned int wrote_externalItemId:1;
-        unsigned int wrote_formattedAddressLineHints:1;
-        unsigned int wrote_locationHint:1;
-        unsigned int wrote_muid:1;
-        unsigned int wrote_placeNameHint:1;
-        unsigned int wrote_vendorId:1;
-        unsigned int wrote_addressGeocodeAccuracyHint:1;
-        unsigned int wrote_placeTypeHint:1;
-        unsigned int wrote_resultProviderId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -68,11 +59,13 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *addressObjectHint;
 @property(readonly, nonatomic) _Bool hasAddressObjectHint;
-- (void)_readAddressObjectHint;
 - (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
 - (id)addressGeocodeAccuracyHintAsString:(int)arg1;
 @property(nonatomic) _Bool hasAddressGeocodeAccuracyHint;
@@ -83,30 +76,25 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int placeTypeHint;
 - (id)formattedAddressLineHintAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formattedAddressLineHintsCount;
-- (void)_addNoFlagsFormattedAddressLineHint:(id)arg1;
 - (void)addFormattedAddressLineHint:(id)arg1;
 - (void)clearFormattedAddressLineHints;
 @property(retain, nonatomic) NSMutableArray *formattedAddressLineHints;
-- (void)_readFormattedAddressLineHints;
 @property(retain, nonatomic) NSString *placeNameHint;
 @property(readonly, nonatomic) _Bool hasPlaceNameHint;
-- (void)_readPlaceNameHint;
 @property(retain, nonatomic) GEOStructuredAddress *addressHint;
 @property(readonly, nonatomic) _Bool hasAddressHint;
-- (void)_readAddressHint;
 @property(retain, nonatomic) GEOLatLng *locationHint;
 @property(readonly, nonatomic) _Bool hasLocationHint;
-- (void)_readLocationHint;
 @property(retain, nonatomic) NSString *externalItemId;
 @property(readonly, nonatomic) _Bool hasExternalItemId;
-- (void)_readExternalItemId;
 @property(retain, nonatomic) NSString *vendorId;
 @property(readonly, nonatomic) _Bool hasVendorId;
-- (void)_readVendorId;
 @property(nonatomic) _Bool hasMuid;
 @property(nonatomic) unsigned long long muid;
 @property(nonatomic) _Bool hasResultProviderId;
 @property(nonatomic) int resultProviderId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 muid:(unsigned long long)arg3 resultProviderId:(int)arg4 contentProvider:(id)arg5;
 - (id)initWithMapItemToRefine:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 contentProvider:(id)arg3;
 - (id)initWithExternalBusinessID:(id)arg1 contentProvider:(id)arg2;

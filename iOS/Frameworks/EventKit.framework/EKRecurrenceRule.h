@@ -6,7 +6,7 @@
 
 #import <EventKit/NSCopying-Protocol.h>
 
-@class EKRecurrenceEnd, EKRecurrenceHelper, NSArray, NSDate, NSString;
+@class EKRecurrenceEnd, EKRecurrenceHelper, NSArray, NSDate, NSDateComponents, NSString;
 
 @interface EKRecurrenceRule <NSCopying>
 {
@@ -15,17 +15,22 @@
     _Bool _usesEndDate;
 }
 
++ (long long)daysTypeForDayArray:(id)arg1;
 + (id)iCalendarValueFromDate:(id)arg1 isDateOnly:(_Bool)arg2 isFloating:(_Bool)arg3;
 + (id)iCalendarValueFromDayOfTheWeek:(unsigned long long)arg1;
 + (id)iCalendarValueFromRecurrenceType:(long long)arg1;
 + (int)_calDayOfWeekFromEKWeekday:(long long)arg1;
 + (long long)_ekWeekdayFromCalDayOfWeek:(int)arg1;
 + (id)recurrenceRuleWithType:(long long)arg1 interval:(unsigned long long)arg2 end:(id)arg3;
++ (id)knownIdentityKeysForComparison;
 + (Class)frozenClass;
++ (id)knownSingleValueKeysForComparison;
+- (void).cxx_destruct;
 @property(readonly) _Bool usesEndDate; // @synthesize usesEndDate=_usesEndDate;
 @property(readonly, nonatomic) _Bool shouldPinMonthDays; // @synthesize shouldPinMonthDays=_shouldPinMonthDays;
-- (void).cxx_destruct;
 - (_Bool)isEqualToRecurrenceRule:(id)arg1;
+- (id)humanReadableDescriptionWithStartDate:(id)arg1 isConcise:(_Bool)arg2;
+- (id)humanReadableDescriptionWithStartDate:(id)arg1;
 - (id)stringValueAsDateOnly:(_Bool)arg1 isFloating:(_Bool)arg2;
 - (_Bool)isSimpleRule;
 - (_Bool)isAnyDayRule;
@@ -67,7 +72,7 @@
 - (void)setFrequency:(long long)arg1;
 @property(readonly, nonatomic) long long frequency;
 @property(readonly, nonatomic) NSString *calendarIdentifier;
-@property(readonly, nonatomic) CDStruct_deff9ab7 gregorianUnits;
+@property(readonly, nonatomic) NSDateComponents *dateComponents;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)setUUID:(id)arg1;

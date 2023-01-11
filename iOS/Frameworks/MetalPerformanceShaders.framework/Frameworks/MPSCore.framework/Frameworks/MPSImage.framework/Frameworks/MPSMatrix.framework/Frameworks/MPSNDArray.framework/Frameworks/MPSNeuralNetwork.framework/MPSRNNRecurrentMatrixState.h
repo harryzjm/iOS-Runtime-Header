@@ -17,6 +17,7 @@
 - (_Bool)isTemporary;
 - (void)setReadCount:(unsigned long long)arg1;
 - (void)dealloc;
+- (id)initWithDevice:(id)arg1 commandBuffer:(id)arg2 recurrentMatrixDescriptors:(id *)arg3 cellMatrixDescriptors:(id *)arg4 isTemporary:(_Bool)arg5 layerCount:(int)arg6;
 - (id)initWithCommandBuffer:(id)arg1 recurrentMatrixDescriptors:(id *)arg2 cellMatrixDescriptors:(id *)arg3 isTemporary:(_Bool)arg4 layerCount:(int)arg5;
 - (id)getMemoryCellMatrixForLayerIndex:(unsigned long long)arg1;
 - (id)getRecurrentOutputMatrixForLayerIndex:(unsigned long long)arg1;

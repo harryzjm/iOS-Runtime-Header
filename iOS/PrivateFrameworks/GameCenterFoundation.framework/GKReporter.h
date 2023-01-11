@@ -39,16 +39,16 @@
 - (void)recordInviteeUILaunchTimestamp;
 - (void)reportAuthenticateResponseDuration;
 - (void)recordAuthenticateResponseTimestamp;
+- (void)reportTournamentAnalyticsWithDomain:(id)arg1 type:(id)arg2 tournamentType:(id)arg3 replayCount:(id)arg4 friendCount:(id)arg5 tournamentID:(id)arg6 bundleID:(id)arg7 inviteeCount:(id)arg8;
 - (_Bool)isTimeSpanValid:(double)arg1;
+- (void)reportEvent:(id)arg1 type:(id)arg2 scoreRank:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 count:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 friendsPlayedThisGame:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 payload:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 bundleID:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 startTime:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2;
 - (void)reportEvent:(id)arg1 payload:(id)arg2;
-- (void)reportDistributionValue:(id)arg1 domain:(id)arg2;
-- (void)reportValue:(long long)arg1 domain:(id)arg2;
-- (void)report:(id)arg1 signature:(id)arg2 result:(_Bool)arg3;
-- (void)report:(id)arg1 signature:(id)arg2;
-- (void)report:(id)arg1;
-- (void)_nativeReportDistributionValue:(id)arg1 signature:(id)arg2 domain:(id)arg3;
-- (void)_nativeReportValue:(long long)arg1 signature:(id)arg2 domain:(id)arg3;
-- (void)_nativeReport:(id)arg1 signature:(id)arg2 result:(_Bool *)arg3;
 
 @end
 

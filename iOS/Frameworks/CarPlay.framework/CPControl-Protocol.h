@@ -10,6 +10,8 @@
 
 @protocol CPControl <NSObject>
 @property(retain, nonatomic) NSUUID *identifier;
+- (void)handlePressesEnd;
+- (void)handlePressesStart;
 - (void)handlePrimaryAction;
 @end
 

@@ -22,12 +22,16 @@
 
 + (double)updateInterval;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKInvisibleInkEffectCoverageTracker *coverageTracker; // @synthesize coverageTracker=_coverageTracker;
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic, getter=isSuspended) _Bool suspended; // @synthesize suspended=_suspended;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(nonatomic) __weak id <CKInvisibleInkEffectViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)endEmittersForTouchesCancelled:(id)arg1;
+- (void)endEmittersForTouchesEnded:(id)arg1;
+- (void)moveEmittersForTouchesMoved:(id)arg1;
+- (void)moveEmittersForTouchesBegan:(id)arg1;
 - (void)invisibleInkEffectCoverageTrackerDidUncover:(id)arg1;
 - (void)reset;
 - (void)layoutSubviews;

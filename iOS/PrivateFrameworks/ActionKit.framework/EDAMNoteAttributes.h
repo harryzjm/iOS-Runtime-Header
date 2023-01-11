@@ -34,6 +34,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *noteTitleQuality; // @synthesize noteTitleQuality=_noteTitleQuality;
 @property(retain, nonatomic) NSString *conflictSourceNoteGuid; // @synthesize conflictSourceNoteGuid=_conflictSourceNoteGuid;
 @property(retain, nonatomic) NSNumber *sharedWithBusiness; // @synthesize sharedWithBusiness=_sharedWithBusiness;
@@ -56,7 +57,6 @@
 @property(retain, nonatomic) NSNumber *longitude; // @synthesize longitude=_longitude;
 @property(retain, nonatomic) NSNumber *latitude; // @synthesize latitude=_latitude;
 @property(retain, nonatomic) NSNumber *subjectDate; // @synthesize subjectDate=_subjectDate;
-- (void).cxx_destruct;
 
 @end
 

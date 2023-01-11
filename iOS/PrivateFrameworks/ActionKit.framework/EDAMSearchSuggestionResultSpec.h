@@ -13,8 +13,8 @@
 
 + (id)structFields;
 + (id)structName;
-@property(retain, nonatomic) NSNumber *maxTypeAheadSuggestions; // @synthesize maxTypeAheadSuggestions=_maxTypeAheadSuggestions;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *maxTypeAheadSuggestions; // @synthesize maxTypeAheadSuggestions=_maxTypeAheadSuggestions;
 
 @end
 

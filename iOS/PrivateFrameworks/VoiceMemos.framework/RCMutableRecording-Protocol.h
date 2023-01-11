@@ -9,9 +9,13 @@
 @class CLLocation, NSDate, NSString;
 
 @protocol RCMutableRecording <RCRecording>
+@property(nonatomic) _Bool musicMemo;
+@property(nonatomic) _Bool watchOS;
+@property(nonatomic) _Bool enhanced;
+@property(nonatomic) _Bool favorite;
 @property(nonatomic) _Bool recordedOnWatch;
 @property(nonatomic) _Bool downloading;
-@property(nonatomic) _Bool editing;
+@property(nonatomic) _Bool deleted;
 @property(nonatomic) _Bool manuallyRenamed;
 @property(nonatomic) _Bool playable;
 @property(nonatomic) _Bool pendingRestore;

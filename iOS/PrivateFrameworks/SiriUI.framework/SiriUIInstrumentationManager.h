@@ -6,30 +6,55 @@
 
 #import <objc/NSObject.h>
 
-@class AFAnalyticsTurnBasedInstrumentationContext, NSString;
+#import <SiriUI/AFAnalyticsDialogIdentifierAssociationProvider-Protocol.h>
 
-@interface SiriUIInstrumentationManager : NSObject
+@class AFAnalyticsTurnBasedInstrumentationContext, NSMutableDictionary, NSString, NSUserDefaults;
+@protocol OS_dispatch_queue;
+
+@interface SiriUIInstrumentationManager : NSObject <AFAnalyticsDialogIdentifierAssociationProvider>
 {
+    NSString *_lastDismissedIdentifier;
+    NSObject<OS_dispatch_queue> *_instrumenrationManagerQueue;
+    NSMutableDictionary *_aceViewDialogIdentifiers;
+    NSMutableDictionary *_aceViewDialogIdentifiersForMessageConstruction;
+    NSMutableDictionary *_cardInfo;
+    NSUserDefaults *_userDefaults;
+    _Bool _shouldInstrument;
     int _currentSiriUIState;
     AFAnalyticsTurnBasedInstrumentationContext *_currentInstrumentationTurnContext;
     NSString *_clientGeneratedDialogIdentifier;
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *clientGeneratedDialogIdentifier; // @synthesize clientGeneratedDialogIdentifier=_clientGeneratedDialogIdentifier;
 @property int currentSiriUIState; // @synthesize currentSiriUIState=_currentSiriUIState;
 @property(retain) AFAnalyticsTurnBasedInstrumentationContext *currentInstrumentationTurnContext; // @synthesize currentInstrumentationTurnContext=_currentInstrumentationTurnContext;
-- (void).cxx_destruct;
+- (void)_prepareForTesting;
+- (id)associatedDialogIdentifiersForAceObjectIdentifier:(id)arg1;
+- (id)_responseContextWithPresentationType:(int)arg1 dialogPhase:(id)arg2 mode:(int)arg3;
+- (_Bool)_hasDismissedForTurnContext:(id)arg1;
 - (void)emitPunchOutEventWithURL:(id)arg1 appID:(id)arg2;
+- (void)emitUUFRSpokenForAceObject:(id)arg1 presentationType:(int)arg2 dialogPhase:(id)arg3 mode:(int)arg4;
+- (void)emitUUFRShownForAceObject:(id)arg1 presentationType:(int)arg2 dialogPhase:(id)arg3 mode:(int)arg4 viewRegion:(int)arg5;
+- (void)emitUUFRShownForAceObject:(id)arg1 presentationType:(int)arg2 dialogPhase:(id)arg3;
+- (void)emitDialogOutputEventWith:(id)arg1 canUseServerTTS:(_Bool)arg2 spokenDialogOutput:(id)arg3 displayedDialogOutput:(id)arg4;
+- (void)emitCasinoRelationshipEventWithViewIDFrom:(id)arg1 ViewIDTo:(id)arg2 casinoFromType:(int)arg3;
 - (void)emitUUFRPresentedEventWith:(id)arg1 snippetClass:(id)arg2 dialogIdentifier:(id)arg3 dialogPhase:(id)arg4;
 - (void)emitTextToSpeechEndEvent:(id)arg1;
 - (void)emitTextToSpeechBeginEvent:(id)arg1;
-- (void)emitFinalSpeechTranscriptionEventWith:(id)arg1;
-- (void)emitPartialSpeechTranscriptionEventWith:(id)arg1;
-- (void)emitUIStateTransitionForSiriDismissal:(int)arg1;
+- (void)emitRevealSpeechTranscriptionEventForAceObjectWithIdentifier:(id)arg1;
+- (void)emitFinalSpeechTranscriptionEventForAceObjectWithIdentifier:(id)arg1;
+- (void)emitPartialSpeechTranscriptionEventForAceObjectWithIdentifier:(id)arg1;
+- (void)emitUIStateTransitionForSiriDismissalWithReason:(int)arg1;
 - (void)emitUIStateTransitionEventWithFromState:(int)arg1 toState:(int)arg2 withPresentationType:(int)arg3;
+- (void)storeCardID:(id)arg1 forSnippetAceID:(id)arg2;
 - (void)storeClientGeneratedDUC:(id)arg1;
+- (void)_emitInstrumentation:(id)arg1;
 - (void)emitInstrumentation:(id)arg1;
+- (void)setDialogIdentifiers:(id)arg1 forAceViewSpeakableTextWithIdentifier:(id)arg2;
+- (id)cardIDforSnippetAceID:(id)arg1;
+- (id)latestStoredTurn;
 - (void)storeCurrentInstrumentationTurnContext:(id)arg1;
 - (id)init;
 

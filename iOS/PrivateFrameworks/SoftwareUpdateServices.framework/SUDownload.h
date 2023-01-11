@@ -9,17 +9,19 @@
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
-@class SUDescriptor, SUDownloadMetadata, SUOperationProgress;
+@class SUDescriptor, SUDownloadMetadata, SUDownloadOptions, SUOperationProgress;
 
 @interface SUDownload : NSObject <NSSecureCoding, NSCopying>
 {
     SUDescriptor *_descriptor;
     SUOperationProgress *_progress;
+    SUDownloadOptions *_downloadOptions;
     SUDownloadMetadata *_metadata;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) SUDownloadMetadata *metadata; // @synthesize metadata=_metadata;
+@property(retain, nonatomic) SUDownloadOptions *downloadOptions; // @synthesize downloadOptions=_downloadOptions;
 @property(retain, nonatomic) SUDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property(retain, nonatomic) SUOperationProgress *progress; // @synthesize progress=_progress;
 - (_Bool)isValidDownload;
@@ -30,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+- (id)init;
 
 @end
 

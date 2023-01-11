@@ -11,9 +11,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
+- (_Bool)supportsClearAssetEncryption;
 - (id)analyticsPayload;
 - (id)CKStatusReportProperties;
-- (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 operationConfigurationBlock:(CDUnknownBlockType)arg4;
+- (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 clientContext:(id)arg4 operationConfigurationBlock:(CDUnknownBlockType)arg5;
 - (id)flowControlKey;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

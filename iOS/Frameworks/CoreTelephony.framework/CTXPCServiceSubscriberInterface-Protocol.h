@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSData, NSString;
+@class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSObject, NSString;
 
 @protocol CTXPCServiceSubscriberInterface
 - (void)getUserDefaultVoiceSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
@@ -27,6 +27,7 @@
 - (void)unlockPIN:(CTXPCServiceSubscriptionContext *)arg1 pin:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)saveSIMLockValue:(CTXPCServiceSubscriptionContext *)arg1 enabled:(_Bool)arg2 pin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)fetchSIMLockValue:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)shouldAllowSimLockFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *))arg2;
 - (void)copyGid2:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyGid1:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileSubscriberNetworkCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
@@ -36,8 +37,10 @@
 - (void)copyMobileSubscriberIsoSubregionCode:(NSString *)arg1 MNC:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)copyMobileSubscriberIsoCountryCode:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileSubscriberCountryCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
-- (void)evaluateMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 identity:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)evaluateMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 identity:(NSObject *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)createEncryptedIdentity:(CTXPCServiceSubscriptionContext *)arg1 identity:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)context:(CTXPCServiceSubscriptionContext *)arg1 getPseudoIdentityFor:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)context:(CTXPCServiceSubscriptionContext *)arg1 supportedIdentityProtectionFor:(NSString *)arg2 completion:(void (^)(long long, NSError *))arg3;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 isProtectedIdentitySupported:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)copyMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copySIMIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)newWithCount:(long long)arg1;
-- (void)setCapacity:(long long)arg1;
 - (void)popGlyphAtIndex:(long long)arg1;
 - (void)pushGlyphAtIndex:(long long)arg1;
 - (void)initGlyphStackWithCapacity:(long long)arg1;
@@ -37,11 +36,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)retainCount;
 - (oneway void)release;
 - (id)retain;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
 - (id)copyWithRange:(CDStruct_912cb5d2)arg1;
 - (id)initWithCount:(long long)arg1;
-- (id)prepareWithCapacity:(long long)arg1 preallocated:(_Bool)arg2;
 
 @end
 

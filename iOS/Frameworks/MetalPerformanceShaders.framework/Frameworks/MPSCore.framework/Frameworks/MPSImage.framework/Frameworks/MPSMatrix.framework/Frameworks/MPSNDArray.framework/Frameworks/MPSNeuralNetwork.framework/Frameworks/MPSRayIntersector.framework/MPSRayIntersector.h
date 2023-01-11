@@ -53,7 +53,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned int rayMask; // @synthesize rayMask=_rayMask;
 @property(nonatomic) unsigned long long intersectionStride; // @synthesize intersectionStride=_intersectionStride;
 @property(nonatomic) unsigned long long rayStride; // @synthesize rayStride=_rayStride;

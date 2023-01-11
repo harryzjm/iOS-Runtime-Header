@@ -13,14 +13,15 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)tombstoneWithComplication:(id)arg1;
-@property(readonly, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
 - (void)_addKeysToJSONDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
+- (id)appIdentifier;
+- (id)_generateUniqueIdentifier;
+- (_Bool)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (id)description;
 
 @end

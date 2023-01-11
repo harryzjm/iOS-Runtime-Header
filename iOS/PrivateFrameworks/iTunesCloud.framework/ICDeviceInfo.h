@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSNumber, NSString;
-@protocol OS_dispatch_queue;
+#import <iTunesCloud/ICNanoPairedDeviceStatusObserver-Protocol.h>
 
-@interface ICDeviceInfo : NSObject
+@class NSData, NSNumber, NSString;
+
+@interface ICDeviceInfo : NSObject <ICNanoPairedDeviceStatusObserver>
 {
     struct atomic_flag _hasRegisteredForNameNotifications;
     struct MGNotificationTokenStruct *_nameNotificationToken;
@@ -24,9 +25,8 @@
     NSData *_deviceGUIDData;
     NSString *_deviceGUID;
     NSString *_name;
-    NSString *_pairedDeviceGUID;
-    NSString *_pairedDeviceMediaGUID;
     NSString *_serialNumber;
+    NSData *_macAddressData;
     struct CGSize _mainScreenSize;
     NSNumber *_hasCellularDataCapabilityNumber;
     NSNumber *_hasTelephonyCapabilityNumber;
@@ -36,21 +36,24 @@
     NSNumber *_has1080pCapabilityValue;
     NSNumber *_screenClassValue;
     NSNumber *_isInternalBuildNumber;
+    NSNumber *_supportsMusicStreamingValue;
     NSString *_systemReleaseType;
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    struct os_unfair_lock_s _lock;
 }
 
 + (id)defaultInfo;
 + (id)currentDeviceInfo;
 - (void).cxx_destruct;
-- (id)_activePairedDevice;
 - (int)_gestaltDeviceClass;
+@property(readonly, nonatomic) _Bool supportsMusicStreaming;
+@property(readonly, nonatomic) _Bool supportsSideLoadedMediaContent;
 @property(readonly, copy, nonatomic) NSString *currentLocale;
 @property(readonly, nonatomic) unsigned int fairPlayDeviceType;
 @property(readonly, nonatomic, getter=isInternalBuild) _Bool internalBuild;
 @property(readonly, copy, nonatomic) NSString *buildVersion;
 @property(readonly, copy, nonatomic) NSString *productPlatform;
 @property(readonly, copy, nonatomic) NSString *productVersion;
+@property(readonly, nonatomic) _Bool isMac;
 @property(readonly, nonatomic) _Bool isAudioAccessory;
 @property(readonly, nonatomic) _Bool isWatch;
 @property(readonly, nonatomic) _Bool isIPod;
@@ -65,11 +68,11 @@
 @property(readonly, nonatomic) _Bool hasTelephonyCapability;
 @property(readonly, nonatomic) _Bool hasCellularDataCapability;
 @property(readonly, nonatomic) struct CGSize mainScreenSize;
+@property(readonly, copy, nonatomic) NSData *macAddressData;
+@property(readonly, copy, nonatomic) NSString *macAddress;
 @property(readonly, copy, nonatomic) NSString *serialNumber;
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) int deviceClass;
-@property(readonly, copy, nonatomic) NSString *pairedDeviceMediaGUID;
-@property(readonly, copy, nonatomic) NSString *pairedDeviceGUID;
 @property(readonly, copy, nonatomic) NSData *deviceFairPlayGUIDData;
 @property(readonly, copy, nonatomic) NSString *deviceGUID;
 @property(readonly, copy, nonatomic) NSString *hardwarePlatform;
@@ -78,6 +81,12 @@
 @property(readonly, copy, nonatomic) NSString *deviceModel;
 - (void)dealloc;
 - (id)_init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,34 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/HUCellProtocol-Protocol.h>
+@class UIActivityIndicatorView;
 
-@class HFItem, NSString, UIActivityIndicatorView;
-@protocol HUResizableCellDelegate;
-
-@interface HUSpinnerButtonCell <HUCellProtocol>
+@interface HUSpinnerButtonCell
 {
     _Bool _showSpinner;
     _Bool _useFullWidthSeparator;
     UIActivityIndicatorView *_spinner;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property(nonatomic) _Bool useFullWidthSeparator; // @synthesize useFullWidthSeparator=_useFullWidthSeparator;
 @property(nonatomic) _Bool showSpinner; // @synthesize showSpinner=_showSpinner;
-- (void).cxx_destruct;
 - (void)createSpinner;
 - (struct CGRect)_separatorFrame;
 - (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(retain, nonatomic) HFItem *item;
-@property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate;
-@property(readonly) Class superclass;
 
 @end
 

@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface RTFingerprintStore
+#import <coreroutine/RTEnumerableStore-Protocol.h>
+
+@class NSString;
+
+@interface RTFingerprintStore <RTEnumerableStore>
 {
 }
 
+- (id)fetchRequestFromOptions:(id)arg1 offset:(unsigned long long)arg2 error:(id *)arg3;
 - (void)_fetchWifiAccessPointsForFingerprint:(id)arg1 fetchLimit:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchFingerprintsBetweenStartDate:(id)arg1 endDate:(id)arg2 filteredBySettledState:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_appendWiFiAccessPointsToLastFingerprint:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -17,6 +22,12 @@
 - (void)fetchFingerprintsBetweenStartDate:(id)arg1 endDate:(id)arg2 filteredBySettledState:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)appendWiFiAccessPointsToLastFingerprint:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeFingerprints:(id)arg1 handler:(CDUnknownBlockType)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

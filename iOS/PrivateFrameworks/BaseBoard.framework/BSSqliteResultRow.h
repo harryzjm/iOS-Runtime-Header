@@ -17,10 +17,7 @@
     NSArray *_columnNames;
 }
 
-+ (id)resultRowWithStatement:(struct sqlite3_stmt *)arg1;
 - (void).cxx_destruct;
-- (unsigned long long)_indexForKey:(id)arg1;
-- (id)_columnNames;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataAtIndex:(unsigned long long)arg1;
 - (id)dataForKey:(id)arg1;
@@ -36,7 +33,6 @@
 @property(readonly, nonatomic) unsigned long long count;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
 - (void)invalidate;
-- (id)_initWithStatement:(struct sqlite3_stmt *)arg1;
 - (id)init;
 
 // Remaining properties

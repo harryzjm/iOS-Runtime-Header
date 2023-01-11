@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_javaScriptLaunchOptions;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool headless; // @synthesize headless=_headless;
 @property(copy, nonatomic) NSDictionary *javaScriptLaunchOptions; // @synthesize javaScriptLaunchOptions=_javaScriptLaunchOptions;
 @property(nonatomic) __weak id <UITraitEnvironment> keyTraitEnvironment; // @synthesize keyTraitEnvironment=_keyTraitEnvironment;
@@ -30,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIViewController<TVAppRootViewController> *appRootViewController; // @synthesize appRootViewController=_appRootViewController;
 @property(nonatomic) __weak IKAppDataStorage *localDataStorage; // @synthesize localDataStorage=_localDataStorage;
 @property(nonatomic) __weak TVApplicationControllerContext *launchContext; // @synthesize launchContext=_launchContext;
-- (void).cxx_destruct;
 - (id)appTraitCollection;
 - (_Bool)appIsPrivileged;
 - (_Bool)appIsTrusted;
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)appJSURL;
 - (id)appIdentifier;
 - (id)activeDocument;
+@property(readonly, nonatomic) _Bool supportsPictureInPicturePlayback;
 - (id)initWithLaunchContext:(id)arg1;
 
 // Remaining properties

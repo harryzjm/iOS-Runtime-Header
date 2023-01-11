@@ -6,29 +6,26 @@
 
 #import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
 
-@class NSDictionary, NSString, UIImageView;
+@class CAMLivePhotoAnimationCache, NSString, UIImageView;
 
 @interface CAMLivePhotoButton <CAMAccessibilityHUDImageProvider>
 {
     _Bool _allowsAutomaticMode;
     UIImageView *__imageView;
-    NSDictionary *__enablingAnimationImages;
+    CAMLivePhotoAnimationCache *__animationCache;
 }
 
 + (double)enablingAnimationDuration;
-@property(copy, nonatomic, setter=_setEnablingAnimationImages:) NSDictionary *_enablingAnimationImages; // @synthesize _enablingAnimationImages=__enablingAnimationImages;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CAMLivePhotoAnimationCache *_animationCache; // @synthesize _animationCache=__animationCache;
 @property(readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property(nonatomic) _Bool allowsAutomaticMode; // @synthesize allowsAutomaticMode=_allowsAutomaticMode;
-- (void).cxx_destruct;
 - (id)imageForAccessibilityHUD;
 - (void)interruptEnablingAnimation;
 - (void)performEnablingAnimation;
 - (void)_updateAnimationImages;
-- (void)_ensureEnablingAnimationImages;
-- (id)_tintColorForMode:(long long)arg1;
-- (id)_actuallyLoadEnablingAnimationImagesForScale:(double)arg1;
-- (_Bool)_shouldLoadEnablingAnimationImages;
 - (void)preloadEnablingAnimation;
+- (void)_loadAnimationCacheIfNeeded;
 - (void)finishExpansionAnimated:(_Bool)arg1;
 - (void)reloadData;
 - (void)prepareHeaderViewForExpanding:(_Bool)arg1;

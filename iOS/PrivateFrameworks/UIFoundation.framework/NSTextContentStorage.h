@@ -18,6 +18,9 @@
     struct _NSRange _cachedRange;
     struct _NSRange _modifiedRange;
     long long _modifiedDocumentLengthDelta;
+    struct _NSRange _editedRange;
+    long long _editedDelta;
+    _Bool _notifyingToFixSelection;
     struct {
         id *_field1;
         struct _NSRange _field2;
@@ -31,10 +34,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (_Bool)isCountableDataSource;
+- (id)adjustedRangeFromRange:(id)arg1 inEditingTextSelection:(_Bool)arg2;
+- (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
+- (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
 - (_Bool)synchronizeToBackingStore:(CDUnknownBlockType)arg1;
 - (void)replaceCharactersInRange:(id)arg1 withTextElements:(id)arg2;
 - (id)enumerateTextElementsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 @property(readonly) NSCountableTextRange *documentRange;
+- (_Bool)synchronizeTextLayoutManagers:(CDUnknownBlockType)arg1;
+- (void)performEditingTransactionForTextStorage:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)endEditingTransaction;
 - (void)beginEditingTransaction;
 - (void)processEditingForTextStorage:(id)arg1 edited:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4 invalidatedRange:(struct _NSRange)arg5;

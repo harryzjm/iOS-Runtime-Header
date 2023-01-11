@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOStep, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, NSArray, NSString, NSUUID;
+@class GEOComposedGuidanceEvent, GEOStep, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, NSArray, NSString, NSUUID;
 @protocol MNGuidanceManager;
 
 @protocol MNGuidanceManagerDelegate <NSObject>
@@ -21,6 +21,8 @@
 - (void)guidanceManager:(id <MNGuidanceManager>)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)guidanceManager:(id <MNGuidanceManager>)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)guidanceManager:(id <MNGuidanceManager>)arg1 triggerHaptics:(int)arg2;
+- (void)guidanceManager:(id <MNGuidanceManager>)arg1 didProcessSpeechEvent:(GEOComposedGuidanceEvent *)arg2;
+- (void)guidanceManager:(id <MNGuidanceManager>)arg1 willProcessSpeechEvent:(GEOComposedGuidanceEvent *)arg2;
 - (void)guidanceManager:(id <MNGuidanceManager>)arg1 announce:(NSString *)arg2 shortPromptType:(unsigned long long)arg3 ignorePromptStyle:(_Bool)arg4 stage:(unsigned long long)arg5 hasSecondaryManeuver:(_Bool)arg6 completionBlock:(void (^)(int))arg7;
 - (void)guidanceManager:(id <MNGuidanceManager>)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
 - (void)guidanceManager:(id <MNGuidanceManager>)arg1 usePersistentDisplay:(_Bool)arg2;

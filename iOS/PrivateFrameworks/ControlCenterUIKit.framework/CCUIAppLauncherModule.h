@@ -8,25 +8,30 @@
 
 #import <ControlCenterUIKit/CCUIContentModule-Protocol.h>
 
-@class CCUIContentModuleContext, NSBundle, NSString, NSURL, UIImage, UIViewController;
+@class CCUIContentModuleContext, NSBundle, NSString, NSURL, SBFApplication, UIImage, UIViewController;
 @protocol CCUIContentModuleBackgroundViewController, CCUIContentModuleContentViewController;
 
 @interface CCUIAppLauncherModule : NSObject <CCUIContentModule>
 {
     NSBundle *_bundle;
+    SBFApplication *_application;
     _Bool _supportsApplicationShortcuts;
     NSString *_applicationIdentifier;
+    NSString *_launchApplicationIdentifier;
     NSString *_displayName;
     CCUIContentModuleContext *_contentModuleContext;
     NSURL *_launchURL;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool supportsApplicationShortcuts; // @synthesize supportsApplicationShortcuts=_supportsApplicationShortcuts;
 @property(copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(retain, nonatomic) CCUIContentModuleContext *contentModuleContext; // @synthesize contentModuleContext=_contentModuleContext;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property(copy, nonatomic) NSString *launchApplicationIdentifier; // @synthesize launchApplicationIdentifier=_launchApplicationIdentifier;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-- (void).cxx_destruct;
+- (void)_fetchApplicationIfNeeded;
+@property(readonly, nonatomic, getter=_application) SBFApplication *application;
 - (id)contentViewControllerForContext:(id)arg1;
 - (void)handleTapWithTouchType:(long long)arg1;
 - (void)handleTouchDownWithTouchType:(long long)arg1;

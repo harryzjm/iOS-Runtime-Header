@@ -10,35 +10,41 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMFTimer, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
-@protocol HMDUserCloudShareControllerDelegate, OS_dispatch_queue;
+@protocol HMDUserCloudShareControllerDelegate, OS_dispatch_queue, OS_os_log;
 
 @interface HMDUserCloudShareController : NSObject <HMFTimerDelegate, HMFLogging>
 {
+    NSObject<OS_os_log> *_logger;
+    NSHashTable *_connectedClients;
+    NSMutableDictionary *_containerIdToConnectionIdentifierMap;
     id <HMDUserCloudShareControllerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSHashTable *_connectedClients;
-    NSMutableDictionary *_containerIdToBundleIdMap;
     NSMutableArray *_pendingRequests;
     double _pendingRequestTimeoutInterval;
     HMFTimer *_pendingRequestTimer;
 }
 
 + (id)logCategory;
++ (id)identifierForConnection:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFTimer *pendingRequestTimer; // @synthesize pendingRequestTimer=_pendingRequestTimer;
 @property(readonly, nonatomic) double pendingRequestTimeoutInterval; // @synthesize pendingRequestTimeoutInterval=_pendingRequestTimeoutInterval;
 @property(readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
-@property(retain, nonatomic) NSMutableDictionary *containerIdToBundleIdMap; // @synthesize containerIdToBundleIdMap=_containerIdToBundleIdMap;
-@property(readonly, nonatomic) NSHashTable *connectedClients; // @synthesize connectedClients=_connectedClients;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property __weak id <HMDUserCloudShareControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *containerIdToConnectionIdentifierMap; // @synthesize containerIdToConnectionIdentifierMap=_containerIdToConnectionIdentifierMap;
+- (void)invalidateXpcClient:(id)arg1;
+- (void)_invalidateXpcClient:(id)arg1;
 - (void)deregisterXpcClient:(id)arg1;
 - (void)_deregisterXpcClient:(id)arg1;
 - (void)registerWithXpcClient:(id)arg1 containerIDs:(id)arg2;
 - (void)_registerWithXpcClient:(id)arg1 containerIDs:(id)arg2;
 - (void)timerDidFire:(id)arg1;
+@property(readonly, nonatomic) NSHashTable *connectedClients; // @synthesize connectedClients=_connectedClients;
+- (void)handleShareRepairForRemoteClientRequest:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleShareForRemoteClientRequest:(id)arg1 home:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleShareForRemoteClientRequest:(id)arg1;
+- (void)_sendRepairRequest:(id)arg1 toConnection:(id)arg2;
 - (void)_sendShareRequest:(id)arg1 toConnection:(id)arg2;
 - (void)_resumeRequestsForContainerID:(id)arg1 connection:(id)arg2;
 - (void)_handlePendingRequestTimeouts;

@@ -21,19 +21,51 @@ struct CGRect {
 };
 
 struct CGSize {
+    double width;
+    double height;
+};
+
+struct CLLocationCoordinate2D {
     double _field1;
     double _field2;
 };
 
 struct UIEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
 
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    float _field6;
+    float _field7;
+    _Bool _field8;
+    _Bool _field9;
+} CDStruct_1c9ae071;
+
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    struct {
+        double _field1;
+        double _field2;
+    } _field2;
+} CDStruct_2b0c6e0b;
 

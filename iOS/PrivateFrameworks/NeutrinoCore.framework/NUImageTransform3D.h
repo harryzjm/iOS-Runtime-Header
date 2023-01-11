@@ -20,8 +20,10 @@
 - (id)transformByRotateZ:(double)arg1;
 - (id)transformByTranslateX:(double)arg1 translateY:(double)arg2;
 - (id)transformByScaleX:(double)arg1 scaleY:(double)arg2;
+- (CDStruct_14d5dc5e)transformMatrix:(CDStruct_14d5dc5e)arg1;
 - (struct CGPoint)transformPoint:(struct CGPoint)arg1;
 - (id)inverseTransform;
+- (_Bool)isIdentityImageTransform;
 - (id)init;
 - (id)initWithTransform3D:(CDStruct_14d5dc5e)arg1;
 - (id)initWithAffineTransform:(struct CGAffineTransform)arg1;

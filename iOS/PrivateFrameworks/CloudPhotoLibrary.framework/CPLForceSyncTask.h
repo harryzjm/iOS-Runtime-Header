@@ -15,13 +15,13 @@
     NSString *_taskIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property(readonly, copy, nonatomic) NSArray *scopeIdentifiers; // @synthesize scopeIdentifiers=_scopeIdentifiers;
-- (void).cxx_destruct;
 - (id)description;
 - (void)cancelTask;
-- (void)launch;
+- (void)launchTask;
 - (id)initWithScopeIdentifiers:(id)arg1;
 
 @end

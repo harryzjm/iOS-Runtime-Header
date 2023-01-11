@@ -16,15 +16,15 @@
         unsigned int threeDTouchEnabled:1;
     } _has;
     _Bool _threeDTouchEnabled;
-    NSString *_contactIdentifier;
     NSArray *_contactIdentifiers;
+    NSString *_appIconBadgeBundleIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *appIconBadgeBundleIdentifier; // @synthesize appIconBadgeBundleIdentifier=_appIconBadgeBundleIdentifier;
 @property(nonatomic) _Bool threeDTouchEnabled; // @synthesize threeDTouchEnabled=_threeDTouchEnabled;
 @property(copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
-@property(copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -38,6 +38,7 @@
 // Remaining properties
 @property(copy, nonatomic) NSString *contentType;
 @property(nonatomic) double cornerRadius;
+@property(nonatomic) int cornerRoundingStyle;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(copy, nonatomic) NSString *identifier;

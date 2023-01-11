@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIMutableApplicationSceneSettings.h>
-
+#import <CarPlayUIServices/CRSUIMutableMapStyleProviding-Protocol.h>
 #import <CarPlayUIServices/CRSUIProxyApplicationSceneSettings-Protocol.h>
 
 @class NSString;
 
-@interface CRSUIMutableProxyApplicationSceneSettings : UIMutableApplicationSceneSettings <CRSUIProxyApplicationSceneSettings>
+@interface CRSUIMutableProxyApplicationSceneSettings <CRSUIProxyApplicationSceneSettings, CRSUIMutableMapStyleProviding>
 {
 }
 
-@property(nonatomic) _Bool proxiedApplicationLinkedOnOrAfterYukon;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setMapStyle:(long long)arg1;
+@property(readonly, nonatomic) long long mapStyle;
+@property(nonatomic) _Bool proxiedApplicationLinkedOnOrAfterYukon;
 @property(copy, nonatomic) NSString *proxiedApplicationBundleIdentifier;
 
 // Remaining properties

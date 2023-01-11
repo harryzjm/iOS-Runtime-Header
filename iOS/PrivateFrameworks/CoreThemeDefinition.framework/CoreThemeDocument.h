@@ -87,6 +87,8 @@
 - (void)_removeRedundantPDFBasedRenditionsForAssets:(id)arg1;
 - (void)addThemeBitSourceAtPath:(id)arg1;
 - (void)addThemeBitSourceAtPath:(id)arg1 createProductions:(_Bool)arg2;
+- (_Bool)renameThemeBitSourceFolderTo:(id)arg1 error:(id *)arg2;
+- (id)themeBitSourceFolderName;
 @property(readonly, nonatomic) NSURL *themeBitSourceURL;
 - (void)_configureAfterFirstSave;
 - (void)_synchronousSave;
@@ -128,6 +130,7 @@
 - (void)resetThemeConstants;
 - (void)buildModel;
 @property long long targetPlatform;
+- (void)_updateDeviceTraits;
 - (void)setArtworkFormat:(id)arg1;
 - (id)artworkFormat;
 - (unsigned int)checksum;
@@ -230,7 +233,6 @@
 - (id)localizationWithIdentifier:(long long)arg1;
 - (id)appearanceWithIdentifier:(long long)arg1 name:(id)arg2 createIfNeeded:(_Bool)arg3;
 - (id)appearanceWithIdentifier:(long long)arg1;
-- (id)artworkDraftTypeWithIdentifier:(long long)arg1;
 - (id)psdImageRefForAsset:(id)arg1;
 - (id)constantWithName:(id)arg1 forIdentifier:(long long)arg2;
 - (id)textureInterpretaitionWithIdentifier:(unsigned int)arg1;

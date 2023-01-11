@@ -10,6 +10,7 @@
 
 @interface _TtC18HealthExperienceUI33SuggestedActionTileViewController : UIViewController
 {
+    MISSING_TYPE *context;
     MISSING_TYPE *nibObjects;
     MISSING_TYPE *containerView;
     MISSING_TYPE *imageView;
@@ -26,6 +27,7 @@
     MISSING_TYPE *actionButton;
     MISSING_TYPE *actionButtonTopSpacingConstraint;
     MISSING_TYPE *actionButtonHeightConstraint;
+    MISSING_TYPE *actionButtonStyle;
     MISSING_TYPE *suggestedActionDelegate;
 }
 
@@ -39,11 +41,7 @@
 - (void)viewDidLoad;
 - (void)loadView;
 @property(nonatomic, retain) NSLayoutConstraint *actionButtonHeightConstraint; // @synthesize actionButtonHeightConstraint;
-@property(nonatomic, retain) NSLayoutConstraint *actionButtonTopSpacingConstraint; // @synthesize actionButtonTopSpacingConstraint;
 @property(nonatomic) __weak UIButton *actionButton; // @synthesize actionButton;
-@property(nonatomic, retain) NSLayoutConstraint *linkButtonHeightConstraint; // @synthesize linkButtonHeightConstraint;
-@property(nonatomic, retain) NSLayoutConstraint *linkButtonTopSpacingConstraint; // @synthesize linkButtonTopSpacingConstraint;
-@property(nonatomic) __weak UIButton *linkButton; // @synthesize linkButton;
 @property(nonatomic) __weak UILabel *bodyLabel; // @synthesize bodyLabel;
 @property(nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel;
 @property(nonatomic, retain) NSLayoutConstraint *imageBackgroundViewContainerViewBottomConstraint; // @synthesize imageBackgroundViewContainerViewBottomConstraint;

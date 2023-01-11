@@ -4,35 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class CLKComplicationDescriptor, NSString;
 
 @interface NTKRemoteComplication
 {
     NSString *_clientIdentifier;
     NSString *_appBundleIdentifier;
+    CLKComplicationDescriptor *_complicationDescriptor;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)_remoteStocksComplication;
++ (id)_remoteStocksComplicationForDevice:(id)arg1;
++ (id)remoteStocksComplicationDescriptorForDevice:(id)arg1;
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
-+ (id)complicationWithClientIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
++ (id)complicationWithClientIdentifier:(id)arg1 appBundleIdentifier:(id)arg2 complicationDescriptor:(id)arg3;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) CLKComplicationDescriptor *complicationDescriptor; // @synthesize complicationDescriptor=_complicationDescriptor;
 @property(readonly, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void).cxx_destruct;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (void)_addKeysToJSONDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
+- (_Bool)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (id)description;
 - (id)localizedRichDetailText;
 - (id)localizedDetailText;
 - (id)localizedRichKeylineLabelText;
+- (id)companionLocalizedKeylineLabelText;
+- (id)watchLocalizedKeylineLabelText;
+- (void)resetComplicationDescriptor;
 - (id)localizedKeylineLabelText;
+- (id)appIdentifier;
+- (id)_generatUniqueIdentifier;
 - (id)initWithComplicationType:(unsigned long long)arg1;
+- (id)ntk_localizedNameWithOptions:(unsigned long long)arg1 forRichComplicationSlot:(_Bool)arg2;
 
 @end
 

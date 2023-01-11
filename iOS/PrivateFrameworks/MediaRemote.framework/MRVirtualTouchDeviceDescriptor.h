@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) union _MRHIDSize screenSize; // @synthesize screenSize=_screenSize;
 @property(readonly, nonatomic, getter=isIntegratedDisplay) _Bool integratedDisplay; // @synthesize integratedDisplay=_integratedDisplay;
 @property(readonly, nonatomic, getter=isAbsolute) _Bool absolute; // @synthesize absolute=_absolute;
-- (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

@@ -24,15 +24,15 @@
 
 + (id)serverInterface;
 + (id)clientInterface;
-+ (id)defaultConfigurationWithWorkoutConfiguration:(id)arg1;
++ (id)defaultConfigurationWithWorkoutConfiguration:(id)arg1 activityMoveMode:(long long)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSMutableDictionary *mutableFiltersBySampleType; // @synthesize mutableFiltersBySampleType=_mutableFiltersBySampleType;
 @property(retain, nonatomic) NSMutableSet *mutableSampleTypesToCollect; // @synthesize mutableSampleTypesToCollect=_mutableSampleTypesToCollect;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(retain, nonatomic) HKTaskServerProxyProvider *proxyProvider; // @synthesize proxyProvider=_proxyProvider;
-- (void).cxx_destruct;
-- (void)_startTaskServerIfNeeded;
+- (void)_queue_finishSetup;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;
 - (id)remoteInterface;

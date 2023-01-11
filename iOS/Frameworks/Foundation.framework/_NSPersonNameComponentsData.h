@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property(copy) NSString *familyName; // @synthesize familyName=_familyName;
 @property(copy) NSString *givenName; // @synthesize givenName=_givenName;
 - (void)dealloc;
-- (void)_freeIvars;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

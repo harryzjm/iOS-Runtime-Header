@@ -6,7 +6,9 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
+@class UIViewController;
+
 @protocol NUChromeControl <NSObject>
-- (void)prefersChromeHidden:(_Bool)arg1;
+- (void)prefersChromeHidden:(_Bool)arg1 fromViewController:(UIViewController *)arg2;
 @end
 

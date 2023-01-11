@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 @interface NSMethodSignature : NSObject
 {
-    CDStruct_b48d777a _frameDescriptor;
-    NSString *_typeString;
+    struct NSMethodFrameDescriptor *_frameDescriptor;
+    char *_typeString;
     unsigned long long _flags;
 }
 
 + (id)signatureWithObjCTypes:(const char *)arg1;
++ (void)initialize;
 - (id)debugDescription;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -31,10 +30,13 @@
 - (Class)_classForObjectAtArgumentIndex:(long long)arg1;
 - (id)_signatureForBlockAtArgumentIndex:(long long)arg1;
 - (id)_typeString;
+- (const char *)_cTypeString;
 - (struct NSMethodFrameArgInfo *)_argInfo:(long long)arg1;
-- (CDStruct_b48d777a *)_frameDescriptor;
+- (unsigned long long)_flags;
+- (struct NSMethodFrameDescriptor *)_frameDescriptor;
 - (void)dealloc;
 - (id)init;
+- (id)_initWithROMEntry:(const struct CFMethodSignatureROMEntry *)arg1;
 
 @end
 

@@ -35,7 +35,6 @@
 - (void)reindexAllSearchableItemsForBundleIDs:(NSArray *)arg1 acknowledgementHandler:(void (^)(void))arg2;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(void (^)(void))arg1;
 - (void)providerDomainForURL:(NSURL *)arg1 completionHandler:(void (^)(FPProviderDomain *, NSError *))arg2;
-- (void)writeCheckReportTo:(NSFileHandle *)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)dumpStateTo:(NSFileHandle *)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)getURLForContainerWithItemID:(NSString *)arg1 inDataScopeDomainWithIdentifier:(NSString *)arg2 documentsScopeDomainIdentifier:(NSString *)arg3 documentsFolderItemIdentifier:(NSString *)arg4 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg5;
 - (void)makeTopologicallySortedItemsOnDisk:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
@@ -58,15 +57,18 @@
 - (void)forceIngestionForItemIDs:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)forceIngestionForItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchDomainServicerForProviderDomainID:(NSString *)arg1 handler:(void (^)(id <FPDDomainServicing>, NSString *, NSError *))arg2;
+- (void)documentURLFromItemID:(FPItemID *)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)documentURLFromBookmarkableString:(NSString *)arg1 creatingPlaceholderIfMissing:(_Bool)arg2 ignoreAlternateContentsURL:(_Bool)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)bookmarkableStringFromDocumentURL:(NSURL *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)extendBookmarkForFileURL:(NSURL *)arg1 toConsumerID:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
+- (void)providerDomainForIdentifier:(NSString *)arg1 completionHandler:(void (^)(FPProviderDomain *, NSError *))arg2;
 - (void)providerDomainsCompletionHandler:(void (^)(NSError *, NSDictionary *))arg1;
 - (void)unpinItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
 - (void)pinItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
 - (void)setDownloadPolicy:(unsigned long long)arg1 forItemWithID:(FPItemID *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)evictItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (NSProgress *)evictItemAtURL:(NSURL *)arg1 evenIfEnumeratingFP:(_Bool)arg2 andClearACLForConsumer:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)startDownloadingItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)startProvidingItemAtURL:(NSURL *)arg1 fromProviderID:(NSString *)arg2 forConsumerID:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)extendSandboxForFileURL:(NSURL *)arg1 fromProviderID:(NSString *)arg2 toConsumerID:(NSString *)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)wakeUpForURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *, id <FPDWakeupTransaction>))arg2;

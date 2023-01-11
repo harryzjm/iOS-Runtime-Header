@@ -19,6 +19,7 @@
     long long _vectorCount;
     short _componentType;
     unsigned short _componentCount;
+    struct CGColorSpace *_colorSpace;
     long long _dataOffset;
     long long _dataStride;
     unsigned char _mkSemantic;
@@ -30,6 +31,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)_geometrySourceWithSource:(id)arg1 vertexFormat:(unsigned long long)arg2;
 + (id)geometrySourceWithBuffer:(id)arg1 vertexFormat:(unsigned long long)arg2 semantic:(id)arg3 vertexCount:(long long)arg4 dataOffset:(long long)arg5 dataStride:(long long)arg6;
++ (id)geometrySourceWithColorData:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 vectorCount:(long long)arg3 floatComponents:(_Bool)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
 + (id)geometrySourceWithColorComponents:(const float *)arg1 count:(long long)arg2 hasAlpha:(_Bool)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)geometrySourceWithTextureCoordinates:(const struct CGPoint *)arg1 count:(long long)arg2;
 + (id)geometrySourceWithNormals:(const struct SCNVector3 *)arg1 count:(long long)arg2;
@@ -63,9 +65,10 @@
 - (id)mkSemantic;
 - (void)set_encodeDataAsHalf:(_Bool)arg1;
 - (_Bool)_encodeDataAsHalf;
+- (id)dataByConvertingColorData:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 newColorSpace:(struct CGColorSpace **)arg3 vectorCount:(long long)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8 newDataOffset:(long long *)arg9 newDataStride:(long long *)arg10;
 - (id)initWithBuffer:(id)arg1 vertexFormat:(unsigned long long)arg2 semantic:(id)arg3 vertexCount:(long long)arg4 dataOffset:(long long)arg5 dataStride:(long long)arg6;
 - (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 componentType:(short)arg4 componentCount:(unsigned long long)arg5 dataOffset:(long long)arg6 dataStride:(long long)arg7;
-- (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 floatComponents:(_Bool)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
+- (id)initWithData:(id)arg1 semantic:(id)arg2 colorSpace:(struct CGColorSpace *)arg3 vectorCount:(long long)arg4 floatComponents:(_Bool)arg5 componentsPerVector:(long long)arg6 bytesPerComponent:(long long)arg7 dataOffset:(long long)arg8 dataStride:(long long)arg9;
 - (id)description;
 - (void)dealloc;
 - (id)init;

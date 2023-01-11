@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIColor, UIFont;
+@class PXExtendedImageConfiguration, UIColor, UIFont;
 
 @interface PXCuratedLibraryChapterHeaderLayoutSpec
 {
     _Bool _shouldFloat;
     _Bool _shouldAbbreviateMonth;
-    struct UIFont *_titleFont;
+    UIFont *_titleFont;
     double _titleHeight;
-    struct UIColor *_titleColor;
-    struct UIColor *_floatingTitleColor;
-    struct UIColor *_subtitleColor;
-    struct UIColor *_floatingSubtitleColor;
-    NSString *_chevronImageName;
-    double _spacingBetweenTitleAndSubtitle;
+    UIColor *_titleEmphasizedColor;
+    UIColor *_floatingTitleEmphasizedColor;
+    UIColor *_titleDeemphasizedColor;
+    UIColor *_floatingTitleDeemphasizedColor;
+    PXExtendedImageConfiguration *_chevronImageConfiguration;
+    double _spacingBetweenTitleAndChevron;
     double _spacingBetweenTitleTopAndPreviousCardBottom;
     double _spacingBetweenTitleBottomAndNextCardTop;
     double _floatingDistanceFromSafeAreaTop;
@@ -28,6 +28,7 @@
     struct CGSize _contentInset;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double floatingFadeOutDistance; // @synthesize floatingFadeOutDistance=_floatingFadeOutDistance;
 @property(readonly, nonatomic) double floatingAppearanceCrossfadeDuration; // @synthesize floatingAppearanceCrossfadeDuration=_floatingAppearanceCrossfadeDuration;
 @property(readonly, nonatomic) double floatingAppearanceCrossfadeDistance; // @synthesize floatingAppearanceCrossfadeDistance=_floatingAppearanceCrossfadeDistance;
@@ -37,16 +38,15 @@
 @property(readonly, nonatomic) _Bool shouldFloat; // @synthesize shouldFloat=_shouldFloat;
 @property(readonly, nonatomic) double spacingBetweenTitleBottomAndNextCardTop; // @synthesize spacingBetweenTitleBottomAndNextCardTop=_spacingBetweenTitleBottomAndNextCardTop;
 @property(readonly, nonatomic) double spacingBetweenTitleTopAndPreviousCardBottom; // @synthesize spacingBetweenTitleTopAndPreviousCardBottom=_spacingBetweenTitleTopAndPreviousCardBottom;
-@property(readonly, nonatomic) double spacingBetweenTitleAndSubtitle; // @synthesize spacingBetweenTitleAndSubtitle=_spacingBetweenTitleAndSubtitle;
-@property(readonly, nonatomic) NSString *chevronImageName; // @synthesize chevronImageName=_chevronImageName;
-@property(readonly, nonatomic) UIColor *floatingSubtitleColor; // @synthesize floatingSubtitleColor=_floatingSubtitleColor;
-@property(readonly, nonatomic) UIColor *subtitleColor; // @synthesize subtitleColor=_subtitleColor;
-@property(readonly, nonatomic) UIColor *floatingTitleColor; // @synthesize floatingTitleColor=_floatingTitleColor;
-@property(readonly, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
+@property(readonly, nonatomic) double spacingBetweenTitleAndChevron; // @synthesize spacingBetweenTitleAndChevron=_spacingBetweenTitleAndChevron;
+@property(readonly, nonatomic) PXExtendedImageConfiguration *chevronImageConfiguration; // @synthesize chevronImageConfiguration=_chevronImageConfiguration;
+@property(readonly, nonatomic) UIColor *floatingTitleDeemphasizedColor; // @synthesize floatingTitleDeemphasizedColor=_floatingTitleDeemphasizedColor;
+@property(readonly, nonatomic) UIColor *titleDeemphasizedColor; // @synthesize titleDeemphasizedColor=_titleDeemphasizedColor;
+@property(readonly, nonatomic) UIColor *floatingTitleEmphasizedColor; // @synthesize floatingTitleEmphasizedColor=_floatingTitleEmphasizedColor;
+@property(readonly, nonatomic) UIColor *titleEmphasizedColor; // @synthesize titleEmphasizedColor=_titleEmphasizedColor;
 @property(readonly, nonatomic) double titleHeight; // @synthesize titleHeight=_titleHeight;
 @property(readonly, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property(readonly, nonatomic) struct CGSize contentInset; // @synthesize contentInset=_contentInset;
-- (void).cxx_destruct;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
 
 @end

@@ -12,32 +12,41 @@ __attribute__((visibility("hidden")))
 @interface VCHardwareSettingsMac <VCHardwareSettingsMacProtocol>
 {
     _Bool _hiDefEncoding;
-    int _hardwareScore;
+    _Bool _isGVAEncoderAvailableInitialized;
+    _Bool _isGVAEncoderAvailable;
+    int _machineType;
+    int _cpuFamily;
     int _numProcessors;
     int _mhrtz;
     int _isG5;
-    int _machineType;
-    int _cpuFamily;
+    int _hardwareScore;
     NSString *_cpuType;
     NSString *_machineName;
-    _Bool _isGVAEncoderAvailableInitialized;
-    _Bool _isGVAEncoderAvailable;
 }
 
 + (long long)deviceClass;
 + (id)sharedInstance;
+- (unsigned int)maxRemoteParticipants30fps;
+@property(readonly, nonatomic) _Bool isPixelFormatAvailable;
+- (void)addPixelFormat;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
+@property(readonly, nonatomic) unsigned int maxMultiwayFramerateSupported;
+@property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
+@property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
 @property(readonly, nonatomic) _Bool useSoftFramerateSwitching;
 @property(readonly, nonatomic) int hardwareScore;
 @property(readonly, nonatomic) NSString *machineName;
 @property(readonly, nonatomic) unsigned int hwEncoderEnterBitrate;
 @property(readonly, nonatomic) unsigned int hwEncoderExitBitrate;
+- (_Bool)isIMacPro;
 @property(readonly, nonatomic) _Bool isIMac;
 @property(readonly, nonatomic) _Bool isMacPro;
 @property(readonly, nonatomic) _Bool isMacBookWVGA;
+@property(readonly, nonatomic) _Bool supports1080pDecoding;
+@property(readonly, nonatomic) _Bool supports1080pEncoding;
 @property(readonly, nonatomic) _Bool canDoHiDefDecoding;
 @property(readonly, nonatomic) _Bool canDoHEVC;
 @property(readonly, nonatomic) _Bool canDoHiDefEncoding;
@@ -48,6 +57,12 @@ __attribute__((visibility("hidden")))
 - (int)_getCPUFamilyType;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

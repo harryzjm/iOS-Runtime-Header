@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <AuthKit/AKAuthorizationClientProtocol-Protocol.h>
-
-@class AKAuthorizationDaemonConnection;
+@class AKAuthorizationClientImpl, AKAuthorizationDaemonConnection;
 @protocol AKAuthorizationUIProvider;
 
-@interface AKAuthorizationController : NSObject <AKAuthorizationClientProtocol>
+@interface AKAuthorizationController : NSObject
 {
+    AKAuthorizationClientImpl *_clientImpl;
     AKAuthorizationDaemonConnection *_daemonConnection;
-    id <AKAuthorizationUIProvider> _uiProvider;
 }
 
 + (_Bool)isURLFromAppleOwnedDomain:(id)arg1;
@@ -22,17 +20,22 @@
 + (_Bool)shouldProcessURL:(id)arg1;
 + (id)sharedController;
 + (_Bool)canPerformAuthorization;
-@property(retain) id <AKAuthorizationUIProvider> uiProvider; // @synthesize uiProvider=_uiProvider;
 - (void).cxx_destruct;
-- (void)presentAuthorizationUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_shouldOverrideProxiedBundleIDForContext:(id)arg1;
+- (void)establishConnectionWithStateBroadcastHandlerEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)establishConnectionWithNotificationHandlerEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)primaryApplicationInformationForWebServiceWithInfo:(id)arg1 error:(id *)arg2;
 - (void)continueFetchingIconForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAppleIDAuthorizeHTMLResponseTemplateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_appleOwnedDomains;
 - (id)_appleIDAuthorizationURLs;
 - (void)performAuthorizationWithContext:(id)arg1 withUserProvidedInformation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPresentationContextForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getCredentialStateForClientID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getCredentialStateForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)revokeAuthorizationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAuthorizationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(retain) id <AKAuthorizationUIProvider> uiProvider;
 - (void)dealloc;
 - (id)initWithDaemonXPCEndpoint:(id)arg1;
 - (id)init;

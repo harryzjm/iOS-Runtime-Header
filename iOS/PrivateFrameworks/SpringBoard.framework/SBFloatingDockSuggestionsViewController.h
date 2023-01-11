@@ -12,12 +12,11 @@
 #import <SpringBoard/SBIconViewQuerying-Protocol.h>
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSSet, NSString, SBAppSuggestionManager, SBApplicationController, SBDockIconListView, SBFloatingDockSuggestionsModel, SBFloatingDockViewController, SBIconController, SBIconListModel, SBLayoutStateTransitionCoordinator, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
+@class NSMutableArray, NSSet, NSString, SBAppSuggestionManager, SBApplicationController, SBDockIconListView, SBFloatingDockSuggestionsModel, SBFloatingDockViewController, SBIconController, SBIconListModel, SBLayoutStateTransitionCoordinator, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
 @protocol SBFloatingDockSuggestionsViewControllerDelegate, SBIconViewProviding;
 
 @interface SBFloatingDockSuggestionsViewController : UIViewController <SBFloatingDockSuggestionsModelDelegate, SBLayoutStateTransitionObserver, SBIconViewProviding, SBFloatingDockSuggestionsViewProviding, SBIconViewQuerying>
 {
-    NSMapTable *_icons;
     _Bool _visible;
     SBFloatingDockViewController *_floatingDockViewController;
     id <SBFloatingDockSuggestionsViewControllerDelegate> _delegate;
@@ -35,6 +34,7 @@
     id <SBIconViewProviding> _iconViewProvider;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic) long long effectiveEnvironmentMode; // @synthesize effectiveEnvironmentMode=_effectiveEnvironmentMode;
@@ -50,7 +50,6 @@
 @property(readonly, nonatomic) unsigned long long numberOfRecents; // @synthesize numberOfRecents=_numberOfRecents;
 @property(nonatomic) __weak id <SBFloatingDockSuggestionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak SBFloatingDockViewController *floatingDockViewController; // @synthesize floatingDockViewController=_floatingDockViewController;
-- (void).cxx_destruct;
 - (void)_fadeInIcon:(id)arg1 isReplacing:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fadeOutIcon:(id)arg1 atIndex:(unsigned long long)arg2 isReplacing:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_listLayoutDidChange:(id)arg1;
@@ -60,7 +59,7 @@
 - (_Bool)_onHomescreen;
 - (_Bool)_shouldDeferUpdateInvolvingContinuity:(_Bool)arg1;
 - (void)_loadAndPlaceIconsInViewForDisplayItems:(id)arg1;
-- (id)_iconForDisplayItem:(id)arg1 createIfNecessary:(_Bool)arg2;
+- (id)_iconForDisplayItem:(id)arg1;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
 - (_Bool)isIconViewRecycled:(id)arg1;
 - (void)recycleIconView:(id)arg1;
@@ -84,6 +83,7 @@
 - (void)dockSuggestionsModel:(id)arg1 didInsertItem:(id)arg2 atIndex:(unsigned long long)arg3 involvesContinuity:(_Bool)arg4;
 - (void)_performOrDefer:(_Bool)arg1 iconUpdate:(CDUnknownBlockType)arg2;
 - (void)_emitPresentedEventInvolvingContinuity:(_Bool)arg1 fromModel:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (void)_didChangeNumberOfIcons;
 - (void)_performDeferredIconUpdates;

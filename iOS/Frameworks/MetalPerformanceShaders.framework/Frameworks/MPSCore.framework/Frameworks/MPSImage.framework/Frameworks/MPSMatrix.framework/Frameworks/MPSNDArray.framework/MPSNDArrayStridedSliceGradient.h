@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE, MPSNDArrayInitializationConstant;
+
 @interface MPSNDArrayStridedSliceGradient
 {
+    MPSNDArrayInitializationConstant *_zeroFillKernel;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
-- (void)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4 destinationArray:(id)arg5;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+- (void)dealloc;
 - (id)destinationArrayDescriptorForSourceArrays:(id)arg1 sourceState:(id)arg2;
+- (void)encodeToCommandBuffer:(id)arg1 sourceArrays:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4 destinationArray:(id)arg5;
+- (void)encodeToCommandBuffer:(id)arg1 sourceArray:(id)arg2 sourceGradient:(id)arg3 gradientState:(id)arg4 destinationArray:(id)arg5;
 - (id)initWithDevice:(id)arg1;
+- (MISSING_TYPE *)stridesAtSourceIndex:(unsigned long long)arg1;
 - (unsigned long long)kernelDimensionalityForSourceArrays:(id)arg1;
 
 @end

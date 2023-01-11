@@ -10,12 +10,18 @@
 {
 }
 
++ (id)na_identity;
 + (id)colorCharacteristicTypes;
 + (Class)valueClass;
+@property(nonatomic) _Bool naturalLightingEnabled;
+@property(readonly, nonatomic) _Bool supportsNaturalLighting;
+- (id)_subclass_updateWithOptions:(id)arg1;
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)valueForCharacteristicType:(id)arg1 inBatchReadResponse:(id)arg2;
+- (id)normalizedValueForValue:(id)arg1;
 - (id)writeValue:(id)arg1;
+- (void)_logForNaturalLightUserStudy:(id)arg1;
 @property(readonly, nonatomic) id <HFColorProfile> colorProfile;
 @property(readonly, nonatomic) _Bool supportsRGBColor;
 - (_Bool)supportsItemRepresentingServices:(id)arg1;

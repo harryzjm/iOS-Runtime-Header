@@ -9,6 +9,7 @@
 @protocol QLItemViewControllerPresentingDelegate
 @property(readonly) QLItemPresenterViewController *itemPresenterViewController;
 @property(readonly, nonatomic) NSString *hostApplicationBundleIdentifier;
+@property(readonly, nonatomic) NSString *parentApplicationDisplayIdentifier;
 - (void)previewItemViewController:(QLItemViewController *)arg1 didFailWithError:(NSError *)arg2;
 @end
 

@@ -6,9 +6,8 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKDatabase, CKOperationGroup, NSError, NSOperationQueue;
+@class CKDatabase, CKOperationGroup, NSError, NSOperationQueue, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKSyncEngineModifyRecordBatchesOperation : NSOperation
 {
     _Bool _isExecuting;
@@ -22,12 +21,15 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _modifyRecordBatchesCompletionBlock;
     CDUnknownBlockType _willEnqueueOperationBlock;
     NSError *_error;
+    NSSet *_zoneIDs;
     NSOperationQueue *_operationQueue;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
 @property(nonatomic) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(retain, nonatomic) NSSet *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) CDUnknownBlockType willEnqueueOperationBlock; // @synthesize willEnqueueOperationBlock=_willEnqueueOperationBlock;
 @property(copy, nonatomic) CDUnknownBlockType modifyRecordBatchesCompletionBlock; // @synthesize modifyRecordBatchesCompletionBlock=_modifyRecordBatchesCompletionBlock;
@@ -37,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType populateNextBatchBlock; // @synthesize populateNextBatchBlock=_populateNextBatchBlock;
 @property(retain, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
 @property(readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
 - (id)operationToModifyBatch:(id)arg1;
 - (void)addNextModifyOperationOrFinishIfNoRemainingWork;
 - (id)cancelledError;

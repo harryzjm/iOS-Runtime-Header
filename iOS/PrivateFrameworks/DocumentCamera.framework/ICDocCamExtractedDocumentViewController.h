@@ -50,13 +50,8 @@
     UIBarButtonItem *_filterButtonItemForNavBar;
     UIBarButtonItem *_trashButtonItemForNavBar;
     UIBarButtonItem *_rotateButtonItemForNavBar;
-    UIBarButtonItem *_compactRotateButtonItem;
-    UIBarButtonItem *_compactFilterButtonItem;
-    UIBarButtonItem *_compactRotateButtonItemForNavBar;
-    UIBarButtonItem *_compactFilterButtonItemForNavBar;
     UIBarButtonItem *_recropButtonItem;
     UIBarButtonItem *_recropButtonItemForNavBar;
-    UIBarButtonItem *_compactRecropButtonItemForNavBar;
     UILabel *_pageIndexLabel;
     UIButton *_collectionTitleButton;
     UIView *_titleViewWrapper;
@@ -94,7 +89,8 @@
     struct CGRect _menuControllerTargetRect;
 }
 
-+ (struct CGRect)targetRectForOrientation:(long long)arg1;
++ (struct CGRect)targetRectForOrientation:(long long)arg1 window:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *darkenedCollectionViewTitleTintColor; // @synthesize darkenedCollectionViewTitleTintColor=_darkenedCollectionViewTitleTintColor;
 @property(retain, nonatomic) UIColor *defaultCollectionViewTitleTintColor; // @synthesize defaultCollectionViewTitleTintColor=_defaultCollectionViewTitleTintColor;
 @property(nonatomic) _Bool layoutHasHappened; // @synthesize layoutHasHappened=_layoutHasHappened;
@@ -138,13 +134,8 @@
 @property(retain, nonatomic) UIButton *collectionTitleButton; // @synthesize collectionTitleButton=_collectionTitleButton;
 @property(retain, nonatomic) UILabel *pageIndexLabel; // @synthesize pageIndexLabel=_pageIndexLabel;
 @property(nonatomic) _Bool rotationUnderWay; // @synthesize rotationUnderWay=_rotationUnderWay;
-@property(retain, nonatomic) UIBarButtonItem *compactRecropButtonItemForNavBar; // @synthesize compactRecropButtonItemForNavBar=_compactRecropButtonItemForNavBar;
 @property(retain, nonatomic) UIBarButtonItem *recropButtonItemForNavBar; // @synthesize recropButtonItemForNavBar=_recropButtonItemForNavBar;
 @property(retain, nonatomic) UIBarButtonItem *recropButtonItem; // @synthesize recropButtonItem=_recropButtonItem;
-@property(retain, nonatomic) UIBarButtonItem *compactFilterButtonItemForNavBar; // @synthesize compactFilterButtonItemForNavBar=_compactFilterButtonItemForNavBar;
-@property(retain, nonatomic) UIBarButtonItem *compactRotateButtonItemForNavBar; // @synthesize compactRotateButtonItemForNavBar=_compactRotateButtonItemForNavBar;
-@property(retain, nonatomic) UIBarButtonItem *compactFilterButtonItem; // @synthesize compactFilterButtonItem=_compactFilterButtonItem;
-@property(retain, nonatomic) UIBarButtonItem *compactRotateButtonItem; // @synthesize compactRotateButtonItem=_compactRotateButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *rotateButtonItemForNavBar; // @synthesize rotateButtonItemForNavBar=_rotateButtonItemForNavBar;
 @property(retain, nonatomic) UIBarButtonItem *trashButtonItemForNavBar; // @synthesize trashButtonItemForNavBar=_trashButtonItemForNavBar;
 @property(retain, nonatomic) UIBarButtonItem *filterButtonItemForNavBar; // @synthesize filterButtonItemForNavBar=_filterButtonItemForNavBar;
@@ -161,7 +152,7 @@
 @property(retain, nonatomic) ICDocCamFilterViewController *filterViewController; // @synthesize filterViewController=_filterViewController;
 @property(nonatomic) __weak UIToolbar *bottomToolbar; // @synthesize bottomToolbar=_bottomToolbar;
 @property(nonatomic) __weak UIView *topToolbar; // @synthesize topToolbar=_topToolbar;
-- (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (void)resetImageCentering;
 - (id)indexPathForCurrentDocument;
 - (unsigned long long)documentCount;
@@ -182,7 +173,6 @@
 - (id)_accessibilitySpeakThisElementsAndStrings;
 - (void)speakAccessibilityAnnouncementForMovingItemFromIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)speakAccessibilityAnnouncementForReorderIfNecessaryForProposedIndexPath:(id)arg1;
-- (void)suppressImageHairlineThickeningForBarButtonItems:(id)arg1;
 - (void)updateForAccessibilityDarkerSystemColors;
 - (_Bool)accessibilityPerformEscape;
 - (void)updateImageViewAccessibilityForPageContentViewController:(id)arg1;
@@ -278,7 +268,6 @@
 - (double)thumbnailToolbarHeight;
 - (void)updateTitleView;
 - (void)updateFilterViewLayoutIfNeeded;
-- (void)updateStatusBarFromWindowLevel;
 - (void)updateLayout;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)prepareForDismissal;

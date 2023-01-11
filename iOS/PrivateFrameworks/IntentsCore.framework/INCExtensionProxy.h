@@ -25,6 +25,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType backgroundAppHandler; // @synthesize backgroundAppHandler=_backgroundAppHandler;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) CDUnknownBlockType imageProcessingHandler; // @synthesize imageProcessingHandler=_imageProcessingHandler;
@@ -34,13 +35,13 @@
 @property(readonly, nonatomic) id <_INExtensionContextVending> _vendorRemote; // @synthesize _vendorRemote;
 @property(readonly, nonatomic) NSExtension *_extension; // @synthesize _extension;
 @property(readonly, nonatomic) INCExtensionConnection *_connection; // @synthesize _connection;
-- (void).cxx_destruct;
 - (void)_issueSandboxExtensionsForFileURLsIfNeededToIntent:(id)arg1;
 - (_Bool)_isIntentRestrictedWhileProtectedDataUnavailableWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_processIntent:(id)arg1 intentResponse:(id)arg2 withCacheItems:(id)arg3;
 @property(readonly, nonatomic, getter=_isExtensionBeingDebugged) _Bool _extensionBeingDebugged;
 - (_Bool)_extensionProcessHasEntitlement:(id)arg1;
 - (_Bool)_shouldForwardToAppWithIntent:(id)arg1 intentResponse:(id)arg2;
+- (void)prewarmAppWithIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_initWithConnection:(id)arg1 extension:(id)arg2 vendorRemote:(id)arg3 auditTokenValue:(id)arg4;
 - (void)stopSendingUpdates;
 - (void)startSendingUpdatesToObserver:(id)arg1;
@@ -49,6 +50,7 @@
 - (void)resolveIntentSlotKeyPaths:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveIntentSlotKeyPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getDefaultValueForParameterNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getOptionsForParameterNamed:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getOptionsForParameterNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(nonatomic) _Bool shouldResetRequestAfterHandle;
 

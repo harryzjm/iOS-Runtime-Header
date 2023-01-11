@@ -15,8 +15,9 @@
     NSString *_userInterfaceType;
 }
 
-@property(readonly, nonatomic) NSString *userInterfaceType; // @synthesize userInterfaceType=_userInterfaceType;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *userInterfaceType; // @synthesize userInterfaceType=_userInterfaceType;
+- (_Bool)shouldReverseLayoutDirection;
 - (long long)currentApplicationStateForWFApplicationContext:(id)arg1;
 - (id)applicationForWFApplicationContext:(id)arg1;
 - (id)keyWindowForWFApplicationContext:(id)arg1;
@@ -31,6 +32,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) long long userInterfaceStyle;
 @property(nonatomic) _Bool wfIdleTimerDisabled;
 
 @end

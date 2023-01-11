@@ -22,13 +22,17 @@
 - (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityRightButtonElements;
 - (id)_accessibilityLeftButtonElements;
+- (id)_accessibilityStaticBarButtonItemWithContents:(id)arg1;
+- (id)_accessibilityStaticBarButtonItem;
+- (_Bool)_accessibilityHasStaticNavBarButtonChanged;
+- (void)_axSetCachedStaticNavBarButton:(id)arg1;
+- (id)_axGetCachedStaticNavBarButton;
 - (_Bool)_accessibilityHasTitleViewChanged;
 - (_Bool)_accessibilityHasLeftRightButtonCountChanged;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (id)accessibilityElements;
 - (_Bool)accessibilityPerformEscape;
 - (id)accessibilityIdentifier;
-- (id)accessibilityLabel;
 - (long long)accessibilityContainerType;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;

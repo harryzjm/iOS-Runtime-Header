@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSDate, NSDateFormatter, NSString, NTKAstronomyLocationDot, NTKAstronomyRotationModel, NTKAstronomyVistaView, NTKColoringLabel, NTKDateComplicationLabel, NTKDelayedBlock, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer, UIView;
+@class CLKClockTimerToken, MISSING_TYPE, NSArray, NSDate, NSDateFormatter, NSString, NTKAstronomyLocationDot, NTKAstronomyRotationModel, NTKAstronomyVistaView, NTKColoringLabel, NTKDateComplicationLabel, NTKDelayedBlock, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer, UIView;
 
 @interface NTKAstronomyFaceView <NTKTimeView, NTKAstronomyRotationModelObserver, NTKAstronomyVistaViewObserver, UIGestureRecognizerDelegate>
 {
@@ -24,7 +24,7 @@
     UIPanGestureRecognizer *_spheroidPanGesture;
     UITapGestureRecognizer *_supplementalModeDoubleTapGesture;
     UITapGestureRecognizer *_interactiveModeTapGesture;
-    struct NSString *_locationManagerToken;
+    NSString *_locationManagerToken;
     NTKDateComplicationLabel *_legacyDateLabel;
     UIImageView *_legacyLeftBottomImageView;
     UIImageView *_legacyRightBottomImageView;
@@ -36,7 +36,7 @@
     NTKAstronomyLocationDot *_locationDot;
     NSDate *_overrideDate;
     NSDate *_crownDate;
-    struct NSNumber *_clockTimerToken;
+    CLKClockTimerToken *_clockTimerToken;
     NSDateFormatter *_scrubDateFormatter[3];
     struct CGRect _phaseLabelDefaultFrame;
     float _supplementalFontLineHeightPlusDescender;
@@ -56,6 +56,7 @@
 
 - (void).cxx_destruct;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;

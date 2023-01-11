@@ -4,28 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NWPathEvaluator;
+
 @interface RTReachabilityManager
 {
-    struct __SCNetworkReachability *_reachabilityRef;
-    long long _currentReachability;
+    _Bool _observingReachabilityChanges;
+    NWPathEvaluator *_pathEvaluator;
+    unsigned long long _currentReachability;
 }
 
-+ (id)reachabilityToString:(long long)arg1;
-+ (long long)_processReachabilityChange:(unsigned int)arg1;
-@property(readonly, nonatomic) long long currentReachability; // @synthesize currentReachability=_currentReachability;
-@property(nonatomic) struct __SCNetworkReachability *reachabilityRef; // @synthesize reachabilityRef=_reachabilityRef;
-- (_Bool)_getCurrentReachability:(unsigned int *)arg1;
++ (id)reachabilityToString:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long currentReachability; // @synthesize currentReachability=_currentReachability;
+@property(retain, nonatomic) NWPathEvaluator *pathEvaluator; // @synthesize pathEvaluator=_pathEvaluator;
+- (void)_observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (unsigned long long)reachability;
 - (void)_fetchCurrentReachability:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentReachability:(CDUnknownBlockType)arg1;
 - (id)currentReachabilityString;
-- (void)setCurrentReachability:(long long)arg1;
-- (void)processReachabilityChange:(unsigned int)arg1;
-- (id)description;
+- (void)_processReachabilityChange:(id)arg1;
 - (void)_shutdown;
-- (void)_stopMonitoringReachability;
-- (void)_startMonitoringReachability;
+- (void)dealloc;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
+- (id)initWithPathEvaluator:(id)arg1;
 - (id)init;
 
 @end

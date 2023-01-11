@@ -9,10 +9,6 @@
     _Bool _usesCellNetwork;
 }
 
-- (void)_sendUserToSettings;
-- (void)_turnOffAirplaneMode;
-- (void)_configureForAirplaneModeDataAlertOffCellular:(_Bool)arg1;
-- (void)_configureForAirplaneModeDataAlertOnCellular:(_Bool)arg1;
 - (void)configure:(_Bool)arg1 requirePasscodeForActions:(_Bool)arg2;
 - (id)initWithApplication:(id)arg1;
 

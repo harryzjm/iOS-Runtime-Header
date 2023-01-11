@@ -26,12 +26,7 @@
 - (void)URLProtocol:(id)arg1 didReceiveResponse:(id)arg2 cacheStoragePolicy:(unsigned long long)arg3;
 - (void)URLProtocol:(id)arg1 cachedResponseIsValid:(id)arg2;
 - (void)URLProtocol:(id)arg1 wasRedirectedToRequest:(id)arg2 redirectResponse:(id)arg3;
-- (struct _CFURLAuthChallenge *)cfChallenge;
-- (id)challenge;
-- (void)teardown;
-- (void)withCustomProtocolScheduling:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithCFClient:(struct URLProtocolClient *)arg1 prot:(struct URLProtocol *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

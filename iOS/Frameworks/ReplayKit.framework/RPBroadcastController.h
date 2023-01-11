@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, NSURL, RPBroadcastViewController;
+@class NSDictionary, NSString, NSURL;
 @protocol RPBroadcastControllerDelegate;
 
 @interface RPBroadcastController : NSObject
@@ -15,15 +15,15 @@
     id <RPBroadcastControllerDelegate> _delegate;
     NSString *_broadcastExtensionBundleID;
     NSString *_broadcastExtensionBundleIdentifier;
-    RPBroadcastViewController *_broadcastViewController;
 }
 
-@property(readonly, nonatomic) RPBroadcastViewController *broadcastViewController; // @synthesize broadcastViewController=_broadcastViewController;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *broadcastExtensionBundleIdentifier; // @synthesize broadcastExtensionBundleIdentifier=_broadcastExtensionBundleIdentifier;
 @property(readonly, nonatomic) NSString *broadcastExtensionBundleID; // @synthesize broadcastExtensionBundleID=_broadcastExtensionBundleID;
 @property(nonatomic) __weak id <RPBroadcastControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSDictionary *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
-- (void).cxx_destruct;
+- (void)finishSystemBroadcastWithHandler:(CDUnknownBlockType)arg1;
+- (void)startSystemBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)finishBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)resumeBroadcast;
 - (void)pauseBroadcast;
@@ -31,9 +31,8 @@
 @property(retain, nonatomic) NSURL *broadcastURL;
 @property(readonly, nonatomic, getter=isPaused) _Bool paused;
 @property(readonly, nonatomic, getter=isBroadcasting) _Bool broadcasting;
-- (void)dealloc;
 - (id)initWithCurrentSession;
-- (id)initWithExtensionBundleID:(id)arg1 broadcastURL:(id)arg2 broadcastViewController:(id)arg3;
+- (id)initWithExtensionBundleID:(id)arg1 broadcastURL:(id)arg2;
 - (id)init;
 
 @end

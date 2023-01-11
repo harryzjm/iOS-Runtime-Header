@@ -30,10 +30,13 @@ __attribute__((visibility("hidden")))
     NSString *_runningOperationID;
     NSMutableSet *_dependentOperationIDs;
     NSMutableDictionary *_dependentOperationIDsByItemID;
+    NSMutableDictionary *_unitTestOverrides;
     CKDOperation *_initialOperation;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKDOperation *initialOperation; // @synthesize initialOperation=_initialOperation;
+@property(retain, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
 @property(retain, nonatomic) NSMutableDictionary *dependentOperationIDsByItemID; // @synthesize dependentOperationIDsByItemID=_dependentOperationIDsByItemID;
 @property(retain, nonatomic) NSMutableSet *dependentOperationIDs; // @synthesize dependentOperationIDs=_dependentOperationIDs;
 @property(retain, nonatomic) NSString *runningOperationID; // @synthesize runningOperationID=_runningOperationID;
@@ -50,7 +53,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak CKDQueuedFetch *equivalentRunningFetch; // @synthesize equivalentRunningFetch=_equivalentRunningFetch;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(retain, nonatomic) NSDate *queuedDate; // @synthesize queuedDate=_queuedDate;
-- (void).cxx_destruct;
 - (void)start;
 - (void)createFetchOperationForItemIDs:(id)arg1 operationQueue:(id)arg2 operationConfigurationBlock:(CDUnknownBlockType)arg3;
 - (_Bool)dependentOperationListContainsOperationID:(id)arg1;

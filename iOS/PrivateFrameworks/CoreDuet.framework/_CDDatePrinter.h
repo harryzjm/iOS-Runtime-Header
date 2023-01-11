@@ -10,8 +10,5 @@
 {
 }
 
-+ (id)dateStringFromInterval:(double)arg1;
-+ (id)dateStringFromDate:(id)arg1;
-
 @end
 

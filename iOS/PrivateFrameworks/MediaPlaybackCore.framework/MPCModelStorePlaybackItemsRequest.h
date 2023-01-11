@@ -6,15 +6,15 @@
 
 #import <MediaPlayer/MPModelRequest.h>
 
+#import <MediaPlaybackCore/MPCModelPlaybackRequest-Protocol.h>
 #import <MediaPlaybackCore/MPCModelPlaybackRequestEnvironmentConsuming-Protocol.h>
-#import <MediaPlaybackCore/MPCModelPlaybackRequesting-Protocol.h>
 #import <MediaPlaybackCore/MPCModelRequestRTCReporting-Protocol.h>
 #import <MediaPlaybackCore/MPCModelStorePreviousRequestStoring-Protocol.h>
 #import <MediaPlaybackCore/MPModelRequestDetailedKeepLocalStatusRequesting-Protocol.h>
 
 @class MPCPlaybackRequestEnvironment, MPModelResponse, MPSectionedCollection, NSArray, NSString;
 
-@interface MPCModelStorePlaybackItemsRequest : MPModelRequest <MPCModelPlaybackRequesting, MPCModelPlaybackRequestEnvironmentConsuming, MPModelRequestDetailedKeepLocalStatusRequesting, MPCModelRequestRTCReporting, MPCModelStorePreviousRequestStoring>
+@interface MPCModelStorePlaybackItemsRequest : MPModelRequest <MPCModelPlaybackRequest, MPCModelPlaybackRequestEnvironmentConsuming, MPModelRequestDetailedKeepLocalStatusRequesting, MPCModelRequestRTCReporting, MPCModelStorePreviousRequestStoring>
 {
     _Bool _shouldBatchResultsWithPlaceholderObjects;
     _Bool _wantsDetailedKeepLocalRequestableResponse;
@@ -30,6 +30,7 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)requiresNetwork;
 + (void)MPC_consumeSiriAssetInfo:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *playbackPrioritizedIndexPaths; // @synthesize playbackPrioritizedIndexPaths=_playbackPrioritizedIndexPaths;
 @property(copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 @property(copy, nonatomic) MPSectionedCollection *sectionedModelObjects; // @synthesize sectionedModelObjects=_sectionedModelObjects;
@@ -39,19 +40,16 @@
 @property(nonatomic) _Bool shouldBatchResultsWithPlaceholderObjects; // @synthesize shouldBatchResultsWithPlaceholderObjects=_shouldBatchResultsWithPlaceholderObjects;
 @property(retain, nonatomic) MPModelResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
 @property(copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
-- (void)setAllowsPlaybackResponseBatching:(_Bool)arg1;
-@property(readonly, nonatomic) MPSectionedCollection *playbackSourceModelObjects;
+@property(readonly, copy) NSString *description;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

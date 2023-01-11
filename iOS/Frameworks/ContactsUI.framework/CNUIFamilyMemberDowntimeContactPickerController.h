@@ -7,16 +7,17 @@
 #import <UIKit/UIViewController.h>
 
 #import <ContactsUI/CNContactContentViewControllerDelegate-Protocol.h>
+#import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <ContactsUI/UISearchBarDelegate-Protocol.h>
 #import <ContactsUI/UISearchControllerDelegate-Protocol.h>
 #import <ContactsUI/UISearchResultsUpdating-Protocol.h>
 #import <ContactsUI/UITableViewDataSource-Protocol.h>
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 
-@class CNContact, CNContactContentViewController, CNContactFormatter, CNUICoreContactEditingSession, CNUIFamilyMemberContactsEditingStrategy, CNUIFamilyMemberDowntimeContactDataSource, FAFamilyMember, NSArray, NSIndexPath, NSString, UISearchBar, UISearchController, UITableView;
+@class CNContact, CNContactFormatter, CNContactViewController, CNUICoreContactEditingSession, CNUIFamilyMemberContactsEditingStrategy, CNUIFamilyMemberDowntimeContactDataSource, FAFamilyMember, NSArray, NSIndexPath, NSString, UISearchBar, UISearchController, UITableView;
 @protocol CNUIFamilyMemberDowntimeContactPickerControllerDelegate;
 
-@interface CNUIFamilyMemberDowntimeContactPickerController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CNContactContentViewControllerDelegate>
+@interface CNUIFamilyMemberDowntimeContactPickerController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, UIAdaptivePresentationControllerDelegate, CNContactContentViewControllerDelegate>
 {
     _Bool _shouldPreselectFamilyMemberContacts;
     _Bool _initialSelectionPerformed;
@@ -25,7 +26,7 @@
     UISearchController *_searchController;
     UISearchBar *_searchBar;
     NSIndexPath *_presentedContactIndexPath;
-    CNContactContentViewController *_contactViewController;
+    CNContactViewController *_contactViewController;
     CNContactFormatter *_contactCellLabelFormatter;
     CNContactFormatter *_contactCardWarningFormatter;
     CNUIFamilyMemberDowntimeContactDataSource *_dataSource;
@@ -37,6 +38,7 @@
 
 + (id)familyCircle;
 + (id)descriptorForContactPropertiesSupportingPredicateEvaluation;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool initialSelectionPerformed; // @synthesize initialSelectionPerformed=_initialSelectionPerformed;
 @property(readonly, nonatomic) CNContact *preferredForNameMeContact; // @synthesize preferredForNameMeContact=_preferredForNameMeContact;
 @property(readonly, nonatomic) NSArray *allFamilyMembers; // @synthesize allFamilyMembers=_allFamilyMembers;
@@ -45,14 +47,13 @@
 @property(readonly, nonatomic) CNUIFamilyMemberDowntimeContactDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly, nonatomic) CNContactFormatter *contactCardWarningFormatter; // @synthesize contactCardWarningFormatter=_contactCardWarningFormatter;
 @property(readonly, nonatomic) CNContactFormatter *contactCellLabelFormatter; // @synthesize contactCellLabelFormatter=_contactCellLabelFormatter;
-@property(retain, nonatomic) CNContactContentViewController *contactViewController; // @synthesize contactViewController=_contactViewController;
+@property(retain, nonatomic) CNContactViewController *contactViewController; // @synthesize contactViewController=_contactViewController;
 @property(retain, nonatomic) NSIndexPath *presentedContactIndexPath; // @synthesize presentedContactIndexPath=_presentedContactIndexPath;
 @property(retain, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(nonatomic) _Bool shouldPreselectFamilyMemberContacts; // @synthesize shouldPreselectFamilyMemberContacts=_shouldPreselectFamilyMemberContacts;
 @property(nonatomic) __weak id <CNUIFamilyMemberDowntimeContactPickerControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (_Bool)contactViewController:(id)arg1 shouldPerformDefaultActionForContact:(id)arg2 propertyKey:(id)arg3 propertyIdentifier:(id)arg4;
 - (void)searchBarCancelButtonClicked:(id)arg1;
@@ -72,6 +73,7 @@
 - (void)cancel:(id)arg1;
 - (void)keyboardWillChange:(id)arg1;
 @property(readonly, nonatomic) CNUICoreContactEditingSession *editingSessionFromContactViewController;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)startObservingKeyboardChanges;
@@ -82,7 +84,7 @@
 - (void)setupUI;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithChildFamilyMember:(id)arg1 allFamilyMembers:(id)arg2 contactStore:(id)arg3 editingStrategy:(id)arg4;
+- (id)initWithChildFamilyMember:(id)arg1 allFamilyMembers:(id)arg2 contactStore:(id)arg3 editingStrategy:(id)arg4 showingFamilyMemberContacts:(_Bool)arg5;
 - (id)initWithChildFamilyMember:(id)arg1 allFamilyMembers:(id)arg2 contactStore:(id)arg3;
 
 // Remaining properties

@@ -4,34 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DataDetectorsUI/SFSafariViewControllerDelegate-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface DDURLPreviewAction <SFSafariViewControllerDelegate>
+@interface DDURLPreviewAction
 {
 }
 
 + (id)previewActionsWithURL:(id)arg1 validatedURL:(id)arg2 result:(struct __DDResult *)arg3 context:(id)arg4;
 + (_Bool)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
 + (id)validatedURLWithURL:(id)arg1 result:(struct __DDResult *)arg2;
-+ (id)ddPreviewActionItemsForWebURL:(id)arg1;
-+ (id)ddPreviewActionItemsForSimpleDDActions:(id)arg1;
 - (id)commitURL;
 - (void)setPreviewMode:(_Bool)arg1;
 - (_Bool)requiresEmbeddingNavigationController;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (id)createViewController;
-- (id)additionalMenuActions;
 - (id)menuActions;
 - (_Bool)showMenuTitle;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -21,6 +21,7 @@
 
 @property(readonly, nonatomic, getter=isExternalToDashBoard) _Bool externalToDashBoard; // @synthesize externalToDashBoard=_externalToDashBoard;
 - (id)_presenter;
+- (void)conformsToCSExternalBehaviorProviding;
 - (void)_unregisterAsExternalProvider;
 - (void)_registerAsExternalProviderIfNeeded;
 - (void)viewWillDisappear:(_Bool)arg1;

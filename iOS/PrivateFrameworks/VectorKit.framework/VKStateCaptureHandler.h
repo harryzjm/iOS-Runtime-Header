@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSString *_name;
     unsigned long long _handle;
-    function_2d7ab59b _callback;
+    function_12bcdede _callback;
 }
 
 + (struct os_state_data_s *)stateDataForDictionary:(id)arg1 title:(id)arg2;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)_unregisterHandlerforStateCapture;
 - (void)_registerHandlerforStateCapture:(id)arg1;
 - (void)dealloc;
-- (id)initWithQueue:(id)arg1 withName:(id)arg2 withCallback:(function_2d7ab59b)arg3;
+- (id)initWithQueue:(id)arg1 withName:(id)arg2 withCallback:(function_12bcdede)arg3;
 
 @end
 

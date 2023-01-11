@@ -42,7 +42,6 @@
 + (id)databaseName;
 + (_Bool)updateProperties:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id *)arg4 bindingHandler:(CDUnknownBlockType)arg5;
 + (id)insertOrReplaceEntity:(_Bool)arg1 database:(id)arg2 properties:(id)arg3 error:(id *)arg4 bindingHandler:(CDUnknownBlockType)arg5;
-+ (id)updateSQLForPropertiesOnEntity:(id)arg1;
 + (id)additionalPredicateForEnumeration;
 + (id)updateSQLForProperties:(id)arg1 predicate:(id)arg2;
 + (id)insertSQLForProperties:(id)arg1 shouldReplace:(_Bool)arg2;
@@ -82,6 +81,7 @@
 - (void)willDeleteFromDatabase:(id)arg1;
 - (_Bool)deleteFromDatabase:(id)arg1 error:(id *)arg2;
 - (_Bool)updateProperties:(id)arg1 database:(id)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4;
+- (id)updateSQLForProperties:(id)arg1;
 - (id)initWithPersistentID:(long long)arg1;
 
 // Remaining properties

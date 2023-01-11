@@ -9,6 +9,7 @@
     _Bool _useSlowAnimations;
     _Bool _forceReloadAfterRefresh;
     _Bool _disableRoundedOverlays;
+    _Bool _rankMemoriesByRelevanceScore;
     _Bool _displayContentDuringGraphRebuild;
     _Bool _alwaysShowOnboarding;
     long long _dataSourceType;
@@ -31,6 +32,7 @@
 @property(nonatomic) long long memoryGroupingMethod; // @synthesize memoryGroupingMethod=_memoryGroupingMethod;
 @property(nonatomic) _Bool alwaysShowOnboarding; // @synthesize alwaysShowOnboarding=_alwaysShowOnboarding;
 @property(nonatomic) _Bool displayContentDuringGraphRebuild; // @synthesize displayContentDuringGraphRebuild=_displayContentDuringGraphRebuild;
+@property(nonatomic) _Bool rankMemoriesByRelevanceScore; // @synthesize rankMemoriesByRelevanceScore=_rankMemoriesByRelevanceScore;
 @property(nonatomic) _Bool disableRoundedOverlays; // @synthesize disableRoundedOverlays=_disableRoundedOverlays;
 @property(nonatomic) _Bool forceReloadAfterRefresh; // @synthesize forceReloadAfterRefresh=_forceReloadAfterRefresh;
 @property(nonatomic) _Bool useSlowAnimations; // @synthesize useSlowAnimations=_useSlowAnimations;

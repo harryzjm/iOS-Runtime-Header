@@ -5,6 +5,7 @@
 //
 
 @class NSArray, NSMutableDictionary, NSMutableSet;
+@protocol CKModifyWebSharingOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyWebSharingOperation
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)isPredominatelyDownload;
+- (void).cxx_destruct;
 @property(nonatomic) int numSaveAttempts; // @synthesize numSaveAttempts=_numSaveAttempts;
 @property(retain, nonatomic) NSMutableDictionary *recordsToSaveByID; // @synthesize recordsToSaveByID=_recordsToSaveByID;
 @property(retain, nonatomic) NSMutableSet *fetchedRecordIDs; // @synthesize fetchedRecordIDs=_fetchedRecordIDs;
@@ -28,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *recordIDsToShare; // @synthesize recordIDsToShare=_recordIDsToShare;
 @property(copy, nonatomic) CDUnknownBlockType recordWebUnsharedBlock; // @synthesize recordWebUnsharedBlock=_recordWebUnsharedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordWebSharedBlock; // @synthesize recordWebSharedBlock=_recordWebSharedBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_fetchRecords;
@@ -40,6 +41,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKModifyWebSharingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

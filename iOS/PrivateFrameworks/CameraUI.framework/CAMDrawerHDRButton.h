@@ -11,14 +11,17 @@
     long long _hdrMode;
 }
 
+@property(nonatomic, setter=setHDRMode:) long long hdrMode; // @synthesize hdrMode=_hdrMode;
 @property(nonatomic) _Bool allowHDROn; // @synthesize allowHDROn=_allowHDROn;
 @property(nonatomic) _Bool allowAutoHDR; // @synthesize allowAutoHDR=_allowAutoHDR;
-@property(nonatomic, setter=setHDRMode:) long long hdrMode; // @synthesize hdrMode=_hdrMode;
 - (_Bool)shouldUseActiveTintForCurrentState;
+- (_Bool)shouldShowSlashForCurrentState;
+- (_Bool)shouldUseSlash;
 - (id)imageNameForCurrentState;
 - (void)didSelectMenuItem:(id)arg1;
 - (id)loadMenuItems;
 - (_Bool)isMenuItemSelected:(id)arg1;
+- (void)setHDRMode:(long long)arg1 animated:(_Bool)arg2;
 - (long long)controlType;
 
 @end

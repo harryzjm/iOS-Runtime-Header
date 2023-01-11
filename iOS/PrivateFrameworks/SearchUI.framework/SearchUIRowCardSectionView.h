@@ -12,8 +12,10 @@
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
-+ (double)separatorInsetForLeadingImageForSection:(id)arg1;
++ (_Bool)prefersNoSeparatorAboveCardSection:(id)arg1;
++ (_Bool)hasLeadingImageForCardSection:(id)arg1;
 + (_Bool)supportsRecyclingForCardSection:(id)arg1;
+- (id)leadingTextView;
 - (void)updateWithRowModel:(id)arg1;
 - (id)setupContentView;
 

@@ -17,17 +17,19 @@
     NSMutableDictionary *_loadingQueue_requestsByPriority;
     long long _loadingQueue_lastRequestedPriority;
     id <PXDisplayAsset> _loadingQueue_asset;
+    double _videoAspectRatio;
     NSString *_contentIdentifier;
     PXMediaProvider *_mediaProvider;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 - (id)contentIdentifier;
-- (void).cxx_destruct;
 - (void)request:(id)arg1 didFinishWithPlayerItem:(id)arg2 info:(id)arg3;
 - (void)requestLoadingProgressDidChange:(id)arg1;
 - (void)_loadingQueue_reloadContent;
-- (void)_postprocessingQueue_performPostprocessingOfItem:(id)arg1 info:(id)arg2;
+- (void)_handlePostprocessedPlayerItem:(id)arg1 priority:(long long)arg2 description:(id)arg3;
+- (void)_postprocessingQueue_performPostprocessingOfItem:(id)arg1 info:(id)arg2 priority:(long long)arg3;
 - (_Bool)_loadingQueue_needsNewRequestForPriority:(long long)arg1;
 - (void)_loadingQueue_beginRequestForPriorityIfNeeded:(long long)arg1;
 - (void)_loadingQueue_cancelAllRequests;
@@ -37,9 +39,11 @@
 @property(retain, nonatomic) id <PXDisplayAsset> asset;
 - (void)reloadContent;
 @property(readonly, copy) NSString *description;
-- (id)postprocessPlayerItem:(id)arg1;
+- (void)postprocessPlayerItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool needsPostprocessing;
+- (id)videoAspectRatio;
 - (void)beginLoadingWithPriority:(long long)arg1;
+- (id)analyticsPayload;
 - (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
 - (id)init;
 

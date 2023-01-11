@@ -11,11 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityRemembersLastFocusedChild;
 - (_Bool)_axIsRootFolder;
 - (_Bool)_accessibilitySBScrollToPreviousPage;
 - (_Bool)_accessibilitySBScrollToNextPage;
 - (void)_accessibilityActivateSpotlight;
 - (_Bool)accessibilityScroll:(long long)arg1;
+- (_Bool)accessibilityScrollUpPage;
+- (_Bool)accessibilityScrollUpPageSupported;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityScrollStatus:(_Bool)arg1;

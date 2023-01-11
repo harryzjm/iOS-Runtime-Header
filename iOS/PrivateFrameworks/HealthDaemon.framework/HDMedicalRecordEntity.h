@@ -9,8 +9,7 @@
 }
 
 + (id)orderingTermForSortDescriptor:(id)arg1;
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
-+ (long long)preferredEntityType;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (_Bool)storeMostRecentlyNotifiedLatestModifiedDate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)mostRecentlyNotifiedLatestModifiedDateWithProfile:(id)arg1 error:(id *)arg2;
 + (id)_keyValueDomainWithProfile:(id)arg1;

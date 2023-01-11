@@ -15,9 +15,6 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_removeSettingForKey:(id)arg1;
-- (unsigned long long)_settingForKey:(id)arg1 createIfNeeded:(_Bool)arg2;
-- (id)_keyForSetting:(unsigned long long)arg1;
 - (id)_valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3 multilinePrefix:(id)arg4;
 - (id)_keyDescriptionForSetting:(unsigned long long)arg1;
 - (void)_removeAllSettings;
@@ -27,7 +24,6 @@
 - (_Bool)boolForKey:(id)arg1;
 - (long long)flagForKey:(id)arg1;
 - (_Bool)isKeyedSettings;
-- (id)initWithKeyedSettings:(id)arg1;
 - (id)_init;
 
 @end

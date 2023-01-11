@@ -26,8 +26,8 @@
 
 + (id)clientHardwarePlatformInfoHTTPHeader;
 + (id)clientInfoHTTPHeader;
-@property(nonatomic) _Bool skipLocationCheck; // @synthesize skipLocationCheck=_skipLocationCheck;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool skipLocationCheck; // @synthesize skipLocationCheck=_skipLocationCheck;
 - (void)configurationDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queueConnectionToTrustedServiceManagerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_executeDeviceMetadataFetchTasksCompletionHandlers;
@@ -39,9 +39,9 @@
 - (void)deleteApplicationWithAID:(id)arg1;
 - (void)setRegistrationRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
 - (_Bool)hasRegistrationRegionMap;
-- (void)_populateDeviceMetdata:(id)arg1 withFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_populateDeviceMetadata:(id)arg1 withFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentDeviceMetadataFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)provisioningDataIncludingDeviceMetadata:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)trustedDeviceEnrollmentInfo;
 - (id)configurationData;
 - (void)rewrapDataWithCompletionHandler:(CDUnknownBlockType)arg1;

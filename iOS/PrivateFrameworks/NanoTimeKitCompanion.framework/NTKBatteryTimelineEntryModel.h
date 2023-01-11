@@ -15,6 +15,7 @@
 - (id)_ringTextProvider;
 - (id)_levelTintColor;
 - (id)_signatureBezelTemplate;
+- (id)_graphicExtraLargeCircularTemplate;
 - (id)_signatureCircularTemplate;
 - (id)_signatureCornerTemplate;
 - (id)_newBatteryTemplateForFamily:(long long)arg1;

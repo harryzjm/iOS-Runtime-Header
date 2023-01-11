@@ -21,11 +21,15 @@
         unsigned int longitude:1;
         unsigned int isITunes:1;
         unsigned int mediaEntityType:1;
+        unsigned int shouldSearchDirectionsAlongCurrentRoute:1;
+        unsigned int directionsMode:1;
     } _has;
     _Bool _isOverlay;
     _Bool _requiresLocalMedia;
     _Bool _isITunes;
+    _Bool _shouldSearchDirectionsAlongCurrentRoute;
     int _mediaEntityType;
+    int _directionsMode;
     NSString *_label;
     NSString *_labelForLocalMedia;
     NSArray *_storeIdentifiers;
@@ -48,9 +52,18 @@
     NSString *_messageIdentifier;
     NSURL *_messageURL;
     NSString *_persistentID;
+    NSString *_universalLibraryID;
+    NSString *_interactionContentType;
+    SFPunchout *_customDirectionsPunchout;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) int directionsMode; // @synthesize directionsMode=_directionsMode;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute; // @synthesize shouldSearchDirectionsAlongCurrentRoute=_shouldSearchDirectionsAlongCurrentRoute;
+@property(retain, nonatomic) SFPunchout *customDirectionsPunchout; // @synthesize customDirectionsPunchout=_customDirectionsPunchout;
+@property(copy, nonatomic) NSString *interactionContentType; // @synthesize interactionContentType=_interactionContentType;
+@property(copy, nonatomic) NSString *universalLibraryID; // @synthesize universalLibraryID=_universalLibraryID;
 @property(nonatomic) int mediaEntityType; // @synthesize mediaEntityType=_mediaEntityType;
 @property(copy, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property(copy, nonatomic) NSURL *messageURL; // @synthesize messageURL=_messageURL;
@@ -77,12 +90,15 @@
 @property(nonatomic) _Bool isOverlay; // @synthesize isOverlay=_isOverlay;
 @property(copy, nonatomic) NSString *labelForLocalMedia; // @synthesize labelForLocalMedia=_labelForLocalMedia;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasDirectionsMode;
+- (_Bool)hasShouldSearchDirectionsAlongCurrentRoute;
 - (_Bool)hasMediaEntityType;
 - (_Bool)hasIsITunes;
 - (_Bool)hasLongitude;
@@ -94,7 +110,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

@@ -4,27 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MRCryptoPairingSession;
+@class MRCryptoPairingSession, NSArray, NSMutableArray;
 
 @interface MRExternalClientConnection
 {
+    NSMutableArray *_subscribedOrigins;
     _Bool _registeredToNowPlayingUpdates;
     _Bool _registeredToVolumeUpdates;
     _Bool _registeredKeyboardUpdates;
     _Bool _registeredToOutputDeviceUpdates;
+    _Bool _registeredToSystemEndpointUpdates;
     _Bool _cryptoEnabled;
     unsigned int _voiceRecordingState;
     MRCryptoPairingSession *_cryptoSession;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool cryptoEnabled; // @synthesize cryptoEnabled=_cryptoEnabled;
 @property(retain, nonatomic) MRCryptoPairingSession *cryptoSession; // @synthesize cryptoSession=_cryptoSession;
 @property(nonatomic) unsigned int voiceRecordingState; // @synthesize voiceRecordingState=_voiceRecordingState;
+@property(nonatomic) _Bool registeredToSystemEndpointUpdates; // @synthesize registeredToSystemEndpointUpdates=_registeredToSystemEndpointUpdates;
 @property(nonatomic) _Bool registeredToOutputDeviceUpdates; // @synthesize registeredToOutputDeviceUpdates=_registeredToOutputDeviceUpdates;
 @property(nonatomic) _Bool registeredKeyboardUpdates; // @synthesize registeredKeyboardUpdates=_registeredKeyboardUpdates;
 @property(nonatomic) _Bool registeredToVolumeUpdates; // @synthesize registeredToVolumeUpdates=_registeredToVolumeUpdates;
 @property(nonatomic) _Bool registeredToNowPlayingUpdates; // @synthesize registeredToNowPlayingUpdates=_registeredToNowPlayingUpdates;
-- (void).cxx_destruct;
+- (void)unsubscribeOrigin:(id)arg1;
+- (void)subscribeOrigin:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *subscribedOrigins;
 - (id)decryptData:(id)arg1 error:(id *)arg2;
 - (id)encryptDataForMessage:(id)arg1;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;

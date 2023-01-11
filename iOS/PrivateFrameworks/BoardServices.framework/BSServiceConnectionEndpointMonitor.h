@@ -15,7 +15,6 @@
 @interface BSServiceConnectionEndpointMonitor : NSObject <BSServiceMonitor, BSInvalidatable>
 {
     BSServiceManager *_manager;
-    NSString *_service;
     struct os_unfair_lock_s _lock;
     id <BSServiceConnectionEndpointMonitorDelegate> _lock_delegate;
     NSDictionary *_lock_endpointToEnvironments;
@@ -24,11 +23,12 @@
     _Bool _lock_invalidated;
     struct os_unfair_lock_s _registrationLock;
     id <BSInvalidatable> _registrationLock_assertion;
+    NSString *_service;
 }
 
 + (id)monitorForService:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *service; // @synthesize service=_service;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property(readonly, copy) NSString *description;
 - (void)serialCallOut_didUpdateEndpointEnvironments:(id)arg1;
 - (id)endpointsForEnvironment:(id)arg1;
@@ -36,7 +36,6 @@
 - (void)activate;
 @property(retain, nonatomic) id <BSServiceConnectionEndpointMonitorDelegate> delegate;
 - (void)dealloc;
-- (id)_initWithManager:(id)arg1 service:(id)arg2;
 - (id)init;
 
 // Remaining properties

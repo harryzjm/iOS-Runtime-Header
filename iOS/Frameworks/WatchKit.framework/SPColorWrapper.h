@@ -11,6 +11,7 @@
 
 @class UIColor;
 
+__attribute__((visibility("hidden")))
 @interface SPColorWrapper : NSObject <NSSecureCoding, NSCopying>
 {
     UIColor *_color;
@@ -18,8 +19,8 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)wrapperForColor:(id)arg1;
-@property(readonly, nonatomic) UIColor *color; // @synthesize color=_color;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIColor *color; // @synthesize color=_color;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

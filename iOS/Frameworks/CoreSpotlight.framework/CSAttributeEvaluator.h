@@ -13,7 +13,6 @@
     _Bool _matchOncePerTerm;
     _Bool _fuzzyMatching;
     NSString *_queryString;
-    unsigned long long _attributeTokenCount;
     unsigned long long _options;
     unsigned long long _matcherCount;
     const void **_matchers;
@@ -21,11 +20,10 @@
     void *_tokenizer;
     NSMutableArray *_tokenizedQueryTerms;
     NSString *_language;
-    CDUnknownBlockType _handler;
 }
 
 + (void)enumerateTokensForString:(id)arg1 locale:(id)arg2 options:(unsigned long long)arg3 withHandler:(CDUnknownBlockType)arg4;
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *language; // @synthesize language=_language;
 @property(retain, nonatomic) NSMutableArray *tokenizedQueryTerms; // @synthesize tokenizedQueryTerms=_tokenizedQueryTerms;
 @property(nonatomic) void *tokenizer; // @synthesize tokenizer=_tokenizer;
@@ -34,14 +32,17 @@
 @property(nonatomic) unsigned long long matcherCount; // @synthesize matcherCount=_matcherCount;
 @property(nonatomic) _Bool fuzzyMatching; // @synthesize fuzzyMatching=_fuzzyMatching;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(nonatomic) unsigned long long attributeTokenCount; // @synthesize attributeTokenCount=_attributeTokenCount;
 @property(nonatomic) _Bool matchOncePerTerm; // @synthesize matchOncePerTerm=_matchOncePerTerm;
 @property(readonly, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
-- (void).cxx_destruct;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(_Bool)arg2 strongCompounds:(_Bool)arg3 skipTranscriptions:(_Bool)arg4 withFuzzyHandler:(CDUnknownBlockType)arg5;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(_Bool)arg2 strongCompounds:(_Bool)arg3 skipTranscriptions:(_Bool)arg4 withHandler:(CDUnknownBlockType)arg5;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(_Bool)arg2 strongCompounds:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(_Bool)arg2 skipTranscriptions:(_Bool)arg3 withFuzzyHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(_Bool)arg2 skipTranscriptions:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(_Bool)arg2 withHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) NSArray *queryTerms;
+- (_Bool)processPropertyToken:(const unsigned short *)arg1 length:(long long)arg2 tokenType:(int)arg3 range:(CDStruct_912cb5d2)arg4 index:(long long)arg5 evaluationHandler:(CDUnknownBlockType)arg6;
+- (void)processTranscriptionTokens:(struct CSAttributeEvaluatorContext *)arg1;
 - (void)dealloc;
 - (id)initWithQuery:(id)arg1 language:(id)arg2 fuzzyThreshold:(unsigned char)arg3 options:(unsigned long long)arg4;
 

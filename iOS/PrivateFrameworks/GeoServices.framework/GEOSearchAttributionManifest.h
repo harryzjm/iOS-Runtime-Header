@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOSearchAttributionManifest : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_actionComponentMapEntries;
     NSMutableArray *_searchAttributionSources;
     NSString *_sourceURL;
     double _timestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_timestamp:1;
         unsigned int read_actionComponentMapEntries:1;
         unsigned int read_searchAttributionSources:1;
         unsigned int read_sourceURL:1;
-        unsigned int wrote_actionComponentMapEntries:1;
-        unsigned int wrote_searchAttributionSources:1;
-        unsigned int wrote_sourceURL:1;
-        unsigned int wrote_timestamp:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *sourceURL;
 @property(readonly, nonatomic) _Bool hasSourceURL;
-- (void)_readSourceURL;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) double timestamp;
 - (void)mergeFrom:(id)arg1;
@@ -48,22 +46,23 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)actionComponentMapEntriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)actionComponentMapEntriesCount;
-- (void)_addNoFlagsActionComponentMapEntries:(id)arg1;
 - (void)addActionComponentMapEntries:(id)arg1;
 - (void)clearActionComponentMapEntries;
 @property(retain, nonatomic) NSMutableArray *actionComponentMapEntries;
-- (void)_readActionComponentMapEntries;
 - (id)searchAttributionSourcesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)searchAttributionSourcesCount;
-- (void)_addNoFlagsSearchAttributionSources:(id)arg1;
 - (void)addSearchAttributionSources:(id)arg1;
 - (void)clearSearchAttributionSources;
 @property(retain, nonatomic) NSMutableArray *searchAttributionSources;
-- (void)_readSearchAttributionSources;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

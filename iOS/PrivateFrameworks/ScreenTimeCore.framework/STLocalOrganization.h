@@ -4,16 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class STLocalOrganizationSettings;
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
 
-@interface STLocalOrganization
+@class NSString, STLocalOrganizationSettings;
+
+@interface STLocalOrganization <STSerializableMappedObject>
 {
 }
 
++ (id)serializableClassName;
 + (id)fetchOrCreateLocalOrganizationWithContext:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(copy, nonatomic) STLocalOrganizationSettings *settings; // @dynamic settings;
+@property(readonly) Class superclass;
 
 @end
 

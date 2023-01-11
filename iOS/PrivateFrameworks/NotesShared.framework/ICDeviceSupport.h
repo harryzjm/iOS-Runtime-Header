@@ -13,11 +13,8 @@
 + (_Bool)deviceIsIPad;
 + (_Bool)deviceSupportsFaceID;
 + (_Bool)deviceSupportsTouchID;
-+ (_Bool)shouldOnlyDrawWithPencil;
 + (_Bool)deviceSupportsPencil;
 + (struct CGSize)notesDeviceDrawingSize;
-+ (_Bool)notesDeviceSupportsLetterpress;
-+ (_Bool)notesLowEndHardware;
 + (id)notesProductType;
 
 @end

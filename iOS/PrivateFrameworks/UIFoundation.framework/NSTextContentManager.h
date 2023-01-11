@@ -14,10 +14,10 @@
 
 @interface NSTextContentManager : NSObject <NSTextElementProvider, NSSecureCoding>
 {
-    NSMutableArray *_textLayoutManagers;
     NSTextLayoutManager *_primaryTextLayoutManager;
     _Atomic unsigned long long _transactionStack;
     NSMutableArray *_editHistory;
+    NSMutableArray *_textLayoutManagers;
     _Bool _synchronizesTextLayoutManagersAutomatically;
     _Bool _synchronizesToBackingStoreAutomatically;
     id <NSTextContentManagerDelegate> _delegate;
@@ -25,17 +25,19 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property _Bool synchronizesToBackingStoreAutomatically; // @synthesize synchronizesToBackingStoreAutomatically=_synchronizesToBackingStoreAutomatically;
 @property _Bool synchronizesTextLayoutManagersAutomatically; // @synthesize synchronizesTextLayoutManagersAutomatically=_synchronizesTextLayoutManagersAutomatically;
 @property unsigned long long maximumNumberOfUncachedElements; // @synthesize maximumNumberOfUncachedElements=_maximumNumberOfUncachedElements;
-@property(readonly, copy) NSArray *textLayoutManagers; // @synthesize textLayoutManagers=_textLayoutManagers;
 @property __weak id <NSTextContentManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)isCountableDataSource;
+- (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
+- (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
 - (_Bool)synchronizeToBackingStore:(CDUnknownBlockType)arg1;
 - (void)replaceCharactersInRange:(id)arg1 withTextElements:(id)arg2;
 - (id)enumerateTextElementsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 @property(readonly) NSTextRange *documentRange;
-- (void)addEditActionInRange:(id)arg1 newTextRange:(id)arg2;
+- (void)recordEditActionInRange:(id)arg1 newTextRange:(id)arg2;
 - (void)performEditingTransactionWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool hasEditingTransaction;
 - (id)textElementsForRange:(id)arg1;
@@ -43,6 +45,7 @@
 @property NSTextLayoutManager *primaryTextLayoutManager; // @dynamic primaryTextLayoutManager;
 - (void)removeTextLayoutManager:(id)arg1;
 - (void)addTextLayoutManager:(id)arg1;
+@property(readonly, copy) NSArray *textLayoutManagers; // @dynamic textLayoutManagers;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;

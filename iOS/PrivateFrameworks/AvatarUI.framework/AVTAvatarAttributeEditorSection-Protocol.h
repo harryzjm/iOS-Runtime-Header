@@ -6,11 +6,12 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class NSArray, NSString;
-@protocol AVTAvatarAttributeEditorHeaderPicker, AVTAvatarAttributeEditorSection;
+@class AVTAvatarAttributeEditorSectionOptions, NSArray, NSString;
+@protocol AVTAvatarAttributeEditorSection, AVTAvatarAttributeEditorSectionSupplementalPicker;
 
 @protocol AVTAvatarAttributeEditorSection <NSObject>
-@property(retain, nonatomic) id <AVTAvatarAttributeEditorHeaderPicker> headerAccessory;
+@property(retain, nonatomic) id <AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker;
+@property(readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, copy, nonatomic) NSArray *sectionItems;
 @property(copy, nonatomic) NSString *localizedName;

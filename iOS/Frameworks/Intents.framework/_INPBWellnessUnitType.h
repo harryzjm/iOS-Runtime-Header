@@ -26,7 +26,6 @@
         unsigned int timeUnit:1;
         unsigned int volumeUnit:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _bloodGlucoseUnit;
     int _bloodPressureUnit;
     int _energyUnit;
@@ -40,7 +39,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) int volumeUnit; // @synthesize volumeUnit=_volumeUnit;
 @property(nonatomic) int timeUnit; // @synthesize timeUnit=_timeUnit;
 @property(nonatomic) int temperatureUnit; // @synthesize temperatureUnit=_temperatureUnit;

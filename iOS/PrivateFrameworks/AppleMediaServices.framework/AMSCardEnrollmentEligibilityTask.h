@@ -4,25 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
-
 @class NSString;
 @protocol AMSBagProtocol;
 
-@interface AMSCardEnrollmentEligibilityTask <AMSBagConsumer>
+@interface AMSCardEnrollmentEligibilityTask
 {
     id <AMSBagProtocol> _bag;
     NSString *_countryCode;
 }
 
-+ (id)_bagKeySet;
-+ (void)addRequiredBagKeysToAggregator:(id)arg1;
-+ (id)bagSubProfileVersion;
-+ (id)bagSubProfile;
-+ (id)bagKeySet;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
-- (void).cxx_destruct;
 - (id)_performSilentEnrollmentCheckWithRequest:(id)arg1;
 - (unsigned long long)_cardTypeForPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 - (id)performCanWriteBillingInfoQueryWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
@@ -31,12 +24,6 @@
 - (id)initWithCountryCode:(id)arg1;
 - (id)initWithBag:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

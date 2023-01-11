@@ -7,8 +7,11 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (SafariSharedExtras)
+- (id)safari_sortedArrayUsingFinderLikeSorting;
 - (id)safari_setByRemovingObject:(id)arg1;
 - (id)safari_shortestURL;
+- (_Bool)safari_allObjectsPassTest:(CDUnknownBlockType)arg1;
+- (_Bool)safari_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)safari_anyObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)safari_smallestObject:(CDUnknownBlockType)arg1;
 - (id)safari_mapAndFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;

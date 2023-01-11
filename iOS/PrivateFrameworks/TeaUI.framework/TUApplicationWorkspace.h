@@ -14,9 +14,9 @@
 }
 
 + (id)shared;
-@property(readonly, nonatomic) LSApplicationWorkspace *applicationWorkspace; // @synthesize applicationWorkspace=_applicationWorkspace;
 - (void).cxx_destruct;
-- (void)openSenstiveURL:(id)arg1 options:(id)arg2;
+@property(readonly, nonatomic) LSApplicationWorkspace *applicationWorkspace; // @synthesize applicationWorkspace=_applicationWorkspace;
+- (void)openSensitiveURL:(id)arg1 options:(id)arg2;
 - (id)initWithApplicationWorkspace:(id)arg1;
 
 @end

@@ -16,10 +16,11 @@
     TRProxyAuthOperationHandler *_proxyAuthHandler;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TRProxyAuthOperationHandler *proxyAuthHandler; // @synthesize proxyAuthHandler=_proxyAuthHandler;
 @property(retain, nonatomic) TRCompanionAuthOperationHandler *companionAuthHandler; // @synthesize companionAuthHandler=_companionAuthHandler;
-- (void).cxx_destruct;
 - (void)registerMessageHandlersForSession:(id)arg1;
+- (id)initWithCompanionAuthHandlerWithError:(CDUnknownBlockType)arg1 proxyAuthHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCompanionAuthHandler:(CDUnknownBlockType)arg1 proxyAuthHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties

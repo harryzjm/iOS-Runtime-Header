@@ -11,12 +11,7 @@
 }
 
 + (_Bool)asset:(id)arg1 containsMetadataKey:(id)arg2;
-+ (id)__AVMetadataKeySpaceQuickTimeUserData;
-+ (id)__AVMetadataFormatQuickTimeUserData;
-+ (Class)__AVMetadataItemClass;
-+ (Class)__AVURLAssetClass;
 + (Class)__AVDataAssetClass;
-+ (Class)__AVAssetClass;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ARUISpriteTexture;
+@class ARUISpriteRenderState, ARUISpriteUniformsCache;
 @protocol MTLBuffer;
 
 __attribute__((visibility("hidden")))
@@ -15,19 +15,16 @@ __attribute__((visibility("hidden")))
     id <MTLBuffer> _spriteVertexBuffer;
     id <MTLBuffer> _spriteIndexBuffer;
     unsigned long long _numIndicies;
-    CDStruct_ee1f7a4d *_vertexAttributes;
-    struct *_uniforms;
-    ARUISpriteTexture *_texture;
+    ARUISpriteRenderState *_spriteRenderState;
+    ARUISpriteUniformsCache *_cache;
 }
 
 + (void)clearCaches;
-@property(retain, nonatomic) ARUISpriteTexture *texture; // @synthesize texture=_texture;
-@property(nonatomic) struct *uniforms; // @synthesize uniforms=_uniforms;
-@property(nonatomic) CDStruct_ee1f7a4d *vertexAttributes; // @synthesize vertexAttributes=_vertexAttributes;
 - (void).cxx_destruct;
-- (void)renderRings:(id)arg1 withCommandEncoder:(id)arg2 forState:(id)arg3;
-- (void)dealloc;
-- (id)initWithDevice:(id)arg1 maximumRingCount:(unsigned long long)arg2;
+- (void)renderSpriteSheet:(id)arg1 intoContext:(id)arg2 withCommandEncoder:(id)arg3;
+- (void)_sharedInitWithDevice:(id)arg1;
+- (id)initWithDeviceSPI:(id)arg1 librarySPI:(id)arg2;
+- (id)initWithDevice:(id)arg1 library:(id)arg2;
 
 @end
 

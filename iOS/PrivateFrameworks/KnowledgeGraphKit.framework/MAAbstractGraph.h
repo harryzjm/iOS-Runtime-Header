@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MAAbstractGraph
+#import <objc/NSObject.h>
+
+@class NSMutableArray;
+
+@interface MAAbstractGraph : NSObject
 {
+    NSMutableArray *_nodes;
+    NSMutableArray *_edges;
 }
 
-+ (Class)edgeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
-+ (Class)edgeClass;
-+ (Class)nodeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
-+ (Class)nodeClass;
-- (id)addEdgeWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
-- (id)addNodeWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
-- (id)initWithPersistentStoreURL:(id)arg1;
-- (id)initWithDataRepresentation:(id)arg1;
-- (id)initWithGraphMLURL:(id)arg1;
-- (id)initWithDataURL:(id)arg1;
+- (void).cxx_destruct;
+- (id)addUniqueEdgeWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 didCreate:(_Bool *)arg4;
+- (id)addUniqueNodeWithLabel:(id)arg1 didCreate:(_Bool *)arg2;
+- (id)init;
 
 @end
 

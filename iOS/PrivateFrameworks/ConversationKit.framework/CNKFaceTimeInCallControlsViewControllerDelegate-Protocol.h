@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContact, CNKFaceTimeInCallControlsViewController;
+@class CNContact, CNKFaceTimeInCallControlsViewController, UIMenu;
 
 @protocol CNKFaceTimeInCallControlsViewControllerDelegate
+- (UIMenu *)audioRouteMenuForInCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1;
+- (void)resetEffectsState;
 - (void)didCreateTableViewForInCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1;
 - (void)inCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1 didTap:(long long)arg2;
 

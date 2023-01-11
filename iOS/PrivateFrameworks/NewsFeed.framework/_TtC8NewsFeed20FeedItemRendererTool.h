@@ -11,10 +11,11 @@
 @interface _TtC8NewsFeed20FeedItemRendererTool : _TtCs12_SwiftObject
 {
     MISSING_TYPE *rendererEnvironment;
-    MISSING_TYPE *debugViewLayoutViewFactory;
     MISSING_TYPE *debugEnabled;
     MISSING_TYPE *debugColors;
     MISSING_TYPE *shineImageFactory;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *tracker;
 }
 
 @end

@@ -17,6 +17,7 @@
     short _category;
     short _subcategory;
     short _notificationState;
+    unsigned short _featuredState;
     NSString *_uuid;
     NSString *_title;
     NSString *_subtitle;
@@ -45,8 +46,10 @@
 }
 
 + (_Bool)isValidPath:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property(retain, nonatomic) PLMemory *memory; // @synthesize memory=_memory;
+@property(nonatomic) unsigned short featuredState; // @synthesize featuredState=_featuredState;
 @property(nonatomic) long long pendingViewCount; // @synthesize pendingViewCount=_pendingViewCount;
 @property(nonatomic) long long pendingShareCount; // @synthesize pendingShareCount=_pendingShareCount;
 @property(nonatomic) long long pendingPlayCount; // @synthesize pendingPlayCount=_pendingPlayCount;
@@ -77,7 +80,6 @@
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (void)_saveMetadata;
 - (id)_metadataData;
 - (_Bool)_readMetadata;

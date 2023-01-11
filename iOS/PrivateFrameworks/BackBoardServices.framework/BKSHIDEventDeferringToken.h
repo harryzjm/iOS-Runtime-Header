@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 #import <BackBoardServices/BSProtobufSerializable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface BKSHIDEventDeferringToken : NSObject <NSSecureCoding, BSProtobufSerializable, NSCopying>
+@interface BKSHIDEventDeferringToken : NSObject <NSSecureCoding, BSProtobufSerializable, BSDescriptionStreamable, NSCopying>
 {
     unsigned int _CAContextID;
     NSString *_stringIdentifier;
@@ -23,6 +24,7 @@
 + (id)tokenForString:(id)arg1;
 + (id)tokenForIdentifierOfCAContext:(unsigned int)arg1;
 - (void).cxx_destruct;
+- (void)appendDescriptionToFormatter:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;

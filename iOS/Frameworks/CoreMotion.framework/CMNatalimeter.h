@@ -25,14 +25,10 @@
 + (double)activeMetsThreshold;
 + (double)briskMinuteMetsThreshold;
 @property(readonly, nonatomic) CMNatalimeterInternal *_internal; // @synthesize _internal;
-- (unsigned long long)promptsNeededForSession:(long long)arg1;
-- (_Bool)_shouldAllowMotionCalibrationPromptsForSession:(long long)arg1;
-- (unsigned long long)getSupportedMetricsForSession:(long long)arg1;
 - (void)stopAbsoluteNatalimetryDataUpdates;
 - (void)startAbsoluteNatalimetryDataUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)queryAbsoluteNatalimetryDataSinceDataRecord:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)queryAbsoluteNatalimetryDataSinceRecord:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)setSession:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 

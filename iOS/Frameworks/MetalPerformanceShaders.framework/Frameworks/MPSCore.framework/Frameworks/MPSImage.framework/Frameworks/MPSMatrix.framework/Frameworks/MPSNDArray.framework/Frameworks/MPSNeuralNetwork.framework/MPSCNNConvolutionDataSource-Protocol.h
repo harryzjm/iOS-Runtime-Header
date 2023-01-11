@@ -20,6 +20,7 @@
 - (unsigned int)dataType;
 
 @optional
+- (unsigned int)kernelWeightsDataType;
 - (unsigned int)weightsLayout;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id <MTLDevice>)arg2;
 - (_Bool)updateWithGradientState:(MPSCNNConvolutionGradientState *)arg1 sourceState:(MPSCNNConvolutionWeightsAndBiasesState *)arg2;

@@ -6,12 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, UIFocusSystem, UIFocusUpdateContext;
+@class NSArray, UIFocusSystem, UIFocusUpdateContext, _UIFocusMovementInfo;
 @protocol UIFocusItemContainer, _UIFocusRegionContainer;
 
 @protocol _UIFocusSystemDelegate <NSObject>
 
 @optional
+- (_Bool)_focusSystem:(UIFocusSystem *)arg1 performFocusMovementWithInfo:(_UIFocusMovementInfo *)arg2;
+- (_Bool)_shouldWaitForFocusMovementActionToEnableFocusSystem:(UIFocusSystem *)arg1;
 - (id <UIFocusItemContainer>)_focusItemContainerForFocusSystem:(UIFocusSystem *)arg1;
 - (id <_UIFocusRegionContainer>)_focusMapContainerForFocusSystem:(UIFocusSystem *)arg1;
 - (void)_focusSystem:(UIFocusSystem *)arg1 didFinishUpdatingFocusInContext:(UIFocusUpdateContext *)arg2;

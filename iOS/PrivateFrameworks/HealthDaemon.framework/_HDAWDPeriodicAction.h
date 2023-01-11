@@ -11,6 +11,7 @@
 @class HDAssertion, HDPeriodicActivity, HDProfile, NSDate, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface _HDAWDPeriodicAction : NSObject <HDPeriodicActivityDelegate>
 {
     NSString *_waitingToRunKey;
@@ -35,9 +36,9 @@
     NSString *_taskName;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *taskName; // @synthesize taskName=_taskName;
 @property(readonly, nonatomic) long long waitingToRun; // @synthesize waitingToRun=_waitingToRun;
-- (void).cxx_destruct;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (_Bool)doForced;

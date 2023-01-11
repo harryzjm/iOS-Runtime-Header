@@ -8,19 +8,23 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSNumber, NSString;
 
 @interface PXMockDisplayAsset : NSObject <PXDisplayAsset>
 {
     NSDictionary *_backingDictionary;
 }
 
-@property(readonly, nonatomic) NSDictionary *backingDictionary; // @synthesize backingDictionary=_backingDictionary;
++ (id)propertiesForVideoWithSize:(struct CGSize)arg1;
++ (id)propertiesForLivePhotoWithSize:(struct CGSize)arg1;
++ (id)propertiesForImageWithSize:(struct CGSize)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *backingDictionary; // @synthesize backingDictionary=_backingDictionary;
 @property(readonly, nonatomic) Class defaultImageProviderClass;
 @property(readonly, nonatomic) long long playbackVariation;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) _Bool isEligibleForAutoPlayback;
 - (long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) unsigned long long thumbnailIndex;
@@ -40,7 +44,7 @@
 - (unsigned long long)_unsignedIntegerValueForKey:(id)arg1;
 - (long long)_integerValueForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithProperties:(id)arg1;
 - (id)init;
 
 // Remaining properties
@@ -49,12 +53,12 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
-@property(readonly, nonatomic) NSString *uuid;
 
 @end
 

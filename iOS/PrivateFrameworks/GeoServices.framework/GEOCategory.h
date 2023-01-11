@@ -13,22 +13,20 @@
 @interface GEOCategory : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_alias;
     long long _geoOntologyId;
     NSMutableArray *_localizedNames;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _level;
     struct {
         unsigned int has_geoOntologyId:1;
         unsigned int read_unknownFields:1;
         unsigned int read_alias:1;
         unsigned int read_localizedNames:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_alias:1;
-        unsigned int wrote_geoOntologyId:1;
-        unsigned int wrote_localizedNames:1;
-        unsigned int wrote_level:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,20 +43,22 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)localizedNamesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedNamesCount;
-- (void)_addNoFlagsLocalizedNames:(id)arg1;
 - (void)addLocalizedNames:(id)arg1;
 - (void)clearLocalizedNames;
 @property(retain, nonatomic) NSMutableArray *localizedNames;
-- (void)_readLocalizedNames;
 @property(nonatomic) _Bool hasGeoOntologyId;
 @property(nonatomic) long long geoOntologyId;
 @property(nonatomic) int level;
 @property(retain, nonatomic) NSString *alias;
-- (void)_readAlias;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithPlaceDataCategory:(id)arg1;
 
 @end

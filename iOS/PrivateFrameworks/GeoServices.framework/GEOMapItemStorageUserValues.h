@@ -13,13 +13,15 @@
 @interface GEOMapItemStorageUserValues : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_name;
     NSString *_phoneNumber;
     NSData *_timeZoneData;
     NSString *_timeZoneName;
     NSString *_url;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_name:1;
@@ -27,12 +29,7 @@
         unsigned int read_timeZoneData:1;
         unsigned int read_timeZoneName:1;
         unsigned int read_url:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_phoneNumber:1;
-        unsigned int wrote_timeZoneData:1;
-        unsigned int wrote_timeZoneName:1;
-        unsigned int wrote_url:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,23 +45,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *timeZoneData;
 @property(readonly, nonatomic) _Bool hasTimeZoneData;
-- (void)_readTimeZoneData;
 @property(retain, nonatomic) NSString *timeZoneName;
 @property(readonly, nonatomic) _Bool hasTimeZoneName;
-- (void)_readTimeZoneName;
 @property(retain, nonatomic) NSString *url;
 @property(readonly, nonatomic) _Bool hasUrl;
-- (void)_readUrl;
 @property(retain, nonatomic) NSString *phoneNumber;
 @property(readonly, nonatomic) _Bool hasPhoneNumber;
-- (void)_readPhoneNumber;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

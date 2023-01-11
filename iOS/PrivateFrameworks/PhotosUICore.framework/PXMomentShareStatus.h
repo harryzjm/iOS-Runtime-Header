@@ -7,32 +7,35 @@
 #import <PhotosUICore/PXMutableMomentShareStatus-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSString;
+@class NSString, PXCPLUIStatusProvider;
 @protocol PXDisplayAssetFetchResult, PXDisplayMomentShare, PXSectionedFetchResult;
 
 @interface PXMomentShareStatus <PXPhotoLibraryUIChangeObserver, PXMutableMomentShareStatus>
 {
+    PXCPLUIStatusProvider *_statusProvider;
     id <PXDisplayMomentShare> _momentShare;
-    id <PXDisplayAssetFetchResult> _downloadingAssetsFetchResult;
+    id <PXDisplayAssetFetchResult> _copyingAssetsFetchResult;
     id <PXDisplayAssetFetchResult> _copiedAssetsFetchResult;
     id <PXDisplayAssetFetchResult> _allAssetsFetchResult;
     id <PXSectionedFetchResult> _participantsFetchResult;
 }
 
 + (id)new;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <PXSectionedFetchResult> participantsFetchResult; // @synthesize participantsFetchResult=_participantsFetchResult;
 @property(readonly, nonatomic) id <PXDisplayAssetFetchResult> allAssetsFetchResult; // @synthesize allAssetsFetchResult=_allAssetsFetchResult;
 @property(readonly, nonatomic) id <PXDisplayAssetFetchResult> copiedAssetsFetchResult; // @synthesize copiedAssetsFetchResult=_copiedAssetsFetchResult;
-@property(readonly, nonatomic) id <PXDisplayAssetFetchResult> downloadingAssetsFetchResult; // @synthesize downloadingAssetsFetchResult=_downloadingAssetsFetchResult;
+@property(readonly, nonatomic) id <PXDisplayAssetFetchResult> copyingAssetsFetchResult; // @synthesize copyingAssetsFetchResult=_copyingAssetsFetchResult;
 @property(readonly, nonatomic) id <PXDisplayMomentShare> momentShare; // @synthesize momentShare=_momentShare;
-- (void).cxx_destruct;
+- (id)_actionManager;
 - (id)owner;
 - (void)setParticipantsFetchResult:(id)arg1;
 - (void)setAllAssetsFetchResult:(id)arg1;
 - (void)setCopiedAssetsFetchResult:(id)arg1;
-- (void)setDownloadingAssetsFetchResult:(id)arg1;
+- (void)setCopyingAssetsFetchResult:(id)arg1;
 - (void)setMomentShare:(id)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) PXCPLUIStatusProvider *statusProvider;
 @property(readonly, copy) NSString *description;
 - (id)initWithMomentShare:(id)arg1;
 - (id)init;

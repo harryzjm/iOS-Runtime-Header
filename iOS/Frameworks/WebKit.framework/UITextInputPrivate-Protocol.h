@@ -20,13 +20,16 @@
 - (UITextInputTraits *)textInputTraits;
 
 @optional
+@property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
 @property(nonatomic) long long _textInputSource;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;
+@property(readonly, nonatomic) long long cursorBehavior;
 @property(nonatomic) long long selectionGranularity;
 - (void)removeAnnotation:(NSString *)arg1 forRange:(UITextRange *)arg2;
 - (void)replaceRange:(UITextRange *)arg1 withAnnotatedString:(NSAttributedString *)arg2 relativeReplacementRange:(struct _NSRange)arg3;
 - (NSAttributedString *)annotatedSubstringForRange:(UITextRange *)arg1;
+- (_Bool)_isInteractiveDespiteResponderStatus;
 - (SEL)_sendCurrentLocationAction;
 - (_Bool)_shouldSuppressSelectionCommands;
 - (void)_didHideCorrections;
@@ -47,6 +50,7 @@
 - (void)streamingDictationDidEnd;
 - (void)streamingDictationDidBegin;
 - (struct CGRect)visibleRect;
+- (struct CGRect)_selectionClipRect;
 - (UIView *)selectionContainerView;
 - (UIView *)automaticallySelectedOverlay;
 - (void)setBottomBufferHeight:(double)arg1;

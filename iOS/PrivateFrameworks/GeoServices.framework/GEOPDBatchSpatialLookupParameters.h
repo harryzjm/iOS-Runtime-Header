@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDBatchSpatialLookupParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_spatialEventLookups;
     NSMutableArray *_spatialPlaceLookups;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_spatialEventLookups:1;
         unsigned int read_spatialPlaceLookups:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_spatialEventLookups:1;
-        unsigned int wrote_spatialPlaceLookups:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,22 +42,23 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)spatialEventLookupAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spatialEventLookupsCount;
-- (void)_addNoFlagsSpatialEventLookup:(id)arg1;
 - (void)addSpatialEventLookup:(id)arg1;
 - (void)clearSpatialEventLookups;
 @property(retain, nonatomic) NSMutableArray *spatialEventLookups;
-- (void)_readSpatialEventLookups;
 - (id)spatialPlaceLookupAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spatialPlaceLookupsCount;
-- (void)_addNoFlagsSpatialPlaceLookup:(id)arg1;
 - (void)addSpatialPlaceLookup:(id)arg1;
 - (void)clearSpatialPlaceLookups;
 @property(retain, nonatomic) NSMutableArray *spatialPlaceLookups;
-- (void)_readSpatialPlaceLookups;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

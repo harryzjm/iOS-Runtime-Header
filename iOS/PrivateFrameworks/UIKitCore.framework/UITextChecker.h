@@ -15,8 +15,6 @@
     NSString *_checkerWarmingLanguage;
 }
 
-+ (void)queryLocalUpdateAssets:(CDUnknownBlockType)arg1;
-+ (id)_textCheckerBackgroundQueue;
 + (void)setString:(id)arg1 isExemptFromChecker:(_Bool)arg2;
 + (void)unlearnWord:(id)arg1;
 + (_Bool)hasLearnedWord:(id)arg1;
@@ -27,6 +25,8 @@
 + (_Bool)_forgetWord:(id)arg1 inDictionary:(id)arg2;
 + (_Bool)_learnWord:(id)arg1 inDictionary:(id)arg2;
 + (id)dictionaryInfo:(id)arg1;
++ (void)_setDictionaryEntry:(id)arg1 forName:(id)arg2;
++ (id)_dictionaryEntryForName:(id)arg1;
 + (id)openUserDictionary:(id)arg1;
 + (struct __CFSet *)createDictHashTable:(_Bool)arg1;
 + (id)bestLanguageForString:(id)arg1 fromAlternatives:(id)arg2 currentLanguage:(id)arg3;
@@ -51,13 +51,14 @@
 - (struct _NSRange)_chunkAndFindMisspelledWordInString:(id)arg1 languages:(id)arg2 learnedDictionaries:(id)arg3 wordCount:(long long *)arg4 correction:(id *)arg5 usingChecker:(id)arg6;
 - (struct _NSRange)_chunkAndCheckGrammarInString:(id)arg1 language:(id)arg2 usingChecker:(id)arg3 details:(id *)arg4;
 - (long long)adjustOffsetToNextWordBoundaryInString:(id)arg1 startingAt:(long long)arg2;
+- (void)releaseAllLexicons;
+- (void)resetAllLanguageModels;
 - (id)_checker;
 - (void)dealloc;
 - (_Bool)_doneLoading;
 - (id)_initWithAsynchronousLoading:(_Bool)arg1;
 - (id)init;
 - (void)initGlobals;
-- (void)queryUpdateBundle;
 - (void)initUserDictionaries;
 - (void)_setDocumentDictionaryName:(id)arg1;
 - (void)_setLanguageDictionaryName:(id)arg1;

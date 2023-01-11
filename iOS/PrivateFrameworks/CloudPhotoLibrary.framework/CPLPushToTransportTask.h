@@ -4,24 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLScopeFilter;
-
 @interface CPLPushToTransportTask
 {
     _Bool _deferredCancel;
     _Bool _highPriority;
-    CPLScopeFilter *_scopeFilter;
 }
 
-@property(retain, nonatomic) CPLScopeFilter *scopeFilter; // @synthesize scopeFilter=_scopeFilter;
 @property(nonatomic) _Bool highPriority; // @synthesize highPriority=_highPriority;
-- (void).cxx_destruct;
 - (id)taskIdentifier;
 - (void)taskDidFinishWithError:(id)arg1;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;
 - (void)cancel:(_Bool)arg1;
 - (_Bool)shouldSkipScopesWithMissingTransportScope;
-- (_Bool)shouldProcessScope:(id)arg1 inTransaction:(id)arg2;
 - (id)newScopedTaskWithScope:(id)arg1 session:(id)arg2 transportScope:(id)arg3 clientCacheIdentifier:(id)arg4;
 - (id)enumerateScopesForTaskInTransaction:(id)arg1;
 

@@ -9,6 +9,7 @@
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
 @class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, SUInstallPolicy, SUManagedDeviceUpdateDelay, _SUAutoInstallOperationModel;
+@protocol OS_dispatch_queue;
 
 @interface SUState : NSObject <NSKeyedUnarchiverDelegate>
 {
@@ -35,18 +36,23 @@
     NSString *_sessionID;
     NSString *_lastDeletedSUAssetID;
     NSString *_lastAssetAudience;
+    NSDate *_appliedTime;
+    NSObject<OS_dispatch_queue> *_stateQueue;
 }
 
 + (id)currentState;
 + (id)statePath;
+- (void).cxx_destruct;
+- (Class)unarchiver:(id)arg1 cannotDecodeObjectOfClassName:(id)arg2 originalClasses:(id)arg3;
+@property(retain, nonatomic) NSDate *appliedTime; // @synthesize appliedTime=_appliedTime;
 @property(retain, nonatomic) NSString *lastAssetAudience; // @synthesize lastAssetAudience=_lastAssetAudience;
 @property(retain, nonatomic) NSString *lastDeletedSUAssetID; // @synthesize lastDeletedSUAssetID=_lastDeletedSUAssetID;
 @property(retain, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
-@property(retain, nonatomic) NSDictionary *mandatoryUpdateDict; // @synthesize mandatoryUpdateDict=_mandatoryUpdateDict;
 @property(nonatomic) _Bool manifestSubmitted; // @synthesize manifestSubmitted=_manifestSubmitted;
 @property(retain, nonatomic) SUInstallPolicy *installPolicy; // @synthesize installPolicy=_installPolicy;
 @property(retain, nonatomic) SUManagedDeviceUpdateDelay *mdmDelay; // @synthesize mdmDelay=_mdmDelay;
 @property(retain, nonatomic) _SUAutoInstallOperationModel *lastAutoInstallOperationModel; // @synthesize lastAutoInstallOperationModel=_lastAutoInstallOperationModel;
+@property(retain, nonatomic) NSDictionary *mandatoryUpdateDict; // @synthesize mandatoryUpdateDict=_mandatoryUpdateDict;
 @property(retain, nonatomic) NSDictionary *unlockCallbacks; // @synthesize unlockCallbacks=_unlockCallbacks;
 @property(retain, nonatomic) NSString *lastReleaseType; // @synthesize lastReleaseType=_lastReleaseType;
 @property(retain, nonatomic) NSString *lastProductType; // @synthesize lastProductType=_lastProductType;
@@ -62,7 +68,6 @@
 @property(retain, nonatomic) NSDate *lastScannedDescriptorTime; // @synthesize lastScannedDescriptorTime=_lastScannedDescriptorTime;
 @property(copy, nonatomic) SUDescriptor *lastScannedDescriptor; // @synthesize lastScannedDescriptor=_lastScannedDescriptor;
 @property(copy, nonatomic) SUDownload *lastDownload; // @synthesize lastDownload=_lastDownload;
-- (Class)unarchiver:(id)arg1 cannotDecodeObjectOfClassName:(id)arg2 originalClasses:(id)arg3;
 @property(readonly, copy) NSString *description;
 - (void)save;
 - (void)load;
@@ -70,7 +75,6 @@
 - (void)resetAllHistory;
 - (void)resetDownloadAndScanHistory;
 - (id)init;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

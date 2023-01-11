@@ -12,7 +12,7 @@
 #import <Foundation/NSMutableCopying-Protocol.h>
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSAttributedString;
 
 @interface NSString : NSObject <NSItemProviderReading, NSItemProviderWriting, NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -41,27 +41,29 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
 + (id)pathWithComponents:(id)arg1;
-+ (id)localizedNameOfStringEncoding:(unsigned long long)arg1;
-+ (const unsigned long long *)availableStringEncodings;
-+ (unsigned long long)defaultCStringEncoding;
 + (id)_newZStringWithUTF8String:(const char *)arg1;
 + (id)_newZStringWithString:(id)arg1;
 + (id)_newZStringWithCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2;
-+ (id)_web_stringRepresentationForBytes:(long long)arg1;
++ (unsigned long long)stringEncodingForData:(id)arg1 encodingOptions:(id)arg2 convertedString:(id *)arg3 usedLossyConversion:(_Bool *)arg4;
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
-+ (unsigned long long)stringEncodingForData:(id)arg1 encodingOptions:(id)arg2 convertedString:(id *)arg3 usedLossyConversion:(_Bool *)arg4;
++ (id)localizedNameOfStringEncoding:(unsigned long long)arg1;
++ (const unsigned long long *)availableStringEncodings;
++ (unsigned long long)defaultCStringEncoding;
++ (id)_web_stringRepresentationForBytes:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)_allowsDirectEncoding;
 - (Class)classForCoder;
-- (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
+- (id)initWithFormat:(id)arg1 locale:(id)arg2 arguments:(char *)arg3;
+- (id)initWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)initWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3 freeWhenDone:(_Bool)arg4;
 - (id)initWithCStringNoCopy:(char *)arg1 length:(unsigned long long)arg2 freeWhenDone:(_Bool)arg3;
+- (id)initWithCharactersNoCopy:(unsigned short *)arg1 length:(unsigned long long)arg2 deallocator:(CDUnknownBlockType)arg3;
 - (id)initWithCharactersNoCopy:(unsigned short *)arg1 length:(unsigned long long)arg2 freeWhenDone:(_Bool)arg3;
-- (id)initWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
-- (id)initWithValidatedFormat:(id)arg1 validFormatSpecifiers:(id)arg2 locale:(id)arg3 arguments:(struct __va_list_tag [1])arg4 error:(id *)arg5;
+- (id)initWithFormat:(id)arg1 arguments:(char *)arg2;
+- (id)initWithValidatedFormat:(id)arg1 validFormatSpecifiers:(id)arg2 locale:(id)arg3 arguments:(char *)arg4 error:(id *)arg5;
 - (id)initWithFormat:(id)arg1 locale:(id)arg2;
 - (id)initWithFormat:(id)arg1;
 - (id)initWithData:(id)arg1 usedEncoding:(unsigned long long *)arg2;
@@ -169,12 +171,18 @@
 - (id)init;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 @property(readonly) unsigned long long length;
+- (id)_widthVariants;
+- (id)variantFittingPresentationWidth:(long long)arg1;
 - (_Bool)_getCString:(char *)arg1 maxLength:(unsigned long long)arg2 encoding:(unsigned int)arg3;
 - (unsigned int)_fastestEncodingInCFStringEncoding;
 - (unsigned int)_smallestEncodingInCFStringEncoding;
 - (unsigned char)_encodingCantBeStoredInEightBitCFString;
 - (id)_createSubstringWithRange:(struct _NSRange)arg1;
 - (unsigned long long)_cfTypeID;
+- (CDStruct_5fe7aead)decimalValue;
+- (_Bool)_getBytesAsData:(id *)arg1 maxLength:(unsigned long long)arg2 usedLength:(unsigned long long *)arg3 encoding:(unsigned long long)arg4 options:(unsigned long long)arg5 range:(struct _NSRange)arg6 remainingRange:(struct _NSRange *)arg7;
+- (id)_getCharactersAsStringInRange:(struct _NSRange)arg1;
+- (id)__escapeString5991;
 - (id)stringByConvertingURLToPath;
 - (id)stringByConvertingPathToURL;
 - (unsigned long long)completePathIntoString:(id *)arg1 caseSensitive:(_Bool)arg2 matchesIntoArray:(id *)arg3 filterTypes:(id)arg4;
@@ -196,6 +204,8 @@
 - (_Bool)isAbsolutePath;
 - (id)pathComponents;
 - (_Bool)isNSString__;
+- (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 - (id)propertyListFromStringsFileFormat;
 - (id)propertyList;
 - (id)formatConfiguration;
@@ -218,17 +228,6 @@
 - (void)getCString:(char *)arg1;
 - (void)getCString:(char *)arg1 maxLength:(unsigned long long)arg2;
 - (void)getCString:(char *)arg1 maxLength:(unsigned long long)arg2 range:(struct _NSRange)arg3 remainingRange:(struct _NSRange *)arg4;
-- (unsigned long long)__graphemeCount;
-- (id)stringByAddingPercentEscapes;
-- (id)stringByRemovingPercentEscapes;
-- (id)standardizedURLPath;
-- (id)stringByReplacingPercentEscapesUsingEncoding:(unsigned long long)arg1;
-- (id)stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
-@property(readonly, copy) NSString *stringByRemovingPercentEncoding;
-- (id)stringByAddingPercentEncodingWithAllowedCharacters:(id)arg1;
-- (CDStruct_5fe7aead)decimalValue;
-- (id)_web_HTTPStyleLanguageCodeWithoutRegion;
-- (id)_web_HTTPStyleLanguageCode;
 - (unsigned int)_web_extractFourCharCode;
 - (id)_web_filenameByFixingIllegalCharacters;
 - (id)_web_stringByCollapsingNonPrintingCharacters;
@@ -257,19 +256,23 @@
 - (id)_web_parseAsKeyValuePairHandleQuotes_nowarn:(_Bool)arg1;
 - (id)_web_parseAsKeyValuePair_nowarn;
 - (id)_web_splitAtNonDateCommas_nowarn;
-- (_Bool)_getBytesAsData:(id *)arg1 maxLength:(unsigned long long)arg2 usedLength:(unsigned long long *)arg3 encoding:(unsigned long long)arg4 options:(unsigned long long)arg5 range:(struct _NSRange)arg6 remainingRange:(struct _NSRange *)arg7;
-- (id)_getCharactersAsStringInRange:(struct _NSRange)arg1;
-- (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
-- (id)variantFittingPresentationWidth:(long long)arg1;
+- (id)stringByAddingPercentEscapes;
+- (id)stringByRemovingPercentEscapes;
+- (id)standardizedURLPath;
+- (id)stringByReplacingPercentEscapesUsingEncoding:(unsigned long long)arg1;
+- (id)stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
+@property(readonly, copy) NSString *stringByRemovingPercentEncoding;
+- (id)stringByAddingPercentEncodingWithAllowedCharacters:(id)arg1;
+- (id)_web_HTTPStyleLanguageCodeWithoutRegion;
+- (id)_web_HTTPStyleLanguageCode;
+- (void)enumerateLinguisticTagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 orthography:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (id)linguisticTagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 orthography:(id)arg4 tokenRanges:(id *)arg5;
 - (void)_flushRegularExpressionCaches;
 - (id)_stringByReplacingOccurrencesOfRegularExpressionPattern:(id)arg1 withTemplate:(id)arg2 options:(unsigned long long)arg3 range:(struct _NSRange)arg4;
 - (struct _NSRange)_rangeOfRegularExpressionPattern:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3 locale:(id)arg4;
 - (struct _NSRange)significantText;
 - (id)replacementObjectForPortCoder:(id)arg1;
-- (id)__escapeString5991;
-- (void)enumerateLinguisticTagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 orthography:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
-- (id)linguisticTagsInRange:(struct _NSRange)arg1 scheme:(id)arg2 options:(unsigned long long)arg3 orthography:(id)arg4 tokenRanges:(id *)arg5;
+@property(readonly, nonatomic) NSAttributedString *__baseAttributedString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

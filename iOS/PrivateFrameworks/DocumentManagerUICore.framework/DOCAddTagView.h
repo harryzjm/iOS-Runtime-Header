@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import <DocumentManagerUICore/UIScribbleInteractionDelegate-Protocol.h>
 #import <DocumentManagerUICore/UITextFieldDelegate-Protocol.h>
 
 @class CAShapeLayer, DOCTagDotView, NSString, UILabel, UITextField;
 @protocol DOCAddTagTextFieldDelegate;
 
-@interface DOCAddTagView : UIView <UITextFieldDelegate>
+@interface DOCAddTagView : UIView <UITextFieldDelegate, UIScribbleInteractionDelegate>
 {
     id <DOCAddTagTextFieldDelegate> _delegate;
     DOCTagDotView *_tagDotView;
@@ -20,12 +21,14 @@
     CAShapeLayer *_borderLayer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CAShapeLayer *borderLayer; // @synthesize borderLayer=_borderLayer;
 @property(readonly, nonatomic) UITextField *tagNameTextField; // @synthesize tagNameTextField=_tagNameTextField;
 @property(readonly, nonatomic) UILabel *addNewTagLabel; // @synthesize addNewTagLabel=_addNewTagLabel;
 @property(readonly, nonatomic) DOCTagDotView *tagDotView; // @synthesize tagDotView=_tagDotView;
 @property(nonatomic) __weak id <DOCAddTagTextFieldDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)scribbleInteractionWillBeginWriting:(id)arg1;
+- (_Bool)scribbleInteractionShouldDelayFocus:(id)arg1;
 @property(readonly, nonatomic) NSString *text;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;

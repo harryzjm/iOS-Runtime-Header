@@ -6,17 +6,17 @@
 
 #import <IMCore/NSObject-Protocol.h>
 
-@class IMChat, IMChatItem, IMItem, NSArray, NSMutableArray;
+@class IMChat, IMChatItem, IMItem, NSArray, NSDate, NSMutableArray;
 
 @protocol IMChatItemRules <NSObject>
-- (IMItem *)_itemWithChatItemsDeleted:(NSArray *)arg1 fromItem:(IMItem *)arg2;
+- (IMItem *)_itemWithChatItemsDeleted:(NSArray *)arg1 fromItem:(IMItem *)arg2 indexesOfItemsDeleted:(id *)arg3 indexToRangeMapOfItemsDeleted:(id *)arg4;
 - (_Bool)_shouldReloadChatItemWithAssociatedChatItems:(NSArray *)arg1 oldAssociatedChatItems:(NSArray *)arg2;
 - (_Bool)_shouldReloadChatItem:(IMChatItem *)arg1 oldChatItem:(IMChatItem *)arg2;
 - (void)_didProcessChatItems:(NSMutableArray *)arg1;
 - (_Bool)_shouldRegenerateChatItemsForItem:(IMItem *)arg1 previousItem:(IMItem *)arg2 oldPreviousItem:(IMItem *)arg3;
 - (NSArray *)_chatItemsForItem:(IMItem *)arg1 previousItem:(IMItem *)arg2;
-- (IMChatItem *)_nextStaleChatItem;
-- (void)_setNextStaleChatItem:(IMChatItem *)arg1;
+- (NSDate *)_nextStaleTime;
+- (void)_setNextStaleTime:(NSDate *)arg1;
 - (NSMutableArray *)_chatItems;
 - (void)_setItems:(NSArray *)arg1;
 - (NSArray *)_items;

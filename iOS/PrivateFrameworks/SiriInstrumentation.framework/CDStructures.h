@@ -4,3 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#pragma mark Typedef'd Structures
+
+// Ambiguous groups
+typedef struct {
+    unsigned int dictationEndPointType:1;
+} CDStruct_78ff2909;
+
+typedef struct {
+    unsigned int errorCode:1;
+} CDStruct_70a7dc3e;
+

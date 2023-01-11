@@ -6,20 +6,21 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <HomeUI/HUDetailsPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
-#import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUQuickControlContainerViewDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlContentHosting-Protocol.h>
 #import <HomeUI/HUQuickControlTouchContinuing-Protocol.h>
 #import <HomeUI/HUQuickControlViewControllerCoordinatorDelegate-Protocol.h>
-#import <HomeUI/HUViewControllerCustomDissmissing-Protocol.h>
+#import <HomeUI/HUViewControllerCustomDismissing-Protocol.h>
 
 @class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UILayoutGuide, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol HUOpenURLHandling, HUPresentationDelegate, HUQuickControlContainerViewControllerDelegate, NSCopying;
 
-@interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUPresentationDelegateHost, HUViewControllerCustomDissmissing, HUQuickControlTouchContinuing>
+@interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUDetailsPresentationDelegateHost, HUViewControllerCustomDismissing, HUQuickControlTouchContinuing>
 {
+    _Bool _requiresPresentingViewControllerDismissal;
     _Bool _presentedDetailView;
     id <HUPresentationDelegate> presentationDelegate;
     HFItem<NSCopying> *_item;
@@ -43,6 +44,7 @@
 + (id)_controlAlphaAnimationSettingsForPresenting:(_Bool)arg1;
 + (id)_controlScaleAnimationSettingsForPresenting:(_Bool)arg1;
 + (id)_easeOutTimingFunction;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool presentedDetailView; // @synthesize presentedDetailView=_presentedDetailView;
 @property(retain, nonatomic) HUQuickControlViewController *activeControlViewController; // @synthesize activeControlViewController=_activeControlViewController;
 @property(retain, nonatomic) HUQuickControlViewControllerCoordinator *viewControllerCoordinator; // @synthesize viewControllerCoordinator=_viewControllerCoordinator;
@@ -57,8 +59,8 @@
 @property(retain, nonatomic) HUQuickControlContainerView *controlContainerView; // @synthesize controlContainerView=_controlContainerView;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(readonly, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
+@property(nonatomic) _Bool requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
 @property(nonatomic) __weak id <HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) HFItem *hu_presentedItem;
 - (id)viewForTouchContinuation;
 - (void)hideAuxiliaryViewForQuickControlContent:(id)arg1;
@@ -78,11 +80,13 @@
 - (void)_dismissQuickControls;
 - (void)_controlDidDismiss;
 - (void)_updateActiveControlViewController;
+- (void)_createControlContainerViewForMac;
 - (void)_createControlContainerViewWithSourceRect:(struct CGRect)arg1;
 - (void)_performTransitionToPresentationState:(unsigned long long)arg1 animated:(_Bool)arg2 initialProgress:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)dismissControlAnimated:(_Bool)arg1;
 - (_Bool)isControlDismissedOrDismissing;
 - (void)presentControlFromSourceRect:(struct CGRect)arg1 animated:(_Bool)arg2;
+- (void)presentControlForMacAnimated:(_Bool)arg1;
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
 - (void)_settingsButtonPressed:(id)arg1;
 - (void)_backButtonPressed:(id)arg1;
@@ -94,10 +98,11 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
 - (_Bool)isControlPresentedOrPresenting;
 @property(readonly, copy) NSString *description;
-- (id)initWithItem:(id)arg1 controlItems:(id)arg2 home:(id)arg3;
+- (id)initWithPresentationContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

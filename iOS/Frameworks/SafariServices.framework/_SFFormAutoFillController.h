@@ -11,7 +11,7 @@
 #import <SafariServices/_SFAuthenticationClient-Protocol.h>
 #import <SafariServices/_SFAutoFillInputViewDelegate-Protocol.h>
 
-@class CNContact, NSArray, NSDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, NSTimer, SFFormAutoFillFrameHandle, SFFormAutocompleteState, UIView, WBSCreditCardData, WBSFormMetadata, WBSOneTimeCodeMonitor, WKWebView, _SFAuthenticationContext, _SFAutoFillInputView, _SFFormAutoFillInputSession, _WKRemoteObjectInterface;
+@class CNContact, NSArray, NSDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, NSTimer, SFAppAutoFillOneTimeCodeProvider, SFFormAutoFillFrameHandle, SFFormAutocompleteState, UIView, WBSCreditCardData, WBSFormMetadata, WKWebView, _SFAuthenticationContext, _SFAutoFillInputView, _SFFormAutoFillInputSession, _WKRemoteObjectInterface;
 @protocol SFFormAutoFillControllerDelegate, SFFormAutoFiller, WBUFormAutoFillWebView;
 
 @interface _SFFormAutoFillController : NSObject <SFCredentialProviderExtensionManagerObserver, _SFAutoFillInputViewDelegate, SFFormMetadataObserver, _SFAuthenticationClient>
@@ -35,6 +35,7 @@
     _SFAutoFillInputView *_autoFillInputView;
     NSArray *_preservedLeadingBarButtonGroups;
     NSArray *_preservedTrailingBarButtonGroups;
+    _Bool _attemptedOfferingStreamlinedLogin;
     NSDictionary *_externalCredentialIdentitiesForStreamlinedAutoFill;
     _Bool _metadataCorrectionsEnabled;
     CNContact *_lastFilledContact;
@@ -45,11 +46,11 @@
 + (id)_filterAndSortCredentialIdentities:(id)arg1 pageURL:(id)arg2 exactMatchesOnly:(_Bool)arg3;
 + (void)_getExternalLoginCredentialSuggestionsForDomains:(id)arg1 pageURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_getExternalLoginCredentialSuggestionsForDomains:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *lastFilledCreditCardDataTypes; // @synthesize lastFilledCreditCardDataTypes=_lastFilledCreditCardDataTypes;
 @property(retain, nonatomic) WBSCreditCardData *lastFilledCreditCardData; // @synthesize lastFilledCreditCardData=_lastFilledCreditCardData;
 @property(retain, nonatomic) CNContact *lastFilledContact; // @synthesize lastFilledContact=_lastFilledContact;
 @property(nonatomic) _Bool metadataCorrectionsEnabled; // @synthesize metadataCorrectionsEnabled=_metadataCorrectionsEnabled;
-- (void).cxx_destruct;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
 - (void)autoFillInputViewDidSelectMorePasswords:(id)arg1;
 - (void)autoFillInputViewDidSelectUseKeyboard:(id)arg1;
@@ -65,7 +66,7 @@
 - (void)removeAutomaticPasswordButtonInitiatedByUser:(_Bool)arg1;
 - (void)removeAutomaticPasswordVisualTreatment;
 - (void)didRemoveAutomaticStrongPasswordInForm:(id)arg1 inputSessionUserObject:(id)arg2 inFrame:(id)arg3;
-- (void)_simulateCarriageReturnKeyEvents;
+- (void)_dismissKeyboardAndSimulateCarriageReturnKeyEvents:(_Bool)arg1;
 - (id)_simulatedWebEventForReturnKeyWithType:(int)arg1;
 - (void)autoFillDidFinishWithUpdatedFormMetadata:(id)arg1 inFrame:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)_removeUniqueIDsOfAutoFilledForm:(id)arg1;
@@ -82,7 +83,7 @@
 - (id)authenticationMessageForContext:(id)arg1;
 - (id)_preFillDisabledHosts;
 - (id)_websiteForAuthenticationPrompt;
-@property(readonly, nonatomic) WBSOneTimeCodeMonitor *oneTimeCodeMonitor;
+@property(readonly, nonatomic) SFAppAutoFillOneTimeCodeProvider *oneTimeCodeProvider;
 - (void)authenticateForAutoFillAuthenticationType:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_authenticateForAutoFillForHighLevelDomain:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _SFAuthenticationContext *authenticationContext;

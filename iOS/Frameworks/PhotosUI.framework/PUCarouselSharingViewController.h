@@ -33,6 +33,7 @@
     _Bool _inFlightRotation;
     _Bool _shouldPlayVitalityHintAfterViewDidAppear;
     _Bool _readyForInteraction;
+    _Bool _sendAsOriginals;
     _Bool __viewInSyncWithModel;
     _Bool __loopingPlaybackAllowed;
     PHFetchResult *_photoCollectionsFetchResult;
@@ -58,6 +59,7 @@
     struct CGRect __previousPreheatRect;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property(readonly, nonatomic) NSMutableArray *_livePhotoViewLoaderBlocks; // @synthesize _livePhotoViewLoaderBlocks=__livePhotoViewLoaderBlocks;
 @property(readonly, nonatomic) NSMutableArray *_photoViewLoaderBlocks; // @synthesize _photoViewLoaderBlocks=__photoViewLoaderBlocks;
@@ -78,11 +80,11 @@
 @property(retain, nonatomic, setter=_setMainCollectionViewLayout:) PUPhotosSharingCollectionViewLayout *mainCollectionViewLayout; // @synthesize mainCollectionViewLayout=_mainCollectionViewLayout;
 @property(retain, nonatomic, setter=_setMainCollectionView:) UICollectionView *mainCollectionView; // @synthesize mainCollectionView=_mainCollectionView;
 @property(retain, nonatomic) PUPhotosSharingViewControllerSpec *spec; // @synthesize spec=_spec;
+@property(nonatomic) _Bool sendAsOriginals; // @synthesize sendAsOriginals=_sendAsOriginals;
 @property(nonatomic, getter=isReadyForInteraction) _Bool readyForInteraction; // @synthesize readyForInteraction=_readyForInteraction;
 @property(nonatomic) __weak id <PUCarouselSharingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PUPhotoSelectionManager *photoSelectionManager; // @synthesize photoSelectionManager=_photoSelectionManager;
 @property(readonly, nonatomic) PHFetchResult *photoCollectionsFetchResult; // @synthesize photoCollectionsFetchResult=_photoCollectionsFetchResult;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_os_log> *sharingLog;
 - (void)photoViewContentHelper:(id)arg1 livePhotoWillBeginPlaybackWithStyle:(long long)arg2;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(CDUnknownBlockType)arg2;
@@ -124,8 +126,6 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_updateMainViewAnimated:(_Bool)arg1;
-- (void)_statusBarFrameDidChange:(id)arg1;
-- (void)_statusBarFrameWillChange:(id)arg1;
 - (void)_processCollectionListChangeNotifications:(id)arg1 singleCollectionNotifications:(id)arg2 needsReloadData:(_Bool)arg3;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
@@ -161,7 +161,7 @@
 - (_Bool)isItemAtIndexPathSelected:(id)arg1;
 - (_Bool)_isAnyAssetSelected;
 - (void)_setSelected:(_Bool)arg1 atIndexPath:(id)arg2 animated:(_Bool)arg3;
-- (void)_replaceActivityAssetItem:(id)arg1 withAssetItem:(id)arg2;
+- (void)_replaceActivityAssetItem:(id)arg1 withAssetItem:(id)arg2 notifyDelegate:(_Bool)arg3;
 - (void)_removeActivityAssetItem:(id)arg1;
 - (void)_addActivityAssetItem:(id)arg1;
 - (id)_updatedActivityAssetItemsForAssets:(id)arg1;
@@ -171,6 +171,8 @@
 - (void)_playVitalityHintAfterViewDidAppear;
 - (id)assetsInAssetCollection:(id)arg1;
 @property(readonly, nonatomic) PHFetchResult *assetCollectionsFetchResult;
+- (void)_updateVisibleCellBadges;
+- (void)_updateAdditionalContentForVisibleCells;
 - (void)_updateVisibleCells;
 - (id)_indexPathOfAsset:(id)arg1 sectionHint:(long long)arg2;
 - (id)_assetAtIndexPath:(id)arg1;

@@ -26,6 +26,10 @@ __attribute__((visibility("hidden")))
 - (void)optOutStreamIDs:(id)arg1;
 - (void)optInStreamIDs:(id)arg1;
 - (void)requestSessionInfoWithOptions:(id)arg1;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
+- (void)queryProbingResultsWithOptions:(id)arg1;
+- (void)stopActiveProbingWithOptions:(id)arg1;
+- (void)startActiveProbingWithOptions:(id)arg1;
 - (void)setWiFiAssist:(_Bool)arg1;
 - (void)setChannelPreferences:(id)arg1;
 - (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;

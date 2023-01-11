@@ -4,24 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIButtonBar;
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString, _UIButtonBar;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonBarStackView
+@interface _UIButtonBarStackView <UIPointerInteractionDelegate>
 {
     _UIButtonBar *_buttonBar;
 }
 
 + (Class)layerClass;
 - (void).cxx_destruct;
-- (id)description;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+@property(readonly, copy) NSString *description;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)layoutSubviews;
 - (void)updateConstraints;
 - (id)initWithButtonBar:(id)arg1;
-- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSString *_markedText;
     long long _inputModeListTouchPhase;
     double _inputModeListTouchBegan;
+    long long _source;
     struct _NSRange _selectedRange;
     struct CGPoint _inputModeListFromLocation;
     struct CGPoint _inputModeListUpdatePoint;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldPostReturnKeyNotification; // @synthesize shouldPostReturnKeyNotification=_shouldPostReturnKeyNotification;
 @property(nonatomic) _Bool shouldAdvanceResponder; // @synthesize shouldAdvanceResponder=_shouldAdvanceResponder;
 @property(nonatomic) _Bool requiresInputManagerSync; // @synthesize requiresInputManagerSync=_requiresInputManagerSync;
+@property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) struct CGPoint inputModeListUpdatePoint; // @synthesize inputModeListUpdatePoint=_inputModeListUpdatePoint;
 @property(nonatomic) struct CGPoint inputModeListFromLocation; // @synthesize inputModeListFromLocation=_inputModeListFromLocation;
 @property(nonatomic) double inputModeListTouchBegan; // @synthesize inputModeListTouchBegan=_inputModeListTouchBegan;

@@ -16,12 +16,13 @@
 }
 
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (id)perform;
 - (id)initWithAccount:(id)arg1 bag:(id)arg2;
 

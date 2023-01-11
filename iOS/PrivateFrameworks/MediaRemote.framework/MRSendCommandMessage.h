@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSDictionary, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, NSDate, NSDictionary;
 
 @interface MRSendCommandMessage
 {
@@ -12,10 +12,10 @@
     NSDate *_serializationDate;
 }
 
-@property(readonly, nonatomic) NSDate *serializationDate; // @synthesize serializationDate=_serializationDate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *serializationDate; // @synthesize serializationDate=_serializationDate;
 @property(readonly, nonatomic) unsigned int appOptions;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
+@property(readonly, nonatomic) MRPlayerPath *playerPath;
 @property(readonly, nonatomic) NSDictionary *options;
 @property(readonly, nonatomic) unsigned int command;
 - (unsigned long long)type;

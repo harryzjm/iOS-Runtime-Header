@@ -26,6 +26,7 @@
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)changeToNewFilterSize:(unsigned char)arg1;
 - (void)resetFilterWithNewExpectedInterval:(unsigned long long)arg1 multiIntervalCount:(unsigned int)arg2;

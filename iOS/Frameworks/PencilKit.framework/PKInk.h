@@ -13,13 +13,12 @@
 @interface PKInk : NSObject <NSCopying>
 {
     struct shared_ptr<PKProtobufUnknownFields> _unknownFields;
-    NSString *_type;
-    NSString *_identifier;
     UIColor *_color;
-    double _weight;
     PKInkBehavior *_behavior;
     unsigned long long _version;
     NSString *_variant;
+    NSString *_identifier;
+    double _weight;
 }
 
 + (id)colorForLassoStroke;
@@ -36,17 +35,18 @@
 + (id)inkWithType:(id)arg1 color:(id)arg2 weight:(double)arg3;
 + (id)identifierForInkType:(id)arg1;
 + (id)identifierForCommandType:(unsigned int)arg1 wantsObjectErase:(_Bool)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double weight; // @synthesize weight=_weight;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSString *variant; // @synthesize variant=_variant;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(retain, nonatomic) PKInkBehavior *behavior; // @synthesize behavior=_behavior;
-@property(readonly, nonatomic) double weight; // @synthesize weight=_weight;
 @property(readonly, nonatomic) UIColor *color; // @synthesize color=_color;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)_dataInUnknownFields;
 - (void)_addTestDataToUnknownFields;
+@property(readonly, nonatomic) _Bool _isStrokeGeneratingInk;
+@property(readonly, nonatomic) NSString *inkType;
 @property(readonly, nonatomic) double _weight;
 - (void)setWeight:(double)arg1;
 - (id)description;
@@ -60,6 +60,10 @@
 - (id)initWithIdentifier:(id)arg1 color:(id)arg2 version:(unsigned long long)arg3 variant:(id)arg4;
 - (id)init;
 - (id)properties;
+- (_Bool)_isEraserInk;
+- (_Bool)_isLassoInk;
+- (_Bool)_isHandwritingInk;
+- (id)initWithInkType:(id)arg1 color:(id)arg2;
 - (void)saveToV1Archive:(Ink_7b169424 *)arg1;
 - (id)initWithV1Archive:(const Ink_7b169424 *)arg1 serializationVersion:(unsigned long long)arg2;
 - (void)saveToArchive:(struct Ink *)arg1;

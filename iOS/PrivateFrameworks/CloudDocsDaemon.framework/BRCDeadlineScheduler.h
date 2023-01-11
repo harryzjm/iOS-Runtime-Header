@@ -10,12 +10,12 @@
 #import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCFairScheduler, BRCFairSource, BRCMinHeap, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_source, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface BRCDeadlineScheduler : NSObject <BRCLifeCycle, BRCSuspendable>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_workloop> *_workloop;
     BRCMinHeap *_minHeap;
     NSString *_name;
     BRCFairSource *_source;
@@ -28,11 +28,11 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _computeNextAdmissibleDateForScheduling;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) BRCFairScheduler *fairScheduler; // @synthesize fairScheduler=_fairScheduler;
 @property(readonly, nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(copy, nonatomic) CDUnknownBlockType computeNextAdmissibleDateForScheduling; // @synthesize computeNextAdmissibleDateForScheduling=_computeNextAdmissibleDateForScheduling;
 @property(nonatomic) long long coalescingLeeway; // @synthesize coalescingLeeway=_leeway;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (void)close;
 - (void)_close;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)runDeadlineSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)signal;
 - (_Bool)_setupTimerRequiredForDeadline:(long long)arg1 now:(long long)arg2;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_workloop> *workloop;
 - (id)initWithName:(id)arg1 fairScheduler:(id)arg2;
 
 // Remaining properties

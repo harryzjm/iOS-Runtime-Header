@@ -4,23 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString, SCRCArgumentSubcommand;
+@class NSArray, NSMutableArray, NSString, SCRCArgumentSubcommand;
 
 @interface SCRCArgumentParser
 {
-    int _argc;
-    char **_argv;
-    NSMutableArray *_subcommandArray;
-    NSMutableArray *_argumentArray;
-    NSString *_appName;
-    SCRCArgumentSubcommand *_subcommand;
     _Bool _isLaunchedAtLogin;
+    NSString *_appName;
+    NSMutableArray *__subcommandArray;
+    SCRCArgumentSubcommand *__subcommand;
+    NSArray *__arguments;
 }
 
 + (id)commandPath;
 + (id)versionString;
 + (id)processIdentifier;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *_arguments; // @synthesize _arguments=__arguments;
+@property(retain, nonatomic) SCRCArgumentSubcommand *_subcommand; // @synthesize _subcommand=__subcommand;
+@property(retain, nonatomic) NSMutableArray *_subcommandArray; // @synthesize _subcommandArray=__subcommandArray;
+@property(copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property(nonatomic) _Bool isLaunchedAtLogin; // @synthesize isLaunchedAtLogin=_isLaunchedAtLogin;
 - (id)setRunningAtStartup:(id)arg1;
 - (id)_displayHelp:(id)arg1;
 - (id)_displayVersion:(id)arg1;
@@ -28,12 +31,6 @@
 - (int)run;
 - (_Bool)parse;
 - (void)addSubcommand:(id)arg1;
-- (id)appName;
-- (void)setAppName:(id)arg1;
-- (_Bool)isLaunchedAtLogin;
-- (int)argc;
-- (char **)argv;
-- (void)dealloc;
 - (id)initWithArgc:(int)arg1 argv:(const char **)arg2;
 
 @end

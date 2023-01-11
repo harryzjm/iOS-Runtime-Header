@@ -15,11 +15,12 @@
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXSwipeDownSettings *swipeDownSettings; // @synthesize swipeDownSettings=_swipeDownSettings;
 @property(nonatomic) double minimumDimmingOpacity; // @synthesize minimumDimmingOpacity=_minimumDimmingOpacity;
 @property(nonatomic) _Bool allowSwipeDown; // @synthesize allowSwipeDown=_allowSwipeDown;
-- (void).cxx_destruct;
 - (void)setDefaultValues;
+- (void)createChildren;
 - (id)parentSettings;
 
 @end

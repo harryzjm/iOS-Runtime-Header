@@ -31,10 +31,9 @@
 + (id)getReferencedSecureProperties:(id)arg1 fromDiff:(id)arg2;
 + (id)getReferencedSecurePropertyIDsFromDiff:(id)arg1;
 + (id)_nextToken;
-+ (_Bool)_supportsWatch;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NRMutableDeviceCollection *queueCollection; // @synthesize queueCollection=_queueCollection;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *managementQueue; // @synthesize managementQueue=_managementQueue;
-- (void).cxx_destruct;
 - (void)_notifyObserversSecurePropertiesAreAvailableWithCollection:(id)arg1 secureProperties:(id)arg2;
 - (void)child:(id)arg1 didApplyDiff:(id)arg2;
 - (void)invalidate;

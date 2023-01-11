@@ -19,7 +19,7 @@
     TSIntervalFilter *_bIntervalFilter;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (_Bool)canConvertTime;
 - (void)changeToNewFilterSize:(unsigned char)arg1;
 - (void)resetFilterWithNewExpectedDomainAInterval:(unsigned long long)arg1 expectedDomainBInterval:(unsigned long long)arg2 multiIntervalCount:(unsigned int)arg3;

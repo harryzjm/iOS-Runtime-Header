@@ -12,13 +12,13 @@
 {
     PHFetchResult *_fetchResultBeforeChanges;
     PHFetchResult *_fetchResultAfterChanges;
-    NSArray *_previousItems;
-    NSArray *_currentItems;
+    NSArray *_previousObjects;
+    NSArray *_currentObjects;
     NSIndexSet *_removedIndexes;
     NSIndexSet *_insertedIndexes;
     NSIndexSet *_movedIndexes;
     struct __CFArray *_movedFromIndexes;
-    NSArray *_changedItems;
+    NSArray *_changedOIDs;
     NSIndexSet *_changedIndexes;
     _Bool _skipIncrementalChanges;
 }
@@ -41,14 +41,14 @@
 @property(readonly) NSIndexSet *insertedIndexes;
 @property(readonly) NSArray *removedObjects;
 @property(readonly) NSIndexSet *removedIndexes;
-- (id)currentItems;
 @property(readonly) PHFetchResult *fetchResultAfterChanges;
 @property(readonly) PHFetchResult *fetchResultBeforeChanges;
+@property(readonly, nonatomic) _Bool hasAnyChanges;
 @property(readonly) _Bool hasIncrementalChanges;
 - (_Bool)shouldReload;
 - (void)dealloc;
 - (id)initWithManualFetchResultAfterChanges:(id)arg1;
-- (id)initWithFetchResult:(id)arg1 currentFetchResult:(id)arg2 changedItems:(id)arg3 unknownMergeEvent:(_Bool)arg4;
+- (id)initWithFetchResult:(id)arg1 currentFetchResult:(id)arg2 changedOIDs:(id)arg3 unknownMergeEvent:(_Bool)arg4;
 
 @end
 

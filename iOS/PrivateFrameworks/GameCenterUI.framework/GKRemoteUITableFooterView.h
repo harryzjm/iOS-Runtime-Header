@@ -23,13 +23,13 @@
     double _buttonBaselineOffset;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property(nonatomic) double buttonBaselineOffset; // @synthesize buttonBaselineOffset=_buttonBaselineOffset;
 @property(retain, nonatomic) NSArray *replaceableConstraints; // @synthesize replaceableConstraints=_replaceableConstraints;
 @property(nonatomic) _Bool pinToBottom; // @synthesize pinToBottom=_pinToBottom;
 @property(retain, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property(retain, nonatomic) GKButton *button; // @synthesize button=_button;
-- (void).cxx_destruct;
 - (void)tableViewDidUpdateContentInset:(id)arg1;
 - (void)objectModelDidChange:(id)arg1;
 - (void)buttonTapped:(id)arg1;
@@ -38,7 +38,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)footerHeightForWidth:(double)arg1 inTableView:(id)arg2;
 - (void)layoutSubviews;
-@property(nonatomic) id <GKRemoteUIAuxiliaryViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <GKRemoteUIAuxiliaryViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)createButtonWithAttributes:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
 

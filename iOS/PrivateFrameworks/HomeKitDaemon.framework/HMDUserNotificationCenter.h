@@ -19,27 +19,29 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSMutableDictionary *notificationRequests; // @synthesize notificationRequests=_notificationRequests;
-@property(retain, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
-@property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 - (void).cxx_destruct;
+@property(readonly) NSMutableDictionary *notificationRequests; // @synthesize notificationRequests=_notificationRequests;
+@property(readonly) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
+@property __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 - (id)sortDescriptors;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (id)insertRequestWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 requestIdentifier:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
+- (id)insertRequestWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 requestIdentifier:(id)arg4 date:(id)arg5 bulletinType:(unsigned long long)arg6 actionURL:(id)arg7 bulletinContext:(id)arg8 actionContext:(id)arg9;
 - (id)createNotificationAttachmentWithIdentifier:(id)arg1 forFileAtPath:(id)arg2;
 - (id)showNotificationWithTitle:(id)arg1 body:(id)arg2 threadIdentifier:(id)arg3 categoryIdentifier:(id)arg4 requestIdentifier:(id)arg5 date:(id)arg6 attachments:(id)arg7 userInfo:(id)arg8 shouldIgnoreDoNotDisturb:(_Bool)arg9;
 - (void)registerNotificationCategories;
+- (id)notificationCategories;
 - (id)sortedRequestsByDate;
 - (void)_removeRequestWithIdentifiersFromNotificationCenter:(id)arg1;
 - (void)_removeRequestWithIdentifier:(id)arg1;
 - (void)removeRequestWithIdentifier:(id)arg1;
 - (void)cullBulletinsToCount:(unsigned long long)arg1;
-- (void)updateNotification:(id)arg1 content:(id)arg2;
+- (void)updateContent:(id)arg1 forNotificationWithRequestIdentifier:(id)arg2;
 - (void)_showNotification:(id)arg1;
 - (void)setBadgeNumber:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)configureHomeManager:(id)arg1;
+- (id)initWithUserNotificationCenter:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -13,6 +13,7 @@
 
 @interface SGURL : NSObject <NSSecureCoding, NSCopying>
 {
+    unsigned char _flags;
     NSURL *_url;
     NSString *_title;
     NSString *_receivedFromHandle;
@@ -26,6 +27,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned char flags; // @synthesize flags=_flags;
 @property(readonly, nonatomic) NSDate *receivedAt; // @synthesize receivedAt=_receivedAt;
 @property(readonly, nonatomic) double documentTimeInterval; // @synthesize documentTimeInterval=_documentTimeInterval;
 @property(readonly, nonatomic) NSDate *documentDate; // @synthesize documentDate=_documentDate;
@@ -36,7 +39,6 @@
 @property(readonly, nonatomic) NSString *receivedFromHandle; // @synthesize receivedFromHandle=_receivedFromHandle;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (_Bool)isEqualToURL:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -44,7 +46,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithURL:(id)arg1 title:(id)arg2 receivedFromHandle:(id)arg3 bundleIdentifier:(id)arg4 groupIdentifier:(id)arg5 documentIdentifier:(id)arg6 documentTitle:(id)arg7 documentDate:(id)arg8 documentTimeInterval:(double)arg9 receivedAt:(id)arg10;
+- (id)initWithURL:(id)arg1 title:(id)arg2 receivedFromHandle:(id)arg3 bundleIdentifier:(id)arg4 groupIdentifier:(id)arg5 documentIdentifier:(id)arg6 documentTitle:(id)arg7 documentDate:(id)arg8 documentTimeInterval:(double)arg9 receivedAt:(id)arg10 flags:(unsigned char)arg11;
 - (id)init;
 
 @end

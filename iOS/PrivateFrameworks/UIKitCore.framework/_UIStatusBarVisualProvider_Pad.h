@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSLayoutConstraint, _UIStatusBarDisplayItemPlacement;
+#import <UIKitCore/_UIStatusBarRegionCursorInsetProvider-Protocol.h>
+
+@class NSDictionary, NSLayoutConstraint, NSString, _UIStatusBar, _UIStatusBarDisplayItemPlacement;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Pad
+@interface _UIStatusBarVisualProvider_Pad <_UIStatusBarRegionCursorInsetProvider>
 {
     NSDictionary *_orderedDisplayItemPlacements;
     NSLayoutConstraint *_trailingRegionLeadingAnchorConstraint;
@@ -20,6 +22,9 @@ __attribute__((visibility("hidden")))
 + (id)pillFont;
 + (id)expandedFont;
 + (id)normalFont;
++ (double)regionCursorCornerRadius;
++ (_Bool)regionCursorIsPill;
++ (struct UIEdgeInsets)regionCursorInsets;
 + (struct CGSize)smallPillSize;
 + (struct CGSize)pillSize;
 + (double)baselineOffset;
@@ -27,13 +32,13 @@ __attribute__((visibility("hidden")))
 + (struct NSDirectionalEdgeInsets)edgeInsets;
 + (double)regionSpacing;
 + (double)height;
-+ (Class)visualProviderSubclassForScreen:(id)arg1;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *timePlacement; // @synthesize timePlacement=_timePlacement;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *datePlacement; // @synthesize datePlacement=_datePlacement;
 @property(retain, nonatomic) NSLayoutConstraint *leadingRegionTrailingAnchorConstraint; // @synthesize leadingRegionTrailingAnchorConstraint=_leadingRegionTrailingAnchorConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *trailingRegionLeadingAnchorConstraint; // @synthesize trailingRegionLeadingAnchorConstraint=_trailingRegionLeadingAnchorConstraint;
 @property(retain, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
-- (void).cxx_destruct;
 - (double)airplaneShouldFadeForAnimationType:(long long)arg1;
 - (double)airplaneSpeedForAnimationType:(long long)arg1;
 - (double)airplaneTravelOffsetInProposedPartWithIdentifier:(id *)arg1 animationType:(long long)arg2;
@@ -44,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)sizeUpdatedFromSize:(struct CGSize)arg1;
 - (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1;
 - (void)_updateConstraintsForAvoidanceFrame:(struct CGRect)arg1;
+- (void)statusBarEnabledPartsUpdated;
 - (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
 - (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)styleAttributesForStyle:(long long)arg1;
@@ -53,6 +59,15 @@ __attribute__((visibility("hidden")))
 - (id)setupInContainerView:(id)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(nonatomic) __weak _UIStatusBar *statusBar;
+@property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 
 @end
 

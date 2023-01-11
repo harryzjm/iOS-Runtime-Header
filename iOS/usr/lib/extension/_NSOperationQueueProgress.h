@@ -14,8 +14,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)setTotalUnitCount:(long long)arg1;
-- (void)invalidateQueue;
-- (id)initWithQueue:(id)arg1;
 
 @end
 

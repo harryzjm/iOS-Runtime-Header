@@ -43,8 +43,14 @@
     unsigned long long _numberOfNextKeywordSuggestionToProcess;
     NSArray *_nextKeywordSuggestions;
     NSArray *_dedupedGroupResults;
+    unsigned long long _mergeFilterTokenAssetIDsIntervalID;
 }
 
++ (void)_restoreAssetIdsForGroupsInGroupArrays:(id)arg1 atRemovalIndexes:(id)arg2 groupIdToOriginalAssetIdsMap:(id)arg3 searchTokens:(id)arg4;
++ (id)_indexesOfFilterTokensInSearchTokens:(id)arg1;
++ (id)_indexesToRemoveForDuplicatedFilterGroupsinGroupArrays:(id)arg1 searchTokens:(id)arg2;
++ (void)_aggregateAssetIdsOnFilterGroupsInGroupArrays:(id)arg1 searchTokens:(id)arg2 groupIdToOriginalAssetIdsMap:(id *)arg3;
++ (_Bool)_shouldApplyFilterTokensForGroupArrays:(id)arg1 searchTokens:(id)arg2 filterGroupIds:(id)arg3;
 + (void)bootstrap;
 + (struct _NSRange)searchTextExtendedRangeForParse:(id)arg1;
 + (id)datedParsesWithParses:(id)arg1;
@@ -55,7 +61,9 @@
 + (id)dateFilterWithAttributes:(id)arg1 andAttributes:(id)arg2;
 + (id)dateFilterByCombiningDateFilter:(id)arg1 withDateFilter:(id)arg2;
 + (id)dateFilterWithAttributes:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool useWildcardText; // @synthesize useWildcardText=_useWildcardText;
+@property(nonatomic) unsigned long long mergeFilterTokenAssetIDsIntervalID; // @synthesize mergeFilterTokenAssetIDsIntervalID=_mergeFilterTokenAssetIDsIntervalID;
 @property(copy, nonatomic) NSSet *socialGroupExtendedCollectionIds; // @synthesize socialGroupExtendedCollectionIds=_socialGroupExtendedCollectionIds;
 @property(copy, nonatomic) NSSet *socialGroupExtendedAssetIds; // @synthesize socialGroupExtendedAssetIds=_socialGroupExtendedAssetIds;
 @property(copy, nonatomic) NSArray *dedupedGroupResults; // @synthesize dedupedGroupResults=_dedupedGroupResults;
@@ -73,7 +81,6 @@
 @property(nonatomic) unsigned long long wordEmbeddingMode; // @synthesize wordEmbeddingMode=_wordEmbeddingMode;
 @property(readonly, copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property(readonly, copy, nonatomic) NSArray *queryTokens; // @synthesize queryTokens=_queryTokens;
-- (void).cxx_destruct;
 - (id)description;
 - (void)_postProcessPersonGroupsInGroupArrays:(id)arg1;
 - (id)suggestionWhitelistedScenes;

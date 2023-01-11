@@ -17,6 +17,7 @@
 @property(retain, nonatomic) SBBootDefaults *bootDefaults; // @dynamic bootDefaults;
 @property(nonatomic, getter=isForSimulator) _Bool forSimulator; // @dynamic forSimulator;
 @property(nonatomic) _Bool hasPasscodeSet; // @dynamic hasPasscodeSet;
+@property(nonatomic, getter=homeButtonType) long long homeButtonType; // @dynamic homeButtonType;
 @property(nonatomic, getter=isInLostMode) _Bool inLostMode; // @dynamic inLostMode;
 @property(nonatomic, getter=isLoginSession) _Bool loginSession; // @dynamic loginSession;
 @property(nonatomic) _Bool requiresSetup; // @dynamic requiresSetup;

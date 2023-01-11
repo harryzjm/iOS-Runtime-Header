@@ -8,18 +8,44 @@
 
 @interface SiriPresentationSpringBoardMainScreenViewController
 {
+    _Bool _shouldDismissForTapOutsideContent;
+    _Bool _shouldDismissForTapsOutsideContent;
+    _Bool _tapsOutsideContentDismissAssistant;
+    _Bool _shouldPassTapsThrough;
+    _Bool _shouldPassTouchesThroughToSpringBoard;
+    _Bool _shouldDismissForSwipesOutsideContent;
+    _Bool _shareHomeGesture;
 }
 
-- (void)prewarmFlamesWithPresentationFrame:(struct CGRect)arg1;
+@property(readonly, nonatomic) _Bool shareHomeGesture; // @synthesize shareHomeGesture=_shareHomeGesture;
+@property(readonly, nonatomic) _Bool shouldDismissForSwipesOutsideContent; // @synthesize shouldDismissForSwipesOutsideContent=_shouldDismissForSwipesOutsideContent;
+@property(readonly, nonatomic) _Bool shouldPassTouchesThroughToSpringBoard; // @synthesize shouldPassTouchesThroughToSpringBoard=_shouldPassTouchesThroughToSpringBoard;
+@property(readonly, nonatomic) _Bool shouldPassTapsThrough; // @synthesize shouldPassTapsThrough=_shouldPassTapsThrough;
+@property(readonly, nonatomic) _Bool tapsOutsideContentDismissAssistant; // @synthesize tapsOutsideContentDismissAssistant=_tapsOutsideContentDismissAssistant;
+- (_Bool)_canShowWhileLocked;
+- (_Bool)showAppsBehindSiri;
+- (void)setDockFrame:(struct CGRect)arg1;
+- (void)updateHomeGestureSharingForSiriSetup:(_Bool)arg1;
+- (void)hasContentAtPoint:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setShareHomeGesture:(_Bool)arg1;
+- (void)setShouldPassTouchesThroughToSpringBoard:(_Bool)arg1;
+- (void)setShouldDismissForSwipesOutsideContent:(_Bool)arg1;
+- (void)setShouldDismissForTapsOutsideContent:(_Bool)arg1;
+- (void)setShouldDismissForTapOutsideContent:(_Bool)arg1;
+- (_Bool)shouldDismissForTapsOutsideContent;
+- (_Bool)shouldDismissForTapOutsideContent;
 - (void)setFluidDismissalState:(id)arg1;
+- (void)requestStatusBarVisible:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setShowsStatusBar:(_Bool)arg1;
 - (void)requestPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
+- (void)loadView;
+- (void)_commonInit;
 - (id)init;
 - (id)initWithIdentifier:(long long)arg1 hostedPresentationFrame:(struct CGRect)arg2;
 - (id)initWithIdentifier:(long long)arg1;
 
 // Remaining properties
-@property(retain, nonatomic) id <SiriPresentationSpringBoardMainScreenViewControllerDelegate> siriPresentationControllerDelegate; // @dynamic siriPresentationControllerDelegate;
+@property(nonatomic) __weak id <SiriPresentationSpringBoardMainScreenViewControllerDelegate> siriPresentationControllerDelegate; // @dynamic siriPresentationControllerDelegate;
 
 @end
 

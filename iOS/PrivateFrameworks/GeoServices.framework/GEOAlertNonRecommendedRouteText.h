@@ -13,23 +13,21 @@
 @interface GEOAlertNonRecommendedRouteText : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPlaceFormattedString *_body;
     GEOFormattedString *_responseAlertPrimary;
     GEOFormattedString *_responseAlertSecondary;
     GEOPlaceFormattedString *_title;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_body:1;
         unsigned int read_responseAlertPrimary:1;
         unsigned int read_responseAlertSecondary:1;
         unsigned int read_title:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_body:1;
-        unsigned int wrote_responseAlertPrimary:1;
-        unsigned int wrote_responseAlertSecondary:1;
-        unsigned int wrote_title:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,20 +43,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPlaceFormattedString *body;
 @property(readonly, nonatomic) _Bool hasBody;
-- (void)_readBody;
 @property(retain, nonatomic) GEOPlaceFormattedString *title;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (void)_readTitle;
 @property(retain, nonatomic) GEOFormattedString *responseAlertSecondary;
 @property(readonly, nonatomic) _Bool hasResponseAlertSecondary;
-- (void)_readResponseAlertSecondary;
 @property(retain, nonatomic) GEOFormattedString *responseAlertPrimary;
 @property(readonly, nonatomic) _Bool hasResponseAlertPrimary;
-- (void)_readResponseAlertPrimary;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

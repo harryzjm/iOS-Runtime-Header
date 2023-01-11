@@ -23,6 +23,8 @@
     id <MTTinting><MTMaterialFiltering> _auxiliaryOverlaySettings;
 }
 
++ (id)styleSetNameForStyleSetFromRecipeWithName:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <MTTinting><MTMaterialFiltering> auxiliaryOverlaySettings; // @synthesize auxiliaryOverlaySettings=_auxiliaryOverlaySettings;
 @property(readonly, nonatomic) id <MTTinting><MTMaterialFiltering> secondaryOverlaySettings; // @synthesize secondaryOverlaySettings=_secondaryOverlaySettings;
 @property(readonly, nonatomic) id <MTTinting><MTMaterialFiltering> primaryOverlaySettings; // @synthesize primaryOverlaySettings=_primaryOverlaySettings;
@@ -31,11 +33,13 @@
 @property(retain, nonatomic) NSDictionary *styles; // @synthesize styles=_styles;
 @property(readonly, copy, nonatomic) NSString *recipeName; // @synthesize recipeName=_recipeName;
 @property(readonly, nonatomic) long long materialSettingsVersion; // @synthesize materialSettingsVersion=_materialSettingsVersion;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
+- (id)_platformColorsStyleSetName;
+- (id)_newVisualStyleSet;
+- (id)_visualStyleSetDescription;
 - (id)settingsForConfiguration:(id)arg1;
 - (id)styleNameForCategory:(id)arg1;
-- (id)initWithRecipeName:(id)arg1 andDescription:(id)arg2 descendantDescriptions:(id)arg3;
+- (id)initWithRecipeName:(id)arg1 andDescription:(id)arg2 descendantDescriptions:(id)arg3 bundle:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

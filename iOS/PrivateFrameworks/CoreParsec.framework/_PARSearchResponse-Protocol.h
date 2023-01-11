@@ -22,6 +22,7 @@
 @property(nonatomic) int maxAgeSeconds;
 @property(copy, nonatomic) NSData *feedback;
 @property(nonatomic) float completionScore;
+@property(nonatomic) _Bool suggestionsAreBlended;
 @property(copy, nonatomic) NSArray *suggestions;
 @property(copy, nonatomic) NSString *query;
 @property(copy, nonatomic) NSString *prefix;

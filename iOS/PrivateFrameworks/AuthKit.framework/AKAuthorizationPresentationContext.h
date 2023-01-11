@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
 @class AKCredentialRequestContext, AKUserInformation, NSArray, NSData, NSNumber, NSString;
 
-@interface AKAuthorizationPresentationContext : NSObject <NSSecureCoding>
+@interface AKAuthorizationPresentationContext : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_bundleID;
     NSString *_localizedAppName;
@@ -23,7 +24,9 @@
     NSArray *_loginChoices;
 }
 
++ (id)presentationContextForRequestContext:(id)arg1 client:(id)arg2;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *loginChoices; // @synthesize loginChoices=_loginChoices;
 @property(retain, nonatomic) AKUserInformation *userInformation; // @synthesize userInformation=_userInformation;
 @property(retain, nonatomic) AKCredentialRequestContext *credentialRequestContext; // @synthesize credentialRequestContext=_credentialRequestContext;
@@ -33,12 +36,13 @@
 @property(readonly, copy, nonatomic) NSString *informativeText; // @synthesize informativeText=_informativeText;
 @property(readonly, copy, nonatomic) NSString *localizedAppName; // @synthesize localizedAppName=_localizedAppName;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
-- (int)_iconVariantForScale:(float)arg1;
 - (void)_addPresentationParametersForContext:(id)arg1;
 - (void)_addPresenterParameters;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithContext:(id)arg1 client:(id)arg2;
 - (id)initWithContext:(id)arg1 bundleID:(id)arg2;
 
 @end

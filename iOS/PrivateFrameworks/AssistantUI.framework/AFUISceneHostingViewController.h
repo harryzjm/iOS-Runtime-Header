@@ -9,36 +9,44 @@
 #import <AssistantUI/AFUISceneControllerDelegate-Protocol.h>
 
 @class AFUISceneConfiguration, AFUISceneController, FBScene, FBSceneClientProviderInvalidationAction, NSString, UIView;
-@protocol BSInvalidatable, FBSceneHost, UIScenePresenter;
+@protocol BSInvalidatable, UIScenePresenter;
 
 @interface AFUISceneHostingViewController : UIViewController <AFUISceneControllerDelegate>
 {
+    _Bool _inFluidDismissal;
     _Bool _pauseDeferrals;
+    _Bool _safeAreaInsetsAreSuspended;
     long long _deferralMode;
     AFUISceneConfiguration *_configuration;
     AFUISceneController *_sceneController;
     UIView *_windowSceneHostingView;
     id <UIScenePresenter> _presentation;
     FBSceneClientProviderInvalidationAction *_invalidationAction;
-    id <FBSceneHost> _sceneHost;
     FBScene *_scene;
     id <BSInvalidatable> _predicateInvalidationHandler;
+    long long _currentOrientation;
+    struct UIEdgeInsets _effectiveSafeAreaInsets;
+    struct UIEdgeInsets _suspendedSafeAreaInsets;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) struct UIEdgeInsets suspendedSafeAreaInsets; // @synthesize suspendedSafeAreaInsets=_suspendedSafeAreaInsets;
+@property(nonatomic) struct UIEdgeInsets effectiveSafeAreaInsets; // @synthesize effectiveSafeAreaInsets=_effectiveSafeAreaInsets;
+@property(nonatomic) _Bool safeAreaInsetsAreSuspended; // @synthesize safeAreaInsetsAreSuspended=_safeAreaInsetsAreSuspended;
+@property(nonatomic) long long currentOrientation; // @synthesize currentOrientation=_currentOrientation;
 @property(nonatomic) _Bool pauseDeferrals; // @synthesize pauseDeferrals=_pauseDeferrals;
 @property(retain, nonatomic) id <BSInvalidatable> predicateInvalidationHandler; // @synthesize predicateInvalidationHandler=_predicateInvalidationHandler;
 @property(retain, nonatomic) FBScene *scene; // @synthesize scene=_scene;
-@property(nonatomic) id <FBSceneHost> sceneHost; // @synthesize sceneHost=_sceneHost;
 @property(retain, nonatomic) FBSceneClientProviderInvalidationAction *invalidationAction; // @synthesize invalidationAction=_invalidationAction;
 @property(retain, nonatomic) id <UIScenePresenter> presentation; // @synthesize presentation=_presentation;
 @property(retain, nonatomic) UIView *windowSceneHostingView; // @synthesize windowSceneHostingView=_windowSceneHostingView;
 @property(retain, nonatomic) AFUISceneController *sceneController; // @synthesize sceneController=_sceneController;
+@property(nonatomic, getter=isInFluidDismissal) _Bool inFluidDismissal; // @synthesize inFluidDismissal=_inFluidDismissal;
 @property(readonly, nonatomic) AFUISceneConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) long long deferralMode; // @synthesize deferralMode=_deferralMode;
-- (void).cxx_destruct;
 - (_Bool)_hasScene;
 - (void)sceneController:(id)arg1 sceneDidUpdateClientSettings:(id)arg2;
-- (void)sceneController:(id)arg1 sceneWasInvalidated:(id)arg2;
+- (void)sceneController:(id)arg1 sceneWasInvalidated:(id)arg2 forReason:(unsigned long long)arg3;
 - (void)sceneController:(id)arg1 sceneContentStateDidChange:(id)arg2;
 - (id)sceneConfigurationForDelegate;
 - (void)_updateDeferralChainWithWindow:(id)arg1;
@@ -46,17 +54,26 @@
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
-- (void)_noteSceneDidInvalidate;
+- (void)_handleSceneDidActivateWithIdentifier:(id)arg1;
+- (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
+- (void)_handleInvalidationForReason:(unsigned long long)arg1 explanation:(id)arg2;
+- (void)deactivateSceneForExtendingTTSInBackground;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)_updateSceneSafeAreaInsets;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateSceneUIApplicationSceneSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_transitionContentsWithView:(id)arg1 forContentState:(long long)arg2;
 - (void)updateSceneWithConfiguration:(id)arg1;
 - (void)invalidateAndPauseDeferringHIDEvents;
 - (void)startDeferringHIDEventsIfNeeded;
 - (_Bool)isDeferringHIDEvents;
 - (_Bool)isHostingScene;
-- (void)deactiveSceneWithCompletion:(CDUnknownBlockType)arg1;
+- (void)invalidateSceneForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (void)stopHostingScene;
 - (void)startHostingSceneForConfiguration:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)updateRemoteSceneWithFrontMostAppInterfaceOrientation:(long long)arg1;
+- (void)updateSettingsForInterfaceOrientationChange:(long long)arg1 willAnimationWithDuration:(double)arg2;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)_commonInit;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

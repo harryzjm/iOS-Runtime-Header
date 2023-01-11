@@ -15,8 +15,9 @@
     PKDiscoveryDriver *_wdriver;
 }
 
-@property __weak PKDiscoveryDriver *wdriver; // @synthesize wdriver=_wdriver;
 - (void).cxx_destruct;
+@property __weak PKDiscoveryDriver *wdriver; // @synthesize wdriver=_wdriver;
+- (void)updateWithUninstalledProxies:(id)arg1;
 - (void)update;
 - (void)pluginsDidUninstall:(id)arg1;
 - (void)pluginsDidInstall:(id)arg1;

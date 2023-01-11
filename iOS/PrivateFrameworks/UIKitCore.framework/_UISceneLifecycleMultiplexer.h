@@ -20,9 +20,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)configureInitialDeactivationReasons:(unsigned long long)arg1;
++ (id)_mostActiveSceneForApplicationState;
 + (id)mostActiveWindowSceneOnScreen:(id)arg1;
 + (id)mostActiveScene;
-+ (id)_mostActiveSceneWithTest:(CDUnknownBlockType)arg1;
++ (long long)_compareLifecycleStateOfScene:(id)arg1 toScene:(id)arg2;
++ (id)_mostActiveSceneIncludingInternal:(_Bool)arg1 withTest:(CDUnknownBlockType)arg2;
++ (id)mostActiveSceneWithTest:(CDUnknownBlockType)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_globalTestRelatedActivationActionsForFirstActivation:(_Bool)arg1 foreground:(_Bool)arg2 interfaceStyle:(long long)arg3 transitionContext:(id)arg4;

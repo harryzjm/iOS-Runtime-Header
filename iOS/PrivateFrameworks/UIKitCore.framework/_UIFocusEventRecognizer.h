@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIFocusEnginePanGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusFastScrollingRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, CARInputDeviceTouchpad, CARSessionStatus, NSArray, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusMotionEffectsController, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer;
+@class CADisplayLink, CARInputDeviceTouchpad, NSArray, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEffectsController, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusLinearMovementDebugGestureRecognizer, _UIFocusLinearMovementDebugView, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer;
 @protocol _UIFocusEventRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,9 +19,15 @@ __attribute__((visibility("hidden")))
     _UIFocusEnginePanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapGestureRecognizer;
     _UIFocusPressGestureRecognizer *_selectGestureRecognizer;
+    _UIFocusLinearMovementDebugGestureRecognizer *_linearDebugGestureRecognizer;
+    _UIFocusLinearMovementDebugView *_linearDebugView;
     struct CGPoint _touchBeganPoint;
     struct CGPoint _lastKnownTouchPoint;
+    struct CGPoint _previousPoints[5];
+    int _numFrames;
     struct CGVector _progressAccumulator;
+    struct CGVector _unlockedAccumulator;
+    unsigned long long _failedPanGestureHeading;
     _UIFocusFastScrollingRecognizer *_fastScrollingRecognizer;
     struct CGPoint _firstMomentumTouchPoint;
     struct CGPoint _lastMomentumTouchPoint;
@@ -42,7 +48,6 @@ __attribute__((visibility("hidden")))
     UIScrollView *_lastScrolledScroll;
     double _lastEdgeScrollEdgeValue;
     unsigned long long _inputType;
-    CARSessionStatus *_sessionStatus;
     CARInputDeviceTouchpad *_currentCarTouchpad;
     struct {
         unsigned int isEligibleToCrossSpeedBump:1;
@@ -59,17 +64,18 @@ __attribute__((visibility("hidden")))
     id <_UIFocusEventRecognizerDelegate> _delegate;
     UIView *_viewForTouchDeferredFocus;
     UIMoveEvent *_moveEvent;
-    _UIFocusMotionEffectsController *_motionEffectsController;
+    _UIFocusEffectsController *_motionEffectsController;
 }
 
-@property(readonly, nonatomic, getter=_motionEffectsController) _UIFocusMotionEffectsController *motionEffectsController; // @synthesize motionEffectsController=_motionEffectsController;
++ (_Bool)_canSupportFastScrolling;
+- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_motionEffectsController) _UIFocusEffectsController *motionEffectsController; // @synthesize motionEffectsController=_motionEffectsController;
 @property(retain, nonatomic, getter=_moveEvent, setter=_setMoveEvent:) UIMoveEvent *moveEvent; // @synthesize moveEvent=_moveEvent;
 @property(nonatomic) __weak UIView *viewForTouchDeferredFocus; // @synthesize viewForTouchDeferredFocus=_viewForTouchDeferredFocus;
 @property(nonatomic) __weak id <_UIFocusEventRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool supportsFastScrolling; // @synthesize supportsFastScrolling=_supportsFastScrolling;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) __weak UIView *owningView; // @synthesize owningView=_owningView;
-- (void).cxx_destruct;
 - (void)_uiktest_handlePanGesture:(id)arg1;
 - (id)_uiktest_panGestureRecognizer;
 - (void)_uiktest_setPanGestureRecognizer:(id)arg1;
@@ -84,11 +90,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldPerformFocusUpdateWithCurrentMomentumStatus;
 - (void)_momentumHeartbeat:(id)arg1;
 - (void)_continueTouchWithMomentum;
-- (double)_frictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2 slope:(double)arg3 shortDistance:(double)arg4 longDistance:(double)arg5;
-- (double)_verticalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
-- (double)_horizontalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (void)_recordMomentumForPoint:(struct CGPoint)arg1;
 - (void)_resetMomentum;
+- (struct CGSize)_momentumReferenceSize;
 - (void)_resetMotionEffects;
 - (void)_resetJoystick;
 - (void)_joystickDisplayLinkHeartbeat:(id)arg1;
@@ -105,17 +109,24 @@ __attribute__((visibility("hidden")))
 - (void)_joystickGestureEnded:(id)arg1;
 - (void)_joystickGestureUpdated:(id)arg1;
 - (void)_joystickGestureBegan:(id)arg1;
+- (void)_resetFailedMovementHeading;
 - (void)_resetPanGestureState;
 - (void)_resetProgressAccumulatorWithRequest:(id)arg1;
 - (void)_panGestureEnd:(id)arg1;
 - (void)_updatePanLocation:(struct CGPoint)arg1 reportedVelocity:(struct CGVector)arg2;
 - (void)_panGestureStart:(id)arg1;
 - (_Bool)focusEnginePanGestureRecognizerShouldRecognizeImmediately:(id)arg1;
+- (void)_resetProgressAccumulator;
+- (id)_globalCoordinateSpace;
+- (id)_focusSystemSceneComponent;
 - (_Bool)_shouldAcceptInputType:(unsigned long long)arg1;
 - (struct CGSize)_touchSensitivityForItem:(id)arg1;
 - (int)_touchRegionForDigitizerLocation:(struct CGPoint)arg1;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)_hideLinearGroupDebugOverlayIfNecessary:(_Bool)arg1;
+- (void)_showLinearGroupDebugOverlay;
+- (void)_handleLinearDebugOverlayGesture:(id)arg1;
 - (void)_handleJoystickGesture:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
@@ -127,6 +138,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_moveWithEvent:(id)arg1;
 - (_Bool)_didRecognizeFocusMovementRequest:(id)arg1;
 - (id)_focusMovementSystem;
+- (void)_moveFocusContainerWithHeading:(unsigned long long)arg1;
+- (void)_previousFocusContainer:(id)arg1;
+- (void)_nextFocusContainer:(id)arg1;
+@property(readonly, nonatomic) NSArray *keyCommands;
 - (void)_focusSystemEnabledStateDidChange:(id)arg1;
 - (void)_removeGestureRecognizers;
 - (void)_addGestureRecognizers;

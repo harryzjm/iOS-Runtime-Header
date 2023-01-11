@@ -11,6 +11,8 @@
 }
 
 + (struct CGSize)clampedPixelSize:(struct CGSize)arg1;
++ (_Bool)deviceSupportsMemorylessFramebuffers:(id)arg1;
++ (_Bool)deviceSupportsFramebufferFetch:(id)arg1;
 + (id)defaultDevice;
 + (double)layerContentsScale;
 

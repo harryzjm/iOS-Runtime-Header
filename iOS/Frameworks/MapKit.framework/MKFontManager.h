@@ -19,6 +19,12 @@
 + (id)sharedManager;
 @property(nonatomic) _Bool useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 - (id)iconFontToMatch:(id)arg1;
+@property(readonly, nonatomic) UIFont *ratingCallToActionHeaderLabelFont;
+@property(readonly, nonatomic) UIFont *ratingCallToActionLabelFont;
+@property(readonly, nonatomic) UIFont *ratingCallToActionGlyphFont;
+@property(readonly, nonatomic) UIFont *recommendSubtitleFont;
+@property(readonly, nonatomic) UIFont *ratingOverallPercentageFont;
+@property(readonly, nonatomic) UIFont *ratingOverallFont;
 @property(readonly, nonatomic) UIFont *rowGlyphButtonFont;
 @property(readonly, nonatomic) UIFont *rowButtonFont;
 @property(readonly, nonatomic) UIFont *smallAttributionFont;

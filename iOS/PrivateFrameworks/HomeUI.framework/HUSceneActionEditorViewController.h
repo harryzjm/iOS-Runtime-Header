@@ -12,7 +12,7 @@
 #import <HomeUI/HUServiceGridViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 
-@class HUSceneActionEditorItemManager, NSMutableDictionary, NSSet, NSString;
+@class HUQuickControlSummaryNavigationBarTitleView, HUSceneActionEditorItemManager, NSMutableDictionary, NSSet, NSString;
 @protocol HUPresentationDelegate, HUSceneEditorDelegate;
 
 @interface HUSceneActionEditorViewController <HUSwitchCellDelegate, HUSceneServicePickerViewControllerDelegate, HUNameAndIconEditorCellDelegate, HUIconPickerViewControllerDelegate, HUServiceGridViewControllerDelegate, HUMediaSelectionViewControllerDelegate, HUDetailsPresentationDelegateHost>
@@ -23,20 +23,22 @@
     id <HUPresentationDelegate> _presentationDelegate;
     unsigned long long _mode;
     id <HUSceneEditorDelegate> _sceneEditorDelegate;
+    HUQuickControlSummaryNavigationBarTitleView *_navigationBarTitleView;
     NSString *_editingName;
     NSMutableDictionary *_actionGridViewControllersByEditorType;
 }
 
 + (_Bool)adoptsDefaultGridLayoutMargins;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasViewEverAppeared; // @synthesize hasViewEverAppeared=_hasViewEverAppeared;
 @property(readonly, nonatomic) NSMutableDictionary *actionGridViewControllersByEditorType; // @synthesize actionGridViewControllersByEditorType=_actionGridViewControllersByEditorType;
 @property(copy, nonatomic) NSString *editingName; // @synthesize editingName=_editingName;
+@property(retain, nonatomic) HUQuickControlSummaryNavigationBarTitleView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
 @property(nonatomic) __weak id <HUSceneEditorDelegate> sceneEditorDelegate; // @synthesize sceneEditorDelegate=_sceneEditorDelegate;
 @property(nonatomic) _Bool showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(nonatomic) _Bool requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
 @property(nonatomic) __weak id <HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
-- (void).cxx_destruct;
 - (id)mediaSelectionViewControllerMessageForMediaActionPlayUnavailable:(id)arg1;
 - (id)mediaSelectionViewController:(id)arg1 messageForMediaPickerUnavailableReason:(long long)arg2;
 - (void)serviceGridViewController:(id)arg1 didTapItem:(id)arg2;
@@ -65,11 +67,11 @@
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)_testScene:(id)arg1;
-- (void)_deleteScene:(id)arg1;
+- (void)_deleteScene:(id)arg1 indexPath:(id)arg2;
 - (void)_changeServices:(id)arg1;
 - (void)_cancel:(id)arg1;
 - (void)_done:(id)arg1;
-- (void)commitChanges;
+- (id)commitChanges;
 - (id)_actionGridViewControllerForEditorType:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *savedName;
 @property(copy, nonatomic) NSSet *prioritizedServices;

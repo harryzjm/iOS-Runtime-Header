@@ -6,21 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFScheduler-Protocol.h>
+#import <EmailFoundation/EFAssertableScheduler-Protocol.h>
+#import <EmailFoundation/EFSuspendableScheduler-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface EFQueueScheduler : NSObject <EFScheduler>
+@interface EFQueueScheduler : NSObject <EFSuspendableScheduler, EFAssertableScheduler>
 {
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
+- (void)resume;
+- (void)suspend;
+- (void)assertIsExecuting:(_Bool)arg1;
 - (id)performWithObject:(id)arg1;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 - (void)performVoucherPreservingBlock:(CDUnknownBlockType)arg1;
+- (void)performSyncBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)performSyncBlock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool prefersImmediateExecution;

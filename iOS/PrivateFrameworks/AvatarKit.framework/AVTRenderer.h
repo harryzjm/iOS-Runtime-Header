@@ -9,8 +9,7 @@
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTFaceTracker, NSLock, NSString, SCNNode;
-@protocol SCNSceneRendererDelegate;
+@class AVTAvatar, AVTAvatarEnvironment, NSLock, NSString, SCNNode;
 
 @interface AVTRenderer : SCNRenderer <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
@@ -18,43 +17,25 @@
     AVTAvatar *_avatar;
     SCNNode *_avatarNode;
     NSLock *_lock;
-    id <SCNSceneRendererDelegate> _fwdDelegate;
     _Bool _pauseSimulation;
-    _Bool _arMode;
-    _Bool _enableDepthMask;
-    AVTFaceTracker *_faceTracker;
     unsigned long long _antialiasingMode;
 }
 
 + (id)renderer;
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
-- (void)renderer:(id)arg1 didRenderScene:(id)arg2 atTime:(double)arg3;
-- (void)renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
-- (void)renderer:(id)arg1 didApplyConstraintsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 didSimulatePhysicsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
+- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
-- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-- (id)transitionTexture;
+- (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)fadePuppetToWhite:(float)arg1;
 - (void)avatarDidChange;
 - (void)_setAvatar:(id)arg1;
 - (void)__setAvatar:(id)arg1;
 @property(retain, nonatomic) AVTAvatar *avatar;
-@property(retain, nonatomic) AVTFaceTracker *faceTracker;
 @property(nonatomic) unsigned long long avt_antialiasingMode;
-- (void)faceTrackerDidUpdate:(id)arg1 trackingInfo:(id)arg2;
-@property(nonatomic) _Bool pauseSimulation;
-@property(nonatomic) _Bool arMode;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
-- (void)setEnableDepthMask:(_Bool)arg1 withFlippedDepth:(_Bool)arg2;
-@property(nonatomic) _Bool enableDepthMask;
 - (void)_updateFocal;
-- (void)_updateAvatarForARMode;
 - (void)dealloc;
 - (void)_avtSetup;
 

@@ -27,6 +27,7 @@
     long long _monochromeFilterType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool prefersFilterOverTransition; // @synthesize prefersFilterOverTransition=_prefersFilterOverTransition;
 @property(nonatomic) _Bool inMonochromeMode; // @synthesize inMonochromeMode=_inMonochromeMode;
 @property(nonatomic) long long monochromeFilterType; // @synthesize monochromeFilterType=_monochromeFilterType;
@@ -38,7 +39,6 @@
 @property(readonly, nonatomic) _Bool useAccentColor; // @synthesize useAccentColor=_useAccentColor;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
 - (_Bool)viewShouldIgnoreTwoPieceImage:(id)arg1;
 - (id)interpolatedColorForView:(id)arg1;
 - (id)colorForView:(id)arg1 accented:(_Bool)arg2;
@@ -47,6 +47,8 @@
 - (long long)_filterStyle;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)setImageViewContentMode:(long long)arg1;
 - (void)layoutSubviews;
 - (void)setImageProvider:(id)arg1 reason:(long long)arg2;

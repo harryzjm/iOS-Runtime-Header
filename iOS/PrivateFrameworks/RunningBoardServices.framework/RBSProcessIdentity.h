@@ -6,78 +6,79 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSDescriptionProviding-Protocol.h>
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/NSSecureCoding-Protocol.h>
 #import <RunningBoardServices/RBSProcessMatching-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSString, RBSProcessIdentifier, RBSXPCServiceIdentity;
+@class NSString, NSUUID, RBSProcessIdentifier;
 
-@interface RBSProcessIdentity : NSObject <RBSProcessMatching, BSXPCSecureCoding, BSDescriptionProviding, NSSecureCoding, NSCopying>
+@interface RBSProcessIdentity : NSObject <RBSProcessMatching, RBSXPCSecureCoding, NSSecureCoding, NSCopying>
 {
-    unsigned long long _hash;
-    int _instanceID;
-    unsigned char _type;
-    RBSXPCServiceIdentity *_serviceIdentity;
-    unsigned int _euid;
-    NSString *_executablePath;
-    NSString *_picoDesc;
+    int _pid;
     NSString *_description;
-    NSString *_embeddedApplicationIdentifier;
-    NSString *_daemonJobLabel;
+    unsigned long long _hash;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (_Bool)supportsSecureCoding;
++ (_Bool)shouldManageExtensionWithExtensionPoint:(id)arg1;
++ (id)identityForApplicationJobLabel:(id)arg1 bundleID:(id)arg2 platform:(int)arg3;
++ (id)identityForApplicationJobLabel:(id)arg1;
++ (id)_identityForXPCServicePath:(id)arg1 type:(unsigned long long)arg2 pid:(int)arg3 euid:(unsigned int)arg4 host:(id)arg5 UUID:(id)arg6;
 + (id)_identityForXPCServicePath:(id)arg1 properties:(id)arg2 pid:(int)arg3 euid:(unsigned int)arg4 host:(id)arg5;
 + (id)identityForXPCServiceProperties:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3 host:(id)arg4;
 + (id)identityForXPCServicePath:(id)arg1 host:(id)arg2;
++ (id)extensionIdentityForPlugInKitIdentifier:(id)arg1 hostIdentifier:(id)arg2 UUID:(id)arg3;
 + (id)identityForXPCServiceIdentifier:(id)arg1;
++ (id)_identityForXPCServiceIdentifier:(id)arg1 variant:(long long)arg2;
++ (id)_identityForXPCServiceIdentifier:(id)arg1 hostInstance:(id)arg2 UUID:(id)arg3 variant:(long long)arg4;
 + (id)identityForExecutablePath:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3;
 + (id)identityForLaunchProperties:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3;
-+ (id)identityForDaemonPlistPath:(id)arg1;
 + (id)identityForDaemonJobLabel:(id)arg1;
++ (id)identityForEmbeddedApplicationIdentifier:(id)arg1 jobLabel:(id)arg2 euid:(unsigned int)arg3 platform:(int)arg4;
 + (id)identityForEmbeddedApplicationIdentifier:(id)arg1 euid:(unsigned int)arg2;
 + (id)identityForEmbeddedApplicationIdentifier:(id)arg1;
 + (id)identityOfCurrentProcess;
-@property(readonly, copy, nonatomic) NSString *daemonJobLabel; // @synthesize daemonJobLabel=_daemonJobLabel;
-@property(readonly, copy, nonatomic) NSString *embeddedApplicationIdentifier; // @synthesize embeddedApplicationIdentifier=_embeddedApplicationIdentifier;
-@property(readonly, copy) NSString *description; // @synthesize description=_description;
-@property(readonly, nonatomic) NSString *picoDesc; // @synthesize picoDesc=_picoDesc;
-@property(readonly, copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
++ (id)identityForPlugInKitIdentifier:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly) unsigned long long hash; // @synthesize hash=_hash;
+@property(readonly, copy) NSString *description; // @synthesize description=_description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 @property(readonly, copy) NSString *debugDescription;
 - (_Bool)isEqualToIdentity:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool inheritsCoalitionBand;
-- (_Bool)_matchesIdentity:(id)arg1;
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
-@property(readonly, nonatomic) unsigned int euid; // @synthesize euid=_euid;
+- (_Bool)_matchesIdentity:(id)arg1;
+- (id)initWithDecodeFromJob:(id)arg1;
+- (id)encodeForJob;
+@property(readonly, nonatomic) NSUUID *uuid;
+@property(readonly, copy, nonatomic) NSString *applicationJobLabel;
 @property(readonly, copy, nonatomic) RBSProcessIdentifier *hostIdentifier;
 @property(readonly, copy, nonatomic) RBSProcessIdentity *hostIdentity;
+@property(readonly, copy, nonatomic) NSString *daemonJobLabel;
+@property(readonly, copy, nonatomic) NSString *embeddedApplicationIdentifier;
+@property(readonly, nonatomic, getter=isAnonymous) _Bool anonymous;
+@property(readonly, nonatomic, getter=isApplication) _Bool application;
 @property(readonly, nonatomic, getter=isDaemon) _Bool daemon;
 @property(readonly, copy, nonatomic) NSString *xpcServiceIdentifier;
 @property(readonly, nonatomic, getter=isXPCService) _Bool XPCService;
 @property(readonly, nonatomic, getter=isEmbeddedApplication) _Bool embeddedApplication;
-- (_Bool)isAnonymousExecutable;
-@property(readonly, nonatomic, getter=isDefaultManaged) _Bool defaultManaged;
+@property(readonly, nonatomic) unsigned char defaultManageFlags;
 @property(readonly, nonatomic, getter=isExtension) _Bool extension;
 - (id)copyWithEuid:(unsigned int)arg1;
-- (id)_initWithEmbeddedApplicationID:(id)arg1 xpcServiceID:(id)arg2 daemonJobLabel:(id)arg3 executablePath:(id)arg4 instanceID:(int)arg5 euid:(unsigned int)arg6;
-- (void)_initPicoDesc;
+- (id)_initOpaqueWithPid:(int)arg1 name:(id)arg2 euid:(unsigned int)arg3;
+- (id)_init;
 - (id)init;
+@property(readonly, nonatomic) NSString *shortDescription;
+@property(readonly, nonatomic) int platform;
+@property(readonly, nonatomic) unsigned int euid;
 
 // Remaining properties
 @property(readonly) Class superclass;

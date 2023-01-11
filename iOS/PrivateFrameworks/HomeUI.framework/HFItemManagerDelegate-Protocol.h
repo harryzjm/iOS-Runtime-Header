@@ -6,13 +6,15 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HFItem, HFItemManager, HFItemManagerDelegateUpdateRequest, NAFuture, NSArray, NSDictionary, NSIndexPath, NSIndexSet, NSSet;
+@class HFItem, HFItemManager, HFItemManagerDelegateUpdateRequest, HMHome, NAFuture, NSArray, NSDictionary, NSIndexPath, NSIndexSet, NSSet;
 
 @protocol HFItemManagerDelegate <NSObject>
 
 @optional
+- (void)itemManagerDidFinishUpdate:(HFItemManager *)arg1;
 - (void)itemManager:(HFItemManager *)arg1 didUpdateItemModules:(NSArray *)arg2;
 - (void)itemManager:(HFItemManager *)arg1 didChangeSourceItem:(HFItem *)arg2;
+- (void)itemManager:(HFItemManager *)arg1 didChangeHome:(HMHome *)arg2;
 - (void)itemManager:(HFItemManager *)arg1 didUpdateResultsForSourceItem:(HFItem *)arg2;
 - (void)itemManager:(HFItemManager *)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
 - (void)itemManager:(HFItemManager *)arg1 didMoveSection:(long long)arg2 toSection:(long long)arg3;

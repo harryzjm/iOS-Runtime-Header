@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDDevice, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiNetworkInfo, NSData, NSString;
+@class HMDDevice, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiNetworkInfo, NSData, NSNumber, NSString;
 
 @interface HMDAppleMediaAccessoryModel
 {
 }
 
 + (id)properties;
++ (id)homePodAccessoryModelWithChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
++ (id)appleMediaAccessoryModelWithChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
+- (id)_initWithObjectChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 
 // Remaining properties
 @property(retain, nonatomic) NSString *appleMediaAccessoryChangeTag; // @dynamic appleMediaAccessoryChangeTag;
@@ -19,6 +22,7 @@
 @property(retain, nonatomic) NSData *loggedInAccount; // @dynamic loggedInAccount;
 @property(retain, nonatomic) HMFPairingIdentity *pairingIdentity; // @dynamic pairingIdentity;
 @property(retain, nonatomic) HMFSoftwareVersion *softwareVersion; // @dynamic softwareVersion;
+@property(retain, nonatomic) NSNumber *supportedStereoPairVersions; // @dynamic supportedStereoPairVersions;
 @property(retain, nonatomic) NSData *symptoms; // @dynamic symptoms;
 @property(retain, nonatomic) HMFWiFiNetworkInfo *wifiNetworkInfo; // @dynamic wifiNetworkInfo;
 

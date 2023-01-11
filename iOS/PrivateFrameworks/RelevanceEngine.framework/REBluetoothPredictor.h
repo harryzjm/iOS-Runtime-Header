@@ -19,10 +19,11 @@
 }
 
 + (id)supportedFeatures;
++ (id)bluetoothQueue;
+- (void).cxx_destruct;
 @property(retain) NSDictionary *localDevices; // @synthesize localDevices=_localDevices;
 @property(getter=_isConnectedToSpeaker, setter=_setConnectedToSpeaker:) _Bool _connectedToSpeaker; // @synthesize _connectedToSpeaker;
 @property(getter=_isConnctedToCar, setter=_setConnectedToCar:) _Bool _connectedToCar; // @synthesize _connectedToCar;
-- (void).cxx_destruct;
 - (void)_unregisterForBluetoothNotifications;
 - (void)_registerForBluetoothNotifications;
 @property(readonly) _Bool connectedToCar;

@@ -9,8 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)overridingEditingAttributes:(id)arg1 forOriginalAttributes:(id)arg2;
-- (id)namesOfAttributesToOverrideForEditing;
 - (void)handleTextVibrancy;
 - (_Bool)textShouldUseVibrancy;
 - (id)parentViewForTextContentView;

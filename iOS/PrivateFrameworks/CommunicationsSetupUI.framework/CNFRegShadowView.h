@@ -8,6 +8,7 @@
 
 @class UIBezierPath, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegShadowView : UIView
 {
     struct CGRect _cachedBounds;
@@ -15,10 +16,10 @@
     UIImage *_shadowImage;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIBezierPath *cachedPath; // @synthesize cachedPath=_cachedPath;
 @property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
 @property(nonatomic) struct CGRect cachedBounds; // @synthesize cachedBounds=_cachedBounds;
-- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 shadowImage:(id)arg2;
 

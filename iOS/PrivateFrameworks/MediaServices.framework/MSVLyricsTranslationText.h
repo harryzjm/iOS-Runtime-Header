@@ -11,8 +11,8 @@
     NSString *_lyricsLineKey;
 }
 
-@property(copy, nonatomic) NSString *lyricsLineKey; // @synthesize lyricsLineKey=_lyricsLineKey;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *lyricsLineKey; // @synthesize lyricsLineKey=_lyricsLineKey;
 - (id)description;
 - (id)init;
 

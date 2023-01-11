@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface MPAssistantMusicAssetLoadLogEvent
 {
     double _duration;
@@ -12,6 +13,7 @@
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 - (id)eventPayload;
 - (long long)eventCode;
+- (id)eventName;
 
 @end
 

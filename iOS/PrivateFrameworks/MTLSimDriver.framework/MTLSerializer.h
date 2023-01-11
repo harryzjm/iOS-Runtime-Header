@@ -6,26 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@protocol MTLDevice, OS_dispatch_queue;
+@protocol MTLDevice, MTLSerializerObjectRefAllocator, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MTLSerializer : NSObject
 {
     id <MTLDevice> _device;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    struct atomic<unsigned int> _resourceIndex;
-    struct atomic<unsigned int> _depthStencilIndex;
-    struct atomic<unsigned int> _samplerIndex;
-    struct atomic<unsigned int> _libraryIndex;
-    struct atomic<unsigned int> _functionIndex;
-    struct atomic<unsigned int> _computePipelineIndex;
-    struct atomic<unsigned int> _renderPipelineIndex;
-    struct atomic<unsigned int> _fences;
-    struct atomic<unsigned int> _argumentBufferLayoutIndex;
-    struct atomic<unsigned int> _argumentEncoderIndex;
-    struct atomic<unsigned int> _heapIndex;
-    struct atomic<unsigned int> _eventIndex;
-    struct atomic<unsigned int> _commandQueueIndex;
+    id <MTLSerializerObjectRefAllocator> _objectIndex;
     struct MTLSerializerIndexGenerator *_commandBufferIndex;
     struct MTLSerializerIndexGenerator *_eventNotifications;
     _Bool _deserializerGeneratesResourceRefs;
@@ -46,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (unsigned int)newComputePipelineStateWithSerializedDescriptor:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newRenderPipelineStateWithSerializedDescriptor:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newFunctionWithIR:(id)arg1;
-- (unsigned int)newFunctionWithLibrary:(id)arg1 functionName:(id)arg2 allocator:(id)arg3;
 - (unsigned int)newTiledTextureWithBuffer:(id)arg1 descriptor:(id)arg2 offset:(unsigned long long)arg3 bytesPerRow:(unsigned long long)arg4 allocator:(id)arg5;
 - (unsigned int)newTextureWithBuffer:(id)arg1 descriptor:(id)arg2 offset:(unsigned long long)arg3 bytesPerRow:(unsigned long long)arg4 allocator:(id)arg5;
 - (void)doesAliasResources:(const id *)arg1 count:(unsigned long long)arg2 all:(_Bool)arg3 resource:(id)arg4 allocator:(id)arg5;
@@ -55,8 +42,14 @@ __attribute__((visibility("hidden")))
 - (void)heapTextureSizeAndAlignWithDescriptor:(id)arg1 allocator:(id)arg2;
 - (void)argumentEncoderSetSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2 encoderRef:(unsigned int)arg3 allocator:(id)arg4;
 - (void)argumentEncoderSetTextures:(const id *)arg1 withRange:(struct _NSRange)arg2 encoderRef:(unsigned int)arg3 allocator:(id)arg4;
-- (void)setSignaledValue:(unsigned long long)arg1 eventRef:(unsigned int)arg2 allocator:(id)arg3;
+- (void)sharedEventSetSignaledValue:(unsigned long long)arg1 eventRef:(unsigned int)arg2 allocator:(id)arg3;
+- (void)sharedEventSignaledValueForEventRef:(unsigned int)arg1 allocator:(id)arg2;
 - (unsigned int)notifyListenerForEventRef:(unsigned int)arg1 atValue:(unsigned long long)arg2 allocator:(id)arg3;
+- (void)uniqueIdentifierForComputePipelineState:(id)arg1 allocator:(id)arg2;
+- (void)uniqueIdentifierForRenderPipelineState:(id)arg1 allocator:(id)arg2;
+- (void)uniqueIdentifierForSamplerState:(id)arg1 allocator:(id)arg2;
+- (void)uniqueIdentifierForTexture:(id)arg1 allocator:(id)arg2;
+- (void)bufferGPUAddress:(id)arg1 allocator:(id)arg2;
 - (void)argumentEncoderSetBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3 encoderRef:(unsigned int)arg4 allocator:(id)arg5;
 - (void)argumentEncoderSetArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2 encoderRef:(unsigned int)arg3 allocator:(id)arg4;
 - (void)maxAvailableSizeWithAlignment:(unsigned long long)arg1 heap:(id)arg2 allocator:(id)arg3;
@@ -68,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)argumentBufferLayoutConstantAtIndex:(unsigned long long)arg1 layoutRef:(unsigned int)arg2 allocator:(id)arg3;
 - (unsigned int)newArgumentEncoderWithLayout:(unsigned int)arg1 allocator:(id)arg2;
 - (unsigned int)newArgumentBufferLayoutWithStructType:(id)arg1 allocator:(id)arg2;
+- (unsigned int)newSharedEventWithHandle:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newSharedEventWithAllocator:(id)arg1;
 - (unsigned int)newFenceWithAllocator:(id)arg1;
 - (unsigned int)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 swizzle:(CDStruct_a06f635e)arg5 baseTexture:(id)arg6 allocator:(id)arg7;
@@ -112,9 +106,6 @@ __attribute__((visibility("hidden")))
 - (void)deleteFunctionRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)releaseFunctionRef:(unsigned int)arg1;
 - (unsigned int)newFunctionRef;
-- (void)deleteLibraryRef:(unsigned int)arg1 allocator:(id)arg2;
-- (void)releaseLibraryRef:(unsigned int)arg1;
-- (unsigned int)newLibraryRef;
 - (void)deleteSamplerStateRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)releaseSamplerStateRef:(unsigned int)arg1;
 - (unsigned int)newSamplerStateRef;
@@ -130,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 deserializerGeneratesResourceRefs:(_Bool)arg2;
+- (id)initWithDevice:(id)arg1 objectRefAllocator:(id)arg2 deserializerGeneratesResourceRefs:(_Bool)arg3;
 
 @end
 

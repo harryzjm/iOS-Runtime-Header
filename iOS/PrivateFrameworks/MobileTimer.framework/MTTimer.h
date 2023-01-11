@@ -38,6 +38,7 @@
 + (_Bool)stateChangeIsAllowableFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 + (id)descriptionForState:(unsigned long long)arg1;
 + (id)currentTimerFromTimers:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
 @property(copy, nonatomic) NSDictionary *siriContext; // @synthesize siriContext=_siriContext;
 @property(copy, nonatomic) id <MTTimerTime> fireTime; // @synthesize fireTime=_fireTime;
@@ -49,7 +50,6 @@
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) NSUUID *timerID; // @synthesize timerID=_timerID;
-- (void).cxx_destruct;
 - (void)serializeWithSerializer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initFromDeserializer:(id)arg1;
@@ -65,6 +65,8 @@
 - (void)_setDuration:(double)arg1;
 @property(readonly, nonatomic) NSString *timerIDString;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic, getter=isFiring) _Bool firing;
+- (void)setFiring:(_Bool)arg1;
 - (id)nextTriggerAfterDate:(id)arg1;
 - (id)nextTrigger;
 - (long long)compare:(id)arg1;

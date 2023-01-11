@@ -7,8 +7,14 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (NAAdditions)
+- (void)na_each:(CDUnknownBlockType)arg1;
+- (_Bool)na_allSatisfy:(CDUnknownBlockType)arg1;
+- (_Bool)na_any:(CDUnknownBlockType)arg1;
 - (id)na_dictionaryByMappingValues:(CDUnknownBlockType)arg1;
 - (id)na_filter:(CDUnknownBlockType)arg1;
 - (id)na_reduceWithInitialValue:(id)arg1 reducer:(CDUnknownBlockType)arg2;
+- (id)na_flatMap:(CDUnknownBlockType)arg1;
+- (id)na_map:(CDUnknownBlockType)arg1;
+- (id)na_firstKeyPassingTest:(CDUnknownBlockType)arg1;
 @end
 

@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileManager, NSString;
+@class NSFileManager, NSString, geo_isolater;
 
 @interface MNKeepAliveManager : NSObject
 {
+    geo_isolater *_isolator;
     unsigned long long _counter;
     NSString *_launchdKeepAliveFile;
     NSFileManager *_fileManager;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
 @property(retain, nonatomic) NSString *launchdKeepAliveFile; // @synthesize launchdKeepAliveFile=_launchdKeepAliveFile;
 @property unsigned long long counter; // @synthesize counter=_counter;
-- (void).cxx_destruct;
 - (void)checkOut;
 - (void)checkIn;
 - (id)init;

@@ -24,12 +24,15 @@
     NSData *_globals;
     unsigned int _swap:1;
     unsigned int _isMemoryMapped:1;
-    unsigned int _reserved:30;
+    unsigned int _hasAppearanceKey:1;
+    unsigned int _hasLocalizationKey:1;
+    unsigned int _reserved:28;
     NSSet *_externalTags;
     unsigned short _renditionInfoCacheLookup[20];
     id _renditionInfoCache[20];
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _renditionInfoCacheLock;
+    struct _renditionkeyattributeindex _keyfmtindex;
     NSDictionary *_appearances;
 }
 
@@ -54,6 +57,7 @@
 @property(readonly, nonatomic) NSDictionary *appearances; // @synthesize appearances=_appearances;
 - (id)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (unsigned short)appearanceIdentifierForName:(id)arg1;
+- (int)validateFile;
 - (int)validatekeyformat;
 - (int)validateBitmapInfo;
 - (void)_buildBitmapInfoIntoDictionary:(id)arg1;
@@ -67,10 +71,12 @@
 - (_Bool)hasColorForName:(const char *)arg1;
 - (_Bool)getColor:(struct _colordef *)arg1 forName:(const char *)arg2;
 - (id)renditionNameForKeyBaseList:(struct _renditionkeytoken *)arg1;
+- (id)renditionNamesWithKeys;
 - (id)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (id)allRenditionNames;
 - (const struct _renditionkeytoken *)renditionKeyForName:(const char *)arg1 hotSpot:(struct CGPoint *)arg2;
 - (struct _renditionkeytoken)_swapRenditionKeyToken:(struct _renditionkeytoken)arg1;
+- (void)enumerateRenditionInfosUsingBlock:(CDUnknownBlockType)arg1;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (void)enumerateKeysAndObjectsWithoutIgnoringUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
@@ -94,6 +100,7 @@
 - (_Bool)usesCUISystemThemeRenditionKey;
 - (long long)maximumRenditionKeyTokenCount;
 - (id)catalogGlobalData;
+- (const struct _renditionkeyattributeindex *)keyAttributeIndex;
 - (const struct _renditionkeyfmt *)keyFormat;
 - (id)keyFormatData;
 - (int)keySemantics;

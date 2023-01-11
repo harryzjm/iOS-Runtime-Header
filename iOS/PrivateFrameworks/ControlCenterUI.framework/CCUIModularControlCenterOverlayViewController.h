@@ -12,7 +12,7 @@
 #import <ControlCenterUI/CCUIStatusLabelViewControllerDelegate-Protocol.h>
 #import <ControlCenterUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CCUIAnimationRunner, CCUIFlickGestureRecognizer, CCUIHeaderPocketView, CCUIModuleCollectionView, CCUIOverlayTransitionState, CCUIScrollView, CCUIStatusBarStyleSnapshot, CCUIStatusLabelViewController, FBSDisplayLayoutMonitor, MTMaterialView, NSHashTable, NSString, NSUUID, UIPanGestureRecognizer, UIScrollView, UIStatusBar, UIStatusBar_Modern, UITapGestureRecognizer, UIView;
+@class CCUIAnimationRunner, CCUIFlickGestureRecognizer, CCUIHeaderPocketView, CCUIModuleCollectionView, CCUIOverlayTransitionState, CCUIScrollView, CCUISensorActivityDataProvider, CCUIStatusBarStyleSnapshot, CCUIStatusLabelViewController, FBSDisplayLayoutMonitor, MTMaterialView, NSHashTable, NSString, NSUUID, UIPanGestureRecognizer, UIScrollView, UIStatusBar, UIStatusBar_Modern, UITapGestureRecognizer, UIView;
 @protocol CCUIHostStatusBarStyleProvider, CCUIModularControlCenterOverlayViewControllerDelegate, CCUIOverlayPresentationProvider;
 
 @interface CCUIModularControlCenterOverlayViewController <CCUIPPTSignpostListener, UIGestureRecognizerDelegate, CCUIScrollViewDelegate, CCUIStatusLabelViewControllerDelegate, CCUIOverlayViewProvider, CCUIOverlayMetricsProvider, CCUIStatusBarDelegate>
@@ -33,28 +33,35 @@
     UITapGestureRecognizer *_collectionViewDismissalTapGesture;
     UIPanGestureRecognizer *_collectionViewScrollPanGesture;
     NSHashTable *_blockingGestureRecognizers;
-    NSUUID *_currentTransitionUUID;
     CCUIOverlayTransitionState *_previousTransitionState;
     CCUIStatusBarStyleSnapshot *_hostStatusBarStyleSnapshot;
     FBSDisplayLayoutMonitor *_layoutMonitor;
+    _Bool _showHotPocket;
     _Bool _reachabilityActive;
     unsigned long long _presentationState;
     unsigned long long _transitionState;
     id <CCUIHostStatusBarStyleProvider> _hostStatusBarStyleProvider;
+    NSUUID *_currentTransitionUUID;
+    CCUISensorActivityDataProvider *_sensorActivityDataProvider;
 }
 
 + (id)_presentationProviderForDevice;
++ (void)_playEventStream:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (id)_controlCenterDismissOrbActionsEventStream;
 + (id)_controlCenterDismissEventStream;
 + (id)_controlCenterBringupEventStream;
 + (void)_executeBlocksForSignpost:(unsigned long long)arg1;
 + (void)_executeAndCleanupBlocksForAllSignposts;
 + (void)_addBlockForSignpost:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 + (id)_blocksBySignpost;
-@property(nonatomic, getter=isReachabilityActive) _Bool reachabilityActive; // @synthesize reachabilityActive=_reachabilityActive;
-@property(nonatomic) __weak id <CCUIHostStatusBarStyleProvider> hostStatusBarStyleProvider; // @synthesize hostStatusBarStyleProvider=_hostStatusBarStyleProvider;
-@property(readonly, nonatomic) unsigned long long transitionState; // @synthesize transitionState=_transitionState;
-@property(nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isReachabilityActive) _Bool reachabilityActive; // @synthesize reachabilityActive=_reachabilityActive;
+@property(retain, nonatomic) CCUISensorActivityDataProvider *sensorActivityDataProvider; // @synthesize sensorActivityDataProvider=_sensorActivityDataProvider;
+@property(copy, nonatomic) NSUUID *currentTransitionUUID; // @synthesize currentTransitionUUID=_currentTransitionUUID;
+@property(nonatomic) __weak id <CCUIHostStatusBarStyleProvider> hostStatusBarStyleProvider; // @synthesize hostStatusBarStyleProvider=_hostStatusBarStyleProvider;
+@property(nonatomic) unsigned long long transitionState; // @synthesize transitionState=_transitionState;
+@property(nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
+- (void)_updateSensorActivityStatusForHeaderPocketView;
 - (_Bool)_gestureRecognizerIsActive:(id)arg1;
 - (void)_setupPanGestureFailureRequirements;
 - (void)_updateHotPocket:(_Bool)arg1 animated:(_Bool)arg2;
@@ -104,6 +111,7 @@
 - (void)statusLabelViewControllerWillBeginStatusUpdates:(id)arg1;
 - (void)_willDismissView;
 - (void)_willPresentView;
+- (void)moduleCollectionViewControllerDidUpdateModules:(id)arg1;
 - (void)moduleCollectionViewController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 didAddModuleContainerViewController:(id)arg2;
@@ -126,14 +134,18 @@
 - (void)_reparentAndBecomeActive;
 - (void)_updatePresentationForTransitionState:(id)arg1 withCompletionHander:(CDUnknownBlockType)arg2;
 - (void)_updatePresentationForTransitionType:(unsigned long long)arg1 translation:(struct CGPoint)arg2 interactive:(_Bool)arg3;
-- (void)_endDismissalWithUUID:(id)arg1 animated:(_Bool)arg2 success:(_Bool)arg3;
+- (void)_endDismissalWithUUID:(id)arg1 animated:(_Bool)arg2;
 - (id)_beginDismissalAnimated:(_Bool)arg1 interactive:(_Bool)arg2;
 - (void)dismissAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_endPresentationWithUUID:(id)arg1 success:(_Bool)arg2;
+- (void)_endPresentationWithUUID:(id)arg1;
+- (void)_replaceBackgroundViewContentsWithSnapshotIfNecessary:(_Bool)arg1;
 - (id)_beginPresentationAnimated:(_Bool)arg1 interactive:(_Bool)arg2;
 - (void)presentAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)reachabilityAnimationDidEnd;
 - (id)_initWithSystemAgent:(id)arg1 presentationProvider:(id)arg2;
 - (id)initWithSystemAgent:(id)arg1;
+- (id)_controlCenterShowOrbActionsEventStream;
+- (struct CGPoint)_centerPointOfTopmostModule;
 - (_Bool)runTest:(id)arg1 options:(id)arg2 delegate:(id)arg3;
 - (void)didReceiveSignpost:(unsigned long long)arg1;
 - (void)runTest:(id)arg1 subtests:(id)arg2 eventStream:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, WFAirQualityConditions, WFWeatherConditions;
+@class NSArray, NSData, WFAirQualityConditions, WFNextHourPrecipitation, WFWeatherConditions;
 
 @interface WFParsedForecastData : NSObject
 {
@@ -17,8 +17,15 @@
     NSArray *_dailyForecasts;
     NSArray *_hourlyForecasts;
     NSArray *_pollenForecasts;
+    NSArray *_changeForecasts;
+    NSArray *_severeWeatherEvents;
+    WFNextHourPrecipitation *_nextHourPrecipitation;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
+@property(retain, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
+@property(retain, nonatomic) NSArray *changeForecasts; // @synthesize changeForecasts=_changeForecasts;
 @property(retain, nonatomic) NSArray *pollenForecasts; // @synthesize pollenForecasts=_pollenForecasts;
 @property(retain, nonatomic) NSArray *hourlyForecasts; // @synthesize hourlyForecasts=_hourlyForecasts;
 @property(retain, nonatomic) NSArray *dailyForecasts; // @synthesize dailyForecasts=_dailyForecasts;
@@ -26,7 +33,6 @@
 @property(retain, nonatomic) WFWeatherConditions *currentConditions; // @synthesize currentConditions=_currentConditions;
 @property(retain, nonatomic) WFAirQualityConditions *airQualityObservations; // @synthesize airQualityObservations=_airQualityObservations;
 @property(retain, nonatomic) NSData *rawData; // @synthesize rawData=_rawData;
-- (void).cxx_destruct;
 - (id)objectForForecastType:(unsigned long long)arg1;
 
 @end

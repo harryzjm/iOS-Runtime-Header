@@ -13,17 +13,17 @@
 @interface GEOURLCollectionStorage : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_name;
     NSMutableArray *_places;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_name:1;
         unsigned int read_places:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_places:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,18 +40,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)placeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)placesCount;
-- (void)_addNoFlagsPlace:(id)arg1;
 - (void)addPlace:(id)arg1;
 - (void)clearPlaces;
 @property(retain, nonatomic) NSMutableArray *places;
-- (void)_readPlaces;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

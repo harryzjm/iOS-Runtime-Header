@@ -15,6 +15,9 @@
     MISSING_TYPE *loopBehavior;
     MISSING_TYPE *clipReversed;
     MISSING_TYPE *animationSpeed;
+    MISSING_TYPE *muteAudio;
+    MISSING_TYPE *audioGain;
+    MISSING_TYPE *targetAnimationEntity;
     MISSING_TYPE *animationComponents;
 }
 

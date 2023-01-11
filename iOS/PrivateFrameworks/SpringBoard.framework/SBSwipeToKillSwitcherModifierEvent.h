@@ -12,10 +12,11 @@
     double _progress;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
 - (id)initWithAppLayout:(id)arg1 progress:(double)arg2;
 

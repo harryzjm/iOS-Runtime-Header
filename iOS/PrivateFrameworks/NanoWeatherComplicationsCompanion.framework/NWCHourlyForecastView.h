@@ -18,15 +18,15 @@
     id <NWMDataFormatter> _formatter;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <NWMDataFormatter> formatter; // @synthesize formatter=_formatter;
 @property(readonly, nonatomic) UILabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property(readonly, nonatomic) UILabel *middleLabel; // @synthesize middleLabel=_middleLabel;
 @property(readonly, nonatomic) UIImageView *middleImageView; // @synthesize middleImageView=_middleImageView;
 @property(readonly, nonatomic) UILabel *topLabel; // @synthesize topLabel=_topLabel;
-- (void).cxx_destruct;
 - (void)_applyConstraintsWithConstants:(CDStruct_d2b197d1)arg1;
 - (void)applyStyle;
-- (void)applyConditions:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
+- (void)applyEntryModel:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

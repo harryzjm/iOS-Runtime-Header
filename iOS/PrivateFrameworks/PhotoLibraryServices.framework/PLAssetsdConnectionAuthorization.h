@@ -8,39 +8,57 @@
 
 #import <PhotoLibraryServices/PLClientAuthorization-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSDate, NSSet, NSString;
+@class BKSApplicationStateMonitor, NSDate, NSNumber, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface PLAssetsdConnectionAuthorization : NSObject <PLClientAuthorization>
 {
     CDStruct_4c969caf _auditToken;
     NSSet *_photoKitEntitlements;
-    int _kTCCPhotosAuthorized;
-    int _kTCCPhotosAddAuthorized;
+    NSNumber *_photosAccessAllowed;
+    NSNumber *_photosAddAccessAllowed;
     _Bool _libraryUpgradeAuthorized;
+    _Bool _directDatabaseAccessAuthorized;
     _Bool _directDatabaseWriteAuthorized;
+    NSString *_fetchFilterIdentifier;
     NSDate *_connectionStartDate;
     BKSApplicationStateMonitor *_applicationStateMonitor;
     NSObject<OS_dispatch_queue> *_duetUpdateQueue;
     _Bool _photoKitEntitled;
+    _Bool _cloudInternalEntitled;
+    _Bool _clientLimitedLibraryCapable;
     int _clientProcessIdentifier;
     NSString *_trustedCallerBundleID;
+    NSString *_trustedCallerDisplayName;
+    NSString *_trustedCallerPhotoLibraryUsageDescription;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isClientLimitedLibraryCapable) _Bool clientLimitedLibraryCapable; // @synthesize clientLimitedLibraryCapable=_clientLimitedLibraryCapable;
+@property(readonly, nonatomic) _Bool cloudInternalEntitled; // @synthesize cloudInternalEntitled=_cloudInternalEntitled;
 @property(readonly, nonatomic) _Bool photoKitEntitled; // @synthesize photoKitEntitled=_photoKitEntitled;
 @property(readonly, nonatomic) NSString *trustedCallerBundleID; // @synthesize trustedCallerBundleID=_trustedCallerBundleID;
 @property(readonly, nonatomic) int clientProcessIdentifier; // @synthesize clientProcessIdentifier=_clientProcessIdentifier;
-- (void).cxx_destruct;
 - (void)handleInvalidation;
 - (_Bool)photoKitEntitledFor:(id)arg1;
+@property(readonly, nonatomic) NSString *fetchFilterIdentifier; // @synthesize fetchFilterIdentifier=_fetchFilterIdentifier;
+@property(readonly, nonatomic) NSString *trustedCallerPhotoLibraryUsageDescription; // @synthesize trustedCallerPhotoLibraryUsageDescription=_trustedCallerPhotoLibraryUsageDescription;
+@property(readonly, nonatomic) NSString *trustedCallerDisplayName; // @synthesize trustedCallerDisplayName=_trustedCallerDisplayName;
 - (void)_handleDuetReportIsForground:(_Bool)arg1;
-- (_Bool)_shouldTrackDKEventForBundle:(id)arg1;
 - (void)_trackDKEventIfNecessary;
+- (_Bool)_shouldTrackEventForBundle:(id)arg1;
+- (void)_trackCAConnectionEvent;
 - (void)setupFromConnection:(id)arg1;
 @property(readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
 - (_Bool)isPhotosClient;
 @property(readonly, nonatomic) _Bool directDatabaseWriteAuthorized;
+@property(readonly, nonatomic) _Bool directDatabaseAccessAuthorized;
 - (_Bool)isClientAuthorizedForLibraryUpgrade;
+- (void)setClientLimitedLibraryCapable:(_Bool)arg1;
+- (_Bool)isClientInRestrictedMode;
+- (_Bool)isClientInFullLibraryMode;
+- (_Bool)isClientInLimitedLibraryMode;
+@property(readonly, nonatomic) _Bool limitedLibraryMode;
 - (_Bool)isClientAuthorizedForTCCServicePhotosAdd;
 - (_Bool)isClientAuthorizedForTCCServicePhotos;
 @property(readonly, copy) NSString *description;

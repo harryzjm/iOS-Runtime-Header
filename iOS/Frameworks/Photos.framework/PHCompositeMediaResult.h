@@ -12,6 +12,8 @@
 {
     NSMutableDictionary *_mutableInfo;
     NSDictionary *_imageProperties;
+    _Bool _isInCloud;
+    _Bool _cancelled;
 }
 
 - (void).cxx_destruct;
@@ -19,14 +21,6 @@
 - (id)imageSandboxExtensionToken;
 - (id)sandboxExtensionToken;
 - (void)setSandboxExtensionToken:(id)arg1;
-- (_Bool)isPlaceholder;
-- (void)setIsPlaceholder:(_Bool)arg1;
-- (_Bool)isDegraded;
-- (void)setDegraded:(_Bool)arg1;
-- (_Bool)isInCloud;
-- (void)setIsInCloud:(_Bool)arg1;
-- (_Bool)isCancelled;
-- (void)setCancelled:(_Bool)arg1;
 - (id)error;
 - (void)setErrorIfNone:(id)arg1;
 - (void)setError:(id)arg1;
@@ -34,21 +28,31 @@
 - (void)addInfoFromDictionary:(id)arg1;
 - (void)setInfo:(id)arg1 forKey:(id)arg2;
 - (id)info;
+@property(nonatomic, getter=isCancelled) _Bool cancelled;
+@property(nonatomic) _Bool isInCloud;
+@property(readonly, nonatomic) _Bool isDegraded;
+@property(readonly, nonatomic) _Bool isPlaceholder;
 - (id)mediaMetadata;
 - (id)imagePropertiesLoadIfNeeded:(_Bool)arg1;
 - (id)imageProperties;
 - (id)baseVersionNeeded;
 - (_Bool)canHandleAdjustmentData;
 - (id)adjustmentData;
+- (id)uniformTypeIdentifier;
 - (id)videoAdjustmentData;
 - (id)videoURL;
 - (unsigned int)cgOrientation;
 - (long long)uiOrientation;
 - (id)exifOrientation;
-- (id)imageUTI;
 - (id)imageData;
 - (id)imageURL;
 - (struct CGImage *)imageRef;
+- (id)sanitizedInfoDictionary;
+- (id)allowedInfoKeys;
+- (id)_sanitizedError;
+- (id)inCloudInfoKey;
+- (id)cancelledInfoKey;
+- (id)errorInfoKey;
 - (_Bool)containsValidData;
 - (id)initWithRequestID:(int)arg1;
 

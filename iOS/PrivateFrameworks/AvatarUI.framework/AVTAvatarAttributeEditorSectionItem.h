@@ -7,34 +7,36 @@
 #import <objc/NSObject.h>
 
 #import <AvatarUI/AVTAvatarAttributeEditorSectionItem-Protocol.h>
+#import <AvatarUI/AVTAvatarAttributeEditorSectionItemInternal-Protocol.h>
 #import <AvatarUI/AVTAvatarAttributeEditorSectionItemPrefetching-Protocol.h>
+#import <AvatarUI/AVTAvatarUpdating-Protocol.h>
 #import <AvatarUI/AVTDiscardableContent-Protocol.h>
 
 @class NSString, UIImage;
 
-@interface AVTAvatarAttributeEditorSectionItem : NSObject <AVTAvatarAttributeEditorSectionItem, AVTDiscardableContent, AVTAvatarAttributeEditorSectionItemPrefetching>
+@interface AVTAvatarAttributeEditorSectionItem : NSObject <AVTAvatarAttributeEditorSectionItemInternal, AVTDiscardableContent, AVTAvatarAttributeEditorSectionItemPrefetching, AVTAvatarUpdating, AVTAvatarAttributeEditorSectionItem>
 {
     _Bool _selected;
+    NSString *_identifier;
     NSString *_localizedName;
     CDUnknownBlockType _avatarUpdater;
-    CDUnknownBlockType discardableContentHandler;
-    NSString *_identifier;
-    UIImage *_cachedThumbnail;
-    double _heightRatio;
     CDUnknownBlockType _thumbnailProvider;
     CDUnknownBlockType _presetResourcesProvider;
+    CDUnknownBlockType discardableContentHandler;
+    UIImage *_cachedThumbnail;
+    double _heightRatio;
 }
 
-@property(readonly, copy, nonatomic) CDUnknownBlockType presetResourcesProvider; // @synthesize presetResourcesProvider=_presetResourcesProvider;
-@property(readonly, copy, nonatomic) CDUnknownBlockType thumbnailProvider; // @synthesize thumbnailProvider=_thumbnailProvider;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double heightRatio; // @synthesize heightRatio=_heightRatio;
 @property(retain, nonatomic) UIImage *cachedThumbnail; // @synthesize cachedThumbnail=_cachedThumbnail;
-@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) CDUnknownBlockType discardableContentHandler; // @synthesize discardableContentHandler;
+@property(readonly, copy, nonatomic) CDUnknownBlockType presetResourcesProvider; // @synthesize presetResourcesProvider=_presetResourcesProvider;
+@property(readonly, copy, nonatomic) CDUnknownBlockType thumbnailProvider; // @synthesize thumbnailProvider=_thumbnailProvider;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(readonly, copy, nonatomic) CDUnknownBlockType avatarUpdater; // @synthesize avatarUpdater=_avatarUpdater;
 @property(readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
-- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)discardContent;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSString *prefetchingIdentifier;

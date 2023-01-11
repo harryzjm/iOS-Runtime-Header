@@ -35,20 +35,20 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SFImage *image; // @synthesize image=_image;
 @property(nonatomic) _Bool isSubtitleDetatched; // @synthesize isSubtitleDetatched=_isSubtitleDetatched;
 @property(retain, nonatomic) SFRichText *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) SFRichText *title; // @synthesize title=_title;
-@property(retain, nonatomic) SFColor *backgroundColor;
-@property(nonatomic) int separatorStyle;
-@property(copy, nonatomic) NSString *type;
-@property(nonatomic) _Bool hasBottomPadding;
-@property(nonatomic) _Bool hasTopPadding;
-@property(nonatomic) _Bool canBeHidden;
-@property(copy, nonatomic) NSString *punchoutPickerDismissText;
-@property(copy, nonatomic) NSString *punchoutPickerTitle;
-@property(copy, nonatomic) NSArray *punchoutOptions;
-- (void).cxx_destruct;
+@property(retain, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
+@property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property(nonatomic) _Bool hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property(nonatomic) _Bool hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
+@property(nonatomic) _Bool canBeHidden; // @synthesize canBeHidden=_canBeHidden;
+@property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
+@property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;

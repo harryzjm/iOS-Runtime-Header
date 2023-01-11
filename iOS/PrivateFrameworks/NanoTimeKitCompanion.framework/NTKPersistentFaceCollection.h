@@ -30,6 +30,7 @@
 - (void)_performOrEnqueueUpdateOfType:(long long)arg1 forFaceUUID:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)_handleConnectionInterrupted;
 - (void)_registerIfNeeded;
+- (void)_register;
 - (void)_fromDaemon_computeSelectedUUIDFromReferenceAndNotifySelected;
 - (void)_fromDaemon_upgradeFace:(id)arg1 forUUID:(id)arg2;
 - (void)_fromDaemon_updateFaceForUUID:(id)arg1 withResourceDirectory:(id)arg2;

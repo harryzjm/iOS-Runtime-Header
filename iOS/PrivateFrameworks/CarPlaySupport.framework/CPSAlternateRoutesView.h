@@ -20,11 +20,11 @@
     UIView *_rowStack;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *rowStack; // @synthesize rowStack=_rowStack;
 @property(nonatomic) __weak id <CPSAlternateRouteSelecting> selectionDelegate; // @synthesize selectionDelegate=_selectionDelegate;
 @property(nonatomic) unsigned long long indexForSelectedRoute; // @synthesize indexForSelectedRoute=_indexForSelectedRoute;
 @property(retain, nonatomic) NSArray *availableRouteChoices; // @synthesize availableRouteChoices=_availableRouteChoices;
-- (void).cxx_destruct;
 - (id)_linearFocusItems;
 - (id)preferredFocusEnvironments;
 - (void)didSelectRow:(id)arg1 representingRouteChoice:(id)arg2;
@@ -36,6 +36,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool useRightHandDriveFocusGuide;
 
 @end
 

@@ -26,28 +26,31 @@
 + (id)suggestionTypes;
 - (void).cxx_destruct;
 - (void)updateUsedPersonLocalIdentifiersFromPotentialSuggestions:(id)arg1;
-- (id)assetsWithSinglePersonBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
-- (id)lastAssetWithPerson:(id)arg1 beforeDate:(id)arg2;
+- (id)assetsWithSinglePersonBetweenStartDate:(id)arg1 andEndDate:(id)arg2 matchingAssetUUID:(id)arg3 progress:(CDUnknownBlockType)arg4;
+- (id)lastAssetWithPerson:(id)arg1 beforeDate:(id)arg2 matchingAssetUUID:(id)arg3;
 - (id)verifiedPersonByPersonLocalIdentifier;
-- (id)nextPersonPotentialSuggestion;
-- (id)nextLongTimeNoSeePersonPotentialSuggestion;
-- (id)nextBirthdayPersonPotentialSuggestion;
-- (id)personPotentialSuggestionsWithOptions:(id)arg1;
-- (id)longTimeNoSeePersonPotentialSuggestionsWithOptions:(id)arg1;
-- (id)birthdayPersonPotentialSuggestionsWithOptions:(id)arg1;
-- (id)assetsByPersonLocalIdentifierWithOptions:(id)arg1;
-- (id)assetsWithSinglePersonWithOptions:(id)arg1;
+- (id)nextPersonPotentialSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)nextLongTimeNoSeePersonPotentialSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)nextBirthdayPersonPotentialSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)personPotentialSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (id)longTimeNoSeePersonPotentialSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (id)birthdayPersonPotentialSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (unsigned long long)relationScoreWithPersonNode:(id)arg1;
+- (id)assetsByPersonLocalIdentifierWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (id)assetsWithSinglePersonWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (_Bool)canGenerateSuggestionWithAsset:(id)arg1 onDate:(id)arg2;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (void)reset;
-- (id)nextSuggestion;
-- (id)suggestionWithPotentialSuggestion:(id)arg1;
-- (id)nextPotentialSuggestion;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
+- (id)suggestionWithPotentialSuggestion:(id)arg1 progress:(CDUnknownBlockType)arg2;
+- (id)nextPotentialSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool lastSuggestionWasColliding;
 @property(readonly) Class superclass;
 
 @end

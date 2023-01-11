@@ -15,9 +15,10 @@
     NSString *_restorationSourceBundleIdentifier;
 }
 
++ (id)detailViewControllerForSourceModel:(id)arg1 withProfile:(id)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *restorationSourceBundleIdentifier; // @synthesize restorationSourceBundleIdentifier=_restorationSourceBundleIdentifier;
 @property(retain, nonatomic) HKSourceListDataSource *dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (id)detailViewControllerForSourceModel:(id)arg1;
 - (id)noneString;
 - (id)noneCellForTableView:(id)arg1;

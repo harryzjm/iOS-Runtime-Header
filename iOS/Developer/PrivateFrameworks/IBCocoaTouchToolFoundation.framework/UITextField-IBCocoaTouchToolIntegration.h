@@ -7,15 +7,18 @@
 #import <UIKit/UITextField.h>
 
 @interface UITextField (IBCocoaTouchToolIntegration)
+- (double)ibAdditionalBaselineOffsetFromBottom;
+- (double)ibAdditionalBaselineOffsetFromTop;
 - (struct CGSize)sizeThatFitsBounds;
 - (struct CGRect)ibTextRect;
-- (void)setIbPasswordRules:(id)arg1;
 - (void)setIbTextAlignment:(long long)arg1;
 - (void)setIbTextContentType:(id)arg1;
+- (void)setIbSpellCheckingType:(long long)arg1;
 - (void)setIbSmartQuotesType:(long long)arg1;
 - (void)setIbSmartInsertDeleteType:(long long)arg1;
 - (void)setIbSmartDashesType:(long long)arg1;
 - (void)setIbSecureTextEntry:(_Bool)arg1;
+- (void)setIbPasswordRules:(id)arg1;
 - (void)setIbReturnKeyType:(long long)arg1;
 - (void)setIbKeyboardType:(long long)arg1;
 - (void)setIbKeyboardAppearance:(long long)arg1;

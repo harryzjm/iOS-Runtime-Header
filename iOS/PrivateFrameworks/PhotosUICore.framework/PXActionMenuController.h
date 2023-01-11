@@ -9,7 +9,6 @@
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 
 @class NSArray, NSSet, NSString, UIAlertController;
-@protocol PXActionMenuDelegate;
 
 @interface PXActionMenuController : NSObject <PXActionPerformerDelegate>
 {
@@ -20,18 +19,13 @@
     NSArray *_activityActions;
     NSSet *_disabledActionTypes;
     NSSet *_excludedActionTypes;
-    id <PXActionMenuDelegate> _delegate;
     NSArray *_actionManagers;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *actionManagers; // @synthesize actionManagers=_actionManagers;
-@property(nonatomic) __weak id <PXActionMenuDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSSet *excludedActionTypes; // @synthesize excludedActionTypes=_excludedActionTypes;
 @property(copy, nonatomic) NSSet *disabledActionTypes; // @synthesize disabledActionTypes=_disabledActionTypes;
-- (void).cxx_destruct;
-- (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
-- (_Bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
 - (void)invalidateActions;
 - (void)_updateActionsIfNeeded;
 - (_Bool)shouldAllowPerformanceOfActionType:(id)arg1;

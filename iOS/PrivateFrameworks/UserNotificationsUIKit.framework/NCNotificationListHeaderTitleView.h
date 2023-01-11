@@ -22,6 +22,7 @@
     BSUIFontProvider *_fontProvider;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_fontProvider, setter=_setFontProvider:) BSUIFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(retain, nonatomic) SBUILegibilityLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -29,11 +30,11 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-- (void).cxx_destruct;
 - (void)_layoutTitleLabel;
 - (void)_configureTitleLabelIfNecessary;
 - (void)_invalidateTitleLabel;
 - (id)_labelFont;
+- (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)adjustForContentSizeCategoryChange;
 - (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

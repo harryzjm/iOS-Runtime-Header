@@ -9,24 +9,30 @@
 #import <network/OS_nw_endpoint-Protocol.h>
 
 @class NSString;
-@protocol OS_nw_context, OS_nw_interface;
+@protocol OS_nw_context, OS_nw_interface, OS_nw_txt_record;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint : NSObject <OS_nw_endpoint>
 {
     NSObject<OS_nw_context> *context;
     NSObject<OS_nw_interface> *interface;
+    int interface_type;
     char *description;
-    char *logging_description;
+    char *redacted_description;
     NWConcrete_nw_endpoint *parent_endpoint;
-    int original_fd;
     unsigned short alternate_port;
+    struct nw_endpoint_alterative_s first_alternative;
+    struct {
+        struct nw_endpoint_alterative_s *tqh_first;
+        struct nw_endpoint_alterative_s **tqh_last;
+    } alternative_list;
     struct os_unfair_lock_s lock;
     struct nw_hash_table *associations;
     unsigned int is_local_domain:1;
     unsigned int parent_is_proxy:1;
     unsigned int description_used:1;
-    unsigned int logging_description_used:1;
+    unsigned int redacted_description_used:1;
+    unsigned int do_not_redact_description:1;
 }
 
 - (void).cxx_destruct;
@@ -36,9 +42,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)redactedDescription;
 @property(readonly, copy) NSString *description;
-- (const char *)getLoggingDescription;
+- (const char *)getRedactedDescription;
 @property(readonly, nonatomic) const char *getDescription;
 - (char *)createDescription:(_Bool)arg1;
+@property(retain, nonatomic) NSObject<OS_nw_txt_record> *txtRecord;
 @property(nonatomic) unsigned short weight;
 @property(nonatomic) unsigned short priority;
 @property(readonly, nonatomic) unsigned short port;

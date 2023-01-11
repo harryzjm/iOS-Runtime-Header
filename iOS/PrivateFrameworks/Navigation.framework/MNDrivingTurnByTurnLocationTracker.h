@@ -7,7 +7,7 @@
 #import <Navigation/MNTrafficIncidentAlertUpdaterDelegate-Protocol.h>
 #import <Navigation/MNTunnelLocationProjectorDelegate-Protocol.h>
 
-@class MNAlternateRoutesUpdater, MNTrafficIncidentAlertUpdater, MNTunnelLocationProjector, NSString;
+@class MNAlternateRoutesUpdater, MNTrafficIncidentAlertUpdater, MNTunnelLocationProjector, NSMutableArray, NSString;
 
 @interface MNDrivingTurnByTurnLocationTracker <MNTrafficIncidentAlertUpdaterDelegate, MNTunnelLocationProjectorDelegate>
 {
@@ -18,6 +18,7 @@
     _Bool _exitedVehicle;
     unsigned long long _vehicleExitConfidence;
     CDStruct_2c43369c _vehicleExitCoordinate;
+    NSMutableArray *_etauPositions;
     double _lastKnownCourse;
     double _consecutiveValidCourseCount;
 }
@@ -28,21 +29,20 @@
 - (double)trafficIncidentAlertUpdaterTimeUntilNextAnnouncement:(id)arg1;
 - (double)trafficIncidentAlertUpdaterTimeSinceLastAnnouncement:(id)arg1;
 - (double)trafficIncidentAlertUpdaterRemainingTimeOnRoute:(id)arg1;
-- (void)trafficIncidentAlertUpdater:(id)arg1 didSwitchToNewRoute:(id)arg2 traffic:(id)arg3 forAlert:(id)arg4;
+- (void)trafficIncidentAlertUpdater:(id)arg1 didSwitchToNewRoute:(id)arg2 forAlert:(id)arg3;
 - (void)trafficIncidentAlertUpdater:(id)arg1 updatedAlert:(id)arg2;
 - (void)trafficIncidentAlertUpdater:(id)arg1 didDismissAlert:(id)arg2 withReroute:(_Bool)arg3;
 - (void)trafficIncidentAlertUpdater:(id)arg1 invalidatedAlert:(id)arg2;
 - (void)trafficIncidentAlertUpdater:(id)arg1 receivedAlert:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
 - (id)userLocationForUpdateManager:(id)arg1;
 - (_Bool)wantsETAUpdates;
-- (void)didUpdateAlternateRoutes:(id)arg1 traffic:(id)arg2;
+- (void)_updateForAlternateRoutes:(id)arg1;
 - (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
 - (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
 - (id)_alternateRouteForOffRouteLocation:(id)arg1;
-- (id)_contingencyRouteForLocation:(id)arg1;
 - (_Bool)_allowSwitchToTransportType:(int)arg1 forLocation:(id)arg2;
 - (int)_detectedMotionForLocation:(id)arg1;
-- (void)_updateForArrival;
+- (void)_updateForArrivalAtLegIndex:(unsigned long long)arg1;
 - (void)_updateForReroute:(id)arg1 rerouteReason:(unsigned long long)arg2 request:(id)arg3 response:(id)arg4;
 - (void)_updateForLocation:(id)arg1;
 - (id)_overrideLocationForLocation:(id)arg1;

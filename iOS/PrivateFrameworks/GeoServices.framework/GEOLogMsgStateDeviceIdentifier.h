@@ -13,9 +13,11 @@
 @interface GEOLogMsgStateDeviceIdentifier : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_deviceHwIdentifier;
     NSString *_deviceOsVersion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _deviceDarkMode;
     _Bool _isInternalInstall;
     _Bool _isInternalTool;
@@ -25,11 +27,7 @@
         unsigned int has_isInternalTool:1;
         unsigned int read_deviceHwIdentifier:1;
         unsigned int read_deviceOsVersion:1;
-        unsigned int wrote_deviceHwIdentifier:1;
-        unsigned int wrote_deviceOsVersion:1;
-        unsigned int wrote_deviceDarkMode:1;
-        unsigned int wrote_isInternalInstall:1;
-        unsigned int wrote_isInternalTool:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,6 +41,9 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasDeviceDarkMode;
@@ -53,10 +54,10 @@
 @property(nonatomic) _Bool isInternalTool;
 @property(retain, nonatomic) NSString *deviceHwIdentifier;
 @property(readonly, nonatomic) _Bool hasDeviceHwIdentifier;
-- (void)_readDeviceHwIdentifier;
 @property(retain, nonatomic) NSString *deviceOsVersion;
 @property(readonly, nonatomic) _Bool hasDeviceOsVersion;
-- (void)_readDeviceOsVersion;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

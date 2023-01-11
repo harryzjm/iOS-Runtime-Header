@@ -4,25 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+@class NSNumber, NSString;
 
 @interface PHImageResult
 {
     struct CGImage *_imageRef;
+    _Bool _isPlaceholder;
+    _Bool _degraded;
     NSNumber *_exifOrientation;
+    NSString *_uniformTypeIdentifier;
 }
 
-@property(copy, nonatomic) NSNumber *exifOrientation; // @synthesize exifOrientation=_exifOrientation;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property(copy, nonatomic) NSNumber *exifOrientation; // @synthesize exifOrientation=_exifOrientation;
+- (_Bool)isDegraded;
+- (void)setDegraded:(_Bool)arg1;
+- (_Bool)isPlaceholder;
+- (void)setIsPlaceholder:(_Bool)arg1;
 - (long long)uiOrientation;
-- (id)imageUTI;
-- (void)setImageUTI:(id)arg1;
 - (id)imageData;
 - (void)setImageData:(id)arg1;
 - (id)imageURL;
 - (void)setImageURL:(id)arg1;
 - (struct CGImage *)imageRef;
 - (void)setImageRef:(struct CGImage *)arg1;
+- (id)sanitizedInfoDictionary;
+- (id)allowedInfoKeys;
 - (_Bool)containsValidData;
 - (void)dealloc;
 

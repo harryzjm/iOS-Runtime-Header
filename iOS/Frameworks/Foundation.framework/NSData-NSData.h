@@ -84,12 +84,12 @@
 - (id)compressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (id)decompressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (id)_dataWithCompressionOperation:(int)arg1 algorithm:(long long)arg2;
-- (_Bool)isNSData__;
 - (id)_replaceCString:(const char *)arg1 withCString:(const char *)arg2;
 - (id)_web_parseRFC822HeaderFields;
 - (id)_web_guessedMIMETypeForExtension:(id)arg1;
 - (id)_web_guessedMIMEType;
 - (id)_web_guessedMIMETypeForXML;
+- (_Bool)isNSData__;
 - (id)replacementObjectForPortCoder:(id)arg1;
 @end
 

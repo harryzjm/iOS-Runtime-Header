@@ -18,7 +18,8 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)_handleVolumeButtonDownForIncrease:(_Bool)arg1;
+- (_Bool)_handleVolumeButtonDownForIncrease:(_Bool)arg1 modifiers:(long long)arg2;
+- (void)_launchVolumeSettings;
 - (_Bool)_sendVolumeButtonDownToSBUIControllerForIncrease:(_Bool)arg1;
 - (_Bool)_sendVolumeButtonDownToLegacyRegisteredClientsForIncrease:(_Bool)arg1;
 - (_Bool)_sendVolumeButtonDownToSpringBoardInternalUIForIncrease:(_Bool)arg1;
@@ -32,9 +33,9 @@
 - (void)addVolumePressBandit:(id)arg1;
 - (void)cancelVolumePress;
 - (void)volumeDecreasePressUp;
-- (void)volumeDecreasePressDown;
+- (void)volumeDecreasePressDownWithModifiers:(long long)arg1;
 - (void)volumeIncreasePressUp;
-- (void)volumeIncreasePressDown;
+- (void)volumeIncreasePressDownWithModifiers:(long long)arg1;
 
 @end
 

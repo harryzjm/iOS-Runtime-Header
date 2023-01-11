@@ -13,7 +13,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
+- (id)activityViewControllerLinkMetadata:(id)arg1;
 - (id)_webArchiveItemProvider;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)item;

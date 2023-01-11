@@ -13,10 +13,11 @@
     NSString *_bundleIdentifier;
 }
 
-- (id)bundleIdentifier;
 - (void).cxx_destruct;
+- (id)bundleIdentifier;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithBundleIdentifier:(id)arg1 associatedAccessories:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1;
 
 @end

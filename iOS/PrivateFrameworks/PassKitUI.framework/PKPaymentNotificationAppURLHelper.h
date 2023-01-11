@@ -10,8 +10,9 @@
 {
 }
 
-+ (id)_appURLForNotificationOfType:(id)arg1 paymentPass:(id)arg2 serviceIdentifier:(id)arg3 appLaunchToken:(id)arg4 usingDeviceAccountNumber:(_Bool)arg5;
++ (id)_appURLForNotificationOfType:(id)arg1 paymentPass:(id)arg2 serviceIdentifier:(id)arg3 appLaunchToken:(id)arg4 pathSuffix:(id)arg5 usingDeviceAccountNumber:(_Bool)arg6;
 + (_Bool)applicationExistsToHandleNotificationsForPaymentPass:(id)arg1;
++ (id)appURLForTransactionNotification:(id)arg1 excludeTransactionIdentifier:(_Bool)arg2 pass:(id)arg3 pathSuffix:(id)arg4 appLaunchToken:(id)arg5;
 + (id)appURLForTransactionNotification:(id)arg1 pass:(id)arg2 appLaunchToken:(id)arg3;
 + (id)appURLForMessageNotification:(id)arg1 pass:(id)arg2 appLaunchToken:(id)arg3;
 

@@ -9,7 +9,7 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, NSArray, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
+@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, MTLRenderPassDescriptor, NSArray, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
 @protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, MTLTexture, OS_dispatch_queue, SCNSceneRenderer, SCNSceneRendererDelegate;
 
 @interface SCNRenderer : NSObject <SCNSceneRenderer, SCNTechniqueSupport>
@@ -61,11 +61,24 @@
     unsigned int _jitteringEnabled:1;
     unsigned int _temporalAntialiasingEnabled:1;
     unsigned int _frozen:1;
-    unsigned int _privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:1;
+    unsigned int _shouldForwardSceneRendererDelegationMessagesToSelf:1;
+    unsigned int _shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner:1;
+    CDStruct_f76d274b _selfDelegationConformance;
     CDStruct_f76d274b _privateRendererOwnerDelegationConformance;
     CDStruct_f76d274b _delegationConformance;
     UIColor *_backgroundColor;
-    C3DColor4_a26f5c89 _c3dBackgroundColor;
+    struct C3DColor4 {
+        union {
+            float rgba[4];
+            struct {
+                float r;
+                float g;
+                float b;
+                float a;
+            } ;
+            MISSING_TYPE *simd;
+        } ;
+    } _c3dBackgroundColor;
     SCNRenderer *_preloadRenderer;
     id <SCNSceneRenderer> _privateRendererOwner;
     SCNTechnique *_technique;
@@ -75,7 +88,6 @@
     _Bool _disableOverlays;
     float _contentScaleFactor;
     _Bool _isRunningInExtension;
-    _Bool _watchAppInForeground;
     SCNAuthoringEnvironment *_authoringEnvironment;
     unsigned long long _debugOptions;
     _Bool _showStatistics;
@@ -86,6 +98,7 @@
 + (id)rendererWithContext:(id)arg1 options:(id)arg2;
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
 - (void)_setInterfaceOrientation:(long long)arg1;
+- (void)_interfaceOrientationDidChange;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
 - (id)privateRendererOwner;
 - (void)_jitterAtStep:(unsigned long long)arg1 updateMainFramebuffer:(_Bool)arg2 redisplay:(_Bool)arg3 jitterer:(id)arg4;
@@ -130,7 +143,7 @@
 @property(readonly, nonatomic) struct CGRect currentViewport;
 - (struct SCNVector4)_viewport;
 - (id)_authoringEnvironment;
-- (void)setupAuthoringEnvironement;
+- (void)setupAuthoringEnvironment;
 - (void)set_showsAuthoringEnvironment:(_Bool)arg1;
 - (_Bool)_showsAuthoringEnvironment;
 - (id)_compilationErrors;
@@ -191,8 +204,10 @@
 - (double)_nextFrameTime;
 - (void)set_nextFrameTime:(double)arg1;
 - (void)updateCurrentTimeIfPlayingWithSystemTime:(double)arg1;
-- (void)set_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:(_Bool)arg1;
-- (_Bool)_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner;
+- (void)set_shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner:(_Bool)arg1;
+- (_Bool)_shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner;
+- (void)set_wantsSceneRendererDelegationMessages:(_Bool)arg1;
+- (_Bool)_wantsSceneRendererDelegationMessages;
 @property(nonatomic) __weak id <SCNSceneRendererDelegate> delegate;
 - (void)_updateEngineCallbacks;
 - (id)programWithNode:(id)arg1 withMaterial:(id)arg2;
@@ -200,7 +215,7 @@
 - (_Bool)_prepareObject:(id)arg1 shouldAbortBlock:(CDUnknownBlockType)arg2;
 - (_Bool)prepareObject:(id)arg1 shouldAbortBlock:(CDUnknownBlockType)arg2;
 - (void)_releasePreloadRenderer;
-- (_Bool)_preparePreloadRenderer;
+- (_Bool)_preparePreloadRenderer:(id)arg1;
 - (_Bool)_preloadResource:(id)arg1 abortHandler:(CDUnknownBlockType)arg2;
 - (void)set_computedLightingEnvironmentMapsPath:(id)arg1;
 - (id)_computedLightingEnvironmentMapsPath;
@@ -218,6 +233,8 @@
 - (id)metalLayer;
 - (void)setDisableOverlays:(_Bool)arg1;
 - (_Bool)disableOverlays;
+- (void)resolvedBackgroundColorDidChange;
+- (void)_c3dBackgroundColorDidChange;
 - (void)setBackgroundColor:(id)arg1;
 - (id)backgroundColor;
 @property(retain, nonatomic) SCNScene *scene;
@@ -284,7 +301,7 @@
 @property(readonly, nonatomic) id <MTLCommandQueue> commandQueue;
 @property(readonly, nonatomic) id <MTLDevice> device;
 @property(readonly, nonatomic) id <MTLRenderCommandEncoder> currentRenderCommandEncoder;
-- (id)currentRenderPassDescriptor;
+@property(readonly, nonatomic) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 - (id)currentCommandBuffer;
 @property(readonly, nonatomic) unsigned long long renderingAPI;
 - (void)dealloc;

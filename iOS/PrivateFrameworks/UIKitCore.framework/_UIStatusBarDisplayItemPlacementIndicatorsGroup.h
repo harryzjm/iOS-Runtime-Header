@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, _UIStatusBarDisplayItemPlacement;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarDisplayItemPlacementIndicatorsGroup
 {
     NSArray *_stablePlacements;
     NSArray *_unstablePlacements;
+    _UIStatusBarDisplayItemPlacement *_bluetoothInsetPaddingItem;
 }
 
-+ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 bluetoothPaddingInset:(double)arg3;
 + (id)activityItemDisplayIdentifier;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _UIStatusBarDisplayItemPlacement *bluetoothInsetPaddingItem; // @synthesize bluetoothInsetPaddingItem=_bluetoothInsetPaddingItem;
 @property(readonly, copy, nonatomic) NSArray *unstablePlacements; // @synthesize unstablePlacements=_unstablePlacements;
 @property(readonly, copy, nonatomic) NSArray *stablePlacements; // @synthesize stablePlacements=_stablePlacements;
-- (void).cxx_destruct;
 
 @end
 

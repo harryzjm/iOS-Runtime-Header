@@ -13,6 +13,7 @@
 
 @interface SearchUILeadingViewController : NSObject <SearchUIDetailedRowComponent>
 {
+    _Bool _usesCompactWidth;
     SearchUIDetailedRowModel *rowModel;
     id <SearchUIFeedbackDelegate> feedbackDelegate;
     UIView *_view;
@@ -20,10 +21,11 @@
 
 + (_Bool)supportsRowModel:(id)arg1;
 + (Class)leadingViewClassForRowModel:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool usesCompactWidth; // @synthesize usesCompactWidth=_usesCompactWidth;
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate;
 @property(retain, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel;
-- (void).cxx_destruct;
 - (void)forceVerticalCenteringOfContents;
 - (void)updateWithContacts:(id)arg1;
 - (id)imageView;

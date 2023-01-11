@@ -9,7 +9,7 @@
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSHTTPCookieStorage, NSNumber, NSSet, NSString, NSURL, NSURLCache, NSURLCredentialStorage, NSURLSessionConfiguration;
+@class NSArray, NSData, NSDictionary, NSHTTPCookieStorage, NSNumber, NSSet, NSString, NSURL, NSURLCache, NSURLCredentialStorage, NSURLSessionConfiguration, _NSHTTPAlternativeServicesStorage;
 @protocol NSURLSessionAppleIDContext;
 
 @interface __NSURLSessionEffectiveConfiguration_Base : NSObject <NSSecureCoding, NSCopying>
@@ -26,7 +26,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_sessionConfiguration;
-- (id)_initWithMeOther:(id)arg1;
 - (id)_initWithConfiguration:(id)arg1;
 - (id)description;
 - (const void *)_copyAttribute:(struct __CFString *)arg1;
@@ -41,15 +40,18 @@
 @property(readonly) unsigned long long _TCPAdaptiveWriteTimeout; // @dynamic _TCPAdaptiveWriteTimeout;
 @property(readonly) _Bool _allowsConstrainedNetworkAccess; // @dynamic _allowsConstrainedNetworkAccess;
 @property(readonly) _Bool _allowsExpensiveAccess; // @dynamic _allowsExpensiveAccess;
+@property(readonly) _Bool _allowsHTTP3; // @dynamic _allowsHTTP3;
 @property(readonly) _Bool _allowsIndefiniteConnections; // @dynamic _allowsIndefiniteConnections;
 @property(readonly) _Bool _allowsMultipathTCP; // @dynamic _allowsMultipathTCP;
 @property(readonly) _Bool _allowsPowerNapScheduling; // @dynamic _allowsPowerNapScheduling;
+@property(readonly) _Bool _allowsReachabilityCheck; // @dynamic _allowsReachabilityCheck;
 @property(readonly) _Bool _allowsResponseMonitoringDuringBodyTranmission; // @dynamic _allowsResponseMonitoringDuringBodyTranmission;
 @property(readonly) _Bool _allowsTCPFastOpen; // @dynamic _allowsTCPFastOpen;
 @property(readonly) _Bool _allowsTLSFalseStart; // @dynamic _allowsTLSFalseStart;
 @property(readonly) _Bool _allowsTLSSessionResumption; // @dynamic _allowsTLSSessionResumption;
 @property(readonly) _Bool _allowsTLSSessionTickets; // @dynamic _allowsTLSSessionTickets;
 @property(readonly) _Bool _allowsWCA; // @dynamic _allowsWCA;
+@property(readonly, retain) _NSHTTPAlternativeServicesStorage *_alternativeServicesStorage; // @dynamic _alternativeServicesStorage;
 @property(readonly) _Bool _alwaysPerformDefaultTrustEvaluation; // @dynamic _alwaysPerformDefaultTrustEvaluation;
 @property(readonly, copy) id <NSURLSessionAppleIDContext> _appleIDContext; // @dynamic _appleIDContext;
 @property(readonly, copy) NSSet *_authenticatorStatusCodes; // @dynamic _authenticatorStatusCodes;

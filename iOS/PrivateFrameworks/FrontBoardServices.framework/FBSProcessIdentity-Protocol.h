@@ -9,8 +9,8 @@
 @class BSMachPortTaskNameRight, BSProcessHandle, RBSProcessIdentity;
 
 @protocol FBSProcessIdentity <FBSProcess>
-@property(readonly, retain, nonatomic) RBSProcessIdentity *identity;
 @property(readonly, retain, nonatomic) BSMachPortTaskNameRight *taskNameRight;
+@property(readonly, retain, nonatomic) RBSProcessIdentity *identity;
 @property(readonly, retain, nonatomic) BSProcessHandle *handle;
 @end
 

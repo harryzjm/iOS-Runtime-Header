@@ -4,17 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MTLGPUDebugComputeCommandEncoder
+#import <MetalTools/MTLGPUDebugCommandEncoder-Protocol.h>
+
+@class MTLGPUDebugComputePipelineState, NSString;
+
+@interface MTLGPUDebugComputeCommandEncoder <MTLGPUDebugCommandEncoder>
 {
+    unsigned int useResourceIteration;
+    struct Options *_options;
+    struct MTLGPUDebugStageBufferHandles _handles;
+    struct MTLGPUDebugThreadgroupLengths _threadgroup;
     struct MTLGPUDebugBufferArgumentData _buffers;
-    unsigned int _encoderID;
-    unsigned int _currentDispatchID;
-    unsigned long long _currentPipelineID;
+    struct GPUDebugEventUUIDPacket _dispatchID;
+    MTLGPUDebugComputePipelineState *_currentPipeline;
 }
 
 - (id).cxx_construct;
 - (void)endEncoding;
 - (void)setComputePipelineState:(id)arg1;
+- (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
+- (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)dispatchThreadgroupsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2 threadsPerThreadgroup:(CDStruct_14f26992)arg3;
 - (void)dispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dispatchThreadsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
@@ -23,8 +33,15 @@
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
-- (void)onDispatch;
+- (void)flushBindings;
+@property(readonly) unsigned int encoderID;
 - (id)initWithComputeCommandEncoder:(id)arg1 parent:(id)arg2 encoderID:(unsigned int)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

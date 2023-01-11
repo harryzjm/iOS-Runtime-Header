@@ -23,10 +23,18 @@
 + (id)embeddingDataForDictionary:(id)arg1 language:(id)arg2 revision:(unsigned long long)arg3 error:(id *)arg4;
 + (_Bool)writeEmbeddingForDictionary:(id)arg1 language:(id)arg2 revision:(unsigned long long)arg3 toURL:(id)arg4 error:(id *)arg5;
 + (_Bool)_writeEmbeddingForDictionary:(id)arg1 language:(id)arg2 revision:(unsigned long long)arg3 toURL:(id)arg4 orData:(id)arg5 error:(id *)arg6;
++ (unsigned long long)currentSentenceEmbeddingRevisionForLanguage:(id)arg1;
++ (unsigned long long)currentContextualWordEmbeddingRevisionForLanguage:(id)arg1;
 + (unsigned long long)currentRevisionForLanguage:(id)arg1;
++ (unsigned long long)currentRevisionForType:(id)arg1 locale:(id)arg2;
++ (id)supportedSentenceEmbeddingRevisionsForLanguage:(id)arg1;
++ (id)supportedContextualWordEmbeddingRevisionsForLanguage:(id)arg1;
 + (id)supportedRevisionsForLanguage:(id)arg1;
-+ (id)wordEmbeddingForLanguage:(id)arg1 revision:(unsigned long long)arg2;
++ (id)supportedRevisionsForType:(id)arg1 locale:(id)arg2;
++ (id)sentenceEmbeddingForLanguage:(id)arg1 revision:(unsigned long long)arg2;
 + (id)contextualWordEmbeddingForLanguage:(id)arg1 revision:(unsigned long long)arg2;
++ (id)wordEmbeddingForLanguage:(id)arg1 revision:(unsigned long long)arg2;
++ (id)sentenceEmbeddingForLanguage:(id)arg1;
 + (id)contextualWordEmbeddingForLanguage:(id)arg1;
 + (id)wordEmbeddingForLanguage:(id)arg1;
 @property(readonly) unsigned long long revision;
@@ -55,8 +63,10 @@
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (id)_initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (void *)_createEmbeddingRefWithContentsOfURL:(id)arg1;
+- (id)initSentenceEmbeddingWithLocale:(struct __CFLocale *)arg1;
 - (id)initContextualEmbeddingWithLocale:(struct __CFLocale *)arg1;
 - (id)initWithLocale:(struct __CFLocale *)arg1;
+- (id)initWithType:(id)arg1 locale:(id)arg2 version:(id)arg3;
 
 @end
 

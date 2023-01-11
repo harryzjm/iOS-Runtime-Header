@@ -11,11 +11,14 @@
 
 @interface SBGestureSwitcherModifierEvent <SBGestureRecognizerTouchHistoryProviding>
 {
+    _Bool _pointerTouch;
+    _Bool _mouseEvent;
     _Bool _canceled;
     NSUUID *_gestureID;
     SBAppLayout *_selectedAppLayout;
     long long _gestureType;
     unsigned long long _phase;
+    long long _touchType;
     double _lastTouchTimestamp;
     double _hysteresis;
     id <SBGestureRecognizerTouchHistoryProviding> _touchHistoryProvider;
@@ -24,6 +27,7 @@
     struct CGPoint _velocityInContainerView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <SBGestureRecognizerTouchHistoryProviding> touchHistoryProvider; // @synthesize touchHistoryProvider=_touchHistoryProvider;
 @property(nonatomic) double hysteresis; // @synthesize hysteresis=_hysteresis;
 @property(nonatomic) struct CGPoint velocityInContainerView; // @synthesize velocityInContainerView=_velocityInContainerView;
@@ -31,15 +35,19 @@
 @property(nonatomic) struct CGPoint locationInContainerView; // @synthesize locationInContainerView=_locationInContainerView;
 @property(nonatomic) double lastTouchTimestamp; // @synthesize lastTouchTimestamp=_lastTouchTimestamp;
 @property(nonatomic, getter=isCanceled) _Bool canceled; // @synthesize canceled=_canceled;
+@property(nonatomic, getter=isMouseEvent) _Bool mouseEvent; // @synthesize mouseEvent=_mouseEvent;
+@property(nonatomic, getter=isPointerTouch) _Bool pointerTouch; // @synthesize pointerTouch=_pointerTouch;
+@property(nonatomic) long long touchType; // @synthesize touchType=_touchType;
 @property(nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 @property(readonly, nonatomic) long long gestureType; // @synthesize gestureType=_gestureType;
 @property(readonly, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
 @property(readonly, nonatomic) NSUUID *gestureID; // @synthesize gestureID=_gestureID;
-- (void).cxx_destruct;
 - (double)peakSpeed;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isGestureEvent;
 - (long long)type;
 - (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 gestureType:(long long)arg3 phase:(unsigned long long)arg4;

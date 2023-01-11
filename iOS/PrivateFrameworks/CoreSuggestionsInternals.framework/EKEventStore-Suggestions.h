@@ -7,19 +7,21 @@
 #import <EventKit/EKEventStore.h>
 
 @interface EKEventStore (Suggestions)
-+ (id)newDefaultStore;
-+ (id)defaultStore;
++ (id)sg_newStore;
++ (void)sg_usingSharedStoreForReadingOnly:(CDUnknownBlockType)arg1;
 - (double)eventsPerWeekAroundDate:(id)arg1;
-- (void)bumpTimeToLiveForZeroKeywordNLEventOnInteraction:(id)arg1;
-- (id)fetchEKEventsForPseudoNLEvent:(id)arg1 entity:(id)arg2;
-- (id)fetchEKEventsForPseudoEventBySimilarTitleAndStartTime:(id)arg1;
-- (id)eventsWithSameAlternativeOpaqueKeyAsPseudoEvent:(id)arg1 harvestStore:(id)arg2;
-- (id)eventsWithSameOpaqueKeyAsPseudoEvent:(id)arg1 harvestStore:(id)arg2;
+- (void)sg_bumpTimeToLiveForZeroKeywordNLEventOnInteraction:(id)arg1;
+- (id)sg_fetchEKEventsForPseudoNLEvent:(id)arg1 message:(id)arg2;
+- (id)sg_fetchEKEventsForPseudoNLEvent:(id)arg1 entity:(id)arg2;
+- (id)_sg_fetchEKEventsForPseudoNLEvent:(id)arg1 title:(id)arg2 participants:(id)arg3;
+- (id)sg_fetchEKEventsForPseudoEventBySimilarTitleAndStartTime:(id)arg1;
 - (id)eventWithExternalID:(id)arg1;
 - (id)eventsWithSameAlternativeOpaqueKeyAsDuplicateKey:(id)arg1 harvestStore:(id)arg2;
-- (id)eventsWithSameOpaqueKeyAsDuplicateKey:(id)arg1 extraKey:(id)arg2 harvestStore:(id)arg3;
 - (id)eventsWithSameAlternativeOpaqueKeyAsStorageEvent:(id)arg1 harvestStore:(id)arg2;
+- (id)eventsWithSameAlternativeOpaqueKeyAsPseudoEvent:(id)arg1 harvestStore:(id)arg2;
+- (id)eventsWithSameOpaqueKeyAsDuplicateKey:(id)arg1 extraKey:(id)arg2 harvestStore:(id)arg3;
 - (id)eventsWithSameOpaqueKeyAsStorageEvent:(id)arg1 harvestStore:(id)arg2;
-- (id)confirmedEKEventForSGEvent:(id)arg1;
+- (id)eventsWithSameOpaqueKeyAsPseudoEvent:(id)arg1 harvestStore:(id)arg2;
+- (id)sg_confirmedEKEventForSGEvent:(id)arg1;
 @end
 

@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
     id <SLRemoteComposeViewControllerDelegateProtocol> _delegate;
 }
 
-@property(nonatomic) __weak id <SLRemoteComposeViewControllerDelegateProtocol> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SLRemoteComposeViewControllerDelegateProtocol> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_canShowWhileLocked;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

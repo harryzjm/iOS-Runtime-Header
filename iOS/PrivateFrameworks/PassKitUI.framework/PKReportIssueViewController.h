@@ -7,18 +7,19 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, PKAccount, PKBusinessChatController, PKPaymentPass, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, UIBarButtonItem, UIImageView, UITableViewHeaderFooterView;
+@class NSString, PKAccount, PKBusinessChatController, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentWebService, PKTransactionSource, UIActivityIndicatorView, UIBarButtonItem, UIImageView, UITableViewHeaderFooterView;
 
 @interface PKReportIssueViewController <PKPaymentServiceDelegate, UITextViewDelegate>
 {
     PKPaymentTransaction *_transaction;
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
     PKPaymentService *_paymentService;
     PKPaymentTransactionCellController *_transactionCellController;
     PKBusinessChatController *_businessChatController;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_submitButton;
+    UIActivityIndicatorView *_activityIndicator;
     _Bool _hasIssueSelected;
     long long _selectedIssue;
     _Bool _hasMapsIssueSelected;
@@ -27,20 +28,24 @@
     long long _selectedDisputeType;
     _Bool _reportingIssue;
     NSString *_statementName;
+    _Bool _cancelingPayment;
     _Bool _canPerformUnrecognizedTransaction;
     _Bool _canPerformDispute;
+    _Bool _canPerformCancelAccountServicePayment;
     _Bool _canPerformOther;
     _Bool _canPerformIncorrectMerchant;
     UITableViewHeaderFooterView *_footerView;
     UIImageView *_logoView;
+    PKPaymentWebService *_paymentWebService;
 }
 
-+ (_Bool)canReportIssueForTransaction:(id)arg1 paymentPass:(id)arg2;
++ (_Bool)canReportIssueForTransaction:(id)arg1 transactionSource:(id)arg2;
 - (void).cxx_destruct;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 dismissAfter:(_Bool)arg3;
 - (void)_reportIssueToMaps;
 - (void)_resetMapsMerchantAndBrandWithIssueReportIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_disputeTransactionInBusinessChat;
+- (void)_reportIssueInBusinessChat;
+- (void)_cancelPayment;
 - (void)_submitButtonTapped:(id)arg1;
 - (void)_cancelButtonTapped:(id)arg1;
 - (void)_updateNavigationButtons;
@@ -69,10 +74,9 @@
 - (id)_statementName;
 - (void)_updateFooterPlacement;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithTransaction:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 detailViewStyle:(long long)arg4;
+- (id)initWithTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 detailViewStyle:(long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

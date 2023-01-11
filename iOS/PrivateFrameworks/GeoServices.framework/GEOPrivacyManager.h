@@ -8,8 +8,11 @@
 
 @interface GEOPrivacyManager : NSObject
 {
+    _Bool _lastKnownLocationServicesEnabled;
+    _Bool _hasLastKnownLocationServicesEnabled;
 }
 
+- (void)_locationServicesStateChanged;
 - (void)_fireResetLocationAndPrivacyNotification;
 - (void)_fireRecentsClearedNotification;
 - (void)dealloc;

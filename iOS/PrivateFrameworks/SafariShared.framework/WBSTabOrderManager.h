@@ -16,8 +16,8 @@
     id <WBSTabOrderProvider> _tabOrderProvider;
 }
 
-@property(nonatomic) __weak id <WBSTabOrderProvider> tabOrderProvider; // @synthesize tabOrderProvider=_tabOrderProvider;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <WBSTabOrderProvider> tabOrderProvider; // @synthesize tabOrderProvider=_tabOrderProvider;
 - (id)_nextNonClosedTabAdjacentToIndex:(unsigned long long)arg1 inAscendingOrder:(_Bool)arg2;
 - (unsigned long long)_relationConsideringUserPreferenceForRelation:(unsigned long long)arg1 isBlankTab:(_Bool)arg2;
 - (id)_insertionHintWithTabToInsertAfter:(id)arg1 relation:(unsigned long long)arg2;
@@ -28,13 +28,17 @@
 @property(readonly, nonatomic) id <WBSOrderedTab> tabToSelectBeforeClosingSelectedTab;
 - (_Bool)_newTabPositionPreferenceAppliesToSwawnedTabs;
 - (unsigned long long)_userPreferredNewSpawnedTabPosition;
-- (unsigned long long)_userPreferredNewBlankTabPosition;
+- (unsigned long long)_userPreferredNewBlankTabPositionInCurrentContext:(_Bool)arg1;
 - (id)tabInsertionHintForSpawnedTab;
 - (id)tabToInsertSpawnedTabAfter;
+- (id)tabInsertionHintForNewBlankTabInCurrentContext;
+- (id)_tabInsertionHintForNewBlankTabWithRecommendedPosition:(unsigned long long)arg1;
 - (id)tabInsertionHintForNewBlankTab;
 - (id)tabToInsertNewBlankTabAfter;
 - (unsigned long long)_indexOfLastRelatedTab;
 - (unsigned long long)_indexOfTabToInsertNewTabAfter;
+- (id)tabInsertionHintForDuplicateOfTab:(id)arg1;
+- (id)_tabInsertionHintForNewTabAfterTab:(id)arg1 relation:(unsigned long long)arg2;
 - (id)_tabInsertionHintForPosition:(unsigned long long)arg1 isBlankTab:(_Bool)arg2;
 - (id)tabInsertionHintForPosition:(unsigned long long)arg1;
 - (id)tabToInsertNewTabAfterForPosition:(unsigned long long)arg1;

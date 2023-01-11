@@ -21,13 +21,15 @@
     NSHashTable *_connections;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSHashTable *connections; // @synthesize connections=_connections;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
 @property(retain, nonatomic) BSServiceConnectionListener *listener; // @synthesize listener=_listener;
 @property(nonatomic) __weak id <CRSAppHistoryServiceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_connectionQueue_removeConnection:(id)arg1;
 - (void)_connectionQueue_addConnection:(id)arg1;
+- (void)setSessionFeatureKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchSessionFeatureKeysWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSessionEchoContextStatesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSessionUIContextStatesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUIContextStatesWithCompletion:(CDUnknownBlockType)arg1;

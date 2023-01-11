@@ -10,14 +10,12 @@ __attribute__((visibility("hidden")))
 @interface _NSXPCConnectionImportInfo : NSObject
 {
     unsigned long long _generationCount;
-    struct os_unfair_lock_s _lock;
     struct __CFDictionary *_proxyNumberToCount;
     void *_secTaskRef;
+    struct os_unfair_lock_s _lock;
+    _Bool _secTaskClearedOnce;
 }
 
-- (id)_valueForEntitlement:(id)arg1 auditToken:(CDStruct_4c969caf)arg2;
-- (_Bool)removeProxy:(id)arg1;
-- (void)addProxy:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

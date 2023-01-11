@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVPlayerItem, NSError, NSString;
+@class NSString, PXVideoContentProviderLoadingResult;
 
 @interface PXSimpleVideoContentProvider
 {
-    AVPlayerItem *_playerItem;
+    PXVideoContentProviderLoadingResult *_loadingResult;
     NSString *_contentIdentifier;
-    NSError *_error;
     double _loadingProgress;
 }
 
-- (double)loadingProgress;
-- (id)error;
-- (id)contentIdentifier;
-- (id)playerItem;
 - (void).cxx_destruct;
+- (void)setLoadingProgress:(double)arg1;
+- (double)loadingProgress;
+- (id)contentIdentifier;
+- (void)setLoadingResult:(id)arg1;
+- (id)loadingResult;
 - (id)description;
 - (void)beginLoadingWithPriority:(long long)arg1;
 - (id)initWithPlayerItem:(id)arg1 contentIdentifier:(id)arg2;

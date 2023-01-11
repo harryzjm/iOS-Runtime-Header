@@ -21,6 +21,7 @@
     UIView *_backgroundView;
     NSArray *_segmentViews;
     NSArray *_separatorViews;
+    NSArray *_separatorEffectViews;
     NSNumber *_selectedSegmentIndex;
     UILongPressGestureRecognizer *_gestureRecognizer;
     double _accumulatedTouchDistance;
@@ -30,6 +31,7 @@
     struct CGPoint _lastTouchLocation;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property(retain, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property(retain, nonatomic) NSNumber *trackingSegmentIndex; // @synthesize trackingSegmentIndex=_trackingSegmentIndex;
@@ -38,21 +40,22 @@
 @property(nonatomic) struct CGPoint lastTouchLocation; // @synthesize lastTouchLocation=_lastTouchLocation;
 @property(retain, nonatomic) UILongPressGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property(retain, nonatomic) NSNumber *selectedSegmentIndex; // @synthesize selectedSegmentIndex=_selectedSegmentIndex;
+@property(retain, nonatomic) NSArray *separatorEffectViews; // @synthesize separatorEffectViews=_separatorEffectViews;
 @property(retain, nonatomic) NSArray *separatorViews; // @synthesize separatorViews=_separatorViews;
 @property(retain, nonatomic) NSArray *segmentViews; // @synthesize segmentViews=_segmentViews;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property(copy, nonatomic) HUQuickControlStepperViewProfile *profile; // @synthesize profile=_profile;
 @property(nonatomic) __weak id <HUQuickControlViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-- (void).cxx_destruct;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)tintColorDidChange;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 @property(retain, nonatomic) id value;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
-- (void)_actuateTapticFeedbackIfAvailable;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_actuateTapticFeedback;
+- (void)_prepareForTapticFeedback;
+- (struct CGSize)intrinsicContentSize;
 - (id)_stepperViewMetricsForControlSize:(unsigned long long)arg1;
 - (void)updateConstraints;
 - (void)_updateUserInteractionActive:(_Bool)arg1 forFirstTouch:(_Bool)arg2;

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)searchTokenForHashtag:(id)arg1;
 + (id)oneYearAgoSearchToken;
 + (id)searchTokensFromRecentSearch:(id)arg1;
 + (id)searchTokenFromZeroKeyword:(id)arg1;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)viewControllerWithDataSource:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *dateTrailingMargin; // @synthesize dateTrailingMargin=_dateTrailingMargin;
 @property(retain, nonatomic) NSLayoutConstraint *fromLeadingMargin; // @synthesize fromLeadingMargin=_fromLeadingMargin;
 @property(retain, nonatomic) NSLayoutConstraint *ignoreTrailingMargin; // @synthesize ignoreTrailingMargin=_ignoreTrailingMargin;
@@ -41,7 +42,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <CNContactSuggestionViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) CNPropertyCell *propertyCell; // @synthesize propertyCell=_propertyCell;
 @property(retain, nonatomic) CNPropertySuggestionAction *action; // @synthesize action=_action;
-- (void).cxx_destruct;
+- (id)alertMessageForIgnoreContactDetail;
+- (id)titleForIgnoreContactDetail;
 - (void)showSource:(id)arg1;
 - (void)ignore:(id)arg1;
 - (void)addToContact:(id)arg1;
@@ -51,8 +53,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (_Bool)shouldShowAddIgnoreControls;
-- (_Bool)sectionAtIndexContainsAddAndIgnoreControls:(unsigned long long)arg1;
+- (_Bool)shouldShowAddRejectActions;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;

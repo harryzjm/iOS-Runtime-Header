@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     NSDate *_activityEarliestDismissalDate;
     UIProgressHUD *_hud;
+    _Bool _scopeUpgraded;
     HRProfile *_profile;
     id <WDClinicalAccountDetailsViewControllerDelegate> _delegate;
     NSMutableArray *_sections;
@@ -25,6 +26,8 @@ __attribute__((visibility("hidden")))
     NSString *_status;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool scopeUpgraded; // @synthesize scopeUpgraded=_scopeUpgraded;
 @property(retain, nonatomic) NSString *status; // @synthesize status=_status;
 @property(retain, nonatomic) NSString *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property(retain, nonatomic) NSString *patientIdentifier; // @synthesize patientIdentifier=_patientIdentifier;
@@ -32,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) __weak id <WDClinicalAccountDetailsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (void)healthRecordsStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
 - (void)_hideActivityAndDismissUnlessError:(id)arg1;
 - (void)_showActivityInProgressUIWithMessage:(id)arg1;
@@ -51,10 +53,13 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)accountOwner;
 - (void)_computeSections;
+- (_Bool)_showInternalGatewayDetails;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;
 - (void)viewDidLoad;

@@ -18,12 +18,16 @@
     _Bool _allowsExpensiveAccess;
     _Bool _requiresPowerPluggedIn;
     _Bool _prefersInfraWiFi;
+    _Bool _liveServerCatalogOnly;
+    _Bool _liveServerCatalogOnlyIsOverridden;
     long long _timeoutIntervalForResource;
     NSMutableDictionary *_additionalServerParams;
     NSString *_sessionId;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool liveServerCatalogOnlyIsOverridden; // @synthesize liveServerCatalogOnlyIsOverridden=_liveServerCatalogOnlyIsOverridden;
+@property(nonatomic) _Bool liveServerCatalogOnly; // @synthesize liveServerCatalogOnly=_liveServerCatalogOnly;
 @property(nonatomic) _Bool prefersInfraWiFi; // @synthesize prefersInfraWiFi=_prefersInfraWiFi;
 @property(nonatomic) _Bool requiresPowerPluggedIn; // @synthesize requiresPowerPluggedIn=_requiresPowerPluggedIn;
 @property(nonatomic) _Bool allowsExpensiveAccess; // @synthesize allowsExpensiveAccess=_allowsExpensiveAccess;

@@ -11,10 +11,9 @@
 
 + (id)attributeWithCompletionPolicy:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long policy; // @synthesize policy=_policy;
-- (id)_initWithCompletionPolicy:(unsigned long long)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)succinctDescriptionBuilder;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 

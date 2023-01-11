@@ -15,11 +15,11 @@
     AVPlayerLayer *_avPlayerLayer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=setAVPlayerLayer:) AVPlayerLayer *avPlayerLayer; // @synthesize avPlayerLayer=_avPlayerLayer;
 @property(retain, nonatomic, setter=setAVPlayer:) AVPlayer *avPlayer; // @synthesize avPlayer=_avPlayer;
 @property(retain, nonatomic, setter=setAVPlayerItem:) AVPlayerItem *avPlayerItem; // @synthesize avPlayerItem=_avPlayerItem;
 @property(retain, nonatomic) CKMovieMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
-- (void).cxx_destruct;
 - (void)cleanupPlayerIfNeeded;
 - (void)videoDidReachEnd:(id)arg1;
 - (void)tapGestureRecognized:(id)arg1;
@@ -28,7 +28,7 @@
 - (void)layoutSubviews;
 - (id)description;
 - (void)dealloc;
-- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(_Bool)arg4;
 
 // Remaining properties
 @property(nonatomic) __weak id <CKMovieBalloonViewDelegate> delegate; // @dynamic delegate;

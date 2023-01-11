@@ -6,11 +6,17 @@
 
 #import <UIKit/UINavigationController.h>
 
+@class DDFlightAction;
+
 __attribute__((visibility("hidden")))
 @interface DDAutoCloseNavigationController : UINavigationController
 {
+    DDFlightAction *_target;
 }
 
+- (void).cxx_destruct;
+@property __weak DDFlightAction *target; // @synthesize target=_target;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)closePressed;
 
 @end

@@ -15,15 +15,12 @@
     MPCPlaybackEngine *_playbackEngine;
     NSOperationQueue *_operationQueue;
     MPModelPlayEvent *_lastRecordedPlayEvent;
-    long long _currentRepeatType;
 }
 
-@property(nonatomic) long long currentRepeatType; // @synthesize currentRepeatType=_currentRepeatType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) MPModelPlayEvent *lastRecordedPlayEvent; // @synthesize lastRecordedPlayEvent=_lastRecordedPlayEvent;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-- (void).cxx_destruct;
-- (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
 - (id)initWithPlaybackEngine:(id)arg1;
 

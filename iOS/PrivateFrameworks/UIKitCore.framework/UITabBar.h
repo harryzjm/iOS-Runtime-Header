@@ -6,14 +6,15 @@
 
 #import <UIKitCore/UIBarPositioning-Protocol.h>
 #import <UIKitCore/_UIShadowedView-Protocol.h>
+#import <UIKitCore/_UITabBarDelegateInternal-Protocol.h>
 
 @class NSArray, NSString, UIColor, UIImage, UITabBarAppearance, UITabBarCustomizeView, UITabBarItem, UIView, _UITabBarAccessoryView, _UITabBarAppearanceStorage, _UITabBarVisualProvider;
-@protocol UITabBarDelegate;
+@protocol UITabBarDelegate, _UITabBarDelegateInternal;
 
-@interface UITabBar <_UIShadowedView, UIBarPositioning>
+@interface UITabBar <_UIShadowedView, UIBarPositioning, _UITabBarDelegateInternal>
 {
     UITabBarCustomizeView *_customizeView;
-    id <UITabBarDelegate> _delegate;
+    id <_UITabBarDelegateInternal> _delegate;
     NSArray *_items;
     UITabBarItem *_selectedItem;
     NSArray *_customizationItems;
@@ -32,6 +33,7 @@
         unsigned int disableBlurTinting:1;
         unsigned int pendingFocusAction:1;
         unsigned int springLoaded:1;
+        unsigned int delegateRespondsToInterfaceOrientationWindowSelector:1;
     } _tabBarFlags;
     _UITabBarAppearanceStorage *_appearanceStorage;
     _UITabBarVisualProvider *_visualProvider;
@@ -56,6 +58,7 @@
 + (id)_visualProviderForTabBar:(id)arg1;
 + (void)_initializeForIdiom:(long long)arg1;
 + (id)_unselectedTabTintColorForView:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property(nonatomic, getter=_displayStyle, setter=_setDisplayStyle:) long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property(retain, nonatomic) UIView *_expectedSuperviewFollowingAnimation; // @synthesize _expectedSuperviewFollowingAnimation=__expectedSuperviewFollowingAnimation;
@@ -70,7 +73,6 @@
 @property(nonatomic) double itemSpacing; // @synthesize itemSpacing=_itemSpacing;
 @property(nonatomic) double itemWidth; // @synthesize itemWidth=_itemDimension;
 @property(nonatomic) long long itemPositioning; // @synthesize itemPositioning=_itemPositioning;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *trailingAccessoryView;
 @property(readonly, nonatomic) UIView *leadingAccessoryView;
 @property(readonly, nonatomic) _UITabBarAccessoryView *_trailingBarAccessoryView;
@@ -101,12 +103,14 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)dismissCustomizeSheet:(_Bool)arg1;
 - (void)_tabBarFinishedAnimating;
+@property(nonatomic, getter=_deferViewUpdateToFocusUpdate, setter=_setDeferViewUpdateToFocusUpdate:) _Bool deferViewUpdateToFocusUpdate;
 @property(readonly, nonatomic, getter=_focusedIndex) long long focusedIndex;
 @property(readonly, nonatomic, getter=_focusedTabBarItem) UITabBarItem *focusedTabBarItem;
 @property(nonatomic, getter=_pendingFocusAction, setter=_setPendingFocusAction:) _Bool pendingFocusAction;
 @property(nonatomic, getter=_focusedItemHighlightShouldBeVisible, setter=_setFocusedItemHightlightShouldBeVisible:) _Bool focusedItemHighlightShouldBeVisible;
 @property(nonatomic, getter=_isHiddenAwaitingFocus, setter=_setHiddenAwaitingFocus:) _Bool hiddenAwaitingFocus;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (_Bool)canBecomeFocused;
 - (_Bool)_isEligibleForFocusInteraction;
 @property(nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle;
@@ -142,11 +146,13 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
 @property(readonly, nonatomic) UIView *_externalViewForSafeAreaInsets;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (_Bool)_isTranslucent;
 @property(nonatomic, setter=_setBarOrientation:) long long _barOrientation;
 - (long long)_effectiveBarOrientation;
+@property(readonly, nonatomic) long long _expectedInterfaceOrientation;
 - (void)removeConstraint:(id)arg1;
 - (void)addConstraint:(id)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;

@@ -14,6 +14,8 @@
 @property(readonly, nonatomic) NSDate *endDate;
 @property(readonly, nonatomic) NSDate *startDate;
 @property(readonly, nonatomic) NSDictionary *actionProperties;
+@property(readonly, nonatomic) NSString *localizedSubtitle;
+@property(readonly, nonatomic) NSString *localizedTitle;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, copy, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) unsigned short subtype;

@@ -21,24 +21,22 @@
     NSMutableDictionary *_registeredHandlers;
     _Bool _assetDownloadEnabled;
     CDUnknownBlockType _AWDMetricPosterBlock;
-    NSURL *_assetFileURL;
-    MAAsset *_currentOntologyAsset;
     MAAsset *_latestOntologyAsset;
-    long long _simulatedCompatibilityVersion;
-    HDPeriodicActivity *_catalogUpdatePeriodicActivity;
     NSMutableDictionary *_completionsByActivityName;
     HDDaemon *_daemon;
+    MAAsset *_currentOntologyAsset;
+    long long _simulatedCompatibilityVersion;
+    HDPeriodicActivity *_catalogUpdatePeriodicActivity;
 }
 
-@property(readonly, nonatomic) __weak HDDaemon *daemon; // @synthesize daemon=_daemon;
-@property(readonly, copy, nonatomic) NSMutableDictionary *completionsByActivityName; // @synthesize completionsByActivityName=_completionsByActivityName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HDPeriodicActivity *catalogUpdatePeriodicActivity; // @synthesize catalogUpdatePeriodicActivity=_catalogUpdatePeriodicActivity;
 @property(nonatomic) _Bool assetDownloadEnabled; // @synthesize assetDownloadEnabled=_assetDownloadEnabled;
 @property(nonatomic) long long simulatedCompatibilityVersion; // @synthesize simulatedCompatibilityVersion=_simulatedCompatibilityVersion;
-@property(retain, nonatomic) MAAsset *latestOntologyAsset; // @synthesize latestOntologyAsset=_latestOntologyAsset;
 @property(retain, nonatomic) MAAsset *currentOntologyAsset; // @synthesize currentOntologyAsset=_currentOntologyAsset;
-@property(copy, nonatomic) NSURL *assetFileURL; // @synthesize assetFileURL=_assetFileURL;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak HDDaemon *daemon; // @synthesize daemon=_daemon;
+@property(readonly, copy, nonatomic) NSMutableDictionary *completionsByActivityName; // @synthesize completionsByActivityName=_completionsByActivityName;
+@property(readonly, nonatomic) MAAsset *latestOntologyAsset; // @synthesize latestOntologyAsset=_latestOntologyAsset;
 - (_Bool)clearUserDefaultOverrideAssetFileURLWithError:(id *)arg1;
 - (id)setUserDefaultOverrideAssetFileURL:(id)arg1 error:(id *)arg2;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -75,6 +73,7 @@
 - (id)_userDefaultOverrideAssetFileURL;
 - (_Bool)_ignoreAssetEqualityComparison;
 - (id)_localFileURLForAsset:(id)arg1;
+@property(readonly, copy, nonatomic) NSURL *assetFileURL;
 @property(readonly, nonatomic) _HKMobileAssetDownloadManager *assetDownloadManager;
 - (void)dealloc;
 - (id)initWithDaemon:(id)arg1;

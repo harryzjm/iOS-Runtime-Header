@@ -20,10 +20,10 @@
 
 + (void)deletePreviewItemHardLinkURLs;
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isMergeableDataDirty) _Bool mergeableDataDirty; // @synthesize mergeableDataDirty=_mergeableDataDirty;
 @property(readonly, nonatomic) __weak ICAttachment *attachment; // @synthesize attachment=_attachment;
 @property _Bool previewGenerationOperationCancelled; // @synthesize previewGenerationOperationCancelled=_previewGenerationOperationCancelled;
-- (void).cxx_destruct;
 - (id)mergeableDataForCopying;
 - (id)dataForTypeIdentifier:(id)arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
@@ -38,7 +38,7 @@
 - (id)generateTemporaryURLWithExtension:(id)arg1;
 @property(readonly, nonatomic) NSURL *previewItemURL;
 - (id)titleForSubAttachment:(id)arg1;
-- (id)hardLinkFolderPath;
+- (id)hardLinkFolderURL;
 - (_Bool)canConvertToHTMLForSharing;
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
 - (void)noteWillAddOrRemovePassword;

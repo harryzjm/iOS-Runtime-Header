@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <PeopleSuggester/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface _PSSuggestionProxy : NSObject
+@interface _PSSuggestionProxy : NSObject <NSSecureCoding>
 {
     _Bool _useGroupsWhenFindingRecipient;
     NSString *_bundleID;
@@ -19,6 +21,8 @@
     NSString *_reasonType;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool useGroupsWhenFindingRecipient; // @synthesize useGroupsWhenFindingRecipient=_useGroupsWhenFindingRecipient;
 @property(readonly, copy, nonatomic) NSString *reasonType; // @synthesize reasonType=_reasonType;
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
@@ -26,7 +30,8 @@
 @property(readonly, copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property(readonly, copy, nonatomic) NSString *interactionRecipients; // @synthesize interactionRecipients=_interactionRecipients;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

@@ -17,11 +17,10 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isPurgeable; // @synthesize isPurgeable=_isPurgeable;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (_Bool)markPurgeableWithError:(id *)arg1;
-- (_Bool)_isPurgeableAccount:(id)arg1;
 - (id)initWithFile:(id)arg1 account:(id)arg2;
 
 // Remaining properties

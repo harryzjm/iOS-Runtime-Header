@@ -13,14 +13,15 @@
 @interface GEOImageServiceImage : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSData *_imageId;
     NSData *_image;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_imageId:1;
         unsigned int read_image:1;
-        unsigned int wrote_imageId:1;
-        unsigned int wrote_image:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -34,14 +35,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *image;
 @property(readonly, nonatomic) _Bool hasImage;
-- (void)_readImage;
 @property(retain, nonatomic) NSData *imageId;
 @property(readonly, nonatomic) _Bool hasImageId;
-- (void)_readImageId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

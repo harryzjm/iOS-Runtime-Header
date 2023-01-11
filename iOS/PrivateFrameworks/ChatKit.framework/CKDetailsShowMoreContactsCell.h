@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (double)preferredHeight;
 + (_Bool)shouldHighlight;
 + (id)reuseIdentifier;
++ (Class)cellClass;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

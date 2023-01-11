@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     TVPDownload *_downloadInternal;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TVPDownload *downloadInternal; // @synthesize downloadInternal=_downloadInternal;
 @property(retain, nonatomic) VUIMediaEntityAssetControllerState *stateInternal; // @synthesize stateInternal=_stateInternal;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueueInternal; // @synthesize completionDispatchQueueInternal=_completionDispatchQueueInternal;
@@ -32,19 +33,23 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VUIMediaEntityAssetControllerDelegate> delegateInternal; // @synthesize delegateInternal=_delegateInternal;
 @property(retain, nonatomic) NSObject<VUIMediaEntityIdentifier> *mediaEntityIdentifierInternal; // @synthesize mediaEntityIdentifierInternal=_mediaEntityIdentifierInternal;
 @property(retain, nonatomic) VUIVideoManagedObject *videoManagedObjectInternal; // @synthesize videoManagedObjectInternal=_videoManagedObjectInternal;
-- (void).cxx_destruct;
 - (void)_updateDownloadStateAndNotifyDelegates;
 - (void)_updateObservedDownload;
 - (void)download:(id)arg1 progressDidChange:(double)arg2;
 - (void)download:(id)arg1 didChangeStateTo:(long long)arg2;
 - (void)downloadManagerDownloadsDidChange:(id)arg1;
+- (void)cancelKeyFetch;
 - (void)cancelAndRemoveDownload;
 - (void)resumeDownload;
 - (void)pauseDownload;
-- (void)startDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchNewKeysForDownloadedVideo;
+- (void)deleteAndRedownloadAllowingCellular:(_Bool)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)startDownloadAllowingCellular:(_Bool)arg1 quality:(long long)arg2 shouldMarkAsDeletedOnCancellationOrFailure:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue;
 @property(readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state;
+@property(readonly, nonatomic) _Bool contentAllowsCellularDownload;
+@property(readonly, nonatomic) _Bool supportsRedownloadingContent;
 @property(readonly, nonatomic) _Bool supportsStartingDownload;
 @property(nonatomic) __weak id <VUIMediaEntityAssetControllerDelegate> delegate;
 @property(readonly, copy, nonatomic) VUIMediaEntityType *mediaEntityType;

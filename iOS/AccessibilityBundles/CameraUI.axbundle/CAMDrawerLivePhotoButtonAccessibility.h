@@ -19,7 +19,6 @@
 - (id)accessibilityHint;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
-- (void)setLivePhotoMode:(long long)arg1;
 
 @end
 

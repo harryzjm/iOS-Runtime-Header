@@ -6,15 +6,14 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class CSPageViewController;
-@protocol CSCoverSheetParticipating, SBFLegibilitySettingsProvider;
+@class UIViewController;
+@protocol SBFLegibilitySettingsProvider;
 
 @protocol CSSpotlightPresenting <NSObject>
-@property(nonatomic) __weak CSPageViewController *todayPageViewController;
 - (id <SBFLegibilitySettingsProvider>)createSpotlightLegiblitySettingsProvider;
 - (void)dismissSpotlightWithCompletion:(void (^)(void))arg1;
 - (void)dismissSpotlight;
-- (void)launchSpotlightForSourceViewController:(id <CSCoverSheetParticipating>)arg1 interactive:(_Bool)arg2 completion:(void (^)(void))arg3;
-- (void)launchSpotlightForSourceViewController:(id <CSCoverSheetParticipating>)arg1 interactive:(_Bool)arg2;
+- (void)launchSpotlightForSourceViewController:(UIViewController *)arg1 interactive:(_Bool)arg2 completion:(void (^)(void))arg3;
+- (void)launchSpotlightForSourceViewController:(UIViewController *)arg1 interactive:(_Bool)arg2;
 @end
 

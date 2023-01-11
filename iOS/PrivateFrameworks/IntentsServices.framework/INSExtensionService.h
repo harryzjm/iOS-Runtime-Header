@@ -24,9 +24,9 @@
     id <INSExtensionServiceDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <INSExtensionServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
-- (void).cxx_destruct;
 - (CDUnknownBlockType)completionHandlerForAppLaunchCommand:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)analytics:(id)arg1 contextDictionaryForError:(id)arg2;
 - (id)analytics:(id)arg1 contextDictionaryForCommand:(id)arg2;
@@ -42,6 +42,8 @@
 - (id)_extensionInputItems;
 - (void)_extensionRequestDidFinishForIntent:(id)arg1 error:(id)arg2;
 - (void)_extensionRequestWillStartForIntent:(id)arg1;
+- (_Bool)_isVoiceShortcutsRemoteExecutionUnavailable:(id)arg1;
+- (_Bool)_errorImpliesCloudRelay:(id)arg1;
 @property(copy, nonatomic) NSArray *airPlayRouteIdentifiers;
 @property(readonly, nonatomic) INExtensionContext *extensionContext; // @synthesize extensionContext=_extensionContext;
 - (void)resetExternalResources;

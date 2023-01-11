@@ -13,20 +13,19 @@
 @interface GEOURLRouteHandle : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSData *_directionsResponseID;
     NSData *_routeID;
     NSData *_transitData;
     NSData *_zilchPoints;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_directionsResponseID:1;
         unsigned int read_routeID:1;
         unsigned int read_transitData:1;
         unsigned int read_zilchPoints:1;
-        unsigned int wrote_directionsResponseID:1;
-        unsigned int wrote_routeID:1;
-        unsigned int wrote_transitData:1;
-        unsigned int wrote_zilchPoints:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,20 +39,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *transitData;
 @property(readonly, nonatomic) _Bool hasTransitData;
-- (void)_readTransitData;
 @property(retain, nonatomic) NSData *zilchPoints;
 @property(readonly, nonatomic) _Bool hasZilchPoints;
-- (void)_readZilchPoints;
 @property(retain, nonatomic) NSData *routeID;
 @property(readonly, nonatomic) _Bool hasRouteID;
-- (void)_readRouteID;
 @property(retain, nonatomic) NSData *directionsResponseID;
 @property(readonly, nonatomic) _Bool hasDirectionsResponseID;
-- (void)_readDirectionsResponseID;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

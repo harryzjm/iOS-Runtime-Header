@@ -9,14 +9,15 @@
 #import <PhotosUI/PUCropPerspectiveAdjustmentsDataSourceDelegate-Protocol.h>
 #import <PhotosUI/PUCropTransformedImageViewDelegate-Protocol.h>
 #import <PhotosUI/PUCropVideoScrubberViewDelegate-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CEKBadgeTextView, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PFCoalescer, PFSerialQueue, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
+@class CEKBadgeTextView, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PFSerialQueue, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, PXImageLayerModulator, PXImageModulationManager, PXUIButton, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface PUCropToolController <UIGestureRecognizerDelegate, PUCropTransformedImageViewDelegate, PUCropAspectViewControllerDelegate, PUCropPerspectiveAdjustmentsDataSourceDelegate, PUAdjustmentViewControllerDelegate, PUCropVideoScrubberViewDelegate, UIPopoverPresentationControllerDelegate>
+@interface PUCropToolController <UIGestureRecognizerDelegate, PUCropTransformedImageViewDelegate, PUCropAspectViewControllerDelegate, PUCropPerspectiveAdjustmentsDataSourceDelegate, PUAdjustmentViewControllerDelegate, PUCropVideoScrubberViewDelegate, UIPopoverPresentationControllerDelegate, PXChangeObserver>
 {
     _Bool _imageLoadingInProgress;
     _Bool __contentViewsHidden;
@@ -47,11 +48,11 @@ __attribute__((visibility("hidden")))
     PUAdjustmentsViewController *_adjustmentsViewController;
     UIView *_containerView;
     UIView *_adjustmentPickerView;
-    UIButton *__autoButton;
+    PXUIButton *__autoButton;
     long long _autoButtonMode;
-    UIButton *__rotateButton;
-    UIButton *__flipButton;
-    UIButton *__aspectButton;
+    PXUIButton *__rotateButton;
+    PXUIButton *__flipButton;
+    PXUIButton *__aspectButton;
     UIButton *__perspectiveButton;
     PUEditActionActivity *_overcaptureSourceToggleActivity;
     PUCropPerspectiveView *__cropView;
@@ -84,12 +85,14 @@ __attribute__((visibility("hidden")))
     double __suggestedPitchAngle;
     double __suggestedYawAngle;
     PUCropVideoScrubberView *_videoScrubberView;
-    PFCoalescer *_videoScrubberCoalescer;
     double _screenScale;
     PFSerialQueue *_imageLoadingQueue;
     NSMutableArray *_imageLoadingQueueCompletionBlocks;
     UILongPressGestureRecognizer *__accessibilityLongPressGestureRecognizer;
     CEKBadgeTextView *_badgeView;
+    PXImageModulationManager *_imageModulationManager;
+    PXImageLayerModulator *_imageLayerModulator;
+    struct CGSize _minimumViewCropRectSizeForHandleGesture;
     struct CGSize _screenSize;
     CDStruct_1b6d18a9 _videoScrubberSeekTime;
     struct CGRect __initialHandlePanCropRect;
@@ -100,6 +103,9 @@ __attribute__((visibility("hidden")))
     struct CGRect __suggestedCrop;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
+@property(retain, nonatomic) PXImageModulationManager *imageModulationManager; // @synthesize imageModulationManager=_imageModulationManager;
 @property(nonatomic) _Bool disableSourceSwitch; // @synthesize disableSourceSwitch=_disableSourceSwitch;
 @property(nonatomic) _Bool autoButtonInReframeMode; // @synthesize autoButtonInReframeMode=_autoButtonInReframeMode;
 @property(nonatomic) _Bool imageIsUsingReframe; // @synthesize imageIsUsingReframe=_imageIsUsingReframe;
@@ -113,7 +119,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize screenSize; // @synthesize screenSize=_screenSize;
 @property(nonatomic) _Bool videoScrubberIsInteracting; // @synthesize videoScrubberIsInteracting=_videoScrubberIsInteracting;
 @property(nonatomic) CDStruct_1b6d18a9 videoScrubberSeekTime; // @synthesize videoScrubberSeekTime=_videoScrubberSeekTime;
-@property(retain, nonatomic) PFCoalescer *videoScrubberCoalescer; // @synthesize videoScrubberCoalescer=_videoScrubberCoalescer;
 @property(retain, nonatomic) PUCropVideoScrubberView *videoScrubberView; // @synthesize videoScrubberView=_videoScrubberView;
 @property(nonatomic, setter=_setHasRequestedPerspectiveSuggestion:) _Bool _hasRequestedPerspectiveSuggestion; // @synthesize _hasRequestedPerspectiveSuggestion=__hasRequestedPerspectiveSuggestion;
 @property(nonatomic, setter=_setHasAppliedPerspectiveSuggestion:) _Bool _hasAppliedPerspectiveSuggestion; // @synthesize _hasAppliedPerspectiveSuggestion=__hasAppliedPerspectiveSuggestion;
@@ -161,6 +166,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setInitialHandlePanCropRect:) struct CGRect _initialHandlePanCropRect; // @synthesize _initialHandlePanCropRect=__initialHandlePanCropRect;
 @property(retain, nonatomic, setter=_setInitialLocationsInHandlesByHandle:) NSMutableDictionary *_initialLocationsInHandlesByHandle; // @synthesize _initialLocationsInHandlesByHandle=__initialLocationsInHandlesByHandle;
 @property(retain, nonatomic) PUCropPerspectiveAdjustmentsDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(nonatomic) struct CGSize minimumViewCropRectSizeForHandleGesture; // @synthesize minimumViewCropRectSizeForHandleGesture=_minimumViewCropRectSizeForHandleGesture;
 @property(retain, nonatomic) PUCropAspectFlipperView *cropAspectFlipperView; // @synthesize cropAspectFlipperView=_cropAspectFlipperView;
 @property(retain, nonatomic) PUCropAspectViewController *cropAspectViewController; // @synthesize cropAspectViewController=_cropAspectViewController;
 @property(retain, nonatomic, setter=_setRotateSnapshotView:) UIView *_rotateSnapshotView; // @synthesize _rotateSnapshotView=__rotateSnapshotView;
@@ -171,23 +177,21 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setCropView:) PUCropPerspectiveView *_cropView; // @synthesize _cropView=__cropView;
 @property(retain, nonatomic) PUEditActionActivity *overcaptureSourceToggleActivity; // @synthesize overcaptureSourceToggleActivity=_overcaptureSourceToggleActivity;
 @property(retain, nonatomic, setter=_setPerspectiveButton:) UIButton *_perspectiveButton; // @synthesize _perspectiveButton=__perspectiveButton;
-@property(retain, nonatomic, setter=_setAspectButton:) UIButton *_aspectButton; // @synthesize _aspectButton=__aspectButton;
-@property(retain, nonatomic, setter=_setFlipButton:) UIButton *_flipButton; // @synthesize _flipButton=__flipButton;
-@property(retain, nonatomic, setter=_setRotateButton:) UIButton *_rotateButton; // @synthesize _rotateButton=__rotateButton;
+@property(retain, nonatomic, setter=_setAspectButton:) PXUIButton *_aspectButton; // @synthesize _aspectButton=__aspectButton;
+@property(retain, nonatomic, setter=_setFlipButton:) PXUIButton *_flipButton; // @synthesize _flipButton=__flipButton;
+@property(retain, nonatomic, setter=_setRotateButton:) PXUIButton *_rotateButton; // @synthesize _rotateButton=__rotateButton;
 @property(nonatomic) long long autoButtonMode; // @synthesize autoButtonMode=_autoButtonMode;
-@property(retain, nonatomic, setter=_setAutoButton:) UIButton *_autoButton; // @synthesize _autoButton=__autoButton;
+@property(retain, nonatomic, setter=_setAutoButton:) PXUIButton *_autoButton; // @synthesize _autoButton=__autoButton;
 @property(retain, nonatomic) UIView *adjustmentPickerView; // @synthesize adjustmentPickerView=_adjustmentPickerView;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) PUAdjustmentsViewController *adjustmentsViewController; // @synthesize adjustmentsViewController=_adjustmentsViewController;
 @property(nonatomic) _Bool imageLoadingInProgress; // @synthesize imageLoadingInProgress=_imageLoadingInProgress;
-- (void).cxx_destruct;
 - (void)_accessibilityLongPressChanged:(id)arg1;
 - (void)_preferredContentSizeCategoryChanged;
 - (id)adjustmentsRenderer:(id)arg1;
 - (void)adjustmentsDataChanged:(id)arg1;
 - (void)cropAspectFlipperView:(id)arg1 cropOrientationSelected:(long long)arg2;
 - (void)cropAspectController:(id)arg1 cropAspectSelected:(id)arg2;
-- (void)invalidateTrashedStateForOvercaptureResources;
 - (void)_toggleOvercaptureSource;
 - (long long)toolControllerTag;
 - (void)_cropToggleTapped:(id)arg1;
@@ -196,6 +200,7 @@ __attribute__((visibility("hidden")))
 - (void)_gridButtonTapped:(id)arg1;
 - (void)_flipButtonTapped:(id)arg1;
 - (void)_rotateButtonTapped:(id)arg1;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
 - (id)trailingToolbarViews;
 - (id)centerToolbarView;
@@ -232,6 +237,7 @@ __attribute__((visibility("hidden")))
 - (void)videoScrubberViewDidScrubTo:(CDStruct_1b6d18a9)arg1;
 - (void)showBadgeView:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)createVideoScrubber;
+- (void)updateCropAspectRatioOrientation:(long long)arg1;
 - (void)_recomposeCropRectAnimated:(_Bool)arg1;
 - (struct CGRect)_suggestedCropRectForImageRect:(struct CGRect)arg1;
 - (struct CGRect)_cropCanvasFrame;
@@ -261,6 +267,8 @@ __attribute__((visibility("hidden")))
 - (void)updateViewOrdering;
 - (void)_updateCropViewsForInteraction;
 - (void)_updateCropToggleButton;
+- (void)_updateCropToggleButtonMode;
+- (void)_updateOvercaptureSourceSwitchActivity;
 - (void)_updateCropActionButtons;
 - (_Bool)_hasPerspectiveSuggestion;
 - (void)_loadPerspectiveSuggestionIfNeeded;
@@ -304,6 +312,8 @@ __attribute__((visibility("hidden")))
 - (void)_loadImageIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_createRendererIfNeeded;
 - (void)_updateRendererWithCurrentComposition;
+- (_Bool)_overcaptureSourceUsed;
+- (_Bool)_forceOvercaptureSourceForCrop;
 - (void)_performLocalCropModelChanges:(CDUnknownBlockType)arg1;
 - (void)_performLocalModelChanges:(CDUnknownBlockType)arg1;
 - (void)setDelegate:(id)arg1;
@@ -325,6 +335,7 @@ __attribute__((visibility("hidden")))
 - (void)_layoutAdjustmentTools;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties

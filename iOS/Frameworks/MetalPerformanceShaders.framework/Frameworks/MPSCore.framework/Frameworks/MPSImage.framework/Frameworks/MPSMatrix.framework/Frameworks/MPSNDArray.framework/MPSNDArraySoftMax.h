@@ -11,7 +11,7 @@
     unsigned long long _axis;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long axis; // @synthesize axis=_axis;
 - (id)reshapeFitToTileToCommandBuffer:(id)arg1 currentSource:(id)arg2 kernelDimension:(unsigned long long)arg3 dimensionsToBeRetained: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)dimensionsToBeRetained;

@@ -25,8 +25,8 @@
 @property(retain, nonatomic) NSString *contextStamp; // @synthesize contextStamp=_contextStamp;
 - (_Bool)populateLocalURLsForTransfer:(id)arg1 fromCKRecord:(id)arg2;
 - (void)resetSyncStateForRecord:(id)arg1 toState:(long long)arg2;
-- (void)markTransferAsNotSyncSuccessfullyDownloadedFromCloud:(id)arg1;
-- (void)markTransferAsNotSyncSuccessFullyUsingCKRecord:(id)arg1;
+- (void)markTransferAsNotSuccessfullyDownloadedFromCloud:(id)arg1;
+- (void)markTransferAsNotSyncedSuccessfully:(id)arg1;
 - (id)updateTransfersWithCKRecord:(id)arg1 recordWasFetched:(_Bool)arg2 downloadAsset:(_Bool *)arg3;
 - (_Bool)_usingStingRay;
 - (_Bool)_shouldDownloadAssetForTransfer:(id)arg1 forMessageItem:(id)arg2;
@@ -41,6 +41,7 @@
 - (void)sizePreviewsForTransferGUIDs:(id)arg1;
 - (_Bool)initiateHighQualityDownload:(id)arg1;
 - (_Bool)markAttachment:(id)arg1 sender:(id)arg2 recipients:(id)arg3 isIncoming:(_Bool)arg4;
+- (id)guidsForStoredAttachmentPayloadDataURLs:(id)arg1 messageGUID:(id)arg2;
 - (id)guidsForStoredAttachmentPayloadData:(id)arg1 messageGUID:(id)arg2;
 - (id)_getNewFileTransferForStoredAttachmentPayloadDataWithTransferGUID:(id)arg1 messageGUID:(id)arg2;
 - (void)_handleFileTransferRemoved:(id)arg1;
@@ -52,6 +53,7 @@
 - (id)_allFileTransfers;
 - (void)acceptTransfer:(id)arg1 path:(id)arg2;
 - (void)failTransfer:(id)arg1 error:(id)arg2;
+- (void)setRecoverableErrorForTransfer:(id)arg1 error:(long long)arg2;
 - (void)resetTransferAndPostError:(id)arg1 error:(id)arg2;
 - (void)updateTransfer:(id)arg1 withPreviewSize:(id)arg2 forConstraints:(struct IMPreviewConstraints)arg3;
 - (void)failTransferPreviewGeneration:(id)arg1;
@@ -93,7 +95,6 @@
 - (void)archiveFileTransfer:(id)arg1;
 - (void)_archiveFileTransfer:(id)arg1;
 - (id)_dictionaryRepresentationsForFileTransfers:(id)arg1 toSave:(_Bool)arg2;
-- (id)_temporaryPathForGUID:(id)arg1 filename:(id)arg2;
 - (void)_postUpdated:(id)arg1;
 - (void)_updateContextStamp;
 - (void)_completeProgressForTransferGUID:(id)arg1;

@@ -12,13 +12,15 @@
 {
 }
 
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (Class)configurationClass;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 @property(nonatomic) float faceBoundingBoxExpansionRatio;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputfacesThatNeedSegments:(id)arg4;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (long long)dependencyProcessingOrdinality;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

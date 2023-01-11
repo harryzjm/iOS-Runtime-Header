@@ -6,28 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSArray, NSSet, NSString;
 
-@interface RBSProcessStateDescriptor : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSProcessStateDescriptor : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     NSSet *_endowmentNamespaces;
     unsigned long long _values;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (id)descriptor;
-@property(nonatomic) unsigned long long values; // @synthesize values=_values;
 - (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+@property(nonatomic) unsigned long long values; // @synthesize values=_values;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (void)filterState:(id)arg1;
@@ -36,7 +33,6 @@
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSMutableArray, PKBarcode, UIImage, UIImageView, UILabel, UIView;
+@class NSMutableArray, PKBarcode, UIImage, UIImageView, UILabel;
 
 @interface PKBarcodeStickerView : UIButton
 {
@@ -17,17 +17,22 @@
     NSMutableArray *_stickerConstraints;
     NSMutableArray *_matteConstraints;
     UILabel *_altTextLabel;
+    _Bool _barcodeViewInvalidated;
     _Bool _drawBarcode;
+    _Bool _shouldMatteCode;
     long long _validity;
+    struct CGSize _desiredBarcodeSize;
 }
 
 + (struct CGSize)_sizeForBarcode:(id)arg1;
-+ (struct PKBarcodeQuietZone)_quiteZoneForBarcode:(id)arg1;
++ (struct PKBarcodeQuietZone)_quietZoneForBarcode:(id)arg1;
 + (long long)validityStateForPass:(id)arg1;
-@property(readonly, nonatomic) UIView *matteView; // @synthesize matteView=_matteView;
-@property(nonatomic) long long validity; // @synthesize validity=_validity;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldMatteCode; // @synthesize shouldMatteCode=_shouldMatteCode;
+@property(nonatomic) struct CGSize desiredBarcodeSize; // @synthesize desiredBarcodeSize=_desiredBarcodeSize;
+@property(nonatomic) long long validity; // @synthesize validity=_validity;
 - (id)barcodeImage;
+- (void)_updateMatteViewHiding;
 - (void)_updateDrawBarcode;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

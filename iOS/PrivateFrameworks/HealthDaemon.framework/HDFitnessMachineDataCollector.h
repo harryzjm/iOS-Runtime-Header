@@ -33,8 +33,8 @@
     NSDate *_machinePreferredUntilDate;
 }
 
-@property(retain, nonatomic) NSDate *machinePreferredUntilDate; // @synthesize machinePreferredUntilDate=_machinePreferredUntilDate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *machinePreferredUntilDate; // @synthesize machinePreferredUntilDate=_machinePreferredUntilDate;
 - (void)_queue_handleConfigurationChanged:(id)arg1;
 - (void)unitTest_processDatumsByMetric:(id)arg1;
 - (long long)_getLongFromDatum:(id)arg1 unitString:(id)arg2 defaultValue:(long long)arg3;
@@ -49,7 +49,7 @@
 - (id)sourceForDataAggregator:(id)arg1;
 - (void)dataAggregator:(id)arg1 wantsCollectionWithConfiguration:(id)arg2;
 - (void)beginCollectionForDataAggregator:(id)arg1 lastPersistedSensorDatum:(id)arg2;
-- (id)_filterForFitnessMachineSamplesWithStartDate:(id)arg1 endDate:(id)arg2;
+- (id)_filterForFitnessMachineSamplesWithStartDate:(id)arg1 endDate:(id)arg2 quantityType:(id)arg3;
 - (void)_queue_fitnessMachineSumForType:(id)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_queue_calculateDatumForAggregatorType:(id)arg1 currentDatum:(id)arg2 previousDatum:(id)arg3;
 - (void)_queue_processDatumsByMetric:(id)arg1 timestamp:(id)arg2;

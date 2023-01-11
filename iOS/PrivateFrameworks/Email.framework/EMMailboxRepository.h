@@ -8,7 +8,7 @@
 #import <Email/EMMailboxChangeObserver-Protocol.h>
 #import <Email/EMMailboxTypeResolver-Protocol.h>
 
-@class EFPromise, EMAccountRepository, EMRemoteConnection, NSMapTable, NSMutableDictionary, NSOrderedSet, NSString;
+@class EFPromise, EMAccountRepository, EMRemoteConnection, NSMapTable, NSMutableDictionary, NSOrderedSet, NSSet, NSString;
 @protocol EFCancelable;
 
 @interface EMMailboxRepository <EFLoggable, EMMailboxChangeObserver, EMMailboxTypeResolver>
@@ -25,17 +25,22 @@
 
 + (id)remoteInterface;
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) EMAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
 @property(retain, nonatomic) NSMapTable *observerMap; // @synthesize observerMap=_observerMap;
 @property(retain, nonatomic) EFPromise *mailboxesPromise; // @synthesize mailboxesPromise=_mailboxesPromise;
 @property(retain, nonatomic) id <EFCancelable> registrationCancelable; // @synthesize registrationCancelable=_registrationCancelable;
 @property(retain) EMRemoteConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 @property(readonly) NSOrderedSet *mailboxesIfAvailable;
+- (id)_mailboxesFuture;
 - (void)mailboxListChanged:(id)arg1;
 - (id)_filterIDsFromMailbox:(id)arg1 withQuery:(id)arg2;
+- (long long)remoteMailboxTypeForMailboxObjectID:(id)arg1;
 - (long long)mailboxTypeForMailboxObjectID:(id)arg1;
+- (id)remoteMailboxObjectIDsForMailboxType:(long long)arg1;
 - (id)mailboxObjectIDsForMailboxType:(long long)arg1;
+- (id)remoteAllMailboxObjectIDs;
+@property(readonly, nonatomic) NSSet *allMailboxObjectIDs;
 - (id)performMailboxChangeAction:(id)arg1;
 - (void)refreshMailboxList;
 - (id)mailboxesForObjectIDs:(id)arg1;
@@ -50,7 +55,7 @@
 - (id)initForTestingWithAccountRepository:(id)arg1;
 - (id)initForTesting;
 - (id)initWithRemoteConnection:(id)arg1 accountRepository:(id)arg2;
-- (id)_init;
+- (id)initInternal;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

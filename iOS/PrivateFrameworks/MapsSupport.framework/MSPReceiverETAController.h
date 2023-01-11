@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
     id <MSPReceiverETAControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <MSPReceiverETAControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MSPReceiverETAControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)groupSessionEnded:(id)arg1;
 - (void)groupSession:(id)arg1 participantDidLeave:(id)arg2;
 - (void)groupSession:(id)arg1 participantDidJoin:(id)arg2;
@@ -39,12 +39,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateDelegateWithUpdateState:(id)arg1 to:(id)arg2 freshAvailable:(_Bool)arg3;
 - (void)_updateData:(id)arg1 forGroup:(id)arg2 fromID:(id)arg3;
 - (_Bool)_allowMessageWithState:(id)arg1 forGroup:(id)arg2 fromID:(id)arg3;
+- (void)updateContacts;
 - (void)_resolveContactIfNeeded:(id)arg1 fromId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_showOrUpdateNotificationIfNeeded:(id)arg1;
 - (void)blockSharedTrip:(id)arg1;
-- (void)unsubscribeFromUpdatesToSharedTrip:(id)arg1;
-- (void)subscribeToUpdatesToSharedTrip:(id)arg1;
+- (_Bool)unsubscribeFromUpdatesToSharedTrip:(id)arg1 error:(id *)arg2;
+- (_Bool)subscribeToUpdatesToSharedTrip:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSArray *allTrips;
+- (void)cleanTimer;
 - (void)_setNotificationCenter:(id)arg1;
 - (void)dealloc;
 - (id)initWithRelay:(id)arg1;

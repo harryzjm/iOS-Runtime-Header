@@ -6,11 +6,12 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class NSArray, PSListController, PSSimStatusCache, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
+@class NSArray, PSListController, PSSimStatusCache, PSUICellularDataListItemsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularDataSpecifier : PSSpecifier
 {
+    PSUICellularDataListItemsController *_detailController;
     PSListController *_hostController;
     PSSimStatusCache *_simStatusCache;
     PSUICellularPlanManagerCache *_planManagerCache;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSArray *_cachedPlanItems;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *cachedPlanItems; // @synthesize cachedPlanItems=_cachedPlanItems;
 @property(retain, nonatomic) PSUIDeviceWiFiState *wifiState; // @synthesize wifiState=_wifiState;
 @property(retain, nonatomic) PSUICoreTelephonyCallCache *callCache; // @synthesize callCache=_callCache;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property(retain, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
-- (void).cxx_destruct;
+@property(nonatomic) __weak PSUICellularDataListItemsController *detailController; // @synthesize detailController=_detailController;
 - (void)canceledDataSwitch:(id)arg1;
 - (id)callEndConfirmationSpecifier;
 - (id)subscriptionContextForListItem:(id)arg1;
@@ -41,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)setCellularDataEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isCellularDataEnabled:(id)arg1;
 - (void)setAirplaneMode:(_Bool)arg1;
-- (_Bool)isSubcontrollerNeeded;
+- (_Bool)isDetailControllerNeeded;
 - (void)updateCachedState;
 - (id)initWithHostController:(id)arg1 simStatusCache:(id)arg2 planManagerCache:(id)arg3 callCache:(id)arg4 dataCache:(id)arg5 wifiState:(id)arg6;
 - (id)initWithHostController:(id)arg1;

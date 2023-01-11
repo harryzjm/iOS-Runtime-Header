@@ -13,14 +13,16 @@
 @interface LPVideoProperties : NSObject <NSCopying>
 {
     _Bool _hasAudio;
+    UIColor *_overlappingControlsColor;
     NSString *_accessibilityText;
-    UIColor *__overlappingControlsColor;
 }
 
-@property(retain, nonatomic, setter=_setOverlappingControlsColor:) UIColor *_overlappingControlsColor; // @synthesize _overlappingControlsColor=__overlappingControlsColor;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
 @property(nonatomic) _Bool hasAudio; // @synthesize hasAudio=_hasAudio;
-- (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setOverlappingControlsColor:) UIColor *_overlappingControlsColor; // @synthesize _overlappingControlsColor;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

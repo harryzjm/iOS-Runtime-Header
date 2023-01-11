@@ -8,6 +8,7 @@
 
 @class HKAuthorizationRequestRecord;
 
+__attribute__((visibility("hidden")))
 @interface HDRemoteAuthorizationRequestContext : NSObject
 {
     HKAuthorizationRequestRecord *_requestRecord;
@@ -15,10 +16,10 @@
     CDUnknownBlockType _completion;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(copy, nonatomic) CDUnknownBlockType requestSentHandler; // @synthesize requestSentHandler=_requestSentHandler;
 @property(retain, nonatomic) HKAuthorizationRequestRecord *requestRecord; // @synthesize requestRecord=_requestRecord;
-- (void).cxx_destruct;
 
 @end
 

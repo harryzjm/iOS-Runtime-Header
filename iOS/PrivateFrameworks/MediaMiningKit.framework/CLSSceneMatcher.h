@@ -13,8 +13,9 @@
     NSMutableDictionary *_confidenceThresholdBySceneIdentifierBySceneLabel;
 }
 
++ (id)sceneNamesWithSceneLabel:(id)arg1;
 + (id)confidenceThresholdTypeBySceneLabel;
-+ (id)sceneNameBySceneLabel;
++ (id)sceneNamesBySceneLabel;
 + (id)whiteboardSceneNames;
 + (id)interestingSceneNames;
 + (id)childTeenAndAdultSceneNames;

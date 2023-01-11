@@ -9,26 +9,20 @@
 #import <EmailFoundation/EFSQLUpdateStatementValue-Protocol.h>
 
 @class NSMutableDictionary, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLUpdateStatement : NSObject <EFSQLUpdateStatementValue>
 {
-    id <EFSQLExpressable> _whereClause;
+    id <EFSQLValueExpressable> _whereClause;
     NSMutableDictionary *_bindables;
     NSMutableDictionary *_expressables;
     NSString *_table;
     unsigned long long _conflictResolution;
 }
 
-@property(readonly, nonatomic) unsigned long long conflictResolution; // @synthesize conflictResolution=_conflictResolution;
-@property(retain, nonatomic) NSString *table; // @synthesize table=_table;
-@property(retain, nonatomic) NSMutableDictionary *expressables; // @synthesize expressables=_expressables;
-@property(retain, nonatomic) NSMutableDictionary *bindables; // @synthesize bindables=_bindables;
-@property(retain, nonatomic) id <EFSQLExpressable> whereClause; // @synthesize whereClause=_whereClause;
 - (void).cxx_destruct;
-- (id)_queryStringForUpsert:(_Bool)arg1;
+@property(retain, nonatomic) id <EFSQLValueExpressable> whereClause; // @synthesize whereClause=_whereClause;
 @property(readonly, copy, nonatomic) NSString *queryString;
-- (id)queryStringForUpsert;
 - (void)enumerateBindingNamesAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;

@@ -22,15 +22,21 @@
 + (_Bool)_allowVideoAccessForAsset:(id)arg1 options:(id)arg2;
 + (unsigned long long)_nextManagerID;
 + (id)defaultManager;
++ (void)buildExportSessionFromVideoURL:(id)arg1 infoDictionary:(id)arg2 exportPreset:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)buildAVAssetFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)buildAVPlayerItemFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)_videoAVObjectBuilderFromVideoURL:(id)arg1 info:(id)arg2 playbackOnly:(_Bool)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long managerID; // @synthesize managerID=_managerID;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
-- (void).cxx_destruct;
 - (void)mediaRequestContextDidFinish:(id)arg1;
 - (void)mediaRequestContext:(id)arg1 isQueryingCacheForRequest:(id)arg2 didWait:(_Bool *)arg3 didFindImage:(_Bool *)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (int)requestAVProxyForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestAnimatedImageForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestContentEditingInputForAsset:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_shouldUseRAWResourceAsUnadjustedBaseForAsset:(id)arg1 options:(id)arg2;
 - (int)requestAVAssetForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (int)_requestLiveRenderAVAssetForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestURLForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestNewCGImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (id)synchronousImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
@@ -53,10 +59,6 @@
 - (id)init;
 - (int)requestImagePropertiesForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)_requestImagePropertiesFromFileForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
-- (void)buildExportSessionFromVideoURL:(id)arg1 infoDictionary:(id)arg2 exportPreset:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)buildAVAssetFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)buildAVPlayerItemFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_videoAVObjectBuilderFromVideoURL:(id)arg1 info:(id)arg2 playbackOnly:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

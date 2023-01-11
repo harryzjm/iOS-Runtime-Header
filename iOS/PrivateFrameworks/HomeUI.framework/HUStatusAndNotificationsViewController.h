@@ -18,25 +18,27 @@
     HUCameraSmartNotificationSettingsModuleController *_cameraSmartSettingsModuleController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HUCameraSmartNotificationSettingsModuleController *cameraSmartSettingsModuleController; // @synthesize cameraSmartSettingsModuleController=_cameraSmartSettingsModuleController;
 @property(readonly, nonatomic) HUTriggerConditionEditorItemModuleController *conditionModuleController; // @synthesize conditionModuleController=_conditionModuleController;
 @property(retain, nonatomic) HFItem<HFServiceLikeItem> *item; // @synthesize item=_item;
-- (void).cxx_destruct;
 - (void)smartNotificationSettingsModuleController:(id)arg1 didUpdateConditionCollection:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 didUpdateConditionCollection:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 dismissDetailViewController:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 presentDetailViewController:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (id)itemModuleControllers;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
+- (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 @property(nonatomic) _Bool useServiceNameAsTitle;
 @property(nonatomic) _Bool showStatusSection;
-- (id)initWithServiceItem:(id)arg1 home:(id)arg2;
+- (id)initWithServiceItem:(id)arg1 inHome:(id)arg2 displayingDetails:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

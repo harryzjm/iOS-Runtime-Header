@@ -15,14 +15,20 @@
 {
     double _activeHours;
     double _activeHoursGoal;
+    double _activeHoursGoalDate;
+    long long _activityMoveMode;
     double _briskMinutes;
     double _briskMinutesGoal;
+    double _briskMinutesGoalDate;
     long long _cacheIndex;
     double _deepBreathingDuration;
     double _energyBurned;
     double _energyBurnedGoal;
     double _energyBurnedGoalDate;
     long long _flightsClimbed;
+    double _moveMinutes;
+    double _moveMinutesGoal;
+    double _moveMinutesGoalDate;
     long long _pushCount;
     long long _sequence;
     long long _stepCount;
@@ -30,18 +36,25 @@
     long long _wheelchairUse;
     NSMutableArray *_dailyBriskMinutesStatistics;
     NSMutableArray *_dailyEnergyBurnedStatistics;
+    NSMutableArray *_dailyMoveMinutesStatistics;
     HDCodableSample *_sample;
     struct {
         unsigned int activeHours:1;
         unsigned int activeHoursGoal:1;
+        unsigned int activeHoursGoalDate:1;
+        unsigned int activityMoveMode:1;
         unsigned int briskMinutes:1;
         unsigned int briskMinutesGoal:1;
+        unsigned int briskMinutesGoalDate:1;
         unsigned int cacheIndex:1;
         unsigned int deepBreathingDuration:1;
         unsigned int energyBurned:1;
         unsigned int energyBurnedGoal:1;
         unsigned int energyBurnedGoalDate:1;
         unsigned int flightsClimbed:1;
+        unsigned int moveMinutes:1;
+        unsigned int moveMinutesGoal:1;
+        unsigned int moveMinutesGoalDate:1;
         unsigned int pushCount:1;
         unsigned int sequence:1;
         unsigned int stepCount:1;
@@ -50,8 +63,17 @@
     } _has;
 }
 
++ (Class)dailyMoveMinutesStatisticsType;
 + (Class)dailyBriskMinutesStatisticsType;
 + (Class)dailyEnergyBurnedStatisticsType;
+- (void).cxx_destruct;
+@property(nonatomic) long long activityMoveMode; // @synthesize activityMoveMode=_activityMoveMode;
+@property(nonatomic) double activeHoursGoalDate; // @synthesize activeHoursGoalDate=_activeHoursGoalDate;
+@property(nonatomic) double briskMinutesGoalDate; // @synthesize briskMinutesGoalDate=_briskMinutesGoalDate;
+@property(retain, nonatomic) NSMutableArray *dailyMoveMinutesStatistics; // @synthesize dailyMoveMinutesStatistics=_dailyMoveMinutesStatistics;
+@property(nonatomic) double moveMinutesGoalDate; // @synthesize moveMinutesGoalDate=_moveMinutesGoalDate;
+@property(nonatomic) double moveMinutesGoal; // @synthesize moveMinutesGoal=_moveMinutesGoal;
+@property(nonatomic) double moveMinutes; // @synthesize moveMinutes=_moveMinutes;
 @property(nonatomic) double activeHoursGoal; // @synthesize activeHoursGoal=_activeHoursGoal;
 @property(nonatomic) double briskMinutesGoal; // @synthesize briskMinutesGoal=_briskMinutesGoal;
 @property(nonatomic) long long sequence; // @synthesize sequence=_sequence;
@@ -70,7 +92,6 @@
 @property(nonatomic) double energyBurned; // @synthesize energyBurned=_energyBurned;
 @property(nonatomic) long long cacheIndex; // @synthesize cacheIndex=_cacheIndex;
 @property(retain, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -80,6 +101,16 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool hasActivityMoveMode;
+@property(nonatomic) _Bool hasActiveHoursGoalDate;
+@property(nonatomic) _Bool hasBriskMinutesGoalDate;
+- (id)dailyMoveMinutesStatisticsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)dailyMoveMinutesStatisticsCount;
+- (void)addDailyMoveMinutesStatistics:(id)arg1;
+- (void)clearDailyMoveMinutesStatistics;
+@property(nonatomic) _Bool hasMoveMinutesGoalDate;
+@property(nonatomic) _Bool hasMoveMinutesGoal;
+@property(nonatomic) _Bool hasMoveMinutes;
 @property(nonatomic) _Bool hasActiveHoursGoal;
 @property(nonatomic) _Bool hasBriskMinutesGoal;
 @property(nonatomic) _Bool hasSequence;

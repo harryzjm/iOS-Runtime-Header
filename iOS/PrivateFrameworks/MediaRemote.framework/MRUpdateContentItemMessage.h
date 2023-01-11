@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, NSArray;
 
 @interface MRUpdateContentItemMessage
 {
 }
 
+- (unsigned long long)priority;
 - (unsigned long long)type;
 @property(readonly, nonatomic) NSArray *contentItems;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
+@property(readonly, nonatomic) MRPlayerPath *playerPath;
 - (id)initWithContentItems:(id)arg1 forPlayerPath:(id)arg2;
 
 @end

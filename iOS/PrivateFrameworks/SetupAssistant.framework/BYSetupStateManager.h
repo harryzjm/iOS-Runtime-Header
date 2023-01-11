@@ -12,7 +12,6 @@
 
 + (id)sharedManager;
 - (void)recordSetupUsingBuddy;
-- (void)recordLanguageSelectedUsingBuddy;
 - (_Bool)didSetupUsingiTunes;
 - (_Bool)didRestoreFromBackup;
 - (void)clearRestoreType;

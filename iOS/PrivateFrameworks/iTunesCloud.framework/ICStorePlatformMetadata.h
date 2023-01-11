@@ -15,9 +15,9 @@
 }
 
 + (id)storeServerCalendar;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *metadataDictionary; // @synthesize metadataDictionary=_metadataDictionary;
 @property(readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-- (void).cxx_destruct;
 - (id)_storePlatformReleaseDateFormatter;
 @property(readonly, copy, nonatomic) NSArray *artworkInfos;
 @property(readonly, copy, nonatomic) NSString *workName;
@@ -37,8 +37,10 @@
 @property(readonly, copy, nonatomic) NSString *movementName;
 @property(readonly, nonatomic) long long movementCount;
 @property(readonly, copy, nonatomic) NSString *kind;
+@property(readonly, nonatomic) _Bool hasTimeSyncedLyrics;
 @property(readonly, nonatomic) _Bool hasLyrics;
 @property(readonly, copy, nonatomic) NSArray *genreNames;
+@property(readonly, nonatomic) _Bool isExplicit;
 @property(readonly, nonatomic) long long explicitRating;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) long long discNumber;

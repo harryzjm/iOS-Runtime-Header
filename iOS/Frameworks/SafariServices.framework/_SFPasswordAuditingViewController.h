@@ -4,32 +4,80 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SafariServices/ASAccountAuthenticationModificationControllerDelegate-Protocol.h>
+#import <SafariServices/ASAccountAuthenticationModificationControllerPresentationContextProviding-Protocol.h>
+#import <SafariServices/PSStateRestoration-Protocol.h>
+#import <SafariServices/SFHighPriorityRecommendationDataDelegate-Protocol.h>
+#import <SafariServices/SFPasswordBreachToggleCellDelegate-Protocol.h>
 #import <SafariServices/SFPasswordDetailViewControllerDelegate-Protocol.h>
+#import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
+#import <SafariServices/_SFTableViewDiffableDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSString, WBSAutoFillQuirksManager, WBSSavedPasswordAuditor, WBSSavedPasswordStore;
-@protocol _SFPasswordAuditingViewControllerDelegate;
+@class ASAccountAuthenticationModificationController, NSArray, NSObject, NSString, SFHighPriorityRecommendationData, SFSafariViewController, UIActivityIndicatorView, WBSAutoFillQuirksManager, WBSPasswordGenerationManager, WBSPasswordWarningManager, WBSSavedPassword, WBSSavedPasswordStore, _SFTableViewDiffableDataSource;
+@protocol OS_dispatch_queue, _SFPasswordAuditingViewControllerDelegate;
 
-@interface _SFPasswordAuditingViewController <SFPasswordDetailViewControllerDelegate>
+@interface _SFPasswordAuditingViewController <SFPasswordBreachToggleCellDelegate, SFHighPriorityRecommendationDataDelegate, SFPasswordDetailViewControllerDelegate, _SFTableViewDiffableDataSourceDelegate, _ASAccountAuthenticationModificationExtensionManagerObserver, ASAccountAuthenticationModificationControllerDelegate, ASAccountAuthenticationModificationControllerPresentationContextProviding, PSStateRestoration>
 {
     WBSAutoFillQuirksManager *_autoFillQuirksManager;
-    WBSSavedPasswordAuditor *_savedPasswordAuditor;
     WBSSavedPasswordStore *_savedPasswordStore;
-    NSArray *_reusedPasswords;
+    _SFTableViewDiffableDataSource *_tableViewDiffableDataSource;
+    WBSPasswordWarningManager *_passwordWarningManager;
+    NSArray *_highPriorityRecommendationData;
+    NSArray *_flaggedPasswordData;
+    NSObject<OS_dispatch_queue> *_diffableDataSourceQueue;
+    unsigned long long _numberOfWarnings;
+    UIActivityIndicatorView *_spinner;
+    SFSafariViewController *_changePasswordOnWebsiteSafariViewController;
+    SFHighPriorityRecommendationData *_recommendationForMostRecentSafariViewController;
+    WBSPasswordGenerationManager *_passwordGenerator;
+    SFHighPriorityRecommendationData *_passwordDataForCurrentUpgrade;
+    ASAccountAuthenticationModificationController *_accountAuthenticationModificationController;
     id <_SFPasswordAuditingViewControllerDelegate> _delegate;
+    WBSSavedPassword *_passwordToRemoveAfterCompletedUpgradeInDetailView;
 }
 
-@property(nonatomic) __weak id <_SFPasswordAuditingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)passwordDetailViewControllerDidUpdate:(id)arg1;
+@property(retain, nonatomic) WBSSavedPassword *passwordToRemoveAfterCompletedUpgradeInDetailView; // @synthesize passwordToRemoveAfterCompletedUpgradeInDetailView=_passwordToRemoveAfterCompletedUpgradeInDetailView;
+@property(nonatomic) __weak id <_SFPasswordAuditingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)didSetPasswordBreachDetectionState:(_Bool)arg1;
+- (id)presentationAnchorForAccountAuthenticationModificationController:(id)arg1;
+- (void)accountAuthenticationModificationController:(id)arg1 didFailRequest:(id)arg2 withError:(id)arg3;
+- (void)_completedStrongPasswordUpgrade;
+- (void)_completedSignInWithAppleUpgrade;
+- (void)accountAuthenticationModificationController:(id)arg1 didSuccessfullyCompleteRequest:(id)arg2 withUserInfo:(id)arg3;
+- (void)accountModificationExtensionManagerExtensionListDidChange:(id)arg1;
+- (void)_changePasswordOnWebsiteForHighPriorityRecommendation:(id)arg1;
+- (void)_initiateChangeToStrongPasswordForHighPriorityRecommendation:(id)arg1;
+- (void)_upgradeToSignInWithAppleForHighPriorityRecommendation:(id)arg1;
+- (void)_configureHighPriorityInformationCell:(id)arg1 withHighPriorityRecommendationData:(id)arg2;
+- (id)_passwordBreachToggleCell;
+- (id)_standardRecommendationCellWithPasswordCellData:(id)arg1;
+- (id)_warningStringForPasswordCellData:(id)arg1;
+- (id)_passwordGenerationManager;
+- (id)passwordGeneratorForPasswordDetailViewController:(id)arg1;
+- (id)passwordWarningManagerForPasswordDetailViewController:(id)arg1;
+- (id)dataSource:(id)arg1 footerTextForSection:(long long)arg2;
+- (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
+- (void)_removeHighPriorityRecommendation:(id)arg1;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)_reloadSavedPasswords;
+- (void)highPriorityRecommendationDataDidUpdate:(id)arg1;
+- (void)_passwordStoreDidUpdate;
+- (void)_reloadTableViewDiffableDataSource;
+- (void)_reloadTableViewDiffableDataSourceOnInternalQueue;
+- (id)_cellForIdentifier:(id)arg1 indexPath:(id)arg2;
+- (void)_reloadSavedPasswordsForceUpdate:(_Bool)arg1;
+- (void)_findAndRemoveEntryForCompletedDetailViewUpgrade;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (_Bool)_shouldUseInsetGroupedStyle;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithSiteMetadataManager:(id)arg1 autoFillQuirksManager:(id)arg2;
+- (_Bool)canBeShownFromSuspendedState;
+- (id)initWithSiteMetadataManager:(id)arg1 autoFillQuirksManager:(id)arg2 passwordWarningManager:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

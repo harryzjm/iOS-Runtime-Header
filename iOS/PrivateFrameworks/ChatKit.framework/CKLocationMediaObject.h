@@ -16,7 +16,6 @@
 + (id)titleBarMaskImageForWidth:(double)arg1;
 + (id)placeholderPreviewCache;
 + (_Bool)isPreviewable;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (id)UTITypes;
 + (id)placeholderPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
@@ -27,17 +26,21 @@
 - (id)generatePlaceholderThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (_Bool)isDroppedPin;
 - (id)vCardURLProperties;
+- (id)previewItemTitle;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (struct CGSize)bbSize;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
 - (id)transcriptTraitCollection;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
-- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2;
+- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(_Bool)arg3;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
 - (Class)previewBalloonViewClass;
+- (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 @property(readonly, copy, nonatomic) NSString *title;
 - (int)mediaType;
 - (id)initWithTransfer:(id)arg1 isFromMe:(_Bool)arg2 suppressPreview:(_Bool)arg3 forceInlinePreview:(_Bool)arg4;
+- (id)attachmentSummary:(unsigned long long)arg1;
+- (id)metricsCollectorMediaType;
 - (id)mapItem;
 
 // Remaining properties

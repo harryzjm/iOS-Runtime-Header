@@ -10,7 +10,7 @@
 #import <UIKitCore/UIScenePresentation-Protocol.h>
 #import <UIKitCore/_UISceneLayerHostContainerViewDataSource-Protocol.h>
 
-@class FBSSceneSettings, FBSSceneSettingsDiffInspector, FBScene, NSString, UIScenePresentationContext, _UISceneLayerHostContainerView, _UIScenePresenter;
+@class FBSSceneSettings, FBSSceneSettingsDiffInspector, FBScene, NSHashTable, NSString, UIScenePresentationContext, _UISceneLayerHostContainerView, _UIScenePresenter;
 @protocol UIScenePresenter;
 
 __attribute__((visibility("hidden")))
@@ -22,12 +22,13 @@ __attribute__((visibility("hidden")))
     UIScenePresentationContext *_currentPresentationContext;
     _UISceneLayerHostContainerView *_hostContainerView;
     FBSSceneSettingsDiffInspector *_geometrySettingsDiffInspector;
+    NSHashTable *_observers;
     _Bool _invalidated;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UISceneLayerHostContainerView *hostContainerView; // @synthesize hostContainerView=_hostContainerView;
 @property(retain, nonatomic) UIScenePresentationContext *currentPresentationContext; // @synthesize currentPresentationContext=_currentPresentationContext;
-- (void).cxx_destruct;
 - (void)_updateFrameAndTransform;
 - (void)_geometryDidUpdateWithTransitionContext:(id)arg1;
 - (void)_updateBackgroundColor;
@@ -43,6 +44,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak id <UIScenePresenter> presenter;
 - (void)invalidate;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
+- (void)didMoveToWindow;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)initWithPresenter:(id)arg1;
 

@@ -11,7 +11,7 @@
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, SBActivationSettings, SBApplicationSceneView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBSceneHandle, UIView;
+@class NSMutableSet, NSSet, NSString, SBActivationSettings, SBApplicationSceneHandle, SBApplicationSceneView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, UIView;
 @protocol SBAppViewControllerDelegate, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
 @interface SBAppViewController : UIViewController <SBDeviceApplicationSceneHandleObserver, SBApplicationHosting, SBApplicationSceneViewControlling, BSInvalidatable>
@@ -36,6 +36,7 @@
     SBActivationSettings *_supplementalActivationSettings;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBActivationSettings *supplementalActivationSettings; // @synthesize supplementalActivationSettings=_supplementalActivationSettings;
 @property(nonatomic) _Bool wantsSecureRendering; // @synthesize wantsSecureRendering=_wantsSecureRendering;
 @property(nonatomic) _Bool ignoresOcclusions; // @synthesize ignoresOcclusions=_ignoresOcclusions;
@@ -46,8 +47,7 @@
 @property(nonatomic) long long requestedMode; // @synthesize requestedMode=_requestedMode;
 @property(retain, nonatomic) NSSet *actionsToDeliver; // @synthesize actionsToDeliver=_actionsToDeliver;
 @property(readonly, nonatomic) long long currentMode; // @synthesize currentMode=_currentMode;
-@property(readonly, nonatomic) SBSceneHandle *sceneHandle;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) SBApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
 - (void)_installedAppsDidChange:(id)arg1;
 - (void)_deactivateHostedApp;
 - (id)_createSceneUpdateTransactionForApplicationSceneEntity:(id)arg1 deliveringActions:(_Bool)arg2;
@@ -79,6 +79,7 @@
 - (id)hostedAppSceneHandle;
 - (_Bool)isHostingAnApp;
 - (_Bool)canHostAnApp;
+- (void)conformsToSBApplicationHosting;
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;

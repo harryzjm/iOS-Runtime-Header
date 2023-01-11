@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
-
 @class NSData, UIImageView, WFWorkflowIcon;
 
-@interface WFWorkflowWizardNameIconButton : UIButton
+@interface WFWorkflowWizardNameIconButton
 {
     WFWorkflowIcon *_icon;
     NSData *_customImageData;
     UIImageView *_backgroundImageView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIImageView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
 @property(readonly, nonatomic) NSData *customImageData; // @synthesize customImageData=_customImageData;
 @property(readonly, nonatomic) WFWorkflowIcon *icon; // @synthesize icon=_icon;
-- (void).cxx_destruct;
+- (void)redrawIcon;
 - (struct CGSize)intrinsicContentSize;
 - (void)setIcon:(id)arg1 customImageData:(id)arg2;
 - (void)layoutSubviews;

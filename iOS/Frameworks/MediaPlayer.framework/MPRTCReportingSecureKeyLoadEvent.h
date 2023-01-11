@@ -6,6 +6,7 @@
 
 @class NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPRTCReportingSecureKeyLoadEvent
 {
     double _duration;
@@ -13,10 +14,10 @@
     NSString *_siriSessionIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *siriSessionIdentifier; // @synthesize siriSessionIdentifier=_siriSessionIdentifier;
 @property(copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
-- (void).cxx_destruct;
 - (id)newRTCReportingPayloadDictionary;
 - (unsigned short)rtcReportingType;
 - (unsigned short)rtcReportingCategory;

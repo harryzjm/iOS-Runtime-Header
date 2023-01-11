@@ -20,20 +20,23 @@
     WGWidgetListHeaderView *_headerView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isHeaderVisible) _Bool headerVisible; // @synthesize headerVisible=_headerVisible;
 @property(readonly, nonatomic) WGWidgetListHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(retain, nonatomic) UIViewController *headerContentViewController; // @synthesize headerContentViewController=_headerContentViewController;
 @property(readonly, nonatomic) WGWidgetListFooterView *footerView; // @synthesize footerView=_footerView;
 @property(nonatomic) __weak UIView *containerView; // @synthesize containerView=_containerView;
 @property(nonatomic, getter=_isFooterVisible, setter=_setFooterVisible:) _Bool _footerVisible; // @synthesize _footerVisible;
-- (void).cxx_destruct;
 - (void)_updateEditButtonVisibilityAnimated:(_Bool)arg1;
 - (void)_updateFooterVisibility;
 - (void)_updateHeaderVisibility;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeHiddenInGroup:(id)arg3;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeVisibleInGroup:(id)arg3;
+- (void)invalidateVisibleWidgets;
 - (void)_updateFooterViewShouldBlurContent;
+- (void)editButtonTapped:(id)arg1;
 - (void)presentEditView:(id)arg1;
+- (id)editingMaterialViewForWidgetListFooterView:(id)arg1;
 - (void)widgetListFooterViewAvailableNewWidgetsUpdated:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setEditingIcons:(_Bool)arg1;
@@ -43,9 +46,12 @@
 - (void)_configureStackView;
 - (id)_group;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-@property(readonly, nonatomic) UIView *extraViewsContainer;
+- (id)extraViewsContainer;
+@property(readonly, nonatomic) _Bool shouldAnimateFirstTwoViewsAsOne;
 @property(readonly, nonatomic) _Bool shouldAnimateLastTwoViewsAsOne;
 @property(readonly, copy, nonatomic) NSArray *extraViews;
+@property(readonly, copy, nonatomic) NSArray *extraViewsContainers;
+- (void)enumerateWidgetWrapperViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_insertHeaderView;
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidDisappear:(_Bool)arg1;

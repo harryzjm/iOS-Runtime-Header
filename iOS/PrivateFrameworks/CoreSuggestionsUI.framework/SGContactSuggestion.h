@@ -15,8 +15,8 @@
 }
 
 + (id)contactImage;
-@property(nonatomic) __weak id <SGContactSuggestionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SGContactSuggestionDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)suggestionImage;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (id)suggestionPrimaryAction;

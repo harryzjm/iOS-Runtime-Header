@@ -17,7 +17,7 @@
 - (id)_fullColorImageProvider;
 - (id)_tintableAppImageProvider;
 - (id)_appTitle;
-- (void)_addBackgroundColorToTemplate:(id)arg1;
+- (id)_graphicExtraLargeTemplate;
 - (id)_signatureCircularTemplate;
 - (id)_signatureBezelTemplate;
 - (id)_signatureCornerTemplate;
@@ -29,11 +29,6 @@
 - (id)_modularSmallTemplate;
 - (id)complicationApplicationIdentifier;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineEndDateWithHandler:(CDUnknownBlockType)arg1;
-- (void)getTimelineStartDateWithHandler:(CDUnknownBlockType)arg1;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
-- (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getTimelineEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)_currentTimelineEntry;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (id)currentSwitcherTemplate;

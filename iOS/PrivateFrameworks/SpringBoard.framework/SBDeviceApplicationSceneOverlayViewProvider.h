@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class SBDeviceApplicationSceneHandle, SBIsolatedSceneOrientationFollowingWrapperViewController, UIViewController;
-@protocol SBDeviceApplicationSceneOverlayViewProviderDelegate;
+@protocol SBDeviceApplicationSceneOverlayViewController, SBDeviceApplicationSceneOverlayViewProviderDelegate;
 
 @interface SBDeviceApplicationSceneOverlayViewProvider : NSObject
 {
@@ -16,17 +16,21 @@
     SBDeviceApplicationSceneHandle *_sceneHandle;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
 @property(readonly, nonatomic) __weak id <SBDeviceApplicationSceneOverlayViewProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_realOverlayViewController;
 - (void)_deactivateIfPossible;
 - (void)_activateIfPossible;
 - (unsigned long long)supportedInterfaceOrientations;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (_Bool)shouldFollowSceneOrientation;
+- (void)hideContentWithAnimation:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showContentWithAnimation:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) long long priority;
+@property(readonly, nonatomic) _Bool wantsResignActiveAssertion;
 @property(readonly, nonatomic) long long preferredStatusBarStyle;
-@property(readonly, nonatomic) UIViewController *overlayViewController;
+@property(readonly, nonatomic) UIViewController<SBDeviceApplicationSceneOverlayViewController> *overlayViewController;
 - (void)dealloc;
 - (id)initWithSceneHandle:(id)arg1 delegate:(id)arg2;
 

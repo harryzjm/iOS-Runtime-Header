@@ -25,17 +25,16 @@
     _Bool _retriedAfterVoluntaryExit;
     _Bool _applicationStateNeedsCapture;
     _Bool _dismissedOverlays;
-    _Bool _shouldDismissOverlays;
+    _Bool _shouldSerialDismissOverlays;
     _Bool _touchCancellationDisabled;
     SBSceneLayoutWorkspaceTransaction *_layoutTransaction;
     SBFloatingDockBehaviorAssertion *_floatingDockBehaviorAssertion;
 }
 
 + (_Bool)canInterruptTransaction:(id)arg1 forTransitionRequest:(id)arg2;
-+ (id)_copyTransitionRequest:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBFloatingDockBehaviorAssertion *floatingDockBehaviorAssertion; // @synthesize floatingDockBehaviorAssertion=_floatingDockBehaviorAssertion;
 @property(readonly, nonatomic) SBSceneLayoutWorkspaceTransaction *layoutTransaction; // @synthesize layoutTransaction=_layoutTransaction;
-- (void).cxx_destruct;
 - (void)_fireAndClearResultBlockIfNecessaryForFailure:(_Bool)arg1;
 - (id)animationController;
 - (void)animationControllerDidRevealApplication:(id)arg1;
@@ -76,9 +75,10 @@
 - (void)_animationWillBegin:(_Bool)arg1;
 - (id)_setupAnimation;
 - (_Bool)_shouldResignActiveForAnimation;
-- (void)_setShouldDismissOverlays:(_Bool)arg1;
-- (_Bool)_shouldDismissOverlays;
+- (void)_setShouldSerialDismissOverlays:(_Bool)arg1;
+- (_Bool)_shouldSerialDismissOverlays;
 - (unsigned long long)_serialOverlayPreDismissalOptions;
+- (unsigned long long)_concurrentOverlayDismissalOptions;
 - (void)_synchronizeWithSceneUpdates;
 - (_Bool)_transitionWasCancelled;
 - (void)_endTransition;

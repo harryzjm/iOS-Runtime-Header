@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFActionSettingsViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 
 @class NSString, UITableView;
 
-@interface WFConditionalActionSettingsViewController <UITableViewDataSource, UITableViewDelegate>
+@interface WFConditionalActionSettingsViewController : WFActionSettingsViewController <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
 }
 
-@property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
 - (void).cxx_destruct;
+@property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

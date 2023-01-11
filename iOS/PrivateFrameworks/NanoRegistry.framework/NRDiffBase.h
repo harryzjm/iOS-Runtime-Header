@@ -14,7 +14,6 @@
 {
 }
 
-+ (id)classTypes;
 + (id)enclosedClassTypes;
 + (_Bool)supportsSecureCoding;
 - (id)initWithCoder:(id)arg1;

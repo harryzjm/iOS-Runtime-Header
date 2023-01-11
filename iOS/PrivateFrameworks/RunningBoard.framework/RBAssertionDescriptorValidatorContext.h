@@ -15,8 +15,8 @@
 {
     id <RBBundleProperties> _targetProperties;
     id <RBEntitlementPossessing> _originatorEntitlements;
-    unsigned long long _ignoreEntitlementViolationsCount;
-    unsigned long long _ignoreTargetPropertyViolationsCount;
+    id <RBEntitlementPossessing> _targetEntitlements;
+    unsigned long long _ignoreRestrictions;
     _Bool _targetIsSystem;
     RBAssertionDescriptorValidator *_assertionDescriptionValidator;
     RBSAssertionDescriptor *_assertionDescriptor;
@@ -34,6 +34,7 @@
 }
 
 + (id)context;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool targetIsSystem; // @synthesize targetIsSystem=_targetIsSystem;
 @property(retain, nonatomic) id <RBDomainAttributeManaging> domainAttributeManager; // @synthesize domainAttributeManager=_domainAttributeManager;
 @property(retain, nonatomic) id <RBBundlePropertiesManaging> bundlePropertiesManager; // @synthesize bundlePropertiesManager=_bundlePropertiesManager;
@@ -48,17 +49,14 @@
 @property(retain, nonatomic) RBProcess *originatorProcess; // @synthesize originatorProcess=_originatorProcess;
 @property(retain, nonatomic) RBSAssertionDescriptor *assertionDescriptor; // @synthesize assertionDescriptor=_assertionDescriptor;
 @property(retain, nonatomic) RBAssertionDescriptorValidator *assertionDescriptionValidator; // @synthesize assertionDescriptionValidator=_assertionDescriptionValidator;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) RBSProcessIdentity *originatorIdentity;
+@property(readonly, nonatomic) id <RBEntitlementPossessing> targetEntitlements;
 @property(readonly, nonatomic) id <RBEntitlementPossessing> originatorEntitlements;
 @property(readonly, nonatomic) id <RBBundleProperties> targetProperties;
-@property(readonly, nonatomic) _Bool ignoreTargetPropertyViolations;
-- (void)popIgnoreTargetPropertyViolations;
-- (void)pushIgnoreTargetPropertyViolations;
-@property(readonly, nonatomic) _Bool ignoreEntitlementViolations;
-- (void)popIgnoreEntitlementViolations;
-- (void)pushIgnoreEntitlementViolations;
+@property(readonly, nonatomic) _Bool ignoreRestrictions;
+- (void)popIgnoreRestrictions;
+- (void)pushIgnoreRestrictions;
 
 @end
 

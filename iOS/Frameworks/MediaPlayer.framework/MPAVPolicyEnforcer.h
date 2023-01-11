@@ -8,6 +8,7 @@
 
 @class MPAVController;
 
+__attribute__((visibility("hidden")))
 @interface MPAVPolicyEnforcer : NSObject
 {
     int _screenRecordingNotifyToken;
@@ -15,8 +16,8 @@
     MPAVController *_controller;
 }
 
-@property(readonly, nonatomic) __weak MPAVController *controller; // @synthesize controller=_controller;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak MPAVController *controller; // @synthesize controller=_controller;
 - (void)_unregisterForScreenRecordingNotifications;
 - (void)_updateScreenRecordingState;
 - (void)_registerForScreenRecordingNotifications;

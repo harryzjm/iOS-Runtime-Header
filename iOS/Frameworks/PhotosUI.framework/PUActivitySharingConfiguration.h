@@ -12,7 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface PUActivitySharingConfiguration : NSObject
 {
-    _Bool _allowAirPlayActivity;
+    _Bool _allowsAirPlayActivity;
+    _Bool _allowsRemoveFromFeaturedPhotosActivity;
     _Bool _wantsActionSheet;
     _Bool _excludeShareActivity;
     PHFetchResult *_collectionListFetchResult;
@@ -25,24 +26,25 @@ __attribute__((visibility("hidden")))
     NSString *_title;
     NSString *_subtitle;
     id <PXDisplayAsset> _keyAsset;
-    unsigned long long _sourceOrigin;
+    long long _sourceOrigin;
 }
 
-@property(nonatomic) unsigned long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+- (void).cxx_destruct;
+@property(nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
 @property(retain, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool excludeShareActivity; // @synthesize excludeShareActivity=_excludeShareActivity;
 @property(nonatomic) _Bool wantsActionSheet; // @synthesize wantsActionSheet=_wantsActionSheet;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
-@property(nonatomic) _Bool allowAirPlayActivity; // @synthesize allowAirPlayActivity=_allowAirPlayActivity;
+@property(nonatomic) _Bool allowsRemoveFromFeaturedPhotosActivity; // @synthesize allowsRemoveFromFeaturedPhotosActivity=_allowsRemoveFromFeaturedPhotosActivity;
+@property(nonatomic) _Bool allowsAirPlayActivity; // @synthesize allowsAirPlayActivity=_allowsAirPlayActivity;
 @property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property(copy, nonatomic) NSDictionary *assetsFetchResultsByAssetCollection; // @synthesize assetsFetchResultsByAssetCollection=_assetsFetchResultsByAssetCollection;
 @property(retain, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property(readonly, nonatomic) PUPhotoSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property(readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
-- (void).cxx_destruct;
 - (id)initWithCollectionsFetchResult:(id)arg1 selectionManager:(id)arg2;
 
 @end

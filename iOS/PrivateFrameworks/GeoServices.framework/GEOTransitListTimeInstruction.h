@@ -14,20 +14,19 @@
 @interface GEOTransitListTimeInstruction : PBCodable <GEOComposedRouteStepTransitInstructionMerging, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOFormattedString *_primaryText;
     GEOFormattedString *_secondaryText;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _hideWhenListCollapsed;
     struct {
         unsigned int has_hideWhenListCollapsed:1;
         unsigned int read_unknownFields:1;
         unsigned int read_primaryText:1;
         unsigned int read_secondaryText:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_primaryText:1;
-        unsigned int wrote_secondaryText:1;
-        unsigned int wrote_hideWhenListCollapsed:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,16 +42,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool hasHideWhenListCollapsed;
 @property(nonatomic) _Bool hideWhenListCollapsed;
 @property(retain, nonatomic) GEOFormattedString *secondaryText;
 @property(readonly, nonatomic) _Bool hasSecondaryText;
-- (void)_readSecondaryText;
 @property(retain, nonatomic) GEOFormattedString *primaryText;
 @property(readonly, nonatomic) _Bool hasPrimaryText;
-- (void)_readPrimaryText;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (void)_transit_prepareForDeepMergeFrom:(id)arg1;
 
 // Remaining properties

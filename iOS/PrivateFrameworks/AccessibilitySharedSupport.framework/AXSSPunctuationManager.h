@@ -10,15 +10,18 @@
 {
     AXSSPunctuationEntryCloudKitHelper *_punctuationEntryCloudKitHelper;
     AXSSPunctuationGroupCloudKitHelper *_punctuationGroupCloudKitHelper;
+    _Bool _finishedInitialization;
     _Bool _cloudKitSync;
     _Bool _cloudKitPushInSameProcess;
 }
 
 + (id)sharedDatabase;
 + (void)initialize;
++ (void)setOverrideDatabasePath:(id)arg1;
++ (id)overrideDatabasePath;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool cloudKitPushInSameProcess; // @synthesize cloudKitPushInSameProcess=_cloudKitPushInSameProcess;
 @property(nonatomic) _Bool cloudKitSync; // @synthesize cloudKitSync=_cloudKitSync;
-- (void).cxx_destruct;
 - (id)nonePunctuationGroup;
 - (id)somePunctuationGroup;
 - (id)allPunctuationGroup;
@@ -60,6 +63,7 @@
 - (void)_initializeCloudKitHelpers;
 - (id)punctuationEntriesForGroupUUID:(id)arg1;
 - (void)_initializeSystemGroups;
+- (void)_initializeDatabaseStartup;
 - (id)init;
 
 @end

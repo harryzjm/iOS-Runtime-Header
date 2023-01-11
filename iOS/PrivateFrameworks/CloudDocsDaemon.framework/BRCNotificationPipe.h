@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRItemNotificationSending-Protocol.h>
 
 @class BRCDataOrDocsScopeGatherer, BRCItemGlobalID, BRCNotificationManager, BRCXPCClient, BRFileObjectID, BRNotificationQueue, NSMutableDictionary, NSMutableSet, NSSet, NSString;
-@protocol BRCNotificationPipeDelegate, BRItemNotificationReceiving, OS_dispatch_queue;
+@protocol BRCNotificationPipeDelegate, BRItemNotificationReceiving, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCNotificationPipe : NSObject <BRItemNotificationSending>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BRFileObjectID *_watchedAncestorFileObjectID;
     NSString *_watchedAncestorFilenameToItem;
     BRCDataOrDocsScopeGatherer *_gatherer;
+    NSObject<OS_dispatch_group> *_gatherGroup;
     _Bool _hasUpdatesInFlight;
     _Bool _volumeIsCaseSensitive;
     NSMutableDictionary *_pendingProgressUpdatesByID;
@@ -36,11 +37,13 @@ __attribute__((visibility("hidden")))
     NSSet *_watchedAppLibraryIDs;
     unsigned long long _watchedAppLibrariesFlags;
     unsigned long long _initialGatherMaxRank;
+    unsigned long long _secondaryGatherMaxRank;
     BRCNotificationManager *_manager;
     NSObject<OS_dispatch_queue> *_queue;
     id <BRCNotificationPipeDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSString *watchedAncestorFilenameToItem; // @synthesize watchedAncestorFilenameToItem=_watchedAncestorFilenameToItem;
 @property(retain) BRFileObjectID *watchedAncestorFileObjectID; // @synthesize watchedAncestorFileObjectID=_watchedAncestorFileObjectID;
 @property(retain) BRCItemGlobalID *watchedAncestorItemGlobalID; // @synthesize watchedAncestorItemGlobalID=_watchedAncestorItemGlobalID;
@@ -48,7 +51,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <BRCNotificationPipeDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) BRCNotificationManager *manager; // @synthesize manager=_manager;
-- (void).cxx_destruct;
 - (void)invalidateReceiverIfWatchingAppLibraryIDs:(id)arg1;
 - (void)invalidateIfWatchingAppLibraryIDs:(id)arg1;
 - (void)watchItemInProcessAtURL:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)_processProgressUpdates:(id)arg1;
 - (void)_flushProgressUpdates;
 - (void)processUpdates:(id)arg1 withRank:(unsigned long long)arg2;
+- (void)_prepareForSecondGatherWithRank:(unsigned long long)arg1;
 - (void)_addIntraContainerUpdatesFromInterContainerUpdate:(id)arg1 toArray:(id)arg2;
 - (int)_isInterestingUpdate:(id)arg1;
 @property(readonly, copy) NSString *description;

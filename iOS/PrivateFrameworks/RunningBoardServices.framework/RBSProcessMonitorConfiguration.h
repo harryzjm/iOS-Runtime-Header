@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/RBSProcessMonitorConfiguring-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSArray, NSHashTable, NSString, RBSProcessStateDescriptor;
 
-@interface RBSProcessMonitorConfiguration : NSObject <RBSProcessMonitorConfiguring, NSCopying, BSXPCSecureCoding>
+@interface RBSProcessMonitorConfiguration : NSObject <RBSProcessMonitorConfiguring, NSCopying, RBSXPCSecureCoding>
 {
     NSHashTable *_matchedHandles;
     NSString *_desc;
@@ -21,37 +21,34 @@
     unsigned long long _identifier;
     NSArray *_predicates;
     RBSProcessStateDescriptor *_stateDescriptor;
+    unsigned long long _events;
     CDUnknownBlockType _updateHandler;
+    CDUnknownBlockType _preventLaunchUpdateHandler;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-+ (unsigned long long)_nextIdentifier;
++ (_Bool)supportsRBSXPCSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType preventLaunchUpdateHandler; // @synthesize preventLaunchUpdateHandler=_preventLaunchUpdateHandler;
 @property(copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
+@property(nonatomic) unsigned long long events; // @synthesize events=_events;
 @property(nonatomic) unsigned int serviceClass; // @synthesize serviceClass=_serviceClass;
 @property(copy, nonatomic) RBSProcessStateDescriptor *stateDescriptor; // @synthesize stateDescriptor=_stateDescriptor;
 @property(copy, nonatomic) NSArray *predicates; // @synthesize predicates=_predicates;
 @property(readonly, nonatomic) int clientPid; // @synthesize clientPid=_clientPid;
 @property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-- (id)fullDescription;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)_validate;
 - (id)matchedProcesses;
 - (_Bool)matchesProcess:(id)arg1;
-- (id)_initWithIdentifier:(unsigned long long)arg1 andPid:(int)arg2;
+- (void)setPreventLaunchUpdateHandle:(CDUnknownBlockType)arg1;
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) Class superclass;
 
 @end

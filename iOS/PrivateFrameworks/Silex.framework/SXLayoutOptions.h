@@ -19,8 +19,11 @@
     _Bool _testing;
     unsigned long long _viewingLocation;
     double _contentScaleFactor;
+    unsigned long long _newsletterSubscriptionStatus;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long newsletterSubscriptionStatus; // @synthesize newsletterSubscriptionStatus=_newsletterSubscriptionStatus;
 @property(readonly, nonatomic) double contentScaleFactor; // @synthesize contentScaleFactor=_contentScaleFactor;
 @property(readonly, nonatomic) unsigned long long viewingLocation; // @synthesize viewingLocation=_viewingLocation;
 @property(readonly, nonatomic) _Bool testing; // @synthesize testing=_testing;
@@ -30,12 +33,11 @@
 @property(readonly, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly, nonatomic) struct CGSize viewportSize; // @synthesize viewportSize=_viewportSize;
 @property(readonly, nonatomic) SXColumnLayout *columnLayout; // @synthesize columnLayout=_columnLayout;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (unsigned long long)diffWithLayoutOptions:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithColumnLayout:(id)arg1 viewportSize:(struct CGSize)arg2 traitCollection:(id)arg3 contentSizeCategory:(id)arg4 bundleSubscriptionStatus:(long long)arg5 channelSubscriptionStatus:(long long)arg6 testing:(_Bool)arg7 viewingLocation:(unsigned long long)arg8 contentScaleFactor:(double)arg9;
+- (id)initWithColumnLayout:(id)arg1 viewportSize:(struct CGSize)arg2 traitCollection:(id)arg3 contentSizeCategory:(id)arg4 bundleSubscriptionStatus:(long long)arg5 channelSubscriptionStatus:(long long)arg6 testing:(_Bool)arg7 viewingLocation:(unsigned long long)arg8 contentScaleFactor:(double)arg9 newsletterSubscriptionStatus:(unsigned long long)arg10;
 
 @end
 

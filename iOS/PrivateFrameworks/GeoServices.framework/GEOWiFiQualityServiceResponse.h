@@ -13,17 +13,17 @@
 @interface GEOWiFiQualityServiceResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_locationResults;
     NSMutableArray *_networkResults;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _statusCode;
     struct {
         unsigned int has_statusCode:1;
         unsigned int read_locationResults:1;
         unsigned int read_networkResults:1;
-        unsigned int wrote_locationResults:1;
-        unsigned int wrote_networkResults:1;
-        unsigned int wrote_statusCode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,26 +39,27 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)networkResultsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)networkResultsCount;
-- (void)_addNoFlagsNetworkResults:(id)arg1;
 - (void)addNetworkResults:(id)arg1;
 - (void)clearNetworkResults;
 @property(retain, nonatomic) NSMutableArray *networkResults;
-- (void)_readNetworkResults;
 - (id)locationResultsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationResultsCount;
-- (void)_addNoFlagsLocationResults:(id)arg1;
 - (void)addLocationResults:(id)arg1;
 - (void)clearLocationResults;
 @property(retain, nonatomic) NSMutableArray *locationResults;
-- (void)_readLocationResults;
 - (int)StringAsStatusCode:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatusCode;
 @property(nonatomic) int statusCode;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

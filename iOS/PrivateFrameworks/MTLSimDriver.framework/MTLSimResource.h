@@ -9,7 +9,7 @@
 #import <MTLSimDriver/MTLResourceSPI-Protocol.h>
 #import <MTLSimDriver/MTLSerializerResource-Protocol.h>
 
-@class MTLResourceAllocationInfo, MTLSimDevice, MTLSimHeap, NSString;
+@class MTLSimDevice, MTLSimHeap, NSString;
 @protocol MTLDevice, MTLHeap;
 
 __attribute__((visibility("hidden")))
@@ -29,16 +29,12 @@ __attribute__((visibility("hidden")))
     _Bool _isAliasable;
     int responsibleProcess;
     unsigned long long allocatedSize;
-    MTLResourceAllocationInfo *cachedAllocationInfo;
     unsigned long long protectionOptions;
-    MTLResourceAllocationInfo *sharedAllocationInfo;
 }
 
-@property(readonly) MTLResourceAllocationInfo *sharedAllocationInfo; // @synthesize sharedAllocationInfo;
 @property int responsibleProcess; // @synthesize responsibleProcess;
 @property(readonly) unsigned long long protectionOptions; // @synthesize protectionOptions;
-@property(readonly) MTLResourceAllocationInfo *cachedAllocationInfo; // @synthesize cachedAllocationInfo;
-@property(readonly) unsigned int resourceRef; // @synthesize resourceRef=_resourceRef;
+@property(readonly) unsigned int serializerResourceRef; // @synthesize serializerResourceRef=_resourceRef;
 @property(readonly) unsigned long long allocatedSize; // @synthesize allocatedSize;
 @property(readonly) unsigned long long cpuCacheMode; // @synthesize cpuCacheMode=_cpuCacheMode;
 @property(readonly) unsigned long long heapOffset;
@@ -65,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithResourceRef:(unsigned int)arg1 options:(unsigned long long)arg2 device:(id)arg3 heap:(id)arg4;
 
 // Remaining properties
+@property(readonly) unsigned long long allocationID;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

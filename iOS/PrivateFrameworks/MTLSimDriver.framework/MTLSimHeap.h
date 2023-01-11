@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     MTLSimDevice *_device;
     unsigned int _heapRef;
+    unsigned long long _purgeableState;
 }
 
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long currentAllocatedSize;
 @property(readonly) unsigned long long size;
 - (CDStruct_da2e99ad)getSizeInfo;
-@property(readonly) unsigned int resourceRef;
+@property(readonly) unsigned int serializerResourceRef;
 @property(readonly) unsigned int heapRef;
 @property(readonly) id <MTLDevice> device;
 - (void)dealloc;

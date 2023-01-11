@@ -8,6 +8,7 @@
 {
 }
 
++ (const char *)_insertStatementKey;
 + (long long)protectionClass;
 + (id)databaseTable;
 + (id)keyForNotificationDomain:(long long)arg1 error:(out id *)arg2;

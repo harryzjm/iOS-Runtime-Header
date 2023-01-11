@@ -10,6 +10,7 @@
 {
 }
 
+- (void)_updateUsesStaticScrollBar;
 - (_Bool)_shouldFadeCellsForBoundChangeWhileRotating;
 
 @end

@@ -6,10 +6,11 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CNContact, GEOMapItemStorage, MapsSuggestionsEntry;
-@protocol MapsSuggestionsSourceDelegate;
+@class CNContact, GEOMapItemStorage, MapsSuggestionsEntry, NSString;
+@protocol MapsSuggestionsResourceDepot, MapsSuggestionsSourceDelegate;
 
 @protocol MapsSuggestionsSource <MapsSuggestionsObject>
++ (id)new;
 + (unsigned long long)disposition;
 + (_Bool)isEnabled;
 @property(nonatomic) __weak id <MapsSuggestionsSourceDelegate> delegate;
@@ -18,11 +19,11 @@
 - (void)feedbackForEntry:(MapsSuggestionsEntry *)arg1 action:(long long)arg2;
 - (_Bool)removeEntry:(MapsSuggestionsEntry *)arg1 behavior:(long long)arg2 handler:(void (^)(void))arg3;
 - (_Bool)canProduceEntriesOfType:(long long)arg1;
-- (double)updateSuggestionEntriesOfType:(long long)arg1;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesOfType:(long long)arg1 handler:(void (^)(void))arg2;
+- (double)updateSuggestionEntriesWithHandler:(void (^)(void))arg1;
 - (void)stop;
 - (void)start;
+- (id)initFromResourceDepot:(id <MapsSuggestionsResourceDepot>)arg1 name:(NSString *)arg2;
 - (id)init;
-- (id)initWithDelegate:(id <MapsSuggestionsSourceDelegate>)arg1;
 @end
 

@@ -7,6 +7,10 @@
 #import <MapKit/NSObject-Protocol.h>
 
 @protocol VKTrackableAnnotationPresentation <NSObject>
+@property(readonly, nonatomic) struct VKEdgeInsets annotationTrackingEdgeInsets;
+@property(readonly, nonatomic) double minimumAccuracy;
+@property(nonatomic) double presentationAccuracy;
+@property(nonatomic, getter=isAnimatingAccuracy) _Bool animatingAccuracy;
 @property(nonatomic) _Bool tracking;
 @property(nonatomic) CDStruct_c3b9c2ee presentationCoordinate;
 @end

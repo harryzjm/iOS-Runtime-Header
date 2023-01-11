@@ -29,6 +29,8 @@
     MISSING_TYPE *_trackVector;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) float zoom; // @synthesize zoom=_zoom;
 @property(nonatomic) MISSING_TYPE *viewSize; // @synthesize viewSize=_viewSize;
 @property(nonatomic) float targetDistance; // @synthesize targetDistance=_targetDistance;
@@ -39,8 +41,6 @@
 @property(nonatomic) MISSING_TYPE *trackVector; // @synthesize trackVector=_trackVector;
 @property(nonatomic) MISSING_TYPE *dragPoint; // @synthesize dragPoint=_dragPoint;
 @property(copy, nonatomic) MDLStereoscopicCamera *camera; // @synthesize camera=_camera;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)update:(float)arg1;
 - (void)frameObject;
 - (void)mouseMotionX:(float)arg1 Y:(float)arg2;

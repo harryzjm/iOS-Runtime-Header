@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, PCPersistentTimer;
+@class NSDate, NSString;
 @protocol OS_dispatch_queue;
 
 @interface EKTravelEngineThrottle : NSObject
@@ -19,12 +19,11 @@
     NSString *_throttleIdentifier;
     NSObject<OS_dispatch_queue> *_throttleQueue;
     NSDate *_nextEmissionDate;
-    PCPersistentTimer *_emissionTimer;
 }
 
 + (double)emissionThresholdTimeInterval;
 + (double)_requestHypothesisRefreshInterval;
-@property(retain, nonatomic) PCPersistentTimer *emissionTimer; // @synthesize emissionTimer=_emissionTimer;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *nextEmissionDate; // @synthesize nextEmissionDate=_nextEmissionDate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *throttleQueue; // @synthesize throttleQueue=_throttleQueue;
 @property(retain, nonatomic) NSString *throttleIdentifier; // @synthesize throttleIdentifier=_throttleIdentifier;
@@ -33,17 +32,16 @@
 @property(copy, nonatomic) CDUnknownBlockType cancelHypothesisRequestRefreshBlock; // @synthesize cancelHypothesisRequestRefreshBlock=_cancelHypothesisRequestRefreshBlock;
 @property(copy, nonatomic) CDUnknownBlockType requestHypothesisRefreshBlock; // @synthesize requestHypothesisRefreshBlock=_requestHypothesisRefreshBlock;
 @property(retain) NSString *eventExternalURL; // @synthesize eventExternalURL=_eventExternalURL;
-- (void).cxx_destruct;
 - (void)_significantTimeChangeNotificationReceived;
 - (void)_unregisterForNotificationObservation;
 - (void)_registerForNotificationObservation;
-- (void)_emissionTimerFired:(id)arg1;
+- (void)_emissionTimerFired;
 - (void)_uninstallEmissionTimer;
 - (void)_createEmissionTimerWithDate:(id)arg1;
 - (void)_fireEmissionBlock;
 - (void)_updateEmissionDate:(id)arg1;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (id)btaJobName;
+- (void)receivedAlarmNamed:(id)arg1;
+- (id)alarmName;
 - (void)updatePredictedDepartureDate:(id)arg1;
 - (void)tearDown;
 - (id)description;

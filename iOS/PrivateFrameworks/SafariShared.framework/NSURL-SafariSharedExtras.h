@@ -14,6 +14,7 @@
 + (id)safari_URLWithDataAsString:(id)arg1;
 + (id)safari_URLWithUserTypedString:(id)arg1;
 - (id)safari_relativePathToURL:(id)arg1;
+- (id)safari_wellKnownResponseCodeReliabilityURL;
 - (id)safari_wellKnownChangePasswordURL;
 - (_Bool)safari_isWellKnownChangePasswordURL;
 @property(readonly, nonatomic) _Bool safari_isURLTooLongToDisplay;
@@ -35,12 +36,12 @@
 - (id)safari_URLByReplacingSchemeWithString:(id)arg1;
 - (id)safari_URLByReplacingHostWithString:(id)arg1;
 - (id)safari_URLByRemovingUserAndPath;
-- (_Bool)safari_hasSameOriginAsURL:(id)arg1;
 @property(readonly, nonatomic) _Bool safari_isEligibleToShowNotSecureWarning;
 @property(readonly, nonatomic) _Bool safari_isLocalOrPrivateNetworkURL;
 @property(readonly, nonatomic) _Bool safari_isSafariResourceURL;
 - (_Bool)safari_isMailtoURL;
 @property(readonly, nonatomic) _Bool safari_isBlobURL;
+@property(readonly, nonatomic) _Bool safari_hasCustomScheme;
 - (_Bool)safari_isDataURL;
 - (_Bool)safari_isHTTPURL;
 - (_Bool)safari_isHTTPFamilyURL;

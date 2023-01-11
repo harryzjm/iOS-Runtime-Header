@@ -13,14 +13,15 @@
 @interface GEOWalletCategoryMapping : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOStyleAttributes *_stylesAttributes;
     NSString *_walletCategory;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_stylesAttributes:1;
         unsigned int read_walletCategory:1;
-        unsigned int wrote_stylesAttributes:1;
-        unsigned int wrote_walletCategory:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -34,14 +35,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOStyleAttributes *stylesAttributes;
 @property(readonly, nonatomic) _Bool hasStylesAttributes;
-- (void)_readStylesAttributes;
 @property(retain, nonatomic) NSString *walletCategory;
 @property(readonly, nonatomic) _Bool hasWalletCategory;
-- (void)_readWalletCategory;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

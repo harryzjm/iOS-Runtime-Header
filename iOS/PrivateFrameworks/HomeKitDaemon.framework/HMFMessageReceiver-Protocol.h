@@ -10,7 +10,9 @@
 @protocol OS_dispatch_queue;
 
 @protocol HMFMessageReceiver <NSObject>
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
+
+@optional
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @end
 

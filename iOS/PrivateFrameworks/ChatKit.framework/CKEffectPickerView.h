@@ -16,6 +16,7 @@
 {
     BOOL _controlColor;
     _Bool _needsSwitcherAnimation;
+    _Bool _isInDarkMode;
     _Bool _isAnimating;
     _Bool _usesDarkVibrancyForLayers;
     id <CKEffectPickerViewDelegate> _delegate;
@@ -31,6 +32,7 @@
     UIFont *_effectLabelFont;
     UICollectionView *_momentsCollectionView;
     UIView *_backgroundView;
+    UIView *_roundedView;
     NSLayoutConstraint *_typeSegmentedControlBottomConstraint;
     NSLayoutConstraint *_mainLabelBottomConstraint;
     NSLayoutConstraint *_lastEffectDotTopConstraint;
@@ -63,6 +65,7 @@
 }
 
 + (_Bool)shouldUseLargeScreenDimension;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *accessibilitySendBackgroundView; // @synthesize accessibilitySendBackgroundView=_accessibilitySendBackgroundView;
 @property(retain, nonatomic) UIView *accessibilityCloseBackgroundView; // @synthesize accessibilityCloseBackgroundView=_accessibilityCloseBackgroundView;
 @property(retain, nonatomic) UIView *accessibilityBackdropView; // @synthesize accessibilityBackdropView=_accessibilityBackdropView;
@@ -89,12 +92,14 @@
 @property(nonatomic) struct CGPoint balloonViewOrigin; // @synthesize balloonViewOrigin=_balloonViewOrigin;
 @property(nonatomic) UIView *hintSendButton; // @synthesize hintSendButton=_hintSendButton;
 @property(nonatomic) UIView *hintBlackText; // @synthesize hintBlackText=_hintBlackText;
+@property(nonatomic) _Bool isInDarkMode; // @synthesize isInDarkMode=_isInDarkMode;
 @property(nonatomic) _Bool needsSwitcherAnimation; // @synthesize needsSwitcherAnimation=_needsSwitcherAnimation;
 @property(retain, nonatomic) CKChatControllerDummyAnimator *dummyAnimator; // @synthesize dummyAnimator=_dummyAnimator;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property(retain, nonatomic) NSLayoutConstraint *lastEffectDotTopConstraint; // @synthesize lastEffectDotTopConstraint=_lastEffectDotTopConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *mainLabelBottomConstraint; // @synthesize mainLabelBottomConstraint=_mainLabelBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *typeSegmentedControlBottomConstraint; // @synthesize typeSegmentedControlBottomConstraint=_typeSegmentedControlBottomConstraint;
+@property(retain, nonatomic) UIView *roundedView; // @synthesize roundedView=_roundedView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) UICollectionView *momentsCollectionView; // @synthesize momentsCollectionView=_momentsCollectionView;
 @property(retain, nonatomic) UIFont *effectLabelFont; // @synthesize effectLabelFont=_effectLabelFont;
@@ -108,8 +113,7 @@
 @property(retain, nonatomic) CABackdropLayer *backdrop; // @synthesize backdrop=_backdrop;
 @property(retain, nonatomic) UIView *peekContainer; // @synthesize peekContainer=_peekContainer;
 @property(retain, nonatomic) UIView *hintContainer; // @synthesize hintContainer=_hintContainer;
-@property(nonatomic) id <CKEffectPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <CKEffectPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_accessibilityContrastStatusDidChange;
 - (id)_defaultSendAnimationContextForAnimationPreview;
 - (void)_applicationWillEnterForeground;
@@ -129,6 +133,7 @@
 - (void)pageControlChanged:(id)arg1;
 - (void)handleTouchMoved:(struct CGPoint)arg1;
 - (void)handleTouchUp:(struct CGPoint)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_startSwitcherAnimationIfNecessary;
 - (void)_setNeedsSwitcherAnimationIfNecessary;
 - (void)scrollViewDidScroll:(id)arg1;

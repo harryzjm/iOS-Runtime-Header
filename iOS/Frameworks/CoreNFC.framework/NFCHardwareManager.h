@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedHardwareManager;
+- (void).cxx_destruct;
 - (void)didInvalidate;
 - (void)hardwareFailedToLoad;
 - (id)getReaderSessionWithKey:(id)arg1;
@@ -28,8 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)addNFCHardwareManagerCallbacksListener:(id)arg1;
 @property(readonly, copy, nonatomic, getter=getDelegates) NSArray *delegates;
 - (void)dequeueReaderSession:(id)arg1;
-- (void)queueReaderSession:(id)arg1 showSharingUI:(unsigned long long)arg2 coreNFCSessionType:(unsigned long long)arg3 scanText:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)dealloc;
+- (void)queueReaderSession:(id)arg1 sessionConfig:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 
 // Remaining properties

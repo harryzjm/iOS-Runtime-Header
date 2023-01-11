@@ -22,6 +22,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *itunesReceiptRequested; // @synthesize itunesReceiptRequested=_itunesReceiptRequested;
 @property(retain, nonatomic) NSNumber *validUntil; // @synthesize validUntil=_validUntil;
 @property(retain, nonatomic) NSString *currentSku; // @synthesize currentSku=_currentSku;
@@ -32,7 +33,6 @@
 @property(retain, nonatomic) NSNumber *subscriptionRecurring; // @synthesize subscriptionRecurring=_subscriptionRecurring;
 @property(retain, nonatomic) NSNumber *currentlySubscribed; // @synthesize currentlySubscribed=_currentlySubscribed;
 @property(retain, nonatomic) NSNumber *currentTime; // @synthesize currentTime=_currentTime;
-- (void).cxx_destruct;
 
 @end
 

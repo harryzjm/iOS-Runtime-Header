@@ -10,7 +10,7 @@
 #import <CloudKitDaemon/CKDContainerScopedUserIDProvider-Protocol.h>
 #import <CloudKitDaemon/CKDContextInfoProvider-Protocol.h>
 
-@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, NSHashTable, NSMutableDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationID, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, NSHashTable, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface CKDClientContext : NSObject <CKDContextInfoProvider, CKDAccountAccessInfoProvider, CKDContainerScopedUserIDProvider>
@@ -23,6 +23,7 @@
     _Bool _bypassPCSEncryption;
     _Bool _forceEnableReadOnlyManatee;
     _Bool _isSiloedContext;
+    _Bool _hasExplicitCodeOperationURLEntitlement;
     _Bool _sandboxed;
     _Bool _finishedAppProxySetup;
     _Bool _finishedProxySetup;
@@ -34,14 +35,12 @@
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
     NSURL *_publicMetricsServiceURL;
-    NSURL *_publicDatabaseRPCServiceURL;
     NSString *_containerScopedUserID;
     NSString *_orgAdminUserID;
     NSHashTable *_proxies;
     long long _cachedEnvironment;
     CKContainerID *_containerID;
     NSString *_applicationBundleID;
-    NSString *_sourceApplicationBundleID;
     NSString *_personaID;
     NSString *_applicationVersion;
     NSURL *_applicationIcon;
@@ -95,6 +94,7 @@
 + (id)_sharedContextWithAppContainerTuple:(id)arg1 accountInfoOverride:(id)arg2 proxy:(id)arg3 forInternalUse:(_Bool)arg4;
 + (id)sharedContexts;
 + (id)applicationContainerPathForBundleID:(id)arg1 bundleURL:(id *)arg2 contextType:(long long *)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *proxyPreparationGroup; // @synthesize proxyPreparationGroup=_proxyPreparationGroup;
 @property(readonly, nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
 @property(retain, nonatomic) CKDPCSManager *pcsManager; // @synthesize pcsManager=_pcsManager;
@@ -120,6 +120,7 @@
 @property(retain, nonatomic) CKDZoneGatekeeper *foregroundZoneGatekeeper; // @synthesize foregroundZoneGatekeeper=_foregroundZoneGatekeeper;
 @property(readonly, nonatomic) CKDPCSCache *pcsCache; // @synthesize pcsCache=_pcsCache;
 @property(retain) CKDMMCS *MMCS; // @synthesize MMCS=_MMCS;
+@property(nonatomic) _Bool hasExplicitCodeOperationURLEntitlement; // @synthesize hasExplicitCodeOperationURLEntitlement=_hasExplicitCodeOperationURLEntitlement;
 @property(readonly, nonatomic) _Bool isSiloedContext; // @synthesize isSiloedContext=_isSiloedContext;
 @property(nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property(readonly, nonatomic) _Bool forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
@@ -148,7 +149,6 @@
 @property(readonly, nonatomic) NSURL *applicationIcon; // @synthesize applicationIcon=_applicationIcon;
 @property(retain, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property(readonly, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
-@property(readonly, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property(retain, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
 @property(readonly, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property long long cachedEnvironment; // @synthesize cachedEnvironment=_cachedEnvironment;
@@ -156,14 +156,12 @@
 @property(nonatomic) _Bool isForClouddInternalUse; // @synthesize isForClouddInternalUse=_isForClouddInternalUse;
 @property(copy) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property(copy) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
-@property(copy) NSURL *publicDatabaseRPCServiceURL; // @synthesize publicDatabaseRPCServiceURL=_publicDatabaseRPCServiceURL;
 @property(copy) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;
 @property(copy) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
 @property(copy) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
 @property(copy) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;
 @property(copy) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
 @property(retain, nonatomic) CKDServerConfiguration *config; // @synthesize config=_config;
-- (void).cxx_destruct;
 - (unsigned long long)aggregatedOutstandingOperationCount;
 - (void)clearAuthTokensForRecordWithID:(id)arg1 databaseScope:(long long)arg2;
 - (void)clearPILSCacheForLookupInfos:(id)arg1;
@@ -178,11 +176,13 @@
 - (unsigned long long)countAssetCacheItems;
 - (void)setFakeResponseOperationResult:(id)arg1 forNextRequestOfClassName:(id)arg2 forItemID:(id)arg3 withLifetime:(int)arg4;
 - (void)setFakeError:(id)arg1 forNextRequestOfClassName:(id)arg2;
-@property(nonatomic) _Bool hasExplicitCodeOperationURLEntitlement;
 @property(nonatomic) _Bool hasAllowUnverifiedAccountEntitlement;
 @property(nonatomic) _Bool hasNonLegacyShareURLEntitlement;
-@property(readonly, nonatomic) NSString *applicationBundleIDForServer;
-@property(readonly, nonatomic) NSString *applicationBundleIDForPush;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifierForPush;
+- (id)applicationBundleIDForCacheDirectory;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifierForNetworkAttribution;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifierForContainerAccess;
+@property(readonly, nonatomic) CKDApplicationID *applicationID;
 @property(retain, nonatomic) NSString *clientPrefixEntitlement;
 @property(retain, nonatomic) NSString *associatedApplicationBundleID;
 @property(readonly, nonatomic) NSString *encryptionServiceName;
@@ -239,9 +239,10 @@
 @property(readonly, nonatomic) _Bool canAccessAccount;
 - (_Bool)_anyAssociatedProxyHasTCCAuthorization;
 - (_Bool)_cloudKitEnabledForCurrentClient;
-- (id)_dataclassNameForContainerIdentifier:(id)arg1;
 - (void)_reloadAccount:(_Bool)arg1;
 - (void)_cancelAllLongLivedOperations;
+- (_Bool)_canBeReusedForAppContainerTuple:(id)arg1 accountInfoOverride:(id)arg2 isSandboxed:(_Bool)arg3 internalUse:(_Bool)arg4 encryptionServiceName:(id)arg5 ignoreSandboxCheck:(_Bool)arg6;
+- (_Bool)canBeReusedForContext:(id)arg1 ignoreSandboxCheck:(_Bool)arg2;
 - (void)dealloc;
 - (void)dropMMCS;
 - (void)_clearCaches;

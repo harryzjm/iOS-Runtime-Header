@@ -13,13 +13,13 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)new;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)CKPropertiesDescription;
+@property(copy, nonatomic) NSString *recordType; // @dynamic recordType;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSubscriptionID:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(copy, nonatomic) NSString *recordType; // @dynamic recordType;
 
 @end
 

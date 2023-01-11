@@ -16,6 +16,7 @@
     _Bool _hasSquareImage;
     _Bool _disabled;
     _Bool _restricted;
+    _Bool _peopleSuggestion;
     NSNumber *_imageSlot;
     NSNumber *_mainLabelSlot;
     NSNumber *_topLabelSlot;
@@ -25,7 +26,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)nodeWithImageSlot:(id)arg1 labelSlot:(id)arg2 transportSlot:(id)arg3;
++ (id)nodeWithImageSlot:(id)arg1 labelSlot:(id)arg2 transportSlot:(id)arg3 isPeopleSuggestion:(_Bool)arg4;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isPeopleSuggestion) _Bool peopleSuggestion; // @synthesize peopleSuggestion=_peopleSuggestion;
 @property(nonatomic, getter=isRestricted) _Bool restricted; // @synthesize restricted=_restricted;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) _Bool hasSquareImage; // @synthesize hasSquareImage=_hasSquareImage;
@@ -36,7 +39,6 @@
 @property(retain) NSNumber *topLabelSlot; // @synthesize topLabelSlot=_topLabelSlot;
 @property(retain) NSNumber *mainLabelSlot; // @synthesize mainLabelSlot=_mainLabelSlot;
 @property(retain) NSNumber *imageSlot; // @synthesize imageSlot=_imageSlot;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

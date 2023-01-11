@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)reverseTransformedValue:(id)arg1;
 - (id)transformedValue:(id)arg1;
+- (id)init;
 
 @end
 

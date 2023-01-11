@@ -58,6 +58,7 @@
 - (void)layoutSubviews;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
+- (void)setShouldShowUnsnapshotableContent:(_Bool)arg1;
 - (void)_prepareForEditing;
 - (_Bool)_timeLabelUsesLegibility;
 - (void)dealloc;

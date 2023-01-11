@@ -11,7 +11,6 @@
 @class NSArray, NSError, NSString;
 @protocol OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface _EARSyncResultStreamHelper : NSObject <_EARSpeechRecognitionResultStream>
 {
     NSObject<OS_dispatch_semaphore> *_finishSemaphore;
@@ -19,9 +18,9 @@ __attribute__((visibility("hidden")))
     NSArray *_results;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
-- (void).cxx_destruct;
 - (void)speechRecognizer:(id)arg1 didRecognizeFinalResults:(id)arg2;
 - (void)speechRecognizer:(id)arg1 didFinishRecognitionWithError:(id)arg2;
 - (void)speechRecognizer:(id)arg1 didRecognizePartialResult:(id)arg2;

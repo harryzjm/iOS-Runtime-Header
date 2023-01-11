@@ -6,30 +6,38 @@
 
 #import <PrototypeToolsUI/PTUISettingsController.h>
 
-@class UINavigationController, _UISettings;
+@class PTSettings, PXSettings, UINavigationController;
 
 __attribute__((visibility("hidden")))
 @interface _PUSettingsController : PTUISettingsController
 {
+    _Bool _hasWarnedForOverrides;
     UINavigationController *_searchNavigationController;
-    _UISettings *_rootSettings;
+    PTSettings *_rootSettings;
     CDUnknownBlockType _onViewDidDisappearBlock;
     CDUnknownBlockType _dismissButtonFactory;
-    CDUnknownBlockType _searchBarButtonItemFactory;
+    CDUnknownBlockType _ellipsisBarButtonItemFactory;
+    UINavigationController *_configurationsNavigationController;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType searchBarButtonItemFactory; // @synthesize searchBarButtonItemFactory=_searchBarButtonItemFactory;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasWarnedForOverrides; // @synthesize hasWarnedForOverrides=_hasWarnedForOverrides;
+@property(readonly, nonatomic) UINavigationController *configurationsNavigationController; // @synthesize configurationsNavigationController=_configurationsNavigationController;
+@property(copy, nonatomic) CDUnknownBlockType ellipsisBarButtonItemFactory; // @synthesize ellipsisBarButtonItemFactory=_ellipsisBarButtonItemFactory;
 @property(copy, nonatomic) CDUnknownBlockType dismissButtonFactory; // @synthesize dismissButtonFactory=_dismissButtonFactory;
 @property(copy, nonatomic) CDUnknownBlockType onViewDidDisappearBlock; // @synthesize onViewDidDisappearBlock=_onViewDidDisappearBlock;
-@property(readonly, nonatomic) _UISettings *rootSettings; // @synthesize rootSettings=_rootSettings;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) PTSettings *rootSettings; // @synthesize rootSettings=_rootSettings;
+- (void)_clearSettingsOverride;
+- (void)_warnForSettingsOverride;
+- (void)handleEllipsisBarButtonItem:(id)arg1;
 @property(readonly, nonatomic) UINavigationController *searchNavigationController; // @synthesize searchNavigationController=_searchNavigationController;
-- (void)handleSearchBarButtonItem:(id)arg1;
 - (void)_updateNavigationItemOfViewController:(id)arg1;
 - (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)_invalidateNavigationItems;
 - (void)callOnViewDidDisappearBlock;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+@property(readonly, nonatomic) PXSettings *currentSettings;
 - (id)initWithRootSettings:(id)arg1;
 
 @end

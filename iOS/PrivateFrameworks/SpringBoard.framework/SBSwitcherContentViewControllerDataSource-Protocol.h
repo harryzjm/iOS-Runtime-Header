@@ -14,13 +14,15 @@
 - (SBTransitionSwitcherModifierEvent *)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 transitionEventForLayoutState:(SBMainDisplayLayoutState *)arg2 identifier:(NSUUID *)arg3 phase:(unsigned long long)arg4 animated:(_Bool)arg5;
 - (long long)sbActiveInterfaceOrientation;
 - (long long)switcherInterfaceOrientationForContentController:(id <SBSwitcherContentViewControlling>)arg1;
-- (long long)shadowStyleForSwitcherContentController:(id <SBSwitcherContentViewControlling>)arg1;
 - (NSArray *)appLayoutsForSwitcherContentController:(id <SBSwitcherContentViewControlling>)arg1;
 
 @optional
-- (_Bool)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 isAppLayoutHigherPriorityInTetheredSwitcher:(SBAppLayout *)arg2;
+- (_Bool)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 supportsKillingOfAppLayout:(SBAppLayout *)arg2;
+- (_Bool)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 supportsHeaderItemsForAppLayout:(SBAppLayout *)arg2;
+- (_Bool)switcherContentControllerReloadsSnapshotsForActiveInterfaceOrientationChange:(id <SBSwitcherContentViewControlling>)arg1;
 - (NSArray *)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 hiddenAppLayoutsForBundleIdentifier:(NSString *)arg2;
 - (_Bool)isInAppStatusBarRequestedHiddenForSwitcherContentController:(id <SBSwitcherContentViewControlling>)arg1;
+- (_Bool)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 shouldMorphFromPiPForTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2;
 - (_Bool)switcherContentController:(id <SBSwitcherContentViewControlling>)arg1 shouldMorphToPiPForTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2;
 - (long long)backdropInterfaceStyleForContentController:(id <SBSwitcherContentViewControlling>)arg1;
 - (long long)homeScreenInterfaceOrientation;
@@ -28,7 +30,7 @@
 - (struct CGRect)frameForInlineAppExposeItemAspectFill:(_Bool)arg1;
 - (struct CGRect)frameForFloatingAppLayoutInInterfaceOrientation:(long long)arg1 floatingConfiguration:(long long)arg2;
 - (struct CGRect)frameForItemWithRole:(long long)arg1 inMainAppLayout:(SBAppLayout *)arg2 interfaceOrientation:(long long)arg3;
-- (SBIconView *)iconViewForIconIdentifier:(NSString *)arg1;
+- (SBIconView *)matchingIconViewForIconView:(SBIconView *)arg1;
 - (SBWorkspaceTransientOverlay *)createWorkspaceTransientOverlayForAppLayout:(SBAppLayout *)arg1;
 - (SBTransientOverlayViewController *)viewControllerForTransientOverlayAppLayout:(SBAppLayout *)arg1;
 - (SBAppLayout *)appLayoutForWorkspaceTransientOverlay:(SBWorkspaceTransientOverlay *)arg1;

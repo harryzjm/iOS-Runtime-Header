@@ -14,6 +14,7 @@
 + (_Bool)supportsComplicationFamily:(long long)arg1;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
 - (void).cxx_destruct;
+- (void)_updatePlatterColor;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;

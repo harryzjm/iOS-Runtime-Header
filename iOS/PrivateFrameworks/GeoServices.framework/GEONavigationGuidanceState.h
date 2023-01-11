@@ -13,12 +13,14 @@
     int _guidanceLevelIgnoringTimeCriterion;
     int _guidanceLevel;
     int _navigationState;
+    int _navigationType;
     int _trackedTransportType;
     _Bool _shouldSuppressCellularDataAlerts;
     struct {
         unsigned int has_guidanceLevelIgnoringTimeCriterion:1;
         unsigned int has_guidanceLevel:1;
         unsigned int has_navigationState:1;
+        unsigned int has_navigationType:1;
         unsigned int has_trackedTransportType:1;
         unsigned int has_shouldSuppressCellularDataAlerts:1;
     } _flags;
@@ -33,8 +35,15 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsNavigationType:(id)arg1;
+- (id)navigationTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasNavigationType;
+@property(nonatomic) int navigationType;
 - (int)StringAsGuidanceLevelIgnoringTimeCriterion:(id)arg1;
 - (id)guidanceLevelIgnoringTimeCriterionAsString:(int)arg1;
 @property(nonatomic) _Bool hasGuidanceLevelIgnoringTimeCriterion;

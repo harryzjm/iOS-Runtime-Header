@@ -8,24 +8,32 @@
 
 #import <PassKitUI/PKHeroImageView-Protocol.h>
 
-@class NSString, UIImageView;
+@class NSString, UIImageView, UILabel;
 
 @interface PKWatchHeroImageView : UIView <PKHeroImageView>
 {
     UIImageView *_watchView;
-    UIImageView *_bridgeWallpaperImageView;
+    struct CGSize _originalWatchViewSize;
+    UILabel *_doneLabel;
+    _Bool _hideDoneLabel;
 }
 
++ (id)watchDeviceImage;
++ (id)_bridgeHeroImage;
 - (void).cxx_destruct;
-- (id)_watchDeviceImage;
-- (id)_bridgeWallpaperImage;
-- (id)_bridgeHeroImage;
-- (struct CGSize)_heroBackgroundImageSize;
+@property(nonatomic) _Bool hideDoneLabel; // @synthesize hideDoneLabel=_hideDoneLabel;
+- (struct CGPoint)_watchScreenInset;
+- (void)layoutSubviews;
+- (struct CGSize)_watchScreenSize:(double)arg1;
 - (struct CGSize)_heroWatchImageSize;
 - (id)_resizeImage:(id)arg1 toSize:(struct CGSize)arg2;
 @property(readonly, nonatomic) _Bool isCompactWatch;
 - (struct CGSize)imageSize;
-- (void)layoutSubviews;
+- (struct CGRect)spaceBelowCardFrame;
+@property(readonly, nonatomic) struct CGRect cardFrame;
+@property(readonly, nonatomic) struct CGRect watchScreenFrame;
+@property(readonly, nonatomic) struct CGPoint watchScreenCenter;
+- (double)scale;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
 

@@ -26,14 +26,14 @@
 + (id)validKindsForPersistence;
 + (id)sortDescriptorsForAlbumKind:(int)arg1;
 + (id)predicateForAlbumKind:(int)arg1;
-+ (id)_panoramasAlbumPredicate;
++ (id)_predicateForAssetSubtype:(short)arg1;
 + (_Bool)contextShouldIgnoreChangesForALAssetsGroupFilterPredicate;
 + (_Bool)contextShouldIgnoreChangesForFetchRequest;
 + (_Bool)contextShouldIgnoreChangesForFetchedAssets;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
 @property(nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property(retain, nonatomic) NSPredicate *ALAssetsGroupFilterPredicate; // @synthesize ALAssetsGroupFilterPredicate=_ALAssetsGroupFilterPredicate;
-- (void).cxx_destruct;
 - (void)prepareForDeletion;
 @property(readonly) long long cloudDeletionType;
 @property(readonly, copy) NSString *cloudUUIDForDeletion;
@@ -56,6 +56,7 @@
 - (id)filteredIndexesForPredicate:(id)arg1;
 - (void)batchFetchAssets:(id)arg1;
 - (_Bool)canPerformEditOperation:(unsigned long long)arg1;
+- (_Bool)canPerformDeleteOperation;
 - (unsigned long long)countForAssetsOfKind:(short)arg1;
 - (unsigned long long)_fetchedCountForAssetsOfKind:(short)arg1;
 - (_Bool)isEmpty;

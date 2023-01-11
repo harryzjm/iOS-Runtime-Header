@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <BehaviorMiner/NSCopying-Protocol.h>
+#import <BehaviorMiner/NSSecureCoding-Protocol.h>
 
 @class NSString, _DKEventStream;
 
-@interface BMItemType : NSObject <NSCopying>
+@interface BMItemType : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     Class _valueClass;
@@ -19,23 +20,29 @@
     CDUnknownBlockType _valueExtractBlock;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)allItemTypesDictionary;
 + (id)allItemTypes;
 + (void)unregisterItemType:(id)arg1;
 + (void)registerItemType:(id)arg1;
 + (id)allRegisteredItemTypes;
++ (id)taskSpecificItemWithIdentifier:(id)arg1 valueClass:(Class)arg2;
++ (id)toggledDoNotDisturb;
 + (id)relevanceCoarseIntentHash;
 + (id)relevanceIntentHash;
++ (id)appIntentAutomationHash;
 + (id)appIntentClass;
 + (id)relevanceCoarseAppActivityHash;
 + (id)relevanceAppActivityHash;
 + (id)appActivityType;
++ (id)toggledLowPowerMode;
 + (id)firstBacklightAfterWakeup;
 + (id)bluetoothConnectedToDeviceWithAddress;
 + (id)bluetoothConnectedToDeviceWithName;
 + (id)bluetoothConnectedToDevice;
 + (id)mediaGenreStartedPlaying;
 + (id)mediaIsPlaying;
++ (id)temporalItemTypes;
 + (id)isWeekend;
 + (id)dayOfWeek;
 + (id)hourOfDaySlot;
@@ -45,8 +52,16 @@
 + (id)appInFocus;
 + (id)appLaunchedReason;
 + (id)appOpened;
++ (id)alarmStoppedWithID;
++ (id)alarmSnoozedWithID;
++ (id)alarmStoppedAny;
++ (id)alarmSnoozedAny;
++ (id)connectedToCarPlay;
++ (id)exitLocation;
++ (id)enterLocation;
 + (id)locationIdentifier;
 + (id)interactionItemTypes;
++ (id)interactionExtractedTopicFromAttachment;
 + (id)interactionTargetBundleID;
 + (id)interactionSharingSourceBundleID;
 + (id)interactionTextTopic;
@@ -60,12 +75,18 @@
 + (id)interactionDirection;
 + (id)interactionMechanism;
 + (id)connectedToExternalAudioOutput;
++ (id)toggledAirplaneMode;
++ (id)wifiIsConnectedToSSID;
++ (id)wifiDisconnectedFromSSID;
++ (id)wifiConnectedToSSID;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType valueExtractBlock; // @synthesize valueExtractBlock=_valueExtractBlock;
 @property(retain, nonatomic) _DKEventStream *eventStream; // @synthesize eventStream=_eventStream;
 @property(nonatomic) long long edge; // @synthesize edge=_edge;
 @property(retain, nonatomic) Class valueClass; // @synthesize valueClass=_valueClass;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)extractEventFromDKEvent:(id)arg1;
 - (id)extractItemFromDKEvent:(id)arg1;
 - (id)extractValueFromDKEvent:(id)arg1;

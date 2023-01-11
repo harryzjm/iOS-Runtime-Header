@@ -13,7 +13,6 @@
 + (id)temporaryMatrixWithCommandBuffer:(id)arg1 matrixDescriptor:(id)arg2;
 @property(nonatomic) unsigned long long readCount; // @synthesize readCount=_readCount;
 - (void)synchronizeOnCommandBuffer:(id)arg1;
-- (id)ndArrayWithCommandBuffer:(id)arg1 descriptor:(id)arg2 aliasing:(unsigned long long)arg3;
 - (id)initWithCommandBuffer:(id)arg1 matrixDescriptor:(id)arg2;
 
 @end

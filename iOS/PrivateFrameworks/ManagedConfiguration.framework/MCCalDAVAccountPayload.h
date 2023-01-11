@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString;
+#import <ManagedConfiguration/MCPerAccountVPNPayloadProtocol-Protocol.h>
 
-@interface MCCalDAVAccountPayload
+@class NSArray, NSNumber, NSString;
+
+@interface MCCalDAVAccountPayload <MCPerAccountVPNPayloadProtocol>
 {
     NSString *_accountDescription;
     NSString *_hostname;
@@ -16,6 +18,8 @@
     _Bool _useSSL;
     int _port;
     NSString *_accountPersistentUUID;
+    NSString *_VPNUUID;
+    NSString *_acAccountIdentifier;
     NSNumber *_useSSLNum;
     NSNumber *_portNum;
 }
@@ -23,8 +27,11 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *portNum; // @synthesize portNum=_portNum;
 @property(readonly, nonatomic) NSNumber *useSSLNum; // @synthesize useSSLNum=_useSSLNum;
+@property(retain, nonatomic) NSString *acAccountIdentifier; // @synthesize acAccountIdentifier=_acAccountIdentifier;
+@property(readonly, retain, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
 @property(copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
 @property(readonly, nonatomic) int port; // @synthesize port=_port;
 @property(readonly, nonatomic) _Bool useSSL; // @synthesize useSSL=_useSSL;
@@ -33,17 +40,20 @@
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(readonly, retain, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property(readonly, retain, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
-- (void).cxx_destruct;
 - (_Bool)containsSensitiveUserInformation;
 - (id)payloadDescriptionKeyValueSections;
 - (id)subtitle2Description;
 - (id)subtitle2Label;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
-- (id)title;
 - (id)stubDictionary;
-- (id)description;
+- (id)verboseDescription;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+@property(readonly, retain, nonatomic) NSArray *calendarAccountIdentifiers;
+
+// Remaining properties
+@property(readonly, retain, nonatomic) NSArray *contactsAccountIdentifiers;
+@property(readonly, retain, nonatomic) NSArray *mailAccountIdentifiers;
 
 @end
 

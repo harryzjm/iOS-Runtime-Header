@@ -10,12 +10,11 @@
 
 @interface BSAbstractDefaultDomainClassMetadata : NSObject
 {
+    Class _clazz;
     NSMutableDictionary *_propertyNameToPropertyMap;
     NSMutableDictionary *_selectorToPropertyMap;
 }
 
-@property(retain, nonatomic) NSMutableDictionary *selectorToPropertyMap; // @synthesize selectorToPropertyMap=_selectorToPropertyMap;
-@property(retain, nonatomic) NSMutableDictionary *propertyNameToPropertyMap; // @synthesize propertyNameToPropertyMap=_propertyNameToPropertyMap;
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;

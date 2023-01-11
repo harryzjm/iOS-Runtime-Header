@@ -11,7 +11,7 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NEAOVPN, NEContentFilter, NEDNSProxy, NEPathController, NEProfileIngestionPayloadInfo, NEVPN, NEVPNApp, NSString, NSUUID;
+@class NEAOVPN, NEAppPush, NEContentFilter, NEDNSProxy, NEDNSSettingsBundle, NEPathController, NEProfileIngestionPayloadInfo, NEVPN, NEVPNApp, NSString, NSUUID;
 
 @interface NEConfiguration : NSObject <NEProfilePayloadHandlerDelegate, NEConfigurationValidating, NSSecureCoding, NSCopying>
 {
@@ -29,6 +29,9 @@
     NEProfileIngestionPayloadInfo *_payloadInfo;
     NEPathController *_pathController;
     NEDNSProxy *_dnsProxy;
+    NEDNSSettingsBundle *_dnsSettings;
+    NEAppPush *_appPush;
+    long long _appPermissionType;
 }
 
 + (id)configurationWithProfilePayload:(id)arg1;
@@ -39,6 +42,10 @@
 + (_Bool)setConfiguration:(struct __CFDictionary *)arg1 forProtocol:(struct __CFString *)arg2 inService:(struct __SCNetworkService *)arg3;
 + (_Bool)removeSCServiceWithIdentifier:(id)arg1 fromPreferences:(struct __SCPreferences *)arg2;
 + (_Bool)SCServiceWithIdentifier:(id)arg1 existsInPreferences:(struct __SCPreferences *)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) long long appPermissionType; // @synthesize appPermissionType=_appPermissionType;
+@property(copy) NEAppPush *appPush; // @synthesize appPush=_appPush;
+@property(copy) NEDNSSettingsBundle *dnsSettings; // @synthesize dnsSettings=_dnsSettings;
 @property(copy) NEDNSProxy *dnsProxy; // @synthesize dnsProxy=_dnsProxy;
 @property(copy) NEPathController *pathController; // @synthesize pathController=_pathController;
 @property(copy) NEProfileIngestionPayloadInfo *payloadInfo; // @synthesize payloadInfo=_payloadInfo;
@@ -53,7 +60,6 @@
 @property(copy) NSString *application; // @synthesize application=_application;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly) long long grade; // @synthesize grade=_grade;
-- (void).cxx_destruct;
 - (void)copyPasswordsFromSystemKeychain;
 @property(readonly) NSString *pluginType;
 - (void)clearUserKeychain;
@@ -76,12 +82,19 @@
 - (id)initWithName:(id)arg1 grade:(long long)arg2;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithDNSSettingsPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (id)initWithDNSProxyPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (id)initWithPathControllerPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
+- (_Bool)setAssociatedDomains:(id)arg1;
+- (_Bool)setExcludedDomains:(id)arg1;
 - (_Bool)setRestrictDomains:(_Bool)arg1;
+- (_Bool)setContactsDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (_Bool)setContactsDomains:(id)arg1;
+- (_Bool)setCalendarDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (_Bool)setCalendarDomains:(id)arg1;
+- (_Bool)setMailDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (_Bool)setMailDomains:(id)arg1;
+- (_Bool)validateStrings:(id)arg1;
 - (_Bool)setSMBDomains:(id)arg1;
 - (_Bool)setAppLayerVPNUUID:(id)arg1 andSafariDomains:(id)arg2;
 - (_Bool)setAppLayerVPNRuleSettings:(id)arg1 withAppIdentifier:(id)arg2;

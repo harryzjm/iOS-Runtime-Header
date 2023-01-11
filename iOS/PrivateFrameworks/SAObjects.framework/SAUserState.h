@@ -6,7 +6,7 @@
 
 #import <SAObjects/SABackgroundContextObject-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, SAUserTokenStatus;
 
 @interface SAUserState <SABackgroundContextObject>
 {
@@ -15,10 +15,13 @@
 + (id)userStateWithDictionary:(id)arg1 context:(id)arg2;
 + (id)userState;
 @property(copy, nonatomic) NSString *xpAbCookie;
+@property(retain, nonatomic) SAUserTokenStatus *userTokenStatus;
 @property(copy, nonatomic) NSString *userToken;
 @property(copy, nonatomic) NSNumber *userHistoryUnmodifiable;
+@property(copy, nonatomic) NSString *syncSharedUserId;
 @property(copy, nonatomic) NSString *status;
 @property(copy, nonatomic) NSString *sharedUserId;
+@property(copy, nonatomic) NSString *iTunesMatchSubscriptionStatus;
 @property(nonatomic) _Bool ageVerificationRequired;
 - (id)encodedClassName;
 - (id)groupIdentifier;

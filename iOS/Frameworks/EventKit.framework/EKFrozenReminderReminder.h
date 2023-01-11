@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)meltedClass;
+- (_Bool)defaultAlarmWasDeleted;
 - (_Bool)defaultAlarmRemoved;
 - (id)ekExceptionDates;
 - (id)detachedItems;
@@ -20,21 +21,22 @@ __attribute__((visibility("hidden")))
 - (id)organizer;
 - (id)clientLocation;
 - (id)recurrenceRules;
-- (id)attendees;
+- (id)attendeesRaw;
 - (_Bool)hasNotes;
 - (_Bool)hasAttendees;
-- (_Bool)hasRecurrenceRules;
+- (_Bool)hasRecurrences;
 - (id)structuredLocationWithoutPrediction;
 - (id)uniqueID;
 - (id)UUID;
 - (id)action;
-- (id)appLink;
+- (id)appLinkData;
 - (unsigned long long)priority;
 - (id)completionDate;
 - (id)timeZone;
 - (id)dueDateComponents;
 - (id)startDateComponents;
 - (id)alarms;
+- (id)allAlarms;
 - (id)creationDate;
 - (id)lastModifiedDate;
 - (id)URL;
@@ -44,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (id)calendarItemExternalIdentifier;
 - (id)calendar;
 - (id)calendarItemIdentifier;
+- (void)_fixAlarmUUIDsForClone:(id)arg1 from:(id)arg2;
+- (id)_copyToNewList:(id)arg1 error:(id *)arg2;
 - (_Bool)_applyChangesToSaveRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)_applyChanges:(id)arg1 error:(id *)arg2;
 - (id)uniqueIdentifier;

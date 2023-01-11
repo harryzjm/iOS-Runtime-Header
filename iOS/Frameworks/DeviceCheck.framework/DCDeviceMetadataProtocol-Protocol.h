@@ -6,7 +6,13 @@
 
 #import <DeviceCheck/NSObject-Protocol.h>
 
+@class NSData, NSString;
+
 @protocol DCDeviceMetadataProtocol <NSObject>
+- (void)appAttestationIsSupportedWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)appAttestationAssert:(NSString *)arg1 keyId:(NSString *)arg2 clientDataHash:(NSData *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
+- (void)appAttestationAttestKey:(NSString *)arg1 keyId:(NSString *)arg2 clientDataHash:(NSData *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
+- (void)appAttestationCreateKey:(NSString *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)isSupportedDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)fetchOpaqueBlobWithCompletion:(void (^)(NSData *, NSError *))arg1;
 @end

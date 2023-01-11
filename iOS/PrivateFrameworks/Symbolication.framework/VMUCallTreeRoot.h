@@ -11,6 +11,8 @@
 {
     struct _CSTypeRef _symbolicator;
     id <VMUStackLogReader> _stackLogReader;
+    NSArray *_vmRegions;
+    unsigned long long _cambriaRuntimeObjectID;
     VMUSampler *_sampler;
     unsigned long long _options;
     NSMutableSet *_uniqueNodeNames;
@@ -21,10 +23,12 @@
     NSArray *_binaryImages;
 }
 
-@property(copy, nonatomic) NSString *binaryImagesDescription; // @synthesize binaryImagesDescription=_binaryImagesDescription;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *binaryImagesDescription; // @synthesize binaryImagesDescription=_binaryImagesDescription;
 - (id)chargeSystemLibrariesToCallersAndKeepBoundaries:(_Bool)arg1;
 - (id)initWithCallGraphFile:(id)arg1 fileHeader:(id *)arg2 topFunctionsList:(id *)arg3 binaryImagesList:(id *)arg4;
+- (void)addChildCountsIntoNode;
+- (id)addUniqueChildWithName:(id)arg1 address:(unsigned long long)arg2 count:(unsigned int)arg3 numBytes:(unsigned long long)arg4 toNode:(id)arg5 isLeafNode:(_Bool)arg6;
 - (id)addUniqueChildWithName:(id)arg1 address:(unsigned long long)arg2 count:(unsigned int)arg3 numBytes:(unsigned long long)arg4 toNode:(id)arg5;
 - (id)addChildWithName:(id)arg1 address:(unsigned long long)arg2 count:(unsigned int)arg3 numBytes:(unsigned long long)arg4 toNode:(id)arg5;
 - (id)addBacktrace:(id)arg1;
@@ -32,6 +36,8 @@
 - (id)descriptionStringForAddress:(unsigned long long)arg1 atTime:(unsigned long long)arg2 leafFrame:(_Bool)arg3 startOfRecursion:(_Bool)arg4;
 - (void)dealloc;
 - (void)allBacktracesHaveBeenAdded;
+- (void)setCambriaRuntimeVMObjectID:(unsigned long long)arg1;
+- (void)setVMRegions:(id)arg1;
 - (void)setStackLogReader:(id)arg1;
 - (id)initWithSymbolicator:(struct _CSTypeRef)arg1 sampler:(id)arg2 options:(unsigned long long)arg3;
 

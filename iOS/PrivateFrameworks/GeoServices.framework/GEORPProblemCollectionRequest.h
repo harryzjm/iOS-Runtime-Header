@@ -8,13 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, GEORPUserCredentials, NSData, NSMutableArray, NSString, PBDataReader;
+@class GEOLocation, GEORPDebugSettings, GEORPUserCredentials, NSData, NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPProblemCollectionRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_countryCode;
+    GEORPDebugSettings *_debugSettings;
     NSData *_devicePushToken;
     NSString *_hwMachine;
     NSString *_inputLanguage;
@@ -23,8 +23,12 @@
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
     GEOLocation *_userLocation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_countryCode:1;
+        unsigned int read_debugSettings:1;
         unsigned int read_devicePushToken:1;
         unsigned int read_hwMachine:1;
         unsigned int read_inputLanguage:1;
@@ -33,15 +37,7 @@
         unsigned int read_userCredentials:1;
         unsigned int read_userEmail:1;
         unsigned int read_userLocation:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_devicePushToken:1;
-        unsigned int wrote_hwMachine:1;
-        unsigned int wrote_inputLanguage:1;
-        unsigned int wrote_osRelease:1;
-        unsigned int wrote_requestElements:1;
-        unsigned int wrote_userCredentials:1;
-        unsigned int wrote_userEmail:1;
-        unsigned int wrote_userLocation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,39 +54,36 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPDebugSettings *debugSettings;
+@property(readonly, nonatomic) _Bool hasDebugSettings;
 @property(retain, nonatomic) GEOLocation *userLocation;
 @property(readonly, nonatomic) _Bool hasUserLocation;
-- (void)_readUserLocation;
 @property(retain, nonatomic) NSString *userEmail;
 @property(readonly, nonatomic) _Bool hasUserEmail;
-- (void)_readUserEmail;
 @property(retain, nonatomic) NSData *devicePushToken;
 @property(readonly, nonatomic) _Bool hasDevicePushToken;
-- (void)_readDevicePushToken;
 @property(retain, nonatomic) GEORPUserCredentials *userCredentials;
 @property(readonly, nonatomic) _Bool hasUserCredentials;
-- (void)_readUserCredentials;
 @property(retain, nonatomic) NSString *inputLanguage;
 @property(readonly, nonatomic) _Bool hasInputLanguage;
-- (void)_readInputLanguage;
 @property(retain, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) _Bool hasCountryCode;
-- (void)_readCountryCode;
 @property(retain, nonatomic) NSString *osRelease;
 @property(readonly, nonatomic) _Bool hasOsRelease;
-- (void)_readOsRelease;
 @property(retain, nonatomic) NSString *hwMachine;
 @property(readonly, nonatomic) _Bool hasHwMachine;
-- (void)_readHwMachine;
 - (id)requestElementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)requestElementsCount;
-- (void)_addNoFlagsRequestElement:(id)arg1;
 - (void)addRequestElement:(id)arg1;
 - (void)clearRequestElements;
 @property(retain, nonatomic) NSMutableArray *requestElements;
-- (void)_readRequestElements;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -6,32 +6,41 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNConfidenceProviding-Protocol.h>
 #import <SoundAnalysis/SNConfidenceProvidingWritable-Protocol.h>
+#import <SoundAnalysis/SNResult-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProviding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
 
 @class NSString;
 
-@interface SNDetectionResult : NSObject <SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNTimeRangeProviding, SNConfidenceProviding>
+@interface SNDetectionResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNResult, SNTimeRangeProviding, SNConfidenceProviding>
 {
-    double confidence;
+    _Bool _detected;
+    double _confidence;
     NSString *_identifier;
-    CDStruct_e83c9415 timeRange;
+    CDStruct_e83c9415 _timeRange;
 }
 
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void)setConfidence:(double)arg1;
-@property(readonly, nonatomic) double confidence;
-- (void)setTimeRange:(CDStruct_e83c9415)arg1;
-@property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) _Bool detected; // @synthesize detected=_detected;
+@property(nonatomic) double confidence; // @synthesize confidence=_confidence;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToDetectionResult:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSString *description;
 - (id)initWithIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

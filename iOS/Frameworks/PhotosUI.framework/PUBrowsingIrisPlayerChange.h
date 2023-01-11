@@ -6,32 +6,28 @@
 
 @interface PUBrowsingIrisPlayerChange
 {
-    _Bool _livePhotoPlaybackAllowedDidChange;
-    _Bool _livePhotoLoadingAllowedDidChange;
+    _Bool _isLivePhotoPlaybackAllowedDidChange;
+    _Bool _isLivePhotoLoadingAllowedDidChange;
     _Bool _livePhotoDidChange;
     _Bool _playerDidChange;
     _Bool _playbackStateDidChange;
-    _Bool _hasPendingVitalityHintDidChange;
     _Bool _activatedDidChange;
     _Bool _scrubbingPhotoTimeDidChange;
     _Bool _currentlyDisplayedTimesDidChange;
     _Bool _playingDidChange;
-    _Bool _isLivePhotoLoadingAllowedDidChange;
-    _Bool _isLivePhotoPlaybackAllowedDidChange;
+    _Bool _vitalityTransformDidChange;
 }
 
-@property(nonatomic, setter=_setLivePhotoPlaybackAllowedDidChange:) _Bool isLivePhotoPlaybackAllowedDidChange; // @synthesize isLivePhotoPlaybackAllowedDidChange=_isLivePhotoPlaybackAllowedDidChange;
-@property(nonatomic, setter=_setLivePhotoLoadingAllowedDidChange:) _Bool isLivePhotoLoadingAllowedDidChange; // @synthesize isLivePhotoLoadingAllowedDidChange=_isLivePhotoLoadingAllowedDidChange;
-@property(nonatomic, setter=_setPlayingDidChange:) _Bool playingDidChange; // @synthesize playingDidChange=_playingDidChange;
-@property(nonatomic, setter=_setCurrentlyDisplayedTimesDidChange:) _Bool currentlyDisplayedTimesDidChange; // @synthesize currentlyDisplayedTimesDidChange=_currentlyDisplayedTimesDidChange;
-@property(nonatomic, setter=_setScrubbingPhotoTimeDidChange:) _Bool scrubbingPhotoTimeDidChange; // @synthesize scrubbingPhotoTimeDidChange=_scrubbingPhotoTimeDidChange;
-@property(nonatomic, setter=_setActivatedDidChange:) _Bool activatedDidChange; // @synthesize activatedDidChange=_activatedDidChange;
-@property(nonatomic, setter=_setHasPendingVitalityHintDidChange:) _Bool hasPendingVitalityHintDidChange; // @synthesize hasPendingVitalityHintDidChange=_hasPendingVitalityHintDidChange;
-@property(nonatomic, setter=_setPlaybackStateDidChange:) _Bool playbackStateDidChange; // @synthesize playbackStateDidChange=_playbackStateDidChange;
-@property(nonatomic, setter=_setPlayerDidChange:) _Bool playerDidChange; // @synthesize playerDidChange=_playerDidChange;
-@property(nonatomic, setter=_setLivePhotoDidChange:) _Bool livePhotoDidChange; // @synthesize livePhotoDidChange=_livePhotoDidChange;
-@property(readonly, nonatomic) _Bool livePhotoLoadingAllowedDidChange; // @synthesize livePhotoLoadingAllowedDidChange=_livePhotoLoadingAllowedDidChange;
-@property(readonly, nonatomic) _Bool livePhotoPlaybackAllowedDidChange; // @synthesize livePhotoPlaybackAllowedDidChange=_livePhotoPlaybackAllowedDidChange;
+@property(nonatomic) _Bool vitalityTransformDidChange; // @synthesize vitalityTransformDidChange=_vitalityTransformDidChange;
+@property(nonatomic) _Bool playingDidChange; // @synthesize playingDidChange=_playingDidChange;
+@property(nonatomic) _Bool currentlyDisplayedTimesDidChange; // @synthesize currentlyDisplayedTimesDidChange=_currentlyDisplayedTimesDidChange;
+@property(nonatomic) _Bool scrubbingPhotoTimeDidChange; // @synthesize scrubbingPhotoTimeDidChange=_scrubbingPhotoTimeDidChange;
+@property(nonatomic) _Bool activatedDidChange; // @synthesize activatedDidChange=_activatedDidChange;
+@property(nonatomic) _Bool playbackStateDidChange; // @synthesize playbackStateDidChange=_playbackStateDidChange;
+@property(nonatomic) _Bool playerDidChange; // @synthesize playerDidChange=_playerDidChange;
+@property(nonatomic) _Bool livePhotoDidChange; // @synthesize livePhotoDidChange=_livePhotoDidChange;
+@property(nonatomic) _Bool isLivePhotoLoadingAllowedDidChange; // @synthesize isLivePhotoLoadingAllowedDidChange=_isLivePhotoLoadingAllowedDidChange;
+@property(nonatomic) _Bool isLivePhotoPlaybackAllowedDidChange; // @synthesize isLivePhotoPlaybackAllowedDidChange=_isLivePhotoPlaybackAllowedDidChange;
 - (_Bool)hasChanges;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, SPClientSession;
+@class NSObject, NSString, SPClientSession;
 @protocol OS_dispatch_queue;
 
 @interface SPUISearchModelGeneral
@@ -13,11 +13,14 @@
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain) SPClientSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
+@property(readonly) NSString *rankingDebugLog;
 - (void)clear;
 - (void)updateWithQueryContext:(id)arg1;
+- (long long)maxUISuggestions;
+- (void)setMaxUISuggestions:(long long)arg1;
 - (void)deactivate;
 - (void)activate;
 - (void)updatesEnabled;
@@ -27,6 +30,7 @@
 - (void)setForceStableResults:(_Bool)arg1;
 - (_Bool)infinitePatience;
 - (void)setInfinitePatience:(_Bool)arg1;
+- (void)_setInfinitePatience:(_Bool)arg1;
 - (id)init;
 
 @end

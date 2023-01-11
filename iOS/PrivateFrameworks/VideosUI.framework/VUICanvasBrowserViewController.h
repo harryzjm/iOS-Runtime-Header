@@ -7,12 +7,13 @@
 __attribute__((visibility("hidden")))
 @interface VUICanvasBrowserViewController
 {
-    _Bool _hasBanner;
+    _Bool _shouldNeverShowLargeTitle;
 }
 
-@property(nonatomic) _Bool hasBanner; // @synthesize hasBanner=_hasBanner;
+@property(nonatomic) _Bool shouldNeverShowLargeTitle; // @synthesize shouldNeverShowLargeTitle=_shouldNeverShowLargeTitle;
 - (long long)_overrideLargeTitleDisplayMode;
 - (void)updateWithViewElement:(id)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 
 @end
 

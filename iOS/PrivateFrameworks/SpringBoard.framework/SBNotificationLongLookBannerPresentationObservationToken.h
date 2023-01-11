@@ -13,8 +13,8 @@
     SBNotificationBannerDestination *_notificationBannerDestination;
 }
 
-@property(readonly, nonatomic) SBNotificationBannerDestination *notificationBannerDestination; // @synthesize notificationBannerDestination=_notificationBannerDestination;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SBNotificationBannerDestination *notificationBannerDestination; // @synthesize notificationBannerDestination=_notificationBannerDestination;
 - (void)notificationBannerDestinationDidDismissLongLook:(id)arg1;
 - (void)notificationBannerDestinationWillDismissLongLook:(id)arg1;
 - (void)notificationBannerDestinationDidPresentLongLook:(id)arg1;

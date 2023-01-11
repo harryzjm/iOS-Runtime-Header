@@ -4,22 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPManeuver, CPSAbridgableLabel, UIImageView;
+#import <UIKit/UIView.h>
 
-@interface CPSSecondaryManeuverView
+@class CPManeuver, CPSAbridgableLabel, CPTravelEstimates, UIImageView;
+
+@interface CPSSecondaryManeuverView : UIView
 {
-    UIImageView *_symbolView;
     CPManeuver *_maneuver;
+    double _generatedHeight;
+    long long _style;
+    CPTravelEstimates *_currentTravelEstimates;
+    unsigned long long _guidanceStyle;
+    UIImageView *_symbolView;
     CPSAbridgableLabel *_instructionLabel;
+    double _generatedWidth;
 }
 
-@property(retain, nonatomic) CPSAbridgableLabel *instructionLabel; // @synthesize instructionLabel=_instructionLabel;
-@property(retain, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
-@property(retain, nonatomic) UIImageView *symbolView; // @synthesize symbolView=_symbolView;
 - (void).cxx_destruct;
-- (id)initWithManeuver:(id)arg1 style:(long long)arg2;
-- (void)backgroundColorDidChange;
-- (struct CGSize)intrinsicContentSize;
+@property(nonatomic) double generatedWidth; // @synthesize generatedWidth=_generatedWidth;
+@property(retain, nonatomic) CPSAbridgableLabel *instructionLabel; // @synthesize instructionLabel=_instructionLabel;
+@property(retain, nonatomic) UIImageView *symbolView; // @synthesize symbolView=_symbolView;
+@property(nonatomic) unsigned long long guidanceStyle; // @synthesize guidanceStyle=_guidanceStyle;
+@property(retain, nonatomic) CPTravelEstimates *currentTravelEstimates; // @synthesize currentTravelEstimates=_currentTravelEstimates;
+@property(nonatomic) long long style; // @synthesize style=_style;
+@property(nonatomic) double generatedHeight; // @synthesize generatedHeight=_generatedHeight;
+@property(readonly, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
+- (double)horizontalInset;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)generateLayoutConfigurationsForSizeIfNecessary:(struct CGSize)arg1 force:(_Bool)arg2;
+- (id)initWithManeuver:(id)arg1;
+- (id)accessibilityName:(id)arg1;
 
 @end
 

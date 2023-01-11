@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVContentKeyRequest, NSArray, NSData, NSDate, NSDictionary, NSError, NSNumber, NSString, NSURL, TVPContentKeySession;
+@class AVContentKeyRequest, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSString, NSURL, TVPContentKeySession;
 
 @interface TVPContentKeyRequest : NSObject
 {
@@ -31,9 +31,11 @@
     NSDate *_renewalDate;
     NSNumber *_renewalInterval;
     NSDate *_expirationDate;
+    NSDate *_availabilityEndDate;
     NSString *_contentID;
     NSNumber *_playbackDuration;
     NSDictionary *_additionalRequestParamsFromResponse;
+    NSMutableDictionary *_userInfo;
     NSError *_error;
     AVContentKeyRequest *_avContentKeyRequest;
     TVPContentKeySession *_contentKeySession;
@@ -41,15 +43,18 @@
 
 + (id)secureInvalidationRequestForIdentifier:(id)arg1 offlineKeyData:(id)arg2 additionalRequestParams:(id)arg3 contentID:(id)arg4;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool wantsOfflineKeysIfPossible; // @synthesize wantsOfflineKeysIfPossible=_wantsOfflineKeysIfPossible;
 @property(nonatomic) __weak TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
 @property(readonly, nonatomic) AVContentKeyRequest *avContentKeyRequest; // @synthesize avContentKeyRequest=_avContentKeyRequest;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(readonly, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(retain, nonatomic) NSDictionary *additionalRequestParamsFromResponse; // @synthesize additionalRequestParamsFromResponse=_additionalRequestParamsFromResponse;
 @property(nonatomic) _Bool allowManualRenewal; // @synthesize allowManualRenewal=_allowManualRenewal;
 @property(retain, nonatomic) NSNumber *playbackDuration; // @synthesize playbackDuration=_playbackDuration;
 @property(nonatomic) _Bool isLowValueKey; // @synthesize isLowValueKey=_isLowValueKey;
 @property(retain, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property(retain, nonatomic) NSDate *availabilityEndDate; // @synthesize availabilityEndDate=_availabilityEndDate;
 @property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(retain, nonatomic) NSNumber *renewalInterval; // @synthesize renewalInterval=_renewalInterval;
 @property(retain, nonatomic) NSDate *renewalDate; // @synthesize renewalDate=_renewalDate;
@@ -68,7 +73,6 @@
 @property(readonly, nonatomic) NSString *eventReportingID; // @synthesize eventReportingID=_eventReportingID;
 @property(readonly, nonatomic) unsigned long long requestID; // @synthesize requestID=_requestID;
 @property(retain, nonatomic) NSURL *keyIdentifier; // @synthesize keyIdentifier=_keyIdentifier;
-- (void).cxx_destruct;
 - (void)finishByRequestingOfflineKeysIfPossible;
 - (void)finish;
 - (id)offlineKeyDataFromServerKeyData:(id)arg1 error:(id *)arg2;

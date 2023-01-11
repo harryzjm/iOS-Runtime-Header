@@ -6,31 +6,31 @@
 
 #import <NotesUI/NSObject-Protocol.h>
 
-@class CSSearchableItem, NSArray, NSError, NSManagedObjectContext, NSPersistentStoreCoordinator, NSString;
+@class CSSearchableItem, NSArray, NSError, NSManagedObjectContext, NSManagedObjectID, NSPersistentStoreCoordinator, NSString;
 @protocol ICSearchIndexable;
 
 @protocol ICSearchIndexerDataSource <NSObject>
 - (_Bool)isObservingChanges;
 - (void)stopObservingChanges;
 - (void)startObservingChanges;
-- (void)stageObjectIDURIsForIndexing:(NSArray *)arg1;
-- (void)stageForReindexing;
+- (void)stageObjectIDURIsForIndexing:(NSArray *)arg1 context:(NSManagedObjectContext *)arg2;
+- (void)stageForReindexingWithContext:(NSManagedObjectContext *)arg1;
 - (void)searchIndexerDidFinishDeletingSearchableItemsWithObjectIDURIs:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)searchIndexerWillDeleteSearchableItemsWithObjectIDURIs:(NSArray *)arg1;
 - (void)searchIndexerDidFinishIndexingObjectIDs:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)searchIndexerWillIndexObjectIDs:(NSArray *)arg1;
 - (id <ICSearchIndexable>)objectForManagedObjectIDURI:(NSString *)arg1 context:(NSManagedObjectContext *)arg2;
 - (id <ICSearchIndexable>)objectForSearchableItem:(CSSearchableItem *)arg1 context:(NSManagedObjectContext *)arg2;
-- (NSArray *)searchableItemsForObjectIDs:(NSArray *)arg1;
-- (NSArray *)allIndexableObjectIDsInReversedReindexingOrder;
-- (NSArray *)objectIDURIsToBeDeleted;
-- (NSArray *)objectIDsNeedingIndexing;
-- (NSArray *)indexableObjectIDsWithURIs:(NSArray *)arg1;
+- (long long)decisionOnObjectID:(NSManagedObjectID *)arg1 searchableItemToIndex:(id *)arg2 objectIDURIToDelete:(id *)arg3 context:(NSManagedObjectContext *)arg4;
+- (NSArray *)allIndexableObjectIDsInReversedReindexingOrderWithContext:(NSManagedObjectContext *)arg1;
+- (NSArray *)objectIDsNeedingProcessing;
+- (NSArray *)indexableObjectIDsWithURIs:(NSArray *)arg1 context:(NSManagedObjectContext *)arg2;
 - (void)clearObjectIDsToProcess;
 - (_Bool)needsReindexing;
 - (NSManagedObjectContext *)newManagedObjectContext;
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 - (unsigned long long)indexingPriority;
+- (NSString *)uuid;
 - (NSString *)dataSourceIdentifier;
 @end
 

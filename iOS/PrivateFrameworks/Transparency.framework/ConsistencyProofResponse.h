@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class NSDictionary, NSMutableArray;
 
 @interface ConsistencyProofResponse
 {
 }
 
 + (id)descriptor;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
+- (void)setMetadata:(id)arg1;
+@property(readonly) NSDictionary *metadata;
 
 // Remaining properties
 @property(retain, nonatomic) NSMutableArray *responsesArray; // @dynamic responsesArray;

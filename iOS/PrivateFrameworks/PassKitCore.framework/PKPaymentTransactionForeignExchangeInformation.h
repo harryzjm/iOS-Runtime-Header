@@ -18,18 +18,21 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)recordNamePrefix;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDecimalNumber *exchangeRate; // @synthesize exchangeRate=_exchangeRate;
 @property(copy, nonatomic) PKCurrencyAmount *destinationCurrencyAmount; // @synthesize destinationCurrencyAmount=_destinationCurrencyAmount;
-- (void).cxx_destruct;
 - (_Bool)isEqualToForeignExchangeInformation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)itemType;
-- (id)recordTypesAndNames;
+- (id)primaryIdentifier;
+- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (_Bool)isValid;
 - (id)jsonString;

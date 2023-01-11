@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
 
-@class NSDate, NSString, PHAsset;
+@class NSDate, NSNumber, NSString, PHAsset;
 @protocol PXDisplayAsset, PXDisplaySuggestion;
 
 @interface PXForYouSuggestionDisplayAsset : NSObject <PXPhotoKitAdjustedDisplayAsset>
@@ -20,18 +20,20 @@
     id <PXDisplayAsset> _keyAsset;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldInvert; // @synthesize shouldInvert=_shouldInvert;
 @property(readonly, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(readonly, nonatomic) id <PXDisplaySuggestion> suggestion; // @synthesize suggestion=_suggestion;
 @property(readonly, nonatomic) NSString *adjustedContentIdentifier; // @synthesize adjustedContentIdentifier=_adjustedContentIdentifier;
 @property(readonly, nonatomic) PHAsset *photoKitAsset; // @synthesize photoKitAsset=_photoKitAsset;
-- (void).cxx_destruct;
 - (id)_computedPortraitEffectSettingsForCompositionController:(id)arg1;
 - (id)applyAdjustmentsToCompositionController:(id)arg1 renderer:(id)arg2;
 @property(readonly, nonatomic) _Bool wantsAdjustments;
 @property(readonly, nonatomic) _Bool isAnimatedImage;
 @property(readonly, nonatomic) _Bool canPlayPhotoIris;
 @property(readonly, nonatomic) _Bool canPlayLoopingVideo;
+@property(readonly, nonatomic) _Bool needsDeferredProcessing;
+@property(readonly, nonatomic) NSString *uuid;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 @property(readonly, nonatomic) double aspectRatio;
@@ -64,12 +66,12 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
-@property(readonly, nonatomic) NSString *uuid;
 
 @end
 

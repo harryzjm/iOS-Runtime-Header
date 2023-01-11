@@ -23,8 +23,10 @@
     id <HDGymKitSettingsDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <HDGymKitSettingsDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <HDGymKitSettingsDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_isSatelliteWatch;
+- (void)_currentActivityMoveModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setConnectedGymPreferencesDefaultNFCAlwaysOnEnabled:(_Bool)arg1;
 - (void)_enableNFCAlwaysOnIfWatchWorkout;
 - (void)_stopObservingWatchWorkouts;
@@ -32,6 +34,7 @@
 - (void)_handleNFCPreferencesForNFCAlwaysOn:(_Bool)arg1;
 - (void)_setNFCAlwaysOnPreferenceIfNecessary;
 - (void)_monitorFieldAndPrivacySettings;
+- (void)unitTest_simulateNRDeviceUpdate;
 - (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;

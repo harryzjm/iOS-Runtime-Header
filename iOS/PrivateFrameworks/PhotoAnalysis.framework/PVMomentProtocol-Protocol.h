@@ -9,6 +9,7 @@
 @class NSDate, NSString;
 
 @protocol PVMomentProtocol <NSObject>
+@property(readonly, nonatomic) _Bool isCoarse;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D approximateCoordinate;
 @property(readonly, nonatomic) unsigned long long estimatedAssetCount;
 @property(readonly, nonatomic) NSDate *endDate;

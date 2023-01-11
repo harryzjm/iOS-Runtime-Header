@@ -8,17 +8,19 @@
 
 #import <IDSFoundation/CUTMetricLogger-Protocol.h>
 
-@class NSString;
+@class IDSRateLimiter, NSString;
 
 @interface IDSSOSLogger : NSObject <CUTMetricLogger>
 {
     NSString *_sosURLString;
+    IDSRateLimiter *_rateLimiter;
 }
 
 + (id)loggerWithURLString:(id)arg1;
 + (id)logger;
-@property(retain, nonatomic) NSString *sosURLString; // @synthesize sosURLString=_sosURLString;
 - (void).cxx_destruct;
+@property(retain, nonatomic) IDSRateLimiter *rateLimiter; // @synthesize rateLimiter=_rateLimiter;
+@property(retain, nonatomic) NSString *sosURLString; // @synthesize sosURLString=_sosURLString;
 - (void)logMetric:(id)arg1;
 - (id)initWithSOSURLString:(id)arg1;
 

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTransitInfoSnippet : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_artworks;
     NSMutableArray *_labels;
@@ -25,6 +24,9 @@ __attribute__((visibility("hidden")))
     GEOTimezone *_timezone;
     unsigned long long _transitId;
     NSString *_transitName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_transitId:1;
         unsigned int read_unknownFields:1;
@@ -36,16 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_systemNames:1;
         unsigned int read_timezone:1;
         unsigned int read_transitName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_artworks:1;
-        unsigned int wrote_labels:1;
-        unsigned int wrote_searchDisplayName:1;
-        unsigned int wrote_stopLocationForTrip:1;
-        unsigned int wrote_styleAttributesForTrip:1;
-        unsigned int wrote_systemNames:1;
-        unsigned int wrote_timezone:1;
-        unsigned int wrote_transitId:1;
-        unsigned int wrote_transitName:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -65,46 +58,40 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOStyleAttributes *styleAttributesForTrip;
 @property(readonly, nonatomic) _Bool hasStyleAttributesForTrip;
-- (void)_readStyleAttributesForTrip;
 @property(retain, nonatomic) GEOLatLng *stopLocationForTrip;
 @property(readonly, nonatomic) _Bool hasStopLocationForTrip;
-- (void)_readStopLocationForTrip;
 @property(retain, nonatomic) NSString *transitName;
 @property(readonly, nonatomic) _Bool hasTransitName;
-- (void)_readTransitName;
 @property(retain, nonatomic) GEOTimezone *timezone;
 @property(readonly, nonatomic) _Bool hasTimezone;
-- (void)_readTimezone;
 @property(nonatomic) _Bool hasTransitId;
 @property(nonatomic) unsigned long long transitId;
 - (id)labelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)labelsCount;
-- (void)_addNoFlagsLabel:(id)arg1;
 - (void)addLabel:(id)arg1;
 - (void)clearLabels;
 @property(retain, nonatomic) NSMutableArray *labels;
-- (void)_readLabels;
 @property(retain, nonatomic) NSString *searchDisplayName;
 @property(readonly, nonatomic) _Bool hasSearchDisplayName;
-- (void)_readSearchDisplayName;
 - (id)artworkAtIndex:(unsigned long long)arg1;
 - (unsigned long long)artworksCount;
-- (void)_addNoFlagsArtwork:(id)arg1;
 - (void)addArtwork:(id)arg1;
 - (void)clearArtworks;
 @property(retain, nonatomic) NSMutableArray *artworks;
-- (void)_readArtworks;
 - (id)systemNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)systemNamesCount;
-- (void)_addNoFlagsSystemName:(id)arg1;
 - (void)addSystemName:(id)arg1;
 - (void)clearSystemNames;
 @property(retain, nonatomic) NSMutableArray *systemNames;
-- (void)_readSystemNames;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -17,12 +17,12 @@
     XCTestExpectation *_expectation;
 }
 
+- (void).cxx_destruct;
 @property(readonly) struct atomic_flag promiseFulfilled; // @synthesize promiseFulfilled=_promiseFulfilled;
 @property(readonly) XCTestExpectation *expectation; // @synthesize expectation=_expectation;
 @property(retain) NSError *error; // @synthesize error=_error;
 @property(retain) id value; // @synthesize value=_value;
 @property(readonly, copy) NSString *promiseDescription; // @synthesize promiseDescription=_promiseDescription;
-- (void).cxx_destruct;
 - (void)fulfillWithValue:(id)arg1 error:(id)arg2;
 - (void)fulfillWithError:(id)arg1;
 - (void)fulfillWithValue:(id)arg1;

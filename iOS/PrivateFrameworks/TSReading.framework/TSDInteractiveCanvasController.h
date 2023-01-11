@@ -78,7 +78,6 @@
     _Bool mAnimatingScroll;
     _Bool mSuppressedAutozoom;
     _Bool mTextGesturesInFlight;
-    _Bool _orbTextGesturesInFlight;
     id <TSDEditor> mSelectionChangeNotificationDeferredEditor;
     _Bool mShouldAutoscrollToSelectionAfterGestures;
     _Bool mSuspendedLowPriorityThreadDispatcher;
@@ -153,7 +152,6 @@
 @property(nonatomic) _Bool resizeCanvasOnLayout; // @synthesize resizeCanvasOnLayout=mResizeCanvasOnLayout;
 @property(retain, nonatomic) id <TSDRepDirectLayerHostProvider> directLayerHostProvider; // @synthesize directLayerHostProvider=_directLayerHostProvider;
 @property(nonatomic) NSObject<TSDRulerController> *rulerController; // @synthesize rulerController=mRulerController;
-@property(nonatomic) _Bool orbTextGesturesInFlight; // @synthesize orbTextGesturesInFlight=_orbTextGesturesInFlight;
 @property(nonatomic) _Bool textGesturesInFlight; // @synthesize textGesturesInFlight=mTextGesturesInFlight;
 @property(readonly, nonatomic) _Bool animatingViewScale; // @synthesize animatingViewScale=mAnimatingViewScale;
 @property(nonatomic) _Bool shouldSuppressRendering; // @synthesize shouldSuppressRendering=mShouldSuppressRendering;
@@ -411,6 +409,7 @@
 - (_Bool)spellCheckingSuppressed;
 - (_Bool)spellCheckingSupported;
 @property(readonly, nonatomic) struct CGRect visibleUnscaledRectForCanvasUI;
+- (struct CGImage *)textImageFromRect:(struct CGRect)arg1;
 - (id)replaceImageController;
 - (void)hideRuler;
 - (void)displayRulerForRect:(struct CGRect)arg1;

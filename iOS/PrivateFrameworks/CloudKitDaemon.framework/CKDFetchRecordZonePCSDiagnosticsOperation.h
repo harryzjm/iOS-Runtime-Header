@@ -16,15 +16,17 @@ __attribute__((visibility("hidden")))
     CKPCSDiagnosticInformation *_pcsDiagnosticInfo;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKPCSDiagnosticInformation *pcsDiagnosticInfo; // @synthesize pcsDiagnosticInfo=_pcsDiagnosticInfo;
 @property(retain, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
 @property(retain, nonatomic) NSDictionary *validPCSByZoneID; // @synthesize validPCSByZoneID=_validPCSByZoneID;
 @property(retain, nonatomic) NSDictionary *invalidPCSByZoneID; // @synthesize invalidPCSByZoneID=_invalidPCSByZoneID;
 @property(retain, nonatomic) NSString *identityStatus; // @synthesize identityStatus=_identityStatus;
-- (void).cxx_destruct;
 - (void)main;
+- (int)operationType;
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;
 - (id)activityCreate;
+- (id)relevantZoneIDs;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 
 @end

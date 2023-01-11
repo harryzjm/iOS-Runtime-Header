@@ -15,9 +15,11 @@
 
 // Remaining properties
 @property(nonatomic) unsigned int gid; // @dynamic gid;
+@property(nonatomic) _Bool isDataSeparatedPersona; // @dynamic isDataSeparatedPersona;
 @property(nonatomic) _Bool isDefaultPersona; // @dynamic isDefaultPersona;
 @property(nonatomic) _Bool isDisabled; // @dynamic isDisabled;
 @property(nonatomic) _Bool isEnterprisePersona; // @dynamic isEnterprisePersona;
+@property(nonatomic) _Bool isGuestPersona; // @dynamic isGuestPersona;
 @property(nonatomic) _Bool isPersonalPersona; // @dynamic isPersonalPersona;
 @property(nonatomic) _Bool isSystemPersona; // @dynamic isSystemPersona;
 @property(nonatomic) unsigned int uid; // @dynamic uid;

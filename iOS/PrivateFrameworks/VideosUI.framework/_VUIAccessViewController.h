@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isHostedInRemoteViewService;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 - (id)preferredFocusEnvironments;
 - (id)cappedTraitCollection;
 - (id)_watchListAppIcon;
@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (void)_presentGenericErrorWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_toggleLoadingScreen;
 - (void)_setupAccessViews;
+- (void)_setupNavigationBar;
+- (void)_completeWithStatus:(unsigned long long)arg1;
 - (void)_handleNackButton:(id)arg1;
 - (void)_handleMenuGesture:(id)arg1;
 - (void)_handleSeeAllButton:(id)arg1;
@@ -46,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)_init;
 - (id)init;
-- (void)dealloc;
 - (id)initWithBundleIDs:(id)arg1 channels:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

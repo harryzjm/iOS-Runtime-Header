@@ -7,13 +7,13 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/NSNetServiceDelegate-Protocol.h>
 
-@class HMFNetAddress, HMFUnfairLock, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
+@class HMFNetAddress, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
 @protocol HMFNetServiceDelegate, OS_dispatch_queue;
 
 @interface HMFNetService <HMFLogging, NSNetServiceDelegate>
 {
+    struct os_unfair_lock_s _lock;
     NSNetService *_internal;
-    HMFUnfairLock *_lock;
     NSString *_type;
     NSString *_name;
     NSString *_domain;
@@ -33,6 +33,7 @@
 + (id)shortDescription;
 + (id)errorFromNetServiceErrorDict:(id)arg1;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *resolveBlocks; // @synthesize resolveBlocks=_resolveBlocks;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, copy) NSString *domain; // @synthesize domain=_domain;
@@ -40,7 +41,6 @@
 @property(readonly, copy) NSString *type; // @synthesize type=_type;
 @property __weak id <HMFNetServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSNetService *internal; // @synthesize internal=_internal;
-- (void).cxx_destruct;
 - (void)netService:(id)arg1 didUpdateTXTRecordData:(id)arg2;
 - (void)netServiceDidStop:(id)arg1;
 - (void)netService:(id)arg1 didNotResolve:(id)arg2;

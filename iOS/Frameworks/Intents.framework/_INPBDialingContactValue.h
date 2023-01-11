@@ -15,18 +15,16 @@
 @interface _INPBDialingContactValue : PBCodable <_INPBDialingContactValue, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBContactValue *_dialingContact;
     _INPBStringValue *_dialingPhoneLabel;
     _INPBStringValue *_dialingPhoneNumber;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBStringValue *dialingPhoneNumber; // @synthesize dialingPhoneNumber=_dialingPhoneNumber;
 @property(retain, nonatomic) _INPBStringValue *dialingPhoneLabel; // @synthesize dialingPhoneLabel=_dialingPhoneLabel;
 @property(retain, nonatomic) _INPBContactValue *dialingContact; // @synthesize dialingContact=_dialingContact;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

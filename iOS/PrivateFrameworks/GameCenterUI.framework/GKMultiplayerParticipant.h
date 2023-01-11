@@ -18,6 +18,7 @@
     long long _number;
 }
 
++ (id)stringFromGKMultiplayerParticipantStatus:(long long)arg1;
 @property(nonatomic) long long number; // @synthesize number=_number;
 @property(retain, nonatomic) GKPlayer *player; // @synthesize player=_player;
 @property(nonatomic) long long status; // @synthesize status=_status;

@@ -11,8 +11,8 @@
     NSString *_percentSignSuffix;
 }
 
-@property(readonly, nonatomic) NSString *percentSignSuffix; // @synthesize percentSignSuffix=_percentSignSuffix;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *percentSignSuffix; // @synthesize percentSignSuffix=_percentSignSuffix;
 - (id)multiplierBySimplifyingExpression;
 - (id)multiplierByIncrementing;
 - (id)multiplierByDecrementing;

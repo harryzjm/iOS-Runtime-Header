@@ -37,15 +37,16 @@
 + (_Bool)hasMarker:(id)arg1;
 + (id)persistentStoreCoordinatorOptions;
 + (id)persistentStoreFileExtension;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(retain, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator; // @synthesize persistentStoreCoordinator=_persistentStoreCoordinator;
 @property(retain, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property(retain, nonatomic) NSManagedObjectModel *managedObjectModel; // @synthesize managedObjectModel=_managedObjectModel;
-- (void).cxx_destruct;
 - (void)_setLocalLabelStrings:(id)arg1;
 - (unsigned int)_labelForString:(id)arg1 createIfNeeded:(_Bool)arg2;
 - (id)_stringForLabel:(unsigned int)arg1;
 - (_Bool)migrateToURL:(id)arg1 error:(id *)arg2;
+- (_Bool)copyToURL:(id)arg1 error:(id *)arg2;
 - (_Bool)_saveSynchonously:(id *)arg1;
 - (void)removeModelEdgePropertyForKey:(id)arg1 andIdentifier:(long long)arg2;
 - (void)removeModelNodePropertyForKey:(id)arg1 andIdentifier:(long long)arg2;
@@ -58,6 +59,8 @@
 - (void)removeModelEdgesForIdentifiers:(id)arg1;
 - (void)removeModelNodeForIdentifier:(unsigned long long)arg1;
 - (void)removeModelNodesForIdentifiers:(id)arg1;
+- (void)setEdgeWeight:(float)arg1 forIdentifier:(long long)arg2;
+- (void)setNodeWeight:(float)arg1 forIdentifier:(long long)arg2;
 - (void)setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
 - (void)setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
 - (void)setModelEdgeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(_Bool)arg3;

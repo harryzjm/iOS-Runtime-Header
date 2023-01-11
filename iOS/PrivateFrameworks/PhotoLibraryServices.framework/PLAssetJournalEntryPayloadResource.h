@@ -13,8 +13,9 @@
     NSDictionary *_payloadAttributes;
 }
 
-@property(readonly, nonatomic) NSDictionary *payloadAttributes; // @synthesize payloadAttributes=_payloadAttributes;
++ (void)_applyLargeVideoRecipeRefactorFixToExternalResource:(id)arg1 withAsset:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *payloadAttributes; // @synthesize payloadAttributes=_payloadAttributes;
 - (id)description;
 - (_Bool)isReferenceResource;
 - (_Bool)isAdjusted;
@@ -31,7 +32,7 @@
 @property(readonly, nonatomic) unsigned int dataStoreClassID;
 @property(readonly, nonatomic) unsigned long long cplType;
 - (void)updateStoredResource:(id)arg1;
-- (id)validatedExternalResourceWithAsset:(id)arg1;
+- (id)validatedExternalResourceWithAsset:(id)arg1 isCPLEnabled:(_Bool)arg2;
 - (id)initWithPayloadAttributes:(id)arg1;
 
 @end

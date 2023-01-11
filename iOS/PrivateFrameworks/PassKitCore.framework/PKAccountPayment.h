@@ -13,12 +13,14 @@
 
 @interface PKAccountPayment : NSObject <NSSecureCoding, PKRecordObject>
 {
+    _Bool _cancellable;
     NSString *_identifier;
     NSString *_referenceIdentifier;
     NSString *_clientReferenceIdentifier;
     PKCurrencyAmount *_currencyAmount;
     NSDate *_paymentDate;
     NSDate *_paymentStatusDate;
+    NSDate *_cancellationExpiryDate;
     long long _state;
     long long _statusCode;
     PKAccountPaymentFundingSource *_fundingSource;
@@ -28,17 +30,20 @@
 + (id)recordNamePrefix;
 + (id)recordType;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PKAccountPaymentScheduleDetails *scheduleDetails; // @synthesize scheduleDetails=_scheduleDetails;
 @property(retain, nonatomic) PKAccountPaymentFundingSource *fundingSource; // @synthesize fundingSource=_fundingSource;
 @property(nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property(nonatomic) long long state; // @synthesize state=_state;
+@property(copy, nonatomic) NSDate *cancellationExpiryDate; // @synthesize cancellationExpiryDate=_cancellationExpiryDate;
+@property(nonatomic) _Bool cancellable; // @synthesize cancellable=_cancellable;
 @property(copy, nonatomic) NSDate *paymentStatusDate; // @synthesize paymentStatusDate=_paymentStatusDate;
 @property(copy, nonatomic) NSDate *paymentDate; // @synthesize paymentDate=_paymentDate;
 @property(retain, nonatomic) PKCurrencyAmount *currencyAmount; // @synthesize currencyAmount=_currencyAmount;
 @property(copy, nonatomic) NSString *clientReferenceIdentifier; // @synthesize clientReferenceIdentifier=_clientReferenceIdentifier;
 @property(copy, nonatomic) NSString *referenceIdentifier; // @synthesize referenceIdentifier=_referenceIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (_Bool)isCurrentlyCancellable;
 - (_Bool)isOnHoldForAccount:(id)arg1;
 - (_Bool)isRecurring;
 @property(readonly, copy) NSString *description;

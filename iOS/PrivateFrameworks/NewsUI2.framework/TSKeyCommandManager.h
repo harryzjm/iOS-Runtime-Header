@@ -11,15 +11,20 @@
 @interface TSKeyCommandManager : NSObject
 {
     MISSING_TYPE *keyCommandManager;
+    MISSING_TYPE *hasBeenTraversed;
+    MISSING_TYPE *keyCommandProvider;
 }
 
 - (void).cxx_destruct;
+- (id)keyCommands;
 - (void)registerProviderWithScrollView:(id)arg1;
-- (void)handleKeyPress:(id)arg1;
+- (void)handleKeyPressWithKey:(id)arg1 flags:(long long)arg2;
+- (void)handleKeyPressWithCommand:(id)arg1;
 - (void)invalidate;
 - (void)registerKeys:(id)arg1;
 - (void)registerController:(id)arg1 withSelector:(SEL)arg2;
 - (id)init;
+@property(nonatomic) _Bool hasBeenTraversed; // @synthesize hasBeenTraversed;
 
 @end
 

@@ -27,9 +27,9 @@
 + (_Bool)requiresHighPriorityFirstSync;
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
 @property(retain, nonatomic) NSMutableDictionary *itemsByID; // @synthesize itemsByID=_itemsByID;
-- (void).cxx_destruct;
 - (id)_allHistoryItems;
 - (void)_didChangeForIssueIDs:(id)arg1;
 - (void)_addHistoryItems:(id)arg1;
@@ -49,10 +49,13 @@
 @property(readonly, nonatomic) NSArray *recentlyVisitedIssueIDs;
 @property(readonly, nonatomic) NSString *mostRecentlyVisitedIssueID;
 - (id)lastRemovedFromMyMagazinesDateForIssueWithID:(id)arg1;
+- (id)lastSeenDateForIssueWithID:(id)arg1;
 - (id)lastEngagedDateForIssueWithID:(id)arg1;
 - (id)lastVisitedDateForIssueWithID:(id)arg1;
 - (id)bookmarkForLastVisitToIssueWithID:(id)arg1;
 - (void)markIssueAsRemovedFromMyMagazinesWithID:(id)arg1;
+- (_Bool)hasIssueWithIDBeenSeen:(id)arg1;
+- (void)markIssueAsSeenWithID:(id)arg1;
 - (_Bool)hasIssueWithIDBeenEngaged:(id)arg1;
 - (void)markIssueAsEngagedWithID:(id)arg1;
 - (_Bool)hasIssueWithIDBeenBadged:(id)arg1;

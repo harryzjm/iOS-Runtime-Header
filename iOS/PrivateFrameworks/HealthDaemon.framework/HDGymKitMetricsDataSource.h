@@ -7,10 +7,11 @@
 #import <HealthDaemon/HDMetricsCollectorObserver-Protocol.h>
 #import <HealthDaemon/HDWorkoutDataSource-Protocol.h>
 #import <HealthDaemon/HKDataFlowLinkProcessor-Protocol.h>
+#import <HealthDaemon/HKGymKitDataSourceServerInterface-Protocol.h>
 
 @class HKDataFlowLink, NSLock, NSMutableDictionary, NSString, NSUUID;
 
-@interface HDGymKitMetricsDataSource <HDMetricsCollectorObserver, HKDataFlowLinkProcessor, HDWorkoutDataSource>
+@interface HDGymKitMetricsDataSource <HKGymKitDataSourceServerInterface, HDMetricsCollectorObserver, HKDataFlowLinkProcessor, HDWorkoutDataSource>
 {
     HKDataFlowLink *_workoutDataFlowLink;
     NSLock *_lock;
@@ -29,6 +30,7 @@
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
+- (void)workoutDataDestination:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 requestsFinalDataFrom:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)workoutDataDestination:(id)arg1 requestsDataFrom:(id)arg2 to:(id)arg3;

@@ -6,14 +6,12 @@
 
 #import <MetalTools/MTLResource-Protocol.h>
 
-@class MTLResourceAllocationInfo;
 @protocol MTLResource;
 
 @protocol MTLResourceSPI <MTLResource>
 @property(readonly) unsigned long long unfilteredResourceOptions;
 @property(readonly) unsigned long long protectionOptions;
-@property(readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
-@property(readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
+@property(readonly) unsigned long long allocationID;
 @property int responsibleProcess;
 - (_Bool)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (_Bool)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;

@@ -8,5 +8,7 @@
 
 @interface MSMessage (PKPeerPaymentMessageAdditions)
 - (id)peerPaymentMessage;
+- (id)shareableCredentialMessage;
+- (id)subcredentialInvitationMessage;
 @end
 

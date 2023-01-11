@@ -11,7 +11,6 @@
 @protocol CABackdropLayerDelegate <CALayerDelegate>
 
 @optional
-- (void)backdropLayerStatisticsDidChange:(CABackdropLayer *)arg1;
 - (void)backdropLayer:(CABackdropLayer *)arg1 didChangeLuma:(double)arg2;
 @end
 

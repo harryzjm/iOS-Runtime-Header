@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 
 @interface HDSimpleGraphNode
 {
-    _Bool _areAllRelationshipsLoaded;
-    _Bool _areAttributesLoaded;
-    NSString *_name;
-    NSMutableArray *_relationships;
     NSMutableArray *_attributes;
+    _Bool _areAttributesLoaded;
+    _Bool _areAllRelationshipsLoaded;
+    NSString *_name;
+    NSArray *_relationships;
 }
 
-@property(nonatomic) _Bool areAttributesLoaded; // @synthesize areAttributesLoaded=_areAttributesLoaded;
-@property(retain, nonatomic) NSMutableArray *attributes; // @synthesize attributes=_attributes;
-@property(nonatomic) _Bool areAllRelationshipsLoaded; // @synthesize areAllRelationshipsLoaded=_areAllRelationshipsLoaded;
-@property(retain, nonatomic) NSMutableArray *relationships; // @synthesize relationships=_relationships;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
++ (id)nodeWithDatabase:(id)arg1 rowID:(long long)arg2 name:(id)arg3 loadAttributes:(_Bool)arg4 loadRelationshipsWithDepth:(long long)arg5 error:(id *)arg6;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool areAllRelationshipsLoaded; // @synthesize areAllRelationshipsLoaded=_areAllRelationshipsLoaded;
+@property(readonly, nonatomic) NSArray *relationships; // @synthesize relationships=_relationships;
+@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)description;
+@property(readonly, nonatomic) NSArray *attributes;
 - (id)work_attributesWithError:(id *)arg1;
 - (_Bool)work_loadAttributesWithError:(id *)arg1;
 - (_Bool)work_addAttribute:(id)arg1 ofType:(id)arg2 forKeyID:(long long)arg3 error:(id *)arg4;
@@ -29,7 +29,7 @@
 - (_Bool)work_loadAllRelationshipsWithMaxDepth:(long long)arg1 error:(id *)arg2;
 - (_Bool)work_loadRelationships:(id)arg1 maxDepth:(long long)arg2 fetchType:(long long)arg3 error:(id *)arg4;
 - (_Bool)_work_loadRelatedNodesRecursiveForRelationships:(id)arg1 maxDepth:(long long)arg2 currentDepth:(long long)arg3 fetchType:(long long)arg4 error:(id *)arg5;
-- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2 name:(id)arg3 shouldLoadRelationships:(_Bool)arg4;
+- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2 name:(id)arg3 attributes:(id)arg4 relationships:(id)arg5;
 - (id)init;
 
 @end

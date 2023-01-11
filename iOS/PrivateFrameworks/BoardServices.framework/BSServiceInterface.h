@@ -21,9 +21,6 @@
 }
 
 + (id)interfaceWithServer:(id)arg1 client:(id)arg2;
-@property(readonly, copy, nonatomic) BSObjCProtocol *client; // @synthesize client=_client;
-@property(readonly, copy, nonatomic) BSObjCProtocol *server; // @synthesize server=_server;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -35,8 +32,10 @@
 - (id)succinctDescription;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) long long clientMessagingExpectation; // @dynamic clientMessagingExpectation;
-- (id)_initWithIdentifier:(id)arg1 server:(id)arg2 client:(id)arg3 clientWaitsForActivation:(struct __CFBoolean *)arg4;
+@property(readonly, nonatomic) long long clientMessagingExpectation;
+@property(readonly, copy, nonatomic) BSObjCProtocol *client;
+@property(readonly, copy, nonatomic) BSObjCProtocol *server;
+@property(copy, nonatomic) NSString *identifier;
 - (id)init;
 
 // Remaining properties

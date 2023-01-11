@@ -15,6 +15,7 @@
 + (id)fetchRequest;
 
 // Remaining properties
+@property(nonatomic) long long absoluteSupport; // @dynamic absoluteSupport;
 @property(retain, nonatomic) NSSet *antecedentOfRules; // @dynamic antecedentOfRules;
 @property(retain, nonatomic) NSSet *consequentOfRules; // @dynamic consequentOfRules;
 @property(copy, nonatomic) NSString *normalizedValue; // @dynamic normalizedValue;

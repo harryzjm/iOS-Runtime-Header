@@ -9,17 +9,19 @@
 #import <InputContext/_ICFeedbackAccepting-Protocol.h>
 #import <InputContext/_ICPredictionSourcing-Protocol.h>
 
-@class NSCondition, NSMutableArray, PPQuickTypeBroker;
+@class NSCondition, NSString, PPQuickTypeBroker;
 
 @interface _ICPortraitPredictionSource : NSObject <_ICPredictionSourcing, _ICFeedbackAccepting>
 {
-    NSMutableArray *_contacts;
     NSCondition *_ppBrokerLoadedCondition;
+    NSString *_name;
     PPQuickTypeBroker *_ppBroker;
 }
 
-@property(retain) PPQuickTypeBroker *ppBroker; // @synthesize ppBroker=_ppBroker;
 - (void).cxx_destruct;
+@property(retain) PPQuickTypeBroker *ppBroker; // @synthesize ppBroker=_ppBroker;
+- (void)propogateMetrics:(id)arg1 data:(id)arg2;
+- (_Bool)doesSupportTriggerSourceType:(unsigned char)arg1;
 - (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)hibernate;
 - (void)warmUp;
@@ -29,6 +31,7 @@
 - (id)_quickTypeQueryWithTrigger:(id)arg1 searchContext:(id)arg2 limit:(unsigned long long)arg3 timeoutInMilliseconds:(unsigned long long)arg4 errorWithExplanations:(id *)arg5;
 - (id)_quickTypeQueryWithQuery:(id)arg1 limit:(unsigned long long)arg2 timeoutInMilliseconds:(unsigned long long)arg3;
 - (_Bool)_populateError:(id *)arg1 withExplanations:(id)arg2;
+- (id)name;
 - (id)getPPBroker;
 - (id)_makePPQuickTypeBroker;
 - (id)init;

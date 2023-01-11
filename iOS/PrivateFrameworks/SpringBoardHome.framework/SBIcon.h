@@ -8,31 +8,34 @@
 
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardHome/NSCopying-Protocol.h>
+#import <SpringBoardHome/SBHIconCollationSupport-Protocol.h>
+#import <SpringBoardHome/SBHUniquelyIdentifiable-Protocol.h>
 #import <SpringBoardHome/SBIconIndexNode-Protocol.h>
-#import <SpringBoardHome/SBTreeNode-Protocol.h>
 
-@class NSArray, NSHashTable, NSString;
-@protocol SBIconDelegate, SBTreeNode;
+@class NSArray, NSHashTable, NSString, NSUserActivity;
+@protocol SBIconDelegate;
 
-@interface SBIcon : NSObject <SBTreeNode, SBIconIndexNode, BSDescriptionProviding, NSCopying>
+@interface SBIcon : NSObject <SBHIconCollationSupport, SBHUniquelyIdentifiable, SBIconIndexNode, BSDescriptionProviding, NSCopying>
 {
     id _badgeNumberOrString;
     NSHashTable *_observers;
     _Bool _uninstalled;
-    id <SBTreeNode> _parent;
+    id _overrideBadgeNumberOrString;
     id <SBIconDelegate> _delegate;
-    NSString *_iconFileSizeDescription;
+    unsigned long long _gridSizeClass;
 }
 
 + (Class)downloadingIconClass;
++ (_Bool)hasIconImage;
 + (_Bool)forcesBackgroundIconGeneration;
 + (_Bool)canGenerateIconsInBackground;
++ (id)genericIconImageWithInfo:(struct SBIconImageInfo)arg1;
 + (id)iconImageFromUnmaskedImage:(id)arg1 info:(struct SBIconImageInfo)arg2;
-@property(readonly, nonatomic, getter=isUninstalled) _Bool uninstalled; // @synthesize uninstalled=_uninstalled;
-@property(readonly, nonatomic) NSString *iconFileSizeDescription; // @synthesize iconFileSizeDescription=_iconFileSizeDescription;
-@property(nonatomic) __weak id <SBIconDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) __weak id <SBTreeNode> parent; // @synthesize parent=_parent;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long gridSizeClass; // @synthesize gridSizeClass=_gridSizeClass;
+@property(readonly, nonatomic, getter=isUninstalled) _Bool uninstalled; // @synthesize uninstalled=_uninstalled;
+@property(nonatomic) __weak id <SBIconDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) id overrideBadgeNumberOrString; // @synthesize overrideBadgeNumberOrString=_overrideBadgeNumberOrString;
 - (void)_notifyLaunchEnabledDidChange;
 - (void)_notifyAccessoriesDidUpdate;
 - (void)_notifyImageDidUpdate;
@@ -40,11 +43,16 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
+@property(readonly, nonatomic) NSUserActivity *draggingUserActivity;
+- (void)archivableStateDidChange;
+@property(readonly, nonatomic) unsigned long long supportedGridSizeClasses;
+- (_Bool)isGridSizeClassAllowed:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool canBeAddedToSubfolder;
+@property(readonly, nonatomic) NSArray *iTunesCategoriesOrderedByRelevancy;
 - (void)possibleUserTapDidCancel;
 - (void)possibleUserTapBeganWithAbsoluteTime:(unsigned long long)arg1 andContinuousTime:(unsigned long long)arg2;
-- (id)iconSizeDescription;
-@property(readonly, nonatomic) NSString *iconCategoryDescription;
 @property(readonly, nonatomic) _Bool canBeAddedToMultiItemDrag;
+@property(readonly, nonatomic) _Bool canBeReceivedByIcon;
 @property(readonly, nonatomic) _Bool canReceiveGrabbedIcon;
 @property(readonly, copy, nonatomic) NSString *folderFallbackTitle;
 @property(readonly, copy, nonatomic) NSArray *folderTitleOptions;
@@ -74,6 +82,8 @@
 - (id)unmaskedIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)iconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)generateIconImageWithInfo:(struct SBIconImageInfo)arg1;
+@property(readonly, nonatomic) _Bool supportsRasterization;
+@property(readonly, nonatomic) _Bool supportsStackConfiguration;
 - (id)displayNameForObscuredDisabledLaunchForLocation:(id)arg1;
 @property(readonly, nonatomic, getter=isLaunchDisabledForObscuredReason) _Bool launchDisabledForObscuredReason;
 @property(readonly, nonatomic, getter=isLaunchEnabled) _Bool launchEnabled;
@@ -95,9 +105,6 @@
 - (_Bool)containsNodeIdentifier:(id)arg1;
 - (id)nodeIdentifier;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
-- (void)ancestryDidChange;
-- (void)removeChild:(id)arg1;
-@property(readonly, nonatomic) NSArray *children;
 - (void)enumerateObserversUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)hasObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
@@ -105,17 +112,24 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (Class)iconImageViewClassForLocation:(id)arg1;
+- (id)iconLibraryQueryingFilterStrings;
+- (id)iconLibraryQueryingAlphaSortString;
 - (_Bool)assumesAppInstallFinishedForFolderProgress;
 - (id)downloadingIconDataSource;
 - (_Bool)isDownloadingIcon;
+- (id)_sbhIconLibraryOverrideCollationSectionTitle;
+- (id)_sbhIconLibraryCollationString;
+- (_Bool)isWidgetStackIcon;
+- (_Bool)isWidgetIcon;
+- (_Bool)isCategoryIcon;
 - (id)representedSceneIdentifier;
-- (id)masqueradeIdentifier;
 - (id)applicationBundleID;
 - (id)leafIdentifier;
 - (_Bool)isLeafIcon;
 - (id)parentFolderIcon;
 - (id)folder;
 - (_Bool)isFolderIcon;
+- (_Bool)isAdditionalItemsIndicatorIcon;
 - (_Bool)isGrabbedIconPlaceholder;
 - (_Bool)isPlaceholder;
 

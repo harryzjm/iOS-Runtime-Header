@@ -15,7 +15,10 @@
 - (HKSampleType *)sampleTypeForDateRangeUpdates;
 
 @optional
+- (_Bool)unselectedContextShouldUseContextBaseType;
+- (HKDisplayType *)baseDisplayTypeForOverlay:(long long)arg1;
 - (void)invalidateContextItem;
 - (void)overlayStateDidChange:(_Bool)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;
+- (void)overlayStateWillChange:(_Bool)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;
 @end
 

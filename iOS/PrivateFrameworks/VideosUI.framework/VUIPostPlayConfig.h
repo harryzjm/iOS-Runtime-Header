@@ -12,10 +12,16 @@ __attribute__((visibility("hidden")))
     double _bootstrapInterval;
     double _documentUpdateOffsetInterval;
     unsigned long long _maximumAutoPlayableItems;
+    double _minAutoPlayStopTime;
     double _duration;
+    double _autoPlayTimerDuration;
+    double _minTimeIntervalFromEndToDisplay;
 }
 
+@property(nonatomic) double minTimeIntervalFromEndToDisplay; // @synthesize minTimeIntervalFromEndToDisplay=_minTimeIntervalFromEndToDisplay;
+@property(nonatomic) double autoPlayTimerDuration; // @synthesize autoPlayTimerDuration=_autoPlayTimerDuration;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
+@property(nonatomic) double minAutoPlayStopTime; // @synthesize minAutoPlayStopTime=_minAutoPlayStopTime;
 @property(nonatomic) unsigned long long maximumAutoPlayableItems; // @synthesize maximumAutoPlayableItems=_maximumAutoPlayableItems;
 @property(nonatomic) double documentUpdateOffsetInterval; // @synthesize documentUpdateOffsetInterval=_documentUpdateOffsetInterval;
 @property(nonatomic) double bootstrapInterval; // @synthesize bootstrapInterval=_bootstrapInterval;

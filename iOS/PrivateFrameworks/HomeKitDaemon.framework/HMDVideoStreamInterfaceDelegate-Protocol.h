@@ -14,6 +14,5 @@
 - (void)videoStreamDidNetworkImprove:(HMDVideoStreamInterface *)arg1;
 - (void)videoStream:(HMDVideoStreamInterface *)arg1 didStop:(NSError *)arg2;
 - (void)videoStream:(HMDVideoStreamInterface *)arg1 didStart:(NSError *)arg2;
-- (void)videoStream:(HMDVideoStreamInterface *)arg1 didStartRelay:(NSError *)arg2;
 @end
 

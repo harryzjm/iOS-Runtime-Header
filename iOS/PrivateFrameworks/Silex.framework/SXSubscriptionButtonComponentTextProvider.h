@@ -16,9 +16,9 @@
     id <SXSubscriptionButtonTextProviding> _textProvider;
 }
 
-@property(readonly, nonatomic) id <SXSubscriptionButtonTextProviding> textProvider; // @synthesize textProvider=_textProvider;
 - (void).cxx_destruct;
-- (id)buttonText;
+@property(readonly, nonatomic) id <SXSubscriptionButtonTextProviding> textProvider; // @synthesize textProvider=_textProvider;
+- (id)textForComponent:(id)arg1;
 - (id)initWithTextProvider:(id)arg1;
 
 // Remaining properties

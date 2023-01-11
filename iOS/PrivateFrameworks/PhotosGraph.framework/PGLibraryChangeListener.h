@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <PhotosGraph/PGLibraryChangeProducer-Protocol.h>
+#import <PhotosGraph/PHPhotoLibraryAvailabilityObserver-Protocol.h>
 #import <PhotosGraph/PHPhotoLibraryChangeObserver-Protocol.h>
 
 @class NSCountedSet, NSHashTable, NSMapTable, NSMutableOrderedSet, NSString, PGLibraryChangeListenerStateStore, PHPersistentChangeToken, PHPhotoLibrary;
 @protocol OS_dispatch_queue, PGGraphUpdateHealthRecording;
 
-@interface PGLibraryChangeListener : NSObject <PHPhotoLibraryChangeObserver, PGLibraryChangeProducer>
+@interface PGLibraryChangeListener : NSObject <PHPhotoLibraryChangeObserver, PHPhotoLibraryAvailabilityObserver, PGLibraryChangeProducer>
 {
     NSObject<OS_dispatch_queue> *_changeObservationQueue;
+    _Bool _libraryBecameUnavailable;
     NSString *_clientIdentifier;
     PHPhotoLibrary *_photoLibrary;
     PGLibraryChangeListenerStateStore *_stateStore;
@@ -30,6 +32,8 @@
     id <PGGraphUpdateHealthRecording> _updateHealthRecorder;
 }
 
+- (void).cxx_destruct;
+@property _Bool libraryBecameUnavailable; // @synthesize libraryBecameUnavailable=_libraryBecameUnavailable;
 @property(readonly, nonatomic) id <PGGraphUpdateHealthRecording> updateHealthRecorder; // @synthesize updateHealthRecorder=_updateHealthRecorder;
 @property(retain, nonatomic) PHPersistentChangeToken *lastReadToken; // @synthesize lastReadToken=_lastReadToken;
 @property unsigned long long mode; // @synthesize mode=_mode;
@@ -43,7 +47,6 @@
 @property(readonly, nonatomic) PGLibraryChangeListenerStateStore *stateStore; // @synthesize stateStore=_stateStore;
 @property(readonly, nonatomic) __weak PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void).cxx_destruct;
 - (_Bool)_distributeChangesInFetchResult:(id)arg1;
 - (void)_clearConsumerTokenState;
 - (id)_consumer:(id)arg1 withChangeTokens:(id)arg2 processedChangeTokens:(id)arg3 consumedTokens:(_Bool)arg4;
@@ -57,6 +60,7 @@
 - (void)registerChangeConsumer:(id)arg1;
 - (void)stopListening;
 - (void)startListening;
+- (void)photoLibraryDidBecomeUnavailable:(id)arg1;
 - (id)initWithPhotoLibrary:(id)arg1 clientIdentifier:(id)arg2;
 
 // Remaining properties

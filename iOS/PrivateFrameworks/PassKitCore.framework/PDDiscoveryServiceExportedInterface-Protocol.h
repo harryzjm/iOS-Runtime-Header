@@ -9,6 +9,7 @@
 @class NSArray, NSSet, NSString, PKRule;
 
 @protocol PDDiscoveryServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)removeDiscoveryUserNotificationsWithCompletion:(void (^)(NSError *))arg1;
 - (void)evaluateRulesWithIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)deleteRuleWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)insertRule:(PKRule *)arg1 completion:(void (^)(NSError *))arg2;

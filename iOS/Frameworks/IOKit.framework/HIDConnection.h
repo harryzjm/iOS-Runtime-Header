@@ -25,7 +25,7 @@
         NSObject<OS_dispatch_queue> *dispatchQueue;
         unsigned int sendPossiblePort;
         NSObject<OS_dispatch_source> *sendPossibleSource;
-        unsigned int sendPossible;
+        int sendPossible;
         struct __CFSet *propertySet;
         struct __CFString *caller;
         struct __CFString *procName;
@@ -36,7 +36,7 @@
         unsigned int task_name_port;
         struct os_unfair_recursive_lock_s lock;
         union IOHIDEventSystemConnectionEntitlements *entitlements;
-        unsigned int disableProtectedServices;
+        int disableProtectedServices;
         int filterPriority;
         unsigned int state;
         struct os_unfair_lock_s notificationsLock;

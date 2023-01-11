@@ -13,6 +13,10 @@
     CBScalablePipeManager *_pipeManager;
     int _socket;
     _Bool _reliablePipe;
+    unsigned char _localCLVersion;
+    unsigned char _peerCLVersion;
+    unsigned int _localCLFeatures;
+    unsigned int _peerCLFeatures;
     CBCentral *_central;
     CBPeer *_peer;
     NSString *_name;
@@ -23,6 +27,11 @@
     void *_channel;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned int peerCLFeatures; // @synthesize peerCLFeatures=_peerCLFeatures;
+@property(readonly, nonatomic) unsigned int localCLFeatures; // @synthesize localCLFeatures=_localCLFeatures;
+@property(readonly, nonatomic) unsigned char peerCLVersion; // @synthesize peerCLVersion=_peerCLVersion;
+@property(readonly, nonatomic) unsigned char localCLVersion; // @synthesize localCLVersion=_localCLVersion;
 @property(readonly, nonatomic) void *channel; // @synthesize channel=_channel;
 @property(readonly, nonatomic) NSOutputStream *output; // @synthesize output=_output;
 @property(readonly, nonatomic) NSInputStream *input; // @synthesize input=_input;
@@ -32,7 +41,6 @@
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) CBPeer *peer; // @synthesize peer=_peer;
 @property(readonly, nonatomic) CBCentral *central; // @synthesize central=_central;
-- (void).cxx_destruct;
 - (id)description;
 - (void)dealloc;
 - (void)setOrphan;

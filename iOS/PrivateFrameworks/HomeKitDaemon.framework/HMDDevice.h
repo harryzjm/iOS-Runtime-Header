@@ -14,12 +14,16 @@
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMDRPIdentity, HMFProductInfo, HMFUnfairLock, NSArray, NSSet, NSString, NSUUID;
+@class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMDRPIdentity, HMFNetService, HMFProductInfo, HMFUnfairLock, NSArray, NSData, NSSet, NSString, NSUUID;
+@protocol HMFCancellable;
 
 @interface HMDDevice : HMFObject <HMFObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, HMFMerging, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSSet *_handles;
+    HMFNetService *_observedNetService;
+    id <HMFCancellable> _netServiceKVOCancellation;
+    _Bool _lastKnownIsPublishingStateValue;
     _Bool _dirty;
     _Bool _locallyTracked;
     _Bool _cloudTracked;
@@ -39,11 +43,14 @@
 + (id)deviceWithHandle:(id)arg1;
 + (id)deviceWithDestination:(id)arg1;
 + (id)destinationForDevice:(id)arg1 service:(id)arg2;
+- (void).cxx_destruct;
 @property(getter=isCloudTracked) _Bool cloudTracked; // @synthesize cloudTracked=_cloudTracked;
 @property(getter=isLocallyTracked) _Bool locallyTracked; // @synthesize locallyTracked=_locallyTracked;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSUUID *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
-- (void).cxx_destruct;
+- (void)startObservingIsPublishingForService:(id)arg1;
+- (_Bool)swapToNetServiceKVOCancellation:(id)arg1 swapToObservedNetService:(id)arg2;
+- (_Bool)isPublishingOnObservedNetService;
 - (_Bool)isBackingStorageEqual:(id)arg1;
 - (id)modelBackedObjects;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
@@ -71,9 +78,9 @@
 - (void)setName:(id)arg1;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSUUID *idsIdentifier;
-- (id)destination;
 - (void)__handleAccountHandleUpdated:(id)arg1;
 - (void)setHandles:(id)arg1;
+@property(readonly, copy) NSData *pushToken;
 - (id)globalHandles;
 - (id)localHandles;
 - (id)handles;
@@ -85,6 +92,7 @@
 - (id)initWithObjectModel:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 handles:(id)arg2 name:(id)arg3 productInfo:(id)arg4 version:(id)arg5 capabilities:(id)arg6;
 - (id)init;
+- (void)dealloc;
 - (id)deviceForIDSService:(id)arg1;
 - (id)initWithService:(id)arg1 device:(id)arg2;
 @property(readonly, copy) NSArray *identities;

@@ -9,20 +9,20 @@
 #import <PassKitCore/PKPaymentAuthorizationHostProtocol-Protocol.h>
 
 @class NSString, PKPaymentAuthorizationCoordinator;
-@protocol OS_dispatch_queue, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentAuthorizationServiceProtocol;
+@protocol PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentAuthorizationServiceProtocol;
 
 @interface PKPaymentAuthorizationCoordinatorExportedObject : NSObject <PKPaymentAuthorizationHostProtocol>
 {
-    NSObject<OS_dispatch_queue> *_delegateQueue;
+    struct os_unfair_lock_s _delegateLock;
     id <PKPaymentAuthorizationCoordinatorDelegate> _delegate;
     id <PKPaymentAuthorizationCoordinatorPrivateDelegate> _privateDelegate;
     PKPaymentAuthorizationCoordinator *_controller;
     id <PKPaymentAuthorizationServiceProtocol> _serviceProxy;
 }
 
-@property(retain, nonatomic) id <PKPaymentAuthorizationServiceProtocol> serviceProxy; // @synthesize serviceProxy=_serviceProxy;
-@property(nonatomic) PKPaymentAuthorizationCoordinator *controller; // @synthesize controller=_controller;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PKPaymentAuthorizationServiceProtocol> serviceProxy; // @synthesize serviceProxy=_serviceProxy;
+@property(nonatomic) __weak PKPaymentAuthorizationCoordinator *controller; // @synthesize controller=_controller;
 @property(nonatomic) __weak id <PKPaymentAuthorizationCoordinatorPrivateDelegate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
 @property(nonatomic) __weak id <PKPaymentAuthorizationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)authorizationDidSelectPaymentMethod:(id)arg1;
@@ -34,11 +34,12 @@
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;
 - (void)authorizationDidAuthorizePurchase:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
+- (void)authorizationDidAuthorizeContext;
 - (void)authorizationDidFinishWithError:(id)arg1;
 - (void)authorizationDidRequestMerchantSession;
 - (void)authorizationWillStart;
 - (void)didEncounterAuthorizationEvent:(unsigned long long)arg1;
-- (void)connectionDidOpen;
+- (void)handleConnectionDidOpenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)authorizationDidPresent;
 - (void)dealloc;
 - (id)initWithController:(id)arg1;

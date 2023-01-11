@@ -18,15 +18,16 @@
 
 + (id)compositeClientForClients:(id)arg1;
 + (id)currentClient;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isApplication; // @synthesize isApplication=_isApplication;
 @property(retain, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(retain, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 - (id)URLConnectionProperties;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithAuditToken:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;
 
 @end

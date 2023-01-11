@@ -28,6 +28,7 @@
     ATXAction *_atxAction;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ATXAction *atxAction; // @synthesize atxAction=_atxAction;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
 @property(nonatomic) _Bool suppressSpinner; // @synthesize suppressSpinner=_suppressSpinner;
@@ -39,7 +40,6 @@
 @property(nonatomic) __weak id <APUIIntentHandlingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long executionContext; // @synthesize executionContext=_executionContext;
 @property(retain, nonatomic) INIntent *intent; // @synthesize intent=_intent;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) id <CRKCardViewControllerDelegate> cardViewControllerDelegate;
 - (void)cardViewControllerBoundsDidChange:(id)arg1;
 - (void)cardViewControllerDidLoad:(id)arg1;
@@ -62,6 +62,7 @@
 - (void)beginRunningIntent;
 - (void)setPreferredPlatterContentHeight:(double)arg1 notifyDelegate:(_Bool)arg2;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 - (id)initWithIntent:(id)arg1;
 
 // Remaining properties

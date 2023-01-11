@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, PMLSessionDescriptor, SGModelHyperparameters, SGQuickResponsesClassificationParameters, SGQuickResponsesPredictionParameters, SGQuickResponsesReplies;
+@class NSArray, NSString, PMLSessionDescriptor, SGCustomResponsesParameters, SGModelHyperparameters, SGQuickResponsesClassificationParameters, SGQuickResponsesPredictionParameters, SGQuickResponsesReplies;
 
 @interface SGQuickResponsesConfig : NSObject
 {
@@ -16,21 +16,23 @@
     SGQuickResponsesReplies *_replies;
     SGQuickResponsesClassificationParameters *_classificationParams;
     SGQuickResponsesPredictionParameters *_predictionParams;
+    SGCustomResponsesParameters *_customResponsesParameters;
     NSString *_language;
     unsigned long long _mode;
     PMLSessionDescriptor *_sessionDescriptor;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PMLSessionDescriptor *sessionDescriptor; // @synthesize sessionDescriptor=_sessionDescriptor;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(readonly, copy, nonatomic) NSString *language; // @synthesize language=_language;
+@property(readonly, nonatomic) SGCustomResponsesParameters *customResponsesParameters; // @synthesize customResponsesParameters=_customResponsesParameters;
 @property(readonly, nonatomic) SGQuickResponsesPredictionParameters *predictionParams; // @synthesize predictionParams=_predictionParams;
 @property(readonly, nonatomic) SGQuickResponsesClassificationParameters *classificationParams; // @synthesize classificationParams=_classificationParams;
 @property(readonly, nonatomic) SGQuickResponsesReplies *replies; // @synthesize replies=_replies;
 @property(readonly, nonatomic) NSArray *labels; // @synthesize labels=_labels;
 @property(readonly, nonatomic) NSArray *preprocessingMethods; // @synthesize preprocessingMethods=_preprocessingMethods;
 @property(readonly, nonatomic) SGModelHyperparameters *modelHyperparameters; // @synthesize modelHyperparameters=_modelHyperparameters;
-- (void).cxx_destruct;
 - (id)initWithLanguage:(id)arg1 mode:(unsigned long long)arg2 dictionary:(id)arg3;
 - (id)initWithLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 

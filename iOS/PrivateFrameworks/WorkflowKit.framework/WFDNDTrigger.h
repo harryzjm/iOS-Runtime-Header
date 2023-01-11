@@ -13,13 +13,15 @@
 + (_Bool)supportsSecureCoding;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
++ (_Bool)isUserInitiated;
 + (_Bool)isAllowedToRunAutomatically;
 @property(nonatomic) _Bool onDisable; // @synthesize onDisable=_onDisable;
 @property(nonatomic) _Bool onEnable; // @synthesize onEnable=_onEnable;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
+- (id)localizedDescriptionWithConfigurationSummary;
 - (_Bool)hasValidConfiguration;
 - (id)init;
 

@@ -8,40 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPAddressFeedback, GEORPDirectionsFeedback, GEORPGroundViewFeedback, GEORPMerchantLookupFeedback, GEORPPoiFeedback, GEORPSearchFeedback, GEORPTileFeedback, GEORPTransitPoiFeedback, PBDataReader, PBUnknownFields;
+@class GEORPAddressFeedback, GEORPCuratedCollectionFeedback, GEORPDirectionsFeedback, GEORPGroundViewFeedback, GEORPIncidentFeedback, GEORPMerchantLookupFeedback, GEORPPoiEnrichmentUpdate, GEORPPoiFeedback, GEORPPoiImageFeedback, GEORPSearchFeedback, GEORPTileFeedback, GEORPTransitPoiFeedback, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackDetails : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPAddressFeedback *_addressPointFeedback;
+    GEORPCuratedCollectionFeedback *_curatedCollectionFeedback;
     GEORPDirectionsFeedback *_directionsFeedback;
     GEORPGroundViewFeedback *_groundViewFeedback;
+    GEORPIncidentFeedback *_incidentFeedback;
     GEORPMerchantLookupFeedback *_merchantLookupFeedback;
+    GEORPPoiEnrichmentUpdate *_poiEnrichmentUpdate;
     GEORPPoiFeedback *_poiFeedback;
+    GEORPPoiImageFeedback *_poiImageFeedback;
     GEORPSearchFeedback *_searchFeedback;
     GEORPTileFeedback *_tileFeedback;
     GEORPTransitPoiFeedback *_transitPoiFeedback;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_addressPointFeedback:1;
+        unsigned int read_curatedCollectionFeedback:1;
         unsigned int read_directionsFeedback:1;
         unsigned int read_groundViewFeedback:1;
+        unsigned int read_incidentFeedback:1;
         unsigned int read_merchantLookupFeedback:1;
+        unsigned int read_poiEnrichmentUpdate:1;
         unsigned int read_poiFeedback:1;
+        unsigned int read_poiImageFeedback:1;
         unsigned int read_searchFeedback:1;
         unsigned int read_tileFeedback:1;
         unsigned int read_transitPoiFeedback:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_addressPointFeedback:1;
-        unsigned int wrote_directionsFeedback:1;
-        unsigned int wrote_groundViewFeedback:1;
-        unsigned int wrote_merchantLookupFeedback:1;
-        unsigned int wrote_poiFeedback:1;
-        unsigned int wrote_searchFeedback:1;
-        unsigned int wrote_tileFeedback:1;
-        unsigned int wrote_transitPoiFeedback:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -57,32 +59,37 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPCuratedCollectionFeedback *curatedCollectionFeedback;
+@property(readonly, nonatomic) _Bool hasCuratedCollectionFeedback;
+@property(retain, nonatomic) GEORPPoiImageFeedback *poiImageFeedback;
+@property(readonly, nonatomic) _Bool hasPoiImageFeedback;
+@property(retain, nonatomic) GEORPIncidentFeedback *incidentFeedback;
+@property(readonly, nonatomic) _Bool hasIncidentFeedback;
+@property(retain, nonatomic) GEORPPoiEnrichmentUpdate *poiEnrichmentUpdate;
+@property(readonly, nonatomic) _Bool hasPoiEnrichmentUpdate;
 @property(retain, nonatomic) GEORPGroundViewFeedback *groundViewFeedback;
 @property(readonly, nonatomic) _Bool hasGroundViewFeedback;
-- (void)_readGroundViewFeedback;
 @property(retain, nonatomic) GEORPTileFeedback *tileFeedback;
 @property(readonly, nonatomic) _Bool hasTileFeedback;
-- (void)_readTileFeedback;
 @property(retain, nonatomic) GEORPAddressFeedback *addressPointFeedback;
 @property(readonly, nonatomic) _Bool hasAddressPointFeedback;
-- (void)_readAddressPointFeedback;
 @property(retain, nonatomic) GEORPDirectionsFeedback *directionsFeedback;
 @property(readonly, nonatomic) _Bool hasDirectionsFeedback;
-- (void)_readDirectionsFeedback;
 @property(retain, nonatomic) GEORPMerchantLookupFeedback *merchantLookupFeedback;
 @property(readonly, nonatomic) _Bool hasMerchantLookupFeedback;
-- (void)_readMerchantLookupFeedback;
 @property(retain, nonatomic) GEORPSearchFeedback *searchFeedback;
 @property(readonly, nonatomic) _Bool hasSearchFeedback;
-- (void)_readSearchFeedback;
 @property(retain, nonatomic) GEORPTransitPoiFeedback *transitPoiFeedback;
 @property(readonly, nonatomic) _Bool hasTransitPoiFeedback;
-- (void)_readTransitPoiFeedback;
 @property(retain, nonatomic) GEORPPoiFeedback *poiFeedback;
 @property(readonly, nonatomic) _Bool hasPoiFeedback;
-- (void)_readPoiFeedback;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

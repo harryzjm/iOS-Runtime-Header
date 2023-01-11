@@ -46,6 +46,7 @@
 }
 
 + (double)_defaultSpacingBetweenGuidesForResolvingSymbolicConstant;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setShouldBeArchived:) _Bool _shouldBeArchived; // @synthesize _shouldBeArchived=__shouldBeArchived;
 @property(nonatomic, setter=_setAllowsNegativeDimensions:) _Bool _allowsNegativeDimensions; // @synthesize _allowsNegativeDimensions=__allowsNegativeDimensions;
 @property(readonly, retain, nonatomic) NSMapTable *_stashedLayoutVariableObservations; // @synthesize _stashedLayoutVariableObservations;
@@ -59,7 +60,6 @@
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) __weak UIView *owningView; // @synthesize owningView=_owningView;
 @property(nonatomic, setter=_setAllowOwningViewSetting:) _Bool _allowOwningViewSetting; // @synthesize _allowOwningViewSetting;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSLayoutYAxisAnchor *centerYAnchor; // @synthesize centerYAnchor=_centerYAnchor;
 @property(readonly, nonatomic) NSLayoutXAxisAnchor *centerXAnchor; // @synthesize centerXAnchor=_centerXAnchor;
 @property(readonly, nonatomic) NSLayoutDimension *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
@@ -108,6 +108,7 @@
 - (_Bool)nsli_isFlipped;
 - (unsigned long long)nsli_autoresizingMask;
 - (_Bool)nsli_descriptionIncludesPointer;
+- (id)nsli_constraintWithAnchor:(id)arg1 relatedBy:(long long)arg2 toAnchor:(id)arg3 withSystemSpacingMultipliedBy:(double)arg4;
 - (id)nsli_description;
 - (_Bool)nsli_defaultResolvedValue:(double *)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id *)arg4;
 - (_Bool)nsli_resolvedValue:(double *)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id *)arg4;

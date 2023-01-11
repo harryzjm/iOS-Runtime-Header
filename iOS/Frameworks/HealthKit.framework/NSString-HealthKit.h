@@ -16,7 +16,10 @@
 - (id)hk_SHA224Hash;
 - (_Bool)hk_isBetweenLowerBuildVersion:(id)arg1 upperBuildVersion:(id)arg2;
 - (long long)hk_compareBuildVersionWithString:(id)arg1;
+- (id)hk_stringIndentedBy:(unsigned long long)arg1;
 - (_Bool)hk_isBase64;
+- (id)hk_localizedFirstWordCapitalizedString;
+- (id)hk_firstWordCapitalizedStringWithLocale:(id)arg1;
 - (_Bool)hk_isCaseInsensitiveSubstringInString:(id)arg1;
 - (id)hk_stringByAppendingKeyPathComponent:(id)arg1;
 - (id)hk_stringByUnescapingJSONCharactersForDisplay;
@@ -25,5 +28,7 @@
 - (id)hk_stripLeadingTrailingWhitespace;
 - (_Bool)hk_isValidPurposeString;
 - (id)hk_copyNonEmptyString;
+- (_Bool)hk_hasMetadataKeyPathPrefix;
+- (_Bool)hk_hasDevicePropertyKeyPathPrefix;
 @end
 

@@ -13,9 +13,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setPerMinuteReadings:) NSDictionary *perMinuteReadings; // @synthesize perMinuteReadings=_perMinuteReadings;
 @property(readonly, nonatomic) unsigned long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

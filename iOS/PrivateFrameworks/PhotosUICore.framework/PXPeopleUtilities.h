@@ -21,7 +21,7 @@
 + (_Bool)shouldShowBootstrapForPerson:(id)arg1;
 + (void)_peopleFaceTilesForFaces:(id)arg1 asset:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (struct CGRect)faceRectForPeopleFaceTile:(id)arg1;
-+ (id)personFaceTileByPersonIdForPersons:(id)arg1 options:(id)arg2;
++ (id)personFaceTileByPersonIdForPersons:(id)arg1;
 + (id)generateNewFaceTileFromFaceTile:(id)arg1;
 + (void)peopleFaceTilesForFaces:(id)arg1 asset:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)peopleFaceTilesForAsset:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -42,6 +42,7 @@
 + (id)peopleWithPersonUris:(id)arg1;
 + (id)personWithPersonUri:(id)arg1;
 + (id)sharedContactStore;
++ (id)alertControllerForBlockingPerson:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)alertControllerForResettingPeopleWithCompletion:(CDUnknownBlockType)arg1;
 + (id)alertControllerForRemovingNumberOfPeople:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (_Bool)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2 force:(_Bool)arg3 delegate:(id)arg4;

@@ -8,22 +8,19 @@
 
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary;
 
 @interface CRKDeviceDisplay : NSObject <NSSecureCoding>
 {
     double _scaleFactor;
     unsigned long long _orientation;
-    NSString *_frameString;
     struct CGRect _frame;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSString *frameString; // @synthesize frameString=_frameString;
 @property(readonly, nonatomic) unsigned long long orientation; // @synthesize orientation=_orientation;
 @property(readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(readonly, nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;

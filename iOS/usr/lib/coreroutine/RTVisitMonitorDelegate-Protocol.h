@@ -12,7 +12,6 @@
 
 @optional
 - (void)onLowConfidenceVisitIncident:(RTVisit *)arg1 error:(NSError *)arg2;
-- (void)onLeechedVisitIncident:(RTVisit *)arg1 error:(NSError *)arg2;
 - (void)onVisitIncident:(RTVisit *)arg1 error:(NSError *)arg2;
 @end
 

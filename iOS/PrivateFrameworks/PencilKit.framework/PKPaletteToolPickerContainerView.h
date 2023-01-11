@@ -8,37 +8,34 @@
 
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
-#import <PencilKit/PKPaletteViewStateObserving-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKPaletteToolPickerView;
-@protocol PKPaletteViewStateObservable;
 
-@interface PKPaletteToolPickerContainerView : UIView <PKEdgeLocatable, PKPaletteViewSizeScaling, PKPaletteViewStateObserving>
+@interface PKPaletteToolPickerContainerView : UIView <PKEdgeLocatable, PKPaletteViewSizeScaling>
 {
     unsigned long long _edgeLocation;
     double _scalingFactor;
     PKPaletteToolPickerView *_toolPickerView;
-    id <PKPaletteViewStateObservable> _paletteViewState;
     NSLayoutConstraint *_toolPickerViewTopConstraint;
     NSLayoutConstraint *_toolPickerViewBottomConstraint;
     NSLayoutConstraint *_toolPickerViewLeftConstraint;
     NSLayoutConstraint *_toolPickerViewRightConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *toolPickerViewRightConstraint; // @synthesize toolPickerViewRightConstraint=_toolPickerViewRightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *toolPickerViewLeftConstraint; // @synthesize toolPickerViewLeftConstraint=_toolPickerViewLeftConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *toolPickerViewBottomConstraint; // @synthesize toolPickerViewBottomConstraint=_toolPickerViewBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *toolPickerViewTopConstraint; // @synthesize toolPickerViewTopConstraint=_toolPickerViewTopConstraint;
-@property(nonatomic) __weak id <PKPaletteViewStateObservable> paletteViewState; // @synthesize paletteViewState=_paletteViewState;
 @property(readonly, nonatomic) PKPaletteToolPickerView *toolPickerView; // @synthesize toolPickerView=_toolPickerView;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property(nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
-- (void).cxx_destruct;
-- (void)didChangeAnnotationSupport:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_updateUI;
 - (void)updateConstraints;
-- (id)initWithPaletteViewStateObservable:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

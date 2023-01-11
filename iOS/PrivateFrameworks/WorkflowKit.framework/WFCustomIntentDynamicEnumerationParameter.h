@@ -6,21 +6,31 @@
 
 #import <WorkflowKit/WFCodableAttributeBackedParameter-Protocol.h>
 
-@class INCodableAttribute, NSString;
+@class INCodableAttribute, INObjectCollection, INStringLocalizer, NSString;
 
 @interface WFCustomIntentDynamicEnumerationParameter <WFCodableAttributeBackedParameter>
 {
     INCodableAttribute *_codableAttribute;
+    INStringLocalizer *_stringLocalizer;
 }
 
-@property(retain, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
 - (void).cxx_destruct;
+@property(retain, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
+@property(retain, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
+- (void)getStatesWithSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)displaysMultipleValueEditor;
+- (_Bool)parameterStateIsValid:(id)arg1;
+- (_Bool)hidesSubtitleInEditor;
+- (id)localizedSubtitleLabelForPossibleState:(id)arg1;
+- (id)accessoryIconForPossibleState:(id)arg1;
 - (Class)singleStateClass;
+@property(readonly, nonatomic) NSString *localizedConfigurationPromptDialog;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) INObjectCollection *possibleStatesCollection;
 @property(readonly) Class superclass;
 
 @end

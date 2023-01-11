@@ -18,12 +18,13 @@
 
 + (id)_networkConstraintsForMediaType:(id)arg1 withArray:(id)arg2;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
 + (id)networkConstraintsForMediaType:(id)arg1 withBag:(id)arg2;
-@property(retain, nonatomic) NSMutableDictionary *sizeLimits; // @synthesize sizeLimits=_sizeLimits;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *sizeLimits; // @synthesize sizeLimits=_sizeLimits;
 - (long long)_sizeLimitForNetworkType:(id)arg1;
 - (void)_setSizeLimit:(long long)arg1 forNetworkType:(id)arg2;
 - (void)_disableAllNetworkTypes;

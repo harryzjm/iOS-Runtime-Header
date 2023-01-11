@@ -24,6 +24,8 @@
     NSString *_keywordsNameKey;
     NSString *_summaryNameKey;
     NSString *_summaryPairedWatchNameKey;
+    NSString *_displayNameFitnessJrKey;
+    NSString *_summaryFitnessJrKey;
     NSString *_cautionaryTextKey;
     NSString *_unitChangeCautionaryTextKey;
     NSString *_healthKitLocalizationTableNameOverride;
@@ -51,6 +53,7 @@
     HKObjectType *_objectType;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *displayNameKey; // @synthesize displayNameKey=_displayNameKey;
 @property(getter=_isWheelchairUser, setter=_setWheelchairUser:) _Bool _wheelchairUser; // @synthesize _wheelchairUser=__wheelchairUser;
 @property(readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
@@ -70,7 +73,6 @@
 @property(readonly, nonatomic) NSArray *secondaryCategoryIdentifiers; // @synthesize secondaryCategoryIdentifiers=_secondaryCategoryIdentifiers;
 @property(readonly, nonatomic) long long categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property(readonly, nonatomic) long long displayTypeIdentifier; // @synthesize displayTypeIdentifier=_displayTypeIdentifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
@@ -80,12 +82,14 @@
 @property(readonly, nonatomic) NSString *unitChangeCautionaryText;
 @property(readonly, nonatomic) NSString *cautionaryText;
 @property(readonly, nonatomic) NSString *summaryForPairedWatch;
+@property(readonly, nonatomic) NSString *summaryForFitnessJr;
 @property(readonly, nonatomic) NSString *summary;
 @property(readonly, nonatomic) NSString *titleEmbeddedDisplayName;
 @property(readonly, nonatomic) NSString *embeddedDisplayName;
 @property(readonly, nonatomic) NSString *shortenedDisplayName;
 @property(readonly, nonatomic) NSSet *keywords;
 @property(readonly, nonatomic) NSString *labelDisplayName;
+@property(readonly, nonatomic) NSString *displayNameForFitnessJr;
 @property(readonly, nonatomic) NSString *displayName;
 - (id)_rawLocalizedStringForKey:(id)arg1;
 - (id)_localizedStringWithKey:(id)arg1;
@@ -118,6 +122,8 @@
 - (id)defaultDataRange;
 - (id)colorWithDisplayCategoryController:(id)arg1;
 - (id)unitNameForValue:(id)arg1 unitPreferenceController:(id)arg2;
+- (double)adjustedDoubleForClientDouble:(double)arg1;
+- (double)adjustedDoubleForDaemonDouble:(double)arg1;
 - (id)adjustedValueForClientValue:(id)arg1;
 - (id)adjustedValueForDaemonValue:(id)arg1;
 - (id)unitDisplayNameKeyOverrideForUnit:(id)arg1;
@@ -132,8 +138,11 @@
 - (id)hk_enumeratedValueLabels;
 - (id)hk_interactiveChartsDataSourceForTimeScope:(long long)arg1 healthStore:(id)arg2 unitController:(id)arg3;
 - (id)_dataSourceForQuantityType:(id)arg1 timeScope:(long long)arg2 unitController:(id)arg3 healthStore:(id)arg4;
-- (id)_audioExposureHistogramDataSourceForAudioExposureTypeIdentifier:(id)arg1 withHealthStore:(id)arg2;
-- (id)_heartRateHistogramDataSourceWithHealthStore:(id)arg1;
+- (id)_oxygenSaturationHistogramDataSourceWithHealthStore:(id)arg1 unitController:(id)arg2;
+- (id)_walkingMetricHistogramDataSourceForWalkingTypeIdentifier:(id)arg1 withHealthStore:(id)arg2 unitController:(id)arg3;
+- (id)_audioExposureHistogramDataSourceForAudioExposureTypeIdentifier:(id)arg1 withHealthStore:(id)arg2 unitController:(id)arg3;
+- (id)_heartRateHistogramDataSourceWithHealthStore:(id)arg1 unitController:(id)arg2;
+- (id)_handwashingDataSourceWithHealthStore:(id)arg1 timeScope:(long long)arg2;
 - (id)_insulinDataSourceWithHealthStore:(id)arg1;
 - (id)_bloodPressureDataSourceWithHealthStore:(id)arg1;
 - (id)_countDataSourceWithHealthStore:(id)arg1;
@@ -142,26 +151,24 @@
 - (id)_levelCategoryValuesDataSourceForCategoryType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3 displayIdentifier:(long long)arg4;
 - (id)_stackedDataSourceForCategoryType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (id)_timePeriodDisplayPrefix;
-- (id)_dailySleepSeriesDataSourceForSampleType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (id)_timePeriodDataSourceForSampleType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (CDUnknownBlockType)_singleValueUserInfoBlockWithUnitController:(id)arg1 displayType:(id)arg2 statisticsOption:(unsigned long long)arg3;
 - (CDUnknownBlockType)_minMaxUserInfoBlockWithUnitController:(id)arg1 displayType:(id)arg2;
 - (CDUnknownBlockType)_bloodPressureUserInfoBlock;
 - (id)hk_standardSeriesForTimeScope:(long long)arg1 displayCategory:(id)arg2 unitController:(id)arg3 dataCacheController:(id)arg4 displayCategoryController:(id)arg5;
-- (id)_generateGraphSeriesForTimeScope:(long long)arg1 displayCategory:(id)arg2;
-- (id)_generateDistributionSeriesWithColor:(id)arg1;
+- (id)_generateGraphSeriesForTimeScope:(long long)arg1 displayCategory:(id)arg2 unitController:(id)arg3;
+- (id)_generateDistributionSeriesWithColor:(id)arg1 numberFormatter:(id)arg2;
 - (id)_generateLevelCategorySeriesWithColor:(id)arg1;
 - (id)_generateSingleLineSeriesWithColor:(id)arg1 timeScope:(long long)arg2;
 - (id)_generateStackedSeriesWithColor:(id)arg1;
 - (id)_generateScatterPlotSeriesWithColor:(id)arg1;
 - (id)_generateLineSeriesWithColor:(id)arg1 timeScope:(long long)arg2;
-- (id)_generateInsulinBarSeriesWithDisplayCategory:(id)arg1;
-- (id)_generateDailySleepSeriesWithColor:(id)arg1;
+- (id)_generateHandwashingBarSeriesWithDisplayCategory:(id)arg1;
+- (id)_generateInsulinBarSeriesWithDisplayCategory;
 - (id)_generateBarSeriesWithFillStyle:(id)arg1;
 - (id)_generateMinMaxSeriesWithColor:(id)arg1;
 - (id)_generateBloodPressureSeriesWithColor:(id)arg1;
 - (id)_dataSourceForTimeScope:(long long)arg1 dataCacheController:(id)arg2;
-- (id)_hk_numberFormatterForCharting;
 - (id)_hk_defaultChartAxisBoundStringFromValue:(id)arg1 defaultNumberFormatter:(id)arg2 unitController:(id)arg3;
 - (id)hk_interactiveChartAxisStringFromValue:(id)arg1 defaultNumberFormatter:(id)arg2 unitController:(id)arg3;
 - (id)hk_dashboardChartBoundStringFromValue:(id)arg1 defaultNumberFormatter:(id)arg2 unitController:(id)arg3;
@@ -184,6 +191,8 @@
 - (_Bool)hk_isSupportedTimeScope:(long long)arg1;
 - (unsigned long long)hk_interactiveChartOptions;
 - (long long)hk_stackedChartSectionsCountForTimeScope:(long long)arg1;
+- (_Bool)contextItemShouldDisplayEventCountForDistributionStyle:(long long)arg1;
+- (_Bool)contextItemShouldUseTightSpacingBetweenValueAndUnit;
 
 @end
 

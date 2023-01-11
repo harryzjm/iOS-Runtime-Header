@@ -18,16 +18,12 @@
 }
 
 + (id)cardSectionClasses;
+- (void).cxx_destruct;
 @property(nonatomic) __weak SiriUISnippetViewController *containingSnippetViewController; // @synthesize containingSnippetViewController=_containingSnippetViewController;
 @property(readonly, nonatomic) SiriUISnippetViewController *backingSnippetViewController; // @synthesize backingSnippetViewController=_snippetViewController;
-- (void).cxx_destruct;
 - (_Bool)_canShowWhileLocked;
 - (struct UIEdgeInsets)siriViewControllerBackgroundInsets:(id)arg1;
 - (id)additionalSpeechInterpretationsForSiriViewController:(id)arg1;
-- (struct UIEdgeInsets)siriViewControllerDisplayInsetsForVisibleSpace:(id)arg1;
-- (_Bool)siriViewController:(id)arg1 openPunchOut:(id)arg2;
-- (void)siriViewController:(id)arg1 sendGenericAceCommands:(id)arg2;
-- (id)persistentStoreForSiriViewController:(id)arg1;
 - (id)localeForSiriViewController:(id)arg1;
 - (void)siriViewControllerRequestTearDownEditingViewController:(id)arg1;
 - (void)siriViewController:(id)arg1 startCorrectedSpeechRequestWithText:(id)arg2 correctionIdentifier:(id)arg3 userSelectionResults:(id)arg4;
@@ -61,10 +57,11 @@
 - (void)siriViewController:(id)arg1 setDomainObject:(id)arg2 forIdentifier:(id)arg3;
 - (id)siriViewController:(id)arg1 domainObjectForIdentifier:(id)arg2;
 - (void)siriViewController:(id)arg1 openURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)siriViewController:(id)arg1 openURL:(id)arg2;
 - (void)siriViewController:(id)arg1 performAceCommands:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)siriViewController:(id)arg1 performAceCommands:(id)arg2;
-- (double)siriSnippetViewControllerExpectedWidth:(id)arg1;
+- (double)boundingWidthForSnippetViewController:(id)arg1;
+- (void)siriViewControllerViewDidDisappear:(id)arg1 isTopLevelViewController:(_Bool)arg2;
+- (void)siriViewControllerViewDidAppear:(id)arg1 isTopLevelViewController:(_Bool)arg2;
 - (void)siriSnippetViewController:(id)arg1 setStatusBarHidden:(_Bool)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)siriEnabledAppListForSiriViewController:(id)arg1;
 - (unsigned long long)siriDeviceLockStateForSnippetViewController:(id)arg1;

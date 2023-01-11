@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <AXMediaUtilities/AXMDescribing-Protocol.h>
+#import <AXMediaUtilities/AXMServiceDelegate-Protocol.h>
 #import <AXMediaUtilities/AXMTaskDispatcherDelegate-Protocol.h>
 #import <AXMediaUtilities/AXMVisionEngineNodeConnectionDelegate-Protocol.h>
 #import <AXMediaUtilities/NSCopying-Protocol.h>
@@ -15,7 +16,7 @@
 @class AXMImageRegistrationNode, AXMSequenceRequestManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, NSArray, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
 @protocol OS_dispatch_queue;
 
-@interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMTaskDispatcherDelegate, NSCopying, NSSecureCoding, AXMDescribing>
+@interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMTaskDispatcherDelegate, AXMServiceDelegate, NSCopying, NSSecureCoding, AXMDescribing>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_queue_sourceNodes;
@@ -40,6 +41,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AXMSequenceRequestManager *sequenceRequestManager; // @synthesize sequenceRequestManager=_sequenceRequestManager;
 @property(retain, nonatomic) AXMTaskDispatcher *taskDispatcher; // @synthesize taskDispatcher=_taskDispatcher;
 @property(retain, nonatomic) AXMService *axMediaUtilsService; // @synthesize axMediaUtilsService=_axMediaUtilsService;
@@ -53,14 +55,15 @@
 @property _Bool prioritySchedulingEnabled; // @synthesize prioritySchedulingEnabled=_prioritySchedulingEnabled;
 @property long long maximumQueueSize; // @synthesize maximumQueueSize=_maximumQueueSize;
 @property(copy) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)captureSessionNodeDidDropFrame:(id)arg1;
 - (void)captureSessionNodeWillProcessFrame:(id)arg1;
 - (void)captureSessionNodeDidEndProcessingFrames:(id)arg1;
 - (void)captureSessionNodeDidBeginProcessingFrames:(id)arg1;
+- (_Bool)diagnosticsEnabled:(id)arg1;
 - (_Bool)engineWillAcceptTiggerWithSource:(id)arg1;
 - (void)_invokeFullQueueResultHandlersForContext:(id)arg1;
 - (void)triggerWithSource:(id)arg1 context:(id)arg2;
+- (void)axMediaUtilitiesService:(id)arg1 eventOccurred:(long long)arg2;
 - (void)dispatcher:(id)arg1 handleTask:(id)arg2;
 - (void)axmAppendRecursiveDescription:(id)arg1 withIndentation:(long long)arg2;
 - (id)axmDescription;

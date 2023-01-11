@@ -8,12 +8,13 @@
 
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class LSApplicationProxy, NSDictionary, NSURL, _LSValidationToken;
+@class LSApplicationProxy, LSApplicationRecord, NSDictionary, NSURL, _LSValidationToken;
 
 @interface LSAppLink : NSObject <NSSecureCoding>
 {
     NSURL *_URL;
     LSApplicationProxy *_targetApplicationProxy;
+    LSApplicationRecord *_targetApplicationRecord;
     _LSValidationToken *__validationToken;
 }
 
@@ -22,22 +23,25 @@
 + (void)getAppLinksWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)getAppLinkWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)appLinksWithURL:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
++ (_Bool)setSettingsSwitchState:(long long)arg1 forApplicationIdentifier:(id)arg2 error:(id *)arg3;
++ (long long)settingsSwitchStateForApplicationIdentifier:(id)arg1;
 + (void)openWithURL:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)openWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)removeAllSettingsReturningError:(id *)arg1;
 + (void)_openAppLink:(id)arg1 state:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)_openWithAppLink:(id)arg1 state:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)_appLinkWithURL:(id)arg1 applicationProxy:(id)arg2 plugInClass:(Class)arg3;
++ (id)_appLinkWithURL:(id)arg1 applicationRecord:(id)arg2 plugInClass:(Class)arg3;
 + (id)_appLinksWithState:(id)arg1 context:(struct LSContext *)arg2 limit:(unsigned long long)arg3 requireEntitlement:(_Bool)arg4 error:(id *)arg5;
 + (id)_appLinksWithState:(id)arg1 limit:(unsigned long long)arg2 requireEntitlement:(_Bool)arg3 error:(id *)arg4;
 + (_Bool)_URLIsValidForAppLinks:(id)arg1 error:(id *)arg2;
 + (id)_dispatchQueue;
 + (id)_appLinksWithState:(id)arg1 context:(struct LSContext *)arg2 limit:(unsigned long long)arg3 URLComponents:(id)arg4 error:(id *)arg5;
 + (_Bool)URLComponentsAreValidForAppLinks:(id)arg1 error:(id *)arg2;
-@property(retain) _LSValidationToken *_validationToken; // @synthesize _validationToken=__validationToken;
-@property(retain) LSApplicationProxy *targetApplicationProxy; // @synthesize targetApplicationProxy=_targetApplicationProxy;
-@property(copy) NSURL *URL; // @synthesize URL=_URL;
 - (void).cxx_destruct;
+@property(retain) _LSValidationToken *_validationToken; // @synthesize _validationToken=__validationToken;
+@property(retain) LSApplicationRecord *targetApplicationRecord; // @synthesize targetApplicationRecord=_targetApplicationRecord;
+@property(readonly) LSApplicationProxy *targetApplicationProxy; // @synthesize targetApplicationProxy=_targetApplicationProxy;
+@property(copy) NSURL *URL; // @synthesize URL=_URL;
 - (id)_validationTokenPayload;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

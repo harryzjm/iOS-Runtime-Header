@@ -12,16 +12,11 @@
     NSMutableArray *_blocks;
 }
 
-+ (id)blockCompositeOperationWithParent:(id)arg1 block:(CDUnknownBlockType)arg2;
-+ (id)blockCompositeOperationWithBlock:(CDUnknownBlockType)arg1;
-@property(readonly) NSMutableArray *blocks; // @synthesize blocks=_blocks;
 - (void).cxx_destruct;
+@property(readonly) NSMutableArray *blocks; // @synthesize blocks=_blocks;
 - (void)main;
-- (void)addExecutionBlock:(CDUnknownBlockType)arg1;
 - (id)executionBlocks;
-- (id)initWithParent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)isAsynchronous;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

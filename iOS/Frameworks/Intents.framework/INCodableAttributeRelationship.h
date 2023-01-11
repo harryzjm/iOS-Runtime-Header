@@ -9,7 +9,7 @@
 #import <Intents/INCodableCoding-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableAttribute, NSArray, NSDictionary, NSString;
+@class INCodableAttribute, INCodableDescription, NSArray, NSDictionary, NSString;
 
 @interface INCodableAttributeRelationship : NSObject <NSSecureCoding, INCodableCoding>
 {
@@ -21,16 +21,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
 @property(retain, nonatomic) NSArray *values; // @synthesize values=_values;
 @property(nonatomic) unsigned long long relation; // @synthesize relation=_relation;
 @property(nonatomic) __weak INCodableAttribute *parentCodableAttribute; // @synthesize parentCodableAttribute=_parentCodableAttribute;
 @property(retain, nonatomic, setter=_setOriginalDictionary:) NSDictionary *_originalDictionary; // @synthesize _originalDictionary;
-- (void).cxx_destruct;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
-- (id)keyPrefix;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (id)dictionaryRepresentation;
+@property(readonly, nonatomic) __weak INCodableDescription *_codableDescription;
 - (void)updateWithDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +39,18 @@
 @property(readonly, nonatomic) Class valueClass;
 - (id)initWithCodableAttribute:(id)arg1;
 - (_Bool)compareValue:(id)arg1;
+- (id)__INCodableDescriptionParentNameKey;
+- (id)__INIntentResponseCodableDescriptionParentNameKey;
+- (id)__INTypeCodableDescriptionParentNameKey;
+- (id)__INCodableDescriptionPredicateNameKey;
+- (id)__INIntentResponseCodableDescriptionPredicateNameKey;
+- (id)__INTypeCodableDescriptionPredicateNameKey;
+- (id)__INCodableDescriptionPredicateValueKey;
+- (id)__INIntentResponseCodableDescriptionPredicateValueKey;
+- (id)__INTypeCodableDescriptionPredicateValueKey;
+- (id)__INCodableDescriptionPredicateValuesKey;
+- (id)__INIntentResponseCodableDescriptionPredicateValuesKey;
+- (id)__INTypeCodableDescriptionPredicateValuesKey;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

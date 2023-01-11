@@ -9,7 +9,7 @@
 @interface NSKeyedUnarchiver
 {
     id _delegate;
-    unsigned int _flags;
+    _Atomic unsigned long long _flags;
     id _objRefMap;
     id _replacementMap;
     id _nameClassMap;
@@ -33,7 +33,11 @@
 + (id)unarchiveObjectWithData:(id)arg1;
 + (id)unarchiveObjectWithFile:(id)arg1;
 + (id)_strictlyUnarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
++ (id)unarchivedDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 fromData:(id)arg3 error:(id *)arg4;
++ (id)unarchivedArrayOfObjectsOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
 + (id)unarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
++ (id)unarchivedDictionaryWithKeysOfClass:(Class)arg1 objectsOfClass:(Class)arg2 fromData:(id)arg3 error:(id *)arg4;
++ (id)unarchivedArrayOfObjectsOfClass:(Class)arg1 fromData:(id)arg2 error:(id *)arg3;
 + (id)unarchivedObjectOfClass:(Class)arg1 fromData:(id)arg2 error:(id *)arg3;
 + (void)initialize;
 - (unsigned int)systemVersion;
@@ -58,13 +62,15 @@
 @property long long decodingFailurePolicy;
 - (void)__setError:(id)arg1;
 - (id)error;
+- (_Bool)_strictSecureDecodingEnabled;
 - (void)_enableStrictSecureDecodingMode;
 @property _Bool requiresSecureCoding;
 - (id)allowedClasses;
+- (id)decodeDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 forKey:(id)arg3;
+- (id)decodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;
 - (id)decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
 - (id)decodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)decodeObjectForKey:(id)arg1;
-- (_Bool)_validatePropertyListClass:(Class)arg1 forKey:(id)arg2;
 - (_Bool)_validateAllowedClassesContainsClass:(Class)arg1 forKey:(id)arg2;
 - (_Bool)containsValueForKey:(id)arg1;
 - (void)_replaceObject:(id)arg1 withObject:(id)arg2;

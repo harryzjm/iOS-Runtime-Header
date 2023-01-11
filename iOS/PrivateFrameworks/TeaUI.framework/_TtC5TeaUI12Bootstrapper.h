@@ -15,11 +15,13 @@
     MISSING_TYPE *onboardingViewDismissalAnimator;
     MISSING_TYPE *deferredPromise;
     MISSING_TYPE *deferringGroup;
+    MISSING_TYPE *shouldCollapseSidebar;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)afterBootstrapOnQueue:(id)arg1 runBootstrapCallbackBlock:(CDUnknownBlockType)arg2;
+- (void)startBootstrappingWithWindow:(id)arg1 shouldOnboard:(_Bool)arg2 shouldCollapseSidebar:(_Bool)arg3;
 - (void)startBootstrappingWithWindow:(id)arg1 shouldOnboard:(_Bool)arg2;
 
 @end

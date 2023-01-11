@@ -10,6 +10,7 @@
 #import <UIKitCore/_UIExclusiveTouchGestureRecognizerDelegate-Protocol.h>
 
 @class BKSTouchStream, FBSDisplayIdentity, NSMutableSet, NSSet, NSString, UIGestureRecognizer, _UISystemGestureWindow;
+@protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
 @interface __UISystemGestureManager : NSObject <UIGestureRecognizerDelegate, _UIExclusiveTouchGestureRecognizerDelegate>
@@ -20,25 +21,29 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_externalEdgeSwipeGestures;
     NSMutableSet *_internalGestures;
     NSMutableSet *_externalGestures;
+    id <BSInvalidatable> _stateCaptureToken;
     _Bool _achievedMaximumMovement;
     _Bool _didSeeExclusiveTouchBegan;
     _Bool _didProcessPendingSwipeBegan;
     UIGestureRecognizer *_exclusiveTouchGesture;
     UIGestureRecognizer *_pendingSwipeGesture;
     UIGestureRecognizer *_catchEdgeSwipeFailureGesture;
+    UIGestureRecognizer *_directTouchGesture;
     BKSTouchStream *_touchStream;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) BKSTouchStream *touchStream; // @synthesize touchStream=_touchStream;
 @property(nonatomic) _Bool didProcessPendingSwipeBegan; // @synthesize didProcessPendingSwipeBegan=_didProcessPendingSwipeBegan;
 @property(nonatomic) _Bool didSeeExclusiveTouchBegan; // @synthesize didSeeExclusiveTouchBegan=_didSeeExclusiveTouchBegan;
 @property(nonatomic) _Bool achievedMaximumMovement; // @synthesize achievedMaximumMovement=_achievedMaximumMovement;
+@property(retain, nonatomic) UIGestureRecognizer *directTouchGesture; // @synthesize directTouchGesture=_directTouchGesture;
 @property(retain, nonatomic) UIGestureRecognizer *catchEdgeSwipeFailureGesture; // @synthesize catchEdgeSwipeFailureGesture=_catchEdgeSwipeFailureGesture;
 @property(retain, nonatomic) UIGestureRecognizer *pendingSwipeGesture; // @synthesize pendingSwipeGesture=_pendingSwipeGesture;
 @property(retain, nonatomic) UIGestureRecognizer *exclusiveTouchGesture; // @synthesize exclusiveTouchGesture=_exclusiveTouchGesture;
-- (void).cxx_destruct;
 - (void)_handleTooMuchMovementWithLastTouchTimestamp:(double)arg1;
 - (void)_externalGestureRecognizerChanged:(id)arg1;
+- (void)_directTouchDown:(id)arg1;
 - (void)_catchSwipeFailureGestureChanged:(id)arg1;
 - (void)_pendingSwipeGestureChanged:(id)arg1;
 - (void)_pendingSwipeGestureDidTerminate:(id)arg1;

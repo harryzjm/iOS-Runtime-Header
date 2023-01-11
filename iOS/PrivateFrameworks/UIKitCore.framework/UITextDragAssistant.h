@@ -66,10 +66,10 @@ __attribute__((visibility("hidden")))
     UIDropInteraction *_dropInteraction;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
 @property(readonly, nonatomic) __weak UIDragInteraction *dragInteraction; // @synthesize dragInteraction=_dragInteraction;
 @property(readonly, nonatomic) __weak UIView<UITextDragSupporting><UITextDropSupporting> *view; // @synthesize view=_view;
-- (void).cxx_destruct;
 - (id)_shrinkingPreview:(id)arg1 toPosition:(id)arg2;
 - (id)_previewForTopmostItem:(id)arg1;
 - (id)_previewForIrrelevantItemFromPreview:(id)arg1;
@@ -127,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (_Bool)_dragInteraction:(id)arg1 competingGestureRecognizerShouldDelayLift:(id)arg2;
+- (_Bool)_dragInteraction:(id)arg1 shouldDelayCompetingGestureRecognizer:(id)arg2;
 - (_Bool)dragInteraction:(id)arg1 prefersFullSizePreviewsForSession:(id)arg2;
 - (void)_liftOrDrag:(long long)arg1 didEndWithOperation:(unsigned long long)arg2;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;

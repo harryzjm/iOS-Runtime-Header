@@ -16,6 +16,7 @@
 - (void)requestImagesForLeaderboardSetsWithHandler:(void (^)(NSError *))arg1;
 - (void)requestDashboardLogoImageWithHandler:(void (^)(NSError *))arg1;
 - (void)dashboardDidChangeToLeaderboardIdentifier:(NSString *)arg1;
+- (void)dashboardDidChangeToLeaderboardPlayerScope:(long long)arg1;
 - (void)dashboardDidChangeToLeaderboardTimeScope:(long long)arg1;
 - (void)dashboardDidChangeToViewState:(long long)arg1;
 - (void)quitTurnBasedMatch:(GKTurnBasedMatch *)arg1;

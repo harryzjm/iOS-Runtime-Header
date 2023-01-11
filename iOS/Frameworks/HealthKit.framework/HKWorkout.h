@@ -39,12 +39,13 @@
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 duration:(double)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 metadata:(id)arg7;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 workoutEvents:(id)arg4 totalEnergyBurned:(id)arg5 totalDistance:(id)arg6 metadata:(id)arg7;
 + (id)workoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic, getter=_isWatchWorkout, setter=_setIsWatchWorkout:) _Bool isWatchWorkout; // @synthesize isWatchWorkout=_isWatchWorkout;
 @property(retain, nonatomic, getter=_goal, setter=_setGoal:) HKQuantity *goal; // @synthesize goal=_goal;
 @property(nonatomic, getter=_goalType, setter=_setGoalType:) unsigned long long goalType; // @synthesize goalType=_goalType;
 @property(readonly) HKQuantity *totalFlightsClimbed; // @synthesize totalFlightsClimbed=_totalFlightsClimbed;
-- (void).cxx_destruct;
 - (void)_enumerateActiveTimePeriods:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic, getter=_activityMoveMode) long long activityMoveMode;
 - (double)_goalInCanonicalUnit;
 - (double)_totalFlightsClimbedInCanonicalUnit;
 - (double)_totalSwimmingStrokeCountInCanonicalUnit;
@@ -67,8 +68,8 @@
 @property(readonly) unsigned long long workoutActivityType;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_validateWorkoutEvents:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWorkoutEvents:(id)arg1 withConfiguration:(struct HKObjectValidationConfiguration)arg2;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)description;
 - (id)_deepCopy;
 - (void)_enumerateTimePeriodsWithBlock:(CDUnknownBlockType)arg1;

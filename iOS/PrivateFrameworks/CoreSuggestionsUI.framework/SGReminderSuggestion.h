@@ -13,15 +13,6 @@
 }
 
 + (id)remindersImage;
-@property(readonly, nonatomic) long long locationProximity;
-@property(readonly, nonatomic) _Bool wantsExtendedDetailOnlyView;
-@property(readonly, nonatomic) NSAttributedString *title;
-@property(readonly, nonatomic) NSUserActivity *userActivity;
-@property(readonly, nonatomic) NSURL *url;
-@property(readonly, nonatomic) NSString *locationString;
-@property(readonly, nonatomic) NSAttributedString *notes;
-@property(readonly, nonatomic) NSDateComponents *dueDateComponents;
-@property(readonly, nonatomic) CLLocation *location;
 - (void)reminderCreationViewController:(id)arg1 didCreateReminder:(_Bool)arg2 error:(id)arg3;
 - (id)suggestionCategoryImage;
 - (id)suggestionImage;
@@ -31,9 +22,18 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSDateComponents *dueDateComponents; // @dynamic dueDateComponents;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) CLLocation *location; // @dynamic location;
+@property(readonly, nonatomic) long long locationProximity;
+@property(readonly, nonatomic) NSString *locationString; // @dynamic locationString;
+@property(readonly, nonatomic) NSAttributedString *notes; // @dynamic notes;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSAttributedString *title; // @dynamic title;
 @property(readonly, nonatomic) _Bool titleIsGeneratedSuggestion;
+@property(readonly, nonatomic) NSURL *url; // @dynamic url;
+@property(readonly, nonatomic) NSUserActivity *userActivity; // @dynamic userActivity;
+@property(readonly, nonatomic) _Bool wantsExtendedDetailOnlyView;
 
 @end
 

@@ -14,6 +14,7 @@
 @interface AVTAttributeValueView : UIView <AVTSectionItemTransitionModel, AVTDiscardableContent>
 {
     _Bool _showPlaceholder;
+    _Bool _selected;
     CDUnknownBlockType discardableContentHandler;
     UIImage *_image;
     CALayer *_imageLayer;
@@ -21,14 +22,18 @@
     NSUUID *_displaySessionUUID;
     CAShapeLayer *_clippingLayer;
     CAShapeLayer *_selectionLayer;
+    UIView *_contentView;
     CALayer *_transitionImageLayer;
     UILabel *_titleLabel;
     struct CGSize _imageSizeRatio;
 }
 
 + (struct CGRect)imageViewRectForBounds:(struct CGRect)arg1 imageSizeRatio:(struct CGSize)arg2 scale:(double)arg3;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) CALayer *transitionImageLayer; // @synthesize transitionImageLayer=_transitionImageLayer;
+@property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) CAShapeLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
 @property(retain, nonatomic) CAShapeLayer *clippingLayer; // @synthesize clippingLayer=_clippingLayer;
 @property(retain, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
@@ -37,7 +42,6 @@
 @property(nonatomic) struct CGSize imageSizeRatio; // @synthesize imageSizeRatio=_imageSizeRatio;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) CDUnknownBlockType discardableContentHandler; // @synthesize discardableContentHandler;
-- (void).cxx_destruct;
 - (void)discardContent;
 - (void)cleanupAfterTransition;
 - (id)toLayer;
@@ -58,7 +62,7 @@
 - (void)relayoutSublayers;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateSelectionLayer;
+- (void)updateSelectionAndMaskLayer;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

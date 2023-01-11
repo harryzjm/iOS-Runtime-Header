@@ -14,9 +14,5 @@
     unsigned long long _schedulingPolicy;
 }
 
-@property(readonly, nonatomic) unsigned long long schedulingPolicy; // @synthesize schedulingPolicy=_schedulingPolicy;
-@property(readonly, nonatomic) BSTransaction *parentTransaction; // @synthesize parentTransaction=_parentTransaction;
-- (id)initWithParentTransaction:(id)arg1 schedulingPolicy:(unsigned long long)arg2;
-
 @end
 

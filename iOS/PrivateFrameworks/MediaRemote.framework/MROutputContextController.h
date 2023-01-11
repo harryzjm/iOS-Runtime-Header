@@ -21,17 +21,9 @@
 }
 
 + (id)sharedOutputContextController;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int localVolumeControlCapabilities; // @synthesize localVolumeControlCapabilities=_localVolumeControlCapabilities;
 @property(nonatomic) float localVolume; // @synthesize localVolume=_localVolume;
-- (void).cxx_destruct;
-- (void)_registerNotifications;
-- (void)_inititalizeVolume;
-- (id)_onSerialQueue_localOutputDevice;
-- (_Bool)_onSerialQueue_isLocalOutputDevice:(id)arg1;
-- (void)_onSerialQueue_reevaluateMasterVolumeControlCapabilities;
-- (unsigned int)_onSerialQueue_calculateMasterVolumeCapabilities;
-- (void)_onSerialQueue_reevaluateMasterVolume;
-- (float)_onSerialQueue_calculateMasterVolume;
 - (void)_handleOutputDeviceRemovedNotification:(id)arg1;
 - (void)_handleOutputDeviceAddedNotification:(id)arg1;
 - (void)_handleOutputDeviceVolumeControlCapabilitiesDidChangeNotification:(id)arg1;
@@ -48,7 +40,6 @@
 - (float)volume;
 - (id)description;
 - (void)dealloc;
-- (id)initWithOutputContext:(id)arg1;
 
 @end
 

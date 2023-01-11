@@ -6,7 +6,6 @@
 
 #import <VideosUI/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentRefreshEvent <NSCopying>
 {
 }

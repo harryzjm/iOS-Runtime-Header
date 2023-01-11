@@ -14,8 +14,6 @@
 {
 }
 
-- (void)configureImportHeaderSubtitleLabel:(id)arg1;
-- (void)configureImportHeaderTitleLabel:(id)arg1;
 - (id)searchDimmedAttributes;
 - (id)searchItalicTitleAttributes;
 - (id)searchDefaultAttributes;
@@ -147,6 +145,7 @@
 @property(readonly, nonatomic) UIColor *playheadBackgroundColor;
 @property(readonly, nonatomic) UIColor *playheadOutlineColor;
 @property(readonly, nonatomic) UIColor *playheadColor;
+- (void)configureCompactProgressIndicatorMessageLabel:(id)arg1;
 - (void)configureProgressIndicatorMessageLabel:(id)arg1;
 @property(readonly, nonatomic) UIFont *photoBrowserTimeTitleFont;
 @property(readonly, nonatomic) UIFont *photoBrowserPhotoSubtitleFont;
@@ -172,11 +171,6 @@
 @property(readonly, nonatomic) UIColor *photoBrowserTitleViewTextColor;
 @property(readonly, nonatomic) long long photoBrowserBarStyle;
 @property(readonly, nonatomic) long long photoBrowserStatusBarStyle;
-@property(readonly, nonatomic) UIFont *gridViewCellBannerTextFont;
-@property(readonly, nonatomic) UIColor *gridViewCellBannerDestructiveTextColor;
-@property(readonly, nonatomic) UIColor *gridViewCellBannerTextColor;
-@property(readonly, nonatomic) UIColor *gridViewCellBannerBackgroundColor;
-@property(readonly, nonatomic) UIImage *gridViewCellBannerBackgroundImage;
 - (void)configureMapViewAnnotationCountLabel:(id)arg1;
 - (void)configureBannerLabel:(id)arg1;
 - (void)configureBannerStackView:(id)arg1;
@@ -191,7 +185,6 @@
 @property(readonly, nonatomic) UIColor *folderCellBackgroundColor;
 @property(readonly, nonatomic) double albumListDisabledAlbumTitleAlpha;
 @property(readonly, nonatomic) double albumListDisabledAlbumStackViewAlpha;
-- (void)configureAlbumListDeleteButton:(id)arg1;
 - (void)configureAlbumListStackViewPhonePhotoDecoration:(id)arg1;
 - (void)configureAlbumListSectionTitleLabel:(id)arg1;
 @property(readonly, nonatomic) UIFont *albumListSectionTitleLabelFont;
@@ -210,24 +203,6 @@
 - (long long)photoCollectionCloudQuotaBannerTextAlignment;
 - (id)photoCollectionCloudQuotaBannerBackgroundColorHighlighted:(_Bool)arg1;
 - (id)photoCollectionCloudQuotaBannerFont;
-- (void)configurePhotoCollectionGlobalFooterProgressView:(id)arg1 paused:(_Bool)arg2;
-- (void)configurePhotoCollectionGlobalFooterSubtitleTextView:(id)arg1;
-- (id)photoCollectionGlobalFooterSubtitleTextViewLinkTextAttributes;
-- (id)photoCollectionGlobalFooterSubtitleTextViewAttributesDisabled:(_Bool)arg1;
-- (void)configurePhotoCollectionGlobalFooterSubtitleLabel:(id)arg1;
-- (void)configurePhotoCollectionGlobalFooterTitleLabel:(id)arg1;
-- (void)_configurePhotoCollectionGlobalFooterLabel:(id)arg1 withFontDescriptor:(id)arg2 textColor:(id)arg3;
-- (id)photoCollectionHeaderActionButtonAttributesForStyle:(long long)arg1;
-- (void)configurePhotoCollectionHeaderDateLabel:(id)arg1 forStyle:(long long)arg2;
-- (void)configurePhotoCollectionHeaderLocationsLabel:(id)arg1 forStyle:(long long)arg2;
-- (void)configurePhotoCollectionHeaderTitleLabel:(id)arg1 forStyle:(long long)arg2;
-- (id)photoCollectionHeaderSubtitleTextColorForStyle:(long long)arg1;
-- (id)photoCollectionHeaderSubtitleFontDescriptorForStyle:(long long)arg1;
-- (id)photoCollectionHeaderTitleLabelFontDescriptorForStyle:(long long)arg1;
-- (id)photoCollectionHeaderActionButtonFontDescriptorForStyle:(long long)arg1;
-- (struct UIOffset)photoCollectionHeaderLocationIconOffsetForStyle:(long long)arg1;
-- (id)photoCollectionHeaderDisclosureIconForStyle:(long long)arg1;
-- (id)photoCollectionHeaderBackgroundColorForBackgroundStyle:(unsigned long long)arg1;
 @property(readonly, nonatomic) int photoCollectionViewBackgroundColorValue;
 @property(readonly, nonatomic) UIColor *photoCollectionViewBackgroundColor;
 - (id)topLevelNavigationBarDoneButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;

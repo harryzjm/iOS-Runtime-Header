@@ -14,18 +14,18 @@ __attribute__((visibility("hidden")))
     NSString *_bundleID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
 @property(retain, nonatomic) NSData *apsToken; // @synthesize apsToken=_apsToken;
-- (void).cxx_destruct;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)sourceApplicationSecondaryIdentifier;
-- (id)sourceApplicationBundleIdentifier;
+- (id)applicationBundleIdentifierForNetworkAttribution;
+- (id)applicationBundleIdentifierForContainerAccess;
 - (id)generateRequestOperations;
 - (_Bool)requiresTokenRegistration;
 - (id)requestOperationClasses;
-- (int)operationType;
-- (id)initWithApsToken:(id)arg1 apsEnvironmentString:(id)arg2 bundleID:(id)arg3;
+- (id)initWithOperation:(id)arg1 apsToken:(id)arg2 apsEnvironmentString:(id)arg3 bundleID:(id)arg4;
 
 @end
 

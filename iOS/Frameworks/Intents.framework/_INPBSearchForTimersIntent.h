@@ -19,7 +19,6 @@
         unsigned int state:1;
         unsigned int type:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _state;
     int _type;
     double _duration;
@@ -28,13 +27,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(nonatomic) int state; // @synthesize state=_state;
 @property(retain, nonatomic) _INPBDataString *label; // @synthesize label=_label;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

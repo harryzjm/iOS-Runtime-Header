@@ -17,15 +17,14 @@
     double _dimension;
     long long _formatMode;
     long long _version;
-    const CDStruct_e5ce1f5a *_bakedFormatInfo;
     long long _thumbnailKind;
     struct CGSize _size;
 }
 
 + (id)formatWithID:(unsigned short)arg1;
 + (id)_syncFormats;
+- (void).cxx_destruct;
 @property(nonatomic) long long thumbnailKind; // @synthesize thumbnailKind=_thumbnailKind;
-@property(readonly, nonatomic) const CDStruct_e5ce1f5a *bakedFormatInfo; // @synthesize bakedFormatInfo=_bakedFormatInfo;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
 @property(readonly, nonatomic) _Bool isAlwaysFullScreen; // @synthesize isAlwaysFullScreen=_isAlwaysFullScreen;
 @property(readonly, nonatomic) long long formatMode; // @synthesize formatMode=_formatMode;
@@ -34,7 +33,6 @@
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) unsigned short formatID; // @synthesize formatID=_formatID;
-- (void).cxx_destruct;
 - (id)thumbnailSpecification;
 - (struct CGSize)scaledSizeForSourceSize:(struct CGSize)arg1 capLength:(_Bool)arg2;
 - (struct CGSize)scaledSizeForSourceSize:(struct CGSize)arg1;
@@ -42,8 +40,6 @@
 - (unsigned long long)fullSizeMaxLongSide;
 - (unsigned long long)fullSizeMinShortSide;
 - (unsigned long long)fullSizeDesiredLongSide;
-- (struct CGSize)sizeOfThumbnailWithAspectRatio:(double)arg1;
-@property(readonly, nonatomic) _Bool bakedFormatIsDynamicallySized;
 @property(readonly, nonatomic) _Bool dimensionsReferToShortSide;
 @property(readonly, nonatomic) _Bool isThumbnail; // @dynamic isThumbnail;
 @property(readonly, nonatomic) _Bool isTable; // @dynamic isTable;

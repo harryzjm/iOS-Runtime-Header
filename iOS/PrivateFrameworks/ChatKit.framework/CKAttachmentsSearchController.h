@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ChatKit/QLPreviewControllerConformingDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
 @class NSString;
 
-@interface CKAttachmentsSearchController <QLPreviewControllerDelegate>
+@interface CKAttachmentsSearchController <QLPreviewControllerDelegate, QLPreviewControllerConformingDelegate>
 {
 }
 
 + (Class)cellClass;
++ (id)indexingString;
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
-+ (_Bool)supportsQuicklook;
++ (_Bool)supportsQuicklookForResult:(id)arg1;
+- (_Bool)handleSelectionForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;

@@ -13,7 +13,6 @@
 @interface GEOETAResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
@@ -27,6 +26,9 @@
     NSMutableArray *_etaResults;
     GEOETAServiceResponseSummary *_etaServiceSummary;
     GEOPlaceSearchResponse *_originPlaceSearchResponse;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_debugServerLatencyMs:1;
@@ -41,18 +43,7 @@
         unsigned int read_etaResults:1;
         unsigned int read_etaServiceSummary:1;
         unsigned int read_originPlaceSearchResponse:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_problemDetails:1;
-        unsigned int wrote_clientMetrics:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_debugData:1;
-        unsigned int wrote_debugServerLatencyMs:1;
-        unsigned int wrote_etaResultReferencePointDestinations:1;
-        unsigned int wrote_etaResultReferencePointOrigin:1;
-        unsigned int wrote_etaResults:1;
-        unsigned int wrote_etaServiceSummary:1;
-        unsigned int wrote_originPlaceSearchResponse:1;
-        unsigned int wrote_status:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -62,12 +53,10 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) GEOClientMetrics *clientMetrics;
 @property(readonly, nonatomic) _Bool hasClientMetrics;
-- (void)_readClientMetrics;
 @property(nonatomic) _Bool hasDebugServerLatencyMs;
 @property(nonatomic) unsigned long long debugServerLatencyMs;
 @property(retain, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
 @property(readonly, nonatomic) _Bool hasEtaServiceSummary;
-- (void)_readEtaServiceSummary;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
@@ -79,47 +68,42 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *debugData;
 @property(readonly, nonatomic) _Bool hasDebugData;
-- (void)_readDebugData;
 @property(retain, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
 @property(readonly, nonatomic) _Bool hasDatasetAbStatus;
-- (void)_readDatasetAbStatus;
 - (id)etaResultReferencePointDestinationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)etaResultReferencePointDestinationsCount;
-- (void)_addNoFlagsEtaResultReferencePointDestination:(id)arg1;
 - (void)addEtaResultReferencePointDestination:(id)arg1;
 - (void)clearEtaResultReferencePointDestinations;
 @property(retain, nonatomic) NSMutableArray *etaResultReferencePointDestinations;
-- (void)_readEtaResultReferencePointDestinations;
 @property(retain, nonatomic) GEOETAResult *etaResultReferencePointOrigin;
 @property(readonly, nonatomic) _Bool hasEtaResultReferencePointOrigin;
-- (void)_readEtaResultReferencePointOrigin;
 - (void)setProblemDetails:(struct GEOProblemDetail *)arg1 count:(unsigned long long)arg2;
 - (struct GEOProblemDetail)problemDetailAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsProblemDetail:(struct GEOProblemDetail)arg1;
 - (void)addProblemDetail:(struct GEOProblemDetail)arg1;
 - (void)clearProblemDetails;
 @property(readonly, nonatomic) struct GEOProblemDetail *problemDetails;
 @property(readonly, nonatomic) unsigned long long problemDetailsCount;
-- (void)_readProblemDetails;
 @property(retain, nonatomic) GEOPlaceSearchResponse *originPlaceSearchResponse;
 @property(readonly, nonatomic) _Bool hasOriginPlaceSearchResponse;
-- (void)_readOriginPlaceSearchResponse;
 - (id)etaResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)etaResultsCount;
-- (void)_addNoFlagsEtaResult:(id)arg1;
 - (void)addEtaResult:(id)arg1;
 - (void)clearEtaResults;
 @property(retain, nonatomic) NSMutableArray *etaResults;
-- (void)_readEtaResults;
 - (int)StringAsStatus:(id)arg1;
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;
 @property(nonatomic) int status;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

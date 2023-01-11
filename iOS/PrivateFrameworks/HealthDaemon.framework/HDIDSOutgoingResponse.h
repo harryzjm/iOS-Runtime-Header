@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDDaemonTransaction, HDIDSMessageCenter, IDSDevice, NSData, NSDictionary, NSString;
+@class HDDaemonTransaction, HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString;
 
 @interface HDIDSOutgoingResponse : NSObject <HDNanoSyncDescription>
 {
@@ -20,7 +20,7 @@
     unsigned short _messageID;
     NSString *_requestIdsIdentifier;
     HDIDSMessageCenter *_messageCenter;
-    IDSDevice *_toDevice;
+    HDIDSParticipant *_toParticipant;
     NSString *_idsIdentifier;
     NSData *_data;
     unsigned long long _priority;
@@ -29,6 +29,7 @@
     id _pbResponse;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id pbResponse; // @synthesize pbResponse=_pbResponse;
 @property(getter=isSent) _Bool sent; // @synthesize sent=_sent;
 @property(nonatomic) _Bool forceLocalDelivery; // @synthesize forceLocalDelivery=_forceLocalDelivery;
@@ -38,12 +39,11 @@
 @property(nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
-@property(retain, nonatomic) IDSDevice *toDevice; // @synthesize toDevice=_toDevice;
+@property(retain, nonatomic) HDIDSParticipant *toParticipant; // @synthesize toParticipant=_toParticipant;
 @property(nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
 @property(nonatomic) unsigned short requestMessageID; // @synthesize requestMessageID=_requestMessageID;
 @property(retain, nonatomic) HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
 @property(copy, nonatomic) NSString *requestIdsIdentifier; // @synthesize requestIdsIdentifier=_requestIdsIdentifier;
-- (void).cxx_destruct;
 - (void)send;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;

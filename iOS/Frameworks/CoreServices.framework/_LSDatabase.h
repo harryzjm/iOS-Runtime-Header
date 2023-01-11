@@ -6,33 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class FSNode, NSDate, NSMutableSet, NSString, NSUUID;
+@class FSNode, NSDate, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _LSDatabase : NSObject
 {
+    struct __CSStore *store;
+    struct LSSchema schema;
     FSNode *node;
     unsigned int uid;
     NSObject<OS_dispatch_queue> *accessQueue;
-    _Bool needsUpdate;
-    _Bool isForcedForXCTesting;
-    NSMutableSet *changedBundleIDs;
-    NSMutableSet *changedTypeIDs;
-    struct __CSStore *store;
-    struct LSSchema schema;
+    unsigned int needsUpdate:1;
+    unsigned int isForcedForXCTesting:1;
+    unsigned int isForcedForRemoteUpdates:1;
 }
 
 + (void)setSeedingInProgress:(_Bool)arg1;
 + (unsigned int)sessionStatus;
 + (id)headerTableName;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue;
 @property(readonly, nonatomic) struct __CSStore *store; // @synthesize store;
 @property(readonly, nonatomic) unsigned int userID; // @synthesize userID=uid;
 @property(readonly, nonatomic) FSNode *node; // @synthesize node;
-- (void).cxx_destruct;
 - (void)claimDidChange:(unsigned int)arg1;
-- (void)applicationDidChange:(unsigned int)arg1;
+- (void)applicationWillBeUninstalled:(unsigned int)arg1;
+- (void)applicationWasInstalled:(unsigned int)arg1;
 @property(nonatomic) _Bool typeDeclarationsChanged;
 @property(nonatomic) _Bool URLTypesChanged;
 @property(nonatomic) _Bool documentTypesChanged;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *seededSystemVersion;
 @property(nonatomic, getter=isSeedingComplete) _Bool seedingComplete;
 @property(nonatomic, getter=isSeeded) _Bool seeded;
-@property(nonatomic) unsigned long long sequenceNumber;
+- (void)getCacheGUIDBytes:(unsigned char [16])arg1;
 @property(readonly, nonatomic) NSUUID *cacheGUID;
 @property(readonly, nonatomic) struct LSSchema *schema;
 @property(readonly, nonatomic) NSDate *dateInitialized;

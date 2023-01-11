@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     struct CGSize _sizeInPixels;
 }
 
-+ (_Bool)content:(id)arg1 isEqualToContent:(id)arg2;
 + (id)empty;
 @property(nonatomic) _Bool isDecompressing; // @synthesize isDecompressing=_isDecompressing;
 @property(readonly, nonatomic) struct CGSize sizeInPixels; // @synthesize sizeInPixels=_sizeInPixels;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (_Bool)_drawInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 effect:(id)arg3;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
-- (struct CGAffineTransform)_transformForCGContextWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)renditionWithSize:(struct CGSize)arg1 scale:(double)arg2 applyingEffect:(id)arg3;
 - (id)renditionApplyingEffect:(id)arg1;
 - (id)contentWithCGImage:(struct CGImage *)arg1;

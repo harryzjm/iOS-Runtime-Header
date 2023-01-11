@@ -8,33 +8,37 @@
 
 @class MPModelForYouRecommendationMusicKitGroupBuilder, MPModelStoreBrowseContentItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface MPModelForYouRecommendationMusicKitItemBuilder : NSObject
 {
     struct {
         _Bool isInitialized;
         _Bool itemType;
+        _Bool url;
         _Bool backedByStoreItemMetadata;
         _Bool album;
         _Bool playlist;
+        _Bool radioStation;
         _Bool subgroup;
     } _requestedItemProperties;
     MPModelStoreBrowseContentItemBuilder *_contentItemBuilder;
     MPModelForYouRecommendationMusicKitGroupBuilder *_subgroupBuilder;
     NSDictionary *_storeBagDictionary;
+    _Bool _isListenNow;
     MPPropertySet *_requestedPropertySet;
     NSDictionary *_storeItemMetadataResults;
     MPMutableSectionedCollection *_flatSectionedItems;
 }
 
 + (id)allSupportedProperties;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MPMutableSectionedCollection *flatSectionedItems; // @synthesize flatSectionedItems=_flatSectionedItems;
 @property(readonly, nonatomic) NSDictionary *storeItemMetadataResults; // @synthesize storeItemMetadataResults=_storeItemMetadataResults;
 @property(readonly, nonatomic) MPPropertySet *requestedPropertySet; // @synthesize requestedPropertySet=_requestedPropertySet;
-- (void).cxx_destruct;
 - (id)convertToStoreItemMetadataDictionary:(id)arg1;
 - (id)storeItemMetadataWithMusicAPIMetadataDictionary:(id)arg1;
-- (id)modelObjectForRecommendationChildDictionary:(id)arg1 parentGroup:(id)arg2 subgroupsAccumulator:(id)arg3;
-- (id)initWithRequestedPropertySet:(id)arg1 storeItemMetadataResults:(id)arg2 flatSectionedItems:(id)arg3 storeBagDictionary:(id)arg4;
+- (id)modelObjectForRecommendationChildDictionary:(id)arg1 parentGroup:(id)arg2 subgroupsAccumulator:(id)arg3 userIdentity:(id)arg4;
+- (id)initWithRequestedPropertySet:(id)arg1 storeItemMetadataResults:(id)arg2 flatSectionedItems:(id)arg3 storeBagDictionary:(id)arg4 isListenNow:(_Bool)arg5;
 
 @end
 

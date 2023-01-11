@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface WFGetHomeAccessoryStateAction
+#import <WorkflowKit/WFHomeManagerEventObserver-Protocol.h>
+
+@class NSString;
+
+@interface WFGetHomeAccessoryStateAction <WFHomeManagerEventObserver>
 {
 }
 
@@ -13,15 +17,23 @@
 - (id)characteristic;
 - (id)homeName;
 - (id)home;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)localizedDefaultOutputName;
-- (id)outputMeasurementUnit;
+- (id)outputMeasurementUnitType;
 - (id)outputContentClasses;
 - (_Bool)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)localizedAttribution;
 - (id)localizedDescriptionSummary;
 - (id)localizedName;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)dealloc;
 - (void)initializeParameters;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

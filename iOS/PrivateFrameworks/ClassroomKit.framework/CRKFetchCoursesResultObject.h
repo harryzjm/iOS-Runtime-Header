@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskResultObject.h"
+#import <DeviceManagement/CATTaskResultObject.h>
 
 @class NSArray;
 
@@ -14,8 +14,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSArray *courses; // @synthesize courses=_courses;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *courses; // @synthesize courses=_courses;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

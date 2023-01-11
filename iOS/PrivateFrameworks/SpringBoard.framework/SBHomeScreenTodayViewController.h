@@ -7,15 +7,16 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoard/SBHLegibility-Protocol.h>
+#import <SpringBoard/SBHOccludable-Protocol.h>
 #import <SpringBoard/SBUICoronaAnimationControllerParticipant-Protocol.h>
 #import <SpringBoard/SBUISpotlightInitiating-Protocol.h>
 #import <SpringBoard/SPUISearchBarDelegate-Protocol.h>
 #import <SpringBoard/WGWidgetGroupViewControllerDelegate-Protocol.h>
 
-@class FBDisplayLayoutElement, NSString, SBMainStatusBarContentAssertion, SBUISpotlightBarNavigationController, SBViewControllerTransitionContext, SPUISearchBarController, WGWidgetGroupViewController, _UILegibilitySettings;
+@class FBDisplayLayoutElement, NSString, SBUISpotlightBarNavigationController, SBViewControllerTransitionContext, SPUISearchBarController, WGWidgetGroupViewController, _UILegibilitySettings;
 @protocol SBHomeScreenTodayViewControllerDelegate;
 
-@interface SBHomeScreenTodayViewController : UIViewController <WGWidgetGroupViewControllerDelegate, SPUISearchBarDelegate, SBUICoronaAnimationControllerParticipant, SBUISpotlightInitiating, SBHLegibility>
+@interface SBHomeScreenTodayViewController : UIViewController <WGWidgetGroupViewControllerDelegate, SPUISearchBarDelegate, SBUICoronaAnimationControllerParticipant, SBUISpotlightInitiating, SBHLegibility, SBHOccludable>
 {
     WGWidgetGroupViewController *_widgetViewController;
     SBUISpotlightBarNavigationController *_spotlightNavController;
@@ -23,6 +24,7 @@
     SPUISearchBarController *_searchBarViewController;
     _Bool _scrollViewContentOffsetDirty;
     struct CGPoint _scrollViewLastContentOffset;
+    _Bool _occluded;
     _Bool _showsSearchBar;
     _Bool _ignoresScrolling;
     SBViewControllerTransitionContext *_transitionContext;
@@ -30,11 +32,10 @@
     UIViewController *_spotlightViewController;
     id <SBHomeScreenTodayViewControllerDelegate> _delegate;
     long long _pullToSearchState;
-    SBMainStatusBarContentAssertion *_statusBarContentAssertion;
 }
 
 + (double)_verticalSpacingBetweenWidgets;
-@property(retain, nonatomic) SBMainStatusBarContentAssertion *statusBarContentAssertion; // @synthesize statusBarContentAssertion=_statusBarContentAssertion;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool ignoresScrolling; // @synthesize ignoresScrolling=_ignoresScrolling;
 @property(nonatomic) long long pullToSearchState; // @synthesize pullToSearchState=_pullToSearchState;
 @property(nonatomic) __weak id <SBHomeScreenTodayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -42,12 +43,11 @@
 @property(readonly, nonatomic) UIViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(retain, nonatomic) SBViewControllerTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
-- (void).cxx_destruct;
+@property(nonatomic, getter=isOccluded) _Bool occluded; // @synthesize occluded=_occluded;
 - (void)_updateScrollViewContentInsetAndOffsetIfNecessary;
 - (void)_statusBarHeightDidChange:(id)arg1;
 - (void)_updateLegibilitySettings;
-- (void)_relinquishStatusBarContentAssertion;
-- (void)_takeStatusBarContentAssertion;
+- (void)_resetScrollViewInsets;
 - (id)_majorScrollView;
 - (id)_widgetGroupViewController;
 - (double)_maxClippingOffset;
@@ -83,7 +83,6 @@
 - (double)pullDownSearchGesturePercentComplete;
 - (double)pullDownSearchGestureYOffset;
 - (struct UIEdgeInsets)defaultTodayViewContentInsets;
-- (void)widgetGroupViewControllerDidChangeHeaderVisibility:(id)arg1;
 - (void)_coverSheetDidPresent:(id)arg1;
 - (void)_setRequestDisableRootFolderParallax:(_Bool)arg1 reason:(id)arg2;
 - (void)_setRequestDisableRootFolderScrolling:(_Bool)arg1 reason:(id)arg2;

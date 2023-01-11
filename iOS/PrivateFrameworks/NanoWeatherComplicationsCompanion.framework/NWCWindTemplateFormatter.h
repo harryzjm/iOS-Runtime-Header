@@ -15,24 +15,25 @@
 }
 
 + (id)sharedFormatter;
-- (id)_graphicRectangularTemplateWithTextProvider:(id)arg1 hourlyForecastedConditions:(id)arg2 timeZone:(id)arg3;
+- (id)_graphicRectangularTemplateWithTextProvider:(id)arg1 hourlyForecastEntryModels:(id)arg2 timeZone:(id)arg3;
 - (id)_windUnit;
-- (id)_windSpeedWithUnitFromConditions:(id)arg1;
 - (id)_windSpeedFromConditions:(id)arg1;
 - (id)_windDirectionAbbreviationFromConditions:(id)arg1;
 - (id)switcherTemplateWithFamily:(long long)arg1;
 - (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
-- (id)utilitarianSmallTemplateForConditions:(id)arg1;
-- (id)utilitarianLargeTemplateForConditions:(id)arg1;
-- (id)modularSmallTemplateForConditions:(id)arg1;
-- (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(_Bool)arg2 conditions:(id)arg3;
-- (id)graphicRectangularTemplateForLocalLocation:(_Bool)arg1 timeZone:(id)arg2 conditions:(id)arg3 hourlyForecastedConditions:(id)arg4;
-- (id)graphicCornerTemplateForConditions:(id)arg1;
-- (id)graphicCircularTemplateForConditions:(id)arg1;
-- (id)graphicBezelTemplateForConditions:(id)arg1;
-- (id)extraLargeTemplateForConditions:(id)arg1;
-- (id)circularSmallTemplateForConditions:(id)arg1;
-- (id)circularMediumTemplateForConditions:(id)arg1;
+- (id)utilitarianSmallTemplateForEntryModel:(id)arg1;
+- (id)utilitarianLargeTemplateForEntryModel:(id)arg1;
+- (id)modularSmallTemplateForEntryModel:(id)arg1;
+- (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(_Bool)arg2 entryModel:(id)arg3;
+- (id)graphicRectangularTemplateForLocalLocation:(_Bool)arg1 timeZone:(id)arg2 entryModel:(id)arg3;
+- (id)graphicCornerTemplateForEntryModel:(id)arg1;
+- (id)graphicExtraLargeCircularTemplateForEntryModel:(id)arg1;
+- (id)graphicCircularTemplateForEntryModel:(id)arg1;
+- (id)_richCircularTemplateForFamily:(long long)arg1 entryModel:(id)arg2;
+- (id)graphicBezelTemplateForEntryModel:(id)arg1;
+- (id)extraLargeTemplateForEntryModel:(id)arg1;
+- (id)circularSmallTemplateForEntryModel:(id)arg1;
+- (id)circularMediumTemplateForEntryModel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

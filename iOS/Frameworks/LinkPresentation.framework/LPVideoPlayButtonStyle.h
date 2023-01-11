@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     double _disabledOpacity;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double disabledOpacity; // @synthesize disabledOpacity=_disabledOpacity;
 @property(retain, nonatomic) LPSize *backgroundSize; // @synthesize backgroundSize=_backgroundSize;
 @property(retain, nonatomic) LPSize *size; // @synthesize size=_size;
-- (void).cxx_destruct;
-- (id)init;
+- (id)initWithPlatform:(long long)arg1;
 
 @end
 

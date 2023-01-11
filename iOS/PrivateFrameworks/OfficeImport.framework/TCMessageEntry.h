@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long timeStamp; // @synthesize timeStamp=m_timeStamp;
 @property(copy, nonatomic) NSString *additionalText; // @synthesize additionalText;
-- (void).cxx_destruct;
 - (void)addAffectedObject:(id)arg1;
 - (void)mergeEntries:(id)arg1;
 - (id)description;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (int)getMessageTag;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithTag:(int)arg1 affectedObject:(id)arg2 text:(id)arg3 parameters:(struct __va_list_tag [1])arg4;
+- (id)initWithTag:(int)arg1 affectedObject:(id)arg2 text:(id)arg3 parameters:(char *)arg4;
 
 @end
 

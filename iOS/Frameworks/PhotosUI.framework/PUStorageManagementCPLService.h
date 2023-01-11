@@ -6,22 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class PXCPLServiceStatus, PXUICPLService;
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@interface PUStorageManagementCPLService : NSObject
+@class NSString, PXCPLUIStatusProvider;
+
+@interface PUStorageManagementCPLService : NSObject <PXChangeObserver>
 {
-    PXUICPLService *_cplUIService;
-    PXCPLServiceStatus *_lastServiceStatusUpdated;
+    PXCPLUIStatusProvider *_cplUIStatusProvider;
+    _Bool _hasCompletedInitialUpload;
     CDUnknownBlockType _uploadCallbackHandler;
 }
 
 + (id)sharedCPLService;
-@property(copy, nonatomic) CDUnknownBlockType uploadCallbackHandler; // @synthesize uploadCallbackHandler=_uploadCallbackHandler;
 - (void).cxx_destruct;
-- (void)_updateUploadCallbackHandler:(id)arg1;
-@property(readonly, nonatomic) _Bool hasCompletedInitialUpload;
-- (void)_initCPLService;
+@property(copy, nonatomic) CDUnknownBlockType uploadCallbackHandler; // @synthesize uploadCallbackHandler=_uploadCallbackHandler;
+@property(readonly, nonatomic) _Bool hasCompletedInitialUpload; // @synthesize hasCompletedInitialUpload=_hasCompletedInitialUpload;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)_initCPLUIStatusProvider;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

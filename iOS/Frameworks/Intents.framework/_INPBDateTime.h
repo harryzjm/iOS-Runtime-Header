@@ -17,7 +17,6 @@
     struct {
         unsigned int calendarSystem:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _calendarSystem;
     _INPBLocalDate *_date;
     _INPBLocalTime *_time;
@@ -25,12 +24,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *timeZoneID; // @synthesize timeZoneID=_timeZoneID;
 @property(retain, nonatomic) _INPBLocalTime *time; // @synthesize time=_time;
 @property(retain, nonatomic) _INPBLocalDate *date; // @synthesize date=_date;
 @property(nonatomic) int calendarSystem; // @synthesize calendarSystem=_calendarSystem;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

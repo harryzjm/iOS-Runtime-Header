@@ -26,10 +26,10 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(copy, nonatomic, getter=_notificationTapBlock, setter=_setNotificationTapBlock:) CDUnknownBlockType notificationTapBlock; // @synthesize notificationTapBlock=_notificationTapBlock;
 @property(nonatomic) __weak id <PLExpandedPlatterDismissing> dismisser; // @synthesize dismisser=_dismisser;
 @property(nonatomic) __weak id <PLClickPresentationInteractionPresenting> presenter; // @synthesize presenter=_presenter;
-- (void).cxx_destruct;
 - (id)_longLookViewLoadingIfNecessary;
 - (id)_longLookViewIfLoaded;
 - (id)_expandedPlatterPresentationViewLoadingIfNecessary:(_Bool)arg1;
@@ -44,11 +44,13 @@
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)notificationLongLookView:(id)arg1 tapGestureRecognizerShouldReceiveTouch:(id)arg2;
 - (void)notificationLongLookView:(id)arg1 willInteractWithURL:(id)arg2;
+- (_Bool)associatedViewControllerDidAppearForExpandedPlatterView:(id)arg1;
 - (id)expandedPlatterViewForPresentationView:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (id)customBackgroundContainerViewForExpandedPlatterPresentationController:(id)arg1;
 - (_Bool)expandedPlatterPresentationControllerShouldProvideBackground:(id)arg1;
 - (struct CGRect)expandedPlatterPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
 - (id)settleHomeAffordanceAnimationBehaviorDescriptionForExpandedPlatterPresentationController:(id)arg1;
@@ -86,17 +88,18 @@
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (_Bool)_canShowWhileLocked;
-- (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)playMedia;
-- (void)_updateLookView:(struct UIView *)arg1 withTitleFromProvidedStaticContent:(id)arg2;
+- (void)_updateLookView:(id)arg1 withTitleFromProvidedStaticContent:(id)arg2;
 - (void)setCustomContentHomeAffordanceGestureRecognizer:(id)arg1;
 - (void)setCustomContentHomeAffordanceVisible:(_Bool)arg1;
 - (_Bool)restoreInputViews;
 - (void)preserveInputViews;
 - (_Bool)isContentExtensionVisible:(id)arg1;
-- (_Bool)dismissPresentedViewControllerAndClearNotification:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setNotificationRequest:(id)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(_Bool)arg2;
 - (id)_initWithNotificationRequest:(id)arg1 andPresentingNotificationViewController:(id)arg2 revealingAdditionalContentOnPresentation:(_Bool)arg3;

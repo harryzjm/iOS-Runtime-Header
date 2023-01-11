@@ -13,6 +13,7 @@
 - (struct CGPoint)avatarOffsetLTR;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)layoutSubviews;
+- (double)editModeHorizontalOffset;
 
 @end
 

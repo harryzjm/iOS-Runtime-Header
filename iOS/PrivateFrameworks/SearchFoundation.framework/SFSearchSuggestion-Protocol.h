@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
 
 @protocol SFSearchSuggestion <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSMutableDictionary *serverFeatures;
+@property(copy, nonatomic) NSString *detailText;
 @property(copy, nonatomic) NSString *utteranceText;
 @property(copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier;
 @property(copy, nonatomic) NSString *fbr;

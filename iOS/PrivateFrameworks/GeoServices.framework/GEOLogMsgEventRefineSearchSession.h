@@ -13,9 +13,11 @@
 @interface GEOLogMsgEventRefineSearchSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_searchString;
     NSMutableArray *_suggestionItems;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _refineSearchType;
     int _searchType;
     struct {
@@ -23,10 +25,7 @@
         unsigned int has_searchType:1;
         unsigned int read_searchString:1;
         unsigned int read_suggestionItems:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_suggestionItems:1;
-        unsigned int wrote_refineSearchType:1;
-        unsigned int wrote_searchType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,18 +40,18 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)suggestionItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)suggestionItemsCount;
-- (void)_addNoFlagsSuggestionItem:(id)arg1;
 - (void)addSuggestionItem:(id)arg1;
 - (void)clearSuggestionItems;
 @property(retain, nonatomic) NSMutableArray *suggestionItems;
-- (void)_readSuggestionItems;
 @property(retain, nonatomic) NSString *searchString;
 @property(readonly, nonatomic) _Bool hasSearchString;
-- (void)_readSearchString;
 - (int)StringAsRefineSearchType:(id)arg1;
 - (id)refineSearchTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasRefineSearchType;
@@ -61,6 +60,8 @@
 - (id)searchTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasSearchType;
 @property(nonatomic) int searchType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

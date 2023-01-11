@@ -14,14 +14,14 @@
 
 @interface HMDCalendarEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
+    struct os_unfair_lock_s _lock;
     NSDateComponents *_fireDateComponents;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
-@property(retain, nonatomic) NSDateComponents *fireDateComponents; // @synthesize fireDateComponents=_fireDateComponents;
 - (void).cxx_destruct;
-- (id)metricData;
+- (id)analyticsTriggerEventData;
 - (id)_nextTimerDate;
 - (_Bool)areMonthDayNotMatching:(id)arg1;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
@@ -29,6 +29,7 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(retain) NSDateComponents *fireDateComponents; // @synthesize fireDateComponents=_fireDateComponents;
 - (void)_handleUpdateRequest:(id)arg1;
 - (id)emptyModelObject;
 - (id)createPayload;

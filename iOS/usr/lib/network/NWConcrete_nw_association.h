@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     struct nw_hash_table *connected_flow_handles;
     struct nw_hash_table *cache_entries;
     void *deactivation_timer;
+    unsigned int dry_run_count;
     unsigned int dormant:1;
     unsigned int in_force_update:1;
     unsigned int __pad_bits:6;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)redactedDescription;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithEndpoint:(id)arg1 parameters:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,26 +8,30 @@
 
 #import <GameCenterUI/UICollectionViewDataSource-Protocol.h>
 #import <GameCenterUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <GameCenterUI/UICollectionViewDelegate_Private-Protocol.h>
 
 @class NSArray, NSString, UIViewController;
 
-@interface GKCollectionDataSource : NSObject <UICollectionViewDelegate_Private, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface GKCollectionDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     _Bool _onDarkBackground;
     _Bool _useStandardHeaders;
+    _Bool _breakSearchInputTextIntoMultipleTerms;
     UIViewController *_presentationViewController;
-    NSString *_analyticsKey;
+    NSString *_analyticsEvent;
+    NSString *_analyticsEventType;
     NSString *_searchText;
     NSArray *_searchTerms;
 }
 
 @property(retain, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
+@property(nonatomic) _Bool breakSearchInputTextIntoMultipleTerms; // @synthesize breakSearchInputTextIntoMultipleTerms=_breakSearchInputTextIntoMultipleTerms;
 @property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
-@property(nonatomic) NSString *analyticsKey; // @synthesize analyticsKey=_analyticsKey;
+@property(nonatomic) NSString *analyticsEventType; // @synthesize analyticsEventType=_analyticsEventType;
+@property(nonatomic) NSString *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
 @property(nonatomic) _Bool useStandardHeaders; // @synthesize useStandardHeaders=_useStandardHeaders;
 @property(nonatomic) _Bool onDarkBackground; // @synthesize onDarkBackground=_onDarkBackground;
 @property(nonatomic) UIViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
+- (_Bool)isValidAnalytics;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didFocusItemAtIndexPath:(id)arg2;
@@ -39,6 +43,7 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)searchTextHasChanged;
+- (id)alternateSearchKeyForSection:(long long)arg1;
 - (id)searchKeyForSection:(long long)arg1;
 - (_Bool)searchMatchesItem:(id)arg1 inSection:(long long)arg2;
 @property(readonly, nonatomic) _Bool isSearching; // @dynamic isSearching;
@@ -52,6 +57,7 @@
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
 - (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

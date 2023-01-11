@@ -4,17 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HFItemSectionAccessoryButtonHeaderDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlDetailsViewControllerVendor-Protocol.h>
 
-@class NSString;
+@class HUAlarmTableViewController, NSArray, NSLayoutConstraint, NSString;
 
-@interface HUQuickControlAlarmDetailsViewController <HUQuickControlDetailsViewControllerVendor>
+@interface HUQuickControlAlarmDetailsViewController <HUQuickControlDetailsViewControllerVendor, HFItemSectionAccessoryButtonHeaderDelegate>
 {
+    HUAlarmTableViewController *_alarmTableViewController;
+    NSArray *_alarmTableViewConstraints;
+    NSLayoutConstraint *_heightConstraint;
 }
 
 + (id)controlItemPredicate;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
+@property(retain, nonatomic) NSArray *alarmTableViewConstraints; // @synthesize alarmTableViewConstraints=_alarmTableViewConstraints;
+@property(retain, nonatomic) HUAlarmTableViewController *alarmTableViewController; // @synthesize alarmTableViewController=_alarmTableViewController;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
+- (void)_updateConstraints;
+- (void)_addAlarmControlView;
+- (void)viewDidLoad;
+- (void)itemSection:(id)arg1 accessoryButtonPressedInHeader:(id)arg2;
 - (_Bool)shouldShowContentForReachabilityState:(_Bool)arg1;
 - (id)secondaryQuickControlPresentationStyle;
+- (id)mediaProfileContainer;
+- (_Bool)isAccessoryControllable;
 - (id)createDetailsViewController;
 - (id)controlItem;
 - (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;

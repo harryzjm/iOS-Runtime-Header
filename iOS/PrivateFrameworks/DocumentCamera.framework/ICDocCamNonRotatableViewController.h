@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)_canShowWhileLocked;
 - (_Bool)prefersStatusBarHidden;
 - (_Bool)shouldAutorotate;
 - (_Bool)_allowsAutorotation;

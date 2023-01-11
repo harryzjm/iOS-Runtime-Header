@@ -4,18 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+@class TLKLabel, UIView;
 
 @interface TLKRoundedCornerLabel
 {
-    _Bool _large;
+    TLKLabel *_label;
+    unsigned long long _sizeConfiguration;
     UIView *_borderView;
 }
 
-@property(retain, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
-@property(nonatomic) _Bool large; // @synthesize large=_large;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
+@property(nonatomic) unsigned long long sizeConfiguration; // @synthesize sizeConfiguration=_sizeConfiguration;
+@property(retain, nonatomic) TLKLabel *label; // @synthesize label=_label;
 - (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)layoutSubviews;
+- (void)updateFont;
 - (id)initWithProminence:(unsigned long long)arg1;
 
 @end

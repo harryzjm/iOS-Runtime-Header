@@ -10,5 +10,9 @@
 {
 }
 
++ (_Bool)isWorkoutEndReminderEnabledWhenDeviceIsInMoveTimeMode:(_Bool)arg1 withCurrentSetting:(id)arg2;
++ (_Bool)isWorkoutStartReminderEnabledWhenDeviceIsSatellitePaired:(_Bool)arg1 isInMoveTimeMode:(_Bool)arg2 withCurrentSetting:(id)arg3;
++ (_Bool)isDeviceSatellitePaired;
+
 @end
 

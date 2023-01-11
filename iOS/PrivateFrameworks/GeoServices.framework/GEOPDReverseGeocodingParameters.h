@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDReverseGeocodingParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_extendedLocations;
     NSMutableArray *_locations;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _placeTypeLimit;
     _Bool _preserveOriginalLocation;
     struct {
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_extendedLocations:1;
         unsigned int read_locations:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_extendedLocations:1;
-        unsigned int wrote_locations:1;
-        unsigned int wrote_placeTypeLimit:1;
-        unsigned int wrote_preserveOriginalLocation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,15 +47,16 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)extendedLocationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)extendedLocationsCount;
-- (void)_addNoFlagsExtendedLocation:(id)arg1;
 - (void)addExtendedLocation:(id)arg1;
 - (void)clearExtendedLocations;
 @property(retain, nonatomic) NSMutableArray *extendedLocations;
-- (void)_readExtendedLocations;
 @property(nonatomic) _Bool hasPreserveOriginalLocation;
 @property(nonatomic) _Bool preserveOriginalLocation;
 - (int)StringAsPlaceTypeLimit:(id)arg1;
@@ -66,11 +65,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int placeTypeLimit;
 - (id)locationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationsCount;
-- (void)_addNoFlagsLocation:(id)arg1;
 - (void)addLocation:(id)arg1;
 - (void)clearLocations;
 @property(retain, nonatomic) NSMutableArray *locations;
-- (void)_readLocations;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

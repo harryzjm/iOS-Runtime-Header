@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotoLibraryServices/PLAssetContainer-Protocol.h>
+#import <PhotoLibraryServices/PLDiagnosticsProvider-Protocol.h>
 #import <PhotoLibraryServices/PLMomentData-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSObject, NSOrderedSet, NSString, PLManagedAsset, PLMomentList;
+@class CLLocation, NSArray, NSDate, NSObject, NSSet, NSString, PLMomentList;
 @protocol NSCopying, PLPhotosHighlightData;
 
-@interface PLMoment <PLAssetContainer, PLMomentData>
+@interface PLMoment <PLMomentData, PLDiagnosticsProvider>
 {
     _Bool _loadedNameInfo;
     CLLocation *_cachedApproximateLocation;
@@ -43,9 +43,9 @@
 + (id)allMomentIDsInManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)allMomentsInManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)insertNewMomentInManagedObjectContext:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didRegisteredWithUserInterfaceContext; // @synthesize didRegisteredWithUserInterfaceContext;
 @property(nonatomic) _Bool isRegisteredForChanges; // @synthesize isRegisteredForChanges;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long pl_numberOfAssets;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property(readonly, nonatomic) CLLocation *pl_location;
@@ -55,29 +55,17 @@
 @property(readonly, nonatomic) NSDate *localStartDate;
 - (unsigned long long)fetchedAssetsCount;
 @property(readonly, retain, nonatomic) NSArray *batchedAssets;
-- (void)removeAssetData:(id)arg1;
-- (void)replaceAssetDataAtIndex:(unsigned long long)arg1 withAssetData:(id)arg2;
 @property(readonly, retain, nonatomic) NSObject<NSCopying> *uniqueObjectID;
 - (void)removeAssetsObject:(id)arg1;
-- (void)replaceObjectInAssetsAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
+- (void)replaceObjectInAssets:(id)arg1 withObject:(id)arg2;
 - (void)didTurnIntoFault;
 - (id)mutableAssets;
 - (void)willSave;
+- (void)insertAssetData:(id)arg1;
+- (void)removeAssetData:(id)arg1;
 - (void)delete;
 - (id)diagnosticInformation;
 - (_Bool)supportsDiagnosticInformation;
-@property(retain, nonatomic) PLManagedAsset *tertiaryKeyAsset;
-@property(retain, nonatomic) PLManagedAsset *secondaryKeyAsset;
-@property(retain, nonatomic) PLManagedAsset *keyAsset;
-@property(readonly, copy, nonatomic) NSString *localizedTitle;
-@property(readonly, nonatomic) _Bool canShowAvalancheStacks;
-@property(readonly, nonatomic) _Bool canShowComments;
-- (_Bool)canPerformEditOperation:(unsigned long long)arg1;
-@property(readonly, nonatomic) _Bool isEmpty;
-@property(readonly, nonatomic) unsigned long long videosCount;
-@property(readonly, nonatomic) unsigned long long photosCount;
-@property(readonly, nonatomic) unsigned long long assetsCount;
-@property(readonly, nonatomic) unsigned long long approximateCount;
 - (void)unregisterForChanges;
 - (void)registerForChanges;
 @property(retain, nonatomic) CLLocation *approximateLocation;
@@ -113,13 +101,14 @@
 @property(nonatomic) float aggregationScore; // @dynamic aggregationScore;
 @property(nonatomic) double approximateLatitude; // @dynamic approximateLatitude;
 @property(nonatomic) double approximateLongitude; // @dynamic approximateLongitude;
-@property(retain, nonatomic) NSOrderedSet *assets; // @dynamic assets;
+@property(retain, nonatomic) NSSet *assets; // @dynamic assets;
 @property(nonatomic) int cachedCount; // @dynamic cachedCount;
 @property(nonatomic) int cachedPhotosCount; // @dynamic cachedPhotosCount;
 @property(nonatomic) int cachedVideosCount; // @dynamic cachedVideosCount;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSDate *endDate; // @dynamic endDate;
+@property(nonatomic) double gpsHorizontalAccuracy; // @dynamic gpsHorizontalAccuracy;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) id <PLPhotosHighlightData> highlight; // @dynamic highlight;
 @property(readonly, copy, nonatomic) NSArray *localizedLocationNames; // @dynamic localizedLocationNames;

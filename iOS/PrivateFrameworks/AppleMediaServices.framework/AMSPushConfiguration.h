@@ -7,16 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSSet, NSString;
+@protocol AMSPushHandlerDelegate;
 
 @interface AMSPushConfiguration : NSObject
 {
     NSString *_userNotificationExtensionId;
     NSSet *_enabledActionTypes;
+    id <AMSPushHandlerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <AMSPushHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSSet *enabledActionTypes; // @synthesize enabledActionTypes=_enabledActionTypes;
 @property(retain, nonatomic) NSString *userNotificationExtensionId; // @synthesize userNotificationExtensionId=_userNotificationExtensionId;
-- (void).cxx_destruct;
 - (id)initWithEnabledActionTypes:(id)arg1;
 
 @end

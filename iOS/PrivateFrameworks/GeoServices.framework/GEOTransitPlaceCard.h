@@ -13,20 +13,19 @@
 @interface GEOTransitPlaceCard : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_incidentType;
     GEOTransitDepartureSequenceUsage *_transitDepartureSequenceUsage;
     NSString *_transitSystemName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _transitCategory;
     struct {
         unsigned int has_transitCategory:1;
         unsigned int read_incidentType:1;
         unsigned int read_transitDepartureSequenceUsage:1;
         unsigned int read_transitSystemName:1;
-        unsigned int wrote_incidentType:1;
-        unsigned int wrote_transitDepartureSequenceUsage:1;
-        unsigned int wrote_transitSystemName:1;
-        unsigned int wrote_transitCategory:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,21 +39,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *incidentType;
 @property(readonly, nonatomic) _Bool hasIncidentType;
-- (void)_readIncidentType;
 @property(retain, nonatomic) GEOTransitDepartureSequenceUsage *transitDepartureSequenceUsage;
 @property(readonly, nonatomic) _Bool hasTransitDepartureSequenceUsage;
-- (void)_readTransitDepartureSequenceUsage;
 @property(retain, nonatomic) NSString *transitSystemName;
 @property(readonly, nonatomic) _Bool hasTransitSystemName;
-- (void)_readTransitSystemName;
 - (int)StringAsTransitCategory:(id)arg1;
 - (id)transitCategoryAsString:(int)arg1;
 @property(nonatomic) _Bool hasTransitCategory;
 @property(nonatomic) int transitCategory;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

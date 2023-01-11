@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UINavigationBar, UINavigationItem, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
+@class NSString, UIBarButtonItem, UINavigationBar, UINavigationItem, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
 @protocol _UIBarAppearanceChangeObserver;
 
-__attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProvider : NSObject
 {
     UINavigationBar *_navigationBar;
@@ -18,10 +17,10 @@ __attribute__((visibility("hidden")))
     UINavigationItem *_itemForMeasuring;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
 @property(retain, nonatomic) _UINavigationBarItemStack *stack; // @synthesize stack=_stack;
 @property(readonly, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
-- (void).cxx_destruct;
 - (void)appendToDescription:(id)arg1;
 - (id)description;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1 defaultAnswer:(CDUnknownBlockType)arg2;
@@ -33,9 +32,24 @@ __attribute__((visibility("hidden")))
 - (void)navigationBarInvalidatedResolvedLayoutMargins;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
+- (void)traitCollectionDidChangeOnSubtree:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)barDidMoveToWindow;
+- (void)barDidAddSubview:(id)arg1;
 - (void)setBackButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setupTopNavigationItem;
+- (void)endAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
+- (_Bool)updateNavItemContentLayoutGuideAnimationConstraintConstant:(double)arg1;
+@property(readonly, nonatomic) double navItemContentLayoutGuideAnimationDistance;
+@property(readonly, nonatomic, getter=isAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange) _Bool animatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
+- (void)beginAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
+@property(nonatomic) _Bool staticNavBarButtonLingers;
+@property(nonatomic) _Bool shouldFadeStaticNavBarButton;
+- (void)setNeedsStaticNavBarButtonUpdate;
+- (void)_installContentClippingView:(id)arg1;
+- (void)_removeContentClippingView;
+@property(readonly, nonatomic, getter=isContentViewHidden) _Bool contentViewHidden;
+@property(retain, nonatomic) UIBarButtonItem *staticNavBarButtonItem;
 @property(nonatomic) _Bool forceScrollEdgeAppearance;
 @property(readonly, nonatomic) id <_UIBarAppearanceChangeObserver> appearanceObserver;
 @property(nonatomic) long long appearanceAPIVersion;
@@ -44,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double backgroundAlpha;
 @property(nonatomic) _Bool useInlineBackgroundHeightWhenLarge;
 @property(readonly, nonatomic) _Bool wantsLargeTitleDisplayed;
+- (double)heightForRestoringFromCancelledTransition;
 - (void)recordBarSize:(struct CGSize)arg1;
 - (void)updateTopNavigationItemTitleView;
 - (void)updateTopNavigationItemAnimated:(_Bool)arg1;
@@ -63,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (id)restingHeights;
 - (_Bool)topItemHasVariableHeight;
 - (CDStruct_39925896)layoutHeightsFittingWidth:(double)arg1;
+- (struct NSDirectionalEdgeInsets)resolvedSearchBarMargins;
 - (struct NSDirectionalEdgeInsets)resolvedLargeTitleMargins;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)invalidateIntrinsicContentSize;

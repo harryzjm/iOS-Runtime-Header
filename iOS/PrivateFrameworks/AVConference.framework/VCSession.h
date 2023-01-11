@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AVConference/AVCRateControllerDelegate-Protocol.h>
 #import <AVConference/RTCPReportProvider-Protocol.h>
 #import <AVConference/VCConnectionChangedHandler-Protocol.h>
@@ -18,11 +16,11 @@
 #import <AVConference/VCSessionParticipantStreamDelegate-Protocol.h>
 #import <AVConference/VCSessionStatsControllerDelegate-Protocol.h>
 
-@class AVCRateController, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
+@class AVCRateController, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
 @protocol OS_dispatch_queue, VCConnectionProtocol, VCSessionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCSession : NSObject <VCSessionParticipantStreamDelegate, AVCRateControllerDelegate, VCRateControlMediaControllerDelegate, VCMediaStreamNotification, RTCPReportProvider, VCSecurityEventHandler, VCSessionParticipantDelegate, VCNetworkFeedbackControllerDelegate, VCSessionStatsControllerDelegate, VCConnectionChangedHandler, VCMomentTransportDelegate>
+@interface VCSession <VCSessionParticipantStreamDelegate, AVCRateControllerDelegate, VCRateControlMediaControllerDelegate, VCMediaStreamNotification, RTCPReportProvider, VCSecurityEventHandler, VCSessionParticipantDelegate, VCNetworkFeedbackControllerDelegate, VCSessionStatsControllerDelegate, VCConnectionChangedHandler, VCMomentTransportDelegate>
 {
     unsigned int _state;
     NSObject<OS_dispatch_queue> *_sessionQueue;
@@ -36,7 +34,6 @@ __attribute__((visibility("hidden")))
     VCSessionParticipantLocal *_localParticipant;
     NSMutableDictionary *_remoteParticipantsMapByUUID;
     NSMutableDictionary *_remoteParticipantsMapByServerID;
-    struct opaqueRTCReporting *_reportingAgent;
     int _reportUpdateInterval;
     int _reportReportFrequency;
     VCSessionStatsController *_sessionStatsController;
@@ -63,12 +60,13 @@ __attribute__((visibility("hidden")))
     struct tagVCMediaQueue *_mediaQueue;
     _Bool _forceDisableMediaPriority;
     NSError *_stopError;
+    _Bool _isGKVoiceChat;
+    struct _VCSessionOneToOneSettings _oneToOneSettings;
 }
 
 @property(readonly, nonatomic) VCSessionStatsController *sessionStatsController; // @synthesize sessionStatsController=_sessionStatsController;
 @property(retain, nonatomic) VCSessionMessaging *sessionMessaging; // @synthesize sessionMessaging=_sessionMessaging;
 @property(readonly, nonatomic) AVCRateController *downlinkRateController; // @synthesize downlinkRateController=_downlinkRateController;
-@property(readonly, nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
 @property(readonly, nonatomic) VCTransportSession *transportSession; // @synthesize transportSession=_transportSession;
 @property(nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property(retain, nonatomic) NSMutableDictionary *remoteParticipantsMapByServerID; // @synthesize remoteParticipantsMapByServerID=_remoteParticipantsMapByServerID;
@@ -78,6 +76,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(readonly, nonatomic) NSString *idsDestination; // @synthesize idsDestination=_idsDestination;
 @property(readonly, nonatomic) VCSessionParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
+- (void)startOneToOne;
+- (void)cleanupOneToOne;
+- (int)setupOneToOne;
+- (void)cleanupOneToOneMediaQueue;
+- (int)setupOneToOneMediaQueue;
 - (void)didReceiveMomentsRequest:(id)arg1;
 - (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
 - (void)reportingIntervalChanged:(double)arg1;
@@ -93,6 +96,8 @@ __attribute__((visibility("hidden")))
 - (void)dispatchedStart;
 - (void)dispatchedRemoveParticipant:(id)arg1;
 - (void)dispatchedAddParticipantConfigurations:(id)arg1 processID:(int)arg2;
+- (_Bool)configureRemoteParticipant:(id)arg1 withConfig:(id)arg2;
+- (_Bool)addOneToOneParticipant:(id)arg1 withConfig:(id)arg2;
 - (void)dispatchedAddParticipantWithConfig:(id)arg1 processID:(int)arg2;
 - (void)reportingSessionRemoteParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 value:(id)arg3;
 - (void)collectSessionEventKeyFields:(struct __CFDictionary *)arg1 eventType:(unsigned short)arg2 withParticipant:(id)arg3 keyChangeReason:(id)arg4 newMKI:(id)arg5 withStreamID:(unsigned short)arg6;
@@ -126,6 +131,10 @@ __attribute__((visibility("hidden")))
 - (void)startSessionMessaging;
 - (void)destroySessionMessaging;
 - (void)createSessionMessaging;
+- (void)cleaupMediaControlInfoGeneratorsOneToOne;
+- (int)setupOneToOneMediaControlInfoGenerators;
+- (void)cleanupVCRC;
+- (id)newParticipantOneToOneConfigWithIDSParticipantID:(unsigned long long)arg1 isLocal:(_Bool)arg2;
 - (void)sendSymptomsToRemoteParticipants:(id)arg1 symptom:(id)arg2 groupID:(id)arg3;
 - (void)unregisterRemoteParticipantFromSession:(id)arg1;
 - (void)removeDelegatesForRemoteParticipant:(id)arg1;
@@ -137,11 +146,16 @@ __attribute__((visibility("hidden")))
 - (void)optOutStreamWithIDSStreamIDs:(id)arg1;
 - (void)optInStreamWithIDSStreamIDs:(id)arg1;
 - (void)updateLocalStreamConfiguration;
+- (int)maxRemoteParticipants30fps;
 - (void)setMediaQueuePeakBitrateWithTargetBitrate:(unsigned int)arg1;
 - (void)createMediaQueue;
 - (void)setupUplinkBitrateCaps;
 - (void)startRateControllers;
-- (void)setupRateControllers;
+- (void)stopRateControllerOneToOne;
+- (void)startRateControllerOneToOne;
+- (void)cleanupRateControllerOneToOne;
+- (int)setupRateControllerOneToOne;
+- (void)setupRateControllersMultiway;
 - (void)setSessionInfoSynchronizerPeerSubscribedStreamsCallback;
 - (void)setSessionInfoSynchronizerErrorResponseCallback;
 - (void)setSessionInfoSynchronizerCallbacks;
@@ -164,7 +178,7 @@ __attribute__((visibility("hidden")))
 - (void)vcSessionParticipant:(id)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2;
 - (void)vcSessionParticipantDidChangeActualNetworkBitrateAudio:(id)arg1;
 - (void)vcSessionParticipantDidChangeActualNetworkBitrateVideo:(id)arg1;
-- (void)vcSessionParticipant:(id)arg1 didChangeProminence:(unsigned char)arg2 description:(id)arg3;
+- (void)vcSessionParticipant:(id)arg1 didChangeMediaPriority:(unsigned char)arg2 description:(id)arg3;
 - (void)vcSessionParticipant:(id)arg1 remoteVideoPausedDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(id)arg1 remoteAudioPausedDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(id)arg1 videoPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
@@ -197,7 +211,7 @@ __attribute__((visibility("hidden")))
 - (void)setupTransportSessionWithDestination:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *capabilities;
 - (void)dealloc;
-- (id)initWithIDSDestination:(id)arg1 configurationDict:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 processId:(int)arg5;
+- (id)initWithIDSDestination:(id)arg1 configurationDict:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 processId:(int)arg5 isGKVoiceChat:(_Bool)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,7 +8,9 @@
 {
 }
 
+- (_Bool)isEqual:(id)arg1;
 - (id)loadImage;
+- (int)defaultCornerRoundingStyle;
 
 @end
 

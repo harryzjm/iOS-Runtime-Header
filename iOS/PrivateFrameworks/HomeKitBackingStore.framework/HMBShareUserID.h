@@ -16,11 +16,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly) CKRecordID *userRecordID; // @synthesize userRecordID=_userRecordID;
++ (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) CKRecordID *userRecordID; // @synthesize userRecordID=_userRecordID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)attributeDescriptions;
+- (id)logIdentifier;
 - (id)initWithUserRecordID:(id)arg1;
 
 @end

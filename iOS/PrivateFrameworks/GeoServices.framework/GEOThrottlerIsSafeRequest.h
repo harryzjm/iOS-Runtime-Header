@@ -19,18 +19,17 @@
 }
 
 + (Class)replyClass;
-+ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GEODataRequestThrottlerToken *throttlerToken; // @synthesize throttlerToken=_throttlerToken;
 @property(nonatomic) _Bool includeToken; // @synthesize includeToken=_includeToken;
 @property(nonatomic) _Bool availableRequestCount; // @synthesize availableRequestCount=_availableRequestCount;
 @property(nonatomic) _Bool nextSafeRequestTime; // @synthesize nextSafeRequestTime=_nextSafeRequestTime;
 @property(nonatomic) int requestKindSubtype; // @synthesize requestKindSubtype=_requestKindSubtype;
 @property(nonatomic) int requestKindType; // @synthesize requestKindType=_requestKindType;
-- (void).cxx_destruct;
 - (_Bool)expectsReply;
 - (_Bool)isValid;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

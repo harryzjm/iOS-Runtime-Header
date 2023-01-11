@@ -10,7 +10,7 @@
 #import <HomeUI/UIPickerViewDataSource-Protocol.h>
 #import <HomeUI/UIPickerViewDelegate-Protocol.h>
 
-@class NSArray, NSFormatter, NSNumber, NSSet, NSString, UIPickerView;
+@class NSArray, NSFormatter, NSSet, NSString, UIPickerView;
 @protocol HUControlViewDelegate, HUWheelControlViewDelegate;
 
 @interface HUWheelControlView : UIView <UIPickerViewDataSource, UIPickerViewDelegate, HUControlView>
@@ -18,10 +18,8 @@
     _Bool _canBeHighlighted;
     NSString *_identifier;
     id <HUControlViewDelegate> _delegate;
-    NSNumber *_minValue;
-    NSNumber *_maxValue;
-    NSNumber *_stepValue;
     id <HUWheelControlViewDelegate> _wheelDelegate;
+    NSArray *_values;
     NSFormatter *_valueFormatter;
     NSSet *_customValues;
     UIPickerView *_pickerView;
@@ -29,23 +27,17 @@
 }
 
 + (Class)valueClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *wheelValues; // @synthesize wheelValues=_wheelValues;
 @property(retain, nonatomic) UIPickerView *pickerView; // @synthesize pickerView=_pickerView;
 @property(retain, nonatomic) NSSet *customValues; // @synthesize customValues=_customValues;
 @property(retain, nonatomic) NSFormatter *valueFormatter; // @synthesize valueFormatter=_valueFormatter;
+@property(retain, nonatomic) NSArray *values; // @synthesize values=_values;
 @property(nonatomic) __weak id <HUWheelControlViewDelegate> wheelDelegate; // @synthesize wheelDelegate=_wheelDelegate;
-@property(copy, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
-@property(copy, nonatomic) NSNumber *maxValue; // @synthesize maxValue=_maxValue;
-@property(copy, nonatomic) NSNumber *minValue; // @synthesize minValue=_minValue;
 @property(nonatomic) _Bool canBeHighlighted; // @synthesize canBeHighlighted=_canBeHighlighted;
 @property(nonatomic) __weak id <HUControlViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)_updateUIToReachable;
-- (id)_defaultStepValue;
-- (id)_defaultMinValue;
-- (id)_defaultMaxValue;
-- (id)_defaultValueFormatter;
 - (id)_formatValue:(id)arg1;
 - (void)_setupConstraints;
 - (void)_generateWheelValues;

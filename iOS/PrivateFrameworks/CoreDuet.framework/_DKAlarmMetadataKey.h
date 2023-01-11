@@ -10,6 +10,7 @@
 {
 }
 
++ (id)isSleep;
 + (id)alarmID;
 
 @end

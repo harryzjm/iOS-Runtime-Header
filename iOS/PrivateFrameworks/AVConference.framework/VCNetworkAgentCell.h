@@ -7,9 +7,11 @@
 __attribute__((visibility("hidden")))
 @interface VCNetworkAgentCell
 {
+    _Bool _cellularAssertionActive;
 }
 
 + (id)sharedInstance;
+@property(readonly) _Bool cellularAssertionActive; // @synthesize cellularAssertionActive=_cellularAssertionActive;
 - (void)removeCellularAssertion;
 - (void)addCellularAssertion;
 

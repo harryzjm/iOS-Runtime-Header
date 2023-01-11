@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOVectorTileRequest : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_accessKey;
     NSString *_countryCode;
     NSString *_languageCode;
     unsigned long long _lineId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     float _latitudeHint;
     float _longitudeHint;
     unsigned int _scale;
@@ -48,22 +50,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_accessKey:1;
         unsigned int read_countryCode:1;
         unsigned int read_languageCode:1;
-        unsigned int wrote_accessKey:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_languageCode:1;
-        unsigned int wrote_lineId:1;
-        unsigned int wrote_latitudeHint:1;
-        unsigned int wrote_longitudeHint:1;
-        unsigned int wrote_scale:1;
-        unsigned int wrote_size:1;
-        unsigned int wrote_style:1;
-        unsigned int wrote_version:1;
-        unsigned int wrote_x:1;
-        unsigned int wrote_y:1;
-        unsigned int wrote_z:1;
-        unsigned int wrote_preflight:1;
-        unsigned int wrote_venuesPreflight:1;
-        unsigned int wrote_vloc:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -77,6 +64,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasVloc;
@@ -85,14 +75,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool venuesPreflight;
 @property(retain, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) _Bool hasCountryCode;
-- (void)_readCountryCode;
 @property(nonatomic) _Bool hasLatitudeHint;
 @property(nonatomic) float latitudeHint;
 @property(nonatomic) _Bool hasLongitudeHint;
 @property(nonatomic) float longitudeHint;
 @property(retain, nonatomic) NSString *accessKey;
 @property(readonly, nonatomic) _Bool hasAccessKey;
-- (void)_readAccessKey;
 @property(nonatomic) _Bool hasScale;
 @property(nonatomic) unsigned int scale;
 @property(nonatomic) _Bool hasSize;
@@ -103,7 +91,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool preflight;
 @property(retain, nonatomic) NSString *languageCode;
 @property(readonly, nonatomic) _Bool hasLanguageCode;
-- (void)_readLanguageCode;
 @property(nonatomic) _Bool hasStyle;
 @property(nonatomic) unsigned int style;
 @property(nonatomic) _Bool hasVersion;
@@ -114,6 +101,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int y;
 @property(nonatomic) _Bool hasX;
 @property(nonatomic) unsigned int x;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

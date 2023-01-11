@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 @protocol PKPaletteErasingAttributesViewControllerDelegate;
 
-@interface PKPaletteErasingAttributesViewController : UIViewController
+@interface PKPaletteErasingAttributesViewController
 {
     id <PKPaletteErasingAttributesViewControllerDelegate> _delegate;
 }
 
 + (double)_preferredContentSizeWidth;
-@property(nonatomic) __weak id <PKPaletteErasingAttributesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPaletteErasingAttributesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (struct CGSize)preferredContentSize;
 @property(nonatomic) long long eraserType;
+- (_Bool)_canShowWhileLocked;
 - (void)_segmentedControlDidChangeValue:(id)arg1;
 - (void)loadView;
 

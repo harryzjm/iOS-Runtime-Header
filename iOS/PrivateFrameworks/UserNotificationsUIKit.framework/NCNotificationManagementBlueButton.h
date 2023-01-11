@@ -6,19 +6,29 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIColor;
+#import <UserNotificationsUIKit/UIPointerInteractionDelegate-Protocol.h>
 
-@interface NCNotificationManagementBlueButton : UIButton
+@class NSString, UIColor;
+
+@interface NCNotificationManagementBlueButton : UIButton <UIPointerInteractionDelegate>
 {
     UIColor *_backgroundColor;
 }
 
 + (id)buttonWithTitle:(id)arg1;
 - (void).cxx_destruct;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (id)backgroundColor;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

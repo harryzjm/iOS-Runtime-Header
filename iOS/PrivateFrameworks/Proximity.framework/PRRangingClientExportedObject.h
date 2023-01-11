@@ -17,13 +17,13 @@
     id <PRRangingClientProtocol> _rangingClient;
 }
 
-@property(nonatomic) __weak id <PRRangingClientProtocol> rangingClient; // @synthesize rangingClient=_rangingClient;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PRRangingClientProtocol> rangingClient; // @synthesize rangingClient=_rangingClient;
 - (void)sendDataToPeers:(id)arg1;
 - (void)remoteDevice:(id)arg1 didChangeState:(long long)arg2;
 - (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
 - (void)didReceiveNewSolutions:(id)arg1;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 - (void)didFailWithError:(id)arg1;
 - (id)initWithRangingClient:(id)arg1;
 

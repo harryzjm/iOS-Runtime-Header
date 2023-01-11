@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATTaskRequest.h"
+#import <DeviceManagement/CATTaskRequest.h>
 
 @class NSData, NSSet, NSUUID;
 
@@ -17,11 +17,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *stagedCertificateData; // @synthesize stagedCertificateData=_stagedCertificateData;
 @property(retain, nonatomic) NSData *activeCertificateData; // @synthesize activeCertificateData=_activeCertificateData;
 @property(retain, nonatomic) NSUUID *advertisingIdentifier; // @synthesize advertisingIdentifier=_advertisingIdentifier;
 @property(retain, nonatomic) NSSet *recipients; // @synthesize recipients=_recipients;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

@@ -7,6 +7,10 @@
 #import <WorkflowKit/WFLowPowerModeTrigger.h>
 
 @interface WFLowPowerModeTrigger (CoreDuetContext)
++ (id)offLabel;
++ (id)onLabel;
++ (id)offIcon;
++ (id)onIcon;
 + (id)triggerTypeIcon;
 @end
 

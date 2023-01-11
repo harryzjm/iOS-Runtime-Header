@@ -10,8 +10,13 @@
 
 @interface NPKProtoProvisioningDataRequest : PBRequest <NSCopying>
 {
+    _Bool _includeDeviceMetadata;
+    struct {
+        unsigned int includeDeviceMetadata:1;
+    } _has;
 }
 
+@property(nonatomic) _Bool includeDeviceMetadata; // @synthesize includeDeviceMetadata=_includeDeviceMetadata;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -21,6 +26,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIncludeDeviceMetadata;
 
 @end
 

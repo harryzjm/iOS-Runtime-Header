@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (CDPDeviceProtocol)
+@property(readonly, nonatomic) _Bool hasMixedSecretType;
 @property(readonly, nonatomic) unsigned long long prevailingLocalSecretType;
 @end
 

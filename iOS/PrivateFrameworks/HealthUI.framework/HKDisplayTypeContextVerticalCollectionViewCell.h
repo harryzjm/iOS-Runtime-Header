@@ -18,13 +18,12 @@
     UIStackView *_contentStackView;
     HKUIMetricColors *_currentMetricColors;
     NSLayoutConstraint *_widthConstraint;
-    NSLayoutConstraint *_heightConstraint;
     NSLayoutConstraint *_maxTitleWidthConstraint;
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *maxTitleWidthConstraint; // @synthesize maxTitleWidthConstraint=_maxTitleWidthConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 @property(retain, nonatomic) HKUIMetricColors *currentMetricColors; // @synthesize currentMetricColors=_currentMetricColors;
 @property(retain, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
@@ -33,7 +32,6 @@
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) HKDisplayTypeContextItem *contextItem; // @synthesize contextItem=_contextItem;
-- (void).cxx_destruct;
 - (id)_valueAndUnitFont;
 - (id)_titleFont;
 - (id)_labelWithFont:(id)arg1 allowsMultiline:(_Bool)arg2 supportsDyanmicType:(_Bool)arg3;

@@ -9,7 +9,7 @@
 #import <UIKitCore/_UIInputHostController-Protocol.h>
 #import <UIKitCore/_UITextEffectsSceneObserver-Protocol.h>
 
-@class NSDate, NSLayoutConstraint, NSMutableArray, NSString, UIInputViewController, UIInputViewPlacementTransition, UIInputViewSet, UIInputViewSetNotificationInfo, UIInputViewSetPlacement, UIInputWindowControllerHosting, UIKeyboardFloatingTransitionController, UIKeyboardPathEffectView, UIView;
+@class NSDate, NSLayoutConstraint, NSMutableArray, NSString, UIInputViewController, UIInputViewPlacementTransition, UIInputViewSet, UIInputViewSetNotificationInfo, UIInputViewSetPlacement, UIInputWindowControllerHosting, UIKeyboardFloatingTransitionController, UIKeyboardPathEffectView, UIView, _UIKeyboardPasscodeObscuringInteraction;
 
 __attribute__((visibility("hidden")))
 @interface UIInputWindowController <UIInputViewAnimationHost, _UITextEffectsSceneObserver, UIKeyboardFloatingTransitionControllerDelegate, _UIInputHostController>
@@ -44,7 +44,9 @@ __attribute__((visibility("hidden")))
     NSDate *_keyboardShowTimestamp;
     _Bool _supportsDockViewController;
     UIKeyboardFloatingTransitionController *_floatingTransitionController;
+    _UIKeyboardPasscodeObscuringInteraction *_passcodeObscuringInteraction;
     _Bool _shouldNotifyRemoteKeyboards;
+    _Bool _forceAccessoryViewToBottomOfHostView;
     _Bool _dontDismissKeyboardOnScrolling;
     _Bool _dontDismissReachability;
     UIInputViewSet *_inputViewSet;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
     UIInputViewController *_inputAccessoryViewController;
     UIInputViewSetPlacement *_postRotationPlacement;
     UIInputViewSet *_postRotationInputViewSet;
+    CDUnknownBlockType _postRotationPendingBlock;
     UIInputViewSetNotificationInfo *_postRotationInputViewNotificationInfo;
     UIInputViewSetNotificationInfo *_templateNotificationInfo;
     UIInputViewPlacementTransition *_currentTransition;
@@ -71,11 +74,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *accessoryViewHeightConstraint; // @synthesize accessoryViewHeightConstraint=_accessoryViewHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *assistantViewHeightConstraint; // @synthesize assistantViewHeightConstraint=_assistantViewHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *inputViewHeightConstraint; // @synthesize inputViewHeightConstraint=_inputViewHeightConstraint;
+@property(nonatomic) _Bool forceAccessoryViewToBottomOfHostView; // @synthesize forceAccessoryViewToBottomOfHostView=_forceAccessoryViewToBottomOfHostView;
 @property(readonly, retain, nonatomic) UIInputWindowControllerHosting *hosting; // @synthesize hosting=_hosting;
 @property(nonatomic) _Bool shouldNotifyRemoteKeyboards; // @synthesize shouldNotifyRemoteKeyboards=_shouldNotifyRemoteKeyboards;
 @property(retain, nonatomic) UIInputViewPlacementTransition *currentTransition; // @synthesize currentTransition=_currentTransition;
 @property(retain, nonatomic) UIInputViewSetNotificationInfo *templateNotificationInfo; // @synthesize templateNotificationInfo=_templateNotificationInfo;
 @property(retain, nonatomic) UIInputViewSetNotificationInfo *postRotationInputViewNotificationInfo; // @synthesize postRotationInputViewNotificationInfo=_postRotationInputViewNotificationInfo;
+@property(copy, nonatomic) CDUnknownBlockType postRotationPendingBlock; // @synthesize postRotationPendingBlock=_postRotationPendingBlock;
 @property(retain, nonatomic) UIInputViewSet *postRotationInputViewSet; // @synthesize postRotationInputViewSet=_postRotationInputViewSet;
 @property(retain, nonatomic) UIInputViewSetPlacement *postRotationPlacement; // @synthesize postRotationPlacement=_postRotationPlacement;
 @property(retain, nonatomic) UIInputViewController *_inputAccessoryViewController; // @synthesize _inputAccessoryViewController;
@@ -86,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)beginFloatingTransitionFromPanGestureRecognizer:(id)arg1;
 @property(readonly, nonatomic) UIInputViewSetPlacement *expectedPlacement;
 @property(readonly, nonatomic) _Bool isTransitioningBetweenFloatingStates;
+- (void)updateKeyboardSizeClass;
 @property(readonly, nonatomic) _Bool isTransitioningBetweenKeyboardStates;
 @property(readonly, nonatomic) _Bool isTransitionStarted;
 @property(readonly, nonatomic) _Bool isTransitioning;
@@ -106,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isOnScreenRotating;
 - (_Bool)isRotating;
 - (_Bool)isUndocked;
+- (_Bool)hasInputOrAssistantViewsOnScreen;
 - (_Bool)isOnScreen;
 - (_Bool)inputViewSetContainsView:(id)arg1;
 - (struct CGRect)visibleInputViewFrame;
@@ -124,6 +131,7 @@ __attribute__((visibility("hidden")))
 - (void)updateInputAssistantView:(id)arg1;
 - (void)invalidateInputAccessoryView;
 - (void)invalidateInputAssistantView;
+- (void)validateInputView;
 - (void)invalidateInputView;
 - (void)updateKeyboardDockViewVisibility;
 - (void)setPlacement:(id)arg1 quietly:(_Bool)arg2 animated:(_Bool)arg3 generateSplitNotification:(_Bool)arg4;
@@ -136,7 +144,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) UIInputViewSetPlacement *placementIgnoringRotation;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
-- (void)window:(id)arg1 willAnimateRotationToInterfaceOrientation:(long long)arg2 duration:(double)arg3 newSize:(struct CGSize)arg4;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (_Bool)_useLiveRotation;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
@@ -149,6 +156,7 @@ __attribute__((visibility("hidden")))
 - (id)transitioningView;
 - (id)viewForTransitionScreenSnapshot;
 - (void)syncToExistingAnimations;
+- (void)chainPlacementsIfNecessaryFrom:(id)arg1 toPlacement:(id)arg2 transition:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)moveFromPlacement:(id)arg1 toPlacement:(id)arg2 starting:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)flushPendingActivities;
 - (void)addPendingActivity:(CDUnknownBlockType)arg1;
@@ -158,19 +166,23 @@ __attribute__((visibility("hidden")))
 - (void)popAnimationStyle;
 - (void)pushAnimationStyle:(id)arg1;
 - (void)updateForKeyplaneChangeWithContext:(id)arg1;
+- (void)setDisableUpdateMaskForSecureTextEntry:(_Bool)arg1;
 - (void)checkPlaceholdersForRemoteKeyboardsAndForceConstraintsUpdate:(_Bool)arg1 layoutSubviews:(_Bool)arg2;
 - (void)viewDidLayoutSubviews;
-- (struct CGRect)_convertRectFromContainerCoordinateSpaceToScreenSpace:(struct CGRect)arg1;
+- (struct CGRect)convertRectFromContainerCoordinateSpaceToScreenSpace:(struct CGRect)arg1;
 - (id)_screenCoordinateSpace;
 - (void)transferActiveNotificationInfoToInfo:(id)arg1;
 - (void)viewWillLayoutSubviews;
+- (_Bool)_allowsSkippingLayout;
 - (void)setHostingNeedsLayout;
 - (void)_forcePreLayoutHostViewFrame;
 - (void)updateAmbiguousControlCenterActivationMargin:(unsigned long long)arg1 withInfo:(id)arg2;
 - (void)updateAppearStatesForPlacement:(id)arg1 start:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)changeChild:(unsigned long long)arg1 toAppearState:(int)arg2 animated:(_Bool)arg3;
 - (int)appearStateForChild:(unsigned long long)arg1 placement:(id)arg2 start:(_Bool)arg3;
+- (void)postValidatedEndNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (void)postEndNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
+- (void)postValidatedStartNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (void)postStartNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (id)initialNotificationInfo;
 @property(readonly, nonatomic) _Bool isSnapshotting;
@@ -181,7 +193,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateContentOverlayInsetsForSelfAndChildren;
 - (void)updateSupportsDockViewController;
 - (struct UIEdgeInsets)_inputViewPadding;
-- (void)updateRootViewConstraintsForSceneFrame:(struct CGRect)arg1 bounds:(struct CGRect)arg2;
 - (void)updateViewConstraints;
 - (void)updateViewSizingConstraints;
 - (void)_presentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animationController:(id)arg4 interactionController:(id)arg5 completion:(CDUnknownBlockType)arg6;
@@ -207,6 +218,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *_inputAccessoryView;
 @property(readonly, nonatomic) UIView *_inputAssistantView;
 @property(readonly, nonatomic) UIView *_inputView;
+- (void)hostViewWillDisappear;
 - (void)didSuspend:(id)arg1;
 - (void)willResume:(id)arg1;
 - (void)updateInputAssistantViewForInputViewSet:(id)arg1;

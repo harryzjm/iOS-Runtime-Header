@@ -11,11 +11,13 @@
     NSDateInterval *_interval;
 }
 
-+ (id)managedObjectWithVisit:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)managedObjectWithVisit:(id)arg1 place:(id)arg2 managedObject:(id)arg3 inManagedObjectContext:(id)arg4;
 + (id)managedObjectWithVisit:(id)arg1 place:(id)arg2 inManagedObjectContext:(id)arg3;
++ (id)managedObjectWithVisit:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchRequest;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDateInterval *interval; // @synthesize interval=_interval;
+@property(copy, nonatomic) NSNumber *locationHorizontalUncertainty;
 - (_Bool)overlapsWithVisit:(id)arg1;
 - (_Bool)intersectsWithVisit:(id)arg1 distanceCalculator:(id)arg2;
 
@@ -25,10 +27,12 @@
 @property(copy, nonatomic) NSDate *entryDate; // @dynamic entryDate;
 @property(copy, nonatomic) NSDate *exitDate; // @dynamic exitDate;
 @property(retain, nonatomic) RTLearnedTransitionMO *inbound; // @dynamic inbound;
+@property(copy, nonatomic) NSNumber *locationAltitude; // @dynamic locationAltitude;
 @property(copy, nonatomic) NSNumber *locationLatitude; // @dynamic locationLatitude;
 @property(copy, nonatomic) NSNumber *locationLongitude; // @dynamic locationLongitude;
 @property(copy, nonatomic) NSNumber *locationReferenceFrame; // @dynamic locationReferenceFrame;
 @property(copy, nonatomic) NSNumber *locationUncertainty; // @dynamic locationUncertainty;
+@property(copy, nonatomic) NSNumber *locationVerticalUncertainty; // @dynamic locationVerticalUncertainty;
 @property(retain, nonatomic) RTLearnedTransitionMO *outbound; // @dynamic outbound;
 @property(retain, nonatomic) RTLearnedPlaceMO *place; // @dynamic place;
 @property(copy, nonatomic) NSNumber *placeConfidence; // @dynamic placeConfidence;

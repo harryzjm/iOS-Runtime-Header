@@ -17,12 +17,15 @@
 
 - (void).cxx_destruct;
 - (id)_timerFont;
-- (id)_newTimerDialForSettings:(id)arg1;
+- (id)_newTimerDialForSettings:(id)arg1 withFont:(id)arg2;
 - (void)_updateLegibilityStrength;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)updateTimerLabel;
 - (void)setEndDate:(id)arg1;
+- (double)interItemSpacing;
 - (void)setLegibilitySettings:(id)arg1;
+- (void)setFont:(id)arg1;
+- (id)accessoryView;
 - (void)dealloc;
 - (id)init;
 

@@ -11,6 +11,7 @@
 @class NSDate, NSString;
 
 @interface PHAssetCollection (PVMomentProtocol) <PVMomentProtocol>
+@property(readonly, nonatomic) _Bool isCoarse;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D approximateCoordinate;
 
 // Remaining properties

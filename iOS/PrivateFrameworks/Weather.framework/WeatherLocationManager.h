@@ -35,6 +35,7 @@
 + (int)locationManagerAuthorizationWithEffectiveBundleId:(id)arg1;
 + (void)clearSharedLocationManager;
 + (id)sharedWeatherLocationManager;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
 @property(nonatomic) double nextPlannedUpdate; // @synthesize nextPlannedUpdate=_nextPlannedUpdate;
 @property(nonatomic) double lastLocationUpdateTime; // @synthesize lastLocationUpdateTime=_lastLocationUpdateTime;
@@ -52,7 +53,6 @@
 @property(nonatomic) _Bool locationTrackingIsReady; // @synthesize locationTrackingIsReady=_locationTrackingIsReady;
 @property(nonatomic) __weak id <CLLocationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *effectiveBundleIdentifier; // @synthesize effectiveBundleIdentifier=_effectiveBundleIdentifier;
-- (void).cxx_destruct;
 - (id)location;
 - (void)cancelAccuracyFallbackTimer;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
@@ -77,8 +77,10 @@
 - (void)setLocationTrackingReady:(_Bool)arg1 activelyTracking:(_Bool)arg2 watchKitExtension:(_Bool)arg3 shouldRequestAuthorization:(_Bool)arg4;
 - (void)setLocationTrackingReady:(_Bool)arg1 activelyTracking:(_Bool)arg2 watchKitExtension:(_Bool)arg3;
 - (int)forceLoadingAuthorizationStatus;
+- (void)forceLocationManagerAuthorization;
 - (void)askForLocationManagerAuthorization;
 - (_Bool)localWeatherAuthorized;
+@property(readonly, nonatomic) _Bool limitsPrecision;
 @property(readonly, nonatomic) double distanceFilter;
 - (void)dealloc;
 - (id)init;

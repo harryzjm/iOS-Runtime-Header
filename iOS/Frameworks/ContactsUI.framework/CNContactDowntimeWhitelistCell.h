@@ -9,7 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (_Bool)shouldIndentWhileEditing;
++ (_Bool)shouldIndentWhileEditing;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

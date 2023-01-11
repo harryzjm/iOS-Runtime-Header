@@ -4,20 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MTLGPUDebugRenderCommandEncoder
+#import <MetalTools/MTLGPUDebugCommandEncoder-Protocol.h>
+
+@class MTLGPUDebugCommandBuffer, MTLGPUDebugRenderPipelineState, MTLToolsDepthStencilState, NSString;
+
+@interface MTLGPUDebugRenderCommandEncoder <MTLGPUDebugCommandEncoder>
 {
+    unsigned int useResourceIteration;
+    _Bool _tileStageActive;
+    _Bool _tileStageUsed;
+    _Bool _fragmentStageActive;
+    struct MTLGPUDebugStageBufferHandles _vertexHandles;
+    struct MTLGPUDebugStageBufferHandles _fragmentHandles;
+    struct MTLGPUDebugStageBufferHandles _tileHandles;
     struct MTLGPUDebugBufferArgumentData _vertexBuffers;
     struct MTLGPUDebugBufferArgumentData _fragmentBuffers;
     struct MTLGPUDebugBufferArgumentData _tileBuffers;
-    unsigned long long _pipelineStateID;
-    unsigned int _encoderID;
-    unsigned int _currentDrawID;
+    struct MTLGPUDebugTileThreadgroup _threadgroup;
+    struct Options *_options;
+    struct GPUDebugEventUUIDPacket _drawID;
+    unsigned long long _encoderType;
+    MTLGPUDebugRenderPipelineState *_currentPipeline;
+    MTLToolsDepthStencilState *_currentDepthStencil;
+    struct GPUBufferSubAlloc _vertexReportBuffer;
+    struct GPUBufferSubAlloc _fragmentReportBuffer;
+    struct GPUBufferSubAlloc _tileReportBuffer;
+    struct {
+        unsigned char count;
+        _Bool mappingsValid;
+        CDStruct_1987c1e3 mappings[2];
+    } _vertexAmpState;
 }
 
 - (id).cxx_construct;
-- (void)dealloc;
 - (void)endEncoding;
 - (void)setRenderPipelineState:(id)arg1;
+- (void)setDepthStencilState:(id)arg1;
+- (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;
+- (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1;
@@ -33,6 +60,7 @@
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4;
 - (void)drawPrimitives:(unsigned long long)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3;
+- (void)setThreadgroupMemoryLength:(unsigned long long)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setTileBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setTileBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setTileBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -45,9 +73,23 @@
 - (void)setVertexBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
-- (void)onDraw;
+- (void)setRenderPipelineStateBuffers:(id)arg1;
+- (void)setTileReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (void)setFragmentReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (void)setVertexReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (void)setTessellationControlPointIndexBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (void)flushBindings;
+@property(readonly) unsigned int encoderID;
 - (id)initWithRenderCommandEncoder:(id)arg1 parallelEncoder:(id)arg2 descriptor:(id)arg3 encoderID:(unsigned int)arg4;
 - (id)initWithRenderCommandEncoder:(id)arg1 commandBuffer:(id)arg2 descriptor:(id)arg3 encoderID:(unsigned int)arg4;
+- (void)_initBufferArgumentData:(id)arg1;
+
+// Remaining properties
+@property(readonly) MTLGPUDebugCommandBuffer *commandBuffer; // @dynamic commandBuffer;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

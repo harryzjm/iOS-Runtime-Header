@@ -16,9 +16,14 @@
 }
 
 - (void).cxx_destruct;
+- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToU16CountedSet:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (void)_dictEnumerateValuesAndCountsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_vectorEnumerateValuesAndCountsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateValuesAndCountsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)dictionary;
 - (unsigned long long)uniqueValueCount;
 - (unsigned short)countForValue:(unsigned short)arg1;
 - (void)addValue:(unsigned short)arg1;

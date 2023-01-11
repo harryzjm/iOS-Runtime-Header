@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVQueuePlayer, UIColor;
+@class AVQueuePlayer;
 
 __attribute__((visibility("hidden")))
 @interface QLLoopingMediaItemViewController
 {
     AVQueuePlayer *_queuePlayer;
     _Bool _addedObservers;
-    UIColor *_fullscreenBackgroundColor;
 }
 
 - (void).cxx_destruct;
-- (id)fullscreenBackgroundColor;
 - (id)player;
 - (void)stopObservingItem;
 - (void)startObservingItem;

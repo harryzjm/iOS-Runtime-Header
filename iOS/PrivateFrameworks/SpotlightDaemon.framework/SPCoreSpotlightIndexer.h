@@ -19,6 +19,7 @@
     NSMutableSet *_bundlesWithIndexedCoreSpotlightItems;
     NSSet *_bundlesWithRemoteSearchSupport;
     NSObject<OS_dispatch_queue> *_appScopingQueue;
+    NSString *_serviceName;
     NSArray *_reindexIndexers;
     _Bool _updatePersonas;
     id <CSIndexExtensionDelegate> extensionDelegate;
@@ -59,6 +60,7 @@
 + (void)cooldown;
 + (void)preheat;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
 @property(nonatomic) unsigned long long dataMigrationStage; // @synthesize dataMigrationStage=_dataMigrationStage;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *reindexAllQueue; // @synthesize reindexAllQueue=_reindexAllQueue;
@@ -78,7 +80,6 @@
 @property(retain, nonatomic) SPCoreSpotlightInteractionHandler *interactionHandler; // @synthesize interactionHandler=_interactionHandler;
 @property __weak id <SPCoreSpotlightIndexerDelegate> indexerDelegate; // @synthesize indexerDelegate=_indexerDelegate;
 @property __weak id <CSIndexExtensionDelegate> extensionDelegate; // @synthesize extensionDelegate;
-- (void).cxx_destruct;
 - (void)_reindexAllItemsWithExtensionsAndIdentifiersAndCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_reindexAllItemsWithExtensionsAndCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_reindexAllIdentifiersWithExtension:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -95,7 +96,7 @@
 - (void)powerStateChanged;
 - (void)revokeExpiredItems:(id)arg1;
 - (void)fetchAttributesForProtectionClass:(id)arg1 attributes:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 includeParents:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (double)lastUpdateTime;
 - (void)performIndexerTask:(id)arg1 withIndexExtensionsAndCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)addCompletedBundleIDs:(id)arg1 forIndexerTask:(id)arg2;
@@ -140,12 +141,17 @@
 - (void)startQueryTask:(id)arg1;
 - (id)taskForQueryWithQueryString:(id)arg1 queryContext:(id)arg2 eventHandler:(CDUnknownBlockType)arg3 resultsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_taskForQueryWithQueryString:(id)arg1 queryContext:(id)arg2 eventHandler:(CDUnknownBlockType)arg3 resultsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)queryPreheat:(id)arg1;
 - (void)shutdown;
 - (void)closeIndex;
 - (void)_closeIndexWithIndexers:(id)arg1;
 - (void)shrink:(unsigned long long)arg1;
 - (void)coolDown;
+- (void)issueDuplicateOidCheck:(id)arg1;
 - (void)issueConsistencyCheck:(id)arg1;
+- (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDefrag:(id)arg1 group:(id)arg2;
 - (void)issueCleanup:(id)arg1 flags:(int)arg2;
 - (void)issueRepair:(id)arg1;
 - (void)cleanupStringsWithProtectionClasses:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -164,6 +170,10 @@
 - (void)_enumerateIndexersWithProtectionClasses:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)start;
+- (void)setServiceName:(id)arg1;
+- (id)delegateServiceName;
+- (id)indexServiceName;
+- (id)searchServiceName;
 - (void)locked;
 - (void)locking;
 - (void)unlock;

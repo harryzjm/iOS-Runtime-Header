@@ -17,7 +17,10 @@
 - (void)isPairedWithCertificateSerial:(NSData *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)allowsConnectionsForCertificateSerial:(NSData *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)allowsConnectionsForWiFiUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
-- (void)saveWiFiCredentialsForAccessoryConnectionIdentifier:(unsigned long long)arg1 credentials:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSString *, NSError *))arg3;
+- (void)wantsCarPlayControlAdvertisingForWiFiUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)wantsCarPlayControlAdvertisingForUSBWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)saveWiFiCredentials:(NSDictionary *)arg1 forAccessoryConnectionIdentifier:(unsigned long long)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)handleCarPlayConnectionRequestForConnectionID:(unsigned int)arg1 startSessionProperties:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)isBluetoothInCarWithReply:(void (^)(_Bool, NSString *, NSError *))arg1;
 - (void)handleDidDisconnectBluetoothAddress:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)handleDidConnectBluetoothAddress:(NSString *)arg1 reply:(void (^)(_Bool, NSString *, NSError *))arg2;

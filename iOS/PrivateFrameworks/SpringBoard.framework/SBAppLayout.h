@@ -8,12 +8,14 @@
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/NSCopying-Protocol.h>
+#import <SpringBoard/SBSwitcherLayoutElementProviding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface SBAppLayout : NSObject <NSCopying, BSDescriptionProviding>
+@interface SBAppLayout : NSObject <NSCopying, BSDescriptionProviding, SBSwitcherLayoutElementProviding>
 {
     long long _cachedAppLayoutType;
+    unsigned long long _cachedHash;
     _Bool _hidden;
     long long _configuration;
     long long _environment;
@@ -22,16 +24,16 @@
 
 + (id)homeScreenAppLayout;
 + (id)appLayoutWithProtobufRepresentation:(id)arg1;
-@property(copy, nonatomic) NSDictionary *rolesToLayoutItemsMap; // @synthesize rolesToLayoutItemsMap=_rolesToLayoutItemsMap;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(readonly, nonatomic) long long environment; // @synthesize environment=_environment;
-@property(nonatomic) long long configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) long long configuration;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+- (unsigned long long)switcherLayoutElementType;
 @property(readonly, nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance;
 - (id)appLayoutWithItemsPassingTest:(CDUnknownBlockType)arg1;
 - (long long)compare:(id)arg1;

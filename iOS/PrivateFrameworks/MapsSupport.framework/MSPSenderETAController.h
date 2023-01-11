@@ -10,7 +10,7 @@
 #import <MapsSupport/MSPSenderMessageStrategyDelegate-Protocol.h>
 #import <MapsSupport/MSPSharedTripGroupSessionDelegate-Protocol.h>
 
-@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, NSMutableSet, NSString;
+@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, NSArray, NSMutableSet, NSString;
 @protocol MSPSenderETAControllerDelegate, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
     NSObject<MSPSenderETAControllerDelegate> *_delegate;
 }
 
-@property(nonatomic) __weak NSObject<MSPSenderETAControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak NSObject<MSPSenderETAControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 - (void)groupSessionEnded:(id)arg1 withError:(id)arg2;
 - (void)groupSession:(id)arg1 participantDidLeave:(id)arg2;
 - (void)groupSession:(id)arg1 participantDidJoin:(id)arg2;
@@ -44,22 +44,26 @@ __attribute__((visibility("hidden")))
 - (void)navigationListener:(id)arg1 didFailWithError:(id)arg2;
 - (void)touchedRules;
 - (id)rulesForParticipant:(id)arg1;
-- (void)sendMessage:(id)arg1 toParticipant:(id)arg2;
+- (_Bool)_validateNavigationState:(id *)arg1;
 - (void)_stopNavigationListener;
 - (void)_startNavigationListener;
-- (void)_sendfinishedToIdentifiers:(id)arg1;
+- (void)_invalidateActiveHandles;
+- (void)_invalidateSharedTripWithError:(id)arg1;
+- (void)_sendFinishedToIdentifiers:(id)arg1;
 - (void)_cleanObjects;
+@property(readonly, nonatomic) NSArray *activeHandles;
 - (void)stopSharing;
 - (void)stopSharingWithGroup:(id)arg1;
-- (void)startSharingWithGroup:(id)arg1;
+- (_Bool)startSharingWithGroup:(id)arg1 error:(id *)arg2;
 - (void)stopSharingWithMessages:(id)arg1;
-- (void)startSharingWithMessages:(id)arg1;
+- (_Bool)startSharingWithMessages:(id)arg1 error:(id *)arg2;
 - (void)stopSharingWith:(id)arg1;
-- (void)startSharingWith:(id)arg1;
+- (_Bool)startSharingWith:(id)arg1 error:(id *)arg2;
 - (void)_startingGroupSession;
 - (void)_createGroupSessionIfNeededWithIdentifier:(id)arg1;
 - (void)_restoreLastSession;
 - (void)_updateStorage;
+- (void)dealloc;
 - (id)initWithRelay:(id)arg1;
 
 // Remaining properties

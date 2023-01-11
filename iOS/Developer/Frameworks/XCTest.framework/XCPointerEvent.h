@@ -13,6 +13,7 @@
 @interface XCPointerEvent : NSObject <NSSecureCoding>
 {
     _Bool _mergeModifierFlagsWithCurrentFlags;
+    _Bool _shouldRedact;
     unsigned long long _eventType;
     unsigned long long _buttonType;
     double _pressure;
@@ -35,7 +36,9 @@
 }
 
 + (CDUnknownBlockType)offsetComparator;
++ (id)keyboardEventForKeyCode:(unsigned long long)arg1 keyPhase:(unsigned long long)arg2 modifierFlags:(unsigned long long)arg3 offset:(double)arg4 shouldRedact:(_Bool)arg5;
 + (id)keyboardEventForKeyCode:(unsigned long long)arg1 keyPhase:(unsigned long long)arg2 modifierFlags:(unsigned long long)arg3 offset:(double)arg4;
++ (id)textEventForString:(id)arg1 offset:(double)arg2 typingSpeed:(unsigned long long)arg3 shouldRedact:(_Bool)arg4;
 + (id)textEventForString:(id)arg1 offset:(double)arg2 typingSpeed:(unsigned long long)arg3;
 + (id)textEventForKey:(id)arg1 withModifierFlags:(unsigned long long)arg2 offset:(double)arg3;
 + (id)textEventForModifierFlags:(unsigned long long)arg1 mergeWithCurrent:(_Bool)arg2 offset:(double)arg3;
@@ -48,10 +51,12 @@
 + (id)eventWithType:(unsigned long long)arg1 buttonType:(unsigned long long)arg2 coordinate:(struct CGPoint)arg3 offset:(double)arg4 duration:(double)arg5 clickCount:(unsigned long long)arg6;
 + (id)eventWithType:(unsigned long long)arg1 buttonType:(unsigned long long)arg2 coordinate:(struct CGPoint)arg3 offset:(double)arg4 clickCount:(unsigned long long)arg5;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property unsigned long long deviceID; // @synthesize deviceID=_deviceID;
 @property unsigned long long gesturePhase; // @synthesize gesturePhase=_gesturePhase;
 @property unsigned long long keyPhase; // @synthesize keyPhase=_keyPhase;
 @property unsigned long long keyCode; // @synthesize keyCode=_keyCode;
+@property _Bool shouldRedact; // @synthesize shouldRedact=_shouldRedact;
 @property unsigned long long typingSpeed; // @synthesize typingSpeed=_typingSpeed;
 @property(copy) NSString *string; // @synthesize string=_string;
 @property(copy) NSString *key; // @synthesize key=_key;
@@ -68,8 +73,9 @@
 @property struct CGPoint coordinate; // @synthesize coordinate=_coordinate;
 @property unsigned long long buttonType; // @synthesize buttonType=_buttonType;
 @property unsigned long long eventType; // @synthesize eventType=_eventType;
-- (void).cxx_destruct;
 - (id)description;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

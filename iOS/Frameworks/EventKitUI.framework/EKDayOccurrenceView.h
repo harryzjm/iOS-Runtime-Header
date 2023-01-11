@@ -8,11 +8,12 @@
 
 #import <EventKitUI/EKDayOccurrenceTravelTimeViewMetricsDelegate-Protocol.h>
 #import <EventKitUI/NSCopying-Protocol.h>
+#import <EventKitUI/_UICursorInteractionDelegate-Protocol.h>
 
-@class EKDayOccurrenceState, EKDayOccurrenceTravelTimeView, EKEvent, NSObject, NSString, UIColor, UIImageView;
+@class EKDayOccurrenceState, EKDayOccurrenceTravelTimeView, EKEvent, NSObject, NSString, UIColor, UIImageView, _UICursorInteraction;
 @protocol EKDayOccurrenceViewDelegate;
 
-@interface EKDayOccurrenceView : UIView <NSCopying, EKDayOccurrenceTravelTimeViewMetricsDelegate>
+@interface EKDayOccurrenceView : UIView <_UICursorInteractionDelegate, NSCopying, EKDayOccurrenceTravelTimeViewMetricsDelegate>
 {
     double _visibleHeight;
     UIImageView *_eventBackgroundView;
@@ -34,7 +35,9 @@
     long long _currentRequestId;
     EKDayOccurrenceState *_currentImageState;
     unsigned long long _invalidatedRequestOptions;
+    struct CGPoint _contentLocationDuringReducedProcessing;
     UIColor *_stagedBackgroundColor;
+    _UICursorInteraction *_cursorInteraction;
     _Bool _isVibrant;
     _Bool _visibleHeightLocked;
     _Bool _selected;
@@ -54,6 +57,9 @@
     _Bool _birthday;
     _Bool _showsTravelTime;
     _Bool _reduceLayoutProcessingForAnimation;
+    _Bool _pointerInteractionDisabled;
+    _Bool _hasPrecedingDuration;
+    _Bool _hasTrailingDuration;
     _Bool _touchesAreBeingTracked;
     NSObject<EKDayOccurrenceViewDelegate> *_delegate;
     EKDayOccurrenceView *_selectedCopy;
@@ -63,6 +69,7 @@
     double _cappedColorBarHeight;
     double _travelTime;
     long long _occurrenceBackgroundStyle;
+    double _topPinningProximity;
     double _bottomPinningProximity;
     double _topYBoundaryForText;
     struct UIEdgeInsets _margin;
@@ -77,7 +84,7 @@
 + (double)minNaturalTextHeightForEvent:(id)arg1 usingSmallText:(_Bool)arg2 sizeClass:(long long)arg3;
 + (id)_color:(id)arg1 darkenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
 + (id)_color:(id)arg1 lightenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
-+ (id)imageForExternalDragOperationFromEvent:(id)arg1;
++ (id)imageForExternalDragOperationFromEvent:(id)arg1 style:(long long)arg2;
 + (id)framePathForExternalDragOperationWithSize:(struct CGSize)arg1;
 + (struct CGRect)contentStretchRectForFrame:(struct CGRect)arg1;
 + (double)bottomShadowMargin;
@@ -88,10 +95,15 @@
 + (void)clearCaches;
 + (void)_clearViewCache;
 + (id)_viewCache;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool touchesAreBeingTracked; // @synthesize touchesAreBeingTracked=_touchesAreBeingTracked;
 @property(readonly, nonatomic) EKDayOccurrenceState *currentImageState; // @synthesize currentImageState=_currentImageState;
 @property(nonatomic) double topYBoundaryForText; // @synthesize topYBoundaryForText=_topYBoundaryForText;
+@property(nonatomic) _Bool hasTrailingDuration; // @synthesize hasTrailingDuration=_hasTrailingDuration;
+@property(nonatomic) _Bool hasPrecedingDuration; // @synthesize hasPrecedingDuration=_hasPrecedingDuration;
+@property(nonatomic) _Bool pointerInteractionDisabled; // @synthesize pointerInteractionDisabled=_pointerInteractionDisabled;
 @property(nonatomic) double bottomPinningProximity; // @synthesize bottomPinningProximity=_bottomPinningProximity;
+@property(nonatomic) double topPinningProximity; // @synthesize topPinningProximity=_topPinningProximity;
 @property(nonatomic) _Bool reduceLayoutProcessingForAnimation; // @synthesize reduceLayoutProcessingForAnimation=_reduceLayoutProcessingForAnimation;
 @property(nonatomic) long long occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
 @property(nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
@@ -121,7 +133,10 @@
 @property(nonatomic) _Bool isVibrant; // @synthesize isVibrant=_isVibrant;
 @property(nonatomic) __weak EKDayOccurrenceView *selectedCopy; // @synthesize selectedCopy=_selectedCopy;
 @property(nonatomic) __weak NSObject<EKDayOccurrenceViewDelegate> *delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (void)_setUpInteraction;
+- (void)_updateCornerRadius;
 - (long long)_compareOccurrenceViewLeftToRight:(id)arg1;
 - (_Bool)_isBelowAllDayOccurrenceView:(id)arg1;
 - (_Bool)_isBelowOccurrenceView:(id)arg1 overlapToIgnore:(double)arg2;
@@ -156,6 +171,7 @@
 - (void)forceUpdateContentWithPayload:(id)arg1;
 - (void)_updateContentWithPayload:(id)arg1;
 - (void)requestContentIfNeeded:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (struct CGRect)_frameForText;
 - (void)_updateContentImageViewIfNeeded;
 - (void)layoutSubviews;
 - (struct CGRect)frameOfOpaqueContent;

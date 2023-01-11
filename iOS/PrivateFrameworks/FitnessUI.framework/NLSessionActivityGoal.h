@@ -20,6 +20,10 @@
 + (_Bool)supportsSecureCoding;
 + (id)goalFromURL:(id)arg1;
 @property(nonatomic) unsigned long long goalTypeIdentifier; // @synthesize goalTypeIdentifier=_goalTypeIdentifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqualToNLSessionActivityGoal:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (double)doubleValue;

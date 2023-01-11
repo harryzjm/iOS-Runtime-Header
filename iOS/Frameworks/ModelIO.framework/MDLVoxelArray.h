@@ -22,11 +22,11 @@
     MISSING_TYPE *_originatingOffset;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) float shellFieldExteriorThickness; // @synthesize shellFieldExteriorThickness=_exteriorThickness;
 @property(nonatomic) float shellFieldInteriorThickness; // @synthesize shellFieldInteriorThickness=_interiorThickness;
 @property(readonly, nonatomic) struct voxelIndexExtent; // @synthesize voxelIndexExtent=_extent;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)setVoxelsForMesh:(id)arg1 divisions:(int)arg2 interiorNBWidth:(float)arg3 exteriorNBWidth:(float)arg4 patchRadius:(float)arg5;
 - (void)setVoxelsForMesh:(id)arg1 divisions:(int)arg2 interiorShells:(int)arg3 exteriorShells:(int)arg4 patchRadius:(float)arg5;
 - (id)initWithAsset:(id)arg1 divisions:(int)arg2 interiorNBWidth:(float)arg3 exteriorNBWidth:(float)arg4 patchRadius:(float)arg5;
@@ -36,7 +36,7 @@
 - (id)meshUsingAllocator:(id)arg1;
 - (id)coarseMesh;
 - (id)coarseMeshUsingAllocator:(id)arg1;
-- (void)erodeNarrowBandInteriorWidthTo:(float)arg1 AndExteriorWidthTo:(float)arg2;
+- (void)erodeNarrowBandInteriorWidthTo:(float)arg1 AndExteriorWidthTo:(float)arg2 selector:(SEL)arg3;
 - (void)dilateNarrowBandInteriorWidthTo:(float)arg1 AndExteriorWidthTo:(float)arg2;
 @property(readonly, nonatomic) _Bool isValidSignedShellField;
 - (void)convertToSignedShellField;

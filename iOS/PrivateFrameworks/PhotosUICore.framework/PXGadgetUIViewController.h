@@ -13,6 +13,7 @@
 #import <PhotosUICore/PXGadgetDelegate-Protocol.h>
 #import <PhotosUICore/PXGadgetNavigationHelperDelegate-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
+#import <PhotosUICore/PXSplitViewControllerChangeObserver-Protocol.h>
 #import <PhotosUICore/UICollectionViewDataSourcePrefetching-Protocol.h>
 #import <PhotosUICore/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PhotosUICore/UICollectionViewDropDelegate-Protocol.h>
@@ -21,17 +22,21 @@
 @class NSMapTable, NSMutableSet, NSObject, NSString, NSTimer, PXContentUnavailablePlaceholderManager, PXContentUnavailableView, PXGadgetAnchorHelper, PXGadgetCollectionViewLayout, PXGadgetDataSource, PXGadgetDataSourceManager, PXGadgetNavigationHelper, PXGadgetSpecManager, PXUpdater, UIColor, UIContextMenuInteraction, UIView, UIViewController;
 @protocol OS_os_log, PXGadget, PXGadgetDelegate, PXGadgetTransition;
 
-@interface PXGadgetUIViewController : UICollectionViewController <UIContextMenuInteractionDelegate, PXGadgetCollectionViewLayoutDelegate, PXGadgetAnchorHelperDelegate, PXSectionedDataSourceManagerObserver, PXContentUnavailablePlaceholderManagerDelegate, UICollectionViewDataSourcePrefetching, PXChangeObserver, PXGadgetNavigationHelperDelegate, UICollectionViewDropDelegate, UICollectionViewDelegateFlowLayout, PXGadgetDelegate>
+@interface PXGadgetUIViewController : UICollectionViewController <UIContextMenuInteractionDelegate, PXGadgetCollectionViewLayoutDelegate, PXGadgetAnchorHelperDelegate, PXSectionedDataSourceManagerObserver, PXContentUnavailablePlaceholderManagerDelegate, UICollectionViewDataSourcePrefetching, PXSplitViewControllerChangeObserver, PXChangeObserver, PXGadgetNavigationHelperDelegate, UICollectionViewDropDelegate, UICollectionViewDelegateFlowLayout, PXGadgetDelegate>
 {
     NSMutableSet *_registeredCellReuseIdentifiers;
     NSMapTable *_cellsToGadgets;
+    _Bool _isScrolling;
     _Bool _isInteractionPreviewCancelled;
     _Bool _currentlyVisible;
     _Bool _loadingGadgets;
     _Bool _gadgetAnimating;
     _Bool _batchUpdating;
     _Bool _isContentVisible;
+    _Bool _isDFITogglingSidebar;
+    _Bool _isRotatingVerticalLayout;
     _Bool _shouldPreventPlaceholder;
+    _Bool _allowsBarManagement;
     struct PXGadgetUpdateFlags _updateFlags;
     PXGadgetDataSourceManager *_dataSourceManager;
     PXGadgetNavigationHelper *_navigationHelper;
@@ -54,8 +59,12 @@
 }
 
 + (Class)gadgetSpecClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool allowsBarManagement; // @synthesize allowsBarManagement=_allowsBarManagement;
 @property(readonly, nonatomic) _Bool shouldPreventPlaceholder; // @synthesize shouldPreventPlaceholder=_shouldPreventPlaceholder;
 @property(retain, nonatomic) PXContentUnavailablePlaceholderManager *placeholderManager; // @synthesize placeholderManager=_placeholderManager;
+@property(nonatomic) _Bool isRotatingVerticalLayout; // @synthesize isRotatingVerticalLayout=_isRotatingVerticalLayout;
+@property(nonatomic) _Bool isDFITogglingSidebar; // @synthesize isDFITogglingSidebar=_isDFITogglingSidebar;
 @property(retain, nonatomic) PXContentUnavailableView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property(retain, nonatomic) NSMutableSet *cellsWantingVisibleRectUpdates; // @synthesize cellsWantingVisibleRectUpdates=_cellsWantingVisibleRectUpdates;
 @property(nonatomic, setter=setContentVisible:) _Bool isContentVisible; // @synthesize isContentVisible=_isContentVisible;
@@ -75,12 +84,12 @@
 @property(retain, nonatomic) UIViewController *interactionPreviewViewController; // @synthesize interactionPreviewViewController=_interactionPreviewViewController;
 @property(retain, nonatomic) id <PXGadget> interactionPreviewGadget; // @synthesize interactionPreviewGadget=_interactionPreviewGadget;
 @property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
+@property(nonatomic) _Bool isScrolling; // @synthesize isScrolling=_isScrolling;
 @property(copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) unsigned long long numberOfInitialGadgetsToLoad; // @synthesize numberOfInitialGadgetsToLoad=_numberOfInitialGadgetsToLoad;
 @property(readonly, nonatomic) PXGadgetAnchorHelper *anchorHelper; // @synthesize anchorHelper=_anchorHelper;
 @property(readonly, nonatomic) PXGadgetNavigationHelper *navigationHelper; // @synthesize navigationHelper=_navigationHelper;
 @property(readonly, nonatomic) PXGadgetDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
-- (void).cxx_destruct;
 - (long long)scrollAnimationIdentifier;
 @property(readonly, nonatomic) NSObject<OS_os_log> *gadgetViewControllerLog;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
@@ -103,11 +112,11 @@
 @property(nonatomic) __weak id <PXGadgetDelegate> nextGadgetResponder;
 @property(readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
 @property(readonly, nonatomic) id <PXGadgetTransition> gadgetTransition;
-- (void)dismissGadgetViewController:(struct NSObject *)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)presentGadgetViewController:(struct NSObject *)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)gadget:(id)arg1 transitionToViewController:(struct NSObject *)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)dismissGadgetViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentGadgetViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)gadget:(id)arg1 transitionToViewController:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)gadget:(id)arg1 animateChanges:(CDUnknownBlockType)arg2;
-- (struct NSObject *)gadgetViewControllerHostingGadget:(id)arg1;
+- (id)gadgetViewControllerHostingGadget:(id)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
@@ -118,13 +127,15 @@
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)splitViewController:(id)arg1 didChangeSidebarVisibility:(_Bool)arg2;
+- (void)splitViewController:(id)arg1 willChangeSidebarVisibility:(_Bool)arg2;
+@property(readonly, nonatomic) _Bool isTogglingSidebarNoRotating;
 @property(readonly, nonatomic) struct UIEdgeInsets insetsForSectionHeaders;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
-- (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
@@ -148,7 +159,7 @@
 - (void)_setTimerToHandleGadgetsSeen;
 - (void)_clearTimerToHandleGadgetsSeen;
 - (void)_handleGadgetsSeen;
-- (void)_configureHeader:(id)arg1 withGadget:(id)arg2;
+- (void)_configureHeader:(id)arg1 withGadgetSection:(id)arg2;
 - (void)configureSectionHeader:(id)arg1;
 - (id)_indexPathForGadget:(id)arg1;
 - (id)_gadgetAtIndexPath:(id)arg1;
@@ -157,10 +168,9 @@
 - (void)_removeContextMenuInteraction;
 - (void)_addContextMenuInteraction;
 - (void)contextMenuInteractionDidEnd:(id)arg1;
-- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
-@property(readonly, nonatomic) _Bool isScrolling;
 - (void)setLayout:(id)arg1;
 @property(readonly, nonatomic) PXGadgetCollectionViewLayout *layout;
 - (id)debugURLsForDiagnostics;
@@ -171,6 +181,7 @@
 - (_Bool)isRootGadgetViewController;
 - (void)dealloc;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (long long)_scrollAxis;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;

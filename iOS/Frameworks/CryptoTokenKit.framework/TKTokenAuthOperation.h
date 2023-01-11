@@ -8,11 +8,18 @@
 
 #import <CryptoTokenKit/NSSecureCoding-Protocol.h>
 
+@class NSError;
+
 @interface TKTokenAuthOperation : NSObject <NSSecureCoding>
 {
+    NSError *_authenticationError;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy) NSError *authenticationError; // @synthesize authenticationError=_authenticationError;
+- (void)importOperation:(id)arg1;
+- (Class)baseClassForUI;
 - (_Bool)finishWithError:(id *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

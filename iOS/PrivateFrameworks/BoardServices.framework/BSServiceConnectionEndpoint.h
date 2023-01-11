@@ -16,28 +16,23 @@
 
 @interface BSServiceConnectionEndpoint : NSObject <NSCopying, BSXPCCoding, BSXPCSecureCoding, NSSecureCoding>
 {
-    NSObject<OS_xpc_object> *_endpoint;
     NSString *_targetDescription;
+    _Bool _nonLaunching;
     NSString *_service;
     NSString *_instance;
-    _Bool _nonLaunching;
     NSString *_machName;
+    NSObject<OS_xpc_object> *_endpoint;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)supportsBSXPCSecureCoding;
-+ (id)_endpointFromEndowmentRepresentation:(struct NSObject *)arg1;
-+ (id)_endpointForManager:(id)arg1 domain:(id)arg2 service:(id)arg3 instance:(id)arg4;
 + (id)nullEndpointForService:(id)arg1 instance:(id)arg2;
 + (id)endpointForSystemMachName:(id)arg1 service:(id)arg2 instance:(id)arg3;
 + (id)endpointForMachName:(id)arg1 service:(id)arg2 instance:(id)arg3;
 + (id)defaultShellMachName;
-@property(readonly, nonatomic, getter=_isNonLaunching) _Bool _nonLaunching; // @synthesize _nonLaunching;
-@property(readonly, nonatomic) NSObject<OS_xpc_object> *_endpoint; // @synthesize _endpoint;
-@property(readonly, nonatomic) NSString *_machName; // @synthesize _machName;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *instance; // @synthesize instance=_instance;
 @property(readonly, copy, nonatomic) NSString *service; // @synthesize service=_service;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -48,12 +43,10 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (struct NSObject *)_endowmentRepresentation;
 - (_Bool)isNullEndpoint;
 - (long long)compare:(id)arg1;
 - (_Bool)isEqualToServiceEndpoint:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *targetDescription;
-- (id)_initWithEndpoint:(id)arg1 isNonLaunching:(_Bool)arg2 targetDescription:(id)arg3 service:(id)arg4 instance:(id)arg5;
 - (id)init;
 
 // Remaining properties

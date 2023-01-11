@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class __TSKernelClockNotification;
+@class IOKConnection, IOKInterestNotification, IOKNotificationPort, IOKService;
 
 @interface TSKernelClock
 {
-    unsigned int _service;
-    unsigned int _connection;
-    struct IONotificationPort *_notificationPort;
-    unsigned int _interestNotification;
-    _Bool _serviceIsAlive;
-    __TSKernelClockNotification *_clockForNotification;
+    IOKService *_service;
+    IOKConnection *_connection;
+    IOKNotificationPort *_notificationPort;
+    IOKInterestNotification *_interestNotification;
+    struct os_unfair_lock_s _serviceLock;
 }
 
 + (id)clockNameForClockIdentifier:(unsigned long long)arg1;
 + (id)diagnosticInfoForClockIdentifier:(unsigned long long)arg1;
-+ (id)diagnosticInfoForService:(unsigned int)arg1;
-+ (unsigned int)serviceForClockIdentifier:(unsigned long long)arg1;
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticInfoForService:(id)arg1;
++ (id)serviceForClockIdentifier:(unsigned long long)arg1;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
 + (id)availableKernelClockIdentifiers;
+- (void).cxx_destruct;
 - (id)diagnosticDescriptionWithIndent:(id)arg1;
 - (void)dealloc;
 - (id)clockName;
@@ -31,10 +31,8 @@
 - (_Bool)registerAsyncCallback;
 - (void)_handleNotification:(unsigned int)arg1 withArgs:(unsigned long long *)arg2 ofCount:(unsigned int)arg3;
 - (void)_handleNotification:(unsigned int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
-- (void)setServiceIsAlive:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool serviceIsAlive; // @dynamic serviceIsAlive;
-@property(readonly, nonatomic) unsigned int connection; // @dynamic connection;
-@property(readonly, nonatomic) unsigned int service; // @dynamic service;
+@property(readonly, nonatomic) IOKConnection *connection;
+@property(readonly, nonatomic) IOKService *service;
 - (_Bool)getRateRatioNumerator:(unsigned long long *)arg1 denominator:(unsigned long long *)arg2 machAnchor:(unsigned long long *)arg3 andDomainAnchor:(unsigned long long *)arg4 withError:(id *)arg5;
 - (double)hostRateRatio;
 - (int)_lockState;

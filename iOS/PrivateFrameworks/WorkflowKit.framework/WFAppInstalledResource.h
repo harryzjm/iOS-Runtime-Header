@@ -5,37 +5,35 @@
 //
 
 #import <WorkflowKit/ICAppInstallStatusObserver-Protocol.h>
-#import <WorkflowKit/SKStoreProductViewControllerDelegate-Protocol.h>
 
-@class ICApp, NSString, SKStoreProductViewController;
+@class ICApp, NSObject, NSString, WFiTunesSessionManager;
+@protocol OS_dispatch_queue;
 
-@interface WFAppInstalledResource <SKStoreProductViewControllerDelegate, ICAppInstallStatusObserver>
+@interface WFAppInstalledResource <ICAppInstallStatusObserver>
 {
-    CDUnknownBlockType _recoveryCompletionHandler;
-    SKStoreProductViewController *_viewController;
+    _Bool _skipLookup;
+    WFiTunesSessionManager *_currentAppNameLookupSessionManager;
+    NSObject<OS_dispatch_queue> *_stateQueue;
+    NSString *_appName;
+    NSString *_appIdentifier;
 }
 
 + (_Bool)refreshesAvailabilityOnApplicationResume;
 + (_Bool)mustBeAvailableForDisplay;
-@property(retain, nonatomic) SKStoreProductViewController *viewController; // @synthesize viewController=_viewController;
-@property(copy, nonatomic) CDUnknownBlockType recoveryCompletionHandler; // @synthesize recoveryCompletionHandler=_recoveryCompletionHandler;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property(copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property(nonatomic) _Bool skipLookup; // @synthesize skipLookup=_skipLookup;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateQueue; // @synthesize stateQueue=_stateQueue;
+@property(retain, nonatomic) WFiTunesSessionManager *currentAppNameLookupSessionManager; // @synthesize currentAppNameLookupSessionManager=_currentAppNameLookupSessionManager;
 - (void)appRegistry:(id)arg1 installStatusChangedForApp:(id)arg2;
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)showAppStoreForApp:(id)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 userInterface:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)appNotInstalledError;
 - (void)refreshAvailability;
 - (id)eventDictionary;
 - (void)dealloc;
 - (id)initWithDefinition:(id)arg1;
 @property(readonly, nonatomic) ICApp *app;
-@property(readonly, nonatomic) NSString *appIdentifier;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

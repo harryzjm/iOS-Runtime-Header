@@ -15,7 +15,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (id)createActivityWithActionManager:(id)arg1;
++ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
++ (_Bool)canPerformOnImplicitSelection;
++ (_Bool)canPerformOnSubsetOfSelection;
++ (_Bool)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
 - (void)slideshowViewControllerDidFinish:(id)arg1 withVisibleAssets:(id)arg2;
 - (void)_startSlideshow;
 - (void)performUserInteractionTask;

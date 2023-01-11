@@ -14,6 +14,7 @@
 }
 
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUISizeClass:(long long)arg4 displayOrder:(double)arg5;
++ (long long)componentID;
 @property(readonly, nonatomic) long long coreUISizeClass; // @synthesize coreUISizeClass=_coreUISizeClass;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;

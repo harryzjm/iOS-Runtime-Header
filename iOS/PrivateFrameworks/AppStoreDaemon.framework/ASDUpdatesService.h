@@ -23,6 +23,13 @@
 + (id)defaultService;
 + (id)interface;
 - (void).cxx_destruct;
+- (void)updateAllWithJobResultsCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)updateAllWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)showApplicationBadgeForPendingUpdates;
+- (void)reloadForSettingsFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)hideApplicationBadgeForPendingUpdates;
+- (void)getUpdatesIncludingMetricsWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)getMetricsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)_failedJobResultsForBundleIDs:(id)arg1;
 - (void)updateAllWithOrder:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -33,6 +40,7 @@
 - (void)refreshUpdateCountWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (_Bool)hasEntitlement;
 - (void)getUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)getManagedUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (_Bool)confirmAgentRequestedUpdateAll;
 - (_Bool)autoUpdateEnabled;
 - (id)_initWithServiceBroker:(id)arg1;

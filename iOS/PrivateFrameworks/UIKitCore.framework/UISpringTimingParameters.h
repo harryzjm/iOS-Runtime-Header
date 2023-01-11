@@ -41,6 +41,7 @@
 - (id)initWithDampingRatio:(double)arg1 response:(double)arg2 initialVelocity:(struct CGVector)arg3;
 - (id)initWithDampingRatio:(double)arg1;
 - (id)initWithDampingRatio:(double)arg1 initialVelocity:(struct CGVector)arg2;
+- (id)initWithVelocity:(struct CGVector)arg1;
 - (id)init;
 - (id)initWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 initialVelocity:(struct CGVector)arg4;
 - (id)description;

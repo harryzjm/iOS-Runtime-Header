@@ -14,16 +14,21 @@
     NSURL *_logArchivePath;
     NSDate *_startDate;
     NSDate *_endDate;
+    unsigned long long _startMachContTime;
+    unsigned long long _stopMachContTime;
     NSObject<OS_dispatch_semaphore> *_finishedProcessingSema;
     MXMMutableSampleData *_data;
 }
 
++ (id)probeWithLogArchivePath:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 startMachTime:(unsigned long long)arg4 stopMachTime:(unsigned long long)arg5;
 + (id)probeWithLogArchivePath:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (id)probeWithLogArchivePath:(id)arg1;
++ (id)probeHostSystemLogArchiveWithStartDate:(id)arg1 endDate:(id)arg2 startMachTime:(unsigned long long)arg3 stopMachTime:(unsigned long long)arg4;
 + (id)probeHostSystemLogArchiveWithStartDate:(id)arg1 endDate:(id)arg2;
 + (id)probeHostSystemLogArchiveWithRelativeTimeInterval:(double)arg1;
 + (id)probeHostLive;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)sampleWithTimeout:(double)arg1 stopReason:(unsigned long long *)arg2;
 - (void)_stopUpdates;
 - (void)_beginUpdates;
@@ -33,10 +38,11 @@
 - (id)_buildSampleSetWithData:(id)arg1 tag:(id)arg2 unit:(id)arg3 attributes:(id)arg4 signpostObject:(id)arg5;
 - (void)_setupProcessingBlocks;
 - (void)_setupProcessingFilter;
-- (id)initWithMode:(unsigned long long)arg1;
 - (id)initWithLogArchive:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)initWithLogArchive:(id)arg1;
+- (id)initWithMode:(unsigned long long)arg1 logArchive:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 startMachTime:(unsigned long long)arg5 stopMachTime:(unsigned long long)arg6;
 - (id)initWithMode:(unsigned long long)arg1 logArchive:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
+- (id)initWithMode:(unsigned long long)arg1;
 
 @end
 

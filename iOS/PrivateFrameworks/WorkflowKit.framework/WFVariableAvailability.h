@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSCache, NSHashTable, NSMapTable, WFWorkflow;
+@protocol OS_dispatch_queue;
 
 @interface WFVariableAvailability : NSObject
 {
@@ -18,9 +19,12 @@
     NSMapTable *_actionOutputVariableActionsByUUID;
     NSCache *_cachedContentClassesForVariableNameAtIndex;
     NSHashTable *_variableObservers;
+    NSObject<OS_dispatch_queue> *_actionOutputWorkQueue;
 }
 
 + (_Bool)actionIsEligibleForOutputVariable:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *actionOutputWorkQueue; // @synthesize actionOutputWorkQueue=_actionOutputWorkQueue;
 @property(retain, nonatomic) NSHashTable *variableObservers; // @synthesize variableObservers=_variableObservers;
 @property(retain, nonatomic) NSCache *cachedContentClassesForVariableNameAtIndex; // @synthesize cachedContentClassesForVariableNameAtIndex=_cachedContentClassesForVariableNameAtIndex;
 @property(retain, nonatomic) NSMapTable *actionOutputVariableActionsByUUID; // @synthesize actionOutputVariableActionsByUUID=_actionOutputVariableActionsByUUID;
@@ -28,7 +32,6 @@
 @property(retain, nonatomic) NSMapTable *variableScopeLevelsByGroupingIdentifier; // @synthesize variableScopeLevelsByGroupingIdentifier=_variableScopeLevelsByGroupingIdentifier;
 @property(retain, nonatomic) NSMapTable *providingActionsByVariableName; // @synthesize providingActionsByVariableName=_providingActionsByVariableName;
 @property(readonly, nonatomic) __weak WFWorkflow *workflow; // @synthesize workflow=_workflow;
-- (void).cxx_destruct;
 - (void)actionsDidMove;
 - (void)invalidateContentClassCache;
 - (void)renameVariable:(id)arg1 to:(id)arg2 fromAction:(id)arg3;
@@ -44,6 +47,7 @@
 - (void)invalidateActionOutputProviderCache;
 - (id)actionProvidingVariableWithOutputUUID:(id)arg1;
 - (_Bool)isVariableWithOutputUUIDAvailable:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)populateActionOutputVariableActionsByUUID;
 - (id)availableOutputActionsAtIndex:(unsigned long long)arg1;
 - (_Bool)areActionOutputVariablesAvailableAtIndex:(unsigned long long)arg1;
 - (void)enumerateActionsInScopeAtIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;

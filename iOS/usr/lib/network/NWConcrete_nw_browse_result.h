@@ -21,14 +21,14 @@ __attribute__((visibility("hidden")))
     char *logging_description;
     struct os_unfair_lock_s lock;
     unsigned int immutable:1;
-    unsigned int __pad_bits:7;
+    unsigned int discovered_from_path:1;
+    unsigned int __pad_bits:6;
 }
 
 - (void).cxx_destruct;
 - (id)redactedDescription;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithEndpoint:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

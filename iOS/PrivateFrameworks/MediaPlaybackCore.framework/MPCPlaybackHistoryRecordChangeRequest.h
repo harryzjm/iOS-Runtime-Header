@@ -15,14 +15,14 @@
     _Bool _allowsStoreContainerImport;
     MPModelPlayEvent *_playEvent;
     MPModelGenericObject *_itemGenericObject;
-    long long _repeatType;
+    long long _type;
 }
 
-@property(nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
+- (void).cxx_destruct;
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) MPModelGenericObject *itemGenericObject; // @synthesize itemGenericObject=_itemGenericObject;
 @property(retain, nonatomic) MPModelPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
 @property(nonatomic) _Bool allowsStoreContainerImport; // @synthesize allowsStoreContainerImport=_allowsStoreContainerImport;
-- (void).cxx_destruct;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

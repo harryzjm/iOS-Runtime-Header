@@ -23,6 +23,8 @@
 @property(readonly, nonatomic, getter=_heightForTableHeader) double heightForTableHeader;
 @property(readonly, nonatomic, getter=_isTableHeaderAutohiding) _Bool isTableHeaderAutohiding;
 @property(readonly, nonatomic, getter=_rowSpacing) double rowSpacing;
+@property(readonly, nonatomic, getter=_sectionFooterPadding) double sectionFooterPadding;
+@property(readonly, nonatomic, getter=_sectionHeaderPadding) double sectionHeaderPadding;
 @property(readonly, nonatomic, getter=_tableContentInset) struct UIEdgeInsets tableContentInset;
 @property(readonly, nonatomic, getter=_contentInset) struct UIEdgeInsets _contentInset;
 @property(readonly, nonatomic, getter=_sidePadding) double sidePadding;
@@ -37,13 +39,12 @@
 - (double)_maxTitleWidthForHeaderInSection:(long long)arg1;
 - (long long)_titleAlignmentForFooterInSection:(long long)arg1;
 - (long long)_titleAlignmentForHeaderInSection:(long long)arg1;
-- (UIView *)_viewForFooterInSection:(long long)arg1;
-- (UIView *)_viewForHeaderInSection:(long long)arg1;
 - (NSString *)_detailTextForHeaderInSection:(long long)arg1;
 - (NSString *)_titleForFooterInSection:(long long)arg1;
 - (NSString *)_titleForHeaderInSection:(long long)arg1;
 - (void)_applyContentSizeDeltaImmediately:(double)arg1;
 - (void)_coalesceContentSizeUpdateWithDelta:(double)arg1;
+- (void)_prepareForRowDataHeaderFooterSizing;
 - (double)_dataSourceHeightForFooterInSection:(long long)arg1;
 - (double)_dataSourceHeightForHeaderInSection:(long long)arg1;
 - (double)_dataSourceHeightForRowAtIndexPath:(NSIndexPath *)arg1;

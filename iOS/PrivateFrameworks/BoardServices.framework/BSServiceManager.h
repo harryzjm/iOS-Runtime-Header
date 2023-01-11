@@ -25,19 +25,10 @@
     RBSService *_RBSService;
 }
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)serviceWillTerminateProcess:(id)arg1;
 - (void)service:(id)arg1 didLoseInheritances:(id)arg2;
 - (void)service:(id)arg1 didReceiveInheritances:(id)arg2;
-- (void)_callOutLock_noteEndpointsChangedForServices:(id)arg1;
-- (id)_lock_rootConnectionWithEndpoint:(id)arg1 nonLaunching:(_Bool)arg2 description:(id)arg3;
-- (id)registerMonitor:(id)arg1;
-- (id)newConnectionWithEndpoint:(id)arg1 nonLaunching:(_Bool)arg2 description:(id)arg3;
-- (void)disableLaunchWhitelist;
-- (id)domainWithIdentifier:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
-- (id)_initWithConfiguration:(id)arg1;
 - (id)init;
 
 // Remaining properties

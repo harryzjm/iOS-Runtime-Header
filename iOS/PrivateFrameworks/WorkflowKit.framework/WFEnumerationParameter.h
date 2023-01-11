@@ -4,22 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
 
-@interface WFEnumerationParameter
+@class NSArray, NSString;
+
+@interface WFEnumerationParameter <WFParameterDialogProvider>
 {
     _Bool _alwaysShowsButton;
+    _Bool _liveUpdatesPossibleStatesInEditor;
     NSArray *_staticPossibleStates;
     NSArray *_displayNames;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *displayNames; // @synthesize displayNames=_displayNames;
 @property(readonly, nonatomic) NSArray *staticPossibleStates; // @synthesize staticPossibleStates=_staticPossibleStates;
+@property(readonly, nonatomic) _Bool liveUpdatesPossibleStatesInEditor; // @synthesize liveUpdatesPossibleStatesInEditor=_liveUpdatesPossibleStatesInEditor;
 @property(readonly, nonatomic) _Bool alwaysShowsButton; // @synthesize alwaysShowsButton=_alwaysShowsButton;
-- (void).cxx_destruct;
+- (id)parameterStateFromDialogResponse:(id)arg1;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)stopLiveUpdatingPossibleStates;
+- (void)startLiveUpdatingPossibleStates;
 - (void)possibleStatesDidChange;
 - (_Bool)parameterStateIsValid:(id)arg1;
-@property(readonly, nonatomic) _Bool preferItemPickerSheet;
+- (_Bool)displaysMultipleValueEditor;
+@property(readonly, nonatomic) _Bool preferParameterValuePicker;
+@property(readonly, nonatomic) _Bool hidesSubtitleInEditor;
+@property(readonly, nonatomic) _Bool hidesAccessoryIconInEditor;
 - (id)accessoryIconForPossibleState:(id)arg1;
 - (id)accessoryColorForPossibleState:(id)arg1;
 - (id)localizedSubtitleLabelForPossibleState:(id)arg1;
@@ -28,9 +39,17 @@
 - (id)localizedLabelForPossibleState:(id)arg1 inMultipleState:(id)arg2;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (id)localizedTitleForButtonWithState:(id)arg1;
+@property(readonly, nonatomic) NSArray *possibleStatesForLocalization;
+- (void)setPossibleStatesFromRemoteSource:(id)arg1;
 @property(readonly, nonatomic) NSArray *possibleStates;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

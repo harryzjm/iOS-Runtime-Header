@@ -13,17 +13,17 @@
 @interface GEOResourceFilter : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _scales;
     CDStruct_95bda58d _scenarios;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_scales:1;
         unsigned int read_scenarios:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_scales:1;
-        unsigned int wrote_scenarios:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,29 +39,30 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsScenarios:(id)arg1;
 - (id)scenariosAsString:(int)arg1;
 - (void)setScenarios:(int *)arg1 count:(unsigned long long)arg2;
 - (int)scenarioAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsScenario:(int)arg1;
 - (void)addScenario:(int)arg1;
 - (void)clearScenarios;
 @property(readonly, nonatomic) int *scenarios;
 @property(readonly, nonatomic) unsigned long long scenariosCount;
-- (void)_readScenarios;
 - (int)StringAsScales:(id)arg1;
 - (id)scalesAsString:(int)arg1;
 - (void)setScales:(int *)arg1 count:(unsigned long long)arg2;
 - (int)scaleAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsScale:(int)arg1;
 - (void)addScale:(int)arg1;
 - (void)clearScales;
 @property(readonly, nonatomic) int *scales;
 @property(readonly, nonatomic) unsigned long long scalesCount;
-- (void)_readScales;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

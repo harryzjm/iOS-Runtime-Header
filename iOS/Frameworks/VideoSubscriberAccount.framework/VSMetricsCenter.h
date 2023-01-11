@@ -19,7 +19,6 @@
     _Bool _currentIdentityProviderSupportsSTB;
     _Bool _currentIdentityProviderIsFullySupported;
     _Bool _fetchedSetTopBoxProfile;
-    _Bool _hasSetTopBoxProfile;
     MTMetricsKit *_mainMetricsKit;
     AMSBag *_bag;
     NSObject<OS_dispatch_queue> *_eventQueue;
@@ -31,7 +30,7 @@
 }
 
 + (id)sharedMetricsCenter;
-@property(nonatomic) _Bool hasSetTopBoxProfile; // @synthesize hasSetTopBoxProfile=_hasSetTopBoxProfile;
+- (void).cxx_destruct;
 @property(retain, nonatomic) VSSetTopBoxProfile *stbProfile; // @synthesize stbProfile=_stbProfile;
 @property(nonatomic) _Bool fetchedSetTopBoxProfile; // @synthesize fetchedSetTopBoxProfile=_fetchedSetTopBoxProfile;
 @property(nonatomic) _Bool currentIdentityProviderIsFullySupported; // @synthesize currentIdentityProviderIsFullySupported=_currentIdentityProviderIsFullySupported;
@@ -44,7 +43,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property(retain, nonatomic) AMSBag *bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) MTMetricsKit *mainMetricsKit; // @synthesize mainMetricsKit=_mainMetricsKit;
-- (void).cxx_destruct;
 - (id)capacitySystemAvailable:(id)arg1;
 - (id)capacityDisk:(id)arg1;
 - (id)capacityDataAvailable:(id)arg1;
@@ -70,6 +68,7 @@
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
 - (void)accountStoreDidChange;
+- (_Bool)hasSetTopBoxProfile;
 - (_Bool)currentProviderIsSetTopBoxProvider;
 - (id)userID;
 - (id)flexibleBaseFields;

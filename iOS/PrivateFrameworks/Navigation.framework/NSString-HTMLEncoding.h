@@ -21,17 +21,24 @@
 + (id)_navigation_commaListDelimiter;
 + (id)_navigation_stringWithCountdownValue:(id)arg1 inToken:(id)arg2 options:(CDStruct_ef0b40be)arg3;
 + (id)_navigation_stringWithTimeStampValues:(id)arg1 options:(CDStruct_ef0b40be)arg2;
++ (id)_navigation_replacementForFormatToken:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3 useMetric:(unsigned long long)arg4;
 + (id)_navigation_replacementForFormatToken:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3;
 + (id)_navigation_replacementForFormatToken:(id)arg1 abbreviatedUnits:(_Bool)arg2 detail:(long long)arg3 spoken:(_Bool)arg4 overrideVariables:(id)arg5;
++ (id)_navigation_spokenStringWithMinutes:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
++ (id)_navigation_spokenStringWithSeconds:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
++ (id)_navigation_spokenStringWithSeconds:(unsigned long long)arg1 abbreviated:(_Bool)arg2;
 + (id)_navigation_stringWithMinutes:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
 + (id)_navigation_stringWithSeconds:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
 + (id)_navigation_stringWithSeconds:(unsigned long long)arg1 abbreviated:(_Bool)arg2;
-+ (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3;
++ (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3 shouldScale:(_Bool)arg4;
++ (id)_navigation_localizedStringForDistance:(double)arg1 detail:(long long)arg2 unitFormat:(long long)arg3 locale:(id)arg4 useMetric:(unsigned long long)arg5 useYards:(unsigned long long)arg6 shouldScale:(_Bool)arg7;
 + (id)_navigation_localizedStringForDistance:(double)arg1 detail:(long long)arg2 unitFormat:(long long)arg3 locale:(id)arg4 useMetric:(unsigned long long)arg5 useYards:(unsigned long long)arg6;
 + (id)_navigation_localizedStringForDistance:(double)arg1 context:(long long)arg2 extraDetail:(_Bool)arg3;
 + (id)_navigation_overridenTokenForToken:(id)arg1 overrideVariables:(id)arg2;
++ (id)_navigation_stringForServerFormattedString:(id)arg1 abbreviatedUnits:(_Bool)arg2 detail:(long long)arg3 spoken:(_Bool)arg4 overrideVariables:(id)arg5 allTokensExpanded:(_Bool *)arg6;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 abbreviatedUnits:(_Bool)arg2 detail:(long long)arg3 spoken:(_Bool)arg4 overrideVariables:(id)arg5;
 + (id)_navigation_stringForServerFormattedString:(id)arg1;
++ (id)_navigation_stringForServerFormattedString:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3 allTokensExpanded:(_Bool *)arg4;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3;
 + (id)_navigation_descriptionForFrequencyRangeWithMinFrequency:(long long)arg1 maxFrequency:(long long)arg2;
 + (id)_navigation_descriptionForFrequencyMinuteValue:(long long)arg1;
@@ -69,5 +76,6 @@
 - (id)_navigation_stringByMarkingAsNavigationText;
 - (id)_navigation_stringByMarkingAsAddress;
 - (id)_navigation_stringByMakingPhonetic;
+- (id)mnlpr_componentsSeparatedByGlyph;
 @end
 

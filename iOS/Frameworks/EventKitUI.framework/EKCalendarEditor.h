@@ -7,11 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <EventKitUI/EKCalendarEditItemDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 
 @class EKCalendar, EKCalendarColorEditItem, EKCalendarShareesEditItem, EKEventStore, EKSource, NSArray, NSString, UITableView;
 @protocol EKCalendarEditorDelegate, EKStyleProvider;
 
-@interface EKCalendarEditor : UIViewController <EKCalendarEditItemDelegate>
+@interface EKCalendarEditor : UIViewController <EKCalendarEditItemDelegate, EKUIManagedViewController>
 {
     UITableView *_tableView;
     NSArray *_editItems;
@@ -19,6 +20,7 @@
     EKCalendarColorEditItem *_colorEditItem;
     unsigned long long _entityType;
     EKSource *_limitedToSource;
+    struct CGSize _preferredContentSize;
     _Bool _isNewCalendar;
     EKEventStore *_eventStore;
     EKCalendar *_calendar;
@@ -26,12 +28,12 @@
     id <EKStyleProvider> _styleProvider;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) _Bool isNewCalendar; // @synthesize isNewCalendar=_isNewCalendar;
 @property(nonatomic) __weak id <EKCalendarEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) EKCalendar *calendar; // @synthesize calendar=_calendar;
 @property(retain, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
-- (void).cxx_destruct;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -49,9 +51,13 @@
 - (void)calendarItemStartedEditing:(id)arg1;
 - (void)_deleteClicked:(id)arg1;
 - (void)_deleteCalendar;
+- (void)saveChanges;
 - (void)done:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)_presentValidationAlert:(id)arg1;
+- (_Bool)canManagePresentationStyle;
+- (_Bool)wantsManagement;
+- (_Bool)isModalInPresentation;
 - (id)_editItems;
 - (void)setupForCalendar;
 - (void)traitCollectionDidChange:(id)arg1;

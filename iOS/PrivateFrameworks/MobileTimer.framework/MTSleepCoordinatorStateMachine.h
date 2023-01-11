@@ -15,10 +15,10 @@
     MTSleepCoordinatorStateMachineDisabledState *_disabledState;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) MTSleepCoordinatorStateMachineDisabledState *disabledState; // @synthesize disabledState=_disabledState;
 @property(retain, nonatomic) MTSleepCoordinatorStateMachineAwakeState *awakeState; // @synthesize awakeState=_awakeState;
 @property(retain, nonatomic) MTSleepCoordinatorStateMachineAsleepState *asleepState; // @synthesize asleepState=_asleepState;
-- (void).cxx_destruct;
 - (void)stateMachine:(id)arg1 shouldScheduleAlarmTimeoutForSecondsFromNow:(double)arg2;
 - (void)stateMachine:(id)arg1 dismissWakeUpAlarm:(id)arg2 dismissAction:(unsigned long long)arg3;
 - (void)stateMachineUserWentToBed:(id)arg1;
@@ -34,7 +34,7 @@
 - (void)userWentToBed;
 - (void)updateState;
 - (id)stateMachineLog;
-@property(readonly, nonatomic) _Bool inUserDefinedSleepWindow;
+@property(readonly, nonatomic) _Bool isUserAsleep;
 - (id)initWithDelegate:(id)arg1 infoProvider:(id)arg2;
 
 // Remaining properties

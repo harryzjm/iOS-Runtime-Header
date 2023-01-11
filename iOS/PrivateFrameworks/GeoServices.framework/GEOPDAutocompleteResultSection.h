@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteResultSection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_entries;
     NSString *_name;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _numVisibleResults;
     int _suggestionType;
     int _type;
@@ -32,14 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_entries:1;
         unsigned int read_name:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_entries:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_numVisibleResults:1;
-        unsigned int wrote_suggestionType:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_enforceServerResultsOrder:1;
-        unsigned int wrote_shouldInterleaveClientResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -57,6 +52,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasEnforceServerResultsOrder;
@@ -71,18 +69,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int suggestionType;
 - (id)entriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entriesCount;
-- (void)_addNoFlagsEntries:(id)arg1;
 - (void)addEntries:(id)arg1;
 - (void)clearEntries;
 @property(retain, nonatomic) NSMutableArray *entries;
-- (void)_readEntries;
 @property(retain, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool hasName;
-- (void)_readName;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

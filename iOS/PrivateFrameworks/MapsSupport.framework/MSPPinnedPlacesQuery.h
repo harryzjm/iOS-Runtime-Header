@@ -10,6 +10,7 @@
 {
 }
 
+- (_Bool)isObject:(id)arg1 equalTo:(id)arg2;
 @property(readonly) NSArray *contents;
 
 @end

@@ -7,95 +7,138 @@
 #import <objc/NSObject.h>
 
 #import <GameController/GameControllerClientProtocol-Protocol.h>
+#import <GameController/_GCHIDEventSource-Protocol.h>
+#import <GameController/_GCIPCObjectMaterializationContext-Protocol.h>
+#import <GameController/_GCIPCObjectRegistry-Protocol.h>
+#import <GameController/_GCIPCServiceRegistry-Protocol.h>
+#import <GameController/_GCImplicitIPCObject-Protocol.h>
 
-@class GCController, NSMutableArray, NSMutableDictionary, NSString, NSThread, NSTimer, NSXPCConnection;
-@protocol GameControllerDaemon, OS_dispatch_queue;
+@class GCController, GCExtendedGamepad, GCKeyboardAndMouseManager, GCMicroGamepad, GCMouse, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, NSThread, NSTimer, NSXPCConnection, _GCHIDEventSubject;
+@protocol GCRemoteDaemonProxy, NSObject><NSCopying><NSSecureCoding, OS_dispatch_queue, _GCIPCObjectRegistry, _GCIPCServiceRegistry;
 
-@interface _GCControllerManager : NSObject <GameControllerClientProtocol>
+__attribute__((visibility("hidden")))
+@interface _GCControllerManager : NSObject <_GCImplicitIPCObject, _GCIPCObjectRegistry, _GCIPCServiceRegistry, _GCIPCObjectMaterializationContext, GameControllerClientProtocol, _GCHIDEventSource>
 {
-    NSXPCConnection *_connection;
-    id <GameControllerDaemon> _remote;
-    struct __IOHIDManager *_hidManager;
-    NSMutableDictionary *_controllersByUDID;
-    NSMutableDictionary *_controllersByRegistryID;
-    struct IONotificationPort *_usbNotify;
-    unsigned int _usbAddedIterator;
-    unsigned int _usbRemovedIterator;
-    CDUnknownBlockType _logger;
-    _Bool _idleTimerNeedsReset;
-    NSTimer *_idleWatchTimer;
-    _Bool _shouldKeepRunning;
-    CDUnknownBlockType _requestConnectedHostsCallback;
     NSObject<OS_dispatch_queue> *_controllersQueue;
-    long long _currentMediaRemoteInputMode;
-    struct __IOHIDEventSystemClient *_hidSystemClient;
     NSObject<OS_dispatch_queue> *_hidSystemClientQueue;
-    _Bool _shouldMonitorBackgroundEvents;
-    _Bool _isAppInBackground;
-    GCController *_firstMicroGamepad;
+    struct os_unfair_lock_s _ipcRegistryLock;
+    NSMapTable *_ipcObjectRegistry;
+    struct __IOHIDEventSystemClient *_hidSystemClient;
+    _GCHIDEventSubject *_hidEventSource;
+    GCController *_currentController;
+    GCMicroGamepad *_currentMicroGamepad;
+    GCExtendedGamepad *_currentExtendedGamepad;
+    NSXPCConnection *_connection;
+    NSXPCConnection *_daemonConnection;
+    NSObject<GCRemoteDaemonProxy> *_remote;
     NSThread *_hidInputThread;
     struct __CFRunLoop *_hidInputThreadRunLoop;
     struct __CFRunLoopSource *_hidThreadRunLoopSource;
     NSMutableArray *_hidThreadExecutionBlocks;
+    struct __IOHIDManager *_hidManager;
+    struct IONotificationPort *_usbNotify;
+    unsigned int _usbAddedIterator;
+    unsigned int _usbRemovedIterator;
+    id _hidEventObservation;
+    _Bool _shouldKeepRunning;
+    CDUnknownBlockType _requestConnectedHostsCallback;
+    NSMutableDictionary *_controllersByUDID;
+    NSMutableDictionary *_controllersByRegistryID;
+    CDUnknownBlockType _logger;
+    GCController *_firstMicroGamepad;
+    NSTimer *_idleWatchTimer;
+    _Bool _gameControllerActive;
+    _Bool _isAppInBackground;
+    _Bool _shouldMonitorBackgroundEvents;
+    long long _currentMediaRemoteInputMode;
+    GCKeyboardAndMouseManager *_keyboardAndMouseManager;
+    NSObject<OS_dispatch_queue> *_hidSystemPropertyQueue;
 }
 
++ (void)initialize;
 + (id)sharedInstance;
-@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *controllersQueue; // @synthesize controllersQueue=_controllersQueue;
-@property(readonly, nonatomic) NSMutableArray *hidThreadExecutionBlocks; // @synthesize hidThreadExecutionBlocks=_hidThreadExecutionBlocks;
-@property(readonly, nonatomic) struct __CFRunLoopSource *hidThreadRunLoopSource; // @synthesize hidThreadRunLoopSource=_hidThreadRunLoopSource;
-@property(readonly, nonatomic) struct __CFRunLoop *hidInputThreadRunLoop; // @synthesize hidInputThreadRunLoop=_hidInputThreadRunLoop;
-@property(readonly, retain, nonatomic) NSThread *hidInputThread; // @synthesize hidInputThread=_hidInputThread;
-@property(nonatomic) _Bool idleTimerNeedsReset; // @synthesize idleTimerNeedsReset=_idleTimerNeedsReset;
-@property(retain, nonatomic) id <GameControllerDaemon> remote; // @synthesize remote=_remote;
-@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property(copy, nonatomic) CDUnknownBlockType logger; // @synthesize logger=_logger;
-@property(nonatomic) struct __IOHIDManager *hidManager; // @synthesize hidManager=_hidManager;
-@property(readonly, nonatomic) _Bool isAppInBackground; // @synthesize isAppInBackground=_isAppInBackground;
-@property(nonatomic) __weak GCController *firstMicroGamepad; // @synthesize firstMicroGamepad=_firstMicroGamepad;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *hidSystemPropertyQueue; // @synthesize hidSystemPropertyQueue=_hidSystemPropertyQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *controllersQueue; // @synthesize controllersQueue=_controllersQueue;
 - (void)open;
-- (id)controllers;
+- (id)observeHIDEvents:(CDUnknownBlockType)arg1;
+- (id)observeHIDEvents:(CDUnknownBlockType)arg1 forService:(id)arg2;
+- (void)teardownHIDMonitor:(_Bool)arg1;
+- (void)setupHIDMonitor:(_Bool)arg1;
+- (void)onScreenshotTriggeredWithController:(id)arg1;
+- (void)onVideoRecordingToggledWithController:(id)arg1;
+- (void)onHIDDeviceRemoved:(struct __IOHIDServiceClient *)arg1;
+- (void)onHIDDeviceAdded:(struct __IOHIDServiceClient *)arg1;
+- (id)makeHIDEventSource:(struct __IOHIDEventSystemClient *)arg1;
+- (id)HIDDeviceMatchingAttributes;
+- (void)dealloc;
+- (id)init;
+@property(readonly) id <_GCIPCServiceRegistry> IPCServiceRegistry;
+@property(readonly) id <_GCIPCObjectRegistry> IPCObjectRegistry;
+- (id)serviceClientForIPCService:(id)arg1;
+- (void)registerIPCObject:(id)arg1;
+- (id)IPCObjectWithIdentifier:(id)arg1;
+@property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier;
+- (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(_Bool)arg5;
 - (void)microControllerWithDigitizerX:(float)arg1 withY:(float)arg2 withTimeStamp:(unsigned long long)arg3 touchDown:(_Bool)arg4;
-- (void)removeController:(id)arg1 registryID:(id)arg2;
-- (void)removeController:(id)arg1;
-- (void)removeCoalescedControllerComponent:(id)arg1;
 - (void)controllerWithUDID:(unsigned long long)arg1 setValue0:(float)arg2 setValue1:(float)arg3 setValue2:(float)arg4 setValue3:(float)arg5 forElement:(int)arg6;
 - (void)controllerWithUDID:(unsigned long long)arg1 setValue:(float)arg2 forElement:(int)arg3;
-- (_Bool)isPhysicalB239:(id)arg1;
 - (void)controller:(id)arg1 setValue:(float)arg2 forElement:(int)arg3;
 - (void)controllerWithUDID:(unsigned long long)arg1 setData:(id)arg2;
 - (void)addControllerForAppStoreRemote:(id)arg1;
+- (_Bool)combineSiriRemoteHIDDevicesWithNewController:(id)arg1 existingController:(id)arg2;
+@property(nonatomic) __weak GCController *firstMicroGamepad;
+- (void)removeCoalescedControllerComponent:(id)arg1;
+- (_Bool)isPhysicalB239:(id)arg1;
+- (void)_legacy_updateControllerWithEvent:(struct __IOHIDEvent *)arg1;
+@property(retain) GCExtendedGamepad *currentExtendedGamepad;
+@property(retain) GCMicroGamepad *currentMicroGamepad;
+@property(retain) GCController *currentController;
+- (id)_legacy_coalescedKeyboard;
+- (id)coalescedKeyboard;
+@property(retain) GCMouse *currentMouse;
+- (id)_legacy_mice;
+- (id)mice;
+- (void)_legacy_removeControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
+- (void)_legacy_addControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
+- (_Bool)isExistingController:(id)arg1;
+- (id)_legacy_controllers;
+- (void)_queue_removeController:(id)arg1 registryID:(id)arg2;
+- (void)removeController:(id)arg1 registryID:(id)arg2;
+- (void)removeController:(id)arg1;
 - (void)addController:(id)arg1;
 - (_Bool)shouldStoreController:(id)arg1;
 - (void)storeController:(id)arg1;
-- (_Bool)combineSiriRemoteHIDDevicesWithNewController:(id)arg1 existingController:(id)arg2;
-- (void)logController:(id)arg1;
-- (void)unpublishController:(id)arg1;
-- (void)publishController:(id)arg1;
-- (_Bool)isExistingController:(id)arg1;
-- (void)replyConnectedHosts:(id)arg1;
-- (void)requestConnectedHostsWithHandler:(CDUnknownBlockType)arg1;
+- (void)_legacy_unpublishController:(id)arg1;
+- (void)updateCurrentControllerAndProfileForUnpublishedController:(id)arg1;
+- (void)_legacy_publishController:(id)arg1;
+- (id)controllers;
+- (void)_legacy_stopHIDEventMonitor;
+- (void)_legacy_startHIDEventMonitor;
+- (void)_legacy_stopHIDDeviceMonitor;
+- (void)_legacy_startHIDDeviceMonitor;
+- (id)_legacy_makeHIDEventSource:(struct __IOHIDEventSystemClient *)arg1;
+@property(nonatomic) struct __IOHIDManager *hidManager;
 - (void)startIdleWatchTimer;
-- (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(_Bool)arg5;
+- (void)updateIdleTimer:(id)arg1;
+@property(nonatomic) _Bool gameControllerActive;
 - (void)CBApplicationDidBecomeActive;
 - (void)CBApplicationWillResignActive;
-- (void)updateIdleTimer:(id)arg1;
+@property(readonly, nonatomic) _Bool isAppInBackground;
+@property(retain, nonatomic) NSObject<GCRemoteDaemonProxy> *remote;
+@property(retain, nonatomic) NSXPCConnection *daemonConnection;
+@property(retain, nonatomic) NSXPCConnection *connection;
 - (void)async_HIDBlock:(CDUnknownBlockType)arg1;
 - (void)launchHIDInputThread;
 - (void)threadHIDInputOnMain:(id)arg1;
 - (void)threadHIDInputOffMain:(id)arg1;
-- (void)updateControllerWithEvent:(struct __IOHIDEvent *)arg1;
-- (void)removeControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
-- (void)addControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
-- (void)stopHIDEventMonitor;
-- (void)startHIDEventMonitor;
-- (void)addConnectedDevices;
-- (void)stopHIDDeviceMonitor;
-- (void)startHIDDeviceMonitor;
-- (void)starSessionDidEnd;
-- (void)starSessionWillBegin;
-- (void)dealloc;
-- (id)init;
+@property(readonly, nonatomic) NSMutableArray *hidThreadExecutionBlocks;
+@property(readonly, nonatomic) struct __CFRunLoopSource *hidThreadRunLoopSource;
+@property(readonly, nonatomic) struct __CFRunLoop *hidInputThreadRunLoop;
+@property(readonly, nonatomic) NSThread *hidInputThread;
+- (void)_legacy_dealloc;
+- (void)_legacy_init;
+@property(copy, nonatomic) CDUnknownBlockType logger;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

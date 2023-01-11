@@ -16,10 +16,12 @@
 - (struct CGRect)ibTextRect;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 - (void)setIbTextContentType:(id)arg1;
+- (void)setIbSpellCheckingType:(long long)arg1;
 - (void)setIbSmartQuotesType:(long long)arg1;
 - (void)setIbSmartInsertDeleteType:(long long)arg1;
 - (void)setIbSmartDashesType:(long long)arg1;
 - (void)setIbSecureTextEntry:(_Bool)arg1;
+- (void)setIbPasswordRules:(id)arg1;
 - (void)setIbReturnKeyType:(long long)arg1;
 - (void)setIbKeyboardType:(long long)arg1;
 - (void)setIbKeyboardAppearance:(long long)arg1;

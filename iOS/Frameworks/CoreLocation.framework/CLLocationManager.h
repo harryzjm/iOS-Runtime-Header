@@ -14,6 +14,10 @@
     id _internal;
 }
 
++ (id)_setClientTransientAuthorizationInfoForBundlePath:(id)arg1 data:(id)arg2;
++ (id)_setClientTransientAuthorizationInfoForBundleId:(id)arg1 data:(id)arg2;
++ (id)_getClientTransientAuthorizationInfoForBundlePath:(id)arg1 error:(id *)arg2;
++ (id)_getClientTransientAuthorizationInfoForBundleId:(id)arg1 error:(id *)arg2;
 + (_Bool)advertiseAsBeacon:(id)arg1 withPower:(id)arg2;
 + (_Bool)bundleSupported:(id)arg1;
 + (_Bool)shutdownDaemon;
@@ -25,7 +29,12 @@
 + (void)setBackgroundIndicatorEnabled:(_Bool)arg1 forBundleIdentifier:(id)arg2;
 + (void)setTemporaryAuthorizationGranted:(_Bool)arg1 forBundle:(id)arg2;
 + (void)setTemporaryAuthorizationGranted:(_Bool)arg1 forBundleIdentifier:(id)arg2;
++ (void)getIncidentalUseMode:(int *)arg1 forBundleIdentifier:(id)arg2;
++ (void)getIncidentalUseMode:(int *)arg1 forBundle:(id)arg2;
++ (void)setIncidentalUseMode:(int)arg1 forBundleIdentifier:(id)arg2;
++ (void)setIncidentalUseMode:(int)arg1 forBundle:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 forBundle:(id)arg3;
++ (void)updateCorrectiveCompensationChoiceForOutstandingPrompt:(int)arg1;
 + (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 forBundleIdentifier:(id)arg3;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundle:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundleIdentifier:(id)arg2;
@@ -57,9 +66,11 @@
 + (id)sharedManager;
 + (void)setBackgroundIndicatorEnabled:(_Bool)arg1 forLocationDictionary:(id)arg2;
 + (_Bool)backgroundIndicatorEnabledForLocationDictionary:(id)arg1;
++ (void)setEntityAuthorization:(unsigned long long)arg1 withCorrectiveCompensationType:(int)arg2 forLocationDictionary:(id)arg3;
 + (void)setEntityAuthorization:(unsigned long long)arg1 withCorrectiveCompensation:(_Bool)arg2 forLocationDictionary:(id)arg3;
 + (void)setEntityAuthorization:(unsigned long long)arg1 forLocationDictionary:(id)arg2;
 + (void)setEntityAuthorized:(_Bool)arg1 forLocationDictionary:(id)arg2;
++ (unsigned long long)incidentalUseModeForLocationDictionary:(id)arg1;
 + (_Bool)correctiveCompensationStatusForLocationDictionary:(id)arg1;
 + (unsigned long long)allowableAuthorizationForLocationDictionary:(id)arg1;
 + (unsigned long long)entityAuthorizationForLocationDictionary:(id)arg1;
@@ -77,9 +88,20 @@
 @property(nonatomic) _Bool allowsAlteredAccessoryLocations;
 @property(nonatomic, getter=isDynamicAccuracyReductionEnabled) _Bool dynamicAccuracyReductionEnabled;
 @property(nonatomic, getter=isLocationServicesPreferencesDialogEnabled) _Bool locationServicesPreferencesDialogEnabled;
+- (void)requestTemporaryFullAccuracyAuthorizationWithPurposeKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestTemporaryFullAccuracyAuthorizationWithPurposeKey:(id)arg1;
+- (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(id)arg1;
+- (void)_requestTemporaryFullAccuracyWithUsageDescription:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_requestTemporaryFullAccuracyWithUsageDescription:(id)arg1;
 - (void)requestAlwaysAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)requestWhenInUseAuthorization;
+@property(readonly, nonatomic, getter=isAuthorizedForWidgetUpdates) _Bool authorizedForWidgetUpdates;
+@property(readonly, nonatomic) long long accuracyAuthorization;
+@property(readonly, nonatomic, getter=isAuthorizedForPreciseLocation) _Bool authorizedForPreciseLocation;
+@property(readonly, nonatomic) int _authorizationStatus;
+@property(readonly, nonatomic) int authorizationStatus;
 - (void)onClientEventSignificantLocationVisit:(id)arg1;
 - (void)onClientEventVehicleHeading:(id)arg1;
 - (void)onClientEventVehicleSpeed:(id)arg1;
@@ -90,6 +112,7 @@
 - (void)pauseLocationUpdates:(_Bool)arg1;
 - (void)resumeLocationUpdates;
 - (void)onClientEventRegionSetupCompleted:(id)arg1;
+- (void)onClientEventNoLocationWatchdog:(id)arg1;
 - (void)onClientEventRegionResponseDelayed:(id)arg1;
 - (void)onClientEventPeerRangingError:(id)arg1;
 - (void)onClientEventPeerRangingRequestProcessed:(id)arg1;
@@ -167,15 +190,18 @@
 @property(nonatomic) _Bool showsBackgroundLocationIndicator;
 @property(nonatomic) _Bool allowsBackgroundLocationUpdates;
 @property(nonatomic) _Bool pausesLocationUpdatesAutomatically;
+@property(readonly, nonatomic) _Bool _limitsPrecision;
 @property(nonatomic) double desiredAccuracy;
 @property(nonatomic) double distanceFilter;
 @property(nonatomic) __weak id <CLLocationManagerDelegate> delegate;
 - (void)dealloc;
 - (id)_initWithDelegate:(id)arg1 onQueue:(id)arg2;
+- (id)initWithEffectiveBundle:(id)arg1 limitingBundleIdentifier:(id)arg2 delegate:(id)arg3 onQueue:(id)arg4;
 - (id)initWithEffectiveBundle:(id)arg1 delegate:(id)arg2 onQueue:(id)arg3;
 - (id)initWithEffectiveBundle:(id)arg1;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1 delegate:(id)arg2 onQueue:(id)arg3;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1 bundle:(id)arg2 delegate:(id)arg3 silo:(id)arg4;
 - (void)stopUpdatingVehicleHeading;
@@ -183,13 +209,18 @@
 - (void)stopUpdatingVehicleSpeed;
 - (void)startUpdatingVehicleSpeed;
 @property(nonatomic, getter=isMatchInfoEnabled) _Bool matchInfoEnabled;
-- (void)_setGroundAltitudeEnabled:(_Bool)arg1;
-- (_Bool)_isGroundAltitudeEnabled;
+- (id)_groundAltitudeAtLocation:(id)arg1;
+@property(nonatomic, getter=_isGroundAltitudeEnabled, setter=_setGroundAltitudeEnabled:) _Bool _groundAltitudeEnabled;
+- (void)_setFusionInfoEnabled:(_Bool)arg1;
+- (_Bool)_isFusionInfoEnabled;
 - (void)_startLeechingVisits;
 - (void)stopMonitoringVisits;
 - (void)startMonitoringVisits;
+- (void)_stopFetchingContinuousPlaceInferences;
+- (void)_fetchContinuousPlaceInferencesWithFidelityPolicy:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchPlaceInferencesWithFidelityPolicy:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_updateLSLHeadingEstimation:(id)arg1;
+- (id)_startPlaceInferencesCommonLogic:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_updateVLLocalizationResult:(id)arg1;
 - (void)_updateARSessionState:(unsigned long long)arg1;
 - (void)_updateVIOEstimation:(id)arg1;
 

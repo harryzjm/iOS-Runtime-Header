@@ -21,19 +21,19 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property _Bool immutable; // @synthesize immutable=_immutable;
 @property unsigned long long deviceID; // @synthesize deviceID=_deviceID;
 @property unsigned long long index; // @synthesize index=_index;
 @property(readonly) struct CGPoint initialMouseLocation; // @synthesize initialMouseLocation=_initialMouseLocation;
 @property(readonly) unsigned long long pathType; // @synthesize pathType=_pathType;
-- (void).cxx_destruct;
 - (id)description;
 - (id)firstEventAfterOffset:(double)arg1;
 - (id)lastEventBeforeOffset:(double)arg1;
 - (void)_addPointerEvent:(id)arg1;
 - (void)setModifiers:(unsigned long long)arg1 mergeWithCurrentModifierFlags:(_Bool)arg2 atOffset:(double)arg3;
 - (void)typeKey:(id)arg1 modifiers:(unsigned long long)arg2 atOffset:(double)arg3;
-- (void)typeText:(id)arg1 atOffset:(double)arg2 typingSpeed:(unsigned long long)arg3;
+- (void)typeText:(id)arg1 atOffset:(double)arg2 typingSpeed:(unsigned long long)arg3 shouldRedact:(_Bool)arg4;
 - (void)scrollAtPoint:(struct CGPoint)arg1 byLines:(long long)arg2 atOffset:(double)arg3;
 - (void)scrollWithDeltaVector:(struct CGVector)arg1 atOffset:(double)arg2 duration:(double)arg3;
 - (void)releaseButton:(unsigned long long)arg1 atOffset:(double)arg2 clickCount:(unsigned long long)arg3;
@@ -46,6 +46,8 @@
 - (void)pressDownWithPressure:(double)arg1 atOffset:(double)arg2;
 - (void)pressDownAtOffset:(double)arg1;
 @property(readonly) NSArray *pointerEvents;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initForTouchBarAtPoint:(struct CGPoint)arg1 offset:(double)arg2;

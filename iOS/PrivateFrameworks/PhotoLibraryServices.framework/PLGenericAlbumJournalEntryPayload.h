@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) int customSortKey;
 @property(readonly, nonatomic) _Bool customSortAscending;
 @property(readonly, nonatomic) _Bool isInTrash;
+@property(readonly, nonatomic) _Bool isPrototype;
 @property(readonly, nonatomic) _Bool isPinned;
 @property(readonly, nonatomic) NSNumber *kind;
 @property(readonly, nonatomic) NSString *title;

@@ -35,6 +35,7 @@
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(_Bool)arg2;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_cleanupAfterEditing;
 - (void)_prepareForEditing;

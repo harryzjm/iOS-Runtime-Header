@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBBaseWelcomeController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UITextFieldDelegate-Protocol.h>
@@ -12,7 +12,7 @@
 @class NSLayoutConstraint, NSString, TSCellularPlanTableViewCell, UIBarButtonItem, UILabel, UITableView;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanConfirmationCodeViewController : OBBaseWelcomeController <UITextFieldDelegate, TSSetupFlowItem>
+@interface TSCellularPlanConfirmationCodeViewController : UIViewController <UITextFieldDelegate, TSSetupFlowItem>
 {
     TSCellularPlanTableViewCell *_confirmationCodeCell;
     NSString *_fauxCardData;
@@ -20,18 +20,19 @@
     long long _userConsentResponse;
     _Bool _isMidOperation;
     UIBarButtonItem *_nextButton;
+    UIBarButtonItem *_cancelButton;
     id <TSSIMSetupFlowDelegate> _delegate;
     UILabel *_confirmationCodeTitleLabel;
     UITableView *_infoTableView;
     NSLayoutConstraint *_infoTableViewHeightConstraint;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak NSLayoutConstraint *infoTableViewHeightConstraint; // @synthesize infoTableViewHeightConstraint=_infoTableViewHeightConstraint;
 @property(nonatomic) __weak UITableView *infoTableView; // @synthesize infoTableView=_infoTableView;
 @property(nonatomic) __weak UILabel *confirmationCodeTitleLabel; // @synthesize confirmationCodeTitleLabel=_confirmationCodeTitleLabel;
 @property(readonly, nonatomic) NSString *confirmationCode; // @synthesize confirmationCode=_confirmationCode;
 @property(nonatomic) __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)canBeShownFromSuspendedState;
 - (void)confirm:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
@@ -39,6 +40,7 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)userDidTapCancel;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;

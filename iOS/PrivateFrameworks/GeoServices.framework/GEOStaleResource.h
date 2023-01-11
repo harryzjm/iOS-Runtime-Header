@@ -13,20 +13,19 @@
 @interface GEOStaleResource : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOResource *_desiredResource;
     GEOResource *_fallbackResource;
     double _originalTimestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_originalTimestamp:1;
         unsigned int read_unknownFields:1;
         unsigned int read_desiredResource:1;
         unsigned int read_fallbackResource:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_desiredResource:1;
-        unsigned int wrote_fallbackResource:1;
-        unsigned int wrote_originalTimestamp:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,16 +41,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasOriginalTimestamp;
 @property(nonatomic) double originalTimestamp;
 @property(retain, nonatomic) GEOResource *fallbackResource;
 @property(readonly, nonatomic) _Bool hasFallbackResource;
-- (void)_readFallbackResource;
 @property(retain, nonatomic) GEOResource *desiredResource;
 @property(readonly, nonatomic) _Bool hasDesiredResource;
-- (void)_readDesiredResource;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

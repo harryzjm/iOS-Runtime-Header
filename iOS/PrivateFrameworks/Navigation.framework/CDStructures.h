@@ -24,10 +24,6 @@ struct Matrix<double, 2, 1> {
     double _e[2];
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
 struct PolylineCoordinate {
     unsigned int index;
     float offset;
@@ -136,6 +132,8 @@ typedef struct {
     int _field6;
     unsigned long long _field7;
     unsigned long long _field8;
+    unsigned int _field9;
+    unsigned int _field10;
     union {
         struct {
             CDStruct_b2fbf00d _field1;
@@ -147,24 +145,24 @@ typedef struct {
             float _field3;
             float _field4;
         } _field2;
-    } _field9;
-    struct *_field10;
+    } _field11;
+    struct *_field12;
     struct {
         unsigned short _field1[2];
         unsigned short _field2[2];
-    } _field11;
-    unsigned char _field12;
-    _Bool _field13;
+    } _field13;
     unsigned char _field14;
     _Bool _field15;
-    _Bool _field16;
-    unsigned char _field17;
+    unsigned char _field16;
+    _Bool _field17;
     _Bool _field18;
-    unsigned short _field19;
-    struct _NSRange _field20;
-    _Bool _field21;
-    unsigned int _field22;
-} CDStruct_123780e2;
+    unsigned char _field19;
+    _Bool _field20;
+    unsigned short _field21;
+    struct _NSRange _field22;
+    _Bool _field23;
+    unsigned int _field24;
+} CDStruct_66740237;
 
 // Ambiguous groups
 typedef struct {

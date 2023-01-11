@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebUI/WBSContentBlockersPreferenceManager.h>
+#import <SafariSharedUI/WBSContentBlockersPreferenceManager.h>
 
 #import <SafariServices/SFContentBlockerManagerObserver-Protocol.h>
 
@@ -16,10 +16,9 @@
 }
 
 @property(readonly, nonatomic) _Bool hasEnabledContentBlockers; // @synthesize hasEnabledContentBlockers=_hasEnabledContentBlockers;
-- (void)didUpdatePreference:(id)arg1 toValue:(id)arg2 forDomain:(id)arg3;
 - (void)contentBlockerManagerExtensionListDidChange:(id)arg1;
 - (void)_checkForContentBlockers;
-- (void)dealloc;
+- (void)invalidate;
 - (id)initWithPerSitePreferencesStore:(id)arg1;
 
 // Remaining properties

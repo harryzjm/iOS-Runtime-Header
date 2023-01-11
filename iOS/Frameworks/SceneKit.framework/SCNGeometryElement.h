@@ -9,6 +9,7 @@
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
 @class NSData;
+@protocol MTLBuffer;
 
 @interface SCNGeometryElement : NSObject <NSSecureCoding>
 {
@@ -23,13 +24,16 @@
     float _pointSize;
     float _minimumPointScreenSpaceRadius;
     float _maximumPointScreenSpaceRadius;
+    id <MTLBuffer> _mtlBuffer;
 }
 
 + (id)_optimizedGeometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
 + (_Bool)supportsSecureCoding;
++ (id)geometryElementWithBuffer:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
 + (id)geometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 bytesPerIndex:(long long)arg4;
 + (id)geometryElementWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 indicesChannelCount:(long long)arg4 interleavedIndicesChannels:(_Bool)arg5 bytesPerIndex:(long long)arg6;
 + (id)geometryElementWithMeshElementRef:(struct __C3DMeshElement *)arg1;
++ (id)geometryElementWithBuffer:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 indicesChannelCount:(long long)arg4 interleavedIndicesChannels:(_Bool)arg5 bytesPerIndex:(long long)arg6;
 + (id)geometryElementWithMDLSubmesh:(id)arg1;
 - (double)_computeACMR;
 - (void)_optimizeTriangleIndices;
@@ -52,6 +56,7 @@
 - (void)_printData;
 @property(readonly, nonatomic) NSData *data;
 - (id)initWithData:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 indicesChannelCount:(long long)arg4 interleavedIndicesChannels:(_Bool)arg5 bytesPerIndex:(long long)arg6;
+- (id)initWithBuffer:(id)arg1 primitiveType:(long long)arg2 primitiveCount:(long long)arg3 indicesChannelCount:(long long)arg4 interleavedIndicesChannels:(_Bool)arg5 bytesPerIndex:(long long)arg6;
 - (id)description;
 - (void)dealloc;
 - (id)init;

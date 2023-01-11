@@ -23,23 +23,26 @@
     NSSet *_systemAppPlaceholderBundleIDs;
     NSSet *_systemAppPlaceholderPluginBundleIDs;
     NSSet *_systemAppPlaceholderXPCServiceBundleIDs;
-    NSURL *_installdPath;
-    NSURL *_mobilePath;
     NSURL *_rootPath;
+    NSDictionary *_diskImageAppBundleIDToInfoMap;
+    NSURL *_installdPath;
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) NSURL *rootPath; // @synthesize rootPath=_rootPath;
-@property(readonly, nonatomic) NSURL *mobilePath; // @synthesize mobilePath=_mobilePath;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *installdPath; // @synthesize installdPath=_installdPath;
 @property(readonly, nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property(readonly, nonatomic) unsigned int uid; // @synthesize uid=_uid;
-- (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSURL *lastBuildInfoFileURL;
-@property(readonly, copy, nonatomic) NSURL *migrationPlistURL;
+@property(readonly, copy, nonatomic) NSDictionary *diskImageAppBundleIDToInfoMap; // @synthesize diskImageAppBundleIDToInfoMap=_diskImageAppBundleIDToInfoMap;
+@property(readonly, nonatomic) NSURL *rootPath; // @synthesize rootPath=_rootPath;
+- (_Bool)clearIsRunningInTestMode:(id *)arg1;
+- (_Bool)setIsRunningInTestMode:(id *)arg1;
+- (_Bool)isRunningInTestMode:(_Bool *)arg1 outError:(id *)arg2;
+- (_Bool)_useInternalDiagnostics;
+- (id)_testModeSentinelURL;
+@property(readonly, nonatomic) NSURL *lastBuildInfoFileURL;
+@property(readonly, nonatomic) NSURL *migrationPlistURL;
 @property(readonly, copy, nonatomic) NSString *alternateThinningModelIdentifier;
-@property(readonly, copy, nonatomic) NSArray *diskImageApplicationsDirectories;
-@property(readonly, copy, nonatomic) NSDictionary *diskImageAppBundleIDToInfoMap;
 - (void)reScanInternalApps;
 - (void)reScanCoreServicesApps;
 - (void)reScanSystemApps;
@@ -80,10 +83,6 @@
 @property(readonly, nonatomic) NSURL *stagingRoot;
 @property(readonly, nonatomic) NSURL *backupSystemAppInstallStateFilePath;
 @property(readonly, nonatomic) NSURL *systemAppInstallStateFilePath;
-@property(readonly, nonatomic) NSURL *roleUserMigrationMarkerFilePath;
-@property(readonly, nonatomic) NSURL *oldArchiveDirectory;
-@property(readonly, nonatomic) NSURL *oldLoggingPath;
-@property(readonly, nonatomic) NSURL *oldDataDirectoryPath;
 @property(readonly, nonatomic) _Bool allowDeletableSystemApps; // @synthesize allowDeletableSystemApps=_allowDeletableSystemApps;
 - (id)init;
 

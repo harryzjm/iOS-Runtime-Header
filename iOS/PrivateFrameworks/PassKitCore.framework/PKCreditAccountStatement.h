@@ -20,6 +20,7 @@
     NSDate *_paymentDueDate;
     NSString *_currencyCode;
     NSDecimalNumber *_statementBalance;
+    NSDecimalNumber *_totalBalance;
     NSDecimalNumber *_minimumDue;
     NSDecimalNumber *_purchases;
     NSDecimalNumber *_feesCharged;
@@ -38,6 +39,7 @@
 + (id)recordNamePrefix;
 + (id)recordType;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDecimalNumber *rewardsLifetime; // @synthesize rewardsLifetime=_rewardsLifetime;
 @property(copy, nonatomic) NSDecimalNumber *rewardsYTD; // @synthesize rewardsYTD=_rewardsYTD;
 @property(copy, nonatomic) NSDecimalNumber *rewardsRedeemed; // @synthesize rewardsRedeemed=_rewardsRedeemed;
@@ -51,13 +53,13 @@
 @property(copy, nonatomic) NSDecimalNumber *feesCharged; // @synthesize feesCharged=_feesCharged;
 @property(copy, nonatomic) NSDecimalNumber *purchases; // @synthesize purchases=_purchases;
 @property(copy, nonatomic) NSDecimalNumber *minimumDue; // @synthesize minimumDue=_minimumDue;
+@property(copy, nonatomic) NSDecimalNumber *totalBalance; // @synthesize totalBalance=_totalBalance;
 @property(copy, nonatomic) NSDecimalNumber *statementBalance; // @synthesize statementBalance=_statementBalance;
 @property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property(copy, nonatomic) NSDate *paymentDueDate; // @synthesize paymentDueDate=_paymentDueDate;
 @property(copy, nonatomic) NSDate *closingDate; // @synthesize closingDate=_closingDate;
 @property(copy, nonatomic) NSDate *openingDate; // @synthesize openingDate=_openingDate;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

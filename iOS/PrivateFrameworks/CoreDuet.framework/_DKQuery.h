@@ -18,12 +18,12 @@
 + (_Bool)supportsSecureCoding;
 + (id)predicateForEventsWithNoSource;
 + (id)predicateForEventsWithNullSourceDeviceID;
-+ (id)predicateForEventsWithSourceDeviceID:(id)arg1 userID:(id)arg2;
 + (id)predicateForEventsWithSourceDeviceIDs:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1 bundleID:(id)arg2 itemIDs:(id)arg3;
 + (id)predicateForEventsWithSourceGroupIDs:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1 bundleID:(id)arg2 groupIDs:(id)arg3;
 + (id)predicateForEventsWithSourceID:(id)arg1 bundleID:(id)arg2;
++ (id)predicateForEventsWithBundleID:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1;
 + (id)endDateSortDescriptorAscending:(_Bool)arg1;
 + (id)startDateSortDescriptorAscending:(_Bool)arg1;
@@ -34,9 +34,7 @@
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 andStringValue:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 inValues:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 andValue:(id)arg2;
-+ (id)predicateForObjectsWithStructuredMetadataKey:(id)arg1 andValue:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1;
-+ (id)structuredMetadataKeyPathForMetadataKey:(id)arg1;
 + (id)predicateForEventsWithStringValueInValues:(id)arg1;
 + (id)predicateForEventsWithStringValue:(id)arg1;
 + (id)predicateForEventsWithDoubleValueBetween:(double)arg1 and:(double)arg2;
@@ -69,10 +67,6 @@
 + (id)predicateForEventsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 + (id)predicateForObjectsWithUUIDs:(id)arg1;
 + (id)predicateForObjectWithUUID:(id)arg1;
-+ (id)predicateForSpotlightEventsWithBundleID:(id)arg1 sinceDate:(id)arg2;
-+ (id)predicateForSpotlightEventsWithItemIdentifiers:(id)arg1 bundleID:(id)arg2;
-+ (id)predicateForSpotlightEventsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
-+ (id)predicateForSpotlightEventsWithBundleID:(id)arg1;
 @property(nonatomic) _Bool executeConcurrently; // @synthesize executeConcurrently=_executeConcurrently;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

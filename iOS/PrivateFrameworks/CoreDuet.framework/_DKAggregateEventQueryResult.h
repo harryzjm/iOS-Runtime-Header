@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableArray, _DKEventQuery;
+@class NSMutableArray, _DKEventQuery;
 
 @interface _DKAggregateEventQueryResult : NSObject
 {
@@ -16,16 +16,7 @@
     unsigned long long _numberOfContributions;
 }
 
-@property(nonatomic) unsigned long long numberOfContributions; // @synthesize numberOfContributions=_numberOfContributions;
-@property(retain, nonatomic) NSMutableArray *mutableErrors; // @synthesize mutableErrors=_mutableErrors;
-@property(retain, nonatomic) NSMutableArray *mutableEvents; // @synthesize mutableEvents=_mutableEvents;
-@property(retain, nonatomic) _DKEventQuery *query; // @synthesize query=_query;
 - (void).cxx_destruct;
-- (void)addError:(id)arg1;
-- (void)addEvents:(id)arg1;
-@property(readonly, copy, nonatomic) NSError *aggregateError;
-@property(readonly, copy, nonatomic) NSArray *aggregateEvents;
-- (id)initWithEventQuery:(id)arg1;
 
 @end
 

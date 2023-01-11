@@ -24,17 +24,17 @@
     NSDictionary *_itemsByID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *itemsByID; // @synthesize itemsByID=_itemsByID;
 @property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(nonatomic) unsigned long long generation; // @synthesize generation=_generation;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)invalidate;
 - (void)deleteAllItems;
 - (void)deleteItemsWithIDs:(id)arg1;
 - (void)insertOrUpdateItems:(id)arg1;
 - (id)itemWithID:(id)arg1;
-- (void)endGrouping;
+- (void)endGroupingWithOptions:(unsigned long long)arg1;
 - (void)beginGrouping;
 - (id)initWithIdentifier:(id)arg1 delegate:(id)arg2;
 

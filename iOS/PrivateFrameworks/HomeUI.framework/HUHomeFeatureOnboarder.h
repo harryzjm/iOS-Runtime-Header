@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HMHome;
+
 @interface HUHomeFeatureOnboarder
 {
+    HMHome *_home;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)getPostProcessingFlowsForResults:(id)arg1;
 - (id)_subclass_buildAllFlowGroupsFromFeatureGroups:(id)arg1 usageOptions:(id)arg2;
+- (id)initWithGroupedFeatures:(id)arg1 home:(id)arg2 usageOptions:(id)arg3;
+- (id)initWithFeatures:(id)arg1 home:(id)arg2 usageOptions:(id)arg3;
 
 @end
 

@@ -18,7 +18,6 @@
 - (_Bool)enableWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (_Bool)disableWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (NSDictionary *)accountInfoWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
-- (id)init;
 - (id)initWithContext:(CDPContext *)arg1;
 @end
 

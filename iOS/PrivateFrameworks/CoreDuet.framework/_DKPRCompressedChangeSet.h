@@ -16,14 +16,10 @@
     NSData *_compressedData;
 }
 
-@property(retain, nonatomic) NSData *compressedData; // @synthesize compressedData=_compressedData;
-@property(nonatomic) unsigned long long uncompressedLength; // @synthesize uncompressedLength=_uncompressedLength;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;

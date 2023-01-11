@@ -24,7 +24,7 @@
 - (void)localSecretChangedTo:(NSString *)arg1 secretType:(unsigned long long)arg2 context:(CDPContext *)arg3 uiProvider:(id <CDPStateUIProviderInternal>)arg4 completion:(void (^)(_Bool, NSError *))arg5;
 - (void)recoverSquirrelWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)recoverAndSynchronizeSquirrelWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)shouldPerformRepairForContext:(CDPContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)shouldPerformRepairForContext:(CDPContext *)arg1 forceFetch:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)repairCloudDataProtectionStateWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)startCircleApplicationApprovalServerWithContext:(CDPContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)handleCloudDataProtectionStateWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, _Bool, NSError *))arg3;

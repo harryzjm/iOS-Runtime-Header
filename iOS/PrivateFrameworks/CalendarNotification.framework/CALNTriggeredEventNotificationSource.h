@@ -33,12 +33,14 @@
 
 + (id)_conferenceURLForNotification:(id)arg1;
 + (id)_mapItemURLForNotification:(id)arg1;
++ (id)_mergeDataFromUnprotectedStore:(id)arg1 withDataInProtectedStore:(id)arg2;
 + (id)conferenceURLUserInfoKey;
 + (id)mapItemURLUserInfoKey;
 + (id)mailOrganizerActionIdentifier;
 + (id)conferenceCallActionIdentifier;
 + (id)directionsActionIdentifier;
 + (id)snoozeActionIdentifier;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) id <CALNTriggeredEventNotificationMapItemURLProvider> mapItemURLProvider; // @synthesize mapItemURLProvider=_mapItemURLProvider;
 @property(readonly, nonatomic) id <CALNURLHandler> urlHandler; // @synthesize urlHandler=_urlHandler;
@@ -54,7 +56,6 @@
 @property(readonly, nonatomic) id <CALNCalendarIconIdentifierProvider> iconIdentifierProvider; // @synthesize iconIdentifierProvider=_iconIdentifierProvider;
 @property(readonly, nonatomic) __weak id <CALNNotificationManager> notificationManager; // @synthesize notificationManager=_notificationManager;
 @property(readonly, nonatomic) id <CALNTriggeredEventNotificationDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (id)_updatedLastFireTimeOfAlertOffsetFromTravelTimeGivenIsOffsetFromTravelTime:(_Bool)arg1;
 - (id)_launchURLForResponse:(id)arg1;
 - (_Bool)_sourceClientIdentifier:(id)arg1 matchesEventForSourceClientIdentifier:(id)arg2;
@@ -63,6 +64,7 @@
 - (void)_setNotificationResponseData:(id)arg1 onNotificationContent:(id)arg2;
 - (id)_notificationResponseDataForSourceNotificationInfo:(id)arg1;
 - (id)_notificationResponseDataForRecord:(id)arg1;
+- (_Bool)migrateToStorage:(id)arg1;
 - (id)_updatedNotificationDataResettingTimeToLeaveDisplayState:(id)arg1;
 - (void)_clearTravelAdvisoryFromNotificationMetaDataForSourceClientIdentifier:(id)arg1;
 - (void)_resetStoredNotificationDataTimeToLeaveDisplayStateForSourceClientIdentifier:(id)arg1;

@@ -30,9 +30,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldAdaptToTokenSequence:(const unsigned int *)arg1 length:(unsigned long long)arg2;
 - (_Bool)getFirstDynamicTokenID:(unsigned int *)arg1 lastDynamicTokenID:(unsigned int *)arg2;
 - (_Bool)addTokenForString:(id)arg1 tokenID:(unsigned int *)arg2;
+- (void)enumerateEntriesForString:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumeratePredictionsForContext:(const unsigned int *)arg1 length:(unsigned long long)arg2 maxPredictions:(unsigned long long)arg3 maxTokensPerPrediction:(unsigned long long)arg4 withBlock:(CDUnknownBlockType)arg5;
+- (void)enumerateCompletionEntriesForPrefix:(id)arg1 maxCompletions:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateCompletionsForPrefix:(id)arg1 maxCompletions:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (_Bool)tokenSequenceIsBlacklisted:(const unsigned int *)arg1 length:(unsigned long long)arg2;
+- (_Bool)tokenSequenceIsBlocklisted:(const unsigned int *)arg1 length:(unsigned long long)arg2;
+- (id)_descriptionForTokenSequence:(const unsigned int *)arg1 length:(unsigned long long)arg2;
 - (float)usageCountForTokenID:(unsigned int)arg1;
 - (_Bool)getUnigramProbabilityForString:(id)arg1 probability:(double *)arg2;
 - (_Bool)getConditionalProbabilityForTokenID:(unsigned int)arg1 context:(const unsigned int *)arg2 length:(unsigned long long)arg3 probability:(double *)arg4;

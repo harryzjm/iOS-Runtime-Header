@@ -52,14 +52,14 @@
 - (void)removeObserver:(id)arg1 fromObjectsAtIndexes:(id)arg2 forKeyPath:(id)arg3;
 - (void)removeObserver:(id)arg1 fromObjectsAtIndexes:(id)arg2 forKeyPath:(id)arg3 context:(void *)arg4;
 - (void)addObserver:(id)arg1 toObjectsAtIndexes:(id)arg2 forKeyPath:(id)arg3 options:(unsigned long long)arg4 context:(void *)arg5;
-- (id)stringsByAppendingPathComponent:(id)arg1;
-- (id)pathsMatchingExtensions:(id)arg1;
-- (id)sortedArrayUsingDescriptors:(id)arg1;
-- (id)filteredArrayUsingPredicate:(id)arg1;
-- (id)replacementObjectForPortCoder:(id)arg1;
 - (id)arrayByApplyingDifference:(id)arg1;
 - (id)differenceFromArray:(id)arg1;
 - (id)differenceFromArray:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)differenceFromArray:(id)arg1 withOptions:(unsigned long long)arg2 usingEquivalenceTest:(CDUnknownBlockType)arg3;
+- (id)stringsByAppendingPathComponent:(id)arg1;
+- (id)pathsMatchingExtensions:(id)arg1;
+- (id)filteredArrayUsingPredicate:(id)arg1;
+- (id)sortedArrayUsingDescriptors:(id)arg1;
+- (id)replacementObjectForPortCoder:(id)arg1;
 @end
 

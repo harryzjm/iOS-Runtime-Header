@@ -10,5 +10,6 @@
 - (id)bl_sha1;
 - (id)bl_md5Hash;
 - (id)stringValue;
+- (unsigned long long)unsignedLongLongValue;
 @end
 

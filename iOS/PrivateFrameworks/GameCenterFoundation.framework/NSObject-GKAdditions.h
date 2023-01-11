@@ -18,7 +18,7 @@
 - (id)_gkViewDebuggingChildren;
 - (id)_gkViewDebuggingChildKeys;
 - (id)_gkRecursiveDescription;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)_gkDescription;
 - (void)_gkRemoveObserverWithBlockToken:(id)arg1;
 - (id)_gkAddObserverForKeyPath:(id)arg1 options:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;

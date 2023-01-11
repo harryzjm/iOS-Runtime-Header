@@ -8,7 +8,7 @@
 {
 }
 
-- (id)_verifyCredentialsOptionsForInteractionLevel:(long long)arg1;
+- (void)finishWithError:(id)arg1;
 - (void)execute;
 
 @end

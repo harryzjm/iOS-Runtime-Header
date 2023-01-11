@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKit/NSCopying-Protocol.h>
+
 @class EKCalendarEventInvitationNotificationAttendee, EKRecurrenceRule, NSArray, NSDate, NSString, NSTimeZone;
 
-@interface EKCalendarEventInvitationNotification
+@interface EKCalendarEventInvitationNotification <NSCopying>
 {
     _Bool _allDay;
     _Bool _timeChanged;
     _Bool _dateChanged;
     _Bool _locationChanged;
     _Bool _attendeeReplyChanged;
+    _Bool _expanded;
     NSString *_location;
     NSDate *_startDate;
     NSDate *_startDateForNextOccurrence;
@@ -25,8 +28,12 @@
     NSArray *_attendees;
     EKCalendarEventInvitationNotificationAttendee *_owner;
     NSString *_invitedBy;
+    EKCalendarEventInvitationNotificationAttendee *_expandedProposedTimeAttendee;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
+@property(retain, nonatomic) EKCalendarEventInvitationNotificationAttendee *expandedProposedTimeAttendee; // @synthesize expandedProposedTimeAttendee=_expandedProposedTimeAttendee;
 @property(readonly, nonatomic) NSString *invitedBy; // @synthesize invitedBy=_invitedBy;
 @property(retain, nonatomic) EKCalendarEventInvitationNotificationAttendee *owner; // @synthesize owner=_owner;
 @property(retain, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
@@ -44,8 +51,12 @@
 @property(retain, nonatomic) NSDate *startDateForNextOccurrence; // @synthesize startDateForNextOccurrence=_startDateForNextOccurrence;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(retain, nonatomic) NSString *location; // @synthesize location=_location;
-- (void).cxx_destruct;
+- (_Bool)proposedStartDateIsInFutureForAttendee:(id)arg1;
+- (_Bool)isProposedNewTime;
+- (_Bool)needsReply;
+- (_Bool)isInvitation;
 - (_Bool)hasRecurrenceRules;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)eventFromEventStore:(id)arg1;
 - (id)initWithEvent:(id)arg1;
 

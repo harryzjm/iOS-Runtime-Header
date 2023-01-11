@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficSnapshotMetaData : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_basemapId;
     NSString *_branchId;
     NSString *_environment;
@@ -23,9 +22,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _publishTime;
     NSMutableArray *_regions;
     NSString *_snapshotId;
+    NSString *_vendorSnapshotId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    unsigned int _maxAgeSeconds;
     int _vendor;
     struct {
         unsigned int has_publishTime:1;
+        unsigned int has_maxAgeSeconds:1;
         unsigned int has_vendor:1;
         unsigned int read_basemapId:1;
         unsigned int read_branchId:1;
@@ -34,15 +39,8 @@ __attribute__((visibility("hidden")))
         unsigned int read_isoCountryCode:1;
         unsigned int read_regions:1;
         unsigned int read_snapshotId:1;
-        unsigned int wrote_basemapId:1;
-        unsigned int wrote_branchId:1;
-        unsigned int wrote_environment:1;
-        unsigned int wrote_feedId:1;
-        unsigned int wrote_isoCountryCode:1;
-        unsigned int wrote_publishTime:1;
-        unsigned int wrote_regions:1;
-        unsigned int wrote_snapshotId:1;
-        unsigned int wrote_vendor:1;
+        unsigned int read_vendorSnapshotId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -57,39 +55,40 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasMaxAgeSeconds;
+@property(nonatomic) unsigned int maxAgeSeconds;
+@property(retain, nonatomic) NSString *vendorSnapshotId;
+@property(readonly, nonatomic) _Bool hasVendorSnapshotId;
 @property(retain, nonatomic) NSString *basemapId;
 @property(readonly, nonatomic) _Bool hasBasemapId;
-- (void)_readBasemapId;
 - (id)regionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)regionsCount;
-- (void)_addNoFlagsRegions:(id)arg1;
 - (void)addRegions:(id)arg1;
 - (void)clearRegions;
 @property(retain, nonatomic) NSMutableArray *regions;
-- (void)_readRegions;
 - (int)StringAsVendor:(id)arg1;
 - (id)vendorAsString:(int)arg1;
 @property(nonatomic) _Bool hasVendor;
 @property(nonatomic) int vendor;
 @property(retain, nonatomic) NSString *snapshotId;
 @property(readonly, nonatomic) _Bool hasSnapshotId;
-- (void)_readSnapshotId;
 @property(retain, nonatomic) NSString *environment;
 @property(readonly, nonatomic) _Bool hasEnvironment;
-- (void)_readEnvironment;
 @property(retain, nonatomic) NSString *branchId;
 @property(readonly, nonatomic) _Bool hasBranchId;
-- (void)_readBranchId;
 @property(retain, nonatomic) NSString *isoCountryCode;
 @property(readonly, nonatomic) _Bool hasIsoCountryCode;
-- (void)_readIsoCountryCode;
 @property(retain, nonatomic) NSString *feedId;
 @property(readonly, nonatomic) _Bool hasFeedId;
-- (void)_readFeedId;
 @property(nonatomic) _Bool hasPublishTime;
 @property(nonatomic) unsigned long long publishTime;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -16,10 +16,11 @@ struct AdditionalInfo {
     unsigned char _field1;
     unsigned short _field2;
     unsigned short _field3;
-    basic_string_a1f69cfb _field4;
+    basic_string_7c0a1c0b _field4;
     unsigned short _field5;
     unsigned char _field6;
     unsigned int _field7;
+    basic_string_7c0a1c0b _field8;
 };
 
 struct BtProxData {
@@ -30,7 +31,7 @@ struct BtProxData {
 
 struct BtProximityFilterBase {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
 };
 
 struct DaemonBackedService {
@@ -51,10 +52,12 @@ struct GetPowerStatsResponse {
     unsigned int _field9;
     unsigned short _field10;
     unsigned short _field11;
+    unsigned int _field12;
+    unsigned int _field13;
 };
 
 struct HelloResponse {
-    basic_string_a1f69cfb _field1;
+    basic_string_7c0a1c0b _field1;
     unsigned char _field2;
     unsigned char _field3;
     unsigned short _field4;
@@ -62,7 +65,7 @@ struct HelloResponse {
 };
 
 struct NeighborMeasurements {
-    basic_string_a1f69cfb _field1;
+    basic_string_7c0a1c0b _field1;
     double _field2;
     _Bool _field3;
     _Bool _field4;
@@ -71,7 +74,16 @@ struct NeighborMeasurements {
     _Bool _field7;
     int _field8;
     _Bool _field9;
-    _Bool _field10;
+    double _field10;
+    _Bool _field11;
+    _Bool _field12;
+};
+
+struct ResponderSuperframeStats {
+    double _field1;
+    unsigned short _field2;
+    struct SlaveSFCompleteEvent _field3;
+    struct optional<double> _field4;
 };
 
 struct SharingImportanceManager;
@@ -80,21 +92,49 @@ struct SharingImportanceMeasurements {
     struct vector<NeighborMeasurements, std::__1::allocator<NeighborMeasurements>> userSharingInput;
 };
 
+struct SlaveSFCompleteEvent {
+    unsigned short _field1;
+    unsigned short _field2;
+    unsigned char _field3;
+    double _field4;
+    struct array<unsigned char, 8> _field5;
+    unsigned short _field6;
+    unsigned short _field7;
+    unsigned short _field8;
+    unsigned char _field9;
+    unsigned char _field10;
+    unsigned char _field11;
+    unsigned char _field12;
+    unsigned char _field13;
+    unsigned char _field14;
+    double _field15;
+    unsigned char _field16;
+    unsigned char _field17;
+    unsigned char _field18;
+    unsigned char _field19;
+    struct vector<Rose::SlaveSFRxPacketInfo, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> _field20;
+};
+
+struct SlaveSFRxPacketInfo;
+
+struct array<unsigned char, 8> {
+    unsigned char _field1[8];
+};
+
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -127,6 +167,19 @@ struct optional<Rose::HelloResponse::AdditionalInfo> {
     _Bool _field2;
 };
 
+struct optional<double> {
+    union {
+        char _field1;
+        double _field2;
+    } _field1;
+    _Bool _field2;
+};
+
+struct shared_ptr<rose::ResponderSuperframeStats> {
+    struct ResponderSuperframeStats *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct unique_ptr<SharingImportanceManager, std::__1::default_delete<SharingImportanceManager>> {
     struct __compressed_pair<SharingImportanceManager *, std::__1::default_delete<SharingImportanceManager>> {
         struct SharingImportanceManager *__value_;
@@ -147,6 +200,14 @@ struct vector<NeighborMeasurements, std::__1::allocator<NeighborMeasurements>> {
     } __end_cap_;
 };
 
+struct vector<Rose::SlaveSFRxPacketInfo, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> {
+    struct SlaveSFRxPacketInfo *_field1;
+    struct SlaveSFRxPacketInfo *_field2;
+    struct __compressed_pair<Rose::SlaveSFRxPacketInfo *, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> {
+        struct SlaveSFRxPacketInfo *_field1;
+    } _field3;
+};
+
 #pragma mark Typedef'd Structures
 
 // Template types
@@ -155,16 +216,15 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -172,5 +232,5 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
             } _field1;
         } _field1;
     } _field1;
-} basic_string_a1f69cfb;
+} basic_string_7c0a1c0b;
 

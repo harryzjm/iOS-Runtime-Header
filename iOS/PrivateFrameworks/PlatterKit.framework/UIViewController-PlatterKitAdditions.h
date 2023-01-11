@@ -13,6 +13,5 @@
 - (id)pl_presentationControllerIfPresented;
 @property(readonly, nonatomic) PLExpandedPlatterPresentationController *expandedPlatterPresentationController;
 - (id)pl_containingClickPresentationInteractionPresentingViewController;
-- (id)pl_containingPreviewInteractionPresentingViewController;
 @end
 

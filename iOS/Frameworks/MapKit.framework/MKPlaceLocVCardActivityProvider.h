@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKActivityItemSource-Protocol.h>
+#import <MapKit/UIActivityItemSource-Protocol.h>
 
 @class CNContact, NSString;
 
-@interface MKPlaceLocVCardActivityProvider <MKActivityItemSource>
+@interface MKPlaceLocVCardActivityProvider <UIActivityItemSource>
 {
     CNContact *_contact;
 }
 
-@property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (id)activityViewController:(id)arg1 attachmentNameForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;

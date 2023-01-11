@@ -10,6 +10,8 @@
 {
 }
 
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (Class)frozenClass;
 - (id)semanticIdentifier;
 - (id)timestampAsDate;
@@ -21,7 +23,7 @@
 @property(copy, nonatomic) NSString *uniqueKey;
 @property(copy, nonatomic) NSString *opaqueKey;
 - (id)relatedEvent;
-- (id)copy;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3 extractionGroupIdentifier:(id)arg4;
 - (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3;

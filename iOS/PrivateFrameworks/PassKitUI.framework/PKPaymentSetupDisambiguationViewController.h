@@ -20,11 +20,11 @@
     NSString *_enteredCardNumber;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *enteredCardNumber; // @synthesize enteredCardNumber=_enteredCardNumber;
 @property(readonly, retain, nonatomic) PKPaymentSetupProduct *selectedProduct; // @synthesize selectedProduct=_selectedProduct;
 @property(retain, nonatomic) NSArray *products; // @synthesize products=_products;
-@property(nonatomic) id <PKPaymentSetupDisambiguationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <PKPaymentSetupDisambiguationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_setupLater:(id)arg1;
 - (void)_popToCameraCapture:(id)arg1;
 - (void)_notifyDelegateDidSelectProduct:(id)arg1;

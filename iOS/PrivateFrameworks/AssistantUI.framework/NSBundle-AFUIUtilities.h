@@ -8,6 +8,8 @@
 
 @interface NSBundle (AFUIUtilities)
 + (id)afui_assistantUIFrameworkBundle;
+- (id)_assistantUIStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 localizationLanguageCode:(id)arg4;
+- (id)_assistantUIlocalizationArrayForLanguageCode:(id)arg1;
 - (id)_assistantUILocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 language:(id)arg4;
 - (id)assistantUILocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 - (id)assistantUILocalizedStringForKey:(id)arg1 table:(id)arg2;

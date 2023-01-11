@@ -30,17 +30,6 @@
     SBLongPressGestureRecognizer *_shutdownGestureRecognizer;
 }
 
-@property(retain, nonatomic) SBLongPressGestureRecognizer *shutdownGestureRecognizer; // @synthesize shutdownGestureRecognizer=_shutdownGestureRecognizer;
-@property(retain, nonatomic) SBSOSLockGestureObserver *sosLockGestureObserver; // @synthesize sosLockGestureObserver=_sosLockGestureObserver;
-@property(retain, nonatomic) SBSOSClawGestureObserver *sosClawGestureObserver; // @synthesize sosClawGestureObserver=_sosClawGestureObserver;
-@property(retain, nonatomic) SBPressGestureRecognizer *sosGestureRecognizer; // @synthesize sosGestureRecognizer=_sosGestureRecognizer;
-@property(nonatomic) __weak SBBacklightController *backlightController; // @synthesize backlightController=_backlightController;
-@property(nonatomic) __weak SBProximitySensorManager *proximitySensorManager; // @synthesize proximitySensorManager=_proximitySensorManager;
-@property(nonatomic) __weak SBVolumeHardwareButton *volumeHardwareButton; // @synthesize volumeHardwareButton=_volumeHardwareButton;
-@property(nonatomic) __weak SBLockHardwareButton *lockHardwareButton; // @synthesize lockHardwareButton=_lockHardwareButton;
-@property(nonatomic) __weak SBHomeHardwareButton *homeHardwareButton; // @synthesize homeHardwareButton=_homeHardwareButton;
-@property(retain, nonatomic) SBClickGestureRecognizer *screenshotGestureRecognizer; // @synthesize screenshotGestureRecognizer=_screenshotGestureRecognizer;
-@property(retain, nonatomic) SBCombinationHardwareButtonActions *buttonActions; // @synthesize buttonActions=_buttonActions;
 - (void).cxx_destruct;
 - (void)_backlightChanged:(id)arg1;
 - (void)_setScreenshotDisabled:(_Bool)arg1 forReason:(id)arg2;

@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, NSString;
 
-@interface HMDNetworkRouterWANStatus : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterWANStatus : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_identifier;
-    HMDTLVUnsignedNumberValue *_status;
+    HAPTLVUnsignedNumberValue *_identifier;
+    HAPTLVUnsignedNumberValue *_status;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *status; // @synthesize status=_status;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *status; // @synthesize status=_status;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

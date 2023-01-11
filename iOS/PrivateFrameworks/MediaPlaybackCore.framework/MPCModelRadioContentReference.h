@@ -18,10 +18,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)referenceWithStoreIdentifier:(id)arg1 trackInfo:(id)arg2;
++ (id)referenceWithMPModelObject:(id)arg1 containerModelPlayEvent:(id)arg2;
 + (id)referenceWithMPModelObject:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MPIdentifierSet *referenceModelObjectIdentifiers; // @synthesize referenceModelObjectIdentifiers=_referenceModelObjectIdentifiers;
 @property(readonly, nonatomic) ICRadioContentReference *ICRadioContentReference; // @synthesize ICRadioContentReference=_ICRadioContentReference;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

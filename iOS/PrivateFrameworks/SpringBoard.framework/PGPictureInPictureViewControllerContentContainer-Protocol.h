@@ -7,16 +7,17 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol PGPictureInPictureViewControllerContentContainer <NSObject>
-- (void)performStopAnimationWithFinalInterfaceOrientation:(long long)arg1 finalLayerFrame:(struct CGRect)arg2 animationHandler:(void (^)(void))arg3 completionHandler:(void (^)(void))arg4;
-- (void)performStartAnimationWithAnimationHandler:(void (^)(void))arg1 completionHandler:(void (^)(void))arg2;
+- (void)performStopAnimationWithFinalInterfaceOrientation:(long long)arg1 finalLayerFrame:(struct CGRect)arg2 completionHandler:(void (^)(void))arg3;
+- (void)performStartAnimationWithCompletionHandler:(void (^)(void))arg1;
 - (void)prepareStartAnimationWithInitialInterfaceOrientation:(long long)arg1 initialLayerFrame:(struct CGRect)arg2 completionHandler:(void (^)(void))arg3;
 - (void)preferredContentSizeDidChangeForPictureInPictureViewController;
 
 @optional
 - (_Bool)handleDoubleTapGesture;
-- (_Bool)handleTapGesture;
+- (_Bool)handleTapWhileStashedGesture;
 - (void)relinquishInterfaceOrientationLock;
 - (void)acquireInterfaceOrientationLock;
+- (void)playbackSourceDidUpdateIsRoutingVideoToHostedWindow:(_Bool)arg1;
 - (void)prepareStopAnimationWithCompletionHandler:(void (^)(void))arg1;
 - (void)performRotateAnimationWithRotation:(long long)arg1 completionHandler:(void (^)(void))arg2;
 @end

@@ -16,10 +16,10 @@
     double _dialDiameter;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double dialDiameter; // @synthesize dialDiameter=_dialDiameter;
 @property(nonatomic) __weak NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property(nonatomic) _Bool usesNarrowTopSlots; // @synthesize usesNarrowTopSlots=_usesNarrowTopSlots;
-- (void).cxx_destruct;
 - (void)setAlpha:(double)arg1 faceView:(id)arg2;
 - (_Bool)_convertCircularSlot:(id)arg1 toPosition:(long long *)arg2;
 - (_Bool)_convertCornerSlot:(id)arg1 toPosition:(long long *)arg2;
@@ -35,6 +35,7 @@
 - (id)customEditOptionContainerViewForSlot:(id)arg1;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
 - (id)pickerMaskForSlot:(id)arg1;
+- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (id)keylineViewForComplicationSlot:(id)arg1;
 - (struct CGPoint)circularComplicationCenterForSlot:(id)arg1 inFaceBounds:(struct CGRect)arg2;
 - (id)newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;

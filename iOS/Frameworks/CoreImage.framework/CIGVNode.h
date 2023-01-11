@@ -6,12 +6,11 @@
 
 #import <GraphVisualizer/GVNode.h>
 
-@class CIGVGraph, NSMutableArray;
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CIGVNode : GVNode
 {
-    void *node;
     struct CGRect extent;
     struct CGSize titleSize;
     struct CGSize labelSize;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
     NSMutableArray *rois;
     int color;
     int shape;
-    CIGVGraph *graph;
     struct __CFString *title;
     struct __CFString *label;
 }
@@ -34,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct __CFString *title; // @synthesize title;
 @property(nonatomic) int shape; // @synthesize shape;
 @property(nonatomic) int color; // @synthesize color;
-@property(nonatomic) CIGVGraph *graph; // @synthesize graph;
 - (id)description;
 - (void)updateContentSize;
 - (void)updateBadgeSize;
@@ -52,7 +49,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct __CFArray *rois;
 @property(readonly, nonatomic) struct __CFArray *images;
 @property(readonly) struct CGRect extent;
-@property(readonly) void *node;
 - (void)dealloc;
 - (id)initWithCINode:(void *)arg1 extent:(struct CGRect)arg2;
 - (id)init;

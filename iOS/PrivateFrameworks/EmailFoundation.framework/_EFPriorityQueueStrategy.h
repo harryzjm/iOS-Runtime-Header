@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _comparator;
 }
 
-@property(readonly, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
 - (unsigned long long)_indexForObject:(id)arg1 buffer:(id)arg2;
 - (unsigned long long)_insertionIndexForObject:(id)arg1 buffer:(id)arg2;
 - (void)dequeueObject:(id)arg1 buffer:(id)arg2;
-- (void)enqueueObject:(id)arg1 buffer:(id)arg2;
+- (void)enqueueObject:(id)arg1 replaceIfExists:(_Bool)arg2 buffer:(id)arg3;
 @property(readonly, nonatomic) NSString *descriptionType;
 - (id)initWithComparator:(CDUnknownBlockType)arg1;
 

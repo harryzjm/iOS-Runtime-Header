@@ -6,16 +6,19 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SRAuthorizationGroup;
 
 @interface SRSampleViewController : UITableViewController
 {
-    NSArray *_items;
+    NSArray *_sampleDataEntries;
     NSString *_note;
+    SRAuthorizationGroup *_authGroup;
 }
 
++ (id)sampleViewControllerForAuthGroup:(id)arg1;
+@property(retain, nonatomic) SRAuthorizationGroup *authGroup; // @synthesize authGroup=_authGroup;
 @property(retain, nonatomic) NSString *note; // @synthesize note=_note;
-@property(retain, nonatomic) NSArray *items; // @synthesize items=_items;
+@property(retain, nonatomic) NSArray *sampleDataEntries; // @synthesize sampleDataEntries=_sampleDataEntries;
 - (id)sortedKeysForDictionary:(id)arg1;
 - (id)prepareExtendedRowWithText:(id)arg1;
 - (id)prepareEndRowWithText:(id)arg1 detailText:(id)arg2;

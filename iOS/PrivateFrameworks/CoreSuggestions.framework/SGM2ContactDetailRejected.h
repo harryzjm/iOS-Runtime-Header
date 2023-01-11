@@ -13,13 +13,16 @@
 @interface SGM2ContactDetailRejected : PBCodable <NSCopying>
 {
     int _extracted;
+    unsigned int _extractionModelVersion;
     NSString *_key;
     int _type;
-    CDStruct_a710f5a9 _has;
+    int _uiType;
+    CDStruct_698c174b _has;
 }
 
-@property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int extractionModelVersion; // @synthesize extractionModelVersion=_extractionModelVersion;
+@property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -29,6 +32,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsUiType:(id)arg1;
+- (id)uiTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasUiType;
+@property(nonatomic) int uiType; // @synthesize uiType=_uiType;
+@property(nonatomic) _Bool hasExtractionModelVersion;
 - (int)StringAsExtracted:(id)arg1;
 - (id)extractedAsString:(int)arg1;
 @property(nonatomic) _Bool hasExtracted;

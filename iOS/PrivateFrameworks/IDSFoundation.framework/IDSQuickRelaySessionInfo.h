@@ -20,6 +20,7 @@
     NSData *_softwareData;
     unsigned char _protocolVersion;
     long long _relayServerProviderType;
+    NSString *_reportingDataBlob;
     long long _participantID;
     NSArray *_allParticipantIDs;
     _Bool _isInitiator;
@@ -36,6 +37,7 @@
     unsigned char _maxConcurrentStreams;
 }
 
+- (void).cxx_destruct;
 @property(readonly) unsigned char maxConcurrentStreams; // @synthesize maxConcurrentStreams=_maxConcurrentStreams;
 @property(readonly) unsigned int generationCounter; // @synthesize generationCounter=_generationCounter;
 @property(readonly) NSArray *subscribedStreams; // @synthesize subscribedStreams=_subscribedStreams;
@@ -48,6 +50,7 @@
 @property(readonly) _Bool isInitiator; // @synthesize isInitiator=_isInitiator;
 @property(readonly) NSArray *allParticipantIDs; // @synthesize allParticipantIDs=_allParticipantIDs;
 @property(readonly) long long participantID; // @synthesize participantID=_participantID;
+@property(readonly) NSString *reportingDataBlob; // @synthesize reportingDataBlob=_reportingDataBlob;
 @property(readonly) long long relayServerProviderType; // @synthesize relayServerProviderType=_relayServerProviderType;
 @property(readonly) unsigned char protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property(readonly) NSData *softwareData; // @synthesize softwareData=_softwareData;
@@ -58,7 +61,6 @@
 @property(readonly) NSString *allocateRequestID; // @synthesize allocateRequestID=_allocateRequestID;
 @property(readonly) double allocateTime; // @synthesize allocateTime=_allocateTime;
 @property(readonly) long long allocateType; // @synthesize allocateType=_allocateType;
-- (void).cxx_destruct;
 - (long long)parseSessionInfo:(id)arg1;
 @property(readonly) const struct sockaddr_storage *serverAddressIPv6;
 @property(readonly) const struct sockaddr_storage *serverAddress;

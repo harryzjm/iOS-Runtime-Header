@@ -10,7 +10,7 @@
 #import <RemoteUI/UITableViewDataSource-Protocol.h>
 #import <RemoteUI/UITableViewDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIFooterElement, RUIHeaderElement, RUIObjectModel, RUIPage, RUISubHeaderElement, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, UIView, _UIBackdropView;
+@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIFooterElement, RUIHeaderElement, RUIObjectModel, RUIPage, RUISubHeaderElement, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, UITraitCollection, UIView, _UIBackdropView;
 @protocol RUIHeader;
 
 @interface RUITableView <UITableViewDataSource, UITableViewDelegate, RUITableViewRowDelegate, RUITopLevelPageElement, RUIWebViewDelegate>
@@ -32,17 +32,22 @@
     RUIBarButtonItem *_oldRightBarButtonItemForPicker;
     NSDate *_oldPickerDate;
     UIView<RUIHeader> *_headerView;
+    UITraitCollection *_currentTraitCollection;
+    _Bool _sectionContentInsetInitialized;
     RUIObjectModel *_objectModel;
     RUIPage *_page;
     RUIHeaderElement *_header;
     RUISubHeaderElement *_subHeader;
     RUIFooterElement *_footer;
     NSString *_headerTitle;
+    NSString *_subHeaderTitle;
     UIPickerView *_selectPicker;
 }
 
 + (void)_enableTestMode;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIPickerView *selectPicker; // @synthesize selectPicker=_selectPicker;
+@property(retain, nonatomic) NSString *subHeaderTitle; // @synthesize subHeaderTitle=_subHeaderTitle;
 @property(retain, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property(retain, nonatomic) RUIFooterElement *footer; // @synthesize footer=_footer;
 @property(retain, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
@@ -51,7 +56,6 @@
 @property(nonatomic) __weak RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
 @property(retain, nonatomic) RUITableViewRow *defaultFirstResponderRow; // @synthesize defaultFirstResponderRow=_defaultFirstResponderRow;
 @property(readonly, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
-- (void).cxx_destruct;
 - (Class)tableCellClassForTableViewRow:(id)arg1;
 - (id)textFieldRow:(id)arg1 changeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)rowIsFirstResponder:(id)arg1;
@@ -119,6 +123,7 @@
 @property(retain, nonatomic) NSDictionary *footerViewAttributes;
 @property(readonly, nonatomic) NSDictionary *headerViewAttributes;
 - (void)setHeaderViewAttributes:(id)arg1;
+- (id)viewForElementIdentifier:(id)arg1;
 - (void)setEditing:(_Bool)arg1;
 - (void)removeRowAtIndexPath:(id)arg1;
 - (void)insertRow:(id)arg1 atIndexPath:(id)arg2;
@@ -133,7 +138,11 @@
 - (id)subElementWithID:(id)arg1;
 - (void)populatePostbackDictionary:(id)arg1;
 - (void)setAttributes:(id)arg1;
+- (_Bool)_isRegularWidth;
+- (void)_updateSectionContentInsetForSettingsWithAnimation:(_Bool)arg1;
+- (long long)tableViewStyle;
 - (id)tableView;
+- (void)traitCollectionDidChangeFrom:(id)arg1 toTraitCollection:(id)arg2;
 - (id)view;
 - (void)dealloc;
 - (void)_registerForNotifications:(_Bool)arg1;

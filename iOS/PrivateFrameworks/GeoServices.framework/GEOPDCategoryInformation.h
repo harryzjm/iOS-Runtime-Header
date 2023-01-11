@@ -13,23 +13,21 @@
 @interface GEOPDCategoryInformation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOLocalizedString *_localizedMapsCategoryName;
     NSString *_mapsCategoryId;
     GEOStyleAttributes *_mapsCategoryStyleAttributes;
     NSString *_walletCategoryId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_localizedMapsCategoryName:1;
         unsigned int read_mapsCategoryId:1;
         unsigned int read_mapsCategoryStyleAttributes:1;
         unsigned int read_walletCategoryId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_localizedMapsCategoryName:1;
-        unsigned int wrote_mapsCategoryId:1;
-        unsigned int wrote_mapsCategoryStyleAttributes:1;
-        unsigned int wrote_walletCategoryId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,20 +43,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOStyleAttributes *mapsCategoryStyleAttributes;
 @property(readonly, nonatomic) _Bool hasMapsCategoryStyleAttributes;
-- (void)_readMapsCategoryStyleAttributes;
 @property(retain, nonatomic) GEOLocalizedString *localizedMapsCategoryName;
 @property(readonly, nonatomic) _Bool hasLocalizedMapsCategoryName;
-- (void)_readLocalizedMapsCategoryName;
 @property(retain, nonatomic) NSString *mapsCategoryId;
 @property(readonly, nonatomic) _Bool hasMapsCategoryId;
-- (void)_readMapsCategoryId;
 @property(retain, nonatomic) NSString *walletCategoryId;
 @property(readonly, nonatomic) _Bool hasWalletCategoryId;
-- (void)_readWalletCategoryId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

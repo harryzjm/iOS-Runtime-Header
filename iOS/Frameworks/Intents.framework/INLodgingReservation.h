@@ -18,18 +18,20 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSNumber *numberOfChildren; // @synthesize numberOfChildren=_numberOfChildren;
 @property(readonly, copy, nonatomic) NSNumber *numberOfAdults; // @synthesize numberOfAdults=_numberOfAdults;
 @property(readonly, copy, nonatomic) INDateComponentsRange *reservationDuration; // @synthesize reservationDuration=_reservationDuration;
 @property(readonly, copy, nonatomic) CLPlacemark *lodgingBusinessLocation; // @synthesize lodgingBusinessLocation=_lodgingBusinessLocation;
-- (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)_duration;
 - (id)initWithItemReference:(id)arg1 reservationNumber:(id)arg2 bookingTime:(id)arg3 reservationStatus:(long long)arg4 reservationHolderName:(id)arg5 actions:(id)arg6 lodgingBusinessLocation:(id)arg7 reservationDuration:(id)arg8 numberOfAdults:(id)arg9 numberOfChildren:(id)arg10;
+- (id)initWithItemReference:(id)arg1 reservationNumber:(id)arg2 bookingTime:(id)arg3 reservationStatus:(long long)arg4 reservationHolderName:(id)arg5 actions:(id)arg6 URL:(id)arg7 lodgingBusinessLocation:(id)arg8 reservationDuration:(id)arg9 numberOfAdults:(id)arg10 numberOfChildren:(id)arg11;
 
 @end
 

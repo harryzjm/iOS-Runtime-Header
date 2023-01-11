@@ -21,12 +21,13 @@
     _Bool _authenticated;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, copy, nonatomic) NSNumber *enqueuerAccountIdentifier; // @synthesize enqueuerAccountIdentifier=_enqueuerAccountIdentifier;
 @property(readonly, copy, nonatomic) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
-- (void).cxx_destruct;
 - (void)_enumerateResultDictionariesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy, nonatomic) id rawResponse;
 @property(readonly, copy, nonatomic) NSDictionary *resultsDictionary;
 @property(readonly, nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
 @property(readonly, copy, nonatomic) NSString *storefrontIdentifier;

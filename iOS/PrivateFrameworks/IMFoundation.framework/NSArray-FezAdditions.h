@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (FezAdditions)
+- (id)__imMapToDictionary:(CDUnknownBlockType)arg1;
 - (id)__imArrayByApplyingBlock:(CDUnknownBlockType)arg1 filter:(CDUnknownBlockType)arg2;
 - (id)__imArrayByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)__imArrayByFilteringWithBlock:(CDUnknownBlockType)arg1;

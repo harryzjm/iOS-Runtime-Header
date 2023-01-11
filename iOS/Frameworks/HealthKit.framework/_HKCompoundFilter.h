@@ -8,25 +8,30 @@
 
 @interface _HKCompoundFilter
 {
+    unsigned long long _subfilterCount;
+    unsigned long long _compoundPredicateType;
     NSArray *_subfilters;
-    unsigned long long _compoundType;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)filterWithSubfilters:(id)arg1 compoundType:(unsigned long long)arg2;
-@property(readonly, nonatomic) unsigned long long compoundType; // @synthesize compoundType=_compoundType;
-@property(readonly, copy, nonatomic) NSArray *subfilters; // @synthesize subfilters=_subfilters;
++ (id)notFilterWithSubfilter:(id)arg1;
++ (id)orFilterWithSubfilters:(id)arg1;
++ (id)andFilterWithSubfilters:(id)arg1;
++ (id)compoundFilterWithFilter:(id)arg1 otherFilter:(id)arg2;
 - (void).cxx_destruct;
-- (id)_copyWithZone:(struct _NSZone *)arg1 subfilters:(id)arg2;
+@property(readonly, copy, nonatomic) NSArray *subfilters; // @synthesize subfilters=_subfilters;
+@property(readonly, nonatomic) unsigned long long compoundPredicateType; // @synthesize compoundPredicateType=_compoundPredicateType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)_compoundFilterAcceptsObjectWithEvaluation:(CDUnknownBlockType)arg1;
-- (_Bool)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
-- (_Bool)acceptsActivitySummary:(id)arg1;
+- (long long)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
+- (long long)acceptsActivitySummary:(id)arg1;
 - (_Bool)acceptsDataObject:(id)arg1;
-- (id)_subfilters;
+- (id)description;
+- (id)initWithType:(unsigned long long)arg1 subfilters:(id)arg2;
+- (id)init;
 
 @end
 

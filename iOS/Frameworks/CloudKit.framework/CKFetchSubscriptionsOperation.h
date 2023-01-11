@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary;
+#import <CloudKit/CKFetchSubscriptionsOperationCallbacks-Protocol.h>
 
-@interface CKFetchSubscriptionsOperation
+@class CKFetchSubscriptionsOperationInfo, NSArray, NSMutableDictionary;
+@protocol CKFetchSubscriptionsOperationCallbacks;
+
+@interface CKFetchSubscriptionsOperation <CKFetchSubscriptionsOperationCallbacks>
 {
     _Bool _isFetchAllSubscriptionsOperation;
     CDUnknownBlockType _fetchSubscriptionCompletionBlock;
@@ -16,15 +19,16 @@
     NSMutableDictionary *_subscriptionErrors;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 + (id)fetchAllSubscriptionsOperation;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isFetchAllSubscriptionsOperation; // @synthesize isFetchAllSubscriptionsOperation=_isFetchAllSubscriptionsOperation;
 @property(retain, nonatomic) NSMutableDictionary *subscriptionErrors; // @synthesize subscriptionErrors=_subscriptionErrors;
 @property(retain, nonatomic) NSMutableDictionary *subscriptionsBySubscriptionID; // @synthesize subscriptionsBySubscriptionID=_subscriptionsBySubscriptionID;
 @property(retain, nonatomic) NSArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property(copy, nonatomic) NSArray *subscriptionIDs; // @synthesize subscriptionIDs=_subscriptionIDs;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleSubscriptionFetchForSubscriptionID:(id)arg1 subscription:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -34,6 +38,10 @@
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType fetchSubscriptionCompletionBlock; // @synthesize fetchSubscriptionCompletionBlock=_fetchSubscriptionCompletionBlock;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchSubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKFetchSubscriptionsOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

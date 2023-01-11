@@ -25,20 +25,20 @@
     CDUnknownBlockType _completionBlock;
     CLSGeoServiceThread *_geoServiceThread;
     double _timeoutInterval;
-    double _numberOfRetries;
+    unsigned long long _numberOfRetries;
 }
 
-@property(nonatomic) double numberOfRetries; // @synthesize numberOfRetries=_numberOfRetries;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long numberOfRetries; // @synthesize numberOfRetries=_numberOfRetries;
 @property(nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property(nonatomic, getter=isSimulatingTimeout) _Bool simulatesTimeout; // @synthesize simulatesTimeout=_simulatesTimeout;
 @property(retain, nonatomic) CLSGeoServiceThread *geoServiceThread; // @synthesize geoServiceThread=_geoServiceThread;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
-- (void).cxx_destruct;
 - (unsigned long long)_cacheMapItems:(id)arg1;
 - (void)cancel;
 - (void)_cancel;
-- (void)_handleError:(id)arg1;
+- (void)_handleError:(id)arg1 numberOfItems:(unsigned long long)arg2;
 - (void)_heartBeat;
 - (void)_startQuery;
 - (void)_handleQueryResultsForQuery:(id)arg1 items:(id)arg2 error:(id)arg3;

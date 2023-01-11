@@ -16,10 +16,14 @@
     _Bool _searchResult;
     long long _zoom;
     unsigned long long _variant;
+    unsigned long long _secondaryVariant;
     unsigned long long _countryCode;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long countryCode; // @synthesize countryCode=_countryCode;
+@property(nonatomic) unsigned long long secondaryVariant; // @synthesize secondaryVariant=_secondaryVariant;
 @property(nonatomic) unsigned long long variant; // @synthesize variant=_variant;
 @property(nonatomic) long long zoom; // @synthesize zoom=_zoom;
 @property(nonatomic, getter=isSearchResult) _Bool searchResult; // @synthesize searchResult=_searchResult;
@@ -27,8 +31,6 @@
 @property(nonatomic) _Bool navMode; // @synthesize navMode=_navMode;
 @property(nonatomic) _Bool nightMode; // @synthesize nightMode=_nightMode;
 @property(nonatomic) _Bool interactive; // @synthesize interactive=_interactive;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)setGlyphOnly:(_Bool)arg1;
 - (void)setTransitLineColor:(CDStruct_83984b6f)arg1;
 - (void)setText:(id)arg1;

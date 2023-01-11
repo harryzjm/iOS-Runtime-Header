@@ -19,12 +19,15 @@
 }
 
 - (void).cxx_destruct;
+- (void)clearPrefetchState;
 - (id)statusForDebug:(_Bool)arg1;
 - (void)handleOptimizeModeChange;
 - (void)stop;
 - (void)updateCacheDeletePurgeableAmount;
 - (void)startAutomaticPrefetchAndPruneWithTimeout:(_Bool)arg1;
+- (double)_minimumIntervalBetweenOperations;
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)invalidate;
 - (id)initWithCPLManager:(id)arg1 library:(id)arg2;
 - (id)init;
 

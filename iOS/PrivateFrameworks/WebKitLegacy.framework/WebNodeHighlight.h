@@ -14,11 +14,12 @@ __attribute__((visibility("hidden")))
     WAKView *_targetView;
     WebHighlightLayer *_highlightLayer;
     WebNodeHighlightView *_highlightView;
-    struct InspectorController *_inspectorController;
+    NakedPtr_5b249b89 _inspectorController;
     id _delegate;
 }
 
-- (struct InspectorController *)inspectorController;
+- (id).cxx_construct;
+- (NakedPtr_5b249b89)inspectorController;
 - (id)targetView;
 - (void)setNeedsDisplay;
 - (void)setDelegate:(id)arg1;
@@ -27,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)delegate;
 - (void)attach;
 - (void)dealloc;
-- (id)initWithTargetView:(id)arg1 inspectorController:(struct InspectorController *)arg2;
+- (id)initWithTargetView:(id)arg1 inspectorController:(NakedPtr_5b249b89)arg2;
 
 @end
 

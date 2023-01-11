@@ -6,30 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
+@class ICCloudServiceStatusMonitor;
 
 @interface SKCloudServiceController : NSObject
 {
-    _Bool _hasValidCloudServiceCapability;
-    unsigned long long _cloudServiceCapability;
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    ICCloudServiceStatusMonitor *_cloudServiceStatusMonitor;
+    struct os_unfair_lock_s _lock;
     _Bool _allowsPromptingForPrivacyAcknowledgement;
 }
 
++ (id)_publicErrorForPrivateError:(id)arg1;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
 + (long long)authorizationStatus;
-@property(nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) _Bool _allowsPromptingForPrivacyAcknowledgement; // @synthesize _allowsPromptingForPrivacyAcknowledgement;
 - (void).cxx_destruct;
-- (void)_updateCapabilitiesWithResponse:(id)arg1 postNotification:(_Bool)arg2;
-- (void)_handleInvalidation;
-- (void)_playbackCapabilitiesDidChangeNotification;
-- (void)_storefrontDidChangeNotification;
-- (void)_accountStoreDidChangeNotification;
-- (void)requestStorefrontCountryCodeWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) _Bool _allowsPromptingForPrivacyAcknowledgement; // @synthesize _allowsPromptingForPrivacyAcknowledgement;
+- (id)_cloudServiceStatusMonitorWithError:(id *)arg1;
+- (void)_handleStorefrontIdentifierDidChangeNotification:(id)arg1;
+- (void)_handleStorefrontCountryCodeDidChangeNotification:(id)arg1;
+- (void)_handleCapabilitiesDidChangeNotification:(id)arg1;
 - (void)requestPersonalizationTokenForClientToken:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestUserTokenForDeveloperToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)requestCapabilitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestStorefrontIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestStorefrontCountryCodeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestCapabilitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 

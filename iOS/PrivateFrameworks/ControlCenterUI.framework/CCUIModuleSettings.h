@@ -12,13 +12,17 @@
 {
     struct CCUILayoutSize _portraitLayoutSize;
     struct CCUILayoutSize _landscapeLayoutSize;
+    _Bool _portraitDoubleMargin;
+    _Bool _landscapeDoubleMargin;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+- (_Bool)doubleMarginForInterfaceOrientation:(long long)arg1;
 - (struct CCUILayoutSize)layoutSizeForInterfaceOrientation:(long long)arg1;
+- (id)initWithPortraitLayoutSize:(struct CCUILayoutSize)arg1 landscapeLayoutSize:(struct CCUILayoutSize)arg2 portraitDoubleMargin:(_Bool)arg3 landscapeDoubleMargin:(_Bool)arg4;
 - (id)initWithPortraitLayoutSize:(struct CCUILayoutSize)arg1 landscapeLayoutSize:(struct CCUILayoutSize)arg2;
 
 @end

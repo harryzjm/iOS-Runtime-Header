@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <Photos/NSCopying-Protocol.h>
+#import <Photos/NSItemProviderReading-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 
 @class AVAsset, AVVideoComposition, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper;
 
-@interface PHLivePhoto : NSObject <NSCopying, NSSecureCoding>
+@interface PHLivePhoto : NSObject <NSItemProviderReading, NSCopying, NSSecureCoding>
 {
     PHAsset *_asset;
-    struct NSObject *_plImage;
+    NSObject *_plImage;
+    _Bool _skipInstantiatingImageAndAVAsset;
     float _audioVolume;
     NSString *_uniqueIdentifier;
     NSString *_assetUUID;
@@ -39,14 +41,18 @@
 + (_Bool)_canCreateLoopingLivePhotoWithURLs:(id)arg1 outError:(id *)arg2;
 + (_Bool)_canCreateLivePhotoWithURLs:(id)arg1 outError:(id *)arg2;
 + (_Bool)_identifyResourceURLs:(id)arg1 outImageURL:(id *)arg2 outVideoURL:(id *)arg3 error:(id *)arg4;
-+ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(_Bool)arg4 isLooping:(_Bool)arg5 error:(id *)arg6;
++ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(_Bool)arg4 isLooping:(_Bool)arg5 skipInstantiatingImageAndAVAsset:(_Bool)arg6 error:(id *)arg7;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(_Bool)arg4 error:(id *)arg5;
-+ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 error:(id *)arg4;
-+ (id)loopingLivePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
++ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipInstantiatingImageAndAVAsset:(_Bool)arg4 error:(id *)arg5;
++ (id)loopingLivePhotoWithResourceFileURLs:(id)arg1 skipInstantiatingImageAndAVAsset:(_Bool)arg2 error:(id *)arg3;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
 + (void)cancelLivePhotoRequestWithRequestID:(int)arg1;
 + (int)requestLivePhotoWithResourceFileURLs:(id)arg1 placeholderImage:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 resultHandler:(CDUnknownBlockType)arg5;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
++ (id)readableTypeIdentifiersForItemProvider;
+- (void).cxx_destruct;
 @property(nonatomic) __weak PHImageManager *imageManager; // @synthesize imageManager=_imageManager;
+@property(nonatomic) _Bool skipInstantiatingImageAndAVAsset; // @synthesize skipInstantiatingImageAndAVAsset=_skipInstantiatingImageAndAVAsset;
 @property(nonatomic) float audioVolume; // @synthesize audioVolume=_audioVolume;
 @property(readonly, nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property(readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
@@ -61,7 +67,6 @@
 @property(readonly, nonatomic) AVAsset *videoAsset; // @synthesize videoAsset=_videoAsset;
 @property(readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
-- (void).cxx_destruct;
 - (void)saveToPhotoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)videoComplement;
 - (void)_loadConstituentURLsWithNetworkAccessAllowed:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -83,10 +88,17 @@
 - (id)_initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5 assetUUID:(id)arg6 options:(unsigned long long)arg7 videoComposition:(id)arg8;
 - (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 assetUUID:(id)arg5 options:(unsigned long long)arg6 videoComposition:(id)arg7;
 - (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5 options:(unsigned long long)arg6 videoComposition:(id)arg7;
+- (id)_initWithImageURL:(id)arg1 videoURL:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 skipInstantiatingImageAndAVAsset:(_Bool)arg5;
 - (id)_initWithImageURL:(id)arg1 videoURL:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4;
 - (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5;
 - (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5 options:(unsigned long long)arg6;
 - (id)initWithBundleAtURL:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

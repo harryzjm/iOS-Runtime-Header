@@ -28,19 +28,25 @@
     NSHashTable *_currentModules;
     NSHashTable *_expandedModules;
     NSObject<OS_dispatch_group> *_moduleCloseDispatchGroup;
+    NSString *_topmostModuleIdentifier;
+    NSArray *_portraitDoubleMarginIndices;
+    NSArray *_landscapeDoubleMarginIndices;
+    _Bool _pendingModulePopulation;
     _Bool _homeGestureDismissalAllowed;
     id <CCUIModuleCollectionViewControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isHomeGestureDismissalAllowed) _Bool homeGestureDismissalAllowed; // @synthesize homeGestureDismissalAllowed=_homeGestureDismissalAllowed;
 @property(nonatomic) __weak id <CCUIModuleCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)_populateModulesIfNecessary;
 - (void)_updateHomeGestureDismissalAllowed;
 - (void)_beginAppearanceTransition:(_Bool)arg1 affectedModule:(id)arg2;
 - (long long)_interfaceOrientation;
 - (id)_currentLayoutOptions;
 - (id)_positionProviderForInterfaceOrientation:(long long)arg1;
 - (id)_activePositionProvider;
+- (id)_doubleMarginIndicesForModuleIdentifiers:(id)arg1 moduleInstanceByIdentifier:(id)arg2 interfaceOrientation:(long long)arg3;
 - (id)_sizesForModuleIdentifiers:(id)arg1 moduleInstanceByIdentifier:(id)arg2 interfaceOrientation:(long long)arg3;
 - (void)_refreshPositionProviders;
 - (void)_removeAndTearDownModuleViewControllerFromHierarchy:(id)arg1;
@@ -60,6 +66,8 @@
 - (void)contentModuleContainerViewController:(id)arg1 didBeginInteractionWithModule:(id)arg2;
 - (_Bool)contentModuleContainerViewController:(id)arg1 canBeginInteractionWithModule:(id)arg2;
 - (struct CGRect)compactModeFrameForContentModuleContainerViewController:(id)arg1;
+- (id)horizontalDoubleMarginIndicesForLayoutView:(id)arg1;
+- (id)verticalDoubleMarginIndicesForLayoutView:(id)arg1;
 - (struct CCUILayoutRect)layoutView:(id)arg1 layoutRectForSubview:(id)arg2;
 - (struct CCUILayoutSize)layoutSizeForLayoutView:(id)arg1;
 - (void)orderedEnabledModuleIdentifiersChangedForSettingsManager:(id)arg1;
@@ -67,8 +75,10 @@
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 @property(readonly, nonatomic) NSArray *childViewControllersForAppearancePropagation; // @dynamic childViewControllersForAppearancePropagation;
 - (id)queryAllTopLevelBlockingGestureRecognizers;
+- (id)topmostModuleView;
 - (id)relevantSnapHeightsForOrientation:(long long)arg1;
 - (_Bool)isAtMaxHeight;
+- (_Bool)ccui_shouldPropagateAppearanceCalls;
 - (_Bool)_canShowWhileLocked;
 - (struct CGSize)preferredContentSize;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;

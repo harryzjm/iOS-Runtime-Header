@@ -16,6 +16,7 @@
     _Bool _launchProhibited;
     _Bool _watchOnlyApp;
     _Bool _runsIndependentlyOfCompanionApp;
+    _Bool _arcadeApp;
     NSString *_bundleVersion;
     NSDictionary *_extensionDictionary;
     NSString *_minimumOSVersion;
@@ -27,6 +28,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool arcadeApp; // @synthesize arcadeApp=_arcadeApp;
 @property(nonatomic) _Bool runsIndependentlyOfCompanionApp; // @synthesize runsIndependentlyOfCompanionApp=_runsIndependentlyOfCompanionApp;
 @property(nonatomic) _Bool watchOnlyApp; // @synthesize watchOnlyApp=_watchOnlyApp;
 @property(copy, nonatomic) NSString *companionBundleIdentifierForWatchApp; // @synthesize companionBundleIdentifierForWatchApp=_companionBundleIdentifierForWatchApp;
@@ -38,7 +41,6 @@
 @property(copy, nonatomic) NSDictionary *extensionDictionary; // @synthesize extensionDictionary=_extensionDictionary;
 @property(copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(nonatomic) _Bool launchProhibited; // @synthesize launchProhibited=_launchProhibited;
-- (void).cxx_destruct;
 - (id)description;
 - (id)infoPlistContent;
 - (void)setRequiredDeviceCapabilitiesWithArray:(id)arg1;

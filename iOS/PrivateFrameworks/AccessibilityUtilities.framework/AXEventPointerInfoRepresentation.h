@@ -10,10 +10,11 @@
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class AXEventRepresentation, NSString;
 
 @interface AXEventPointerInfoRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
+    _Bool _pointerIsAbsolute;
     double _pointerX;
     double _pointerY;
     double _pointerZ;
@@ -24,9 +25,13 @@
     double _pointerButtonNumber;
     double _pointerButtonClickCount;
     double _pointerButtonPressure;
+    AXEventRepresentation *_scrollEvent;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) AXEventRepresentation *scrollEvent; // @synthesize scrollEvent=_scrollEvent;
+@property(nonatomic) _Bool pointerIsAbsolute; // @synthesize pointerIsAbsolute=_pointerIsAbsolute;
 @property(nonatomic) double pointerButtonPressure; // @synthesize pointerButtonPressure=_pointerButtonPressure;
 @property(nonatomic) double pointerButtonClickCount; // @synthesize pointerButtonClickCount=_pointerButtonClickCount;
 @property(nonatomic) double pointerButtonNumber; // @synthesize pointerButtonNumber=_pointerButtonNumber;

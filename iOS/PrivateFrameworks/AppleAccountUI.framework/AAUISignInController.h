@@ -7,14 +7,18 @@
 #import <UIKit/UINavigationController.h>
 
 #import <AppleAccountUI/AAUISignInViewControllerInternalDelegate-Protocol.h>
+#import <AppleAccountUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class NSDictionary, NSString;
+@class AAUISignInFlowControllerDelegate, CDPUIController, NSDictionary, NSString;
 @protocol AAUISignInControllerDelegate, AIDAServiceOwnerProtocol;
 
-@interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate>
+@interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate, UIAdaptivePresentationControllerDelegate>
 {
     NSDictionary *_authenticationResults;
     id <AIDAServiceOwnerProtocol> _serviceOwnersManager;
+    long long _aidaOperationUIPermissions;
+    CDPUIController *_cdpUIController;
+    AAUISignInFlowControllerDelegate *_flowControllerDelegate;
     long long _currentStyle;
     _Bool _canEditUsername;
     _Bool __shouldForceOperation;
@@ -22,23 +26,24 @@
     NSString *_serviceType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setShouldForceOperation:) _Bool _shouldForceOperation; // @synthesize _shouldForceOperation=__shouldForceOperation;
 @property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(nonatomic) _Bool canEditUsername; // @synthesize canEditUsername=_canEditUsername;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
-- (void).cxx_destruct;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)willAuthenticateWithContext:(id)arg1;
 - (void)signInViewControllerDidCancel:(id)arg1;
 - (void)signInViewController:(id)arg1 didCompleteWithAuthenticationResults:(id)arg2;
 - (void)_delegate_signInControllerDidCancel;
 - (void)_delegate_signInControllerDidCompleteWithSuccess:(_Bool)arg1 error:(id)arg2;
+- (void)_attemptSignInForCloudAndInactiveStoreWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_attemptSignInForService:(id)arg1 withAuthenticationResults:(id)arg2 parentViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_performSilentRenewalWithResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)serviceContextWithResults:(id)arg1 parentViewController:(id)arg2;
 - (void)_performAuthenticationForAccount:(id)arg1 serviceType:(id)arg2 inViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_mainQueue_presentSpinnerViewControllerInParentViewController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_mainQueue_presentAlertForError:(id)arg1 inViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_attemptSignInForServices:(id)arg1 withAuthenticationResults:(id)arg2 parentViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_mainQueue_continueSignInWithAuthenticationResults:(id)arg1 parentViewController:(id)arg2;
 - (void)_mainQueue_presentContinueUsingInViewController:(id)arg1 account:(id)arg2 serviceType:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)prepareInViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;

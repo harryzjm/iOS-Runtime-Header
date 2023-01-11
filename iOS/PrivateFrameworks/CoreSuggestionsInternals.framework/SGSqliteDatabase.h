@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString, SGSqliteDatabaseImpl;
+@class NSString, SGSqliteDatabaseImpl, SGSqliteDatabaseSharedLock;
 
 @interface SGSqliteDatabase : NSObject
 {
     SGSqliteDatabaseImpl *_impl;
     unsigned long long _lastBusyWaitEnded;
-    NSMutableDictionary *_sqlarrays;
+    SGSqliteDatabaseSharedLock *_sharedWriterLock;
 }
 
-+ (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 nscoding:(id)arg3;
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 nsdata:(id)arg3;
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 nsstring:(id)arg3;
 + (int)bindParam:(struct sqlite3_stmt *)arg1 name:(const char *)arg2 double:(double)arg3;
@@ -26,14 +25,12 @@
 + (id)randomlyNamedInMemoryPathWithBaseName:(id)arg1;
 + (id)inMemoryPath;
 + (_Bool)isInMemoryPath:(id)arg1;
-+ (id)protectedDatabaseWithFilename:(id)arg1 error:(id *)arg2;
-+ (id)protectedDatabaseWithFilename:(id)arg1 flags:(int)arg2 error:(id *)arg3;
 + (id)sqliteDatabaseInMemoryWithError:(id *)arg1;
 + (id)sqliteDatabaseWithFilename:(id)arg1 error:(id *)arg2;
-+ (id)sqliteDatabaseWithFilename:(id)arg1 flags:(int)arg2 error:(id *)arg3;
 + (id)corruptionMarkerPathForPath:(id)arg1;
 + (id)corruptionMarkerFilename;
 - (void).cxx_destruct;
+- (void)optimize:(unsigned long long)arg1;
 - (void)vacuum;
 - (unsigned long long)vacuumMode;
 - (unsigned long long)_pagesToVacuum;
@@ -59,12 +56,11 @@
 - (id)selectColumns:(id)arg1 fromTable:(id)arg2 whereClause:(id)arg3 onPrep:(CDUnknownBlockType)arg4 onError:(CDUnknownBlockType)arg5;
 - (void)insertOrReplaceIntoTable:(id)arg1 dictionary:(id)arg2 onError:(CDUnknownBlockType)arg3;
 - (void)updateTable:(id)arg1 dictionary:(id)arg2 whereClause:(id)arg3 onError:(CDUnknownBlockType)arg4;
-- (_Bool)prepAndRunQuery:(id)arg1 arrays:(id)arg2 onPrep:(CDUnknownBlockType)arg3 onRow:(CDUnknownBlockType)arg4 onError:(CDUnknownBlockType)arg5;
 - (_Bool)prepAndRunNonDataQueries:(id)arg1 onError:(CDUnknownBlockType)arg2;
 - (void)_prepAndRunQuery:(id)arg1 columns:(id)arg2 dictionary:(id)arg3 onError:(CDUnknownBlockType)arg4;
+- (_Bool)prepAndRunSQL:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onRow:(CDUnknownBlockType)arg3 onError:(CDUnknownBlockType)arg4;
 - (_Bool)prepAndRunQuery:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onRow:(CDUnknownBlockType)arg3 onError:(CDUnknownBlockType)arg4;
 - (_Bool)_prepQuery:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
-- (void)prepQuery:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 - (_Bool)runQuery:(id)arg1 onRow:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool isInMemory;
 @property(readonly, nonatomic) NSString *filename;
@@ -72,7 +68,8 @@
 - (long long)lastInsertRowId;
 - (void)simulateOnDiskDatabase;
 - (void)closePermanently;
-- (id)initWithFilename:(id)arg1 flags:(int)arg2 error:(id *)arg3;
+- (void)runWithWriteLockAcquired:(CDUnknownBlockType)arg1;
+- (id)initWithFilename:(id)arg1 withProtection:(_Bool)arg2 sharedLock:(id)arg3 error:(id *)arg4;
 - (_Bool)_handle_sqlite_error_code:(int)arg1 error:(id)arg2 onError:(CDUnknownBlockType)arg3;
 - (_Bool)_handle_SQLITE_AUTH_USER:(id)arg1 onError:(CDUnknownBlockType)arg2;
 - (_Bool)_handle_SQLITE_WARNING_AUTOINDEX:(id)arg1 onError:(CDUnknownBlockType)arg2;

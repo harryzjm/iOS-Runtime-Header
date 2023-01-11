@@ -76,6 +76,14 @@ typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
 
+typedef struct {
+    struct CLLocationCoordinate2D _field1;
+    struct {
+        double _field1;
+        double _field2;
+    } _field2;
+} CDStruct_2b0c6e0b;
+
 // Ambiguous groups
 typedef struct {
     unsigned int amount:1;

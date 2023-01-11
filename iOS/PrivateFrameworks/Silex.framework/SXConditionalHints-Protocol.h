@@ -7,12 +7,12 @@
 #import <Silex/NSObject-Protocol.h>
 
 @protocol SXConditionalHints <NSObject>
-@property(readonly, nonatomic) _Bool textStyles;
-@property(readonly, nonatomic) _Bool documentStyle;
-@property(readonly, nonatomic) _Bool componentTextStyles;
-@property(readonly, nonatomic) _Bool componentStyles;
-@property(readonly, nonatomic) _Bool componentLayouts;
-@property(readonly, nonatomic) _Bool components;
-@property(readonly, nonatomic) _Bool autoplacement;
+@property(readonly, nonatomic) long long textStyles;
+@property(readonly, nonatomic) long long documentStyle;
+@property(readonly, nonatomic) long long componentTextStyles;
+@property(readonly, nonatomic) long long componentStyles;
+@property(readonly, nonatomic) long long componentLayouts;
+@property(readonly, nonatomic) long long components;
+@property(readonly, nonatomic) long long autoplacement;
 @end
 

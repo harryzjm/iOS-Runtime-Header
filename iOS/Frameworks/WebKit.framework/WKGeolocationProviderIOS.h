@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<id<_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
     _Bool _isWebCoreGeolocationActive;
     struct RefPtr<WebKit::WebGeolocationPosition, WTF::DumbPtrTraits<WebKit::WebGeolocationPosition>> _lastActivePosition;
-    struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16> _requestsWaitingForCoreLocationAuthorization;
+    struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _requestsWaitingForCoreLocationAuthorization;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 completionHandler:(Function_da50b38b *)arg3 view:(id)arg4;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(struct FrameInfoData *)arg1 completionHandler:(Function_da50b38b *)arg2 view:(id)arg3;
 - (id)initWithProcessPool:(struct WebProcessPool *)arg1;
 - (id)init;
 - (void)_setEnableHighAccuracy:(_Bool)arg1;

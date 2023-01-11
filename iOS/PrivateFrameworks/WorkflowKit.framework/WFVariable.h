@@ -6,30 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 #import <WorkflowKit/WFVariableStringContent-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSString, UIImage;
+@class NSArray, NSDictionary, NSHashTable, NSString, WFImage;
 @protocol WFVariableProvider;
 
-@interface WFVariable : NSObject <WFVariableStringContent, WFVariableSerialization>
+@interface WFVariable : NSObject <WFVariableStringContent, NSCopying, WFVariableSerialization>
 {
     NSArray *_aggrandizements;
     NSHashTable *_delegates;
     NSDictionary *_dictionary;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property(readonly, nonatomic) NSArray *aggrandizements; // @synthesize aggrandizements=_aggrandizements;
-- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)variableBySettingAggrandizements:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)serializedRepresentation;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
-- (void)getObjectRepresentationForClass:(Class)arg1 variableSource:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getObjectRepresentationForClass:(Class)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)retrieveContentCollectionWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getContentWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getContentWithContext:(id)arg1 trackContentAttribution:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)possibleAggrandizedContentClassesWithContext:(id)arg1;
 - (id)possibleContentClassesWithContext:(id)arg1;
 - (id)possibleAggrandizedContentClasses;
@@ -48,12 +51,12 @@
 @property(readonly, nonatomic, getter=isAvailable) _Bool available;
 @property(readonly, nonatomic) NSString *UUID;
 @property(readonly, nonatomic) NSString *name;
-@property(readonly, nonatomic) UIImage *icon;
+@property(readonly, nonatomic) WFImage *icon;
 @property(readonly, nonatomic) NSString *type;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;
 - (id)init;
 - (unsigned long long)wf_lengthInVariableString;
-- (void)wf_getContentItemsWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)wf_getContentItemsWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSString *nameIncludingPropertyName;
 @property(readonly, nonatomic) NSString *propertyName;
 

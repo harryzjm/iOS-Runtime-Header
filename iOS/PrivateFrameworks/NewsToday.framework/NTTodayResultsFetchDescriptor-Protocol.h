@@ -6,7 +6,12 @@
 
 #import <NewsToday/NSCopying-Protocol.h>
 
+@class NSArray, NSString, NTPBTodayModuleContentRequest;
+
 @protocol NTTodayResultsFetchDescriptor <NSCopying>
 @property(readonly, nonatomic) Class fetchOperationClass;
+@property(readonly, nonatomic) Class descriptorsOperationClass;
+@property(readonly, copy, nonatomic) NSString *sourceIdentifier;
+- (NSArray *)placeholderSectionDescriptorsWithContentRequest:(NTPBTodayModuleContentRequest *)arg1;
 @end
 

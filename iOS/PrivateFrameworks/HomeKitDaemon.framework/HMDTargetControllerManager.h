@@ -9,10 +9,11 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDHAPAccessory, NSArray, NSMutableSet, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDTargetControllerManager : HMFObject <HMFLogging>
 {
+    id <HMFLocking> _lock;
     unsigned char _maximumTargets;
     _Bool _configurationRefreshed;
     HMDHAPAccessory *_controller;
@@ -20,19 +21,17 @@
     unsigned long long _ticksPerSecond;
     NSArray *_buttonConfiguration;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSString *_logID;
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool configurationRefreshed; // @synthesize configurationRefreshed=_configurationRefreshed;
 @property(nonatomic) unsigned char maximumTargets; // @synthesize maximumTargets=_maximumTargets;
 @property(readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSMutableSet *configuredTargets; // @synthesize configuredTargets=_configuredTargets;
 @property(readonly, nonatomic) __weak HMDHAPAccessory *controller; // @synthesize controller=_controller;
-- (void).cxx_destruct;
 - (void)_configureTargetAccessories:(id)arg1 reason:(id)arg2 targetAccessories:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)_handleConfigureTargets:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)handleConfigureTargets:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
@@ -71,8 +70,8 @@
 - (int)_parseSupportedTargetConfiguration:(id)arg1;
 - (void)__accessoryRemoved:(id)arg1;
 - (void)__accessoryNameUpdated:(id)arg1;
-- (void)__accessoryIsReachable:(id)arg1;
-- (void)__accessoryIsNotReachable:(id)arg1;
+- (void)__accessoryConnected:(id)arg1;
+- (void)__accessoryDisconnected:(id)arg1;
 @property(retain, nonatomic) NSArray *buttonConfiguration; // @synthesize buttonConfiguration=_buttonConfiguration;
 @property(nonatomic) unsigned long long ticksPerSecond; // @synthesize ticksPerSecond=_ticksPerSecond;
 @property(readonly, nonatomic) NSArray *targetUUIDs;

@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, NSDictionary, NSURL, SLTwitterRequest;
+@class ACAccount, NSDictionary, NSURL;
 
 @interface TWRequest : NSObject
 {
-    SLTwitterRequest *_request;
 }
 
 - (void)performRequestWithHandler:(CDUnknownBlockType)arg1;

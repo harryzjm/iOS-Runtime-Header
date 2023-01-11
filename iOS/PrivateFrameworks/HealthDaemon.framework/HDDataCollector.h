@@ -16,10 +16,10 @@
     HDPrimaryProfile *_primaryProfile;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    double _collectionInterval;
+    long long _state;
     HKObjectType *_observedType;
     HDDeviceEntity *_deviceEntity;
-    long long _state;
-    double _collectionInterval;
     long long _failureRetryCount;
     _Bool _disabled;
     HDSourceEntity *_sourceEntity;
@@ -34,8 +34,8 @@
 + (id)_sensorDatumFromContext:(id)arg1;
 + (double)defaultCollectionInterval;
 + (id)_retrieveContextForKey:(id)arg1 domain:(id)arg2 profile:(id)arg3;
-@property(readonly) HDSourceEntity *sourceEntity; // @synthesize sourceEntity=_sourceEntity;
 - (void).cxx_destruct;
+@property(readonly) HDSourceEntity *sourceEntity; // @synthesize sourceEntity=_sourceEntity;
 - (void)_queue_retryFromFailure;
 - (_Bool)_queue_shouldRetryFromFailure;
 - (void)_queue_incrementFailureRetryCounter;
@@ -58,8 +58,7 @@
 - (id)_queue_deviceEntity;
 - (_Bool)_queue_streaming;
 @property _Bool disabled;
-- (void)setCollectionInterval:(double)arg1;
-- (double)collectionInterval;
+@property double collectionInterval;
 - (_Bool)_queue_disabled;
 - (void)_queue_receivedData;
 - (id)_dictionaryFromContext:(id)arg1;

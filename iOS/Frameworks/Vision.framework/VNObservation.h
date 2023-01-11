@@ -17,12 +17,14 @@
     unsigned long long _requestRevision;
     float _confidence;
     NSUUID *_uuid;
+    CDStruct_e83c9415 _timeRange;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(nonatomic) float confidence; // @synthesize confidence=_confidence;
 @property(retain, nonatomic, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, nonatomic) unsigned long long requestRevision;

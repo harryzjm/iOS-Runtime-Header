@@ -16,6 +16,8 @@
 }
 
 + (id)sharedInstance;
++ (id)sharedDomainMachService;
++ (_Bool)shouldInjectEndpoint;
 + (_Bool)sharedDomainUsesDefaultShellEndpoint;
 + (id)sharedDomainIdentifier;
 + (id)_sharedDomain;

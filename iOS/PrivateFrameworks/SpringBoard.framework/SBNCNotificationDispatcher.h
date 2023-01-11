@@ -9,8 +9,8 @@
 #import <SpringBoard/CSCoverSheetViewControllerObserver-Protocol.h>
 #import <SpringBoard/SBFNotificationExtensionVisibilityProviding-Protocol.h>
 
-@class NCBulletinNotificationSource, NCNotificationDispatcher, NSString, SBCommunicationPolicyManager, SBLockScreenManager, SBLockStateAggregator, SBNCAlertingController, SBNCNotificationDispatcherDelegate, SBNotificationBannerDestination, SBNotificationCenterDestination, SBNotificationLegacyCarDestination, SBStarkNotificationSceneComponentManager, SBUserAlertNotificationSource, SBWalletNotificationSource;
-@protocol SBNotificationDestination, SBStarkNotificationsAgent;
+@class BSServiceConnectionEndpoint, NCBulletinNotificationSource, NCNotificationDispatcher, NSString, SBCommunicationPolicyManager, SBLockScreenManager, SBLockStateAggregator, SBNCAlertingController, SBNCNotificationDispatcherDelegate, SBNotificationBannerDestination, SBNotificationCenterDestination, SBUserAlertNotificationSource, SBWalletNotificationSource;
+@protocol NCNotificationAlertDestination, SBNotificationDestination;
 
 @interface SBNCNotificationDispatcher : NSObject <CSCoverSheetViewControllerObserver, SBFNotificationExtensionVisibilityProviding>
 {
@@ -24,16 +24,15 @@
     SBUserAlertNotificationSource *_userNotificationAlertSource;
     SBLockScreenManager *_lockScreenManager;
     SBLockStateAggregator *_lockStateAggregator;
-    SBStarkNotificationSceneComponentManager *_starkComponentManager;
-    SBNotificationLegacyCarDestination *_carDestination;
+    id <NCNotificationAlertDestination> _carDestination;
     SBCommunicationPolicyManager *_communicationPolicyManager;
     SBNCAlertingController *_alertingController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBNCAlertingController *alertingController; // @synthesize alertingController=_alertingController;
 @property(retain, nonatomic) SBCommunicationPolicyManager *communicationPolicyManager; // @synthesize communicationPolicyManager=_communicationPolicyManager;
-@property(retain, nonatomic) SBNotificationLegacyCarDestination *carDestination; // @synthesize carDestination=_carDestination;
-@property(retain, nonatomic) SBStarkNotificationSceneComponentManager *starkComponentManager; // @synthesize starkComponentManager=_starkComponentManager;
+@property(retain, nonatomic) id <NCNotificationAlertDestination> carDestination; // @synthesize carDestination=_carDestination;
 @property(retain, nonatomic) SBLockStateAggregator *lockStateAggregator; // @synthesize lockStateAggregator=_lockStateAggregator;
 @property(retain, nonatomic) SBLockScreenManager *lockScreenManager; // @synthesize lockScreenManager=_lockScreenManager;
 @property(retain, nonatomic) SBUserAlertNotificationSource *userNotificationAlertSource; // @synthesize userNotificationAlertSource=_userNotificationAlertSource;
@@ -44,15 +43,16 @@
 @property(readonly, nonatomic) SBWalletNotificationSource *walletNotificationSource; // @synthesize walletNotificationSource=_walletNotificationSource;
 @property(readonly, nonatomic) id <SBNotificationDestination> dashBoardDestination; // @synthesize dashBoardDestination=_dashBoardDestination;
 @property(readonly, nonatomic) SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_bannerDestination;
-- (void).cxx_destruct;
 - (_Bool)isNotificationContentExtensionVisible:(id)arg1;
 - (void)coverSheetViewController:(id)arg1 didChangeActiveBehavior:(id)arg2;
 - (_Bool)_lockScreenWantsBanners;
 - (void)_setupNewDestinationsForDispatcher:(id)arg1;
 - (void)_updateActiveDestinations;
-- (void)_carNotificationActiveConfigurationDidChange;
+- (void)_carPlayDestinationAvailabilityDidChange;
 - (void)_aggregateLockStateDidChange;
-@property(readonly, nonatomic) id <SBStarkNotificationsAgent> carNotificationsAgent;
+- (id)keyWindowForScreen:(id)arg1;
+@property(readonly, nonatomic) BSServiceConnectionEndpoint *carOpenServiceEndpoint;
+@property(readonly, nonatomic) _Bool isCarDestinationActive;
 - (id)init;
 
 // Remaining properties

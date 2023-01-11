@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isPhotoIrisPlaceholder;
 @property(readonly, nonatomic) _Bool canPlayPhotoIris;
 @property(readonly, nonatomic, getter=isLivePhoto) _Bool livePhoto;
+@property(readonly, nonatomic, getter=isHidden) _Bool hidden;
 @property(readonly, nonatomic) long long playbackVariation;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
@@ -63,7 +64,9 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 

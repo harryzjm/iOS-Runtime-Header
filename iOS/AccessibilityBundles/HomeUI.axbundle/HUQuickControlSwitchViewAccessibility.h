@@ -11,11 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilitySummaryView;
-- (id)_accessibilityContainerView;
+- (id)_accessibilityStateForPrimaryCharacteristic;
+- (id)_accessibilityControlName;
+- (id)_accessibilityControlItem;
+- (id)_accessibilitySingleControlHostViewController;
 - (void)_accessibilitySetSwitchValue:(double)arg1;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
+- (double)_accessibilitySwitchValue;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (unsigned long long)accessibilityTraits;

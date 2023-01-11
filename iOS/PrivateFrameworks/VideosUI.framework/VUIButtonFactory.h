@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (unsigned long long)buttonTypeOfButtonElement:(id)arg1 layout:(id)arg2;
 + (unsigned long long)buttonTypeOfButtonElement:(id)arg1;
 + (id)_buttonWithElement:(id)arg1 layout:(id)arg2 interfaceStyle:(long long)arg3 existingButton:(id)arg4;
 + (id)buttonWithElement:(id)arg1 layout:(id)arg2 interfaceStyle:(long long)arg3 existingButton:(id)arg4;

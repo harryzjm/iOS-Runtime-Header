@@ -11,7 +11,7 @@
 @interface PXSharedAlbumContactMatcher : NSObject
 {
     CNContactStore *_contactStore;
-    NSCache *_monogrammersByContactImageDiameter;
+    NSCache *_avatarRendererByContactImageDiameter;
     NSCache *_contactIdentifiersBySubscriberIdentifiers;
     NSCache *_contactPhotosCache;
 }
@@ -22,7 +22,7 @@
 - (id)_fetchContactMatchingSubscriberInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)_fetchContactsMatchingIdentifiers:(id)arg1 keysToFetch:(id)arg2;
 - (id)_fetchContactMatchingIdentifier:(id)arg1 keysToFetch:(id)arg2;
-- (id)contactPhotoForContact:(id)arg1 diameter:(double)arg2;
+- (void)requestContactPhotoForContact:(id)arg1 diameter:(double)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (id)contactsMatchingSubscriberInfos:(id)arg1 keysToFetch:(id)arg2;
 - (void)_observeContactStoreNotifications;
 - (id)init;

@@ -45,6 +45,7 @@
     _Bool _unmuteOnChromeHide;
     _Bool _allowPlayButtonInBars;
     _Bool _videoRemuteOnBackgrounding;
+    _Bool _videoShowDebugBorders;
     _Bool _applyPerspectiveTransformDuringVitality;
     _Bool _lockScrollDuringLivePhotoPlayback;
     _Bool _livePhotoScrubberShowForPlayback;
@@ -53,13 +54,15 @@
     _Bool _showReframedBadge;
     _Bool _allowGIFPlayback;
     _Bool _showGIFLoadingDelays;
+    _Bool _simulateAssetContentLoading;
+    _Bool _simulateLoadingError;
+    _Bool _showFileRadarButtonForOneUpErrorPresentationsOnInternalInstalls;
     _Bool _useDebuggingColors;
     _Bool _useDebuggingProgressLabel;
     _Bool _showBufferingIndicatorDuringPlay;
     _Bool _showLoadingIndicatorDuringDownload;
+    _Bool _alwaysShowRenderIndicator;
     _Bool _alwaysShowAirPlayButton;
-    _Bool _simulateAssetContentDownload;
-    _Bool _simulateAssetContentDownloadFailure;
     long long _suggestionsStyle;
     long long _suggestionMaximumAssetAgeInDays;
     long long _simulatedAssetVariationSuggestion;
@@ -73,6 +76,7 @@
     double _accessoryInitialTopPosition;
     double _minimumVisibleContentHeight;
     double _minimumVisibleCommentedContentHeight;
+    double _minimumFullCommentTitleViewWidth;
     double _chromeDefaultAnimationDuration;
     long long _chromeAutoHideBehaviorOnLivePhoto;
     long long _chromeAutoHideBehaviorOnPlayButton;
@@ -88,9 +92,7 @@
     long long _parallaxModel;
     double _parallaxFactor;
     double _barsAreaVerticalOutset;
-    double _defaultMaximumZoomFactor;
-    double _maximumInitialZoomToFillScaleForCompactSizeClass;
-    double _maximumInitialZoomToFillScaleForRegularSizeClass;
+    double _defaultZoomInFactor;
     double _doubleTapZoomFactor;
     double _videoAutoplayThreshold;
     double _videoPauseThreshold;
@@ -98,6 +100,9 @@
     double _livePhotoInteractionThreshold;
     double _livePhotoMinimumOverlappingDuration;
     unsigned long long _overlappingLivePhotosCountLimit;
+    double _vitalityMaskBlur;
+    double _vitalityFeatherScale;
+    double _vitalityMaxAllowedInset;
     unsigned long long _viewModelCacheCountLimit;
     double _visibilityDurationForEnteringQuickPagingRegime;
     double _visibilityDurationForExitingQuickPagingRegime;
@@ -112,16 +117,20 @@
     double _playGIFSettledThreshold;
     double _playGIFEnterThreshold;
     double _playGIFMoveOutThreshold;
+    double _simulatedAssetContentLoadingDuration;
+    long long _simulatedLoadingErrorType;
     long long _debuggingTitleType;
     unsigned long long _debuggingBadges;
     unsigned long long _debuggingBadgesWhenFavorite;
+    double _simulatedRenderProgress;
 }
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
-@property(nonatomic) _Bool simulateAssetContentDownloadFailure; // @synthesize simulateAssetContentDownloadFailure=_simulateAssetContentDownloadFailure;
-@property(nonatomic) _Bool simulateAssetContentDownload; // @synthesize simulateAssetContentDownload=_simulateAssetContentDownload;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool alwaysShowAirPlayButton; // @synthesize alwaysShowAirPlayButton=_alwaysShowAirPlayButton;
+@property(nonatomic) double simulatedRenderProgress; // @synthesize simulatedRenderProgress=_simulatedRenderProgress;
+@property(nonatomic) _Bool alwaysShowRenderIndicator; // @synthesize alwaysShowRenderIndicator=_alwaysShowRenderIndicator;
 @property(nonatomic) _Bool showLoadingIndicatorDuringDownload; // @synthesize showLoadingIndicatorDuringDownload=_showLoadingIndicatorDuringDownload;
 @property(nonatomic) _Bool showBufferingIndicatorDuringPlay; // @synthesize showBufferingIndicatorDuringPlay=_showBufferingIndicatorDuringPlay;
 @property(nonatomic) _Bool useDebuggingProgressLabel; // @synthesize useDebuggingProgressLabel=_useDebuggingProgressLabel;
@@ -129,6 +138,11 @@
 @property(nonatomic) unsigned long long debuggingBadges; // @synthesize debuggingBadges=_debuggingBadges;
 @property(nonatomic) long long debuggingTitleType; // @synthesize debuggingTitleType=_debuggingTitleType;
 @property(nonatomic) _Bool useDebuggingColors; // @synthesize useDebuggingColors=_useDebuggingColors;
+@property(nonatomic) _Bool showFileRadarButtonForOneUpErrorPresentationsOnInternalInstalls; // @synthesize showFileRadarButtonForOneUpErrorPresentationsOnInternalInstalls=_showFileRadarButtonForOneUpErrorPresentationsOnInternalInstalls;
+@property(nonatomic) long long simulatedLoadingErrorType; // @synthesize simulatedLoadingErrorType=_simulatedLoadingErrorType;
+@property(nonatomic) _Bool simulateLoadingError; // @synthesize simulateLoadingError=_simulateLoadingError;
+@property(nonatomic) double simulatedAssetContentLoadingDuration; // @synthesize simulatedAssetContentLoadingDuration=_simulatedAssetContentLoadingDuration;
+@property(nonatomic) _Bool simulateAssetContentLoading; // @synthesize simulateAssetContentLoading=_simulateAssetContentLoading;
 @property(nonatomic) double playGIFMoveOutThreshold; // @synthesize playGIFMoveOutThreshold=_playGIFMoveOutThreshold;
 @property(nonatomic) double playGIFEnterThreshold; // @synthesize playGIFEnterThreshold=_playGIFEnterThreshold;
 @property(nonatomic) double playGIFSettledThreshold; // @synthesize playGIFSettledThreshold=_playGIFSettledThreshold;
@@ -146,6 +160,9 @@
 @property(nonatomic) double visibilityDurationForEnteringQuickPagingRegime; // @synthesize visibilityDurationForEnteringQuickPagingRegime=_visibilityDurationForEnteringQuickPagingRegime;
 @property(nonatomic) unsigned long long viewModelCacheCountLimit; // @synthesize viewModelCacheCountLimit=_viewModelCacheCountLimit;
 @property(nonatomic) _Bool showReframedBadge; // @synthesize showReframedBadge=_showReframedBadge;
+@property(nonatomic) double vitalityMaxAllowedInset; // @synthesize vitalityMaxAllowedInset=_vitalityMaxAllowedInset;
+@property(nonatomic) double vitalityFeatherScale; // @synthesize vitalityFeatherScale=_vitalityFeatherScale;
+@property(nonatomic) double vitalityMaskBlur; // @synthesize vitalityMaskBlur=_vitalityMaskBlur;
 @property(nonatomic) _Bool showOffBadgeForDisabledLivePhotos; // @synthesize showOffBadgeForDisabledLivePhotos=_showOffBadgeForDisabledLivePhotos;
 @property(nonatomic) unsigned long long overlappingLivePhotosCountLimit; // @synthesize overlappingLivePhotosCountLimit=_overlappingLivePhotosCountLimit;
 @property(nonatomic) double livePhotoMinimumOverlappingDuration; // @synthesize livePhotoMinimumOverlappingDuration=_livePhotoMinimumOverlappingDuration;
@@ -154,6 +171,7 @@
 @property(nonatomic) _Bool lockScrollDuringLivePhotoPlayback; // @synthesize lockScrollDuringLivePhotoPlayback=_lockScrollDuringLivePhotoPlayback;
 @property(nonatomic) _Bool applyPerspectiveTransformDuringVitality; // @synthesize applyPerspectiveTransformDuringVitality=_applyPerspectiveTransformDuringVitality;
 @property(nonatomic) double livePhotoInteractionThreshold; // @synthesize livePhotoInteractionThreshold=_livePhotoInteractionThreshold;
+@property(nonatomic) _Bool videoShowDebugBorders; // @synthesize videoShowDebugBorders=_videoShowDebugBorders;
 @property(nonatomic) double autoplayScrubberWidth; // @synthesize autoplayScrubberWidth=_autoplayScrubberWidth;
 @property(nonatomic) _Bool videoRemuteOnBackgrounding; // @synthesize videoRemuteOnBackgrounding=_videoRemuteOnBackgrounding;
 @property(nonatomic) double videoPauseThreshold; // @synthesize videoPauseThreshold=_videoPauseThreshold;
@@ -169,9 +187,7 @@
 @property(nonatomic) _Bool doubleTapZoomAreaExcludesBackground; // @synthesize doubleTapZoomAreaExcludesBackground=_doubleTapZoomAreaExcludesBackground;
 @property(nonatomic) _Bool doubleTapZoomAreaExcludesBars; // @synthesize doubleTapZoomAreaExcludesBars=_doubleTapZoomAreaExcludesBars;
 @property(nonatomic) double doubleTapZoomFactor; // @synthesize doubleTapZoomFactor=_doubleTapZoomFactor;
-@property(nonatomic) double maximumInitialZoomToFillScaleForRegularSizeClass; // @synthesize maximumInitialZoomToFillScaleForRegularSizeClass=_maximumInitialZoomToFillScaleForRegularSizeClass;
-@property(nonatomic) double maximumInitialZoomToFillScaleForCompactSizeClass; // @synthesize maximumInitialZoomToFillScaleForCompactSizeClass=_maximumInitialZoomToFillScaleForCompactSizeClass;
-@property(nonatomic) double defaultMaximumZoomFactor; // @synthesize defaultMaximumZoomFactor=_defaultMaximumZoomFactor;
+@property(nonatomic) double defaultZoomInFactor; // @synthesize defaultZoomInFactor=_defaultZoomInFactor;
 @property(nonatomic) double barsAreaVerticalOutset; // @synthesize barsAreaVerticalOutset=_barsAreaVerticalOutset;
 @property(nonatomic) _Bool allowStatusBar; // @synthesize allowStatusBar=_allowStatusBar;
 @property(nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
@@ -193,6 +209,7 @@
 @property(nonatomic) _Bool useGlobalCommentsVisibility; // @synthesize useGlobalCommentsVisibility=_useGlobalCommentsVisibility;
 @property(nonatomic) _Bool useGlobalDetailsVisibility; // @synthesize useGlobalDetailsVisibility=_useGlobalDetailsVisibility;
 @property(nonatomic) _Bool hideToolbarWhenShowingAccessoryView; // @synthesize hideToolbarWhenShowingAccessoryView=_hideToolbarWhenShowingAccessoryView;
+@property(nonatomic) double minimumFullCommentTitleViewWidth; // @synthesize minimumFullCommentTitleViewWidth=_minimumFullCommentTitleViewWidth;
 @property(nonatomic) double minimumVisibleCommentedContentHeight; // @synthesize minimumVisibleCommentedContentHeight=_minimumVisibleCommentedContentHeight;
 @property(nonatomic) double minimumVisibleContentHeight; // @synthesize minimumVisibleContentHeight=_minimumVisibleContentHeight;
 @property(nonatomic) double accessoryInitialTopPosition; // @synthesize accessoryInitialTopPosition=_accessoryInitialTopPosition;
@@ -221,12 +238,12 @@
 @property(nonatomic) long long simulatedAssetVariationSuggestion; // @synthesize simulatedAssetVariationSuggestion=_simulatedAssetVariationSuggestion;
 @property(nonatomic) long long suggestionMaximumAssetAgeInDays; // @synthesize suggestionMaximumAssetAgeInDays=_suggestionMaximumAssetAgeInDays;
 @property(nonatomic) long long suggestionsStyle; // @synthesize suggestionsStyle=_suggestionsStyle;
-- (void).cxx_destruct;
 - (void)preferencesDidChange;
 - (_Bool)allowAutoplayVideoForAsset:(id)arg1;
 - (void)_updatePrototypeRelatedSettings;
 - (void)_invalidatePrototypeRelatedSettings;
 - (void)setDefaultValues;
+- (void)createChildren;
 - (id)parentSettings;
 
 // Remaining properties

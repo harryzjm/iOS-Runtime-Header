@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PSSystemPolicyForApp;
+#import <Preferences/PSSystemPolicyForAppDelegate-Protocol.h>
 
-@interface PSAppListController
+@class NSString, PSSystemPolicyForApp;
+
+@interface PSAppListController <PSSystemPolicyForAppDelegate>
 {
     PSSystemPolicyForApp *_systemPolicy;
+    PSSystemPolicyForApp *_appPolicy;
 }
 
++ (id)_typeErrorStringForKeyWithName:(id)arg1 expectedType:(Class)arg2 actualType:(Class)arg3;
 + (id)specifiersFromDictionary:(id)arg1 stringsTable:(id)arg2 parentSpecifier:(id)arg3 target:(id)arg4;
 + (id)childPaneSpecifierFromDictionary:(id)arg1 stringsTable:(id)arg2 parentSpecifier:(id)arg3 target:(id)arg4;
 + (id)multiValueSpecifierFromDictionary:(id)arg1 stringsTable:(id)arg2 parentSpecifier:(id)arg3 target:(id)arg4;
@@ -24,8 +28,9 @@
 + (_Bool)canUseOnBoardingKitForPrivacyDisplayForBundleID:(id)arg1;
 + (id)onBoardingKitBundleIDDict;
 + (id)allowedPrivacyBundles;
-@property(retain, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PSSystemPolicyForApp *appPolicy; // @synthesize appPolicy=_appPolicy;
+@property(retain, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 - (id)bundle;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)specifiers;
@@ -37,6 +42,12 @@
 - (id)_readToggleSwitchSpecifierValue:(id)arg1;
 - (id)_valueFromUIValue:(id)arg1 specifier:(id)arg2;
 - (id)_uiValueFromValue:(id)arg1 specifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

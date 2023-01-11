@@ -14,8 +14,8 @@
 @property(readonly) _Bool isPersonModel;
 @property(readonly) _Bool isVerified;
 @property(readonly) NSString *px_localIdentifier;
+@property(readonly) NSString *px_longStyleLocalizedName;
 @property(readonly) NSString *px_localizedName;
-@property(readonly) NSString *px_displayName;
 @property(readonly) NSString *name;
 @property(readonly) unsigned long long numberOfAssets;
 - (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 style:(unsigned long long)arg3 cacheResult:(_Bool)arg4 boundFaceRect:(_Bool)arg5 completionBlock:(void (^)(UIImage *, struct CGRect, NSError *))arg6;

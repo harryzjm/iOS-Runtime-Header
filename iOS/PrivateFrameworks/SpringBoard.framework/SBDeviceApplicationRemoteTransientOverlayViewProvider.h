@@ -17,11 +17,13 @@
 }
 
 - (void).cxx_destruct;
+- (void)_handleAppSwitcherWillPresent:(id)arg1;
 - (void)_handleCoverSheetDidPresent:(id)arg1;
 - (void)_dismissRemoteOverlayVC:(id)arg1;
 - (id)_realOverlayViewController;
 - (void)_deactivateIfPossible;
 - (void)_activateIfPossible;
+- (void)transientOverlayViewControllerNeedsWindowHitTestingUpdate:(id)arg1;
 - (void)transientOverlayViewControllerDidEndRotation:(id)arg1;
 - (void)transientOverlayViewControllerWillBeginRotation:(id)arg1 toInterfaceOrientation:(long long)arg2;
 - (void)transientOverlayViewControllerNeedsWhitePointAdaptivityStyleUpdate:(id)arg1;
@@ -32,6 +34,7 @@
 - (void)transientOverlayViewControllerNeedsGestureDismissalStyleUpdate:(id)arg1;
 - (void)transientOverlayViewControllerNeedsFeaturePolicyUpdate:(id)arg1;
 - (void)transientOverlayViewControllerNeedsContentOpaqueUpdate:(id)arg1;
+- (_Bool)isKeyboardVisibleForSpringBoardForTransientOverlayViewController:(id)arg1;
 - (_Bool)defaultShouldAutorotateForTransientOverlayViewController:(id)arg1;
 - (long long)defaultPreferredInterfaceOrientationForPresentationForTransientOverlayViewController:(id)arg1;
 - (unsigned long long)defaultSupportedInterfaceOrientationsForTransientOverlayViewController:(id)arg1;

@@ -43,6 +43,7 @@
     UIButton *__cameraCancelButton;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIButton *_cameraCancelButton; // @synthesize _cameraCancelButton=__cameraCancelButton;
 @property(readonly, nonatomic) PLCropOverlayBottomBar *_bottomBar; // @synthesize _bottomBar=__bottomBar;
 @property(nonatomic) __weak id <PLCropOverlayDelegate> delegate; // @synthesize delegate=_delegate;
@@ -53,7 +54,6 @@
 @property(nonatomic) _Bool isEditingHomeScreen; // @synthesize isEditingHomeScreen=_isEditingHomeScreen;
 @property(nonatomic) _Bool motionToggleIsOn; // @synthesize motionToggleIsOn=_motionToggleIsOn;
 @property(readonly, nonatomic) PLContactPhotoOverlay *contactPhotoOverlay; // @synthesize contactPhotoOverlay=_contactPhotoOverlay;
-- (void).cxx_destruct;
 - (_Bool)isWallpaperUIMode:(int)arg1;
 - (_Bool)isTelephonyUIMode:(int)arg1;
 - (id)_newOverlayViewWithFrame:(struct CGRect)arg1 lighterEdgeOnTop:(_Bool)arg2;
@@ -62,6 +62,9 @@
 - (void)_updateEditImageCancelButtonTitle;
 - (void)_updateEditImageDoneButtonTitle;
 - (void)_updateTitle;
+- (void)setFileResizingHidden:(_Bool)arg1;
+- (void)setFileResizingTitle:(id)arg1;
+- (id)_fileResizingButton;
 @property(nonatomic) _Bool previewMode;
 - (void)setTitleHidden:(_Bool)arg1 animationDuration:(double)arg2;
 - (void)setShowsCropRegion:(_Bool)arg1;
@@ -85,6 +88,7 @@
 @property(nonatomic) _Bool motionToggleHidden;
 - (void)_updateWallpaperBottomBarSettingButtons;
 - (void)_updateMotionToggle;
+- (void)_tappedBottomBarFileResizingButton;
 - (void)_tappedBottomBarMotionToggle;
 - (void)_tappedBottomBarSetBothButton;
 - (void)_tappedBottomBarSetLockButton;

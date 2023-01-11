@@ -6,9 +6,9 @@
 
 #import <Foundation/NSNotification.h>
 
-@class _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath;
 
 @interface NSNotification (MRSerializationAdditions)
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
+@property(readonly, nonatomic) MRPlayerPath *playerPath;
 @end
 

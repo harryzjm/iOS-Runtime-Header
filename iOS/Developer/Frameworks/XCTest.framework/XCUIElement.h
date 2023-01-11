@@ -11,12 +11,13 @@
 #import <XCTest/XCUIElementAttributesPrivate-Protocol.h>
 #import <XCTest/XCUIElementSnapshotProviding-Protocol.h>
 #import <XCTest/XCUIElementTypeQueryProvider-Protocol.h>
+#import <XCTest/XCUIElementTypeQueryProvider_Private-Protocol.h>
 #import <XCTest/XCUIScreenshotProviding-Protocol.h>
 
 @class NSString, XCElementSnapshot, XCTLocalizableStringInfo, XCUIApplication, XCUICoordinate, XCUIElementQuery;
 @protocol XCUIDevice;
 
-@interface XCUIElement : NSObject <XCUIScreenshotProviding, XCUIElementSnapshotProviding, XCTNSPredicateExpectationObject, XCUIElementAttributesPrivate, XCUIElementAttributes, XCUIElementTypeQueryProvider>
+@interface XCUIElement : NSObject <XCUIScreenshotProviding, XCUIElementSnapshotProviding, XCTNSPredicateExpectationObject, XCUIElementAttributesPrivate, XCUIElementTypeQueryProvider_Private, XCUIElementAttributes, XCUIElementTypeQueryProvider>
 {
     _Bool _safeQueryResolutionEnabled;
     XCUIElementQuery *_query;
@@ -24,12 +25,12 @@
 }
 
 + (id)standardAttributeNames;
-+ (_Bool)_dispatchEventWithEventBuilder:(CDUnknownBlockType)arg1 eventSynthesizer:(id)arg2 inContext:(id)arg3 withSnapshot:(id)arg4 applicationSnapshot:(id)arg5 process:(id)arg6 error:(id *)arg7;
++ (_Bool)_dispatchEventWithEventBuilder:(CDUnknownBlockType)arg1 eventSynthesizer:(id)arg2 withSnapshot:(id)arg3 applicationSnapshot:(id)arg4 process:(id)arg5 error:(id *)arg6;
 + (_Bool)_isInvalidEventDuration:(double)arg1;
+- (void).cxx_destruct;
 @property _Bool safeQueryResolutionEnabled; // @synthesize safeQueryResolutionEnabled=_safeQueryResolutionEnabled;
 @property(retain) XCElementSnapshot *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
 @property(readonly) XCUIElementQuery *query; // @synthesize query=_query;
-- (void).cxx_destruct;
 @property(readonly, copy) XCUIElementQuery *statusItems;
 @property(readonly, copy) XCUIElementQuery *otherElements;
 @property(readonly, copy) XCUIElementQuery *handles;
@@ -106,6 +107,7 @@
 @property(readonly, copy) XCUIElementQuery *radioButtons;
 @property(readonly, copy) XCUIElementQuery *buttons;
 @property(readonly, copy) XCUIElementQuery *dialogs;
+@property(readonly, copy) XCUIElementQuery *bannerNotifications;
 @property(readonly, copy) XCUIElementQuery *alerts;
 @property(readonly, copy) XCUIElementQuery *drawers;
 @property(readonly, copy) XCUIElementQuery *sheets;
@@ -114,6 +116,8 @@
 @property(readonly, copy) XCUIElementQuery *touchBars;
 - (id)coordinateWithNormalizedOffset:(struct CGVector)arg1;
 @property(readonly, copy) XCUICoordinate *hitPointCoordinate;
+@property(readonly) _Bool bannerNotificationIsSticky;
+@property(readonly) _Bool hasBannerNotificationIsStickyAttribute;
 - (id)valueForAccessibilityAttribute:(id)arg1 error:(id *)arg2;
 - (id)valuesForAccessibilityAttributes:(id)arg1 error:(id *)arg2;
 @property(readonly) _Bool isTopLevelTouchBarElement;
@@ -136,7 +140,7 @@
 @property(readonly) id value;
 - (_Bool)resolveOrRaiseTestFailure:(_Bool)arg1 error:(id *)arg2;
 - (void)resolveOrRaiseTestFailure;
-- (_Bool)waitForNonExistenceWithTimeout:(double)arg1;
+- (_Bool)_waitForNonExistenceWithTimeout:(double)arg1;
 - (id)makeNonExistenceExpectation;
 - (_Bool)waitForExistenceWithTimeout:(double)arg1;
 - (_Bool)_waitForExistenceWithTimeout:(double)arg1;
@@ -167,12 +171,17 @@
 - (_Bool)_focusValidForElementSnapshot:(id)arg1 error:(id *)arg2;
 - (void)rotate:(double)arg1 withVelocity:(double)arg2;
 - (void)pinchWithScale:(double)arg1 velocity:(double)arg2;
+- (void)swipeRightWithVelocity:(double)arg1;
+- (void)swipeLeftWithVelocity:(double)arg1;
+- (void)swipeDownWithVelocity:(double)arg1;
+- (void)swipeUpWithVelocity:(double)arg1;
 - (void)swipeRight;
 - (void)swipeLeft;
 - (void)swipeDown;
 - (void)swipeUp;
-- (void)_swipe:(unsigned long long)arg1;
+- (void)_swipe:(unsigned long long)arg1 withVelocity:(double)arg2;
 - (void)_pressWithPressure:(double)arg1 pressDuration:(double)arg2 holdDuration:(double)arg3 releaseDuration:(double)arg4 activityTitle:(id)arg5;
+- (void)pressForDuration:(double)arg1 thenDragToElement:(id)arg2 withVelocity:(double)arg3 thenHoldForDuration:(double)arg4;
 - (void)pressForDuration:(double)arg1 thenDragToElement:(id)arg2;
 - (void)pressForDuration:(double)arg1;
 - (void)_tapWithNumberOfTaps:(unsigned long long)arg1 numberOfTouches:(unsigned long long)arg2 activityTitle:(id)arg3;

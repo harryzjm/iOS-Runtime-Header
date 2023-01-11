@@ -14,6 +14,7 @@
 
 @interface SearchUICombinedCardSectionsView : UIView <NUIArrangementContainer, NUIGridArrangementDataSource>
 {
+    _Bool _hasAttributionFooter;
     SearchUICombinedCardSectionRowModel *_rowModel;
     id <SearchUIFeedbackDelegate> _feedbackDelegate;
     NUIGridArrangement *_arrangement;
@@ -22,13 +23,14 @@
     NSMutableArray *_viewList;
 }
 
+- (void).cxx_destruct;
+@property _Bool hasAttributionFooter; // @synthesize hasAttributionFooter=_hasAttributionFooter;
 @property(retain, nonatomic) NSMutableArray *viewList; // @synthesize viewList=_viewList;
 @property(retain, nonatomic) NSMutableArray *uncacheableViews; // @synthesize uncacheableViews=_uncacheableViews;
 @property(retain, nonatomic) NSMutableDictionary *cardSectionsMapping; // @synthesize cardSectionsMapping=_cardSectionsMapping;
 @property(retain, nonatomic) NUIGridArrangement *arrangement; // @synthesize arrangement=_arrangement;
 @property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property(retain, nonatomic) SearchUICombinedCardSectionRowModel *rowModel; // @synthesize rowModel=_rowModel;
-- (void).cxx_destruct;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (id)visibleViewList;
@@ -39,6 +41,7 @@
 - (id)gridArrangement:(id)arg1 itemAtIndex:(long long)arg2 columns:(struct _NSRange *)arg3 rows:(struct _NSRange *)arg4 horizontalAlignment:(long long *)arg5 verticalAlignment:(long long *)arg6;
 - (long long)numberOfItemsInGridArrangement:(id)arg1;
 - (void)resetStateOfViews;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (id)init;
 
 // Remaining properties

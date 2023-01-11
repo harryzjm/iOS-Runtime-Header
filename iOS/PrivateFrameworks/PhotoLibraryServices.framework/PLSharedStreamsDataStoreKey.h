@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotoLibraryServices/PLChooserKeyProperties-Protocol.h>
-#import <PhotoLibraryServices/PLResourceDataStoreKey-Protocol.h>
 
 @class NSString;
 
-@interface PLSharedStreamsDataStoreKey : NSObject <PLResourceDataStoreKey, PLChooserKeyProperties>
+@interface PLSharedStreamsDataStoreKey <PLChooserKeyProperties>
 {
     NSString *_relativePath;
     unsigned int _sharedStreamsResourceType;
@@ -35,12 +32,6 @@
 - (id)initWithKeyStruct:(const void *)arg1;
 - (id)keyData;
 - (id)initWithAsset:(id)arg1 album:(id)arg2 type:(unsigned int)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -6,12 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@protocol OS_dispatch_queue;
+
 @interface HUUtilities : NSObject
 {
+    NSObject<OS_dispatch_queue> *_routingQueue;
 }
 
 + (id)objectFromXDCObject:(id)arg1;
 + (id)XDCObjectFromObject:(id)arg1;
++ (id)sharedUtilities;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *routingQueue; // @synthesize routingQueue=_routingQueue;
+- (void)updateHearingFeatureUsage;
+- (void)addHearingFeatureUsage:(unsigned long long)arg1;
+- (void)pauseNowPlaying:(_Bool)arg1 withQueue:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
+- (void)checkAudioPlayingWithQueue:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -6,37 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddressList, HMDTLVSignedNumberValue, HMDTLVUnsignedNumberValue, NSData, NSString;
+@class HAPTLVSignedNumberValue, HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddressList, NSData, NSString;
 
-@interface HMDNetworkRouterClientStatus : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientStatus : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_clientIdentifier;
+    HAPTLVUnsignedNumberValue *_clientIdentifier;
     NSData *_macAddress;
     HMDNetworkRouterIPAddressList *_ipAddressList;
-    HMDTLVUnsignedNumberValue *_interfaceIdentifier;
-    HMDTLVUnsignedNumberValue *_lanIdentifier;
+    HAPTLVUnsignedNumberValue *_lanIdentifier;
     NSString *_name;
-    HMDTLVSignedNumberValue *_rssi;
+    HAPTLVSignedNumberValue *_rssi;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(retain, nonatomic) HMDTLVSignedNumberValue *rssi; // @synthesize rssi=_rssi;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HAPTLVSignedNumberValue *rssi; // @synthesize rssi=_rssi;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *interfaceIdentifier; // @synthesize interfaceIdentifier=_interfaceIdentifier;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
 @property(retain, nonatomic) HMDNetworkRouterIPAddressList *ipAddressList; // @synthesize ipAddressList=_ipAddressList;
 @property(retain, nonatomic) NSData *macAddress; // @synthesize macAddress=_macAddress;
-@property(retain, nonatomic) HMDTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HAPTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithError:(id *)arg1;
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
-- (id)initWithClientIdentifier:(id)arg1 macAddress:(id)arg2 ipAddressList:(id)arg3 interfaceIdentifier:(id)arg4 lanIdentifier:(id)arg5 name:(id)arg6 rssi:(id)arg7;
+- (id)initWithClientIdentifier:(id)arg1 macAddress:(id)arg2 ipAddressList:(id)arg3 lanIdentifier:(id)arg4 name:(id)arg5 rssi:(id)arg6;
 - (id)init;
 
 // Remaining properties

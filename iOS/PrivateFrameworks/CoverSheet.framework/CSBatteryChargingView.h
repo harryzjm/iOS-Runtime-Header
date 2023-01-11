@@ -17,13 +17,15 @@
 + (id)maskImageNameForChargingBattery;
 + (id)batteryChargingViewWithDoubleBattery;
 + (id)batteryChargingViewWithSingleBattery;
+- (void).cxx_destruct;
 @property(nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-- (void).cxx_destruct;
 - (double)_batteryOriginYForBatteryHeight:(double)arg1;
+@property(readonly, nonatomic) double horizontalGapBetweenBatteryAndPercentLabel;
 - (id)_chargePercentFont;
 - (id)_updateChargeString:(id)arg1 oldLabel:(id)arg2;
 @property(nonatomic) _Bool batteryVisible;
+- (void)performAnimation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) double desiredVisibilityDuration;
 @property(readonly, nonatomic) long long batteryCount;
 - (void)setSecondaryBatteryText:(id)arg1 forBattery:(id)arg2;

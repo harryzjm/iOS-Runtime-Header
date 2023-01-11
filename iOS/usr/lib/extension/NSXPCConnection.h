@@ -8,41 +8,40 @@
 
 #import <Foundation/NSXPCProxyCreating-Protocol.h>
 
-@class NSString, NSXPCInterface, NSXPCListenerEndpoint;
-@protocol NSObject, OS_dispatch_queue;
+@class NSString, NSXPCInterface, NSXPCListenerEndpoint, _NSXPCConnectionClassCache, _NSXPCConnectionExpectedReplies, _NSXPCConnectionExportedObjectTable, _NSXPCConnectionImportInfo, _NSXPCConnectionRequestedReplies;
+@protocol NSObject, OS_dispatch_queue, OS_xpc_object;
 
 @interface NSXPCConnection : NSObject <NSXPCProxyCreating>
 {
-    void *_xconnection;
-    id _repliesExpected;
+    CDUnion_12533362 _connection;
+    _NSXPCConnectionExpectedReplies *_repliesExpected;
     NSObject<OS_dispatch_queue> *_userQueue;
     unsigned int _state;
-    unsigned int _state2;
+    _Atomic unsigned int _state2;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
-    id _exportInfo;
-    id _repliesRequested;
-    id _importInfo;
+    _NSXPCConnectionExportedObjectTable *_exportInfo;
+    _NSXPCConnectionRequestedReplies *_repliesRequested;
+    _NSXPCConnectionImportInfo *_importInfo;
     id <NSObject> _otherInfo;
-    id _reserved1;
+    _Atomic id _delegate;
     NSXPCInterface *_remoteObjectInterface;
     NSString *_serviceName;
     NSXPCListenerEndpoint *_endpoint;
-    id _eCache;
-    id _dCache;
+    _NSXPCConnectionClassCache *_eCache;
+    _NSXPCConnectionClassCache *_dCache;
+    NSObject<OS_xpc_object> *_bootstrap;
     struct os_unfair_lock_s _lock;
 }
 
 + (void)endTransaction;
 + (void)beginTransaction;
-+ (id)_currentBoost;
 + (id)currentConnection;
 @property(retain) NSXPCInterface *remoteObjectInterface; // @synthesize remoteObjectInterface=_remoteObjectInterface;
 - (void)_decodeProgressMessageWithData:(id)arg1 flags:(unsigned long long)arg2;
 - (void)_resumeProgress:(unsigned long long)arg1;
 - (void)_pauseProgress:(unsigned long long)arg1;
 - (void)_cancelProgress:(unsigned long long)arg1;
-- (void)_sendProgressMessage:(id)arg1 forSequence:(unsigned long long)arg2;
 - (id)_xpcConnection;
 - (void)_killConnection:(int)arg1;
 - (void)_setTargetUserIdentifier:(unsigned int)arg1;
@@ -51,8 +50,6 @@
 @property(readonly) unsigned int effectiveUserIdentifier;
 @property(readonly) int processIdentifier;
 @property(readonly) int auditSessionIdentifier;
-- (void)_removeImportedProxy:(id)arg1;
-- (void)_addImportedProxy:(id)arg1;
 - (id)remoteObjectProxyWithTimeout:(double)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithUserInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
@@ -62,10 +59,6 @@
 - (Class)_remoteObjectInterfaceClass;
 @property(retain) NSXPCInterface *exportedInterface;
 @property(retain) id exportedObject;
-- (void)_addClassToDecodeCache:(Class)arg1;
-- (_Bool)_decodeCacheContainsClass:(Class)arg1;
-- (void)_addClassToEncodeCache:(Class)arg1;
-- (_Bool)_encodeCacheContainsClass:(Class)arg1;
 - (id)description;
 - (id)_errorDescription;
 - (id)_queue;
@@ -75,11 +68,11 @@
 - (void)setDelegate:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (id)userInfo;
-- (unsigned long long)_generationCount;
 - (id)valueForEntitlement:(id)arg1;
 - (CDStruct_4c969caf)auditToken;
+- (void)_setBootstrapObject:(id)arg1 forKey:(id)arg2;
+- (void)_setLanguages:(id)arg1;
 - (void)setOptions:(unsigned long long)arg1;
-- (id)_exportTable;
 @property(readonly, retain) NSXPCListenerEndpoint *endpoint;
 @property(readonly, copy) NSString *serviceName;
 - (CDUnknownBlockType)_additionalInvalidationHandler;
@@ -87,7 +80,6 @@
 @property(copy) CDUnknownBlockType invalidationHandler;
 @property(copy) CDUnknownBlockType interruptionHandler;
 - (void)_sendInvocation:(id)arg1 orArguments:(id *)arg2 count:(unsigned long long)arg3 methodSignature:(id)arg4 selector:(SEL)arg5 withProxy:(id)arg6;
-- (void)_sendInvocation:(id)arg1 withProxy:(id)arg2;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2 arg1:(id)arg3 arg2:(id)arg4 arg3:(id)arg5 arg4:(id)arg6;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2 arg1:(id)arg3 arg2:(id)arg4 arg3:(id)arg5;
 - (void)_sendSelector:(SEL)arg1 withProxy:(id)arg2 arg1:(id)arg3 arg2:(id)arg4;
@@ -99,6 +91,7 @@
 - (void)invalidate;
 - (void)stop;
 - (void)start;
+- (void)activate;
 - (void)resume;
 - (void)suspend;
 - (void)dealloc;
@@ -108,7 +101,6 @@
 - (id)initWithMachServiceName:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithServiceName:(id)arg1;
 - (id)initWithServiceName:(id)arg1 options:(unsigned long long)arg2;
-- (id)_initWithPeerConnection:(id)arg1 name:(id)arg2 options:(unsigned long long)arg3;
 - (id)init;
 - (void)_decodeAndInvokeMessageWithEvent:(id)arg1 flags:(unsigned long long)arg2;
 - (void)_decodeAndInvokeReplyBlockWithEvent:(id)arg1 sequence:(unsigned long long)arg2 replyInfo:(id)arg3;

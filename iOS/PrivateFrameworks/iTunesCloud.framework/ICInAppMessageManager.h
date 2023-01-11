@@ -10,7 +10,7 @@
 #import <iTunesCloud/ICInAppMessageManagerProtocol-Protocol.h>
 #import <iTunesCloud/NSXPCListenerDelegate-Protocol.h>
 
-@class ICInAppMessageStore, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
+@class AMSPushHandler, ICInAppMessageStore, ICUserIdentityStore, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
 @protocol OS_dispatch_queue;
 
 @interface ICInAppMessageManager : NSObject <NSXPCListenerDelegate, ICInAppMessageManagerProtocol, ICEnvironmentMonitorObserver>
@@ -20,7 +20,10 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     ICInAppMessageStore *_messageStore;
+    ICUserIdentityStore *_identityStore;
     _Bool _isSystemService;
+    AMSPushHandler *_amsPushHandler;
+    NSString *_foregroundApplicationIdentifier;
     NSXPCListener *_xpcServiceListener;
     NSMutableSet *_xpcConnections;
     NSXPCConnection *_xpcClientConnection;
@@ -28,20 +31,24 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) ICInAppMessageStore *_unsafeMessageStore; // @synthesize _unsafeMessageStore=_messageStore;
 - (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)_removeConnection:(id)arg1;
 - (void)_addConnection:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (id)_amsPushHandler;
+- (_Bool)_privacyAcknowledgementRequired;
 - (void)_performCacheConsistencyCheck;
 - (void)_loadConfigurationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_resourceCacheDirectoryPath;
 - (void)_downloadResourcesForMessageWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_checkForMessageResourcesNeedingDownload;
+- (void)_checkForMessageResourcesNeedingDownloadForcingIfNecessary:(_Bool)arg1;
 - (void)_updateShouldDownloadResources:(_Bool)arg1 onMessageWithIdentifier:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performSyncRetryIfPending;
 - (void)_handleICInAppMessagesDidChangeDistributedNotification:(id)arg1;
 - (void)_removeAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeMessageEntryWithIdentifier:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_addMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processSyncResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_storeRequestContext;
@@ -54,6 +61,7 @@
 - (void)getGlobalPropertyForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateMetadata:(id)arg1 messageIdentifier:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)getAllMetadataForBundleIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAllMetadataForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearCachedResourcesForMessageWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -67,11 +75,13 @@
 - (void)removeMessageEntryWithIdentifier:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)messageEntryWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)messageEntriesForBundleIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)messageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)allMessageEntriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopSystemService;
 - (void)startSystemService;
-- (id)initWithMessageStore:(id)arg1;
+- (id)initWithMessageStore:(id)arg1 identityStore:(id)arg2;
 - (id)_init;
 
 // Remaining properties

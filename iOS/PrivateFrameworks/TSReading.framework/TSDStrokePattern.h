@@ -11,10 +11,10 @@
 
 @interface TSDStrokePattern : NSObject <NSCopying, TSDMixing>
 {
-    double mPattern[6];
-    unsigned long long mCount;
-    double mPhase;
-    int mType;
+    double _pattern[6];
+    long long _type;
+    unsigned long long _count;
+    double _phase;
 }
 
 + (id)strokePatternWithPattern:(const double *)arg1 count:(unsigned long long)arg2 phase:(double)arg3;
@@ -26,24 +26,27 @@
 + (id)shortDashPattern;
 + (id)emptyPattern;
 + (id)solidPattern;
-@property(readonly, nonatomic) double phase; // @synthesize phase=mPhase;
-@property(readonly, nonatomic) unsigned long long count; // @synthesize count=mCount;
-@property(readonly, nonatomic) int patternType; // @synthesize patternType=mType;
+@property(readonly, nonatomic) double phase; // @synthesize phase=_phase;
+@property(readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
+@property(readonly, nonatomic) long long patternType; // @synthesize patternType=_type;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1;
-- (void)p_applyToCAShapeLayer:(id)arg1 lineWidth:(double)arg2;
-- (void)applyToCAShapeLayer:(id)arg1;
+- (void)p_applyToShapeRenderable:(id)arg1 lineWidth:(double)arg2;
+- (void)applyToShapeRenderable:(id)arg1;
+- (double)p_renderableLengthForUnclippedPatternWithLineWidth:(double)arg1 withinAvailableLength:(double)arg2;
 - (void)i_applyToContext:(struct CGContext *)arg1 lineWidth:(double)arg2 capStyle:(unsigned long long *)arg3;
 - (void)applyToContext:(struct CGContext *)arg1 lineWidth:(double)arg2;
 @property(readonly, nonatomic) _Bool isRoundDash;
 @property(readonly, nonatomic) _Bool isDash;
 @property(readonly, nonatomic) double *pattern;
+- (id)p_typeString;
+- (id)p_patternString;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPattern:(const double *)arg1 count:(unsigned long long)arg2 phase:(double)arg3;
-- (id)p_initWithType:(int)arg1 pattern:(const double *)arg2 count:(unsigned long long)arg3 phase:(double)arg4;
+- (id)initWithPatternType:(long long)arg1 pattern:(const double *)arg2 count:(unsigned long long)arg3 phase:(double)arg4;
 
 @end
 

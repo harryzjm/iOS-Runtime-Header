@@ -8,16 +8,20 @@
 
 #import <PersonalizationPortraitInternals/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PPM2NamedEntitiesPerDonation : PBCodable <NSCopying>
 {
+    NSString *_activeTreatments;
     int _algorithm;
-    int _source;
-    struct {
-        unsigned int algorithm:1;
-        unsigned int source:1;
-    } _has;
+    int _donationSource;
+    NSString *_groupId;
+    CDStruct_e3b84e97 _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
+@property(retain, nonatomic) NSString *groupId; // @synthesize groupId=_groupId;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -27,14 +31,16 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasActiveTreatments;
 - (int)StringAsAlgorithm:(id)arg1;
 - (id)algorithmAsString:(int)arg1;
 @property(nonatomic) _Bool hasAlgorithm;
 @property(nonatomic) int algorithm; // @synthesize algorithm=_algorithm;
-- (int)StringAsSource:(id)arg1;
-- (id)sourceAsString:(int)arg1;
-@property(nonatomic) _Bool hasSource;
-@property(nonatomic) int source; // @synthesize source=_source;
+@property(readonly, nonatomic) _Bool hasGroupId;
+- (int)StringAsDonationSource:(id)arg1;
+- (id)donationSourceAsString:(int)arg1;
+@property(nonatomic) _Bool hasDonationSource;
+@property(nonatomic) int donationSource; // @synthesize donationSource=_donationSource;
 
 @end
 

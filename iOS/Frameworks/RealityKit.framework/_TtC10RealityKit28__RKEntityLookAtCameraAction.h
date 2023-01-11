@@ -9,10 +9,17 @@
 @interface _TtC10RealityKit28__RKEntityLookAtCameraAction
 {
     MISSING_TYPE *duration;
-    MISSING_TYPE *direction;
-    MISSING_TYPE *upVector;
+    MISSING_TYPE *animationDuration;
+    MISSING_TYPE *face;
+    MISSING_TYPE *rotation;
+    MISSING_TYPE *axis;
+    MISSING_TYPE *loops;
     MISSING_TYPE *updateSubscription;
     MISSING_TYPE *deadline;
+    MISSING_TYPE *animationDeadline;
+    MISSING_TYPE *currentAnimation;
+    MISSING_TYPE *didInit;
+    MISSING_TYPE *faceRotation;
 }
 
 - (id)copyWithZone:(void *)arg1;

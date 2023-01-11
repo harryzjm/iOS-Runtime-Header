@@ -25,9 +25,11 @@
 + (_Bool)registerRemoteElement:(id)arg1;
 + (id)remoteElementsForContextId:(unsigned int)arg1;
 + (id)remoteElementsForBlock:(CDUnknownBlockType)arg1;
++ (id)registeredRemoteElements;
 + (id)remoteElementForBlock:(CDUnknownBlockType)arg1;
 + (_Bool)_isSerializableAccessibilityElement;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool deniesDirectAppConnection; // @synthesize deniesDirectAppConnection=_deniesDirectAppConnection;
 @property(nonatomic) __weak id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
 @property(nonatomic) unsigned int machPort; // @synthesize machPort=_machPort;
@@ -36,14 +38,17 @@
 @property(nonatomic) unsigned int contextId; // @synthesize contextId=_contextId;
 @property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) int remotePid; // @synthesize remotePid=_remotePid;
-- (void).cxx_destruct;
+- (_Bool)_accessibilitySetNativeFocus;
+- (void)_accessibilitySetFocusOnElement:(_Bool)arg1;
 - (id)description;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
 - (struct CGRect)accessibilityFrame;
+@property(readonly, nonatomic) struct CGRect containerAccessibilityFrame;
 - (void)unregister;
 - (id)accessibilityElements;
 - (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilitySortedElementsWithin;
+- (_Bool)_accessibilityIsGroupedParent;
 - (id)_accessibilityLastElement;
 - (id)_accessibilityFirstElement;
 - (id)_accessibilityResponderElement;
@@ -53,9 +58,11 @@
 - (void)_getRemoteValuesOffMainThread:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned long long uuidHash;
 - (void)dealloc;
+- (id)_accessibilityHandwritingElement;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (id)_accessibilityTextOperations;
 - (void)platformCleanup;
+@property(readonly, nonatomic) unsigned int localHostingWindowContextId;
 - (id)initWithUUID:(id)arg1 andRemotePid:(int)arg2 andContextId:(unsigned int)arg3;
 
 @end

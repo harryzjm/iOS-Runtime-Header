@@ -11,7 +11,6 @@
 @class NSData, NSDate, NSString;
 
 @interface PHAsset (PVAssetProtocol) <PVAssetProtocol>
-@property(readonly, nonatomic) NSDate *clsDistanceIdentity;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *cloudIdentifier;

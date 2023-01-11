@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <ChatKit/CKEffectPickerViewControllerProtocol-Protocol.h>
 #import <ChatKit/CKEffectPickerViewDelegate-Protocol.h>
 
 @class CKEffectPickerView, NSAttributedString;
 @protocol CKEffectPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKEffectPickerViewController : UIViewController <CKEffectPickerViewDelegate>
+@interface CKEffectPickerViewController : UIViewController <CKEffectPickerViewDelegate, CKEffectPickerViewControllerProtocol>
 {
     id <CKEffectPickerViewControllerDelegate> _delegate;
     NSAttributedString *_text;
@@ -21,12 +22,12 @@ __attribute__((visibility("hidden")))
     struct CGRect _sendButtonFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKEffectPickerView *pickerView; // @synthesize pickerView=_pickerView;
 @property(nonatomic) struct CGPoint balloonViewOrigin; // @synthesize balloonViewOrigin=_balloonViewOrigin;
 @property(nonatomic) struct CGRect sendButtonFrame; // @synthesize sendButtonFrame=_sendButtonFrame;
 @property(copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
 @property(nonatomic) id <CKEffectPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)effectSelectedWithIdentifier:(id)arg1;
 - (void)touchUpInsideCloseButton;
 - (void)effectPickerViewDidFinishAnimatingIn:(id)arg1;

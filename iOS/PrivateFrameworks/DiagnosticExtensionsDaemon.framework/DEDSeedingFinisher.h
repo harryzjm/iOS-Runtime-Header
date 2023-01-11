@@ -7,19 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <DiagnosticExtensionsDaemon/DEDFinisher-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDFinisherState-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDSeedingClientDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
 @class DEDBugSession, DEDBugSessionConfiguration, DEDSeedingClient, NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_source, OS_os_log, OS_os_transaction;
+@protocol OS_os_log, OS_os_transaction;
 
-@interface DEDSeedingFinisher : NSObject <DEDFinisher, DEDSeedingClientDelegate, NSSecureCoding, DEDSecureArchiving>
+@interface DEDSeedingFinisher : NSObject <DEDFinisherState, DEDFinisher, DEDSeedingClientDelegate, DEDSecureArchiving, NSSecureCoding>
 {
-    NSObject<OS_dispatch_source> *_timerSource;
+    _Bool _isPreparing;
+    int _uploadProgressCounter;
     DEDBugSessionConfiguration *_config;
     NSMutableSet *_uploads;
-    unsigned long long _totalUploadSize;
+    long long _totalUploadSize;
+    long long _lastUploadPercentageReported;
+    long long _bytesUploadedFromAllFiles;
     NSObject<OS_os_log> *_log;
     DEDBugSession *_session;
     NSObject<OS_os_transaction> *_transaction;
@@ -29,15 +33,19 @@
 
 + (id)archivedClasses;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *promises; // @synthesize promises=_promises;
 @property(retain) DEDSeedingClient *client; // @synthesize client=_client;
+@property _Bool isPreparing; // @synthesize isPreparing=_isPreparing;
 @property(retain) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 @property __weak DEDBugSession *session; // @synthesize session=_session;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
-@property unsigned long long totalUploadSize; // @synthesize totalUploadSize=_totalUploadSize;
+@property(nonatomic) int uploadProgressCounter; // @synthesize uploadProgressCounter=_uploadProgressCounter;
+@property long long bytesUploadedFromAllFiles; // @synthesize bytesUploadedFromAllFiles=_bytesUploadedFromAllFiles;
+@property long long lastUploadPercentageReported; // @synthesize lastUploadPercentageReported=_lastUploadPercentageReported;
+@property long long totalUploadSize; // @synthesize totalUploadSize=_totalUploadSize;
 @property(retain) NSMutableSet *uploads; // @synthesize uploads=_uploads;
 @property(retain) DEDBugSessionConfiguration *config; // @synthesize config=_config;
-- (void).cxx_destruct;
 - (id)uploadItemForTask:(id)arg1;
 - (id)attachmentHandler;
 - (void)save;
@@ -45,19 +53,23 @@
 - (id)prepareUpload:(id)arg1 forSubmissionWithSession:(id)arg2 metadata:(id)arg3;
 - (id)prepareSessionDirectoryForSubmission:(id)arg1;
 - (_Bool)uploadsAreComplete;
-- (void)startProgressNotifier;
-- (void)updateSessionUploadProgress;
-- (void)uploadTask:(id)arg1 didSendBytes:(long long)arg2;
+- (_Bool)shouldReportProgress;
+- (void)updateUploadProgressOnSessionIfNeeded;
+- (void)uploadTask:(id)arg1 didSendBytes:(long long)arg2 totalBytesExpectedToSend:(long long)arg3;
 - (void)uploadTask:(id)arg1 didCompleteWithError:(id)arg2;
-- (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)cleanup;
 - (void)didAdoptAttachmentGroup:(id)arg1;
 - (void)didCancelCollectionOnExtension:(id)arg1;
 - (void)didCollectAttachmentGroup:(id)arg1;
 - (void)didStartCollectingDiagnosticExtensionWithIdentifier:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 session:(id)arg2;
 - (void)finishSession:(id)arg1 withConfiguration:(id)arg2;
+- (_Bool)uploadFinished;
+- (_Bool)isUploading;
+- (_Bool)isCompressing;
+- (id)additionalStateInfo;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -17,10 +17,11 @@
 
 + (void)deleteMemoriesWithObjectIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (void)deletePendingMemoriesCreatedBefore:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(_Bool)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
 + (id)_memoriesMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(long long)arg3 inManagedObjectContext:(id)arg4;
 + (id)memoriesWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)memoryWithUUID:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)memoriesToPrefetchForWidgetInManagedObjectContext:(id)arg1;
 + (id)memoriesToPrefetchInPhotoLibrary:(id)arg1;
 + (_Bool)_shouldPrefetchMemoryMovieCuratedAssetsInPhotoLibrary:(id)arg1;
 + (id)memoriesToUploadInPhotoLibrary:(id)arg1 limit:(long long)arg2;
@@ -73,6 +74,7 @@
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSSet *extendedCuratedAssets; // @dynamic extendedCuratedAssets;
 @property(nonatomic) _Bool favorite; // @dynamic favorite;
+@property(nonatomic) unsigned short featuredState; // @dynamic featuredState;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSDate *lastMoviePlayedDate; // @dynamic lastMoviePlayedDate;
 @property(retain, nonatomic) NSDate *lastViewedDate; // @dynamic lastViewedDate;

@@ -11,14 +11,14 @@
     _Bool _appHasPolledOnceThisForegroundSession;
 }
 
-+ (_Bool)canInitiateDistributedPhotoStreamDeletionForAssetUUID:(id)arg1;
++ (void)deletePhotoStreamAssetsWithLibraryServiceManager:(id)arg1 withReason:(id)arg2 jobStreamID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (_Bool)writeBreadcrumbContent:(id)arg1 forHashString:(id)arg2;
 + (id)iCloudServiceAccount;
 + (_Bool)photoStreamsEnabledForPhotoLibraryURL:(id)arg1;
 + (_Bool)_photoStreamsEnabled;
 + (id)sharedPhotoStreamsHelper;
-- (void)handleMPSStateIfNecessary;
-- (void)fetchMPSStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleMPSStateIfNecessaryInLibrary:(id)arg1;
+- (void)fetchMPSStateWithLibrary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enumerateMasterHashesAndPublicGlobalUUIDsForAssets:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)initiateDeletionOfOriginalAssets:(id)arg1;
 - (void)initiateDeletionOfPhotoStreamAssets:(id)arg1;
@@ -28,7 +28,6 @@
 - (void)cleanupPhotoStreamMetadataForAssetsWithUUIDs:(id)arg1 forStreamID:(id)arg2;
 - (void)savePhotoStreamMetadata:(id)arg1 forAsset:(id)arg2;
 - (id)pathToSavedMetadataForAssetHash:(id)arg1 streamID:(id)arg2 createIntermediateDirs:(_Bool)arg3;
-- (void)resetMstreamdStateForPersonID:(id)arg1;
 - (id)derivedAssetForMasterAsset:(id)arg1;
 - (struct CGSize)derivedAssetSizeForMasterSizeWidth:(double)arg1 height:(double)arg2;
 - (id)temporaryPathForRecentlyUploadedAsset:(id)arg1;

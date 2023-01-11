@@ -8,9 +8,8 @@
 {
 }
 
-- (_Bool)shouldAllowUnentitledExtension:(id)arg1;
+- (void)setAppUUIDMap:(id)arg1;
 - (void)handleExtensionStartedWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (int)requiredEntitlement;
 
 @end
 

@@ -18,6 +18,7 @@
     NSMutableSet *_slotComponentClasses;
     NSMutableSet *_slotComponents;
     NSMutableDictionary *_slotsComponentsByClassThenIdentifier;
+    NSMutableDictionary *_dynamicSlotComponentsByClassThenIdentifier;
     NSMutableDictionary *_compilerResultAmendersBySlot;
     NSMutableDictionary *_slotsComponentsByClass;
     NSMutableDictionary *_slotsComponentsBySlotClassThenComponentClass;
@@ -77,6 +78,7 @@
 + (id)sharedInstance;
 + (void)setSuppressSchemaValidationAsserts:(_Bool)arg1;
 + (void)setSchemaProvidersPromise:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(readonly) IBICRole *unassignedRole; // @synthesize unassignedRole=_unassignedRole;
 @property(readonly) IBICRole *assignedRole; // @synthesize assignedRole=_assignedRole;
 @property(readonly) IBICRole *detailRole; // @synthesize detailRole=_detailRole;
@@ -85,7 +87,6 @@
 @property(readonly) IBICPlatform *OSXPlatform; // @synthesize OSXPlatform=_OSXPlatform;
 @property(readonly) IBICPlatform *iOSPlatform; // @synthesize iOSPlatform=_iOSPlatform;
 @property(readonly) IBICIdiom *universalIdiom; // @synthesize universalIdiom=_universalIdiom;
-- (void).cxx_destruct;
 - (void)ibic_generateSubNodes:(CDUnknownBlockType)arg1;
 - (id)fileTypeWithIdentifier:(id)arg1;
 - (id)sizeWithPointSize:(struct CGSize)arg1;
@@ -194,6 +195,8 @@
 - (id)suggestionSetGroupForIdentifier:(id)arg1 forSlotClass:(Class)arg2;
 - (void)addSuggestionSetGroup:(id)arg1;
 - (id)slotComponentsExcludedFromAutomatedSuggestionSetsForSlotClass:(Class)arg1;
+- (void)undoExcludeSlotComponentFromAutomatedSuggestionSets:(id)arg1 forSlotClass:(Class)arg2;
+- (void)undoExcludeSlotComponentFromAutomatedSuggestionSets:(id)arg1;
 - (void)excludeSlotComponentFromAutomatedSuggestionSets:(id)arg1 forSlotClass:(Class)arg2;
 - (void)excludeSlotComponentFromAutomatedSuggestionSets:(id)arg1;
 - (id)displayOrderedSuggestionSetsForImageSetIdiomEditingMenus;
@@ -247,6 +250,7 @@
 - (void)addExtraSlotComponents:(id)arg1 forSuggestionSetsBelowIdiom:(id)arg2 forSlotClasses:(id)arg3;
 - (void)addSlotComponentsToAllApplicableSlotClasses:(id)arg1;
 - (id)slotComponentClasses;
+- (void)addDynamicSlotComponent:(id)arg1;
 - (void)addSlotComponents:(id)arg1 toSlotClasses:(id)arg2;
 - (void)addSlotComponentClasses:(id)arg1;
 - (void)assignSlotComponentIDs;

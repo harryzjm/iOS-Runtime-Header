@@ -9,7 +9,7 @@
 #import <Navigation/NSCopying-Protocol.h>
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedRouteTraffic, GEOComposedWaypoint, GEODirectionsRequest, GEOETARoute, GEOETATrafficUpdateResponse, MNCommuteDestinationSuggestion, MNLocation, MNObserverHashTable, NSDictionary, NSString;
+@class GEOComposedETARoute, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEOETATrafficUpdateResponse, MNCommuteDestinationSuggestion, MNLocation, MNObserverHashTable, NSDictionary, NSString;
 
 @interface MNCommuteDestination : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,10 +18,9 @@
     _Bool _rerouting;
     MNCommuteDestinationSuggestion *_suggestion;
     GEOComposedRoute *_route;
-    GEOComposedRouteTraffic *_traffic;
     GEODirectionsRequest *_directionsRequest;
     MNLocation *_lastMatchedLocation;
-    GEOETARoute *_etaRoute;
+    GEOComposedETARoute *_etaRoute;
     GEOETATrafficUpdateResponse *_etaResponse;
     double _remainingTime;
     double _remainingDistance;
@@ -32,6 +31,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) MNObserverHashTable *observers; // @synthesize observers=_observers;
 @property(copy, nonatomic) NSDictionary *scores; // @synthesize scores=_scores;
 @property(nonatomic) long long score; // @synthesize score=_score;
@@ -40,14 +40,12 @@
 @property(nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
 @property(nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 @property(retain, nonatomic) GEOETATrafficUpdateResponse *etaResponse; // @synthesize etaResponse=_etaResponse;
-@property(retain, nonatomic) GEOETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
+@property(retain, nonatomic) GEOComposedETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
 @property(retain, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
 @property(retain, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
-@property(retain, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
 @property(retain, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property(retain, nonatomic) MNCommuteDestinationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 @property(nonatomic) _Bool invalid; // @synthesize invalid=_invalid;
-- (void).cxx_destruct;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)updateFrom:(id)arg1;

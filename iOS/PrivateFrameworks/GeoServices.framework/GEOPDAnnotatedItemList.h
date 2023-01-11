@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAnnotatedItemList : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDPictureItemContainer *_picItemContainer;
     GEOPDTextItemContainer *_textItemContainer;
     NSString *_title;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _annotatedItemStyle;
     struct {
         unsigned int has_annotatedItemStyle:1;
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_picItemContainer:1;
         unsigned int read_textItemContainer:1;
         unsigned int read_title:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_picItemContainer:1;
-        unsigned int wrote_textItemContainer:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_annotatedItemStyle:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsAnnotatedItemStyle:(id)arg1;
@@ -55,13 +56,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int annotatedItemStyle;
 @property(retain, nonatomic) GEOPDTextItemContainer *textItemContainer;
 @property(readonly, nonatomic) _Bool hasTextItemContainer;
-- (void)_readTextItemContainer;
 @property(retain, nonatomic) GEOPDPictureItemContainer *picItemContainer;
 @property(readonly, nonatomic) _Bool hasPicItemContainer;
-- (void)_readPicItemContainer;
 @property(retain, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool hasTitle;
-- (void)_readTitle;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

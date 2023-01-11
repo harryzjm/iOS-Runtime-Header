@@ -16,11 +16,21 @@
 @interface SGReminderSuggestionBase : NSObject <SGSuggestion, SGSuggestionCategory, SGSuggestionExtensions>
 {
     SGReminder *_reminder;
+    NSString *_notes;
     id <SGSuggestionDelegate> _suggestionDelegate;
 }
 
-@property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate; // @synthesize suggestionDelegate=_suggestionDelegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate; // @synthesize suggestionDelegate=_suggestionDelegate;
+- (long long)locationProximity;
+- (_Bool)wantsExtendedDetailOnlyView;
+- (id)title;
+- (id)userActivity;
+- (id)url;
+- (id)locationString;
+- (id)notes;
+- (id)dueDateComponents;
+- (id)location;
 - (id)suggestionsSecondTitle;
 - (id)suggestionAttributedSubtitle;
 - (id)suggestionSubtitle;

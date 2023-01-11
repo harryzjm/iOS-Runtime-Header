@@ -11,7 +11,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic, setter=_setAdditionalSelectionInsets:) struct UIEdgeInsets _additionalSelectionInsets; // @synthesize _additionalSelectionInsets=__additionalSelectionInsets;
+- (_Bool)_supportsMacIdiom;
+- (void)traitCollectionDidChange:(id)arg1;
+- (_Bool)_shouldAdjustToTraitCollection;
+- (id)_newLabelWithFrame:(struct CGRect)arg1;
 - (struct CGRect)_selectedIndicatorBounds;
+- (struct CGRect)contentRectForBounds:(struct CGRect)arg1;
 - (struct CGSize)_roundSize:(struct CGSize)arg1;
 
 @end

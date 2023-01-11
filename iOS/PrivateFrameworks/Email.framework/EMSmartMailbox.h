@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EMMailboxScope, NSPredicate;
+@class EMMailboxScope;
 
 @interface EMSmartMailbox
 {
-    NSPredicate *_predicate;
+    CDUnknownBlockType _predicateGenerator;
     EMMailboxScope *_mailboxScope;
     long long _smartMailboxType;
 }
 
++ (id)vipMailboxWithName:(id)arg1 additionalPredicate:(id)arg2;
 + (id)unifiedMailboxOfType:(long long)arg1 name:(id)arg2 additionalPredicate:(id)arg3;
 + (id)unifiedMailboxOfType:(long long)arg1 name:(id)arg2;
 + (id)includesMeMailboxWithMailboxScope:(id)arg1;
@@ -21,16 +22,25 @@
 + (id)notifyThreadsMailboxWithMailboxScope:(id)arg1;
 + (id)hasAttachmentsMailboxWithMailboxScope:(id)arg1;
 + (id)unreadMailboxWithMailboxScope:(id)arg1;
++ (id)grayMailboxWithMailboxScope:(id)arg1;
++ (id)greenMailboxWithMailboxScope:(id)arg1;
++ (id)yellowMailboxWithMailboxScope:(id)arg1;
++ (id)blueMailboxWithMailboxScope:(id)arg1;
++ (id)purpleMailboxWithMailboxScope:(id)arg1;
++ (id)redMailboxWithMailboxScope:(id)arg1;
++ (id)orangeMailboxWithMailboxScope:(id)arg1;
 + (id)flaggedMailboxWithMailboxScope:(id)arg1;
 + (id)vipMailboxWithMailboxScope:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long smartMailboxType; // @synthesize smartMailboxType=_smartMailboxType;
 @property(readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
-@property(readonly, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-- (void).cxx_destruct;
+- (_Bool)_shouldArchiveByDefault;
 - (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)makePredicate;
 - (_Bool)supportsSelectAll;
 - (_Bool)isSmartMailbox;
-- (id)initWithType:(long long)arg1 mailboxType:(long long)arg2 name:(id)arg3 predicate:(id)arg4 mailboxScope:(id)arg5;
+- (id)initWithType:(long long)arg1 mailboxType:(long long)arg2 name:(id)arg3 mailboxScope:(id)arg4 predicateGenerator:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithType:(int)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

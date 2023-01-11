@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityValue;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityHint;

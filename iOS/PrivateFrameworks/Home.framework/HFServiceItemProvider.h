@@ -17,14 +17,13 @@
     id <HFCharacteristicValueSource> _overrideValueSource;
 }
 
-+ (id)standardServices;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <HFCharacteristicValueSource> overrideValueSource; // @synthesize overrideValueSource=_overrideValueSource;
 @property(retain, nonatomic) NSArray *serviceTypes; // @synthesize serviceTypes=_serviceTypes;
 @property(retain, nonatomic) NSMutableSet *serviceItems; // @synthesize serviceItems=_serviceItems;
 @property(copy, nonatomic) CDUnknownBlockType sourceServiceGenerator; // @synthesize sourceServiceGenerator=_sourceServiceGenerator;
 @property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
 @property(retain, nonatomic) id <HFCharacteristicValueSource> valueSource;
 - (id)invalidationReasons;
 - (id)items;

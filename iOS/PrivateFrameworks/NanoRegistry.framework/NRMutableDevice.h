@@ -24,9 +24,8 @@
 + (id)diffsToSetStatusCode:(unsigned long long)arg1 andCompatibilityState:(unsigned short)arg2;
 + (id)diffsToPair:(_Bool)arg1 withDate:(id)arg2;
 + (id)diffsToActivate:(_Bool)arg1 withDate:(id)arg2;
-@property(retain, nonatomic) NSMutableDictionary *properties; // @synthesize properties=_properties;
-@property(retain, nonatomic) NRPBMutableDevice *protobuf; // @synthesize protobuf=_protobuf;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NRPBMutableDevice *protobuf; // @synthesize protobuf=_protobuf;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
@@ -49,6 +48,7 @@
 - (id)init;
 - (_Bool)supportsCapability:(id)arg1;
 @property(readonly, nonatomic) _Bool migratable;
+@property(readonly, nonatomic) _Bool isAltAccount;
 @property(readonly, nonatomic) _Bool isArchived;
 @property(readonly, nonatomic) _Bool isActive;
 @property(readonly, nonatomic) _Bool isPaired;

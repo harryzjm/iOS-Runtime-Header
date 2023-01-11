@@ -7,36 +7,31 @@
 #import <objc/NSObject.h>
 
 #import <HealthKit/HKFitnessMachineConnectionClientInterface-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKDevice, HKHealthStore, NSLock, NSString, NSUUID, _HKFitnessMachine;
+@class HKDevice, HKTaskServerProxyProvider, NSLock, NSString, NSUUID, _HKFitnessMachine;
 @protocol _HKFitnessMachineConnectionDelegate;
 
-@interface _HKFitnessMachineConnection : NSObject <HKFitnessMachineConnectionClientInterface>
+@interface _HKFitnessMachineConnection : NSObject <_HKXPCExportable, HKFitnessMachineConnectionClientInterface>
 {
-    HKHealthStore *_healthStore;
+    HKTaskServerProxyProvider *_proxyProvider;
     NSUUID *_currentSessionUUID;
     _HKFitnessMachine *_fitnessMachine;
     HKDevice *_deviceForFinalWorkout;
     NSLock *_lock;
-    NSUUID *_uuid;
     unsigned long long _machineState;
     unsigned long long _connectionState;
     id <_HKFitnessMachineConnectionDelegate> _delegate;
 }
 
-+ (_Bool)supportsSecureCoding;
++ (id)taskIdentifier;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <_HKFitnessMachineConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long connectionState; // @synthesize connectionState=_connectionState;
 @property(readonly, nonatomic) unsigned long long machineState; // @synthesize machineState=_machineState;
-@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
-- (void)_simulateDisconnect;
-- (void)_simulateAccept;
-- (void)_simulateTapWithFitnessMachineType:(unsigned long long)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (void)_connectionInterruptedWithError:(id)arg1;
 - (void)_clientQueue_deliverFailedWithError:(id)arg1;
+- (void)_simulateDisconnect;
 - (void)clientRemote_deliverFailedWithError:(id)arg1;
 - (void)clientRemote_deliverConnectionChangedToState:(unsigned long long)arg1 fromState:(unsigned long long)arg2 fitnessMachineSessionUUID:(id)arg3 error:(id)arg4;
 - (void)clientRemote_deliverMachineChangedToState:(unsigned long long)arg1 fromState:(unsigned long long)arg2 fitnessMachineSessionUUID:(id)arg3 date:(id)arg4;
@@ -52,8 +47,14 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)_initWithHealthStore:(id)arg1;
-- (void)permitDataTransferWithFitnessMachineSessionUUID:(id)arg1;
+- (void)_fetchProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)connectionInvalidated;
+- (void)connectionInterrupted;
+- (id)remoteInterface;
+- (id)exportedInterface;
+@property(readonly, nonatomic) NSUUID *uuid;
+- (id)_init;
+- (id)initWithHealthStore:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

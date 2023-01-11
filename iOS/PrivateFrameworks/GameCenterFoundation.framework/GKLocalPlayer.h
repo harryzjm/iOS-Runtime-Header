@@ -8,18 +8,20 @@
 #import <GameCenterFoundation/NSCoding-Protocol.h>
 #import <GameCenterFoundation/NSSecureCoding-Protocol.h>
 
-@class GKEventEmitter, GKInvite, NSInvocation, NSString, UIAlertView;
+@class GKEventEmitter, GKInvite, NSError, NSInvocation, NSString, UIAlertView;
 @protocol GKLocalPlayerListenerPrivate;
 
 @interface GKLocalPlayer <NSCoding, NSSecureCoding, GKSavedGameListener>
 {
     _Bool _authenticated;
+    _Bool _isShowingAuthenticationUI;
     _Bool _didAuthenticate;
     _Bool _validatingAccount;
     _Bool _enteringForeground;
     _Bool _newToGameCenter;
     _Bool _showingInGameUI;
     _Bool _shouldPreserveOnboardingUI;
+    NSError *_authenticationError;
     GKInvite *_acceptedInvite;
     CDUnknownBlockType _validateAccountCompletionHandler;
     UIAlertView *_loginAlertView;
@@ -29,6 +31,7 @@
     GKEventEmitter<GKLocalPlayerListenerPrivate> *_eventEmitter;
     double _authStartTimeStamp;
     unsigned long long _authenticationType;
+    unsigned long long _authenticationState;
 }
 
 + (void)authenticateWithUsername:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -46,6 +49,7 @@
 + (void)performSync:(CDUnknownBlockType)arg1;
 + (id)localPlayerAccessQueue;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) unsigned long long authenticationState; // @synthesize authenticationState=_authenticationState;
 @property(nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
 @property(nonatomic) double authStartTimeStamp; // @synthesize authStartTimeStamp=_authStartTimeStamp;
 @property(retain, nonatomic) GKEventEmitter<GKLocalPlayerListenerPrivate> *eventEmitter; // @synthesize eventEmitter=_eventEmitter;
@@ -59,6 +63,8 @@
 @property(retain, nonatomic) UIAlertView *loginAlertView; // @synthesize loginAlertView=_loginAlertView;
 @property(copy, nonatomic) CDUnknownBlockType validateAccountCompletionHandler; // @synthesize validateAccountCompletionHandler=_validateAccountCompletionHandler;
 @property(retain, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
+@property(nonatomic) NSError *authenticationError; // @synthesize authenticationError=_authenticationError;
+@property(nonatomic) _Bool isShowingAuthenticationUI; // @synthesize isShowingAuthenticationUI=_isShowingAuthenticationUI;
 @property(nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
 - (void)reportAuthenticationLoginCanceled;
 - (void)reportAuthenticatingWithAuthKitInvocation;
@@ -67,11 +73,13 @@
 - (void)reportAuthenticationFailedForPlayer;
 - (void)reportAuthenticationPlayerAuthenticated;
 - (void)reportAuthenticationStartForPlayer;
+- (_Bool)isWelcomeBannerTooLate;
 - (_Bool)shouldDisplayWelcomeBannerForPlayer:(id)arg1 lastAuthDate:(id)arg2 remoteUI:(_Bool)arg3 timeBetweenBanners:(double)arg4;
 - (void)acceptFriendRequestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)cancelFriendRequestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)createFriendRequestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)getPlayerIDFromFriendCode:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchItemsForIdentityVerificationSignature:(CDUnknownBlockType)arg1;
 - (void)generateIdentityVerificationSignatureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadDefaultLeaderboardCategoryIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadDefaultLeaderboardIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -98,10 +106,13 @@
 - (void)loadFriendsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadRecentPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadChallengableFriendsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadFriendPlayersWithFilter:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadFriendPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_loadFriendPlayersWithFilter:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_loadFriendPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)friends;
 - (void)updateFromLocalPlayer:(id)arg1;
+@property(readonly, nonatomic, getter=isPersonalizedCommunicationRestricted) _Bool personalizedCommunicationRestricted;
 @property(readonly, nonatomic, getter=isMultiplayerGamingRestricted) _Bool multiplayerGamingRestricted;
 - (id)displayNameWithOptions:(unsigned char)arg1;
 @property(nonatomic) _Bool shouldPreserveOnboardingUI; // @synthesize shouldPreserveOnboardingUI=_shouldPreserveOnboardingUI;
@@ -128,6 +139,7 @@
 @property(readonly, nonatomic, getter=isAuthenticating) _Bool authenticating; // @dynamic authenticating;
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic, getter=isDefaultNickname) _Bool defaultNickname; // @dynamic defaultNickname;
+@property(nonatomic, getter=isDefaultPrivacyVisibility) _Bool defaultPrivacyVisibility; // @dynamic defaultPrivacyVisibility;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *facebookUserID; // @dynamic facebookUserID;
 @property(readonly, nonatomic, getter=isFindable) _Bool findable; // @dynamic findable;

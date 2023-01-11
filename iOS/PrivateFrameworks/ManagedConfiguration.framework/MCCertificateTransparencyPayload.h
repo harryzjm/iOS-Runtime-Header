@@ -16,11 +16,11 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *domainRules; // @synthesize domainRules=_domainRules;
 @property(readonly, nonatomic) NSArray *hashDictionaries; // @synthesize hashDictionaries=_hashDictionaries;
-- (void).cxx_destruct;
 - (id)subtitle1Label;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 

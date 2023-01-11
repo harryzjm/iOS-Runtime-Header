@@ -21,10 +21,10 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
 + (id)autoupdatingCurrentCalendar;
-- (unsigned char)_diffComponents:(double)arg1:(double)arg2:(unsigned long long)arg3:(const char *)arg4:(struct __va_list_tag [1])arg5;
-- (unsigned char)_addComponents:(double *)arg1:(unsigned long long)arg2:(const char *)arg3:(struct __va_list_tag [1])arg4;
-- (unsigned char)_decomposeAbsoluteTime:(double)arg1:(const char *)arg2:(struct __va_list_tag [1])arg3;
-- (unsigned char)_composeAbsoluteTime:(double *)arg1:(const char *)arg2:(struct __va_list_tag [1])arg3;
+- (unsigned char)_diffComponents:(double)arg1:(double)arg2:(unsigned long long)arg3:(const char *)arg4:(char *)arg5;
+- (unsigned char)_addComponents:(double *)arg1:(unsigned long long)arg2:(const char *)arg3:(char *)arg4;
+- (unsigned char)_decomposeAbsoluteTime:(double)arg1:(const char *)arg2:(char *)arg3;
+- (unsigned char)_composeAbsoluteTime:(double *)arg1:(const char *)arg2:(char *)arg3;
 - (unsigned char)_rangeOfUnit:(unsigned long long)arg1 startTime:(double *)arg2 interval:(double *)arg3 forAT:(double)arg4;
 - (long long)_ordinalityOfUnit:(unsigned long long)arg1 inUnit:(unsigned long long)arg2 forAT:(double)arg3;
 - (CDStruct_912cb5d2)_rangeOfUnit:(unsigned long long)arg1 inUnit:(unsigned long long)arg2 forAT:(double)arg3;

@@ -7,11 +7,11 @@
 #import <CoreData/NSManagedObject.h>
 
 #import <VoiceMemos/RCMutableRecording-Protocol.h>
-#import <VoiceMemos/UIActivityItemSource-Protocol.h>
 
 @class AVAsset, CLLocation, CSSearchableItem, NSDate, NSString, NSURL;
+@protocol RCFolder;
 
-@interface RCSavedRecording : NSManagedObject <RCMutableRecording, UIActivityItemSource>
+@interface RCSavedRecording : NSManagedObject <RCMutableRecording>
 {
     AVAsset *_avAsset;
     _Bool _pathWasInvalid;
@@ -24,47 +24,40 @@
 + (id)propertiesAffectingEntityRevision;
 + (id)searchableItemIdentifierForSavedRecordingURI:(id)arg1;
 + (id)savedRecordingURIForSearchableItemIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long revisionID; // @synthesize revisionID;
 @property(readonly, nonatomic) _Bool hasPendingChangeAffectingEntityRevision; // @synthesize hasPendingChangeAffectingEntityRevision=_hasPendingChangeAffectingEntityRevision;
-- (void).cxx_destruct;
-- (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
+- (id)subjectForActivityType:(id)arg1;
+- (id)itemForActivityType:(id)arg1;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (void)_validatePath;
 @property(readonly, nonatomic) AVAsset *avAsset;
 @property(readonly, nonatomic) _Bool uploaded;
-@property(readonly, nonatomic) _Bool evicted;
+@property(nonatomic) _Bool deleted;
+@property(nonatomic) _Bool enhanced;
+@property(nonatomic) _Bool favorite;
+@property(nonatomic) _Bool musicMemo;
+@property(nonatomic) _Bool watchOS;
 @property(nonatomic) _Bool recordedOnWatch;
-- (void)setDownloading:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool downloading;
-- (void)setEditing:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool editing;
-- (void)setManuallyRenamed:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool manuallyRenamed;
-- (void)setPlayable:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool playable;
-- (void)setEvictionDate:(id)arg1;
-@property(readonly, copy, nonatomic) NSDate *evictionDate;
+@property(nonatomic) _Bool downloading;
+@property(nonatomic) _Bool manuallyRenamed;
+@property(nonatomic) _Bool playable;
+@property(copy, nonatomic) NSDate *evictionDate;
 - (id)detailLabel;
 - (id)_labelAllowingEmptyString:(_Bool)arg1;
 @property(readonly, copy, nonatomic) NSURL *URIRepresentation;
 @property(readonly, copy, nonatomic) NSURL *url;
-- (void)setPath:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *path;
+@property(copy, nonatomic) NSString *path; // @dynamic path;
 @property(nonatomic) long long recordingID;
-- (void)setITunesPersistentID:(long long)arg1;
-@property(readonly, nonatomic) long long iTunesPersistentID;
-- (void)setCustomLabel:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *customLabel;
+@property(nonatomic) long long iTunesPersistentID;
+@property(copy, nonatomic) NSString *customLabel;
 @property(readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
 - (id)label;
-@property(readonly, copy, nonatomic) NSString *title;
-- (void)setTitle:(id)arg1;
+@property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(copy, nonatomic) NSString *name;
 - (void)setLabelPreset:(long long)arg1;
 - (long long)labelPreset;
-- (void)setLocation:(id)arg1;
-@property(readonly, copy, nonatomic) CLLocation *location;
+@property(copy, nonatomic) CLLocation *location;
 - (void)setDuration:(double)arg1;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) _Bool isContentBeingModified;
@@ -78,11 +71,12 @@
 @property(readonly, copy, nonatomic) NSDate *date; // @dynamic date;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <RCFolder> folder;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) _Bool pendingRestore;
+@property(nonatomic) _Bool pendingRestore; // @dynamic pendingRestore;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool synced;
-@property(readonly, copy, nonatomic) NSString *uniqueID;
+@property(nonatomic) _Bool synced; // @dynamic synced;
+@property(copy, nonatomic) NSString *uniqueID; // @dynamic uniqueID;
 
 @end
 

@@ -6,23 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProviding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
 
 @class NSString;
 
-@interface SNNullResult : NSObject <SNTimeRangeProvidingWritable, SNTimeRangeProviding>
+@interface SNNullResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNTimeRangeProviding>
 {
-    CDStruct_e83c9415 timeRange;
+    CDStruct_e83c9415 _timeRange;
 }
 
-- (void)setTimeRange:(CDStruct_e83c9415)arg1;
-@property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
++ (_Bool)supportsSecureCoding;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToNullResult:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

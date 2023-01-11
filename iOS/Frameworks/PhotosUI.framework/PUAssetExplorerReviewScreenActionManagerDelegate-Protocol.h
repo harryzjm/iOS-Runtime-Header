@@ -13,6 +13,9 @@
 @protocol PUDisplayAsset, PUDisplayAssetCollection;
 
 @protocol PUAssetExplorerReviewScreenActionManagerDelegate <NSObject, PUPhotoEditViewControllerSessionDelegate, PUPhotoMarkupViewControllerObserver, PUFunEffectsViewControllerObserver>
+- (void)assetExplorerReviewScreenActionManagerDidPressFileSize:(PUAssetExplorerReviewScreenActionManager *)arg1;
+- (void)assetExplorerReviewScreenActionManagerDidPressDeselectAll:(PUAssetExplorerReviewScreenActionManager *)arg1;
+- (void)assetExplorerReviewScreenActionManagerDidPressSelectAll:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSend:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManager:(PUAssetExplorerReviewScreenActionManager *)arg1 didToggleLivePhoto:(id <PUDisplayAsset>)arg2;
 - (void)assetExplorerReviewScreenActionManagerDidPressRetake:(PUAssetExplorerReviewScreenActionManager *)arg1;

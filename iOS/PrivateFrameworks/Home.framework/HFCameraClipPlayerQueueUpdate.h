@@ -12,7 +12,6 @@
 {
     _Bool _hasQueueChanges;
     _Bool _queueChangesRequireRebuild;
-    NSArray *_clips;
     HFCameraClipPosition *_targetPosition;
     NSArray *_initialQueuedItems;
     unsigned long long _queueLimit;
@@ -20,8 +19,11 @@
     HMCameraClipManager *_clipManager;
     NSDictionary *_initialQueuedItemsByClipID;
     HFUniqueArrayDiff *_queueDiff;
+    NSArray *_clips;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *clips; // @synthesize clips=_clips;
 @property(retain, nonatomic) HFUniqueArrayDiff *queueDiff; // @synthesize queueDiff=_queueDiff;
 @property(readonly, nonatomic) NSDictionary *initialQueuedItemsByClipID; // @synthesize initialQueuedItemsByClipID=_initialQueuedItemsByClipID;
 @property(readonly, nonatomic) HMCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
@@ -31,8 +33,6 @@
 @property(readonly, nonatomic) unsigned long long queueLimit; // @synthesize queueLimit=_queueLimit;
 @property(readonly, nonatomic) NSArray *initialQueuedItems; // @synthesize initialQueuedItems=_initialQueuedItems;
 @property(readonly, nonatomic) HFCameraClipPosition *targetPosition; // @synthesize targetPosition=_targetPosition;
-@property(readonly, nonatomic) NSArray *clips; // @synthesize clips=_clips;
-- (void).cxx_destruct;
 - (id)_buildNewClipQueueForPosition:(id)arg1;
 - (void)_computeQueueDiff;
 - (void)performUpdatesOnQueue:(id)arg1;

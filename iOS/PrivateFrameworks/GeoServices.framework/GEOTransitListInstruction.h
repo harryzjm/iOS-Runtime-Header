@@ -14,7 +14,6 @@
 @interface GEOTransitListInstruction : PBCodable <GEOComposedRouteStepTransitInstructionMerging, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_commandFormatteds;
     NSMutableArray *_detailFormatteds;
@@ -22,6 +21,9 @@
     NSMutableArray *_noticeFormatteds;
     NSMutableArray *_priceFormatteds;
     GEOTransitListTimeInstruction *_timeInstructions;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_commandFormatteds:1;
@@ -30,13 +32,7 @@
         unsigned int read_noticeFormatteds:1;
         unsigned int read_priceFormatteds:1;
         unsigned int read_timeInstructions:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_commandFormatteds:1;
-        unsigned int wrote_detailFormatteds:1;
-        unsigned int wrote_expandableListFormatted:1;
-        unsigned int wrote_noticeFormatteds:1;
-        unsigned int wrote_priceFormatteds:1;
-        unsigned int wrote_timeInstructions:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,42 +52,37 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) GEOTransitListTimeInstruction *timeInstructions;
 @property(readonly, nonatomic) _Bool hasTimeInstructions;
-- (void)_readTimeInstructions;
 @property(retain, nonatomic) GEOFormattedString *expandableListFormatted;
 @property(readonly, nonatomic) _Bool hasExpandableListFormatted;
-- (void)_readExpandableListFormatted;
 - (id)priceFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)priceFormattedsCount;
-- (void)_addNoFlagsPriceFormatted:(id)arg1;
 - (void)addPriceFormatted:(id)arg1;
 - (void)clearPriceFormatteds;
 @property(retain, nonatomic) NSMutableArray *priceFormatteds;
-- (void)_readPriceFormatteds;
 - (id)detailFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)detailFormattedsCount;
-- (void)_addNoFlagsDetailFormatted:(id)arg1;
 - (void)addDetailFormatted:(id)arg1;
 - (void)clearDetailFormatteds;
 @property(retain, nonatomic) NSMutableArray *detailFormatteds;
-- (void)_readDetailFormatteds;
 - (id)commandFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)commandFormattedsCount;
-- (void)_addNoFlagsCommandFormatted:(id)arg1;
 - (void)addCommandFormatted:(id)arg1;
 - (void)clearCommandFormatteds;
 @property(retain, nonatomic) NSMutableArray *commandFormatteds;
-- (void)_readCommandFormatteds;
 - (id)noticeFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)noticeFormattedsCount;
-- (void)_addNoFlagsNoticeFormatted:(id)arg1;
 - (void)addNoticeFormatted:(id)arg1;
 - (void)clearNoticeFormatteds;
 @property(retain, nonatomic) NSMutableArray *noticeFormatteds;
-- (void)_readNoticeFormatteds;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSArray *serverFormattedPrices;
 @property(readonly, nonatomic) NSArray *serverFormattedNotices;
 @property(readonly, nonatomic) NSArray *serverFormattedDetails;

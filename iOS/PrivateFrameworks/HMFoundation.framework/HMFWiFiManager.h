@@ -4,33 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFWiFiManagerDataSourceDelegate-Protocol.h>
 
-@class HMFMACAddress, HMFUnfairLock, NSObject, NSString;
+@class HMFMACAddress, NSHashTable, NSObject, NSString;
 @protocol HMFWiFiManagerDataSource, OS_dispatch_queue;
 
-@interface HMFWiFiManager <HMFWiFiManagerDataSourceDelegate>
+@interface HMFWiFiManager <HMFLogging, HMFWiFiManagerDataSourceDelegate>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     _Bool _shouldAssertWoW;
     NSString *_currentNetworkSSID;
     HMFMACAddress *_MACAddress;
     NSObject<OS_dispatch_queue> *_workQueue;
     id <HMFWiFiManagerDataSource> _dataSource;
+    NSHashTable *_activeAssertions;
 }
 
++ (id)logCategory;
 + (id)sharedManager;
-@property(nonatomic) _Bool shouldAssertWoW; // @synthesize shouldAssertWoW=_shouldAssertWoW;
-@property(readonly, nonatomic) id <HMFWiFiManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly, copy) HMFMACAddress *MACAddress; // @synthesize MACAddress=_MACAddress;
 - (void).cxx_destruct;
+@property(readonly, copy) HMFMACAddress *MACAddress; // @synthesize MACAddress=_MACAddress;
 - (void)currentNetworkDidChangeForDataSource:(id)arg1;
 - (void)dataSource:(id)arg1 didChangeLinkAvailability:(_Bool)arg2;
 - (void)dataSource:(id)arg1 didChangeWoWState:(_Bool)arg2;
 - (void)releaseWoWAssertion;
 - (void)takeWoWAssertion;
-@property(copy, nonatomic) NSString *currentNetworkSSID; // @synthesize currentNetworkSSID=_currentNetworkSSID;
+- (void)endActiveAssertion:(id)arg1;
+- (id)beginActiveAssertionWithOptions:(unsigned long long)arg1 reason:(id)arg2;
+@property(readonly, getter=isActive) _Bool active;
+@property(readonly, copy) NSString *currentNetworkSSID;
 - (id)initWithWorkQueue:(id)arg1 dataSource:(id)arg2;
 - (id)init;
 

@@ -9,7 +9,7 @@
 #import <SpringBoard/SBHardwareButtonGestureParametersObserver-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BKSButtonHapticsDefinition, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, SBHardwareButtonGestureParameters, SBHomeHardwareButtonActions, SBHomeHardwareButtonGestureRecognizerConfiguration, SBNotificationBannerDestination, UIGestureRecognizer;
+@class BKSButtonHapticsDefinition, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, SBHardwareButtonGestureParameters, SBHomeHardwareButtonActions, SBHomeHardwareButtonGestureRecognizerConfiguration, UIGestureRecognizer;
 @protocol BSInvalidatable;
 
 @interface SBHomeHardwareButton : NSObject <UIGestureRecognizerDelegate, SBHardwareButtonGestureParametersObserver>
@@ -18,7 +18,6 @@
     NSMutableSet *_hintSuppressionAssertions;
     NSMutableOrderedSet *_longPressDurationAssertions;
     _Bool _longPressDidOccur;
-    SBNotificationBannerDestination *_bannerDestination;
     SBHomeHardwareButtonActions *_buttonActions;
     SBHardwareButtonGestureParameters *_buttonGestureParameters;
     SBHomeHardwareButtonGestureRecognizerConfiguration *_gestureRecognizerConfiguration;
@@ -30,6 +29,7 @@
     BKSButtonHapticsDefinition *_buttonDefinition;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) BKSButtonHapticsDefinition *buttonDefinition; // @synthesize buttonDefinition=_buttonDefinition;
 @property(retain, nonatomic) NSMutableDictionary *emulatedPerSenderDownCount; // @synthesize emulatedPerSenderDownCount=_emulatedPerSenderDownCount;
 @property(nonatomic) _Bool longPressDidOccur; // @synthesize longPressDidOccur=_longPressDidOccur;
@@ -40,8 +40,6 @@
 @property(retain, nonatomic) SBHomeHardwareButtonGestureRecognizerConfiguration *gestureRecognizerConfiguration; // @synthesize gestureRecognizerConfiguration=_gestureRecognizerConfiguration;
 @property(retain, nonatomic) SBHardwareButtonGestureParameters *buttonGestureParameters; // @synthesize buttonGestureParameters=_buttonGestureParameters;
 @property(retain, nonatomic) SBHomeHardwareButtonActions *buttonActions; // @synthesize buttonActions=_buttonActions;
-@property(nonatomic) __weak SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_bannerDestination;
-- (void).cxx_destruct;
 - (_Bool)_isMenuDoublePressAllowed:(id *)arg1;
 - (_Bool)_isMenuDoublePressDisabled;
 - (void)_cancelGestureRecognizer:(id)arg1;

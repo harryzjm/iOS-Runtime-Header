@@ -16,6 +16,9 @@
 - (void)finishSessionGracefully;
 - (void)flushMessagesWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)sendMessageWithDictionary:(NSDictionary *)arg1 reply:(void (^)(NSString *))arg2;
+- (void)removeEphemeralSession:(NSString *)arg1 withHandler:(void (^)(_Bool))arg2;
+- (void)setEphemeralSession:(NSString *)arg1 enabled:(_Bool)arg2;
+- (void)getSessionId:(void (^)(NSString *))arg1;
 - (void)fetchDisplayURL:(void (^)(NSString *))arg1;
 - (void)fetchStatesWithUserInfo:(NSDictionary *)arg1 completionHandler:(void (^)(NSArray *, NSArray *, NSArray *))arg2;
 - (void)startConfigWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSArray *))arg1;

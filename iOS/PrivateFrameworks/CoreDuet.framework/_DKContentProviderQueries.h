@@ -13,9 +13,7 @@
     NSMapTable *_dispatchTable;
 }
 
-@property(retain, nonatomic) NSMapTable *dispatchTable; // @synthesize dispatchTable=_dispatchTable;
 - (void).cxx_destruct;
-- (void)enumerateWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

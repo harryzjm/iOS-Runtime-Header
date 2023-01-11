@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLGeocoder, LPMapCollectionMetadata, LPMapMetadata, _MKURLParser;
+@class CLGeocoder, LPMapCollectionMetadata, LPMapCollectionPublisherMetadata, LPMapMetadata, MKPlaceCuratedCollectionRefiner, MKPlacePublisherRefiner, _MKURLParser;
 
 __attribute__((visibility("hidden")))
 @interface LPAppleMapsMetadataProviderSpecialization
@@ -14,12 +14,17 @@ __attribute__((visibility("hidden")))
     _MKURLParser *_parser;
     LPMapMetadata *_mapMetadata;
     LPMapCollectionMetadata *_collectionMetadata;
+    LPMapCollectionPublisherMetadata *_publisherMetadata;
+    MKPlaceCuratedCollectionRefiner *_curatedCollectionRefiner;
+    MKPlacePublisherRefiner *_publisherRefiner;
 }
 
 + (id)specializedMetadataProviderForURLWithContext:(id)arg1;
 + (unsigned long long)specialization;
 - (void).cxx_destruct;
 - (void)complete;
+- (void)completeWithPublisher;
+- (void)completeWithCuratedCollection;
 - (void)completeWithCollection;
 - (void)completeWithDirections;
 - (void)completeWithPlacemark:(id)arg1;

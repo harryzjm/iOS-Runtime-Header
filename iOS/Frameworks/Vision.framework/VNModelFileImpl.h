@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     const struct mapped_model_file *m_impl;
 }
 
+@property(readonly, nonatomic) struct __sFILE *ptrFile;
 - (void)advise:(long long)arg1;
 @property(readonly, nonatomic) unsigned long long length;
 @property(readonly, nonatomic) const void *baseAddress;

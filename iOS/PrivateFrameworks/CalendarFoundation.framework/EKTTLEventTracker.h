@@ -10,20 +10,12 @@
 {
 }
 
-+ (id)_travelStateMapping;
-+ (id)_etaTypeMapping;
-+ (id)_transportTypeMapping;
-+ (id)_alertTypeMapping;
-+ (id)_boolEnumMapping;
-+ (id)directionsEngagedSharedCalendarSupportingTracker;
-+ (id)directionsEngagedEventTracker;
-+ (id)isTTLEnabledTracker;
-+ (id)eventFiredTTLAlertSharedCalendarSupportingTracker;
-+ (id)eventFiredTTLAlertTracker;
-+ (id)ttlCandidateEventTracker;
-+ (id)significantEventTracker;
-+ (void)trackDirectionsEngagedForTTLAlertWithAlertType:(unsigned long long)arg1 transportType:(unsigned long long)arg2 etaType:(unsigned long long)arg3 hasSuggestedLocation:(_Bool)arg4 isOnSharedCalendar:(_Bool)arg5;
-+ (void)trackIsTTLEnabled:(_Bool)arg1;
++ (id)_valueForTravelState:(unsigned long long)arg1;
++ (id)_valueForETAType:(unsigned long long)arg1;
++ (id)_valueForTransportType:(unsigned long long)arg1;
++ (id)_valueForAlertType:(unsigned long long)arg1;
++ (void)trackEmailEngagedForTTLAlertWithTransportType:(unsigned long long)arg1 etaType:(unsigned long long)arg2 hasSuggestedLocation:(_Bool)arg3 isOnSharedCalendar:(_Bool)arg4;
++ (void)trackDirectionsEngagedForTTLAlertWithTransportType:(unsigned long long)arg1 etaType:(unsigned long long)arg2 hasSuggestedLocation:(_Bool)arg3 isOnSharedCalendar:(_Bool)arg4;
 + (void)trackEventFiredTTLAlertWithAlertType:(unsigned long long)arg1 transportType:(unsigned long long)arg2 etaType:(unsigned long long)arg3 travelState:(unsigned long long)arg4 hasSuggestedLocation:(_Bool)arg5 isOnSharedCalendar:(_Bool)arg6;
 + (void)trackTTLCandidateEventHasSuggestedLocation:(_Bool)arg1 isOnSharedCalendar:(_Bool)arg2;
 

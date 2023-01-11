@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagProtocol-Protocol.h>
 
-@class NSDate, NSString;
+@class AMSProcessInfo, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSContractBagShim : NSObject <AMSBagProtocol>
@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_callSelector:(SEL)arg1 onBagContract:(id)arg2;
-@property(retain, nonatomic) NSObject *bagContract; // @synthesize bagContract=_bagContract;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject *bagContract; // @synthesize bagContract=_bagContract;
 - (SEL)_selectorForBagKey:(id)arg1;
 - (id)_bagValueForBagKey:(id)arg1 bagValueType:(unsigned long long)arg2;
 - (id)dictionaryForKey:(id)arg1;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property(readonly) Class superclass;
 
 @end

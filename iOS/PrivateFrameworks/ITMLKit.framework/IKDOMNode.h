@@ -22,25 +22,28 @@
     NSMutableDictionary *_eventListenersMap;
     NSHashTable *_domObservers;
     long long _ITMLID;
+    IKDOMNodeData *_jsNodeData;
     JSManagedValue *_managedSelf;
     NSString *_identifier;
 }
 
 + (id)_eventListenerMapKeyForType:(id)arg1 useCapture:(_Bool)arg2;
-+ (void)handleNodeWillRelease:(struct _xmlNode *)arg1;
 + (void)handleNodeParentDidChange:(struct _xmlNode *)arg1;
 + (long long)ITMLIDForITMLIDString:(id)arg1;
 + (id)ITMLIDStringforITMLID:(unsigned long long)arg1;
++ (id)nodeForNodePtr:(struct _xmlNode *)arg1;
 + (id)nodeWithAppContext:(id)arg1 nodePtr:(struct _xmlNode *)arg2;
++ (void)load;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, retain, nonatomic) JSManagedValue *managedSelf; // @synthesize managedSelf=_managedSelf;
+@property(readonly, retain, nonatomic) IKDOMNodeData *jsNodeData; // @synthesize jsNodeData=_jsNodeData;
 @property(nonatomic) long long ITMLID; // @synthesize ITMLID=_ITMLID;
 @property(retain, nonatomic) NSHashTable *domObservers; // @synthesize domObservers=_domObservers;
 @property(retain, nonatomic) NSMutableDictionary *eventListenersMap; // @synthesize eventListenersMap=_eventListenersMap;
 @property(retain, nonatomic) JSManagedValue *managedChildNodeList; // @synthesize managedChildNodeList=_managedChildNodeList;
 @property(retain, nonatomic) JSManagedValue *managedParent; // @synthesize managedParent=_managedParent;
 @property(retain, nonatomic) JSManagedValue *managedOwnerDocument; // @synthesize managedOwnerDocument=_managedOwnerDocument;
-- (void).cxx_destruct;
 - (_Bool)_enumerateNodesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_markSubtreeUpdatesForAncestorsOfNode:(id)arg1;
 - (void)_childrenUpdatedWithUpdatedChildNodes:(id)arg1 withDocument:(id)arg2;
@@ -66,7 +69,6 @@
 - (void)updatedAndMark:(_Bool)arg1 notify:(_Bool)arg2;
 - (void)enumerateEventListernersForType:(id)arg1 xmlAttribute:(id)arg2 phase:(long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateEventListenersUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, retain, nonatomic) IKDOMNodeData *jsNodeData;
 - (struct _xmlNode *)nodePtr;
 - (_Bool)dispatchEvent:(id)arg1;
 - (void)removeEventListener:(id)arg1:(id)arg2:(_Bool)arg3;

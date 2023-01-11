@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol MTLCommandQueue, MTLDevice, OS_dispatch_queue, OS_dispatch_semaphore, TXRBufferAllocator;
+@protocol MTLCommandQueue, MTLDevice, MTLDeviceSPI, OS_dispatch_queue, OS_dispatch_semaphore, TXRBufferAllocator;
 
 @interface MTKTextureLoader : NSObject
 {
@@ -16,10 +16,9 @@
     NSObject<OS_dispatch_semaphore> *_loadSemaphore;
     id <MTLCommandQueue> _blitQueue;
     id <TXRBufferAllocator> _bufferAllocator;
-    id <MTLDevice> _device;
+    id <MTLDeviceSPI> _device;
 }
 
-@property(readonly, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
 - (id)newTextureWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3 bundle:(id)arg4 options:(id)arg5 error:(id *)arg6;
 - (id)newTextureWithName:(id)arg1 scaleFactor:(double)arg2 bundle:(id)arg3 options:(id)arg4 error:(id *)arg5;
 - (void)newTextureWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3 bundle:(id)arg4 options:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
@@ -48,6 +47,7 @@
 - (void)newTexturesWithContentsOfURLs:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)newTextureWithContentsOfURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+@property(readonly, nonatomic) id <MTLDevice> device;
 - (id)initWithDevice:(id)arg1;
 
 @end

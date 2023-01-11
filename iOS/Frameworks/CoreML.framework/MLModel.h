@@ -8,33 +8,41 @@
 
 #import <CoreML/MLModeling-Protocol.h>
 
-@class MLModelConfiguration, MLModelDescription, MLModelInterface, MLModelMetadata;
+@class MLFairPlayDecryptSession, MLModelConfiguration, MLModelDescription, MLModelInterface, MLModelMetadata;
 
 @interface MLModel : NSObject <MLModeling>
 {
     MLModelInterface *_interface;
     MLModelMetadata *_metadata;
+    MLFairPlayDecryptSession *_decryptSession;
     MLModelDescription *_modelDescription;
     MLModelConfiguration *_configuration;
 }
 
++ (void)loadContentsOfURL:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)modelWithContentsOfURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 + (id)modelWithContentsOfURL:(id)arg1 error:(id *)arg2;
 + (_Bool)serializeInterfaceAndMetadata:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 + (id)predictionsFromSubbatchingBatch:(id)arg1 maxSubbatchLength:(long long)arg2 predictionBlock:(CDUnknownBlockType)arg3 options:(id)arg4 error:(id *)arg5;
 + (id)predictionsFromLoopingOverBatch:(id)arg1 model:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)compileModelAtURL:(id)arg1 error:(id *)arg2;
++ (id)_compileModelAtURL:(id)arg1 error:(id *)arg2;
++ (id)compileModelWithoutAutoreleaseAtURL:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) MLModelConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) MLModelDescription *modelDescription; // @synthesize modelDescription=_modelDescription;
+@property(retain, nonatomic) MLFairPlayDecryptSession *decryptSession; // @synthesize decryptSession=_decryptSession;
 @property(readonly) MLModelMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly) MLModelInterface *interface; // @synthesize interface=_interface;
-- (void).cxx_destruct;
 - (id)parameterValueForKey:(id)arg1 error:(id *)arg2;
 - (id)predictionsFromBatch:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)predictionsFromBatch:(id)arg1 error:(id *)arg2;
 - (id)description;
 - (id)predictionFromFeatures:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)modelPath;
+- (void)setModelPath:(id)arg1 modelName:(id)arg2;
+- (id)executionSchedule;
 - (id)initWithName:(id)arg1 inputDescription:(id)arg2 outputDescription:(id)arg3 orderedInputFeatureNames:(id)arg4 orderedOutputFeatureNames:(id)arg5 configuration:(id)arg6;
 - (id)initWithInterface:(id)arg1 metadata:(id)arg2 configuration:(id)arg3;
 - (id)initWithConfiguration:(id)arg1;

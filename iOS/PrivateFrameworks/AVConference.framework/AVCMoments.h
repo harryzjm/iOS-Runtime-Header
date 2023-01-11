@@ -31,6 +31,7 @@
 - (_Bool)avcMomentsRequestDidEndRequest:(id)arg1 withError:(id *)arg2;
 - (_Bool)avcMomentsRequestDidStartRequest:(id)arg1 withError:(id *)arg2;
 - (id)newDictionaryForRequest:(id)arg1;
+- (id)newRequestWithMediaType:(unsigned char)arg1 mode:(unsigned char)arg2 requesteeID:(id)arg3;
 - (id)newRequestWithMediaType:(unsigned char)arg1 requesteeID:(id)arg2;
 @property(readonly, nonatomic) id <AVCMomentsDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didFinishRequestHelperWithResult:(id)arg1;

@@ -25,14 +25,14 @@
 
 - (void).cxx_destruct;
 - (void)unbindForDB:(id)arg1 returnedRows:(unsigned long long)arg2;
-- (void)bindArguments:(struct __va_list_tag [1])arg1 db:(id)arg2;
+- (void)bindArguments:(char *)arg1 db:(id)arg2;
 - (id)description;
 - (void)dealloc;
 - (void)invalidate;
-- (id)initWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2 db:(id)arg3 cache:(struct cache_s *)arg4;
+- (id)initWithFormat:(id)arg1 arguments:(char *)arg2 db:(id)arg3 cache:(struct cache_s *)arg4;
 - (id)initWithStatement:(id)arg1 forDB:(id)arg2;
 - (_Bool)_prepare:(const char *)arg1 withDB:(id)arg2;
-- (id)translate:(id)arg1 hasInjections:(_Bool *)arg2 arguments:(struct __va_list_tag [1])arg3;
+- (id)translate:(id)arg1 hasInjections:(_Bool *)arg2 arguments:(char *)arg3;
 - (void)keepBindAlive:(id)arg1;
 @property(readonly, nonatomic) _Bool isTraced;
 - (void)bindFromArray:(id)arg1 db:(id)arg2;

@@ -19,6 +19,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *communicationEngineUrl; // @synthesize communicationEngineUrl=_communicationEngineUrl;
 @property(retain, nonatomic) NSString *userWebSocketUrl; // @synthesize userWebSocketUrl=_userWebSocketUrl;
 @property(retain, nonatomic) NSString *messageStoreUrl; // @synthesize messageStoreUrl=_messageStoreUrl;
@@ -26,7 +27,6 @@
 @property(retain, nonatomic) NSString *userStoreUrl; // @synthesize userStoreUrl=_userStoreUrl;
 @property(retain, nonatomic) NSString *webApiUrlPrefix; // @synthesize webApiUrlPrefix=_webApiUrlPrefix;
 @property(retain, nonatomic) NSString *noteStoreUrl; // @synthesize noteStoreUrl=_noteStoreUrl;
-- (void).cxx_destruct;
 
 @end
 

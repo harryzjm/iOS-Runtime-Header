@@ -6,26 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDSettingGroupOwnerProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDSettingGroup-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString, NSUUID;
 
-@interface HMDSettingGroup : NSObject <HMDSettingGroupOwnerProtocol>
+@interface HMDSettingGroup : NSObject <HMDSettingGroup>
 {
     NSUUID *_identifier;
     NSUUID *_parentIdentifier;
     NSString *_name;
+    NSString *_keyPath;
     NSMutableSet *_settingsInternal;
     NSMutableSet *_groupsInternal;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) NSMutableSet *groupsInternal; // @synthesize groupsInternal=_groupsInternal;
 @property(retain) NSMutableSet *settingsInternal; // @synthesize settingsInternal=_settingsInternal;
-- (id)name;
-- (id)parentIdentifier;
-- (id)identifier;
-- (void).cxx_destruct;
+@property(copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
+@property(readonly, copy) NSString *name; // @synthesize name=_name;
+@property(readonly, copy) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
+@property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)addGroup:(id)arg1;

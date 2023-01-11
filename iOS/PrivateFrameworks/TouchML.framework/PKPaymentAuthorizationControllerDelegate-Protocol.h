@@ -6,18 +6,20 @@
 
 #import <TouchML/NSObject-Protocol.h>
 
-@class PKContact, PKPayment, PKPaymentAuthorizationController, PKPaymentMethod, PKShippingMethod;
+@class PKContact, PKPayment, PKPaymentAuthorizationController, PKPaymentMethod, PKShippingMethod, UIWindow;
 
 @protocol PKPaymentAuthorizationControllerDelegate <NSObject>
 - (void)paymentAuthorizationControllerDidFinish:(PKPaymentAuthorizationController *)arg1;
 
 @optional
+- (UIWindow *)presentationWindowForPaymentAuthorizationController:(PKPaymentAuthorizationController *)arg1;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didSelectPaymentMethod:(PKPaymentMethod *)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didSelectShippingContact:(PKContact *)arg2 completion:(void (^)(long long, NSArray *, NSArray *))arg3;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didSelectShippingMethod:(PKShippingMethod *)arg2 completion:(void (^)(long long, NSArray *))arg3;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didSelectPaymentMethod:(PKPaymentMethod *)arg2 handler:(void (^)(PKPaymentRequestPaymentMethodUpdate *))arg3;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didSelectShippingContact:(PKContact *)arg2 handler:(void (^)(PKPaymentRequestShippingContactUpdate *))arg3;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didSelectShippingMethod:(PKShippingMethod *)arg2 handler:(void (^)(PKPaymentRequestShippingMethodUpdate *))arg3;
+- (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didRequestMerchantSessionUpdate:(void (^)(PKPaymentRequestMerchantSessionUpdate *))arg2;
 - (void)paymentAuthorizationControllerWillAuthorizePayment:(PKPaymentAuthorizationController *)arg1;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didAuthorizePayment:(PKPayment *)arg2 completion:(void (^)(long long))arg3;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didAuthorizePayment:(PKPayment *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;

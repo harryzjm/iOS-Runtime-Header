@@ -28,19 +28,23 @@
     struct CGSize _maxVisibleContentSize;
     _Bool _shouldBlurContent;
     _Bool _editingIcons;
+    _Bool _shouldIncludeScrollView;
     id <WGWidgetListViewControllerDelegate> _delegate;
     UIControl *_editButton;
     NSArray *_previouslyVisibleWidgetIDs;
     NSLayoutConstraint *_stackViewBottomConstraint;
+    NSMutableDictionary *_resizeContexts;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *resizeContexts; // @synthesize resizeContexts=_resizeContexts;
 @property(readonly, nonatomic) NSLayoutConstraint *stackViewBottomConstraint; // @synthesize stackViewBottomConstraint=_stackViewBottomConstraint;
 @property(retain, nonatomic, getter=_previouslyVisibleWidgetIDs, setter=_setPreviouslyVisibleWidgetIDs:) NSArray *previouslyVisibleWidgetIDs; // @synthesize previouslyVisibleWidgetIDs=_previouslyVisibleWidgetIDs;
+@property(nonatomic) _Bool shouldIncludeScrollView; // @synthesize shouldIncludeScrollView=_shouldIncludeScrollView;
 @property(nonatomic, getter=isEditingIcons) _Bool editingIcons; // @synthesize editingIcons=_editingIcons;
 @property(retain, nonatomic) UIControl *editButton; // @synthesize editButton=_editButton;
 @property(nonatomic) _Bool shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
 @property(nonatomic) __weak id <WGWidgetListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)isWidgetExtensionVisible:(id)arg1;
 - (id)widgetListItemViewController:(id)arg1 widgetHostWithIdentifier:(id)arg2;
 - (struct CGRect)visibleFrameForWidget:(id)arg1;
@@ -72,6 +76,8 @@
 - (void)_presentEditViewController;
 - (id)_wrapperViewForWidgetPlatterView:(id)arg1;
 - (void)_updateWidgetViewStateWithPreviouslyVisibleWidgetIdentifiers:(id)arg1;
+- (void)updatePreviouslyVisibleWidgetIDs;
+- (void)updateWidgetViewState;
 - (id)_widgetIdentifiersForPlatterViewsVisibleInBounds;
 - (void)_invokeBlockWithPlatterViewsVisibleInBounds:(CDUnknownBlockType)arg1;
 - (void)_invokeBlockWithPlatterViewsVisibleInRect:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
@@ -79,6 +85,7 @@
 - (void)_invokeBlock:(CDUnknownBlockType)arg1 withPlatterViewsPassingTest:(CDUnknownBlockType)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)resizeWidgetWrapperView:(id)arg1 toSize:(struct CGSize)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_identifierForCell:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -89,6 +96,8 @@
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidLoad;
 - (void)_adjustContentOffsetToInsideContent:(_Bool)arg1;
+- (void)_enableTouchesOnAllWidgets;
+- (void)_disableTouchesOnAllWidgets;
 - (void)_invalidateAllCancelTouchesAssertions;
 - (void)_cancelTouchesForWidget:(id)arg1;
 - (void)_cancelTouchesForHitWidgetIfNecessaryAndDisableTouchesOnAllWidgets;
@@ -105,6 +114,10 @@
 - (id)_newCaptureOnlyMaterialView;
 - (void)_pruneAlternateCaptureOnlyMaterialViews;
 - (CDUnknownBlockType)_insert:(_Bool)arg1 listItem:(id)arg2 withOrderedIdentifiers:(id)arg3 animated:(_Bool)arg4;
+- (void)_stackViewArrangedSubviewsTransformPresentationValueChanged;
+- (void)_resizeCell:(id)arg1;
+- (id)_animatablePropertiesForStackViewUpdate;
+- (void)_createPropertiesForStackViewUpdate;
 - (void)_didUpdateStackViewArrangedSubviews;
 - (CDUnknownBlockType)_beginInsertion:(_Bool)arg1 ofListItem:(id)arg2 withOrderedIdentifiers:(id)arg3 removingViewIfPossible:(_Bool)arg4;
 - (unsigned long long)_insertionIndexofListItem:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;

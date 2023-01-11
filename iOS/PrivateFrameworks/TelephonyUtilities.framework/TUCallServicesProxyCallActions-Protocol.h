@@ -6,10 +6,13 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class IDSDestination, NSString, TUAnswerRequest, TUDialRequest, TUProxyCall;
+@class IDSDestination, NSString, NSUUID, TUAnswerRequest, TUDialRequest, TUProxyCall;
 
 @protocol TUCallServicesProxyCallActions <NSObject>
+- (oneway void)activateInCallUIWithActivityContinuationIdentifier:(NSUUID *)arg1;
+- (oneway void)shouldAllowRingingCallStatusIndicator:(_Bool)arg1;
 - (oneway void)shouldSuppressInCallStatusBar:(_Bool)arg1;
+- (oneway void)setIsSendingVideo:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setDownlinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setUplinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)sendMMIOrUSSDCodeWithRequest:(TUDialRequest *)arg1;

@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount, NSString, SSAccount;
+@class ACAccount, NSString;
 
 @interface AAMyPhotoRequest
 {
     ACAccount *_account;
     NSString *_serverCacheTag;
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
 }
 
 + (Class)responseClass;
-@property(retain, nonatomic, setter=setiTunesAccount:) SSAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
-@property(copy, nonatomic) NSString *serverCacheTag; // @synthesize serverCacheTag=_serverCacheTag;
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=setiTunesAccount:) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
+@property(copy, nonatomic) NSString *serverCacheTag; // @synthesize serverCacheTag=_serverCacheTag;
 - (id)urlRequest;
 - (id)urlString;
 - (id)initWithAccount:(id)arg1;

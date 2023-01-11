@@ -31,8 +31,8 @@
 + (id)_recentEmojiStrings;
 + (id)_cacheDomain;
 + (id)defaultsDomain;
-@property(nonatomic) unsigned long long maximumRecentsCount; // @synthesize maximumRecentsCount=_maximumRecentsCount;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long maximumRecentsCount; // @synthesize maximumRecentsCount=_maximumRecentsCount;
 - (id)typingNameForEmoji:(id)arg1;
 - (unsigned long long)previouslyUsedIndexInCategory:(id)arg1;
 - (id)lastUsedVariantEmojiForEmoji:(id)arg1;
@@ -52,6 +52,7 @@
 - (void)migrateInSkinTonePreferences:(id)arg1;
 - (void)migrateInRecentEmoji:(id)arg1 usages:(id)arg2 typingNames:(id)arg3;
 - (void)_cleanUpOldFlagsCaches;
+- (void)_pruneOldestEmojiUsageFromHistory;
 - (void)_pruneInvalidEmojiFromHistory;
 - (void)_checkForDingbatDuplicates;
 - (void)migrateFromMajorOSVersion:(long long)arg1;

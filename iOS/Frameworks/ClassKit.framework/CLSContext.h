@@ -6,7 +6,7 @@
 
 #import <ClassKit/CLSRelationable-Protocol.h>
 
-@class CLSActivity, NSArray, NSString, NSURL;
+@class CLSActivity, NSArray, NSSet, NSString, NSURL;
 
 @interface CLSContext <CLSRelationable>
 {
@@ -18,34 +18,60 @@
     NSString *_currentActivityID;
     NSString *_contentStoreIdentifier;
     long long _displayOrder;
+    NSString *_summary;
+    NSString *_customTypeName;
+    struct _NSRange _suggestedAge;
+    struct _NSRange _suggestedCompletionTime;
+    _Bool _assignable;
     NSString *_identifier;
     long long _type;
-    NSString *_storeIdentifier;
+    NSString *_stableObjectID;
     NSString *_storeTeamID;
+    NSString *_storeIdentifier;
     long long _authorizationStatus;
 }
 
 + (id)reservedContextTypes;
 + (id)allowedTopics;
 + (id)arrayOfStringClasses;
++ (id)stableObjectIDForIdentifierPath:(id)arg1;
++ (id)objectIDForIdentifierPath:(id)arg1;
++ (id)stableObjectIDPathFromIdentifierPath:(id)arg1;
 + (id)objectIDPathFromIdentifierPath:(id)arg1;
++ (id)validatedContextIdentifierPathFromPath:(id)arg1;
++ (id)defaultProgressReportingCapability;
 + (_Bool)supportsSecureCoding;
 + (_Bool)conformsToProtocol:(id)arg1;
 + (id)relations;
+- (void).cxx_destruct;
 @property(nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
-@property(copy, nonatomic) NSArray *path; // @synthesize path=_path;
-@property(copy, nonatomic) NSString *storeTeamID; // @synthesize storeTeamID=_storeTeamID;
 @property(copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
+@property(copy, nonatomic) NSString *storeTeamID; // @synthesize storeTeamID=_storeTeamID;
+@property(copy, nonatomic) NSArray *path; // @synthesize path=_path;
+@property(copy, nonatomic) NSString *stableObjectID; // @synthesize stableObjectID=_stableObjectID;
+@property(nonatomic, getter=isAssignable) _Bool assignable; // @synthesize assignable=_assignable;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
-- (long long)effectiveAuthorizationStatus;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
-- (void)setPathAndGenerateObjectID:(id)arg1;
+- (long long)effectiveAuthorizationStatus;
+- (void)setIdentifierPathAndGenerateObjectID:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *identifierPath;
 - (void)resignActive;
 - (void)becomeActive;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
+- (void)resetProgressReportingCapabilities;
+- (void)resetProgressReportingCapabilities_unprotected;
+- (void)addProgressReportingCapabilities:(id)arg1;
+@property(readonly, copy, nonatomic) NSSet *progressReportingCapabilities;
+- (id)_progressReportingCapabilities;
+@property(nonatomic) struct _NSRange suggestedCompletionTime;
+@property(nonatomic) struct _NSRange suggestedAge;
+- (id)thumbnailBlob;
+- (id)thumbnailBlobs;
+@property(nonatomic) struct CGImage *thumbnail;
+@property(copy, nonatomic) NSString *customTypeName;
+@property(copy, nonatomic) NSString *summary;
 @property(copy, nonatomic) NSString *contentStoreIdentifier;
 @property(nonatomic) long long displayOrder;
 @property(retain, nonatomic) NSURL *universalLinkURL;
@@ -63,6 +89,7 @@
 - (_Bool)conformsToProtocol:(id)arg1;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
 - (id)initWithInternalType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
+- (void)_setType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
 - (id)_init;
 - (id)newItemProvider;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;

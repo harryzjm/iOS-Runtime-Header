@@ -16,11 +16,15 @@
 - (void)accessibilityApplyValueBlock:(CDUnknownBlockType)arg1;
 - (_Bool)_accessibilitySavePhotoLabel:(id)arg1;
 - (id)_accessibilityiCloudPhotoLabel;
+- (id)_accessibilityCaptionLabel;
 - (id)accessibilityLabel;
 - (id)_accessibilityPeopleInPhoto;
+- (id)_accessibilityFacesInfo;
+- (id)accessibilityCustomContent;
 - (id)_accessibilityAssetDuration;
 - (id)_accessibilityOrientation;
 - (id)_accessibilityCreationDate;
+- (id)_accessibilityCreationTime;
 - (_Bool)shouldMeasureBlurriness;
 - (void)_axSetICloudLabelWasSet:(_Bool)arg1;
 - (_Bool)_axICloudLabelWasSet;

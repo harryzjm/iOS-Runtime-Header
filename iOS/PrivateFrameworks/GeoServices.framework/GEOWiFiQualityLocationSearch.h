@@ -13,17 +13,17 @@
 @interface GEOWiFiQualityLocationSearch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOLocation *_location;
     unsigned long long _radius;
     NSMutableArray *_tiles;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_radius:1;
         unsigned int read_location:1;
         unsigned int read_tiles:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_radius:1;
-        unsigned int wrote_tiles:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,20 +38,22 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasRadius;
 @property(nonatomic) unsigned long long radius;
 - (id)tilesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)tilesCount;
-- (void)_addNoFlagsTiles:(id)arg1;
 - (void)addTiles:(id)arg1;
 - (void)clearTiles;
 @property(retain, nonatomic) NSMutableArray *tiles;
-- (void)_readTiles;
 @property(retain, nonatomic) GEOLocation *location;
 @property(readonly, nonatomic) _Bool hasLocation;
-- (void)_readLocation;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

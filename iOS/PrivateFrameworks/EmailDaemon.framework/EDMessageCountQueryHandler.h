@@ -8,26 +8,26 @@
 
 #import <EmailDaemon/EDMailboxChangeHookResponder-Protocol.h>
 #import <EmailDaemon/EDMessageChangeHookResponder-Protocol.h>
-#import <EmailDaemon/EDProtectedDataReconciliationHookResponder-Protocol.h>
 #import <EmailDaemon/EFCancelable-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMMailboxChangeObserver-Protocol.h>
 
-@class EDMessagePersistence, EDMessageQueryEvaluator, EDPersistenceHookRegistry, EDUpdateThrottler, EFCancelationToken, EFQuery, EMMailboxScope, EMObjectID, NSMutableDictionary, NSMutableSet, NSPredicate, NSString;
+@class EDMessagePersistence, EDMessageQueryEvaluator, EDPersistenceHookRegistry, EDUpdateThrottler, EFCancelationToken, EFMutableInt64Set, EFQuery, EFStoppableScheduler, EMMailboxScope, EMObjectID, NSMutableDictionary, NSMutableSet, NSPredicate, NSString;
 @protocol EMMessageRepositoryCountQueryObserver_xpc;
 
-@interface EDMessageCountQueryHandler : NSObject <EFLoggable, EDMailboxChangeHookResponder, EDMessageChangeHookResponder, EDProtectedDataReconciliationHookResponder, EMMailboxChangeObserver, EFCancelable>
+@interface EDMessageCountQueryHandler : NSObject <EFLoggable, EDMailboxChangeHookResponder, EDMessageChangeHookResponder, EMMailboxChangeObserver, EFCancelable>
 {
     NSMutableDictionary *_serverCounts;
     NSMutableSet *_mailboxesBeingSynced;
     long long _resyncDatabaseGeneration;
     EMObjectID *_mailboxObserverID;
-    NSMutableSet *_seenMessageIDs;
-    NSMutableSet *_newMessageIDs;
+    EFMutableInt64Set *_seenMessageIDs;
+    EFMutableInt64Set *_newMessageIDs;
     struct os_unfair_lock_s _seenMessageIDsLock;
     _Atomic unsigned long long _recalculationPending;
     struct EFAtomicObject _atomicQueryDescription;
     struct EFAtomicObject _atomicMailboxScopeDescription;
+    EFStoppableScheduler *_scheduler;
     EFQuery *_query;
     EFQuery *_expandedQuery;
     NSPredicate *_predicateIgnoringFlags;
@@ -42,8 +42,8 @@
     long long _localCount;
 }
 
-+ (id)defaultScheduler;
 + (id)log;
+- (void).cxx_destruct;
 @property(nonatomic) long long localCount; // @synthesize localCount=_localCount;
 @property(readonly) NSString *pendingFlagChangesKey; // @synthesize pendingFlagChangesKey=_pendingFlagChangesKey;
 @property(retain, nonatomic) EDUpdateThrottler *updateThrottler; // @synthesize updateThrottler=_updateThrottler;
@@ -56,21 +56,20 @@
 @property(retain, nonatomic) NSPredicate *predicateIgnoringFlags; // @synthesize predicateIgnoringFlags=_predicateIgnoringFlags;
 @property(retain, nonatomic) EFQuery *expandedQuery; // @synthesize expandedQuery=_expandedQuery;
 @property(retain, nonatomic) EFQuery *query; // @synthesize query=_query;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) EFStoppableScheduler *scheduler; // @synthesize scheduler=_scheduler;
 - (void)mailboxListChanged:(id)arg1;
-- (void)persistenceDidReconcileProtectedData;
 - (void)persistenceDidUpdateLastSyncAndMostRecentStatusCount:(long long)arg1 forMailboxWithObjectID:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidUpdateMostRecentStatusCount:(long long)arg1 forMailboxWithObjectID:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidUpdateServerCount:(long long)arg1 forMailboxWithObjectID:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceIsAddingMailboxWithDatabaseID:(long long)arg1 objectID:(id)arg2 generationWindow:(id)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;
+- (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (void)_persistenceDidDeleteMessages:(id)arg1 includeMessagesWithDeletedFlag:(_Bool)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidDeleteMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidUpdateProperties:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidChangeFlags:(id)arg1 messages:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceWillChangeFlags:(id)arg1 messages:(id)arg2;
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;
-- (_Bool)_moreThan:(long long)arg1 messagesExistWithMessageIDHeaderHash:(id)arg2;
+- (_Bool)_moreThan:(long long)arg1 messagesExistWithGlobalMessageID:(long long)arg2;
 - (id)_filterMessages:(id)arg1 potentiallyMatchingMessages:(id *)arg2;
 - (void)_processChangedMessages:(id)arg1 changeKey:(id)arg2 generationWindow:(id)arg3;
 - (void)_prepareForChangeWithMessages:(id)arg1 changeKey:(id)arg2;
@@ -81,7 +80,8 @@
 - (void)_decrementLocalCount:(long long)arg1 logMessage:(id)arg2 generationWindow:(id)arg3;
 - (void)_incrementLocalCount:(long long)arg1 logMessage:(id)arg2 generationWindow:(id)arg3;
 - (void)_fireCountCalculation;
-- (void)_scheduleCountCalculation;
+- (void)_scheduleCountCalculationWithReason:(id)arg1;
+- (void)test_tearDown;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithQuery:(id)arg1 serverCountMailboxScope:(id)arg2 messagePersistence:(id)arg3 hookRegistry:(id)arg4 observer:(id)arg5;

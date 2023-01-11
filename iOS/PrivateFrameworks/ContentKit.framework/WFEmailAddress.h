@@ -7,29 +7,33 @@
 #import <objc/NSObject.h>
 
 #import <ContentKit/NSCopying-Protocol.h>
+#import <ContentKit/NSSecureCoding-Protocol.h>
 #import <ContentKit/WFNaming-Protocol.h>
 #import <ContentKit/WFSerializableContent-Protocol.h>
 
 @class NSString;
 
-@interface WFEmailAddress : NSObject <NSCopying, WFNaming, WFSerializableContent>
+@interface WFEmailAddress : NSObject <NSCopying, WFNaming, WFSerializableContent, NSSecureCoding>
 {
     NSString *_address;
     NSString *_label;
 }
 
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
++ (_Bool)supportsSecureCoding;
 + (id)addressWithEmailAddress:(id)arg1 label:(id)arg2;
 + (id)addressWithEmailAddress:(id)arg1;
 + (id)addressesWithMailtoURL:(id)arg1;
 + (id)addressesWithTextCheckingResult:(id)arg1;
 + (_Bool)stringContainsEmailAddresses:(id)arg1;
 + (id)emailAddressesInString:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) NSString *address; // @synthesize address=_address;
-- (void).cxx_destruct;
 - (id)wfSerializedRepresentation;
 @property(readonly, copy, nonatomic) NSString *wfName;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)compare:(id)arg1;
 @property(readonly) unsigned long long hash;

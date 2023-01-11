@@ -13,20 +13,19 @@
 @interface GEORPSuggestionList : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDPlaceRequest *_autocompleteRequest;
     GEOPDPlaceResponse *_autocompleteResponse;
     NSMutableArray *_entrys;
     NSString *_query;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_autocompleteRequest:1;
         unsigned int read_autocompleteResponse:1;
         unsigned int read_entrys:1;
         unsigned int read_query:1;
-        unsigned int wrote_autocompleteRequest:1;
-        unsigned int wrote_autocompleteResponse:1;
-        unsigned int wrote_entrys:1;
-        unsigned int wrote_query:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,24 +40,24 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDPlaceResponse *autocompleteResponse;
 @property(readonly, nonatomic) _Bool hasAutocompleteResponse;
-- (void)_readAutocompleteResponse;
 @property(retain, nonatomic) GEOPDPlaceRequest *autocompleteRequest;
 @property(readonly, nonatomic) _Bool hasAutocompleteRequest;
-- (void)_readAutocompleteRequest;
 - (id)entryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entrysCount;
-- (void)_addNoFlagsEntry:(id)arg1;
 - (void)addEntry:(id)arg1;
 - (void)clearEntrys;
 @property(retain, nonatomic) NSMutableArray *entrys;
-- (void)_readEntrys;
 @property(retain, nonatomic) NSString *query;
 @property(readonly, nonatomic) _Bool hasQuery;
-- (void)_readQuery;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

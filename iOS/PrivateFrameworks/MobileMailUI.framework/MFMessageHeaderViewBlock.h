@@ -17,6 +17,7 @@
     _Bool _separatorDrawsFlushWithLeadingEdge;
     _Bool _separatorDrawsFlushWithTrailingEdge;
     _Bool _usingLargeTextLayout;
+    _Bool _interactivelyResizing;
     MessageHeaderViewModel *_viewModel;
     MFMessageDisplayMetrics *_displayMetrics;
     SeparatorLayer *_separator;
@@ -28,11 +29,13 @@
     id <EFCancelable> _observableCancelable;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <EFCancelable> observableCancelable; // @synthesize observableCancelable=_observableCancelable;
 @property(retain, nonatomic) NSLayoutConstraint *separatorTrailing; // @synthesize separatorTrailing=_separatorTrailing;
 @property(retain, nonatomic) NSLayoutConstraint *separatorLeading; // @synthesize separatorLeading=_separatorLeading;
 @property(retain, nonatomic) NSLayoutConstraint *trailingAccessoryViewLayoutGuideTrailing; // @synthesize trailingAccessoryViewLayoutGuideTrailing=_trailingAccessoryViewLayoutGuideTrailing;
 @property(retain, nonatomic) NSLayoutConstraint *trailingAccessoryViewLayoutGuideWidth; // @synthesize trailingAccessoryViewLayoutGuideWidth=_trailingAccessoryViewLayoutGuideWidth;
+@property(nonatomic) _Bool interactivelyResizing; // @synthesize interactivelyResizing=_interactivelyResizing;
 @property(nonatomic) _Bool usingLargeTextLayout; // @synthesize usingLargeTextLayout=_usingLargeTextLayout;
 @property(nonatomic) _Bool separatorDrawsFlushWithTrailingEdge; // @synthesize separatorDrawsFlushWithTrailingEdge=_separatorDrawsFlushWithTrailingEdge;
 @property(nonatomic) _Bool separatorDrawsFlushWithLeadingEdge; // @synthesize separatorDrawsFlushWithLeadingEdge=_separatorDrawsFlushWithLeadingEdge;
@@ -41,7 +44,6 @@
 @property(retain, nonatomic) SeparatorLayer *separator; // @synthesize separator=_separator;
 @property(retain, nonatomic) MFMessageDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
 @property(retain, nonatomic) MessageHeaderViewModel *viewModel; // @synthesize viewModel=_viewModel;
-- (void).cxx_destruct;
 - (void)displayMessageUsingViewModel:(id)arg1;
 - (void)prepareForReuse;
 - (void)traitCollectionDidChange:(id)arg1;

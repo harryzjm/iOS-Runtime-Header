@@ -29,6 +29,7 @@
     CAMCaptureEngine *__captureEngine;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak CAMCaptureEngine *_captureEngine; // @synthesize _captureEngine=__captureEngine;
 @property(retain, nonatomic) AVCaptureVideoPreviewLayer *currentVideoPreviewLayer; // @synthesize currentVideoPreviewLayer=_currentVideoPreviewLayer;
 @property(retain, nonatomic) AVCaptureVideoThumbnailOutput *currentVideoThumbnailOutput; // @synthesize currentVideoThumbnailOutput=_currentVideoThumbnailOutput;
@@ -45,7 +46,6 @@
 @property(retain, nonatomic) AVCaptureDeviceFormat *currentVideoDeviceFormat; // @synthesize currentVideoDeviceFormat=_currentVideoDeviceFormat;
 @property(retain, nonatomic) AVCaptureDevice *currentVideoDevice; // @synthesize currentVideoDevice=_currentVideoDevice;
 @property(retain, nonatomic) AVCaptureSession *currentCaptureSession; // @synthesize currentCaptureSession=_currentCaptureSession;
-- (void).cxx_destruct;
 - (id)metadataOutputForMode:(long long)arg1;
 - (id)outputsForMode:(long long)arg1 shouldUseThumbnailOutputForFilters:(_Bool)arg2;
 - (id)primaryOutputForMode:(long long)arg1;
@@ -56,6 +56,7 @@
 - (void)stopPanoramaCaptureInterrupted:(_Bool)arg1;
 - (void)startPanoramaCaptureWithRequest:(id)arg1;
 @property(readonly, nonatomic) CAMPanoramaConfiguration *currentPanoramaConfiguration;
+- (void)registerVideoEndZoomFactor:(double)arg1;
 @property(readonly, nonatomic) __weak id <AVCaptureFileOutputRecordingDelegate> currentRecordingDelegate;
 - (void)registerVideoCaptureRequest:(id)arg1;
 - (void)clearCachedMomentCaptureSettingsForIdentifier:(id)arg1;

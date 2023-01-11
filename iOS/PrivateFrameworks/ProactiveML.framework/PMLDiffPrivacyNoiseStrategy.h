@@ -21,9 +21,9 @@
 }
 
 + (id)gaussianNoiseWithScaleFactor:(float)arg1 minimumMagnitude:(float)arg2 seed:(int)arg3;
-@property long long noiseMechanism; // @synthesize noiseMechanism=_noiseMechanism;
-@property float minimumMagnitude; // @synthesize minimumMagnitude=_minimumMagnitude;
-@property CDStruct_cd4a7bf5 noiseScaleFactors; // @synthesize noiseScaleFactors=_noiseScaleFactors;
+@property(nonatomic) long long noiseMechanism; // @synthesize noiseMechanism=_noiseMechanism;
+@property(nonatomic) float minimumMagnitude; // @synthesize minimumMagnitude=_minimumMagnitude;
+@property(nonatomic) CDStruct_cd4a7bf5 noiseScaleFactors; // @synthesize noiseScaleFactors=_noiseScaleFactors;
 @property(readonly, copy) NSString *description;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;

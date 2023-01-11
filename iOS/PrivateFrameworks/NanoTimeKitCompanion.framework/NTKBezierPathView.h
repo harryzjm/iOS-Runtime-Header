@@ -8,26 +8,26 @@
 
 #import <NanoTimeKitCompanion/CAAnimationDelegate-Protocol.h>
 
-@class NSString, NTKBezierPathPointModel, UIBezierPath, UIColor;
+@class NSString, NTKBezierPathPointModel, NTKPromise, UIBezierPath, UIColor;
 
 @interface NTKBezierPathView : UIView <CAAnimationDelegate>
 {
     UIBezierPath *_path;
     UIBezierPath *_animateToPath;
-    NTKBezierPathPointModel *_pointModel;
+    NTKPromise *_pointModel;
     UIColor *_pathColor;
 }
 
 + (Class)layerClass;
-@property(retain, nonatomic) UIColor *pathColor; // @synthesize pathColor=_pathColor;
-@property(readonly, nonatomic) NTKBezierPathPointModel *pointModel; // @synthesize pointModel=_pointModel;
-@property(retain, nonatomic) UIBezierPath *path; // @synthesize path=_path;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *pathColor; // @synthesize pathColor=_pathColor;
+@property(retain, nonatomic) UIBezierPath *path; // @synthesize path=_path;
 - (id)_shapeLayer;
+@property(readonly, nonatomic) NTKBezierPathPointModel *pointModel;
 - (struct CGPoint)pointOnPathForHorizontalPercentage:(double)arg1;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)animateToPath:(id)arg1 duration:(double)arg2 curve:(long long)arg3;
-@property(retain, nonatomic) NSString *lineCap;
+@property(copy, nonatomic) NSString *lineCap;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

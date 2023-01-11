@@ -16,15 +16,14 @@
     NTPBTodaySectionConfigWebEmbed *_webEmbed;
 }
 
-@property(readonly, copy, nonatomic) NTPBTodaySectionConfigWebEmbed *webEmbed; // @synthesize webEmbed=_webEmbed;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NTPBTodaySectionConfigWebEmbed *webEmbed; // @synthesize webEmbed=_webEmbed;
 - (id)protoitemWithFetchedFeedItemHeadline:(id)arg1;
 @property(readonly, copy, nonatomic) NTPBFeedItem *feedItemForHeadlineFetch;
 @property(readonly, nonatomic) _Bool needsFeedItemHeadlinesFetch;
 @property(readonly, nonatomic) id <FCFeedTransformationItem> feedTransformationItem;
 @property(readonly, nonatomic) unsigned long long preferredDynamicSlotAllocation;
 @property(readonly, nonatomic) _Bool usesDynamicSlotAllocation;
-@property(readonly, nonatomic, getter=isEligibleForLeadingCellAppearance) _Bool eligibleForLeadingCellAppearance;
 @property(readonly, copy, nonatomic) SFSearchResult *searchResult;
 @property(readonly, copy, nonatomic) NSDate *cacheExpirationDate;
 @property(readonly, copy, nonatomic) NSDate *cacheCutoffTimeRelativeDate;

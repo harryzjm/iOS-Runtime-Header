@@ -51,6 +51,7 @@
     _Bool _wifiAssistEnabled;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool wifiAssistEnabled; // @synthesize wifiAssistEnabled=_wifiAssistEnabled;
 @property(retain, nonatomic) NSIndexSet *cellularInterfaceIndices; // @synthesize cellularInterfaceIndices=_cellularInterfaceIndices;
 @property(nonatomic) _Bool allowsLinkLocal; // @synthesize allowsLinkLocal=_allowsLinkLocal;
@@ -68,7 +69,6 @@
 @property(retain) NSString *deviceUniqueID; // @synthesize deviceUniqueID=_deviceUniqueID;
 @property(retain) NSString *cbuuid; // @synthesize cbuuid=_cbuuid;
 @property(readonly) unsigned long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (void)setWiFiAssistState:(_Bool)arg1;
 - (_Bool)setTrafficClass:(int)arg1;
 - (id)generateLinkReport:(double)arg1 isCurrentLink:(_Bool)arg2;
@@ -81,6 +81,7 @@
 - (id)newSocketWithIPVersion:(unsigned long long)arg1 wantsAWDL:(_Bool)arg2 wantsWiFi:(_Bool)arg3 wantsCellular:(_Bool)arg4 clientUUID:(unsigned char [16])arg5;
 - (void)reconnectWithLocalAddress:(id)arg1;
 - (_Bool)setDestinationAddressToDeviceIDMap:(id)arg1;
+- (_Bool)setDestinationAddress:(id)arg1 localIfIndex:(unsigned int)arg2 isFixedDestination:(_Bool)arg3 fromAddress:(id)arg4;
 - (_Bool)setDestinationAddress:(id)arg1 isFixedDestination:(_Bool)arg2 fromAddress:(id)arg3;
 - (void)invalidate;
 - (void)removeSocket;
@@ -98,6 +99,7 @@
 - (void)_processIncomingPacket;
 - (void)_processIncomingPacketOnSocket:(int)arg1;
 - (id)_createNetworkInterfaceArrayWithIPVersion:(unsigned long long)arg1 wantsAWDL:(_Bool)arg2 wantsWiFi:(_Bool)arg3 wantsCellular:(_Bool)arg4 allowsLinkLocal:(_Bool)arg5 useDefaultInterfaceOnly:(_Bool)arg6 defaultPairedDevice:(_Bool)arg7;
+- (void)dealloc;
 - (id)initWithDeviceUniqueID:(id)arg1 cbuuid:(id)arg2;
 
 // Remaining properties

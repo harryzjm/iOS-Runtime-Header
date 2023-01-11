@@ -17,7 +17,6 @@
 @interface PXNavigationListController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, PXNavigationListDataSectionManagerObserver>
 {
     _Bool __needsUpdateRowHeight;
-    _Bool _isTableViewUpdating;
     UITableView *_tableView;
     PXNavigationListDataSectionManager *_dataSectionManager;
     id <PXNavigationListContainer> _container;
@@ -26,15 +25,14 @@
     double _rowHeight;
 }
 
-+ (id)navigateToListItem:(id)arg1 sourceViewController:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-@property(nonatomic) _Bool isTableViewUpdating; // @synthesize isTableViewUpdating=_isTableViewUpdating;
++ (id)navigateToListItem:(id)arg1 sourceViewController:(id)arg2 existingAssetsFetchResult:(id)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setNeedsUpdateRowHeight:) _Bool _needsUpdateRowHeight; // @synthesize _needsUpdateRowHeight=__needsUpdateRowHeight;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property(retain, nonatomic) NSUserActivity *siriActionActivity; // @synthesize siriActionActivity=_siriActionActivity;
 @property(retain, nonatomic) PXNavigationListDataSection *dataSection; // @synthesize dataSection=_dataSection;
 @property(nonatomic) __weak id <PXNavigationListContainer> container; // @synthesize container=_container;
 @property(readonly, nonatomic) PXNavigationListDataSectionManager *dataSectionManager; // @synthesize dataSectionManager=_dataSectionManager;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)_navigateTolistItem:(id)arg1 animated:(_Bool)arg2;
@@ -44,16 +42,17 @@
 - (void)_updateCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)tableViewContentSizeDidChange;
+- (void)contentHeightDidChange;
 - (void)_preferredContentSizeChanged:(id)arg1;
 - (double)_rowHeightForCurrentFont;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 - (void)_updateTableView;
 @property(nonatomic) _Bool allowsNavigation;
 @property(readonly, nonatomic) double contentHeight;
+- (double)_contentHeightForDataSection:(id)arg1;
 - (id)_createTransparentFullWidthViewOfHeight:(double)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)loadView;
 - (id)initWithDataSectionManager:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

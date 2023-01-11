@@ -9,7 +9,7 @@
 #import <VoiceMemos/RCSSavedRecordingServiceClientProtocol-Protocol.h>
 #import <VoiceMemos/RCSSavedRecordingServiceProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSSet, NSString, NSXPCConnection;
+@class NSHashTable, NSMutableDictionary, NSSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, RCSSavedRecordingServiceProtocol;
 
 @interface RCSSavedRecordingService : NSObject <RCSSavedRecordingServiceClientProtocol, RCSSavedRecordingServiceProtocol>
@@ -21,7 +21,9 @@
     NSXPCConnection *_xpcConnection;
     id <RCSSavedRecordingServiceProtocol> _serviceProxy;
     id <RCSSavedRecordingServiceProtocol> _synchronousServiceProxy;
+    NSHashTable *_interruptionObservers;
     NSMutableDictionary *_pendingServiceCompletionHandlers;
+    NSMutableDictionary *_pendingSynchronousServiceCompletionHandlers;
     NSSet *_compositionAVURLsBeingExported;
     NSSet *_compositionAVURLsBeingModified;
 }
@@ -30,16 +32,17 @@
 + (void)setChangeToken:(id)arg1;
 + (id)changeToken;
 + (id)sharedService;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(retain, nonatomic) NSSet *compositionAVURLsBeingModified; // @synthesize compositionAVURLsBeingModified=_compositionAVURLsBeingModified;
 @property(retain, nonatomic) NSSet *compositionAVURLsBeingExported; // @synthesize compositionAVURLsBeingExported=_compositionAVURLsBeingExported;
-- (void).cxx_destruct;
 - (void)_handleCompositionAVURLsBeingModifiedDidChange;
 - (void)_handleCompositionAVURLsBeingExportedDidChange;
+- (void)_invalidatePendingSynchronousCompletionHandlersWithError:(id)arg1;
 - (void)_onQueueInvalidatePendingCompletionHandlerWithToken:(id)arg1 withError:(id)arg2;
 - (void)_onQueueInvalidatePendingCompletionHandlersWithError:(id)arg1;
-- (void)_onQueueRemovePendingServiceMessageReplyBlockInvalidationHandlerForToken:(struct NSNumber *)arg1;
-- (struct NSNumber *)_onQueueAddPendingServiceMessageReplyBlockInvalidationHandler:(CDUnknownBlockType)arg1;
+- (void)_onQueueRemovePendingServiceMessageReplyBlockInvalidationHandlerForToken:(id)arg1;
+- (id)_onQueueAddPendingServiceMessageReplyBlockInvalidationHandler:(CDUnknownBlockType)arg1;
 - (void)_sendSynchronousServiceMessage:(SEL)arg1 withBasicReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
 - (void)_sendServiceMessage:(SEL)arg1 withBasicReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
 - (void)_sendServiceMessage:(SEL)arg1 withBasicReplyBlock:(CDUnknownBlockType)arg2 withServiceProxy:(id)arg3 messagingBlock:(CDUnknownBlockType)arg4;
@@ -77,7 +80,7 @@
 - (oneway void)writeAudioFile:(id)arg1 buffer:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (oneway void)closeAudioFile:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (_Bool)closeAudioFile:(id)arg1 error:(id *)arg2;
-- (oneway void)openAudioFile:(id)arg1 settings:(id)arg2 accessRequestHandler:(CDUnknownBlockType)arg3;
+- (oneway void)openAudioFile:(id)arg1 settings:(id)arg2 metadata:(id)arg3 accessRequestHandler:(CDUnknownBlockType)arg4;
 - (id)openAudioFile:(id)arg1 settings:(id)arg2 metadata:(id)arg3 error:(id *)arg4;
 - (oneway void)prepareToCaptureToCompositionAVURL:(id)arg1 accessRequestHandler:(CDUnknownBlockType)arg2;
 - (id)prepareToCaptureToCompositionAVURL:(id)arg1 error:(id *)arg2;
@@ -86,13 +89,16 @@
 - (oneway void)importRecordingsFromCloud:(CDUnknownBlockType)arg1;
 - (oneway void)disableCloudRecordingsSaveLocalCopies:(_Bool)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (oneway void)enableCloudRecordingsWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (oneway void)importRecordingWithSourceAudioURL:(id)arg1 name:(id)arg2 date:(id)arg3 importCompletionBlock:(CDUnknownBlockType)arg4;
+- (oneway void)importRecordingWithSourceAudioURL:(id)arg1 name:(id)arg2 date:(id)arg3 userInfo:(id)arg4 importCompletionBlock:(CDUnknownBlockType)arg5;
 - (oneway void)performDatabaseMigrationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)closeServiceConnection;
 - (void)openServiceConnection;
 @property(readonly, nonatomic) _Bool isDatabaseAvailable;
 - (void)dealloc;
 - (id)init;
+- (void)removeInterruptionObserver:(id)arg1;
+- (void)addInterruptionObserver:(id)arg1;
+@property(readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

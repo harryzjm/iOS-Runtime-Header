@@ -19,27 +19,30 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDDevice *lastUpdateByDevice; // @synthesize lastUpdateByDevice=_lastUpdateByDevice;
 @property(readonly, nonatomic) NSDictionary *userPresenceMap; // @synthesize userPresenceMap=_userPresenceMap;
-@property(readonly, nonatomic) HMDHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 - (_Bool)areUsersNotAtHome:(id)arg1;
 - (_Bool)areUsersAtHome:(id)arg1;
+- (_Bool)isPresenceRegionKnownForUser:(id)arg1;
 - (_Bool)isUserNotAtHome:(id)arg1;
 - (_Bool)isUserAtHome:(id)arg1;
+@property(readonly, nonatomic) _Bool hasPresenceRegionForAllUsers;
 - (_Bool)isAnyUserAtHome;
 - (_Bool)isNoUserAtHome;
+- (id)attributeDescriptions;
+- (id)logIdentifier;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)serializedIdentifierDictionary;
 - (id)serializedUUIDDictionary;
 @property(readonly, nonatomic) NSArray *authorizedUsers;
-- (_Bool)isEqual:(id)arg1;
-@property(readonly, copy) NSString *description;
-- (id)logIdentifier;
 - (id)initWithHome:(id)arg1 userPresenceMap:(id)arg2 lastUpdateByDevice:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

@@ -4,32 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 #import <MetricsKit/MTEnvironmentDelegate-Protocol.h>
 
 @class NSString;
 
-@interface MTEnvironmentUIKitDelegate <MTEnvironmentDelegate>
+@interface MTEnvironmentUIKitDelegate : NSObject <MTEnvironmentDelegate>
 {
 }
 
-- (id)primaryWindow;
 - (id)userType;
 - (id)userAgent;
 - (id)storeFrontHeader;
 - (id)resourceRevNum;
 - (id)pageUrl;
-- (id)osBuildNumber;
 - (id)hostApp;
 - (id)dsId;
 - (id)cookies;
 - (id)connectionType;
+- (id)windowOuterWidth;
+- (id)windowOuterHeight;
 - (id)capacitySystemAvailable;
 - (id)capacitySystem;
 - (id)capacityDisk;
 - (id)capacityDataAvailable;
 - (id)capacityData;
-- (id)windowOuterWidth;
-- (id)windowOuterHeight;
+- (id)_diskUsage;
 - (id)windowInnerWidth;
 - (id)windowInnerHeight;
 - (id)screenWidth;
@@ -38,10 +39,12 @@
 - (id)osVersion;
 - (id)osLanguages;
 - (id)os;
+- (id)osBuildNumber;
 - (id)hardwareModel;
 - (id)hardwareFamily;
 - (id)appVersion;
 - (id)app;
+- (_Bool)isAnonymous;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

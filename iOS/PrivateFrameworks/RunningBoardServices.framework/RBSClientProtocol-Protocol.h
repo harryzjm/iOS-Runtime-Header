@@ -8,6 +8,8 @@
 
 @protocol RBSClientProtocol
 - (oneway void)async_processDidExit:(RBSProcessIdentifier *)arg1 withContext:(RBSProcessExitContext *)arg2;
+- (oneway void)async_observedPreventLaunchPredicatesUpdate:(NSSet *)arg1 completion:(void (^)(void))arg2;
+- (oneway void)async_observedProcessExitEvents:(NSArray *)arg1 completion:(void (^)(void))arg2;
 - (oneway void)async_observedProcessStatesDidChange:(NSArray *)arg1 completion:(void (^)(void))arg2;
 - (oneway void)async_assertionsDidInvalidate:(NSSet *)arg1 withError:(NSError *)arg2;
 - (oneway void)async_assertionWillInvalidate:(RBSAssertionIdentifier *)arg1;

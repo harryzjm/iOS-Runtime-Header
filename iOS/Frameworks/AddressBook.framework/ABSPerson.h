@@ -34,12 +34,12 @@
 + (unsigned int)typeForProperty:(int)arg1;
 + (id)defaultKeysToFetch;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *nonNilSetProperties; // @synthesize nonNilSetProperties=_nonNilSetProperties;
 @property(retain, nonatomic) NSString *revertedRecordIdentifier; // @synthesize revertedRecordIdentifier=_revertedRecordIdentifier;
 @property(retain, nonatomic) CNMutableContact *cnImpl; // @synthesize cnImpl=_cnImpl;
 @property(nonatomic) __weak ABSSource *source; // @synthesize source=_source;
 @property(nonatomic) __weak ABSAddressBook *addressBook; // @synthesize addressBook=_addressBook;
-- (void).cxx_destruct;
 - (void)setValue:(id)arg1 forSoundIdentifier:(int)arg2;
 - (id)soundIdentifierForMultivalueIdentifier:(int)arg1;
 - (_Bool)getIdentifier:(int *)arg1 label:(id *)arg2 forMultiValueMatchingValue:(id)arg3 property:(int)arg4;
@@ -66,13 +66,13 @@
 - (_Bool)completeCNImplIfNeededWithKeysToFetch:(id)arg1;
 - (unsigned long long)_cfTypeID;
 - (id)initWithMutableContact:(id)arg1 source:(id)arg2;
+@property(readonly, copy) NSString *description;
 - (id)initWithSource:(id)arg1;
 - (id)initWithMutableContact:(id)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

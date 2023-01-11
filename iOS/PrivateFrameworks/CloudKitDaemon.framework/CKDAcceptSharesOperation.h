@@ -5,6 +5,7 @@
 //
 
 @class NSMutableArray, NSMutableDictionary;
+@protocol CKAcceptSharesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDAcceptSharesOperation
@@ -17,13 +18,13 @@ __attribute__((visibility("hidden")))
     unsigned long long _numShareAcceptAttempts;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long numShareAcceptAttempts; // @synthesize numShareAcceptAttempts=_numShareAcceptAttempts;
 @property(retain, nonatomic) NSMutableDictionary *shareMetadatasToAcceptByURL; // @synthesize shareMetadatasToAcceptByURL=_shareMetadatasToAcceptByURL;
 @property(retain, nonatomic) NSMutableArray *acceptedShareURLsToFetch; // @synthesize acceptedShareURLsToFetch=_acceptedShareURLsToFetch;
 @property(retain, nonatomic) NSMutableArray *shareURLsToAccept; // @synthesize shareURLsToAccept=_shareURLsToAccept;
 @property(retain, nonatomic) NSMutableDictionary *clientProvidedMetadatasByURL; // @synthesize clientProvidedMetadatasByURL=_clientProvidedMetadatasByURL;
 @property(copy, nonatomic) CDUnknownBlockType acceptCompletionBlock; // @synthesize acceptCompletionBlock=_acceptCompletionBlock;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_fetchMetadataForShares;
@@ -36,12 +37,17 @@ __attribute__((visibility("hidden")))
 - (void)_decryptShareMetadata;
 - (unsigned long long)sharingServiceTypeForShareMetadata:(id)arg1;
 - (_Bool)_acceptShares;
+- (int)operationType;
 - (void)_handleShareURLAccepted:(id)arg1 forShare:(id)arg2 responseCode:(id)arg3;
 - (void)_performCallbackForURL:(id)arg1 withShare:(id)arg2 error:(id)arg3;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKAcceptSharesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

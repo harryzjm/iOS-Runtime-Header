@@ -11,9 +11,10 @@
 
 @interface HMDEventTrigger <HMDEventDelegate, HMFLogging>
 {
+    struct os_unfair_lock_s _lock;
     _Bool _migratedEventsToRecords;
     _Bool _executeOnce;
-    NSMutableArray *_events;
+    NSMutableArray *_currentEvents;
     NSPredicate *_evaluationCondition;
     NSArray *_recurrences;
     HMDPredicateUtilities *_predicateUtilities;
@@ -27,6 +28,7 @@
 + (_Bool)hasMessageReceiverChildren;
 + (_Bool)__validateRecurrences:(id)arg1;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long activationState; // @synthesize activationState=_activationState;
 @property(nonatomic) unsigned long long activationType; // @synthesize activationType=_activationType;
 @property(retain, nonatomic) HMDEventTriggerUserConfirmationSession *userConfirmationSession; // @synthesize userConfirmationSession=_userConfirmationSession;
@@ -35,11 +37,10 @@
 @property(nonatomic) _Bool executeOnce; // @synthesize executeOnce=_executeOnce;
 @property(readonly, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
 @property(retain, nonatomic) NSPredicate *evaluationCondition; // @synthesize evaluationCondition=_evaluationCondition;
-@property(readonly, nonatomic) NSMutableArray *events; // @synthesize events=_events;
+@property(retain, nonatomic) NSMutableArray *currentEvents; // @synthesize currentEvents=_currentEvents;
 @property(nonatomic) _Bool migratedEventsToRecords; // @synthesize migratedEventsToRecords=_migratedEventsToRecords;
-- (void).cxx_destruct;
 - (_Bool)containsRecurrences;
-- (id)metric:(_Bool)arg1;
+- (id)generateAnalyticsDataDueToTriggerAddition:(_Bool)arg1;
 - (void)timerFired:(id)arg1;
 - (id)emptyModelObject;
 - (id)backingStoreObjects:(long long)arg1;
@@ -113,7 +114,7 @@
 @property(readonly, nonatomic) NSArray *presenceEvents;
 @property(readonly, nonatomic) NSArray *charThresholdEvents;
 @property(readonly, nonatomic) NSArray *durationEvents;
-@property(readonly, nonatomic) NSArray *timeEvents;
+@property(readonly) NSArray *timeEvents;
 @property(readonly, nonatomic) NSArray *significantTimeEvents;
 @property(readonly, nonatomic) NSArray *calendarEvents;
 @property(readonly, nonatomic) NSArray *locationEvents;
@@ -121,6 +122,9 @@
 @property(readonly, nonatomic) NSArray *characteristicEvents;
 @property(readonly, nonatomic) NSArray *endEvents;
 @property(readonly, nonatomic) NSArray *triggerEvents;
+- (void)removeEvent:(id)arg1;
+- (void)addEvent:(id)arg1;
+@property(readonly, nonatomic) NSArray *events;
 - (unsigned long long)triggerType;
 - (id)dumpState;
 - (id)initWithModel:(id)arg1 home:(id)arg2 message:(id)arg3;

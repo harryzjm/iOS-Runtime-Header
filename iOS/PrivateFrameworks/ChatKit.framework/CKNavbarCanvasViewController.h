@@ -10,14 +10,16 @@
 #import <ChatKit/CKNavigationBarCanvasViewDelegate-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CKAvatarPickerViewController, CKCanvasBackButtonView, CKConversation, CKDetailsContactsManager, CKLabel, CKNavigationBarCanvasView, CNContactStore, NSString, UIButton, UINavigationController;
+@class CKAvatarPickerViewController, CKCanvasBackButtonView, CKConversation, CKDetailsContactsManager, CKLabel, CKNavigationBarCanvasView, CNContactStore, NSString, UIBarButtonItem, UIButton, UINavigationController;
 @protocol CKNavbarCanvasViewControllerDelegate;
 
 @interface CKNavbarCanvasViewController : UIViewController <UIGestureRecognizerDelegate, CKDetailsContactsManagerDelegate, CKNavigationBarCanvasViewDelegate>
 {
     _Bool _canShowBackButtonView;
     _Bool _shouldShowDoneButton;
+    _Bool _isInEditingMode;
     _Bool _editing;
+    UIBarButtonItem *_detailsBarButton;
     id <CKNavbarCanvasViewControllerDelegate> _delegate;
     UIButton *_callButton;
     CKNavigationBarCanvasView *_canvasView;
@@ -36,6 +38,7 @@
     CKDetailsContactsManager *_contactsManager;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKDetailsContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
 @property(retain, nonatomic) CNContactStore *suggestionsEnabledContactStore; // @synthesize suggestionsEnabledContactStore=_suggestionsEnabledContactStore;
 @property(nonatomic) long long indicatorType; // @synthesize indicatorType=_indicatorType;
@@ -50,32 +53,41 @@
 @property(retain, nonatomic) CKAvatarPickerViewController *avatarPickerViewController; // @synthesize avatarPickerViewController=_avatarPickerViewController;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(retain, nonatomic) NSString *navbarTitle; // @synthesize navbarTitle=_navbarTitle;
+@property(nonatomic) _Bool isInEditingMode; // @synthesize isInEditingMode=_isInEditingMode;
 @property(nonatomic) _Bool shouldShowDoneButton; // @synthesize shouldShowDoneButton=_shouldShowDoneButton;
 @property(nonatomic) _Bool canShowBackButtonView; // @synthesize canShowBackButtonView=_canShowBackButtonView;
 @property(retain, nonatomic) CKNavigationBarCanvasView *canvasView; // @synthesize canvasView=_canvasView;
 @property(retain, nonatomic) UIButton *callButton; // @synthesize callButton=_callButton;
 @property(nonatomic) __weak id <CKNavbarCanvasViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)_handleAllowedByScreenTimeChatChanged:(id)arg1;
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForView:(id)arg1;
-- (void)contactsManager:(id)arg1 didRequestCallTypeForEntity:(id)arg2 addresses:(id)arg3 abLabels:(id)arg4 faceTimeAudioEnabled:(_Bool)arg5;
+- (_Bool)shouldShowAvatarView;
 - (void)contactsManagerViewModelsDidChange:(id)arg1;
 - (void)_buttonPressed:(id)arg1;
+- (void)_infoButtonTapped:(id)arg1;
+- (void)_facetimeVideoButtonTapped:(id)arg1;
+- (void)_facetimeAudioButtonTapped:(id)arg1;
+- (void)refreshAudioButtonTargetAction;
 - (void)_contactPhotosEnabledChangedNotification:(id)arg1;
 - (void)setUnreadCountTitleColor;
 - (void)_chatUnreadCountDidChange:(id)arg1;
 - (void)_updateUnreadCountForBackbuttonView:(long long)arg1;
 - (long long)_unreadCount;
-- (void)_showContactCardForEntity:(id)arg1;
+- (void)showContactCardForEntity:(id)arg1 address:(id)arg2;
 - (void)_handleTranscriptScroll:(id)arg1;
 - (void)dismissModal;
 - (void)showMapkitBusinessData;
+@property(retain, nonatomic) UIBarButtonItem *detailsBarButton; // @synthesize detailsBarButton=_detailsBarButton;
 - (void)_configureForDefaultMode;
 - (void)_configureForEditMode;
+- (void)updateDefaultLabelIfNecessary;
 - (id)_titleItemViewForTraitCollection:(id)arg1;
 - (id)_secondaryRightItemViewForTraitCollection:(id)arg1;
 - (id)_rightItemViewForTraitCollection:(id)arg1;
 - (id)_leftItemViewForTraitCollection:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1;
+- (id)contextMenuForUnknownRecipient:(id)arg1;
+- (id)recipientContextMenu;
 - (void)_initializeForTraitCollection:(id)arg1;
 - (void)updateTitle:(id)arg1 animated:(_Bool)arg2;
 - (void)configureForEditing:(_Bool)arg1;
@@ -85,8 +97,8 @@
 - (void)_handleAddressBookChange:(id)arg1;
 - (void)_updateMultiwayButtonStateWithConversation:(id)arg1;
 - (void)multiwayStateChanged:(id)arg1;
-- (void)accessibilitySizeCategoryDidChange:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
 - (void)handleCloseNavBarAnimationCompleteNotification:(id)arg1;
@@ -103,6 +115,7 @@
 - (id)_windowTraitCollection;
 - (void)startAudioCommunicationUsingPreferredRouteIfAvailable:(_Bool)arg1;
 - (id)navBarTitleFromConversation:(id)arg1;
+- (void)registerNotifications;
 - (void)dealloc;
 - (id)initWithConversation:(id)arg1 navigationController:(id)arg2;
 - (id)initWithConversation:(id)arg1;

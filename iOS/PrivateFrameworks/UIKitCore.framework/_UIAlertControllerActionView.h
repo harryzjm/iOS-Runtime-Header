@@ -47,12 +47,12 @@ __attribute__((visibility("hidden")))
     UIAlertController *_alertController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIAlertControllerVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 @property(nonatomic) __weak UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(retain) NSLayoutConstraint *labelContainerTrailingPinConstraint; // @synthesize labelContainerTrailingPinConstraint=_labelContainerTrailingPinConstraint;
 @property(retain) NSLayoutConstraint *labelContainerLeadingPinConstraint; // @synthesize labelContainerLeadingPinConstraint=_labelContainerLeadingPinConstraint;
 @property(retain) NSLayoutConstraint *labelContainerCenterXConstraint; // @synthesize labelContainerCenterXConstraint=_labelContainerCenterXConstraint;
-- (void).cxx_destruct;
 - (void)_action:(id)arg1 updatedTitleTextColor:(id)arg2;
 - (void)_action:(id)arg1 updatedImageTintColor:(id)arg2;
 - (void)_action:(id)arg1 changedToBePreferred:(_Bool)arg2;
@@ -95,8 +95,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) double currentLabelTextWidth;
 @property(readonly) double currentDescriptiveLabelTextWidth;
 - (void)applyMetrics:(id)arg1;
-- (void)setHighlighted:(_Bool)arg1;
-@property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted;
+@property(nonatomic, getter=isHighlighted) _Bool highlighted;
 - (void)_prepareConstraintsForHavingDescriptiveText:(_Bool)arg1;
 - (void)_buildHavingDescriptiveLabelConstraints;
 - (void)_buildNotHavingDescriptiveLabelConstraints;

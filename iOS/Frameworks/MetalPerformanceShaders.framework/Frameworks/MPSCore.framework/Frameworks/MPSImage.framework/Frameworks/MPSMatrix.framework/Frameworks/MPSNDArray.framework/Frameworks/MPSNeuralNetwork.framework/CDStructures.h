@@ -72,10 +72,38 @@ struct MPSCNNGramGradientFilters_s {
     MPSMatrixMultiplication *gemm_NN;
 };
 
+struct MPSDevice {
+    CDUnknownFunctionPointerType *_field1;
+    struct MPSDevice *_field2;
+    id _field3;
+    struct MPSDeviceFreeList *_field4;
+    struct atomic<MTLLibraryNode *> _field5;
+    struct atomic<void *> _field6[2][2][2];
+    struct MPSPixelCapabilities _field7[590];
+    struct atomic<void *> _field8;
+    unsigned int _field9;
+    int _field10;
+    unsigned int _field11;
+    struct MPSGPUInfo _field12;
+    struct atomic<MPSLibrary *> _field13[122];
+};
+
+struct MPSDeviceFreeList;
+
 struct MPSDeviceSpecificInfo {
     struct MPSKernelInfo *_field1;
     CDUnknownFunctionPointerType _field2;
     unsigned long long _field3;
+};
+
+struct MPSGPUInfo {
+    unsigned int :8;
+    unsigned int :8;
+    unsigned int :8;
+    unsigned int :16;
+    unsigned int :4;
+    unsigned int :10;
+    unsigned int :10;
 };
 
 struct MPSImageCoordinate {
@@ -95,6 +123,8 @@ struct MPSImageInfo {
 };
 
 struct MPSKernelInfo;
+
+struct MPSLibrary;
 
 struct MPSLibraryInfo {
     int _field1;
@@ -119,12 +149,35 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field20;
     struct MPSDeviceSpecificInfo _field21;
     struct MPSDeviceSpecificInfo _field22;
+    struct MPSDeviceSpecificInfo _field23;
+    struct MPSDeviceSpecificInfo _field24;
+    struct MPSDeviceSpecificInfo _field25;
+    struct MPSDeviceSpecificInfo _field26;
+    struct MPSDeviceSpecificInfo _field27;
+    struct MPSDeviceSpecificInfo _field28;
+    struct MPSDeviceSpecificInfo _field29;
+    struct MPSDeviceSpecificInfo _field30;
+};
+
+struct MPSNNDimensionOrder {
+    unsigned long long dimensions[4];
 };
 
 struct MPSOrigin {
     double _field1;
     double _field2;
     double _field3;
+};
+
+struct MPSPixelCapabilities {
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :2;
+    unsigned int :1;
+    unsigned int :8;
 };
 
 struct MPSPixelInfo;
@@ -149,6 +202,8 @@ struct MPSStateInfo {
     id _field1;
 };
 
+struct MTLLibraryNode;
+
 struct NNKernelSourceParams {
     CDStruct_d6af7fc0 _field1;
     unsigned long long _field2;
@@ -160,10 +215,6 @@ struct NNKernelSourceParams {
     unsigned long long _field8;
     unsigned long long _field9;
     unsigned long long _field10;
-};
-
-struct NSArray {
-    Class _field1;
 };
 
 struct NeuronInfo {
@@ -203,12 +254,28 @@ struct ResourceGraphNode {
     unsigned long long _field14;
 };
 
+struct atomic<MPSLibrary *> {
+    struct __cxx_atomic_impl<MPSLibrary *, std::__1::__cxx_atomic_base_impl<MPSLibrary *>> {
+        _Atomic struct MPSLibrary *_field1;
+    } _field1;
+};
+
+struct atomic<MTLLibraryNode *> {
+    struct __cxx_atomic_impl<MTLLibraryNode *, std::__1::__cxx_atomic_base_impl<MTLLibraryNode *>> {
+        _Atomic struct MTLLibraryNode *_field1;
+    } _field1;
+};
+
 struct atomic<long> {
-    _Atomic long long __a_;
+    struct __cxx_atomic_impl<long, std::__1::__cxx_atomic_base_impl<long>> {
+        _Atomic long long __a_value;
+    } __a_;
 };
 
 struct atomic<void *> {
-    _Atomic void *_field1;
+    struct __cxx_atomic_impl<void *, std::__1::__cxx_atomic_base_impl<void *>> {
+        _Atomic void *_field1;
+    } _field1;
 };
 
 #pragma mark Typedef'd Structures
@@ -258,13 +325,13 @@ typedef struct {
     unsigned long long _field3;
     CDStruct_183601bc *_field4;
     unsigned int _field5;
-    struct NSArray *_field6;
+    id _field6;
     CDStruct_4b22da39 _field7;
     unsigned int _field8;
-    struct NSArray *_field9;
+    id _field9;
     CDStruct_8abe0896 _field10;
     unsigned int _field11;
-    struct NSArray *_field12;
+    id _field12;
     CDStruct_8abe0896 _field13;
     CDStruct_1e3be3a8 _field14;
     CDStruct_d6af7fc0 _field15;
@@ -272,7 +339,7 @@ typedef struct {
     unsigned long long _field17;
     unsigned long long _field18;
     unsigned long long _field19;
-} CDStruct_7b0ab756;
+} CDStruct_551bb076;
 
 typedef struct {
     unsigned long long _field1;
@@ -280,16 +347,16 @@ typedef struct {
     unsigned long long _field3;
     CDStruct_183601bc *_field4;
     unsigned int _field5;
-    struct NSArray *_field6;
+    id _field6;
     CDStruct_4b22da39 _field7;
     unsigned int _field8;
-    struct NSArray *_field9;
+    id _field9;
     CDStruct_8abe0896 _field10;
     CDStruct_1e3be3a8 _field11;
     CDStruct_d6af7fc0 _field12;
     unsigned long long _field13;
     unsigned long long _field14;
-} CDStruct_d22c003a;
+} CDStruct_bbc9fd3e;
 
 typedef struct {
     unsigned long long _field1;
@@ -307,12 +374,13 @@ typedef struct {
     CDStruct_1e3be3a8 _field5;
     CDStruct_d6af7fc0 _field6;
     CDStruct_d6af7fc0 _field7;
-    unsigned long long _field8;
+    CDStruct_d6af7fc0 _field8;
     unsigned long long _field9;
     unsigned long long _field10;
     unsigned long long _field11;
     unsigned long long _field12;
-} CDStruct_c2cd3a9e;
+    unsigned long long _field13;
+} CDStruct_b5ab67bf;
 
 typedef struct {
     struct MPSImageInfo _field1;
@@ -322,7 +390,9 @@ typedef struct {
     CDStruct_d6af7fc0 _field5;
     unsigned long long _field6;
     unsigned long long _field7;
-} CDStruct_53a8ffcf;
+    unsigned long long _field8;
+    unsigned long long _field9;
+} CDStruct_60a8b8fe;
 
 // Ambiguous groups
 typedef struct {

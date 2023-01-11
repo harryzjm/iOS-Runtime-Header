@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <GeoServices/GEOXPCSerializable-Protocol.h>
 #import <GeoServices/NSObject-Protocol.h>
-#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@protocol GEOXPCRequest <NSObject, NSSecureCoding>
+@protocol GEOXPCRequest <NSObject, GEOXPCSerializable>
 + (Class)replyClass;
 - (_Bool)isValid;
 - (_Bool)expectsReply;

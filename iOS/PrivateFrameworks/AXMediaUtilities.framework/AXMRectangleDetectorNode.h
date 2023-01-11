@@ -25,7 +25,7 @@
 @property(nonatomic) double minimumAspectRatio; // @synthesize minimumAspectRatio=_minimumAspectRatio;
 @property(nonatomic) struct CGPoint cameraOpticalOrigin; // @synthesize cameraOpticalOrigin=_cameraOpticalOrigin;
 @property(nonatomic) double cameraPixelFocalLength; // @synthesize cameraPixelFocalLength=_cameraPixelFocalLength;
-- (void)evaluate:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (_Bool)validateVisionKitSoftLinkSymbols;
 - (_Bool)requiresVisionFramework;
 - (void)encodeWithCoder:(id)arg1;

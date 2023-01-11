@@ -12,10 +12,22 @@
 
 + (id)indexesForValidRatiosInArray:(id)arg1;
 + (int)computeCommonExtentForArrays:(id)arg1;
-+ (id)bucketRatio:(id)arg1;
-+ (id)toInteger:(id)arg1;
-+ (id)toFloat:(id)arg1;
++ (id)_bucketPercentageWithValue:(double)arg1;
++ (id)bucketPercentageWithNumerator:(id)arg1 andDenominator:(id)arg2;
++ (id)bucketPercentageWithNumber:(id)arg1;
++ (id)bucketNumber:(id)arg1 bucketThresholds:(id)arg2 bucketValues:(id)arg3;
++ (id)constrainInteger:(id)arg1 toMinimum:(id)arg2 andMaximum:(id)arg3;
++ (id)roundNumber:(id)arg1 toSignificantDigits:(id)arg2;
 + (id)roundCount:(id)arg1 toSignificantDigits:(long long)arg2;
++ (id)toFloat:(id)arg1;
++ (id)toInteger:(id)arg1;
++ (_Bool)isDictionary:(id)arg1;
++ (_Bool)isArray:(id)arg1;
++ (_Bool)isBoolean:(id)arg1;
++ (_Bool)isNumber:(id)arg1;
++ (_Bool)isFloat:(id)arg1;
++ (_Bool)isInteger:(id)arg1;
++ (_Bool)isString:(id)arg1;
 
 @end
 

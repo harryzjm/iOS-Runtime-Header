@@ -13,12 +13,18 @@
 
 @interface XCTOSSignpostMetric : NSObject <XCTMetric_Private, XCTMetric>
 {
+    NSString *_instrumentationName;
     MXMOSSignpostMetric *__underlyingMetric;
 }
 
++ (id)scrollDraggingMetric;
++ (id)scrollDecelerationMetric;
++ (id)customNavigationTransitionMetric;
++ (id)navigationTransitionMetric;
 + (id)applicationLaunchMetric;
-@property(retain, nonatomic) MXMOSSignpostMetric *_underlyingMetric; // @synthesize _underlyingMetric=__underlyingMetric;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MXMOSSignpostMetric *_underlyingMetric; // @synthesize _underlyingMetric=__underlyingMetric;
+@property(readonly, nonatomic) NSString *instrumentationName; // @synthesize instrumentationName=_instrumentationName;
 - (id)reportMeasurementsFromStartTime:(id)arg1 toEndTime:(id)arg2 error:(id *)arg3;
 - (void)didStopMeasuringAtTimestamp:(id)arg1;
 - (void)didStartMeasuringAtTimestamp:(id)arg1;

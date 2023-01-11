@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContentKit/WFContentItem.h>
+#import <ContentKit/WFGenericFileContentItem.h>
 
 #import <ActionKit/WFContentItemClass-Protocol.h>
 
-@class AVMetadataMachineReadableCodeObject, NSString;
+@class NSString, WFMachineReadableCode;
 
-@interface WFMachineReadableCodeContentItem : WFContentItem <WFContentItemClass>
+@interface WFMachineReadableCodeContentItem : WFGenericFileContentItem <WFContentItemClass>
 {
     _Bool _prefersImage;
     NSString *_errorCorrectionLevel;
@@ -24,15 +24,15 @@
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (id)qrCodeItemWithString:(id)arg1 errorCorrectionLevel:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *errorCorrectionLevel; // @synthesize errorCorrectionLevel=_errorCorrectionLevel;
 @property(nonatomic) _Bool prefersImage; // @synthesize prefersImage=_prefersImage;
-- (void).cxx_destruct;
 - (id)preferredFileType;
 - (id)preferredObjectType;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (id)generateImageOfSize:(struct CGSize)arg1 withErrorCorrectionLevel:(id)arg2 error:(id *)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
-@property(readonly, nonatomic) AVMetadataMachineReadableCodeObject *codeObject;
+@property(readonly, nonatomic) WFMachineReadableCode *codeObject;
 
 @end
 

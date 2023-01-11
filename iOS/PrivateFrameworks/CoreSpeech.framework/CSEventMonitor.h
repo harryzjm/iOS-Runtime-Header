@@ -23,6 +23,7 @@
 - (void)enumerateObserversInQueue:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (unsigned long long)type;
 - (void)dealloc;
 - (id)init;
 

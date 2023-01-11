@@ -13,11 +13,13 @@
     CKMediaObject *_mediaObject;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 - (id)transcriptTraitCollection;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *transferGUID;
 - (id)dragItemProvider;
+- (id)fileURLForAttachment;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)pasteboardItems;
 - (_Bool)shouldCacheSize;
 - (unsigned long long)balloonCorners;

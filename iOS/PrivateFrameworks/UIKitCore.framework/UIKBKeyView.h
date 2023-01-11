@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     double _endingTransitionDuration;
 }
 
++ (_Bool)wantsScreenTraits;
 @property(nonatomic) _Bool renderAsMask; // @synthesize renderAsMask=_renderAsMask;
 @property(nonatomic) double endingTransitionDuration; // @synthesize endingTransitionDuration=_endingTransitionDuration;
 @property(nonatomic) UIKeyboardMenuView *popupMenu; // @synthesize popupMenu=_popupMenu;
@@ -48,9 +49,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=m_keyplane;
 - (void)changeBackgroundToActiveIfNecessary;
 - (void)changeBackgroundToEnabled;
+- (void)configureBackdropView:(id)arg1 forRenderConfig:(id)arg2;
 - (id)_generateBackdropMaskImage;
 - (_Bool)_canDrawContent;
 - (void)drawContentsOfRenderers:(id)arg1;
+@property(readonly, nonatomic) long long assetIdiom;
 @property(readonly, nonatomic) _Bool keepNonPersistent;
 @property(readonly, nonatomic) double cachedWidth;
 @property(readonly, nonatomic) _Bool cacheDeferable;
@@ -83,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (int)textEffectsVisibilityLevel;
 - (void)dealloc;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 screenTraits:(id)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 
 // Remaining properties

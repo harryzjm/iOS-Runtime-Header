@@ -13,6 +13,7 @@
 - (void)saveToFilesOperation:(_SFSaveToFilesOperation *)arg1 presentViewController:(UIViewController *)arg2;
 
 @optional
+- (_Bool)saveToFilesOperationShouldDismissViewControllerAfterCompletion:(_SFSaveToFilesOperation *)arg1;
 - (_SFActivityItemCustomizationController *)customizationControllerForSaveToFilesOperation:(_SFSaveToFilesOperation *)arg1;
 - (_Bool)saveToFilesOperationSupportsDownloads:(_SFSaveToFilesOperation *)arg1;
 @end

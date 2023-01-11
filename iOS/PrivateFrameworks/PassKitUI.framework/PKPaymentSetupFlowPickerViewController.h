@@ -29,12 +29,13 @@
 + (id)_filteredPaymentSetupProducts:(id)arg1 localCredential:(id)arg2 setupContext:(long long)arg3 webService:(id)arg4 mobileCarrierRegion:(id)arg5;
 + (_Bool)_localCredentials:(id)arg1 containProduct:(id)arg2;
 + (id)paymentSetupFlowPickerWithSetupDelegate:(id)arg1 context:(long long)arg2 provisioningController:(id)arg3;
++ (id)filteredPaymentSetupProductsForProvisioningController:(id)arg1 setupContext:(long long)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property(nonatomic) _Bool hideSetupLaterButton; // @synthesize hideSetupLaterButton=_hideSetupLaterButton;
 @property(readonly, nonatomic) long long setupContext; // @synthesize setupContext=_setupContext;
 @property(readonly, nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property(readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
-- (void).cxx_destruct;
 - (id)paymentSetupMarker;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
@@ -48,7 +49,8 @@
 - (void)_prepareViewControllerForProvsioningFlow:(id)arg1;
 - (void)productSelectionViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)_didSelectProducts:(id)arg1;
+- (void)_didSelectProducts:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)insertPickerSection:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addPickerSection:(id)arg1;
 - (void)addPickerItems:(id)arg1 toSection:(id)arg2;
 - (void)addPickerItem:(id)arg1 toSection:(id)arg2;

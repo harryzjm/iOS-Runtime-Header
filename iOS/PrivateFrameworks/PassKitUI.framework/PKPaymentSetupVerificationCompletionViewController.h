@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPaymentVerificationObserverDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
 @class NSString, PKActivityTableCell, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, PKPaymentVerificationObserver, PKTableHeaderView, UIColor;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupVerificationCompletionViewController <UITextFieldDelegate, PKPaymentVerificationObserverDelegate>
+@interface PKPaymentSetupVerificationCompletionViewController <UITextFieldDelegate, PKPaymentVerificationObserverDelegate, PKForegroundActiveArbiterObserver>
 {
     PKActivityTableCell *_verificationCodeCell;
     _Bool _verificationCodeAccepted;
@@ -21,15 +22,17 @@
     UIColor *_editableTextFieldColor;
     long long _mode;
     _Bool _offerOtherMethods;
+    CDStruct_973bafd3 _foregroundActiveState;
+    _Bool _verificationAlreadyHandled;
     PKPaymentVerificationController *_verificationController;
     PKPaymentProvisioningController *_provisioningController;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property(retain, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property(readonly, nonatomic) PKPaymentVerificationController *verificationController; // @synthesize verificationController=_verificationController;
-- (void).cxx_destruct;
 - (void)_showActivationError:(id)arg1;
 - (void)_showCompletedUIForPass:(id)arg1;
 - (void)_terminateFlow;
@@ -40,6 +43,11 @@
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_performAddToWatchFlow;
 - (void)_handleNextStep;
+- (void)_stopVerificationObserver;
+- (void)_startVerificationObserver;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
+- (void)_applicationWillResignActive;
+- (void)_applicationDidBecomeActive;
 - (void)verificationObserverDidTimeout:(id)arg1;
 - (void)verificationObserver:(id)arg1 didObserveVerificationCode:(id)arg2;
 - (_Bool)textFieldShouldReturn:(id)arg1;

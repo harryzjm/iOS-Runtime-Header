@@ -13,9 +13,9 @@
     PUPhotoViewContentHelper *_contentHelper;
 }
 
-@property(readonly, nonatomic) PUPhotoViewContentHelper *contentHelper; // @synthesize contentHelper=_contentHelper;
 - (void).cxx_destruct;
-- (void)_dynamicUserInterfaceTraitDidChange;
+@property(readonly, nonatomic) PUPhotoViewContentHelper *contentHelper; // @synthesize contentHelper=_contentHelper;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

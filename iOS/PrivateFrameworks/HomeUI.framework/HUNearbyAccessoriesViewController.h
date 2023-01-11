@@ -4,35 +4,50 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMAccessory, HUNearbyAccessoriesItemManager, NSArray, UILabel;
+#import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 
-@interface HUNearbyAccessoriesViewController
+@class HMAccessory, HUNearbyAccessoriesItemManager, NSArray, NSString, UILabel, _UIContentUnavailableView;
+@protocol HUNearbyAccessoriesViewControllerDelegate, HUPresentationDelegate;
+
+@interface HUNearbyAccessoriesViewController <HUPresentationDelegateHost>
 {
     _Bool _supportsQuickControls;
+    id <HUNearbyAccessoriesViewControllerDelegate> _nearbyAccessoriesDelegate;
+    id <HUPresentationDelegate> _presentationDelegate;
     HMAccessory *_currentAccessory;
-    UILabel *_userInfoHeading;
+    _UIContentUnavailableView *_userInfoHeading;
     UILabel *_userInfoDescription;
     NSArray *_userInfoConstraints;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool supportsQuickControls; // @synthesize supportsQuickControls=_supportsQuickControls;
 @property(retain, nonatomic) NSArray *userInfoConstraints; // @synthesize userInfoConstraints=_userInfoConstraints;
 @property(retain, nonatomic) UILabel *userInfoDescription; // @synthesize userInfoDescription=_userInfoDescription;
-@property(retain, nonatomic) UILabel *userInfoHeading; // @synthesize userInfoHeading=_userInfoHeading;
+@property(retain, nonatomic) _UIContentUnavailableView *userInfoHeading; // @synthesize userInfoHeading=_userInfoHeading;
 @property(retain, nonatomic) HMAccessory *currentAccessory; // @synthesize currentAccessory=_currentAccessory;
-@property(nonatomic) _Bool supportsQuickControls; // @synthesize supportsQuickControls=_supportsQuickControls;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
+@property(nonatomic) __weak id <HUNearbyAccessoriesViewControllerDelegate> nearbyAccessoriesDelegate; // @synthesize nearbyAccessoriesDelegate=_nearbyAccessoriesDelegate;
 - (id)layoutOptionsForSection:(long long)arg1;
 - (_Bool)presentationCoordinatorShouldProvideCancellationFeedback:(id)arg1;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
+- (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)doneButtonPressed:(id)arg1;
 - (void)updateViewConstraints;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_updateUserInfo;
+- (void)displayEditor;
 - (void)viewDidLoad;
-- (id)initWithSourceItem:(id)arg1;
+- (id)initWithSourceItem:(id)arg1 supportsQuickControls:(_Bool)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) HUNearbyAccessoriesItemManager *itemManager; // @dynamic itemManager;
+@property(readonly) Class superclass;
 
 @end
 

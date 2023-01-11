@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDMerchantLookupBrandParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDAdamAppIdentifier *_appIdentifier;
     NSString *_merchantCanl;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     NSString *_merchantId;
     NSString *_rawMerchantCode;
     GEOPDWarsawMerchantIdentifier *_warsawIdentifier;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_appIdentifier:1;
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_merchantId:1;
         unsigned int read_rawMerchantCode:1;
         unsigned int read_warsawIdentifier:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_appIdentifier:1;
-        unsigned int wrote_merchantCanl:1;
-        unsigned int wrote_merchantCode:1;
-        unsigned int wrote_merchantId:1;
-        unsigned int wrote_rawMerchantCode:1;
-        unsigned int wrote_warsawIdentifier:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,26 +48,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *merchantCanl;
 @property(readonly, nonatomic) _Bool hasMerchantCanl;
-- (void)_readMerchantCanl;
 @property(retain, nonatomic) NSString *merchantId;
 @property(readonly, nonatomic) _Bool hasMerchantId;
-- (void)_readMerchantId;
 @property(retain, nonatomic) GEOPDAdamAppIdentifier *appIdentifier;
 @property(readonly, nonatomic) _Bool hasAppIdentifier;
-- (void)_readAppIdentifier;
 @property(retain, nonatomic) GEOPDWarsawMerchantIdentifier *warsawIdentifier;
 @property(readonly, nonatomic) _Bool hasWarsawIdentifier;
-- (void)_readWarsawIdentifier;
 @property(retain, nonatomic) NSString *rawMerchantCode;
 @property(readonly, nonatomic) _Bool hasRawMerchantCode;
-- (void)_readRawMerchantCode;
 @property(retain, nonatomic) NSString *merchantCode;
 @property(readonly, nonatomic) _Bool hasMerchantCode;
-- (void)_readMerchantCode;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

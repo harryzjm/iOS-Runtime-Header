@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSURL;
+
 @interface PKApplyWebServiceApplicationsRequest
 {
+    NSURL *_applyServiceURL;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
 - (id)_urlRequestWithServiceURL:(id)arg1 appleAccountInformation:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

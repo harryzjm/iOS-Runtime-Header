@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VCHardwareOperatingModeSettings : NSObject
 {
     unsigned int _usageMode;
+    int _avcOperatingMode;
     _Bool _supportVCPDecoderHEVC;
     _Bool _supportVCPEncoderHEVC;
     _Bool _vcpInitializedForHEVC;
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportVCPDecoderHEVC; // @synthesize supportVCPDecoderHEVC=_supportVCPDecoderHEVC;
 @property(readonly, nonatomic) unsigned int usageMode; // @synthesize usageMode=_usageMode;
 - (void)featureListString;
-- (unsigned int)numTilesPerVideoFrame;
+- (unsigned int)numTilesPerVideoFrameForHDRMode:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithMode:(int)arg1;
 

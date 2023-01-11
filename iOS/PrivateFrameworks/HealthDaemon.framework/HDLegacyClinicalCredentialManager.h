@@ -11,16 +11,16 @@
 
 @interface HDLegacyClinicalCredentialManager : NSObject
 {
-    NSData *__cachedCredentialKey;
+    NSData *_cachedCredentialKey;
     NSObject<OS_dispatch_queue> *_credentialKeyQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *credentialKeyQueue; // @synthesize credentialKeyQueue=_credentialKeyQueue;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *credentialKeyQueue; // @synthesize credentialKeyQueue=_credentialKeyQueue;
 - (_Bool)_error:(id)arg1 isCredentialManagerErrorWithCode:(long long)arg2;
 - (_Bool)_assignCredentialManagerError:(out id *)arg1 code:(long long)arg2 format:(id)arg3;
 - (_Bool)_assignCredentialManagerError:(out id *)arg1 code:(long long)arg2 description:(id)arg3;
-@property(copy, nonatomic, setter=_setCachedCredentialKey:) NSData *_cachedCredentialKey;
+@property(copy, nonatomic) NSData *cachedCredentialKey;
 - (id)_generateRandomBytesOfLength:(long long)arg1 error:(out id *)arg2;
 - (id)_generateInitializationVectorWithError:(out id *)arg1;
 - (id)_generateCredentialKeyWithError:(out id *)arg1;

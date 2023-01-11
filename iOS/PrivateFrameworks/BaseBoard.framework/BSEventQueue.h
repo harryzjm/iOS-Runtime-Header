@@ -21,16 +21,14 @@
     BSEventQueueEvent *_executingEvent;
 }
 
-@property(retain, nonatomic) BSEventQueueEvent *executingEvent; // @synthesize executingEvent=_executingEvent;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) BSEventQueueEvent *executingEvent; // @synthesize executingEvent=_executingEvent;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
-- (void)_removeEventQueueLock:(id)arg1;
-- (void)_addEventQueueLock:(id)arg1;
 - (void)_noteQueueDidDrain;
 - (void)_noteQueueDidUnlock;
 - (void)_noteQueueDidLock;
@@ -38,21 +36,19 @@
 - (void)_noteWillCancelEventsWithName:(id)arg1 count:(unsigned long long)arg2;
 - (void)_noteWillPendEvents:(id)arg1 atPosition:(int)arg2;
 - (_Bool)_shouldProcessEvent:(id)arg1 enqueuedDuringExecutionOfEvent:(id)arg2;
-- (void)_processNextEvent;
 - (_Bool)hasEventWithName:(id)arg1;
 - (_Bool)hasEventWithPrefix:(id)arg1;
 - (void)cancelEventsWithName:(id)arg1;
 - (void)flushAllEvents;
 - (void)flushPendingEvents;
 - (void)flushEvents:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *pendingEvents; // @synthesize pendingEvents=_eventQueue;
+@property(readonly, copy, nonatomic) NSArray *pendingEvents;
 - (void)relinquishLock:(id)arg1;
 - (id)acquireLockForReason:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 @property(readonly, nonatomic, getter=isLocked) _Bool locked;
 - (void)executeOrInsertEvents:(id)arg1 atPosition:(int)arg2;
 - (void)executeOrInsertEvent:(id)arg1 atPosition:(int)arg2;
-- (void)_executeOrPendEvents:(id)arg1 position:(int)arg2;
 @property(readonly, copy) NSString *description;
 - (id)initWithName:(id)arg1 onQueue:(id)arg2;
 - (id)init;

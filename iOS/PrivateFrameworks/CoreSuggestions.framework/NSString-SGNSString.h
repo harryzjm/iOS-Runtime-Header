@@ -8,6 +8,9 @@
 
 @interface NSString (SGNSString)
 - (id)sg_md5Hash;
-- (id)sg_deepCopy;
+- (id)sg_dataEnumeratorUsingEncoding:(unsigned long long)arg1 nullTerminated:(_Bool)arg2;
+- (id)sg_dataEnumeratorUsingEncoding:(unsigned long long)arg1;
+- (void)sg_streamBytesUsingEncoding:(unsigned long long)arg1 nullTerminated:(_Bool)arg2 toBlock:(CDUnknownBlockType)arg3;
+- (void)sg_streamBytesUsingEncoding:(unsigned long long)arg1 toBlock:(CDUnknownBlockType)arg2;
 @end
 

@@ -4,55 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <OnBoardingKit/OBWelcomeFullCenterContentController.h>
 
-#import <AvatarUI/AVTSplashScreenLayoutDelegate-Protocol.h>
-
-@class AVPlayerLooper, AVPlayerViewController, AVQueuePlayer, AVTSplashScreenConfiguration, AVTSplashScreenLayout, AVTUIStyle, UIButton, UILabel, UIScrollView;
+@class AVPlayerLooper, AVPlayerViewController, AVQueuePlayer, AVTSplashScreenConfiguration, NSLayoutConstraint, OBBoldTrayButton, UIView;
 @protocol AVTSplashScreenViewControllerDelegate;
 
-@interface AVTSplashScreenViewController : UIViewController <AVTSplashScreenLayoutDelegate>
+@interface AVTSplashScreenViewController : OBWelcomeFullCenterContentController
 {
+    _Bool _isPlayingVideos;
     id <AVTSplashScreenViewControllerDelegate> _delegate;
-    UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
-    UIButton *_continueButton;
-    UIScrollView *_scrollView;
+    OBBoldTrayButton *_continueButton;
+    UIView *_videoContentView;
     AVTSplashScreenConfiguration *_configuration;
-    AVTUIStyle *_styleProvider;
     AVPlayerLooper *_playerLooper;
     AVQueuePlayer *_queuePlayer;
     AVPlayerViewController *_playerViewController;
     AVPlayerLooper *_secondaryPlayerLooper;
     AVQueuePlayer *_secondaryQueuePlayer;
     AVPlayerViewController *_secondaryPlayerViewController;
-    AVTSplashScreenLayout *_currentLayout;
+    NSLayoutConstraint *_videoContentWidthConstraint;
+    NSLayoutConstraint *_videoContentHeightConstraint;
 }
 
-@property(retain, nonatomic) AVTSplashScreenLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *videoContentHeightConstraint; // @synthesize videoContentHeightConstraint=_videoContentHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *videoContentWidthConstraint; // @synthesize videoContentWidthConstraint=_videoContentWidthConstraint;
 @property(retain, nonatomic) AVPlayerViewController *secondaryPlayerViewController; // @synthesize secondaryPlayerViewController=_secondaryPlayerViewController;
 @property(retain, nonatomic) AVQueuePlayer *secondaryQueuePlayer; // @synthesize secondaryQueuePlayer=_secondaryQueuePlayer;
 @property(retain, nonatomic) AVPlayerLooper *secondaryPlayerLooper; // @synthesize secondaryPlayerLooper=_secondaryPlayerLooper;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 @property(retain, nonatomic) AVQueuePlayer *queuePlayer; // @synthesize queuePlayer=_queuePlayer;
 @property(retain, nonatomic) AVPlayerLooper *playerLooper; // @synthesize playerLooper=_playerLooper;
-@property(retain, nonatomic) AVTUIStyle *styleProvider; // @synthesize styleProvider=_styleProvider;
+@property(nonatomic) _Bool isPlayingVideos; // @synthesize isPlayingVideos=_isPlayingVideos;
 @property(retain, nonatomic) AVTSplashScreenConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property(retain, nonatomic) UIButton *continueButton; // @synthesize continueButton=_continueButton;
-@property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIView *videoContentView; // @synthesize videoContentView=_videoContentView;
+@property(retain, nonatomic) OBBoldTrayButton *continueButton; // @synthesize continueButton=_continueButton;
 @property(nonatomic) __weak id <AVTSplashScreenViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)splashScreenLayoutDidChange:(id)arg1;
+- (void)stopPlayingVideos;
+- (void)startPlayingVideos;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)detachVideoControllerAndLooper;
+@property(readonly, nonatomic) AVPlayerViewController *primaryVideoController;
+@property(readonly, nonatomic) AVPlayerLooper *primaryVideoLooper;
 - (void)didTapContinueButton:(id)arg1;
-- (void)applyLayout:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (double)desiredHeightForVideoContent;
 - (void)viewDidLoad;
+- (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 styleProvider:(id)arg2;
-- (id)init;
+- (id)initWithDefaultConfiguration;
 
 @end
 

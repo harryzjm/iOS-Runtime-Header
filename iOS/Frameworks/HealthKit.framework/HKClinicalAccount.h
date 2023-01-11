@@ -15,7 +15,6 @@
 @interface HKClinicalAccount : NSObject <NSCopying, NSSecureCoding, HKClinicalBrandable>
 {
     _Bool _userEnabled;
-    _Bool _needsRelogin;
     NSUUID *_identifier;
     long long _state;
     NSDate *_lastFetchDate;
@@ -24,24 +23,25 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) HKClinicalGateway *gateway; // @synthesize gateway=_gateway;
 @property(readonly, copy, nonatomic) NSDate *lastFullFetchDate; // @synthesize lastFullFetchDate=_lastFullFetchDate;
 @property(readonly, copy, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
-@property(readonly, nonatomic) _Bool needsRelogin; // @synthesize needsRelogin=_needsRelogin;
 @property(readonly, nonatomic, getter=isUserEnabled) _Bool userEnabled; // @synthesize userEnabled=_userEnabled;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool needsRelogin;
+@property(readonly, nonatomic) _Bool needsScopeUpgrade;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic) HKClinicalBrand *brand;
 @property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, copy) NSString *description;
-- (id)initWithIdentifier:(id)arg1 state:(long long)arg2 userEnabled:(_Bool)arg3 needsRelogin:(_Bool)arg4 lastFetchDate:(id)arg5 lastFullFetchDate:(id)arg6 gateway:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 state:(long long)arg2 userEnabled:(_Bool)arg3 lastFetchDate:(id)arg4 lastFullFetchDate:(id)arg5 gateway:(id)arg6;
 - (id)init;
 
 // Remaining properties

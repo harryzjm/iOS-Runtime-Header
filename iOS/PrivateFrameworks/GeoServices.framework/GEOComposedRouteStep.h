@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray, NSString;
+@class GEOComposedRoute, GEOComposedRouteEVStepInfo, GEOComposedRouteSegment, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOJunction, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray, NSString;
 @protocol GEOTransitArtworkDataSource;
 
 @interface GEOComposedRouteStep : NSObject <NSSecureCoding>
@@ -21,27 +21,31 @@
     struct _NSRange _maneuverPointRange;
     NSString *_maneuverRoadOrExitName;
     NSString *_maneuverRoadName;
-    unsigned int _actualDistance;
-    long long _routeLegType;
+    double _actualDistance;
+    long long _routeSegmentType;
+    GEOJunction *_junction;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) unsigned int actualDistance; // @synthesize actualDistance=_actualDistance;
+- (void).cxx_destruct;
+@property(nonatomic) double actualDistance; // @synthesize actualDistance=_actualDistance;
 @property(nonatomic) __weak GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
 @property(readonly, nonatomic) struct _NSRange maneuverPointRange; // @synthesize maneuverPointRange=_maneuverPointRange;
-@property(readonly, nonatomic) long long routeLegType; // @synthesize routeLegType=_routeLegType;
+@property(readonly, nonatomic) long long routeSegmentType; // @synthesize routeSegmentType=_routeSegmentType;
 @property(readonly, nonatomic) struct _NSRange pointRange; // @synthesize pointRange=_pointRange;
 @property(readonly, nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
+@property(readonly, nonatomic) GEOJunction *junction; // @synthesize junction=_junction;
 @property(readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
 @property(readonly, nonatomic) GEOStep *geoStep; // @synthesize geoStep=_geoStep;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
+@property(readonly, nonatomic) GEOComposedRouteEVStepInfo *evInfo;
 - (_Bool)_MapsCarPlay_isEqual:(id)arg1;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> routeDetailsSecondaryArtwork;
 @property(readonly, nonatomic) NSArray *routeDetailsPrimaryArtwork;
 @property(readonly, nonatomic) NSArray *steppingArtwork;
+@property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artworkOverride;
 @property(readonly, nonatomic) GEOInstructionSet *instructions;
 @property(readonly, nonatomic) GEOTransitStep *transitStep;
 - (id)firstNameOrBranch;
@@ -57,7 +61,7 @@
 @property(readonly, nonatomic) GEOPBTransitStop *startingStop;
 @property(readonly, nonatomic, getter=getNextStep) GEOComposedRouteStep *nextStep;
 @property(readonly, nonatomic, getter=getPreviousStep) GEOComposedRouteStep *previousStep;
-@property(readonly, nonatomic) unsigned int distance;
+@property(readonly, nonatomic) double distance;
 @property(readonly, nonatomic) unsigned int stepID;
 @property(readonly, nonatomic) unsigned int duration;
 @property(readonly, nonatomic) _Bool hasDuration;
@@ -65,6 +69,7 @@
 @property(readonly, nonatomic) CDStruct_39925896 startGeoCoordinate;
 @property(readonly, nonatomic) _Bool isArrivalStep;
 @property(readonly, nonatomic) _Bool isUncertainArrival;
+@property(readonly, nonatomic) unsigned long long pathIndex;
 @property(readonly, nonatomic) NSString *maneuverRoadName;
 @property(readonly, nonatomic) NSString *maneuverRoadOrExitName;
 @property(readonly, nonatomic) unsigned int maneuverEndPointIndex;
@@ -72,10 +77,11 @@
 @property(readonly, nonatomic) unsigned int pointCount;
 @property(readonly, nonatomic) unsigned int endPointIndex;
 @property(readonly, nonatomic) unsigned int startPointIndex;
+@property(readonly, nonatomic) int maneuverType;
 @property(readonly, nonatomic) int transportType;
-@property(readonly, nonatomic) GEOComposedRouteLeg *leg;
-- (id)initWithComposedRoute:(id)arg1 GEOStep:(id)arg2 routeLegType:(long long)arg3 stepIndex:(unsigned long long)arg4 pointRange:(struct _NSRange)arg5 maneuverPointRange:(struct _NSRange)arg6;
-- (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4;
+@property(readonly, nonatomic) GEOComposedRouteSegment *segment;
+- (id)initWithComposedRoute:(id)arg1 geoRouteLeg:(id)arg2 geoStep:(id)arg3 routeSegmentType:(long long)arg4 stepIndex:(unsigned long long)arg5 pointRange:(struct _NSRange)arg6 maneuverPointRange:(struct _NSRange)arg7;
+- (id)initWithComposedRoute:(id)arg1 routeSegmentType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4;
 - (_Bool)shouldPreloadWithHighPriority;
 - (_Bool)_belongsToTransferGroup;
 @property(readonly, nonatomic) _Bool shouldCreateArrivalGroup;

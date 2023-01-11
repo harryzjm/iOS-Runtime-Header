@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)selectLanguage:(id)arg1;
+- (void)_selectLanguage:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

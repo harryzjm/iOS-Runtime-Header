@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <MetalKit/MTLDrawable-Protocol.h>
+#import <MetalKit/CAMetalDrawable-Protocol.h>
 
 @class CAMetalLayer, NSString;
 @protocol MTLDevice, MTLTexture;
 
 __attribute__((visibility("hidden")))
-@interface MTKOffscreenDrawable : NSObject <MTLDrawable>
+@interface MTKOffscreenDrawable : NSObject <CAMetalDrawable>
 {
     id <MTLTexture> _texture;
     unsigned long long _pixelFormat;
@@ -24,15 +24,15 @@ __attribute__((visibility("hidden")))
     id <MTLDevice> _device;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
 @property(readonly, nonatomic) unsigned long long drawableID; // @synthesize drawableID=_drawableID;
 @property(readonly, nonatomic) double presentedTime; // @synthesize presentedTime=_presentedTime;
 @property(readonly) CAMetalLayer *layer; // @synthesize layer=_layer;
-- (void).cxx_destruct;
 - (void)addPresentedHandler:(CDUnknownBlockType)arg1;
 @property(nonatomic) struct CGSize size;
 @property(nonatomic) unsigned long long pixelFormat;
-- (id)texture;
+@property(readonly) id <MTLTexture> texture;
 - (void)presentAtTime:(double)arg1;
 - (void)presentAfterMinimumDuration:(double)arg1;
 - (void)present;

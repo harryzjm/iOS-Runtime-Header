@@ -19,11 +19,12 @@
     unsigned int _wordID;
     double _recognitionScore;
     double _combinedScore;
+    double _alignmentScore;
     unsigned long long _properties;
     long long _substrokeCount;
 }
 
-+ (id)tokenWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 properties:(unsigned long long)arg6 substrokeCount:(long long)arg7;
++ (id)tokenWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 alignmentScore:(double)arg6 properties:(unsigned long long)arg7 substrokeCount:(long long)arg8;
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) unsigned int wordID; // @synthesize wordID=_wordID;
 @property(readonly, copy, nonatomic) NSIndexSet *strokeIndexes; // @synthesize strokeIndexes=_strokeIndexes;
@@ -38,10 +39,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 properties:(unsigned long long)arg6 substrokeCount:(long long)arg7;
+- (id)initWithString:(id)arg1 strokeIndexes:(id)arg2 wordID:(unsigned int)arg3 recognitionScore:(double)arg4 combinedScore:(double)arg5 alignmentScore:(double)arg6 properties:(unsigned long long)arg7 substrokeCount:(long long)arg8;
 - (id)init;
 @property(readonly, nonatomic) long long substrokeCount;
 @property(readonly, nonatomic) unsigned long long properties;
+@property(readonly, nonatomic) double alignmentScore;
 @property(readonly, nonatomic) double combinedScore;
 @property(readonly, nonatomic) double recognitionScore;
 

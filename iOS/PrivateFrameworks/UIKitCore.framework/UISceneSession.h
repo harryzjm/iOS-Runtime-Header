@@ -27,16 +27,17 @@
         unsigned int _trackingSessionRequest:1;
         unsigned int _configurationIsDirty:1;
         unsigned int _userInfoIsDirty:1;
+        unsigned int _isInternal:1;
     } _sessionFlags;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)canvasRepresentationForSystemType:(long long)arg1;
 + (id)defaultCanvasRepresentation;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property(readonly, nonatomic) NSString *role; // @synthesize role=_role;
 @property(readonly, nonatomic) __weak UIScene *scene; // @synthesize scene=_scene;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)_copyWithoutUserInfo;
@@ -50,6 +51,7 @@
 - (void)_resetStateRestorationToActivity:(id)arg1;
 - (void)_updateConfiguration:(id)arg1;
 @property(readonly, nonatomic) _Bool _configurationNeedsReevalulation;
+@property(readonly, nonatomic, getter=_isInternal) _Bool _internal;
 - (void)_setScene:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

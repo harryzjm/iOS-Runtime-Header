@@ -10,17 +10,18 @@
 
 @class MISSING_TYPE, NSDate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI219MagazineFeedArticle : NSObject <FCHeadlineMetadata>
 {
     MISSING_TYPE *articleID;
     MISSING_TYPE *title;
     MISSING_TYPE *displayDate;
     MISSING_TYPE *storyType;
+    MISSING_TYPE *shortExcerpt;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, readonly) NSString *shortExcerpt;
 @property(nonatomic, readonly) NSString *storyType;
 @property(nonatomic, readonly) NSDate *displayDate;
 @property(nonatomic, readonly) NSString *title;

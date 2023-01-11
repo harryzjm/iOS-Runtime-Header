@@ -7,22 +7,23 @@
 #import <objc/NSObject.h>
 
 @class CoreTelephonyClient, RadiosPreferences;
-@protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface HKMobileCountryCodeManager : NSObject
 {
     CoreTelephonyClient *_coreTelephonyClient;
     struct __CTServerConnection *_coreTelephonyServerConnection;
-    NSObject<OS_dispatch_queue> *_backgroundQueryQueue;
     RadiosPreferences *_radiosPreferences;
 }
 
-@property(readonly, nonatomic) RadiosPreferences *radiosPreferences; // @synthesize radiosPreferences=_radiosPreferences;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueryQueue; // @synthesize backgroundQueryQueue=_backgroundQueryQueue;
-@property(nonatomic) struct __CTServerConnection *coreTelephonyServerConnection; // @synthesize coreTelephonyServerConnection=_coreTelephonyServerConnection;
-@property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 - (void).cxx_destruct;
+- (id)_copyISOForMCC:(id)arg1 error:(id *)arg2;
+- (id)_overriddenISOMobileCountryCode;
+- (id)_overriddenMobileCountryCode;
+- (id)_wrapperWithMobileCountryCode:(id)arg1 error:(id *)arg2;
+- (id)_resolveMobileCountryCodeOverridesWithError:(id *)arg1;
+- (_Bool)_isLocationAvailableWithError:(id *)arg1;
+- (id)mobileCountryCodeFromCellularWithError:(id *)arg1;
+- (void)fetchMobileCountryCodeFromCellularWithCompletion:(CDUnknownBlockType)arg1;
 - (void)currentMobileCountryCodeFromCellularWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 

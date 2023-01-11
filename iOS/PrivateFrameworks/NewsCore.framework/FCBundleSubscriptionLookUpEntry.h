@@ -13,14 +13,19 @@
     _Bool _hasShownRenewalNotice;
     _Bool _inTrialPeriod;
     _Bool _isPurchaser;
+    _Bool _isAmplifyUser;
     NSString *_identifier;
     NSString *_purchaseID;
     NSDate *_dateOfExpiration;
     unsigned long long _purchaseValidationState;
+    NSString *_servicesBundlePurchaseID;
     NSArray *_bundleChannelIDs;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
+@property(copy, nonatomic) NSString *servicesBundlePurchaseID; // @synthesize servicesBundlePurchaseID=_servicesBundlePurchaseID;
+@property(nonatomic) _Bool isAmplifyUser; // @synthesize isAmplifyUser=_isAmplifyUser;
 @property(nonatomic) _Bool isPurchaser; // @synthesize isPurchaser=_isPurchaser;
 @property(nonatomic) _Bool inTrialPeriod; // @synthesize inTrialPeriod=_inTrialPeriod;
 @property(nonatomic) _Bool hasShownRenewalNotice; // @synthesize hasShownRenewalNotice=_hasShownRenewalNotice;
@@ -28,14 +33,13 @@
 @property(copy, nonatomic) NSDate *dateOfExpiration; // @synthesize dateOfExpiration=_dateOfExpiration;
 @property(copy, nonatomic) NSString *purchaseID; // @synthesize purchaseID=_purchaseID;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)bundleSubscription;
 - (id)dictionaryRepresentation;
 - (id)initWithEntryID:(id)arg1 dictionaryRepresentation:(id)arg2;
-- (id)initWithEntryID:(id)arg1 bundleChannelIDs:(id)arg2 purchaseID:(id)arg3 purchaseValidationState:(unsigned long long)arg4 dateOfExpiration:(id)arg5 hasShownRenewalNotice:(_Bool)arg6 inTrialPeriod:(_Bool)arg7 isPurchaser:(_Bool)arg8;
+- (id)initWithEntryID:(id)arg1 bundleChannelIDs:(id)arg2 purchaseID:(id)arg3 purchaseValidationState:(unsigned long long)arg4 dateOfExpiration:(id)arg5 hasShownRenewalNotice:(_Bool)arg6 inTrialPeriod:(_Bool)arg7 isPurchaser:(_Bool)arg8 servicesBundlePurchaseID:(id)arg9 isAmplifyUser:(_Bool)arg10;
 
 @end
 

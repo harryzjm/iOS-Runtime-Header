@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDProfile, HDWorkoutSessionConfiguration, NSData, NSDate, NSString;
+@class CMWorkoutManager, HDProfile, HDWorkoutSessionConfiguration, NSData, NSDate, NSString;
 @protocol HDWorkoutDataAccumulator, HDWorkoutSessionStateController;
 
 @protocol HDWorkoutSessionController
 + (void)willFinishSessionWithRecoveryData:(NSData *)arg1 profile:(HDProfile *)arg2;
 + (NSString *)recoveryIdentifier;
+- (void)unitTest_setCMWorkoutManager:(CMWorkoutManager *)arg1;
 - (void)hktest_setStateTransitionCompletionHandler:(void (^)(long long, long long))arg1;
 - (void)workoutSessionServer:(id <HDWorkoutSessionStateController>)arg1 accumulatorDidChange:(id <HDWorkoutDataAccumulator>)arg2;
 - (void)workoutSessionServer:(id <HDWorkoutSessionStateController>)arg1 didTransitionFromState:(long long)arg2 toState:(long long)arg3 date:(NSDate *)arg4;

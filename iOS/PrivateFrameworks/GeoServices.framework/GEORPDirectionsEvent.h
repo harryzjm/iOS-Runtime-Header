@@ -13,13 +13,15 @@
 @interface GEORPDirectionsEvent : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     long long _errorCode;
     NSString *_errorDomain;
     GEOLatLng *_occurrenceLatLng;
     NSData *_occurrenceRouteId;
     NSData *_switchedToRouteId;
     NSString *_synthesizedStepInstructions;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _occurrenceResponseIndex;
     unsigned int _occurrenceStepIndex;
     unsigned int _switchedToResponseIndex;
@@ -37,17 +39,7 @@
         unsigned int read_occurrenceRouteId:1;
         unsigned int read_switchedToRouteId:1;
         unsigned int read_synthesizedStepInstructions:1;
-        unsigned int wrote_errorCode:1;
-        unsigned int wrote_errorDomain:1;
-        unsigned int wrote_occurrenceLatLng:1;
-        unsigned int wrote_occurrenceRouteId:1;
-        unsigned int wrote_switchedToRouteId:1;
-        unsigned int wrote_synthesizedStepInstructions:1;
-        unsigned int wrote_occurrenceResponseIndex:1;
-        unsigned int wrote_occurrenceStepIndex:1;
-        unsigned int wrote_switchedToResponseIndex:1;
-        unsigned int wrote_synthesizedStepManeuverType:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -61,39 +53,39 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasErrorCode;
 @property(nonatomic) long long errorCode;
 @property(retain, nonatomic) NSString *errorDomain;
 @property(readonly, nonatomic) _Bool hasErrorDomain;
-- (void)_readErrorDomain;
 @property(retain, nonatomic) NSString *synthesizedStepInstructions;
 @property(readonly, nonatomic) _Bool hasSynthesizedStepInstructions;
-- (void)_readSynthesizedStepInstructions;
 - (int)StringAsSynthesizedStepManeuverType:(id)arg1;
 - (id)synthesizedStepManeuverTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasSynthesizedStepManeuverType;
 @property(nonatomic) int synthesizedStepManeuverType;
 @property(retain, nonatomic) NSData *switchedToRouteId;
 @property(readonly, nonatomic) _Bool hasSwitchedToRouteId;
-- (void)_readSwitchedToRouteId;
 @property(nonatomic) _Bool hasSwitchedToResponseIndex;
 @property(nonatomic) unsigned int switchedToResponseIndex;
 @property(retain, nonatomic) GEOLatLng *occurrenceLatLng;
 @property(readonly, nonatomic) _Bool hasOccurrenceLatLng;
-- (void)_readOccurrenceLatLng;
 @property(nonatomic) _Bool hasOccurrenceStepIndex;
 @property(nonatomic) unsigned int occurrenceStepIndex;
 @property(retain, nonatomic) NSData *occurrenceRouteId;
 @property(readonly, nonatomic) _Bool hasOccurrenceRouteId;
-- (void)_readOccurrenceRouteId;
 @property(nonatomic) _Bool hasOccurrenceResponseIndex;
 @property(nonatomic) unsigned int occurrenceResponseIndex;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

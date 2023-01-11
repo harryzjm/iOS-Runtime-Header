@@ -6,10 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
 @class CKRecordID, HMDBackingStoreCacheGroup, HMDCloudCache, HMDCloudRecord, HMDCloudZone, NSMutableDictionary, NSString, NSUUID;
 
-@interface HMDCloudGroup : HMFObject
+@interface HMDCloudGroup : HMFObject <HMFLogging>
 {
+    _Bool _doRecordsExistInCache;
     HMDCloudCache *_cache;
     HMDCloudZone *_cloudZone;
     NSUUID *_ownerID;
@@ -18,25 +21,30 @@
     NSMutableDictionary *_objectIDToRecordNameMap;
 }
 
++ (id)logCategory;
 + (id)shortDescription;
 + (void)createGroupWithRootRecordName:(id)arg1 owner:(id)arg2 subscriptionName:(id)arg3 cloudZone:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *objectIDToRecordNameMap; // @synthesize objectIDToRecordNameMap=_objectIDToRecordNameMap;
 @property(retain, nonatomic) HMDBackingStoreCacheGroup *backingStoreGroup; // @synthesize backingStoreGroup=_backingStoreGroup;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSUUID *ownerID; // @synthesize ownerID=_ownerID;
 @property(nonatomic) __weak HMDCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property(nonatomic) __weak HMDCloudCache *cache; // @synthesize cache=_cache;
-- (void).cxx_destruct;
 - (void)deleteCloudRecord:(id)arg1;
 - (void)deleteCloudRecordNames:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateCloudRecord:(id)arg1;
 - (void)addCloudRecord:(id)arg1;
 - (id)__cloudRecordWithObjectID:(id)arg1;
 - (id)cloudRecordWithObjectID:(id)arg1;
 - (id)cloudRecordWithName:(id)arg1;
+@property(readonly) _Bool doRecordsExistInCache;
 @property(readonly, nonatomic) HMDCloudRecord *rootRecord;
 - (void)rootRecordCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_cloudRecordsForParentIDs:(id)arg1 recursive:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)cloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -49,10 +57,16 @@
 @property(readonly, nonatomic) NSUUID *rootRecordObjectID;
 @property(readonly, nonatomic) NSUUID *parentIdentifier;
 @property(readonly, nonatomic) NSString *rootRecordName;
-- (id)description;
+- (id)logIdentifier;
+@property(readonly, copy) NSString *description;
 - (id)shortDescription;
 - (id)initWithBackingStoreCacheGroup:(id)arg1 cloudZone:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

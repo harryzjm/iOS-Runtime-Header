@@ -6,17 +6,21 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @protocol PLVideoResource <NSObject>
+- (NSString *)uniformTypeIdentifier;
+- (_Bool)hasAssociatedMediaMetadata;
 - (NSURL *)fileURLIfLocal;
 - (_Bool)matchesOrExceedsQualityLevel:(unsigned int)arg1;
 - (_Bool)isOriginalVideoComplement;
+- (_Bool)isOriginalVideo;
 - (_Bool)isMediumHighQuality;
 - (_Bool)isPlayable;
-- (_Bool)isRemotelyAvailable;
+- (_Bool)isDownloadable;
 - (_Bool)isStreamable;
 - (_Bool)isLocallyGeneratable;
 - (_Bool)isLocallyAvailable;
+- (unsigned int)version;
 @end
 

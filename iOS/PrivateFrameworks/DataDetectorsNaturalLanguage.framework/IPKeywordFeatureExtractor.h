@@ -8,6 +8,7 @@
 {
 }
 
+- (id)queue;
 - (id)_matchingKeywordsForRegex:(id)arg1 inText:(id)arg2 message:(id)arg3 eventType:(id)arg4 keywordType:(unsigned long long)arg5;
 - (id)matchesForTextString:(id)arg1 inMessageUnit:(id)arg2 eventType:(id)arg3 keywordType:(unsigned long long)arg4;
 - (id)matchesForTextString:(id)arg1 inMessageUnit:(id)arg2 eventType:(id)arg3;

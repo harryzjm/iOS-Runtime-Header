@@ -15,6 +15,7 @@
 + (id)__keepLocalManagedStatus_KEY;
 + (id)__keepLocalEnableState_KEY;
 + (id)__libraryAddEligible_KEY;
++ (id)__lastDevicePlaybackDate_KEY;
 + (id)__libraryAddedDate_KEY;
 + (id)__libraryAdded_KEY;
 + (id)__episodeTypeDisplayName_KEY;
@@ -41,8 +42,6 @@
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
-+ (_Bool)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
 - (id)artworkCatalog;
 - (id)humanDescription;
 - (id)mediaItemPropertyValues;
@@ -65,6 +64,7 @@
 @property(nonatomic) _Bool hasCloudSyncSource; // @dynamic hasCloudSyncSource;
 @property(nonatomic) long long keepLocalEnableState; // @dynamic keepLocalEnableState;
 @property(nonatomic) long long keepLocalManagedStatus; // @dynamic keepLocalManagedStatus;
+@property(readonly, copy, nonatomic) NSDate *lastDevicePlaybackDate; // @dynamic lastDevicePlaybackDate;
 @property(nonatomic, getter=isLibraryAddEligible) _Bool libraryAddEligible; // @dynamic libraryAddEligible;
 @property(nonatomic, getter=isLibraryAdded) _Bool libraryAdded; // @dynamic libraryAdded;
 @property(copy, nonatomic) NSDate *libraryAddedDate; // @dynamic libraryAddedDate;

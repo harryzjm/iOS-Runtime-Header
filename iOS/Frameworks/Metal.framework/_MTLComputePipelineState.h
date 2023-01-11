@@ -18,20 +18,32 @@
     MTLIndirectArgumentBufferEmulationData *_iabEmulationData;
     MTLDebugInstrumentationData *_debugInstrumentationData;
     _Bool _supportIndirectCommandBuffers;
+    long long _textureWriteRoundingMode;
     unsigned long long _resourceIndex;
+    unsigned long long _gpuAddress;
 }
 
-@property(nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
 @property(retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData; // @synthesize debugInstrumentationData=_debugInstrumentationData;
 @property(retain, nonatomic) MTLIndirectArgumentBufferEmulationData *IABEmulationData; // @synthesize IABEmulationData=_iabEmulationData;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
 @property(readonly) NSString *label; // @synthesize label=_label;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (id)functionHandleWithFunction:(id)arg1;
+- (id)functionPointerHandlesWithFunctions:(id)arg1 range:(struct _NSRange)arg2;
+- (id)functionPointerHandleWithFunction:(id)arg1;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_da2e99ad)arg1;
+- (long long)textureWriteFPRoundingMode;
+@property(readonly) long long textureWriteRoundingMode;
 @property(readonly) _Bool supportIndirectCommandBuffers;
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly, copy) NSString *description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
+- (id)initWithParent:(id)arg1;
 - (id)initWithDevice:(id)arg1 pipelineStateDescriptor:(id)arg2;
 
 // Remaining properties

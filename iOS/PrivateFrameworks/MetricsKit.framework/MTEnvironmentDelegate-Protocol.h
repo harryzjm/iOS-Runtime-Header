@@ -38,6 +38,7 @@
 - (id <NSObject>)capacityData;
 - (id <NSObject>)appVersion;
 - (id <NSObject>)app;
+- (_Bool)isAnonymous;
 
 @optional
 - (id <NSObject>)parentPageUrl;

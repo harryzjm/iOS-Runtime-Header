@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class HKInspectableValue, NSArray, NSString;
 
-@interface HKInspectableValueCollection : NSObject <NSSecureCoding, NSCopying>
+@interface HKInspectableValueCollection : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
     long long _collectionType;
     NSArray *_collection;
@@ -26,14 +27,17 @@
 + (id)inspectableValueCollectionRangeWithMin:(id)arg1;
 + (id)inspectableValueCollectionRangeWithMin:(id)arg1 max:(id)arg2;
 + (id)inspectableValueCollectionSingleWithValue:(id)arg1;
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *elementTags; // @synthesize elementTags=_elementTags;
 @property(readonly, nonatomic) NSArray *collection; // @synthesize collection=_collection;
 @property(readonly, nonatomic) long long collectionType; // @synthesize collectionType=_collectionType;
-- (void).cxx_destruct;
+- (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)_assertCollectionType;
 - (id)valuesWithTag:(id)arg1;
@@ -42,10 +46,14 @@
 @property(readonly, nonatomic) HKInspectableValue *max;
 @property(readonly, nonatomic) HKInspectableValue *min;
 @property(readonly, nonatomic) HKInspectableValue *inspectableValue;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)_initWithCollectionType:(long long)arg1 collection:(id)arg2 tags:(id)arg3;
 - (id)_initWithCollectionType:(long long)arg1 collection:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

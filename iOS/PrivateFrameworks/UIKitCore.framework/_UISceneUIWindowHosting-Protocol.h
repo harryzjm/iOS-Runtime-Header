@@ -6,11 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, UIScreen, UITraitCollection, UIWindow;
+@class NSArray, UIScreen, UIStatusBarManager, UITraitCollection, UIWindow;
 @protocol UICoordinateSpace;
 
 @protocol _UISceneUIWindowHosting <NSObject>
 + (_Bool)_hostsWindows;
+@property(readonly, nonatomic) UIStatusBarManager *_statusBarManager;
 @property(readonly, nonatomic) UITraitCollection *_traitCollection;
 @property(readonly, nonatomic) id <UICoordinateSpace> _coordinateSpace;
 @property(readonly, nonatomic) long long _interfaceOrientation;
@@ -21,5 +22,6 @@
 - (void)_updateVisibleWindowOrderWithTest:(_Bool (^)(UIWindow *))arg1;
 - (void)_detachWindow:(UIWindow *)arg1;
 - (void)_attachWindow:(UIWindow *)arg1;
+- (void)_screenDidChangeFromScreen:(UIScreen *)arg1 toScreen:(UIScreen *)arg2;
 @end
 

@@ -10,6 +10,7 @@
 {
 }
 
+- (id)appIdentifier;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)resourceAvailabilityChanged;
 - (void)wasRemovedFromWorkflow:(id)arg1;

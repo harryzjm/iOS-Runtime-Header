@@ -8,14 +8,29 @@
 
 @interface PGGraphAddressEdge
 {
+    float _weight;
+    double _timestampUTCStart;
+    double _timestampUTCEnd;
+    struct CLLocationCoordinate2D _photoCoordinate;
 }
 
-@property(readonly, nonatomic) CLLocation *photoLocation;
-@property(readonly, nonatomic) struct CLLocationCoordinate2D photoCoordinate;
-@property(readonly, nonatomic) NSDate *universalEndDate;
-@property(readonly, nonatomic) NSDate *universalStartDate;
-@property(readonly, nonatomic) double timestampUTCEnd;
-@property(readonly, nonatomic) double timestampUTCStart;
++ (id)filter;
+@property(nonatomic) struct CLLocationCoordinate2D photoCoordinate; // @synthesize photoCoordinate=_photoCoordinate;
+@property(readonly, nonatomic) double timestampUTCEnd; // @synthesize timestampUTCEnd=_timestampUTCEnd;
+@property(readonly, nonatomic) double timestampUTCStart; // @synthesize timestampUTCStart=_timestampUTCStart;
+- (void)setWeight:(float)arg1;
+- (float)weight;
+@property(retain, nonatomic) CLLocation *photoLocation;
+@property(retain, nonatomic) NSDate *universalEndDate;
+@property(retain, nonatomic) NSDate *universalStartDate;
+- (unsigned short)domain;
+- (id)label;
+- (id)edgeDescription;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 fromMomentNode:(id)arg2 toAddressNode:(id)arg3 weight:(float)arg4;
 
 @end
 

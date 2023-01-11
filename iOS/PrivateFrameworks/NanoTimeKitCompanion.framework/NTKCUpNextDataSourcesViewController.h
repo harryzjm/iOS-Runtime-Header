@@ -17,8 +17,6 @@
 
 - (void).cxx_destruct;
 - (void)_setAndResizeIconImage:(id)arg1 forSpecifier:(id)arg2;
-- (void)dataSourcesSectionDidFinishLoading:(id)arg1;
-- (void)dataSourcesSection:(id)arg1 didChangeDataSources:(id)arg2 forMode:(long long)arg3;
 - (id)_dataSourceEnabled:(id)arg1;
 - (void)_setDataSourceEnabled:(id)arg1 withSpecifier:(id)arg2;
 - (void)_disabledDataSourcesDidChange;

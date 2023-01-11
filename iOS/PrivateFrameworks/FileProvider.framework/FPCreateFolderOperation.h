@@ -11,11 +11,13 @@
     FPItem *_parentItem;
     NSString *_folderFilename;
     FPItemID *_placeholderID;
+    _Bool _shouldBounceOnCollision;
     CDUnknownBlockType _createFolderCompletionBlock;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType createFolderCompletionBlock; // @synthesize createFolderCompletionBlock=_createFolderCompletionBlock;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType createFolderCompletionBlock; // @synthesize createFolderCompletionBlock=_createFolderCompletionBlock;
+@property(nonatomic) _Bool shouldBounceOnCollision; // @synthesize shouldBounceOnCollision=_shouldBounceOnCollision;
 - (void)presendNotifications;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)actionMain;

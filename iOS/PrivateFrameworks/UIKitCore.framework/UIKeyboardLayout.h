@@ -9,7 +9,7 @@
 #import <UIKitCore/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewRepresentingKeyboardLayout-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UIKeyboardTypingStyleEstimator, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIEvent, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UIKeyboardTypingStyleEstimator, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
 @protocol OS_dispatch_queue;
 
 @interface UIKeyboardLayout <_UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout, _UIScreenEdgePanRecognizerDelegate>
@@ -24,7 +24,9 @@
     _Bool _disableInteraction;
     UIKeyboardTaskQueue *_taskQueue;
     UIKeyboardTypingStyleEstimator *_typingStyleEstimator;
+    UIEvent *_currentTouchDownEvent;
     _Bool hideKeysUnderIndicator;
+    _Bool _ignoringKeyplaneChange;
     _Bool _hasPreferredHeight;
     _Bool _isExecutingDeferredTouchTasks;
     _Bool _listeningForWillChange;
@@ -57,6 +59,7 @@
 @property(retain, nonatomic) NSMutableDictionary *deferredTouchTaskLists; // @synthesize deferredTouchTaskLists=_deferredTouchTaskLists;
 @property(retain, nonatomic) _UIKBRTTouchDrifting *touchDrifting; // @synthesize touchDrifting=_touchDrifting;
 @property(readonly, nonatomic) _Bool hasPreferredHeight; // @synthesize hasPreferredHeight=_hasPreferredHeight;
+@property(nonatomic) _Bool ignoringKeyplaneChange; // @synthesize ignoringKeyplaneChange=_ignoringKeyplaneChange;
 @property(copy, nonatomic) CDUnknownBlockType deferredTaskForActiveTouch; // @synthesize deferredTaskForActiveTouch=_deferredTaskForActiveTouch;
 @property(readonly, nonatomic) double timestampOfLastTouchesEnded; // @synthesize timestampOfLastTouchesEnded=_timestampOfLastTouchesEnded;
 @property(nonatomic) double lastTouchUpTime; // @synthesize lastTouchUpTime;
@@ -91,6 +94,7 @@
 - (_Bool)globeKeyDisplaysAsEmojiKey;
 - (void)setKeyboardBias:(long long)arg1;
 - (void)updateGlobeKeyAndLayoutOriginBeforeSnapshotForInputView:(id)arg1;
+- (_Bool)isPossibleToTypeFast;
 - (_Bool)isResized;
 - (_Bool)isResizing;
 - (_Bool)supportsEmoji;
@@ -171,6 +175,7 @@
 - (void)commitTouches:(id)arg1 executionContext:(id)arg2;
 - (void)forceUpdatesForCommittedTouch;
 - (void)commitTouchUUIDs:(id)arg1;
+- (void)commitTouchUUIDs:(id)arg1 cancelInsteadOfUp:(_Bool)arg2;
 - (id)touchUUIDsToCommitBeforeTouchUUID:(id)arg1;
 - (void)_removeTouchesFromProcessing:(id)arg1;
 - (void)touchesEstimatedPropertiesUpdated:(id)arg1;
@@ -244,6 +249,7 @@
 @property(readonly, nonatomic) long long idiom;
 @property(readonly, nonatomic) long long orientation;
 @property(retain, nonatomic) UIKeyboardTaskQueue *taskQueue;
+@property(readonly, nonatomic) UIEvent *currentTouchDownEvent;
 @property(readonly, nonatomic) UIKeyboardTypingStyleEstimator *typingStyleEstimator;
 - (void)willMoveToWindow:(id)arg1;
 - (void)dealloc;

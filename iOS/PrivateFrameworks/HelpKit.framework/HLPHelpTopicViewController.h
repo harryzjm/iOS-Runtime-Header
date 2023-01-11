@@ -11,7 +11,7 @@
 #import <HelpKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <HelpKit/WKNavigationDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocale, HLPHelpTopicHistoryItem, HLPHelpUsageController, NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSString, NSURL, TPSURLSessionItem, UIBarButtonItem, WKWebView;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocale, HLPHelpTopicHistoryItem, NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSString, NSURL, TPSURLSessionItem, UIBarButtonItem, WKWebView;
 @protocol HLPHelpTopicViewControllerDelegate;
 
 @interface HLPHelpTopicViewController : UIViewController <UIGestureRecognizerDelegate, WKNavigationDelegate, HLPHelpTopicViewControllerDelegate, HLPHelpLoadingViewDelegate>
@@ -21,33 +21,34 @@
     _Bool _webViewLoaded;
     _Bool _RTL;
     HLPHelpBookController *_helpBookController;
-    NSString *_assetHostOverride;
     NSMutableArray *_topicHistory;
     UIBarButtonItem *_tocBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
     UIBarButtonItem *_forwardBarButtonItem;
     NSLayoutConstraint *_loadingViewTopConstraint;
+    _Bool _supportsDarkMode;
     _Bool _displayHelpTopicsOnly;
     _Bool _hideDoneButton;
     _Bool _showTopicNameAsTitle;
+    _Bool _darkModeEnabled;
     id <HLPHelpTopicViewControllerDelegate> _delegate;
     NSURL *_helpBookURL;
     WKWebView *_webView;
     HLPHelpLocale *_locale;
     HLPHelpTopicHistoryItem *_currentTopicHistoryItem;
     HLPHelpLoadingView *_loadingView;
-    HLPHelpUsageController *_usageController;
     TPSURLSessionItem *_URLSessionItem;
     NSCache *_topicCache;
     NSArray *_searchTerms;
     NSMutableDictionary *_webViewRequestsMap;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *webViewRequestsMap; // @synthesize webViewRequestsMap=_webViewRequestsMap;
 @property(retain, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
 @property(retain, nonatomic) NSCache *topicCache; // @synthesize topicCache=_topicCache;
 @property(retain, nonatomic) TPSURLSessionItem *URLSessionItem; // @synthesize URLSessionItem=_URLSessionItem;
-@property(retain, nonatomic) HLPHelpUsageController *usageController; // @synthesize usageController=_usageController;
+@property(nonatomic) _Bool darkModeEnabled; // @synthesize darkModeEnabled=_darkModeEnabled;
 @property(retain, nonatomic) HLPHelpLoadingView *loadingView; // @synthesize loadingView=_loadingView;
 @property(retain, nonatomic) HLPHelpTopicHistoryItem *currentTopicHistoryItem; // @synthesize currentTopicHistoryItem=_currentTopicHistoryItem;
 @property(retain, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
@@ -57,11 +58,13 @@
 @property(nonatomic) _Bool showTopicNameAsTitle; // @synthesize showTopicNameAsTitle=_showTopicNameAsTitle;
 @property(nonatomic) _Bool hideDoneButton; // @synthesize hideDoneButton=_hideDoneButton;
 @property(nonatomic) _Bool displayHelpTopicsOnly; // @synthesize displayHelpTopicsOnly=_displayHelpTopicsOnly;
+@property(nonatomic) _Bool supportsDarkMode; // @synthesize supportsDarkMode=_supportsDarkMode;
 @property(nonatomic) __weak id <HLPHelpTopicViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)webView:(id)arg1 startURLSchemeTask:(id)arg2;
 - (void)webView:(id)arg1 stopURLSchemeTask:(id)arg2;
 - (void)showHelpBookInfo:(id)arg1;
+- (void)helpTopicViewController:(id)arg1 traitCollectionChanged:(id)arg2;
 - (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
 - (void)helpTopicViewController:(id)arg1 topicLoaded:(id)arg2;
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;
@@ -73,10 +76,12 @@
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
 - (void)showWebViewDelay;
+- (void)updateHTMLStringPath:(id)arg1 tag:(id)arg2 attribute:(id)arg3 useScheme:(_Bool)arg4;
 - (void)updateHTMLStringPath:(id)arg1 tag:(id)arg2 attribute:(id)arg3;
 - (void)loadHTMLString:(id)arg1 anchor:(id)arg2;
-- (void)loadHelpTopicItem:(id)arg1 searchTerms:(id)arg2 anchor:(id)arg3 topicAccessType:(long long)arg4;
+- (void)_loadWithInfo:(id)arg1;
 - (void)loadHelpTopicItem:(id)arg1 searchTerms:(id)arg2 anchor:(id)arg3;
+- (void)loadWithInfo:(id)arg1;
 - (void)reloadCurrentTopic;
 - (void)saveCurrentTopicItem;
 - (void)dismiss;
@@ -87,6 +92,7 @@
 - (void)backButtonTapped;
 - (void)updateDoneButton;
 - (void)contentSizeCategoryDidChange:(id)arg1;
+- (void)updateBackgroundColor;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

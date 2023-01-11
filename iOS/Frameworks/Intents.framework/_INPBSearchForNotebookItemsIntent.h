@@ -24,7 +24,6 @@
         unsigned int taskPriority:1;
     } _has;
     _Bool _includeAllNoteContents;
-    _Bool __encodeLegacyGloryData;
     int _dateSearchType;
     int _itemType;
     int _locationSearchType;
@@ -40,7 +39,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 @property(nonatomic) int taskPriority; // @synthesize taskPriority=_taskPriority;
 @property(nonatomic) int status; // @synthesize status=_status;
@@ -54,7 +53,6 @@
 @property(retain, nonatomic) _INPBDateTimeRange *dateTime; // @synthesize dateTime=_dateTime;
 @property(nonatomic) int dateSearchType; // @synthesize dateSearchType=_dateSearchType;
 @property(copy, nonatomic) NSString *content; // @synthesize content=_content;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

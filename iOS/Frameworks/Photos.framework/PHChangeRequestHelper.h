@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSManagedObjectID, NSMutableDictionary, NSMutableSet, NSString, PHPerformChangesRequest;
+@class NSManagedObjectID, NSMutableDictionary, NSMutableSet, NSString, PHPerformChangesRequest;
 @protocol PHChangeRequest, PLClientAuthorization;
 
 @interface PHChangeRequestHelper : NSObject
@@ -19,35 +19,32 @@
     id <PHChangeRequest> _changeRequest;
     PHPerformChangesRequest *_request;
     NSString *_uuid;
-    NSString *_uuidSaveToken;
     NSManagedObjectID *_objectID;
-    NSError *_placeholderRequestError;
 }
 
 + (id)changeRequestWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 + (id)changeRequestForObject:(id)arg1;
-@property(readonly, nonatomic) NSError *placeholderRequestError; // @synthesize placeholderRequestError=_placeholderRequestError;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
-@property(readonly, nonatomic) NSString *uuidSaveToken; // @synthesize uuidSaveToken=_uuidSaveToken;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) PHPerformChangesRequest *request; // @synthesize request=_request;
 @property(nonatomic) __weak id <PHChangeRequest> changeRequest; // @synthesize changeRequest=_changeRequest;
 @property(readonly, nonatomic) NSMutableSet *nilMutations; // @synthesize nilMutations=_nilMutations;
 @property(readonly, nonatomic) NSMutableDictionary *mutations; // @synthesize mutations=_mutations;
-- (void).cxx_destruct;
 - (id)description;
 - (void)encodeToXPCDict:(id)arg1;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
-@property(readonly, nonatomic) NSString *clientName;
+@property(readonly, nonatomic) NSString *fetchFilterIdentifier;
+@property(readonly, nonatomic) NSString *clientBundleIdentifier;
+@property(readonly, nonatomic) NSString *clientDisplayName;
+@property(readonly, nonatomic, getter=isClientInLimitedLibraryMode) _Bool clientInLimitedLibraryMode;
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(nonatomic, getter=isNewRequest) _Bool newRequest;
 @property(nonatomic, getter=isMutated) _Bool mutated;
 - (void)didMutate;
-- (_Bool)_validateOrGenerateUUIDWithClientEntitled:(_Bool)arg1 request:(id)arg2 changeRequest:(id)arg3;
-- (_Bool)_generateUUIDIfNecessary:(id *)arg1;
 - (id)placeholderForCreatedObjectWithClass:(Class)arg1 changeRequest:(id)arg2;
 - (_Bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (_Bool)prepareForServicePreflightCheck:(id *)arg1;
@@ -56,6 +53,7 @@
 - (id)initForNewObjectWithUUID:(id)arg1 changeRequest:(id)arg2;
 - (id)initForNewObjectWithChangeRequest:(id)arg1;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2 changeRequest:(id)arg3;
+- (id)initWithUUID:(id)arg1 objectID:(id)arg2 isNew:(_Bool)arg3 changeRequest:(id)arg4;
 
 @end
 

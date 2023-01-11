@@ -7,28 +7,30 @@
 #import <WorkflowKit/MTLModel.h>
 
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
+#import <ActionKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, UIImage;
+@class NSDictionary, NSString, NSURL, WFImage;
 
-@interface WFGiphyImage : MTLModel <MTLJSONSerializing>
+@interface WFGiphyImage : MTLModel <NSSecureCoding, MTLJSONSerializing>
 {
     NSURL *_url;
     NSURL *_videoURL;
     unsigned long long _fileSize;
     unsigned long long _width;
     unsigned long long _height;
-    UIImage *_cachedImage;
+    WFImage *_cachedImage;
 }
 
 + (id)JSONTransformerForKey:(id)arg1;
 + (id)JSONKeyPathsByPropertyKey;
-@property(retain, nonatomic) UIImage *cachedImage; // @synthesize cachedImage=_cachedImage;
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) WFImage *cachedImage; // @synthesize cachedImage=_cachedImage;
 @property(readonly, nonatomic) unsigned long long height; // @synthesize height=_height;
 @property(readonly, nonatomic) unsigned long long width; // @synthesize width=_width;
 @property(readonly, nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
 @property(readonly, copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property(readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     CallHistoryDBClientHandle *_dbHandle;
 }
 
-@property(readonly, nonatomic) CallHistoryDBClientHandle *dbHandle; // @synthesize dbHandle=_dbHandle;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CallHistoryDBClientHandle *dbHandle; // @synthesize dbHandle=_dbHandle;
 - (id)archiveCallObject:(id)arg1;
 - (void)resetTimers;
 - (double)timerOutgoing;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)fetchAllObjects;
 - (id)fetchCoalescedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (unsigned long long)fetchCoalescedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchCallIdentifiersWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (unsigned long long)fetchCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
 - (long long)deleteCallsWithPredicate:(id)arg1 error:(id *)arg2;

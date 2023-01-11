@@ -10,11 +10,11 @@
 
 @interface BSXPCMessage : NSObject
 {
-    NSObject<OS_xpc_object> *_message;
     CDUnknownBlockType _replyHandler;
     NSObject<OS_dispatch_queue> *_replyQueue;
     int _invalidated;
     int _replied;
+    NSObject<OS_xpc_object> *_message;
 }
 
 + (id)messageWithPacker:(CDUnknownBlockType)arg1 replyHandler:(CDUnknownBlockType)arg2 replyQueue:(id)arg3;
@@ -27,17 +27,14 @@
 + (const char *)messageTypeKey;
 + (id)messageWithPayload:(id)arg1;
 + (id)messageWithPacker:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_message;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_message;
 - (void)forcefullyInvokeReplyHandler:(id)arg1;
-- (id)_errorForXPCMessageReply:(id)arg1;
 - (id)sendSynchronouslyToConnection:(id)arg1 error:(id *)arg2;
 - (_Bool)sendToConnection:(id)arg1 replyQueue:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (_Bool)sendToConnection:(id)arg1;
 - (id)description;
 - (id)initWithMessage:(long long)arg1 packer:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3 replyQueue:(id)arg4;
-- (id)initWithMessagePacker:(CDUnknownBlockType)arg1 replyHandler:(CDUnknownBlockType)arg2 replyQueue:(id)arg3;
-- (id)initWithMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2 replyQueue:(id)arg3;
 
 @end
 

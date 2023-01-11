@@ -6,13 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaControls/MPRequestResponseControllerDelegate-Protocol.h>
 #import <MediaControls/MPVolumeControllerDelegate-Protocol.h>
 
-@class MPAVEndpointRoute, MPAVOutputDeviceRoute, MPVolumeController, NSHashTable, NSString;
+@class MPAVEndpointRoute, MPAVOutputDeviceRoute, MPRequestResponseController, MPVolumeController, NSHashTable, NSString;
 
-@interface MediaControlsVolumeController : NSObject <MPVolumeControllerDelegate>
+@interface MediaControlsVolumeController : NSObject <MPVolumeControllerDelegate, MPRequestResponseControllerDelegate>
 {
     _Bool _isSplitRoute;
+    _Bool _supportsHeadTrackedSpatialAudio;
+    _Bool _headTrackedSpatialAudioEnabled;
+    _Bool _headTrackedSpatialAudioActive;
+    _Bool _automaticResponseLoading;
+    _Bool _primaryInteractionEnabled;
+    _Bool _secondaryInteractionEnabled;
+    int _headTrackedSpatialAudioNotificationToken;
     NSString *_volumeAudioCategory;
     MPAVEndpointRoute *_systemRoute;
     NSHashTable *_observers;
@@ -22,8 +30,15 @@
     MPAVOutputDeviceRoute *_systemOutputDeviceRoute;
     MPAVOutputDeviceRoute *_primaryOutputDeviceRoute;
     MPAVOutputDeviceRoute *_secondaryOutputDeviceRoute;
+    MPRequestResponseController *_requestController;
 }
 
++ (_Bool)isDefaultPackage:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) int headTrackedSpatialAudioNotificationToken; // @synthesize headTrackedSpatialAudioNotificationToken=_headTrackedSpatialAudioNotificationToken;
+@property(nonatomic) _Bool secondaryInteractionEnabled; // @synthesize secondaryInteractionEnabled=_secondaryInteractionEnabled;
+@property(nonatomic) _Bool primaryInteractionEnabled; // @synthesize primaryInteractionEnabled=_primaryInteractionEnabled;
+@property(retain, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
 @property(retain, nonatomic) MPAVOutputDeviceRoute *secondaryOutputDeviceRoute; // @synthesize secondaryOutputDeviceRoute=_secondaryOutputDeviceRoute;
 @property(retain, nonatomic) MPAVOutputDeviceRoute *primaryOutputDeviceRoute; // @synthesize primaryOutputDeviceRoute=_primaryOutputDeviceRoute;
 @property(retain, nonatomic) MPAVOutputDeviceRoute *systemOutputDeviceRoute; // @synthesize systemOutputDeviceRoute=_systemOutputDeviceRoute;
@@ -32,26 +47,43 @@
 @property(retain, nonatomic) MPVolumeController *systemVolumeController; // @synthesize systemVolumeController=_systemVolumeController;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) MPAVEndpointRoute *systemRoute; // @synthesize systemRoute=_systemRoute;
+@property(nonatomic, getter=isAutomaticResponseLoading) _Bool automaticResponseLoading; // @synthesize automaticResponseLoading=_automaticResponseLoading;
 @property(copy, nonatomic) NSString *volumeAudioCategory; // @synthesize volumeAudioCategory=_volumeAudioCategory;
+@property(readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) _Bool headTrackedSpatialAudioActive; // @synthesize headTrackedSpatialAudioActive=_headTrackedSpatialAudioActive;
+@property(nonatomic, getter=isHeadTrackedSpatialAudioEnabled) _Bool headTrackedSpatialAudioEnabled; // @synthesize headTrackedSpatialAudioEnabled=_headTrackedSpatialAudioEnabled;
+@property(readonly, nonatomic) _Bool supportsHeadTrackedSpatialAudio; // @synthesize supportsHeadTrackedSpatialAudio=_supportsHeadTrackedSpatialAudio;
 @property(readonly, nonatomic) _Bool isSplitRoute; // @synthesize isSplitRoute=_isSplitRoute;
-- (void).cxx_destruct;
-- (void)_resetRouteType:(unsigned long long)arg1;
+- (id)outputContextDescription;
+- (void)_updateHeadTrackedSpatialAudioEnabled;
+- (id)_volumePackageNameForClusterRoute:(id)arg1 isRTL:(_Bool)arg2;
+- (id)_volumePackageNameForRTL:(_Bool)arg1;
+- (id)_packageNameForRoute:(id)arg1 isRTL:(_Bool)arg2 isSlider:(_Bool)arg3;
 - (_Bool)_setupOutputDevicesAndVolumeControllersIfNeeded;
-- (unsigned long long)_routeForVolumeController:(id)arg1;
+- (long long)_routeForVolumeController:(id)arg1;
+- (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
+- (void)_notifyUserInteractionEnabledChanged:(_Bool)arg1 routeType:(long long)arg2;
 - (void)_notifyVolumeChangedForVolumeController:(id)arg1 volumeControlAvailable:(_Bool)arg2 effectiveVolume:(float)arg3;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(_Bool)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)routeDidChangeNotification;
-- (void)setVolume:(float)arg1 forRouteType:(unsigned long long)arg2;
-- (_Bool)volumeControlAvailableForRouteType:(unsigned long long)arg1;
-- (float)volumeForRouteType:(unsigned long long)arg1;
-- (id)availableBluetoothListeningModeForRouteType:(unsigned long long)arg1;
-- (void)setCurrentBluetoothListeningModeForRouteType:(unsigned long long)arg1 bluetoothListeningMode:(id)arg2;
-- (id)currentBluetoothListeningModeForRouteType:(unsigned long long)arg1;
-- (id)imageForRouteType:(unsigned long long)arg1;
-- (id)routeNameForRouteType:(unsigned long long)arg1;
+- (void)endObservingHeadTrackedSpatialAudioEnabledNotification;
+- (void)beginObservingHeadTrackedSpatialAudioEnabledNotification;
+@property(readonly, nonatomic, getter=isPlaying) _Bool playing;
+- (void)setUserInteractionEnabled:(_Bool)arg1 forRouteType:(long long)arg2;
+- (_Bool)userInteractionEnabledForRouteType:(long long)arg1;
+- (void)setVolume:(float)arg1 forRouteType:(long long)arg2;
+- (_Bool)volumeControlAvailableForRouteType:(long long)arg1;
+- (float)volumeForRouteType:(long long)arg1;
+- (void)logFailedSetBluetoothListeningMode:(id)arg1 forRouteType:(long long)arg2;
+- (id)availableBluetoothListeningModeForRouteType:(long long)arg1;
+- (id)setCurrentBluetoothListeningModeForRouteType:(long long)arg1 bluetoothListeningMode:(id)arg2;
+- (id)currentBluetoothListeningModeForRouteType:(long long)arg1;
+- (id)glyphStateForVolumeLevel:(double)arg1 packageName:(id)arg2;
+- (id)packageNameForRouteType:(long long)arg1 isRTL:(_Bool)arg2 isSlider:(_Bool)arg3;
+- (id)routeNameForRouteType:(long long)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

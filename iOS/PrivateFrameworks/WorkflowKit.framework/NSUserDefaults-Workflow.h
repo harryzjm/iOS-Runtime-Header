@@ -7,14 +7,11 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (Workflow)
++ (_Bool)useNewLayout;
 + (id)siriAssistantUserDefaults;
 + (id)systemShortcutsUserDefaults;
 + (id)workflowUserDefaults;
 - (id)workflowIdentifierConsumingSingleUseToken:(id)arg1;
 - (void)setWorkflowIdentifier:(id)arg1 forToken:(id)arg2;
-- (_Bool)wf_voiceParametersDisabled;
-- (_Bool)wf_isDeviceIdiomDisabledInSiri:(long long)arg1;
-- (void)wf_registerDefaultDisabledDevices;
-- (id)wf_keyForDisablingDeviceIdiom:(long long)arg1;
 @end
 

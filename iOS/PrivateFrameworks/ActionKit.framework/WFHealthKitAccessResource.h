@@ -4,25 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFAccessResource.h>
+#import <WorkflowKit/WFGranularAccessResource.h>
 
 #import <ActionKit/WFActionEventObserver-Protocol.h>
 
 @class HKHealthStore, NSString, WFAction;
 
-@interface WFHealthKitAccessResource : WFAccessResource <WFActionEventObserver>
+@interface WFHealthKitAccessResource : WFGranularAccessResource <WFActionEventObserver>
 {
     unsigned long long _globalLevelStatus;
     WFAction *_action;
     HKHealthStore *_healthStore;
 }
 
++ (Class)perWorkflowStateClass;
 + (_Bool)isSystemResource;
 + (_Bool)alwaysMakeAvailable;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(nonatomic) __weak WFAction *action; // @synthesize action=_action;
 - (unsigned long long)globalLevelStatus;
-- (void).cxx_destruct;
+- (id)localizedWorkflowLevelDeniedStatusMessage;
+- (id)localizedWorkflowLevelNotDeterminedStatusMessage;
+- (id)localizedWorkflowLevelMessageTemplate;
+- (id)localizedWorkflowLevelPromptTemplate;
+- (id)requestedEntries;
 - (void)attemptRecoveryFromGlobalLevelErrorWithOptionIndex:(unsigned long long)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)errorRecoveryOptionsForGlobalLevelStatus:(unsigned long long)arg1;
 - (id)localizedImportErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;

@@ -6,13 +6,14 @@
 
 #import <MediaPlayer/MPModelResponse.h>
 
+#import <MediaPlaybackCore/MPCModelPlaybackResponse-Protocol.h>
 #import <MediaPlaybackCore/MPModelResponseDetailedKeepLocalStatusRequesting-Protocol.h>
 #import <MediaPlaybackCore/MPModelStoreEquivalencyMapping-Protocol.h>
 
 @class MPStoreLibraryPersonalizationResponse, NSDate, NSDictionary, NSObject, NSString;
 @protocol OS_dispatch_source;
 
-@interface MPCModelStorePlaybackItemsResponse : MPModelResponse <MPModelStoreEquivalencyMapping, MPModelResponseDetailedKeepLocalStatusRequesting>
+@interface MPCModelStorePlaybackItemsResponse : MPModelResponse <MPModelStoreEquivalencyMapping, MPModelResponseDetailedKeepLocalStatusRequesting, MPCModelPlaybackResponse>
 {
     NSObject<OS_dispatch_source> *_invalidationTimer;
     _Bool _finalResponse;
@@ -22,12 +23,13 @@
     NSDate *_invalidationDate;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDate *invalidationDate; // @synthesize invalidationDate=_invalidationDate;
 @property(copy, nonatomic) NSDictionary *localStoreAdamIDToEquivalencySourceStoreAdamIDMap; // @synthesize localStoreAdamIDToEquivalencySourceStoreAdamIDMap=_localStoreAdamIDToEquivalencySourceStoreAdamIDMap;
 @property(readonly, nonatomic, getter=isInvalidForPersonalization) _Bool invalidForPersonalization; // @synthesize invalidForPersonalization=_invalidForPersonalization;
 @property(nonatomic, getter=isFinalResponse) _Bool finalResponse; // @synthesize finalResponse=_finalResponse;
 @property(readonly, nonatomic) MPStoreLibraryPersonalizationResponse *_personalizationResponse; // @synthesize _personalizationResponse;
-- (void).cxx_destruct;
+- (void)_activeUserDidChangeNotification:(id)arg1;
 - (void)_personalizationResponseDidInvalidateNotification:(id)arg1;
 - (void)_allowsExplicitContentDidChangeNotification:(id)arg1;
 - (id)equivalencySourceStoreAdamIDForLocalStoreAdamID:(long long)arg1;

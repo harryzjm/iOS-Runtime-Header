@@ -14,6 +14,6 @@
 @property(copy, nonatomic) AVAsset *asset;
 
 @optional
-@property(copy, nonatomic) AVVideoComposition *videoComposition;
+- (void)setAsset:(AVAsset *)arg1 videoComposition:(AVVideoComposition *)arg2;
 @end
 

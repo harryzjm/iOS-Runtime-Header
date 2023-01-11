@@ -15,6 +15,7 @@
 {
 }
 
+- (_Bool)shouldConsiderHitTesting;
 - (_Bool)shouldBeArchived;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;

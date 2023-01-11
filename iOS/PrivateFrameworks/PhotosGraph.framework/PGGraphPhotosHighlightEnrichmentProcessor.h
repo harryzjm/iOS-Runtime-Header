@@ -24,7 +24,6 @@
 - (void)recordCurrentProcessingDate:(id)arg1 lastProcessingDate:(id)arg2 graphHealthRecorder:(id)arg3;
 - (void)_logFirstTimeExperienceMetricsIfNeededWithManager:(id)arg1;
 - (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
-- (void)_updateHighlightTitlesForKind:(unsigned short)arg1 highlightTailor:(id)arg2 graphUpdateInventory:(id)arg3 alreadyEnrichedHighlights:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)initWithHighlightTailorOptions:(unsigned long long)arg1;
 - (id)init;
 

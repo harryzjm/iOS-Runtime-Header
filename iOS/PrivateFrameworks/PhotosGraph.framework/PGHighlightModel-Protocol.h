@@ -6,10 +6,11 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSString, PHAssetCollection, PHPhotoLibrary;
+@class NSArray, NSString, PHAssetCollection, PHPhotoLibrary;
 @protocol PGHighlightModelChangeRequest;
 
 @protocol PGHighlightModel <NSObject>
++ (NSArray *)fetchParentDayGroupHighlightsForDayHighlights:(NSArray *)arg1;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection;
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) _Bool isGroup;

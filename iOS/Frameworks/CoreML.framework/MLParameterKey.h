@@ -22,6 +22,12 @@
 + (id)linkedModelFileName;
 + (id)biases;
 + (id)weights;
++ (id)updateType;
++ (id)minChildWeight;
++ (id)numClasses;
++ (id)numTrees;
++ (id)objective;
++ (id)maxDepth;
 - (id)initWithKeyName:(id)arg1;
 - (id)deletingPrefixingScope:(id)arg1;
 - (id)scopedTo:(id)arg1;

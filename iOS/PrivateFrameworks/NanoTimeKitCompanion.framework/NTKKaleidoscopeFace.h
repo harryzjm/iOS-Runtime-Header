@@ -12,6 +12,11 @@
 + (_Bool)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
 + (id)_orderedComplicationSlots;
 + (id)_complicationSlotDescriptors;
+- (_Bool)_sanitizeFaceConfiguration:(id *)arg1;
+- (_Bool)_shouldSanitizeFaceConfigurationWhenAddingSharedFace;
+- (_Bool)_createResourceDirectorySuitableForSharingAtPath:(id)arg1 error:(id *)arg2;
+- (_Bool)_shouldIncludeResourceDirectoryForSharing;
+- (_Bool)isUsingCustomAsset;
 - (id)editOptionThatHidesAllComplications;
 - (void)_updateForResourceDirectoryChange:(id)arg1;
 - (Class)_optionClassForCustomEditMode:(long long)arg1 resourceDirectoryExists:(_Bool)arg2;

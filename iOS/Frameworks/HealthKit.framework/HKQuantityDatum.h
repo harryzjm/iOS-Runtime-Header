@@ -17,15 +17,19 @@
     HKQuantity *_quantity;
     NSDateInterval *_dateInterval;
     NSData *_resumeContext;
+    CDUnknownBlockType _saveCompletion;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType saveCompletion; // @synthesize saveCompletion=_saveCompletion;
 @property(readonly, copy, nonatomic) NSData *resumeContext; // @synthesize resumeContext=_resumeContext;
 @property(readonly, copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property(readonly, copy, nonatomic) HKQuantity *quantity; // @synthesize quantity=_quantity;
 @property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

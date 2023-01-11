@@ -27,9 +27,9 @@
     struct z_stream_s *_inflater;
     char *_zbuffer;
     unsigned int _readBytesNotLogged;
-    unsigned int _isFetching:1;
-    unsigned int _allowFallbacks:1;
-    unsigned int _compressionEnabled:1;
+    _Atomic _Bool _isFetching;
+    _Bool _compressionEnabled;
+    NSString *_accountLogString;
 }
 
 + (_Bool)shouldTryFallbacksAfterError:(id)arg1;
@@ -46,6 +46,7 @@
 + (void)initialize;
 + (void)readLoggingDefaults;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *accountLogString; // @synthesize accountLogString=_accountLogString;
 - (id)copyDiagnosticInformation;
 - (_Bool)_evaluateTrust:(struct __SecTrust *)arg1 errorPtr:(id *)arg2;
 - (void)_setCertificateIsTrusted:(_Bool)arg1 forAccount:(id)arg2;
@@ -59,12 +60,16 @@
 - (void)endCompression;
 - (_Bool)startCompression;
 @property(readonly, nonatomic) NSString *securityProtocol;
+- (void)_clearBuffer;
+- (_Bool)enableSSL;
 - (_Bool)startTLSForAccount:(id)arg1;
 - (_Bool)authenticateUsingAccount:(id)arg1 authenticator:(id)arg2;
 - (_Bool)readBytesIntoData:(id)arg1 desiredLength:(unsigned long long)arg2;
 - (_Bool)readLineIntoData:(id)arg1;
 - (void)logReadChars:(const char *)arg1 length:(unsigned long long)arg2;
 - (void)enableThroughputMonitoring:(_Bool)arg1;
+- (void)stopActivity;
+- (void)startActivity;
 - (void)setDesiredReadBufferLength:(unsigned long long)arg1;
 - (_Bool)writeData:(id)arg1;
 - (_Bool)writeData:(id)arg1 dontLogBytesInRange:(struct _NSRange)arg2;
@@ -74,12 +79,12 @@
 @property(readonly, nonatomic) NSArray *authenticationMechanisms;
 @property(readonly, nonatomic) NSArray *capabilities;
 - (_Bool)authenticateUsingAccount:(id)arg1;
-- (void)setAllowsFallbacks:(_Bool)arg1;
 - (_Bool)connectUsingFallbacksForAccount:(id)arg1;
 - (_Bool)connectUsingAccount:(id)arg1;
 - (_Bool)connectUsingSettings:(id)arg1;
 - (void)_setupSocketWithSettings:(id)arg1;
-@property(nonatomic) _Bool isFetching;
+@property _Bool isFetching;
+@property(readonly, nonatomic) _Bool isConstrained;
 @property(readonly, nonatomic) _Bool isCellularConnection;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;

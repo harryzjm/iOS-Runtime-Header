@@ -17,7 +17,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)assertOnQueue;
 - (void)invalidate;
 - (void)resume;
 - (void)suspend;

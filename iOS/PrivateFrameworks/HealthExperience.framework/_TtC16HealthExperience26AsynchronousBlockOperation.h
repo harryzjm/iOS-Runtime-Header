@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC16HealthExperience26AsynchronousBlockOperation
 {
     MISSING_TYPE *workBlock;
+    MISSING_TYPE *debugIdentifier;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, readonly) NSString *debugDescription;
 - (void)main;
 
 @end

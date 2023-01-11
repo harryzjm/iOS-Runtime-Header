@@ -181,6 +181,8 @@
 - (_Bool)isCharIndex:(unsigned long long)arg1 withEolAffinity:(_Bool)arg2 atBoundary:(long long)arg3 inDirection:(long long)arg4;
 - (unsigned long long)p_charIndexAtPoint:(struct CGPoint)arg1 isAtEndOfLine:(_Bool *)arg2;
 - (unsigned long long)closestCharIndexToPoint:(struct CGPoint)arg1 isAtEndOfLine:(_Bool *)arg2;
+- (_Bool)allowAutomaticTextEditingToBeginWithDifferentEditor;
+- (void)beginAutomaticTextEditingIfNeededForPoint:(struct CGPoint)arg1;
 - (id)p_highlightSelectionForSelection:(id)arg1;
 - (_Bool)canAcceptOrRejectChange;
 - (_Bool)canAddOrShowComment;
@@ -279,9 +281,6 @@
 - (void)p_cancelTapAndLongPressPreviousSelector;
 - (void)p_beginTapAndLongPress:(id)arg1;
 - (void)p_handleTapAndTouchGesture:(id)arg1;
-- (void)handleHardPressGestureRecognizer:(id)arg1;
-- (void)endHardPressGestureRecognizer:(id)arg1;
-- (id)p_updateEditingRepIfApplicableWithGesture:(id)arg1 unscaledCanvasPoint:(struct CGPoint)arg2;
 - (struct CGPoint)p_clampPointToLine:(struct CGPoint)arg1 trackingRep:(id)arg2;
 - (void)p_handleLongPressGesture:(id)arg1;
 - (void)p_handleSwipeMoveCaretWithTextGranularity:(long long)arg1 textDirection:(long long)arg2 layoutDirection:(long long)arg3;

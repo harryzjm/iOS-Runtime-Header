@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDNotificationRegistration, HMDSnapshotFile, HMFMessageDispatcher, NSMapTable, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMDAccessory, HMDNotificationRegistration, HMDSnapshotFile, HMFMessageDispatcher, NSDictionary, NSMapTable, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDSnapshotSlotManager : HMFObject <HMFLogging>
@@ -27,6 +27,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property(readonly, nonatomic) NSMutableArray *filesToCleanup; // @synthesize filesToCleanup=_filesToCleanup;
 @property(readonly, nonatomic) NSString *imageCacheDirectory; // @synthesize imageCacheDirectory=_imageCacheDirectory;
@@ -36,22 +37,21 @@
 @property(readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) NSMapTable *snapshotSlots; // @synthesize snapshotSlots=_snapshotSlots;
-@property(retain, nonatomic) HMDSnapshotFile *mostRecentSnapshot; // @synthesize mostRecentSnapshot=_mostRecentSnapshot;
+@property(retain) HMDSnapshotFile *mostRecentSnapshot; // @synthesize mostRecentSnapshot=_mostRecentSnapshot;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (void).cxx_destruct;
-- (id)payloadForSnapshotFile:(id)arg1;
-- (id)addReferenceToMostRecentSnapshotFileForMessage:(id)arg1;
+@property(readonly, copy) NSDictionary *encodedMostRecentSnapshot;
+- (id)encodedMostRecentSnapshotForMessage:(id)arg1;
 - (void)_updateMostRecentSnapshot:(id)arg1 updateGenerationCounter:(_Bool)arg2;
+- (_Bool)shouldUpdateMostRecentSnapshotWithSnapshot:(id)arg1;
 - (id)createSlotForSnapshotFile:(id)arg1 requestMessages:(id)arg2 updateGenerationCounter:(_Bool)arg3;
 - (void)handleReleaseSnapshot:(id)arg1;
 - (void)backboardServicesRelaunched:(id)arg1;
-- (void)handleForegroundAppsNotification:(id)arg1;
-@property(readonly, nonatomic, getter=isMostRecentSnapshotValid) _Bool mostRecentSnapshotValid;
+- (void)_handleProcessStateChange:(id)arg1;
+- (void)handleProcessStateChange:(id)arg1;
 - (void)setupMostRecentSnapshot;
-- (void)findMostRecentSnapshot;
+- (id)findMostRecentSnapshot;
 - (void)registerForMessages;
 - (id)logIdentifier;
-- (void)dealloc;
 - (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 imageCacheDirectory:(id)arg3 logID:(id)arg4 uniqueIdentifier:(id)arg5 msgDispatcher:(id)arg6;
 
 // Remaining properties

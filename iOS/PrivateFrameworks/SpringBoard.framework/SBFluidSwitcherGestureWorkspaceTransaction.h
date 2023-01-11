@@ -6,18 +6,21 @@
 
 #import <SpringBoard/SBSceneLayoutWorkspaceTransactionDelegate-Protocol.h>
 #import <SpringBoard/SBUIAnimationControllerObserver-Protocol.h>
+#import <SpringBoard/SBViewMorphAnimatorObserver-Protocol.h>
 #import <SpringBoard/SBWorkspaceApplicationSceneTransitionContextDelegate-Protocol.h>
 
 @class NSString, NSTimer, NSUUID, SBAppLayout, SBAutoPiPWorkspaceTransaction, SBFluidSwitcherViewController, SBMainDisplayLayoutState, SBMainWorkspaceTransaction, SBSceneLayoutWorkspaceTransaction, SBTransientOverlayViewController, SBUISwitcherAnimationController, UIApplicationSceneDeactivationAssertion;
 @protocol BSInvalidatable, SBFluidSwitcherGestureWorkspaceTransactionDelegate;
 
-@interface SBFluidSwitcherGestureWorkspaceTransaction <SBUIAnimationControllerObserver, SBSceneLayoutWorkspaceTransactionDelegate, SBWorkspaceApplicationSceneTransitionContextDelegate>
+@interface SBFluidSwitcherGestureWorkspaceTransaction <SBUIAnimationControllerObserver, SBSceneLayoutWorkspaceTransactionDelegate, SBWorkspaceApplicationSceneTransitionContextDelegate, SBViewMorphAnimatorObserver>
 {
     _Bool _calledBeginWithGesture;
     _Bool _hasActiveLayoutStateTransitionCoordinatorTransition;
     _Bool _hasCompletedFirstCACommitSinceTransactionBeganForPPT;
     id <BSInvalidatable> _deferOrientationUpdatesAssertion;
     long long _numberOfAppLayoutsTraveledWithArcSwipe;
+    double _digitizerSurfaceHeightForLastGestureEvent;
+    _Bool _isPointerTouch;
     _Bool _shouldCancelGestureUponInterruption;
     _Bool _hasCompletedAtLeastOneGesture;
     SBFluidSwitcherViewController *_switcherViewController;
@@ -36,6 +39,7 @@
     SBAppLayout *_selectedAppLayout;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
 @property(readonly, nonatomic) NSUUID *gestureID; // @synthesize gestureID=_gestureID;
 @property(readonly, nonatomic) _Bool hasCompletedAtLeastOneGesture; // @synthesize hasCompletedAtLeastOneGesture=_hasCompletedAtLeastOneGesture;
@@ -52,10 +56,10 @@
 @property(nonatomic) __weak id <SBFluidSwitcherGestureWorkspaceTransactionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool shouldCancelGestureUponInterruption; // @synthesize shouldCancelGestureUponInterruption=_shouldCancelGestureUponInterruption;
 @property(nonatomic) __weak SBFluidSwitcherViewController *switcherViewController; // @synthesize switcherViewController=_switcherViewController;
-- (void).cxx_destruct;
 - (void)_updatePPTsForAnimationEndedWithFinalLayoutState:(id)arg1;
 - (void)_updatePPTsForGestureEnded;
 - (void)_updatePPTsForGestureTransactionBegan;
+- (void)_updateDigitizerSurfaceDimensions;
 - (void)_addWaitForSceneLayoutTransitionTransaction:(id)arg1 forLeafAnimationControllers:(id)arg2;
 - (id)_transitionRequestForApplicationTransitionContext:(id)arg1 eventLabel:(id)arg2;
 - (id)_createWorkspaceTransientOverlayForAppLayout:(id)arg1;
@@ -71,12 +75,14 @@
 - (void)transactionWillBeginLayoutTransition:(id)arg1;
 - (id)createSceneEntityForHandle:(id)arg1;
 - (void)transactionDidComplete:(id)arg1;
+- (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (id)previousLayoutStateForApplicationTransitionContext:(id)arg1;
 - (id)layoutStateForApplicationTransitionContext:(id)arg1;
 - (void)_finishWithGesture:(id)arg1;
 - (void)_updateWithGesture:(id)arg1;
 - (void)_beginWithGesture:(id)arg1;
 - (void)_switcherGestureDidUpdate:(id)arg1;
+- (void)didEndAllAnimations;
 - (void)_finishWithCompletionType:(long long)arg1;
 - (void)systemGestureStateChanged:(id)arg1;
 - (void)_didComplete;

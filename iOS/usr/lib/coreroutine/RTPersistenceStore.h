@@ -21,6 +21,7 @@
 }
 
 + (id)storeBaseName:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long mirroringDelegateState; // @synthesize mirroringDelegateState=_mirroringDelegateState;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(retain, nonatomic) NSCloudKitMirroringDelegateOptions *mirroringDelegateOptions; // @synthesize mirroringDelegateOptions=_mirroringDelegateOptions;
@@ -28,12 +29,12 @@
 @property(readonly) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly) NSPersistentStoreDescription *storeDescription; // @synthesize storeDescription=_storeDescription;
 @property(retain, nonatomic) RTPersistenceMigrator *migrator; // @synthesize migrator=_migrator;
-- (void).cxx_destruct;
 - (id)storeBaseName;
 - (id)storeURLsMatchingStoreNameAtURL:(id)arg1;
 - (id)storeURLsMatchingStoreName;
 - (void)onMirroringDelegateInitialization:(id)arg1;
 - (_Bool)updateMetadata:(id)arg1 coordinator:(id)arg2 error:(id *)arg3;
+- (_Bool)updateMetadata:(id)arg1 context:(id)arg2 coordinator:(id)arg3 error:(id *)arg4;
 - (id)retrieveMetadataWithCoordinator:(id)arg1 error:(id *)arg2;
 - (id)_validateKeys:(id)arg1;
 - (_Bool)performVacuumWithCoordinator:(id)arg1 error:(id *)arg2;

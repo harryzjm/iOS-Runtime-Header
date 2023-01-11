@@ -44,6 +44,8 @@
     NSDictionary *_largeImageCropRects;
     NSData *_largeImageData;
     NSData *_imageData;
+    NSString *_imageType;
+    NSData *_imageHash;
     NSDateComponents *_birthdayComponents;
     NSDateComponents *_alternateBirthdayComponents;
     NSArray *_otherDateComponents;
@@ -53,13 +55,14 @@
     NSString *_cardDAVUID;
     NSString *_uid;
     NSString *_phonemeData;
-    NSString *_downtimeWhitelist;
+    int _downtimeWhitelistAuthorization;
     NSArray *_unknownProperties;
     NSString *_preferredLikenessSource;
     NSString *_preferredApplePersonaIdentifier;
 }
 
-@property(retain) NSString *downtimeWhitelist; // @synthesize downtimeWhitelist=_downtimeWhitelist;
+- (void).cxx_destruct;
+@property int downtimeWhitelistAuthorization; // @synthesize downtimeWhitelistAuthorization=_downtimeWhitelistAuthorization;
 @property(retain) NSArray *unknownProperties; // @synthesize unknownProperties=_unknownProperties;
 @property(retain) NSString *preferredApplePersonaIdentifier; // @synthesize preferredApplePersonaIdentifier=_preferredApplePersonaIdentifier;
 @property(retain) NSString *preferredLikenessSource; // @synthesize preferredLikenessSource=_preferredLikenessSource;
@@ -72,6 +75,8 @@
 @property(retain) NSArray *otherDateComponents; // @synthesize otherDateComponents=_otherDateComponents;
 @property(retain) NSDateComponents *alternateBirthdayComponents; // @synthesize alternateBirthdayComponents=_alternateBirthdayComponents;
 @property(retain) NSDateComponents *birthdayComponents; // @synthesize birthdayComponents=_birthdayComponents;
+@property(retain) NSData *imageHash; // @synthesize imageHash=_imageHash;
+@property(retain) NSString *imageType; // @synthesize imageType=_imageType;
 @property(retain) NSData *imageData; // @synthesize imageData=_imageData;
 @property(retain) NSData *largeImageData; // @synthesize largeImageData=_largeImageData;
 @property(retain) NSDictionary *largeImageCropRects; // @synthesize largeImageCropRects=_largeImageCropRects;
@@ -104,7 +109,6 @@
 @property(retain) NSString *middleName; // @synthesize middleName=_middleName;
 @property(retain) NSString *lastName; // @synthesize lastName=_lastName;
 @property(retain) NSString *firstName; // @synthesize firstName=_firstName;
-- (void).cxx_destruct;
 - (id)largeImageHashOfType:(id)arg1;
 @property(readonly) NSString *companyName;
 

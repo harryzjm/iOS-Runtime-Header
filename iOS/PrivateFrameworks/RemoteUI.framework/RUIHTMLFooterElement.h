@@ -11,8 +11,8 @@
     NSString *_HTMLContent;
 }
 
-@property(copy, nonatomic) NSString *HTMLContent; // @synthesize HTMLContent=_HTMLContent;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *HTMLContent; // @synthesize HTMLContent=_HTMLContent;
 - (void)configureView:(id)arg1;
 
 @end

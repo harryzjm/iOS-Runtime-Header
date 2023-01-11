@@ -30,10 +30,15 @@
     long long _selectedOverlayEar;
     HKLollipopController *_lollipopController;
     HKAxis *_yAxis;
+    NSLayoutConstraint *_leadingMarginConstraint;
+    NSLayoutConstraint *_trailingMarginConstraint;
 }
 
 + (id)_chartPointsFromSensitivityData:(id)arg1 leftEarSeries:(_Bool)arg2;
 + (_Bool)testChartPointCreation:(id)arg1 leftEarSeries:(_Bool)arg2 expectedChartPoints:(id)arg3 failureMessage:(id *)arg4;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *trailingMarginConstraint; // @synthesize trailingMarginConstraint=_trailingMarginConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *leadingMarginConstraint; // @synthesize leadingMarginConstraint=_leadingMarginConstraint;
 @property(nonatomic) _Bool audiogramsFetched; // @synthesize audiogramsFetched=_audiogramsFetched;
 @property(retain, nonatomic) HKAxis *yAxis; // @synthesize yAxis=_yAxis;
 @property(retain, nonatomic) HKLollipopController *lollipopController; // @synthesize lollipopController=_lollipopController;
@@ -51,7 +56,6 @@
 @property(retain, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property(nonatomic) long long currentAudiogramIndex; // @synthesize currentAudiogramIndex=_currentAudiogramIndex;
 @property(retain, nonatomic) NSArray *audiograms; // @synthesize audiograms=_audiograms;
-- (void).cxx_destruct;
 - (id)_secondaryAnnotationColor;
 - (id)_primaryAnnotationColor;
 - (id)_disabledPointMarkerColor;
@@ -113,6 +117,8 @@
 - (void)_addContextView;
 - (void)_setupInitialUI;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
+- (void)_applyDynamicInsets:(struct UIEdgeInsets)arg1;
 - (void)dealloc;
 - (id)initWithUnitController:(id)arg1 sampleTypeUpdateController:(id)arg2 minimumAudiogramHeight:(double)arg3;
 

@@ -16,8 +16,8 @@
 }
 
 + (_Bool)shouldPushArtworkData;
-@property(retain, nonatomic) id <MPNowPlayingContentItemArtworkDataSource> artworkDataSource; // @synthesize artworkDataSource=_artworkDataSource;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <MPNowPlayingContentItemArtworkDataSource> artworkDataSource; // @synthesize artworkDataSource=_artworkDataSource;
 @property(nonatomic, getter=isExplicitItem) _Bool explicitItem;
 - (void)_mergeContentItem:(id)arg1;
 - (void)invalidateArtwork;
@@ -34,6 +34,7 @@
 @property(copy, nonatomic) NSArray *availableLanguageOptions;
 @property(nonatomic) _Bool hasLanguageOptions;
 - (void)setElapsedTime:(double)arg1 playbackRate:(float)arg2;
+@property(readonly, nonatomic) double calculatedElapsedTime;
 @property(copy, nonatomic) NSDictionary *nowPlayingInfo;
 @property(readonly, nonatomic) NSDictionary *auxiliaryNowPlayingInfo;
 @property(nonatomic) unsigned long long mediaType;
@@ -51,6 +52,7 @@
 @property(nonatomic) long long storeArtistID;
 @property(nonatomic) long long storeAlbumID;
 @property(nonatomic) long long numberOfChildren;
+@property(nonatomic, getter=isLoading) _Bool loading;
 @property(nonatomic, getter=isSteerable) _Bool steerable;
 @property(nonatomic, getter=isSharableItem) _Bool sharableItem;
 @property(nonatomic, getter=isAlwaysLiveItem) _Bool alwaysLiveItem;
@@ -80,6 +82,7 @@
 @property(copy, nonatomic) NSString *info;
 @property(copy, nonatomic) NSString *directorName;
 @property(copy, nonatomic) NSString *collectionIdentifier;
+@property(copy, nonatomic) NSString *albumYear;
 @property(copy, nonatomic) NSString *albumName;
 @property(copy, nonatomic) NSString *albumArtistName;
 @property(copy, nonatomic) NSDictionary *userInfo;

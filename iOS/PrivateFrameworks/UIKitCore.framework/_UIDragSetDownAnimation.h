@@ -18,13 +18,16 @@
     _UIDragSetDownAnimationWindow *_window;
     CADisplayLink *_displayLink;
     UIViewPropertyAnimator *_remainingItemsPropertyAnimator;
+    UIWindow *_coordinateContainerWindow;
 }
 
 + (CDUnknownBlockType)defaultDropAnimationForPlatterView:(id)arg1;
 + (CDUnknownBlockType)defaultMultiItemAnimationForPlatterView:(id)arg1;
 + (CDUnknownBlockType)defaultSingleItemAnimationForPlatterView:(id)arg1;
 + (id)defaultSetDownPropertyAnimator;
++ (_Bool)canAnimateItems:(id)arg1 forSource:(_Bool)arg2 policyDriven:(_Bool)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIWindow *coordinateContainerWindow; // @synthesize coordinateContainerWindow=_coordinateContainerWindow;
 - (void)_allItemAnimationsCompleted;
 - (void)itemAnimationCompleted:(id)arg1;
 - (void)itemAnimationReachedTarget:(id)arg1;
@@ -33,7 +36,7 @@
 - (void)updateTargetedDragPreview:(id)arg1 forDragItem:(id)arg2;
 - (void)updateVisibleDroppedItems:(id)arg1;
 @property(readonly, nonatomic) UIWindow *window;
-- (id)initWithVisibleDroppedItems:(id)arg1 items:(id)arg2 forSource:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithVisibleDroppedItems:(id)arg1 items:(id)arg2 forSource:(_Bool)arg3 policyDriven:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

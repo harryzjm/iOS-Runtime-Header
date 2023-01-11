@@ -7,7 +7,9 @@
 #import <CFNetwork/NSMutableURLRequest.h>
 
 @interface NSMutableURLRequest (AuthKit)
++ (id)ak_proxiedClientInfoHeadersWithDevice:(id)arg1;
 + (id)ak_proxiedAnisetteHeadersWithData:(id)arg1;
++ (id)ak_proxiedHeadersForDevice:(id)arg1 anisetteData:(id)arg2;
 + (id)ak_anisetteHeadersWithCompanionData:(id)arg1;
 + (id)ak_anisetteHeadersWithData:(id)arg1;
 + (id)ak_deviceUDIDHeader;
@@ -15,11 +17,13 @@
 + (id)ak_timeZoneHeader;
 + (id)ak_localeHeader;
 + (id)ak_clientTimeHeader;
+- (void)ak_addRequestUUIDHeader:(id)arg1;
 - (void)ak_addDeviceConfigurationModeHeader;
 - (void)ak_addCFUHeader:(id)arg1;
 - (void)ak_addDeviceModel;
 - (void)ak_addShowWarranty;
 - (void)ak_addProxiedDeviceICSCIntentHeader;
+- (void)ak_addOfferSecurityUpgrade:(_Bool)arg1;
 - (void)ak_addAppProvidedContext:(id)arg1;
 - (void)ak_addProxyApp:(id)arg1;
 - (void)ak_addClientApp:(id)arg1;
@@ -38,6 +42,7 @@
 - (void)ak_addTimeZoneHeaders;
 - (void)ak_addLocaleHeader;
 - (void)ak_addProxiedDeviceCountryHeader:(id)arg1;
+- (void)ak_addSKUCountryHeader;
 - (void)ak_addCountryHeader;
 - (void)ak_addPasswordResetKeyHeader:(id)arg1;
 - (void)ak_addContinutationKeyHeader:(id)arg1;
@@ -47,6 +52,9 @@
 - (void)ak_setJSONBodyWithParameters:(id)arg1;
 - (void)ak_setBodyWithParameters:(id)arg1;
 - (void)_setAuthorizationHeaderWithToken:(id)arg1 altDSID:(id)arg2 key:(id)arg3;
+- (id)ak_valueForEncodedHeaderWithKey:(id)arg1;
+- (void)ak_addDataCenterHeaderWithIdentifier:(id)arg1;
+- (void)ak_addURLSwitchingHeaderWithURLKey:(id)arg1 altDSID:(id)arg2;
 - (void)ak_addShortLivedTokenHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addICSCRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;

@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)entityName;
 
 @end

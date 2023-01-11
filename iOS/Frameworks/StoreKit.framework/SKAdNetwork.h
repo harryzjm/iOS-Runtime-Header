@@ -10,6 +10,7 @@
 {
 }
 
++ (void)updateConversionValue:(long long)arg1;
 + (void)registerAppForAdNetworkAttribution;
 
 @end

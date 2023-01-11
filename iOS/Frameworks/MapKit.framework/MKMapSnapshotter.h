@@ -22,11 +22,14 @@
 
 - (void).cxx_destruct;
 - (void)cancel;
+- (_Bool)_shouldDefaultToDarkContent;
 - (_Bool)_shouldShowDarkContent;
 - (void)_performSnapshot;
 - (void)_setupCustomFeaturesForAnnotationViewsIfNeeded;
 - (void)startWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_shouldRenderLogoForSnapshotDimensions;
+- (_Bool)_isWidget;
 - (void)_succeedWithSnapshot:(id)arg1;
 - (void)_failWithError:(id)arg1;
 - (void)_cleanupSnapshotCreator;

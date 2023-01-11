@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
 + (id)componentsForCurrentForecast;
 + (unsigned long long)expectedDailyForecastCount;
 + (unsigned long long)expectedHourlyForecastCount;
-- (id)dateComponentsFromUTCDict:(id)arg1 toUnitGranularity:(unsigned long long)arg2;
+- (id)dateFromUTCDict:(id)arg1 toUnitGranularity:(unsigned long long)arg2;
 - (id)sanitizedTemperatureForCelsiusKeyPath:(id)arg1 fahrenheitKeyPath:(id)arg2 dict:(id)arg3;
 - (id)sanitizedNumberForKeyPath:(id)arg1 dict:(id)arg2;
 - (void)logParsingErrorAtKeyPath:(id)arg1 error:(id *)arg2;
-- (id)parseHistoricalForecast:(id)arg1 date:(id)arg2 error:(id *)arg3;
+- (id)parseHistoricalForecast:(id)arg1 error:(id *)arg2;
 - (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6 rules:(id)arg7;
 - (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6;
 

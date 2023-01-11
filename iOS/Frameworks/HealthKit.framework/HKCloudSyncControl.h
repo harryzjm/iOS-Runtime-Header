@@ -15,10 +15,24 @@
     HKTaskServerProxyProvider *_proxyProvider;
 }
 
-+ (id)serverInterface;
-+ (id)clientInterface;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
+- (void)requestDataRefreshWithCompletion:(CDUnknownBlockType)arg1;
+- (void)oldestSampleStartDateInHealthDatabaseWithCompletion:(CDUnknownBlockType)arg1;
+- (void)accountConfigurationDidChangeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)disableCloudSyncAndDeleteAllCloudDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)enableCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)disableCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)disableCloudSyncAndDeleteAllCloudDataWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCloudDescriptionWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceCloudResetWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceCloudSyncWithOptions:(unsigned long long)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchCloudSyncProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCloudSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchCloudSyncRequiredWithCompletion:(CDUnknownBlockType)arg1;
+- (void)forceCloudSyncDataUploadForProfileWithCompletion:(CDUnknownBlockType)arg1;
+- (void)forceCloudSyncWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceCloudSyncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;

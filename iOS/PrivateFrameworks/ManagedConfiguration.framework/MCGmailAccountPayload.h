@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+#import <ManagedConfiguration/MCPerAccountVPNPayloadProtocol-Protocol.h>
 
-@interface MCGmailAccountPayload
+@class NSArray, NSDictionary, NSString;
+
+@interface MCGmailAccountPayload <MCPerAccountVPNPayloadProtocol>
 {
+    NSString *_VPNUUID;
+    NSString *_acAccountIdentifier;
     NSString *_accountDescription;
     NSString *_accountName;
     NSString *_emailAddress;
@@ -17,19 +21,26 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *communicationServiceRules; // @synthesize communicationServiceRules=_communicationServiceRules;
 @property(readonly, retain, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property(readonly, retain, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
 @property(readonly, retain, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *acAccountIdentifier; // @synthesize acAccountIdentifier=_acAccountIdentifier;
+@property(readonly, retain, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
+- (id)payloadDescriptionKeyValueSections;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
-- (id)title;
 - (id)restrictions;
-- (id)description;
+- (id)verboseDescription;
 - (id)stubDictionary;
 - (_Bool)mustInstallNonInteractively;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+@property(readonly, retain, nonatomic) NSArray *mailAccountIdentifiers;
+
+// Remaining properties
+@property(readonly, retain, nonatomic) NSArray *calendarAccountIdentifiers;
+@property(readonly, retain, nonatomic) NSArray *contactsAccountIdentifiers;
 
 @end
 

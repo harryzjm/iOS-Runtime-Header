@@ -29,8 +29,7 @@
 - (int)selectionType;
 - (_Bool)isLabelHitAtScreenPoint:(struct CGPoint)arg1 selectableLabelsOnly:(_Bool)arg2;
 - (struct CGRect)screenCollisionBounds;
-- (struct CGPoint)screenPointToScrollRelativeToWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2;
-- (struct CGPoint)calloutAnchorPointWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2 snapToPixels:(_Bool)arg3;
+- (struct CGPoint)calloutAnchorPointWithSnapToPixels:(_Bool)arg1;
 - (void)setIsPickedIconDrawnExternally:(_Bool)arg1;
 - (void)setLabelPressed:(_Bool)arg1;
 @property(readonly, nonatomic) NSArray *shields;
@@ -39,6 +38,8 @@
 @property(readonly, nonatomic) NSArray *relatedTexts;
 - (id)featureHandles;
 - (id)featureAnnotation;
+- (id)routeAnnotations;
+- (id)waypointInfo;
 - (id)routeInfo;
 - (id)trafficCamera;
 - (id)incident;
@@ -62,6 +63,8 @@
 - (_Bool)isTransit;
 - (_Bool)isFlyoverTour;
 - (_Bool)isVenueButton;
+- (_Bool)isRouteAnnotation;
+- (_Bool)isRouteWaypoint;
 - (_Bool)isRouteEta;
 - (_Bool)isTrafficCamera;
 - (_Bool)isTrafficIncident;
@@ -74,6 +77,8 @@
 - (_Bool)isSelected;
 - (_Bool)isSelectable;
 - (struct CGRect)calloutAnchorRect;
+- (struct CGRect)lateralCalloutAnchorRect;
+- (struct CGRect)_calloutAnchorRect:(_Bool)arg1;
 - (id)mapRegion;
 - (Box_3d7e3c2c)_bounds;
 - (CDStruct_c3b9c2ee)coordinate;

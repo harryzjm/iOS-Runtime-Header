@@ -8,7 +8,7 @@
 
 #import <MetricKit/NSSecureCoding-Protocol.h>
 
-@class MXAppLaunchMetric, MXAppResponsivenessMetric, MXAppRunTimeMetric, MXCPUMetric, MXCellularConditionMetric, MXDiskIOMetric, MXDisplayMetric, MXGPUMetric, MXLocationActivityMetric, MXMemoryMetric, MXMetaData, MXNetworkTransferMetric, NSArray, NSDate, NSString;
+@class MXAnimationMetric, MXAppExitMetric, MXAppLaunchMetric, MXAppResponsivenessMetric, MXAppRunTimeMetric, MXCPUMetric, MXCellularConditionMetric, MXDiskIOMetric, MXDisplayMetric, MXGPUMetric, MXLocationActivityMetric, MXMemoryMetric, MXMetaData, MXNetworkTransferMetric, NSArray, NSDate, NSString;
 
 @interface MXMetricPayload : NSObject <NSSecureCoding>
 {
@@ -27,13 +27,18 @@
     MXDiskIOMetric *_diskIOMetrics;
     MXMemoryMetric *_memoryMetrics;
     MXDisplayMetric *_displayMetrics;
+    MXAnimationMetric *_animationMetrics;
+    MXAppExitMetric *_applicationExitMetrics;
     NSArray *_signpostMetrics;
     MXMetaData *_metaData;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) MXMetaData *metaData; // @synthesize metaData=_metaData;
 @property(retain) NSArray *signpostMetrics; // @synthesize signpostMetrics=_signpostMetrics;
+@property(retain) MXAppExitMetric *applicationExitMetrics; // @synthesize applicationExitMetrics=_applicationExitMetrics;
+@property(retain) MXAnimationMetric *animationMetrics; // @synthesize animationMetrics=_animationMetrics;
 @property(retain) MXDisplayMetric *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
 @property(retain) MXMemoryMetric *memoryMetrics; // @synthesize memoryMetrics=_memoryMetrics;
 @property(retain) MXDiskIOMetric *diskIOMetrics; // @synthesize diskIOMetrics=_diskIOMetrics;
@@ -49,10 +54,10 @@
 @property(readonly) NSDate *timeStampBegin; // @synthesize timeStampBegin=_timeStampBegin;
 @property(readonly) _Bool includesMultipleApplicationVersions; // @synthesize includesMultipleApplicationVersions=_includesMultipleApplicationVersions;
 @property(readonly) NSString *latestApplicationVersion; // @synthesize latestApplicationVersion=_latestApplicationVersion;
-- (void).cxx_destruct;
 - (id)toDictionary;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)dictionaryRepresentation;
 - (id)DictionaryRepresentation;
 - (id)JSONRepresentation;
 - (id)initWithAppVersion:(id)arg1 withMutipleAppVersions:(_Bool)arg2 withTimeStampBegin:(id)arg3 withTimeStampEnd:(id)arg4;

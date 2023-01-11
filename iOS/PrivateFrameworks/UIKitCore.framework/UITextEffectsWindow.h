@@ -6,7 +6,7 @@
 
 #import <UIKitCore/_UICanvasBasedObject-Protocol.h>
 
-@class NSDictionary, NSString, UIEditingOverlayViewController, UIWindowScene;
+@class NSDictionary, NSLayoutConstraint, NSString, UIEditingOverlayViewController, UIWindowScene;
 
 @interface UITextEffectsWindow <_UICanvasBasedObject>
 {
@@ -23,6 +23,7 @@
     struct CGSize _hostedSceneSize;
     _Bool _manualHostingOverride;
     UIEditingOverlayViewController *_editingOverlayViewController;
+    NSLayoutConstraint *_bottomConstraint;
     struct UIEdgeInsets _hostedSafeInsets;
 }
 
@@ -41,12 +42,13 @@
 + (id)_sharedTextEffectsWindowforWindowScene:(id)arg1 allowHosted:(_Bool)arg2 matchesStatusBarOrientationOnAccess:(_Bool)arg3 shouldCreateIfNecessary:(_Bool)arg4;
 + (_Bool)_isSecure;
 + (_Bool)_shouldSoftAssertOnSetScreen;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) UIEditingOverlayViewController *editingOverlayViewController; // @synthesize editingOverlayViewController=_editingOverlayViewController;
 @property(nonatomic) struct UIEdgeInsets hostedSafeInsets; // @synthesize hostedSafeInsets=_hostedSafeInsets;
 @property(nonatomic) struct CGSize hostedSceneSize; // @synthesize hostedSceneSize=_hostedSceneSize;
 @property(nonatomic) struct CGPoint hostedWindowOffset; // @synthesize hostedWindowOffset=_hostedWindowOffset;
 @property(nonatomic) double defaultWindowLevel; // @synthesize defaultWindowLevel=_defaultWindowLevel;
 @property(readonly, nonatomic) _Bool isFullscreen; // @synthesize isFullscreen=_isFullscreen;
-- (void).cxx_destruct;
 - (_Bool)_shouldInstallRootPresentationController;
 - (void)_didSnapshot;
 - (void)_willSnapshot;
@@ -60,7 +62,9 @@
 - (struct CGRect)_usableSceneBounds;
 - (struct CGRect)_sceneBounds;
 - (struct CGRect)_sceneReferenceBounds;
+- (double)slideOverWindowVerticalOffset;
 - (struct CGRect)actualSceneFrame;
+- (long long)actualSceneOrientation;
 - (struct CGRect)actualSceneFrameForOrientation:(long long)arg1;
 - (struct CGRect)actualSceneBounds;
 - (struct CGRect)actualSceneBoundsForLandscape:(_Bool)arg1;
@@ -86,6 +90,7 @@
 - (void)_updateRootViewConstraintsForInterfaceOrientationAndStatusBarHeight;
 - (id)_inputWindowController;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
+- (void)becomeKeyWindow;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromView:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toView:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toWindow:(id)arg2;
@@ -97,6 +102,7 @@
 - (struct CGRect)_forHostedProcessConvertRect:(struct CGRect)arg1 forWindow:(id)arg2 wasFromWindow:(_Bool)arg3;
 - (struct CGPoint)_forHostedProcessConvertPoint:(struct CGPoint)arg1 forWindow:(id)arg2 wasFromWindow:(_Bool)arg3;
 @property(readonly, nonatomic) struct CGRect hostedFrame;
+- (void)addBottomPadding:(double)arg1;
 - (void)_configureContextOptions:(id)arg1;
 - (void)_restoreWindowLevel;
 - (void)_setWindowLevel:(double)arg1;

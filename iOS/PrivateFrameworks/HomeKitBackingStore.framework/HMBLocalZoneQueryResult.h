@@ -4,32 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSEnumerator.h>
+@class HMBLocalZone, NSDictionary;
 
-@class HMBLocalZone, NSDictionary, NSMutableArray, NSSet, NSString;
-
-@interface HMBLocalZoneQueryResult : NSEnumerator
+@interface HMBLocalZoneQueryResult
 {
-    NSMutableArray *_matched;
+    int _zoneRowBindOffset;
     HMBLocalZone *_localZone;
-    NSString *_className;
-    unsigned long long _lastRecordRow;
-    NSSet *_fields;
-    CDUnknownBlockType _filter;
-    NSDictionary *_queryFieldTypes;
+    unsigned long long _zoneRow;
+    NSDictionary *_arguments;
 }
 
-@property(retain, nonatomic) NSDictionary *queryFieldTypes; // @synthesize queryFieldTypes=_queryFieldTypes;
-@property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
-@property(retain, nonatomic) NSSet *fields; // @synthesize fields=_fields;
-@property(nonatomic) unsigned long long lastRecordRow; // @synthesize lastRecordRow=_lastRecordRow;
-@property(retain, nonatomic) NSString *className; // @synthesize className=_className;
-@property(nonatomic) __weak HMBLocalZone *localZone; // @synthesize localZone=_localZone;
-@property(retain, nonatomic) NSMutableArray *matched; // @synthesize matched=_matched;
++ (_Bool)bindPropertiesToStatement:(struct sqlite3_stmt *)arg1 arguments:(id)arg2 zoneBindRowOffset:(int)arg3 zoneRow:(unsigned long long)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
-- (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)nextObject;
-- (id)initWithLocalZone:(id)arg1 className:(Class)arg2 fields:(id)arg3 filter:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) NSDictionary *arguments; // @synthesize arguments=_arguments;
+@property(readonly, nonatomic) int zoneRowBindOffset; // @synthesize zoneRowBindOffset=_zoneRowBindOffset;
+@property(readonly, nonatomic) unsigned long long zoneRow; // @synthesize zoneRow=_zoneRow;
+@property(readonly, nonatomic) __weak HMBLocalZone *localZone; // @synthesize localZone=_localZone;
+- (_Bool)bindPropertiesToStatement:(struct sqlite3_stmt *)arg1 error:(id *)arg2;
+- (id)initWithLocalZone:(id)arg1 statement:(id)arg2 initialSequence:(id)arg3 arguments:(id)arg4 maximumRowsPerSelect:(unsigned long long)arg5;
 
 @end
 

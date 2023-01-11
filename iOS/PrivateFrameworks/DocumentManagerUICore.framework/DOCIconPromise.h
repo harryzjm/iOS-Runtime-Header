@@ -17,6 +17,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)averageColorInRect:(struct CGRect)arg1;
 @property(readonly, nonatomic) _Bool isRepresentativeIcon;
 @property(readonly, nonatomic, getter=isLoading) _Bool loading;
 - (_Bool)registerGenerationCompletionHandler:(CDUnknownBlockType)arg1;

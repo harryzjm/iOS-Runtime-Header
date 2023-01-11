@@ -10,10 +10,11 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableLocalizationTable, NSArray, NSString;
+@class INCodableLocalizationTable, NSArray, NSDictionary, NSString;
 
 @interface INCodableEnum : NSObject <NSSecureCoding, NSCopying, INCodableCoding>
 {
+    NSDictionary *_valuesByIndex;
     INCodableLocalizationTable *_localizationTable;
     NSString *_name;
     NSString *_displayName;
@@ -24,6 +25,21 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)__INCodableEnumValueDisplayNameKey;
++ (id)__INCodableEnumValueDisplayNameIDKey;
++ (id)__INCodableEnumValueIndexKey;
++ (id)__INCodableEnumValueNameKey;
++ (id)__INCodableEnumValueSynonymsKey;
++ (id)__DisplayNameKey;
++ (id)__DisplayNameIDKey;
++ (id)__NameKey;
++ (id)__TypeKey;
++ (id)__ValuesKey;
++ (id)__INCodableEnumValueSynonymPronunciationHintKey;
++ (id)__INCodableEnumValueSynonymPronunciationHintIDKey;
++ (id)__INCodableEnumValueSynonymSynonymKey;
++ (id)__INCodableEnumValueSynonymSynonymIDKey;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *values; // @synthesize values=_values;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(copy, nonatomic, setter=_setEnumNamespace:) NSString *enumNamespace; // @synthesize enumNamespace=_enumNamespace;
@@ -31,16 +47,15 @@
 @property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic, setter=_setLocalizationTable:) INCodableLocalizationTable *_localizationTable; // @synthesize _localizationTable;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)valuesByIndexForValues:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (id)dictionaryRepresentation;
 - (void)updateWithDictionary:(id)arg1;
-- (id)dictionaryKeyForKeyPath:(id)arg1;
-- (id)keyPrefix;
-- (id)localizedDisplayNameForLanguage:(id)arg1;
+- (id)localizedDisplayNameWithLocalizer:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *localizedDisplayName;
+- (id)valueForIndex:(unsigned long long)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

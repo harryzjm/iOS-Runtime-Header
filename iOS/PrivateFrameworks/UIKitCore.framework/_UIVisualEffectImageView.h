@@ -4,23 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIVisualEffectViewParticipating-Protocol.h>
+#import <UIKitCore/_UIVisualEffectViewParticipatingInternal-Protocol.h>
 
 @class NSArray, NSString, UIView, _UIVisualEffectViewBackdropCaptureGroup;
-@protocol _UIVisualEffectViewParticipating;
+@protocol _UIVisualEffectViewParticipating, _UIVisualEffectViewSubviewMonitoring;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectImageView <_UIVisualEffectViewParticipating>
+@interface _UIVisualEffectImageView <_UIVisualEffectViewParticipatingInternal>
 {
     _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
     NSArray *_viewEffects;
     NSArray *_filters;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;
 @property(copy, nonatomic) NSArray *viewEffects; // @synthesize viewEffects=_viewEffects;
 @property(retain, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *primaryCaptureGroup; // @synthesize primaryCaptureGroup=_primaryCaptureGroup;
-- (void).cxx_destruct;
 - (id)_initialValueForLayer:(id)arg1 keyPath:(id)arg2 usePresentationValue:(_Bool)arg3;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)applyIdentityFilterEffects;
@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)applyIdentityViewEffects;
 - (void)applyRequestedViewEffects;
 @property(retain, nonatomic) UIView<_UIVisualEffectViewParticipating> *containedView;
+@property(nonatomic) _Bool disableGroupFiltering;
+@property(nonatomic) __weak id <_UIVisualEffectViewSubviewMonitoring> subviewMonitor;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

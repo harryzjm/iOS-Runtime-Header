@@ -16,10 +16,12 @@
 }
 
 + (id)sharedDefaultDevice;
++ (id)allDevices;
 + (id)sharedDevice:(id)arg1;
 + (_Bool)isSupported;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)pipelineDescriptions:(id)arg1 extraColorFormats:(id)arg2;
 - (void)collectResources;
 @property(readonly, nonatomic) id <MTLCaptureScope> captureScope;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;

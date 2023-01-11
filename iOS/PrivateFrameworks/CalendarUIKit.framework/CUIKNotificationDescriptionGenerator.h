@@ -17,13 +17,12 @@
 + (id)comment:(id)arg1 withInsertedAutoCommentForDate:(id)arg2;
 + (id)stringWithOnlyAutoComment:(id)arg1;
 + (id)stringWithAutoCommentRemoved:(id)arg1;
-+ (_Bool)stringHasAutoCommentPrefix:(id)arg1;
 + (id)autoCommentForProposedTime:(id)arg1;
-+ (id)autoCommentPrefix;
 + (id)sharedGenerator;
 - (void).cxx_destruct;
+- (id)conflictStringForConflictDetails:(id)arg1 maxTitleLength:(unsigned long long)arg2 descriptions:(id)arg3;
 - (id)conflictStringForConflictDetails:(id)arg1 maxTitleLength:(unsigned long long)arg2;
-- (id)conflictStringForConflictDetails:(id)arg1;
+- (id)conflictStringForConflictDetails:(id)arg1 descriptions:(id)arg2;
 - (id)_adjustedTitle:(id)arg1 maxLength:(unsigned long long)arg2;
 - (id)timePeriodForTimeInterval:(id)arg1;
 - (id)descriptionStringsForNotification:(id)arg1 withOptions:(unsigned long long)arg2;

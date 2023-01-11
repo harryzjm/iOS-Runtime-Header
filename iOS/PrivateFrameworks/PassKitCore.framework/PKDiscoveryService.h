@@ -21,6 +21,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)removeDiscoveryUserNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)evaluateRulesWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteRuleWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)insertRule:(id)arg1 completion:(CDUnknownBlockType)arg2;

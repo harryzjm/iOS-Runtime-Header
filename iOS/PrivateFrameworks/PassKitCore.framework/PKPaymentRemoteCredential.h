@@ -19,8 +19,11 @@
     PKPaymentPass *_paymentPass;
     unsigned long long _rank;
     NSString *_productIdentifier;
+    NSString *_serialNumber;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property(nonatomic) unsigned long long rank; // @synthesize rank=_rank;
 @property(retain, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
@@ -32,7 +35,6 @@
 @property(copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property(nonatomic) long long status; // @synthesize status=_status;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)_isEqualToCredential:(id)arg1;

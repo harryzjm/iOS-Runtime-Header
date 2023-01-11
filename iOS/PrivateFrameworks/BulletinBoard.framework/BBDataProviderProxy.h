@@ -23,14 +23,11 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property(retain) BBDataProviderIdentity *identity; // @synthesize identity=_identity;
 - (void).cxx_destruct;
+@property(retain) BBDataProviderIdentity *identity; // @synthesize identity=_identity;
 - (void)deliverBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)deliverMessageWithName:(id)arg1 userInfo:(id)arg2;
 - (void)noteSectionInfoDidChange:(id)arg1;
-- (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(_Bool)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-- (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(_Bool)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearedInfoForClearingBulletinsFromDate:(id)arg1 toDate:(id)arg2 lastClearedInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -41,6 +41,7 @@
     struct UIEdgeInsets _hitRectInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) float optimisticValue; // @synthesize optimisticValue=_optimisticValue;
 @property(nonatomic, getter=isInOptimisticState) _Bool optimisticState; // @synthesize optimisticState=_optimisticState;
 @property(retain, nonatomic) MPAVOutputDeviceRoute *outputDeviceRoute; // @synthesize outputDeviceRoute=_outputDeviceRoute;
@@ -51,7 +52,6 @@
 @property(nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property(retain, nonatomic) UIImage *volumeWarningTrackImage; // @synthesize volumeWarningTrackImage=_volumeWarningTrackImage;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (void)_logVolumeValueDidChange:(float)arg1;
 - (id)_routeName;
 - (id)_newVolumeWarningView;
@@ -76,6 +76,7 @@
 - (void)volumeController:(id)arg1 volumeControlLabelDidChange:(id)arg2;
 - (void)volumeController:(id)arg1 volumeControlCapabilitiesDidChange:(unsigned int)arg2;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(_Bool)arg2;
+- (void)updateVolume;
 @property(readonly, nonatomic) NSString *volumeAudioCategory;
 @property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
 @property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;

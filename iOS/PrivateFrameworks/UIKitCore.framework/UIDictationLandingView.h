@@ -7,6 +7,7 @@
 #import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 
 @class CADisplayLink, NSOperation, NSString, UITextRange;
+@protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
 @interface UIDictationLandingView <_UIBasicAnimationFactory>
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     double _shrinkStartTime;
     _Bool _shrinking;
     NSOperation *_afterShrinkCompletionInvocation;
+    id <UITextCursorAssertion> _blinkAssertion;
 }
 
 + (long long)fallbackPlaceholderLength;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (double)widthForLineHeight:(double)arg1;
 + (double)diameterForLineHeight:(double)arg1;
+@property(retain, nonatomic) id <UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property(nonatomic) _Bool willInsertResult; // @synthesize willInsertResult=_willInsertResult;
 - (id)_timingFunctionForAnimation;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;

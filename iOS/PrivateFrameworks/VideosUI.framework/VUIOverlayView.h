@@ -6,36 +6,39 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, IKViewElement, NSArray, VUILabel, VUIOverlayLayout, VUITextBadgeView, _TVProgressView;
+@class CALayer, IKViewElement, NSArray, VUILabel, VUIOverlayLayout, VUIProgressView, VUITextBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface VUIOverlayView : UIView
 {
-    CAGradientLayer *_gradientLayer;
+    _Bool _hasPageControlDisplayedOnTop;
+    VUILabel *_titleLabel;
+    VUITextBadgeView *_textBadge;
+    VUIProgressView *_progressView;
+    UIView *_gradientView;
+    CALayer *_gradientLayer;
+    NSArray *_badgeViewWrappers;
     VUIOverlayLayout *_overlayLayout;
     IKViewElement *_viewElement;
-    VUILabel *_titleLabel;
     IKViewElement *_titleElement;
-    VUITextBadgeView *_textBadge;
     IKViewElement *_textBadgeElement;
-    NSArray *_badgeViewWrappers;
-    _TVProgressView *_progressView;
-    UIView *_gradientView;
 }
 
++ (_Bool)_hasPageControlDisplayedOnTopOfOverlayElement:(id)arg1;
 + (id)overlayViewFromMediaItem:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 + (id)overlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
-@property(retain, nonatomic) UIView *gradientView; // @synthesize gradientView=_gradientView;
-@property(retain, nonatomic) _TVProgressView *progressView; // @synthesize progressView=_progressView;
-@property(retain, nonatomic) NSArray *badgeViewWrappers; // @synthesize badgeViewWrappers=_badgeViewWrappers;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasPageControlDisplayedOnTop; // @synthesize hasPageControlDisplayedOnTop=_hasPageControlDisplayedOnTop;
 @property(retain, nonatomic) IKViewElement *textBadgeElement; // @synthesize textBadgeElement=_textBadgeElement;
-@property(retain, nonatomic) VUITextBadgeView *textBadge; // @synthesize textBadge=_textBadge;
 @property(retain, nonatomic) IKViewElement *titleElement; // @synthesize titleElement=_titleElement;
-@property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property(retain, nonatomic) VUIOverlayLayout *overlayLayout; // @synthesize overlayLayout=_overlayLayout;
-@property(retain, nonatomic) CAGradientLayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *badgeViewWrappers; // @synthesize badgeViewWrappers=_badgeViewWrappers;
+@property(retain, nonatomic) CALayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
+@property(retain, nonatomic) UIView *gradientView; // @synthesize gradientView=_gradientView;
+@property(retain, nonatomic) VUIProgressView *progressView; // @synthesize progressView=_progressView;
+@property(retain, nonatomic) VUITextBadgeView *textBadge; // @synthesize textBadge=_textBadge;
+@property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (void)reset;
 - (void)layoutSubviews;
 

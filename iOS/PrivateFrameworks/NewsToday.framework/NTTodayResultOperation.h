@@ -7,23 +7,21 @@
 #import <NewsCore/FCOperation.h>
 
 @class NTPBTodayResultOperationInfo;
-@protocol FCContentContext, NTReadablePrivateDataStorage;
+@protocol FCContentContext, NFCopying;
 
 @interface NTTodayResultOperation : FCOperation
 {
-    id <NTReadablePrivateDataStorage> _privateDataStorage;
     id <FCContentContext> _contentContext;
-    CDUnknownBlockType _sessionProvider;
     NTPBTodayResultOperationInfo *_operationInfo;
+    id <NFCopying> _prefetchedContent;
     CDUnknownBlockType _headlineResultCompletionHandler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType headlineResultCompletionHandler; // @synthesize headlineResultCompletionHandler=_headlineResultCompletionHandler;
-@property(copy, nonatomic) NTPBTodayResultOperationInfo *operationInfo; // @synthesize operationInfo=_operationInfo;
-@property(copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;
-@property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
-@property(retain, nonatomic) id <NTReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType headlineResultCompletionHandler; // @synthesize headlineResultCompletionHandler=_headlineResultCompletionHandler;
+@property(copy, nonatomic) id <NFCopying> prefetchedContent; // @synthesize prefetchedContent=_prefetchedContent;
+@property(copy, nonatomic) NTPBTodayResultOperationInfo *operationInfo; // @synthesize operationInfo=_operationInfo;
+@property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 - (id)init;
 
 @end

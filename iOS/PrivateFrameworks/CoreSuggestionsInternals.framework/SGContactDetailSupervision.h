@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface SGContactDetailSupervision : NSObject
 {
@@ -15,23 +15,25 @@
     _Bool _isFirstPerson;
     _Bool _isThirdPerson;
     _Bool _isUnlikelyPhone;
+    NSArray *_matchingContacts;
     unsigned long long _ignoreAfter;
     NSDate *_matchDate;
     NSString *_senderDisplayName;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak NSString *senderDisplayName; // @synthesize senderDisplayName=_senderDisplayName;
 @property(nonatomic) __weak NSDate *matchDate; // @synthesize matchDate=_matchDate;
 @property(nonatomic) unsigned long long ignoreAfter; // @synthesize ignoreAfter=_ignoreAfter;
 @property(nonatomic) _Bool isUnlikelyPhone; // @synthesize isUnlikelyPhone=_isUnlikelyPhone;
+@property(readonly, nonatomic) NSArray *matchingContacts; // @synthesize matchingContacts=_matchingContacts;
 @property(nonatomic) _Bool isThirdPerson; // @synthesize isThirdPerson=_isThirdPerson;
 @property(nonatomic) _Bool isFirstPerson; // @synthesize isFirstPerson=_isFirstPerson;
 @property(nonatomic) _Bool regexDoesNotBelongToSender; // @synthesize regexDoesNotBelongToSender=_regexDoesNotBelongToSender;
 @property(nonatomic) _Bool regexBelongsToSender; // @synthesize regexBelongsToSender=_regexBelongsToSender;
-- (void).cxx_destruct;
 - (struct SGMContactDetailFoundIn_)metricsContactDetailFoundIn;
 - (struct SGMContactDetailOwner_)metricsContactDetailOwner;
-- (id)initWithEntity:(id)arg1 ddMatch:(id)arg2 isUnlikelyPhone:(_Bool)arg3;
+- (id)initWithMessage:(id)arg1 ddMatch:(id)arg2 isUnlikelyPhone:(_Bool)arg3;
 
 @end
 

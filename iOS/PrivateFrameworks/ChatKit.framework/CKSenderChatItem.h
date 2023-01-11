@@ -10,11 +10,14 @@
 
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)loadTranscriptText;
+- (_Bool)isEditable;
 - (_Bool)wantsDrawerLayout;
 - (id)cellIdentifier;
 - (Class)cellClass;
 - (BOOL)transcriptOrientation;
 - (struct UIEdgeInsets)contentInsets;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (unsigned long long)layoutType;
 
 @end
 

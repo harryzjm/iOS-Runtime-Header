@@ -6,32 +6,40 @@
 
 #import <HomeKitBackingStore/HMBModel.h>
 
-@class CKStreamingAsset, NSArray, NSData, NSDate, NSNumber, NSString;
+@class HMBStreamingAsset, NSArray, NSData, NSDate, NSNumber, NSString;
 
 @interface HMDCameraClipModel : HMBModel
 {
 }
 
-+ (id)hmbExternalRecordType;
++ (id)countOfClipsBetweenDatesQuery;
++ (id)clipsBetweenDatesQueryWithIsAscending:(_Bool)arg1;
++ (id)clipsWithNeedsUploadFeedbackStatusQuery;
++ (id)incompleteClipsQuery;
 + (id)sentinelParentUUID;
++ (id)hmbQueries;
++ (id)hmbExternalRecordType;
 + (id)hmbProperties;
+@property unsigned long long feedbackStatus;
 - (id)createClipWithSignificantEvents:(id)arg1;
-- (id)createClip;
 
 // Remaining properties
 @property(retain, nonatomic) NSNumber *duration; // @dynamic duration;
 @property(retain, nonatomic) NSData *encryptionKey; // @dynamic encryptionKey;
 @property(retain, nonatomic) NSNumber *encryptionScheme; // @dynamic encryptionScheme;
+@property(retain, nonatomic) NSNumber *feedbackStatusField; // @dynamic feedbackStatusField;
 @property(retain, nonatomic) NSNumber *isComplete; // @dynamic isComplete;
+@property(retain, nonatomic) NSNumber *maximumClipDuration; // @dynamic maximumClipDuration;
 @property(retain, nonatomic) NSArray *posterFramesMetadata; // @dynamic posterFramesMetadata;
 @property(retain, nonatomic) NSArray *posterFramesMetadataArray; // @dynamic posterFramesMetadataArray;
-@property(retain, nonatomic) CKStreamingAsset *posterFramesStreamingAsset; // @dynamic posterFramesStreamingAsset;
+@property(retain, nonatomic) HMBStreamingAsset *posterFramesStreamingAsset; // @dynamic posterFramesStreamingAsset;
+@property(retain, nonatomic) NSNumber *recordedLocally; // @dynamic recordedLocally;
 @property(retain, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property(retain, nonatomic) NSString *streamingAssetVersion; // @dynamic streamingAssetVersion;
 @property(retain, nonatomic) NSNumber *targetFragmentDuration; // @dynamic targetFragmentDuration;
 @property(retain, nonatomic) NSArray *videoMetadata; // @dynamic videoMetadata;
 @property(retain, nonatomic) NSArray *videoMetadataArray; // @dynamic videoMetadataArray;
-@property(retain, nonatomic) CKStreamingAsset *videoStreamingAsset; // @dynamic videoStreamingAsset;
+@property(retain, nonatomic) HMBStreamingAsset *videoStreamingAsset; // @dynamic videoStreamingAsset;
 
 @end
 

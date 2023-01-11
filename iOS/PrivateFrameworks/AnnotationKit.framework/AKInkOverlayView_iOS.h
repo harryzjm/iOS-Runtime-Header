@@ -9,6 +9,8 @@
 }
 
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_viewsToHitTestForEvent:(id)arg1;
 - (void)commonInit;
 
 @end

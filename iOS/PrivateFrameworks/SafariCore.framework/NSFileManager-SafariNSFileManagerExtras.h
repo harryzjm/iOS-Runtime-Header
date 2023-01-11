@@ -7,8 +7,11 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (SafariNSFileManagerExtras)
+- (_Bool)safari_removeDirectoryIfEmpty:(id)arg1;
 - (id)safari_frameworksDirectoryURLs;
 - (id)safari_pathWithUniqueFilenameForPath:(id)arg1;
+- (_Bool)_safari_removeFileAtURL:(id)arg1 onlyIfFileExists:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)safari_removeFileOnlyAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)safari_removeFileAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)safari_moveDownloadedFileAtURL:(id)arg1 toURL:(id)arg2;
 - (id)safari_createTemporaryDirectoryWithTemplate:(id)arg1;

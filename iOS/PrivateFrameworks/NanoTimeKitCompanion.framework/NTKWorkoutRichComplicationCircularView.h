@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKWorkoutRichComplicationBaseCircularView;
-
 @interface NTKWorkoutRichComplicationCircularView
 {
-    NTKWorkoutRichComplicationBaseCircularView *_richView;
 }
 
-- (void).cxx_destruct;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)_applyPausedUpdate;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)layoutSubviews;
++ (_Bool)supportsComplicationFamily:(long long)arg1;
+- (id)_animatedImagesName;
+- (id)_workoutImageName;
 - (id)init;
 
 @end

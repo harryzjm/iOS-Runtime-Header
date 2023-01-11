@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface MTLSerializerRenderCommandEncoder <MTLRenderCommandEncoderSPI>
 {
-    void *renderPassCommand;
     NSMutableArray *splitHandlers;
     MTLRenderPassDescriptor *renderPassDescriptor;
     _Bool hadSplit;
@@ -25,10 +24,14 @@ __attribute__((visibility("hidden")))
     id <MTLSerializerTexture> vertexTextures[128];
     id <MTLSerializerSamplerState> vertexSamplers[16];
     id <MTLSerializerBuffer> tessellationFactorBuffer;
+    void *renderPassCommand;
+    _Bool _resourcesDirty;
+    _Bool needsWrites;
     unsigned long long tileWidth;
     unsigned long long tileHeight;
 }
 
+@property _Bool needsWrites; // @synthesize needsWrites;
 @property(readonly) unsigned long long tileHeight; // @synthesize tileHeight;
 @property(readonly) unsigned long long tileWidth; // @synthesize tileWidth;
 - (void)setEncoderPosition:(unsigned long long)arg1;
@@ -36,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)forceStoreActionsForPosition:(unsigned long long)arg1;
 - (void)fixStoreActions:(id)arg1;
 - (unsigned long long)getType;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_c0454aff *)arg2;
 - (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
 - (void)setTileTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
@@ -122,6 +126,7 @@ __attribute__((visibility("hidden")))
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 baseInstance:(unsigned long long)arg5;
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3;
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4;
+- (void)flushWrites;
 - (_Bool)handleSplits;
 - (_Bool)addRenderTargetReferences;
 - (void)beginSegment:(_Bool)arg1;

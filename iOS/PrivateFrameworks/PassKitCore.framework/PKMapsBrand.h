@@ -22,11 +22,18 @@
     NSString *_detailedCategory;
     MKWalletMerchantStylingInfo *_stylingInfo;
     NSURL *_logoURL;
+    NSURL *_heroImageURL;
+    NSString *_heroImageAttributionName;
     NSURL *_businessChatURL;
 }
 
++ (id)recordNamePrefix;
++ (void)deleteFromCloudStoreRecord:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSURL *businessChatURL; // @synthesize businessChatURL=_businessChatURL;
+@property(copy, nonatomic) NSString *heroImageAttributionName; // @synthesize heroImageAttributionName=_heroImageAttributionName;
+@property(retain, nonatomic) NSURL *heroImageURL; // @synthesize heroImageURL=_heroImageURL;
 @property(copy, nonatomic) NSURL *logoURL; // @synthesize logoURL=_logoURL;
 @property(retain, nonatomic) MKWalletMerchantStylingInfo *stylingInfo; // @synthesize stylingInfo=_stylingInfo;
 @property(copy, nonatomic) NSString *detailedCategory; // @synthesize detailedCategory=_detailedCategory;
@@ -36,7 +43,6 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) int resultProviderIdentifier; // @synthesize resultProviderIdentifier=_resultProviderIdentifier;
 @property(nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
 - (_Bool)hasCloudArchivableDeviceData;
 - (_Bool)isCloudArchivableDeviceDataEqual:(id)arg1;
@@ -46,9 +52,11 @@
 - (_Bool)isEqualToMapsBrand:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)itemType;
-- (id)recordTypesAndNames;
+- (id)primaryIdentifier;
+- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

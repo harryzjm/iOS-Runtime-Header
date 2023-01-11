@@ -37,6 +37,7 @@
     NSArray *_abbreviatedBackButtonTitles;
     NSMutableDictionary *_minimumDesiredHeights;
     _Bool _manualScrollEdgeAppearanceEnabled;
+    _Bool _alwaysUseManualScrollEdgeAppearance;
     _Bool __alignLargeTitleAccessoryViewToBaseline;
     _Bool __backgroundHidden;
     _Bool _useRelativeLargeTitleInsets;
@@ -50,6 +51,7 @@
     NSArray *_rightItemSpaceList;
     unsigned long long _leftFlexibleSpaceCount;
     unsigned long long _rightFlexibleSpaceCount;
+    long long _backButtonDisplayMode;
     long long _largeTitleDisplayMode;
     UINavigationBarAppearance *_standardAppearance;
     UINavigationBarAppearance *_compactAppearance;
@@ -69,6 +71,7 @@
 }
 
 + (id)defaultFont;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setPreserveSearchBarAcrossTransitions:) _Bool _preserveSearchBarAcrossTransitions; // @synthesize _preserveSearchBarAcrossTransitions=__preserveSearchBarAcrossTransitions;
 @property(retain, nonatomic) NSArray *_alternateLargeTitles; // @synthesize _alternateLargeTitles=__alternateLargeTitles;
 @property(nonatomic) _Bool useRelativeLargeTitleInsets; // @synthesize useRelativeLargeTitleInsets=_useRelativeLargeTitleInsets;
@@ -92,17 +95,18 @@
 @property(copy, nonatomic) UINavigationBarAppearance *compactAppearance; // @synthesize compactAppearance=_compactAppearance;
 @property(copy, nonatomic) UINavigationBarAppearance *standardAppearance; // @synthesize standardAppearance=_standardAppearance;
 @property(nonatomic) long long largeTitleDisplayMode; // @synthesize largeTitleDisplayMode=_largeTitleDisplayMode;
+@property(nonatomic) long long backButtonDisplayMode; // @synthesize backButtonDisplayMode=_backButtonDisplayMode;
 @property(nonatomic, setter=_setRightFlexibleSpaceCount:) unsigned long long _rightFlexibleSpaceCount; // @synthesize _rightFlexibleSpaceCount;
 @property(nonatomic, setter=_setLeftFlexibleSpaceCount:) unsigned long long _leftFlexibleSpaceCount; // @synthesize _leftFlexibleSpaceCount;
 @property(copy, nonatomic, setter=_setRightItemSpaceList:) NSArray *_rightItemSpaceList; // @synthesize _rightItemSpaceList;
 @property(copy, nonatomic, setter=_setLeftItemSpaceList:) NSArray *_leftItemSpaceList; // @synthesize _leftItemSpaceList;
 @property(nonatomic, setter=_setAutoScrollEdgeTransitionDistance:) double _autoScrollEdgeTransitionDistance; // @synthesize _autoScrollEdgeTransitionDistance;
 @property(nonatomic, setter=_setManualScrollEdgeAppearanceProgress:) double _manualScrollEdgeAppearanceProgress; // @synthesize _manualScrollEdgeAppearanceProgress;
+@property(nonatomic, setter=_setAlwaysUseManualScrollEdgeAppearance:) _Bool _alwaysUseManualScrollEdgeAppearance; // @synthesize _alwaysUseManualScrollEdgeAppearance;
 @property(nonatomic, getter=_isManualScrollEdgeAppearanceEnabled, setter=_setManualScrollEdgeAppearanceEnabled:) _Bool _manualScrollEdgeAppearanceEnabled; // @synthesize _manualScrollEdgeAppearanceEnabled;
 @property(copy, nonatomic, setter=_setPendingTitle:) NSString *_pendingTitle; // @synthesize _pendingTitle;
 @property(retain, nonatomic, setter=_setBottomPalette:) _UINavigationBarPalette *_bottomPalette; // @synthesize _bottomPalette;
 @property(nonatomic, setter=_setFontScaleAdjustment:) double _fontScaleAdjustment; // @synthesize _fontScaleAdjustment;
-- (void).cxx_destruct;
 - (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (id)_independentShadowImage;
 - (id)_independentBackgroundImageForBarMetrics:(long long)arg1;
@@ -159,6 +163,8 @@
 - (void)_movedToTopOfStack:(_Bool)arg1;
 - (void)_movingFromTopOfStack;
 - (void)_movingToTopOfStack;
+- (void)set_alwaysUseManualScrollEdgeAppearance:(_Bool)arg1;
+@property(nonatomic, setter=_setBackButtonDisplayMode:) unsigned long long _backButtonDisplayMode;
 @property(nonatomic) _Bool hidesSearchBarWhenScrolling;
 @property(readonly, nonatomic) _Bool _hidesSearchBarWhenScrollingIfAllowed;
 @property(retain, nonatomic) UISearchController *searchController;
@@ -202,6 +208,7 @@
 - (void)_removeBarButtonItemViews;
 @property(retain, nonatomic) UIBarButtonItem *backBarButtonItem;
 - (id)_effectiveBackBarButtonItem;
+- (id)_backButtonTitleAllowingGenericTitles:(_Bool)arg1;
 - (id)currentBackButtonTitle;
 @property(copy, nonatomic) NSString *backButtonTitle;
 @property(copy, nonatomic) NSString *title;

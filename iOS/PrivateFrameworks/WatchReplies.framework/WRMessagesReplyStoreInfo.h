@@ -8,6 +8,7 @@
 {
 }
 
+- (id)hiddenTinkerReplyKeys;
 - (_Bool)supportsSmartReplies;
 - (id)defaultsChangedNotificationName;
 - (id)defaultsKey;

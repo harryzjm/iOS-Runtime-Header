@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUILabelTopMarginCalculationProtocol-Protocol.h>
+#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, UIImage, VUIMediaTagsViewLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIMediaTagsView : UIView <VUIRentalExpirationLabelDelegate, VUILabelTopMarginCalculationProtocol>
+@interface VUIMediaTagsView : UIView <VUIRentalExpirationLabelDelegate, VUILabelBaselineProtocol>
 {
     VUIMediaTagsViewLayout *_layout;
     NSDictionary *_viewsMap;
@@ -23,26 +23,31 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)tagsViewWithMetadata:(id)arg1 layout:(id)arg2 element:(id)arg3 existingView:(id)arg4;
++ (id)tagsViewWithMetadata:(id)arg1 layout:(id)arg2 existingView:(id)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *commonSenseDarkImage; // @synthesize commonSenseDarkImage=_commonSenseDarkImage;
 @property(retain, nonatomic) UIImage *commonSenseLightImage; // @synthesize commonSenseLightImage=_commonSenseLightImage;
 @property(nonatomic) double totalSubviewsWidth; // @synthesize totalSubviewsWidth=_totalSubviewsWidth;
 @property(retain, nonatomic) NSArray *groupedSubviews; // @synthesize groupedSubviews=_groupedSubviews;
 @property(copy, nonatomic) NSDictionary *viewsMap; // @synthesize viewsMap=_viewsMap;
 @property(readonly, nonatomic) VUIMediaTagsViewLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
 - (void)_removeGenreLabelAndSeparator;
 - (double)_totalSubviewsWidth;
 - (void)_removeSeparatorsFromGroupsIfNeeded:(_Bool)arg1;
-- (void)_updateAppearance;
+- (void)_updateAppearanceWithUserInterfaceStyle:(long long)arg1;
+- (void)_updateImageAppearanceWithUserInterfaceStyle:(long long)arg1;
 - (_Bool)_shouldPutTextOnSeparateLines;
 - (id)_newRentalExpirationlabel:(id)arg1 exisitingLabel:(id)arg2;
 - (id)_newImageViewAsSubview;
+- (id)_newLabelAsSubview:(id)arg1 withAttributedString:(id)arg2;
 - (id)_newLabelAsSubview:(id)arg1;
+- (id)_firstLabelSubview;
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithMetadata:(id)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)bottomMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
+- (double)baselineOffsetFromBottom;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
 - (struct CGSize)_layoutSubviewsForSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;

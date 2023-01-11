@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPSectionedCollection, NSDictionary, NSMutableDictionary;
+#import <MediaPlayer/MPUserIdentityConsuming-Protocol.h>
 
-@interface MPStoreLibraryPersonalizationRequest
+@class ICUserIdentity, MPSectionedCollection, NSDictionary, NSMutableDictionary, NSString;
+
+@interface MPStoreLibraryPersonalizationRequest <MPUserIdentityConsuming>
 {
     NSMutableDictionary *_itemIndexPathToOverridePropertySet;
+    ICUserIdentity *_userIdentity;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
     MPSectionedCollection *_representedObjects;
 }
@@ -18,9 +21,10 @@
 + (id)preferredQueue;
 + (_Bool)requiresNetwork;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) MPSectionedCollection *representedObjects; // @synthesize representedObjects=_representedObjects;
 @property(readonly, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
-- (void).cxx_destruct;
+@property(copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property(readonly, copy, nonatomic) NSDictionary *itemIndexPathToOverridePropertySet;
 - (void)setProperties:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (id)propertiesForItemAtIndexPath:(id)arg1;
@@ -28,6 +32,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithUnpersonalizedRequest:(id)arg1 unpersonalizedContentDescriptors:(id)arg2;
 - (id)initWithUnpersonalizedContentDescriptors:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

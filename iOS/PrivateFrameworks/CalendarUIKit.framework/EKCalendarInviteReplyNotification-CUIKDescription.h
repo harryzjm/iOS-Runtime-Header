@@ -7,7 +7,9 @@
 #import <EventKit/EKCalendarInviteReplyNotification.h>
 
 @interface EKCalendarInviteReplyNotification (CUIKDescription)
+- (id)descriptionStrings:(unsigned long long)arg1;
 - (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
+- (id)_actionWithOptions:(unsigned long long)arg1;
 - (id)titleStringWithOptions:(unsigned long long)arg1;
 - (_Bool)supportsDisplay;
 @end

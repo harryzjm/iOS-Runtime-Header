@@ -11,7 +11,7 @@
 }
 
 - (_Bool)shouldOpenAppThroughSiriForIntent:(id)arg1 intentResponse:(id)arg2;
-- (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
+- (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;
@@ -24,7 +24,7 @@
 - (id)appConfigurationRequiredError;
 - (id)localizedKeyParameterDisplayName;
 - (id)localizedCallServiceName;
-- (id)appIdentifierForIdentifier:(id)arg1;
+- (id)displayableAppIdentifierForBundleIdentifier:(id)arg1;
 - (long long)preferredCallProvider;
 - (long long)callCapability;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;

@@ -10,12 +10,11 @@
 #import <ITMLKit/IKJSInspectorControllerDelegate-Protocol.h>
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
-@class IKAppCache, IKAppReloadContext, IKJSApplication, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKJSViewModelService, IKJSWeakMap, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString, NSThread, NSURL;
+@class IKAppCache, IKAppReloadContext, IKJSApplication, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKJSViewModelService, IKJSWeakMap, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString, NSURL;
 @protocol IKAppContextDelegate, IKAppScriptFallbackHandler, IKApplication, OS_dispatch_source;
 
 @interface IKAppContext : NSObject <ISURLOperationDelegate, IKAppCacheDelegate, IKJSInspectorControllerDelegate>
 {
-    NSThread *_validThread;
     IKJSArrayBufferStore *_arrayBufferStore;
     struct __CFRunLoop *_jsThreadRunLoop;
     struct __CFRunLoopSource *_jsThreadRunLoopSource;
@@ -62,6 +61,7 @@
 + (_Bool)isInFactoryMode;
 + (void)registerPrivateProtocols:(id)arg1 forClass:(Class)arg2;
 + (id)currentAppContext;
+- (void).cxx_destruct;
 @property(retain, nonatomic) IKJSInspectorController *webInspectorController; // @synthesize webInspectorController=_webInspectorController;
 @property(readonly, nonatomic) _Bool appUsesDefaultStyleSheets; // @synthesize appUsesDefaultStyleSheets=_appUsesDefaultStyleSheets;
 @property(readonly, nonatomic) IKViewElementRegistry *viewElementRegistry; // @synthesize viewElementRegistry=_viewElementRegistry;
@@ -91,7 +91,6 @@
 @property(readonly, nonatomic) __weak id <IKAppContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(readonly, nonatomic) __weak id <IKApplication> app; // @synthesize app=_app;
-- (void).cxx_destruct;
 - (void)_networkPropertiesChanged:(id)arg1;
 - (void)handleCacheUpdate;
 - (void)appCache:(id)arg1 didUpdateWithChecksum:(id)arg2;

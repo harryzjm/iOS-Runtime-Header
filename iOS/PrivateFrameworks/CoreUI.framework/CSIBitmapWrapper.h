@@ -25,6 +25,7 @@
     _Bool _allowsDeepmap2ImageCompression;
     _Bool _flipped;
     struct CGImage *_sourceImage;
+    struct CGImage *_destImage;
     long long _texturePixelFormat;
     unsigned int _imageAlpha;
     double _compressionQuality;

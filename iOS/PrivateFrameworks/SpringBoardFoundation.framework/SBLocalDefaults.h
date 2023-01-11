@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBAccessibilityDefaults, SBAppIconForceTouchDefaults, SBAppSwitcherDefaults, SBApplicationDefaults, SBBiometricAuthenticationDefaults, SBBootDefaults, SBDemoDefaults, SBFloatingDockDefaults, SBGestureDefaults, SBHardwareDefaults, SBHomeScreenDefaults, SBIconDefaults, SBIdleTimerDefaults, SBLockScreenDefaults, SBMiscellaneousDefaults, SBMultiUserDefaults, SBNotificationCenterDefaults, SBNotificationDefaults, SBPIPDefaults, SBPowerDefaults, SBRecentDisplayItemsDefaults, SBRotationDefaults, SBSOSDefaults, SBSecurityDefaults, SBSetupDefaults, SBSoftwareUpdateDefaults, SBSoundDefaults, SBStatusBarDefaults, SBTestingDefaults, SBThermalDefaults, SBUsageDefaults, SBVoiceControlDefaults, SBWallpaperDefaults, SBWorkspaceDefaults;
+@class SBAccessibilityDefaults, SBAppIconForceTouchDefaults, SBAppSwitcherDefaults, SBApplicationDefaults, SBBiometricAuthenticationDefaults, SBBootDefaults, SBCameraHardwareButtonDefaults, SBDemoDefaults, SBFloatingDockDefaults, SBGestureDefaults, SBHardwareDefaults, SBHomeScreenDefaults, SBIconDefaults, SBIdleTimerDefaults, SBLockScreenDefaults, SBMiscellaneousDefaults, SBMultiUserDefaults, SBNotificationCenterDefaults, SBNotificationDefaults, SBPIPDefaults, SBPowerDefaults, SBRecentDisplayItemsDefaults, SBRotationDefaults, SBSOSDefaults, SBSecurityDefaults, SBSetupDefaults, SBSoftwareUpdateDefaults, SBSoundDefaults, SBStateDumpDefaults, SBStatusBarDefaults, SBTestingDefaults, SBThermalDefaults, SBUsageDefaults, SBVoiceControlDefaults, SBWallpaperDefaults, SBWorkspaceDefaults;
 
 @interface SBLocalDefaults
 {
@@ -14,6 +14,7 @@
     SBAppSwitcherDefaults *_lazy_appSwitcherDefaults;
     SBBiometricAuthenticationDefaults *_lazy_biometricAuthenticationDefaults;
     SBBootDefaults *_lazy_bootDefaults;
+    SBCameraHardwareButtonDefaults *_lazy_cameraHardwareButtonDefaults;
     SBRecentDisplayItemsDefaults *_lazy_recentDisplayItemsDefaults;
     SBDemoDefaults *_lazy_demoDefaults;
     SBGestureDefaults *_lazy_gestureDefaults;
@@ -42,10 +43,12 @@
     SBFloatingDockDefaults *_lazy_floatingDockDefaults;
     SBTestingDefaults *_lazy_testingDefaults;
     SBHomeScreenDefaults *_lazy_homeScreenDefaults;
+    SBStateDumpDefaults *_lazy_stateDumpDefaults;
 }
 
 - (void).cxx_destruct;
 - (void)migrateAndRemoveOldDefaults;
+@property(readonly, retain, nonatomic) SBStateDumpDefaults *stateDumpDefaults;
 @property(readonly, retain, nonatomic) SBHomeScreenDefaults *homeScreenDefaults;
 @property(readonly, retain, nonatomic) SBTestingDefaults *testingDefaults;
 @property(readonly, retain, nonatomic) SBFloatingDockDefaults *floatingDockDefaults;
@@ -74,6 +77,7 @@
 @property(readonly, retain, nonatomic) SBGestureDefaults *gestureDefaults;
 @property(readonly, retain, nonatomic) SBDemoDefaults *demoDefaults;
 @property(readonly, retain, nonatomic) SBRecentDisplayItemsDefaults *recentDisplayItemsDefaults;
+@property(readonly, retain, nonatomic) SBCameraHardwareButtonDefaults *cameraHardwareButtonDefaults;
 @property(readonly, retain, nonatomic) SBBootDefaults *bootDefaults;
 @property(readonly, retain, nonatomic) SBBiometricAuthenticationDefaults *biometricAuthenticationDefaults;
 @property(readonly, retain, nonatomic) SBAppSwitcherDefaults *appSwitcherDefaults;

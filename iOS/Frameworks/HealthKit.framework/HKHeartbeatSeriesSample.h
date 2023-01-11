@@ -21,8 +21,9 @@
 + (_Bool)supportsSecureCoding;
 + (id)heartbeatSequenceSampleWithData:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 metadata:(id)arg4;
 + (id)_heartbeatSeriesSampleWithData:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5;
-@property(readonly) long long numberOfDataPoints; // @synthesize numberOfDataPoints=_numberOfDataPoints;
++ (_Bool)_isConcreteObjectClass;
 - (void).cxx_destruct;
+@property(readonly) long long numberOfDataPoints; // @synthesize numberOfDataPoints=_numberOfDataPoints;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_setPayload:(id)arg1;
@@ -32,7 +33,7 @@
 @property(readonly) NSNumber *_maximumBeatsPerMinute;
 @property(readonly) NSNumber *_minimumBeatsPerMinute;
 - (unsigned long long)count;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (_Bool)_shouldNotifyOnInsert;
 - (void)enumerateHeartbeatDataWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;

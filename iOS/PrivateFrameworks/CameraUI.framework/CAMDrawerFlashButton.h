@@ -10,14 +10,17 @@
     long long _flashMode;
 }
 
-@property(nonatomic, getter=isFlashUnavailable) _Bool flashUnavailable; // @synthesize flashUnavailable=_flashUnavailable;
 @property(nonatomic) long long flashMode; // @synthesize flashMode=_flashMode;
+@property(nonatomic, getter=isFlashUnavailable) _Bool flashUnavailable; // @synthesize flashUnavailable=_flashUnavailable;
+- (_Bool)shouldShowSlashForCurrentState;
+- (_Bool)shouldUseSlash;
 - (_Bool)isExpandable;
 - (_Bool)shouldUseActiveTintForCurrentState;
 - (id)imageNameForCurrentState;
 - (void)didSelectMenuItem:(id)arg1;
 - (id)loadMenuItems;
 - (_Bool)isMenuItemSelected:(id)arg1;
+- (void)setFlashMode:(long long)arg1 animated:(_Bool)arg2;
 - (long long)controlType;
 
 @end

@@ -76,7 +76,6 @@
 - (_Bool)hasSelection;
 - (_Bool)hasContent;
 - (int)wordOffsetInRange:(id)arg1;
-- (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (id)rectsForNSRange:(struct _NSRange)arg1;
 - (id)textColorForCaretSelection;
 - (id)fontForCaretSelection;
@@ -101,12 +100,14 @@
 @property(nonatomic) long long _textInputSource;
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property(nonatomic) _Bool contentsIsSingleValue; // @dynamic contentsIsSingleValue;
+@property(readonly, nonatomic) long long cursorBehavior;
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
@@ -136,6 +137,7 @@
 @property(nonatomic) _Bool learnsCorrections;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
@@ -153,6 +155,7 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;

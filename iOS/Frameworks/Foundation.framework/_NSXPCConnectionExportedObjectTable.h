@@ -22,16 +22,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)description;
-- (void)invalidate;
-- (void)receivedReleaseForProxyNumber:(unsigned long long)arg1 userQueue:(id)arg2;
-- (void)decrementOutstandingReplyCount;
-- (void)incrementOutstandingReplyCount;
-- (void)releaseExportedObject:(unsigned long long)arg1;
-- (unsigned long long)proxyNumberForExportedObject:(id)arg1 interface:(id)arg2;
-- (id)interfaceForProxyNumber:(unsigned long long)arg1;
-- (void)setInterface:(id)arg1 forProxyNumber:(unsigned long long)arg2;
-- (id)exportedObjectForProxyNumber:(unsigned long long)arg1;
-- (void)setExportedObject:(id)arg1 forProxyNumber:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)init;
 

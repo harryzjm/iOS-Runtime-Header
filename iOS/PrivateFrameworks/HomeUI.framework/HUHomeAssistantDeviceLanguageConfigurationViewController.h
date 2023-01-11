@@ -19,7 +19,7 @@
     id <HUConfigurationViewControllerDelegate> _delegate;
     OBTrayButton *_changeLanguageButton;
     OBLinkTrayButton *_cancelButton;
-    NSArray *_supportedMultiUserLanguages;
+    NSArray *_supportedVoiceRecognitionLanguages;
     NSArray *_languageMismatchedHomeAssistantDevices;
     long long _selectedLanguageIndex;
     NSLayoutConstraint *_heightAnchor;
@@ -28,17 +28,17 @@
     NSTimer *_changeLanguageTimer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *changeLanguageTimer; // @synthesize changeLanguageTimer=_changeLanguageTimer;
 @property(retain, nonatomic) NAFuture *changeLanguageFuture; // @synthesize changeLanguageFuture=_changeLanguageFuture;
 @property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property(retain, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property(nonatomic) long long selectedLanguageIndex; // @synthesize selectedLanguageIndex=_selectedLanguageIndex;
 @property(retain, nonatomic) NSArray *languageMismatchedHomeAssistantDevices; // @synthesize languageMismatchedHomeAssistantDevices=_languageMismatchedHomeAssistantDevices;
-@property(retain, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property(retain, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 @property(retain, nonatomic) OBLinkTrayButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) OBTrayButton *changeLanguageButton; // @synthesize changeLanguageButton=_changeLanguageButton;
 @property(nonatomic) __weak id <HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -54,7 +54,7 @@
 - (void)_cancelLanguageChange;
 - (void)_changeLanguage;
 - (void)dealloc;
-- (id)initWithSupportedMultiUserLanguages:(id)arg1 languageMismatchedHomeAssistantDevices:(id)arg2;
+- (id)initWithSupportedVoiceRecognitionLanguages:(id)arg1 languageMismatchedHomeAssistantDevices:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,6 +14,7 @@
 {
 }
 
+- (_Bool)_canShowWhileLocked;
 - (void)prepareForDismissal;
 - (long long)_preferredModalPresentationStyle;
 - (_Bool)shouldAutorotate;

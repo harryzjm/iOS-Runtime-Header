@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSError, NSMutableArray;
+@class NSData, NSError, NSMutableArray, NSObject, NSString;
+@protocol OS_nw_protocol_options;
 
 @interface __NSURLSessionWebSocketTask
 {
@@ -19,31 +20,17 @@
     NSMutableArray *_highPriorityPendingWork;
     NSMutableArray *_delegateWork;
     NSError *_webSocketError;
+    NSString *_protocolPicked;
+    NSObject<OS_nw_protocol_options> *_wsOptions;
 }
 
-@property(retain) NSError *webSocketError; // @synthesize webSocketError=_webSocketError;
-@property _Bool readInProgress; // @synthesize readInProgress=_readInProgress;
-@property _Bool webSocketHandshakeCompleted; // @synthesize webSocketHandshakeCompleted=_webSocketHandshakeCompleted;
-@property int pingSeed; // @synthesize pingSeed=_pingSeed;
-@property(retain) NSMutableArray *delegateWork; // @synthesize delegateWork=_delegateWork;
-@property(retain) NSMutableArray *highPriorityPendingWork; // @synthesize highPriorityPendingWork=_highPriorityPendingWork;
-@property(retain) NSMutableArray *pendingReceiveWork; // @synthesize pendingReceiveWork=_pendingReceiveWork;
-@property(retain) NSMutableArray *pendingSendWork; // @synthesize pendingSendWork=_pendingSendWork;
+- (void).cxx_destruct;
 @property(readonly, copy) NSData *closeReason; // @synthesize closeReason=_closeReason;
 @property(readonly) long long closeCode; // @synthesize closeCode=_closeCode;
 @property long long maximumMessageSize; // @synthesize maximumMessageSize=_maximumMessageSize;
-- (void).cxx_destruct;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
 - (void)_onqueue_didReceiveResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_onqueue_cancelWebSocketTaskWithError:(long long)arg1;
-- (void)_onqueue_checkForCompletion;
 - (void)_onqueue_cancel;
-- (void)_onqueue_cancelWithCloseCode:(long long)arg1 reason:(id)arg2;
-- (void)_onqueue_receiveMessageWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_onqueue_sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_onqueue_ioTick;
-- (void)_onqueue_pingWithPongHandler:(CDUnknownBlockType)arg1;
-- (void)_onqueue_enableWebSocketFraming:(id)arg1;
 - (void)_onqueue_resume;
 - (void)dealloc;
 - (void)cancel;

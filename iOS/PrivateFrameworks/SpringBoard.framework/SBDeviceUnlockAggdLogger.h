@@ -20,6 +20,7 @@
 - (_Bool)handleEvent:(id)arg1;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
+- (void)conformsToCSEventHandling;
 - (void)logUserResetIdleTimer;
 - (void)logIdleTimerScreenDimWarning;
 - (void)logOrientationAndAccessoryStateForPrefix:(id)arg1;

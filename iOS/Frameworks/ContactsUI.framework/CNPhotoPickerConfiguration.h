@@ -15,7 +15,9 @@ __attribute__((visibility("hidden")))
     _Bool _includeMonograms;
     _Bool _includeAnimoji;
     _Bool _includeRecents;
+    _Bool _includeEmoji;
     _Bool _allowPhotoCapture;
+    _Bool _allowPhotoFromLibrary;
     _Bool _allowAnimojiCreation;
     _Bool _allowRotation;
 }
@@ -25,14 +27,16 @@ __attribute__((visibility("hidden")))
 + (id)defaultConfiguration;
 @property(readonly, nonatomic) _Bool allowRotation; // @synthesize allowRotation=_allowRotation;
 @property(readonly, nonatomic) _Bool allowAnimojiCreation; // @synthesize allowAnimojiCreation=_allowAnimojiCreation;
+@property(readonly, nonatomic) _Bool allowPhotoFromLibrary; // @synthesize allowPhotoFromLibrary=_allowPhotoFromLibrary;
 @property(readonly, nonatomic) _Bool allowPhotoCapture; // @synthesize allowPhotoCapture=_allowPhotoCapture;
+@property(readonly, nonatomic) _Bool includeEmoji; // @synthesize includeEmoji=_includeEmoji;
 @property(readonly, nonatomic) _Bool includeRecents; // @synthesize includeRecents=_includeRecents;
 @property(readonly, nonatomic) _Bool includeAnimoji; // @synthesize includeAnimoji=_includeAnimoji;
 @property(readonly, nonatomic) _Bool includeMonograms; // @synthesize includeMonograms=_includeMonograms;
 @property(readonly, nonatomic) _Bool includeFaces; // @synthesize includeFaces=_includeFaces;
 @property(readonly, nonatomic) _Bool includeUnifiedContactImages; // @synthesize includeUnifiedContactImages=_includeUnifiedContactImages;
 @property(readonly, nonatomic) _Bool includeContactImage; // @synthesize includeContactImage=_includeContactImage;
-- (id)initWithIncludeContactImage:(_Bool)arg1 includeUnifiedContactImages:(_Bool)arg2 includeFaces:(_Bool)arg3 includeMonograms:(_Bool)arg4 includeAnimoji:(_Bool)arg5 includeRecents:(_Bool)arg6 allowPhotoCapture:(_Bool)arg7 allowAnimojiCreation:(_Bool)arg8 allowRotation:(_Bool)arg9;
+- (id)initWithIncludeContactImage:(_Bool)arg1 includeUnifiedContactImages:(_Bool)arg2 includeFaces:(_Bool)arg3 includeMonograms:(_Bool)arg4 includeAnimoji:(_Bool)arg5 includeRecents:(_Bool)arg6 includeEmoji:(_Bool)arg7 allowPhotoCapture:(_Bool)arg8 allowPhotoFromLibrary:(_Bool)arg9 allowAnimojiCreation:(_Bool)arg10 allowRotation:(_Bool)arg11;
 - (id)configurationBySettingAllowsPhotoCapture:(_Bool)arg1;
 
 @end

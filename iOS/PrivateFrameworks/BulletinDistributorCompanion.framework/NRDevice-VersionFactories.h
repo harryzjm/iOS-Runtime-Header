@@ -8,6 +8,7 @@
 
 @interface NRDevice (VersionFactories)
 + (id)versionForString:(id)arg1;
++ (_Bool)activePairedDeviceSupportsAuthorizationExpirationDate;
 + (_Bool)activePairedDeviceSupportsIconsPerNotification;
 + (_Bool)activePairedDeviceSupportsNotSendingTemporarySequenceNumbers;
 + (_Bool)activePairedDeviceSupportsNoLocalRemoteNotificationInBulletinContext;

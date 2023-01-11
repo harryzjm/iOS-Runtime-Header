@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportArgumentBuffers;
 - (void)setCompareFunction:(unsigned long long)arg1;
 - (unsigned long long)compareFunction;
+- (unsigned long long)pixelFormat;
+- (void)setPixelFormat:(unsigned long long)arg1;
 - (void)setLodAverage:(_Bool)arg1;
 - (_Bool)lodAverage;
 - (void)setLodBias:(float)arg1;
@@ -33,6 +35,14 @@ __attribute__((visibility("hidden")))
 - (float)lodMinClamp;
 - (void)setNormalizedCoordinates:(_Bool)arg1;
 - (_Bool)normalizedCoordinates;
+@property(nonatomic) _Bool forceSeamsOnCubemapFiltering;
+@property(nonatomic) unsigned int customBorderColorValue_3;
+@property(nonatomic) unsigned int customBorderColorValue_2;
+@property(nonatomic) unsigned int customBorderColorValue_1;
+@property(nonatomic) unsigned int customBorderColorValue_0;
+@property(nonatomic) unsigned long long borderColorSPI;
+- (void)setBorderColor:(unsigned long long)arg1;
+- (unsigned long long)borderColor;
 - (void)setRAddressMode:(unsigned long long)arg1;
 - (unsigned long long)rAddressMode;
 - (void)setTAddressMode:(unsigned long long)arg1;

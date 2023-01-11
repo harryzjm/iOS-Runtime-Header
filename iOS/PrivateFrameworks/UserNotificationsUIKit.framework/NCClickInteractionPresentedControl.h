@@ -7,10 +7,11 @@
 #import <UIKit/UIControl.h>
 
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/UIPointerInteractionDelegate-Protocol.h>
 
 @class MTMaterialView, NCClickInteractionPresentedView, NSString, UITraitCollection;
 
-@interface NCClickInteractionPresentedControl : UIControl <PLContentSizeCategoryAdjusting>
+@interface NCClickInteractionPresentedControl : UIControl <PLContentSizeCategoryAdjusting, UIPointerInteractionDelegate>
 {
     _Bool _adjustsFontForContentSizeCategory;
     NSString *_title;
@@ -20,16 +21,18 @@
     UITraitCollection *_overrideTraitCollection;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UITraitCollection *overrideTraitCollection; // @synthesize overrideTraitCollection=_overrideTraitCollection;
 @property(readonly, nonatomic, getter=_backgroundMaterialView) MTMaterialView *backgroundMaterialView; // @synthesize backgroundMaterialView=_backgroundMaterialView;
 @property(readonly, nonatomic, getter=_materialRecipe) long long materialRecipe; // @synthesize materialRecipe=_materialRecipe;
 @property(readonly, nonatomic, getter=_presentedView) NCClickInteractionPresentedView *presentedView; // @synthesize presentedView=_presentedView;
 @property(readonly, copy, nonatomic, getter=_title) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-- (void).cxx_destruct;
 - (void)_configureContentViewIfNecessaryWithTitle:(id)arg1;
 - (void)_configureMaterialViewsIfNecessary;
 - (id)_newMaterialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)adjustForContentSizeCategoryChange;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory;
 - (void)setHighlighted:(_Bool)arg1;

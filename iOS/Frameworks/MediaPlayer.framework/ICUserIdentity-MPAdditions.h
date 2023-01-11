@@ -6,17 +6,9 @@
 
 #import <iTunesCloud/ICUserIdentity.h>
 
-#import <MediaPlayer/ML3AccountInformationProviding-Protocol.h>
-
 @class NSString;
 
-@interface ICUserIdentity (MPAdditions) <ML3AccountInformationProviding>
+@interface ICUserIdentity (MPAdditions)
 @property(readonly, copy, nonatomic) NSString *accountDSID;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @end
 

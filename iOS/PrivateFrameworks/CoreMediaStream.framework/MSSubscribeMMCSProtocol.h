@@ -19,8 +19,8 @@
     char **_authTokens;
 }
 
-@property(nonatomic) id <MSSubscribeStorageProtocolDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) id <MSSubscribeStorageProtocolDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_requestCompleted;
 - (void)_getItemDone:(unsigned long long)arg1 path:(id)arg2 error:(id)arg3;
 - (void)retrieveAssets:(id)arg1;

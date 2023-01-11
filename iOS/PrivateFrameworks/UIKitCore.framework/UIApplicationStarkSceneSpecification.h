@@ -8,10 +8,12 @@
 {
 }
 
+- (Class)settingsClass;
 - (id)uiSceneSessionRole;
 - (id)baseSceneComponentClassDictionary;
 - (id)disconnectionHandlers;
 - (id)connectionHandlers;
+- (id)finalActionHandlers;
 - (id)initialSettingsDiffActions;
 
 @end

@@ -15,9 +15,11 @@
 }
 
 - (void).cxx_destruct;
+- (MISSING_TYPE *)rgbfColorForFraction:(double)arg1;
 - (id)colorForFraction:(float)arg1;
 - (void)dealloc;
 - (id)initWithColorCurveElements:(id)arg1;
+- (id)initWithCubicColorCurveElements:(id)arg1;
 
 @end
 

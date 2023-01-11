@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface IMItemsController : NSObject
 {
     struct __CFArray *_items;
@@ -15,6 +17,7 @@
 + (id)_charactersToIgnoreWhenParsingTextContent;
 @property(nonatomic) unsigned long long capacity; // @synthesize capacity=_capacity;
 - (_Bool)_trimIfNeeded;
+- (id)_appendArchivedItemsToItemsArray:(id)arg1;
 - (id)_lastRelatedIncomingFinishedMessageTextContentWithLimit:(long long)arg1;
 - (id)_lastIncomingFinishedMessageWithTextContent;
 - (id)_lastIncomingFinishedMessage;
@@ -33,9 +36,9 @@
 - (void)_removeAllItems;
 - (void)_replaceItems:(id)arg1;
 - (void)_removeItem:(id)arg1;
-- (void)_handleItem:(id)arg1;
+- (void)_handleItem:(id)arg1 forChatStyle:(unsigned char)arg2;
 - (void)_itemsDidChange:(id)arg1;
-- (id)_items;
+@property(readonly, copy, nonatomic) NSArray *_items;
 - (id)_initWithItems:(id)arg1;
 - (_Bool)_shouldPinUnsentMessagesToBottom;
 - (void)assignSortIDsToItems:(id)arg1 shouldRecalculateSortIDForAllMessages:(_Bool)arg2;
@@ -43,6 +46,7 @@
 @property(readonly, nonatomic) _Bool isMoreToLoad;
 - (void)dealloc;
 - (id)init;
+- (void)_didReplaceItem:(struct __CFArray *)arg1 oldItem:(id)arg2 idx:(long long)arg3;
 
 @end
 

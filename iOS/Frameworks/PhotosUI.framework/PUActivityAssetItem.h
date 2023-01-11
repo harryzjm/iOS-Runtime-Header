@@ -14,14 +14,18 @@
 {
     _Bool _excludeLiveness;
     _Bool _excludeLocation;
+    _Bool _excludeCaption;
+    _Bool _excludeAccessibilityDescription;
     PHAsset *_asset;
 }
 
 + (id)itemsForAssets:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool excludeAccessibilityDescription; // @synthesize excludeAccessibilityDescription=_excludeAccessibilityDescription;
+@property(nonatomic) _Bool excludeCaption; // @synthesize excludeCaption=_excludeCaption;
 @property(nonatomic) _Bool excludeLocation; // @synthesize excludeLocation=_excludeLocation;
 @property(nonatomic) _Bool excludeLiveness; // @synthesize excludeLiveness=_excludeLiveness;
 @property(readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

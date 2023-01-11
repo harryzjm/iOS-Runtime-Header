@@ -9,6 +9,7 @@
 @class HAPAccessoryInfo, HAPAccessoryServer, HMFOSTransaction, NSArray, NSData, NSError, NSNumber, NSString, NSUUID;
 
 @protocol HAPAccessoryServerDelegate <NSObject>
+- (_Bool)shouldEnableReachabilityForAccessoryServer:(HAPAccessoryServer *)arg1;
 - (void)accessoryServerNeedsOwnershipToken:(HAPAccessoryServer *)arg1;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didFinishAuth:(NSError *)arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 confirmUUID:(NSUUID *)arg2 token:(NSData *)arg3;
@@ -22,6 +23,7 @@
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didUpdateValuesForCharacteristics:(NSArray *)arg2 stateNumber:(NSNumber *)arg3 broadcast:(_Bool)arg4;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 isBlockedWithCompletionHandler:(void (^)(_Bool))arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didDiscoverAccessories:(NSArray *)arg2 transaction:(HMFOSTransaction *)arg3 error:(NSError *)arg4;
+- (void)accessoryServer:(HAPAccessoryServer *)arg1 updatePairingProgress:(long long)arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didStopPairingWithError:(NSError *)arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 didReceiveBadPasswordThrottleAttemptsWithDelay:(long long)arg2;
 - (void)accessoryServer:(HAPAccessoryServer *)arg1 requestUserPermission:(long long)arg2 accessoryInfo:(HAPAccessoryInfo *)arg3 error:(NSError *)arg4;

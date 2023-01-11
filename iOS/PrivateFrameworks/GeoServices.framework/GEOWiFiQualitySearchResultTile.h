@@ -13,17 +13,17 @@
 @interface GEOWiFiQualitySearchResultTile : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_ess;
     NSString *_etag;
     unsigned long long _tileKey;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_tileKey:1;
         unsigned int read_ess:1;
         unsigned int read_etag:1;
-        unsigned int wrote_ess:1;
-        unsigned int wrote_etag:1;
-        unsigned int wrote_tileKey:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,20 +38,22 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)essAtIndex:(unsigned long long)arg1;
 - (unsigned long long)essCount;
-- (void)_addNoFlagsEss:(id)arg1;
 - (void)addEss:(id)arg1;
 - (void)clearEss;
 @property(retain, nonatomic) NSMutableArray *ess;
-- (void)_readEss;
 @property(retain, nonatomic) NSString *etag;
 @property(readonly, nonatomic) _Bool hasEtag;
-- (void)_readEtag;
 @property(nonatomic) _Bool hasTileKey;
 @property(nonatomic) unsigned long long tileKey;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

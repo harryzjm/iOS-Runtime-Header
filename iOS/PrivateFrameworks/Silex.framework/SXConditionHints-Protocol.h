@@ -7,22 +7,24 @@
 #import <Silex/NSObject-Protocol.h>
 
 @protocol SXConditionHints <NSObject>
-@property(readonly, nonatomic) _Bool preferredColorScheme;
-@property(readonly, nonatomic) _Bool testing;
-@property(readonly, nonatomic) _Bool subscriptionStatus;
-@property(readonly, nonatomic) _Bool verticalSizeClass;
-@property(readonly, nonatomic) _Bool horizontalSizeClass;
-@property(readonly, nonatomic) _Bool maxSpecVersion;
-@property(readonly, nonatomic) _Bool minSpecVersion;
-@property(readonly, nonatomic) _Bool viewLocation;
-@property(readonly, nonatomic) _Bool platform;
-@property(readonly, nonatomic) _Bool maxColumns;
-@property(readonly, nonatomic) _Bool minColumns;
-@property(readonly, nonatomic) _Bool maxContentSizeCategory;
-@property(readonly, nonatomic) _Bool minContentSizeCategory;
-@property(readonly, nonatomic) _Bool maxViewportAspectRatio;
-@property(readonly, nonatomic) _Bool minViewportAspectRatio;
-@property(readonly, nonatomic) _Bool maxViewportWidth;
-@property(readonly, nonatomic) _Bool minViewportWidth;
+@property(readonly, nonatomic) long long configurationKey;
+@property(readonly, nonatomic) long long newsletter;
+@property(readonly, nonatomic) long long preferredColorScheme;
+@property(readonly, nonatomic) long long testing;
+@property(readonly, nonatomic) long long subscriptionStatus;
+@property(readonly, nonatomic) long long verticalSizeClass;
+@property(readonly, nonatomic) long long horizontalSizeClass;
+@property(readonly, nonatomic) long long maxSpecVersion;
+@property(readonly, nonatomic) long long minSpecVersion;
+@property(readonly, nonatomic) long long viewLocation;
+@property(readonly, nonatomic) long long platform;
+@property(readonly, nonatomic) long long maxColumns;
+@property(readonly, nonatomic) long long minColumns;
+@property(readonly, nonatomic) long long maxContentSizeCategory;
+@property(readonly, nonatomic) long long minContentSizeCategory;
+@property(readonly, nonatomic) long long maxViewportAspectRatio;
+@property(readonly, nonatomic) long long minViewportAspectRatio;
+@property(readonly, nonatomic) long long maxViewportWidth;
+@property(readonly, nonatomic) long long minViewportWidth;
 @end
 

@@ -17,19 +17,22 @@
     NSMutableArray *_folderStack;
     long long _parseDepth;
     NSMutableSet *_nodeIdentifiersUnarchived;
+    NSMutableSet *_widgetUniqueIdentifiersUnarchived;
     _Bool _corrupted;
     _Bool _dirty;
     NSDictionary *_metadata;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setMetadata:) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic, setter=_setRootFolder:) SBRootFolder *rootFolder; // @synthesize rootFolder=_rootFolder;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (void)_noteWidgetUniqueIdentifierWasUnarchived:(id)arg1;
+- (_Bool)_isWidgetUniqueIdentifierAlreadyUnarchived:(id)arg1;
 - (void)_noteNodeIdentifierWasUnarchived:(id)arg1;
 - (_Bool)_isNodeIdentifierAlreadyUnarchived:(id)arg1;
 - (void)_noteSignificantDeviation;

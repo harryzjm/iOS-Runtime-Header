@@ -17,6 +17,7 @@
 @interface UNSDefaultDataProvider : NSObject <UNSNotificationRepositoryObserver, UNSNotificationCategoryRepositoryObserver, UNSNotificationTopicRepositoryObserver, BBRemoteDataProvider>
 {
     BBSectionIcon *_sectionIcon;
+    BBSectionInfo *_effectiveSectionInfo;
     BSCFBundle *_bundle;
     _Bool _suppressUserAuthorizationPrompt;
     UNSNotificationSourceDescription *_notificationSourceDescription;
@@ -29,20 +30,13 @@
     UNSLocalizationService *_localizationService;
     BBDataProviderProxy *_proxy;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_primaryAttachments;
-    NSMutableDictionary *_primaryAttachmentMetadata;
     NSMutableDictionary *_categoryToParamSubType;
-    BBSectionInfo *_sectionInfo;
 }
 
-@property(retain, nonatomic) BBSectionInfo *sectionInfo; // @synthesize sectionInfo=_sectionInfo;
-@property(retain, nonatomic) BBDataProviderProxy *proxy; // @synthesize proxy=_proxy;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BBDataProviderProxy *proxy; // @synthesize proxy=_proxy;
 - (id)_sectionIconForNotificationSourceDescription:(id)arg1;
 - (id)_sectionIconVariantForImageName:(id)arg1 bundlePath:(id)arg2 format:(long long)arg3 precomposed:(_Bool)arg4;
-- (id)primaryAttachmentDataForRecordID:(id)arg1;
-- (id)attachmentPNGDataForRecordID:(id)arg1 sizeConstraints:(id)arg2;
-- (float)attachmentAspectRatioForRecordID:(id)arg1;
 - (void)_addAttachments:(id)arg1 toBulletinRequest:(id)arg2;
 - (void)_queue_withdrawBulletinForNotification:(id)arg1;
 - (void)_queue_addBulletinForNotification:(id)arg1;
@@ -57,7 +51,7 @@
 - (void)_handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)sectionIdentifier;
-- (void)noteSectionInfoDidChange:(id)arg1;
+- (void)setEffectiveSectionInfo:(id)arg1;
 - (id)sortDescriptors;
 - (id)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2;
 - (id)clearedInfoAndBulletinsForClearingAllBulletinsWithLimit:(unsigned long long)arg1 lastClearedInfo:(id)arg2;
@@ -92,6 +86,7 @@
 - (void)dataProviderDidLoad;
 - (void)dealloc;
 - (void)setNotificationSourceDescription:(id)arg1;
+- (void)_setNotificationSourceDescription:(id)arg1;
 - (id)initWithNotificationSourceDescription:(id)arg1 applicationLauncher:(id)arg2 daemonLauncher:(id)arg3 categoryRepository:(id)arg4 notificationRepository:(id)arg5 topicRepository:(id)arg6 attachmentsService:(id)arg7 localizationService:(id)arg8 queue:(id)arg9;
 
 // Remaining properties

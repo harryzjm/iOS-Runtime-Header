@@ -10,9 +10,6 @@
 
 @interface PPConfigurationGuardedData : NSObject
 {
-    double topicsSigmoidWidth;
-    double topicsSigmoidPeakValue;
-    double topicsScalingFactor;
     float remoteTopicsMultiplier;
     double halfValuePosition;
     double nonReaderTextWeight;
@@ -20,23 +17,27 @@
     double musicDataCollectionSamplingRateForCTS;
     double musicDataCollectionSamplingRateForAMP;
     int musicDataCollectionMaximumRecordsPerType;
+    _Bool musicDataCollectionCollectNonAMPNowPlaying;
     NSArray *musicDataCollectionAMPBundleIds;
     NSString *variantName;
     NSString *naturalVariantName;
     NSArray *availableVariantNames;
-    NSDictionary *topicMaps;
-    NSDictionary *topicMapsScalingFactors;
+    NSDictionary *dynamicEntityCategories;
+    NSDictionary *differentiallyPrivateEntityLogLevels;
     NSDictionary *topicsSourceMultiplier;
     NSDictionary *topicsAlgorithmMultiplier;
+    NSDictionary *namedEntityAlgorithmConfiguration;
+    NSDictionary *topicAlgorithmConfiguration;
+    NSDictionary *locationAlgorithmConfiguration;
     _PASCFBurstTrie *topicCalibration;
     _Bool highLevelTopicExtractionEnabled;
     _Bool safariDonationTitleExtractionEnabled;
     _Bool safariDataDetectorsEnabledForHighMemoryDevices;
-    double highLevelTopicScoreThreshold;
     float scoreThresholdForNamedEntity;
     float scoreThresholdForTopic;
     float scoreThresholdForLocation;
     float feedbackSessionLogsSamplingRate;
+    NSDictionary *feedbackSessionLogsSamplingRateOverrides;
     float feedbackSessionLogsExtractionsSamplingRate;
     int feedbackSessionLogsGeohashLength;
     double analyticsTopicsSamplingRate;
@@ -45,6 +46,45 @@
     double topicDecayHalfLifeSeconds;
     double namedEntityDecayHalfLifeSeconds;
     double locationDecayHalfLifeSeconds;
+    _Bool topicScoringUsesCoreML;
+    _Bool namedEntityScoringUsesCoreML;
+    _Bool flattenTopicsForCoreML;
+    _Bool flattenNamedEntitiesforCoreML;
+    _Bool namedEntityScoringUsesHybrid;
+    _Bool topicScoringUsesHybrid;
+    _Bool locationScoringUsesHybrid;
+    double decayedFeedbackCountsHalfLifeDays;
+    _Bool notificationExtractionEnabled;
+    _Bool namedEntityFeedbackUsesCoreML;
+    _Bool topicFeedbackUsesCoreML;
+    _Bool locationFeedbackUsesCoreML;
+    NSArray *engagementKValues;
+    _Bool use2StageScoreInterpreterForNEScoring;
+    _Bool use2StageScoreInterpreterForTPScoring;
+    _Bool use2StageScoreInterpreterForLocationScoring;
+    _Bool topicMappingUsesCoreML;
+    double topicMappingCoreMLThreshold;
+    _Bool locationScoringUsesCoreML;
+    double routineExtractionScoreCountWeight;
+    double routineExtractionScoreDurationWeight;
+    double routineExtractionScoreDecayHalfLifeDays;
+    NSDictionary *linearModelHyperparameters;
+    int maxNumberMappedTopics;
+    int maxNumberNamedEntities;
+    unsigned char customTaggerMaxTokenCount;
+    unsigned int mapsSearchQueryLimit;
+    double mapsSearchQueryFromDateInterval;
+    unsigned int namedEntityLoadAndMonitorInitialLoadLimit;
+    NSDictionary *contactsLabelScoringMap;
+    float recordSourceContactsInitialScore;
+    float recordSourceNonContactsInitialScore;
+    unsigned char peopleSuggesterMaxCount;
+    double navigationMinimumTimeInterval;
+    unsigned int navigationMinimumDistanceInMeters;
+    unsigned char nextEventFuzzMinutes;
+    int queryTimeNextEventFromMinutes;
+    unsigned int queryTimeNextEventToMinutes;
+    unsigned int queryTimeOtherEventToMinutes;
 }
 
 - (void).cxx_destruct;

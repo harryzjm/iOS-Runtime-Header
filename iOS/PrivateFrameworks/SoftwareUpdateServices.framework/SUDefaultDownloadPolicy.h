@@ -16,19 +16,26 @@
     SUCarrierDownloadPolicyProperties *_carrierPolicy;
     SUNetworkMonitor *_networkMonitor;
     _Bool _cellularCapable;
+    int _cellularFeeAgreementStatus;
 }
 
+@property(nonatomic) int cellularFeeAgreementStatus; // @synthesize cellularFeeAgreementStatus=_cellularFeeAgreementStatus;
 @property(retain, nonatomic) SUNetworkMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property(nonatomic, getter=isCellularCapable) _Bool cellularCapable; // @synthesize cellularCapable=_cellularCapable;
 @property(retain, nonatomic) SUCarrierDownloadPolicyProperties *carrierPolicy; // @synthesize carrierPolicy=_carrierPolicy;
 @property(retain, nonatomic) SUDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+- (_Bool)_inexpensiveHDM;
 - (_Bool)_isDownloadableForNetworkType:(int)arg1 error:(long long *)arg2 cellularFeesApply:(_Bool *)arg3 powerRequired:(_Bool *)arg4;
+- (unsigned long long)wifiOnlyPeriodInDays;
 - (_Bool)isDownloadAllowableForCellular2G;
+- (_Bool)cellularDownloadFeesApply;
+- (_Bool)isDownloadAllowableForCellularIncludingInexpensiveHDM:(_Bool)arg1;
 - (_Bool)isDownloadAllowableForCellular;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2 powerRequired:(_Bool *)arg3;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2;
 - (_Bool)isDownloadFreeForCellular;
 - (_Bool)isDownloadAllowableForCellularRoaming;
+- (_Bool)allowExpensiveNetwork;
 - (_Bool)isDownloadAllowableForWiFi;
 - (_Bool)isDownloadable;
 - (_Bool)isPowerRequired;

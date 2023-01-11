@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface PHVideoResult
 {
     NSURL *_videoURL;
+    NSString *_uniformTypeIdentifier;
 }
 
-@property(retain, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property(retain, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 - (id)videoAdjustmentData;
 - (void)setVideoAdjustmentData:(id)arg1;
+- (id)allowedInfoKeys;
 - (_Bool)containsValidData;
 
 @end

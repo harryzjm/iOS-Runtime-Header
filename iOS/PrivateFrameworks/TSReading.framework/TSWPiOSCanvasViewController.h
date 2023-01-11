@@ -7,11 +7,10 @@
 #import <TSReading/UIDragInteractionDelegate-Protocol.h>
 #import <TSReading/UITextInteractionDelegate-Protocol.h>
 #import <TSReading/UITextLinkInteraction-Protocol.h>
-#import <TSReading/_UINonEditableTextSelectionForceGestureDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, TSUColor, TSWPHardPressGestureRecognizer, TSWPHyperlinkField, TSWPInteractiveCanvasController, TSWPLongPressGestureRecognizer, TSWPRep, TSWPSwipeGestureRecognizer, TSWPTwoPartAction, UIGestureRecognizer, UITapGestureRecognizer, UITextInteraction;
+@class NSMutableArray, NSString, TSUColor, TSWPHyperlinkField, TSWPInteractiveCanvasController, TSWPLongPressGestureRecognizer, TSWPRep, TSWPSwipeGestureRecognizer, TSWPTwoPartAction, UIGestureRecognizer, UITapGestureRecognizer, UITextInteraction;
 
-@interface TSWPiOSCanvasViewController <UITextInteractionDelegate, UITextLinkInteraction, UIDragInteractionDelegate, _UINonEditableTextSelectionForceGestureDelegate>
+@interface TSWPiOSCanvasViewController <UITextInteractionDelegate, UITextLinkInteraction, UIDragInteractionDelegate>
 {
     UIGestureRecognizer *_hyperlinkGestureRecognizer;
     TSWPSwipeGestureRecognizer *_rightSwipeGestureRecognizer;
@@ -24,17 +23,16 @@
     TSWPHyperlinkField *_interactionHyperlinkField;
     TSWPRep *_interactionHyperLinkRep;
     UITapGestureRecognizer *_secondarySingleTapGestureRecognizer;
-    TSWPHardPressGestureRecognizer *_hardPressGesture;
     UITextInteraction *_textInteraction;
 }
 
 @property(retain, nonatomic) UITextInteraction *textInteraction; // @synthesize textInteraction=_textInteraction;
-@property(retain, nonatomic) TSWPHardPressGestureRecognizer *hardPressGesture; // @synthesize hardPressGesture=_hardPressGesture;
 @property(readonly, nonatomic) TSWPLongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property(readonly, nonatomic) UIGestureRecognizer *hyperlinkGestureRecognizer; // @synthesize hyperlinkGestureRecognizer=_hyperlinkGestureRecognizer;
 @property(readonly, nonatomic) UITapGestureRecognizer *secondarySingleTapGestureRecognizer; // @synthesize secondarySingleTapGestureRecognizer=_secondarySingleTapGestureRecognizer;
 @property(readonly, nonatomic) TSWPSwipeGestureRecognizer *textRightSwipeGestureRecognizer; // @synthesize textRightSwipeGestureRecognizer=_rightSwipeGestureRecognizer;
 @property(readonly, nonatomic) TSWPSwipeGestureRecognizer *textLeftSwipeGestureRecognizer; // @synthesize textLeftSwipeGestureRecognizer=_leftSwipeGestureRecognizer;
+- (void)_requestTextItemConstrainedToLineAtPoint:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (_Bool)willInteractWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)startLongInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)cancelInteractionWithLink;
@@ -80,10 +78,6 @@
 - (void)finishDelayedTapAction;
 - (void)startDelayedTapAction:(id)arg1;
 - (void)cancelDelayedTapAction;
-- (void)p_endHardPressGestureRecognizer;
-- (void)p_handleHardPressGestureRecognizer:(id)arg1;
-- (void)willBeginGesture;
-- (_Bool)shouldAllowSelectionGestures:(_Bool)arg1 atPoint:(struct CGPoint)arg2 toBegin:(_Bool)arg3;
 - (void)gestureSequenceDidEnd;
 - (void)gestureSequenceWillBegin;
 - (id)actionForHyperlink:(id)arg1 inRep:(id)arg2 gesture:(id)arg3;

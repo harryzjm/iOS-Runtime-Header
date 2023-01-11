@@ -18,28 +18,25 @@
 }
 
 + (id)server;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *reachabilityHandlers; // @synthesize reachabilityHandlers=_reachabilityHandlers;
 @property(nonatomic) _Bool shouldFocusNonExclusiveSystemUI; // @synthesize shouldFocusNonExclusiveSystemUI=_shouldFocusNonExclusiveSystemUI;
 @property(retain, nonatomic) NSMutableArray *actionHandlers; // @synthesize actionHandlers=_actionHandlers;
 @property(copy, nonatomic) CDUnknownBlockType currentAlertHandler; // @synthesize currentAlertHandler=_currentAlertHandler;
 @property(retain, nonatomic) AXAccessQueue *accessQueue; // @synthesize accessQueue=_accessQueue;
-- (void).cxx_destruct;
 - (id)runningAppProcesses;
 - (id)focusedAppProcess;
 - (id)applicationWithIdentifier:(id)arg1;
 - (_Bool)isMagnifierVisible;
 - (void)didPotentiallyDismissNonExclusiveSystemUI;
-- (_Bool)isNonExclusiveSystemUIFocusable;
-- (void)setLockScreenDimTimerEnabled:(_Bool)arg1;
-- (void)userEventOccurred;
+- (_Bool)isNonExclusiveSystemUIFocusableIncludingPIPWindow:(_Bool)arg1;
 - (void)isMagnifierVisibleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)launchMagnifierApp;
 - (void)reactivateInCallService;
 - (_Bool)loadGAXBundleForUnmanagedASAM;
-- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
-- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2;
+- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(_Bool)arg3;
+- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(_Bool)arg3;
 - (id)focusedApps;
-- (_Bool)isMultiTaskingActive;
 - (_Bool)isSettingsAppFrontmost;
 - (_Bool)dismissBuddyIfNecessary;
 - (_Bool)isPurpleBuddyAppFrontmost;
@@ -67,6 +64,7 @@
 - (_Bool)isSiriTalkingOrListening;
 - (_Bool)isSiriVisible;
 - (_Bool)dismissSiri;
+- (_Bool)isPIPWindowVisible;
 - (_Bool)isSpotlightVisible;
 @property(readonly, nonatomic) _Bool isGuidedAccessActive;
 - (_Bool)toggleDarkMode;
@@ -89,6 +87,7 @@
 - (void)hideNotificationCenter;
 - (void)showNotificationCenter;
 - (void)toggleNotificationCenter;
+- (_Bool)isBannerVisible;
 - (_Bool)isNotificationVisible;
 - (_Bool)isScreenshotWindowVisible;
 - (_Bool)isNotificationCenterVisible;
@@ -114,11 +113,11 @@
 - (_Bool)isSyncingRestoringResettingOrUpdating;
 - (void)isSystemSleeping:(CDUnknownBlockType)arg1;
 - (_Bool)isSystemSleeping;
-- (void)screenLockStatus:(CDUnknownBlockType)arg1;
+- (void)screenLockStatus:(CDUnknownBlockType)arg1 passcodeStatusRequired:(_Bool)arg2;
 - (_Bool)isScreenLockedWithPasscode:(_Bool *)arg1;
-- (void)_getPasscodeStatusImmediate:(CDUnknownBlockType)arg1;
+- (void)_getPasscodeStatusImmediate:(CDUnknownBlockType)arg1 passcodeStatusRequired:(_Bool)arg2;
+- (_Bool)connectedDevicesRequireAssistiveTouch;
 - (id)splashImageForAppWithBundleIdentifier:(id)arg1;
-- (void)performVoiceShortcutWithIdentifier:(id)arg1 bundleID:(id)arg2;
 - (void)activateSOSMode;
 - (_Bool)isSoftwareUpdateUIVisible;
 - (_Bool)isNowPlayingUIVisible;
@@ -126,7 +125,7 @@
 - (void)copyStringToPasteboard:(id)arg1;
 - (void)activeInterfaceOrientation:(CDUnknownBlockType)arg1;
 - (long long)activeInterfaceOrientation;
-- (int)activeApplicationOrientation;
+- (long long)activeApplicationOrientation;
 - (void)pid:(CDUnknownBlockType)arg1;
 - (int)pid;
 - (_Bool)isPointInsideAccessibilityInspector:(id)arg1;

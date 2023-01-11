@@ -4,38 +4,55 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMapTable, NSMutableDictionary, PHPerson, PXAssetActionPerformer, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource;
+#import <PhotosUICore/PXActivityActionDelegate-Protocol.h>
 
-@interface PXPhotoKitAssetActionManager
+@class NSMapTable, NSMutableDictionary, NSString, PHPerson, PXAssetActionPerformer, PXPhotoKitAssetsDataSourceManager, PXPhotoKitImportStatusManager, PXPhotosDataSource;
+
+@interface PXPhotoKitAssetActionManager <PXActivityActionDelegate>
 {
     PXPhotoKitAssetsDataSourceManager *_dataSourceManager;
+    PXPhotoKitImportStatusManager *_importStatusManager;
+    NSString *_importSessionID;
     PHPerson *_person;
     NSMutableDictionary *__performerClassByType;
     NSMapTable *__actionTypeByBarButtonItem;
-    PXPhotosDataSource *__dataSourceSnapshot;
     PXAssetActionPerformer *__activePerformer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setActivePerformer:) PXAssetActionPerformer *_activePerformer; // @synthesize _activePerformer=__activePerformer;
-@property(readonly, nonatomic) PXPhotosDataSource *_dataSourceSnapshot; // @synthesize _dataSourceSnapshot=__dataSourceSnapshot;
 @property(readonly, nonatomic) NSMapTable *_actionTypeByBarButtonItem; // @synthesize _actionTypeByBarButtonItem=__actionTypeByBarButtonItem;
 @property(readonly, nonatomic) NSMutableDictionary *_performerClassByType; // @synthesize _performerClassByType=__performerClassByType;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
+@property(retain, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
+@property(retain, nonatomic) PXPhotoKitImportStatusManager *importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property(retain, nonatomic) PXPhotoKitAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
-- (void).cxx_destruct;
 - (void)_handleActionPerformerComplete:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
-- (void)_handleActionType:(id)arg1;
+- (void)executeActionForActionType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleBarButtonItem:(id)arg1;
 - (void)_handlePreviewAction:(id)arg1 actionType:(id)arg2;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
+- (void)performActivity:(id)arg1;
+- (_Bool)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
+- (id)activityForActionType:(id)arg1;
 - (id)alertActionForActionType:(id)arg1;
 - (id)previewActionForActionType:(id)arg1 image:(id)arg2;
 - (id)barButtonItemForActionType:(id)arg1;
 - (id)actionPerformerForActionType:(id)arg1;
 - (_Bool)canPerformAssetVariationActions;
+- (_Bool)shouldEnableActionType:(id)arg1 onAsset:(id)arg2;
 - (_Bool)canPerformActionType:(id)arg1;
 - (void)registerPerformerClass:(Class)arg1 forType:(id)arg2;
+- (id)_selectionSnapshotForPerfomerClass:(Class)arg1 applySubsetIfNeeded:(_Bool)arg2;
+@property(readonly, nonatomic) PXPhotosDataSource *_dataSourceSnapshot;
+- (id)initWithSelectedObjectReference:(id)arg1 dataSourceManager:(id)arg2;
 - (id)initWithSelectionManager:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

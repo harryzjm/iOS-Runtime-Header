@@ -90,14 +90,6 @@ struct ModelPropertyBase {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
 };
 
-struct NSMapTable {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
-};
-
 struct Predicate;
 
 struct PropertiesQuery;
@@ -144,16 +136,15 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -506,7 +497,8 @@ typedef struct {
     unsigned int identifiers:1;
     unsigned int text:1;
     unsigned int hasStoreLyrics:1;
-} CDStruct_99cfb959;
+    unsigned int hasTimeSyncedLyrics:1;
+} CDStruct_78b3e931;
 
 typedef struct {
     unsigned int identifiers:1;

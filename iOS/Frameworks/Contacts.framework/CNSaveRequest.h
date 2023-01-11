@@ -32,6 +32,10 @@
     NSMutableArray *_contactChangeRequests;
     NSMutableArray *_addedAccounts;
     NSMutableArray *_removedAccounts;
+    NSMutableArray *_linkRequests;
+    NSMutableArray *_unlinkRequests;
+    NSMutableArray *_preferredForNameRequests;
+    NSMutableArray *_preferredForImageRequests;
     NSMutableDictionary *_parentRecordsByIdentifier;
     _Bool _unsafeApplyChangesOnly;
     _Bool _ignoresGuardianRestrictions;
@@ -40,6 +44,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *changeHistoryClientIdentifier; // @synthesize changeHistoryClientIdentifier=_changeHistoryClientIdentifier;
 @property(nonatomic) _Bool ignoresGuardianRestrictions; // @synthesize ignoresGuardianRestrictions=_ignoresGuardianRestrictions;
 @property(readonly, copy, nonatomic) NSDictionary *deletedContactsByIdentifier; // @synthesize deletedContactsByIdentifier=_deletedContactsByIdentifier;
@@ -47,7 +52,6 @@
 @property(readonly, copy, nonatomic) NSArray *removedAccounts; // @synthesize removedAccounts=_removedAccounts;
 @property(readonly, copy, nonatomic) NSArray *addedAccounts; // @synthesize addedAccounts=_addedAccounts;
 @property(nonatomic) _Bool unsafeApplyChangesOnly; // @synthesize unsafeApplyChangesOnly=_unsafeApplyChangesOnly;
-- (void).cxx_destruct;
 @property(nonatomic) _Bool ignoresParentalRestrictions;
 @property(readonly, copy, nonatomic) NSArray *allAccountIdentifierStrings;
 - (id)allAccountIdentifiers;
@@ -111,6 +115,22 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (void)withDifferentMeCard:(CDUnknownBlockType)arg1;
+- (void)withEachContactPreferredForImage:(CDUnknownBlockType)arg1;
+- (void)withEachContactPreferredForName:(CDUnknownBlockType)arg1;
+- (void)withEachUnlinkedContact:(CDUnknownBlockType)arg1;
+- (void)withEachLinkedContact:(CDUnknownBlockType)arg1;
+- (void)withEachSubgroupRemovedFromGroup:(CDUnknownBlockType)arg1;
+- (void)withEachSubgroupAddedToGroup:(CDUnknownBlockType)arg1;
+- (void)withEachMemberRemovedFromGroup:(CDUnknownBlockType)arg1;
+- (void)withEachMemberAddedToGroup:(CDUnknownBlockType)arg1;
+- (void)withEachDeletedGroup:(CDUnknownBlockType)arg1;
+- (void)withEachUpdatedGroup:(CDUnknownBlockType)arg1;
+- (void)withEachAddedGroup:(CDUnknownBlockType)arg1;
+- (void)withEachDeletedContact:(CDUnknownBlockType)arg1;
+- (void)withEachUpdatedContact:(CDUnknownBlockType)arg1;
+- (void)withEachAddedContact:(CDUnknownBlockType)arg1;
+- (void)acceptChangeHistoryEventVisitor:(id)arg1;
 - (void)setLinkIdentifier:(id)arg1 forContact:(id)arg2;
 
 @end

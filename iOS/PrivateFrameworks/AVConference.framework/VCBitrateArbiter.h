@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrate2G;
     unsigned int _maxAllowedBitrate3G;
     unsigned int _maxAllowedBitrateLTE;
+    unsigned int _maxAllowedBitrate5G;
     unsigned int _maxAllowedBitrateWifi;
     unsigned int _maxAllowedScreenShareBitrate2G;
     unsigned int _maxAllowedScreenShareBitrate3G;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrateUSB;
 }
 
++ (void)updateMaxAllowedBitratePerConnection:(unsigned int *)arg1 connectionType:(int)arg2 bandwidthSettings:(id)arg3;
 @property(readonly) unsigned int maxAllowedBitrateUSB; // @synthesize maxAllowedBitrateUSB=_maxAllowedBitrateUSB;
 @property(readonly) unsigned int maxAllowedBitrateP2P; // @synthesize maxAllowedBitrateP2P=_maxAllowedBitrateP2P;
 @property(readonly) unsigned int maxAllowedBitrateWifi; // @synthesize maxAllowedBitrateWifi=_maxAllowedBitrateWifi;
@@ -38,16 +40,22 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int maxAllowedBitrate3G; // @synthesize maxAllowedBitrate3G=_maxAllowedBitrate3G;
 @property(readonly) unsigned int maxAllowedBitrate2G; // @synthesize maxAllowedBitrate2G=_maxAllowedBitrate2G;
 @property(readonly) unsigned int maxAllowedBitrate; // @synthesize maxAllowedBitrate=_maxAllowedBitrate;
-- (unsigned int)maxAllowedBitrateForConnection:(int)arg1 operatingMode:(int)arg2;
+- (void)updateNegotiatedSettings:(id)arg1;
+- (unsigned int)maxAllowedBitrateForConnectionType:(int)arg1 operatingMode:(int)arg2;
+- (unsigned int)maxAllowedBitrateForVCConnection:(id)arg1 forLocalInterface:(_Bool)arg2 operatingMode:(int)arg3 encodeRule:(id)arg4;
 - (id)maxAllowedBitrateRuleForConnection:(int)arg1;
 - (unsigned int)maxAllowedAudioOnlyBitrateForConnection:(int)arg1;
 - (unsigned int)maxAllowedScreenShareBitrateForConnection:(int)arg1;
-- (unsigned int)maxAllowedBitrateForConnection:(int)arg1;
+- (unsigned int)maxAllowedBitrateForVCConnection:(id)arg1 forLocalInterface:(_Bool)arg2 encodeRule:(id)arg3;
+- (unsigned int)maxAllowedBitrateForConnectionType:(int)arg1;
 - (unsigned int)maxAllowedScreenShareCellularBitrate;
 - (unsigned int)maxAllowedCellularBitrate;
 - (void)readCarrierBundleValues;
+- (void)updateMaxAllowedBitrate:(unsigned int *)arg1 key:(struct __CFString *)arg2 type:(id)arg3 isAudio:(_Bool)arg4 carrierBundleBitrates:(struct __CFDictionary *)arg5;
 - (void)readStoreBagValues:(void *)arg1;
+- (int)storeBagBitrateForKey:(id)arg1;
 - (void)readHardwareValues;
+- (void)addRuleForBitrate:(unsigned int)arg1 connectionType:(int)arg2 limitingRule:(id)arg3;
 - (void)createSupportedBitrateRuleSets;
 - (void)dealloc;
 - (id)initWithDeviceRole:(int)arg1 callLogFile:(void *)arg2;

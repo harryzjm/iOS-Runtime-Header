@@ -21,7 +21,7 @@
 - (void)_didComplete;
 - (void)_childTransactionDidComplete:(id)arg1;
 - (void)_begin;
-- (void)_sendActivationResultWithSuccess:(_Bool)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

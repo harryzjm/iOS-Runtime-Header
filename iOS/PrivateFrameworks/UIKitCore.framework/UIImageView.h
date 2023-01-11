@@ -9,11 +9,12 @@
 #import <UIKitCore/_UIImageContentEffect-Protocol.h>
 #import <UIKitCore/_UIImageContentLayoutTarget-Protocol.h>
 
-@class NSArray, NSString, UIColor, UIImage, UIImageSymbolConfiguration, UILayoutGuide, UITraitCollection, UIView, _UIStackedImageContainerView;
+@class NSArray, NSString, UIColor, UIImage, UIImageSymbolConfiguration, UILayoutGuide, UITraitCollection, UIView, _UIImageContentLayout, _UIImageLoader, _UIStackedImageContainerView;
 
 @interface UIImageView <UIAccessibilityContentSizeCategoryImageAdjusting, UIAccessibilityContentSizeCategoryImageAdjustingInternal, _UIImageContentLayoutTarget, _UIImageContentEffect>
 {
     id _storage;
+    _UIImageContentLayout *_pendingImageContentLayout;
     struct UIEdgeInsets _cachedEdgeInsetsForEffects;
     UITraitCollection *_lastResolvedTraitCollection;
     long long _lastResolvedLayoutDirectionTrait;
@@ -22,6 +23,10 @@
     struct {
         unsigned int canDrawContentIsValid:1;
         unsigned int canDrawContent:1;
+        unsigned int suppressPixelAlignment:1;
+        unsigned int previousPixelAlignment:1;
+        unsigned int previousEdgeAntialiasing:1;
+        unsigned int actionForLayerForKeyOverridden:1;
     } _imageViewFlags;
     _Bool _templateSettingsAreInvalid;
     _Bool _edgeInsetsForEffectsAreValid;
@@ -32,6 +37,8 @@
     UILayoutGuide *_focusedFrameGuide;
 }
 
++ (id)_sharedDecodingQueue;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setAnimatesContents:) _Bool _animatesContents; // @synthesize _animatesContents=__animatesContents;
 @property(nonatomic, setter=_setSymbolImagesIgnoreAccessibilitySizes:) _Bool _symbolImagesIgnoreAccessibilitySizes; // @synthesize _symbolImagesIgnoreAccessibilitySizes=__symbolImagesIgnoreAccessibilitySizes;
 @property(nonatomic) _Bool masksFocusEffectToContents; // @synthesize masksFocusEffectToContents=_masksFocusEffectToContents;
@@ -39,7 +46,18 @@
 @property(nonatomic) _Bool adjustsImageWhenAncestorFocused; // @synthesize adjustsImageWhenAncestorFocused=_adjustsImageWhenAncestorFocused;
 @property(nonatomic, setter=_setEdgeInsetsForEffectsAreValid:) _Bool _edgeInsetsForEffectsAreValid; // @synthesize _edgeInsetsForEffectsAreValid;
 @property(readonly, nonatomic) _Bool _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;
-- (void).cxx_destruct;
+- (void)_mainQ_resetForLoader:(id)arg1 delegate:(id)arg2;
+- (void)_stopLoading;
+- (void)_mainQ_imageLoader:(id)arg1 finishedOrSkippedDecodingImage:(id)arg2 layout:(id)arg3;
+- (void)_decodeQ_imageLoader:(id)arg1 decodeImage:(id)arg2 layout:(id)arg3;
+- (void)_mainQ_imageLoader:(id)arg1 finishedWithImage:(id)arg2 error:(id)arg3;
+- (void)_kickoffQ_beginLoadingWithImageLoader:(id)arg1;
+- (void)_mainQ_beginLoadingIfApplicable;
+- (void)_loadImage:(id)arg1 delegate:(id)arg2;
+- (void)_loadImageWithURL:(id)arg1;
+@property(readonly, nonatomic) _UIImageLoader *_imageLoader;
+@property(retain, nonatomic, setter=_setPlaceholderView:) UIView *_placeholderView;
+- (void)_updateVisibilityAndFrameOfPlaceholderView;
 - (void)_updateLayeredImageIsFocusedWithFocusedView:(id)arg1 focusAnimationCoordinator:(id)arg2;
 @property(nonatomic, setter=_setLayeredImageCornerRadius:) double _layeredImageCornerRadius;
 @property(readonly, nonatomic) UIView *overlayContentView;
@@ -53,7 +71,10 @@
 - (_Bool)_displayImageAsLayered:(id)arg1;
 - (void)_updateImageViewForOldImage:(id)arg1 newImage:(id)arg2;
 - (_Bool)_resolveImageForTrait:(id)arg1 previouslyDisplayedImage:(id)arg2;
-- (_Bool)_resolveImageForTrait:(id)arg1;
+- (id)_resolvedImageFromImage:(id)arg1;
+- (id)_resolvedImageFromImage:(id)arg1 forTrait:(id)arg2;
+- (id)_imageResolvingTraitCollectionForTraitCollection:(id)arg1 layoutDirection:(long long)arg2;
+- (void)_updateResolvedImage;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)_currentHighlightedImage;
 - (id)_currentImage;
@@ -103,21 +124,24 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;
 @property(retain, nonatomic) UIImageSymbolConfiguration *symbolConfiguration;
-- (void)_setOverridingSymbolConfiguration:(id)arg1;
+@property(retain, nonatomic, setter=_setOverridingSymbolConfiguration:) UIImageSymbolConfiguration *_overridingSymbolConfiguration;
 @property(retain, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration;
-- (id)_overridingSymbolConfiguration;
 - (id)_symbolConfigurationForImage:(id)arg1;
+@property(nonatomic, setter=_setSuppressPixelAlignment:) _Bool _suppressPixelAlignment;
 - (id)midlineGuide;
 - (id)_imageContentGuideAllowingCreation:(_Bool)arg1;
 @property(readonly) UILayoutGuide *imageContentGuide;
 - (void)_imageContentParametersDidChange;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (void)_baselineOffsetParametersDidChangeHasBaselinePropertyChanged:(_Bool)arg1;
 - (_Bool)_isHasBaselinePropertyChangeable;
+- (_Bool)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (_Bool)_hasBaseline;
 - (double)_baselineOffsetFromBottom;
 - (double)_firstBaselineOffsetFromTop;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
+- (void)setHidden:(_Bool)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentMode:(long long)arg1;
@@ -140,9 +164,11 @@
 - (id)_effectForRenderingSource:(id)arg1;
 - (_Bool)_setImageViewContentsForAnimatedImage:(id)arg1;
 - (void)_updateContentsMultiplyColorAndSwizzleFromLayout:(id)arg1;
+- (void)displayLayer:(id)arg1;
 - (_Bool)_setImageViewContents:(id)arg1;
 - (void)_invalidateImageLayouts;
-- (id)_layoutForImage:(id)arg1;
+- (id)_layoutForImage:(id)arg1 inSize:(struct CGSize)arg2 cachePerSize:(_Bool)arg3 forBaselineOffset:(_Bool)arg4;
+- (id)_layoutForImage:(id)arg1 inSize:(struct CGSize)arg2;
 - (_Bool)_canDrawContent;
 - (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
 - (unsigned long long)defaultAccessibilityTraits;
@@ -161,7 +187,6 @@
 - (_Bool)_recomputePretilingState;
 
 // Remaining properties
-@property(readonly, nonatomic) struct CGRect bounds;
 @property(readonly, nonatomic) long long contentMode; // @dynamic contentMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

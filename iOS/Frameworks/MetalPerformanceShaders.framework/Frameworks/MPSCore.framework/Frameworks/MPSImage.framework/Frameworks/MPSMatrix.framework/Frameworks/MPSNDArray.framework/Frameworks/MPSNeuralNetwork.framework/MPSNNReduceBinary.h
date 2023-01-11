@@ -12,7 +12,7 @@
     CDStruct_1e3be3a8 _primarySourceClipRect;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) CDStruct_1e3be3a8 secondarySourceClipRect; // @synthesize secondarySourceClipRect=_secondarySourceClipRect;
 @property(nonatomic) CDStruct_1e3be3a8 primarySourceClipRect; // @synthesize primarySourceClipRect=_primarySourceClipRect;
 - (id)debugDescription;

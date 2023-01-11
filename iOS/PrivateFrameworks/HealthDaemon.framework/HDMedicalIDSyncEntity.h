@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDNanoSyncEntity-Protocol.h>
 #import <HealthDaemon/HDSyncEntity-Protocol.h>
 
 @class NSString;
 
-@interface HDMedicalIDSyncEntity : NSObject <HDNanoSyncEntity, HDSyncEntity>
+@interface HDMedicalIDSyncEntity : NSObject <HDSyncEntity>
 {
 }
 
-+ (_Bool)setSyncProvenance:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
++ (_Bool)setSyncProvenance:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)getSyncProvencanceOfMedicalIDForProfile:(id)arg1 error:(id *)arg2;
 + (_Bool)_setSyncAnchor:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
 + (long long)_getCurrentSyncAnchorWithProfile:(id)arg1 error:(id *)arg2;
@@ -31,9 +30,6 @@
 + (_Bool)_touchSyncAnchorWithProfile:(id)arg1 shouldIncrement:(_Bool)arg2 error:(id *)arg3;
 + (_Bool)incrementSyncAnchorWithProfile:(id)arg1 error:(id *)arg2;
 + (_Bool)touchSyncAnchorIfNecessaryWithProfile:(id)arg1 error:(id *)arg2;
-+ (_Bool)companionDidChangeForProfile:(id)arg1 error:(id *)arg2;
-+ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
-+ (int)nanoSyncObjectType;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

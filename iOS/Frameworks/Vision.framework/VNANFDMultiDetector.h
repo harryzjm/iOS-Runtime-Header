@@ -4,30 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ShotflowDetectorANFDv2, VNFaceBBoxAligner;
+@class ShotflowDetectorANODv3, VNFaceBBoxAligner;
 
 __attribute__((visibility("hidden")))
 @interface VNANFDMultiDetector
 {
-    ShotflowDetectorANFDv2 *_mMultiHeadedANFDDetector;
+    ShotflowDetectorANODv3 *_mMultiHeadedANFDDetector;
     VNFaceBBoxAligner *_faceBBoxAligner;
 }
 
 + (void)_printDebugInfo:(id)arg1 detectedObjectsRaw:(id)arg2 faceDetectorBGRAImage:(struct __CVBuffer *)arg3 tempImage:(struct vImage_Buffer)arg4;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
 + (id)knownAnimalIdentifiers;
-+ (id)detectedAnimalObjectClassToAnimalName;
++ (id)recognizedAnimalObjectClassToAnimalName;
 + (id)detectedObjectRequestClassToRequestInfo;
 + (id)detectedObjectClassToRequestClass;
 + (float)faceDetectorChunkAspectRatio;
-+ (Class)detectorClass;
++ (id)requestInfoForRequest:(id)arg1;
++ (Class)anfdMultiDetectorClassToProcessRequest:(id)arg1;
++ (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (void)processRecognizedObjectWithIdentifier:(id)arg1 requestRevision:(unsigned long long)arg2 objectBoundingBox:(struct CGRect)arg3 objectConfidence:(float)arg4 detectedObjectResults:(id)arg5;
+- (_Bool)processDetectedObject:(id)arg1 requestRevision:(unsigned long long)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 warningRecorder:(id)arg5 detectedObjectResults:(id)arg6 error:(id *)arg7;
 - (id)_alignFace:(id)arg1 imageBuffer:(id)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (_Bool)supportsProcessingDevice:(id)arg1;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
-- (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
-- (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end
 

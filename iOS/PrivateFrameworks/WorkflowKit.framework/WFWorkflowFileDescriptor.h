@@ -4,14 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface WFWorkflowFileDescriptor
+#import <objc/NSObject.h>
+
+#import <WorkflowKit/NSCopying-Protocol.h>
+#import <WorkflowKit/NSSecureCoding-Protocol.h>
+
+@class NSString, WFFileRepresentation;
+
+@interface WFWorkflowFileDescriptor : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _performMigration;
+    WFFileRepresentation *_file;
+    NSString *_name;
+    NSString *_sourceAppIdentifier;
 }
 
-@property(readonly, nonatomic) _Bool performMigration; // @synthesize performMigration=_performMigration;
-- (id)initWithFile:(id)arg1 name:(id)arg2 performMigration:(_Bool)arg3 sourceAppIdentifier:(id)arg4;
-- (id)initWithFile:(id)arg1 name:(id)arg2 performMigration:(_Bool)arg3;
++ (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) WFFileRepresentation *file; // @synthesize file=_file;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFile:(id)arg1 name:(id)arg2 sourceAppIdentifier:(id)arg3;
 - (id)initWithFile:(id)arg1 name:(id)arg2;
 
 @end

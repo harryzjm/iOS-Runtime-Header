@@ -34,12 +34,12 @@
 }
 
 + (id)displayableErrorForError:(id)arg1 featureIdentifier:(unsigned long long)arg2 genericErrorTitle:(id)arg3 genericErrorMessage:(id)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <PKAccountFlowControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) id <PKSetupFlowControllerProtocol> parentFlowController; // @synthesize parentFlowController=_parentFlowController;
 @property(readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property(readonly, nonatomic) PKAccountCredential *accountCredential; // @synthesize accountCredential=_accountCredential;
 @property(readonly, nonatomic) unsigned long long operations; // @synthesize operations=_operations;
-- (void).cxx_destruct;
 - (void)authAndDecryptWithVirtualCard:(id)arg1 authenticationReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_invalidateAssertion;
 - (void)_acquireAssertion;
@@ -48,7 +48,7 @@
 - (void)endProvisioningFlow;
 @property(readonly, nonatomic) PKAccountProvisioningController *accountProvisioningController;
 - (void)_requestPresentationOfActiviationViewControllerShowingMadeDefault:(_Bool)arg1;
-- (void)_accountProvisoningControllerRequiresNextViewController:(id)arg1;
+- (void)_accountProvisioningControllerRequiresNextViewController:(id)arg1;
 - (void)_checkAccountProvisioningControllerState:(id)arg1;
 - (void)accountProvisioningController:(id)arg1 displayableError:(id)arg2;
 - (void)accountProvisioningControllerUpdatedState:(id)arg1;

@@ -8,25 +8,32 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class CNContact, NSString, PKMerchant, PKPaymentTransactionGroup;
+@class CNContact, NSString, PKInstallmentPlanProduct, PKMerchant, PKPaymentTransaction, PKPaymentTransactionGroup;
 
 @interface PKTransactionHistoryHeaderItem : NSObject <PKDashboardItem>
 {
     unsigned long long _type;
     PKMerchant *_merchant;
+    PKPaymentTransaction *_transaction;
     NSString *_peerPaymentCounterpartHandle;
     CNContact *_contact;
     PKPaymentTransactionGroup *_transactionGroup;
     long long _transactionType;
+    PKInstallmentPlanProduct *_installmentProduct;
+    unsigned long long _featureIdentifier;
 }
 
++ (id)identifier;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
+@property(retain, nonatomic) PKInstallmentPlanProduct *installmentProduct; // @synthesize installmentProduct=_installmentProduct;
 @property(nonatomic) long long transactionType; // @synthesize transactionType=_transactionType;
 @property(retain, nonatomic) PKPaymentTransactionGroup *transactionGroup; // @synthesize transactionGroup=_transactionGroup;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(copy, nonatomic) NSString *peerPaymentCounterpartHandle; // @synthesize peerPaymentCounterpartHandle=_peerPaymentCounterpartHandle;
+@property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 @property(retain, nonatomic) PKMerchant *merchant; // @synthesize merchant=_merchant;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)initWithType:(unsigned long long)arg1;
 
 // Remaining properties

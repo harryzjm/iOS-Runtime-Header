@@ -9,11 +9,12 @@
 #import <PencilKit/PKRulerHostingDelegate-Protocol.h>
 #import <PencilKit/PKTiledViewDelegate-Protocol.h>
 #import <PencilKit/PKToolPickerObserver-Protocol.h>
+#import <PencilKit/PKToolPickerObserverPrivate-Protocol.h>
 
 @class NSString, PKCanvasAttachmentView, PKDrawing, PKInk, PKTiledView, PKTool, UIGestureRecognizer, UIView;
 @protocol PKCanvasViewDelegate, PKRulerHostingDelegate;
 
-@interface PKCanvasView : UIScrollView <PKTiledViewDelegate, PKRulerHostingDelegate, PKToolPickerObserver>
+@interface PKCanvasView : UIScrollView <PKTiledViewDelegate, PKRulerHostingDelegate, PKToolPickerObserverPrivate, PKToolPickerObserver>
 {
     PKTiledView *_tiledView;
     PKCanvasAttachmentView *_pageView;
@@ -39,13 +40,18 @@
     struct CGAffineTransform _drawingTransform;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGAffineTransform drawingTransform; // @synthesize drawingTransform=_drawingTransform;
 @property(nonatomic) __weak id <PKRulerHostingDelegate> rulerHostingDelegate; // @synthesize rulerHostingDelegate=_rulerHostingDelegate;
 @property(nonatomic) _Bool disableWideGamut; // @synthesize disableWideGamut=_disableWideGamut;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool supportsCopyAsText;
+- (id)_selectionInteraction;
+- (id)_adornmentViewsToHitTest;
+- (double)_latestLatency;
 @property(nonatomic) _Bool predictionDisabled; // @dynamic predictionDisabled;
 @property(nonatomic) _Bool rulerEnabled;
+- (id)_allowedDrawingTouchTypes;
 - (_Bool)canvasView:(id)arg1 shouldBeginDrawingWithTouch:(id)arg2;
 - (void)canvasViewDidEraseStrokes:(id)arg1;
 - (void)canvasView:(id)arg1 cancelledStroke:(id)arg2;
@@ -80,7 +86,6 @@
 - (void)_toolPicker:(id)arg1 didChangeColor:(id)arg2;
 - (void)toolPickerIsRulerActiveDidChange:(id)arg1;
 - (void)toolPickerSelectedToolDidChange:(id)arg1;
-- (_Bool)shouldToolPickerBecomeVisibleWhenFirstResponder:(id)arg1;
 - (void)paste:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canBecomeFirstResponder;
@@ -89,8 +94,8 @@
 - (void)performUndo:(id)arg1;
 @property(nonatomic) long long _maxFileFormatVersion;
 - (id)_currentStroke;
+@property(nonatomic) unsigned long long drawingPolicy;
 @property(nonatomic) _Bool allowsFingerDrawing;
-@property(nonatomic, getter=isFingerDrawingEnabled) _Bool fingerDrawingEnabled;
 @property(readonly, nonatomic) UIGestureRecognizer *drawingGestureRecognizer;
 - (void)setContentSize:(struct CGSize)arg1;
 - (void)layoutSubviews;
@@ -108,7 +113,7 @@
 - (void)_setChildrenBackgroundColor:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)_setContentViewOpaqueBackgroundColorIfApplicable;
-- (void)_setChildrenOpaque:(_Bool)arg1;
+- (void)_updateChildrenOpaque;
 - (void)setOpaque:(_Bool)arg1;
 - (void)setupDrawingWidth:(double)arg1 fixedPixelSizeScrollView:(id)arg2;
 - (void)awakeFromNib;

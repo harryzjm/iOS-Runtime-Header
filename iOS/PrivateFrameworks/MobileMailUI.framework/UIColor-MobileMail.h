@@ -7,12 +7,20 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (MobileMail)
++ (id)mf_colorFromFlagColor:(unsigned long long)arg1;
 + (id)mf_colorFromColor:(id)arg1 toColor:(id)arg2 progress:(float)arg3;
 + (id)mailVIPFilterColor;
 + (id)mailAttachmentsFilterColor;
 + (id)mailTodayFilterColor;
-+ (id)mailCardBackgroundColor;
++ (id)mailMailboxPickerBackgroundColorForTraitCollection:(id)arg1;
 + (id)mailCellSelectionStateColorForInterfaceLevel:(long long)arg1;
++ (id)mailMessageListSelectedRecipientColor;
++ (id)mailMessageListSelectedStatusIndicatorColor;
++ (id)mailMessageListSelectedAnnotationColor;
++ (id)mailMessageListSelectedSummaryColor;
++ (id)mailMessageListTertiarySelectionColor;
++ (id)mailMessageListSecondarySelectionColor;
++ (id)mailMessageListPrimarySelectionColor;
 + (id)mailSplitViewBackgroundColor;
 + (id)mailTransferStackViewBackgroundColor;
 + (id)mailExpandedConversationViewCellDateLabelColor;
@@ -23,14 +31,14 @@
 + (id)mailDockViewDarkBackgroundColor;
 + (id)mailDockViewLightBackgroundColor;
 + (id)mailConversationViewNoSelectedMessageViewBackgroundColor;
-+ (id)mailConversationBackgroundColorForPhoneUserInterfaceStyle:(long long)arg1;
 + (id)mailTransferConversationViewBackgroundColor;
 + (id)mailHeaderSeparatorLayerColor;
-+ (id)mailConversationViewCollapsedCellLabelColorForUserInterfaceStyle:(long long)arg1;
-+ (id)mailConversationViewCollapsedCellHighlightedBackgroundColorForUserInterfaceStyle:(long long)arg1;
-+ (id)mailConversationViewCollapsedCellBackgroundColorForUserInterfaceStyle:(long long)arg1;
++ (id)mailConversationViewCollapsedCellLabelColor;
++ (id)mailConversationViewCollapsedCellHighlightedBackgroundColor;
++ (id)mailConversationViewCollapsedCellBackgroundColor;
 + (id)mailConversationViewExpandedCellBackgroundColor;
-+ (id)mailSplitViewBoarderColor;
++ (id)mailConversationViewBackgroundColor;
++ (id)mailSplitViewBorderColor;
 + (id)mailPreviousDraftPickerHeaderTextColor;
 + (id)mailGrabberColor;
 + (id)mailAccountCellTitleColor;
@@ -43,6 +51,7 @@
 + (id)mailSelectedCellSystemUltraLightGrayColor;
 + (id)mailSelectedCellSystemLightGrayColor;
 + (id)mailSelectedCellColor;
++ (id)mailSecondaryLabelDarkColor;
 + (id)mailSystemUltraLightGrayColor;
 + (id)mailSystemLightGrayColor;
 + (id)mailAppBackgroundColor;
@@ -61,7 +70,6 @@
 + (id)mailFlaggedColorIncreasedContrastRed;
 + (id)mailFlaggedColorRed;
 + (id)mailFlaggedColor;
-+ (id)mailInteractiveColor;
 - (_Bool)mf_isTranslucent;
 @end
 

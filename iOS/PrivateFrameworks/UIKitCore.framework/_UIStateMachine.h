@@ -6,38 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
-
 __attribute__((visibility("hidden")))
 @interface _UIStateMachine : NSObject
 {
-    unsigned long long _stateCount;
-    unsigned long long _eventCount;
-    struct {
-        unsigned long long _field1;
-        unsigned long long _field2;
-        _Bool _field3;
-        unsigned long long _field4;
-        CDUnknownBlockType _field5;
-        CDUnknownBlockType _field6;
-    } *_transitionTable;
-    NSMutableDictionary *_stateChangeObservers;
+    const struct {
+        struct _UIStateMachineMeta _field1;
+        struct _UIStateMachineDebugging *_field2;
+        struct {
+            CDUnknownBlockType _field1;
+            struct _UIStateTransition _field2[0];
+        } _field3[0];
+    } *_spec;
+    _Bool _externalSpec;
     unsigned long long _state;
 }
 
-+ (void)debugAttemptedInvalidStateTransitionFromState:(unsigned long long)arg1 withEvent:(unsigned long long)arg2;
-+ (void)debugStateTransitionFromState:(unsigned long long)arg1 withEvent:(unsigned long long)arg2 toState:(unsigned long long)arg3;
-@property(nonatomic) unsigned long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
-- (void)_iterateTransitionTable:(CDUnknownBlockType)arg1;
-- (id)_transitionDescriptions;
-- (void)handleEvent:(unsigned long long)arg1 withContext:(id)arg2;
+@property(readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
+- (void)handleEvent:(unsigned long long)arg1 withContext:(union _UIStateContext)arg2;
+- (id)initWithSpec:(void *)arg1 initialState:(unsigned long long)arg2;
+@property(readonly, nonatomic) void *spec;
 - (void)setStateChangeObserver:(unsigned long long)arg1 observer:(CDUnknownBlockType)arg2;
 - (void)setStaticTransitionFromState:(unsigned long long)arg1 withEvent:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)setTransitionHandlerForState:(unsigned long long)arg1 withEvent:(unsigned long long)arg2 transitionHandler:(CDUnknownBlockType)arg3 postTransitionHandler:(CDUnknownBlockType)arg4;
 - (void)setTransitionHandlerForState:(unsigned long long)arg1 withEvent:(unsigned long long)arg2 transitionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (unsigned long long)_totalStateCount;
 - (id)initWithStates:(unsigned long long)arg1 events:(unsigned long long)arg2 initialState:(unsigned long long)arg3;
 
 @end

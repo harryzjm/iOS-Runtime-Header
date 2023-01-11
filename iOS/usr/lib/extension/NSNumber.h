@@ -76,8 +76,8 @@
 - (unsigned char)_getValue:(void *)arg1 forType:(long long)arg2;
 - (long long)_cfNumberType;
 - (unsigned long long)_cfTypeID;
-- (_Bool)isNSNumber__;
 @property(readonly) CDStruct_5fe7aead decimalValue;
+- (_Bool)isNSNumber__;
 
 @end
 

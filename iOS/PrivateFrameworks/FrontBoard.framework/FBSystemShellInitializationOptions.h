@@ -12,24 +12,18 @@
 @interface FBSystemShellInitializationOptions : NSObject <NSCopying, NSMutableCopying>
 {
     _Bool _initializeReadyForInteraction;
-    _Bool _isLegacyFBSystemApp;
     _Bool _shouldWaitForMigrator;
     _Bool _resetDarkBootState;
     double _systemSleepInterval;
     CDUnknownBlockType _registerServicesBlock;
-    CDUnknownBlockType _registerPostCheckInPreServiceInitializationCallbackBlock;
-    CDUnknownBlockType _registerLegacyPostInitCallbackBlock;
 }
 
-@property(readonly, copy, nonatomic) CDUnknownBlockType _registerLegacyPostInitCallbackBlock; // @synthesize _registerLegacyPostInitCallbackBlock;
-@property(readonly, copy, nonatomic) CDUnknownBlockType _registerPostCheckInPreServiceInitializationCallbackBlock; // @synthesize _registerPostCheckInPreServiceInitializationCallbackBlock;
-@property(readonly, nonatomic) _Bool _isLegacyFBSystemApp; // @synthesize _isLegacyFBSystemApp;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType registerAdditionalServicesBlock; // @synthesize registerAdditionalServicesBlock=_registerServicesBlock;
 @property(readonly, nonatomic) double systemSleepInterval; // @synthesize systemSleepInterval=_systemSleepInterval;
 @property(readonly, nonatomic) _Bool shouldWaitForMigrator; // @synthesize shouldWaitForMigrator=_shouldWaitForMigrator;
 @property(readonly, nonatomic) _Bool resetDarkBootState; // @synthesize resetDarkBootState=_resetDarkBootState;
 @property(readonly, nonatomic) _Bool initializeReadyForInteraction; // @synthesize initializeReadyForInteraction=_initializeReadyForInteraction;
-- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

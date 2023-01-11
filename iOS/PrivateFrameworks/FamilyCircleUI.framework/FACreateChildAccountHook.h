@@ -7,30 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
-#import <FamilyCircleUI/AIDAAccountManagerDelegate-Protocol.h>
-#import <FamilyCircleUI/FAChildAccountCreationDelegate-Protocol.h>
+#import <FamilyCircleUI/FACreateChildControllerDelegate-Protocol.h>
 
-@class AAUIServerHookResponse, FAChildAccountCreationController, NSString, UIViewController;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
-@interface FACreateChildAccountHook : NSObject <AIDAAccountManagerDelegate, FAChildAccountCreationDelegate, AAUIServerHook>
+@interface FACreateChildAccountHook : NSObject <FACreateChildControllerDelegate, AAUIServerHook>
 {
-    CDUnknownBlockType _completion;
-    FAChildAccountCreationController *_childCreateController;
-    UIViewController *_initialViewController;
     id <AAUIServerHookDelegate> _delegate;
+    RUIObjectModel *_objectModel;
 }
 
-@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (id)navigationItemToShowInitialLoadingForChildAccountCreationController:(id)arg1;
-- (void)childAccountCreationController:(id)arg1 didCompleteWithSuccess:(_Bool)arg2 error:(id)arg3;
-- (void)childAccountCreationController:(id)arg1 didLoadRemoteUIWithSuccess:(_Bool)arg2;
-- (struct NSDictionary *)accountsForAccountManager:(id)arg1;
-- (id)_presentationContext;
-- (void)_callCompletion:(_Bool)arg1 error:(id)arg2;
-- (void)_tearDownChildAccountCreateController:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
-- (void)_handleCreateChildAccount:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
+@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)createChildControllerDidPresentInitialViewController:(id)arg1;
+- (void)_handleCreateChildAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)shouldMatchModel:(id)arg1;

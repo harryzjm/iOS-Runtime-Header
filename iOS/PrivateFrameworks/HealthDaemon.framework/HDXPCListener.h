@@ -8,31 +8,39 @@
 
 #import <HealthDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NSXPCListener, NSXPCListenerEndpoint;
-@protocol HDXPCListenerDelegate, OS_dispatch_queue;
+@class NSArray, NSMapTable, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@protocol HDXPCListenerClientProvider, HDXPCListenerDelegate, OS_dispatch_queue;
 
 @interface HDXPCListener : NSObject <NSXPCListenerDelegate>
 {
     NSXPCListener *_underlyingListener;
     struct os_unfair_lock_s _lock;
-    NSMutableDictionary *_exportedObjectsByClient;
-    id <HDXPCListenerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_connectionQueue;
+    NSMapTable *_exportedObjectsByClient;
+    id <HDXPCListenerDelegate> _delegate;
+    id <HDXPCListenerClientProvider> _clientProvider;
+    NSString *_label;
 }
 
 + (id)serviceListener;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
-@property(nonatomic) __weak id <HDXPCListenerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (id)newClientWithConnection:(id)arg1 error:(id *)arg2;
+@property(readonly, copy) NSString *label; // @synthesize label=_label;
+@property(nonatomic) __weak id <HDXPCListenerClientProvider> clientProvider; // @synthesize clientProvider=_clientProvider;
+@property(nonatomic) __weak id <HDXPCListenerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_handleConnectionInvalidationForClient:(id)arg1 exportedObject:(id)arg2;
+- (void)_handleInterruptionWithClient:(id)arg1 exportedObject:(id)arg2;
+- (void)_handleInvalidationWithClient:(id)arg1 exportedObject:(id)arg2;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 @property(readonly) NSXPCListenerEndpoint *endpoint;
 - (void)invalidate;
 - (void)resume;
+- (void)setConnectionQueue:(id)arg1;
+- (void)setQueue:(id)arg1;
 @property(readonly, copy) NSArray *allClients;
 - (void)dealloc;
-- (id)initWithUnderlyingListener:(id)arg1;
+- (id)initWithUnderlyingListener:(id)arg1 label:(id)arg2;
 - (id)initWithMachServiceName:(id)arg1;
+- (id)initWithLabel:(id)arg1;
 - (id)init;
 
 // Remaining properties

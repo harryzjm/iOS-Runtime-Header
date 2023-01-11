@@ -11,6 +11,7 @@
 }
 
 + (id)dictionaryForMessage:(id)arg1 error:(id *)arg2;
++ (id)remoteActivityFromDictionary:(id)arg1 withName:(id)arg2;
 + (id)remoteMessageWithDictonary:(id)arg1 error:(id *)arg2;
 + (_Bool)legacyNotificationMessage:(id)arg1;
 

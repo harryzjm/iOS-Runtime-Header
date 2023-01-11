@@ -22,7 +22,7 @@
 
 + (id)createPathToSpotlightPrefFile;
 + (id)getSPMLSharedInstance;
-+ (void)initialize;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *combinedBottomScoreOrder; // @synthesize combinedBottomScoreOrder=_combinedBottomScoreOrder;
 @property(retain) NSMutableDictionary *combinedTopScoreOrder; // @synthesize combinedTopScoreOrder=_combinedTopScoreOrder;
 @property(retain) NSArray *categoryList; // @synthesize categoryList=_categoryList;
@@ -31,7 +31,6 @@
 @property(retain) NSMutableDictionary *mapPredictionEnginesToCountFiles; // @synthesize mapPredictionEnginesToCountFiles=_mapPredictionEnginesToCountFiles;
 @property(retain) NSMutableDictionary *mapPredictionEnginesToCounts; // @synthesize mapPredictionEnginesToCounts=_mapPredictionEnginesToCounts;
 @property(retain) NSMutableDictionary *mapPredictionEnginesToClasses; // @synthesize mapPredictionEnginesToClasses=_mapPredictionEnginesToClasses;
-- (void).cxx_destruct;
 - (void)dumpPredictionStatsToFlatFiles;
 - (void)saveLastRankingForCategories:(id)arg1;
 - (id)getRankedCategoriesAsDictionaryForDays:(long long)arg1;

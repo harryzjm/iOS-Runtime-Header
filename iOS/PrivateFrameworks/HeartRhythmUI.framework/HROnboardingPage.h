@@ -9,13 +9,15 @@
 @interface HROnboardingPage : NSObject
 {
     _Bool _lastPage;
+    long long _sequencePage;
     Class _viewControllerClass;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) Class viewControllerClass; // @synthesize viewControllerClass=_viewControllerClass;
 @property(nonatomic) _Bool lastPage; // @synthesize lastPage=_lastPage;
-- (void).cxx_destruct;
-- (id)initWithViewControllerClass:(Class)arg1;
+@property(readonly, nonatomic) long long sequencePage; // @synthesize sequencePage=_sequencePage;
+- (id)initWithViewControllerClass:(Class)arg1 sequencePage:(long long)arg2;
 
 @end
 

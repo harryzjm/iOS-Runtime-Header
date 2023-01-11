@@ -12,6 +12,7 @@
 
 @interface PLDelayedSaveActionsDetail : NSObject <NSSecureCoding>
 {
+    _Bool _shouldReloadWidgetTimeline;
     NSArray *_cloudFeedAlbumUpdates;
     NSArray *_cloudFeedAssetInserts;
     NSArray *_cloudFeedAssetUpdates;
@@ -27,12 +28,16 @@
     NSArray *_assetsForFilesystemPersistency;
     NSDictionary *_searchIndexUpdates;
     NSSet *_albumCountsAndDateRangeUpdates;
-    NSDictionary *_assetsForAnalysis;
+    NSSet *_assetsForDuetDelete;
+    NSSet *_memoriesForDuetDelete;
 }
 
 + (id)_decodeMomentDeletes:(id)arg1 urlToObjectID:(CDUnknownBlockType)arg2;
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSDictionary *assetsForAnalysis; // @synthesize assetsForAnalysis=_assetsForAnalysis;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldReloadWidgetTimeline; // @synthesize shouldReloadWidgetTimeline=_shouldReloadWidgetTimeline;
+@property(copy, nonatomic) NSSet *memoriesForDuetDelete; // @synthesize memoriesForDuetDelete=_memoriesForDuetDelete;
+@property(copy, nonatomic) NSSet *assetsForDuetDelete; // @synthesize assetsForDuetDelete=_assetsForDuetDelete;
 @property(copy, nonatomic) NSSet *albumCountsAndDateRangeUpdates; // @synthesize albumCountsAndDateRangeUpdates=_albumCountsAndDateRangeUpdates;
 @property(copy, nonatomic) NSDictionary *searchIndexUpdates; // @synthesize searchIndexUpdates=_searchIndexUpdates;
 @property(copy, nonatomic) NSArray *assetsForFilesystemPersistency; // @synthesize assetsForFilesystemPersistency=_assetsForFilesystemPersistency;
@@ -48,7 +53,6 @@
 @property(copy, nonatomic) NSArray *cloudFeedAssetUpdates; // @synthesize cloudFeedAssetUpdates=_cloudFeedAssetUpdates;
 @property(copy, nonatomic) NSArray *cloudFeedAssetInserts; // @synthesize cloudFeedAssetInserts=_cloudFeedAssetInserts;
 @property(copy, nonatomic) NSArray *cloudFeedAlbumUpdates; // @synthesize cloudFeedAlbumUpdates=_cloudFeedAlbumUpdates;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)_encodableMomentDeletes;
 - (void)encodeWithCoder:(id)arg1;

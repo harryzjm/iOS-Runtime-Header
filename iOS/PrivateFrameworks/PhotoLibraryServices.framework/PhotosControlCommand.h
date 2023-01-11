@@ -23,10 +23,15 @@
 + (id)abbreviations;
 + (id)name;
 - (void).cxx_destruct;
+- (void)waitForSigInt;
+- (_Bool)writeData:(id)arg1 toPathOrStdout:(id)arg2;
+- (id)dataForPathOrStdin:(id)arg1;
+- (void)outputError:(id)arg1 arguments:(char *)arg2;
+- (void)output:(id)arg1 arguments:(char *)arg2;
 - (void)outputError:(id)arg1;
 - (void)output:(id)arg1;
 - (id)args;
-- (_Bool)processOption:(BOOL)arg1 arg:(id)arg2;
+- (_Bool)processOption:(int)arg1 arg:(id)arg2;
 - (_Bool)processArgc:(int)arg1 argv:(char **)arg2;
 - (void)willProcessOptions;
 - (id)description;

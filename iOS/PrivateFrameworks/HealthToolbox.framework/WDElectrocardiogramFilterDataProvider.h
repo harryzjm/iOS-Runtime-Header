@@ -8,7 +8,7 @@
 
 #import <HealthToolbox/HKSampleTypeUpdateControllerObserver-Protocol.h>
 
-@class HKSampleCountQuery, NSMutableDictionary, NSString, WDProfile;
+@class NSArray, NSMutableDictionary, NSString, WDProfile;
 @protocol OS_dispatch_queue, WDElectrocardiogramFilterDataProviderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,50 +16,47 @@ __attribute__((visibility("hidden")))
 {
     WDProfile *_profile;
     id <WDElectrocardiogramFilterDataProviderDelegate> _delegate;
+    long long _activeAlgorithmVersion;
+    NSArray *_filterTypes;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_resourceQueue;
     NSMutableDictionary *_counts;
-    HKSampleCountQuery *_electrocardiogramCountQuery;
-    HKSampleCountQuery *_sinusRhythmCountQuery;
-    HKSampleCountQuery *_atrialFibrillationCountQuery;
-    HKSampleCountQuery *_highLowHeartRateCountQuery;
-    HKSampleCountQuery *_inconclusiveCountQuery;
+    NSArray *_countQueries;
 }
 
 + (id)_atrialFibrillationClassificationPredicateWithClassifications:(id)arg1;
 + (id)_atrialFibrillationClassificationPredicateWithValue:(unsigned long long)arg1;
 + (id)_atrialFibrillationClassificationPredicateWithValues:(id)arg1;
-+ (id)_inconclusiveClassifications;
-+ (id)_highLowHeartRateClassifications;
-+ (id)_atrialFibrillationClassifications;
-+ (id)electrocardiogramPredicateForType:(long long)arg1;
 + (id)viewControllerTitleForType:(long long)arg1;
 + (id)cellTitleForType:(long long)arg1;
-@property(retain, nonatomic) HKSampleCountQuery *inconclusiveCountQuery; // @synthesize inconclusiveCountQuery=_inconclusiveCountQuery;
-@property(retain, nonatomic) HKSampleCountQuery *highLowHeartRateCountQuery; // @synthesize highLowHeartRateCountQuery=_highLowHeartRateCountQuery;
-@property(retain, nonatomic) HKSampleCountQuery *atrialFibrillationCountQuery; // @synthesize atrialFibrillationCountQuery=_atrialFibrillationCountQuery;
-@property(retain, nonatomic) HKSampleCountQuery *sinusRhythmCountQuery; // @synthesize sinusRhythmCountQuery=_sinusRhythmCountQuery;
-@property(retain, nonatomic) HKSampleCountQuery *electrocardiogramCountQuery; // @synthesize electrocardiogramCountQuery=_electrocardiogramCountQuery;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *countQueries; // @synthesize countQueries=_countQueries;
 @property(retain, nonatomic) NSMutableDictionary *counts; // @synthesize counts=_counts;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property(retain, nonatomic) NSArray *filterTypes; // @synthesize filterTypes=_filterTypes;
+@property(nonatomic) long long activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
 @property(nonatomic) __weak id <WDElectrocardiogramFilterDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak WDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (void)_rQueue_setCount:(long long)arg1 forType:(long long)arg2;
 - (long long)_rQueue_countForType:(long long)arg1;
-- (id)_filterSamples:(id)arg1 matchingAtrialFibrillationClassifications:(id)arg2;
-- (id)_filterSamples:(id)arg1 matchingAtrialFibrillationClassification:(unsigned long long)arg2;
 - (void)_rQueue_notifyDelegateDidUpdateCountForType:(long long)arg1;
 - (void)_safelyStopQuery:(id)arg1;
 - (void)_stopQueries;
 - (id)_countQueryForType:(long long)arg1;
+- (id)_countQueriesForFilterTypes:(id)arg1;
+- (id)_filterTypesForActiveAlgorithmVersion:(long long)arg1;
+- (id)_inconclusiveClassificationsWithActiveAlgorithmVersion:(long long)arg1;
+- (id)_highLowHeartRateClassificationsWithActiveAlgorithmVersion:(long long)arg1;
+- (id)_atrialFibrillationClassificationsWithActiveAlgorithmVersion:(long long)arg1;
+- (id)electrocardiogramPredicateForType:(long long)arg1;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 - (id)displayStringCountForType:(long long)arg1;
 - (long long)countForType:(long long)arg1;
 - (void)stop;
 - (void)start;
+@property(readonly, nonatomic) long long filterTypeCount;
 - (id)initWithProfile:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties

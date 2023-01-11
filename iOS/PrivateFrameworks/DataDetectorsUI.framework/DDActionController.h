@@ -25,17 +25,18 @@ __attribute__((visibility("hidden")))
     UIAlertController *_alertController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(retain) DDAction *currentAction; // @synthesize currentAction=_currentAction;
 @property(retain, nonatomic) UIView *baseView; // @synthesize baseView=_baseView;
 @property(retain, nonatomic) id <DDDetectionControllerInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-- (void).cxx_destruct;
 - (void)viewControllerRequiresModalInPopover:(_Bool)arg1;
 - (_Bool)isPresentingInPopover;
 - (void)cancelAction;
 - (_Bool)actionIsCancellable;
 - (_Bool)isPerformingAction;
 - (void)actionDidFinish:(id)arg1;
+- (void)actionDidFinish:(id)arg1 shouldDismiss:(_Bool)arg2;
 - (void)failedToPrepareViewControllerForAction:(id)arg1;
 - (void)action:(id)arg1 becameCancellable:(_Bool)arg2;
 - (void)action:(id)arg1 viewControllerReady:(id)arg2;
@@ -44,10 +45,12 @@ __attribute__((visibility("hidden")))
 - (void)_presentCurrentViewControllerOurselves;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)cleanupNoDismiss;
 - (void)dismissCurrentController;
 - (void)_didDismissActionViewController;
 - (void)_willPresentViewController;
+- (void)tellDelegateActionDidFinishShouldDismiss:(_Bool)arg1;
 - (void)tellDelegateActionDidFinish;
 - (void)_presentController:(id)arg1;
 - (id)defaultActionForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;

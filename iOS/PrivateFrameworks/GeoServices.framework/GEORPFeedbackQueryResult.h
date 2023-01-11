@@ -13,17 +13,17 @@
 @interface GEORPFeedbackQueryResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_feedbackInfos;
     NSData *_nextPageToken;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackInfos:1;
         unsigned int read_nextPageToken:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_feedbackInfos:1;
-        unsigned int wrote_nextPageToken:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,18 +40,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *nextPageToken;
 @property(readonly, nonatomic) _Bool hasNextPageToken;
-- (void)_readNextPageToken;
 - (id)feedbackInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)feedbackInfosCount;
-- (void)_addNoFlagsFeedbackInfo:(id)arg1;
 - (void)addFeedbackInfo:(id)arg1;
 - (void)clearFeedbackInfos;
 @property(retain, nonatomic) NSMutableArray *feedbackInfos;
-- (void)_readFeedbackInfos;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

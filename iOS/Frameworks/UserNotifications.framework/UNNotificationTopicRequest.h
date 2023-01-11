@@ -14,15 +14,18 @@
 @interface UNNotificationTopicRequest : NSObject <NSCopying, NSSecureCoding>
 {
     UNNotificationTopic *_topic;
-    unsigned long long _options;
+    unsigned long long _supportedOptions;
+    unsigned long long _enabledOptions;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)topicRequestWithIdentifier:(id)arg1 displayName:(id)arg2 priority:(unsigned long long)arg3 sortIdentifier:(id)arg4 supportedOptions:(unsigned long long)arg5 enabledOptions:(unsigned long long)arg6;
 + (id)topicRequestWithIdentifier:(id)arg1 displayName:(id)arg2 priority:(unsigned long long)arg3 sortIdentifier:(id)arg4 options:(unsigned long long)arg5;
 + (id)topicRequestWithIdentifier:(id)arg1 displayName:(id)arg2 options:(unsigned long long)arg3;
-@property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(readonly, copy, nonatomic) UNNotificationTopic *topic; // @synthesize topic=_topic;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long enabledOptions; // @synthesize enabledOptions=_enabledOptions;
+@property(readonly, nonatomic) unsigned long long supportedOptions; // @synthesize supportedOptions=_supportedOptions;
+@property(readonly, copy, nonatomic) UNNotificationTopic *topic; // @synthesize topic=_topic;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -30,7 +33,8 @@
 - (id)_description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_initWithIdentifier:(id)arg1 displayName:(id)arg2 priority:(unsigned long long)arg3 sortIdentifier:(id)arg4 options:(unsigned long long)arg5;
+@property(readonly, nonatomic) unsigned long long options;
+- (id)_initWithIdentifier:(id)arg1 displayName:(id)arg2 priority:(unsigned long long)arg3 sortIdentifier:(id)arg4 supportedOptions:(unsigned long long)arg5 enabledOptions:(unsigned long long)arg6;
 
 @end
 

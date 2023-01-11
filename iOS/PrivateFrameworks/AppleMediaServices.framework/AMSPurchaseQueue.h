@@ -7,45 +7,38 @@
 #import <objc/NSObject.h>
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServices/AMSPurchaseDelegate-Protocol.h>
 
-@class AMSPurchaseProtocolHandler, AMSPurchaseQueueConfiguration, AMSURLSession, NSLock, NSMutableArray, NSOperationQueue, NSString;
+@class AMSPurchaseQueueConfiguration, AMSURLSession, NSLock, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
-@interface AMSPurchaseQueue : NSObject <AMSBagConsumer>
+@interface AMSPurchaseQueue : NSObject <AMSPurchaseDelegate, AMSBagConsumer>
 {
-    _Bool _isSuspeneded;
-    NSOperationQueue *_backgroundQueue;
-    AMSPurchaseQueueConfiguration *_config;
-    NSMutableArray *_batches;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
-    NSObject<OS_dispatch_queue> *_enqueue;
-    NSLock *_lock;
-    AMSPurchaseProtocolHandler *_protocolHandler;
     AMSURLSession *_session;
+    _Bool _isSuspeneded;
+    NSMutableArray *_batches;
+    AMSPurchaseQueueConfiguration *_config;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSLock *_lock;
 }
 
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
-@property(retain, nonatomic) AMSURLSession *session; // @synthesize session=_session;
-@property(retain, nonatomic) AMSPurchaseProtocolHandler *protocolHandler; // @synthesize protocolHandler=_protocolHandler;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLock *lock; // @synthesize lock=_lock;
 @property(nonatomic) _Bool isSuspeneded; // @synthesize isSuspeneded=_isSuspeneded;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *enqueue; // @synthesize enqueue=_enqueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-@property(retain, nonatomic) NSMutableArray *batches; // @synthesize batches=_batches;
 @property(retain, nonatomic) AMSPurchaseQueueConfiguration *config; // @synthesize config=_config;
-@property(retain, nonatomic) NSOperationQueue *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
-- (void).cxx_destruct;
-- (id)_processURLRequest:(id)arg1 error:(id *)arg2;
+@property(retain, nonatomic) NSMutableArray *batches; // @synthesize batches=_batches;
+- (void)purchase:(id)arg1 handleEngagementRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purchase:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purchase:(id)arg1 handleAuthenticateRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processPurchase:(id)arg1;
-- (id)_purchaseContextForPurchase:(id)arg1;
-- (void)_handlePurchaseCompleted:(id)arg1 result:(id)arg2 error:(id)arg3;
 - (void)_handleNextPurchase;
 - (void)setSuspended:(_Bool)arg1 logUUID:(id)arg2;
-- (_Bool)finishPurchaseId:(id)arg1 withError:(id)arg2;
 - (id)enquePurchases:(id)arg1;
-- (id)contextForPurchaseId:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties

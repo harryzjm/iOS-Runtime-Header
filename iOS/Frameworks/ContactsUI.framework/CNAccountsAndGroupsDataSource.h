@@ -19,17 +19,19 @@ __attribute__((visibility("hidden")))
     CNAccountsAndGroupsItem *_rootItem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNAccountsAndGroupsItem *rootItem; // @synthesize rootItem=_rootItem;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) _Bool hidesSearchableSources; // @synthesize hidesSearchableSources=_hidesSearchableSources;
 @property(retain, nonatomic) CNContactStore *store; // @synthesize store=_store;
-- (void).cxx_destruct;
 - (void)updateRootItemSelection;
 @property(readonly, nonatomic, getter=isTrivial) _Bool trivial;
 @property(readonly, nonatomic) CNContactStoreFilter *serverFilter;
 - (void)setServerFilterForItem:(id)arg1;
 @property(copy, nonatomic) CNContactStoreFilter *filter;
+- (void)removeServerFilter;
 - (void)_applyFilter;
+@property(readonly, nonatomic) CNAccountsAndGroupsItem *showAllSectionItem;
 - (void)_reloadSections;
 - (void)reload;
 - (id)initWithStore:(id)arg1;

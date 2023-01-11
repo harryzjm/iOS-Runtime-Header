@@ -16,6 +16,8 @@
     unsigned long long _totalMoveGoalsAttempted;
     double _bestMoveValue;
     double _bestMoveGoalValue;
+    double _bestMoveTimeValue;
+    double _bestMoveTimeGoalValue;
     unsigned long long _currentExerciseStreak;
     unsigned long long _bestExerciseStreak;
     unsigned long long _totalExerciseGoalsMade;
@@ -34,6 +36,7 @@
     ACHDataStoreActivityProperties *_previousValues;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ACHDataStoreActivityProperties *previousValues; // @synthesize previousValues=_previousValues;
 @property(nonatomic) long long storeValuesValidBeforeSummaryIndex; // @synthesize storeValuesValidBeforeSummaryIndex=_storeValuesValidBeforeSummaryIndex;
 @property(nonatomic) unsigned long long bestStepCount; // @synthesize bestStepCount=_bestStepCount;
@@ -50,13 +53,14 @@
 @property(nonatomic) unsigned long long totalExerciseGoalsMade; // @synthesize totalExerciseGoalsMade=_totalExerciseGoalsMade;
 @property(nonatomic) unsigned long long bestExerciseStreak; // @synthesize bestExerciseStreak=_bestExerciseStreak;
 @property(nonatomic) unsigned long long currentExerciseStreak; // @synthesize currentExerciseStreak=_currentExerciseStreak;
+@property(nonatomic) double bestMoveTimeGoalValue; // @synthesize bestMoveTimeGoalValue=_bestMoveTimeGoalValue;
+@property(nonatomic) double bestMoveTimeValue; // @synthesize bestMoveTimeValue=_bestMoveTimeValue;
 @property(nonatomic) double bestMoveGoalValue; // @synthesize bestMoveGoalValue=_bestMoveGoalValue;
 @property(nonatomic) double bestMoveValue; // @synthesize bestMoveValue=_bestMoveValue;
 @property(nonatomic) unsigned long long totalMoveGoalsAttempted; // @synthesize totalMoveGoalsAttempted=_totalMoveGoalsAttempted;
 @property(nonatomic) unsigned long long totalMoveGoalsMade; // @synthesize totalMoveGoalsMade=_totalMoveGoalsMade;
 @property(nonatomic) unsigned long long bestMoveStreak; // @synthesize bestMoveStreak=_bestMoveStreak;
 @property(nonatomic) unsigned long long currentMoveStreak; // @synthesize currentMoveStreak=_currentMoveStreak;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly, nonatomic) NSArray *dictionaryKeys;
 

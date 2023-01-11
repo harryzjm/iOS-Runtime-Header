@@ -4,10 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CABackdropLayer, CAFilter;
+
 @interface NTKSiderealTimeView
 {
+    CABackdropLayer *_blurBackdrop;
+    CAFilter *_gaussianFilter;
+    CAFilter *_brightnessFilter;
+    CAFilter *_saturationFilter;
 }
 
+- (void).cxx_destruct;
 - (id)_secondTickInactiveColorForColor:(unsigned long long)arg1;
 - (id)_secondTickActiveColorForColor:(unsigned long long)arg1;
 - (id)_digitalTimeLabelColorForColor:(unsigned long long)arg1;
@@ -22,6 +29,9 @@
 - (struct CGSize)_minuteTickSize;
 - (struct CGSize)_hourTickSize;
 - (double)_analogTickInset;
+- (void)updateFilters;
+- (void)setSaturationFilterInputAmount:(double)arg1;
+- (void)setBrightnessFilterInputAmount:(double)arg1;
 - (id)_customDialBackgroundView;
 - (_Bool)shouldUseCustomDialBackground;
 - (void)_didFinishTimeViewSetup;

@@ -14,9 +14,9 @@
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
-@property(readonly, retain, nonatomic) NSData *pemData; // @synthesize pemData=_pemData;
 - (void).cxx_destruct;
-- (id)description;
+@property(readonly, retain, nonatomic) NSData *pemData; // @synthesize pemData=_pemData;
+- (id)verboseDescription;
 - (_Bool)isIdentity;
 - (struct __SecIdentity *)copyIdentityFromKeychain;
 - (struct __SecCertificate *)copyCertificate;

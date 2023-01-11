@@ -9,7 +9,7 @@
 @class NSError;
 
 @protocol _HKDeepBreathingSessionClient <NSObject>
-- (void)sessionDidReceiveHeartRate:(double)arg1;
-- (void)sessionDidReceiveError:(NSError *)arg1;
+- (void)clientRemote_sessionDidReceiveHeartRate:(double)arg1;
+- (void)clientRemote_sessionDidReceiveError:(NSError *)arg1;
 @end
 

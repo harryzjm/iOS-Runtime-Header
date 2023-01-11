@@ -9,13 +9,17 @@
 #import <VoiceMemos/RCMutableRecording-Protocol.h>
 
 @class AVAsset, CLLocation, NSData, NSDate, NSNumber, NSString, NSURL;
-@protocol _NSFileBackedFuture;
+@protocol RCFolder, _NSFileBackedFuture;
 
 @interface RCCloudRecording : NSManagedObject <RCMutableRecording>
 {
     AVAsset *_avAsset;
 }
 
++ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (id)favoritePredicate;
++ (id)musicMemoPredicate;
++ (id)watchOSPredicate;
 + (id)cacheDeletedOnWatchPredicate;
 + (id)playablePredicate;
 + (_Bool)setPurgeable:(_Bool)arg1 recordingURL:(id)arg2 error:(id *)arg3;
@@ -23,11 +27,10 @@
 + (void)initialize;
 + (id)searchableItemIdentifierForSavedRecordingURI:(id)arg1;
 + (id)savedRecordingURIForSearchableItemIdentifier:(id)arg1;
-@property(retain, nonatomic) AVAsset *avAsset; // @synthesize avAsset=_avAsset;
 - (void).cxx_destruct;
-- (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
-- (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
+@property(retain, nonatomic) AVAsset *avAsset; // @synthesize avAsset=_avAsset;
+- (id)subjectForActivityType:(id)arg1;
+- (id)itemForActivityType:(id)arg1;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)_activityURLCreateIfNecessary:(_Bool)arg1;
 - (void)_validatePath;
@@ -35,34 +38,35 @@
 - (id)_labelAllowingEmptyString:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isContentBeingModified;
 @property(readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
-@property(readonly, copy, nonatomic) NSString *title;
-- (void)setTitle:(id)arg1;
+@property(copy, nonatomic) NSString *title;
 - (id)name;
 - (void)setName:(id)arg1;
 @property(readonly, copy, nonatomic) NSURL *URIRepresentation;
 @property(readonly, copy, nonatomic) NSURL *url;
+@property(nonatomic) _Bool enhanced;
+@property(nonatomic) _Bool favorite;
+@property(nonatomic) _Bool musicMemo;
+@property(nonatomic) _Bool watchOS;
 @property(nonatomic) _Bool recordedOnWatch;
-- (void)setDownloading:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool downloading;
-- (void)setEditing:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool editing;
-- (void)setManuallyRenamed:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool manuallyRenamed;
-- (void)setPlayable:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool playable;
+@property(nonatomic) _Bool downloading;
+@property(nonatomic) _Bool manuallyRenamed;
+@property(nonatomic) _Bool playable;
 @property(readonly, nonatomic) _Bool uploaded;
-@property(nonatomic) _Bool evicted;
+@property(nonatomic) _Bool deleted;
 @property(nonatomic) _Bool pendingRestore;
 @property(nonatomic) _Bool synced;
-- (id)purgeAudioFuture:(id *)arg1;
-@property(readonly, nonatomic) NSNumber *purgeableAudioFutureSize;
+- (id)purgeAudioFileWithModel:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) NSNumber *purgeableAudioFileSize;
 - (_Bool)synchronizeWithExistingAudioFuture:(id *)arg1;
+- (_Bool)copyPropertiesFromOriginalRecording:(id)arg1 error:(id *)arg2;
 - (void)_updateAudioFuture:(id)arg1;
-- (void)setLocation:(id)arg1;
-@property(readonly, copy, nonatomic) CLLocation *location;
+@property(copy, nonatomic) CLLocation *location;
+@property(nonatomic) double duration; // @dynamic duration;
 @property(copy, nonatomic) NSDate *evictionDate; // @dynamic evictionDate;
 @property(copy, nonatomic) NSString *path; // @dynamic path;
 - (_Bool)synchronizeRecordingMetadata:(id *)arg1;
+- (_Bool)validateForUpdate:(id *)arg1;
+- (_Bool)validateForInsert:(id *)arg1;
 - (void)willSave;
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
@@ -75,10 +79,12 @@
 @property(copy, nonatomic) NSDate *date; // @dynamic date;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(nonatomic) double duration; // @dynamic duration;
+@property(retain, nonatomic) NSString *encryptedTitle; // @dynamic encryptedTitle;
 @property(nonatomic) unsigned long long flags; // @dynamic flags;
+@property(readonly, nonatomic) id <RCFolder> folder; // @dynamic folder;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) long long iTunesPersistentID; // @dynamic iTunesPersistentID;
+@property(nonatomic) unsigned long long sharedFlags; // @dynamic sharedFlags;
 @property(readonly) Class superclass;
 @property(copy, nonatomic) NSString *uniqueID; // @dynamic uniqueID;
 

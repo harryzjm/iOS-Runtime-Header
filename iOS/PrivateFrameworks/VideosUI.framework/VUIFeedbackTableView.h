@@ -6,28 +6,35 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUILabelTopMarginCalculationProtocol-Protocol.h>
+#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 
-@class NSArray, VUIFeedbackTableLayout;
+@class NSArray, NSString, VUIFeedbackTableLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIFeedbackTableView : UIView <VUILabelTopMarginCalculationProtocol>
+@interface VUIFeedbackTableView : UIView <VUILabelBaselineProtocol>
 {
     VUIFeedbackTableLayout *_layout;
     NSArray *_dataModels;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *dataModels; // @synthesize dataModels=_dataModels;
 @property(retain, nonatomic) VUIFeedbackTableLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
 - (struct CGSize)_calculateMaxHeaderThatFits:(struct CGSize)arg1;
 - (struct CGSize)_calculateMaxDescriptionThatFit:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)prepareForCellReuse;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
+- (double)baselineOffsetFromBottom;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (void)layoutSubviews;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -10,6 +10,8 @@
 
 @interface NSURL (AppleMediaServices)
 + (id)ams_unescapedStringForString:(id)arg1;
++ (id)ams_realHomeDirectory;
++ (id)ams_engagementDirectory;
 + (id)ams_cachesDirectory;
 - (id)ams_valueForQueryParameter:(id)arg1;
 - (id)ams_URLByReplaceingQueryParameters:(id)arg1;

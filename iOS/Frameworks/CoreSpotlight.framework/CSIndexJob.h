@@ -23,9 +23,14 @@
     NSString *_extensionBundleID;
     CSSearchContext *_searchContext;
     NSData *_importData;
+    NSString *_fileType;
+    NSArray *_fileAttributeSets;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *fileAttributeSets; // @synthesize fileAttributeSets=_fileAttributeSets;
+@property(retain, nonatomic) NSString *fileType; // @synthesize fileType=_fileType;
 @property(retain, nonatomic) NSData *importData; // @synthesize importData=_importData;
 @property(retain, nonatomic) CSSearchContext *searchContext; // @synthesize searchContext=_searchContext;
 @property(retain, nonatomic) NSString *extensionBundleID; // @synthesize extensionBundleID=_extensionBundleID;
@@ -36,7 +41,6 @@
 @property(retain, nonatomic) NSArray *identifiersToReindex; // @synthesize identifiersToReindex=_identifiersToReindex;
 @property(nonatomic) long long jobOptions; // @synthesize jobOptions=_jobOptions;
 @property(nonatomic) long long jobType; // @synthesize jobType=_jobType;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

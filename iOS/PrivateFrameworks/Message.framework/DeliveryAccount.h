@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface DeliveryAccount
+#import <Message/EDDeliveryAccount-Protocol.h>
+
+@class ACAccount, NSArray, NSString;
+
+@interface DeliveryAccount <EDDeliveryAccount>
 {
 }
 
@@ -32,16 +36,28 @@
 - (_Bool)hasNoReferences;
 - (id)mailAccountIfAvailable;
 - (void)setMaximumMessageBytes:(unsigned long long)arg1;
-- (unsigned long long)maximumMessageBytes;
+@property(readonly, nonatomic) unsigned long long maximumMessageBytes;
 - (void)_setAccountProperties:(id)arg1;
 - (void)setUsername:(id)arg1;
 - (void)setShouldUseAuthentication:(_Bool)arg1;
 - (_Bool)shouldUseAuthentication;
-- (id)identifier;
+@property(readonly, copy, nonatomic) NSString *identifier;
 - (id)newDeliveryWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;
 - (id)newDeliveryWithHeaders:(id)arg1 mixedContent:(id)arg2 textPartsAreHTML:(_Bool)arg3;
 - (id)newDeliveryWithMessage:(id)arg1;
 - (Class)deliveryClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSArray *emailAddressStrings;
+@property(readonly) unsigned long long hash;
+@property(copy, nonatomic) NSString *hostname;
+@property(copy, nonatomic) NSString *password;
+@property(readonly, nonatomic) _Bool primaryiCloudAccount;
+@property(readonly, copy, nonatomic) NSString *statisticsKind;
+@property(readonly) Class superclass;
+@property(readonly, nonatomic) ACAccount *systemAccount;
 
 @end
 

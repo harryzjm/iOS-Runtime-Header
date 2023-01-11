@@ -8,29 +8,32 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 
-@class NSArray, NSDate, NSMutableDictionary;
+@class NSArray, NSDate, NSMutableArray, NSMutableDictionary;
 
 @interface MPStoreItemMetadataResponse : NSObject <NSCopying>
 {
     NSArray *_cacheMissItemIdentifiers;
     NSMutableDictionary *_itemIdentifierToStoreItemMetadata;
+    NSMutableArray *_allStoreItemDictionaries;
     _Bool _finalResponse;
     NSArray *_lastBatchItemIdentifiers;
     NSArray *_requestItemIdentifiers;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *cacheMissItemIdentifiers; // @synthesize cacheMissItemIdentifiers=_cacheMissItemIdentifiers;
 @property(copy, nonatomic) NSArray *requestItemIdentifiers; // @synthesize requestItemIdentifiers=_requestItemIdentifiers;
 @property(copy, nonatomic) NSArray *lastBatchItemIdentifiers; // @synthesize lastBatchItemIdentifiers=_lastBatchItemIdentifiers;
 @property(nonatomic, getter=isFinalResponse) _Bool finalResponse; // @synthesize finalResponse=_finalResponse;
-- (void).cxx_destruct;
 - (void)setStoreItemMetadata:(id)arg1 forItemIdentifier:(id)arg2;
 - (id)storeItemMetadataForItemIdentifier:(id)arg1 returningIsFinalMetadata:(_Bool *)arg2;
 - (id)storeItemMetadataForItemIdentifier:(id)arg1;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
 @property(readonly, copy, nonatomic) NSDate *earliestExpirationDate;
 @property(readonly, copy, nonatomic) NSArray *itemIdentifiers;
+@property(readonly, copy, nonatomic) NSArray *allStoreItemDictionaries;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

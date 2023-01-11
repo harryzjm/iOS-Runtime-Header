@@ -32,8 +32,8 @@
     double _showcaseInset;
 }
 
-@property(nonatomic) double showcaseInset; // @synthesize showcaseInset=_showcaseInset;
 - (void).cxx_destruct;
+@property(nonatomic) double showcaseInset; // @synthesize showcaseInset=_showcaseInset;
 - (struct CGSize)_maxContentSize;
 - (void)_updateBackgroundTintViewEffects;
 - (void)_updateBackgroundTintView;
@@ -77,6 +77,7 @@
 @property(readonly, nonatomic) double showcaseFactor;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)viewControllers;

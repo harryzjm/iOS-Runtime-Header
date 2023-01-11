@@ -4,13 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <AVConference/NSObject-Protocol.h>
+
 @class NSString;
 
-@protocol VCHardwareSettingsMacProtocol
+@protocol VCHardwareSettingsMacProtocol <NSObject>
+@property(readonly, nonatomic) _Bool isPixelFormatAvailable;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
+@property(readonly, nonatomic) _Bool supportsMultiway720pStream;
+@property(readonly, nonatomic) unsigned int maxMultiwayFramerateSupported;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
 @property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
+@property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
 @property(readonly, nonatomic) unsigned int hwEncoderEnterBitrate;
 @property(readonly, nonatomic) unsigned int hwEncoderExitBitrate;
 @property(readonly, nonatomic) _Bool useSoftFramerateSwitching;
@@ -18,6 +24,8 @@
 @property(readonly, nonatomic) _Bool isMacPro;
 @property(readonly, nonatomic) _Bool isMacBookWVGA;
 @property(readonly, nonatomic) _Bool canDoHEVC;
+@property(readonly, nonatomic) _Bool supports1080pDecoding;
+@property(readonly, nonatomic) _Bool supports1080pEncoding;
 @property(readonly, nonatomic) _Bool canDoHiDefDecoding;
 @property(readonly, nonatomic) _Bool canDoHiDefEncoding;
 @property(readonly, nonatomic) int hardwareScore;

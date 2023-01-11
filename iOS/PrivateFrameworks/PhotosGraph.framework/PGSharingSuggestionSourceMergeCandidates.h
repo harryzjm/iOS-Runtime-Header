@@ -9,7 +9,7 @@
 }
 
 - (id)suggestedResultsForInput:(id)arg1 withOptions:(id)arg2;
-- (id)meNodeLocalIdentifierForInput:(id)arg1;
+- (id)filterMeNodePredicateForInput:(id)arg1;
 - (_Bool)canRunWithOptions:(id)arg1;
 - (double)weight;
 - (id)details;

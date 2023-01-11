@@ -13,10 +13,14 @@
 }
 
 + (id)_sharedFormatter;
++ (_Bool)supportsSecureCoding;
++ (long long)_type;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *numberOfLibraryItems; // @synthesize numberOfLibraryItems=_numberOfLibraryItems;
 @property(nonatomic) long long subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
-- (void).cxx_destruct;
-- (id)_contextDictionary;
+- (id)safeLibraryItems;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 
 @end

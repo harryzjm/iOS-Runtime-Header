@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBIcon;
+@class NSString, SBIcon;
 
 @protocol SBIconDragPreview
 @property(retain, nonatomic) SBIcon *icon;
 @property(nonatomic) _Bool iconIsEditing;
 @property(nonatomic) double iconContentScale;
+@property(nonatomic) _Bool iconCanShowCloseBox;
 @property(nonatomic) _Bool iconAllowsLabelArea;
 @property(nonatomic, getter=isFlocked) _Bool flocked;
 @property(nonatomic) unsigned long long dragState;
 - (void)dropDestinationAnimationCompleted;
 - (void)draggingSourceCancelAnimationCompleted;
 - (void)draggingSourceDroppedWithOperation:(unsigned long long)arg1;
+- (void)updateDestinationIconLocation:(NSString *)arg1 animated:(_Bool)arg2;
+- (void)setIconIsEditing:(_Bool)arg1 animated:(_Bool)arg2;
 @end
 

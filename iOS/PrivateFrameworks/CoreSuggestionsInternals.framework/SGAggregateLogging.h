@@ -14,10 +14,6 @@
 + (void)contactsFoundOnDeviceEnabled:(_Bool)arg1;
 + (void)databaseCorruptionDetectedViaCorruptionMarker;
 + (void)databaseCorruptionDetectedViaIntegrityCheck;
-+ (void)flushSynchronously;
-+ (void)popMetricsFromDatabaseAndSendToMessageTracer;
-+ (void)persistInMemoryStatisticsToDatabase;
-+ (void)setEntityStore:(id)arg1;
 + (void)assetVersion:(long long)arg1;
 + (void)assetVersion;
 + (void)hypotheticalContactSuggestionImpressionsIncludingInsignificant:(int)arg1;
@@ -71,12 +67,6 @@
 + (void)messagesAdded:(unsigned long long)arg1;
 + (id)aggregateKeyForKeySuffix:(id)arg1;
 + (unsigned long long)twoSigFigs:(id)arg1;
-+ (void)platform_flushSynchronously;
-+ (void)platform_popMetricsFromDatabaseAndSendToMessageTracer;
-+ (void)platform_persistInMemoryStatisticsToDatabase;
-+ (void)platform_setEntityStore:(id)arg1;
-+ (void)persistInMemoryStatisticsToDatabaseInternal:(id)arg1;
-+ (void)clearDistributionKey:(id)arg1;
 + (void)incrementValuesInDomain:(id)arg1 subdomain:(id)arg2 type:(id)arg3 action:(id)arg4 withKeysAndIncrements:(id)arg5 extraSignature:(id)arg6;
 + (void)pushValueForDistributionKeyWithDomain:(id)arg1 subdomain:(id)arg2 suffix:(id)arg3 action:(id)arg4 value:(long long)arg5;
 + (void)setValueForScalarKeyWithDomain:(id)arg1 subdomain:(id)arg2 suffix:(id)arg3 action:(id)arg4 value:(long long)arg5;

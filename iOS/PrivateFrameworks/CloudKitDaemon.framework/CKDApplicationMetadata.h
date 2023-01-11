@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDApplicationMetadata : NSObject
 {
     _Bool _isCKSystemService;
@@ -27,9 +26,8 @@ __attribute__((visibility("hidden")))
     _Bool _displaysSystemAcceptPrompt;
     _Bool _canUseNonLegacyShareURL;
     _Bool _allowUnverifiedAccount;
-    _Bool _canSetExplicitCodeOperationURL;
     NSString *_apsEnvironmentString;
-    long long _isApplication;
+    long long _contextType;
     NSString *_entitlementSpecifiedPCSServiceName;
     NSString *_applicationIdentifier;
     NSString *_clientPrefix;
@@ -38,7 +36,7 @@ __attribute__((visibility("hidden")))
     NSString *_applicationContainerPath;
 }
 
-@property(nonatomic) _Bool canSetExplicitCodeOperationURL; // @synthesize canSetExplicitCodeOperationURL=_canSetExplicitCodeOperationURL;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowUnverifiedAccount; // @synthesize allowUnverifiedAccount=_allowUnverifiedAccount;
 @property(nonatomic) _Bool canUseNonLegacyShareURL; // @synthesize canUseNonLegacyShareURL=_canUseNonLegacyShareURL;
 @property(retain, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
@@ -61,9 +59,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool canSetEnvironment; // @synthesize canSetEnvironment=_canSetEnvironment;
 @property(nonatomic) _Bool canMasquerade; // @synthesize canMasquerade=_canMasquerade;
 @property(nonatomic) _Bool isCKSystemService; // @synthesize isCKSystemService=_isCKSystemService;
-@property(nonatomic) long long isApplication; // @synthesize isApplication=_isApplication;
+@property(nonatomic) long long contextType; // @synthesize contextType=_contextType;
 @property(retain, nonatomic) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

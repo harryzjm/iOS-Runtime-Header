@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL;
+@class NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone, NSURL;
 
 @interface PFAssetBundle : NSObject
 {
@@ -34,7 +34,9 @@
     CDStruct_1b6d18a9 _livePhotoOriginalVideoDuration;
 }
 
++ (id)insertAuxiliaryResourceTypeMarker:(id)arg1 intoFileName:(id)arg2;
 + (id)currentFormatVersion;
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_1b6d18a9 livePhotoOriginalVideoDuration; // @synthesize livePhotoOriginalVideoDuration=_livePhotoOriginalVideoDuration;
 @property(nonatomic) CDStruct_1b6d18a9 livePhotoOriginalImageDisplayTime; // @synthesize livePhotoOriginalImageDisplayTime=_livePhotoOriginalImageDisplayTime;
 @property(copy, nonatomic) NSString *livePhotoOriginalPairingIdentifier; // @synthesize livePhotoOriginalPairingIdentifier=_livePhotoOriginalPairingIdentifier;
@@ -57,7 +59,6 @@
 @property(readonly, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
 @property(readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property(readonly, nonatomic) NSURL *photoURL; // @synthesize photoURL=_photoURL;
-- (void).cxx_destruct;
 - (id)writeDowngradedRepresentationToDirectory:(id)arg1 error:(id *)arg2;
 - (id)initWithOriginalVideoURL:(id)arg1 fullSizeRenderedVideoURL:(id)arg2 adjustmentBaseVideoURL:(id)arg3 spatialOvercaptureVideoURL:(id)arg4 adjustmentsURL:(id)arg5 originalAdjustmentsURL:(id)arg6 mediaSubtypes:(unsigned long long)arg7 playbackStyle:(long long)arg8 playbackVariation:(unsigned long long)arg9 reframeVariation:(unsigned long long)arg10;
 - (id)initWithOriginalPhotoURL:(id)arg1 alternatePhotoURL:(id)arg2 fullSizePhotoURL:(id)arg3 adjustmentBaseFullSizePhotoURL:(id)arg4 spatialOvercapturePhotoURL:(id)arg5 originalPairedVideoURL:(id)arg6 fullSizePairedVideoURL:(id)arg7 adjustmentBaseFullSizePairedVideoURL:(id)arg8 spatialOvercapturePairedVideoURL:(id)arg9 fullSizeVideoURL:(id)arg10 adjustmentsURL:(id)arg11 originalAdjustmentsURL:(id)arg12 mediaSubtypes:(unsigned long long)arg13 playbackStyle:(long long)arg14 playbackVariation:(unsigned long long)arg15 videoComplementVisibilityState:(unsigned short)arg16 reframeVariation:(unsigned long long)arg17;
@@ -69,10 +70,13 @@
 - (_Bool)_writeFileAtURL:(id)arg1 toDirectory:(id)arg2 withUpdatedFilename:(id)arg3 updateManifest:(id)arg4 bundlePathKey:(id)arg5 verifyUTIType:(struct __CFString *)arg6 error:(id *)arg7;
 - (id)urlsByPathKey;
 - (_Bool)writeToBundleAtURL:(id)arg1 error:(id *)arg2;
+- (id)generateCustomFilenamesByPathKey;
 - (_Bool)linkOrCopyURL:(id)arg1 toURL:(id)arg2 forceCopy:(_Bool)arg3 error:(id *)arg4;
+@property(nonatomic) _Bool spatialOvercaptureResourcesPurgeable;
 @property(retain, nonatomic) id libraryLocation;
-@property(copy, nonatomic) NSDate *libraryCreationDate;
+- (void)setLibraryCreationDate:(id)arg1 inTimeZone:(id)arg2;
 @property(copy, nonatomic) NSString *assetTitle;
+@property(copy, nonatomic) NSString *accessibilityDescription;
 @property(copy, nonatomic) NSString *assetDescription;
 @property(copy, nonatomic) NSSet *keywordTitles;
 - (_Bool)isMediaSubtype:(unsigned long long)arg1;
@@ -80,6 +84,8 @@
 @property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoImageDisplayTime;
 @property(readonly, copy, nonatomic) NSString *livePhotoPairingIdentifier;
 @property(readonly, nonatomic) unsigned long long reframeVariation;
+@property(readonly, nonatomic) NSTimeZone *libraryCreationDateTimeZone;
+@property(readonly, nonatomic) NSDate *libraryCreationDate;
 @property(readonly, nonatomic) unsigned short videoComplementVisibilityState;
 @property(readonly, nonatomic) unsigned long long playbackVariation;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;

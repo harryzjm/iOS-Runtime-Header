@@ -17,10 +17,10 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) NSURL *needsLocateAckLostModeFileURL; // @synthesize needsLocateAckLostModeFileURL=_needsLocateAckLostModeFileURL;
 @property(retain, nonatomic) NSURL *managedLostModeFileURL; // @synthesize managedLostModeFileURL=_managedLostModeFileURL;
-- (void).cxx_destruct;
 - (void)stopSoundMessageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)playSoundWithMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getNeedsLocateAckLostModeFileURL;
@@ -55,6 +55,7 @@
 - (void)isActivationLockAllowedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)markPairedDeviceWithUDID:(id)arg1 asMissingUsingToken:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)markAsMissingSupportedForPairedDeviceWithUDID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)disableFMIPForAccount:(id)arg1 pairedDeviceWithUDID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)disableFMIPUsingToken:(id)arg1 forPairedDeviceWithUDID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2;

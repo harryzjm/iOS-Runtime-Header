@@ -13,17 +13,17 @@
 
 @interface HDLocationDataCollector : NSObject <HDLocationManagerObserver>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
-    long long _state;
+    NSUUID *_workoutUUID;
+    unsigned long long _activityType;
     id <HDSampleSaving> _sampleSavingDelegate;
+    NSObject<OS_dispatch_queue> *_queue;
+    long long _state;
     int _lastStatus;
     HKWorkoutRoute *_route;
     _Bool _didSaveLocationData;
     double _lastPausedTime;
     unsigned long long _elevationGain;
-    unsigned long long _activityType;
-    NSUUID *_workoutUUID;
     HDAssertion *_locationUpdatingAssertion;
     unsigned long long _validLocationsCount;
     unsigned long long _skippedLocationsCount;
@@ -31,9 +31,9 @@
     CMElevation *_elevation;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CMElevation *elevation; // @synthesize elevation=_elevation;
 @property(nonatomic) __weak id <HDLocationEventDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)healthLocationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)healthLocationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)healthLocationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
@@ -47,7 +47,9 @@
 - (void)pauseUpdates;
 - (void)_queue_setupLocationUpdates;
 - (void)startUpdates;
+- (void)stopUpdatesAndDiscardData;
 - (void)stopUpdates;
+- (void)_queue_stopUpdates;
 - (void)_queue_deleteCurrentRoute;
 - (void)_queue_freezeCurrentWorkoutRoute;
 - (_Bool)isElevationAvailable;
@@ -56,7 +58,7 @@
 - (int)authorizationStatus;
 - (id)workoutLocationManager;
 @property(readonly, copy) NSString *description;
-- (long long)state;
+@property(readonly) long long state;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 sampleSavingDelegate:(id)arg2 activityType:(unsigned long long)arg3 workoutUUID:(id)arg4;
 

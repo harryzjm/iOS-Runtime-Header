@@ -8,15 +8,27 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackSubmissionResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSString *_feedbackId;
+    NSMutableArray *_imageIdMapEntrys;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_feedbackId:1;
+        unsigned int read_imageIdMapEntrys:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)imageIdMapEntryType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -28,10 +40,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)imageIdMapEntryAtIndex:(unsigned long long)arg1;
+- (unsigned long long)imageIdMapEntrysCount;
+- (void)addImageIdMapEntry:(id)arg1;
+- (void)clearImageIdMapEntrys;
+@property(retain, nonatomic) NSMutableArray *imageIdMapEntrys;
 @property(retain, nonatomic) NSString *feedbackId;
 @property(readonly, nonatomic) _Bool hasFeedbackId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

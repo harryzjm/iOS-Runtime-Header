@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     _Bool _showSelection;
     EKEvent *_selectedEvent;
     _Bool _usesSmallText;
+    _Bool _smallTextSettingLocked;
     _Bool _showBirthdayCount;
     long long _birthdayCount;
     long long _targetSizeClass;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 + (id)allDayLabelBoldFont;
 + (id)allDayLabelFont;
 + (id)unscaledAllDayFont;
+- (void).cxx_destruct;
 @property(retain, nonatomic) EKEvent *dimmedOccurrence; // @synthesize dimmedOccurrence=_dimmedOccurrence;
 @property(nonatomic) int maxVisibleRows; // @synthesize maxVisibleRows=_maxVisibleRows;
 @property(nonatomic) double fixedHeight; // @synthesize fixedHeight=_fixedHeight;
@@ -55,7 +57,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsLabel; // @synthesize showsLabel=_showsLabel;
 @property(nonatomic) _Bool showsBorderLines; // @synthesize showsBorderLines=_showsBorderLines;
 @property(nonatomic) __weak id <EKDayAllDayViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;
 - (void)setDividerLineVisualEffect:(id)arg1;
 - (void)updateLabelFont;
@@ -80,7 +81,9 @@ __attribute__((visibility("hidden")))
 - (double)_borderLineWidth;
 - (double)_allDayAreaHeightForEventCount:(long long)arg1;
 - (void)removeAllOccurrenceViews;
+- (void)_smallTextSettingChanged;
 - (void)setOrientation:(long long)arg1;
+- (void)lockUseOfSmallTextToState:(_Bool)arg1;
 - (void)setOccurrenceInset:(double)arg1 labelInset:(double)arg2;
 - (void)selectEvent:(id)arg1;
 - (id)selectedEvent;

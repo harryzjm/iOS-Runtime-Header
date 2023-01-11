@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, UIImage;
+@class CALayer, NSArray, UIImage;
 
 @interface _SUICStreamingWord : NSObject
 {
     _SUICStreamingWord *_previous;
     long long _insertType;
+    NSArray *_emojiRangesInText;
     double _glyphLocationInWordX;
     CALayer *_wordLayer;
     UIImage *_beginImage;
@@ -19,14 +20,15 @@
     struct _NSRange _textRange;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *endImage; // @synthesize endImage=_endImage;
 @property(retain, nonatomic) UIImage *beginImage; // @synthesize beginImage=_beginImage;
 @property(retain, nonatomic) CALayer *wordLayer; // @synthesize wordLayer=_wordLayer;
 @property(nonatomic) double glyphLocationInWordX; // @synthesize glyphLocationInWordX=_glyphLocationInWordX;
+@property(retain, nonatomic) NSArray *emojiRangesInText; // @synthesize emojiRangesInText=_emojiRangesInText;
 @property(nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 @property(nonatomic) long long insertType; // @synthesize insertType=_insertType;
 @property(retain, nonatomic) _SUICStreamingWord *previous; // @synthesize previous=_previous;
-- (void).cxx_destruct;
 - (id)init;
 
 @end

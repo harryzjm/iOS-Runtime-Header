@@ -6,13 +6,15 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUGraphStackLogReader, VMUNodeToStringMap, VMURangeToStringMap;
+@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUGraphStackLogReader, VMUNodeToStringMap, VMURangeToStringMap, VMUTaskMemoryScanner;
 @protocol VMUStackLogReader;
 
 @interface VMUProcessObjectGraph <VMUCommonGraphInterface>
 {
     int _pid;
-    unsigned int _kernPageSize;
+    VMUTaskMemoryScanner *_scanner;
+    unsigned int _vmPageSize;
+    unsigned int _kernelPageSize;
     unsigned long long _machAbsolute;
     NSArray *_regions;
     unsigned int _regionCount;
@@ -34,8 +36,15 @@
     unsigned long long _physicalFootprint;
     unsigned long long _physicalFootprintPeak;
     _Bool _showsPhysFootprint;
+    unsigned int _objectContentLevel;
+    unsigned int _objectContentLevelForNodeLabels;
+    NSDictionary *_srcAddressToExtraAutoreleaseCountDict;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned int objectContentLevelForNodeLabels; // @synthesize objectContentLevelForNodeLabels=_objectContentLevelForNodeLabels;
+@property(retain, nonatomic) NSDictionary *srcAddressToExtraAutoreleaseCountDict; // @synthesize srcAddressToExtraAutoreleaseCountDict=_srcAddressToExtraAutoreleaseCountDict;
+@property(nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
 @property(nonatomic) _Bool showsPhysFootprint; // @synthesize showsPhysFootprint=_showsPhysFootprint;
 @property(readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property(nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
@@ -45,9 +54,10 @@
 @property(retain, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property(nonatomic) unsigned long long snapshotMachTime; // @synthesize snapshotMachTime=_machAbsolute;
 @property(readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionCount;
-@property(readonly, nonatomic) unsigned int vmPageSize; // @synthesize vmPageSize=_kernPageSize;
+@property(readonly, nonatomic) unsigned int kernelPageSize; // @synthesize kernelPageSize=_kernelPageSize;
+@property(readonly, nonatomic) unsigned int vmPageSize; // @synthesize vmPageSize=_vmPageSize;
+@property(nonatomic) __weak VMUTaskMemoryScanner *scanner; // @synthesize scanner=_scanner;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
-- (void).cxx_destruct;
 - (_Bool)nodeDetailIsAutoreleasePoolContentPage:(CDStruct_599faf0f)arg1;
 - (_Bool)nodeIsAutoreleasePoolContentPage:(unsigned int)arg1;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2 options:(unsigned int)arg3;
@@ -98,7 +108,7 @@
 - (void)setThreadName:(id)arg1 forRange:(struct _VMURange)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)archiveDictionaryRepresentation:(id)arg1 options:(unsigned long long)arg2;
-- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4;
+- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4 error:(id *)arg5;
 - (void)dealloc;
 - (id)initWithPid:(int)arg1 nodes:(struct _VMUBlockNode *)arg2 nodeCount:(unsigned int)arg3 zoneNames:(id)arg4 classInfoMap:(id)arg5 regions:(id)arg6 pthreadOffsets:(id)arg7 userMarked:(void *)arg8;
 

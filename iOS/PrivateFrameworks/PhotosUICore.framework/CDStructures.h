@@ -41,16 +41,13 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
-struct NSArray {
-    Class _field1;
-};
-
-struct NSObject {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
+struct PHAssetResourceTableDataSpecification {
+    int width;
+    int height;
+    int bytesPerRow;
+    int dataWidth;
+    int dataHeight;
+    int imageDataOffset;
 };
 
 struct PXAlphaLayer {
@@ -97,13 +94,20 @@ struct PXFaceTileImageParams {
     _Bool cropBounded;
 };
 
+struct PXFloatRange {
+    double _field1;
+    double _field2;
+};
+
 struct PXGDecorationSpriteInfo {
     long long _field1;
     double _field2;
 };
 
-struct PXGItemsLayout {
-    Class _field1;
+struct PXGImageRequest {
+    unsigned int _field1;
+    int _field2;
+    void *_field3;
 };
 
 struct PXGThumbnailRequest {
@@ -228,22 +232,10 @@ struct PXTileState {
     unsigned long long _field14;
 };
 
-struct PXTwoTuple {
-    Class _field1;
-};
-
 struct PXViewSpecDescriptor {
     long long _field1;
     unsigned long long _field2;
     struct CGSize _field3;
-};
-
-struct UICollectionViewCell {
-    Class _field1;
-};
-
-struct UIColor {
-    Class _field1;
 };
 
 struct UIEdgeInsets {
@@ -251,18 +243,6 @@ struct UIEdgeInsets {
     double left;
     double bottom;
     double right;
-};
-
-struct UIFont {
-    Class _field1;
-};
-
-struct UIImage {
-    Class _field1;
-};
-
-struct UISearchToken {
-    Class _field1;
 };
 
 struct _LayoutContext {
@@ -291,8 +271,10 @@ struct _PXGEngineScrollState {
     struct CGSize referenceSize;
     struct UIEdgeInsets contentInsets;
     struct CGRect visibleRect;
+    struct CGRect targetRect;
     struct CGRect constrainedVisibleRect;
     struct CGPoint lastScrollDirection;
+    long long scrollSpeedRegime;
 };
 
 struct _PXGSpriteIndexRange {
@@ -447,6 +429,17 @@ typedef struct {
 } CDStruct_e4f06a70;
 
 typedef struct {
+    unsigned long long photosCount;
+    unsigned long long videosCount;
+    unsigned long long othersCount;
+} CDStruct_aa0b146f;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
+
+typedef struct {
     unsigned long long pixelFormat;
     unsigned short width;
     unsigned short height;
@@ -458,6 +451,11 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
+
+typedef struct {
+    unsigned long long count;
+    long long type;
+} CDStruct_15189878;
 
 typedef struct {
     MISSING_TYPE *columns[4];
@@ -515,7 +513,9 @@ typedef struct {
     float _field6;
     float _field7;
     float _field8;
-} CDStruct_ee569e91;
+    unsigned int _field9;
+    unsigned short _field10;
+} CDStruct_8a1a641f;
 
 typedef struct {
     float topLeft;
@@ -532,9 +532,10 @@ typedef struct {
 
 typedef struct {
     int _field1;
-    id _field2;
+    unsigned long long _field2;
     id _field3;
-} CDStruct_acc9a335;
+    id _field4;
+} CDStruct_39b4dbd3;
 
 typedef struct {
     int _field1;
@@ -562,18 +563,15 @@ typedef struct {
 } CDStruct_fcaf9308;
 
 typedef struct {
-    long long scrollRegime;
-    _Bool isAnimatingScroll;
-    _Bool isAnimatingContent;
-    unsigned long long zoomBehavior;
-    _Bool isViewBoundsChanging;
-    _Bool isInitialLoad;
-} CDStruct_04522d6a;
+    long long _field1;
+    double _field2;
+} CDStruct_7f320dbc;
 
 typedef struct {
     long long _field1;
     float _field2;
-} CDStruct_fd7332cd;
+    float _field3;
+} CDStruct_4f961314;
 
 typedef struct {
     long long value;
@@ -589,6 +587,14 @@ typedef struct {
 } CDStruct_b8f58034;
 
 typedef struct {
+    long long contentFormat;
+    long long filterType;
+    float hdrGain;
+    long long fallbackFilterType;
+    float fallbackHdrGain;
+} CDStruct_0b45e515;
+
+typedef struct {
     long long _field1;
     long long _field2;
     long long _field3;
@@ -596,10 +602,16 @@ typedef struct {
 } CDStruct_68723fc0;
 
 typedef struct {
-    long long photosCount;
-    long long videosCount;
-    long long othersCount;
-} CDStruct_9bad6f47;
+    long long contentSizeCategory;
+    long long layoutDirection;
+    long long layoutSizeClass;
+    long long layoutOrientation;
+} CDStruct_e6148bb0;
+
+typedef struct {
+    long long zoomLevel;
+    long long scrollRegime;
+} CDStruct_0c606d9b;
 
 typedef struct CDStruct_183601bc;
 
@@ -624,6 +636,12 @@ typedef struct {
 } CDStruct_92550dd7;
 
 typedef struct {
+    CDStruct_183601bc *_field1;
+    CDStruct_183601bc *_field2;
+    CDStruct_183601bc *_field3;
+} CDStruct_a6175b54;
+
+typedef struct {
     long long _field1;
     double _field2;
     double _field3;
@@ -632,7 +650,8 @@ typedef struct {
     void *_field6;
     void *_field7;
     void *_field8;
-} CDStruct_c4a51d40;
+    void *_field9;
+} CDStruct_14c8b8c5;
 
 typedef struct {
     CDStruct_14d5dc5e viewMatrix;
@@ -641,6 +660,11 @@ typedef struct {
     CDStruct_14d5dc5e billboardMatrix;
     float renderOrigin__screenScale;
 } CDStruct_b1513b2e;
+
+typedef struct {
+    CDStruct_719d24f9 center;
+    MISSING_TYPE *size;
+} CDStruct_dfa1459f;
 
 typedef struct {
     CDStruct_719d24f9 _field1;
@@ -688,12 +712,14 @@ typedef struct {
     double normalizedColumnWidth;
     _Bool isAnimating;
     _Bool isInteractive;
+    _Bool isTracking;
+    _Bool hasBeenInitialized;
     long long fromColumnIndex;
     long long toColumnIndex;
     double interactiveProgress;
     double animatedProgress;
     double stickyHeaderOpacity;
-} CDStruct_3a6a7d8f;
+} CDStruct_8bc229d5;
 
 typedef struct {
     struct CGPoint normalizedInitialPosition;
@@ -729,14 +755,39 @@ typedef struct {
 } CDStruct_87acf924;
 
 typedef struct {
+    long long scrollRegime;
+    _Bool isAnimatingScroll;
+    _Bool isScrubbing;
+    _Bool isAnimatingContent;
+    unsigned long long zoomBehavior;
+    _Bool isViewBoundsChanging;
+    _Bool isInitialLoad;
+    _Bool isVisible;
+    struct CGRect targetRect;
+} CDStruct_a02a4563;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    long long _field4;
+    struct CGRect _field5;
+    _Bool _field6;
+} CDStruct_89e59a70;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    struct CGRect _field4;
+    struct UIEdgeInsets _field5;
+    _Bool _field6;
+} CDStruct_46c45068;
+
+typedef struct {
     struct CGRect layoutRect;
     _Bool onlyCalculateSize;
-    struct {
-        long long contentSizeCategory;
-        long long layoutDirection;
-        long long layoutSizeClass;
-        long long layoutOrientation;
-    } layoutAttributes;
+    CDStruct_e6148bb0 layoutAttributes;
 } CDStruct_392cfed4;
 
 typedef struct {

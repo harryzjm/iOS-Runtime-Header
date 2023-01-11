@@ -18,7 +18,6 @@
 - (id)relativePath;
 
 // Remaining properties
-@property(retain, nonatomic) TDThemeConstant *artworkDraftType; // @dynamic artworkDraftType;
 @property(retain, nonatomic) TDRenditionKeySpec *baseKeySpec; // @dynamic baseKeySpec;
 @property(retain, nonatomic) NSString *comment; // @dynamic comment;
 @property(retain, nonatomic) NSDate *dateOfLastChange; // @dynamic dateOfLastChange;

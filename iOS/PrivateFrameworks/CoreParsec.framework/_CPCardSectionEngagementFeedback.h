@@ -26,6 +26,7 @@
     NSString *_resultId;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int actionTarget; // @synthesize actionTarget=_actionTarget;
 @property(copy, nonatomic) NSString *resultId; // @synthesize resultId=_resultId;
 @property(copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
@@ -36,7 +37,6 @@
 @property(nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(retain, nonatomic) _CPPunchoutForFeedback *destination; // @synthesize destination=_destination;
 @property(nonatomic) unsigned long long timestamp;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
@@ -47,11 +47,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)init;
 - (id)initWithFacade:(id)arg1;
-@property(readonly, nonatomic) id feedbackJSON;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id feedbackJSON;
 @property(readonly) Class superclass;
 
 @end

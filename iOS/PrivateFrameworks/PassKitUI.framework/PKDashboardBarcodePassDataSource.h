@@ -20,7 +20,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)footerTextForSection:(unsigned long long)arg1;
+- (id)footerTextItemForSection:(unsigned long long)arg1;
 - (id)titleForSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;

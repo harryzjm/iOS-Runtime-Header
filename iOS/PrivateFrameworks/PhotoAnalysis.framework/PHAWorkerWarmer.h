@@ -16,17 +16,17 @@
 }
 
 + (unsigned long long)stateCode;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PHAJobConstraints *lastConstraints; // @synthesize lastConstraints=_lastConstraints;
 @property(retain, nonatomic) PHAWorker *lastActiveWorker; // @synthesize lastActiveWorker=_lastActiveWorker;
 @property(readonly, nonatomic) NSMutableSet *workers; // @synthesize workers=_workers;
-- (void).cxx_destruct;
 - (void)reportNoMoreJobsExpected;
 - (void)setActiveWorker:(id)arg1 withJob:(id)arg2;
 - (void)recordConstraintChange:(id)arg1;
 - (id)init;
 - (id)statusAsDictionary;
 - (_Bool)_cooldownWorkerIfWarmed:(id)arg1;
-- (void)_warmupWorkerIfCooled:(id)arg1;
+- (void)_warmupWorkerIfCooled:(id)arg1 withProgressBlock:(CDUnknownBlockType)arg2;
 
 @end
 

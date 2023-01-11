@@ -6,17 +6,13 @@
 
 #import <MetalTools/MTLPipelineLibrarySPI-Protocol.h>
 
-@class MTLToolsPointerArray, NSArray, NSString;
+@class NSArray, NSString;
 @protocol MTLDevice, MTLPipelineCache;
 
 @interface MTLToolsPipelineLibrary <MTLPipelineLibrarySPI>
 {
-    MTLToolsPointerArray *_pipelineStates;
-    MTLToolsPointerArray *_computePipelineStates;
 }
 
-@property(readonly, nonatomic) MTLToolsPointerArray *computePipelineStates; // @synthesize computePipelineStates=_computePipelineStates;
-@property(readonly, nonatomic) MTLToolsPointerArray *pipelineStates; // @synthesize pipelineStates=_pipelineStates;
 @property(readonly, nonatomic) id <MTLPipelineCache> functionCache;
 @property(readonly, nonatomic) id <MTLPipelineCache> pipelineCache;
 - (id)newRenderPipelineDescriptorWithName:(id)arg1 error:(id *)arg2;
@@ -27,9 +23,6 @@
 @property(readonly) NSArray *pipelineNames;
 @property(readonly) id <MTLDevice> device;
 @property(copy) NSString *label;
-- (void)acceptVisitor:(id)arg1;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

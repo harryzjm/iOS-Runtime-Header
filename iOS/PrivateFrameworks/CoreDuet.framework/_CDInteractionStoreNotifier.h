@@ -16,8 +16,10 @@
     _CDInteractionStore *_interactionStore;
 }
 
-@property(readonly, nonatomic) __weak _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
+- (void)resume;
+- (void)suspend;
 - (void)deleted;
 - (void)recorded:(id)arg1;
 - (void)postPackedMechanisms:(unsigned long long)arg1;

@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDOntologyLifecycleManager, HDServiceConnectionManager, HDWorkoutManager;
+@class HDAWDSubmissionManager, HDAgeGatingManager, HDAppSubscriptionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDServiceConnectionManager, HDTinkerPrivacyAlertCoordinator, HDWorkoutManager;
 
 @interface HDPrimaryProfile
 {
+    HDAgeGatingManager *_ageGatingManager;
     HDAppSubscriptionManager *_appSubscriptionManager;
     HDAWDSubmissionManager *_awdSubmissionManager;
     HDCurrentActivitySummaryHelper *_currentActivitySummaryHelper;
@@ -19,18 +20,19 @@
     HDServiceConnectionManager *_serviceConnectionManager;
     HDWorkoutManager *_workoutManager;
     HDDemoDataManager *_demoDataManager;
-    HDOntologyLifecycleManager *_ontologyLifecycleManager;
+    HDTinkerPrivacyAlertCoordinator *_tinkerPrivacyAlertCoordinator;
 }
 
 - (void).cxx_destruct;
 - (void)_applyPPTUpdates;
+- (void)unitTest_setNanoSyncManager:(id)arg1;
 - (void)unitTest_setServiceManager:(id)arg1;
 - (id)_newWorkoutManager;
 - (id)_newNotificationManager;
 - (id)_newNanoSyncManager;
 - (id)_newAWDSubmissionManager;
 - (id)_newAppSubscriptionManager;
-- (id)ontologyLifecycleManager;
+- (id)tinkerPrivacyAlertCoordinator;
 - (id)serviceManager;
 - (id)serviceConnectionManager;
 - (id)notificationManager;

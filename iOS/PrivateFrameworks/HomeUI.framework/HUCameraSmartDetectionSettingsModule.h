@@ -23,6 +23,7 @@
     HFCameraSmartDetectionCondition *_condition;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HFCameraSmartDetectionCondition *condition; // @synthesize condition=_condition;
 @property(readonly, nonatomic) unsigned long long settingsContext; // @synthesize settingsContext=_settingsContext;
 @property(readonly, nonatomic) HFItemProvider *motionDetectionOffOnItemProvider; // @synthesize motionDetectionOffOnItemProvider=_motionDetectionOffOnItemProvider;
@@ -31,16 +32,13 @@
 @property(retain, nonatomic) HFStaticItem *anyMotionDetectedItem; // @synthesize anyMotionDetectedItem=_anyMotionDetectedItem;
 @property(readonly, nonatomic) HFConditionCollection *conditionCollection; // @synthesize conditionCollection=_conditionCollection;
 @property(readonly, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
-- (void).cxx_destruct;
+- (_Bool)isItemHeader:(id)arg1;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)itemProviders;
-- (void)_dispatchUpdateForCameraProfile:(id)arg1;
-- (id)_preferredConditionFromConditions:(id)arg1;
-- (id)updateMotionDetectionSetting:(unsigned long long)arg1;
+- (id)didSelectItem:(id)arg1;
+- (id)updateSignificantEventConfiguration:(id)arg1;
 - (id)updateMotionDetectionSettingForItem:(id)arg1;
 - (id)enableSmartMotion:(_Bool)arg1 forItem:(id)arg2;
-- (id)didSelectItem:(id)arg1;
-- (_Bool)isItemHeader:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 cameraProfiles:(id)arg2 conditionCollection:(id)arg3 settingsContext:(unsigned long long)arg4;
 

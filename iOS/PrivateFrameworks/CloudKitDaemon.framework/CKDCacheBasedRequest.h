@@ -18,17 +18,17 @@ __attribute__((visibility("hidden")))
     unsigned long long _fetchBatchSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long fetchBatchSize; // @synthesize fetchBatchSize=_fetchBatchSize;
 @property(nonatomic) __weak CKDPublicIdentityLookupService *lookupService; // @synthesize lookupService=_lookupService;
 @property(nonatomic) __weak CKDKeyValueDiskCache *cache; // @synthesize cache=_cache;
 @property(nonatomic) __weak CKDOperation *operation; // @synthesize operation=_operation;
 @property(nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
-- (void).cxx_destruct;
 - (void)performRequest;
 - (id)spawnURLRequests;
 - (void)finishWithError:(id)arg1;
 - (void)cancel;
-- (id)init;
+- (id)initWithOperation:(id)arg1;
 
 @end
 

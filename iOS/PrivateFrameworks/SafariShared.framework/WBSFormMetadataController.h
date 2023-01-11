@@ -8,7 +8,7 @@
 
 @interface WBSFormMetadataController : NSObject
 {
-    struct HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::PtrHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>> _framesToMetadataMap;
+    struct HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>> _framesToMetadataMap;
 }
 
 + (_Bool)convertNumber:(id)arg1 toFormMetadataRequestType:(unsigned long long *)arg2;
@@ -57,6 +57,7 @@
 - (id)metadataForForm:(id)arg1 inFrame:(id)arg2 requestType:(unsigned long long)arg3;
 - (struct OpaqueJSValue *)_jsObjectForForm:(id)arg1 inFrame:(id)arg2;
 - (void)getMetadataForAllFormsInPageWithMainFrame:(id)arg1 requestType:(unsigned long long)arg2 frames:(id *)arg3 formMetadata:(id *)arg4;
+- (_Bool)recursivelyCollectAncestorFramesOfFrame:(id)arg1 startingFromFrame:(id)arg2 ancestorFrames:(id)arg3;
 - (void)recursivelyCollectMetadataInFrame:(id)arg1 requestType:(unsigned long long)arg2 frames:(id)arg3 formMetadata:(id)arg4;
 - (struct FrameMetadata *)metadataForFrame:(id)arg1 requestType:(unsigned long long)arg2;
 - (void)recursivelyClearMetadataForFrames:(id)arg1;
@@ -70,7 +71,7 @@
 - (void)focusField:(id)arg1 inFrame:(id)arg2;
 - (void)clearField:(id)arg1 inFrame:(id)arg2;
 - (void)fillField:(id)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
-- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3;
+- (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3 focusedFieldControlID:(id)arg4;
 - (void)setFormControls:(id)arg1 inFrame:(id)arg2 asAutoFilled:(_Bool)arg3;
 - (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)focusFormForStreamlinedLogin:(double)arg1 inFrame:(id)arg2;

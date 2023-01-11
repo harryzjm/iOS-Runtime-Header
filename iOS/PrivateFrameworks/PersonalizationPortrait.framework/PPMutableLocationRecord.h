@@ -12,7 +12,7 @@
 
 + (id)new;
 @property(nonatomic) double sentimentScore; // @dynamic sentimentScore;
-@property(nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
+@property(nonatomic) unsigned int extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property(retain, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property(retain, nonatomic) NSArray *contextualNamedEntities; // @dynamic contextualNamedEntities;
 @property(nonatomic) double decayRate; // @dynamic decayRate;

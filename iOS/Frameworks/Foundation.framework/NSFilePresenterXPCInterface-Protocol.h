@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSFileCoordinationDebugInfoXPCInteface-Protocol.h>
+#import <Foundation/NSFileCoordinationDebugInfoXPCInterface-Protocol.h>
 
 @class NSSet, NSString, NSURLPromisePair;
 
-@protocol NSFilePresenterXPCInterface <NSFileCoordinationDebugInfoXPCInteface>
+@protocol NSFilePresenterXPCInterface <NSFileCoordinationDebugInfoXPCInterface>
 - (oneway void)logSuspensionWarning;
 - (oneway void)setProviderPurposeIdentifier:(NSString *)arg1;
 - (oneway void)updateLastEventID:(unsigned long long)arg1;

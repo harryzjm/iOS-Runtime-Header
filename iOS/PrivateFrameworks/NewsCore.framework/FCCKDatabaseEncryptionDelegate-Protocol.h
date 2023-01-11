@@ -9,7 +9,9 @@
 @class FCCKPrivateDatabase;
 
 @protocol FCCKDatabaseEncryptionDelegate <NSObject>
+- (void)fetchShouldSecureSubscriptionsForDatabase:(FCCKPrivateDatabase *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchOriginalDataShouldBeDeletedAfterMigrationForDatabase:(FCCKPrivateDatabase *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)fetchPrivateDataEncryptionIsRequiredForDatabase:(FCCKPrivateDatabase *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchPrivateDataEncryptionMigrationIsDesiredForDatabase:(FCCKPrivateDatabase *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchPrivateDataEncryptionIsAllowedForDatabase:(FCCKPrivateDatabase *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end

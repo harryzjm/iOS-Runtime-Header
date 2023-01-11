@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) CDPContext *cdpContext;
 - (void)reportFailure:(NSError *)arg1;
 - (void)reportSuccess;
+- (void)waitForUpdate;
 - (KCPairingChannel *)pairingChannelAcceptor:(id *)arg1;
 - (KCPairingChannel *)pairingChannelInitiator:(id *)arg1;
 - (_Bool)tryRegisteringCredentials;
@@ -26,6 +27,7 @@
 - (_Bool)viewMemberForAutofillPasswords:(id *)arg1;
 - (_Bool)requestToResetCloudKitDataForReason:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)requestToResetCircle:(id *)arg1;
+- (OTClique *)requestToResetProtectedData:(id *)arg1;
 - (_Bool)requestToJoinCircleAfterRestore:(id *)arg1;
 - (_Bool)requestToJoinCircle:(id *)arg1;
 - (_Bool)removeThisDeviceFromCircle:(id *)arg1;
@@ -34,9 +36,9 @@
 - (NSString *)generateRecoveryKeyWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)didJoinCircleAfterRecovery:(OTClique *)arg1;
 - (NSDictionary *)peerDeviceNamesByPeerID;
-- (unsigned long long)peerCount;
 - (NSString *)peerId;
-- (unsigned long long)cachedCircleStatus:(id *)arg1;
+- (int)cachedCircleStatus:(id *)arg1;
+- (unsigned long long)cachedCliqueStatus:(id *)arg1;
 - (unsigned long long)circleStatus:(id *)arg1;
 @end
 

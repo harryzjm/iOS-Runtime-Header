@@ -29,10 +29,10 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property(readonly, nonatomic) __weak HMService *service; // @synthesize service=_service;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
@@ -48,8 +48,12 @@
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *targetUUID; // @synthesize targetUUID=_targetUUID;
 - (void)_handleBulletinBoardNotificationUpdateNotification:(id)arg1;
+- (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1;
 - (void)_registerNotificationHandlers;
+- (id)initWithEnabled:(_Bool)arg1 condition:(id)arg2;
 - (id)init;
 
 // Remaining properties

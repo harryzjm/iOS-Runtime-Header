@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXAssetsDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryMutableAssetsDataSourceManager-Protocol.h>
 
-@class NSDictionary, NSString, PXAssetsDataSource, PXAssetsDataSourceManager, PXCuratedLibraryAssetsDataSourceManagerConfiguration, PXPhotoKitAssetsDataSourceManager, PXUpdater, PXVisualPositionsChangeDetails;
+@class NSDictionary, NSPredicate, NSString, PXAssetsDataSource, PXAssetsDataSourceManager, PXCuratedLibraryAssetsDataSourceManagerConfiguration, PXPhotoKitAssetsDataSourceManager, PXUpdater, PXVisualPositionsChangeDetails;
 @protocol PXCuratedLibraryAssetsDataSourceManagerDelegate;
 
 @interface PXCuratedLibraryAssetsDataSourceManager <PXCuratedLibraryMutableAssetsDataSourceManager, PXAssetsDataSourceManagerObserver>
@@ -26,6 +26,7 @@
     _Bool _wantsCuration;
     id <PXCuratedLibraryAssetsDataSourceManagerDelegate> _delegate;
     long long _zoomLevel;
+    NSPredicate *_allPhotosFilterPredicate;
     PXUpdater *_updater;
     PXCuratedLibraryAssetsDataSourceManagerConfiguration *_configuration;
     long long _zoomLevelForCurrentDataSourceManager;
@@ -37,6 +38,7 @@
     unsigned long long _lastVisualPositionsChangeToDataSourceIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long lastVisualPositionsChangeToDataSourceIdentifier; // @synthesize lastVisualPositionsChangeToDataSourceIdentifier=_lastVisualPositionsChangeToDataSourceIdentifier;
 @property(nonatomic) unsigned long long lastVisualPositionsChangeFromDataSourceIdentifier; // @synthesize lastVisualPositionsChangeFromDataSourceIdentifier=_lastVisualPositionsChangeFromDataSourceIdentifier;
 @property(nonatomic) long long lastTransitionType; // @synthesize lastTransitionType=_lastTransitionType;
@@ -48,9 +50,9 @@
 @property(readonly, nonatomic) PXCuratedLibraryAssetsDataSourceManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property(nonatomic) _Bool canLoadData; // @synthesize canLoadData=_canLoadData;
+@property(readonly, nonatomic) NSPredicate *allPhotosFilterPredicate; // @synthesize allPhotosFilterPredicate=_allPhotosFilterPredicate;
 @property(readonly, nonatomic) long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 @property(nonatomic) __weak id <PXCuratedLibraryAssetsDataSourceManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateDataSource;
 - (void)_invalidateDataSource;
@@ -73,13 +75,14 @@
 - (id)firstAssetCollectionReferenceInDataSourceForZoomLevel:(long long)arg1 withParent:(id)arg2;
 - (id)assetCollectionReferencesInDataSourceForZoomLevel:(long long)arg1 withParentAssetCollectionReference:(id)arg2 assetCollectionReferenceWithSameKeyAssetAsParent:(id *)arg3;
 - (id)assetCollectionReferencesInDataSourceForZoomLevel:(long long)arg1 withParentAssetCollectionReference:(id)arg2;
-- (void)forceAccurateLastSection;
+- (_Bool)forceAllPhotosAccurateIfNeeded;
 @property(readonly, nonatomic) PXPhotoKitAssetsDataSourceManager *currentPhotoKitAssetsDataSourceManager;
 @property(readonly, nonatomic) PXAssetsDataSourceManager *currentAssetsDataSourceManager;
 - (id)_photosDataSourceForZoomLevel:(long long)arg1;
 - (unsigned long long)libraryStateForZoomLevel:(long long)arg1;
 - (id)dataSourceForZoomLevel:(long long)arg1;
 - (id)dataSourceManagerForZoomLevel:(long long)arg1;
+- (void)setAllPhotosFilterPredicate:(id)arg1;
 - (void)setZoomLevel:(long long)arg1;
 - (long long)transitionTypeFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
 - (id)visualPositionsChangeDetailsFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
@@ -91,8 +94,10 @@
 - (id)init;
 
 // Remaining properties
+@property(nonatomic) long long backgroundFetchOriginSection;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) NSPredicate *filterPredicate;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

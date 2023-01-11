@@ -18,15 +18,6 @@
     NSMutableDictionary *_parentToParentStreamIDs;
 }
 
-@property(retain, nonatomic) NSMutableDictionary *_parentToParentStreamIDs; // @synthesize _parentToParentStreamIDs;
-@property(retain, nonatomic) NSMutableDictionary *_dependentToParentStreamIDs; // @synthesize _dependentToParentStreamIDs;
-@property(retain, nonatomic) NSNumber *rootParentStreamID; // @synthesize rootParentStreamID;
-@property(retain, nonatomic) NSMutableArray *childrenResourceIdentifiers; // @synthesize childrenResourceIdentifiers;
-@property(retain, nonatomic) NSMutableArray *children; // @synthesize children;
-@property(retain, nonatomic) NSURLSessionTaskDependencyDescription *dependencyDescription; // @synthesize dependencyDescription;
-- (id)makePriorityInfoStartingFromStreamID:(int *)arg1;
-- (void)makePriorityInfoStartingFromStreamID:(int *)arg1 parentStream:(int)arg2 priorityInfo:(id)arg3 dependentToParentStreamIDs:(id)arg4 parentToParentStreamIDs:(id)arg5;
-- (void)buildTree:(id)arg1 parentsToDependencies:(id)arg2 parentsToChildren:(id)arg3;
 - (void)dealloc;
 - (id)init;
 

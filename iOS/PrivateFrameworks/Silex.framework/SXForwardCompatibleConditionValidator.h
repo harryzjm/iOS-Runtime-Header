@@ -15,7 +15,6 @@
 }
 
 - (_Bool)validateCondition:(id)arg1 context:(id)arg2;
-- (id)supportedKeys;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

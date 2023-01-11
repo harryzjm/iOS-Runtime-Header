@@ -17,14 +17,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSSet *variants; // @synthesize variants=_variants;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *variants; // @synthesize variants=_variants;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_bestVariantForUIFormat:(int)arg1;
 - (id)_bestVariantForFormat:(long long)arg1;
 - (void)addVariant:(id)arg1;
 

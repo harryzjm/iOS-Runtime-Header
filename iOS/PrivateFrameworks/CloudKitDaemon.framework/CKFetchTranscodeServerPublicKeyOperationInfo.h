@@ -8,14 +8,13 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKFetchTranscodeServerPublicKeyOperationInfo : CKOperationInfo
 {
     NSString *_transcodeServerHostname;
 }
 
-@property(retain, nonatomic) NSString *transcodeServerHostname; // @synthesize transcodeServerHostname=_transcodeServerHostname;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *transcodeServerHostname; // @synthesize transcodeServerHostname=_transcodeServerHostname;
 
 @end
 

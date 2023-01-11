@@ -16,9 +16,9 @@
     WFEditWorkflowViewController *_workflowViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) WFEditWorkflowViewController *workflowViewController; // @synthesize workflowViewController=_workflowViewController;
 @property(readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
-- (void).cxx_destruct;
 - (_Bool)workflowViewControllerCanRemoveActions:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithWorkflow:(id)arg1;

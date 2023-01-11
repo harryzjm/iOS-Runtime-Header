@@ -6,35 +6,23 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/AVSpeechSynthesizerDelegate-Protocol.h>
+@class WFSpeakTextActionOperation;
+@protocol WFActionExtendedOperation;
 
-@class AVSpeechSynthesizer, NSString;
-
-@interface WFSpeakTextAction : WFAction <AVSpeechSynthesizerDelegate>
+@interface WFSpeakTextAction : WFAction
 {
-    AVSpeechSynthesizer *_synthesizer;
+    id <WFActionExtendedOperation> _extendedOperation;
+    WFSpeakTextActionOperation *_runningOperation;
 }
 
-@property(retain, nonatomic) AVSpeechSynthesizer *synthesizer; // @synthesize synthesizer=_synthesizer;
 - (void).cxx_destruct;
-- (id)languagePickerParameter;
-- (id)voicePickerParameter;
-- (void)cleanupSpeechSynthesizer;
-- (void)speechSynthesizer:(id)arg1 didCancelSpeechUtterance:(id)arg2;
-- (void)speechSynthesizer:(id)arg1 didFinishSpeechUtterance:(id)arg2;
-- (void)speechSynthesizer:(id)arg1 willSpeakRangeOfSpeechString:(struct _NSRange)arg2 utterance:(id)arg3;
-- (void)speakTextUsingSynthesizer:(id)arg1 voice:(id)arg2 rate:(float)arg3 pitch:(float)arg4 waitUntilFinished:(_Bool)arg5;
-- (void)speakTextUsingVoiceOver:(id)arg1 languageCode:(id)arg2 pitch:(float)arg3 waitUntilFinished:(_Bool)arg4;
-- (_Bool)isAirPlaySession:(id)arg1;
+@property(retain, nonatomic) WFSpeakTextActionOperation *runningOperation; // @synthesize runningOperation=_runningOperation;
+- (void)setExtendedOperation:(id)arg1;
+- (id)extendedOperation;
 - (void)initializeParameters;
 - (void)cancel;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)voicePickerParameter;
 
 @end
 

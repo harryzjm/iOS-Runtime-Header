@@ -26,6 +26,7 @@
     HFExecutionEnvironment *_executionEnvironment;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HFExecutionEnvironment *executionEnvironment; // @synthesize executionEnvironment=_executionEnvironment;
 @property(nonatomic) unsigned long long snapshotErrorCount; // @synthesize snapshotErrorCount=_snapshotErrorCount;
 @property(retain, nonatomic) NSDate *snapshotErrorDate; // @synthesize snapshotErrorDate=_snapshotErrorDate;
@@ -35,7 +36,6 @@
 @property(readonly, nonatomic) NSMapTable *snapshotRequesters; // @synthesize snapshotRequesters=_snapshotRequesters;
 @property(readonly, nonatomic) __weak HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property(retain, nonatomic) NSError *cachedStreamError; // @synthesize cachedStreamError=_cachedStreamError;
-- (void).cxx_destruct;
 - (_Bool)_hasStreamRequesters;
 - (_Bool)_hasSnapshotRequesters;
 - (void)executionEnvironmentDidBecomeVisible:(id)arg1;
@@ -46,6 +46,7 @@
 - (void)_updateEventRegistration;
 - (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
 - (void)cameraStreamControlDidStartStream:(id)arg1;
+- (void)cameraUserSettingsDidUpdate:(id)arg1;
 - (void)_dispatchStreamStateUpdate;
 - (void)_stopStreaming;
 - (void)_startStreaming;

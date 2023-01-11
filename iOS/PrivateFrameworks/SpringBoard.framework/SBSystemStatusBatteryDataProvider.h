@@ -6,25 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/BCBatteryDeviceObserving-Protocol.h>
 #import <SpringBoard/BSInvalidatable-Protocol.h>
 
-@class NSString, STBatteryStatusDomainPublisher;
+@class BCBatteryDeviceController, NSString, STBatteryStatusDomainPublisher;
 
-@interface SBSystemStatusBatteryDataProvider : NSObject <BSInvalidatable>
+@interface SBSystemStatusBatteryDataProvider : NSObject <BCBatteryDeviceObserving, BSInvalidatable>
 {
     _Bool _shouldExposeNotChargingState;
     STBatteryStatusDomainPublisher *_batteryDataPublisher;
+    BCBatteryDeviceController *_batteryDeviceController;
 }
 
-@property(nonatomic) _Bool shouldExposeNotChargingState; // @synthesize shouldExposeNotChargingState=_shouldExposeNotChargingState;
-@property(readonly, nonatomic) STBatteryStatusDomainPublisher *batteryDataPublisher; // @synthesize batteryDataPublisher=_batteryDataPublisher;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldExposeNotChargingState; // @synthesize shouldExposeNotChargingState=_shouldExposeNotChargingState;
+@property(readonly, nonatomic) BCBatteryDeviceController *batteryDeviceController; // @synthesize batteryDeviceController=_batteryDeviceController;
+@property(readonly, nonatomic) STBatteryStatusDomainPublisher *batteryDataPublisher; // @synthesize batteryDataPublisher=_batteryDataPublisher;
 - (_Bool)_isInNotChargingState;
 - (void)_updateShouldExposeNotChargingState;
 - (void)_noteNotChargingStatusChanged;
-- (id)_internalBatteryDevice;
 - (void)_updateData;
 - (void)_registerForNotifications;
+- (void)connectedDevicesDidChange:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
 - (id)init;

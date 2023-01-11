@@ -6,8 +6,12 @@
 
 #import <Foundation/NSLocale.h>
 
+@class NSString;
+
 @interface NSLocale (PhoneNumbers)
++ (id)nationalDirectDialingPrefixForISOCountryCode:(id)arg1;
 + (long long)ITUCountryCodeForISOCountryCode:(id)arg1;
+@property(readonly, copy) NSString *nationalDirectDialingPrefix;
 @property(readonly) long long ITUCountryCode;
 @end
 

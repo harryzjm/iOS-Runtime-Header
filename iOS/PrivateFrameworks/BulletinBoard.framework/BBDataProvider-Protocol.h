@@ -6,7 +6,7 @@
 
 #import <BulletinBoard/BBSectionIdentity-Protocol.h>
 
-@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBSectionParameters, BBThumbnailSizeConstraints, NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSUUID;
+@class BBActionResponse, BBBulletinRequestParameters, BBSectionInfo, BBSectionParameters, NSArray, NSDate, NSDictionary, NSSet, NSString;
 
 @protocol BBDataProvider <BBSectionIdentity>
 - (NSArray *)sortDescriptors;
@@ -23,12 +23,6 @@
 - (NSString *)displayNameForSubsectionID:(NSString *)arg1;
 - (NSArray *)defaultSubsectionInfos;
 - (void)dataProviderDidLoad;
-- (float)attachmentAspectRatioForRecordID:(NSString *)arg1;
-- (NSData *)attachmentPNGDataForRecordID:(NSString *)arg1 sizeConstraints:(BBThumbnailSizeConstraints *)arg2;
-- (NSData *)primaryAttachmentDataForRecordID:(NSString *)arg1;
-- (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(float))arg3;
-- (void)getPNGDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 sizeConstraints:(BBThumbnailSizeConstraints *)arg3 withCompletionHandler:(void (^)(NSData *))arg4;
-- (void)getDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(NSData *))arg3;
 - (BBSectionParameters *)sectionParameters;
 - (id)clearedInfoForBulletins:(NSSet *)arg1;
 - (id)clearedInfoForClearingBulletinsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 lastClearedInfo:(id)arg3;

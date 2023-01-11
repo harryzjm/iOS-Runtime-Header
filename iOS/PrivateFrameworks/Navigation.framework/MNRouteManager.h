@@ -8,14 +8,13 @@
 
 #import <Navigation/MNLocationManagerObserver-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOETARoute, GEORouteAttributes, GEORoutePreloader, MNActiveRouteInfo, NSArray, NSMutableArray, NSString;
+@class GEOApplicationAuditToken, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, GEORoutePreloader, MNActiveRouteInfo, NSArray, NSMutableArray, NSString;
 
 @interface MNRouteManager : NSObject <MNLocationManagerObserver>
 {
     MNActiveRouteInfo *_currentRouteInfo;
     NSMutableArray *_alternateRoutes;
     NSArray *_allRoutes;
-    NSArray *_contingencyRouteSegments;
     NSArray *_previewRoutes;
     unsigned long long _selectedRouteIndex;
     GEORouteAttributes *_routeAttributes;
@@ -26,9 +25,12 @@
     MNActiveRouteInfo *_originalRouteInfo;
     GEORoutePreloader *_preloader;
     NSString *_tileLoaderClientIdentifier;
+    GEOApplicationAuditToken *_auditToken;
+    NSArray *_contingencyRouteSegments;
     GEOComposedRoute *_originalRoute;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
 @property(readonly, nonatomic) GEOComposedWaypoint *originalDestination; // @synthesize originalDestination=_originalDestination;
 @property(readonly, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
@@ -40,7 +42,6 @@
 @property(readonly, nonatomic) NSArray *contingencyRouteSegments; // @synthesize contingencyRouteSegments=_contingencyRouteSegments;
 @property(readonly, nonatomic) NSArray *alternateRoutes; // @synthesize alternateRoutes=_alternateRoutes;
 @property(readonly, nonatomic) MNActiveRouteInfo *currentRouteInfo; // @synthesize currentRouteInfo=_currentRouteInfo;
-- (void).cxx_destruct;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
@@ -49,7 +50,6 @@
 - (void)locationManagerDidReset:(id)arg1;
 - (void)locationManagerFailedToUpdateLocation:(id)arg1 withError:(id)arg2;
 - (void)locationManagerUpdatedLocation:(id)arg1;
-- (void)_createContingencyRoutesForResponse:(id)arg1;
 - (void)_updatePreloaderForRoute:(id)arg1;
 - (void)_clearPreloader;
 - (void)clearCurrentRoute;
@@ -63,8 +63,9 @@
 - (void)open;
 - (void)dealloc;
 @property(readonly, nonatomic) NSArray *allRoutes;
-@property(readonly, nonatomic) GEOETARoute *etaRoute;
 @property(readonly, nonatomic) GEOComposedRoute *currentRoute;
+- (id)initWithAuditToken:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

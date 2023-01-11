@@ -18,6 +18,7 @@
 - (struct UIEdgeInsets)verticalBaselineInsetsForHeader:(_Bool)arg1 isCompactTable:(_Bool)arg2;
 - (struct UIEdgeInsets)verticalBaselineInsetsForRowsWithCompactTable:(_Bool)arg1;
 - (void)updateWithRowModel:(id)arg1;
+- (id)leadingTextView;
 - (id)setupContentView;
 
 // Remaining properties

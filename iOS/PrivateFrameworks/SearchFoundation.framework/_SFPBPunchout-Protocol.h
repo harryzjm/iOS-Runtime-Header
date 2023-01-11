@@ -10,6 +10,7 @@
 
 @protocol _SFPBPunchout <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool hasClip;
 @property(nonatomic) _Bool isRunnableInBackground;
 @property(copy, nonatomic) NSString *actionTarget;
 @property(retain, nonatomic) _SFPBUserActivityData *userActivityData;

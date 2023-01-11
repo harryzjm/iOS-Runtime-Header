@@ -14,12 +14,9 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
-- (void)setEnabled:(_Bool)arg1;
-- (void)setHighlighted:(_Bool)arg1;
-- (id)initWithCoder:(id)arg1;
 @property(copy, nonatomic) NSString *buttonText;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

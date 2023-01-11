@@ -21,11 +21,12 @@
 + (id)accountIdentifierForMessageContext:(id)arg1;
 + (id)accountIdentifierForAppleAccountContext:(id)arg1;
 + (id)accountIdentifierForAccountHandle:(id)arg1;
-@property(readonly, copy) _HMDAccountIdentifier *internal; // @synthesize internal=_internal;
 - (void).cxx_destruct;
+@property(readonly, copy) _HMDAccountIdentifier *internal; // @synthesize internal=_internal;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSString *senderCorrelationIdentifier;
 @property(readonly, getter=isAuthenticated) _Bool authenticated;
 @property(readonly, copy) NSUUID *identifier;
 @property(readonly, copy, nonatomic) NSArray *attributeDescriptions;

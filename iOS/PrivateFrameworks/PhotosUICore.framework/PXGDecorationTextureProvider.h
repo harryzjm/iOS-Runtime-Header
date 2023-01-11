@@ -4,12 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDateComponentsFormatter;
+@protocol PXGViewSource;
+
 @interface PXGDecorationTextureProvider
 {
+    id <PXGViewSource> _overlayViewSource;
+    NSDateComponentsFormatter *_videoDurationFormatter;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDateComponentsFormatter *videoDurationFormatter; // @synthesize videoDurationFormatter=_videoDurationFormatter;
+@property(nonatomic) __weak id <PXGViewSource> overlayViewSource; // @synthesize overlayViewSource=_overlayViewSource;
+- (void)_requestViewTextureForDecorationInfo:(struct PXGDecorationSpriteInfo)arg1 customViewClass:(Class)arg2 userData:(id)arg3 decorationOptions:(unsigned long long)arg4 requestID:(int)arg5;
 - (void)_requestTextureForDecorationInfo:(struct PXGDecorationSpriteInfo)arg1 debugDecoration:(id)arg2 targetSize:(struct CGSize)arg3 cornerRadius:(CDStruct_2bd92d94)arg4 screenScale:(double)arg5 requestID:(int)arg6 viewEnvironment:(id)arg7 userInterfaceDirection:(unsigned long long)arg8;
 - (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
+- (id)init;
 
 @end
 

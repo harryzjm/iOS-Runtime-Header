@@ -14,12 +14,14 @@
 {
     PBUnknownFields *_unknownFields;
     GEOLatLng *_location;
+    int _cyclingDirection;
     int _drivingDirection;
     unsigned int _significance;
     int _transitDirection;
     int _walkingDirection;
     _Bool _isApproximate;
     struct {
+        unsigned int has_cyclingDirection:1;
         unsigned int has_drivingDirection:1;
         unsigned int has_significance:1;
         unsigned int has_transitDirection:1;
@@ -40,10 +42,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasSignificance;
 @property(nonatomic) unsigned int significance;
+- (int)StringAsWalkingDirection:(id)arg1;
+- (id)walkingDirectionAsString:(int)arg1;
+@property(nonatomic) _Bool hasWalkingDirection;
+@property(nonatomic) int walkingDirection;
 - (int)StringAsTransitDirection:(id)arg1;
 - (id)transitDirectionAsString:(int)arg1;
 @property(nonatomic) _Bool hasTransitDirection;
@@ -52,10 +61,10 @@
 - (id)drivingDirectionAsString:(int)arg1;
 @property(nonatomic) _Bool hasDrivingDirection;
 @property(nonatomic) int drivingDirection;
-- (int)StringAsWalkingDirection:(id)arg1;
-- (id)walkingDirectionAsString:(int)arg1;
-@property(nonatomic) _Bool hasWalkingDirection;
-@property(nonatomic) int walkingDirection;
+- (int)StringAsCyclingDirection:(id)arg1;
+- (id)cyclingDirectionAsString:(int)arg1;
+@property(nonatomic) _Bool hasCyclingDirection;
+@property(nonatomic) int cyclingDirection;
 @property(nonatomic) _Bool hasIsApproximate;
 @property(nonatomic) _Bool isApproximate;
 @property(retain, nonatomic) GEOLatLng *location;

@@ -11,7 +11,7 @@
     PETGoalConversionEventTracker *_trackerV1;
     PETGoalConversionEventTracker *_trackerV2;
     _Bool _isFolder;
-    NSString *_iconLocation;
+    NSString *_iconLocationValue;
     unsigned long long _layoutLocation;
 }
 

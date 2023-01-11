@@ -8,30 +8,34 @@
 
 @interface _UITextFieldRoundedRectBackgroundViewNeue
 {
-    _Bool _disabled;
-    _Bool _hasFlexibleCornerRadius;
+    struct {
+        unsigned int enabled:1;
+        unsigned int hasFlexibleCornerRadius:1;
+        unsigned int usesSinglePixelLineWidth:1;
+    } _flags;
     UIColor *_strokeColor;
     UIColor *_fillColor;
     double _lineWidth;
     double _cornerRadius;
 }
 
-@property(nonatomic) _Bool hasFlexibleCornerRadius; // @synthesize hasFlexibleCornerRadius=_hasFlexibleCornerRadius;
+- (void).cxx_destruct;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property(retain, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property(retain, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
-- (void).cxx_destruct;
 - (void)setActive:(_Bool)arg1;
-- (void)setEnabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;
 - (double)_cornerRadiusAdjustedForBoundsHeight;
 - (double)_screenScale;
 - (id)_fillColor:(_Bool)arg1;
 - (id)_strokeColor:(_Bool)arg1;
+@property(nonatomic) _Bool usesSinglePixelLineWidth;
+@property(nonatomic) _Bool hasFlexibleCornerRadius;
+- (void)setEnabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)updateView;
-- (id)_initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2 lineWidth:(double)arg3 updateView:(_Bool)arg4;
-- (id)_initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2 lineWidth:(double)arg3;
+- (id)_initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2 usesSinglePixelLineWidth:(_Bool)arg3 updateView:(_Bool)arg4;
+- (id)_initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2 usesSinglePixelLineWidth:(_Bool)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 

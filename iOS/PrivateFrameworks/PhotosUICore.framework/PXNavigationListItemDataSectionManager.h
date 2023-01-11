@@ -5,25 +5,29 @@
 //
 
 #import <PhotosUICore/PXCollectionFetchOperationDelegate-Protocol.h>
+#import <PhotosUICore/PXDataSectionManagerEnabling-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
 @class NSOperationQueue, NSString, PHCollection, PHFetchResult;
+@protocol PXNavigationListItem;
 
-@interface PXNavigationListItemDataSectionManager <PXCollectionFetchOperationDelegate, PXPhotoLibraryUIChangeObserver>
+@interface PXNavigationListItemDataSectionManager <PXCollectionFetchOperationDelegate, PXPhotoLibraryUIChangeObserver, PXDataSectionManagerEnabling>
 {
     _Bool _enabled;
     _Bool _hiddenWhenEmpty;
     PHCollection *_collection;
     NSOperationQueue *_workQueue;
+    id <PXNavigationListItem> _listItem;
     PHFetchResult *_fetchResult;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
 @property(nonatomic, getter=isHiddenWhenEmpty) _Bool hiddenWhenEmpty; // @synthesize hiddenWhenEmpty=_hiddenWhenEmpty;
-@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(readonly, nonatomic) id <PXNavigationListItem> listItem; // @synthesize listItem=_listItem;
 @property(readonly, nonatomic) NSOperationQueue *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) PHCollection *collection; // @synthesize collection=_collection;
-- (void).cxx_destruct;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)collectionFetchOperationDidComplete:(id)arg1;
 @property(readonly, copy) NSString *description;
@@ -31,7 +35,9 @@
 - (void)updateDataSectionIfNecessary;
 @property(readonly, nonatomic, getter=isCollectionVisible) _Bool collectionVisible;
 @property(readonly, nonatomic, getter=isCollectionEmpty) _Bool collectionEmpty;
+- (_Bool)allowsEmptyDataSection;
 - (id)initWithChildDataSectionManagers:(id)arg1;
+- (id)initWithItem:(id)arg1;
 - (id)initWithCollection:(id)arg1 workQueue:(id)arg2;
 
 // Remaining properties

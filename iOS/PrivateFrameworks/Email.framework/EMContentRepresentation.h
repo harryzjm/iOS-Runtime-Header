@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Email/EFLoggable-Protocol.h>
 #import <Email/EFPubliclyDescribable-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class CSSearchableItem, EFInvocationToken, EFSandboxedURLWrapper, EMListUnsubscribeCommand, EMMessage, EMSecurityInformation, NSArray, NSString, NSURL;
+@class CSSearchableItem, EFInvocationToken, EFSandboxedURLWrapper, EMListUnsubscribeCommand, EMMessage, EMMessageHeaders, EMSecurityInformation, NSArray, NSString, NSURL;
 @protocol EMContentItem, _EMDistantContentRepresentation;
 
-@interface EMContentRepresentation : NSObject <NSSecureCoding, EFLoggable, EFPubliclyDescribable>
+@interface EMContentRepresentation : NSObject <NSSecureCoding, EFPubliclyDescribable>
 {
     EFInvocationToken *_invocable;
     _Bool _claimedScopedResource;
@@ -28,19 +27,23 @@
     EMListUnsubscribeCommand *_unsubscribeCommand;
     long long _remainingByteCount;
     long long _transportType;
+    EMMessageHeaders *_requestedHeaders;
     EFSandboxedURLWrapper *_urlWrapper;
     id <_EMDistantContentRepresentation> _distantContentRepresentation;
     CDUnknownBlockType _requestMoreContentBlock;
+    CDUnknownBlockType _listUnsubscribeBlock;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)temporaryURLWithData:(id)arg1 clientIdentifier:(id)arg2 preferredFilename:(id)arg3 pathExtension:(id)arg4 cleanupInvocable:(id *)arg5 error:(id *)arg6;
 + (id)distantContentRepresentationInterface;
 + (id)contentRequestDelegateInterface;
-+ (id)log;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType listUnsubscribeBlock; // @synthesize listUnsubscribeBlock=_listUnsubscribeBlock;
 @property(copy, nonatomic) CDUnknownBlockType requestMoreContentBlock; // @synthesize requestMoreContentBlock=_requestMoreContentBlock;
 @property(retain, nonatomic) id <_EMDistantContentRepresentation> distantContentRepresentation; // @synthesize distantContentRepresentation=_distantContentRepresentation;
 @property(retain, nonatomic) EFSandboxedURLWrapper *urlWrapper; // @synthesize urlWrapper=_urlWrapper;
+@property(retain, nonatomic) EMMessageHeaders *requestedHeaders; // @synthesize requestedHeaders=_requestedHeaders;
 @property(nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property(nonatomic) long long remainingByteCount; // @synthesize remainingByteCount=_remainingByteCount;
 @property(nonatomic) _Bool hasMoreContent; // @synthesize hasMoreContent=_hasMoreContent;
@@ -52,7 +55,7 @@
 @property(copy, nonatomic) NSArray *replyToList; // @synthesize replyToList=_replyToList;
 @property(retain, nonatomic) NSURL *publicMessageURL; // @synthesize publicMessageURL=_publicMessageURL;
 @property(nonatomic) __weak id <EMContentItem> contentItem; // @synthesize contentItem=_contentItem;
-- (void).cxx_destruct;
+- (id)performUnsubscribeAction:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mergeUpdatedRepresentation:(id)arg1;
 - (id)requestAdditionalContentWithCompletion:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_distantLoaderBlockForContentItem:(id)arg1;

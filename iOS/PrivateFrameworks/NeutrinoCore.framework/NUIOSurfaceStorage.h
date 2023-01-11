@@ -28,6 +28,11 @@
 - (long long)readSurfaceInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)writeBufferInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)readBufferInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (int)useCount;
+- (_Bool)decrementUseCount;
+- (void)incrementUseCount;
+- (_Bool)isInUse;
+- (_Bool)isShared;
 - (_Bool)isPurged;
 - (_Bool)makeNonPurgeable;
 - (void)makePurgeable;
@@ -43,9 +48,9 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, nonatomic) NUPixelFormat *format;
+@property(readonly) NUPixelFormat *format;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) CDStruct_912cb5d2 size;
+@property(readonly) CDStruct_912cb5d2 size;
 @property(readonly) Class superclass;
 @property(readonly) NURegion *validRegion;
 

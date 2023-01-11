@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     C2MPError *_networkFatalError;
     NSString *_networkHostname;
     NSString *_networkInterfaceIdentifier;
+    NSString *_networkNegotiatedTlsProtocolVersion;
     unsigned int _networkPreviousAttemptCount;
     NSString *_networkProtocolName;
     NSString *_networkRemoteAddresssAndPort;
@@ -92,6 +93,7 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *optionsDuetPreClearedMode; // @synthesize optionsDuetPreClearedMode=_optionsDuetPreClearedMode;
 @property(retain, nonatomic) NSString *optionsDiscretionaryNetworkBehavior; // @synthesize optionsDiscretionaryNetworkBehavior=_optionsDiscretionaryNetworkBehavior;
 @property(nonatomic) _Bool optionsTlsPinningRequired; // @synthesize optionsTlsPinningRequired=_optionsTlsPinningRequired;
@@ -117,6 +119,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long timestampC2Now; // @synthesize timestampC2Now=_timestampC2Now;
 @property(nonatomic) unsigned long long timestampC2Start; // @synthesize timestampC2Start=_timestampC2Start;
 @property(nonatomic) unsigned long long timestampC2Init; // @synthesize timestampC2Init=_timestampC2Init;
+@property(retain, nonatomic) NSString *networkNegotiatedTlsProtocolVersion; // @synthesize networkNegotiatedTlsProtocolVersion=_networkNegotiatedTlsProtocolVersion;
 @property(nonatomic) _Bool networkIsDiscretionary; // @synthesize networkIsDiscretionary=_networkIsDiscretionary;
 @property(retain, nonatomic) NSString *networkRequestUri; // @synthesize networkRequestUri=_networkRequestUri;
 @property(nonatomic) unsigned long long networkStatusCode; // @synthesize networkStatusCode=_networkStatusCode;
@@ -136,7 +139,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long reportFrequencyBase; // @synthesize reportFrequencyBase=_reportFrequencyBase;
 @property(nonatomic) unsigned long long reportFrequency; // @synthesize reportFrequency=_reportFrequency;
 @property(nonatomic) unsigned long long triggers; // @synthesize triggers=_triggers;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -171,6 +173,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasTimestampC2Now;
 @property(nonatomic) _Bool hasTimestampC2Start;
 @property(nonatomic) _Bool hasTimestampC2Init;
+@property(readonly, nonatomic) _Bool hasNetworkNegotiatedTlsProtocolVersion;
 @property(nonatomic) _Bool hasNetworkIsDiscretionary;
 @property(readonly, nonatomic) _Bool hasNetworkRequestUri;
 @property(nonatomic) _Bool hasNetworkStatusCode;

@@ -33,8 +33,9 @@
     id <PKCreditAccountPaymentDetailsViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <PKCreditAccountPaymentDetailsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKCreditAccountPaymentDetailsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)_cancelPayment:(unsigned long long)arg1;
 - (void)_configureLinkCell:(id)arg1;
 - (void)_configureDismissCell:(id)arg1;
@@ -70,6 +71,8 @@
 - (long long)_recurringPaymentDetailsRowTypeForRowAtIndex:(long long)arg1;
 - (void)_computeRecurringDetailsRowMap;
 - (void)viewWillLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithAccount:(id)arg1 payment:(id)arg2 paymentWebService:(id)arg3 detailViewStyle:(long long)arg4;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PPDKStorage, PPRecordStorageHelper, PPSQLDatabase;
+@class PPDKStorage, PPRecordStorageHelper, PPSQLDatabase, PPSourceStorage;
 
 @interface PPLocationStorage : NSObject
 {
@@ -14,15 +14,24 @@
     PPDKStorage *_dkStorage;
     id _deletionObserver;
     PPRecordStorageHelper *_storageHelper;
+    PPSourceStorage *_sourceStorage;
 }
 
 - (void).cxx_destruct;
+- (id)lastDonationTimeForSourcesBeforeDate:(id)arg1;
+- (id)thirdPartyBundleIdsFromToday;
 - (id)tempTableForSourceIdsExcludedAlgorithms:(id)arg1 txnWitness:(id)arg2;
+- (_Bool)pruneOrphanedLocationFeedbackCountRecordsWithLimit:(unsigned long long)arg1 rowOffset:(unsigned long long)arg2 deletedCount:(unsigned long long *)arg3 isComplete:(_Bool *)arg4;
+- (_Bool)deleteAllLocationFeedbackCountRecordsOlderThanDate:(id)arg1;
+- (id)sourceStatsWithExcludedAlgorithms:(id)arg1;
 - (_Bool)deleteAllLocationsFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThanDate:(id)arg3 atLeastOneLocationRemoved:(_Bool *)arg4 deletedCount:(unsigned long long *)arg5 error:(id *)arg6;
 - (_Bool)deleteAllLocationsFromSourcesWithBundleId:(id)arg1 atLeastOneLocationRemoved:(_Bool *)arg2 deletedCount:(unsigned long long *)arg3 error:(id *)arg4;
 - (_Bool)deleteAllLocationsFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 atLeastOneLocationRemoved:(_Bool *)arg3 deletedCount:(unsigned long long *)arg4 error:(id *)arg5;
 - (_Bool)deleteAllLocationsFromSourcesWithBundleId:(id)arg1 documentIds:(id)arg2 atLeastOneLocationRemoved:(_Bool *)arg3 deletedCount:(unsigned long long *)arg4 error:(id *)arg5;
 - (_Bool)deleteAllLocationsOlderThanDate:(id)arg1 atLeastOneLocationRemoved:(_Bool *)arg2 deletedCount:(unsigned long long *)arg3 error:(id *)arg4;
+- (_Bool)decayFeedbackCountsWithDecayRate:(double)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2;
+- (_Bool)donateLocationFeedback:(id)arg1;
+- (id)decayedFeedbackCountsForClusterIdentifier:(id)arg1;
 - (void)_deleteLocationsWithRowIdTableWithName:(id)arg1 txnWitness:(id)arg2 atLeastOneLocationRemoved:(_Bool *)arg3 deletedCount:(unsigned long long *)arg4;
 - (void)_insertAreasOfInterest:(id)arg1 forLocationWithRowId:(long long)arg2 txnWitness:(id)arg3;
 - (void)_insertContextualNamedEntities:(id)arg1 forLocationWithRowId:(long long)arg2 txnWitness:(id)arg3;

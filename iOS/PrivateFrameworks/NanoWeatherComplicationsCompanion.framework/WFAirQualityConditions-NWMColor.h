@@ -6,8 +6,6 @@
 
 #import <WeatherFoundation/WFAirQualityConditions.h>
 
-@class NSString, UIColor;
-
 @interface WFAirQualityConditions (NWMColor)
 + (unsigned long long)nwm_maxIndexAirQualityScaleForLocation:(id)arg1;
 + (id)nwm_allIndicesOfAirQualityScaleForLocation:(id)arg1;
@@ -16,8 +14,9 @@
 + (id)nwm_titleForAirQualityConditions:(id)arg1 atLocation:(id)arg2;
 + (id)nwm_shortDescriptionForAirQualityConditions:(id)arg1 atLocation:(id)arg2;
 + (id)nwm_longDescriptionForAirQualityConditions:(id)arg1 atLocation:(id)arg2;
-@property(readonly, nonatomic) UIColor *nwm_color;
-@property(readonly, nonatomic) NSString *nwm_localizedDescriptionShort;
-@property(readonly, nonatomic) NSString *nwm_localizedDescriptionLong;
+- (unsigned long long)nwm_maxIndexOfScale;
+- (id)nwm_colorForCurrentIndex;
+- (id)nwm_colorIndicesOfScale;
+- (id)nwm_colorForScaleOfLocation:(id)arg1;
 @end
 

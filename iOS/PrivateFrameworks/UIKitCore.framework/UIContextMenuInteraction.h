@@ -6,30 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/UIDeferredMenuElementDelegate-Protocol.h>
 #import <UIKitCore/UIInteraction-Protocol.h>
 #import <UIKitCore/_UIClickPresentationInteractionDelegateInternal-Protocol.h>
-#import <UIKitCore/_UIPreviewPlatterPresentationAnimatorDelegate-Protocol.h>
+#import <UIKitCore/_UIContextMenuPresentationAnimationDelegate-Protocol.h>
 #import <UIKitCore/_UIPreviewPlatterPresentationControllerDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, UIContextMenuConfiguration, UIGestureRecognizer, UITargetedPreview, UIView, _UIClickPresentationInteraction, _UIContextMenuAnimator;
 @protocol UIContextMenuInteractionDelegate;
 
-@interface UIContextMenuInteraction : NSObject <_UIClickPresentationInteractionDelegateInternal, _UIPreviewPlatterPresentationControllerDelegate, _UIPreviewPlatterPresentationAnimatorDelegate, UIInteraction>
+@interface UIContextMenuInteraction : NSObject <_UIClickPresentationInteractionDelegateInternal, _UIPreviewPlatterPresentationControllerDelegate, _UIContextMenuPresentationAnimationDelegate, UIDeferredMenuElementDelegate, UIInteraction>
 {
     struct {
         _Bool previewForHighlighting;
         _Bool previewForDismissing;
-        _Bool willCommit;
-        _Bool willPresent;
-        _Bool didEnd;
         _Bool willPerformPreviewActionForMenuWithConfiguration;
         _Bool willDisplayMenuForConfiguration;
         _Bool willEndForConfiguration;
+        _Bool styleForMenuWithConfiguration;
+        _Bool accessoriesForMenuWithConfiguration;
+        _Bool failedToBeginForSecondaryClickAtLocation;
         _Bool asyncConfigurationForMenuAtLocation;
         _Bool overrideSuggestedActions;
-        _Bool styleForMenuWithConfiguration;
         _Bool shouldAllowDragAfterDismiss;
         _Bool interactionEffectForTargetedPreview;
+        _Bool shouldAttemptToPresentConfiguration;
+        _Bool willCommit;
+        _Bool willPresent;
+        _Bool didEnd;
     } _delegateImplements;
     UIView *_view;
     id <UIContextMenuInteractionDelegate> _delegate;
@@ -41,6 +45,8 @@
     _UIContextMenuAnimator *_pendingCommitAnimator;
 }
 
++ (id)_deferredMenuPlaceholder;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIContextMenuAnimator *pendingCommitAnimator; // @synthesize pendingCommitAnimator=_pendingCommitAnimator;
 @property(copy, nonatomic) UITargetedPreview *stashedPreview; // @synthesize stashedPreview=_stashedPreview;
 @property(retain, nonatomic) _UIClickPresentationInteraction *presentationInteraction; // @synthesize presentationInteraction=_presentationInteraction;
@@ -49,26 +55,36 @@
 @property(retain, nonatomic) UIContextMenuConfiguration *pendingConfiguration; // @synthesize pendingConfiguration=_pendingConfiguration;
 @property(readonly, nonatomic) __weak id <UIContextMenuInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak UIView *view; // @synthesize view=_view;
-- (void).cxx_destruct;
 - (id)_suggestedMenuForConfiguration:(id)arg1;
 - (id)_delegate_contextMenuInteractionWillEndForConfiguration:(id)arg1 presentation:(id)arg2;
-- (id)_delegate_contextMenuInteractionWillPresentForConfiguration:(id)arg1;
+- (id)_delegate_contextMenuInteractionWillDisplayForConfiguration:(id)arg1;
 - (void)_delegate_tappedPreviewForConfiguration:(id)arg1 withAnimator:(id)arg2;
-- (id)_delegate_previewForDismissingForConfiguration:(id)arg1;
+- (id)_overrideTargetedPreviewForCompactStyle:(id)arg1;
+- (id)_delegate_previewForDismissingForConfiguration:(id)arg1 clientReturnedPreview:(_Bool *)arg2;
 - (id)_delegate_previewForHighlightingForConfiguration:(id)arg1;
+- (_Bool)_delegate_failedToBeginForSecondaryClickAtLocation:(struct CGPoint)arg1;
 - (id)_delegate_configurationForMenuAtLocation:(struct CGPoint)arg1;
 - (void)_interactionShouldBeginAtLocation:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)targetedPreviewForAnimator:(id)arg1 dismissingWithStyle:(unsigned long long)arg2;
+- (id)targetedPreviewForAnimator:(id)arg1 dismissingWithStyle:(unsigned long long)arg2 clientReturnedPreview:(_Bool *)arg3;
+- (id)_previewPlatterPresentationController:(id)arg1 willDisplayMenu:(id)arg2;
+- (void)_previewPlatterPresentationController:(id)arg1 didSelectMenuLeaf:(id)arg2;
+- (_Bool)_previewPlatterPresentationControllerShouldHandlePreviewAction:(id)arg1;
 - (void)_previewPlatterPresentationControllerDidTapPreview:(id)arg1;
 - (id)actualPlatterContainerViewForPresentationController:(id)arg1;
 - (void)_performCleanupForConfigurationWithIdentifier:(id)arg1;
 - (void)_dragMorphDidCompleteForConfiguration:(id)arg1;
+- (id)_clickPresentationInteraction:(id)arg1 liveDragPreviewForPresentation:(id)arg2;
 - (void)_previewPlatterPresentationController:(id)arg1 beginDragWithTouch:(id)arg2;
 - (void)_previewPlatterPresentationControllerWantsToBeDismissed:(id)arg1 withReason:(unsigned long long)arg2 alongsideActions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_previewPlatterPresentationControllerDidEndPanInteraction:(id)arg1;
+- (void)_previewPlatterPresentationControllerDidBeginPanInteraction:(id)arg1;
 - (void)_clickPresentationInteraction:(id)arg1 dragSessionDidEndForItems:(id)arg2;
 - (void)_clickPresentationInteractionEnded:(id)arg1 forPresentation:(id)arg2 reason:(unsigned long long)arg3;
-- (id)_fulfilledConfigurationForConfiguration:(id)arg1;
+- (id)_menuPreparedForDisplayWithMenu:(id)arg1;
+- (id)_fulfilledConfigurationForConfiguration:(id)arg1 activationMode:(unsigned long long)arg2;
 - (unsigned long long)_actualLayoutForPreferredLayout:(unsigned long long)arg1 withConfiguration:(id)arg2;
+- (id)_accessoryViewsForPreviewPlatterPresentationController:(id)arg1;
+- (_Bool)_shouldKeepInputViewVisibleForLayout:(unsigned long long)arg1;
 - (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
 - (void)_clickPresentationInteraction:(id)arg1 item:(id)arg2 willAnimateDragCancelWithAnimator:(id)arg3;
 - (id)_clickPresentationInteraction:(id)arg1 previewForCancellingDragItem:(id)arg2;
@@ -80,10 +96,19 @@
 - (void)_clickPresentationInteraction:(id)arg1 shouldBegin:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) UIGestureRecognizer *gestureRecognizerForFailureRelationships;
 @property(nonatomic) _Bool allowSimultaneousRecognition;
+@property(readonly, nonatomic) unsigned long long _inputPrecision;
+- (unsigned long long)_currentActivationMode;
 - (void)_updateVisibleMenuWithBlock:(CDUnknownBlockType)arg1;
-- (void)dismissMenu;
+- (void)deferredMenuElementWasFulfilled:(id)arg1;
+- (void)_willBeginWithConfiguration:(id)arg1;
+- (id)_proxySender;
+- (void)_updateInteractionDrivers;
+- (id)_interactionDrivers;
 - (void)_presentMenuAtLocation:(struct CGPoint)arg1;
+- (void)dismissMenu;
+- (void)updateVisibleMenuWithBlock:(CDUnknownBlockType)arg1;
 - (struct CGPoint)locationInView:(id)arg1;
+@property(readonly, nonatomic) long long menuAppearance;
 - (void)dealloc;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;

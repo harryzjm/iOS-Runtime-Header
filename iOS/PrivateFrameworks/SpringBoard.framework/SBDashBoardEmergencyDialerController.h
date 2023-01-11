@@ -22,7 +22,6 @@
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)exitEmergencyDialerAnimated:(_Bool)arg1;
 - (void)emergencyDialerExitedWithError:(id)arg1;
-- (void)launchInCallAlert;
 - (void)launchEmergencyDialerAnimated:(_Bool)arg1;
 - (void)launchEmergencyDialer;
 - (_Bool)isMakingEmergencyCall;

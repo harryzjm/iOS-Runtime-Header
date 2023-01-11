@@ -10,20 +10,31 @@
 __attribute__((visibility("hidden")))
 @interface VUIRentalExpirationLabel
 {
+    _Bool _contentIsAvailable;
+    _Bool _forDownload;
+    _Bool _useWarningColor;
     NSDate *_expirationDate;
     id <VUIRentalExpirationLabelDelegate> _delegate;
-    NSString *_formatString;
+    NSString *_locStringPrefix;
     NSTimer *_expiryUpdateTimer;
 }
 
-+ (id)_calculateExpirationStringForDate:(id)arg1 displayWarningColor:(_Bool *)arg2 updateInterval:(long long *)arg3 formatString:(id)arg4;
-+ (id)calculateExpirationStringForDate:(id)arg1 updateInterval:(long long *)arg2 formatString:(id)arg3;
-+ (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 formatString:(id)arg4;
++ (id)_calculateExpirationStringForDate:(id)arg1 displayWarningColor:(_Bool *)arg2 updateInterval:(long long *)arg3 locStringPrefix:(id)arg4;
++ (_Bool)shouldShowLabelForDownloadExpirationDate:(id)arg1;
++ (id)calculateExpirationStringForDate:(id)arg1 updateInterval:(long long *)arg2 locStringPrefix:(id)arg3;
++ (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4 forDownload:(_Bool)arg5 contentIsAvailable:(_Bool)arg6;
++ (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4 useWarningColor:(_Bool)arg5;
++ (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 locStringPrefix:(id)arg4;
++ (id)labelWithTextLayout:(id)arg1 existingLabel:(id)arg2 locStringPrefix:(id)arg3;
++ (id)labelForRentalExpirationDate:(id)arg1 downloadExpirationDate:(id)arg2 contentAvailabilityDate:(id)arg3 downloadStatus:(unsigned long long)arg4;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useWarningColor; // @synthesize useWarningColor=_useWarningColor;
+@property(nonatomic) _Bool forDownload; // @synthesize forDownload=_forDownload;
+@property(nonatomic) _Bool contentIsAvailable; // @synthesize contentIsAvailable=_contentIsAvailable;
 @property(retain, nonatomic) NSTimer *expiryUpdateTimer; // @synthesize expiryUpdateTimer=_expiryUpdateTimer;
-@property(copy, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
+@property(copy, nonatomic) NSString *locStringPrefix; // @synthesize locStringPrefix=_locStringPrefix;
 @property(nonatomic) __weak id <VUIRentalExpirationLabelDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-- (void).cxx_destruct;
 - (void)_computeExpirationLabel:(id)arg1;
 - (void)invalidateTimer;
 - (void)dealloc;

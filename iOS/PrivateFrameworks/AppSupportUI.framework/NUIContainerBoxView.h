@@ -24,7 +24,6 @@
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
 - (_Bool)setNeedsInvalidation:(long long)arg1;
 - (void)populateBoxArrangementCells:(vector_eb457d57 *)arg1;
-- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1 inAxis:(long long)arg2;
 - (id)calculateViewForLastBaselineLayout;
 - (id)calculateViewForFirstBaselineLayout;
 @property(nonatomic) long long verticalAlignment;

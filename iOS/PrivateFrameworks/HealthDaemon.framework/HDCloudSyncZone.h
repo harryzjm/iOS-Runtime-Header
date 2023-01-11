@@ -6,42 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class CKShare, HDCloudSyncDataUploadRequestRecord, HDCloudSyncMasterRecord, HDCloudSyncRepository, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSMutableArray, NSUUID;
+@class CKRecordID, CKShare, HDCloudSyncDataUploadRequestRecord, HDCloudSyncMasterRecord, HDCloudSyncRegistryRecord, HDCloudSyncRepository, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSArray, NSMutableArray, NSUUID;
 
 @interface HDCloudSyncZone : NSObject
 {
-    NSMutableArray *_sequenceRecords;
+    NSMutableArray *_records;
+    NSMutableArray *_storeRecords;
+    NSMutableArray *_orphanedSequenceRecords;
+    _Bool _hasLostIdentity;
     _Bool _hasFutureSchemaRecord;
     _Bool _validatedForSharing;
     HDCloudSyncRepository *_repository;
     HDCloudSyncZoneIdentifier *_zoneIdentifier;
     long long _zoneType;
-    HDCloudSyncStoreRecord *_storeRecord;
-    HDCloudSyncMasterRecord *_masterRecord;
-    HDCloudSyncStore *_store;
+    HDCloudSyncRegistryRecord *_registryRecord;
     long long _purpose;
     CKShare *_zoneShare;
+    HDCloudSyncMasterRecord *_masterRecord;
+    HDCloudSyncStore *_store;
     HDCloudSyncDataUploadRequestRecord *_dataUploadRequestRecord;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HDCloudSyncDataUploadRequestRecord *dataUploadRequestRecord; // @synthesize dataUploadRequestRecord=_dataUploadRequestRecord;
+@property(retain, nonatomic) HDCloudSyncStore *store; // @synthesize store=_store;
+@property(readonly, nonatomic) HDCloudSyncMasterRecord *masterRecord; // @synthesize masterRecord=_masterRecord;
 @property(nonatomic) _Bool validatedForSharing; // @synthesize validatedForSharing=_validatedForSharing;
 @property(retain, nonatomic) CKShare *zoneShare; // @synthesize zoneShare=_zoneShare;
 @property(nonatomic) long long purpose; // @synthesize purpose=_purpose;
-@property(retain, nonatomic) HDCloudSyncStore *store; // @synthesize store=_store;
 @property(nonatomic) _Bool hasFutureSchemaRecord; // @synthesize hasFutureSchemaRecord=_hasFutureSchemaRecord;
-@property(readonly, nonatomic) HDCloudSyncMasterRecord *masterRecord; // @synthesize masterRecord=_masterRecord;
-@property(readonly, nonatomic) HDCloudSyncStoreRecord *storeRecord; // @synthesize storeRecord=_storeRecord;
+@property(readonly, nonatomic) HDCloudSyncRegistryRecord *registryRecord; // @synthesize registryRecord=_registryRecord;
+@property(nonatomic) _Bool hasLostIdentity; // @synthesize hasLostIdentity=_hasLostIdentity;
 @property(readonly, nonatomic) long long zoneType; // @synthesize zoneType=_zoneType;
 @property(readonly, copy, nonatomic) HDCloudSyncZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 @property(readonly, nonatomic) __weak HDCloudSyncRepository *repository; // @synthesize repository=_repository;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) HDCloudSyncStoreRecord *storeRecord;
+@property(readonly, copy, nonatomic) NSUUID *storeIdentifier;
 - (id)description;
+@property(readonly, copy, nonatomic) CKRecordID *zoneShareRecordID;
 - (_Bool)_addSubscriptionRecord:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) long long recordCount;
+@property(readonly, copy, nonatomic) NSArray *recordNames;
+@property(readonly, copy, nonatomic) NSArray *records;
+@property(readonly, copy, nonatomic) NSArray *storeRecords;
+- (void)removeRecord:(id)arg1;
 - (_Bool)addRecord:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) _Bool hasOrphanedSequenceRecords;
 @property(readonly, nonatomic) _Bool isEmpty;
-@property(readonly, copy, nonatomic) NSUUID *storeIdentifier;
 - (id)initForZoneIdentifier:(id)arg1 repository:(id)arg2 type:(long long)arg3;
 
 @end

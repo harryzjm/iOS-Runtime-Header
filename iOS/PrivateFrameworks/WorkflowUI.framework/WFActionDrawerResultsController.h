@@ -6,33 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class HMHome, WFActionRegistry;
+@class HMHome, WFActionDrawerResults, WFActionRegistry;
+@protocol OS_dispatch_queue;
 
 @interface WFActionDrawerResultsController : NSObject
 {
-    WFActionRegistry *_actionRegistry;
     HMHome *_home;
+    WFActionRegistry *_actionRegistry;
+    WFActionDrawerResults *_cachedSiriSuggestionsResults;
+    NSObject<OS_dispatch_queue> *_searchQueue;
 }
 
 + (id)localizedAppNames;
-@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
-@property(readonly, nonatomic) WFActionRegistry *actionRegistry; // @synthesize actionRegistry=_actionRegistry;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *searchQueue; // @synthesize searchQueue=_searchQueue;
+@property(readonly, nonatomic) WFActionDrawerResults *cachedSiriSuggestionsResults; // @synthesize cachedSiriSuggestionsResults=_cachedSiriSuggestionsResults;
+@property(readonly, nonatomic) WFActionRegistry *actionRegistry; // @synthesize actionRegistry=_actionRegistry;
+@property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)actions;
 - (id)actionsForCategory:(id)arg1;
 - (_Bool)filteringForResidentCompatibleActions;
-- (id)homeSectionsIncludingRelatedActions:(_Bool)arg1;
+- (void)getHomeSectionsIncludingRelatedActions:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)suggestedCategoriesForContentClasses:(id)arg1;
-- (void)getDeveloperSuggestedResultsForAppIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getSiriSuggestedGroupedResultsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getSiriSuggestedResultsForAppIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getSiriSuggestedGroupedResultsRefreshingCache:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getSiriSuggestedResultsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)resultsForFavorites;
 - (id)resultsForSuggestionsWithWorkflow:(id)arg1;
-- (id)resultsForAppWithIdentifier:(id)arg1 shouldFilterForAppsViewController:(_Bool)arg2;
-- (id)resultsForCategory:(id)arg1;
-- (void)getResultsForAppIdentifier:(id)arg1 shouldFilterForAppsViewController:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getResultsForCategory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getResultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)resultsForSearchQuery:(id)arg1 includingSiriSuggestedResults:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithActionRegistry:(id)arg1;
+- (id)initWithActionRegistry:(id)arg1 home:(id)arg2;
 
 @end
 

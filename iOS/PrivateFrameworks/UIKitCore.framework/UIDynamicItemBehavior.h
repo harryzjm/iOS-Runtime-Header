@@ -33,6 +33,7 @@
 }
 
 + (_Bool)_isPrimitiveBehavior;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsRotation; // @synthesize allowsRotation=_allowsRotation;
 @property(nonatomic, getter=isAnchored) _Bool anchored; // @synthesize anchored=_anchored;
 @property(nonatomic) double charge; // @synthesize charge=_charge;
@@ -41,7 +42,6 @@
 @property(nonatomic) double density; // @synthesize density=_density;
 @property(nonatomic) double friction; // @synthesize friction=_friction;
 @property(nonatomic) double elasticity; // @synthesize elasticity=_elasticity;
-- (void).cxx_destruct;
 - (id)description;
 - (void)setUseDefaultViewPropertiesApplier:(_Bool)arg1;
 - (_Bool)useDefaultViewPropertiesApplier;

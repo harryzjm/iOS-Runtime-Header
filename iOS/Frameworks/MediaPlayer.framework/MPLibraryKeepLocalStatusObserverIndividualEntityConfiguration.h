@@ -16,6 +16,8 @@
 @property(nonatomic) _Bool hasNonPurgeableAsset; // @synthesize hasNonPurgeableAsset=_hasNonPurgeableAsset;
 @property(nonatomic) long long managedStatus; // @synthesize managedStatus=_managedStatus;
 @property(nonatomic, getter=isCollectionType) _Bool collectionType; // @synthesize collectionType=_collectionType;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 
 @end
 

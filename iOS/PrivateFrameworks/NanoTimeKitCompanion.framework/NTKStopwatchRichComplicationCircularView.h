@@ -4,44 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
-
-@class NSString, NTKColoringLabel, NTKRichComplicationDialView, UIImageView;
-@protocol CLKMonochromeFilterProvider;
-
-@interface NTKStopwatchRichComplicationCircularView <CLKMonochromeComplicationView>
+@interface NTKStopwatchRichComplicationCircularView
 {
-    UIImageView *_timerImageView;
-    NTKColoringLabel *_timeLabel;
-    NTKRichComplicationDialView *_frontDial;
-    NTKRichComplicationDialView *_backDial;
-    struct NSNumber *_updateToken;
-    struct {
-        double timeLabelFontSize;
-        double timeLabelMaxWidth;
-        double timeLabelBottom;
-        double dialDiameter;
-        struct CGSize largeTickSize;
-        struct CGSize smallTickSize;
-    } _layoutConstants;
 }
 
-- (void).cxx_destruct;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (double)_stopwatchCurrentTime;
-- (void)_updateDialProgress;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)layoutSubviews;
-- (void)dealloc;
++ (_Bool)supportsComplicationFamily:(long long)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

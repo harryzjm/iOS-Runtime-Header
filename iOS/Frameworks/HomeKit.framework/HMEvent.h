@@ -27,11 +27,11 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)sharedTriggerActivationSupportedForHome:(id)arg1;
 + (_Bool)isSupportedForHome:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *triggerType; // @synthesize triggerType=_triggerType;
 @property(nonatomic, getter=isEndEvent) _Bool endEvent; // @synthesize endEvent=_endEvent;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_serializeForAdd;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,13 +40,15 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)_updateTriggerType;
-- (void)_invalidate;
 @property(nonatomic) __weak HMEventTrigger *eventTrigger; // @synthesize eventTrigger=_eventTrigger;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)_registerNotificationHandlers;
 - (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
+- (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (id)initWithDict:(id)arg1;
 - (id)init;
 

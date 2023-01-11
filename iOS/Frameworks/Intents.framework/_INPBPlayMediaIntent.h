@@ -10,11 +10,12 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBPlayMediaIntent-Protocol.h>
 
-@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch, _INPBString, _INPBTimestamp;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch, _INPBPrivatePlayMediaIntentData, _INPBString, _INPBTimestamp;
 
 @interface _INPBPlayMediaIntent : PBCodable <_INPBPlayMediaIntent, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int parsecCategory:1;
         unsigned int playShuffled:1;
         unsigned int playbackQueueLocation:1;
         unsigned int playbackRepeatMode:1;
@@ -23,9 +24,11 @@
     } _has;
     _Bool _playShuffled;
     _Bool _resumePlayback;
-    _Bool __encodeLegacyGloryData;
+    int _parsecCategory;
     int _playbackQueueLocation;
     int _playbackRepeatMode;
+    NSArray *_alternativeResults;
+    NSArray *_audioSearchResults;
     _INPBString *_audiobookAuthor;
     _INPBString *_audiobookTitle;
     NSArray *_buckets;
@@ -39,6 +42,7 @@
     _INPBString *_musicArtistName;
     double _playbackSpeed;
     _INPBString *_playlistTitle;
+    _INPBPrivatePlayMediaIntentData *_privatePlayMediaIntentData;
     NSString *_proxiedBundleIdentifier;
     NSString *_recoID;
     _INPBString *_showTitle;
@@ -48,16 +52,20 @@
 + (Class)mediaItemsType;
 + (Class)hashedRouteUIDsType;
 + (Class)bucketType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
++ (Class)audioSearchResultsType;
++ (Class)alternativeResultsType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBString *showTitle; // @synthesize showTitle=_showTitle;
 @property(nonatomic) _Bool resumePlayback; // @synthesize resumePlayback=_resumePlayback;
 @property(copy, nonatomic) NSString *recoID; // @synthesize recoID=_recoID;
 @property(copy, nonatomic) NSString *proxiedBundleIdentifier; // @synthesize proxiedBundleIdentifier=_proxiedBundleIdentifier;
+@property(retain, nonatomic) _INPBPrivatePlayMediaIntentData *privatePlayMediaIntentData; // @synthesize privatePlayMediaIntentData=_privatePlayMediaIntentData;
 @property(retain, nonatomic) _INPBString *playlistTitle; // @synthesize playlistTitle=_playlistTitle;
 @property(nonatomic) double playbackSpeed; // @synthesize playbackSpeed=_playbackSpeed;
 @property(nonatomic) int playbackRepeatMode; // @synthesize playbackRepeatMode=_playbackRepeatMode;
 @property(nonatomic) int playbackQueueLocation; // @synthesize playbackQueueLocation=_playbackQueueLocation;
 @property(nonatomic) _Bool playShuffled; // @synthesize playShuffled=_playShuffled;
+@property(nonatomic) int parsecCategory; // @synthesize parsecCategory=_parsecCategory;
 @property(retain, nonatomic) _INPBString *musicArtistName; // @synthesize musicArtistName=_musicArtistName;
 @property(retain, nonatomic) _INPBString *mediaUserContext; // @synthesize mediaUserContext=_mediaUserContext;
 @property(retain, nonatomic) _INPBMediaSearch *mediaSearch; // @synthesize mediaSearch=_mediaSearch;
@@ -69,7 +77,8 @@
 @property(copy, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
 @property(retain, nonatomic) _INPBString *audiobookTitle; // @synthesize audiobookTitle=_audiobookTitle;
 @property(retain, nonatomic) _INPBString *audiobookAuthor; // @synthesize audiobookAuthor=_audiobookAuthor;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *audioSearchResults; // @synthesize audioSearchResults=_audioSearchResults;
+@property(copy, nonatomic) NSArray *alternativeResults; // @synthesize alternativeResults=_alternativeResults;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -82,6 +91,7 @@
 @property(nonatomic) _Bool hasResumePlayback;
 @property(readonly, nonatomic) _Bool hasRecoID;
 @property(readonly, nonatomic) _Bool hasProxiedBundleIdentifier;
+@property(readonly, nonatomic) _Bool hasPrivatePlayMediaIntentData;
 @property(readonly, nonatomic) _Bool hasPlaylistTitle;
 @property(nonatomic) _Bool hasPlaybackSpeed;
 - (int)StringAsPlaybackRepeatMode:(id)arg1;
@@ -91,6 +101,9 @@
 - (id)playbackQueueLocationAsString:(int)arg1;
 @property(nonatomic) _Bool hasPlaybackQueueLocation;
 @property(nonatomic) _Bool hasPlayShuffled;
+- (int)StringAsParsecCategory:(id)arg1;
+- (id)parsecCategoryAsString:(int)arg1;
+@property(nonatomic) _Bool hasParsecCategory;
 @property(readonly, nonatomic) _Bool hasMusicArtistName;
 @property(readonly, nonatomic) _Bool hasMediaUserContext;
 @property(readonly, nonatomic) _Bool hasMediaSearch;
@@ -111,6 +124,14 @@
 - (void)clearBuckets;
 @property(readonly, nonatomic) _Bool hasAudiobookTitle;
 @property(readonly, nonatomic) _Bool hasAudiobookAuthor;
+- (id)audioSearchResultsAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long audioSearchResultsCount;
+- (void)addAudioSearchResults:(id)arg1;
+- (void)clearAudioSearchResults;
+- (id)alternativeResultsAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long alternativeResultsCount;
+- (void)addAlternativeResults:(id)arg1;
+- (void)clearAlternativeResults;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

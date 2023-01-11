@@ -10,6 +10,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _nextItemRowID;
     unsigned long long _nextNotifRank;
     unsigned long long _nextPackageItemRank;
+    unsigned long long _telemetryMinRowID;
+    long long _telemetryToken;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -18,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (id)description;
+@property(nonatomic) long long telemetryToken;
+@property(nonatomic) unsigned long long telemetryMinRowID;
 @property(nonatomic) unsigned long long nextPackageItemRank;
 - (unsigned long long)allocatePackageItemRank;
 @property(nonatomic) unsigned long long nextNotifRank;

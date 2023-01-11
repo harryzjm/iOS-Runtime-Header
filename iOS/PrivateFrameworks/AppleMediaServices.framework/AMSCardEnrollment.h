@@ -14,14 +14,19 @@
 + (id)_paymentServicesMerchantURLPromise;
 + (id)_currentIdentifier;
 + (id)_cardEligibilityStatusForCountryCode:(id)arg1;
-+ (void)updateAutoEnrollmentIdentifier;
 + (_Bool)shouldUseAutoEnrollmentWithPercentage:(double)arg1 sessionDuration:(double)arg2;
 + (_Bool)shouldAttemptAutoEnrollmentWithCountryCode:(id)arg1;
-+ (_Bool)shouldAttemptApplePayClassicWithCountryCode:(id)arg1 paymentNetworks:(id)arg2;
-+ (void)clearAutoEnrollmentIdentifier;
++ (_Bool)shouldAttemptApplePayClassicWithCountryCode:(id)arg1 paymentNetworks:(id)arg2 accessControlRef:(struct __SecAccessControl *)arg3;
 + (_Bool)shouldAttemptAutoEnrollment;
++ (void)updateAutoEnrollmentIdentifier;
++ (_Bool)shouldUseAutoEnrollmentWithBag:(id)arg1;
++ (_Bool)shouldUseApplePayClassicWithBag:(id)arg1;
++ (_Bool)shouldAttemptAutoEnrollmentWithBag:(id)arg1 accessControlRef:(struct __SecAccessControl *)arg2;
++ (_Bool)shouldAttemptApplePayClassicWithBag:(id)arg1 accessControlRef:(struct __SecAccessControl *)arg2;
++ (void)finishCardEnrollmentAttemptWithBag:(id)arg1 buyParams:(id)arg2 purchaseResult:(id)arg3;
++ (void)clearAutoEnrollmentIdentifier;
++ (_Bool)beginCardEnrollmentAttemptWithBag:(id)arg1 account:(id)arg2;
 + (id)paymentServicesMerchantURL;
-+ (_Bool)isBiometricACLUpgradeRequired;
 
 @end
 

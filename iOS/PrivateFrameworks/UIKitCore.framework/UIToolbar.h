@@ -10,11 +10,11 @@
 #import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 
 @class NSArray, NSString, UIAccessibilityHUDGestureManager, UIBarButtonItem, UIColor, UIToolbarAppearance, UIView, _UIToolbarVisualProvider;
-@protocol UIToolbarDelegate;
+@protocol UIToolbarDelegate, _UIToolbarDelegateInternal;
 
 @interface UIToolbar <UIAccessibilityHUDGestureDelegate, _UIBarPositioningInternal, UIGestureRecognizerDelegatePrivate, UIBarPositioning>
 {
-    id <UIToolbarDelegate> _delegate;
+    id <_UIToolbarDelegateInternal> _delegate;
     NSArray *_items;
     UIColor *_barTintColor;
     struct {
@@ -23,6 +23,7 @@
         unsigned int isLocked:1;
         unsigned int linkedBeforeWhitetailAndInitializedFromCoder:1;
         unsigned int disableBlurTinting:1;
+        unsigned int delegateRespondsToInterfaceOrientationWindowSelector:1;
     } _toolbarFlags;
     id __appearanceStorage;
     _UIToolbarVisualProvider *_visualProvider;
@@ -44,6 +45,7 @@
 + (id)defaultButtonFont;
 + (id)_visualProviderForToolbar:(id)arg1;
 + (_Bool)_forceLegacyVisualProvider;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
 @property(nonatomic, setter=_setWantsLetterpressContent:) _Bool _wantsLetterpressContent; // @synthesize _wantsLetterpressContent=__wantsLetterpressContent;
 @property(copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
@@ -54,7 +56,6 @@
 @property(readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 @property(retain, nonatomic, setter=_setShadowView:) UIView *_shadowView; // @synthesize _shadowView;
 @property(retain, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
-- (void).cxx_destruct;
 - (void)_46877859;
 - (void)_setButtonBackgroundImage:(id)arg1 mini:(id)arg2 forStates:(unsigned long long)arg3;
 - (id)initInView:(id)arg1 withFrame:(struct CGRect)arg2 withItemList:(id)arg3;
@@ -83,10 +84,12 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)invalidateIntrinsicContentSize;
 - (struct CGSize)intrinsicContentSize;
+- (long long)_expectedInterfaceOrientation;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;
 - (struct CGSize)defaultSizeForOrientation:(long long)arg1;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_setupAXHUDGestureIfNecessary;
 - (id)_itemAtPoint:(struct CGPoint)arg1;

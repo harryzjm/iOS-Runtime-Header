@@ -13,17 +13,19 @@
 
 @interface AVTActionsToAttributeEditorTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 {
+    _Bool _RTL;
     AVTUIEnvironment *_environment;
     id <AVTViewLayoutInfo> _avtViewLayoutInfo;
 }
 
 + (struct UIEdgeInsets)adjustedSafeAreaInsetsForView:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool RTL; // @synthesize RTL=_RTL;
 @property(readonly, nonatomic) id <AVTViewLayoutInfo> avtViewLayoutInfo; // @synthesize avtViewLayoutInfo=_avtViewLayoutInfo;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
-- (void).cxx_destruct;
 - (double)transitionDuration:(id)arg1;
 - (void)animateTransition:(id)arg1;
-- (id)initWithAVTViewLayoutInfo:(id)arg1 environment:(id)arg2;
+- (id)initWithAVTViewLayoutInfo:(id)arg1 RTL:(_Bool)arg2 environment:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

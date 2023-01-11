@@ -17,8 +17,8 @@
 - (void)setRepeatInput:(id)arg1 withVariableSource:(id)arg2;
 - (id)repeatCountVariableName;
 - (id)repeatInputVariableName;
-- (id)outputVariableWithVariableProvider:(id)arg1;
-- (void)runWithInput:(id)arg1 userInterface:(id)arg2 parameterInputProvider:(id)arg3 variableSource:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)outputVariableWithVariableProvider:(id)arg1 UUIDProvider:(id)arg2;
+- (void)runWithInput:(id)arg1 userInterface:(id)arg2 parameterInputProvider:(id)arg3 variableSource:(id)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)resetEvaluationCriteriaWithVariableSource:(id)arg1;
 - (_Bool)shouldRepeatWithVariableSource:(id)arg1;
 

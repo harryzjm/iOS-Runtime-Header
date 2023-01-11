@@ -17,10 +17,10 @@
     SXDragManager *_dragManager;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SXDragManager *dragManager; // @synthesize dragManager=_dragManager;
 @property(readonly, nonatomic) id <SXMediaSharingPolicyProvider> mediaSharingPolicyProvider; // @synthesize mediaSharingPolicyProvider=_mediaSharingPolicyProvider;
 @property(retain, nonatomic) NSArray *componentViews; // @synthesize componentViews=_componentViews;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)allowHierarchyRemoval;
 - (_Bool)userInteractable;
@@ -40,7 +40,7 @@
 - (id)componentViewsForRole:(int)arg1 recursive:(_Bool)arg2;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
 - (id)contentViewForBehavior:(id)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 mediaSharingPolicyProvider:(id)arg5;
 
 // Remaining properties

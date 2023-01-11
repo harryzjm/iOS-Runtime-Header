@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
     _Bool _containsStart;
     _Bool _vertical;
     _Bool __drawsOwnHighlight;
+    long long _writingDirection;
     struct CGRect _rect;
 }
 
@@ -19,10 +20,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isVertical) _Bool vertical; // @synthesize vertical=_vertical;
 @property(nonatomic) _Bool containsStart; // @synthesize containsStart=_containsStart;
 @property(nonatomic) _Bool containsEnd; // @synthesize containsEnd=_containsEnd;
+@property(nonatomic) long long writingDirection; // @synthesize writingDirection=_writingDirection;
 @property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 - (id)description;
 - (void)setRect:(struct CGRect)arg1 fromView:(id)arg2;
-- (long long)writingDirection;
 
 @end
 

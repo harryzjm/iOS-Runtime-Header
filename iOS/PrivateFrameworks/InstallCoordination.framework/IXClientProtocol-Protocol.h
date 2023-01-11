@@ -6,11 +6,10 @@
 
 #import <InstallCoordination/NSObject-Protocol.h>
 
-@class IXAppInstallCoordinatorSeed, IXPlaceholderAttributes, IXPlaceholderSeed, IXPromisedInMemoryDataSeed, IXPromisedInMemoryDictionarySeed, IXPromisedOutOfBandStreamingZipTransferSeed, IXPromisedOutOfBandTransferSeed, IXPromisedStreamingZipTransferSeed, IXPromisedTransferToPathSeed, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
+@class IXAppInstallCoordinatorSeed, IXPlaceholderAttributes, IXPlaceholderSeed, IXPromisedInMemoryDataSeed, IXPromisedInMemoryDictionarySeed, IXPromisedOutOfBandStreamingZipTransferSeed, IXPromisedOutOfBandTransferSeed, IXPromisedStreamingZipTransferSeed, IXPromisedTransferToPathSeed, IXUninstallOptions, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
 
 @protocol IXClientProtocol <NSObject>
 - (oneway void)_remote_IXSPromisedOutOfBandStreamingZipTransfer:(NSUUID *)arg1 setArchiveBytesConsumed:(unsigned long long)arg2;
-- (oneway void)_remote_IXSPromisedStreamingZipTransfer:(NSUUID *)arg1 consumeExtractedBytesAtPath:(NSURL *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSPromisedStreamingZipTransfer:(NSUUID *)arg1 setArchiveBytesConsumed:(unsigned long long)arg2;
 - (oneway void)_remote_IXSPromisedTransferToPath:(NSUUID *)arg1 setTryDeltaCopy:(_Bool)arg2;
 - (oneway void)_remote_IXSPromisedTransferToPath:(NSUUID *)arg1 setShouldCopy:(_Bool)arg2;
@@ -84,7 +83,7 @@
 - (void)_remote_displayUserPresentableErrorForApp:(NSString *)arg1 code:(long long)arg2;
 - (void)_remote_registerTransientObserver:(NSXPCListenerEndpoint *)arg1 forClientIdentifiers:(NSSet *)arg2 respondingToSelectors:(unsigned long long)arg3;
 - (void)_remote_registerObserverMachServiceName:(NSString *)arg1 forClientIdentifiers:(NSSet *)arg2 respondingToSelectors:(unsigned long long)arg3;
-- (void)_remote_uninstallAppWithBundleID:(NSString *)arg1 requestUserConfirmation:(_Bool)arg2 waitForDeletion:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
+- (void)_remote_uninstallAppWithBundleID:(NSString *)arg1 options:(IXUninstallOptions *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 - (void)_remote_prioritizeCoordinatorForAppWithBundleID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_setIsPaused:(_Bool)arg1 forCoordinatorForAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_cancelCoordinatorsForAppsWithBundleIDs:(NSArray *)arg1 reason:(NSError *)arg2 client:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
@@ -93,6 +92,7 @@
 - (void)_remote_removabilityForAppWithBundleID:(NSString *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)_remote_setTestModeForIdentifierPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_setTestingEnabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)_remote_postNSCurrentLocaleDidChangeNotification:(void (^)(NSError *))arg1;
 - (void)_remote_pingDaemonWithCompletion:(void (^)(int, NSError *))arg1;
 - (void)_remote_killDaemonForTestingWithCompletion:(void (^)(NSError *))arg1;
 - (void)_remote_purgeRegisteredCoordinatorsAndPromisesForCreator:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;

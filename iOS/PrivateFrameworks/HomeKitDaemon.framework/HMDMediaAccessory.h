@@ -15,8 +15,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly) HMDMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 - (void).cxx_destruct;
+@property(readonly) HMDMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)dumpSimpleState;
@@ -31,18 +31,21 @@
 - (void)handleUpdatedAdvertisement:(id)arg1;
 - (void)setAdvertisement:(id)arg1;
 @property(readonly, copy) HMDMediaAccessoryAdvertisement *advertisement; // @synthesize advertisement=_advertisement;
+- (void)handleRoomChanged:(id)arg1;
 - (void)handleRoomNameChanged:(id)arg1;
-- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3 initialConfiguration:(_Bool)arg4;
 - (id)name;
 - (_Bool)providesHashRouteID;
 - (void)removeAdvertisement:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
+- (id)_createMediaProfile;
 - (_Bool)_shouldFilterAccessoryProfile:(id)arg1;
 - (void)_registerForMessages;
+- (unsigned long long)supportedTransports;
 - (id)init;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
 - (id)assistantObject;
-- (id)url;
+- (id)urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

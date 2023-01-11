@@ -15,6 +15,8 @@
 @property(copy, nonatomic, setter=_setStrokeGroupItemsByID:) NSDictionary *strokeGroupItemsByID; // @synthesize strokeGroupItemsByID=_strokeGroupItemsByID;
 - (id)debugName;
 @property(copy, nonatomic, setter=_setStrokeGroupItems:) NSArray *strokeGroupItems; // @synthesize strokeGroupItems=_strokeGroupItems;
+- (id)tokenizedStrokeResultForInitialStrokes:(id)arg1 point:(struct CGPoint)arg2 tokenizationLevel:(long long)arg3 completion:(CDUnknownBlockType)arg4 shouldCancel:(CDUnknownBlockType)arg5;
+- (id)tokenizedStrokeResultForInitialStrokes:(id)arg1 point:(struct CGPoint)arg2 tokenizationLevel:(long long)arg3;
 - (long long)q_itemTypeForStrokeGroup:(id)arg1 recognitionResult:(id)arg2;
 - (id)q_strokeGroupItemsFromSessionResult:(id)arg1;
 - (void)q_updateQueryResult;

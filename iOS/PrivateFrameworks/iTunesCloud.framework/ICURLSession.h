@@ -27,8 +27,8 @@
 }
 
 + (unsigned long long)defaultMaximumConcurrentRequests;
-@property(readonly, nonatomic) unsigned long long maxConcurrentRequests; // @synthesize maxConcurrentRequests=_maxConcurrentRequests;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long maxConcurrentRequests; // @synthesize maxConcurrentRequests=_maxConcurrentRequests;
 - (void)_updateProgressForRequest:(id)arg1 withTotalBytesWritten:(long long)arg2 totalBytesExpectedToWrite:(long long)arg3;
 - (double)_timeoutForRequest:(id)arg1;
 - (void)_scheduleNextRequestTimeoutCheck;
@@ -39,6 +39,7 @@
 - (void)_processRequest:(id)arg1;
 - (void)_processPendingRequests;
 - (void)_enqueueRequest:(id)arg1;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 avAssetDownloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
 - (void)URLSession:(id)arg1 avAssetDownloadTask:(id)arg2 didReceiveAVAssetDownloadToken:(unsigned long long)arg3;

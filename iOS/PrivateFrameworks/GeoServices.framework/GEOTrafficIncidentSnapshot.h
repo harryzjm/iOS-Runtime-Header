@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficIncidentSnapshot : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_incidents;
     unsigned long long _receivedTime;
     GEOTrafficSnapshotMetaData *_snapshotMetaData;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_receivedTime:1;
         unsigned int read_incidents:1;
         unsigned int read_snapshotMetaData:1;
-        unsigned int wrote_incidents:1;
-        unsigned int wrote_receivedTime:1;
-        unsigned int wrote_snapshotMetaData:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,20 +39,22 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasReceivedTime;
 @property(nonatomic) unsigned long long receivedTime;
 - (id)incidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)incidentsCount;
-- (void)_addNoFlagsIncidents:(id)arg1;
 - (void)addIncidents:(id)arg1;
 - (void)clearIncidents;
 @property(retain, nonatomic) NSMutableArray *incidents;
-- (void)_readIncidents;
 @property(retain, nonatomic) GEOTrafficSnapshotMetaData *snapshotMetaData;
 @property(readonly, nonatomic) _Bool hasSnapshotMetaData;
-- (void)_readSnapshotMetaData;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

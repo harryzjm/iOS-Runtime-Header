@@ -5,11 +5,13 @@
 //
 
 #import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSLocale;
+@class NSLocale, NSString;
 
-@interface NSPersonNameComponentsFormatter <NSSecureCoding, NSCopying>
+@interface NSPersonNameComponentsFormatter <NSObservable, NSObserver, NSSecureCoding, NSCopying>
 {
     id _private;
 }
@@ -98,6 +100,13 @@
 @property _Bool _forceFamilyNameFirst;
 - (void)dealloc;
 - (id)init;
+- (void)receiveObservedValue:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -13,7 +13,7 @@
     NSMutableOrderedSet *_encodedObjects;
     struct Document {
         CDUnknownFunctionPointerType *;
-        basic_string_a1f69cfb;
+        basic_string_7c0a1c0b;
         unsigned int [1];
         int;
         struct VectorTimestamp *;
@@ -30,10 +30,10 @@
 + (void)_registerClass:(Class)arg1 forType:(id)arg2 cluster:(_Bool)arg3;
 + (void)registerClass:(Class)arg1 forType:(id)arg2;
 + (void)registerCRClasses;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSOrderedSet *clusterTypeSet; // @synthesize clusterTypeSet=_clusterTypeSet;
 @property(nonatomic) struct Document *currentDocument; // @synthesize currentDocument=_currentDocument;
 @property(retain, nonatomic) NSMutableOrderedSet *encodedObjects; // @synthesize encodedObjects=_encodedObjects;
-- (void).cxx_destruct;
 - (unsigned long long)typeIndexForClass:(Class)arg1;
 @property(readonly, nonatomic) NSDictionary *typeToClassDict;
 @property(readonly, nonatomic) NSOrderedSet *typeSet;

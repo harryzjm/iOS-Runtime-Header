@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface _HDDemoStepDataModule
 {
     double _nextFireInterval;
@@ -13,8 +14,6 @@
 
 - (void)_getDelayBeforeNextStepData:(double *)arg1 stepCount:(unsigned long long *)arg2 distance:(double *)arg3;
 - (void)timerDidFireWithInterval:(double)arg1;
-- (id)_nextDistanceQuantitySampleWithInterval:(double)arg1;
-- (id)_nextStepQuantitySampleWithInterval:(double)arg1;
 - (void)scheduleNextFire;
 - (double)nextFireInterval;
 

@@ -13,11 +13,22 @@
     UNNotification *_notification;
 }
 
++ (id)phoneCallDirectActionWithAppBundleId:(id)arg1;
++ (id)phoneAmbiguousDirectActionWithAppBundleId:(id)arg1;
++ (id)musicSearchDirectActionWithAppBundleId:(id)arg1;
++ (id)mapSearchDirectActionWithAppBundleId:(id)arg1;
++ (id)messageReplyDirectActionWithAppBundleId:(id)arg1 conversationGUID:(id)arg2;
++ (id)messageReadDirectActionWithAppBundleId:(id)arg1 conversationGUID:(id)arg2;
++ (id)messageComposeNewThreadDirectActionWithAppBundleId:(id)arg1 fullName:(id)arg2 phoneOrEmailAddress:(id)arg3;
++ (id)messageComposeDirectActionWithAppBundleId:(id)arg1;
++ (id)messageAmbiguousDirectActionWithAppBundleId:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UNNotification *notification; // @synthesize notification=_notification;
 @property(readonly, nonatomic) BBBulletin *bulletin; // @synthesize bulletin=_bulletin;
 @property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
-- (void).cxx_destruct;
+- (id)_initWithDirectActionEvent:(long long)arg1 appBundleId:(id)arg2 conversationGUID:(id)arg3 fullName:(id)arg4 phoneOrEmailAddress:(id)arg5;
+- (id)_intentIdentifiersFromBulletin:(id)arg1 notification:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)bundleId;

@@ -8,8 +8,7 @@
 
 #import <FileProvider/NSFileProviderItem-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSString;
-@protocol NSFileProviderItemFlags;
+@class NSData, NSDate, NSDictionary, NSError, NSNumber, NSPersonNameComponents, NSString, UTType;
 
 __attribute__((visibility("hidden")))
 @interface FPNSFileProviderItemHelper : NSObject <NSFileProviderItem>
@@ -18,15 +17,17 @@ __attribute__((visibility("hidden")))
     NSString *parentItemIdentifier;
     NSString *filename;
     NSString *typeIdentifier;
+    UTType *contentType;
     unsigned long long capabilities;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long capabilities; // @synthesize capabilities;
+@property(readonly, copy, nonatomic) UTType *contentType; // @synthesize contentType;
 @property(readonly, copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier;
 @property(readonly, copy, nonatomic) NSString *filename; // @synthesize filename;
 @property(readonly, copy, nonatomic) NSString *parentItemIdentifier; // @synthesize parentItemIdentifier;
 @property(readonly, copy, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier;
-- (void).cxx_destruct;
 - (id)fp_sharingCurrentUserPermissions;
 - (id)fp_sharingCurrentUserRole;
 - (_Bool)fp_isWritable;
@@ -43,12 +44,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isDownloaded) _Bool downloaded;
 @property(readonly, nonatomic, getter=isDownloading) _Bool downloading;
 @property(readonly, copy, nonatomic) NSError *downloadingError;
-@property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
-@property(readonly, nonatomic) NSDictionary *extendedAttributes;
 @property(readonly, copy, nonatomic) NSNumber *favoriteRank;
-@property(readonly, nonatomic) id <NSFileProviderItemFlags> flags;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property(readonly, copy, nonatomic) NSDate *lastUsedDate;
 @property(readonly, nonatomic) NSPersonNameComponents *mostRecentEditorNameComponents;
 @property(readonly, nonatomic, getter=isMostRecentVersionDownloaded) _Bool mostRecentVersionDownloaded;

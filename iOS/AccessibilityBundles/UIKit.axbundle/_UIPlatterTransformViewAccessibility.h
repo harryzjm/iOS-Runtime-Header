@@ -8,10 +8,13 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
+- (_Bool)_axShowsSourceViewDirectly;
 - (long long)accessibilityContainerType;
 - (void)_axSetCachedPlatterElements:(id)arg1;
 - (id)_axCachedPlatterElements;

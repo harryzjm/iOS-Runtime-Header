@@ -5,6 +5,7 @@
 //
 
 @class NSArray, NSMutableDictionary;
+@protocol CKModifySubscriptionsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifySubscriptionsOperation
@@ -17,12 +18,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)isPredominatelyDownload;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *subscriptionsByServerID; // @synthesize subscriptionsByServerID=_subscriptionsByServerID;
 @property(retain, nonatomic) NSArray *subscriptionIDsToDelete; // @synthesize subscriptionIDsToDelete=_subscriptionIDsToDelete;
 @property(retain, nonatomic) NSArray *subscriptionsToSave; // @synthesize subscriptionsToSave=_subscriptionsToSave;
 @property(copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
-- (void).cxx_destruct;
+- (int)operationType;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_handleSubscriptionDeleted:(id)arg1 responseCode:(id)arg2;
@@ -30,6 +32,9 @@ __attribute__((visibility("hidden")))
 - (void)_handleSubscriptionSaved:(id)arg1 responseCode:(id)arg2;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKModifySubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 @end
 

@@ -27,6 +27,8 @@
     _Bool _wifiP2P;
     unsigned char _osVersion;
     _Bool _paired;
+    _Bool _testMode;
+    int _audioRoutingScore;
     unsigned int _deviceFlags;
     unsigned int _hotspotInfo;
     unsigned int _systemPairState;
@@ -48,6 +50,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool testMode; // @synthesize testMode=_testMode;
 @property(nonatomic) _Bool paired; // @synthesize paired=_paired;
 @property(nonatomic) unsigned char osVersion; // @synthesize osVersion=_osVersion;
 @property(readonly, nonatomic) _Bool wifiP2P; // @synthesize wifiP2P=_wifiP2P;
@@ -71,7 +75,7 @@
 @property(readonly, nonatomic) _Bool duetSync; // @synthesize duetSync=_duetSync;
 @property(nonatomic) long long distance; // @synthesize distance=_distance;
 @property(readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
-@property(readonly, nonatomic) unsigned char deviceModelCode; // @synthesize deviceModelCode=_deviceModelCode;
+@property(nonatomic) unsigned char deviceModelCode; // @synthesize deviceModelCode=_deviceModelCode;
 @property(nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
 @property(nonatomic) unsigned char deviceClassCode; // @synthesize deviceClassCode=_deviceClassCode;
 @property(nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
@@ -80,12 +84,13 @@
 @property(copy, nonatomic) NSArray *batteryInfo; // @synthesize batteryInfo=_batteryInfo;
 @property(nonatomic) _Bool autoUnlockWatch; // @synthesize autoUnlockWatch=_autoUnlockWatch;
 @property(nonatomic) _Bool autoUnlockEnabled; // @synthesize autoUnlockEnabled=_autoUnlockEnabled;
+@property(nonatomic) int audioRoutingScore; // @synthesize audioRoutingScore=_audioRoutingScore;
 @property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
-- (void).cxx_destruct;
 - (void)updateWithRPIdentity:(id)arg1;
 - (void)updateWithPairedPeer:(id)arg1;
 - (void)updateWithBLEDevice:(id)arg1;
 @property(readonly, nonatomic) _Bool needsKeyboardOnly;
+@property(readonly, nonatomic) _Bool idsIdentifierConflictDetected;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

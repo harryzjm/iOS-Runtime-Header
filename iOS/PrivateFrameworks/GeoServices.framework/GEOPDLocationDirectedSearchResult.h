@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDLocationDirectedSearchResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_disambiguationLabels;
     GEOMapRegion *_displayMapRegion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_disambiguationLabels:1;
         unsigned int read_displayMapRegion:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_disambiguationLabels:1;
-        unsigned int wrote_displayMapRegion:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,18 +41,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)disambiguationLabelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)disambiguationLabelsCount;
-- (void)_addNoFlagsDisambiguationLabel:(id)arg1;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)clearDisambiguationLabels;
 @property(retain, nonatomic) NSMutableArray *disambiguationLabels;
-- (void)_readDisambiguationLabels;
 @property(retain, nonatomic) GEOMapRegion *displayMapRegion;
 @property(readonly, nonatomic) _Bool hasDisplayMapRegion;
-- (void)_readDisplayMapRegion;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

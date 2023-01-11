@@ -8,11 +8,11 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 
 @class CLLocationManager, NSBundle, NSMutableSet, NSObject, NSString, __HMFLocationAuthorizationRequest;
-@protocol HMFLocking, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface HMFLocationAuthorization <CLLocationManagerDelegate, HMFLogging>
 {
-    id <HMFLocking> _lock;
+    struct hmf_unfair_data_lock_s _lock;
     int _status;
     long long _state;
     NSMutableSet *_observers;
@@ -27,12 +27,13 @@
 + (id)sharedAuthorization;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly) CLLocationManager *internal; // @synthesize internal=_internal;
 @property(readonly) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property(readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)mark;
 - (void)requestAuthorization:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;

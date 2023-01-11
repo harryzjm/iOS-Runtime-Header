@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)_visibilityLock_enqueueUpdateIfNecessary_body;
 - (void)_visibilityLock_enqueueUpdateIfNecessary;
 - (void)_visibilityLock_setSource:(id)arg1;
 - (void)_visibilityLock_updateVisibility;

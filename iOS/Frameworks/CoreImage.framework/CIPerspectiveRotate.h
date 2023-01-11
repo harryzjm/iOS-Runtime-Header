@@ -19,12 +19,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+- (id).cxx_construct;
 @property(copy, nonatomic) NSNumber *inputRoll; // @synthesize inputRoll;
 @property(copy, nonatomic) NSNumber *inputYaw; // @synthesize inputYaw;
 @property(copy, nonatomic) NSNumber *inputPitch; // @synthesize inputPitch;
 @property(copy, nonatomic) NSNumber *inputFocalLength; // @synthesize inputFocalLength;
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
-- (id).cxx_construct;
 - (id)outputImage;
 @property(readonly, nonatomic) CDStruct_d80e62f2 outputTransform;
 - (void)computeCameraIntrinsics;

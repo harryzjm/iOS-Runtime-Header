@@ -13,9 +13,10 @@
 + (id)safeCategoryTargetClassName;
 - (void)_deactivateAddFaceAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_scrollToAndSetupFaceAtIndex:(unsigned long long)arg1 updateLibraryFaceCollection:(_Bool)arg2;
-- (void)endInteractiveLibraryPresentation;
+- (void)endInteractiveLibraryPresentationLatched:(_Bool)arg1;
 - (id)_accessibilityCustomActionsForPageAtIndex:(unsigned long long)arg1 forPageScrollViewController:(id)arg2;
 - (_Bool)_axAddPageViewControllerIsActive;
+- (_Bool)_axShareFace;
 - (_Bool)_axStartEditing;
 - (_Bool)_axDeactivateAddFace;
 - (_Bool)_axCanUseOverlayButton:(id)arg1;

@@ -35,7 +35,7 @@
 - (id)localizedParameterSummaryStringForFindWithFilterConditions;
 - (id)localizedParameterSummaryStringForFind;
 - (id)parameterSummary;
-- (id)name;
+- (id)localizedName;
 - (id)tableTemplate;
 
 // Remaining properties

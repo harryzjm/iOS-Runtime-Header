@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (id)newSectionSeparatorViewForGroupViewState:(id)arg1;
 - (double)actionSectionSpacing;
 - (struct CGSize)minimumActionContentSize;
-- (double)minimumImageGapWidth;
 - (struct UIEdgeInsets)contentMargin;
 - (void)configureAttributesForActionScrollView:(id)arg1 groupViewState:(id)arg2;
 - (void)configureAttributesForTitleLabel:(id)arg1 classificationLabel:(id)arg2 actionViewState:(id)arg3;

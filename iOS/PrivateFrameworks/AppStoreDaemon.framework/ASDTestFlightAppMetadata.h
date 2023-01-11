@@ -10,12 +10,13 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class ACAccount, NSArray, NSData, NSNumber, NSString, NSURL;
+@class ACAccount, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface ASDTestFlightAppMetadata : NSObject <ASDAppMetadata, NSCopying, NSSecureCoding>
 {
     _Bool _hasMessagesExtension;
     _Bool _launchProhibited;
+    _Bool _userInitiated;
     ACAccount *_account;
     NSURL *_artworkURL;
     NSString *_bundleID;
@@ -24,7 +25,9 @@
     NSNumber *_initialODRSize;
     NSNumber *_itemID;
     NSString *_itemName;
+    NSDictionary *_placeholderEntitlements;
     NSURL *_messagesArtworkURL;
+    long long _packageCompression;
     NSData *_packageDPInfo;
     NSData *_packageSINF;
     NSURL *_packageURL;
@@ -36,15 +39,19 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 @property(copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
+@property(nonatomic) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(copy, nonatomic) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
 @property(copy, nonatomic) NSString *storeCohort; // @synthesize storeCohort=_storeCohort;
 @property(copy, nonatomic) NSArray *provisioningProfiles; // @synthesize provisioningProfiles=_provisioningProfiles;
 @property(copy, nonatomic) NSURL *packageURL; // @synthesize packageURL=_packageURL;
 @property(copy, nonatomic) NSData *packageSINF; // @synthesize packageSINF=_packageSINF;
 @property(copy, nonatomic) NSData *packageDPInfo; // @synthesize packageDPInfo=_packageDPInfo;
+@property(nonatomic) long long packageCompression; // @synthesize packageCompression=_packageCompression;
 @property(copy, nonatomic) NSURL *messagesArtworkURL; // @synthesize messagesArtworkURL=_messagesArtworkURL;
+@property(copy, nonatomic) NSDictionary *placeholderEntitlements; // @synthesize placeholderEntitlements=_placeholderEntitlements;
 @property(nonatomic, getter=isLaunchProhibited) _Bool launchProhibited; // @synthesize launchProhibited=_launchProhibited;
 @property(copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property(copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
@@ -55,7 +62,6 @@
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property(copy, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

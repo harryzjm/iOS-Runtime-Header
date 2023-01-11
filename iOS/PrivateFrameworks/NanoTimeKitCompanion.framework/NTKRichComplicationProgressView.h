@@ -9,13 +9,14 @@
 #import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 #import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 
-@class CLKDevice, CLKGaugeProvider, NSArray, NSString, NTKRichComplicationShapeView;
+@class CLKDevice, CLKGaugeProvider, NSArray, NSNumber, NSString, NTKRichComplicationShapeView;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKRichComplicationProgressView : UIView <CLKMonochromeFilterProvider, CLKMonochromeComplicationView>
 {
+    long long _family;
     CLKDevice *_device;
-    struct NSNumber *_updateToken;
+    NSNumber *_updateToken;
     float _currentBackgroundViewAlphaPercentage;
     _Bool _enabled;
     id <CLKMonochromeFilterProvider> _filterProvider;
@@ -28,6 +29,7 @@
     UIView *_ringView;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *ringView; // @synthesize ringView=_ringView;
 @property(readonly, nonatomic) NTKRichComplicationShapeView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property(readonly, nonatomic) NTKRichComplicationShapeView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -37,7 +39,6 @@
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(retain, nonatomic) NSArray *gradientColors; // @synthesize gradientColors=_gradientColors;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
 - (id)colorForView:(id)arg1 accented:(_Bool)arg2;
 - (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
 - (id)filterForView:(id)arg1 style:(long long)arg2;
@@ -53,7 +54,7 @@
 - (void)setGradientColors:(id)arg1 locations:(id)arg2;
 - (void)layoutSubviews;
 - (void)dealloc;
-- (id)initForDevice:(id)arg1 backgroundShapeView:(id)arg2 foregroundShapeView:(id)arg3;
+- (id)initForFamily:(long long)arg1 device:(id)arg2 backgroundShapeView:(id)arg3 foregroundShapeView:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

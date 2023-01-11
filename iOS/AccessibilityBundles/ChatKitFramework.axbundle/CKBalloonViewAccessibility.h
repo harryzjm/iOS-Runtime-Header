@@ -25,7 +25,7 @@
 - (id)_axBuddyNameForBalloon;
 - (id)_axMessageForBalloon;
 - (id)_axChatItemForBalloon;
-- (void)_axPerformInterfaceAction:(id)arg1;
+- (void)axPerformInterfaceAction:(id)arg1;
 - (void)_axTapback;
 - (id)_axBalloonViewCustomActions;
 - (id)accessibilityCustomActions;

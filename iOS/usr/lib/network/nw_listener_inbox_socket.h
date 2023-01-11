@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject;
+@protocol OS_nw_fd_wrapper;
+
 __attribute__((visibility("hidden")))
 @interface nw_listener_inbox_socket
 {
     void *_source;
+    NSObject<OS_nw_fd_wrapper> *_sockfd_wrapper_for_connection_group_only;
     int _sockfd_for_logging_only_do_not_close_or_use;
     int _sockfd_from_client;
     unsigned char _ipProtocol;
     unsigned char _listenUUID[16];
 }
 
+- (void).cxx_destruct;
 - (_Bool)cancel;
 - (_Bool)resume;
 - (_Bool)suspend;
-- (id)initWithParameters:(id)arg1 delegate:(id)arg2 necpUUID:(unsigned char [16])arg3;
 - (id)description;
-- (id)initWithSocket:(int)arg1 parameters:(id)arg2 delegate:(id)arg3;
 - (id)initWithParameters:(id)arg1 delegate:(id)arg2;
 - (id)start;
 

@@ -4,32 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, WFCalendarSubstitutableState;
+#import <WorkflowKit/WFDynamicEnumerationDataSource-Protocol.h>
 
-@interface WFCalendarPickerParameter
+@class NSArray, NSObject, NSString;
+@protocol OS_dispatch_queue;
+
+@interface WFCalendarPickerParameter <WFDynamicEnumerationDataSource>
 {
     _Bool _allowsAllCalendars;
-    unsigned long long _entityType;
     id _defaultSerializedCalendarRepresentation;
     NSArray *_calendarStates;
-    WFCalendarSubstitutableState *_allCalendarsState;
+    NSObject<OS_dispatch_queue> *_stateQueue;
 }
 
-@property(readonly, nonatomic) WFCalendarSubstitutableState *allCalendarsState; // @synthesize allCalendarsState=_allCalendarsState;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateQueue; // @synthesize stateQueue=_stateQueue;
 @property(retain, nonatomic) NSArray *calendarStates; // @synthesize calendarStates=_calendarStates;
 @property(retain, nonatomic) id defaultSerializedCalendarRepresentation; // @synthesize defaultSerializedCalendarRepresentation=_defaultSerializedCalendarRepresentation;
-@property(readonly, nonatomic) unsigned long long entityType; // @synthesize entityType=_entityType;
 @property(readonly, nonatomic) _Bool allowsAllCalendars; // @synthesize allowsAllCalendars=_allowsAllCalendars;
-- (void).cxx_destruct;
-- (id)accessoryColorForPossibleState:(id)arg1;
-- (id)localizedLabelForPossibleState:(id)arg1;
-- (id)possibleStates;
-- (id)defaultSerializedRepresentation;
-- (void)reloadCalendars;
+- (id)enumeration:(id)arg1 accessoryColorForPossibleState:(id)arg2;
+- (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
+- (void)possibleStatesDidChange;
+- (void)loadDefaultSerializedRepresentationForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)clearPossibleStates;
 - (void)wasRemovedFromWorkflow;
 - (void)wasAddedToWorkflow;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

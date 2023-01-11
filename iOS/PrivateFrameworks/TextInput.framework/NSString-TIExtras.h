@@ -12,6 +12,7 @@
 + (struct USet *)_fullwidthLettersAndSymbolsSet;
 + (struct USet *)_nonFullwidthLettersAndNumbersSet;
 + (struct USet *)_fullwidthLettersAndNumbersSet;
++ (struct USet *)_bopomofoWithoutToneSet;
 + (struct USet *)_bopomofoToneSet;
 + (struct USet *)_bopomofoSet;
 + (struct USet *)_ideographSet;
@@ -66,6 +67,7 @@
 - (_Bool)_containsCJKScriptsOnly;
 - (_Bool)_containsCJScriptsOnly;
 - (_Bool)_containsIdeographsOrBopomofoOnly;
+- (_Bool)_containsBopomofoWithoutToneOnly;
 - (_Bool)_containsBopomofoToneOnly;
 - (_Bool)_containsBopomofoOnly;
 - (_Bool)_containsEmojiOnly;
@@ -78,6 +80,7 @@
 - (_Bool)_containsJapanese;
 - (_Bool)_containsIdeographicCharacters;
 - (unsigned long long)_graphemeCount;
+- (id)_graphemeAtIndex:(unsigned long long)arg1;
 - (id)_lastGrapheme;
 - (id)_firstGrapheme;
 - (_Bool)_endsWithHalfwidth;
@@ -88,6 +91,7 @@
 - (_Bool)_looksLikeURL;
 - (_Bool)_looksLikeNumberInput;
 - (_Bool)_looksLikeEmailAddress;
+- (_Bool)_isBasicLatin;
 - (_Bool)_isNewlineOrReturn;
 - (_Bool)_isDelete;
 - (_Bool)_isSpace;

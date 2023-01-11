@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKFillStyle, HKStrokeStyle;
+@class HKBarSeriesConfiguration, HKFillStyle, HKStrokeStyle, NSMutableArray;
 
 @interface HKBarSeries
 {
+    HKBarSeriesConfiguration *_defaultConfiguration;
+    NSMutableArray *_overrideConfigurations;
     HKStrokeStyle *_unselectedStrokeStyle;
     HKStrokeStyle *_selectedStrokeStyle;
-    HKFillStyle *_unselectedFillStyle;
-    HKFillStyle *_selectedFillStyle;
     HKStrokeStyle *_tiledStrokeStyle;
     struct CGSize _cornerRadii;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize cornerRadii; // @synthesize cornerRadii=_cornerRadii;
 @property(retain, nonatomic) HKStrokeStyle *tiledStrokeStyle; // @synthesize tiledStrokeStyle=_tiledStrokeStyle;
-@property(retain, nonatomic) HKFillStyle *selectedFillStyle; // @synthesize selectedFillStyle=_selectedFillStyle;
-@property(retain, nonatomic) HKFillStyle *unselectedFillStyle; // @synthesize unselectedFillStyle=_unselectedFillStyle;
 @property(retain, nonatomic) HKStrokeStyle *selectedStrokeStyle; // @synthesize selectedStrokeStyle=_selectedStrokeStyle;
 @property(retain, nonatomic) HKStrokeStyle *unselectedStrokeStyle; // @synthesize unselectedStrokeStyle=_unselectedStrokeStyle;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *overrideConfigurations; // @synthesize overrideConfigurations=_overrideConfigurations;
+@property(retain, nonatomic) HKBarSeriesConfiguration *defaultConfiguration; // @synthesize defaultConfiguration=_defaultConfiguration;
 - (_Bool)blockCoordinate:(id)arg1 greaterThan:(id)arg2;
 - (_Bool)blockCoordinate:(id)arg1 lessThan:(id)arg2;
 - (_Bool)blockCoordinateIsVisibleInsideOfChartRect:(struct CGRect)arg1 blockCoordinate:(id)arg2;
@@ -32,10 +32,16 @@
 - (_Bool)supportsMultiTouchSelection;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 - (void)_drawPath:(id)arg1 withFillStyle:(id)arg2 strokeStyle:(id)arg3 axisRect:(struct CGRect)arg4 context:(struct CGContext *)arg5;
+- (void)_drawConfiguration:(id)arg1 strokeStyle:(id)arg2 axisRect:(struct CGRect)arg3 context:(struct CGContext *)arg4;
+- (id)_configurationForCoordinate:(id)arg1 inConfigurations:(id)arg2;
 - (void)drawWithBlockCoordinates:(id)arg1 visibleBarCount:(long long)arg2 pointTransform:(struct CGAffineTransform)arg3 context:(struct CGContext *)arg4 axisRect:(struct CGRect)arg5;
 - (double)barWidthForVisibleBarCount:(long long)arg1 axisRect:(struct CGRect)arg2 minimumSpacing:(double)arg3;
 - (long long)visibleBarCountWithZoomLevelConfiguration:(id)arg1;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
+@property(retain, nonatomic) HKFillStyle *selectedFillStyle;
+@property(retain, nonatomic) HKFillStyle *unselectedFillStyle;
+- (void)clearCaches;
+- (id)init;
 
 @end
 

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKGraphSeries;
+@class HKGraphSeries, HKValueRange;
 
 @protocol HKSeriesDelegate
+- (void)nonemptyDrawComplete;
+- (_Bool)measuringStartupTime;
+- (_Bool)rangeIsVisible:(HKValueRange *)arg1;
 - (void)autoscaleStateChangedForSeries:(HKGraphSeries *)arg1;
 - (struct CGRect)screenRectForSeries:(HKGraphSeries *)arg1;
 - (_Bool)seriesDrawingDuringTiling;

@@ -21,12 +21,10 @@
 }
 
 - (void).cxx_destruct;
-- (void)willTerminateProcessWithAcknowledgement:(CDUnknownBlockType)arg1;
 - (void)didLoseInheritances:(id)arg1;
 - (void)didReceiveInheritances:(id)arg1;
 - (id)inheritances;
 - (void)dealloc;
-- (id)_init;
 - (id)init;
 
 // Remaining properties

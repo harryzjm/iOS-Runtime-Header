@@ -13,8 +13,6 @@
 + (_Bool)requestIsCacheEquivalent:(id)arg1 toRequest:(id)arg2;
 + (id)canonicalRequestForRequest:(id)arg1;
 + (_Bool)canInitWithRequest:(id)arg1;
-- (void)unscheduleOnRunloop:(struct __CFRunLoop *)arg1 mode:(struct __CFString *)arg2;
-- (void)scheduleOnRunloop:(struct __CFRunLoop *)arg1 mode:(struct __CFString *)arg2;
 - (void)stopLoading;
 - (void)startLoading;
 - (void)dealloc;

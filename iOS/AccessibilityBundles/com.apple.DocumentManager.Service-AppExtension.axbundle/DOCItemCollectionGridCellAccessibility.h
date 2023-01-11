@@ -14,10 +14,10 @@
 - (_Bool)_accessibilityIsFolder;
 - (id)accessibilityDropPointDescriptors;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (id)_axAttrTitle;
 - (_Bool)_accessibilitySubviewIsVisible:(id)arg1;
-- (_Bool)isAccessibilityElement;
 
 @end
 

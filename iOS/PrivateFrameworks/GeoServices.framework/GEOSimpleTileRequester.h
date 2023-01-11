@@ -16,7 +16,6 @@
     NSMutableArray *_running;
     NSMutableArray *_errors;
     NSObject<OS_os_activity> *_activity;
-    NSObject<OS_voucher> *_voucher;
     GEODataSession *_dataSession;
     unsigned int _qos;
     struct GEOOnce_s _didStart;
@@ -28,14 +27,16 @@
     GEOTileKeyMap *_tileLoaderCreateTimes;
     unsigned int _highestRunningOperationPriority;
     geo_isolater *_highestRunningOperationPriorityIsolation;
+    GEOTileKeyMap *_priorities;
     _Bool _includeReasonHeader;
     _Bool _allowTLSSessionTicketUse;
     _Bool _allowTCPFastOpen;
+    NSObject<OS_voucher> *_voucher;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) GEOTileRequestBalancer *balancer; // @synthesize balancer=_balancer;
 @property(readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
-- (void).cxx_destruct;
 - (id)operationsForKey:(const struct _GEOTileKey *)arg1;
 - (id)removeOperationsForKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)_isRunningOperation:(id)arg1;
@@ -64,7 +65,6 @@
 - (void)_updateHighestRunningPriority;
 - (void)start;
 @property(readonly, nonatomic) unsigned int highestRunningOperationPriority;
-@property(readonly, nonatomic, getter=isRunning) _Bool running;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue;
 - (id)initWithTileRequest:(id)arg1 delegateQueue:(id)arg2 delegate:(id)arg3 dataSession:(id)arg4;
 - (id)initWithTileRequest:(id)arg1 delegateQueue:(id)arg2 delegate:(id)arg3;
@@ -83,7 +83,6 @@
 - (CDStruct_d1a7ebee)kindForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)downloadsDataToDisk;
-- (_Bool)allowsCookies;
 - (_Bool)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(struct _GEOTileKey *)arg1;
 - (id)verifyDataIntegrity:(id)arg1 checksumMethod:(int)arg2;

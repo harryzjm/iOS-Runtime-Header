@@ -21,6 +21,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *relatedContentTypes; // @synthesize relatedContentTypes=_relatedContentTypes;
 @property(retain, nonatomic) NSNumber *maxRelatedContent; // @synthesize maxRelatedContent=_maxRelatedContent;
 @property(retain, nonatomic) NSNumber *maxExperts; // @synthesize maxExperts=_maxExperts;
@@ -30,7 +31,6 @@
 @property(retain, nonatomic) NSNumber *maxTags; // @synthesize maxTags=_maxTags;
 @property(retain, nonatomic) NSNumber *maxNotebooks; // @synthesize maxNotebooks=_maxNotebooks;
 @property(retain, nonatomic) NSNumber *maxNotes; // @synthesize maxNotes=_maxNotes;
-- (void).cxx_destruct;
 
 @end
 

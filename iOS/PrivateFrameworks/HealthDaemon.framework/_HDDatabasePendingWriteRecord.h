@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface _HDDatabasePendingWriteRecord : NSObject
 {
     CDUnknownBlockType _writeBlock;
     CDUnknownBlockType _completion;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(readonly, copy, nonatomic) CDUnknownBlockType writeBlock; // @synthesize writeBlock=_writeBlock;
-- (void).cxx_destruct;
 - (id)initWithWriteBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 

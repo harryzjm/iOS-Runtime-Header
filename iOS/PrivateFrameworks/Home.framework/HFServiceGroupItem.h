@@ -9,7 +9,7 @@
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMServiceGroup, NSSet, NSString;
+@class HMHome, HMServiceGroup, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFServiceGroupItem <HFServiceLikeItem, HFActionBuilderFactory, HFServiceLikeBuilderCreating, HFGroupableItemProtocol>
@@ -21,9 +21,9 @@
 + (id)_combinedWriteErrorForError:(id)arg1 serviceGroupTitle:(id)arg2;
 + (_Bool)_isControlItem:(id)arg1 identicalToControlItem:(id)arg2;
 + (_Bool)_isControlItem:(id)arg1 similarToControlItem:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMServiceGroup *serviceGroup; // @synthesize serviceGroup=_serviceGroup;
 @property(readonly, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
-- (void).cxx_destruct;
 - (id)namingComponentForHomeKitObject;
 - (id)_sortDescriptorsForServiceItems;
 - (id)_mostCommonValueInServiceItems:(id)arg1 valueProvider:(CDUnknownBlockType)arg2;
@@ -35,6 +35,7 @@
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)accessories;
 @property(readonly, nonatomic) NSSet *services;
+@property(readonly, nonatomic) HMHome *home;
 - (id)currentStateActionBuildersForHome:(id)arg1;
 - (_Bool)actionsMayRequireDeviceUnlock;
 - (_Bool)containsActions;

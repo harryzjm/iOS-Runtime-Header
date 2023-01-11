@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSSet, NSString, PKAppleAccountInformation, PKApplePayTrustKeyRequest, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentPass, PKPaymentProductsActionRequest, PKPaymentWebService, PKTrustedDeviceEnrollmentInfo, PKVerificationChannel;
+@class NSArray, NSData, NSDictionary, NSError, NSSet, NSString, PKAppleAccountInformation, PKApplePayTrustKeyRequest, PKAppletSubcredential, PKAppletSubcredentialSharingInvitation, PKAppletSubcredentialSharingInvitationMetadata, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentPass, PKPaymentProductsActionRequest, PKPaymentWebService, PKSharedCredentialGroup, PKTrustedDeviceEnrollmentInfo, PKVerificationChannel, PKWebServiceRegionFeature;
 
 @protocol PKPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;
@@ -32,12 +32,14 @@
 - (PKOSVersionRequirement *)deviceVersion;
 - (NSString *)deviceClass;
 - (NSString *)deviceName;
+- (NSString *)osVersion;
 - (NSString *)deviceDescriptionForPaymentWebService:(PKPaymentWebService *)arg1;
+- (int)registrationSupportedInCurrentRegionForWebService:(PKPaymentWebService *)arg1;
 - (int)paymentSupportedInCurrentRegionForWebService:(PKPaymentWebService *)arg1;
 - (NSArray *)paymentWebService:(PKPaymentWebService *)arg1 filterVerificationChannels:(NSArray *)arg2;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 didRegisterWithRegionMap:(NSDictionary *)arg2 primaryRegionTopic:(NSString *)arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 deleteApplicationWithAID:(NSString *)arg2;
-- (void)paymentWebService:(PKPaymentWebService *)arg1 provisioningDataWithCompletionHandler:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 provisioningDataIncludingDeviceMetadata:(_Bool)arg2 withCompletionHandler:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 signData:(NSData *)arg2 signatureEntanglementMode:(unsigned long long)arg3 withCompletionHandler:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg4;
 - (void)renewAppleAccountWithCompletionHandler:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (PKAppleAccountInformation *)appleAccountInformation;
@@ -47,12 +49,37 @@
 - (void)paymentWebServiceDidUpdateConfiguration:(PKPaymentWebService *)arg1;
 
 @optional
+- (void)consistencyCheck;
+- (_Bool)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(NSString *)arg1;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 passOwnershipTokenWithIdentifier:(NSString *)arg2 completion:(void (^)(NSString *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 storePassOwnershipToken:(NSString *)arg2 withIdentifier:(NSString *)arg3;
+- (void)familyMembersWithCompletion:(void (^)(NSArray *))arg1;
 - (void)performDeviceCheckInWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)performProductActionRequest:(PKPaymentProductsActionRequest *)arg1 completion:(void (^)(PKPaymentAvailableProductsResponse *, NSError *))arg2;
 - (void)availableProductsWithCompletion:(void (^)(PKPaymentAvailableProductsResponse *, NSError *))arg1;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 setDefaultPaymentPassUniqueIdentifier:(NSString *)arg2;
+- (PKWebServiceRegionFeature *)paymentWebService:(PKPaymentWebService *)arg1 supportedRegionFeatureOfType:(long long)arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 validateAcceptInvitationPreconditionsWithCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 credentialWithIdentifier:(NSString *)arg2 completion:(void (^)(PKAppletSubcredential *))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 matchingInvitationOnDevice:(PKAppletSubcredentialSharingInvitation *)arg2 withTimeout:(unsigned long long)arg3 completion:(void (^)(PKAppletSubcredentialSharingInvitation *, NSError *))arg4;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 acceptSubcredentialInvitationWithIdentifier:(NSString *)arg2 metadata:(PKAppletSubcredentialSharingInvitationMetadata *)arg3 completion:(void (^)(PKPaymentPass *, NSError *))arg4;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 acceptSubcredentialInvitationWithIdentifier:(NSString *)arg2 completion:(void (^)(PKPaymentPass *, NSError *))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 requestSubcredentialInvitation:(PKAppletSubcredentialSharingInvitation *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 subcredentialInvitationsWithCompletion:(void (^)(NSSet *))arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 canAcceptInvitation:(PKAppletSubcredentialSharingInvitation *)arg2 withCompletionV2:(void (^)(NSError *))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 canAcceptInvitation:(PKAppletSubcredentialSharingInvitation *)arg2 withCompletion:(void (^)(_Bool))arg3;
+- (void)requestBackgroundRegistrationForCredential:(PKAppletSubcredential *)arg1 withCompletion:(void (^)(_Bool))arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 removeSharingInvitation:(PKAppletSubcredentialSharingInvitation *)arg2 withCompletion:(void (^)(_Bool))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 declineRelatedSharingInvitationsIfNecessary:(PKAppletSubcredentialSharingInvitation *)arg2 withCompletion:(void (^)(_Bool))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 addSubcredential:(PKAppletSubcredential *)arg2 fromSharingInvitation:(PKAppletSubcredentialSharingInvitation *)arg3 withCompletion:(void (^)(_Bool))arg4;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 revokeSharedCredentialGroup:(PKSharedCredentialGroup *)arg2 withCompletion:(void (^)(NSError *))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 removeSharingInvitationReceipts:(NSSet *)arg2 onCredential:(PKAppletSubcredential *)arg3 withCompletion:(void (^)(_Bool))arg4;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 addSharingInvitationReceipts:(NSArray *)arg2 onCredential:(PKAppletSubcredential *)arg3 withCompletion:(void (^)(_Bool))arg4;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 updateMetadataOnPass:(PKPaymentPass *)arg2 withCredential:(PKAppletSubcredential *)arg3 completion:(void (^)(PKPaymentPass *))arg4;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 setAccountAttestationAnonymizationSalt:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 accountAttestationAnonymizationSaltWithCompletion:(void (^)(NSString *, NSError *))arg2;
+- (void)exitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg1 withShouldContinue:(_Bool)arg2 error:(NSError *)arg3;
+- (void)requestPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg1 withVisibleViewController:(id)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(_Bool)arg1;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(void (^)(_Bool, NSError *))arg1;
@@ -62,19 +89,25 @@
 - (void)paymentWebService:(PKPaymentWebService *)arg1 deviceMetadataWithFields:(unsigned long long)arg2 completion:(void (^)(PKPaymentDeviceMetadata *))arg3;
 - (void)featureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(void (^)(NSArray *, NSArray *))arg1;
+- (NSSet *)supportedFeatureIdentifiersForAccountProvisioningWithPaymentWebService:(PKPaymentWebService *)arg1;
 - (NSSet *)supportedFeatureIdentifiersWithPaymentWebService:(PKPaymentWebService *)arg1;
 - (_Bool)paymentWebServiceSupportsAccounts:(PKPaymentWebService *)arg1;
 - (_Bool)paymentWebServiceSupportsPeerPaymentRegistration:(PKPaymentWebService *)arg1;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 removePass:(PKPass *)arg2 withCompletionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 addPaymentPass:(PKPaymentPass *)arg2 withCompletionHandlerV2:(void (^)(PKPaymentPass *))arg3;
+- (_Bool)isGymKitEnabled;
 - (_Bool)supportsCredentialType:(long long)arg1;
 - (_Bool)supportsExpressMode:(NSString *)arg1;
 - (_Bool)supportsExpressModeForExpressPassType:(long long)arg1;
 - (_Bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (_Bool)secureElementIsAvailable;
 - (_Bool)felicaSecureElementIsAvailable;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 isPassExpressWithUniqueIdentifier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)removeExpressPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSSet *))arg2;
+- (void)paymentWebService:(PKPaymentWebService *)arg1 canHandlePotentialExpressPass:(PKPaymentPass *)arg2 withCompletionHandler:(void (^)(PKExpressPassInformation *))arg3;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 handlePotentialExpressPass:(PKPaymentPass *)arg2 withCompletionHandler:(void (^)(NSSet *))arg3;
 - (NSArray *)paymentWebService:(PKPaymentWebService *)arg1 passesOfType:(unsigned long long)arg2;
+- (NSString *)deviceIDSIdentifier;
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (unsigned long long)maximumPaymentCards;
 - (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;

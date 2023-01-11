@@ -40,8 +40,10 @@ __attribute__((visibility("hidden")))
     unsigned int _videoDegradedTotalCounter;
     double _videoDegradedTotalTime;
     double _videoDegradedStartTime;
+    double _videoDegradedMaxLength;
 }
 
+@property double videoDegradedMaxLength; // @synthesize videoDegradedMaxLength=_videoDegradedMaxLength;
 @property unsigned int videoDegradedTotalCounter; // @synthesize videoDegradedTotalCounter=_videoDegradedTotalCounter;
 @property _Bool isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
 @property double videoDegradedStartTime; // @synthesize videoDegradedStartTime=_videoDegradedStartTime;
@@ -66,6 +68,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSString *remoteParticipantID; // @synthesize remoteParticipantID=_remoteParticipantID;
 - (void)processVideoDegraded:(_Bool)arg1;
 - (double)audioErasureTotalTime;
+- (unsigned short)minVideoFrameRate;
+- (unsigned short)maxJBTargetSizeChanges;
+- (double)avgJBTargetSizeChanges;
+- (double)avgJBDelay;
+- (unsigned short)maxVideoStallCount;
+- (unsigned short)maxAudioErasureCount;
 - (unsigned short)audioErasureCount;
 - (double)significantVideoStallTotalTime;
 - (unsigned short)significantVideoStallCount;
@@ -75,7 +83,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)downlinkRateSum;
 - (void)processActualBitrateRateChange:(unsigned int)arg1;
 - (void)processDownlinkRateChange:(unsigned int)arg1;
-- (void)finalize;
 - (unsigned int)RTPeriod;
 - (void)dealloc;
 - (id)initCallWithRemoteParticipantID:(id)arg1;

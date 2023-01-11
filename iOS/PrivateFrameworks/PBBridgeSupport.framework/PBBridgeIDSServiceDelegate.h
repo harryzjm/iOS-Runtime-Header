@@ -13,6 +13,7 @@
 @interface PBBridgeIDSServiceDelegate : NSObject <IDSServiceDelegate>
 {
     _Bool _shouldSuppressTransportReachabilityTimeout;
+    _Bool _isTinkerPairing;
     IDSService *_service;
     NSTimer *_transportReachabilityTimer;
     NSMutableDictionary *_inflightMessages;
@@ -20,13 +21,14 @@
     BKSProcessAssertion *_suspendAssertion;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) BKSProcessAssertion *suspendAssertion; // @synthesize suspendAssertion=_suspendAssertion;
 @property(retain, nonatomic) NSMutableDictionary *pendingMessages; // @synthesize pendingMessages=_pendingMessages;
 @property(retain, nonatomic) NSMutableDictionary *inflightMessages; // @synthesize inflightMessages=_inflightMessages;
 @property(retain, nonatomic) NSTimer *transportReachabilityTimer; // @synthesize transportReachabilityTimer=_transportReachabilityTimer;
+@property(nonatomic, setter=setTinkerPairing:) _Bool isTinkerPairing; // @synthesize isTinkerPairing=_isTinkerPairing;
 @property(nonatomic) _Bool shouldSuppressTransportReachabilityTimeout; // @synthesize shouldSuppressTransportReachabilityTimeout=_shouldSuppressTransportReachabilityTimeout;
 @property(retain, nonatomic) IDSService *service; // @synthesize service=_service;
-- (void).cxx_destruct;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(_Bool)arg4 error:(id)arg5;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (void)service:(id)arg1 account:(id)arg2 incomingUnhandledProtobuf:(id)arg3 fromID:(id)arg4 context:(id)arg5;
@@ -34,8 +36,8 @@
 - (void)service:(id)arg1 linkedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
-- (void)reportConnectionForService:(id)arg1 accounts:(id)arg2 devices:(id)arg3;
-- (void)updateConnectivityTimer:(id)arg1;
+- (_Bool)reportConnectionForService:(id)arg1 accounts:(id)arg2 devices:(id)arg3;
+- (void)updateConnectivityTimer:(_Bool)arg1;
 - (void)transportBecameUnreachable;
 - (void)transportBecameReachable;
 - (void)resetTransportReachabilityTimer;

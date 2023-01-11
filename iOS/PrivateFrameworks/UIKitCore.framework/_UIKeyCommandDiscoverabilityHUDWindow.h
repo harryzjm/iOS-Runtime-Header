@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (_Bool)_shouldCreateContextAsSecure;
 
 @end

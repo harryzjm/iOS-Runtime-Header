@@ -38,6 +38,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool supportsRelay; // @synthesize supportsRelay=_supportsRelay;
 @property(copy, nonatomic) NSArray *identifiersOfOtherConnectedDevices; // @synthesize identifiersOfOtherConnectedDevices=_identifiersOfOtherConnectedDevices;
 @property(nonatomic) _Bool supportsPreferredAndActive; // @synthesize supportsPreferredAndActive=_supportsPreferredAndActive;
@@ -59,7 +60,6 @@
 @property(nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -67,6 +67,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqualToRoute:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)customDescription;
 - (id)description;
 - (id)initWithUniqueIdentifier:(id)arg1 name:(id)arg2;
 

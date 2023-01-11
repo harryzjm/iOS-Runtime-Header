@@ -94,11 +94,15 @@ struct __sbuf {
     int _field2;
 };
 
-struct __va_list_tag {
+struct mach_header_64 {
     unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
+    int _field2;
+    int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
 };
 
 struct os_unfair_lock_s {

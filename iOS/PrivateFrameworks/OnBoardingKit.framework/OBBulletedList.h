@@ -6,18 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray;
+@class NSLayoutConstraint, NSMutableArray;
 
 @interface OBBulletedList : UIView
 {
     NSMutableArray *_items;
     NSMutableArray *_verticalConstraints;
+    NSLayoutConstraint *_leadingConstraint;
+    NSLayoutConstraint *_trailingConstraint;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *trailingConstraint; // @synthesize trailingConstraint=_trailingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *leadingConstraint; // @synthesize leadingConstraint=_leadingConstraint;
 @property(retain, nonatomic) NSMutableArray *verticalConstraints; // @synthesize verticalConstraints=_verticalConstraints;
 @property(retain, nonatomic) NSMutableArray *items; // @synthesize items=_items;
-- (void).cxx_destruct;
+- (_Bool)_shouldHandleLandscapeiPhoneLayout;
+- (void)_updatePaddingForOrientation;
+- (void)layoutSubviews;
 - (void)_updateConstraints;
+- (void)didMoveToWindow;
 - (double)bulletedListItemSpacing;
 - (void)addBulletedListItem:(id)arg1;
 - (void)addItemWithDescription:(id)arg1 image:(id)arg2;

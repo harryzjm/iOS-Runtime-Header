@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)popoverViewContainingView:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool chromeHidden; // @synthesize chromeHidden=_chromeHidden;
 @property(readonly, nonatomic) _Bool contentExtendsOverArrow; // @synthesize contentExtendsOverArrow=_contentExtendsOverArrow;
 @property(nonatomic) UIPopoverController *popoverController; // @synthesize popoverController=_popoverController;
@@ -30,12 +31,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsContentViewHighlight; // @synthesize showsContentViewHighlight=_showsContentViewHighlight;
 @property(nonatomic) _Bool showsBackgroundViewHighlight; // @synthesize showsBackgroundViewHighlight=_showsBackgroundViewHighlight;
 @property(nonatomic) _Bool showsBackgroundComponentHighlights; // @synthesize showsBackgroundComponentHighlights=_showsBackgroundComponentHighlights;
-- (void).cxx_destruct;
 - (void)_performBlockCheckingDefinesTintColor:(CDUnknownBlockType)arg1;
 - (_Bool)_definesTintColor;
 - (id)_normalInheritedTintColor;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
-- (void)prepareForAnimatedTransitioningWithCoordinator:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_hideArrow;
 - (void)_showArrow;

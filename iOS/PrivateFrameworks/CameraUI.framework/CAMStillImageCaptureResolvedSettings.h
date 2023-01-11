@@ -10,13 +10,18 @@
 {
     _Bool _HDREnabled;
     _Bool _portraitEffectEnabled;
+    _Bool _captureBeforeResolvingSettingsEnabled;
     double _lowLightCaptureTime;
+    struct CGColor *_lowLightPreviewColorEstimate;
 }
 
+@property(readonly, nonatomic, getter=isCaptureBeforeResolvingSettingsEnabled) _Bool captureBeforeResolvingSettingsEnabled; // @synthesize captureBeforeResolvingSettingsEnabled=_captureBeforeResolvingSettingsEnabled;
+@property(readonly, nonatomic) struct CGColor *lowLightPreviewColorEstimate; // @synthesize lowLightPreviewColorEstimate=_lowLightPreviewColorEstimate;
 @property(readonly, nonatomic) double lowLightCaptureTime; // @synthesize lowLightCaptureTime=_lowLightCaptureTime;
 @property(readonly, nonatomic, getter=isPortraitEffectEnabled) _Bool portraitEffectEnabled; // @synthesize portraitEffectEnabled=_portraitEffectEnabled;
 @property(readonly, nonatomic, getter=isHDREnabled) _Bool HDREnabled; // @synthesize HDREnabled=_HDREnabled;
-- (id)initWithHDREnabled:(_Bool)arg1 portraitEffectEnabled:(_Bool)arg2 lowLightCaptureTime:(double)arg3;
+- (void)dealloc;
+- (id)initWithHDREnabled:(_Bool)arg1 portraitEffectEnabled:(_Bool)arg2 lowLightCaptureTime:(double)arg3 lowLightPreviewColorEstimate:(struct CGColor *)arg4 captureBeforeResolvingSettingsEnabled:(_Bool)arg5;
 
 @end
 

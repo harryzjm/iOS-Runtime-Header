@@ -4,38 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+#import <objc/NSObject.h>
 
-@interface MANode
+#import <KnowledgeGraphKit/KGNode-Protocol.h>
+#import <KnowledgeGraphKit/MAElement-Protocol.h>
+#import <KnowledgeGraphKit/NSCopying-Protocol.h>
+
+@class MABaseGraph, MAGraphReference, NSArray, NSDictionary, NSString;
+@protocol MANodeImplementationProtocol;
+
+@interface MANode : NSObject <KGNode, MAElement, NSCopying>
 {
-    NSMutableArray *_edges;
+    unsigned int _identifier;
+    MAGraphReference *_graphReference;
+    id <MANodeImplementationProtocol> _implementation;
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)_memoryFootprint:(id)arg1;
-- (void)_enumerateNeighborNodesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
+@property(retain, nonatomic) id <MANodeImplementationProtocol> implementation; // @synthesize implementation=_implementation;
+@property(retain, nonatomic) MAGraphReference *graphReference; // @synthesize graphReference=_graphReference;
+@property(nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+- (unsigned long long)memoryFootprint:(id)arg1;
+- (void)removeEdge:(id)arg1;
+- (void)addEdge:(id)arg1;
 - (id)associatedNodesForRemoval;
-- (void)_enumerateEdgesOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_enumerateEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_enumerateEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (_Bool)_hasEdgesWithOppositeNode:(id)arg1 type:(unsigned long long)arg2;
-- (id)_anyEdgeWithOppositeNode:(id)arg1 type:(unsigned long long)arg2;
-- (id)_edgesWithOppositeNode:(id)arg1 type:(unsigned long long)arg2;
-- (void)_removeEdge:(id)arg1;
-- (void)_addEdge:(id)arg1;
 - (id)visualStringWithName:(id)arg1 andPropertyKeys:(id)arg2;
 - (id)visualStringWithName:(id)arg1;
 - (id)visualString;
+- (void)updatePersistedWeight:(float)arg1;
 - (id)shortestPathToNode:(id)arg1 directed:(_Bool)arg2;
 - (void)enumerateSiblingNodesThroughEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateSiblingNodesThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)siblingNodesThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (void)enumerateSiblingNodesThroughEdgesWithLabel:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)siblingNodesThroughEdgesWithLabel:(id)arg1;
-- (id)commonNeighborNodesThroughOutEdgesWithNode:(id)arg1;
-- (id)commonNeighborNodesThroughInEdgesWithNode:(id)arg1;
-- (id)commonNeighborNodesThroughEdgesWithNode:(id)arg1;
-- (id)commonNeighborNodesWithNode:(id)arg1;
 - (id)anyNeighborNodeThroughInEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)anyNeighborNodeThroughInEdges;
 - (id)anyNeighborNodeThroughOutEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
@@ -49,12 +51,14 @@
 - (id)neighborNodesThroughOutEdges;
 - (id)neighborNodes;
 - (_Bool)hasEdge:(id)arg1 isIn:(_Bool *)arg2;
+- (void)enumerateDeepNeighborsWithLabel:(id)arg1 domain:(unsigned short)arg2 edgeType:(unsigned long long)arg3 excluding:(id)arg4 shouldStop:(_Bool *)arg5 block:(CDUnknownBlockType)arg6;
 - (void)enumerateNeighborNodesThroughInEdgesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateNeighborNodesThroughOutEdgesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateNeighborNodesThroughEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateNeighborNodesThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateNeighborNodesThroughEdgesWithLabel:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateNeighborNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateNeighborNodesThroughEdgesOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateNeighborNodesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -84,18 +88,47 @@
 - (unsigned long long)outEdgesCount;
 - (unsigned long long)inEdgesCount;
 - (unsigned long long)edgesCount;
-- (_Bool)isNode;
 - (_Bool)isUnique;
 - (_Bool)isOrphan;
-- (void)_setPersistentStoreProperties:(id)arg1;
-- (void)_setPersistentStorePropertyValue:(id)arg1 forKey:(id)arg2;
-- (void)_removeAllPersistentStoreProperties;
-- (void)_removePersistentStorePropertyForKey:(id)arg1;
+- (void)mergeProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)propertyDictionary;
+- (id)propertyKeys;
+- (unsigned long long)propertiesCount;
+- (_Bool)hasProperties;
+- (void)setProperties:(id)arg1;
+- (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
+- (void)removeAllProperties;
+- (void)removePropertyForKey:(id)arg1;
+- (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)isIdentifiedByProperties:(id)arg1;
+- (id)propertyForKey:(id)arg1 kindOfClass:(Class)arg2;
+- (id)propertyForKey:(id)arg1;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+- (id)objectForKeyedSubscript:(id)arg1;
+- (_Bool)matchesNode:(id)arg1 includingProperties:(_Bool)arg2;
 - (_Bool)isEqualToNode:(id)arg1;
+- (_Bool)isSameNodeAsNode:(id)arg1;
+- (_Bool)hasEqualPropertiesToNode:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)shortDescription;
-- (id)description;
-- (id)init;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) __weak MABaseGraph *graph;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+@property(readonly, copy, nonatomic) NSDictionary *properties;
+@property(readonly, copy, nonatomic) NSArray *labels;
+- (id)initWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4;
 - (_Bool)conformsToNodeSchema:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) unsigned short domain; // @dynamic domain;
+@property(readonly, copy, nonatomic) NSString *label; // @dynamic label;
+@property(readonly) Class superclass;
+@property(nonatomic) float weight; // @dynamic weight;
 
 @end
 

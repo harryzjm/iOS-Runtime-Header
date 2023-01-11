@@ -5,15 +5,15 @@
 //
 
 #import <EventKitUI/EKUILocationSearchModelDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 #import <EventKitUI/UISearchBarDelegate-Protocol.h>
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
 @class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSMutableDictionary, NSString, UISearchBar, UITableView;
 
-@interface EKLocationEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKUILocationSearchModelDelegate>
+@interface EKLocationEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKUILocationSearchModelDelegate, EKUIManagedViewController>
 {
-    UISearchBar *_searchBar;
     UITableView *_tableView;
     EKUILocationSearchModel *_searchModel;
     EKCalendarItem *_calendarItem;
@@ -22,20 +22,30 @@
     _Bool _supportsStructuredLocations;
     _Bool _tableConstraintsInstalled;
     _Bool _onlyAllowConferenceRooms;
+    _Bool _rotating;
+    _Bool _wasFirstResponder;
     _Bool _needsSave;
     _Bool _onlyDisplayMapLocations;
+    _Bool _fillSearchbarWithStructuredLocation;
     EKStructuredLocation *_structuredLocation;
     EKStructuredLocation *_selectedLocation;
     EKUIConferenceRoom *_selectedConferenceRoom;
+    UISearchBar *_searchBar;
+    CDUnknownBlockType _viewDidAppearBlock;
 }
 
 + (id)_sectionNameForSection:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType viewDidAppearBlock; // @synthesize viewDidAppearBlock=_viewDidAppearBlock;
+@property(readonly, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property(retain, nonatomic) EKUIConferenceRoom *selectedConferenceRoom; // @synthesize selectedConferenceRoom=_selectedConferenceRoom;
 @property(retain, nonatomic) EKStructuredLocation *selectedLocation; // @synthesize selectedLocation=_selectedLocation;
 @property(retain, nonatomic) EKStructuredLocation *structuredLocation; // @synthesize structuredLocation=_structuredLocation;
+@property(nonatomic) _Bool fillSearchbarWithStructuredLocation; // @synthesize fillSearchbarWithStructuredLocation=_fillSearchbarWithStructuredLocation;
 @property(nonatomic) _Bool onlyDisplayMapLocations; // @synthesize onlyDisplayMapLocations=_onlyDisplayMapLocations;
 @property(nonatomic) _Bool needsSave; // @synthesize needsSave=_needsSave;
-- (void).cxx_destruct;
+- (_Bool)canManagePresentationStyle;
+- (_Bool)wantsManagement;
 - (id)_cellForConferenceRoom:(id)arg1 atIndexPath:(id)arg2;
 - (void)eventsSearchUpdated:(id)arg1;
 - (void)frequentsSearchUpdated:(id)arg1;
@@ -70,13 +80,14 @@
 - (_Bool)presentModally;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)_setupConstraints;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)title;
+- (void)setViewAppearedBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2 calendarItem:(id)arg3 eventStore:(id)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;

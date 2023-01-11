@@ -27,18 +27,18 @@
     PKPaymentSetupProduct *_selectedProduct;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PKPaymentSetupProduct *selectedProduct; // @synthesize selectedProduct=_selectedProduct;
 @property(nonatomic) __weak id <PKPaymentSetupBrowseProductsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PKPaymentSetupBrowseProductsModel *model; // @synthesize model=_model;
 @property(nonatomic) _Bool showScanCardButton; // @synthesize showScanCardButton=_showScanCardButton;
-- (void).cxx_destruct;
 - (void)_setNavigationBarEnabled:(_Bool)arg1;
 - (void)hideActivitySpinner;
 - (void)showActivitySpinner;
 - (void)linkedApplicationDidChangeState:(id)arg1;
-- (void)_showCameraCapture;
 - (void)_showAppRequiredForProduct:(id)arg1 withSpinner:(id)arg2;
 - (void)_pushAppRequiredViewControllerForProduct:(id)arg1 linkedApplication:(id)arg2;
+- (void)_showCameraCapture;
 - (id)_cardTypeFlowPickerForProduct:(id)arg1;
 - (void)_updateFilterString:(id)arg1 userInteraction:(_Bool)arg2;
 - (void)_nextStepInSetupFlowWithProduct:(id)arg1;

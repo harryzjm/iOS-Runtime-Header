@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class SOConfiguration, SOConfigurationVersion;
+@class NSMutableArray, SOConfiguration, SOConfigurationVersion;
 
 @interface SOConfigurationHost : NSObject
 {
     SOConfiguration *_configuration;
     SOConfigurationVersion *_configurationVersion;
+    NSMutableArray *_removedProfiles;
 }
 
 + (id)_loadProfilesFromURL:(id)arg1;
 + (id)_loadProfilesFromDict:(id)arg1;
 + (id)defaultManager;
 - (void).cxx_destruct;
+- (id)_defaultConfigurationFile;
+- (id)_defaultConfigurationPath;
 - (id)_stringWithReason:(long long)arg1;
 - (void)_checkNewVersion;
 - (_Bool)_isConfigFileAvailable;
@@ -35,6 +38,7 @@
 - (id)realms;
 - (id)profilesWithExtensionBundleIdentifier:(id)arg1;
 - (id)configurationForClientWithError:(id *)arg1;
+- (id)removedProfileForExtensionBundleIdentifier:(id)arg1;
 - (id)profileForURL:(id)arg1 responseCode:(long long)arg2;
 - (_Bool)saveConfigurationData:(id)arg1 error:(id *)arg2;
 - (void)dealloc;

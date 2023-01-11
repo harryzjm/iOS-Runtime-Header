@@ -26,11 +26,20 @@
     NSMutableDictionary *_delayedSearchIndexUpdateUUIDs;
     NSMutableSet *_delayedAlbumCountsAndDateRangeUpdates;
     NSMutableDictionary *_delayedWorkerTypesToAnalyzeByAssetUUID;
+    NSMutableSet *_delayedAssetsForDuetDelete;
+    NSMutableSet *_delayedMemoriesForDuetDelete;
+    _Bool _delayedWidgetTimelineReloadNeeded;
     PLClientServerTransaction *_clientTransaction;
 }
 
-@property(readonly, nonatomic) PLClientServerTransaction *clientTransaction; // @synthesize clientTransaction=_clientTransaction;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PLClientServerTransaction *clientTransaction; // @synthesize clientTransaction=_clientTransaction;
+- (void)_popWidgetTimelineReloadNeeded:(id)arg1;
+- (void)recordWidgetTimelineReloadNeeded;
+- (void)_popDuetDeletedMemoriesIntoDetail:(id)arg1;
+- (void)recordMemoryForDuetDelete:(id)arg1;
+- (void)_popDuetDeletedAssetsIntoDetail:(id)arg1;
+- (void)recordAssetForDuetDelete:(id)arg1;
 - (void)_popDelayedAssetsForAnalysis:(id *)arg1;
 - (void)recordAssetForAnalysis:(id)arg1 workerFlags:(int)arg2 workerType:(short)arg3;
 - (void)_popDelayedAlbumCountsAndDateRangeUpdates:(id *)arg1;
@@ -78,7 +87,6 @@
 - (void)_recordDelayedHighlightAssetUpdates:(id)arg1;
 - (void)_recordDelayedMomentAssetUpdates:(id)arg1;
 - (void)_recordDelayedMomentAssetDeletionsDictionary:(id)arg1 forKey:(id)arg2;
-- (void)_popAssetsForAnalysisChangesIntoDetail:(id)arg1;
 - (void)_popAlbumCountChangesIntoDetail:(id)arg1;
 - (void)_popSearchIndexChangesIntoDetail:(id)arg1;
 - (void)_popAssetsForFilesystemPersistencyChangesIntoDetail:(id)arg1;

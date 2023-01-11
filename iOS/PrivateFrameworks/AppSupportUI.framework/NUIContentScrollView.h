@@ -6,11 +6,10 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class NUIMultilineSizingHelper, UIView;
+@class UIView;
 
 @interface NUIContentScrollView : UIScrollView
 {
-    NUIMultilineSizingHelper *_multilineSizeHelper;
     _Bool _canScrollDocumentViewHorizontally;
     _Bool _canScrollDocumentViewVertically;
     UIView *_documentView;
@@ -18,25 +17,22 @@
     long long _verticalAlignment;
 }
 
++ (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool canScrollDocumentViewVertically; // @synthesize canScrollDocumentViewVertically=_canScrollDocumentViewVertically;
 @property(nonatomic) _Bool canScrollDocumentViewHorizontally; // @synthesize canScrollDocumentViewHorizontally=_canScrollDocumentViewHorizontally;
 @property(nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 @property(nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
 @property(retain, nonatomic) UIView *documentView; // @synthesize documentView=_documentView;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
-- (void)_resetToBeginningOfDoublePass;
-- (void)_setInSecondConstraintsPass:(_Bool)arg1;
-- (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
-- (void)_prepareForFirstIntrinsicContentSizeCalculation;
-- (_Bool)_needsDoubleUpdateConstraintsPass;
-- (struct CGSize)intrinsicContentSize;
-- (void)updateConstraints;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
+- (unsigned long long)_axesForDerivingIntrinsicContentSizeFromLayoutSize;
+- (_Bool)_layoutHeightDependsOnWidth;
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
 - (id)initWithDocumentView:(id)arg1;
 @property(retain, nonatomic) UIView *contentView;

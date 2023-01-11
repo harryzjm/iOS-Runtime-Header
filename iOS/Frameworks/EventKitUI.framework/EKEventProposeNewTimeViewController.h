@@ -14,7 +14,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKEventDateEditItem, EKInviteeAlternativeTimeSearcher, EKUIEventStatusButtonsView, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSString, SingleToolbarItemContainerView;
+@class EKEvent, EKEventDateEditItem, EKInviteeAlternativeTimeSearcher, EKUIEventStatusButtonsView, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewMessageSendingManager, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSString, SingleToolbarItemContainerView;
 @protocol EKEditItemViewControllerDelegate;
 
 @interface EKEventProposeNewTimeViewController : UITableViewController <EKEditItemViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, EKCalendarItemEditItemDelegate, EKEventDateEditItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEditItemViewControllerProtocol>
@@ -35,9 +35,12 @@
     EKUIInviteesViewSomeInviteesCanAttendSection *_someInviteesCanAttendSection;
     EKUIInviteesViewAllInviteesCanAttendSection *_allInviteesCanAttendSection;
     EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
+    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
 }
 
 + (id)_participantsInArray:(id)arg1 thatAreNotInArray:(id)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property(retain, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
 @property(retain, nonatomic) EKUIInviteesViewAllInviteesCanAttendSection *allInviteesCanAttendSection; // @synthesize allInviteesCanAttendSection=_allInviteesCanAttendSection;
 @property(retain, nonatomic) EKUIInviteesViewSomeInviteesCanAttendSection *someInviteesCanAttendSection; // @synthesize someInviteesCanAttendSection=_someInviteesCanAttendSection;
@@ -54,7 +57,6 @@
 @property(retain, nonatomic) NSDate *originalDate; // @synthesize originalDate=_originalDate;
 @property(readonly, nonatomic) NSDate *selectedEndDate; // @synthesize selectedEndDate=_selectedEndDate;
 @property(readonly, nonatomic) NSDate *selectedStartDate; // @synthesize selectedStartDate=_selectedStartDate;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)defaultAlertTitleForEditItem:(id)arg1;
 - (void)editItem:(id)arg1 wantsRowsScrolledToVisible:(id)arg2;
@@ -76,6 +78,7 @@
 - (void)eventStatusButtonsView:(id)arg1 calculatedFontSizeToFit:(double)arg2;
 - (double)eventStatusButtonsViewButtonFontSize:(id)arg1;
 - (void)eventStatusButtonsView:(id)arg1 didSelectAction:(long long)arg2 ifCancelled:(CDUnknownBlockType)arg3;
+- (id)editItemEventToDetach;
 - (_Bool)editItemViewControllerShouldShowDetachAlert;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;

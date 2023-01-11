@@ -9,7 +9,7 @@
 #import <MusicCarDisplayUI/MCDPCContainerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITabBarControllerDelegate-Protocol.h>
 
-@class MCDNowPlayingButtonWrapperView, MCDPCContainer, MCDPCModel, NSObject, NSString;
+@class CPUINowPlayingButtonWrapperView, MCDPCContainer, MCDPCModel, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentNavigationController : UITabBarController <UITabBarControllerDelegate, MCDPCContainerDelegate>
@@ -24,23 +24,23 @@
     UITabBarController *_hostTabBarController;
     MCDPCModel *_model;
     NSString *_bundleID;
-    MCDNowPlayingButtonWrapperView *_nowPlayingButtonView;
+    CPUINowPlayingButtonWrapperView *_nowPlayingButtonView;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(nonatomic) _Bool hasInvalidatedDummyTabs; // @synthesize hasInvalidatedDummyTabs=_hasInvalidatedDummyTabs;
 @property(nonatomic) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic) _Bool didFinishInitialViewAppear; // @synthesize didFinishInitialViewAppear=_didFinishInitialViewAppear;
 @property(nonatomic) _Bool didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
 @property(nonatomic) _Bool hasCarScreen; // @synthesize hasCarScreen=_hasCarScreen;
-@property(retain, nonatomic) MCDNowPlayingButtonWrapperView *nowPlayingButtonView; // @synthesize nowPlayingButtonView=_nowPlayingButtonView;
+@property(retain, nonatomic) CPUINowPlayingButtonWrapperView *nowPlayingButtonView; // @synthesize nowPlayingButtonView=_nowPlayingButtonView;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) MCDPCModel *model; // @synthesize model=_model;
 @property(nonatomic) __weak UITabBarController *hostTabBarController; // @synthesize hostTabBarController=_hostTabBarController;
 @property(retain, nonatomic) UITabBarController *tabBarController; // @synthesize tabBarController=_tabBarController;
 @property(retain, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

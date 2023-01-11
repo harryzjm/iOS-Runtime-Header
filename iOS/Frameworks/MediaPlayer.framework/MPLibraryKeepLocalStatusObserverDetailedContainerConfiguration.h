@@ -14,11 +14,13 @@
     long long _redownloadableItemCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long redownloadableItemCount; // @synthesize redownloadableItemCount=_redownloadableItemCount;
 @property(nonatomic) long long nonPurgeableItemCount; // @synthesize nonPurgeableItemCount=_nonPurgeableItemCount;
 @property(nonatomic) long long downloadEnabledItemCount; // @synthesize downloadEnabledItemCount=_downloadEnabledItemCount;
 @property(copy, nonatomic) NSArray *pendingItemIdentifiers; // @synthesize pendingItemIdentifiers=_pendingItemIdentifiers;
-- (void).cxx_destruct;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 
 @end
 

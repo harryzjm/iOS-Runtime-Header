@@ -22,12 +22,13 @@
     struct CGRect _initialFrameBeforeAppearance;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <_MSMessageComposeExtensionImplProtocol> appContext; // @synthesize appContext=_appContext;
 @property(nonatomic) _Bool viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 @property(nonatomic) _Bool isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
 @property(retain, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
 @property(nonatomic) struct CGRect initialFrameBeforeAppearance; // @synthesize initialFrameBeforeAppearance=_initialFrameBeforeAppearance;
-- (void).cxx_destruct;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_didRemoveAssetArchiveWithIdentifier:(id)arg1;
 - (_Bool)_handleTextInputPayload:(id)arg1 withPayloadID:(id)arg2;

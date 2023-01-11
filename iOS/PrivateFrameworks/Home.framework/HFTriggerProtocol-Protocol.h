@@ -6,10 +6,11 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HMHome, NSString;
+@class HFTriggerNaturalLanguageOptions, HMHome, NSString;
 
 @protocol HFTriggerProtocol <NSObject>
 - (unsigned long long)hf_triggerType;
+- (NSString *)hf_naturalLanguageNameWithOptions:(HFTriggerNaturalLanguageOptions *)arg1;
 - (NSString *)hf_naturalLanguageNameWithHome:(HMHome *)arg1 type:(unsigned long long)arg2;
 @end
 

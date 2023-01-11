@@ -15,6 +15,7 @@
 + (id)kilometersPerHour;
 + (id)metersPerSecond;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

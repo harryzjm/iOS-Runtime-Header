@@ -25,6 +25,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDCameraStreamMetrics *streamMetrics; // @synthesize streamMetrics=_streamMetrics;
 @property(readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property(readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
@@ -34,7 +35,7 @@
 @property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) __weak id <HMDCameraStreamControlManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)logIdentifier;
 - (void)_callStreamStopped:(id)arg1;
 - (void)_callStreamReconfigured;
 - (void)_callStreamFirstFrameReceived:(unsigned long long)arg1 aspectRatio:(id)arg2 slotIdentifier:(id)arg3;
@@ -46,7 +47,6 @@
 - (void)_reportInternalErrorCode:(long long)arg1;
 - (void)_reportErrorCode:(long long)arg1;
 - (void)_cleanUpStreamSession:(id)arg1;
-- (id)logIdentifier;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 accessory:(id)arg6 streamManagementService:(id)arg7 isLocal:(_Bool)arg8;
 
 // Remaining properties

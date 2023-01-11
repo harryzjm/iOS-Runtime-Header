@@ -10,11 +10,16 @@
 {
 }
 
++ (id)eligibleForSuggestions;
++ (id)homeOccupancy;
++ (id)accessoryState;
++ (id)source;
 + (id)clientName;
 + (id)characteristicType;
 + (id)serviceType;
 + (id)serviceName;
 + (id)accessoryName;
++ (id)serviceUUID;
 + (id)accessoryUUID;
 + (id)homeUUID;
 

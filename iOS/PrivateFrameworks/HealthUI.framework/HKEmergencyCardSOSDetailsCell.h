@@ -12,18 +12,19 @@
 
 @interface HKEmergencyCardSOSDetailsCell : UITableViewCell <UITextViewDelegate>
 {
+    NSAttributedString *_footerAttributedText;
     UITextView *_footerTextView;
 }
 
-@property(retain, nonatomic) UITextView *footerTextView; // @synthesize footerTextView=_footerTextView;
 - (void).cxx_destruct;
-- (void)_updateTextColor;
+@property(retain, nonatomic) UITextView *footerTextView; // @synthesize footerTextView=_footerTextView;
+@property(copy, nonatomic) NSAttributedString *footerAttributedText; // @synthesize footerAttributedText=_footerAttributedText;
+- (void)_updateText;
 - (void)tintColorDidChange;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)_dynamicUserInterfaceTraitDidChange;
-@property(readonly, nonatomic) NSAttributedString *footerTextViewString;
-- (void)setupConstraints;
-- (void)setupViews;
+- (void)_setupConstraints;
+- (void)_setupViews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties

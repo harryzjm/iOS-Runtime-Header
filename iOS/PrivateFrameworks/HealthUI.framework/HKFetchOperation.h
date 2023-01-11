@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 @protocol HKFetchOperationDelegate;
 
 @interface HKFetchOperation : NSObject
 {
+    _Bool _highPriority;
     NSUUID *_UUID;
-    long long _clientPriority;
-    long long _operationPriority;
+    NSString *_operationDescription;
     id <HKFetchOperationDelegate> _delegate;
+    double _queueTime;
+    double _executionTime;
 }
 
-@property(nonatomic, getter=_delegate, setter=_setDelegate:) __weak id <HKFetchOperationDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) long long operationPriority; // @synthesize operationPriority=_operationPriority;
-@property(nonatomic) long long clientPriority; // @synthesize clientPriority=_clientPriority;
-@property(readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 - (void).cxx_destruct;
+@property(nonatomic) double executionTime; // @synthesize executionTime=_executionTime;
+@property(nonatomic) double queueTime; // @synthesize queueTime=_queueTime;
+@property(nonatomic, getter=_delegate, setter=_setDelegate:) __weak id <HKFetchOperationDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool highPriority; // @synthesize highPriority=_highPriority;
+@property(readonly, nonatomic) NSString *operationDescription; // @synthesize operationDescription=_operationDescription;
+@property(readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 - (void)_alertDelegateDidUpdatePriority;
 - (void)stopOperation;
 - (void)startOperationWithCompletion:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithOperationDescription:(id)arg1;
 
 @end
 

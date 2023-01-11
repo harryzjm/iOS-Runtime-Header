@@ -7,20 +7,23 @@
 #import <HealthUI/HKTableViewController.h>
 
 #import <HealthRecordsUI/HKHealthRecordsStoreAccountStateChangeListener-Protocol.h>
+#import <HealthRecordsUI/HKSourceListDataSourceObserver-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC15HealthRecordsUI22SettingsViewController : HKTableViewController <HKHealthRecordsStoreAccountStateChangeListener>
+@interface _TtC15HealthRecordsUI22SettingsViewController : HKTableViewController <HKHealthRecordsStoreAccountStateChangeListener, HKSourceListDataSourceObserver>
 {
     MISSING_TYPE *accounts;
     MISSING_TYPE *appSourceModels;
+    MISSING_TYPE *researchStudySourceModels;
     MISSING_TYPE *sourceLoadingToken;
     MISSING_TYPE *accountLoadingToken;
     MISSING_TYPE *factory;
+    MISSING_TYPE *profile;
+    MISSING_TYPE *sourceListDataSource;
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithUsingInsetStyling:(_Bool)arg1;
@@ -29,10 +32,9 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)init;
+- (id)initWithCoder:(id)arg1;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)closeButtonTapped;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

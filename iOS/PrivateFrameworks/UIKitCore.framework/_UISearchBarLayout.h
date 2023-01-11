@@ -6,7 +6,7 @@
 
 #import <UIKitCore/_UISearchBarContainerSublayoutDelegate-Protocol.h>
 
-@class NSString, UISearchBarTextField, UIView, _UISearchBarPromptContainerView, _UISearchBarScopeContainerLayout, _UISearchBarScopeContainerView, _UISearchBarSearchContainerLayout, _UISearchBarSearchContainerView;
+@class NSString, UIFont, UISearchBarTextField, UIView, _UISearchBarPromptContainerView, _UISearchBarScopeContainerLayout, _UISearchBarScopeContainerView, _UISearchBarSearchContainerLayout, _UISearchBarSearchContainerView;
 
 __attribute__((visibility("hidden")))
 @interface _UISearchBarLayout <_UISearchBarContainerSublayoutDelegate>
@@ -22,9 +22,12 @@ __attribute__((visibility("hidden")))
         unsigned int hasSeparator:1;
         unsigned int allowSearchFieldShrinkage:1;
         unsigned int searchFieldUsesCustomBackgroundImage:1;
+        unsigned int searchFieldEffectivelySupportsDynamicType:1;
         unsigned int isProspective:1;
         unsigned int isHostingNavBarTransitionActive:1;
     } _searchBarLayoutFlags;
+    double _cachedFontValueBeforeScaling;
+    double _cachedFontValueAfterScaling;
     UIView *_searchBarBackground;
     UIView *_searchBarBackdrop;
     UIView *_separator;
@@ -34,6 +37,7 @@ __attribute__((visibility("hidden")))
     double _backgroundExtension;
     double _searchBarReadableWidth;
     unsigned long long _numberOfScopeTitles;
+    UIFont *_searchFieldFont;
     long long _representedLayoutState;
     _UISearchBarScopeContainerLayout *_scopeContainerLayout;
     _UISearchBarSearchContainerLayout *_searchContainerLayout;
@@ -46,10 +50,12 @@ __attribute__((visibility("hidden")))
     struct CGRect _separatorLayoutFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UISearchBarSearchContainerLayout *searchContainerLayout; // @synthesize searchContainerLayout=_searchContainerLayout;
 @property(retain, nonatomic) _UISearchBarScopeContainerLayout *scopeContainerLayout; // @synthesize scopeContainerLayout=_scopeContainerLayout;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee heightRange; // @synthesize heightRange=_heightRange;
 @property(nonatomic) long long representedLayoutState; // @synthesize representedLayoutState=_representedLayoutState;
+@property(retain, nonatomic) UIFont *searchFieldFont; // @synthesize searchFieldFont=_searchFieldFont;
 @property(nonatomic) unsigned long long numberOfScopeTitles; // @synthesize numberOfScopeTitles=_numberOfScopeTitles;
 @property(nonatomic) double searchBarReadableWidth; // @synthesize searchBarReadableWidth=_searchBarReadableWidth;
 @property(nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment; // @synthesize searchFieldBackgroundPositionAdjustment=_searchFieldBackgroundPositionAdjustment;
@@ -60,7 +66,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *separator; // @synthesize separator=_separator;
 @property(retain, nonatomic) UIView *searchBarBackdrop; // @synthesize searchBarBackdrop=_searchBarBackdrop;
 @property(retain, nonatomic) UIView *searchBarBackground; // @synthesize searchBarBackground=_searchBarBackground;
-- (void).cxx_destruct;
+@property(nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge;
+- (void)setLayoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback:(CDUnknownBlockType)arg1;
 - (void)setDelegateSearchFieldFrameManipulationBlock:(CDUnknownBlockType)arg1;
 - (void)cleanUpLayout;
 - (void)applyScopeContainerSublayout;
@@ -68,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)ensureCorrectContainerViewOrdering;
 - (double)minimumLayoutWidth;
 - (void)updateLayout;
+- (double)layout:(id)arg1 fontScaledValueForValue:(double)arg2;
 - (void)containerLayoutWillUpdateLayout:(id)arg1;
 - (void)prepareSublayouts;
 - (void)prepareScopeContainerLayout;
@@ -88,6 +96,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGRect promptContainerLayoutFrame; // @synthesize promptContainerLayoutFrame=_promptContainerLayoutFrame;
 @property(nonatomic, getter=isHostingNavBarTransitionActive) _Bool hostingNavBarTransitionActive;
 @property(nonatomic, getter=isProspective) _Bool prospective;
+@property(nonatomic) _Bool searchFieldEffectivelySupportsDynamicType;
 @property(nonatomic) _Bool searchFieldUsesCustomBackgroundImage;
 @property(nonatomic) _Bool allowSearchFieldShrinkage;
 @property(retain, nonatomic) UIView *scopeBar;

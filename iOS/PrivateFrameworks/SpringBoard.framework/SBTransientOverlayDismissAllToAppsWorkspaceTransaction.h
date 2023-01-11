@@ -5,22 +5,29 @@
 //
 
 @class NSArray, SBAutoPiPWorkspaceTransaction;
+@protocol BSInvalidatable;
 
 @interface SBTransientOverlayDismissAllToAppsWorkspaceTransaction
 {
     NSArray *_switcherTransitioningTransientOverlayViewControllers;
     SBAutoPiPWorkspaceTransaction *_autoPiPTransaction;
+    id <BSInvalidatable> _pipWindowLevelOverrideAssertionInvalidatable;
     _Bool _isUsingSwitcherAnimation;
+    _Bool _beganDismissingTransientOverlays;
 }
 
 - (void).cxx_destruct;
+- (void)_logForInterruptAttemptReason:(id)arg1;
 - (_Bool)_shouldUseSwitcherDismissalAnimationForTransientOverlayViewController:(id)arg1;
 - (void)_performDismissal;
 - (void)_handleDismissOverlaysCompletion;
+- (_Bool)canInterruptForTransitionRequest:(id)arg1;
 - (_Bool)_shouldResignActiveForAnimation;
 - (_Bool)_shouldAnimateTransition;
 - (id)_setupAnimation;
+- (unsigned long long)_concurrentOverlayDismissalOptions;
 - (unsigned long long)_serialOverlayPreDismissalOptions;
+- (_Bool)_canBeInterrupted;
 - (void)_didComplete;
 - (void)_begin;
 - (void)dealloc;

@@ -7,6 +7,15 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (HKMenstrualCyclesUI)
++ (id)hkmc_highContrastMenstruationLoggingCardGradientBColor;
++ (id)hkmc_highContrastMenstruationLoggingCardGradientAColor;
++ (id)hkmc_highContrastSupplementaryLoggingCardGradientBColor;
++ (id)hkmc_highContrastSupplementaryLoggingCardGradientAColor;
++ (id)hkmc_highContrastSupplementaryDataBackgroundColor;
++ (id)hkmc_highContrastSupplementaryDataTextColor;
++ (id)hkmc_highContrastMenstruationBackgroundColor;
++ (id)hkmc_highContrastMenstruationColor;
++ (id)hkmc_highContrastRegularDayColor;
 + (id)hkmc_supplementaryDataSelectionTintColor;
 + (id)hkmc_menstruationSelectionTintColor;
 + (id)hkmc_supplementaryLoggingCardGradientBColor;
@@ -36,6 +45,7 @@
 + (id)hkmc_fertileWindowColor;
 + (id)hkmc_doneButtonLoggingCarouselColor;
 + (id)hkmc_cycleHistoryGradientFadeColor;
++ (id)hkmc_cycleHistorySectionCellBackgroundColor;
 + (id)hkmc_cycleHistoryFilterLabelColor;
 + (id)hkmc_cycleHistoryFilterBackgroundColor;
 + (id)_hkmcui_colorWithAssetName:(id)arg1;

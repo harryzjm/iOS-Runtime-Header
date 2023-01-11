@@ -11,6 +11,8 @@
 - (long long)ins_analyticsEndEventType;
 - (long long)ins_analyticsBeginEventType;
 - (void)ins_resolveAppForIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)ins_setJSONEncodedIntent:(id)arg1;
+- (void)ins_setProtobufEncodedIntent:(id)arg1;
 - (id)ins_protobufEncodedIntent;
 - (id)ins_jsonEncodedIntent;
 @end

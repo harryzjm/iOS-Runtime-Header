@@ -9,21 +9,19 @@
 
 @interface CKColoredBalloonView
 {
-    BOOL _color;
     _Bool _wantsGradient;
+    CKGradientView *_gradientView;
     CKBalloonImageView *_mask;
     CKBalloonImageView *_effectViewMask;
-    CKGradientView *_gradientView;
     struct CGRect _gradientOverrideFrame;
 }
 
-@property(retain, nonatomic) CKGradientView *gradientView; // @synthesize gradientView=_gradientView;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKBalloonImageView *effectViewMask; // @synthesize effectViewMask=_effectViewMask;
 @property(retain, nonatomic) CKBalloonImageView *mask; // @synthesize mask=_mask;
 @property(nonatomic) struct CGRect gradientOverrideFrame; // @synthesize gradientOverrideFrame=_gradientOverrideFrame;
 @property(nonatomic) _Bool wantsGradient; // @synthesize wantsGradient=_wantsGradient;
-@property(nonatomic) BOOL color; // @synthesize color=_color;
-- (void).cxx_destruct;
+@property(retain, nonatomic) CKGradientView *gradientView; // @synthesize gradientView=_gradientView;
 - (void)setEffectViewMaskImage:(id)arg1;
 - (void)clearFilters;
 - (void)addFilter:(id)arg1;
@@ -32,6 +30,7 @@
 - (void)updateWantsGradient;
 @property(readonly, nonatomic) _Bool hasBackground;
 @property(retain, nonatomic) UIView<CKGradientReferenceView> *gradientReferenceView;
+- (void)setColor:(BOOL)arg1;
 - (id)overlayColor;
 - (_Bool)needsGroupOpacity;
 - (void)setCanUseOpaqueMask:(_Bool)arg1;

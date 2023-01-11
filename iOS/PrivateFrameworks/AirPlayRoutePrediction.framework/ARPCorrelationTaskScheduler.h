@@ -16,12 +16,14 @@
     NSDate *_bookmark;
 }
 
+- (void).cxx_destruct;
 @property(copy) NSDate *bookmark; // @synthesize bookmark=_bookmark;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
-- (void).cxx_destruct;
 - (void)executeCorrelationTask;
 - (void)_executeCorrelationTask;
+- (void)microLocationEventInserted:(id)arg1;
+- (void)_executeHomeControlCorrelationTask;
 - (void)nowPlayingEventInserted:(id)arg1;
 - (void)dealloc;
 - (id)initWithKnowledgeStore:(id)arg1;

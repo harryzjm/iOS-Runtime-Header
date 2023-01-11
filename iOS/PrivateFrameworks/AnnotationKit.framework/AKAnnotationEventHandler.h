@@ -10,6 +10,7 @@
 
 @interface AKAnnotationEventHandler : NSObject
 {
+    _Bool _touchModifiersEnabled;
     _Bool _draggingHorizontalOnly;
     _Bool _draggingVerticalOnly;
     AKPageController *_pageController;
@@ -27,6 +28,7 @@
 + (_Bool)allowsDraggingOfAnnotation:(id)arg1;
 + (_Bool)allowsDragging;
 + (id)newAnnotationEventHandlerForCurrentPlatformForAnnotation:(id)arg1 withPageController:(id)arg2;
+- (void).cxx_destruct;
 @property struct CGPoint lastPositionInWindow; // @synthesize lastPositionInWindow=_lastPositionInWindow;
 @property struct CGPoint lastPositionInModel; // @synthesize lastPositionInModel=_lastPositionInModel;
 @property _Bool draggingVerticalOnly; // @synthesize draggingVerticalOnly=_draggingVerticalOnly;
@@ -34,13 +36,13 @@
 @property struct CGPoint initialCenter; // @synthesize initialCenter=_initialCenter;
 @property struct CGPoint initialOtherPoint; // @synthesize initialOtherPoint=_initialOtherPoint;
 @property struct CGPoint initialDraggedPoint; // @synthesize initialDraggedPoint=_initialDraggedPoint;
+@property _Bool touchModifiersEnabled; // @synthesize touchModifiersEnabled=_touchModifiersEnabled;
 @property unsigned long long initiallyDraggedArea; // @synthesize initiallyDraggedArea=_initiallyDraggedArea;
 @property(retain) AKAnnotation *annotation; // @synthesize annotation=_annotation;
 @property __weak AKPageController *pageController; // @synthesize pageController=_pageController;
-- (void).cxx_destruct;
 - (struct CGPoint)modelPointFromPointInWindow:(struct CGPoint)arg1;
 - (struct CGPoint)windowPointFromEvent:(id)arg1 orRecognizer:(id)arg2;
-- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1;
+- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1 options:(unsigned long long)arg2;
 - (void)setupDraggingConstraints;
 - (void)getInitialDraggedPoint:(struct CGPoint *)arg1 otherPoint:(struct CGPoint *)arg2 center:(struct CGPoint *)arg3 forEvent:(id)arg4 orRecognizer:(id)arg5;
 - (_Bool)continueDraggableAreaEventTrackingLoopWithEvent:(id)arg1 orRecognizer:(id)arg2;

@@ -10,39 +10,48 @@
 #import <SpringBoardFoundation/NSCopying-Protocol.h>
 #import <SpringBoardFoundation/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSString;
 
 @interface SBFWallpaperOptions : NSObject <NSCopying, BSDescriptionProviding, NSSecureCoding>
 {
     _Bool _magnifyEnabled;
     _Bool _supportsCropping;
+    _Bool _supportsRotation;
     _Bool _portrait;
     _Bool _hasVideo;
     NSString *_name;
     double _parallaxFactor;
     double _zoomScale;
+    double _rotationAngle;
     double _stillTimeInVideo;
     long long _wallpaperMode;
     long long _wallpaperStatus;
+    NSDictionary *_wallpaperKitData;
     struct CGRect _cropRect;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 portrait:(_Bool)arg6 hasVideo:(_Bool)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10 wallpaperKitData:(id)arg11;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 supportsRotation:(_Bool)arg6 rotationAngle:(double)arg7 portrait:(_Bool)arg8 hasVideo:(_Bool)arg9 stillTimeInVideo:(double)arg10 wallpaperMode:(long long)arg11 wallpaperStatus:(long long)arg12;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 portrait:(_Bool)arg6 hasVideo:(_Bool)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 portrait:(_Bool)arg6 hasVideo:(_Bool)arg7 stillTimeInVideo:(double)arg8 wallpaperKitData:(id)arg9;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 portrait:(_Bool)arg6 hasVideo:(_Bool)arg7 stillTimeInVideo:(double)arg8;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 portrait:(_Bool)arg6;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *wallpaperKitData; // @synthesize wallpaperKitData=_wallpaperKitData;
 @property(nonatomic) long long wallpaperStatus; // @synthesize wallpaperStatus=_wallpaperStatus;
 @property(nonatomic) long long wallpaperMode; // @synthesize wallpaperMode=_wallpaperMode;
 @property(nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
 @property(nonatomic) _Bool hasVideo; // @synthesize hasVideo=_hasVideo;
 @property(nonatomic, getter=isPortrait) _Bool portrait; // @synthesize portrait=_portrait;
+@property(nonatomic) double rotationAngle; // @synthesize rotationAngle=_rotationAngle;
+@property(nonatomic) _Bool supportsRotation; // @synthesize supportsRotation=_supportsRotation;
 @property(nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property(nonatomic) _Bool supportsCropping; // @synthesize supportsCropping=_supportsCropping;
 @property(nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 @property(nonatomic, getter=isMagnifyEnabled) _Bool magnifyEnabled; // @synthesize magnifyEnabled=_magnifyEnabled;
 @property(nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -63,7 +72,7 @@
 - (id)initWithPersistentDataRepresentation:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
 - (id)init;
-- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 portrait:(_Bool)arg6 hasVideo:(_Bool)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
+- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(_Bool)arg4 cropRect:(struct CGRect)arg5 supportsRotation:(_Bool)arg6 rotationAngle:(double)arg7 portrait:(_Bool)arg8 hasVideo:(_Bool)arg9 stillTimeInVideo:(double)arg10 wallpaperMode:(long long)arg11 wallpaperStatus:(long long)arg12 wallpaperKitData:(id)arg13;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,7 +14,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSDictionary *diffDeviceDiffs; // @synthesize diffDeviceDiffs=_diffDeviceDiffs;
 - (void).cxx_destruct;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)description;
@@ -24,7 +23,6 @@
 - (id)initWithProtobuf:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)_createIndex;
 - (id)allPairingIDs;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

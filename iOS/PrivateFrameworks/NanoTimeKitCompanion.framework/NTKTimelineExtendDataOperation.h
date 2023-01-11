@@ -8,20 +8,17 @@
 
 @interface NTKTimelineExtendDataOperation
 {
-    _Bool _extendsLeft;
     NSDate *_boundaryDate;
     CDUnknownBlockType _handler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void)_extendRight;
-- (void)_extendLeft;
 - (void)_start;
 - (void)_invokeHandlerWithEntries:(id)arg1;
 - (void)_cancel;
 - (void)setExtendsRightFromDate:(id)arg1;
-- (void)setExtendsLeftFromDate:(id)arg1;
 
 @end
 

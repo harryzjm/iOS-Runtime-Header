@@ -20,16 +20,7 @@
     NSMutableDictionary *_cachedObjectTypes;
 }
 
-- (id)_readString;
-- (id)_parseNumber:(id)arg1 maxValue:(unsigned long long)arg2 isSigned:(_Bool)arg3;
-- (id)_readStruct:(id)arg1;
-- (id)_readObject:(Class)arg1;
-- (id)_readValue;
-- (void)_readTag:(id *)arg1 andType:(unsigned long long *)arg2;
-- (struct _NSRange)_rangeOfCharactersInSetAtCurrentPosition:(id)arg1;
-- (id)_stringAtCurrentPositionWithPadding:(unsigned long long)arg1;
 - (id)readMessageType:(Class)arg1 fromString:(id)arg2;
-- (_Bool)_hasMore;
 - (void)dealloc;
 - (id)init;
 

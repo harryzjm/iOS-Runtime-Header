@@ -10,7 +10,7 @@
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
-@class CLHeading, CLLocation, NSArray, NSString, NSURL;
+@class CAMAnalyticsCaptureEvent, CLHeading, CLLocation, NSArray, NSString, NSURL;
 @protocol CAMStillImageCaptureRequestDelegate;
 
 @interface CAMMutableStillImageCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin, CAMMutableCaptureRequestEncodingBehavior>
@@ -74,6 +74,8 @@
 @property(nonatomic) long long pressType; // @dynamic pressType;
 @property(nonatomic) long long captureMode; // @dynamic captureMode;
 @property(nonatomic) long long captureDevice; // @dynamic captureDevice;
+@property(retain, nonatomic) CAMAnalyticsCaptureEvent *analyticsEvent; // @dynamic analyticsEvent;
+@property(nonatomic, getter=isCaptureMirrored) _Bool captureMirrored; // @dynamic captureMirrored;
 @property(nonatomic) long long captureOrientation; // @dynamic captureOrientation;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

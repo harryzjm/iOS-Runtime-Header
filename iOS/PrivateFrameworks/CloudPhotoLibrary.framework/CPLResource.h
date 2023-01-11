@@ -22,6 +22,10 @@
 }
 
 + (unsigned long long)countOfResourceTypes;
++ (void)getAllResourceTypesToDownloadPrioritizeNonDerivatives:(const unsigned long long **)arg1;
++ (void)getAllResourceTypesToDownload:(const unsigned long long **)arg1;
++ (_Bool)isNonDerivativeResourceType:(unsigned long long)arg1;
++ (_Bool)isDerivativeResourceType:(unsigned long long)arg1;
 + (void)enumerateResourceTypesWithBlock:(CDUnknownBlockType)arg1;
 + (_Bool)resourceTypeSupportsResourceExpunge:(unsigned long long)arg1;
 + (_Bool)resourceTypeTrackedForUpload:(unsigned long long)arg1;
@@ -37,17 +41,18 @@
 + (_Bool)cplShouldIgnorePropertyForEquality:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (_Bool)cplShouldIgnorePropertyForCoding:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool canGenerateDerivative; // @synthesize canGenerateDerivative=_canGenerateDerivative;
 @property(nonatomic) unsigned long long sourceResourceType; // @synthesize sourceResourceType=_sourceResourceType;
 @property(nonatomic) unsigned long long resourceType; // @synthesize resourceType=_resourceType;
 @property(copy, nonatomic) CPLScopedIdentifier *itemScopedIdentifier; // @synthesize itemScopedIdentifier=_itemScopedIdentifier;
 @property(retain, nonatomic) CPLResourceIdentity *identity; // @synthesize identity=_identity;
-- (void).cxx_destruct;
 - (void)_setBackgroundDownloadTaskIdentifier:(unsigned long long)arg1;
 - (unsigned long long)_backgroundDownloadTaskIdentifier;
 - (unsigned long long)estimatedResourceSize;
 - (_Bool)isTrackedForUpload;
 - (id)bestFileNameForResource;
+- (id)redactedDescription;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

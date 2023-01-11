@@ -4,16 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <CarPlayUI/CPUITableCell.h>
 
-@interface CPSTableCell : UITableViewCell
+#import <CarPlaySupport/CPSCellSizable-Protocol.h>
+
+@class NSString;
+
+@interface CPSTableCell : CPUITableCell <CPSCellSizable>
 {
 }
 
-+ (long long)cellStyle;
-+ (id)identifier;
-+ (id)cellForTableView:(id)arg1;
-- (void)configureCell;
++ (double)heightForListItem:(id)arg1;
+- (void)configureWithListItem:(id)arg1 spinning:(_Bool)arg2 environment:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,12 +8,13 @@
 
 #import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
 #import <MediaControls/MPRequestResponseControllerDelegate-Protocol.h>
+#import <MediaControls/_MCStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPAVEndpointRoute, MPAVRoutingController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
 @protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate>
+@interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate, _MCStateDumpPropertyListTransformable>
 {
     _Bool _allowsAutomaticResponseLoading;
     _Bool _onScreen;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
     id <MediaControlsEndpointControllerConnectionDelegate> _connectionDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <MediaControlsEndpointControllerConnectionDelegate> connectionDelegate; // @synthesize connectionDelegate=_connectionDelegate;
 @property(nonatomic, getter=isAutomaticResponseLoading) _Bool automaticResponseLoading; // @synthesize automaticResponseLoading=_automaticResponseLoading;
 @property(retain, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
@@ -45,14 +47,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, copy, nonatomic) NSArray *routeNames; // @synthesize routeNames=_routeNames;
 @property(retain, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
+- (id)_stateDumpObject;
+- (void)_connectionDidAttemptConnection:(id)arg1;
 - (void)_connectionDidConnect:(id)arg1;
 - (void)_connectionDidInvalidate:(id)arg1;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
 - (void)_reloadPlayerPathWithRoute:(id)arg1;
+- (void)_maybeReloadPlayerPathWithRoute:(id)arg1;
 - (void)_connectIfNeeded;
 - (void)_updateState;
+- (void)_getConnected:(_Bool *)arg1 connecting:(_Bool *)arg2 invalid:(_Bool *)arg3;
 - (void)_getConnected:(_Bool *)arg1 invalid:(_Bool *)arg2;
 - (void)_initRoutingController;
 - (void)_createRequestController;

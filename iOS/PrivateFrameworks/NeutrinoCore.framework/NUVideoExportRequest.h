@@ -4,30 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSProgress, NUColorSpace;
+@class NSArray, NSDictionary, NSProgress, NUCGAffineTransform, NUColorSpace;
 
 @interface NUVideoExportRequest
 {
+    _Bool _bypassOutputSettingsIfNoComposition;
+    _Bool _requireHardwareEncoder;
     _Bool _requiresVideoComposition;
     NSDictionary *_outputSettings;
+    NUColorSpace *_colorSpace;
     NSArray *_metadata;
     NSProgress *_progress;
     double _bitRateMultiplicationFactor;
-    NUColorSpace *_cachedColorSpace;
+    NUCGAffineTransform *_preferredTransform;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool requiresVideoComposition; // @synthesize requiresVideoComposition=_requiresVideoComposition;
-@property(retain) NUColorSpace *cachedColorSpace; // @synthesize cachedColorSpace=_cachedColorSpace;
+@property(retain) NUCGAffineTransform *preferredTransform; // @synthesize preferredTransform=_preferredTransform;
+@property(nonatomic) _Bool requireHardwareEncoder; // @synthesize requireHardwareEncoder=_requireHardwareEncoder;
+@property(nonatomic) _Bool bypassOutputSettingsIfNoComposition; // @synthesize bypassOutputSettingsIfNoComposition=_bypassOutputSettingsIfNoComposition;
 @property(nonatomic) double bitRateMultiplicationFactor; // @synthesize bitRateMultiplicationFactor=_bitRateMultiplicationFactor;
 @property(retain) NSProgress *progress; // @synthesize progress=_progress;
 @property(copy) NSArray *metadata; // @synthesize metadata=_metadata;
+@property(retain, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(copy) NSDictionary *outputSettings; // @synthesize outputSettings=_outputSettings;
-- (void).cxx_destruct;
 - (void)submitWithProgress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)submit:(CDUnknownBlockType)arg1;
 - (long long)mediaComponentType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly) NUColorSpace *colorSpace;
 - (id)newRenderJob;
 - (id)initWithComposition:(id)arg1;
 

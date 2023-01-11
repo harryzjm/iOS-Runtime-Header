@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IMDAccount, IMFileTransfer, IMMessageItem, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
+@class IDSAccount, IMDAccount, IMDChat, IMFileTransfer, IMMessageItem, NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol IMServiceSessionProtocol
 
 @optional
+- (void)requestGroupPhotoIfNecessary:(IMDChat *)arg1 incomingGroupPhotoCreationTime:(NSNumber *)arg2 toIdentifier:(NSString *)arg3 fromIdentifier:(NSString *)arg4 messageIsFromStorage:(_Bool)arg5;
+- (void)_blastDoorProcessingWithIMMessageItem:(IMMessageItem *)arg1 chat:(IMDChat *)arg2 account:(IMDAccount *)arg3 fromToken:(NSData *)arg4 fromIDSID:(NSString *)arg5 fromIdentifier:(NSString *)arg6 toIdentifier:(NSString *)arg7 participants:(NSArray *)arg8 groupName:(NSString *)arg9 groupID:(NSString *)arg10 isEncrypted:(_Bool)arg11 isFromMe:(_Bool)arg12 isLastFromStorage:(_Bool)arg13 isFromStorage:(_Bool)arg14 hideLockScreenNotification:(_Bool)arg15 wantsCheckpointing:(_Bool)arg16 needsDeliveryReceipt:(NSNumber *)arg17 messageBalloonPayloadAttachmentDictionary:(NSDictionary *)arg18 inlineAttachments:(NSDictionary *)arg19 attributionInfoArray:(NSArray *)arg20 nicknameDictionary:(NSDictionary *)arg21 messageContext:(id)arg22 completionBlock:(void (^)(void))arg23;
+- (void)sendDeliveryReceiptForMessageID:(NSString *)arg1 toID:(NSString *)arg2 deliveryContext:(NSDictionary *)arg3 needsDeliveryReceipt:(NSNumber *)arg4 callerID:(NSString *)arg5 account:(IDSAccount *)arg6;
 - (void)sendNicknameInfoToChatID:(NSString *)arg1;
 - (_Bool)sendNicknameUpdatesToPeerDevices:(NSDictionary *)arg1 toDestinations:(NSArray *)arg2;
 - (void)closeSessionChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3;
@@ -47,11 +50,13 @@
 - (void)sendLogDumpMessageAtFilePath:(NSString *)arg1 toRecipient:(NSString *)arg2 shouldDeleteFile:(_Bool)arg3 withCompletion:(void (^)(_Bool))arg4;
 - (void)sendMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)eagerUploadCancel:(NSURL *)arg1;
-- (void)eagerUploadTransfer:(NSDictionary *)arg1;
+- (void)eagerUploadTransfer:(NSDictionary *)arg1 recipients:(NSArray *)arg2;
 - (void)updateDisplayName:(NSString *)arg1 fromDisplayName:(NSString *)arg2 forChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5;
 - (void)declineInvitationToChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3;
 - (void)removePersonInfoFromiMessageChat:(NSDictionary *)arg1 chatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)removePersonInfo:(NSDictionary *)arg1 chatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
+- (void)retryGroupPhotoUpload:(NSString *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
+- (void)sendGroupPhotoUpdate:(NSString *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)invitePersonInfoToiMessageChat:(NSDictionary *)arg1 withMessage:(IMMessageItem *)arg2 toChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5;
 - (void)invitePersonInfo:(NSDictionary *)arg1 withMessage:(IMMessageItem *)arg2 toChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5;
 - (void)removeChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3;

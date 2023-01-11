@@ -9,7 +9,6 @@
 @class NSArray, NSMutableArray, UINavigationItem, _UINavigationBarItemStackEntry, _UINavigationBarTransitionAssistant;
 @protocol _UINavigationItemChangeObserver;
 
-__attribute__((visibility("hidden")))
 @interface _UINavigationBarItemStack : NSObject
 {
     NSArray *_previousItems;
@@ -19,14 +18,15 @@ __attribute__((visibility("hidden")))
     _UINavigationBarTransitionAssistant *_transitionAssistant;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _UINavigationBarTransitionAssistant *transitionAssistant; // @synthesize transitionAssistant=_transitionAssistant;
 @property(readonly, nonatomic) int state; // @synthesize state=_state;
 @property(nonatomic) __weak id <_UINavigationItemChangeObserver> changeObserver; // @synthesize changeObserver=_changeObserver;
-- (void).cxx_destruct;
 - (id)description;
 - (long long)effectiveDisplayModeForItemInPreviousStack:(id)arg1;
 - (long long)effectiveDisplayModeForItemInCurrentStack:(id)arg1;
 - (long long)_effectiveDisplayModeForItem:(id)arg1 inStack:(id)arg2;
+- (void)reverseIterateEntries:(CDUnknownBlockType)arg1;
 - (void)iterateEntries:(CDUnknownBlockType)arg1;
 - (void)iterateItems:(CDUnknownBlockType)arg1;
 - (_Bool)stackItemsAreEqualTo:(id)arg1;
@@ -51,6 +51,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UINavigationBarItemStackEntry *previousTopEntry;
 @property(readonly, nonatomic) _UINavigationBarItemStackEntry *backEntry;
 @property(readonly, nonatomic) _UINavigationBarItemStackEntry *topEntry;
+@property(readonly, nonatomic, getter=isPopping) _Bool popping;
+@property(readonly, nonatomic, getter=isPushing) _Bool pushing;
 @property(readonly, nonatomic, getter=isPushingOrPopping) _Bool pushingOrPopping;
 @property(readonly, nonatomic) long long itemCount;
 @property(readonly, copy, nonatomic) NSArray *items;

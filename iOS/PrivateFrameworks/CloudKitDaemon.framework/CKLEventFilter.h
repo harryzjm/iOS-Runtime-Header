@@ -11,16 +11,18 @@
 @interface CKLEventFilter : NSObject
 {
     _Bool _simulatorMessagesOnly;
+    _Bool _onlyTestLogs;
     unsigned long long _logTypes;
     NSString *_processName;
     NSDictionary *_categoriesBySubsystem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *categoriesBySubsystem; // @synthesize categoriesBySubsystem=_categoriesBySubsystem;
+@property(nonatomic) _Bool onlyTestLogs; // @synthesize onlyTestLogs=_onlyTestLogs;
 @property(nonatomic) _Bool simulatorMessagesOnly; // @synthesize simulatorMessagesOnly=_simulatorMessagesOnly;
 @property(retain, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property(nonatomic) unsigned long long logTypes; // @synthesize logTypes=_logTypes;
-- (void).cxx_destruct;
 - (_Bool)matchesEvent:(id)arg1;
 - (id)initWithLogTypes:(unsigned long long)arg1;
 - (void)_initFilterDict;

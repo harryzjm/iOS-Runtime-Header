@@ -10,5 +10,6 @@
 - (id)fromHex;
 - (_Bool)_validHexChar:(BOOL)arg1;
 - (id)hex;
+- (id)blt_sanitizeForURL;
 @end
 

@@ -20,17 +20,17 @@
     PXSuggestionsDataSource *_dataSource;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PXSuggestionsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) PXAssetsDataSourceManager *oneUpDataSourceManager; // @synthesize oneUpDataSourceManager=_oneUpDataSourceManager;
 @property(retain, nonatomic) PXAssetReference *oneUpInitialAssetReference; // @synthesize oneUpInitialAssetReference=_oneUpInitialAssetReference;
 @property(retain, nonatomic) NSArray *oneUpAssets; // @synthesize oneUpAssets=_oneUpAssets;
 @property(readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(readonly, nonatomic) PXSuggestionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)keyAssetForSuggestion:(id)arg1;
-- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1;
-- (void)presentOneUpForSuggestion:(id)arg1;
+- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1 animated:(_Bool)arg2;
+- (void)presentOneUpForSuggestion:(id)arg1 animated:(_Bool)arg2;
 - (void)setDataSource:(id)arg1 changeDetails:(id)arg2;
 - (id)_gadgetForAssetReference:(id)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
@@ -38,6 +38,7 @@
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)loadDataForGadgets;
 - (void)configureGadget:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1 localizedTitle:(id)arg2;
 

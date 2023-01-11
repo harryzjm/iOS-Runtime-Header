@@ -6,16 +6,26 @@
 
 #import <Metal/NSObject-Protocol.h>
 
-@class MTLCompileOptions, MTLComputePipelineDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSObject, NSString, NSURL;
-@protocol MTLArgumentEncoder, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDepthStencilState, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture, OS_dispatch_data;
+@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSObject, NSString, NSURL;
+@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture, OS_dispatch_data;
 
 @protocol MTLDevice <NSObject>
+@property(readonly) _Bool supportsFunctionPointers;
+@property(readonly) _Bool supportsRaytracing;
+@property(readonly) _Bool supportsDynamicLibraries;
+@property(readonly) NSArray *counterSets;
 @property(readonly) unsigned long long maxBufferLength;
 @property(readonly) unsigned long long sparseTileSizeInBytes;
 @property(readonly, getter=areProgrammableSamplePositionsSupported) _Bool programmableSamplePositionsSupported;
 @property(readonly) unsigned long long maxArgumentBufferSamplerCount;
 @property(readonly) unsigned long long maxThreadgroupMemoryLength;
 @property(readonly) unsigned long long currentAllocatedSize;
+@property(readonly) _Bool supportsShaderBarycentricCoordinates;
+@property(readonly, getter=areBarycentricCoordsSupported) _Bool barycentricCoordsSupported;
+@property(readonly) _Bool supportsPullModelInterpolation;
+@property(readonly) _Bool supportsBCTextureCompression;
+@property(readonly) _Bool supports32BitMSAA;
+@property(readonly) _Bool supports32BitFloatFiltering;
 @property(readonly, getter=areRasterOrderGroupsSupported) _Bool rasterOrderGroupsSupported;
 @property(readonly) unsigned long long argumentBuffersSupport;
 @property(readonly) unsigned long long readWriteTextureSupport;
@@ -28,7 +38,16 @@
 @property(readonly) CDStruct_da2e99ad maxThreadsPerThreadgroup;
 @property(readonly) unsigned long long registryID;
 @property(readonly) NSString *name;
+- (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
+- (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1;
+- (CDStruct_da2e99ad)accelerationStructureSizesWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
+- (id <MTLBinaryArchive>)newBinaryArchiveWithDescriptor:(MTLBinaryArchiveDescriptor *)arg1 error:(id *)arg2;
+- (id <MTLDynamicLibrary>)newDynamicLibraryWithURL:(NSURL *)arg1 error:(id *)arg2;
+- (id <MTLDynamicLibrary>)newDynamicLibrary:(id <MTLLibrary>)arg1 error:(id *)arg2;
 - (_Bool)supportsVertexAmplificationCount:(unsigned long long)arg1;
+- (_Bool)supportsCounterSampling:(unsigned long long)arg1;
+- (void)sampleTimestamps:(unsigned long long *)arg1 gpuTimestamp:(unsigned long long *)arg2;
+- (id <MTLCounterSampleBuffer>)newCounterSampleBufferWithDescriptor:(MTLCounterSampleBufferDescriptor *)arg1 error:(id *)arg2;
 - (CDStruct_da2e99ad)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3;
 - (id <MTLSharedEvent>)newSharedEventWithHandle:(MTLSharedEventHandle *)arg1;
 - (id <MTLSharedEvent>)newSharedEvent;

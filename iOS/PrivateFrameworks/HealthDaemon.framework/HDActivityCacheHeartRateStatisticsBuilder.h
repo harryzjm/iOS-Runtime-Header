@@ -29,6 +29,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)reportDailyAnalyticsWithProfile:(id)arg1;
 - (void)setDateOfBirthComponents:(id)arg1;
 - (void)_updateMetricsForBreatheStatistics:(id)arg1;
 - (id)_sessionReadingsForBreatheStatistics:(id)arg1;
@@ -47,7 +48,7 @@
 - (void)addHeartRateSamples:(const vector_8ece868d *)arg1;
 - (id)heartRateDateInterval;
 - (id)walkingAverageHeartRate;
-- (id)restingHeartRate;
+- (id)calcRestingHeartRateWithMinReadings:(int)arg1 readingsCount:(int *)arg2 filteredReadingsCount:(int *)arg3;
 @property(readonly, nonatomic) HKHeartRateSummary *heartRateSummary;
 - (id)initWithDateInterval:(id)arg1 activityCacheIndex:(long long)arg2;
 

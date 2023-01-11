@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) _Bool allowsShowingUndownloadedMovies;
 @property(readonly, nonatomic) _Bool allowsShowingUndownloadedTVShows;
 @property(readonly, nonatomic) _Bool allowsITunes;
+@property(readonly, nonatomic) _Bool allowsMusicVideos;
 @property(readonly, nonatomic) _Bool allowsExplicit;
 @property(readonly, nonatomic) _Bool allowsErotica;
 @property(readonly, nonatomic) _Bool allowArtistActivity;

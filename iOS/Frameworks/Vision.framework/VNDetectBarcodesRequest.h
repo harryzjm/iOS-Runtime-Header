@@ -19,6 +19,7 @@
 + (Class)configurationClass;
 + (void)initialize;
 - (void)applyConfigurationOfRequest:(id)arg1;
+@property(nonatomic) _Bool stopAtFirstPyramidWith2DCode;
 @property(copy, nonatomic) NSString *locateMode;
 @property(copy, nonatomic) NSArray *symbologies;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
@@ -30,6 +31,7 @@
 - (id)_newVNBarcodeSymbologyPDF417DescriptorForACBSBarcodeInfo:(id)arg1;
 - (id)_newVNBarcodeSymbologyAztecDescriptorForACBSBarcodeInfo:(id)arg1;
 - (id)_newVNBarcodeSymbologyQRDescriptorForACBSBarcodeInfo:(id)arg1;
+- (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

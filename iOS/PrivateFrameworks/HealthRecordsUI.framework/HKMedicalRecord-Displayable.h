@@ -8,7 +8,7 @@
 
 #import <HealthRecordsUI/HRWDDisplayable-Protocol.h>
 
-@class HKInspectableValueCollection, NSArray, NSDate, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface HKMedicalRecord (Displayable) <HRWDDisplayable>
 - (id)meaningfulDateDisplayStringWithPreferredForm:(long long)arg1 showTime:(_Bool)arg2;
@@ -21,7 +21,6 @@
 @property(readonly, nonatomic) NSDate *meaningfulDate;
 @property(readonly, nonatomic) NSString *meaningfulDateTitle;
 - (id)codings;
-@property(readonly, nonatomic) HKInspectableValueCollection *chartValue;
 - (void)fetchObservationDetailItemsWithHealthRecordsStore:(id)arg1 style:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchChartValueWithRangeWithHealthStore:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSArray *conceptNameItems;
@@ -29,6 +28,7 @@
 - (void)fetchConceptRoomItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchStructuredFieldItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchDetailItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) _Bool isRemovedFromRemote;
 @property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(nonatomic, readonly) NSString *displayNameForGroupByConcept;

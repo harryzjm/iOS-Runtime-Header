@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBAppLayout, SBCoplanarSwitcherModifier;
+@class SBAppLayout, SBCoplanarSwitcherModifier, SBFullScreenToHomeIconZoomSwitcherModifier;
 
 @interface SBFullScreenToHomePiPSwitcherModifier
 {
@@ -13,28 +13,31 @@
     double _finalScale;
     double _sourceAlpha;
     SBCoplanarSwitcherModifier *_coplanarModifier;
+    SBFullScreenToHomeIconZoomSwitcherModifier *_zoomModifier;
 }
 
 - (void).cxx_destruct;
 - (_Bool)_isIndexSelectedAppLayout:(unsigned long long)arg1;
 - (_Bool)_shouldApplyMorphToPipToIndex:(unsigned long long)arg1;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (id)topMostAppLayouts;
-- (id)layoutSettings;
+- (id)appLayoutsToCacheSnapshots;
+- (id)topMostLayoutElements;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (double)rotationAngleForIndex:(unsigned long long)arg1;
+- (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)transitionWillBegin;
 - (void)didMoveToParentModifier:(id)arg1;
-- (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2;
+- (_Bool)completesWhenChildrenComplete;
+- (id)initWithTransitionID:(id)arg1 zoomModifier:(id)arg2 appLayout:(id)arg3;
 
 @end
 

@@ -28,14 +28,16 @@
 + (_Bool)itemNameIsFileNameWithoutCatalogExtension;
 + (id)assetRepWithRepIdentifier:(id)arg1;
 + (id)assetRepWithSlot:(id)arg1 fileName:(id)arg2 explicitlyUnassigned:(_Bool)arg3;
++ (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (Class)slotClass;
 + (Class)slottedAssetClass;
 + (Class)repIdentifierClass;
 + (_Bool)isAbstractCatalogItemClass;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long conflictState; // @synthesize conflictState=_conflictState;
 @property(copy, nonatomic) IBICSlot *slot; // @synthesize slot=_slot;
-- (void).cxx_destruct;
-- (id)languageComponentsRepresentedByConflictFreeSiblings;
+- (_Bool)shouldConsiderSiblingSlotForLanguageDirectionComponents:(id)arg1;
+- (id)languageDirectionComponentsRepresentedByConflictFreeSiblings;
 - (long long)compareForVariantMatching:(id)arg1;
 - (long long)filteringPriorityForVariantSelection;
 - (_Bool)isMinimallyFitForVariantSelection;
@@ -77,6 +79,10 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSlot:(id)arg1;
 - (id)init;
+- (void)populateLocaleOfNamedAssetImportInfo:(id)arg1 withOptions:(id)arg2;
+- (void)populateDirectionOfNamedAssetImportInfo:(id)arg1 withOptions:(id)arg2;
+- (_Bool)populateAppearanceOfNamedAssetImportInfo:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
+- (_Bool)populateIdiomOfNamedAssetImportInfo:(id)arg1 options:(id)arg2 isIcon:(_Bool)arg3 error:(id *)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

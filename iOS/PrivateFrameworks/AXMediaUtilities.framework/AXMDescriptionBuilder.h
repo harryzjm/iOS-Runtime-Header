@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AXMVisionFeature, NSMutableArray, NSMutableString;
+@class AXMVisionFeature, NSMutableArray, NSMutableDictionary, NSMutableString;
 
 @interface AXMDescriptionBuilder : NSObject
 {
@@ -14,21 +14,33 @@
     NSMutableString *_speakableDescription;
     NSMutableString *_visualDescription;
     NSMutableArray *_faceFeatures;
-    NSMutableArray *_classificationLocalizedValues;
+    NSMutableDictionary *_classificationLabelsToLocValuesMap;
     NSMutableArray *_iconClassFeatures;
     AXMVisionFeature *_captionFeature;
+    _Bool _isNSFW;
+    _Bool _shouldModifyCaptionForSensitiveContent;
     AXMVisionFeature *_blurFeature;
     AXMVisionFeature *_brightnessFeature;
+    AXMVisionFeature *_primarySensitiveContentFeature;
 }
 
 + (id)builderWithOptions:(long long)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) AXMVisionFeature *primarySensitiveContentFeature; // @synthesize primarySensitiveContentFeature=_primarySensitiveContentFeature;
+@property(nonatomic) _Bool shouldModifyCaptionForSensitiveContent; // @synthesize shouldModifyCaptionForSensitiveContent=_shouldModifyCaptionForSensitiveContent;
+@property(nonatomic) _Bool isNSFW; // @synthesize isNSFW=_isNSFW;
 @property(retain, nonatomic) AXMVisionFeature *brightnessFeature; // @synthesize brightnessFeature=_brightnessFeature;
 @property(retain, nonatomic) AXMVisionFeature *blurFeature; // @synthesize blurFeature=_blurFeature;
-- (void).cxx_destruct;
 - (void)_addIconClassInformationToDescription:(id)arg1;
 - (void)_addClassificationInformationToDescription:(id)arg1;
+- (void)_addGenericTemplateForCaptionInformationToDescription:(id)arg1;
+- (id)_ignoredTagsForTags:(id)arg1;
+- (id)_subsumedTagsForTags:(id)arg1;
+- (id)_templateRulesForTag:(id)arg1;
 - (void)_addCaptionInformationToDescription:(id)arg1;
 - (void)_addFaceInformationToDescription:(id)arg1;
+- (void)_addDetailedFaceInformationToDescription:(id)arg1;
+- (void)_addPersonSummaryToDescription:(id)arg1;
 - (void)_addBlurInformationToDescription:(id)arg1;
 - (void)_addBrightnessInformationToDescription:(id)arg1;
 - (void)_appendToDescription:(id)arg1 afterPauseType:(long long)arg2 withContents:(id)arg3;
@@ -36,9 +48,12 @@
 - (id)_stringForPauseType:(long long)arg1;
 - (id)buildVisualDescription;
 - (id)buildSpeakableDescription;
+- (_Bool)_shouldReplaceCaptionWithGenericTemplate;
+- (_Bool)_shouldSummarizeDetectedPeople;
+- (_Bool)_usesTemplateForLowConfidenceAndExplicitFeatures;
 - (void)addDetectedIconClasses:(id)arg1;
 - (void)setDetectedCaption:(id)arg1;
-- (void)addDetectedClassificationLocalizedValue:(id)arg1;
+- (void)addDetectedClassificationLocalizedValue:(id)arg1 forLabel:(id)arg2;
 - (void)addDetectedClassificationFeatures:(id)arg1;
 - (void)addDetectedFaces:(id)arg1;
 - (id)_initWithOptions:(long long)arg1;

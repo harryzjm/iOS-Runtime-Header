@@ -19,13 +19,15 @@
 }
 
 + (id)platformImplementationProtocol;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) CPLEngineStore *engineStore; // @synthesize engineStore=_engineStore;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
-- (void).cxx_destruct;
 - (_Bool)_checkSuperWasCalled;
 - (id)statusDictionary;
 - (id)status;
+@property(readonly, nonatomic) _Bool isEmpty;
+- (void)transactionDidFinish;
 - (void)writeTransactionDidSucceed;
 - (void)writeTransactionDidFail;
 - (id)statusPerScopeIndex;

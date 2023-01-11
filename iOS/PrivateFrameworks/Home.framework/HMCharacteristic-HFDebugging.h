@@ -6,11 +6,12 @@
 
 #import <HomeKit/HMCharacteristic.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
-@interface HMCharacteristic (HFDebugging) <HFStateDumpBuildable>
+@interface HMCharacteristic (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 + (id)hf_descriptionForProperties:(id)arg1;
 + (_Bool)hf_shouldCaptureCharacteristicTypeInActionSets:(id)arg1;
 + (CDUnknownBlockType)hf_characteristicSortComparator;
@@ -51,5 +52,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @end
 

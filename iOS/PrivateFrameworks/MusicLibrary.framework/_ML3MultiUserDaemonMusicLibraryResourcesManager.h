@@ -6,7 +6,7 @@
 
 #import <MusicLibrary/_ML3MultiUserDaemonAccountChangeOperationDelegate-Protocol.h>
 
-@class NSObject, NSOperationQueue, NSString;
+@class ACAccountStore, NSObject, NSOperationQueue, NSString;
 @protocol ML3AccountInformationProviding, MLMediaLibraryAccountChangeObserver, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,14 +18,16 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_accountChangeOperationQueue;
     id <ML3AccountInformationProviding> _accountInfo;
     id <MLMediaLibraryAccountChangeObserver> _accountChangeObserver;
+    ACAccountStore *_accountStore;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property(nonatomic) __weak id <MLMediaLibraryAccountChangeObserver> accountChangeObserver; // @synthesize accountChangeObserver=_accountChangeObserver;
 @property(retain, nonatomic) id <ML3AccountInformationProviding> accountInfo; // @synthesize accountInfo=_accountInfo;
 @property(retain, nonatomic) NSOperationQueue *accountChangeOperationQueue; // @synthesize accountChangeOperationQueue=_accountChangeOperationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
-- (void).cxx_destruct;
 - (void)accountChangeOperationWillStartPerformingDatabasePathChange:(id)arg1 newDatabasePath:(id)arg2;
 - (id)databasePathForDSID:(id)arg1;
 - (_Bool)shouldExecuteAccountChangeOperation:(id)arg1 reason:(id *)arg2;

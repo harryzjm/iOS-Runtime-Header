@@ -11,7 +11,6 @@
 }
 
 - (id)description;
-- (id)_renditionName;
 @property(readonly, copy, nonatomic) NSString *utiType;
 @property(readonly, copy, nonatomic) NSData *data;
 - (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;

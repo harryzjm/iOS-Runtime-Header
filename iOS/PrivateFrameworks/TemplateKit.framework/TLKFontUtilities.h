@@ -10,15 +10,16 @@
 {
 }
 
-+ (id)attributedStringForFormattedText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5;
-+ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 coloredRanges:(id)arg5 nonColoredRanges:(id)arg6 rangesForNonTemplateImageAttachments:(id)arg7 font:(id)arg8;
-+ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5;
-+ (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
++ (id)attributedStringForFormattedText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5 isButton:(_Bool)arg6;
++ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 coloredRanges:(id)arg5 nonColoredRanges:(id)arg6 rangesForNonTemplateImageAttachments:(id)arg7 font:(id)arg8 isButton:(_Bool)arg9;
++ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5 isButton:(_Bool)arg6;
++ (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
++ (id)preferredFontWithTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3 useCustomWeight:(_Bool)arg4 customFontWeight:(double)arg5;
++ (id)preferredFontWithTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3;
++ (id)preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 + (id)preferredFontForTextStyle:(id)arg1;
-+ (id)fontWithTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3;
 + (id)thinFontOfSize:(double)arg1 grade:(unsigned long long)arg2;
-+ (id)horizontalAppNameFont;
-+ (id)boldCaptionFont;
++ (id)calloutFont;
 + (id)captionFont;
 + (id)shortSubheadFont;
 + (id)subheadBoldFont;
@@ -26,13 +27,14 @@
 + (id)boldBodyFont;
 + (id)shortBodyFont;
 + (id)shortFootnoteFont;
-+ (id)boldFootnoteFont;
 + (id)footnoteFont;
 + (id)shortSubheadBoldFont;
 + (id)shortTitle2Font;
 + (id)shortTitle1Font;
-+ (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
-+ (void)initialize;
++ (id)cachedFontForTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3 useCustomWeight:(_Bool)arg4 customFontWeight:(double)arg5;
++ (id)cachedFontForTextStyle:(id)arg1 isShort:(_Bool)arg2 fontWeight:(double)arg3;
++ (id)cachedFontForTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3;
++ (id)cachedFontForKey:(id)arg1 creatorBlock:(CDUnknownBlockType)arg2;
 
 @end
 

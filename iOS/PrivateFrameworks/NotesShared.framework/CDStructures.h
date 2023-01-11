@@ -14,7 +14,7 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct Array {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct StringArray *_field5;
@@ -23,16 +23,16 @@ struct Array {
 
 struct Attachment {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[2];
-    basic_string_a1f69cfb *_field4;
-    basic_string_a1f69cfb *_field5;
+    basic_string_7c0a1c0b *_field4;
+    basic_string_7c0a1c0b *_field5;
     float _field6;
     float _field7;
-    basic_string_a1f69cfb *_field8;
-    basic_string_a1f69cfb *_field9;
-    basic_string_a1f69cfb *_field10;
-    basic_string_a1f69cfb *_field11;
+    basic_string_7c0a1c0b *_field8;
+    basic_string_7c0a1c0b *_field9;
+    basic_string_7c0a1c0b *_field10;
+    basic_string_7c0a1c0b *_field11;
     struct Location *_field12;
     struct Media *_field13;
     struct RepeatedPtrField<topotext::PreviewImage> _field14;
@@ -42,10 +42,10 @@ struct Attachment {
     double _field18;
     int _field19;
     _Bool _field20;
-    basic_string_a1f69cfb *_field21;
+    basic_string_7c0a1c0b *_field21;
     long long _field22;
     double _field23;
-    basic_string_a1f69cfb *_field24;
+    basic_string_7c0a1c0b *_field24;
     struct RepeatedPtrField<topotext::Attachment> _field25;
     long long _field26;
     double _field27;
@@ -56,9 +56,9 @@ struct Attachment {
     double _field32;
     double _field33;
     double _field34;
-    basic_string_a1f69cfb *_field35;
-    basic_string_a1f69cfb *_field36;
-    basic_string_a1f69cfb *_field37;
+    basic_string_7c0a1c0b *_field35;
+    basic_string_7c0a1c0b *_field36;
+    basic_string_7c0a1c0b *_field37;
     int _field38;
     int _field39;
 };
@@ -67,7 +67,7 @@ struct AttachmentInfo;
 
 struct AttributeRun {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct ParagraphStyle *_field5;
@@ -76,7 +76,7 @@ struct AttributeRun {
     struct Font *_field8;
     unsigned int _field9;
     unsigned int _field10;
-    basic_string_a1f69cfb *_field11;
+    basic_string_7c0a1c0b *_field11;
     int _field12;
     int _field13;
     struct Color *_field14;
@@ -112,7 +112,7 @@ struct Color;
 
 struct Command {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct CommandID *_field5;
@@ -131,7 +131,7 @@ struct CommandID;
 
 struct Dictionary {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct RepeatedPtrField<CRDT::Dictionary_Element> _field5;
@@ -139,7 +139,7 @@ struct Dictionary {
 
 struct Dictionary_Element {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct ObjectID *_field5;
@@ -150,7 +150,7 @@ struct Dictionary_Element {
 
 struct Document_CustomObject {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct RepeatedPtrField<CRDT::Document_CustomObject_MapEntry> _field5;
@@ -159,7 +159,7 @@ struct Document_CustomObject {
 
 struct Document_DocObject {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     union ContentsUnion {
@@ -185,7 +185,7 @@ struct Document_DocObject {
 
 struct Drawing {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct VectorTimestamp *_field5;
@@ -198,10 +198,10 @@ struct Drawing {
 
 struct Font {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
-    basic_string_a1f69cfb *_field5;
+    basic_string_7c0a1c0b *_field5;
     float _field6;
     unsigned int _field7;
 };
@@ -218,41 +218,17 @@ struct Location;
 
 struct Media;
 
-struct NoteAccountObject {
-    Class _field1;
-    id _field2;
-    id _field3;
-};
-
-struct NoteContext {
-    Class _field1;
-    id _field2;
-    id _field3;
-    id _field4;
-    id _field5;
-    id _field6;
-    id _field7;
-    id _field8;
-    id _field9;
-    unsigned long long _field10;
-    _Bool _field11;
-    _Bool _field12;
-    _Bool _field13;
-    _Bool _field14;
-    id _field15;
-};
-
 struct ObjectID {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     union ContentsUnion {
         long long _field1;
         unsigned long long _field2;
         double _field3;
-        basic_string_a1f69cfb *_field4;
-        basic_string_a1f69cfb *_field5;
+        basic_string_7c0a1c0b *_field4;
+        basic_string_7c0a1c0b *_field5;
         unsigned int _field6;
     } _field5;
     unsigned int _field6[1];
@@ -262,7 +238,7 @@ struct OneOf;
 
 struct OrderedSet {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct Array *_field5;
@@ -271,7 +247,7 @@ struct OrderedSet {
 
 struct ParagraphStyle {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     unsigned int _field5;
@@ -287,7 +263,7 @@ struct Parameters;
 
 struct Point {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     float _field5;
@@ -301,14 +277,14 @@ struct Point {
 
 struct PreviewImage {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
-    basic_string_a1f69cfb *_field5;
+    basic_string_7c0a1c0b *_field5;
     float _field6;
     _Bool _field7;
     _Bool _field8;
-    basic_string_a1f69cfb *_field9;
+    basic_string_7c0a1c0b *_field9;
     int _field10;
     int _field11;
     long long _field12;
@@ -318,7 +294,7 @@ struct Rectangle;
 
 struct RegisterLatest {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct Timestamp *_field5;
@@ -432,7 +408,7 @@ struct RepeatedPtrField<versioned_document::Version> {
 
 struct Selection {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct RepeatedPtrField<std::__1::basic_string<char>> _field5;
@@ -442,10 +418,10 @@ struct Selection {
 
 struct String {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
-    basic_string_a1f69cfb *_field5;
+    basic_string_7c0a1c0b *_field5;
     struct RepeatedPtrField<topotext::Substring> _field6;
     struct VectorTimestamp *_field7;
     struct RepeatedPtrField<topotext::AttributeRun> _field8;
@@ -454,7 +430,7 @@ struct String {
 
 struct StringArray {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct String *_field5;
@@ -463,7 +439,7 @@ struct StringArray {
 
 struct Timestamp {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     unsigned long long _field5;
@@ -472,10 +448,10 @@ struct Timestamp {
 
 struct Todo {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
-    basic_string_a1f69cfb *_field5;
+    basic_string_7c0a1c0b *_field5;
     _Bool _field6;
 };
 
@@ -498,22 +474,14 @@ struct TopoSubstring {
     unsigned int _field6;
 };
 
-struct UIImage {
-    Class _field1;
-};
-
-struct UIWindow {
-    Class _field1;
-};
-
 struct Version {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     unsigned int _field5;
     unsigned int _field6;
-    basic_string_a1f69cfb *_field7;
+    basic_string_7c0a1c0b *_field7;
 };
 
 struct _NSRange {
@@ -530,16 +498,15 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -649,7 +616,7 @@ struct vector<std::__1::pair<TopoIDRange, NSDictionary *>, std::__1::allocator<s
 // Names with conflicting types:
 typedef struct {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct VectorTimestamp *_field5;
@@ -659,32 +626,32 @@ typedef struct {
     struct RepeatedPtrField<std::__1::basic_string<char>> _field9;
     struct RepeatedPtrField<std::__1::basic_string<char>> _field10;
     struct VectorTimestamp *_field11;
-} Document_a0f7d28b;
+} Document_1b03c11f;
 
 typedef struct {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct RepeatedPtrField<CRDT::VectorTimestamp_Element> _field5;
-} VectorTimestamp_c98372c7;
+} VectorTimestamp_346eb33a;
 
 typedef struct {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct RepeatedPtrField<topotext::VectorTimestamp_Clock> _field5;
-} VectorTimestamp_cd1d3bcf;
+} VectorTimestamp_2287ec0f;
 
 typedef struct {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_a1f69cfb _field2;
+    basic_string_7c0a1c0b _field2;
     unsigned int _field3[1];
     int _field4;
     struct RepeatedPtrField<versioned_document::Version> _field5;
     unsigned int _field6;
-} Document_0e94f2f5;
+} Document_22a49c75;
 
 #endif
 
@@ -726,16 +693,15 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long _field1;
+                    char *_field1;
                     unsigned long long _field2;
-                    char *_field3;
+                    unsigned long long _field3;
                 } _field1;
                 struct __short {
-                    union {
+                    char _field1[23];
+                    struct {
                         unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
+                    } _field2;
                 } _field2;
                 struct __raw {
                     unsigned long long _field1[3];
@@ -743,7 +709,7 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
             } _field1;
         } _field1;
     } _field1;
-} basic_string_a1f69cfb;
+} basic_string_7c0a1c0b;
 
 typedef struct unordered_set<TopoSubstring *, std::__1::hash<TopoSubstring *>, std::__1::equal_to<TopoSubstring *>, std::__1::allocator<TopoSubstring *>> {
     struct __hash_table<TopoSubstring *, std::__1::hash<TopoSubstring *>, std::__1::equal_to<TopoSubstring *>, std::__1::allocator<TopoSubstring *>> {

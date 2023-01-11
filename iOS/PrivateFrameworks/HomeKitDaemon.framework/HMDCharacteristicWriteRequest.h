@@ -8,21 +8,28 @@
 
 @interface HMDCharacteristicWriteRequest
 {
+    _Bool _includeResponseValue;
     id _value;
     NSData *_authorizationData;
     NSUUID *_identifier;
     unsigned long long _requestType;
 }
 
++ (id)logCategory;
++ (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5 includeResponseValue:(_Bool)arg6;
 + (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5;
 + (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 type:(unsigned long long)arg4;
++ (id)writeRequestForTransitionFetchWithLightProfile:(id)arg1;
++ (id)writeRequestForTransitionStartWithLightProfile:(id)arg1 naturalLightingEnabled:(_Bool)arg2 startDate:(id)arg3 type:(unsigned long long)arg4 dataSource:(id)arg5;
++ (id)writeRequestForTransitionStartWithLightProfile:(id)arg1 naturalLightingEnabled:(_Bool)arg2 startDate:(id)arg3 type:(unsigned long long)arg4;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool includeResponseValue; // @synthesize includeResponseValue=_includeResponseValue;
 @property(readonly, nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSData *authorizationData; // @synthesize authorizationData=_authorizationData;
 @property(readonly, nonatomic) id value; // @synthesize value=_value;
-- (void).cxx_destruct;
-- (id)description;
-- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5;
+- (id)attributeDescriptions;
+- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5 includeResponseValue:(_Bool)arg6;
 
 @end
 

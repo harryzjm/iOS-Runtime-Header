@@ -17,6 +17,7 @@
     NSArray *_nodes;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *nodes; // @synthesize nodes=_nodes;
 @property(nonatomic) id <TSBonjourBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;

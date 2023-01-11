@@ -16,18 +16,23 @@
 }
 
 + (id)suggesterWithDaemon;
-@property(readonly, nonatomic) _PSSuggesterConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _PSSuggesterConfiguration *configuration; // @synthesize configuration=_configuration;
+- (void)provideFeedbackForMessagesZkwSuggestions:(id)arg1;
+- (void)provideSuggestLessFeedbackForShareSheetSuggestion:(id)arg1;
 - (void)provideFeedbackForSuggestions:(id)arg1;
 - (id)relativeAppUsageProbabilitiesForCandidateBundleIds:(id)arg1 daysAgo:(long long)arg2;
 - (id)hourOfDayProbabilitiesToInteractWithContacts:(id)arg1;
 - (id)hourOfDayProbabilitiesToInteractWithContact:(id)arg1;
-- (id)shareExtensionSuggestionsFromContext:(id)arg1;
+- (id)rankedFamilySuggestions;
 - (id)rankedAutocompleteSuggestionsFromContext:(id)arg1 candidates:(id)arg2;
 - (id)rankedZKWSuggestionsFromContext:(id)arg1;
+- (id)rankedSiriNLContactSuggestionsFromContext:(id)arg1 maxSuggestions:(id)arg2 interactionId:(id)arg3;
 - (id)rankedGlobalSuggestionsFromContext:(id)arg1 contactsOnly:(_Bool)arg2;
 - (id)rankedNameSuggestionsFromContext:(id)arg1 name:(id)arg2;
+- (id)shareExtensionSuggestionsFromContext:(id)arg1;
 - (id)suggestInteractionsFromContext:(id)arg1;
+- (id)shareSheetInteractionsFromContext:(id)arg1 maximumNumberOfSuggestions:(long long)arg2;
 - (id)shareSheetInteractionsFromContext:(id)arg1;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;

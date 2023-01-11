@@ -29,7 +29,7 @@
 - (id)_usageResultHandlerConnection;
 - (void)completeWithResponse:(id)arg1;
 - (void)failWithError:(id)arg1;
-- (void)_invalidateConectionAfterMessageSent:(id)arg1;
+- (void)_invalidateConnectionAfterMessageSent:(id)arg1;
 - (id)_responseHandlerConnection;
 - (id)request;
 @property(readonly, copy) NSString *description;

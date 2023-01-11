@@ -27,7 +27,6 @@
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (id)YQLLanguageCode;
 - (id)YQLCountryCode;
-- (id)aggregateDictionaryDomain;
 - (void)cancelAndInvalidate;
 - (void)cancel;
 - (void)failToParseWithDataSeriesDictionary:(id)arg1;

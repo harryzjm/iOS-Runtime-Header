@@ -18,6 +18,8 @@
 
 // Remaining properties
 @property(retain, nonatomic) NSString *activeNetworkRouterAccessoryUUID; // @dynamic activeNetworkRouterAccessoryUUID;
+@property(retain, nonatomic) NSString *activeNetworkRouterInitialSetupNeededUUID; // @dynamic activeNetworkRouterInitialSetupNeededUUID;
+@property(retain, nonatomic) NSString *minHomeKitVersionForAccessoryNetworkProtectionChange; // @dynamic minHomeKitVersionForAccessoryNetworkProtectionChange;
 @property(retain, nonatomic) NSString *minimumNetworkRouterSupportHomeKitVersion; // @dynamic minimumNetworkRouterSupportHomeKitVersion;
 
 @end

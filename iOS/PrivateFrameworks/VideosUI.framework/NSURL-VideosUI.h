@@ -7,6 +7,10 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (VideosUI)
+- (id)vui_URLByAddingQueryParamWithName:(id)arg1 value:(id)arg2;
+- (_Bool)vui_containsQueryParamWithName:(id)arg1;
+- (id)vui_resourceName;
+- (_Bool)vui_isResourceURL;
 - (id)vui_parsedQueryParametersDictionary;
 @end
 

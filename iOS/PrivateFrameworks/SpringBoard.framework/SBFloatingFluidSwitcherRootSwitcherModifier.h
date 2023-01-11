@@ -15,24 +15,28 @@
     struct CGRect _containerViewBounds;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect containerViewBounds; // @synthesize containerViewBounds=_containerViewBounds;
 @property(nonatomic, getter=isFloatingSwitcherVisible) _Bool floatingSwitcherVisible; // @synthesize floatingSwitcherVisible=_floatingSwitcherVisible;
 @property(nonatomic) long long floatingConfiguration; // @synthesize floatingConfiguration=_floatingConfiguration;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(retain, nonatomic) SBAppLayout *activeAppLayout; // @synthesize activeAppLayout=_activeAppLayout;
-- (void).cxx_destruct;
+- (id)_newMultitaskingModifier;
 - (Class)_defaultMultitaskingModifierClass;
+- (id)userScrollingModifierForScrollEvent:(id)arg1;
 - (id)lowEndHardwareModifier;
+- (id)removalModifierForRemovalEvent:(id)arg1;
+- (id)swipeToKillModifierForSwipeToKillEvent:(id)arg1;
 - (id)insertionModifierForInsertionEvent:(id)arg1;
-- (id)entityRemovalModifierForEvent:(id)arg1;
+- (id)_entityRemovalModifierForEvent:(id)arg1;
 - (id)multitaskingModifierForEvent:(id)arg1;
 - (id)floorModifierForTransitionEvent:(id)arg1;
-- (id)appExposeModifierForAppExposeEvent:(id)arg1;
 - (id)transitionModifierForMainTransitionEvent:(id)arg1;
 - (id)gestureModifierForGestureEvent:(id)arg1;
-- (id)newMultitaskingModifierFromMultitaskingModifier:(id)arg1;
+- (id)topMostLayoutElements;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
+- (id)appLayoutsToEnsureExistForMainTransitionEvent:(id)arg1;
 - (id)handleEvent:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)init;

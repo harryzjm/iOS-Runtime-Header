@@ -12,17 +12,17 @@
 #import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
 
 @class HMDHome, HMFNetMonitor, IDSService, NSHashTable, NSMutableArray, NSObject, NSString, NSURLSession;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDRelayManager : HMFObject <HMFNetMonitorDelegate, IDSServiceDelegateHomeKit, NSURLSessionDelegate, HMFLogging>
 {
+    id <HMFLocking> _lock;
     _Bool _supported;
     _Bool _enabled;
     unsigned long long _currentState;
     NSString *_controllerIdentifier;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     IDSService *_idsService;
     NSHashTable *_delegates;
     NSHashTable *_relayAccessories;
@@ -32,16 +32,15 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property(readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property(readonly, nonatomic) NSMutableArray *relayStreams; // @synthesize relayStreams=_relayStreams;
 @property(readonly, nonatomic) NSHashTable *relayAccessories; // @synthesize relayAccessories=_relayAccessories;
 @property(readonly, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property(readonly, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
-- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)service:(id)arg1 account:(id)arg2 incomingAccessoryData:(id)arg3 fromAccessoryID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingAccessoryReportMessage:(id)arg3 controllerID:(id)arg4 accessoryID:(id)arg5 context:(id)arg6;

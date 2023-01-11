@@ -25,23 +25,11 @@ struct CGSize {
     double height;
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
 struct NSDirectionalEdgeInsets {
     double top;
     double leading;
     double bottom;
     double trailing;
-};
-
-struct NSMutableArray {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
 };
 
 struct UIEdgeInsets {
@@ -52,6 +40,18 @@ struct UIEdgeInsets {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+} CDStruct_afa449f9;
 
 typedef struct {
     double _field1;

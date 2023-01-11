@@ -7,32 +7,25 @@
 @interface HMDNetworkRouterProfile
 {
     unsigned long long _networkStatus;
+    unsigned long long _wanStatus;
     long long _routerStatus;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 @property(nonatomic) long long routerStatus; // @synthesize routerStatus=_routerStatus;
+@property(nonatomic) unsigned long long wanStatus; // @synthesize wanStatus=_wanStatus;
 @property(nonatomic) unsigned long long networkStatus; // @synthesize networkStatus=_networkStatus;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleNetworkRouterSatelliteAddedOrRemoved:(id)arg1;
-- (void)handleAccessoryIsReachable:(id)arg1;
-- (void)__notifyClientsOfUpdatedSatelliteProfiles;
-- (id)idenfifiersForSatelliteProfiles;
-- (void)__handleAccessoryIsReachable;
-- (void)handleCharacteristicValuesChanged:(id)arg1;
-- (void)_handleCharacteristicChanges:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
+- (void)handleCharacteristicsChangedNotification:(id)arg1;
 - (void)__handleNetworkAccessViolationUpdate:(id)arg1;
-- (void)__handleNetworkRouterStatusUpdate:(id)arg1;
-- (void)__handleNetworkRouterWANStatusUpdate:(id)arg1;
-- (void)_updateNetworkStatus:(id)arg1;
-- (void)_updateRouterStatus:(id)arg1;
+- (void)_updateWANStatus:(unsigned long long)arg1;
+- (void)_updateRouterStatus:(long long)arg1;
 - (void)__notifyClientsOfNetworkStatus:(unsigned long long)arg1;
-- (void)_notifyClientsOfNetworkStatusUpdate;
-- (unsigned long long)__networkStatusFromWANStatus:(id)arg1;
 - (void)handleInitialState;
 - (void)registerForMessages;
-- (void)_registerForNotifications;
 - (id)runtimeState;
 - (void)dealloc;
 - (void)unconfigure;

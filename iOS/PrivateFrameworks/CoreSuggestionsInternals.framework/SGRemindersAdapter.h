@@ -16,16 +16,18 @@
     SGSqlEntityStore *_store;
 }
 
++ (id)constructNotesForReminder:(id)arg1;
 + (unsigned long long)remindersCreatedBetweenStartDate:(id)arg1 endDate:(id)arg2;
 + (_Bool)reminderHasDuplicate:(id)arg1 usingStore:(id)arg2;
-@property(nonatomic) __weak SGSqlEntityStore *store; // @synthesize store=_store;
++ (id)reminderPredicateForReminder:(id)arg1;
++ (id)_remindersFoundInAppsListInREMStore:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) __weak SGSqlEntityStore *store; // @synthesize store=_store;
 - (id)_remRemindersAssociatedWithTitle:(id)arg1 sourceUniqueIdentifier:(id)arg2 usingStore:(id)arg3;
 - (id)_remRemindersAssociatedWithStorageReminder:(id)arg1 remStore:(id)arg2;
 - (_Bool)_deleteReminder:(id)arg1 usingReminderStore:(id)arg2;
 - (_Bool)_saveReminder:(id)arg1 usingReminderStore:(id)arg2;
 - (id)sourceUniqueIdentifierForStorageReminder:(id)arg1;
-- (id)_remindersFoundInAppsListInREMStore:(id)arg1;
 - (void)rejectReminder:(id)arg1;
 - (void)orphanReminder:(id)arg1;
 - (void)rejectReminderFromOtherDevice:(id)arg1;

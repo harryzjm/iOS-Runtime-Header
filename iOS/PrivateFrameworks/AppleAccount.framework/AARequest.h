@@ -14,22 +14,25 @@
 {
     CDUnknownBlockType _handler;
     NSString *_initialURLString;
-    _Bool _flushCache;
     struct OpaqueCFHTTPCookieStorage *_cookieStorage;
     NSString *_oneTimePassword;
     NSString *_machineId;
+    _Bool _flushCache;
     NSDictionary *_customHeaders;
 }
 
++ (id)redactedHeadersFromHTTPHeaders:(id)arg1;
 + (id)protocolVersion;
 + (Class)responseClass;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *customHeaders; // @synthesize customHeaders=_customHeaders;
 @property(nonatomic) _Bool flushCache; // @synthesize flushCache=_flushCache;
-- (void).cxx_destruct;
-- (id)_redactedHeadersFromHTTPHeaders:(id)arg1;
 - (id)redactedBodyStringWithPropertyList:(id)arg1;
 - (void)dealloc;
 - (void)_handleDataTaskCompletionWithData:(id)arg1 response:(id)arg2 error:(id)arg3;
+- (void)_performRequestWithSession:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)performRequestForDevice:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)performSignedRequestWithHandler:(CDUnknownBlockType)arg1;
 - (void)performRequestWithHandler:(CDUnknownBlockType)arg1;
 - (id)bodyDictionary;
 - (id)urlCredential;

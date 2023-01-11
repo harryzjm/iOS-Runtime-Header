@@ -8,10 +8,11 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223FollowingViewController : TUViewController
 {
     MISSING_TYPE *searchProvider;
+    MISSING_TYPE *lazySearchViewController;
+    MISSING_TYPE *lazySearchResultsViewController;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
@@ -20,6 +21,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *alertPresenter;
     MISSING_TYPE *previousSelectedIndexPath;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *commands;
 }
 
 - (void).cxx_destruct;

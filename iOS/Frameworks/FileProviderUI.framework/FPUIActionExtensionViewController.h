@@ -18,6 +18,7 @@
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
 @property(readonly, nonatomic, getter=_browserUserInterfaceStyle) unsigned long long browserUserInterfaceStyle; // @synthesize browserUserInterfaceStyle=_browserUserInterfaceStyle;
+- (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)_browserUserInterfaceStyleDidChange;
 - (void)prepareForAuthentication;
 - (void)prepareForError:(id)arg1;

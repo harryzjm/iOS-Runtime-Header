@@ -27,7 +27,7 @@
     NSString *_realFullPath;
     NSArray *_extraAttributes;
     NSNumber *_pendingLevel;
-    int _type;
+    _Atomic int _type;
     NSMutableDictionary *_userInfo;
 }
 
@@ -39,8 +39,9 @@
 + (id)specialNameForType:(int)arg1;
 + (id)fileURLForMailboxURL:(id)arg1;
 + (id)defaultScheduler;
-@property(retain, nonatomic) NSArray *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
+- (id)redactedName:(id)arg1;
 - (void)updateSuggestionsLostMessageSearchResultCount:(unsigned long long)arg1;
 @property(readonly, nonatomic) double suggestionsLostMessageSearchTimestamp;
 @property(readonly, nonatomic) unsigned long long suggestionsLostMessageSearchResultCount;
@@ -64,9 +65,8 @@
 - (id)userInfoObjectForKey:(id)arg1;
 - (id)_loadUserInfo;
 - (_Bool)isVisible;
-- (void)setMailboxType:(int)arg1;
+@property int mailboxType;
 @property(readonly, nonatomic) long long type;
-- (int)mailboxType;
 - (id)_privacySafeDescription;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;

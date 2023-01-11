@@ -18,13 +18,15 @@
     NSMutableDictionary *_serviceToAccountsMap;
     NSMutableDictionary *_serviceToConnectedAccountsMap;
     NSMutableDictionary *_serviceToOperationalAccountsMap;
+    _Bool _networkDataAvailable;
     NSArray *_accounts;
 }
 
 + (id)bestAccountFromAccounts:(id)arg1;
 + (id)sharedInstance;
-@property(copy) NSArray *accounts; // @synthesize accounts=_accounts;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool networkDataAvailable; // @synthesize networkDataAvailable=_networkDataAvailable;
+@property(copy) NSArray *accounts; // @synthesize accounts=_accounts;
 - (void)_rebuildOperationalAccountsCache:(_Bool)arg1;
 - (void)_disableCache;
 - (void)_enableCache;
@@ -86,6 +88,9 @@
 @property(readonly, nonatomic) int numberOfAccounts;
 - (id)accountAtIndex:(int)arg1;
 - (id)accountForUniqueID:(id)arg1;
+- (void)deferredSetup;
+- (void)_requestNetworkDataAvailability;
+- (_Bool)_shouldPerformDeferredSetup;
 - (void)dealloc;
 - (id)init;
 - (void)autoLogin;
@@ -94,6 +99,10 @@
 - (id)_bestOperationalAccountForSendingForService:(id)arg1;
 - (id)__iCloudSystemAccountForService:(id)arg1;
 - (id)_bestAccountForAddresses:(id)arg1;
+- (_Bool)receiverIsMyMention:(id)arg1;
+- (long long)activeAccountsAreEligibleForAppleSMSFilter;
+- (long long)activeAccountsAreEligibleForHawking;
+- (long long)activeAccountsAreEligibleForUnknownSendersFiltering;
 
 @end
 

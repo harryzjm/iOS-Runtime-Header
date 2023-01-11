@@ -28,6 +28,7 @@
     NSURL *_destinationFileURL;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *destinationFileURL; // @synthesize destinationFileURL=_destinationFileURL;
 @property(copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property(readonly, nonatomic) NSDictionary *info; // @synthesize info=_info;
@@ -37,12 +38,12 @@
 @property(readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
 @property(readonly, nonatomic) PHAssetResourceRequestOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) PHAssetResource *assetResource; // @synthesize assetResource=_assetResource;
-- (void).cxx_destruct;
-- (void)assetResourceRequestDidFinish:(id)arg1;
+- (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
 - (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
 - (void)startRequest;
 - (void)cancel;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
+- (void)setErrorIfNone:(id)arg1;
 - (id)initWithAssetResource:(id)arg1 destinationFileURL:(id)arg2 options:(id)arg3 requestID:(int)arg4 managerID:(unsigned long long)arg5 delegate:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 
 // Remaining properties

@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFAccountAccessResource.h>
+@class WFWebAuthenticationSessionPresentationContext;
 
-@interface WFTrelloAccessResource : WFAccountAccessResource
+@interface WFTrelloAccessResource
 {
+    WFWebAuthenticationSessionPresentationContext *_presentationContext;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) WFWebAuthenticationSessionPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 - (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)authorizationURLWithCallbackURL:(id)arg1;
 - (Class)accountClass;

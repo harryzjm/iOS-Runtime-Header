@@ -16,7 +16,7 @@
 @property(copy, nonatomic) NSArray *recentlySeenHistoryItems;
 @property(copy, nonatomic) NSArray *rankedAllSubscribedTagIDs;
 @property(copy, nonatomic) NSSet *purchasedTagIDs;
-@property(copy, nonatomic) NSSet *autoFavoriteTagIDs;
+@property(copy, nonatomic) NSArray *autoFavoriteTagIDs;
 @property(copy, nonatomic) NSSet *mutedTagIDs;
 @property(copy, nonatomic) id <FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;
 @end

@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface LPTextViewStyle : NSObject <NSCopying>
 {
+    _Bool _shouldScaleMaximumLinesWithDynamicType;
     unsigned int _maximumLines;
     UIColor *_color;
     UIFont *_font;
@@ -23,6 +24,8 @@ __attribute__((visibility("hidden")))
     LPPadding *_padding;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldScaleMaximumLinesWithDynamicType; // @synthesize shouldScaleMaximumLinesWithDynamicType=_shouldScaleMaximumLinesWithDynamicType;
 @property(readonly, retain, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
 @property(retain, nonatomic) LPGlyphStyle *leadingGlyph; // @synthesize leadingGlyph=_leadingGlyph;
 @property(retain, nonatomic) LPPointUnit *lastLineDescent; // @synthesize lastLineDescent=_lastLineDescent;
@@ -31,9 +34,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int maximumLines; // @synthesize maximumLines=_maximumLines;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
-- (void).cxx_destruct;
+- (id)adjustedForString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
+- (id)initWithPlatform:(long long)arg1;
 
 @end
 

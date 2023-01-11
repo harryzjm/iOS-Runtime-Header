@@ -25,23 +25,24 @@
 }
 
 - (void).cxx_destruct;
-- (id)_playingPairedDeviceNameForAVOutputDevice:(id)arg1;
-- (void)_onqueue_clearCachedAVOutputDeviceProperties;
-- (_Bool)_isOutputDevice:(id)arg1 belongToOutputContext:(id)arg2;
-- (id)_outputContext;
+- (_Bool)supportsHAP;
 - (id)bluetoothID;
 - (void)setVolume:(float)arg1;
 - (float)volume;
 - (_Bool)isVolumeControlAvailable;
+- (unsigned int)volumeCapabilities;
 - (_Bool)requiresAuthorization;
 - (_Bool)supportsExternalScreen;
 - (_Bool)isLocalDevice;
 - (_Bool)hasBatteryLevel;
 - (float)batteryLevel;
+- (id)clusterComposition;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
+@property(readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) _Bool headTrackedSpatialAudioActive;
+@property(readonly, nonatomic) _Bool supportsHeadTrackedSpatialAudio;
 - (id)availableBluetoothListeningModes;
-- (void)setCurrentBluetoothListeningMode:(id)arg1;
+- (_Bool)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 - (id)currentBluetoothListeningMode;
 - (_Bool)isPickedOnPairedDevice;
 - (_Bool)isDeviceGroupable;

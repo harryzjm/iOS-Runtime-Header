@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXDisplayThumbnailAsset-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSNumber, NSString;
 @protocol PXAssetdestinationAssetCopyProperties, PXDisplayAsset;
 
 @protocol PXDisplayAsset <PXDisplayThumbnailAsset>
@@ -24,10 +24,11 @@
 - (long long)isContentEqualTo:(id <PXDisplayAsset>)arg1;
 
 @optional
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSDate *importDate;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) unsigned long long burstSelectionTypes;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
 @property(readonly, nonatomic) double aspectRatio;
@@ -36,6 +37,7 @@
 @property(readonly, nonatomic) double duration;
 - (id <PXAssetdestinationAssetCopyProperties>)destinationAssetCopyProperties;
 - (NSString *)localizedDetailedGeoDescriptionForRTL:(_Bool)arg1;
+- (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withFocusRegion:(struct CGRect)arg2;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 @end

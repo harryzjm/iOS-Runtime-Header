@@ -8,8 +8,6 @@
 
 @interface IBICAddMutator
 {
-    IBICAbstractCatalogItem *_item;
-    IBICAbstractCatalogItem *_parent;
     NSFileWrapper *_fileWrapper;
     NSURL *_fileURL;
     _Bool _isFirstReference;
@@ -21,9 +19,13 @@
     NSNumber *_optionalIndex;
     NSString *_descriptionItemID;
     NSString *_descriptionParentID;
+    IBICAbstractCatalogItem *_item;
+    IBICAbstractCatalogItem *_parent;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) IBICAbstractCatalogItem *parent; // @synthesize parent=_parent;
+@property(readonly, nonatomic) IBICAbstractCatalogItem *item; // @synthesize item=_item;
 - (id)description;
 - (id)inverseMutator;
 - (id)mutationDescription;

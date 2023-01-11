@@ -25,7 +25,6 @@
 - (void)enumerateWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)containsValue:(long long)arg1;
 @property(readonly, nonatomic) unsigned long long count;
-- (id)_initWithHashTable:(id)arg1 hasZeroValue:(_Bool)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
 

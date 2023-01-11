@@ -22,6 +22,7 @@
     NSError *_resultError;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *resultError; // @synthesize resultError=_resultError;
 @property(retain, nonatomic) CKQueryCursor *resultCursor; // @synthesize resultCursor=_resultCursor;
 @property(retain, nonatomic) NSArray *resultRecords; // @synthesize resultRecords=_resultRecords;
@@ -34,7 +35,6 @@
 @property(copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
 - (id)_constructTagSearchQuery;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)resetForRetry;

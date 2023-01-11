@@ -8,7 +8,7 @@
 
 #import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 
-@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularPlanManagerCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUILowDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
+@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularDataOptionsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUIDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
 
 __attribute__((visibility("hidden")))
 @interface PSUISubscriptionContextMenusGroup : NSObject <PSSpecifierGroup>
@@ -23,20 +23,25 @@ __attribute__((visibility("hidden")))
     PSUIMyNumberSubgroup *_myNumberSubgroup;
     PSUINetworkSettingsSubgroup *_networkSettingsSubgroup;
     PSUISIMSubgroup *_simSubgroup;
-    PSUILowDataModeSubgroup *_lowDataModeSubgroup;
+    PSUIDataModeSubgroup *_dataModeSubgroup;
+    PSUICoreTelephonyCallCache *_callCache;
     PSSimStatusCache *_simStatusCache;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
     PSUICoreTelephonyDataCache *_dataCache;
     PSUICellularPlanManagerCache *_planManagerCache;
     CTCellularPlanManager *_cellularPlanManager;
+    PSUICellularDataOptionsController *_roamingSpecifiersSubgroup;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PSUICellularDataOptionsController *roamingSpecifiersSubgroup; // @synthesize roamingSpecifiersSubgroup=_roamingSpecifiersSubgroup;
 @property(retain, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
 @property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property(retain, nonatomic) PSUICoreTelephonyDataCache *dataCache; // @synthesize dataCache=_dataCache;
 @property(retain, nonatomic) PSUICoreTelephonyCarrierBundleCache *carrierBundleCache; // @synthesize carrierBundleCache=_carrierBundleCache;
 @property(retain, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
-@property(retain, nonatomic) PSUILowDataModeSubgroup *lowDataModeSubgroup; // @synthesize lowDataModeSubgroup=_lowDataModeSubgroup;
+@property(retain, nonatomic) PSUICoreTelephonyCallCache *callCache; // @synthesize callCache=_callCache;
+@property(retain, nonatomic) PSUIDataModeSubgroup *dataModeSubgroup; // @synthesize dataModeSubgroup=_dataModeSubgroup;
 @property(retain, nonatomic) PSUISIMSubgroup *simSubgroup; // @synthesize simSubgroup=_simSubgroup;
 @property(retain, nonatomic) PSUINetworkSettingsSubgroup *networkSettingsSubgroup; // @synthesize networkSettingsSubgroup=_networkSettingsSubgroup;
 @property(retain, nonatomic) PSUIMyNumberSubgroup *myNumberSubgroup; // @synthesize myNumberSubgroup=_myNumberSubgroup;
@@ -47,7 +52,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 @property(nonatomic) __weak PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(retain, nonatomic) PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;
-- (void).cxx_destruct;
+- (_Bool)planManagerCacheHasMoreThanOnePlanItem;
 - (id)specifiers;
 - (void)viewWillAppear;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;

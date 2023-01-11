@@ -11,6 +11,7 @@
 
 @property(readonly) CDStruct_912cb5d2 scale; // @synthesize scale=_scale;
 - (id)inverseTransform;
+- (_Bool)isIdentityImageTransform;
 - (id)initWithScale:(CDStruct_912cb5d2)arg1;
 - (id)initWithAffineTransform:(struct CGAffineTransform)arg1;
 

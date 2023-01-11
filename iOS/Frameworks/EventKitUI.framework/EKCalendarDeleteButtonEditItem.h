@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITableViewCell;
+@class UITableViewCell, UIView;
 
 @interface EKCalendarDeleteButtonEditItem
 {
@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)calendarEditor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
+@property(readonly, nonatomic) UIView *deleteButtonView;
 - (void)setDeleteButtonTarget:(id)arg1 action:(SEL)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 

@@ -37,6 +37,7 @@
 - (id)venueLabel;
 - (id)venueLabel:(long long)arg1;
 - (id)parkingDisplayName;
+- (id)weatherLocationName;
 - (id)weatherDisplayName;
 - (id)cityDisplayNameWithFallback:(_Bool)arg1;
 - (id)shortAddress;

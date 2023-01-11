@@ -69,6 +69,7 @@
 + (id)contextForManagedObjectLookupItemCache:(id)arg1 coordinator:(id)arg2;
 + (id)contextForRepairingSingletonObjects:(const char *)arg1 libraryURL:(id)arg2 error:(id *)arg3;
 + (id)contextForPhotoLibrary:(id)arg1 automaticallyMerges:(_Bool)arg2 name:(const char *)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isBackingALAssetsLibrary; // @synthesize isBackingALAssetsLibrary=_isBackingALAssetsLibrary;
 @property(nonatomic) _Bool isInitializingSingletons; // @synthesize isInitializingSingletons=_isInitializingSingletons;
 @property(nonatomic) int changeSource; // @synthesize changeSource=_changeSource;
@@ -77,7 +78,7 @@
 @property(retain, nonatomic) PLDelayedFiledSystemDeletions *delayedDeletions; // @synthesize delayedDeletions=_delayedDeletions;
 @property(readonly, nonatomic) _Bool savingDuringMerge; // @synthesize savingDuringMerge=_savingDuringMerge;
 @property(readonly, nonatomic) _Bool mergingChanges; // @synthesize mergingChanges=_mergingChanges;
-- (void).cxx_destruct;
+- (_Bool)shouldMergeFromRemoteContextWithChanges:(id)arg1;
 - (void)tearDownLocalChangeNotifications;
 - (void)setupLocalChangeNotifications;
 - (void)appendDelayedDeletionsToXPCMessage:(id)arg1;
@@ -111,15 +112,14 @@
 - (void)disconnectFromChangeHandling;
 - (void)connectToChangeHandling;
 - (_Bool)pl_performWithOptions:(unsigned long long)arg1 andBlock:(CDUnknownBlockType)arg2;
-- (void)performWithOptions:(unsigned long long)arg1 andBlock:(CDUnknownBlockType)arg2;
-- (void)performBlockAndWait:(CDUnknownBlockType)arg1;
-- (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)setName:(id)arg1;
+- (void)breakRetainCycles;
 - (void)_simulateCrashIfNotAssetsd;
 - (_Bool)obtainPermanentIDsForObjects:(id)arg1 error:(id *)arg2;
 - (_Bool)save:(id *)arg1;
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id *)arg2;
-- (void)_logFaultForPotentialySlowFetchRequeset:(id)arg1;
 - (id)executeRequest:(id)arg1 error:(id *)arg2;
+- (id)pl_executeFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)executeFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)existingObjectWithID:(id)arg1 error:(id *)arg2;
 - (void)invalidateWithReason:(id)arg1;
@@ -128,8 +128,7 @@
 - (id)pathManager;
 - (_Bool)isReadOnly;
 - (void)withDispatchGroup:(id)arg1 performBlock:(CDUnknownBlockType)arg2;
-- (void)setGlobalValue:(id)arg1 forKey:(id)arg2;
-- (id)globalValueForKey:(id)arg1;
+- (id)storeUUID;
 - (_Bool)isDatabaseCreationContext;
 @property(readonly, nonatomic) _Bool isUserInterfaceContext;
 @property(nonatomic) __weak id <PLManagedObjectContextPTPNotificationDelegate> ptpNotificationDelegate; // @synthesize ptpNotificationDelegate=_ptpNotificationDelegate;

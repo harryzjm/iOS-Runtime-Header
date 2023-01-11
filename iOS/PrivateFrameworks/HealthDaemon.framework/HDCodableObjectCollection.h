@@ -18,6 +18,7 @@
     NSMutableArray *_cdaDocumentSamples;
     NSMutableArray *_correlations;
     NSMutableArray *_deletedSamples;
+    NSMutableArray *_ecgSamples;
     NSMutableArray *_fitnessFriendAchievements;
     NSMutableArray *_fitnessFriendActivitySnapshots;
     NSMutableArray *_fitnessFriendWorkouts;
@@ -26,11 +27,14 @@
     NSMutableArray *_medicalRecords;
     HDCodableProvenance *_provenance;
     NSMutableArray *_quantitySamples;
+    NSMutableArray *_sleepSchedules;
     HDCodableSource *_source;
     NSString *_sourceBundleIdentifier;
     NSMutableArray *_workouts;
 }
 
++ (Class)ecgSamplesType;
++ (Class)sleepSchedulesType;
 + (Class)medicalRecordsType;
 + (Class)fitnessFriendWorkoutsType;
 + (Class)fitnessFriendAchievementsType;
@@ -44,6 +48,9 @@
 + (Class)workoutsType;
 + (Class)quantitySamplesType;
 + (Class)categorySamplesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *ecgSamples; // @synthesize ecgSamples=_ecgSamples;
+@property(retain, nonatomic) NSMutableArray *sleepSchedules; // @synthesize sleepSchedules=_sleepSchedules;
 @property(retain, nonatomic) HDCodableProvenance *provenance; // @synthesize provenance=_provenance;
 @property(retain, nonatomic) HDCodableGeneratedObjectCollection *generatedObjectCollection; // @synthesize generatedObjectCollection=_generatedObjectCollection;
 @property(retain, nonatomic) NSMutableArray *medicalRecords; // @synthesize medicalRecords=_medicalRecords;
@@ -61,7 +68,6 @@
 @property(retain, nonatomic) NSMutableArray *categorySamples; // @synthesize categorySamples=_categorySamples;
 @property(retain, nonatomic) HDCodableSource *source; // @synthesize source=_source;
 @property(retain, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -71,6 +77,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)ecgSamplesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)ecgSamplesCount;
+- (void)addEcgSamples:(id)arg1;
+- (void)clearEcgSamples;
+- (id)sleepSchedulesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sleepSchedulesCount;
+- (void)addSleepSchedules:(id)arg1;
+- (void)clearSleepSchedules;
 @property(readonly, nonatomic) _Bool hasProvenance;
 @property(readonly, nonatomic) _Bool hasGeneratedObjectCollection;
 - (id)medicalRecordsAtIndex:(unsigned long long)arg1;
@@ -127,6 +141,7 @@
 - (void)clearCategorySamples;
 @property(readonly, nonatomic) _Bool hasSource;
 @property(readonly, nonatomic) _Bool hasSourceBundleIdentifier;
+- (void)addCoverageRecord:(id)arg1;
 - (void)addClinicalRecord:(id)arg1;
 - (void)addUnknownRecord:(id)arg1;
 - (void)addAccountOwner:(id)arg1;

@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol MTLSerializerAllocator
+#import <MTLSimDriver/NSObject-Protocol.h>
+
+@protocol MTLSerializerAllocator <NSObject>
 - (char *)allocateOperationBytes:(unsigned long long)arg1;
 @end
 

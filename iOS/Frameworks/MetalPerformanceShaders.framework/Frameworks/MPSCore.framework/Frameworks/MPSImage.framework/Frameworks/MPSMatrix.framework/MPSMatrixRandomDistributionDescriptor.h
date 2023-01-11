@@ -18,6 +18,8 @@
 }
 
 + (id)defaultDistributionDescriptor;
++ (id)normalDistributionDescriptorWithMean:(float)arg1 standardDeviation:(float)arg2 minimum:(float)arg3 maximum:(float)arg4;
++ (id)normalDistributionDescriptorWithMean:(float)arg1 standardDeviation:(float)arg2;
 + (id)uniformDistributionDescriptorWithMinimum:(float)arg1 maximum:(float)arg2;
 @property(nonatomic) float standardDeviation; // @synthesize standardDeviation=_standardDeviation;
 @property(nonatomic) float mean; // @synthesize mean=_mean;

@@ -22,7 +22,7 @@
 + (id)clinicalRecordWithType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5 displayName:(id)arg6 FHIRResource:(id)arg7;
 - (void).cxx_destruct;
 @property(readonly, copy) HKClinicalType *clinicalType;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (void)_setFHIRResource:(id)arg1;
 @property(readonly, copy) HKFHIRResource *FHIRResource;
 - (void)_setDisplayName:(id)arg1;

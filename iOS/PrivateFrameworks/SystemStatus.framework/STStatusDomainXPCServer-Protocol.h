@@ -7,8 +7,10 @@
 #import <SystemStatus/NSObject-Protocol.h>
 
 @class NSSet;
+@protocol STStatusDomainUserInteraction;
 
 @protocol STStatusDomainXPCServer <NSObject>
+- (void)reportUserInteraction:(id <STStatusDomainUserInteraction>)arg1 forDomain:(unsigned long long)arg2;
 - (void)stopObservingDomains:(NSSet *)arg1;
 - (void)observeDomains:(NSSet *)arg1;
 @end

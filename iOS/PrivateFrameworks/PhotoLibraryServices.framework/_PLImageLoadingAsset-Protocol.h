@@ -43,7 +43,6 @@
 - (NSString *)uuid;
 - (NSString *)debugFilename;
 - (_Bool)hasAdjustments;
-- (_Bool)hasLegacyAdjustments;
 - (long long)originalImageOrientation;
 - (NSURL *)assetsLibraryURL;
 - (double)aspectRatio;

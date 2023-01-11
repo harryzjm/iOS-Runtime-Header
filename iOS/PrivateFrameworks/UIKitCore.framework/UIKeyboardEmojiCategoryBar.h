@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
 }
 
++ (_Bool)wantsScreenTraits;
 @property(nonatomic) UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property(retain, nonatomic) UIKeyboardEmojiGraphicsTraits *emojiGraphicsTraits; // @synthesize emojiGraphicsTraits=_emojiGraphicsTraits;
 @property(retain, nonatomic) UIView *scrubView; // @synthesize scrubView=_scrubView;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)prepareForDisplay;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 screenTraits:(id)arg4;
 
 @end
 

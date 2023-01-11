@@ -7,7 +7,7 @@
 #import <Email/EFFutureDelegate-Protocol.h>
 #import <Email/EFLoggable-Protocol.h>
 
-@class EMBlockedSenderManager, EMMailboxRepository, EMRemoteConnection, NSArray, NSCache, NSHashTable, NSMapTable, NSString;
+@class EFPromise, EMBlockedSenderManager, EMMailboxRepository, EMRemoteConnection, EMRemoteConnectionRecoveryAssertion, NSArray, NSCache, NSHashTable, NSMapTable, NSString, NSURL;
 @protocol EMVIPManager;
 
 @interface EMMessageRepository <EFFutureDelegate, EFLoggable>
@@ -18,36 +18,46 @@
     NSHashTable *_recoverableObservers;
     struct os_unfair_lock_s _messageListItemCacheLock;
     struct os_unfair_lock_s _observersLock;
+    EMRemoteConnectionRecoveryAssertion *_connectionRecoveryAssertion;
     EMRemoteConnection *_connection;
     id <EMVIPManager> _vipManager;
     EMBlockedSenderManager *_blockedSenderManager;
     NSCache *_queryCountCache;
+    NSURL *_cacheURL;
+    EFPromise *_remoteContentCachePromise;
     EMMailboxRepository *_mailboxRepository;
 }
 
 + (id)remoteInterface;
 + (id)signpostLog;
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) EMMailboxRepository *mailboxRepository; // @synthesize mailboxRepository=_mailboxRepository;
+@property(retain, nonatomic) EFPromise *remoteContentCachePromise; // @synthesize remoteContentCachePromise=_remoteContentCachePromise;
+@property(retain, nonatomic) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
 @property(retain, nonatomic) NSCache *queryCountCache; // @synthesize queryCountCache=_queryCountCache;
 @property(readonly, nonatomic) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
 @property(readonly, nonatomic) id <EMVIPManager> vipManager; // @synthesize vipManager=_vipManager;
 @property(retain) EMRemoteConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)_broadcastMessageListItemChangesToObservers:(CDUnknownBlockType)arg1;
 - (void)_vipsDidChange:(id)arg1;
 - (void)_blockedSendersDidChange:(id)arg1;
 - (void)_detectChangesForMatchedAddedObjectIDs:(id)arg1 observerationIdentifier:(id)arg2 matchedChangesHandler:(CDUnknownBlockType)arg3;
 - (void)_applyChangesToCachedObjects:(id)arg1;
+- (id)messageObjectIDsForSearchableItemIdentifiers:(id)arg1;
+- (id)messageForSearchableItemIdentifier:(id)arg1;
+- (id)messageObjectIDForURL:(id)arg1;
 - (void)loadOlderMessagesForMailboxes:(id)arg1;
-- (void)_predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cachedMetadataJSONForKey:(id)arg1 messageID:(id)arg2;
 - (void)setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageID:(id)arg3;
 - (void)resetAllPrecomputedThreadScopes;
 - (void)resetPrecomputedThreadScopesForMailboxObjectID:(id)arg1;
 - (void)resetPrecomputedThreadScopesForMailboxType:(long long)arg1;
-- (void)_updateObserversForChangeAction:(id)arg1;
+- (void)_updateObserversForDeletedObjectIDs:(id)arg1;
+- (void)_updateObserversForFlagChangeAction:(id)arg1;
+- (void)_updateObserversForAction:(id)arg1;
 - (id)_undoActionForConversationAction:(id)arg1;
 - (id)performMessageChangeActionReturningUndoAction:(id)arg1;
 - (void)performMessageChangeAction:(id)arg1;
@@ -68,8 +78,9 @@
 - (void)didFinishBlockingMainThreadForFuture:(id)arg1;
 - (void)didStartBlockingMainThreadForFuture:(id)arg1;
 - (void)_notifyRecoverableObservers;
+- (void)dealloc;
 - (id)initWithRemoteConnection:(id)arg1 mailboxRepository:(id)arg2 vipManager:(id)arg3 blockedSenderManager:(id)arg4;
-- (id)_init;
+- (id)initInternal;
 - (unsigned long long)signpostID;
 
 // Remaining properties

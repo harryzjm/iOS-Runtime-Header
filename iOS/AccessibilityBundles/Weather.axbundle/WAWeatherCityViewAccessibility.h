@@ -12,12 +12,16 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
+- (id)temperatureFormatter;
 - (void)setPrecipitation:(double)arg1;
+- (void)_axSetLowHighTemp:(id)arg1;
 - (void)_axSetPrecipitation:(double)arg1;
 - (id)_accessibilityBriefLabel;
-- (void)setMode:(long long)arg1;
+- (void)setMode:(long long)arg1 forCity:(id)arg2;
 - (_Bool)_accessibilityIsInCardMode;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)axSetDayForecastValue:(id)arg1;
+- (id)axDayForecastValue;
 
 @end
 

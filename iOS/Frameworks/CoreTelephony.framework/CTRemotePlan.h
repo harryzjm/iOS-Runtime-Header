@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <CoreTelephony/NSSecureCoding-Protocol.h>
-
 @class CTPlanTransferAttributes, CTRemotePlanIdentifier;
 
-@interface CTRemotePlan : NSObject <NSSecureCoding>
+@interface CTRemotePlan
 {
     CTRemotePlanIdentifier *_planID;
     CTPlanTransferAttributes *_transferAttributes;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CTPlanTransferAttributes *transferAttributes; // @synthesize transferAttributes=_transferAttributes;
 @property(retain, nonatomic) CTRemotePlanIdentifier *planID; // @synthesize planID=_planID;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)label;

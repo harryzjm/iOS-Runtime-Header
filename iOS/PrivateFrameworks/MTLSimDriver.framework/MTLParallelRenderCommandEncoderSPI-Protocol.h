@@ -12,6 +12,6 @@
 @property _Bool separateCommits;
 
 @optional
-- (id <MTLRenderCommandEncoder>)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDStruct_4af8c268 *)arg1 capacity:(unsigned long long)arg2;
+- (id <MTLRenderCommandEncoder>)sampledRenderCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
 @end
 

@@ -12,6 +12,7 @@
     MISSING_TYPE *baseItem;
     MISSING_TYPE *transform;
     MISSING_TYPE *size;
+    MISSING_TYPE *_uikitFocusItem;
 }
 
 @end

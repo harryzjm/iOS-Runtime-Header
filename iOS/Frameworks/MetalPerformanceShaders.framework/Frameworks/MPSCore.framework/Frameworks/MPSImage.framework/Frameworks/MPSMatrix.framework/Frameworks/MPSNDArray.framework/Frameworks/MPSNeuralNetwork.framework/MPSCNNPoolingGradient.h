@@ -9,7 +9,7 @@
     CDStruct_da2e99ad _sourceSize;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) CDStruct_14f26992 sourceSize; // @synthesize sourceSize=_sourceSize;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

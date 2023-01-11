@@ -8,7 +8,6 @@
 
 @protocol GEONavigationServerRequestStateXPCInterface <NSObject>
 - (void)requestNavigationVoiceVolume;
-- (void)requestTrafficIncidentDetailsData;
 - (void)requestPositionFromDestination;
 - (void)requestPositionFromManeuver;
 - (void)requestPositionFromSign;

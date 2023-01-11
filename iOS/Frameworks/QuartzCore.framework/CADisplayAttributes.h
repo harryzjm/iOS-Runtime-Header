@@ -12,6 +12,11 @@
 }
 
 - (id).cxx_construct;
+@property(readonly) unsigned int serialNumber;
+@property(readonly) unsigned int yearOfManufacture;
+@property(readonly) unsigned int weekOfManufacture;
+@property(readonly) unsigned int productID;
+@property(readonly) unsigned int manufacturerID;
 @property(readonly) _Bool legacyHDMIEDID;
 @property(readonly) long long bt2020YCC;
 @property(readonly) long long hdrStaticMetadataType1;

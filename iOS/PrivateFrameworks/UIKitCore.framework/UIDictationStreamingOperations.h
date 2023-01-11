@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_operations;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *operations; // @synthesize operations=_operations;
 - (unsigned long long)selectionChangeDelta;
 - (_Bool)isNotEmpty;
@@ -37,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (id)pop;
 - (_Bool)hasOperations;
 - (void)clearOperations;
-- (void)dealloc;
 - (id)init;
 
 @end

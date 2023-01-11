@@ -15,6 +15,9 @@
     _Bool _createdFromNSKeyedUnarchiver;
     _Bool _finished;
     _Bool _firstRun;
+    _Bool _coreTraining;
+    _Bool _dancing;
+    _Bool _functionalStrengthTraining;
     NSDate *_firstSampleDate;
     NSDate *_lastSampleDate;
     NSDate *_lastRunDate;
@@ -26,7 +29,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HDDemoDataGeneratorWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
+@property(readonly, nonatomic, getter=isFunctionalStrengthTraining) _Bool functionalStrengthTraining; // @synthesize functionalStrengthTraining=_functionalStrengthTraining;
+@property(readonly, nonatomic, getter=isDancing) _Bool dancing; // @synthesize dancing=_dancing;
+@property(readonly, nonatomic, getter=isCoreTraining) _Bool coreTraining; // @synthesize coreTraining=_coreTraining;
 @property(nonatomic, getter=isFirstRun) _Bool firstRun; // @synthesize firstRun=_firstRun;
 @property(nonatomic, getter=isFinished) _Bool finished; // @synthesize finished=_finished;
 @property(nonatomic) double endTime; // @synthesize endTime=_endTime;
@@ -36,11 +43,14 @@
 @property(retain, nonatomic) NSDate *lastRunDate; // @synthesize lastRunDate=_lastRunDate;
 @property(retain, nonatomic) NSDate *lastSampleDate; // @synthesize lastSampleDate=_lastSampleDate;
 @property(retain, nonatomic) NSDate *firstSampleDate; // @synthesize firstSampleDate=_firstSampleDate;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) long long calendarDay;
 @property(readonly, nonatomic) NSDate *currentDate;
+@property(readonly, nonatomic, getter=isCoolingDown) _Bool coolingDown;
+- (_Bool)isDoingFunctionalStrengthTraining;
+- (_Bool)isDoingCardioDance;
+- (_Bool)isDoingCoreTraining;
 @property(readonly, nonatomic, getter=isHiking) _Bool hiking;
 @property(readonly, nonatomic, getter=isDoingYoga) _Bool doingYoga;
 @property(readonly, nonatomic, getter=isWalking) _Bool walking;

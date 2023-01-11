@@ -29,7 +29,7 @@
 - (id)dvt_hexStringLowercased:(_Bool)arg1;
 - (id)dvt_dataWithSHA256Digest;
 - (id)dvt_dataWithSHA1Digest;
-- (id)dvt_dataWithMD5Digest;
+- (id)dvt_dataWithInsecureMD5Digest;
 - (struct __sFILE *)openForReading;
 @property(readonly) NSDictionary *dictionaryValue;
 @property(readonly) NSArray *arrayValue;

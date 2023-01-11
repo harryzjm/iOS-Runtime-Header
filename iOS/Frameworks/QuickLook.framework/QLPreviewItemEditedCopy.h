@@ -15,13 +15,15 @@
     FPSandboxingURLWrapper *_urlWrapper;
     FPSandboxingURLWrapper *_directoryURLWrapper;
     NSUUID *_uuid;
+    unsigned long long _version;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) FPSandboxingURLWrapper *directoryURLWrapper; // @synthesize directoryURLWrapper=_directoryURLWrapper;
 @property(retain, nonatomic) FPSandboxingURLWrapper *urlWrapper; // @synthesize urlWrapper=_urlWrapper;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *outputURLContentType;
@@ -31,6 +33,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)removeFromDisk;
 - (_Bool)containerStillExists;
+- (void)bumpVersion;
 - (id)initWithEditedCopyURL:(id)arg1 createdContainerTemporaryURL:(id)arg2;
 - (id)initWithEditedCopyURL:(id)arg1;
 

@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)denyOnlyThisRequest;
 - (void)deny;
 - (void)allow;
-- (id)initWithGeolocation:(struct Geolocation *)arg1 forWebView:(id)arg2;
+- (id)initWithGeolocation:(NakedPtr_331571b6)arg1 forWebView:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

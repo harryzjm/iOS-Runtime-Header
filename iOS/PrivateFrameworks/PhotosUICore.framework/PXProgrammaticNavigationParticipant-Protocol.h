@@ -10,8 +10,12 @@
 @protocol PXProgrammaticNavigationParticipant;
 
 @protocol PXProgrammaticNavigationParticipant <NSObject>
+@property(readonly, nonatomic) PXProgrammaticNavigationDestination *px_navigationDestination;
 - (id <PXProgrammaticNavigationParticipant>)nextExistingParticipantOnRouteToDestination:(PXProgrammaticNavigationDestination *)arg1;
+- (unsigned long long)routingOptionsForDestination:(PXProgrammaticNavigationDestination *)arg1;
+
+@optional
+- (void)provideViewControllersForDestination:(PXProgrammaticNavigationDestination *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *, long long, NSError *))arg3;
 - (void)navigateToDestination:(PXProgrammaticNavigationDestination *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(long long, NSError *))arg3;
-- (_Bool)canRouteToDestination:(PXProgrammaticNavigationDestination *)arg1;
 @end
 

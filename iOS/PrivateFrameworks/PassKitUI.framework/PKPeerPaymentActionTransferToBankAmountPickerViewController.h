@@ -14,8 +14,10 @@
 {
     UIScrollView *_scrollView;
     PKEnterCurrencyAmountPassView *_amountPassView;
+    unsigned char _visibility;
     _Bool _keyboardVisible;
     struct CGRect _keyboardFrame;
+    struct CGRect _lastKeyboardFrame;
 }
 
 - (void).cxx_destruct;
@@ -43,6 +45,10 @@
 - (void)willDismissViewController;
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
 
 // Remaining properties

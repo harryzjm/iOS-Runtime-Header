@@ -21,14 +21,15 @@
     struct MPSAutoBuffer _buffer;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 @property(readonly, nonatomic) unsigned long long matrixBytes; // @synthesize matrixBytes=_matrixBytes;
 @property(readonly, nonatomic) unsigned long long rowBytes; // @synthesize rowBytes=_rowBytes;
 @property(readonly, nonatomic) unsigned long long matrices; // @synthesize matrices=_matrices;
 @property(readonly, nonatomic) unsigned long long columns; // @synthesize columns=_columns;
 @property(readonly, nonatomic) unsigned long long rows; // @synthesize rows=_rows;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)ndArrayWithCommandBuffer:(id)arg1 descriptor:(id)arg2 aliasing:(unsigned long long)arg3;
 - (_Bool)doesAliasWithNDArray:(id)arg1;
 - (_Bool)canAliasWithNDArrayDescriptor:(id)arg1;

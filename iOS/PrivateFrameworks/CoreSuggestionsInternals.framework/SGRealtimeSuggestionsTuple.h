@@ -13,14 +13,16 @@
     NSArray *_contacts;
     NSArray *_events;
     NSArray *_reminders;
+    NSArray *_deliveries;
     NSArray *_invalidatedIdentifiers;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSArray *invalidatedIdentifiers; // @synthesize invalidatedIdentifiers=_invalidatedIdentifiers;
+@property(retain) NSArray *deliveries; // @synthesize deliveries=_deliveries;
 @property(retain) NSArray *reminders; // @synthesize reminders=_reminders;
 @property(retain) NSArray *events; // @synthesize events=_events;
 @property(retain) NSArray *contacts; // @synthesize contacts=_contacts;
-- (void).cxx_destruct;
 - (id)combinedSuggestions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)suggestionsCount;

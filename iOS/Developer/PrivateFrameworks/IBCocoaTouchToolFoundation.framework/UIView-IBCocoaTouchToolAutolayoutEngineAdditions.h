@@ -60,6 +60,8 @@
 @property(readonly, nonatomic) _Bool ibShouldPropagateDesignFramesToCopiedView;
 - (void)setIbDesignTimeDefaultIntrinsicContentSizeForSelfSizingContainers:(id)arg1;
 - (id)ibDesignTimeDefaultIntrinsicContentSizeForSelfSizingContainers;
+- (void)setIbDesignableIntrinsicContentSizeOnLastStatusUpdate:(id)arg1;
+- (id)ibDesignableIntrinsicContentSizeOnLastStatusUpdate;
 @property(copy, nonatomic) NSValue *ibExternalDesignTimeIntrinsicContentSize;
 - (id)ibEffectiveDesignTimeIntrinsicContentSizeForCopyOfReceiver:(id)arg1 layoutEngine:(id)arg2;
 - (id)ibDefaultDesignTimeIntrinsicContentSizeForChild:(id)arg1;

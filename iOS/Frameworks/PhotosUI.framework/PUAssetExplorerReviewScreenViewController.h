@@ -8,11 +8,12 @@
 
 #import <PhotosUI/PUAssetExplorerReviewScreenActionManagerDelegate-Protocol.h>
 #import <PhotosUI/PUReviewAssetProvider-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSIndexPath, NSMutableDictionary, NSSet, NSString, PUActivityProgressController, PUAssetExplorerReviewScreenActionManager, PUAssetExplorerReviewScreenAssetsDataSourceManager, PUAssetsDataSourceManager, PUBrowsingSession, PUJoiningMediaProvider, PUMediaProvider, PUReviewScreenBarsModel, PUReviewScreenSpec, UIAlertController;
+@class NSIndexPath, NSMutableDictionary, NSNumber, NSSet, NSString, PUActivityProgressController, PUAssetExplorerReviewScreenActionManager, PUAssetExplorerReviewScreenAssetsDataSourceManager, PUAssetsDataSourceManager, PUBrowsingSession, PUJoiningMediaProvider, PUMediaProvider, PUPhotoPickerResizeTaskDescriptorViewModel, PUReviewScreenBarsModel, PUReviewScreenSpec, UIAlertController;
 @protocol PUAssetExplorerReviewScreenViewControllerDelegate, PUReviewAssetProvider;
 
-@interface PUAssetExplorerReviewScreenViewController : UIViewController <PUAssetExplorerReviewScreenActionManagerDelegate, PUReviewAssetProvider>
+@interface PUAssetExplorerReviewScreenViewController : UIViewController <PUAssetExplorerReviewScreenActionManagerDelegate, PUReviewAssetProvider, PXChangeObserver>
 {
     struct {
         _Bool respondsToDidPressCancel;
@@ -21,12 +22,16 @@
         _Bool respondsToCanPerformActionType;
         _Bool respondsToShouldEnableActionType;
         _Bool respondsToWillTransitionToSize;
+        _Bool respondsToDidPressFileSizeButton;
     } _delegateFlags;
+    _Bool __lowMemoryMode;
     id <PUAssetExplorerReviewScreenViewControllerDelegate> _delegate;
     NSIndexPath *_initialIndexPath;
     NSSet *_initialSelectedAssetUUIDs;
     NSSet *_initialDisabledLivePhotoAssetUUIDs;
+    NSNumber *_selectionCountLimit;
     PUReviewScreenBarsModel *_reviewBarsModel;
+    PUPhotoPickerResizeTaskDescriptorViewModel *_resizeTaskDescriptorViewModel;
     unsigned long long _sourceType;
     PUAssetsDataSourceManager *__clientDataSourceManager;
     PUAssetExplorerReviewScreenAssetsDataSourceManager *__reviewDataSourceManager;
@@ -43,6 +48,8 @@
     PUReviewScreenSpec *__spec;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool _lowMemoryMode; // @synthesize _lowMemoryMode=__lowMemoryMode;
 @property(readonly, nonatomic) PUReviewScreenSpec *_spec; // @synthesize _spec=__spec;
 @property(readonly, nonatomic) unsigned long long _options; // @synthesize _options=__options;
 @property(retain, nonatomic, setter=_setFailedReviewAssetRequestAlertController:) UIAlertController *_failedReviewAssetRequestAlertController; // @synthesize _failedReviewAssetRequestAlertController=__failedReviewAssetRequestAlertController;
@@ -57,12 +64,13 @@
 @property(readonly, nonatomic) PUAssetExplorerReviewScreenAssetsDataSourceManager *_reviewDataSourceManager; // @synthesize _reviewDataSourceManager=__reviewDataSourceManager;
 @property(readonly, nonatomic) PUAssetsDataSourceManager *_clientDataSourceManager; // @synthesize _clientDataSourceManager=__clientDataSourceManager;
 @property(readonly, nonatomic) unsigned long long sourceType; // @synthesize sourceType=_sourceType;
+@property(readonly, nonatomic) PUPhotoPickerResizeTaskDescriptorViewModel *resizeTaskDescriptorViewModel; // @synthesize resizeTaskDescriptorViewModel=_resizeTaskDescriptorViewModel;
 @property(readonly, nonatomic) PUReviewScreenBarsModel *reviewBarsModel; // @synthesize reviewBarsModel=_reviewBarsModel;
+@property(readonly, nonatomic) NSNumber *selectionCountLimit; // @synthesize selectionCountLimit=_selectionCountLimit;
 @property(readonly, copy, nonatomic) NSSet *initialDisabledLivePhotoAssetUUIDs; // @synthesize initialDisabledLivePhotoAssetUUIDs=_initialDisabledLivePhotoAssetUUIDs;
 @property(readonly, copy, nonatomic) NSSet *initialSelectedAssetUUIDs; // @synthesize initialSelectedAssetUUIDs=_initialSelectedAssetUUIDs;
 @property(readonly, copy, nonatomic) NSIndexPath *initialIndexPath; // @synthesize initialIndexPath=_initialIndexPath;
 @property(nonatomic) __weak id <PUAssetExplorerReviewScreenViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_presentConfidentialityAlertWithConfirmAction:(CDUnknownBlockType)arg1 abortAction:(CDUnknownBlockType)arg2;
 - (void)_performCompletionActionSteps:(unsigned long long)arg1;
 - (void)_performCompletionAction:(unsigned long long)arg1;
@@ -72,12 +80,18 @@
 - (void)funEffectsViewController:(id)arg1 didSaveAsset:(id)arg2 withCompletion:(unsigned long long)arg3;
 - (void)photoMarkupController:(id)arg1 didFinishWithSavedAsset:(id)arg2;
 - (void)photoEditController:(id)arg1 didFinishEditingSessionForAsset:(id)arg2 completed:(_Bool)arg3;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)reviewScreenBarsModelForAssetExplorerReviewScreenActionManager:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSend:(id)arg1;
 - (void)assetExplorerReviewScreenActionManager:(id)arg1 didPressFunEffectsForAsset:(id)arg2;
 - (void)assetExplorerReviewScreenActionManager:(id)arg1 didToggleLivePhoto:(id)arg2;
 - (void)_handleProgressControllerCanceled:(id)arg1;
 - (void)_handleCompletionAction:(unsigned long long)arg1;
+- (id)_titleForSelectionCount:(long long)arg1;
+- (void)_handleSelectionChanged;
+- (void)assetExplorerReviewScreenActionManagerDidPressFileSize:(id)arg1;
+- (void)assetExplorerReviewScreenActionManagerDidPressDeselectAll:(id)arg1;
+- (void)assetExplorerReviewScreenActionManagerDidPressSelectAll:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDone:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressRetake:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressCancel:(id)arg1;
@@ -106,8 +120,10 @@
 - (void)loadView;
 @property(readonly, nonatomic) PUMediaProvider *mediaProvider;
 @property(readonly, nonatomic) PUAssetsDataSourceManager *dataSourceManager;
-- (id)initWithDataSourceManager:(id)arg1 mediaProvider:(id)arg2 reviewAssetProvider:(id)arg3 initialIndexPath:(id)arg4 initialSelectedAssetUUIDs:(id)arg5 initialDisabledLivePhotoAssetUUIDs:(id)arg6 sourceType:(unsigned long long)arg7 reviewBarsModel:(id)arg8 options:(unsigned long long)arg9;
+- (id)initWithDataSourceManager:(id)arg1 mediaProvider:(id)arg2 reviewAssetProvider:(id)arg3 initialIndexPath:(id)arg4 initialSelectedAssetUUIDs:(id)arg5 initialDisabledLivePhotoAssetUUIDs:(id)arg6 selectionCountLimit:(id)arg7 sourceType:(unsigned long long)arg8 lowMemoryMode:(_Bool)arg9 reviewBarsModel:(id)arg10 resizeTaskDescriptorViewModel:(id)arg11 options:(unsigned long long)arg12;
+- (id)initWithDataSourceManager:(id)arg1 mediaProvider:(id)arg2 reviewAssetProvider:(id)arg3 initialIndexPath:(id)arg4 initialSelectedAssetUUIDs:(id)arg5 initialDisabledLivePhotoAssetUUIDs:(id)arg6 selectionCountLimit:(id)arg7 sourceType:(unsigned long long)arg8 lowMemoryMode:(_Bool)arg9 options:(unsigned long long)arg10;
 - (id)initWithDataSourceManager:(id)arg1 mediaProvider:(id)arg2 reviewAssetProvider:(id)arg3 initialIndexPath:(id)arg4 initialSelectedAssetUUIDs:(id)arg5 initialDisabledLivePhotoAssetUUIDs:(id)arg6 sourceType:(unsigned long long)arg7;
+- (id)initWithDataSourceManager:(id)arg1 mediaProvider:(id)arg2 reviewAssetProvider:(id)arg3 initialIndexPath:(id)arg4 initialSelectedAssetUUIDs:(id)arg5 initialDisabledLivePhotoAssetUUIDs:(id)arg6 sourceType:(unsigned long long)arg7 reviewBarsModel:(id)arg8 options:(unsigned long long)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

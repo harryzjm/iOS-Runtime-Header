@@ -6,33 +6,31 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaSpeechTranscription-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaSpeechTranscription : PBCodable <SISchemaSpeechTranscription, NSSecureCoding>
+@interface SISchemaSpeechTranscription : PBCodable
 {
-    int _speechTranscriptionType;
     NSString *_aceID;
+    int _speechTranscriptionType;
+    struct {
+        unsigned int speechTranscriptionType:1;
+    } _has;
+    _Bool _hasAceID;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasAceID; // @synthesize hasAceID=_hasAceID;
 @property(nonatomic) int speechTranscriptionType; // @synthesize speechTranscriptionType=_speechTranscriptionType;
 @property(copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+@property(nonatomic) _Bool hasSpeechTranscriptionType;
 
 @end
 

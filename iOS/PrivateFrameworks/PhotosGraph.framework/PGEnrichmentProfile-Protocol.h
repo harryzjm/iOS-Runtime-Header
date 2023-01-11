@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PGCurationCriteria, PGCurationOptions, PGDejunkerDeduperOptions, PGHighlightTailorContext, PGTitleTuple, PHAsset;
+@class NSArray, NSDictionary, NSString, PGCurationCriteria, PGCurationOptions, PGDejunkerDeduperOptions, PGHighlightTailorContext, PGMoodGenerationContext, PGTitleTuple, PHAsset;
 @protocol PGHighlightModel;
 
 @protocol PGEnrichmentProfile <NSObject>
@@ -22,7 +22,7 @@
 - (PHAsset *)keyAssetWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
 - (NSDictionary *)momentTitleByMomentUUIDWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
 - (PGTitleTuple *)titleWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 curatedAssets:(NSArray *)arg2 keyAsset:(PHAsset *)arg3 createVerboseTitle:(_Bool)arg4;
-- (unsigned long long)moodWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
+- (unsigned long long)moodWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 moodGenerationContext:(PGMoodGenerationContext *)arg2;
 - (double)promotionScoreWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
 - (PGHighlightTailorContext *)highlightTailorContextForHighlight:(id <PGHighlightModel>)arg1;
 - (_Bool)canEnrichHighlight:(id <PGHighlightModel>)arg1 withOptions:(unsigned long long)arg2;

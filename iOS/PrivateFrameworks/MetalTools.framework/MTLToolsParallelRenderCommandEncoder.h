@@ -6,15 +6,13 @@
 
 #import <MetalTools/MTLParallelRenderCommandEncoder-Protocol.h>
 
-@class MTLToolsPointerArray, NSString;
+@class NSString;
 @protocol MTLDevice;
 
 @interface MTLToolsParallelRenderCommandEncoder <MTLParallelRenderCommandEncoder>
 {
-    MTLToolsPointerArray *_renderCommandEncoders;
 }
 
-@property(readonly, nonatomic) MTLToolsPointerArray *renderCommandEncoders; // @synthesize renderCommandEncoders=_renderCommandEncoders;
 - (void)setStencilStoreActionOptions:(unsigned long long)arg1;
 - (void)setDepthStoreActionOptions:(unsigned long long)arg1;
 - (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -24,9 +22,6 @@
 - (id)renderCommandEncoder;
 - (_Bool)isMemorylessRender;
 - (void)endEncoding;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

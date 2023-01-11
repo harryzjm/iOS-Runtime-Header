@@ -19,6 +19,7 @@
     NSData *_data;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) _Bool valid; // @synthesize valid=_valid;
 @property(nonatomic) unsigned short checksum; // @synthesize checksum=_checksum;
@@ -26,7 +27,6 @@
 @property(nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property(nonatomic) unsigned char packetType; // @synthesize packetType=_packetType;
 @property(nonatomic) unsigned char version; // @synthesize version=_version;
-- (void)dealloc;
 - (id)message;
 - (id)initWithMessage:(id)arg1;
 - (id)init;

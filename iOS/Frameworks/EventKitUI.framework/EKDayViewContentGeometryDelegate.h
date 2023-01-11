@@ -18,10 +18,11 @@
     struct CGRect _bounds;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(nonatomic) __weak EKDayViewContent *dayViewContent; // @synthesize dayViewContent=_dayViewContent;
-- (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (_Bool)shouldReverseLayoutDirection;
 @property(readonly, nonatomic) struct CGRect displayedRect;
 @property(readonly, nonatomic) _Bool originIsUpperLeft;
@@ -33,7 +34,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

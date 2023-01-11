@@ -15,6 +15,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (struct CGPoint)accessibilityActivationPoint;
+- (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 
 @end

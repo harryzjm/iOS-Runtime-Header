@@ -16,9 +16,10 @@
 {
     struct {
         unsigned int emergencyType:1;
+        unsigned int suggested:1;
         unsigned int type:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
+    _Bool _suggested;
     int _emergencyType;
     int _type;
     NSString *_label;
@@ -26,12 +27,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *value; // @synthesize value=_value;
 @property(nonatomic) int type; // @synthesize type=_type;
+@property(nonatomic) _Bool suggested; // @synthesize suggested=_suggested;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(nonatomic) int emergencyType; // @synthesize emergencyType=_emergencyType;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -44,6 +45,7 @@
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
+@property(nonatomic) _Bool hasSuggested;
 @property(readonly, nonatomic) _Bool hasLabel;
 - (int)StringAsEmergencyType:(id)arg1;
 - (id)emergencyTypeAsString:(int)arg1;

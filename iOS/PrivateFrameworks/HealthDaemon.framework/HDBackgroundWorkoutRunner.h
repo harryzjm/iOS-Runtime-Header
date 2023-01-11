@@ -21,8 +21,8 @@
 
 - (void).cxx_destruct;
 - (void)_queue_releaseCLInUseAssertion:(id)arg1 forClient:(id)arg2;
-- (void)_queue_releaseBKSAssertion:(id)arg1 forClient:(id)arg2;
 - (id)_queue_acquireCLInUseAssertionForClient:(id)arg1;
+- (void)_queue_releaseBKSAssertion:(id)arg1 forClient:(id)arg2;
 - (id)_queue_acquireBKSAssertionForClient:(id)arg1;
 - (_Bool)_queue_hasBackgroundPermissionForBundleIdentifier:(id)arg1 errorOut:(id *)arg2;
 - (void)processDidEnterForeground:(id)arg1;

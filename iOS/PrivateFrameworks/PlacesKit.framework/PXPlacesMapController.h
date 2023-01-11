@@ -10,7 +10,7 @@
 #import <PlacesKit/MKMapViewDelegate-Protocol.h>
 #import <PlacesKit/PXPlacesGeotaggedItemDataSourceDelegate-Protocol.h>
 
-@class CLLocationManager, NSMapTable, NSMutableDictionary, NSSet, NSString, PXPlacesImageCache, PXPlacesMapPipelineExecutionContext, PXPlacesMapView;
+@class CLLocationManager, NSMapTable, NSMutableDictionary, NSOrderedSet, NSSet, NSString, PXPlacesImageCache, PXPlacesMapPipelineExecutionContext, PXPlacesMapView;
 @protocol MKAnnotation, OS_dispatch_queue, OS_dispatch_source, PXPlacesMapControllerChangeDelegate, PXPlacesMapControllerFocusDelegate, PXPlacesMapControllerLoadingStateDelegate, PXPlacesMapControllerSelectionDelegate;
 
 @interface PXPlacesMapController : NSObject <MKMapViewDelegate, CLLocationManagerDelegate, PXPlacesGeotaggedItemDataSourceDelegate>
@@ -43,6 +43,7 @@
 }
 
 + (void)launchMapsAtCoordinate:(struct CLLocationCoordinate2D)arg1 withTitle:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *showDebugMapRectColors; // @synthesize showDebugMapRectColors=_showDebugMapRectColors;
 @property(retain, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain) PXPlacesImageCache *cache; // @synthesize cache=_cache;
@@ -62,7 +63,6 @@
 @property __weak id <PXPlacesMapControllerFocusDelegate> focusDelegate; // @synthesize focusDelegate=_focusDelegate;
 @property __weak id <PXPlacesMapControllerChangeDelegate> changeDelegate; // @synthesize changeDelegate=_changeDelegate;
 @property __weak id <PXPlacesMapControllerSelectionDelegate> selectionDelegate; // @synthesize selectionDelegate=_selectionDelegate;
-- (void).cxx_destruct;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)mapViewWillStartLocatingUser:(id)arg1;
 - (void)mapContainerViewDidDisappear;
@@ -76,6 +76,7 @@
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(_Bool)arg2;
 - (void)dataSource:(id)arg1 didChange:(id)arg2;
+@property(readonly, nonatomic) NSOrderedSet *currentSelectedGeotaggables;
 - (double)_zPositionForAnnotationIndex:(long long)arg1;
 - (void)_executeUpdatePlanResults:(id)arg1;
 - (double)_fadeOutAnimationDuration;

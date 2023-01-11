@@ -23,6 +23,7 @@
     NSArray *_resultTrendingHeadlines;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *resultTrendingHeadlines; // @synthesize resultTrendingHeadlines=_resultTrendingHeadlines;
 @property(retain, nonatomic) NSArray *resultCurrentFeatureHeadlines; // @synthesize resultCurrentFeatureHeadlines=_resultCurrentFeatureHeadlines;
 @property(retain, nonatomic) NSArray *resultCurrentIssues; // @synthesize resultCurrentIssues=_resultCurrentIssues;
@@ -35,7 +36,6 @@
 @property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property(retain, nonatomic) FCCachePolicy *cachedPolicy; // @synthesize cachedPolicy=_cachedPolicy;
-- (void).cxx_destruct;
 - (id)_filterInaccessibleIssues:(id)arg1;
 - (id)_filterInaccessibleHeadlines:(id)arg1;
 - (void)_fetchCurrentFeatureHeadlinesWithCompletion:(CDUnknownBlockType)arg1;

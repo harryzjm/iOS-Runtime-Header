@@ -9,15 +9,16 @@
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 #import <HomeUI/UICollectionViewDataSource-Protocol.h>
 
-@class HFCameraPlaybackEngine, HMCameraClip, HUClipScrubberSelectionView, HUClipScrubberTimeController, NSArray, NSDate, NSString, UICollectionView;
+@class HFCameraPlaybackEngine, HUClipScrubberSelectionView, HUClipScrubberTimeController, NSArray, NSDate, NSMutableArray, NSString, UICollectionView;
+@protocol HFCameraRecordingEvent;
 
 @interface HUClipScrubberDataSource : NSObject <HFCameraPlaybackEngineObserver, UICollectionViewDataSource>
 {
     _Bool _editing;
     _Bool _selectionViewHidden;
-    NSArray *_clips;
+    NSArray *_events;
     HUClipScrubberTimeController *_timeController;
-    HMCameraClip *_currentClip;
+    id <HFCameraRecordingEvent> _currentEvent;
     UICollectionView *_clipCollectionView;
     unsigned long long _currentTimelineState;
     unsigned long long _displayMode;
@@ -25,14 +26,19 @@
     HFCameraPlaybackEngine *_playbackEngine;
     unsigned long long _mostRecentClipIndex;
     long long _lastSelectedClipIndex;
+    double _posterFrameWidth;
     double _startingPinchDeltaX;
     HUClipScrubberSelectionView *_selectionView;
     double _lastGestureScale;
+    NSMutableArray *_clipEvents;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *clipEvents; // @synthesize clipEvents=_clipEvents;
 @property(nonatomic) double lastGestureScale; // @synthesize lastGestureScale=_lastGestureScale;
 @property(retain, nonatomic) HUClipScrubberSelectionView *selectionView; // @synthesize selectionView=_selectionView;
 @property(nonatomic) double startingPinchDeltaX; // @synthesize startingPinchDeltaX=_startingPinchDeltaX;
+@property(nonatomic) double posterFrameWidth; // @synthesize posterFrameWidth=_posterFrameWidth;
 @property(nonatomic) _Bool selectionViewHidden; // @synthesize selectionViewHidden=_selectionViewHidden;
 @property(nonatomic) long long lastSelectedClipIndex; // @synthesize lastSelectedClipIndex=_lastSelectedClipIndex;
 @property(readonly, nonatomic) unsigned long long mostRecentClipIndex; // @synthesize mostRecentClipIndex=_mostRecentClipIndex;
@@ -42,31 +48,43 @@
 @property(nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
 @property(nonatomic) unsigned long long currentTimelineState; // @synthesize currentTimelineState=_currentTimelineState;
 @property(nonatomic) __weak UICollectionView *clipCollectionView; // @synthesize clipCollectionView=_clipCollectionView;
-@property(nonatomic) __weak HMCameraClip *currentClip; // @synthesize currentClip=_currentClip;
+@property(nonatomic) __weak id <HFCameraRecordingEvent> currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(retain, nonatomic) HUClipScrubberTimeController *timeController; // @synthesize timeController=_timeController;
-@property(readonly, nonatomic) NSArray *clips; // @synthesize clips=_clips;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *events; // @synthesize events=_events;
 - (void)updateSelectionViewIfNeeded;
 - (void)updateMostRecentClipIndex;
 - (id)_indexPathsForClip:(id)arg1;
-- (void)playbackEngineDidUpdateClips:(id)arg1;
+- (void)playbackEngine:(id)arg1 didRemoveEvents:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
+- (void)_updateClipCollectionView;
 - (double)scrubbingResolutionForClip:(id)arg1;
 - (id)selectedDateFromCell:(id)arg1 atCurrentOffset:(double)arg2;
 - (id)startDateFromCell:(id)arg1;
 - (id)selectedDateFromCell:(id)arg1 atOffset:(double)arg2;
-- (_Bool)isClipLocatedAtIndexPath:(id)arg1;
-- (double)offsetForClip:(id)arg1;
+- (id)indexPathForEvent:(id)arg1;
+- (id)previousEventForSection:(unsigned long long)arg1;
+- (id)eventForSection:(unsigned long long)arg1;
+- (_Bool)isValidRecordingEventAtIndexPath:(id)arg1;
+- (_Bool)isValidEventAtIndexPath:(id)arg1;
+- (_Bool)_doesReachabilitySectionPrecedeSection:(unsigned long long)arg1;
+- (double)offsetForEvent:(id)arg1;
 - (void)changeTimeScaleForPinchGesture:(id)arg1;
 - (_Bool)_isZoomingIn:(double)arg1;
 - (void)beginTimeScaleTrackingForPinchGesture:(id)arg1;
+- (id)_spacerCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
+- (id)_reachabilitySectionCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
+- (id)_recordingSectionCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (_Bool)isSpacerAtIndexPath:(id)arg1;
 - (void)updateToClipAtIndexPath:(id)arg1;
 - (void)toggleSelectionStateForItemAtIndexPath:(id)arg1;
-- (void)reloadClips:(id)arg1;
-- (id)initWithClips:(id)arg1;
+- (void)reloadClipEvents;
+- (void)reloadEvents:(id)arg1;
+- (id)initWithPlaybackEngine:(id)arg1;
+@property(readonly, nonatomic) NSArray *currentEvents;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

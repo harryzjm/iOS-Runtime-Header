@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol TMLAttributedStringJSExports <JSExport>
-@property(readonly, nonatomic) NSString *string;
+@property(readonly, copy, nonatomic) NSString *string;
 @end
 

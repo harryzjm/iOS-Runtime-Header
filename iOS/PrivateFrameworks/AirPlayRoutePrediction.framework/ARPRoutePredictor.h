@@ -11,6 +11,7 @@
 
 @interface ARPRoutePredictor : NSObject
 {
+    _Bool _hasLoadedMicroLocation;
     int _token;
     NSSet *_knownOutputDeviceIDs;
     CDUnknownBlockType _longFormVideoFilter;
@@ -26,7 +27,9 @@
 + (id)routePredictor;
 + (double)defaultMicroLocationSimilarityThreshold;
 + (id)defaultFile;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double microLocationSimilarityThreshold; // @synthesize microLocationSimilarityThreshold=_microLocationSimilarityThreshold;
+@property _Bool hasLoadedMicroLocation; // @synthesize hasLoadedMicroLocation=_hasLoadedMicroLocation;
 @property double routingSessionTimeout; // @synthesize routingSessionTimeout=_routingSessionTimeout;
 @property(retain) NSArray *sessions; // @synthesize sessions=_sessions;
 @property(retain, nonatomic) _DKEvent *latestMicroLocationEvent; // @synthesize latestMicroLocationEvent=_latestMicroLocationEvent;
@@ -36,7 +39,6 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) CDUnknownBlockType longFormVideoFilter; // @synthesize longFormVideoFilter=_longFormVideoFilter;
 @property(retain) NSSet *knownOutputDeviceIDs; // @synthesize knownOutputDeviceIDs=_knownOutputDeviceIDs;
-- (void).cxx_destruct;
 - (id)description;
 - (id)predictionsForCurrentContext;
 - (id)predictionsWithCurrentContext:(id *)arg1;

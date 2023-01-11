@@ -8,14 +8,19 @@
 
 @interface BMBasketExtractor : NSObject
 {
+    _Bool _shouldStop;
     double _samplingInterval;
 }
 
-@property double samplingInterval; // @synthesize samplingInterval=_samplingInterval;
+@property _Bool shouldStop; // @synthesize shouldStop=_shouldStop;
+@property(readonly, nonatomic) double samplingInterval; // @synthesize samplingInterval=_samplingInterval;
+- (id)extractDatedBasketsFromEvents:(id)arg1 itemTypes:(id)arg2;
+- (id)extractBasketsFromEvents:(id)arg1 itemTypes:(id)arg2;
 - (id)extractBasketsFromEvents:(id)arg1 withTemporalFeatures:(_Bool)arg2;
 - (id)extractTemporalItemsFromDate:(id)arg1;
 - (id)slotForHourOfDay:(id)arg1 slotDuration:(id)arg2;
 - (id)slotForHourOfDay:(id)arg1;
+- (void)terminateEarly;
 - (id)initWithSamplingInterval:(double)arg1;
 
 @end

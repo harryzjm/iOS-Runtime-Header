@@ -13,11 +13,13 @@
 }
 
 + (id)decoratorWithOutlineColor:(id)arg1 outlineWidths:(struct UIEdgeInsets)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct UIEdgeInsets outlineWidths; // @synthesize outlineWidths=_outlineWidths;
 @property(readonly, copy, nonatomic) UIColor *outlineColor; // @synthesize outlineColor=_outlineColor;
-- (void).cxx_destruct;
 - (void)drawInContext:(id)arg1 imageRect:(struct CGRect)arg2;
 - (id)decoratorIdentifier;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithOutlineColor:(id)arg1 outlineWidths:(struct UIEdgeInsets)arg2;
 
 @end

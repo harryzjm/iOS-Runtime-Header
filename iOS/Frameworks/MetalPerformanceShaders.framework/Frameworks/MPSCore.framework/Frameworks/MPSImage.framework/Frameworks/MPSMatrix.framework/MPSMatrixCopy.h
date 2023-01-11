@@ -14,7 +14,7 @@
     unsigned long long _copyColumns;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(readonly, nonatomic) _Bool destinationsAreTransposed; // @synthesize destinationsAreTransposed=_destinationsAreTransposed;
 @property(readonly, nonatomic) _Bool sourcesAreTransposed; // @synthesize sourcesAreTransposed=_sourcesAreTransposed;
 @property(readonly, nonatomic) unsigned long long copyColumns; // @synthesize copyColumns=_copyColumns;

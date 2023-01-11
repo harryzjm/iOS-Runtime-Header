@@ -14,14 +14,13 @@
     SXTextLayouter *_textLayouter;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SXTextLayouter *textLayouter; // @synthesize textLayouter=_textLayouter;
 @property(retain, nonatomic) SXTextResizer *textResizer; // @synthesize textResizer=_textResizer;
-- (void).cxx_destruct;
 - (id)textStyleForIdentifier:(id)arg1;
 - (id)contentSizeCategoryForTextSource:(id)arg1;
 - (id)textRulesForTextSource:(id)arg1;
 - (id)additionsForTextSource:(id)arg1;
-- (id)linkStyleForTextSource:(id)arg1;
 - (id)inlineTextStylesForTextSource:(id)arg1;
 - (id)defaultComponentTextStylesForTextSource:(id)arg1;
 - (id)defaultComponentTextStyleForTextSource:(id)arg1;

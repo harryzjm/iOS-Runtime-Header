@@ -36,6 +36,16 @@ __attribute__((visibility("hidden")))
 - (void)setTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFunctionPointers:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setFunctionPointer:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
 @property(readonly) unsigned long long alignment;
 @property(readonly) unsigned long long encodedLength;

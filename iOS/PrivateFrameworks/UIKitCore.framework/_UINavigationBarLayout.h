@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     _Bool _hidesSearchBarWhenScrolling;
     _UINavigationBarModernPromptView *_promptView;
     _UINavigationBarContentView *_contentView;
+    UIView *_animationContentClippingView;
     _UINavigationBarLargeTitleView *_largeTitleView;
     _UINavigationBarContentViewLayout *_contentViewLayout;
     _UINavigationBarLargeTitleViewLayout *_largeTitleViewLayout;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
     struct NSDirectionalEdgeInsets _largeTitleViewInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize layoutSize; // @synthesize layoutSize=_layoutSize;
 @property(nonatomic) long long apiVersion; // @synthesize apiVersion=_apiVersion;
 @property(readonly, nonatomic) double computedBackgroundViewAlpha; // @synthesize computedBackgroundViewAlpha=_computedBackgroundViewAlpha;
@@ -81,15 +83,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UINavigationBarContentViewLayout *contentViewLayout; // @synthesize contentViewLayout=_contentViewLayout;
 @property(nonatomic) struct NSDirectionalEdgeInsets largeTitleViewInsets; // @synthesize largeTitleViewInsets=_largeTitleViewInsets;
 @property(retain, nonatomic) _UINavigationBarLargeTitleView *largeTitleView; // @synthesize largeTitleView=_largeTitleView;
+@property(retain, nonatomic) UIView *animationContentClippingView; // @synthesize animationContentClippingView=_animationContentClippingView;
 @property(retain, nonatomic) _UINavigationBarContentView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) _UINavigationBarModernPromptView *promptView; // @synthesize promptView=_promptView;
-- (void).cxx_destruct;
 - (void)finalizeStateFromTransition:(id)arg1;
 - (void)ensureBackButtonTruncationOccursWithContext:(id)arg1;
 - (void)recordToStateForTransition:(id)arg1;
 - (void)prepareToRecordToState:(id)arg1;
 - (void)recordFromStateForTransition:(id)arg1;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic, getter=isVariableHeight) _Bool variableHeight;
 @property(readonly, nonatomic) CDStruct_39925896 layoutHeights;
 @property(readonly, copy, nonatomic) NSArray *restingHeights;
 - (id)layoutForMeasuringWidth:(double)arg1;

@@ -18,9 +18,9 @@
 }
 
 + (id)printerPickerControllerWithInitiallySelectedPrinter:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <UIPrinterPickerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIPrinter *selectedPrinter; // @synthesize selectedPrinter=_selectedPrinter;
-- (void).cxx_destruct;
 - (void)dismissAnimated:(_Bool)arg1;
 - (_Bool)_shouldShowPrinter:(id)arg1;
 - (_Bool)_delegateFiltersPrinters;
@@ -31,8 +31,8 @@
 - (_Bool)presentFromBarButtonItem:(id)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)presentFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)presentAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)_init;
-- (id)init;
+- (_Bool)presentAnimated:(_Bool)arg1 hostingScene:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithInitiallySelectedPrinter:(id)arg1;
 
 @end
 

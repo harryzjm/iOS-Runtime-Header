@@ -17,11 +17,11 @@
     id <_SiriUICardLoaderDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
 @property(nonatomic) __weak id <_SiriUICardLoaderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)loadCard:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_unregisterWithSearchFoundaton;
+- (void)_unregisterWithSearchFoundation;
 - (void)_registerWithSearchFoundation;
 
 // Remaining properties

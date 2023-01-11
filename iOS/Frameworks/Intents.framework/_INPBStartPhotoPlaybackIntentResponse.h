@@ -15,18 +15,16 @@
 @interface _INPBStartPhotoPlaybackIntentResponse : PBCodable <_INPBStartPhotoPlaybackIntentResponse, NSSecureCoding, NSCopying>
 {
     CDStruct_a60b8694 _has;
-    _Bool __encodeLegacyGloryData;
     int _searchResultsCount;
     NSString *_albumName;
     _INPBLocation *_locationCreated;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int searchResultsCount; // @synthesize searchResultsCount=_searchResultsCount;
 @property(retain, nonatomic) _INPBLocation *locationCreated; // @synthesize locationCreated=_locationCreated;
 @property(copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

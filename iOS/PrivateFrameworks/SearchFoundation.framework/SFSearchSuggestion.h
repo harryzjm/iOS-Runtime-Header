@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSearchSuggestion-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
 
 @interface SFSearchSuggestion : NSObject <SFSearchSuggestion, NSSecureCoding, NSCopying>
 {
@@ -31,9 +31,14 @@
     NSString *_fbr;
     NSString *_scopedSearchApplicationBundleIdentifier;
     NSString *_utteranceText;
+    NSString *_detailText;
+    NSMutableDictionary *_serverFeatures;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSMutableDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
+@property(copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property(copy, nonatomic) NSString *utteranceText; // @synthesize utteranceText=_utteranceText;
 @property(copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier; // @synthesize scopedSearchApplicationBundleIdentifier=_scopedSearchApplicationBundleIdentifier;
 @property(copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
@@ -46,7 +51,8 @@
 @property(copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property(copy, nonatomic) NSString *suggestion; // @synthesize suggestion=_suggestion;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -62,7 +68,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

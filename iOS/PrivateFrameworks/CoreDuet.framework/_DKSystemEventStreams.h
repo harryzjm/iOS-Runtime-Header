@@ -10,6 +10,11 @@
 {
 }
 
++ (id)familyPredictionStream;
++ (id)peopleSuggesterOutputForSiriNLStream;
++ (id)behavioralRuleFeaturesStream;
++ (id)appDirectoryInteractionStream;
++ (id)wifiConnectionStream;
 + (id)appLaunchFeedbackStream;
 + (id)remoteDeviceInBedTimesStream;
 + (id)pairedDeviceForecastStream;
@@ -17,6 +22,7 @@
 + (id)tombstoneStream;
 + (id)safariHistoryStream;
 + (id)mapsShareEtaFeedbackStream;
++ (id)shareSheetSuggestLessFeedbackStream;
 + (id)shareSheetFeedbackStream;
 + (id)searchFeedbackStream;
 + (id)homeKitAppViewStream;
@@ -31,6 +37,7 @@
 + (id)carPlayIsConnectedStream;
 + (id)userIsFirstBacklightOnAfterWakeup;
 + (id)calendarEventStream;
++ (id)locationCoordinatesStream;
 + (id)microLocationVisitStream;
 + (id)locationVisitStream;
 + (id)motionStream;
@@ -42,6 +49,7 @@
 + (id)diskSubsystemAccessStream;
 + (id)discoverabilityUsageStream;
 + (id)discoverabilitySignalsStream;
++ (id)siriIntentEventStream;
 + (id)siriServiceStream;
 + (id)airplayPredictionStream;
 + (id)timerStream;
@@ -52,6 +60,7 @@
 + (id)deviceBatteryPercentageStream;
 + (id)deviceIsPluggedInStream;
 + (id)keybagIsLockedStream;
++ (id)deviceIsLockedImputedStream;
 + (id)deviceIsLockedStream;
 + (id)nextEventForTopOffProtectionStream;
 + (id)airplaneModeStream;
@@ -59,6 +68,7 @@
 + (id)deviceActivityLevelFeedbackStream;
 + (id)standbyTimerStream;
 + (id)deviceActivityLevelStream;
++ (id)focusModeStream;
 + (id)notificationUsageStream;
 + (id)widgetsViewedStream;
 + (id)appViewedInDockStream;
@@ -67,6 +77,8 @@
 + (id)appIntentsStream;
 + (id)appActivityStream;
 + (id)appInstallStream;
++ (id)appMediaUsageStream;
++ (id)appClipUsageStream;
 + (id)appWebUsageStream;
 + (id)appUsageStream;
 + (id)appInFocusStream;

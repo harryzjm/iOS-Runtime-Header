@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSXPCConnection;
+
 __attribute__((visibility("hidden")))
 @interface ISIconCacheClient
 {
     unsigned long long _sandboxExtensionHandle;
+    NSXPCConnection *_connection;
 }
 
 + (id)serviceName;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property unsigned long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
 - (void)invalidateCacheEntriesForBundleIdentifier:(id)arg1;
 - (id)iconBitmapDataWithResourceLocator:(id)arg1 variant:(int)arg2 options:(int)arg3;
 - (void)_fetchCacheURLAndSalt;
-- (id)connection;
 - (id)init;
 
 @end

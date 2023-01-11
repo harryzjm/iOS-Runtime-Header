@@ -15,14 +15,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) AFPreferences *afPreferences; // @synthesize afPreferences=_afPreferences;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AFPreferences *afPreferences; // @synthesize afPreferences=_afPreferences;
+- (_Bool)isSmartLanguageSelectionEnabled;
 - (id)dictationSLSEnabledLanguages;
 - (void)afPreferencesChanged:(id)arg1;
 - (id)languageCode;
 - (id)manualEndpointingThreshold;
 - (_Bool)ignoreServerManualEndpointingThreshold;
 - (_Bool)suppressDictationOptIn;
+- (_Bool)suppressDataSharingOptIn;
+- (long long)dataSharingOptInStatus;
 - (_Bool)dictationIsEnabled;
 - (id)initSingleton;
 

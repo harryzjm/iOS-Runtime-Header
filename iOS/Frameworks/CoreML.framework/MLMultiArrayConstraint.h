@@ -22,16 +22,16 @@
 + (_Bool)supportsSecureCoding;
 + (id)constraintWithShape:(id)arg1 dataType:(long long)arg2;
 + (id)constraintWithShape:(id)arg1 dataType:(long long)arg2 shapeConstraint:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MLMultiArrayShapeConstraint *shapeConstraint; // @synthesize shapeConstraint=_shapeConstraint;
 @property(readonly, nonatomic) long long dataType; // @synthesize dataType=_dataType;
 @property(readonly, nonatomic) NSArray *shape; // @synthesize shape=_shape;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isAllowedValue:(id)arg1 error:(id *)arg2;
-- (_Bool)isAllowedValue:(id)arg1 isNeuralNetworkInput:(_Bool)arg2 usingRank5Mapping:(_Bool)arg3 featureName:(id)arg4 error:(id *)arg5;
+- (_Bool)isAllowedValue:(id)arg1 isNeuralNetworkInputOrOutput:(_Bool)arg2 usingRank5Mapping:(_Bool)arg3 featureName:(id)arg4 error:(id *)arg5;
 - (_Bool)isAllowedDataType:(long long)arg1 error:(id *)arg2;
 - (_Bool)isAllowedShape:(id)arg1 error:(id *)arg2;
 - (id)initWithShape:(id)arg1 dataType:(long long)arg2 shapeConstraint:(id)arg3;

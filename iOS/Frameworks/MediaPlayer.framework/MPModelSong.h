@@ -24,6 +24,7 @@
 + (id)__classicalWork_KEY;
 + (id)__hasCloudSyncSource_KEY;
 + (id)__libraryAddEligible_KEY;
++ (id)__lastDevicePlaybackDate_KEY;
 + (id)__libraryAddedDate_KEY;
 + (id)__libraryAdded_KEY;
 + (id)__keepLocalManagedStatus_KEY;
@@ -37,6 +38,8 @@
 + (id)__hasVideo_KEY;
 + (id)__artistUploadedContent_KEY;
 + (id)__explicitSong_KEY;
++ (id)__skipCount_KEY;
++ (id)__playCount_KEY;
 + (id)__discNumber_KEY;
 + (id)__trackNumber_KEY;
 + (id)__trackCount_KEY;
@@ -57,8 +60,6 @@
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
-+ (_Bool)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
 - (id)artworkCatalog;
 - (id)humanDescription;
 - (id)mediaItemPropertyValues;
@@ -93,13 +94,16 @@
 @property(retain, nonatomic) MPModelHomeSharingAsset *homeSharingAsset; // @dynamic homeSharingAsset;
 @property(nonatomic) long long keepLocalEnableState; // @dynamic keepLocalEnableState;
 @property(nonatomic) long long keepLocalManagedStatus; // @dynamic keepLocalManagedStatus;
+@property(readonly, copy, nonatomic) NSDate *lastDevicePlaybackDate; // @dynamic lastDevicePlaybackDate;
 @property(nonatomic, getter=isLibraryAddEligible) _Bool libraryAddEligible; // @dynamic libraryAddEligible;
 @property(nonatomic, getter=isLibraryAdded) _Bool libraryAdded; // @dynamic libraryAdded;
 @property(copy, nonatomic) NSDate *libraryAddedDate; // @dynamic libraryAddedDate;
 @property(retain, nonatomic) MPModelFileAsset *localFileAsset; // @dynamic localFileAsset;
 @property(retain, nonatomic) MPModelLyrics *lyrics; // @dynamic lyrics;
+@property(nonatomic) long long playCount; // @dynamic playCount;
 @property(retain, nonatomic) MPModelPlaybackPosition *playbackPosition; // @dynamic playbackPosition;
 @property(nonatomic) _Bool shouldShowComposer; // @dynamic shouldShowComposer;
+@property(nonatomic) long long skipCount; // @dynamic skipCount;
 @property(retain, nonatomic) MPModelStoreAsset *storeAsset; // @dynamic storeAsset;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(nonatomic) long long trackCount; // @dynamic trackCount;

@@ -25,10 +25,13 @@
 - (void)_setupModeChanged:(id)arg1;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (void)conformsToCSEventHandling;
 @property(readonly, nonatomic) long long scrollingStrategy;
 @property(readonly, nonatomic) long long proximityDetectionMode;
 @property(readonly, nonatomic) long long notificationBehavior;
 @property(readonly, nonatomic) unsigned long long restrictedCapabilities;
+- (void)conformsToCSExternalBehaviorProviding;
+- (void)conformsToCSBehaviorProviding;
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (void)dealloc;

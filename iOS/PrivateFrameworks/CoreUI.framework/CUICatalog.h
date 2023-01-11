@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSCache, NSMapTable, NSString;
+@class NSBundle, NSCache, NSDictionary, NSMapTable, NSString;
 
 @interface CUICatalog : NSObject
 {
@@ -17,6 +17,7 @@
     NSCache *_lookupCache;
     NSCache *_negativeCache;
     NSCache *_localObjectCache;
+    NSDictionary *_vibrantColorMatrixTints;
     unsigned short _preferredLocalization;
     unsigned int _purgeWhenFinished:1;
     unsigned int _fileHasDisplayGamutInKeySpace:2;
@@ -28,6 +29,7 @@
 + (id)bestMatchUsingImages:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 displayGamut:(unsigned long long)arg4 deviceSubtype:(unsigned long long)arg5 sizeClassHorizontal:(long long)arg6 sizeClassVertical:(long long)arg7;
 + (id)bestMatchUsingImages:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 sizeClassHorizontal:(long long)arg5 sizeClassVertical:(long long)arg6;
 + (id)bestMatchUsingImages:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4;
++ (id)bestMatchUsingObjects:(id)arg1 getAttributeValueUsing:(CDUnknownBlockType)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 displayGamut:(long long)arg6 deploymentTarget:(long long)arg7 layoutDirection:(long long)arg8 sizeClassHorizontal:(long long)arg9 sizeClassVertical:(long long)arg10 memoryClass:(long long)arg11 graphicsFeatureSetClass:(long long)arg12 graphicsFallBackOrder:(id)arg13 deviceSubtypeFallBackOrder:(id)arg14 platform:(long long)arg15;
 + (id)bestMatchUsingObjects:(id)arg1 getAttributeValueUsing:(CDUnknownBlockType)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 displayGamut:(long long)arg6 deploymentTarget:(long long)arg7 layoutDirection:(long long)arg8 sizeClassHorizontal:(long long)arg9 sizeClassVertical:(long long)arg10 memoryClass:(long long)arg11 graphicsFeatureSetClass:(long long)arg12 graphicsFallBackOrder:(id)arg13 deviceSubtypeFallBackOrder:(id)arg14;
 + (id)defaultUICatalogForBundle:(id)arg1;
 + (_Bool)isValidAssetStorageWithURL:(id)arg1;
@@ -40,6 +42,9 @@
 - (id)debugDescription;
 - (id)imageByStylingImage:(struct CGImage *)arg1 stylePresetName:(id)arg2 styleConfiguration:(id)arg3 foregroundColor:(struct CGColor *)arg4 scale:(double)arg5;
 - (CDStruct_3c058996)styledInsetsForStylePresetName:(id)arg1 styleConfiguration:(id)arg2 foregroundColor:(struct CGColor *)arg3 scale:(double)arg4;
+- (id)compositingFilterForStylePresetWithName:(id)arg1 styleConfiguration:(id)arg2 foregroundColor:(struct CGColor *)arg3;
+- (id)compositingFilterForStylePresetWithName:(id)arg1 styleConfiguration:(id)arg2;
+- (void)_vibrantColorMatrixBrightnessSaturationForColor:(struct CGColor *)arg1 saturation:(double *)arg2 brightness:(double *)arg3;
 - (int)blendModeForStylePresetWithName:(id)arg1 styleConfiguration:(id)arg2;
 - (struct CGColor *)equivalentForegroundColorForStylePresetWithName:(id)arg1 styleConfiguration:(id)arg2 baseForegroundColor:(struct CGColor *)arg3;
 - (struct CGColor *)equivalentForegroundColorForStylePresetWithName:(id)arg1 styleConfiguration:(id)arg2;
@@ -59,11 +64,9 @@
 - (id)renditionKeyForShapeEffectPresetWithStyleID:(unsigned long long)arg1 state:(long long)arg2 presentationState:(long long)arg3 value:(long long)arg4 resolution:(unsigned long long)arg5 dimension1:(unsigned long long)arg6;
 - (_Bool)canGetShapeEffectRenditionWithKey:(id)arg1;
 - (id)newShapeEffectPresetWithRenditionKey:(id)arg1;
-- (id)_private_resolvedRenditionKeyFromThemeRef:(unsigned long long)arg1 withBaseKey:(id)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 displayGamut:(long long)arg6 layoutDirection:(long long)arg7 sizeClassHorizontal:(long long)arg8 sizeClassVertical:(long long)arg9 memoryClass:(unsigned long long)arg10 graphicsClass:(unsigned long long)arg11 graphicsFallBackOrder:(id)arg12 deviceSubtypeFallBackOrder:(id)arg13 localizationIdentifier:(unsigned long long)arg14 adjustRenditionKeyWithBlock:(CDUnknownBlockType)arg15;
 - (id)_resolvedRenditionKeyFromThemeRef:(unsigned long long)arg1 withBaseKey:(id)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 displayGamut:(long long)arg6 layoutDirection:(long long)arg7 sizeClassHorizontal:(long long)arg8 sizeClassVertical:(long long)arg9 memoryClass:(unsigned long long)arg10 graphicsClass:(unsigned long long)arg11 graphicsFallBackOrder:(id)arg12 deviceSubtypeFallBackOrder:(id)arg13 adjustRenditionKeyWithBlock:(CDUnknownBlockType)arg14;
 - (id)_resolvedRenditionKeyForName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 displayGamut:(long long)arg5 layoutDirection:(long long)arg6 sizeClassHorizontal:(long long)arg7 sizeClassVertical:(long long)arg8 memoryClass:(unsigned long long)arg9 graphicsClass:(unsigned long long)arg10 graphicsFallBackOrder:(id)arg11 deviceSubtypeFallBackOrder:(id)arg12 withBaseKeySelector:(SEL)arg13 adjustRenditionKeyWithBlock:(CDUnknownBlockType)arg14;
 - (id)_nameForAppearanceIdentifier:(long long)arg1;
-- (long long)_appearanceIdentifierForName:(id)arg1;
 - (id)appearanceNames;
 - (id)_baseMultisizeImageSetKeyForName:(id)arg1;
 - (id)_defaultAssetRenditionKey:(id)arg1;
@@ -79,6 +82,7 @@
 - (id)_baseRecognitionGroupImageSetKeyForName:(id)arg1;
 - (id)modelWithName:(id)arg1;
 - (id)_modelWithName:(id)arg1;
+- (id)_baseModelForKeyForName:(id)arg1;
 - (id)colorWithName:(id)arg1 displayGamut:(long long)arg2;
 - (id)colorWithName:(id)arg1 displayGamut:(long long)arg2 appearanceName:(id)arg3;
 - (id)colorWithName:(id)arg1 displayGamut:(long long)arg2 deviceIdiom:(long long)arg3;
@@ -116,6 +120,7 @@
 - (struct CGPDFDocument *)pdfDocumentWithName:(id)arg1 appearanceName:(id)arg2;
 - (struct CGPDFDocument *)pdfDocumentWithName:(id)arg1;
 - (void)enumerateNamedLookupsUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)containsLookupForName:(id)arg1;
 - (id)imagesWithName:(id)arg1;
 - (id)allImageNames;
 - (id)namedVectorGlyphWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 layoutDirection:(long long)arg4 glyphSize:(long long)arg5 glyphWeight:(long long)arg6 glyphPointSize:(double)arg7 appearanceName:(id)arg8;
@@ -167,7 +172,6 @@
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (id)initWithName:(id)arg1 fromBundle:(id)arg2 error:(id *)arg3;
 - (void)_setPreferredLocalization:(id)arg1;
-- (void)_sharedSetup;
 - (id)initWithName:(id)arg1 fromBundle:(id)arg2;
 
 @end

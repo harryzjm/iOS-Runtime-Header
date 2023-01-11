@@ -7,24 +7,31 @@
 #import <objc/NSObject.h>
 
 #import <CoverSheet/DNDStateUpdateListener-Protocol.h>
+#import <CoverSheet/HKSPSleepStoreObserver-Protocol.h>
 
-@class BSTimer, DNDStateService, NSHashTable, NSString;
+@class BSTimer, DNDStateService, HKSPSleepSettings, HKSPSleepStore, NSHashTable, NSString;
 
-@interface CSDNDBedtimeController : NSObject <DNDStateUpdateListener>
+@interface CSDNDBedtimeController : NSObject <DNDStateUpdateListener, HKSPSleepStoreObserver>
 {
     DNDStateService *_stateService;
     NSHashTable *_observers;
     BSTimer *_greetingGracePeriodTimer;
     _Bool _deactivated;
+    HKSPSleepStore *_sleepStore;
+    HKSPSleepSettings *_sleepSettings;
     _Bool _active;
     _Bool _shouldShowGreeting;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldShowGreeting; // @synthesize shouldShowGreeting=_shouldShowGreeting;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
-- (void).cxx_destruct;
 - (void)_cleanUpGreetingGracePeriodTimer;
+- (void)_setShouldShowGreeting:(_Bool)arg1 forceUpdateObservers:(_Bool)arg2;
+- (void)_setShouldShowGreeting:(_Bool)arg1;
 - (void)stateService:(id)arg1 didReceiveDoNotDisturbStateUpdate:(id)arg2;
+- (void)sleepStore:(id)arg1 sleepSettingsDidChange:(id)arg2;
+@property(readonly, nonatomic, getter=isGreetingDisabled) _Bool greetingDisabled;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;

@@ -18,18 +18,36 @@
     _Bool _supportsMessaging;
     _Bool _supportsCalling;
     _Bool _supportsMaps;
+    _Bool _supportsAudio;
+    _Bool _supportsCommunication;
+    _Bool _supportsTemplates;
+    _Bool _supportsCharging;
+    _Bool _supportsParking;
+    _Bool _supportsPublicSafety;
+    _Bool _supportsQuickOrdering;
     NSString *_bundleIdentifier;
     NSSet *_autoMakerProtocols;
     unsigned long long __applicationCategory;
+    NSString *_bundlePath;
 }
 
 + (id)declarationForBundleIdentifier:(id)arg1 entitlements:(id)arg2 infoPlist:(id)arg3;
 + (id)declarationForAppProxy:(id)arg1;
++ (id)declarationForBundleIdentifier:(id)arg1 info:(id)arg2 entitlements:(id)arg3 bundlePath:(id)arg4;
 + (id)declarationForBundleIdentifier:(id)arg1 info:(id)arg2 entitlements:(id)arg3;
 + (id)requiredEntitlementKeys;
 + (id)requiredInfoKeys;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(nonatomic) unsigned long long _applicationCategory; // @synthesize _applicationCategory=__applicationCategory;
 @property(retain, nonatomic) NSSet *autoMakerProtocols; // @synthesize autoMakerProtocols=_autoMakerProtocols;
+@property(nonatomic) _Bool supportsQuickOrdering; // @synthesize supportsQuickOrdering=_supportsQuickOrdering;
+@property(nonatomic) _Bool supportsPublicSafety; // @synthesize supportsPublicSafety=_supportsPublicSafety;
+@property(nonatomic) _Bool supportsParking; // @synthesize supportsParking=_supportsParking;
+@property(nonatomic) _Bool supportsCharging; // @synthesize supportsCharging=_supportsCharging;
+@property(nonatomic) _Bool supportsTemplates; // @synthesize supportsTemplates=_supportsTemplates;
+@property(nonatomic) _Bool supportsCommunication; // @synthesize supportsCommunication=_supportsCommunication;
+@property(nonatomic) _Bool supportsAudio; // @synthesize supportsAudio=_supportsAudio;
 @property(nonatomic) _Bool supportsMaps; // @synthesize supportsMaps=_supportsMaps;
 @property(nonatomic) _Bool supportsCalling; // @synthesize supportsCalling=_supportsCalling;
 @property(nonatomic) _Bool supportsMessaging; // @synthesize supportsMessaging=_supportsMessaging;
@@ -39,7 +57,6 @@
 @property(nonatomic) _Bool requiresGeoSupport; // @synthesize requiresGeoSupport=_requiresGeoSupport;
 @property(nonatomic, getter=isSystemApp) _Bool systemApp; // @synthesize systemApp=_systemApp;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 
 @end
 

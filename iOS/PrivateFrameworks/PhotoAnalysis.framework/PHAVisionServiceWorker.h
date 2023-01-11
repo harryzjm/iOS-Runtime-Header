@@ -25,13 +25,14 @@
 
 + (CDUnknownBlockType)assetResourceSmallestToLargestComparator;
 + (CDUnknownBlockType)assetResourceLargestToSmallestComparator;
++ (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 + (void)disableANEForRequest:(id)arg1;
 + (id)defaultImageCreationOptions;
 + (id)analysisLog;
 + (void)initialize;
+- (void).cxx_destruct;
 @property _Bool analysisJobCancelled; // @synthesize analysisJobCancelled=_analysisJobCancelled;
 @property(nonatomic) unsigned int visionAlgorithmUmbrellaVersion; // @synthesize visionAlgorithmUmbrellaVersion=_visionAlgorithmUmbrellaVersion;
-- (void).cxx_destruct;
 - (void)performVisionForcedCleanup;
 - (void)performVisionForcedCleanupWithOptions:(id)arg1;
 - (void)configureRequest:(id)arg1 algorithmUmbrellaVersion:(unsigned int)arg2;
@@ -51,7 +52,6 @@
 - (id)assetResourcesForAsset:(id)arg1 fromDesiredTypes:(const long long *)arg2 count:(unsigned long long)arg3;
 - (_Bool)processAsset:(id)arg1 error:(id *)arg2;
 - (_Bool)getLocallyAvailableAssetResource:(id *)arg1 forAnalyzingAsset:(id)arg2 error:(id *)arg3;
-- (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (id)assetWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (struct CGImage *)_createCGImageFromImageSource:(struct CGImageSource *)arg1 imageOptions:(id)arg2 orientation:(unsigned long long *)arg3 error:(id *)arg4;
 - (unsigned long long)analyzeAssetResourceFileAtURL:(id)arg1 forAsset:(id)arg2 withAttributes:(id)arg3 error:(id *)arg4;

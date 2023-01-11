@@ -30,6 +30,7 @@
 }
 
 + (_Bool)shouldPresentAsModalSheet;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType configurationCompletion; // @synthesize configurationCompletion=_configurationCompletion;
 @property(nonatomic) _Bool isMailSetupForced; // @synthesize isMailSetupForced=_isMailSetupForced;
 @property(nonatomic) _Bool shouldEnableAccountSummaryCell; // @synthesize shouldEnableAccountSummaryCell=_shouldEnableAccountSummaryCell;
@@ -40,7 +41,6 @@
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property(copy, nonatomic) NSArray *preEnabledDataclasses; // @synthesize preEnabledDataclasses=_preEnabledDataclasses;
 @property(nonatomic, getter=isFirstTimeSetup) _Bool firstTimeSetup; // @synthesize firstTimeSetup=_firstTimeSetup;
-- (void).cxx_destruct;
 - (id)userEnrollmentAccountSpecifierProvider;
 - (_Bool)isUserEnrollment;
 - (_Bool)_confirmSyncDelete;
@@ -63,7 +63,8 @@
 - (void)operationsHelper:(id)arg1 willSaveAccount:(id)arg2;
 - (id)_accountIdentifier;
 - (id)_orderDataclassList:(id)arg1;
-- (void)_setDataclass:(id)arg1 enabled:(_Bool)arg2;
+- (void)_presentUndoAlert:(id)arg1 reason:(id)arg2;
+- (void)_setDataclass:(id)arg1 enabled:(_Bool)arg2 onAccount:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setDataclass:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)shouldAutomaticallyTryEnablingDataclassDuringSetup:(id)arg1;
 - (void)_enableAllProvisionedDataclassesWithoutRequringUserInteraction;
@@ -87,6 +88,7 @@
 - (void)viewDidLoad;
 - (_Bool)shouldShowOtherSpecifiersDuringFirstSetup;
 - (id)messageForAccountDeletionProgressUI;
+- (id)messageForAccountDeletionWarning;
 - (id)titleForDeleteButton;
 - (long long)deleteButtonIndex;
 - (id)valueForAccountSummaryCell;

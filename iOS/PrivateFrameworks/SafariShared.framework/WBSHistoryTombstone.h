@@ -21,13 +21,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long generation; // @synthesize generation=_generation;
 @property(readonly, nonatomic) double endTime; // @synthesize endTime=_endTime;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) NSData *urlSalt; // @synthesize urlSalt=_urlSalt;
 @property(readonly, nonatomic) NSData *urlHash; // @synthesize urlHash=_urlHash;
 @property(readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)secureTombstoneWithSalt:(id)arg1;
@@ -38,6 +38,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithSQLiteRow:(id)arg1 crypto:(id)arg2;
 - (id)initWithURLString:(id)arg1 urlHash:(id)arg2 urlSalt:(id)arg3 startTime:(double)arg4 endTime:(double)arg5 generation:(long long)arg6;
+- (id)initWithStreamedTombstone:(const struct _HistoryStreamedTombstone *)arg1;
 
 @end
 

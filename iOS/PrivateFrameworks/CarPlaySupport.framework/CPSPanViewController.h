@@ -16,15 +16,15 @@
 @interface CPSPanViewController : UIViewController <CPSPanViewDelegate, UIGestureRecognizerDelegate, CPSLinearFocusProviding>
 {
     _Bool _rightHandDrive;
-    id <CPSPanEventDelegate> _panDelegate;
     CPSPanView *_panView;
+    id <CPSPanEventDelegate> _panDelegate;
     NSArray *_nudgeGestureRecognizers;
 }
 
-@property(retain, nonatomic) NSArray *nudgeGestureRecognizers; // @synthesize nudgeGestureRecognizers=_nudgeGestureRecognizers;
-@property(retain, nonatomic) CPSPanView *panView; // @synthesize panView=_panView;
-@property(nonatomic) __weak id <CPSPanEventDelegate> panDelegate; // @synthesize panDelegate=_panDelegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *nudgeGestureRecognizers; // @synthesize nudgeGestureRecognizers=_nudgeGestureRecognizers;
+@property(nonatomic) __weak id <CPSPanEventDelegate> panDelegate; // @synthesize panDelegate=_panDelegate;
+@property(retain, nonatomic) CPSPanView *panView; // @synthesize panView=_panView;
 @property(readonly, nonatomic) double sideButtonTopInset;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (id)_linearFocusItems;
@@ -38,12 +38,14 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)loadView;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool useRightHandDriveFocusGuide;
 
 @end
 

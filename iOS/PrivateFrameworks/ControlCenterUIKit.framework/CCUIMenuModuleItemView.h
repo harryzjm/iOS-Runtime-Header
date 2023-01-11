@@ -6,12 +6,14 @@
 
 #import <UIKit/UIControl.h>
 
-@class CCUIMenuModuleItem, MTVisualStylingProvider, UILabel, UIView;
+#import <ControlCenterUIKit/UIPointerInteractionDelegate-Protocol.h>
 
-@interface CCUIMenuModuleItemView : UIControl
+@class BSUIEmojiLabelView, CCUIMenuModuleItem, MTVisualStylingProvider, NSString, UIView;
+
+@interface CCUIMenuModuleItemView : UIControl <UIPointerInteractionDelegate>
 {
-    UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
+    BSUIEmojiLabelView *_titleLabel;
+    BSUIEmojiLabelView *_subtitleLabel;
     UIView *_separatorView;
     UIView *_highlightedBackgroundView;
     UIView *_leadingView;
@@ -22,15 +24,20 @@
     _Bool _useTallLayout;
     _Bool _useTrailingCheckmarkLayout;
     _Bool _useTrailingInset;
+    _Bool _shouldLimitContentSizeCategory;
     double _preferredMaxLayoutWidth;
     unsigned long long _indentation;
 }
 
-+ (double)defaultMenuItemHeightForContentSizeCategory:(id)arg1 useTallLayout:(_Bool)arg2;
++ (double)defaultMenuItemHeightForContentSizeCategory:(id)arg1;
++ (id)_subtitleFontForContentSizeCategory:(id)arg1 shouldLimitContentSizeCategory:(_Bool)arg2;
 + (id)_subtitleFontForContentSizeCategory:(id)arg1;
++ (id)_titleFontForContentSizeCategory:(id)arg1 shouldLimitContentSizeCategory:(_Bool)arg2;
 + (id)_titleFontForContentSizeCategory:(id)arg1;
-+ (id)_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2 contentSizeCategory:(id)arg3;
-+ (_Bool)_shouldLimitContentSizeCategory:(id)arg1;
++ (id)_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2 contentSizeCategory:(id)arg3 shouldLimitContentSizeCategory:(_Bool)arg4;
++ (_Bool)_shouldLimitContentSizeCategory:(id)arg1 forceLimitContentSizeCategory:(_Bool)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldLimitContentSizeCategory; // @synthesize shouldLimitContentSizeCategory=_shouldLimitContentSizeCategory;
 @property(retain, nonatomic) UIView *trailingView; // @synthesize trailingView=_trailingView;
 @property(retain, nonatomic) UIView *leadingView; // @synthesize leadingView=_leadingView;
 @property(retain, nonatomic) CCUIMenuModuleItem *menuItem; // @synthesize menuItem=_menuItem;
@@ -40,13 +47,11 @@
 @property(nonatomic) _Bool useTallLayout; // @synthesize useTallLayout=_useTallLayout;
 @property(nonatomic) double preferredMaxLayoutWidth; // @synthesize preferredMaxLayoutWidth=_preferredMaxLayoutWidth;
 @property(nonatomic) _Bool separatorVisible; // @synthesize separatorVisible=_separatorVisible;
-- (void).cxx_destruct;
 - (void)_stopAutomaticallyUpdatingView:(id)arg1 recursivelyIfNeeded:(_Bool)arg2;
 - (void)_updateVisualStyleOfView:(id)arg1 withStyle:(long long)arg2 recursivelyIfNeeded:(_Bool)arg3;
 - (void)_layoutTrailingCustomViews;
 - (void)_layoutLeadingCustomView;
 - (void)_contentSizeCategoryDidChange;
-- (_Bool)_shouldUseTallLayout;
 - (void)_updateForStateChange;
 - (struct NSDirectionalEdgeInsets)_labelInsets;
 - (double)_trailingWidthForCustomViews;
@@ -55,11 +60,14 @@
 - (double)_titleBaselineToBottom;
 - (double)_titleBaselineToTop;
 - (_Bool)_shouldHorizontallyCenterText;
-- (double)_textHeightForLabel:(id)arg1 width:(double)arg2;
+- (double)_textHeightForEmojiLabel:(id)arg1 width:(double)arg2;
 - (id)_subtitleFont;
 - (id)_titleFont;
 - (double)_separatorHeight;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)setEnabled:(_Bool)arg1;
@@ -71,11 +79,16 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)subtitle;
 - (id)title;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)_setSubtitle:(id)arg1;
 - (void)_setTitle:(id)arg1;
 - (id)initWithMenuItem:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

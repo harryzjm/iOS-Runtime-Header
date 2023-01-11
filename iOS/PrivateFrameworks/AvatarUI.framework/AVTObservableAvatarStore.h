@@ -20,16 +20,16 @@
 
 + (unsigned long long)maximumNumberOfFetchableAvatars;
 + (unsigned long long)maximumNumberOfSavableAvatars;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(readonly, nonatomic) id <AVTAvatarStoreInternal> store; // @synthesize store=_store;
 @property(nonatomic) __weak id <AVTAvatarStoreDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)deleteRecentStickersForChangeTracker:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)recentStickersForFetchRequest:(id)arg1 error:(id *)arg2;
 - (void)didUseStickerWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteRecentStickersWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)duplicateAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)saveAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)saveAvatarRecord:(id)arg1 thumbnailAvatar:(id)arg2 completionBlock:(CDUnknownBlockType)arg3 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg4;
 - (void)deleteAvatarWithIdentifier:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)deleteAvatar:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAvatarsForFetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

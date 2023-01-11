@@ -11,6 +11,7 @@
 }
 
 - (void)_observeOtherSetting:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)observePreferredPointerLockStateWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeBrightnessLevelWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeAudioCategoriesDisablingVolumeHUDWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeVisibleMiniAlertCountWithBlock:(CDUnknownBlockType)arg1;
@@ -18,6 +19,7 @@
 - (void)observeWantsExclusiveForegroundWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeHomeIndicatorAutoHiddenWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeScreenEdgesDeferringSystemGesturesWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeWindowFocusedFrameWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeActivationConditionsDataWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSceneActivationBiasWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeCanvasTitleWithBlock:(CDUnknownBlockType)arg1;

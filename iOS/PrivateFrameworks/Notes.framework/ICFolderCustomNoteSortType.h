@@ -15,14 +15,18 @@
 }
 
 + (id)segmentItemTitleForOrder:(unsigned long long)arg1;
++ (id)rd_actionItemTitleForOrder:(unsigned long long)arg1;
 + (id)actionItemTitleForOrder:(unsigned long long)arg1;
 + (id)sortTypeOrderValues;
 + (_Bool)isTagADirection:(long long)arg1;
 + (_Bool)isTagAnOrder:(long long)arg1;
++ (unsigned long long)tagForSortTypeDirection:(unsigned long long)arg1;
++ (unsigned long long)tagForSortTypeOrder:(unsigned long long)arg1;
 + (unsigned long long)sortTypeDirectionForTag:(unsigned long long)arg1;
 + (unsigned long long)sortTypeOrderForTag:(unsigned long long)arg1;
 + (unsigned long long)customOrderForGlobalSortType:(long long)arg1;
 + (id)currentDefaultMenuItemString;
++ (id)stringNameForDirection:(unsigned long long)arg1 order:(unsigned long long)arg2;
 + (id)folderNoteSortTypeFromValue:(id)arg1;
 + (id)noteSortTypeDefaultAscending;
 + (id)folderNoteSortTypeWithOrder:(unsigned long long)arg1 direction:(unsigned long long)arg2;
@@ -30,7 +34,6 @@
 @property(nonatomic) unsigned long long order; // @synthesize order=_order;
 - (id)currentActionItemTitle;
 @property(readonly, nonatomic) NSString *summaryViewTitleDescription;
-- (id)stringNameForDirection:(unsigned long long)arg1 order:(unsigned long long)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isAscending;
 @property(readonly, nonatomic) _Bool isDefault;

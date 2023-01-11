@@ -24,6 +24,7 @@
 + (id)wellKnowTypeTextPayloadWithString:(id)arg1 locale:(id)arg2;
 + (id)wellKnownTypeURIPayloadWithURL:(id)arg1;
 + (id)wellKnownTypeURIPayloadWithString:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSData *payload; // @synthesize payload=_payload;
 @property(copy, nonatomic) NSData *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSData *type; // @synthesize type=_type;
@@ -32,7 +33,6 @@
 - (unsigned long long)chunkSize;
 - (id)asData;
 - (id)description;
-- (void)dealloc;
 - (id)initWithFormatType:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4 chunkSize:(unsigned long long)arg5;
 - (id)initWithFormat:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4 chunkSize:(unsigned long long)arg5;
 - (id)initWithFormat:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4;

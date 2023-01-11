@@ -5,24 +5,26 @@
 //
 
 #import <CoverSheet/CSModalViewDelegate-Protocol.h>
-#import <CoverSheet/CSTouchPassThroughContainerViewDelegate-Protocol.h>
 
-@class NSString, UIColor;
+@class CLInUseAssertion, NSString, UIColor;
 @protocol CSDNDBedtimeGreetingDelegate;
 
-@interface CSDNDBedtimeGreetingViewController <CSModalViewDelegate, CSTouchPassThroughContainerViewDelegate>
+@interface CSDNDBedtimeGreetingViewController <CSModalViewDelegate>
 {
     UIColor *_legibilityPrimaryColor;
+    CLInUseAssertion *_weatherInUseAssertion;
     id <CSDNDBedtimeGreetingDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <CSDNDBedtimeGreetingDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CSDNDBedtimeGreetingDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_greetingString;
-- (void)handleTouchEventForView:(id)arg1;
+- (_Bool)wouldHandleButtonEvent:(id)arg1;
+- (_Bool)handleEvent:(id)arg1;
 - (void)handleSecondaryActionForView:(id)arg1;
 - (void)aggregateAppearance:(id)arg1;
 - (void)loadView;
+- (void)dealloc;
 - (id)initWithLegibilityPrimaryColor:(id)arg1;
 
 // Remaining properties

@@ -13,20 +13,19 @@
 @interface GEOPhoto : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_photoInfos;
     NSString *_uid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _photoType;
     struct {
         unsigned int has_photoType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_photoInfos:1;
         unsigned int read_uid:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_photoInfos:1;
-        unsigned int wrote_uid:1;
-        unsigned int wrote_photoType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,22 +42,24 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *uid;
 @property(readonly, nonatomic) _Bool hasUid;
-- (void)_readUid;
 - (id)photoInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoInfosCount;
-- (void)_addNoFlagsPhotoInfo:(id)arg1;
 - (void)addPhotoInfo:(id)arg1;
 - (void)clearPhotoInfos;
 @property(retain, nonatomic) NSMutableArray *photoInfos;
-- (void)_readPhotoInfos;
 - (int)StringAsPhotoType:(id)arg1;
 - (id)photoTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasPhotoType;
 @property(nonatomic) int photoType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithPlaceDataPhoto:(id)arg1;
 
 @end

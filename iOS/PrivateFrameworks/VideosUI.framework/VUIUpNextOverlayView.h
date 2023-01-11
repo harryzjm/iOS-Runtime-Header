@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUITextBadgeViewDelegate-Protocol.h>
 
-@class CALayer, IKViewElement, NSNumber, NSString, VUICountDownProgressIndicator, VUILabel, VUITextBadgeView, VUIUpNextOverlayLayout, _TVImageView, _TVProgressView;
+@class CALayer, IKViewElement, NSNumber, NSString, VUICountDownProgressIndicator, VUILabel, VUIProgressView, VUITextBadgeView, VUIUpNextOverlayLayout, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUIUpNextOverlayView : UIView <VUITextBadgeViewDelegate>
@@ -21,31 +21,41 @@ __attribute__((visibility("hidden")))
     _Bool _badgeShowOnlyOnFocus;
     _Bool _isFocused;
     VUIUpNextOverlayLayout *_overlayLayout;
+    VUIProgressView *_progressView;
+    _TVImageView *_appImageView;
+    _TVImageView *_logoImageView;
+    VUILabel *_textLabel;
+    VUILabel *_subtitleLabel;
+    _TVImageView *_badgeView;
+    VUITextBadgeView *_textBadge;
+    UIView *_gradientView;
     CALayer *_gradientLayer;
     IKViewElement *_viewElement;
-    _TVProgressView *_progressView;
     IKViewElement *_progressViewElement;
-    _TVImageView *_appImageView;
     IKViewElement *_appImageElement;
-    _TVImageView *_logoImageView;
     IKViewElement *_logoImageElement;
-    VUILabel *_textLabel;
     IKViewElement *_textElement;
-    VUILabel *_subtitleLabel;
     IKViewElement *_subtitleElement;
-    _TVImageView *_badgeView;
     IKViewElement *_badgeElement;
-    VUITextBadgeView *_textBadge;
     IKViewElement *_textBadgeElement;
-    UIView *_gradientView;
-    CALayer *_blurMaskLayer;
     NSNumber *_autoPlayDuration;
     VUICountDownProgressIndicator *_autoPlayIndicator;
+    double _gradientSizeHeightMultiplier;
 }
 
 + (id)overlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
+- (void).cxx_destruct;
+@property(nonatomic) double gradientSizeHeightMultiplier; // @synthesize gradientSizeHeightMultiplier=_gradientSizeHeightMultiplier;
 @property(retain, nonatomic) VUICountDownProgressIndicator *autoPlayIndicator; // @synthesize autoPlayIndicator=_autoPlayIndicator;
 @property(retain, nonatomic) NSNumber *autoPlayDuration; // @synthesize autoPlayDuration=_autoPlayDuration;
+@property(retain, nonatomic) IKViewElement *textBadgeElement; // @synthesize textBadgeElement=_textBadgeElement;
+@property(retain, nonatomic) IKViewElement *badgeElement; // @synthesize badgeElement=_badgeElement;
+@property(retain, nonatomic) IKViewElement *subtitleElement; // @synthesize subtitleElement=_subtitleElement;
+@property(retain, nonatomic) IKViewElement *textElement; // @synthesize textElement=_textElement;
+@property(retain, nonatomic) IKViewElement *logoImageElement; // @synthesize logoImageElement=_logoImageElement;
+@property(retain, nonatomic) IKViewElement *appImageElement; // @synthesize appImageElement=_appImageElement;
+@property(retain, nonatomic) IKViewElement *progressViewElement; // @synthesize progressViewElement=_progressViewElement;
+@property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property(nonatomic) _Bool isFocused; // @synthesize isFocused=_isFocused;
 @property(nonatomic) _Bool badgeShowOnlyOnFocus; // @synthesize badgeShowOnlyOnFocus=_badgeShowOnlyOnFocus;
 @property(nonatomic) _Bool subtitleLabelShowOnlyOnFocus; // @synthesize subtitleLabelShowOnlyOnFocus=_subtitleLabelShowOnlyOnFocus;
@@ -53,26 +63,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool logoImageViewShowOnlyOnFocus; // @synthesize logoImageViewShowOnlyOnFocus=_logoImageViewShowOnlyOnFocus;
 @property(nonatomic) _Bool appImageViewShowOnlyOnFocus; // @synthesize appImageViewShowOnlyOnFocus=_appImageViewShowOnlyOnFocus;
 @property(nonatomic) _Bool progressViewShowOnlyOnFocus; // @synthesize progressViewShowOnlyOnFocus=_progressViewShowOnlyOnFocus;
-@property(retain, nonatomic) CALayer *blurMaskLayer; // @synthesize blurMaskLayer=_blurMaskLayer;
-@property(retain, nonatomic) UIView *gradientView; // @synthesize gradientView=_gradientView;
-@property(retain, nonatomic) IKViewElement *textBadgeElement; // @synthesize textBadgeElement=_textBadgeElement;
-@property(retain, nonatomic) VUITextBadgeView *textBadge; // @synthesize textBadge=_textBadge;
-@property(retain, nonatomic) IKViewElement *badgeElement; // @synthesize badgeElement=_badgeElement;
-@property(retain, nonatomic) _TVImageView *badgeView; // @synthesize badgeView=_badgeView;
-@property(retain, nonatomic) IKViewElement *subtitleElement; // @synthesize subtitleElement=_subtitleElement;
-@property(retain, nonatomic) VUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) IKViewElement *textElement; // @synthesize textElement=_textElement;
-@property(retain, nonatomic) VUILabel *textLabel; // @synthesize textLabel=_textLabel;
-@property(retain, nonatomic) IKViewElement *logoImageElement; // @synthesize logoImageElement=_logoImageElement;
-@property(retain, nonatomic) _TVImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
-@property(retain, nonatomic) IKViewElement *appImageElement; // @synthesize appImageElement=_appImageElement;
-@property(retain, nonatomic) _TVImageView *appImageView; // @synthesize appImageView=_appImageView;
-@property(retain, nonatomic) IKViewElement *progressViewElement; // @synthesize progressViewElement=_progressViewElement;
-@property(retain, nonatomic) _TVProgressView *progressView; // @synthesize progressView=_progressView;
-@property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property(retain, nonatomic) CALayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
+@property(retain, nonatomic) UIView *gradientView; // @synthesize gradientView=_gradientView;
+@property(retain, nonatomic) VUITextBadgeView *textBadge; // @synthesize textBadge=_textBadge;
+@property(retain, nonatomic) _TVImageView *badgeView; // @synthesize badgeView=_badgeView;
+@property(retain, nonatomic) VUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(retain, nonatomic) VUILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property(retain, nonatomic) _TVImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
+@property(retain, nonatomic) _TVImageView *appImageView; // @synthesize appImageView=_appImageView;
+@property(retain, nonatomic) VUIProgressView *progressView; // @synthesize progressView=_progressView;
 @property(retain, nonatomic) VUIUpNextOverlayLayout *overlayLayout; // @synthesize overlayLayout=_overlayLayout;
-- (void).cxx_destruct;
 - (void)textBadgeViewContentsUpdated:(id)arg1;
 - (void)reset;
 - (void)layoutSubviews;

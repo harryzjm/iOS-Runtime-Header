@@ -14,6 +14,7 @@
     _Bool _mirroringEnabled;
 }
 
++ (void)stopServer;
 + (id)serverIfRunning;
 + (id)serverWithOptions:(id)arg1;
 + (id)server;

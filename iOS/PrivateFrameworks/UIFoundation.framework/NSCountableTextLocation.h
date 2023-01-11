@@ -17,15 +17,18 @@
 
 + (id)endOfDocumentLocation;
 @property(readonly) unsigned long long characterIndex; // @synthesize characterIndex=_characterIndex;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToTextLocation:(id)arg1;
 - (long long)compare:(id)arg1;
 @property(readonly, copy) NSString *type;
+@property(readonly) unsigned long long hash;
 - (id)initWithIndex:(unsigned long long)arg1;
+- (id)shortDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, getter=isEndOfDocument) _Bool endOfDocument;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

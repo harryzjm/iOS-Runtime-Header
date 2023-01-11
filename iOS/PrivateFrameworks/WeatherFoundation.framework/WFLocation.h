@@ -13,19 +13,20 @@
 
 @interface WFLocation : NSObject <NSSecureCoding, NSCopying>
 {
+    CLLocation *_geoLocation;
+    NSString *_weatherDisplayName;
+    NSString *_weatherLocationName;
     NSString *_city;
     NSString *_county;
     NSString *_state;
     NSString *_stateAbbreviation;
     NSString *_country;
     NSString *_countryAbbreviation;
-    CLLocation *_geoLocation;
-    NSString *_locationID;
     NSTimeZone *_timeZone;
-    long long _archiveVersion;
-    NSString *_weatherDisplayName;
-    NSString *_displayName;
     NSDate *_creationDate;
+    long long _archiveVersion;
+    NSString *_locationID;
+    NSString *_displayName;
 }
 
 + (id)locationsByConsolidatingDuplicatesInBucket:(id)arg1;
@@ -34,20 +35,21 @@
 + (_Bool)supportsSecureCoding;
 + (id)knownKeys;
 + (long long)currentArchiveVersion;
-@property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property(copy, nonatomic) NSString *weatherDisplayName; // @synthesize weatherDisplayName=_weatherDisplayName;
-@property long long archiveVersion; // @synthesize archiveVersion=_archiveVersion;
-@property(copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(copy, nonatomic) NSString *locationID; // @synthesize locationID=_locationID;
-@property(copy, nonatomic) CLLocation *geoLocation; // @synthesize geoLocation=_geoLocation;
+@property long long archiveVersion; // @synthesize archiveVersion=_archiveVersion;
+@property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(copy, nonatomic) NSString *countryAbbreviation; // @synthesize countryAbbreviation=_countryAbbreviation;
 @property(copy, nonatomic) NSString *country; // @synthesize country=_country;
 @property(copy, nonatomic) NSString *stateAbbreviation; // @synthesize stateAbbreviation=_stateAbbreviation;
 @property(copy, nonatomic) NSString *state; // @synthesize state=_state;
 @property(copy, nonatomic) NSString *county; // @synthesize county=_county;
 @property(copy, nonatomic) NSString *city; // @synthesize city=_city;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *weatherLocationName; // @synthesize weatherLocationName=_weatherLocationName;
+@property(copy, nonatomic) NSString *weatherDisplayName; // @synthesize weatherDisplayName=_weatherDisplayName;
+@property(copy, nonatomic) CLLocation *geoLocation; // @synthesize geoLocation=_geoLocation;
 - (id)initWithCloudDictionaryRepresentation:(id)arg1;
 - (id)cloudDictionaryRepresentation;
 - (id)initWithLocalDataRepresentation:(id)arg1;
@@ -56,6 +58,8 @@
 @property(readonly, nonatomic) _Bool shouldQueryForAirQualityData;
 - (id)sunsetForDate:(id)arg1;
 - (id)sunriseForDate:(id)arg1;
+- (void)sunrise:(id *)arg1 andSunset:(id *)arg2 forDate:(id)arg3;
+- (id)_sunAlmanacForDate:(id)arg1;
 - (_Bool)isDayForDate:(id)arg1;
 - (_Bool)isDay;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -63,6 +67,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (id)summary;
+@property(readonly, nonatomic) _Bool needsGeocoding;
 - (id)summaryThatIsCompact:(_Bool)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

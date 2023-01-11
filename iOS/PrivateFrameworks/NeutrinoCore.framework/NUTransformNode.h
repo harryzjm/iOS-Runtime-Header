@@ -9,6 +9,7 @@
 }
 
 + (id)transformNodeWithInput:(id)arg1 transform:(id)arg2 error:(out id *)arg3;
+- (_Bool)canPropagateOriginalLivePhotoMetadataTrack;
 - (_Bool)requiresVideoComposition;
 - (id)descriptionSubClassHook;
 - (id)_evaluateGeometrySpaceMap:(out id *)arg1;

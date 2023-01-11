@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUnit;
+@class NSString, NSUnit;
 
 @interface WFUnitVariableAggrandizement
 {
@@ -16,7 +16,8 @@
 - (id)processedContentClasses:(id)arg1;
 - (id)availableUnits;
 @property(readonly, nonatomic) NSUnit *unit; // @synthesize unit=_unit;
-- (id)initWithUnit:(id)arg1;
+@property(readonly, nonatomic) NSString *unitType;
+- (id)initWithUnit:(id)arg1 unitType:(id)arg2;
 
 @end
 

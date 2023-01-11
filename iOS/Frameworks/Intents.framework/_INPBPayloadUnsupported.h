@@ -15,13 +15,20 @@
 @interface _INPBPayloadUnsupported : PBCodable <_INPBPayloadUnsupported, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int updateAlarmIntentAlarmUnsupportedReason:1;
+        unsigned int changeAlarmStatusIntentAlarmsUnsupportedReason:1;
+        unsigned int deleteAlarmIntentAlarmsUnsupportedReason:1;
+        unsigned int searchAlarmIntentAlarmsUnsupportedReason:1;
+        unsigned int snoozeAlarmIntentAlarmsUnsupportedReason:1;
         unsigned int startCallIntentCallCapabilityUnsupportedReason:1;
+        unsigned int startCallIntentCallRecordToCallBackUnsupportedReason:1;
         unsigned int addTasksIntentContactEventTriggerUnsupportedReason:1;
         unsigned int setTaskAttributeIntentContactEventTriggerUnsupportedReason:1;
         unsigned int startCallIntentContactsUnsupportedReason:1;
         unsigned int requestPaymentIntentCurrencyAmountUnsupportedReason:1;
         unsigned int sendPaymentIntentCurrencyAmountUnsupportedReason:1;
         unsigned int customUnsupportedReason:1;
+        unsigned int findDeviceAndPlaySoundIntentDeviceUnsupportedReason:1;
         unsigned int createTimerIntentLabelUnsupportedReason:1;
         unsigned int addMediaIntentMediaDestinationUnsupportedReason:1;
         unsigned int addMediaIntentMediaItemsUnsupportedReason:1;
@@ -33,6 +40,8 @@
         unsigned int playMediaIntentPlaybackSpeedUnsupportedReason:1;
         unsigned int startCallIntentPreferredCallProviderUnsupportedReason:1;
         unsigned int reason:1;
+        unsigned int shareETAIntentRecipientUnsupportedReason:1;
+        unsigned int stopShareETAIntentRecipientUnsupportedReason:1;
         unsigned int sendMessageIntentRecipientUnsupportedReason:1;
         unsigned int saveHealthSampleIntentRecordDateUnsupportedReason:1;
         unsigned int addTasksIntentTargetTaskListMembersUnsupportedReason:1;
@@ -44,14 +53,20 @@
         unsigned int setTaskAttributeIntentTemporalEventTriggerUnsupportedReason:1;
         unsigned int runWorkflowIntentWorkflowUnsupportedReason:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
+    int _updateAlarmIntentAlarmUnsupportedReason;
+    int _changeAlarmStatusIntentAlarmsUnsupportedReason;
+    int _deleteAlarmIntentAlarmsUnsupportedReason;
+    int _searchAlarmIntentAlarmsUnsupportedReason;
+    int _snoozeAlarmIntentAlarmsUnsupportedReason;
     int _startCallIntentCallCapabilityUnsupportedReason;
+    int _startCallIntentCallRecordToCallBackUnsupportedReason;
     int _addTasksIntentContactEventTriggerUnsupportedReason;
     int _setTaskAttributeIntentContactEventTriggerUnsupportedReason;
     int _startCallIntentContactsUnsupportedReason;
     int _requestPaymentIntentCurrencyAmountUnsupportedReason;
     int _sendPaymentIntentCurrencyAmountUnsupportedReason;
     unsigned int _customUnsupportedReason;
+    int _findDeviceAndPlaySoundIntentDeviceUnsupportedReason;
     int _createTimerIntentLabelUnsupportedReason;
     int _addMediaIntentMediaDestinationUnsupportedReason;
     int _addMediaIntentMediaItemsUnsupportedReason;
@@ -63,6 +78,8 @@
     int _playMediaIntentPlaybackSpeedUnsupportedReason;
     int _startCallIntentPreferredCallProviderUnsupportedReason;
     int _reason;
+    int _shareETAIntentRecipientUnsupportedReason;
+    int _stopShareETAIntentRecipientUnsupportedReason;
     int _sendMessageIntentRecipientUnsupportedReason;
     int _saveHealthSampleIntentRecordDateUnsupportedReason;
     int _addTasksIntentTargetTaskListMembersUnsupportedReason;
@@ -78,7 +95,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)conflictingParametersType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int runWorkflowIntentWorkflowUnsupportedReason; // @synthesize runWorkflowIntentWorkflowUnsupportedReason=_runWorkflowIntentWorkflowUnsupportedReason;
 @property(nonatomic) int setTaskAttributeIntentTemporalEventTriggerUnsupportedReason; // @synthesize setTaskAttributeIntentTemporalEventTriggerUnsupportedReason=_setTaskAttributeIntentTemporalEventTriggerUnsupportedReason;
 @property(nonatomic) int addTasksIntentTemporalEventTriggerUnsupportedReason; // @synthesize addTasksIntentTemporalEventTriggerUnsupportedReason=_addTasksIntentTemporalEventTriggerUnsupportedReason;
@@ -89,6 +106,8 @@
 @property(nonatomic) int addTasksIntentTargetTaskListMembersUnsupportedReason; // @synthesize addTasksIntentTargetTaskListMembersUnsupportedReason=_addTasksIntentTargetTaskListMembersUnsupportedReason;
 @property(nonatomic) int saveHealthSampleIntentRecordDateUnsupportedReason; // @synthesize saveHealthSampleIntentRecordDateUnsupportedReason=_saveHealthSampleIntentRecordDateUnsupportedReason;
 @property(nonatomic) int sendMessageIntentRecipientUnsupportedReason; // @synthesize sendMessageIntentRecipientUnsupportedReason=_sendMessageIntentRecipientUnsupportedReason;
+@property(nonatomic) int stopShareETAIntentRecipientUnsupportedReason; // @synthesize stopShareETAIntentRecipientUnsupportedReason=_stopShareETAIntentRecipientUnsupportedReason;
+@property(nonatomic) int shareETAIntentRecipientUnsupportedReason; // @synthesize shareETAIntentRecipientUnsupportedReason=_shareETAIntentRecipientUnsupportedReason;
 @property(nonatomic) int reason; // @synthesize reason=_reason;
 @property(nonatomic) int startCallIntentPreferredCallProviderUnsupportedReason; // @synthesize startCallIntentPreferredCallProviderUnsupportedReason=_startCallIntentPreferredCallProviderUnsupportedReason;
 @property(nonatomic) int playMediaIntentPlaybackSpeedUnsupportedReason; // @synthesize playMediaIntentPlaybackSpeedUnsupportedReason=_playMediaIntentPlaybackSpeedUnsupportedReason;
@@ -100,6 +119,7 @@
 @property(nonatomic) int addMediaIntentMediaItemsUnsupportedReason; // @synthesize addMediaIntentMediaItemsUnsupportedReason=_addMediaIntentMediaItemsUnsupportedReason;
 @property(nonatomic) int addMediaIntentMediaDestinationUnsupportedReason; // @synthesize addMediaIntentMediaDestinationUnsupportedReason=_addMediaIntentMediaDestinationUnsupportedReason;
 @property(nonatomic) int createTimerIntentLabelUnsupportedReason; // @synthesize createTimerIntentLabelUnsupportedReason=_createTimerIntentLabelUnsupportedReason;
+@property(nonatomic) int findDeviceAndPlaySoundIntentDeviceUnsupportedReason; // @synthesize findDeviceAndPlaySoundIntentDeviceUnsupportedReason=_findDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property(nonatomic) unsigned int customUnsupportedReason; // @synthesize customUnsupportedReason=_customUnsupportedReason;
 @property(nonatomic) int sendPaymentIntentCurrencyAmountUnsupportedReason; // @synthesize sendPaymentIntentCurrencyAmountUnsupportedReason=_sendPaymentIntentCurrencyAmountUnsupportedReason;
 @property(nonatomic) int requestPaymentIntentCurrencyAmountUnsupportedReason; // @synthesize requestPaymentIntentCurrencyAmountUnsupportedReason=_requestPaymentIntentCurrencyAmountUnsupportedReason;
@@ -107,8 +127,13 @@
 @property(nonatomic) int setTaskAttributeIntentContactEventTriggerUnsupportedReason; // @synthesize setTaskAttributeIntentContactEventTriggerUnsupportedReason=_setTaskAttributeIntentContactEventTriggerUnsupportedReason;
 @property(nonatomic) int addTasksIntentContactEventTriggerUnsupportedReason; // @synthesize addTasksIntentContactEventTriggerUnsupportedReason=_addTasksIntentContactEventTriggerUnsupportedReason;
 @property(copy, nonatomic) NSArray *conflictingParameters; // @synthesize conflictingParameters=_conflictingParameters;
+@property(nonatomic) int startCallIntentCallRecordToCallBackUnsupportedReason; // @synthesize startCallIntentCallRecordToCallBackUnsupportedReason=_startCallIntentCallRecordToCallBackUnsupportedReason;
 @property(nonatomic) int startCallIntentCallCapabilityUnsupportedReason; // @synthesize startCallIntentCallCapabilityUnsupportedReason=_startCallIntentCallCapabilityUnsupportedReason;
-- (void).cxx_destruct;
+@property(nonatomic) int snoozeAlarmIntentAlarmsUnsupportedReason; // @synthesize snoozeAlarmIntentAlarmsUnsupportedReason=_snoozeAlarmIntentAlarmsUnsupportedReason;
+@property(nonatomic) int searchAlarmIntentAlarmsUnsupportedReason; // @synthesize searchAlarmIntentAlarmsUnsupportedReason=_searchAlarmIntentAlarmsUnsupportedReason;
+@property(nonatomic) int deleteAlarmIntentAlarmsUnsupportedReason; // @synthesize deleteAlarmIntentAlarmsUnsupportedReason=_deleteAlarmIntentAlarmsUnsupportedReason;
+@property(nonatomic) int changeAlarmStatusIntentAlarmsUnsupportedReason; // @synthesize changeAlarmStatusIntentAlarmsUnsupportedReason=_changeAlarmStatusIntentAlarmsUnsupportedReason;
+@property(nonatomic) int updateAlarmIntentAlarmUnsupportedReason; // @synthesize updateAlarmIntentAlarmUnsupportedReason=_updateAlarmIntentAlarmUnsupportedReason;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -147,6 +172,12 @@
 - (int)StringAsSendMessageIntentRecipientUnsupportedReason:(id)arg1;
 - (id)sendMessageIntentRecipientUnsupportedReasonAsString:(int)arg1;
 @property(nonatomic) _Bool hasSendMessageIntentRecipientUnsupportedReason;
+- (int)StringAsStopShareETAIntentRecipientUnsupportedReason:(id)arg1;
+- (id)stopShareETAIntentRecipientUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasStopShareETAIntentRecipientUnsupportedReason;
+- (int)StringAsShareETAIntentRecipientUnsupportedReason:(id)arg1;
+- (id)shareETAIntentRecipientUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasShareETAIntentRecipientUnsupportedReason;
 - (int)StringAsReason:(id)arg1;
 - (id)reasonAsString:(int)arg1;
 @property(nonatomic) _Bool hasReason;
@@ -180,6 +211,9 @@
 - (int)StringAsCreateTimerIntentLabelUnsupportedReason:(id)arg1;
 - (id)createTimerIntentLabelUnsupportedReasonAsString:(int)arg1;
 @property(nonatomic) _Bool hasCreateTimerIntentLabelUnsupportedReason;
+- (int)StringAsFindDeviceAndPlaySoundIntentDeviceUnsupportedReason:(id)arg1;
+- (id)findDeviceAndPlaySoundIntentDeviceUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasFindDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property(nonatomic) _Bool hasCustomUnsupportedReason;
 - (int)StringAsSendPaymentIntentCurrencyAmountUnsupportedReason:(id)arg1;
 - (id)sendPaymentIntentCurrencyAmountUnsupportedReasonAsString:(int)arg1;
@@ -200,9 +234,27 @@
 @property(readonly, nonatomic) unsigned long long conflictingParametersCount;
 - (void)addConflictingParameters:(id)arg1;
 - (void)clearConflictingParameters;
+- (int)StringAsStartCallIntentCallRecordToCallBackUnsupportedReason:(id)arg1;
+- (id)startCallIntentCallRecordToCallBackUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasStartCallIntentCallRecordToCallBackUnsupportedReason;
 - (int)StringAsStartCallIntentCallCapabilityUnsupportedReason:(id)arg1;
 - (id)startCallIntentCallCapabilityUnsupportedReasonAsString:(int)arg1;
 @property(nonatomic) _Bool hasStartCallIntentCallCapabilityUnsupportedReason;
+- (int)StringAsSnoozeAlarmIntentAlarmsUnsupportedReason:(id)arg1;
+- (id)snoozeAlarmIntentAlarmsUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasSnoozeAlarmIntentAlarmsUnsupportedReason;
+- (int)StringAsSearchAlarmIntentAlarmsUnsupportedReason:(id)arg1;
+- (id)searchAlarmIntentAlarmsUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasSearchAlarmIntentAlarmsUnsupportedReason;
+- (int)StringAsDeleteAlarmIntentAlarmsUnsupportedReason:(id)arg1;
+- (id)deleteAlarmIntentAlarmsUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasDeleteAlarmIntentAlarmsUnsupportedReason;
+- (int)StringAsChangeAlarmStatusIntentAlarmsUnsupportedReason:(id)arg1;
+- (id)changeAlarmStatusIntentAlarmsUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasChangeAlarmStatusIntentAlarmsUnsupportedReason;
+- (int)StringAsUpdateAlarmIntentAlarmUnsupportedReason:(id)arg1;
+- (id)updateAlarmIntentAlarmUnsupportedReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasUpdateAlarmIntentAlarmUnsupportedReason;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

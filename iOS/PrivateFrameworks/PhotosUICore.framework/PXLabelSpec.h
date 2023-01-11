@@ -10,8 +10,8 @@
 {
     _Bool _adjustsFontSizeToFitWidth;
     _Bool _allowTruncation;
-    struct UIColor *_textColor;
-    struct UIFont *_font;
+    UIColor *_textColor;
+    UIFont *_font;
     NSDictionary *_textAttributes;
     NSDictionary *_fallbackTextAttributes;
     long long _textAlignment;
@@ -24,8 +24,14 @@
     struct UIEdgeInsets _contentInsets;
 }
 
++ (id)_memoriesLabelSpecForContext:(CDStruct_89e59a70)arg1;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 tileKind:(long long)arg2 gadgetSpec:(id)arg3 boundedByRect:(struct CGRect)arg4;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 tileKind:(long long)arg2 featureSpec:(id)arg3 boundedByRect:(struct CGRect)arg4;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 descriptor:(struct PXViewSpecDescriptor)arg2 featureSpec:(id)arg3;
++ (id)memoriesLabelSpecForLabelKind:(long long)arg1 tileKind:(long long)arg2 specSet:(long long)arg3 variant:(long long)arg4 boundedBy:(struct CGRect)arg5 shouldScale:(_Bool)arg6;
 + (id)px_headerSubtitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
 + (id)px_headerTitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) double minimumTruncatedScaleFactor; // @synthesize minimumTruncatedScaleFactor=_minimumTruncatedScaleFactor;
 @property(nonatomic) _Bool allowTruncation; // @synthesize allowTruncation=_allowTruncation;
 @property(nonatomic) double minimumScaleFactor; // @synthesize minimumScaleFactor=_minimumScaleFactor;
@@ -40,7 +46,6 @@
 @property(copy, nonatomic) NSDictionary *textAttributes; // @synthesize textAttributes=_textAttributes;
 @property(copy, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (_Bool)isEqual:(id)arg1;

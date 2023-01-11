@@ -5,18 +5,17 @@
 //
 
 #import <EmailFoundation/EFCacheable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
 
 @class EFSQLColumnExpression, NSString;
 
-@interface EFSQLDisqualifiedColumnExpression <EFCacheable, EFSQLExpressable>
+@interface EFSQLDisqualifiedColumnExpression <EFCacheable>
 {
     EFSQLColumnExpression *_columnExpression;
 }
 
-@property(readonly, nonatomic) EFSQLColumnExpression *columnExpression; // @synthesize columnExpression=_columnExpression;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
+@property(readonly, nonatomic) EFSQLColumnExpression *columnExpression; // @synthesize columnExpression=_columnExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)cachedSelf;

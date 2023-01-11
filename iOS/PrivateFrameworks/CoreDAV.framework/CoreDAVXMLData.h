@@ -19,15 +19,15 @@
 }
 
 + (_Bool)string:(id)arg1 isEqualToXmlCharString:(const char *)arg2;
-@property(nonatomic) _Bool shouldAddFormattingSpaces; // @synthesize shouldAddFormattingSpaces=_shouldAddFormattingSpaces;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldAddFormattingSpaces; // @synthesize shouldAddFormattingSpaces=_shouldAddFormattingSpaces;
 @property(readonly, nonatomic) NSData *data;
 - (void)appendElement:(id)arg1 inNamespace:(id)arg2 withStringContentAsCDATA:(id)arg3 withAttributeNamesAndValues:(id)arg4;
 - (void)appendElement:(id)arg1 inNamespace:(id)arg2 withStringContent:(id)arg3 withAttributeNamesAndValues:(id)arg4;
 - (void)endElement:(id)arg1 inNamespace:(id)arg2;
 - (void)startElement:(id)arg1 inNamespace:(id)arg2 withAttributes:(id)arg3;
 - (void)startElement:(id)arg1 inNamespace:(id)arg2 withAttributeNamesAndValues:(id)arg3;
-- (void)_startElement:(id)arg1 inNamespace:(id)arg2 withAttributeNamesAndValues:(id)arg3 attributes:(struct __va_list_tag [1])arg4;
+- (void)_startElement:(id)arg1 inNamespace:(id)arg2 withAttributeNamesAndValues:(id)arg3 attributes:(char *)arg4;
 - (void)_startElement:(id)arg1 inNamespace:(id)arg2;
 - (const char *)_prefixForNameSpace:(const char *)arg1;
 - (void)dealloc;

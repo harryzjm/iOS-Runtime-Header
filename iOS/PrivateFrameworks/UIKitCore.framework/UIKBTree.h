@@ -49,6 +49,8 @@
 - (_Bool)hasLayoutTag:(id)arg1;
 - (id)variantDisplayString;
 - (void)orderVariantKeys:(_Bool)arg1;
+- (void)setPreventPaddle:(_Bool)arg1;
+- (_Bool)preventPaddle;
 - (void)setGroupNeighbor:(unsigned long long)arg1;
 - (unsigned long long)groupNeighbor;
 - (_Bool)containsDividerVariant;
@@ -60,6 +62,7 @@
 - (_Bool)modifiesKeyplane;
 - (_Bool)avoidsLanguageIndicator;
 - (_Bool)allowRetestAfterCommittingDownActions;
+- (_Bool)allowsDelayedTapForContinuousPathDisambiguation;
 - (_Bool)allowsStartingContinuousPath;
 - (_Bool)isExemptFromInputManagerHitTesting;
 - (_Bool)isExemptFromInputManagerLayout;
@@ -75,6 +78,8 @@
 - (int)splitMode;
 - (void)setDisabled:(_Bool)arg1;
 - (_Bool)disabled;
+- (void)setPopupDirection:(long long)arg1;
+- (long long)popupDirection;
 - (void)setFlickDirection:(long long)arg1;
 - (long long)flickDirection;
 - (id)variantPopupBias;
@@ -102,7 +107,10 @@
 - (int)interactionType;
 - (void)setDisplayType:(int)arg1;
 - (int)displayType;
+- (void)setLocalizationKey:(id)arg1;
 - (id)localizationKey;
+- (void)setSelectedVariantIndices:(id)arg1;
+- (id)selectedVariantIndices;
 - (void)setHighlightedVariantsList:(id)arg1;
 - (id)highlightedVariantsList;
 - (void)setSecondaryRepresentedStrings:(id)arg1;
@@ -127,7 +135,9 @@
 - (id)activeGeometriesList;
 - (void)setGeometriesList:(id)arg1;
 - (id)geometriesList;
+- (id)shapesForKeys:(id)arg1;
 - (id)listShapes;
+- (void)centerKeyplaneInRect:(struct CGRect)arg1 scale:(double)arg2;
 - (id)supplementaryKeyList;
 - (id)attributeSet:(_Bool)arg1;
 - (id)geometrySet:(_Bool)arg1;
@@ -142,13 +152,17 @@
 - (void)insetKeys:(id)arg1 withInsets:(struct UIEdgeInsets)arg2 scale:(double)arg3;
 - (void)resizeKeys:(id)arg1 withOffset:(struct CGPoint)arg2 scale:(double)arg3;
 - (void)repositionKeys:(id)arg1 withOffset:(struct CGPoint)arg2 scale:(double)arg3;
+- (void)centerVerticallyWhilePreservingLayoutWithKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
+- (void)centerHorizontallyWhilePreservingLayoutWithKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
+- (void)centerWhilePreservingLayoutWithKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
 - (void)centerKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
 - (id)_horizontallyCoincidentKeysWithKey:(id)arg1;
 - (void)_mutateKeys:(id)arg1 scale:(double)arg2 withShapeOperation:(CDUnknownBlockType)arg3;
-- (_Bool)addMessagesWriteboardKey;
+- (_Bool)addMessagesWriteboardKeyOrRomanSwitch:(_Bool)arg1;
+- (void)addRomanSwitchToCachedKeyListWithShape:(id)arg1 rendering:(int)arg2;
 - (void)addWriteboardKeyToCachedKeyListWithShape:(id)arg1 rendering:(int)arg2;
-- (_Bool)addMessagesWriteboardKeyIfNoDismissKey;
-- (_Bool)addMessagesWriteboardKeyIfDismissKey;
+- (_Bool)addMessagesWriteboardKeyOrRomanSwitchIfNoDismissKey:(_Bool)arg1;
+- (_Bool)addMessagesWriteboardKeyOrRomanSwitchIfDismissKey:(_Bool)arg1;
 - (id)shapeFromFrame:(struct CGRect)arg1 leftPadding:(double)arg2 rightPadding:(double)arg3;
 - (id)keysetCanContainWriteboardKey;
 - (void)clearManualAddedKey;
@@ -215,6 +229,8 @@
 - (id)_cacheRootNameForKey:(id)arg1;
 - (unsigned long long)numberOfRows;
 - (id)scriptSwitchKey;
+- (id)keyplaneSwitchKeysWithoutCurrentKeyplane:(id)arg1;
+- (id)keyplaneSwitchKeys;
 - (id)firstKeyplaneSwitchKey;
 - (id)firstCachedKeyWithName:(id)arg1;
 - (id)cachedKeysByKeyName:(id)arg1;

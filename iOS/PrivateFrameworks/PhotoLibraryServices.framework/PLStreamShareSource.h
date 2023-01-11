@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, NSURL, PFVideoComplement;
+@class NSData, NSString, NSURL, PFVideoComplement, PLSandboxedURL;
 
 @interface PLStreamShareSource : NSObject
 {
+    PLSandboxedURL *_sandboxedMediaURL;
+    PLSandboxedURL *_sandboxedVideoComplementImageURL;
+    PLSandboxedURL *_sandboxedVideoComplementVideoURL;
     NSData *_mediaData;
     NSString *_fileExtension;
     NSURL *_mediaURL;
@@ -17,12 +20,12 @@
     long long _mediaType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
 @property(retain, nonatomic) PFVideoComplement *videoComplement; // @synthesize videoComplement=_videoComplement;
 @property(retain, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
 @property(retain, nonatomic) NSString *fileExtension; // @synthesize fileExtension=_fileExtension;
 @property(retain, nonatomic) NSData *mediaData; // @synthesize mediaData=_mediaData;
-- (void).cxx_destruct;
 - (id)photoLibrary;
 - (void)cleanupResources;
 - (void)_cleanupIfNeededMediaAtURL:(id)arg1;

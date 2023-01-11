@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 @class NSTimer, PKMapContainer;
-@protocol OS_dispatch_queue;
 
 @interface PKPeerPaymentRecipientCache : NSObject
 {
-    NSObject<OS_dispatch_queue> *_mapAccessQueue;
+    struct os_unfair_lock_s _mapAccessLock;
     PKMapContainer *_mapContainer;
     NSTimer *_mapNeedsWriteTimer;
 }
@@ -20,7 +19,7 @@
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (_Bool)_writeMapToDisk;
-- (void)_setMapNeedsWrite;
+- (void)_locked_setMapNeedsWrite;
 - (void)_updateMapsFromDisk;
 - (void)_handleDiskMapChangedNotification:(id)arg1;
 - (void)_handlePurgedNotification:(id)arg1;

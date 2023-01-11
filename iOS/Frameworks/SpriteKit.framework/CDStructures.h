@@ -1598,16 +1598,15 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long __cap_;
-                    unsigned long long __size_;
                     char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
                 } __l;
                 struct __short {
-                    union {
-                        unsigned char __size_;
-                        char __lx;
-                    } ;
                     char __data_[23];
+                    struct {
+                        unsigned char __size_;
+                    } ;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -2063,16 +2062,15 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
         struct __rep {
             union {
                 struct __long {
-                    unsigned long long __cap_;
-                    unsigned long long __size_;
                     char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
                 } __l;
                 struct __short {
-                    union {
-                        unsigned char __size_;
-                        char __lx;
-                    } ;
                     char __data_[23];
+                    struct {
+                        unsigned char __size_;
+                    } ;
                 } __s;
                 struct __raw {
                     unsigned long long __words[3];
@@ -2080,7 +2078,7 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
             } ;
         } __value_;
     } __r_;
-} basic_string_23d93216;
+} basic_string_90719d97;
 
 typedef struct map<std::__1::basic_string<char>, std::__1::shared_ptr<jet_buffer_pool>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<jet_buffer_pool>>>> {
     struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<jet_buffer_pool>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<jet_buffer_pool>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<jet_buffer_pool>>>> {

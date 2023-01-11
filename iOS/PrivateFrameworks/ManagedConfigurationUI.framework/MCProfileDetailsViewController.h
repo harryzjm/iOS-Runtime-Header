@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
-
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-
-@class MCUIProfile, NSArray, NSString;
+@class MCUIProfile, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface MCProfileDetailsViewController : UITableViewController <PSStateRestoration>
+@interface MCProfileDetailsViewController
 {
     _Bool _showTitleIfOnlyOneSection;
     _Bool _viewControllerCanPop;
@@ -21,14 +17,14 @@ __attribute__((visibility("hidden")))
     NSArray *_sections;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) _Bool viewControllerCanPop; // @synthesize viewControllerCanPop=_viewControllerCanPop;
 @property(nonatomic) _Bool showTitleIfOnlyOneSection; // @synthesize showTitleIfOnlyOneSection=_showTitleIfOnlyOneSection;
 @property(retain, nonatomic) MCUIProfile *UIProfile; // @synthesize UIProfile=_UIProfile;
 @property(nonatomic) double tableViewBottomInset; // @synthesize tableViewBottomInset=_tableViewBottomInset;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
-- (void).cxx_destruct;
-- (void)contentSizeCategoryDidChangeNotification:(id)arg1;
+- (void)_profileChanged:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -36,25 +32,15 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)_profileChanged:(id)arg1;
+- (void)_updateStateForCurrentMode;
 - (void)reloadSectionArray;
 - (void)setUIProfile:(id)arg1 mode:(int)arg2;
 - (void)setProfileDetailsMode:(int)arg1;
-- (_Bool)canBeShownFromSuspendedState;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)didReceiveMemoryWarning;
-- (void)viewDidLoad;
-- (void)dealloc;
 - (void)_setup;
 - (id)initWithStyle:(long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

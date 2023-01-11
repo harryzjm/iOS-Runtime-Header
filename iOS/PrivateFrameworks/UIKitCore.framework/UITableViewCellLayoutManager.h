@@ -97,12 +97,12 @@
 - (struct CGRect)_reorderControlRectForCell:(id)arg1 offscreen:(_Bool)arg2;
 - (struct CGRect)_editControlRectForCell:(id)arg1 offscreen:(_Bool)arg2;
 - (_Bool)_editControlOnSameSideAsReorderControlForCell:(id)arg1;
-- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 forIndentedState:(_Bool)arg2 rowWidth:(double)arg3;
-- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 forIndentedState:(_Bool)arg2;
-- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2 rowWidth:(double)arg3;
-- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2;
-- (struct CGRect)_backgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2 rowWidth:(double)arg3;
-- (struct CGRect)_backgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2;
+- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 rowWidth:(double)arg2;
+- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1;
+- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 rowWidth:(double)arg2;
+- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1;
+- (struct CGRect)_backgroundRectForCell:(id)arg1 rowWidth:(double)arg2;
+- (struct CGRect)_backgroundRectForCell:(id)arg1;
 
 @end
 

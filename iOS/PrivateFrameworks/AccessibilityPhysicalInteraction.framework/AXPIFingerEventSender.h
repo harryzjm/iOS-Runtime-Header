@@ -9,8 +9,10 @@
 @interface AXPIFingerEventSender : NSObject
 {
     _Bool _shouldAddRealEventFlag;
+    unsigned long long _senderID;
 }
 
+@property(nonatomic) unsigned long long senderID; // @synthesize senderID=_senderID;
 @property(nonatomic) _Bool shouldAddRealEventFlag; // @synthesize shouldAddRealEventFlag=_shouldAddRealEventFlag;
 - (id)_assignFingerIdentifiersToTouches:(id)arg1;
 - (void)_sendHandEvent:(unsigned int)arg1 touchesByFingerIdentifier:(id)arg2;

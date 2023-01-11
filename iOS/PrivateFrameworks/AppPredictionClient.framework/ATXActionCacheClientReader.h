@@ -14,11 +14,12 @@
     NSIndexSet *_lockscreenPredictionIndices;
 }
 
-@property(readonly, nonatomic) NSIndexSet *lockscreenPredictionIndices; // @synthesize lockscreenPredictionIndices=_lockscreenPredictionIndices;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSIndexSet *lockscreenPredictionIndices; // @synthesize lockscreenPredictionIndices=_lockscreenPredictionIndices;
 - (id)_getLockScreenPredictionIndices:(id)arg1;
-- (id)actionsWithLimit:(long long)arg1 shouldFilterRecentEngagements:(_Bool)arg2;
+- (id)actionsWithLimit:(long long)arg1 shouldFilterRestrictedAppsAndRecentEngagements:(_Bool)arg2;
 - (id)_predicateForInstalledAndNonEngagedPredictions:(id)arg1;
+- (id)lockscreenPredictionIndicesUpToLimit:(long long)arg1;
 - (id)actionsWithConsumerSubType:(unsigned char)arg1 limit:(long long)arg2;
 - (unsigned long long)chunkCount;
 - (id)initWithChunks:(id)arg1;

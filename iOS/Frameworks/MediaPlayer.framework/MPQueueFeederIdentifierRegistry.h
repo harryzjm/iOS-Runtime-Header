@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class NSMapTable, NSMutableArray;
 
-@interface MPQueueFeederIdentifierRegistry : NSObject <NSSecureCoding>
+@interface MPQueueFeederIdentifierRegistry : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableArray *_identifiers;
     NSMutableArray *_identifierSets;
@@ -18,10 +19,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMapTable *index; // @synthesize index=_index;
 @property(retain, nonatomic) NSMutableArray *identifierSets; // @synthesize identifierSets=_identifierSets;
 @property(retain, nonatomic) NSMutableArray *identifiers; // @synthesize identifiers=_identifiers;
-- (void).cxx_destruct;
 - (id)itemForIdentifierSet:(id)arg1;
 - (id)identifierSetForItem:(id)arg1;
 - (id)identifierSetAtIndex:(long long)arg1;
@@ -30,6 +31,7 @@
 - (void)applyChanges:(id)arg1 identifierSetLookupBlock:(CDUnknownBlockType)arg2;
 - (void)replaceItemAndIdentifierSet:(id)arg1 atIndex:(long long)arg2;
 @property(readonly, nonatomic) long long count;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

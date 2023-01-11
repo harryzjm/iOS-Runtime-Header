@@ -4,11 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CKQLDetailsPreviewController
+#import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface CKQLDetailsPreviewController <QLPreviewControllerDelegate>
 {
 }
 
 - (_Bool)ckCanDismissWhenSuspending;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

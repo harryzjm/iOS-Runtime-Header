@@ -6,15 +6,18 @@
 
 #import <UIKit/UIInputView.h>
 
-@class NSArray, UIToolbar;
+#import <WorkflowUI/UIInputViewAudioFeedback-Protocol.h>
 
-@interface WFKeyboardToolbarAccessoryView : UIInputView
+@class NSArray, NSString, UIToolbar;
+
+@interface WFKeyboardToolbarAccessoryView : UIInputView <UIInputViewAudioFeedback>
 {
     UIToolbar *_toolbar;
 }
 
-@property(readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
+@property(readonly, nonatomic) _Bool enableInputClicksWhenVisible;
 - (void)drawRoundedRectangleInRect:(struct CGRect)arg1 withContext:(struct CGContext *)arg2 color:(id)arg3 radius:(double)arg4;
 - (id)buttonImageWithSize:(struct CGSize)arg1;
 - (id)fixedSpaceItemOfWidth:(double)arg1;
@@ -30,6 +33,12 @@
 - (void)appendBarItem:(id)arg1;
 @property(copy, nonatomic) NSArray *barItems;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -19,8 +19,8 @@
     long long _activeInterfaceOrientation;
 }
 
-@property(nonatomic) long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
 - (void).cxx_destruct;
+@property(nonatomic) long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
 - (long long)_overrideWindowActiveInterfaceOrientation;
 - (long long)_overrideInterfaceOrientationMechanics;
 - (void)_layoutContainerViewControllers:(id)arg1;
@@ -28,11 +28,13 @@
 - (long long)_requiredInterfaceOrientationForContainerViewController:(id)arg1;
 - (long long)_interfaceOrientationForContainerViewController:(id)arg1;
 - (long long)interfaceOrientationForContainerViewController:(id)arg1;
+- (id)containerViewControllerForPictureInPictureViewController:(id)arg1;
 - (void)removeContainerViewController:(id)arg1;
 - (void)addContainerViewController:(id)arg1;
 @property(readonly, nonatomic) NSArray *containerViewControllers;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
+- (_Bool)_hasOngoingMorphRestore;
 - (void)containerViewControllerRequiredInterfaceOrientationDidChange:(id)arg1;
 - (void)containerViewControllerRelinquishInterfaceOrientationLock:(id)arg1;
 - (void)containerViewControllerAcquireInterfaceOrientationLock:(id)arg1;

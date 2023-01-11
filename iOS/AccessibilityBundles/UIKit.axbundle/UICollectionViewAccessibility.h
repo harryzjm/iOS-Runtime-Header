@@ -11,7 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilitySetSelectedChildren:(id)arg1;
+- (id)_accessibilitySelectedChildren;
 - (id)accessibilityElementForRow:(unsigned long long)arg1 andColumn:(unsigned long long)arg2;
+- (id)_fulfillPromisedFocusRegionForCell:(id)arg1;
+- (void)_axSetShouldIgnorePromiseRegions:(_Bool)arg1;
+- (_Bool)_axGetShouldIgnorePromiseRegions;
 - (id)preferredFocusedView;
 - (_Bool)canBecomeFocused;
 - (_Bool)_accessibilityKeyCommandsShouldOverrideKeyCommands;
@@ -20,6 +25,7 @@
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (id)_accessibilitySupplementaryHeaderViewAtIndexPath:(id)arg1;
 - (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityCollectionViewSupplementaryViews;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_axIndexBar;
 - (id)_accessibilityReusableViewForOpaqueElement:(id)arg1;
@@ -28,6 +34,8 @@
 - (struct CGRect)_accessibilityBoundsOfCellsToLoad;
 - (void)_accessibilityEnsureViewsAroundAreLoaded;
 - (struct CGRect)_visibleBounds;
+- (id)_accessibilitySortedViewChildrenWithOptions:(id)arg1;
+- (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityScannerGroupElementsGroupedByRow;
 - (id)_accessibilityGroupIdentifier;
@@ -73,11 +81,15 @@
 - (id)axData;
 - (void)dealloc;
 - (_Bool)_accessibilityShouldUseCollectionViewCellAccessibilityElements;
-- (void)setAccessibilityShouldBypassColletionViewAccessibility:(_Bool)arg1;
+- (void)setAccessibilityShouldBypassCollectionViewAccessibility:(_Bool)arg1;
 - (_Bool)accessibilityCollectionViewBehavesLikeUIViewAccessibility;
 - (unsigned long long)_accessibilityAutomationType;
 - (void)setAccessibilityShouldSpeakItemReorderEvents:(_Bool)arg1;
 - (_Bool)accessibilityShouldSpeakItemReorderEvents;
+- (void)_axSetIsReorderingItems:(_Bool)arg1;
+- (_Bool)_axIsReorderingItems;
+- (void)_axSetSpeakItemReorderEvents:(id)arg1;
+- (id)_axSpeakItemReorderEvents;
 
 @end
 

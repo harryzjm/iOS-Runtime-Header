@@ -55,6 +55,7 @@
     double _selectionHighlightContinuousCornerRadius;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_alignActionSeparatorLeadingEdgeWithContent, setter=_setAlignActionSeparatorLeadingEdgeWithContent:) _Bool alignActionSeparatorLeadingEdgeWithContent; // @synthesize alignActionSeparatorLeadingEdgeWithContent=_alignActionSeparatorLeadingEdgeWithContent;
 @property(nonatomic, getter=_selectionHighlightContinuousCornerRadius, setter=_setSelectionHighlightContinuousCornerRadius:) double selectionHighlightContinuousCornerRadius; // @synthesize selectionHighlightContinuousCornerRadius=_selectionHighlightContinuousCornerRadius;
 @property(nonatomic, getter=_drawsBackground, setter=_setDrawsBackground:) _Bool drawsBackground; // @synthesize drawsBackground=_drawsBackground;
@@ -85,7 +86,6 @@
 @property(readonly, nonatomic) UIInterfaceActionGroup *actionGroup; // @synthesize actionGroup=_actionGroup;
 @property(nonatomic, getter=isSpringLoaded) _Bool springLoaded; // @synthesize springLoaded=_springLoaded;
 @property(nonatomic) __weak id <UIInterfaceActionVisualStyleProviding> visualStyleProvider; // @synthesize visualStyleProvider=_visualStyleProvider;
-- (void).cxx_destruct;
 - (id)_alertController;
 - (_Bool)_isCornerRadiusDisplayEnabled;
 - (struct CGRect)_contentEdgeFrame;
@@ -174,6 +174,7 @@
 - (id)_initWithActionGroup:(id)arg1 visualStyleProvider:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;
 - (id)initWithActionGroup:(id)arg1 actionHandlerInvocationDelegate:(id)arg2;
 - (void)_commonInitWithActionGroup:(id)arg1 visualStyleProvider:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;
+- (void)setFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

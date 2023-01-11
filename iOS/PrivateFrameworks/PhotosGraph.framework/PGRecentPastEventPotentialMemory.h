@@ -9,18 +9,18 @@
 @interface PGRecentPastEventPotentialMemory
 {
     _Bool _isBirthday;
-    NSSet *_peopleNodes;
+    NSSet *_personNodes;
     double _meanContentScore;
     double _neighborScore;
 }
 
+- (void).cxx_destruct;
 @property _Bool isBirthday; // @synthesize isBirthday=_isBirthday;
 @property double neighborScore; // @synthesize neighborScore=_neighborScore;
 @property double meanContentScore; // @synthesize meanContentScore=_meanContentScore;
-@property(retain) NSSet *peopleNodes; // @synthesize peopleNodes=_peopleNodes;
-- (void).cxx_destruct;
+@property(retain) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 - (id)description;
-- (void)computeRemainingScoresWithManager:(id)arg1 controller:(id)arg2 previousPotentialMemory:(id)arg3;
+- (void)computeRemainingScoresWithController:(id)arg1 previousPotentialMemory:(id)arg2;
 - (id)initWithCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2 momentNodes:(id)arg3 sourceType:(long long)arg4;
 - (id)initWithAssetCollection:(id)arg1 momentNode:(id)arg2 subcategory:(unsigned long long)arg3;
 

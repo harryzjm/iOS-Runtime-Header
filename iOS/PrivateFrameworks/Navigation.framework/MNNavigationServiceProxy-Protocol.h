@@ -6,22 +6,21 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedWaypoint, MNActiveRouteInfo, MNAudioOutputSetting, MNSettings, MNStartNavigationDetails, MNTrafficIncidentAlertDetails, NSArray, NSData, NSString, NSUUID;
+@class GEOComposedWaypoint, MNActiveRouteInfo, MNAudioOutputSetting, MNSettings, MNStartNavigationDetails, MNTrafficIncidentAlert, NSArray, NSData, NSString, NSUUID;
 
 @protocol MNNavigationServiceProxy <NSObject>
 - (void)checkinForNavigationService:(void (^)(char *))arg1;
 - (void)resumeRealtimeUpdatesForSubscriber:(NSUUID *)arg1;
 - (void)pauseRealtimeUpdatesForSubscriber:(NSUUID *)arg1;
-- (void)updateGuidanceWithData:(NSData *)arg1 reply:(void (^)(_Bool))arg2;
 - (void)interfaceHashesWithHandler:(void (^)(unsigned long long, unsigned long long))arg1;
 - (void)recordPedestrianTracePath:(NSString *)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(NSData *)arg1;
 - (void)setTracePosition:(double)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTraceIsPlaying:(_Bool)arg1;
-- (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlertDetails:(MNTrafficIncidentAlertDetails *)arg2;
+- (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
 - (void)setGuidancePromptsEnabled:(_Bool)arg1;

@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXImageDataSpecRegistration-Protocol.h>
 
-@class NSMutableIndexSet, NSString, PXGViewEnvironment;
+@class NSIndexSet, NSMutableIndexSet, NSString, PXGViewEnvironment;
 @protocol OS_dispatch_queue, PXGTextureProviderDelegate;
 
 @interface PXGTextureProvider : NSObject <PXImageDataSpecRegistration>
@@ -22,19 +22,26 @@
     CDStruct_1b544862 _lastImageDataSpec;
     long long _lastImageDataSpecIndex;
     NSMutableIndexSet *_requestIDsPendingCancellation;
+    _Bool _lowMemoryMode;
     PXGViewEnvironment *_viewEnvironment;
+    NSIndexSet *_requestIDsInTargetRect;
     id <PXGTextureProviderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_requestQueue;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
-    CDStruct_04522d6a _interactionState;
+    CDStruct_a02a4563 _interactionState;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 @property(nonatomic) __weak id <PXGTextureProviderDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) CDStruct_04522d6a interactionState; // @synthesize interactionState=_interactionState;
+@property(copy, nonatomic) NSIndexSet *requestIDsInTargetRect; // @synthesize requestIDsInTargetRect=_requestIDsInTargetRect;
+@property(nonatomic) _Bool lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
+@property(nonatomic) CDStruct_a02a4563 interactionState; // @synthesize interactionState=_interactionState;
 @property(retain, nonatomic) PXGViewEnvironment *viewEnvironment; // @synthesize viewEnvironment=_viewEnvironment;
-- (void).cxx_destruct;
+- (void)clearTextureAtlasManagerCache;
 - (void)setTextureAtlasManager:(id)arg1 atSpecIndex:(long long)arg2;
 - (id)textureAtlasManagerAtSpecIndex:(long long)arg1;
 - (long long)requestQueue_indexForImageDataSpec:(CDStruct_1b544862)arg1;
@@ -57,7 +64,9 @@
 - (void)didFinishRequestingTextures;
 - (void)cancelTextureRequests:(id)arg1;
 - (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
-- (void)interactionStateDidChange:(CDStruct_04522d6a)arg1;
+- (void)releaseCachedResources;
+- (void)lowMemoryModeDidChange;
+- (void)interactionStateDidChange:(CDStruct_a02a4563)arg1;
 - (void)viewEnvironmentDidChange:(id)arg1;
 - (void)dealloc;
 - (id)init;

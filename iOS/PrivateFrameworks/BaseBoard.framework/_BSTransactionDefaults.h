@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)sharedInstance;
 - (void)_bindAndRegisterDefaults;
 
 // Remaining properties

@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOABClientConfig : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_assignedAbBranchId;
     NSMutableArray *_configKeyValues;
     NSMutableArray *_debugExperimentBranchs;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_assignedAbBranchId:1;
         unsigned int read_configKeyValues:1;
         unsigned int read_debugExperimentBranchs:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_assignedAbBranchId:1;
-        unsigned int wrote_configKeyValues:1;
-        unsigned int wrote_debugExperimentBranchs:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,25 +44,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)debugExperimentBranchAtIndex:(unsigned long long)arg1;
 - (unsigned long long)debugExperimentBranchsCount;
-- (void)_addNoFlagsDebugExperimentBranch:(id)arg1;
 - (void)addDebugExperimentBranch:(id)arg1;
 - (void)clearDebugExperimentBranchs;
 @property(retain, nonatomic) NSMutableArray *debugExperimentBranchs;
-- (void)_readDebugExperimentBranchs;
 @property(retain, nonatomic) NSString *assignedAbBranchId;
 @property(readonly, nonatomic) _Bool hasAssignedAbBranchId;
-- (void)_readAssignedAbBranchId;
 - (id)configKeyValueAtIndex:(unsigned long long)arg1;
 - (unsigned long long)configKeyValuesCount;
-- (void)_addNoFlagsConfigKeyValue:(id)arg1;
 - (void)addConfigKeyValue:(id)arg1;
 - (void)clearConfigKeyValues;
 @property(retain, nonatomic) NSMutableArray *configKeyValues;
-- (void)_readConfigKeyValues;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

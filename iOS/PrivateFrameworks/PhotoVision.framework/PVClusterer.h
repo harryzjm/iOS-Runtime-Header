@@ -8,15 +8,15 @@
 
 #import <PhotoVision/PVFaceClusteringProtocol-Protocol.h>
 
-@class NSDate, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSURL, PVCanceler, PVContext, PVDataAccessor, PVEventManager, PVQueue, PVSuggestionRequest, VNCanceller, VNClustererBuilder;
-@protocol PVVisionIntegrating;
+@class NSDate, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSURL, PVCanceler, PVContext, PVEventManager, PVQueue, PVSuggestionRequest, VNCanceller, VNClustererBuilder;
+@protocol PVPersistenceDelegate, PVVisionIntegrating;
 
 @interface PVClusterer : NSObject <PVFaceClusteringProtocol>
 {
     id <PVVisionIntegrating> _visionIntegration;
+    id <PVPersistenceDelegate> _persistenceDelegate;
     PVQueue *_processingQueue;
     PVContext *_context;
-    PVDataAccessor *_dataAccessor;
     NSURL *_cacheDirUrl;
     NSURL *_cacheFileUrl;
     NSString *_clusteringType;
@@ -46,9 +46,9 @@
 
 + (_Bool)removeClusteringStateCacheWithContext:(id)arg1 cacheDirectoryUrl:(id)arg2 error:(id *)arg3;
 + (void)initialize;
+- (void).cxx_destruct;
 @property __weak PVEventManager *eventManager; // @synthesize eventManager=_eventManager;
 @property(nonatomic) long long clustererBringUpState; // @synthesize clustererBringUpState=_clustererBringUpState;
-- (void).cxx_destruct;
 - (id)distancesFromClustersIdentifiedByFaceCSNs:(id)arg1 toClustersIdentifiedByFaceCSNs:(id)arg2 error:(id *)arg3;
 - (id)distanceBetweenLevel0ClusterIdentifiedByFaceCSN:(unsigned long long)arg1 andLevel0ClusterIdentifiedByFaceCSN:(unsigned long long)arg2 error:(id *)arg3;
 - (id)level0ClusterAsFaceCSNsByLevel0KeyFaceCSNForClusterIdentifiedByFaceCSN:(unsigned long long)arg1 error:(id *)arg2;
@@ -68,7 +68,7 @@
 - (void)cancelSuggestionRequest:(id)arg1;
 - (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 withClusteringFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (id)suggestedFaceClusterSequenceNumbersForFaceClusterSequenceNumbersRepresentingClusters:(id)arg1 error:(id *)arg2;
-- (long long)restoreClusterCacheAndSyncWithLibrary:(_Bool)arg1;
+- (long long)restoreClusterCacheAndSyncWithLibrary:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)_processingQueueRestoreClusterCacheAndSyncWithLibrary:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)_processingQueueRestoreFromClusterSnapshotFileAtURL:(id)arg1 error:(id *)arg2;
 - (void)_removeVisionClusterCacheFilesNotReferencedByVisionClusterState:(id)arg1;
@@ -82,7 +82,7 @@
 - (void)_processingQueueQuickSyncClustererWithPhotoLibraryUsingFacesInClusterCache:(id)arg1 visionClusters:(id *)arg2 withCanceler:(id)arg3;
 - (void)_removeEmptyGroups;
 - (id)_faceObservationsFromFaces:(id)arg1 assignClusterSeqNumberIfNeeded:(_Bool)arg2 updatedFaces:(id)arg3;
-- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(_Bool)arg2 updatedFaces:(id)arg3 excludeClustered:(_Bool)arg4 groupingIdentifiers:(id)arg5;
+- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(_Bool)arg2 updatedFaces:(id)arg3 groupingIdentifiers:(id)arg4;
 - (id)_faceObservationsFromFaceCSNs:(id)arg1;
 - (_Bool)_performAndPersistClustersByAddingFaceObs:(id)arg1 groupingIdentifiers:(id)arg2 removingFaceObs:(id)arg3 updateFaces:(id)arg4 canceler:(id)arg5 error:(id *)arg6;
 - (id)status;
@@ -101,8 +101,7 @@
 - (void)scheduleClusteringAfterRemovingFaceCSNs:(id)arg1 addingFaceIdStrs:(id)arg2;
 - (void)_processingQueueDetermineNextClusterTriggeringAccumulatedChangesCountIfNecessary;
 - (void)terminate;
-- (id)_persistenceDelegate;
-- (id)initWithContext:(id)arg1 dataAccessor:(id)arg2 cacheDirectoryURL:(id)arg3 visionIntegration:(id)arg4;
+- (id)initWithContext:(id)arg1 persistenceDelegate:(id)arg2 cacheDirectoryURL:(id)arg3 visionIntegration:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

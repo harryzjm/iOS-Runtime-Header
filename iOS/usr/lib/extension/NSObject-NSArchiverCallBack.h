@@ -7,6 +7,9 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (NSArchiverCallBack)
++ (const char *)_localClassNameForClass;
++ (struct objc_method_description *)methodDescriptionForSelector:(SEL)arg1;
++ (struct objc_method_description *)instanceMethodDescriptionForSelector:(SEL)arg1;
 + (id)_createMutableArrayValueGetterWithContainerClassID:(id)arg1 key:(id)arg2;
 + (_Bool)accessInstanceVariablesDirectly;
 + (id)_createValuePrimitiveSetterWithContainerClassID:(id)arg1 key:(id)arg2;
@@ -26,12 +29,29 @@
 + (Class)classForKeyedUnarchiver;
 + (void)cancelPreviousPerformRequestsWithTarget:(id)arg1;
 + (void)cancelPreviousPerformRequestsWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
-+ (const char *)_localClassNameForClass;
-+ (struct objc_method_description *)methodDescriptionForSelector:(SEL)arg1;
-+ (struct objc_method_description *)instanceMethodDescriptionForSelector:(SEL)arg1;
 + (id)replacementObjectForPortCoder:(id)arg1;
 - (id)replacementObjectForArchiver:(id)arg1;
 - (Class)classForArchiver;
+- (const char *)_localClassNameForClass;
+- (_Bool)_conformsToProtocolNamed:(const char *)arg1;
+- (struct objc_method_description *)methodDescriptionForSelector:(SEL)arg1;
+- (void)setObservation:(id)arg1 forObservingKeyPath:(id)arg2;
+- (void)removeObservation:(id)arg1 forObservableKeyPath:(id)arg2;
+- (id)addObserver:(id)arg1 forObservableKeyPath:(id)arg2;
+- (void)_receiveBox:(id)arg1;
+- (void)removeObservation:(id)arg1;
+- (id)addObserver:(id)arg1;
+- (void)receiveObservedValue:(id)arg1;
+- (void)receiveObservedError:(id)arg1;
+- (_Bool)_isToManyChangeInformation;
+- (void)_destroyObserverList;
+- (void *)_observerStorageOfSize:(unsigned long long)arg1;
+- (id *)_observerStorage;
+- (id)addObservationTransformer:(CDUnknownBlockType)arg1;
+- (id)addObserverBlock:(CDUnknownBlockType)arg1;
+- (id)addChainedObservers:(id)arg1;
+- (void)finishObserving;
+- (_Bool)_overrideUseFastBlockObservers;
 - (void)setValuesForKeysWithDictionary:(id)arg1;
 - (id)dictionaryWithValuesForKeys:(id)arg1;
 - (void)setNilValueForKey:(id)arg1;
@@ -77,9 +97,6 @@
 - (id)replacementObjectForKeyedArchiver:(id)arg1;
 @property(readonly) Class classForKeyedArchiver;
 @property(readonly, retain) id autoContentAccessingProxy;
-- (void)setObservation:(id)arg1 forObservingKeyPath:(id)arg2;
-- (void)removeObservation:(id)arg1 forObservableKeyPath:(id)arg2;
-- (id)addObserver:(id)arg1 forObservableKeyPath:(id)arg2;
 - (void)performSelector:(SEL)arg1 withObject:(id)arg2 afterDelay:(double)arg3 inModes:(id)arg4;
 - (void)performSelector:(SEL)arg1 object:(id)arg2 afterDelay:(double)arg3;
 - (void)performSelector:(SEL)arg1 withObject:(id)arg2 afterDelay:(double)arg3;
@@ -88,23 +105,6 @@
 - (void)performSelectorOnMainThread:(SEL)arg1 withObject:(id)arg2 waitUntilDone:(_Bool)arg3;
 - (void)performSelectorOnMainThread:(SEL)arg1 withObject:(id)arg2 waitUntilDone:(_Bool)arg3 modes:(id)arg4;
 - (void)performSelector:(SEL)arg1 onThread:(id)arg2 withObject:(id)arg3 waitUntilDone:(_Bool)arg4 modes:(id)arg5;
-- (void)_receiveBox:(id)arg1;
-- (void)removeObservation:(id)arg1;
-- (id)addObserver:(id)arg1;
-- (void)receiveObservedValue:(id)arg1;
-- (void)receiveObservedError:(id)arg1;
-- (_Bool)_isToManyChangeInformation;
-- (void)_destroyObserverList;
-- (void *)_observerStorageOfSize:(unsigned long long)arg1;
-- (id *)_observerStorage;
-- (id)addObservationTransformer:(CDUnknownBlockType)arg1;
-- (id)addObserverBlock:(CDUnknownBlockType)arg1;
-- (id)addChainedObservers:(id)arg1;
-- (void)finishObserving;
-- (_Bool)_overrideUseFastBlockObservers;
-- (const char *)_localClassNameForClass;
-- (_Bool)_conformsToProtocolNamed:(const char *)arg1;
-- (struct objc_method_description *)methodDescriptionForSelector:(SEL)arg1;
 - (id)replacementObjectForPortCoder:(id)arg1;
 - (Class)classForPortCoder;
 @end

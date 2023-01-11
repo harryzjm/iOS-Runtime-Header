@@ -4,11 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Intents/INRecurrenceRule.h>
+#import <objc/NSObject.h>
 
-@interface GKRecurrenceRule : INRecurrenceRule
+#import <GameCenterFoundation/NSCopying-Protocol.h>
+#import <GameCenterFoundation/NSSecureCoding-Protocol.h>
+
+@interface GKRecurrenceRule : NSObject <NSCopying, NSSecureCoding>
 {
+    unsigned long long _interval;
+    long long _frequency;
 }
+
++ (_Bool)supportsSecureCoding;
+@property long long frequency; // @synthesize frequency=_frequency;
+@property unsigned long long interval; // @synthesize interval=_interval;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithInterval:(unsigned long long)arg1 frequency:(long long)arg2;
 
 @end
 

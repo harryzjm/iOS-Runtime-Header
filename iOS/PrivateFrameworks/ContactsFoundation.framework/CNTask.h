@@ -21,9 +21,10 @@
 + (id)taskWithName:(id)arg1 subtasks:(id)arg2;
 + (id)taskWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (id)taskWithBlock:(CDUnknownBlockType)arg1;
-@property(copy) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+@property(copy) NSString *name; // @synthesize name=_name;
 - (id)description;
+- (id)profileWithTimeProvider:(id)arg1 os_log:(id)arg2;
 - (id)recover:(CDUnknownBlockType)arg1;
 - (id)map:(CDUnknownBlockType)arg1;
 - (id)flatMap:(CDUnknownBlockType)arg1;

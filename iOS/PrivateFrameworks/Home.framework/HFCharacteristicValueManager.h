@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFLightProfileValueSource-Protocol.h>
 
-@class HFCharacteristicReadLogger, HFCharacteristicValueTransaction, NACancelationToken, NAFuture, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
+@class HFCharacteristicReadLogger, HFCharacteristicValueCacheManager, HFCharacteristicValueTransaction, NACancelationToken, NAFuture, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
 @protocol HFCharacteristicOperationContextProviding, HFCharacteristicValueReader, HFCharacteristicValueWriter;
 
-@interface HFCharacteristicValueManager : NSObject <HFCharacteristicValueSource>
+@interface HFCharacteristicValueManager : NSObject <HFLightProfileValueSource, HFCharacteristicValueSource>
 {
     id <HFCharacteristicValueReader> _valueReader;
     id <HFCharacteristicValueWriter> _valueWriter;
@@ -26,6 +27,7 @@
     NSMutableDictionary *_cachedReadErrorsKeyedByCharacteristicIdentifier;
     NSMutableDictionary *_cachedWriteErrorsKeyedByCharacteristicIdentifier;
     NSMutableDictionary *_cachedExecutionErrorsKeyedByActionSetIdentifier;
+    HFCharacteristicValueCacheManager *_cacheManager;
     NACancelationToken *_inFlightReadCancelationToken;
     HFCharacteristicReadLogger *_readsCompleteLogger;
     NAFuture *_firstReadCompleteFuture;
@@ -33,9 +35,11 @@
 
 + (id)na_identity;
 + (_Bool)_shouldTrackReadsCompleteForPerformanceTesting;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NAFuture *firstReadCompleteFuture; // @synthesize firstReadCompleteFuture=_firstReadCompleteFuture;
 @property(retain, nonatomic) HFCharacteristicReadLogger *readsCompleteLogger; // @synthesize readsCompleteLogger=_readsCompleteLogger;
 @property(retain, nonatomic) NACancelationToken *inFlightReadCancelationToken; // @synthesize inFlightReadCancelationToken=_inFlightReadCancelationToken;
+@property(retain, nonatomic) HFCharacteristicValueCacheManager *cacheManager; // @synthesize cacheManager=_cacheManager;
 @property(retain, nonatomic) NSMutableDictionary *cachedExecutionErrorsKeyedByActionSetIdentifier; // @synthesize cachedExecutionErrorsKeyedByActionSetIdentifier=_cachedExecutionErrorsKeyedByActionSetIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *cachedWriteErrorsKeyedByCharacteristicIdentifier; // @synthesize cachedWriteErrorsKeyedByCharacteristicIdentifier=_cachedWriteErrorsKeyedByCharacteristicIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *cachedReadErrorsKeyedByCharacteristicIdentifier; // @synthesize cachedReadErrorsKeyedByCharacteristicIdentifier=_cachedReadErrorsKeyedByCharacteristicIdentifier;
@@ -49,7 +53,6 @@
 @property(nonatomic) long long _debug_totalNumberOfIssuedBatchReadRequests; // @synthesize _debug_totalNumberOfIssuedBatchReadRequests=__debug_totalNumberOfIssuedBatchReadRequests;
 @property(retain, nonatomic) id <HFCharacteristicValueWriter> valueWriter; // @synthesize valueWriter=_valueWriter;
 @property(retain, nonatomic) id <HFCharacteristicValueReader> valueReader; // @synthesize valueReader=_valueReader;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) id <HFCharacteristicOperationContextProviding> contextProvider;
@@ -88,6 +91,10 @@
 @property(readonly, copy, nonatomic) NSSet *characteristicsWithPendingReads;
 @property(readonly, copy, nonatomic) NSSet *allReadCharacteristics;
 - (id)initWithValueReader:(id)arg1 valueWriter:(id)arg2;
+- (void)fetchNaturalLightColorTemperatureForBrightness:(long long)arg1 lightProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)writeNaturalLightEnabledState:(_Bool)arg1 forProfile:(id)arg2;
+- (_Bool)isNaturalLightingEnabledForProfile:(id)arg1;
+- (_Bool)isNaturalLightingSupportedForProfile:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

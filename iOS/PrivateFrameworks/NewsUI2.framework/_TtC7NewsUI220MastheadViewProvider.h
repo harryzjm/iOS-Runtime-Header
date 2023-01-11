@@ -4,20 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
-@class MISSING_TYPE, UIView;
+#import <NewsUI2/TSMastheadViewProviderType-Protocol.h>
 
-@interface _TtC7NewsUI220MastheadViewProvider : _TtCs12_SwiftObject
+@class MISSING_TYPE;
+
+@interface _TtC7NewsUI220MastheadViewProvider : NSObject <TSMastheadViewProviderType>
 {
     MISSING_TYPE *mastheadView;
-    MISSING_TYPE *renderer;
+    MISSING_TYPE *titleViewStyler;
     MISSING_TYPE *layoutAttributesFactory;
-    MISSING_TYPE *model;
     MISSING_TYPE *margins;
+    MISSING_TYPE *model;
 }
 
-@property(nonatomic, readonly) UIView *view;
+- (void).cxx_destruct;
+- (id)init;
+- (long long)layoutVariantForTraitCollection:(id)arg1;
+- (struct UIEdgeInsets)layoutMarginForLayoutOptions:(id)arg1;
+- (double)heightForLayoutOptions:(id)arg1;
+- (void)layoutWithBridgedLayoutOptions:(id)arg1;
 
 @end
 

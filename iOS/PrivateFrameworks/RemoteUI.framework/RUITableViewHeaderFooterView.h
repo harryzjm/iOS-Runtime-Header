@@ -13,8 +13,9 @@
     UITableView *_tableView;
 }
 
-@property __weak UITableView *tableView; // @synthesize tableView=_tableView;
 - (void).cxx_destruct;
+@property __weak UITableView *tableView; // @synthesize tableView=_tableView;
+- (struct UIEdgeInsets)insetsForHeaderFooter;
 - (void)layoutSubviews;
 
 @end

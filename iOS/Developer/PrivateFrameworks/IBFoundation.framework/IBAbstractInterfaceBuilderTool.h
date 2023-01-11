@@ -15,7 +15,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)renderImagesForRequests:(id)arg1;
+- (id)renderImageAndLayoutInfosForRequests:(id)arg1;
 - (id)loadBuiltLiveViewBundleInstances:(id)arg1;
 - (id)_resultByLoadingUnloadedBundleInstance:(id)arg1;
 - (id)_errorResultForFailingToLoadBundle:(id)arg1 viaNSBundleWithError:(id)arg2;

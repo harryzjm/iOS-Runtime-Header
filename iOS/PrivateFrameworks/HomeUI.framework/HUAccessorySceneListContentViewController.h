@@ -13,18 +13,20 @@
 {
     _Bool _includeTopMargin;
     _Bool _persistAddedSuggestions;
+    id <HUAccessorySceneListContentViewControllerDelegate> _delegate;
     unsigned long long _contentSource;
     unsigned long long _selectionType;
     HFItem<HFServiceLikeItem> *_serviceLikeItem;
 }
 
 + (id)computeNumberOfItemsToDisplayForContentSource:(unsigned long long)arg1 serviceLikeItem:(id)arg2 home:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool persistAddedSuggestions; // @synthesize persistAddedSuggestions=_persistAddedSuggestions;
 @property(nonatomic) _Bool includeTopMargin; // @synthesize includeTopMargin=_includeTopMargin;
 @property(readonly, copy, nonatomic) HFItem<HFServiceLikeItem> *serviceLikeItem; // @synthesize serviceLikeItem=_serviceLikeItem;
 @property(readonly, nonatomic) unsigned long long selectionType; // @synthesize selectionType=_selectionType;
 @property(readonly, nonatomic) unsigned long long contentSource; // @synthesize contentSource=_contentSource;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <HUAccessorySceneListContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
@@ -39,7 +41,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(nonatomic) __weak id <HUAccessorySceneListContentViewControllerDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) HUAccessorySceneListContentItemManager *itemManager; // @dynamic itemManager;

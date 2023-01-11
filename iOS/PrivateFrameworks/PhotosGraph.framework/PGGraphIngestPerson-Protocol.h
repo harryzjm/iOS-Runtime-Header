@@ -10,7 +10,7 @@
 
 @protocol PGGraphIngestPerson <NSObject>
 @property(readonly, nonatomic) NSDictionary *locationsByAddressTypes;
-@property(readonly, nonatomic) unsigned long long gender;
+@property(readonly, nonatomic) unsigned long long sex;
 @property(readonly, nonatomic) unsigned long long ageCategory;
 @property(readonly, nonatomic) unsigned long long relationship;
 @property(readonly, nonatomic) NSDate *anniversaryDate;

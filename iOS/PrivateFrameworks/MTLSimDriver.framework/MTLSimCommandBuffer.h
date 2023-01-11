@@ -10,7 +10,7 @@
 #import <MTLSimDriver/MTLSerializerCommandStream-Protocol.h>
 
 @class MTLResourceList, NSDictionary, NSError, NSMutableDictionary, NSString;
-@protocol MTLCommandQueue, MTLDevice;
+@protocol MTLCommandQueue, MTLDevice, MTLLogContainer;
 
 __attribute__((visibility("hidden")))
 @interface MTLSimCommandBuffer : _MTLCommandBuffer <MTLCommandBufferSPI, MTLSerializerCommandStream>
@@ -53,6 +53,9 @@ __attribute__((visibility("hidden")))
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
+- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoder;
 - (id)blitCommandEncoder;
 - (_Bool)commitAndWaitUntilSubmitted;
@@ -67,12 +70,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) NSError *error;
+@property(readonly) unsigned long long errorOptions;
 @property(readonly) unsigned long long globalTraceObjectID;
 @property(readonly) unsigned long long hash;
 @property(readonly) double kernelEndTime;
 @property(readonly) double kernelStartTime;
 @property(copy) NSString *label;
-@property(nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property(readonly, nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property(readonly) id <MTLLogContainer> logs;
 @property(getter=isProfilingEnabled) _Bool profilingEnabled;
 @property(readonly) NSDictionary *profilingResults;
 @property(readonly) _Bool retainedReferences;

@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBViewMorphAnimatorObserver-Protocol.h>
 
-@class BSTimer, NSHashTable, NSString, NSUUID, SBHomeGestureSettings, SBViewMorphAnimatorContentClippingView, UIView;
+@class BSTimer, NSHashTable, NSString, NSUUID, SBHomeGestureSettings, SBViewMorphAnimatorContentBlackCurtainView, SBViewMorphAnimatorContentClippingView, UIView;
 @protocol SBViewMorphAnimatorDataSource;
 
 @interface SBViewMorphAnimator : NSObject <SBViewMorphAnimatorObserver>
@@ -22,7 +22,10 @@
     UIView *_sourceContentView;
     UIView *_targetView;
     UIView *_targetContentView;
+    long long _fromOrientation;
+    long long _toOrientation;
     id <SBViewMorphAnimatorDataSource> _targetDataSource;
+    long long _direction;
     double _sourceFinalScale;
     double _targetCornerRadius;
     NSHashTable *_observers;
@@ -35,6 +38,7 @@
     BSTimer *_sourceAnimationsCompletionContinueBlockTimeoutTimer;
     SBHomeGestureSettings *_homeGestureSettings;
     SBViewMorphAnimatorContentClippingView *_sourceContentClippingView;
+    SBViewMorphAnimatorContentBlackCurtainView *_sourceBlackCurtainView;
     SBViewMorphAnimatorContentClippingView *_targetContentClippingView;
     struct CGPoint _sourceFinalCenter;
     struct CGRect _sourceContentFrame;
@@ -42,11 +46,15 @@
     struct CGRect _targetFinalFrame;
     struct CGRect _sourceContentClippingViewInitialFrame;
     struct CGRect _targetContentClippingViewInitialFrame;
+    struct CGRect _sourceAppLayoutFrame;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) struct CGRect sourceAppLayoutFrame; // @synthesize sourceAppLayoutFrame=_sourceAppLayoutFrame;
 @property(nonatomic) struct CGRect targetContentClippingViewInitialFrame; // @synthesize targetContentClippingViewInitialFrame=_targetContentClippingViewInitialFrame;
 @property(retain, nonatomic) SBViewMorphAnimatorContentClippingView *targetContentClippingView; // @synthesize targetContentClippingView=_targetContentClippingView;
 @property(nonatomic) struct CGRect sourceContentClippingViewInitialFrame; // @synthesize sourceContentClippingViewInitialFrame=_sourceContentClippingViewInitialFrame;
+@property(retain, nonatomic) SBViewMorphAnimatorContentBlackCurtainView *sourceBlackCurtainView; // @synthesize sourceBlackCurtainView=_sourceBlackCurtainView;
 @property(retain, nonatomic) SBViewMorphAnimatorContentClippingView *sourceContentClippingView; // @synthesize sourceContentClippingView=_sourceContentClippingView;
 @property(nonatomic) __weak SBHomeGestureSettings *homeGestureSettings; // @synthesize homeGestureSettings=_homeGestureSettings;
 @property(retain, nonatomic) BSTimer *sourceAnimationsCompletionContinueBlockTimeoutTimer; // @synthesize sourceAnimationsCompletionContinueBlockTimeoutTimer=_sourceAnimationsCompletionContinueBlockTimeoutTimer;
@@ -65,18 +73,21 @@
 @property(readonly, nonatomic) struct CGRect sourceContentFrame; // @synthesize sourceContentFrame=_sourceContentFrame;
 @property(readonly, nonatomic) double sourceFinalScale; // @synthesize sourceFinalScale=_sourceFinalScale;
 @property(readonly, nonatomic) struct CGPoint sourceFinalCenter; // @synthesize sourceFinalCenter=_sourceFinalCenter;
+@property(nonatomic) long long direction; // @synthesize direction=_direction;
 @property(nonatomic) _Bool automaticallyStartTargetAnimations; // @synthesize automaticallyStartTargetAnimations=_automaticallyStartTargetAnimations;
 @property(nonatomic) _Bool automaticallyStartSourceAnimations; // @synthesize automaticallyStartSourceAnimations=_automaticallyStartSourceAnimations;
 @property(nonatomic) __weak id <SBViewMorphAnimatorDataSource> targetDataSource; // @synthesize targetDataSource=_targetDataSource;
+@property(nonatomic) long long toOrientation; // @synthesize toOrientation=_toOrientation;
+@property(nonatomic) long long fromOrientation; // @synthesize fromOrientation=_fromOrientation;
 @property(nonatomic) __weak UIView *targetContentView; // @synthesize targetContentView=_targetContentView;
 @property(nonatomic) __weak UIView *targetView; // @synthesize targetView=_targetView;
 @property(nonatomic) __weak UIView *sourceContentView; // @synthesize sourceContentView=_sourceContentView;
 @property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (void)_handleHandoffTimeout;
 - (void)_continueSourceAnimationsCompletionPendingBlock;
 - (void)_checkAnimationsDependencies:(CDUnknownBlockType)arg1;
+- (void)_removeMatchMoveAnimation;
 - (void)didEndTargetAnimations:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
 - (void)willStartTargetAnimations:(unsigned long long)arg1;
 - (void)didEndSourceAnimations:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
@@ -87,9 +98,11 @@
 - (struct CGRect)_targetSourcePinningFrameWithSourceContentFrame:(struct CGRect)arg1 targetFinalFrame:(struct CGRect)arg2;
 - (struct CGPoint)_source:(id)arg1 finalCenterWithFinalScale:(double)arg2 contentFrame:(struct CGRect)arg3 targetFinalFrame:(struct CGRect)arg4;
 - (double)_sourceFinalScaleWithContentFrame:(struct CGRect)arg1 targetFinalFrame:(struct CGRect)arg2;
+- (struct CGRect)_sourceAppLayoutFrameForSourceView:(id)arg1 withTargetDataSource:(id)arg2;
 - (struct CGRect)_sourceContentFrameForSourceView:(id)arg1 withTargetDataSource:(id)arg2;
 - (void)_noteAnimatorWasInterrupted;
 - (void)_noteAnimatorWasCanceled;
+- (void)_noteDidEndAllAnimations;
 - (void)noteTargetAnimationsDidEnd:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
 - (void)noteTargetAnimationsWillStart:(unsigned long long)arg1;
 - (void)noteSourceAnimationsDidEnd:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
@@ -97,6 +110,9 @@
 - (void)addObserver:(id)arg1;
 - (void)_updateParameters;
 - (_Bool)preflightCheck;
+- (_Bool)_isReversed;
+- (void)_removeBlackCurtainView;
+- (void)_removeTargetClippingView;
 - (void)_removeSourceClippingView;
 - (void)_resetAllAnimations;
 - (void)interrupt:(CDUnknownBlockType)arg1;
@@ -104,7 +120,7 @@
 - (void)_reset;
 - (void)dealloc;
 - (id)init;
-- (id)initWithUUID:(id)arg1;
+- (id)initWithUUID:(id)arg1 direction:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

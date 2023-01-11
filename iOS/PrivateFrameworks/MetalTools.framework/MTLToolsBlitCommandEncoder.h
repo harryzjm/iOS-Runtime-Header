@@ -13,6 +13,8 @@
 {
 }
 
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
+- (void)resolveCounters:(id)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4;
 - (void)optimizeIndirectCommandBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)copyIndirectCommandBuffer:(id)arg1 sourceRange:(struct _NSRange)arg2 destination:(id)arg3 destinationIndex:(unsigned long long)arg4;
 - (void)resetCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
@@ -37,7 +39,7 @@
 - (void)synchronizeResource:(id)arg1;
 - (void)waitForFence:(id)arg1;
 - (void)updateFence:(id)arg1;
-- (void)acceptVisitor:(id)arg1;
+- (id)initWithBlitCommandEncoder:(id)arg1 parent:(id)arg2 descriptor:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

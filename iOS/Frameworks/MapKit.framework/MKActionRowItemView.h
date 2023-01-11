@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIButton.h>
 
-@class MKPlaceCardActionItem, MKVibrantView, NSArray, UIImageView, _MKUILabel;
+@class MKPlaceCardActionItem, MKVibrantView, NSArray, UIImageView, UIView, _MKUILabel;
 @protocol MKActionRowItemViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKActionRowItemView : UIView
+@interface MKActionRowItemView : UIButton
 {
     _MKUILabel *_label;
     UIImageView *_glyphImageView;
@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
     UIView *_backgroundView;
     unsigned long long _style;
     NSArray *_constraints;
-    _Bool _enabled;
     _Bool _touched;
     _Bool _fullWidthMode;
-    _Bool _highlighted;
+    _Bool _hovering;
+    _Bool _showSelectedState;
     id <MKActionRowItemViewDelegate> _delegate;
     MKPlaceCardActionItem *_actionRowItem;
 }
@@ -31,13 +31,13 @@ __attribute__((visibility("hidden")))
 + (id)glyphFont;
 + (id)labelFont;
 + (double)widthBrandItem;
-@property(nonatomic) _Bool highlighted; // @synthesize highlighted=_highlighted;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool showSelectedState; // @synthesize showSelectedState=_showSelectedState;
+@property(nonatomic) _Bool hovering; // @synthesize hovering=_hovering;
 @property(nonatomic) _Bool fullWidthMode; // @synthesize fullWidthMode=_fullWidthMode;
 @property(nonatomic) _Bool touched; // @synthesize touched=_touched;
-@property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) MKPlaceCardActionItem *actionRowItem; // @synthesize actionRowItem=_actionRowItem;
 @property(nonatomic) __weak id <MKActionRowItemViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
@@ -54,7 +54,9 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)createConstraints;
 - (void)_contentSizeDidChange;
-- (id)initWithActionRowItem:(id)arg1 style:(unsigned long long)arg2;
+- (void)handleHoverGesture:(id)arg1;
+- (void)handlePress;
+- (id)initWithActionRowItem:(id)arg1 menuElement:(id)arg2 style:(unsigned long long)arg3;
 
 @end
 

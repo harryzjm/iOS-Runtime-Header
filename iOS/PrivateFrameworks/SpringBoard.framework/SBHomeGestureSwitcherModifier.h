@@ -7,7 +7,7 @@
 #import <SpringBoard/SBHomeGestureDockSwitcherModifierDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureFinalDestinationSwitcherModifierDelegate-Protocol.h>
 
-@class CADisplayLink, NSString, SBAppLayout, SBCoplanarSwitcherModifier, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBSwitcherModifier, UIViewFloatAnimatableProperty;
+@class CADisplayLink, NSString, SBAppLayout, SBCoplanarSwitcherModifier, SBDismissSiriSwitcherModifier, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBSwitcherModifier, UIViewFloatAnimatableProperty;
 
 @interface SBHomeGestureSwitcherModifier <SBHomeGestureDockSwitcherModifierDelegate, SBHomeGestureFinalDestinationSwitcherModifierDelegate>
 {
@@ -31,6 +31,7 @@
     double _stackedProgress;
     struct CGPoint _initialCentroid;
     struct CGPoint _centroid;
+    struct CGPoint _centroidAdjustment;
     double _absoluteScale;
     struct CGPoint _translationWithoutScale;
     CADisplayLink *_displayLink;
@@ -42,7 +43,7 @@
     _Bool _cancelledGestureForEmptySwitcher;
     double _toHomeScreenAlpha;
     double _toHomeScreenBlurProgress;
-    double _toDimmingAlpha;
+    double _toHomeScreenDimmingAlpha;
     _Bool _didWarmupFlyInHaptic;
     _Bool _didPlayFlyInHaptic;
     _Bool _gestureHasBegun;
@@ -51,9 +52,9 @@
     SBCoplanarSwitcherModifier *_coplanarLayoutModifier;
     SBHomeGestureDockSwitcherModifier *_dockModifier;
     SBHomeGestureFinalDestinationSwitcherModifier *_finalDestinationModifier;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
     SBAppLayout *_selectedAppLayout;
     long long _startingEnvironmentMode;
-    double _centerYOffsetWhenPresentedInSwitcher;
     _Bool _scrunchInitiated;
     _Bool _continuingGesture;
     _Bool _lastGestureWasAnArcSwipe;
@@ -80,29 +81,26 @@
 - (_Bool)_hasPausedEnoughForFlyIn;
 - (_Bool)_preventPositioningCardsOffscreenForFlatBottomEdgeSwipe;
 - (id)_updateInMultitaskingIfNeededWithLocation:(struct CGPoint)arg1;
-- (id)_actionForActivatingReachabilityIfNeededWithFinalDestination:(long long)arg1;
-- (id)_actionForSBEventGestureEndWithEvent:(id)arg1 finalDestination:(long long)arg2;
-- (id)_actionForSBEventGestureBeganWithTimeDelta:(double)arg1;
-- (id)_actionForStudyLogDidEndGestureWithEvent:(id)arg1 finalDestination:(long long)arg2 destinationReason:(id)arg3;
-- (id)_actionForStudyLogDidBeginGesture;
-- (id)_actionForActivatingFinalDestination:(long long)arg1;
-- (id)_actionForUpdatingIconViewVisibility:(_Bool)arg1;
-- (id)_actionForUpdatingLayoutForGestureBegan;
+- (id)_responseForActivatingReachabilityIfNeededWithFinalDestination:(long long)arg1;
+- (id)_responseForSBEventGestureEndWithEvent:(id)arg1 finalDestination:(long long)arg2;
+- (id)_responseForSBEventGestureBeganWithTimeDelta:(double)arg1;
+- (id)_responseForStudyLogDidEndGestureWithEvent:(id)arg1 finalDestination:(long long)arg2 destinationReason:(id)arg3;
+- (id)_responseForStudyLogDidBeginGesture;
+- (id)_responseForActivatingFinalDestination:(long long)arg1;
+- (id)_responseForUpdatingIconViewVisibility:(_Bool)arg1;
+- (id)_responseForUpdatingLayoutForGestureBegan;
 - (_Bool)_shouldResignActiveBasedOnCardScale;
 - (void)_updateShouldResignActiveWithEvent:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
+- (id)selectedAppLayout;
 - (_Bool)isShowingOrAnimatingCardsForFlyIn;
 - (struct CGPoint)liftOffTranslationForGestureEnd;
 - (struct CGPoint)liftOffVelocityForGestureEnd;
-- (_Bool)wantsMinificationFilter;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (long long)sceneDeactivationReason;
-- (_Bool)wantsResignActiveAssertion;
-- (id)layoutSettingsForIndex:(unsigned long long)arg1;
-- (id)cornerRadiusSettingsForIndex:(unsigned long long)arg1;
-- (struct _NSRange)fullSizeSnapshotsRange;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
@@ -110,9 +108,9 @@
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (_Bool)isContainerStatusBarVisible;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
-- (double)dimmingAlpha;
+- (double)homeScreenBackdropBlurProgress;
+- (long long)homeScreenBackdropBlurType;
+- (double)homeScreenDimmingAlpha;
 - (double)wallpaperScale;
 - (double)homeScreenScale;
 - (double)homeScreenAlpha;
@@ -129,7 +127,10 @@
 - (double)_scaleForAdjacentCards;
 - (double)_scaleForTranslation:(struct CGPoint)arg1;
 - (struct CGPoint)_frameOffsetForTranslation:(struct CGPoint)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)_layoutSettingsForAppLayout:(id)arg1 layoutSettings:(id)arg2;
+- (id)_cornerRadiusSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (double)unconditionalDistanceThresholdForHome;
@@ -143,12 +144,14 @@
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
+- (id)handleRemovalEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (id)handleSwitcherSettingsChangedEvent:(id)arg1;
 - (id)handleHomeGestureSettingsChangedEvent:(id)arg1;
+- (id)_newDockModifierRequiringVerticalSwipeToTrackDock:(_Bool)arg1 startingEnvironmentMode:(long long)arg2;
 - (void)didMoveToParentModifier:(id)arg1;
 - (void)dealloc;
-- (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 startingEnvironmentMode:(long long)arg3 centerYOffsetWhenPresentedInSwitcher:(double)arg4 multitaskingModifier:(id)arg5 continuingGesture:(_Bool)arg6 lastGestureWasAnArcSwipe:(_Bool)arg7;
+- (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 startingEnvironmentMode:(long long)arg3 multitaskingModifier:(id)arg4 scrunchInitiated:(_Bool)arg5 continuingGesture:(_Bool)arg6 lastGestureWasAnArcSwipe:(_Bool)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *description;

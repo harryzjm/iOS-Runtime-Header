@@ -8,12 +8,11 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, NSData, NSMutableArray;
+@class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZone : PBCodable <NSCopying>
 {
-    NSData *_encryptedZoneishLastRollDate;
     CKDPProtectionInfo *_protectionInfo;
     NSMutableArray *_protectionInfoKeysToRemoves;
     CKDPProtectionInfo *_recordProtectionInfo;
@@ -23,14 +22,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)protectionInfoKeysToRemoveType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *protectionInfoKeysToRemoves; // @synthesize protectionInfoKeysToRemoves=_protectionInfoKeysToRemoves;
 @property(retain, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
 @property(retain, nonatomic) CKDPRecordStableUrl *stableUrl; // @synthesize stableUrl=_stableUrl;
-@property(retain, nonatomic) NSData *encryptedZoneishLastRollDate; // @synthesize encryptedZoneishLastRollDate=_encryptedZoneishLastRollDate;
 @property(retain, nonatomic) CKDPProtectionInfo *recordProtectionInfo; // @synthesize recordProtectionInfo=_recordProtectionInfo;
 @property(retain, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
 @property(retain, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -46,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)clearProtectionInfoKeysToRemoves;
 @property(readonly, nonatomic) _Bool hasShareId;
 @property(readonly, nonatomic) _Bool hasStableUrl;
-@property(readonly, nonatomic) _Bool hasEncryptedZoneishLastRollDate;
 @property(readonly, nonatomic) _Bool hasRecordProtectionInfo;
 @property(readonly, nonatomic) _Bool hasProtectionInfo;
 @property(readonly, nonatomic) _Bool hasZoneIdentifier;

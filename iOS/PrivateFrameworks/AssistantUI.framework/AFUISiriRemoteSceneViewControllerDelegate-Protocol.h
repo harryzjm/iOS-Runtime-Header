@@ -6,11 +6,11 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFUISiriRemoteSceneViewController, NSDictionary, NSError, NSString, NSURL, SASRequestOptions;
+@class AFUISiriRemoteSceneViewController, BKSAnimationFenceHandle, NSArray, NSDictionary, NSString, NSURL, SASRequestOptions;
 
 @protocol AFUISiriRemoteSceneViewControllerDelegate <NSObject>
 - (void)siriRemoteViewControllerDidFinishDismissing:(AFUISiriRemoteSceneViewController *)arg1;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsDismissal:(void (^)(_Bool))arg2;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(void (^)(_Bool))arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsPresentation:(void (^)(_Bool))arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestKeyboardForTapToEditWithCompletion:(void (^)(_Bool))arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didRequestCurrentTextInputWithReplyHandler:(void (^)(NSString *))arg2;
@@ -23,11 +23,11 @@
 - (void)siriRemoteViewControllerDidExitUITrackingMode:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidEnterUITrackingMode:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidPresentConversationFromBreadcrumb:(AFUISiriRemoteSceneViewController *)arg1;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(NSArray *)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didChangePresentationPeekMode:(unsigned long long)arg2;
 - (void)siriRemoteViewControllerDidDetectMicButtonLongPressEnded:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidDetectMicButtonLongPressBegan:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidDetectMicButtonTap:(AFUISiriRemoteSceneViewController *)arg1;
-- (void)viewWillAppearFinishedForSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1;
 - (_Bool)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 openURL:(NSURL *)arg2 appBundleID:(NSString *)arg3 allowSiriDismissal:(_Bool)arg4;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 openURL:(NSURL *)arg2 delaySessionEndForTTS:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didReadBulletinWithIdentifier:(NSString *)arg2;
@@ -48,7 +48,7 @@
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setStatusViewDisabled:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setStatusViewUserInteractionEnabled:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setCarDisplaySnippetMode:(long long)arg2;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setCarDisplaySnippetVisible:(_Bool)arg2;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setFullScreenDimmingLayerVisible:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setStatusViewHidden:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 siriIdleAndQuietStatusDidChange:(_Bool)arg2;
@@ -57,11 +57,16 @@
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 startRequestWithOptions:(SASRequestOptions *)arg2;
 - (void)startGuidedAccessForRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1;
 - (long long)siriRemoteViewControllerRequestsActivationSource:(AFUISiriRemoteSceneViewController *)arg1;
-- (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 delayForTTS:(_Bool)arg2 userInfo:(NSDictionary *)arg3;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 viewServiceDidTerminateWithError:(NSError *)arg2;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didEncounterUnexpectedServiceError:(NSError *)arg2;
+- (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 delayForTTS:(_Bool)arg2 userInfo:(NSDictionary *)arg3 withDismissalReason:(unsigned long long)arg4;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 invalidatedForReason:(unsigned long long)arg2 explanation:(NSString *)arg3;
 
 @optional
+- (void)siriRemoteViewControllerDidDeactivateScene:(AFUISiriRemoteSceneViewController *)arg1;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 sceneDidActivateWithIdentifier:(NSString *)arg2;
+- (void)requestBlurVisible:(_Bool)arg1 reason:(long long)arg2 fence:(BKSAnimationFenceHandle *)arg3;
+- (void)setShouldDismissForSwipesOutsideContent:(_Bool)arg1;
+- (void)setShouldDismissForTapsOutsideContent:(_Bool)arg1;
+- (void)setShouldDismissForTapOutsideContent:(_Bool)arg1;
 - (void)extendCurrentTTSRequested;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 presentedIntentWithBundleId:(NSString *)arg2;
 @end

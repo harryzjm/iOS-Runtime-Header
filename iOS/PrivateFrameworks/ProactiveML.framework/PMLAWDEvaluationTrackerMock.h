@@ -11,10 +11,10 @@
     PMLTrackerMockAdapter *_adapter;
 }
 
-+ (id)mockTrackerForPlanId:(struct NSString *)arg1;
++ (id)mockTrackerForPlanId:(id)arg1;
 + (id)mockTracker;
 - (void).cxx_destruct;
-@property(readonly) NSArray *trackedEvaluations; // @dynamic trackedEvaluations;
+@property(readonly, nonatomic) NSArray *trackedEvaluations; // @dynamic trackedEvaluations;
 - (void)clearTrackedMessages;
 - (id)initWithModel:(id)arg1;
 - (id)initWithAdapter:(id)arg1 modelInfo:(id)arg2;

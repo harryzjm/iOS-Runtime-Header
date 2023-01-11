@@ -17,6 +17,8 @@
     NSData *_fullPacket;
 }
 
+- (void).cxx_destruct;
+- (id)description;
 - (id)asData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) long long expectedResponseLength;
@@ -27,7 +29,6 @@
 @property(readonly, nonatomic) unsigned char instructionClass;
 - (id)initWithData:(id)arg1;
 - (id)initWithInstructionClass:(unsigned char)arg1 instructionCode:(unsigned char)arg2 p1Parameter:(unsigned char)arg3 p2Parameter:(unsigned char)arg4 data:(id)arg5 expectedResponseLength:(long long)arg6;
-- (void)dealloc;
 
 @end
 

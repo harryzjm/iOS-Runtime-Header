@@ -14,6 +14,7 @@
 - (void)_axOpenControls:(id)arg1;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)accessibilityScroll:(long long)arg1;
 
 @end
 

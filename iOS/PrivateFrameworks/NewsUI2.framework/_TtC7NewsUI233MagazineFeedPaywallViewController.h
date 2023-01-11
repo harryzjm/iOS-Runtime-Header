@@ -9,23 +9,25 @@
 @class MISSING_TYPE;
 @protocol TUPluggableDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI233MagazineFeedPaywallViewController : UIViewController
 {
+    MISSING_TYPE *configurationManager;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *config;
-    MISSING_TYPE *layoutOptionsProvider;
-    MISSING_TYPE *layoutAttributesFactory;
-    MISSING_TYPE *renderer;
+    MISSING_TYPE *blueprintLayoutOptionsProvider;
+    MISSING_TYPE *paywallLayoutAttributesFactory;
+    MISSING_TYPE *paywallRenderer;
     MISSING_TYPE *paywallView;
-    MISSING_TYPE *imageCache;
-    MISSING_TYPE *assetManager;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *$__lazy_storage_$_spinnerViewController;
-    MISSING_TYPE *renderToken;
+    MISSING_TYPE *purchasePresenter;
+    MISSING_TYPE *lastRenderedVerticalContentOffset;
+    MISSING_TYPE *imageResults;
+    MISSING_TYPE *badgeImageResults;
+    MISSING_TYPE *videoFilePath;
 }
 
 - (void).cxx_destruct;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, RMConfigurationStatusUpdater;
 @protocol RMAssetResolver;
 
 @protocol RMUnresolvedAsset
 @property(readonly, copy, nonatomic) NSString *identifier;
-- (void)resolveWithAssetResolver:(id <RMAssetResolver>)arg1 completionHandler:(void (^)(RMResolvedAsset *))arg2;
+- (void)resolveWithAssetResolver:(id <RMAssetResolver>)arg1 statusUpdater:(RMConfigurationStatusUpdater *)arg2 completionHandler:(void (^)(RMResolvedAsset *))arg3;
 @end
 

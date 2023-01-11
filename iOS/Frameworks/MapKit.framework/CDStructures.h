@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableArray, NSNumber, NSString;
+
 #pragma mark Function Pointers and Blocks
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
@@ -60,6 +62,19 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
+struct CollectionsPlacecardEvent {
+    int action;
+    NSString *value;
+    NSNumber *collectionId;
+    NSNumber *collectionCurrentlySaved;
+    NSNumber *horizontalIndex;
+    int target;
+    int cardType;
+    NSMutableArray *possibleActions;
+    NSMutableArray *impossibleActions;
+    NSNumber *verticalIndex;
+};
+
 struct GEOJunctionElement {
     int _field1;
     int _field2;
@@ -70,10 +85,6 @@ struct GEOJunctionElement {
 struct GEOOnce_s {
     struct os_unfair_lock_s lock;
     _Bool didRun;
-};
-
-struct NSArray {
-    Class _field1;
 };
 
 struct UIEdgeInsets {
@@ -88,8 +99,11 @@ struct UIOffset {
     double vertical;
 };
 
-struct UIViewController {
-    Class _field1;
+struct VKEdgeInsets {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
 };
 
 struct _GEOFlyoverKey {
@@ -123,10 +137,19 @@ struct _GEOGenericContainer<geo::_retain_ptr<_MKPinAnnotationViewImageCacheKey *
     unsigned long long _currentCount;
 };
 
+struct _GEOGloriaQuadIDTileKey {
+    unsigned int z:6;
+    unsigned int quadKey:64;
+    unsigned int type:14;
+    unsigned int padding:36;
+};
+
 struct _GEOIdentifiedResourceKey {
     unsigned int identifier;
     unsigned char levelOfDetail;
     unsigned char type;
+    unsigned int padding:64;
+    unsigned int padding2:8;
 };
 
 struct _GEOMuninMeshKey {
@@ -137,12 +160,21 @@ struct _GEOMuninMeshKey {
     unsigned int lod:3;
 };
 
+struct _GEOPolygonSelectionKey {
+    unsigned int z:6;
+    unsigned int x:25;
+    unsigned int y:25;
+    unsigned int polyId:64;
+};
+
 struct _GEORegionalResourceKey {
     unsigned int index:32;
     unsigned int scenarios:8;
     unsigned int type:6;
     unsigned int pixelSize:8;
     unsigned int textScale:8;
+    unsigned int forceRefetch:1;
+    unsigned int padding:57;
 };
 
 struct _GEOSputnikMetadataKey {
@@ -150,6 +182,7 @@ struct _GEOSputnikMetadataKey {
     unsigned int region:24;
     unsigned int type:14;
     unsigned int pixelSize:8;
+    unsigned int padding:42;
 };
 
 struct _GEOStandardTileKey {
@@ -167,13 +200,18 @@ struct _GEOTileKey {
     unsigned int expires:1;
     union {
         struct _GEOStandardTileKey standard;
+        struct _GEOGloriaQuadIDTileKey gloriaQuad;
         struct _GEORegionalResourceKey regional;
         struct _GEOSputnikMetadataKey sputnikMetadata;
         struct _GEOFlyoverKey flyover;
         struct _GEOTransitLineSelectionKey transitLineSelection;
+        struct _GEOPolygonSelectionKey polygonSelection;
         struct _GEOTileOverlayKey tileOverlay;
         struct _GEOIdentifiedResourceKey identifiedResource;
         struct _GEOMuninMeshKey muninMesh;
+        struct _GEOVisualLocalizationTrackKey visualLocalization;
+        struct _GEOVisualLocalizationMetadataKey visualLocalizationMetadata;
+        struct _GEOVisualLocalizationDataKey visualLocalizationData;
     } ;
 };
 
@@ -183,6 +221,7 @@ struct _GEOTileOverlayKey {
     unsigned int y:26;
     unsigned int contentScale:8;
     unsigned int providerId:32;
+    unsigned int padding:22;
 };
 
 struct _GEOTransitLineSelectionKey {
@@ -190,6 +229,35 @@ struct _GEOTransitLineSelectionKey {
     unsigned int x:25;
     unsigned int y:25;
     unsigned int muid:64;
+};
+
+struct _GEOVisualLocalizationDataKey {
+    unsigned long long buildID;
+    unsigned char uncertainty;
+    unsigned int z:5;
+    unsigned int x:21;
+    unsigned int y:21;
+    unsigned int padding:1;
+};
+
+struct _GEOVisualLocalizationMetadataKey {
+    unsigned int maxSupportedOutputVersion:6;
+    unsigned int maxSupportedFormatVersion:9;
+    unsigned int reserved:25;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int padding:22;
+};
+
+struct _GEOVisualLocalizationTrackKey {
+    unsigned short formatVersion;
+    unsigned char uncertainty;
+    unsigned int reserved:16;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int padding:22;
 };
 
 struct _NSRange {
@@ -208,28 +276,6 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<geo::_
 struct __list_node_base<geo::detail::_CacheItem<geo::_retain_ptr<_MKPinAnnotationViewImageCacheKey *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, NSDictionary *, _value_ptr>, void *> {
     struct __list_node_base<geo::detail::_CacheItem<geo::_retain_ptr<_MKPinAnnotationViewImageCacheKey *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, NSDictionary *, _value_ptr>, void *> *__prev_;
     struct __list_node_base<geo::detail::_CacheItem<geo::_retain_ptr<_MKPinAnnotationViewImageCacheKey *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, NSDictionary *, _value_ptr>, void *> *__next_;
-};
-
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
-struct deque<double, std::__1::allocator<double>> {
-    struct __split_buffer<double *, std::__1::allocator<double *>> {
-        double **__first_;
-        double **__begin_;
-        double **__end_;
-        struct __compressed_pair<double **, std::__1::allocator<double *>> {
-            double **__value_;
-        } __end_cap_;
-    } __map_;
-    unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<double>> {
-        unsigned long long __value_;
-    } __size_;
 };
 
 struct list<geo::detail::_CacheItem<geo::_retain_ptr<_MKPinAnnotationViewImageCacheKey *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, NSDictionary *, _value_ptr>, std::__1::allocator<geo::detail::_CacheItem<geo::_retain_ptr<_MKPinAnnotationViewImageCacheKey *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, NSDictionary *, _value_ptr>>> {
@@ -313,6 +359,13 @@ struct vector<MKAnnotationView *, std::__1::allocator<MKAnnotationView *>> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    _Bool shouldZoomToFit;
+    double idealCenterCoordinateDistance;
+    _Bool shouldPreserveUserSpecifiedZoomLevel;
+    _Bool resetAfterTracking;
+} CDStruct_211b8904;
+
+typedef struct {
     _Bool abbreviatedUnits;
     long long distanceDetailLevel;
     _Bool spoken;
@@ -359,17 +412,16 @@ typedef struct {
 } CDStruct_81fb2dc1;
 
 typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-} CDStruct_39925896;
-
-typedef struct {
     long long x;
     long long y;
     long long z;
     double contentScaleFactor;
 } CDStruct_cbb88d5e;
+
+typedef struct {
+    long long displayStyle;
+    long long collectionsPerRow;
+} CDStruct_7ddafc85;
 
 typedef struct {
     double _field1;
@@ -386,7 +438,10 @@ typedef struct {
 } CDStruct_089f5ccb;
 
 typedef struct {
-    CDStruct_34734122 origin;
+    struct {
+        double x;
+        double y;
+    } origin;
     CDStruct_8caa76fc size;
 } CDStruct_02837cd9;
 
@@ -425,9 +480,40 @@ typedef struct {
 } CDStruct_715e5093;
 
 typedef struct {
+    struct CGSize _field1;
+    struct CGSize _field2;
+    double _field3;
+    double _field4;
+    struct CGSize _field5;
+    struct CGSize _field6;
+    struct CGSize _field7;
+} CDStruct_45683352;
+
+typedef struct {
     struct CLLocationCoordinate2D center;
     CDStruct_951efa70 span;
 } CDStruct_b7cb895d;
+
+typedef struct {
+    double margin;
+    double cornerRadius;
+    double arrowBase;
+    double arrowHeight;
+    _Bool useRadialSmoothing;
+    union {
+        struct {
+            double arrowBaseRadius;
+            double arrowRadius;
+        } radialSmoothing;
+        struct {
+            double arrowSmoothing;
+            double arrowPointFactor;
+        } nonRadialSmoothing;
+    } ;
+    _Bool alignDetailViewBaseline;
+    _Bool scaleVerticalPaddingForDynamicType;
+    struct UIEdgeInsets padding;
+} CDStruct_f381021a;
 
 // Ambiguous groups
 typedef struct {
@@ -449,9 +535,4 @@ typedef struct {
     double width;
     double height;
 } CDStruct_8caa76fc;
-
-typedef struct {
-    double x;
-    double y;
-} CDStruct_34734122;
 

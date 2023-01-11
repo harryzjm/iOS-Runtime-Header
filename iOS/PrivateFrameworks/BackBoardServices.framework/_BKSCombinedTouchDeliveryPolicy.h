@@ -12,12 +12,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *policies; // @synthesize policies=_policies;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *policies; // @synthesize policies=_policies;
 - (void)setAssertionEndpoint:(id)arg1;
 - (id)assertionEndpoint;
 - (id)matchSharingTouchesPolicy:(CDUnknownBlockType)arg1 orCancelTouchesPolicy:(CDUnknownBlockType)arg2 orCombinedPolicy:(CDUnknownBlockType)arg3;
-- (id)description;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;

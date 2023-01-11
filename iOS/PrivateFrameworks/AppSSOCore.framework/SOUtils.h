@@ -10,6 +10,7 @@
 {
 }
 
++ (id)teamIdentifierFromAuditToken:(CDStruct_6ad76789)arg1;
 + (_Bool)checkSignatureOfFile:(id)arg1 teamIdentifier:(id *)arg2 trusted:(_Bool *)arg3 signedBySet:(long long *)arg4 certificates:(id *)arg5 error:(id *)arg6;
 + (id)signatureSetToString:(long long)arg1;
 + (_Bool)currentProcessInSystemSession;
@@ -19,6 +20,7 @@
 + (int)pidFromAuditToken:(CDStruct_6ad76789)arg1;
 + (_Bool)auditTokenFromData:(id)arg1 auditToken:(CDStruct_6ad76789 *)arg2;
 + (id)mapArray:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
++ (_Bool)isAppSSOServiceAvailable;
 + (_Bool)isInternalBuild;
 + (id)currentProcessContainerPath;
 + (_Bool)sandboxAllowsXPC:(const char *)arg1;

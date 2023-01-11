@@ -6,13 +6,13 @@
 
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 
-@class NSSet, NSString;
+@class NSArray, NSSet, NSString;
 @protocol MapsSuggestionsSourceDelegate;
 
 @interface MapsSuggestionsFakePullSource <MapsSuggestionsSource>
 {
     struct ReadWriteQueue _readwrite;
-    struct NSArray *_entriesToPull;
+    NSArray *_entriesToPull;
     NSSet *_fakeCanProduceEntriesOfType;
     unsigned long long _calledStart;
     unsigned long long _calledUpdateSuggestionEntries;
@@ -22,43 +22,40 @@
     unsigned long long _calledfeedbackForMapItem;
     unsigned long long _calledfeedbackForContact;
     CDUnknownBlockType _handlerForFeedback;
-    long long _calledUserRemoveBehavior;
+    long long _lastUsedRemovalBehavior;
     unsigned long long _totalAdded;
-    double _configFrequency;
-    _Bool _configSendCopies;
+    double _configureFrequency;
+    _Bool _configureSendCopies;
 }
 
 + (unsigned long long)disposition;
 + (_Bool)isEnabled;
-@property _Bool configSendCopies; // @synthesize configSendCopies=_configSendCopies;
-@property double configFrequency; // @synthesize configFrequency=_configFrequency;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)startDebugTest;
-- (void)setPullResponseEntries:(struct NSArray *)arg1;
-- (void)pushEntries:(struct NSArray *)arg1;
-- (unsigned long long)_addEntries:(struct NSArray *)arg1;
-- (struct NSArray *)_copyEntriesIfNecessary:(struct NSArray *)arg1;
+@property(nonatomic) _Bool configureSendCopies; // @synthesize configureSendCopies=_configureSendCopies;
+@property(nonatomic) double configureFrequency; // @synthesize configureFrequency=_configureFrequency;
+- (void)configurePullResponseEntries:(id)arg1;
+- (void)pushEntries:(id)arg1;
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
-- (_Bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)configCanProduceEntriesOfType:(id)arg1;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)configureCanProduceEntriesOfType:(id)arg1;
 - (_Bool)canProduceEntriesOfType:(long long)arg1;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
 - (void)start;
 - (void)configureHandlerForFeedbackBlock:(CDUnknownBlockType)arg1;
-@property(readonly) unsigned long long totalAdded;
-@property(readonly) long long calledUserRemoveBehavior;
-@property(readonly) unsigned long long calledfeedbackForContact;
-@property(readonly) unsigned long long calledfeedbackForMapItem;
-@property(readonly) unsigned long long calledFeedbackForEntry;
-@property(readonly) unsigned long long calledUserRemove;
-@property(readonly) unsigned long long calledUpdateSuggestionEntries;
-@property(readonly) unsigned long long calledStop;
-@property(readonly) unsigned long long calledStart;
-- (id)initWithDelegate:(id)arg1 name:(id)arg2;
+@property(readonly, nonatomic) unsigned long long totalAdded;
+@property(readonly, nonatomic) long long lastUsedRemovalBehavior;
+@property(readonly, nonatomic) unsigned long long calledfeedbackForContact;
+@property(readonly, nonatomic) unsigned long long calledfeedbackForMapItem;
+@property(readonly, nonatomic) unsigned long long calledFeedbackForEntry;
+@property(readonly, nonatomic) unsigned long long calledUserRemove;
+@property(readonly, nonatomic) unsigned long long calledUpdateSuggestionEntries;
+@property(readonly, nonatomic) unsigned long long calledStop;
+@property(readonly, nonatomic) unsigned long long calledStart;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

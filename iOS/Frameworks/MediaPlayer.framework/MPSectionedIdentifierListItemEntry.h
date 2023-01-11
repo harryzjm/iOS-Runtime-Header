@@ -8,6 +8,7 @@
 
 @class NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPSectionedIdentifierListItemEntry <MPSectionedIdentifierListEnumerationItem>
 {
     _Bool _hasClones;
@@ -24,6 +25,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)itemEntryWithSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2;
 + (id)itemEntryWithSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2 generationPrefix:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isUserCloned) _Bool userCloned; // @synthesize userCloned=_userCloned;
 @property(readonly, nonatomic, getter=isUserMoved) _Bool userMoved; // @synthesize userMoved=_userMoved;
 @property(readonly, nonatomic, getter=isUserRemoved) _Bool userRemoved; // @synthesize userRemoved=_userRemoved;
@@ -33,7 +35,6 @@
 @property(readonly, nonatomic) _Bool hasClones; // @synthesize hasClones=_hasClones;
 @property(nonatomic) __weak MPSectionedIdentifierListItemEntry *rootEntry; // @synthesize rootEntry=_rootEntry;
 @property(readonly, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
-- (void).cxx_destruct;
 - (long long)_generationNumber;
 - (void)prepareForDealloc;
 - (id)newClonedEntry;
@@ -48,6 +49,7 @@
 - (void)setDataSourceCloned;
 - (_Bool)isDataSourceRemoved;
 - (void)setDataSourceRemoved;
+- (id)stringRepresentation;
 @property(readonly, nonatomic) long long entryType;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;

@@ -15,15 +15,19 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) struct __CTServerConnection *ctServerConnection; // @synthesize ctServerConnection=_ctServerConnection;
 @property(retain, nonatomic) NSCache *policyCache; // @synthesize policyCache=_policyCache;
-- (void).cxx_destruct;
 - (_Bool)setUsagePoliciesForBundle:(id)arg1 cellular:(_Bool)arg2 wifi:(_Bool)arg3;
 - (_Bool)setCellularUsagePolicy:(id)arg1 forBundle:(id)arg2;
 - (id)usagePolicyFor:(id)arg1;
 - (id)fetchUsagePolicyFor:(id)arg1;
 - (id)init;
+- (void)managedConfigurationProfileListDidChange;
+- (void)managedConfigurationSettingsDidChange;
 - (void)willEnterForeground;
+- (void)handlePolicyChangedNotification;
+- (void)clearCache;
 - (void)dealloc;
 - (id)initPrivate;
 

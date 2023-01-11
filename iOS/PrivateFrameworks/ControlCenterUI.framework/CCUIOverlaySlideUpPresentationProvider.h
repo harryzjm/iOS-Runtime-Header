@@ -20,18 +20,23 @@
 
 + (id)_moduleC2AnimationParametersForTransitionState:(id)arg1 layoutRect:(struct CCUILayoutRect)arg2;
 + (id)_baseC2AnimationParametersForTransitionState:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CCUIOverlayMetricsProvider> metricsProvider; // @synthesize metricsProvider=_metricsProvider;
 @property(nonatomic) __weak id <CCUIOverlayViewProvider> viewProvider; // @synthesize viewProvider=_viewProvider;
-- (void).cxx_destruct;
 - (struct CGAffineTransform)_transformForTransitionState:(id)arg1 rubberBandingHeight:(double)arg2;
 - (struct CGAffineTransform)_moduleViewScaleTransformForTransitionState:(id)arg1;
 - (struct CGAffineTransform)_moduleViewTransformForTransitionState:(id)arg1 layoutRect:(struct CCUILayoutRect)arg2;
 - (void)_addModuleTransformAnimationsToBatch:(id)arg1 transitionState:(id)arg2;
-- (void)_addHeaderContentAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderContentTranslationAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderSensorStatusViewAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderStatusBarAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderChevronAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (struct CGAffineTransform)_headerViewTransformForTransitionState:(id)arg1;
 - (void)_addHeaderContentTransformAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addBackgroundViewWeightingAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addScrollViewContentOffsetAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (double)_additionalHeaderHeight;
+- (double)_effectiveHeaderViewHeight;
 - (double)_pullUpTranslation;
 - (struct CGRect)_headerViewFrameForContentSize:(struct CGSize)arg1 withinBounds:(struct CGRect)arg2 contentInset:(struct UIEdgeInsets)arg3 contentEdgeInsets:(struct UIEdgeInsets)arg4 orientation:(long long)arg5;
 - (struct UIEdgeInsets)_edgeInsetsForContentSize:(struct CGSize)arg1 withinBounds:(struct CGRect)arg2 contentEdgeInsets:(struct UIEdgeInsets)arg3 orientation:(long long)arg4;

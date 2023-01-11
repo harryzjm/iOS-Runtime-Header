@@ -8,16 +8,24 @@
 
 #import <InputContext/_ICPredictionSourcing-Protocol.h>
 
+@class NSString;
+
 @interface _ICInternalSource : NSObject <_ICPredictionSourcing>
 {
+    NSString *_name;
 }
 
+- (void).cxx_destruct;
+- (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
+- (_Bool)doesSupportTriggerSourceType:(unsigned char)arg1;
 - (void)hibernate;
 - (void)warmUp;
 - (void)searchForMeCardEmailAddressesWithTimeout:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)searchForMeCardRegionsWithTimeout:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)localizedStringForKey:(id)arg1 withLocale:(id)arg2;
 - (void)predictedItemsWithProactiveTrigger:(id)arg1 searchContext:(id)arg2 limit:(unsigned long long)arg3 timeoutInMilliseconds:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
+- (id)name;
+- (id)init;
 
 @end
 

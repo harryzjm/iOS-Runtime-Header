@@ -19,15 +19,17 @@
     MKPlaceSectionItemView *_footerView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showsBottomHairline; // @synthesize showsBottomHairline=_showsBottomHairline;
 @property(retain, nonatomic) MKPlaceSectionItemView *footerView; // @synthesize footerView=_footerView;
 @property(nonatomic) _Bool highlightsTouches; // @synthesize highlightsTouches=_highlightsTouches;
 @property(copy, nonatomic) NSArray *rowViews; // @synthesize rowViews=_rowViews;
 @property(retain, nonatomic) MKPlaceSectionItemView *headerView; // @synthesize headerView=_headerView;
 @property(nonatomic) __weak id <MKPlaceSectionViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)_updateViewsAnimated:(_Bool)arg1 isNeedLayout:(_Bool)arg2;
 - (void)_updateViewsAnimated:(_Bool)arg1;
 - (void)setFooterView:(id)arg1 animated:(_Bool)arg2;
+- (void)setRowViews:(id)arg1 animated:(_Bool)arg2 isNeedLayout:(_Bool)arg3;
 - (void)setRowViews:(id)arg1 animated:(_Bool)arg2;
 - (void)setHeaderView:(id)arg1 animated:(_Bool)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

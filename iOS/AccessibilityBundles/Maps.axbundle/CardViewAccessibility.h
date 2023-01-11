@@ -14,6 +14,8 @@
 - (_Bool)accessibilityViewIsModal;
 - (_Bool)accessibilityPerformEscape;
 - (unsigned long long)_accessibilityContaineeLayout;
+- (id)_accessibilityContaineeViewController;
+- (id)_accessibilityContainerViewController;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (long long)accessibilityContainerType;
 - (void)layoutSubviews;

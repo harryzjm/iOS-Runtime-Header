@@ -13,6 +13,7 @@
     MISSING_TYPE *alert;
 }
 
+- (void).cxx_destruct;
 - (id)init;
 @property(nonatomic, readonly) NSString *message;
 @property(nonatomic, readonly) NSString *title;

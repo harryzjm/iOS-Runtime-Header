@@ -8,7 +8,7 @@
 
 #import <AnnotationKit/UINavigationBarDelegate-Protocol.h>
 
-@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UILabel, UINavigationBar;
+@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UILabel, UINavigationBar, UIResponder;
 @protocol AKSignatureCreationControllerDelegate;
 
 @interface AKSignatureCreationViewController_iOS : UIViewController <UINavigationBarDelegate>
@@ -20,8 +20,11 @@
     AKSignatureBaselineView *_baselineView;
     UILabel *_label;
     AKController *_controller;
+    UIResponder *_responderToRestore;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak UIResponder *responderToRestore; // @synthesize responderToRestore=_responderToRestore;
 @property(nonatomic) __weak AKController *controller; // @synthesize controller=_controller;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(retain, nonatomic) AKSignatureBaselineView *baselineView; // @synthesize baselineView=_baselineView;
@@ -29,8 +32,8 @@
 @property(retain, nonatomic) AKSmoothPathView *pathView; // @synthesize pathView=_pathView;
 @property(retain, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property __weak id <AKSignatureCreationControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (long long)positionForBar:(id)arg1;
+- (void)_notifyDidDismiss;
 - (void)_done:(id)arg1;
 - (void)_clear:(id)arg1;
 - (void)_cancel:(id)arg1;
@@ -38,9 +41,13 @@
 - (void)_validateButtons;
 - (_Bool)prefersStatusBarHidden;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
-- (void)_setToolPickerVisible;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)didReceiveMemoryWarning;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (_Bool)becomeFirstResponder;
+- (_Bool)canBecomeFirstResponder;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithController:(id)arg1;

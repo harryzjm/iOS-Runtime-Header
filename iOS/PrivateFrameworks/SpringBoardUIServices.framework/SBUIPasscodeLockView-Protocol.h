@@ -6,7 +6,7 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NSString, UIColor;
+@class BSAnimationSettings, NSString, SBUIPoseidonContainerViewController, UIColor, UIView;
 @protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @protocol SBUIPasscodeLockView <NSObject>
@@ -16,6 +16,8 @@
 @property(retain, nonatomic) id <SBFLegibilitySettingsProvider> backgroundLegibilitySettingsProvider;
 @property(retain, nonatomic) UIColor *customBackgroundColor;
 @property(nonatomic) long long passcodeLockViewState;
+@property(retain, nonatomic) SBUIPoseidonContainerViewController *poseidonContainerViewController;
+@property(retain, nonatomic) UIView *poseidonContainerView;
 @property(nonatomic) _Bool showsProudLock;
 @property(nonatomic) _Bool biometricPresentationAncillaryButtonsVisible;
 @property(nonatomic) _Bool allowsAutomaticBiometricPresentationTransition;

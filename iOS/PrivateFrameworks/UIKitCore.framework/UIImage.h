@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSItemProviderReading-Protocol.h>
 #import <UIKitCore/NSItemProviderWriting-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
@@ -15,13 +16,14 @@
 
 @class CIImage, NSArray, NSMapTable, NSString, UIGraphicsImageRendererFormat, UIImageAsset, UIImageConfiguration, UIImageSymbolConfiguration, UITraitCollection, _UIImageContent;
 
-@interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, NSSecureCoding>
+@interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, NSCopying, NSSecureCoding>
 {
     NSMapTable *_siblingImages;
     UIImageConfiguration *_configuration;
     struct UIEdgeInsets _contentInsets;
     struct CGSize _sizeInPixels;
     double _baselineOffsetFromBottom;
+    double _capHeight;
     struct {
         unsigned int named:1;
         unsigned int asksContentForImageOrientation:1;
@@ -37,6 +39,7 @@
         unsigned int areContentInsetsExplicit:1;
         unsigned int areAlignmentRectInsetsExplicit:1;
         unsigned int flipsForRightToLeftLayoutDirection:1;
+        unsigned int hasCapHeight:1;
     } _imageFlags;
     UIImageAsset *_imageAsset;
     _UIImageContent *_content;
@@ -147,14 +150,16 @@
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
-@property(retain, nonatomic, setter=_setImageAsset:) UIImageAsset *imageAsset; // @synthesize imageAsset=_imageAsset;
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setImageAsset:) UIImageAsset *imageAsset; // @synthesize imageAsset=_imageAsset;
 - (_Bool)_suppressesAccessibilityHairlineThickening;
 - (id)_imageThatSuppressesAccessibilityHairlineThickening;
 - (id)_imageWithSize:(struct CGSize)arg1;
 - (id)_rasterizedImage;
 - (id)_imagePaddedByInsets:(struct UIEdgeInsets)arg1;
 - (id)_flatImageWithColor:(id)arg1;
+- (CDStruct_e79446ac)_calculateStatisticsOfEdge:(_Bool)arg1;
+- (CDStruct_e79446ac)_calculateEdgeStatistics;
 - (CDStruct_e79446ac)_calculateStatistics;
 - (id)_resizableImageWithSubimageInsets:(struct UIEdgeInsets)arg1 resizeInsets:(struct UIEdgeInsets)arg2;
 - (id)_stretchableImageWithCapInsets:(struct UIEdgeInsets)arg1;
@@ -225,6 +230,8 @@
 - (id)imageWithMidlineOffsetFromCenter:(double)arg1;
 - (void)_setMidlineOffsetFromCenter:(double)arg1;
 - (double)midlineOffsetFromCenter;
+- (void)_setSymbolMetricsFromNamedVectorGlyph:(id)arg1;
+- (id)_imageWithSymbolMetricsFromNamedVectorGlyph:(id)arg1;
 - (_Bool)_hasExplicitBaseline;
 - (_Bool)_hasBaseline;
 @property(readonly, nonatomic) _Bool hasBaseline;
@@ -232,6 +239,8 @@
 - (void)_removeBaseline;
 - (id)imageWithoutBaseline;
 - (id)imageWithBaselineOffsetFromBottom:(double)arg1;
+- (void)_setCapHeight:(double)arg1;
+@property(readonly, nonatomic) double _capHeight;
 - (void)_setBaselineOffsetFromBottomExplicitly:(double)arg1;
 - (void)_setBaselineOffsetFromBottom:(double)arg1;
 - (double)__baselineOffsetFromBottom;

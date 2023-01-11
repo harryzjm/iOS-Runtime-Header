@@ -16,7 +16,7 @@
 - (id)classesForImportingLooseFilesInImportOrder;
 - (id)destinationContainerForItemsInDropIncludingReceiver:(id)arg1;
 - (_Bool)shouldShowSuggestionSetsForBundleIcons;
-- (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1;
+- (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1 filter:(CDUnknownBlockType)arg2;
 
 @end
 

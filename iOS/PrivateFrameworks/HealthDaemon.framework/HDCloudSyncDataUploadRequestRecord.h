@@ -9,9 +9,12 @@
 }
 
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
++ (id)recordForZoneID:(id)arg1;
 + (_Bool)isDataUploadRequestRecord:(id)arg1;
 + (id)recordIDWithZoneID:(id)arg1;
-- (id)initForStoreRecord:(id)arg1;
++ (id)recordType;
++ (_Bool)requiresUnderlyingMessage;
+- (id)serializeUnderlyingMessage;
 
 @end
 

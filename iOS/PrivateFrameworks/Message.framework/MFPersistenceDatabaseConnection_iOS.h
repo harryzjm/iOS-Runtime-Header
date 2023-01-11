@@ -25,6 +25,7 @@
 - (void)_handleCorruptDatabase;
 - (void)handleSQLResult:(int)arg1 message:(id)arg2;
 - (long long)transactionTypeForWriting;
+- (_Bool)performWithOptions:(unsigned long long)arg1 transactionError:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (int)configureSQLConnection;
 - (void)dealloc;
 

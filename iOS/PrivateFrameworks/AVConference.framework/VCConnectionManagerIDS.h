@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, VCSessionBitrateArbiter;
+@class VCConnectionSelector, VCSessionBitrateArbiter;
 
 __attribute__((visibility("hidden")))
 @interface VCConnectionManagerIDS
 {
-    NSMutableArray *_connectionArray;
     double _lastTimestampForRemoteSendingFromNonPrimary;
     double _lastTimestampPreferredRemoteInterfaceUpdated;
     unsigned int _sentPacketCount[256];
@@ -18,13 +17,36 @@ __attribute__((visibility("hidden")))
     unsigned int _receivedByteCount[256];
     VCSessionBitrateArbiter *_bitrateArbiter;
     _Bool _isMultiwaySession;
+    VCConnectionSelector *_connectionSelector;
 }
 
+- (void)setLastPrimaryConnectionInUse:(id)arg1;
+- (void)setConnectionForDuplication:(id)arg1;
+- (void)setSecondaryConnection:(id)arg1;
+- (void)setPrimaryConnection:(id)arg1;
+- (id)lastPrimaryConnectionInUse;
+- (id)connectionForDuplication;
+- (id)secondaryConnection;
+- (id)primaryConnection;
+- (void)updateConnectionSelectionPolicy;
+- (CDStruct_2a4d9400 *)getConnectionSelectionPolicy;
+- (void)didUpdateLinkPreferenceOrder:(id)arg1;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
+- (void)queryProbingResultsWithOptions:(id)arg1;
+- (void)stopActiveProbingWithOptions:(id)arg1;
+- (void)startActiveProbingWithOptions:(id)arg1;
+- (_Bool)shouldDropCurrentPrimaryConnectionWithConnectionStats:(CDStruct_50492349 *)arg1;
+- (void)useConnectionAsPrimary:(id)arg1;
 - (void)reportConnection:(id)arg1 isInitialConnection:(_Bool)arg2;
 - (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(_Bool *)arg2 isSourceIPv6:(_Bool *)arg3;
+- (void)updateDuplicationStateWithConnectionOperation:(int)arg1 isLocalOnWiFi:(_Bool)arg2 isRemoteOnWiFi:(_Bool)arg3;
+- (void)removeFromConnectionArray:(id)arg1;
 - (_Bool)addConnectionToConnectionArray:(id)arg1;
 - (_Bool)shouldReplaceConnection:(id)arg1 withConnection:(id)arg2;
+- (_Bool)shouldKeepAllConnections;
 - (void)resetPacketCountAndByteCountWithConnection:(id)arg1;
+- (void)addLinkProbingTelemetry:(id)arg1;
+- (void)addDuplicationConnectionUpdateTelemetryWithActiveConnectionRegistry:(id)arg1 suggestedLinkTypeCombo:(id)arg2 payload:(id)arg3;
 - (void)updateConnectionForDuplication;
 - (void)updateSessionStats:(unsigned short)arg1;
 - (id)copyConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(_Bool *)arg2;
@@ -45,12 +67,8 @@ __attribute__((visibility("hidden")))
 - (void)handleSecondaryConnectionRemoved;
 - (void)handlePrimaryConnectionRemoved;
 - (int)addConnection:(id)arg1;
-- (_Bool)isPrimaryConnectionSameAsConnection:(id)arg1;
-- (_Bool)selectPrimaryAndSecondaryWithConnection:(id)arg1;
-- (unsigned int)downlinkBitrateCapForConnectionType:(int)arg1;
-- (unsigned int)uplinkBitrateCapForConnectionType:(int)arg1;
-- (void)updateSecondaryWithConnection:(id)arg1;
-- (void)updatePrimaryWithConnection:(id)arg1;
+- (unsigned int)downlinkBitrateCapForConnection:(id)arg1;
+- (unsigned int)uplinkBitrateCapForConnection:(id)arg1;
 - (void)dealloc;
 - (id)initWithMultiwayEnabled:(_Bool)arg1;
 

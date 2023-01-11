@@ -24,9 +24,9 @@
 @property(nonatomic) _Bool emitInterpolatedPoints; // @synthesize emitInterpolatedPoints=_emitInterpolatedPoints;
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(nonatomic) MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
-@property(nonatomic) _UIPointVector *controlPoints; // @synthesize controlPoints=_controlPoints;
-@property(nonatomic) _UIPointVector *points; // @synthesize points=_points;
-@property(nonatomic) _UIPointVector *prevPoints; // @synthesize prevPoints=_prevPoints;
+@property(retain, nonatomic) _UIPointVector *controlPoints; // @synthesize controlPoints=_controlPoints;
+@property(retain, nonatomic) _UIPointVector *points; // @synthesize points=_points;
+@property(retain, nonatomic) _UIPointVector *prevPoints; // @synthesize prevPoints=_prevPoints;
 @property(nonatomic) struct CGPath *path; // @synthesize path=_path;
 @property(nonatomic) float unitScale; // @synthesize unitScale=_unitScale;
 @property(copy) CDUnknownBlockType emissionHandler; // @synthesize emissionHandler=_emissionHandler;

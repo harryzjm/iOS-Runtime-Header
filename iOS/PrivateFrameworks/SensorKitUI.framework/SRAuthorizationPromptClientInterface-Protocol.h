@@ -6,13 +6,11 @@
 
 #import <SensorKitUI/NSObject-Protocol.h>
 
-@class NSError, NSString;
+@class NSError;
 
 @protocol SRAuthorizationPromptClientInterface <NSObject>
 - (void)authorizationRequestDidDisappear;
 - (void)authorizationRequestWillDisappear;
-- (void)authorizationPresentDownloadPath:(NSString *)arg1 sandboxExtensionToken:(NSString *)arg2;
-- (void)authorizationPresentDeleteAllAlertWithTitle:(NSString *)arg1 actionTitle:(NSString *)arg2 cancelTitle:(NSString *)arg3;
 - (void)authorizationUIReadyForDisplayModally:(_Bool)arg1;
 - (void)authorizationRequestFailedWithError:(NSError *)arg1;
 - (void)authorizationRequestCompleted;

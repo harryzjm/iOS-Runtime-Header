@@ -14,15 +14,13 @@
 @interface NUAdSettings : NSObject <NUAdSettings>
 {
     _Bool _debugAdSlotsEnabled;
-    _Bool _debugInteractivityEnabled;
     id <SXAdvertisingSettings> _debugAdvertisementSettings;
 }
 
-@property(readonly, nonatomic) id <SXAdvertisingSettings> debugAdvertisementSettings; // @synthesize debugAdvertisementSettings=_debugAdvertisementSettings;
-@property(readonly, nonatomic) _Bool debugInteractivityEnabled; // @synthesize debugInteractivityEnabled=_debugInteractivityEnabled;
-@property(readonly, nonatomic) _Bool debugAdSlotsEnabled; // @synthesize debugAdSlotsEnabled=_debugAdSlotsEnabled;
 - (void).cxx_destruct;
-- (id)initWithDebugAdSlotsEnabled:(_Bool)arg1 debugInteractivityEnabled:(_Bool)arg2 debugAdvertisementSettings:(id)arg3;
+@property(readonly, nonatomic) id <SXAdvertisingSettings> debugAdvertisementSettings; // @synthesize debugAdvertisementSettings=_debugAdvertisementSettings;
+@property(readonly, nonatomic) _Bool debugAdSlotsEnabled; // @synthesize debugAdSlotsEnabled=_debugAdSlotsEnabled;
+- (id)initWithDebugAdSlotsEnabled:(_Bool)arg1 debugAdvertisementSettings:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

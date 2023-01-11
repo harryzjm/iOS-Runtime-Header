@@ -63,11 +63,13 @@ __attribute__((visibility("hidden")))
 - (void)returnToKeyboardIfNeeded;
 - (void)fadeWithDelay:(double)arg1;
 - (void)selectRowForInputMode:(id)arg1;
+- (long long)_indexOfFastSwitchToggleModeForIdentifier:(id)arg1;
 - (long long)_indexOfInputSwitcherItemWithIdentifier:(id)arg1;
 - (_Bool)shouldShowSelectionExtraViewForIndexPath:(id)arg1;
 - (id)selectedInputMode;
 - (void)toggleKeyboardFloatingPreference;
 - (void)_reloadInputSwitcherItems;
+- (_Bool)_canAddLaunchItem;
 - (void)reloadInputModes;
 - (void)didFinishSplitTransition;
 - (void)dealloc;

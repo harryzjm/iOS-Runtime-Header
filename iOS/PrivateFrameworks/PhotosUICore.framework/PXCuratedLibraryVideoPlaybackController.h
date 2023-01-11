@@ -18,8 +18,8 @@
     PXCuratedLibraryLayout *_curatedLibraryLayout;
 }
 
-@property(retain, nonatomic) PXCuratedLibraryLayout *curatedLibraryLayout; // @synthesize curatedLibraryLayout=_curatedLibraryLayout;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXCuratedLibraryLayout *curatedLibraryLayout; // @synthesize curatedLibraryLayout=_curatedLibraryLayout;
 - (void)enumerateRectDiagnosticsForLayout:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_canPlayVideosInZoomLevel:(long long)arg1;
 - (_Bool)canPlayAsset:(id)arg1;
@@ -32,6 +32,7 @@
 - (struct CGRect)currentVisibleRect;
 - (id)createPlaybackRecordForDisplayAsset:(id)arg1 mediaProvider:(id)arg2 geometryReference:(id)arg3;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (_Bool)shouldDisplayPreviousNonnullPixelBufferForPixelBufferSource:(id)arg1;
 - (void)recyclePixelBufferSourceForDisplayAssets:(id)arg1;
 - (id)pixelBufferSourceForDisplayAsset:(id)arg1 mediaProvider:(id)arg2 spriteReference:(id)arg3;
 - (id)init;

@@ -23,7 +23,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)predicateWithBlock:(CDUnknownBlockType)arg1;
 + (id)predicateWithValue:(_Bool)arg1;
-+ (id)predicateWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
++ (id)predicateWithFormat:(id)arg1 arguments:(char *)arg2;
 + (id)predicateWithFormat:(id)arg1;
 + (id)predicateWithFormat:(id)arg1 argumentArray:(id)arg2;
 + (struct __CFLocale *)retainedLocale;

@@ -4,104 +4,115 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameCenterUI/GKMessageComposeViewControllerDelegate-Protocol.h>
-#import <GameCenterUI/GKMultiplayerPlayerCountViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKDashboardMultiplayerPickerDelegate-Protocol.h>
+#import <GameCenterUI/GKMultiplayerCustomInviteMessageViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKMultiplayerDataSourceDelegate-Protocol.h>
 
-@class GKDashboardMultiplayerPickerViewController, GKDispatchGroup, GKGame, GKMatchRequest, GKMessageComposeViewController, GKMultiplayerButtonFooterView, GKMultiplayerButtonHeaderView, GKMultiplayerDataSource, NSDictionary, NSString, NSURL;
+@class GKDashboardMultiplayerPickerViewController, GKGame, GKMatchRequest, GKMultiplayerDataSource, NSString, NSURL, _TtC12GameCenterUI23GKMultiplayerFooterView, _TtC12GameCenterUI29GKMultiplayerButtonHeaderView;
 @protocol GKDashboardNearbyBrowserDelegate;
 
-@interface GKMultiplayerViewController <GKMessageComposeViewControllerDelegate, GKMultiplayerPlayerCountViewControllerDelegate>
+@interface GKMultiplayerViewController <GKDashboardMultiplayerPickerDelegate, GKMultiplayerCustomInviteMessageViewControllerDelegate, GKMultiplayerDataSourceDelegate>
 {
     _Bool _showCancelButton;
     _Bool _didAcceptGameInvite;
     _Bool _didStartForcedAutomatch;
     _Bool _addButtonEnabled;
-    _Bool _needsFloatIn;
     GKMatchRequest *_matchRequest;
     GKMatchRequest *_originalMatchRequest;
     NSString *_defaultInvitationMessage;
     GKGame *_game;
     id <GKDashboardNearbyBrowserDelegate> _nearbyDelegate;
     NSURL *_shareURL;
-    GKMessageComposeViewController *_inviteController;
-    NSDictionary *_playerNamesToPlayers;
-    GKMultiplayerButtonHeaderView *_buttonHeaderView;
-    GKMultiplayerButtonFooterView *_buttonFooterView;
-    GKDashboardMultiplayerPickerViewController *_picker;
+    long long _matchmakingMode;
+    _TtC12GameCenterUI23GKMultiplayerFooterView *_footerView;
+    _TtC12GameCenterUI29GKMultiplayerButtonHeaderView *_buttonHeaderView;
+    GKDashboardMultiplayerPickerViewController *_playerPickerViewController;
     long long _invitationType;
-    GKDispatchGroup *_urlPreloadGroup;
+    unsigned long long _messagesInviteStatus;
 }
 
-@property(retain, nonatomic) GKDispatchGroup *urlPreloadGroup; // @synthesize urlPreloadGroup=_urlPreloadGroup;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long messagesInviteStatus; // @synthesize messagesInviteStatus=_messagesInviteStatus;
 @property(nonatomic) long long invitationType; // @synthesize invitationType=_invitationType;
-@property(retain, nonatomic) GKDashboardMultiplayerPickerViewController *picker; // @synthesize picker=_picker;
-@property(nonatomic) _Bool needsFloatIn; // @synthesize needsFloatIn=_needsFloatIn;
-@property(retain, nonatomic) GKMultiplayerButtonFooterView *buttonFooterView; // @synthesize buttonFooterView=_buttonFooterView;
-@property(retain, nonatomic) GKMultiplayerButtonHeaderView *buttonHeaderView; // @synthesize buttonHeaderView=_buttonHeaderView;
-@property(retain, nonatomic) NSDictionary *playerNamesToPlayers; // @synthesize playerNamesToPlayers=_playerNamesToPlayers;
-@property(retain, nonatomic) GKMessageComposeViewController *inviteController; // @synthesize inviteController=_inviteController;
+@property(retain, nonatomic) GKDashboardMultiplayerPickerViewController *playerPickerViewController; // @synthesize playerPickerViewController=_playerPickerViewController;
+@property(retain, nonatomic) _TtC12GameCenterUI29GKMultiplayerButtonHeaderView *buttonHeaderView; // @synthesize buttonHeaderView=_buttonHeaderView;
 @property(nonatomic) _Bool addButtonEnabled; // @synthesize addButtonEnabled=_addButtonEnabled;
+@property(retain, nonatomic) _TtC12GameCenterUI23GKMultiplayerFooterView *footerView; // @synthesize footerView=_footerView;
+@property(nonatomic) long long matchmakingMode; // @synthesize matchmakingMode=_matchmakingMode;
 @property(nonatomic) _Bool didStartForcedAutomatch; // @synthesize didStartForcedAutomatch=_didStartForcedAutomatch;
 @property(retain, nonatomic) NSURL *shareURL; // @synthesize shareURL=_shareURL;
-@property(nonatomic) id <GKDashboardNearbyBrowserDelegate> nearbyDelegate; // @synthesize nearbyDelegate=_nearbyDelegate;
+@property(nonatomic) __weak id <GKDashboardNearbyBrowserDelegate> nearbyDelegate; // @synthesize nearbyDelegate=_nearbyDelegate;
 @property(nonatomic) _Bool didAcceptGameInvite; // @synthesize didAcceptGameInvite=_didAcceptGameInvite;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 @property(nonatomic) _Bool showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property(copy, nonatomic) NSString *defaultInvitationMessage; // @synthesize defaultInvitationMessage=_defaultInvitationMessage;
 @property(readonly, copy, nonatomic) GKMatchRequest *originalMatchRequest; // @synthesize originalMatchRequest=_originalMatchRequest;
 @property(readonly, copy, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;
+- (void)setViewNeedsLayout;
+- (_Bool)isCanceling;
+- (_Bool)isInSetupMode;
+- (long long)automatchParticipantStatus;
+- (id)makeButtonHeaderView;
+- (void)didUpdateParticipants;
+- (void)traitCollectionDidChange:(id)arg1;
+- (long long)multiplayerCellLayoutMode;
+- (id)viewControllerLayout;
+- (_Bool)isLoading;
+- (void)dataSource:(id)arg1 didRefreshSections:(id)arg2;
+- (void)didTapRemoveParticipant:(id)arg1;
+- (void)didTapInviteOnCell:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)handleNewParticipantCount:(long long)arg1;
 - (void)playersToInvite:(id)arg1;
 - (void)localPlayerAcceptedGameInvite:(id)arg1;
 - (void)removedPlayer:(id)arg1;
+- (void)didClickCancelForServiceUnavailableAlert;
+- (void)didInviteContactPlayers;
+- (void)handleServiceUnavailable:(id)arg1;
+- (void)setShareInvitees;
+- (void)inviteContactPlayers:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)invitePlayers:(id)arg1;
 - (void)cancel;
 - (void)cancelButtonPressed;
 - (void)playNow;
-- (void)playButtonPressed;
+- (void)performActionsForButtonCancelCurrentMatching;
+- (void)performActionsForButtonStartGame;
+- (void)startGameButtonPressed;
+- (void)updateStartGameButtonTitle;
+- (void)customInviteViewController:(id)arg1 didFinishWithMessage:(id)arg2;
+- (void)addMessageButtonPressed;
+- (void)updateAddMessageButtonVisibility;
 - (void)determineInvitationType;
+- (void)updateDataSourceInvitationEnabled;
 - (_Bool)allowPlayerCountSelection;
 - (_Bool)canStartForcedAutomatch;
 - (void)setInvitesFailedWithError:(id)arg1;
-- (void)willQueryGKIDs;
-- (void)invitePlayers:(id)arg1 contactPlayers:(id)arg2;
-- (void)didFinishPickingPlayers:(id)arg1;
-- (void)inviteButtonPressed;
-- (void)shareFinishedWithContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
-- (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2 message:(id)arg3 contactPlayers:(id)arg4 friendPlayers:(id)arg5;
-- (void)messageComposeViewController:(id)arg1 willPresentPlayerPicker:(id)arg2;
-- (void)share;
-- (void)willShare;
+- (void)sendInvitesToContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
+- (void)dismissPickerViewController;
+- (void)multiplayerPickerDidCancel:(id)arg1;
+- (void)multiplayerPicker:(id)arg1 didPickPlayers:(id)arg2;
+- (void)preparePlayerPicker;
+- (void)presentPlayerPicker;
 - (void)loadShareURLWithCompletion:(CDUnknownBlockType)arg1;
-- (void)shareButtonPressed;
-- (void)preloadShareURL;
-- (void)handleServiceUnavailable:(id)arg1;
 - (void)willPresentPlayerPicker:(id)arg1;
 - (long long)maxAvailablePlayers;
 - (void)removePlayer:(id)arg1;
 - (void)removeAutomatchPlayer;
 - (void)addAutomatchPlayer;
-- (void)updateVisibleRemoveButtons;
-- (void)updateButtonViewsWithStatus:(id)arg1;
-- (void)updateUIActionsEnabled:(_Bool)arg1;
-- (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2;
-- (void)dataSource:(id)arg1 didRemoveItemsAtIndexPaths:(id)arg2;
-- (void)dataSource:(id)arg1 didInsertItemsAtIndexPaths:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)setupCancelButton;
-- (void)showCollectionView;
-- (void)didEnterLoadedState;
-- (void)animateBubblesInIfNeeded;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)multiplayerPlayerCountViewController:(id)arg1 didSelectValue:(long long)arg2;
-- (void)didSelectPlayerCountHeader:(id)arg1;
-- (void)viewSafeAreaInsetsDidChange;
-- (void)configureConstraintsForSubviews;
-- (void)configureSubviewsForIOS;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)loadView;
 - (void)configureDataSource;
+- (void)didEnterLoadedState;
+- (void)viewDidAppear:(_Bool)arg1;
+- (struct UIEdgeInsets)collectionViewContentInset;
+- (void)updateHeaderFooterLayoutMargins;
+- (void)updateCollectionViewContentInset;
+- (void)layoutSubviews;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)viewDidLayoutSubviews;
+- (void)refreshHeaderAndFooterMaterials;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 @property(readonly, nonatomic) GKMultiplayerDataSource *multiplayerDataSource;
 - (void)dealloc;
 - (id)initWithMatchRequest:(id)arg1;

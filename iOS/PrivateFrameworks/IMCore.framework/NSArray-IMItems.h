@@ -16,11 +16,9 @@
 - (id)indexesOfPartsOfMessage:(id)arg1;
 - (id)__imItems;
 - (void)__enumerateItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)__itemForChatItemAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) IMMessageItem *__imLastMessageItem;
 - (id)messages;
 - (void)enumerateMessagesWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)messageForChatItemAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) IMMessage *lastIncomingFinishedMessage;
 @property(readonly, nonatomic) IMMessage *lastIncomingMessage;
 @property(readonly, nonatomic) IMMessage *lastFinishedMessage;

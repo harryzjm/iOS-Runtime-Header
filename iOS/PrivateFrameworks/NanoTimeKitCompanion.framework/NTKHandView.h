@@ -8,40 +8,57 @@
 
 #import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 
-@class CALayer, CLKDevice, NSString, NTKColoringImageView, UIColor, UIImage, UIImageView;
+@class CALayer, CLKDevice, NSString, NTKAnalogHandConfiguration, NTKColoringImageView, UIColor, UIImage, UIImageView;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKHandView : UIView <CLKMonochromeComplicationView>
 {
-    UIImageView *_shadowImageView;
     CALayer *_inlayLayer;
     UIView *_handDotView;
+    struct CGPath *_dropShadowPath;
+    struct CGPath *_radialShadowPath;
+    UIView *_dropShadowView;
+    UIImageView *_radialShadowImageView;
+    UIImageView *_dropShadowImageView;
     _Bool _shadowsHidden;
+    _Bool _radialShadowsHidden;
+    _Bool _dropShadowsHidden;
+    _Bool _shadowImageBehindHand;
     id <CLKMonochromeFilterProvider> _filterProvider;
     UIColor *_color;
     UIImage *_image;
     double _zRotation;
     double _scale;
     UIColor *_inlayColor;
-    UIImage *_shadowImage;
+    NTKAnalogHandConfiguration *_configuration;
+    UIImage *_radialShadowImage;
+    UIImage *_dropShadowImage;
     UIView *_transitionContainerView;
     UIColor *_handDotColor;
     NTKColoringImageView *_handImageView;
     CLKDevice *_device;
-    unsigned long long _style;
+    struct CGSize _directionalShadowOffset;
     struct UIEdgeInsets _inlayInsets;
     struct UIEdgeInsets _shadowInsets;
 }
 
-@property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(readonly, nonatomic) NTKColoringImageView *handImageView; // @synthesize handImageView=_handImageView;
 @property(readonly, nonatomic) UIView *handDotView; // @synthesize handDotView=_handDotView;
 @property(retain, nonatomic) UIColor *handDotColor; // @synthesize handDotColor=_handDotColor;
 @property(retain, nonatomic) UIView *transitionContainerView; // @synthesize transitionContainerView=_transitionContainerView;
-@property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
+@property(nonatomic) _Bool shadowImageBehindHand; // @synthesize shadowImageBehindHand=_shadowImageBehindHand;
+@property(nonatomic) struct CGSize directionalShadowOffset; // @synthesize directionalShadowOffset=_directionalShadowOffset;
+@property(nonatomic) struct CGPath *radialShadowPath; // @synthesize radialShadowPath=_radialShadowPath;
+@property(nonatomic) struct CGPath *dropShadowPath; // @synthesize dropShadowPath=_dropShadowPath;
+@property(retain, nonatomic) UIImage *dropShadowImage; // @synthesize dropShadowImage=_dropShadowImage;
+@property(retain, nonatomic) UIImage *radialShadowImage; // @synthesize radialShadowImage=_radialShadowImage;
 @property(nonatomic) struct UIEdgeInsets shadowInsets; // @synthesize shadowInsets=_shadowInsets;
+@property(nonatomic) _Bool dropShadowsHidden; // @synthesize dropShadowsHidden=_dropShadowsHidden;
+@property(nonatomic) _Bool radialShadowsHidden; // @synthesize radialShadowsHidden=_radialShadowsHidden;
 @property(nonatomic) _Bool shadowsHidden; // @synthesize shadowsHidden=_shadowsHidden;
+@property(readonly) NTKAnalogHandConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) struct UIEdgeInsets inlayInsets; // @synthesize inlayInsets=_inlayInsets;
 @property(retain, nonatomic) UIColor *inlayColor; // @synthesize inlayColor=_inlayColor;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
@@ -49,13 +66,16 @@
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
+- (id)shadowView;
+- (struct CGPoint)anchorPointFromConfiguration;
+- (id)initWithConfiguration:(id)arg1 forDevice:(id)arg2 maskedShadow:(_Bool)arg3;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_adjustHandImageSubviewOrder;
 - (void)setupHandDotViewWithDiameter:(double)arg1;
-- (void)_updateShadows;
 - (void)noModelUpdate_setHandDotColor:(id)arg1;
+- (void)_updateShadows;
+- (void)setHidden:(_Bool)arg1;
 - (void)noModelUpdate_setInlayInsets:(struct UIEdgeInsets)arg1;
 - (void)noModelUpdate_setInlayColor:(id)arg1;
 @property(readonly, nonatomic) CALayer *inlayLayer;
@@ -63,7 +83,8 @@
 - (void)noModelUpdate_setColor:(id)arg1;
 - (void)_layoutInlayLayer;
 - (void)layoutSubviews;
-- (id)initWithImage:(id)arg1 style:(unsigned long long)arg2 forDevice:(id)arg3;
+- (void)_initWithImage:(id)arg1 forDevice:(id)arg2;
+- (void)dealloc;
 - (id)initWithImage:(id)arg1 forDevice:(id)arg2;
 
 // Remaining properties

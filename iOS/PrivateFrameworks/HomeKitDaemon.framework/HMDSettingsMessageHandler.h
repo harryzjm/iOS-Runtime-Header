@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDSettingsMessageHandlerProtocol-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDUserMessagePolicy, HMFMessageDispatcher, NSMapTable, NSString;
+@class HMDUserMessagePolicy, HMFMessageDispatcher, NSMapTable, NSObject, NSString;
 @protocol HMDSettingsMessageController, OS_dispatch_queue;
 
-@interface HMDSettingsMessageHandler : NSObject <HMDSettingsMessageHandlerProtocol>
+@interface HMDSettingsMessageHandler : HMFObject <HMDSettingsMessageHandlerProtocol, HMFLogging>
 {
     _Bool _isCurrentUser;
     NSMapTable *_settingMessageMap;
@@ -22,6 +23,8 @@
     HMDUserMessagePolicy *_anyUserAllowedPolicy;
 }
 
++ (id)logCategory;
+- (void).cxx_destruct;
 @property _Bool isCurrentUser; // @synthesize isCurrentUser=_isCurrentUser;
 @property(retain) HMDUserMessagePolicy *anyUserAllowedPolicy; // @synthesize anyUserAllowedPolicy=_anyUserAllowedPolicy;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -29,7 +32,6 @@
 @property __weak id <HMDSettingsMessageController> messageController; // @synthesize messageController=_messageController;
 @property(retain) NSMapTable *settingGroupMessageMap; // @synthesize settingGroupMessageMap=_settingGroupMessageMap;
 @property(retain) NSMapTable *settingMessageMap; // @synthesize settingMessageMap=_settingMessageMap;
-- (void).cxx_destruct;
 - (void)_handleUpdatedConstraints:(id)arg1 setting:(id)arg2;
 - (void)_handleReplaceConstraints:(id)arg1 setting:(id)arg2;
 - (void)_handleRemoveConstraint:(id)arg1 setting:(id)arg2;

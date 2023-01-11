@@ -15,7 +15,7 @@
 {
 }
 
-- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2;
+- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2 error:(id *)arg3;
 - (id)clientToServerRecordType:(id)arg1 withRecordID:(id)arg2 inDatabase:(id)arg3 error:(id *)arg4;
 - (id)serverToClientRecordType:(id)arg1 withRecordID:(id)arg2 inDatabase:(id)arg3 error:(id *)arg4;
 - (id)serverToClientRecordZone:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;

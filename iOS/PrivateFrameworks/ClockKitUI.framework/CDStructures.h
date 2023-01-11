@@ -45,10 +45,6 @@ struct CLKUIQuadSize {
     int height;
 };
 
-struct NSNumber {
-    Class _field1;
-};
-
 struct UIEdgeInsets {
     double top;
     double left;
@@ -57,8 +53,8 @@ struct UIEdgeInsets {
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
 #pragma mark Typedef'd Structures

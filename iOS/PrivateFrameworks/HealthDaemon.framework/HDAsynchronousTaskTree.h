@@ -24,8 +24,8 @@
     NSString *_groupDescription;
 }
 
-@property(readonly, copy, nonatomic) NSString *groupDescription; // @synthesize groupDescription=_groupDescription;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *groupDescription; // @synthesize groupDescription=_groupDescription;
 - (id)description;
 - (void)_queue_runPendingCheckpointTasks:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_reportResult:(long long)arg1;
@@ -35,6 +35,7 @@
 - (void)cancel;
 - (void)begin;
 @property(readonly, nonatomic) NSArray *allErrors;
+- (void)addCheckpointTaskOnQueue:(id)arg1 task:(CDUnknownBlockType)arg2;
 - (void)addCheckpointTask:(CDUnknownBlockType)arg1;
 - (void)addTaskOnQueue:(id)arg1 timeout:(double)arg2 task:(CDUnknownBlockType)arg3;
 - (void)addTaskWithTimeout:(double)arg1 task:(CDUnknownBlockType)arg2;

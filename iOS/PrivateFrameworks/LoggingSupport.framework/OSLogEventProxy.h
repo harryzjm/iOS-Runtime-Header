@@ -99,6 +99,7 @@
     NSString *_senderImagePath;
     OSLogEventBacktrace *_backtrace;
     NSString *_logMessage;
+    _Bool _logMessageIsHidden;
     OSLogEventDecomposedMessage *_decomposedMessage;
     unsigned long long _uuidi;
 }

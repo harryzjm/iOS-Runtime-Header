@@ -19,19 +19,19 @@
     id <WFForecastDataParser> _defaultForecastParser;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <WFForecastDataParser> defaultForecastParser; // @synthesize defaultForecastParser=_defaultForecastParser;
 @property(retain, nonatomic) Class defaultForecastRequestFormatterClass; // @synthesize defaultForecastRequestFormatterClass=_defaultForecastRequestFormatterClass;
 @property(retain, nonatomic) NSMutableDictionary *requestParserForForecastType; // @synthesize requestParserForForecastType=_requestParserForForecastType;
 @property(retain, nonatomic) NSMutableDictionary *requestFormatterForForecastType; // @synthesize requestFormatterForForecastType=_requestFormatterForForecastType;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isValid;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)hostUrl;
 - (void)setDefaultForecastFormatter:(Class)arg1;
 - (void)setRequestParser:(id)arg1 forForecastType:(unsigned long long)arg2;
 - (void)setRequestFormatter:(Class)arg1 forForecastType:(unsigned long long)arg2;
-- (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6 rules:(id)arg7;
-- (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 error:(id *)arg4 rules:(id)arg5;
+- (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 units:(int)arg4 locale:(id)arg5 date:(id)arg6 error:(id *)arg7 rules:(id)arg8;
+- (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 units:(int)arg3 date:(id)arg4 error:(id *)arg5 rules:(id)arg6;
 - (id)initWithVersion:(id)arg1;
 
 // Remaining properties

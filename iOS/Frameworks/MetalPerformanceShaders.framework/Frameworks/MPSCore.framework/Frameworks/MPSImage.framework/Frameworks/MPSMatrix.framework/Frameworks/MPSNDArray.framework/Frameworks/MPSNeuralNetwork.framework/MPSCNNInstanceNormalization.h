@@ -15,7 +15,7 @@
     float _epsilon;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 @property(readonly, retain, nonatomic) id <MPSCNNInstanceNormalizationDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void)reloadGammaAndBetaWithCommandBuffer:(id)arg1 gammaAndBetaState:(id)arg2;

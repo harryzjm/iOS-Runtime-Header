@@ -13,15 +13,18 @@
 }
 
 + (Class)cellClass;
++ (id)indexingString;
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
+- (_Bool)handleSelectionForResult:(id)arg1;
 - (id)_mapItemForResult:(id)arg1;
-- (id)_additionalMenuActionsForResult:(id)arg1;
+- (id)additionalMenuElementsForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
 - (_Bool)shouldStartMenuInteractionForResult:(id)arg1;
+- (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (void)updateSupplementryViewIfNeeded:(id)arg1 atIndexPath:(id)arg2;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;

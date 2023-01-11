@@ -8,14 +8,14 @@
 
 @interface HFAccessoryInfoItem
 {
-    unsigned long long _infoType;
     HMAccessory *_accessory;
+    unsigned long long _infoType;
 }
 
 + (id)localizedStringForCharacteristic:(id)arg1;
-@property(retain, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
-@property(nonatomic) unsigned long long infoType; // @synthesize infoType=_infoType;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long infoType; // @synthesize infoType=_infoType;
+@property(readonly, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)initWithAccessory:(id)arg1 infoType:(unsigned long long)arg2;
 - (id)init;

@@ -6,13 +6,14 @@
 
 @interface VCWorkflowChange
 {
-    unsigned long long _syncHash;
+    long long _syncHash;
 }
 
-+ (unsigned long long)syncHashForRecord:(id)arg1;
++ (long long)syncHashForRecord:(id)arg1;
 + (Class)recordClass;
++ (unsigned long long)databaseObjectType;
 + (int)messageType;
-@property(readonly, nonatomic) unsigned long long syncHash; // @synthesize syncHash=_syncHash;
+@property(readonly, nonatomic) long long syncHash; // @synthesize syncHash=_syncHash;
 
 @end
 

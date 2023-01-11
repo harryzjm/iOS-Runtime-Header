@@ -14,14 +14,16 @@
     NSCountedSet *_orientationUpdateDisableReasons;
     _Bool _passesTouchesThrough;
     NSString *_debugName;
-    UIViewController *_sb_rootViewController;
+    UIViewController *_contentViewController;
 }
 
-@property(nonatomic) _Bool passesTouchesThrough; // @synthesize passesTouchesThrough=_passesTouchesThrough;
-@property(retain, nonatomic, setter=sb_setRootViewController:) UIViewController *sb_rootViewController; // @synthesize sb_rootViewController=_sb_rootViewController;
-@property(readonly, copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
++ (_Bool)layoutContentViewControllerWithConstraints;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool passesTouchesThrough; // @synthesize passesTouchesThrough=_passesTouchesThrough;
+@property(retain, nonatomic, setter=setContentViewController:) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property(readonly, copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
 - (_Bool)isActive;
+- (unsigned long long)effectiveRootViewControllerSupportedInterfaceOrientations;
 - (void)_updateInterfaceOrientationToCurrentActiveInterfaceOrientationWithDuration:(double)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
@@ -35,6 +37,7 @@
 - (void)disableInterfaceOrientationChangesForReason:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setHidden:(_Bool)arg1;
+- (_Bool)_canBecomeKeyWindow;
 - (void)setRootViewController:(id)arg1;
 - (id)initWithDebugName:(id)arg1;
 

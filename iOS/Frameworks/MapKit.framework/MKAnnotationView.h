@@ -10,7 +10,7 @@
 #import <MapKit/MKLocatableObject-Protocol.h>
 #import <MapKit/_MKKVOProxyDelegate-Protocol.h>
 
-@class CALayer, GEORouteMatch, MKCalloutView, MKUserLocationAnnotationViewProxy, NSMutableArray, NSString, UIImage, VKAnchorWrapper, _MKAnnotationViewAnchor, _MKAnnotationViewCustomFeatureAnnotation, _MKKVOProxy;
+@class CALayer, GEORouteMatch, MKCalloutView, MKUsageCounter, MKUserLocationAnnotationViewProxy, NSMutableArray, NSString, UIImage, VKAnchorWrapper, _MKAnnotationViewAnchor, _MKAnnotationViewCustomFeatureAnnotation, _MKKVOProxy, _MKStaticMapView;
 @protocol MKAnnotation;
 
 @interface MKAnnotationView : UIView <_MKKVOProxyDelegate, MKAnnotationRepresentation, MKLocatableObject>
@@ -35,16 +35,17 @@
     _MKAnnotationViewCustomFeatureAnnotation *_customFeatureAnnotation;
     _Bool _subclassImplementsAlignmentRectInsets;
     unsigned long long _allowedCalloutEdges;
+    _Bool _shouldKeepCalloutVisible;
     id <MKAnnotation> _annotation;
     float _displayPriority;
     struct CGRect _collisionFrame;
     NSString *_clusteringIdentifier;
     UIImage *_image;
+    long long _collisionMode;
     MKCalloutView *_calloutView;
     UIView *_leftCalloutAccessoryView;
     UIView *_rightCalloutAccessoryView;
     UIView *_detailCalloutAccessoryView;
-    long long _collisionMode;
     NSString *_reuseIdentifier;
     MKAnnotationView *_clusterAnnotationView;
     unsigned long long _mapType;
@@ -54,6 +55,7 @@
     struct CGPoint _leftCalloutOffset;
     struct CGPoint _rightCalloutOffset;
     unsigned long long _dragState;
+    long long _calloutStyle;
     struct {
         unsigned int pendingSelectionAnimated:1;
         unsigned int disabled:1;
@@ -63,7 +65,6 @@
         unsigned int canDisplayDisclosureInCallout:1;
         unsigned int canDisplayPlacemarkInCallout:1;
         unsigned int draggable:1;
-        unsigned int useBalloonCallouts:1;
         unsigned int customTransformApplied:1;
         unsigned int internalTransformApplied:1;
         unsigned int animatingToCoordinate:1;
@@ -78,7 +79,13 @@
     _Bool _animatingToCoordinate;
     _Bool _tracking;
     _Bool _pendingSelectionAnimated;
+    float _zPriority;
+    float _selectedZPriority;
     double _direction;
+    _MKStaticMapView *_staticMapView;
+    MKUsageCounter *_usageCounter;
+    struct CGPoint _bottomCalloutOffset;
+    struct UIEdgeInsets _annotationTrackingInsets;
 }
 
 + (_Bool)_followsTerrain;
@@ -88,16 +95,22 @@
 + (unsigned long long)_selectedZIndex;
 + (unsigned long long)_zIndex;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
-+ (id)currentLocationTitle;
-+ (Class)_mapkitLeafClass;
 + (Class)calloutViewClass;
++ (Class)_mapkitLeafClass;
+- (void).cxx_destruct;
+@property(nonatomic, getter=_annotationTrackingInsets) struct UIEdgeInsets annotationTrackingInsets; // @synthesize annotationTrackingInsets=_annotationTrackingInsets;
+@property(nonatomic, getter=_usageCounter, setter=_setUsageCounter:) __weak MKUsageCounter *usageCounter; // @synthesize usageCounter=_usageCounter;
 @property(nonatomic) long long collisionMode; // @synthesize collisionMode=_collisionMode;
+@property(nonatomic) float selectedZPriority; // @synthesize selectedZPriority=_selectedZPriority;
+@property(nonatomic) float zPriority; // @synthesize zPriority=_zPriority;
 @property(readonly, nonatomic) __weak MKAnnotationView *clusterAnnotationView; // @synthesize clusterAnnotationView=_clusterAnnotationView;
 @property(copy, nonatomic) NSString *clusteringIdentifier; // @synthesize clusteringIdentifier=_clusteringIdentifier;
 @property(nonatomic) float displayPriority; // @synthesize displayPriority=_displayPriority;
+@property(nonatomic, getter=_calloutStyle, setter=_setCalloutStyle:) long long calloutStyle; // @synthesize calloutStyle=_calloutStyle;
 @property(nonatomic) long long subtitleVisibility; // @synthesize subtitleVisibility=_subtitleVisibility;
 @property(nonatomic) long long titleVisibility; // @synthesize titleVisibility=_titleVisibility;
 @property(nonatomic, getter=_isPendingSelectionAnimated, setter=_setPendingSelectionAnimated:) _Bool pendingSelectionAnimated; // @synthesize pendingSelectionAnimated=_pendingSelectionAnimated;
+@property(nonatomic, getter=_staticMapView, setter=_setStaticMapView:) __weak _MKStaticMapView *staticMapView; // @synthesize staticMapView=_staticMapView;
 @property(nonatomic, getter=_selectionPriority, setter=_setSelectionPriority:) float selectionPriority; // @synthesize selectionPriority=_selectionPriority;
 @property(nonatomic, getter=_mapDisplayStyle, setter=_setMapDisplayStyle:) CDStruct_80aa614a mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
 @property(nonatomic, getter=_mapPitchRadians, setter=_setMapPitchRadians:) double mapPitchRadians; // @synthesize mapPitchRadians=_mapPitchRadians;
@@ -107,16 +120,17 @@
 @property(retain, nonatomic) UIView *detailCalloutAccessoryView; // @synthesize detailCalloutAccessoryView=_detailCalloutAccessoryView;
 @property(retain, nonatomic) UIView *rightCalloutAccessoryView; // @synthesize rightCalloutAccessoryView=_rightCalloutAccessoryView;
 @property(retain, nonatomic) UIView *leftCalloutAccessoryView; // @synthesize leftCalloutAccessoryView=_leftCalloutAccessoryView;
+@property(nonatomic, getter=_bottomCalloutOffset, setter=_setBottomCalloutOffset:) struct CGPoint bottomCalloutOffset; // @synthesize bottomCalloutOffset=_bottomCalloutOffset;
 @property(nonatomic) struct CGPoint rightCalloutOffset; // @synthesize rightCalloutOffset=_rightCalloutOffset;
 @property(nonatomic) struct CGPoint leftCalloutOffset; // @synthesize leftCalloutOffset=_leftCalloutOffset;
 @property(readonly, nonatomic, getter=_collisionFrame) struct CGRect collisionFrame; // @synthesize collisionFrame=_collisionFrame;
+@property(nonatomic, getter=_shouldKeepCalloutVisible, setter=_setShouldKeepCalloutVisible:) _Bool shouldKeepCalloutVisible; // @synthesize shouldKeepCalloutVisible=_shouldKeepCalloutVisible;
 @property(retain, nonatomic, getter=_calloutView, setter=_setCalloutView:) MKCalloutView *_calloutView; // @synthesize _calloutView;
 @property(nonatomic, getter=_isTracking, setter=_setTracking:) _Bool _tracking; // @synthesize _tracking;
 @property(nonatomic, getter=_isAnimatingToCoordinate, setter=_setAnimatingToCoordinate:) _Bool _animatingToCoordinate; // @synthesize _animatingToCoordinate;
 @property(nonatomic, setter=_setPresentationCourse:) double _presentationCourse; // @synthesize _presentationCourse;
 @property(copy, nonatomic, setter=_setPresentationCoordinateChangedCallback:) CDUnknownBlockType _presentationCoordinateChangedCallback; // @synthesize _presentationCoordinateChangedCallback;
 @property(nonatomic, setter=_setDirection:) double _direction; // @synthesize _direction;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_defaultCollisionAlignmentRectInsets) struct UIEdgeInsets defaultCollisionAlignmentRectInsets;
 @property(readonly, nonatomic, getter=_collisionAlignmentRectInsets) struct UIEdgeInsets collisionAlignmentRectInsets;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -126,7 +140,6 @@
 - (void)_removeAnnotationObservation;
 - (void)_addAnnotationObservation;
 - (id)_customFeatureAnnotation;
-@property(nonatomic, getter=_useBalloonCallouts, setter=_setUseBalloonCallouts:) _Bool useBalloonCallouts;
 - (void)_didUpdatePosition;
 - (void)_updateFromMap;
 - (double)_pointsForDistance:(double)arg1;
@@ -157,11 +170,9 @@
 - (void)setHidden:(_Bool)arg1;
 - (id)snapshotViewAfterScreenUpdates:(_Bool)arg1;
 - (void)didMoveToSuperview;
-- (void)_resetZIndexNotify:(_Bool)arg1;
-- (void)_resetZIndex;
-- (unsigned long long)_effectiveZIndex;
+- (void)_updateEffectiveZPriority;
+- (float)_effectiveZPriority;
 - (void)_setZIndex:(unsigned long long)arg1;
-- (void)_setZIndex:(unsigned long long)arg1 notify:(_Bool)arg2;
 - (unsigned long long)_zIndex;
 - (void)_setMapType:(unsigned long long)arg1;
 - (unsigned long long)_mapType;
@@ -190,11 +201,20 @@
 - (void)_didDragWithVelocity:(struct CGPoint)arg1;
 - (struct CGPoint)_draggingDropOffset;
 @property(nonatomic) _Bool canShowCallout;
+- (void)_dismissCallout:(_Bool)arg1;
+- (void)_showCallout:(_Bool)arg1;
 - (_Bool)updateCalloutViewIfNeededAnimated:(_Bool)arg1;
+@property(readonly, nonatomic, getter=_allowedToShowCallout) _Bool allowedToShowCallout;
 - (_Bool)_shouldShowCalloutIfSelected;
+- (long long)_effectiveCalloutStyle;
 - (void)_setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isSelected) _Bool selected;
+- (float)_defaultSelectedZPriority;
+- (float)_defaultZPriority;
+- (void)_setSelectedZPriority:(float)arg1;
+- (void)_setZPriority:(float)arg1;
+- (float)_clampZPriority:(float)arg1;
 @property(retain, nonatomic) UIImage *image;
 - (id)_contentLayer;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -215,8 +235,9 @@
 - (long long)compareForCollision:(id)arg1;
 - (long long)compareForClustering:(id)arg1;
 - (void)setClusterAnnotationView:(id)arg1;
+- (void)_mapVisibleCenteringRectChanged;
 - (void)_updateAnchorPosition:(struct CGPoint)arg1 alignToPixels:(_Bool)arg2;
-- (_Bool)isSelectable;
+@property(readonly, nonatomic, getter=_isSelectable) _Bool selectable;
 - (_Bool)shouldShowCallout;
 - (void)configureCustomFeature:(id)arg1;
 - (id)_effectiveSubtitlesIsCollidable:(_Bool *)arg1;

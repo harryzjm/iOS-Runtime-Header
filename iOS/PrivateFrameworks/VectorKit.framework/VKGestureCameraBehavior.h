@@ -38,7 +38,9 @@ __attribute__((visibility("hidden")))
 - (void)endPitch:(struct CGPoint)arg1;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
+- (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)beginPitch:(struct CGPoint)arg1;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;

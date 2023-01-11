@@ -18,13 +18,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)provideImageInfoAtLevel:(unsigned long long)arg1 element:(unsigned long long)arg2 face:(unsigned long long)arg3 withBufferAllocator:(id)arg4;
+- (long long)textureIntepretation;
 - (id)provideTextureInfo;
 - (id)_texturedImageWithKey:(id)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
 - (id)mipLevels;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)dealloc;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 
 @end
 

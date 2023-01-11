@@ -11,14 +11,15 @@
 @interface _MFEmailAddress : NSObject
 {
     NSString *_address;
-    NSString *_comment;
+    NSString *_displayName;
 }
 
-@property(readonly, copy, nonatomic) NSString *comment; // @synthesize comment=_comment;
-@property(readonly, copy, nonatomic) NSString *address; // @synthesize address=_address;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property(readonly, copy, nonatomic) NSString *address; // @synthesize address=_address;
 @property(readonly, copy, nonatomic) NSString *fullAddress;
-- (id)initWithAddress:(id)arg1 comment:(id)arg2;
+- (id)initWithAddress:(id)arg1;
+- (id)initWithAddress:(id)arg1 displayName:(id)arg2;
 
 @end
 

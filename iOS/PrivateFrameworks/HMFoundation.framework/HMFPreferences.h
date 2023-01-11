@@ -6,12 +6,12 @@
 
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class HMFClassRegistry, HMFUnfairLock, NSArray, NSMutableDictionary, NSString;
+@class HMFClassRegistry, NSArray, NSMutableDictionary, NSString;
 
 @interface HMFPreferences <HMFObject>
 {
+    struct os_unfair_recursive_lock_s _lock;
     NSMutableDictionary *_preferences;
-    HMFUnfairLock *_lock;
     HMFClassRegistry *_classRegistry;
 }
 
@@ -22,9 +22,8 @@
 + (Class)preferenceClassForPreferenceKey:(id)arg1;
 + (id)classRegistry;
 + (id)sharedPreferences;
-@property(readonly) HMFClassRegistry *classRegistry; // @synthesize classRegistry=_classRegistry;
-@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 - (void).cxx_destruct;
+@property(readonly) HMFClassRegistry *classRegistry; // @synthesize classRegistry=_classRegistry;
 - (id)preferenceForKey:(id)arg1;
 @property(readonly, copy) NSArray *preferences;
 - (void)setPreferenceClass:(Class)arg1 forPreferenceKey:(id)arg2;

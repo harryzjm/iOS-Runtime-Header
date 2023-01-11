@@ -15,12 +15,11 @@
 @property(readonly, nonatomic) unsigned char role; // @synthesize role=_role;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic) unsigned long long percentage; // @synthesize percentage=_percentage;
-- (id)_initWithRole:(unsigned char)arg1 percentage:(unsigned long long)arg2 duration:(double)arg3;
-- (id)succinctDescriptionBuilder;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 
 @end
 

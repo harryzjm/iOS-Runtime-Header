@@ -11,14 +11,14 @@
 @interface PGHobby : NSObject
 {
     long long _type;
-    NSSet *_persons;
+    NSSet *_personNodes;
     NSMutableSet *_momentNodes;
 }
 
-@property(retain, nonatomic) NSMutableSet *moments; // @synthesize moments=_momentNodes;
-@property(retain, nonatomic) NSSet *persons; // @synthesize persons=_persons;
-@property(nonatomic) long long type; // @synthesize type=_type;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *momentNodes; // @synthesize momentNodes=_momentNodes;
+@property(retain, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
+@property(nonatomic) long long type; // @synthesize type=_type;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

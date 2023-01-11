@@ -4,28 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLocale, WFLocation;
+@class NSLocale, NSString, WFLocation;
 
 @interface WFAggregateCommonRequest
 {
+    int _units;
     WFLocation *_location;
     unsigned long long _types;
+    NSString *_trackingParameter;
     CDUnknownBlockType _completionHandler;
     NSLocale *_locale;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(readonly, nonatomic) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
+@property(readonly, nonatomic) int units; // @synthesize units=_units;
 @property(readonly, nonatomic) unsigned long long types; // @synthesize types=_types;
 @property(readonly, nonatomic) WFLocation *location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (void)startWithService:(id)arg1;
 - (void)handleResponse:(id)arg1;
 - (void)handleCancellation;
 - (void)cleanup;
 - (unsigned long long)_supportedForecastTypes:(unsigned long long)arg1;
 - (id)description;
-- (id)initWithLocation:(id)arg1 types:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithLocation:(id)arg1 types:(unsigned long long)arg2 units:(int)arg3 trackingParameter:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithLocation:(id)arg1 types:(unsigned long long)arg2 trackingParameter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

@@ -22,14 +22,14 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
 @property(readonly, nonatomic) IDSService *idsStreamService; // @synthesize idsStreamService=_idsStreamService;
 @property(readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-- (void).cxx_destruct;
+- (id)logIdentifier;
 - (void)startKeepAlive;
 - (void)dealloc;
-- (id)logIdentifier;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2;
 
 // Remaining properties

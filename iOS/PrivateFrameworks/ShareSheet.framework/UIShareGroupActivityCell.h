@@ -6,29 +6,30 @@
 
 #import <UIKitCore/UICollectionViewCell.h>
 
-@class CALayer, NSArray, UIImageView, UILabel, UIView, UIVisualEffectView, _UIHostActivityProxy;
+@class NSArray, UIImageView, UILabel, UIView, UIVisualEffectView, _UIHostActivityProxy;
 
 @interface UIShareGroupActivityCell : UICollectionViewCell
 {
     _Bool _disabled;
+    _Bool _longPressable;
     _UIHostActivityProxy *_activityProxy;
     UILabel *_titleLabel;
     UIImageView *_activityImageView;
     UIView *_imageSlotView;
     UIView *_titleSlotView;
     UIView *_badgeSlotView;
-    CALayer *_darkeningLayer;
     UIVisualEffectView *_vibrantLabelView;
-    UIImageView *_darkenedImageView;
+    UILabel *_labelForPositioning;
     NSArray *_regularConstraints;
     NSArray *_largeTextConstraints;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *largeTextConstraints; // @synthesize largeTextConstraints=_largeTextConstraints;
 @property(retain, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
-@property(retain, nonatomic) UIImageView *darkenedImageView; // @synthesize darkenedImageView=_darkenedImageView;
+@property(retain, nonatomic) UILabel *labelForPositioning; // @synthesize labelForPositioning=_labelForPositioning;
 @property(retain, nonatomic) UIVisualEffectView *vibrantLabelView; // @synthesize vibrantLabelView=_vibrantLabelView;
-@property(retain, nonatomic) CALayer *darkeningLayer; // @synthesize darkeningLayer=_darkeningLayer;
+@property(nonatomic, getter=isLongPressable) _Bool longPressable; // @synthesize longPressable=_longPressable;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(retain, nonatomic) UIView *badgeSlotView; // @synthesize badgeSlotView=_badgeSlotView;
 @property(retain, nonatomic) UIView *titleSlotView; // @synthesize titleSlotView=_titleSlotView;
@@ -36,7 +37,6 @@
 @property(retain, nonatomic) UIImageView *activityImageView; // @synthesize activityImageView=_activityImageView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) _UIHostActivityProxy *activityProxy; // @synthesize activityProxy=_activityProxy;
-- (void).cxx_destruct;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)updateDarkening;

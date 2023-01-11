@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MKMapView, NSMutableArray, NSMutableDictionary, NSNumberFormatter, NSString, UIColor, _MKScaleUnitsView;
+@class MKMapView, NSMutableArray, NSMutableDictionary, NSNumber, NSNumberFormatter, NSString, UIColor, _MKScaleUnitsView;
 
 @interface MKScaleView : UIView
 {
@@ -34,7 +34,7 @@
     NSString *_kilometersAbbreviation;
     long long _grQuality;
     int _layoutCounter;
-    _Bool _useLightText;
+    NSNumber *_useLightText;
     _Bool _isVisible;
     _Bool _usedInternallyByMapView;
     MKMapView *_mapView;
@@ -44,12 +44,12 @@
 }
 
 + (id)scaleViewWithMapView:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
 @property(nonatomic) _Bool usedInternallyByMapView; // @synthesize usedInternallyByMapView=_usedInternallyByMapView;
 @property(nonatomic) long long legendAlignment; // @synthesize legendAlignment=_legendAlignment;
 @property(nonatomic) long long scaleVisibility; // @synthesize scaleVisibility=_scaleVisibility;
 @property(nonatomic) __weak MKMapView *mapView; // @synthesize mapView=_mapView;
-- (void).cxx_destruct;
 - (void)_localizedDistanceStringsWithMeters:(unsigned int)arg1 imperial:(double)arg2 useFeet:(_Bool)arg3 inMetric:(_Bool)arg4 displaysYardsForShortDistances:(_Bool)arg5 strings:(id)arg6;
 - (id)_scaleViewFormattedStringForInteger:(long long)arg1;
 - (id)_scaleViewFormattedStringForFloat:(double)arg1;

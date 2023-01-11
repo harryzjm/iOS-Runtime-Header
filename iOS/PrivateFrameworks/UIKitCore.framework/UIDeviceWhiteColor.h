@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
     double whiteComponent;
     double alphaComponent;
-    struct CGColor *_cachedColor;
+    _Atomic struct CGColor *_cachedColor;
 }
 
 - (_Bool)getHue:(double *)arg1 saturation:(double *)arg2 brightness:(double *)arg3 alpha:(double *)arg4;

@@ -14,6 +14,7 @@
 - (BOOL)transcriptOrientation;
 - (struct UIEdgeInsets)contentInsets;
 - (struct UIEdgeInsets)transcriptTextAlignmentInsets;
+- (unsigned long long)layoutType;
 
 @end
 

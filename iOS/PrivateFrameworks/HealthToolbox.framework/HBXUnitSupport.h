@@ -14,13 +14,13 @@
     HKDisplayTypeController *_displayTypeController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HKDisplayTypeController *displayTypeController; // @synthesize displayTypeController=_displayTypeController;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitPreferenceController; // @synthesize unitPreferenceController=_unitPreferenceController;
-- (void).cxx_destruct;
 - (void)updatePreferredUnit:(id)arg1 forType:(id)arg2;
 - (id)preferredUnitForType:(id)arg1;
-- (id)localizedPreferredUnitDisplayNameForType:(id)arg1;
-- (id)localizedDisplayNameForUnit:(id)arg1;
+- (id)localizedPreferredUnitDisplayNameForType:(id)arg1 nameContext:(long long)arg2;
+- (id)localizedDisplayNameForUnit:(id)arg1 nameContext:(long long)arg2;
 - (id)initWithUnitPreferenceController:(id)arg1 displayTypeController:(id)arg2;
 
 @end

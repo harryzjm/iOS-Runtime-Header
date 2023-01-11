@@ -11,7 +11,7 @@
 @interface THAController : NSObject
 {
     _Bool _supportsSiri;
-    _Bool _reachable;
+    _Bool _connected;
     _Bool _selected;
     unsigned int _identifier;
     NSString *_name;
@@ -20,14 +20,14 @@
 }
 
 + (id)selectButtonConfiguration:(id)arg1 supportsSiri:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *selectedButtons; // @synthesize selectedButtons=_selectedButtons;
 @property(nonatomic) _Bool selected; // @synthesize selected=_selected;
-@property(nonatomic) _Bool reachable; // @synthesize reachable=_reachable;
+@property(nonatomic) _Bool connected; // @synthesize connected=_connected;
 @property(nonatomic) _Bool supportsSiri; // @synthesize supportsSiri=_supportsSiri;
 @property(nonatomic) unsigned long long ticksPerSecond; // @synthesize ticksPerSecond=_ticksPerSecond;
 @property(readonly, nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (_Bool)dispatchButtonEvent:(id)arg1;
 - (void)updateSelectedButtons:(id)arg1;
 - (id)initWithName:(id)arg1 identifier:(unsigned int)arg2 ticksPerSecond:(unsigned long long)arg3 supportedButtons:(id)arg4 supportsSiri:(_Bool)arg5;

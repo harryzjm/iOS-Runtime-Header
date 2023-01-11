@@ -87,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)containsView:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+@property(readonly, nonatomic) _Bool hasNonPlaceholderViews;
 @property(nonatomic) _Bool restoreUsingBecomeFirstResponder;
 - (void)_forceRestoreUsingBecomeFirstResponder:(_Bool)arg1;
 @property(readonly, nonatomic) UIView *splitExemptSubview;

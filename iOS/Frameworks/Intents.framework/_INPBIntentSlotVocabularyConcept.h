@@ -14,18 +14,20 @@
 
 @interface _INPBIntentSlotVocabularyConcept : PBCodable <_INPBIntentSlotVocabularyConcept, NSSecureCoding, NSCopying>
 {
-    struct _has;
-    _Bool __encodeLegacyGloryData;
+    struct {
+        unsigned int requiresUserIdentification:1;
+    } _has;
+    _Bool _requiresUserIdentification;
     NSString *_identifier;
     NSArray *_synonyms;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)synonymsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
-@property(copy, nonatomic) NSArray *synonyms; // @synthesize synonyms=_synonyms;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *synonyms; // @synthesize synonyms=_synonyms;
+@property(nonatomic) _Bool requiresUserIdentification; // @synthesize requiresUserIdentification=_requiresUserIdentification;
+@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -38,6 +40,7 @@
 @property(readonly, nonatomic) unsigned long long synonymsCount;
 - (void)addSynonyms:(id)arg1;
 - (void)clearSynonyms;
+@property(nonatomic) _Bool hasRequiresUserIdentification;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 
 // Remaining properties

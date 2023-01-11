@@ -12,9 +12,9 @@
 
 @property(copy, nonatomic) NSString *frameId;
 @property(copy, nonatomic) NSString *name;
-@property(nonatomic) _Bool isPageContext;
+@property(nonatomic) long long type;
 @property(nonatomic) int identifier;
-- (id)initWithIdentifier:(int)arg1 isPageContext:(_Bool)arg2 name:(id)arg3 frameId:(id)arg4;
+- (id)initWithIdentifier:(int)arg1 type:(long long)arg2 name:(id)arg3 frameId:(id)arg4;
 
 @end
 

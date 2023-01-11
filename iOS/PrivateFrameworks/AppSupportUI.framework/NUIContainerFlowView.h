@@ -23,16 +23,13 @@
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
 - (_Bool)setNeedsInvalidation:(long long)arg1;
 - (void)populateFlowArrangementCells:(vector_702fc599 *)arg1;
-- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1 inAxis:(long long)arg2;
 - (id)calculateViewForLastBaselineLayout;
 - (id)calculateViewForFirstBaselineLayout;
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)setBaselineRelativeArrangement:(_Bool)arg1;
 @property(nonatomic) double rowSpacing;
 @property(nonatomic) double columnSpacing;
-- (void)setVerticalDistribution:(long long)arg1;
 @property(readonly, nonatomic) long long verticalDistribution;
-- (void)setHorizontalDistribution:(long long)arg1;
 @property(readonly, nonatomic) long long horizontalDistribution;
 @property(nonatomic) long long verticalAlignment;
 @property(nonatomic) long long horizontalAlignment;

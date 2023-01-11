@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFActionSettingsViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface WFAccessResourceActionSettingsViewController <UITableViewDataSource, UITableViewDelegate>
+@interface WFAccessResourceActionSettingsViewController : WFActionSettingsViewController <UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_accessResources;
 }
 
-@property(readonly, nonatomic) NSArray *accessResources; // @synthesize accessResources=_accessResources;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *accessResources; // @synthesize accessResources=_accessResources;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

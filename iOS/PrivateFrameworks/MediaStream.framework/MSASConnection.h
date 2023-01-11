@@ -14,7 +14,6 @@
 @interface MSASConnection : NSObject <XPCNSClientConnectionDelegate>
 {
     XPCNSClientConnection *_connection;
-    XPCNSClientConnection *_noWakeConnection;
     NSMutableDictionary *_foregroundPingTimerContextByPersonID;
     NSMutableDictionary *_focusAlbumTimerByPersonID;
     NSMutableDictionary *_focusAlbumGUIDByPersonID;
@@ -23,14 +22,13 @@
 }
 
 + (id)sharedConnection;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
 @property(retain, nonatomic) NSMutableDictionary *serverSideConfigurationDictionaryByPersonID; // @synthesize serverSideConfigurationDictionaryByPersonID=_serverSideConfigurationDictionaryByPersonID;
 @property(retain, nonatomic) NSMutableDictionary *focusAlbumGUIDByPersonID; // @synthesize focusAlbumGUIDByPersonID=_focusAlbumGUIDByPersonID;
 @property(retain, nonatomic) NSMutableDictionary *focusAlbumTimerByPersonID; // @synthesize focusAlbumTimerByPersonID=_focusAlbumTimerByPersonID;
 @property(retain, nonatomic) NSMutableDictionary *foregroundPingTimerContextByPersonID; // @synthesize foregroundPingTimerContextByPersonID=_foregroundPingTimerContextByPersonID;
-@property(retain, nonatomic) XPCNSClientConnection *noWakeConnection; // @synthesize noWakeConnection=_noWakeConnection;
 @property(retain, nonatomic) XPCNSClientConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)XPCNSClientConnection:(id)arg1 didReceiveRequest:(id)arg2;
 - (void)retrieveAssetsFromAssetCollectionsWithGUIDs:(id)arg1 assetTypeFlags:(int)arg2 personID:(id)arg3;
 - (void)retrieveAssets:(id)arg1 inAlbumWithGUID:(id)arg2 personID:(id)arg3;
@@ -106,8 +104,6 @@
 - (void)pingForeground;
 - (void)timerPingQueueSendSetUIForeground:(_Bool)arg1 personID:(id)arg2;
 - (void)activityIsThrottledByLackOfDiskSpacePersonID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)assetsInDownloadQueueCountForPersonID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)isBusyCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)handlePushNotificationForPersonID:(id)arg1;
 - (void)cancelActivitiesForPersonID:(id)arg1;
 - (void)retryOutstandingActivitiesForPersonID:(id)arg1;

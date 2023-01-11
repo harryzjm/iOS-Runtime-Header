@@ -10,7 +10,6 @@
 {
 }
 
-- (int)requiredEntitlement;
 - (void)setSystemDNSSettings:(id)arg1;
 - (id)driverInterface;
 

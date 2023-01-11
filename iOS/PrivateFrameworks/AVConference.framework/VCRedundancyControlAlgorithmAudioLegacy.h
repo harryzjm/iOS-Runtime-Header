@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double redundancyInterval; // @synthesize redundancyInterval=_redundancyInterval;
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
 - (void)computeRedundancyInfo;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

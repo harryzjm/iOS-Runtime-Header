@@ -7,53 +7,45 @@
 #import <UIKit/UIView.h>
 
 #import <NotesUI/ICAccessibilityChildReparentingTarget-Protocol.h>
-#import <NotesUI/NotesTextureScrolling-Protocol.h>
 
-@class NSLayoutConstraint, NSString, NotesTextureBackgroundView, NotesTextureView;
+@class NSLayoutConstraint, NSString, NotesBarBackgroundView;
 @protocol ICAccessibilityChildReparentingController, ICAccessibilityChildReparentingProvider;
 
-@interface NotesBackgroundView : UIView <NotesTextureScrolling, ICAccessibilityChildReparentingTarget>
+@interface NotesBackgroundView : UIView <ICAccessibilityChildReparentingTarget>
 {
     _Bool _contentViewVisible;
-    _Bool _topViewVisible;
-    _Bool _textureViewVisible;
+    _Bool _hasBarBlur;
     UIView *_contentView;
     id <ICAccessibilityChildReparentingController> _axChildReparentingController;
-    NotesTextureBackgroundView *_textureView;
-    NotesTextureBackgroundView *_topTextureView;
-    NotesTextureBackgroundView *_bottomTextureView;
-    NotesTextureBackgroundView *_bottomSafeAreaTextureView;
+    NotesBarBackgroundView *_topBarView;
+    NotesBarBackgroundView *_bottomBarView;
+    NotesBarBackgroundView *_bottomSafeAreaBarView;
     NSLayoutConstraint *_heightConstraint;
     NSLayoutConstraint *_contentViewBottomConstraint;
     id <ICAccessibilityChildReparentingProvider> _elementForAccessibilityReparenting;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <ICAccessibilityChildReparentingProvider> elementForAccessibilityReparenting; // @synthesize elementForAccessibilityReparenting=_elementForAccessibilityReparenting;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
-@property(retain, nonatomic) NotesTextureBackgroundView *bottomSafeAreaTextureView; // @synthesize bottomSafeAreaTextureView=_bottomSafeAreaTextureView;
-@property(retain, nonatomic) NotesTextureBackgroundView *bottomTextureView; // @synthesize bottomTextureView=_bottomTextureView;
-@property(retain, nonatomic) NotesTextureBackgroundView *topTextureView; // @synthesize topTextureView=_topTextureView;
-@property(retain, nonatomic) NotesTextureBackgroundView *textureView; // @synthesize textureView=_textureView;
+@property(retain, nonatomic) NotesBarBackgroundView *bottomSafeAreaBarView; // @synthesize bottomSafeAreaBarView=_bottomSafeAreaBarView;
+@property(retain, nonatomic) NotesBarBackgroundView *bottomBarView; // @synthesize bottomBarView=_bottomBarView;
+@property(retain, nonatomic) NotesBarBackgroundView *topBarView; // @synthesize topBarView=_topBarView;
+@property(nonatomic) _Bool hasBarBlur; // @synthesize hasBarBlur=_hasBarBlur;
 @property(nonatomic) __weak id <ICAccessibilityChildReparentingController> axChildReparentingController; // @synthesize axChildReparentingController=_axChildReparentingController;
-@property(nonatomic, getter=isTextureViewVisible) _Bool textureViewVisible; // @synthesize textureViewVisible=_textureViewVisible;
-@property(nonatomic, getter=isTopViewVisible) _Bool topViewVisible; // @synthesize topViewVisible=_topViewVisible;
 @property(nonatomic, getter=isContentViewVisible) _Bool contentViewVisible; // @synthesize contentViewVisible=_contentViewVisible;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-- (void).cxx_destruct;
 - (_Bool)_accessibilityIsScannerGroup;
 - (void)reparentAccessibilityChildrenOfElement:(id)arg1;
 - (id)accessibilityElements;
-@property(readonly, nonatomic) NotesTextureView *backgroundView;
 - (void)addSubviewAboveAllViews:(id)arg1;
 - (void)addSubview:(id)arg1;
-- (void)setupContentViewHomeIndicatorAvoidanceWithSize:(double)arg1;
 - (void)setContentView:(id)arg1 useReadableLayoutGuide:(_Bool)arg2 topMargin:(double)arg3;
 - (void)setContentView:(id)arg1 useReadableLayoutGuide:(_Bool)arg2;
 - (void)snapshotContentIntoSnapshotView:(id)arg1;
 - (id)scrollViewDescendantOfView:(id)arg1;
 - (void)scrollView:(id)arg1 didChangeContentOffset:(struct CGPoint)arg2;
-- (void)setBottomToolbarVisible:(_Bool)arg1;
 - (void)fadeInBottomToolbarInNavigationController:(id)arg1 duration:(double)arg2;
 - (void)fadeOutBottomToolbarInNavigationController:(id)arg1 duration:(double)arg2;
 - (void)_dynamicUserInterfaceTraitDidChange;

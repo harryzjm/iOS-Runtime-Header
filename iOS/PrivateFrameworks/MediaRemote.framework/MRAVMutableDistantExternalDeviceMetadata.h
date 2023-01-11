@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MRSupportedProtocolMessages, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRSupportedProtocolMessages, NSString;
 
 @interface MRAVMutableDistantExternalDeviceMetadata
 {
 }
 
 @property(nonatomic) _Bool usingSystemPairing; // @dynamic usingSystemPairing;
-@property(nonatomic) _Bool paired; // @dynamic paired;
-@property(retain, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo; // @dynamic deviceInfo;
+@property(retain, nonatomic) MRDeviceInfo *deviceInfo; // @dynamic deviceInfo;
 @property(retain, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @dynamic supportedMessages;
 @property(nonatomic) long long hostPort; // @dynamic hostPort;
 @property(copy, nonatomic) NSString *hostName; // @dynamic hostName;

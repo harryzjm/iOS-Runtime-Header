@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKEventAutocompleteResultsEditItemDelegate-Protocol.h>
 
-@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompletePETTracker, EKUIAutocompleteSearchResult, NSString, NSTimer, UIColor;
+@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttachmentsEditItem, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompleteSearchResult, EKUIAutocompleteTracker, NSString, NSTimer, UIColor;
 @protocol EKUIAutocompletePendingSearchProtocol;
 
 @interface EKEventEditor <EKEventAutocompleteResultsEditItemDelegate>
@@ -19,6 +19,7 @@
     EKCalendarItemCalendarEditItem *_calendarEditItem;
     EKCalendarItemAlarmEditItem *_alarmEditItem;
     EKEventURLAndNotesInlineEditItem *_notesEditItem;
+    EKEventAttachmentsEditItem *_attachmentsEditItem;
     _Bool _shouldAutocomplete;
     id <EKUIAutocompletePendingSearchProtocol> _pendingSearch;
     NSTimer *_autocompleteTimer;
@@ -33,7 +34,7 @@
     EKUIAutocompleteSearchResult *_naturalLanguageResult;
     _Bool _hasShownZeroKeywordResult;
     _Bool _hasShownNaturalLanguageResult;
-    EKUIAutocompletePETTracker *_autocompletePETTracker;
+    EKUIAutocompleteTracker *_autocompleteTracker;
     _Bool _showAttachments;
     UIColor *_backgroundColor;
     NSString *_suggestionKey;
@@ -46,10 +47,10 @@
 + (id)_now;
 + (id)defaultTitleForCalendarItem;
 + (Class)_SGSuggestionsServiceClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *suggestionKey; // @synthesize suggestionKey=_suggestionKey;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) _Bool showAttachments; // @synthesize showAttachments=_showAttachments;
-- (void).cxx_destruct;
 - (void)_setAutocompleteResultsVisible:(_Bool)arg1;
 - (void)autocompleteResultsEditItemDidHideResults:(id)arg1;
 - (void)autocompleteResultsEditItemDidShowResults:(id)arg1;
@@ -77,9 +78,14 @@
 - (id)_nameForDeleteButton;
 - (id)preferredTitle;
 - (_Bool)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;
+- (id)attachmentsModifiedEvent;
+- (_Bool)attachmentsModifiedOnRecurrence;
+- (_Bool)hasUnsavedChanges;
+- (_Bool)hasAttachmentChanges;
 - (id)_orderedEditItems;
 - (id)_editItems;
 - (id)_calendarItemIndexSet;
+- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3;
 - (void)refreshLocation;
 - (void)refreshInvitees;
 - (void)refreshStartAndEndDates;

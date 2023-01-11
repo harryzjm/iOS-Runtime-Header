@@ -10,7 +10,7 @@
 #import <AuthKit/AKAuthenticationContext-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKDevice, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
+@class AKAnisetteData, AKDevice, NSArray, NSData, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
 @protocol AKAnisetteServiceProtocol, OS_dispatch_queue;
 
 @interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, AKAuthenticationContext, NSSecureCoding>
@@ -28,6 +28,8 @@
     AKDevice *_companionDevice;
     NSString *_interpolatedReason;
     unsigned long long _attemptIndex;
+    _Bool _performUIOutOfProcess;
+    _Bool _keepAlive;
     _Bool _isProxyingForApp;
     _Bool _shouldSendIdentityTokenForRemoteUI;
     _Bool _shouldSendGrandSlamTokensForRemoteUI;
@@ -44,6 +46,11 @@
     _Bool _isEphemeral;
     _Bool _shouldOfferSecurityUpgrade;
     _Bool _needsRepair;
+    _Bool _hideAlternativeButton;
+    _Bool _hideCancelButton;
+    _Bool _hideReasonString;
+    _Bool _clientShouldHandleAlternativeButtonAction;
+    _Bool _alwaysShowUsernameField;
     _Bool _shouldPromptForPasswordOnly;
     _Bool _shouldUpdatePersistentServiceTokens;
     _Bool _shouldRequestRecoveryPET;
@@ -53,6 +60,8 @@
     _Bool _anticipateEscrowAttempt;
     _Bool _isFirstTimeLogin;
     _Bool _shouldSkipSettingsLaunchAlert;
+    _Bool _needsNewChildAccount;
+    _Bool _needsSecurityUpgradeUI;
     NSString *_proxiedAppBundleID;
     NSUUID *_identifier;
     NSString *_identityToken;
@@ -65,6 +74,8 @@
     AKAnisetteData *_companionDeviceAnisetteData;
     AKAnisetteData *_proxiedDeviceAnisetteData;
     NSString *_appProvidedContext;
+    NSString *_masterKey;
+    long long _authenticationMode;
     NSString *_username;
     long long _serviceType;
     NSString *_reason;
@@ -79,19 +90,30 @@
     NSString *_title;
     NSString *_helpAnchor;
     NSString *_helpBook;
+    long long _authenticationPromptStyle;
+    NSString *_cancelButtonString;
+    NSString *_alternativeButtonString;
+    NSString *_windowTitle;
+    NSString *_privacyBundleIdentifier;
+    NSData *_displayImageData;
     unsigned long long _authenticationType;
     id <AKAnisetteServiceProtocol> _anisetteDataProvider;
     NSNumber *_isAppleIDLoginEnabled;
     NSNumber *_hasEmptyPassword;
     NSSet *_desiredInternalTokens;
     NSString *_securityUpgradeContext;
+    NSString *_cellularDataAttributionAppBundleID;
     NSString *_displayString;
     NSString *_displayTitle;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property(copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+@property(copy, nonatomic) NSString *cellularDataAttributionAppBundleID; // @synthesize cellularDataAttributionAppBundleID=_cellularDataAttributionAppBundleID;
+@property(nonatomic) _Bool needsSecurityUpgradeUI; // @synthesize needsSecurityUpgradeUI=_needsSecurityUpgradeUI;
+@property(nonatomic) _Bool needsNewChildAccount; // @synthesize needsNewChildAccount=_needsNewChildAccount;
 @property(copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
 @property(nonatomic) _Bool shouldSkipSettingsLaunchAlert; // @synthesize shouldSkipSettingsLaunchAlert=_shouldSkipSettingsLaunchAlert;
 @property(nonatomic, setter=setFirstTimeLogin:) _Bool isFirstTimeLogin; // @synthesize isFirstTimeLogin=_isFirstTimeLogin;
@@ -107,6 +129,17 @@
 @property(nonatomic) _Bool shouldUpdatePersistentServiceTokens; // @synthesize shouldUpdatePersistentServiceTokens=_shouldUpdatePersistentServiceTokens;
 @property(nonatomic) _Bool shouldPromptForPasswordOnly; // @synthesize shouldPromptForPasswordOnly=_shouldPromptForPasswordOnly;
 @property(nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
+@property(retain) NSData *displayImageData; // @synthesize displayImageData=_displayImageData;
+@property(copy) NSString *privacyBundleIdentifier; // @synthesize privacyBundleIdentifier=_privacyBundleIdentifier;
+@property(nonatomic) _Bool alwaysShowUsernameField; // @synthesize alwaysShowUsernameField=_alwaysShowUsernameField;
+@property(retain) NSString *windowTitle; // @synthesize windowTitle=_windowTitle;
+@property(nonatomic) _Bool clientShouldHandleAlternativeButtonAction; // @synthesize clientShouldHandleAlternativeButtonAction=_clientShouldHandleAlternativeButtonAction;
+@property _Bool hideReasonString; // @synthesize hideReasonString=_hideReasonString;
+@property _Bool hideCancelButton; // @synthesize hideCancelButton=_hideCancelButton;
+@property _Bool hideAlternativeButton; // @synthesize hideAlternativeButton=_hideAlternativeButton;
+@property(retain) NSString *alternativeButtonString; // @synthesize alternativeButtonString=_alternativeButtonString;
+@property(retain) NSString *cancelButtonString; // @synthesize cancelButtonString=_cancelButtonString;
+@property(nonatomic) long long authenticationPromptStyle; // @synthesize authenticationPromptStyle=_authenticationPromptStyle;
 @property(copy, nonatomic) NSString *helpBook; // @synthesize helpBook=_helpBook;
 @property(copy, nonatomic) NSString *helpAnchor; // @synthesize helpAnchor=_helpAnchor;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
@@ -130,6 +163,10 @@
 @property(nonatomic) _Bool shouldAllowAppleIDCreation; // @synthesize shouldAllowAppleIDCreation=_shouldAllowAppleIDCreation;
 @property(nonatomic) _Bool isUsernameEditable; // @synthesize isUsernameEditable=_isUsernameEditable;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
+@property(nonatomic) long long authenticationMode; // @synthesize authenticationMode=_authenticationMode;
+@property(nonatomic) _Bool _keepAlive; // @synthesize _keepAlive;
+@property(nonatomic) _Bool _performUIOutOfProcess; // @synthesize _performUIOutOfProcess;
+@property(copy, nonatomic, setter=_setMasterKey:) NSString *_masterKey; // @synthesize _masterKey;
 @property(copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
 @property(retain, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
 @property(retain, nonatomic) AKAnisetteData *companionDeviceAnisetteData; // @synthesize companionDeviceAnisetteData=_companionDeviceAnisetteData;
@@ -147,7 +184,6 @@
 @property(readonly, nonatomic) NSUUID *_identifier; // @synthesize _identifier;
 @property(copy, nonatomic, setter=_setProxiedAppBundleID:) NSString *_proxiedAppBundleID; // @synthesize _proxiedAppBundleID;
 @property(nonatomic, setter=_setProxyingForApp:) _Bool _isProxyingForApp; // @synthesize _isProxyingForApp;
-- (void).cxx_destruct;
 - (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_secondFactorQueue;
 - (void)_handleSecondFactorCodeEntry;

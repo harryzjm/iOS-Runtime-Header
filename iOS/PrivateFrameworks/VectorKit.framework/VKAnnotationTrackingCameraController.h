@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
     double _pendingHeadingChangeDuration;
     float _headingAnimationCompletedAngle;
     long long _headingAnimationDisplayRate;
-    long long _zoomStyle;
+    CDStruct_211b8904 _behavior;
+    _Bool _hasUserSpecifiedZoomLevel;
     struct {
         unsigned int hasPendingChange:1;
         unsigned int paused:1;
@@ -31,26 +32,28 @@ __attribute__((visibility("hidden")))
         unsigned int isInitialRegionChange:1;
         unsigned int isJumpingToAnnotation:1;
         unsigned int annotationImplementsAccuracy:1;
+        unsigned int annotationImplementsHasValidHeading:1;
         unsigned int annotationImplementsHeading:1;
         unsigned int annotationImplementsExpectedCoordinateUpdateInterval:1;
         unsigned int annotationImplementsExpectedHeadingUpdateInterval:1;
     } _flags;
 }
 
-@property(nonatomic) long long headingAnimationDisplayRate; // @synthesize headingAnimationDisplayRate=_headingAnimationDisplayRate;
-@property(nonatomic) long long zoomStyle; // @synthesize zoomStyle=_zoomStyle;
-@property(readonly, nonatomic) id <VKTrackableAnnotation> annotation; // @synthesize annotation=_annotation;
 - (id).cxx_construct;
+@property(nonatomic) _Bool hasUserSpecifiedZoomLevel; // @synthesize hasUserSpecifiedZoomLevel=_hasUserSpecifiedZoomLevel;
+@property(nonatomic) long long headingAnimationDisplayRate; // @synthesize headingAnimationDisplayRate=_headingAnimationDisplayRate;
+@property(nonatomic) CDStruct_211b8904 behavior; // @synthesize behavior=_behavior;
+@property(readonly, nonatomic) id <VKTrackableAnnotation> annotation; // @synthesize annotation=_annotation;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)resumeAnimation;
 - (void)pauseAnimation;
 - (_Bool)isAnimating;
+@property(readonly, nonatomic) _Bool shouldForceZoomToFit;
 - (void)setGesturing:(_Bool)arg1;
-- (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 - (void)stopTrackingAnnotation;
-- (void)startTrackingAnnotation:(id)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)startTrackingAnnotation:(id)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3 duration:(double)arg4 timingFunction:(CDUnknownBlockType)arg5;
 - (void)_rotateToHeadingAnimated:(_Bool)arg1 duration:(double)arg2;
-- (void)_goToAnnotationAnimated:(_Bool)arg1 duration:(double)arg2 isInitial:(_Bool)arg3;
+- (void)_goToAnnotationAnimated:(_Bool)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3 isInitial:(_Bool)arg4;
 - (void)updateFramerate;
 @property(readonly, nonatomic, getter=isTrackingHeading) _Bool trackingHeading;
 - (void)dealloc;

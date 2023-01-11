@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _hasCompleteDataSet;
     NSPredicate *defaultQueryPredicate;
+    NSString *_profileName;
     NSMutableArray *_data;
     NSMutableArray *_activeDataQueries;
     NSMutableSet *_activeQueryTypes;
@@ -23,15 +24,16 @@ __attribute__((visibility("hidden")))
     HKUnitPreferenceController *_unitController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property(readonly, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
 @property(retain, nonatomic) NSMutableSet *activeQueryTypes; // @synthesize activeQueryTypes=_activeQueryTypes;
 @property(retain, nonatomic) NSMutableArray *activeDataQueries; // @synthesize activeDataQueries=_activeDataQueries;
 @property(retain) NSMutableArray *data; // @synthesize data=_data;
+@property(copy, nonatomic) NSString *profileName; // @synthesize profileName=_profileName;
 @property _Bool hasCompleteDataSet; // @synthesize hasCompleteDataSet=_hasCompleteDataSet;
 @property(retain, nonatomic) NSPredicate *defaultQueryPredicate; // @synthesize defaultQueryPredicate;
-- (void).cxx_destruct;
 - (id)_predicateForTheLastMonth;
 - (void)_startCompleteDataStatisticsCollectionQueryForSampleType:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
 - (void)_startPartialDataStatisticsCollectionQueryForSampleType:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;

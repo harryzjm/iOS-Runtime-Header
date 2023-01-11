@@ -7,22 +7,25 @@
 #import <Foundation/NSString.h>
 
 #import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
 #import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class EFSQLBinding, NSData;
 
-@interface NSString (EmailFoundationAdditions) <EFSQLBindable, EFSQLExpressable, EFSQLValueExpressable>
+@interface NSString (EmailFoundationAdditions) <EFSQLBindable, EFSQLValueExpressable>
 + (id)ef_stringByIsolatingDirectionalityForString:(id)arg1;
 + (id)ef_UUID;
+- (id)ef_pathByReplacingRelativePathWithFolderName:(id)arg1;
+- (id)ef_sanitizedFileName;
 - (id)ef_stringByEscapingSingleQuotes;
 @property(readonly) _Bool ef_conformsToRFC822UTType;
 @property(readonly) _Bool ef_conformsToIWorkUTType;
 @property(readonly) _Bool ef_conformsToMarkupUTType;
 - (_Bool)ef_conformsToUTType:(struct __CFString *)arg1;
 - (id)ef_stringByEscapingForXML;
+- (_Bool)ef_isUnsignedIntegerString;
 - (_Bool)ef_isWebAddress;
 - (const void *)ef_lossyDefaultCStringBytes;
+- (id)ef_stringByApplyingJavaScriptArguments:(id)arg1;
 - (id)ef_stringByReplacingPercentEscapesUsingEncoding:(unsigned long long)arg1;
 - (id)ef_stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
 - (id)ef_stringWithNoExtraSpaces;
@@ -33,7 +36,14 @@
 - (id)ef_quotedWordComponentsForLanguages:(id)arg1;
 - (id)ef_wordComponentsForLocale:(id)arg1 minimumWordLength:(long long)arg2;
 - (id)ef_wordComponentsForLocale:(id)arg1;
+- (id)ef_componentsSeparatedByString:(id)arg1 maxSeparations:(unsigned long long)arg2;
+- (id)ef_stringByRFC5322Unfolding;
+- (id)ef_stringByTrimmingTrailingCharactersInSet:(id)arg1;
+- (id)ef_stringByTrimmingLeadingCharactersInSet:(id)arg1;
+- (id)ef_stringByReplacingContiguousSequencesOfCharactersInSet:(id)arg1 withString:(id)arg2;
+- (id)ef_stringByRemovingCharactersInSet:(id)arg1 beforeOccurrencesOfString:(id)arg2;
 - (id)ef_stringByRemovingCharactersInSet:(id)arg1;
+- (id)ef_stringByTrimmingOuterQuotes;
 - (id)ef_stringByRemovingQuotesForLanguages:(id)arg1;
 - (id)ef_stringByRemovingTokenizedLinksUsingTokenizationHandler:(CDUnknownBlockType)arg1;
 - (id)ef_stringByRemovingUnbalancedQuotesForLanguages:(id)arg1;
@@ -48,6 +58,8 @@
 @property(readonly, copy) NSString *ef_quotedSQLEscapedString;
 @property(readonly, copy) NSString *ef_SQLEscapedString;
 @property(readonly, nonatomic) EFSQLBinding *ef_SQLBinding;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 
 // Remaining properties

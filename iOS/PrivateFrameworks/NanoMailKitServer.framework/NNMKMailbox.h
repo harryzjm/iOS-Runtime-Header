@@ -17,6 +17,7 @@
     _Bool _syncRequested;
     _Bool _syncActive;
     _Bool _hasSelection;
+    _Bool _isPushEnabled;
     _Bool _databaseContentVerified;
     unsigned long long _type;
     unsigned long long _filterType;
@@ -35,7 +36,9 @@
 + (unsigned long long)messageStateForMailboxFilterType:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)idsFromMailboxes:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool databaseContentVerified; // @synthesize databaseContentVerified=_databaseContentVerified;
+@property(nonatomic) _Bool isPushEnabled; // @synthesize isPushEnabled=_isPushEnabled;
 @property(nonatomic) _Bool hasSelection; // @synthesize hasSelection=_hasSelection;
 @property(retain, nonatomic) NSDate *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property(nonatomic) _Bool syncActive; // @synthesize syncActive=_syncActive;
@@ -48,7 +51,6 @@
 @property(retain, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property(nonatomic) unsigned long long filterType; // @synthesize filterType=_filterType;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (void)resetURL;
 - (id)description;
 - (unsigned long long)hash;
@@ -59,6 +61,7 @@
 - (_Bool)hasFilterType:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)shouldFilter;
 - (_Bool)hasAnyFilter;
 - (_Bool)isSelectedForFilterType:(unsigned long long)arg1;
 @property(nonatomic, getter=isSelected) _Bool selected;

@@ -10,27 +10,33 @@
 {
     _Bool _topInsetIncludesPalette;
     _Bool _keyboardVisible;
+    _Bool _enableContentPinning;
     _Bool _keyboardInteractionCancelled;
     UIScrollView *_scrollView;
     double _topInsetPadding;
     double _bottomInsetPadding;
     double _minimumBottomInset;
+    double _contentPinningThreshold;
     IMScheduledUpdater *_updater;
     CDUnknownBlockType _overrideScrollBlock;
+    struct CGSize _contentSizeForPinning;
     struct CGRect _keyboardScreenFrame;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType overrideScrollBlock; // @synthesize overrideScrollBlock=_overrideScrollBlock;
 @property(retain, nonatomic) IMScheduledUpdater *updater; // @synthesize updater=_updater;
 @property(nonatomic) _Bool keyboardInteractionCancelled; // @synthesize keyboardInteractionCancelled=_keyboardInteractionCancelled;
 @property(nonatomic) struct CGRect keyboardScreenFrame; // @synthesize keyboardScreenFrame=_keyboardScreenFrame;
+@property(readonly, nonatomic) struct CGSize contentSizeForPinning; // @synthesize contentSizeForPinning=_contentSizeForPinning;
+@property(nonatomic) double contentPinningThreshold; // @synthesize contentPinningThreshold=_contentPinningThreshold;
+@property(nonatomic) _Bool enableContentPinning; // @synthesize enableContentPinning=_enableContentPinning;
 @property(nonatomic, getter=isKeyboardVisible) _Bool keyboardVisible; // @synthesize keyboardVisible=_keyboardVisible;
 @property(readonly, nonatomic) double minimumBottomInset; // @synthesize minimumBottomInset=_minimumBottomInset;
 @property(readonly, nonatomic) double bottomInsetPadding; // @synthesize bottomInsetPadding=_bottomInsetPadding;
 @property(readonly, nonatomic) double topInsetPadding; // @synthesize topInsetPadding=_topInsetPadding;
 @property(readonly, nonatomic) _Bool topInsetIncludesPalette; // @synthesize topInsetIncludesPalette=_topInsetIncludesPalette;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-- (void).cxx_destruct;
 - (double)_visibleKeyboardHeight;
 - (double)_bottomRotatingFooterHeight;
 - (void)_entryViewWillRotate:(id)arg1;
@@ -50,8 +56,11 @@
 @property(readonly, nonatomic, getter=isKeyboardOnscreenWithoutAccessoryView) _Bool keyboardOnscreenWithoutAccessoryView;
 @property(readonly, nonatomic, getter=isKeyboardUndocked) _Bool keyboardUndocked;
 - (double)visibleHeightAboveKeyboard;
+- (struct UIEdgeInsets)macToolbarInsets;
+- (struct UIEdgeInsets)bannerInsets;
 - (struct UIEdgeInsets)navigationBarInsetsWithoutPalette;
 - (struct UIEdgeInsets)navigationBarInsets;
+@property(readonly, nonatomic) struct CGRect keyboardFrameInViewCoordinates;
 @property(readonly, nonatomic) struct CGRect keyboardFrame;
 - (void)updateScrollGeometry;
 - (void)keyboardDidChangeFrame:(id)arg1;

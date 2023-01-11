@@ -14,23 +14,27 @@
     long long _contextType;
     NSString *_contextTopic;
     NSString *_contextTitle;
+    NSString *_contextAppBundleIdentifier;
     NSString *_contextID;
     CLSAggregatedValue *_time;
     CLSAggregatedValue *_progress;
     CLSActivityReportItem *_primaryReportItem;
     NSArray *_additionalReportItems;
+    NSString *_contextStableObjectID;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *contextStableObjectID; // @synthesize contextStableObjectID=_contextStableObjectID;
 @property(copy, nonatomic) NSArray *additionalReportItems; // @synthesize additionalReportItems=_additionalReportItems;
 @property(copy, nonatomic) CLSActivityReportItem *primaryReportItem; // @synthesize primaryReportItem=_primaryReportItem;
 @property(copy, nonatomic) CLSAggregatedValue *progress; // @synthesize progress=_progress;
 @property(copy, nonatomic) CLSAggregatedValue *time; // @synthesize time=_time;
 @property(copy, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
+@property(copy, nonatomic) NSString *contextAppBundleIdentifier; // @synthesize contextAppBundleIdentifier=_contextAppBundleIdentifier;
 @property(copy, nonatomic) NSString *contextTitle; // @synthesize contextTitle=_contextTitle;
 @property(copy, nonatomic) NSString *contextTopic; // @synthesize contextTopic=_contextTopic;
 @property(nonatomic) long long contextType; // @synthesize contextType=_contextType;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)scalarMultiply:(double)arg1;

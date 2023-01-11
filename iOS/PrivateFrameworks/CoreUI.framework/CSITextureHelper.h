@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     int pixelFormat;
 }
 
-- (_Bool)expandIntoBuffer:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 
 @end

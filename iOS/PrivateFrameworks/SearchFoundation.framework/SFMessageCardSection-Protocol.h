@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor;
+@class NSArray, NSData, NSDictionary, NSString, NSURL, SFColor, SFMessageAttachment;
 
 @protocol SFMessageCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFMessageAttachment *messageAttachment;
+@property(copy, nonatomic) NSURL *audioMessageURL;
 @property(nonatomic) int messageServiceType;
 @property(nonatomic) int messageStatus;
 @property(copy, nonatomic) NSString *messageText;

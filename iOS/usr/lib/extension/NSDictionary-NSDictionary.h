@@ -24,6 +24,10 @@
 - (Class)classForCoder;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)_web_objectForMIMEType:(id)arg1;
+- (id)_web_numberForKey:(id)arg1;
+- (id)_web_stringForKey:(id)arg1;
+- (int)_web_intForKey:(id)arg1;
 - (id)fileGroupOwnerAccountID;
 - (id)fileOwnerAccountID;
 - (id)fileCreationDate;
@@ -44,10 +48,6 @@
 - (unsigned long long)fileSize;
 - (id)valueForKeyPath:(id)arg1;
 - (id)valueForKey:(id)arg1;
-- (id)_web_objectForMIMEType:(id)arg1;
-- (id)_web_numberForKey:(id)arg1;
-- (id)_web_stringForKey:(id)arg1;
-- (int)_web_intForKey:(id)arg1;
 - (id)replacementObjectForPortCoder:(id)arg1;
 @end
 

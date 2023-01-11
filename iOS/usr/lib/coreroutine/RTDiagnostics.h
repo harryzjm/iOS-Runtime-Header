@@ -16,6 +16,7 @@
 + (id)stringFromDateWithFormat;
 + (_Bool)createArchiveSourceURL:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
 + (id)createDiagnosticsURLWithError:(id *)arg1;
++ (_Bool)fileNameEligibleForCollection:(id)arg1;
 + (id)crashReports;
 - (void).cxx_destruct;
 - (void)fetchPathToBackupWithHandler:(CDUnknownBlockType)arg1;

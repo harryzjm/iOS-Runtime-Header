@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOSuggestionsFeedbackCollection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEOSessionID _sessionID;
     NSData *_suggestionEntryMetadata;
     GEOPDAutocompleteEntry *_suggestionEntry;
     NSData *_suggestionMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _suggestionEntryIndex;
     int _suggestionsEntryListIndex;
     struct {
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_suggestionEntry:1;
         unsigned int read_suggestionMetadata:1;
-        unsigned int wrote_sessionID:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_suggestionEntry:1;
-        unsigned int wrote_suggestionMetadata:1;
-        unsigned int wrote_suggestionEntryIndex:1;
-        unsigned int wrote_suggestionsEntryListIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -47,23 +44,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDAutocompleteEntry *suggestionEntry;
 @property(readonly, nonatomic) _Bool hasSuggestionEntry;
-- (void)_readSuggestionEntry;
 @property(retain, nonatomic) NSData *suggestionEntryMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-- (void)_readSuggestionEntryMetadata;
 @property(retain, nonatomic) NSData *suggestionMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionMetadata;
-- (void)_readSuggestionMetadata;
 @property(nonatomic) _Bool hasSuggestionEntryIndex;
 @property(nonatomic) int suggestionEntryIndex;
 @property(nonatomic) _Bool hasSuggestionsEntryListIndex;
 @property(nonatomic) int suggestionsEntryListIndex;
 @property(nonatomic) _Bool hasSessionID;
 @property(nonatomic) struct GEOSessionID sessionID;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

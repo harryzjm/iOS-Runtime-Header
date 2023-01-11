@@ -16,12 +16,12 @@
 
 + (id)factoryForClass:(Class)arg1 target:(id)arg2 configurator:(SEL)arg3 userData:(id)arg4;
 + (id)factoryForClass:(Class)arg1 target:(id)arg2 configurator:(SEL)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) SEL selector; // @synthesize selector=_selector;
 @property(readonly, nonatomic) SEL configurator; // @synthesize configurator=_configurator;
 @property(retain, nonatomic) Class reusableViewClass; // @synthesize reusableViewClass=_reusableViewClass;
+@property(nonatomic) __weak id target; // @synthesize target=_target;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-@property(nonatomic) id target; // @synthesize target=_target;
-- (void)dealloc;
 - (id)initWithClass:(Class)arg1 target:(id)arg2 configurator:(SEL)arg3 userData:(id)arg4;
 
 @end

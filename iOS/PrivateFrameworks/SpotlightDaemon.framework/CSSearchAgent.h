@@ -15,15 +15,17 @@
     NSMutableDictionary *_searchConnections;
 }
 
-+ (id)searchAgent:(_Bool)arg1;
++ (id)searchAgent;
++ (id)searchAgent:(_Bool)arg1 serviceName:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *searchConnections; // @synthesize searchConnections=_searchConnections;
 @property(retain, nonatomic) id <MDIndexer> indexer; // @synthesize indexer=_indexer;
-- (void).cxx_destruct;
 - (_Bool)handleCommand:(const char *)arg1 info:(id)arg2 connection:(id)arg3;
 - (void)handleEngagement:(id)arg1 forConnection:(id)arg2;
 - (void)startSimpleQuery:(id)arg1;
 - (void)cancelSimpleQuery:(id)arg1;
 - (void)startQuery:(id)arg1;
+- (void)preheat:(id)arg1;
 - (void)cancelQuery:(id)arg1;
 - (id)searchConnection:(id)arg1;
 - (_Bool)lostClientConnection:(id)arg1 error:(id)arg2;

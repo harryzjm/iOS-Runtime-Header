@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/NSCopying-Protocol.h>
 #import <RunningBoard/NSMutableCopying-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSSet, NSString, RBInheritanceCollection, RBSProcessIdentity;
+@class NSMutableDictionary, NSMutableSet, NSSet, RBInheritanceCollection, RBSProcessIdentity;
 
-@interface RBProcessState : NSObject <NSCopying, NSMutableCopying, BSDescriptionProviding>
+@interface RBProcessState : NSObject <NSCopying, NSMutableCopying>
 {
     RBSProcessIdentity *_identity;
     RBInheritanceCollection *_inheritances;
@@ -31,33 +30,27 @@
     NSSet *_preventLaunchReasons;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *preventLaunchReasons; // @synthesize preventLaunchReasons=_preventLaunchReasons;
 @property(readonly, nonatomic) unsigned long long legacyFinishTaskReason; // @synthesize legacyFinishTaskReason=_legacyFinishTaskReason;
-@property(copy, nonatomic) NSSet *primitiveAssertions; // @synthesize primitiveAssertions=_primitiveAssertions;
-@property(copy, nonatomic) NSSet *legacyAssertions; // @synthesize legacyAssertions=_legacyAssertions;
-@property(copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
-@property(retain, nonatomic) NSMutableDictionary *minCPULimitsByRole; // @synthesize minCPULimitsByRole=_minCPULimitsByRole;
-@property(retain, nonatomic) NSMutableDictionary *maxCPULimitsByRole; // @synthesize maxCPULimitsByRole=_maxCPULimitsByRole;
+@property(readonly, copy, nonatomic) NSSet *primitiveAssertions;
+@property(readonly, copy, nonatomic) NSSet *legacyAssertions;
+@property(readonly, copy, nonatomic) NSSet *tags;
 @property(readonly, nonatomic) NSSet *preventIdleSleepIdentifiers; // @synthesize preventIdleSleepIdentifiers=_preventIdleSleepIdentifiers;
 @property(readonly, nonatomic) unsigned char role; // @synthesize role=_role;
 @property(readonly, nonatomic) unsigned char jetsamBand; // @synthesize jetsamBand=_jetsamBand;
 @property(readonly, copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 @property(readonly, nonatomic) unsigned char terminationResistance; // @synthesize terminationResistance=_terminationResistance;
-- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly) unsigned long long hash;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-- (id)debugDescriptionWithMultilinePrefix:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
+- (unsigned long long)hash;
+- (id)debugDescription;
+- (id)description;
+- (id)clientStateForProcess:(id)arg1;
 - (_Bool)isEqualToProcessStateIgnoringInheritances:(id)arg1;
 - (_Bool)isEqualToProcessStateIgnoringIdentity:(id)arg1;
-- (_Bool)_isEqualToProcessStateIgnoringIdentityAndInheritances:(id)arg1;
+- (_Bool)isAppNapEqualToProcessState:(id)arg1;
 - (id)minCPUUsageLimitsForRole:(unsigned char)arg1;
 - (id)maxCPUUsageLimitsForRole:(unsigned char)arg1;
 - (id)inheritancesForEnvironment:(id)arg1;
@@ -68,18 +61,15 @@
 @property(readonly, nonatomic) unsigned long long effectiveMaxCPUPercentage;
 @property(readonly, nonatomic) unsigned long long effectiveMaxCPUDuration;
 @property(readonly, nonatomic) unsigned long long effectiveMaxCPUUsageViolationPolicy;
+@property(readonly, nonatomic) _Bool forceRoleManage;
 @property(readonly, nonatomic) _Bool throttleBestEffortNetworking;
 @property(readonly, nonatomic) _Bool jetsamLenientMode;
-@property(readonly, nonatomic) _Bool preventLaunch;
 @property(readonly, nonatomic) _Bool preventIdleSleep;
 @property(readonly, nonatomic) _Bool isBeingDebugged;
 @property(readonly, nonatomic) _Bool GPUAllowed;
-- (id)_initWithProcessState:(id)arg1;
+@property(readonly, nonatomic) _Bool preventSuspend;
 - (id)initWithIdentity:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly) Class superclass;
 
 @end
 

@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, REMList;
+@class NSString, REMList, REMListBadge;
 
 @interface REMListAppearanceContext : NSObject
 {
     REMList *_list;
 }
 
-@property(retain, nonatomic) REMList *list; // @synthesize list=_list;
 - (void).cxx_destruct;
+@property(retain, nonatomic) REMList *list; // @synthesize list=_list;
 - (_Bool)showingLargeAttachments;
 @property(readonly, nonatomic) NSString *badgeEmblem;
+@property(readonly, nonatomic) REMListBadge *badge;
 - (id)initWithList:(id)arg1;
 
 @end

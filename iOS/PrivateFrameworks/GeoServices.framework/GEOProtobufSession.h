@@ -11,13 +11,12 @@
 @interface GEOProtobufSession : NSObject
 {
     id <GEODataSession> _dataSession;
-    _Atomic unsigned long long _lastTaskIdentifier;
 }
 
 + (id)sharedDelegateQueue;
 + (id)sharedProtobufSession;
-@property(readonly, nonatomic) id <GEODataSession> dataSession; // @synthesize dataSession=_dataSession;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <GEODataSession> dataSession; // @synthesize dataSession=_dataSession;
 - (id)taskWithRequest:(id)arg1 requestTypeCode:(unsigned int)arg2 responseClass:(Class)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 - (id)initWithDataSession:(id)arg1;
 - (id)init;

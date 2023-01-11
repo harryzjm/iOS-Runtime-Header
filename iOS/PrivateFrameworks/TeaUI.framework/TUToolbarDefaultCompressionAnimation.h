@@ -16,10 +16,11 @@
     UIToolbar *_toolbar;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property(nonatomic) double topOffset; // @synthesize topOffset=_topOffset;
-- (void).cxx_destruct;
 - (void)reloadWithTraitCollection:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldCloseGapOnScroll;
 @property(readonly, nonatomic) _Bool shouldCompressAtTop;
 - (double)minimumBarHeightForTraitCollection:(id)arg1;
 - (double)maximumBarHeightForTraitCollection:(id)arg1;

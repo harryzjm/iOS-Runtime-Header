@@ -9,6 +9,7 @@
 @class MPAVRoute, MPAVRoutingController, MPAVRoutingControllerSelection, MSVTimer, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPAVRoutingControllerSelectionQueue : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
@@ -21,23 +22,23 @@
     MPAVRoutingController *_routingController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasPendingPickedRoutes; // @synthesize hasPendingPickedRoutes=_hasPendingPickedRoutes;
 @property(readonly, nonatomic) __weak MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
-- (void).cxx_destruct;
 - (void)_processSelection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_dequeue;
 - (void)_dequeueSelectionWhenPossible;
 - (void)_enqueue:(id)arg1;
-- (void)removePendingRoute:(id)arg1 withError:(_Bool)arg2;
-- (void)removePendingRoute:(id)arg1;
+- (void)removePendingRoutes:(id)arg1 withError:(_Bool)arg2;
+- (void)removePendingRoutes:(id)arg1;
 - (void)removeAllPendingRoutes;
-- (void)addPendingRoute:(id)arg1;
+- (void)addPendingRoutes:(id)arg1;
 - (_Bool)routeIsPendingPick:(id)arg1;
 @property(readonly, nonatomic) NSSet *pendingPickedRoutes;
 @property(readonly, nonatomic) MPAVRoute *pendingPickedRoute;
 - (void)pickedRouteDidChange;
 - (_Bool)hasPendingRoutes;
-- (void)enqueueSelectionOperation:(long long)arg1 forRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)enqueueSelectionOperation:(long long)arg1 forRoutes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)cancelInProgressSelectionForRoute:(id)arg1;
 - (id)initWithRoutingController:(id)arg1;
 

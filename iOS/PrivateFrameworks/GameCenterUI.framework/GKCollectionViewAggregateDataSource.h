@@ -56,7 +56,7 @@
 - (void)addDataSource:(id)arg1 withTag:(id)arg2;
 - (id)wrapperForView:(id)arg1 mapping:(id)arg2;
 - (id)_gkDescription;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 

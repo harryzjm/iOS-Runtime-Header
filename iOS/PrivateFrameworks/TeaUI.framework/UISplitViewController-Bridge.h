@@ -7,6 +7,7 @@
 #import <UIKit/UISplitViewController.h>
 
 @interface UISplitViewController (Bridge)
+- (void)ts_columnSeparatorsExtendToTitlebar:(_Bool)arg1;
 - (void)ts_setPrimaryBackgroundStyle:(long long)arg1;
 - (_Bool)ts_isCollapsing;
 - (_Bool)ts_isCollapsedOrCollapsing;

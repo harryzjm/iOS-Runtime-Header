@@ -15,12 +15,14 @@
     MFMailMessageLibrary *_library;
 }
 
-@property(nonatomic) __weak MFMailMessageLibrary *library; // @synthesize library=_library;
 - (void).cxx_destruct;
+@property(nonatomic) __weak MFMailMessageLibrary *library; // @synthesize library=_library;
+- (void)didFinishPersistenceDidAddMessages:(id)arg1;
+- (void)willStartPersistenceDidAddMessages:(id)arg1;
 - (_Bool)mailboxPartOfAllMail:(id)arg1;
 - (_Bool)mailboxIsAllMail:(id)arg1;
 - (id)accountForMailboxURL:(id)arg1;
-- (id)iterateMessagesInMailboxURL:(id)arg1 excludingMessages:(id)arg2 batchSize:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)iterateMessagesInMailboxURLs:(id)arg1 excludingMessages:(id)arg2 batchSize:(unsigned long long)arg3 returnMessagesForFlagChange:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)messagesForRemoteIDs:(id)arg1 mailboxURL:(id)arg2;
 - (id)messageForDatabaseID:(long long)arg1;
 - (id)addLabels:(id)arg1 removeLabels:(id)arg2 toMessagesInDatabase:(id)arg3;
@@ -28,6 +30,7 @@
 - (void)resetStatusCountsForMailboxWithURL:(id)arg1;
 - (void)messageWasAppended:(id)arg1;
 - (void)displayErrorForTransferAction:(id)arg1 withResults:(id)arg2;
+- (void)didReflectNewMessages:(id)arg1;
 - (void)actionHasChangedAccount:(id)arg1;
 - (void)checkForNewActionsInMailboxID:(long long)arg1;
 - (void)setData:(id)arg1 onMessage:(id)arg2;
@@ -40,7 +43,7 @@
 - (id)addNewMessages:(id)arg1 mailboxURL:(id)arg2 userInitiated:(_Bool)arg3;
 - (id)copyMessages:(id)arg1 destinationMailboxURL:(id)arg2 userInitiated:(_Bool)arg3;
 - (id)moveMessages:(id)arg1 destinationMailboxURL:(id)arg2 userInitiated:(_Bool)arg3;
-- (id)initWithLibrary:(id)arg1 database:(id)arg2 localActionPersistence:(id)arg3 serverMessagePersistenceFactory:(id)arg4 hookResponder:(id)arg5;
+- (id)initWithLibrary:(id)arg1 database:(id)arg2 localActionPersistence:(id)arg3 messagePersistence:(id)arg4 serverMessagePersistenceFactory:(id)arg5 hookResponder:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

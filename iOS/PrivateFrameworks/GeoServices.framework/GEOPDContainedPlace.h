@@ -14,23 +14,21 @@ __attribute__((visibility("hidden")))
 @interface GEOPDContainedPlace : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_childPlaces;
     unsigned long long _featureId;
     GEOPDLinkedPlace *_parentPlace;
     NSMutableArray *_siblingPlaces;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_featureId:1;
         unsigned int read_unknownFields:1;
         unsigned int read_childPlaces:1;
         unsigned int read_parentPlace:1;
         unsigned int read_siblingPlaces:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_childPlaces:1;
-        unsigned int wrote_featureId:1;
-        unsigned int wrote_parentPlace:1;
-        unsigned int wrote_siblingPlaces:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,27 +46,27 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)siblingPlaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)siblingPlacesCount;
-- (void)_addNoFlagsSiblingPlace:(id)arg1;
 - (void)addSiblingPlace:(id)arg1;
 - (void)clearSiblingPlaces;
 @property(retain, nonatomic) NSMutableArray *siblingPlaces;
-- (void)_readSiblingPlaces;
 @property(nonatomic) _Bool hasFeatureId;
 @property(nonatomic) unsigned long long featureId;
 - (id)childPlaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)childPlacesCount;
-- (void)_addNoFlagsChildPlace:(id)arg1;
 - (void)addChildPlace:(id)arg1;
 - (void)clearChildPlaces;
 @property(retain, nonatomic) NSMutableArray *childPlaces;
-- (void)_readChildPlaces;
 @property(retain, nonatomic) GEOPDLinkedPlace *parentPlace;
 @property(readonly, nonatomic) _Bool hasParentPlace;
-- (void)_readParentPlace;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

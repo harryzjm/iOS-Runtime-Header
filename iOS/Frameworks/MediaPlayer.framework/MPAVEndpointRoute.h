@@ -24,10 +24,13 @@
 - (void)_endpointOutputDevicesDidChange:(id)arg1;
 - (void)_endpointDidChange:(id)arg1;
 - (long long)numberOfOutputDevices;
+- (id)clusterComposition;
+- (_Bool)isClusterRoute;
 - (_Bool)isSplitRoute;
 - (_Bool)isSplitterCapable;
 - (_Bool)supportsRemoteControl;
 - (_Bool)supportsGrouping;
+- (long long)originalRouteSubtype;
 - (long long)routeSubtype;
 - (long long)routeType;
 - (id)groupUID;

@@ -8,7 +8,7 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLPipelineBufferDescriptorArray, MTLRenderPipelineColorAttachmentDescriptorArray, MTLVertexDescriptor, NSString;
+@class MTLPipelineBufferDescriptorArray, MTLRenderPipelineColorAttachmentDescriptorArray, MTLVertexDescriptor, NSArray, NSString;
 @protocol MTLFunction;
 
 @interface MTLRenderPipelineDescriptor : NSObject <NSCopying>
@@ -23,6 +23,7 @@
 // Remaining properties
 @property(nonatomic, getter=isAlphaToCoverageEnabled) _Bool alphaToCoverageEnabled; // @dynamic alphaToCoverageEnabled;
 @property(nonatomic, getter=isAlphaToOneEnabled) _Bool alphaToOneEnabled; // @dynamic alphaToOneEnabled;
+@property(copy, nonatomic) NSArray *binaryArchives; // @dynamic binaryArchives;
 @property(readonly) MTLRenderPipelineColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property(nonatomic) unsigned long long depthAttachmentPixelFormat; // @dynamic depthAttachmentPixelFormat;
 @property(readonly) MTLPipelineBufferDescriptorArray *fragmentBuffers; // @dynamic fragmentBuffers;

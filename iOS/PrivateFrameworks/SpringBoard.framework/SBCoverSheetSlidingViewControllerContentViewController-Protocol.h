@@ -8,5 +8,6 @@
 
 @protocol SBCoverSheetSlidingViewControllerContentViewController <NSObject>
 @property(readonly, nonatomic) _Bool contentOccludesBackground;
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 @end
 

@@ -14,8 +14,10 @@
 + (id)_localizedNameForActionForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_nameLocalizationKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)optionByValidatingValueOfInvalidOption:(id)arg1;
 + (_Bool)_valueIsValid:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_optionWithValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)localizedNameForValidValue:(unsigned long long)arg1 forDevice:(id)arg2;
 - (id)_faceBundleStringToValueDict;
 - (id)initWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 - (id)JSONObjectRepresentation;

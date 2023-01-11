@@ -21,7 +21,6 @@
 }
 
 - (id)scaleLocalizedString;
-- (id)lookLocalizedString;
 - (id)drawingLayerLocalizedString;
 - (id)dimension2LocalizedString;
 - (id)dimension1LocalizedString;
@@ -41,7 +40,6 @@
 - (unsigned short)layer;
 - (unsigned short)identifier;
 - (unsigned short)keyScale;
-- (unsigned short)look;
 - (unsigned short)drawingLayer;
 - (unsigned short)dimension2;
 - (unsigned short)dimension1;
@@ -64,7 +62,6 @@
 - (id)slices;
 - (double)scale;
 - (void)dealloc;
-- (id)initWithCoreUIOptions:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
 - (id)initWithCoreUIOptions:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 @property(readonly, nonatomic) CUIPSDGradient *gradient;
 @property(readonly, nonatomic) struct CGRect *sliceRects;

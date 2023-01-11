@@ -14,6 +14,8 @@
 }
 
 + (id)removeSentinelFromAliases:(id)arg1;
++ (void)serviceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)serviceWithIdentifier:(id)arg1 commands:(id)arg2 manuallyAckMessages:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 + (_Bool)checkMessageSize:(unsigned long long)arg1 priority:(long long)arg2;
 - (void).cxx_destruct;
 - (void)scheduleTransactionLogTask:(id)arg1;
@@ -24,7 +26,6 @@
 - (void)activateAlias:(id)arg1;
 - (id)activeAliases;
 - (id)aliases;
-- (void)requestConnectionForUnicastParameter:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)datagramChannelForSocketDescriptor:(int)arg1 error:(id *)arg2;
 - (id)datagramChannelForSessionDestination:(id)arg1 error:(id *)arg2;
 - (id)streamConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
@@ -45,12 +46,14 @@
 - (id)devicesForBTUUID:(id)arg1;
 - (id)deviceForUniqueID:(id)arg1;
 - (id)firstRoutableInternetDestinationForSelf;
+- (id)linkedDeviceForFromID:(id)arg1 withRelationship:(long long)arg2;
 - (id)deviceForFromID:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *devices;
 @property(readonly, copy, nonatomic) NSSet *internalAccounts;
 @property(readonly, copy, nonatomic) NSSet *accounts;
 - (id)iCloudAccount;
 - (id)serviceDomain;
+- (id)linkedDevicesWithRelationship:(long long)arg1;
 - (_Bool)sendServerMessage:(id)arg1 command:(id)arg2 fromAccount:(id)arg3;
 - (_Bool)cancelIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)sendCertifiedDeliveryReceipt:(id)arg1;

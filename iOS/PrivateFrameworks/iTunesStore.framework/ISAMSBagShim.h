@@ -8,7 +8,7 @@
 
 #import <iTunesStore/AMSBagProtocol-Protocol.h>
 
-@class ISURLBag, NSDate, NSString, SSBag;
+@class AMSProcessInfo, ISURLBag, NSDate, NSString, SSBag;
 
 @interface ISAMSBagShim : NSObject <AMSBagProtocol>
 {
@@ -17,10 +17,10 @@
     long long _type;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) ISURLBag *URLBag; // @synthesize URLBag=_URLBag;
 @property(retain, nonatomic) SSBag *bag; // @synthesize bag=_bag;
-- (void).cxx_destruct;
 - (id)_bagValueForKey:(id)arg1 valueType:(unsigned long long)arg2;
 - (id)stringForKey:(id)arg1;
 - (id)integerForKey:(id)arg1;
@@ -42,6 +42,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property(readonly) Class superclass;
 
 @end

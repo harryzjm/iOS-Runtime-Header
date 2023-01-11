@@ -16,6 +16,7 @@
 - (void)retrieveAssets:(NSArray *)arg1;
 - (void)checkForOutstandingActivities;
 - (void)checkForNewAssetCollections;
+- (void)checkForNewAssetCollectionsIfMissingCtag;
 - (void)resetSync;
 @end
 

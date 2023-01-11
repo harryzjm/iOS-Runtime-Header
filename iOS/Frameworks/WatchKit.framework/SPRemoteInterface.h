@@ -38,7 +38,6 @@
 + (_Bool)sendDataToApp:(id)arg1;
 + (void)sendCacheRequestMessage:(id)arg1;
 + (void)sendCacheRequest:(id)arg1;
-+ (_Bool)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)updateUserActivity:(id)arg1 userInfo:(id)arg2 webpageURL:(id)arg3 interfaceController:(id)arg4;
 + (void)didFinishHandlingActivity:(id)arg1;
 + (void)controllerDismissAddPassesController:(id)arg1;
@@ -54,7 +53,6 @@
 + (void)removePageControllerAtIndexes:(id)arg1;
 + (void)movePageControllerAtIndex:(long long)arg1 toIndex:(long long)arg2;
 + (void)insertPageControllerAtIndexes:(id)arg1 withNames:(id)arg2 contexts:(id)arg3;
-+ (void)reloadRootPageControllersWithNames:(id)arg1 contexts:(id)arg2 orientation:(long long)arg3 pageIndex:(long long)arg4;
 + (void)reloadRootControllersWithNames:(id)arg1 contexts:(id)arg2;
 + (void)controllerPopToRoot:(id)arg1;
 + (void)controllerPop:(id)arg1;
@@ -73,6 +71,7 @@
 + (id)startRemoteInterfaceWithBundle:(id)arg1;
 + (id)startRemoteInterface;
 + (id)sharedRemoteInterface;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType addPassesCompletion; // @synthesize addPassesCompletion=_addPassesCompletion;
 @property(retain, nonatomic) NSBundle *extensionBundle; // @synthesize extensionBundle=_extensionBundle;
 @property(retain, nonatomic) NSMutableArray *openParentRequests; // @synthesize openParentRequests=_openParentRequests;
@@ -90,7 +89,6 @@
 @property(retain, nonatomic) id runLoopObserver; // @synthesize runLoopObserver=_runLoopObserver;
 @property(retain, nonatomic) NSMutableArray *activeComplicationsConnections; // @synthesize activeComplicationsConnections=_activeComplicationsConnections;
 @property(retain, nonatomic) id <SPRemoteInterfaceDataDelegateProtocol> dataDelegate; // @synthesize dataDelegate=_dataDelegate;
-- (void).cxx_destruct;
 - (id)controllerMethods:(id)arg1;
 - (void)_fillDataWithRandom:(id)arg1 length:(long long)arg2;
 - (void)getComplicationData:(id)arg1;
@@ -160,8 +158,6 @@
 - (id)storeInterfaceCreationContext:(id)arg1;
 - (_Bool)_sendDataToApp:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)sendCacheRequestMessage:(id)arg1;
-- (_Bool)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_sendOpenParentApplicationRequest;
 - (void)updateUserActivity:(id)arg1 userInfo:(id)arg2 webpageURL:(id)arg3 controller:(id)arg4;
 - (void)fetchNotificationForNotificationID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)replyTimingData:(id)arg1;

@@ -17,8 +17,8 @@
 @property(nonatomic) double precision;
 @property(nonatomic) CDStruct_95c2efd7 statistics;
 @property(readonly, nonatomic) _Bool isCancelled;
-- (void)logAggdGeoLookupFailureResult;
-- (void)logAggdGeoLookupCounterAndDurationWithLookupDuration:(NSNumber *)arg1;
+- (void)logGeoLookupFailureResult;
+- (void)logGeoLookupCounterAndDurationWithLookupDuration:(NSNumber *)arg1;
 - (void)cancel;
 - (unsigned long long)cacheItems:(NSArray *)arg1;
 - (NSArray *)regions;

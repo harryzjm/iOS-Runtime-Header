@@ -48,6 +48,7 @@
     _Bool forceEnableDictation;
     _Bool forceDisableDictation;
     _Bool forceDefaultDictationInfo;
+    _Bool preferOnlineDictation;
     _Bool returnKeyGoesToNextResponder;
     _Bool acceptsFloatingKeyboard;
     _Bool forceFloatingKeyboard;
@@ -73,6 +74,7 @@
     _Bool manageRecentInputs;
     _Bool hasDefaultContents;
     _Bool acceptsPayloads;
+    _Bool acceptsInitialEmojiKeyboard;
     _Bool displaySecureEditsUsingPlainText;
     _Bool hidePrediction;
     _Bool loadKeyboardsForSiriLanguage;
@@ -95,6 +97,7 @@
 + (long long)translateToUISpellCheckingType:(unsigned long long)arg1;
 + (long long)translateToUIAutocorrectionType:(unsigned long long)arg1;
 + (long long)translateToUIAutocapitalizationType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage; // @synthesize loadKeyboardsForSiriLanguage;
 @property(nonatomic) long long textScriptType; // @synthesize textScriptType;
 @property(nonatomic) _Bool isCarPlayIdiom; // @synthesize isCarPlayIdiom;
@@ -118,6 +121,7 @@
 @property(nonatomic) _Bool acceptsFloatingKeyboard; // @synthesize acceptsFloatingKeyboard;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder; // @synthesize returnKeyGoesToNextResponder;
 @property(nonatomic) int emptyContentReturnKeyType; // @synthesize emptyContentReturnKeyType;
+@property(nonatomic) _Bool preferOnlineDictation; // @synthesize preferOnlineDictation;
 @property(nonatomic) long long forceDictationKeyboardType; // @synthesize forceDictationKeyboardType;
 @property(nonatomic) _Bool forceDefaultDictationInfo; // @synthesize forceDefaultDictationInfo;
 @property(nonatomic) _Bool forceDisableDictation; // @synthesize forceDisableDictation;
@@ -125,6 +129,7 @@
 @property(nonatomic) _Bool showDictationButton; // @synthesize showDictationButton;
 @property(nonatomic) _Bool useAutomaticEndpointing; // @synthesize useAutomaticEndpointing;
 @property(nonatomic) _Bool acceptsDictationSearchResults; // @synthesize acceptsDictationSearchResults;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard; // @synthesize acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsEmoji; // @synthesize acceptsEmoji;
 @property(nonatomic) _Bool acceptsPayloads; // @synthesize acceptsPayloads;
 @property(nonatomic) _Bool hasDefaultContents; // @synthesize hasDefaultContents;
@@ -157,7 +162,6 @@
 @property(nonatomic) long long spellCheckingType; // @synthesize spellCheckingType;
 @property(nonatomic) long long autocorrectionType; // @synthesize autocorrectionType;
 @property(nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (long long)updateResultComparedToTraits:(id)arg1;
 - (_Bool)publicTraitsMatchTraits:(id)arg1;
@@ -167,6 +171,7 @@
 - (void)takeTraitsFrom:(id)arg1;
 - (void)extendedPathToObtainTraitsFrom:(id)arg1 lightweight:(_Bool)arg2;
 - (void)fastPathToObtainTraitsFrom:(id)arg1;
+- (void)overrideWithTraits:(id)arg1;
 - (void)setToDefaultValues;
 - (void)dealloc;
 - (id)init;

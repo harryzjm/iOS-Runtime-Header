@@ -26,7 +26,7 @@
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(_Bool)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(_Bool)arg4;
 - (_Bool)drawsInOneStep;
-- (_Bool)prefersToApplyToCAShapeLayerDuringManipulation;
+- (_Bool)prefersToApplyToShapeRenderableDuringManipulation;
 - (_Bool)canApplyToCAShapeLayer;
 - (_Bool)canApplyDirectlyToRepCALayer;
 - (_Bool)isNullStroke;

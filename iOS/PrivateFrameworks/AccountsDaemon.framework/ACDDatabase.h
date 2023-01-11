@@ -19,13 +19,12 @@
 }
 
 + (id)new;
-@property(readonly, nonatomic) NSURL *databaseURL; // @synthesize databaseURL=_databaseURL;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *databaseURL; // @synthesize databaseURL=_databaseURL;
 - (id)createConnection;
 - (void)databaseConnection:(id)arg1 encounteredUnrecoverableError:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (_Bool)_persistentStoreCoodinator_resetPersistentStoreCoordinatorWithError:(id *)arg1;
-- (_Bool)_validateDatabaseAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)_performBackupToURL:(id)arg1 unverifiedBackupURL:(id)arg2 error:(id *)arg3;
 - (_Bool)_shouldResetPersistentStoreAfterError:(id)arg1;
 - (id)_addPersistentStoreWithType:(id)arg1 configuration:(id)arg2 URL:(id)arg3 options:(id)arg4 error:(id *)arg5;

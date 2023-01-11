@@ -17,7 +17,6 @@
     _Bool _isSubstandardRender;
     _Bool _loopingLivePhoto;
     _Bool _isAsyncAdjustment;
-    _Bool _isSwappingFullSizeRenderWithAlternateRender;
     NSURL *_renderedContentURL;
     NSNumber *_originalResourceChoice;
     long long _fullSizeRenderWidth;
@@ -37,10 +36,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)maximumAdjustmentDataLength;
++ (id)renderURLWithExtensionForMediaType:(long long)arg1 useHEICImage:(_Bool)arg2;
 + (id)renderURLWithExtensionForMediaType:(long long)arg1;
 + (id)outputForFlippingFullSizeRenderWithContentEditingInput:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *reframeVariation; // @synthesize reframeVariation=_reframeVariation;
-@property(nonatomic) _Bool isSwappingFullSizeRenderWithAlternateRender; // @synthesize isSwappingFullSizeRenderWithAlternateRender=_isSwappingFullSizeRenderWithAlternateRender;
 @property(retain, nonatomic) NSNumber *videoDuration; // @synthesize videoDuration=_videoDuration;
 @property(retain, nonatomic) NSNumber *playbackVariation; // @synthesize playbackVariation=_playbackVariation;
 @property(nonatomic) _Bool isAsyncAdjustment; // @synthesize isAsyncAdjustment=_isAsyncAdjustment;
@@ -58,7 +58,6 @@
 @property(nonatomic) _Bool isSubstandardRender; // @synthesize isSubstandardRender=_isSubstandardRender;
 @property(retain, nonatomic) NSNumber *originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
 @property(copy) NSURL *renderedContentURL; // @synthesize renderedContentURL=_renderedContentURL;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

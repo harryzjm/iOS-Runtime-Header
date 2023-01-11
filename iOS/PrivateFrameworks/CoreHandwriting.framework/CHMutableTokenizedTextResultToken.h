@@ -12,6 +12,7 @@
 
 @property(nonatomic) long long substrokeCount; // @dynamic substrokeCount;
 @property(nonatomic) unsigned long long properties; // @dynamic properties;
+@property(nonatomic) double alignmentScore; // @dynamic alignmentScore;
 @property(nonatomic) double combinedScore; // @dynamic combinedScore;
 @property(nonatomic) double recognitionScore; // @dynamic recognitionScore;
 @property(nonatomic) unsigned int wordID; // @dynamic wordID;

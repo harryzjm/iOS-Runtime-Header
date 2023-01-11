@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)setFriend:(id)arg1 snapshot:(id)arg2 formattingManager:(id)arg3 animated:(_Bool)arg4;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)isAccessibilityElement;
 
 @end
 

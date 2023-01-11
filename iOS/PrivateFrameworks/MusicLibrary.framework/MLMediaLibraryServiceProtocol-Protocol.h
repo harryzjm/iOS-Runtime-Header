@@ -9,10 +9,9 @@
 @class ML3DatabaseImport, NSArray, NSDictionary, NSString, NSUUID;
 
 @protocol MLMediaLibraryServiceProtocol <NSObject>
+- (void)getClientImportServiceListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)getMediaLibraryResourcesServiceListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)performMaintenanceTasksForDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool, NSError *))arg2;
-- (void)performRestoreOfLatestBackupForDatabaseAtPath:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
-- (void)performBackupOfDatabaseAtPath:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)updateSpotlightIndexMetadataForItemsWithIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 withCompletion:(void (^)(_Bool, NSError *))arg3;
 - (void)updateSpotlightIndexForBundleID:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)getLanguageResourcesWithCompletion:(void (^)(ML3LanguageResources *, NSError *))arg1;

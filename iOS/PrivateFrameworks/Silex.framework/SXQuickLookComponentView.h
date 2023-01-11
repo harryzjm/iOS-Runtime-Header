@@ -22,6 +22,7 @@
     SXQuickLookViewController *_quickLookViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SXQuickLookViewController *quickLookViewController; // @synthesize quickLookViewController=_quickLookViewController;
 @property(retain, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
 @property(readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
@@ -33,7 +34,6 @@
 @property(readonly, nonatomic) NFStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(readonly, nonatomic) id <SXQuickLookComponentFileProvider> fileProvider; // @synthesize fileProvider=_fileProvider;
 @property(readonly, nonatomic) id <SXQuickLookModule> quickLookModule; // @synthesize quickLookModule=_quickLookModule;
-- (void).cxx_destruct;
 - (id)createErrorState;
 - (id)createPresentingState;
 - (id)createLoadingState;
@@ -45,7 +45,7 @@
 - (void)handleTap;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)configure;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 fileProvider:(id)arg5 quickLookModule:(id)arg6;
 

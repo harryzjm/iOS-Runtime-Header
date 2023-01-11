@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     CKDContainerInfo *_containerInfo;
 }
 
-@property(copy, nonatomic) CKDContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
-@property(nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
-@property(nonatomic) _Bool requireUserIDs; // @synthesize requireUserIDs=_requireUserIDs;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CKDContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
+@property(copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
+@property(nonatomic) _Bool requireUserIDs; // @synthesize requireUserIDs=_requireUserIDs;
 - (void)requestDidParseJSONObject:(id)arg1;
 - (_Bool)hasRequestBody;
 - (id)url;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)allowsAnonymousAccount;
 - (_Bool)requiresDeviceID;
 - (_Bool)requiresConfiguration;
-- (id)initWithContainerIdentifier:(id)arg1;
+- (id)initWithOperation:(id)arg1 containerIdentifier:(id)arg2;
 
 @end
 

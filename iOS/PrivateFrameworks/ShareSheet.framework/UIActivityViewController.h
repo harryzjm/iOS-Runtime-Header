@@ -17,7 +17,7 @@
 #import <ShareSheet/_UIActivityHelperDelegate-Protocol.h>
 #import <ShareSheet/_UIActivityUserDefaultsViewControllerDelegate-Protocol.h>
 
-@class LPLinkMetadata, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSUserDefaults, ObjectManipulationViewController, SFAirDropViewController, SFShareSheetSlotManager, UIActivity, UIActivityContentViewController, UIAlertAction, UIAlertController, UINavigationController, UISUIActivityViewControllerConfiguration, UIView, _UIActivityHelper, _UICollectionViewDiffableDataSource;
+@class LPLinkMetadata, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSUserDefaults, ObjectManipulationViewController, SFAirDropViewController, SFShareSheetSlotManager, UIActivity, UIActivityContentViewController, UIAlertAction, UIAlertController, UINavigationController, UISUIActivityViewControllerConfiguration, UIView, _UIActivityHelper, _UIActivityNavigationController, _UICollectionViewDiffableDataSource;
 @protocol UIActivityViewControllerAirDropDelegate, UIActivityViewControllerObjectManipulationDelegate, UIActivityViewControllerPhotosDelegate;
 
 @interface UIActivityViewController : UIViewController <UIViewControllerRestoration, _UIActivityHelperDelegate, SFAirDropViewControllerDelegate, SFShareSheetSlotManagerDelegate, _UIActivityUserDefaultsViewControllerDelegate, ObjectManipulationDelegate, UICollectionViewDelegate, UIActivityContentDelegate, UIViewControllerTransitioningDelegate, LPLinkViewDelegate>
@@ -29,6 +29,7 @@
     _Bool _performActivityForStateRestoration;
     _Bool _shouldMatchOnlyUserElectedExtensions;
     _Bool _shouldSkipPeopleSuggestions;
+    _Bool _shouldSuggestFamilyMembers;
     _Bool _hasPerformedInitialPresentation;
     _Bool _isPerformingPresentation;
     _Bool _receivedInitialConfiguration;
@@ -53,6 +54,7 @@
     NSMutableDictionary *_activitiesByUUID;
     _UIActivityHelper *_activityHelper;
     CDUnknownBlockType __popoverDismissalAction;
+    UIViewController *_presentationViewController;
     CDUnknownBlockType _activityPresentationCompletionHandler;
     UIAlertController *_activityAlertController;
     UIAlertAction *_activityAlertCancelAction;
@@ -67,6 +69,7 @@
     unsigned long long _beginPerformingActivityTimestamp;
     unsigned long long _viewWillAppearTimestamp;
     unsigned long long _readyToInteractTimestamp;
+    unsigned long long _creationTimestamp;
     NSArray *_activityTypesToCreateInShareService;
     NSArray *_resolvedActivityItemsForCurrentActivity;
     UIViewController *_linkViewController;
@@ -77,7 +80,7 @@
     ObjectManipulationViewController *_customizationViewController;
     NSLayoutConstraint *_blurViewHeightConstraint;
     UINavigationController *_contentNavigationController;
-    UINavigationController *_secondaryContentNavigationController;
+    _UIActivityNavigationController *_secondaryContentNavigationController;
     UIActivityContentViewController *_contentViewController;
     UIActivityContentViewController *_secondaryContentViewController;
     _UICollectionViewDiffableDataSource *_dataSource;
@@ -108,6 +111,7 @@
 + (_Bool)_preventsAppearanceProxyCustomization;
 + (id)viewControllerWithRestorationIdentifierPath:(id)arg1 coder:(id)arg2;
 + (double)_asyncPresentationTimeout;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool configureForCloudSharing; // @synthesize configureForCloudSharing=_configureForCloudSharing;
 @property(nonatomic) _Bool configureForPhotosEdit; // @synthesize configureForPhotosEdit=_configureForPhotosEdit;
 @property(copy, nonatomic, getter=_photosAssetIdentifiers, setter=_setPhotosAssetIdentifiers:) NSSet *photosAssetIdentifiers; // @synthesize photosAssetIdentifiers=_photosAssetIdentifiers;
@@ -141,7 +145,7 @@
 @property(retain, nonatomic) _UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) UIActivityContentViewController *secondaryContentViewController; // @synthesize secondaryContentViewController=_secondaryContentViewController;
 @property(retain, nonatomic) UIActivityContentViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
-@property(retain, nonatomic) UINavigationController *secondaryContentNavigationController; // @synthesize secondaryContentNavigationController=_secondaryContentNavigationController;
+@property(retain, nonatomic) _UIActivityNavigationController *secondaryContentNavigationController; // @synthesize secondaryContentNavigationController=_secondaryContentNavigationController;
 @property(retain, nonatomic) UINavigationController *contentNavigationController; // @synthesize contentNavigationController=_contentNavigationController;
 @property(retain, nonatomic) NSLayoutConstraint *blurViewHeightConstraint; // @synthesize blurViewHeightConstraint=_blurViewHeightConstraint;
 @property(retain, nonatomic) ObjectManipulationViewController *customizationViewController; // @synthesize customizationViewController=_customizationViewController;
@@ -156,12 +160,14 @@
 @property(retain, nonatomic) UIViewController *linkViewController; // @synthesize linkViewController=_linkViewController;
 @property(readonly, nonatomic) NSArray *resolvedActivityItemsForCurrentActivity; // @synthesize resolvedActivityItemsForCurrentActivity=_resolvedActivityItemsForCurrentActivity;
 @property(retain, nonatomic) NSArray *activityTypesToCreateInShareService; // @synthesize activityTypesToCreateInShareService=_activityTypesToCreateInShareService;
+@property(nonatomic, getter=_creationTimestamp, setter=_setCreationTimestamp:) unsigned long long creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property(nonatomic, getter=_readyToInteractTimestamp, setter=_setReadyToInteractTimestamp:) unsigned long long readyToInteractTimestamp; // @synthesize readyToInteractTimestamp=_readyToInteractTimestamp;
 @property(nonatomic, getter=_viewWillAppearTimestamp, setter=_setViewWillAppearTimestamp:) unsigned long long viewWillAppearTimestamp; // @synthesize viewWillAppearTimestamp=_viewWillAppearTimestamp;
 @property(nonatomic, getter=_beginPerformingActivityTimestamp, setter=_setBeginPerformingActivityTimestamp:) unsigned long long beginPerformingActivityTimestamp; // @synthesize beginPerformingActivityTimestamp=_beginPerformingActivityTimestamp;
 @property(nonatomic, getter=_clientAttemptedInitialPresentationOrEmbeddingTimestamp, setter=_setClientAttemptedInitialPresentationOrEmbeddingTimestamp:) unsigned long long clientAttemptedInitialPresentationOrEmbeddingTimestamp; // @synthesize clientAttemptedInitialPresentationOrEmbeddingTimestamp=_clientAttemptedInitialPresentationOrEmbeddingTimestamp;
 @property(nonatomic, getter=_isPerformingPresentation, setter=_setIsPerformingPresentation:) _Bool isPerformingPresentation; // @synthesize isPerformingPresentation=_isPerformingPresentation;
 @property(nonatomic, getter=_hasPerformedInitialPresentation, setter=_setHasPerformedInitialPresentation:) _Bool hasPerformedInitialPresentation; // @synthesize hasPerformedInitialPresentation=_hasPerformedInitialPresentation;
+@property(readonly, nonatomic) _Bool shouldSuggestFamilyMembers; // @synthesize shouldSuggestFamilyMembers=_shouldSuggestFamilyMembers;
 @property(nonatomic) _Bool shouldSkipPeopleSuggestions; // @synthesize shouldSkipPeopleSuggestions=_shouldSkipPeopleSuggestions;
 @property(nonatomic) _Bool shouldMatchOnlyUserElectedExtensions; // @synthesize shouldMatchOnlyUserElectedExtensions=_shouldMatchOnlyUserElectedExtensions;
 @property(nonatomic) _Bool performActivityForStateRestoration; // @synthesize performActivityForStateRestoration=_performActivityForStateRestoration;
@@ -176,6 +182,7 @@
 @property(retain, nonatomic) UIAlertController *activityAlertController; // @synthesize activityAlertController=_activityAlertController;
 @property(copy, nonatomic, getter=_activityPresentationCompletionHandler, setter=_setActivityPresentationCompletionHandler:) CDUnknownBlockType activityPresentationCompletionHandler; // @synthesize activityPresentationCompletionHandler=_activityPresentationCompletionHandler;
 @property(nonatomic) _Bool willDismissActivityViewController; // @synthesize willDismissActivityViewController=_willDismissActivityViewController;
+@property(nonatomic) __weak UIViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 @property(nonatomic) _Bool dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel; // @synthesize dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel=_dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
 @property(copy, nonatomic) CDUnknownBlockType _popoverDismissalAction; // @synthesize _popoverDismissalAction=__popoverDismissalAction;
 @property(retain, nonatomic) _UIActivityHelper *activityHelper; // @synthesize activityHelper=_activityHelper;
@@ -188,16 +195,16 @@
 @property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(copy, nonatomic) CDUnknownBlockType completionWithItemsHandler; // @synthesize completionWithItemsHandler=_completionWithItemsHandler;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-- (void).cxx_destruct;
 - (void)airDropViewServiceRequestingSharedItemsWithDataRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)airDropViewServiceDidSuccessfullyCompleteTransfer;
 - (void)airDropViewServiceDidSuccessfullyStartTransfer;
 - (void)_willPerformInServiceActivityType:(id)arg1 activitySpecificMetadata:(id)arg2;
 - (void)_performShareServiceSelectedActivity:(id)arg1;
 - (void)presentAirDrop;
-- (void)connectAirDrop;
+- (void)connectAirDropWithNoContentView:(_Bool)arg1;
 - (_Bool)_shouldShowSystemActivityType:(id)arg1;
 - (_Bool)activityHelper:(id)arg1 matchingWithContext:(id)arg2 shouldIncludeSystemActivityType:(id)arg3 sessionID:(id)arg4;
+- (_Bool)_canSaveImages;
 - (id)_configurationForActivity:(id)arg1;
 - (id)_activityConfigurationsForActivities:(id)arg1;
 - (id)_newShareUIConfigurationWithMatchingResults:(id)arg1;
@@ -209,16 +216,25 @@
 - (id)_activityWithActivityUUID:(id)arg1;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
+- (void)setProgress:(id)arg1 withTopText:(id)arg2 bottomText:(id)arg3 forNodeWithIdentifier:(id)arg4 shouldPulse:(id)arg5 animated:(_Bool)arg6;
+- (void)willPerformInServiceActivityWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performShortcutActivityInHostWithBundleID:(id)arg1 singleUseToken:(id)arg2;
+- (void)performExtensionActivityInHostWithBundleID:(id)arg1 request:(id)arg2;
+- (void)performAirDropActivityInHostWithNoContentView:(_Bool)arg1;
+- (void)performActivityInHostWithUUID:(id)arg1;
+- (void)performUserDefaultsWithFavoritesProxies:(id)arg1 suggestionProxies:(id)arg2 orderedUUIDs:(id)arg3 activityCategory:(long long)arg4;
+- (void)dataSourceUpdatedWithSessionConfiguration:(id)arg1;
+- (void)connectionInterrupted;
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_cancel;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_setPopoverController:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_endDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
 - (void)_presentationControllerDismissalTransitionDidEndNotification:(id)arg1;
+- (void)_endDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
 - (void)_beginDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
-- (void)_endInProgressActivityExecutionForcedStrongReference;
-- (void)_beginInProgressActivityExecutionForcedStrongReference;
+- (void)_endInProgressActivityExecutionForcedStrongReferenceForActivity:(id)arg1;
+- (void)_beginInProgressActivityExecutionForcedStrongReferenceForActivity:(id)arg1;
 - (_Bool)_queueBackgroundOperationsForActivityItems:(id)arg1 activityBeingPerformed:(id)arg2;
 - (void)_performActivity:(id)arg1;
 - (_Bool)_shouldExecuteItemOperation:(id)arg1 forActivity:(id)arg2;
@@ -280,37 +296,33 @@
 - (void)connectToDaemonOnceWithPriming:(_Bool)arg1;
 - (void)_primeExtensionDiscovery;
 - (void)_preloadInitialConfigurationLocallyIfNeeded;
-- (void)connectionInterrupted;
-- (void)willPerformInServiceActivityWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)performShortcutActivityInHostWithBundleID:(id)arg1 singleUseToken:(id)arg2;
-- (void)performExtensionActivityInHostWithBundleID:(id)arg1;
-- (void)performActivityInHostWithUUID:(id)arg1;
 - (void)_editActionsTapped;
 - (void)optionsButtonTapped;
 - (void)nextButtonTappedWithPeopleProxies:(id)arg1 shareProxies:(id)arg2 actionProxies:(id)arg3 nearbyCountSlotID:(id)arg4;
 - (void)closeButtonTapped;
-- (void)setProgress:(id)arg1 withTopText:(id)arg2 bottomText:(id)arg3 forNodeWithIdentifier:(id)arg4 shouldPulse:(id)arg5 animated:(_Bool)arg6;
 - (void)userDefaultsViewController:(id)arg1 didSelectActivityWithIdentifier:(id)arg2 activityCategory:(long long)arg3;
 - (void)userDefaultsViewController:(id)arg1 didFavoriteActivity:(_Bool)arg2 withIdentifier:(id)arg3 activityCategory:(long long)arg4;
 - (void)userDefaultsViewController:(id)arg1 didToggleActivityWithIdentifier:(id)arg2 activityCategory:(long long)arg3;
 - (void)userDefaultsViewController:(id)arg1 didUpdateFavoritesProxies:(id)arg2 activityCategory:(long long)arg3;
-- (void)performUserDefaultsWithFavoritesProxies:(id)arg1 suggestionProxies:(id)arg2 orderedUUIDs:(id)arg3 activityCategory:(long long)arg4;
-- (void)dataSourceUpdatedWithSessionConfiguration:(id)arg1;
 - (id)requestRefreshedCustomizationGroups;
 - (void)selectedActionWithIdentifier:(id)arg1;
 - (void)selectedAppWithIdentifier:(id)arg1;
+- (void)didLongPressShareActivityWithIdentifier:(id)arg1;
+- (void)removedPersonWithIdentifier:(id)arg1;
 - (void)selectedPersonWithIdentifier:(id)arg1;
 - (void)showScreenTimeRestrictedAlert;
-- (id)fallbackURLForLinkPresentation;
+- (id)fallbackURLsForLinkPresentation;
 - (id)requestMetadataValues;
 - (void)configureContentViewIfNeeded;
 - (void)configureActivityViewControllerWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
 - (id)initWithUserDefaults:(id)arg1 userDefaultsIdentifier:(id)arg2 applicationActivities:(id)arg3;
+- (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2 shouldSuggestFamilyMembers:(_Bool)arg3;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
 - (id)initWithAssetIdentifiers:(id)arg1 activityItems:(id)arg2 applicationActivities:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)init;
+- (id)initWithActivityItemsConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

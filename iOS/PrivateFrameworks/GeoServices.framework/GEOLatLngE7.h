@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class GEOLatLng, PBUnknownFields;
 
 @interface GEOLatLngE7 : PBCodable <NSCopying>
 {
@@ -29,10 +29,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) int lngE7;
 @property(nonatomic) int latE7;
+@property(readonly, nonatomic) GEOLatLng *latLng;
+@property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
+- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
+- (id)initWithE7Latitude:(int)arg1 longitude:(int)arg2;
+- (id)initWithLatLng:(id)arg1;
 
 @end
 

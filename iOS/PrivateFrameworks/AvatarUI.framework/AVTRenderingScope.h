@@ -20,7 +20,6 @@
 
 + (double)extraMagnifyingFactorForFramingMode:(id)arg1;
 + (double)thumbnailHeightRatioForFramingMode:(id)arg1;
-+ (double)widthForSunflowerRenderingType:(long long)arg1;
 + (double)widthForRenderingType:(long long)arg1 options:(unsigned long long)arg2;
 + (unsigned long long)scopeOptionsForEnvironment:(id)arg1;
 + (id)simplePickerThumbnailScope;
@@ -29,19 +28,20 @@
 + (id)gridThumbnailScope;
 + (id)largeThumbnailScope;
 + (id)thumbnailScope;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AVTAvatarPose *pose; // @synthesize pose=_pose;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property(readonly, nonatomic) long long renderingType; // @synthesize renderingType=_renderingType;
 @property(readonly, nonatomic) float sizeModifier; // @synthesize sizeModifier=_sizeModifier;
 @property(readonly, nonatomic) NSString *framingMode; // @synthesize framingMode=_framingMode;
-- (void).cxx_destruct;
 - (id)description;
 - (id)framingModeIdentifier;
 - (id)adaptedFramingModeForObjectType:(long long)arg1;
 - (id)copyApplyingPoseOverride:(id)arg1;
 - (id)copyWithSizeModifier:(float)arg1;
 - (id)copyWithFramingMode:(id)arg1;
+- (id)copyWithPose:(id)arg1;
 @property(readonly, nonatomic) struct CGSize size;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

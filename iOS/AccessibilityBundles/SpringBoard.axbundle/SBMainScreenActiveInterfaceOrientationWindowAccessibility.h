@@ -16,10 +16,6 @@
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityWindowVisible;
 - (_Bool)accessibilityElementsHidden;
-- (id)accessibilityLabel;
-- (struct CGRect)accessibilityFrame;
-- (id)_accessibilityElementCommunityIdentifier;
-- (_Bool)_accessibilityIsIsolatedWindow;
 
 @end
 

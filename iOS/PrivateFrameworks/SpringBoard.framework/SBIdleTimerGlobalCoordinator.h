@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoard/FBSDisplayLayoutObserver-Protocol.h>
 #import <SpringBoard/SBIdleTimerCoordinating-Protocol.h>
 #import <SpringBoard/SBIdleTimerGlobalStateMonitorObserving-Protocol.h>
 #import <SpringBoard/SBIdleTimerObserving-Protocol.h>
@@ -14,7 +13,7 @@
 @class FBSDisplayLayoutMonitor, NSMutableDictionary, NSString, PTTestRecipe, SBIdleTimerCoordinatorHelper, SBIdleTimerDescriptor, SBIdleTimerDescriptorFactory, SBIdleTimerGlobalStateMonitor, SBIdleTimerProxy;
 @protocol BSInvalidatable, SBIdleTimer, SBIdleTimerGlobalCoordinatorDelegate, SBIdleTimerProviding, SBIdleTimerResetSource;
 
-@interface SBIdleTimerGlobalCoordinator : NSObject <FBSDisplayLayoutObserver, SBIdleTimerObserving, SBIdleTimerGlobalStateMonitorObserving, SBIdleTimerCoordinating>
+@interface SBIdleTimerGlobalCoordinator : NSObject <SBIdleTimerObserving, SBIdleTimerGlobalStateMonitorObserving, SBIdleTimerCoordinating>
 {
     SBIdleTimerDescriptorFactory *_idleTimerDescriptorFactory;
     SBIdleTimerGlobalStateMonitor *_globalStateMonitor;
@@ -39,10 +38,10 @@
 + (id)sharedInstanceIfExists;
 + (id)sharedInstance;
 + (id)_sharedInstanceCreateIfNeeded:(_Bool)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_idleTimerDisableAssertions, setter=_setIdleTimerDisableAssertions:) NSMutableDictionary *idleTimerDisableAssertions; // @synthesize idleTimerDisableAssertions=_idleTimerDisableAssertions;
 @property(nonatomic, getter=_idleTimerProvider, setter=_setIdleTimerProvider:) __weak id <SBIdleTimerProviding> idleTimerProvider; // @synthesize idleTimerProvider=_idleTimerProvider;
 @property(nonatomic) __weak id <SBIdleTimerGlobalCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_registerInternalDisableAssertionsTestRecipe;
 - (void)_registerClientDisableAssertionsTestRecipe;
 - (void)_unregisterTestRecipes;

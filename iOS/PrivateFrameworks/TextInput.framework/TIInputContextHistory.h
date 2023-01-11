@@ -17,14 +17,16 @@
     NSMutableArray *_pendingEntries;
     NSSet *_recipientIdentifiers;
     NSSet *_senderIdentifiers;
+    NSSet *_recipientNames;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *pendingEntries; // @synthesize pendingEntries=_pendingEntries;
 @property(readonly, nonatomic) NSArray *entries; // @synthesize entries=_entries;
+@property(readonly, nonatomic) NSSet *recipientNames; // @synthesize recipientNames=_recipientNames;
 @property(readonly, nonatomic) NSSet *senderIdentifiers; // @synthesize senderIdentifiers=_senderIdentifiers;
 @property(readonly, nonatomic) NSSet *recipientIdentifiers; // @synthesize recipientIdentifiers=_recipientIdentifiers;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *senderIdentifier; // @dynamic senderIdentifier;
 - (id)mostRecentTextEntries:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool mostRecentTextEntryIsByMe;
@@ -37,6 +39,7 @@
 - (void)enumerateAllEntries:(CDUnknownBlockType)arg1;
 - (void)_enumerateAllEntriesAsInputContextEntries:(CDUnknownBlockType)arg1;
 - (void)addTextEntry:(id)arg1 timestamp:(id)arg2 senderIdentifier:(id)arg3;
+- (void)updateRecipientNames:(id)arg1;
 - (void)addTextEntry:(id)arg1 timestamp:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

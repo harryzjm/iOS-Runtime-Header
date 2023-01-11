@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 {
     VKGlobeCameraController *_globeCameraController;
     int _mapType;
-    CDStruct_80aa614a _mapDisplayStyle;
     double _contentScale;
     _Bool _disableRoads;
     _Bool _disableLabels;
@@ -43,6 +42,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsMapType:(int)arg1 scale:(int)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) int flyoverMode; // @synthesize flyoverMode=_flyoverMode;
 @property(nonatomic) _Bool trafficEnabled; // @synthesize trafficEnabled=_trafficEnabled;
 @property(nonatomic) int mapType; // @synthesize mapType=_mapType;
@@ -52,10 +53,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType sceneDidLoadCallback; // @synthesize sceneDidLoadCallback=_sceneDidLoadCallback;
 @property(readonly, nonatomic) _Bool flyoverAvailable; // @synthesize flyoverAvailable=_canShowFlyover;
 @property(nonatomic) id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (float)currentRoadSignOffset;
-- (void)setNavCameraIsDetached:(_Bool)arg1;
 - (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
 - (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
@@ -82,11 +79,10 @@ __attribute__((visibility("hidden")))
 - (id)attributionsForCurrentRegion;
 @property(readonly, nonatomic) NSArray *visibleTileSets;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
-- (void)_viewTransformSetup;
 - (void)didPresent;
 - (void)updateCameraForFrameResize;
 - (void)_update;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 - (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_c3b9c2ee)arg1;
 - (struct CGPoint)convertCoordinateToPoint:(CDStruct_c3b9c2ee)arg1;
 - (CDStruct_c3b9c2ee)convertPointToCoordinateOnSphere:(struct CGPoint)arg1;
@@ -102,7 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareFlyoverAnimation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)createFlyoverPreTourAnimation:(id)arg1 duration:(double)arg2;
 - (id)viewportInfo;
-- (id)camera;
+- (_retain_ptr_c0a21da9)camera;
 - (void)updateCameraFromGlobe;
 - (void)transferStateFromCanvas:(id)arg1;
 - (struct CGPoint)_centerScreenPoint;
@@ -111,14 +107,13 @@ __attribute__((visibility("hidden")))
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (void)setContentsScale:(double)arg1;
+- (void)setCamera:(_retain_ptr_c0a21da9)arg1;
 - (const shared_ptr_a3c46825 *)_styleManager;
 - (void)_reloadStylesheet;
 - (id)consoleString:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithMapEngine:(struct MapEngine *)arg1 inBackground:(_Bool)arg2;
 - (void)stopLoading;
-- (void)setNightMode:(_Bool)arg1;
-- (void)requestStylesheetMapDisplayStyle:(struct DisplayStyle)arg1 animated:(_Bool)arg2;
 - (void)setMapType:(int)arg1 animated:(_Bool)arg2;
 - (_Bool)isPointValidForGesturing:(struct CGPoint)arg1;
 @property(readonly, nonatomic) VKARCameraController *arCameraController; // @synthesize arCameraController=_arCameraController;

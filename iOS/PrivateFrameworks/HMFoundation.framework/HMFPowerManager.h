@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFUnfairLock, NSObject;
+@class NSObject;
 @protocol OS_dispatch_queue;
 
 @interface HMFPowerManager
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     _Bool _hasBattery;
     _Bool _running;
     float _batteryLevel;
@@ -20,12 +20,12 @@
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct IONotificationPort *notificationPort; // @synthesize notificationPort=_notificationPort;
 @property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly) _Bool hasBattery; // @synthesize hasBattery=_hasBattery;
 @property(readonly, nonatomic) unsigned int interestNotification; // @synthesize interestNotification=_interestNotification;
-- (void).cxx_destruct;
 - (void)_deregisterForPowerSourceNotifications:(_Bool)arg1;
 - (void)_registerForPowerSourceNotifications;
 - (void)updateBatteryState:(unsigned int)arg1;

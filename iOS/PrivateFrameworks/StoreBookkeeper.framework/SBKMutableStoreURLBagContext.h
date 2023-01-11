@@ -6,7 +6,6 @@
 
 @class NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface SBKMutableStoreURLBagContext
 {
 }

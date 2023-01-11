@@ -16,6 +16,8 @@
     GEOMuninViewState *_muninViewState;
 }
 
++ (id)URLForPublisher:(unsigned long long)arg1 provider:(int)arg2;
++ (id)URLForCuratedCollection:(unsigned long long)arg1 provider:(int)arg2;
 + (id)URLForCollectionStorage:(id)arg1;
 + (id)URLForShowFavoritesType:(long long)arg1;
 + (id)URLForTransitLine:(unsigned long long)arg1 withName:(id)arg2 mapRegion:(id)arg3;
@@ -44,10 +46,10 @@
 + (id)URLForSearch:(id)arg1 at:(CDStruct_c3b9c2ee)arg2 span:(CDStruct_c3b9c2ee)arg3;
 + (id)URLForSearch:(id)arg1 near:(CDStruct_c3b9c2ee)arg2;
 + (id)URLForSearch:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GEOMuninViewState *muninViewState; // @synthesize muninViewState=_muninViewState;
 @property(retain, nonatomic) GEOURLExtraStorage *extraStorage; // @synthesize extraStorage=_extraStorage;
 @property(retain, nonatomic) GEOURLCollectionStorage *collectionStorage; // @synthesize collectionStorage=_collectionStorage;
-- (void).cxx_destruct;
 - (void)_removeParametersAllBut:(id)arg1;
 - (id)_stringForCoordinateSpanPointer:(CDStruct_c3b9c2ee *)arg1;
 - (id)_stringForCoordinate2DPointer:(CDStruct_c3b9c2ee *)arg1;
@@ -58,6 +60,8 @@
 - (id)buildForCollections;
 - (id)buildForWeb;
 - (id)build;
+- (id)initForPublisher:(unsigned long long)arg1 provider:(int)arg2;
+- (id)initForCuratedCollection:(unsigned long long)arg1 provider:(int)arg2;
 - (id)initForCollectionStorage:(id)arg1;
 - (id)initForShowFavoritesType:(long long)arg1;
 - (id)initForTransitLine:(unsigned long long)arg1 withName:(id)arg2 mapRegion:(id)arg3;

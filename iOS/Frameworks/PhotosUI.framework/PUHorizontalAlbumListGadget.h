@@ -8,25 +8,24 @@
 
 #import <PhotosUI/PUCloudSharedAlbumViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUStackedAlbumTransitionDelegate-Protocol.h>
+#import <PhotosUI/PXAssetCollectionActionPerformerDelegate-Protocol.h>
 #import <PhotosUI/PXNavigableCollectionContainer-Protocol.h>
 
-@class NSString, NSUserActivity, PUAlbumDropSessionController, PUAlbumListViewControllerSpec, PUAlbumsGadgetProvider, PUPhotoPinchGestureRecognizer, PUSessionInfo;
+@class NSString, NSUserActivity, PUAlbumListViewControllerSpec, PUAlbumsGadgetProvider, PUPhotoPinchGestureRecognizer, PUSessionInfo;
 
-@interface PUHorizontalAlbumListGadget : PXHorizontalCollectionGadget <PUStackedAlbumTransitionDelegate, PUCloudSharedAlbumViewControllerDelegate, PXNavigableCollectionContainer>
+@interface PUHorizontalAlbumListGadget : PXHorizontalCollectionGadget <PUStackedAlbumTransitionDelegate, PUCloudSharedAlbumViewControllerDelegate, PXAssetCollectionActionPerformerDelegate, PXNavigableCollectionContainer>
 {
     PUAlbumsGadgetProvider *_provider;
     PUSessionInfo *_sessionInfo;
     PUPhotoPinchGestureRecognizer *_pinchGestureRecognizer;
-    PUAlbumDropSessionController *_dropSessionController;
     NSUserActivity *_siriActionActivity;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUserActivity *siriActionActivity; // @synthesize siriActionActivity=_siriActionActivity;
-@property(readonly, nonatomic) PUAlbumDropSessionController *dropSessionController; // @synthesize dropSessionController=_dropSessionController;
 @property(readonly, nonatomic) PUPhotoPinchGestureRecognizer *pinchGestureRecognizer; // @synthesize pinchGestureRecognizer=_pinchGestureRecognizer;
 @property(retain, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property(readonly, nonatomic) PUAlbumsGadgetProvider *provider; // @synthesize provider=_provider;
-- (void).cxx_destruct;
 - (void)_updateCollectionViewLayout;
 - (void)_navigateToCollection:(id)arg1 animated:(_Bool)arg2 interactive:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_canUseStackedAlbumTransitionToNavigationToCollection:(id)arg1;
@@ -40,7 +39,10 @@
 - (void)setGadgetSpec:(id)arg1;
 - (id)accessoryButtonTitle;
 - (unsigned long long)accessoryButtonType;
+- (unsigned long long)gadgetCapabilities;
 - (unsigned long long)gadgetType;
+- (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSpringLoadItemAtIndexPath:(id)arg2 withContext:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

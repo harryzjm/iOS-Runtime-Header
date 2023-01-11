@@ -17,12 +17,12 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (void)sendMessage:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithConnection:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

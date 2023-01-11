@@ -26,6 +26,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) int callerStatus; // @synthesize callerStatus=_callerStatus;
 @property(retain, nonatomic) CLLocation *actualLocation; // @synthesize actualLocation=_actualLocation;
 @property(nonatomic) _Bool isLocationInitialized; // @synthesize isLocationInitialized=_isLocationInitialized;
@@ -34,11 +35,9 @@
 @property(retain, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) NSMutableArray *listeners; // @synthesize listeners=_listeners;
 @property(retain, nonatomic) CLLocation *lastPlacemarkLocation; // @synthesize lastPlacemarkLocation=_lastPlacemarkLocation;
-- (void).cxx_destruct;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
-- (_Bool)isLocationBasedAdsEnabled;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (_Bool)locationEnabledFor:(int)arg1;
 - (id)obfuscatedLocation;
 - (id)currentLocation;

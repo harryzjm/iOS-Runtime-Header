@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_queue> *_callQueue;
     NSMutableString *_garbageCollection;
     AXDispatchTimer *_garbageCharacterStripperTimer;
+    _Bool _isViewControllerVisible;
     id <RTTCallDelegate> _delegate;
     RTTConversation *_conversation;
     TUCall *_call;
@@ -24,23 +25,25 @@
     NSDictionary *_substitutions;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *substitutions; // @synthesize substitutions=_substitutions;
 @property(retain, nonatomic) AVCVirtualTTYDevice *ttyDevice; // @synthesize ttyDevice=_ttyDevice;
+@property(nonatomic) _Bool isViewControllerVisible; // @synthesize isViewControllerVisible=_isViewControllerVisible;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callQueue; // @synthesize callQueue=_callQueue;
 @property(retain, nonatomic) TUCall *call; // @synthesize call=_call;
 @property(retain, nonatomic) RTTConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak id <RTTCallDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)device:(id)arg1 didReceiveCharacter:(unsigned short)arg2;
-- (void)device:(id)arg1 didReceiveText:(struct NSString *)arg2;
+- (void)device:(id)arg1 didReceiveText:(id)arg2;
 - (void)callDidReceiveText:(id)arg1 forUtterance:(id)arg2;
-- (struct NSString *)_processText:(struct NSString *)arg1 withDevice:(id)arg2;
-- (_Bool)_handleInitialGarbageTextFromTTY:(struct NSString *)arg1 device:(id)arg2;
+- (id)_processText:(id)arg1 withDevice:(id)arg2;
+- (_Bool)_handleInitialGarbageTextFromTTY:(id)arg1 device:(id)arg2;
 - (void)deviceDidStop:(id)arg1;
 - (void)device:(id)arg1 didStart:(_Bool)arg2 error:(id)arg3;
 - (void)sendString:(id)arg1;
 - (void)stop;
 - (void)start;
+- (void)toggleSystemOutputMute:(_Bool)arg1;
 - (void)recreateTTYDevice:(id)arg1;
 - (_Bool)isLocallyHosted;
 @property(readonly, copy) NSString *description;

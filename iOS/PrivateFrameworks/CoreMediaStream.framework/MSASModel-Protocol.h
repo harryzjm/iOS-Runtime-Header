@@ -19,7 +19,6 @@
 - (void)setFocusAssetCollectionGUID:(NSString *)arg1;
 - (void)setFocusAlbumGUID:(NSString *)arg1;
 - (NSDictionary *)serverSideConfiguration;
-- (int)assetsInDownloadQueueCount;
 - (void)retrieveAssetsFromAssetCollectionsWithGUIDs:(NSArray *)arg1 assetTypeFlags:(int)arg2;
 - (void)retrieveAssets:(NSArray *)arg1 inAlbumWithGUID:(NSString *)arg2;
 - (void)forgetEverything;

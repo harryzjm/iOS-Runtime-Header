@@ -11,6 +11,7 @@
 @class NSString;
 
 @interface CSCoverSheetViewController (SpringBoardGlue) <SBCoverSheetSlidingViewControllerContentViewController>
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool contentOccludesBackground; // @dynamic contentOccludesBackground;

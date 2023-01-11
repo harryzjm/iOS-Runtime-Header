@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface VUIMetricsMediaEvent : NSObject
 {
 }
 
++ (id)_metricsDataFromTVPMediaItem:(id)arg1 isBackground:(_Bool)arg2 isAmbient:(_Bool)arg3;
++ (id)clickMetricsDataFromTVPMediaItem:(id)arg1;
++ (void)recordPlayOfTVPMediaItem:(id)arg1;
++ (void)recordBGVideoPlayOfTVPMediaItem:(id)arg1 isAmbient:(_Bool)arg2;
 + (void)recordPunchout:(id)arg1 isUrlForPlay:(_Bool)arg2;
 + (void)recordPlay:(id)arg1 isLaunchingExtras:(_Bool)arg2;
 

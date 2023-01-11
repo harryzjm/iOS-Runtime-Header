@@ -10,6 +10,7 @@
 {
 }
 
+- (id)searchDomainIdentifier;
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
 - (id)predicateForNotes;

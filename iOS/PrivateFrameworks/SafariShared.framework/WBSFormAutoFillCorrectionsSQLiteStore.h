@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariShared/WBSCrowdsourcedFeedbackWhitelist-Protocol.h>
+#import <SafariShared/WBSCrowdsourcedFeedbackAllowList-Protocol.h>
 #import <SafariShared/WBSFormAutoFillCorrectionsStore-Protocol.h>
 
 @class NSString, NSURL, WBSCrowdsourcedFeedbackDomainNormalizer, WBSSQLiteDatabase;
 @protocol OS_dispatch_queue;
 
-@interface WBSFormAutoFillCorrectionsSQLiteStore : NSObject <WBSFormAutoFillCorrectionsStore, WBSCrowdsourcedFeedbackWhitelist>
+@interface WBSFormAutoFillCorrectionsSQLiteStore : NSObject <WBSFormAutoFillCorrectionsStore, WBSCrowdsourcedFeedbackAllowList>
 {
     NSURL *_localDatabaseURL;
     NSURL *_parsecDatabaseURL;
@@ -35,8 +35,8 @@
 - (_Bool)_setLocalClassification:(id)arg1 forFieldWithFingerprint:(id)arg2 onDomain:(id)arg3 dateReclassified:(id)arg4;
 - (_Bool)_setParsecMetadataStringValue:(id)arg1 forKey:(id)arg2;
 - (id)_parsecMetadataStringValueForKey:(id)arg1;
-- (_Bool)_setDomain:(id)arg1 isWhitelistedForFeedback:(_Bool)arg2;
-- (_Bool)_replaceDomainWhitelistWithDomains:(id)arg1 retrievalURLString:(id)arg2;
+- (_Bool)_setDomain:(id)arg1 isAllowListedForFeedback:(_Bool)arg2;
+- (_Bool)_replaceDomainAllowListWithDomains:(id)arg1 retrievalURLString:(id)arg2;
 - (_Bool)_tryToPerformTransactionOnDatabase:(id)arg1 inBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_isDatabaseOpen:(id)arg1;
 - (void)_closeDatabases;
@@ -62,11 +62,11 @@
 - (void)replaceCrowdsourcedCorrectionSetsWithCorrectionSets:(id)arg1 retrievalURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setLastCrowdsourcedCorrectionsRetrievalURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getLastCrowdsourcedCorrectionsRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)setLastWhitelistRetrievalURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getLastWhitelistRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)setDomain:(id)arg1 isWhitelistedForFeedback:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)getWhitelistStatusForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)replaceDomainWhitelistWithDomains:(id)arg1 retrievalURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setLastAllowListRetrievalURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getLastAllowListRetrievalURLStringWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setDomain:(id)arg1 isAllowListedForFeedback:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getAllowListStatusForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)replaceDomainAllowListWithDomains:(id)arg1 retrievalURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)closeDatabase;
 - (id)init;
 - (id)initWithLocalDatabaseURL:(id)arg1 parsecDatabaseURL:(id)arg2;

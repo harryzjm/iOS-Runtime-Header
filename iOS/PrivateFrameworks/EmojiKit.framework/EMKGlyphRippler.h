@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 @interface EMKGlyphRippler : NSObject
 {
     NSArray *_colors;
+    NSArray *_darkModeColors;
     NSArray *_shadowColors;
+    NSArray *_darkModeShadowColors;
     NSArray *_scales;
     NSArray *_offsets;
     double _startTime;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _postFrames;
     unsigned long long _delayFrames;
     _Bool _reduceMotion;
+    _Bool _darkMode;
 }
 
 - (void).cxx_destruct;
@@ -36,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)currentTimeIndex;
 - (id)init;
 - (void)start;
+- (void)startWithDarkMode:(_Bool)arg1;
 - (void)generateValues;
 
 @end

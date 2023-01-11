@@ -6,9 +6,11 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBFolder;
+@class NSString, SBFolder;
 
 @protocol SBIconStateUnarchiveContext <NSObject>
+- (void)_noteWidgetUniqueIdentifierWasUnarchived:(NSString *)arg1;
+- (_Bool)_isWidgetUniqueIdentifierAlreadyUnarchived:(NSString *)arg1;
 - (void)_noteNodeIdentifierWasUnarchived:(id)arg1;
 - (_Bool)_isNodeIdentifierAlreadyUnarchived:(id)arg1;
 - (void)_noteSignificantDeviation;

@@ -16,6 +16,9 @@
     PDFAnnotationPrivateVars *_private;
 }
 
++ (id)PresentableStringForAnnotationKey:(id)arg1;
++ (id)PDFKitAnnotationUndoManagerDisplayNames;
++ (id)PDFAnnotationKeysForRedactionDiscoverability;
 + (id)PDFAnnotationKeysWithStringValues;
 + (id)PDFMarkupStyleLabels;
 + (id)PDFTextBorderColors;
@@ -37,6 +40,7 @@
 + (id)nameForLineStyle:(long long)arg1;
 + (long long)lineStyleFromName:(id)arg1;
 - (void).cxx_destruct;
+- (void)presentRedactionDiscoverabilityAlertWithOldValue:(id)arg1 forAnnotationKey:(id)arg2;
 - (void)discardTextStorageAndLayoutManager;
 - (id)_getAttributedStringForTextWidget;
 - (void)createTextStorageAndLayoutManager;
@@ -124,6 +128,7 @@
 - (void)addQuadPointsToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addQuaddingToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addDefaultAppearanceDictionaryRef:(struct __CFDictionary *)arg1;
+- (void)addContentsToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addBorderStyleToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addBorderToDictionaryRef:(struct __CFDictionary *)arg1;
 - (void)addAppearanceForKey:(struct __CFString *)arg1 toDictionaryRef:(struct __CFDictionary *)arg2;
@@ -139,6 +144,12 @@
 - (void)addPageReferenceToDictionaryRef:(struct __CFDictionary *)arg1;
 - (id)_accessibilityTypeString;
 - (_Bool)isTextWidget;
+- (_Bool)intersectsWithRedactionPath;
+- (void)highlightRedaction:(_Bool)arg1;
+- (void)setIsTransparent:(_Bool)arg1;
+- (_Bool)isTransparent;
+- (_Bool)_isTextMarkupRedaction;
+- (_Bool)isRedaction;
 - (_Bool)isMarkupAnnotationSubtype;
 - (void)setParent:(id)arg1;
 - (id)parent;
@@ -204,6 +215,7 @@
 - (_Bool)isNoteAnnotation;
 - (_Bool)isTextMarkupAnnotation;
 - (_Bool)isTextMarkupOrNoteAnnotation;
+- (struct CGPath *)quadPointsPath;
 - (void)setQuadPointsForIndexSet:(id)arg1 withUndo:(_Bool)arg2;
 - (id)indexSetForQuadPoints;
 - (_Bool)noteContainsPoint:(struct CGPoint)arg1;

@@ -10,30 +10,34 @@
 #import <ChatKit/UITableViewDataSource-Protocol.h>
 #import <ChatKit/UITableViewDelegate-Protocol.h>
 
-@class CKStickerDetailNavigationBar, NSArray, NSString, UIButton, UITableView, UIVisualEffectView;
+@class NSArray, NSString, UITableView, UIVisualEffectView;
 @protocol CKStickerDetailViewControllerDelegate;
 
 @interface CKStickerDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CKAdaptivePresentedControllerProtocol>
 {
+    _Bool _wantsWindowedPresentation;
+    _Bool _preserveModalPresentationStyle;
     id <CKStickerDetailViewControllerDelegate> _delegate;
     NSArray *_chatItems;
     UITableView *_tableView;
-    CKStickerDetailNavigationBar *_navigationBar;
     UIVisualEffectView *_visualEffectView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
-@property(retain, nonatomic) CKStickerDetailNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) NSArray *chatItems; // @synthesize chatItems=_chatItems;
 @property(nonatomic) __weak id <CKStickerDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool preserveModalPresentationStyle; // @synthesize preserveModalPresentationStyle=_preserveModalPresentationStyle;
+@property(nonatomic) _Bool wantsWindowedPresentation; // @synthesize wantsWindowedPresentation=_wantsWindowedPresentation;
+- (void)stickerDetailViewControllerCloseButtonPressed:(id)arg1;
 - (void)_viewButtonTapped:(id)arg1;
+- (id)_deleteSwipeActionForIndexPath:(id)arg1;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (_Bool)constrainToPresentingVCBounds;
-- (_Bool)preserveModalPresentationStyle;
-- (_Bool)wantsWindowedPresentation;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
+- (void)deleteStickerAtIndexPath:(id)arg1;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -42,13 +46,13 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)loadView;
-@property(readonly, nonatomic) UIButton *closeButton;
 - (id)initWithStickerChatItems:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool shouldHidePresentingWindow;
 @property(readonly) Class superclass;
 
 @end

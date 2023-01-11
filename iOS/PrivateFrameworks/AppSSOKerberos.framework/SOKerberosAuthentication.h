@@ -16,12 +16,15 @@
     LAContext *_myLAContext;
 }
 
++ (void)saveValuesForPlugins:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) LAContext *myLAContext; // @synthesize myLAContext=_myLAContext;
 @property _Bool siteDiscoveryInProgress; // @synthesize siteDiscoveryInProgress=_siteDiscoveryInProgress;
 @property(retain, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
-- (void).cxx_destruct;
+- (void)triggerVPNIfNeededUsingRealm:(id)arg1 bundleIdentifier:(id)arg2 auditToken:(id)arg3;
 - (unsigned long long)mapErrorToKnownError:(id)arg1;
+- (_Bool)changePasswordWithContext:(id)arg1 withError:(id *)arg2;
 - (unsigned long long)findExistingCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
 - (unsigned long long)createNewCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
 - (void)determineSiteCodeUsingDispatchGroup:(id)arg1 andBundleIdentifier:(id)arg2 networkFingerprint:(id)arg3;

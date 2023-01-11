@@ -11,6 +11,7 @@
 @protocol SearchUICardViewDelegate <NSObject>
 
 @optional
+- (void)cardViewController:(UIViewController *)arg1 preferredContentSizeDidChange:(struct CGSize)arg2 animated:(_Bool)arg3;
 - (void)presentViewController:(UIViewController *)arg1;
 - (UIViewController *)customViewControllerForCardSection:(SFCardSection *)arg1;
 @end

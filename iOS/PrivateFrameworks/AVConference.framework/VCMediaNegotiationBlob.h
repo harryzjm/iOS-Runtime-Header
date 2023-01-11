@@ -102,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)printMomentsSettingsWithLogFile:(void *)arg1;
 - (void)printCaptionsSettingsWithLogFile:(void *)arg1;
 - (void)printBandwidthSettingsWithLogFile:(void *)arg1;
+- (void)formatBandwidthConfig:(int)arg1 maxBanxwidth:(unsigned int)arg2 bandwidthString:(id)arg3;
 
 @end
 

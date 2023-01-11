@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol VNModelFile;
-
 __attribute__((visibility("hidden")))
 @interface VNFaceLandmarkDetectorRevision1
 {
@@ -13,13 +11,12 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<vision::mod::LandmarkDetectorERT> mFaceLandmarkMouthRefinerImpl;
     struct shared_ptr<vision::mod::LandmarkDetectorERT> mFaceLandmarkRightEyeRefinerImpl;
     struct shared_ptr<vision::mod::LandmarkDetectorERT> mFaceLandmarkLeftEyeRefinerImpl;
-    _Bool modelFilesWereMemmapped;
-    id <VNModelFile> mCoreLandmarkModelFileHandle;
-    id <VNModelFile> mLandmarkRefinerModelFileHandle;
+    _Bool _modelFilesWereMemmapped;
 }
 
 + (void)dumpDebugIntermediatesWithImageBuffer:(id)arg1 lumaIntermediate:(struct __CVBuffer *)arg2 alignedBBoxInLumaIntermediateCoordinates:(struct _Geometry2D_rect2D_)arg3 meanShapeInLumaIntermediate:(const vector_f48c7054 *)arg4 landmarkPointsInLumaIntermediate:(const vector_f48c7054 *)arg5;
-+ (_Bool)shouldDumpDebugIntermediates;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -29,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (_Bool)_loadEspressoModelWithConfigurationOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)loadRefinersAndReturnError:(id *)arg1;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end
 

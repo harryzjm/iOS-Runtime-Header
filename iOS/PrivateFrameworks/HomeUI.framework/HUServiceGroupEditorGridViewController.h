@@ -9,11 +9,13 @@
 
 @interface HUServiceGroupEditorGridViewController
 {
+    id <HUServiceGroupEditorGridViewControllerDelegate> _delegate;
     HFServiceGroupBuilder *_serviceGroupBuilder;
 }
 
-@property(readonly, nonatomic) HFServiceGroupBuilder *serviceGroupBuilder; // @synthesize serviceGroupBuilder=_serviceGroupBuilder;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HFServiceGroupBuilder *serviceGroupBuilder; // @synthesize serviceGroupBuilder=_serviceGroupBuilder;
+@property(nonatomic) __weak id <HUServiceGroupEditorGridViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_serviceVendorItemForItem:(id)arg1;
 - (id)layoutOptionsForSection:(long long)arg1;
 - (void)didDeselectItem:(id)arg1;
@@ -24,7 +26,6 @@
 - (id)initWithServiceGridItemManager:(id)arg1;
 
 // Remaining properties
-@property(nonatomic) __weak id <HUServiceGroupEditorGridViewControllerDelegate> delegate;
 @property(retain, nonatomic) HUServiceGroupEditorGridItemManager *itemManager; // @dynamic itemManager;
 
 @end

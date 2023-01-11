@@ -11,9 +11,6 @@
 + (unsigned char)associatedMessageContentTypeFromCKMediaType:(int)arg1;
 - (void)__ck_setSendReadReceipts:(_Bool)arg1;
 - (_Bool)__ck_sendReadReceipts;
-- (void)__ck_setMuteUntilDate:(id)arg1;
-- (id)__ck_muteUntilDate;
-- (_Bool)__ck_isMuted;
 - (void)__ck_saveWatermark;
 - (void)__ck_updateWatermarkToMessageID:(long long)arg1 date:(id)arg2;
 - (id)__ck_watermarkDate;

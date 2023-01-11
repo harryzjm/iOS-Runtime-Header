@@ -23,6 +23,7 @@
 @property(nonatomic) _Bool requiresAssert;
 @property(nonatomic) _Bool supportsResolveRequests;
 @property(nonatomic) _Bool supportsBrowseRequests;
+@property(nonatomic) _Bool supportsListenRequests;
 @property(nonatomic, getter=isNexusProvider) _Bool nexusProvider;
 @property(nonatomic, getter=isNetworkProvider) _Bool networkProvider;
 @property(nonatomic, getter=isSpecificUseOnly) _Bool specificUseOnly;

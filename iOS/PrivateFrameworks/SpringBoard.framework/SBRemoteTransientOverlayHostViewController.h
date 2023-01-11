@@ -56,10 +56,12 @@
     long long _preferredUnlockedGestureDismissalStyle;
     long long _preferredBackgroundStyle;
     NSNumber *_preferredSceneDeactivationReasonValue;
+    _UILegibilitySettings *_preferredStatusBarLegibilitySettings;
 }
 
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldPendAlertItems; // @synthesize shouldPendAlertItems=_shouldPendAlertItems;
 @property(readonly, nonatomic) _Bool shouldDisableSiri; // @synthesize shouldDisableSiri=_shouldDisableSiri;
 @property(readonly, nonatomic) _Bool shouldDisableInteractiveScreenshotGesture; // @synthesize shouldDisableInteractiveScreenshotGesture=_shouldDisableInteractiveScreenshotGesture;
@@ -72,6 +74,7 @@
 @property(nonatomic) _Bool shouldIgnoreContentOverlayInsetUpdates; // @synthesize shouldIgnoreContentOverlayInsetUpdates=_shouldIgnoreContentOverlayInsetUpdates;
 @property(nonatomic) _Bool allowsCustomPresentationDismissalAnimations; // @synthesize allowsCustomPresentationDismissalAnimations=_allowsCustomPresentationDismissalAnimations;
 @property(readonly, nonatomic) _Bool shouldDisableOrientationUpdates; // @synthesize shouldDisableOrientationUpdates=_shouldDisableOrientationUpdates;
+@property(readonly, copy, nonatomic) _UILegibilitySettings *preferredStatusBarLegibilitySettings; // @synthesize preferredStatusBarLegibilitySettings=_preferredStatusBarLegibilitySettings;
 @property(readonly, nonatomic) int preferredStatusBarStyleOverridesToCancel; // @synthesize preferredStatusBarStyleOverridesToCancel=_preferredStatusBarStyleOverridesToCancel;
 @property(readonly, copy, nonatomic) NSNumber *preferredSceneDeactivationReasonValue; // @synthesize preferredSceneDeactivationReasonValue=_preferredSceneDeactivationReasonValue;
 @property(readonly, nonatomic) long long preferredBackgroundStyle; // @synthesize preferredBackgroundStyle=_preferredBackgroundStyle;
@@ -84,7 +87,6 @@
 @property(readonly, nonatomic) _Bool allowsStackingOverlayContentAbove; // @synthesize allowsStackingOverlayContentAbove=_allowsStackingOverlayContentAbove;
 @property(nonatomic, getter=isActivatingForSiri) _Bool activatingForSiri; // @synthesize activatingForSiri=_activatingForSiri;
 @property(nonatomic) __weak id <SBRemoteTransientOverlayHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_updatePreferredGestureDismissalStyles;
 - (void)_updatePreferredBackgroundStyleWithAnimationSettings:(id)arg1;
 - (void)_updateContentOpaqueProperty;
@@ -96,7 +98,6 @@
 - (void)prepareForActivationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePictureInPictureDidBegin;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-@property(readonly, copy, nonatomic) _UILegibilitySettings *preferredStatusBarLegibilitySettings;
 - (int)_preferredStatusBarVisibility;
 - (void)_updateContentOverlayInsetsFromParentIfNecessary;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

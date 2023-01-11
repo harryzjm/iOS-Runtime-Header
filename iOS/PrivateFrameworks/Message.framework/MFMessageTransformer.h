@@ -8,23 +8,25 @@
 
 #import <Message/EFLoggable-Protocol.h>
 
-@class MFMailMessageLibrary, MFMailboxProvider, NSString;
+@class EMBlockedSenderManager, MFMailboxProvider, NSString;
+@protocol EMUserProfileProvider;
 
 @interface MFMessageTransformer : NSObject <EFLoggable>
 {
-    MFMailMessageLibrary *_library;
     MFMailboxProvider *_mailboxProvider;
+    id <EMUserProfileProvider> _userProfileProvider;
+    EMBlockedSenderManager *_blockedSenderManager;
 }
 
 + (id)log;
-@property(retain, nonatomic) MFMailboxProvider *mailboxProvider; // @synthesize mailboxProvider=_mailboxProvider;
-@property(retain, nonatomic) MFMailMessageLibrary *library; // @synthesize library=_library;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
+@property(readonly, nonatomic) id <EMUserProfileProvider> userProfileProvider; // @synthesize userProfileProvider=_userProfileProvider;
+@property(readonly, nonatomic) MFMailboxProvider *mailboxProvider; // @synthesize mailboxProvider=_mailboxProvider;
 - (id)transformLegacyMailMessages:(id)arg1 mailboxScope:(id)arg2;
 - (id)_transformLegacyMailMessage:(id)arg1 mailboxScope:(id)arg2 duplicateInfo:(id)arg3 loaderBlock:(CDUnknownBlockType)arg4;
 - (id)transformLegacyMailMessage:(id)arg1 mailboxScope:(id)arg2 loaderBlock:(CDUnknownBlockType)arg3;
-- (id)transformLegacyMailMessage:(id)arg1 mailboxScope:(id)arg2;
-- (id)initWithLibrary:(id)arg1 mailboxProvider:(id)arg2;
+- (id)initWithMailboxProvider:(id)arg1 userProfileProvider:(id)arg2 blockedSenderManager:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

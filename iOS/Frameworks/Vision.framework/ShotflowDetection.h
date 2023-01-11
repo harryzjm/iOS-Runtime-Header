@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float confidence; // @synthesize confidence=_confidence;
 @property(nonatomic) struct CGRect defaultBox; // @synthesize defaultBox=_defaultBox;
 @property(nonatomic) struct CGRect box; // @synthesize box=_box;
+- (id)description;
 - (_Bool)isOverlappingLowMergeDet:(id)arg1 withOverlapThreshold:(float)arg2 withMergeCountDelta:(int)arg3;
 - (_Bool)isOverlappingSmallFace:(id)arg1 withOverlapThreshold:(float)arg2 withSizeRatio:(float)arg3;
 - (float)intersectionOverArea:(id)arg1;

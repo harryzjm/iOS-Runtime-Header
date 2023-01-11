@@ -10,24 +10,18 @@
 #import <UIKitCore/UITableViewDataSource-Protocol.h>
 #import <UIKitCore/UITableViewDelegate-Protocol.h>
 
-@class CALayer, NSMutableArray, NSString, UIColor, UIImageView, UISelectionFeedbackGenerator, UIView, _UIPickerViewTestParameters;
+@class CALayer, NSMutableArray, NSString, UIColor, UISelectionFeedbackGenerator, UIView, _UIPickerViewTestParameters;
 @protocol UIPickerViewDataSource, UIPickerViewDelegate;
 
 @interface UIPickerView <UIPickerViewScrollTesting, UIPickerTableViewContainerDelegate, UITableViewDelegate, UITableViewDataSource, NSCoding>
 {
     NSMutableArray *_tables;
-    UIView *_topFrame;
-    NSMutableArray *_dividers;
-    NSMutableArray *_selectionBars;
     id <UIPickerViewDataSource> _dataSource;
     id <UIPickerViewDelegate> _delegate;
-    UIView *_backgroundView;
     long long _numberOfComponents;
-    UIImageView *_topGradient;
-    UIImageView *_bottomGradient;
     UIView *_foregroundView;
     CALayer *_maskGradientLayer;
-    UIView *_topLineView;
+    UIView *_topLineOrFillView;
     UIView *_bottomLineView;
     struct {
         unsigned int needsLayout:1;
@@ -53,6 +47,7 @@
     _UIPickerViewTestParameters *_currentTestParameters;
     _Bool _magnifierEnabled;
     _Bool _enabled;
+    long long _magnifierStyle;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
     UIColor *_magnifierLineColor;
 }
@@ -63,13 +58,15 @@
 + (struct CGSize)defaultSizeForTraits:(id)arg1;
 + (struct CGSize)sizeForMainScreenTraitsThatFits:(struct CGSize)arg1;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 forTraits:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor; // @synthesize magnifierLineColor=_magnifierLineColor;
 @property(retain, nonatomic, getter=_selectionFeedbackGenerator, setter=_setSelectionFeedbackGenerator:) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
+@property(nonatomic, getter=_magnifierStyle, setter=_setMagnifierStyle:) long long magnifierStyle; // @synthesize magnifierStyle=_magnifierStyle;
 @property(nonatomic, getter=_enabled, setter=_setEnabled:) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic, setter=_setMagnifierEnabled:) _Bool _magnifierEnabled; // @synthesize _magnifierEnabled;
 @property(nonatomic) __weak id <UIPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <UIPickerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (_Bool)_canHostViewControllerContentScrollView;
 - (id)_scalarStatisticsForUserValueChangedEvent;
 - (void)_willPlayClickSound;
@@ -118,6 +115,7 @@
 - (id)_createTableWithFrame:(struct CGRect)arg1 forComponent:(long long)arg2;
 - (id)_createColumnWithTableFrame:(struct CGRect)arg1 rowHeight:(double)arg2;
 - (void)_addMagnifierLinesForRowHeight:(double)arg1;
+- (void)_addHighlightRectForRowHeight:(double)arg1;
 - (double)_delegateRowHeightForComponent:(long long)arg1;
 - (double)_delegateWidthForComponent:(long long)arg1 ofCount:(int)arg2 withSizeLeft:(double)arg3;
 - (id)_delegateAttributedTitleForRow:(long long)arg1 forComponent:(long long)arg2;
@@ -132,8 +130,6 @@
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
-- (id)createDividerWithFrame:(struct CGRect)arg1;
-- (id)_createViewForPickerPiece:(long long)arg1;
 - (struct CGRect)_selectionBarRectForHeight:(double)arg1;
 - (id)imageForPickerPiece:(long long)arg1;
 - (id)_popoverSuffix;

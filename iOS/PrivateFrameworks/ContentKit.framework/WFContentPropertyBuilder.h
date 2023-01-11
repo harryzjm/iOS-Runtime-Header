@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber, NSString, NSUnit;
+@class NSArray, NSNumber, NSString;
 @protocol WFPropertyListObject;
 
 @interface WFContentPropertyBuilder : NSObject
@@ -31,14 +31,15 @@
     NSNumber *_tense;
     NSNumber *_timeUnits;
     NSNumber *_comparableUnits;
-    NSUnit *_measurementUnit;
+    NSString *_measurementUnitType;
     NSString *_displayName;
 }
 
 + (id)block:(CDUnknownBlockType)arg1 name:(id)arg2 class:(Class)arg3;
 + (id)keyPath:(id)arg1 name:(id)arg2 class:(Class)arg3;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property(copy, nonatomic) NSUnit *measurementUnit; // @synthesize measurementUnit=_measurementUnit;
+@property(copy, nonatomic) NSString *measurementUnitType; // @synthesize measurementUnitType=_measurementUnitType;
 @property(copy, nonatomic) NSNumber *comparableUnits; // @synthesize comparableUnits=_comparableUnits;
 @property(copy, nonatomic) NSNumber *timeUnits; // @synthesize timeUnits=_timeUnits;
 @property(copy, nonatomic) NSNumber *tense; // @synthesize tense=_tense;
@@ -59,10 +60,9 @@
 @property(copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property(copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property(copy, nonatomic) id <WFPropertyListObject> userInfo; // @synthesize userInfo=_userInfo;
-- (void).cxx_destruct;
 - (id)build;
 - (id)displayName:(id)arg1;
-- (id)measurementUnit:(id)arg1;
+- (id)measurementUnitType:(id)arg1;
 - (id)comparableUnits:(unsigned long long)arg1;
 - (id)timeUnits:(unsigned long long)arg1;
 - (id)tense:(unsigned long long)arg1;

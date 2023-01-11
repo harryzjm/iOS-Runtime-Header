@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+@class UIImageView, UILabel, WFHomeScreenIcon;
 
-@class UIImageView, UILabel;
-
-@interface WFAddToHomeIconPreviewCell : UITableViewCell
+@interface WFAddToHomeIconPreviewCell
 {
     UIImageView *_iconImageView;
     UILabel *_iconLabel;
+    WFHomeScreenIcon *_icon;
 }
 
 + (double)defaultRowHeight;
+- (void).cxx_destruct;
+@property(retain, nonatomic) WFHomeScreenIcon *icon; // @synthesize icon=_icon;
 @property(nonatomic) __weak UILabel *iconLabel; // @synthesize iconLabel=_iconLabel;
 @property(nonatomic) __weak UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
-- (void).cxx_destruct;
+- (void)redrawIcon;
 - (void)configureIcon:(id)arg1;
 - (void)configureName:(id)arg1;
 - (void)configureWithName:(id)arg1 icon:(id)arg2;

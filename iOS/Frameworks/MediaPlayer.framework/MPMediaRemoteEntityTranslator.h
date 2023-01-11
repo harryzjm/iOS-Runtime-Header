@@ -4,34 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSMutableDictionary;
-
-@interface MPMediaRemoteEntityTranslator : NSObject
+@interface MPMediaRemoteEntityTranslator
 {
-    NSMutableDictionary *_propertiesToTranslators;
-    NSMutableDictionary *_relationshipsToTranslators;
-    Class _MPModelClass;
 }
 
-+ (id)translatorForMPModelClass:(Class)arg1;
-+ (id)_translatorForMPModelClass:(Class)arg1;
-+ (id)_translatorForMPModelClass:(Class)arg1 create:(_Bool)arg2;
-@property(readonly, nonatomic) Class MPModelClass; // @synthesize MPModelClass=_MPModelClass;
-- (void).cxx_destruct;
-- (id)_propertyTranslatorForKeyPath:(id)arg1;
-- (id)_valueForKeyPath:(id)arg1 forContentItem:(id)arg2 artworkGenerator:(id)arg3;
-- (id)_sectionGenericObjectPropertySetForContentItem:(id)arg1 propertySet:(id)arg2;
-- (id)identifiersForContentItem:(id)arg1;
-- (id)objectForPropertySet:(id)arg1 contentItem:(id)arg2 artworkGenerator:(id)arg3 baseTranslator:(id)arg4 prependKeyPath:(id)arg5;
-- (id)objectForPropertySet:(id)arg1 contentItem:(id)arg2 artworkGenerator:(id)arg3;
-- (id)sectionObjectForPropertySet:(id)arg1 contentItem:(id)arg2 artworkGenerator:(id)arg3;
++ (void)buildSchemaIfNeeded;
 - (void)mapRelationshipKey:(id)arg1 toModelClass:(Class)arg2;
 - (void)mapPropertyKey:(id)arg1 toValueTransformer:(CDUnknownBlockType)arg2;
-- (void)mapPropertyKey:(id)arg1 toArtworkValueTransformer:(CDUnknownBlockType)arg2;
+- (void)mapPropertyKey:(id)arg1 toDeviceSpecificUserInfoKey:(id)arg2;
+- (void)mapPropertyKey:(id)arg1 toUserInfoKey:(id)arg2;
+- (void)mapArtworkPropertyKey:(id)arg1;
 - (void)mapPropertyKey:(id)arg1 toMPContentItemSelector:(SEL)arg2;
 - (void)mapIdentifierCreationBlock:(CDUnknownBlockType)arg1;
+- (id)sectionObjectForPropertySet:(id)arg1 contentItem:(id)arg2 context:(id)arg3;
+- (id)objectForPropertySet:(id)arg1 contentItem:(id)arg2 context:(id)arg3;
+- (id)identifiersForContentItem:(id)arg1;
 
 @end
 

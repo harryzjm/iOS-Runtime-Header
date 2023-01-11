@@ -6,27 +6,25 @@
 
 #import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
-@class SBFolderView, SBIconLayoutOverrideStrategy, UIView;
+@class SBFolderView, UIView;
 
 @interface SBFolderContainerView : SBFTouchPassThroughView
 {
-    double _statusBarHeight;
-    SBIconLayoutOverrideStrategy *_iconLayoutOverrideStrategy;
     SBFolderView *_folderView;
     SBFolderContainerView *_childFolderContainerView;
     UIView *_backgroundView;
+    double _statusBarHeight;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) SBFolderView *folderView; // @synthesize folderView=_folderView;
-@property(retain, nonatomic) SBIconLayoutOverrideStrategy *iconLayoutOverrideStrategy; // @synthesize iconLayoutOverrideStrategy=_iconLayoutOverrideStrategy;
-@property(nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (struct CGRect)_frameForFolderView:(id)arg1;
 @property(retain, nonatomic) SBFolderContainerView *childFolderContainerView;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFolderView:(id)arg1 statusBarHeight:(double)arg2;
+- (id)initWithFolderView:(id)arg1;
 
 @end
 

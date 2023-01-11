@@ -11,10 +11,10 @@
 #import <CloudPhotoLibrary/CPLEngineForceSyncTaskDelegate-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineSyncTaskDelegate-Protocol.h>
 
-@class CPLBackgroundDownloadsTask, CPLCleanupTask, CPLDerivativesFilter, CPLEngineForceSyncTask, CPLEngineLibrary, CPLMinglePulledChangesTask, CPLPlatformObject, CPLPullFromTransportTask, CPLPullScopesTask, CPLPushToTransportTask, CPLScopeUpdateTask, CPLSyncSession, CPLTransportUpdateTask, NSError, NSMutableArray, NSString;
+@class CPLDerivativesFilter, CPLEngineForceSyncTask, CPLEngineLibrary, CPLPlatformObject, CPLSyncSession, CPLSyncStep, NSError, NSMutableArray, NSString;
 @protocol CPLEngineStoreUserIdentifier, CPLEngineTransportSetupTask, OS_dispatch_queue;
 
-@interface CPLEngineSyncManager : NSObject <CPLEngineSyncTaskDelegate, CPLAbstractObject, CPLEngineComponent, CPLEngineForceSyncTaskDelegate>
+@interface CPLEngineSyncManager : NSObject <CPLAbstractObject, CPLEngineComponent, CPLEngineSyncTaskDelegate, CPLEngineForceSyncTaskDelegate>
 {
     id <CPLEngineStoreUserIdentifier> _transportUserIdentifier;
     CPLDerivativesFilter *_derivativesFilter;
@@ -26,15 +26,7 @@
     CPLSyncSession *_session;
     NSObject<OS_dispatch_queue> *_lock;
     NSError *_lastError;
-    CPLCleanupTask *_cleanupTask;
-    CPLTransportUpdateTask *_transportUpdateTask;
-    CPLPullScopesTask *_pullScopesTask;
-    CPLScopeUpdateTask *_scopeUpdateTask;
-    CPLPushToTransportTask *_pushHighPriorityTask;
-    CPLPushToTransportTask *_pushTask;
-    CPLPullFromTransportTask *_pullTask;
-    CPLMinglePulledChangesTask *_mingleTask;
-    CPLBackgroundDownloadsTask *_backgroundDownloadsTask;
+    CPLSyncStep *_currentStep;
     CPLEngineForceSyncTask *_currentForceSyncTask;
     CPLEngineForceSyncTask *_pendingForceSyncTask;
     unsigned long long _shouldRestartSessionFromState;
@@ -43,6 +35,7 @@
     _Bool _boostPriority;
     _Bool _hasOverridenBudgets;
     _Bool _disabledSchedulerForForceSyncTask;
+    NSMutableArray *_forcedSyncHistory;
     _Bool _shouldTryToMingleImmediately;
     CPLPlatformObject *_platformObject;
     CPLEngineLibrary *_engineLibrary;
@@ -50,78 +43,40 @@
 }
 
 + (id)platformImplementationProtocol;
++ (id)stepOrSyncTaskForState:(unsigned long long)arg1 syncManager:(id)arg2 session:(id)arg3;
 + (unsigned int)qualityOfServiceForForcedTasks;
 + (unsigned int)qualityOfServiceForSyncSessions;
 + (id)shortDescriptionForState:(unsigned long long)arg1;
 + (id)descriptionForState:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldTryToMingleImmediately; // @synthesize shouldTryToMingleImmediately=_shouldTryToMingleImmediately;
 @property(nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
-- (void).cxx_destruct;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)componentName;
 @property(readonly, nonatomic) NSError *lastError;
+- (id)lastErrorUnlocked;
 - (void)endClientWork:(id)arg1;
 - (void)beginClientWork:(id)arg1;
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)task:(id)arg1 didProgress:(float)arg2 userInfo:(id)arg3;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;
-- (_Bool)_didFinishBackgroundDownloadsTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (float)_progressForBackgroundDownloadsTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForBackgroundDownloads;
-- (_Bool)_launchNecessaryTasksForBackgroundDownloads;
-- (id)_descriptionForBackgroundDownloadsTasks;
-- (_Bool)_didFinishPullTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (void)_releasePowerAssertionForMingleTaskIfNecessary;
-- (void)_retainPowerAssertionForMingleTaskIfNecessary;
-- (float)_progressForPullTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForPull;
-- (_Bool)_launchNecessaryTasksForPull;
-- (id)_descriptionForPullTasks;
-- (_Bool)_didFinishPushTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (float)_progressForPushTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForPush:(_Bool)arg1;
-- (_Bool)_launchNecessaryTasksForPush;
-- (id)_descriptionForPushTasks;
-- (_Bool)_didFinishPushHighPriorityTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (float)_progressForPushHighPriorityTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForPushHighPriority:(_Bool)arg1;
-- (_Bool)_launchNecessaryTasksForPushHighPriority;
-- (id)_descriptionForPushHighPriorityTasks;
-- (_Bool)_didFinishScopeUpdateTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (float)_progressForScopeUpdateTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForScopeUpdate;
-- (_Bool)_launchNecessaryTasksForScopeUpdate;
-- (id)_descriptionForScopeUpdateTasks;
-- (_Bool)_didFinishTransportUpdateTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (float)_progressForTransportUpdateTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForTransportUpdate;
-- (_Bool)_launchNecessaryTasksForTransportUpdate;
-- (id)_descriptionForTransportUpdateTasks;
-- (_Bool)_didFinishPullScopesTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (float)_progressForPullScopesTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForPullScopes;
-- (_Bool)_launchNecessaryTasksForPullScopes;
-- (id)_descriptionForPullScopesTasks;
-- (_Bool)_didFinishCleanupTask:(id)arg1 withError:(id)arg2 shouldStop:(_Bool *)arg3;
-- (float)_progressForCleanupTask:(id)arg1 progress:(float)arg2;
-- (void)_cancelAllTasksForCleanup;
-- (_Bool)_launchNecessaryTasksForCleanup;
-- (id)_descriptionForCleanupTasks;
 - (_Bool)_didFinishSetupTaskWithError:(id)arg1 shouldStop:(_Bool *)arg2;
 - (void)_cancelAllTasksForSetup;
 - (_Bool)_launchSetupTask;
 - (id)_descriptionForSetupTasks;
 - (void)_launchForceSyncTaskIfNecessary;
 - (void)forceSyncTaskHasBeenCancelled:(id)arg1;
-- (void)launchForceSyncTaskWhenPossible:(id)arg1;
+- (void)forceSyncTaskHasBeenLaunched:(id)arg1;
+- (void)_forceSyncTaskDidFinishWithError:(id)arg1;
+- (void)_discardPendingForceSyncTaskWithError:(id)arg1;
 - (_Bool)_checkForegroundAtLaunchForForceSyncTask;
 - (void)_reenableSchedulerForForceSyncTaskIfNecessary;
-- (void)_disabledSchedulerForForceSyncTaskIfNecessary;
-- (_Bool)_prepareAndLaunchSyncTask:(id *)arg1;
+- (void)_disableSchedulerForForceSyncTaskIfNecessary;
+- (_Bool)prepareAndLaunchSyncTaskUnlocked:(id)arg1;
 - (void)setBoostPriority:(_Bool)arg1;
 - (void)_overrideBudgetsIfNeeded;
 - (void)setSyncSessionShouldBeForeground:(_Bool)arg1;
@@ -142,8 +97,10 @@
 - (void)_cancelAllTasksLockedDeferringPushTaskCancellationIfCurrentlyUploadingForeground:(_Bool)arg1;
 - (void)_cancelAllTasksLocked;
 - (void)_resetErrorForSyncSession;
-- (void)_setErrorForSyncSession:(id)arg1;
+- (void)setErrorForSyncSessionUnlocked:(id)arg1;
+- (void)_recordForcedSyncTask:(id)arg1 discarded:(_Bool)arg2 error:(id)arg3;
 - (id)initWithEngineLibrary:(id)arg1;
+- (void)_dispatchAfter:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (void)dispatchForcedTaskBlock:(CDUnknownBlockType)arg1;
 - (void)dispatchSyncBlock:(CDUnknownBlockType)arg1;
 

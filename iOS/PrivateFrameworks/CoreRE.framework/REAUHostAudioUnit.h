@@ -6,7 +6,7 @@
 
 #import <AudioToolbox/AUAudioUnit.h>
 
-@class AUAudioUnitBus, AUAudioUnitBusArray;
+@class AUAudioUnitBus, AUAudioUnitBusArray, AVAudioFormat;
 
 __attribute__((visibility("hidden")))
 @interface REAUHostAudioUnit : AUAudioUnit
@@ -29,14 +29,17 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<AudioStreamRecordingManager::StreamWriter> _recordingStreamWriter;
     unsigned int _desiredLayoutTag;
     AUAudioUnit *_target;
+    CDUnknownBlockType _pullInputOverride;
+    AVAudioFormat *_inputFormat;
 }
 
-@property(retain, nonatomic) AUAudioUnit *target; // @synthesize target=_target;
-@property(nonatomic) unsigned int desiredLayoutTag; // @synthesize desiredLayoutTag=_desiredLayoutTag;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AVAudioFormat *inputFormat; // @synthesize inputFormat=_inputFormat;
+@property(copy, nonatomic) CDUnknownBlockType pullInputOverride; // @synthesize pullInputOverride=_pullInputOverride;
+@property(retain, nonatomic) AUAudioUnit *target; // @synthesize target=_target;
+@property(nonatomic) unsigned int desiredLayoutTag; // @synthesize desiredLayoutTag=_desiredLayoutTag;
 - (id)outputBusses;
-- (id)inputBusses;
 - (id)channelCapabilities;
 - (CDUnknownBlockType)internalRenderBlock;
 - (void)prepareTargetAU;

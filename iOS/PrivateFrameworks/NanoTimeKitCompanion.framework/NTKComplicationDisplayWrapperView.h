@@ -6,15 +6,15 @@
 
 #import <UIKit/UIControl.h>
 
+#import <NanoTimeKitCompanion/CLKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationDisplayObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKControl-Protocol.h>
-#import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
 @class CLKComplicationTemplate, NSDate, NSString, UIView;
 @protocol CLKMonochromeFilterProvider, NTKComplicationDisplay, NTKComplicationDisplayWrapperViewAnimationDelegate;
 
-@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, NTKSensitiveUIStateObserver, NTKControl, NTKTimeTravel>
+@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, CLKSensitiveUIStateObserver, NTKControl, NTKTimeTravel>
 {
     UIView<NTKComplicationDisplay> *_currentComplicationView;
     UIView<NTKComplicationDisplay> *_nextComplicationView;
@@ -46,9 +46,12 @@
     double _alphaForDimmedState;
     long long _layoutOverride;
     id <CLKMonochromeFilterProvider> _filterProvider;
+    CDUnknownBlockType _renderStatsHandler;
     struct CGSize _maxSize;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType renderStatsHandler; // @synthesize renderStatsHandler=_renderStatsHandler;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 @property(readonly, nonatomic) long long layoutOverride; // @synthesize layoutOverride=_layoutOverride;
 @property(readonly, nonatomic) _Bool hasLegacyDisplay; // @synthesize hasLegacyDisplay=_hasLegacyDisplay;
@@ -68,7 +71,6 @@
 @property(nonatomic) _Bool supportsCurvedText; // @synthesize supportsCurvedText=_supportsCurvedText;
 @property(retain, nonatomic) NSString *complicationSlotIdentifier; // @synthesize complicationSlotIdentifier=_complicationSlotIdentifier;
 @property(readonly, nonatomic) long long family; // @synthesize family=_family;
-- (void).cxx_destruct;
 - (_Bool)shouldCancelTouchesInScrollview;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_resetComplicationViews;
@@ -76,6 +78,7 @@
 - (void)setComplicationView:(id)arg1 withComplicationAnimation:(unsigned long long)arg2 animationType:(unsigned long long)arg3 animationFraction:(float)arg4;
 - (void)_removeDisplay:(id)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
+- (void)complicationDisplay:(id)arg1 renderStatsWithTime:(double)arg2 cost:(double)arg3;
 - (void)complicationDisplayNeedsResize:(id)arg1;
 - (void)_updateVisibilityForSensitivity:(long long)arg1;
 - (void)layoutSubviews;
@@ -90,8 +93,9 @@
 - (void)needsResize;
 - (void)sensitiveUIStateChanged;
 - (void)_invokeTouchDownHandler;
-- (void)_invokeTouchUpInsideHandler;
+- (_Bool)_invokeTouchUpInsideHandler;
 - (_Bool)_displayIsTappable;
+- (_Bool)performTap;
 - (void)_setDimmed:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setDimmed:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_didSetDisplayFromDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;

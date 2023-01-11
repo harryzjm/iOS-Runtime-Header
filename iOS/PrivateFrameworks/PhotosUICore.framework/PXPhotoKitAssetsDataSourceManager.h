@@ -7,23 +7,42 @@
 #import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSNumber, NSString, PXPhotoKitAssetsDataSource, PXPhotosDataSource;
-@protocol PXPhotosDataSourceProvider;
+@class NSNumber, NSObject, NSPredicate, NSString, PXPhotoKitAssetsDataSource, PXPhotosDataSource;
+@protocol OS_dispatch_queue, PXPhotosDataSourceProvider;
 
 @interface PXPhotoKitAssetsDataSourceManager <PXPhotosDataSourceChangeObserver, PXMutableAssetsDataSourceManager>
 {
     PXPhotosDataSource *_photosDataSource;
     NSNumber *_backgroundFetchOriginSection;
+    _Bool _isLoadingInitialPhotosDataSource;
+    NSObject<OS_dispatch_queue> *_initialDataSourceLoadingQueue;
+    NSString *_localizedLoadingInitialDataSourceMessage;
     id <PXPhotosDataSourceProvider> _photosDataSourceProvider;
 }
 
++ (id)dataSourceManagerForConfiguration:(id)arg1;
++ (id)dataSourceManagerForAssetCollection:(id)arg1 existingAssetsFetchResult:(id)arg2 existingKeyAssetsFetchResult:(id)arg3 fetchPropertySets:(id)arg4 basePredicate:(id)arg5 options:(unsigned long long)arg6;
 + (id)dataSourceManagerForAssetCollection:(id)arg1;
++ (id)dataSourceManagerWithAsset:(id)arg1 options:(unsigned long long)arg2;
 + (id)dataSourceManagerWithAsset:(id)arg1;
-@property(retain, nonatomic) id <PXPhotosDataSourceProvider> photosDataSourceProvider; // @synthesize photosDataSourceProvider=_photosDataSourceProvider;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PXPhotosDataSourceProvider> photosDataSourceProvider; // @synthesize photosDataSourceProvider=_photosDataSourceProvider;
 - (void)photosDataSourceDidFinishBackgroundFetching:(id)arg1;
 - (id)photosDataSourceInterestingAssetReferences:(id)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
+- (void)refreshResultsForAssetCollection:(id)arg1;
+- (void)stopExcludingAssets:(id)arg1;
+- (void)excludeAssetsAtIndexPaths:(id)arg1;
+- (void)stopForceIncludingAllAssets;
+- (void)forceIncludeAssetsAtIndexPaths:(id)arg1;
+- (id)localizedLoadingInitialDataSourceMessage;
+- (id)localizedEmptyPlaceholderMessage;
+- (id)localizedEmptyPlaceholderTitle;
+- (void)setFilteringDisabled:(_Bool)arg1 forAssetCollection:(id)arg2;
+- (void)setFilterPredicate:(id)arg1 provideIncrementalChangeDetailsForAssetCollections:(id)arg2;
+@property(retain, nonatomic) NSPredicate *filterPredicate;
+- (_Bool)supportsFiltering;
+- (_Bool)isBackgroundFetching;
 - (void)startBackgroundFetchIfNeeded;
 @property(nonatomic) long long backgroundFetchOriginSection;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
@@ -36,6 +55,7 @@
 - (void)updateWithPhotosDataSource:(id)arg1 andDataSourceChange:(id)arg2;
 - (id)_createAssetsDataSourceWithPhotosDataSource:(id)arg1 withChange:(id)arg2;
 - (id)createInitialDataSource;
+- (_Bool)isLoadingInitialDataSource;
 - (void)_ensurePhotosDataSource;
 - (void)dealloc;
 - (id)init;

@@ -4,23 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNetService, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, NSNetService;
 
 __attribute__((visibility("hidden")))
 @interface MRNetServiceTransport
 {
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRDeviceInfo *_deviceInfo;
     _Bool _requiresCustomPairing;
     NSNetService *_netService;
 }
 
 + (id)createDeviceInfoFromTXTRecord:(id)arg1;
 + (id)createDeviceInfoFromNetService:(id)arg1;
-@property(retain, nonatomic) NSNetService *netService; // @synthesize netService=_netService;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNetService *netService; // @synthesize netService=_netService;
 @property(nonatomic) _Bool requiresCustomPairing;
 - (void)reset;
-- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 - (id)error;
 - (void)setShouldUseSystemAuthenticationPrompt:(_Bool)arg1;
 - (_Bool)shouldUseSystemAuthenticationPrompt;

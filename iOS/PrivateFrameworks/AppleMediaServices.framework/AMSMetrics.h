@@ -9,7 +9,7 @@
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 #import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
 
-@class AMSMetricsDatabaseDataSource, NSString;
+@class AMSMetricsDatabaseDataSource, NSDate, NSString;
 @protocol AMSBagProtocol, AMSMetricsBagContract, AMSMetricsFlushStrategy, OS_dispatch_queue;
 
 @interface AMSMetrics : NSObject <AMSBagConsumer_Project, AMSBagConsumer>
@@ -25,12 +25,15 @@
     NSObject<OS_dispatch_queue> *_completionQueue;
     id <AMSMetricsFlushStrategy> _currentFlushStrategy;
     AMSMetricsDatabaseDataSource *_databaseSource;
-    CDUnknownBlockType _flushIntervalBlock;
     long long _destination;
+    NSObject<OS_dispatch_queue> *_engagementQueue;
+    CDUnknownBlockType _flushIntervalBlock;
+    NSDate *_flushIntervalStartTime;
     NSObject<OS_dispatch_queue> *_flushQueue;
 }
 
 + (id)sharedTimerQueue;
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
@@ -38,17 +41,23 @@
 + (double)timeIntervalFromServerTime:(id)arg1;
 + (id)serverTimeFromTimeInterval:(double)arg1;
 + (id)serverTimeFromDate:(id)arg1;
++ (_Bool)recordAppAnalyticsForEvent:(id)arg1 bugType:(id)arg2;
 + (void)setFlushTimerEnabled:(_Bool)arg1;
 + (void)setFlushDelayEnabled:(_Bool)arg1;
 + (void)setDisableBackgroundMetrics:(_Bool)arg1;
 + (_Bool)flushTimerEnabled;
 + (_Bool)flushDelayEnabled;
 + (_Bool)disableBackgroundMetrics;
-+ (id)_sharedInstanceUsingBag:(id)arg1;
++ (_Bool)diagnosticsSubmissionAllowed;
++ (_Bool)appAnalyticsAllowed;
++ (id)internalInstanceUsingBag:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *flushQueue; // @synthesize flushQueue=_flushQueue;
-@property(nonatomic) long long destination; // @synthesize destination=_destination;
+@property(retain, nonatomic) NSDate *flushIntervalStartTime; // @synthesize flushIntervalStartTime=_flushIntervalStartTime;
 @property(copy, nonatomic) CDUnknownBlockType flushIntervalBlock; // @synthesize flushIntervalBlock=_flushIntervalBlock;
 @property(nonatomic) _Bool flushOnForeground; // @synthesize flushOnForeground=_flushOnForeground;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *engagementQueue; // @synthesize engagementQueue=_engagementQueue;
+@property(nonatomic) long long destination; // @synthesize destination=_destination;
 @property(retain, nonatomic) AMSMetricsDatabaseDataSource *databaseSource; // @synthesize databaseSource=_databaseSource;
 @property(retain, nonatomic) id <AMSMetricsFlushStrategy> currentFlushStrategy; // @synthesize currentFlushStrategy=_currentFlushStrategy;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
@@ -56,15 +65,15 @@
 @property(nonatomic) long long maxRequestCount; // @synthesize maxRequestCount=_maxRequestCount;
 @property(nonatomic) long long maxBatchSize; // @synthesize maxBatchSize=_maxBatchSize;
 @property(readonly, nonatomic) NSString *containerId; // @synthesize containerId=_containerId;
-- (void).cxx_destruct;
 @property(retain, nonatomic) id <AMSMetricsBagContract> bagContract;
 - (id)initWithContainerId:(id)arg1 bagContract:(id)arg2;
+- (_Bool)_scheduledFlushAllowedForStyle:(long long)arg1;
 - (void)_handleFlushIntervalWithStyle:(long long)arg1;
 - (void)_flushIntervalInvalidate;
-- (_Bool)_flushIntervalEnabledForStyle:(long long)arg1;
-- (double)_flushInterval;
-- (void)_beginFlushIntervalWithStyle:(long long)arg1;
+- (double)_flushIntervalForEvents:(id)arg1;
+- (void)_beginFlushIntervalWithStyle:(long long)arg1 events:(id)arg2;
 - (id)_flushDataSource:(id)arg1 topic:(id)arg2;
+- (id)_enqueueFigaroEvents:(id)arg1;
 - (id)_determineFlushStrategyWithDataSource:(id)arg1 topic:(id)arg2;
 - (void)_applicationWillEnterForeground;
 - (id)flushEvents:(id)arg1;

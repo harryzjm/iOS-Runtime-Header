@@ -15,12 +15,12 @@
 - (void)setBadgeString:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setBadgeNumber:(NSNumber *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)getBadgeNumberForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSNumber *))arg2;
-- (void)removeAllDeliveredNotificationsForBundleIdentifier:(NSString *)arg1;
-- (void)removeDeliveredNotificationsWithIdentifiers:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
+- (void)removeAllDeliveredNotificationsForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)removeDeliveredNotificationsWithIdentifiers:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)getDeliveredNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSArray *))arg2;
-- (void)removeAllPendingNotificationRequestsForBundleIdentifier:(NSString *)arg1;
-- (void)removeSimilarNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
-- (void)removePendingNotificationRequestsWithIdentifiers:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
+- (void)removeAllPendingNotificationRequestsForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)removeSimilarNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)removePendingNotificationRequestsWithIdentifiers:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)getPendingNotificationRequestsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSArray *))arg2;
 - (void)setNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)replaceContentForRequestWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 replacementContent:(UNNotificationContent *)arg3 completionHandler:(void (^)(NSError *))arg4;
@@ -30,5 +30,9 @@
 - (void)getNotificationSettingsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(UNNotificationSettings *))arg2;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)setObservingUserNotifications:(_Bool)arg1 forBundleIdentifier:(NSString *)arg2;
+
+@optional
+- (void)getClearedInfoForDataProviderMigrationWithBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(id))arg2;
+- (void)requestRemoveAuthorizationForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 @end
 

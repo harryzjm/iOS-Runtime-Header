@@ -18,8 +18,8 @@
     id <ASVGlyphStateDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <ASVGlyphStateDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <ASVGlyphStateDelegate> delegate; // @synthesize delegate=_delegate;
 - (MISSING_TYPE *)computeTranslationTarget;
 - (MISSING_TYPE *)computeScaleTarget;
 - (CDStruct_183601bc)computeQuaternionTarget;

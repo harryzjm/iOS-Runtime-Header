@@ -11,8 +11,9 @@
     CNQueue *_queue;
 }
 
-@property(readonly, nonatomic) CNQueue *queue; // @synthesize queue=_queue;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CNQueue *queue; // @synthesize queue=_queue;
+- (_Bool)isSequenceTerminated;
 - (id)allEvents;
 - (void)addEvent:(id)arg1;
 - (id)initWithQueue:(id)arg1;

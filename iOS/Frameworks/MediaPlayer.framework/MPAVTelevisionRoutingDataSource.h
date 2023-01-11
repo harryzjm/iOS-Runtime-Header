@@ -19,7 +19,7 @@
 - (void)_onQueue_controllerDidDiscoverTelevision:(void *)arg1;
 - (id)_discoveredTelevisions;
 - (void)getPickedRouteHasVolumeControlWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)getRoutesForCategory:(id)arg1;
 - (_Bool)devicePresenceDetected;
 - (void)setDiscoveryMode:(long long)arg1;
 - (void)dealloc;

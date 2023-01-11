@@ -19,6 +19,12 @@
     _Bool _publiclyIndexable;
     _Bool _isFuzzyMatch;
     _Bool _doNotFold;
+    _Bool _shouldUseCompactDisplay;
+    _Bool _noGoTakeover;
+    _Bool _preferTopPlatter;
+    _Bool _wasCompact;
+    _Bool _didTakeoverGo;
+    _Bool _usesCompactDisplay;
     int _topHit;
     int _type;
     int _knownResultBundleId;
@@ -27,7 +33,6 @@
     NSString *_identifier;
     _CPActionItemForFeedback *_action;
     _CPPunchoutForFeedback *_punchout;
-    NSString *_srf;
     _CPStruct *_localFeatures;
     NSString *_resultType;
     double _rankingScore;
@@ -48,9 +53,16 @@
     unsigned long long _whichApplicationbundleid;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long whichApplicationbundleid; // @synthesize whichApplicationbundleid=_whichApplicationbundleid;
 @property(readonly, nonatomic) unsigned long long whichSectionbundleid; // @synthesize whichSectionbundleid=_whichSectionbundleid;
 @property(readonly, nonatomic) unsigned long long whichResultbundleidentifier; // @synthesize whichResultbundleidentifier=_whichResultbundleidentifier;
+@property(nonatomic) _Bool usesCompactDisplay; // @synthesize usesCompactDisplay=_usesCompactDisplay;
+@property(nonatomic) _Bool didTakeoverGo; // @synthesize didTakeoverGo=_didTakeoverGo;
+@property(nonatomic) _Bool wasCompact; // @synthesize wasCompact=_wasCompact;
+@property(nonatomic) _Bool preferTopPlatter; // @synthesize preferTopPlatter=_preferTopPlatter;
+@property(nonatomic) _Bool noGoTakeover; // @synthesize noGoTakeover=_noGoTakeover;
+@property(nonatomic) _Bool shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property(copy, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
 @property(nonatomic) unsigned long long hashedIdentifier; // @synthesize hashedIdentifier=_hashedIdentifier;
 @property(nonatomic) unsigned long long blockId; // @synthesize blockId=_blockId;
@@ -68,13 +80,11 @@
 @property(nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
 @property(copy, nonatomic) NSString *resultType; // @synthesize resultType=_resultType;
 @property(retain, nonatomic) _CPStruct *localFeatures; // @synthesize localFeatures=_localFeatures;
-@property(copy, nonatomic) NSString *srf; // @synthesize srf=_srf;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(retain, nonatomic) _CPPunchoutForFeedback *punchout; // @synthesize punchout=_punchout;
 @property(retain, nonatomic) _CPActionItemForFeedback *action; // @synthesize action=_action;
 @property(nonatomic) int topHit; // @synthesize topHit=_topHit;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

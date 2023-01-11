@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_renderTileForRequest:(id)arg1;
 - (struct CGContext *)_createContextForTileSurface:(id)arg1 ofRequest:(id)arg2;
 - (id)_createTileSurfaceForRequest:(id)arg1;
-- (void)requestPDFTileSurfaceForTarget:(id)arg1 forPage:(id)arg2 withRenderingProperties:(id)arg3 atZoomFactor:(double)arg4 frame:(struct CGRect)arg5 transform:(struct CGAffineTransform)arg6;
+- (void)requestPDFTileSurfaceForTarget:(id)arg1 forPage:(id)arg2 withRenderingProperties:(id)arg3 atZoomFactor:(double)arg4 frame:(struct CGRect)arg5 transform:(struct CGAffineTransform)arg6 tag:(int)arg7;
 - (void)saveBitmapFiles;
 - (int)tileSurfaceType;
 - (void)setTileSurfaceType:(int)arg1;

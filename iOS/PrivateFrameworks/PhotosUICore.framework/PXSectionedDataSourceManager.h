@@ -13,8 +13,8 @@
     PXSectionedChangeDetailsRepository *_changeHistory;
 }
 
-@property(readonly, nonatomic) PXSectionedChangeDetailsRepository *changeHistory; // @synthesize changeHistory=_changeHistory;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PXSectionedChangeDetailsRepository *changeHistory; // @synthesize changeHistory=_changeHistory;
 @property(readonly, nonatomic) PXSectionedDataSource *dataSource;
 - (id)createInitialDataSource;
 - (id)queryObserversInterestingObjectReferences;
@@ -28,6 +28,7 @@
 - (void)waitForCondition:(CDUnknownBlockType)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)unregisterChangeObserver:(id)arg1 context:(void *)arg2;
 - (void)registerChangeObserver:(id)arg1 context:(void *)arg2;
+- (id)allChangeDetailsFromDataSource:(id)arg1 toDataSource:(id)arg2;
 - (id)changeDetailsFromDataSource:(id)arg1 toDataSource:(id)arg2;
 - (id)init;
 

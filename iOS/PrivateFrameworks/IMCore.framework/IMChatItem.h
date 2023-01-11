@@ -16,15 +16,24 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)isReplyContextPreview;
 @property(readonly, retain, nonatomic) NSString *balloonBundleID;
 - (void)_setTimeAdded:(id)arg1;
 - (id)_timeAdded;
 - (id)_timeStale;
+- (id)_parentItem;
 - (id)_item;
 - (id)_initWithItem:(id)arg1;
+@property(readonly, nonatomic) _Bool canReply;
 @property(readonly, nonatomic) _Bool canDelete;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (_Bool)itemIsReplyCount;
+- (id)threadGroupIdentifier;
+- (_Bool)itemIsThreadOriginatorWithThreadIdentifier:(id *)arg1;
+- (_Bool)itemIsThreadOriginator;
+- (_Bool)itemIsReplyContextPreview;
+- (_Bool)itemIsReply;
 
 @end
 

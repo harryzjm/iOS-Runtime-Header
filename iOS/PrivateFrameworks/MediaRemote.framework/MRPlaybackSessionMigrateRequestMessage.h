@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MRPlaybackSessionMigrateRequest, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackSessionProtobuf;
+@class MRPlaybackSession, MRPlaybackSessionMigrateRequest, MRPlayerPath;
 
 @interface MRPlaybackSessionMigrateRequestMessage
 {
 }
 
 - (unsigned long long)type;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
+@property(readonly, nonatomic) MRPlayerPath *playerPath;
 @property(readonly, nonatomic) MRPlaybackSessionMigrateRequest *request;
-@property(readonly, nonatomic) _MRPlaybackSessionProtobuf *playbackSession;
-- (id)initWithPlaybackSession:(struct _MRPlaybackSessionProtobuf *)arg1 request:(id)arg2 forPlayerPath:(struct _MRNowPlayingPlayerPathProtobuf *)arg3;
+@property(readonly, nonatomic) MRPlaybackSession *playbackSession;
+- (id)initWithPlaybackSession:(id)arg1 request:(id)arg2 forPlayerPath:(id)arg3;
 
 @end
 

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class AXPIFingerController;
 @protocol OS_dispatch_queue;
 
 @interface AXPISystemActionHelper : NSObject
@@ -13,10 +14,14 @@
     struct __IOHIDUserDevice *_homeButtonUserDevice;
     unsigned long long _sysdiagnoseCancelCount;
     NSObject<OS_dispatch_queue> *_sysdiagnoseCancelCountQueue;
+    AXPIFingerController *_fingerController;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_performScrollAction:(_Bool)arg1;
+- (void)performActionForSystemAction:(id)arg1 fromClient:(id)arg2;
+- (void)performActionForSystemAction:(id)arg1;
 - (void)_sendDeviceOrientationChange:(int)arg1;
 - (void)_sendButtonEvent:(unsigned int)arg1;
 - (void)_handleHomeButtonDispatch:(_Bool)arg1;
@@ -36,6 +41,16 @@
 - (void)_sendShakeEvent;
 - (void)shake;
 - (void)activateTripleClick;
+- (void)_activateSpeakScreen;
+- (void)_toggleFullKeyboardAccess;
+- (void)_toggleAssistiveTouch;
+- (void)_toggleSwitchControl;
+- (_Bool)_hasScreenSwitch;
+- (void)_toggleMagnifier;
+- (void)_toggleZoom;
+- (void)_toggleSmartInvert;
+- (void)_toggleVoiceOver;
+- (void)_toggleClassicInvertColors;
 - (void)revealSpotlight;
 - (void)toggleSpotlight;
 - (void)liftVolumeUpButtonUp;
@@ -50,7 +65,9 @@
 - (void)pressLockButtonDown;
 - (void)activateLockButton;
 - (void)toggleAppSwitcher;
+- (_Bool)isRingerSwitchOn;
 - (void)toggleDock;
+- (void)confirmApplePay;
 - (void)armApplePay;
 - (void)toggleCommandAndControl;
 - (void)toggleReachability;
@@ -58,6 +75,7 @@
 - (void)pressHomeButtonDown;
 - (void)activateHomeButton;
 - (void)activateVoiceControl;
+- (void)activateSiriFromClient:(id)arg1;
 - (void)activateSiri;
 - (id)init;
 

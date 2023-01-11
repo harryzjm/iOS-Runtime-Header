@@ -9,10 +9,11 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSDecimalNumber, NSNumber, NSString;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString;
 
 @interface PKTransitAppletHistoryRecord : NSObject <NSCopying, NSSecureCoding>
 {
+    unsigned long long _transitModifiers;
     NSNumber *_historySequenceNumber;
     unsigned long long _type;
     unsigned long long _subtype;
@@ -25,13 +26,16 @@
     NSNumber *_cityCode;
     NSData *_startStation;
     NSData *_endStation;
+    NSArray *_amounts;
     NSString *_transitDetail;
     long long _recordType;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) long long recordType; // @synthesize recordType=_recordType;
 @property(copy, nonatomic) NSString *transitDetail; // @synthesize transitDetail=_transitDetail;
+@property(copy, nonatomic) NSArray *amounts; // @synthesize amounts=_amounts;
 @property(copy, nonatomic) NSData *endStation; // @synthesize endStation=_endStation;
 @property(copy, nonatomic) NSData *startStation; // @synthesize startStation=_startStation;
 @property(copy, nonatomic) NSNumber *cityCode; // @synthesize cityCode=_cityCode;
@@ -44,17 +48,20 @@
 @property(nonatomic) unsigned long long subtype; // @synthesize subtype=_subtype;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSNumber *historySequenceNumber; // @synthesize historySequenceNumber=_historySequenceNumber;
-- (void).cxx_destruct;
+- (unsigned long long)hash;
+- (_Bool)isEqualToTransitAppletHistoryRecord:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_setTransactionHistoryDetailsFromString:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)_transactionAmountsWithBalanceLabels:(id)arg1 unitDictionary:(id)arg2;
 @property(readonly, nonatomic) unsigned long long transitTransactionModifier;
 @property(readonly, nonatomic) long long transitTransactionSubtype;
 @property(readonly, nonatomic) long long paymentTransactionType;
-- (id)concreteTransactionWithCurrency:(id)arg1;
+- (id)concreteTransactionWithCurrency:(id)arg1 balanceLabels:(id)arg2 unitDictionary:(id)arg3;
 - (id)felicaHistoryRecord;
 
 @end

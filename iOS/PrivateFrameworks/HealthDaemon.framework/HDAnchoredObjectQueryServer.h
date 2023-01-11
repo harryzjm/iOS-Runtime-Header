@@ -19,6 +19,7 @@
     NSMutableArray *_addedSamplesPendingResume;
     NSMutableArray *_deletedSamplesPendingResume;
     _Bool _includeAutomaticTimeZones;
+    _Bool _includeContributorInformation;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
 }
@@ -26,10 +27,11 @@
 + (_Bool)supportsAnchorBasedAuthorization;
 + (id)requiredEntitlements;
 + (Class)queryClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property(readonly, nonatomic) _Bool includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property(readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property(readonly, copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
-- (void).cxx_destruct;
 - (void)_queue_samplesWereRemovedWithAnchor:(id)arg1;
 - (_Bool)_queue_shouldAcceptUpdates;
 - (_Bool)_queue_shouldAccumulateUpdates;

@@ -13,9 +13,13 @@
     WFGiphySessionManager *_sessionManager;
 }
 
++ (id)userInterfaceXPCInterface;
++ (id)userInterfaceProtocol;
 - (void).cxx_destruct;
-- (void)runWithUIKitWidgetUserInterface:(id)arg1 input:(id)arg2;
+- (id)targetContentAttribution;
 - (void)runWithNoUserInterface;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
+- (void)runAsynchronouslyWithInput:(id)arg1;
 @property(readonly, nonatomic) WFGiphySessionManager *sessionManager; // @synthesize sessionManager=_sessionManager;
 
 @end

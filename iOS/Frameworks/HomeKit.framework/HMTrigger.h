@@ -29,9 +29,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMMutableArray *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
+- (void)_updateClientWithResults:(CDUnknownBlockType)arg1 withError:(id)arg2;
 - (_Bool)compatibleWithApp;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
@@ -39,11 +40,10 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)_registerNotificationHandlers;
-- (void)_handleUpdatedActionSetNotification:(id)arg1;
+- (_Bool)_updateActionSetFromResponse:(id)arg1 responsePayload:(id)arg2;
 - (void)_handleTriggerFiredNotification:(id)arg1;
 - (void)_handleTriggerFired:(id)arg1;
-- (void)_handleTriggerActivatedNotification:(id)arg1;
-- (void)_handleTriggerRenamedNotification:(id)arg1;
+- (_Bool)_updateTriggerNameFromResponse:(CDUnknownBlockType)arg1 responsePayload:(id)arg2;
 - (id)_serializeForAdd;
 - (void)_addActionSetOfType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSetOfType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -68,10 +68,10 @@
 @property(readonly, copy, nonatomic) NSArray *actionSets;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)_invalidate;
-- (void)_unconfigure;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (id)initWithName:(id)arg1;
 
 // Remaining properties

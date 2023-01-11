@@ -12,6 +12,7 @@
     struct __SCNetworkReachability *reachabilityRef;
 }
 
++ (_Bool)_gkIsOnline;
 + (id)_gkReachabilityForLocalWiFi;
 + (id)_gkReachabilityForInternetConnection;
 + (id)_gkReachabilityWithAddress:(const struct sockaddr_in *)arg1;

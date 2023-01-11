@@ -12,17 +12,17 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAssistantAccessControlModel, HMDUser, NSArray, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDAssistantAccessControl : HMFObject <HMFLogging, HMFObject, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
+    id <HMFLocking> _lock;
     NSMutableSet *_accessories;
     _Bool _enabled;
     HMDUser *_user;
     unsigned long long _cachedHash;
     unsigned long long _options;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -30,12 +30,12 @@
 + (id)modelIDNamespace;
 + (id)accessControlWithMessage:(id)arg1 user:(id)arg2 error:(id *)arg3;
 + (_Bool)isAccessorySupported:(id)arg1;
-@property(readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)logIdentifier;
+- (id)assistantAccessControlModelWithRemovedAccessories:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;

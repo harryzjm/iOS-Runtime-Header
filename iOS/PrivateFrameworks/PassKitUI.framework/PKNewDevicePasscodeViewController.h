@@ -8,11 +8,12 @@
 
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PKPasscodeUpgradeFlowController;
 @protocol PKNewDevicePasscodeViewControllerDelegate;
 
 @interface PKNewDevicePasscodeViewController : UIViewController <PKPaymentSetupPresentationProtocol>
 {
+    PKPasscodeUpgradeFlowController *_flowController;
     long long _minimumPasscodeLength;
     unsigned long long _passcodeInputScreenType;
     unsigned long long _passcodeInputState;
@@ -20,18 +21,20 @@
     NSString *_currentPasscode;
     NSString *_newPasscode;
     NSString *_constraintFailedInstructions;
+    _Bool _viewHasAppeared;
     id <PKNewDevicePasscodeViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <PKNewDevicePasscodeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKNewDevicePasscodeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)onPresentationRemoveViewControllersAfterMarker;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (id)initWithMinimumPasscodeLength:(long long)arg1 withCurrentPasscode:(id)arg2 paymentSetupContext:(long long)arg3;
+- (id)initWithPasscodeUpgradeFlowController:(id)arg1 minimumPasscodeLength:(long long)arg2 withCurrentPasscode:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

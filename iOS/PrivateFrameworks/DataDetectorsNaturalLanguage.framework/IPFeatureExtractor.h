@@ -6,19 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
-
 @interface IPFeatureExtractor : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)defaultExtractor;
-@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
-- (id)queueType;
+- (id)queue;
 - (id)featuresForTextString:(id)arg1 inMessageUnit:(id)arg2 context:(id)arg3;
-- (id)init;
 
 @end
 

@@ -21,8 +21,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)dispatchBlockOnDelegateQueueAsync:(CDUnknownBlockType)arg1;
-- (_Bool)isMatchingSession:(id)arg1;
+- (_Bool)isMatchingSession:(id)arg1 outError:(id *)arg2;
 - (_Bool)_disconnectWithError:(id *)arg1;
 - (void)_connectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_connectWithError:(id *)arg1;
@@ -38,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 - (id)initWithSession:(id)arg1 tag:(id)arg2 startupConfig:(long long)arg3;
 
 // Remaining properties

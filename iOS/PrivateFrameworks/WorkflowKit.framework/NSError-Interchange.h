@@ -8,7 +8,13 @@
 
 @interface NSError (Interchange)
 + (id)errorWithInterchangeErrorDictionary:(id)arg1;
++ (id)wfUnsupportedEnvironmentError;
++ (id)wf_unsupportedParameterErrorWithParameterName:(id)arg1 errorType:(id)arg2 platformIdiom:(long long)arg3;
++ (id)wf_unsupportedActionErrorWithType:(id)arg1 platformIdiom:(long long)arg2;
 + (id)mtl_modelErrorWithException:(id)arg1;
++ (id)sharingMixedMDMContentErrorWithActionName:(id)arg1;
 - (id)interchangeErrorDictionary;
+- (id)wf_localizedErrorStringWithActionName:(id)arg1;
+- (_Bool)wf_isUnsupportedOnPlatformError;
 @end
 

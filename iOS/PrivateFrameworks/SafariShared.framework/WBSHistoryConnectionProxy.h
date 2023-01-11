@@ -9,16 +9,23 @@
 #import <SafariShared/WBSHistoryConnectionProxy-Protocol.h>
 
 @class NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, WBSHistoryConnectionProxyDelegate;
 
 @interface WBSHistoryConnectionProxy : NSObject <WBSHistoryConnectionProxy>
 {
     NSXPCConnection *_connection;
+    id <WBSHistoryConnectionProxyDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_connectionProxyQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *connectionProxyQueue; // @synthesize connectionProxyQueue=_connectionProxyQueue;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *connectionProxyQueue; // @synthesize connectionProxyQueue=_connectionProxyQueue;
+@property(nonatomic) __weak id <WBSHistoryConnectionProxyDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)releaseCloudHistory:(CDUnknownBlockType)arg1;
+- (void)initializeCloudHistoryWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)finishClearingHistoryIfNecessaryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)connectWithOptions:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)queryMemoryFootprintWithError:(id *)arg1;
 - (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
 - (void)killService;
@@ -32,6 +39,7 @@
 - (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)_setupConnection;
+- (id)_createConnection;
 - (id)init;
 
 @end

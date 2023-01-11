@@ -6,6 +6,7 @@
 
 @class NSData, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDAssociationInsertionJournalEntry
 {
     _Bool _enforceSameSource;
@@ -16,11 +17,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool enforceSameSource; // @synthesize enforceSameSource=_enforceSameSource;
 @property(readonly, nonatomic) long long provenance; // @synthesize provenance=_provenance;
 @property(readonly, nonatomic) NSData *childUUIDsData; // @synthesize childUUIDsData=_childUUIDsData;
 @property(readonly, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;

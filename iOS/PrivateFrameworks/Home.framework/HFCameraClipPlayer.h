@@ -9,7 +9,7 @@
 #import <Home/HFCameraClipPlaying-Protocol.h>
 #import <Home/HFCameraClipQueueing-Protocol.h>
 
-@class AVPlayer, HFCameraClipPlayerItem, HFCameraClipPosition, HFCameraClipQueuePlayer, HMCameraProfile, NSArray, NSError, NSString;
+@class AVQueuePlayer, HFCameraClipPlayerItem, HFCameraClipPosition, HFCameraClipQueuePlayer, HMCameraProfile, NSArray, NSError, NSString;
 @protocol HFCameraClipPlayerDelegate, HFCameraClipScrubbing;
 
 @interface HFCameraClipPlayer : NSObject <HFCameraClipQueueing, HFCameraClipPlaying>
@@ -25,6 +25,7 @@
     HFCameraClipQueuePlayer *_queuePlayer;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HFCameraClipQueuePlayer *queuePlayer; // @synthesize queuePlayer=_queuePlayer;
 @property(nonatomic) __weak HFCameraClipPlayerItem *lastPlayerItem; // @synthesize lastPlayerItem=_lastPlayerItem;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
@@ -34,7 +35,6 @@
 @property(nonatomic, getter=isScrubbing) _Bool scrubbing; // @synthesize scrubbing=_scrubbing;
 @property(nonatomic) __weak id <HFCameraClipScrubbing> scrubber; // @synthesize scrubber=_scrubber;
 @property(nonatomic) __weak id <HFCameraClipPlayerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)seekToOffset:(double)arg1 inItem:(id)arg2;
 - (void)removeQueueableItem:(id)arg1;
 - (void)insertQueueableItem:(id)arg1 afterItem:(id)arg2;
@@ -49,12 +49,14 @@
 - (void)_updatePlayerActionAtItemEnd;
 - (void)removeTimeObserver:(id)arg1;
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)endScrubbingWithOffset:(double)arg1;
 - (void)pause;
 - (void)play;
 @property(readonly, nonatomic) _Bool hasFatalError;
 @property(readonly, nonatomic) long long timeControlStatus;
+@property(nonatomic) double currentTime; // @dynamic currentTime;
 @property(copy, nonatomic) HFCameraClipPosition *currentPosition;
-@property(readonly, nonatomic) AVPlayer *player;
+@property(readonly, nonatomic) AVQueuePlayer *player;
 - (void)dealloc;
 - (id)initWithCameraProfile:(id)arg1 clips:(id)arg2 queuePlayer:(id)arg3;
 - (id)initWithCameraProfile:(id)arg1 clips:(id)arg2;

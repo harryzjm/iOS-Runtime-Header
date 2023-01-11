@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PKPrinter;
+@class NSArray, NSString, PKPrinter, UIPrinterAttributesService;
 
 __attribute__((visibility("hidden")))
 @interface UIPrinterUtilityTableViewController
 {
     PKPrinter *_printer;
+    NSString *_printerWarning;
+    UIPrinterAttributesService *_printerAttributesService;
     _Bool _showSupplyDataUnderPrinterName;
     long long _mainPrinterCellSection;
     long long _printerNameAndLocationSection;
@@ -18,14 +20,18 @@ __attribute__((visibility("hidden")))
     NSArray *_supplyData;
 }
 
-@property(retain, nonatomic) NSArray *supplyData; // @synthesize supplyData=_supplyData;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *supplyData; // @synthesize supplyData=_supplyData;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)stopPrinterWarningPolling;
+- (void)startPrinterWarningPoll;
 - (void)setShowContactingPrinter:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)didReceiveMemoryWarning;
 - (id)initWithPrinter:(id)arg1;

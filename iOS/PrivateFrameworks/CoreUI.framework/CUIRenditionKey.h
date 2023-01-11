@@ -59,7 +59,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKeyList:(const struct _renditionkeytoken *)arg1;
 - (id)init;
-- (void)_expandKeyIfNecessaryForCount:(long long)arg1;
 
 @end
 

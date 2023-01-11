@@ -24,6 +24,7 @@
     id <CALNAnalyticsHandler> _analyticsHandler;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isProtectedDataAvailable; // @synthesize isProtectedDataAvailable=_isProtectedDataAvailable;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) id <CALNAnalyticsHandler> analyticsHandler; // @synthesize analyticsHandler=_analyticsHandler;
@@ -31,7 +32,6 @@
 @property(retain, nonatomic) NSMutableDictionary *notificationSourceMap; // @synthesize notificationSourceMap=_notificationSourceMap;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) id <CALNUserNotificationCenter> userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
-- (void).cxx_destruct;
 - (id)_notificationRecordResponseFromNotificationResponse:(id)arg1;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -45,8 +45,6 @@
 - (id)_fetchRecordsWithSourceIdentifier:(id)arg1;
 - (id)fetchRecordsWithSourceIdentifier:(id)arg1;
 - (void)protectedDataDidBecomeAvailable;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (void)didRegisterForBackgroundTaskAgentJobs;
 - (void)receivedAlarmNamed:(id)arg1;
 - (void)didRegisterForAlarms;
 - (void)receivedNotificationNamed:(id)arg1;

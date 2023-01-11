@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface CHBottomUpStrokeGroupingStrategy
 {
@@ -27,9 +27,11 @@
     _Bool _shouldAdjustDeviationOfSmallGroups;
     _Bool _shouldCoalesceLastSubstrokes;
     _Bool _isInlineContinuousMode;
+    NSArray *_textInputTargets;
 }
 
 + (vector_ea45b3ba)_boundingBoxesOfStrokesInGroup:(id)arg1 rotatedAroundPoint:(struct CGPoint)arg2 byAngle:(double)arg3;
+@property(readonly, retain, nonatomic) NSArray *textInputTargets; // @synthesize textInputTargets=_textInputTargets;
 @property(readonly, nonatomic) _Bool isInlineContinuousMode; // @synthesize isInlineContinuousMode=_isInlineContinuousMode;
 - (id)tryRegroupingStrokesInGroup:(id)arg1 substrokePlacementsByStrokeIdentifier:(id)arg2 cancellationBlock:(CDUnknownBlockType)arg3;
 - (double)_strokeGroupConfidenceForSortedSubstrokes:(id)arg1 writingDirectionSortedStrokeIdentifiers:(id)arg2 localStrokeWritingOrientations:(const vector_5071ab7f *)arg3 averageWritingOrientation:(struct CGVector)arg4 averageStrokeDeviation:(struct CGVector)arg5;
@@ -43,7 +45,7 @@
 - (void)smoothLocalWritingOrientations:(vector_5071ab7f *)arg1;
 - (void)updateLocalWritingOrientationsForSubstrokes:(id)arg1 useCoalescedCenter:(_Bool)arg2;
 - (void)sortSubstrokesByWritingDirection:(id)arg1 averageWritingOrientation:(struct CGVector *)arg2;
-- (void)estimateWritingDirectionAndSortSubstrokesAccordingly:(id)arg1 averageWritingOrientation:(struct CGVector *)arg2 averageStrokeDeviation:(struct CGVector *)arg3;
+- (void)estimateWritingDirectionAndSortSubstrokesAccordingly:(id *)arg1 averageWritingOrientation:(struct CGVector *)arg2 averageStrokeDeviation:(struct CGVector *)arg3;
 - (struct CGVector)_averageVectorFromCoalescedSubstrokes:(id)arg1 toSubstroke:(id)arg2 withOrientation:(struct CGVector)arg3 strokeRef:(id)arg4 strokeDest:(id)arg5;
 - (long long)compareDistanceInWritingSequenceOfStroke:(id)arg1 andStroke:(id)arg2 toReferenceStroke:(id)arg3;
 - (void)getMergingMiddleOfLineCost:(double *)arg1 mergingMiddleOfLineStroke:(id *)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5;

@@ -20,13 +20,13 @@
     NSUUID *_transactionSessionIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *transactionSessionIdentifier; // @synthesize transactionSessionIdentifier=_transactionSessionIdentifier;
 @property(retain, nonatomic) NSMutableArray *authorizationRequestIdentifiers; // @synthesize authorizationRequestIdentifiers=_authorizationRequestIdentifiers;
 @property(readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, copy) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
-- (void).cxx_destruct;
 - (void)_invalidate;
 - (void)_queue_enqueueAuthorizationRequestForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 requestCompletionHandler:(CDUnknownBlockType)arg5;
 - (id)_authorizationStatusForTypes:(id)arg1 error:(id *)arg2;
@@ -46,20 +46,10 @@
 - (void)invalidate;
 - (id)initWithClient:(id)arg1 queue:(id)arg2;
 - (void)updateDefaultAuthorizationStatusesWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)resetAuthorizationStatusForBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (_Bool)resetAuthorizationStatusesForObjects:(id)arg1 error:(id *)arg2;
 - (void)endAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 error:(id)arg2;
 - (void)_queue_beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)requestAuthorizationForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_setAuthorizationStatusesEntitled:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)allObjectAuthorizationsForSampleWithUUID:(id)arg1 error:(id *)arg2;
-- (id)allDocumentAuthorizationRecordsForType:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
-- (id)allSourcesRequestingTypes:(id)arg1 error:(id *)arg2;
-- (id)allAuthorizationRecordsForType:(id)arg1 error:(id *)arg2;
-- (id)allAuthorizationRecordsForBundleIdentifier:(id)arg1 error:(id *)arg2;
 
 @end
 

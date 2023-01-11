@@ -10,7 +10,7 @@
 #import <CoreSpeech/CSEndpointAnalyzerDelegate-Protocol.h>
 #import <CoreSpeech/CSEndpointAnalyzerImplDelegate-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 @protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImpl;
 
 @interface CSEndpointerProxy : NSObject <CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate, CSEndpointAnalyzer>
@@ -20,14 +20,16 @@
     id <CSEndpointAnalyzerImpl> _hybridEndpointer;
     id <CSEndpointAnalyzerImpl> _nnvadEndpointer;
     id <CSEndpointAnalyzerImpl> _activeEndpointer;
+    NSDictionary *_recordContext;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool recordingDidStop; // @synthesize recordingDidStop=_recordingDidStop;
+@property(retain, nonatomic) NSDictionary *recordContext; // @synthesize recordContext=_recordContext;
 @property(nonatomic) __weak id <CSEndpointAnalyzerImpl> activeEndpointer; // @synthesize activeEndpointer=_activeEndpointer;
 @property(retain, nonatomic) id <CSEndpointAnalyzerImpl> nnvadEndpointer; // @synthesize nnvadEndpointer=_nnvadEndpointer;
 @property(retain, nonatomic) id <CSEndpointAnalyzerImpl> hybridEndpointer; // @synthesize hybridEndpointer=_hybridEndpointer;
 @property(nonatomic) __weak id <CSEndpointAnalyzerDelegate> endpointerDelegate; // @synthesize endpointerDelegate=_endpointerDelegate;
-- (void).cxx_destruct;
 - (void)reset;
 @property(nonatomic) _Bool saveSamplesSeenInReset;
 @property(nonatomic) double minimumDurationForEndpointer;
@@ -38,6 +40,7 @@
 @property(nonatomic) double automaticEndpointingSuspensionEndTime;
 @property(nonatomic) double endWaitTime;
 @property(nonatomic) double startWaitTime;
+- (void)logHybridEndpointFeaturesWithEvent:(id)arg1 locale:(id)arg2;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateEndpointerDelayedTrigger:(_Bool)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
@@ -56,8 +59,9 @@
 - (void)preheat;
 - (void)setActiveChannel:(unsigned long long)arg1;
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
+- (_Bool)isWatchRTSTriggered;
 - (void)stopEndpointer;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3 voiceTriggerInfo:(id)arg4;
 - (void)_setupNNVADEndpointer;
 - (id)init;
 

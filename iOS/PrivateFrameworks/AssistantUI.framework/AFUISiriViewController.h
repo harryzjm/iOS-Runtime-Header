@@ -6,20 +6,24 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <AssistantUI/AFUINetworkAvailabilityStateMachineDelegate-Protocol.h>
+#import <AssistantUI/AFUISiriCompactViewDelegate-Protocol.h>
+#import <AssistantUI/AFUISiriContentDelegate-Protocol.h>
 #import <AssistantUI/AFUISiriRemoteSceneViewControllerDataSource-Protocol.h>
 #import <AssistantUI/AFUISiriRemoteSceneViewControllerDelegate-Protocol.h>
 #import <AssistantUI/AFUISiriSessionLocalDataSource-Protocol.h>
 #import <AssistantUI/AFUISiriSessionLocalDelegate-Protocol.h>
+#import <AssistantUI/AFUISiriTapPanDismissalPolicyManagerDelegate-Protocol.h>
 #import <AssistantUI/AFUISiriViewDataSource-Protocol.h>
 #import <AssistantUI/AFUISiriViewDelegate-Protocol.h>
 #import <AssistantUI/SiriUIAudioRoutePickerControllerDelegate-Protocol.h>
 #import <AssistantUI/SiriUIKeyboardViewDelegate-Protocol.h>
 #import <AssistantUI/SiriUIPresentationRemoteControlling-Protocol.h>
 
-@class AFUIDelayedActionCommandCache, AFUISiriRemoteSceneViewController, AFUISiriSession, NSDictionary, NSNumber, NSObject, NSString, SASRequestOptions, SiriUIAudioRoutePickerController, SiriUIConfiguration, SiriUIKeyboardView, UIStatusBar, UIView;
+@class AFUIDelayedActionCommandCache, AFUINetworkAvailabilityStateMachine, AFUISiriRemoteSceneViewController, AFUISiriSession, AFUISiriTapPanDismissalPolicyManager, NSDictionary, NSNumber, NSObject, NSString, SASRequestOptions, SiriUIAudioRoutePickerController, SiriUIConfiguration, SiriUIKeyboardView, UIStatusBar, UIView;
 @protocol AFUISiriRemoteViewHosting, AFUISiriViewControllerDataSource, AFUISiriViewControllerDelegate, OS_dispatch_queue;
 
-@interface AFUISiriViewController : UIViewController <AFUISiriRemoteSceneViewControllerDataSource, AFUISiriRemoteSceneViewControllerDelegate, AFUISiriViewDelegate, SiriUIAudioRoutePickerControllerDelegate, AFUISiriSessionLocalDataSource, AFUISiriSessionLocalDelegate, AFUISiriViewDataSource, SiriUIKeyboardViewDelegate, SiriUIPresentationRemoteControlling>
+@interface AFUISiriViewController : UIViewController <AFUINetworkAvailabilityStateMachineDelegate, AFUISiriRemoteSceneViewControllerDataSource, AFUISiriRemoteSceneViewControllerDelegate, AFUISiriViewDelegate, AFUISiriContentDelegate, AFUISiriCompactViewDelegate, SiriUIAudioRoutePickerControllerDelegate, AFUISiriSessionLocalDataSource, AFUISiriSessionLocalDelegate, AFUISiriViewDataSource, SiriUIKeyboardViewDelegate, AFUISiriTapPanDismissalPolicyManagerDelegate, SiriUIPresentationRemoteControlling>
 {
     _Bool _active;
     _Bool _remoteViewControllerDispatchQueueSuspended;
@@ -39,7 +43,13 @@
     long long _hostingConnectionState;
     NSDictionary *_dismissalUserInfo;
     _Bool _recordingStartedOnRoute;
+    _Bool _shouldShowVoiceActivationMaskView;
+    long long _statusBarDeferralState;
     long long _requestCancellationReason;
+    _Bool _requestedBlurVisible;
+    AFUINetworkAvailabilityStateMachine *_networkAvailabilityStateMachine;
+    unsigned long long _currentSessionAvailabilityState;
+    AFUISiriTapPanDismissalPolicyManager *_tapPanDismissalPolicyManager;
     _Bool _visible;
     _Bool _eyesFree;
     _Bool _deviceIsInStarkMode;
@@ -56,6 +66,7 @@
     _Bool _punchingOut;
     id <AFUISiriViewControllerDataSource> _dataSource;
     id <AFUISiriViewControllerDelegate> _delegate;
+    long long _directActionEvent;
     AFUISiriSession *_session;
     AFUISiriRemoteSceneViewController *_remoteViewController;
     NSObject<OS_dispatch_queue> *_remoteViewControllerDispatchQueue;
@@ -67,6 +78,7 @@
     struct CGRect _hostedPresentationFrame;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect hostedPresentationFrame; // @synthesize hostedPresentationFrame=_hostedPresentationFrame;
 @property(nonatomic, getter=_isPunchingOut, setter=_setPunchingOut:) _Bool punchingOut; // @synthesize punchingOut=_punchingOut;
 @property(nonatomic, getter=_isUserUtteranceTapToEditInProgress, setter=_setUserUtteranceTapToEditInProgress:) _Bool userUtteranceTapToEditInProgress; // @synthesize userUtteranceTapToEditInProgress=_userUtteranceTapToEditInProgress;
@@ -87,16 +99,37 @@
 @property(nonatomic) _Bool turnsOnScreenOnAppearance; // @synthesize turnsOnScreenOnAppearance=_turnsOnScreenOnAppearance;
 @property(nonatomic) _Bool receivedIncomingPhoneCall; // @synthesize receivedIncomingPhoneCall=_receivedIncomingPhoneCall;
 @property(nonatomic) _Bool carDNDActive; // @synthesize carDNDActive=_carDNDActive;
+@property(nonatomic) long long directActionEvent; // @synthesize directActionEvent=_directActionEvent;
 @property(nonatomic, getter=isDeviceInStarkMode, setter=setDeviceInStarkMode:) _Bool deviceIsInStarkMode; // @synthesize deviceIsInStarkMode=_deviceIsInStarkMode;
 @property(nonatomic, getter=isEyesFree) _Bool eyesFree; // @synthesize eyesFree=_eyesFree;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic) __weak id <AFUISiriViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <AFUISiriViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
+- (id)_orbViewControllingView;
+- (id)_carPlaySiriView;
+- (id)_compactSiriView;
+- (id)_fullSiriView;
+- (void)deactivateSceneForExtendingTTSInBackground;
+- (void)animateOrbViewDismissalIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)hideVoiceActivationMaskViewIfNecessary;
+- (void)siriContentDidReceiveReportBugLongPress:(id)arg1;
+- (void)siriContentDidReceiveReportBugAction:(id)arg1;
+- (void)siriContentDidReceiveOrbHoldDidEndAction:(id)arg1;
+- (void)siriContentDidReceiveOrbHoldDidBeginAction:(id)arg1;
+- (void)siriContentDidReceiveOrbTappedAction:(id)arg1;
+- (void)emitInstrumentationEvent:(id)arg1;
+- (void)emitUIStateTransitionForSiriDismissalWithReason:(int)arg1;
+- (id)_systemState;
+- (_Bool)_isDeviceScreenOn;
 - (_Bool)_canShowWhileLocked;
+- (unsigned long long)_currentSessionAvailabilityState;
+- (id)_configuration;
 - (void)_setRecordingStartedOnRoute:(_Bool)arg1;
 - (_Bool)_recordingStartedOnRoute;
 - (void)updateToPresentationWithIdentifier:(id)arg1 presentationProperties:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)updateSettingsOnRemoteSceneForInterfaceOrientationChange:(long long)arg1 willAnimationWithDuration:(double)arg2;
+- (void)handlePunchoutCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)shouldNonLocalDelegateHandlePunchouts;
 - (void)siriSessionShouldEndExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionShouldExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionDidFinishRequestWithError:(id)arg1;
@@ -111,6 +144,10 @@
 - (void)siriSession:(id)arg1 didReceiveDeviceUnlockRequestAndCancelRequest:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)siriSession:(id)arg1 didReceiveDeviceUnlockRequestWithCompletion:(CDUnknownBlockType)arg2;
 - (void)siriSession:(id)arg1 didChangeToState:(long long)arg2;
+- (void)siriSessionAudioOutputDidChangePowerLevel:(float)arg1;
+- (void)siriSessionAudioRecordingDidChangePowerLevel:(float)arg1;
+- (void)siriSession:(id)arg1 failedToLaunchAppWithBundleIdentifier:(id)arg2;
+- (void)siriSession:(id)arg1 willProcessAppLaunchWithBundleIdentifier:(id)arg2;
 - (unsigned long long)lockStateForSiriSession:(id)arg1;
 - (id)starkAppBundleIdentifierContextForSiriSession:(id)arg1;
 - (id)currentCarPlaySupportedOEMAppIDListForSiriSession:(id)arg1;
@@ -130,6 +167,7 @@
 - (long long)userAccountCountForSiriView:(id)arg1;
 - (id)activeAccountForSiriView:(id)arg1;
 - (id)assistantVersionForSiriView:(id)arg1;
+- (void)collapseAndTriggerDismissalFromSiriView:(id)arg1;
 - (void)siriView:(id)arg1 didReceiveSiriActivationMessageWithSource:(long long)arg2;
 - (_Bool)siriView:(id)arg1 attemptUnlockWithPassword:(id)arg2;
 - (void)siriViewDidReceiveHelpAction:(id)arg1;
@@ -164,6 +202,7 @@
 - (_Bool)_canIgnoreHoldToTalkThreshold;
 - (_Bool)_isTextInputEnabled;
 - (id)_uiPresentationIdentifier;
+- (double)_delayForHoldToTalkStopRequestsWithSource:(long long)arg1;
 - (void)_holdToTalkTriggerDidReleaseFromSource:(long long)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillLayoutSubviews;
@@ -172,7 +211,6 @@
 - (id)viewServiceApplicationInfo;
 - (void)shortTapAction;
 - (void)handleViewFullyRevealed;
-- (void)updateViewForPercentageRevealed:(double)arg1;
 - (void)setLockState:(unsigned long long)arg1;
 - (void)_updateRemoteViewControllerStateForAppearance;
 - (void)showPresentationWithIdentifier:(id)arg1 properties:(id)arg2 lockState:(unsigned long long)arg3;
@@ -193,25 +231,29 @@
 - (void)siriWillActivateFromSource:(long long)arg1;
 - (void)preheat;
 - (void)defrost;
-- (void)viewWillAppearFinishedForSiriRemoteViewController:(id)arg1;
-- (void)showPasscodeUnlockScreenThen:(CDUnknownBlockType)arg1;
+- (void)showPasscodeUnlockScreenForRequest:(id)arg1 unlockCompletion:(CDUnknownBlockType)arg2;
 - (void)handlePasscodeUnlockAndCancelRequest:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handlePasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleSiriDidActivateFromSource:(long long)arg1;
 - (void)_handleMicButtonLongPressEndedFromSource:(long long)arg1;
 - (void)_handleMicButtonLongPressBeganFromSource:(long long)arg1;
 - (void)_handleMicButtonTapFromSource:(long long)arg1;
+- (void)tapPanDismissalPolicyManager:(id)arg1 dismissalPolicyDidChange:(_Bool)arg2;
 - (void)keyboardViewDidReceiveAudioRouteAction:(id)arg1;
 - (void)keyboardViewDidReceiveBugButtonLongPress:(id)arg1;
 - (void)keyboardViewDidReceiveHelpButtonAction:(id)arg1;
 - (void)keyboardViewDidReceiveReportBugAction:(id)arg1;
 - (void)keyboardView:(id)arg1 didReceiveText:(id)arg2;
+- (double)_thresholdForBarSwipeDismissal;
 - (void)_setShowKeyboardIfTextInputEnabled:(_Bool)arg1 minimized:(_Bool)arg2;
 - (void)_setShowKeyboardIfTextInputEnabled:(_Bool)arg1;
 - (void)_setTypeToSiriViewHidden:(_Bool)arg1;
 - (void)_setStatusViewHidden:(_Bool)arg1;
+- (void)siriRemoteViewControllerDidDeactivateScene:(id)arg1;
+- (void)siriRemoteViewController:(id)arg1 sceneDidActivateWithIdentifier:(id)arg2;
+- (void)siriRemoteViewController:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 presentedIntentWithBundleId:(id)arg2;
-- (void)siriRemoteViewController:(id)arg1 requestsDismissal:(CDUnknownBlockType)arg2;
+- (void)siriRemoteViewController:(id)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)siriRemoteViewController:(id)arg1 requestsPresentation:(CDUnknownBlockType)arg2;
 - (void)siriRemoteViewControllerDidEndTapToEdit:(id)arg1;
 - (void)siriRemoteViewControllerWillBeginTapToEdit:(id)arg1;
@@ -247,7 +289,8 @@
 - (void)siriRemoteViewController:(id)arg1 setStatusViewUserInteractionEnabled:(_Bool)arg2;
 - (void)siriRemoteViewController:(id)arg1 setStatusViewDisabled:(_Bool)arg2;
 - (void)siriRemoteViewController:(id)arg1 setCarDisplaySnippetMode:(long long)arg2;
-- (void)siriRemoteViewController:(id)arg1 setCarDisplaySnippetVisible:(_Bool)arg2;
+- (void)_setFullScreenDimmingLayerVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)siriRemoteViewController:(id)arg1 setFullScreenDimmingLayerVisible:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)siriRemoteViewController:(id)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
 - (void)siriRemoteViewController:(id)arg1 setStatusViewHidden:(_Bool)arg2;
 - (void)siriRemoteViewController:(id)arg1 siriIdleAndQuietStatusDidChange:(_Bool)arg2;
@@ -256,11 +299,15 @@
 - (void)userRelevantEventDidOccurInSiriRemoteViewController:(id)arg1;
 - (void)siriRemoteViewController:(id)arg1 startRequestWithOptions:(id)arg2;
 - (void)startGuidedAccessForRemoteViewController:(id)arg1;
+- (void)requestBlurVisible:(_Bool)arg1 reason:(long long)arg2 fence:(id)arg3;
+- (void)setShouldPassTouchesThroughToSpringBoard:(_Bool)arg1;
+- (void)setShouldDismissForSwipesOutsideContent:(_Bool)arg1;
+- (void)setShouldDismissForTapsOutsideContent:(_Bool)arg1;
+- (void)setShouldDismissForTapOutsideContent:(_Bool)arg1;
 - (void)extendCurrentTTSRequested;
-- (void)dismissSiriRemoteViewController:(id)arg1 delayForTTS:(_Bool)arg2 userInfo:(id)arg3;
-- (void)siriRemoteViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
+- (void)dismissSiriRemoteViewController:(id)arg1 delayForTTS:(_Bool)arg2 userInfo:(id)arg3 withDismissalReason:(unsigned long long)arg4;
 - (long long)siriRemoteViewControllerRequestsActivationSource:(id)arg1;
-- (void)siriRemoteViewController:(id)arg1 didEncounterUnexpectedServiceError:(id)arg2;
+- (void)siriRemoteViewController:(id)arg1 invalidatedForReason:(unsigned long long)arg2 explanation:(id)arg3;
 - (void)siriRemoteViewControllerDidFinishDismissing:(id)arg1;
 - (unsigned long long)lockStateForSiriRemoteViewController:(id)arg1;
 - (id)siriRemoteViewController:(id)arg1 bulletinWithIdentifier:(id)arg2;
@@ -269,6 +316,12 @@
 - (void)_sendBeginAppearanceTransitionIfReadyAnimated:(_Bool)arg1;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)_presentDeferredFlamesViewIfNecessary;
+- (void)compactView:(id)arg1 blurVisibilityDidChange:(_Bool)arg2;
+- (void)compactView:(id)arg1 bottomContentInsetDidChange:(double)arg2;
+- (void)siriWillBeginTearDownForDismissalReason:(unsigned long long)arg1;
+- (void)setDockFrame:(struct CGRect)arg1;
+- (void)hasContentAtPoint:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)invalidate;
 - (void)_informRemoteViewControllerOfParentIfNecessary;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentRemoteViewController;
@@ -285,6 +338,7 @@
 - (void)_keyboardDidShowNotification:(id)arg1;
 - (CDStruct_a82615c4)_keyboardInfoFromNotification:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_triggerPeopleSuggesterLogging;
 - (void)_recordUIDismissal;
 - (void)_recordUIAppearance;
 - (void)_willEnterFullScreenScreenshotMode:(id)arg1;
@@ -297,18 +351,25 @@
 - (void)_showStatusBarAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_statusBarFrameDidChange:(id)arg1;
 - (id)_siriView;
+- (void)_showVoiceActivationMaskView:(_Bool)arg1;
+- (_Bool)_shouldShowVoiceActivationMaskViewWithSiriView:(id)arg1 requestSource:(long long)arg2 screenOff:(_Bool)arg3 connectedToCarPlay:(_Bool)arg4;
 - (void)loadView;
+- (void)_updateSiriAvailability:(unsigned long long)arg1;
 - (long long)keyboardAppearance;
 @property(retain, nonatomic) UIView *inputAccessoryView;
 - (_Bool)canBecomeFirstResponder;
 - (void)setFluidDismissalState:(id)arg1;
+- (void)_setInFluidDismissal:(_Bool)arg1;
+- (void)requestStatusBarVisible:(_Bool)arg1;
 - (void)animatedDisappearanceWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)animatedAppearanceWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)cancelSpeechRecordingIfNecessary;
 - (void)proximityStatusChanged:(_Bool)arg1;
 - (void)exitUITrackingMode;
 - (void)enterUITrackingMode;
 @property(readonly, nonatomic) _Bool isProcessingAcousticIdRequest;
-- (void)setShowsStatusBar:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestStatusBarVisible:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)viewMode;
 - (id)underlyingConnection;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 configuration:(id)arg2 requestSource:(long long)arg3;

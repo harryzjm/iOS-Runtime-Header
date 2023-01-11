@@ -8,25 +8,32 @@
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneHandle, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector;
+@class NSString, SBDeviceApplicationSceneHandle, SBSUIInCallSceneClientSettingsDiffInspector, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector;
 
 @interface SBDeviceApplicationSceneStatusBarStateProvider <SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride, BSInvalidatable>
 {
     UIApplicationSceneClientSettingsDiffInspector *_appClientSettingsDiffInspector;
     UIApplicationSceneSettingsDiffInspector *_appSceneSettingsDiffInspector;
+    SBSUIInCallSceneClientSettingsDiffInspector *_inCallSceneClientSettingsDiffInspector;
+    _Bool _hasAttemptedInCallSceneClientSettingsDiffInspectorCreation;
     SBDeviceApplicationSceneHandle *_sceneHandle;
 }
 
 - (void).cxx_destruct;
 - (_Bool)_anyObserverWants:(SEL)arg1;
+- (void)_handleStatusBarStyleOverridesToSuppressUpdate;
 - (void)_performUpdateWith:(id)arg1 actions:(CDUnknownBlockType)arg2;
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
 - (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
 - (long long)_fallbackInterfaceOrientation;
 - (_Bool)_statusBarAppearsOutsideOfAJailedApp;
 - (_Bool)_suppressInheritedPartStyles;
+- (id)sceneToHandleStatusBarTapIfExists;
+- (id)classicApplicationSceneHandleIfExists;
 - (id)statusBarSceneIdentifier;
-- (id)statusBarControllingSceneHandle;
+- (id)breadcrumbProvider;
+- (id)overlayStatusBarData;
+- (_Bool)sceneWantsDeviceOrientationEventsEnabled;
 - (struct CGRect)statusBarAvoidanceFrame;
 - (int)statusBarStyleOverridesToSuppress;
 - (long long)_statusBarOrientationGivenFallbackOrientation:(long long)arg1;

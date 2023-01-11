@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, XCTestRun;
+@class NSString, XCTestObservationCenter, XCTestRun;
 
 @interface XCTest : NSObject
 {
-    id _internal;
+    XCTestRun *_testRun;
+    XCTestObservationCenter *_observationCenter;
 }
 
 + (id)languageAgnosticTestClassNameForTestClass:(Class)arg1;
@@ -19,19 +20,21 @@
 @property(readonly) NSString *nameForLegacyLogging;
 @property(readonly) NSString *languageAgnosticTestMethodName;
 @property(readonly) NSString *languageAgnosticTestClassName;
+- (_Bool)tearDownWithError:(id *)arg1;
 - (void)tearDown;
 - (void)setUp;
+- (_Bool)setUpWithError:(id *)arg1;
 - (void)runTest;
 - (void)performTest:(id)arg1;
-@property(readonly) XCTestRun *testRun;
+@property(retain) XCTestObservationCenter *observationCenter; // @synthesize observationCenter=_observationCenter;
+@property(readonly) XCTestRun *testRun; // @synthesize testRun=_testRun;
 @property(readonly) Class testRunClass;
 @property(readonly) Class _requiredTestRunBaseClass;
 @property(readonly, copy) NSString *name;
 @property(readonly) unsigned long long testCaseCount;
-- (id)init;
-- (void)removeTestsWithNames:(id)arg1;
 @property(readonly) NSString *_methodNameForReporting;
 @property(readonly) NSString *_classNameForReporting;
+- (void)removeTestsWithNames:(id)arg1;
 
 @end
 

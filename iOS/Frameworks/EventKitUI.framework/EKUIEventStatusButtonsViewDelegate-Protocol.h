@@ -6,11 +6,15 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKUIEventStatusButtonsView;
+@class EKUIEventStatusButtonsView, UIFont;
 
 @protocol EKUIEventStatusButtonsViewDelegate <NSObject>
 - (void)eventStatusButtonsView:(EKUIEventStatusButtonsView *)arg1 calculatedFontSizeToFit:(double)arg2;
-- (double)eventStatusButtonsViewButtonFontSize:(EKUIEventStatusButtonsView *)arg1;
 - (void)eventStatusButtonsView:(EKUIEventStatusButtonsView *)arg1 didSelectAction:(long long)arg2 ifCancelled:(void (^)(void))arg3;
+
+@optional
+- (void)statusButtonsDidLayout;
+- (double)eventStatusButtonsViewButtonFontSize:(EKUIEventStatusButtonsView *)arg1;
+- (UIFont *)eventStatusButtonsViewButtonFont:(EKUIEventStatusButtonsView *)arg1;
 @end
 

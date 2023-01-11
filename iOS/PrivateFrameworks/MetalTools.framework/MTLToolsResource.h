@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLResourceSPI-Protocol.h>
 
-@class MTLResourceAllocationInfo, MTLToolsHeap, NSString;
+@class MTLToolsHeap, NSString;
 @protocol MTLDevice, MTLHeap;
 
 @interface MTLToolsResource <MTLResourceSPI>
@@ -27,9 +27,8 @@
 - (_Bool)doesAliasResource:(id)arg1;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2 heap:(id)arg3;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
+@property(readonly) unsigned long long allocationID;
 @property(readonly) unsigned long long protectionOptions;
-@property(readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
-@property(readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
 @property int responsibleProcess;
 - (_Bool)isPurgeable;
 @property(readonly) unsigned long long heapOffset;

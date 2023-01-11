@@ -10,6 +10,7 @@
 
 @interface PKPeerPaymentQuoteRequest <NSSecureCoding>
 {
+    _Bool _preserveCurrentBalance;
     NSString *_orderIdentifier;
     NSDecimalNumber *_amount;
     NSString *_currency;
@@ -30,6 +31,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PKPeerPaymentQuoteCertificatesResponse *quoteCertificatesResponse; // @synthesize quoteCertificatesResponse=_quoteCertificatesResponse;
 @property(copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property(copy, nonatomic) NSString *routingNumber; // @synthesize routingNumber=_routingNumber;
@@ -44,10 +46,10 @@
 @property(nonatomic) unsigned long long context; // @synthesize context=_context;
 @property(nonatomic) unsigned long long destination; // @synthesize destination=_destination;
 @property(nonatomic) unsigned long long externalFundingSource; // @synthesize externalFundingSource=_externalFundingSource;
+@property(nonatomic) _Bool preserveCurrentBalance; // @synthesize preserveCurrentBalance=_preserveCurrentBalance;
 @property(copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property(copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property(readonly, copy, nonatomic) NSString *orderIdentifier; // @synthesize orderIdentifier=_orderIdentifier;
-- (void).cxx_destruct;
 - (_Bool)isEqualToPeerPaymentQuoteRequest:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

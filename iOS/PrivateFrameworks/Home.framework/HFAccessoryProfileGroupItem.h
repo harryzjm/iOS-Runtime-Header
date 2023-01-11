@@ -15,19 +15,16 @@
     NSSet *_profiles;
     NSNumber *_groupIdentifier;
     id <HFCharacteristicValueSource> _valueSource;
-    NSSet *_profileItems;
 }
 
-@property(retain, nonatomic) NSSet *profileItems; // @synthesize profileItems=_profileItems;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 @property(readonly, copy, nonatomic) NSNumber *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(readonly, nonatomic) NSSet *profiles; // @synthesize profiles=_profiles;
-- (void).cxx_destruct;
 - (id)copyWithValueSource:(id)arg1;
 - (id)_buildProfileItems;
 @property(readonly, nonatomic) NSSet *services;
 - (id)accessories;
-- (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithProfiles:(id)arg1 groupIdentifier:(id)arg2 valueSource:(id)arg3;

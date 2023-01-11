@@ -11,11 +11,13 @@
 
 @interface GKTurnBasedMatchmakerHostViewController <GKTurnBasedMatchmakerHostProtocol, GKTurnBasedMatchmakerServiceProtocol>
 {
-    GKTurnBasedMatchmakerViewController *_delegateWeak;
+    GKTurnBasedMatchmakerViewController *_delegate;
 }
 
 + (_Bool)dismissAutomaticallyAfterExtensionCompletion;
 + (id)turnBasedMatchmakerExtension;
+- (void).cxx_destruct;
+@property(nonatomic) __weak GKTurnBasedMatchmakerViewController *delegate; // @synthesize delegate=_delegate;
 - (void)extensionIsCanceling;
 - (void)messageFromExtension:(id)arg1;
 - (void)refreshMatches;
@@ -24,8 +26,6 @@
 - (void)setShowExistingMatches:(_Bool)arg1;
 - (void)setMatchRequestInternal:(id)arg1;
 - (id)extensionObjectProxy;
-@property(nonatomic) GKTurnBasedMatchmakerViewController *delegate; // @synthesize delegate=_delegateWeak;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

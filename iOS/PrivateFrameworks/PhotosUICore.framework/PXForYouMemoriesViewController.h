@@ -19,14 +19,19 @@
     struct _NSRange _dataSourceRange;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldHandleEntireDataSource; // @synthesize shouldHandleEntireDataSource=_shouldHandleEntireDataSource;
 @property(nonatomic) unsigned long long rowType; // @synthesize rowType=_rowType;
 @property(nonatomic) struct _NSRange dataSourceRange; // @synthesize dataSourceRange=_dataSourceRange;
 @property(nonatomic) __weak id <PXForYouMemoriesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)_scrollMemoryReferenceToVisible:(id)arg1 animated:(_Bool)arg2;
+- (_Bool)prepareToNavigateToDetailsForMemoryUUID:(id)arg1;
 @property(readonly, nonatomic) long long userInterfaceFeature;
 - (id)createNewLayoutGenerator;
 - (void)scrollViewControllerWillEndScrolling:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)_alignToNearestGadget;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)viewDidLoad;
 - (id)initWithDataSourceManager:(id)arg1;

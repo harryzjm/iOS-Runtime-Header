@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString, UIStackView, VUIDownloadButton, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView;
+@class NSObject, NSString, UIStackView, VUIDownloadButton, VUILabel, VUILibraryEpisodeFrameView, VUIMediaItem, VUISeparatorView;
 @protocol VUIMediaEntityAssetController;
 
 __attribute__((visibility("hidden")))
@@ -22,10 +22,13 @@ __attribute__((visibility("hidden")))
     VUIDownloadButton *_downloadButton;
     VUILabel *_dotSeparatorLabel;
     NSObject<VUIMediaEntityAssetController> *_assetController;
+    VUIMediaItem *_mediaItem;
 }
 
 + (id)_metadataLabelWithString:(id)arg1 existingLabel:(id)arg2;
 + (void)configureVUILibraryEpisodeListCell:(id)arg1 withMedia:(id)arg2 andAssetController:(id)arg3;
+- (void).cxx_destruct;
+@property(retain, nonatomic) VUIMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property(retain, nonatomic) NSObject<VUIMediaEntityAssetController> *assetController; // @synthesize assetController=_assetController;
 @property(retain, nonatomic) VUILabel *dotSeparatorLabel; // @synthesize dotSeparatorLabel=_dotSeparatorLabel;
 @property(retain, nonatomic) VUIDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
@@ -38,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *duration; // @synthesize duration=_duration;
 @property(copy, nonatomic) NSString *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (_Bool)_contentSizeCategoryIsAccessibility;
 - (double)_metadataHeightToBaselineNonAXContentSizeCategory;
 - (double)_metadataScaledTopMarginForNonAXContentSizeCategory;

@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic, getter=isColorspaceGrayscale) _Bool colorspaceGrayscale; // @dynamic colorspaceGrayscale;
 @property(nonatomic) struct UIEdgeInsets fontLanguageInsets; // @dynamic fontLanguageInsets;
 @property(nonatomic) struct UIEdgeInsets textInsets; // @dynamic textInsets;
 @property(retain, nonatomic) UIColor *focusHighlightColor; // @dynamic focusHighlightColor;

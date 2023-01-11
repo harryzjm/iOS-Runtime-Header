@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <ContentKit/WFNaming-Protocol.h>
 #import <ContentKit/WFSerializableContent-Protocol.h>
 
 @class NSString;
 
-@interface DCMapsLink : NSObject <WFSerializableContent>
+@interface DCMapsLink : NSObject <WFSerializableContent, WFNaming>
 {
 }
 
@@ -51,7 +52,7 @@
 - (id)region;
 - (id)regionCenteredAtLocation:(struct CLLocationCoordinate2D)arg1;
 - (id)wfSerializedRepresentation;
-- (id)wfName;
+@property(readonly, copy, nonatomic) NSString *wfName;
 - (void)getAppleMapsDirectionsURL:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *mkDirectionsMode;
 @property(readonly, nonatomic) unsigned long long directionsTransportType;

@@ -12,7 +12,6 @@
     _Bool _enableManualRefreshUI;
     _Bool _fakePeopleProximity;
     _Bool _recoverBlacklistedMemories;
-    _Bool _useUnifiedFont;
     _Bool _showMemoryTitleLayer;
     _Bool _enableIPadWideHeader;
     double _refreshPhotoKitTimeout;
@@ -22,16 +21,19 @@
     long long _minimumNumberOfCuratedAssetsForMovieHeader;
     unsigned long long _deleteBehavior;
     long long _subtitleFontSize;
+    unsigned long long _timelineSchedulerMode;
 }
 
++ (id)schedulerOptionsFromTimelineSchedulerMode:(unsigned long long)arg1;
 + (id)sharedInstance;
 + (void)_presentAlertWithTitle:(id)arg1 andMessage:(id)arg2 inModuleController:(id)arg3;
 + (void)_presentAlertForMemoriesGenerationResult:(id)arg1 error:(id)arg2 inModuleController:(id)arg3;
++ (void)_generateQuestionsWithOptions:(long long)arg1 count:(unsigned long long)arg2 inModuleController:(id)arg3;
 + (id)settingsControllerModule;
+@property(nonatomic) unsigned long long timelineSchedulerMode; // @synthesize timelineSchedulerMode=_timelineSchedulerMode;
 @property(nonatomic) long long subtitleFontSize; // @synthesize subtitleFontSize=_subtitleFontSize;
 @property(nonatomic) _Bool enableIPadWideHeader; // @synthesize enableIPadWideHeader=_enableIPadWideHeader;
 @property(nonatomic) _Bool showMemoryTitleLayer; // @synthesize showMemoryTitleLayer=_showMemoryTitleLayer;
-@property(nonatomic) _Bool useUnifiedFont; // @synthesize useUnifiedFont=_useUnifiedFont;
 @property(nonatomic) _Bool recoverBlacklistedMemories; // @synthesize recoverBlacklistedMemories=_recoverBlacklistedMemories;
 @property(nonatomic) unsigned long long deleteBehavior; // @synthesize deleteBehavior=_deleteBehavior;
 @property(nonatomic) long long minimumNumberOfCuratedAssetsForMovieHeader; // @synthesize minimumNumberOfCuratedAssetsForMovieHeader=_minimumNumberOfCuratedAssetsForMovieHeader;

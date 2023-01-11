@@ -10,3 +10,19 @@ typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameter
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int linkProbingVersion;
+    unsigned int remoteLinkProbingVersion;
+    double localAlertDuration;
+    double remoteAlertDuration;
+} CDStruct_4bc0a271;
+
+typedef struct {
+    int twoPtFourGhzChannelCount;
+    int fiveGhzChannelCount;
+    int dfsChannelCount;
+    int inactiveSlotCount;
+} CDStruct_f2f7ecfd;
+

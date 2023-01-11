@@ -24,8 +24,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_clearPendingCompletion;
-- (void)_setPendingCompletion:(CDUnknownBlockType)arg1 fromState:(id)arg2 toState:(id)arg3;
 - (void)stateController:(id)arg1 transitionDidStop:(id)arg2 completed:(_Bool)arg3;
 - (void)stateController:(id)arg1 transitionDidStart:(id)arg2 speed:(float)arg3;
 - (void)stateController:(id)arg1 didSetStateOfLayer:(id)arg2;

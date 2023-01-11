@@ -12,7 +12,7 @@
 
 @property(nonatomic) double sentimentScore; // @dynamic sentimentScore;
 @property(retain, nonatomic) PPTopicMetadata *metadata; // @dynamic metadata;
-@property(nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
+@property(nonatomic) unsigned int extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property(retain, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property(nonatomic) _Bool isLocal; // @dynamic isLocal;
 @property(nonatomic) double decayRate; // @dynamic decayRate;

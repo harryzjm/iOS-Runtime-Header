@@ -20,17 +20,20 @@
     CCUICAPackageDescription *_glyphPackageDescription;
     NSString *_glyphState;
     UIImage *_glyphImage;
+    NSString *_contentSizeCategoryThreshold;
     UIColor *_highlightColor;
     CCUILabeledRoundButton *_buttonContainer;
     UIControl *_button;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIControl *button; // @synthesize button=_button;
 @property(retain, nonatomic) CCUILabeledRoundButton *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
 @property(nonatomic) _Bool useLightStyle; // @synthesize useLightStyle=_useLightStyle;
 @property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property(nonatomic, getter=isInoperative) _Bool inoperative; // @synthesize inoperative=_inoperative;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(nonatomic) NSString *contentSizeCategoryThreshold; // @synthesize contentSizeCategoryThreshold=_contentSizeCategoryThreshold;
 @property(nonatomic) _Bool useAlternateBackground; // @synthesize useAlternateBackground=_useAlternateBackground;
 @property(nonatomic) _Bool toggleStateOnTap; // @synthesize toggleStateOnTap=_toggleStateOnTap;
 @property(nonatomic) _Bool labelsVisible; // @synthesize labelsVisible=_labelsVisible;
@@ -38,7 +41,6 @@
 @property(copy, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
 @property(retain, nonatomic) CCUICAPackageDescription *glyphPackageDescription; // @synthesize glyphPackageDescription=_glyphPackageDescription;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-- (void).cxx_destruct;
 - (_Bool)_canShowWhileLocked;
 - (void)loadView;
 @property(copy, nonatomic) NSString *title; // @dynamic title;

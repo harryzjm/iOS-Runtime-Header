@@ -18,6 +18,7 @@
     unsigned long long _deviceProtocolVersion;
     unsigned long long _globalConfigVersion;
     unsigned long long _operationGroupQuantity;
+    NSMutableArray *_activeThrottlingLabels;
     NSString *_applicationBundle;
     NSString *_applicationContainer;
     int _applicationContainerEnvironment;
@@ -32,7 +33,9 @@
     CKDPIdentifier *_deviceIdentifier;
     NSString *_deviceLibraryName;
     NSString *_deviceLibraryVersion;
+    NSString *_deviceSerialNumber;
     NSString *_deviceSoftwareVersion;
+    NSString *_deviceUDID;
     int _isolationLevel;
     CKDPLocale *_locale;
     NSString *_mmcsProtocolVersion;
@@ -42,6 +45,7 @@
     NSString *_userIDContainerID;
     NSString *_userToken;
     _Bool _deviceSoftwareIsAppleInternal;
+    _Bool _entitlementsValidated;
     struct {
         unsigned int applicationConfigVersion:1;
         unsigned int deviceFlowControlBudget:1;
@@ -54,10 +58,17 @@
         unsigned int isolationLevel:1;
         unsigned int targetDatabase:1;
         unsigned int deviceSoftwareIsAppleInternal:1;
+        unsigned int entitlementsValidated:1;
     } _has;
 }
 
++ (Class)activeThrottlingLabelType;
 + (Class)serviceIdentityKeyIDsType;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool entitlementsValidated; // @synthesize entitlementsValidated=_entitlementsValidated;
+@property(retain, nonatomic) NSString *deviceSerialNumber; // @synthesize deviceSerialNumber=_deviceSerialNumber;
+@property(retain, nonatomic) NSString *deviceUDID; // @synthesize deviceUDID=_deviceUDID;
+@property(retain, nonatomic) NSMutableArray *activeThrottlingLabels; // @synthesize activeThrottlingLabels=_activeThrottlingLabels;
 @property(retain, nonatomic) CKDPRequestOperationHeaderAssetAuthorizeGetRequestOptions *assetAuthorizeGetRequestOptions; // @synthesize assetAuthorizeGetRequestOptions=_assetAuthorizeGetRequestOptions;
 @property(nonatomic) _Bool deviceSoftwareIsAppleInternal; // @synthesize deviceSoftwareIsAppleInternal=_deviceSoftwareIsAppleInternal;
 @property(retain, nonatomic) NSMutableArray *serviceIdentityKeyIDs; // @synthesize serviceIdentityKeyIDs=_serviceIdentityKeyIDs;
@@ -85,7 +96,6 @@
 @property(retain, nonatomic) NSString *applicationBundle; // @synthesize applicationBundle=_applicationBundle;
 @property(retain, nonatomic) NSString *applicationContainer; // @synthesize applicationContainer=_applicationContainer;
 @property(retain, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -95,6 +105,13 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasEntitlementsValidated;
+@property(readonly, nonatomic) _Bool hasDeviceSerialNumber;
+@property(readonly, nonatomic) _Bool hasDeviceUDID;
+- (id)activeThrottlingLabelAtIndex:(unsigned long long)arg1;
+- (unsigned long long)activeThrottlingLabelsCount;
+- (void)addActiveThrottlingLabel:(id)arg1;
+- (void)clearActiveThrottlingLabels;
 @property(readonly, nonatomic) _Bool hasAssetAuthorizeGetRequestOptions;
 @property(nonatomic) _Bool hasDeviceSoftwareIsAppleInternal;
 - (id)serviceIdentityKeyIDsAtIndex:(unsigned long long)arg1;

@@ -6,7 +6,7 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@class GCController, NSArray, NSData;
+@class GCController, NSData;
 
 @protocol GameControllerClientProtocol <NSObject>
 - (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(_Bool)arg5;
@@ -16,7 +16,6 @@
 - (void)controllerWithUDID:(unsigned long long)arg1 setData:(NSData *)arg2;
 - (void)removeController:(GCController *)arg1;
 - (void)addController:(GCController *)arg1;
-- (void)replyConnectedHosts:(NSArray *)arg1;
 
 @optional
 - (void)addControllerForAppStoreRemote:(GCController *)arg1;

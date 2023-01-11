@@ -6,19 +6,23 @@
 
 #import <HomeKit/HMRoom.h>
 
+#import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFWallaperHost-Protocol.h>
 
 @class HMCameraProfile, HMHome, NSArray, NSDate, NSSet, NSString, NSUUID, UIImage;
 
-@interface HMRoom (HFDebugging) <HFStateDumpBuildable, HFWallaperHost, HFReorderableHomeKitObject>
+@interface HMRoom (HFDebugging) <HFStateDumpBuildable, HFWallaperHost, HFHomeKitObject, HFReorderableHomeKitObject>
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_updateWallpaperImage:(id)arg1;
 @property(readonly, nonatomic) UIImage *hf_wallpaperImage;
+@property(readonly, nonatomic) _Bool hf_hasAtleastOneReachableHomePod;
 @property(readonly, nonatomic) NSArray *hf_visibleAccessories;
 @property(readonly, nonatomic) NSSet *hf_allVisibleServices;
-@property(readonly, nonatomic) NSArray *hf_unpairedHomePods;
+@property(readonly, nonatomic) _Bool hf_hasAtleastOneHomePod;
+- (id)availableHomePodsSupportingStereoPairingVersions:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSArray *hf_pairedHomePods;
 @property(readonly, nonatomic) NSArray *hf_allZones;
 @property(readonly, nonatomic) NSArray *hf_allServices;
 @property(readonly, nonatomic) __weak HMCameraProfile *hf_unitaryCameraProfile;

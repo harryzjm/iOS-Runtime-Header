@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 @interface HKNumericMinimumRangeAxisScalingRule
 {
+    NSNumber *_minimumValue;
+    NSNumber *_maximumValue;
 }
 
++ (id)ruleWithDefaultYAxisRange:(double)arg1 minimumValue:(id)arg2 maximumValue:(id)arg3 axisRangeOverrides:(id)arg4;
 + (id)ruleWithDefaultYAxisRange:(double)arg1 axisRangeOverrides:(id)arg2;
+- (void).cxx_destruct;
 
 @end
 

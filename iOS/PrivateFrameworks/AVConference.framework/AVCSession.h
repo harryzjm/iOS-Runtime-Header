@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *remoteParticipantsMap; // @synthesize remoteParticipantsMap=_remoteParticipants;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateNotificationQueue; // @synthesize delegateNotificationQueue=_delegateNotificationQueue;
 @property(retain, nonatomic) AVCSessionConfiguration *configuration; // @synthesize configuration=_configuration;
+- (void)participant:(id)arg1 mediaPrioritiesDidChange:(id)arg2;
 - (void)participant:(id)arg1 videoPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 audioPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 videoEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
@@ -48,6 +49,7 @@
 - (void)deregisterFromNotifications;
 - (void)registerBlocksForNotifications;
 - (id)newNSErrorWithErrorDictionary:(id)arg1;
+- (void)validateParticipantConfiguration;
 - (void)endParticipantConfiguration;
 - (void)beginParticipantConfiguration;
 - (void)updateConfiguration:(id)arg1;

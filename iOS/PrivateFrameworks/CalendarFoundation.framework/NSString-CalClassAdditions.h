@@ -7,9 +7,13 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CalClassAdditions)
++ (id)CalAutoCommentPrefix;
 + (id)stringWithFileSystemRepresentation:(const char *)arg1;
 + (id)stringWithContentsOfFile:(id)arg1 usingEncoding:(unsigned long long)arg2;
 + (id)ellipsisString;
+- (id)CalStringWithOnlyAutoComment;
+- (id)CalStringByRemovingAutoComment;
+- (_Bool)CalHasAutoCommentPrefix;
 - (id)stringByRemovingPrefixCaseInsensitive:(id)arg1;
 - (id)stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)stringByRemovingCharactersInSet:(id)arg1;

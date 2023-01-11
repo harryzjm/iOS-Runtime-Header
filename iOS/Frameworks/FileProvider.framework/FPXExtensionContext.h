@@ -32,9 +32,9 @@ __attribute__((visibility("hidden")))
 + (void)setPrincipalClass:(Class)arg1;
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool usesFPFS; // @synthesize usesFPFS=_usesFPFS;
 @property(readonly, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
-- (void).cxx_destruct;
 - (void)_test_callFileProviderManagerAPIs:(CDUnknownBlockType)arg1;
 - (void)importDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)signalEnumeratorForMaterializedItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -52,9 +52,10 @@ __attribute__((visibility("hidden")))
 - (void)fetchDefaultContainerForBundleIdentifier:(id)arg1 defaultName:(id)arg2 inDomainIdentifier:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)fetchItemID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchHierarchyForItemID:(id)arg1 recursively:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)_createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 contents:(id)arg3 options:(unsigned long long)arg4 bounce:(_Bool)arg5 bounceIndex:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 contents:(id)arg3 options:(unsigned long long)arg4 targetName:(id)arg5 bounce:(_Bool)arg6 bounceNumber:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 contents:(id)arg3 options:(unsigned long long)arg4 bounce:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)deleteItemsWithIDs:(id)arg1 baseVersions:(id)arg2 options:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_indexOutOfBandUpdatedItems:(id)arg1 deletedItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preflightReparentItemID:(id)arg1 underParentID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)_reparentItem:(id)arg1 underParent:(id)arg2 withNewName:(id)arg3 shouldBounce:(_Bool)arg4 bounceIndex:(unsigned long long)arg5 reply:(CDUnknownBlockType)arg6;
 - (id)_proxyWithCancellationHandler:(id)arg1 forClientOperation:(id)arg2;
@@ -110,7 +111,7 @@ __attribute__((visibility("hidden")))
 - (id)domainContextForIdentifier:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)sendBlacklistedProcessNamesUpdate;
-- (void)invalidate;
+- (void)fpx_invalidate;
 - (void)dealloc;
 - (void)_setTransaction:(id)arg1;
 - (void)beginRequestWithDomain:(id)arg1 alternateContentsDictionary:(id)arg2 usesFPFS:(_Bool)arg3;

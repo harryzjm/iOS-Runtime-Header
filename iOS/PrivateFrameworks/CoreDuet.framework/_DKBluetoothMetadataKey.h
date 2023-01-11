@@ -10,7 +10,11 @@
 {
 }
 
++ (id)batteryLevelHeadphoneCase;
++ (id)batteryLevelHeadphoneRight;
++ (id)batteryLevelHeadphoneLeft;
 + (id)productID;
++ (id)isUserWearing;
 + (id)isAppleAudioDevice;
 + (id)deviceType;
 + (id)name;

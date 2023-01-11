@@ -22,6 +22,7 @@
     _Bool _canShowShareSheetPlugIns;
     _Bool _whitelistActionActivitiesOnly;
     _Bool _linkedBeforeYukon;
+    _Bool _canSaveImages;
     _Bool __unitTest_disableExcludingSourceApplicationFromOpenActivities;
     double _preferredWidth;
     NSArray *_hostActivityConfigurations;
@@ -37,6 +38,7 @@
     NSString *_sessionID;
     UITraitCollection *_hostTraitCollection;
     NSLocale *_hostLocale;
+    NSArray *_preferredLocalizations;
     NSArray *_includedActivityTypes;
     NSArray *_excludedActivityTypes;
     NSArray *_activityTypeOrder;
@@ -47,12 +49,14 @@
 
 + (void)_unitTest_SetDisableExcludingSourceApplicationFromOpenActivities:(_Bool)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool _unitTest_disableExcludingSourceApplicationFromOpenActivities; // @synthesize _unitTest_disableExcludingSourceApplicationFromOpenActivities=__unitTest_disableExcludingSourceApplicationFromOpenActivities;
 @property(nonatomic) long long sharingStyle; // @synthesize sharingStyle=_sharingStyle;
 @property(nonatomic) long long excludedActivityCategories; // @synthesize excludedActivityCategories=_excludedActivityCategories;
 @property(retain, nonatomic) NSArray *activityTypeOrder; // @synthesize activityTypeOrder=_activityTypeOrder;
 @property(retain, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(retain, nonatomic) NSArray *includedActivityTypes; // @synthesize includedActivityTypes=_includedActivityTypes;
+@property(nonatomic) _Bool canSaveImages; // @synthesize canSaveImages=_canSaveImages;
 @property(nonatomic) _Bool linkedBeforeYukon; // @synthesize linkedBeforeYukon=_linkedBeforeYukon;
 @property(nonatomic) _Bool whitelistActionActivitiesOnly; // @synthesize whitelistActionActivitiesOnly=_whitelistActionActivitiesOnly;
 @property(nonatomic) _Bool canShowShareSheetPlugIns; // @synthesize canShowShareSheetPlugIns=_canShowShareSheetPlugIns;
@@ -63,6 +67,7 @@
 @property(nonatomic) _Bool shouldMatchOnlyUserElectedExtensions; // @synthesize shouldMatchOnlyUserElectedExtensions=_shouldMatchOnlyUserElectedExtensions;
 @property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property(nonatomic) _Bool allowsEmbedding; // @synthesize allowsEmbedding=_allowsEmbedding;
+@property(retain, nonatomic) NSArray *preferredLocalizations; // @synthesize preferredLocalizations=_preferredLocalizations;
 @property(retain, nonatomic) NSLocale *hostLocale; // @synthesize hostLocale=_hostLocale;
 @property(nonatomic) struct NSDirectionalEdgeInsets hostLayoutMargins; // @synthesize hostLayoutMargins=_hostLayoutMargins;
 @property(retain, nonatomic) UITraitCollection *hostTraitCollection; // @synthesize hostTraitCollection=_hostTraitCollection;
@@ -78,11 +83,11 @@
 @property(retain, nonatomic) NSArray *activityItemValueClassNames; // @synthesize activityItemValueClassNames=_activityItemValueClassNames;
 @property(retain, nonatomic) NSArray *hostActivityConfigurations; // @synthesize hostActivityConfigurations=_hostActivityConfigurations;
 @property(nonatomic) double preferredWidth; // @synthesize preferredWidth=_preferredWidth;
-- (void).cxx_destruct;
 - (id)availableActivityItemValueClasses;
 - (id)_contextForMatchingActivityItems:(id)arg1 activityItemValues:(id)arg2 activityItemValueClasses:(id)arg3;
 - (id)contextForMatchingByActivityItems:(id)arg1 itemValues:(id)arg2;
 - (id)contextForMatchingByActivityItemValueClasses;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

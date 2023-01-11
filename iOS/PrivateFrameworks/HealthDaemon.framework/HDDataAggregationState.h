@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HKObject, NSMutableArray;
+@class HKSample, NSMutableArray;
 
 @interface HDDataAggregationState : NSObject
 {
     NSMutableArray *_unaggregatedSensorData;
-    HKObject *_openSeries;
+    HKSample *_openSeries;
 }
 
-@property(readonly, nonatomic) HKObject *openSeries; // @synthesize openSeries=_openSeries;
-@property(readonly, nonatomic) NSMutableArray *unaggregatedSensorData; // @synthesize unaggregatedSensorData=_unaggregatedSensorData;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HKSample *openSeries; // @synthesize openSeries=_openSeries;
+@property(readonly, nonatomic) NSMutableArray *unaggregatedSensorData; // @synthesize unaggregatedSensorData=_unaggregatedSensorData;
 - (id)initWithRemainingSensorData:(id)arg1 currentSeries:(id)arg2;
 - (id)initWithRemainingSensorData:(id)arg1;
 - (id)init;

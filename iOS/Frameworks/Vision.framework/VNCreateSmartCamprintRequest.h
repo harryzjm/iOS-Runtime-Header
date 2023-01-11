@@ -14,7 +14,7 @@
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 @property(nonatomic) _Bool returnAllResults;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
 @end
 

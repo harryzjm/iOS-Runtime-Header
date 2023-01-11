@@ -22,6 +22,7 @@
     UIColor *_disabledTextColor;
     UIColor *_placeholderTextColor;
     UIColor *_highlightedTextColor;
+    UIColor *_highlightedTextLightColor;
     UIColor *_suggestedLabelTextColor;
     UIColor *_suggestedValueTextColor;
     UIColor *_readOnlyTextColor;
@@ -42,11 +43,17 @@
     UIColor *_sectionBackgroundColor;
     UIColor *_selectedCellBackgroundColor;
     UIColor *_groupedBackgroundColor;
+    UIColor *_searchCellBackgroundColor;
     long long _barStyle;
     long long _keyboardAppearance;
     long long _modalTransitionStyle;
     long long _topActionsViewStyle;
     long long _inlineActionsViewStyle;
+    long long _contactViewPlatterStyle;
+    long long _overridenStyle;
+    double _sectionMaximumPlatterWidth;
+    double _sectionCornerRadius;
+    double _sectionContentInset;
     struct UIEdgeInsets _separatorInset;
 }
 
@@ -55,10 +62,18 @@
 + (id)testStyle;
 + (id)siriStyle;
 + (id)watchStyle;
++ (id)darkStyleWithOverrideUserInterfaceStyle:(long long)arg1;
++ (id)spotlightStyle;
 + (id)faceTimeStyle;
 + (id)darkStyle;
 + (id)defaultStyle;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) double sectionContentInset; // @synthesize sectionContentInset=_sectionContentInset;
+@property(nonatomic) double sectionCornerRadius; // @synthesize sectionCornerRadius=_sectionCornerRadius;
+@property(nonatomic) double sectionMaximumPlatterWidth; // @synthesize sectionMaximumPlatterWidth=_sectionMaximumPlatterWidth;
+@property(nonatomic) long long overridenStyle; // @synthesize overridenStyle=_overridenStyle;
+@property(nonatomic) long long contactViewPlatterStyle; // @synthesize contactViewPlatterStyle=_contactViewPlatterStyle;
 @property(nonatomic) long long inlineActionsViewStyle; // @synthesize inlineActionsViewStyle=_inlineActionsViewStyle;
 @property(nonatomic) long long topActionsViewStyle; // @synthesize topActionsViewStyle=_topActionsViewStyle;
 @property(nonatomic) long long modalTransitionStyle; // @synthesize modalTransitionStyle=_modalTransitionStyle;
@@ -67,6 +82,7 @@
 @property(nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property(nonatomic) _Bool usesTranslucentBarStyle; // @synthesize usesTranslucentBarStyle=_usesTranslucentBarStyle;
 @property(nonatomic) long long barStyle; // @synthesize barStyle=_barStyle;
+@property(retain, nonatomic) UIColor *searchCellBackgroundColor; // @synthesize searchCellBackgroundColor=_searchCellBackgroundColor;
 @property(retain, nonatomic) UIColor *groupedBackgroundColor; // @synthesize groupedBackgroundColor=_groupedBackgroundColor;
 @property(retain, nonatomic) UIColor *selectedCellBackgroundColor; // @synthesize selectedCellBackgroundColor=_selectedCellBackgroundColor;
 @property(retain, nonatomic) UIColor *sectionBackgroundColor; // @synthesize sectionBackgroundColor=_sectionBackgroundColor;
@@ -89,17 +105,18 @@
 @property(retain, nonatomic) UIColor *readOnlyTextColor; // @synthesize readOnlyTextColor=_readOnlyTextColor;
 @property(retain, nonatomic) UIColor *suggestedValueTextColor; // @synthesize suggestedValueTextColor=_suggestedValueTextColor;
 @property(retain, nonatomic) UIColor *suggestedLabelTextColor; // @synthesize suggestedLabelTextColor=_suggestedLabelTextColor;
+@property(retain, nonatomic) UIColor *highlightedTextLightColor; // @synthesize highlightedTextLightColor=_highlightedTextLightColor;
 @property(retain, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
 @property(retain, nonatomic) UIColor *placeholderTextColor; // @synthesize placeholderTextColor=_placeholderTextColor;
 @property(retain, nonatomic) UIColor *disabledTextColor; // @synthesize disabledTextColor=_disabledTextColor;
 @property(retain, nonatomic) UIColor *taglineTextColor; // @synthesize taglineTextColor=_taglineTextColor;
 @property(retain, nonatomic) UIColor *sectionHeaderTextColor; // @synthesize sectionHeaderTextColor=_sectionHeaderTextColor;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) UIFont *boldTextFont;
 @property(readonly, nonatomic) UIFont *textFont;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool usesInsetPlatterStyle;
 - (id)init;
 
 @end

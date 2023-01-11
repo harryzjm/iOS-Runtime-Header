@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDBatchSpatialLookupResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_spatialEventLookupResults;
     NSMutableArray *_spatialPlaceLookupResults;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _statusCode;
     struct {
         unsigned int has_statusCode:1;
         unsigned int read_unknownFields:1;
         unsigned int read_spatialEventLookupResults:1;
         unsigned int read_spatialPlaceLookupResults:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_spatialEventLookupResults:1;
-        unsigned int wrote_spatialPlaceLookupResults:1;
-        unsigned int wrote_statusCode:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,26 +44,27 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)spatialEventLookupResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spatialEventLookupResultsCount;
-- (void)_addNoFlagsSpatialEventLookupResult:(id)arg1;
 - (void)addSpatialEventLookupResult:(id)arg1;
 - (void)clearSpatialEventLookupResults;
 @property(retain, nonatomic) NSMutableArray *spatialEventLookupResults;
-- (void)_readSpatialEventLookupResults;
 - (id)spatialPlaceLookupResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spatialPlaceLookupResultsCount;
-- (void)_addNoFlagsSpatialPlaceLookupResult:(id)arg1;
 - (void)addSpatialPlaceLookupResult:(id)arg1;
 - (void)clearSpatialPlaceLookupResults;
 @property(retain, nonatomic) NSMutableArray *spatialPlaceLookupResults;
-- (void)_readSpatialPlaceLookupResults;
 - (int)StringAsStatusCode:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatusCode;
 @property(nonatomic) int statusCode;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)studentDaemonConnection;
 + (id)setOfActiveRestrictionUUIDs:(id)arg1;
 + (void)fetchConfiguration:(CDUnknownBlockType)arg1;
 + (void)setConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;

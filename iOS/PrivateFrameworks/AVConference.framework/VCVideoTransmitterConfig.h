@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, NSDictionary, NSMutableDictionary;
+@class AVCStatisticsCollector, NSDictionary, NSMutableDictionary, VCRateControlMediaController;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoTransmitterConfig : NSObject
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     _Bool _enableCVO;
     int _videoPayload;
     int _encodingMode;
+    NSDictionary *_colorInfo;
     _Atomic unsigned char *_videoPriorityPointer;
     unsigned long long _customWidth;
     unsigned long long _customHeight;
@@ -36,8 +37,20 @@ __attribute__((visibility("hidden")))
     _Bool _useRateControl;
     unsigned int _pixelFormat;
     NSMutableDictionary *_customFeatureListStrings;
+    VCRateControlMediaController *_mediaController;
+    void *_mediaControlInfoGenerator;
+    _Bool _reinitEncoderOnFrameSizeChangeEnabled;
+    _Bool _isIPv6;
+    unsigned int _qualityIndex;
+    unsigned long long _remoteIDSParticipantID;
 }
 
+@property(nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
+@property(nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
+@property(nonatomic) _Bool isIPv6; // @synthesize isIPv6=_isIPv6;
+@property(nonatomic) void *mediaControlInfoGenerator; // @synthesize mediaControlInfoGenerator=_mediaControlInfoGenerator;
+@property(retain, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
+@property(nonatomic) _Bool reinitEncoderOnFrameSizeChangeEnabled; // @synthesize reinitEncoderOnFrameSizeChangeEnabled=_reinitEncoderOnFrameSizeChangeEnabled;
 @property(readonly, nonatomic) NSDictionary *customFeatureListStrings; // @synthesize customFeatureListStrings=_customFeatureListStrings;
 @property(nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(nonatomic) _Bool useRateControl; // @synthesize useRateControl=_useRateControl;
@@ -49,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long customHeight; // @synthesize customHeight=_customHeight;
 @property(nonatomic) unsigned long long customWidth; // @synthesize customWidth=_customWidth;
 @property(nonatomic) _Atomic unsigned char *videoPriorityPointer; // @synthesize videoPriorityPointer=_videoPriorityPointer;
+@property(nonatomic) NSDictionary *colorInfo; // @synthesize colorInfo=_colorInfo;
 @property(nonatomic) int encodingMode; // @synthesize encodingMode=_encodingMode;
 @property(nonatomic) int videoPayload; // @synthesize videoPayload=_videoPayload;
 @property(nonatomic) int videoSource; // @synthesize videoSource=_videoSource;

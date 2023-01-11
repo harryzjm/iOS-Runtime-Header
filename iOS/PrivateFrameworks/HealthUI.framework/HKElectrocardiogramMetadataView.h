@@ -15,9 +15,9 @@
     id <HKElectrocardiogramMetadataViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <HKElectrocardiogramMetadataViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
-- (void).cxx_destruct;
 - (id)_separatorLine;
 - (id)_footerLabel;
 - (id)_sharePDFControl;
@@ -25,8 +25,8 @@
 - (id)_ecgChart;
 - (void)sharedPDFControlTapped:(id)arg1;
 - (void)detailButtonTapped:(id)arg1;
-- (void)_setupUI;
-- (id)initWithSample:(id)arg1 delegate:(id)arg2;
+- (void)_setupUIWithActiveAlgorithmVersion:(long long)arg1;
+- (id)initWithSample:(id)arg1 activeAlgorithmVersion:(long long)arg2 delegate:(id)arg3;
 
 @end
 

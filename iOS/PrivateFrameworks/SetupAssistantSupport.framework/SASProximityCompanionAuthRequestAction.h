@@ -13,9 +13,9 @@
 }
 
 + (unsigned long long)actionID;
+- (void).cxx_destruct;
 @property(retain) ACAccount *account; // @synthesize account=_account;
 @property(retain) AKDevice *companionDevice; // @synthesize companionDevice=_companionDevice;
-- (void).cxx_destruct;
 - (id)idmsAccountForiCloud;
 - (void)setResponseFromData:(id)arg1;
 - (id)responsePayload;

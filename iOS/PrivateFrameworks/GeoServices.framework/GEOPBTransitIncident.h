@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPBTransitIncident : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_affectedEntitys;
     unsigned long long _incidentMuid;
@@ -25,6 +24,9 @@ __attribute__((visibility("hidden")))
     NSString *_messageString;
     NSString *_shortDescriptionString;
     NSString *_titleString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _creationDatetime;
     unsigned int _endDatetime;
     int _iconEnum;
@@ -50,23 +52,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_messageString:1;
         unsigned int read_shortDescriptionString:1;
         unsigned int read_titleString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_affectedEntitys:1;
-        unsigned int wrote_incidentMuid:1;
-        unsigned int wrote_incidentTypeArtwork:1;
-        unsigned int wrote_longDescriptionString:1;
-        unsigned int wrote_messageForAllBlocking:1;
-        unsigned int wrote_messageForIncidentType:1;
-        unsigned int wrote_messageString:1;
-        unsigned int wrote_shortDescriptionString:1;
-        unsigned int wrote_titleString:1;
-        unsigned int wrote_creationDatetime:1;
-        unsigned int wrote_endDatetime:1;
-        unsigned int wrote_iconEnum:1;
-        unsigned int wrote_incidentIndex:1;
-        unsigned int wrote_startDatetime:1;
-        unsigned int wrote_updatedDatetime:1;
-        unsigned int wrote_blocking:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -83,38 +69,32 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPBTransitArtwork *incidentTypeArtwork;
 @property(readonly, nonatomic) _Bool hasIncidentTypeArtwork;
-- (void)_readIncidentTypeArtwork;
 @property(retain, nonatomic) NSString *messageForIncidentType;
 @property(readonly, nonatomic) _Bool hasMessageForIncidentType;
-- (void)_readMessageForIncidentType;
 @property(retain, nonatomic) NSString *messageForAllBlocking;
 @property(readonly, nonatomic) _Bool hasMessageForAllBlocking;
-- (void)_readMessageForAllBlocking;
 @property(retain, nonatomic) NSString *messageString;
 @property(readonly, nonatomic) _Bool hasMessageString;
-- (void)_readMessageString;
 @property(retain, nonatomic) NSString *titleString;
 @property(readonly, nonatomic) _Bool hasTitleString;
-- (void)_readTitleString;
 @property(retain, nonatomic) NSString *shortDescriptionString;
 @property(readonly, nonatomic) _Bool hasShortDescriptionString;
-- (void)_readShortDescriptionString;
 @property(retain, nonatomic) NSString *longDescriptionString;
 @property(readonly, nonatomic) _Bool hasLongDescriptionString;
-- (void)_readLongDescriptionString;
 @property(nonatomic) _Bool hasBlocking;
 @property(nonatomic) _Bool blocking;
 - (id)affectedEntityAtIndex:(unsigned long long)arg1;
 - (unsigned long long)affectedEntitysCount;
-- (void)_addNoFlagsAffectedEntity:(id)arg1;
 - (void)addAffectedEntity:(id)arg1;
 - (void)clearAffectedEntitys;
 @property(retain, nonatomic) NSMutableArray *affectedEntitys;
-- (void)_readAffectedEntitys;
 @property(nonatomic) _Bool hasUpdatedDatetime;
 @property(nonatomic) unsigned int updatedDatetime;
 @property(nonatomic) _Bool hasCreationDatetime;
@@ -131,6 +111,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long incidentMuid;
 @property(nonatomic) _Bool hasIncidentIndex;
 @property(nonatomic) unsigned int incidentIndex;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

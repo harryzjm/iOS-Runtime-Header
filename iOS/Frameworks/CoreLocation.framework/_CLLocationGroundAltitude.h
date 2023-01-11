@@ -11,16 +11,28 @@
 
 @interface _CLLocationGroundAltitude : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _isAltitudeWgs84Available;
+    int _undulationModel;
     double _estimate;
     double _uncertainty;
+    double _undulation;
+    double _altitudeWgs84;
+    double _uncertaintyWgs84;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) double uncertaintyWgs84; // @synthesize uncertaintyWgs84=_uncertaintyWgs84;
+@property(readonly, nonatomic) double altitudeWgs84; // @synthesize altitudeWgs84=_altitudeWgs84;
+@property(readonly, nonatomic) _Bool isAltitudeWgs84Available; // @synthesize isAltitudeWgs84Available=_isAltitudeWgs84Available;
+@property(readonly, nonatomic) int undulationModel; // @synthesize undulationModel=_undulationModel;
+@property(readonly, nonatomic) double undulation; // @synthesize undulation=_undulation;
 @property(readonly, nonatomic) double uncertainty; // @synthesize uncertainty=_uncertainty;
 @property(readonly, nonatomic) double estimate; // @synthesize estimate=_estimate;
+@property(readonly, nonatomic) double altitude;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithEstimate:(double)arg1 uncertainty:(double)arg2 undulation:(double)arg3 undulationModel:(int)arg4;
 - (id)initWithEstimate:(double)arg1 uncertainty:(double)arg2;
 
 @end

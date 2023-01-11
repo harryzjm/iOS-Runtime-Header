@@ -11,6 +11,7 @@
 
 + (_Bool)isValidForTransitionRequest:(id)arg1;
 @property(nonatomic, getter=isAnimatedOverride) long long animatedOverride; // @synthesize animatedOverride=_animatedOverride;
+- (_Bool)_canBeInterrupted;
 - (void)_begin;
 - (id)initWithTransitionRequest:(id)arg1;
 

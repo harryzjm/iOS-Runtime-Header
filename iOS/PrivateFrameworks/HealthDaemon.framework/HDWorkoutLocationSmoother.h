@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/CLLocationSmootherDelegate-Protocol.h>
+#import <HealthDaemon/HDDataObserver-Protocol.h>
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDForegroundClientProcessObserver-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class CLLocationSmoother, HDProfile, HDSmoothingTask, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate, HDDatabaseProtectedDataObserver, HDForegroundClientProcessObserver>
+@interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate, HDDatabaseProtectedDataObserver, HDForegroundClientProcessObserver, HDDataObserver, HDHealthDaemonReadyObserver>
 {
     CLLocationSmoother *_smoother;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,10 +26,17 @@
     double _smoothingTaskTimeout;
     _Bool _needToCheckForLocationSeriesOnUnlock;
     _Bool _isFirstLaunchAndNotYetSmoothed;
+    CDUnknownBlockType _didCompleteAllPendingSmoothingTasksHandler;
+    CDUnknownBlockType _unitTest_wilTriggerSmoothing;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType unitTest_wilTriggerSmoothing; // @synthesize unitTest_wilTriggerSmoothing=_unitTest_wilTriggerSmoothing;
+@property(copy, nonatomic) CDUnknownBlockType didCompleteAllPendingSmoothingTasksHandler; // @synthesize didCompleteAllPendingSmoothingTasksHandler=_didCompleteAllPendingSmoothingTasksHandler;
 - (void)unitTest_smoothRouteSample:(id)arg1 withSmoother:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)smoothRouteWithWorkoutUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)samplesAdded:(id)arg1 anchor:(id)arg2;
+- (_Bool)_shouldObserveWorkouts;
 - (void)_queue_cancelTimeout;
 - (void)_queue_scheduleSmoothingTimeoutTimerForTask:(id)arg1;
 - (id)_locationsForSampleUUID:(id)arg1 error:(id *)arg2;
@@ -45,9 +54,10 @@
 - (void)_queue_locationManagerDidSmoothLocations:(id)arg1 forTask:(id)arg2 error:(id)arg3;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
 - (void)foregroundClientProcessesDidChange:(id)arg1 previouslyForegroundBundleIdentifiers:(id)arg2;
+- (void)daemonReady:(id)arg1;
 - (void)_queue_smoothAllUnsmoothedLocationSeries;
 - (void)_associationsSyncedForWorkout:(id)arg1;
-- (void)_setupLocationObserversIfNeeded;
+- (void)_queue_setupLocationObserversIfNeeded;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 

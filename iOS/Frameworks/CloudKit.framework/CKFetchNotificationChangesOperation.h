@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKServerChangeToken;
+#import <CloudKit/CKFetchNotificationChangesOperationCallbacks-Protocol.h>
 
-@interface CKFetchNotificationChangesOperation
+@class CKFetchNotificationChangesOperationInfo, CKServerChangeToken;
+@protocol CKFetchNotificationChangesOperationCallbacks;
+
+@interface CKFetchNotificationChangesOperation <CKFetchNotificationChangesOperationCallbacks>
 {
     _Bool _moreComing;
     CDUnknownBlockType _notificationChangedBlock;
@@ -16,15 +19,17 @@
     CKServerChangeToken *_resultServerChangeToken;
 }
 
++ (SEL)daemonCallbackCompletionSelector;
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
 @property(nonatomic) _Bool moreComing; // @synthesize moreComing=_moreComing;
 @property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(copy, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleOperationDidCompleteWithServerChangeToken:(id)arg1 moreComing:(_Bool)arg2 metrics:(id)arg3 error:(id)arg4;
+- (void)handleChangedNotification:(id)arg1;
 - (void)performCKOperation;
 - (_Bool)hasCKOperationCallbacksSet;
 - (void)fillFromOperationInfo:(id)arg1;
@@ -33,6 +38,10 @@
 @property(copy, nonatomic) CDUnknownBlockType notificationChangedBlock; // @synthesize notificationChangedBlock=_notificationChangedBlock;
 - (id)initWithPreviousServerChangeToken:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKFetchNotificationChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKFetchNotificationChangesOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

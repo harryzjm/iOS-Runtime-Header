@@ -26,16 +26,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)_shouldDefaultToTouches;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long direction; // @synthesize direction=_direction;
 @property(nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
-@property(nonatomic) double rateOfMaximumMovementDecay; // @synthesize rateOfMaximumMovementDecay=_rateOfMaximumMovementDecay;
-@property(nonatomic) double rateOfMinimumMovementDecay; // @synthesize rateOfMinimumMovementDecay=_rateOfMinimumMovementDecay;
-@property(nonatomic) double maximumSecondaryMovement; // @synthesize maximumSecondaryMovement=_maximumSecondaryMovement;
-@property(nonatomic) double minimumSecondaryMovement; // @synthesize minimumSecondaryMovement=_minimumSecondaryMovement;
-@property(nonatomic) double maximumPrimaryMovement; // @synthesize maximumPrimaryMovement=_maximumPrimaryMovement;
-@property(nonatomic) double minimumPrimaryMovement; // @synthesize minimumPrimaryMovement=_minimumPrimaryMovement;
 @property(nonatomic) double maximumDuration; // @synthesize maximumDuration=_maximumDuration;
-- (void).cxx_destruct;
+- (_Bool)_isGestureType:(long long)arg1;
 - (void)_appendSubclassDescription:(id)arg1;
 - (struct CGPoint)locationOfTouch:(unsigned long long)arg1 inView:(id)arg2;
 - (unsigned long long)numberOfTouches;
@@ -43,10 +38,8 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
-- (_Bool)_checkForSwipeWithDelta:(struct CGPoint)arg1 time:(double)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_resetGestureRecognizer;
-@property(readonly, nonatomic) struct CGPoint startPoint;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

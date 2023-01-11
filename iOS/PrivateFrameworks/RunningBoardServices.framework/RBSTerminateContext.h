@@ -6,53 +6,44 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSArray, NSSet, NSString;
+@class NSArray, NSString;
 
-@interface RBSTerminateContext : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSTerminateContext : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     unsigned char _maximumTerminationResistance;
-    _Bool _graceful;
-    unsigned char _maximumRole;
     _Bool _preventIfBeingDebugged;
     unsigned int _exceptionDomain;
     NSString *_explanation;
     unsigned long long _reportType;
     unsigned long long _exceptionCode;
     NSArray *_attributes;
-    NSSet *_preventingEndowmentNamespaces;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-+ (id)defaultContext;
++ (_Bool)supportsRBSXPCSecureCoding;
++ (id)defaultContextWithExplanation:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool preventIfBeingDebugged; // @synthesize preventIfBeingDebugged=_preventIfBeingDebugged;
-@property(retain, nonatomic) NSSet *preventingEndowmentNamespaces; // @synthesize preventingEndowmentNamespaces=_preventingEndowmentNamespaces;
-@property(nonatomic) unsigned char maximumRole; // @synthesize maximumRole=_maximumRole;
-@property(nonatomic) _Bool graceful; // @synthesize graceful=_graceful;
 @property(copy, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
 @property(nonatomic) unsigned char maximumTerminationResistance; // @synthesize maximumTerminationResistance=_maximumTerminationResistance;
 @property(nonatomic) unsigned long long exceptionCode; // @synthesize exceptionCode=_exceptionCode;
 @property(nonatomic) unsigned int exceptionDomain; // @synthesize exceptionDomain=_exceptionDomain;
 @property(nonatomic) unsigned long long reportType; // @synthesize reportType=_reportType;
 @property(copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldTerminatePlugIns;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
+- (id)initWithExplanation:(id)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

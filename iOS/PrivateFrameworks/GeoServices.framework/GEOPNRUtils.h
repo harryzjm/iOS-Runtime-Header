@@ -11,23 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_currentLocale;
-+ (id)_preferredLanguages;
-+ (id)_currentCountry;
-+ (id)_cacheDirectoryPath;
-+ (_Bool)_createCachesDirectory;
-+ (id)_cachesPathForFileBaseName:(id)arg1 fileExtension:(id)arg2;
-+ (id)_frameworkPathForFileBaseName:(id)arg1 fileExtension:(id)arg2;
-+ (_Bool)_isValidPhoneNumber:(id)arg1;
 + (id)_stringByStrippingFormattingAndNotVisiblyAllowable:(id)arg1;
-+ (id)_countryCodeForInternationalCode:(id)arg1;
-+ (id)_internationalCodeForCountryCode:(id)arg1;
-+ (id)PNRZippedStringsSuffix;
-+ (id)PNRStringsSuffix;
-+ (id)PNRZippedTrieSuffix;
-+ (id)PNRTrieSuffix;
-+ (id)alePackDirectory;
-+ (id)versionFilePath;
 
 @end
 

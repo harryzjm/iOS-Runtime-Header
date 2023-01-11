@@ -11,7 +11,7 @@
 #import <SceneKit/SCNAnimatable-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
+@class MISSING_TYPE, NSArray, NSMutableDictionary, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
 @protocol MTLTexture;
 
 @interface SCNCamera : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
@@ -35,6 +35,7 @@
     float _fieldOfView;
     float _focalLength;
     float _sensorSize;
+    MISSING_TYPE *_lensShift;
     float _fStop;
     float _focusDistance;
     float _dofIntensity;
@@ -131,7 +132,9 @@
 @property(nonatomic) double sensorHeight;
 @property(nonatomic) double fieldOfView;
 - (void)_updateFocalLength;
-- (void)_updateFov;
+- (void)_updateFieldOfView;
+- (void)setLensShift: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)lensShift;
 @property(nonatomic) double zNear;
 @property(nonatomic) double zFar;
 - (void)setYFov:(double)arg1;

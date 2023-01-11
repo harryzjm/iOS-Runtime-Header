@@ -6,28 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, NSDictionary;
+#import <NotesShared/ICStateHandlerProvider-Protocol.h>
 
-@interface ICAccountUtilities : NSObject
+@class ACAccount, ACAccountStore, NSDictionary, NSMutableDictionary, NSString;
+
+@interface ICAccountUtilities : NSObject <ICStateHandlerProvider>
 {
     _Bool _primaryICloudACAccountValid;
     ACAccount *_primaryICloudACAccount;
     ACAccountStore *_accountStore;
     NSDictionary *_currentICloudAccountState;
+    NSMutableDictionary *_accountIsManagedByIdentifier;
 }
 
++ (void)registerStateHandler;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isPrimaryICloudACAccountValid) _Bool primaryICloudACAccountValid; // @synthesize primaryICloudACAccountValid=_primaryICloudACAccountValid;
+@property(retain, nonatomic) NSMutableDictionary *accountIsManagedByIdentifier; // @synthesize accountIsManagedByIdentifier=_accountIsManagedByIdentifier;
 @property(copy, nonatomic) NSDictionary *currentICloudAccountState; // @synthesize currentICloudAccountState=_currentICloudAccountState;
 @property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
-- (void).cxx_destruct;
+- (void)createDirectoryIfNecessaryUsingURL:(id)arg1;
 - (void)performBlockInPersonaContextIfNecessary:(CDUnknownBlockType)arg1 forAccountIdentifier:(id)arg2;
 - (void)accountStoreDidChange:(id)arg1;
 - (void)invalidatePrimaryICloudACAccount;
 - (void)internalInvalidatePrimaryICloudACAccount;
 @property(readonly, nonatomic) _Bool didChooseToMigratePrimaryICloudAccount;
 @property(readonly, nonatomic) _Bool primaryICloudAccountEnabled;
+- (id)temporaryDirectoryURLForAccountIdentifier:(id)arg1;
 - (id)applicationDocumentsURLForAccountIdentifier:(id)arg1;
+- (_Bool)isManagedACAccountWithIdentifer:(id)arg1;
 - (id)iCloudACAccountWithIdentifier:(id)arg1;
 - (id)allICloudACAccounts;
 @property(readonly) ACAccount *primaryICloudACAccount; // @synthesize primaryICloudACAccount=_primaryICloudACAccount;
@@ -35,6 +43,12 @@
 - (void)dealloc;
 - (id)initForObservingAccountStoreChanges:(_Bool)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

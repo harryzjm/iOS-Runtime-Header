@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString, NTPBTodayConfig;
+@class NSArray, NSDictionary, NSError, NSString, NTPBTodayConfig;
 @protocol FCContentContext, FCCoreConfiguration;
 
 @interface FCTodayConfigOperation
@@ -13,20 +13,29 @@
     id <FCContentContext> _context;
     NSString *_widgetConfigID;
     NSArray *_networkEvents;
-    CDUnknownBlockType _todayConfigCompletionHandler;
-    NTPBTodayConfig *_resultTodayConfig;
+    CDUnknownBlockType _defaultConfigCompletionHandler;
+    CDUnknownBlockType _singleTagConfigCompletionHandler;
+    NTPBTodayConfig *_resultDefaultConfig;
+    NSError *_defaultConfigError;
+    NTPBTodayConfig *_resultSingleTagConfig;
+    NSError *_singleTagConfigError;
     NSDictionary *_resultHeldRecordsByType;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *resultHeldRecordsByType; // @synthesize resultHeldRecordsByType=_resultHeldRecordsByType;
-@property(copy, nonatomic) NTPBTodayConfig *resultTodayConfig; // @synthesize resultTodayConfig=_resultTodayConfig;
-@property(copy, nonatomic) CDUnknownBlockType todayConfigCompletionHandler; // @synthesize todayConfigCompletionHandler=_todayConfigCompletionHandler;
+@property(copy, nonatomic) NSError *singleTagConfigError; // @synthesize singleTagConfigError=_singleTagConfigError;
+@property(copy, nonatomic) NTPBTodayConfig *resultSingleTagConfig; // @synthesize resultSingleTagConfig=_resultSingleTagConfig;
+@property(copy, nonatomic) NSError *defaultConfigError; // @synthesize defaultConfigError=_defaultConfigError;
+@property(copy, nonatomic) NTPBTodayConfig *resultDefaultConfig; // @synthesize resultDefaultConfig=_resultDefaultConfig;
+@property(copy, nonatomic) CDUnknownBlockType singleTagConfigCompletionHandler; // @synthesize singleTagConfigCompletionHandler=_singleTagConfigCompletionHandler;
+@property(copy, nonatomic) CDUnknownBlockType defaultConfigCompletionHandler; // @synthesize defaultConfigCompletionHandler=_defaultConfigCompletionHandler;
 @property(copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property(copy, nonatomic) NSString *widgetConfigID; // @synthesize widgetConfigID=_widgetConfigID;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)_collectRecordIDsReferencedBySectionConfig:(id)arg1 withArticleListIDs:(id)arg2 articleIDs:(id)arg3;
+- (id)_todayConfigWithConfigJSON:(id)arg1 articleListIDs:(id)arg2 articleIDs:(id)arg3 error:(id *)arg4;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

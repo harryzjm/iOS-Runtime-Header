@@ -39,8 +39,11 @@
 @property(readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property(readonly, nonatomic) long long notificationBehavior;
 @property(readonly, nonatomic) long long scrollingStrategy;
+- (void)conformsToCSExternalBehaviorProviding;
+- (void)conformsToCSBehaviorProviding;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (void)conformsToCSEventHandling;
 - (_Bool)unlockFromSource:(int)arg1;
 @property(readonly, nonatomic) _Bool showPasscode;
 @property(readonly, nonatomic, getter=isLocked) _Bool locked;

@@ -6,10 +6,12 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-@class IKViewElement, NSArray, NSIndexPath, UIView, UIViewController, _TVNeedsMoreContentEvaluator, _TVStackCollectionView;
+#import <TVMLKit/_TVCollectionViewing-Protocol.h>
+
+@class IKViewElement, NSArray, NSIndexPath, NSString, UIView, UIViewController, _TVNeedsMoreContentEvaluator, _TVStackCollectionView;
 @protocol _TVStackCollectionViewControllerDelegate;
 
-@interface _TVStackCollectionViewController : UICollectionViewController
+@interface _TVStackCollectionViewController : UICollectionViewController <_TVCollectionViewing>
 {
     NSArray *_viewControllers;
     NSArray *_stackSections;
@@ -26,9 +28,9 @@
     id <_TVStackCollectionViewControllerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <_TVStackCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
-- (void).cxx_destruct;
 - (struct CGSize)_maxContentSize;
 - (void)_updateBackgroundTintViewEffects;
 - (void)_updateBackgroundTintView;
@@ -51,6 +53,8 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)_needsMoreTargetElement;
+- (void)resetLastFocusedIndexPath;
+- (void)preloadCellsInRect:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -59,6 +63,10 @@
 
 // Remaining properties
 @property(retain, nonatomic) _TVStackCollectionView *collectionView; // @dynamic collectionView;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

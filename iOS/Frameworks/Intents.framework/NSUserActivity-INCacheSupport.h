@@ -19,11 +19,14 @@
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 @property(readonly, copy, nonatomic) NSString *cacheIdentifier;
 - (void)generateCachePayloadWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_intents_copy;
 - (long long)_executionContext;
 - (void)_setExecutionContext:(long long)arg1;
 - (_Bool)_isEligibleForPrediction;
 - (void)_setEligibleForPrediction:(_Bool)arg1;
+- (void)_intentsPrepareForEncoding;
 - (id)_intentsIdentifier;
+@property(nonatomic) unsigned long long shortcutAvailability;
 @property(copy, nonatomic) NSString *suggestedInvocationPhrase;
 - (void)setInteraction:(id)arg1;
 - (void)_setAccessedInteraction:(_Bool)arg1;

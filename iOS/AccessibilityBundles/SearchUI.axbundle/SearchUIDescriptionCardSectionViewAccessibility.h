@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)didPressMoreButton;
+- (id)accessibilityLabel;
 
 @end
 

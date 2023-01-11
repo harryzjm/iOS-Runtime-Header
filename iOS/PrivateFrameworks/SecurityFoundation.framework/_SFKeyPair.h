@@ -18,7 +18,7 @@
 @property(readonly, nonatomic, getter=_secKey) struct __SecKey *secKey;
 @property(readonly, copy, nonatomic) NSString *privateKeyDomain;
 @property(readonly, nonatomic) _SFPublicKey *publicKey;
-- (id)initRandomKeyPairWithSpecifier:(id)arg1 privateKeyDomain:(struct NSString *)arg2;
+- (id)initRandomKeyPairWithSpecifier:(id)arg1 privateKeyDomain:(id)arg2;
 - (id)initRandomKeyPairWithSpecifier:(id)arg1;
 - (id)initWithSecKey:(struct __SecKey *)arg1;
 - (id)initWithData:(id)arg1 specifier:(id)arg2 error:(id *)arg3;

@@ -4,55 +4,61 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFObject.h>
+#import <HMFoundation/HMFProcessInfo.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDApplicationInfo, HMFLocationAuthorization, NSArray, NSHashTable, NSObject, NSString;
-@protocol HMFLocking, OS_dispatch_queue;
+@class HMDApplicationInfo, HMFLocationAuthorization, NSArray, NSHashTable, NSString, RBSProcessHandle, RBSProcessState;
+@protocol HMFLocking;
 
-@interface HMDProcessInfo : HMFObject <HMFLogging>
+@interface HMDProcessInfo : HMFProcessInfo <HMFLogging>
 {
     id <HMFLocking> _lock;
-    _Bool _viewService;
-    int _pid;
+    NSHashTable *_connections;
+    _Bool _entitledForAPIAccess;
+    _Bool _entitledForSPIAccess;
     unsigned long long _state;
-    HMDApplicationInfo *_appInfo;
+    RBSProcessState *_processState;
+    NSString *_bundleIdentifier;
+    HMDApplicationInfo *_applicationInfo;
     HMFLocationAuthorization *_locationAuthorization;
-    NSArray *_runningReasons;
-    NSObject<OS_dispatch_queue> *_xpcQueue;
-    NSHashTable *_connectionProxies;
+    RBSProcessHandle *_processHandle;
 }
 
 + (id)logCategory;
-@property(readonly, nonatomic) NSHashTable *connectionProxies; // @synthesize connectionProxies=_connectionProxies;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
-@property(retain, nonatomic) NSArray *runningReasons; // @synthesize runningReasons=_runningReasons;
-@property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
-@property(readonly) HMFLocationAuthorization *locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
-@property(readonly, nonatomic) __weak HMDApplicationInfo *appInfo; // @synthesize appInfo=_appInfo;
-@property(readonly, nonatomic, getter=isViewService) _Bool viewService; // @synthesize viewService=_viewService;
++ (id)processInfoWithConnection:(id)arg1;
++ (id)privateClientIdentifierSalt;
++ (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void).cxx_destruct;
-- (id)_activeRequestIdentifiers;
-- (void)initiateRefresh;
-- (void)removeConnectionProxy:(id)arg1;
-- (void)addConnectionProxy:(id)arg1;
-- (unsigned long long)proxyCount;
-- (void)deactivate;
-- (void)activate;
-@property(readonly, nonatomic, getter=isTerminated) _Bool terminated;
-@property(readonly, nonatomic, getter=isSuspended) _Bool suspended;
-@property(readonly, nonatomic, getter=isBackgrounded) _Bool background;
-@property(readonly, nonatomic, getter=isBackgroundUpgradedToForeground) _Bool backgroundUpgradedToForeground;
-@property(readonly, nonatomic, getter=isForegrounded) _Bool foreground;
-@property(nonatomic) unsigned long long state; // @synthesize state=_state;
-@property(readonly, copy) NSString *description;
-- (id)logIdentifier;
-- (id)initWithConnectionProxy:(id)arg1 application:(id)arg2 processId:(int)arg3 xpcQueue:(id)arg4;
+@property(readonly, nonatomic) RBSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
+@property(readonly) HMFLocationAuthorization *locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
+@property(readonly) HMDApplicationInfo *applicationInfo; // @synthesize applicationInfo=_applicationInfo;
+@property(readonly, getter=isEntitledForSPIAccess) _Bool entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
+@property(readonly, getter=isEntitledForAPIAccess) _Bool entitledForAPIAccess; // @synthesize entitledForAPIAccess=_entitledForAPIAccess;
+@property(readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+- (id)clientIdentifierSalt:(id *)arg1;
+- (void)removeConnection:(id)arg1;
+- (void)addConnection:(id)arg1;
+@property(readonly, copy) NSArray *connections;
+@property(readonly, getter=isActive) _Bool active;
+@property(readonly, getter=isTerminated) _Bool terminated;
+@property(readonly, getter=isSuspended) _Bool suspended;
+@property(readonly, getter=isBackgrounded) _Bool background;
+@property(readonly, getter=isBackgroundUpgradedToForeground) _Bool backgroundUpgradedToForeground;
+@property(readonly, getter=isForegrounded) _Bool foreground;
+@property unsigned long long state; // @synthesize state=_state;
+@property(readonly, copy, nonatomic) RBSProcessState *processState; // @synthesize processState=_processState;
+- (void)_updateProcessState:(id)arg1;
+@property(readonly) _Bool shouldMonitor;
+- (id)attributeDescriptions;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithIdentifier:(int)arg1;
+- (id)initWithAuditToken:(CDStruct_6ad76789)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

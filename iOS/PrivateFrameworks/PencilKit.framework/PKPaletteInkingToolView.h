@@ -7,11 +7,12 @@
 #import <PencilKit/PKInkAttributesPickerDelegate-Protocol.h>
 #import <PencilKit/PKPaletteInkingTool-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKInk, UIImage, UIImageView, UILabel, UIViewController;
+@class NSLayoutConstraint, NSString, PKInk, PKPaletteAttributeViewController, UIImage, UIImageView, UILabel;
+@protocol PKPaletteErasingTool, PKPaletteInkingTool;
 
 @interface PKPaletteInkingToolView <PKPaletteInkingTool, PKInkAttributesPickerDelegate>
 {
-    UIViewController *_attributeViewController;
+    PKPaletteAttributeViewController *_attributeViewController;
     PKInk *_ink;
     UIImageView *_colorIndicatorImageView;
     UIImage *_colorIndicatorImageUp;
@@ -38,6 +39,7 @@
 }
 
 + (id)defaultColorForInkingToolWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *opacityLabelCenterYConstraint; // @synthesize opacityLabelCenterYConstraint=_opacityLabelCenterYConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *opacityLabelCenterXConstraint; // @synthesize opacityLabelCenterXConstraint=_opacityLabelCenterXConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *opacityLabelTrailingConstraint; // @synthesize opacityLabelTrailingConstraint=_opacityLabelTrailingConstraint;
@@ -61,19 +63,21 @@
 @property(retain, nonatomic) UIImage *colorIndicatorImageUp; // @synthesize colorIndicatorImageUp=_colorIndicatorImageUp;
 @property(retain, nonatomic) UIImageView *colorIndicatorImageView; // @synthesize colorIndicatorImageView=_colorIndicatorImageView;
 @property(retain, nonatomic) PKInk *ink; // @synthesize ink=_ink;
-- (void).cxx_destruct;
 - (id)_opacityLabelFont;
 - (void)setScalingFactor:(double)arg1;
-- (void)inkAttributesPickerDidChangeSelectedInk:(id)arg1;
+- (void)inkAttributesPickerDidChangeInkThickness:(id)arg1;
+- (void)inkAttributesPickerDidChangeInkOpacity:(id)arg1;
+- (double)_minimumAllowedInkOpacity;
 - (id)attributeViewController;
 - (void)setInkWeight:(double)arg1;
 - (void)_updateOpacityLabel;
 - (void)setInkColor:(id)arg1;
 - (void)_reloadToolImage;
 - (void)_updateToolColorBandAndTipImageViews;
+- (id)_uiColor;
+- (long long)_uiColorUserInterfaceStyle;
 - (void)setEdgeLocation:(unsigned long long)arg1;
 - (void)updateConstraints;
-- (double)_bandVerticalOffset;
 - (struct CGRect)_colorIndicatorImageViewFrame;
 - (id)_toolTipContourImageForCurrentEdgeLocation;
 - (id)_toolTipImageForCurrentEdgeLocation;
@@ -89,8 +93,11 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *toolIdentifier;
 
 @end
 

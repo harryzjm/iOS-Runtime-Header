@@ -47,6 +47,8 @@
 + (_Bool)supportsSecureCoding;
 + (id)animationWithC3DAnimation:(struct __C3DAnimation *)arg1;
 + (id)animationWithMDLTransform:(id)arg1;
+- (id)subAnimations;
+- (void)_optimizeKeyframesWithTarget:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

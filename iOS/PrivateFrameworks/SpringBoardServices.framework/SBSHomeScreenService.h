@@ -8,7 +8,7 @@
 
 #import <SpringBoardServices/SBSHomeScreenServiceServerToClientInterface-Protocol.h>
 
-@class BSServiceConnection;
+@class BSServiceConnection, NSArray;
 @protocol OS_dispatch_queue;
 
 @interface SBSHomeScreenService : NSObject <SBSHomeScreenServiceServerToClientInterface>
@@ -18,9 +18,35 @@
 }
 
 - (void).cxx_destruct;
+- (void)overrideBadgeValue:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)reloadIcons;
+- (void)changeDisplayedDateOffsetOverride:(double)arg1;
+- (void)changeDisplayedDateOverride:(id)arg1;
+- (void)ignoreAllApps;
+- (void)removeAllWidgets;
+- (void)organizeAllIconsAcrossPagesWithPageCount:(unsigned long long)arg1;
+- (void)organizeAllIconsIntoFoldersWithPageCount:(unsigned long long)arg1;
+- (void)requestAppLibraryUpdateSuggestionsAndRecentsPodWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestAppLibraryUpdateWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)hasWidgetWithBundleIdentifier:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *allHomeScreenApplicationPlaceholderBundleIdentifiers;
+@property(readonly, copy, nonatomic) NSArray *allHomeScreenApplicationBundleIdentifiers;
+@property(nonatomic) _Bool showsBadgesInAppLibrary;
+@property(nonatomic) _Bool addsNewIconsToHomeScreen;
+@property(nonatomic, getter=isLowDensityIconLayoutEnabled) _Bool lowDensityIconLayoutEnabled;
 - (void)addWidgetToTodayViewWithBundleIdentifier:(id)arg1;
+- (void)runRemoveAndRestoreIconTest;
+- (id)configureCategoryMapProviderToUseCategoryMapAtURL:(id)arg1;
+- (void)configureDeweyOneCategoryWithAllApps;
+- (void)configureDeweyEachAppHasItsOwnCategory;
+- (void)runDownloadingIconTest;
+- (_Bool)debugContinuityWithBadgeType:(id)arg1;
 - (id)folderPathToIconWithBundleIdentifier:(id)arg1;
 - (void)requestSuggestedApplicationWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)runFloatingDockStressTestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)unforbidApplicationBundleIdentifierFromLibrary:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)forbidApplicationBundleIdentifierFromLibrary:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)resetCategoriesLayoutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetHomeScreenLayoutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;

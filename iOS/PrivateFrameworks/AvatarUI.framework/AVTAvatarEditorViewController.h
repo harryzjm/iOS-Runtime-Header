@@ -8,12 +8,13 @@
 
 #import <AvatarUI/AVTAvatarAttributeEditorViewControllerDelegate-Protocol.h>
 #import <AvatarUI/AVTSplashScreenViewControllerDelegate-Protocol.h>
+#import <AvatarUI/AVTToolBarDelegate-Protocol.h>
 #import <AvatarUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class AVTAvatarAttributeEditorViewController, AVTAvatarRecord, AVTSplashScreenViewController, AVTUIEnvironment, AVTViewSessionProvider, NSString, UIBarButtonItem;
+@class AVTAvatarAttributeEditorViewController, AVTAvatarRecord, AVTSplashScreenViewController, AVTToolBar, AVTUIEnvironment, AVTViewSessionProvider, NSString, UIBarButtonItem;
 @protocol AVTAvatarEditorViewControllerDelegate, AVTAvatarStoreInternal, AVTUILogger;
 
-@interface AVTAvatarEditorViewController : UIViewController <AVTSplashScreenViewControllerDelegate, AVTAvatarAttributeEditorViewControllerDelegate, UIAdaptivePresentationControllerDelegate>
+@interface AVTAvatarEditorViewController : UIViewController <AVTSplashScreenViewControllerDelegate, AVTAvatarAttributeEditorViewControllerDelegate, UIAdaptivePresentationControllerDelegate, AVTToolBarDelegate>
 {
     _Bool _isCreating;
     _Bool _hasChanges;
@@ -25,6 +26,7 @@
     id <AVTUILogger> _logger;
     UIBarButtonItem *_cancelButtonItem;
     UIBarButtonItem *_doneButtonItem;
+    AVTToolBar *_toolbar;
     AVTSplashScreenViewController *_splashScreenViewController;
     AVTAvatarAttributeEditorViewController *_attributeEditorViewController;
 }
@@ -35,9 +37,11 @@
 + (id)viewControllerForEditingAvatar:(id)arg1 store:(id)arg2;
 + (id)defaultSessionProvider;
 + (_Bool)shouldShowSplashScreen;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AVTAvatarAttributeEditorViewController *attributeEditorViewController; // @synthesize attributeEditorViewController=_attributeEditorViewController;
 @property(readonly, nonatomic) AVTSplashScreenViewController *splashScreenViewController; // @synthesize splashScreenViewController=_splashScreenViewController;
 @property(nonatomic) _Bool hasChanges; // @synthesize hasChanges=_hasChanges;
+@property(retain, nonatomic) AVTToolBar *toolbar; // @synthesize toolbar=_toolbar;
 @property(retain, nonatomic) UIBarButtonItem *doneButtonItem; // @synthesize doneButtonItem=_doneButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property(readonly, nonatomic) _Bool isCreating; // @synthesize isCreating=_isCreating;
@@ -47,16 +51,20 @@
 @property(readonly, nonatomic) id <AVTAvatarStoreInternal> store; // @synthesize store=_store;
 @property(retain, nonatomic) AVTAvatarRecord *initialAvatarRecord; // @synthesize initialAvatarRecord=_initialAvatarRecord;
 @property(nonatomic) __weak id <AVTAvatarEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)toolbar:(id)arg1 didSelectButton:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)controllerPresentationWillObstructView:(id)arg1;
-- (void)confirmCancel;
+- (void)attributeEditor:(id)arg1 didUpdateVisibleLayout:(id)arg2;
+- (void)attributeEditorDidMakeFirstSelection:(id)arg1;
+- (void)confirmCancel:(id)arg1;
 - (void)handleDiscardAttempt;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (_Bool)presentationControllerShouldDismiss:(id)arg1;
-- (void)attributeEditorDidMakeFirstSelection:(id)arg1;
 - (void)splashScreenViewControllerDidFinish:(id)arg1;
 - (void)finish:(id)arg1;
 - (void)cancel:(id)arg1;
+- (void)enableDoneButton:(_Bool)arg1;
+- (struct UIEdgeInsets)additionalSafeAreaInsets;
+- (void)updateToolBarForLayout:(id)arg1;
 - (void)configureNavigationItems;
 - (void)loadAttributeEditorViewWithAvatarRecord:(id)arg1;
 - (void)loadSplashScreen;
@@ -67,7 +75,9 @@
 - (_Bool)disableAvatarSnapshotting;
 - (void)setDisableAvatarSnapshotting:(_Bool)arg1;
 - (_Bool)isModalInPresentation;
+- (id)appropriatePresentationController;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithAvatarRecord:(id)arg1 avtViewSessionProvider:(id)arg2 store:(id)arg3 enviroment:(id)arg4 isCreating:(_Bool)arg5;
 - (void)configurePPTMemoji;

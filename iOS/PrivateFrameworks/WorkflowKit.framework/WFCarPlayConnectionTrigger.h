@@ -14,13 +14,15 @@
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (_Bool)isSupportedOnThisDevice;
++ (_Bool)isUserInitiated;
 + (_Bool)isAllowedToRunAutomatically;
 @property(nonatomic) _Bool onDisconnect; // @synthesize onDisconnect=_onDisconnect;
 @property(nonatomic) _Bool onConnect; // @synthesize onConnect=_onConnect;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
+- (id)localizedDescriptionWithConfigurationSummary;
 - (_Bool)hasValidConfiguration;
 - (id)init;
 

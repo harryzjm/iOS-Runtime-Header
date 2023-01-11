@@ -6,17 +6,19 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/HAPEncryptedSession-Protocol.h>
 #import <CoreHAP/HMFLogging-Protocol.h>
 
-@class HAPSecuritySessionEncryption, NSData, NSObject, NSString;
+@class HAPSecuritySessionEncryption, NSData, NSDictionary, NSObject, NSString;
 @protocol HAPSecuritySessionDelegate, HMFLocking, OS_dispatch_queue;
 
-@interface HAPSecuritySession : HMFObject <HMFLogging>
+@interface HAPSecuritySession : HMFObject <HMFLogging, HAPEncryptedSession>
 {
     id <HMFLocking> _lock;
     unsigned long long _state;
     unsigned long long _resumeSessionID;
     NSData *_broadcastKey;
+    NSDictionary *_additionalDerivedKeys;
     id <HAPSecuritySessionDelegate> _delegate;
     unsigned long long _role;
     NSObject<OS_dispatch_queue> *_queue;
@@ -25,12 +27,12 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HAPSecuritySessionEncryption *encryption; // @synthesize encryption=_encryption;
 @property(nonatomic) struct PairingSessionPrivate *pairingSession; // @synthesize pairingSession=_pairingSession;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
 @property(readonly) __weak id <HAPSecuritySessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)decryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
 - (id)encryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
 - (void)_closeWithError:(id)arg1;
@@ -56,6 +58,8 @@
 @property(readonly, getter=isOpen) _Bool open;
 - (void)setResumeSessionID:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;
+- (void)setAdditionalDerivedKeys:(id)arg1;
+@property(readonly) NSDictionary *additionalDerivedKeys; // @synthesize additionalDerivedKeys=_additionalDerivedKeys;
 - (void)setBroadcastKey:(id)arg1;
 @property(readonly) NSData *broadcastKey; // @synthesize broadcastKey=_broadcastKey;
 @property unsigned long long state; // @synthesize state=_state;

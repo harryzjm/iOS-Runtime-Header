@@ -38,6 +38,7 @@
 + (id)nonMobileTweetURLForTweetURL:(id)arg1;
 + (_Bool)isMuninURL:(id)arg1;
 + (_Bool)isGitHubURL:(id)arg1;
++ (_Bool)isTikTokURL:(id)arg1;
 + (_Bool)isTwitterShortenerURL:(id)arg1;
 + (_Bool)isRedditStaticImage:(id)arg1;
 + (_Bool)isTwitterProfileImageURL:(id)arg1;

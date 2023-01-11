@@ -18,9 +18,11 @@
 - (void)_postAnnoucement:(id)arg1;
 - (_Bool)_axExpandPIPWindow;
 - (_Bool)_axShrinkPIPWindow;
+- (_Bool)_axStashPIPWindow;
 - (id)accessibilityCustomActions;
-- (void)_handlePanGesture:(id)arg1;
-- (void)_actuallyHandlePanRotationPinchGestureEndedState;
+- (void)setStashState:(long long)arg1;
+- (void)setNeedsLayoutForInteractionController:(id)arg1 traits:(unsigned long long)arg2 withReason:(unsigned long long)arg3 behavior:(int)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)interactionControllerDidEndAllInteractions:(id)arg1;
 - (void)loadView;
 - (void)_accessibilityLoadAccessibilityInformation;
 

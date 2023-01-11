@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDPictureItem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDPhoto *_photo;
     NSString *_primaryText;
     NSString *_secondaryText;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _photoItemType;
     struct {
         unsigned int has_photoItemType:1;
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_photo:1;
         unsigned int read_primaryText:1;
         unsigned int read_secondaryText:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_photo:1;
-        unsigned int wrote_primaryText:1;
-        unsigned int wrote_secondaryText:1;
-        unsigned int wrote_photoItemType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,6 +44,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (int)StringAsPhotoItemType:(id)arg1;
@@ -54,13 +55,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int photoItemType;
 @property(retain, nonatomic) NSString *secondaryText;
 @property(readonly, nonatomic) _Bool hasSecondaryText;
-- (void)_readSecondaryText;
 @property(retain, nonatomic) NSString *primaryText;
 @property(readonly, nonatomic) _Bool hasPrimaryText;
-- (void)_readPrimaryText;
 @property(retain, nonatomic) GEOPDPhoto *photo;
 @property(readonly, nonatomic) _Bool hasPhoto;
-- (void)_readPhoto;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -13,7 +13,7 @@
 - (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1 locations:(id)arg2;
 - (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1;
 - (void)setProgress:(double)arg1;
-- (id)initForDevice:(id)arg1 progressFillStyle:(long long)arg2;
+- (id)initForFamily:(long long)arg1 device:(id)arg2 progressFillStyle:(long long)arg3;
 
 @end
 

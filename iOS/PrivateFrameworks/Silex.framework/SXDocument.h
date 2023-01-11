@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SXDocumentStyle, SXJSONArray, SXJSONDictionary, SXMetaData;
+@class NSString, SXDocumentColorScheme, SXDocumentStyle, SXJSONArray, SXJSONDictionary, SXMetadata;
 @protocol SXAdvertisingSettings, SXAutoPlacement, SXDocumentLayout, SXHints;
 
 @interface SXDocument
@@ -16,8 +16,8 @@
 + (CDUnknownBlockType)purgeClassBlockForPropertyWithName:(id)arg1;
 + (CDUnknownBlockType)objectValueClassBlockForPropertyWithName:(id)arg1;
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)initWithIdentifier:(id)arg1 JSONObject:(id)arg2 andVersion:(id)arg3;
 - (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 
@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) id <SXAdvertisingSettings> advertisingSettings; // @dynamic advertisingSettings;
 @property(readonly, nonatomic) SXJSONArray *allComponents; // @dynamic allComponents;
 @property(readonly, nonatomic) id <SXAutoPlacement> autoplacement; // @dynamic autoplacement;
+@property(readonly, nonatomic) SXDocumentColorScheme *colorScheme; // @dynamic colorScheme;
 @property(readonly, nonatomic) SXJSONDictionary *componentLayouts; // @dynamic componentLayouts;
 @property(readonly, nonatomic) SXJSONDictionary *componentStyles; // @dynamic componentStyles;
 @property(readonly, nonatomic) SXJSONDictionary *componentTextStyles; // @dynamic componentTextStyles;
@@ -33,7 +34,7 @@
 @property(readonly, nonatomic) id <SXHints> hints; // @dynamic hints;
 @property(readonly, nonatomic) NSString *language; // @dynamic language;
 @property(readonly, nonatomic) id <SXDocumentLayout> layout; // @dynamic layout;
-@property(readonly, nonatomic) SXMetaData *metadata; // @dynamic metadata;
+@property(readonly, nonatomic) SXMetadata *metadata; // @dynamic metadata;
 @property(readonly, nonatomic) SXJSONDictionary *resources; // @dynamic resources;
 @property(readonly, nonatomic) NSString *specVersion; // @dynamic specVersion;
 @property(readonly, nonatomic) SXJSONDictionary *textStyles; // @dynamic textStyles;

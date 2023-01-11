@@ -19,12 +19,14 @@
 }
 
 + (id)run;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKContainer *secureContainer; // @synthesize secureContainer=_secureContainer;
 @property(retain, nonatomic) CKContainer *containerWithZoneWidePCS; // @synthesize containerWithZoneWidePCS=_containerWithZoneWidePCS;
 @property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property(retain, nonatomic) FCCKPrivateDatabaseSchema *schema; // @synthesize schema=_schema;
-- (void).cxx_destruct;
+- (void)fetchShouldSecureSubscriptionsForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchOriginalDataShouldBeDeletedAfterMigrationForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchPrivateDataEncryptionIsRequiredForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionMigrationIsDesiredForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionIsAllowedForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_prepareSentinelsAndReturnExpectations;

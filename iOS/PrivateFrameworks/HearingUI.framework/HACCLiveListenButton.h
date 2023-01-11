@@ -8,13 +8,13 @@
 
 #import <HearingUI/HACCContentModule-Protocol.h>
 
-@class HACCLiveListenLevelGroup, NSString, UILabel, UIVisualEffectView;
+@class HACCLiveListenLevelGroup, NSString, UILabel, UIView, UIVisualEffectView;
 @protocol HACCContentModuleDelegate;
 
 @interface HACCLiveListenButton : UIControl <HACCContentModule>
 {
     UIVisualEffectView *_titleContainer;
-    UIVisualEffectView *_subtitleContainer;
+    UIView *_subtitleContainer;
     _Bool _isListening;
     unsigned long long module;
     id <HACCContentModuleDelegate> delegate;
@@ -23,13 +23,13 @@
     HACCLiveListenLevelGroup *_levelGroup;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isListening; // @synthesize isListening=_isListening;
 @property(retain, nonatomic) HACCLiveListenLevelGroup *levelGroup; // @synthesize levelGroup=_levelGroup;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) __weak id <HACCContentModuleDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) unsigned long long module; // @synthesize module;
-- (void).cxx_destruct;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
@@ -39,7 +39,6 @@
 - (void)updateValue;
 - (void)buttonTapped:(id)arg1;
 - (void)liveListenAudioLevelDidChange:(double)arg1;
-- (void)updateConstraints;
 - (unsigned long long)lineCountForWidth:(double)arg1;
 - (struct CGSize)preferredSizeForSize:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

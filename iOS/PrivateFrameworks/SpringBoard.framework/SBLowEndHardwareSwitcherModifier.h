@@ -11,12 +11,11 @@
     _Bool _floatingAppVisibleOverExclusiveForegroundApp;
 }
 
-- (_Bool)_shouldSimplifyForTodayViewOrSpotlight;
+- (_Bool)_shouldSimplifyForWidgetCenterAndLibrary;
 - (_Bool)_shouldSimplifyForOpenFolder;
 - (_Bool)_shouldResignActiveAppsUnderFloatingApp;
-- (long long)keyboardSuppressionMode;
-- (long long)sceneDeactivationReason;
-- (_Bool)wantsResignActiveAssertion;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (double)wallpaperScale;
 - (double)homeScreenScale;

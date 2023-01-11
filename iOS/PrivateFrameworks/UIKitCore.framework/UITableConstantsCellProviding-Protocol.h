@@ -10,7 +10,7 @@
 
 @protocol UITableConstantsCellProviding <NSObject>
 @property(readonly, nonatomic, getter=_cellStyle) long long cellStyle;
-@property(readonly, nonatomic, getter=_defaultTrailingCellMarginWidth) double defaultTrailingCellMarginWidth;
+@property(readonly, nonatomic, getter=_minimumCellAccessoryMargin) double minimumCellAccessoryMargin;
 - (UIColor *)_editingControlTintColorForStyle:(long long)arg1;
 @end
 

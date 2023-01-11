@@ -28,6 +28,7 @@
 - (id)hk_dateByShiftingToGregorianCalendarWithUTCTimeZone:(id)arg1;
 - (double)hk_timeIntervalSinceStartOfDayForDate:(id)arg1;
 - (id)hk_nearestNoonBeforeDateOrEqualToDate:(id)arg1;
+- (id)_hk_weekendDaysForDate:(id)arg1;
 - (id)hk_weekendDays;
 - (id)hk_firstDateWithHour:(long long)arg1 minute:(long long)arg2 afterDate:(id)arg3;
 - (id)hk_dateBySubtractingDays:(unsigned long long)arg1 fromDate:(id)arg2;

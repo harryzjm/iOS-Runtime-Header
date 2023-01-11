@@ -17,18 +17,18 @@ __attribute__((visibility("hidden")))
     BKSAccelerometer *_accelerometer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) BKSAccelerometer *accelerometer; // @synthesize accelerometer=_accelerometer;
 @property(retain, nonatomic) DCDocumentCameraViewServiceSession *viewServiceSession; // @synthesize viewServiceSession=_viewServiceSession;
-- (void).cxx_destruct;
 - (void)didFinishWithDocumentInfoCollection:(id)arg1;
-- (void)didCancel;
+- (void)didCancel:(id)arg1;
 - (void)dismiss;
 - (void)viewServicePreferredSizeDidChange:(struct CGSize)arg1;
 @property(readonly, nonatomic, getter=remoteViewController) DCDocumentCameraRemoteViewController *remoteViewController;
 @property(readonly, nonatomic, getter=viewServiceViewController) id <DCDocumentCameraViewServiceViewController> viewServiceViewController;
 - (id)castedChildViewController;
 - (void)viewDidLoad;
-- (void)accelerometer:(id)arg1 didChangeDeviceOrientation:(int)arg2;
+- (void)accelerometer:(id)arg1 didChangeDeviceOrientation:(long long)arg2;
 - (void)accelerometer:(id)arg1 didAccelerateWithTimeStamp:(double)arg2 x:(float)arg3 y:(float)arg4 z:(float)arg5 eventType:(int)arg6;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;

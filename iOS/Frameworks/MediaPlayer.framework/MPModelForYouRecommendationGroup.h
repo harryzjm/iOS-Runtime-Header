@@ -21,8 +21,9 @@
 + (id)__sectionedItems_KEY;
 + (id)__lastUpdatedDate_KEY;
 + (id)__groupType_KEY;
-@property(nonatomic, getter=isGroupRecommendation) _Bool groupRecommendation; // @synthesize groupRecommendation=_groupRecommendation;
++ (id)classesForSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isGroupRecommendation) _Bool groupRecommendation; // @synthesize groupRecommendation=_groupRecommendation;
 - (id)itemAtIndex:(long long)arg1;
 - (long long)numberOfItems;
 @property(copy, nonatomic) NSURL *refreshURL; // @dynamic refreshURL;

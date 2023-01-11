@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
+
 @class NSArray, NSCalendar, NSDate, NSLocale, NSMutableDictionary, NSString, NSTimeZone;
 
-@interface NSDateFormatter
+@interface NSDateFormatter <NSObservable, NSObserver>
 {
     NSMutableDictionary *_attributes;
     struct __CFDateFormatter *_formatter;
@@ -81,10 +84,18 @@
 - (void)_regenerateFormatterIfAbsent;
 - (void)_clearFormatter;
 - (void)_invalidateCache;
+- (id)_nextChangeDateAfterDate:(id)arg1;
 - (id)_attributedStringWithFieldsFromDate:(id)arg1;
 - (_Bool)_mayDecorateAttributedStringForObjectValue:(id)arg1;
 - (_Bool)_tracksCacheGenerationCount;
 - (long long)_cacheGenerationCount;
+- (void)receiveObservedValue:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

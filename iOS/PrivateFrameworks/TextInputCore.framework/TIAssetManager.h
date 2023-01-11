@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <TextInputCore/DDSAssetCenterDelegate-Protocol.h>
 #import <TextInputCore/TIAssetManaging-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, TIMobileAssetTimer, TIRequestedInputModes;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, TIMobileAssetTimer, TIRequestedInputModes;
 @protocol OS_dispatch_queue, TIInputModePreferenceProvider, TIMobileAssetMediator;
 
-@interface TIAssetManager : NSObject <TIAssetManaging>
+@interface TIAssetManager : NSObject <DDSAssetCenterDelegate, TIAssetManaging>
 {
     NSMutableArray *_notificationTokens;
+    NSMutableSet *_languagesWithWarmedAssets;
     _Bool _assetDownloadingEnabled;
     CDUnknownBlockType _enabledInputModeIdentifiersProviderBlock;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -25,6 +27,7 @@
     TIMobileAssetTimer *_timer;
     NSArray *_currentActiveRegions;
     NSArray *_currentNormalizedActiveRegions;
+    NSTimer *_didUpdateAssetsTimer;
     TIRequestedInputModes *_requestedInputModes;
 }
 
@@ -34,7 +37,9 @@
 + (id)sharedAssetManagerWithEnabledInputModesProvider:(CDUnknownBlockType)arg1;
 + (id)sharedAssetManager;
 + (void)setSharedAssetManager:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) TIRequestedInputModes *requestedInputModes; // @synthesize requestedInputModes=_requestedInputModes;
+@property(retain, nonatomic) NSTimer *didUpdateAssetsTimer; // @synthesize didUpdateAssetsTimer=_didUpdateAssetsTimer;
 @property(retain, nonatomic) NSArray *currentNormalizedActiveRegions; // @synthesize currentNormalizedActiveRegions=_currentNormalizedActiveRegions;
 @property(retain, nonatomic) NSArray *currentActiveRegions; // @synthesize currentActiveRegions=_currentActiveRegions;
 @property(readonly, nonatomic) _Bool assetDownloadingEnabled; // @synthesize assetDownloadingEnabled=_assetDownloadingEnabled;
@@ -46,7 +51,6 @@
 @property(readonly, nonatomic) id <TIMobileAssetMediator> mobileAssetMediator; // @synthesize mobileAssetMediator=_mobileAssetMediator;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(copy, nonatomic) CDUnknownBlockType enabledInputModeIdentifiersProviderBlock; // @synthesize enabledInputModeIdentifiersProviderBlock=_enabledInputModeIdentifiersProviderBlock;
-- (void).cxx_destruct;
 - (_Bool)purgeAsset:(id)arg1;
 - (id)purgeableAssets;
 - (void)performMaintenance;
@@ -58,6 +62,10 @@
 - (void)startDownloadingUninstalledAssetsForInputModeLevels:(id)arg1 regions:(id)arg2;
 - (void)updateInstalledAssets;
 - (void)updateAssetDownloadingEnabled;
+- (void)getActiveRegionsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)topActiveRegions;
+- (void)normalizedRegionsForGeoCodedAddresses:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)updatedActiveRegionsWithCompletionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)updatedActiveRegions;
 - (id)activeInputModeLevels;
 - (id)activeInputModes;
@@ -65,13 +73,29 @@
 - (id)enabledInputModes;
 - (id)levelsForInputMode:(id)arg1;
 - (void)didUpdateAssets;
+- (void)scheduleAssetsDidChangeNotificationWithDelay:(double)arg1;
 - (void)newAssetInstalled:(id)arg1;
+- (_Bool)inputModeHasRegions:(id)arg1;
+- (id)ddsLanguageIdentifierFromInputMode:(id)arg1;
+- (id)ddsAssertionIDFromInputMode:(id)arg1 withPotentialRegions:(id)arg2;
+- (void)addAssertionWithInputMode:(id)arg1 assertionID:(id)arg2 potentialRegions:(id)arg3;
+- (void)updateAssertionsForInputModes:(id)arg1;
 - (void)appleKeyboardsPreferencesChanged:(id)arg1;
 - (void)appleKeyboardsInternalSettingsChanged:(id)arg1;
+- (void)didUpdateAssetsWithType:(id)arg1;
 - (void)unregisterForNotifications;
 - (void)registerForNotifications;
+- (void)removeLinguisticAssetsAssertionWithIdentifier:(id)arg1 forClientID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)addLinguisticAssetsAssertionForLanguage:(id)arg1 assertionID:(id)arg2 region:(id)arg3 clientID:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)requestAssetDownloadForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)assetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2;
+- (void)_warmAssetQueryForLanguage:(id)arg1;
+- (void)_warmAssetQueriesForInputModes:(id)arg1;
+- (id)_ddsContentItemsFromAssets:(id)arg1 contentType:(id)arg2 filteredWithRegion:(_Bool)arg3;
+- (id)_ddsAssetsForLanguageIdentifier:(id)arg1 cachedOnly:(_Bool)arg2;
+- (void)ddsAssetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2 filteredWithRegion:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)ddsAssetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2 filteredWithRegion:(_Bool)arg3;
+@property(readonly, nonatomic) NSMutableSet *languagesWithWarmedAssets;
 @property(readonly, nonatomic) double requestExpirationInterval;
 - (id)recursiveDescription;
 - (void)dealloc;

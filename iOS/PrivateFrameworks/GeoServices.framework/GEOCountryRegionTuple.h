@@ -13,17 +13,17 @@
 @interface GEOCountryRegionTuple : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_countryCode;
     NSString *_region;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_countryCode:1;
         unsigned int read_region:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_countryCode:1;
-        unsigned int wrote_region:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,14 +39,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *region;
 @property(readonly, nonatomic) _Bool hasRegion;
-- (void)_readRegion;
 @property(retain, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) _Bool hasCountryCode;
-- (void)_readCountryCode;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

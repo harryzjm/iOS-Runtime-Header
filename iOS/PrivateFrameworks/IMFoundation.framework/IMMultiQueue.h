@@ -15,13 +15,13 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+- (void).cxx_destruct;
 - (id)loggableOverviewForKey:(id)arg1;
 - (id)loggableOverview;
 - (_Bool)_addBlock:(CDUnknownBlockType)arg1 withGUID:(id)arg2 forKey:(id)arg3 description:(id)arg4;
 - (_Bool)addBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2 description:(id)arg3;
 - (_Bool)addBlock:(CDUnknownBlockType)arg1 withTimeout:(double)arg2 forKey:(id)arg3 description:(id)arg4;
 - (void)_popEnqueuedBlockWithGUID:(id)arg1 key:(id)arg2;
-- (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (id)init;
 

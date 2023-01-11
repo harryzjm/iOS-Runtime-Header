@@ -37,7 +37,7 @@
 @property(nonatomic) long long smoothingMode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)tessellatorValueDidChangeForClient:(id)arg1;
-- (CDStruct_14ccb760)_tessellatorValueForGeometry:(id)arg1;
+- (CDStruct_9b587744)_tessellatorValueForGeometry:(id)arg1;
 - (void)tessellatorValueDidChange;
 - (void)clientWillDie:(id)arg1;
 - (void)removeClient:(id)arg1;

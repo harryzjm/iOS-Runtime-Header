@@ -12,7 +12,7 @@
 
 + (unsigned long long)dimensionForLabel:(id)arg1;
 + (id)_locationLabelForDimension:(unsigned long long)arg1;
-+ (id)_closestLocationNodeFromNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3 reverse:(_Bool)arg4;
++ (id)_closestLocationNodeFromLocationNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3 reverse:(_Bool)arg4;
 + (id)titleWithLineBreakForTitle:(id)arg1;
 + (id)titleWithLineBreakForTitle:(id)arg1 andUsedNames:(id)arg2;
 + (id)titleWithNoLineBreakSpaceForTitle:(id)arg1 andUsedNames:(id)arg2;
@@ -23,8 +23,8 @@
 + (id)holidayNameForDateNodes:(id)arg1;
 + (_Bool)containsCelebrationForDateNodes:(id)arg1 holidayName:(id *)arg2;
 + (id)locationNodeWithDimension:(unsigned long long)arg1 rootNode:(id)arg2;
-+ (id)closestLocationNodeFromNode:(id)arg1 withDimension:(unsigned long long)arg2 reverse:(_Bool)arg3;
-+ (id)closestLocationNodeFromNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3;
++ (id)closestLocationNodeFromLocationNode:(id)arg1 withDimension:(unsigned long long)arg2 reverse:(_Bool)arg3;
++ (id)closestLocationNodeFromLocationNode:(id)arg1 withDimension:(unsigned long long)arg2 remapMatchingDimensionBlock:(CDUnknownBlockType)arg3;
 + (_Bool)locationIsInSupersetCategoryForLocationNode:(id)arg1;
 + (_Bool)locationIsInSupersetCategoryForAddressNode:(id)arg1 dimension:(unsigned long long)arg2;
 + (_Bool)isLargeCountryForAddressNode:(id)arg1;

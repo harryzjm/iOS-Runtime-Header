@@ -6,11 +6,13 @@
 
 #import <AccountsDaemon/NSObject-Protocol.h>
 
-@class ACAccount, ACAccountCredential, ACAccountType, ACCredentialItem, NSArray, NSDictionary, NSNumber, NSString, NSURL;
+@class ACAccount, ACAccountCredential, ACAccountType, ACCredentialItem, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSURL;
 
 @protocol ACRemoteAccountStoreProtocol <NSObject>
+- (void)resetDatabaseToVersion:(NSNumber *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)registerMonitorForAccountsOfTypes:(NSSet *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)shutdownAccountsD:(void (^)(_Bool, NSError *))arg1;
 - (void)scheduleBackupIfNonexistent:(void (^)(_Bool, NSError *))arg1;
-- (void)reportTelemetryForLandmarkEvent:(void (^)(_Bool, NSError *))arg1;
 - (void)triggerKeychainMigrationIfNecessary:(void (^)(_Bool, NSError *))arg1;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)saveAccount:(ACAccount *)arg1 toPairedDeviceWithOptions:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
@@ -26,6 +28,7 @@
 - (void)isPushSupportedForAccount:(ACAccount *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)isTetheredSyncingEnabledForDataclass:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)migrateCredentialForAccount:(ACAccount *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)renewCredentialsForAccount:(ACAccount *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSNumber *, NSError *))arg3;
 - (void)verifyCredentialsForAccount:(ACAccount *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(ACAccount *, NSError *))arg3;
 - (void)clearAllPermissionsGrantedForAccountType:(ACAccountType *)arg1 withHandler:(void (^)(id, NSError *))arg2;

@@ -21,7 +21,7 @@
     CDStruct_67e7699a _secondarySourceMatrixOrigin;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long N; // @synthesize N=_N;
 @property(nonatomic) unsigned long long M; // @synthesize M=_M;
 @property(readonly, nonatomic) double beta; // @synthesize beta=_beta;

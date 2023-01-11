@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_notification_queue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *notification_queue; // @synthesize notification_queue=_notification_queue;
 @property(nonatomic) struct Listener_List *list_ptr; // @synthesize list_ptr=_list_ptr;
-- (void).cxx_destruct;
 - (void)handle_server_reconnected;
 - (void)handle_server_disconnected;
 - (void)synchronously_notify_listeners_of_object:(unsigned int)arg1 about_changes_to_properties:(const vector_9f82871d *)arg2;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct Listener_List *list;
 - (void)release_resources;
 - (void)dealloc;
-- (id)initWithObjectMap:(shared_ptr_3c219583)arg1;
+- (id)initWithObjectMap:(shared_ptr_a1e71f47)arg1;
 
 @end
 

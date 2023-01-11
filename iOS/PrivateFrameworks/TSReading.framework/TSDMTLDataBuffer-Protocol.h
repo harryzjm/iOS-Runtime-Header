@@ -5,17 +5,19 @@
 //
 
 #import <TSReading/NSObject-Protocol.h>
+#import <TSReading/TSDGPUDataBufferAccessor-Protocol.h>
 #import <TSReading/TSDGPUDataBufferSharedAccessors-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString, TSDGPUDataBufferAttribute;
 @protocol MTLDevice, MTLRenderCommandEncoder, TSDMTLDataBuffer;
 
-@protocol TSDMTLDataBuffer <NSObject, TSDGPUDataBufferSharedAccessors>
-+ (id <TSDMTLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(_Bool)arg4 includeCenterAttribute:(_Bool)arg5 device:(id <MTLDevice>)arg6;
+@protocol TSDMTLDataBuffer <NSObject, TSDGPUDataBufferSharedAccessors, TSDGPUDataBufferAccessor>
++ (id <TSDMTLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(_Bool)arg4 includeCenterAttribute:(_Bool)arg5 addTransparentBorder:(_Bool)arg6 device:(id <MTLDevice>)arg7;
 + (id <TSDMTLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(_Bool)arg4 device:(id <MTLDevice>)arg5;
 + (id <TSDMTLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 device:(id <MTLDevice>)arg4;
 + (id <TSDMTLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 textureFlipped:(_Bool)arg3 device:(id <MTLDevice>)arg4;
 + (id <TSDMTLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 device:(id <MTLDevice>)arg3;
++ (id <TSDMTLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 quadParticleCount:(unsigned long long)arg2 device:(id <MTLDevice>)arg3;
 + (id <TSDMTLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 meshSize:(struct CGSize)arg2 device:(id <MTLDevice>)arg3;
 + (id <TSDMTLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 device:(id <MTLDevice>)arg4;
 @property(readonly) unsigned long long centerAttributeIndex;
@@ -32,6 +34,11 @@
 - (void)disableWithDevice:(id <MTLDevice>)arg1;
 - (void)enableDataBuffer;
 - (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(_Bool)arg4 includeCenterAttribute:(_Bool)arg5;
+- (void)updateDataBufferAttributes:(NSArray *)arg1 withBlock:(void (^)(struct *, unsigned long long))arg2;
+- (TSDGPUDataBufferAttribute *)vertexAttributeNamed:(NSString *)arg1;
+- (void)setDataForAttribute:(TSDGPUDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2 fromAttribute:(TSDGPUDataBufferAttribute *)arg3 dataBuffer:(id <TSDMTLDataBuffer>)arg4 index:(unsigned long long)arg5;
+- (void)setGLushort:(unsigned short)arg1 forIndexElement:(unsigned long long)arg2;
+- (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(_Bool)arg4 includeCenterAttribute:(_Bool)arg5 addTransparentBorder:(_Bool)arg6;
 - (id)initWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 bufferCount:(unsigned long long)arg4;
 @end
 

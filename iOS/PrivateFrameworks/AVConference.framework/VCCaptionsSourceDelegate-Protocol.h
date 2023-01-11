@@ -6,10 +6,10 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSData, NSError;
+@class NSError, VCCaptionsTranscription;
 
 @protocol VCCaptionsSourceDelegate <NSObject>
-- (void)streamToken:(long long)arg1 didUpdateCaptions:(NSData *)arg2;
+- (void)streamToken:(long long)arg1 didUpdateCaptions:(VCCaptionsTranscription *)arg2;
 - (void)streamToken:(long long)arg1 didStopCaptioningWithReason:(unsigned char)arg2;
 - (void)streamToken:(long long)arg1 didStartCaptioningWithReason:(unsigned char)arg2;
 - (void)streamToken:(long long)arg1 didDisableCaptions:(_Bool)arg2 error:(NSError *)arg3;

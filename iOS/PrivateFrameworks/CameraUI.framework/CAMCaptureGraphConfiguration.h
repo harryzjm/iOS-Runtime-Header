@@ -10,8 +10,10 @@
 
 @interface CAMCaptureGraphConfiguration : NSObject
 {
+    _Bool _enableAutoFPSVideo;
     _Bool _videoHDRSuspended;
-    _Bool _enableAutoLowLightVideoIfSupported;
+    _Bool _captureMirrored;
+    _Bool _enableResponsiveShutter;
     long long _mode;
     long long _device;
     long long _videoConfiguration;
@@ -23,11 +25,16 @@
     long long _photoEncodingBehavior;
     long long _videoEncodingBehavior;
     long long _aspectRatioCrop;
+    long long _photoQualityPrioritization;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool enableResponsiveShutter; // @synthesize enableResponsiveShutter=_enableResponsiveShutter;
+@property(readonly, nonatomic, getter=isCaptureMirrored) _Bool captureMirrored; // @synthesize captureMirrored=_captureMirrored;
+@property(readonly, nonatomic) long long photoQualityPrioritization; // @synthesize photoQualityPrioritization=_photoQualityPrioritization;
 @property(readonly, nonatomic) long long aspectRatioCrop; // @synthesize aspectRatioCrop=_aspectRatioCrop;
-@property(readonly, nonatomic) _Bool enableAutoLowLightVideoIfSupported; // @synthesize enableAutoLowLightVideoIfSupported=_enableAutoLowLightVideoIfSupported;
 @property(readonly, nonatomic, getter=isVideoHDRSuspended) _Bool videoHDRSuspended; // @synthesize videoHDRSuspended=_videoHDRSuspended;
+@property(readonly, nonatomic) _Bool enableAutoFPSVideo; // @synthesize enableAutoFPSVideo=_enableAutoFPSVideo;
 @property(readonly, nonatomic) long long videoEncodingBehavior; // @synthesize videoEncodingBehavior=_videoEncodingBehavior;
 @property(readonly, nonatomic) long long photoEncodingBehavior; // @synthesize photoEncodingBehavior=_photoEncodingBehavior;
 @property(readonly, nonatomic) CAMVideoThumbnailOutputConfiguration *videoThumbnailOutputConfiguration; // @synthesize videoThumbnailOutputConfiguration=_videoThumbnailOutputConfiguration;
@@ -38,12 +45,11 @@
 @property(readonly, nonatomic) long long videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
 @property(readonly, nonatomic) long long device; // @synthesize device=_device;
 @property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
-- (void).cxx_destruct;
 - (id)description;
 - (id)completeDescription;
 - (id)shortDescription;
 @property(readonly, nonatomic) long long devicePosition;
-- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoLowLightVideoIfSupported:(_Bool)arg11 videoHDRSuspended:(_Bool)arg12 aspectRatioCrop:(long long)arg13;
+- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoFPSVideo:(_Bool)arg11 videoHDRSuspended:(_Bool)arg12 aspectRatioCrop:(long long)arg13 photoQualityPrioritization:(long long)arg14 captureMirrored:(_Bool)arg15 enableResponsiveShutter:(_Bool)arg16;
 
 @end
 

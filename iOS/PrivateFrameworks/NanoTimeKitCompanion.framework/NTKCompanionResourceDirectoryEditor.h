@@ -27,15 +27,15 @@
 + (id)_scaleImage:(id)arg1 toLongestEdgeInPixels:(double)arg2;
 + (id)_writeAsset:(id)arg1 image:(id)arg2 withImageCrop:(struct CGRect)arg3 to:(id)arg4;
 + (_Bool)_transcodeIrisVideoOf:(id)arg1 forPhoto:(id)arg2 withCrop:(struct CGRect)arg3 into:(id)arg4 previewOnly:(_Bool)arg5;
-+ (id)_createResourceDirectoryWithAsset:(id)arg1 forDevice:(id)arg2 previewOnly:(_Bool)arg3;
++ (id)_createResourceDirectoryWithAsset:(id)arg1 assetCollection:(id)arg2 forDevice:(id)arg3 previewOnly:(_Bool)arg4;
 + (_Bool)_transcodeStillImageOf:(id)arg1 forPhoto:(id)arg2 withCrop:(struct CGRect)arg3 into:(id)arg4;
 + (id)_transcodeAsset:(id)arg1 withCrop:(struct CGRect)arg2 into:(id)arg3 previewOnly:(_Bool)arg4;
 + (id)_linkPhoto:(id)arg1 to:(id)arg2 previewOnly:(_Bool)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *galleryPreviewResourceDirectory; // @synthesize galleryPreviewResourceDirectory=_galleryPreviewResourceDirectory;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(retain, nonatomic) NSString *resourceDirectory; // @synthesize resourceDirectory=_resourceDirectory;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (void)finalizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteResourceDirectoryHardLinkIfNecessary;

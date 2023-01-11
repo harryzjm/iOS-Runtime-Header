@@ -21,12 +21,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) __weak NRDeviceCollectionHistory *historyManager; // @synthesize historyManager=_historyManager;
-@property(nonatomic) unsigned int switchIndex; // @synthesize switchIndex=_switchIndex;
-@property(retain, nonatomic) NRDeviceCollectionDiff *diff; // @synthesize diff=_diff;
-@property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
-@property(nonatomic) unsigned long long index; // @synthesize index=_index;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned int switchIndex;
+@property(readonly, nonatomic) NRDeviceCollectionDiff *diff;
+@property(readonly, nonatomic) NSDate *date;
+@property(readonly, nonatomic) unsigned long long index;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) NRMutableDeviceCollection *state;

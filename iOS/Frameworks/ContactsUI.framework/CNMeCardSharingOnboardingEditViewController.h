@@ -12,7 +12,7 @@
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CNAvatarEditingManager, CNContact, CNContactStore, CNMeCardSharingLogger, CNMeCardSharingOnboardingAvatarCarouselViewController, CNMeCardSharingOnboardingHeaderViewController, CNMeCardSharingPickerLayoutAttributes, CNMutableContact, CNPhotoPickerVariantsManager, CNPhotoPickerViewController, NSString, UITextField;
+@class CNAvatarEditingManager, CNContact, CNContactStore, CNMeCardSharingOnboardingAvatarCarouselViewController, CNMeCardSharingOnboardingHeaderViewController, CNMeCardSharingPickerLayoutAttributes, CNMutableContact, CNPhotoPickerVariantsManager, CNPhotoPickerViewController, CNSharingProfileLogger, NSString, UITextField;
 @protocol AVTAvatarRecord, CNMeCardSharingNameProvider, CNMeCardSharingOnboardingEditViewControllerDelegate;
 
 @interface CNMeCardSharingOnboardingEditViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CNMeCardSharingOnboardingAvatarCarouselViewControllerDelegate, CNPhotoPickerViewControllerDelegate, CNAvatarEditingManagerDelegate, CNPhotoPickerVariantListControllerDelegate>
@@ -37,12 +37,13 @@
     CNPhotoPickerViewController *_photoPickerViewController;
     CNPhotoPickerVariantsManager *_variantsManager;
     CNAvatarEditingManager *_posePicker;
-    CNMeCardSharingLogger *_logger;
+    CNSharingProfileLogger *_logger;
 }
 
 + (id)headerText;
 + (id)descriptorForRequiredKeys;
-@property(readonly, nonatomic) CNMeCardSharingLogger *logger; // @synthesize logger=_logger;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
 @property(retain, nonatomic) CNAvatarEditingManager *posePicker; // @synthesize posePicker=_posePicker;
 @property(retain, nonatomic) CNPhotoPickerVariantsManager *variantsManager; // @synthesize variantsManager=_variantsManager;
 @property(retain, nonatomic) CNPhotoPickerViewController *photoPickerViewController; // @synthesize photoPickerViewController=_photoPickerViewController;
@@ -63,7 +64,6 @@
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(nonatomic) _Bool delegateDoesRespondToOnboardingResultSelector; // @synthesize delegateDoesRespondToOnboardingResultSelector=_delegateDoesRespondToOnboardingResultSelector;
 @property(nonatomic) __weak id <CNMeCardSharingOnboardingEditViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
 - (void)avatarCarouselViewControllerDidUpdateCenterMostItem:(id)arg1;
@@ -82,10 +82,11 @@
 - (void)updateContact:(id)arg1 withImagePropertiesFromContact:(id)arg2;
 - (void)photoPickerVariantListController:(id)arg1 didSelectProviderItem:(id)arg2;
 - (void)photoPickerVariantListControllerDidCancel:(id)arg1;
-- (void)presentPhotoPickerVariantListFor:(id)arg1 FromViewController:(id)arg2;
-- (void)avatarPosePickerManager:(id)arg1 didFinishWithProviderItem:(id)arg2;
+- (void)presentPhotoPickerVariantListForItem:(id)arg1 FromViewController:(id)arg2;
+- (void)avatarEditingManager:(id)arg1 didFinishWithProviderItem:(id)arg2;
 - (void)showAvatarPosePickerFromItem:(id)arg1;
 - (void)notifyDelegateWithContactImage:(id)arg1 didSaveToMeContact:(_Bool)arg2;
+- (void)presentErrorAlertForEmptyPhotoIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)finishOnboardingWithDidSaveToMeContact:(_Bool)arg1;
 - (long long)contactImageSourceForType:(unsigned long long)arg1;
 - (void)promptForSavingToMeCard;

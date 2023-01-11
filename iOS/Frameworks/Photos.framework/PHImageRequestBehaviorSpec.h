@@ -12,13 +12,21 @@
     _Bool _networkAccessAllowed;
     _Bool _allowPlaceholder;
     _Bool _onlyUseFetchedAssetPropertiesDuringChoosing;
+    _Bool _useLowMemoryMode;
+    _Bool _useLimitedLibraryMode;
     long long _choosingPolicy;
     unsigned long long _loadingOptions;
     long long _version;
     long long _resizeMode;
+    double _minimumTableThumbnailLongSide;
+    long long _downloadIntent;
 }
 
 + (unsigned long long)loadingOptionsFromLoadingMode:(long long)arg1;
+@property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
+@property(nonatomic) _Bool useLimitedLibraryMode; // @synthesize useLimitedLibraryMode=_useLimitedLibraryMode;
+@property(nonatomic) _Bool useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
+@property(nonatomic) double minimumTableThumbnailLongSide; // @synthesize minimumTableThumbnailLongSide=_minimumTableThumbnailLongSide;
 @property(nonatomic) _Bool onlyUseFetchedAssetPropertiesDuringChoosing; // @synthesize onlyUseFetchedAssetPropertiesDuringChoosing=_onlyUseFetchedAssetPropertiesDuringChoosing;
 @property(nonatomic) _Bool allowPlaceholder; // @synthesize allowPlaceholder=_allowPlaceholder;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;

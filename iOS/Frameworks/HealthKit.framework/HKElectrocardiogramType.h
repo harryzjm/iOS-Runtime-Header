@@ -8,8 +8,5 @@
 {
 }
 
-+ (id)electrocardiogramType;
-- (Class)dataObjectClass;
-
 @end
 

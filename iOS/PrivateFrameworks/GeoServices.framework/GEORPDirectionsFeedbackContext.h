@@ -13,13 +13,15 @@
 @interface GEORPDirectionsFeedbackContext : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_directionsRequests;
     NSMutableArray *_directionsResponses;
     NSMutableArray *_directionsWaypointPlaceInfos;
     GEORPUserSearchInput *_endWaypoint;
     GEORPUserSearchInput *_startWaypoint;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_directionsRequests:1;
@@ -27,12 +29,7 @@
         unsigned int read_directionsWaypointPlaceInfos:1;
         unsigned int read_endWaypoint:1;
         unsigned int read_startWaypoint:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_directionsRequests:1;
-        unsigned int wrote_directionsResponses:1;
-        unsigned int wrote_directionsWaypointPlaceInfos:1;
-        unsigned int wrote_endWaypoint:1;
-        unsigned int wrote_startWaypoint:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -51,35 +48,32 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPUserSearchInput *endWaypoint;
 @property(readonly, nonatomic) _Bool hasEndWaypoint;
-- (void)_readEndWaypoint;
 @property(retain, nonatomic) GEORPUserSearchInput *startWaypoint;
 @property(readonly, nonatomic) _Bool hasStartWaypoint;
-- (void)_readStartWaypoint;
 - (id)directionsWaypointPlaceInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)directionsWaypointPlaceInfosCount;
-- (void)_addNoFlagsDirectionsWaypointPlaceInfo:(id)arg1;
 - (void)addDirectionsWaypointPlaceInfo:(id)arg1;
 - (void)clearDirectionsWaypointPlaceInfos;
 @property(retain, nonatomic) NSMutableArray *directionsWaypointPlaceInfos;
-- (void)_readDirectionsWaypointPlaceInfos;
 - (id)directionsResponseAtIndex:(unsigned long long)arg1;
 - (unsigned long long)directionsResponsesCount;
-- (void)_addNoFlagsDirectionsResponse:(id)arg1;
 - (void)addDirectionsResponse:(id)arg1;
 - (void)clearDirectionsResponses;
 @property(retain, nonatomic) NSMutableArray *directionsResponses;
-- (void)_readDirectionsResponses;
 - (id)directionsRequestAtIndex:(unsigned long long)arg1;
 - (unsigned long long)directionsRequestsCount;
-- (void)_addNoFlagsDirectionsRequest:(id)arg1;
 - (void)addDirectionsRequest:(id)arg1;
 - (void)clearDirectionsRequests;
 @property(retain, nonatomic) NSMutableArray *directionsRequests;
-- (void)_readDirectionsRequests;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

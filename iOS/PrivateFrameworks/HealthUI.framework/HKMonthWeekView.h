@@ -16,8 +16,8 @@
     NSArray *_accessoryViews;
 }
 
-@property(nonatomic) _Bool accessoryContentsFetched; // @synthesize accessoryContentsFetched=_accessoryContentsFetched;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool accessoryContentsFetched; // @synthesize accessoryContentsFetched=_accessoryContentsFetched;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGRect)_frameForTopBorderLine;
 - (void)layoutSubviews;

@@ -4,19 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXSectionedSelectionManager;
+@class PXSectionedObjectReference, PXSectionedSelectionManager;
 
 @interface PXAssetActionManager
 {
     PXSectionedSelectionManager *_selectionManager;
+    PXSectionedObjectReference *_objectReference;
 }
 
-@property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXSectionedObjectReference *objectReference; // @synthesize objectReference=_objectReference;
+@property(retain, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
+- (void)executeActionForActionType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)systemImageNameForActionType:(id)arg1;
+- (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
+- (_Bool)canPerformActionType:(id)arg1;
 - (_Bool)shouldEnableActionType:(id)arg1 onAsset:(id)arg2;
 - (id)actionPerformerForActionType:(id)arg1;
 - (_Bool)canPerformAssetVariationActions;
 - (id)init;
+- (id)initWithSelectedObjectReference:(id)arg1 dataSourceManager:(id)arg2;
 - (id)initWithSelectionManager:(id)arg1;
 - (void)px_registerAdditionalPerformerClasses;
 

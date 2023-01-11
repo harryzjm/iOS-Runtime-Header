@@ -4,34 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSUUID;
 
-#import <HomeKit/NSCopying-Protocol.h>
-#import <HomeKit/NSSecureCoding-Protocol.h>
-
-@class NSDate, NSUUID;
-
-@interface HMCameraClipSignificantEvent : NSObject <NSCopying, NSSecureCoding>
+@interface HMCameraClipSignificantEvent
 {
-    NSUUID *_uniqueIdentifier;
-    unsigned long long _reason;
-    NSDate *_dateOfOccurrence;
-    unsigned long long _confidenceLevel;
+    double _timeOffsetWithinClip;
+    NSUUID *_clipUUID;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly) unsigned long long confidenceLevel; // @synthesize confidenceLevel=_confidenceLevel;
-@property(readonly, copy) NSDate *dateOfOccurrence; // @synthesize dateOfOccurrence=_dateOfOccurrence;
-@property(readonly) unsigned long long reason; // @synthesize reason=_reason;
-@property(readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (void).cxx_destruct;
+@property(readonly, copy) NSUUID *clipUUID; // @synthesize clipUUID=_clipUUID;
+@property(readonly) double timeOffsetWithinClip; // @synthesize timeOffsetWithinClip=_timeOffsetWithinClip;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
-- (id)initWithUniqueIdentifier:(id)arg1 reason:(unsigned long long)arg2 dateOfOccurrence:(id)arg3 confidenceLevel:(unsigned long long)arg4;
+- (id)attributeDescriptions;
+- (id)initWithUniqueIdentifier:(id)arg1 reason:(unsigned long long)arg2 dateOfOccurrence:(id)arg3 confidenceLevel:(unsigned long long)arg4 faceClassification:(id)arg5 timeOffsetWithinClip:(double)arg6 clipUUID:(id)arg7;
+- (id)initWithUniqueIdentifier:(id)arg1 reason:(unsigned long long)arg2 dateOfOccurrence:(id)arg3 confidenceLevel:(unsigned long long)arg4 cameraProfileUUID:(id)arg5 faceClassification:(id)arg6 timeOffsetWithinClip:(double)arg7 clipUUID:(id)arg8;
 
 @end
 

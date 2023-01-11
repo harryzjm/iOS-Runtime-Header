@@ -42,7 +42,7 @@
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 context:(id)arg3 uiProvider:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)attemptToEscrowPreRecord:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)attemptToEscrowPreRecord:(id)arg1 preRecordUUID:(id)arg2 secretType:(unsigned long long)arg3 context:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)shouldPerformRepairForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shouldPerformRepairForContext:(id)arg1 forceFetch:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)_removeObserver;
 - (void)_startObservingConnectionStateForRepairWithStateMachine:(id)arg1;

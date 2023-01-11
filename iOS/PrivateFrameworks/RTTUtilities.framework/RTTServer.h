@@ -19,9 +19,9 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) BKSProcessAssertion *assertion; // @synthesize assertion=_assertion;
 @property(copy, nonatomic) CDUnknownBlockType actionCompletionBlock; // @synthesize actionCompletionBlock=_actionCompletionBlock;
-- (void).cxx_destruct;
 - (void)primeRTTServer;
 - (void)setTTYDictionaryAvailability:(_Bool)arg1;
 - (void)_takeStackshot;
@@ -32,16 +32,21 @@
 - (void)registerForRemoteUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)registerForUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)sendString:(id)arg1 forCallUID:(id)arg2;
+- (void)setViewControllerIsVisible:(_Bool)arg1 withCallID:(id)arg2;
+- (void)setSystemOutputAudioMuted:(_Bool)arg1 withCallID:(id)arg2;
 - (void)findConversationForCallUID:(id)arg1 andResult:(CDUnknownBlockType)arg2;
 - (void)registerResponseBlock:(CDUnknownBlockType)arg1 forUUID:(id)arg2;
 - (void)setShouldSuppressIncomingNotification:(_Bool)arg1;
 - (void)cancelCallPromptDisplay;
 - (void)displayCallPromptForContact:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)isEmergencyNumber:(id)arg1;
+- (_Bool)shouldRestartOnInterruption;
 - (void)handleMessageError:(id)arg1 destructive:(_Bool)arg2;
 - (void)handleMessageWithPayload:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)_managerAXPIDState:(_Bool)arg1;
 - (void)resetConnection;
 - (void)_registerForServerSettingsUpdates;
+- (void)terminateConnectionAndNotify:(_Bool)arg1;
 - (void)dealloc;
 - (id)init;
 

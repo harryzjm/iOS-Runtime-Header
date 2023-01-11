@@ -7,11 +7,11 @@
 #import <FrontBoard/FBApplicationProcessLaunchTransactionObserver-Protocol.h>
 #import <FrontBoard/FBUpdateSceneTransactionObserver-Protocol.h>
 
-@class FBApplicationProcess, FBApplicationProcessLaunchTransaction, NSMutableArray, NSString, RBSProcessIdentity;
+@class FBApplicationProcess, FBApplicationProcessLaunchTransaction, FBSSceneClientIdentity, NSMutableArray, NSString;
 
 @interface FBApplicationUpdateScenesTransaction <FBApplicationProcessLaunchTransactionObserver, FBUpdateSceneTransactionObserver>
 {
-    RBSProcessIdentity *_identity;
+    FBSSceneClientIdentity *_clientIdentity;
     FBApplicationProcessLaunchTransaction *_processLaunchTransaction;
     _Bool _processLaunched;
     _Bool _waitsForSceneCommits;
@@ -19,8 +19,8 @@
     NSMutableArray *_pendingUpdateSceneBlocks;
 }
 
-@property(nonatomic) _Bool waitsForSceneCommits; // @synthesize waitsForSceneCommits=_waitsForSceneCommits;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool waitsForSceneCommits; // @synthesize waitsForSceneCommits=_waitsForSceneCommits;
 - (void)updateSceneTransactionDidCommitUpdate:(id)arg1;
 - (void)updateSceneTransactionWillCommitUpdate:(id)arg1;
 - (void)updateSceneTransactionWillUpdateScene:(id)arg1;
@@ -47,6 +47,7 @@
 @property(readonly, nonatomic) FBApplicationProcess *process;
 @property(readonly, nonatomic) NSString *bundleID;
 - (id)initWithProcessIdentity:(id)arg1 executionContextProvider:(CDUnknownBlockType)arg2;
+- (id)initWithClientIdentity:(id)arg1 executionContextProvider:(CDUnknownBlockType)arg2;
 - (id)initWithApplicationBundleID:(id)arg1 executionContextProvider:(CDUnknownBlockType)arg2;
 - (id)init;
 

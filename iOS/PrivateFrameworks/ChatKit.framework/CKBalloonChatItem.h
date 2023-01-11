@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IMHandle, NSDate;
+@class CKEntity, IMHandle, NSDate;
 
 @interface CKBalloonChatItem
 {
+    CKEntity *_entity;
+    _Bool _isMultilineText;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isMultilineText; // @synthesize isMultilineText=_isMultilineText;
 - (_Bool)needsAdjustedTextAlignmentInsets;
 - (_Bool)needsPreservedAspectRatio;
 @property(readonly, nonatomic) BOOL balloonShape;
 @property(readonly, nonatomic) BOOL tailShape;
 - (struct CKBalloonDescriptor_t)balloonDescriptor;
 - (void)configureBalloonView:(id)arg1;
+@property(readonly, nonatomic) _Bool isBlackholed;
 @property(readonly, nonatomic) _Bool shouldCacheSize;
 @property(readonly, nonatomic) IMHandle *sender;
 @property(readonly, nonatomic) NSDate *time;
@@ -37,6 +42,11 @@
 - (struct UIEdgeInsets)contentInsets;
 - (struct UIEdgeInsets)transcriptTextAlignmentInsets;
 - (id)description;
+- (_Bool)_shouldShowContactPhotosInTranscript;
+- (_Bool)wantsAvatarViewForLayoutEnvironment:(id)arg1;
+- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (Class)collectionViewCellClass;
+- (unsigned long long)layoutType;
 
 @end
 

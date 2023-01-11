@@ -11,9 +11,12 @@ __attribute__((visibility("hidden")))
 {
     struct CGPoint _originalOffset;
     struct CGPoint _targetOffset;
+    _Bool _targetOffsetValidAtStart;
     double _accuracy;
     _Bool _adjustsForContentOffsetDelta;
     CABasicAnimation *_customAnimation;
+    _Bool _forDiscreteScroll;
+    _Bool _beingReplacedForDiscreteScroll;
 }
 
 - (void).cxx_destruct;

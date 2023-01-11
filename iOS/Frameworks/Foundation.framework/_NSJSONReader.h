@@ -19,9 +19,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)validForJSON:(id)arg1 depth:(unsigned long long)arg2 allowFragments:(_Bool)arg3;
 - (id)parseStream:(id)arg1 options:(unsigned long long)arg2;
 - (id)parseData:(id)arg1 options:(unsigned long long)arg2;
-- (unsigned long long)findEncodingFromData:(id)arg1 withBOMSkipLength:(unsigned long long *)arg2;
-- (id)parseUTF8JSONData:(id)arg1 skipBytes:(unsigned long long)arg2 options:(unsigned long long)arg3;
-- (void)setError:(id)arg1;
 - (id)error;
 - (void)dealloc;
 - (id)init;

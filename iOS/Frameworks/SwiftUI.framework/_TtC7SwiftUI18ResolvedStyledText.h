@@ -13,13 +13,19 @@
     MISSING_TYPE *string;
     MISSING_TYPE *truncationMode;
     MISSING_TYPE *lineLimit;
-    MISSING_TYPE *minimumScaleFactor;
+    MISSING_TYPE *minScaleFactor;
     MISSING_TYPE *lineSpacing;
-    MISSING_TYPE *maxLineHeight;
+    MISSING_TYPE *lineHeightMultiple;
+    MISSING_TYPE *maximumLineHeight;
+    MISSING_TYPE *minimumLineHeight;
+    MISSING_TYPE *hyphenationFactor;
+    MISSING_TYPE *bodyHeadOutdent;
+    MISSING_TYPE *resolvableConfiguration;
     MISSING_TYPE *pixelLength;
     MISSING_TYPE *cache;
-    MISSING_TYPE *contentInsetsCache;
+    MISSING_TYPE *dynamicRendering;
     MISSING_TYPE *scaleFactorOverride;
+    MISSING_TYPE *$__lazy_storage_$_pixelMargins;
 }
 
 @end

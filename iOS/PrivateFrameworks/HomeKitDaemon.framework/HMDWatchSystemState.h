@@ -6,18 +6,17 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSHashTable, NSObject;
-@protocol OS_dispatch_queue;
+@class NSHashTable;
+@protocol HMFLocking;
 
 @interface HMDWatchSystemState : HMFObject
 {
+    id <HMFLocking> _lock;
     _Bool _companionReachable;
     NSHashTable *_watchSystemStateDelegates;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 + (id)sharedState;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 - (void).cxx_destruct;
 - (void)_callDidUpdateReachabilityChangeForCompanion:(_Bool)arg1 forDelegate:(id)arg2;
 - (void)_callDidReceiveNewIncomingMessageForDelegate:(id)arg1;

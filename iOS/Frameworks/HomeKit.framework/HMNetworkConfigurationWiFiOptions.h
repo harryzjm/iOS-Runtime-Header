@@ -8,9 +8,11 @@
 
 @interface HMNetworkConfigurationWiFiOptions : HMFObject
 {
+    _Bool _rotate;
     long long _credentialType;
 }
 
+@property(nonatomic) _Bool rotate; // @synthesize rotate=_rotate;
 @property(readonly, nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
 - (id)description;
 - (id)initWithCredentialType:(long long)arg1;

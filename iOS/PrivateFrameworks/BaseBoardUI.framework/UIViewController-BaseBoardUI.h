@@ -6,7 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@interface UIViewController (BaseBoardUI)
+#import <BaseBoardUI/BSTraitEnvironment-Protocol.h>
+
+@class NSString, UITraitCollection;
+
+@interface UIViewController (BaseBoardUI) <BSTraitEnvironment>
++ (id)bs_nextViewControllerForView:(id)arg1;
+- (void)bs_traitCollectionDidChange:(id)arg1 forManagedTraitEnvironment:(id)arg2;
 - (id)bs_topPresentedViewController;
 - (id)bs_presentationContextDefiningViewController;
 - (id)bs_presentedViewControllerIncludingAncestors;
@@ -24,5 +30,12 @@
 - (_Bool)bs_beginAppearanceTransition:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)bs_isDisappearingOrDisappeared;
 - (_Bool)bs_isAppearingOrAppeared;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(readonly, nonatomic) UITraitCollection *traitCollection;
 @end
 

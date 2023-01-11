@@ -7,23 +7,26 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturbServer/DNDSSysdiagnoseDataProvider-Protocol.h>
+#import <DoNotDisturbServer/IDSServiceDelegate-Protocol.h>
 
-@class DNDSPairedDevice, NSString;
+@class DNDSPairedDevice, IDSService, NSString;
 @protocol DNDSPairedDeviceStateMonitorDelegate, OS_dispatch_queue;
 
-@interface DNDSPairedDeviceStateMonitor : NSObject <DNDSSysdiagnoseDataProvider>
+@interface DNDSPairedDeviceStateMonitor : NSObject <IDSServiceDelegate, DNDSSysdiagnoseDataProvider>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    IDSService *_idsService;
     int _pairedDeviceDidChangeNotificationToken;
     DNDSPairedDevice *_pairedDevice;
     id <DNDSPairedDeviceStateMonitorDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <DNDSPairedDeviceStateMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy) DNDSPairedDevice *pairedDevice; // @synthesize pairedDevice=_pairedDevice;
-- (void).cxx_destruct;
 - (id)sysdiagnoseDataForDate:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
+- (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)_pairedDeviceStateChanged:(id)arg1;
 - (void)_endMonitoringForChanges;
 - (void)_beginMonitoringForChanges;
@@ -31,7 +34,7 @@
 - (void)_queue_updatePairedState;
 - (void)resume;
 - (void)dealloc;
-- (id)init;
+- (id)initWithIDSService:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

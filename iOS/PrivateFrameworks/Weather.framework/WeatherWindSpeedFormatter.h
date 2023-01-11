@@ -15,18 +15,19 @@
 }
 
 + (id)convenienceFormatter;
+- (void).cxx_destruct;
 @property(retain) NSDictionary *directionSubstringAttributes; // @synthesize directionSubstringAttributes=_directionSubstringAttributes;
 @property(retain) NSLocale *locale; // @synthesize locale=_locale;
-- (void).cxx_destruct;
 - (double)speedByConvertingToUserUnit:(double)arg1;
 - (int)windSpeedUnit;
 - (id)speedStringByConvertingToUserUnits:(float)arg1;
-- (id)stringForWindDirection:(float)arg1;
+- (id)stringForWindDirection:(float)arg1 shortDescription:(_Bool)arg2;
 - (id)fallbackUnitString;
 - (id)fallbackStringForWindSpeed:(float)arg1;
 - (id)stringForWindSpeed:(float)arg1;
 - (id)templateStringForSpeed:(float)arg1 direction:(float)arg2;
 - (id)attributedFormattedStringForSpeed:(float)arg1 direction:(float)arg2;
+- (id)formattedStringForSpeed:(float)arg1 direction:(float)arg2 shortDescription:(_Bool)arg3;
 - (id)formattedStringForSpeed:(float)arg1 direction:(float)arg2;
 - (_Bool)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (id)stringForObjectValue:(id)arg1;

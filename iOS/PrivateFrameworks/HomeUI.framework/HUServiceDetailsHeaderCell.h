@@ -28,6 +28,7 @@
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *actionBottomConstraint; // @synthesize actionBottomConstraint=_actionBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *messageBottomConstraint; // @synthesize messageBottomConstraint=_messageBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *spinnerBottomConstraint; // @synthesize spinnerBottomConstraint=_spinnerBottomConstraint;
@@ -40,7 +41,6 @@
 @property(retain, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
 @property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate; // @synthesize resizingDelegate=_resizingDelegate;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
-- (void).cxx_destruct;
 - (id)_visibleMessageTextViewConstraints;
 - (id)_hiddenMessageTextViewConstraints;
 - (void)_updateRequiredHeightIfNeeded;
@@ -48,6 +48,8 @@
 - (void)_configureConstraints;
 - (void)updateUIWithAnimation:(_Bool)arg1;
 - (void)layoutSubviews;
+- (void)_setCornerRadius:(double)arg1;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties

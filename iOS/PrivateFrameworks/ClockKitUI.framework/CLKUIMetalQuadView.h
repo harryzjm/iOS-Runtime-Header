@@ -5,7 +5,7 @@
 //
 
 @class CAMetalLayer, MTLRenderPassDescriptor, NSArray;
-@protocol MTLCommandQueue;
+@protocol MTLCommandQueue, MTLComputePipelineState, MTLTexture;
 
 @interface CLKUIMetalQuadView
 {
@@ -15,18 +15,35 @@
     struct CLKUIQuadSize _quadSize;
     CAMetalLayer *_metalLayer;
     NSArray *_quads;
+    id <MTLTexture> _depthTexture;
+    unsigned int _isDepthBufferRequired:1;
+    id <MTLComputePipelineState> _aplPipelineState;
+    id <MTLComputePipelineState> _colorConversionPipelineState;
+    unsigned int _presentWithTransaction:1;
+    id <MTLTexture> _msaaTexture;
+    id <MTLTexture> _textureForPrewarming;
     unsigned long long _colorPixelFormat;
+    unsigned long long _msaaCount;
 }
 
-@property(readonly, nonatomic) unsigned long long colorPixelFormat; // @synthesize colorPixelFormat=_colorPixelFormat;
++ (id)allocateDepthTextureWithWidth:(float)arg1 height:(float)arg2 sampleCount:(unsigned long long)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long msaaCount; // @synthesize msaaCount=_msaaCount;
+@property(readonly, nonatomic) unsigned long long colorPixelFormat; // @synthesize colorPixelFormat=_colorPixelFormat;
 - (void)_updateDrawableSizeIfNecessary;
 - (id)_newRenderPassDescriptor;
 - (id)metalLayer;
 - (void)discardContents;
-- (_Bool)_displayAndCheckForDrawable:(_Bool)arg1 WithCompletion:(CDUnknownBlockType)arg2;
-- (id)_snapshotTexture:(id)arg1 scale:(double)arg2;
-- (id)_snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
+- (float)computeAPLAndSnapshot:(id *)arg1;
+- (float)computeAPL;
+- (_Bool)_displayAndCheckForDrawable:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_renderQuads:(id)arg1 toScreenWithCommandBuffer:(id)arg2 passDescriptor:(id)arg3;
+- (id)_textureToImage:(id)arg1 scale:(double)arg2;
+- (_Bool)prewarmWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_snapshotTextureInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3 withAdditionalPasses:(CDUnknownBlockType)arg4;
+- (id)snapshotTextureInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
+- (id)snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
+- (void)setSingleBufferMode:(_Bool)arg1;
 - (void)_handleQuadArrayChange:(id)arg1;
 - (void)setOpaque:(_Bool)arg1;
 - (void)layoutSubviews;

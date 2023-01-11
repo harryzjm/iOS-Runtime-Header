@@ -8,7 +8,6 @@
 
 @class NSString, RTPredictedLocationOfInterest;
 
-__attribute__((visibility("hidden")))
 @interface EKPredictedLocationOfInterest : NSObject
 {
     long long _type;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     RTPredictedLocationOfInterest *_rtPredictedLocationOfInterest;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) RTPredictedLocationOfInterest *rtPredictedLocationOfInterest; // @synthesize rtPredictedLocationOfInterest=_rtPredictedLocationOfInterest;
 @property(readonly, copy, nonatomic) NSString *addressLocality; // @synthesize addressLocality=_addressLocality;
 @property(readonly, copy, nonatomic) NSString *addressThoroughfare; // @synthesize addressThoroughfare=_addressThoroughfare;
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *mapItemName; // @synthesize mapItemName=_mapItemName;
 @property(readonly, copy, nonatomic) NSString *customLabel; // @synthesize customLabel=_customLabel;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)initWithType:(long long)arg1 customLabel:(id)arg2 mapItemName:(id)arg3 addressCountryCode:(id)arg4 addressThoroughFare:(id)arg5 addressLocality:(id)arg6;
 - (id)initWithPredictedLocationOfInterest:(id)arg1;
 

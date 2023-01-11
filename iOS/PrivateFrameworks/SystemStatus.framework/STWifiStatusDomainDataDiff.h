@@ -17,11 +17,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)diffFromData:(id)arg1 toData:(id)arg2;
-@property(readonly, copy, nonatomic) BSSettings *changes; // @synthesize changes=_changes;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) BSSettings *changes; // @synthesize changes=_changes;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (void)applyToMutableData:(id)arg1;
 - (id)dataByApplyingToData:(id)arg1;
 - (id)initWithChanges:(id)arg1;
@@ -30,7 +32,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

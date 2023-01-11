@@ -6,7 +6,7 @@
 
 #import <PhotoAnalysis/PVVisionIntegrating-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSObject, NSString, PHAAnalysisWorkerJob, PVContext, PVVisionAnalyzer, VNPersonsModel;
+@class NSMutableArray, NSObject, NSString, PHAAnalysisWorkerJob, PVVisionAnalyzer, VNPersonsModel;
 @protocol OS_dispatch_queue;
 
 @interface PHAFaceClassificationServiceWorker <PVVisionIntegrating>
@@ -14,9 +14,7 @@
     NSObject<OS_dispatch_queue> *_workerQueue;
     NSMutableArray *_pendingAssetIdentifiers;
     PHAAnalysisWorkerJob *_currentJob;
-    PVContext *_context;
     PVVisionAnalyzer *_analyzer;
-    NSMutableSet *_outstandingImageRequests;
     VNPersonsModel *_personsModel;
     unsigned long long _numberOfAssetsToProcess;
 }
@@ -24,12 +22,10 @@
 + (_Bool)persistsState;
 + (long long)applicationDataFolderIdentifier;
 + (short)workerType;
+- (void).cxx_destruct;
 @property unsigned long long numberOfAssetsToProcess; // @synthesize numberOfAssetsToProcess=_numberOfAssetsToProcess;
 @property(retain) VNPersonsModel *personsModel; // @synthesize personsModel=_personsModel;
-@property(retain) NSMutableSet *outstandingImageRequests; // @synthesize outstandingImageRequests=_outstandingImageRequests;
 @property(retain) PVVisionAnalyzer *analyzer; // @synthesize analyzer=_analyzer;
-@property(retain) PVContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (void)loadPersonsModel;
 - (void)configureRequest:(id)arg1 algorithmUmbrellaVersion:(unsigned int)arg2;
 - (void)processPendingAssetIdentifiers;
@@ -37,7 +33,7 @@
 - (_Bool)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (_Bool)startAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)cooldown;
-- (void)warmup;
+- (void)warmupWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)initWithPhotoAnalysisManager:(id)arg1 dataLoader:(id)arg2;
 
 // Remaining properties

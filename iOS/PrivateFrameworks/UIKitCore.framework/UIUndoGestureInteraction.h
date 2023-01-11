@@ -11,9 +11,8 @@
 #import <UIKitCore/UIInteraction-Protocol.h>
 #import <UIKitCore/UIInteractiveUndoHUDActionDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, UIDelayedAction, UIKBTextEditingTraits, UIKBUndoInteractionHUD, UIKBUndoStateHUD, UILayoutGuide, UILongPressGestureRecognizer, UITapGestureRecognizer, UIUndoGestureObserver, UIUndoGestureRecognizer, UIUndoPinchGestureRecognizer, UIView;
+@class NSLayoutConstraint, NSString, UIDelayedAction, UIKBProductivityDoubleTapGesture, UIKBProductivityLongPressGestureRecognizer, UIKBProductivityPanGestureRecognizer, UIKBProductivityPinchGestureRecognizer, UIKBProductivitySingleTapGesture, UIKBTextEditingTraits, UIKBUndoInteractionHUD, UIKBUndoStateHUD, UILayoutGuide, UIUndoGestureObserver, UIView;
 
-__attribute__((visibility("hidden")))
 @interface UIUndoGestureInteraction : NSObject <UIInteractiveUndoHUDActionDelegate, UIGestureRecognizerDelegate, UIEditingOverlayInteractionWithView, UIInteraction>
 {
     _Bool _interactiveHUDIsVisible;
@@ -21,12 +20,14 @@ __attribute__((visibility("hidden")))
     _Bool _multiPinchTimerOn;
     UIView *_view;
     UIUndoGestureObserver *_observerGesture;
-    UITapGestureRecognizer *_threeFingerSingleTap;
-    UITapGestureRecognizer *_threeFingerDoubleTap;
-    UIUndoGestureRecognizer *_threeFingerSlide;
-    UILongPressGestureRecognizer *_threeFingerLongPress;
-    UIUndoPinchGestureRecognizer *_threeFingerPinch;
+    UIKBProductivitySingleTapGesture *_threeFingerSingleTap;
+    UIKBProductivityDoubleTapGesture *_threeFingerDoubleTap;
+    UIKBProductivityPanGestureRecognizer *_threeFingerSlide;
+    UIKBProductivityLongPressGestureRecognizer *_threeFingerLongPress;
+    UIKBProductivityPinchGestureRecognizer *_threeFingerPinch;
     UIKBUndoInteractionHUD *_undoInteractiveHUD;
+    long long _interactiveHUDMode;
+    CDUnknownBlockType _pasteConfirmationAction;
     UIKBUndoStateHUD *_undoStateHUD;
     NSLayoutConstraint *_undoStateHUDTopConstraint;
     NSLayoutConstraint *_undoStateHUDCenterConstraint;
@@ -52,6 +53,8 @@ __attribute__((visibility("hidden")))
 
 + (void)presentProductivityGestureTutorialInlineWithCompletion:(CDUnknownBlockType)arg1;
 + (void)presentProductivityGestureTutorialIfNeededWithCompletion:(CDUnknownBlockType)arg1;
++ (id)iWorkFamily;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIKBTextEditingTraits *editingTraits; // @synthesize editingTraits=_editingTraits;
 @property(nonatomic) long long potentialPinchDirection; // @synthesize potentialPinchDirection=_potentialPinchDirection;
 @property(nonatomic) double previousPinchPerimeter; // @synthesize previousPinchPerimeter=_previousPinchPerimeter;
@@ -76,28 +79,30 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *undoStateHUDCenterConstraint; // @synthesize undoStateHUDCenterConstraint=_undoStateHUDCenterConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *undoStateHUDTopConstraint; // @synthesize undoStateHUDTopConstraint=_undoStateHUDTopConstraint;
 @property(retain, nonatomic) UIKBUndoStateHUD *undoStateHUD; // @synthesize undoStateHUD=_undoStateHUD;
+@property(copy, nonatomic) CDUnknownBlockType pasteConfirmationAction; // @synthesize pasteConfirmationAction=_pasteConfirmationAction;
+@property(nonatomic) long long interactiveHUDMode; // @synthesize interactiveHUDMode=_interactiveHUDMode;
 @property(retain, nonatomic) UIKBUndoInteractionHUD *undoInteractiveHUD; // @synthesize undoInteractiveHUD=_undoInteractiveHUD;
-@property(retain, nonatomic) UIUndoPinchGestureRecognizer *threeFingerPinch; // @synthesize threeFingerPinch=_threeFingerPinch;
-@property(retain, nonatomic) UILongPressGestureRecognizer *threeFingerLongPress; // @synthesize threeFingerLongPress=_threeFingerLongPress;
-@property(retain, nonatomic) UIUndoGestureRecognizer *threeFingerSlide; // @synthesize threeFingerSlide=_threeFingerSlide;
-@property(retain, nonatomic) UITapGestureRecognizer *threeFingerDoubleTap; // @synthesize threeFingerDoubleTap=_threeFingerDoubleTap;
-@property(retain, nonatomic) UITapGestureRecognizer *threeFingerSingleTap; // @synthesize threeFingerSingleTap=_threeFingerSingleTap;
+@property(retain, nonatomic) UIKBProductivityPinchGestureRecognizer *threeFingerPinch; // @synthesize threeFingerPinch=_threeFingerPinch;
+@property(retain, nonatomic) UIKBProductivityLongPressGestureRecognizer *threeFingerLongPress; // @synthesize threeFingerLongPress=_threeFingerLongPress;
+@property(retain, nonatomic) UIKBProductivityPanGestureRecognizer *threeFingerSlide; // @synthesize threeFingerSlide=_threeFingerSlide;
+@property(retain, nonatomic) UIKBProductivityDoubleTapGesture *threeFingerDoubleTap; // @synthesize threeFingerDoubleTap=_threeFingerDoubleTap;
+@property(retain, nonatomic) UIKBProductivitySingleTapGesture *threeFingerSingleTap; // @synthesize threeFingerSingleTap=_threeFingerSingleTap;
 @property(retain, nonatomic) UIUndoGestureObserver *observerGesture; // @synthesize observerGesture=_observerGesture;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
-- (void).cxx_destruct;
 - (void)pasteOperation;
 - (void)copyOperation;
 - (void)cutOperation;
 - (_Bool)canPaste;
 - (_Bool)canCopy;
 - (_Bool)canCut;
+- (id)responderForOperation:(SEL)arg1 withSender:(id)arg2;
 - (id)currentResponder;
 - (void)redo:(_Bool)arg1;
 - (void)undo:(_Bool)arg1;
 - (_Bool)canRedo;
 - (_Bool)canUndo;
 - (void)animateSpringCoverWithSuccess:(_Bool)arg1 direction:(long long)arg2 remainingDistanceToTravel:(double)arg3;
-- (void)fullyCloseCoverWithBeginDirection:(long long)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)fullyCloseCoverWithComplete:(CDUnknownBlockType)arg1;
 - (void)fullyOpenAndCloseCoverWithBeginDirection:(long long)arg1;
 - (_Bool)performActionWithDirection:(long long)arg1;
 - (long long)undoControlTypeWithDirection:(long long)arg1;
@@ -127,10 +132,13 @@ __attribute__((visibility("hidden")))
 - (void)multiPansTimerElaspsed:(id)arg1;
 - (void)clearMultiPansTimer;
 - (void)touchMultiPansTimer;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (_Bool)bundleIniWorkFamily:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)textEditingOperationsAvailableWithGestureRecognizer:(id)arg1;
+- (_Bool)editingInteractionOptionsAllowGestureRecognizerToBegin:(id)arg1;
 - (_Bool)undoManagerOperationsCutCopyPasteAvailable;
 - (_Bool)undoManagerOperationsUndoRedoAvailable;
 - (id)_undoManagerFlattenedGroupingInfo;
@@ -143,11 +151,11 @@ __attribute__((visibility("hidden")))
 - (void)clearUndoStateHUDDismissTimer;
 - (void)touchUndoStateHUDDismissTimer;
 - (void)setUndoStateHUDVisibility:(_Bool)arg1 withType:(long long)arg2 available:(_Bool)arg3;
+- (void)setPasteConfirmationHUDVisibility:(_Bool)arg1;
 - (void)setUndoInteractiveHUDVisibility:(_Bool)arg1;
 - (void)setUndoHUDType:(long long)arg1 visibility:(_Bool)arg2;
 - (void)animateDisplayingStateHUD;
 - (void)animateInStateHUD;
-- (void)layoutUndoHUDSliderDetails;
 - (_Bool)currentStateHUDVisible;
 - (void)_createAndUpdateUndoStateHUDIfNecessary;
 - (_Bool)currentInteractiveHUDVisible;

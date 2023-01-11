@@ -19,11 +19,14 @@
     _Bool _hasEnded;
     _Bool _endpointOnCurrentDevice;
     _Bool _hostedOnCurrentDevice;
+    _Bool _video;
     NSUUID *_UUID;
     NSString *_providerIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isVideo) _Bool video; // @synthesize video=_video;
 @property(nonatomic, getter=isHostedOnCurrentDevice) _Bool hostedOnCurrentDevice; // @synthesize hostedOnCurrentDevice=_hostedOnCurrentDevice;
 @property(nonatomic, getter=isEndpointOnCurrentDevice) _Bool endpointOnCurrentDevice; // @synthesize endpointOnCurrentDevice=_endpointOnCurrentDevice;
 @property(retain, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
@@ -32,7 +35,6 @@
 @property(nonatomic, getter=isOnHold) _Bool onHold; // @synthesize onHold=_onHold;
 @property(nonatomic, getter=isOutgoing) _Bool outgoing; // @synthesize outgoing=_outgoing;
 @property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)updateCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
 - (id)sanitizedCopyWithZone:(struct _NSZone *)arg1;

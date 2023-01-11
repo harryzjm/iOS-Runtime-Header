@@ -13,9 +13,10 @@ __attribute__((visibility("hidden")))
     UILabel *_labelLabel;
 }
 
++ (_Bool)shouldIndentWhileEditing;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *labelLabel; // @synthesize labelLabel=_labelLabel;
 @property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
-- (void).cxx_destruct;
 - (void)setAllowsEditing:(_Bool)arg1;
 - (void)textViewEditingDidEnd:(id)arg1;
 - (void)textViewChanged:(id)arg1;
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (double)valueViewBottomMargin;
 - (id)valueView;
 - (id)labelView;
-- (_Bool)shouldIndentWhileEditing;
 - (_Bool)displaysCellSelectionState;
 - (_Bool)allowsCellSelection;
 - (_Bool)supportsTintColorValue;

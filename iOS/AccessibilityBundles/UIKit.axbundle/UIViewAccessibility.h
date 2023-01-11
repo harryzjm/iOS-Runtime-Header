@@ -9,14 +9,18 @@
 }
 
 + (id)_axFocusedWindowSubviews;
-+ (void)_axTriggerNextContextMenuInteractionInQueue:(id)arg1 forElement:(id)arg2 customAction:(id)arg3;
++ (void)_axTriggerNextContextMenuInteractionInQueue:(id)arg1 forElement:(id)arg2 targetPointValue:(id)arg3;
 + (_Bool)_isSerializableAccessibilityElement;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySubviewMatchingFKAView:(id)arg1;
+- (id)_accessibilityFocusRingTintColor;
+- (_Bool)_accessibilityFKAShouldBeProcessed;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (_Bool)_axHasSingleFocusableSubview;
+- (id)_accessibilityLastFocusedChild;
+- (id)preferredFocusEnvironments;
 - (_Bool)canBecomeFocused;
 - (_Bool)_isEligibleForFocusInteraction;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
@@ -40,12 +44,15 @@
 - (id)_axWindowSubviews;
 - (id)_axSubviews;
 - (void)_axPrintSubviews:(long long)arg1 string:(id)arg2;
+- (id)_accessibilityUserTestingSubviewsSorted:(_Bool)arg1;
 - (id)_accessibilityUserTestingChildren;
+- (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilitySupportGesturesAttributes;
 - (id)accessibilityContainer;
 - (id)_accessibilityChildVendingParent;
-- (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+- (id)_systemDefaultFocusGroupDescriptor;
+- (_Bool)_accessibilityInTopLevelTabLoop;
 - (_Bool)_accessibilityIsFKARunningForFocusItem;
 - (_Bool)_accessibilityIsInCollectionCell;
 - (_Bool)_accessibilityIsInTableCell;
@@ -58,7 +65,7 @@
 - (id)_accessibilityCheckForAllowedModalView:(struct CGPoint)arg1 event:(id)arg2;
 - (_Bool)_accessibilityViewIsBeingHitTested:(id)arg1;
 - (id)__accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)_accessibilityContextMenuActionForElement:(id)arg1;
+- (_Bool)_accessibilityShowContextMenuForElement:(id)arg1 targetPointValue:(id)arg2;
 - (_Bool)_accessibilityIsUserInteractionEnabledChain;
 - (double)_accessibilityMaxFuzzyHitTestDistance;
 - (_Bool)_accessibilityUseAccessibilityFrameForHittest;

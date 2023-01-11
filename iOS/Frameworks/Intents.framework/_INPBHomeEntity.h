@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBHomeEntity-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBString;
+@class NSArray, NSString, _INPBDataString, _INPBString;
 
 @interface _INPBHomeEntity : PBCodable <_INPBHomeEntity, NSSecureCoding, NSCopying>
 {
@@ -20,7 +20,6 @@
         unsigned int entityType:1;
         unsigned int sceneType:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _deviceType;
     int _entityType;
     int _sceneType;
@@ -31,10 +30,13 @@
     _INPBString *_name;
     _INPBDataString *_room;
     _INPBDataString *_zone;
+    NSArray *_zones;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
++ (Class)zonesType;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *zones; // @synthesize zones=_zones;
 @property(retain, nonatomic) _INPBDataString *zone; // @synthesize zone=_zone;
 @property(nonatomic) int sceneType; // @synthesize sceneType=_sceneType;
 @property(retain, nonatomic) _INPBDataString *room; // @synthesize room=_room;
@@ -45,7 +47,6 @@
 @property(retain, nonatomic) _INPBDataString *entityName; // @synthesize entityName=_entityName;
 @property(copy, nonatomic) NSString *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property(nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -55,6 +56,10 @@
 - (void)dealloc;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+- (id)zonesAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long zonesCount;
+- (void)addZones:(id)arg1;
+- (void)clearZones;
 @property(readonly, nonatomic) _Bool hasZone;
 - (int)StringAsSceneType:(id)arg1;
 - (id)sceneTypeAsString:(int)arg1;

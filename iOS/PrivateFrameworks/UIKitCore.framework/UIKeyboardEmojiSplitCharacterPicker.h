@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)wantsScreenTraits;
 - (void)updateToCategory:(long long)arg1;
 - (void)didMoveToWindow;
 - (double)snappedYOffsetForOffset:(double)arg1;

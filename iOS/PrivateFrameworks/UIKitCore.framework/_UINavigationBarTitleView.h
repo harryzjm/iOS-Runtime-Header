@@ -6,7 +6,7 @@
 
 #import <UIKitCore/_UINavigationBarAugmentedTitleView-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UINavigationItem, _UINavigationBarTitleViewOverlayRects;
+@class NSArray, NSLayoutConstraint, NSString, UIMenu, UINavigationItem, _UINavigationBarTitleViewOverlayRects;
 @protocol _UINavigationBarTitleViewDataSource;
 
 @interface _UINavigationBarTitleView <_UINavigationBarAugmentedTitleView>
@@ -29,6 +29,7 @@
     long long _preferredContentAlignment;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long preferredContentAlignment; // @synthesize preferredContentAlignment=_preferredContentAlignment;
 @property(nonatomic) double trailingBarAlpha; // @synthesize trailingBarAlpha=_trailingBarAlpha;
 @property(nonatomic) double leadingBarAlpha; // @synthesize leadingBarAlpha=_leadingBarAlpha;
@@ -42,8 +43,8 @@
 @property(nonatomic) _Bool underlayBarContent; // @synthesize underlayBarContent=_underlayBarContent;
 @property(readonly, nonatomic) long long titleLocation; // @synthesize titleLocation=_titleLocation;
 @property(readonly, nonatomic) __weak UINavigationItem *navigationItem; // @synthesize navigationItem=_navigationItem;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
+- (id)_traitCollectionOverridesForNavigationBarTraitCollection:(id)arg1;
 - (void)navigationBarTraitCollectionDidChangeTo:(id)arg1 from:(id)arg2;
 - (void)_navigationBarTraitCollectionDidChangeTo:(id)arg1 from:(id)arg2;
 - (void)transitionCompleted:(long long)arg1 willBeDisplayed:(_Bool)arg2;
@@ -62,6 +63,8 @@
 @property(readonly, nonatomic) double contentBaselineOffsetFromTop;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee largeTitleHeightRange;
 @property(readonly, nonatomic) double largeTitleHeight;
+@property(readonly, nonatomic) long long trailingOverlayCount;
+@property(readonly, nonatomic) long long leadingOverlayCount;
 @property(readonly, copy, nonatomic) NSArray *contentOverlayRects;
 @property(readonly, nonatomic) double _navigationBarTrailingBarButtonsAlpha;
 @property(readonly, nonatomic) double _navigationBarLeadingBarButtonsAlpha;
@@ -73,6 +76,7 @@
 @property(readonly, nonatomic) double _navigationBarBackButtonMaximumWidth;
 @property(readonly, nonatomic) double _navigationBarContentHeight;
 @property(readonly, nonatomic) _Bool _underlayNavigationBarContent;
+@property(readonly, copy, nonatomic) UIMenu *backButtonMenu;
 @property(readonly, nonatomic) long long _preferredAlignment;
 - (void)_setDataSource:(id)arg1 navigationItem:(id)arg2 titleLocation:(long long)arg3;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;

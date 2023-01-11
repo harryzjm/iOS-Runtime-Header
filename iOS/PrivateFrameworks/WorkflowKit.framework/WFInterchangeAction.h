@@ -12,13 +12,13 @@
     NSArray *_contentClasses;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *contentClasses; // @synthesize contentClasses=_contentClasses;
 @property(readonly, nonatomic) ICAction *interchangeAction; // @synthesize interchangeAction=_interchangeAction;
-- (void).cxx_destruct;
+- (id)disabledPlatformsForInterchangeActionWithIdentifier:(id)arg1;
 - (void)performActionWithInput:(id)arg1 parameters:(id)arg2 userInterface:(id)arg3 successHandler:(CDUnknownBlockType)arg4 errorHandler:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (_Bool)skipsProcessingHiddenParameters;
-- (id)unsupportedEnvironments;
 - (_Bool)mappedValueIsTrue:(id)arg1 forContentMapping:(id)arg2;
 - (_Bool)callbackIsCurrentlyDisabled;
 - (_Bool)shouldSuppressCallback;
@@ -36,6 +36,7 @@
 - (id)app;
 - (id)userInterfaceTypes;
 - (id)requiredResources;
+- (_Bool)isDiscoverable;
 - (_Bool)isDiscontinued;
 - (id)lastModifiedDate;
 - (id)creationDate;

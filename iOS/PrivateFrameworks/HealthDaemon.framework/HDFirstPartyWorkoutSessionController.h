@@ -25,6 +25,7 @@
 - (_Bool)_isAutoPauseEnabled;
 @property(readonly, nonatomic) id <HDWorkoutDataAccumulator> workoutDataAccumulator;
 - (_Bool)storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id *)arg3;
+- (void)generateConfigurationUpdate:(id)arg1;
 - (void)generateMetadata:(id)arg1;
 - (void)generateError:(id)arg1;
 - (void)generateEvent:(id)arg1;
@@ -39,6 +40,7 @@
 - (_Bool)stopActivityWithDate:(id)arg1 error:(id *)arg2;
 - (_Bool)startActivityWithDate:(id)arg1 error:(id *)arg2;
 - (_Bool)prepareWithError:(id *)arg1;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)hktest_setStateTransitionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)workoutSessionServer:(id)arg1 accumulatorDidChange:(id)arg2;
 - (void)workoutSessionServer:(id)arg1 didTransitionFromState:(long long)arg2 toState:(long long)arg3 date:(id)arg4;

@@ -16,6 +16,7 @@
 + (id)sharedTestService;
 - (void).cxx_destruct;
 - (void)_connectIfNecessary;
+- (void)logFaultWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)overriddenSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)originalSettingsWithCompletion:(CDUnknownBlockType)arg1;

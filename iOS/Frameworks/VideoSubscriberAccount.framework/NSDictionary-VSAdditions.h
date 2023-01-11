@@ -7,6 +7,8 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (VSAdditions)
+- (id)vs_objectForNormalizedKey:(id)arg1;
+- (id)vs_objectForCaseInsensitiveKey:(id)arg1;
 - (id)vs_stringForKey:(id)arg1;
 - (id)vs_numberForKey:(id)arg1;
 - (id)vs_arrayOfDictionariesForKey:(id)arg1;

@@ -26,7 +26,7 @@
 - (void)_recordTransposition:(struct CGPoint)arg1;
 - (void)_resetImageRegistration;
 - (void)_resetTranspositionHistory;
-- (void)evaluate:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (id)_translationalImageRegistrationRequestForInput:(id)arg1;
 - (_Bool)validateVisionKitSoftLinkSymbols;
 - (_Bool)requiresVisionFramework;

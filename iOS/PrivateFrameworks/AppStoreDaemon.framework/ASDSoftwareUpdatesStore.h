@@ -6,7 +6,7 @@
 
 #import <AppStoreDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class NSObject, NSString, NSXPCConnection;
+@class ASDPromise, NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface ASDSoftwareUpdatesStore <NSXPCListenerDelegate>
@@ -16,6 +16,7 @@
     NSObject<OS_dispatch_queue> *_calloutQueue;
     _Bool _hasUpdatesEntitlement;
     int _storeChangedNotificationToken;
+    ASDPromise *_getUpdatesPromise;
 }
 
 + (id)registerBadgeCountNotificationBlock:(CDUnknownBlockType)arg1;

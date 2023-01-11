@@ -16,7 +16,7 @@
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;
 @property(readonly, nonatomic) double systemMinimumMargin;
 @property(readonly, nonatomic) struct UIEdgeInsets peripheryInsets;
-@property(nonatomic) unsigned long long artworkSubtype;
-@property(retain, nonatomic) FBSDisplayConfiguration *displayConfiguration;
+@property(readonly, nonatomic) unsigned long long artworkSubtype;
+@property(readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration;
 @end
 

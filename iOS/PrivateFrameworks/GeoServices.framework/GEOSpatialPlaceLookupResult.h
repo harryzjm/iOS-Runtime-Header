@@ -11,11 +11,13 @@
 @interface GEOSpatialPlaceLookupResult : NSObject
 {
     NSMapTable *_parametersToMapItemsMap;
+    NSMapTable *_parametersToResultItemMap;
 }
 
 - (void).cxx_destruct;
+- (id)resultItemForSpatialLookupParameters:(id)arg1;
 - (id)mapItemsForSpatialLookupParameters:(id)arg1;
-- (id)initWithMapTable:(id)arg1;
+- (id)initWithMapItemMap:(id)arg1 resultItemMap:(id)arg2;
 - (id)init;
 
 @end

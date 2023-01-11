@@ -13,20 +13,19 @@
 @interface GEOABSecondPartyPlaceRequestClientMetaData : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_clientConfigs;
     GEOPDABClientDatasetMetadata *_clientDatasetMetadata;
     NSMutableArray *_serverAbAssignments;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_clientConfigs:1;
         unsigned int read_clientDatasetMetadata:1;
         unsigned int read_serverAbAssignments:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_clientConfigs:1;
-        unsigned int wrote_clientDatasetMetadata:1;
-        unsigned int wrote_serverAbAssignments:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,25 +43,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDABClientDatasetMetadata *clientDatasetMetadata;
 @property(readonly, nonatomic) _Bool hasClientDatasetMetadata;
-- (void)_readClientDatasetMetadata;
 - (id)clientConfigAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clientConfigsCount;
-- (void)_addNoFlagsClientConfig:(id)arg1;
 - (void)addClientConfig:(id)arg1;
 - (void)clearClientConfigs;
 @property(retain, nonatomic) NSMutableArray *clientConfigs;
-- (void)_readClientConfigs;
 - (id)serverAbAssignmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serverAbAssignmentsCount;
-- (void)_addNoFlagsServerAbAssignment:(id)arg1;
 - (void)addServerAbAssignment:(id)arg1;
 - (void)clearServerAbAssignments;
 @property(retain, nonatomic) NSMutableArray *serverAbAssignments;
-- (void)_readServerAbAssignments;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

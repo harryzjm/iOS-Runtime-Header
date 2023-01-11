@@ -5,18 +5,18 @@
 //
 
 @class SBAppLayout, SBSwitcherModifier;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBForcePressToHomeSwitcherModifier
 {
     SBAppLayout *_selectedAppLayout;
     long long _startingEnvironmentMode;
     double _initalPanThreshold;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (double)_switcherCardScale;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
@@ -24,11 +24,11 @@
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isContainerStatusBarVisible;
-- (long long)backdropBlurType;
+- (long long)homeScreenBackdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)visibleAppLayouts;
 - (id)initWithTransitionID:(id)arg1 selectedAppLayout:(id)arg2 effectiveStartingEnvironmentMode:(long long)arg3 initialPanThreshold:(double)arg4 multitaskingModifier:(id)arg5;
 
 @end

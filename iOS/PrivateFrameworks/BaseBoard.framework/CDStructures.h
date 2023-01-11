@@ -56,11 +56,8 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
+struct atomic_flag {
+    _Atomic _Bool _Value;
 };
 
 struct mig_subsystem {
@@ -88,13 +85,6 @@ struct routine_descriptor {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int _field1;
-    id _field2;
-    id _field3;
-    CDUnknownBlockType _field4;
-} CDStruct_7eb2cf46;
 
 typedef struct {
     unsigned int _field1;

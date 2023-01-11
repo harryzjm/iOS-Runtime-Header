@@ -8,36 +8,41 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedTrafficCamera, GEOComposedTrafficSignal, GEOEnrouteNotice, GEOLatLng, NSArray, NSString;
+@class GEOComposedRouteAnnotation, GEOComposedTrafficCamera, GEOComposedTrafficSignal, GEOEnrouteNotice, GEOLatLng, NSArray, NSString;
 
 @interface GEOComposedEnrouteNotice : NSObject <NSSecureCoding>
 {
     GEOEnrouteNotice *_enrouteNotice;
-    GEOComposedRoute *_route;
     NSArray *_guidanceEvents;
     CDStruct_3f2a7a20 _routeCoordinate;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *guidanceEvents; // @synthesize guidanceEvents=_guidanceEvents;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDStruct_3f2a7a20 routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;
+@property(readonly, nonatomic) NSArray *guidanceEvents; // @synthesize guidanceEvents=_guidanceEvents;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)setRoute:(id)arg1;
 @property(readonly, nonatomic) unsigned int priority;
 @property(readonly, nonatomic) _Bool hasPriority;
+@property(readonly, nonatomic) unsigned int groupItemVerticalDisplayOrder;
+@property(readonly, nonatomic) _Bool hasGroupItemVerticalDisplayOrder;
+@property(readonly, nonatomic) unsigned int groupItemHorizontalDisplayOrder;
+@property(readonly, nonatomic) _Bool hasGroupItemHorizontalDisplayOrder;
 @property(readonly, nonatomic) unsigned int groupIdentifier;
 @property(readonly, nonatomic) _Bool hasGroupIdentifier;
 - (id)detailFormatForLocation:(id)arg1;
 - (id)titleFormatForLocation:(id)arg1;
-@property(readonly, nonatomic) CDStruct_3f2a7a20 routeCoordinate;
 @property(readonly, nonatomic) unsigned int highlightDistance;
 @property(readonly, nonatomic) _Bool hasHighlightDistance;
+@property(readonly, nonatomic) GEOComposedRouteAnnotation *routeAnnotation;
 @property(readonly, nonatomic) GEOComposedTrafficSignal *trafficSignal;
 @property(readonly, nonatomic) GEOComposedTrafficCamera *trafficCamera;
 @property(readonly, nonatomic) NSString *identifier;
 - (id)description;
-- (id)initWithEnrouteNotice:(id)arg1 onRoute:(id)arg2;
+- (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4 withPolylineCoordinate:(CDStruct_3f2a7a20)arg5;
+- (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4 withPosition:(id)arg5;
+- (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4;
 
 // Remaining properties
 @property(readonly, nonatomic) GEOLatLng *position; // @dynamic position;

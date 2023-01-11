@@ -14,9 +14,11 @@
 @interface PKPaymentSummaryItem : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _useDarkColor;
+    _Bool _useLargeFont;
     NSString *_label;
     NSDecimalNumber *_amount;
     unsigned long long _type;
+    NSString *_localizedTitle;
     NSString *_localizedAmount;
 }
 
@@ -25,12 +27,14 @@
 + (id)summaryItemWithLabel:(id)arg1 amount:(id)arg2;
 + (long long)version;
 + (id)itemWithProtobuf:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useLargeFont; // @synthesize useLargeFont=_useLargeFont;
 @property(nonatomic) _Bool useDarkColor; // @synthesize useDarkColor=_useDarkColor;
 @property(retain, nonatomic) NSString *localizedAmount; // @synthesize localizedAmount=_localizedAmount;
+@property(copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (_Bool)isEqualToPaymentSummaryItem:(id)arg1;

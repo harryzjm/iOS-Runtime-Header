@@ -22,6 +22,7 @@
 - (void)dispatchAsync:(CDUnknownBlockType)arg1;
 - (void)processQueueIfNeeded;
 - (id)initWithName:(const char *)arg1 maximumConcurrentOperations:(long long)arg2;
+- (id)initWithName:(const char *)arg1 maximumConcurrentOperations:(long long)arg2 qos:(unsigned int)arg3;
 
 @end
 

@@ -24,6 +24,7 @@
     NSString *_iCloudUserID;
     NSString *_orgID;
     long long _passcodeType;
+    long long _axmAccountStatus;
     NSString *_emailAddress;
     NSString *_grade;
     long long _sourceType;
@@ -33,12 +34,14 @@
 + (unsigned long long)roleFromString:(id)arg1;
 + (id)stringForRole:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property(nonatomic, getter=isSearchable) _Bool isSearchable; // @synthesize isSearchable=_isSearchable;
 @property(nonatomic, getter=isEditable) _Bool isEditable; // @synthesize isEditable=_isEditable;
 @property(nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 @property(copy, nonatomic) NSString *grade; // @synthesize grade=_grade;
 @property(copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
+@property(nonatomic) long long axmAccountStatus; // @synthesize axmAccountStatus=_axmAccountStatus;
 @property(nonatomic, getter=isFederatedAccount) _Bool federatedAccount; // @synthesize federatedAccount=_federatedAccount;
 @property(nonatomic, getter=isProgressTrackingAllowed) _Bool progressTrackingAllowed; // @synthesize progressTrackingAllowed=_progressTrackingAllowed;
 @property(nonatomic) long long passcodeType; // @synthesize passcodeType=_passcodeType;
@@ -51,7 +54,6 @@
 @property(copy, nonatomic) NSString *middleName; // @synthesize middleName=_middleName;
 @property(copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
 @property(copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSPersonNameComponents *nameComponents;
 @property(readonly, nonatomic) NSString *displayName;
 - (id)dictionaryRepresentation;

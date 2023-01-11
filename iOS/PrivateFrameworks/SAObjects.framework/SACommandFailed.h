@@ -18,6 +18,7 @@
 + (id)commandFailedWithDictionary:(id)arg1 context:(id)arg2;
 + (id)commandFailed;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *turnId;
 @property(copy, nonatomic) NSString *reason;
 @property(nonatomic) long long errorCode;
 - (id)initWithReason:(id)arg1;

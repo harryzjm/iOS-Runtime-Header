@@ -15,17 +15,16 @@
     NSSet *_momentNodes;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 @property(retain, nonatomic) PHMemory *memory; // @synthesize memory=_memory;
 @property(retain, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
-- (void).cxx_destruct;
 - (id)_predominantSuperset;
 - (id)_areaNodeForAreaMemory;
 - (id)_personNodeForPersonMemory;
 - (id)_predominantNeighborNodeFromMomentNodes:(id)arg1 withLabel:(id)arg2 domain:(unsigned short)arg3 ignoredNodes:(id)arg4;
 - (id)_predominantNeighborNodeFromMomentNodes:(id)arg1 withLabel:(id)arg2 domain:(unsigned short)arg3;
 - (long long)_predominantYearForYearSummaryMemory;
-- (id)_startMomentNodeFromMomentNodes:(id)arg1;
 - (id)_momentNodesFromMemory:(id)arg1;
 - (id)titleGeneratorWithError:(id *)arg1;
 - (id)initWithMemory:(id)arg1 graph:(id)arg2;

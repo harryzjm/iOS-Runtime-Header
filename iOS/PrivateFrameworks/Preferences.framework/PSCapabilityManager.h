@@ -15,9 +15,9 @@
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *overrideForAllBoolValues; // @synthesize overrideForAllBoolValues=_overrideForAllBoolValues;
 @property(retain, nonatomic) NSMutableDictionary *overrides; // @synthesize overrides=_overrides;
-- (void).cxx_destruct;
 - (id)supportsPSDeveloperSettingsCapability;
 - (id)supportsPSTTYCapability;
 - (id)applicationDisplayIdentifiers;
@@ -27,6 +27,16 @@
 - (id)supportsAutoWhiteBalanceCapability;
 - (id)supportsRaiseToWakeCapability;
 - (id)supportsDisplayZoomCapability;
+- (id)supportsPSExposureNotificationsCapability;
+- (id)supportsWalletApplePayCapability;
+- (id)supportsPSCellularDataPlanCapability;
+- (id)supportsPSPencilCapability;
+- (id)supportsPSHomeScreenPhoneCapability;
+- (id)supportsPSTrackpadAndMouseCapability;
+- (id)supportsPSTrackpadOnlyCapability;
+- (id)supportsListeningExperienceCapbility;
+- (id)supportsLightningAdapterCapability;
+- (id)supportsPictureInPictureCapability;
 - (id)preferencesCapabilityAnswer:(id)arg1;
 - (_Bool)hasCapabilities:(id)arg1;
 - (void)resetOverrides;

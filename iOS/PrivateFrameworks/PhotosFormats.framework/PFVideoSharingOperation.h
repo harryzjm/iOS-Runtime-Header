@@ -22,10 +22,13 @@
     NSError *_operationError;
     _Bool _shouldStripMetadata;
     _Bool _shouldStripLocation;
+    _Bool _shouldStripCaption;
+    _Bool _shouldStripAccessibilityDescription;
     NSURL *_outputDirectoryURL;
     NSString *_outputFilename;
     CLLocation *_customLocation;
     NSDate *_customDate;
+    NSString *_customCaption;
     NSString *_customAccessibilityLabel;
     NSString *_exportPreset;
     NSString *_exportFileType;
@@ -35,19 +38,22 @@
 }
 
 + (id)operationErrorWithCode:(long long)arg1 underlyingError:(id)arg2 withDescription:(id)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setAdjustments:) PFAssetAdjustments *_adjustments; // @synthesize _adjustments=__adjustments;
 @property(readonly, copy, nonatomic) NSURL *resultingFileURL; // @synthesize resultingFileURL=_resultingFileURL;
 @property(copy, nonatomic, setter=_setVideoURL:) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property(copy, nonatomic) NSString *exportFileType; // @synthesize exportFileType=_exportFileType;
 @property(copy, nonatomic) NSString *exportPreset; // @synthesize exportPreset=_exportPreset;
 @property(copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
+@property(nonatomic) _Bool shouldStripAccessibilityDescription; // @synthesize shouldStripAccessibilityDescription=_shouldStripAccessibilityDescription;
+@property(copy, nonatomic) NSString *customCaption; // @synthesize customCaption=_customCaption;
+@property(nonatomic) _Bool shouldStripCaption; // @synthesize shouldStripCaption=_shouldStripCaption;
 @property(copy, nonatomic) NSDate *customDate; // @synthesize customDate=_customDate;
 @property(copy, nonatomic) CLLocation *customLocation; // @synthesize customLocation=_customLocation;
 @property(nonatomic) _Bool shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;
 @property(nonatomic) _Bool shouldStripMetadata; // @synthesize shouldStripMetadata=_shouldStripMetadata;
 @property(copy, nonatomic) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;
 @property(copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
-- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setOperationError:) NSError *operationError;
 @property(nonatomic, setter=_setSuccess:) _Bool success;
 - (void)cancel;

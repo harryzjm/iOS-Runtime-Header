@@ -6,8 +6,12 @@
 
 #import <SAObjects/SACardSnippet.h>
 
-@interface SACardSnippet (SiriUI)
+#import <SiriUI/SiriUIUUFRShowable-Protocol.h>
+
+@interface SACardSnippet (SiriUI) <SiriUIUUFRShowable>
+- (id)siriui_card_compact;
 - (id)siriui_card;
 - (id)siriui_eventInfo;
+- (id)_uufrShownRequestedByInstrumentationManager:(id)arg1;
 @end
 

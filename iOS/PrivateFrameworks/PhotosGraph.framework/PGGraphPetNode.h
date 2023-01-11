@@ -4,16 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet;
+@class NSSet, NSString;
 
 @interface PGGraphPetNode
 {
+    NSString *_uuid;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *momentNodes;
 @property(readonly, nonatomic) NSSet *ownerNodes;
 - (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateOwnerNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned short)domain;
+- (id)label;
+- (id)description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 @end
 

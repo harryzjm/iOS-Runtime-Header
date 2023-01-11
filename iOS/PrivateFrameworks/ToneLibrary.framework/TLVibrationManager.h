@@ -24,9 +24,9 @@
 + (void)_handleVibrateOnRingOrSilentDidChangeNotification;
 + (void)_handleVibrationPreferencesDidChangeNotificationForPreferencesKinds:(unsigned long long)arg1 atInitiativeOfVibrationManager:(id)arg2;
 + (id)sharedVibrationManager;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsAutoRefresh; // @synthesize allowsAutoRefresh=_allowsAutoRefresh;
 @property(readonly, nonatomic) _Bool needsRefresh; // @synthesize needsRefresh=_needsRefresh;
-- (void).cxx_destruct;
 - (void)_performBlockInAccessQueue:(CDUnknownBlockType)arg1;
 - (void)_setCurrentVibrationWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2 topic:(id)arg3;
 - (void)_setCurrentVibrationWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2;
@@ -57,7 +57,7 @@
 - (id)_sanitizeVibrationIdentifier:(id)arg1 forAlertType:(long long)arg2 topic:(id)arg3 correspondingToneIdentifier:(id)arg4 useDefaultVibrationAsFallback:(_Bool)arg5 allowsNoneDefaultToAnyActualVibrationSubstitution:(_Bool)arg6 didFallback:(_Bool *)arg7;
 - (id)_sanitizeVibrationIdentifier:(id)arg1 forAlertType:(long long)arg2 topic:(id)arg3 correspondingToneIdentifier:(id)arg4 didFallbackToCurrentVibrationIdentifier:(_Bool *)arg5;
 - (id)_synchronizedVibrationIdentifierForToneIdentifier:(id)arg1;
-- (_Bool)_areSynchronizedVibrationsAllowedForAlertType:(long long)arg1;
+- (_Bool)_areSynchronizedVibrationsAllowedForAlertType:(long long)arg1 topic:(id)arg2;
 - (void)_didSetVibrationPreferenceSuccessfullyWithKey:(id)arg1 inDomain:(id)arg2 usingPreferencesOfKind:(unsigned long long)arg3;
 - (_Bool)_vibrationIsSettableForAlertType:(long long)arg1;
 - (id)_systemWideVibrationPatternPreferenceKeyForAlertType:(long long)arg1;

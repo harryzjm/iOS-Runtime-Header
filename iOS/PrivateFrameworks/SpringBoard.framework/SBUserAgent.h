@@ -9,15 +9,17 @@
 #import <SpringBoard/SBUIUserAgent_Internal-Protocol.h>
 
 @class NSMutableDictionary, NSString, SBIdleTimerPolicyAggregator;
+@protocol BSInvalidatable;
 
 @interface SBUserAgent : NSObject <SBUIUserAgent_Internal>
 {
     NSMutableDictionary *_idleTimerDisableAssertions;
     SBIdleTimerPolicyAggregator *_idleTimerPolicyAggregator;
+    id <BSInvalidatable> _bannerSuppressionAssertion;
 }
 
-@property(retain, nonatomic, setter=_setIdleTimerPolicyAggregator:) SBIdleTimerPolicyAggregator *_idleTimerPolicyAggregator; // @synthesize _idleTimerPolicyAggregator;
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setIdleTimerPolicyAggregator:) SBIdleTimerPolicyAggregator *_idleTimerPolicyAggregator; // @synthesize _idleTimerPolicyAggregator;
 @property(nonatomic) long long softwareUpdatePasscodePolicyType;
 - (id)topSuspendedEventsOnlyDisplayID;
 - (_Bool)isInternalInstall;

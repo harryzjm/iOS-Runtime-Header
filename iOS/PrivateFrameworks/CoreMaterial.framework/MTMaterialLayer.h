@@ -6,7 +6,7 @@
 
 #import <QuartzCore/CABackdropLayer.h>
 
-@class MTMaterialSettingsInterpolator, NSMutableDictionary, NSString;
+@class MTMaterialSettingsInterpolator, NSHashTable, NSMutableDictionary, NSString;
 @protocol MTRecipeMaterialSettingsProviding;
 
 @interface MTMaterialLayer : CABackdropLayer
@@ -17,37 +17,39 @@
     _Bool _zoomEnabled;
     CDUnknownBlockType _backdropScaleAdjustment;
     CDUnknownBlockType _defaultBackdropScaleAdjustment;
-    _Bool _shouldCrossfadeIfNecessary;
-    _Bool _forceCrossfadeIfNecessary;
+    _Bool _shouldCrossfade;
     _Bool _contentReplacedWithSnapshot;
     NSMutableDictionary *_pendingChange;
     NSMutableDictionary *_visualStyleCategoriesToProviders;
+    NSHashTable *_prunePromises;
     struct {
-        unsigned int delegateImplementsManagingOpacity:1;
-        unsigned int delegateImplementsManagingOpacityTransition:1;
         unsigned int delegateManagesWeighting:1;
+        unsigned int delegateImplementsManagingOpacity:1;
+        unsigned int delegateImplementsManagingInterpolation:1;
     } _materialLayerDelegateFlags;
     _Bool _reduceTransparencyEnabled;
     _Bool _reduceMotionEnabled;
+    NSString *_debugIdentifier;
 }
 
 + (id)_unserializedAttributeKeys;
 + (id)_attributeKeys;
-+ (void)_pruneMaterialLayerAtCompletionOfCurrentTransaction:(id)arg1;
 + (void)initialize;
 + (id)mt_implicitlyAnimatableKeys;
 + (id)mt_animatableKeys;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType defaultBackdropScaleAdjustment; // @synthesize defaultBackdropScaleAdjustment=_defaultBackdropScaleAdjustment;
+@property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property(nonatomic, getter=isReduceMotionEnabled) _Bool reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property(nonatomic, getter=isReduceTransparencyEnabled) _Bool reduceTransparencyEnabled; // @synthesize reduceTransparencyEnabled=_reduceTransparencyEnabled;
-- (void).cxx_destruct;
+- (id)description;
+- (id)_effectiveDebugIdentifier;
 - (_Bool)_needsPruning;
 - (_Bool)_didValueChangeForKey:(id)arg1 withPendingChange:(id)arg2;
-- (_Bool)_isDelegateManagingCustomOpacityTransition;
+- (_Bool)_isDelegateManagingInterpolation;
 - (_Bool)_isDelegateManagingOpacity;
 - (_Bool)_delegateManagesWeighting;
 - (void)_updateVisualStylingProviders;
-- (_Bool)_isCrossfadeNecessary;
 - (void)_configureDelegateFlagsForDelegate:(id)arg1;
 - (void)_adjustScaleOfBackdropLayer:(id)arg1 ifNecessaryWithSettingsInterpolator:(id)arg2;
 - (void)_configureBackdropLayer:(id)arg1 withSettingsInterpolator:(id)arg2 preservingFiltersIfIdentity:(_Bool)arg3;
@@ -65,17 +67,17 @@
 - (void)prune;
 - (id)visualStylingProviderForCategory:(id)arg1;
 - (id)init;
-- (void)reevaluateShouldReduceCaptureBitDepth:(_Bool)arg1;
+- (void)_pruneAtCompletionOfCurrentTransaction;
 - (void)setRecipeName:(id)arg1 fromBundle:(id)arg2;
 @property(nonatomic, getter=isContentReplacedWithSnapshot) _Bool contentReplacedWithSnapshot;
-@property(nonatomic) _Bool forceCrossfadeIfNecessary;
-@property(nonatomic) _Bool shouldCrossfadeIfNecessary;
+@property(nonatomic) _Bool shouldCrossfade;
 @property(copy, nonatomic) CDUnknownBlockType blurRadiusTransformer;
 @property(readonly, nonatomic, getter=_backdropScale) double backdropScale;
 @property(copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment;
 @property(nonatomic, getter=isZoomEnabled) _Bool zoomEnabled;
 @property(nonatomic, getter=isBlurEnabled) _Bool blurEnabled;
 @property(copy, nonatomic) NSString *recipeName;
+- (void)_reevaluateDefaultShouldCrossfade;
 - (void)_setNeedsConfiguring;
 - (void)_setPrivateOpacity:(double)arg1 removingIfIdentity:(_Bool)arg2;
 @property(readonly, nonatomic, getter=_privateOpacity) double privateOpacity;

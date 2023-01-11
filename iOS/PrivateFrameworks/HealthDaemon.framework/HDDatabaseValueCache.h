@@ -24,18 +24,19 @@
     NSString *_name;
 }
 
-@property(readonly, copy) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *name; // @synthesize name=_name;
 - (id)diagnosticDescription;
 - (void)_commitTransactionStorage:(id)arg1;
-- (id)_transactionStorageWithDatabase:(id)arg1 createIfNecessary:(_Bool)arg2;
-- (void)removeAllObjectsWithDatabase:(id)arg1;
-- (void)removeObjectForKey:(id)arg1 database:(id)arg2;
-- (void)_lock_removeAllObjectsWithDatabase:(id)arg1;
-- (void)_lock_storeObject:(id)arg1 forKey:(id)arg2 database:(id)arg3;
-- (id)_lock_objectForKey:(id)arg1 database:(id)arg2;
+- (id)_storageForTransaction:(id)arg1 createIfNecessary:(_Bool)arg2;
+- (void)removeAllObjectsWithTransaction:(id)arg1;
+- (void)removeObjectForKey:(id)arg1 transaction:(id)arg2;
+- (void)setObject:(id)arg1 forKey:(id)arg2 transaction:(id)arg3;
+- (void)_lock_removeAllObjectsWithTransaction:(id)arg1;
+- (void)_lock_storeObject:(id)arg1 forKey:(id)arg2 transaction:(id)arg3;
+- (id)_lock_objectForKey:(id)arg1 storage:(id)arg2;
 - (id)objectForKey:(id)arg1;
-- (id)fetchObjectForKey:(id)arg1 database:(id)arg2 error:(id *)arg3 faultHandler:(CDUnknownBlockType)arg4;
+- (id)fetchObjectForKey:(id)arg1 transaction:(id)arg2 error:(id *)arg3 faultHandler:(CDUnknownBlockType)arg4;
 @property(readonly) CDStruct_2ec95fd7 statistics;
 @property(readonly) long long cacheScope;
 - (void)dealloc;

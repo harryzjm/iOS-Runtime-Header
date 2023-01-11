@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, PHPerson, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource;
+@class NSArray, NSDictionary, NSString, PHPerson, PXPhotoKitAssetsDataSourceManager, PXPhotoKitImportStatusManager, PXPhotosDataSource, PXSectionedObjectReference;
 
 @interface PXPhotoKitAssetActionPerformer
 {
@@ -13,18 +13,28 @@
     NSDictionary *_assetsByAssetCollection;
     PXPhotoKitAssetsDataSourceManager *_photoKitDataSourceManager;
     PHPerson *_person;
+    PXSectionedObjectReference *_objectReference;
+    PXPhotoKitImportStatusManager *_importStatusManager;
+    NSString *_importSessionID;
 }
 
-+ (id)localizedTitleForUseCase:(unsigned long long)arg1 selectionSnapshot:(id)arg2 person:(id)arg3;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
++ (id)createActivityWithActionManager:(id)arg1;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)createPreviewActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
-+ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (_Bool)canPerformOnImplicitSelection;
++ (_Bool)canPerformOnSubsetOfSelection;
++ (_Bool)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;
 + (_Bool)canPerformWithActionManager:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
+@property(retain, nonatomic) PXPhotoKitImportStatusManager *importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property(nonatomic) _Bool shouldSkipUserConfirmation; // @synthesize shouldSkipUserConfirmation=_shouldSkipUserConfirmation;
+@property(retain, nonatomic) PXSectionedObjectReference *objectReference; // @synthesize objectReference=_objectReference;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property(retain, nonatomic) PXPhotoKitAssetsDataSourceManager *photoKitDataSourceManager; // @synthesize photoKitDataSourceManager=_photoKitDataSourceManager;
-- (void).cxx_destruct;
 - (id)createPerformerWithClass:(Class)arg1 actionType:(id)arg2;
 @property(readonly, nonatomic) NSDictionary *assetsByAssetCollection; // @synthesize assetsByAssetCollection=_assetsByAssetCollection;
 @property(readonly, nonatomic) NSArray *assets; // @synthesize assets=_assets;

@@ -18,6 +18,8 @@
 
 @property(readonly, nonatomic) float temperatureInMired; // @synthesize temperatureInMired=_temperatureInMired;
 @property(readonly, copy) NSString *description;
+- (id)valueDescriptionInKelvin;
+- (id)valueDescription;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)hf_temperatureColorRepresentation;

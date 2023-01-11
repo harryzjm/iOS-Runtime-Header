@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityBannerIsSticky;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

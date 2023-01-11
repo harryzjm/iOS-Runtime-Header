@@ -11,7 +11,6 @@
 
 @interface PVPersonPromoter : NSObject
 {
-    _Bool _didAskFaceProcesingProgress;
     float _faceProcessingProgress;
     PVPersonClusterManager *_personClusterManager;
     id <PVPersonPromoterDelegate> _delegate;
@@ -31,16 +30,15 @@
 + (_Bool)_writePersonPromoterInformation:(id)arg1 atURL:(id)arg2;
 + (id)_personPromoterInformationAtURL:(id)arg1;
 + (_Bool)isEnabled;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PVPersonDeduperProfile *deduperProfile; // @synthesize deduperProfile=_deduperProfile;
 @property(retain, nonatomic) PVPersonPromoterProfile *promoterProfile; // @synthesize promoterProfile=_promoterProfile;
-@property(nonatomic) _Bool didAskFaceProcesingProgress; // @synthesize didAskFaceProcesingProgress=_didAskFaceProcesingProgress;
 @property(nonatomic) float faceProcessingProgress; // @synthesize faceProcessingProgress=_faceProcessingProgress;
 @property(retain, nonatomic) NSNumber *quiescentState; // @synthesize quiescentState=_quiescentState;
 @property(readonly, nonatomic) NSMutableDictionary *metricsReport; // @synthesize metricsReport=_metricsReport;
 @property(retain, nonatomic) id <PVPhotoLibraryProtocol> photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(nonatomic) __weak id <PVPersonPromoterDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PVPersonClusterManager *personClusterManager; // @synthesize personClusterManager=_personClusterManager;
-- (void).cxx_destruct;
 - (id)_sortedSocialGroups:(id)arg1 withPersonsByLocalIdentifier:(id)arg2;
 - (id)_graphOrderedPersonsWithPersons:(id)arg1 withAllPersons:(id)arg2 updateBlock:(CDUnknownBlockType)arg3;
 - (_Bool)_updateSuggestedMeIdentifierWithPersons:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;

@@ -25,6 +25,7 @@
         _Bool willPlayToPhotoObserver;
         _Bool status;
     } _isValid;
+    long long _mainQueue_mediaServicesResetCounter;
     _Bool _audioEnabled;
     float _audioVolume;
     ISPlayerItem *_playerItem;
@@ -41,6 +42,7 @@
     CDStruct_1b6d18a9 __videoForwardPlaybackEndTime;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setVideoForwardPlaybackEndTime:) CDStruct_1b6d18a9 _videoForwardPlaybackEndTime; // @synthesize _videoForwardPlaybackEndTime=__videoForwardPlaybackEndTime;
 @property(nonatomic, setter=_setLastAppliedScale:) double lastAppliedScale; // @synthesize lastAppliedScale=_lastAppliedScale;
 @property(retain, nonatomic, setter=_setOutputContent:) ISPlayerOutputContent *_outputContent; // @synthesize _outputContent=__outputContent;
@@ -55,8 +57,6 @@
 @property(retain, nonatomic, setter=_setError:) NSError *error; // @synthesize error=_error;
 @property(nonatomic, setter=_setStatus:) long long status; // @synthesize status=_status;
 @property(retain, nonatomic) ISPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
-- (void).cxx_destruct;
-- (void)avPlayerDidDeallocate;
 - (void)avPlayer:(id)arg1 itemDidPlayToEnd:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)behavior:(id)arg1 playVideoToTime:(CDStruct_1b6d18a9)arg2 initialRate:(float)arg3 overDuration:(double)arg4 progressHandler:(CDUnknownBlockType)arg5;
@@ -71,7 +71,8 @@
 - (void)behavior:(id)arg1 setVideoPlayRate:(float)arg2;
 - (void)behavior:(id)arg1 didSetOutputInfo:(id)arg2 withTransitionOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setVideoPlayer:(id)arg1;
-- (void)_handleMediaServicesReset;
+- (void)_mainQueue_resetAVObjectsWithResetCount:(long long)arg1;
+- (void)_mainQueue_handleMediaServicesReset;
 - (void)_handleErrorsIfNeeded;
 - (void)_updateVideoPlayerIfNeeded;
 - (void)_invalidateVideoPlayer;
@@ -104,6 +105,9 @@
 - (void)_videoDidPlayToEnd;
 - (void)willRemoveOutput:(id)arg1;
 - (void)didAddOutput:(id)arg1;
+- (_Bool)behaviorIsVideoReadyForDisplay:(id)arg1;
+@property(readonly, nonatomic) _Bool videoLayersReadyForDisplay;
+- (void)_outputVideoReadyForDisplayDidChange:(id)arg1;
 - (void)removeOutput:(id)arg1;
 - (void)addOutput:(id)arg1;
 - (void)activeBehaviorDidChange;

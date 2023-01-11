@@ -13,16 +13,16 @@
 #import <HomeKitDaemon/SZExtractorDelegate-Protocol.h>
 
 @class HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSArray, NSInputStream, NSObject, NSString, NSURL, NSURLSession, NSUUID, SZExtractor;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDSoftwareUpdateDocumentationAsset : HMFObject <HMFLogging, HMFObject, NSURLSessionDownloadDelegate, SZExtractorDelegate, NSSecureCoding>
 {
+    id <HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     _Bool _shouldAutomaticallyCache;
     long long _state;
     NSUUID *_identifier;
     HMSoftwareUpdateDocumentationMetadata *_metadata;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSURLSession *_URLSession;
     SZExtractor *_extrator;
     NSInputStream *_archivedFileStream;
@@ -32,14 +32,12 @@
 + (id)logCategory;
 + (id)assetWithURL:(id)arg1;
 + (id)assetDirectoryURL;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSInputStream *archivedFileStream; // @synthesize archivedFileStream=_archivedFileStream;
 @property(retain, nonatomic) SZExtractor *extrator; // @synthesize extrator=_extrator;
 @property(retain, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
-@property(readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly) HMSoftwareUpdateDocumentationMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)setExtractionProgress:(double)arg1;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;

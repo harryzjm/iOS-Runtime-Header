@@ -6,14 +6,14 @@
 
 #import <MediaMiningKit/PVVisionIntegrating-Protocol.h>
 
-@class CLSContactCache, CLSPerson, CNContact, CNContactStore, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class CLSContactCache, CLSPersonIdentity, CNContact, CNContactStore, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol CLSSocialServiceContactsDelegate;
 
 @interface CLSSocialServiceContacts <PVVisionIntegrating>
 {
     CNContactStore *_contactStore;
     CNContact *_meContact;
-    CLSPerson *_mePerson;
+    CLSPersonIdentity *_mePerson;
     NSMutableArray *_allPersons;
     NSMutableDictionary *_personsForCNIdentifiers;
     NSMutableDictionary *_personsForPHIdentifiers;
@@ -26,13 +26,13 @@
 }
 
 + (id)defaultKeysToFetch;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CLSContactCache *contactCache; // @synthesize contactCache=_contactCache;
 @property(retain, nonatomic) NSMutableSet *nonFoundHandles; // @synthesize nonFoundHandles=_nonFoundHandles;
 @property(retain, nonatomic) NSMutableDictionary *personByHandle; // @synthesize personByHandle=_personByHandle;
 @property(retain, nonatomic) NSMutableSet *nonFoundFullNames; // @synthesize nonFoundFullNames=_nonFoundFullNames;
 @property(retain, nonatomic) NSMutableDictionary *personByFullName; // @synthesize personByFullName=_personByFullName;
 @property(nonatomic) __weak id <CLSSocialServiceContactsDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)updateProxy;
 - (float)_confidenceInPersonRecord:(id)arg1 forName:(id)arg2 components:(id)arg3;
 - (float)_fuzzyMatchingScoreBetweenNameComponents:(id)arg1 andNameComponents:(id)arg2;
@@ -42,7 +42,7 @@
 - (void)enumeratePersonsAndPotentialBirthdayDateForContactIdentifiers:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)configureRequest:(id)arg1 algorithmUmbrellaVersion:(unsigned int)arg2;
 - (unsigned long long)_ageCategoryFromFaceAgeType:(unsigned short)arg1;
-- (unsigned long long)_genderFromFaceGender:(unsigned short)arg1;
+- (unsigned long long)_sexFromFaceBiologicalSex:(unsigned short)arg1;
 - (void)invalidateCacheForPersonWithIdentifiers:(id)arg1;
 - (id)_personsMatchingPredicate:(id)arg1;
 - (void)enumeratePersonsForFullName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -75,6 +75,7 @@
 - (id)personResultsForName:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)mePerson;
 - (void)invalidateMemoryCaches;
+@property(readonly) NSURL *diskCacheURL;
 - (id)initWithProxyAtURL:(id)arg1 andIntent:(unsigned long long)arg2;
 
 // Remaining properties

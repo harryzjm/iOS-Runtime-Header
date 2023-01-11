@@ -16,12 +16,16 @@
 }
 
 + (id)bookmarkWithWebClip:(id)arg1;
-@property(readonly, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
+- (_Bool)isTimedOutForIcon:(id)arg1;
 - (_Bool)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
 - (_Bool)iconCompleteUninstall:(id)arg1;
 - (_Bool)iconSupportsUninstall:(id)arg1;
+- (unsigned long long)supportedGridSizeClassesForIcon:(id)arg1;
+- (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
 - (id)icon:(id)arg1 unmaskedImageWithInfo:(struct SBIconImageInfo)arg2;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 - (unsigned long long)priorityForIcon:(id)arg1;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
 - (_Bool)isUninstallSupported;
@@ -32,6 +36,7 @@
 - (id)initWithWebClip:(id)arg1;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

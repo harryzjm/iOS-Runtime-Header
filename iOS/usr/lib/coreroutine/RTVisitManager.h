@@ -5,39 +5,44 @@
 //
 
 #import <coreroutine/RTPurgable-Protocol.h>
+#import <coreroutine/RTStoreManager-Protocol.h>
 #import <coreroutine/RTVisitMonitorDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, RTDefaultsManager, RTHintManager, RTLearnedLocationManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPlatform, RTVisitMonitor, RTVisitStore;
+@class NSMutableArray, NSString, RTDefaultsManager, RTDeviceLocationPredictor, RTHintManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTPlatform, RTVisitLabeler, RTVisitMonitor, RTVisitStore;
 
-@interface RTVisitManager <RTVisitMonitorDelegate, RTPurgable>
+@interface RTVisitManager <RTVisitMonitorDelegate, RTPurgable, RTStoreManager>
 {
     _Bool _spoofMode;
     RTDefaultsManager *_defaultsManager;
+    RTDeviceLocationPredictor *_deviceLocationPredictor;
     RTHintManager *_hintManager;
     RTLocationAwarenessManager *_locationAwarenessManager;
     RTLocationManager *_locationManager;
     RTMetricManager *_metricManager;
-    RTMotionActivityManager *_motionActivityManager;
     RTPlatform *_platform;
     RTVisitStore *_visitStore;
     NSMutableArray *_spoofVisitIncidentTokens;
-    RTLearnedLocationManager *_learnedLocationManager;
     RTVisitMonitor *_visitMonitor;
+    RTVisitLabeler *_visitLabeler;
 }
 
++ (id)vendedClasses;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) RTVisitLabeler *visitLabeler; // @synthesize visitLabeler=_visitLabeler;
 @property(retain, nonatomic) RTVisitMonitor *visitMonitor; // @synthesize visitMonitor=_visitMonitor;
-@property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property(retain, nonatomic) NSMutableArray *spoofVisitIncidentTokens; // @synthesize spoofVisitIncidentTokens=_spoofVisitIncidentTokens;
 @property(nonatomic) _Bool spoofMode; // @synthesize spoofMode=_spoofMode;
 @property(retain, nonatomic) RTVisitStore *visitStore; // @synthesize visitStore=_visitStore;
 @property(retain, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
-@property(retain, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property(retain, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 @property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) RTLocationAwarenessManager *locationAwarenessManager; // @synthesize locationAwarenessManager=_locationAwarenessManager;
 @property(retain, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
+@property(retain, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
 @property(retain, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
-- (void).cxx_destruct;
+- (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)injectRealtimeVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_injectRealtimeVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)simulateVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_simulateVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)unregisterForSpoofVisitIncidentWithToken:(int)arg1;
@@ -46,8 +51,6 @@
 - (void)_performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)onLowConfidenceVisitIncident:(id)arg1 error:(id)arg2;
 - (void)_onLowConfidenceVisitIncident:(id)arg1 error:(id)arg2;
-- (void)onLeechedVisitIncident:(id)arg1 error:(id)arg2;
-- (void)_onLeechedVisitIncident:(id)arg1 error:(id)arg2;
 - (void)onVisitIncident:(id)arg1 error:(id)arg2;
 - (void)_onVisitIncident:(id)arg1 error:(id)arg2;
 - (void)fetchStoredVisitsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -63,7 +66,7 @@
 - (void)onVisitStoreNotification:(id)arg1;
 - (void)_onVisitStoreNotification:(id)arg1;
 - (void)_setup;
-- (id)initWithQueue:(id)arg1 defaultsManager:(id)arg2 hintManager:(id)arg3 learnedLocationManager:(id)arg4 locationAwarenessManager:(id)arg5 locationManager:(id)arg6 metricManager:(id)arg7 motionActivityManager:(id)arg8 platform:(id)arg9 visitStore:(id)arg10;
+- (id)initWithDefaultsManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 platform:(id)arg7 visitLabeler:(id)arg8 visitStore:(id)arg9;
 - (id)init;
 
 // Remaining properties

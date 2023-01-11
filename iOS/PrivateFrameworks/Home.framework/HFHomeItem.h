@@ -5,18 +5,20 @@
 //
 
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
+#import <Home/NSCopying-Protocol.h>
 
 @class HMHome, NSString;
 @protocol HFHomeKitObject;
 
-@interface HFHomeItem <HFHomeKitItemProtocol>
+@interface HFHomeItem <HFHomeKitItemProtocol, NSCopying>
 {
     HMHome *_home;
 }
 
-@property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 - (id)init;
 - (id)initWithHome:(id)arg1;

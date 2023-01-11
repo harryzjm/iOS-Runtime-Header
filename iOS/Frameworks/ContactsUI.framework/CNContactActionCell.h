@@ -13,16 +13,16 @@ __attribute__((visibility("hidden")))
     CNTransportButton *_transportIcon;
 }
 
++ (_Bool)shouldIndentWhileEditing;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNTransportButton *transportIcon; // @synthesize transportIcon=_transportIcon;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (void)tintColorDidChange;
 - (id)variableConstraints;
 @property(readonly, nonatomic) CNContactAction *action;
 @property(readonly, nonatomic) CNCardActionGroupItem *actionGroupItem;
 - (void)setCardGroupItem:(id)arg1;
 - (void)setLabelTextAttributes:(id)arg1;
-- (_Bool)shouldIndentWhileEditing;
 - (id)rightMostView;
 - (_Bool)shouldPerformDefaultAction;
 - (double)minCellHeight;

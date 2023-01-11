@@ -38,6 +38,7 @@
 }
 
 + (_Bool)shouldVerifyCharacteristic:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMFExponentialBackoffTimer *verificationBackoffTimer; // @synthesize verificationBackoffTimer=_verificationBackoffTimer;
 @property(nonatomic, getter=isVerifying) _Bool verifying; // @synthesize verifying=_verifying;
 @property(readonly, nonatomic) NSMutableArray *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
@@ -57,7 +58,6 @@
 @property(nonatomic) __weak HAPService *tunneledBTLEAccessoryService; // @synthesize tunneledBTLEAccessoryService=_tunneledBTLEAccessoryService;
 @property(nonatomic) __weak id <HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
 @property(copy, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
 - (_Bool)mergeObject:(id)arg1;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;

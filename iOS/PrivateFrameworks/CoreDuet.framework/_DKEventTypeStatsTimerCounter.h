@@ -15,12 +15,8 @@
     _DKEventStatsCounterInternal *_internal;
 }
 
-+ (id)counterInCollection:(id)arg1 withEventName:(id)arg2 eventType:(id)arg3 eventTypePossibleValues:(id)arg4;
-@property(retain) _DKEventStatsCounterInternal *internal; // @synthesize internal=_internal;
 - (void).cxx_destruct;
-- (unsigned long long)countWithTypeValue:(id)arg1;
-- (void)addTimingWithStartDate:(id)arg1 endDate:(id)arg2 typeValue:(id)arg3;
-- (void)addTimingWithTimeInterval:(double)arg1 typeValue:(id)arg2;
+@property(retain) _DKEventStatsCounterInternal *internal; // @synthesize internal=_internal;
 - (id)eventName;
 
 @end

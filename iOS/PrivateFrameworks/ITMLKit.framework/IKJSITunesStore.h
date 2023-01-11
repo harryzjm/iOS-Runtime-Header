@@ -26,9 +26,9 @@
 
 + (void)setHeadersForURL:(id)arg1 inRequestProperties:(id)arg2;
 + (void)setITunesStoreHeaders:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) IKURLBagCache *bagCache; // @synthesize bagCache=_bagCache;
 @property(retain, nonatomic) NSString *cookieURL; // @synthesize cookieURL=_cookieURL;
-- (void).cxx_destruct;
 - (void)_bagCacheUpdated;
 - (void)invalidateBag;
 - (id)getBag;
@@ -40,6 +40,9 @@
 @property(readonly, nonatomic) NSDictionary *accountInfo;
 @property(readonly, nonatomic, getter=isManagedAppleID) _Bool managedAppleID;
 @property(readonly, nonatomic) NSString *DSID;
+- (void)openDynamicUIURL:(id)arg1:(id)arg2:(id)arg3;
+- (void)openMarketingItem:(id)arg1:(id)arg2:(id)arg3;
+- (void)fetchMarketingItem:(id)arg1:(id)arg2:(id)arg3:(id)arg4:(id)arg5;
 - (void)updateServiceEligibility:(id)arg1;
 - (void)evaluateScripts:(id)arg1:(id)arg2;
 - (void)loadStoreContent:(id)arg1:(id)arg2;

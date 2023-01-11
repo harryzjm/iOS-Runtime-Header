@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (id)_initWithEvent:(id)arg1;
 
 @end
 

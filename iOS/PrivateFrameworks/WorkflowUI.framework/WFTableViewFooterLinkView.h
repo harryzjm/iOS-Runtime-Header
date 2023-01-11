@@ -20,14 +20,15 @@
     struct _NSRange _linkRange;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 @property(readonly, nonatomic) struct _NSRange linkRange; // @synthesize linkRange=_linkRange;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(nonatomic) __weak id <WFTableViewFooterLinkViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)tintColorDidChange;
+- (void)updateLinkColor;
 - (void)setText:(id)arg1 URL:(id)arg2 linkRange:(struct _NSRange)arg3;
 - (void)setText:(id)arg1 URL:(id)arg2;
 - (id)initWithReuseIdentifier:(id)arg1;

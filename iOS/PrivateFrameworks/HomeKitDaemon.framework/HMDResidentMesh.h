@@ -18,7 +18,7 @@
     NSUUID *_uuid;
     unsigned long long _broadcastRate;
     HMDHomeManager *_homeManager;
-    HMDMessageDispatcher *_remoteMessageDispatcher;
+    HMDMessageDispatcher *_messageDispatcher;
     NSMutableArray *_residents;
     HMDResidentMeshMeshStorage *_resident;
     NSMutableArray *_reachableAccessories;
@@ -32,6 +32,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *loadMetrics; // @synthesize loadMetrics=_loadMetrics;
 @property(readonly, nonatomic) HMFTimer *linkQualityMonitorTimer; // @synthesize linkQualityMonitorTimer=_linkQualityMonitorTimer;
 @property(retain, nonatomic) NSSet *primaryResidentForHomes; // @synthesize primaryResidentForHomes=_primaryResidentForHomes;
@@ -42,11 +43,10 @@
 @property(retain, nonatomic) NSMutableArray *reachableAccessories; // @synthesize reachableAccessories=_reachableAccessories;
 @property(nonatomic) __weak HMDResidentMeshMeshStorage *resident; // @synthesize resident=_resident;
 @property(retain, nonatomic) NSMutableArray *residents; // @synthesize residents=_residents;
-@property(nonatomic) __weak HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
+@property(nonatomic) __weak HMDMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property unsigned long long broadcastRate; // @synthesize broadcastRate=_broadcastRate;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)dumpDebug;
 - (void)_dumpDebug;
@@ -62,7 +62,7 @@
 - (id)bestResidentForAccessory:(id)arg1;
 - (void)_handleMeshUpdateMessage:(id)arg1;
 - (void)_handleMeshUpdateRequestMessage:(id)arg1;
-- (void)_sendMessage:(id)arg1 payload:(id)arg2 target:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
+- (void)_sendMessage:(id)arg1 payload:(id)arg2 target:(id)arg3 force:(_Bool)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)_removeConnectivityFromDeviceToAccessory:(id)arg1 activateTimer:(_Bool)arg2;
 - (void)_addConnectivityFromDeviceToAccessory:(id)arg1 activateTimer:(_Bool)arg2;
 - (_Bool)_checkReachabilityWithTimerActivation:(_Bool)arg1;

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)kibibits;
 + (id)mebibits;
 + (id)gibibits;
@@ -46,6 +47,7 @@
 + (id)zettabytes;
 + (id)yottabytes;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

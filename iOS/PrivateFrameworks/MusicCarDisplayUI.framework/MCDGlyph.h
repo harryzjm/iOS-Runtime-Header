@@ -10,15 +10,6 @@
 {
 }
 
-+ (id)playbackProgressCompleteWithSize:(double)arg1;
-+ (id)nowPlayingForwardWithSize:(double)arg1;
-+ (id)nowPlayingBackWithSize:(double)arg1;
-+ (id)nowPlayingPauseWithSize:(double)arg1;
-+ (id)nowPlayingRepeatOne;
-+ (id)nowPlayingRepeat;
-+ (id)nowPlayingAdd;
-+ (id)nowPlayingEllipsis;
-+ (id)nowPlayingShuffle;
 + (id)imageNamed:(id)arg1 ofSize:(double)arg2;
 + (id)glyphFactory:(id)arg1 pointSize:(double)arg2 weight:(long long)arg3 scale:(long long)arg4;
 

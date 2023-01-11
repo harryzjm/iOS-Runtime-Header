@@ -6,21 +6,25 @@
 
 #import <JetEngine/NSObject-Protocol.h>
 
-@class NSDate, NSString;
+@class ACAccount, AMSBagValue, AMSProcessInfo, NSDate, NSString;
 
 @protocol AMSBagProtocol <NSObject>
-- (id)dictionaryForKey:(NSString *)arg1;
-- (id)URLForKey:(NSString *)arg1;
-- (id)stringForKey:(NSString *)arg1;
-- (id)integerForKey:(NSString *)arg1;
-- (id)doubleForKey:(NSString *)arg1;
+- (AMSBagValue *)dictionaryForKey:(NSString *)arg1;
+- (AMSBagValue *)URLForKey:(NSString *)arg1;
+- (AMSBagValue *)stringForKey:(NSString *)arg1;
+- (AMSBagValue *)integerForKey:(NSString *)arg1;
+- (AMSBagValue *)doubleForKey:(NSString *)arg1;
 - (void)createSnapshotWithCompletion:(void (^)(AMSSnapshotBag *, NSError *))arg1;
-- (id)boolForKey:(NSString *)arg1;
-- (id)arrayForKey:(NSString *)arg1;
+- (AMSBagValue *)boolForKey:(NSString *)arg1;
+- (AMSBagValue *)arrayForKey:(NSString *)arg1;
 @property(nonatomic, readonly) NSString *profileVersion;
 @property(nonatomic, readonly) NSString *profile;
 @property(nonatomic, readonly) NSDate *expirationDate;
 - (_Bool)isExpired;
+
+@optional
+- (AMSBagValue *)URLForKey:(NSString *)arg1 account:(ACAccount *)arg2;
+@property(nonatomic, readonly) AMSProcessInfo *processInfo;
 
 // Remaining properties
 @property(nonatomic, readonly) _Bool expired;

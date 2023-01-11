@@ -27,10 +27,10 @@
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (id)defaultName;
 + (_Bool)isAbstractCatalogItemClass;
-+ (id)defaultInstanceWithChildSlots:(id)arg1;
-@property(nonatomic, getter=isLocalizable) _Bool localizable; // @synthesize localizable=_localizable;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isLocalizable) _Bool localizable; // @synthesize localizable=_localizable;
 - (_Bool)isEqualForUnitTests:(id)arg1;
+- (id)createDefaultChildForSlot:(id)arg1 suggestedIdioms:(id)arg2;
 - (_Bool)shouldMutateChild:(id)arg1 byCopyingContentToNewSlot:(id)arg2;
 - (void)setConflictState:(unsigned long long)arg1 forChild:(id)arg2;
 - (_Bool)isChildMinimallyFitForCompiling:(id)arg1;
@@ -45,11 +45,12 @@
 - (id)manifestArchivist:(id)arg1 slotForChild:(id)arg2;
 - (Class)manifestArchivistSlotClassForChildren:(id)arg1;
 - (void)replaceChildrenFromFileSystemSnapshot:(id)arg1 results:(id)arg2;
-- (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1;
+- (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1 filter:(CDUnknownBlockType)arg2;
 - (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
-- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2;
+- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2 manifestFileData:(id)arg3;
 - (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (void)populateIssues:(id)arg1 context:(id)arg2;
+- (id)requiredPixelSizeFromSlottedAssetCollectionForChild:(id)arg1;
 - (id)assetRepMatchingVariant:(id)arg1 forPlatform:(id)arg2;
 - (id)assetRepForSlot:(id)arg1;
 - (id)assetRepForStructuredIdentifier:(id)arg1;

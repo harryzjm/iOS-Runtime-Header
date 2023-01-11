@@ -12,13 +12,13 @@
     NSMutableSet *_triggerEvents;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *triggerEvents; // @synthesize triggerEvents=_triggerEvents;
 @property(nonatomic) _Bool markTriggerAsHomeAppCreated; // @synthesize markTriggerAsHomeAppCreated=_markTriggerAsHomeAppCreated;
-- (void).cxx_destruct;
 - (id)_lazilyMarkTriggerAsHomeAppCreated;
-- (id)_allTriggerValuesForCharacteristic:(id)arg1 similarToValue:(id)arg2;
 - (id)_performValidation;
 - (id)_updateEvents;
+- (void)removeServiceLikeItem:(id)arg1;
 - (id)thresholdValueForCharacteristic:(id)arg1 thresholdValueRange:(id)arg2;
 - (_Bool)wouldFireForCharacteristic:(id)arg1 value:(id)arg2;
 @property(readonly, nonatomic) NSSet *characteristics;

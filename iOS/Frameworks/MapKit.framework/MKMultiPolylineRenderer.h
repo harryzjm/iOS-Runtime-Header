@@ -9,6 +9,8 @@
 @interface MKMultiPolylineRenderer
 {
     VKVectorOverlayPolylineGroup *_vectorGeometry;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 + (Class)_mapkitLeafClass;
@@ -26,7 +28,10 @@
 - (void)setLineWidth:(double)arg1;
 - (void)drawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2 inContext:(struct CGContext *)arg3;
 - (void)createPath;
+@property(nonatomic, getter=_strokeEnd, setter=_setStrokeEnd:) double strokeEnd;
+@property(nonatomic, getter=_strokeStart, setter=_setStrokeStart:) double strokeStart;
 @property(readonly, nonatomic) MKMultiPolyline *multiPolyline;
+- (void)_performInitialConfiguration;
 - (id)initWithMultiPolyline:(id)arg1;
 
 @end

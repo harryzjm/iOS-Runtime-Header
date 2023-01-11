@@ -20,13 +20,13 @@
 }
 
 + (id)builtinActivityClasses;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType fetchShortcutsBlock; // @synthesize fetchShortcutsBlock=_fetchShortcutsBlock;
 @property(nonatomic) _Bool primed; // @synthesize primed=_primed;
 @property(readonly, nonatomic) NSArray *cachedBuiltinActivities; // @synthesize cachedBuiltinActivities=_cachedBuiltinActivities;
 @property(retain, nonatomic) _UIActivityApplicationExtensionDiscovery *applicationExtensionDiscovery; // @synthesize applicationExtensionDiscovery=_applicationExtensionDiscovery;
 @property(readonly, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly, nonatomic) __weak id <_UIActivityHelperDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_activitiesByDuetOrderingActivities:(id)arg1;
 - (id)_activitiesByApplyingFavoriteOrderingToActivities:(id)arg1 favoriteActivityTypes:(id)arg2;
 - (id)_activitiesByTypeOrderingActivities:(id)arg1 activityTypeOrdering:(id)arg2;
@@ -40,12 +40,14 @@
 - (id)_defaultSortOrderForBuiltInElevatedActivity:(id)arg1;
 - (id)_defaultOrderingDescriptorForActivity:(id)arg1;
 - (id)_activitiesByApplyingDefaultOrdering:(id)arg1;
-- (id)activitiesByOrderingActivities:(id)arg1 applyDefaultOrdering:(_Bool)arg2 applyBeforeTypePinning:(_Bool)arg3 activityTypeOrdering:(id)arg4;
+- (id)activitiesByOrderingActivities:(id)arg1 applyDefaultOrdering:(_Bool)arg2 applyBeforeTypePinning:(_Bool)arg3 activityTypeOrdering:(id)arg4 bypassDuet:(_Bool)arg5;
 - (id)orderedAvailableActivitiesForMatchingContext:(id)arg1;
 - (void)preheatAvailableActivitiesForMatchingContext:(id)arg1;
 - (void)_enumerateAvailableActivitiesForMatchingContext:(id)arg1 intoMatchingResults:(id)arg2 matchingResultsUpdateBlock:(CDUnknownBlockType)arg3 enumerateActivityBlock:(CDUnknownBlockType)arg4;
+- (id)reportExtensionsCacheResult;
 - (void)primeWithDiscoveryContext:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sessionID:(id)arg2 fetchShortcutsBlock:(CDUnknownBlockType)arg3;
+- (void)registerPendingContinuousExtensionsDiscovery;
 
 @end
 

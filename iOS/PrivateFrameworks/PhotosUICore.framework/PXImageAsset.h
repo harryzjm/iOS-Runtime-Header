@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSString, UIImage;
+@class NSDate, NSNumber, NSString, UIImage;
 
 @interface PXImageAsset : NSObject <PXDisplayAsset>
 {
@@ -17,10 +17,10 @@
     UIImage *_image;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) unsigned long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) Class defaultImageProviderClass;
@@ -42,8 +42,9 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) double duration;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) long long playbackVariation;

@@ -18,12 +18,12 @@
     PXAssetsDataSourceManager *_oneUpDataSourceManager;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXAssetsDataSourceManager *oneUpDataSourceManager; // @synthesize oneUpDataSourceManager=_oneUpDataSourceManager;
 @property(retain, nonatomic) PXAssetReference *oneUpInitialAssetReference; // @synthesize oneUpInitialAssetReference=_oneUpInitialAssetReference;
 @property(retain, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 @property(retain, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property(nonatomic) _Bool includeHorizontal; // @synthesize includeHorizontal=_includeHorizontal;
-- (void).cxx_destruct;
 - (id)_gadgetForAssetReference:(id)arg1;
 - (long long)oneUpPresentationActionContext:(id)arg1;
 - (void)oneUpPresentation:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
@@ -36,7 +36,7 @@
 - (void)suggestionGadget:(id)arg1 willDismissPreviewController:(id)arg2;
 - (void)suggestionGadget:(id)arg1 commitViewController:(id)arg2;
 - (id)suggestionGadgetPreviewController:(id)arg1;
-- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1;
+- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1 animated:(_Bool)arg2;
 - (void)_prepareForOneUpPresentationForGadget:(id)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (id)_fetchOptionsForPlaybackStyle:(long long)arg1;

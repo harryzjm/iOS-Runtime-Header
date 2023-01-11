@@ -19,8 +19,8 @@
     TSgPTPPort *_port;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSgPTPPort *port; // @synthesize port=_port;
-- (void)dealloc;
 - (void)didTimeoutOnMACLookupForPort:(id)arg1;
 - (void)setMACLookupTimeoutCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (id)initWithgPTPPort:(id)arg1 onClockIdentifier:(unsigned long long)arg2;

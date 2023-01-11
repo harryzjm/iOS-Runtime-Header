@@ -14,6 +14,7 @@
 - (void)messageFromClient:(NSData *)arg1;
 
 @optional
+- (void)tearDownExtensionWithReply:(void (^)(_Bool))arg1;
 - (void)hostApp:(NSString *)arg1 grantingAccessExtensionSandbox:(NSString *)arg2 replyWithEndpoint:(void (^)(NSXPCListenerEndpoint *))arg3;
 - (void)nudge;
 - (void)setValue:(NSObject *)arg1 forKeyPath:(NSString *)arg2 withReply:(void (^)(_Bool))arg3;

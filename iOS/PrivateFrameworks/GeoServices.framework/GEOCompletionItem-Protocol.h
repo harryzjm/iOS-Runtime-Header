@@ -6,10 +6,12 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEODirectionIntent, GEOMapItemIdentifier, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOMapItemIdentifier, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 @protocol GEOCompletionItem <NSObject>
+@property(readonly, nonatomic) GEOPublisherResult *publisherResult;
+@property(readonly, nonatomic) GEOCollectionResult *collectionResult;
 @property(readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property(readonly, nonatomic) _Bool hasQueryAcceleratorAffordanceEnabled;
 @property(readonly, nonatomic) float disambiguationRadiusMeters;

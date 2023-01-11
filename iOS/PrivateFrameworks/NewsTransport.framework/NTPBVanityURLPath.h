@@ -12,13 +12,15 @@
 
 @interface NTPBVanityURLPath : PBCodable <NSCopying>
 {
+    NSString *_destinationParameters;
     NSString *_destinationPath;
     NSString *_sourcePath;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *destinationParameters; // @synthesize destinationParameters=_destinationParameters;
 @property(retain, nonatomic) NSString *destinationPath; // @synthesize destinationPath=_destinationPath;
 @property(retain, nonatomic) NSString *sourcePath; // @synthesize sourcePath=_sourcePath;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -27,6 +29,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasDestinationParameters;
 
 @end
 

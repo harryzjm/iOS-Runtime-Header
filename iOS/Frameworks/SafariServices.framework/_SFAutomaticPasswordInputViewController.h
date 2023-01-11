@@ -21,10 +21,12 @@
     long long _currentInterfaceOrientation;
     long long _keyboardType;
     _Bool _logGeneratedPasswordAcceptedImplicitly;
+    NSString *_autoFillContextProtocolObjectUUID;
 }
 
 + (void)inputViewControllerWithAutoFillContext:(id)arg1 passwordRules:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (void)dismissKeyboardPreservingFirstResponderIfNecessary;
 - (void)inputViewControllerDidSelectUseCustomPassword:(id)arg1;
 - (void)inputViewControllerDidSelectUseStrongPassword:(id)arg1;
 - (struct CGSize)intrinsicContentSizeForInputView:(id)arg1;
@@ -35,6 +37,7 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_postButtonPressedNotificationForButton:(long long)arg1;
+- (void)_dismissKeyboard:(id)arg1;
 - (void)viewDidLoad;
 - (void)_updateKeyboardMetricsAndInterfaceOrientationIfNeeded;
 - (id)initWithPassword:(id)arg1 keyboardType:(long long)arg2;

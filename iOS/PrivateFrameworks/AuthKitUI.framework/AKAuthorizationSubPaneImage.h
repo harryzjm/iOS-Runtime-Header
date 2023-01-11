@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImage, UIImageView;
+@class NSArray, UIImage, UIImageView;
 
 @interface AKAuthorizationSubPaneImage
 {
     UIImageView *_imageView;
+    NSArray *_imageViewConstraints;
 }
 
-+ (id)imageViewWithImage:(id)arg1;
-@property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
++ (id)_imageViewWithImage:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *imageViewConstraints; // @synthesize imageViewConstraints=_imageViewConstraints;
+@property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 - (void)addToConstraints:(id)arg1 context:(id)arg2;
 - (void)addToStackView:(id)arg1 context:(id)arg2;
-@property(copy, nonatomic) UIImage *image;
+@property(retain, nonatomic) UIImage *image;
 - (id)initWithImage:(id)arg1;
 
 @end

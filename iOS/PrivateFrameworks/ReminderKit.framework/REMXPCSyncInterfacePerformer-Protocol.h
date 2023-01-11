@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, REMObjectID;
+@class NSArray, NSString, REMObjectID;
 
 @protocol REMXPCSyncInterfacePerformer
+- (void)observeCloudKitNetworkActivityChanges;
 - (void)fetchServerRecordFor:(REMObjectID *)arg1 completion:(void (^)(CKRecord *, NSError *))arg2;
 - (void)setMigrationStateToDidChooseToMigrate:(_Bool)arg1 didFinishMigration:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)fetchUserRecordWithCompletion:(void (^)(CKRecord *, NSError *))arg1;
 - (void)debugDownloadMigrationCacheWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)migrateICloudCalDavToCloudKitForAccountID:(REMObjectID *)arg1 disableCache:(_Bool)arg2 completion:(void (^)(REMMigrationResult *, NSError *))arg3;
+- (void)migrateICloudCalDavToCloudKitForAccountID:(REMObjectID *)arg1 disableCache:(_Bool)arg2 userInitiated:(_Bool)arg3 completion:(void (^)(REMMigrationResult *, NSError *))arg4;
 - (void)deleteApplicationDataFromCloudKitWithCompletion:(void (^)(NSError *))arg1;
 - (void)syncDataAccessAccountsWithAccountIDs:(NSArray *)arg1 bypassThrottler:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
-- (void)restartCloudKitSync:(void (^)(NSError *))arg1;
-- (void)syncCloudKit:(void (^)(NSError *))arg1;
+- (void)restartCloudKitSyncWithReason:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)syncCloudKitWithReason:(NSString *)arg1 discretionary:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

@@ -20,10 +20,20 @@ __attribute__((visibility("hidden")))
 + (id)carPlaySymbolImageFont;
 + (id)carPlayNavigationBarContactNameFont;
 + (id)carPlayQuickActionButtonTitleFont;
-+ (id)carPlayNameViewSecondaryLabelFont;
-+ (id)carPlayNameViewPrimaryLabelFont;
++ (id)carPlayContactInfoViewSecondaryLabelFont;
++ (id)carPlayContactInfoViewPrimaryLabelFont;
 + (id)carPlayTableViewCellSubtitleFont;
 + (id)carPlayTableViewCellTitleFont;
++ (id)catalystAudienceDetailsLabelFont;
++ (id)catalystLabelsFont;
++ (id)catalystNameTextFieldsFont;
++ (id)visualIdentityEditorSegmentedControlFont;
++ (id)visualIdentityEditorTextFont;
++ (id)visualIdentityPickerHeaderPlaceholderFont;
++ (id)visualIdentityPickerHeaderTitleFont;
++ (id)groupHeaderActionButtonFont;
++ (id)groupHeaderWrappedTitleFont;
++ (id)groupHeaderTitleFont;
 + (id)contactCardPhotoPickerActionButtonFont;
 + (id)contactCardPhotoPickerCaptionFont;
 + (id)contactCardWarningHeaderLabelFont;
@@ -38,6 +48,7 @@ __attribute__((visibility("hidden")))
 + (id)navigationListDetailCellTitleFontRegular;
 + (id)navigationListCellSubtitleFontRegular;
 + (id)navigationListCellTitleFontRegular;
++ (id)groupsAllButtonFont;
 
 @end
 

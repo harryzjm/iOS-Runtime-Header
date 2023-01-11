@@ -8,12 +8,14 @@
 
 @interface WFIntentAppPickerParameter
 {
+    _Bool _includesUserActivityBasedApps;
     NSString *_intentName;
 }
 
-@property(readonly, nonatomic) NSString *intentName; // @synthesize intentName=_intentName;
 - (void).cxx_destruct;
-- (id)localizedLabelForPossibleState:(id)arg1;
+@property(readonly, nonatomic) _Bool includesUserActivityBasedApps; // @synthesize includesUserActivityBasedApps=_includesUserActivityBasedApps;
+@property(readonly, nonatomic) NSString *intentName; // @synthesize intentName=_intentName;
+- (_Bool)parameterStateIsValid:(id)arg1;
 - (_Bool)alwaysShowsButton;
 - (void)possibleStatesDidChange;
 - (id)initWithDefinition:(id)arg1;

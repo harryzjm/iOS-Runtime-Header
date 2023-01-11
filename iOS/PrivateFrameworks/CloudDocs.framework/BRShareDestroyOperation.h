@@ -12,9 +12,9 @@
     CDUnknownBlockType _shareDestroyCompletionBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType shareDestroyCompletionBlock; // @synthesize shareDestroyCompletionBlock=_shareDestroyCompletionBlock;
 @property(retain, nonatomic) CKShare *share; // @synthesize share=_share;
-- (void).cxx_destruct;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)main;
 - (id)initWithShare:(id)arg1;

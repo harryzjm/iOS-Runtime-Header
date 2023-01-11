@@ -32,6 +32,7 @@
 + (id)restaurantStyleAttributes;
 + (id)parkedCarStyleAttributes;
 + (id)transitStationStyleAttributes;
++ (id)schoolStyleAttributes;
 + (id)workStyleAttributes;
 + (id)homeStyleAttributes;
 + (id)searchResultStyleAttributes;
@@ -69,6 +70,8 @@
 - (_Bool)shouldSuppress3DBuildingStrokes;
 - (_Bool)isDrivable;
 - (_Bool)isWalkable;
+- (int)bikeLaneSide;
+- (int)bikeableSide;
 - (int)walkableSide;
 - (int)sidewalkSide;
 - (_Bool)isRoadPedestrianNavigable;

@@ -14,7 +14,6 @@
 @optional
 - (UIView *)folderPresentationController:(SBFolderPresentingViewController *)arg1 sourceViewForPresentingViewController:(SBNestingViewController *)arg2;
 - (double)minimumHomeScreenScaleForFolderPresentationController:(SBFolderPresentingViewController *)arg1;
-- (double)statusBarHeightForFolderPresentationController:(SBFolderPresentingViewController *)arg1;
 - (void)folderPresentationController:(SBFolderPresentingViewController *)arg1 willPerformTransitionWithFolder:(SBFolderController *)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id <SBViewControllerTransitionCoordinator>)arg4;
 - (id <UIViewControllerInteractiveTransitioning>)folderPresentationController:(SBFolderPresentingViewController *)arg1 interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>)arg2;
 - (id <UIViewControllerAnimatedTransitioning>)folderPresentationController:(SBFolderPresentingViewController *)arg1 animationControllerForTransitionWithFolder:(SBFolderController *)arg2 presenting:(_Bool)arg3 animated:(_Bool)arg4;

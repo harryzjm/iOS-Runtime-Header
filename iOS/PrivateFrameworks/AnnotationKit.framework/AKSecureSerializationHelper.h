@@ -11,11 +11,8 @@
 }
 
 + (id)_callXPCServiceProxyWithInputData:(id)arg1 andSelector:(SEL)arg2;
-+ (id)insecurelyConvertLegacyTextAttributeDataToRTFData:(id)arg1;
 + (id)_securelyConvertLegacyTextAttributeDataToRTFData:(id)arg1;
-+ (id)insecurelyConvertLegacyAnnotationArchiveToRTFArchive:(id)arg1;
 + (id)_securelyConvertLegacyAnnotationArchiveToRTFArchive:(id)arg1;
-+ (id)insecurelyConvertLegacyModelControllerArchive:(id)arg1;
 + (id)_unsafeLegacyDecodeTextAttributesFromData:(id)arg1;
 + (id)_decodeTextAttributesFromRTFData:(id)arg1;
 + (id)_encodeTextAttributesAsRTFData:(id)arg1;

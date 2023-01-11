@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _lastItemPixelSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool summarizeSections; // @synthesize summarizeSections=_summarizeSections;
 @property(readonly, nonatomic) long long maxRowsPerSection; // @synthesize maxRowsPerSection=_maxRowsPerSection;
 @property(nonatomic) struct CGSize lastItemPixelSize; // @synthesize lastItemPixelSize=_lastItemPixelSize;
@@ -41,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) PUMomentsZoomLevelManager *zoomLevelManager; // @synthesize zoomLevelManager=_zoomLevelManager;
 @property(readonly, nonatomic) unsigned long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 @property(readonly, nonatomic) struct CGSize thumbnailImageSize; // @synthesize thumbnailImageSize=_thumbnailImageSize;
-- (void).cxx_destruct;
 - (double)cellAspectRatioHint;
 - (long long)imageDeliveryMode;
 @property(readonly, nonatomic) _Bool supportsCollectionViewDragSource;
@@ -76,7 +76,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long cellFillMode;
 @property(readonly, nonatomic) struct CGSize imageRequestItemSize;
 - (void)updateLayoutMetricsForWidth:(double)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
-@property(readonly, nonatomic) unsigned long long dateRangeFormatterPreset;
+@property(readonly, nonatomic) long long dateRangeFormatterPreset;
 @property(readonly, nonatomic) struct __CFString *aggregateLevelKey;
 @property(readonly, nonatomic) double zoomOutDuration;
 @property(readonly, nonatomic) double zoomInDuration;
@@ -86,7 +86,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithZoomLevel:(unsigned long long)arg1 zoomLevelManager:(id)arg2 baseZoomLevelInfo:(id)arg3;
 - (_Bool)shouldUseDynamicLayout;
 - (void)pushPhotosDetailsViewForVisualSection:(long long)arg1 animated:(_Bool)arg2;
-- (unsigned long long)_detailViewSourceOriginWithZoomLevel:(unsigned long long)arg1;
+- (long long)_detailViewSourceOriginWithZoomLevel:(unsigned long long)arg1;
 - (id)imageDataForAsset:(id)arg1 itemContentScale:(double)arg2 imageWidth:(int *)arg3 imageHeight:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
 - (id)diagnosticsProviderForVisualSection:(long long)arg1;
 - (void)getPhotosDataSource:(id *)arg1 displayTitleInfo:(id *)arg2 forDetailsForVisualSection:(long long)arg3;

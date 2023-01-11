@@ -15,6 +15,7 @@
     _Bool _prefersVideoContent;
     _Bool _prefersHighQualityContent;
     _Bool _radioPlayback;
+    _Bool _followUp;
     NSString *_assetSourceStorefrontID;
     id <MPCModelPlaybackAssetCacheProviding> _assetCacheProvider;
     MPModelFileAsset *_fileAsset;
@@ -28,10 +29,12 @@
     NSString *_storefrontID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(copy, nonatomic) NSString *householdID; // @synthesize householdID=_householdID;
 @property(nonatomic) unsigned long long delegatedAccountID; // @synthesize delegatedAccountID=_delegatedAccountID;
 @property(nonatomic) unsigned long long accountID; // @synthesize accountID=_accountID;
+@property(nonatomic, getter=isFollowUp) _Bool followUp; // @synthesize followUp=_followUp;
 @property(retain, nonatomic) MPModelStoreAsset *storeAsset; // @synthesize storeAsset=_storeAsset;
 @property(nonatomic, getter=isRadioPlayback) _Bool radioPlayback; // @synthesize radioPlayback=_radioPlayback;
 @property(nonatomic) _Bool prefersHighQualityContent; // @synthesize prefersHighQualityContent=_prefersHighQualityContent;
@@ -43,7 +46,6 @@
 @property(nonatomic) _Bool prefersVideoContent; // @synthesize prefersVideoContent=_prefersVideoContent;
 @property(copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
 @property(nonatomic) _Bool allowsHLSContent; // @synthesize allowsHLSContent=_allowsHLSContent;
-- (void).cxx_destruct;
 
 @end
 

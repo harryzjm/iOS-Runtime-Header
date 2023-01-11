@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SSLookupItemOffer, UIBarButtonItem, UIButton, VUIAppInstallConfirmationView, VUIAppInstallLockup;
+@class NSString, UIBarButtonItem, UIButton, VUIAppInstallConfirmationView, VUIAppInstallLockup;
 @protocol WLKInstallable;
 
 __attribute__((visibility("hidden")))
 @interface VUIAppInstallConfirmationViewController
 {
-    id <WLKInstallable> _installable;
-    SSLookupItemOffer *_itemOffer;
     NSString *_updateTitle;
     NSString *_updateMessage;
     CDUnknownBlockType _cancelationHandler;
@@ -21,8 +19,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _state;
     UIBarButtonItem *_barButtonItem;
     VUIAppInstallConfirmationView *_confirmationView;
+    id <WLKInstallable> _installable;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) id <WLKInstallable> installable; // @synthesize installable=_installable;
 @property(retain, nonatomic) VUIAppInstallConfirmationView *confirmationView; // @synthesize confirmationView=_confirmationView;
 @property(retain, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -30,9 +31,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType appStoreHandler; // @synthesize appStoreHandler=_appStoreHandler;
 @property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(copy, nonatomic) CDUnknownBlockType cancelationHandler; // @synthesize cancelationHandler=_cancelationHandler;
-- (void).cxx_destruct;
 - (id)_namedRatingWithRatings:(id)arg1;
 - (id)_fileSizeWithDeviceSizes:(id)arg1;
+- (void)_fetchStoreInfoForAdamID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchAppInfo;
 - (void)_handleSecondaryLink;
 - (void)_handleAppStore;
@@ -50,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)setUpdateMessage:(id)arg1;
 - (void)setMessage:(id)arg1;
 - (void)setTitle:(id)arg1;
-- (id)itemOffer;
 - (id)initWithInstallable:(id)arg1;
 - (id)init;
 

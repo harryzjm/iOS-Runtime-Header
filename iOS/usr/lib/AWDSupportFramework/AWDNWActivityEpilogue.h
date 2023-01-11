@@ -8,7 +8,7 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class AWDNWActivity, AWDNWL2Report;
+@class AWDNWActivity, AWDNWDeviceReport, AWDNWL2Report;
 
 @interface AWDNWActivityEpilogue : PBCodable <NSCopying>
 {
@@ -17,15 +17,23 @@
     unsigned long long _timestamp;
     AWDNWActivity *_activity;
     int _completionReason;
+    AWDNWDeviceReport *_deviceReport;
     AWDNWL2Report *_l2Report;
+    int _underlyingErrorCode;
+    int _underlyingErrorDomain;
     struct {
         unsigned int durationMsecs:1;
         unsigned int fragmentsQuenched:1;
         unsigned int timestamp:1;
         unsigned int completionReason:1;
+        unsigned int underlyingErrorCode:1;
+        unsigned int underlyingErrorDomain:1;
     } _has;
 }
 
+@property(nonatomic) int underlyingErrorCode; // @synthesize underlyingErrorCode=_underlyingErrorCode;
+@property(nonatomic) int underlyingErrorDomain; // @synthesize underlyingErrorDomain=_underlyingErrorDomain;
+@property(retain, nonatomic) AWDNWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property(retain, nonatomic) AWDNWL2Report *l2Report; // @synthesize l2Report=_l2Report;
 @property(nonatomic) unsigned long long fragmentsQuenched; // @synthesize fragmentsQuenched=_fragmentsQuenched;
 @property(nonatomic) unsigned long long durationMsecs; // @synthesize durationMsecs=_durationMsecs;
@@ -40,6 +48,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasUnderlyingErrorCode;
+@property(nonatomic) _Bool hasUnderlyingErrorDomain;
+@property(readonly, nonatomic) _Bool hasDeviceReport;
 @property(readonly, nonatomic) _Bool hasL2Report;
 - (int)StringAsCompletionReason:(id)arg1;
 - (id)completionReasonAsString:(int)arg1;

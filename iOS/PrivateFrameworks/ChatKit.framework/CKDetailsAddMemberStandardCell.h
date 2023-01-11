@@ -4,13 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIImageView;
+
 __attribute__((visibility("hidden")))
 @interface CKDetailsAddMemberStandardCell
 {
+    UIImageView *_addIcon;
 }
 
 + (double)preferredHeight;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *addIcon; // @synthesize addIcon=_addIcon;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setEnabled:(_Bool)arg1;
 - (void)layoutSubviews;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

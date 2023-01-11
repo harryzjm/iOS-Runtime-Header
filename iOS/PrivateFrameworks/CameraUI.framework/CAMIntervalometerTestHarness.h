@@ -7,30 +7,37 @@
 #import <CameraUI/CAMCaptureRequestIntervalometerDelegate-Protocol.h>
 #import <CameraUI/CAMStillImageCaptureRequestDelegate-Protocol.h>
 
-@class CAMCaptureRequestIntervalometer, CUCaptureController, NSMutableDictionary, NSNumber, NSString;
+@class CAMCaptureRequestIntervalometer, CUCaptureController, NSMutableDictionary, NSString;
 
 @interface CAMIntervalometerTestHarness <CAMStillImageCaptureRequestDelegate, CAMCaptureRequestIntervalometerDelegate>
 {
     CUCaptureController *_captureController;
     _Bool _performWarmupCapture;
-    _Bool _hasOutstandingCapture;
-    _Bool _nextCaptureIsMyLast;
+    _Bool _waitingOnWarmupCapture;
+    NSString *_finalRequestPersistenceUUID;
+    long long _mode;
     NSMutableDictionary *_numberOfResponsesForRequest;
-    NSNumber *_expectedNumberOfResponsesPerRequest;
+    unsigned long long _expectedNumberOfResponsesPerRequest;
+    double _delayBetweenCaptures;
+    double _lastCaptureCompletionTime;
     CAMCaptureRequestIntervalometer *_testIntervalometer;
 }
 
-+ (id)harnessWithTestName:(id)arg1 expectedNumberOfCapturesPerRequest:(id)arg2 captureController:(id)arg3 performingWarmupCapture:(_Bool)arg4;
-@property(retain, nonatomic) CAMCaptureRequestIntervalometer *testIntervalometer; // @synthesize testIntervalometer=_testIntervalometer;
 - (void).cxx_destruct;
-- (_Bool)_hasReceivedExpectedNumberOfResponsesForRequests;
-- (void)intervalometerDidReachMaximumCount:(id)arg1;
+@property(retain, nonatomic) CAMCaptureRequestIntervalometer *testIntervalometer; // @synthesize testIntervalometer=_testIntervalometer;
+- (_Bool)_hasReceivedExpectedNumberOfResponsesForRequestsWithFailureReason:(id *)arg1;
+- (_Bool)_hasReceivedExpectedNumberOfResponsesForPersistenceUUID:(id)arg1 failureReason:(id *)arg2;
+- (void)intervalometer:(id)arg1 didReachMaximumCountWithRequest:(id)arg2;
 - (_Bool)intervalometer:(id)arg1 didGenerateCaptureRequest:(id)arg2;
+- (_Bool)_shouldDelayBeforeCapturing;
+- (_Bool)_allowOverlappingCaptures;
+- (void)stillImageRequestDidCompleteCapture:(id)arg1 error:(id)arg2;
 - (void)stillImageRequestDidCompleteStillImageCapture:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
+- (void)stillImageRequestDidStopCapturingStillImage:(id)arg1;
 - (void)failedTestwithReason:(id)arg1;
 - (void)stopTesting;
 - (void)startTesting;
-- (id)initWithTestName:(id)arg1 expectedNumberOfCapturesPerRequest:(id)arg2 captureController:(id)arg3 performingWarmupCapture:(_Bool)arg4;
+- (id)initWithTestName:(id)arg1 expectedNumberOfCapturesPerRequest:(unsigned long long)arg2 captureController:(id)arg3 performingWarmupCapture:(_Bool)arg4 forCaptureMode:(long long)arg5 delayBetweenCaptures:(double)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

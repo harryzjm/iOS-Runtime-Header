@@ -18,6 +18,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)localCompanionDevice;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(_Bool)arg4 error:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingData:(id)arg3 fromID:(id)arg4 context:(id)arg5;
@@ -25,11 +26,11 @@
 - (void)_handleUploadResponse:(id)arg1;
 - (void)_handleUploadRequest:(id)arg1;
 - (void)_sendUploadResponse:(id)arg1 success:(_Bool)arg2 error:(id)arg3 ownerID:(id)arg4 signature:(id)arg5 requestURLString:(id)arg6 transferID:(id)arg7;
-- (void)_sendUploadRequest:(id)arg1 topic:(id)arg2 transferID:(id)arg3 allowReauthorize:(_Bool)arg4;
+- (void)_sendUploadRequest:(id)arg1 topic:(id)arg2 transferID:(id)arg3 sourceAppID:(id)arg4 allowReauthorize:(_Bool)arg5;
 - (int)currentTransfers;
 - (void)decrementTransferCount;
 - (void)incrementTransferCount;
-- (void)remoteUploadFileRequest:(id)arg1 topic:(id)arg2 transferID:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)remoteUploadFileRequest:(id)arg1 topic:(id)arg2 transferID:(id)arg3 sourceAppID:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (_Bool)isLocalDevicePresent;
 - (void)dealloc;
 - (id)init;

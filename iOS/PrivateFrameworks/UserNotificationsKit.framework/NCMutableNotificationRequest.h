@@ -21,6 +21,7 @@
 @property(retain, nonatomic) NCNotificationAction *defaultAction; // @dynamic defaultAction;
 @property(retain, nonatomic) NCNotificationAction *closeAction; // @dynamic closeAction;
 @property(retain, nonatomic) NCNotificationAction *clearAction; // @dynamic clearAction;
+@property(retain, nonatomic) NCNotificationAction *cancelAction; // @dynamic cancelAction;
 @property(retain, nonatomic) NCNotificationSound *sound; // @dynamic sound;
 @property(copy, nonatomic) NSSet *settingsSections; // @dynamic settingsSections;
 @property(copy, nonatomic) NSDictionary *context; // @dynamic context;

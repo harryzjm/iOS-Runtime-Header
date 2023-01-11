@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) unsigned long long placementType;
 @property(readonly, nonatomic) UIColor *debugColor;
 @property(readonly, nonatomic) unsigned long long traits;
+- (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) SXJSONArray *additions;
@@ -36,6 +37,7 @@
 @property(readonly, nonatomic) _Bool hidden;
 @property(readonly, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) NSString *layout;
+@property(readonly, nonatomic) NSString *placementIdentifier; // @dynamic placementIdentifier;
 @property(readonly, nonatomic) int role;
 @property(readonly, nonatomic) NSString *style;
 @property(readonly) Class superclass;

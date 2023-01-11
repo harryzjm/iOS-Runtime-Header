@@ -10,7 +10,10 @@
 {
 }
 
-- (_Bool)canShowPhotosLocally;
+@property(readonly, nonatomic) _Bool supportsReportingIssue;
+@property(readonly, nonatomic) _Bool shouldSuppressPhotoAttribution;
+@property(readonly, nonatomic) _Bool canShowPhotosLocally;
+@property(readonly, nonatomic) _Bool canAddPhotosLocally;
 - (id)urlsForPhotoWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSArray *addPhotoURLs;
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2 poiID:(id)arg3;

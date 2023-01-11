@@ -15,6 +15,7 @@
 @interface SGBigUTF8String : NSString <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     const char *_utf8;
+    const char *_utf8End;
     NSData *_backingData;
     struct {
         unsigned int :6;
@@ -22,10 +23,10 @@
         unsigned int :1;
         unsigned int :24;
     } *_chunks;
-    unsigned long long _hash;
     unsigned int _nchunks;
     unsigned int _length;
     _Bool _ascii;
+    _Bool _nullTerminated;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -35,7 +36,6 @@
 - (Class)classForCoder;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
 - (unsigned long long)fastestEncoding;
 - (const char *)_fastCStringContents:(_Bool)arg1;
 - (id)dataUsingEncoding:(unsigned long long)arg1;
@@ -44,7 +44,6 @@
 - (const char *)UTF8String;
 - (unsigned long long)length;
 - (void)dealloc;
-- (id)initWithUTF8DataNullTerminated:(id)arg1;
 - (id)initWithUTF8Data:(id)arg1;
 - (id)initWithUTF8String:(const char *)arg1;
 

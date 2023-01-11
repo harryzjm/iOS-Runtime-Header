@@ -4,20 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class STiCloudOrganization;
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
+
+@class NSString, STiCloudOrganization;
 
 __attribute__((visibility("hidden")))
-@interface STiCloudOrganizationSettings
+@interface STiCloudOrganizationSettings <STSerializableMappedObject>
 {
 }
 
++ (id)serializableClassName;
 - (void)setPasscode:(id)arg1;
 - (id)dictionaryRepresentation;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
 - (id)computeUniqueIdentifier;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(retain, nonatomic) STiCloudOrganization *organization; // @dynamic organization;
+@property(copy, nonatomic) NSString *recoveryAltDSID; // @dynamic recoveryAltDSID;
+@property(readonly) Class superclass;
 
 @end
 

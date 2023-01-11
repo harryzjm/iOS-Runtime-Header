@@ -36,6 +36,7 @@
 - (oneway void)acceptMultiplayerGameInvite;
 - (oneway void)respondedToNearbyInvite:(NSDictionary *)arg1;
 - (oneway void)friendRequestSelected:(GKFriendRequestInternal *)arg1;
+- (oneway void)requestSandboxExtension:(void (^)(NSString *))arg1;
 - (oneway void)completedOptimisticAuthenticationWithResponse:(GKAuthenticateResponse *)arg1 error:(NSError *)arg2;
 - (oneway void)authenticatedPlayersDidChange:(NSArray *)arg1 reply:(void (^)(void))arg2;
 - (oneway void)setCurrentGame:(GKGameInternal *)arg1 serverEnvironment:(long long)arg2 reply:(void (^)(void))arg3;

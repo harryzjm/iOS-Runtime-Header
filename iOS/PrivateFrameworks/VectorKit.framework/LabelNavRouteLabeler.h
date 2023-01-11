@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_fadingLabels;
     NSMutableDictionary *_visibleLabelsByName;
     NSMutableArray *_visibleLabels;
+    NSMutableSet *_visibleShieldGroups;
     unsigned long long _countVisibleOnRouteRoadSigns;
     unsigned long long _countVisibleOffRouteRoadSigns;
     unsigned long long _countVisibleRoadSigns;
@@ -59,11 +60,15 @@ __attribute__((visibility("hidden")))
     _Bool _debugEnableShieldsOnRouteLine;
     shared_ptr_a3c46825 _styleManager;
     _Bool _shouldLabelOppositeCarriageways;
-    vector_7c356ace _externalCollisionLabelsForLayout;
+    vector_fac3c691 _avoidanceRects;
     _Bool _hasPendingTilesInSnappingRegion;
     _Bool _needsDebugConsoleClear;
+    struct range_map<geo::Unit<RadianUnitDescription, float>, md::OrientationAction, std::__1::less<geo::Unit<RadianUnitDescription, float>>, std::__1::allocator<std::__1::pair<const gm::Range<geo::Unit<RadianUnitDescription, float>>, md::OrientationAction>>> _onRouteOrientations;
+    struct range_map<geo::Unit<RadianUnitDescription, float>, md::OrientationAction, std::__1::less<geo::Unit<RadianUnitDescription, float>>, std::__1::allocator<std::__1::pair<const gm::Range<geo::Unit<RadianUnitDescription, float>>, md::OrientationAction>>> _relatedRouteOrientations;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool debugEnableShieldsOnRouteLine; // @synthesize debugEnableShieldsOnRouteLine=_debugEnableShieldsOnRouteLine;
 @property(nonatomic) struct VKLabelNavArtworkCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property(nonatomic) _Bool debugDisableRoadSignLimit; // @synthesize debugDisableRoadSignLimit=_debugDisableRoadSignLimit;
@@ -75,11 +80,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool drawRoadSigns; // @synthesize drawRoadSigns=_drawRoadSigns;
 @property(retain, nonatomic) VKPolylineOverlay *route; // @synthesize route=_route;
 @property(readonly, nonatomic) _Bool needsLayout; // @synthesize needsLayout=_needsLayout;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (unsigned char)computeRoutePositionForPOIAtPixel:(const Matrix_8746f91e *)arg1 currentPosition:(unsigned char)arg2 context:(struct NavContext *)arg3;
-- (_Bool)needsDebugDraw;
-- (void)debugDraw:(id)arg1 overlayConsole:(struct DebugConsole *)arg2 navContext:(struct NavContext *)arg3;
 - (_Bool)_updateActiveRouteRange;
 - (_Bool)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(vector_397bdcab *)arg2 lookBackward:(_Bool)arg3 firstOverlap:(long long *)arg4 secondOverlap:(long long *)arg5;
 - (void)_updateCurrentRoadInfo;
@@ -91,8 +92,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_addJunctionsForTile:(const shared_ptr_702c344d *)arg1;
 - (void)_addLabelsForJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxLabelsToAdd:(unsigned long long)arg3 useAllJunctions:(_Bool)arg4 placeShieldsFrontToBack:(_Bool)arg5;
 - (void)_addLabelsAtJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxLabelsToAdd:(unsigned long long)arg3;
-- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_7c356ace *)arg2;
+- (void)layoutWithNavContext:(struct NavContext *)arg1 avoidanceRects:(const vector_fac3c691 *)arg2;
 - (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext *)arg3;
+- (unsigned char)resolveOrientation:(struct NavContext *)arg1 road:(id)arg2 currentOrientation:(unsigned char)arg3;
+- (optional_49d759ff)createRoadSignOrientationResolver:(id)arg1 navContext:(struct NavContext *)arg2;
 - (void)_generateCurrentRoadSignWithContext:(struct NavContext *)arg1;
 - (void)styleManagerDidFinishAnimating;
 - (void)styleManagerDidStartAnimating;
@@ -113,6 +116,10 @@ __attribute__((visibility("hidden")))
 - (id)init;
 @property(readonly, nonatomic) float currentRoadSignPixelHeight;
 @property(readonly, nonatomic) struct NavCurrentRoadSign *currentRoadSign;
+- (void)drawNavOverlayDebugView:(struct DebugConsole *)arg1 navContext:(struct NavContext *)arg2;
+- (void)drawRoadSignOrientationDebugView:(struct DebugConsole *)arg1 navContext:(struct NavContext *)arg2;
+- (void)debugDraw:(id)arg1 overlayConsole:(struct DebugConsole *)arg2 navContext:(struct NavContext *)arg3;
+- (_Bool)needsDebugDraw;
 
 @end
 

@@ -14,6 +14,7 @@
 - (void)composeRecipientView:(PXComposeRecipientView *)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)composeRecipientView:(PXComposeRecipientView *)arg1 didRemoveRecipient:(PXRecipient *)arg2;
 - (void)composeRecipientView:(PXComposeRecipientView *)arg1 didAddRecipient:(PXRecipient *)arg2;
+- (void)composeRecipientView:(PXComposeRecipientView *)arg1 disambiguateRecipient:(PXRecipient *)arg2;
 - (void)composeRecipientViewDidFinishPickingRecipient:(PXComposeRecipientView *)arg1;
 - (void)composeRecipientViewRequestAddRecipient:(PXComposeRecipientView *)arg1;
 - (void)composeRecipientView:(PXComposeRecipientView *)arg1 didFinishEnteringAddress:(NSString *)arg2;

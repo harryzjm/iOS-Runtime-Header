@@ -17,6 +17,7 @@
 {
     _Bool _executing;
     _Bool _finished;
+    _Bool _isBackgroundDownloadOperation;
     _Bool _childOperationsCancelled;
     long long _relativePriority;
     unsigned long long _retryCount;
@@ -31,6 +32,7 @@
     NSObject<OS_dispatch_group> *_finishedGroup;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *finishedGroup; // @synthesize finishedGroup=_finishedGroup;
 @property(retain, nonatomic) FCOnce *startOnce; // @synthesize startOnce=_startOnce;
 @property(retain, nonatomic) NFUnfairLock *childOperationsLock; // @synthesize childOperationsLock=_childOperationsLock;
@@ -40,10 +42,10 @@
 @property(nonatomic) double operationEndTime; // @synthesize operationEndTime=_operationEndTime;
 @property(nonatomic) double operationStartTime; // @synthesize operationStartTime=_operationStartTime;
 @property(readonly, copy, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
+@property(nonatomic) _Bool isBackgroundDownloadOperation; // @synthesize isBackgroundDownloadOperation=_isBackgroundDownloadOperation;
 @property(nonatomic) double timeoutDuration; // @synthesize timeoutDuration=_timeoutDuration;
 @property(nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property(nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
-- (void).cxx_destruct;
 - (id)longOperationDescription;
 - (id)shortOperationDescription;
 @property(readonly, copy, nonatomic) NSDictionary *errorUserInfo;

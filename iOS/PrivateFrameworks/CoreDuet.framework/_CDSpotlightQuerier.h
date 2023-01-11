@@ -10,19 +10,5 @@
 {
 }
 
-+ (id)keywordsFromString:(id)arg1;
-+ (id)uniqueIdentifierKeyForUTI:(id)arg1;
-+ (id)osxBundleIdForUTI:(id)arg1;
-+ (id)osxUTItoUniqueIdentifierKeyMap;
-+ (id)orQueryStrings:(id)arg1;
-+ (id)queryStringForMessages;
-+ (id)queryStringForMail;
-+ (id)contentTypeKey;
-+ (id)queryAttributesForUniqueIdentifierAttributeOSX;
-+ (id)mdSearchableQueryAttributes;
-+ (id)queryStringWithPredicateStr:(id)arg1 userEmails:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
-+ (id)querySpotlightForPredicateString:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
-- (id)requestQuery:(id)arg1;
-
 @end
 

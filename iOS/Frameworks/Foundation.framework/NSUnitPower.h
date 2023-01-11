@@ -23,6 +23,7 @@
 + (id)gigawatts;
 + (id)terawatts;
 + (id)baseUnit;
++ (void)initialize;
 
 @end
 

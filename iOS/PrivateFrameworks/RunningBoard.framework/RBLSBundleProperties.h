@@ -22,6 +22,7 @@
     _Bool _usesSocketMonitoring;
     _Bool _isExtension;
     int _preferredJetsamBand;
+    int _platform;
     NSString *_identifier;
     NSString *_path;
     NSString *_executablePath;
@@ -30,6 +31,8 @@
     NSDictionary *_environmentVariables;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) int platform; // @synthesize platform=_platform;
 @property(readonly, nonatomic) _Bool isExtension; // @synthesize isExtension=_isExtension;
 @property(readonly, nonatomic) _Bool usesSocketMonitoring; // @synthesize usesSocketMonitoring=_usesSocketMonitoring;
 @property(readonly, nonatomic) _Bool supportsUnboundedTaskCompletion; // @synthesize supportsUnboundedTaskCompletion=_supportsUnboundedTaskCompletion;
@@ -41,14 +44,11 @@
 @property(readonly, nonatomic) NSDictionary *environmentVariables; // @synthesize environmentVariables=_environmentVariables;
 @property(readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property(readonly, nonatomic, getter=isBackgroundRefreshEnabled) _Bool backgroundRefreshEnabled; // @synthesize backgroundRefreshEnabled=_backgroundRefreshEnabled;
-@property(readonly, copy, nonatomic) NSString *extensionPointIdentifier;
-@property(readonly, copy, nonatomic) NSString *executablePath;
-@property(readonly, copy, nonatomic) NSString *bundlePath;
-@property(readonly, copy, nonatomic) NSString *bundleIdentifier;
-- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *extensionPointIdentifier; // @synthesize extensionPointIdentifier=_extensionPointIdentifier;
+@property(readonly, copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
+@property(readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_path;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_identifier;
 - (id)bundleInfoValuesForKeys:(id)arg1;
-- (id)initWithApplicationProxy:(id)arg1;
-- (id)initWithBundleProxy:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -32,15 +32,16 @@
 }
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentStyle; // @synthesize currentStyle=_currentStyle;
 @property(nonatomic) unsigned long long currentAsset; // @synthesize currentAsset=_currentAsset;
-- (void).cxx_destruct;
 - (id)_snapshotWithAsset:(unsigned long long)arg1 style:(unsigned long long)arg2 size:(struct CGSize)arg3;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (id)_swatchForAsset:(unsigned long long)arg1;
 - (_Bool)_wantsConstantSpeedZoom;
 - (id)_quadWithStyle:(unsigned long long)arg1 asset:(unsigned long long)arg2;
-- (id)_textureForAsset:(unsigned long long)arg1;
+- (id)_textureChromaForAsset:(unsigned long long)arg1;
+- (id)_textureLumaForAsset:(unsigned long long)arg1;
 - (id)_pathfinderForAsset:(unsigned long long)arg1;
 - (id)_imageForAsset:(unsigned long long)arg1;
 - (void)_updateComplications;
@@ -58,7 +59,7 @@
 - (id)provideAtlasBacking:(id)arg1;
 - (_Bool)_supportsUnadornedSnapshot;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (id)_keylineViewForComplicationSlot:(id)arg1;
@@ -83,7 +84,7 @@
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_loadLayoutRules;
 - (void)_configureTimeView:(id)arg1;
-- (double)_kaleidoscopeTimeForAsset:(unsigned long long)arg1;
+- (double)_kaleidoscopeTime;
 - (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (_Bool)slotUsesCurvedText:(id)arg1;
 - (void)_disableCrown;
@@ -91,6 +92,7 @@
 - (void)_applyDataMode;
 - (void)_applyFrozen;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (void)_updateWithAsset:(unsigned long long)arg1;

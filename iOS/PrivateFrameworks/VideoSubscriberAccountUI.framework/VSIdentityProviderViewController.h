@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <VideoSubscriberAccountUI/PSStateRestoration-Protocol.h>
 #import <VideoSubscriberAccountUI/VSAuthenticationViewControllerDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSIdentityProviderRequestManagerDelegate-Protocol.h>
 
 @class NSOperationQueue, NSString, UIBarButtonItem, VSAuditToken, VSIdentityProvider, VSIdentityProviderRequestManager, VSImageLoadOperation, VSViewModel;
 @protocol VSIdentityProviderViewControllerDelegate;
 
-@interface VSIdentityProviderViewController : UIViewController <VSAuthenticationViewControllerDelegate, VSIdentityProviderRequestManagerDelegate>
+@interface VSIdentityProviderViewController : UIViewController <VSAuthenticationViewControllerDelegate, VSIdentityProviderRequestManagerDelegate, PSStateRestoration>
 {
     _Bool _canIssuePrivacyVouchers;
     _Bool _cancellationAllowed;
@@ -28,6 +29,7 @@
     UIViewController *_currentlyPresentedIdentityProviderAlert;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *currentlyPresentedIdentityProviderAlert; // @synthesize currentlyPresentedIdentityProviderAlert=_currentlyPresentedIdentityProviderAlert;
 @property(retain, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *signInButtonItem; // @synthesize signInButtonItem=_signInButtonItem;
@@ -40,7 +42,7 @@
 @property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(nonatomic) __weak id <VSIdentityProviderViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
-- (void).cxx_destruct;
+- (_Bool)canBeShownFromSuspendedState;
 - (void)viewDidLayoutSubviews;
 - (_Bool)identityProviderRequestManager:(id)arg1 requestsAlert:(id)arg2;
 - (void)identityProviderRequestManager:(id)arg1 didAuthenticateAccount:(id)arg2 forRequest:(id)arg3;

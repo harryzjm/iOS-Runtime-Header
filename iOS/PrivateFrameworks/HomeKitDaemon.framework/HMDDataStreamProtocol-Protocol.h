@@ -10,6 +10,7 @@
 @protocol HMDDataStreamProtocolDelegate;
 
 @protocol HMDDataStreamProtocol <NSObject>
+@property(readonly, nonatomic, getter=isActive) _Bool active;
 - (void)dataStream:(id <HMDDataStreamProtocolDelegate>)arg1 didReceiveResponse:(NSString *)arg2 header:(NSDictionary *)arg3 payload:(NSDictionary *)arg4;
 - (void)dataStream:(id <HMDDataStreamProtocolDelegate>)arg1 didReceiveRequest:(NSString *)arg2 header:(NSDictionary *)arg3 payload:(NSDictionary *)arg4;
 - (void)dataStream:(id <HMDDataStreamProtocolDelegate>)arg1 didReceiveEvent:(NSString *)arg2 header:(NSDictionary *)arg3 payload:(NSDictionary *)arg4;

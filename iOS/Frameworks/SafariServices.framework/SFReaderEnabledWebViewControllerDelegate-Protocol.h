@@ -6,14 +6,15 @@
 
 #import <SafariServices/SFWebViewControllerDelegate-Protocol.h>
 
-@class NSURLRequest, SFWebViewController;
+@class NSArray, NSURLRequest, SFWebViewController;
 
 @protocol SFReaderEnabledWebViewControllerDelegate <SFWebViewControllerDelegate>
 - (void)createReaderWebViewForWebViewController:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 didClickLinkInReaderWithRequest:(NSURLRequest *)arg2;
-- (void)webViewControllerDidDetermineReaderAvailability:(SFWebViewController *)arg1 dueToSameDocumentNavigation:(_Bool)arg2;
+- (void)webViewControllerDidDetermineReaderAvailability:(SFWebViewController *)arg1 dueTo:(long long)arg2;
 
 @optional
+- (void)webViewController:(SFWebViewController *)arg1 didExtractTextSamplesForTranslation:(NSArray *)arg2;
 - (void)webViewControllerReaderDidBecomeReady:(SFWebViewController *)arg1;
 @end
 

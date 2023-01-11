@@ -24,12 +24,11 @@
 + (id)predictionUnavailable;
 + (id)timelineWithValues:(id)arg1 eachWithDuration:(double)arg2 startingAt:(id)arg3;
 + (id)timelineWithValues:(id)arg1 forDurations:(id)arg2 startingAt:(id)arg3;
-@property(retain, nonatomic) NSArray *values; // @synthesize values=_values;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _DKHistogram *endHistogram; // @synthesize endHistogram=_endHistogram;
 @property(retain, nonatomic) _DKHistogram *startHistogram; // @synthesize startHistogram=_startHistogram;
-@property(retain, nonatomic) NSArray *transitionDates; // @synthesize transitionDates=_transitionDates;
-@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *transitionDates;
+@property(readonly, nonatomic) NSDate *startDate;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -40,8 +39,6 @@
 - (id)valueAtDate:(id)arg1;
 @property(readonly, nonatomic) NSDate *endDate;
 - (_Bool)isUnavailable;
-- (id)initWithValues:(id)arg1 eachWithDuration:(double)arg2 startingAt:(id)arg3;
-- (id)initWithValues:(id)arg1 forDurations:(id)arg2 startingAt:(id)arg3;
 
 @end
 

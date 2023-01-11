@@ -19,7 +19,12 @@
 
 + (id)bundle;
 - (void).cxx_destruct;
+- (void)setAlwaysShowRecognizedSpeech:(id)arg1 forSpecifier:(id)arg2;
+- (id)alwaysShowRecognizedSpeech;
+- (void)setAlwaysPrintSiriResponseEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (id)isAlwaysPrintSiriResponseEnabled:(id)arg1;
 - (id)_localizeTriggerString:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)_refreshFooterForSpecifier:(id)arg1;
 - (id)footerVariant;

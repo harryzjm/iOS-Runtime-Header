@@ -42,6 +42,7 @@
 - (void)_urlRequestWithURL:(id)arg1 andData:(id)arg2 message:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)initWithIDSServerBag:(id)arg1 iMessageServerBag:(id)arg2 remoteConnectionFactory:(id)arg3 mobileNetworkManager:(id)arg4 retryBackoffProvider:(CDUnknownBlockType)arg5;
+- (id)initWithIDSServerBag:(id)arg1;
 - (id)init;
 
 @end

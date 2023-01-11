@@ -37,11 +37,11 @@
     NSArray *_filteredPassUniqueIDs;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldSeparatePaymentPasses; // @synthesize shouldSeparatePaymentPasses=_shouldSeparatePaymentPasses;
 @property(readonly, nonatomic) NSArray *filteredPassUniqueIDs; // @synthesize filteredPassUniqueIDs=_filteredPassUniqueIDs;
 @property(nonatomic) _Bool reorderingEnabled; // @synthesize reorderingEnabled=_reorderingEnabled;
 @property(nonatomic) __weak id <PKGroupsControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_insertLocalGroupsIntoCatalog:(id)arg1 withPassesByUniqueID:(id)arg2;
 - (id)_copyRemoteCatalog;
 - (void)_removeGroup:(id)arg1 notify:(_Bool)arg2;
@@ -67,6 +67,7 @@
 - (void)reloadGroupsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addLocalPasses:(id)arg1;
 - (void)enableRemoteUpdates;
+- (void)movePass:(id)arg1 inGroup:(id)arg2 toIndex:(unsigned long long)arg3;
 - (void)moveGroupAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)suppressRemoteUpdates:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool filteringEnabled;
@@ -82,7 +83,6 @@
 - (void)reloadGroups;
 - (void)loadGroupsSynchronously;
 - (void)loadGroupsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)preloadGroupsAndFrontFaceImages;
 - (void)dealloc;
 - (id)initLimited;
 - (id)initWithPassTypeMask:(unsigned long long)arg1 passFilters:(unsigned long long)arg2;

@@ -19,7 +19,9 @@
     NSString *_contentItemID;
     NSString *_contextID;
     NSString *_destinationAppDisplayID;
+    NSString *_homeKitUserIdentifier;
     NSString *_insertAfterContentItemID;
+    NSString *_insertBeforeContentItemID;
     NSData *_languageOption;
     NSString *_mediaType;
     NSString *_nowPlayingContentItemID;
@@ -29,6 +31,7 @@
     int _playbackQueueOffset;
     float _playbackRate;
     NSData *_playbackSession;
+    int _queueEndAction;
     NSString *_radioStationHash;
     float _rating;
     NSString *_remoteControlInterface;
@@ -41,13 +44,18 @@
     NSString *_sourceID;
     NSString *_stationURL;
     NSData *_systemAppPlaybackQueueData;
+    NSData *_userIdentityData;
     _Bool _beginSeek;
     _Bool _endSeek;
     _Bool _externalPlayerCommand;
     _Bool _negative;
+    _Bool _preservesQueueEndAction;
+    _Bool _preservesRepeatMode;
+    _Bool _preservesShuffleMode;
     _Bool _requestDefermentToPlaybackQueuePosition;
     _Bool _shouldBeginRadioPlayback;
     _Bool _shouldOverrideManuallyCuratedQueue;
+    _Bool _verifySupportedCommands;
     struct {
         unsigned int playbackPosition:1;
         unsigned int radioStationID:1;
@@ -56,6 +64,7 @@
         unsigned int playbackQueueInsertionPosition:1;
         unsigned int playbackQueueOffset:1;
         unsigned int playbackRate:1;
+        unsigned int queueEndAction:1;
         unsigned int rating:1;
         unsigned int repeatMode:1;
         unsigned int replaceIntent:1;
@@ -66,12 +75,24 @@
         unsigned int endSeek:1;
         unsigned int externalPlayerCommand:1;
         unsigned int negative:1;
+        unsigned int preservesQueueEndAction:1;
+        unsigned int preservesRepeatMode:1;
+        unsigned int preservesShuffleMode:1;
         unsigned int requestDefermentToPlaybackQueuePosition:1;
         unsigned int shouldBeginRadioPlayback:1;
         unsigned int shouldOverrideManuallyCuratedQueue:1;
+        unsigned int verifySupportedCommands:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool verifySupportedCommands; // @synthesize verifySupportedCommands=_verifySupportedCommands;
+@property(retain, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
+@property(nonatomic) _Bool preservesQueueEndAction; // @synthesize preservesQueueEndAction=_preservesQueueEndAction;
+@property(nonatomic) _Bool preservesShuffleMode; // @synthesize preservesShuffleMode=_preservesShuffleMode;
+@property(nonatomic) _Bool preservesRepeatMode; // @synthesize preservesRepeatMode=_preservesRepeatMode;
+@property(retain, nonatomic) NSString *insertBeforeContentItemID; // @synthesize insertBeforeContentItemID=_insertBeforeContentItemID;
+@property(retain, nonatomic) NSData *userIdentityData; // @synthesize userIdentityData=_userIdentityData;
 @property(retain, nonatomic) NSData *playbackSession; // @synthesize playbackSession=_playbackSession;
 @property(nonatomic) _Bool endSeek; // @synthesize endSeek=_endSeek;
 @property(nonatomic) _Bool beginSeek; // @synthesize beginSeek=_beginSeek;
@@ -104,7 +125,6 @@
 @property(nonatomic) _Bool externalPlayerCommand; // @synthesize externalPlayerCommand=_externalPlayerCommand;
 @property(retain, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property(retain, nonatomic) NSString *sourceID; // @synthesize sourceID=_sourceID;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -114,6 +134,17 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasVerifySupportedCommands;
+@property(readonly, nonatomic) _Bool hasHomeKitUserIdentifier;
+@property(nonatomic) _Bool hasPreservesQueueEndAction;
+@property(nonatomic) _Bool hasPreservesShuffleMode;
+@property(nonatomic) _Bool hasPreservesRepeatMode;
+- (int)StringAsQueueEndAction:(id)arg1;
+- (id)queueEndActionAsString:(int)arg1;
+@property(nonatomic) _Bool hasQueueEndAction;
+@property(nonatomic) int queueEndAction; // @synthesize queueEndAction=_queueEndAction;
+@property(readonly, nonatomic) _Bool hasInsertBeforeContentItemID;
+@property(readonly, nonatomic) _Bool hasUserIdentityData;
 @property(readonly, nonatomic) _Bool hasPlaybackSession;
 @property(nonatomic) _Bool hasEndSeek;
 @property(nonatomic) _Bool hasBeginSeek;

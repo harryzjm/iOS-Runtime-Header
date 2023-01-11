@@ -12,31 +12,34 @@
 
 @interface AFUISceneConfiguration : NSObject <NSCopying>
 {
-    FBSDisplayConfiguration *_displayConfigruation;
+    FBSDisplayConfiguration *_displayConfiguration;
     _Bool _foreground;
-    _Bool _takeAssertionsWhenInBackground;
     _Bool _cancelSceneLoadingAfterTimeout;
     long long _launchIntent;
     long long _preferredDeferralMode;
     double _sceneLoadingTimeOutDuration;
     FBSSceneParameters *_sceneParameters;
     long long _userInterfaceStyle;
+    unsigned long long _deactivationReasonMask;
     struct CGRect _initialBounds;
+    struct UIEdgeInsets _initialSafeAreaInsets;
     struct CGRect _bounds;
 }
 
 + (id)defaultSiriSceneConfigurationWithInitialBounds:(struct CGRect)arg1 onDisplay:(id)arg2;
++ (id)stringForInvalidationReason:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property(nonatomic) unsigned long long deactivationReasonMask; // @synthesize deactivationReasonMask=_deactivationReasonMask;
 @property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(copy, nonatomic) FBSSceneParameters *sceneParameters; // @synthesize sceneParameters=_sceneParameters;
+@property(nonatomic) struct UIEdgeInsets initialSafeAreaInsets; // @synthesize initialSafeAreaInsets=_initialSafeAreaInsets;
 @property(readonly, nonatomic) struct CGRect initialBounds; // @synthesize initialBounds=_initialBounds;
 @property(nonatomic) double sceneLoadingTimeOutDuration; // @synthesize sceneLoadingTimeOutDuration=_sceneLoadingTimeOutDuration;
 @property(nonatomic) _Bool cancelSceneLoadingAfterTimeout; // @synthesize cancelSceneLoadingAfterTimeout=_cancelSceneLoadingAfterTimeout;
 @property(nonatomic) long long preferredDeferralMode; // @synthesize preferredDeferralMode=_preferredDeferralMode;
-@property(nonatomic) _Bool takeAssertionsWhenInBackground; // @synthesize takeAssertionsWhenInBackground=_takeAssertionsWhenInBackground;
 @property(nonatomic) long long launchIntent; // @synthesize launchIntent=_launchIntent;
 @property(nonatomic) _Bool foreground; // @synthesize foreground=_foreground;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_setupPlatformSpecificDefaultSettings;

@@ -22,7 +22,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)encodeIndirectDispatchWithEncoder:(id)arg1 pipeline:(id)arg2 threadCountBuffer:(id)arg3 threadCountBufferOffset:(unsigned long long)arg4 indirectDispatchBuffer:(id)arg5 indirectDispatchBufferOffset:(unsigned long long)arg6;
 - (void)encodeClearWithEncoder:(id)arg1 buffer:(id)arg2 bufferOffset:(unsigned long long)arg3 value:(unsigned int)arg4;
 - (_Bool)useResourceBuffer;

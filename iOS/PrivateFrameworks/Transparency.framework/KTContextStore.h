@@ -6,36 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class KTLogClient, KTPublicKeyStore, NSMutableDictionary, TransparencyManagedDataStore;
+@class KTPublicKeyStore, NSMutableDictionary, TransparencyManagedDataStore;
 
 @interface KTContextStore : NSObject
 {
     NSMutableDictionary *_contexts;
     TransparencyManagedDataStore *_dataStore;
     KTPublicKeyStore *_keyStore;
-    KTLogClient *_configClient;
 }
 
-@property(retain) KTLogClient *configClient; // @synthesize configClient=_configClient;
-@property(retain) KTPublicKeyStore *keyStore; // @synthesize keyStore=_keyStore;
-@property(readonly, retain) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
-@property(retain) NSMutableDictionary *contexts; // @synthesize contexts=_contexts;
 - (void).cxx_destruct;
-- (_Bool)runDutyCycleForActivity:(id)arg1 logClient:(id)arg2 resumptionWorkloop:(id)arg3;
-- (void)runDutyCycleConfigurationStepForActivity:(id)arg1 logClient:(id)arg2 resumptionWorkloop:(id)arg3;
+@property(retain) KTPublicKeyStore *keyStore; // @synthesize keyStore=_keyStore;
+@property(retain) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
+@property(retain) NSMutableDictionary *contexts; // @synthesize contexts=_contexts;
+- (id)serializeTranscripts;
+- (_Bool)runDutyCycleForActivity:(id)arg1 logClient:(id)arg2;
+- (void)runDutyCycleConfigurationStepForActivity:(id)arg1 logClient:(id)arg2;
 - (void)runDutyCycleProcessingStepForActivity:(id)arg1 context:(id)arg2 logClient:(id)arg3;
+- (void)verifyTLTConsistencyAndGarbageCollectSTHs:(id)arg1;
 - (_Bool)logSharedMetrics;
+- (void)failRequestDownload:(id)arg1 application:(id)arg2 failure:(id)arg3 retry:(_Bool)arg4 logClient:(id)arg5;
+- (void)verifyRequestDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
+- (void)failSMTInclusionDownload:(id)arg1 application:(id)arg2 failure:(id)arg3 retry:(_Bool)arg4 logClient:(id)arg5;
+- (void)verifySMTInclusionDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
+- (void)failHeadDownload:(id)arg1 application:(id)arg2 failure:(id)arg3 retry:(_Bool)arg4 logClient:(id)arg5;
+- (void)verifyHeadConsistencyDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
+- (void)verifyHeadInclusionDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
 - (void)clearApplicationState:(id)arg1 logClient:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)updateRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryResponse:(id)arg4 error:(id *)arg5;
-- (void)validateEnrollment:(id)arg1 application:(id)arg2 logClient:(id)arg3 transparentData:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)validateSelf:(id)arg1 application:(id)arg2 logClient:(id)arg3 transparentData:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 transparentData:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)updateRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryRequest:(id)arg4 queryResponse:(id)arg5 logClient:(id)arg6 error:(id *)arg7;
+- (void)validateEnrollment:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)validateSelf:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)contextForApplication:(id)arg1 logClient:(id)arg2 fetchState:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)createKeyStoreForApplication:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)createContextForTLT:(id)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createContextForApplication:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)storeContext:(id)arg1 application:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)configureWithClient:(id)arg1 force:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)configureWithClient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)configure:(CDUnknownBlockType)arg1;
 - (void)forcedConfigure:(_Bool)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithDataStore:(id)arg1 keyStore:(id)arg2 configClient:(id)arg3;
+- (id)initWithDataStore:(id)arg1 keyStore:(id)arg2;
 
 @end
 

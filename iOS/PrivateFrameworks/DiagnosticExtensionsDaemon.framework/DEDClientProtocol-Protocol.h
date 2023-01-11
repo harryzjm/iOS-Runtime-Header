@@ -6,11 +6,12 @@
 
 #import <DiagnosticExtensionsDaemon/NSObject-Protocol.h>
 
-@class DEDAttachmentGroup, NSArray, NSError, NSString;
+@class DEDAttachmentGroup, NSArray, NSDictionary, NSError, NSString;
 
 @protocol DEDClientProtocol <NSObject>
 - (void)uploadProgress:(unsigned long long)arg1 total:(unsigned long long)arg2 session:(NSString *)arg3;
 - (void)didAdoptFilesWithError:(NSError *)arg1 forSession:(NSString *)arg2;
+- (void)didGetState:(long long)arg1 info:(NSDictionary *)arg2 sessionID:(NSString *)arg3;
 - (void)hasCollected:(NSArray *)arg1 isCollecting:(NSArray *)arg2 withIdentifiers:(NSArray *)arg3 inSession:(NSString *)arg4;
 - (void)hasCollected:(NSArray *)arg1 isCollecting:(NSArray *)arg2 inSession:(NSString *)arg3;
 - (void)didCommitSession:(NSString *)arg1;

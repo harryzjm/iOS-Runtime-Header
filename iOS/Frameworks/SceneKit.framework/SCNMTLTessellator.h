@@ -14,20 +14,20 @@ __attribute__((visibility("hidden")))
 {
     struct __C3DGeometry *_geometry;
     SCNMTLResourceManager *_resourceManager;
-    CDStruct_14ccb760 _cachedTessellator;
+    CDStruct_9b587744 _cachedTessellator;
     id <MTLBuffer> _tessellationFactorBuffer;
 }
 
-- (void)subdivisionSurfaceTessellationDraw:(CDStruct_d07ba996)arg1;
-- (void)updateSubdivisionSurfaceTessellator:(CDStruct_14ccb760)arg1 parameters:(CDStruct_f890dce7)arg2;
-- (void)constrainedEdgeLengthTessellationDrawMeshElement:(id)arg1 forMesh:(id)arg2 instanceCount:(unsigned long long)arg3 renderCommandEncoder:(id)arg4 renderContext:(id)arg5;
-- (void)updateConstrainedEdgeLengthTessellator:(CDStruct_14ccb760)arg1 withMesh:(id)arg2 computeCommandEncoder:(id)arg3;
-- (void)screenSpaceAdaptiveTessellationDrawMeshElement:(id)arg1 forMesh:(id)arg2 instanceCount:(unsigned long long)arg3 renderCommandEncoder:(id)arg4 renderContext:(id)arg5;
-- (void)updateScreenSpaceAdaptiveTessellator:(CDStruct_14ccb760)arg1 parameters:(CDStruct_f890dce7)arg2;
-- (void)uniformTessellationDrawMeshElement:(id)arg1 forMesh:(id)arg2 instanceCount:(unsigned long long)arg3 renderCommandEncoder:(id)arg4 renderContext:(id)arg5;
-- (void)updateUniformTessellator:(CDStruct_14ccb760)arg1;
-- (void)draw:(CDStruct_d07ba996)arg1;
-- (void)update:(CDStruct_f890dce7)arg1;
+- (void)subdivisionSurfaceTessellationDraw:(CDStruct_8a6a5118)arg1;
+- (void)updateSubdivisionSurfaceTessellator:(CDStruct_9b587744)arg1 parameters:(CDStruct_0b08fa6a)arg2;
+- (void)constrainedEdgeLengthTessellationDrawMeshElement:(id)arg1 forMesh:(id)arg2 instanceCount:(unsigned long long)arg3 renderContext:(id)arg4;
+- (void)updateConstrainedEdgeLengthTessellator:(CDStruct_9b587744)arg1 parameters:(CDStruct_0b08fa6a)arg2;
+- (void)screenSpaceAdaptiveTessellationDrawMeshElement:(id)arg1 forMesh:(id)arg2 instanceCount:(unsigned long long)arg3 renderContext:(id)arg4;
+- (void)updateScreenSpaceAdaptiveTessellator:(CDStruct_9b587744)arg1 parameters:(CDStruct_0b08fa6a)arg2;
+- (void)uniformTessellationDrawMeshElement:(id)arg1 forMesh:(id)arg2 instanceCount:(unsigned long long)arg3 renderContext:(id)arg4;
+- (void)updateUniformTessellator:(CDStruct_9b587744)arg1;
+- (void)draw:(CDStruct_8a6a5118)arg1;
+- (void)update:(CDStruct_0b08fa6a)arg1;
 - (CDUnknownBlockType)newPipelineStateConfiguratorForMeshElement:(id)arg1 patchType:(unsigned char)arg2 device:(id)arg3;
 - (unsigned char)pipelineStateHashForMeshElement:(id)arg1 patchType:(unsigned char)arg2;
 - (CDStruct_9fd556a9)_pipelineStateHashForMeshElement:(id)arg1 patchType:(unsigned char)arg2;

@@ -15,20 +15,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPBTransitShield : PBCodable <GEOTransitShieldDataSource, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_shieldColor;
     NSString *_shieldText;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _shieldEnumValue;
     struct {
         unsigned int has_shieldEnumValue:1;
         unsigned int read_unknownFields:1;
         unsigned int read_shieldColor:1;
         unsigned int read_shieldText:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_shieldColor:1;
-        unsigned int wrote_shieldText:1;
-        unsigned int wrote_shieldEnumValue:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,16 +43,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSString *shieldColor;
 @property(readonly, nonatomic) _Bool hasShieldColor;
-- (void)_readShieldColor;
 @property(nonatomic) _Bool hasShieldEnumValue;
 @property(nonatomic) unsigned int shieldEnumValue;
 @property(retain, nonatomic) NSString *shieldText;
 @property(readonly, nonatomic) _Bool hasShieldText;
-- (void)_readShieldText;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSString *shieldColorString;
 @property(readonly, nonatomic) long long shieldType;
 

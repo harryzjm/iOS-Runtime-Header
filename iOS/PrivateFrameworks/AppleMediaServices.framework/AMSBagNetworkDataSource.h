@@ -8,64 +8,55 @@
 
 #import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
 
-@class AMSProcessInfo, AMSURLSession, AMSUniqueExecutionQueue, NSDate, NSDictionary, NSString;
+@class AMSBagNetworkTask, AMSBagNetworkTaskResult, AMSObserver, AMSProcessInfo, NSDate, NSError, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSBagNetworkDataSource : NSObject <AMSBagDataSourceProtocol>
 {
     CDUnknownBlockType _dataSourceChangedHandler;
+    CDUnknownBlockType _dataSourceDataInvalidatedHandler;
+    AMSProcessInfo *_processInfo;
     NSString *_profile;
     NSString *_profileVersion;
-    NSDictionary *_cachedData;
+    AMSObserver *_accountsChangedObserver;
+    AMSBagNetworkTaskResult *_cachedResult;
     NSObject<OS_dispatch_queue> *_cachedDataAccessQueue;
     NSString *_cachedStorefront;
     NSObject<OS_dispatch_queue> *_cachedStorefrontAccessQueue;
-    AMSUniqueExecutionQueue *_loadDataQueue;
+    NSObject<OS_dispatch_queue> *_completionQueue;
+    AMSBagNetworkTask *_currentLoadTask;
+    NSError *_activeFailure;
     NSObject<OS_dispatch_queue> *_processAccountStoreDidChangeNotificationQueue;
-    AMSProcessInfo *_processInfo;
-    AMSURLSession *_URLSession;
 }
 
-+ (id)_OSBuildTypeString;
-+ (id)_deviceString;
-+ (_Bool)_shouldReloadDataForSetStorefront:(id)arg1 bagData:(id)arg2;
-+ (id)_setStorefrontFromURLResponse:(id)arg1 bagData:(id)arg2;
-+ (id)_requestStorefrontFromURLResponse:(id)arg1;
-+ (id)_URLCookieNamesForProfile:(id)arg1;
-+ (_Bool)_shouldReloadDataForOriginalCookies:(id)arg1 newCookies:(id)arg2;
-+ (void)_setURLCookieNames:(id)arg1 forProfile:(id)arg2;
-+ (id)_defaultURLCookieNames;
-+ (_Bool)_shouldProcessAccountStoreDidChangeNotification:(id)arg1 withMediaType:(id)arg2;
++ (_Bool)_shouldProcessChangedAccount:(id)arg1 forMediaType:(id)arg2;
 + (_Bool)_isDataDictionary:(id)arg1 equalToDataDictionary:(id)arg2;
-+ (id)_currentStorefrontForAccountMediaType:(id)arg1;
-+ (id)_accountForAccountMediaType:(id)arg1;
-@property(retain, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
-@property(retain, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
++ (id)valueForURLVariable:(id)arg1 account:(id)arg2 clientInfo:(id)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
-@property(retain, nonatomic) AMSUniqueExecutionQueue *loadDataQueue; // @synthesize loadDataQueue=_loadDataQueue;
+@property(retain, nonatomic) NSError *activeFailure; // @synthesize activeFailure=_activeFailure;
+@property(retain, nonatomic) AMSBagNetworkTask *currentLoadTask; // @synthesize currentLoadTask=_currentLoadTask;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cachedStorefrontAccessQueue; // @synthesize cachedStorefrontAccessQueue=_cachedStorefrontAccessQueue;
 @property(retain, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cachedDataAccessQueue; // @synthesize cachedDataAccessQueue=_cachedDataAccessQueue;
-@property(retain, nonatomic) NSDictionary *cachedData; // @synthesize cachedData=_cachedData;
+@property(retain, nonatomic) AMSBagNetworkTaskResult *cachedResult; // @synthesize cachedResult=_cachedResult;
+@property(retain, nonatomic) AMSObserver *accountsChangedObserver; // @synthesize accountsChangedObserver=_accountsChangedObserver;
 @property(readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property(readonly, copy, nonatomic) NSString *profile; // @synthesize profile=_profile;
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
+@property(copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler; // @synthesize dataSourceDataInvalidatedHandler=_dataSourceDataInvalidatedHandler;
 @property(copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler; // @synthesize dataSourceChangedHandler=_dataSourceChangedHandler;
-- (void).cxx_destruct;
-- (id)_createURLWithCookieNames:(id)arg1 storefront:(id)arg2;
-- (void)_updateStorefrontSuffixIfNecessaryWithBagData:(id)arg1;
-- (id)_cookiesForNames:(id)arg1;
-- (void)_updateCachedData:(id)arg1;
-- (id)_loadDataWithAttempt:(unsigned long long)arg1 error:(id *)arg2;
-- (id)_processLoadDataResult:(id)arg1;
+- (void)_updateCachedResult:(id)arg1;
 - (void)_invalidateCacheNotification:(id)arg1;
-- (id)_createRequestWithCookieNames:(id)arg1 storefront:(id)arg2;
-- (id)_baseURLString;
-- (void)_accountStoreDidChange:(id)arg1;
-- (id)valueForURLVariable:(id)arg1;
+- (id)_fetchBag;
+- (void)_accountStoreDidChange;
+- (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
 - (id)bagKeyInfoForKey:(id)arg1;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) NSString *descriptionExtended;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 @property(readonly, nonatomic) NSDate *expirationDate;
 - (void)dealloc;

@@ -31,6 +31,7 @@
 @property(readonly, nonatomic) _Bool isInvalid;
 @property(readonly, nonatomic) unsigned short notificationState;
 @property(readonly, copy, nonatomic) NSArray *reasons;
+@property(readonly, nonatomic) double score;
 @property(readonly, nonatomic) unsigned short state;
 @property(readonly, nonatomic) unsigned short subtype;
 @property(readonly) Class superclass;

@@ -13,16 +13,19 @@ __attribute__((visibility("hidden")))
 @interface _UISheetLayoutInfo : NSObject
 {
     struct {
+        unsigned int systemMinimumTopInset:1;
         unsigned int minimumTopInset:1;
         unsigned int maximumWidth:1;
         unsigned int preferredSize:1;
         unsigned int depthLevel:1;
         unsigned int bottomAttached:1;
         unsigned int percentFullScreen:1;
+        unsigned int effectiveKeyboardFrame:1;
         unsigned int floatingUntransformedFrame:1;
         unsigned int bottomAttachedUntransformedFrame:1;
         unsigned int fullHeightUntransformedFrame:1;
         unsigned int stackAlignmentFrame:1;
+        unsigned int stacksWithChild:1;
         unsigned int dismissOffset:1;
         unsigned int activeDetents:1;
         unsigned int rubberBandExtentBeyondMinimumOffset:1;
@@ -31,6 +34,8 @@ __attribute__((visibility("hidden")))
         unsigned int percentPresented:1;
         unsigned int anyDescendantDragging:1;
         unsigned int untransformedFrame:1;
+        unsigned int hostedUntransformedFrame:1;
+        unsigned int touchInsets:1;
         unsigned int cornerRadii:1;
         unsigned int transform:1;
         unsigned int percentDimmedFromOffset:1;
@@ -43,7 +48,11 @@ __attribute__((visibility("hidden")))
         unsigned int dimmedPassthroughViews:1;
         unsigned int grabberAlpha:1;
     } _clean;
+    struct {
+        unsigned int activeDetents:1;
+    } _computing;
     _Bool __bottomAttached;
+    _Bool __stacksWithChild;
     _Bool __anyDescendantDragging;
     _Bool __interactionEnabled;
     _Bool __shouldPresentedViewControllerControlStatusBarAppearance;
@@ -56,10 +65,14 @@ __attribute__((visibility("hidden")))
     _Bool __shouldScaleDownBehindDescendants;
     _Bool __reduceMotionEnabled;
     _Bool __hosting;
+    _Bool __dismissible;
     _Bool __shouldDismissWhenTappedOutside;
+    _Bool __allowsInteractiveDismissWhenFullScreen;
+    _Bool __prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
     _Bool __dragging;
     _Bool __wantsGrabber;
     _Bool __draggingAndDismissing;
+    double __systemMinimumTopInset;
     double __minimumTopInset;
     double __maximumWidth;
     double __depthLevel;
@@ -78,18 +91,22 @@ __attribute__((visibility("hidden")))
     double __shadowOpacity;
     double __alpha;
     double __grabberAlpha;
+    double __magicShadowOpacity;
     NSArray *__dimmedPassthroughViews;
     UIViewController *__presentingViewController;
     UIViewController *__presentedViewController;
     UIView *__containerView;
     UITraitCollection *__containerTraitCollection;
+    double __additionalMinimumTopInset;
     long long __mode;
     long long __indexOfCurrentDetent;
     long long __indexOfLastUndimmedDetent;
     NSArray *__passthroughViews;
     double __latestUserChosenOffset;
     double __tearOffset;
+    double __grabberTopSpacing;
     double __dismissCornerRadius;
+    double __preferredCornerRadius;
     _UISheetLayoutInfo *__parentLayoutInfo;
     _UISheetLayoutInfo *__childLayoutInfo;
     double __confinedPercentLightened;
@@ -98,11 +115,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *__mutableActiveDetentValues;
     NSMutableArray *__mutableActiveReversedDetentIndexes;
     struct CGSize __preferredSize;
+    struct CGRect __effectiveKeyboardFrame;
     struct CGRect __floatingUntransformedFrame;
     struct CGRect __bottomAttachedUntransformedFrame;
     struct CGRect __fullHeightUntransformedFrame;
     struct CGRect __stackAlignmentFrame;
     struct CGRect __untransformedFrame;
+    struct CGRect __hostedUntransformedFrame;
+    struct UIEdgeInsets __touchInsets;
     struct UIRectCornerRadii __cornerRadii;
     struct CGRect __containerBounds;
     struct UIEdgeInsets __containerSafeAreaInsets;
@@ -112,24 +132,30 @@ __attribute__((visibility("hidden")))
     struct CGAffineTransform __transform;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *_mutableActiveReversedDetentIndexes; // @synthesize _mutableActiveReversedDetentIndexes=__mutableActiveReversedDetentIndexes;
 @property(readonly, nonatomic) NSMutableArray *_mutableActiveDetentValues; // @synthesize _mutableActiveDetentValues=__mutableActiveDetentValues;
 @property(retain, nonatomic, setter=_setReversedDetents:) NSArray *_reversedDetents; // @synthesize _reversedDetents=__reversedDetents;
 @property(nonatomic) __weak id <_UISheetLayoutInfoDelegate> _delegate; // @synthesize _delegate=__delegate;
 @property(readonly, nonatomic) double _confinedPercentLightened; // @synthesize _confinedPercentLightened=__confinedPercentLightened;
 @property(retain, nonatomic, setter=_setChildSheetLayoutInfo:) _UISheetLayoutInfo *_childLayoutInfo; // @synthesize _childLayoutInfo=__childLayoutInfo;
-@property(retain, nonatomic, setter=_setParentSheetLayoutInfo:) _UISheetLayoutInfo *_parentLayoutInfo; // @synthesize _parentLayoutInfo=__parentLayoutInfo;
+@property(nonatomic, setter=_setParentSheetLayoutInfo:) __weak _UISheetLayoutInfo *_parentLayoutInfo; // @synthesize _parentLayoutInfo=__parentLayoutInfo;
+@property(nonatomic, setter=_setPreferredCornerRadius:) double _preferredCornerRadius; // @synthesize _preferredCornerRadius=__preferredCornerRadius;
 @property(nonatomic, setter=_setDismissCornerRadius:) double _dismissCornerRadius; // @synthesize _dismissCornerRadius=__dismissCornerRadius;
 @property(nonatomic, setter=_setDismissSourceFrame:) struct CGRect _dismissSourceFrame; // @synthesize _dismissSourceFrame=__dismissSourceFrame;
 @property(nonatomic, getter=_isDraggingAndDismissing, setter=_setDraggingAndDismissing:) _Bool _draggingAndDismissing; // @synthesize _draggingAndDismissing=__draggingAndDismissing;
+@property(nonatomic, setter=_setGrabberTopSpacing:) double _grabberTopSpacing; // @synthesize _grabberTopSpacing=__grabberTopSpacing;
 @property(nonatomic, setter=_setWantsGrabber:) _Bool _wantsGrabber; // @synthesize _wantsGrabber=__wantsGrabber;
 @property(nonatomic, getter=_isDragging, setter=_setDragging:) _Bool _dragging; // @synthesize _dragging=__dragging;
 @property(nonatomic, setter=_setTearOffset:) double _tearOffset; // @synthesize _tearOffset=__tearOffset;
 @property(nonatomic, setter=_setLatestUserChosenOffset:) double _latestUserChosenOffset; // @synthesize _latestUserChosenOffset=__latestUserChosenOffset;
 @property(retain, nonatomic, setter=_setPassthroughViews:) NSArray *_passthroughViews; // @synthesize _passthroughViews=__passthroughViews;
+@property(nonatomic, setter=_setPrefersScrollingExpandsToLargerDetentWhenScrolledToEdge:) _Bool _prefersScrollingExpandsToLargerDetentWhenScrolledToEdge; // @synthesize _prefersScrollingExpandsToLargerDetentWhenScrolledToEdge=__prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
+@property(nonatomic, setter=_setAllowsInteractiveDismissWhenFullScreen:) _Bool _allowsInteractiveDismissWhenFullScreen; // @synthesize _allowsInteractiveDismissWhenFullScreen=__allowsInteractiveDismissWhenFullScreen;
 @property(nonatomic, setter=_setShouldDismissWhenTappedOutside:) _Bool _shouldDismissWhenTappedOutside; // @synthesize _shouldDismissWhenTappedOutside=__shouldDismissWhenTappedOutside;
 @property(nonatomic, setter=_setIndexOfLastUndimmedDetent:) long long _indexOfLastUndimmedDetent; // @synthesize _indexOfLastUndimmedDetent=__indexOfLastUndimmedDetent;
 @property(nonatomic, setter=_setIndexOfCurrentDetent:) long long _indexOfCurrentDetent; // @synthesize _indexOfCurrentDetent=__indexOfCurrentDetent;
+@property(nonatomic, getter=_isDismissible, setter=_setDismissible:) _Bool _dismissible; // @synthesize _dismissible=__dismissible;
 @property(nonatomic, getter=_isHosting, setter=_setHosting:) _Bool _hosting; // @synthesize _hosting=__hosting;
 @property(nonatomic, getter=_isReduceMotionEnabled, setter=_setReduceMotionEnabled:) _Bool _reduceMotionEnabled; // @synthesize _reduceMotionEnabled=__reduceMotionEnabled;
 @property(nonatomic, setter=_setShouldScaleDownBehindDescendants:) _Bool _shouldScaleDownBehindDescendants; // @synthesize _shouldScaleDownBehindDescendants=__shouldScaleDownBehindDescendants;
@@ -141,13 +167,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setKeyboardFrame:) struct CGRect _keyboardFrame; // @synthesize _keyboardFrame=__keyboardFrame;
 @property(nonatomic, setter=_setSourceFrame:) struct CGRect _sourceFrame; // @synthesize _sourceFrame=__sourceFrame;
 @property(nonatomic, setter=_setMode:) long long _mode; // @synthesize _mode=__mode;
+@property(nonatomic, setter=_setAdditionalMinimumTopInset:) double _additionalMinimumTopInset; // @synthesize _additionalMinimumTopInset=__additionalMinimumTopInset;
 @property(retain, nonatomic, setter=_setContainerTraitCollection:) UITraitCollection *_containerTraitCollection; // @synthesize _containerTraitCollection=__containerTraitCollection;
 @property(nonatomic, setter=_setContainerSafeAreaInsets:) struct UIEdgeInsets _containerSafeAreaInsets; // @synthesize _containerSafeAreaInsets=__containerSafeAreaInsets;
 @property(nonatomic, setter=_setContainerBounds:) struct CGRect _containerBounds; // @synthesize _containerBounds=__containerBounds;
 @property(retain, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property(retain, nonatomic) UIViewController *_presentedViewController; // @synthesize _presentedViewController=__presentedViewController;
-@property(retain, nonatomic) UIViewController *_presentingViewController; // @synthesize _presentingViewController=__presentingViewController;
-- (void).cxx_destruct;
+@property(nonatomic) __weak UIViewController *_presentingViewController; // @synthesize _presentingViewController=__presentingViewController;
 - (void)_layout;
 @property(readonly, nonatomic) NSArray *_dimmedPassthroughViews; // @synthesize _dimmedPassthroughViews=__dimmedPassthroughViews;
 @property(readonly, nonatomic) _Bool _shouldDimmingIgnoreTouches; // @synthesize _shouldDimmingIgnoreTouches=__shouldDimmingIgnoreTouches;
@@ -156,11 +182,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double _grabberAlpha; // @synthesize _grabberAlpha=__grabberAlpha;
 @property(readonly, nonatomic) double _alpha; // @synthesize _alpha=__alpha;
 @property(readonly, nonatomic) double _shadowOpacity; // @synthesize _shadowOpacity=__shadowOpacity;
+@property(readonly, nonatomic) double _magicShadowOpacity; // @synthesize _magicShadowOpacity=__magicShadowOpacity;
 @property(readonly, nonatomic) double _confinedPercentDimmed; // @synthesize _confinedPercentDimmed=__confinedPercentDimmed;
 @property(readonly, nonatomic) double _percentDimmed; // @synthesize _percentDimmed=__percentDimmed;
 @property(readonly, nonatomic) double _percentDimmedFromOffset; // @synthesize _percentDimmedFromOffset=__percentDimmedFromOffset;
 @property(readonly, nonatomic) struct CGAffineTransform _transform; // @synthesize _transform=__transform;
 @property(readonly, nonatomic) struct UIRectCornerRadii _cornerRadii; // @synthesize _cornerRadii=__cornerRadii;
+@property(readonly, nonatomic) struct UIEdgeInsets _touchInsets; // @synthesize _touchInsets=__touchInsets;
+@property(readonly, nonatomic) struct CGRect _hostedUntransformedFrame; // @synthesize _hostedUntransformedFrame=__hostedUntransformedFrame;
 @property(readonly, nonatomic) struct CGRect _untransformedFrame; // @synthesize _untransformedFrame=__untransformedFrame;
 @property(readonly, nonatomic) double _rubberBandExtentBeyondMaximumOffset; // @synthesize _rubberBandExtentBeyondMaximumOffset=__rubberBandExtentBeyondMaximumOffset;
 @property(readonly, nonatomic) double _rubberBandExtentBeyondMinimumOffset; // @synthesize _rubberBandExtentBeyondMinimumOffset=__rubberBandExtentBeyondMinimumOffset;
@@ -175,10 +204,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long _reversedIndexOfLastUndimmedDetent;
 @property(nonatomic, setter=_setReversedIndexOfCurrentDetent:) long long _reversedIndexOfCurrentDetent;
 @property(readonly, nonatomic) double _dismissOffset; // @synthesize _dismissOffset=__dismissOffset;
+@property(readonly, nonatomic) _Bool _stacksWithChild; // @synthesize _stacksWithChild=__stacksWithChild;
 @property(readonly, nonatomic) struct CGRect _stackAlignmentFrame; // @synthesize _stackAlignmentFrame=__stackAlignmentFrame;
 @property(readonly, nonatomic) struct CGRect _fullHeightUntransformedFrame; // @synthesize _fullHeightUntransformedFrame=__fullHeightUntransformedFrame;
 @property(readonly, nonatomic) struct CGRect _bottomAttachedUntransformedFrame; // @synthesize _bottomAttachedUntransformedFrame=__bottomAttachedUntransformedFrame;
 @property(readonly, nonatomic) struct CGRect _floatingUntransformedFrame; // @synthesize _floatingUntransformedFrame=__floatingUntransformedFrame;
+@property(readonly, nonatomic) struct CGRect _effectiveKeyboardFrame; // @synthesize _effectiveKeyboardFrame=__effectiveKeyboardFrame;
 @property(readonly, nonatomic) double _percentFullScreen; // @synthesize _percentFullScreen=__percentFullScreen;
 @property(readonly, nonatomic, getter=_isBottomAttached) _Bool _bottomAttached; // @synthesize _bottomAttached=__bottomAttached;
 @property(readonly, nonatomic) _Bool _scalesDownBehindDescendants;
@@ -186,6 +217,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGSize _preferredSize; // @synthesize _preferredSize=__preferredSize;
 @property(readonly, nonatomic) double _maximumWidth; // @synthesize _maximumWidth=__maximumWidth;
 @property(readonly, nonatomic) double _minimumTopInset; // @synthesize _minimumTopInset=__minimumTopInset;
+@property(readonly, nonatomic) double _systemMinimumTopInset; // @synthesize _systemMinimumTopInset=__systemMinimumTopInset;
 @property(retain, nonatomic, setter=_setDetents:) NSArray *_detents;
 - (void)_invalidatePreferredSize;
 - (id)init;

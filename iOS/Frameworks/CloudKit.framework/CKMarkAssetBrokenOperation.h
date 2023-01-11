@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordID, CKUploadRequestConfiguration, NSString;
+#import <CloudKit/CKMarkAssetBrokenOperationCallbacks-Protocol.h>
 
-@interface CKMarkAssetBrokenOperation
+@class CKMarkAssetBrokenOperationInfo, CKRecordID, CKUploadRequestConfiguration, NSString;
+@protocol CKMarkAssetBrokenOperationCallbacks;
+
+@interface CKMarkAssetBrokenOperation <CKMarkAssetBrokenOperationCallbacks>
 {
     _Bool _touchRepairZone;
     _Bool _bypassPCSEncryptionForTouchRepairZone;
@@ -20,6 +23,8 @@
     CKUploadRequestConfiguration *_uploadRequestConfiguration;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
 @property(retain, nonatomic) CKRecordID *repairRecordID; // @synthesize repairRecordID=_repairRecordID;
 @property(nonatomic) long long listIndex; // @synthesize listIndex=_listIndex;
@@ -29,9 +34,8 @@
 @property(nonatomic) _Bool simulateCorruptAsset; // @synthesize simulateCorruptAsset=_simulateCorruptAsset;
 @property(nonatomic) _Bool bypassPCSEncryptionForTouchRepairZone; // @synthesize bypassPCSEncryptionForTouchRepairZone=_bypassPCSEncryptionForTouchRepairZone;
 @property(nonatomic) _Bool touchRepairZone; // @synthesize touchRepairZone=_touchRepairZone;
-- (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleMarkAssetBrokenCompletionWithRepairRecordID:(id)arg1 error:(id)arg2;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
@@ -43,6 +47,10 @@
 - (id)initWithRecordID:(id)arg1 field:(id)arg2 listIndex:(long long)arg3;
 - (id)initWithRecordID:(id)arg1 field:(id)arg2;
 - (id)initWithNoRecord;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKMarkAssetBrokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKMarkAssetBrokenOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

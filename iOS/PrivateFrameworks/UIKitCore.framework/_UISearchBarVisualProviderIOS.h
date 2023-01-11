@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UISearchBarVisualProviding-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIDictationSearchButton, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UIView, UIVisualEffectView, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarAppearanceStorage, _UISearchBarLayout, _UISearchBarPromptContainerView, _UISearchBarScopeBarBackground, _UISearchBarScopeContainerView, _UISearchBarSearchContainerView, _UISearchBarTransitionerBase;
+@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIDictationSearchButton, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UITextField, UIView, UIVisualEffectView, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarAppearanceStorage, _UISearchBarLayout, _UISearchBarPromptContainerView, _UISearchBarScopeBarBackground, _UISearchBarScopeContainerView, _UISearchBarSearchContainerView, _UISearchBarTransitionerBase;
 @protocol _UINavigationBarTitleViewDataSource, _UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private;
 
 __attribute__((visibility("hidden")))
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
         unsigned int showsScopeBar:1;
         unsigned int showDictationButton:1;
         unsigned int allowedToShowDictationButton:1;
+        unsigned int dictationButtonSetupComplete:1;
     } _searchBarVisualProviderFlags;
     UIView<_UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private> *_delegate;
     UISearchBarTextField *_searchField;
@@ -81,6 +82,7 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _contentInsetPrivateMinOrOverride;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UISearchBarTransitionerBase *transitioner; // @synthesize transitioner=_transitioner;
 @property(retain, nonatomic) _UISearchBarLayout *prospectiveLayout; // @synthesize prospectiveLayout=_prospectiveLayout;
 @property(retain, nonatomic) _UISearchBarLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
@@ -112,7 +114,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UISearchBarBackground *searchBarBackground; // @synthesize searchBarBackground=_searchBarBackground;
 @property(retain, nonatomic) UISearchBarTextField *searchField; // @synthesize searchField=_searchField;
 @property(nonatomic) UIView<_UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private> *delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)setHelperPlaceholderHidden:(_Bool)arg1;
+- (void)setHelperPlaceholderOverride:(id)arg1;
+- (void)setHelperPlaceholder:(id)arg1;
 - (void)setUpSearchNavigationItem;
 @property(readonly, nonatomic) UINavigationItem *searchNavigationItem;
 @property(nonatomic) __weak id searchDisplayController;
@@ -122,6 +126,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImageView *shadowView;
 - (void)setBackgroundLayoutNeedsUpdate;
 - (void)updateBackgroundToBackdropStyle:(long long)arg1;
+@property(nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge;
+- (void)setLayoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback:(CDUnknownBlockType)arg1;
 - (void)setDelegateSearchFieldFrameManipulationBlock:(CDUnknownBlockType)arg1;
 - (void)layoutBackgroundViewConsideringTopBarStatusAndChangedHeight:(_Bool)arg1;
 - (_Bool)isAtTop;
@@ -183,10 +189,14 @@ __attribute__((visibility("hidden")))
 - (void)setUpCancelButton;
 - (void)setShowDictationButton:(_Bool)arg1 shouldUpdateView:(_Bool)arg2;
 - (_Bool)wantsDictationButton;
+- (void)updateForAllowedToShowDictationChange;
+- (_Bool)canShowDictationButton;
 - (void)setDisableDictationButton:(_Bool)arg1;
+- (void)cleanUpDictationMicsWithSearchField:(id)arg1;
 - (void)setUpDictationMicWithSearchField:(id)arg1;
 - (void)dictationButtonPressed:(id)arg1 withEvent:(id)arg2;
 - (void)dictationControllerDidFinish:(id)arg1;
+- (void)dictationAvailabilityDidChange:(id)arg1;
 - (void)updateSearchFieldArt;
 - (void)updateSearchBarOpacity;
 - (void)updateScopeBarForSelectedScope;
@@ -201,6 +211,12 @@ __attribute__((visibility("hidden")))
 - (void)updateMagnifyingGlassView;
 - (void)updateIfNecessaryForOldSize:(struct CGSize)arg1;
 - (void)updateForDrawsBackgroundInPalette;
+- (void)updateForSemanticContext;
+- (void)updateForDynamicType;
+- (void)updateDictationButtonForDynamicTypeWithSearchField:(id)arg1;
+- (void)updateSearchFieldControlSize;
+- (void)updateSearchFieldForDynamicType;
+- (_Bool)supportsDynamicType;
 - (void)applySearchBarStyle;
 - (id)effectiveBarTintColor;
 - (void)effectiveBarTintColorDidChange:(_Bool)arg1;
@@ -232,7 +248,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIBarButtonItem *cancelBarButtonItem; // @synthesize cancelBarButtonItem=_cancelBarButtonItem;
 - (id)leftButtonIfExists;
 @property(readonly, nonatomic) UINavigationButton *leftButton; // @synthesize leftButton=_leftButton;
-- (id)searchFieldIfExists;
+@property(readonly, nonatomic) UITextField *searchFieldIfExists;
 @property(copy, nonatomic) NSString *prompt;
 @property(nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 @property(nonatomic, getter=isHostedByNavigationBar) _Bool hostedByNavigationBar;

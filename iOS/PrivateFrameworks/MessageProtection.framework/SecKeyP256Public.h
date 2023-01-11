@@ -8,14 +8,17 @@
 
 #import <MessageProtection/P256PublicKeyProtocol-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SecKeyP256Public : NSObject <P256PublicKeyProtocol>
 {
     struct __SecKey *_publicKeyRef;
+    NSData *_serializedKey;
 }
 
+- (void).cxx_destruct;
+@property(retain) NSData *serializedKey; // @synthesize serializedKey=_serializedKey;
 @property struct __SecKey *publicKeyRef; // @synthesize publicKeyRef=_publicKeyRef;
 - (void)dealloc;
 - (_Bool)verifySignature:(id)arg1 data:(id)arg2;

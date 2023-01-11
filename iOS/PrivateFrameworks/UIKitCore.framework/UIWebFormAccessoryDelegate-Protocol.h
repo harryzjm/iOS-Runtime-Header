@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol UIWebFormAccessoryDelegate
+#import <UIKitCore/NSObject-Protocol.h>
+
+@protocol UIWebFormAccessoryDelegate <NSObject>
 - (void)accessoryClear;
 - (void)accessoryAutoFill;
 - (void)accessoryTab:(_Bool)arg1;

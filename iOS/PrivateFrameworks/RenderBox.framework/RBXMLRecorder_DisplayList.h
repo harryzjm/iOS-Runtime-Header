@@ -8,22 +8,21 @@ __attribute__((visibility("hidden")))
 @interface RBXMLRecorder_DisplayList
 {
     struct Tree _tree;
-    int _ignoreDrawing;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addColorMonochromeFilterWithAmount:(float)arg1 color:(CDStruct_0b1c536a)arg2 bias:(float)arg3;
-- (void)addGrayscaleFilterWithAmount:(float)arg1;
-- (void)addColorInvertFilter;
-- (void)addLuminanceToAlphaFilter;
-- (void)addContrastFilterWithAmount:(float)arg1;
-- (void)addBrightnessFilterWithAmount:(float)arg1;
-- (void)addSaturationFilterWithAmount:(float)arg1;
-- (void)addHueRotationFilterWithAngle:(double)arg1;
-- (void)addColorMultiplyFilterWithColor:(CDStruct_0b1c536a)arg1;
-- (void)addColorMatrixFilterWithArray:(float [20])arg1;
-- (void)addBlurFilterWithRadius:(double)arg1 opaque:(_Bool)arg2;
+- (void)addColorMonochromeFilterWithAmount:(float)arg1 color:(CDStruct_0b1c536a)arg2 bias:(float)arg3 colorSpace:(int)arg4;
+- (void)addGrayscaleFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
+- (void)addColorInvertFilterWithColorSpace:(int)arg1;
+- (void)addLuminanceToAlphaFilterWithColorSpace:(int)arg1;
+- (void)addContrastFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
+- (void)addBrightnessFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
+- (void)addSaturationFilterWithAmount:(float)arg1 colorSpace:(int)arg2;
+- (void)addHueRotationFilterWithAngle:(double)arg1 colorSpace:(int)arg2;
+- (void)addColorMultiplyFilterWithColor:(CDStruct_0b1c536a)arg1 colorSpace:(int)arg2;
+- (void)addColorMatrixFilterWithArray:(float [20])arg1 colorSpace:(int)arg2;
+- (void)addBlurFilterWithRadius:(double)arg1 colorSpace:(int)arg2 flags:(unsigned int)arg3;
 - (void)addProjectionStyleWithArray:(float [9])arg1;
 - (void)addShadowStyleWithRadius:(double)arg1 offset:(struct CGSize)arg2 color:(CDStruct_0b1c536a)arg3 mode:(int)arg4;
 - (void)drawDisplayList:(id)arg1;
@@ -36,9 +35,10 @@ __attribute__((visibility("hidden")))
 - (void)setCTM:(struct CGAffineTransform)arg1;
 - (void)clipLayerWithAlpha:(float)arg1 mode:(int)arg2;
 - (void)drawLayerWithAlpha:(float)arg1 blendMode:(int)arg2;
-- (void)beginLayerWithFlags:(unsigned int)arg1;
+- (void)beginLayerWithColorSpace:(int)arg1 flags:(unsigned int)arg2;
 - (void)restore;
 - (void)save;
+- (id)xmlDescription;
 
 @end
 

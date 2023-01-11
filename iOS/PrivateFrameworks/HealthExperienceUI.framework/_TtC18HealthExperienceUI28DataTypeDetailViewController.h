@@ -8,19 +8,19 @@
 
 @interface _TtC18HealthExperienceUI28DataTypeDetailViewController
 {
+    MISSING_TYPE *providedHealthToolbox;
+    MISSING_TYPE *providedHealthStore;
     MISSING_TYPE *chartContext;
     MISSING_TYPE *$__lazy_storage_$_personalizedFeedTrainer;
 }
 
 - (void).cxx_destruct;
-- (void)decodeRestorableStateWithCoder:(id)arg1;
-- (void)encodeRestorableStateWithCoder:(id)arg1;
+- (id)initWithCollectionViewLayout:(id)arg1;
+- (void)restoreUserActivityState:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithCollectionViewLayout:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

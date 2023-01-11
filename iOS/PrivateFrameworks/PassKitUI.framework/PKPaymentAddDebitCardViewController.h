@@ -6,24 +6,24 @@
 
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentSetupFlowControllerDataSource-Protocol.h>
 
-@class NSString, PKPaymentProvisioningController, UIImage;
+@class NSString, PKPeerPaymentSetupFlowController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentAddDebitCardViewController <PKExplanationViewDelegate, PKPaymentSetupDelegate>
+@interface PKPaymentAddDebitCardViewController <PKExplanationViewDelegate, PKPaymentSetupDelegate, PKPeerPaymentSetupFlowControllerDataSource>
 {
-    PKPaymentProvisioningController *_provisioningController;
-    id <PKPaymentSetupViewControllerDelegate> _delegate;
-    UIImage *_passSnapShot;
+    PKPeerPaymentSetupFlowController *_peerPaymentSetupFlowController;
+    id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
     _Bool _showDebitCardHeroView;
     NSString *_titleText;
     NSString *_bodyText;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showDebitCardHeroView; // @synthesize showDebitCardHeroView=_showDebitCardHeroView;
 @property(copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
 @property(copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
-- (void).cxx_destruct;
 - (void)_terminateSetupFlow;
 - (void)_handleNextStep;
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
@@ -33,8 +33,9 @@
 - (void)paymentSetupDidFinish:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
+- (_Bool)shouldPushTerms;
 - (void)viewDidLoad;
-- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 passSnapshot:(id)arg4;
+- (id)initWithPeerPaymentSetupFlowController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

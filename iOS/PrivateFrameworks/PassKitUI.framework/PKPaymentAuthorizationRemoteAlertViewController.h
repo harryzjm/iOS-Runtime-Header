@@ -7,16 +7,17 @@
 #import <SpringBoardUIServices/SBUIRemoteAlertServiceViewController.h>
 
 #import <PassKitUI/PKCompactNavigationContainerControllerDelegate-Protocol.h>
+#import <PassKitUI/PKLoadingViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationHostProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationServiceViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class LAUIHorizontalArrowView, LAUIPhysicalButtonView, NSString, NSXPCConnection, PKAssertion, PKCompactNavigationContainerController, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController, PKPeerPaymentAccount;
+@class NSString, NSXPCConnection, PKAssertion, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceCompactNavigationContainerController, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController, PKPeerPaymentAccount;
 @protocol BSInvalidatable;
 
-@interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming, PKPaymentSetupViewControllerDelegate>
+@interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming, PKPaymentSetupViewControllerDelegate, PKLoadingViewControllerDelegate>
 {
     _Bool _didDismiss;
     _Bool _didSendAuthorizationDidPresent;
@@ -30,15 +31,13 @@
     NSString *_hostLocalizedAppName;
     PKPaymentRequest *_paymentRequest;
     _Bool _paymentAuthorizationPresented;
-    PKCompactNavigationContainerController *_navigationContainer;
+    PKPaymentAuthorizationServiceCompactNavigationContainerController *_navigationContainer;
     PKPaymentAuthorizationServiceNavigationController *_navigationController;
-    _Bool _pearlViewsInserted;
-    LAUIPhysicalButtonView *_physicalButtonView;
-    LAUIHorizontalArrowView *_cameraArrowView;
     long long _coachingState;
     PKPaymentProvisioningController *_paymentProvisioningController;
     PKPaymentSetupNavigationController *_paymentSetupNavigationController;
     _Bool _paymentSetupWasRequired;
+    NSString *_applicationBindToken;
     PKPeerPaymentAccount *_peerPaymentAccount;
     _Bool _shouldAcquireLockButtonObserver;
     id <BSInvalidatable> _lockButtonObserver;
@@ -51,13 +50,13 @@
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isPerformingPaymentSetup; // @synthesize isPerformingPaymentSetup=_isPerformingPaymentSetup;
 @property(nonatomic) _Bool dismissAfterPaymentSetup; // @synthesize dismissAfterPaymentSetup=_dismissAfterPaymentSetup;
 @property(retain, nonatomic) PKPaymentRequest *paymentRequest; // @synthesize paymentRequest=_paymentRequest;
 @property(retain, nonatomic) NSXPCConnection *hostConnection; // @synthesize hostConnection=_hostConnection;
 @property(retain, nonatomic) PKInAppPaymentService *inAppPaymentService; // @synthesize inAppPaymentService=_inAppPaymentService;
 @property(retain, nonatomic) PKPaymentAuthorizationRemoteAlertViewControllerExportedObject *exportedObject; // @synthesize exportedObject=_exportedObject;
-- (void).cxx_destruct;
 - (void)_invalidateLockButtonObserver;
 - (void)dismissWithRemoteOrigination:(_Bool)arg1;
 - (void)_dismiss;
@@ -72,23 +71,30 @@
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;
 - (void)authorizationDidAuthorizePurchase:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
+- (void)authorizationDidAuthorizeContext;
 - (void)authorizationDidFinishWithError:(id)arg1;
 - (void)authorizationDidRequestMerchantSession;
 - (void)authorizationWillStart;
 - (void)authorizationViewController:(id)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)authorizationViewControllerDidChangeCoachingState:(id)arg1;
-- (void)authorizationViewControllerDidChangeUserIntentRequirement:(id)arg1;
+- (void)authorizationViewControllerDidChangePhysicalButtonState:(id)arg1;
 - (void)compactNavigationContainerControllerReceivedExternalTap:(id)arg1;
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
+- (void)_bindFeatureApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)viewController:(id)arg1 canProceedWithInstallment:(_Bool)arg2 featureApplication:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
+- (void)loadingViewControllerDidCancel:(id)arg1;
 - (void)consumeDoublePressUpForButtonKind:(long long)arg1;
 - (void)consumeSinglePressUpForButtonKind:(long long)arg1;
 - (void)handleButtonActions:(id)arg1;
 - (_Bool)_shouldBlockHardwareCancels;
 - (void)sendAuthorizationDidPresentIfNecessary;
 - (void)_updatePearlViews;
+- (void)_updatePhysicalButtonViews;
+- (void)_presentEnrollAccessibilityIntentAlert;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 actionTitle:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5 finalError:(id)arg6;
 - (void)_presentInvalidAlert;
 - (void)_presentPassNotSupportedAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentAddCardAlert;
@@ -96,9 +102,10 @@
 - (void)_presentLostModeAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentVerifyPassAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentActivatingPassAlertWithRelevantUniqueID:(id)arg1;
-- (void)_presentPaymentAuthorization;
+- (void)_presentPaymentAuthorizationWithRelevantUniqueID:(id)arg1;
 - (_Bool)_peerPaymentIdentityVerificationRequired;
 - (void)_presentPeerPaymentIdentityVerification;
+- (void)_presentApplyForFeature:(unsigned long long)arg1;
 - (void)_presentPaymentSetup;
 - (void)_handlePaymentRequestPresentationResultType:(long long)arg1 relevantUniqueID:(id)arg2 firstAttempt:(_Bool)arg3;
 - (void)_canPresentPaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -110,7 +117,6 @@
 - (_Bool)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didInvalidateForRemoteAlert;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

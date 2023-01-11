@@ -25,25 +25,28 @@
 }
 
 + (id)_globalAudioSessionLock;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool supportsRoutePrediction; // @synthesize supportsRoutePrediction=_supportsRoutePrediction;
 @property(retain, nonatomic) NSString *initiator; // @synthesize initiator=_initiator;
 @property(retain, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property(nonatomic) _Bool supportsMultipleSelection; // @synthesize supportsMultipleSelection=_supportsMultipleSelection;
 @property(retain, nonatomic) MPMRAVOutputContextWrapper *applicationOutputContext; // @synthesize applicationOutputContext=_applicationOutputContext;
-- (void).cxx_destruct;
 - (void)_setShouldSourceOutputDevicesFromAVODDS:(_Bool)arg1;
 - (id)_outputDeviceRouteWithUID:(id)arg1;
 - (void)_outputDevicesDidChange:(id)arg1;
 - (void)_unregisterNotifications;
 - (void)_registerNotifications;
+- (id)outputDevicesForRoutes:(id)arg1;
 - (void)_routeStatusDidChangeNotification:(id)arg1;
 - (void)_outputDevicesDidChangeNotification:(id)arg1;
 - (void)_endpointsDidChangeNotification:(id)arg1;
 - (_Bool)routeIsLeaderOfEndpoint:(id)arg1;
+- (void)removeRoutesFromGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeRouteFromGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addRoutesToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addRouteToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)getRoutesForCategory:(id)arg1;
 - (_Bool)devicePresenceDetected;
 - (void)setDiscoveryMode:(long long)arg1;
 - (long long)discoveryMode;

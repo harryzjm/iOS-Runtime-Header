@@ -28,6 +28,7 @@
     NSDateFormatter *_oldDateFormatter;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDateFormatter *oldDateFormatter; // @synthesize oldDateFormatter=_oldDateFormatter;
 @property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 @property(readonly, nonatomic) NSMutableDictionary *statementsBySQL; // @synthesize statementsBySQL=_statementsBySQL;
@@ -43,7 +44,6 @@
 @property(readonly, nonatomic) NSString *schema; // @synthesize schema=_schema;
 @property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
 @property(retain, nonatomic) id <SFSQLiteDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (int)autoVacuumSetting;
 - (int)dbUserVersion;
 - (id)_tableNameForClass:(Class)arg1;
@@ -69,7 +69,7 @@
 - (id)allTableNames;
 - (void)removeAllStatements;
 - (id)statementForSQL:(id)arg1;
-- (_Bool)executeSQL:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
+- (_Bool)executeSQL:(id)arg1 arguments:(char *)arg2;
 - (_Bool)executeSQL:(id)arg1;
 - (int)changes;
 - (long long)lastInsertRowID;

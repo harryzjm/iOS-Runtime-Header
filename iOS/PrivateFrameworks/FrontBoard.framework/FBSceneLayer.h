@@ -9,7 +9,7 @@
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/NSCopying-Protocol.h>
 
-@class NSString;
+@class FBSSceneIdentityToken, NSString;
 
 @interface FBSceneLayer : NSObject <BSDescriptionProviding, NSCopying>
 {
@@ -18,27 +18,33 @@
     long long _alignment;
     unsigned int _contextID;
     NSString *_externalSceneID;
+    FBSSceneIdentityToken *_proxiedKeyboardOwner;
     unsigned int _sceneID;
 }
 
 + (id)layerWithFBSSceneLayer:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int sceneID; // @synthesize sceneID=_sceneID;
+@property(readonly, copy, nonatomic) FBSSceneIdentityToken *proxiedKeyboardOwner; // @synthesize proxiedKeyboardOwner=_proxiedKeyboardOwner;
 @property(copy, nonatomic) NSString *externalSceneID; // @synthesize externalSceneID=_externalSceneID;
 @property(nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property(nonatomic) double level; // @synthesize level=_level;
 @property(readonly, nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) _Bool isKeyboardProxyLayer;
+@property(readonly, nonatomic) _Bool isKeyboardLayer;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithContextID:(unsigned int)arg1;
 - (id)initWithExternalSceneID:(id)arg1;
+- (id)initAsKeyboardProxyWithOwner:(id)arg1;
+- (id)initAsKeyboard;
 - (id)init;
 
 // Remaining properties

@@ -4,22 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKOccurrenceCacheSearch, NSMutableArray;
+@class EKOccurrenceCacheSearch, EKSpotlightSearch, NSArray, NSMutableDictionary, NSString;
 
 @interface OccurrenceCacheSearchDataSource
 {
-    EKOccurrenceCacheSearch *_search;
-    NSMutableArray *_processingCachedDays;
+    EKSpotlightSearch *_narrowSearch;
+    EKSpotlightSearch *_distantFutureSearch;
+    EKSpotlightSearch *_distantPastSearch;
+    EKOccurrenceCacheSearch *_legacySearch;
+    NSString *_searchTerm;
+    NSMutableDictionary *_processingCachedDays;
     struct _opaque_pthread_mutex_t {
         long long __sig;
         char __opaque[56];
     } _resultsLock;
+    NSArray *_sortedDays;
+    int _searchSeed;
 }
 
 - (void).cxx_destruct;
 - (id)_cachedDays;
 - (void)stopSearching;
 - (void)searchWithTerm:(id)arg1;
+- (void)_updateCachedDays;
 - (void)_setCachedDaysAndNotify:(id)arg1;
 - (long long)countOfOccurrencesAtDayIndex:(long long)arg1;
 - (void)invalidateCachedOccurrences;

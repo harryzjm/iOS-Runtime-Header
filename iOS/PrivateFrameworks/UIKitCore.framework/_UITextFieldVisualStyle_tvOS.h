@@ -4,8 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/_UITextFieldEditingProcessorDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UITextFieldVisualStyle_tvOS
+@interface _UITextFieldVisualStyle_tvOS <_UITextFieldEditingProcessorDelegate>
 {
 }
 
@@ -18,8 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)_defaultTextColorDarkKeyboard;
 - (id)_defaultTextColorLightKeyboard;
 - (id)_defaultTextColorForUserInterfaceStyle;
-- (id)overridingEditingAttributes:(id)arg1 forOriginalAttributes:(id)arg2;
-- (id)namesOfAttributesToOverrideForEditing;
+- (id)editingProcessorOverridingEditingAttributes:(id)arg1;
 - (_Bool)textShouldUseVibrancy;
 - (void)handleTextVibrancy;
 - (id)parentViewForTextContentView;
@@ -27,6 +30,12 @@ __attribute__((visibility("hidden")))
 - (id)defaultFocusedTextColor;
 - (id)defaultTextColorForKeyboardAppearance;
 - (id)defaultTextColor;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -14,19 +14,18 @@
 
 @interface _INPBRecurrenceValue : PBCodable <_INPBRecurrenceValue, NSSecureCoding, NSCopying>
 {
+    CDStruct_95bda58d _weeklyRecurrenceDays;
     struct {
         unsigned int frequency:1;
         unsigned int interval:1;
         unsigned int ordinal:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     int _frequency;
     unsigned long long _interval;
     long long _ordinal;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) long long ordinal; // @synthesize ordinal=_ordinal;
 @property(nonatomic) unsigned long long interval; // @synthesize interval=_interval;
 @property(nonatomic) int frequency; // @synthesize frequency=_frequency;
@@ -36,8 +35,17 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)dealloc;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+- (int)StringAsWeeklyRecurrenceDays:(id)arg1;
+- (id)weeklyRecurrenceDaysAsString:(int)arg1;
+- (int)weeklyRecurrenceDaysAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long weeklyRecurrenceDaysCount;
+- (void)addWeeklyRecurrenceDays:(int)arg1;
+- (void)clearWeeklyRecurrenceDays;
+@property(readonly, nonatomic) int *weeklyRecurrenceDays;
+- (void)setWeeklyRecurrenceDays:(int *)arg1 count:(unsigned long long)arg2;
 @property(nonatomic) _Bool hasOrdinal;
 @property(nonatomic) _Bool hasInterval;
 - (int)StringAsFrequency:(id)arg1;

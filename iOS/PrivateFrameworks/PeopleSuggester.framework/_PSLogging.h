@@ -11,11 +11,14 @@
 }
 
 + (id)suggestionSignpost;
++ (id)contactEmbeddingChannel;
 + (id)shareExtensionChannel;
 + (id)feedbackChannel;
 + (id)knnChannel;
 + (id)coreBehaviorChannel;
 + (id)heuristicsChannel;
++ (id)familyRecommenderChannel;
++ (id)messagePinningChannel;
 + (id)generalChannel;
 
 @end

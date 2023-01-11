@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _tappedDownloadBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType tappedDownloadBlock; // @synthesize tappedDownloadBlock=_tappedDownloadBlock;
 @property(nonatomic, getter=isDownloading) _Bool downloading; // @synthesize downloading=_downloading;
 @property(readonly, nonatomic) UIProgressView *progressView; // @synthesize progressView=_progressView;
 @property(readonly, nonatomic) UIButton *downloadButton; // @synthesize downloadButton=_downloadButton;
-- (void).cxx_destruct;
 - (id)viewForLastBaselineLayout;
 - (void)_tappedDownloadButton:(id)arg1;
 - (id)initWithTappedDownloadBlock:(CDUnknownBlockType)arg1;

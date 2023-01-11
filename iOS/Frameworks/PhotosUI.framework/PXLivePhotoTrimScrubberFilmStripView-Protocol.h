@@ -9,12 +9,14 @@
 @class AVAsset, AVVideoComposition, UIImage;
 
 @protocol PXLivePhotoTrimScrubberFilmStripView <NSObject>
-@property(copy, nonatomic) AVVideoComposition *videoComposition;
-@property(copy, nonatomic) AVAsset *asset;
+@property(readonly, nonatomic) AVVideoComposition *videoComposition;
+@property(readonly, nonatomic) AVAsset *asset;
 @property(nonatomic) struct CGRect visibleRect;
 - (void)setLivePhotoTrimScrubberThumbnail:(UIImage *)arg1;
+- (void)setAsset:(AVAsset *)arg1 videoComposition:(AVVideoComposition *)arg2;
 
 @optional
+@property(nonatomic) __weak id thumbnailUpdatingDelegate;
 @property(nonatomic) _Bool useContentAspectRatio;
 @end
 

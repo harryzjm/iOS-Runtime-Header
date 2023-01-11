@@ -21,8 +21,8 @@
 + (id)nullGPUMask;
 + (id)allSizeClassesMask;
 + (id)nullWidthNullHeightMask;
-@property(readonly) Class slotClass; // @synthesize slotClass=_slotClass;
 - (void).cxx_destruct;
+@property(readonly) Class slotClass; // @synthesize slotClass=_slotClass;
 - (void)ibic_generateAttributes:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (id)descriptionWithIndent:(long long)arg1;
@@ -30,7 +30,7 @@
 - (id)filterByIntersectingWithFilter:(id)arg1;
 - (id)filterByUnioningWithFilter:(id)arg1;
 - (_Bool)_continueEnumeratingUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateMatchingSlotsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMatchingSlotsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (_Bool)matchesRep:(id)arg1;
 - (_Bool)matchesSlot:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

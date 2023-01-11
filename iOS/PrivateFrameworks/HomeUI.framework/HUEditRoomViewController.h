@@ -27,6 +27,7 @@
     UIBarButtonItem *_savedButtonBarItem;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIBarButtonItem *savedButtonBarItem; // @synthesize savedButtonBarItem=_savedButtonBarItem;
 @property(nonatomic) __weak HUEditableTextCell *nameCell; // @synthesize nameCell=_nameCell;
 @property(nonatomic) __weak HUEditRoomItemManager *roomItemManager; // @synthesize roomItemManager=_roomItemManager;
@@ -35,7 +36,6 @@
 @property(readonly, nonatomic) __weak id <HUEditRoomViewControllerAddRoomDelegate> addRoomDelegate; // @synthesize addRoomDelegate=_addRoomDelegate;
 @property(readonly, nonatomic) __weak id <HUEditRoomViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property(readonly, nonatomic) HFRoomBuilder *roomBuilder; // @synthesize roomBuilder=_roomBuilder;
-- (void).cxx_destruct;
 - (id)_allTextFields;
 - (void)_resignTextFieldFirstResponder;
 - (void)updateWallpaper:(id)arg1 image:(id)arg2;
@@ -46,7 +46,6 @@
 - (void)wallpaperPicker:(id)arg1 didSelectWallpaper:(id)arg2 withImage:(id)arg3;
 - (void)wallpaperPicker:(id)arg1 didReceiveDroppedImage:(id)arg2;
 - (void)wallpaperThumbnailCell:(id)arg1 didReceiveDroppedImage:(id)arg2;
-- (void)wallpaperPickerDidCancel:(id)arg1;
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (_Bool)textFieldShouldReturn:(id)arg1;

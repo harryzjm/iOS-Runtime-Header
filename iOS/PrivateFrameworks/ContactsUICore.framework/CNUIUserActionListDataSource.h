@@ -8,37 +8,46 @@
 
 #import <ContactsUICore/CNUIUserActionListDataSource-Protocol.h>
 
-@class CNContact, CNUIUserActionDisambiguationModeler, CNUIUserActionListModelCache, NSString;
-@protocol CNSchedulerProvider;
+@class CNUIUserActionDisambiguationModeler, CNUIUserActionListModelCache, NSString;
+@protocol CNScheduler, CNSchedulerProvider;
 
 @interface CNUIUserActionListDataSource : NSObject <CNUIUserActionListDataSource>
 {
+    unsigned long long _cacheCapacity;
+    double _cacheEntryRefreshAge;
+    double _cacheEntryExpirationAge;
     _Bool _tracksChanges;
     id <CNSchedulerProvider> _schedulerProvider;
-    CNContact *_contact;
+    id <CNScheduler> _resolutionScheduler;
     CNUIUserActionListModelCache *_models;
     CNUIUserActionDisambiguationModeler *_modeler;
 }
 
++ (_Bool)isSupportedActionType:(id)arg1;
 + (id)displayNameForDisambiguationForActionType:(id)arg1;
 + (id)displayNameForButtonForActionType:(id)arg1;
 + (id)allSupportedActionTypesWithCapabilities:(id)arg1;
 + (id)allSupportedActionTypes;
 + (id)allActionTypes;
++ (id)makeCacheWithCapacity:(unsigned long long)arg1 expirationAge:(double)arg2 timeProvider:(id)arg3;
 + (id)descriptorForRequiredKeys;
++ (id)os_log;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNUIUserActionDisambiguationModeler *modeler; // @synthesize modeler=_modeler;
 @property(retain, nonatomic) CNUIUserActionListModelCache *models; // @synthesize models=_models;
-@property(copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(nonatomic) _Bool tracksChanges; // @synthesize tracksChanges=_tracksChanges;
+@property(readonly, nonatomic) id <CNScheduler> resolutionScheduler; // @synthesize resolutionScheduler=_resolutionScheduler;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
-- (void).cxx_destruct;
-- (id)thirdPartyActionsForCurrentContactAndPropertyKey:(id)arg1 identifier:(id)arg2;
+- (id)thirdPartyActionsForContact:(id)arg1 propertyKey:(id)arg2 identifier:(id)arg3;
 - (id)thirdPartyActionsForContactProperty:(id)arg1;
 - (id)thirdPartyTargetsForActionTypes:(id)arg1;
-- (id)makeModelObservableForActionType:(id)arg1;
-- (id)modelsForActionType:(id)arg1;
-- (id)consumer:(id)arg1 actionModelsForActionType:(id)arg2;
-- (id)consumer:(id)arg1 actionModelsForActionType:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)makeModelObservableForContact:(id)arg1 actionType:(id)arg2;
+- (void)refreshEntry:(id)arg1 contact:(id)arg2 actionType:(id)arg3;
+- (void)performFirstResolutionForEntry:(id)arg1 contact:(id)arg2 actionType:(id)arg3;
+- (id)modelsForContact:(id)arg1 actionType:(id)arg2;
+- (id)consumer:(id)arg1 actionModelsForContact:(id)arg2 actionType:(id)arg3;
+- (id)consumer:(id)arg1 actionModelsForContact:(id)arg2 actionType:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)consumer:(id)arg1 currentActionModelForContact:(id)arg2 actionType:(id)arg3;
 - (_Bool)shouldUseLabelForButtonWithDefaultAction:(id)arg1;
 - (id)consumer:(id)arg1 localizedDisplayNameForButtonWithDefaultAction:(id)arg2 actionType:(id)arg3;
 - (id)consumer:(id)arg1 localizedButtonDisplayNameForActionType:(id)arg2;
@@ -46,12 +55,15 @@
 - (id)consumer:(id)arg1 imageForActionType:(id)arg2;
 - (id)actionTypesForConsumer:(id)arg1;
 - (void)setContactStore:(id)arg1;
+- (void)makeCacheAndTransferContents;
+- (void)setCacheEntryExpirationAge:(double)arg1;
+- (void)setCacheEntryRefreshAge:(double)arg1;
+- (void)setCacheCapacity:(unsigned long long)arg1;
 - (void)dealloc;
+- (id)makeCacheWithCurrentSettings;
 - (id)initWithDiscoveringEnvironment:(id)arg1;
 - (id)initWithSchedulerProvider:(id)arg1 idsAvailabilityProvider:(id)arg2;
 - (id)initWithSchedulerProvider:(id)arg1;
-- (id)initWithContact:(id)arg1 schedulerProvider:(id)arg2;
-- (id)initWithContact:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

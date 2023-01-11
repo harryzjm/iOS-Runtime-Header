@@ -7,7 +7,9 @@
 #import <Foundation/NSUUID.h>
 
 @interface NSUUID (MSVBase64)
++ (id)msv_UUIDWithData:(id)arg1;
 + (id)uuidWithMSVBase64UUID:(id)arg1;
+- (id)msv_UUIDData;
 - (id)MSVBase64UUIDString;
 - (id)initWithMSVBase64UUIDString:(id)arg1;
 @end

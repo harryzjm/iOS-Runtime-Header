@@ -8,13 +8,14 @@
 
 @class MPVolumeView;
 
+__attribute__((visibility("hidden")))
 @interface MPVolumeViewController : UIViewController
 {
     MPVolumeView *_volumeView;
 }
 
-@property(readonly, nonatomic) MPVolumeView *volumeView; // @synthesize volumeView=_volumeView;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MPVolumeView *volumeView; // @synthesize volumeView=_volumeView;
 - (struct CGSize)preferredContentSize;
 - (void)viewDidLoad;
 - (id)init;

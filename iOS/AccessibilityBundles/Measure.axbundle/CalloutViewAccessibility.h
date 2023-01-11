@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface CalloutViewAccessibility
 {
 }
@@ -16,14 +18,14 @@
 - (_Bool)_axIsActuallyVisible;
 - (void)_axSetIsActuallyVisible:(_Bool)arg1;
 - (void)_axSetIsNotActuallyVisible;
-- (void)updateText:(long long)arg1;
 - (void)_axSetInternalIsActuallyVisible:(_Bool)arg1;
 - (_Bool)_axInternalIsActuallyVisible;
-- (id)_axCalloutText;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)axDidUpdateFromPreviousCalloutText:(id)arg1;
+@property(readonly, nonatomic) NSString *axCalloutText;
 
 @end
 

@@ -10,7 +10,11 @@
 {
 }
 
-+ (void)exportAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)setConversionTimers:(id)arg1;
++ (id)conversionTimers;
++ (id)jpegRepresentationForImageData:(id)arg1 inputContentType:(id)arg2;
++ (int)exportAsset:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)log;
 
 @end
 

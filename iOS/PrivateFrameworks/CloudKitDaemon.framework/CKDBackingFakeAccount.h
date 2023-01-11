@@ -4,54 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class ACAccount;
 
 __attribute__((visibility("hidden")))
 @interface CKDBackingFakeAccount
 {
-    NSString *_dsid;
-    NSString *_altDsid;
-    NSString *_identifier;
-    NSString *_primaryEmail;
-    NSString *_password;
-    NSDictionary *_accountBag;
-    NSDictionary *_propertyOverrides;
-    NSObject<OS_dispatch_queue> *_fakeAccountInfoQueue;
-    NSDictionary *_overridesByDataclass;
+    ACAccount *_fakeCKAccount;
 }
 
-+ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
-+ (Class)_platformBackingAccountClass;
-@property(retain, nonatomic) NSDictionary *overridesByDataclass; // @synthesize overridesByDataclass=_overridesByDataclass;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *fakeAccountInfoQueue; // @synthesize fakeAccountInfoQueue=_fakeAccountInfoQueue;
-@property(retain, nonatomic) NSDictionary *propertyOverrides; // @synthesize propertyOverrides=_propertyOverrides;
-@property(retain, nonatomic) NSDictionary *accountBag; // @synthesize accountBag=_accountBag;
-@property(retain, nonatomic) NSString *password; // @synthesize password=_password;
-@property(retain, nonatomic) NSString *primaryEmail; // @synthesize primaryEmail=_primaryEmail;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) NSString *altDsid; // @synthesize altDsid=_altDsid;
-@property(retain, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
++ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
++ (void)_setUpFakeAccountShenanigans;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ACAccount *fakeCKAccount; // @synthesize fakeCKAccount=_fakeCKAccount;
 - (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)accountPropertiesForDataclass:(id)arg1;
-- (id)personaIdentifier;
-- (_Bool)iCloudDriveAllowsCellularAccess;
-- (_Bool)isFakeAccount;
-- (_Bool)isDataclassEnabled:(id)arg1;
-- (_Bool)isPrimaryEmailVerified;
+- (id)password;
 - (id)iCloudAuthTokenWithError:(id *)arg1;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
-- (id)displayedHostname;
-- (id)fullName;
-- (id)username;
 - (id)ckAccount;
-- (id)objectForKeyedSubscript:(id)arg1;
-- (void)dealloc;
-- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2;
+- (void)_setOverridesOnVettingContext:(id)arg1;
+- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)isFakeAccount;
+- (_Bool)isDataclassEnabled:(id)arg1;
+- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3;
+- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
 - (void)_checkAndLogIfAccountError;
 
 @end

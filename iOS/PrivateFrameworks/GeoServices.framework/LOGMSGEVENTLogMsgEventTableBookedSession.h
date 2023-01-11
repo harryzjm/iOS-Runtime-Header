@@ -13,14 +13,15 @@
 @interface LOGMSGEVENTLogMsgEventTableBookedSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_bookedTableSessionId;
     NSMutableArray *_bookedTables;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_bookedTableSessionId:1;
         unsigned int read_bookedTables:1;
-        unsigned int wrote_bookedTableSessionId:1;
-        unsigned int wrote_bookedTables:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -35,18 +36,20 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)bookedTableAtIndex:(unsigned long long)arg1;
 - (unsigned long long)bookedTablesCount;
-- (void)_addNoFlagsBookedTable:(id)arg1;
 - (void)addBookedTable:(id)arg1;
 - (void)clearBookedTables;
 @property(retain, nonatomic) NSMutableArray *bookedTables;
-- (void)_readBookedTables;
 @property(retain, nonatomic) NSString *bookedTableSessionId;
 @property(readonly, nonatomic) _Bool hasBookedTableSessionId;
-- (void)_readBookedTableSessionId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

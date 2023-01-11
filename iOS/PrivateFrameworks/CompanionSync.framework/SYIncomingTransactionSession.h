@@ -14,16 +14,16 @@
     CDUnknownBlockType _completion;
     _Bool canRestart;
     _Bool canRollback;
-    long long state;
+    unsigned int state;
 }
 
+- (void).cxx_destruct;
 - (void)setCanRollback:(_Bool)arg1;
 - (_Bool)canRollback;
 - (void)setCanRestart:(_Bool)arg1;
 - (_Bool)canRestart;
-- (void)setState:(long long)arg1;
-- (long long)state;
-- (void).cxx_destruct;
+- (void)setState:(unsigned int)arg1;
+- (unsigned int)state;
 - (void)didCompleteSession;
 - (void)cancelWithError:(id)arg1;
 - (void)start:(CDUnknownBlockType)arg1;

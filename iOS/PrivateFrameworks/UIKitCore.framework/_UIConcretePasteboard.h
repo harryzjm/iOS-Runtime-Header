@@ -12,6 +12,9 @@ __attribute__((visibility("hidden")))
     NSString *_name;
 }
 
++ (void)_asynchronouslyEnumerateItemSet:(id)arg1 itemsCompletionHandler:(CDUnknownBlockType)arg2 usingItemBlock:(CDUnknownBlockType)arg3;
++ (void)_detectValuesForPatterns:(id)arg1 atIndex:(unsigned long long)arg2 itemCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (void)_detectPatternsForPatterns:(id)arg1 atIndex:(unsigned long long)arg2 itemCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)_pasteboardWithUniqueName;
 + (id)_pasteboardWithName:(id)arg1 create:(_Bool)arg2;
 + (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
@@ -21,8 +24,14 @@ __attribute__((visibility("hidden")))
 + (id)pasteboardWithName:(id)arg1 create:(_Bool)arg2;
 + (id)generalPasteboard;
 + (id)_pasteboardNamed:(id)arg1 createIfNotFound:(_Bool)arg2;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (void)detectValuesForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectValuesForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)detectPatternsForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectPatternsForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_detectedPasteboardTypeStringsForTypes:(id)arg1;
+- (id)_detectedPasteboardTypesForTypes:(id)arg1;
 - (_Bool)hasColors;
 - (_Bool)hasImages;
 - (_Bool)hasURLs;
@@ -66,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfItems;
 - (_Bool)canInstantiateObjectsOfClass:(Class)arg1;
 - (id)itemProvidersForInstantiatingObjectsOfClass:(Class)arg1;
+- (id)itemProvidersWithRetryBehavior:(_Bool)arg1;
 - (id)itemProviders;
 - (id)availableTypes;
 - (void)setObjects:(id)arg1 localOnly:(_Bool)arg2 expirationDate:(id)arg3;

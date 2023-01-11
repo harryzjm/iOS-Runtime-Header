@@ -6,34 +6,34 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthRecordsUI/WDUserActivityResponder-Protocol.h>
+#import <HealthRecordsUI/HRWDUserActivityResponder-Protocol.h>
 
-@class HKClinicalProvider, HKClinicalProviderSearchResult, HRProfile, HRWDSpinnerView, NSArray, NSString;
+@class HKClinicalProvider, HKClinicalProviderSearchResult, HRProfile, HRWDSpinnerView, NSArray, NSCache, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WDClinicalProviderDetailsViewController : HKTableViewController <WDUserActivityResponder>
+@interface WDClinicalProviderDetailsViewController : HKTableViewController <HRWDUserActivityResponder>
 {
     HRProfile *_profile;
     HKClinicalProviderSearchResult *_searchResult;
     long long _fetchesInFlight;
     HKClinicalProvider *_provider;
+    NSCache *_providerCache;
     NSArray *_connectedGateways;
     NSArray *_unconnectedGateways;
     NSArray *_sections;
     HRWDSpinnerView *_spinnerView;
 }
 
-+ (id)providerCache;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HRWDSpinnerView *spinnerView; // @synthesize spinnerView=_spinnerView;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) NSArray *unconnectedGateways; // @synthesize unconnectedGateways=_unconnectedGateways;
 @property(retain, nonatomic) NSArray *connectedGateways; // @synthesize connectedGateways=_connectedGateways;
+@property(retain, nonatomic) NSCache *providerCache; // @synthesize providerCache=_providerCache;
 @property(retain, nonatomic) HKClinicalProvider *provider; // @synthesize provider=_provider;
 @property(nonatomic) long long fetchesInFlight; // @synthesize fetchesInFlight=_fetchesInFlight;
 @property(retain, nonatomic) HKClinicalProviderSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property(retain, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
-- (void)_postAWDMetricForStartingSafariSession;
 - (id)applyTransitionActivity:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;
 - (_Bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;

@@ -6,21 +6,29 @@
 
 #import <objc/NSObject.h>
 
+#import <FamilyCircle/NSCopying-Protocol.h>
 #import <FamilyCircle/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString;
+@class CNContact, NSDate, NSDictionary, NSNumber, NSString;
 
-@interface FAFamilyMember : NSObject <NSSecureCoding>
+@interface FAFamilyMember : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_dictionary;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
+- (_Bool)_nilEqualProperty:(id)arg1 with:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToFamilyMember:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+@property(readonly, nonatomic) CNContact *contact;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchFamilyPhotoWithRequestedSize:(unsigned long long)arg1 fallbackToLocalAddressBook:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, copy, nonatomic) NSString *iTunesNotLinkedMessage;
 @property(readonly, nonatomic) _Bool hasLinkediTunesAccount;
 @property(readonly, copy, nonatomic) NSString *iTunesAccountUsername;
 @property(readonly, nonatomic) NSNumber *iTunesAccountDSID;
@@ -31,7 +39,10 @@
 @property(readonly, nonatomic) _Bool isChildAccount;
 @property(readonly, copy, nonatomic) NSString *inviteEmail;
 @property(readonly, copy, nonatomic) NSString *statusString;
+- (id)_dateWithEpochString:(id)arg1;
+@property(readonly, copy, nonatomic) NSDate *invitationDate;
 @property(readonly, copy, nonatomic) NSDate *joinedDate;
+@property(readonly, copy, nonatomic) NSNumber *memberSortOrder;
 @property(readonly, nonatomic) long long memberType;
 @property(readonly, copy, nonatomic) NSString *memberTypeString;
 @property(readonly, copy, nonatomic) NSString *memberTypeDisplayString;

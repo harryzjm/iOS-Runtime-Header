@@ -6,6 +6,7 @@
 
 @class MPMediaLibraryView, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPStoreLibraryMappingRequestOperation
 {
     MPMediaLibraryView *_libraryView;
@@ -15,11 +16,11 @@
 }
 
 + (_Bool)supportsModelClass:(Class)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) NSArray *identifierSets; // @synthesize identifierSets=_identifierSets;
 @property(nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
 @property(copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
-- (void).cxx_destruct;
 - (void)execute;
 
 @end

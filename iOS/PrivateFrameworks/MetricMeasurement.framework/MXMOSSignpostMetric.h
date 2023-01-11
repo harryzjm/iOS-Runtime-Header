@@ -10,11 +10,15 @@
 {
     NSDate *_startDate;
     NSDate *_stopDate;
+    unsigned long long _startMachContTime;
+    unsigned long long _stopMachContTime;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)didStopAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 stopDate:(id)arg3;
 - (void)didStopAtTime:(unsigned long long)arg1 stopDate:(id)arg2;
+- (void)didStartAtContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 startDate:(id)arg3;
 - (void)didStartAtTime:(unsigned long long)arg1 startDate:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

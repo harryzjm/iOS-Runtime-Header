@@ -16,6 +16,7 @@
 - (void)_start;
 - (id)initWithProductIdentifiers:(id)arg1;
 - (id)init;
+- (void)_startWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(nonatomic) __weak id <SKProductsRequestDelegate> delegate; // @dynamic delegate;

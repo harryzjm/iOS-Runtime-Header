@@ -11,13 +11,15 @@
 @interface DMMigrationPluginWrapperConnection : NSObject
 {
     DMXPCConnection *_connection;
+    _Bool _didReceivePid;
 }
 
 + (id)connection;
 - (void).cxx_destruct;
 - (void)handleMessage:(id)arg1;
-- (void)runPluginAtPath:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)runPluginAtPath:(id)arg1 withParameters:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (int)pid;
+@property(readonly, nonatomic) _Bool didReceivePid;
 - (void)invalidate;
 - (void)resume;
 - (id)init;

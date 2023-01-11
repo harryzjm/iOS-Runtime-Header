@@ -34,9 +34,9 @@
 + (id)_newRingsView;
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (void)_prewarmForDevice:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showSeconds; // @synthesize showSeconds=_showSeconds;
 @property(nonatomic) double rightTimeViewInset; // @synthesize rightTimeViewInset=_rightTimeViewInset;
-- (void).cxx_destruct;
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (double)_blinkerAndSecondsWidth;
 - (void)_removeActivityRelatedUIs;
@@ -75,7 +75,7 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (struct CGRect)_timeViewBackgroundRect;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
@@ -94,11 +94,12 @@
 - (void)_updateCurrentRingLayoutIfNecessary;
 - (void)_layoutForegroundContainerView;
 - (void)layoutSubviews;
+- (void)_createTimeViewIfNecessary;
 - (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (unsigned long long)_timeLabelOptions;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
-- (void)screenWillTurnOn;
-- (void)screenDidTurnOff;
+- (void)screenWillTurnOnAnimated:(_Bool)arg1;
+- (void)screenDidTurnOffAnimated:(_Bool)arg1;
 - (void)_applyFrozen;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;

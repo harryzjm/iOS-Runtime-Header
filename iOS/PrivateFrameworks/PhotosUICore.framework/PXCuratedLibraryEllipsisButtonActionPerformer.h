@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXCuratedLibraryActionManager, PXGLayout, PXPhotoKitAssetCollectionActionManager;
+@class PXCuratedLibraryActionManager, PXGLayout;
 
 @interface PXCuratedLibraryEllipsisButtonActionPerformer
 {
-    PXPhotoKitAssetCollectionActionManager *_assetCollectionActionManager;
     PXGLayout *_layout;
     PXCuratedLibraryActionManager *_actionManager;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PXCuratedLibraryActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property(nonatomic) __weak PXGLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
 - (void)_presentToUserOptionsFromActionPerformers:(id)arg1 forAssetCollectionReference:(id)arg2;
 - (void)performUserInteractionTask;
 - (id)buttonSpriteReference;

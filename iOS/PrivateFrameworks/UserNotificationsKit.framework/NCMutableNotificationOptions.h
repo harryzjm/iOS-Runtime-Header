@@ -23,7 +23,6 @@
 @property(nonatomic) _Bool suppressesSubtitleWhenLocked; // @dynamic suppressesSubtitleWhenLocked;
 @property(nonatomic) _Bool suppressesTitleWhenLocked; // @dynamic suppressesTitleWhenLocked;
 @property(nonatomic) _Bool revealsAdditionalContentOnPresentation; // @dynamic revealsAdditionalContentOnPresentation;
-@property(nonatomic) _Bool preemptsSTAR; // @dynamic preemptsSTAR;
 @property(nonatomic) _Bool preemptsPresentedNotification; // @dynamic preemptsPresentedNotification;
 @property(nonatomic, getter=isNumberOfLinesInfinite) _Bool numberOfLinesInfinite; // @dynamic numberOfLinesInfinite;
 @property(nonatomic) _Bool hideClearActionInList; // @dynamic hideClearActionInList;

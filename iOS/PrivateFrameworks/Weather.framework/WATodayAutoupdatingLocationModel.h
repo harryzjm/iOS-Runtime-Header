@@ -17,19 +17,21 @@
     WeatherLocationManager *_locationManager;
     WFGeocodeRequest *_geocodeRequest;
     unsigned long long _citySource;
+    unsigned long long _fallbackCitySource;
     WeatherPreferences *_preferences;
     CDUnknownBlockType _WeatherLocationManagerGenerator;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType WeatherLocationManagerGenerator; // @synthesize WeatherLocationManagerGenerator=_WeatherLocationManagerGenerator;
 @property(retain, nonatomic) WeatherPreferences *preferences; // @synthesize preferences=_preferences;
 @property(nonatomic) _Bool stopUpdateIfNeeded; // @synthesize stopUpdateIfNeeded=_stopUpdateIfNeeded;
+@property(nonatomic) unsigned long long fallbackCitySource; // @synthesize fallbackCitySource=_fallbackCitySource;
 @property(nonatomic) unsigned long long citySource; // @synthesize citySource=_citySource;
 @property(retain, nonatomic) WFGeocodeRequest *geocodeRequest; // @synthesize geocodeRequest=_geocodeRequest;
 @property(nonatomic) _Bool locationServicesActive; // @synthesize locationServicesActive=_locationServicesActive;
 @property(nonatomic) _Bool isLocationTrackingEnabled; // @synthesize isLocationTrackingEnabled=_isLocationTrackingEnabled;
 @property(retain, nonatomic) WeatherLocationManager *locationManager; // @synthesize locationManager=_locationManager;
-- (void).cxx_destruct;
 - (void)_persistStateWithModel:(id)arg1;
 - (_Bool)_reloadForecastData:(_Bool)arg1;
 - (void)ubiquitousDefaultsDidChange:(id)arg1;
@@ -50,6 +52,8 @@
 - (id)forecastModel;
 - (void)clearLocationUpdateState;
 - (void)dealloc;
+- (void)configureWithInitialCitySource:(unsigned long long)arg1 locationServicesActive:(_Bool)arg2;
+- (void)configureWithLocationServicesActive:(_Bool)arg1;
 - (id)init;
 - (id)initWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
 

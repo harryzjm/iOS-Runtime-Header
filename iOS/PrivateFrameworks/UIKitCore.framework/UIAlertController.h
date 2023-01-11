@@ -9,7 +9,7 @@
 #import <UIKitCore/UIPreviewInteractionControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
-@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerStackManager, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, UIViewController, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
+@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerStackManager, UIAlertControllerVisualStyle, UIGestureRecognizer, UIImage, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, UIViewController, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
 @protocol UIAlertControllerCoordinatedActionPerforming, UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
 
 @interface UIAlertController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIPreviewInteractionControllerDelegate, UIAlertControllerVisualStyleProviding>
@@ -28,18 +28,19 @@
     _UIAlertControllerTextFieldViewController *_textFieldViewController;
     UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
     id _ownedTransitioningDelegate;
-    _Bool _addContentViewControllerToViewHierarchyNeeded;
     _Bool _isInSupportedInterfaceOrientations;
     _Bool _isInRecomputePreferredContentSize;
     long long _batchActionChangesInProgressCount;
     _UIAlertControllerShimPresenter *_presenter;
     NSPointerArray *_actionsWithInvokedHandlers;
     UIAlertControllerStackManager *_alertControllerStackManager;
+    UIImage *_image;
     _Bool _hidden;
     _Bool _springLoaded;
     _Bool __shouldFlipFrameForShimDismissal;
     _Bool __shouldAllowNilParameters;
     _Bool _hasPreservedInputViews;
+    _Bool __shouldAlignToKeyboard;
     NSMutableArray *_actions;
     UIViewController *_headerContentViewController;
     UIViewController *_separatedHeaderContentViewController;
@@ -63,7 +64,10 @@
 + (id)_alertControllerContainedInViewController:(id)arg1;
 + (id)_alertControllerWithTitle:(id)arg1 message:(id)arg2;
 + (id)alertControllerWithTitle:(id)arg1 message:(id)arg2 preferredStyle:(long long)arg3;
++ (_Bool)_allowInteractiveSheetDismissal;
 + (_Bool)_shouldUsePresentationController;
+- (void).cxx_destruct;
+@property(nonatomic, setter=_setShouldAlignToKeyboard:) _Bool _shouldAlignToKeyboard; // @synthesize _shouldAlignToKeyboard=__shouldAlignToKeyboard;
 @property(nonatomic, getter=_titleLineBreakMode, setter=_setTitleLineBreakMode:) long long titleLineBreakMode; // @synthesize titleLineBreakMode=_titleLineBreakMode;
 @property(nonatomic, getter=_titleMaximumLineCount, setter=_setTitleMaximumLineCount:) long long titleMaximumLineCount; // @synthesize titleMaximumLineCount=_titleMaximumLineCount;
 @property(retain, nonatomic, setter=_setPresentationSourceRepresentationView:) UIView *_presentationSourceRepresentationView; // @synthesize _presentationSourceRepresentationView=__presentationSourceRepresentationView;
@@ -89,7 +93,6 @@
 @property(retain, nonatomic, setter=_setHeaderContentViewController:) UIViewController *_headerContentViewController; // @synthesize _headerContentViewController;
 @property(readonly) UIAlertAction *_cancelAction; // @synthesize _cancelAction;
 @property(readonly) NSMutableArray *_actions; // @synthesize _actions;
-- (void).cxx_destruct;
 - (_Bool)_canBePresentedAtLocation:(struct CGPoint)arg1;
 - (_Bool)_isPresented;
 - (_Bool)performsViewControllerCommitTransitionForPreviewInteractionController:(id)arg1;
@@ -133,12 +136,14 @@
 @property(copy, nonatomic, getter=_attributedDetailMessage, setter=_setAttributedDetailMessage:) NSAttributedString *_attributedDetailMessage;
 @property(copy, nonatomic, getter=_attributedMessage, setter=_setAttributedMessage:) NSAttributedString *attributedMessage;
 @property(copy, nonatomic, getter=_attributedTitle, setter=_setAttributedTitle:) NSAttributedString *attributedTitle;
+@property(retain, nonatomic) UIImage *image;
 @property(copy, nonatomic) NSString *message;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 - (_Bool)_shouldFitWidthToContentViewControllerWidth;
 - (_Bool)_shouldSizeToFillSuperview;
 - (id)_alertControllerContainer;
 - (_Bool)_viewControllerIsPresentedInModalPresentationContext:(id)arg1;
+- (_Bool)_allowsShowingDimmingView;
 - (_Bool)_isPresentedAsPopover;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_flipFrameForShimDismissalIfNecessary;
@@ -191,7 +196,7 @@
 - (void)viewDidLoad;
 @property(readonly) _Bool _shouldReverseActions;
 - (void)_setShouldReverseActions:(_Bool)arg1;
-@property(readonly) _Bool _shouldAlignToKeyboard;
+@property(readonly) _Bool _alignsToKeyboard;
 - (void)_updateShouldAlignToKeyboard;
 - (void)loadView;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
@@ -199,6 +204,7 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotate;
 - (void)dealloc;
+@property(readonly, copy) NSString *description;
 - (void)setTextFieldsCanBecomeFirstResponder:(_Bool)arg1;
 - (void)_didParentTextFieldViewController;
 - (void)_willParentTextFieldViewController;
@@ -230,7 +236,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

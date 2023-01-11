@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSString;
 
 @protocol UIKBCacheableView <NSObject>
+@property(readonly, nonatomic) long long assetIdiom;
 @property(readonly, nonatomic) _Bool keepNonPersistent;
 @property(readonly, nonatomic) double cachedWidth;
 @property(readonly, nonatomic) _Bool cacheDeferable;

@@ -6,15 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface VUINowPlayingConfig : NSObject
 {
     _Bool _showsLozengeForLivePlayback;
     _Bool _showsStillWatchingAlert;
+    _Bool _allowQOSReportingForiTunesLibraryPlayback;
     double _stillWatchingAlertDuration;
     double _alertIdleTimeout;
+    NSArray *_mediaTypesExcludedFromReporting;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool allowQOSReportingForiTunesLibraryPlayback; // @synthesize allowQOSReportingForiTunesLibraryPlayback=_allowQOSReportingForiTunesLibraryPlayback;
+@property(copy, nonatomic) NSArray *mediaTypesExcludedFromReporting; // @synthesize mediaTypesExcludedFromReporting=_mediaTypesExcludedFromReporting;
 @property(nonatomic) double alertIdleTimeout; // @synthesize alertIdleTimeout=_alertIdleTimeout;
 @property(nonatomic) double stillWatchingAlertDuration; // @synthesize stillWatchingAlertDuration=_stillWatchingAlertDuration;
 @property(nonatomic) _Bool showsStillWatchingAlert; // @synthesize showsStillWatchingAlert=_showsStillWatchingAlert;

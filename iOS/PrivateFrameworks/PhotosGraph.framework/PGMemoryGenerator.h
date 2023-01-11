@@ -12,20 +12,20 @@
 {
     _Bool _isDebug;
     unsigned long long _duration;
-    unsigned long long _precision;
     PGMemoryController *_controller;
 }
 
++ (id)fetchedAssetsFromFetchResult:(id)arg1 prefetchOptions:(unsigned long long)arg2;
 + (long long)titleDateMatchingTypeForMemoryCategory:(unsigned long long)arg1;
-+ (id)assetPropertySetsForMemories;
+- (void).cxx_destruct;
 @property _Bool isDebug; // @synthesize isDebug=_isDebug;
 @property(readonly) __weak PGMemoryController *controller; // @synthesize controller=_controller;
-@property unsigned long long precision; // @synthesize precision=_precision;
 @property unsigned long long duration; // @synthesize duration=_duration;
-- (void).cxx_destruct;
 - (id)createMemoryWithPotentialMemory:(id)arg1;
 @property(readonly) _Bool canFallbackToDejunkAndDedupeForShowMore;
-- (void)_mergeCurationSetsIfNeededForMemory:(id)arg1;
+- (void)addLocalIdentifiersFromAssets:(id)arg1 to:(id)arg2;
+- (id)localIdentifiersFromAssets:(id)arg1;
+- (id)assetCollectionWithAssetLocalIdentifiers:(id)arg1;
 - (id)_additionalInfoKeywordsForPotentialMemory:(id)arg1;
 - (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
 - (unsigned long long)_numberOfIndependentMomentNodesInMomentNodes:(id)arg1;
@@ -34,9 +34,22 @@
 - (_Bool)canProceedAfterAttemptingMeaningfulEventUpgradeForPotentialMemory:(id)arg1 didUpgradeToWeekend:(_Bool)arg2 upgradedToMeaningfulEvent:(_Bool *)arg3;
 - (_Bool)canProceedAfterAttemptingWeekendUpgradeForPotentialMemory:(id)arg1 upgradedToWeekend:(_Bool *)arg2;
 - (_Bool)_eventIsAcceptableForUpgrade:(id)arg1;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)_generateDefaultTitleAndSubtitleForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (void)setDefaultValuesIfNeededOnNewMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (_Bool)_computeMissingCurationsInMemory:(id)arg1 fromFeeder:(id)arg2 keyAssetCriteria:(id)arg3 useMemoryGeneratorDefaultTricks:(_Bool)arg4;
+- (_Bool)computeMissingCurationsInMemory:(id)arg1 fromFeeder:(id)arg2 keyAssetCriteria:(id)arg3;
+- (_Bool)computeMissingCurationsInMemory:(id)arg1 fromAssetCollection:(id)arg2 keyAssetCriteria:(id)arg3;
+- (id)extendedCuratedAssetsFromFeeder:(id)arg1 withCuratedAssets:(id)arg2;
+- (id)extendedCuratedAssetsFromAssetCollection:(id)arg1 withCuratedAssets:(id)arg2;
+- (id)extendedCurationOptionsWithCuratedAssets:(id)arg1;
+- (id)curationOptionsWithKeyAsset:(id)arg1;
+- (id)keyAssetCurationOptions;
+- (_Bool)movieDedupingEnabledForExtendedCuration;
+- (_Bool)semanticalDedupingEnabledForExtendedCuration;
+- (unsigned long long)durationForExtendedCuration;
+- (_Bool)movieDedupingEnabledForCuration;
+- (_Bool)semanticalDedupingEnabledForCuration;
+- (unsigned long long)durationForCuration;
 - (id)_generateMemoryForDryTesting;
 - (id)generateMemories:(unsigned long long)arg1;
 - (id)generateAllMemories;

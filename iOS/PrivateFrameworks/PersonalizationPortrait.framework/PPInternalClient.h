@@ -16,14 +16,9 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)sysdiagnoseInformationWithError:(id *)arg1;
-- (id)abGroupInfoWithError:(id *)arg1;
-- (id)assetVersionsWithError:(id *)arg1;
-- (id)assetDefaultBundleOverridePathForAssetIdentifier:(id)arg1 error:(id *)arg2;
-- (_Bool)setAssetDefaultBundleOverridePath:(id)arg1 assetIdentifier:(id)arg2 error:(id *)arg3;
-- (_Bool)downloadAssetMetadataWithError:(id *)arg1;
-- (double)assetMetadataRefreshIntervalSecondsWithError:(id *)arg1;
-- (_Bool)clearAssetMetadataRefreshIntervalSecondsWithError:(id *)arg1;
-- (_Bool)setAssetMetadataRefreshIntervalSeconds:(double)arg1 error:(id *)arg2;
+- (_Bool)resetTrialMLModelsForNamespaceName:(id)arg1 error:(id *)arg2;
+- (_Bool)setTrialUseDefaultFiles:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)trialOverridePath:(id)arg1 namespaceName:(id)arg2 factorName:(id)arg3 error:(id *)arg4;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 

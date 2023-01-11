@@ -4,32 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIWindow.h>
-
+#import <CarPlayUIServices/BSInvalidatable-Protocol.h>
 #import <CarPlayUIServices/CRSUIDashboardWidgetWindowClient-Protocol.h>
 
-@class NSArray, NSString, NSXPCConnection;
+@class NSArray, NSString, NSXPCConnection, UIColor;
 
-@interface CRSUIDashboardWidgetWindow : UIWindow <CRSUIDashboardWidgetWindowClient>
+@interface CRSUIDashboardWidgetWindow <CRSUIDashboardWidgetWindowClient, BSInvalidatable>
 {
+    _Bool _useSystemPrimaryFocusColor;
+    NSArray *_widgetSizes;
     NSXPCConnection *_dashboardWindowServiceConnection;
     NSArray *_focusableItems;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useSystemPrimaryFocusColor; // @synthesize useSystemPrimaryFocusColor=_useSystemPrimaryFocusColor;
 @property(retain, nonatomic) NSArray *focusableItems; // @synthesize focusableItems=_focusableItems;
 @property(retain, nonatomic) NSXPCConnection *dashboardWindowServiceConnection; // @synthesize dashboardWindowServiceConnection=_dashboardWindowServiceConnection;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *widgetSizes; // @synthesize widgetSizes=_widgetSizes;
 - (void)_invalidateConnection;
 - (void)_invalidateCurrentFocusableItems;
 - (id)_clientFocusableItemForItem:(id)arg1;
 - (id)_focusableItemForClientItem:(id)arg1;
+- (void)hostSetUseSystemPrimaryFocusColor:(_Bool)arg1;
+- (void)hostSetWidgetSizes:(id)arg1;
 - (void)hostSelectedFocusableItem:(id)arg1;
 - (void)hostFocusableItem:(id)arg1 pressed:(_Bool)arg2;
 - (void)hostFocusableItem:(id)arg1 focused:(_Bool)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_windowDidCreateContext:(id)arg1;
+- (void)setNeedsLargeSize:(_Bool)arg1 animationSettings:(id)arg2;
+@property(readonly, nonatomic) UIColor *focusHighlightColor;
 - (void)setFocusableViews:(id)arg1;
 - (void)dealloc;
+- (void)invalidate;
 - (id)initWithWindowScene:(id)arg1;
 
 // Remaining properties

@@ -22,12 +22,13 @@
 - (id)description;
 - (id)_formattedString;
 - (void)encodeWithCoder:(id)arg1;
-- (id)nonZeroResultTypesForType:(unsigned char)arg1;
-- (unsigned long long)numberOfRequestsForType:(unsigned char)arg1 result:(unsigned char)arg2;
+- (id)nonZeroResultTypesForType:(CDStruct_d1a7ebee)arg1;
+- (unsigned long long)numberOfRequestsForType:(CDStruct_d1a7ebee)arg1 result:(unsigned char)arg2;
+- (void)enumerateRequestTypes:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *requestTypes;
-- (unsigned long long)recvBytesForType:(unsigned char)arg1;
+- (unsigned long long)recvBytesForType:(CDStruct_d1a7ebee)arg1;
 - (unsigned long long)recvBytes;
-- (unsigned long long)xmitBytesForType:(unsigned char)arg1;
+- (unsigned long long)xmitBytesForType:(CDStruct_d1a7ebee)arg1;
 - (unsigned long long)xmitBytes;
 - (_Bool)isEqual:(id)arg1;
 - (void)_generateAggregateStatistics;

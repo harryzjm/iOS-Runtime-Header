@@ -6,11 +6,12 @@
 
 #import <SettingsCellularUI/NSObject-Protocol.h>
 
-@class CTCellInfo, CTEncryptionStatusInfo, CTEnhancedDataLinkQualityMetric, CTEnhancedLinkQualityMetric, CTIMSRegistrationTransportInfo, CTNetworkList, CTRegistrationDisplayStatus, CTServiceDescriptor, CTSignalStrengthInfo, CTVoiceLinkQualityMetric, CTXPCServiceSubscriptionContext, NSDictionary, NSNumber, NSString;
+@class CTCellInfo, CTEncryptionStatusInfo, CTEnhancedDataLinkQualityMetric, CTEnhancedLinkQualityMetric, CTIMSRegistrationTransportInfo, CTNetworkList, CTRatSelection, CTRegistrationDisplayStatus, CTServiceDescriptor, CTSignalStrengthInfo, CTVoiceLinkQualityMetric, CTXPCServiceSubscriptionContext, NSDictionary, NSNumber, NSString;
 
 @protocol CoreTelephonyClientRegistrationDelegate <NSObject>
 
 @optional
+- (void)ratSelectionChanged:(CTServiceDescriptor *)arg1 selection:(CTRatSelection *)arg2;
 - (void)encryptionStatusChanged:(CTServiceDescriptor *)arg1 info:(CTEncryptionStatusInfo *)arg2;
 - (void)networkReselectionNeeded:(CTXPCServiceSubscriptionContext *)arg1;
 - (void)networkSelected:(CTXPCServiceSubscriptionContext *)arg1 success:(_Bool)arg2 mode:(NSString *)arg3;

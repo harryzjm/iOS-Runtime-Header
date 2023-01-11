@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDClientRankingFeatureMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDClientRankingFeatureTypeResult *_featureTypeResult;
     GEOPDClientRankingFeatureTypeSource *_featureTypeSource;
     GEOPDClientRankingFeatureFunctionTypeDiscrete *_functionTypeDiscrete;
     GEOPDClientRankingFeatureFunctionTypeLinear *_functionTypeLinear;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _featureType;
     int _functionType;
     struct {
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_featureTypeSource:1;
         unsigned int read_functionTypeDiscrete:1;
         unsigned int read_functionTypeLinear:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_featureTypeResult:1;
-        unsigned int wrote_featureTypeSource:1;
-        unsigned int wrote_functionTypeDiscrete:1;
-        unsigned int wrote_functionTypeLinear:1;
-        unsigned int wrote_featureType:1;
-        unsigned int wrote_functionType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,28 +48,29 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDClientRankingFeatureFunctionTypeDiscrete *functionTypeDiscrete;
 @property(readonly, nonatomic) _Bool hasFunctionTypeDiscrete;
-- (void)_readFunctionTypeDiscrete;
 @property(retain, nonatomic) GEOPDClientRankingFeatureFunctionTypeLinear *functionTypeLinear;
 @property(readonly, nonatomic) _Bool hasFunctionTypeLinear;
-- (void)_readFunctionTypeLinear;
 - (int)StringAsFunctionType:(id)arg1;
 - (id)functionTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasFunctionType;
 @property(nonatomic) int functionType;
 @property(retain, nonatomic) GEOPDClientRankingFeatureTypeResult *featureTypeResult;
 @property(readonly, nonatomic) _Bool hasFeatureTypeResult;
-- (void)_readFeatureTypeResult;
 @property(retain, nonatomic) GEOPDClientRankingFeatureTypeSource *featureTypeSource;
 @property(readonly, nonatomic) _Bool hasFeatureTypeSource;
-- (void)_readFeatureTypeSource;
 - (int)StringAsFeatureType:(id)arg1;
 - (id)featureTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasFeatureType;
 @property(nonatomic) int featureType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

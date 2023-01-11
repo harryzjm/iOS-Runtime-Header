@@ -13,17 +13,17 @@
 @interface GEOPDStorefrontPresentation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDStorefrontView *_closeUpView;
     NSString *_overlayImageUrl;
     GEOPDStorefrontView *_standOffView;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_closeUpView:1;
         unsigned int read_overlayImageUrl:1;
         unsigned int read_standOffView:1;
-        unsigned int wrote_closeUpView:1;
-        unsigned int wrote_overlayImageUrl:1;
-        unsigned int wrote_standOffView:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,17 +37,19 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *overlayImageUrl;
 @property(readonly, nonatomic) _Bool hasOverlayImageUrl;
-- (void)_readOverlayImageUrl;
 @property(retain, nonatomic) GEOPDStorefrontView *standOffView;
 @property(readonly, nonatomic) _Bool hasStandOffView;
-- (void)_readStandOffView;
 @property(retain, nonatomic) GEOPDStorefrontView *closeUpView;
 @property(readonly, nonatomic) _Bool hasCloseUpView;
-- (void)_readCloseUpView;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -18,15 +18,14 @@
     NSDictionary *_demoData;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool accessoryPaired; // @synthesize accessoryPaired=_accessoryPaired;
 @property(retain, nonatomic) NSDictionary *demoData; // @synthesize demoData=_demoData;
 @property(retain, nonatomic) NSMutableArray *servers; // @synthesize servers=_servers;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <HAPAccessoryServerBrowserDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)_delegateRespondsToSelector:(SEL)arg1;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
-- (_Bool)isDemoAccessoryIdentifier:(id)arg1;
 - (void)resetDemoAccessory:(id)arg1;
 - (void)appendDemoData:(id)arg1;
 - (void)loadDemoData:(id)arg1 finalized:(_Bool)arg2;

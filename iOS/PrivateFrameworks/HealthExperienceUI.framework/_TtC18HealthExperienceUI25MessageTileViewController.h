@@ -6,25 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE, UIButton, UILabel;
+@class MISSING_TYPE;
 
 @interface _TtC18HealthExperienceUI25MessageTileViewController : UIViewController
 {
-    MISSING_TYPE *nibObjects;
-    MISSING_TYPE *titleLabel;
-    MISSING_TYPE *bodyLabel;
-    MISSING_TYPE *actionButton;
+    MISSING_TYPE *messageView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)didTapAction:(id)arg1;
 - (void)viewDidLoad;
-- (void)loadView;
-@property(nonatomic) __weak UIButton *actionButton; // @synthesize actionButton;
-@property(nonatomic) __weak UILabel *bodyLabel; // @synthesize bodyLabel;
-@property(nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel;
 
 @end
 

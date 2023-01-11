@@ -16,9 +16,11 @@
     NSError *_error;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) long long result; // @synthesize result=_result;
-- (void).cxx_destruct;
+- (void)removeLinguisticAssetsAssertionWithIdentifier:(id)arg1 forClientID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)addLinguisticAssetsAssertionForLanguage:(id)arg1 assertionID:(id)arg2 region:(id)arg3 clientID:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)requestLinguisticAssetsForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithResult:(long long)arg1 error:(id)arg2;
 - (id)init;

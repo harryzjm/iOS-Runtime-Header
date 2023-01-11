@@ -30,6 +30,7 @@
     ACDDatabaseBackupActivity *_databaseBackupActivity;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isMigrationInProgress) _Bool migrationInProgress; // @synthesize migrationInProgress=_migrationInProgress;
 @property(nonatomic) _Bool notificationsEnabled; // @synthesize notificationsEnabled=_notificationsEnabled;
 @property(retain, nonatomic) ACDDatabaseBackupActivity *databaseBackupActivity; // @synthesize databaseBackupActivity=_databaseBackupActivity;
@@ -43,10 +44,11 @@
 @property(readonly, nonatomic) ACDClientAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property(nonatomic) __weak ACDClient *client; // @synthesize client=_client;
 @property(nonatomic) __weak id <ACDAccountStoreDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)registerMonitorForAccountsOfTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
 - (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
-- (void)reportTelemetryForLandmarkEvent:(CDUnknownBlockType)arg1;
 - (void)triggerKeychainMigrationIfNecessary:(CDUnknownBlockType)arg1;
+- (void)migrateCredentialForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)saveAccount:(id)arg1 toPairedDeviceWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -57,13 +59,13 @@
 - (void)openAuthenticationURL:(id)arg1 forAccount:(id)arg2 shouldConfirm:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)longLivedRemoteAccountStoreSession;
 - (id)remoteAccountStoreSession;
-- (void)connectToRemoteAccountStoreUsingEndpoint:(id)arg1;
 - (void)handleURL:(id)arg1;
 - (void)_removeClientTokenForAccountIdentifer:(id)arg1;
 - (id)_clientTokenForAccountIdentifier:(id)arg1 error:(id)arg2;
 - (void)clientTokenForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addClientToken:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_clientTokenQueue;
+- (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)discoverPropertiesForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)isPushSupportedForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -137,12 +139,13 @@
 - (id)_credentialItemWithAccountIdentifier:(id)arg1 serviceName:(id)arg2;
 - (_Bool)_handleAccountAdd:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
 - (_Bool)_handleAccountMod:(id)arg1 withDataclassActions:(id)arg2 withError:(id *)arg3;
-- (void)_delegate_accountStoreDidSaveAccount:(id)arg1;
+- (void)_delegate_accountStoreDidSaveAccount:(id)arg1 changeType:(int)arg2;
 - (void)_setAccountManagedObjectRelationships:(id)arg1 withAccount:(id)arg2 oldAccount:(id)arg3 error:(id *)arg4;
 - (_Bool)_canSaveAccount:(id)arg1 error:(id *)arg2;
 - (id)_dataclassWithName:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (id)_accountTypeWithIdentifier:(id)arg1;
 - (id)_displayAccountForAccount:(id)arg1;
+- (id)_accountWithIdentifier:(id)arg1 prefetchKeypaths:(id)arg2;
 - (id)_accountWithIdentifier:(id)arg1;
 - (void)_deleteAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
 - (void)deleteAccountNoSave:(id)arg1 error:(id *)arg2;

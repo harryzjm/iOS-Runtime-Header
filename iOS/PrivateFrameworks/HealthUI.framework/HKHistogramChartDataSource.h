@@ -36,6 +36,7 @@
 
 + (id)_daysInWeekXValueRange;
 + (id)_hoursInDayXValueRange;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *quantityValueRanges; // @synthesize quantityValueRanges=_quantityValueRanges;
 @property(retain, nonatomic) HKQuantitySample *maximumSample; // @synthesize maximumSample=_maximumSample;
 @property(retain, nonatomic) HKQuantitySample *minimumSample; // @synthesize minimumSample=_minimumSample;
@@ -57,7 +58,6 @@
 @property(nonatomic) unsigned long long binCalculation; // @synthesize binCalculation=_binCalculation;
 @property(nonatomic) unsigned long long binningMode; // @synthesize binningMode=_binningMode;
 @property(nonatomic) __weak id <HKHistogramChartDataSourceDataFetchObserver> fetchObserver; // @synthesize fetchObserver=_fetchObserver;
-- (void).cxx_destruct;
 - (id)_hourNameFromHourIndex:(unsigned long long)arg1;
 - (id)_hourOfTheDayFormatter;
 - (id)_hourXAxisStringForLocation:(id)arg1;
@@ -69,7 +69,7 @@
 - (id)_dateBasedXValueRangeForConfig:(unsigned long long)arg1;
 - (unsigned long long)_dateBasedBinIndexForSample:(id)arg1;
 - (id)cachedBlockForPath:(CDStruct_6ca94699)arg1 context:(id)arg2;
-- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2;
+- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2 priorityDelegate:(id)arg3;
 - (CDStruct_6ca94699)blockPathForX:(id)arg1 zoom:(long long)arg2;
 - (unsigned long long)_normalBinIndexForSample:(id)arg1;
 - (unsigned long long)_binIndexForSample:(id)arg1;

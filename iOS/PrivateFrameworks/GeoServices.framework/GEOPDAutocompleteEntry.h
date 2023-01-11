@@ -8,28 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryClientResolved, GEOPDAutocompleteEntryDirectionIntent, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryOfflineArea, GEOPDAutocompleteEntryQuery, GEOPDParsecRankingFeatures, GEOPDRetainedSearchMetadata, GEOPDServerResultScoreMetadata, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryClientResolved, GEOPDAutocompleteEntryCollection, GEOPDAutocompleteEntryDirectionIntent, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryOfflineArea, GEOPDAutocompleteEntryPublisher, GEOPDAutocompleteEntryQuery, GEOPDParsecRankingFeatures, GEOPDRetainedSearchMetadata, GEOPDServerResultScoreMetadata, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDAutocompleteEntryAddress *_address;
     GEOPDAutocompleteEntryBrandProfile *_brandProfile;
     GEOPDAutocompleteEntryBusiness *_business;
     GEOPDAutocompleteEntryCategory *_category;
     GEOPDAutocompleteEntryClientResolved *_clientResolved;
+    GEOPDAutocompleteEntryCollection *_collection;
     GEOPDAutocompleteEntryDirectionIntent *_directionIntent;
     GEOPDAutocompleteEntryHighlightLine *_highlightExtra;
     GEOPDAutocompleteEntryHighlightLine *_highlightMain;
     GEOPDAutocompleteEntryOfflineArea *_offlineArea;
     GEOPDParsecRankingFeatures *_parsecRankingFeatures;
+    GEOPDAutocompleteEntryPublisher *_publisher;
     NSString *_queryAcceleratorCompletionString;
     GEOPDAutocompleteEntryQuery *_query;
     GEOPDRetainedSearchMetadata *_retainSearch;
     GEOPDServerResultScoreMetadata *_serverResultScoreMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _autocompleteResultCellType;
     int _sortPriority;
     int _type;
@@ -45,34 +49,18 @@ __attribute__((visibility("hidden")))
         unsigned int read_business:1;
         unsigned int read_category:1;
         unsigned int read_clientResolved:1;
+        unsigned int read_collection:1;
         unsigned int read_directionIntent:1;
         unsigned int read_highlightExtra:1;
         unsigned int read_highlightMain:1;
         unsigned int read_offlineArea:1;
         unsigned int read_parsecRankingFeatures:1;
+        unsigned int read_publisher:1;
         unsigned int read_queryAcceleratorCompletionString:1;
         unsigned int read_query:1;
         unsigned int read_retainSearch:1;
         unsigned int read_serverResultScoreMetadata:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_brandProfile:1;
-        unsigned int wrote_business:1;
-        unsigned int wrote_category:1;
-        unsigned int wrote_clientResolved:1;
-        unsigned int wrote_directionIntent:1;
-        unsigned int wrote_highlightExtra:1;
-        unsigned int wrote_highlightMain:1;
-        unsigned int wrote_offlineArea:1;
-        unsigned int wrote_parsecRankingFeatures:1;
-        unsigned int wrote_queryAcceleratorCompletionString:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_retainSearch:1;
-        unsigned int wrote_serverResultScoreMetadata:1;
-        unsigned int wrote_autocompleteResultCellType:1;
-        unsigned int wrote_sortPriority:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_enableQueryAcceleratorAffordance:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -89,16 +77,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOPDAutocompleteEntryPublisher *publisher;
+@property(readonly, nonatomic) _Bool hasPublisher;
+@property(retain, nonatomic) GEOPDAutocompleteEntryCollection *collection;
+@property(readonly, nonatomic) _Bool hasCollection;
 @property(retain, nonatomic) NSString *queryAcceleratorCompletionString;
 @property(readonly, nonatomic) _Bool hasQueryAcceleratorCompletionString;
-- (void)_readQueryAcceleratorCompletionString;
 @property(nonatomic) _Bool hasEnableQueryAcceleratorAffordance;
 @property(nonatomic) _Bool enableQueryAcceleratorAffordance;
 @property(retain, nonatomic) GEOPDServerResultScoreMetadata *serverResultScoreMetadata;
 @property(readonly, nonatomic) _Bool hasServerResultScoreMetadata;
-- (void)_readServerResultScoreMetadata;
 - (int)StringAsAutocompleteResultCellType:(id)arg1;
 - (id)autocompleteResultCellTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasAutocompleteResultCellType;
@@ -107,44 +100,34 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int sortPriority;
 @property(retain, nonatomic) GEOPDParsecRankingFeatures *parsecRankingFeatures;
 @property(readonly, nonatomic) _Bool hasParsecRankingFeatures;
-- (void)_readParsecRankingFeatures;
 @property(retain, nonatomic) GEOPDRetainedSearchMetadata *retainSearch;
 @property(readonly, nonatomic) _Bool hasRetainSearch;
-- (void)_readRetainSearch;
 @property(retain, nonatomic) GEOPDAutocompleteEntryDirectionIntent *directionIntent;
 @property(readonly, nonatomic) _Bool hasDirectionIntent;
-- (void)_readDirectionIntent;
 @property(retain, nonatomic) GEOPDAutocompleteEntryClientResolved *clientResolved;
 @property(readonly, nonatomic) _Bool hasClientResolved;
-- (void)_readClientResolved;
 @property(retain, nonatomic) GEOPDAutocompleteEntryOfflineArea *offlineArea;
 @property(readonly, nonatomic) _Bool hasOfflineArea;
-- (void)_readOfflineArea;
 @property(retain, nonatomic) GEOPDAutocompleteEntryBrandProfile *brandProfile;
 @property(readonly, nonatomic) _Bool hasBrandProfile;
-- (void)_readBrandProfile;
 @property(retain, nonatomic) GEOPDAutocompleteEntryCategory *category;
 @property(readonly, nonatomic) _Bool hasCategory;
-- (void)_readCategory;
 @property(retain, nonatomic) GEOPDAutocompleteEntryAddress *address;
 @property(readonly, nonatomic) _Bool hasAddress;
-- (void)_readAddress;
 @property(retain, nonatomic) GEOPDAutocompleteEntryBusiness *business;
 @property(readonly, nonatomic) _Bool hasBusiness;
-- (void)_readBusiness;
 @property(retain, nonatomic) GEOPDAutocompleteEntryQuery *query;
 @property(readonly, nonatomic) _Bool hasQuery;
-- (void)_readQuery;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
 @property(retain, nonatomic) GEOPDAutocompleteEntryHighlightLine *highlightExtra;
 @property(readonly, nonatomic) _Bool hasHighlightExtra;
-- (void)_readHighlightExtra;
 @property(retain, nonatomic) GEOPDAutocompleteEntryHighlightLine *highlightMain;
 @property(readonly, nonatomic) _Bool hasHighlightMain;
-- (void)_readHighlightMain;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

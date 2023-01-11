@@ -13,7 +13,7 @@
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class NSIndexPath, NSMutableArray, NSString, PHImageRequestOptions, PUOneUpPresentationHelper, PUOneUpViewController, PUVideoListContentUnavailableView, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource, PXPhotosDataSourceConfiguration, UIBarButtonItem, UITableView, UITableViewCell, UIViewController;
+@class NSIndexPath, NSMutableArray, NSString, PHImageRequestOptions, PUOneUpPresentationHelper, PUVideoListContentUnavailableView, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource, PXPhotosDataSourceConfiguration, UIBarButtonItem, UITableView, UITableViewCell, UIViewController;
 
 @interface PUVideoListViewController <UITableViewDataSource, UITableViewDelegate, PXPhotosDataSourceChangeObserver, PUOneUpPresentationHelperDelegate, PUOneUpPresentationHelperAssetDisplayDelegate, PUDeletePhotosActionControllerDelegate, PUVideoListAssetExpungeActionPerformerDelegate, UIScrollViewDelegate>
 {
@@ -27,7 +27,6 @@
     _Bool __assetsFetchResultIsValid;
     PHImageRequestOptions *__imageRequestOptions;
     PUOneUpPresentationHelper *__oneUpPresentationHelper;
-    PUOneUpViewController *__pushedOneUpViewController;
     PXPhotosDataSource *__dataSource;
     PXPhotosDataSourceConfiguration *__dataSourceManagerConfiguration;
     PXPhotoKitAssetsDataSourceManager *__photoKitDataSourceManager;
@@ -37,6 +36,7 @@
     PUVideoListContentUnavailableView *__contentUnavailableView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setContentUnavailableView:) PUVideoListContentUnavailableView *_contentUnavailableView; // @synthesize _contentUnavailableView=__contentUnavailableView;
 @property(retain, nonatomic, setter=_setLastNavigatedAssetIndexPath:) NSIndexPath *_lastNavigatedAssetIndexPath; // @synthesize _lastNavigatedAssetIndexPath=__lastNavigatedAssetIndexPath;
 @property(nonatomic, setter=_setAssetsFetchResultIsValid:) _Bool _assetsFetchResultIsValid; // @synthesize _assetsFetchResultIsValid=__assetsFetchResultIsValid;
@@ -46,12 +46,9 @@
 @property(retain, nonatomic) PXPhotoKitAssetsDataSourceManager *_photoKitDataSourceManager; // @synthesize _photoKitDataSourceManager=__photoKitDataSourceManager;
 @property(retain, nonatomic, setter=_setDataSourceManagerConfiguration:) PXPhotosDataSourceConfiguration *_dataSourceManagerConfiguration; // @synthesize _dataSourceManagerConfiguration=__dataSourceManagerConfiguration;
 @property(retain, nonatomic, setter=_setDataSource:) PXPhotosDataSource *_dataSource; // @synthesize _dataSource=__dataSource;
-@property(retain, nonatomic, setter=_setPushedOneUpViewController:) PUOneUpViewController *_pushedOneUpViewController; // @synthesize _pushedOneUpViewController=__pushedOneUpViewController;
 @property(retain, nonatomic, setter=_setOneUpPresentationHelper:) PUOneUpPresentationHelper *_oneUpPresentationHelper; // @synthesize _oneUpPresentationHelper=__oneUpPresentationHelper;
-- (void).cxx_destruct;
 - (void)actionPerformer:(id)arg1 stopExcludingAssetsFromDataSource:(id)arg2;
 - (void)actionPerformer:(id)arg1 excludeAssetsFromDataSource:(id)arg2;
-- (id)presentingViewControllerForActionPerformer:(id)arg1;
 - (void)updateVideoListCellContentView:(id)arg1 forItemAtIndexPath:(id)arg2 animated:(_Bool)arg3;
 - (void)processDataSourceChange:(id)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
@@ -62,7 +59,6 @@
 - (long long)oneUpPresentationHelperPreferredBarStyle:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
-- (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpViewController:(id)arg2;
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)_updateAssetsFetchResultIfNeeded;
 - (void)_presentOneUpViewControllerForAssetAtInderxPath:(id)arg1;

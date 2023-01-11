@@ -15,19 +15,22 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isSectionOperation;
     _Bool _destinationIdentifierIsSectionIdentifier;
+    _Bool _isDeleteAll;
     NSOrderedSet *_identifiers;
     long long _action;
     long long _relativePosition;
     id _destinationIdentifier;
 }
 
++ (id)updateDeleteAll;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool destinationIdentifierIsSectionIdentifier; // @synthesize destinationIdentifierIsSectionIdentifier=_destinationIdentifierIsSectionIdentifier;
 @property(readonly, nonatomic) id destinationIdentifier; // @synthesize destinationIdentifier=_destinationIdentifier;
 @property(readonly, nonatomic) long long relativePosition; // @synthesize relativePosition=_relativePosition;
+@property(readonly, nonatomic) _Bool isDeleteAll; // @synthesize isDeleteAll=_isDeleteAll;
 @property(readonly, nonatomic) long long action; // @synthesize action=_action;
 @property(readonly, nonatomic) NSOrderedSet *identifiers; // @synthesize identifiers=_identifiers;
 @property(readonly, nonatomic) _Bool isSectionOperation; // @synthesize isSectionOperation=_isSectionOperation;
-- (void).cxx_destruct;
 - (void)_throwIfInvalid;
 @property(readonly, copy) NSString *description;
 - (id)initWithSectionIdentifiers:(id)arg1 appendingToDestinationSectionIdentifier:(id)arg2;

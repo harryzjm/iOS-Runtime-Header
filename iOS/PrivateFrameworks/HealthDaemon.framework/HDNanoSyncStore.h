@@ -14,6 +14,7 @@
 
 @interface HDNanoSyncStore : NSObject <NRDevicePropertyObserver, HDSyncStore>
 {
+    HDProfile *_profile;
     NSString *_remoteSystemBuildVersion;
     NSString *_remoteProductType;
     HDNanoPairingEntity *_pairingEntity;
@@ -28,9 +29,9 @@
     NSError *_lastCompleteIncomingSyncError;
     NSMutableDictionary *_expectedSequenceNumbers;
     NSArray *_orderedSyncEntities;
+    _Bool _isTinkerPairing;
     _Bool _master;
     _Bool _needsSyncOnUnlock;
-    HDProfile *_profile;
     IDSDevice *_identityServicesDevice;
     NRDevice *_nanoRegistryDevice;
     id <HDNanoSyncStoreDelegate> _delegate;
@@ -42,6 +43,9 @@
 + (id)_observedDeviceProperties;
 + (id)orderedSyncEntitiesForProfile:(id)arg1 protocolVersion:(int)arg2 companion:(_Bool)arg3;
 + (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
++ (id)tinkerNanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
++ (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3 tinkerPaired:(_Bool)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool needsSyncOnUnlock; // @synthesize needsSyncOnUnlock=_needsSyncOnUnlock;
 @property(readonly, copy, nonatomic) NSSet *obliteratedDatabaseUUIDs; // @synthesize obliteratedDatabaseUUIDs=_obliteratedDatabaseUUIDs;
 @property(readonly, nonatomic) HDNanoSyncRestoreSession *restoreSession; // @synthesize restoreSession=_restoreSession;
@@ -49,9 +53,7 @@
 @property(nonatomic) __weak id <HDNanoSyncStoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NRDevice *nanoRegistryDevice; // @synthesize nanoRegistryDevice=_nanoRegistryDevice;
 @property(retain, nonatomic) IDSDevice *identityServicesDevice; // @synthesize identityServicesDevice=_identityServicesDevice;
-@property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, getter=isMaster) _Bool master; // @synthesize master=_master;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 @property(readonly, copy) NSString *description;
 - (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
@@ -86,6 +88,7 @@
 - (_Bool)_savePairingEntity;
 @property(copy, nonatomic) NSUUID *persistentUUID;
 @property(copy, nonatomic) NSUUID *healthUUID;
+@property(readonly, getter=isAltAccount) _Bool altAccount;
 @property(readonly, getter=isActive) _Bool active;
 @property(readonly) long long syncStoreType;
 @property(readonly) int protocolVersion;
@@ -97,12 +100,13 @@
 @property(readonly) NSUUID *nanoRegistryUUID;
 @property(readonly) IDSDevice *device;
 @property(readonly, copy) HKNanoSyncPairedDeviceInfo *deviceInfo;
+- (id)profile;
 - (void)prepareForObliteration;
 @property(readonly, getter=isInvalidated) _Bool invalidated;
 - (void)invalidate;
 - (id)nanoSyncStoreForProtocolVersion:(int)arg1;
 - (void)dealloc;
-- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 obliteratedDatabaseUUIDs:(id)arg4 protocolVersion:(int)arg5 delegate:(id)arg6 profile:(id)arg7;
+- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 obliteratedDatabaseUUIDs:(id)arg4 protocolVersion:(int)arg5 delegate:(id)arg6 profile:(id)arg7 tinkerPairing:(_Bool)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

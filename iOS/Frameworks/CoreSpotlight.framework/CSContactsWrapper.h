@@ -13,7 +13,7 @@
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) NSString *CNContactEmailAddressKeyString;
+@property(readonly, nonatomic) NSString *CNContactEmailAddressesKeyString;
 @property(readonly, nonatomic) Class CNContactPropertyClass;
 
 @end

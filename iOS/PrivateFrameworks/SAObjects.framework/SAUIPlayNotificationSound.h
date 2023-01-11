@@ -13,6 +13,7 @@
 + (id)playNotificationSoundWithDictionary:(id)arg1 context:(id)arg2;
 + (id)playNotificationSound;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *notificationType;
 @property(copy, nonatomic) NSString *notificationId;
 - (id)encodedClassName;
 - (id)groupIdentifier;

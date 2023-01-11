@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ISAnimatedImage;
+@class PFAnimatedImage;
 
 @interface PHAnimatedImage : NSObject
 {
@@ -15,19 +15,19 @@
     double _duration;
     unsigned long long _pixelWidth;
     unsigned long long _pixelHeight;
-    ISAnimatedImage *_is_animatedImage;
+    PFAnimatedImage *_pf_animatedImage;
 }
 
 + (void)cancelAnimatedImageRequest:(long long)arg1;
 + (long long)requestAnimatedImageWithURL:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (long long)requestAnimatedImageWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) ISAnimatedImage *is_animatedImage; // @synthesize is_animatedImage=_is_animatedImage;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) PFAnimatedImage *pf_animatedImage; // @synthesize pf_animatedImage=_pf_animatedImage;
 @property(readonly, nonatomic) unsigned long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic) unsigned long long loopCount; // @synthesize loopCount=_loopCount;
 @property(readonly, nonatomic) unsigned long long frameCount; // @synthesize frameCount=_frameCount;
-- (void).cxx_destruct;
 - (void)_initializePropertiesWithAnimatedImage:(id)arg1;
 - (id)initWithURL:(id)arg1 cachingStrategy:(long long)arg2 useSharedDecoding:(_Bool)arg3;
 - (id)initWithURL:(id)arg1;

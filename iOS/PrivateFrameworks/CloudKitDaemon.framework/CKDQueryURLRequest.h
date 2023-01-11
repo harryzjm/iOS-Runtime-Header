@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_recordResponses;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *recordResponses; // @synthesize recordResponses=_recordResponses;
 @property(retain, nonatomic) NSData *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property(copy, nonatomic) CDUnknownBlockType recordsParsedBlock; // @synthesize recordsParsedBlock=_recordsParsedBlock;
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSData *cursor; // @synthesize cursor=_cursor;
 @property(retain, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property(retain, nonatomic) NSMutableArray *queryResponses; // @synthesize queryResponses=_queryResponses;
-- (void).cxx_destruct;
 - (void)requestDidComplete;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
@@ -44,8 +44,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)requestGETPreAuth;
 - (_Bool)allowsAnonymousAccount;
 - (id)requestOperationClasses;
-- (int)operationType;
-- (id)initWithQuery:(id)arg1 cursor:(id)arg2 limit:(unsigned long long)arg3 requestedFields:(id)arg4 zoneID:(id)arg5;
+- (id)initWithOperation:(id)arg1 query:(id)arg2 cursor:(id)arg3 limit:(unsigned long long)arg4 requestedFields:(id)arg5 zoneID:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

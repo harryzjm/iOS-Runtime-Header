@@ -13,17 +13,19 @@
 @interface HMDPredicateUtilities : HMFObject <HMFLogging>
 {
     unsigned long long _cameraSignificantEvent;
+    unsigned long long _personFamiliarityOptions;
     HMDHome *_home;
-    NSString *_logString;
+    NSString *_logIdentifier;
 }
 
 + (id)logCategory;
-@property(readonly, nonatomic) NSString *logString; // @synthesize logString=_logString;
-@property(readonly, nonatomic) __weak HMDHome *home; // @synthesize home=_home;
-@property unsigned long long cameraSignificantEvent; // @synthesize cameraSignificantEvent=_cameraSignificantEvent;
 - (void).cxx_destruct;
-- (void)fillMetric:(id)arg1 forPredicate:(id)arg2;
-- (id)metricFor:(id)arg1;
+@property(readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property __weak HMDHome *home; // @synthesize home=_home;
+@property unsigned long long personFamiliarityOptions; // @synthesize personFamiliarityOptions=_personFamiliarityOptions;
+@property unsigned long long cameraSignificantEvent; // @synthesize cameraSignificantEvent=_cameraSignificantEvent;
+- (void)fillAnalyticsData:(id)arg1 forPredicate:(id)arg2;
+- (id)generateAnalyticsData:(id)arg1;
 - (_Bool)containsPresenceEvents:(id)arg1;
 - (id)rewritePredicate:(id)arg1 forDaemon:(_Bool)arg2 message:(id)arg3;
 - (id)rewritePredicateForDaemon:(id)arg1 message:(id)arg2;
@@ -38,7 +40,6 @@
 - (id)rewritePredicate:(id)arg1 currentCharacteristicInPredicate:(id *)arg2 characteristicsToRead:(id)arg3 homePresence:(id)arg4;
 - (id)sunset;
 - (id)sunrise;
-- (id)logIdentifier;
 - (id)initWithHome:(id)arg1 logIdentifier:(id)arg2;
 
 // Remaining properties

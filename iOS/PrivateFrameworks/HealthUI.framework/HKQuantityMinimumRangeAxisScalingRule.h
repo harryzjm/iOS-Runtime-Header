@@ -9,13 +9,16 @@
 @interface HKQuantityMinimumRangeAxisScalingRule
 {
     HKQuantity *_defaultYAxisRangeQuantity;
+    HKQuantity *_minimumQuantity;
+    HKQuantity *_maximumQuantity;
     NSDictionary *_axisRangeQuantityOverrides;
     HKUnit *_unit;
 }
 
++ (id)ruleWithDefaultYAxisRange:(id)arg1 minimumValue:(id)arg2 maximumValue:(id)arg3 axisRangeOverrides:(id)arg4;
 + (id)ruleWithDefaultYAxisRange:(id)arg1 axisRangeOverrides:(id)arg2;
-@property(retain, nonatomic) HKUnit *unit; // @synthesize unit=_unit;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HKUnit *unit; // @synthesize unit=_unit;
 - (void)_convertQuantities;
 - (_Bool)isCompatibleWithQuantityType:(id)arg1;
 

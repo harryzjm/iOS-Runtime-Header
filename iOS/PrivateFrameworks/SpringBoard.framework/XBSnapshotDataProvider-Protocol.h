@@ -16,7 +16,8 @@
 - (void)invalidateImage;
 - (_Bool)hasProtectedContent;
 - (id <XBSnapshotDataProvider>)fallbackSnapshotDataProvider;
-- (UIImage *)fetchImage;
 - (NSData *)fetchImageData:(out struct CGAffineTransform *)arg1;
+- (UIImage *)fetchImage;
+- (UIImage *)fetchImageForFormat:(long long)arg1;
 @end
 

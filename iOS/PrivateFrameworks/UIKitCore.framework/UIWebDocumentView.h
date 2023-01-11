@@ -22,7 +22,7 @@
 #import <UIKitCore/_UIRotatingAlertControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIWebDoubleTapDelegate-Protocol.h>
 
-@class CALayer, DOMElement, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
+@class CALayer, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, PKScribbleInteraction, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, UIWebTextPlaceholder, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
 @protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, UIWebDraggingDelegate;
 
 @interface UIWebDocumentView <DDDetectionControllerInteractionDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UIPreviewItemDelegate, _UIRotatingAlertControllerDelegate, UITextAutoscrolling, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer, UITextInputMultiDocument, _UIWebDoubleTapDelegate, UIWebFileUploadPanelDelegate, WebEditingDelegate, WebFrameLoadDelegate>
@@ -68,6 +68,7 @@
         _Bool isCancelled;
         _Bool isOnWebThread;
         _Bool isDisplayingHighlight;
+        _Bool isWriting;
         _Bool attemptedClick;
         struct CGPoint lastPanTranslation;
         DOMNode *element;
@@ -143,8 +144,8 @@
     struct UIEdgeInsets _caretInsets;
     UIWebFileUploadPanel *_fileUploadPanel;
     int _selectionAffinity;
-    DOMElement *_dictationResultPlaceholder;
-    id _dictationResultPlaceholderRemovalObserver;
+    UIWebTextPlaceholder *_textPlaceholder;
+    id _textPlaceholderRemovalObserver;
     DOMRange *_rangeToRestoreAfterDictation;
     UIWebPlaybackTargetPicker *_playbackTargetPicker;
     struct CGRect _currentDragCaretRect;
@@ -153,6 +154,7 @@
     _Bool _isPerformingDrop;
     _Bool _didEndDropSession;
     _Bool _didCreateDropPreview;
+    PKScribbleInteraction *_scribbleInteraction;
     struct _UIWebViewportConfiguration _defaultViewportConfigurations[5];
     _UITextServiceSession *_definitionSession;
     _UITextServiceSession *_learnSession;
@@ -272,6 +274,7 @@
 - (void)willStartScrollToTop;
 - (void)willStartScroll;
 - (void)useSelectionAssistantWithMode:(int)arg1;
+- (void)resetSelectionAssistant;
 - (void)setBecomesEditableWithGestures:(_Bool)arg1;
 - (_Bool)becomesEditableWithGestures;
 - (_Bool)playsNicelyWithGestures;
@@ -332,6 +335,7 @@
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)textInputTraits;
+@property(retain, nonatomic) UIColor *insertionPointColor; // @dynamic insertionPointColor;
 - (void)webView:(id)arg1 willAddPlugInView:(id)arg2;
 - (_Bool)hasPlugInSubviews;
 - (_Bool)isShowingFullScreenPlugInUI;
@@ -368,7 +372,6 @@
 - (struct _NSRange)selectionRange;
 - (void)replaceSelectionWithWebArchive:(id)arg1 selectReplacement:(_Bool)arg2 smartReplace:(_Bool)arg3;
 - (int)wordOffsetInRange:(id)arg1;
-- (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (id)rectsForNSRange:(struct _NSRange)arg1;
 - (id)textColorForCaretSelection;
 - (id)fontForCaretSelection;
@@ -380,11 +383,16 @@
 - (void)replaceRangeWithTextWithoutClosingTyping:(id)arg1 replacementText:(id)arg2;
 - (void)clearMarkedText;
 - (id)dictationInterpretations;
+- (void)_removeTextPlaceholder:(id)arg1 willInsertResult:(_Bool)arg2;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(_Bool)arg2;
-- (void)_finishedUsingDictationPlaceholder;
+- (void)_finishedUsingTextPlaceholder;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
+- (id)_insertTextPlaceholderWithSize:(struct CGSize)arg1;
+- (struct CGSize)_sizeForDictationResultPlaceholder;
 @property(readonly, nonatomic) id insertDictationResultPlaceholder;
-- (_Bool)_dictationPlaceholderHasBeenRemoved;
+- (void)removeTextPlaceholder:(id)arg1;
+- (id)insertTextPlaceholderWithSize:(struct CGSize)arg1;
+- (_Bool)_textPlaceholderHasBeenRemoved;
 - (_Bool)hasRangedSelection;
 - (id)dictationResultMetadataForRange:(id)arg1;
 - (id)metadataDictionariesForDictationResults;
@@ -426,6 +434,7 @@
 - (void)setIsStandaloneEditableView:(_Bool)arg1;
 - (id)textFormElement;
 - (id)formElement;
+- (void)_focusAndAssistFormNode:(id)arg1;
 - (void)_clearAllConsoleMessages;
 - (void)_resetFormDataForFrame:(id)arg1;
 - (void)assistFormNode:(id)arg1;
@@ -456,7 +465,7 @@
 - (void)webViewDidCommitCompositingLayerChanges:(id)arg1;
 - (void)_webthread_webView:(id)arg1 attachRootLayer:(id)arg2;
 - (void)revealedSelectionByScrollingWebFrame:(id)arg1;
-- (_Bool)isUnperturbedDictationResultMarker:(id)arg1;
+- (_Bool)shouldSuppressPasswordEcho;
 - (int)deviceOrientation;
 - (void)showPlaybackTargetPicker:(_Bool)arg1 fromRect:(struct CGRect)arg2;
 - (long long)getPasteboardChangeCount;
@@ -690,6 +699,13 @@
 - (_Bool)isPreviewing;
 - (void)_unregisterPreview;
 - (void)_registerPreview;
+- (void)_scribbleInteraction:(id)arg1 didFinishWritingInElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 willBeginWritingInElement:(id)arg2;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_selectPositionAtPoint:(struct CGPoint)arg1;
+- (_Bool)shouldRevealCurrentSelectionAfterInsertion;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
 - (id)editDragPreviewForTextIndicator:(id)arg1;
@@ -737,7 +753,7 @@
 - (id)selectionRects;
 - (id)selectionRectsForDOMRange:(id)arg1;
 - (id)textInDOMRange:(id)arg1;
-- (void)setSelectedDOMRange:(id)arg1 affinity:(int)arg2;
+- (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2;
 - (id)wordAtPoint:(struct CGPoint)arg1;
 - (void)setSelectionWithFirstPoint:(struct CGPoint)arg1 secondPoint:(struct CGPoint)arg2;
 - (void)setRangedSelectionExtentPoint:(struct CGPoint)arg1 baseIsStart:(_Bool)arg2 allowFlipping:(_Bool)arg3;
@@ -788,12 +804,14 @@
 @property(nonatomic) _Bool acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji; // @dynamic acceptsEmoji;
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsInitialEmojiKeyboard;
 @property(nonatomic) _Bool acceptsPayloads;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property(nonatomic) _Bool contentsIsSingleValue; // @dynamic contentsIsSingleValue;
+@property(readonly, nonatomic) long long cursorBehavior;
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
@@ -815,7 +833,6 @@
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;
 @property(retain, nonatomic) UIInputContextHistory *inputContextHistory;
-@property(retain, nonatomic) UIColor *insertionPointColor; // @dynamic insertionPointColor;
 @property(nonatomic) unsigned long long insertionPointWidth; // @dynamic insertionPointWidth;
 @property(nonatomic) _Bool isCarPlayIdiom;
 @property(nonatomic) _Bool isSingleLineDocument; // @dynamic isSingleLineDocument;
@@ -824,6 +841,7 @@
 @property(nonatomic) _Bool learnsCorrections;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(nonatomic) _Bool preferOnlineDictation;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
@@ -839,6 +857,7 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;

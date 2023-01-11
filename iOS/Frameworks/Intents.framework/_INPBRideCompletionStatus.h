@@ -27,7 +27,6 @@
     _Bool _completed;
     _Bool _missedPickup;
     _Bool _outstanding;
-    _Bool __encodeLegacyGloryData;
     _INPBUserActivity *_completionUserActivity;
     NSArray *_defaultTippingOptions;
     _INPBCurrencyAmountValue *_paymentAmount;
@@ -35,7 +34,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)defaultTippingOptionsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBCurrencyAmountValue *paymentAmount; // @synthesize paymentAmount=_paymentAmount;
 @property(nonatomic) _Bool outstanding; // @synthesize outstanding=_outstanding;
 @property(nonatomic) _Bool missedPickup; // @synthesize missedPickup=_missedPickup;
@@ -44,7 +43,6 @@
 @property(nonatomic) _Bool completed; // @synthesize completed=_completed;
 @property(nonatomic) _Bool canceledByService; // @synthesize canceledByService=_canceledByService;
 @property(nonatomic) _Bool canceled; // @synthesize canceled=_canceled;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

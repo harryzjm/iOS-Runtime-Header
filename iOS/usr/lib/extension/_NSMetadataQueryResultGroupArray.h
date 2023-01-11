@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
-- (id)_init:(id)arg1;
 
 @end
 

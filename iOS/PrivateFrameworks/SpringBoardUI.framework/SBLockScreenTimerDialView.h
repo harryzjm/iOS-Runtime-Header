@@ -8,22 +8,23 @@
 
 #import <SpringBoardUI/SBUILegibility-Protocol.h>
 
-@class NSString, SBUILegibilityView, _UILegibilitySettings;
+@class NSString, SBUILegibilityView, UIFont, _UILegibilitySettings;
 
 @interface SBLockScreenTimerDialView : UIView <SBUILegibility>
 {
     double _strength;
     _UILegibilitySettings *_legibilitySettings;
     SBUILegibilityView *_dialView;
+    UIFont *_font;
 }
 
-@property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
-@property(nonatomic) double strength; // @synthesize strength=_strength;
 - (void).cxx_destruct;
-- (id)_imageNameForCurrentContentSize:(id)arg1;
+@property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
+@property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property(nonatomic) double strength; // @synthesize strength=_strength;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)_newDialViewForSettings:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)_newDialViewConfiguredForSettingsAndFont;
+- (id)initWithSymbolFont:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

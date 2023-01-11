@@ -6,10 +6,10 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class MRAVDistantEndpoint, NSData, NSError, NSString;
+@class MRAVEndpoint, NSData, NSError, NSString;
 
 @protocol MRAVDistantExternalDeviceClientProtocol <NSObject>
-- (void)hostedExternalDeviceEndpointDidChange:(MRAVDistantEndpoint *)arg1;
+- (void)hostedExternalDeviceEndpointDidChange:(MRAVEndpoint *)arg1;
 - (void)hostedExternalDeviceVolumeDidChange:(float)arg1 forEndpointWithIdentifier:(NSString *)arg2 forOutputDeviceWithIdentifier:(NSString *)arg3;
 - (void)hostedExternalDeviceDidReceiveCustomData:(NSData *)arg1 withName:(NSString *)arg2;
 - (void)hostedExternalDeviceNameDidChange:(NSString *)arg1;

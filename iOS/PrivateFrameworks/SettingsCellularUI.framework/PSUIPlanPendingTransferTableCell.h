@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView;
+@class CTCellularPlanPendingTransfer, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface PSUIPlanPendingTransferTableCell
 {
     UIImageView *_view;
+    CTCellularPlanPendingTransfer *_planPendingTransfer;
 }
 
-@property(retain, nonatomic) UIImageView *view; // @synthesize view=_view;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CTCellularPlanPendingTransfer *planPendingTransfer; // @synthesize planPendingTransfer=_planPendingTransfer;
+@property(retain, nonatomic) UIImageView *view; // @synthesize view=_view;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)_setView;
 

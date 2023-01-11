@@ -6,7 +6,7 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class AVPlayer, HFCameraClipPosition, HMCameraProfile, NSArray, NSError;
+@class AVQueuePlayer, HFCameraClipPosition, HMCameraProfile, NSArray, NSError;
 @protocol HFCameraClipPlayerDelegate, HFCameraClipScrubbing;
 
 @protocol HFCameraClipPlaying <NSObject>
@@ -14,12 +14,14 @@
 @property(readonly, nonatomic) _Bool hasFatalError;
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) long long timeControlStatus;
+@property(nonatomic) double currentTime;
 @property(copy, nonatomic) HFCameraClipPosition *currentPosition;
 @property(nonatomic) __weak id <HFCameraClipScrubbing> scrubber;
 @property(nonatomic) __weak id <HFCameraClipPlayerDelegate> delegate;
 @property(retain, nonatomic) NSArray *clips;
 @property(readonly, nonatomic) HMCameraProfile *cameraProfile;
-@property(readonly, nonatomic) AVPlayer *player;
+@property(readonly, nonatomic) AVQueuePlayer *player;
+- (void)endScrubbingWithOffset:(double)arg1;
 - (void)removeTimeObserver:(id)arg1;
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 usingBlock:(void (^)(void))arg2;
 - (void)pause;

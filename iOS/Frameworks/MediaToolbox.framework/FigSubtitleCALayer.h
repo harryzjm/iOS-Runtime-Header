@@ -17,6 +17,8 @@
 - (void)removeAnimationsForKey:(id)arg1;
 - (void)addAnimations:(id)arg1 forKey:(id)arg2;
 @property(nonatomic, getter=isOverscanSubtitleSupportEnabled) _Bool overscanSubtitleSupportEnabled;
+- (void)setCaptionsAvoidanceMargins:(struct FigGeometryMargins)arg1;
+- (void)setVideoRelativeToViewport:(struct CGRect)arg1;
 - (void)updateNonForcedSubtitleDisplayEnabled:(unsigned char)arg1;
 - (void)setSubtitleGravityNonObscuring:(unsigned char)arg1;
 - (void)setVideosize:(struct CGSize)arg1;

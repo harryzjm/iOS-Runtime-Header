@@ -39,6 +39,7 @@
 - (_Bool)isConnected;
 - (void)_refreshAfterReconnect;
 - (void)handleCallback:(id)arg1;
+- (void)resetEditingManager;
 - (void)setPrimaryBrailleDisplay:(int)arg1;
 - (void)setPrepareToMemorizeNextKey:(_Bool)arg1 immediate:(_Bool)arg2 forDisplayWithToken:(int)arg3;
 - (void)showNextAnnouncement;
@@ -62,9 +63,12 @@
 - (void)exitCurrentDisplayMode;
 - (void)setAnnouncementsDisplayMode;
 - (void)setExpandedStatusDisplayModeWithStatus:(id)arg1;
+- (void)setLastUserInteractionTime:(double)arg1;
 - (void)setPersistentKeyModifiers:(unsigned int)arg1;
 - (unsigned int)persistentKeyModifiers;
 - (int)displayMode;
+@property(nonatomic) double autoAdvanceDuration;
+@property(nonatomic) _Bool autoAdvanceEnabled;
 @property(nonatomic) _Bool wordWrapEnabled;
 - (_Bool)automaticBrailleTranslationEnabled;
 - (void)setAutomaticBrailleTranslationEnabled:(_Bool)arg1;

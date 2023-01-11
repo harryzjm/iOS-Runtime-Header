@@ -17,7 +17,7 @@
 - (void)setTighteningFactorForTruncation:(float)arg1;
 @property(nonatomic) float hyphenationFactor; // @dynamic hyphenationFactor;
 @property(nonatomic) long long baseWritingDirection; // @dynamic baseWritingDirection;
-- (void)setLineBreakStrategy:(unsigned long long)arg1;
+@property(nonatomic) unsigned long long lineBreakStrategy; // @dynamic lineBreakStrategy;
 - (void)setUsesOpticalAlignment:(_Bool)arg1;
 - (void)setAllowsHangingPunctuation:(_Bool)arg1;
 - (void)_setLineBoundsOptions:(unsigned long long)arg1;

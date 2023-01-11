@@ -13,15 +13,19 @@
 __attribute__((visibility("hidden")))
 @interface OBPrivacyCombinedController_iOS <OBNavigationBarTitleTransistor, UITableViewDelegate, UITableViewDataSource>
 {
+    _Bool _isUnifiedAbout;
     NSLayoutConstraint *_tableViewHeightConstraint;
     NSArray *_identifiers;
     NSArray *_privacyFlows;
 }
 
+- (void).cxx_destruct;
+@property _Bool isUnifiedAbout; // @synthesize isUnifiedAbout=_isUnifiedAbout;
 @property(retain) NSArray *privacyFlows; // @synthesize privacyFlows=_privacyFlows;
 @property(retain, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
 @property(retain, nonatomic) NSLayoutConstraint *tableViewHeightConstraint; // @synthesize tableViewHeightConstraint=_tableViewHeightConstraint;
-- (void).cxx_destruct;
+- (void)updateTableViewFrameToMatchContentSize;
+- (_Bool)_canShowWhileLocked;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -31,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)showPrivacyGateway:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)initWithIdentifiers:(id)arg1;
 

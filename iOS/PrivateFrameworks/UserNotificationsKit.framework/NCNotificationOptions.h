@@ -34,7 +34,6 @@
     _Bool _hideClearActionInList;
     _Bool _numberOfLinesInfinite;
     _Bool _preemptsPresentedNotification;
-    _Bool _preemptsSTAR;
     _Bool _revealsAdditionalContentOnPresentation;
     _Bool _suppressesTitleWhenLocked;
     _Bool _suppressesSubtitleWhenLocked;
@@ -49,6 +48,7 @@
     _Bool _hideCloseActionForCarPlay;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hideCloseActionForCarPlay; // @synthesize hideCloseActionForCarPlay=_hideCloseActionForCarPlay;
 @property(readonly, nonatomic) _Bool playMediaWhenRaised; // @synthesize playMediaWhenRaised=_playMediaWhenRaised;
 @property(readonly, nonatomic) _Bool allowActionsForCarPlay; // @synthesize allowActionsForCarPlay=_allowActionsForCarPlay;
@@ -61,7 +61,6 @@
 @property(readonly, nonatomic) _Bool suppressesSubtitleWhenLocked; // @synthesize suppressesSubtitleWhenLocked=_suppressesSubtitleWhenLocked;
 @property(readonly, nonatomic) _Bool suppressesTitleWhenLocked; // @synthesize suppressesTitleWhenLocked=_suppressesTitleWhenLocked;
 @property(readonly, nonatomic) _Bool revealsAdditionalContentOnPresentation; // @synthesize revealsAdditionalContentOnPresentation=_revealsAdditionalContentOnPresentation;
-@property(readonly, nonatomic) _Bool preemptsSTAR; // @synthesize preemptsSTAR=_preemptsSTAR;
 @property(readonly, nonatomic) _Bool preemptsPresentedNotification; // @synthesize preemptsPresentedNotification=_preemptsPresentedNotification;
 @property(readonly, nonatomic, getter=isNumberOfLinesInfinite) _Bool numberOfLinesInfinite; // @synthesize numberOfLinesInfinite=_numberOfLinesInfinite;
 @property(readonly, nonatomic) _Bool hideClearActionInList; // @synthesize hideClearActionInList=_hideClearActionInList;
@@ -82,7 +81,6 @@
 @property(readonly, nonatomic) _Bool dismissAutomatically; // @synthesize dismissAutomatically=_dismissAutomatically;
 @property(readonly, copy, nonatomic) NSString *alternateActionLabel; // @synthesize alternateActionLabel=_alternateActionLabel;
 @property(readonly, copy, nonatomic) NSSet *alertSuppressionContexts; // @synthesize alertSuppressionContexts=_alertSuppressionContexts;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

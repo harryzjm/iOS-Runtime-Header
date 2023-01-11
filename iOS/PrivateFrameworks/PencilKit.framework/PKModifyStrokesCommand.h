@@ -14,11 +14,11 @@
 
 + (id)commandForErasingStrokes:(id)arg1 drawing:(id)arg2;
 + (id)commandForErasingAllStrokesInDrawing:(id)arg1;
-+ (id)commandForMakingStrokesVisible:(id)arg1 drawing:(id)arg2;
++ (id)commandForMakingStrokesVisible:(id)arg1 drawing:(id)arg2 hiding:(_Bool)arg3;
 + (id)commandForMakingStrokeVisible:(id)arg1 drawing:(id)arg2 hiding:(_Bool)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hide; // @synthesize hide=_hide;
 @property(readonly, nonatomic) NSArray *strokes; // @synthesize strokes=_strokes;
-- (void).cxx_destruct;
 - (id)description;
 - (void)applyToDrawing:(id)arg1;
 - (id)invertedInDrawing:(id)arg1;

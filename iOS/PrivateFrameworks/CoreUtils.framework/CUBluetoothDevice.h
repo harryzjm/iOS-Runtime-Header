@@ -16,9 +16,13 @@
     unsigned int _connectedServices;
     int _colorCode;
     unsigned int _deviceFlags;
+    unsigned int _deviceType;
+    int _disconnectReason;
     int _primaryPlacement;
     int _secondaryPlacement;
     unsigned int _productIdentifier;
+    int _streamState;
+    unsigned int _versionID;
     CDStruct_83abfce7 _address;
     NSString *_addressString;
     NSUUID *_identifier;
@@ -27,8 +31,11 @@
     NSString *_name;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool present; // @synthesize present=_present;
+@property(nonatomic) unsigned int versionID; // @synthesize versionID=_versionID;
 @property(nonatomic) _Bool supportsAACPService; // @synthesize supportsAACPService=_supportsAACPService;
+@property(nonatomic) int streamState; // @synthesize streamState=_streamState;
 @property(nonatomic) unsigned int productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property(nonatomic) int secondaryPlacement; // @synthesize secondaryPlacement=_secondaryPlacement;
 @property(nonatomic) int primaryPlacement; // @synthesize primaryPlacement=_primaryPlacement;
@@ -37,12 +44,13 @@
 @property(copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property(nonatomic) _Bool magicPaired; // @synthesize magicPaired=_magicPaired;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) int disconnectReason; // @synthesize disconnectReason=_disconnectReason;
+@property(nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
 @property(nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
 @property(nonatomic) int colorCode; // @synthesize colorCode=_colorCode;
 @property(nonatomic) unsigned int connectedServices; // @synthesize connectedServices=_connectedServices;
 @property(copy, nonatomic) NSString *addressString; // @synthesize addressString=_addressString;
 @property(nonatomic) CDStruct_83abfce7 address; // @synthesize address=_address;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

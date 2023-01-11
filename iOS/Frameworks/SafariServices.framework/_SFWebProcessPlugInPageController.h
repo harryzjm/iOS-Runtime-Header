@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebUI/WBSWebProcessPlugInPageController.h>
+#import <SafariSharedUI/WBSWebProcessPlugInPageController.h>
 
 __attribute__((visibility("hidden")))
 @interface _SFWebProcessPlugInPageController : WBSWebProcessPlugInPageController
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)pageControllerForBrowserContextController:(id)arg1;
+- (id)webProcessPlugInBrowserContextController:(id)arg1 frame:(id)arg2 willSendRequestForResource:(unsigned long long)arg3 request:(id)arg4 redirectResponse:(id)arg5;
 - (_Bool)isNetworkReachable;
 
 @end

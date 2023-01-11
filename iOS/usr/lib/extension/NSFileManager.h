@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSString, NSURL, NSValue;
 @protocol NSFileManagerDelegate, NSObject><NSCopying><NSCoding;
 
 @interface NSFileManager : NSObject
 {
+    id _delegate;
+    NSValue *_weakDelegateValue;
 }
 
 + (id)defaultManager;
@@ -46,8 +48,6 @@
 - (_Bool)trashItemAtURL:(id)arg1 resultingItemURL:(id *)arg2 error:(id *)arg3;
 - (_Bool)removeItemAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)removeItemAtPath:(id)arg1 error:(id *)arg2;
-- (_Bool)filesystemItemRemoveOperation:(id)arg1 shouldProceedAfterError:(id)arg2 removingItemAtPath:(id)arg3;
-- (_Bool)filesystemItemRemoveOperation:(id)arg1 shouldRemoveItemAtPath:(id)arg2;
 - (_Bool)linkItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)linkItemAtPath:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
 - (_Bool)filesystemItemLinkOperation:(id)arg1 shouldProceedAfterError:(id)arg2 linkingItemAtPath:(id)arg3 toPath:(id)arg4;
@@ -63,6 +63,7 @@
 - (_Bool)copyItemAtPath:(id)arg1 toPath:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (_Bool)filesystemItemCopyOperation:(id)arg1 shouldProceedAfterError:(id)arg2 copyingItemAtPath:(id)arg3 toPath:(id)arg4;
 - (_Bool)filesystemItemCopyOperation:(id)arg1 shouldCopyItemAtPath:(id)arg2 toPath:(id)arg3;
+- (id)_safeDelegate;
 @property id <NSFileManagerDelegate> delegate;
 - (void)dealloc;
 - (_Bool)setExtendedAttribute:(id)arg1 forKey:(id)arg2 atPath:(id)arg3 error:(id *)arg4;
@@ -108,7 +109,6 @@
 - (id)contentsOfDirectoryAtURL:(id)arg1 includingPropertiesForKeys:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (id)enumeratorAtURL:(id)arg1 includingPropertiesForKeys:(id)arg2 options:(unsigned long long)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (id)mountedVolumeURLsIncludingResourceValuesForKeys:(id)arg1 options:(unsigned long long)arg2;
-- (id)_info;
 @property(readonly, copy) NSURL *temporaryDirectory;
 - (id)_web_pathWithUniqueFilenameForPath:(id)arg1;
 - (id)_web_visibleItemsInDirectoryAtPath:(id)arg1;

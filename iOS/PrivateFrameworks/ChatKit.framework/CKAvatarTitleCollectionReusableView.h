@@ -10,6 +10,7 @@
 
 @interface CKAvatarTitleCollectionReusableView : UICollectionReusableView
 {
+    _Bool _chevronHidden;
     _Bool _avatarPickerActive;
     CKLabel *_titleLabel;
     long long _style;
@@ -22,6 +23,7 @@
 
 + (id)supplementaryViewKind;
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *pendingTitles; // @synthesize pendingTitles=_pendingTitles;
 @property(retain, nonatomic) UIImageView *statusIndicatorImageView; // @synthesize statusIndicatorImageView=_statusIndicatorImageView;
 @property(retain, nonatomic) UIImageView *chevronImageView; // @synthesize chevronImageView=_chevronImageView;
@@ -30,7 +32,6 @@
 @property(nonatomic) long long avatarTitleAccessoryImageType; // @synthesize avatarTitleAccessoryImageType=_avatarTitleAccessoryImageType;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) CKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
 - (_Bool)isLTR;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
@@ -38,6 +39,7 @@
 - (void)_animateFromQueue;
 - (void)setTitle:(id)arg1 animated:(_Bool)arg2;
 - (void)_rotateChevronImageView;
+@property(nonatomic, getter=isChevronHidden) _Bool chevronHidden; // @synthesize chevronHidden=_chevronHidden;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ECAngleBracketIDHash, EMMailboxScope, EMMessageCollectionItemID, NSData;
+@class EMMailboxScope, EMMessageCollectionItemID;
 
 @interface EMMessageObjectID
 {
@@ -14,22 +14,17 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)new;
-+ (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
 @property(readonly, nonatomic) EMMessageCollectionItemID *collectionItemID; // @synthesize collectionItemID=_collectionItemID;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) ECAngleBracketIDHash *messageIDHeaderHash;
-@property(readonly, nonatomic) long long databaseID;
-@property(readonly, nonatomic) NSData *serializedRepresentation;
+@property(readonly, nonatomic) long long globalMessageID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithSerializedRepresentation:(id)arg1;
-- (id)initWithMessageIDHeaderHash:(id)arg1 mailboxScope:(id)arg2;
-- (id)initWithMessageDatabaseID:(long long)arg1;
+- (id)initWithGlobalMessageID:(long long)arg1 mailboxScope:(id)arg2;
 - (id)initWithCollectionItemID:(id)arg1 predicate:(id)arg2 mailboxTypeResolver:(id)arg3;
 - (id)initWithCollectionItemID:(id)arg1 mailboxScope:(id)arg2;
 - (id)init;

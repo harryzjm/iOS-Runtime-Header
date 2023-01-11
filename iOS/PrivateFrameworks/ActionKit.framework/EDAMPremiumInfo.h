@@ -23,6 +23,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *premiumUpgradable; // @synthesize premiumUpgradable=_premiumUpgradable;
 @property(retain, nonatomic) NSNumber *sponsoredGroupRole; // @synthesize sponsoredGroupRole=_sponsoredGroupRole;
 @property(retain, nonatomic) NSString *sponsoredGroupName; // @synthesize sponsoredGroupName=_sponsoredGroupName;
@@ -34,7 +35,6 @@
 @property(retain, nonatomic) NSNumber *premiumRecurring; // @synthesize premiumRecurring=_premiumRecurring;
 @property(retain, nonatomic) NSNumber *premium; // @synthesize premium=_premium;
 @property(retain, nonatomic) NSNumber *currentTime; // @synthesize currentTime=_currentTime;
-- (void).cxx_destruct;
 
 @end
 

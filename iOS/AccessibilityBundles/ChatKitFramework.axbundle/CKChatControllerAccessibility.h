@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)dismissInlineReplyController:(_Bool)arg1;
+- (void)showInlineReplyControllerForChatItem:(id)arg1 presentKeyboard:(_Bool)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (unsigned long long)_axLayoutIntentForTarget:(id)arg1 inBalloonView:(id)arg2;
 - (id)_axDescriptionForMessageEffectIdentifier:(id)arg1;
@@ -31,6 +33,8 @@
 - (void)messageEntryViewSendButtonHit:(id)arg1;
 - (_Bool)accessibilityPerformEscape;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axSetFocusedChatItemElement:(id)arg1;
+- (id)_axFocusedChatItemElement;
 
 @end
 

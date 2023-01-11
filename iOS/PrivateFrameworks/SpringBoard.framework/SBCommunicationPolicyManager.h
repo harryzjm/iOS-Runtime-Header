@@ -16,8 +16,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_setPoliciesByBundleIdentifier:(id)arg1;
-- (unsigned long long)_communicationPolicyForBundleIdentifier:(id)arg1;
 - (_Bool)shouldScreenTimeSuppressNotificationsForBundleIdentifier:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;

@@ -9,16 +9,22 @@
 
 @interface PXPeopleScalableAvatarView
 {
+    double _imageViewCornerRadius;
+    _Bool _useCornerRadius;
+    _Bool _useRoundAvatar;
     UIImageView *_imageView;
     id <PXPerson> _person;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useRoundAvatar; // @synthesize useRoundAvatar=_useRoundAvatar;
+@property(nonatomic) _Bool useCornerRadius; // @synthesize useCornerRadius=_useCornerRadius;
 @property(retain, nonatomic) id <PXPerson> person; // @synthesize person=_person;
 @property(retain) UIImageView *imageView; // @synthesize imageView=_imageView;
-- (void).cxx_destruct;
 - (void)_updateImageAndWait:(_Bool)arg1;
 - (void)updateImage;
 - (void)viewScaleDidChange;
+- (void)_updateImageViewCornerWithRadius:(double)arg1;
 - (void)setPersonAndWaitForImage:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

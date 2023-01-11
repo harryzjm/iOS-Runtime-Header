@@ -13,6 +13,7 @@
 {
     _Bool _ourConfirmed;
     _Bool _ourInServiceMode;
+    _Bool _ourPerformedFirstActivation;
     _Bool _invalidated;
     PKPass *_ourCurrentPass;
     NSDictionary *_ourVasPasses;
@@ -23,24 +24,26 @@
     unsigned long long _changeCardToken;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long changeCardToken; // @synthesize changeCardToken=_changeCardToken;
 @property(nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(retain, nonatomic) PKFieldDetector *fieldDetector; // @synthesize fieldDetector=_fieldDetector;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
+@property(nonatomic) _Bool ourPerformedFirstActivation; // @synthesize ourPerformedFirstActivation=_ourPerformedFirstActivation;
 @property(nonatomic) _Bool ourInServiceMode; // @synthesize ourInServiceMode=_ourInServiceMode;
 @property(nonatomic) _Bool ourConfirmed; // @synthesize ourConfirmed=_ourConfirmed;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *ourInternalQueue; // @synthesize ourInternalQueue=_ourInternalQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *ourCallbackQueue; // @synthesize ourCallbackQueue=_ourCallbackQueue;
 @property(retain, nonatomic) NSDictionary *ourVasPasses; // @synthesize ourVasPasses=_ourVasPasses;
 @property(retain, nonatomic) PKPass *ourCurrentPass; // @synthesize ourCurrentPass=_ourCurrentPass;
-- (void).cxx_destruct;
+- (void)_sendTransactionCompleteToDelegate;
+- (void)_handleSessionHasCredentialIfNecessaryWithCurrentPass:(id)arg1;
 - (void)_handleTransactionCompleteDarwinNotification;
 - (void)_handleTimeoutTimer;
 - (void)_setTimeoutTimer;
 - (void)_scheduleDidActivateEventForPass:(id)arg1;
 - (void)deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)renewSession;
-- (void)confirmOrRenewSession;
+- (void)confirmSessionExpectingCredential:(_Bool)arg1;
 - (void)fieldDetectorDidEnterField:(id)arg1 withProperties:(id)arg2;
 - (_Bool)inServiceMode;
 - (void)setInServiceMode:(_Bool)arg1;
@@ -52,6 +55,7 @@
 - (id)currentPass;
 - (void)setCurrentPass:(id)arg1;
 - (void)dealloc;
+- (_Bool)sessionStarted;
 - (_Bool)startSession;
 - (id)initWithQueue:(id)arg1;
 

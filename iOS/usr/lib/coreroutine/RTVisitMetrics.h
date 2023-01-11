@@ -18,6 +18,9 @@
 }
 
 - (void).cxx_destruct;
+- (id)_associatedLoiFromVisit:(id)arg1;
+- (id)_closestLoi:(id)arg1 location:(id)arg2;
+- (id)_nearbyLoisFromVisit:(id)arg1;
 - (_Bool)collectMetricsForDateInterval:(id)arg1 error:(id *)arg2;
 - (id)realtimeMetricsForConfiguration:(unsigned long long)arg1 dateInterval:(id)arg2 error:(id *)arg3;
 - (id)batchedMetricsForConfiguration:(unsigned long long)arg1 dateInterval:(id)arg2 error:(id *)arg3;

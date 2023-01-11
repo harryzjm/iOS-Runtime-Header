@@ -16,12 +16,14 @@
 }
 
 + (id)sharedProxy;
-@property(retain) NSXPCConnection *_connection; // @synthesize _connection=__connection;
 - (void).cxx_destruct;
+@property(retain) NSXPCConnection *_connection; // @synthesize _connection=__connection;
 - (void)migrateToCloudKitWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generateDAVServerIDsForExistingBookmarksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearLocalDataIncludingMigrationState:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetToDAVDatabaseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchCloudTabDevicesAndCloseRequests;
+- (void)getCloudTabContainerManateeStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getCloudTabDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deleteCloudTabCloseRequestsWithUUIDStrings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -34,7 +36,6 @@
 - (void)fetchRemoteMigrationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)userDidUpdateBookmarkDatabase;
 - (void)userAccountDidChange:(long long)arg1;
-- (void)fetchUserIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setUsesOpportunisticPushTopic:(_Bool)arg1;
 - (void)registerForPushNotificationsIfNeeded;
 - (void)dealloc;

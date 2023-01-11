@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, VKRouteEtaDescription;
+@class GEOComposedRoute, NSArray, VKRouteEtaDescription;
 
 @interface VKRouteInfo : NSObject
 {
     GEOComposedRoute *_route;
     VKRouteEtaDescription *_etaDescription;
+    NSArray *_waypoints;
     _Bool _hasFocus;
 }
 
+@property(readonly, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 @property(nonatomic) _Bool hasFocus; // @synthesize hasFocus=_hasFocus;
 @property(retain, nonatomic) VKRouteEtaDescription *etaDescription; // @synthesize etaDescription=_etaDescription;
 @property(readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;

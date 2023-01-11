@@ -19,5 +19,6 @@
 - (void)stillImageRequestDidStopCapturingStillImage:(CAMStillImageCaptureRequest *)arg1;
 - (void)stillImageRequestDidStartCapturing:(CAMStillImageCaptureRequest *)arg1 resolvedSettings:(CAMStillImageCaptureResolvedSettings *)arg2;
 - (void)stillImageRequestWillStartCapturingVideo:(CAMStillImageCaptureRequest *)arg1;
+- (void)stillImageRequestDidBeginCaptureBeforeResolvingSettings:(CAMStillImageCaptureRequest *)arg1;
 @end
 

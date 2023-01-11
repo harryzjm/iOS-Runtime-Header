@@ -23,6 +23,7 @@
     NSDictionary *_resultArticleIDHeadlinesByArticleID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *resultArticleIDHeadlinesByArticleID; // @synthesize resultArticleIDHeadlinesByArticleID=_resultArticleIDHeadlinesByArticleID;
 @property(retain, nonatomic) NSDictionary *resultArticleListsByID; // @synthesize resultArticleListsByID=_resultArticleListsByID;
 @property(retain, nonatomic) NSDictionary *resultArticleListHeadlinesByArticleListID; // @synthesize resultArticleListHeadlinesByArticleListID=_resultArticleListHeadlinesByArticleListID;
@@ -35,7 +36,6 @@
 @property(copy, nonatomic) NSArray *articleListIDs; // @synthesize articleListIDs=_articleListIDs;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

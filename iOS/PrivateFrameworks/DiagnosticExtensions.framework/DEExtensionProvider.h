@@ -14,15 +14,20 @@
 {
     _Bool _canGenerateNewAttachment;
     _Bool _allowUserAttachmentSelection;
+    _Bool _isEnhancedLoggingStateOn;
     NSString *_loggingConsent;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isEnhancedLoggingStateOn; // @synthesize isEnhancedLoggingStateOn=_isEnhancedLoggingStateOn;
 @property(nonatomic) _Bool allowUserAttachmentSelection; // @synthesize allowUserAttachmentSelection=_allowUserAttachmentSelection;
 @property(nonatomic) _Bool canGenerateNewAttachment; // @synthesize canGenerateNewAttachment=_canGenerateNewAttachment;
 @property(copy, nonatomic) NSString *loggingConsent; // @synthesize loggingConsent=_loggingConsent;
-- (void).cxx_destruct;
 - (id)_getHostname;
 - (id)filesInDir:(id)arg1 matchingPattern:(id)arg2 excludingPattern:(id)arg3;
+- (void)isExtensionEnhancedLoggingStateOnWithHandler:(CDUnknownBlockType)arg1;
+- (void)teardownWithParameters:(id)arg1;
+- (void)setupWithParameters:(id)arg1;
 - (id)attachmentsForParameters:(id)arg1;
 - (id)attachmentsWithParams:(id)arg1;
 - (id)attachmentList;

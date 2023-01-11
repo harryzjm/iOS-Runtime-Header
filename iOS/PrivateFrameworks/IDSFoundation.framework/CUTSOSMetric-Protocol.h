@@ -10,7 +10,7 @@
 
 @protocol CUTSOSMetric <CUTMetric>
 @property(readonly) NSString *operationID;
-@property(readonly) unsigned long long sosError;
+@property(readonly) long long sosError;
 @property(readonly) unsigned long long sosType;
 @property(readonly) unsigned long long sosDomain;
 @end

@@ -13,11 +13,13 @@
     _Bool _paused;
     NSDate *_activityStartDate;
     NSString *_primaryActivityItemIdentifier;
+    _Bool _backgroundTimeTrackingEnabled;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)relations;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isBackgroudTimeTrackingEnabled) _Bool backgroundTimeTrackingEnabled; // @synthesize backgroundTimeTrackingEnabled=_backgroundTimeTrackingEnabled;
 @property(readonly, copy) NSString *description;
 - (id)dictionaryRepresentation;
 @property(readonly, nonatomic) NSArray *additionalActivityItems;

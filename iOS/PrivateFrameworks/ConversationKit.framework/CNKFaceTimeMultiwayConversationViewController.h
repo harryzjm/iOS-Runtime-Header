@@ -22,6 +22,7 @@
     MISSING_TYPE *pipZoomControl;
     MISSING_TYPE *shouldShowZoomControls;
     MISSING_TYPE *deviceOrientation;
+    MISSING_TYPE *isOnScreen;
     MISSING_TYPE *delegate;
     MISSING_TYPE *effectsEnabled;
     MISSING_TYPE *isPipped;
@@ -44,7 +45,6 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
@@ -53,6 +53,7 @@
 @property(nonatomic, readonly) UIViewController *pipViewController;
 @property(nonatomic) _Bool effectsEnabled; // @synthesize effectsEnabled;
 @property(nonatomic) __weak id <CNKFaceTimeMultiwayConversationViewControllerDelegate> delegate; // @synthesize delegate;
+@property(nonatomic) _Bool isOnScreen; // @synthesize isOnScreen;
 @property(nonatomic) long long deviceOrientation; // @synthesize deviceOrientation;
 @property(nonatomic, readonly) _Bool wantsApplicationDismissalStyle;
 @property(nonatomic, readonly) TUCall *call;

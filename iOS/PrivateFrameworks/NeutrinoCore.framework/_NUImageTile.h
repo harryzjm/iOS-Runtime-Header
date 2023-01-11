@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <NeutrinoCore/NUSharableImage-Protocol.h>
+
+@class NSString;
 @protocol NUPurgeableStorage, OS_dispatch_queue;
 
-@interface _NUImageTile : NSObject
+@interface _NUImageTile : NSObject <NUSharableImage>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id <NUPurgeableStorage> _storage;
-    unsigned long long _useCount;
     unsigned long long _accessCount;
     _Bool _wasPurged;
 }
@@ -27,20 +29,25 @@
 - (void)_markAsPurgeable;
 - (_Bool)_decrementAccessCount;
 - (_Bool)_incrementAccessCount;
-- (_Bool)_decrementUseCount;
 - (_Bool)decrementAccessAndUseCount;
 - (_Bool)decrementAccessAndUseCountButLeaveAccessedIfLastUse;
 - (_Bool)decrementAccessCount;
 - (_Bool)incrementAccessCount;
+- (int)useCount;
 - (_Bool)decrementUseCount;
 - (void)incrementUseCount;
+- (_Bool)isInUse;
 - (_Bool)isShared;
 - (unsigned long long)accessCount;
-- (unsigned long long)useCount;
 - (void)returnToStorageFactory:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithStorage:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

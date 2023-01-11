@@ -9,9 +9,10 @@
 @interface NCNotificationRequest (AlertSuppression)
 + (id)_notificationSoundFromSound:(id)arg1;
 + (long long)_soundTypeForSBSoundType:(long long)arg1;
-+ (id)_notificationOptionsForAlertItem:(id)arg1;
-+ (id)_destinations;
-+ (id)notificationRequestWithAlertItem:(id)arg1;
++ (id)_notificationOptionsForAlertController:(id)arg1 item:(id)arg2;
++ (id)_notificationRequestForDestinations:(id)arg1 withAlertItem:(id)arg2 identifier:(id)arg3;
++ (id)notificationRequestForLockScreenWithAlertItem:(id)arg1;
++ (id)notificationRequestForCarPlayWithAlertItem:(id)arg1;
 + (id)notificationRequestWithCardItem:(id)arg1;
 - (_Bool)sb_shouldSuppressAlert;
 @end

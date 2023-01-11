@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSNumber, NSString, SADataSourceInfo;
 
 @interface SAAlarmObject
 {
@@ -19,6 +19,7 @@
 @property(copy, nonatomic) NSArray *frequency;
 @property(copy, nonatomic) NSNumber *firing;
 @property(copy, nonatomic) NSNumber *enabled;
+@property(retain, nonatomic) SADataSourceInfo *dataSourceInfo;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

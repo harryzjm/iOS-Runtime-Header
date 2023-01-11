@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) float green; // @synthesize green=_green;
 @property(readonly, nonatomic) float red; // @synthesize red=_red;
 @property(readonly, copy) NSString *description;
+- (id)valueDescription;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)hf_RGBColorRepresentation;

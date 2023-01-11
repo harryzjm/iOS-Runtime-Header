@@ -11,7 +11,7 @@
 #import <Silex/SXDocumentMetadataProviding-Protocol.h>
 #import <Silex/SXDocumentTitleProviding-Protocol.h>
 
-@class NSString, SXMetaData;
+@class NSString, SXMetadata;
 @protocol SXAutoPlacement, SXDocumentProviding;
 
 @interface SXDocumentMetadataProvider : NSObject <SXDocumentMetadataProviding, SXDocumentTitleProviding, SXDocumentLanguageProviding, SXAutoPlacementProviding>
@@ -19,11 +19,11 @@
     id <SXDocumentProviding> _documentProvider;
 }
 
-@property(readonly, nonatomic) id <SXDocumentProviding> documentProvider; // @synthesize documentProvider=_documentProvider;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <SXDocumentProviding> documentProvider; // @synthesize documentProvider=_documentProvider;
 @property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *title;
-@property(readonly, nonatomic) SXMetaData *metadata;
+@property(readonly, nonatomic) SXMetadata *metadata;
 - (id)initWithDocumentProvider:(id)arg1;
 
 // Remaining properties

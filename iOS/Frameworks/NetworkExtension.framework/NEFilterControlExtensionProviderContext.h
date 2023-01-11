@@ -23,6 +23,7 @@
 - (void)handleReport:(id)arg1;
 - (void)handleNewFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (Class)requiredProviderSuperClass;
 - (id)extensionPoint;
 - (void)dealloc;
 - (void)dispose;

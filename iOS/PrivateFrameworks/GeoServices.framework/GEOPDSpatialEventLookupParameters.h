@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSpatialEventLookupParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _categoryFilters;
     GEOLatLng *_center;
     struct GEOPDTimeRange _timeRange;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _count;
     int _radius;
     struct {
@@ -28,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_categoryFilters:1;
         unsigned int read_center:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_categoryFilters:1;
-        unsigned int wrote_center:1;
-        unsigned int wrote_timeRange:1;
-        unsigned int wrote_count:1;
-        unsigned int wrote_radius:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,6 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasTimeRange;
@@ -57,20 +57,19 @@ __attribute__((visibility("hidden")))
 - (id)categoryFiltersAsString:(int)arg1;
 - (void)setCategoryFilters:(int *)arg1 count:(unsigned long long)arg2;
 - (int)categoryFilterAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsCategoryFilter:(int)arg1;
 - (void)addCategoryFilter:(int)arg1;
 - (void)clearCategoryFilters;
 @property(readonly, nonatomic) int *categoryFilters;
 @property(readonly, nonatomic) unsigned long long categoryFiltersCount;
-- (void)_readCategoryFilters;
 @property(nonatomic) _Bool hasCount;
 @property(nonatomic) int count;
 @property(nonatomic) _Bool hasRadius;
 @property(nonatomic) int radius;
 @property(retain, nonatomic) GEOLatLng *center;
 @property(readonly, nonatomic) _Bool hasCenter;
-- (void)_readCenter;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

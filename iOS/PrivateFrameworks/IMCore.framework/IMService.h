@@ -11,8 +11,6 @@
 }
 
 + (id)canonicalFormOfID:(id)arg1 withIDSensitivity:(int)arg2;
-+ (unsigned long long)statusForABPerson:(id)arg1;
-+ (unsigned long long)statusForIMPerson:(id)arg1;
 + (_Bool)isEmailAddress:(id)arg1 inDomains:(id)arg2;
 + (id)myIdleTime;
 + (unsigned long long)myStatus;

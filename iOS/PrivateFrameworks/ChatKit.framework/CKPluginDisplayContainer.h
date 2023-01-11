@@ -18,12 +18,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)pluginDisplayContinerWithPluginPayload:(id)arg1 composeImage:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *composeImage; // @synthesize composeImage=_composeImage;
 @property(retain, nonatomic) IMPluginPayload *pluginPayload; // @synthesize pluginPayload=_pluginPayload;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)itemProvider;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)pasteboardItem;
 
 @end

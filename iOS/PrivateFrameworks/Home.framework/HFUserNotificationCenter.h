@@ -17,14 +17,16 @@
     id <HFUserNotificationPresentationHandling> _presentationHandler;
     NAFuture *_notificationSettingsFuture;
     NSHashTable *_observers;
+    NAFuture *_userNotificationCenterReadyFuture;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NAFuture *userNotificationCenterReadyFuture; // @synthesize userNotificationCenterReadyFuture=_userNotificationCenterReadyFuture;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NAFuture *notificationSettingsFuture; // @synthesize notificationSettingsFuture=_notificationSettingsFuture;
 @property(nonatomic) __weak id <HFUserNotificationPresentationHandling> presentationHandler; // @synthesize presentationHandler=_presentationHandler;
 @property(retain, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
-- (void).cxx_destruct;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)userNotificationCenter:(id)arg1 openSettingsForNotification:(id)arg2;
 - (id)notificationSettings;

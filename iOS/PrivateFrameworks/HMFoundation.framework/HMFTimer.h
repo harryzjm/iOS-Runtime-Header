@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFUnfairLock, NSDate, NSObject;
+@class NSDate, NSObject;
 @protocol HMFTimerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMFTimer
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_timerQueue;
     double _timeInterval;
@@ -22,12 +22,11 @@
 }
 
 + (id)shortDescription;
-@property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
 @property __weak id <HMFTimerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double timeInterval; // @synthesize timeInterval=_timeInterval;
-- (void).cxx_destruct;
 - (void)__handleExpiration;
 - (void)__fire;
 - (void)fire;
@@ -37,6 +36,7 @@
 @property(retain) NSObject<OS_dispatch_queue> *delegateQueue;
 - (void)setFireDate:(id)arg1;
 @property(readonly, copy) NSDate *fireDate; // @synthesize fireDate=_fireDate;
+@property(readonly, getter=isRunning) _Bool running;
 @property(readonly, nonatomic) unsigned long long leeway;
 - (id)attributeDescriptions;
 - (void)dealloc;

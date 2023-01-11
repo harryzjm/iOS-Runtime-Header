@@ -45,9 +45,10 @@ struct CalDatabase {
     struct __CFArray *_field25;
     id _field26;
     _Bool _field27;
-    struct __CFSet *_field28;
-    id _field29;
-    _Bool _field30;
+    _Bool _field28;
+    struct __CFSet *_field29;
+    id _field30;
+    _Bool _field31;
 };
 
 struct CalEventOccurrenceCache;

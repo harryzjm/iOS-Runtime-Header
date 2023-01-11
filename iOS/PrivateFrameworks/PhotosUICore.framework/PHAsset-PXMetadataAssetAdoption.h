@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
 #import <PhotosUICore/PXShareable-Protocol.h>
 
-@class CLLocation, NSAttributedString, NSDate, NSString, NSValue, PXDebugValueList;
+@class CLLocation, NSAttributedString, NSDate, NSNumber, NSString, NSValue, PXDebugValueList;
 
 @interface PHAsset (PXMetadataAssetAdoption) <PXMetadataAsset, PXLayoutItemInput, PXPhotoKitAdjustedDisplayAsset, PXShareable>
 + (id)addressWithoutUnitedStatesZipCode:(id)arg1;
@@ -30,6 +30,7 @@
 - (id)_imageProccessingFlagsWithMainFileURL:(id)arg1;
 - (id)_deferredProcessingStringWithEnum:(unsigned short)arg1;
 - (id)_junkClassificationStringWithClassifications:(id)arg1;
+- (id)_sdClassificationStringWithClassifications:(id)arg1;
 - (id)_sceneClassificationStringWithClassifications:(id)arg1;
 - (id)stringMinutesTimeRangeFromTimeRange:(CDStruct_e83c9415)arg1;
 @property(readonly, nonatomic) PXDebugValueList *px_curationDebugValues;
@@ -42,12 +43,12 @@
 @property(readonly, nonatomic) NSValue *px_originalFaceAreaRectValue;
 @property(readonly, nonatomic) struct CGRect px_originalFaceAreaRect;
 @property(readonly, nonatomic) _Bool isEligibleForAutoPlayback;
+@property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSDate *importDate;
 - (id)applyAdjustmentsToCompositionController:(id)arg1 renderer:(id)arg2;
 @property(readonly, nonatomic) PHAsset *photoKitAsset;
 @property(readonly, nonatomic) NSString *adjustedContentIdentifier;
 @property(readonly, nonatomic) _Bool wantsAdjustments;
-- (struct CGRect)_adjustedRectWithFaceAreaRect:(struct CGRect)arg1 proposedCropRect:(struct CGRect)arg2 assetRect:(struct CGRect)arg3 verticalContentMode:(long long)arg4;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
@@ -59,7 +60,6 @@
 - (id)_faceNamesStringForAsset;
 - (id)px_accessibilityLabelForStyles:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool requiresConfidentiality;
-- (_Bool)px_isConfidentialAdjustmentsVersion:(id)arg1;
 - (_Bool)px_isSupportedApp:(id)arg1;
 
 // Remaining properties
@@ -73,7 +73,7 @@
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *localCreationDate;
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;

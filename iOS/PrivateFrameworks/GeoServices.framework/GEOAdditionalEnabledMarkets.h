@@ -13,17 +13,17 @@
 @interface GEOAdditionalEnabledMarkets : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_offlineMarkets;
     NSMutableArray *_transitMarkets;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_offlineMarkets:1;
         unsigned int read_transitMarkets:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_offlineMarkets:1;
-        unsigned int wrote_transitMarkets:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,22 +43,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)offlineMarketAtIndex:(unsigned long long)arg1;
 - (unsigned long long)offlineMarketsCount;
-- (void)_addNoFlagsOfflineMarket:(id)arg1;
 - (void)addOfflineMarket:(id)arg1;
 - (void)clearOfflineMarkets;
 @property(retain, nonatomic) NSMutableArray *offlineMarkets;
-- (void)_readOfflineMarkets;
 - (id)transitMarketAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transitMarketsCount;
-- (void)_addNoFlagsTransitMarket:(id)arg1;
 - (void)addTransitMarket:(id)arg1;
 - (void)clearTransitMarkets;
 @property(retain, nonatomic) NSMutableArray *transitMarkets;
-- (void)_readTransitMarkets;
+- (id)initWithData:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) NSArray *queryItems;
 @property(readonly, nonatomic) NSDictionary *queryParameters;
 - (void)reload;

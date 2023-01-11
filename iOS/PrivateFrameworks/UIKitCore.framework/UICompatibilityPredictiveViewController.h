@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
     UIView *_customView;
 }
 
-@property(retain, nonatomic) UIView *customView; // @synthesize customView=_customView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *customView; // @synthesize customView=_customView;
 - (void)viewDidLayoutSubviews;
 @property(readonly, nonatomic) NSArray *displayedCandidates;
+- (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)hidesExpandableButton;
 - (_Bool)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

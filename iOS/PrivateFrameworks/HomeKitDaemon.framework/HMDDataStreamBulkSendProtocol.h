@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     id _accessory;
     NSMapTable *_listeners;
+    NSString *_logIdentifier;
     NSMapTable *_activeBulkSendSessions;
     NSMutableDictionary *_pendingBulkSendSessionContextBySessionIdentifier;
     CDUnknownBlockType _bulkSendSessionContextFactory;
@@ -28,19 +29,20 @@
 
 + (id)logCategory;
 + (id)protocolName;
+- (void).cxx_destruct;
 @property(readonly) CDUnknownBlockType bulkSendSessionContextFactory; // @synthesize bulkSendSessionContextFactory=_bulkSendSessionContextFactory;
 @property(readonly) NSMutableDictionary *pendingBulkSendSessionContextBySessionIdentifier; // @synthesize pendingBulkSendSessionContextBySessionIdentifier=_pendingBulkSendSessionContextBySessionIdentifier;
 @property(readonly) NSMapTable *activeBulkSendSessions; // @synthesize activeBulkSendSessions=_activeBulkSendSessions;
 @property unsigned int nextSessionIdentifier; // @synthesize nextSessionIdentifier=_nextSessionIdentifier;
+@property(readonly, copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property(nonatomic) _Bool isConnected; // @synthesize isConnected=_isConnected;
 @property(retain, nonatomic) NSMapTable *listeners; // @synthesize listeners=_listeners;
 @property(nonatomic) __weak id accessory; // @synthesize accessory=_accessory;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <HMDDataStreamProtocolDelegate> dataStream; // @synthesize dataStream=_dataStream;
-- (void).cxx_destruct;
 - (void)timerDidFire:(id)arg1;
-- (void)_startSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
-- (void)startSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)_openSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)openSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
 - (void)_sendAckMessageWithIdentifier:(id)arg1;
 - (void)_sendCloseMessageWithIdentifier:(id)arg1 reason:(unsigned short)arg2;
 - (void)_cancelSessionWithIdentifier:(id)arg1 reason:(unsigned short)arg2 hadReceivedEof:(_Bool)arg3;
@@ -68,11 +70,13 @@
 - (void)dataStreamDidOpen:(id)arg1;
 - (void)dataStreamDidClose:(id)arg1;
 - (void)dataStream:(id)arg1 didFailWithError:(id)arg2;
+@property(readonly, nonatomic, getter=isActive) _Bool active;
 - (void)_closeAllSessionsWithError:(id)arg1;
+- (void)_notifyActiveStatusChangedFromPreviousValue:(_Bool)arg1;
 - (void)removeListener:(id)arg1;
 - (void)addListener:(id)arg1 fileType:(id)arg2;
-- (id)initWithQueue:(id)arg1 accessory:(id)arg2 bulkSendSessionContextFactory:(CDUnknownBlockType)arg3;
-- (id)initWithQueue:(id)arg1 accessory:(id)arg2;
+- (id)initWithQueue:(id)arg1 accessory:(id)arg2 logIdentifier:(id)arg3 bulkSendSessionContextFactory:(CDUnknownBlockType)arg4;
+- (id)initWithQueue:(id)arg1 accessory:(id)arg2 logIdentifier:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

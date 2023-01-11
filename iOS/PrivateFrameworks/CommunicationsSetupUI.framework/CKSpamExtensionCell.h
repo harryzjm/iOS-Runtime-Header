@@ -6,6 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
+__attribute__((visibility("hidden")))
 @interface CKSpamExtensionCell : PSTableCell
 {
 }
@@ -13,7 +14,6 @@
 - (_Bool)usesStandardBackgroundImage;
 - (void)layoutSubviews;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
-- (void)_updateIcon;
 - (void)setChecked:(_Bool)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 

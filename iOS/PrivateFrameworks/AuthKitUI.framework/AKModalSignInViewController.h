@@ -8,7 +8,7 @@
 #import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKRoundedButton, NSString, UIColor, UILabel, UITextField, UIView;
+@class AKRoundedButton, NSString, UIButton, UIColor, UILabel, UITextField, UIView;
 
 @interface AKModalSignInViewController <AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, UITextFieldDelegate>
 {
@@ -17,34 +17,34 @@
     UILabel *_bodyLabel;
     UITextField *_passwordField;
     AKRoundedButton *_signInButton;
+    UIButton *_iForgotButton;
     UIView *_containerView;
     UIColor *_backgroundColor;
     NSString *_customBodyText;
     NSString *_customButtonTitle;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *customButtonTitle; // @synthesize customButtonTitle=_customButtonTitle;
 @property(retain, nonatomic) NSString *customBodyText; // @synthesize customBodyText=_customBodyText;
 @property(nonatomic) _Bool hideTitle; // @synthesize hideTitle=_hideTitle;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property(retain, nonatomic) UIButton *iForgotButton; // @synthesize iForgotButton=_iForgotButton;
 @property(retain, nonatomic) AKRoundedButton *signInButton; // @synthesize signInButton=_signInButton;
 @property(retain, nonatomic) UITextField *passwordField; // @synthesize passwordField=_passwordField;
 @property(retain, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (void).cxx_destruct;
 - (void)context:(id)arg1 needsPasswordWithCompletion:(CDUnknownBlockType)arg2;
 - (void)displayAlertForContext:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)textFieldShouldReturn:(id)arg1;
-- (void)_passwordFieldDidChange:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (_Bool)_isSignInAllowed;
-- (void)_hidebusyWorkUI;
-- (_Bool)_shouldShowForgotGlyph;
-- (void)_startBusyWorkUI;
+- (void)stopAnimating;
+- (void)startAnimating;
 - (void)_signInButtonTapped:(id)arg1;
 - (void)_passwordRecoveryButtonWasTapped:(id)arg1;
 - (void)_updateViewConstraints;

@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class ARUIRingsView, ARUIRingsViewRenderer, HKActivitySummary, _HKShapeView;
+@class ARUIRenderer, ARUIRingsView, HKActivitySummary, _HKShapeView;
 
 @interface HKActivityRingView : UIView
 {
     ARUIRingsView *_ringsView;
-    ARUIRingsViewRenderer *_renderer;
+    ARUIRenderer *_renderer;
     _HKShapeView *_maskView;
     _Bool _shouldBypassApplicationStateChecking;
     HKActivitySummary *_activitySummary;
@@ -19,11 +19,11 @@
     double _emptyRingAlpha;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_shouldBypassApplicationStateChecking, setter=_setShouldBypassApplicationStateChecking:) _Bool shouldBypassApplicationStateChecking; // @synthesize shouldBypassApplicationStateChecking=_shouldBypassApplicationStateChecking;
 @property(nonatomic, getter=_emptyRingAlpha, setter=_setEmptyRingAlpha:) double emptyRingAlpha; // @synthesize emptyRingAlpha=_emptyRingAlpha;
 @property(nonatomic, getter=_ringInsetPercentage, setter=_setRingInsetPercentage:) double ringInsetPercentage; // @synthesize ringInsetPercentage=_ringInsetPercentage;
 @property(retain, nonatomic) HKActivitySummary *activitySummary; // @synthesize activitySummary=_activitySummary;
-- (void).cxx_destruct;
 - (void)_updateMaskPath;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
@@ -36,7 +36,7 @@
 - (void)_setUpRingsView;
 - (id)_snapshotImage;
 - (void)_setActivitySummary:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_displayIcons;
+- (void)_displayIconsForWheelchairUser:(_Bool)arg1;
 - (void)_setActivityRingViewBackgroundColor:(id)arg1;
 - (void)_setActivityRingViewBackgroundTransparent:(_Bool)arg1;
 - (void)setActivitySummary:(id)arg1 animated:(_Bool)arg2;

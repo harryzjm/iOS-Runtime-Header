@@ -20,8 +20,8 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)_shouldSupportStylusTouches;
 + (_Bool)_shouldDefaultToTouches;
-@property(nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 - (id)debugDictionary;
 - (unsigned long long)touchedEdges;
 - (void)setMinimumNumberOfTouches:(unsigned long long)arg1;
@@ -30,6 +30,8 @@
 - (double)_edgeRegionSize;
 - (void)_setBottomEdgeRegionSize:(double)arg1;
 - (double)_bottomEdgeRegionSize;
+- (void)_setBottomEdgeAngleWindow:(double)arg1;
+- (double)_bottomEdgeAngleWindow;
 - (void)featureDidChangeState:(id)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

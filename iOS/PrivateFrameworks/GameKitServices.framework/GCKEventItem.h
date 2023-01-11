@@ -8,8 +8,8 @@
 
 @interface GCKEventItem : NSObject
 {
-    CDStruct_68f9d01f *_event;
     unsigned int _pid;
+    CDStruct_68f9d01f *_event;
 }
 
 @property unsigned int pid; // @synthesize pid=_pid;

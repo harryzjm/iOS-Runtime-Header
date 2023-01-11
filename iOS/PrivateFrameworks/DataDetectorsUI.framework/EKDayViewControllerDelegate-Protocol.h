@@ -6,13 +6,14 @@
 
 #import <DataDetectorsUI/NSObject-Protocol.h>
 
-@class EKDayViewController, EKEvent, NSDate, NSDateComponents, UIViewController;
+@class EKDayOccurrenceView, EKDayViewController, EKEvent, NSDate, NSDateComponents, UIView, UIViewController;
 
 @protocol EKDayViewControllerDelegate <NSObject>
 - (void)dayViewController:(EKDayViewController *)arg1 didChangeDisplayDate:(NSDateComponents *)arg2;
 - (void)dayViewController:(EKDayViewController *)arg1 didSelectEvent:(EKEvent *)arg2 animated:(_Bool)arg3;
 
 @optional
+- (UIView *)dayViewController:(EKDayViewController *)arg1 selectedCopyViewForView:(EKDayOccurrenceView *)arg2;
 - (void)dayViewController:(EKDayViewController *)arg1 requestsSaveFirstVisibleSecondPreference:(int)arg2;
 - (void)dayViewController:(EKDayViewController *)arg1 requestsSaveHourScalePreference:(double)arg2;
 - (double)dayViewControllerPersistedHourScalePreference:(EKDayViewController *)arg1;
@@ -25,6 +26,7 @@
 - (void)dayViewControllerDidEndScrolling:(EKDayViewController *)arg1;
 - (void)dayViewControllerDidUpdateScrollPosition:(EKDayViewController *)arg1;
 - (void)dayViewControllerDidRespondToApplicationDidBecomeActiveStateChange:(EKDayViewController *)arg1;
+- (_Bool)dayViewControllerShouldDrawSynchronously:(EKDayViewController *)arg1;
 - (void)dayViewControllerCurrentDayDidCompleteAsyncLoadAndLayout:(EKDayViewController *)arg1;
 - (void)dayViewController:(EKDayViewController *)arg1 requestsShowEvent:(EKEvent *)arg2 showDetails:(_Bool)arg3;
 - (void)dayViewController:(EKDayViewController *)arg1 requestsPresentationOfViewControllerForGestures:(UIViewController *)arg2;

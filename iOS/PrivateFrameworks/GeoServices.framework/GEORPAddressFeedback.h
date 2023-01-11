@@ -13,12 +13,14 @@
 @interface GEORPAddressFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPAddressCorrections *_address;
     GEORPPersonalizedMapsContext *_personalizedMaps;
     GEOPDPlaceRequest *_placeRequest;
     GEOPDPlace *_place;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _type;
     struct {
         unsigned int has_type:1;
@@ -27,12 +29,7 @@
         unsigned int read_personalizedMaps:1;
         unsigned int read_placeRequest:1;
         unsigned int read_place:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_address:1;
-        unsigned int wrote_personalizedMaps:1;
-        unsigned int wrote_placeRequest:1;
-        unsigned int wrote_place:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,24 +45,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDPlaceRequest *placeRequest;
 @property(readonly, nonatomic) _Bool hasPlaceRequest;
-- (void)_readPlaceRequest;
 @property(retain, nonatomic) GEORPPersonalizedMapsContext *personalizedMaps;
 @property(readonly, nonatomic) _Bool hasPersonalizedMaps;
-- (void)_readPersonalizedMaps;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
 @property(retain, nonatomic) GEOPDPlace *place;
 @property(readonly, nonatomic) _Bool hasPlace;
-- (void)_readPlace;
 @property(retain, nonatomic) GEORPAddressCorrections *address;
 @property(readonly, nonatomic) _Bool hasAddress;
-- (void)_readAddress;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

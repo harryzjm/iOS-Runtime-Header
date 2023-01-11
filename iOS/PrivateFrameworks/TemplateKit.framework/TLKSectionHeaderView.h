@@ -13,13 +13,13 @@
     TLKProminenceView *_backgroundView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TLKProminenceView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) TLKLabel *headerTextLabel; // @synthesize headerTextLabel=_headerTextLabel;
 @property(retain, nonatomic) TLKMultilineText *headerText; // @synthesize headerText=_headerText;
-- (void).cxx_destruct;
 - (id)headerLabelText;
 - (void)observedPropertiesChanged;
-- (_Bool)usesDefaultInsets;
+- (_Bool)usesDefaultLayoutMargins;
 - (id)setupContentView;
 
 @end

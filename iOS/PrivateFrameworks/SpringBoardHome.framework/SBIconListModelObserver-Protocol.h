@@ -9,9 +9,14 @@
 @class SBIcon, SBIconListModel;
 
 @protocol SBIconListModelObserver <NSObject>
+
+@optional
+- (void)iconListIconStateDidDirty:(SBIconListModel *)arg1;
+- (void)iconListHiddenDidChange:(SBIconListModel *)arg1;
 - (void)iconList:(SBIconListModel *)arg1 didMoveIcon:(SBIcon *)arg2;
 - (void)iconList:(SBIconListModel *)arg1 didRemoveIcon:(SBIcon *)arg2;
 - (void)iconList:(SBIconListModel *)arg1 didReplaceIcon:(SBIcon *)arg2 withIcon:(SBIcon *)arg3;
 - (void)iconList:(SBIconListModel *)arg1 didAddIcon:(SBIcon *)arg2;
+- (void)iconList:(SBIconListModel *)arg1 willAddIcon:(SBIcon *)arg2;
 @end
 

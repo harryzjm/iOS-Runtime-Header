@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <CameraUI/CAMControlStatusIndicatorDelegate-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
 #import <CameraUI/CEKApertureButtonDelegate-Protocol.h>
 
-@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMIntensityButton, CAMLivePhotoButton, CAMMessagesPhotosButton, CAMTimerButton, CEKApertureButton, NSArray, NSSet, PUReviewScreenDoneButton;
+@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMIntensityButton, CAMLivePhotoButton, CAMMessagesPhotosButton, CAMTimerButton, CAMVideoConfigurationStatusIndicator, CEKApertureButton, NSArray, NSSet, NSString, PUReviewScreenDoneButton;
 @protocol CAMControlVisibilityUpdateDelegate;
 
-@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate>
+@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate, CAMControlStatusIndicatorDelegate>
 {
     id <CAMControlVisibilityUpdateDelegate> _visibilityUpdateDelegate;
     long long _style;
@@ -28,7 +29,7 @@
     CAMLivePhotoButton *_livePhotoButton;
     CAMMessagesPhotosButton *_photosButton;
     PUReviewScreenDoneButton *_doneButton;
-    CAMFramerateIndicatorView *_framerateIndicatorView;
+    CAMVideoConfigurationStatusIndicator *_videoConfigurationStatusIndicator;
     long long _orientation;
     UIView *__backgroundView;
     NSArray *__allowedControls;
@@ -39,6 +40,7 @@
 }
 
 + (_Bool)isFloatingStyle:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long _mode; // @synthesize _mode=__mode;
 @property(nonatomic, setter=_setExpandedMenuButtonTappableInsets:) struct UIEdgeInsets _expandedMenuButtonTappableInsets; // @synthesize _expandedMenuButtonTappableInsets=__expandedMenuButtonTappableInsets;
 @property(retain, nonatomic, setter=_setExpandedMenuButton:) CAMExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
@@ -46,7 +48,7 @@
 @property(readonly, nonatomic) NSArray *_allowedControls; // @synthesize _allowedControls=__allowedControls;
 @property(readonly, nonatomic) UIView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property(retain, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
+@property(retain, nonatomic) CAMVideoConfigurationStatusIndicator *videoConfigurationStatusIndicator; // @synthesize videoConfigurationStatusIndicator=_videoConfigurationStatusIndicator;
 @property(retain, nonatomic) PUReviewScreenDoneButton *doneButton; // @synthesize doneButton=_doneButton;
 @property(retain, nonatomic) CAMMessagesPhotosButton *photosButton; // @synthesize photosButton=_photosButton;
 @property(retain, nonatomic) CAMLivePhotoButton *livePhotoButton; // @synthesize livePhotoButton=_livePhotoButton;
@@ -61,7 +63,7 @@
 @property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) __weak id <CAMControlVisibilityUpdateDelegate> visibilityUpdateDelegate; // @synthesize visibilityUpdateDelegate=_visibilityUpdateDelegate;
-- (void).cxx_destruct;
+- (void)controlStatusIndicatorDidChangeIntrinsicContentSize:(id)arg1 animated:(_Bool)arg2;
 - (void)apertureButtonNeedsLayout:(id)arg1 animated:(_Bool)arg2;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
@@ -73,7 +75,7 @@
 - (struct CGRect)collapsedFrameForMenuButton:(id)arg1;
 - (_Bool)shouldHidePhotosButtonForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideDoneButtonForGraphConfiguration:(id)arg1;
-- (_Bool)shouldHideFramerateIndicatorForGraphConfiguration:(id)arg1;
+- (_Bool)shouldHideVideoConfigurationStatusIndicatorForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideLivePhotoButtonForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideElapsedTimeViewForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideFlipButtonForGraphConfiguration:(id)arg1;
@@ -102,7 +104,6 @@
 @property(readonly, nonatomic, getter=isFloating) _Bool floating;
 - (void)_computeHorizontalLayoutForViewsBetweenLeftView:(id)arg1 rightView:(id)arg2 views:(id)arg3 alignmentRects:(id)arg4;
 - (void)_layoutControls:(id)arg1 apply:(_Bool)arg2 withExpandedMenuButton:(id)arg3 collapsingMenuButton:(id)arg4 collapsingFrame:(struct CGRect *)arg5;
-- (void)_layoutFloatingRecordingStyle;
 - (void)_layoutFloatingStyle;
 - (double)_interpolatedFloatingBarHeight;
 - (void)_layoutDefaultStyle;
@@ -114,6 +115,12 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonCAMTopBarInitialization;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

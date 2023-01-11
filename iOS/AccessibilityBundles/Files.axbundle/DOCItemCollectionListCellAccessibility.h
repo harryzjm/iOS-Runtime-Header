@@ -12,9 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIsFolder;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (id)_axAttrTitle;
-- (_Bool)isAccessibilityElement;
 
 @end
 

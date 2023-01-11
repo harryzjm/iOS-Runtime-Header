@@ -18,7 +18,7 @@
 - (id)subtitle1Description;
 - (id)subtitle1Label;
 - (id)title;
-- (id)description;
+- (id)verboseDescription;
 - (id)initWithURLString:(id)arg1 profile:(id)arg2;
 
 @end

@@ -4,17 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HUCameraSettingsModuleController
+#import <HomeUI/UITextViewDelegate-Protocol.h>
+
+@class NSString, UIColor;
+
+@interface HUCameraSettingsModuleController <UITextViewDelegate>
 {
+    UIColor *_cellContentViewBackgroundColor;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *cellContentViewBackgroundColor; // @synthesize cellContentViewBackgroundColor=_cellContentViewBackgroundColor;
+- (_Bool)canSelectDisabledItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (_Bool)canSelectItem:(id)arg1;
+- (void)viewSizeDidChanged;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1;
 - (void)setHost:(id)arg1;
 - (id)initWithModule:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

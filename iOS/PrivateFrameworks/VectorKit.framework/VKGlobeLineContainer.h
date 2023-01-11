@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class VKPolylineOverlay;
 @protocol VKGlobeLineContainerDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
@@ -18,23 +17,24 @@ __attribute__((visibility("hidden")))
     set_f5697f57 _persistentOverlays;
     set_f5697f57 _nonPersistentOverlays;
     struct RouteRenderLayer *_routeRenderLayer;
-    struct map<VKPolylineOverlay *, std::__1::weak_ptr<altitude::RouteLineData>, std::__1::less<VKPolylineOverlay *>, std::__1::allocator<std::__1::pair<VKPolylineOverlay *const, std::__1::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
-    VKPolylineOverlay *_selectedPolyline;
+    struct map<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::weak_ptr<altitude::RouteLineData>, std::__1::less<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<std::__1::pair<const geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
+    _retain_ptr_7ea4e41c _selectedPolyline;
     struct VKGlobeRouteSplit *_routeSplit;
 }
 
-@property(nonatomic) id <VKGlobeLineContainerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) id <VKGlobeLineContainerDelegate> delegate; // @synthesize delegate=_delegate;
 - (float)halfWidthForLine:(id)arg1 styleZ:(float)arg2;
 - (void)update;
+- (void)_destroyLinesIfNeeded;
 - (void)_recreateLinesIfNeeded;
 - (void)_updateRouteSplit;
 @property(retain, nonatomic) id <VKRouteMatchedAnnotationPresentation> routeLineSplitAnnotation;
-- (void)setSelected:(id)arg1 selected:(_Bool)arg2;
+- (void)setSelected:(_retain_ptr_7ea4e41c)arg1 selected:(_Bool)arg2;
 - (void)clearLineSelection;
-- (void)removeLine:(id)arg1;
-- (void)addLine:(id)arg1;
+- (void)removeLine:(_retain_ptr_7ea4e41c)arg1;
+- (void)addLine:(_retain_ptr_7ea4e41c)arg1;
 - (const set_f5697f57 *)nonPersistentOverlays;
 - (const set_f5697f57 *)persistentOverlays;
 - (const set_f5697f57 *)overlays;

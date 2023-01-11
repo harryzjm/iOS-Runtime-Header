@@ -26,8 +26,8 @@ struct GPBCodedInputStreamState {
 struct GPBExtensionDescription {
     CDUnion_88782d86 _field1;
     char *_field2;
-    char *_field3;
-    char *_field4;
+    CDUnion_55fa2897 _field3;
+    CDUnion_55fa2897 _field4;
     CDUnknownFunctionPointerType _field5;
     int _field6;
     unsigned char _field7;
@@ -43,8 +43,9 @@ struct GPBMessageFieldDescription {
     char *_field1;
     union {
         char *_field1;
-        CDUnknownFunctionPointerType _field2;
+        Class _field2;
         CDUnknownFunctionPointerType _field3;
+        CDUnknownFunctionPointerType _field4;
     } _field2;
     unsigned int _field3;
     int _field4;
@@ -64,13 +65,6 @@ struct GPBOutputBufferState {
     NSOutputStream *output;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct ccdigest_info;
 
 struct ccvrf {
@@ -85,10 +79,6 @@ struct ccvrf {
     CDUnknownFunctionPointerType prove;
     CDUnknownFunctionPointerType verify;
     CDUnknownFunctionPointerType proof_to_hash;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
@@ -115,4 +105,9 @@ typedef union {
     GPBMessage *valueMessage;
     int valueEnum;
 } CDUnion_88782d86;
+
+typedef union {
+    char *_field1;
+    Class _field2;
+} CDUnion_55fa2897;
 

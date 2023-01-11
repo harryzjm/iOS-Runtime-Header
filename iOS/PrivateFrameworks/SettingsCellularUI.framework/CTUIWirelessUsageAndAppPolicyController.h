@@ -18,12 +18,15 @@
     CoreTelephonyClient *_coreTelephonyClient;
 }
 
+- (void).cxx_destruct;
 @property _Bool shouldCalculateUsage; // @synthesize shouldCalculateUsage=_shouldCalculateUsage;
 @property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property(retain, nonatomic) PSUIAppDataUsageGroup *appDataUsageGroup; // @synthesize appDataUsageGroup=_appDataUsageGroup;
 @property(retain, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
-- (void).cxx_destruct;
+- (id)selectSpecifier:(id)arg1;
 - (_Bool)shouldReloadSpecifiersOnResume;
+- (void)managedConfigurationProfileListDidChange;
+- (void)managedConfigurationSettingsDidChange;
 - (void)_handleWirelessDataUsageChangedNotification:(id)arg1;
 - (void)_handleCellularPlanChangedNotification:(id)arg1;
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;

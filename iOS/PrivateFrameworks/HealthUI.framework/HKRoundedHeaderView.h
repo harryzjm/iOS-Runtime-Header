@@ -10,7 +10,7 @@
 
 @interface HKRoundedHeaderView : UIView
 {
-    _Bool _textLabelTruncated;
+    _Bool _isInteractive;
     HKGradient *_gradient;
     UIColor *_color;
     UIImage *_image;
@@ -44,7 +44,7 @@
 + (id)_textFont;
 + (id)_accessibilityContentSizeCategory;
 + (double)estimatedHeight;
-@property(nonatomic) _Bool textLabelTruncated; // @synthesize textLabelTruncated=_textLabelTruncated;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *largeTextConstraints; // @synthesize largeTextConstraints=_largeTextConstraints;
 @property(retain, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
 @property(retain, nonatomic) NSLayoutConstraint *largeTextChevronCenterYConstraint; // @synthesize largeTextChevronCenterYConstraint=_largeTextChevronCenterYConstraint;
@@ -56,6 +56,7 @@
 @property(retain, nonatomic) NSLayoutConstraint *textLabelFirstBaselineConstraint; // @synthesize textLabelFirstBaselineConstraint=_textLabelFirstBaselineConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *textLeadingConstraintToImageView; // @synthesize textLeadingConstraintToImageView=_textLeadingConstraintToImageView;
 @property(retain, nonatomic) NSLayoutConstraint *textLeadingConstraintToView; // @synthesize textLeadingConstraintToView=_textLeadingConstraintToView;
+@property(readonly, nonatomic) _Bool isInteractive; // @synthesize isInteractive=_isInteractive;
 @property(retain, nonatomic) UIImageView *chevronRightImageView; // @synthesize chevronRightImageView=_chevronRightImageView;
 @property(retain, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
 @property(retain, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
@@ -69,7 +70,6 @@
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(retain, nonatomic) HKGradient *gradient; // @synthesize gradient=_gradient;
-- (void).cxx_destruct;
 - (_Bool)_isLayingOutForAccessibility;
 - (void)_updateForCurrentSizeCategory;
 - (void)_updateTextConstraints;
@@ -77,13 +77,14 @@
 - (void)_updateUI;
 - (void)_setupConstraints;
 - (void)_setupUI;
+- (double)_headerViewWidth;
 - (_Bool)_isTextLabelTruncated;
-- (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 @property(readonly, nonatomic) double textHorizontalInset;
 @property(copy, nonatomic) NSString *detailText;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithGradient:(id)arg1;
+- (id)initWithColor:(id)arg1 isInteractive:(_Bool)arg2;
 - (id)initWithColor:(id)arg1;
 
 @end

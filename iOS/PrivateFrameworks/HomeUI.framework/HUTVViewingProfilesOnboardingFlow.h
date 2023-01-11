@@ -8,26 +8,28 @@
 
 #import <HomeUI/HUFeatureOnboardingFlow-Protocol.h>
 
-@class NAFuture, NSString, UIViewController;
+@class HMHome, NAFuture, NSString, UIViewController;
 @protocol HUConfigurationViewController;
 
 @interface HUTVViewingProfilesOnboardingFlow : NSObject <HUFeatureOnboardingFlow>
 {
     _Bool _shouldAbortThisOnboardingFlowGroup;
     _Bool _shouldAbortAllOnboarding;
+    HMHome *_home;
     NAFuture *_onboardingFuture;
     UIViewController<HUConfigurationViewController> *_initialViewController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldAbortAllOnboarding; // @synthesize shouldAbortAllOnboarding=_shouldAbortAllOnboarding;
 @property(nonatomic) _Bool shouldAbortThisOnboardingFlowGroup; // @synthesize shouldAbortThisOnboardingFlowGroup=_shouldAbortThisOnboardingFlowGroup;
 @property(retain, nonatomic) UIViewController<HUConfigurationViewController> *initialViewController; // @synthesize initialViewController=_initialViewController;
 @property(retain, nonatomic) NAFuture *onboardingFuture; // @synthesize onboardingFuture=_onboardingFuture;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)processUserInput:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)_shouldShowOnboardingWithOptions:(id)arg1;
-- (id)initWithUsageOptions:(id)arg1;
+- (id)initWithUsageOptions:(id)arg1 home:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

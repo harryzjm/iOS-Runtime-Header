@@ -11,20 +11,22 @@
     SBAppLayout *_fromAppLayout;
     SBAppLayout *_toAppLayout;
     long long _floatingConfiguration;
+    _Bool _blursFromAppLayout;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool blursFromAppLayout; // @synthesize blursFromAppLayout=_blursFromAppLayout;
 - (_Bool)_isIndexToAppLayout:(unsigned long long)arg1;
 - (_Bool)_isIndexFromAppLayout:(unsigned long long)arg1;
-- (id)opacitySettings;
-- (id)layoutSettings;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (id)topMostAppLayouts;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)topMostLayoutElements;
+- (id)_opacitySettings;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
 - (id)transitionDidEnd;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;

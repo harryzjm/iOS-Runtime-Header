@@ -4,13 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class ASAccountAuthenticationModificationController;
+
 __attribute__((visibility("hidden")))
 @interface SFPasswordSavingRemoteViewController
 {
+    ASAccountAuthenticationModificationController *_accountAuthenticationModificationController;
 }
 
 + (id)serviceViewControllerInterface;
 + (id)passwordServiceViewControllerName;
+- (void).cxx_destruct;
+- (id)presentationAnchorForAccountAuthenticationModificationController:(id)arg1;
+- (void)accountAuthenticationModificationController:(id)arg1 didFailRequest:(id)arg2 withError:(id)arg3;
+- (void)accountAuthenticationModificationController:(id)arg1 didSuccessfullyCompleteRequest:(id)arg2 withUserInfo:(id)arg3;
+- (id)_accountAuthenticationModificationController;
+- (void)performUpgradeToStrongPasswordForCredential:(id)arg1 serviceIdentifier:(id)arg2;
+- (void)performUpgradeToSignInWithAppleForCredential:(id)arg1 serviceIdentifier:(id)arg2;
 
 @end
 

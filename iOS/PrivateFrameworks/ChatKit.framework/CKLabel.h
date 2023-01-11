@@ -6,22 +6,30 @@
 
 #import <UIKit/UILabel.h>
 
-@class UIImageView;
+@class NSSet, UIImageView;
 
 @interface CKLabel : UILabel
 {
+    _Bool _shouldHaveRotatedTitleIconImage;
     UIImageView *_titleIconImageView;
     long long _titleIconImageType;
+    NSSet *_titleIconImageTypesSupportingRotation;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldHaveRotatedTitleIconImage; // @synthesize shouldHaveRotatedTitleIconImage=_shouldHaveRotatedTitleIconImage;
+@property(retain, nonatomic) NSSet *titleIconImageTypesSupportingRotation; // @synthesize titleIconImageTypesSupportingRotation=_titleIconImageTypesSupportingRotation;
 @property(nonatomic) long long titleIconImageType; // @synthesize titleIconImageType=_titleIconImageType;
 @property(retain, nonatomic) UIImageView *titleIconImageView; // @synthesize titleIconImageView=_titleIconImageView;
-- (void).cxx_destruct;
 - (_Bool)isLTR;
+- (void)_rotateTitleIconImageView;
+- (void)setShouldHaveRotatedTitleIconImage:(_Bool)arg1 animated:(_Bool)arg2;
+- (_Bool)titleIconImageTypeSupportsRotation:(long long)arg1;
 - (struct CGSize)sizeOfAccessoryImageView;
 - (struct CGSize)sizeOfTitleLabel;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
+- (struct CGRect)rectToDrawTextInForRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
 
 @end

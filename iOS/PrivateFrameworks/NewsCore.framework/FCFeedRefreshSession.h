@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class FCFeedEdition, NSArray, NSDate, NSDictionary, NSSet, NSString;
+@protocol FCFeedRefreshSessionForYouConfig;
 
 @interface FCFeedRefreshSession : NSObject
 {
@@ -20,9 +21,13 @@
     NSArray *_pendingGroups;
     NSSet *_activeGroupEmitterIDs;
     FCFeedEdition *_lastCompletedEdition;
+    id <FCFeedRefreshSessionForYouConfig> _forYouConfig;
 }
 
++ (id)currentEditionWithRefreshDate:(id)arg1 lastCompletedEdition:(id)arg2 fromPaginator:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isNewEdition; // @synthesize isNewEdition=_isNewEdition;
+@property(readonly, copy, nonatomic) id <FCFeedRefreshSessionForYouConfig> forYouConfig; // @synthesize forYouConfig=_forYouConfig;
 @property(readonly, nonatomic) _Bool isOffline; // @synthesize isOffline=_isOffline;
 @property(readonly, nonatomic) _Bool reachedEnd; // @synthesize reachedEnd=_reachedEnd;
 @property(readonly, nonatomic) FCFeedEdition *lastCompletedEdition; // @synthesize lastCompletedEdition=_lastCompletedEdition;
@@ -32,7 +37,6 @@
 @property(readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(readonly, nonatomic) NSDate *refreshDate; // @synthesize refreshDate=_refreshDate;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyByRemovingPendingGroupsAtIndexes:(id)arg1;
 - (id)copyByRemovingPendingGroupIdenticalTo:(id)arg1;
@@ -43,8 +47,8 @@
 - (id)currentEditionFromPaginator:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithRefreshDate:(id)arg1 activeGroupEmitterIDs:(id)arg2 isOffline:(_Bool)arg3;
-- (id)initWithIdentifier:(id)arg1 refreshDate:(id)arg2 modificationDate:(id)arg3 lastCompletedEdition:(id)arg4 cursorsByGroupEmitterID:(id)arg5 pendingGroups:(id)arg6 activeGroupEmitterIDs:(id)arg7 reachedEnd:(_Bool)arg8 isOffline:(_Bool)arg9;
+- (id)initWithRefreshDate:(id)arg1 activeGroupEmitterIDs:(id)arg2 isOffline:(_Bool)arg3 forYouConfig:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 refreshDate:(id)arg2 modificationDate:(id)arg3 lastCompletedEdition:(id)arg4 cursorsByGroupEmitterID:(id)arg5 pendingGroups:(id)arg6 activeGroupEmitterIDs:(id)arg7 reachedEnd:(_Bool)arg8 isOffline:(_Bool)arg9 forYouConfig:(id)arg10;
 
 @end
 

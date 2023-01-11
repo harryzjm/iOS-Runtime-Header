@@ -12,7 +12,7 @@
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMDHome, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
+@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDServiceOwner, HMFLocking, OS_dispatch_queue;
 
 @interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
@@ -20,6 +20,7 @@
     id <HMFLocking> _lock;
     _Bool _hidden;
     _Bool _primary;
+    _Bool _noNameCharacteristic;
     HMDApplicationData *_appData;
     NSUUID *_uuid;
     NSNumber *_instanceID;
@@ -27,23 +28,26 @@
     NSNumber *_labelNamespace;
     NSString *_serviceSubtype;
     NSNumber *_configurationState;
+    NSArray *_characteristics;
     HMDHAPAccessory *_accessory;
     NSString *_name;
     NSString *_defaultName;
     NSString *_associatedServiceType;
     NSArray *_linkedServices;
-    NSArray *_characteristics;
     NSString *_serviceType;
     HMDBulletinBoardNotification *_bulletinBoardNotification;
     NSNumber *_mediaSourceIdentifier;
     NSArray *_mediaSourceDisplayOrder;
     HMFMessageDispatcher *_messageDispatcher;
+    unsigned long long _serviceProperties;
     NSUUID *_cachedAccessoryUUID;
     id <HMDServiceOwner> _owner;
     NSString *_configuredName;
     NSString *_expectedConfiguredName;
     NSString *_lastSeenConfiguredName;
     NSNumber *_lastKnownDiscoveryMode;
+    NSNumber *_lastKnownOperatingState;
+    NSNumber *_lastKnownOperatingStateAbnormalReasons;
     NSMutableDictionary *_deviceLastRequestPresenceDateMap;
     NSString *_logID;
     NSString *_providedName;
@@ -51,26 +55,30 @@
 
 + (_Bool)hasMessageReceiverChildren;
 + (_Bool)supportsSecureCoding;
-+ (_Bool)processUpdateForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 service:(id)arg4 serviceTransactionGetter:(CDUnknownBlockType)arg5 accessory:(id)arg6 accessoryTransaction:(id)arg7 accInfoChanged:(_Bool *)arg8;
++ (_Bool)processUpdateForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 service:(id)arg4 serviceTransactionGetter:(CDUnknownBlockType)arg5 accessory:(id)arg6 accessoryTransaction:(id)arg7 accessoryTransactionChanged:(_Bool *)arg8;
 + (_Bool)validateProvidedName:(id)arg1;
 + (id)logCategory;
 + (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
 @property(readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property(retain, nonatomic) NSMutableDictionary *deviceLastRequestPresenceDateMap; // @synthesize deviceLastRequestPresenceDateMap=_deviceLastRequestPresenceDateMap;
+@property(retain, nonatomic) NSNumber *lastKnownOperatingStateAbnormalReasons; // @synthesize lastKnownOperatingStateAbnormalReasons=_lastKnownOperatingStateAbnormalReasons;
+@property(retain, nonatomic) NSNumber *lastKnownOperatingState; // @synthesize lastKnownOperatingState=_lastKnownOperatingState;
 @property(retain, nonatomic) NSNumber *lastKnownDiscoveryMode; // @synthesize lastKnownDiscoveryMode=_lastKnownDiscoveryMode;
 @property(copy, nonatomic) NSString *lastSeenConfiguredName; // @synthesize lastSeenConfiguredName=_lastSeenConfiguredName;
 @property(copy, nonatomic) NSString *expectedConfiguredName; // @synthesize expectedConfiguredName=_expectedConfiguredName;
 @property(copy, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property(nonatomic) __weak id <HMDServiceOwner> owner; // @synthesize owner=_owner;
 @property(retain, nonatomic) NSUUID *cachedAccessoryUUID; // @synthesize cachedAccessoryUUID=_cachedAccessoryUUID;
+@property(nonatomic) unsigned long long serviceProperties; // @synthesize serviceProperties=_serviceProperties;
+@property(nonatomic) _Bool noNameCharacteristic; // @synthesize noNameCharacteristic=_noNameCharacteristic;
 @property(readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property(retain, nonatomic) NSArray *mediaSourceDisplayOrder; // @synthesize mediaSourceDisplayOrder=_mediaSourceDisplayOrder;
 @property(retain, nonatomic) NSNumber *mediaSourceIdentifier; // @synthesize mediaSourceIdentifier=_mediaSourceIdentifier;
-@property(getter=isPrimary) _Bool primary; // @synthesize primary=_primary;
+@property(nonatomic, getter=isPrimary) _Bool primary; // @synthesize primary=_primary;
 @property(retain, nonatomic) HMDBulletinBoardNotification *bulletinBoardNotification; // @synthesize bulletinBoardNotification=_bulletinBoardNotification;
 @property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
-@property(copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property(copy, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
 @property(readonly, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
@@ -82,7 +90,6 @@
 @property(retain, nonatomic) NSNumber *labelNamespace; // @synthesize labelNamespace=_labelNamespace;
 @property(retain, nonatomic) NSNumber *labelIndex; // @synthesize labelIndex=_labelIndex;
 @property(copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
-- (void).cxx_destruct;
 - (_Bool)shouldUpdateLastSeenConfiguredName:(id)arg1;
 - (void)_writeConfiguredNameToAccessory:(id)arg1;
 - (void)_saveCurrentNameAsExpectedAndLastSeen:(id)arg1;
@@ -93,8 +100,13 @@
 - (void)_registerForMessages;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
+- (void)_createAndRunTransactionWithName:(id)arg1 transaction:(id)arg2 message:(id)arg3;
 - (void)updateMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
 - (void)persistMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
+- (void)_updateAndCacheOperatingStateAndResponse;
+- (void)persistLastKnownOperatingStateResponse;
+- (_Bool)_updateLastKnownOperatingStateWithValue:(id)arg1;
+- (_Bool)_updateLastKnownOperatingStateResponse:(id)arg1;
 - (void)_updateAndCacheDiscoveryModeState;
 - (void)persistLastKnownDiscoveryMode;
 - (_Bool)_validateAndUpdateLastKnownDiscoveryMode:(id)arg1;
@@ -132,11 +144,10 @@
 - (id)_deriveDefaultName;
 - (id)findCharacteristicWithType:(id)arg1;
 - (id)findCharacteristic:(id)arg1;
-- (void)_readRequiredBTLECharacteristicValuesForceReadFWVersion:(_Bool)arg1;
+- (void)_readRequiredCharacteristicValuesForceReadFWVersion:(_Bool)arg1;
 - (id)gatherRequiredReadRequestsForceReadFWVersion:(_Bool)arg1;
 - (_Bool)isReadingRequiredForBTLEServiceCharacteristic:(id)arg1;
 - (id)_updateProvidedName:(id)arg1;
-- (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
 - (_Bool)_supportsBulletinNotification;
 - (void)_createNotification;
@@ -146,11 +157,13 @@
 - (void)_handleSetAppData:(id)arg1;
 @property(retain, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 - (id)logIdentifier;
-@property(readonly, nonatomic) HMDHome *home;
+@property(readonly, getter=isCustom) _Bool custom;
+- (id)home;
 @property(readonly, copy, nonatomic) NSString *serviceIdentifier;
 @property(readonly, copy, nonatomic) NSString *type;
 - (id)dumpState;
 @property(readonly, copy) NSString *description;
+@property(copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (void)_recalculateUUID;
 - (void)dealloc;
@@ -160,7 +173,7 @@
 @property(readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *contextID;
 - (id)assistantObject;
-- (id)url;
+- (id)urlString;
 - (id)_serviceSubtypeFromLinkedServicesForServiceType:(id)arg1 accessoryCategory:(id)arg2;
 
 // Remaining properties

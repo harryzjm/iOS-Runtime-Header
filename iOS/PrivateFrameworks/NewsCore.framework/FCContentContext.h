@@ -10,14 +10,17 @@
 #import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
 #import <NewsCore/FCNetworkReachabilityRequirementObserving-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCContentContextInternal, FCContextConfiguration, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
-@protocol FCAssetKeyCacheType, FCAssetKeyManagerType, FCAssetKeyServiceType, FCBackgroundTaskable, FCCoreConfigurationManager, FCNetworkReachabilityRequirement, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@class FCAVAssetDownloadManager, FCArticleController, FCAssetManager, FCContentContextInternal, FCContextConfiguration, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
+@protocol FCAVAssetCacheType, FCAVAssetFactoryType, FCAVAssetKeyCacheType, FCAVAssetKeyManagerType, FCAVAssetKeyServiceType, FCAVAssetPrewarming, FCAVAssetResourceLoaderType, FCAssetKeyCacheType, FCAssetKeyManagerType, FCAssetKeyServiceType, FCBackgroundTaskable, FCCoreConfigurationManager, FCNetworkReachabilityRequirement, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
 
 @interface FCContentContext : NSObject <FCNetworkReachabilityRequirementObserving, FCCoreConfigurationObserving, FCContentContext>
 {
     id <FCCoreConfigurationManager> _configurationManager;
     FCArticleController *_articleController;
     FCAssetManager *_assetManager;
+    id <FCAVAssetCacheType> _avAssetCache;
+    FCAVAssetDownloadManager *_avAssetDownloadManager;
+    id <FCAVAssetPrewarming> _avAssetPrewarmer;
     FCFlintResourceManager *_flintResourceManager;
     FCTagController *_tagController;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
@@ -33,11 +36,22 @@
     id <FCAssetKeyServiceType> _assetKeyService;
     id <FCAssetKeyCacheType> _assetKeyCache;
     id <FCAssetKeyManagerType> _assetKeyManager;
+    id <FCAVAssetFactoryType> _avAssetFactory;
+    id <FCAVAssetKeyServiceType> _avAssetKeyService;
+    id <FCAVAssetKeyCacheType> _avAssetKeyCache;
+    id <FCAVAssetKeyManagerType> _avAssetKeyManager;
+    id <FCAVAssetResourceLoaderType> _avAssetResourceLoader;
     id <FCNetworkReachabilityRequirement> _supportedCountryNetworkReachabilityRequirement;
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <FCNetworkReachabilityRequirement> supportedCountryNetworkReachabilityRequirement; // @synthesize supportedCountryNetworkReachabilityRequirement=_supportedCountryNetworkReachabilityRequirement;
+@property(retain, nonatomic) id <FCAVAssetResourceLoaderType> avAssetResourceLoader; // @synthesize avAssetResourceLoader=_avAssetResourceLoader;
+@property(retain, nonatomic) id <FCAVAssetKeyManagerType> avAssetKeyManager; // @synthesize avAssetKeyManager=_avAssetKeyManager;
+@property(retain, nonatomic) id <FCAVAssetKeyCacheType> avAssetKeyCache; // @synthesize avAssetKeyCache=_avAssetKeyCache;
+@property(retain, nonatomic) id <FCAVAssetKeyServiceType> avAssetKeyService; // @synthesize avAssetKeyService=_avAssetKeyService;
+@property(retain, nonatomic) id <FCAVAssetFactoryType> avAssetFactory; // @synthesize avAssetFactory=_avAssetFactory;
 @property(retain, nonatomic) id <FCAssetKeyManagerType> assetKeyManager; // @synthesize assetKeyManager=_assetKeyManager;
 @property(retain, nonatomic) id <FCAssetKeyCacheType> assetKeyCache; // @synthesize assetKeyCache=_assetKeyCache;
 @property(retain, nonatomic) id <FCAssetKeyServiceType> assetKeyService; // @synthesize assetKeyService=_assetKeyService;
@@ -50,9 +64,11 @@
 @property(readonly, nonatomic) __weak id <FCBackgroundTaskable> backgroundTaskable; // @synthesize backgroundTaskable=_backgroundTaskable;
 @property(readonly, nonatomic) id <FCPPTContext> pptContext; // @synthesize pptContext=_pptContext;
 @property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
-- (void).cxx_destruct;
+@property(retain, nonatomic) FCAVAssetDownloadManager *avAssetDownloadManager; // @synthesize avAssetDownloadManager=_avAssetDownloadManager;
+@property(retain, nonatomic) id <FCAVAssetCacheType> avAssetCache; // @synthesize avAssetCache=_avAssetCache;
 - (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
+- (void)ppt_prewarmFeedDatabase;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
 - (id)recordTreeSourceWithRecordSources:(id)arg1;
 - (id)recordSourceWithSchema:(id)arg1;
@@ -62,6 +78,7 @@
 @property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property(readonly, nonatomic) FCTagController *tagController; // @synthesize tagController=_tagController;
 @property(readonly, nonatomic) FCArticleController *articleController; // @synthesize articleController=_articleController;
+@property(readonly, nonatomic) id <FCAVAssetPrewarming> avAssetPrewarmer; // @synthesize avAssetPrewarmer=_avAssetPrewarmer;
 @property(readonly, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
 - (id)magazinesConfigurationManager;
 - (id)news_core_ConfigurationManager;
@@ -74,6 +91,7 @@
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentDatabase:(id)arg3 contentHostDirectory:(id)arg4 networkBehaviorMonitor:(id)arg5 setupCustomURLProtocols:(_Bool)arg6 desiredHeadlineFieldOptions:(unsigned long long)arg7 feedUsage:(long long)arg8 assetKeyManagerDelegate:(id)arg9 appActivityMonitor:(id)arg10 backgroundTaskable:(id)arg11 preferredMediaQuality:(long long)arg12 pptContext:(id)arg13;
 - (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 assetKeyManagerDelegate:(id)arg7 appActivityMonitor:(id)arg8 backgroundTaskable:(id)arg9 preferredMediaQuality:(long long)arg10 pptContext:(id)arg11;
+- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 appActivityMonitor:(id)arg7 backgroundTaskable:(id)arg8 preferredMediaQuality:(long long)arg9 pptContext:(id)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,17 +14,15 @@
 
 @interface SFAbstractCommand : NSObject <SFAbstractCommand, NSSecureCoding, NSCopying>
 {
-    struct {
-        unsigned int type:1;
-    } _has;
+    CDStruct_f953fb60 _has;
     int _type;
     SFCommandValue *_value;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SFCommandValue *value; // @synthesize value=_value;
 @property(nonatomic) int type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;

@@ -26,9 +26,9 @@
 }
 
 + (double)searchHeaderHeight;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isAnimatingResetOrReveal) _Bool animatingResetOrReveal; // @synthesize animatingResetOrReveal=_animatingResetOrReveal;
 @property(retain, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
-- (void).cxx_destruct;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -43,11 +43,13 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)_updateScrollingEnabled;
+@property(readonly, nonatomic, getter=isTracking) _Bool tracking;
 @property(readonly, nonatomic, getter=isShowingSearch) _Bool showingSearch;
 - (_Bool)_isShowingSearch;
 - (void)_updateForFinalContentOffset;
 - (void)_updateForScrollingEnded;
 - (void)_notifyThaWeStartedShowingOrHiding;
+- (struct CGPoint)locationInView:(id)arg1;
 - (void)setDisabled:(_Bool)arg1 forReason:(id)arg2;
 - (void)resetAnimated:(_Bool)arg1;
 - (void)revealAnimated:(_Bool)arg1;

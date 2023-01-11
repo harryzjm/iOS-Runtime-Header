@@ -19,15 +19,15 @@
     AVCaptureDeviceFormat *__cachedPortraitDeviceFormat;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) AVCaptureDeviceFormat *_cachedPortraitDeviceFormat; // @synthesize _cachedPortraitDeviceFormat=__cachedPortraitDeviceFormat;
 @property(readonly, nonatomic) AVCaptureDeviceFormat *_cachedPanoramaDeviceFormat; // @synthesize _cachedPanoramaDeviceFormat=__cachedPanoramaDeviceFormat;
 @property(readonly, nonatomic) CAMMemoizationCache *_videoSessionPresetForVideoConfiguration; // @synthesize _videoSessionPresetForVideoConfiguration=__videoSessionPresetForVideoConfiguration;
 @property(readonly, nonatomic) CAMMemoizationCache *_videoDeviceFormatForVideoConfiguration; // @synthesize _videoDeviceFormatForVideoConfiguration=__videoDeviceFormatForVideoConfiguration;
 @property(readonly, nonatomic) __weak CAMCaptureEngine *_captureEngine; // @synthesize _captureEngine=__captureEngine;
 @property(readonly, nonatomic) AVCaptureDevice *captureDevice; // @synthesize captureDevice=_captureDevice;
-- (void).cxx_destruct;
-- (id)videoDevicePresetForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)videoDeviceFormatForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)videoDevicePresetForGraphConfiguration:(id)arg1;
+- (id)videoDeviceFormatForGraphConfiguration:(id)arg1;
 - (id)_portraitModeDeviceFormat;
 - (id)_portraitModeSessionPreset;
 - (id)_timelapseSessionPreset;

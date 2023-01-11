@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     _Bool _hsEnabled;
     _Bool _internalBuild;
     _Bool _seedBuild;
+    _Bool _isClientOnlyExperiment;
+    _Bool _isInReservedAllocationForExperiment;
     int _queryType;
     int _sendTopHit;
     int _tempUnit;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
     float _uiScale;
     int _suggest;
     int _lookupSelectionType;
+    int _abTestSeed;
     NSString *_query;
     NSString *_secretKey;
     NSString *_countryCode;
@@ -52,8 +55,16 @@ __attribute__((visibility("hidden")))
     NSString *_lookupAppBundleId;
     NSString *_lookupHintDomain;
     NSString *_siriLocale;
+    NSString *_experimentNamespaceId;
+    long long _exp;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long exp; // @synthesize exp=_exp;
+@property(nonatomic) _Bool isInReservedAllocationForExperiment; // @synthesize isInReservedAllocationForExperiment=_isInReservedAllocationForExperiment;
+@property(nonatomic) _Bool isClientOnlyExperiment; // @synthesize isClientOnlyExperiment=_isClientOnlyExperiment;
+@property(copy, nonatomic) NSString *experimentNamespaceId; // @synthesize experimentNamespaceId=_experimentNamespaceId;
+@property(nonatomic) int abTestSeed; // @synthesize abTestSeed=_abTestSeed;
 @property(nonatomic) _Bool seedBuild; // @synthesize seedBuild=_seedBuild;
 @property(nonatomic) _Bool internalBuild; // @synthesize internalBuild=_internalBuild;
 @property(nonatomic) _Bool hsEnabled; // @synthesize hsEnabled=_hsEnabled;
@@ -92,7 +103,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *secretKey; // @synthesize secretKey=_secretKey;
 @property(copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property(nonatomic) int queryType; // @synthesize queryType=_queryType;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

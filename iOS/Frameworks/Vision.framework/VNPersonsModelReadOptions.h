@@ -17,11 +17,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSIndexSet *acceptableVersions; // @synthesize acceptableVersions=_acceptableVersions;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSIndexSet *acceptableVersions; // @synthesize acceptableVersions=_acceptableVersions;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 
 @end
 

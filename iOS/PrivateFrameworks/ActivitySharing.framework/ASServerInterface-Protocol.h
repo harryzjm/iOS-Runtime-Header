@@ -6,9 +6,11 @@
 
 #import <ActivitySharing/NSObject-Protocol.h>
 
-@class NSNumber, NSString;
+@class ASUserNotificationResponse, NSNumber, NSString;
 
 @protocol ASServerInterface <NSObject>
+- (void)remote_queryAppBadgeCountWithCompletion:(void (^)(NSNumber *, _Bool, NSError *))arg1;
+- (void)remote_handleNotificationResponse:(ASUserNotificationResponse *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_friendWithRemoteUUID:(NSString *)arg1 completion:(void (^)(NSData *, _Bool, NSError *))arg2;
 - (void)remote_expireChangeTokenWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)remote_completeCompetitionWithFriendWithUUID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

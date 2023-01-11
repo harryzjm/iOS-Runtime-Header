@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VCCKNotificationCenter, VCCoreDuetListener, VCDaemonDatabaseProvider, VCDaemonSyncDataEndpoint, VCDaemonXPCEventHandler, VCShareSheetWorkflowStatusUpdater, VCSpotlightSyncService, VCWatchSyncCoordinator, VCXPCServer;
+@class VCCKShortcutSyncCoordinator, VCCoreDuetListener, VCDaemonDatabaseProvider, VCDaemonSyncDataEndpoint, VCDaemonXPCEventHandler, VCShareSheetWorkflowStatusUpdater, VCSpotlightSyncService, VCWatchSyncCoordinator, VCXPCServer, WFRemoteExecutionCoordinator, WFSiriWorkflowVocabularyUpdater;
 
 @interface VCDaemon : NSObject
 {
@@ -17,13 +17,18 @@
     VCCoreDuetListener *_coreDuetListener;
     VCWatchSyncCoordinator *_watchSyncCoordinator;
     VCSpotlightSyncService *_spotlightLibrarySyncService;
-    VCCKNotificationCenter *_cloudKitNotificationCenter;
     VCShareSheetWorkflowStatusUpdater *_shareSheetStatusUpdater;
+    WFSiriWorkflowVocabularyUpdater *_vocabularyUpdater;
+    WFRemoteExecutionCoordinator *_remoteExecutionCoordinator;
+    VCCKShortcutSyncCoordinator *_shortcutSyncCoordinator;
 }
 
 + (id)sharedDaemon;
+- (void).cxx_destruct;
+@property(retain, nonatomic) VCCKShortcutSyncCoordinator *shortcutSyncCoordinator; // @synthesize shortcutSyncCoordinator=_shortcutSyncCoordinator;
+@property(retain, nonatomic) WFRemoteExecutionCoordinator *remoteExecutionCoordinator; // @synthesize remoteExecutionCoordinator=_remoteExecutionCoordinator;
+@property(retain, nonatomic) WFSiriWorkflowVocabularyUpdater *vocabularyUpdater; // @synthesize vocabularyUpdater=_vocabularyUpdater;
 @property(retain, nonatomic) VCShareSheetWorkflowStatusUpdater *shareSheetStatusUpdater; // @synthesize shareSheetStatusUpdater=_shareSheetStatusUpdater;
-@property(retain, nonatomic) VCCKNotificationCenter *cloudKitNotificationCenter; // @synthesize cloudKitNotificationCenter=_cloudKitNotificationCenter;
 @property(readonly, nonatomic) VCSpotlightSyncService *spotlightLibrarySyncService; // @synthesize spotlightLibrarySyncService=_spotlightLibrarySyncService;
 @property(readonly, nonatomic) VCWatchSyncCoordinator *watchSyncCoordinator; // @synthesize watchSyncCoordinator=_watchSyncCoordinator;
 @property(readonly, nonatomic) VCCoreDuetListener *coreDuetListener; // @synthesize coreDuetListener=_coreDuetListener;
@@ -31,8 +36,6 @@
 @property(readonly, nonatomic) VCDaemonXPCEventHandler *xpcEventHandler; // @synthesize xpcEventHandler=_xpcEventHandler;
 @property(readonly, nonatomic) VCDaemonDatabaseProvider *databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property(readonly, nonatomic) VCXPCServer *xpcServer; // @synthesize xpcServer=_xpcServer;
-- (void).cxx_destruct;
-- (void)assistantPreferencesDidChange;
 - (void)applicationWasUnregistered:(id)arg1;
 - (void)startEventObservation;
 - (void)start;

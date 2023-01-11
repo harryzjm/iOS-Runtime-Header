@@ -37,6 +37,7 @@
     NSMutableSet *_filteringOids;
     NSMutableSet *_filteringObjectKeyPaths;
     NSMutableDictionary *_filteringRelationshipsIndexValueByBaseEntityName;
+    CDUnknownBlockType _identificationBlock;
     _Bool __includesCameraRoll;
     PHFetchOptions *_fetchOptions;
     NSArray *_propertiesToGroupBy;
@@ -46,6 +47,13 @@
     PHPhotoLibrary *_photoLibrary;
 }
 
++ (CDUnknownBlockType)identificationBlockForAlbumSortKey:(unsigned int)arg1;
++ (CDUnknownBlockType)identificationBlockForSmartAlbumKind:(int)arg1;
++ (id)queryForQuestionsWithState:(unsigned short)arg1 options:(id)arg2;
++ (id)queryForAnsweredQuestionsWithOptions:(id)arg1;
++ (id)queryForAnsweredYesOrNoQuestionsWithOptions:(id)arg1;
++ (id)queryForQuestionsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)queryForQuestionsWithOptions:(id)arg1;
 + (id)queryForKeywordsForAsset:(id)arg1 options:(id)arg2;
 + (id)queryForKeywordsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForKeywordsWithTitles:(id)arg1 options:(id)arg2;
@@ -55,8 +63,9 @@
 + (id)queryForSuggestionsWithState:(unsigned short)arg1 type:(unsigned short)arg2 options:(id)arg3;
 + (id)queryForSuggestionsWithState:(unsigned short)arg1 options:(id)arg2;
 + (id)queryForSuggestionsWithOptions:(id)arg1;
-+ (id)queryForMomentShareParticipantsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
-+ (id)queryForMomentShareParticipantsInMomentShare:(id)arg1 options:(id)arg2;
++ (id)queryForContributorForAsset:(id)arg1 options:(id)arg2;
++ (id)queryForShareParticipantsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)queryForShareParticipantsInShare:(id)arg1 options:(id)arg2;
 + (id)queryForFaceCropsForPerson:(id)arg1 options:(id)arg2;
 + (id)queryForFaceCropsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForFaceCropsWithOptions:(id)arg1;
@@ -79,7 +88,7 @@
 + (id)_queryForPersonsInAssetsWithObjectIDs:(id)arg1 withOptions:(id)arg2;
 + (id)queryForPersonsInAssets:(id)arg1 withOptions:(id)arg2;
 + (id)queryForPersonsInAsset:(id)arg1 options:(id)arg2;
-+ (id)queryForPersonsWithQuestionType:(long long)arg1 options:(id)arg2;
++ (id)queryForPersonsWithQuestionType:(unsigned short)arg1 options:(id)arg2;
 + (id)queryForPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)queryForPersonsWithOptions:(id)arg1;
 + (id)queryForKeyFaceOnPerson:(id)arg1 options:(id)arg2;
@@ -107,6 +116,7 @@
 + (id)queryForCollectionListsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
 + (id)queryForCollectionListContainingCollection:(id)arg1 options:(id)arg2;
 + (id)queryForCollectionsInCollectionList:(id)arg1 options:(id)arg2;
++ (id)queryForMomentsContainingAssetsWithOIDs:(id)arg1 options:(id)arg2;
 + (id)queryForMomentsContainingAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForMomentsForPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForMomentsForFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
@@ -131,6 +141,7 @@
 + (_Bool)_validateLocalIdentifiers:(id)arg1 compatibilityWithFetchType:(id)arg2;
 + (id)queryForAssetCollectionsContainingAssets:(id)arg1 withType:(long long)arg2 options:(id)arg3;
 + (id)queryForAssetCollectionsContainingAsset:(id)arg1 withType:(long long)arg2 options:(id)arg3;
++ (id)queryForAssetsFromCameraSinceDate:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsForBehavioralCurationWithOptions:(id)arg1;
 + (id)queryForAllAssetsInYearRepresentedByYearHighlight:(id)arg1 options:(id)arg2;
 + (id)queryForFirstAssetInEachMonthHighlightWithOptions:(id)arg1;
@@ -146,7 +157,9 @@
 + (id)queryForAssetsWithObjectIDs:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsWithOptions:(id)arg1;
 + (id)queryForAssetsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
++ (id)queryForAssetsWithUUIDs:(id)arg1 options:(id)arg2;
 + (id)queryForAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)_queryForAssetsWithIdentifiers:(id)arg1 local:(_Bool)arg2 options:(id)arg3;
 + (id)_defaultFetchOptionsForIdentifiedAssetsQuery;
 + (id)queryForType:(id)arg1 withIdentifiers:(id)arg2 local:(_Bool)arg3 options:(id)arg4;
 + (id)queryForType:(id)arg1 withIdentifiers:(id)arg2 identiferKeyPath:(id)arg3 options:(id)arg4;
@@ -164,7 +177,7 @@
 + (id)queryForKeyAssetInMemory:(id)arg1 options:(id)arg2;
 + (id)queryForExtendedCuratedAssetsInMemory:(id)arg1 options:(id)arg2;
 + (id)queryForCuratedAssetsInMemory:(id)arg1 options:(id)arg2;
-+ (id)_fetchOptionsForFetchingAssetsFromAssetCollection:(id)arg1 options:(id)arg2;
++ (id)_fetchOptionsForFetchingAssetsFromAssetCollection:(id)arg1 options:(id)arg2 changeDetectionCriteria:(id)arg3;
 + (id)_fetchOptionsForFetchingAssetsFromImportSessions:(id)arg1 options:(id)arg2;
 + (id)combinedFetchRequestForQueries:(id)arg1;
 + (_Bool)_isKindOfMomentOrAlbumEntity:(id)arg1;
@@ -175,6 +188,7 @@
 + (id)_relationshipForFetchType:(id)arg1 predicate:(id)arg2;
 + (id)queryForType:(id)arg1 withBasePredicate:(id)arg2 seedOIDs:(id)arg3 inLibrary:(id)arg4;
 + (id)queryForType:(id)arg1 withBasePredicate:(id)arg2 inLibrary:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly) NSArray *seedOIDs; // @synthesize seedOIDs=_seedOIDs;
 @property(readonly) NSPredicate *basePredicate; // @synthesize basePredicate=_basePredicate;
@@ -183,11 +197,12 @@
 @property(retain) NSArray *propertiesToGroupBy; // @synthesize propertiesToGroupBy=_propertiesToGroupBy;
 @property(nonatomic, setter=_setIncludesCameraRoll:) _Bool _includesCameraRoll; // @synthesize _includesCameraRoll=__includesCameraRoll;
 @property(copy, nonatomic) PHFetchOptions *fetchOptions; // @synthesize fetchOptions=_fetchOptions;
-- (void).cxx_destruct;
+- (void)_setIdentificationBlock:(CDUnknownBlockType)arg1;
 - (id)description;
 - (void)visitPredicateExpression:(id)arg1;
 - (void)visitPredicateOperator:(id)arg1;
 - (void)visitPredicate:(id)arg1;
+- (id)_substitutedChangeTrackingKeyPathFromKeyPath:(id)arg1;
 - (void)_prepareFilteringAttributes;
 @property(readonly, nonatomic) NSDictionary *filteringRelationshipsIndexValueByBaseEntityName;
 @property(readonly, nonatomic) NSSet *filteringOids;
@@ -209,7 +224,7 @@
 - (void)_setBasePredicate:(id)arg1;
 - (void)_setContainerCollection:(id)arg1;
 - (id)containerIdentifier;
-- (id)_containerRelationship;
+@property(readonly, nonatomic) NSRelationshipDescription *containerRelationship;
 - (void)_setCollectionFetchType:(long long)arg1;
 - (long long)collectionFetchType;
 @property(readonly) NSFetchRequest *fetchRequest;

@@ -32,6 +32,7 @@
 @property(readonly, nonatomic) long long unorientedHeight;
 @property(readonly, nonatomic) long long unorientedWidth;
 @property(readonly, nonatomic) unsigned int orientation;
+- (float)scaleGivenAssetHasAdjustments:(_Bool)arg1 currentWidth:(long long)arg2 currentHeight:(long long)arg3;
 - (_Bool)isPlayableVideo;
 - (_Bool)isDerivative;
 - (_Bool)isDefaultOrientation;

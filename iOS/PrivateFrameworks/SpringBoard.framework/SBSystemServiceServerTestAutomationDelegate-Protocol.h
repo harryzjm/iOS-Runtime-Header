@@ -10,11 +10,17 @@
 @protocol FBSServiceFacilityClientHandle;
 
 @protocol SBSystemServiceServerTestAutomationDelegate <SBSystemServiceServerDelegate>
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 addWidgetWithIdentifier:(NSString *)arg3 toPage:(long long)arg4 withSizing:(long long)arg5;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 addWidgetsToEachPageForClient:(id <FBSServiceFacilityClientHandle>)arg2;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 loadStashedSwitcherModelFromPath:(NSString *)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 stashSwitcherModelToPath:(NSString *)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 countScenesForBundleIdentifier:(NSString *)arg3 withCompletion:(void (^)(int))arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setTestRunnerRecoveryApplicationBundleIdentifier:(NSString *)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setApplicationBundleIdentifier:(NSString *)arg3 blockedForScreenTime:(_Bool)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 port:(BSMachPortSendRight *)arg3 acquireHUDHiddenAssertionForIdentifier:(NSString *)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 resetToHomeScreenAnimated:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setHiddenFeaturesEnabled:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setMallocStackLoggingEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setOrientationLockEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setIdleTimerEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setAlertsEnabled:(_Bool)arg3;

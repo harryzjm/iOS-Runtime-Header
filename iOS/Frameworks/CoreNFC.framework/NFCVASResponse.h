@@ -17,11 +17,11 @@
     NSData *_mobileToken;
 }
 
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSData *mobileToken; // @synthesize mobileToken=_mobileToken;
 @property(readonly, retain, nonatomic) NSData *vasData; // @synthesize vasData=_vasData;
 @property(readonly, nonatomic) long long status; // @synthesize status=_status;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithStatus:(long long)arg1 data:(id)arg2 mobileToken:(id)arg3;
 - (id)init;
 

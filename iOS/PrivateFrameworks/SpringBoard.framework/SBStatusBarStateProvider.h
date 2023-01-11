@@ -15,11 +15,11 @@
 {
     SBStatusBarStateAggregator *_stateAggregator;
     NSHashTable *_stateObservers;
-    CDStruct_0942cde0 _aggregatorData;
+    CDStruct_3fd7985f _aggregatorData;
     int _aggregatorActions;
-    CDStruct_0942cde0 _lastPost;
+    CDStruct_3fd7985f _lastPost;
     unsigned long long _coalescentBlockDepth;
-    _Bool _itemNeedsPost[42];
+    _Bool _itemNeedsPost[43];
     _Bool _anyItemNeedsPost;
     _Bool _nonItemDataNeedsPost;
     _Bool _posting;
@@ -27,20 +27,20 @@
 }
 
 - (void).cxx_destruct;
-- (void)statusBarStateAggregatorDidFinishPost:(id)arg1 withData:(const CDStruct_0942cde0 *)arg2 actions:(int)arg3;
-- (void)statusBarStateAggregator:(id)arg1 didUpdateNonItemData:(const CDStruct_0942cde0 *)arg2;
-- (void)statusBarStateAggregator:(id)arg1 didVisitItem:(int)arg2 withUpdates:(_Bool)arg3 toData:(const CDStruct_0942cde0 *)arg4;
+- (void)statusBarStateAggregatorDidFinishPost:(id)arg1 withData:(const CDStruct_3fd7985f *)arg2 actions:(int)arg3;
+- (void)statusBarStateAggregator:(id)arg1 didUpdateNonItemData:(const CDStruct_3fd7985f *)arg2;
+- (void)statusBarStateAggregator:(id)arg1 didVisitItem:(int)arg2 withUpdates:(_Bool)arg3 toData:(const CDStruct_3fd7985f *)arg4;
 - (void)statusBarStateAggregatorDidStartPost:(id)arg1;
 - (void)_didFinishPost;
 - (void)_composePostActionsFromAggregatorActions:(int *)arg1;
-- (void)_composePostDataFromAggregatorData:(CDStruct_0942cde0 *)arg1;
-- (_Bool)_shouldPostForUpdatesToNonItemData:(const CDStruct_0942cde0 *)arg1;
-- (_Bool)_shouldPostForVisitedItem:(int)arg1 withUpdates:(_Bool)arg2 toAggregatorData:(const CDStruct_0942cde0 *)arg3 lastPost:(const CDStruct_0942cde0 *)arg4;
+- (void)_composePostDataFromAggregatorData:(CDStruct_3fd7985f *)arg1;
+- (_Bool)_shouldPostForUpdatesToNonItemData:(const CDStruct_3fd7985f *)arg1;
+- (_Bool)_shouldPostForVisitedItem:(int)arg1 withUpdates:(_Bool)arg2 toAggregatorData:(const CDStruct_3fd7985f *)arg3 lastPost:(const CDStruct_3fd7985f *)arg4;
 - (void)_didChangeDoubleHeightStatusStringForStyle:(long long)arg1;
 - (void)updateStatusBarItem:(int)arg1;
 - (void)endCoalescentBlock;
 - (void)beginCoalescentBlock;
-- (void)getStatusBarData:(CDStruct_0942cde0 *)arg1;
+- (void)getStatusBarData:(CDStruct_3fd7985f *)arg1;
 - (void)removeStatusBarStateObserver:(id)arg1;
 - (void)addStatusBarStateObserver:(id)arg1;
 - (void)dealloc;

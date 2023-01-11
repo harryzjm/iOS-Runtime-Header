@@ -18,6 +18,8 @@
 + (id)firstMatchingKeywordForRegex:(id)arg1 inString:(id)arg2 needsToLowercase:(_Bool)arg3;
 + (unsigned long long)numberOfMatchesForRegex:(id)arg1 inString:(id)arg2 needsToLowercase:(_Bool)arg3;
 + (id)regexPatternForLanguageID:(id)arg1 eventVocabularyArray:(id)arg2;
++ (id)regexPatternWithPrefix:(id)arg1 suffix:(id)arg2 choices:(id)arg3;
++ (id)regexPatternByUncapturingPattern:(id)arg1;
 
 @end
 

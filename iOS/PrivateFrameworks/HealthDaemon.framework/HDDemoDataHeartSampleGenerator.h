@@ -21,6 +21,7 @@
 @property(nonatomic) double nextRestingHeartRateSampleTime; // @synthesize nextRestingHeartRateSampleTime=_nextRestingHeartRateSampleTime;
 @property(nonatomic) unsigned long long nextElectrocardiogramClassification; // @synthesize nextElectrocardiogramClassification=_nextElectrocardiogramClassification;
 @property(nonatomic) double nextElectrocardiogramSampleTime; // @synthesize nextElectrocardiogramSampleTime=_nextElectrocardiogramSampleTime;
+- (id)_generateSymptomSamplesForElectrocardiogram:(id)arg1;
 - (id)_generateElectrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 classification:(unsigned long long)arg3 sampleDate:(id)arg4;
 - (double)_computeWalkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_computeRestingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;

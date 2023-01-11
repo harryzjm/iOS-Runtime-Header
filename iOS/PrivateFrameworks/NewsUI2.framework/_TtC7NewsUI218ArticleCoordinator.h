@@ -12,10 +12,12 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *audioPlaybackContext;
     MISSING_TYPE *issueSessionManager;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *externalEventSubmitter;
+    MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *issue;
 }
 

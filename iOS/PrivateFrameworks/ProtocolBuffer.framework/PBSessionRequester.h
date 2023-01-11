@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ProtocolBuffer/NSURLSessionDataDelegate-Protocol.h>
+#import <ProtocolBuffer/NSURLSessionTaskDelegatePrivate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableData, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLSession, NSURLSessionTask, PBDataReader;
 @protocol PBSessionRequesterDelegate;
 
-@interface PBSessionRequester : NSObject <NSURLSessionDataDelegate>
+@interface PBSessionRequester : NSObject <NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate>
 {
     NSURL *_URL;
     id <PBSessionRequesterDelegate> _delegate;
@@ -75,7 +76,6 @@
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (void)startWithConnectionProperties:(id)arg1;
 - (id)newSessionTaskOnSession:(id)arg1 withURLRequest:(id)arg2;
-- (id)_newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
 - (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
 - (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (id)newMutableURLRequestWithURL:(id)arg1;
@@ -87,32 +87,16 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)_tryParseData;
 - (id)tryReadResponseData:(id)arg1 forRequest:(id)arg2 forResponseClass:(Class)arg3;
 - (_Bool)readResponsePreamble:(id)arg1;
 - (void)cancelWithErrorCode:(long long)arg1;
-- (void)cancelWithErrorCode:(long long)arg1 description:(id)arg2;
-- (void)_cancelWithErrorDomain:(id)arg1 errorCode:(long long)arg2 userInfo:(id)arg3;
-- (void)_failWithErrorDomain:(id)arg1 errorCode:(long long)arg2 userInfo:(id)arg3;
-- (void)_failWithError:(id)arg1;
 - (void)resume;
 - (_Bool)isPaused;
 - (void)pause;
 - (void)cancel;
-- (void)_performOnDelegateQueue:(CDUnknownBlockType)arg1;
-- (void)_cancelNoNotify;
-- (void)_start;
 - (void)start;
-- (void)_serializePayload:(CDUnknownBlockType)arg1;
-- (void)_logErrorIfNecessary:(id)arg1;
-- (void)_logResponsesIfNecessary:(id)arg1;
-- (void)_logRequestsIfNecessary:(id)arg1;
-- (_Bool)_sendPayload:(id)arg1 error:(id *)arg2;
 - (void)writeRequest:(id)arg1 into:(id)arg2;
 - (id)requestPreamble;
-- (id)_osVersion;
-- (id)_applicationID;
-- (id)_languageLocale;
 - (void)setHttpRequestHeader:(id)arg1 forKey:(id)arg2;
 @property(copy, nonatomic) NSDictionary *httpRequestHeaders;
 - (void)handleResponse:(id)arg1 forInternalRequest:(id)arg2;
@@ -124,13 +108,9 @@
 - (void)clearRequests;
 @property(readonly, nonatomic) NSArray *requests;
 - (void)setNeedsCancel;
-@property _Bool needsCancel;
-- (void)_didSetDelegate:(id)arg1;
 @property(nonatomic) _Bool ignoresResponse;
-- (void)_cleanup;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
-- (void)setDelegate:(id)arg1;
 @property(readonly) __weak id <PBSessionRequesterDelegate> delegate;
 
 // Remaining properties

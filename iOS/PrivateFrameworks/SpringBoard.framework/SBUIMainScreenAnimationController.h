@@ -5,11 +5,19 @@
 //
 
 @class NSSet, SBDeviceApplicationSceneEntity, SBWorkspaceTransitionRequest;
+@protocol BSInvalidatable;
 
 @interface SBUIMainScreenAnimationController
 {
+    id <BSInvalidatable> _colorSamplingAssertion;
+    id <BSInvalidatable> _wallpaperRequiredAssertion;
+    id <BSInvalidatable> _bannerSuppressionAssertion;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) id <BSInvalidatable> bannerSuppressionAssertion; // @synthesize bannerSuppressionAssertion=_bannerSuppressionAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> wallpaperRequiredAssertion; // @synthesize wallpaperRequiredAssertion=_wallpaperRequiredAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> colorSamplingAssertion; // @synthesize colorSamplingAssertion=_colorSamplingAssertion;
 - (void)_cleanupAnimation;
 - (void)_begin;
 - (void)_dismissBannerAnimated:(_Bool)arg1;

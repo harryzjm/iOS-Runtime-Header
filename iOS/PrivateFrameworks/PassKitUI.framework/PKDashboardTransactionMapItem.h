@@ -15,8 +15,9 @@
     PKPaymentTransaction *_transaction;
 }
 
-@property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
++ (id)identifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

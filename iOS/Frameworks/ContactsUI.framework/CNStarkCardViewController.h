@@ -8,37 +8,40 @@
 
 #import <ContactsUI/CNContactContentViewControllerDelegate-Protocol.h>
 
-@class CNAvatarViewController, CNContact, CNStarkActionsController, CNStarkNameViewController, NSArray, NSString;
+@class CNAvatarViewController, CNContact, CNStarkActionsController, CNStarkContactInfoViewController, NSArray, NSString, UILayoutGuide;
 
 @interface CNStarkCardViewController : UIViewController <CNContactContentViewControllerDelegate>
 {
     CNAvatarViewController *_avatarViewController;
-    CNStarkNameViewController *_nameViewController;
+    CNStarkContactInfoViewController *_contactInfoViewController;
     CNStarkActionsController *_actionsController;
     CNContact *_contact;
     NSArray *_displayedContactProperties;
     NSArray *_layoutConstraints;
+    UILayoutGuide *_centeringLayoutGuide;
+    UILayoutGuide *_avatarAndDetailsLayoutGuide;
 }
 
 + (id)starkCardControllerForCalendarEventWithContact:(id)arg1;
 + (id)descriptorForRequiredKeys;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UILayoutGuide *avatarAndDetailsLayoutGuide; // @synthesize avatarAndDetailsLayoutGuide=_avatarAndDetailsLayoutGuide;
+@property(retain, nonatomic) UILayoutGuide *centeringLayoutGuide; // @synthesize centeringLayoutGuide=_centeringLayoutGuide;
 @property(retain, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
 @property(readonly, nonatomic) NSArray *displayedContactProperties; // @synthesize displayedContactProperties=_displayedContactProperties;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(readonly, nonatomic) CNStarkActionsController *actionsController; // @synthesize actionsController=_actionsController;
-@property(readonly, nonatomic) CNStarkNameViewController *nameViewController; // @synthesize nameViewController=_nameViewController;
+@property(readonly, nonatomic) CNStarkContactInfoViewController *contactInfoViewController; // @synthesize contactInfoViewController=_contactInfoViewController;
 @property(readonly, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
-- (void).cxx_destruct;
 - (_Bool)contactViewController:(id)arg1 shouldPerformDefaultActionForContact:(id)arg2 propertyKey:(id)arg3 propertyIdentifier:(id)arg4;
 - (void)showMore:(id)arg1;
 - (void)updateNavigationItems;
 - (void)updateViewControllers;
-- (id)regularFontSizeConstraints;
-- (id)accessibilityFontSizeConstraints;
 - (void)setupLayoutConstraints;
 - (void)updateViewConstraints;
 - (void)resetLayoutConstraints;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)setupLayoutGuides;
 - (void)setupViewControllers;
 - (void)viewDidLoad;
 - (id)initWithContact:(id)arg1 displayedContactProperties:(id)arg2;

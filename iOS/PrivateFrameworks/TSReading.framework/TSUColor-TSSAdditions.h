@@ -19,5 +19,7 @@
 + (id)highContrastBackgroundColorForPreset:(id)arg1;
 - (_Bool)isThemeEquivalent:(id)arg1;
 @property(readonly, nonatomic) NSString *presetKind;
+- (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
+- (long long)mixingTypeWithObject:(id)arg1;
 @end
 

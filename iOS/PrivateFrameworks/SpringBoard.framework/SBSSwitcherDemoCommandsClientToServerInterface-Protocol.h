@@ -12,7 +12,7 @@
 @protocol SBSSwitcherDemoCommandsClientToServerInterface <NSObject>
 - (_Bool)setShouldDisableSwitcherModelUpdates:(NSNumber *)arg1;
 - (_Bool)updateHiddenApplicationBundleIDs:(NSArray<__NSString__> *)arg1;
-- (_Bool)loadStashedSwitcherModelFromFilename:(NSString *)arg1;
-- (_Bool)stashSwitcherModelToFilename:(NSString *)arg1;
+- (_Bool)loadStashedSwitcherModelFromPath:(NSString *)arg1;
+- (_Bool)stashSwitcherModelToPath:(NSString *)arg1;
 @end
 

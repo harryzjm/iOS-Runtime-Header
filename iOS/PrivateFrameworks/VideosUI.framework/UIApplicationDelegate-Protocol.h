@@ -19,10 +19,12 @@
 - (void)application:(UIApplication *)arg1 didFailToContinueUserActivityWithType:(NSString *)arg2 error:(NSError *)arg3;
 - (_Bool)application:(UIApplication *)arg1 continueUserActivity:(NSUserActivity *)arg2 restorationHandler:(void (^)(NSArray *))arg3;
 - (_Bool)application:(UIApplication *)arg1 willContinueUserActivityWithType:(NSString *)arg2;
-- (void)application:(UIApplication *)arg1 didDecodeRestorableStateWithCoder:(NSCoder *)arg2;
-- (void)application:(UIApplication *)arg1 willEncodeRestorableStateWithCoder:(NSCoder *)arg2;
 - (_Bool)application:(UIApplication *)arg1 shouldRestoreApplicationState:(NSCoder *)arg2;
 - (_Bool)application:(UIApplication *)arg1 shouldSaveApplicationState:(NSCoder *)arg2;
+- (void)application:(UIApplication *)arg1 didDecodeRestorableStateWithCoder:(NSCoder *)arg2;
+- (void)application:(UIApplication *)arg1 willEncodeRestorableStateWithCoder:(NSCoder *)arg2;
+- (_Bool)application:(UIApplication *)arg1 shouldRestoreSecureApplicationState:(NSCoder *)arg2;
+- (_Bool)application:(UIApplication *)arg1 shouldSaveSecureApplicationState:(NSCoder *)arg2;
 - (UIViewController *)application:(UIApplication *)arg1 viewControllerWithRestorationIdentifierPath:(NSArray *)arg2 coder:(NSCoder *)arg3;
 - (_Bool)application:(UIApplication *)arg1 shouldAllowExtensionPointIdentifier:(NSString *)arg2;
 - (unsigned long long)application:(UIApplication *)arg1 supportedInterfaceOrientationsForWindow:(UIWindow *)arg2;
@@ -31,6 +33,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)arg1;
 - (void)applicationDidEnterBackground:(UIApplication *)arg1;
 - (void)application:(UIApplication *)arg1 handleIntent:(INIntent *)arg2 completionHandler:(void (^)(INIntentResponse *))arg3;
+- (id)application:(UIApplication *)arg1 handlerForIntent:(INIntent *)arg2;
 - (void)applicationShouldRequestHealthAuthorization:(UIApplication *)arg1;
 - (void)application:(UIApplication *)arg1 handleWatchKitExtensionRequest:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)application:(UIApplication *)arg1 handleEventsForBackgroundURLSession:(NSString *)arg2 completionHandler:(void (^)(void))arg3;

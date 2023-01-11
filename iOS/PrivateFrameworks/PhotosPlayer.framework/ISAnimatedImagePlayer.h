@@ -8,12 +8,12 @@
 
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 
-@class ISAnimatedImage, ISAnimatedImageTimer, NSHashTable, NSString;
+@class ISAnimatedImageTimer, NSHashTable, NSString, PFAnimatedImage;
 
 @interface ISAnimatedImagePlayer : NSObject <ISChangeObserver>
 {
     NSHashTable *_weakDestinations;
-    ISAnimatedImage *_image;
+    PFAnimatedImage *_image;
     ISAnimatedImageTimer *_timer;
     struct CGImage *_currentImage;
     _Bool _hasStartedAnimating;
@@ -27,10 +27,10 @@
     unsigned long long _displayedFrameIndex;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowFrameDrops; // @synthesize allowFrameDrops=_allowFrameDrops;
 @property(nonatomic) unsigned long long displayedFrameIndex; // @synthesize displayedFrameIndex=_displayedFrameIndex;
 @property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
-- (void).cxx_destruct;
 - (void)animationTimerFired:(double)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)updateAnimation;
@@ -45,7 +45,7 @@
 - (void)_notifyDestinationsOfFrameChange;
 - (void)unregisterDestination:(id)arg1;
 - (void)registerDestination:(id)arg1;
-@property(readonly, nonatomic) ISAnimatedImage *animatedImage;
+@property(readonly, nonatomic) PFAnimatedImage *animatedImage;
 - (void)dealloc;
 - (id)initWithAnimatedImage:(id)arg1;
 

@@ -13,14 +13,15 @@
 @interface GEORPUpdatedLabel : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_center;
     NSString *_localizedText;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_center:1;
         unsigned int read_localizedText:1;
-        unsigned int wrote_center:1;
-        unsigned int wrote_localizedText:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -34,14 +35,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOLatLng *center;
 @property(readonly, nonatomic) _Bool hasCenter;
-- (void)_readCenter;
 @property(retain, nonatomic) NSString *localizedText;
 @property(readonly, nonatomic) _Bool hasLocalizedText;
-- (void)_readLocalizedText;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

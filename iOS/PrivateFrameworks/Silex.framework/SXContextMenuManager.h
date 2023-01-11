@@ -9,7 +9,7 @@
 #import <Silex/SXContextMenuManager-Protocol.h>
 #import <Silex/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SXViewport;
+@class NSMutableArray, NSString, SXViewport, UITargetedPreview;
 @protocol SXContextMenuManagerDelegate, SXContextMenuProviding;
 
 @interface SXContextMenuManager : NSObject <UIContextMenuInteractionDelegate, SXContextMenuManager>
@@ -18,16 +18,21 @@
     SXViewport *_viewport;
     NSMutableArray *_providers;
     id <SXContextMenuProviding> _activeProvider;
+    UITargetedPreview *_activePreview;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UITargetedPreview *activePreview; // @synthesize activePreview=_activePreview;
 @property(retain, nonatomic) id <SXContextMenuProviding> activeProvider; // @synthesize activeProvider=_activeProvider;
 @property(readonly, nonatomic) NSMutableArray *providers; // @synthesize providers=_providers;
 @property(readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 @property(nonatomic) __weak id <SXContextMenuManagerDelegate> delegate; // @synthesize delegate;
-- (void).cxx_destruct;
 - (void)didEndPreviewing;
 - (void)willStartPreviewing;
 - (_Bool)shouldStartPreviewing;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteractionDidEnd:(id)arg1;
 - (void)contextMenuInteractionWillPresent:(id)arg1;
 - (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;

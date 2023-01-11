@@ -9,25 +9,29 @@
 #import <Message/EFLoggable-Protocol.h>
 #import <Message/MFMailMessageLibraryMigratorDelegate-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface MFPersistenceDatabase_iOS : EDPersistenceDatabase <EFLoggable, MFMailMessageLibraryMigratorDelegate>
 {
     _Bool _migrationHasRun;
     _Bool _createdTempTable;
     id _migrationLock;
+    NSMutableArray *_postMigrationSteps;
 }
 
 + (id)log;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *postMigrationSteps; // @synthesize postMigrationSteps=_postMigrationSteps;
 @property(nonatomic) _Bool createdTempTable; // @synthesize createdTempTable=_createdTempTable;
 @property(nonatomic) _Bool migrationHasRun; // @synthesize migrationHasRun=_migrationHasRun;
 @property(readonly, nonatomic) id migrationLock; // @synthesize migrationLock=_migrationLock;
-- (void).cxx_destruct;
 - (void)mailMessageLibraryMigratorScheduleSpotlightReindex:(id)arg1;
 - (void)mailMessageLibraryMigrator:(id)arg1 isInitializingDatabaseWithConnection:(id)arg2;
 - (void)mailMessageLibraryMigrator:(id)arg1 detachProtectedDatabaseWithConnection:(id)arg2;
 - (_Bool)mailMessageLibraryMigrator:(id)arg1 attachProtectedDatabaseWithName:(id)arg2 connection:(id)arg3 error:(id *)arg4;
 - (_Bool)enforceDataProtection;
+- (void)addPostMigrationStep:(id)arg1;
+- (_Bool)_migrateWithDatabaseConnection:(id)arg1 migrator:(id)arg2;
 - (id)openConnectionIsWriter:(_Bool)arg1;
 - (void)checkInConnection:(id)arg1;
 - (id)checkOutConnectionIsWriter:(_Bool)arg1;

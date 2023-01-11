@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, XCUIRemote, XCUISiriService, XCUITestContext;
-@protocol XCUIAccessibilityInterface, XCUIApplicationAutomationSessionProviding, XCUIApplicationManaging, XCUIApplicationMonitor, XCUIDeviceEventAndStateInterface, XCUIEventSynthesizing, XCUIScreenDataSource, XCUIXcodeApplicationManaging;
+@class NSString, XCUIRemote, XCUISiriService;
+@protocol XCUIAccessibilityInterface, XCUIApplicationAutomationSessionProviding, XCUIApplicationManaging, XCUIApplicationMonitor, XCUIDeviceDiagnostics, XCUIDeviceEventAndStateInterface, XCUIEventSynthesizing, XCUIInterruptionMonitoring, XCUIResetAuthorizationStatusOfProtectedResourcesInterface, XCUIScreenDataSource, XCUIXcodeApplicationManaging;
 
 @interface XCUIDevice : NSObject
 {
@@ -24,14 +24,20 @@
     XCUISiriService *_siriService;
     id <XCUIScreenDataSource> _screenDataSource;
     NSString *_uniqueIdentifier;
-    XCUITestContext *_testContext;
     XCUIRemote *_remote;
+    id <XCUIInterruptionMonitoring> _interruptionMonitor;
+    id <XCUIResetAuthorizationStatusOfProtectedResourcesInterface> _resetAuthorizationStatusInterface;
+    id <XCUIDeviceDiagnostics> _diagnosticsProvider;
 }
 
 + (id)sharedDevice;
++ (void)setLocalDevice:(id)arg1;
 + (id)localDevice;
+- (void).cxx_destruct;
+- (id)diagnosticsProvider;
+- (id)resetAuthorizationStatusInterface;
+- (id)interruptionMonitor;
 - (id)remote;
-- (id)testContext;
 - (_Bool)isSimulatorDevice;
 - (id)uniqueIdentifier;
 - (id)screenDataSource;
@@ -44,7 +50,6 @@
 - (id)accessibilityInterface;
 - (long long)platform;
 - (_Bool)isLocal;
-- (void).cxx_destruct;
 - (void)remoteAutomationSessionDidDisconnect:(id)arg1;
 - (void)attachLocalizableStringsData;
 - (void)rotateDigitalCrown:(double)arg1 velocity:(double)arg2;
@@ -58,6 +63,8 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)spindumpAttachmentForProcessID:(int)arg1 error:(id *)arg2;
+- (id)makeDiagnosticScreenshotAttachmentForDevice;
 - (id)mainScreen;
 - (id)screens;
 - (id)mainScreenOrError:(id *)arg1;
@@ -65,6 +72,9 @@
 @property(readonly) XCUISiriService *siriService; // @synthesize siriService=_siriService;
 - (_Bool)supportsPressureInteraction;
 - (_Bool)performDeviceEvent:(id)arg1 error:(id *)arg2;
+- (_Bool)configuredForUITesting;
+- (id)diagnosticAttachmentsForError:(id)arg1;
+- (id)initWithDiagnosticProvider:(id)arg1;
 - (id)initLocalDeviceWithPlatform:(long long)arg1;
 
 @end

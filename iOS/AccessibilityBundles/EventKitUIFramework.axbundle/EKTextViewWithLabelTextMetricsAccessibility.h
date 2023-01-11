@@ -11,6 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axURLCell;
+- (id)accessibilityLabel;
+- (struct CGRect)accessibilityFrame;
+- (_Bool)isAccessibilityElement;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)accessibilityIsLocationLink;
 - (id)_axLocationItem;

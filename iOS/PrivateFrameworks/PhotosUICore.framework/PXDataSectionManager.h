@@ -19,17 +19,19 @@
     unsigned long long _previousDataSectionIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long previousDataSectionIdentifier; // @synthesize previousDataSectionIdentifier=_previousDataSectionIdentifier;
 @property(readonly, nonatomic) PXDataSection *previousDataSection; // @synthesize previousDataSection=_previousDataSection;
 @property(readonly, nonatomic) PXArrayChangeDetails *changeDetailsFromPreviousDataSection; // @synthesize changeDetailsFromPreviousDataSection=_changeDetailsFromPreviousDataSection;
 @property(retain, nonatomic) id <NSObject><NSCopying> outlineObject; // @synthesize outlineObject=_outlineObject;
 @property(copy, nonatomic) NSArray *childDataSectionManagers; // @synthesize childDataSectionManagers=_childDataSectionManagers;
-- (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+@property(readonly, nonatomic) unsigned long long childChangeDescriptorsInvalidatingDataSection;
 - (id)auxiliaryObjectForKey:(id)arg1 dataSectionObject:(id)arg2 hintIndex:(long long)arg3;
 - (void)childDataSectionManager:(id)arg1 didChangeDataSectionWithChangeDetails:(id)arg2;
 - (id)changeDetailsForChangedChildDataSectionManager:(id)arg1 childChangeDetails:(id)arg2;
 - (id)changeDetailsForChildDataSectionManagersChangeDetails:(id)arg1;
+@property(readonly, nonatomic, getter=isDataSectionEmpty) _Bool dataSectionEmpty;
 @property(readonly, nonatomic) PXDataSection *dataSection;
 @property(readonly, nonatomic) PXDataSection *dataSectionIfCreated;
 - (id)createDataSection;
@@ -37,6 +39,7 @@
 - (void)_setDataSection:(id)arg1 changeDetails:(id)arg2;
 - (void)_unregisterAsChangeObserverForDataSectionManagers:(id)arg1;
 - (void)_registerAsChangeObserverForDataSectionManagers:(id)arg1;
+@property(readonly, nonatomic) _Bool allowsEmptyDataSection;
 - (id)init;
 - (id)initWithChildDataSectionManagers:(id)arg1;
 

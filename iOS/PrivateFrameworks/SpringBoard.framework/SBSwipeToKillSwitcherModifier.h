@@ -11,13 +11,29 @@
     SBAppLayout *_appLayout;
     double _progress;
     _Bool _hasPrepared;
+    _Bool _simulatingPostRemovalState;
+    unsigned long long _interpolationDirection;
 }
 
 - (void).cxx_destruct;
-- (id)topMostAppLayouts;
-- (id)appLayoutsForInsertionOrRemoval;
+- (unsigned long long)_interpolatingAdjacentIndexForIndex:(unsigned long long)arg1;
+- (void)_calculateInterpolationDirection;
+- (id)topMostLayoutElements;
+- (double)shadowOffsetForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForIndex:(unsigned long long)arg1;
+- (double)titleOpacityForIndex:(unsigned long long)arg1;
+- (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
+- (double)lighteningAlphaForIndex:(unsigned long long)arg1;
+- (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
+- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
+- (double)opacityForIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
+- (double)scaleForIndex:(unsigned long long)arg1;
+- (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleSwipeToKillEvent:(id)arg1;
+- (void)_performBlockWhileSimulatingPostRemovalAppLayoutState:(CDUnknownBlockType)arg1;
 - (id)initWithAppLayout:(id)arg1;
 
 @end

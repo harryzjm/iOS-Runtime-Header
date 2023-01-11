@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface CARSessionConfiguration : NSObject
 {
@@ -17,11 +17,11 @@
     _Bool _vehicleSupportsCNG;
     _Bool _rightHandDrive;
     _Bool _nightModeSupported;
-    _Bool _supportsElectronicTollCollection;
     _Bool _supportsACBack;
     _Bool _supportsSiriZLL;
     _Bool _supportsSiriZLLButton;
     _Bool _supportsSiriMixable;
+    _Bool _supportsElectronicTollCollection;
     _Bool _manufacturerIconVisible;
     _Bool _hasAccessory;
     NSString *_name;
@@ -39,33 +39,51 @@
     NSArray *_screenIDs;
     unsigned long long _limitableUserInterfaces;
     NSString *_endpointIdentifier;
-    unsigned long long _voiceTriggerMode;
+    long long _voiceTriggerMode;
     long long _nowPlayingAlbumArtMode;
     long long _userInterfaceStyle;
+    NSArray *_vehicleButtons;
+    NSString *_deviceIdentifier;
+    long long _defaultUserInterfaceStyle;
     NSString *_manufacturerIconLabel;
+    NSArray *_manufacturerIcons;
+    NSDictionary *_infoResponse;
+    NSArray *_altScreenSuggestUIURLs;
+    NSArray *_lastOnDisplayUIContextURLs;
+    NSArray *_nowOnDisplayUIContextURLs;
     struct NSEdgeInsets _viewAreaInsets;
     struct NSEdgeInsets _dashboardRoundedCorners;
 }
 
++ (long long)_defaultInterfaceStyleFromAppearanceDefault:(id)arg1;
 + (unsigned long long)_limitableUserInterfacesFromLimitedUIValues:(id)arg1;
 + (id)descriptionForEdgeInsets:(struct NSEdgeInsets)arg1;
 + (id)descriptionForUserInterfaceStyle:(long long)arg1;
 + (id)descriptionForCapability:(long long)arg1;
 + (id)_descriptionForTransportType:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *nowOnDisplayUIContextURLs; // @synthesize nowOnDisplayUIContextURLs=_nowOnDisplayUIContextURLs;
+@property(readonly, nonatomic) NSArray *lastOnDisplayUIContextURLs; // @synthesize lastOnDisplayUIContextURLs=_lastOnDisplayUIContextURLs;
+@property(readonly, nonatomic) NSArray *altScreenSuggestUIURLs; // @synthesize altScreenSuggestUIURLs=_altScreenSuggestUIURLs;
+@property(copy, nonatomic) NSDictionary *infoResponse; // @synthesize infoResponse=_infoResponse;
 @property(nonatomic) _Bool hasAccessory; // @synthesize hasAccessory=_hasAccessory;
-@property(readonly, nonatomic) _Bool manufacturerIconVisible; // @synthesize manufacturerIconVisible=_manufacturerIconVisible;
-@property(readonly, copy, nonatomic) NSString *manufacturerIconLabel; // @synthesize manufacturerIconLabel=_manufacturerIconLabel;
+@property(copy, nonatomic) NSArray *manufacturerIcons; // @synthesize manufacturerIcons=_manufacturerIcons;
+@property(nonatomic) _Bool manufacturerIconVisible; // @synthesize manufacturerIconVisible=_manufacturerIconVisible;
+@property(copy, nonatomic) NSString *manufacturerIconLabel; // @synthesize manufacturerIconLabel=_manufacturerIconLabel;
+@property(nonatomic) _Bool supportsElectronicTollCollection; // @synthesize supportsElectronicTollCollection=_supportsElectronicTollCollection;
+@property(nonatomic) long long defaultUserInterfaceStyle; // @synthesize defaultUserInterfaceStyle=_defaultUserInterfaceStyle;
+@property(nonatomic) struct NSEdgeInsets dashboardRoundedCorners; // @synthesize dashboardRoundedCorners=_dashboardRoundedCorners;
+@property(readonly, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property(readonly, nonatomic) NSArray *vehicleButtons; // @synthesize vehicleButtons=_vehicleButtons;
 @property(readonly, nonatomic) _Bool supportsSiriMixable; // @synthesize supportsSiriMixable=_supportsSiriMixable;
 @property(readonly, nonatomic) _Bool supportsSiriZLLButton; // @synthesize supportsSiriZLLButton=_supportsSiriZLLButton;
 @property(readonly, nonatomic) _Bool supportsSiriZLL; // @synthesize supportsSiriZLL=_supportsSiriZLL;
 @property(readonly, nonatomic) _Bool supportsACBack; // @synthesize supportsACBack=_supportsACBack;
 @property(readonly, nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
-@property(readonly, nonatomic) struct NSEdgeInsets dashboardRoundedCorners; // @synthesize dashboardRoundedCorners=_dashboardRoundedCorners;
 @property(readonly, nonatomic) struct NSEdgeInsets viewAreaInsets; // @synthesize viewAreaInsets=_viewAreaInsets;
 @property(readonly, nonatomic) long long nowPlayingAlbumArtMode; // @synthesize nowPlayingAlbumArtMode=_nowPlayingAlbumArtMode;
-@property(readonly, nonatomic) unsigned long long voiceTriggerMode; // @synthesize voiceTriggerMode=_voiceTriggerMode;
+@property(readonly, nonatomic) long long voiceTriggerMode; // @synthesize voiceTriggerMode=_voiceTriggerMode;
 @property(readonly, copy, nonatomic) NSString *endpointIdentifier; // @synthesize endpointIdentifier=_endpointIdentifier;
-@property(readonly, nonatomic) _Bool supportsElectronicTollCollection; // @synthesize supportsElectronicTollCollection=_supportsElectronicTollCollection;
 @property(readonly, nonatomic) _Bool nightModeSupported; // @synthesize nightModeSupported=_nightModeSupported;
 @property(readonly, nonatomic) unsigned long long limitableUserInterfaces; // @synthesize limitableUserInterfaces=_limitableUserInterfaces;
 @property(readonly, nonatomic) _Bool rightHandDrive; // @synthesize rightHandDrive=_rightHandDrive;
@@ -87,12 +105,12 @@
 @property(readonly, copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
 @property(readonly, copy, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
+- (id)primaryDisplayPhysicalSize;
 - (id)screenInfoForScreenID:(id)arg1;
 - (id)description;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)updateCarCapabilities;
-- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1;
+- (id)initForCarPlayShell:(_Bool)arg1 propertySupplier:(CDUnknownBlockType)arg2;
 - (id)descriptionForVoiceTriggerMode;
 - (id)descriptionForLimitableUserInterfaces;
 - (id)descriptionForTransportType;

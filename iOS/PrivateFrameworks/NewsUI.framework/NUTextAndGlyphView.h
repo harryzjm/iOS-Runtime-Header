@@ -15,12 +15,14 @@
     NUTextAndGlyph *_textAndGlyph;
     UILabel *_label;
     UIImageView *_imageView;
+    unsigned long long _alignment;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long alignment; // @synthesize alignment=_alignment;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(retain, nonatomic) NUTextAndGlyph *textAndGlyph; // @synthesize textAndGlyph=_textAndGlyph;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)nu_crossFadeViewSetValue:(id)arg1;

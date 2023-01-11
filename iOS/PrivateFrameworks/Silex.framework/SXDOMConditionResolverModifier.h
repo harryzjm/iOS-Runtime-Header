@@ -33,6 +33,7 @@
     id <SXConditionalResolverModifierInstructions> _instructions;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool resolveDocumentStyle; // @synthesize resolveDocumentStyle=_resolveDocumentStyle;
 @property(readonly, nonatomic) _Bool resolveAutoplacement; // @synthesize resolveAutoplacement=_resolveAutoplacement;
 @property(readonly, nonatomic) _Bool resolveTextStyles; // @synthesize resolveTextStyles=_resolveTextStyles;
@@ -51,14 +52,13 @@
 @property(readonly, nonatomic) SXConditionalObjectResolver *textStyleResolver; // @synthesize textStyleResolver=_textStyleResolver;
 @property(readonly, nonatomic) SXConditionalObjectResolver *componentResolver; // @synthesize componentResolver=_componentResolver;
 @property(readonly, nonatomic) id <SXConditionValidationContextFactory> validationContextFactory; // @synthesize validationContextFactory=_validationContextFactory;
-- (void).cxx_destruct;
-- (id)resolveDocumentStyle:(id)arg1 validationContext:(id)arg2;
+- (id)resolveDocumentStyle:(id)arg1 conditionalObjectAnalysis:(id)arg2 validationContext:(id)arg3;
 - (id)resolveAutoPlacement:(id)arg1 validationContext:(id)arg2;
-- (_Bool)resolveComponentTextStyle:(id)arg1 validationContext:(id)arg2;
-- (_Bool)resolveComponentStyles:(id)arg1 validationContext:(id)arg2;
-- (_Bool)resolveComponentLayouts:(id)arg1 validationContext:(id)arg2;
-- (_Bool)resolveTextStyles:(id)arg1 validationContext:(id)arg2;
-- (_Bool)resolveComponents:(id)arg1 validationContext:(id)arg2;
+- (_Bool)resolveComponentTextStyle:(id)arg1 conditionalObjectAnalysis:(id)arg2 validationContext:(id)arg3;
+- (_Bool)resolveComponentStyles:(id)arg1 conditionalObjectAnalysis:(id)arg2 validationContext:(id)arg3;
+- (_Bool)resolveComponentLayouts:(id)arg1 conditionalObjectAnalysis:(id)arg2 validationContext:(id)arg3;
+- (_Bool)resolveTextStyles:(id)arg1 conditionalObjectAnalysis:(id)arg2 validationContext:(id)arg3;
+- (_Bool)resolveComponents:(id)arg1 conditionalObjectAnalysis:(id)arg2 validationContext:(id)arg3;
 - (void)modifyDOM:(id)arg1 context:(id)arg2;
 - (id)initWithValidationContextFactory:(id)arg1 componentResolver:(id)arg2 textStyleResolver:(id)arg3 componentStyleResolver:(id)arg4 componentLayoutResolver:(id)arg5 componentTextStyleResolver:(id)arg6 advertisementAutoPlacementResolver:(id)arg7 suggestedArticlesAutoPlacementResolver:(id)arg8 documentStyleResolver:(id)arg9 instructions:(id)arg10;
 

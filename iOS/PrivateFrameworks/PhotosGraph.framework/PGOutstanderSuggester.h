@@ -21,19 +21,22 @@
 + (id)suggestionTypes;
 - (void).cxx_destruct;
 - (id)reasonsForSuggestion:(id)arg1;
-- (id)nextSuggestedAssetEnumerator;
-- (id)nextSuggestedAsset;
+- (id)nextSuggestedAssetEnumeratorWithProgress:(CDUnknownBlockType)arg1;
+- (id)nextSuggestedAssetWithProgress:(CDUnknownBlockType)arg1;
 - (unsigned long long)scoreWithAsset:(id)arg1;
-- (void)computeNiceAssetsBetweenStartDate:(id)arg1 andEndDate:(id)arg2;
+- (void)computeNiceAssetsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 withProgress:(CDUnknownBlockType)arg3;
+- (id)assetPredicate:(id)arg1 andEndDate:(id)arg2 matchingAssetUUID:(id)arg3;
 - (void)reset;
-- (id)nextSuggestion;
+- (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;
+- (_Bool)canGenerateSuggestionWithAsset:(id)arg1 onDate:(id)arg2;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool lastSuggestionWasColliding;
 @property(readonly) Class superclass;
 
 @end

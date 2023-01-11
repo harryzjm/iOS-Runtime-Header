@@ -25,11 +25,11 @@
 + (void)layout:(id)arg1 willRemoveSprites:(CDStruct_92550dd7)arg2;
 + (id)spriteDataStore;
 + (id)activeSpriteProbes;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType eventHandler; // @synthesize eventHandler=_eventHandler;
 @property(copy, nonatomic) CDUnknownBlockType tagDescriptor; // @synthesize tagDescriptor=_tagDescriptor;
 @property(copy, nonatomic) CDUnknownBlockType predicate; // @synthesize predicate=_predicate;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
-- (void).cxx_destruct;
 - (void)_recordEventIfNeededWithType:(long long)arg1 layout:(id)arg2 oldState:(const CDStruct_c691429e *)arg3 newState:(const CDStruct_c691429e *)arg4 userInfo:(id)arg5;
 - (id)descriptionForSpriteState:(const CDStruct_c691429e *)arg1;
 - (void)_recordEventWithType:(long long)arg1 oldState:(const CDStruct_c691429e *)arg2 newState:(const CDStruct_c691429e *)arg3 userInfo:(id)arg4;

@@ -12,13 +12,15 @@
     double _maximumDialogWidth;
     double _minimumDialogWidth;
     double _dialogPadding;
+    long long _automaticButtonSelection;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long automaticButtonSelection; // @synthesize automaticButtonSelection=_automaticButtonSelection;
 @property(nonatomic) double dialogPadding; // @synthesize dialogPadding=_dialogPadding;
 @property(nonatomic) double minimumDialogWidth; // @synthesize minimumDialogWidth=_minimumDialogWidth;
 @property(nonatomic) double maximumDialogWidth; // @synthesize maximumDialogWidth=_maximumDialogWidth;
 @property(readonly, nonatomic) AMSDialogRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 - (void)_printMessage:(id)arg1;
 - (id)_getUserInput;
 - (id)_gatherTextfieldInput;

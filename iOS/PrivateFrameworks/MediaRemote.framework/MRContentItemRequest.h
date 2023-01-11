@@ -8,19 +8,19 @@
 
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-@class _MRContentItemProtobuf, _MRPlaybackQueueRequestProtobuf;
+@class MRContentItem, MRPlaybackQueueRequest;
 
 __attribute__((visibility("hidden")))
 @interface MRContentItemRequest : NSObject <NSSecureCoding>
 {
-    _MRContentItemProtobuf *_item;
-    _MRPlaybackQueueRequestProtobuf *_request;
+    MRContentItem *_item;
+    MRPlaybackQueueRequest *_request;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) _MRPlaybackQueueRequestProtobuf *request; // @synthesize request=_request;
-@property(retain, nonatomic) _MRContentItemProtobuf *item; // @synthesize item=_item;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MRPlaybackQueueRequest *request; // @synthesize request=_request;
+@property(retain, nonatomic) MRContentItem *item; // @synthesize item=_item;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

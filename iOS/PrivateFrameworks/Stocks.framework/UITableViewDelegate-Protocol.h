@@ -8,12 +8,13 @@
 #import <Stocks/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, UIContextMenuConfiguration, UIFocusAnimationCoordinator, UISwipeActionsConfiguration, UITableView, UITableViewCell, UITableViewFocusUpdateContext, UITargetedPreview, UIView;
-@protocol UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
+@protocol UIContextMenuInteractionAnimating, UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
 
 @protocol UITableViewDelegate <NSObject, UIScrollViewDelegate>
 
 @optional
-- (void)tableView:(UITableView *)arg1 willCommitMenuWithAnimator:(id <UIContextMenuInteractionCommitAnimating>)arg2;
+- (void)tableView:(UITableView *)arg1 willEndContextMenuInteractionWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
+- (void)tableView:(UITableView *)arg1 willDisplayContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
 - (void)tableView:(UITableView *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionCommitAnimating>)arg3;
 - (UITargetedPreview *)tableView:(UITableView *)arg1 previewForDismissingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (UITargetedPreview *)tableView:(UITableView *)arg1 previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;

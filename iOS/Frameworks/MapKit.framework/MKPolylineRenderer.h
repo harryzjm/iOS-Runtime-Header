@@ -9,6 +9,8 @@
 @interface MKPolylineRenderer
 {
     VKVectorOverlayPolylineGroup *_vectorGeometry;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 + (Class)_mapkitLeafClass;
@@ -16,6 +18,8 @@
 - (void)_updateRenderColors;
 - (id)vectorDataForOverlay:(id)arg1;
 - (_Bool)overlayCanProvideVectorData:(id)arg1;
+- (void)_setNeedsVectorGeometryUpdate;
+- (void)_updateVectorGeometry:(id)arg1;
 - (id)_vectorGeometry;
 - (_Bool)_canProvideVectorGeometry;
 - (void)setMiterLimit:(double)arg1;
@@ -24,6 +28,9 @@
 - (void)setAlpha:(double)arg1;
 - (void)setStrokeColor:(id)arg1;
 - (void)setLineWidth:(double)arg1;
+@property(nonatomic) double strokeEnd;
+@property(nonatomic) double strokeStart;
+- (void)_performInitialConfiguration;
 - (void)drawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2 inContext:(struct CGContext *)arg3;
 - (void)createPath;
 @property(readonly, nonatomic) MKPolyline *polyline;

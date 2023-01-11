@@ -13,9 +13,12 @@
     MISSING_TYPE *localParticipant;
     MISSING_TYPE *remoteParticipants;
     MISSING_TYPE *includeLocalParticipantInVisibleParticipants;
+    MISSING_TYPE *carPlayDisconnectRequiresLocalVideoEnable;
     MISSING_TYPE *audioFrequencyController;
-    MISSING_TYPE *momentsController;
     MISSING_TYPE *audioCallbackQueue;
+    MISSING_TYPE *$__lazy_storage_$_momentsController;
+    MISSING_TYPE *lastRegisteredMomentsProvider;
+    MISSING_TYPE *blockedCallerLookupQueue;
     MISSING_TYPE *recentPresentationContexts;
     MISSING_TYPE *scheduledIsChangingMirroredVideoResetDates;
     MISSING_TYPE *conversationState;
@@ -32,13 +35,19 @@
     MISSING_TYPE *cameraZoomAvailabiltyDidChange;
     MISSING_TYPE *carPlayConnectedDidChange;
     MISSING_TYPE *didUpdateLocalParticipant;
+    MISSING_TYPE *didUpdateRecordingLocalVideo;
     MISSING_TYPE *didStartVideoForLocalParticipant;
     MISSING_TYPE *conversationStateDidChange;
+    MISSING_TYPE *blockedParticipantsAdded;
+    MISSING_TYPE *blocklistCheckedHandles;
+    MISSING_TYPE *needsUserConfirmationForBlockedCaller;
     MISSING_TYPE *enableVideoOnJoin;
     MISSING_TYPE *participantMediaProviderCreator;
     MISSING_TYPE *callCenter;
     MISSING_TYPE *call;
+    MISSING_TYPE *blockedCallerChecker;
     MISSING_TYPE *conversationUUID;
+    MISSING_TYPE *localVideoRecordingTransactionID;
 }
 
 - (void).cxx_destruct;

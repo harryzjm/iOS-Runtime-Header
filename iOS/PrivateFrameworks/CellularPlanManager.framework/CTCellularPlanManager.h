@@ -29,6 +29,7 @@
 - (id)getPredefinedLabels;
 - (void)eraseAllRemotePlansWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remotePlanLaunchInfoForEid:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)userSignupInitiatedOrFailed;
 - (void)pendingReleaseRemotePlan;
 - (void)didCancelRemotePlan;
 - (void)didPurchaseRemotePlanForEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSmdpFqdn:(id)arg5 completion:(CDUnknownBlockType)arg6;
@@ -63,6 +64,7 @@
 - (void)getDeviceInfo:(CDUnknownBlockType)arg1;
 - (void)carrierHandoffToken:(CDUnknownBlockType)arg1;
 - (void)setUserInPurchaseFlow:(_Bool)arg1;
+- (void)didTransferPlanForCsn:(id)arg1 iccid:(id)arg2 srcIccid:(id)arg3 profileServer:(id)arg4 state:(id)arg5;
 - (void)didTransferPlanForCsn:(id)arg1 iccid:(id)arg2 profileServer:(id)arg3 state:(id)arg4;
 - (void)didPurchasePlanForCsn:(id)arg1 iccid:(id)arg2 profileServer:(id)arg3;
 - (void)planLaunchInfoWithCompletion:(CDUnknownBlockType)arg1;
@@ -86,6 +88,7 @@
 - (id)resolveSimLabel:(id)arg1;
 - (void)resolveSimLabel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deletePlanPendingTransfer:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)cancelPlanActivation:(id)arg1;
 - (void)activatePlanPendingTransfer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getPlansPendingTransfer:(id *)arg1;
 - (id)danglingPlanItemsShouldUpdate:(_Bool)arg1;
@@ -123,6 +126,7 @@
 - (void)resumePlanProvisioning:(_Bool)arg1 userConsent:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addNewPlanWithUserInWebsheetWithUserConsent:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addNewPlanWithUserInWebsheetWithCompletion:(CDUnknownBlockType)arg1;
+- (void)installPendingRemotePlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addNewPlanWithAddress:(id)arg1 matchingId:(id)arg2 oid:(id)arg3 confirmationCode:(id)arg4 triggerType:(long long)arg5 userConsent:(long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)addNewPlanWithFlowType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2 triggerType:(long long)arg3 userConsent:(long long)arg4 completion:(CDUnknownBlockType)arg5;

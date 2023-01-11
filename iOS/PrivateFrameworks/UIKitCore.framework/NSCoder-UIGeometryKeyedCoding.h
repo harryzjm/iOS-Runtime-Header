@@ -30,6 +30,10 @@
 - (id)_decodeObjectsWithSourceSegueTemplate:(id)arg1 creator:(CDUnknownBlockType)arg2 sender:(id)arg3 forKey:(id)arg4;
 - (void)_createStoryboardDecodingContextIfNeeded;
 @property(readonly, nonatomic) UIStoryboardDecodingContext *_storyboardDecodingContext;
+- (CDUnknownBlockType)_ui_decodeNSUIntegerVectorForKey:(id)arg1 returnedCount:(unsigned long long *)arg2;
+- (void)_ui_encodeNSUIntegerVector:(const unsigned long long *)arg1 count:(unsigned long long)arg2 forKey:(id)arg3;
+- (CDUnknownBlockType)_ui_decodeVectorForKey:(id)arg1 returnedCount:(unsigned long long *)arg2;
+- (void)_ui_encodeVector:(const double *)arg1 count:(unsigned long long)arg2 forKey:(id)arg3;
 - (id)_ui_decodeTextAttributesForKey:(id)arg1;
 - (void)_ui_encodeTextAttributes:(id)arg1 forKey:(id)arg2;
 - (_Bool)_ui_isInterprocess;

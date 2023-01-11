@@ -4,21 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray, NSString;
 @protocol MTEventHandlerDelegate;
 
 @interface MTEventHandler
 {
+    NSString *_registeredName;
+    NSArray *_registeredEventData;
+    NSArray *_postProcessingBlocks;
 }
 
 + (id)cachableWithKey:(id)arg1 onBackgroundThread:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
 + (void)clearEventContextCache;
 + (void)createEventContextCache;
 + (id)currentEventContextCache;
+- (void).cxx_destruct;
+@property(retain) NSArray *postProcessingBlocks; // @synthesize postProcessingBlocks=_postProcessingBlocks;
+@property(retain, nonatomic) NSArray *registeredEventData; // @synthesize registeredEventData=_registeredEventData;
+@property(retain, nonatomic) NSString *registeredName; // @synthesize registeredName=_registeredName;
 - (id)eventVersion:(id)arg1;
 - (id)eventType;
 - (_Bool)mtIncludeBaseFields;
 - (id)knownFields;
+- (void)addPostProcessingBlock:(CDUnknownBlockType)arg1;
+- (void)didCreateMetricsData:(id)arg1;
 - (id)metricsDataWithCallerSuppliedFields:(id)arg1;
+- (id)metricsDataWithEventData:(id)arg1;
+- (id)metricsDataWithFields:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) __weak id <MTEventHandlerDelegate> delegate; // @dynamic delegate;

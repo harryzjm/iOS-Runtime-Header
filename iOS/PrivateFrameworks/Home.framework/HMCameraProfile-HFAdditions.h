@@ -8,17 +8,21 @@
 
 #import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
-@class HFCameraManager, HFUserNotificationServiceSettings, NSString, NSUUID;
+@class HFCameraManager, HFUserNotificationServiceSettings, HMBulletinBoardNotification, HMCharacteristic, NSString, NSUUID;
 
 @interface HMCameraProfile (HFAdditions) <HFUserNotificationServiceSettingsProviding>
-+ (unsigned long long)notificationEventTriggersForPredicate:(id)arg1;
-+ (unsigned long long)hf_cameraNotificationMotionDetectionSettingsForCameraProfiles:(id)arg1;
-+ (unsigned long long)hf_cameraMotionDetectionSettingsForCameraProfiles:(id)arg1;
 + (unsigned long long)hf_cameraAccessModeSelectedOptionForCameraProfiles:(id)arg1 presenceType:(unsigned long long)arg2;
+- (id)hf_faceCropImageForSignificantEvent:(id)arg1;
+- (id)hf_significantEventWithIdentifier:(id)arg1;
+- (void)hf_updateDoorbellChime:(_Bool)arg1;
+@property(readonly, nonatomic) HMCharacteristic *hf_doorbellChimeMuteCharacteristic;
+@property(readonly, nonatomic) HMBulletinBoardNotification *hf_doorbellNotificationBulletin;
 @property(readonly, nonatomic) _Bool hf_cameraIsNotSetToRecord;
+@property(readonly, nonatomic) NSString *hf_thermalShutdownModeErrorText;
+@property(readonly, nonatomic) _Bool hf_thermalShutdownModeActive;
 @property(readonly, nonatomic) _Bool hf_shouldDisableLiveStream;
-@property(readonly, nonatomic) _Bool hf_cameraSupportsRecording;
-@property(readonly, nonatomic) _Bool hf_cameraSupportsBidirectionalAudio;
+@property(readonly, nonatomic) _Bool hf_supportsRecordingEvents;
+@property(readonly, nonatomic) _Bool hf_supportsBidirectionalAudio;
 @property(readonly, nonatomic) HFCameraManager *hf_cameraManager;
 - (id)hf_updateUserNotificationSettings:(id)arg1;
 @property(readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;

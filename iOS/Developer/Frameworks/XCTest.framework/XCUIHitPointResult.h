@@ -14,6 +14,7 @@
 
 @property(readonly, getter=isHittable) _Bool hittable; // @synthesize hittable=_hittable;
 @property(readonly) struct CGPoint hitPoint; // @synthesize hitPoint=_hitPoint;
+- (id)description;
 - (id)initWithHitPoint:(struct CGPoint)arg1 hittable:(_Bool)arg2;
 
 @end

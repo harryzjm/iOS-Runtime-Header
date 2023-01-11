@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface FALaunchScreenTimeSetupHook : NSObject <AAUIServerHook>
@@ -16,8 +16,8 @@
     id <AAUIServerHookDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_launchScreenTimeSettings;
 - (void)_launchScreenTimeSetupForUser:(id)arg1 WithCompletion:(CDUnknownBlockType)arg2;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -29,6 +29,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) RUIObjectModel *objectModel;
 @property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property(readonly) Class superclass;
 

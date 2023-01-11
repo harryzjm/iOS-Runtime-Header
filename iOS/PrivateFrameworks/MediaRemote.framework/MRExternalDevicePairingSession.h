@@ -12,17 +12,15 @@
     MRCryptoPairingSessionBlockDelegate *_pairingDelegate;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) MRCryptoPairingSessionBlockDelegate *pairingDelegate; // @synthesize pairingDelegate=_pairingDelegate;
 @property(retain, nonatomic) MRCoreUtilsPairingSession *pairingSession; // @synthesize pairingSession=_pairingSession;
-- (void).cxx_destruct;
-- (_Bool)_useSystemPairing;
 - (_Bool)deleteIdentityWithError:(id *)arg1;
 - (id)decryptData:(id)arg1 withError:(id *)arg2;
 - (id)encryptData:(id)arg1 withError:(id *)arg2;
 - (void)handlePairingFailureWithStatus:(int)arg1;
 - (void)handlePairingExchangeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)close;
-- (void)_openSecuritySessionInState:(unsigned long long)arg1 useSystemPairing:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)open;
 - (void)setDelegate:(id)arg1;
 - (id)updatePeer;

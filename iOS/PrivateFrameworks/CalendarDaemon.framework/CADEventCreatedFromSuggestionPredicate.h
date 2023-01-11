@@ -15,9 +15,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)predicateForAllSuggestedEvents;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *extractionGroupIdentifier; // @synthesize extractionGroupIdentifier=_extractionGroupIdentifier;
 @property(readonly, nonatomic) NSString *opaqueKey; // @synthesize opaqueKey=_opaqueKey;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

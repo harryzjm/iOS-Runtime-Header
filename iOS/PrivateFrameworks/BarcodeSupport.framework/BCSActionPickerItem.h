@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BCSAction, NSString, NSURL;
+@class BCSAction, NSString, NSURL, UIImage;
 @protocol BCSActionPickerItemDelegate;
 
 @interface BCSActionPickerItem : NSObject
@@ -21,17 +21,18 @@
 }
 
 + (id)actionPickerItemWithLabel:(id)arg1 actionHandler:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isCopyActionItem) _Bool copyActionItem; // @synthesize copyActionItem=_copyActionItem;
 @property(readonly, copy, nonatomic) NSString *targetApplicationBundleIdentifier; // @synthesize targetApplicationBundleIdentifier=_targetApplicationBundleIdentifier;
 @property(readonly, copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property(readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(nonatomic) __weak id <BCSActionPickerItemDelegate> actionPickerItemDelegate; // @synthesize actionPickerItemDelegate=_actionPickerItemDelegate;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *localizedDefaultActionDescription;
 @property(readonly, nonatomic) long long dataType;
 @property(readonly, nonatomic) _Bool shouldDismissAlertWhenActionIsTaken;
 - (void)didPerformAction;
 - (void)performAction;
+@property(readonly, nonatomic) UIImage *icon;
 - (id)initWithAction:(id)arg1;
 - (id)initWithLabel:(id)arg1 actionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithLabel:(id)arg1 action:(id)arg2;

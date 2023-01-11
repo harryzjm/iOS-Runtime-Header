@@ -4,24 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
-
 @interface HMFObjectObserver
 {
     id _observedObject;
     CDUnknownBlockType _deallocationBlock;
-    NSUUID *_identifier;
     unsigned long long _cachedHash;
 }
 
+- (void).cxx_destruct;
 @property(readonly) unsigned long long cachedHash; // @synthesize cachedHash=_cachedHash;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(copy) CDUnknownBlockType deallocationBlock; // @synthesize deallocationBlock=_deallocationBlock;
 @property(readonly) __weak id observedObject; // @synthesize observedObject=_observedObject;
-- (void).cxx_destruct;
 - (void)_stopObserving;
 - (void)_startObserving;
-- (id)observerKey;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;

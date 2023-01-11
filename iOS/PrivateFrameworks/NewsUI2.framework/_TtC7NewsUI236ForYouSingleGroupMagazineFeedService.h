@@ -11,8 +11,9 @@
 @interface _TtC7NewsUI236ForYouSingleGroupMagazineFeedService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *group;
-    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *magazineConfigurationService;
+    MISSING_TYPE *personalizationService;
+    MISSING_TYPE *feedContextFactory;
 }
 
 @end

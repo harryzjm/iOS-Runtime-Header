@@ -16,20 +16,25 @@
 + (double)cornerRadiusForVariant:(unsigned long long)arg1;
 + (struct CGSize)sizeForVariant:(unsigned long long)arg1;
 + (int)iconFormatForVariant:(unsigned long long)arg1;
++ (id)descriptorNameForVariant:(unsigned long long)arg1;
 + (id)appIconForBundleIdentifier:(id)arg1 variant:(unsigned long long)arg2;
 + (id)appIconForResult:(id)arg1 variant:(unsigned long long)arg2;
++ (unsigned long long)bestVariantForSize:(struct CGSize)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long variant; // @synthesize variant=_variant;
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)uniqueIdentifier;
 - (id)generateImageWithFormat:(int)arg1;
-- (void)setUiImage:(id)arg1;
 - (id)loadImage;
-- (id)uiImage;
 - (_Bool)needsTinting;
+- (void)invalidateAppIcon;
+- (_Bool)shouldInvalidateAppIconForChangedBundleIdentifier:(id)arg1;
+- (void)appIconWillChange:(id)arg1;
+- (int)defaultCornerRoundingStyle;
 - (id)initWithBundleIdentifier:(id)arg1 variant:(unsigned long long)arg2;
+- (id)init;
 
 @end
 

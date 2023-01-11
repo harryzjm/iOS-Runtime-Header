@@ -15,19 +15,19 @@
     AVTUIEnvironment *_environment;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(nonatomic) double minAlphaFactor; // @synthesize minAlphaFactor=_minAlphaFactor;
 @property(retain, nonatomic) UICollectionViewUpdateItem *currentUpdateItem; // @synthesize currentUpdateItem=_currentUpdateItem;
 @property(retain, nonatomic) NSIndexPath *plusButtonIndexPath; // @synthesize plusButtonIndexPath=_plusButtonIndexPath;
 @property(retain, nonatomic) NSIndexPath *backIndexPath; // @synthesize backIndexPath=_backIndexPath;
-- (void).cxx_destruct;
 - (void)finalizeCollectionViewUpdates;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (void)prepareForCollectionViewUpdates:(id)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
-- (double)alphaForSunflowerElementWithEngagement:(double)arg1;
+- (double)alphaForPadElementWithEngagement:(double)arg1;
 - (double)alphaForElementWithAttributes:(id)arg1;
 - (long long)zIndexForElementWithAttributes:(id)arg1;
 - (struct UIEdgeInsets)engagementInsetsForCollectionViewBounds:(struct CGSize)arg1;

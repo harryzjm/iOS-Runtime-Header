@@ -8,25 +8,26 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFeedbackConversation, GEORPFeedbackNotification, GEORPFeedbackOverview, PBDataReader, PBUnknownFields;
+@class GEORPFeedbackConversation, GEORPFeedbackNotification, GEORPFeedbackOverview, GEORPPoiEnrichment, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackComponentValue : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPFeedbackConversation *_conversation;
     GEORPFeedbackNotification *_notification;
     GEORPFeedbackOverview *_overview;
+    GEORPPoiEnrichment *_poiEnrichment;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_conversation:1;
         unsigned int read_notification:1;
         unsigned int read_overview:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_conversation:1;
-        unsigned int wrote_notification:1;
-        unsigned int wrote_overview:1;
+        unsigned int read_poiEnrichment:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,17 +43,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPPoiEnrichment *poiEnrichment;
+@property(readonly, nonatomic) _Bool hasPoiEnrichment;
 @property(retain, nonatomic) GEORPFeedbackConversation *conversation;
 @property(readonly, nonatomic) _Bool hasConversation;
-- (void)_readConversation;
 @property(retain, nonatomic) GEORPFeedbackOverview *overview;
 @property(readonly, nonatomic) _Bool hasOverview;
-- (void)_readOverview;
 @property(retain, nonatomic) GEORPFeedbackNotification *notification;
 @property(readonly, nonatomic) _Bool hasNotification;
-- (void)_readNotification;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -26,7 +26,6 @@
     _Bool _customResponsesDisabled;
     _Bool _interstitialDisabled;
     _Bool _prefersExecutionOnCompanion;
-    _Bool __encodeLegacyGloryData;
     int _intentCategory;
     int _toggleState;
     NSString *_appBundleId;
@@ -42,7 +41,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)stepType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *verb; // @synthesize verb=_verb;
 @property(copy, nonatomic) NSString *underlyingIntentTitle; // @synthesize underlyingIntentTitle=_underlyingIntentTitle;
 @property(retain, nonatomic) _INPBArchivedObject *underlyingIntentResponse; // @synthesize underlyingIntentResponse=_underlyingIntentResponse;
@@ -58,7 +57,6 @@
 @property(nonatomic) _Bool customResponsesDisabled; // @synthesize customResponsesDisabled=_customResponsesDisabled;
 @property(nonatomic) _Bool continueRunning; // @synthesize continueRunning=_continueRunning;
 @property(copy, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

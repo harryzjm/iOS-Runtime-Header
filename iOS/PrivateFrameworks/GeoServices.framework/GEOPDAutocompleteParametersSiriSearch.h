@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteParametersSiriSearch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_prefix;
     NSString *_query;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _maxResults;
     _Bool _completed;
     _Bool _highlightDiff;
@@ -30,13 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_prefix:1;
         unsigned int read_query:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_prefix:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_completed:1;
-        unsigned int wrote_highlightDiff:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,23 +48,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasCompleted;
 @property(nonatomic) _Bool completed;
 @property(retain, nonatomic) NSString *prefix;
 @property(readonly, nonatomic) _Bool hasPrefix;
-- (void)_readPrefix;
 @property(nonatomic) _Bool hasHighlightDiff;
 @property(nonatomic) _Bool highlightDiff;
 @property(nonatomic) _Bool hasMaxResults;
 @property(nonatomic) int maxResults;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(retain, nonatomic) NSString *query;
 @property(readonly, nonatomic) _Bool hasQuery;
-- (void)_readQuery;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

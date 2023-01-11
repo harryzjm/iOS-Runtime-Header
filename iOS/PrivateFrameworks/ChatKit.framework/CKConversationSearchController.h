@@ -4,16 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray, NSSet, _PSSuggester;
+
 @interface CKConversationSearchController
 {
     _Bool _gotResults;
+    _Bool _searchTerminated;
+    NSSet *_intermediaryResults;
+    _PSSuggester *_zkwSuggester;
+    NSArray *_currentZKWSuggestions;
 }
 
 + (Class)cellClass;
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (_Bool)supportsMenuInteraction;
-+ (_Bool)supportsQuicklook;
++ (_Bool)supportsQuicklookForResult:(id)arg1;
++ (unsigned long long)recencyRankedTargetResultCount;
++ (_Bool)useRecencyRankedSearchForMode:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *currentZKWSuggestions; // @synthesize currentZKWSuggestions=_currentZKWSuggestions;
+@property(retain, nonatomic) _PSSuggester *zkwSuggester; // @synthesize zkwSuggester=_zkwSuggester;
+@property(nonatomic) _Bool searchTerminated; // @synthesize searchTerminated=_searchTerminated;
+@property(retain, nonatomic) NSSet *intermediaryResults; // @synthesize intermediaryResults=_intermediaryResults;
 @property(nonatomic) _Bool gotResults; // @synthesize gotResults=_gotResults;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (_Bool)applyLayoutMarginsToLayoutGroup;
@@ -25,8 +38,10 @@
 - (id)_sortedAndRankedItemsWithItems:(id)arg1;
 - (void)searchEnded;
 - (void)_searchSpotlightWithText:(id)arg1 mode:(unsigned long long)arg2;
+- (void)didSelectResult:(id)arg1;
 - (void)_searchZKWWithText:(id)arg1 mode:(unsigned long long)arg2;
 - (void)searchWithText:(id)arg1 mode:(unsigned long long)arg2;
+- (id)_appendRecencyToRankingQuery:(id)arg1 hours:(unsigned long long)arg2;
 - (id)rankingQueriesWithText:(id)arg1;
 - (id)filterQueries;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;

@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthUI/HKInteractiveChartCurrentValueViewDataSource-Protocol.h>
+#import <HealthUI/HKInteractiveChartAnnotationViewDataSource-Protocol.h>
 
-@class HKDateCache, HKDisplayCategoryController, HKDisplayType, HKHealthStore, HKSelectedRangeFormatter, NSArray, NSString, UIColor, UIFont;
-@protocol HKCurrentValueViewDataSourceValueRangeFormatter;
+@class HKDateCache, HKDisplayCategoryController, HKDisplayType, HKHealthStore, HKSelectedRangeFormatter, NSArray, NSString, UIColor, UIFont, UILabel;
+@protocol HKCurrentValueViewDataSourceDelegate;
 
-@interface HKCurrentValueViewDataSource : NSObject <HKInteractiveChartCurrentValueViewDataSource>
+@interface HKCurrentValueViewDataSource : NSObject <HKInteractiveChartAnnotationViewDataSource>
 {
     _Bool _pendingData;
     NSArray *_selectedRangeData;
-    id <HKCurrentValueViewDataSourceValueRangeFormatter> _valueRangeFormatter;
+    id <HKCurrentValueViewDataSourceDelegate> _delegate;
     UIColor *_titleColor;
     HKSelectedRangeFormatter *_selectedRangeFormatter;
     HKDateCache *_dateCache;
@@ -26,9 +26,14 @@
     UIColor *_valueColor;
     UIFont *_majorFont;
     UIFont *_minorFont;
+    UILabel *_dateLabelView;
+    NSArray *_annotationLabels;
 }
 
 + (id)defaultStringForValueRange:(id)arg1 timeScope:(long long)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *annotationLabels; // @synthesize annotationLabels=_annotationLabels;
+@property(retain, nonatomic) UILabel *dateLabelView; // @synthesize dateLabelView=_dateLabelView;
 @property(retain, nonatomic) UIFont *minorFont; // @synthesize minorFont=_minorFont;
 @property(retain, nonatomic) UIFont *majorFont; // @synthesize majorFont=_majorFont;
 @property(retain, nonatomic) UIColor *valueColor; // @synthesize valueColor=_valueColor;
@@ -40,23 +45,19 @@
 @property(retain, nonatomic) HKSelectedRangeFormatter *selectedRangeFormatter; // @synthesize selectedRangeFormatter=_selectedRangeFormatter;
 @property(nonatomic) _Bool pendingData; // @synthesize pendingData=_pendingData;
 @property(retain, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
-@property(nonatomic) __weak id <HKCurrentValueViewDataSourceValueRangeFormatter> valueRangeFormatter; // @synthesize valueRangeFormatter=_valueRangeFormatter;
+@property(nonatomic) __weak id <HKCurrentValueViewDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSArray *selectedRangeData; // @synthesize selectedRangeData=_selectedRangeData;
-- (void).cxx_destruct;
-- (id)_selectedRangeDataForColumnAtIndex:(long long)arg1;
-- (_Bool)_isMenstruationDisplayType;
-- (_Bool)_isAudioExposureDisplayType;
-- (_Bool)_isDataMinMax;
-- (long long)_numberOfColumns;
-- (id)secondaryTextColorForCurrentValueView:(id)arg1;
-- (id)textColorForCurrentValueView:(id)arg1;
-- (id)secondaryStringForCurrentValueView:(id)arg1;
-- (id)attributedValueStringForCurrentValueView:(id)arg1;
-- (_Bool)_rangeDataIsMenstruation:(id)arg1;
-- (_Bool)_rangeDataIsSleep:(id)arg1;
-- (_Bool)_rangeDataIsBloodPressure:(id)arg1;
-- (id)_dividerForRangeData:(id)arg1 font:(id)arg2 foregroundColor:(id)arg3;
-- (id)attributedTitleStringForCurrentValueView:(id)arg1;
+- (_Bool)showSeparators;
+- (id)valueViewForColumnAtIndex:(long long)arg1 orientation:(long long)arg2;
+- (long long)numberOfValuesForAnnotationView:(id)arg1;
+- (id)leftMarginViewWithOrientation:(long long)arg1;
+- (id)dateViewWithOrientation:(long long)arg1;
+- (id)_delegateValueForSelectedRangeData:(id)arg1;
+- (id)_delegateTitleForSelectedRangeData:(id)arg1;
+- (id)_annotationLabelsFromRangeData:(id)arg1;
+- (_Bool)_pendingDataForGraphView:(id)arg1;
+- (id)_delegateValueStringForGraphView:(id)arg1 timeScope:(long long)arg2;
+- (id)_dateIntervalStringForGraphView:(id)arg1 timeScope:(long long)arg2;
 - (void)updateDataSourceWithGraphView:(id)arg1 displayType:(id)arg2 timeScope:(long long)arg3;
 - (id)initWithDateCache:(id)arg1 displayCategoryController:(id)arg2 healthStore:(id)arg3 selectedRangeFormatter:(id)arg4;
 

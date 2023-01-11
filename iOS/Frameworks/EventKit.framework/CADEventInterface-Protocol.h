@@ -7,6 +7,7 @@
 @class CADObjectID, NSArray, NSDate, NSString, NSTimeZone;
 
 @protocol CADEventInterface
+- (void)CADDatabaseGetTTLLocationAuthorizationStatus:(void (^)(int, unsigned long long))arg1;
 - (void)CADDatabaseGetSecurityScopedLocalURLWrapperForAttachment:(CADObjectID *)arg1 reply:(void (^)(int, NSSecurityScopedURLWrapper *))arg2;
 - (void)CADDatabaseShouldWhitelistOrganizerPhoneNumberFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
 - (void)CADDatabaseShouldWhitelistOrganizerEmailFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
@@ -25,8 +26,9 @@
 - (void)CADDatabaseCanModifySuggestedEventCalendar:(void (^)(int, _Bool))arg1;
 - (void)CADDatabaseGetNaturalLanguageSuggestedEventCalendarWithReply:(void (^)(int, CADObjectID *))arg1;
 - (void)CADDatabaseGetSuggestedEventCalendarWithReply:(void (^)(int, CADObjectID *))arg1;
+- (void)CADDatabaseSetBirthdayCalendarEnabled:(_Bool)arg1 withReply:(void (^)(int))arg2;
+- (void)CADDatabaseGetBirthdayCalendarEnabledWithReply:(void (^)(int, _Bool))arg1;
 - (void)CADDatabaseSetShowsDeclinedEvents:(_Bool)arg1;
-- (void)CADDatabaseGetEndDateOfEarliestExpiringNotifiableEventAfterDate:(NSDate *)arg1 timeZone:(NSTimeZone *)arg2 reply:(void (^)(int, NSDate *))arg3;
 - (void)CADDatabaseGetCountOfNotifiableEvents:(void (^)(int, int))arg1;
 - (void)CADDatabaseGetCountOfUnacknowledgedEvents:(void (^)(int, int))arg1;
 - (void)CADDatabaseGetAllEventsWithUniqueID:(NSString *)arg1 reply:(void (^)(int, NSArray *))arg2;
@@ -34,6 +36,8 @@
 - (void)CADDatabaseGetEventWithEventIdentifier:(NSString *)arg1 reply:(void (^)(int, CADObjectID *))arg2;
 - (void)CADDatabaseSetDefaultCalendarForNewEvents:(CADObjectID *)arg1 delegateSource:(CADObjectID *)arg2;
 - (void)CADDatabaseGetDefaultCalendarForNewEventsInDelegateSource:(CADObjectID *)arg1 withReply:(void (^)(int, CADObjectID *))arg2;
+- (void)CADDatabaseGetOrCreateBirthdayCalendar:(void (^)(int, int))arg1;
+- (void)CADDatabaseGetOrCreateSubscribedCalendarsSource:(void (^)(int, NSNumber *))arg1;
 - (void)CADDatabaseGetDefaultLocalCalendarWithReply:(void (^)(int, CADObjectID *))arg1;
 @end
 

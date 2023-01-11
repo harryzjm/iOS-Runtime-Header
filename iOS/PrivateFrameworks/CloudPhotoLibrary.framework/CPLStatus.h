@@ -18,14 +18,16 @@
     id <CPLStatusDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <CPLStatusDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CPLStatusDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSArray *disabledFeatures;
 @property(copy, nonatomic) NSData *accountFlagsData;
 @property(readonly, nonatomic) CPLAccountFlags *accountFlags;
 @property(nonatomic) _Bool lowDiskSpace;
-- (void)setConnectedToNetwork:(_Bool)arg1;
+- (void)setConnectedToNetwork:(_Bool)arg1 cellularIsRestricted:(_Bool)arg2 inAirplaneMode:(_Bool)arg3;
 @property(readonly, nonatomic) _Bool isConstrainedNetwork;
+@property(readonly, nonatomic, getter=isInAirplaneMode) _Bool inAirplaneMode;
+@property(readonly, nonatomic, getter=isCellularRestricted) _Bool cellularRestricted;
 @property(readonly, nonatomic, getter=isConnectedToNetwork) _Bool connectedToNetwork;
 @property(readonly, nonatomic) _Bool hasBatteryBudget;
 @property(readonly, nonatomic) _Bool hasCellularBudget;

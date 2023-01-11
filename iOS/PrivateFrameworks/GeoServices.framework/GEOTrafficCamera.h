@@ -13,7 +13,6 @@
 @interface GEOTrafficCamera : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_identifier;
     GEOMiniCard *_infoCard;
@@ -21,6 +20,9 @@
     NSString *_speedLimitText;
     double _speedThreshold;
     GEOMiniCard *_speedingCard;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _cameraPriority;
     unsigned int _highlightDistance;
     int _type;
@@ -35,16 +37,7 @@
         unsigned int read_position:1;
         unsigned int read_speedLimitText:1;
         unsigned int read_speedingCard:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_infoCard:1;
-        unsigned int wrote_position:1;
-        unsigned int wrote_speedLimitText:1;
-        unsigned int wrote_speedThreshold:1;
-        unsigned int wrote_speedingCard:1;
-        unsigned int wrote_cameraPriority:1;
-        unsigned int wrote_highlightDistance:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -60,33 +53,33 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(nonatomic) _Bool hasCameraPriority;
 @property(nonatomic) unsigned int cameraPriority;
 @property(retain, nonatomic) GEOMiniCard *speedingCard;
 @property(readonly, nonatomic) _Bool hasSpeedingCard;
-- (void)_readSpeedingCard;
 @property(nonatomic) _Bool hasSpeedThreshold;
 @property(nonatomic) double speedThreshold;
 @property(retain, nonatomic) NSString *speedLimitText;
 @property(readonly, nonatomic) _Bool hasSpeedLimitText;
-- (void)_readSpeedLimitText;
 @property(retain, nonatomic) GEOMiniCard *infoCard;
 @property(readonly, nonatomic) _Bool hasInfoCard;
-- (void)_readInfoCard;
 @property(nonatomic) _Bool hasHighlightDistance;
 @property(nonatomic) unsigned int highlightDistance;
 @property(retain, nonatomic) GEOLatLng *position;
 @property(readonly, nonatomic) _Bool hasPosition;
-- (void)_readPosition;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
 @property(retain, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) _Bool hasIdentifier;
-- (void)_readIdentifier;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

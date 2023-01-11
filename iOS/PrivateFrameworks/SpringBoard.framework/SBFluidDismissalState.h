@@ -15,10 +15,14 @@
     double _backgroundWeighting;
     double _contentWeighting;
     long long _dismissalType;
+    long long _transitionPhase;
     struct CGRect _contentRect;
+    struct CGRect _homeGrabberContentRect;
 }
 
+@property(nonatomic) long long transitionPhase; // @synthesize transitionPhase=_transitionPhase;
 @property(nonatomic) long long dismissalType; // @synthesize dismissalType=_dismissalType;
+@property(nonatomic) struct CGRect homeGrabberContentRect; // @synthesize homeGrabberContentRect=_homeGrabberContentRect;
 @property(nonatomic) struct CGRect contentRect; // @synthesize contentRect=_contentRect;
 @property(nonatomic) double contentWeighting; // @synthesize contentWeighting=_contentWeighting;
 @property(nonatomic) double backgroundWeighting; // @synthesize backgroundWeighting=_backgroundWeighting;

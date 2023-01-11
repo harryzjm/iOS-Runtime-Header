@@ -4,29 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ARKit/NSSecureCoding-Protocol.h>
-
-@class ARCoreRESkeletonResult;
-
-@interface ARSkeleton3D <NSSecureCoding>
+@interface ARSkeleton3D
 {
-    ARCoreRESkeletonResult *_skeleton;
+    const CDStruct_14d5dc5e *_jointModelTransforms;
+    const CDStruct_14d5dc5e *_jointLocalTransforms;
 }
 
-+ (_Bool)supportsSecureCoding;
-- (void).cxx_destruct;
-- (_Bool)isEqual:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) const CDStruct_14d5dc5e *jointLocalTransforms; // @synthesize jointLocalTransforms=_jointLocalTransforms;
+@property(readonly, nonatomic) const CDStruct_14d5dc5e *jointModelTransforms; // @synthesize jointModelTransforms=_jointModelTransforms;
 - (CDStruct_14d5dc5e)localTransformForJointName:(id)arg1;
 - (CDStruct_14d5dc5e)modelTransformForJointName:(id)arg1;
-- (_Bool)isJointTracked:(long long)arg1;
-@property(readonly, nonatomic) ARCoreRESkeletonResult *coreRESkeleton;
-@property(readonly, nonatomic) const CDStruct_14d5dc5e *jointLocalTransforms;
-@property(readonly, nonatomic) const CDStruct_14d5dc5e *jointModelTransforms;
-- (unsigned long long)jointCount;
-- (id)initWithCoreRESkeletonResult:(id)arg1;
-- (id)definition;
 
 @end
 

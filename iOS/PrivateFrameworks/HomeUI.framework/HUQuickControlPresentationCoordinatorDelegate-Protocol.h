@@ -19,7 +19,8 @@
 
 @optional
 - (void)presentationCoordinatorDidCancelDismissalTransition:(HUQuickControlPresentationCoordinator *)arg1;
-- (void)presentationCoordinatorWillBeginDismissalTransition:(HUQuickControlPresentationCoordinator *)arg1;
+- (void)presentationCoordinatorWillEndTransition:(HUQuickControlPresentationCoordinator *)arg1 presenting:(_Bool)arg2;
+- (void)presentationCoordinatorWillBeginTransition:(HUQuickControlPresentationCoordinator *)arg1 presenting:(_Bool)arg2;
 - (_Bool)presentationCoordinatorShouldDisablePullToUnlockSettings:(HUQuickControlPresentationCoordinator *)arg1;
 - (long long)preferredModalPresentationStyleForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (_Bool)presentationCoordinatorShouldProvideCancellationFeedback:(HUQuickControlPresentationCoordinator *)arg1;
@@ -28,6 +29,7 @@
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 didBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 willBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
 - (_Bool)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 shouldBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
+- (_Bool)shouldOverrideTraitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 didRecognizeTapForItem:(HFItem *)arg2;
 - (id <HUOpenURLHandling>)detailViewURLHandlerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (UIViewController<HUDetailsPresentationDelegateHost> *)detailsViewControllerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 item:(HFItem *)arg2;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class AVPlayerLayer, SXAVPlayer, SXImageView, SXVideoResource;
+@class SXAVPlayer, SXImageView, SXPlayerLayer, SXVideoResource;
 
 @interface SXVideoFillPlayerView : UIView
 {
@@ -14,19 +14,19 @@
     _Bool _hasRequestedPlayback;
     unsigned long long _fillMode;
     SXVideoResource *_videoResource;
-    AVPlayerLayer *_playerLayer;
+    SXPlayerLayer *_playerLayer;
     SXAVPlayer *_player;
     SXImageView *_stillImageView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasRequestedPlayback; // @synthesize hasRequestedPlayback=_hasRequestedPlayback;
 @property(retain, nonatomic) SXImageView *stillImageView; // @synthesize stillImageView=_stillImageView;
 @property(retain, nonatomic) SXAVPlayer *player; // @synthesize player=_player;
-@property(retain, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+@property(retain, nonatomic) SXPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 @property(retain, nonatomic) SXVideoResource *videoResource; // @synthesize videoResource=_videoResource;
 @property(nonatomic) _Bool shouldLoop; // @synthesize shouldLoop=_shouldLoop;
 @property(nonatomic) unsigned long long fillMode; // @synthesize fillMode=_fillMode;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)playIfPossible;

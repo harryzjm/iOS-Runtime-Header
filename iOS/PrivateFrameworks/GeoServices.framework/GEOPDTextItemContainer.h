@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTextItemContainer : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDTextItemDisplayConfig *_displayConf;
     NSMutableArray *_textItems;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_displayConf:1;
         unsigned int read_textItems:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_displayConf:1;
-        unsigned int wrote_textItems:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,18 +41,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDTextItemDisplayConfig *displayConf;
 @property(readonly, nonatomic) _Bool hasDisplayConf;
-- (void)_readDisplayConf;
 - (id)textItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)textItemsCount;
-- (void)_addNoFlagsTextItem:(id)arg1;
 - (void)addTextItem:(id)arg1;
 - (void)clearTextItems;
 @property(retain, nonatomic) NSMutableArray *textItems;
-- (void)_readTextItems;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

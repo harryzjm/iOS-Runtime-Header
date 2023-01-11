@@ -8,21 +8,21 @@
 
 #import <PassKitCore/PKContinuityPaymentServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSLock, PKXPCService;
+@class NSArray, PKXPCService;
 @protocol OS_dispatch_queue, PKContinuityPaymentServiceDelegate;
 
 @interface PKContinuityPaymentService : NSObject <PKContinuityPaymentServiceExportedInterface>
 {
     PKXPCService *_remoteService;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSLock *_remoteDeviceLock;
+    struct os_unfair_lock_s _remoteDeviceLock;
     NSArray *_remoteDevices;
     id <PKContinuityPaymentServiceDelegate> _delegate;
 }
 
 + (id)sharedService;
-@property(nonatomic) __weak id <PKContinuityPaymentServiceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKContinuityPaymentServiceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didReceiveCancellationForRemotePaymentRequest:(id)arg1;
 - (void)didReceivePaymentResult:(id)arg1 forRemotePaymentRequest:(id)arg2;
 - (void)didReceivePayment:(id)arg1 forRemotePaymentRequest:(id)arg2;

@@ -17,6 +17,8 @@
     FBSDisplayMonitor *_displayMonitor;
 }
 
++ (id)_sharedInstanceIfExists;
++ (void)_cancelTouchesWithIdentifiers:(id)arg1 forDisplayWithIdentity:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)displayMonitor:(id)arg1 willDisconnectIdentity:(id)arg2;

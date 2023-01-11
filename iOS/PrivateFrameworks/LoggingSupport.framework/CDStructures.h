@@ -22,13 +22,6 @@ struct _OSLogEventChunkContext {
     struct catalog_procinfo_s *_field4;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 struct _ftsent {
     struct _ftsent *_field1;
     struct _ftsent *_field2;

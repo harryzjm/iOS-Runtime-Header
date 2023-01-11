@@ -14,12 +14,13 @@
 
 + (id)sharedCSUserFSConnection;
 + (id)sharedSearchConnection;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool previouslyInitialized; // @synthesize previouslyInitialized=_previouslyInitialized;
 @property(retain, nonatomic) NSMutableDictionary *queries; // @synthesize queries=_queries;
-- (void).cxx_destruct;
 - (void)sendMessageAsync:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelQuery:(unsigned long long)arg1;
 - (void)startQuery:(id)arg1 context:(id)arg2;
+- (void)preheat:(id)arg1;
 - (id)createXPCDictionaryForQuery:(id)arg1 queryID:(long long)arg2 queryContext:(id)arg3 needsInitialization:(_Bool)arg4;
 - (void)handleReply:(id)arg1;
 - (void)handleError:(id)arg1;

@@ -10,11 +10,18 @@
 @protocol PXActivityViewController;
 
 @protocol PXActivityItemSourceController <NSObject>
+@property(readonly, nonatomic) _Bool itemSourcesSupportSlideshow;
+@property(readonly, nonatomic) _Bool isPreparingIndividualItems;
 @property(readonly, nonatomic) NSURL *publishedURL;
 @property(readonly, nonatomic) _Bool itemSourcesSupportMomentShareLinkCreation;
 @property(readonly, nonatomic) _Bool momentSharePublishAttempted;
 @property(readonly, copy, nonatomic) NSOrderedSet *assets;
-@property(nonatomic) _Bool shouldUseMomentShareLinkInMessagesIfThresholdMet;
+@property(readonly, nonatomic) _Bool shouldShareAsOriginals;
+@property(readonly, nonatomic) _Bool shouldExcludeAccessibilityDescriptionInAllItemSources;
+@property(readonly, nonatomic) _Bool shouldExcludeCaptionInAllItemSources;
+@property(readonly, nonatomic) _Bool shouldExcludeLocationInAllItemSources;
+@property(readonly, nonatomic) _Bool shouldExcludeLivenessInAllItemSources;
+@property(readonly, nonatomic) _Bool shouldUseMomentShareLinkInMessagesIfThresholdMet;
 @property(nonatomic) unsigned long long preferredPreparationType;
 @property(readonly, copy, nonatomic) NSOrderedSet *assetItemSources;
 @property(nonatomic) __weak UIActivityViewController<PXActivityViewController> *activityViewController;

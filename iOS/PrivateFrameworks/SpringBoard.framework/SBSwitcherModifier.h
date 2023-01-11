@@ -5,23 +5,20 @@
 //
 
 #import <SpringBoard/SBSwitcherContextProviding-Protocol.h>
-#import <SpringBoard/SBSwitcherQueryProviding-Protocol.h>
+#import <SpringBoard/SBSwitcherMultitaskingQueryProviding-Protocol.h>
 
 @class NSString;
 
-@interface SBSwitcherModifier <SBSwitcherQueryProviding, SBSwitcherContextProviding>
+@interface SBSwitcherModifier <SBSwitcherMultitaskingQueryProviding, SBSwitcherContextProviding>
 {
-    long long _state;
+    _Bool _verifyModifierStackCoherencyCheckAfterHandlingEvent;
 }
 
++ (id)newEventResponse;
 + (id)queryProtocol;
 + (id)contextProtocol;
-@property(nonatomic) long long state; // @synthesize state=_state;
-- (id)_forwardEventToChildren:(id)arg1;
+- (id)handleScrollEvent:(id)arg1;
 - (id)handleTapAppLayoutEvent:(id)arg1;
-- (id)handleTetheredInsertionEvent:(id)arg1;
-- (id)handleTetheredRemovalEvent:(id)arg1;
-- (id)handleAppExposeEvent:(id)arg1;
 - (id)handleTapOutsideToDismissEvent:(id)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
@@ -34,10 +31,14 @@
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleInlineTransitionEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
-- (id)handleEvent:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)loggingCategory;
+- (_Bool)runsInternalVerificationAfterEventDispatch;
+- (id)_handleEvent:(id)arg1;
 - (id)init;
-- (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1 numberOfRows:(unsigned long long)arg2 padding:(double)arg3;
+- (id)defaultAppLayoutsToCacheSnapshots;
+- (id)appLayoutsToCacheSnapshotsWithVisibleRange:(struct _NSRange)arg1 numberOfSnapshotsToCache:(unsigned long long)arg2 biasForward:(_Bool)arg3;
+- (struct CGRect)scaledFrameForIndex:(unsigned long long)arg1;
+- (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1 numberOfRows:(unsigned long long)arg2 padding:(double)arg3 layoutDirection:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

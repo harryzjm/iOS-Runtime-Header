@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSShadow, PXDayAssetsSectionConfigurator, PXMonthCardSectionConfigurator, PXMonthChapterSectionConfigurator, PXYearAssetsSectionConfigurator;
+@class NSShadow, PXAssetsSectionGridConfigurator, PXDayAssetsSectionConfigurator, PXMonthCardSectionConfigurator, PXMonthChapterSectionConfigurator, PXYearAssetsSectionConfigurator, PXZoomablePhotosLayoutSpec;
 
 @interface PXAssetsSectionLayoutSpec
 {
@@ -12,20 +12,29 @@
     PXMonthCardSectionConfigurator *_monthSectionConfigurator;
     PXMonthChapterSectionConfigurator *_monthsChapterConfigurator;
     PXDayAssetsSectionConfigurator *_daySectionConfigurator;
-    _Bool _userInterfaceStyleAllowsShadow;
+    PXAssetsSectionGridConfigurator *_gridConfigurator;
     NSShadow *_shadow;
+    _Bool _userInterfaceStyleAllowsShadow;
+    _Bool _disableConfigurators;
+    PXZoomablePhotosLayoutSpec *_zoomableSpec;
     double _shadowCornerRadius;
     struct UIEdgeInsets _padding;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool disableConfigurators; // @synthesize disableConfigurators=_disableConfigurators;
 @property(readonly, nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(readonly, nonatomic) _Bool userInterfaceStyleAllowsShadow; // @synthesize userInterfaceStyleAllowsShadow=_userInterfaceStyleAllowsShadow;
 @property(readonly, nonatomic) double shadowCornerRadius; // @synthesize shadowCornerRadius=_shadowCornerRadius;
-@property(readonly, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) PXZoomablePhotosLayoutSpec *zoomableSpec; // @synthesize zoomableSpec=_zoomableSpec;
+- (id)_configuratorForZoomLevel:(long long)arg1;
 - (_Bool)allowsPositionDependentHeaderContentOpacityInZoomLevel:(long long)arg1;
 - (id)sectionConfiguratorForAssetCollection:(id)arg1 inZoomLevel:(long long)arg2;
+@property(readonly, nonatomic) NSShadow *shadow;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
+- (long long)numberOfGridZoomStepsWithDataSource:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsGridAspectRatioToggle;
+- (id)gridConfigurator;
 
 @end
 

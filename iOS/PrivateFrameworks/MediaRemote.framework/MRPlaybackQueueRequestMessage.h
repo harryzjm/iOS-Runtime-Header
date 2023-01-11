@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueRequestProtobuf;
+@class MRPlaybackQueueRequest, MRPlayerPath;
 
 @interface MRPlaybackQueueRequestMessage
 {
 }
 
+- (unsigned long long)priority;
 - (unsigned long long)type;
-@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
-@property(readonly, nonatomic) _MRPlaybackQueueRequestProtobuf *request;
+@property(readonly, nonatomic) MRPlayerPath *playerPath;
+@property(readonly, nonatomic) MRPlaybackQueueRequest *request;
 - (id)initWithRequest:(id)arg1 forPlayerPath:(id)arg2;
 
 @end

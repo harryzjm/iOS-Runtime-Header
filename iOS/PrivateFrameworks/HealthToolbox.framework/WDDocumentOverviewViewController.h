@@ -6,40 +6,34 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/SKStoreProductViewControllerDelegate-Protocol.h>
-#import <HealthToolbox/WDAppSwooshTableViewCellDelegate-Protocol.h>
 #import <HealthToolbox/WDUserActivityResponder-Protocol.h>
 
-@class HKDisplayType, NSMutableArray, NSString, UIFont, WDAppSwooshTableViewCell, WDDocumentListDataProvider, WDProfile;
+@class HKDisplayType, NSMutableArray, NSString, UIFont, WDDocumentListDataProvider, WDProfile;
 
 __attribute__((visibility("hidden")))
-@interface WDDocumentOverviewViewController : HKTableViewController <WDAppSwooshTableViewCellDelegate, SKStoreProductViewControllerDelegate, WDUserActivityResponder>
+@interface WDDocumentOverviewViewController : HKTableViewController <WDUserActivityResponder>
 {
     HKDisplayType *_displayType;
     WDProfile *_profile;
     WDDocumentListDataProvider *_dataProvider;
     NSMutableArray *_sectionTypes;
     NSMutableArray *_reportRowTypes;
-    WDAppSwooshTableViewCell *_recommendedAppsCell;
     long long _totalReportCount;
     UIFont *_bodyFont;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property(nonatomic) long long totalReportCount; // @synthesize totalReportCount=_totalReportCount;
-@property(retain, nonatomic) WDAppSwooshTableViewCell *recommendedAppsCell; // @synthesize recommendedAppsCell=_recommendedAppsCell;
 @property(retain, nonatomic) NSMutableArray *reportRowTypes; // @synthesize reportRowTypes=_reportRowTypes;
 @property(retain, nonatomic) NSMutableArray *sectionTypes; // @synthesize sectionTypes=_sectionTypes;
 @property(readonly, nonatomic) WDDocumentListDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property(readonly, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
-- (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_updateActivityForViewDidAppear;
 - (id)applyTransitionActivity:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)appsCell:(id)arg1 showStorePageWithStoreID:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -56,17 +50,11 @@ __attribute__((visibility("hidden")))
 - (void)_pushShowAllViewController;
 - (void)_pushReportDetailViewControllerForIndexPath:(id)arg1;
 - (id)_descriptionSectionCellForTableView:(id)arg1 row:(long long)arg2;
-- (id)_appSectionCellForTableView:(id)arg1 row:(long long)arg2;
 - (id)_reportSectionCellForTableView:(id)arg1 forIndexPath:(id)arg2;
 - (id)_reportItemCellForTableView:(id)arg1 row:(long long)arg2;
 - (id)_reportAccessCellForTableView:(id)arg1 forIndexPath:(id)arg2;
 - (id)_reportShowAllCellForTableView:(id)arg1 forIndexPath:(id)arg2;
 - (void)_installSections;
-- (void)_startRecommendedAppsEngine;
-- (void)_storeDataNotification:(id)arg1;
-- (void)_mobileAssetDataNotification:(id)arg1;
-- (void)_handleAppSectionVisibility;
-- (_Bool)_shouldShowAppsRow;
 - (void)_reloadAllData;
 - (void)_recomputeTotalReportCount;
 - (void)traitCollectionDidChange:(id)arg1;

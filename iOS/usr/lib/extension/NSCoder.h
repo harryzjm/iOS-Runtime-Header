@@ -17,9 +17,13 @@
 - (_Bool)validateAllowedClass:(Class)arg1 forKey:(id)arg2;
 - (id)allowedClasses;
 - (id)decodePropertyListForKey:(id)arg1;
+- (id)decodeDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 forKey:(id)arg3;
+- (id)decodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;
 - (id)decodeTopLevelObjectOfClasses:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)decodeObjectOfClasses:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
+- (id)decodeDictionaryWithKeysOfClass:(Class)arg1 objectsOfClass:(Class)arg2 forKey:(id)arg3;
+- (id)decodeArrayOfObjectsOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)decodeTopLevelObjectOfClass:(Class)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)decodeObjectOfClass:(Class)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)decodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
@@ -73,10 +77,7 @@
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
 - (void)encodeDataObject:(id)arg1;
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void *)arg2;
-- (void)__failWithExternalError:(id)arg1;
 - (_Bool)__failWithExceptionName:(id)arg1 errorCode:(long long)arg2 format:(id)arg3;
-- (_Bool)__failWithException:(id)arg1;
-- (id)__tryDecodeObjectForKey:(id)arg1 error:(id *)arg2 decodeBlock:(CDUnknownBlockType)arg3;
 - (void)__setError:(id)arg1;
 - (id)error;
 - (long long)decodingFailurePolicy;

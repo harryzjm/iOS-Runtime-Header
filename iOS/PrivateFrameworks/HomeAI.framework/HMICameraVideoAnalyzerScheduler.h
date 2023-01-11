@@ -10,7 +10,7 @@
 #import <HomeAI/HMFTimerDelegate-Protocol.h>
 #import <HomeAI/HMISystemResourceUsageMonitorDelegate-Protocol.h>
 
-@class HMFMemoryMonitor, HMFTimer, HMFUnfairLock, HMIPIDController, HMISystemResourceUsageMonitor, MovingAverage, NSArray, NSObject, NSPointerArray, NSString;
+@class HMFTimer, HMFUnfairLock, HMISystemResourceUsageMonitor, MovingAverage, NSArray, NSObject, NSPointerArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMICameraVideoAnalyzerScheduler : HMFObject <HMFLogging, HMFTimerDelegate, HMISystemResourceUsageMonitorDelegate>
@@ -24,8 +24,6 @@
     NSPointerArray *_internalAnalyzers;
     HMISystemResourceUsageMonitor *_systemResourceUsageMonitor;
     long long _systemResourceUsageMonitorUsageLevel;
-    HMFMemoryMonitor *_memoryMonitor;
-    HMIPIDController *_thermalPIDController;
     MovingAverage *_averageAnalysisTimeMovingAverage;
     MovingAverage *_averageTotalAnalysisTimeMovingAverage;
     double _analysisFPSPreference;
@@ -33,11 +31,10 @@
 
 + (id)logCategory;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly) double analysisFPSPreference; // @synthesize analysisFPSPreference=_analysisFPSPreference;
 @property(readonly) MovingAverage *averageTotalAnalysisTimeMovingAverage; // @synthesize averageTotalAnalysisTimeMovingAverage=_averageTotalAnalysisTimeMovingAverage;
 @property(readonly) MovingAverage *averageAnalysisTimeMovingAverage; // @synthesize averageAnalysisTimeMovingAverage=_averageAnalysisTimeMovingAverage;
-@property(readonly) HMIPIDController *thermalPIDController; // @synthesize thermalPIDController=_thermalPIDController;
-@property(readonly) HMFMemoryMonitor *memoryMonitor; // @synthesize memoryMonitor=_memoryMonitor;
 @property long long systemResourceUsageMonitorUsageLevel; // @synthesize systemResourceUsageMonitorUsageLevel=_systemResourceUsageMonitorUsageLevel;
 @property(readonly) HMISystemResourceUsageMonitor *systemResourceUsageMonitor; // @synthesize systemResourceUsageMonitor=_systemResourceUsageMonitor;
 @property(readonly) NSPointerArray *internalAnalyzers; // @synthesize internalAnalyzers=_internalAnalyzers;
@@ -45,7 +42,6 @@
 @property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(getter=isPaused) _Bool paused; // @synthesize paused=_paused;
-- (void).cxx_destruct;
 @property(readonly) NSArray *analyzers;
 - (void)logState;
 - (void)timerDidFire:(id)arg1;
@@ -56,6 +52,8 @@
 - (void)updateAnalysisFPS:(id)arg1;
 @property(readonly) double averageTotalAnalysisTime;
 @property(readonly) double averageAnalysisTime;
+@property(readonly) long long transcodingAnalyzerCount;
+@property(readonly) long long activeAnalyzerCount;
 @property(readonly) unsigned long long maxConcurrentAnalyzers; // @synthesize maxConcurrentAnalyzers=_maxConcurrentAnalyzers;
 - (_Bool)inFullBypassMode;
 @property(readonly) double analysisFPS; // @synthesize analysisFPS=_analysisFPS;

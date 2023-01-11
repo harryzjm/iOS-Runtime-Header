@@ -11,25 +11,27 @@
 
 @interface PKPeerPaymentContactResolver : NSObject
 {
-    NSObject<OS_dispatch_queue> *_contactLookupQueue;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_replyQueue;
+    struct os_unfair_lock_s _delegatesLock;
     CNContactStore *_contactStore;
     NSArray *_keysToFetch;
     NSCache *_handleToContactCache;
     NSHashTable *_delegates;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property(retain, nonatomic) NSCache *handleToContactCache; // @synthesize handleToContactCache=_handleToContactCache;
 @property(readonly, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
-- (void).cxx_destruct;
 - (void)contactForHandle:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)contactForHandles:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)contactForHandle:(id)arg1;
 - (_Bool)haveCachedResultForHandle:(id)arg1;
 - (id)_predicateForHandle:(id)arg1;
 - (void)_handleContactStoreDidChangeNotification:(id)arg1;
 - (void)invalidateCache;
+- (void)_accessDelegatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1;
 - (id)initWithContactStore:(id)arg1 keysToFetch:(id)arg2;

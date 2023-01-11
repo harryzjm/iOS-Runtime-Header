@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)secureCandidateEstimatedMetricsDictionaryForWidth:(double)arg1;
 + (id)secureCandidateEstimatedMetricsDictionary;
 
 @end

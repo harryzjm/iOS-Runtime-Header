@@ -10,6 +10,7 @@
 {
 }
 
++ (void)requestReviewInScene:(id)arg1;
 + (void)requestReview;
 
 @end

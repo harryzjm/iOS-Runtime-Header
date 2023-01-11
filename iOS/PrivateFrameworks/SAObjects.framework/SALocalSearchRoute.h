@@ -17,6 +17,9 @@
 @property(copy, nonatomic) NSData *sessionState;
 @property(copy, nonatomic) NSData *routeId;
 @property(copy, nonatomic) NSData *routeAsZilchBinary;
+@property(copy, nonatomic) NSData *originalWaypointRoute;
+@property(copy, nonatomic) NSData *evChargingMetadata;
+@property(copy, nonatomic) NSData *etaFilter;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

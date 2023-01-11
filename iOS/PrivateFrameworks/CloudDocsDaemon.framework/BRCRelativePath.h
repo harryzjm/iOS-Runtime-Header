@@ -45,26 +45,29 @@
     unsigned int _isBRAlias:1;
     unsigned int _qtnResolved:1;
     unsigned int _xattrsResolved:1;
+    unsigned int _sharedBookmarkResolved:1;
     int _fd;
     _Atomic int _openRefCount;
     struct brc_mutex _mutex;
     BRCAccountSession *_session;
     NSData *_quarantineInfo;
     NSData *_xattrs;
+    NSString *_sharedItemBookmark;
 }
 
 + (_Bool)supportsSecureCoding;
 + (int)locateByFileID:(unsigned long long)arg1 session:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned char itemScope; // @synthesize itemScope=_itemScope;
 @property(nonatomic) unsigned short type; // @synthesize type=_type;
 @property(retain, nonatomic) BRCAppLibrary *appLibrary; // @synthesize appLibrary=_appLibrary;
 @property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 @property(readonly) unsigned long long parentHash;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSString *sharedItemBookmark; // @synthesize sharedItemBookmark=_sharedItemBookmark;
 @property(readonly, nonatomic) NSData *xattrs; // @synthesize xattrs=_xattrs;
 @property(readonly, nonatomic) NSData *quarantineInfo; // @synthesize quarantineInfo=_quarantineInfo;
 @property(readonly, nonatomic) BRCBookmark *bookmark;

@@ -29,6 +29,7 @@
 + (id)currencyCacheLastRefreshDate;
 + (id)dispatchQueue;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *conversionType; // @synthesize conversionType=_conversionType;
 @property(retain, nonatomic) NSArray *additionalResults; // @synthesize additionalResults=_additionalResults;
 @property float currencyUpdateTimeOut; // @synthesize currencyUpdateTimeOut=_currencyUpdateTimeOut;
@@ -54,7 +55,6 @@
 - (id)_safe_subStringOf:(id)arg1 withRange:(struct _NSRange)arg2;
 - (_Bool)_parseInputQuery;
 - (void)processConversionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initWithInput:(id)arg1;
 
 @end

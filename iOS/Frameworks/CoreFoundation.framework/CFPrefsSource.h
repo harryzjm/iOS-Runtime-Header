@@ -49,16 +49,10 @@ __attribute__((visibility("hidden")))
 - (struct __CFDictionary *)alreadylocked_copyDictionary;
 - (struct __CFArray *)copyKeyList;
 - (struct __CFArray *)alreadylocked_copyKeyList;
-- (_Bool)enabled;
-- (void)setEnabled:(_Bool)arg1;
-- (void)setStoreName:(struct __CFString *)arg1;
 - (void)setConfigurationPath:(struct __CFString *)arg1;
 - (_Bool)synchronize;
-- (_Bool)alreadylocked_requestNewData;
 - (void *)copyValueForKey:(struct __CFString *)arg1;
 - (void *)alreadylocked_copyValueForKey:(struct __CFString *)arg1;
-- (void)removeAllValues_from:(id)arg1;
-- (void)replaceAllValuesWithValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (void)_notifyObserversOfChangeFromValuesForKeys:(id)arg1 toValuesForKeys:(id)arg2;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 from:(id)arg3;
 - (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 copyValues:(_Bool)arg4 from:(id)arg5;
@@ -67,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (id)alreadylocked_createObserverUpdateMessageWithOperation:(int)arg1 forRole:(int *)arg2;
 - (int)alreadylocked_updateObservingRemoteChanges;
 - (int)alreadylocked_removePreferencesObserver:(id)arg1;
-- (void)forEachObserver:(CDUnknownBlockType)arg1;
 - (int)alreadylocked_addPreferencesObserver:(id)arg1;
 - (id)initWithContainingPreferences:(id)arg1;
 

@@ -9,7 +9,7 @@
 #import <TextInputCore/TITypingSessionAggregatedEventObserver-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, TIInputMode, TIKeyboardInput, TITypingSession, TIUserModelDataStore;
-@protocol TISensorWriterWrapper;
+@protocol OS_dispatch_queue, TISensorWriterWrapper;
 
 @interface TISKMetricCollector : NSObject <TITypingSessionAggregatedEventObserver>
 {
@@ -32,6 +32,10 @@
     _Bool _accentedLanguage;
     NSMutableArray *_accentedLayoutsMap;
     NSString *_idenitifer;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    int _tccNotifyToken;
+    _Bool _isTCCAuthorized;
+    _Bool _skipTCCAuthorization;
     unsigned long long _wordAccumulationThreshold;
     id <TISensorWriterWrapper> _dataWriter;
     NSMutableArray *_savedSessionSamplesArray;
@@ -39,16 +43,17 @@
 }
 
 + (id)makeMetricCollector:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3 isTesting:(_Bool)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isLoaded; // @synthesize isLoaded=_isLoaded;
 @property(retain, nonatomic) TITypingSession *typingSession; // @synthesize typingSession=_typingSession;
 @property(retain, nonatomic) NSMutableArray *currentSessionSamplesArray; // @synthesize currentSessionSamplesArray=_currentSessionSamplesArray;
 @property(retain, nonatomic) NSMutableArray *savedSessionSamplesArray; // @synthesize savedSessionSamplesArray=_savedSessionSamplesArray;
 @property(retain, nonatomic) id <TISensorWriterWrapper> dataWriter; // @synthesize dataWriter=_dataWriter;
 @property(nonatomic) unsigned long long wordAccumulationThreshold; // @synthesize wordAccumulationThreshold=_wordAccumulationThreshold;
-- (void).cxx_destruct;
 - (void)_persistSavedSessionSampleArray;
 - (id)_retrieveSavedSessionSampleArray;
 - (void)_loadStatsFromDataStore;
+- (void)handleTypingSession:(id)arg1;
 - (void)sessionDidEnd:(id)arg1 aligned:(id)arg2;
 - (void)_reportRipeBuckets;
 - (void)_mergeStats:(id)arg1;
@@ -70,9 +75,14 @@
 - (void)_clear;
 - (void)_resetConsumeState;
 - (id)consumeTypingSession:(id)arg1;
+- (void)_setupTCCAuthNotification;
+- (void)testTCCAuthorization;
+- (void)dealloc;
+- (id)init:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3 accentedLanguage:(_Bool)arg4 skipTCCAuthorization:(_Bool)arg5;
 - (id)init:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3 accentedLanguage:(_Bool)arg4;
 - (id)init:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3;
 - (id)init:(id)arg1;
+- (void)placeTaskOnWorkQueue:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

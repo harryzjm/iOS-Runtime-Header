@@ -7,10 +7,11 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (LPExtras)
++ (id)_lp_createFlippedView;
 - (_Bool)_lp_prefersDarkInterface;
 - (void)_lp_bringSubviewToFront:(id)arg1;
-- (void)_lp_setNonContinuousCornerRadius:(double)arg1;
 - (void)_lp_setCornerRadius:(double)arg1;
+- (void)_lp_setCornerRadius:(double)arg1 continuous:(_Bool)arg2;
 - (_Bool)_lp_isLTR;
 - (double)_lp_backingScaleFactor;
 - (void)_lp_insertSubview:(id)arg1 belowSubview:(id)arg2;

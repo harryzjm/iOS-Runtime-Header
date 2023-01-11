@@ -20,6 +20,7 @@
     ADBackgroundTaskRequest *_task;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ADBackgroundTaskRequest *task; // @synthesize task=_task;
 @property(retain, nonatomic) NSMutableDictionary *adamIDtoBundleID; // @synthesize adamIDtoBundleID=_adamIDtoBundleID;
 @property(retain, nonatomic) NSMutableDictionary *vectorWeightTotals; // @synthesize vectorWeightTotals=_vectorWeightTotals;
@@ -28,10 +29,10 @@
 @property(retain, nonatomic) NSNumber *maxQueryElements; // @synthesize maxQueryElements=_maxQueryElements;
 @property(retain, nonatomic) NSArray *lookbackPeriods; // @synthesize lookbackPeriods=_lookbackPeriods;
 @property(retain, nonatomic) NSString *version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (id)adamIDForBundleID:(id)arg1;
 - (id)bundleIdForAdamId:(id)arg1;
 - (void)buildBundleIDtoAdamIDCache:(id)arg1;
+- (id)appUsageEventsBetween:(id)arg1 and:(id)arg2 withLimit:(unsigned long long)arg3;
 - (id)appUsageEventsForLookbackPeriod:(double)arg1;
 - (id)updateVector:(id)arg1 withVector:(id)arg2 usingWeight:(float)arg3;
 - (float)weightForEvents:(id)arg1 amongEvents:(id)arg2 inLookbackPeriod:(id)arg3;

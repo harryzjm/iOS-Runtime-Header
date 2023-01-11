@@ -28,6 +28,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <HMDStreamingManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -37,7 +38,6 @@
 @property(retain, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property(retain, nonatomic) HMDAudioStreamInterface *audioStreamInterface; // @synthesize audioStreamInterface=_audioStreamInterface;
 @property(retain, nonatomic) HMDVideoStreamInterface *videoStreamInterface; // @synthesize videoStreamInterface=_videoStreamInterface;
-- (void).cxx_destruct;
 - (void)remoteVideoServerDidDie:(id)arg1;
 - (void)remoteVideoClientDidReceiveLastFrame:(id)arg1;
 - (void)remoteVideoClient:(id)arg1 remoteVideoAttributesDidChange:(id)arg2;
@@ -46,7 +46,6 @@
 - (void)videoStreamDidNetworkDeteriorate:(id)arg1;
 - (void)videoStreamDidNetworkImprove:(id)arg1;
 - (void)videoStream:(id)arg1 didStop:(id)arg2;
-- (void)videoStream:(id)arg1 didStartRelay:(id)arg2;
 - (void)videoStream:(id)arg1 didStart:(id)arg2;
 - (void)audioStream:(id)arg1 didStop:(id)arg2;
 - (void)audioStream:(id)arg1 didResume:(id)arg2;
@@ -56,7 +55,7 @@
 - (void)_callNetworkDeteriorated;
 - (void)_callNetworkImproved;
 - (void)_callStreamStopped:(id)arg1;
-- (void)_callRelayStarted:(id)arg1;
+- (void)_callRelayStarted;
 - (void)_callReceivedFirstFrame:(id)arg1;
 - (void)_callStreamStarted:(id)arg1;
 - (void)updateAudioVolume:(id)arg1 callback:(CDUnknownBlockType)arg2;

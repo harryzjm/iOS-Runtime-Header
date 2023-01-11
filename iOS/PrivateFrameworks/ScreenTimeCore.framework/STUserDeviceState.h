@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
 #import <ScreenTimeCore/STUniquelySerializableManagedObject-Protocol.h>
 
-@class NSData, NSSet, NSString, STCoreDevice, STCoreUser;
+@class NSData, NSDate, NSSet, NSString, STCoreDevice, STCoreUser;
 
-@interface STUserDeviceState <STUniquelySerializableManagedObject>
+@interface STUserDeviceState <STSerializableMappedObject, STUniquelySerializableManagedObject>
 {
 }
 
++ (id)serializableClassName;
 + (id)fetchOrCreateWithDictionaryRepresentation:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)fetchLocalUserDeviceStateInContext:(id)arg1 error:(id *)arg2;
 + (id)fetchOrCreateLocalUserDeviceStateInContext:(id)arg1 error:(id *)arg2;
@@ -31,6 +33,7 @@
 @property(copy, nonatomic) NSData *deviceInfoPlist; // @dynamic deviceInfoPlist;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSSet *installedApps; // @dynamic installedApps;
+@property(copy, nonatomic) NSDate *lastFamilyCheckinDate; // @dynamic lastFamilyCheckinDate;
 @property(retain, nonatomic) STCoreDevice *localDevice; // @dynamic localDevice;
 @property(retain, nonatomic) STCoreUser *localUser; // @dynamic localUser;
 @property(nonatomic) _Bool managementEnabled; // @dynamic managementEnabled;

@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setText:(id)arg1;
 - (void)_createPrimaryViews;
-- (void)setIsPrimary:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

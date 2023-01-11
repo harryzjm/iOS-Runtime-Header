@@ -8,20 +8,29 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class GEOLatLng, NSString, PBDataReader;
+
 @interface GEOLogMsgEventPredExTrainingData : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     double _chanceOfPrecipitation;
     double _chanceOfRain;
     double _chanceOfSnow;
+    double _dayOfWeek;
+    double _durationUntilEventEnd;
+    double _durationUntilEventStart;
     double _endTime;
-    double _secondsUntilEnd;
-    double _secondsUntilStart;
+    double _isTourist;
     double _startTime;
     double _temperature;
     double _timeOfDay;
     double _timeSinceBackgrounded;
+    NSString *_userLocationGeohash4;
+    GEOLatLng *_userLocation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _actualTransportMode;
-    unsigned int _dayOfWeek;
     int _distanceFromHereToHome;
     int _distanceFromHereToOrigin;
     int _distanceFromHereToParkedCar;
@@ -32,23 +41,25 @@
     int _mapType;
     int _predictedTransportMode;
     int _preferredTransportMode;
+    int _weatherType;
+    _Bool _isCarplayConnected;
     _Bool _isInBasemode;
-    _Bool _isTourist;
     _Bool _isTransitPossible;
     _Bool _routePlanningScreenPresented;
     struct {
         unsigned int has_chanceOfPrecipitation:1;
         unsigned int has_chanceOfRain:1;
         unsigned int has_chanceOfSnow:1;
+        unsigned int has_dayOfWeek:1;
+        unsigned int has_durationUntilEventEnd:1;
+        unsigned int has_durationUntilEventStart:1;
         unsigned int has_endTime:1;
-        unsigned int has_secondsUntilEnd:1;
-        unsigned int has_secondsUntilStart:1;
+        unsigned int has_isTourist:1;
         unsigned int has_startTime:1;
         unsigned int has_temperature:1;
         unsigned int has_timeOfDay:1;
         unsigned int has_timeSinceBackgrounded:1;
         unsigned int has_actualTransportMode:1;
-        unsigned int has_dayOfWeek:1;
         unsigned int has_distanceFromHereToHome:1;
         unsigned int has_distanceFromHereToOrigin:1;
         unsigned int has_distanceFromHereToParkedCar:1;
@@ -59,14 +70,19 @@
         unsigned int has_mapType:1;
         unsigned int has_predictedTransportMode:1;
         unsigned int has_preferredTransportMode:1;
+        unsigned int has_weatherType:1;
+        unsigned int has_isCarplayConnected:1;
         unsigned int has_isInBasemode:1;
-        unsigned int has_isTourist:1;
         unsigned int has_isTransitPossible:1;
         unsigned int has_routePlanningScreenPresented:1;
+        unsigned int read_userLocationGeohash4:1;
+        unsigned int read_userLocation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
+- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -75,8 +91,21 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsWeatherType:(id)arg1;
+- (id)weatherTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasWeatherType;
+@property(nonatomic) int weatherType;
+@property(nonatomic) _Bool hasIsCarplayConnected;
+@property(nonatomic) _Bool isCarplayConnected;
+@property(retain, nonatomic) NSString *userLocationGeohash4;
+@property(readonly, nonatomic) _Bool hasUserLocationGeohash4;
+@property(retain, nonatomic) GEOLatLng *userLocation;
+@property(readonly, nonatomic) _Bool hasUserLocation;
 - (int)StringAsDistanceFromHereToParkedCar:(id)arg1;
 - (id)distanceFromHereToParkedCarAsString:(int)arg1;
 @property(nonatomic) _Bool hasDistanceFromHereToParkedCar;
@@ -126,9 +155,9 @@
 @property(nonatomic) _Bool hasPreferredTransportMode;
 @property(nonatomic) int preferredTransportMode;
 @property(nonatomic) _Bool hasIsTourist;
-@property(nonatomic) _Bool isTourist;
+@property(nonatomic) double isTourist;
 @property(nonatomic) _Bool hasDayOfWeek;
-@property(nonatomic) unsigned int dayOfWeek;
+@property(nonatomic) double dayOfWeek;
 @property(nonatomic) _Bool hasTimeOfDay;
 @property(nonatomic) double timeOfDay;
 @property(nonatomic) _Bool hasChanceOfSnow;
@@ -143,14 +172,16 @@
 @property(nonatomic) double endTime;
 @property(nonatomic) _Bool hasStartTime;
 @property(nonatomic) double startTime;
-@property(nonatomic) _Bool hasSecondsUntilEnd;
-@property(nonatomic) double secondsUntilEnd;
-@property(nonatomic) _Bool hasSecondsUntilStart;
-@property(nonatomic) double secondsUntilStart;
+@property(nonatomic) _Bool hasDurationUntilEventEnd;
+@property(nonatomic) double durationUntilEventEnd;
+@property(nonatomic) _Bool hasDurationUntilEventStart;
+@property(nonatomic) double durationUntilEventStart;
 - (int)StringAsEntryType:(id)arg1;
 - (id)entryTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasEntryType;
 @property(nonatomic) int entryType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

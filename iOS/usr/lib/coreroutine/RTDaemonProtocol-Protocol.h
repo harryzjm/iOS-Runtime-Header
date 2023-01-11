@@ -6,11 +6,13 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLLocation, GEOMapItemStorage, NSData, NSDate, NSSet, NSString, NSUUID, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
+@class CLLocation, GEOMapItemStorage, NSData, NSDate, NSNumber, NSSet, NSString, NSUUID, RTEnumerationOptions, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
 
 @protocol RTDaemonProtocol <NSObject>
 - (void)userInteractionWithPredictedLocationOfInterest:(RTPredictedLocationOfInterest *)arg1 interaction:(unsigned long long)arg2 feedback:(NSString *)arg3 geoMapItem:(GEOMapItemStorage *)arg4 reply:(void (^)(NSError *))arg5;
+- (void)fetchEnumerableObjectsWithOptions:(RTEnumerationOptions *)arg1 offset:(NSNumber *)arg2 reply:(void (^)(NSArray *, NSNumber *, NSError *))arg3;
 - (void)fetchStoredLocationsWithContext:(RTStoredLocationEnumerationContext *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchFormattedPostalAddressesFromMeCard:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchPlaceInferencesWithOptions:(RTPlaceInferenceOptions *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)removeVisitWithIdentifier:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;
@@ -21,6 +23,9 @@
 - (void)updateLocationOfInterestWithIdentifier:(NSUUID *)arg1 mapItemStorage:(GEOMapItemStorage *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)updateLocationOfInterestWithIdentifier:(NSUUID *)arg1 type:(long long)arg2 mapItemStorage:(GEOMapItemStorage *)arg3 customLabel:(NSString *)arg4 reply:(void (^)(RTLocationOfInterest *, NSError *))arg5;
 - (void)addLocationOfInterestOfType:(long long)arg1 mapItemStorage:(GEOMapItemStorage *)arg2 customLabel:(NSString *)arg3 reply:(void (^)(RTLocationOfInterest *, NSError *))arg4;
+- (void)fetchLocationOfInterestAtLocation:(CLLocation *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
+- (void)fetchLocationsOfInterestVisitedBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchLocationOfInterestWithIdentifier:(NSUUID *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)stopMonitoringVehicleEventsWithReply:(void (^)(NSError *))arg1;
 - (void)startMonitoringVehicleEventsWithReply:(void (^)(NSError *))arg1;
@@ -37,11 +42,8 @@
 - (void)stopMonitoringScenarioTriggerOfType:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;
 - (void)startMonitoringScenarioTriggerOfType:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;
 - (void)fetchTransitionsBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)fetchLocationsOfInterestVisitedBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)fetchLocationOfInterestWithIdentifier:(NSUUID *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchPredictedLocationsOfInterestBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchPredictedExitDatesFromLocation:(CLLocation *)arg1 onDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)fetchLocationOfInterestAtLocation:(CLLocation *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchPathToDiagnosticFilesWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)fetchStoredVisitsWithOptions:(RTStoredVisitFetchOptions *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)stopLeechingLowConfidenceVisitsWithReply:(void (^)(NSError *))arg1;

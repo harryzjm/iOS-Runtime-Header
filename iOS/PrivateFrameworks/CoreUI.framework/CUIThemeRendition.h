@@ -19,7 +19,6 @@
     int _blendMode;
     struct cuithemerenditionrenditionflags _renditionFlags;
     long long _templateRenderingMode;
-    long long _artworkStatus;
     unsigned long long _colorSpaceID;
     NSString *_name;
     NSData *_srcData;
@@ -34,7 +33,6 @@
 + (Class)renditionClassForRenditionType:(long long)arg1 andPixelFormat:(unsigned int)arg2;
 @property(nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
 @property(nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
-@property(nonatomic) long long artworkStatus; // @synthesize artworkStatus=_artworkStatus;
 @property(readonly, nonatomic) NSData *srcData; // @synthesize srcData=_srcData;
 @property(nonatomic) long long internalTemplateRenderingMode; // @synthesize internalTemplateRenderingMode=_templateRenderingMode;
 @property(nonatomic) unsigned int internalScale; // @synthesize internalScale=_scale;
@@ -43,6 +41,7 @@
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 - (unsigned short)valueForTokenIdentifier:(unsigned short)arg1;
 - (id)_sourceRendition;
+- (float)vectorGlyphTemplateVersion;
 - (CDStruct_3c058996)vectorGlyphAlignmentRectInsets;
 - (double)vectorGlyphReferencePointSize;
 - (double)vectorGlyphCapLine;
@@ -83,6 +82,7 @@
 - (id)maskForSliceIndex:(long long)arg1;
 - (id)imageForSliceIndex:(long long)arg1;
 - (struct CGImage *)unslicedImage;
+- (long long)textureIntepretation;
 - (id)textureImages;
 - (id)provideTextureInfo;
 - (id)description;
@@ -90,20 +90,19 @@
 - (id)properties;
 - (_Bool)isTintable;
 - (_Bool)preservedVectorRepresentation;
+- (void)_setFlippable:(_Bool)arg1;
 - (_Bool)isFlippable;
 - (_Bool)optOutOfThinning;
 - (long long)templateRenderingMode;
 - (int)bitmapEncoding;
 - (_Bool)isOpaque;
 - (_Bool)isVectorBased;
-- (_Bool)isHeaderFlaggedFPO;
 - (struct CGSize)physicalSizeInMeters;
 - (id)utiType;
 - (id)name;
 - (const struct _renditionkeytoken *)key;
 - (void)dealloc;
-- (id)_initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)_initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (void)_initializeRenditionKey:(const struct _renditionkeytoken *)arg1;
 - (int)pixelFormat;

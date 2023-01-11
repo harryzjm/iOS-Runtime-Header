@@ -18,14 +18,15 @@
     NCNotificationRequest *_notificationRequest;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property(copy, nonatomic) NSArray *overriddenActions; // @synthesize overriddenActions=_overriddenActions;
 @property(nonatomic) __weak id <NCNotificationStaticContentProvidingDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)_appBundleIdentifer;
 @property(readonly, nonatomic) unsigned long long coalesceCount;
 @property(readonly, copy, nonatomic) NSArray *currentActions;
 @property(readonly, nonatomic) _Bool showsTextInputOnAppearance;
+@property(readonly, copy, nonatomic) CDUnknownBlockType nilAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType closeAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType clearAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType cancelAction;

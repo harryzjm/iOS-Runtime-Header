@@ -28,33 +28,24 @@
 }
 
 + (id)containerGridViewWithArrangedSubviewRows:(id)arg1;
-@property(nonatomic) double columnWidth; // @synthesize columnWidth=_columnWidth;
-@property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) double columnWidth; // @synthesize columnWidth=_columnWidth;
+@property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 - (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
 - (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
-- (void)_setupViewRangesIfNeeded;
-- (long long)_verticalAlignmentOfView:(id)arg1 row:(long long)arg2;
-- (long long)_horizontalAlignmentOfView:(id)arg1 inColumn:(long long)arg2;
-- (double)_heightOfRowAtIndex:(long long)arg1;
-- (double)_widthOfColumnAtIndex:(long long)arg1;
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)didInsertArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (_Bool)setNeedsInvalidation:(long long)arg1;
 - (id)debugDictionary;
-- (id)debugArrayForDimension:(id)arg1;
-- (id)debugDictionaryForDimensionConfiguration:(id)arg1;
 - (id)debugDictionaryForVisibleArrangedSubview:(id)arg1;
 - (id)arrangedDescription;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
-- (struct CGSize)_calculateArrangedSizeFittingSize:(struct CGSize)arg1 forLayout:(_Bool)arg2;
 - (id)viewForLastBaselineLayoutInRowAtIndex:(long long)arg1;
 - (id)viewForFirstBaselineLayoutInRowAtIndex:(long long)arg1;
 - (id)calculateViewForLastBaselineLayout;
 - (id)calculateViewForFirstBaselineLayout;
-- (id)_baselineViewVendForFirstBaseline:(_Bool)arg1 fromViews:(id)arg2;
 @property(nonatomic) double columnSpacing;
 @property(nonatomic) double rowSpacing;
 @property(nonatomic) long long verticalDistribution;
@@ -81,7 +72,6 @@
 @property(readonly, nonatomic) long long numberOfRows;
 @property(copy, nonatomic) NSArray *arrangedSubviewRows;
 - (void)ensureArrangedSubviewsAreValid;
-- (_Bool)_verifyInternalGridConsistencyWarningOnly:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithArrangedSubviewRows:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

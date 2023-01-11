@@ -12,8 +12,9 @@
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
-+ (int)separatorStyleForCardSection:(id)arg1;
++ (int)defaultSeparatorStyleForCardSection:(id)arg1;
 + (_Bool)supportsRecyclingForCardSection:(id)arg1;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)updateWithRowModel:(id)arg1;
 - (id)setupContentView;
 

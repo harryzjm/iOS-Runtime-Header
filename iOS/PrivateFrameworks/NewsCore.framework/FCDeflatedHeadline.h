@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCSharedStringIndex, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL, NTPBFeedViewportHeadline;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCSharedStringIndex, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL, NTPBFeedViewportHeadline;
 @protocol FCChannelProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCDeflatedHeadline : NSObject <FCHeadlineProviding>
@@ -17,9 +17,11 @@
     FCSharedStringIndex *_sharedStrings;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FCSharedStringIndex *sharedStrings; // @synthesize sharedStrings=_sharedStrings;
 @property(readonly, nonatomic) NTPBFeedViewportHeadline *pbHeadline; // @synthesize pbHeadline=_pbHeadline;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
 @property(readonly, nonatomic) _Bool useTransparentNavigationBar;
 @property(readonly, nonatomic) unsigned long long role;
 @property(readonly, copy, nonatomic) NSString *language;
@@ -27,6 +29,8 @@
 @property(readonly, nonatomic) id <FCNativeAdProviding> associatedAd;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property(readonly, nonatomic) _Bool canBePurchased;
@@ -109,6 +113,8 @@
 @property(readonly, nonatomic) unsigned long long contentType;
 @property(readonly, copy, nonatomic) NSString *referencedArticleID;
 @property(readonly, copy, nonatomic) NSString *versionIdentifier;
+@property(readonly, nonatomic) _Bool isFullTrackAvailableToAll;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSDate *displayDate;
 @property(readonly, nonatomic) unsigned long long storyType;
@@ -138,6 +144,7 @@
 @property(readonly, nonatomic) NSData *backingArticleRecordData;
 @property(readonly, nonatomic) long long bodyTextLength;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) _Bool hasAudioTrack;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isFeatured;
 @property(readonly, nonatomic) _Bool isLocalDraft;
@@ -145,6 +152,9 @@
 @property(readonly, copy, nonatomic) NSArray *linkedArticleIDs;
 @property(readonly, copy, nonatomic) NSArray *linkedIssueIDs;
 @property(readonly, copy, nonatomic) FCIssue *masterIssue;
+@property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrack;
+@property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample;
+@property(readonly, nonatomic) NSString *narrativeTrackTextRanges;
 @property(readonly, nonatomic) _Bool showBundleSoftPaywall;
 @property(readonly, nonatomic) id <FCHeadlineStocksFields> stocksFields;
 @property(readonly) Class superclass;

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseRemoveContactIdentifier:(id)arg1 forCalendarItem:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseAddContactWithIdentifier:(id)arg1 forCalendarItem:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetContactIdentifierForCalendarItem:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseExportCalendarItemAsICS:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseExportCalendarItemAsICS:(id)arg1 withOptions:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseCancelFetchRequestWithIdentifier:(unsigned int)arg1;
 - (id)_resultsFilteredForJunkEvents:(id)arg1;
 - (id)_resultsFilteredForTCCAccess:(id)arg1;

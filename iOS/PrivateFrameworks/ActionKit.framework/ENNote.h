@@ -23,7 +23,7 @@
     NSDictionary *_edamAttributes;
 }
 
-+ (void)populateNoteFromWebView:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *edamAttributes; // @synthesize edamAttributes=_edamAttributes;
 @property(retain, nonatomic) EDAMNote *serviceNote; // @synthesize serviceNote=_serviceNote;
 @property(copy, nonatomic) NSString *cachedENMLContent; // @synthesize cachedENMLContent=_cachedENMLContent;
@@ -32,7 +32,6 @@
 @property(copy, nonatomic) NSArray *tagNames; // @synthesize tagNames=_tagNames;
 @property(retain, nonatomic) ENNoteContent *content; // @synthesize content=_content;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (id)generateENMLContent;
 - (_Bool)validateForLimits;
 - (id)EDAMNoteToReplaceServiceNoteGUID:(id)arg1;

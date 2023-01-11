@@ -11,6 +11,7 @@
     NSIndexSet *_dataSubsectionIndexes;
     NSArray *_dataSubsections;
     NSNumber *_countNumber;
+    _Bool _skipAssetCountFetches;
     long long _indentationLevel;
     NSDictionary *_childDataSections;
     NSDictionary *_childIndexHints;
@@ -18,12 +19,12 @@
     NSArray *_sectionRangeMap;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *sectionRangeMap; // @synthesize sectionRangeMap=_sectionRangeMap;
 @property(readonly, nonatomic) PXCollectionsDataSection *collectionsDataSection; // @synthesize collectionsDataSection=_collectionsDataSection;
 @property(readonly, copy, nonatomic) NSDictionary *childIndexHints; // @synthesize childIndexHints=_childIndexHints;
 @property(readonly, copy, nonatomic) NSDictionary *childDataSections; // @synthesize childDataSections=_childDataSections;
 @property(readonly, nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)parentOfListItemAtIndex:(long long)arg1 localIndex:(long long *)arg2;
 - (long long)indexInCollectionsDataSectionOfListItem:(id)arg1 hintIndex:(long long)arg2;
@@ -33,10 +34,11 @@
 - (long long)count;
 - (id)content;
 - (unsigned long long)_dataSubsectionIndexForListItemAtIndex:(long long)arg1;
+- (id)existingFetchResultForListItem:(id)arg1;
 - (void)_createDataSubsectionsIfNecessary;
 - (id)initWithOutlineObject:(id)arg1;
 - (id)initWithCollectionsDataSection:(id)arg1;
-- (id)initWithCollectionsDataSection:(id)arg1 indentationLevel:(long long)arg2 outlineObject:(id)arg3 childDataSections:(id)arg4 childIndexHints:(id)arg5;
+- (id)initWithCollectionsDataSection:(id)arg1 indentationLevel:(long long)arg2 outlineObject:(id)arg3 childDataSections:(id)arg4 childIndexHints:(id)arg5 skipAssetCountFetches:(_Bool)arg6;
 
 @end
 

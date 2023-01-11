@@ -8,21 +8,23 @@
 
 #import <NanoPassKit/PKPeerPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class NPSDomainAccessor, NPSManager, NSString;
+@class NSString, PKPeerPaymentWebService;
 
 @interface NPKPeerPaymentWebServiceCompanionTargetDevice : NSObject <PKPeerPaymentWebServiceTargetDeviceProtocol>
 {
-    NPSDomainAccessor *_globalDomainAccessor;
-    NPSManager *_preferencesSyncManager;
+    PKPeerPaymentWebService *_peerPaymentWebService;
 }
 
 + (void)attemptToDownloadPeerPaymentPassAtURL:(id)arg1 withWebService:(id)arg2 completion:(CDUnknownBlockType)arg3;
-@property(retain, nonatomic) NPSManager *preferencesSyncManager; // @synthesize preferencesSyncManager=_preferencesSyncManager;
-@property(retain, nonatomic) NPSDomainAccessor *globalDomainAccessor; // @synthesize globalDomainAccessor=_globalDomainAccessor;
 - (void).cxx_destruct;
+@property(nonatomic) __weak PKPeerPaymentWebService *peerPaymentWebService; // @synthesize peerPaymentWebService=_peerPaymentWebService;
+- (void)setPreferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)preferences;
 - (id)appleAccountInformation;
 - (void)_handleAccountChanged:(id)arg1;
+- (id)deviceClass;
 - (id)deviceRegion;
+- (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 peerPaymentWebService:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;

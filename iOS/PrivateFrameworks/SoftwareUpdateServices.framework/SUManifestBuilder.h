@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface SUManifestBuilder : NSObject
 {
 }
 
-+ (id)manifestFromDescriptor:(id)arg1 outRequired:(_Bool *)arg2;
-+ (_Bool)isManifestRequiredForDescriptor:(id)arg1;
++ (id)manifestFromDescriptor:(id)arg1;
 
 @end
 

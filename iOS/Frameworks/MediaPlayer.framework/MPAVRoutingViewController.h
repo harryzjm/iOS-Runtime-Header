@@ -11,11 +11,12 @@
 #import <MediaPlayer/MPAVRoutingTableViewCellDelegate-Protocol.h>
 #import <MediaPlayer/UITableViewDataSource-Protocol.h>
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
-@class CARSessionStatus, MPAVClippingTableView, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingViewControllerUpdate, MPSectionedCollection, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSNumber, NSString, UIColor, UITableView;
+@class CARSessionStatus, MPAVClippingTableView, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingViewControllerUpdate, MPSectionedCollection, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSMutableSet, NSNumber, NSString, UIColor, UITableView;
 @protocol MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
-@interface MPAVRoutingViewController : UIViewController <CARSessionObserving, UITableViewDataSource, UITableViewDelegate, MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate>
+@interface MPAVRoutingViewController : UIViewController <CARSessionObserving, UITableViewDataSource, UITableViewDelegate, MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, _MPStateDumpPropertyListTransformable>
 {
     MPAVClippingTableView *_tableView;
     MPAVRoutingViewControllerUpdate *_pendingUpdate;
@@ -27,6 +28,7 @@
     NSArray *_cachedPendingPickedRoutes;
     NSArray *_cachedDisplayAsPickedRoutes;
     NSArray *_cachedVolumeCapableRoutes;
+    NSMutableSet *_expandedGroupUIDs;
     MPWeakTimer *_updateTimer;
     MPAVRoutingController *_routingController;
     long long _routeDiscoveryMode;
@@ -53,13 +55,16 @@
     NSNumber *_discoveryModeOverride;
     id <MPAVRoutingViewControllerThemeDelegate> _themeDelegate;
     MPAVEndpointRoute *_endpointRoute;
+    double _continuousCornerRadius;
     NSMapTable *_outputDeviceVolumeSliders;
     MPVolumeGroupSliderCoordinator *_groupSliderCoordinator;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool sortByIsVideoRoute; // @synthesize sortByIsVideoRoute=_sortByIsVideoRoute;
 @property(retain, nonatomic) MPVolumeGroupSliderCoordinator *groupSliderCoordinator; // @synthesize groupSliderCoordinator=_groupSliderCoordinator;
 @property(retain, nonatomic) NSMapTable *outputDeviceVolumeSliders; // @synthesize outputDeviceVolumeSliders=_outputDeviceVolumeSliders;
+@property(nonatomic, getter=_continuousCornerRadius, setter=_setContinuousCornerRadius:) double continuousCornerRadius; // @synthesize continuousCornerRadius=_continuousCornerRadius;
 @property(retain, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property(nonatomic) __weak id <MPAVRoutingViewControllerThemeDelegate> themeDelegate; // @synthesize themeDelegate=_themeDelegate;
 @property(copy, nonatomic) NSNumber *discoveryModeOverride; // @synthesize discoveryModeOverride=_discoveryModeOverride;
@@ -68,8 +73,11 @@
 @property(nonatomic, setter=setAVItemType:) long long avItemType; // @synthesize avItemType=_avItemType;
 @property(nonatomic) __weak id <MPAVRoutingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
+- (_Bool)shouldGroupRoutingViewItems;
+- (id)_stateDumpObject;
 - (id)_createSectionedCollection:(id)arg1 withPickedRoutes:(id)arg2;
+- (id)_createRoutingViewItemsForRoutes:(id)arg1;
+- (id)groupUIDForRoute:(id)arg1;
 - (void)_endUpdates;
 - (id)_createVolumeSlider;
 - (_Bool)_shouldDisplayRouteAsPicked:(id)arg1;
@@ -77,6 +85,7 @@
 - (double)_tableViewHeaderViewHeight;
 - (void)_applyUpdate:(id)arg1;
 - (id)_createReloadUpdate;
+- (id)_createRefreshUpdate;
 - (void)_enqueueUpdate:(id)arg1;
 - (void)_updateDisplayedRoutes;
 - (id)_volumeCapableRoutesInRoutes:(id)arg1;
@@ -109,6 +118,7 @@
 - (void)enqueueRefreshUpdate;
 - (void)sessionDidDisconnect:(id)arg1;
 - (void)sessionDidConnect:(id)arg1;
+- (void)routingCellDidTapToExpand:(id)arg1;
 - (void)routingCell:(id)arg1 mirroringSwitchValueDidChange:(_Bool)arg2;
 - (void)routingController:(id)arg1 shouldHijackRoute:(id)arg2 alertStyle:(long long)arg3 busyRouteName:(id)arg4 presentingAppName:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)routingController:(id)arg1 didFailToPickRouteWithError:(id)arg2;
@@ -125,14 +135,18 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (struct CGSize)preferredContentSize;
+- (_Bool)shouldOverrideContentSizeCategory:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)registerTableViewCells;
 - (void)viewDidLoad;
 - (void)resetScrollPosition;
 - (void)resetDisplayedRoutes;
+- (_Bool)isInVehicle;
+- (_Bool)hasCarKitRoute;
 @property(readonly, nonatomic, getter=isInCarPlay) _Bool inCarPlay;
 @property(nonatomic) _Bool allowMirroring;
 - (void)dealloc;

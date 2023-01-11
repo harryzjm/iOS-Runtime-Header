@@ -24,6 +24,7 @@
     UIImage *_checkmarkImage;
     TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManagerForIndentedRows;
     TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManagerForUnindentedRows;
+    long long _tonePickerTableViewStyle;
     _Bool _showsToneStoreWasSetExplicitly;
     _Bool _needsScrollPositionReset;
     UIBarButtonItem *_storeBarButtonItem;
@@ -31,6 +32,7 @@
     MPMediaPickerController *_mediaPickerController;
     NSMutableArray *_mediaItems;
     MPMusicPlayerController *_musicPlayer;
+    NSNumber *_playingMediaItemIdentifier;
     TKToneClassicsTableViewController *_toneClassicsTableViewController;
     TKVibrationPickerViewController *_vibrationPickerViewController;
     _Bool _isHandlingSwitchControlValueChanged;
@@ -43,12 +45,12 @@
 }
 
 + (id)_checkmarkImage;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <TKTonePickerStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) _Bool showsMedia; // @synthesize showsMedia=_showsMedia;
 @property(nonatomic) _Bool showsIgnoreMute; // @synthesize showsIgnoreMute=_showsIgnoreMute;
 @property(nonatomic) __weak id <TKTonePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool showsToneStore; // @synthesize showsToneStore=_showsToneStore;
-- (void).cxx_destruct;
 - (void)vibrationPickerViewControllerWasDismissed:(id)arg1;
 - (void)vibrationPickerViewController:(id)arg1 selectedVibrationWithIdentifier:(id)arg2;
 - (void)tonePickerController:(id)arg1 requestsPresentingAlertWithTitle:(id)arg2 message:(id)arg3;
@@ -108,6 +110,7 @@
 - (void)mediaPicker:(id)arg1 didPickMediaItems:(id)arg2;
 - (void)mediaPickerDidCancel:(id)arg1;
 - (void)_stopMediaItemPlaybackWithFadeOutDuration:(double)arg1;
+- (void)_didFinishPreparingToPlayMediaItemWithIdentifier:(id)arg1 error:(id)arg2;
 - (void)_playMediaItemWithIdentifier:(id)arg1;
 - (void)_togglePlayMediaItemWithIdentifier:(id)arg1;
 - (id)_musicPlayer;
@@ -154,6 +157,7 @@
 @property(copy, nonatomic) NSString *topic;
 @property(readonly, nonatomic) long long alertType;
 - (void)dealloc;
+- (id)_initWithAlertType:(long long)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithAlertType:(long long)arg1;
 - (id)initWithStyle:(long long)arg1;
 @property(nonatomic) _Bool showsStoreButtonInNavigationBar;

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     NSObject<OS_dispatch_queue> *_changeFetcherQueue;
     _SYCountedSemaphore *_changeConcurrencySemaphore;
     NSObject<OS_os_activity> *_changeWaitActivity;
@@ -22,12 +22,12 @@ __attribute__((visibility("hidden")))
     _Bool _cancelled;
 }
 
+- (void).cxx_destruct;
 - (_Bool)wasCancelled;
 - (void)setCanRollback:(_Bool)arg1;
 - (_Bool)canRollback;
 - (void)setCanRestart:(_Bool)arg1;
 - (_Bool)canRestart;
-- (void).cxx_destruct;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)cancelWithError:(id)arg1;
@@ -37,16 +37,16 @@ __attribute__((visibility("hidden")))
 - (void)_processNextState;
 - (void)_messageExpiredWithSeqno:(unsigned long long)arg1 identifier:(id)arg2;
 - (void)_notifySessionComplete;
-- (void)_sendSyncBatch:(id)arg1 nextState:(long long)arg2;
+- (void)_sendSyncBatch:(id)arg1 nextState:(unsigned int)arg2;
 - (void)_fetchNextBatch;
 - (void)_waitForMessageWindow;
 - (void)_setupChangeConcurrency;
 - (unsigned long long)protocolVersion;
 - (_Bool)isSending;
 - (_Bool)isResetSync;
-- (void)_setStateQuietly:(long long)arg1;
-- (void)setState:(long long)arg1;
-- (long long)state;
+- (void)_setStateQuietly:(unsigned int)arg1;
+- (void)setState:(unsigned int)arg1;
+- (unsigned int)state;
 - (id)initWithService:(id)arg1;
 
 @end

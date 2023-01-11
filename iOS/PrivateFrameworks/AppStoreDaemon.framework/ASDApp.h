@@ -13,7 +13,6 @@
 
 @interface ASDApp : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _familyShared;
     NSString *_artistName;
     NSString *_bundleID;
     NSString *_bundlePath;
@@ -38,6 +37,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) ASDProgress *remoteProgress; // @synthesize remoteProgress=_remoteProgress;
 @property long long status; // @synthesize status=_status;
 @property long long extensions; // @synthesize extensions=_extensions;
@@ -45,8 +45,7 @@
 @property(retain) NSString *updateBuyParams; // @synthesize updateBuyParams=_updateBuyParams;
 @property(retain) NSProgress *progress; // @synthesize progress=_progress;
 @property(readonly) NSUUID *installID; // @synthesize installID=_installID;
-@property(readonly) NSError *installError; // @synthesize installError=_installError;
-@property(readonly, getter=isFamilyShared) _Bool familyShared; // @synthesize familyShared=_familyShared;
+@property(retain) NSError *installError; // @synthesize installError=_installError;
 @property long long purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property long long familyID; // @synthesize familyID=_familyID;
 @property long long downloaderDSID; // @synthesize downloaderDSID=_downloaderDSID;
@@ -60,7 +59,6 @@
 @property(retain) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(readonly) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain) NSString *artistName; // @synthesize artistName=_artistName;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -68,6 +66,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+@property(readonly, getter=isWrapped) _Bool wrapped;
 @property(readonly, getter=isUpdateAvailable) _Bool updateAvailable;
 @property(readonly, getter=isSystemApp) _Bool systemApp;
 @property(readonly, getter=isStoreApp) _Bool storeApp;
@@ -76,7 +75,10 @@
 @property(readonly, getter=isOpenable) _Bool openable;
 @property(readonly, getter=isLaunchProhibited) _Bool launchProhibited;
 @property(readonly, getter=isInstalled) _Bool installed;
+@property(readonly, getter=isFamilyShared) _Bool familyShared;
 @property(readonly, getter=isBetaApp) _Bool betaApp;
+@property(readonly, getter=isArcadeOpenable) _Bool arcadeOpenable;
+@property(readonly, getter=isAppClip) _Bool appClip;
 @property(readonly, getter=hasMessagesExtension) _Bool messasgesExtension;
 - (id)initWithBundleID:(id)arg1;
 

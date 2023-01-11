@@ -17,12 +17,15 @@
 - (id)debugDescription;
 - (id)description;
 - (id)imageRepresentation;
+- (id)surface;
 - (void)setLabel:(id)arg1;
 - (id)label;
 @property _Bool blendsInDestinationColorSpace;
 @property(retain, nonatomic) CIBlendKernel *blendKernel;
 @property(nonatomic) struct CGColorSpace *colorSpace;
 - (int)format;
+- (void)setCompressed:(_Bool)arg1;
+- (_Bool)isCompressed;
 @property(getter=isClamped) _Bool clamped;
 - (int)ditherDepth;
 @property(getter=isDithered) _Bool dithered;
@@ -38,7 +41,7 @@
 - (id)initWithIOSurface:(id)arg1;
 - (id)initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(unsigned int)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelBufferProvider:(CDUnknownBlockType)arg5;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1;
-- (void)_set_YCC_matrix:(int)arg1 fullRange:(_Bool)arg2 deep:(_Bool)arg3;
+- (void)_set_YCC_matrix:(int)arg1 fullRange:(_Bool)arg2 deep:(_Bool)arg3 isFloat:(float)arg4;
 - (struct RenderTask *)_render:(struct Image *)arg1 withContext:(struct Context *)arg2;
 - (void)dealloc;
 - (id)_initWithInternalRenderDestination:(struct RenderDestination *)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(int)arg4 colorspace:(struct CGColorSpace *)arg5;

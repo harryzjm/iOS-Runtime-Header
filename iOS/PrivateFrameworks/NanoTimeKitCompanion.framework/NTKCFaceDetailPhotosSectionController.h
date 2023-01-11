@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NanoTimeKitCompanion/NTKCFaceDetailAlbumChooserViewControllerDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailCustomPhotosViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, NTKBasePhotosFaceView, NTKCompanionCustomPhotosEditor, NTKCompanionMemoriesEditor, NTKCompanionSyncedAlbumEditor, NTKCompanionTransientCustomPhotosEditor, UIViewController;
 @protocol NTKCFaceDetailPhotosSectionDelegate;
 
-@interface NTKCFaceDetailPhotosSectionController <NTKCFaceDetailCustomPhotosViewControllerDelegate>
+@interface NTKCFaceDetailPhotosSectionController <NTKCFaceDetailCustomPhotosViewControllerDelegate, NTKCFaceDetailAlbumChooserViewControllerDelegate>
 {
     _Bool _canDeleteCustomPhotos;
     unsigned long long _currentContent;
@@ -22,15 +23,15 @@
 }
 
 + (_Bool)hasPhotosSectionForFace:(id)arg1 forEditMode:(long long)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *externalAssets; // @synthesize externalAssets=_externalAssets;
 @property(retain, nonatomic) NTKCompanionTransientCustomPhotosEditor *transientEditor; // @synthesize transientEditor=_transientEditor;
 @property(retain, nonatomic) NTKCompanionMemoriesEditor *memoriesEditor; // @synthesize memoriesEditor=_memoriesEditor;
 @property(retain, nonatomic) NTKCompanionSyncedAlbumEditor *syncedAlbumEditor; // @synthesize syncedAlbumEditor=_syncedAlbumEditor;
 @property(retain, nonatomic) NTKCompanionCustomPhotosEditor *customPhotosEditor; // @synthesize customPhotosEditor=_customPhotosEditor;
 @property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
-- (void).cxx_destruct;
+- (void)albumChooserDidFinish:(id)arg1;
 - (void)customPhotosControllerDidFinish:(id)arg1;
-- (id)_overrideTextForOption:(id)arg1;
 - (void)saveChangesWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool hasChanges;
 - (id)_currentEditor;
@@ -44,6 +45,7 @@
 - (void)setSelectedOptions:(id)arg1;
 - (void)faceDidChangeResourceDirectory;
 - (void)faceDidChange;
+@property(readonly, nonatomic) unsigned long long contentType;
 - (_Bool)canAddFace;
 - (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(_Bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5 externalAssets:(id)arg6;
 

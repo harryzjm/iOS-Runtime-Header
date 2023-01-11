@@ -12,7 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)setupView;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

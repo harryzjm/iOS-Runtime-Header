@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 @class NSError, NSURL;
 
@@ -17,11 +17,11 @@
 }
 
 + (id)errorFromBOMCopierStatus:(int)arg1 message:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *stashedError; // @synthesize stashedError=_stashedError;
 @property struct _BOMCopier *copier; // @synthesize copier=_copier;
 @property(readonly, nonatomic) NSURL *destinationDirectoryURL; // @synthesize destinationDirectoryURL=_destinationDirectoryURL;
 @property(readonly, nonatomic) NSURL *zipFileURL; // @synthesize zipFileURL=_zipFileURL;
-- (void).cxx_destruct;
 - (void)main;
 - (void)operationWillFinish;
 - (void)cancel;

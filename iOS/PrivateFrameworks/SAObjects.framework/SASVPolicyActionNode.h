@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SASVSpeechMetadata;
 
 @interface SASVPolicyActionNode <SAAceSerializable>
 {
@@ -15,6 +15,7 @@
 + (id)policyActionNodeWithDictionary:(id)arg1 context:(id)arg2;
 + (id)policyActionNode;
 @property(copy, nonatomic) NSString *type;
+@property(retain, nonatomic) SASVSpeechMetadata *speechMetadata;
 @property(copy, nonatomic) NSString *name;
 @property(copy, nonatomic) NSString *confirmationType;
 @property(copy, nonatomic) NSArray *children;

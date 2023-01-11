@@ -15,14 +15,14 @@
     HKChartCache *_chartCache;
 }
 
-@property(retain, nonatomic) HKChartCache *chartCache; // @synthesize chartCache=_chartCache;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HKChartCache *chartCache; // @synthesize chartCache=_chartCache;
 - (void)_resetCachedPaths;
 - (void)chartCacheDidUpdate:(id)arg1;
 - (void)invalidateCache;
 - (_Bool)hasAvailableBlocksBetweenStartPath:(CDStruct_6ca94699)arg1 endPath:(CDStruct_6ca94699)arg2;
 - (_Bool)hasPendingQueriesBetweenStartPath:(CDStruct_6ca94699)arg1 endPath:(CDStruct_6ca94699)arg2;
-- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2;
+- (void)blocksRequestedFromPath:(CDStruct_6ca94699)arg1 toPath:(CDStruct_6ca94699)arg2 priorityDelegate:(id)arg3;
 - (id)cachedBlockForPath:(CDStruct_6ca94699)arg1 context:(id)arg2;
 - (id)init;
 

@@ -6,15 +6,18 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSURL, NSUUID;
+@class NSArray, NSNumber, NSString, NSUUID;
 
 @protocol UIActivityContentDelegate <NSObject>
+- (NSString *)_titleForActivity:(NSString *)arg1;
 - (void)_editActionsTapped;
-- (NSURL *)fallbackURLForLinkPresentation;
+- (NSArray *)fallbackURLsForLinkPresentation;
 - (NSArray *)requestMetadataValues;
 - (void)showScreenTimeRestrictedAlert;
 - (void)selectedActionWithIdentifier:(NSUUID *)arg1;
 - (void)selectedAppWithIdentifier:(NSUUID *)arg1;
+- (void)didLongPressShareActivityWithIdentifier:(NSUUID *)arg1;
+- (void)removedPersonWithIdentifier:(NSUUID *)arg1;
 - (void)selectedPersonWithIdentifier:(NSUUID *)arg1;
 - (void)nextButtonTappedWithPeopleProxies:(NSArray *)arg1 shareProxies:(NSArray *)arg2 actionProxies:(NSArray *)arg3 nearbyCountSlotID:(NSNumber *)arg4;
 - (void)optionsButtonTapped;

@@ -6,14 +6,15 @@
 
 #import <ContactsAutocompleteUI/NUIContainerViewDelegate-Protocol.h>
 
-@class CNAvatarViewController, NSArray, NSString, UIButton;
+@class CNAvatarViewController, CNComposeRecipientActionButton, NSArray, NSString, NSUUID;
 @protocol CNComposeRecipientTableViewCellDelegate;
 
 @interface CNComposeRecipientTableViewCell <NUIContainerViewDelegate>
 {
     _Bool _shouldHighlightCompleteMatches;
     id <CNComposeRecipientTableViewCellDelegate> _delegate;
-    UIButton *_actionButton;
+    NSUUID *_displaySessionUUID;
+    CNComposeRecipientActionButton *_actionButton;
     CNAvatarViewController *_avatarViewController;
     NSArray *_activeConstraints;
     unsigned long long _actionType;
@@ -26,17 +27,25 @@
 + (_Bool)avatarsAreHidden;
 + (double)additionalSeparatorInset;
 + (id)identifier;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long actionType; // @synthesize actionType=_actionType;
 @property(retain, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
 @property(readonly, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
-@property(retain, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
+@property(retain, nonatomic) CNComposeRecipientActionButton *actionButton; // @synthesize actionButton=_actionButton;
+@property(retain, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
 @property(nonatomic) _Bool shouldHighlightCompleteMatches; // @synthesize shouldHighlightCompleteMatches=_shouldHighlightCompleteMatches;
 @property __weak id <CNComposeRecipientTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)canCollapseRecipient;
+- (_Bool)canExpandRecipient;
+- (_Bool)supportsAvatarView;
 - (void)prepareForReuse;
 - (void)actionButtonTapped;
 - (double)trailingButtonWidth;
+- (void)setupAvatarViewControllerWithSettings:(id)arg1;
+- (void)updateButtonColor;
 - (void)setActionType:(unsigned long long)arg1 animated:(_Bool)arg2;
+- (id)assembleContactAvatarsForRecipient:(id)arg1;
+- (void)assignContactAvatarsToController:(id)arg1;
 - (void)setRecipient:(id)arg1;
 - (void)updateLabelsContrainedToWidth:(double)arg1;
 - (void)labelsChangedWidth:(double)arg1;

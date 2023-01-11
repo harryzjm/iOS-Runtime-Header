@@ -12,8 +12,15 @@
 
 @interface AKFollowUpFactoryImpl : NSObject <AKFollowUpItemFactory>
 {
+    NSString *_extensionIdentifier;
+    NSString *_representingBundlePath;
+    NSString *_bundleIconName;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *bundleIconName; // @synthesize bundleIconName=_bundleIconName;
+@property(copy, nonatomic) NSString *representingBundlePath; // @synthesize representingBundlePath=_representingBundlePath;
+@property(copy, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 - (_Bool)IsFollowUpItemNotificationForced:(id)arg1;
 - (id)actionWithTitle:(id)arg1 andActionKey:(id)arg2;
 - (id)_clearAction;

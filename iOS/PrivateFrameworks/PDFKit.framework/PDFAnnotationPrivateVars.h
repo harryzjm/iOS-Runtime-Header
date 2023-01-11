@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     _Bool isSelected;
     _Bool isHighlighted;
     NSIndexSet *quadPointsIndexSet;
+    struct CGPath *quadPointsPath;
     PDFAnnotation *parent;
     PDFAnnotation *popup;
     struct CGPDFDictionary *popupDictionary;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint startPoint;
     struct CGPoint endPoint;
     NSArray *quadPoints;
+    _Bool isTransparent;
     PDFAccessibilityNode *accessibilityNode;
     double scaleFactor;
     _Bool isFullyConstructed;

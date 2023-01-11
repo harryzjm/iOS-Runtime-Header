@@ -8,12 +8,12 @@
 
 #import <SafariServices/WBSFluidProgressControllerDelegate-Protocol.h>
 
-@class NSString, UIColor, UIImageView, WBSFluidProgressState;
+@class NSString, UIColor, WBSFluidProgressState;
 @protocol _SFFluidProgressViewDelegate;
 
 @interface _SFFluidProgressView : UIView <WBSFluidProgressControllerDelegate>
 {
-    UIImageView *_progressBar;
+    UIView *_progressBar;
     UIView *_clippingView;
     WBSFluidProgressState *_state;
     _Bool _progressAnimationSuppressed;
@@ -23,11 +23,11 @@
 }
 
 + (double)defaultHeight;
+- (void).cxx_destruct;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(retain, nonatomic) UIColor *progressBarFillColor; // @synthesize progressBarFillColor=_progressBarFillColor;
 @property(nonatomic) __weak id <_SFFluidProgressViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool progressAnimationSuppressed; // @synthesize progressAnimationSuppressed=_progressAnimationSuppressed;
-- (void).cxx_destruct;
 - (void)fluidProgressController:(id)arg1 setProgressToCurrentPosition:(id)arg2;
 - (void)fluidProgressControllerFinishProgressBar:(id)arg1 animateFillFade:(_Bool)arg2;
 - (void)fluidProgressController:(id)arg1 updateFluidProgressBar:(id)arg2;
@@ -35,7 +35,6 @@
 - (void)fluidProgressController:(id)arg1 startFluidProgressBar:(id)arg2 animateFillFade:(_Bool)arg3;
 - (void)_finishProgressBarWithDuration:(double)arg1;
 - (struct CGRect)_progressBarBoundsForValue:(double)arg1;
-- (void)_updateProgressBarImage;
 @property(readonly, nonatomic, getter=isShowingProgress) _Bool showingProgress;
 - (void)setProgressAnimationSuppressed:(_Bool)arg1 duringFluidProgressState:(id)arg2 animated:(_Bool)arg3;
 - (void)layoutSubviews;

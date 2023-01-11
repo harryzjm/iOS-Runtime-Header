@@ -6,6 +6,7 @@
 
 @interface PXImportSettings
 {
+    _Bool _importSourceSimulationViaDiagnosticsEnabled;
     _Bool _simulateEmptyImportSource;
     _Bool _showImportItemFilenames;
     _Bool _disableAssetDeletion;
@@ -45,6 +46,7 @@
 @property(nonatomic) _Bool showImportItemFilenames; // @synthesize showImportItemFilenames=_showImportItemFilenames;
 @property(nonatomic) _Bool simulateEmptyImportSource; // @synthesize simulateEmptyImportSource=_simulateEmptyImportSource;
 @property(nonatomic) long long simulatedBatteryLevel; // @synthesize simulatedBatteryLevel=_simulatedBatteryLevel;
+@property(nonatomic) _Bool importSourceSimulationViaDiagnosticsEnabled; // @synthesize importSourceSimulationViaDiagnosticsEnabled=_importSourceSimulationViaDiagnosticsEnabled;
 - (void)setDefaultValues;
 - (id)parentSettings;
 

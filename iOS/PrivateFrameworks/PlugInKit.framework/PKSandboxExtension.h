@@ -10,13 +10,13 @@
 
 @interface PKSandboxExtension : NSObject
 {
-    NSString *_token;
     long long _handle;
+    NSString *_token;
 }
 
-@property long long handle; // @synthesize handle=_handle;
-@property(retain) NSString *token; // @synthesize token=_token;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *token; // @synthesize token=_token;
+@property long long handle; // @synthesize handle=_handle;
 - (void)expel;
 - (void)consume;
 - (_Bool)isEqual:(id)arg1;

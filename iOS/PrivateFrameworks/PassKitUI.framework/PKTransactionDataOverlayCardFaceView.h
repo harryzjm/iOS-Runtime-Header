@@ -25,8 +25,8 @@
 
 + (id)borderColor;
 + (double)borderWidth;
-@property(nonatomic, getter=isContentSuppressed) _Bool contentSuppressed; // @synthesize contentSuppressed=_contentSuppressed;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isContentSuppressed) _Bool contentSuppressed; // @synthesize contentSuppressed=_contentSuppressed;
 - (void)_updateMagnitudesWithStyle:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateContentIfPossible;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
@@ -37,6 +37,7 @@
 - (void)invalidate;
 - (void)layoutSubviews;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2 rendererState:(id)arg3 fetchInitialContentSynchronously:(_Bool)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2 rendererState:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2;
 

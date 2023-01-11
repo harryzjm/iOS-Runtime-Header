@@ -13,7 +13,6 @@
 @interface GEOLogMsgEventNetwork : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_manifestEnv;
     NSString *_requestAppIdentifier;
     double _requestEnd;
@@ -23,6 +22,9 @@
     double _requestStart;
     NSString *_serviceIpAddress;
     GEONetworkSessionTaskTransactionMetrics *_taskMetrics;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _decodeTime;
     int _httpResponseCode;
     int _mptcpServiceType;
@@ -57,27 +59,7 @@
         unsigned int read_requestErrorDomain:1;
         unsigned int read_serviceIpAddress:1;
         unsigned int read_taskMetrics:1;
-        unsigned int wrote_manifestEnv:1;
-        unsigned int wrote_requestAppIdentifier:1;
-        unsigned int wrote_requestEnd:1;
-        unsigned int wrote_requestErrorCode:1;
-        unsigned int wrote_requestErrorDescription:1;
-        unsigned int wrote_requestErrorDomain:1;
-        unsigned int wrote_requestStart:1;
-        unsigned int wrote_serviceIpAddress:1;
-        unsigned int wrote_taskMetrics:1;
-        unsigned int wrote_decodeTime:1;
-        unsigned int wrote_httpResponseCode:1;
-        unsigned int wrote_mptcpServiceType:1;
-        unsigned int wrote_networkService:1;
-        unsigned int wrote_queuedTime:1;
-        unsigned int wrote_redirectCount:1;
-        unsigned int wrote_requestDataSize:1;
-        unsigned int wrote_responseDataSize:1;
-        unsigned int wrote_tilesetId:1;
-        unsigned int wrote_totalTime:1;
-        unsigned int wrote_mptcpNegotiated:1;
-        unsigned int wrote_rnfTriggered:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -91,16 +73,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEONetworkSessionTaskTransactionMetrics *taskMetrics;
 @property(readonly, nonatomic) _Bool hasTaskMetrics;
-- (void)_readTaskMetrics;
 @property(nonatomic) _Bool hasRnfTriggered;
 @property(nonatomic) _Bool rnfTriggered;
 @property(retain, nonatomic) NSString *serviceIpAddress;
 @property(readonly, nonatomic) _Bool hasServiceIpAddress;
-- (void)_readServiceIpAddress;
 @property(nonatomic) _Bool hasMptcpNegotiated;
 @property(nonatomic) _Bool mptcpNegotiated;
 - (int)StringAsMptcpServiceType:(id)arg1;
@@ -111,7 +94,6 @@
 @property(nonatomic) unsigned int tilesetId;
 @property(retain, nonatomic) NSString *manifestEnv;
 @property(readonly, nonatomic) _Bool hasManifestEnv;
-- (void)_readManifestEnv;
 @property(nonatomic) _Bool hasRedirectCount;
 @property(nonatomic) int redirectCount;
 @property(nonatomic) _Bool hasRequestEnd;
@@ -128,15 +110,12 @@
 @property(nonatomic) int queuedTime;
 @property(retain, nonatomic) NSString *requestAppIdentifier;
 @property(readonly, nonatomic) _Bool hasRequestAppIdentifier;
-- (void)_readRequestAppIdentifier;
 @property(retain, nonatomic) NSString *requestErrorDescription;
 @property(readonly, nonatomic) _Bool hasRequestErrorDescription;
-- (void)_readRequestErrorDescription;
 @property(nonatomic) _Bool hasRequestErrorCode;
 @property(nonatomic) long long requestErrorCode;
 @property(retain, nonatomic) NSString *requestErrorDomain;
 @property(readonly, nonatomic) _Bool hasRequestErrorDomain;
-- (void)_readRequestErrorDomain;
 @property(nonatomic) _Bool hasResponseDataSize;
 @property(nonatomic) int responseDataSize;
 @property(nonatomic) _Bool hasRequestDataSize;
@@ -145,6 +124,8 @@
 - (id)networkServiceAsString:(int)arg1;
 @property(nonatomic) _Bool hasNetworkService;
 @property(nonatomic) int networkService;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

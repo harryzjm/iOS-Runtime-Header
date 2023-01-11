@@ -19,13 +19,15 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)diffFromData:(id)arg1 toData:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) BSSettings *changes; // @synthesize changes=_changes;
 @property(readonly, copy, nonatomic) STTelephonyStatusDomainSIMInfoDiff *SIMTwoInfoDiff; // @synthesize SIMTwoInfoDiff=_SIMTwoInfoDiff;
 @property(readonly, copy, nonatomic) STTelephonyStatusDomainSIMInfoDiff *SIMOneInfoDiff; // @synthesize SIMOneInfoDiff=_SIMOneInfoDiff;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (void)applyToMutableData:(id)arg1;
 - (id)dataByApplyingToData:(id)arg1;
 - (id)initWithSIMOneInfoDiff:(id)arg1 SIMTwoInfoDiff:(id)arg2 changes:(id)arg3;
@@ -34,7 +36,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

@@ -8,13 +8,15 @@
 
 #import <PassKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSNumber, NSString, NSURL, SKStoreProductViewController, SSSoftwareLibraryItem, UIImage;
+@class AMSLookupItem, NSArray, NSHashTable, NSNumber, NSString, NSURL, SKStoreProductViewController, SSSoftwareLibraryItem, UIImage;
+@protocol PKCancelable;
 
 @interface PKLinkedApplication : NSObject <SKStoreProductViewControllerDelegate>
 {
     SSSoftwareLibraryItem *_foundLibraryItem;
-    NSDictionary *_foundStoreItem;
-    unsigned long long _loadingToken;
+    AMSLookupItem *_foundStoreItem;
+    struct os_unfair_lock_s _pendingLock;
+    id <PKCancelable> _pendingUpdate;
     _Bool _loaded;
     _Bool _loading;
     NSHashTable *_observers;
@@ -25,14 +27,15 @@
     UIImage *_iconImage;
 }
 
-+ (void)openApplicationWithBundleID:(id)arg1 launchURL:(id)arg2;
++ (id)_openOptionsWithURL:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property(nonatomic) _Bool useSmallIcon; // @synthesize useSmallIcon=_useSmallIcon;
 @property(copy, nonatomic) NSURL *defaultLaunchURL; // @synthesize defaultLaunchURL=_defaultLaunchURL;
 @property(copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
-- (void).cxx_destruct;
 - (void)productViewControllerDidFinish:(id)arg1;
 @property(readonly, nonatomic) NSString *price;
+@property(readonly, nonatomic) NSNumber *storeIdentifier;
 @property(readonly, nonatomic) NSNumber *averageRating;
 @property(readonly, nonatomic) NSString *publisher;
 @property(readonly, nonatomic) NSString *name;
@@ -42,20 +45,15 @@
 @property(readonly, nonatomic) long long state;
 - (void)installedApplicationsDidChangeNotification:(id)arg1;
 - (void)_notifyObserversOfStateChange;
-- (int)_iconOptionsForItem:(id)arg1;
-- (int)_iconVariantForScale:(double)arg1;
-- (id)_imageForSize:(struct CGSize)arg1 fromArtwork:(id)arg2 requireStrictMatch:(_Bool)arg3;
-- (_Bool)_itemArtNeedsShine:(id)arg1;
-- (id)_iconURLFromArtwork:(id)arg1 withDesiredSize:(struct CGSize)arg2 requireStrictMatch:(_Bool)arg3;
-- (id)_iconURLFromArtwork:(id)arg1 withDesiredSize:(struct CGSize)arg2;
-- (void)_performStoreLookupWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_iconImageDescriptorForScale:(double)arg1;
 - (void)_updateApplicationStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_unloadApplicationState;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)openApplication:(id)arg1 launchAppStoreIfNotInstalled:(_Bool)arg2;
 - (void)openApplication:(id)arg1;
 - (void)reloadApplicationStateIfNecessary;
-- (void)reloadApplicationState;
+- (void)_reloadApplicationState;
 - (void)dealloc;
 - (id)initWithStoreIDs:(id)arg1 defaultLaunchURL:(id)arg2;
 - (id)initWithPass:(id)arg1;

@@ -13,6 +13,7 @@
     WebNotificationPrivate *_private;
 }
 
+- (void)finalize;
 - (void)dispatchErrorEvent;
 - (void)dispatchClickEvent;
 - (void)dispatchCloseEvent;

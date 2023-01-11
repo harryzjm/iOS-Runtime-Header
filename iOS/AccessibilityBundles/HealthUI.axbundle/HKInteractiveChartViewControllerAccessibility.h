@@ -11,6 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)graphViewDidEndSelection:(id)arg1;
+- (void)graphView:(id)arg1 didUpdateSelectedPoint:(id)arg2;
+- (id)_displayNameForDisplayType:(id)arg1;
 - (void)_replacePrimaryGraphViewControllerWithTimeScope:(long long)arg1 anchorDate:(id)arg2 animated:(_Bool)arg3;
 - (void)_setDateSelectorToVisibleRange;
 - (void)_accessibilityLoadAccessibilityInformation;

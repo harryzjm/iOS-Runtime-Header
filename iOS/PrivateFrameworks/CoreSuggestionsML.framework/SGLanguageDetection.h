@@ -21,7 +21,7 @@
 + (id)detectLanguageFromLanguageTags:(id)arg1;
 + (id)detectLanguageFromText:(id)arg1 withMaxLength:(unsigned long long)arg2 withMaxTags:(unsigned long long)arg3 withMinimumCount:(unsigned long long)arg4 withMinimumAgreement:(double)arg5;
 + (id)detectLanguageFromText:(id)arg1;
-+ (id)_defaultLanguage;
++ (id)defaultLanguage;
 + (id)languageForLocaleIdentifier:(id)arg1;
 
 @end

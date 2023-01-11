@@ -4,31 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTCallerSuppliedFields, MTPromise, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class MTCallerSuppliedFields, MTPromise, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 
 @interface MTMetricsData
 {
-    MTCallerSuppliedFields *_callerSuppliedFields;
+    _Bool _anonymous;
+    NSArray *_registeredEventData;
     NSDictionary *_baseFields;
+    NSArray *_additionalBaseData;
     NSDictionary *_eventSpecificFields;
+    NSArray *_additionalEventData;
     MTPromise *_configBaseFields;
+    MTCallerSuppliedFields *_callerSuppliedFields;
+    NSMutableArray *_additionalData;
     NSMutableDictionary *_performanceData;
     NSMutableArray *_postProcessingBlocks;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *postProcessingBlocks; // @synthesize postProcessingBlocks=_postProcessingBlocks;
 @property(retain, nonatomic) NSMutableDictionary *performanceData; // @synthesize performanceData=_performanceData;
-@property(retain, nonatomic) MTPromise *configBaseFields; // @synthesize configBaseFields=_configBaseFields;
-@property(retain, nonatomic) NSDictionary *eventSpecificFields; // @synthesize eventSpecificFields=_eventSpecificFields;
-@property(retain, nonatomic) NSDictionary *baseFields; // @synthesize baseFields=_baseFields;
+@property(retain, nonatomic) NSMutableArray *additionalData; // @synthesize additionalData=_additionalData;
 @property(retain, nonatomic) MTCallerSuppliedFields *callerSuppliedFields; // @synthesize callerSuppliedFields=_callerSuppliedFields;
-- (void).cxx_destruct;
-- (id)description;
+@property(retain, nonatomic) MTPromise *configBaseFields; // @synthesize configBaseFields=_configBaseFields;
+@property(retain, nonatomic) NSArray *additionalEventData; // @synthesize additionalEventData=_additionalEventData;
+@property(retain, nonatomic) NSDictionary *eventSpecificFields; // @synthesize eventSpecificFields=_eventSpecificFields;
+@property(retain, nonatomic) NSArray *additionalBaseData; // @synthesize additionalBaseData=_additionalBaseData;
+@property(retain, nonatomic) NSDictionary *baseFields; // @synthesize baseFields=_baseFields;
+@property(retain, nonatomic) NSArray *registeredEventData; // @synthesize registeredEventData=_registeredEventData;
+@property(nonatomic, getter=isAnonymous, setter=setAnonymous:) _Bool anonymous; // @synthesize anonymous=_anonymous;
+- (id)debugDescription;
 - (id)recordEvent;
 - (void)cancelUnfinishedPromisedEventData;
+- (id)userAndClientIDFields;
 - (id)toDictionary;
 - (id)composeFieldsMaps;
+- (void)addPostProcessingBlocks:(id)arg1;
 - (void)addPostProcessingBlock:(CDUnknownBlockType)arg1;
+- (id)getPostProcessingBlocks;
+- (void)addFieldsWithPromise:(id)arg1;
+- (void)addFieldsWithDictionary:(id)arg1;
+- (void)addFields:(id)arg1;
+- (id)getAdditionalData;
 
 @end
 

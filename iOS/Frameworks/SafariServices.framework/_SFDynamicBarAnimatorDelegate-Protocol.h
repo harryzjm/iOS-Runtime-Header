@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/NSObject-Protocol.h>
+#import <SafariServices/_SFDynamicBarAnimatorStateObserver-Protocol.h>
 
 @class _SFDynamicBarAnimator;
 
-@protocol _SFDynamicBarAnimatorDelegate <NSObject>
+@protocol _SFDynamicBarAnimatorDelegate <_SFDynamicBarAnimatorStateObserver>
 - (void)dynamicBarAnimatorOutputsDidChange:(_SFDynamicBarAnimator *)arg1;
-- (void)dynamicBarAnimatorWillLeaveSteadyState:(_SFDynamicBarAnimator *)arg1;
-- (void)dynamicBarAnimatorWillEnterSteadyState:(_SFDynamicBarAnimator *)arg1;
 - (double)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 minimumTopBarHeightForOffset:(double)arg2;
 - (_Bool)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 canTransitionToState:(long long)arg2 byDraggingWithOffset:(double)arg3;
 @end

@@ -22,8 +22,11 @@ __attribute__((visibility("hidden")))
     EKUIAlarm *_previousAlarm;
     EKCalendar *_calendar;
     unsigned long long _alarmIndex;
+    unsigned long long _timeToLeaveLocationStatus;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long timeToLeaveLocationStatus; // @synthesize timeToLeaveLocationStatus=_timeToLeaveLocationStatus;
 @property(nonatomic) _Bool eventHasTravelTime; // @synthesize eventHasTravelTime=_eventHasTravelTime;
 @property(nonatomic) _Bool shouldShowLeaveNowOption; // @synthesize shouldShowLeaveNowOption=_shouldShowLeaveNowOption;
 @property(nonatomic) _Bool shouldAllowAlarmsTriggeringAfterStartDate; // @synthesize shouldAllowAlarmsTriggeringAfterStartDate=_shouldAllowAlarmsTriggeringAfterStartDate;
@@ -32,8 +35,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) EKCalendar *calendar; // @synthesize calendar=_calendar;
 @property(retain, nonatomic) EKUIAlarm *previousAlarm; // @synthesize previousAlarm=_previousAlarm;
 @property(retain, nonatomic) EKUIAlarm *alarm; // @synthesize alarm=_alarm;
-- (void).cxx_destruct;
-- (void)alarmTableDidChangeAlarm:(id)arg1;
+- (void)alarmTable:(id)arg1 didSelectRowAtIndexPath:(id)arg2 commitSelectionBlock:(CDUnknownBlockType)arg3;
 @property(nonatomic) long long presetIdentifier;
 - (_Bool)customSelected;
 - (void)setCustomString:(id)arg1;

@@ -23,6 +23,8 @@
 - (void)keyRollPending:(NSString *)arg1 complete:(void (^)(_Bool, NSError *))arg2;
 - (void)manateeStatus:(NSString *)arg1 complete:(void (^)(unsigned int))arg2;
 - (void)createIdentity:(NSString *)arg1 roll:(_Bool)arg2 sync:(_Bool)arg3 complete:(void (^)(NSData *, PCSMTT *, NSError *))arg4;
+- (void)migrateToiCDPForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 complete:(void (^)(_Bool, NSError *))arg3;
+- (void)setupIdentitiesForAccount:(NSString *)arg1 withParameters:(NSDictionary *)arg2 optional:(_Bool)arg3;
 - (void)triggerSyncingWithEscrowProxy:(NSString *)arg1 complete:(void (^)(_Bool, NSError *))arg2;
 - (void)triggerWatchSyncing:(void (^)(void))arg1;
 - (void)triggerDaily:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;

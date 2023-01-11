@@ -8,20 +8,23 @@
 
 #import <SoundAnalysis/MLFeatureProvider-Protocol.h>
 
-@class MLFeatureDescription, MLMultiArray, NSSet;
+@class MLFeatureDescription, MLMultiArray, NSArray, NSMutableDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface DSPGMLInputProvider : NSObject <MLFeatureProvider>
 {
     MLFeatureDescription *_featureDescription;
+    NSMutableDictionary *_featureCache;
+    NSArray *_allInputFeatureNames;
     MLMultiArray *_input;
 }
 
-@property(retain, nonatomic) MLMultiArray *input; // @synthesize input=_input;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MLMultiArray *input; // @synthesize input=_input;
+- (void)setFeatureValue:(id)arg1 forFeatureName:(id)arg2;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
-- (id)initWithFeatureDescription:(id)arg1;
+- (id)initWithFeatureDescription:(id)arg1 allInputFeatureNames:(id)arg2;
 
 @end
 

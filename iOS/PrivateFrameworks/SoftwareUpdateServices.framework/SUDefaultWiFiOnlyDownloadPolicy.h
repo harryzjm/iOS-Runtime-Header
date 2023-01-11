@@ -9,6 +9,7 @@
 }
 
 + (unsigned long long)wifiOnlyPeriodInDaysForUpdate:(id)arg1;
+- (_Bool)allowExpensiveNetwork;
 - (_Bool)isDownloadAllowableForCellular;
 - (id)initWithDescriptor:(id)arg1;
 

@@ -17,8 +17,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_completionQueue;
     _Bool _disableCrossQueueHazardTracking;
     _Bool _openGLQueue;
+    unsigned long long _devicePartition;
 }
 
+- (void)setDevicePartition:(unsigned long long)arg1;
+- (unsigned long long)devicePartition;
 @property _Bool isOpenGLQueue; // @synthesize isOpenGLQueue=_openGLQueue;
 - (void)setDisableCrossQueueHazardTracking:(_Bool)arg1;
 - (_Bool)disableCrossQueueHazardTracking;

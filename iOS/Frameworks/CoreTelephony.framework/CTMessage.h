@@ -29,6 +29,7 @@
     CTXPCServiceSubscriptionContext *_context;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property(nonatomic) _Bool bypassSupportedMessageModesCheck; // @synthesize bypassSupportedMessageModesCheck=_bypassSupportedMessageModesCheck;
 @property(retain, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uuid;
@@ -62,7 +63,6 @@
 - (void)addRecipient:(id)arg1;
 - (void)setReplaceMessage:(unsigned int)arg1;
 - (void)setRawHeaders:(id)arg1;
-- (void)dealloc;
 - (id)initWithDate:(id)arg1;
 - (id)init;
 

@@ -22,13 +22,16 @@ __attribute__((visibility("hidden")))
     _Bool _hasRepairStreamID;
     unsigned int _repairStreamID;
     unsigned int _repairMaxNetworkBitrate;
-    _Bool _enabled;
+    _Bool _onDemand;
+    _Bool _subscribedTo;
+    _Bool _startOnDemand;
 }
 
 + (long long)compareAudioEntry:(id)arg1 videoEntry:(id)arg2;
 + (long long)compareVideoEntry:(id)arg1 videoEntry:(id)arg2;
 + (long long)compareAudioEntry:(id)arg1 audioEntry:(id)arg2;
-@property(getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(readonly, getter=isStartOnDemand) _Bool startOnDemand; // @synthesize startOnDemand=_startOnDemand;
+@property(getter=isSubscribedTo) _Bool subscribedTo; // @synthesize subscribedTo=_subscribedTo;
 @property(readonly) _Bool hasRepairStreamID; // @synthesize hasRepairStreamID=_hasRepairStreamID;
 @property(readonly) unsigned int repairMaxNetworkBitrate; // @synthesize repairMaxNetworkBitrate=_repairMaxNetworkBitrate;
 @property(readonly) unsigned int repairStreamID; // @synthesize repairStreamID=_repairStreamID;
@@ -43,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (long long)compare:(id)arg1;
 - (id)description;
 - (void)dealloc;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6 hasRepairStreamID:(_Bool)arg7 repairStreamID:(unsigned int)arg8 repairMaxNetworkBitrate:(unsigned int)arg9 enabled:(_Bool)arg10;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6 hasRepairStreamID:(_Bool)arg7 repairStreamID:(unsigned int)arg8 repairMaxNetworkBitrate:(unsigned int)arg9 subscribedTo:(_Bool)arg10 startOnDemand:(_Bool)arg11;
 - (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6;
 
 @end

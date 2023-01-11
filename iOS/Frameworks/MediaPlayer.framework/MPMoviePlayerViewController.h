@@ -10,34 +10,15 @@
 
 @interface MPMoviePlayerViewController : UIViewController
 {
-    id _internal;
-    _Bool _statusBarWasHidden;
+    MPMoviePlayerController *_moviePlayer;
 }
 
 - (void).cxx_destruct;
-- (void)_moviePlayerViewController_playbackDidFinishNotification:(id)arg1;
-- (void)_moviePlayerViewController_applicationDidEnterBackgroundNotification:(id)arg1;
-- (_Bool)_shouldUseFullScreenLayoutInWindow:(id)arg1 parentViewController:(id)arg2;
-- (_Bool)_canReloadView;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (unsigned long long)supportedInterfaceOrientations;
-- (void)didRotateFromInterfaceOrientation:(long long)arg1;
-- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
-- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
-- (_Bool)prefersStatusBarHidden;
-- (_Bool)shouldAutorotate;
+@property(readonly, nonatomic) MPMoviePlayerController *moviePlayer; // @synthesize moviePlayer=_moviePlayer;
 - (void)loadView;
-- (void)remoteControlReceivedWithEvent:(id)arg1;
-- (_Bool)canBecomeFirstResponder;
-@property(readonly, nonatomic) MPMoviePlayerController *moviePlayer;
-- (void)dealloc;
-- (id)initWithAsset:(id)arg1;
 - (id)initWithContentURL:(id)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end
 

@@ -12,6 +12,10 @@
 {
     MISSING_TYPE *offlineIssueManager;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *offlineAlertControllerFactory;
+    MISSING_TYPE *tracker;
+    MISSING_TYPE *channelDataFactory;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

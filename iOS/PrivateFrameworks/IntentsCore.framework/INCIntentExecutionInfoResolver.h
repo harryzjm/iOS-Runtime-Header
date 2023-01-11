@@ -4,31 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class LSApplicationWorkspace, NSDictionary;
-
-@interface INCIntentExecutionInfoResolver : NSObject
+@interface INCIntentExecutionInfoResolver
 {
-    struct os_unfair_lock_s _mappingLock;
-    NSDictionary *_counterpartMapping;
-    LSApplicationWorkspace *_workspace;
 }
 
-+ (void)initialize;
-@property(readonly, nonatomic) struct os_unfair_lock_s mappingLock; // @synthesize mappingLock=_mappingLock;
-@property(readonly, nonatomic) LSApplicationWorkspace *workspace; // @synthesize workspace=_workspace;
-- (void).cxx_destruct;
-- (id)counterpartBundleIdentifiersForBundleIdentifier:(id)arg1;
-@property(readonly, copy, nonatomic) NSDictionary *counterpartMapping; // @synthesize counterpartMapping=_counterpartMapping;
-- (void)installedApplicationsDidChange:(id)arg1;
-- (id)resolveExecutionInfoUsingCounterparts:(id)arg1;
-- (id)resolveExecutionInfoByLinkingExtensionToApp:(id)arg1;
-- (id)resolveExecutionInfoBySwappingIdentifiers:(id)arg1;
 - (id)resolveExecutionInfo:(id)arg1;
-- (void)dealloc;
-- (id)initWithWorkspace:(id)arg1;
-- (id)init;
 
 @end
 

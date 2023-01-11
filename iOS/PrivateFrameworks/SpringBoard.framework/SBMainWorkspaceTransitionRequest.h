@@ -5,6 +5,7 @@
 //
 
 @class SBMainWorkspace;
+@protocol SBBannerUnfurlSourceContextProviding;
 
 @interface SBMainWorkspaceTransitionRequest
 {
@@ -12,19 +13,26 @@
     CDUnknownBlockType _transactionProvider;
     CDUnknownBlockType _transactionConfigurator;
     CDUnknownBlockType _completionBlock;
+    _Bool _shouldPreventEmergencyNotificationBannerDismissal;
+    _Bool _shouldPreventAutoPiP;
+    id <SBBannerUnfurlSourceContextProviding> _bannerUnfurlSourceContextProvider;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldPreventAutoPiP; // @synthesize shouldPreventAutoPiP=_shouldPreventAutoPiP;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(copy, nonatomic) CDUnknownBlockType transactionConfigurator; // @synthesize transactionConfigurator=_transactionConfigurator;
 @property(copy, nonatomic) CDUnknownBlockType transactionProvider; // @synthesize transactionProvider=_transactionProvider;
+@property(nonatomic) _Bool shouldPreventEmergencyNotificationBannerDismissal; // @synthesize shouldPreventEmergencyNotificationBannerDismissal=_shouldPreventEmergencyNotificationBannerDismissal;
+@property(retain, nonatomic) id <SBBannerUnfurlSourceContextProviding> bannerUnfurlSourceContextProvider; // @synthesize bannerUnfurlSourceContextProvider=_bannerUnfurlSourceContextProvider;
 @property(nonatomic) long long source; // @synthesize source=_source;
-- (void).cxx_destruct;
 - (_Bool)isMainWorkspaceTransitionRequest;
 - (id)succinctDescriptionBuilder;
 - (void)setTransientOverlayContext:(id)arg1;
 - (id)compactDescriptionBuilder;
 - (void)finalize;
 - (void)declineWithReason:(id)arg1;
+- (id)copyMainWorkspaceTransitionRequest;
 - (id)_initWithWorkspace:(id)arg1 displayConfiguration:(id)arg2;
 - (id)initWithDisplayConfiguration:(id)arg1;
 

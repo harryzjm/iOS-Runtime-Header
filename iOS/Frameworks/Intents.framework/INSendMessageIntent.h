@@ -22,13 +22,14 @@
 - (void)setDomain:(id)arg1;
 - (id)domain;
 - (_Bool)_isUserConfirmationRequired;
-- (_Bool)_supportsBackgroundExecution;
+- (id)_currentParameterCombination;
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
+- (id)_keyCodableAttributes;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (id)_redactedDictionaryRepresentation;
-@property(nonatomic) long long messageType;
-@property(copy, nonatomic) NSArray *attachments;
+- (void)setAttachments:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *attachments;
 @property(nonatomic) long long effect;
 - (void)setSender:(id)arg1;
 @property(readonly, copy, nonatomic) INPerson *sender;
@@ -40,9 +41,11 @@
 @property(readonly, copy, nonatomic) INSpeakableString *speakableGroupName;
 - (void)setContent:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *content;
+- (void)setOutgoingMessageType:(long long)arg1;
+@property(readonly, nonatomic) long long outgoingMessageType;
 - (void)setRecipients:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *recipients;
-- (id)initWithRecipients:(id)arg1 content:(id)arg2 speakableGroupName:(id)arg3 conversationIdentifier:(id)arg4 serviceName:(id)arg5 sender:(id)arg6;
+- (id)initWithRecipients:(id)arg1 outgoingMessageType:(long long)arg2 content:(id)arg3 speakableGroupName:(id)arg4 conversationIdentifier:(id)arg5 serviceName:(id)arg6 sender:(id)arg7 attachments:(id)arg8;
 - (long long)_preferredInteractionDirection;
 - (id)_categoryVerb;
 - (long long)_intentCategory;
@@ -52,8 +55,11 @@
 - (id)initWithRecipients:(id)arg1 content:(id)arg2 serviceName:(id)arg3 sender:(id)arg4;
 - (void)setGroupName:(id)arg1;
 - (id)groupName;
+- (id)initWithRecipients:(id)arg1 outgoingMessageType:(long long)arg2 content:(id)arg3 speakableGroupName:(id)arg4 conversationIdentifier:(id)arg5 serviceName:(id)arg6 sender:(id)arg7;
+- (id)initWithRecipients:(id)arg1 content:(id)arg2 speakableGroupName:(id)arg3 conversationIdentifier:(id)arg4 serviceName:(id)arg5 sender:(id)arg6;
 - (id)initWithRecipients:(id)arg1 content:(id)arg2 groupName:(id)arg3 serviceName:(id)arg4 sender:(id)arg5;
 - (_Bool)_isValidSubProducer:(id)arg1;
+- (void)_intents_resolveOutgoingMessageTypeWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

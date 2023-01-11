@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+#import <CloudKit/CKMarkNotificationsReadOperationCallbacks-Protocol.h>
 
-@interface CKMarkNotificationsReadOperation
+@class CKMarkNotificationsReadOperationInfo, NSArray, NSMutableArray, NSMutableDictionary;
+@protocol CKMarkNotificationsReadOperationCallbacks;
+
+@interface CKMarkNotificationsReadOperation <CKMarkNotificationsReadOperationCallbacks>
 {
     CDUnknownBlockType _markNotificationsReadCompletionBlock;
     NSArray *_notificationIDs;
@@ -14,21 +17,26 @@
     NSMutableDictionary *_errorsByNotificationID;
 }
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *errorsByNotificationID; // @synthesize errorsByNotificationID=_errorsByNotificationID;
 @property(retain, nonatomic) NSMutableArray *notificationIDsMarkedRead; // @synthesize notificationIDsMarkedRead=_notificationIDsMarkedRead;
 @property(copy, nonatomic) NSArray *notificationIDs; // @synthesize notificationIDs=_notificationIDs;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
-- (void)_handleProgressCallback:(id)arg1;
+- (void)handleMarkNotificationReadCompletionForNotificationID:(id)arg1 error:(id)arg2;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 @property(copy, nonatomic) CDUnknownBlockType markNotificationsReadCompletionBlock; // @synthesize markNotificationsReadCompletionBlock=_markNotificationsReadCompletionBlock;
 - (id)initWithNotificationIDsToMarkRead:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) id <CKMarkNotificationsReadOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(readonly, nonatomic) CKMarkNotificationsReadOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

@@ -12,8 +12,8 @@
 }
 
 + (id)requiredProperties;
-@property(copy) NSString *domain; // @synthesize domain=_domain;
 - (void).cxx_destruct;
+@property(copy) NSString *domain; // @synthesize domain=_domain;
 
 @end
 

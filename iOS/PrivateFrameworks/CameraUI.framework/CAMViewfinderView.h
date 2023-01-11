@@ -6,14 +6,15 @@
 
 #import <UIKit/UIView.h>
 
+#import <CameraUI/CAMControlStatusIndicatorDelegate-Protocol.h>
 #import <CameraUI/CAMInstructionLabelDelegate-Protocol.h>
 #import <CameraUI/CAMViewfinderTransitionable-Protocol.h>
 #import <CameraUI/CEKBadgeViewDelegate-Protocol.h>
 
-@class CAMBottomBar, CAMBurstIndicatorView, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlashBadge, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMHDRBadge, CAMLivePhotoBadge, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewContainerMaskingView, CAMPreviewView, CAMQRCodeInstructionLabel, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimerIndicatorView, CAMTopBar, CAMViewfinderFlipTransition, CAMViewfinderOpenAndCloseTransition, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, CUShutterButton, NSArray, NSString;
+@class CAMBottomBar, CAMBurstIndicatorView, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlashBadge, CAMFlipButton, CAMFocusLockBadge, CAMFullscreenViewfinderLayout, CAMHDRBadge, CAMLivePhotoBadge, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewContainerMaskingView, CAMPreviewView, CAMQRCodeInstructionLabel, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimerIndicatorView, CAMTopBar, CAMVideoConfigurationStatusIndicator, CAMViewfinderFlipTransition, CAMViewfinderOpenAndCloseTransition, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, CUShutterButton, NSArray, NSString;
 @protocol CAMControlVisibilityDelegate;
 
-@interface CAMViewfinderView : UIView <CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMViewfinderTransitionable>
+@interface CAMViewfinderView : UIView <CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMControlStatusIndicatorDelegate, CAMViewfinderTransitionable>
 {
     _Bool _useCreativeControls;
     _Bool _automaticallyAdjustsTopBarOrientation;
@@ -36,7 +37,7 @@
     CAMFilterNameBadge *_filterNameBadge;
     CAMShutterIndicatorView *_shutterIndicatorView;
     CAMElapsedTimeView *_elapsedTimeView;
-    CAMFramerateIndicatorView *_framerateIndicatorView;
+    CAMVideoConfigurationStatusIndicator *_videoConfigurationStatusIndicator;
     CAMBurstIndicatorView *_burstIndicatorView;
     CAMTimerIndicatorView *_timerIndicatorView;
     CAMPanoramaView *_panoramaView;
@@ -55,9 +56,12 @@
     CAMViewfinderFlipTransition *__flipTransition;
     UIView *__topBarExtensionView;
     UIView *__bottomBarExtensionView;
+    CAMFullscreenViewfinderLayout *__modernLayout;
 }
 
 + (Class)layerClass;
+- (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setModernLayout:) CAMFullscreenViewfinderLayout *_modernLayout; // @synthesize _modernLayout=__modernLayout;
 @property(retain, nonatomic, setter=_setBottomBarExtensionView:) UIView *_bottomBarExtensionView; // @synthesize _bottomBarExtensionView=__bottomBarExtensionView;
 @property(retain, nonatomic, setter=_setTopBarExtensionView:) UIView *_topBarExtensionView; // @synthesize _topBarExtensionView=__topBarExtensionView;
 @property(retain, nonatomic, setter=_setFlipTransition:) CAMViewfinderFlipTransition *_flipTransition; // @synthesize _flipTransition=__flipTransition;
@@ -77,7 +81,7 @@
 @property(retain, nonatomic) CAMPanoramaView *panoramaView; // @synthesize panoramaView=_panoramaView;
 @property(retain, nonatomic) CAMTimerIndicatorView *timerIndicatorView; // @synthesize timerIndicatorView=_timerIndicatorView;
 @property(retain, nonatomic) CAMBurstIndicatorView *burstIndicatorView; // @synthesize burstIndicatorView=_burstIndicatorView;
-@property(retain, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
+@property(retain, nonatomic) CAMVideoConfigurationStatusIndicator *videoConfigurationStatusIndicator; // @synthesize videoConfigurationStatusIndicator=_videoConfigurationStatusIndicator;
 @property(retain, nonatomic) CAMElapsedTimeView *elapsedTimeView; // @synthesize elapsedTimeView=_elapsedTimeView;
 @property(retain, nonatomic) CAMShutterIndicatorView *shutterIndicatorView; // @synthesize shutterIndicatorView=_shutterIndicatorView;
 @property(retain, nonatomic) CAMFilterNameBadge *filterNameBadge; // @synthesize filterNameBadge=_filterNameBadge;
@@ -98,7 +102,6 @@
 @property(nonatomic) __weak id <CAMControlVisibilityDelegate> visibilityDelegate; // @synthesize visibilityDelegate=_visibilityDelegate;
 @property(nonatomic) _Bool useCreativeControls; // @synthesize useCreativeControls=_useCreativeControls;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
-- (void).cxx_destruct;
 - (void)prepareForResumingUsingCrossfade;
 - (void)removeInflightBlurAnimations;
 - (void)_createPlaceholderSnapshotAndPerformDoubleSidedFadeForView:(id)arg1 fadeOutDuration:(double)arg2 fadeOutDelay:(double)arg3 fadeInDuration:(double)arg4 fadeInDelay:(double)arg5;
@@ -107,6 +110,7 @@
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
 - (void)instructionLabelDidChangeIntrinsicContentSize:(id)arg1;
 - (void)badgeViewDidChangeIntrinsicContentSize:(id)arg1;
+- (void)controlStatusIndicatorDidChangeIntrinsicContentSize:(id)arg1 animated:(_Bool)arg2;
 - (void)setVisibleTopBadges:(id)arg1 animated:(_Bool)arg2;
 - (double)_utilityBarExtensionDistanceForLayoutStyle:(long long)arg1;
 - (struct UIEdgeInsets)_layoutMarginInsetsForLayoutStyle:(long long)arg1;
@@ -134,7 +138,7 @@
 - (void)_enforceBadgeSubviewOrderingWithAppearingBadges:(id)arg1;
 - (void)_layoutTopBadgesForLayoutStyle:(long long)arg1 appearingBadges:(id)arg2 disappearingBadges:(id)arg3 animated:(_Bool)arg4;
 - (void)_layoutTopBadgesForLayoutStyle:(long long)arg1 animated:(_Bool)arg2;
-- (void)_layoutFramerateIndicatorViewForLayoutStyle:(long long)arg1;
+- (void)_layoutVideoConfigurationStatusIndicatorForLayoutStyle:(long long)arg1;
 - (void)_layoutElapsedTimeViewForLayoutStyle:(long long)arg1;
 - (void)_layoutTimerIndicatorViewForLayoutStyle:(long long)arg1;
 - (void)_layoutLightingControlForLayoutStyle:(long long)arg1;
@@ -143,6 +147,7 @@
 - (void)_layoutBurstIndicatorForLayoutStyle:(long long)arg1;
 - (void)_layoutShutterIndicatorForLayoutStyle:(long long)arg1;
 - (double)_interpolatedVerticalOffsetForShutterIndicator;
+- (void)_updateModernLayout;
 - (void)setMaskingAspectRatio:(long long)arg1 animated:(_Bool)arg2;
 - (void)_updateBarExtensionViewsIfNecessary;
 - (double)_multiplierForAspectRatio:(long long)arg1;

@@ -10,6 +10,7 @@
 #import <SpringBoard/_SBHUDHostViewControllerDelegate-Protocol.h>
 
 @class NSString, NSTimer, SBHUDController, UIViewController;
+@protocol SBHUDViewControlling;
 
 @interface _SBHUDModel : NSObject <_SBHUDHostViewControllerDelegate, SBHUDControlling>
 {
@@ -18,13 +19,14 @@
     _Bool _dismissing;
     _Bool _presenting;
     _Bool _presented;
-    UIViewController *_HUDViewController;
+    UIViewController<SBHUDViewControlling> *_HUDViewController;
     SBHUDController *_HUDController;
     double _dismissalInterval;
     NSString *_identifier;
 }
 
 + (id)HUDModelForController:(id)arg1 viewController:(id)arg2 identifier:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) double dismissalInterval; // @synthesize dismissalInterval=_dismissalInterval;
 @property(nonatomic, setter=setPresented:) _Bool isPresented; // @synthesize isPresented=_presented;
@@ -32,8 +34,7 @@
 @property(nonatomic, setter=setDismissing:) _Bool isDismissing; // @synthesize isDismissing=_dismissing;
 @property(nonatomic, setter=setDismissed:) _Bool isDismissed; // @synthesize isDismissed=_dismissed;
 @property(readonly, nonatomic) SBHUDController *HUDController; // @synthesize HUDController=_HUDController;
-@property(readonly, nonatomic) UIViewController *HUDViewController; // @synthesize HUDViewController=_HUDViewController;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) UIViewController<SBHUDViewControlling> *HUDViewController; // @synthesize HUDViewController=_HUDViewController;
 - (void)hudViewController:(id)arg1 didPresentHUD:(id)arg2;
 - (void)hudViewController:(id)arg1 willPresentHUD:(id)arg2;
 - (void)hudViewController:(id)arg1 didDismissHUD:(id)arg2;

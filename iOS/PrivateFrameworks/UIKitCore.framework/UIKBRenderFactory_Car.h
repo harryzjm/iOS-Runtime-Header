@@ -10,8 +10,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
+- (void)customizeLanguageIndicatorTraitsForTraits:(id)arg1;
+- (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3 onKeyplane:(id)arg4;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (id)displayContentsForKey:(id)arg1;
+- (double)skinnyKeyThreshold;
 - (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;

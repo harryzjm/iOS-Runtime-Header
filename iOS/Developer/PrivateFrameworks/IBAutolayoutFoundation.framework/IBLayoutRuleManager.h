@@ -14,29 +14,33 @@
     NSMutableOrderedSet *_fallbackWidgetTypes;
     NSMapTable *_widgetCodes;
     NSMapTable *_compactLayoutRules;
-    _Bool _maxRuleDistanceIsValid;
     double _maxRuleDistance;
 }
 
-+ (id)sharedInstance;
++ (id)standardRules;
++ (id)snappingRules;
 - (void).cxx_destruct;
 - (long long)uniqueRuleSubKeyForWidgetType:(id)arg1;
-- (id)ruleForView:(long long)arg1 comparedToView:(long long)arg2 withRuleEdge:(unsigned long long)arg3 viewFallbackKey:(long long)arg4;
-- (id)ruleForView:(long long)arg1 comparedToContainer:(long long)arg2 withRuleEdge:(unsigned long long)arg3 viewFallbackKey:(long long)arg4 containerFallbackKey:(long long)arg5;
+- (id)ruleForView:(id)arg1 withPrefix:(id)arg2 comparedToView:(id)arg3 withRuleEdge:(long long)arg4;
+- (id)ruleForView:(id)arg1 withPrefix:(id)arg2 comparedToContainer:(id)arg3 withRuleEdge:(long long)arg4;
+- (id)ruleForView:(long long)arg1 comparedToView:(long long)arg2 withRuleEdge:(long long)arg3 viewFallbackKey:(long long)arg4;
+- (id)ruleForView:(long long)arg1 comparedToContainer:(long long)arg2 withRuleEdge:(long long)arg3 viewFallbackKey:(long long)arg4 containerFallbackKey:(long long)arg5;
 - (id)zeroRule;
 - (void)validateTextualRules:(id)arg1;
 - (id)invertRules:(id)arg1;
-- (_Bool)shouldValidateTextualRules;
 - (double)maxRuleDistance;
 - (void)invalidateCompactLayoutRules;
 - (id)compactLayoutRules;
-- (id)compactRules:(id)arg1;
+- (id)compactRules:(id)arg1 returningMaxRuleDistance:(double *)arg2;
 - (void)declareWidgetTypes:(id)arg1;
-- (void)removeLayoutRules:(id)arg1;
-- (void)addLayoutRules:(id)arg1;
+- (id)dumpLayoutRules;
+- (id)layoutRulesWithMultipleValues;
+- (void)addLayoutRulesFromLayoutRuleManager:(id)arg1;
+- (void)addTextualLayoutRules:(id)arg1;
+- (void)addLayoutRules:(id)arg1 byConvertingValuesOfClass:(Class)arg2 intoSnapSetsWithBlock:(CDUnknownBlockType)arg3;
 - (void)declareFallbackWidgetType:(id)arg1;
 - (id)fallbackWidgetTypes;
-- (id)sharedLayoutRules;
+- (id)layoutRules;
 - (_Bool)addLayoutRulesFromFile:(id)arg1 error:(id *)arg2;
 
 @end

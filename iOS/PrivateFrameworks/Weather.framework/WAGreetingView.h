@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIColor, UIImageView, UILabel, WATodayAutoupdatingLocationModel;
+#import <Weather/WATodayModelObserver-Protocol.h>
 
-@interface WAGreetingView : UIView
+@class NSMutableArray, NSString, UIColor, UIImageView, UILabel, WATodayAutoupdatingLocationModel;
+
+@interface WAGreetingView : UIView <WATodayModelObserver>
 {
     _Bool _isViewCreated;
     WATodayAutoupdatingLocationModel *_todayModel;
@@ -19,6 +21,7 @@
     UIColor *_labelColor;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *labelColor; // @synthesize labelColor=_labelColor;
 @property(nonatomic) _Bool isViewCreated; // @synthesize isViewCreated=_isViewCreated;
 @property(retain, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
@@ -26,7 +29,8 @@
 @property(retain, nonatomic) UIImageView *conditionImageView; // @synthesize conditionImageView=_conditionImageView;
 @property(retain, nonatomic) UILabel *natualLanguageDescriptionLabel; // @synthesize natualLanguageDescriptionLabel=_natualLanguageDescriptionLabel;
 @property(retain, nonatomic) WATodayAutoupdatingLocationModel *todayModel; // @synthesize todayModel=_todayModel;
-- (void).cxx_destruct;
+- (void)todayModel:(id)arg1 forecastWasUpdated:(id)arg2;
+- (void)todayModelWantsUpdate:(id)arg1;
 - (id)_conditionsImage;
 - (id)_temperature;
 - (void)updateView;
@@ -34,11 +38,19 @@
 - (void)updateConstraints;
 - (void)createViews;
 - (void)updateLabelColors;
+- (void)_teardownWeatherModel;
+- (void)_setupWeatherModel;
 - (void)dealloc;
 - (void)startService;
 - (id)init;
 - (id)initWithColor:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

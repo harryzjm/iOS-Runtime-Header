@@ -11,6 +11,7 @@
 }
 
 + (id)sharedInstance;
+- (_Bool)_transferCanBeMarkedPurgable:(id)arg1;
 - (_Bool)isSafeToDeleteAttachmentAtPath:(id)arg1;
 - (_Bool)deleteAttachmentWithGUID:(id)arg1;
 - (_Bool)deleteAttachmentDataForTransfer:(id)arg1;
@@ -18,9 +19,15 @@
 - (void)markAllAttachmentsAsNeedingCloudKitSync;
 - (id)_updatedMessageBody:(id)arg1 replacingGuid:(id)arg2 withGuid:(id)arg3;
 - (_Bool)_updateLegacyTransferGUIDOnMessageIfNeeded:(id)arg1 andUpdateTransfer:(id)arg2;
+- (void)_reindexMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_updateAttachmentGUID:(id)arg1 withGUID:(id)arg2;
+- (id)_IMTransferGUIDForMessageGUID:(id)arg1 andIndex:(unsigned long long)arg2;
+- (id)_newFileTransferFromIMDAttachmentRecordRef:(struct _IMDAttachmentRecordStruct *)arg1;
+- (struct _IMDAttachmentRecordStruct *)_loadAttachmentRecordForGUID:(id)arg1;
 - (_Bool)updateLegacyTransferGUIDOnMessageIfNeeded:(id)arg1;
 - (_Bool)_shouldEarlyReturnForWrongItemType:(id)arg1;
 - (_Bool)updateLegacyTransferGUIDIfNeeded:(id)arg1;
+- (id)fileTransferWithAttachmentRecordRef:(struct _IMDAttachmentRecordStruct *)arg1;
 - (id)attachmentWithGUID:(id)arg1;
 - (void)markAllAttachmentsAsNotPurgeable;
 - (id)getAuxVideoPath:(id)arg1;
@@ -28,8 +35,10 @@
 - (_Bool)_fileEligibleForCacheDelete:(id)arg1;
 - (_Bool)_cloudkitSyncingEnabled;
 - (void)markFileAsPurgeable:(id)arg1;
+- (_Bool)updateAttachment:(id)arg1 chatGUID:(id)arg2 storeAtExternalPath:(_Bool)arg3;
 - (_Bool)updateAttachment:(id)arg1;
 - (_Bool)removeAttachment:(id)arg1 fromMessageWithGUID:(id)arg2;
+- (_Bool)storeAttachment:(id)arg1 associateWithMessageWithGUID:(id)arg2 chatGUID:(id)arg3 storeAtExternalLocation:(_Bool)arg4;
 - (_Bool)storeAttachment:(id)arg1 associateWithMessageWithGUID:(id)arg2;
 
 @end

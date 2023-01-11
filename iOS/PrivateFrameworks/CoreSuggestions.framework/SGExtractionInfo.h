@@ -4,20 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
+#import <CoreSuggestions/NSCopying-Protocol.h>
+#import <CoreSuggestions/NSSecureCoding-Protocol.h>
+
 @class NSNumber;
 
-@interface SGExtractionInfo
+@interface SGExtractionInfo : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _extractionType;
     NSNumber *_modelVersion;
     NSNumber *_confidence;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)extractionInfoWithExtractionType:(unsigned long long)arg1 modelVersion:(id)arg2 confidence:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *confidence; // @synthesize confidence=_confidence;
 @property(readonly, nonatomic) NSNumber *modelVersion; // @synthesize modelVersion=_modelVersion;
 @property(readonly, nonatomic) unsigned long long extractionType; // @synthesize extractionType=_extractionType;
-- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithExtractionType:(unsigned long long)arg1 modelVersion:(id)arg2 confidence:(id)arg3;
 
 @end

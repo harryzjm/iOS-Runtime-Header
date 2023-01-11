@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Message/EDLibraryMessage-Protocol.h>
+#import <Message/EDPersistedMessage-Protocol.h>
 
 @class ECAngleBracketIDHash, ECMessageFlags, ECSubject, MFMailboxUid, MFMessageHeaders, MailAccount, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 @protocol ECMimePart;
 
-@interface MFLibraryMessage <EDLibraryMessage>
+@interface MFLibraryMessage <EDPersistedMessage>
 {
     long long _libraryID;
     NSString *_remoteID;
@@ -19,7 +19,7 @@
     long long _mailboxID;
     long long _originalMailboxID;
     NSString *_messageID;
-    unsigned long long _conversationFlags;
+    _Atomic unsigned long long _conversationFlags;
     NSArray *_references;
 }
 
@@ -27,7 +27,7 @@
 + (id)log;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *references; // @synthesize references=_references;
-- (unsigned long long)fileSize;
+@property(readonly, nonatomic) unsigned long long fileSize;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (void)_forceLoadOfMessageSummaryFromProtectedStore;
 - (id)attachmentStorageLocation;
@@ -37,7 +37,7 @@
 - (id)dataConsumerForMimePart:(id)arg1;
 - (void)setMessageData:(id)arg1 isPartial:(_Bool)arg2;
 - (void)setRemoteID:(id)arg1 flags:(unsigned long long)arg2 size:(unsigned int)arg3 mailboxID:(long long)arg4 originalMailboxID:(long long)arg5;
-- (unsigned long long)conversationFlags;
+@property(readonly) unsigned long long conversationFlags;
 - (void)setConversationFlags:(unsigned long long)arg1;
 - (id)preferredAccountToUseForReplying;
 - (void)markAsForwarded;
@@ -82,7 +82,8 @@
 - (long long)originalMailboxID;
 - (void)setMailboxID:(long long)arg1;
 - (long long)mailboxID;
-@property(readonly, nonatomic) long long libraryID;
+@property(readonly, nonatomic) long long persistedMessageID;
+- (long long)libraryID;
 @property(readonly, copy, nonatomic) NSString *persistentID;
 - (id)messageID;
 - (id)library;
@@ -100,8 +101,10 @@
 @property(readonly, copy, nonatomic) NSUUID *documentID; // @dynamic documentID;
 @property(readonly, nonatomic) ECMessageFlags *flags;
 @property(readonly, copy, nonatomic) NSArray *from;
+@property(readonly, nonatomic) long long globalMessageID;
 @property(readonly, nonatomic) MFMessageHeaders *headers; // @dynamic headers;
 @property(readonly, copy, nonatomic) NSDictionary *headersDictionary;
+@property(readonly, nonatomic) _Bool isServerSearchResult;
 @property(readonly) NSSet *labels;
 @property(readonly, nonatomic) ECAngleBracketIDHash *listIDHash;
 @property(readonly, copy, nonatomic) NSArray *listUnsubscribe;

@@ -16,13 +16,13 @@
     NSMutableSet *_internalAlarmsBeingUpdated;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingUpdated; // @synthesize internalAlarmsBeingUpdated=_internalAlarmsBeingUpdated;
 @property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingRemoved; // @synthesize internalAlarmsBeingRemoved=_internalAlarmsBeingRemoved;
 @property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingAdded; // @synthesize internalAlarmsBeingAdded=_internalAlarmsBeingAdded;
 @property(readonly, nonatomic) NAFuture *setupAccessoryAdapterModeFuture; // @synthesize setupAccessoryAdapterModeFuture=_setupAccessoryAdapterModeFuture;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NAFuture *alarmManagerForSynchronizationFuture; // @synthesize alarmManagerForSynchronizationFuture=_alarmManagerForSynchronizationFuture;
-- (void).cxx_destruct;
 - (void)_setupDebugHandler;
 - (id)_beginMonitoringSettingsKeyPath:(id)arg1;
 - (void)_notifyObserversOfUpdates;
@@ -30,6 +30,9 @@
 - (void)_alarmWasUpdated:(id)arg1;
 - (void)_alarmWasDeleted:(id)arg1;
 - (void)_alarmWasAdded:(id)arg1;
+- (void)_submitAnalyticsForDeletedAlarm:(id)arg1 success:(_Bool)arg2;
+- (void)_submitAnalyticsForUpdatedAlarm:(id)arg1 success:(_Bool)arg2;
+- (void)_submitAnalyticsForAddedAlarm:(id)arg1 success:(_Bool)arg2;
 - (id)_synchronizeMobileTimerToHomeKitWithChangeType:(unsigned long long)arg1;
 - (id)_synchronizeHomeKitToMobileTimer;
 - (id)alarmCollectionSettingFuture;

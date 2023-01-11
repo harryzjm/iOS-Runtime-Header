@@ -4,31 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol MTLArgumentEncoder, MTLBuffer;
+@protocol MTLBuffer, MTLIndirectCommandBuffer;
 
-__attribute__((visibility("hidden")))
 @interface MTLGPUDebugIndirectCommandBuffer
 {
-    id <MTLBuffer> argumentBuffersStorage;
-    id <MTLBuffer> argumentLengthsStorage;
-    id <MTLBuffer> argumentGPUVAsStorage;
     _Bool _hasRender;
-    _Bool _hasCompute;
-    unsigned long long _argumentStride;
-    unsigned long long _lengthStride;
-    unsigned long long _virtualAddressStride;
-    struct mutex _setBufferMutex;
-    id <MTLArgumentEncoder> _argumentEncoder;
+    _Bool _inheritsBuffers;
+    _Bool _inheritsPipelineState;
+    id <MTLBuffer> _argumentStorage;
+    id <MTLBuffer> _drawIDBuffer;
+    unsigned short _maxCommands;
+    unsigned char _maxVertexBindings;
+    unsigned char _maxFragmentBindings;
+    unsigned short _commandByteStride;
+    unsigned long long _originalResourceOptions;
+    id <MTLIndirectCommandBuffer> _fencingICB;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)dealloc;
+- (id)fencingICB;
+- (unsigned long long)resourceOptions;
+- (unsigned long long)hazardTrackingMode;
+- (unsigned long long)cpuCacheMode;
+- (unsigned long long)storageMode;
 - (id)indirectComputeCommandAtIndex:(unsigned long long)arg1;
 - (id)indirectRenderCommandAtIndex:(unsigned long long)arg1;
 - (void)onExecuteWithComputeEncoder:(id)arg1;
 - (void)onExecuteWithRenderEncoder:(id)arg1;
+- (void)setRenderPipelineStateBuffers:(id)arg1 commandIndex:(unsigned long long)arg2;
+- (void)setTessellationControlPointIndexBuffer:(id)arg1 offset:(unsigned long long)arg2 commandIndex:(unsigned long long)arg3;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3 forStage:(unsigned long long)arg4 commandIndex:(unsigned long long)arg5;
+@property(readonly, nonatomic) id <MTLBuffer> internalDrawIDBuffer;
+@property(readonly, nonatomic) id <MTLBuffer> internalICBBuffer;
+@property(readonly, nonatomic) _Bool inheritsPipelineState;
+@property(readonly, nonatomic) _Bool inheritsBuffers;
+@property(readonly, nonatomic) unsigned long long commandByteStride;
+@property(readonly, nonatomic) unsigned long long maxFragmentBindings;
+@property(readonly, nonatomic) unsigned long long maxVertexBindings;
+@property(readonly, nonatomic) unsigned long long maxCommands;
 - (id)initWithIndirectCommandBuffer:(id)arg1 descriptor:(id)arg2 maxCommandCount:(unsigned long long)arg3 resourceOptions:(unsigned long long)arg4 device:(id)arg5;
 
 @end

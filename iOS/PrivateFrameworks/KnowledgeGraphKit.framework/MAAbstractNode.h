@@ -8,7 +8,7 @@
 {
 }
 
-- (_Bool)isAbstract;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
 
 @end
 

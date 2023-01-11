@@ -8,14 +8,14 @@
 
 @interface CKEditableCollectionView : UICollectionView
 {
-    _Bool _editing;
+    _Bool __ck_editing;
     struct UIEdgeInsets _marginInsets;
 }
 
-@property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
+@property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing; // @synthesize _ck_editing=__ck_editing;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 - (struct UIEdgeInsets)safeAreaInsets;
-- (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_ck_setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)dequeueReusableCellWithReuseIdentifier:(id)arg1 forIndexPath:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 

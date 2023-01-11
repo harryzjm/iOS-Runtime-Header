@@ -32,6 +32,7 @@
     _Bool _includeClassNamesWhenUsingInlineStyles;
     _Bool _includeDarkInterfaceInlineStyles;
     _Bool _allowsTapToLoad;
+    _Bool _disableAutoPlay;
     _Bool _useInlineStyles;
     _Bool _applyCornerRadiusToLink;
     _Bool _generateEmailCompatibleMarkup;
@@ -46,6 +47,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) _Bool isPreliminary; // @synthesize isPreliminary=_isPreliminary;
 @property(readonly, nonatomic) LPTheme *theme; // @synthesize theme=_theme;
@@ -58,11 +60,11 @@
 @property(nonatomic) _Bool applyCornerRadiusToLink; // @synthesize applyCornerRadiusToLink=_applyCornerRadiusToLink;
 @property(nonatomic) _Bool useInlineStyles; // @synthesize useInlineStyles=_useInlineStyles;
 @property(nonatomic) __weak id <LPLinkHTMLGeneratorDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, setter=_setDisableAutoPlay:) _Bool _disableAutoPlay; // @synthesize _disableAutoPlay;
 @property(nonatomic, setter=_setAllowsTapToLoad:) _Bool _allowsTapToLoad; // @synthesize _allowsTapToLoad;
 @property(nonatomic, setter=_setIncludeDarkInterfaceInlineStyles:) _Bool _includeDarkInterfaceInlineStyles; // @synthesize _includeDarkInterfaceInlineStyles;
 @property(nonatomic, setter=_setIncludeClassNamesWhenUsingInlineStyles:) _Bool _includeClassNamesWhenUsingInlineStyles; // @synthesize _includeClassNamesWhenUsingInlineStyles;
 @property(nonatomic, setter=_setUseVariablesWhenUsingInlineStyles:) _Bool _useVariablesWhenUsingInlineStyles; // @synthesize _useVariablesWhenUsingInlineStyles;
-- (void).cxx_destruct;
 - (void)_didFollowLink;
 @property(readonly, nonatomic) _Bool _canTapToLoad;
 - (void)_rebuildView;

@@ -9,7 +9,7 @@
 #import <MPSCore/MTLCommandBuffer-Protocol.h>
 
 @class MPSPredicate, NSError, NSString;
-@protocol MPSHeapProvider, MTLBuffer, MTLCommandBuffer, MTLCommandQueue, MTLDevice;
+@protocol MPSHeapProvider, MTLBuffer, MTLCommandBuffer, MTLCommandQueue, MTLDevice, MTLLogContainer;
 
 @interface MPSCommandBuffer : NSObject <MTLCommandBuffer>
 {
@@ -43,10 +43,12 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSError *error;
+@property(readonly) unsigned long long errorOptions;
 @property(readonly) unsigned long long hash;
 @property(readonly) double kernelEndTime;
 @property(readonly) double kernelStartTime;
 @property(copy) NSString *label;
+@property(readonly) id <MTLLogContainer> logs;
 @property(readonly) _Bool retainedReferences;
 @property(readonly) unsigned long long status;
 @property(readonly) Class superclass;

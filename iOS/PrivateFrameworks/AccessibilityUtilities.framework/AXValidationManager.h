@@ -28,6 +28,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *consoleWarningMessages; // @synthesize consoleWarningMessages=_consoleWarningMessages;
 @property(nonatomic) unsigned long long numberOfValidationWarnings; // @synthesize numberOfValidationWarnings=_numberOfValidationWarnings;
 @property(nonatomic) unsigned long long numberOfValidations; // @synthesize numberOfValidations=_numberOfValidations;
@@ -42,7 +43,6 @@
 @property(nonatomic) _Bool shouldReportToServer; // @synthesize shouldReportToServer=_shouldReportToServer;
 @property(nonatomic) _Bool shouldCrashOnError; // @synthesize shouldCrashOnError=_shouldCrashOnError;
 @property(nonatomic) _Bool shouldLogToConsole; // @synthesize shouldLogToConsole=_shouldLogToConsole;
-- (void).cxx_destruct;
 - (void)sendValidationSuccessForProcessName:(id)arg1;
 - (void)sendFailedTestCase:(id)arg1 withTag:(id)arg2 overrideProcessName:(id)arg3;
 - (void)sendFailedAssertionWithErrorMessage:(id)arg1 overrideProcessName:(id)arg2;
@@ -89,8 +89,8 @@
 - (_Bool)validateClass:(id)arg1 hasProperty:(id)arg2 withType:(const char *)arg3;
 - (_Bool)validateClass:(id)arg1 hasInstanceMethod:(id)arg2 withFullSignature:(const char *)arg3;
 - (_Bool)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3 withFullSignature:(const char *)arg4;
-- (_Bool)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(struct __va_list_tag [1])arg5;
-- (_Bool)_client:(id)arg1 validateClass:(id)arg2 hasClassMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(struct __va_list_tag [1])arg5;
+- (_Bool)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(char *)arg5;
+- (_Bool)_client:(id)arg1 validateClass:(id)arg2 hasClassMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(char *)arg5;
 - (_Bool)client:(id)arg1 validateClass:(id)arg2 hasClassMethod:(id)arg3 withFullSignature:(const char *)arg4;
 - (_Bool)validateClass:(id)arg1 hasClassMethod:(id)arg2 withFullSignature:(const char *)arg3;
 - (_Bool)_client:(id)arg1 validateClass:(id)arg2 hasMethod:(id)arg3 methodType:(int)arg4 returnType:(id)arg5 arguments:(id)arg6;

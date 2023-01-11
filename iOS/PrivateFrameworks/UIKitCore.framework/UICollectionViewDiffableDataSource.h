@@ -9,29 +9,51 @@
 #import <UIKitCore/UICollectionViewDataSource-Protocol.h>
 #import <UIKitCore/_UIDiffableDataSourceIdentifying-Protocol.h>
 
-@class NSString, __UIDiffableDataSource;
+@class NSString, UICollectionViewDiffableDataSourceReorderingHandlers, UICollectionViewDiffableDataSourceSectionSnapshotHandlers, __UIDiffableDataSource;
 
 @interface UICollectionViewDiffableDataSource : NSObject <_UIDiffableDataSourceIdentifying, UICollectionViewDataSource>
 {
     __UIDiffableDataSource *_impl;
+    CDUnknownBlockType __didReorderItemsHandler;
 }
 
-@property(retain, nonatomic) __UIDiffableDataSource *impl; // @synthesize impl=_impl;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType _didReorderItemsHandler; // @synthesize _didReorderItemsHandler=__didReorderItemsHandler;
+@property(retain, nonatomic) __UIDiffableDataSource *impl; // @synthesize impl=_impl;
+- (id)_diffableDataSourceImpl;
 - (_Bool)_isDiffableDataSource;
+- (id)_snapshotForSection:(id)arg1;
+- (void)_applySnapshot:(id)arg1 toSection:(id)arg2 animatingDifferences:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_associatedSectionControllerForSectionIdentifier:(id)arg1;
+- (id)_associatedSectionControllerForItemIdentifier:(id)arg1;
+- (id)collectionView;
+- (void)_registerItemRenderers:(id)arg1 rendererIdentifierProvider:(CDUnknownBlockType)arg2;
 - (void)_applySnapshot:(id)arg1 animatingDifferences:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)collectionView:(id)arg1 moveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
+- (_Bool)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)initWithViewUpdatesSink:(id)arg1;
+- (CDUnknownBlockType)_canReorderItemHandler;
+- (void)_setCanReorderItemHandler:(CDUnknownBlockType)arg1;
+- (void)_setDidReorderItemsHandler:(CDUnknownBlockType)arg1;
 - (id)indexPathForItemIdentifier:(id)arg1;
 - (id)itemIdentifierForIndexPath:(id)arg1;
+@property(copy, nonatomic) UICollectionViewDiffableDataSourceSectionSnapshotHandlers *sectionSnapshotHandlers;
+@property(copy, nonatomic) UICollectionViewDiffableDataSourceReorderingHandlers *reorderingHandlers;
+- (id)snapshotForSection:(id)arg1;
+- (void)applySnapshot:(id)arg1 toSection:(id)arg2 animatingDifferences:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)applySnapshot:(id)arg1 toSection:(id)arg2 animatingDifferences:(_Bool)arg3;
 - (void)applySnapshot:(id)arg1 animatingDifferences:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applySnapshot:(id)arg1 animatingDifferences:(_Bool)arg2;
 - (id)snapshot;
 @property(copy, nonatomic) CDUnknownBlockType supplementaryViewProvider;
 @property(readonly, copy) NSString *description;
+- (id)initWithCollectionView:(id)arg1 itemRenderer:(id)arg2;
+- (id)initWithCollectionView:(id)arg1 sectionControllers:(id)arg2 rendererIdentifierProvider:(CDUnknownBlockType)arg3;
+- (id)initWithCollectionView:(id)arg1 itemRenderers:(id)arg2 rendererIdentifierProvider:(CDUnknownBlockType)arg3;
 - (id)initWithCollectionView:(id)arg1 cellProvider:(CDUnknownBlockType)arg2;
 
 // Remaining properties

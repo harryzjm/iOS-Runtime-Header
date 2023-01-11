@@ -14,7 +14,7 @@
 - (_Bool)deleteRecoveryKeyWithError:(id *)arg1;
 - (void)deleteRecoveryKey:(CDUnknownBlockType)arg1;
 - (void)generateNewRecoveryKey:(CDUnknownBlockType)arg1;
-- (_Bool)shouldPerformRepair:(id *)arg1;
+- (_Bool)shouldPerformRepairWithOptionForceFetch:(_Bool)arg1 error:(id *)arg2;
 - (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)attemptToEscrowPreRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;

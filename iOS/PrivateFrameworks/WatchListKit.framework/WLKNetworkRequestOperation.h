@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AMSURLRequestEncoder, AMSURLSession, NSData, NSDate, NSError, NSHTTPURLResponse, NSString, NSURLRequest, NSURLSessionDataTask;
+@class AMSURLRequestEncoder, AMSURLSession, NSData, NSDate, NSError, NSHTTPURLResponse, NSNumber, NSString, NSURLRequest, NSURLSessionDataTask;
 
 @interface WLKNetworkRequestOperation
 {
     NSString *_identifier;
+    NSNumber *_DSID;
+    id _authenticationDelegate;
     NSURLRequest *_request;
     long long _options;
     NSHTTPURLResponse *_httpResponse;
     long long _responseStatusCode;
     NSData *_data;
     NSError *_error;
+    long long _resourceFetchType;
     AMSURLRequestEncoder *_encoder;
     AMSURLSession *_session;
     NSURLSessionDataTask *_task;
@@ -22,19 +25,22 @@
     unsigned long long _signpostIdentifier;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long signpostIdentifier; // @synthesize signpostIdentifier=_signpostIdentifier;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(retain, nonatomic) NSURLSessionDataTask *task; // @synthesize task=_task;
 @property(retain, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 @property(retain, nonatomic) AMSURLRequestEncoder *encoder; // @synthesize encoder=_encoder;
+@property(nonatomic) long long resourceFetchType; // @synthesize resourceFetchType=_resourceFetchType;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property(retain, nonatomic) NSHTTPURLResponse *httpResponse; // @synthesize httpResponse=_httpResponse;
 @property(readonly, nonatomic) long long options; // @synthesize options=_options;
 @property(copy, nonatomic) NSURLRequest *request; // @synthesize request=_request;
+@property(nonatomic) __weak id authenticationDelegate; // @synthesize authenticationDelegate=_authenticationDelegate;
+@property(copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)cancel;
 - (void)finishExecutionIfPossible;
 - (void)executionDidBegin;
@@ -48,6 +54,9 @@
 - (void)prepareURLRequest:(CDUnknownBlockType)arg1;
 - (id)initWithURLRequest:(id)arg1 options:(long long)arg2;
 - (id)init;
+- (id)originalExpirationDate;
+- (id)httpHeaderResponseDate;
+- (id)httpHeaderMaxAge;
 
 @end
 

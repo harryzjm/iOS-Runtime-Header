@@ -21,11 +21,11 @@
     NSArray *_otherArticleIDs;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *otherArticleIDs; // @synthesize otherArticleIDs=_otherArticleIDs;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) long long feedType; // @synthesize feedType=_feedType;
-- (void).cxx_destruct;
 - (void)fetchHeadlinesWithContext:(id)arg1 forIdentifiers:(id)arg2 downloadAssets:(_Bool)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 @property(readonly, copy) NSString *description;
 - (void)d_fetchAllHeadlinesWithCloudContext:(id)arg1 sinceDate:(id)arg2 filter:(_Bool)arg3 personalize:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -35,9 +35,11 @@
 @property(readonly, nonatomic) long long feedSortMethod;
 @property(readonly, nonatomic) id <FCFeedPaginating> feedPaginator;
 - (_Bool)shouldFilterFeedGroupEmitter:(id)arg1 withConfiguration:(id)arg2;
+@property(readonly, nonatomic) _Bool needsForYouConfig;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)allEmitterClasses;
+- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)fetchOperationForHeadlinesWithIDs:(id)arg1 context:(id)arg2;
 - (id)streamOfLatestHeadlinesWithContext:(id)arg1;
 - (id)streamOfHeadlinesWithIDs:(id)arg1 context:(id)arg2 cachedOnly:(_Bool)arg3 maxCachedAge:(double)arg4;

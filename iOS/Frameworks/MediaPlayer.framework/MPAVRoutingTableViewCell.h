@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPAVRoutingThemeableCellView-Protocol.h>
 
-@class MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel;
+@class MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel, UIView;
 @protocol MPAVRoutingTableViewCellDelegate;
 
 @interface MPAVRoutingTableViewCell <MPAVRoutingThemeableCellView>
@@ -17,6 +17,9 @@
     NSTimer *_subtitleTextUpdateTimer;
     UIActivityIndicatorView *_spinnerView;
     UIImageView *_smartAudioImageView;
+    UIImageView *_checkmarkImageView;
+    UIImageView *_chevronImageView;
+    UIView *_expandTargetView;
     _Bool _mirroringSwitchVisible;
     _Bool _pendingSelection;
     _Bool _isDisplayedAsPicked;
@@ -31,6 +34,7 @@
     MPAVRoutingTableViewCellSubtitleTextState *_subtitleTextState;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) MPAVRoutingTableViewCellSubtitleTextState *subtitleTextState; // @synthesize subtitleTextState=_subtitleTextState;
 @property(nonatomic, getter=isShowingVolumeSlider) _Bool showingVolumeSlider; // @synthesize showingVolumeSlider=_showingVolumeSlider;
 @property(retain, nonatomic) MPVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
@@ -43,15 +47,16 @@
 @property(nonatomic) unsigned long long mirroringStyle; // @synthesize mirroringStyle=_mirroringStyle;
 @property(nonatomic) _Bool mirroringSwitchVisible; // @synthesize mirroringSwitchVisible=_mirroringSwitchVisible;
 @property(nonatomic) __weak id <MPAVRoutingTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)didTapToExpand;
 - (void)_animateSubtitleLabelToNextAvailableText;
-- (void)_updateSpinnerStyle;
+- (void)_updateSpinnerColor;
 - (void)_updateSubtitleTextLabelForRouteItem:(id)arg1;
-- (void)_updateSmartAudioAccessory;
+- (void)_updateAccessory;
 - (id)_checkmarkImageForSmartAudio;
 - (id)_checkmarkAccessibilityLabelForSmartAudio;
 - (id)_checkmarkImageNameForSmartAudio;
 - (id)_iconImageForRoute:(id)arg1;
+- (id)_iconImageForRoutes:(id)arg1;
 - (id)_pairedDeviceTextForRoute:(id)arg1;
 - (id)_batteryTextForRoute:(id)arg1;
 - (_Bool)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;

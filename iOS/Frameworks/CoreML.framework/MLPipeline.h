@@ -14,14 +14,17 @@
     NSArray *_modelNames;
 }
 
++ (id)classLabelsForPipelineFromSubModelArray:(id)arg1 predictedFeatureName:(id)arg2;
 + (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
 + (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)compileWithModelsInPipeline:(const struct Pipeline *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 updatable:(_Bool)arg4 error:(id *)arg5;
++ (_Bool)archivePipelineModelDetailsFrom:(const struct Pipeline *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 + (void)archiveCustomModelNames:(const RepeatedPtrField_fe7cf120 *)arg1 to:(struct _MLModelOutputArchiver *)arg2;
 + (void)archivePipelineUpdateParameterForModels:(const RepeatedPtrField_f3160e5f *)arg1 to:(struct _MLModelOutputArchiver *)arg2 updatable:(_Bool)arg3;
+- (void).cxx_destruct;
 @property(retain) NSArray *modelNames; // @synthesize modelNames=_modelNames;
 @property(retain) NSArray *models; // @synthesize models=_models;
-- (void).cxx_destruct;
+- (id)executionSchedule;
 - (id)parameterValueForKey:(id)arg1 error:(id *)arg2;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
 - (void)replaceModelAtIndex:(unsigned long long)arg1 with:(id)arg2;

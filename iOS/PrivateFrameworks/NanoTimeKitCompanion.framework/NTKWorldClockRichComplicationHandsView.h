@@ -4,30 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
-
-@class CALayer, NSString;
-@protocol CLKMonochromeFilterProvider;
-
-@interface NTKWorldClockRichComplicationHandsView <CLKMonochromeComplicationView>
+@interface NTKWorldClockRichComplicationHandsView
 {
-    CALayer *_pegDot;
-    id <CLKMonochromeFilterProvider> _filterProvider;
 }
 
-@property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
-- (void)updateMonochromeColor;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)layoutSubviews;
-- (double)_timeAnimationFramesPerSecondForDevice:(id)arg1;
-- (id)initForDevice:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (long long)complicationFamily;
 
 @end
 

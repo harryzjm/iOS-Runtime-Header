@@ -11,7 +11,11 @@
     unsigned long long _reshapedFeatureChannels;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationStates:(id *)arg3 destinationStateIsTemporary:(_Bool)arg4 reshapedWidth:(unsigned long long)arg5 reshapedHeight:(unsigned long long)arg6 reshapedFeatureChannels:(unsigned long long)arg7;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 reshapedWidth:(unsigned long long)arg3 reshapedHeight:(unsigned long long)arg4 reshapedFeatureChannels:(unsigned long long)arg5;
+- (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationState:(id *)arg3 destinationStateIsTemporary:(_Bool)arg4 reshapedWidth:(unsigned long long)arg5 reshapedHeight:(unsigned long long)arg6 reshapedFeatureChannels:(unsigned long long)arg7;
+- (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 reshapedWidth:(unsigned long long)arg3 reshapedHeight:(unsigned long long)arg4 reshapedFeatureChannels:(unsigned long long)arg5;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_d6af7fc0 *)arg4;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

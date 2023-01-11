@@ -9,7 +9,7 @@
 #import <UIKitCore/UIFocusedInterfaceActionPressDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSPointerArray, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIScrollView, UISelectionFeedbackGenerator, UIView, _UIInterfaceActionSelectByPressGestureRecognizer, _UIInterfaceActionSelectionDelayGestureRecognizer;
+@class NSArray, NSMutableSet, NSPointerArray, NSString, UIGestureRecognizer, UIHoverGestureRecognizer, UILongPressGestureRecognizer, UIScrollView, UISelectionFeedbackGenerator, UIView, _UIInterfaceActionSelectByPressGestureRecognizer, _UIInterfaceActionSelectionDelayGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionSelectionTrackingController : NSObject <UIGestureRecognizerDelegate, UIFocusedInterfaceActionPressDelegate>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _Bool _scrubbingEnabled;
     _Bool _selectByPressGestureEnabled;
     _Bool _selectionFeedbackEnabled;
+    _Bool _selectByIndirectPointerTouchEnabled;
     UIView *_trackableContainerView;
     UIScrollView *_actionsScrollView;
     NSArray *_representationViews;
@@ -30,9 +31,12 @@ __attribute__((visibility("hidden")))
     id _scrollViewWillBeginDraggingNotificationToken;
     id _scrollViewDidEndDraggingNotificationToken;
     id _scrollViewDidEndDeceleratingNotificationToken;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     struct CGPoint _actionSelectionInitialLocationInContainerView;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIHoverGestureRecognizer *hoverGestureRecognizer; // @synthesize hoverGestureRecognizer=_hoverGestureRecognizer;
 @property(retain, nonatomic) id scrollViewDidEndDeceleratingNotificationToken; // @synthesize scrollViewDidEndDeceleratingNotificationToken=_scrollViewDidEndDeceleratingNotificationToken;
 @property(retain, nonatomic) id scrollViewDidEndDraggingNotificationToken; // @synthesize scrollViewDidEndDraggingNotificationToken=_scrollViewDidEndDraggingNotificationToken;
 @property(retain, nonatomic) id scrollViewWillBeginDraggingNotificationToken; // @synthesize scrollViewWillBeginDraggingNotificationToken=_scrollViewWillBeginDraggingNotificationToken;
@@ -45,12 +49,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UILongPressGestureRecognizer *selectionGestureRecognizer; // @synthesize selectionGestureRecognizer=_selectionGestureRecognizer;
 @property(readonly, nonatomic) struct CGPoint actionSelectionInitialLocationInContainerView; // @synthesize actionSelectionInitialLocationInContainerView=_actionSelectionInitialLocationInContainerView;
 @property(retain, nonatomic) NSArray *representationViews; // @synthesize representationViews=_representationViews;
+@property(nonatomic) _Bool selectByIndirectPointerTouchEnabled; // @synthesize selectByIndirectPointerTouchEnabled=_selectByIndirectPointerTouchEnabled;
 @property(nonatomic) _Bool selectionFeedbackEnabled; // @synthesize selectionFeedbackEnabled=_selectionFeedbackEnabled;
 @property(nonatomic) _Bool selectByPressGestureEnabled; // @synthesize selectByPressGestureEnabled=_selectByPressGestureEnabled;
 @property(nonatomic) _Bool scrubbingEnabled; // @synthesize scrubbingEnabled=_scrubbingEnabled;
 @property(nonatomic) __weak UIScrollView *actionsScrollView; // @synthesize actionsScrollView=_actionsScrollView;
 @property(nonatomic) __weak UIView *trackableContainerView; // @synthesize trackableContainerView=_trackableContainerView;
-- (void).cxx_destruct;
 - (id)_allGestureRecognizers;
 - (id)_allActionViewsIncludingCooperatingActionViews;
 - (void)_performRecursivelyWithVisitedCooperatingControllers:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -65,7 +69,9 @@ __attribute__((visibility("hidden")))
 - (void)_invokeHandlerForInterfaceAction:(id)arg1;
 - (_Bool)_isPresentedAndVisible;
 - (void)_handleActionSelectionGestureRecognizer:(id)arg1;
+- (void)_rolloverActionChanged:(id)arg1;
 - (void)_handleSystemProvidedGestureRecognizer:(id)arg1;
+- (void)deselectAllActions;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)_gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

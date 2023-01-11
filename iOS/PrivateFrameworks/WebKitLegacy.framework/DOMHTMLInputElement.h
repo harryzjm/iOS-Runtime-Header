@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebKitLegacy/UITextInputTraits-Protocol.h>
+@class DOMFileList, DOMHTMLFormElement, NSString, NSURL;
 
-@class DOMFileList, DOMHTMLFormElement, NSString, NSURL, UITextInputPasswordRules;
-
-@interface DOMHTMLInputElement <UITextInputTraits>
+@interface DOMHTMLInputElement
 {
 }
 
+- (void)setCanShowPlaceholder:(_Bool)arg1;
+- (_Bool)canShowPlaceholder;
 - (void)insertTextSuggestion:(id)arg1;
 - (id)_autofillContext;
 - (void)setValueForUser:(id)arg1;
@@ -99,29 +99,12 @@
 - (void)setValueAsNumberWithChangeEvent:(double)arg1;
 - (void)setValueWithChangeEvent:(id)arg1;
 - (int)structuralComplexityContribution;
+- (void)_setAutoFilledAndViewable:(_Bool)arg1;
 - (void)_setAutofilled:(_Bool)arg1;
+- (_Bool)_isAutoFilledAndViewable;
 - (_Bool)_isAutofilled;
 - (id)endPosition;
 - (id)startPosition;
-
-// Remaining properties
-@property(nonatomic) long long autocapitalizationType;
-@property(nonatomic) long long autocorrectionType;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(nonatomic) _Bool enablesReturnKeyAutomatically;
-@property(readonly) unsigned long long hash;
-@property(nonatomic) long long keyboardAppearance;
-@property(nonatomic) long long keyboardType;
-@property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
-@property(nonatomic) long long returnKeyType;
-@property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
-@property(nonatomic) long long smartDashesType;
-@property(nonatomic) long long smartInsertDeleteType;
-@property(nonatomic) long long smartQuotesType;
-@property(nonatomic) long long spellCheckingType;
-@property(readonly) Class superclass;
-@property(copy, nonatomic) NSString *textContentType;
 
 @end
 

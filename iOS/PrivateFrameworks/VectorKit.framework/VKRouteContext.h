@@ -12,10 +12,10 @@
 {
     VKRouteInfo *_routeInfo;
     unsigned char _useType;
-    long long _inspectedLegIndex;
+    long long _inspectedSegmentIndex;
     long long _inspectedStepIndex;
     struct PolylineCoordinate _routeOffset;
-    long long _currentLegIndex;
+    long long _currentSegmentIndex;
     long long _currentStepIndex;
     _Bool _snappingToTransitLines;
     CDStruct_2c43369c _puckLocation;
@@ -34,6 +34,8 @@
     struct multimap<unsigned int, std::__1::vector<RouteSection, std::__1::allocator<RouteSection>>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::vector<RouteSection, std::__1::allocator<RouteSection>>>>> _shareSections;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *alternateRoutes; // @synthesize alternateRoutes=_alternateRoutes;
 @property(retain, nonatomic) NSString *accessPointExitName; // @synthesize accessPointExitName=_accessPointExitName;
 @property(retain, nonatomic) NSString *accessPointEntryName; // @synthesize accessPointEntryName=_accessPointEntryName;
@@ -42,15 +44,15 @@
 @property(nonatomic) float puckRadius; // @synthesize puckRadius=_puckRadius;
 @property(nonatomic) CDStruct_c3b9c2ee puckLocation; // @synthesize puckLocation=_puckLocation;
 @property(nonatomic) long long inspectedStepIndex; // @synthesize inspectedStepIndex=_inspectedStepIndex;
-@property(nonatomic) long long inspectedLegIndex; // @synthesize inspectedLegIndex=_inspectedLegIndex;
+@property(nonatomic) long long inspectedSegmentIndex; // @synthesize inspectedSegmentIndex=_inspectedSegmentIndex;
 @property(nonatomic) _Bool snappingToTransitLines; // @synthesize snappingToTransitLines=_snappingToTransitLines;
 @property(nonatomic) long long currentStepIndex; // @synthesize currentStepIndex=_currentStepIndex;
-@property(nonatomic) long long currentLegIndex; // @synthesize currentLegIndex=_currentLegIndex;
+@property(nonatomic) long long currentSegmentIndex; // @synthesize currentSegmentIndex=_currentSegmentIndex;
 @property(nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
 @property(readonly, nonatomic) unsigned char useType; // @synthesize useType=_useType;
 @property(readonly, nonatomic) VKRouteInfo *routeInfo; // @synthesize routeInfo=_routeInfo;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+- (id)description;
+- (void)forEachRouteInfo:(CDUnknownBlockType)arg1;
 - (void)forEachSectionWithShareCount:(unsigned int)arg1 dothis:(CDUnknownBlockType)arg2;
 - (void)addShareSections:(const CDStruct_2c837fe9 *)arg1 shareCount:(unsigned int)arg2;
 - (void)resetNotificationsForObserverType:(unsigned char)arg1;

@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, NSURL, NSUUID, SFClientGetDeviceAssetsParams, SFContactInfo, SFDevice, SFPeopleSuggesterParams;
+@class NSDictionary, NSString, NSURL, NSUUID, SFClientGetDeviceAssetsParams, SFClientSubCredentialParams, SFContactInfo, SFDevice, SFPeopleSuggesterParams;
 
 @protocol SDXPCClientInterface
+- (void)startProxCardTransactionWithOptions:(unsigned long long)arg1 completion:(void (^)(_Bool))arg2;
 - (void)wifiPasswordSharingAvailabilityWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 - (void)triggerProximityAutoFillDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)triggerHomeKitDeviceDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)testContinuityKeyboardBegin:(_Bool)arg1;
 - (void)showDevicePickerWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setupDevice:(SFDevice *)arg1 homeIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setAudioRoutingScore:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)retriggerProximitySetup:(void (^)(NSError *))arg1;
 - (void)retriggerProximityPairing:(void (^)(NSError *))arg1;
 - (void)repairDevice:(SFDevice *)arg1 flags:(unsigned int)arg2 completion:(void (^)(NSError *))arg3;
@@ -27,6 +29,7 @@
 - (void)displayNameForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)contactIDForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)broadwayPresentCardWithCode:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)subCredentialPresentCardWithParams:(SFClientSubCredentialParams *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)appleIDInfoWithCompletion:(void (^)(NSString *, NSData *, NSError *))arg1;
 - (void)activityStateWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
 - (void)activateAssertionWithIdentifier:(NSString *)arg1;

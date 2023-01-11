@@ -17,6 +17,7 @@
 }
 
 + (id)interface;
++ (id)sharedInstanceWithError:(id *)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)updateLastHitDateOfAddition:(id)arg1 onPhysicalURL:(id)arg2;
@@ -25,7 +26,7 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)indexProxy;
 - (void)dealloc;
-- (id)init;
+- (id)initWithError:(id *)arg1;
 
 @end
 

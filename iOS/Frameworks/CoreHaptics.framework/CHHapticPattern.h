@@ -20,9 +20,10 @@
 }
 
 + (id)eventListFromEvents:(id)arg1 parameters:(id)arg2 parameterCurves:(id)arg3 engine:(id)arg4 privileged:(_Bool)arg5;
++ (id)addHapticsForWheelsOfTime:(id)arg1;
 - (void).cxx_destruct;
-- (_Bool)resolveExternalResources:(id)arg1 error:(id *)arg2;
 - (id)eventListFromDictionary:(id)arg1 error:(id *)arg2;
+- (id)resolveExternalResources:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) double duration;
 - (id)exportDictionaryAndReturnError:(id *)arg1;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;

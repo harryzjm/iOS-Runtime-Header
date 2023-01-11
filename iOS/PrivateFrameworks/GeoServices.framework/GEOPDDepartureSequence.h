@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDDepartureSequence : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _nextStopIds;
     struct GEOPDTimeRange *_operatingHours;
@@ -26,6 +25,9 @@ __attribute__((visibility("hidden")))
     NSString *_headsignString;
     unsigned long long _lineId;
     unsigned long long _stopId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_lineId:1;
         unsigned int has_stopId:1;
@@ -36,15 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_departures:1;
         unsigned int read_directionNameString:1;
         unsigned int read_headsignString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_nextStopIds:1;
-        unsigned int wrote_operatingHours:1;
-        unsigned int wrote_departureFrequencys:1;
-        unsigned int wrote_departures:1;
-        unsigned int wrote_directionNameString:1;
-        unsigned int wrote_headsignString:1;
-        unsigned int wrote_lineId:1;
-        unsigned int wrote_stopId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -62,49 +56,44 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setNextStopIds:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)nextStopIdAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsNextStopId:(unsigned long long)arg1;
 - (void)addNextStopId:(unsigned long long)arg1;
 - (void)clearNextStopIds;
 @property(readonly, nonatomic) unsigned long long *nextStopIds;
 @property(readonly, nonatomic) unsigned long long nextStopIdsCount;
-- (void)_readNextStopIds;
 @property(retain, nonatomic) NSString *headsignString;
 @property(readonly, nonatomic) _Bool hasHeadsignString;
-- (void)_readHeadsignString;
 @property(retain, nonatomic) NSString *directionNameString;
 @property(readonly, nonatomic) _Bool hasDirectionNameString;
-- (void)_readDirectionNameString;
 - (void)setOperatingHours:(struct GEOPDTimeRange *)arg1 count:(unsigned long long)arg2;
 - (struct GEOPDTimeRange)operatingHoursAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsOperatingHours:(struct GEOPDTimeRange)arg1;
 - (void)addOperatingHours:(struct GEOPDTimeRange)arg1;
 - (void)clearOperatingHours;
 @property(readonly, nonatomic) struct GEOPDTimeRange *operatingHours;
 @property(readonly, nonatomic) unsigned long long operatingHoursCount;
-- (void)_readOperatingHours;
 - (id)departureFrequencyAtIndex:(unsigned long long)arg1;
 - (unsigned long long)departureFrequencysCount;
-- (void)_addNoFlagsDepartureFrequency:(id)arg1;
 - (void)addDepartureFrequency:(id)arg1;
 - (void)clearDepartureFrequencys;
 @property(retain, nonatomic) NSMutableArray *departureFrequencys;
-- (void)_readDepartureFrequencys;
 - (id)departureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)departuresCount;
-- (void)_addNoFlagsDeparture:(id)arg1;
 - (void)addDeparture:(id)arg1;
 - (void)clearDepartures;
 @property(retain, nonatomic) NSMutableArray *departures;
-- (void)_readDepartures;
 @property(nonatomic) _Bool hasStopId;
 @property(nonatomic) unsigned long long stopId;
 @property(nonatomic) _Bool hasLineId;
 @property(nonatomic) unsigned long long lineId;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

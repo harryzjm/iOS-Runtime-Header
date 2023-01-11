@@ -14,6 +14,7 @@
 @interface AMSUIOnboardingViewController : UIViewController <UIScrollViewDelegate>
 {
     _Bool _viewHasAppeared;
+    UIImage *_rightImage;
     OBPrivacyLinkController *_privacyLinkController;
     CDUnknownBlockType _primaryButtonCallback;
     OBWelcomeController *_welcomeController;
@@ -25,6 +26,7 @@
 }
 
 + (id)privacyLinkIdentifiersFromController:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
 @property(retain, nonatomic) NSString *primaryButtonText; // @synthesize primaryButtonText=_primaryButtonText;
@@ -34,7 +36,7 @@
 @property(retain, nonatomic) OBWelcomeController *welcomeController; // @synthesize welcomeController=_welcomeController;
 @property(copy, nonatomic) CDUnknownBlockType primaryButtonCallback; // @synthesize primaryButtonCallback=_primaryButtonCallback;
 @property(retain, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
-- (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *rightImage; // @synthesize rightImage=_rightImage;
 @property(readonly, nonatomic) _Bool isPresentedInFormSheet;
 - (void)didTapPrimaryButton:(id)arg1;
 @property(readonly, nonatomic) UIImage *headerImage;
@@ -42,11 +44,14 @@
 - (id)childTraitCollectionForViewController:(id)arg1;
 @property(readonly, nonatomic) UITraitCollection *cappedTraitCollection;
 - (unsigned long long)supportedInterfaceOrientations;
+- (struct CGSize)preferredContentSize;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)commonInitWithPrimaryButtonText:(id)arg1 privacyLinkController:(id)arg2;
 - (void)commonSetupWithPrimaryButtonText:(id)arg1 privacyLinkBundleIdentifiers:(id)arg2;
 - (id)initWithTitleText:(id)arg1 features:(id)arg2 primaryButtonText:(id)arg3 privacyLinkBundleIdentifier:(id)arg4;
+- (id)initWithHeaderImage:(id)arg1 titleText:(id)arg2 features:(id)arg3 primaryButtonText:(id)arg4 privacyLinkBundleIdentifier:(id)arg5;
 - (id)initWithHeaderImage:(id)arg1 titleText:(id)arg2 descriptionText:(id)arg3 primaryButtonText:(id)arg4 privacyLinkBundleIdentifier:(id)arg5;
 - (id)initWithTitleText:(id)arg1 features:(id)arg2 primaryButtonText:(id)arg3 privacyLinkController:(id)arg4;
 - (id)initWithHeaderImage:(id)arg1 titleText:(id)arg2 descriptionText:(id)arg3 primaryButtonText:(id)arg4 privacyLinkController:(id)arg5;

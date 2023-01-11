@@ -9,12 +9,12 @@
 #import <HealthRecordServices/NSCopying-Protocol.h>
 #import <HealthRecordServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL;
+@class HKFHIRVersion, NSData, NSDictionary, NSString, NSURL;
 
 @interface HDFHIRJSONObject : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_JSONObject;
-    NSString *_FHIRVersion;
+    HKFHIRVersion *_FHIRVersion;
     NSURL *_sourceURL;
 }
 
@@ -22,10 +22,10 @@
 + (id)objectWithResourceData:(id)arg1 error:(id *)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)_dataFromJSONObject:(id)arg1 JSONOptions:(unsigned long long)arg2;
-@property(readonly, copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
-@property(readonly, copy, nonatomic) NSString *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
-@property(readonly, copy, nonatomic) NSDictionary *JSONObject; // @synthesize JSONObject=_JSONObject;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
+@property(readonly, copy, nonatomic) HKFHIRVersion *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
+@property(readonly, copy, nonatomic) NSDictionary *JSONObject; // @synthesize JSONObject=_JSONObject;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

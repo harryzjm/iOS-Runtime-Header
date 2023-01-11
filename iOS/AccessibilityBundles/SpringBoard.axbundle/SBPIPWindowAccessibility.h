@@ -8,9 +8,14 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityLabel;
+- (struct CGRect)accessibilityFrame;
 - (_Bool)_accessibilityUseWindowBoundsForOutOfBoundsChecking;
+- (id)_accessibilityElementCommunityIdentifier;
+- (_Bool)_accessibilityIsIsolatedWindow;
 
 @end
 

@@ -16,10 +16,10 @@
     id <TIClientProxy> _clientProxy;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <TIClientProxy> clientProxy; // @synthesize clientProxy=_clientProxy;
 @property(retain, nonatomic) id <TIKeyboardInputManagerLogging> logger; // @synthesize logger=_logger;
 @property(retain, nonatomic) TIKeyboardInputManagerBase *inputManager; // @synthesize inputManager=_inputManager;
-- (void).cxx_destruct;
 - (void)writeTypologyLogWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)logDiscoverabilityEvent:(int)arg1 userInfo:(id)arg2;
 - (void)lastAcceptedCandidateCorrected;
@@ -44,7 +44,7 @@
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleKeyboardInput:(id)arg1 acceptedSecureCandidate:(id)arg2 keyboardState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleKeyboardInput:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_updateKeyboardOutput:(id)arg1 withSecureCandidatePayload:(id)arg2;
+- (void)_updateKeyboardOutput:(id)arg1 withSecureCandidatePayload:(id)arg2 keyboardState:(id)arg3;
 - (void)updateAnalyticsForRejectedSuggestion:(id)arg1 keyboardState:(id)arg2;
 - (void)acceptSecureCandidate:(id)arg1 keyboardState:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

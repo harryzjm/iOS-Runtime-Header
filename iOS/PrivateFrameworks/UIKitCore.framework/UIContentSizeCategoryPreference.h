@@ -19,12 +19,14 @@
 + (void)_overrideSystemPreferenceToContentSizeCategory:(id)arg1 forBlock:(CDUnknownBlockType)arg2;
 + (void)_overrideSystemPreferenceToContentSizeCategory:(id)arg1;
 + (void)_resetSystemPreferenceOverride;
++ (void)asyncResetSystemPreferenceOverride;
++ (void)asyncOverrideSystemWithPreference:(id)arg1;
 + (void)resetSystemPreferenceOverride;
 + (void)overrideSystemWithPreference:(id)arg1;
 + (void)overrideSystemWithPreference:(id)arg1 forBlock:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *preferredContentSizeCategoryCarPlay; // @synthesize preferredContentSizeCategoryCarPlay=_preferredContentSizeCategoryCarPlay;
 @property(retain, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
-- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

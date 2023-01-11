@@ -28,7 +28,7 @@
 + (void)postStopNotification;
 + (void)invalidateForKey:(id)arg1;
 + (double)lastStartTimeForKey:(id)arg1;
-+ (double)_performSelector:(SEL)arg1 withThreadKey:(id)arg2 onTarget:(id)arg3 waitTime:(double)arg4 cancelMask:(unsigned int)arg5 count:(unsigned int)arg6 firstObject:(id)arg7 moreObjects:(struct __va_list_tag [1])arg8;
++ (double)_performSelector:(SEL)arg1 withThreadKey:(id)arg2 onTarget:(id)arg3 waitTime:(double)arg4 cancelMask:(unsigned int)arg5 count:(unsigned int)arg6 firstObject:(id)arg7 moreObjects:(char *)arg8;
 + (long long)defaultThreadPriority;
 + (void)setDefaultThreadPriority:(long long)arg1;
 + (long long)activeThreadCount;
@@ -36,9 +36,9 @@
 + (void)initialize;
 + (_Bool)_removeThreadFromRegisteredThreads:(id)arg1 withThreadKey:(id)arg2;
 + (_Bool)_addThreadToRegisteredThreads:(id)arg1 withThreadKey:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setLastStartTime:) double lastStartTime; // @synthesize lastStartTime=_lastStartTime;
 @property(retain, nonatomic, setter=_setKey:) id _key; // @synthesize _key=__key;
-- (void).cxx_destruct;
 - (void)_processQueue;
 - (void)_processQueueFromTimer;
 - (void)_enqueueTask:(id)arg1 cancelMask:(unsigned int)arg2 lastStartTime:(double *)arg3;
@@ -51,7 +51,7 @@
 - (void)setIsInvalid:(_Bool)arg1;
 - (double)performSelector:(SEL)arg1 onTarget:(id)arg2 cancelMask:(unsigned int)arg3 count:(unsigned int)arg4 objects:(id)arg5;
 - (double)performSelector:(SEL)arg1 onTarget:(id)arg2 count:(unsigned int)arg3 objects:(id)arg4;
-- (double)_performSelector:(SEL)arg1 onTarget:(id)arg2 cancelMask:(unsigned int)arg3 count:(unsigned int)arg4 firstObject:(id)arg5 moreObjects:(struct __va_list_tag [1])arg6;
+- (double)_performSelector:(SEL)arg1 onTarget:(id)arg2 cancelMask:(unsigned int)arg3 count:(unsigned int)arg4 firstObject:(id)arg5 moreObjects:(char *)arg6;
 - (void)dealloc;
 - (void)_threadDidStop;
 - (_Bool)_debug_currentlyRunningOnThisThread;

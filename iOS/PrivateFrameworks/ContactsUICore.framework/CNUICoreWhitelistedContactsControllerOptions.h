@@ -13,6 +13,7 @@
 }
 
 + (id)iosOptions;
++ (id)macOptionsLocal;
 + (id)macOptions;
 @property(readonly, nonatomic) _Bool shouldRequireConfirmationOfChanges; // @synthesize shouldRequireConfirmationOfChanges=_shouldRequireConfirmationOfChanges;
 @property(readonly, nonatomic) _Bool shouldPrepopulateEmptyWhitelist; // @synthesize shouldPrepopulateEmptyWhitelist=_shouldPrepopulateEmptyWhitelist;

@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class OBPrivacyPresenter;
 @protocol _UIDictationPrivacySheetControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIDictationPrivacySheetController
 {
     id <_UIDictationPrivacySheetControllerDelegate> _privacyDelegate;
+    OBPrivacyPresenter *_privacyPresenter;
+    long long _sheetType;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long sheetType; // @synthesize sheetType=_sheetType;
+@property(retain, nonatomic) OBPrivacyPresenter *privacyPresenter; // @synthesize privacyPresenter=_privacyPresenter;
 @property(nonatomic) id <_UIDictationPrivacySheetControllerDelegate> privacyDelegate; // @synthesize privacyDelegate=_privacyDelegate;
 - (void)dismiss;
-- (id)init;
+- (id)initWithType:(long long)arg1;
+- (_Bool)_canShowWhileLocked;
 
 @end
 

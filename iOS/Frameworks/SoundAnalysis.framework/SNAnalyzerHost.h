@@ -9,21 +9,22 @@
 #import <SoundAnalysis/SNProcessing-Protocol.h>
 
 @class NSString;
-@protocol SNAnalyzerProviding, SNAnalyzing, SNResultsGating, SNResultsObserving, SNTimeConverting;
+@protocol SNAnalyzing, SNTimeConverting;
 
 __attribute__((visibility("hidden")))
 @interface SNAnalyzerHost : NSObject <SNProcessing>
 {
-    id <SNAnalyzerProviding> _request;
     id <SNAnalyzing> _analyzer;
     id <SNTimeConverting> _timeConverter;
-    id <SNResultsObserving> _resultsObserver;
-    id <SNResultsGating> _resultsGater;
+    CDUnknownBlockType _resultsHandler;
+    CDUnknownBlockType _completionHandler;
     long long _requestState;
 }
 
-@property(nonatomic) long long requestState; // @synthesize requestState=_requestState;
++ (CDStruct_e83c9415)convertTimeRange:(CDStruct_e83c9415)arg1 fromBox:(struct Box *)arg2 usingConverter:(id)arg3;
++ (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromBox:(struct Box *)arg2 usingConverter:(id)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) long long requestState; // @synthesize requestState=_requestState;
 - (void)primeAnalyzerGraph;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
 @property(readonly, nonatomic) id sharedProcessorConfiguration;
@@ -31,8 +32,9 @@ __attribute__((visibility("hidden")))
 - (id)clientResultsFromProcessorResults:(id)arg1;
 - (void)handleAnalyzerError:(id)arg1;
 - (void)handleAnalyzerCompletion;
+- (void)handleDSPGraphPostRenderCallbackFromBox:(struct Box *)arg1 numFrames:(int)arg2;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
-- (id)initWithRequest:(id)arg1 resultsObserver:(id)arg2 timeConverter:(id)arg3 resultsGater:(id)arg4;
+- (id)initWithAnalyzer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 timeConverter:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

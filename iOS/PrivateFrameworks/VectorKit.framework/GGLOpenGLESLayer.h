@@ -16,14 +16,14 @@ __attribute__((visibility("hidden")))
     id <GGLLayerDelegate> _delegate;
     shared_ptr_2063da68 _device;
     struct unique_ptr<ggl::OESContext, std::__1::default_delete<ggl::OESContext>> _context;
-    struct unique_ptr<ggl::RenderBuffer, std::__1::default_delete<ggl::RenderBuffer>> _texture;
+    struct shared_ptr<ggl::RenderBuffer> _texture;
     struct CGSize _backingSize;
 }
 
-@property(readonly, nonatomic) struct CGSize backingSize; // @synthesize backingSize=_backingSize;
-@property id <GGLLayerDelegate> renderDelegate; // @synthesize renderDelegate=_delegate;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGSize backingSize; // @synthesize backingSize=_backingSize;
+@property id <GGLLayerDelegate> renderDelegate; // @synthesize renderDelegate=_delegate;
 - (void)didEnterBackground;
 - (void)setContentsScale:(double)arg1;
 - (void)onTimerFired:(double)arg1;

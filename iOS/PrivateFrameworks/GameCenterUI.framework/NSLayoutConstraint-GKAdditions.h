@@ -10,6 +10,7 @@
 + (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(_Bool)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets)arg5 applyOrthogonalConstraints:(_Bool)arg6;
 + (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(_Bool)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets)arg5;
 + (id)_gkConstraintsForViews:(id)arg1 alignedByAttribute:(long long)arg2;
++ (void)_gkInstallEdgeConstraintsForView:(id)arg1 containedWithinParentView:(id)arg2 edgeInsets:(struct UIEdgeInsets)arg3;
 + (void)_gkInstallEdgeConstraintsForView:(id)arg1 containedWithinParentView:(id)arg2 margin:(double)arg3;
 + (void)_gkInstallEdgeConstraintsForView:(id)arg1 containedWithinParentView:(id)arg2;
 + (id)_gkConstraintsForView:(id)arg1 withinView:(id)arg2 insets:(struct UIEdgeInsets)arg3;

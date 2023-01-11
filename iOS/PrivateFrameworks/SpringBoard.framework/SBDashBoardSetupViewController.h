@@ -7,14 +7,16 @@
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
 #import <SpringBoard/CSEventHandling-Protocol.h>
+#import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, NSTimer, SBActivationInfoViewController, SBSetupManager, SBSetupRegulatoryInfoViewController;
+@class CSCoverSheetViewController, NSArray, NSDictionary, NSMutableArray, NSString, NSTimer, SBActivationInfoViewController, SBSetupManager, SBSetupRegulatoryInfoViewController, UIHoverGestureRecognizer, UITapGestureRecognizer;
 
-@interface SBDashBoardSetupViewController : CSCoverSheetViewControllerBase <CSEventHandling>
+@interface SBDashBoardSetupViewController : CSCoverSheetViewControllerBase <CSEventHandling, UIGestureRecognizerDelegate>
 {
     SBActivationInfoViewController *_activationInfoViewController;
     SBSetupRegulatoryInfoViewController *_regulatoryInfoViewController;
     SBSetupManager *_setupManager;
+    CSCoverSheetViewController *_coverSheetViewController;
     NSString *_configureKey;
     NSString *_wifiPrimaryLanguage;
     NSString *_telephonyPrimaryLanguage;
@@ -28,11 +30,14 @@
     _Bool _isCyclingComponents;
     unsigned long long _componentsToCycle;
     _Bool _isStoreRestricted;
+    UITapGestureRecognizer *_pointerClickGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
 }
 
 - (void).cxx_destruct;
 - (void)_cancelWifiScan;
 - (void)_startWifiScan;
+- (_Bool)_isSecurityResearchDevice;
 - (void)_regulatoryInfoButtonTapped:(id)arg1;
 - (void)_infoButtonTapped:(id)arg1;
 - (void)_updateWifiPrimaryLanguageFromDiscoveredCountryCodes:(id)arg1;
@@ -45,6 +50,7 @@
 - (void)_resetDisplayedLocalizedStringsImmediately:(_Bool)arg1;
 - (void)_incrementLocalizedStringsForNewCycle;
 - (void)_stopCyclingComponents:(unsigned long long)arg1;
+- (_Bool)isCyclingComponents:(unsigned long long)arg1;
 - (void)_animateComponentsForNewCycle;
 - (void)_startCyclingComponents:(unsigned long long)arg1 withDelay:(double)arg2;
 - (void)aggregateBehavior:(id)arg1;
@@ -59,7 +65,11 @@
 - (void)viewDidLoad;
 - (void)loadView;
 - (_Bool)handleEvent:(id)arg1;
-- (id)init;
+- (unsigned long long)_componentsRelevantToPointerSuppression;
+- (void)_handleHoverEvent:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)_didClickHomeAffordance:(id)arg1;
+- (id)initWithCoverSheetViewController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

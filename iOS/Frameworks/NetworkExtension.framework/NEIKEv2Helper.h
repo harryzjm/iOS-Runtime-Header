@@ -13,7 +13,7 @@
 + (id)createIKEv2SessionConfigFromProtocol:(id)arg1 options:(id)arg2 onDemandEnabled:(_Bool)arg3;
 + (id)createIKEv2ChildSAConfigFromProtocol:(id)arg1;
 + (id)createIKEv2ChildSAProposalFromProtocol:(id)arg1 saParameters:(id)arg2;
-+ (id)createIKESAConfigFromProtocol:(id)arg1 path:(id)arg2 ifIndex:(unsigned int)arg3 options:(id)arg4 serverAddress:(id)arg5;
++ (id)createIKESAConfigFromProtocol:(id)arg1 path:(id)arg2 ifIndex:(unsigned int)arg3 options:(id)arg4 server:(id)arg5;
 + (id)createIKESAProposalFromProtocol:(id)arg1 saParameters:(id)arg2 options:(id)arg3 nonceSize:(unsigned int *)arg4;
 + (id)createIPv6SettingsFromTunnelConfig:(id)arg1 localTS:(id)arg2 remoteTS:(id)arg3;
 + (id)createIPv4SettingsFromTunnelConfig:(id)arg1 localTS:(id)arg2 remoteTS:(id)arg3;

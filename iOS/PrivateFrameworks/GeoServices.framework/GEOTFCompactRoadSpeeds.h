@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOTFCompactRoadSpeeds : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _geoIds;
     NSData *_openlr;
     NSMutableArray *_predictedSpeeds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _color;
     float _confidence;
     unsigned int _decayTimeWindowInMinutes;
@@ -36,16 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_geoIds:1;
         unsigned int read_openlr:1;
         unsigned int read_predictedSpeeds:1;
-        unsigned int wrote_geoIds:1;
-        unsigned int wrote_openlr:1;
-        unsigned int wrote_predictedSpeeds:1;
-        unsigned int wrote_color:1;
-        unsigned int wrote_confidence:1;
-        unsigned int wrote_decayTimeWindowInMinutes:1;
-        unsigned int wrote_endOffset:1;
-        unsigned int wrote_speedKph:1;
-        unsigned int wrote_startOffset:1;
-        unsigned int wrote_hidden:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -60,11 +53,13 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSData *openlr;
 @property(readonly, nonatomic) _Bool hasOpenlr;
-- (void)_readOpenlr;
 @property(nonatomic) _Bool hasConfidence;
 @property(nonatomic) float confidence;
 @property(nonatomic) _Bool hasDecayTimeWindowInMinutes;
@@ -77,11 +72,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int color;
 - (id)predictedSpeedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)predictedSpeedsCount;
-- (void)_addNoFlagsPredictedSpeed:(id)arg1;
 - (void)addPredictedSpeed:(id)arg1;
 - (void)clearPredictedSpeeds;
 @property(retain, nonatomic) NSMutableArray *predictedSpeeds;
-- (void)_readPredictedSpeeds;
 @property(nonatomic) _Bool hasHidden;
 @property(nonatomic) _Bool hidden;
 @property(nonatomic) _Bool hasEndOffset;
@@ -90,13 +83,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float startOffset;
 - (void)setGeoIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (long long)geoIdsAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsGeoIds:(long long)arg1;
 - (void)addGeoIds:(long long)arg1;
 - (void)clearGeoIds;
 @property(readonly, nonatomic) long long *geoIds;
 @property(readonly, nonatomic) unsigned long long geoIdsCount;
-- (void)_readGeoIds;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

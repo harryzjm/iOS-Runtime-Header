@@ -26,6 +26,7 @@
     NSMutableArray *_enqueuedCoalescingEditBarrierBlocks;
     NSMutableArray *_enqueuedCoalescingCompletionBlocks;
     _Bool _hasScheduledDelayedCommitForCoalescedEdits;
+    _Bool _hasLoadedContents;
     _Bool _preventsAssertionsForDuplicateStorageIdentifiers;
     _Bool _simulatesClearingDiscardableDataAfterOperations;
 }
@@ -35,10 +36,10 @@
 + (void)_preventAssertionsForDuplicateStorageIdentifiersInContainersCreatedPerfomingBlock:(CDUnknownBlockType)arg1;
 + (void)_disableLogging;
 + (void)mutableObjectContentDidUpdate:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=_simulatesClearingDiscardableDataAfterOperations, setter=_setSimulatesClearingDiscardableDataAfterOperations:) _Bool simulatesClearingDiscardableDataAfterOperations; // @synthesize simulatesClearingDiscardableDataAfterOperations=_simulatesClearingDiscardableDataAfterOperations;
 @property(readonly, nonatomic) _Bool _preventsAssertionsForDuplicateStorageIdentifiers; // @synthesize _preventsAssertionsForDuplicateStorageIdentifiers;
 @property(readonly, nonatomic) MSPContainerPersister *persister; // @synthesize persister=_persister;
-- (void).cxx_destruct;
 - (void)_commitEditWithFinalContents:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_commitPendingCoalescedEditsIfAny;
 - (_Bool)_checkAndAddCoalescedEditForContext:(id)arg1 identifiers:(id)arg2 enqueuedBlock:(CDUnknownBlockType)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -64,6 +65,7 @@
 - (void)_performInitialLoadNotifyingObservers:(_Bool)arg1 kickOffSynchronously:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_clearObjectCacheIfNeeded;
 - (void)accessStateSnapshotUsingConcurrentBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool containerHasLoadedContents;
 - (void)accessContentsUsingConcurrentBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithPersister:(id)arg1;

@@ -23,6 +23,7 @@
     void *_swiftTyperef;
 }
 
+- (void).cxx_destruct;
 @property(readonly) void *swiftTyperef; // @synthesize swiftTyperef=_swiftTyperef;
 @property(readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property(readonly) unsigned int stride; // @synthesize stride=_stride;
@@ -32,7 +33,6 @@
 @property(readonly) unsigned int scanType; // @synthesize scanType=_scanType;
 @property(readonly, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
 @property(readonly, nonatomic) NSString *ivarName; // @synthesize ivarName=_ivarName;
-- (void).cxx_destruct;
 - (id)description;
 - (id)descriptionOfFieldValueInObjectMemory:(void *)arg1 scanner:(id)arg2;
 @property(readonly, nonatomic) VMUClassInfo *destinationLayout;
@@ -61,8 +61,8 @@
 - (id)getLeafFieldAtOffset:(unsigned int)arg1 leafOffset:(unsigned int *)arg2;
 - (id)_getFieldAtOffset:(unsigned int)arg1;
 - (void)serializeWithClassMap:(id)arg1 simpleSerializer:(id)arg2 version:(unsigned int)arg3;
-- (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3 returnedDestinationLayoutClassInfoIndex:(unsigned int *)arg4;
-- (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3;
+- (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3 returnedDestinationLayoutClassInfoIndex:(unsigned int *)arg4 error:(id *)arg5;
+- (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3 error:(id *)arg4;
 - (id)initWithName:(id)arg1 type:(id)arg2 scan:(unsigned int)arg3 offset:(unsigned int)arg4 size:(unsigned int)arg5;
 - (id)initStorageEntryFieldWithName:(id)arg1 type:(id)arg2 kind:(unsigned int)arg3 scan:(unsigned int)arg4 offset:(unsigned int)arg5 size:(unsigned int)arg6 stride:(unsigned int)arg7 subFieldArray:(id)arg8;
 - (id)initStorageInfoFieldWithName:(id)arg1 type:(id)arg2 kind:(unsigned int)arg3 scan:(unsigned int)arg4 offset:(unsigned int)arg5 size:(unsigned int)arg6 stride:(unsigned int)arg7 subFieldArray:(id)arg8;

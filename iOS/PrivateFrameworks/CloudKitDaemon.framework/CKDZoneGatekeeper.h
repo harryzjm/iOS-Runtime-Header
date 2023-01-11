@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_waiterWrappers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *waiterWrappers; // @synthesize waiterWrappers=_waiterWrappers;
 @property(retain, nonatomic) NSMutableDictionary *zoneIDsToGateHolders; // @synthesize zoneIDsToGateHolders=_zoneIDsToGateHolders;
-- (void).cxx_destruct;
 - (id)CKStatusReportArray;
 - (_Bool)hasStatusToReport;
-- (void)relinquishLocksForWaiter:(id)arg1;
+- (void)relinquishLocksForWaiter:(id)arg1 deferRelinquish:(_Bool)arg2;
 - (void)registerWaiter:(id)arg1 forZoneIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 

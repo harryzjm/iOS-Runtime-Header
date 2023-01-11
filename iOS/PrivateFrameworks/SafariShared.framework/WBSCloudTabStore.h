@@ -20,6 +20,7 @@
     _Bool _isFetchingDataFromCloudKit;
     _Bool _hasAttemptedToFetchDevicesAtLeastOnce;
     NSMutableArray *_syncedCloudTabDevicesFromCloudKit;
+    NSArray *_filteredAndSortedSyncedCloudTabDevicesFromCloudKit;
     WBSCloudTabDevice *_currentDevice;
     NSMutableDictionary *_deviceUUIDsToCloseRequestsFromCloudKit;
     NSError *_lastFetchError;
@@ -29,9 +30,9 @@
 
 + (id)_debugErrorMessageForCode:(long long)arg1;
 + (id)errorWithCode:(long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool syncAgentIsAvailable; // @synthesize syncAgentIsAvailable=_syncAgentIsAvailable;
 @property(nonatomic) __weak id <WBSCloudTabStoreDelegate> wbsDelegate; // @synthesize wbsDelegate=_wbsDelegate;
-- (void).cxx_destruct;
 - (void)_closeRequestedTabIfPossible:(id)arg1;
 - (void)_removeObjectFromKeyValueStore:(long long)arg1 forKey:(id)arg2;
 - (void)_setDictionaryInKeyValueStore:(long long)arg1 dictionary:(id)arg2 forKey:(id)arg3;
@@ -39,7 +40,7 @@
 - (id)_currentDeviceUUID;
 - (void)synchronizeCloudTabDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_deviceIsStoredInCloudKit:(id)arg1;
-- (id)_devicesByRemovingThisDeviceAndDevicesWithNoTabs:(id)arg1;
+- (id)_devicesByFilteringAndSortingDevices:(id)arg1;
 - (void)_didFetchDeviceDictionariesFromCloudKit:(id)arg1 fetchedCloseRequests:(id)arg2 fetchedDevicesBySyncing:(_Bool)arg3 error:(id)arg4;
 - (void)_didFetchDeviceDictionariesFromCloudKit:(id)arg1 fetchedCloseRequests:(id)arg2 error:(id)arg3;
 - (void)_syncAgentProxyConnectionWasInvalidated:(id)arg1;

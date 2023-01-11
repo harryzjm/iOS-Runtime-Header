@@ -15,12 +15,14 @@
     NSString *_injectedWatchCountryCode;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *injectedWatchCountryCode; // @synthesize injectedWatchCountryCode=_injectedWatchCountryCode;
 @property(retain, nonatomic) NSDate *injectedNow; // @synthesize injectedNow=_injectedNow;
 @property(retain, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
-- (void).cxx_destruct;
 - (void)_injectWatchCountryCode:(id)arg1;
 - (void)_injectNow:(id)arg1;
+- (_Bool)unearnedAchievementIsVisibleNow:(id)arg1 activityMoveMode:(long long)arg2 experienceType:(unsigned long long)arg3;
+- (_Bool)unearnedAchievementIsVisibleNow:(id)arg1 activityMoveMode:(long long)arg2;
 - (_Bool)unearnedAchievementIsVisibleNow:(id)arg1;
 - (id)init;
 

@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PGGraphDayOfWeekNode
 {
     long long _dayOfWeek;
@@ -12,6 +14,15 @@
 + (id)nameForDayOfWeek:(long long)arg1;
 + (long long)dayOfWeekForName:(id)arg1;
 @property(nonatomic) long long dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
+@property(readonly) NSString *name;
+- (unsigned short)domain;
+- (id)label;
+- (id)description;
+- (id)propertyDictionary;
+- (_Bool)hasProperties:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)init;
 
 @end
 

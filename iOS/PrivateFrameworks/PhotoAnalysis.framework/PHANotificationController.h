@@ -16,7 +16,7 @@
 - (void).cxx_destruct;
 - (void)postNotificationForSuggestion:(id)arg1 deliveryDate:(id)arg2;
 - (void)fireNotificationForSuggestionIdentifiers:(id)arg1;
-- (void)postNotificationForMemory:(id)arg1 withCreationReason:(unsigned long long)arg2;
+- (void)postNotificationForMemory:(id)arg1 withCreationReason:(unsigned long long)arg2 forceImmediateDelivery:(_Bool)arg3;
 - (void)fireNotificationForMemoryIdentifiers:(id)arg1 withCreationReason:(unsigned long long)arg2;
 - (_Bool)shouldFireNotificationForMemories:(id)arg1 withCreationReason:(unsigned long long)arg2;
 - (id)bestDateForDeliveringNotification;

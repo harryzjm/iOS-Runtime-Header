@@ -13,15 +13,17 @@
 @interface TUCallServicesClientCapabilities : NSObject <NSSecureCoding>
 {
     _Bool _wantsCallDisconnectionOnInvalidation;
+    _Bool _wantsCallStopStreamingOnInvalidation;
     _Bool _wantsFrequencyChangeNotifications;
     id <TUCallServicesClientCapabilitiesActions> _delegate;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <TUCallServicesClientCapabilitiesActions> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool wantsFrequencyChangeNotifications; // @synthesize wantsFrequencyChangeNotifications=_wantsFrequencyChangeNotifications;
+@property(nonatomic) _Bool wantsCallStopStreamingOnInvalidation; // @synthesize wantsCallStopStreamingOnInvalidation=_wantsCallStopStreamingOnInvalidation;
 @property(nonatomic) _Bool wantsCallDisconnectionOnInvalidation; // @synthesize wantsCallDisconnectionOnInvalidation=_wantsCallDisconnectionOnInvalidation;
-- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

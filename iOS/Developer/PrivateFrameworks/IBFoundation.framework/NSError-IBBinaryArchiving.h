@@ -16,6 +16,8 @@
 + (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3;
 + (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3 domain:(id)arg4 code:(long long)arg5;
 + (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3 domain:(id)arg4 code:(long long)arg5 recoveryOptions:(id)arg6 recoveryAttempter:(id)arg7;
++ (id)ibSwizzledFor61059685_errorWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3;
++ (void)ib_enableOverReleaseWorkaroundFor61059685:(_Bool)arg1 during:(CDUnknownBlockType)arg2;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)ib_firstObjectInSelfAndUnderlyingErrorsForUserInfoKey:(id)arg1;

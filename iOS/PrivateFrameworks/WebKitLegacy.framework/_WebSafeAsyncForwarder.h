@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _WebSafeForwarder *_forwarder;
 }
 
+- (void).cxx_destruct;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;

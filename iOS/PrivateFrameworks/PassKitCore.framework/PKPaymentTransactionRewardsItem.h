@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSDecimalNumber, NSString, PKCurrencyAmount;
 
-@interface PKPaymentTransactionRewardsItem : NSObject <NSSecureCoding>
+@interface PKPaymentTransactionRewardsItem : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     unsigned long long _type;
@@ -21,22 +22,23 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long eligibleValueUnit; // @synthesize eligibleValueUnit=_eligibleValueUnit;
 @property(retain, nonatomic) NSDecimalNumber *eligibleValue; // @synthesize eligibleValue=_eligibleValue;
 @property(retain, nonatomic) PKCurrencyAmount *currencyAmount; // @synthesize currencyAmount=_currencyAmount;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqualToRewardsItem:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)jsonDictionaryRepresentation;
 - (void)_initWithRewardsDictionary:(id)arg1;
-- (id)initWithRewardsDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 
 @end
 

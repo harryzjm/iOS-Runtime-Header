@@ -9,30 +9,30 @@
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
 @class MKMapItem, MKOfficialAppView, MKPlaceSectionHeaderView, NSString;
-@protocol MKOfficialAppViewControllerDelegate;
+@protocol _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKOfficialAppViewController <MKOfficialAppViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
 {
     _Bool _isShowing;
     MKMapItem *_mapItem;
-    id <MKOfficialAppViewControllerDelegate> _officialAppDelegate;
     MKOfficialAppView *_officialAppView;
     MKPlaceSectionHeaderView *_officialAppHeaderView;
+    id <_MKInfoCardAnalyticsDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool isShowing; // @synthesize isShowing=_isShowing;
 @property(retain, nonatomic) MKPlaceSectionHeaderView *officialAppHeaderView; // @synthesize officialAppHeaderView=_officialAppHeaderView;
 @property(retain, nonatomic) MKOfficialAppView *officialAppView; // @synthesize officialAppView=_officialAppView;
-@property(nonatomic) __weak id <MKOfficialAppViewControllerDelegate> officialAppDelegate; // @synthesize officialAppDelegate=_officialAppDelegate;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
-- (void).cxx_destruct;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 - (void)officialAppViewDidSelectPunchOutButton:(id)arg1;
 - (void)_updateAppImage:(id)arg1 error:(id)arg2;
-- (void)_updateView:(id)arg1;
-- (void)_loadAppArtwork:(id)arg1 adamID:(id)arg2;
+- (void)setAppStoreApp:(id)arg1;
+- (void)_loadAppArtwork:(id)arg1;
 - (void)_loadOfficialApp;
 - (void)updateOfficialViewButtonText;
 - (void)viewDidLoad;

@@ -14,9 +14,8 @@
 + (_Bool)isInhumanBody:(id)arg1;
 + (_Bool)hasTooManyLongNumbers:(id)arg1;
 + (_Bool)isInhumanPhoneNumber:(id)arg1;
-+ (_Bool)isInhumanPerson:(id)arg1 inContext:(id)arg2;
-+ (_Bool)isInhuman:(id)arg1 inContext:(id)arg2;
-+ (_Bool)isInhumanEmailAddress:(id)arg1 inContext:(id)arg2;
++ (_Bool)isInhumanPerson:(id)arg1;
++ (_Bool)isInhumanNamedEmailAddress:(id)arg1;
 + (_Bool)isInhumanEmailAddress:(id)arg1;
 + (_Bool)_isInhumanEmailAddressPatternMatch:(id)arg1;
 + (_Bool)isInhumanName:(id)arg1;

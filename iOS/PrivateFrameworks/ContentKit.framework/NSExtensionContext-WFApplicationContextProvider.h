@@ -12,6 +12,7 @@
 @protocol WFExtensionApplicationContextProviderDelegate;
 
 @interface NSExtensionContext (WFApplicationContextProvider) <WFApplicationContextProvider>
+- (_Bool)shouldReverseLayoutDirection;
 - (id)applicationForWFApplicationContext:(id)arg1;
 - (id)keyWindowForWFApplicationContext:(id)arg1;
 @property(nonatomic) __weak id <WFExtensionApplicationContextProviderDelegate> extensionApplicationContextProviderDelegate;
@@ -24,6 +25,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) long long userInterfaceStyle;
 @property(nonatomic) _Bool wfIdleTimerDisabled;
 @end
 

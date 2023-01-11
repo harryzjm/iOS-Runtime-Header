@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary;
 
 @interface IDSTapToRadarContext : NSObject
 {
-    NSString *_title;
-    NSString *_problemDescription;
+    NSDictionary *_rawContext;
 }
 
-@property(readonly, nonatomic) NSString *problemDescription; // @synthesize problemDescription=_problemDescription;
-@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 - (void).cxx_destruct;
+- (_Bool)_isValidReproducibility:(id)arg1;
+- (_Bool)_isValidClassification:(id)arg1;
+- (id)getTapToRadarURL;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithTitle:(id)arg1 problemDescription:(id)arg2;
 
 @end

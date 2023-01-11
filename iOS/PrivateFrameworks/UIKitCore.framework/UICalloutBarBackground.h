@@ -9,18 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface UICalloutBarBackground
 {
-    double m_dividerOffsets[24];
     UIVisualEffectView *_blurView;
     UIImageView *_selectionTintView;
-    UIImageView *_separatorView;
     struct CGRect _highlightRect;
 }
 
-@property(nonatomic) struct CGRect highlightRect; // @synthesize highlightRect=_highlightRect;
 - (void).cxx_destruct;
+@property(nonatomic) struct CGRect highlightRect; // @synthesize highlightRect=_highlightRect;
 - (void)setHighlighted:(_Bool)arg1 forFrame:(struct CGRect)arg2;
 - (void)layoutSubviews;
-- (void)setDividerOffsets:(double *)arg1;
 - (id)init;
 
 @end

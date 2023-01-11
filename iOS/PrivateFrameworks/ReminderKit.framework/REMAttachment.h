@@ -24,15 +24,16 @@
 + (id)objectIDWithUUID:(id)arg1;
 + (id)newObjectID;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) REMObjectID *reminderID; // @synthesize reminderID=_reminderID;
 @property(readonly, nonatomic) REMObjectID *accountID; // @synthesize accountID=_accountID;
 @property(readonly, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
 @property(readonly, nonatomic) NSString *uti; // @synthesize uti=_uti;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)_deepCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

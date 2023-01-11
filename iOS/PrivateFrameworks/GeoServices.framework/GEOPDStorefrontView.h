@@ -13,23 +13,21 @@
 @interface GEOPDStorefrontView : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     unsigned long long _imdataId;
     GEOPDGeographicCoordinate *_lookAtGeo;
     GEOPDOrientedPosition *_lookAt;
     GEOPDPhotoPosition *_photoPosition;
     GEOPDGeographicCoordinate *_viewpointGeo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_imdataId:1;
         unsigned int read_lookAtGeo:1;
         unsigned int read_lookAt:1;
         unsigned int read_photoPosition:1;
         unsigned int read_viewpointGeo:1;
-        unsigned int wrote_imdataId:1;
-        unsigned int wrote_lookAtGeo:1;
-        unsigned int wrote_lookAt:1;
-        unsigned int wrote_photoPosition:1;
-        unsigned int wrote_viewpointGeo:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,22 +41,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOPDGeographicCoordinate *viewpointGeo;
 @property(readonly, nonatomic) _Bool hasViewpointGeo;
-- (void)_readViewpointGeo;
 @property(retain, nonatomic) GEOPDGeographicCoordinate *lookAtGeo;
 @property(readonly, nonatomic) _Bool hasLookAtGeo;
-- (void)_readLookAtGeo;
 @property(retain, nonatomic) GEOPDOrientedPosition *lookAt;
 @property(readonly, nonatomic) _Bool hasLookAt;
-- (void)_readLookAt;
 @property(nonatomic) _Bool hasImdataId;
 @property(nonatomic) unsigned long long imdataId;
 @property(retain, nonatomic) GEOPDPhotoPosition *photoPosition;
 @property(readonly, nonatomic) _Bool hasPhotoPosition;
-- (void)_readPhotoPosition;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

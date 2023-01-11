@@ -6,34 +6,49 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaUIStateTransition-Protocol.h>
+@class NSData, SISchemaUIStateDismissed, SISchemaUIStatePresenting;
 
-@class NSData, NSString;
-
-@interface SISchemaUIStateTransition : PBCodable <SISchemaUIStateTransition, NSSecureCoding>
+@interface SISchemaUIStateTransition : PBCodable
 {
     int _currentState;
     int _previousState;
     int _siriPresentationType;
+    int _dismissalReason;
+    SISchemaUIStatePresenting *_presenting;
+    SISchemaUIStateDismissed *_dismissed;
+    struct {
+        unsigned int currentState:1;
+        unsigned int previousState:1;
+        unsigned int siriPresentationType:1;
+        unsigned int dismissalReason:1;
+    } _has;
+    _Bool _hasPresenting;
+    _Bool _hasDismissed;
+    unsigned long long _whichPresentationstate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasDismissed; // @synthesize hasDismissed=_hasDismissed;
+@property(nonatomic) _Bool hasPresenting; // @synthesize hasPresenting=_hasPresenting;
+@property(nonatomic) int dismissalReason; // @synthesize dismissalReason=_dismissalReason;
 @property(nonatomic) int siriPresentationType; // @synthesize siriPresentationType=_siriPresentationType;
 @property(nonatomic) int previousState; // @synthesize previousState=_previousState;
 @property(nonatomic) int currentState; // @synthesize currentState=_currentState;
+@property(readonly, nonatomic) unsigned long long whichPresentationstate; // @synthesize whichPresentationstate=_whichPresentationstate;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+@property(retain, nonatomic) SISchemaUIStateDismissed *dismissed; // @synthesize dismissed=_dismissed;
+@property(retain, nonatomic) SISchemaUIStatePresenting *presenting; // @synthesize presenting=_presenting;
+@property(nonatomic) _Bool hasDismissalReason;
+@property(nonatomic) _Bool hasSiriPresentationType;
+@property(nonatomic) _Bool hasPreviousState;
+@property(nonatomic) _Bool hasCurrentState;
 
 @end
 

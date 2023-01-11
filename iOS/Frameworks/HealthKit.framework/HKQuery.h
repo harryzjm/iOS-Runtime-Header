@@ -27,10 +27,10 @@
     HKObjectType *_objectType;
     NSPredicate *_predicate;
     NSUUID *_activationUUID;
+    _HKFilter *_filter;
     NSString *_debugIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    _HKFilter *_filter;
     long long _qualityOfService;
 }
 
@@ -44,6 +44,11 @@
 + (void)configureClientInterface:(id)arg1;
 + (id)serverInterfaceProtocol;
 + (id)clientInterfaceProtocol;
++ (id)predicateForObjectsFromContributorWithUUID:(id)arg1;
++ (id)predicateForElectrocardiogramsWithSymptomsStatus:(long long)arg1;
++ (id)predicateForElectrocardiogramsWithPrivateClassification:(unsigned long long)arg1;
++ (id)predicateForElectrocardiogramsWithClassification:(long long)arg1;
++ (id)predicateForActivitySummariesWithActivityMoveMode:(long long)arg1;
 + (id)predicateForActivitySummariesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForActivitySummaryWithDateComponents:(id)arg1;
 + (id)predicateForWorkoutsWithOperatorType:(unsigned long long)arg1 totalFlightsClimbed:(id)arg2;
@@ -54,6 +59,7 @@
 + (id)predicateForWorkoutsWithWorkoutActivityType:(unsigned long long)arg1;
 + (id)predicateForCategorySamplesWithOperatorType:(unsigned long long)arg1 value:(long long)arg2;
 + (id)predicateForQuantitySamplesWithOperatorType:(unsigned long long)arg1 quantity:(id)arg2;
++ (id)predicateForMedicalRecordWithState:(unsigned long long)arg1;
 + (id)predicateForCreationDateWithTodayViewRange:(id)arg1;
 + (id)predicateForRecordsWithSortDateFromStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForSamplesWithConceptIdentifier:(id)arg1 keyPath:(id)arg2;
@@ -63,6 +69,7 @@
 + (id)predicateForSamplesForDayFromDate:(id)arg1 calendar:(id)arg2 options:(unsigned long long)arg3;
 + (id)predicateForSamplesWithinDateInterval:(id)arg1 options:(unsigned long long)arg2;
 + (id)predicateForSamplesAssociatedWithSample:(id)arg1;
++ (id)predicateForObjectsAssociatedWithElectrocardiogram:(id)arg1;
 + (id)predicateForObjectsFromWorkout:(id)arg1;
 + (id)predicateForObjectsWithNoCorrelation;
 + (id)predicateForObjectsWithUUIDs:(id)arg1;
@@ -82,17 +89,17 @@
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 allowedValues:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1;
 + (id)predicateForActivityCachesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property(readonly, nonatomic, getter=_filter) _HKFilter *filter; // @synthesize filter=_filter;
 @property(readonly, nonatomic) unsigned int applicationSDKVersion; // @synthesize applicationSDKVersion=_applicationSDKVersion;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property(nonatomic) _Bool shouldSuppressDataCollection; // @synthesize shouldSuppressDataCollection=_shouldSuppressDataCollection;
+@property(readonly, nonatomic, getter=_filter) _HKFilter *filter; // @synthesize filter=_filter;
 @property(copy) NSUUID *activationUUID; // @synthesize activationUUID=_activationUUID;
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(retain, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
-- (void).cxx_destruct;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
@@ -103,20 +110,19 @@
 @property(readonly) HKSampleType *sampleType;
 - (void)client_deliverError:(id)arg1 forQuery:(id)arg2;
 @property(readonly) long long deactivateCallCount;
-- (void)_queue_deactivateWithError:(id)arg1;
+- (_Bool)_queue_deactivateWithError:(id)arg1;
 - (void)_queue_finishActivationWithServerProxy:(id)arg1 activationUUID:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_queue_activateWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queue_deactivate;
-- (void)deactivate;
+- (_Bool)deactivate;
 @property(readonly) _Bool deactivating;
 @property(readonly) long long activationState;
 - (void)reactivateWithHealthStore:(id)arg1;
 - (void)activateWithClientQueue:(id)arg1 healthStore:(id)arg2 delegate:(id)arg3 time:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)hasQueryUUID:(id)arg1;
-- (void)queue_dispatchToClientForUUID:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)queue_dispatchToClientForUUID:(id)arg1 shouldDeactivate:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
 - (void)_throwInvalidArgumentExceptionIfHasBeenExecuted:(SEL)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
-- (id)_predicateFilterClasses;
 - (_Bool)queue_shouldDeactivateAfterInitialResults;
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (void)queue_queryDidFinishActivation:(id)arg1 success:(_Bool)arg2 error:(id)arg3;

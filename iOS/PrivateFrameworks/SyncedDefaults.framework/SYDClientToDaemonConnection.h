@@ -6,46 +6,60 @@
 
 #import <SyncedDefaults/SYDClientProtocol-Protocol.h>
 
-@class NSObject, NSString, NSURL, NSXPCConnection;
-@protocol OS_dispatch_queue, SYDDaemonProtocol;
+@class NSCache, NSObject, NSString, NSXPCConnection, SYDStoreConfiguration;
+@protocol OS_dispatch_queue;
 
 @interface SYDClientToDaemonConnection <SYDClientProtocol>
 {
-    _Bool _forceNilChangeDictionaryResponse;
-    NSString *_storeIdentifier;
-    long long _storeType;
+    _Bool _didLogFaultForEntitlements;
+    int _daemonWakeNotifyToken;
+    SYDStoreConfiguration *_storeConfiguration;
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSURL *_changeTokenURL;
+    NSObject<OS_dispatch_queue> *_analyticsQueue;
+    NSCache *_cachedObjects;
+    unsigned long long _syncingWithCloudCounter;
 }
 
++ (id)daemonProtocolInterface;
 + (void)processAccountChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (id)changeTokenURLForStoreIdentifier:(id)arg1;
-@property(nonatomic) _Bool forceNilChangeDictionaryResponse; // @synthesize forceNilChangeDictionaryResponse=_forceNilChangeDictionaryResponse;
-@property(retain, nonatomic) NSURL *changeTokenURL; // @synthesize changeTokenURL=_changeTokenURL;
++ (id)shouldSyncOnFirstInitializationOverride;
++ (void)setShouldSyncOnFirstInitializationOverride:(id)arg1;
++ (_Bool)hasInitializedStoreWithIdentifier:(id)arg1;
++ (void)setHasInitializedStoreWithIdentifier:(id)arg1;
++ (id)disgustingUglyHardcodedKnownStoreIdentifierForApplicationIdentifier:(id)arg1;
++ (id)defaultStoreIdentifierForCurrentProcessWithApplicationIdentifier:(id)arg1;
+- (void).cxx_destruct;
+@property unsigned long long syncingWithCloudCounter; // @synthesize syncingWithCloudCounter=_syncingWithCloudCounter;
+@property(retain, nonatomic) NSCache *cachedObjects; // @synthesize cachedObjects=_cachedObjects;
+@property(nonatomic) _Bool didLogFaultForEntitlements; // @synthesize didLogFaultForEntitlements=_didLogFaultForEntitlements;
+@property(nonatomic) int daemonWakeNotifyToken; // @synthesize daemonWakeNotifyToken=_daemonWakeNotifyToken;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-@property(nonatomic) long long storeType; // @synthesize storeType=_storeType;
-@property(copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
-- (void).cxx_destruct;
+@property(retain, nonatomic) SYDStoreConfiguration *storeConfiguration; // @synthesize storeConfiguration=_storeConfiguration;
 - (id)asyncDaemonWithErrorHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) id <SYDDaemonProtocol> synchronousDaemon;
+- (id)synchronousDaemonWithErrorHandler:(CDUnknownBlockType)arg1;
 - (long long)maximumTotalDataLength;
 - (long long)maximumDataLengthPerKey;
 - (long long)maximumKeyLength;
 - (long long)maximumKeyCount;
+- (long long)generationCount;
+- (void)setDefaultsConfiguration:(id)arg1;
+- (void)ping;
 - (void)unregisterForSynchronizedDefaults;
 - (void)updateConfiguration;
 - (void)discardExternalChangesForChangeCount:(long long)arg1;
 - (id)copyExternalChangesWithChangeCount:(long long *)arg1;
 - (unsigned char)hasExternalChanges;
-- (void)storeDidChangeWithIdentifier:(id)arg1 type:(long long)arg2 changeDictionary:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)logIfNecessaryForError:(id)arg1;
-- (void)ping;
+- (void)storeDidChangeWithConfiguration:(id)arg1 changeDictionary:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)logFaultIfNecessaryForError:(id)arg1;
+- (void)performInitialSyncIfNecessary;
+- (void)daemonDidWake;
+- (void)registerForDaemonDidWakeNotifications;
 - (void)registerForSynchronizedDefaults;
-- (void)deleteDataFromDisk;
 - (void)synchronizationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)scheduleRemoteSynchronization;
 - (void)processChangeDictionary:(id)arg1;
@@ -54,14 +68,20 @@
 - (id)changeToken;
 - (void)setChangeToken:(id)arg1;
 - (struct __CFDictionary *)copyDictionary;
+- (struct __CFArray *)copyKeyList;
 - (id)dictionaryRepresentation;
 - (void *)getValueForKey:(struct __CFString *)arg1;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2;
 - (id)objectForKey:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+@property(readonly, nonatomic) _Bool isSyncingWithCloud;
+@property(readonly, nonatomic) long long storeType;
+@property(readonly, nonatomic) NSString *storeIdentifier;
 - (void)dealloc;
 - (id)description;
+- (id)init;
+- (id)initWithStoreConfiguration:(id)arg1;
 - (id)initWithStoreIdentifier:(id)arg1 type:(long long)arg2;
 
 @end

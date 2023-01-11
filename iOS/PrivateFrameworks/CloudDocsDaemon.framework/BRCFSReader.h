@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCSuspendable-Protocol.h>
 
 @class BRCAsyncDirectoryEnumerator, BRCCountedSet, BRCFairSource, NSMutableSet, NSObject, NSString, brc_task_tracker;
-@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_group, OS_dispatch_source;
 
 @interface BRCFSReader <BRCModule, BRCSuspendable, BRCFSEventsDelegate>
 {
@@ -17,7 +17,6 @@
     _Bool _readerCountReachedMax;
     BRCAsyncDirectoryEnumerator *_currentScan;
     NSMutableSet *_lostSet;
-    NSObject<OS_dispatch_queue> *_lostScanQueue;
     BRCFairSource *_lostScanSource;
     NSObject<OS_dispatch_source> *_lostScanDelay;
     unsigned long long _lostScanDelaySection;
@@ -26,9 +25,9 @@
     NSObject<OS_dispatch_group> *_lostScanGroup;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) brc_task_tracker *taskTracker; // @synthesize taskTracker=_taskTracker;
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *lostScanGroup; // @synthesize lostScanGroup=_lostScanGroup;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (void)resume;
 - (void)suspend;
@@ -67,6 +66,7 @@
 - (id)itemForCreatedDocumentsDirectory:(id)arg1 appLibrary:(id)arg2 path:(id)arg3;
 - (void)fseventOnAlias:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
 - (void)fseventOnSymlink:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
+- (_Bool)_createSharedZoneIfNecessaryWithLookup:(id)arg1;
 - (void)fseventOnDeadPath:(id)arg1 item:(id)arg2;
 - (void)fseventOnContainer:(id)arg1 flags:(unsigned int)arg2;
 - (void)fseventOnRoot:(id)arg1 flags:(unsigned int)arg2;
@@ -75,7 +75,7 @@
 - (void)fseventAtPath:(id)arg1 flags:(unsigned int)arg2 unresolvedLastPathComponent:(id)arg3;
 - (void)fseventAtPath:(id)arg1 flags:(unsigned int)arg2;
 - (_Bool)updateLookupAfterHandlingPathMatchWithFSRoot:(id *)arg1 relpath:(id *)arg2;
-- (_Bool)needsLookupReloadAfterHandlingCrossZoneMoveWithItem:(id)arg1 relpath:(id)arg2;
+- (BOOL)needsLookupReloadAfterHandlingCrossZoneMoveWithItem:(id)arg1 relpath:(id)arg2;
 - (void)readUnderCoordinationAtURL:(id)arg1;
 - (id)lookupAndReadItemUnderCoordinationAtURL:(id)arg1;
 - (_Bool)readUnderCoordinationWithLookup:(id)arg1;
@@ -93,7 +93,6 @@
 - (void)setState:(int)arg1 forItem:(id)arg2;
 - (void)createReadingJobForItem:(id)arg1 state:(int)arg2;
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

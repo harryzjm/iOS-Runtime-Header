@@ -13,13 +13,13 @@
 + (Class)frozenClass;
 + (_Bool)isWeakRelationship;
 + (id)knownRelationshipMultiValueKeys;
-- (void)_setFlags:(unsigned int)arg1;
-- (unsigned int)_flags;
+- (void)setFlags:(unsigned int)arg1;
+- (unsigned int)flags;
 - (_Bool)_hasNotificationsCollectionFlag;
 - (void)_setNotificationsCollectionFlag;
-- (void)_setExternalIDTag:(id)arg1;
-- (void)_setExternalID:(id)arg1;
-- (void)_setSource:(id)arg1;
+- (void)setExternalIDTag:(id)arg1;
+- (void)setExternalID:(id)arg1;
+- (void)setSource:(id)arg1;
 - (_Bool)commit:(id *)arg1;
 - (_Bool)validate:(id *)arg1;
 - (void)removeNotification:(id)arg1;

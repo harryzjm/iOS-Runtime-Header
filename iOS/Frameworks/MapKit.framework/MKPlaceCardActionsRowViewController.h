@@ -6,37 +6,29 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MapKit/MKActionRowItemViewDelegate-Protocol.h>
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 
-@class MKPlaceActionManager, MKPlaceSectionItemView, NSArray, NSString, UILayoutGuide;
+@class MKPlaceActionManager, MKPlaceCardActionsRowView, MKPlaceSectionItemView, MKPlaceholderGridCache, NSArray, NSString;
+@protocol _MKPlaceViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceCardActionsRowViewController : UIViewController <MKActionRowItemViewDelegate, MKModuleViewControllerProtocol>
+@interface MKPlaceCardActionsRowViewController : UIViewController <MKModuleViewControllerProtocol>
 {
-    NSArray *_actionButtons;
-    NSArray *_constraints;
-    NSArray *_actionRowsArray;
-    unsigned long long _maxButtonsPerRow;
     MKPlaceSectionItemView *_hairlineView;
-    unsigned long long _style;
-    UILayoutGuide *_marginLayoutguide;
+    MKPlaceCardActionsRowView *_actionsRowView;
+    MKPlaceholderGridCache *_placeholderGridCache;
     NSArray *_items;
     MKPlaceActionManager *_actionManager;
+    id <_MKPlaceViewControllerDelegate> _placeViewControllerDelegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <_MKPlaceViewControllerDelegate> placeViewControllerDelegate; // @synthesize placeViewControllerDelegate=_placeViewControllerDelegate;
 @property(nonatomic) __weak MKPlaceActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
-- (void).cxx_destruct;
 - (void)viewDidLayoutSubviews;
-- (void)actionRowSelected:(id)arg1;
 - (void)infoCardThemeChanged;
 - (void)viewDidLoad;
-- (void)layoutButtons;
-- (void)createConstraints;
-- (void)createActionViews;
-- (unsigned long long)maxButtonsPerRow;
-- (void)createActions;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)loadView;
 - (_Bool)_canShowWhileLocked;

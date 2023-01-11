@@ -20,6 +20,7 @@
 - (void)_download:(_WKDownload *)arg1 didFailWithError:(NSError *)arg2;
 - (void)_downloadDidFinish:(_WKDownload *)arg1;
 - (void)_download:(_WKDownload *)arg1 decideDestinationWithSuggestedFilename:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSString *))arg3;
+- (void)_download:(_WKDownload *)arg1 didWriteData:(unsigned long long)arg2 totalBytesWritten:(unsigned long long)arg3 totalBytesExpectedToWrite:(unsigned long long)arg4;
 - (void)_download:(_WKDownload *)arg1 didReceiveData:(unsigned long long)arg2;
 - (void)_download:(_WKDownload *)arg1 didReceiveResponse:(NSURLResponse *)arg2;
 - (void)_download:(_WKDownload *)arg1 didReceiveServerRedirectToURL:(NSURL *)arg2;

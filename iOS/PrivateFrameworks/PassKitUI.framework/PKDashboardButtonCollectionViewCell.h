@@ -14,9 +14,11 @@
     _Bool _enabled;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool showActivity; // @synthesize showActivity=_showActivity;
-- (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_resetFonts;
 - (void)_updateTextColor;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 @property(copy, nonatomic) NSString *title;

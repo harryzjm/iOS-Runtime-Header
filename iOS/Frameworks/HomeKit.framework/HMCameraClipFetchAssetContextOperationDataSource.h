@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)createVideoFileCombinerWithVideoFileURLs:(id)arg1 queue:(id)arg2;
+- (_Bool)removeItemAtURL:(id)arg1 error:(id *)arg2;
+- (_Bool)copyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (id)createTemporaryDirectoryAppropriateForURL:(id)arg1 error:(id *)arg2;
 - (id)outputStreamToFileAtURL:(id)arg1 shouldAppend:(_Bool)arg2;
 - (_Bool)writeData:(id)arg1 toFileURL:(id)arg2 error:(id *)arg3;
 - (id)dataFromEncryptedDataContext:(id)arg1 usingDecryptionManager:(id)arg2;

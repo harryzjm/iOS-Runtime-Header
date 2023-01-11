@@ -17,17 +17,12 @@
 }
 
 + (id)stringForTransports:(long long)arg1;
-+ (id)syncPeerTransportsStrings;
 + (id)peerStatusTrackerWithContext:(id)arg1;
 + (id)sharedInstance;
-@property(nonatomic) __weak _DKKnowledgeStorage *storage; // @synthesize storage=_storage;
 - (void).cxx_destruct;
+@property(nonatomic) __weak _DKKnowledgeStorage *storage; // @synthesize storage=_storage;
 - (void)debugLogPeers;
-- (void)postCloudDeviceCountChangedNotification;
-- (void)_loadPeers;
-- (id)uuidWithUUIDString:(id)arg1;
 - (id)description;
-- (id)_observerBlocks;
 - (void)removeStatusChangeObserver:(id)arg1;
 - (id)addStatusChangeObserverWithBlock:(CDUnknownBlockType)arg1;
 - (void)setLastSuccessfulActivityDate:(id)arg1 onTransport:(long long)arg2 forPeer:(id)arg3;
@@ -35,9 +30,7 @@
 - (void)setLastSeenDate:(id)arg1 onPeer:(id)arg2;
 - (void)removeActiveTransports:(long long)arg1 fromPeer:(id)arg2;
 - (void)addActiveTransports:(long long)arg1 toPeer:(id)arg2;
-- (void)_modifyActiveTransportInPeer:(id)arg1 withNewTransportsBlock:(CDUnknownBlockType)arg2;
 - (long long)activeTransportsForPeer:(id)arg1;
-- (id)_peerInfoForPeer:(id)arg1;
 - (_Bool)isSingleDevice;
 - (unsigned long long)foreignPeersCount;
 - (id)peersWithActiveTransports:(long long)arg1;
@@ -50,7 +43,6 @@
 - (id)peerWithZoneName:(id)arg1 sourceDeviceID:(id)arg2;
 - (id)peerWithIDSDeviceIdentifier:(id)arg1;
 - (id)peerWithCompanionLinkDevice:(id)arg1;
-- (void)registerNewPeer:(id)arg1;
 - (void)setSourceDeviceID:(id)arg1 version:(id)arg2 peer:(id)arg3;
 - (id)initWithContext:(id)arg1;
 

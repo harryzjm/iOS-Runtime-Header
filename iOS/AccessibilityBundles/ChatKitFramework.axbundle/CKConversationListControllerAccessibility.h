@@ -11,11 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)optionsButtonItem;
-- (id)composeButton;
 - (void)_updateToolbarItems;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)loadView;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSError, NSString, NSURL, SSLookupRequest;
+@class AMSPromise, NSError, NSString, NSURL;
 
 @interface HKLookUpAppPrivacyPolicyURLOperation : NSOperation
 {
@@ -15,19 +15,18 @@
     NSString *_bundleIdentifier;
     NSURL *_privacyPolicyURL;
     NSError *_error;
-    SSLookupRequest *_lookupRequest;
+    AMSPromise *_outstandingPromise;
 }
 
-@property(retain) SSLookupRequest *lookupRequest; // @synthesize lookupRequest=_lookupRequest;
+- (void).cxx_destruct;
+@property(retain) AMSPromise *outstandingPromise; // @synthesize outstandingPromise=_outstandingPromise;
 @property(copy) NSError *error; // @synthesize error=_error;
 @property(copy) NSURL *privacyPolicyURL; // @synthesize privacyPolicyURL=_privacyPolicyURL;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 @property(getter=isFinished) _Bool finished;
 @property(getter=isExecuting) _Bool executing;
 - (_Bool)isAsynchronous;
 - (void)start;
-- (id)_privacyPolicyURLFromLookupResult:(id)arg1 lookupError:(id)arg2 error:(id *)arg3;
 - (void)_performLookup;
 - (void)cancel;
 - (id)debugDescription;

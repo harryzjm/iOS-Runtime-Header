@@ -12,17 +12,17 @@
 __attribute__((visibility("hidden")))
 @interface AVFullScreenViewController : UIViewController
 {
-    id <AVFullScreenViewControllerDelegate> _delegate;
+    UIViewController<AVFullScreenViewControllerDelegate> *_delegate;
     AVFullScreenViewController *_associatedFullScreenViewController;
     AVFullScreenViewController *_sourceFullScreenViewController;
     UIView *_contentView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) __weak AVFullScreenViewController *sourceFullScreenViewController; // @synthesize sourceFullScreenViewController=_sourceFullScreenViewController;
 @property(nonatomic) __weak AVFullScreenViewController *associatedFullScreenViewController; // @synthesize associatedFullScreenViewController=_associatedFullScreenViewController;
-@property(nonatomic) __weak id <AVFullScreenViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+@property(nonatomic) __weak UIViewController<AVFullScreenViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 - (_Bool)avkit_isEffectivelyFullScreen;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (_Bool)_requiresCustomPresentationController;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canBecomeFirstResponder;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (id)keyCommands;
+- (_Bool)_canShowWhileLocked;
 
 @end
 

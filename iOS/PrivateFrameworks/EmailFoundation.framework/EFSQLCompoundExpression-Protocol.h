@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSArray;
 
-@protocol EFSQLCompoundExpression <EFSQLExpressable>
+@protocol EFSQLCompoundExpression <EFSQLValueExpressable>
 @property(readonly, copy, nonatomic) NSArray *expressions;
 - (id)initWithExpressions:(NSArray *)arg1;
 @end

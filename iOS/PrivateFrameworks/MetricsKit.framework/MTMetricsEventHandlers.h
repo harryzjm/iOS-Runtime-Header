@@ -4,36 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTAccountEventHandler, MTBaseEventDataProvider, MTClickEventHandler, MTDialogEventHandler, MTEnterEventHandler, MTExitEventHandler, MTFlexibleEventHandler, MTImpressionsEventHandler, MTMediaEventHandler, MTPageEventHandler, MTSearchEventHandler;
+@class MTAccountEventHandler, MTClickEventHandler, MTDialogEventHandler, MTEnterEventHandler, MTExitEventHandler, MTFlexibleEventHandler, MTImpressionsEventHandler, MTMediaEventHandler, MTPageEventHandler, MTSearchEventHandler;
 
 @interface MTMetricsEventHandlers
 {
-    MTBaseEventDataProvider *_base;
-    MTClickEventHandler *_click;
-    MTEnterEventHandler *_enter;
-    MTExitEventHandler *_exit;
-    MTImpressionsEventHandler *_impressions;
-    MTPageEventHandler *_page;
     MTFlexibleEventHandler *_flexible;
-    MTSearchEventHandler *_search;
-    MTAccountEventHandler *_account;
-    MTDialogEventHandler *_dialog;
-    MTMediaEventHandler *_media;
 }
 
-- (void)setBase:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) MTMediaEventHandler *media; // @synthesize media=_media;
-@property(readonly, nonatomic) MTDialogEventHandler *dialog; // @synthesize dialog=_dialog;
-@property(readonly, nonatomic) MTAccountEventHandler *account; // @synthesize account=_account;
-@property(readonly, nonatomic) MTSearchEventHandler *search; // @synthesize search=_search;
 @property(readonly, nonatomic) MTFlexibleEventHandler *flexible; // @synthesize flexible=_flexible;
-@property(readonly, nonatomic) MTPageEventHandler *page; // @synthesize page=_page;
-@property(readonly, nonatomic) MTImpressionsEventHandler *impressions; // @synthesize impressions=_impressions;
-@property(readonly, nonatomic) MTExitEventHandler *exit; // @synthesize exit=_exit;
-@property(readonly, nonatomic) MTEnterEventHandler *enter; // @synthesize enter=_enter;
-@property(readonly, nonatomic) MTClickEventHandler *click; // @synthesize click=_click;
-- (id)base;
+@property(readonly, nonatomic) MTSearchEventHandler *search;
+@property(readonly, nonatomic) MTPageEventHandler *page;
+@property(readonly, nonatomic) MTMediaEventHandler *media;
+@property(readonly, nonatomic) MTImpressionsEventHandler *impressions;
+@property(readonly, nonatomic) MTExitEventHandler *exit;
+@property(readonly, nonatomic) MTEnterEventHandler *enter;
+@property(readonly, nonatomic) MTDialogEventHandler *dialog;
+@property(readonly, nonatomic) MTClickEventHandler *click;
+@property(readonly, nonatomic) MTAccountEventHandler *account;
+- (Class)baseDataProviderClass;
+- (void)registerDefaultEventHandlers;
 
 @end
 

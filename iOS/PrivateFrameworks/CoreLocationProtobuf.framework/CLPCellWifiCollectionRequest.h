@@ -17,6 +17,7 @@
     NSMutableArray *_cellTowerLocations;
     NSMutableArray *_lteCellTowerLocations;
     CLPMeta *_meta;
+    NSMutableArray *_nrCellTowerLocations;
     NSMutableArray *_scdmaCellTowerLocations;
     NSMutableArray *_wifiAPLocations;
 }
@@ -24,17 +25,19 @@
 + (Class)cellOutOfServiceInfoType;
 + (Class)scdmaCellTowerLocationType;
 + (Class)wifiAPLocationType;
++ (Class)nrCellTowerLocationType;
 + (Class)lteCellTowerLocationType;
 + (Class)cdmaCellTowerLocationType;
 + (Class)cellTowerLocationType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *cellOutOfServiceInfos; // @synthesize cellOutOfServiceInfos=_cellOutOfServiceInfos;
 @property(retain, nonatomic) NSMutableArray *scdmaCellTowerLocations; // @synthesize scdmaCellTowerLocations=_scdmaCellTowerLocations;
 @property(retain, nonatomic) NSMutableArray *wifiAPLocations; // @synthesize wifiAPLocations=_wifiAPLocations;
+@property(retain, nonatomic) NSMutableArray *nrCellTowerLocations; // @synthesize nrCellTowerLocations=_nrCellTowerLocations;
 @property(retain, nonatomic) NSMutableArray *lteCellTowerLocations; // @synthesize lteCellTowerLocations=_lteCellTowerLocations;
 @property(retain, nonatomic) NSMutableArray *cdmaCellTowerLocations; // @synthesize cdmaCellTowerLocations=_cdmaCellTowerLocations;
 @property(retain, nonatomic) NSMutableArray *cellTowerLocations; // @synthesize cellTowerLocations=_cellTowerLocations;
 @property(retain, nonatomic) CLPMeta *meta; // @synthesize meta=_meta;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -58,6 +61,10 @@
 - (unsigned long long)wifiAPLocationsCount;
 - (void)addWifiAPLocation:(id)arg1;
 - (void)clearWifiAPLocations;
+- (id)nrCellTowerLocationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)nrCellTowerLocationsCount;
+- (void)addNrCellTowerLocation:(id)arg1;
+- (void)clearNrCellTowerLocations;
 - (id)lteCellTowerLocationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lteCellTowerLocationsCount;
 - (void)addLteCellTowerLocation:(id)arg1;

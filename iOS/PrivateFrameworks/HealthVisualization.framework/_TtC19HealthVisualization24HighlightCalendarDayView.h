@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppSupportUI/NUIContainerBoxView.h>
+#import <UIKit/UIView.h>
 
 @class MISSING_TYPE, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC19HealthVisualization24HighlightCalendarDayView : NUIContainerBoxView
+@interface _TtC19HealthVisualization24HighlightCalendarDayView : UIView
 {
     MISSING_TYPE *model;
-    MISSING_TYPE *$__lazy_storage_$_circleView;
-    MISSING_TYPE *$__lazy_storage_$_todayIndicatorView;
-    MISSING_TYPE *$__lazy_storage_$_dayLabel;
+    MISSING_TYPE *dayLabel;
+    MISSING_TYPE *todayIndicatorLayer;
     MISSING_TYPE *ringsRenderer;
-    MISSING_TYPE *$__lazy_storage_$_activityRingsView;
+    MISSING_TYPE *activityRingsView;
 }
 
 - (void).cxx_destruct;
-- (id)initWithArrangedSubviews:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)layoutSublayersOfLayer:(id)arg1;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic, readonly) long long axCircleState;
 @property(nonatomic, readonly) NSString *axProjectionKind;

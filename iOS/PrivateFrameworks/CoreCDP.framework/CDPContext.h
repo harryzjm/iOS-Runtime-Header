@@ -9,12 +9,11 @@
 #import <CoreCDP/NSCopying-Protocol.h>
 #import <CoreCDP/NSSecureCoding-Protocol.h>
 
-@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSMutableArray, NSNumber, NSString;
+@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSNumber, NSString;
 @protocol CDPAuthProviderInternal;
 
 @interface CDPContext : NSObject <NSSecureCoding, NSCopying>
 {
-    NSMutableArray *_signInMetricsStack;
     _Bool _isHSA2Account;
     _Bool _isFederatedAccount;
     _Bool _didUseSMSVerification;
@@ -22,6 +21,7 @@
     _Bool _supportsSkipSignIn;
     _Bool __useSecureBackupCachedPassphrase;
     _Bool __alwaysCreateEscrowRecord;
+    _Bool __ignoreLockAssertErrors;
     _Bool _idmsRecovery;
     _Bool _idmsMasterKeyRecovery;
     NSDictionary *_authenticationResults;
@@ -42,10 +42,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)_metricsQueue;
 + (id)preflightContext:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool idmsMasterKeyRecovery; // @synthesize idmsMasterKeyRecovery=_idmsMasterKeyRecovery;
 @property(nonatomic) _Bool idmsRecovery; // @synthesize idmsRecovery=_idmsRecovery;
+@property(nonatomic) _Bool _ignoreLockAssertErrors; // @synthesize _ignoreLockAssertErrors=__ignoreLockAssertErrors;
 @property(copy, nonatomic) NSString *_recoveryToken; // @synthesize _recoveryToken=__recoveryToken;
 @property(nonatomic) _Bool _alwaysCreateEscrowRecord; // @synthesize _alwaysCreateEscrowRecord=__alwaysCreateEscrowRecord;
 @property(nonatomic) _Bool _useSecureBackupCachedPassphrase; // @synthesize _useSecureBackupCachedPassphrase=__useSecureBackupCachedPassphrase;
@@ -68,12 +69,7 @@
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property(copy, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;
-- (void).cxx_destruct;
 - (id)cliqueConfiguration;
-- (struct __CFData *)encodedTopLevelMetric;
-- (id)topLevelMetric;
-- (void)stopMetric:(id)arg1 withAttributes:(id)arg2;
-- (id)startMetricForEventName:(id)arg1;
 - (void)augmentWithCredentialsFromContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)updateWithAuthenticationResults:(id)arg1;

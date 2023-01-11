@@ -11,10 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)accessibilityDecrement;
+- (void)accessibilityIncrement;
+- (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityValue;
 - (void)_accessibilityCommitPositionChange;
 - (id)accessibilityLabel;
+- (void)_axUpdateSliderValue;
 
 @end
 

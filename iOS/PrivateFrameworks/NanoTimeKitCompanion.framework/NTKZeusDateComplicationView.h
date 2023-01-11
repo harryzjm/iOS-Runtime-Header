@@ -22,7 +22,7 @@
 - (void)layoutSubviews;
 - (void)_updateImage;
 - (void)setStyle:(unsigned long long)arg1;
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
 - (unsigned long long)desiredDateComplicationDateStyle;
 - (void)setDateComplicationText:(id)arg1 withDayRange:(struct _NSRange)arg2 forDateStyle:(unsigned long long)arg3;
 

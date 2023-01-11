@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSError, NSString;
+@class NSData, NSError, NSFileHandle, NSString;
 
 @interface _HKZipArchiveExtractor : NSObject
 {
     NSString *_pathname;
     NSData *_archiveData;
+    NSFileHandle *_fileHandle;
     struct archive *_archive;
     struct archive_entry *_entry;
     _Bool _dataRead;
@@ -34,6 +35,7 @@
 - (id)_getDataForCurrentEntryWithBufferingWithMaxSizeBytes:(unsigned long long)arg1;
 - (id)_getDataForCurrentEntryWithSize:(unsigned long long)arg1;
 - (id)initWithData:(id)arg1;
+- (id)initWithFileHandle:(id)arg1 pathname:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)initWithPathname:(id)arg1;
 

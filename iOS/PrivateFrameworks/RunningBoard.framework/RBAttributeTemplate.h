@@ -6,29 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
+@class NSString, RBSAttribute;
 
-@class NSDictionary, NSString;
-
-@interface RBAttributeTemplate : NSObject <BSDescriptionProviding>
+@interface RBAttributeTemplate : NSObject
 {
     NSString *_className;
-    NSDictionary *_properties;
+    RBSAttribute *_attribute;
 }
 
-@property(retain, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property(retain, nonatomic) NSString *className; // @synthesize className=_className;
 - (void).cxx_destruct;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
-@property(readonly, copy) NSString *description;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(retain, nonatomic) RBSAttribute *attribute; // @synthesize attribute=_attribute;
+@property(retain, nonatomic) NSString *className; // @synthesize className=_className;
+- (id)description;
 
 @end
 

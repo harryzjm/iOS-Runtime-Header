@@ -29,6 +29,7 @@
     NSUndoManager *_textViewUndoManager;
 }
 
+- (void).cxx_destruct;
 @property _Bool isInAdjustAnnotationFrameToFitText; // @synthesize isInAdjustAnnotationFrameToFitText=_isInAdjustAnnotationFrameToFitText;
 @property _Bool isInEndEditing; // @synthesize isInEndEditing=_isInEndEditing;
 @property(retain) NSUndoManager *textViewUndoManager; // @synthesize textViewUndoManager=_textViewUndoManager;
@@ -42,10 +43,9 @@
 @property __weak AKController *controller; // @synthesize controller=_controller;
 @property __weak AKAnnotation<AKTextAnnotationProtocol> *annotation; // @synthesize annotation=_annotation;
 @property(retain) UITextView *textView; // @synthesize textView=_textView;
-- (void).cxx_destruct;
-- (void)_keyboardDidHide:(id)arg1;
-- (void)_unregisterForKeyboardNotifications;
-- (void)_registerForKeyboardNotifications;
+- (void)_firstResponderDidChange:(id)arg1;
+- (void)_unregisterForFirstResponderNotifications;
+- (void)_registerForFirstResponderNotifications;
 - (void)_updateTextView:(id)arg1 withFrame:(struct CGRect)arg2 andOrientation:(long long)arg3 additionalRotation:(double)arg4;
 - (struct CGRect)_editorFrameForTextBoundsInModel:(struct CGRect)arg1;
 - (void)_adjustEditorToFitAnnotation:(id)arg1 withText:(id)arg2;
@@ -58,9 +58,10 @@
 - (void)updateForTextAttributeChange;
 - (void)_endEditing;
 - (void)_commitToModelWithoutEndingEditing;
-- (void)_beginEditingAnnotation:(id)arg1 withPageController:(id)arg2 selectAllText:(_Bool)arg3;
+- (void)_beginEditingAnnotation:(id)arg1 withPageController:(id)arg2 selectAllText:(_Bool)arg3 withPencil:(_Bool)arg4;
 - (void)endEditing;
 - (void)commitToModelWithoutEndingEditing;
+- (void)beginEditingAnnotation:(id)arg1 withPageController:(id)arg2 selectAllText:(_Bool)arg3 withPencil:(_Bool)arg4;
 - (void)beginEditingAnnotation:(id)arg1 withPageController:(id)arg2 selectAllText:(_Bool)arg3;
 - (void)dealloc;
 - (id)initWithController:(id)arg1;

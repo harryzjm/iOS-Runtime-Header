@@ -12,10 +12,13 @@
 
 @interface CHRemoteRecognizer : NSObject <CHRecognizing>
 {
-    _Bool _shouldEnableCachingIfAvailable;
+    _Bool _enableCachingIfAvailable;
+    _Bool _enableGen2ModelIfAvailable;
+    _Bool _enableGen2CharacterLMIfAvailable;
     _Bool _shouldUseTextReplacements;
     int _recognitionMode;
     int _contentType;
+    int _autoCapitalizationMode;
     NSLocale *_locale;
     NSCharacterSet *_activeCharacterSet;
     unsigned long long _maxRecognitionResultCount;
@@ -24,12 +27,16 @@
     struct CGSize _minimumDrawingSize;
 }
 
++ (long long)absoluteMaxStrokeCountPerRequest;
 + (long long)maxRequestStrokeCountForLocale:(id)arg1;
 @property(readonly, nonatomic) NSXPCConnection *_connection; // @synthesize _connection=__connection;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(nonatomic) _Bool shouldUseTextReplacements; // @synthesize shouldUseTextReplacements=_shouldUseTextReplacements;
-@property(nonatomic) _Bool shouldEnableCachingIfAvailable; // @synthesize shouldEnableCachingIfAvailable=_shouldEnableCachingIfAvailable;
+@property(readonly, nonatomic) _Bool enableGen2CharacterLMIfAvailable; // @synthesize enableGen2CharacterLMIfAvailable=_enableGen2CharacterLMIfAvailable;
+@property(readonly, nonatomic) _Bool enableGen2ModelIfAvailable; // @synthesize enableGen2ModelIfAvailable=_enableGen2ModelIfAvailable;
+@property(readonly, nonatomic) _Bool enableCachingIfAvailable; // @synthesize enableCachingIfAvailable=_enableCachingIfAvailable;
 @property(nonatomic) struct CGSize minimumDrawingSize; // @synthesize minimumDrawingSize=_minimumDrawingSize;
+@property(nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property(nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) unsigned long long maxRecognitionResultCount; // @synthesize maxRecognitionResultCount=_maxRecognitionResultCount;
 @property(retain, nonatomic) NSCharacterSet *activeCharacterSet; // @synthesize activeCharacterSet=_activeCharacterSet;
@@ -45,6 +52,7 @@
 - (id)textRecognitionResultForDrawing:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)_teardownXPCConnection;
 - (void)_setupXPCConnectionIfNeeded;
+- (id)initWithMode:(int)arg1 locale:(id)arg2 recognizerOptions:(id)arg3;
 - (id)initWithMode:(int)arg1 locale:(id)arg2;
 
 // Remaining properties

@@ -51,8 +51,8 @@
 + (id)phonemeDataDescription;
 + (id)externalImageURIDescription;
 + (id)externalUUIDDescription;
-+ (id)externalModificationTagDescription;
 + (id)externalRepresentationDescription;
++ (id)externalModificationTagDescription;
 + (id)externalIdentifierDescription;
 + (id)calendarURIsDescription;
 + (id)postalAddressesDescription;
@@ -146,6 +146,7 @@
 + (id)localizedPhoneticNameDelimiterForContact:(id)arg1;
 + (id)localizedNameDelimiterForContact:(id)arg1;
 + (_Bool)hasContactChineseJapaneseKoreanPhoneticName:(id)arg1;
++ (_Bool)shouldContactUseFamilyGivenNameOrder:(id)arg1;
 + (_Bool)hasContactChineseJapaneseKoreanName:(id)arg1;
 
 @end

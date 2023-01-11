@@ -14,15 +14,15 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresEventOrReminderAccess;
 + (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
-- (void)CADDatabaseResetWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseRollbackWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseCommitWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSaveWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSetShowsDeclinedEvents:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseExportICSDataForCalendarItems:(id)arg1 preventLineFolding:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
-- (id)_importData:(id)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 outError:(int *)arg4;
-- (void)CADDatabaseImportICSData:(id)arg1 intoCalendarsWithIDs:(id)arg2 optionsMask:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)CADDatabaseExportICSDataForCalendar:(id)arg1 options:(long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseExportICSDataForCalendarItems:(id)arg1 options:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)_importEvents:(id)arg1 data:(id)arg2 intoCalendarWithID:(int)arg3 optionsMask:(unsigned long long)arg4 batchSize:(int)arg5 outError:(int *)arg6;
+- (void)CADDatabaseImportEvents:(id)arg1 fromICSData:(id)arg2 intoCalendarsWithIDs:(id)arg3 optionsMask:(unsigned long long)arg4 batchSize:(int)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(CDUnknownBlockType)arg1;
 - (_Bool)_CADDatabaseCanModifyCalendarDatabase;
 - (void)CADDatabaseCanModifyCalendarDatabase:(CDUnknownBlockType)arg1;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseFetchObjectChangesForEntityTypes:(id)arg1 insideObject:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseUnregisterForDetailedChangeTracking:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseRegisterForDetailedChangeTracking:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseRegisterForDetailedChangeTrackingInSource:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetUUID:(CDUnknownBlockType)arg1;
 
 @end

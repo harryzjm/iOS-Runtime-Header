@@ -16,5 +16,6 @@
 - (void)sharedTripService:(MSPSharedTripService *)arg1 didUpdateETAForSharedTrip:(GEOSharedNavState *)arg2;
 - (void)sharedTripService:(MSPSharedTripService *)arg1 didUpdateDestinationForSharedTrip:(GEOSharedNavState *)arg2;
 - (void)sharedTripService:(MSPSharedTripService *)arg1 didReceiveSharedTrip:(GEOSharedNavState *)arg2;
+- (void)sharedTripServiceDidUpdateReceivingAvailability:(MSPSharedTripService *)arg1;
 @end
 

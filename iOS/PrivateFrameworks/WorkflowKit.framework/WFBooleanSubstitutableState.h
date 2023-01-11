@@ -11,6 +11,7 @@
 + (Class)processingValueClass;
 - (id)initWithNumberSubstitutableState:(id)arg1;
 - (id)numberSubstitutableState;
+- (id)initWithBoolValue:(_Bool)arg1;
 
 @end
 

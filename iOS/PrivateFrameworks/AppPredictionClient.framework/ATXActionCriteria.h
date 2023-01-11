@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
 #import <AppPredictionClient/NSCopying-Protocol.h>
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDateInterval, NSPredicate;
 
-@interface ATXActionCriteria : NSObject <NSCopying, NSSecureCoding>
+@interface ATXActionCriteria : NSObject <NSCopying, NSSecureCoding, ATXProtoBufWrapper>
 {
     _Bool _lockScreenEligible;
     NSDate *_startDate;
@@ -20,12 +21,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(readonly, nonatomic) _Bool lockScreenEligible; // @synthesize lockScreenEligible=_lockScreenEligible;
 @property(readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-- (void).cxx_destruct;
 - (id)description;
+- (id)proto;
+- (id)initWithProto:(id)arg1;
+- (id)encodeAsProto;
+- (id)initWithProtoData:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

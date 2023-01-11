@@ -7,7 +7,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKLiveRenderedShaderSet, PKNFCPayload, PKPassDisplayProfile, PKPassLiveRenderedImageSet, PKPassPersonalization, PKPaymentPass, UIImage;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKLiveRenderedShaderSet, PKNFCPayload, PKPassBarcodeSettings, PKPassDisplayProfile, PKPassFrontFaceImageSet, PKPassLiveRenderedImageSet, PKPassPersonalization, PKPaymentPass, PKSecureElementPass, UIImage;
 
 @interface PKPass <NSCopying, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     _Bool _liveRenderedBackground;
     _Bool _supportsCategoryVisualization;
     _Bool _revoked;
+    NSArray *_embeddedLocations;
     unsigned long long _passType;
     NSString *_serialNumber;
     NSString *_passTypeIdentifier;
@@ -32,7 +33,6 @@
     NSString *_teamID;
     NSDate *_expirationDate;
     NSString *_groupingID;
-    NSSet *_embeddedLocations;
     NSSet *_embeddedBeacons;
     NSURL *_webLocationsURL;
     NSURL *_localLocationsURL;
@@ -42,18 +42,23 @@
     NSSet *_associatedPassTypeIdentifiers;
     PKNFCPayload *_nfcPayload;
     PKImage *_partialFrontFaceImagePlaceholder;
+    NSString *_provisioningCredentialHash;
+    NSString *_cardholderInfoSectionTitle;
     NSDate *_ingestedDate;
     NSDate *_modifiedDate;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)cloudStorePassRecordNamePrefix;
++ (id)recordNamePrefix;
 + (unsigned long long)defaultSettings;
 + (_Bool)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 + (Class)classForPassType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isRevoked) _Bool revoked; // @synthesize revoked=_revoked;
 @property(retain, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property(retain, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
+@property(copy, nonatomic) NSString *cardholderInfoSectionTitle; // @synthesize cardholderInfoSectionTitle=_cardholderInfoSectionTitle;
+@property(copy, nonatomic) NSString *provisioningCredentialHash; // @synthesize provisioningCredentialHash=_provisioningCredentialHash;
 @property(nonatomic) _Bool supportsCategoryVisualization; // @synthesize supportsCategoryVisualization=_supportsCategoryVisualization;
 @property(nonatomic) _Bool liveRenderedBackground; // @synthesize liveRenderedBackground=_liveRenderedBackground;
 @property(readonly, nonatomic) PKImage *partialFrontFaceImagePlaceholder; // @synthesize partialFrontFaceImagePlaceholder=_partialFrontFaceImagePlaceholder;
@@ -66,7 +71,6 @@
 @property(copy, nonatomic) NSURL *localLocationsURL; // @synthesize localLocationsURL=_localLocationsURL;
 @property(copy, nonatomic) NSURL *webLocationsURL; // @synthesize webLocationsURL=_webLocationsURL;
 @property(copy, nonatomic) NSSet *embeddedBeacons; // @synthesize embeddedBeacons=_embeddedBeacons;
-@property(copy, nonatomic) NSSet *embeddedLocations; // @synthesize embeddedLocations=_embeddedLocations;
 @property(copy, nonatomic) NSString *groupingID; // @synthesize groupingID=_groupingID;
 @property(nonatomic, getter=isVoided) _Bool voided; // @synthesize voided=_voided;
 @property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
@@ -83,7 +87,7 @@
 @property(copy, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
 @property(copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(nonatomic) unsigned long long passType; // @synthesize passType=_passType;
-- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *embeddedLocationsArray; // @synthesize embeddedLocationsArray=_embeddedLocations;
 - (id)_changeMessageForFieldKey:(id)arg1;
 - (id)_localizationKeyForMultipleDiff;
 - (id)dictionariesForSemanticKey:(id)arg1;
@@ -101,16 +105,22 @@
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqualToPassIncludingMetadata:(id)arg1;
 @property(readonly, nonatomic) struct CGRect logoRect;
+- (id)passLocalizedStringForKey:(id)arg1;
 @property(readonly, nonatomic) PKLiveRenderedShaderSet *liveRenderedShaderSet;
+@property(readonly, nonatomic) PKPassFrontFaceImageSet *frontFaceImageSet;
 @property(readonly, nonatomic) PKPassLiveRenderedImageSet *liveRenderedImageSet;
 @property(readonly, nonatomic) _Bool isValid;
+@property(readonly, nonatomic) PKPassBarcodeSettings *barcodeSettings;
 @property(readonly, nonatomic) NSString *businessChatIdentifier;
+@property(readonly, nonatomic) PKImage *compactBankLogoLightImage;
+@property(readonly, nonatomic) PKImage *compactBankLogoDarkImage;
 - (id)thumbnailImage;
 - (id)stripImage;
 - (id)backgroundImage;
 - (id)logoImage;
 @property(readonly, nonatomic) PKImage *personalizationLogoImage;
 @property(readonly, nonatomic) PKImage *cardHolderPicture;
+@property(readonly, nonatomic) PKImage *footerImage;
 @property(readonly, nonatomic) struct CGRect stripRect;
 @property(readonly, nonatomic) struct CGRect thumbnailRect;
 @property(readonly, nonatomic) PKImage *partialFrontFaceImage;
@@ -132,7 +142,6 @@
 @property(readonly, nonatomic) long long transitType;
 @property(readonly, copy, nonatomic) NSString *localizedDescription;
 @property(readonly, nonatomic) NSString *logoText;
-@property(readonly, nonatomic) PKImage *footerImage;
 @property(readonly, nonatomic) PKBarcode *barcode;
 @property(readonly) NSString *notificationCenterTitle;
 - (id)diff:(id)arg1;
@@ -146,14 +155,18 @@
 - (_Bool)hasValidNFCPayload;
 - (_Bool)hasLocationRelevancyInfo;
 - (_Bool)hasTimeOrLocationRelevancyInfo;
+@property(readonly, nonatomic) PKSecureElementPass *secureElementPass;
 @property(readonly, nonatomic) PKPaymentPass *paymentPass;
 @property(readonly, nonatomic) NSString *pluralLocalizedName;
 @property(readonly, nonatomic) NSString *lowercaseLocalizedName;
 @property(readonly, copy, nonatomic) NSString *localizedName;
 @property(readonly, nonatomic) long long style;
+@property(copy, nonatomic) NSSet *embeddedLocations; // @dynamic embeddedLocations;
 - (unsigned long long)itemType;
-- (id)recordTypesAndNames;
+- (id)primaryIdentifier;
+- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
@@ -170,7 +183,6 @@
 @property(copy, nonatomic) NSString *authenticationToken; // @dynamic authenticationToken;
 @property(copy, nonatomic) PKPassDisplayProfile *displayProfile; // @dynamic displayProfile;
 @property(readonly, copy, nonatomic) UIImage *icon; // @dynamic icon;
-@property(readonly, nonatomic) NSString *uniqueID; // @dynamic uniqueID;
 @property(copy, nonatomic) NSURL *webServiceURL; // @dynamic webServiceURL;
 
 @end

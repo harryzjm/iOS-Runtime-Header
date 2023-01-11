@@ -9,7 +9,7 @@
 #import <VideosUI/NSCopying-Protocol.h>
 #import <VideosUI/VUIMediaEntityAssetControllerDelegate-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSMutableArray, NSNumber, NSString;
 @protocol VUIDownloadEntityDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     id <VUIDownloadEntityDelegate> _delegate;
     long long _downloadType;
+    NSObject<VUIMediaEntityIdentifier> *_identifier;
     NSObject<VUIMediaEntityIdentifier> *_showIdentifier;
     NSArray *_mediaEntities;
     NSString *_title;
@@ -25,8 +26,11 @@ __attribute__((visibility("hidden")))
     NSNumber *_episodeNumber;
     NSNumber *_numberOfMediaItems;
     NSNumber *_numberOfMediaItemsDownloading;
+    NSMutableArray *_assetControllers;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *assetControllers; // @synthesize assetControllers=_assetControllers;
 @property(retain, nonatomic) NSNumber *numberOfMediaItemsDownloading; // @synthesize numberOfMediaItemsDownloading=_numberOfMediaItemsDownloading;
 @property(retain, nonatomic) NSNumber *numberOfMediaItems; // @synthesize numberOfMediaItems=_numberOfMediaItems;
 @property(retain, nonatomic) NSNumber *episodeNumber; // @synthesize episodeNumber=_episodeNumber;
@@ -35,9 +39,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSArray *mediaEntities; // @synthesize mediaEntities=_mediaEntities;
 @property(retain, nonatomic) NSObject<VUIMediaEntityIdentifier> *showIdentifier; // @synthesize showIdentifier=_showIdentifier;
+@property(retain, nonatomic) NSObject<VUIMediaEntityIdentifier> *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) long long downloadType; // @synthesize downloadType=_downloadType;
 @property(nonatomic) __weak id <VUIDownloadEntityDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
 - (void)_configureWithMediaEntities:(id)arg1;
@@ -47,7 +53,6 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

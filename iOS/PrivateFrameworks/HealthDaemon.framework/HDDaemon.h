@@ -6,20 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDApplicationStateMonitorProvider-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemon-Protocol.h>
 #import <HealthDaemon/HDTaskServerClassProvider-Protocol.h>
-#import <HealthDaemon/HDXPCListenerDelegate-Protocol.h>
+#import <HealthDaemon/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class HDAnalyticsSubmissionCoordinator, HDBackgroundTaskScheduler, HDCloudSyncCoordinator, HDContentProtectionManager, HDDevicePowerMonitor, HDFeatureAvailabilityAssetManager, HDMaintenanceWorkCoordinator, HDPeriodicActivity, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfileManager, HDQueryManager, HDTaskServerRegistry, HDWorkoutPluginDaemonExtension, HDXPCAlarmScheduler, HDXPCListener, NSDictionary, NSMutableArray, NSMutableSet, NSString, NSURL, _HKBehavior;
+@class HDAnalyticsSubmissionCoordinator, HDAutoBugCaptureReporter, HDBackgroundTaskScheduler, HDCloudSyncCoordinator, HDContentProtectionManager, HDDaemonConnectionManager, HDDevicePowerMonitor, HDMaintenanceWorkCoordinator, HDPeriodicActivity, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfileManager, HDQueryManager, HDRemoteFeatureAvailabilityAssetManager, HDTaskServerRegistry, HDWorkoutPluginDaemonExtension, HDXPCAlarmScheduler, HDXPCEventManager, NSDictionary, NSMutableArray, NSString, NSURL, _HKBehavior;
 @protocol HDDaemonTester, HDNanoAlertSuppressionService, OS_dispatch_queue;
 
-@interface HDDaemon : NSObject <HDTaskServerClassProvider, HDDiagnosticObject, HDXPCListenerDelegate, HDHealthDaemon>
+@interface HDDaemon : NSObject <HDTaskServerClassProvider, HDApplicationStateMonitorProvider, HDDiagnosticObject, LSApplicationWorkspaceObserverProtocol, HDHealthDaemon>
 {
     _HKBehavior *_behavior;
     NSString *_healthDirectoryPath;
-    struct os_unfair_lock_s _endpointLock;
-    NSMutableSet *_endpoints;
     NSObject<OS_dispatch_queue> *_queue;
     int _languageChangeNotifyToken;
     HDBackgroundTaskScheduler *_backgroundTaskScheduler;
@@ -37,49 +36,61 @@
     long long _numberOfDaemonReadyObserversAfterReady;
     _Bool _daemonReady;
     struct atomic_flag _didStart;
+    NSMutableArray *_daemonActivatedBlocks;
     NSDictionary *_daemonExtensionsByIdentifier;
+    _Bool _shouldEnqueueMaintenanceWork;
     NSString *_medicalIDDirectoryPath;
     HDAnalyticsSubmissionCoordinator *_analyticsSubmissionCoordinator;
+    HDAutoBugCaptureReporter *_autoBugCaptureReporter;
     id <HDNanoAlertSuppressionService> _alertSuppressionService;
-    HDFeatureAvailabilityAssetManager *_featureAvailabilityAssetManager;
+    HDRemoteFeatureAvailabilityAssetManager *_remoteFeatureAvailabilityAssetManager;
     HDMaintenanceWorkCoordinator *_maintenanceWorkCoordinator;
     HDQueryManager *_queryManager;
-    HDXPCListener *_serviceListener;
+    id <HDDaemonTester> _daemonTester;
+    HDDaemonConnectionManager *_connectionManager;
     HDTaskServerRegistry *_taskServerRegistry;
     HDDevicePowerMonitor *_devicePowerMonitor;
     HDXPCAlarmScheduler *_alarmScheduler;
-    id <HDDaemonTester> _daemonTester;
+    HDXPCEventManager *_xpcEventManager;
 }
 
-@property(nonatomic) __weak id <HDDaemonTester> daemonTester; // @synthesize daemonTester=_daemonTester;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) HDXPCEventManager *xpcEventManager; // @synthesize xpcEventManager=_xpcEventManager;
 @property(readonly, nonatomic) HDXPCAlarmScheduler *alarmScheduler; // @synthesize alarmScheduler=_alarmScheduler;
 @property(readonly, nonatomic) HDDevicePowerMonitor *devicePowerMonitor; // @synthesize devicePowerMonitor=_devicePowerMonitor;
 @property(readonly, nonatomic) HDTaskServerRegistry *taskServerRegistry; // @synthesize taskServerRegistry=_taskServerRegistry;
-@property(readonly, nonatomic) HDXPCListener *serviceListener; // @synthesize serviceListener=_serviceListener;
+@property(readonly, nonatomic) HDDaemonConnectionManager *connectionManager; // @synthesize connectionManager=_connectionManager;
+@property(nonatomic) _Bool shouldEnqueueMaintenanceWork; // @synthesize shouldEnqueueMaintenanceWork=_shouldEnqueueMaintenanceWork;
+@property(nonatomic) __weak id <HDDaemonTester> daemonTester; // @synthesize daemonTester=_daemonTester;
 @property(readonly, nonatomic) HDQueryManager *queryManager; // @synthesize queryManager=_queryManager;
 @property(readonly, nonatomic) HDPrimaryProfile *primaryProfile; // @synthesize primaryProfile=_primaryProfile;
 @property(readonly, nonatomic) HDMaintenanceWorkCoordinator *maintenanceWorkCoordinator; // @synthesize maintenanceWorkCoordinator=_maintenanceWorkCoordinator;
-@property(readonly, nonatomic) HDFeatureAvailabilityAssetManager *featureAvailabilityAssetManager; // @synthesize featureAvailabilityAssetManager=_featureAvailabilityAssetManager;
+@property(readonly, nonatomic) HDRemoteFeatureAvailabilityAssetManager *remoteFeatureAvailabilityAssetManager; // @synthesize remoteFeatureAvailabilityAssetManager=_remoteFeatureAvailabilityAssetManager;
 @property(readonly, nonatomic) HDCloudSyncCoordinator *cloudSyncCoordinator; // @synthesize cloudSyncCoordinator=_cloudSyncCoordinator;
 @property(retain, nonatomic) id <HDNanoAlertSuppressionService> alertSuppressionService; // @synthesize alertSuppressionService=_alertSuppressionService;
-@property(retain, nonatomic) HDAnalyticsSubmissionCoordinator *analyticsSubmissionCoordinator; // @synthesize analyticsSubmissionCoordinator=_analyticsSubmissionCoordinator;
+@property(readonly, nonatomic) HDAutoBugCaptureReporter *autoBugCaptureReporter; // @synthesize autoBugCaptureReporter=_autoBugCaptureReporter;
+@property(readonly, nonatomic) HDAnalyticsSubmissionCoordinator *analyticsSubmissionCoordinator; // @synthesize analyticsSubmissionCoordinator=_analyticsSubmissionCoordinator;
 @property(readonly, copy) NSString *medicalIDDirectoryPath; // @synthesize medicalIDDirectoryPath=_medicalIDDirectoryPath;
-- (void).cxx_destruct;
 - (void)unitTest_taskServerDidInit:(id)arg1;
 - (void)unitTest_queryServerDidInit:(id)arg1;
 - (void)unitTest_didCreateProfile:(id)arg1;
-- (id)createXPCListenerWithMachServiceName:(id)arg1;
+- (void)applicationStateDidChange:(id)arg1;
 - (id)_newReferenceOntologyAsset;
+- (id)_newMaintenanceWorkCoordinator;
 - (id)_newProfileManager;
 - (id)_newPluginManager;
 - (id)_newBackgroundTaskScheduler;
 - (id)_newProcessStateManager;
 - (id)_newPrimaryProfile;
+- (id)_newAutoBugCaptureReporter;
 - (id)_newAnalyticsSubmissionCoordinator;
 - (id)_newCloudSyncCoordinator;
 - (id)_newContentProtectionManager;
+- (id)_newConnectionManager;
 - (id)_newBehavior;
 - (id)diagnosticDescription;
+- (id)createApplicationStateMonitorWithBundleIDs:(id)arg1 states:(unsigned int)arg2 elevatedPriority:(_Bool)arg3;
+- (id)createApplicationStateMonitor;
 @property(readonly, nonatomic) HDWorkoutPluginDaemonExtension *workoutPluginExtension;
 @property(readonly, nonatomic) HDProfileManager *profileManager;
 @property(readonly) HDPluginManager *pluginManager;
@@ -98,7 +109,9 @@
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (void)unregisterForLaunchNotification:(const char *)arg1;
 - (void)performBlockWithPowerAssertionIdentifier:(id)arg1 transactionName:(id)arg2 powerAssertionInterval:(double)arg3 block:(CDUnknownBlockType)arg4;
-- (id)exportObjectForListener:(id)arg1 client:(id)arg2 error:(id *)arg3;
+- (void)_notifyDaemonActivatedObservers;
+- (void)registerDaemonActivatedObserver:(id)arg1 queue:(id)arg2;
+- (void)_postDaemonLaunchDarwinNotification;
 - (void)_notifyDaemonReadyObservers;
 - (void)registerDaemonReadyObserver:(id)arg1 queue:(id)arg2;
 - (void)registerForDaemonReady:(id)arg1;
@@ -106,8 +119,10 @@
 - (void)_terminationCleanup;
 - (void)_setupMemoryWarningHandler;
 - (void)_handleLaunchServicesEvent:(id)arg1 name:(id)arg2;
-- (void)_setUpDistnotedEventHandler;
-- (void)_setUpNotifydEventHandler;
+- (void)_handleDistributedNotificationWithName:(const char *)arg1 event:(id)arg2;
+- (void)_setUpDistributedNotificationEventHandler;
+- (void)_handleDarwinNotificationWithName:(const char *)arg1 event:(id)arg2;
+- (void)_setUpDarwinNotificationEventHandler;
 - (void)_setUpLaunchEventHandlers;
 - (void)_registerLaunchEventDynamicallyForNotification:(const char *)arg1;
 - (void)_unregisterLaunchEventDynamicallyForNotification:(const char *)arg1;
@@ -117,10 +132,11 @@
 - (void)_localeOrLanguageChanged:(id)arg1;
 - (void)terminateClean:(_Bool)arg1 reason:(id)arg2;
 - (id)_bundleIdentifiersToTerminateAfterObliteration;
+- (void)_terminateAndKillClientsForObliteration:(id)arg1;
+- (void)obliterateAndTerminateProfiles:(id)arg1 options:(unsigned long long)arg2 reason:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)obliterateAndTerminateWithOptions:(unsigned long long)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)invalidateAllServersForProfile:(id)arg1;
 - (void)invalidateAndWait;
-- (void)endpointInvalidated:(id)arg1;
 - (id)daemonExtensionsConformingToProtocol:(id)arg1;
 - (id)daemonExtensionWithIdentifier:(id)arg1;
 - (void)dealloc;

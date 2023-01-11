@@ -15,7 +15,6 @@
 @interface _INPBSeat : PBCodable <_INPBSeat, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     NSString *_seatNumber;
     NSString *_seatRow;
     NSString *_seatSection;
@@ -23,12 +22,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *seatingType; // @synthesize seatingType=_seatingType;
 @property(copy, nonatomic) NSString *seatSection; // @synthesize seatSection=_seatSection;
 @property(copy, nonatomic) NSString *seatRow; // @synthesize seatRow=_seatRow;
 @property(copy, nonatomic) NSString *seatNumber; // @synthesize seatNumber=_seatNumber;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

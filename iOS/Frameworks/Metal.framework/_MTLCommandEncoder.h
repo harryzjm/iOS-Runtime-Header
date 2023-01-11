@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, _MTLCommandBuffer;
-@protocol MTLCommandBuffer, MTLDevice;
+@class NSMutableArray, NSString, _MTLCommandBuffer;
+@protocol MTLCommandBuffer, MTLDevice, MTLFence;
 
 @interface _MTLCommandEncoder
 {
@@ -14,10 +14,15 @@
     unsigned long long _numThisEncoder;
     unsigned long long _globalTraceObjectID;
     unsigned long long _labelTraceID;
+    id <MTLFence> _progressFence;
+    _Bool _needsFrameworkAssistedErrorTracking;
+    _Bool _isProgressTrackingEncoder;
+    NSMutableArray *_debugSignposts;
 }
 
 @property(nonatomic) unsigned long long numThisEncoder; // @synthesize numThisEncoder=_numThisEncoder;
 @property(readonly, nonatomic) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 @property(readonly) unsigned long long dispatchType; // @dynamic dispatchType;
 - (void)memoryBarrierNotificationWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierNotificationWithScope:(unsigned long long)arg1;
@@ -27,8 +32,10 @@
 - (void)pushDebugGroup:(id)arg1;
 - (void)insertDebugSignpost:(id)arg1;
 - (void)endEncoding;
+- (void)preEndEncoding;
+- (unsigned long long)getDriverUniqueID;
 - (id)commandBuffer;
-@property(readonly, nonatomic) id <MTLDevice> device;
+@property(readonly) id <MTLDevice> device;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;

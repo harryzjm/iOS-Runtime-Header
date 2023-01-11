@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     _Bool _scrollToNotes;
     _Bool _canHideDoneAndCancelButtons;
     _Bool _timeImplicitlySet;
+    _Bool _isTextEditing;
     id <EKCalendarItemEditorDelegate> _editorDelegate;
     EKEventStore *_store;
     EKCalendarItem *_calendarItem;
@@ -52,8 +53,10 @@ __attribute__((visibility("hidden")))
 + (id)_doneLocalizedString;
 + (id)_addLocalizedString;
 + (id)defaultTitleForCalendarItem;
+- (void).cxx_destruct;
 @property(retain, nonatomic) EKChangeSet *originalChangeSet; // @synthesize originalChangeSet=_originalChangeSet;
 @property(retain, nonatomic) _UIAccessDeniedView *accessDeniedView; // @synthesize accessDeniedView=_accessDeniedView;
+@property(nonatomic) _Bool isTextEditing; // @synthesize isTextEditing=_isTextEditing;
 @property(nonatomic) _Bool timeImplicitlySet; // @synthesize timeImplicitlySet=_timeImplicitlySet;
 @property(readonly) EKCalendarItemEditItem *currentEditItem; // @synthesize currentEditItem=_currentEditItem;
 @property(nonatomic) _Bool canHideDoneAndCancelButtons; // @synthesize canHideDoneAndCancelButtons=_canHideDoneAndCancelButtons;
@@ -64,13 +67,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) EKCalendarItem *calendarItem; // @synthesize calendarItem=_calendarItem;
 @property(retain, nonatomic) EKEventStore *store; // @synthesize store=_store;
 @property(nonatomic) __weak id <EKCalendarItemEditorDelegate> editorDelegate; // @synthesize editorDelegate=_editorDelegate;
-- (void).cxx_destruct;
 - (_Bool)canBecomeFirstResponder;
 - (void)_performCloseKeyCommand;
 - (void)_setUpKeyCommands;
-- (void)_presentDetachSheet;
+- (void)_presentDetachSheetForEvent:(id)arg1 saveAttachments:(_Bool)arg2 withContinueBlock:(CDUnknownBlockType)arg3;
+- (void)_presentAttachmentRecurrenceSheetForEvent:(id)arg1 withContinueBlock:(CDUnknownBlockType)arg2;
 - (id)_viewForSheet;
 - (id)_nameForDeleteButton;
+- (void)scrollViewDidScroll:(id)arg1;
 - (_Bool)_performSave:(long long)arg1 animated:(_Bool)arg2;
 - (void)_performDelete:(long long)arg1;
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
@@ -128,6 +132,7 @@ __attribute__((visibility("hidden")))
 - (void)_keyboardWillHide;
 - (void)_pinKeyboard:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
+- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3;
 - (void)refreshLocation;
 - (void)refreshInvitees;
 - (void)refreshStartAndEndDates;
@@ -139,6 +144,9 @@ __attribute__((visibility("hidden")))
 - (id)defaultAlertTitle;
 - (void)setupDeleteButton;
 - (id)preferredTitle;
+- (_Bool)hasAttachmentChanges;
+- (id)attachmentsModifiedEvent;
+- (_Bool)attachmentsModifiedOnRecurrence;
 - (_Bool)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;
 - (void)prepareEditItems;
 - (void)_setCalendarItemOnEditItems;
@@ -147,11 +155,14 @@ __attribute__((visibility("hidden")))
 - (void)_completeWithAction:(long long)arg1 animated:(_Bool)arg2 notify:(_Bool)arg3;
 - (void)completeWithAction:(long long)arg1 animated:(_Bool)arg2;
 - (_Bool)saveWithSpan:(long long)arg1 animated:(_Bool)arg2;
+- (void)resignCurrentEditItemFirstResponder;
 - (void)focus:(unsigned long long)arg1 select:(_Bool)arg2;
 - (_Bool)hasUnsavedChanges;
 - (_Bool)willPresentDialogOnSave;
+- (void)completeAndSaveWithContinueBlock:(CDUnknownBlockType)arg1;
 - (void)completeAndSave;
 - (void)handleTapOutside;
+- (void)done:(id)arg1 withContinueBlock:(CDUnknownBlockType)arg2;
 - (void)done:(id)arg1;
 - (void)cancelEditingWithDelegateNotification:(_Bool)arg1 forceCancel:(_Bool)arg2;
 - (void)cancel:(id)arg1;

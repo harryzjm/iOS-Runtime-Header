@@ -47,6 +47,8 @@
 + (struct CGRect)rectForSelection:(id)arg1 withColumns:(id)arg2 useParagraphModeRects:(_Bool)arg3;
 + (struct CGRect)rectForSelection:(id)arg1 withColumns:(id)arg2;
 + (struct CGRect)caretRectForInsertionPoint:(id)arg1 withColumns:(id)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool textIsVertical; // @synthesize textIsVertical=_textIsVertical;
 @property(retain, nonatomic) id <TSWPStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) unsigned long long scaleTextPercent; // @synthesize scaleTextPercent=_scaleTextPercent;
@@ -63,8 +65,6 @@
 @property(nonatomic) struct CGAffineTransform transformFromWP; // @synthesize transformFromWP=_transform;
 @property(nonatomic) struct CGRect wpBounds; // @synthesize wpBounds=_frameBounds;
 @property(readonly, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (_Bool)onlyHasAnchoredDrawable;
 - (id)singleLinePartitionedInfoAtStart:(_Bool)arg1;
 - (id)partitionedLayoutForInfo:(id)arg1;
@@ -104,8 +104,11 @@
 - (double)horizontalOffsetForCharIndex:(unsigned long long)arg1 lineFragmentIndex:(unsigned long long)arg2 bumpPastHyphen:(_Bool)arg3 allowPastLineBounds:(_Bool)arg4;
 - (CDStruct_50f584da)lineMetricsAtCharIndex:(unsigned long long)arg1 allowEndOfLine:(_Bool)arg2;
 - (double)baselineOfLineFragmentAtCharIndex:(unsigned long long)arg1;
+- (double)baselineOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (CDStruct_7660b417)heightInfoOfLineFragmentAtIndex:(unsigned long long)arg1;
+- (unsigned long long)truncatedCharIndexForLineFragmentAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)rangeOfLineFragmentAtIndex:(unsigned long long)arg1;
+- (_Bool)isDropCapFragmentAtIndex:(unsigned long long)arg1;
 - (_Bool)isEmptyLineFragmentAtIndex:(unsigned long long)arg1;
 - (_Bool)isTruncatedLineFragmentAtIndex:(unsigned long long)arg1;
 - (double)typographicGlyphExtentOfLineFragmentAtIndex:(unsigned long long)arg1;
@@ -119,6 +122,9 @@
 - (const struct TSWPLineFragment *)lineFragmentAtIndex:(unsigned long long)arg1;
 - (void)setLineFragmentArray:(const shared_ptr_1a254aea *)arg1;
 - (const shared_ptr_1a254aea *)lineFragmentArray;
+- (double)topOfCapForLogicalLineIndex:(unsigned long long)arg1;
+- (struct _NSRange)lineFragmentRangeForLogicalLineIndex:(unsigned long long)arg1;
+- (unsigned long long)logicalLineCount;
 @property(readonly, nonatomic) unsigned long long countLines;
 @property(readonly, nonatomic) struct CGAffineTransform transformToWP;
 @property(readonly, nonatomic) struct CGRect frameBounds;

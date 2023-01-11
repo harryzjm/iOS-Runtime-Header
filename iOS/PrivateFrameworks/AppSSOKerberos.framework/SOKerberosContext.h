@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASAuthorizationProviderExtensionAuthorizationRequest, NSData, NSDate, NSString, NSUUID, SOKerberosExtensionData, SOKerberosRealmSettings, SONetworkIdentity, SORealmSettingManager, SOSiteCode;
+@class ASAuthorizationProviderExtensionAuthorizationRequest, NSData, NSDate, NSString, NSUUID, SOKerberosExtensionData, SOKerberosExtensionUserData, SOKerberosRealmSettings, SONetworkIdentity, SORealmSettingManager, SOSiteCode;
 @protocol OS_dispatch_group;
 
 @interface SOKerberosContext : NSObject
@@ -17,13 +17,17 @@
     _Bool _requestCancelled;
     _Bool _attemptedToGetCredsFromKeychain;
     _Bool _forceLoginViewController;
+    _Bool _isManagedApp;
+    _Bool _smartCardNeedsInsert;
     _Bool _requestStarted;
     NSString *_userPrincipalName;
     NSString *_userName;
     NSString *_realm;
     SOKerberosExtensionData *_extensionData;
+    SOKerberosExtensionUserData *_extensionUserData;
     NSString *_hostName;
     NSString *_servicePrincipalName;
+    NSString *_serviceName;
     NSString *_password;
     NSString *_changedPassword;
     NSUUID *_credentialUUID;
@@ -33,18 +37,24 @@
     SOSiteCode *_siteCode;
     NSString *_cacheName;
     NSString *_callerBundleIdentifier;
+    NSString *_callerLocalizedName;
     NSDate *_loginTimeStamp;
     NSObject<OS_dispatch_group> *_siteCodeGroup;
     SONetworkIdentity *_networkIdentity;
+    NSData *_auditToken;
     ASAuthorizationProviderExtensionAuthorizationRequest *_authorizationRequest;
     NSObject<OS_dispatch_group> *_dispatchGroup;
     SORealmSettingManager *_settingsManager;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool requestStarted; // @synthesize requestStarted=_requestStarted;
 @property(retain, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property(retain) NSObject<OS_dispatch_group> *dispatchGroup; // @synthesize dispatchGroup=_dispatchGroup;
 @property(retain, nonatomic) ASAuthorizationProviderExtensionAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
+@property(nonatomic) _Bool smartCardNeedsInsert; // @synthesize smartCardNeedsInsert=_smartCardNeedsInsert;
+@property(readonly, nonatomic) _Bool isManagedApp; // @synthesize isManagedApp=_isManagedApp;
+@property(readonly, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
 @property(retain, nonatomic) SONetworkIdentity *networkIdentity; // @synthesize networkIdentity=_networkIdentity;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *siteCodeGroup; // @synthesize siteCodeGroup=_siteCodeGroup;
 @property(retain, nonatomic) NSDate *loginTimeStamp; // @synthesize loginTimeStamp=_loginTimeStamp;
@@ -52,6 +62,7 @@
 @property(nonatomic) _Bool attemptedToGetCredsFromKeychain; // @synthesize attemptedToGetCredsFromKeychain=_attemptedToGetCredsFromKeychain;
 @property(nonatomic) _Bool requestCancelled; // @synthesize requestCancelled=_requestCancelled;
 @property(nonatomic) _Bool credsCameFromKeychain; // @synthesize credsCameFromKeychain=_credsCameFromKeychain;
+@property(retain, nonatomic) NSString *callerLocalizedName; // @synthesize callerLocalizedName=_callerLocalizedName;
 @property(retain, nonatomic) NSString *callerBundleIdentifier; // @synthesize callerBundleIdentifier=_callerBundleIdentifier;
 @property(nonatomic) _Bool returnCredentialOnly; // @synthesize returnCredentialOnly=_returnCredentialOnly;
 @property(retain, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
@@ -63,15 +74,17 @@
 @property(nonatomic) _Bool userNameIsReadOnly; // @synthesize userNameIsReadOnly=_userNameIsReadOnly;
 @property(retain, nonatomic) NSString *changedPassword; // @synthesize changedPassword=_changedPassword;
 @property(retain, nonatomic) NSString *password; // @synthesize password=_password;
+@property(retain, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(retain, nonatomic) NSString *servicePrincipalName; // @synthesize servicePrincipalName=_servicePrincipalName;
 @property(retain, nonatomic) NSString *hostName; // @synthesize hostName=_hostName;
+@property(retain, nonatomic) SOKerberosExtensionUserData *extensionUserData; // @synthesize extensionUserData=_extensionUserData;
 @property(retain, nonatomic) SOKerberosExtensionData *extensionData; // @synthesize extensionData=_extensionData;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
 @property(retain, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property(retain, nonatomic) NSString *userPrincipalName; // @synthesize userPrincipalName=_userPrincipalName;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) SOKerberosRealmSettings *currentSettings;
 - (void)presentAuthorizationViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)completeRequestWithDoNotHandle;
 - (void)completeRequestWithError:(id)arg1;
 - (void)completeRequestWithHTTPResponse:(id)arg1 httpBody:(id)arg2;
 - (void)completeRequestWithHTTPResponseHeaders:(id)arg1;
@@ -80,6 +93,7 @@
 - (void)cancelRequest:(_Bool)arg1;
 - (void)cancelRequest;
 - (void)waitForCompletion;
+- (void)finishRequest;
 - (void)startRequest;
 - (void)setUserPrincipalNameAfterAuth:(id)arg1;
 - (id)initWithRequest:(id)arg1 extensionData:(id)arg2 settingsManager:(id)arg3;

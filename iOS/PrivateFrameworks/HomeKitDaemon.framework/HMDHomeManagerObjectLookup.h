@@ -4,29 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDObjectLookupScanProtocol-Protocol.h>
+@class HMDHomeManager;
 
-@class HMDHomeManager, NSString;
-
-@interface HMDHomeManagerObjectLookup <HMDObjectLookupScanProtocol>
+@interface HMDHomeManagerObjectLookup
 {
     HMDHomeManager *_homeManager;
 }
 
 + (id)logCategory;
-@property(readonly, nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 - (void).cxx_destruct;
+@property __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 - (void)_scanAccounts;
 - (void)_scanCloudZones;
 - (void)_scanHomes;
 - (void)scanObjects;
 - (id)initWithHomeManager:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

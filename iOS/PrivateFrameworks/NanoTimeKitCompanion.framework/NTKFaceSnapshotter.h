@@ -6,25 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NTKDelayedBlock, NTKFaceSnapshottingWindow;
+#import <NanoTimeKitCompanion/NTKComplicationCollectionObserver-Protocol.h>
 
-@interface NTKFaceSnapshotter : NSObject
+@class NSString, NTKFaceSnapshottingWindow;
+
+@interface NTKFaceSnapshotter : NSObject <NTKComplicationCollectionObserver>
 {
     NTKFaceSnapshottingWindow *_snapshotWindow;
-    NTKDelayedBlock *_hideSnapshotWindowBlock;
 }
 
 + (id)renderSnapshotFromWindow:(id)arg1;
 + (id)defaultModernSnapshotOptions;
 - (void).cxx_destruct;
+- (void)complicationCollectionDidLoad:(id)arg1;
 - (void)dealloc;
 - (void)_hideSnapshotWindow;
 - (void)_showSnapshotWindowForDevice:(id)arg1;
-- (void)_mainQueue_takeSnapshotOfFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_mainQueue_serviceRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)viewControllerForFace:(id)arg1 withOptions:(id)arg2;
 - (void)provideSnapshotOfFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_serviceRequestIfIdle;
 - (void)provideSnapshotOfFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_setupNotificationForCollectionLoadForDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

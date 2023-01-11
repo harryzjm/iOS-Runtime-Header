@@ -4,16 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Preferences/PSRestrictionsPINController.h>
-
-@interface STLockoutRestrictionsPINController : PSRestrictionsPINController
+@interface STLockoutRestrictionsPINController
 {
 }
-
-+ (void)activateRemotePINUI;
-+ (id)_xpcConnection;
-- (id)stringsBundle;
-- (id)stringsTable;
 
 @end
 

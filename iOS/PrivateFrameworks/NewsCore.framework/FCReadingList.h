@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NewsCore/FCOfflineArticleContributing-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
-#import <NewsCore/FCReadingListContentControllerObserving-Protocol.h>
 
-@class FCCloudContext, FCMTWriterLock, FCReadingListContentController, NSMutableDictionary, NSString;
+@class FCCloudContext, FCMTWriterLock, FCObservable, NSMutableDictionary, NSString;
 @protocol FCOperationThrottler;
 
-@interface FCReadingList <FCReadingListContentControllerObserving, FCOperationThrottlerDelegate>
+@interface FCReadingList <FCOperationThrottlerDelegate, FCOfflineArticleContributing>
 {
+    FCObservable *_articleIDsToDownload;
+    long long _articleDownloadOptions;
     NSMutableDictionary *_entriesByArticleID;
-    FCReadingListContentController *_readingListContentController;
     FCCloudContext *_cloudContext;
     id <FCOperationThrottler> _articleIDsAvailableForOfflineReadingUpdateThrottler;
     FCMTWriterLock *_itemsLock;
@@ -30,33 +31,31 @@
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
 + (id)desiredKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
 @property(retain, nonatomic) id <FCOperationThrottler> articleIDsAvailableForOfflineReadingUpdateThrottler; // @synthesize articleIDsAvailableForOfflineReadingUpdateThrottler=_articleIDsAvailableForOfflineReadingUpdateThrottler;
 @property(retain, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
-@property(retain, nonatomic) FCReadingListContentController *readingListContentController; // @synthesize readingListContentController=_readingListContentController;
 @property(retain, nonatomic) NSMutableDictionary *entriesByArticleID; // @synthesize entriesByArticleID=_entriesByArticleID;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) long long articleDownloadOptions; // @synthesize articleDownloadOptions=_articleDownloadOptions;
+@property(readonly, nonatomic) FCObservable *articleIDsToDownload; // @synthesize articleIDsToDownload=_articleIDsToDownload;
 - (id)_allSortedEntriesInReadingList;
 - (id)_allEntriesInReadingList;
 - (id)_readingListEntryForArticleID:(id)arg1;
 - (void)_addedArticleIDs:(id)arg1 removedArticleIDs:(id)arg2 eventInitiationLevel:(long long)arg3;
+- (void)prepareToContributeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
-- (void)readingListContentControllerDidUpdateArticleAvailabilityInOfflineMode:(id)arg1;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
 - (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)loadLocalCachesFromStore;
 - (void)expressInterestInOfflineArticlesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)notifyWhenFinishedDownloadingForOfflineReadingWithTimeout:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
-- (_Bool)isArticleAvailableForOfflineReading:(id)arg1;
-- (void)enableDownloadingForOfflineReading;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (unsigned long long)_maxCountOfArticlesAvailableOfflineWithConfiguration:(id)arg1;
 - (void)_fetchArticleIDsAvailableForOfflineReadingWithCompletion:(CDUnknownBlockType)arg1;
-- (id)allNonConsumedArticleIDsInReadingListForOfflineReading;
-- (id)allNonConsumedArticleIDsInReadingList;
+- (id)allNonConsumedArticleIDsIntersectingSet:(id)arg1;
+- (id)allNonConsumedArticleIDs;
 - (unsigned long long)countOfAllArticlesSavedOutsideOfNewsSince:(id)arg1;
 - (id)allSortedArticleIDsInReadingList;
 - (id)dateArticleWasAdded:(id)arg1;

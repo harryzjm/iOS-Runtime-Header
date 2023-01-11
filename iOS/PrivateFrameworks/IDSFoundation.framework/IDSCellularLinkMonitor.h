@@ -17,6 +17,8 @@
     unsigned int _cellularMTU;
     NSHashTable *_cellularLinkDelegates;
     NSMutableDictionary *_notificationRegInfo;
+    unsigned int _dataSoMaskBits;
+    unsigned int _remoteDeviceVersion;
 }
 
 + (id)sharedInstance;
@@ -25,8 +27,10 @@
 - (void)currentCellularSignalStrength:(int *)arg1 signalStrength:(int *)arg2 signalGrade:(int *)arg3;
 - (void)updateProtocolQualityOfService:(_Bool)arg1 localAddress:(struct sockaddr *)arg2;
 - (_Bool)dropIPPackets:(id)arg1 localAddress:(struct sockaddr *)arg2 remoteAddress:(struct sockaddr *)arg3 isRelay:(_Bool)arg4 channelNumberMSB:(unsigned char)arg5;
+- (void)setRemoteDeviceVersion:(unsigned int)arg1;
 - (_Bool)setPacketNotificationFilter:(struct sockaddr *)arg1 remote:(struct sockaddr *)arg2 uniqueTag:(unsigned int)arg3 callType:(unsigned char)arg4;
 - (void)removePacketNotificationFilter;
+@property(readonly) unsigned int dataSoMaskBits; // @synthesize dataSoMaskBits=_dataSoMaskBits;
 @property(readonly) _Bool dataUsable; // @synthesize dataUsable=_dataUsable;
 @property(readonly) unsigned int cellularMTU; // @synthesize cellularMTU=_cellularMTU;
 @property(readonly) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
@@ -34,6 +38,9 @@
 - (void)reset;
 - (void)_updateDataStatus;
 - (_Bool)_updateCellularMTU;
+- (_Bool)_updateDataBearerSoMask;
+- (void)_notifyClientDataBearerSoMask;
+- (void)_updateClientDataBearerSoMask;
 - (_Bool)_updateRadioAccessTechnology;
 - (_Bool)_updateCellularDataInterface:(_Bool)arg1;
 - (void)_setupCTServerConnection;

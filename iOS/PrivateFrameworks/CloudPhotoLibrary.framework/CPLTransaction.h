@@ -6,14 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface CPLTransaction : NSObject
 {
+    _Bool _dirty;
+    NSString *_identifier;
 }
 
++ (id)newTransactionWithIdentifier:(id)arg1 description:(id)arg2 keepPower:(_Bool)arg3;
 + (unsigned long long)transactionCount;
 + (id)transactions;
-+ (void)endTransactionWithReason:(id)arg1;
-+ (void)beginTransactionWithReason:(id)arg1 keepPower:(_Bool)arg2;
++ (void)endTransactionWithIdentifier:(id)arg1;
++ (void)beginTransactionWithIdentifier:(id)arg1 description:(id)arg2 keepPower:(_Bool)arg3;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void)dealloc;
+- (void)endTransaction;
+- (id)initWithIdentifier:(id)arg1 description:(id)arg2 keepPower:(_Bool)arg3;
 
 @end
 

@@ -10,6 +10,14 @@
 {
 }
 
++ (id)skippedSetupPaneClassesForDevice:(id)arg1;
++ (void)removeSkippedPaneClass:(Class)arg1 forDevice:(id)arg2;
++ (void)markSkippedSetupPaneClass:(Class)arg1 forDevice:(id)arg2;
++ (id)skippedSetupPaneClassesForCurrentDevice;
++ (void)removeSkippedPaneClassForCurrentDevice:(Class)arg1;
++ (void)markSkippedSetupPaneClassForCurrentDevice:(Class)arg1;
++ (id)_domainAccessorForDevice:(id)arg1;
++ (id)_currentDevice;
 + (void)removeFollowUpForIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)addFollowUpForIdentifier:(id)arg1 withAttributes:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 + (id)baseDomainIdentifier;

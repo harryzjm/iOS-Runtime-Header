@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_axInSourceViewController;
 - (id)accessibilityLabel;
 
 @end

@@ -8,19 +8,20 @@
 
 @class NSArray, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDObjectAuthorizationRequest : NSObject
 {
+    CDUnknownBlockType _completion;
     NSUUID *_identifier;
     NSArray *_samples;
     NSArray *_authorizationRecords;
-    CDUnknownBlockType _completion;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *authorizationRecords; // @synthesize authorizationRecords=_authorizationRecords;
 @property(readonly, copy, nonatomic) NSArray *samples; // @synthesize samples=_samples;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(readonly, copy, nonatomic) NSArray *samplesRequiringAuthorization;
 - (void)invokeCompletionHandlerWithAuthorizedSamples:(id)arg1 error:(id)arg2;
 - (void)invokeCompletionWithSuccess:(_Bool)arg1 sourceEntity:(id)arg2 profile:(id)arg3 error:(id)arg4;

@@ -14,16 +14,17 @@
     MISSING_TYPE *bundleIdentifierFallback;
     MISSING_TYPE *httpSuccessCodeMin;
     MISSING_TYPE *httpSuccessCodeMax;
-    MISSING_TYPE *urlComponents;
     MISSING_TYPE *credential;
     MISSING_TYPE *urlSessionFactory;
     MISSING_TYPE *statusCodeHandlers;
     MISSING_TYPE *statusCodeHandlerQueue;
     MISSING_TYPE *session;
+    MISSING_TYPE *sessionLock;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)dealloc;
 
 @end
 

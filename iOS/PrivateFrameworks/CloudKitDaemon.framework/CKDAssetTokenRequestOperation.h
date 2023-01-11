@@ -12,9 +12,10 @@ __attribute__((visibility("hidden")))
     CKDAssetTokenRequest *_assetTokenRequest;
 }
 
-@property(retain, nonatomic) CKDAssetTokenRequest *assetTokenRequest; // @synthesize assetTokenRequest=_assetTokenRequest;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDAssetTokenRequest *assetTokenRequest; // @synthesize assetTokenRequest=_assetTokenRequest;
 - (void)main;
+- (int)operationType;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 
 @end

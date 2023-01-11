@@ -6,7 +6,7 @@
 
 #import <SpringBoardHome/SBHLegibility-Protocol.h>
 
-@class SBHSidebarVisualConfiguration, WGWidgetGroupViewController;
+@class SBHSidebarVisualConfiguration, UIViewController, WGWidgetGroupViewController;
 @protocol SBHSidebarProviderDelegate;
 
 @protocol SBHSidebarProvider <SBHLegibility>
@@ -15,5 +15,8 @@
 @property(retain, nonatomic) SBHSidebarVisualConfiguration *sidebarVisualConfiguration;
 @property(retain, nonatomic) WGWidgetGroupViewController *widgetViewController;
 - (void)setEditingIcons:(_Bool)arg1;
+
+@optional
+@property(retain, nonatomic) UIViewController *avocadoViewController;
 @end
 

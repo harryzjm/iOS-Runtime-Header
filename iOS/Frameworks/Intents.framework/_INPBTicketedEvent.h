@@ -15,7 +15,6 @@
 @interface _INPBTicketedEvent : PBCodable <_INPBTicketedEvent, NSSecureCoding, NSCopying>
 {
     CDStruct_74e42c4c _has;
-    _Bool __encodeLegacyGloryData;
     int _category;
     _INPBDateTimeRange *_eventDuration;
     _INPBLocationValue *_location;
@@ -23,12 +22,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) _INPBLocationValue *location; // @synthesize location=_location;
 @property(retain, nonatomic) _INPBDateTimeRange *eventDuration; // @synthesize eventDuration=_eventDuration;
 @property(nonatomic) int category; // @synthesize category=_category;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

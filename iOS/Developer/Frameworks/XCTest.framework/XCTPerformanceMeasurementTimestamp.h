@@ -10,15 +10,20 @@
 
 @interface XCTPerformanceMeasurementTimestamp : NSObject
 {
+    _Bool _hasContinuousTime;
+    unsigned long long _continuousTime;
     unsigned long long _absoluteTime;
     NSDate *_date;
 }
 
+- (void).cxx_destruct;
+@property(readonly) _Bool hasContinuousTime; // @synthesize hasContinuousTime=_hasContinuousTime;
 @property(readonly, copy) NSDate *date; // @synthesize date=_date;
 @property(readonly) unsigned long long absoluteTime; // @synthesize absoluteTime=_absoluteTime;
-- (void).cxx_destruct;
+@property(readonly) unsigned long long continuousTime; // @synthesize continuousTime=_continuousTime;
 @property(readonly) unsigned long long absoluteTimeNanoSeconds;
 - (id)initWithAbsoluteTime:(unsigned long long)arg1 date:(id)arg2;
+- (id)initWithContinuousTime:(unsigned long long)arg1 absoluteTime:(unsigned long long)arg2 date:(id)arg3;
 - (id)init;
 
 @end

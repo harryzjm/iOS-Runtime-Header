@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXCuratedLibraryStyleGuide, PXTitleSubtitleLabelSpec;
+@class NSDateFormatter, PXCuratedLibraryStyleGuide, PXExtendedImageConfiguration, PXTitleSubtitleLabelSpec;
 
 @interface PXCuratedLibrarySectionHeaderLayoutSpec
 {
+    _Bool _isFloating;
     _Bool _showZoomButtons;
     _Bool _showAspectFitButtons;
     _Bool _wantsTitle;
@@ -18,9 +19,8 @@
     _Bool _requiresTitleRenderedAsView;
     _Bool _swapTitleWithSubtitle;
     _Bool _shouldFadeOutWhenReachingTop;
-    _Bool _shouldAccomdateAccessibilityButtonLayout;
+    _Bool _shouldAccommodateLeadingButtonsLayout;
     _Bool _gradientRespectsSafeArea;
-    _Bool _gradientAlwaysSticksToTop;
     double _buttonHeight;
     double _buttonSpacing;
     double _buttonHorizontalPadding;
@@ -28,9 +28,12 @@
     PXTitleSubtitleLabelSpec *_debugInterestingTitleSubtitleLabelSpec;
     PXTitleSubtitleLabelSpec *_debugNonInterestingTitleSubtitleLabelSpec;
     unsigned long long _inlineHeaderStyle;
+    NSDateFormatter *_titleDateFormatter;
+    NSDateFormatter *_subtitleDateFormatter;
     double _fadeOutDistanceFromSafeAreaTop;
     double _fadeOutDistance;
     double _fadeOutMinimumAlpha;
+    PXExtendedImageConfiguration *_headerGradientImageConfiguration;
     double _gradientAlpha;
     double _gradientHeight;
     double _minimumSpacingBetweenTopSafeAreaAndContentTop;
@@ -43,19 +46,22 @@
     struct UIEdgeInsets _titlePadding;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *smallVariantSpec; // @synthesize smallVariantSpec=_smallVariantSpec;
 @property(readonly, nonatomic) PXCuratedLibraryStyleGuide *styleGuide; // @synthesize styleGuide=_styleGuide;
 @property(readonly, nonatomic) double minimumSpacingBetweenTopSafeAreaAndTitleTop; // @synthesize minimumSpacingBetweenTopSafeAreaAndTitleTop=_minimumSpacingBetweenTopSafeAreaAndTitleTop;
 @property(readonly, nonatomic) double minimumSpacingBetweenTopSafeAreaAndContentTop; // @synthesize minimumSpacingBetweenTopSafeAreaAndContentTop=_minimumSpacingBetweenTopSafeAreaAndContentTop;
-@property(nonatomic) _Bool gradientAlwaysSticksToTop; // @synthesize gradientAlwaysSticksToTop=_gradientAlwaysSticksToTop;
 @property(nonatomic) _Bool gradientRespectsSafeArea; // @synthesize gradientRespectsSafeArea=_gradientRespectsSafeArea;
 @property(nonatomic) double gradientHeight; // @synthesize gradientHeight=_gradientHeight;
 @property(nonatomic) double gradientAlpha; // @synthesize gradientAlpha=_gradientAlpha;
-@property(nonatomic) _Bool shouldAccomdateAccessibilityButtonLayout; // @synthesize shouldAccomdateAccessibilityButtonLayout=_shouldAccomdateAccessibilityButtonLayout;
+@property(nonatomic) _Bool shouldAccommodateLeadingButtonsLayout; // @synthesize shouldAccommodateLeadingButtonsLayout=_shouldAccommodateLeadingButtonsLayout;
+@property(readonly, nonatomic) PXExtendedImageConfiguration *headerGradientImageConfiguration; // @synthesize headerGradientImageConfiguration=_headerGradientImageConfiguration;
 @property(nonatomic) double fadeOutMinimumAlpha; // @synthesize fadeOutMinimumAlpha=_fadeOutMinimumAlpha;
 @property(nonatomic) double fadeOutDistance; // @synthesize fadeOutDistance=_fadeOutDistance;
 @property(nonatomic) double fadeOutDistanceFromSafeAreaTop; // @synthesize fadeOutDistanceFromSafeAreaTop=_fadeOutDistanceFromSafeAreaTop;
 @property(nonatomic) _Bool shouldFadeOutWhenReachingTop; // @synthesize shouldFadeOutWhenReachingTop=_shouldFadeOutWhenReachingTop;
+@property(copy, nonatomic) NSDateFormatter *subtitleDateFormatter; // @synthesize subtitleDateFormatter=_subtitleDateFormatter;
+@property(copy, nonatomic) NSDateFormatter *titleDateFormatter; // @synthesize titleDateFormatter=_titleDateFormatter;
 @property(nonatomic) _Bool swapTitleWithSubtitle; // @synthesize swapTitleWithSubtitle=_swapTitleWithSubtitle;
 @property(nonatomic) unsigned long long inlineHeaderStyle; // @synthesize inlineHeaderStyle=_inlineHeaderStyle;
 @property(nonatomic) _Bool requiresTitleRenderedAsView; // @synthesize requiresTitleRenderedAsView=_requiresTitleRenderedAsView;
@@ -74,9 +80,9 @@
 @property(nonatomic) double buttonHorizontalPadding; // @synthesize buttonHorizontalPadding=_buttonHorizontalPadding;
 @property(nonatomic) double buttonSpacing; // @synthesize buttonSpacing=_buttonSpacing;
 @property(nonatomic) double buttonHeight; // @synthesize buttonHeight=_buttonHeight;
+@property(nonatomic) _Bool isFloating; // @synthesize isFloating=_isFloating;
 @property(nonatomic) CDStruct_2bd92d94 cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) double maximumTitleSubtitleHeight;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
 

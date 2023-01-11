@@ -6,28 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString, NSURL, VUIContentMetadata, VUIExtrasInfo;
+@class NSDate, NSDictionary, NSNumber, NSString, NSURL, VUIContentMetadata, VUIExtrasInfo, VUIRouterDataSource;
 
 __attribute__((visibility("hidden")))
 @interface VUIVideosPlayable : NSObject
 {
     NSDictionary *_videosPlayableDict;
-    NSString *_bookmarkID;
     NSURL *_previewArtwork;
     VUIContentMetadata *_metadata;
 }
 
 + (id)videosPlayablesFromDictionaries:(id)arg1 andMetadataDictionary:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) VUIContentMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) NSURL *previewArtwork; // @synthesize previewArtwork=_previewArtwork;
-@property(readonly, nonatomic) NSString *bookmarkID; // @synthesize bookmarkID=_bookmarkID;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *repeatLoopCount;
+@property(readonly, nonatomic) _Bool isAmbientVideo;
+@property(readonly, nonatomic) VUIRouterDataSource *upsellRouterDataSource;
 @property(readonly, nonatomic, getter=isSharedPurchase) _Bool sharedPurchase;
+@property(readonly, nonatomic) _Bool isiTunesPurchaseOrRental;
 @property(readonly, nonatomic) NSNumber *frequencyOfAgeConfirmation;
 @property(readonly, nonatomic) NSNumber *requiredAgeForPlayback;
 @property(readonly, nonatomic) NSURL *tvAppDeeplinkURL;
 @property(readonly, nonatomic) VUIExtrasInfo *extrasInfo;
 @property(readonly, nonatomic) NSString *referenceID;
+@property(readonly, nonatomic) NSString *rtcServiceIdentifier;
 @property(readonly, nonatomic) _Bool disableScrubbing;
 @property(readonly, nonatomic) NSString *externalServiceID;
 @property(readonly, nonatomic) NSString *liveStreamServiceID;
@@ -36,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSURL *tokenServerURL;
 @property(readonly, nonatomic) NSDictionary *mediaMetrics;
 @property(readonly, nonatomic) NSDictionary *vpafMetrics;
-@property(readonly, nonatomic) _Bool isExternal;
+@property(readonly, nonatomic) _Bool isSubscription;
 @property(readonly, nonatomic) NSString *channelName;
 @property(readonly, nonatomic) NSString *channelID;
 @property(readonly, nonatomic) NSString *canonicalID;
@@ -46,8 +49,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isRental;
 @property(readonly, nonatomic) NSNumber *rentalID;
 @property(readonly, nonatomic) NSString *externalID;
+@property(readonly, nonatomic) _Bool isFamilySharingContent;
+@property(readonly, nonatomic) NSString *bookmarkID;
 @property(readonly, nonatomic) NSDate *resumeTimeTimeStamp;
+- (_Bool)mostRecentResumeTime:(id *)arg1 mostRecentTimestamp:(id *)arg2;
 @property(readonly, nonatomic) NSNumber *resumeTime;
+@property(readonly, nonatomic) NSString *utsEntityType;
 @property(readonly, nonatomic) NSString *mediaType;
 @property(readonly, nonatomic) NSURL *scrubVideoURL;
 @property(readonly, nonatomic) NSString *buyParams;
@@ -55,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *fpsAdditionalServerParams;
 @property(readonly, nonatomic) NSURL *fpsCertificateURL;
 @property(readonly, nonatomic) NSURL *fpsKeyServerURL;
+@property(readonly, nonatomic) NSURL *downloadURL;
 @property(readonly, nonatomic) NSURL *hlsURL;
 @property(readonly, nonatomic) NSURL *playbackURL;
 @property(readonly, nonatomic) _Bool isMovie;

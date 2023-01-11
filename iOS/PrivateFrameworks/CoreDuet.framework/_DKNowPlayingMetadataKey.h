@@ -12,6 +12,8 @@
 
 + (id)isAirPlayVideo;
 + (id)outputDeviceIDs;
++ (id)iTunesSubscriptionIdentifier;
++ (id)iTunesStoreIdentifier;
 + (id)mediaType;
 + (id)identifier;
 + (id)title;

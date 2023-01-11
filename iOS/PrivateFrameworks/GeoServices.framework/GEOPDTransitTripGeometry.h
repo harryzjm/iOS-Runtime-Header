@@ -14,17 +14,17 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTransitTripGeometry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _tripStepIndexs;
     NSMutableArray *_tripLinks;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_tripStepIndexs:1;
         unsigned int read_tripLinks:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_tripStepIndexs:1;
-        unsigned int wrote_tripLinks:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,24 +42,25 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (void)setTripStepIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)tripStepIndexAtIndex:(unsigned long long)arg1;
-- (void)_addNoFlagsTripStepIndex:(unsigned int)arg1;
 - (void)addTripStepIndex:(unsigned int)arg1;
 - (void)clearTripStepIndexs;
 @property(readonly, nonatomic) unsigned int *tripStepIndexs;
 @property(readonly, nonatomic) unsigned long long tripStepIndexsCount;
-- (void)_readTripStepIndexs;
 - (id)tripLinkAtIndex:(unsigned long long)arg1;
 - (unsigned long long)tripLinksCount;
-- (void)_addNoFlagsTripLink:(id)arg1;
 - (void)addTripLink:(id)arg1;
 - (void)clearTripLinks;
 @property(retain, nonatomic) NSMutableArray *tripLinks;
-- (void)_readTripLinks;
 - (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

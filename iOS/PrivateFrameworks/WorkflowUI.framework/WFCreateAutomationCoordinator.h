@@ -13,7 +13,7 @@
 #import <WorkflowUI/WFTriggerComposeViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFTriggerConfigurationViewControllerDelegate-Protocol.h>
 
-@class NSString, UINavigationController, WFConfiguredTriggerRecord, WFDatabase, WFHomeManager, WFTriggerManager, WFWorkflow;
+@class NSString, UINavigationController, WFConfiguredTriggerRecord, WFDatabase, WFHomeManager, WFTriggerManager, WFWorkflow, WFWorkflowReference;
 @protocol WFCreateAutomationCoordinatorDelegate;
 
 @interface WFCreateAutomationCoordinator : NSObject <WFAutomationTypeChooserViewControllerDelegate, WFAutomationSelectTypeViewControllerDelegate, WFTriggerConfigurationViewControllerDelegate, WFTriggerComposeViewControllerDelegate, WFAutomationSummaryViewControllerDelegate, HUTriggerEditorDelegate>
@@ -21,23 +21,26 @@
     UINavigationController *_navigationController;
     id <WFCreateAutomationCoordinatorDelegate> _delegate;
     WFTriggerManager *_triggerManager;
-    NSString *_triggerID;
+    NSString *_triggerIdentifier;
     WFDatabase *_database;
     WFConfiguredTriggerRecord *_triggerRecord;
     WFWorkflow *_workflow;
+    WFWorkflowReference *_workflowReference;
     WFHomeManager *_homeManager;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) WFHomeManager *homeManager; // @synthesize homeManager=_homeManager;
+@property(retain, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
 @property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(retain, nonatomic) WFConfiguredTriggerRecord *triggerRecord; // @synthesize triggerRecord=_triggerRecord;
 @property(retain, nonatomic) WFDatabase *database; // @synthesize database=_database;
-@property(retain, nonatomic) NSString *triggerID; // @synthesize triggerID=_triggerID;
+@property(retain, nonatomic) NSString *triggerIdentifier; // @synthesize triggerIdentifier=_triggerIdentifier;
 @property(retain, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
 @property(nonatomic) __weak id <WFCreateAutomationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
-- (void).cxx_destruct;
 - (void)automationSummaryViewController:(id)arg1 didFinishWithTrigger:(id)arg2;
+- (void)triggerComposeViewControllerDidCancel:(id)arg1;
 - (void)triggerComposeViewController:(id)arg1 didFinishWithWorkflow:(id)arg2;
 - (void)triggerConfigurationViewController:(id)arg1 didFinishWithTrigger:(id)arg2;
 - (void)selectTypeViewController:(id)arg1 didChooseTriggerClass:(Class)arg2;
@@ -45,7 +48,7 @@
 - (void)automationTypeChooser:(id)arg1 didChooseAutomationType:(unsigned long long)arg2;
 - (void)openHomeApp;
 - (void)cancel;
-- (void)finish;
+- (void)finishWithTriggerRecord:(id)arg1;
 - (void)buildViewControllerForHomeTriggerChooserStepWithBackButtonAction:(unsigned long long)arg1 hostingViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)buildViewControllerForPersonalTriggerChooserStepWithBackButtonAction:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)buildViewControllerForAutomationTypeChooserStepWithCompletion:(CDUnknownBlockType)arg1;

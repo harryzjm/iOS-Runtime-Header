@@ -18,10 +18,10 @@
     MISSING_TYPE *dataVersionKey;
 }
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)init;
 - (void)migrateIfNeededWithCompletion:(CDUnknownBlockType)arg1;
+- (id)initWithHealthStore:(id)arg1;
 
 @end
 

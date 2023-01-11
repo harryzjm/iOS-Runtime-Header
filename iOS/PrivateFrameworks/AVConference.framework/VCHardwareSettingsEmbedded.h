@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 @interface VCHardwareSettingsEmbedded <VCHardwareSettingsEmbeddedProtocol>
 {
     NSString *_deviceName;
+    long long _chipId;
+    int _deviceClass;
     int _screenWidth;
     int _screenHeight;
-    int _deviceClass;
-    long long _chipId;
     long long _videoEncoderType;
     _Bool _hasBasebandInitialized;
     _Bool _hasBaseband;
@@ -24,12 +24,20 @@ __attribute__((visibility("hidden")))
 
 + (long long)deviceClass;
 + (id)sharedInstance;
+@property(readonly, nonatomic) _Bool isPixelFormatAvailable;
+- (void)addPixelFormat;
+- (unsigned int)maxRemoteParticipants30fps;
+@property(readonly, nonatomic) _Bool canDo1080p;
+@property(readonly, nonatomic) _Bool isSecondDisplaySupportEnabled;
 @property(readonly, nonatomic) unsigned int audioPacketLossConcealmentAlgorithmAACELD;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
 @property(readonly, nonatomic) _Bool hasAppleNeuralEngine;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
 @property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
+@property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
+@property(readonly, nonatomic) unsigned int maxMultiwayFramerateSupported;
+@property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) _Bool useSoftFramerateSwitching;
 @property(readonly, nonatomic) long long videoEncoderType;
 @property(readonly, nonatomic) long long chipId;
@@ -41,6 +49,12 @@ __attribute__((visibility("hidden")))
 - (void)_initializeScreenDimension;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

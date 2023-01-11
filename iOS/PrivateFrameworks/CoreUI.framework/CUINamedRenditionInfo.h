@@ -21,14 +21,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)diverseContentPresentForAttribute:(int)arg1;
 - (_Bool)contentEqualForAttribute:(int)arg1 withRenditionInfo:(id)arg2;
 - (_Bool)contentPresentForAttribute:(int)arg1;
+- (unsigned short)getClosestValueOfAttribute:(int)arg1 withValue:(unsigned short)arg2;
+- (unsigned short)getValueOfAttribute:(int)arg1;
 - (int)attributePresent:(int)arg1 withValue:(unsigned short)arg2;
 - (id)bitwiseAndWith:(id)arg1;
+- (id)debugDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToNamedRenditionInfo:(id)arg1;
 - (id)archivedData;
 - (void)dealloc;
-- (id)_initWithKeyFormat:(const struct _renditionkeyfmt *)arg1 andBitmap:(void **)arg2;
 - (id)initWithKeyFormat:(const struct _renditionkeyfmt *)arg1;
 - (id)initWithData:(id)arg1 andKeyFormat:(const struct _renditionkeyfmt *)arg2;
 

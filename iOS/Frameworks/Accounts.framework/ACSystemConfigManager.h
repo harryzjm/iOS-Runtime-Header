@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface ACSystemConfigManager : NSObject
 {
-    NSObject<OS_dispatch_queue> *_timerQueue;
-    NSObject<OS_dispatch_source> *_timerSource;
     NSObject<OS_dispatch_queue> *_preferencesQueue;
     struct __SCPreferences *_preferencesSession;
     int _applySkipCount;
 }
 
++ (void)_tearDown;
++ (void)_scheduleSharedInstanceTeardown;
 + (unsigned long long)_timeoutInterval;
 + (id)_livingInstance;
 + (id)sharedInstance;
@@ -30,8 +30,6 @@
 - (long long)countOfAccountsWithAccountTypeIdentifier:(id)arg1;
 - (void)setAccountsWithAccountTypeIdentifier:(id)arg1 exist:(_Bool)arg2;
 - (int)accountsWithAccountTypeIdentifierExist:(id)arg1;
-- (void)_tearDown;
-- (void)_keepAlive;
 - (void)dealloc;
 - (id)init;
 

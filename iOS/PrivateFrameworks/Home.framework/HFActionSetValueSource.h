@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFLightProfileValueSource-Protocol.h>
 #import <Home/HFMediaValueSource-Protocol.h>
 
 @class HFItemBuilder, HMActionSet, NSString;
 @protocol HFActionSetBuilderProtocol, HFActionSetValueSourceDelegate, HFCharacteristicOperationContextProviding;
 
-@interface HFActionSetValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
+@interface HFActionSetValueSource : NSObject <HFLightProfileValueSource, HFCharacteristicValueSource, HFMediaValueSource>
 {
     HFItemBuilder<HFActionSetBuilderProtocol> *_actionSetBuilder;
     HMActionSet *_actionSet;
@@ -20,22 +21,23 @@
 }
 
 + (id)na_identity;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <HFActionSetValueSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;
 @property(retain, nonatomic) HFItemBuilder<HFActionSetBuilderProtocol> *actionSetBuilder; // @synthesize actionSetBuilder=_actionSetBuilder;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)_valueForCurrentStateCharacteristic:(id)arg1;
 - (_Bool)_isCurrentStateCharacteristic:(id)arg1;
 - (id)_targetValueForCharacteristic:(id)arg1;
 - (id)_actionForCharacteristic:(id)arg1;
-- (id)_existingActionBuilderForProfile:(id)arg1;
+- (id)_existingActionBuilderForMediaProfile:(id)arg1;
 - (id)_existingActionBuilderForCharacteristic:(id)arg1;
 - (id)writePlaybackState:(long long)arg1 playbackArchive:(id)arg2 forRouteID:(id)arg3;
 - (id)mediaProfileContainerForRouteID:(id)arg1;
 - (long long)lastPlaybackStateForProfileForRouteID:(id)arg1;
 - (_Bool)hasPendingWritesForRouteID:(id)arg1;
+- (void)clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(_Bool)arg2;
 - (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
 - (void)mediaValueUpdated:(id)arg1 playbackState:(long long)arg2 playbackArchive:(id)arg3;
 - (void)commitTransactionWithReason:(id)arg1;
@@ -46,6 +48,11 @@
 - (id)readValuesForCharacteristics:(id)arg1;
 - (id)initWithActionSet:(id)arg1;
 - (id)initWithActionSetBuilder:(id)arg1;
+- (id)_existingActionBuilderForLightProfile:(id)arg1;
+- (void)fetchNaturalLightColorTemperatureForBrightness:(long long)arg1 lightProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)writeNaturalLightEnabledState:(_Bool)arg1 forProfile:(id)arg2;
+- (_Bool)isNaturalLightingEnabledForProfile:(id)arg1;
+- (_Bool)isNaturalLightingSupportedForProfile:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) id <HFCharacteristicOperationContextProviding> contextProvider;

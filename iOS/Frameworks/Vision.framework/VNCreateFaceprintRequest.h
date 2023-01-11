@@ -12,6 +12,8 @@
 {
 }
 
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
@@ -22,7 +24,7 @@
 @property(nonatomic) _Bool forceFaceprintCreation;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputFacesThatNeedFaceprints:(id)arg4;
 - (long long)dependencyProcessingOrdinality;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,7 +11,7 @@
 #import <HelpKit/HLPHelpTopicViewControllerDelegate-Protocol.h>
 #import <HelpKit/HLPReachabilityManagerDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem, UIView;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPReachabilityManager, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem, UIView;
 @protocol HLPHelpViewControllerDelegate;
 
 @interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate, HLPHelpLoadingViewDelegate>
@@ -20,12 +20,10 @@
     _Bool _showingHelpTopic;
     _Bool _shouldDismissWelcomeTopic;
     NSDictionary *_context;
-    NSString *_helpBookBasePath;
     NSString *_helpbookVersion;
     UIBarButtonItem *_doneBarButtonItem;
     NSLayoutConstraint *_loadingViewTopConstraint;
     UIView *_fullBookViewSeparator;
-    HLPHelpUsageController *_usageController;
     HLPHelpTopicViewController *_topicViewController;
     _Bool _hideDoneButton;
     _Bool _displayHelpTopicsOnly;
@@ -41,6 +39,7 @@
     NSString *_selectedHelpTopicName;
     NSMutableDictionary *_localHelpBookNameIDMap;
     NSURL *_helpBookURL;
+    NSString *_helpBookBasePath;
     HLPHelpLocaleController *_localeListController;
     HLPHelpBookController *_helpBookController;
     HLPReachabilityManager *_reachabilityManager;
@@ -54,11 +53,13 @@
 + (id)helpViewControllerWithIdentifier:(id)arg1 version:(id)arg2;
 + (id)helpViewControllerWithLocalHelpBookFileURL:(id)arg1;
 + (id)helpViewController;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HLPHelpTableOfContentViewController *tableOfContentViewController; // @synthesize tableOfContentViewController=_tableOfContentViewController;
 @property(retain, nonatomic) HLPHelpLoadingView *loadingView; // @synthesize loadingView=_loadingView;
 @property(retain, nonatomic) HLPReachabilityManager *reachabilityManager; // @synthesize reachabilityManager=_reachabilityManager;
 @property(retain, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
 @property(retain, nonatomic) HLPHelpLocaleController *localeListController; // @synthesize localeListController=_localeListController;
+@property(retain, nonatomic) NSString *helpBookBasePath; // @synthesize helpBookBasePath=_helpBookBasePath;
 @property(retain, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property(retain, nonatomic) NSMutableDictionary *localHelpBookNameIDMap; // @synthesize localHelpBookNameIDMap=_localHelpBookNameIDMap;
 @property(copy, nonatomic) NSString *selectedHelpTopicName; // @synthesize selectedHelpTopicName=_selectedHelpTopicName;
@@ -73,7 +74,6 @@
 @property(nonatomic) _Bool showTopicNameAsTitle; // @synthesize showTopicNameAsTitle=_showTopicNameAsTitle;
 @property(nonatomic) _Bool displayHelpTopicsOnly; // @synthesize displayHelpTopicsOnly=_displayHelpTopicsOnly;
 @property(nonatomic) _Bool hideDoneButton; // @synthesize hideDoneButton=_hideDoneButton;
-- (void).cxx_destruct;
 - (void)showHelpBookInfo:(id)arg1;
 - (void)reachabilityManagerConnectionStatusChanged:(id)arg1 connected:(_Bool)arg2;
 - (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
@@ -83,17 +83,22 @@
 - (void)helpTopicViewController:(id)arg1 topicLoaded:(id)arg2;
 - (void)helpTopicViewControllerTableOfContentButtonTapped:(id)arg1;
 - (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(id)arg1;
+- (void)helpTopicViewController:(id)arg1 traitCollectionChanged:(id)arg2;
 - (void)tableOfContentViewControllerShowHelpBookInfo:(id)arg1;
 - (id)currentHelpTopicItemForTableOfContentViewController:(id)arg1;
 - (void)tableOfContentViewController:(id)arg1 showHelpTopicItem:(id)arg2;
 - (void)popWelcomeTopicView;
 - (void)dismiss;
 - (id)topicIDForTopicName:(id)arg1 locale:(id)arg2;
-- (void)showHelpTopicItem:(id)arg1 anchor:(id)arg2 animate:(_Bool)arg3;
+- (void)_showWithLoadInfo:(id)arg1 animate:(_Bool)arg2;
+- (void)_showHelpTopicItem:(id)arg1 anchor:(id)arg2 animate:(_Bool)arg3;
 - (void)showMessageForError:(id)arg1;
 - (void)removeDDMLoadFailVersion;
 - (void)updateCacheControllerToLanguageCode:(id)arg1;
 - (id)deviceFamily;
+- (void)traitCollectionChangedFrom:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateDarkMode;
 - (void)loadFromStaticServer;
 - (void)loadHelpBook;
 - (void)updateLastLoadVersion;

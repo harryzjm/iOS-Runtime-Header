@@ -9,8 +9,13 @@
 @class TVAppStyle;
 
 @interface IKViewElementStyle (TVMLKitAdditions)
+- (id)tv_symbolTextStyle;
+- (long long)tv_symbolScale;
+- (long long)tv_symbolWeight;
+- (double)tv_symbolPointSize;
 - (id)tv_group;
 - (unsigned long long)tv_maxLines;
+- (long long)tv_indexDisplayMode;
 - (id)tv_layerFlipMode;
 - (struct UIEdgeInsets)tv_scrollableBoundsInset;
 - (id)tv_scrollMode;

@@ -16,10 +16,10 @@
 }
 
 + (id)descriptorForRequiredKeys;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property(readonly, nonatomic) id <CNUILikenessRendering> renderer; // @synthesize renderer=_renderer;
 @property(readonly, nonatomic) id <CNUIPRLikenessResolver> resolver; // @synthesize resolver=_resolver;
-- (void).cxx_destruct;
 - (id)renderMonogramForContact:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
 - (id)renderMonogramForString:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
 - (id)loadingPlaceholderImageProvider;
@@ -30,6 +30,7 @@
 - (id)renderMonogramForString:(id)arg1 scope:(id)arg2 imageHandler:(CDUnknownBlockType)arg3;
 - (id)renderAvatarsForContacts:(id)arg1 scope:(id)arg2 placeholder:(_Bool)arg3 workScheduler:(id)arg4 imageHandler:(CDUnknownBlockType)arg5;
 - (id)avatarImageForContacts:(id)arg1 scope:(id)arg2;
+- (id)renderAvatarsForContacts:(id)arg1 scope:(id)arg2 includePlaceholder:(_Bool)arg3 imageHandler:(CDUnknownBlockType)arg4;
 - (id)renderAvatarsForContacts:(id)arg1 scope:(id)arg2 imageHandler:(CDUnknownBlockType)arg3;
 - (id)renderMonogramForString:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)renderAvatarsForContacts:(id)arg1 handler:(CDUnknownBlockType)arg2;

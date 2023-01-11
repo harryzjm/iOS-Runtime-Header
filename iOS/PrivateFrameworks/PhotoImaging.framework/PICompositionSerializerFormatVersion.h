@@ -14,6 +14,8 @@
 + (id)formatVersionForAdjustment:(id)arg1 identifier:(id)arg2;
 + (id)versionRules;
 + (id)_versionRules;
++ (_Bool)adjustmentHasCTM:(id)arg1 settings:(id)arg2;
++ (_Bool)adjustmentHasPerspective:(id)arg1 settings:(id)arg2;
 + (id)currentFormatVersion;
 + (id)locallySupportedFormatVersions;
 

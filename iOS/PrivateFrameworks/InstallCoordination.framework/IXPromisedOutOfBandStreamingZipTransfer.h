@@ -18,9 +18,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SZExtractor *extractor; // @synthesize extractor=_extractor;
 @property(nonatomic) __weak id <SZExtractorDelegate> extractorDelegate; // @synthesize extractorDelegate=_extractorDelegate;
-- (void).cxx_destruct;
 - (Class)seedClass;
 - (id)initWithSeed:(id)arg1;
 - (void)extractionEnteredPassThroughMode;
@@ -38,6 +38,7 @@
 - (void)supplyBytes:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)prepareForExtractionToPath:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)prepareForExtraction:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool useProgressFromSZExtractor;
 - (id)initWithName:(id)arg1 client:(unsigned long long)arg2 streamingZipOptions:(id)arg3 archiveSize:(unsigned long long)arg4 diskSpaceNeeded:(unsigned long long)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

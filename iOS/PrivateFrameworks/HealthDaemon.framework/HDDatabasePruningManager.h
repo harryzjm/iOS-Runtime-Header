@@ -21,15 +21,16 @@
     NSObject<OS_dispatch_source> *_timerSource;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (void)_setLastAttemptDate:(id)arg1 completed:(_Bool)arg2;
 - (id)_lastAttemptDateWithCompleted:(_Bool *)arg1;
-- (_Bool)_pruneDatabaseWithNowDate:(id)arg1 error:(id *)arg2;
+- (_Bool)_pruneDatabaseWithNowDate:(id)arg1 prunedObjectLimit:(unsigned long long)arg2 prunedObjectTransactionLimit:(unsigned long long)arg3 error:(id *)arg4;
 - (id)_minimumFrozenAnchorMapForPruningDate:(id)arg1 error:(id *)arg2;
+- (_Bool)pruneDatabaseWithAccessibilityAssertion:(id)arg1 nowDate:(id)arg2 prunedObjectLimit:(unsigned long long)arg3 prunedObjectTransactionLimit:(unsigned long long)arg4 error:(id *)arg5;
 - (_Bool)pruneDatabaseWithAccessibilityAssertion:(id)arg1 nowDate:(id)arg2 error:(id *)arg3;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;

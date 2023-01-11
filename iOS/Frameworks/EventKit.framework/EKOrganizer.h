@@ -10,6 +10,7 @@
 
 + (id)organizerWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 address:(id)arg4 isCurrentUser:(_Bool)arg5;
 + (Class)frozenClass;
+- (long long)scheduleAgent;
 - (void)setCurrentUser:(_Bool)arg1;
 - (_Bool)isCurrentUser;
 - (id)owner;

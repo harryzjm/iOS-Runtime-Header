@@ -9,25 +9,25 @@
 #import <SearchUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, UIControl;
-@protocol SearchUIKeyboardableTableViewScrollDelegate, UITextInput;
+@protocol SearchUIKeyboardableTableViewDelegate, UITextInput;
 
 @interface SearchUIKeyboardableTableViewController : UITableViewController <UIGestureRecognizerDelegate>
 {
     _Bool _shouldHideTableCellsUnderKeyboard;
     UIControl<UITextInput> *_textField;
     double _currentKeyboardHeight;
-    id <SearchUIKeyboardableTableViewScrollDelegate> _scrollDelegate;
+    id <SearchUIKeyboardableTableViewDelegate> _interactionDelegate;
 }
 
-@property __weak id <SearchUIKeyboardableTableViewScrollDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
+- (void).cxx_destruct;
+@property __weak id <SearchUIKeyboardableTableViewDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property(nonatomic) double currentKeyboardHeight; // @synthesize currentKeyboardHeight=_currentKeyboardHeight;
 @property(nonatomic) _Bool shouldHideTableCellsUnderKeyboard; // @synthesize shouldHideTableCellsUnderKeyboard=_shouldHideTableCellsUnderKeyboard;
 @property __weak UIControl<UITextInput> *textField; // @synthesize textField=_textField;
-- (void).cxx_destruct;
 - (void)showKeyboard;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (_Bool)cellsVisibleUnderKeyboard;
+- (_Bool)contentVisibleUnderKeyboard;
 - (double)contentHeight;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)hideCellsBelowKeyboardIfNecessary;
@@ -39,10 +39,11 @@
 - (_Bool)canHighlightRowAtIndexPath:(id)arg1;
 - (void)selectHighlightedRow;
 - (id)indexPathForNextSelectableIndexPath:(id)arg1 upward:(_Bool)arg2;
-- (void)highlightRowAtIndexPath:(id)arg1 upward:(_Bool)arg2;
+- (void)highlightNextRowAtIndexPath:(id)arg1 upward:(_Bool)arg2;
 - (void)downArrowPressed:(id)arg1;
 - (void)upArrowPressed:(id)arg1;
 - (id)indexPathToSelectForKeyboardOnQuickReturn;
+- (void)highlightRowAtIndexPath:(id)arg1;
 - (void)returnKeyPressed;
 - (void)goBack;
 - (void)deletePressed;
@@ -57,6 +58,7 @@
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)setTableView:(id)arg1;
 - (void)escapeButtonPressed;
+- (void)tabKeyPressed;
 - (id)init;
 
 // Remaining properties

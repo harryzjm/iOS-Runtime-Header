@@ -16,7 +16,6 @@
 @interface NEProfileIngestionPayloadInfo : NSObject <NEPrettyDescription, NEConfigurationLegacySupport, NSSecureCoding, NSCopying>
 {
     _Bool _isSetAside;
-    _Bool _applicationCreated;
     NSString *_payloadProtocolType;
     NSString *_payloadUUID;
     NSString *_payloadOrganization;
@@ -29,8 +28,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property long long profileSource; // @synthesize profileSource=_profileSource;
-@property _Bool applicationCreated; // @synthesize applicationCreated=_applicationCreated;
 @property _Bool isSetAside; // @synthesize isSetAside=_isSetAside;
 @property(copy) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property(copy) NSDate *profileIngestionDate; // @synthesize profileIngestionDate=_profileIngestionDate;
@@ -40,7 +39,6 @@
 @property(copy) NSString *payloadOrganization; // @synthesize payloadOrganization=_payloadOrganization;
 @property(copy) NSString *payloadUUID; // @synthesize payloadUUID=_payloadUUID;
 @property(copy) NSString *payloadProtocolType; // @synthesize payloadProtocolType=_payloadProtocolType;
-- (void).cxx_destruct;
 - (id)copyLegacyDictionary;
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;

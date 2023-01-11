@@ -12,15 +12,16 @@ __attribute__((visibility("hidden")))
     UISelectionGrabber *m_grabber;
 }
 
-@property(nonatomic) __weak UISelectionGrabber *grabber; // @synthesize grabber=m_grabber;
 - (void).cxx_destruct;
+@property(nonatomic) __weak UISelectionGrabber *grabber; // @synthesize grabber=m_grabber;
+- (void)redrawRasterizedImageForScale:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (int)textEffectsVisibilityLevel;
 - (int)textEffectsVisibilityLevelInKeyboardWindow;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (struct CGRect)_extendedHitTestingRectIncludingCalloutBarAdjustments:(_Bool)arg1;
+- (struct CGRect)_extendedHitTestingRectWithEvent:(id)arg1 includingCalloutBarAdjustments:(_Bool)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)drawRect:(struct CGRect)arg1;
+- (id)_rasterizedDotImageForScale:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 container:(id)arg2;
 
 @end

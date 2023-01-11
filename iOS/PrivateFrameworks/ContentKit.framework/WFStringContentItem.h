@@ -19,10 +19,9 @@
 + (id)outputTypes;
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3;
-@property(retain, nonatomic) WFDataDetectorResults *dataDetectorResults; // @synthesize dataDetectorResults=_dataDetectorResults;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
 - (void).cxx_destruct;
-- (id)internalRepresentationForCopying;
+@property(retain, nonatomic) WFDataDetectorResults *dataDetectorResults; // @synthesize dataDetectorResults=_dataDetectorResults;
 - (_Bool)isContent;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;

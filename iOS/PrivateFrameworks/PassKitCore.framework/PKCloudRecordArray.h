@@ -8,26 +8,29 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableArray;
+@class NSMutableDictionary;
 
 @interface PKCloudRecordArray : NSObject <NSSecureCoding>
 {
-    NSMutableArray *_cloudRecords;
+    NSMutableDictionary *_cloudRecordByDatabase;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)addValuesFromCloudRecordArray:(id)arg1;
+@property(retain, nonatomic) NSMutableDictionary *cloudRecordByDatabase; // @synthesize cloudRecordByDatabase=_cloudRecordByDatabase;
 - (id)allRecordNames;
+- (id)allRecordsWithRecordType:(id)arg1;
+- (id)allObjectsByDatabaseIdentifier;
+- (id)allObjects;
 - (id)allItems;
-@property(readonly, nonatomic) NSArray *cloudRecords;
-- (void)addCloudRecord:(id)arg1;
+- (void)applyCloudRecordArray:(id)arg1;
+- (void)addCloudRecord:(id)arg1 forContainerDatabaseIdentifier:(id)arg2;
+- (long long)count;
 - (id)_descriptionWithDetailedOutput:(_Bool)arg1 includeItem:(_Bool)arg2;
 - (id)description;
 - (id)descriptionWithItem:(_Bool)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)filteredCloudRecordArrayWithPredicate:(id)arg1;
 - (id)init;
 
 @end

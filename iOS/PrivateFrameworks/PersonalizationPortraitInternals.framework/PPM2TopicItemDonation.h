@@ -8,16 +8,24 @@
 
 #import <PersonalizationPortraitInternals/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PPM2TopicItemDonation : PBCodable <NSCopying>
 {
-    int _isNew;
-    int _source;
-    struct {
-        unsigned int isNew:1;
-        unsigned int source:1;
-    } _has;
+    NSString *_activeTreatments;
+    int _algorithm;
+    int _donationSource;
+    NSString *_groupId;
+    _Bool _newItem;
+    _Bool _userCreated;
+    CDStruct_f1067582 _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool userCreated; // @synthesize userCreated=_userCreated;
+@property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
+@property(nonatomic) _Bool newItem; // @synthesize newItem=_newItem;
+@property(retain, nonatomic) NSString *groupId; // @synthesize groupId=_groupId;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -27,14 +35,18 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsIsNew:(id)arg1;
-- (id)isNewAsString:(int)arg1;
-@property(nonatomic) _Bool hasIsNew;
-@property(nonatomic) int isNew; // @synthesize isNew=_isNew;
-- (int)StringAsSource:(id)arg1;
-- (id)sourceAsString:(int)arg1;
-@property(nonatomic) _Bool hasSource;
-@property(nonatomic) int source; // @synthesize source=_source;
+@property(nonatomic) _Bool hasUserCreated;
+@property(readonly, nonatomic) _Bool hasActiveTreatments;
+- (int)StringAsAlgorithm:(id)arg1;
+- (id)algorithmAsString:(int)arg1;
+@property(nonatomic) _Bool hasAlgorithm;
+@property(nonatomic) int algorithm; // @synthesize algorithm=_algorithm;
+@property(nonatomic) _Bool hasNewItem;
+@property(readonly, nonatomic) _Bool hasGroupId;
+- (int)StringAsDonationSource:(id)arg1;
+- (id)donationSourceAsString:(int)arg1;
+@property(nonatomic) _Bool hasDonationSource;
+@property(nonatomic) int donationSource; // @synthesize donationSource=_donationSource;
 
 @end
 

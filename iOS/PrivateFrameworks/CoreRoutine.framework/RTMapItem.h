@@ -13,6 +13,7 @@
 
 @interface RTMapItem : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _disputed;
     NSUUID *_identifier;
     NSData *_geoMapItemHandle;
     unsigned long long _source;
@@ -33,9 +34,11 @@
 + (id)sourceToString:(unsigned long long)arg1;
 + (_Bool)hasKnownTypeItem:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double weight; // @synthesize weight=_weight;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(readonly, nonatomic) _Bool disputed; // @synthesize disputed=_disputed;
 @property(retain, nonatomic) RTMapItemExtendedAttributes *extendedAttributes; // @synthesize extendedAttributes=_extendedAttributes;
 @property(readonly, copy, nonatomic) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property(readonly, nonatomic) RTLocation *location; // @synthesize location=_location;
@@ -46,7 +49,6 @@
 @property(nonatomic) unsigned long long source; // @synthesize source=_source;
 @property(readonly, nonatomic) NSData *geoMapItemHandle; // @synthesize geoMapItemHandle=_geoMapItemHandle;
 @property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)updateWeightWithSource:(unsigned long long)arg1 extendedAttributes:(id)arg2;
 - (_Bool)validMUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,7 +59,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 address:(id)arg3 location:(id)arg4 source:(unsigned long long)arg5 muid:(unsigned long long)arg6 resultProviderID:(long long)arg7 geoMapItemHandle:(id)arg8 creationDate:(id)arg9 expirationDate:(id)arg10 extendedAttributes:(id)arg11 displayLanguage:(id)arg12;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 address:(id)arg3 location:(id)arg4 source:(unsigned long long)arg5 muid:(unsigned long long)arg6 resultProviderID:(long long)arg7 geoMapItemHandle:(id)arg8 creationDate:(id)arg9 expirationDate:(id)arg10 extendedAttributes:(id)arg11 displayLanguage:(id)arg12 disputed:(_Bool)arg13;
 - (id)init;
 
 @end

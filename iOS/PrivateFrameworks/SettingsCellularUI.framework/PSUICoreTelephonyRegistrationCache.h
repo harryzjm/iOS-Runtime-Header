@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SettingsCellularUI/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <SettingsCellularUI/CoreTelephonyClientRegistrationDelegate-Protocol.h>
 
 @class CoreTelephonyClient, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface PSUICoreTelephonyRegistrationCache : NSObject <CoreTelephonyClientRegistrationDelegate>
+@interface PSUICoreTelephonyRegistrationCache : NSObject <CoreTelephonyClientRegistrationDelegate, CoreTelephonyClientDataDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     CoreTelephonyClient *_client;
@@ -24,6 +25,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *operatorNameDict; // @synthesize operatorNameDict=_operatorNameDict;
 @property(retain) NSMutableDictionary *maxDataRateDict; // @synthesize maxDataRateDict=_maxDataRateDict;
 @property(retain) NSMutableDictionary *supportedDataRatesDict; // @synthesize supportedDataRatesDict=_supportedDataRatesDict;
@@ -31,7 +33,6 @@
 @property(retain) NSMutableDictionary *imsStatusSMSDict; // @synthesize imsStatusSMSDict=_imsStatusSMSDict;
 @property(retain) NSMutableDictionary *imsStatusVoiceDict; // @synthesize imsStatusVoiceDict=_imsStatusVoiceDict;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
-- (void).cxx_destruct;
 - (void)operatorNameChanged:(id)arg1 name:(id)arg2;
 - (id)localizedOperatorName:(id)arg1;
 - (void)fetchLocalizedOperatorName;
@@ -46,7 +47,9 @@
 - (_Bool)IMSStatusSMS:(id)arg1;
 - (_Bool)IMSStatusVoice:(id)arg1;
 - (void)fetchIMSStatus;
-- (void)willEnterForeground;
+- (void)preferredDataSimChanged:(id)arg1;
+- (void)handleDataUsageChanged;
+- (void)clearCache;
 - (id)init;
 - (id)initPrivate;
 

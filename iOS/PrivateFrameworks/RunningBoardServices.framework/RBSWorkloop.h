@@ -24,9 +24,7 @@
 + (void)performCallout:(CDUnknownBlockType)arg1;
 + (id)createCalloutQueue:(id)arg1;
 + (id)sharedCalloutWorkloop;
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_init;
 
 @end
 

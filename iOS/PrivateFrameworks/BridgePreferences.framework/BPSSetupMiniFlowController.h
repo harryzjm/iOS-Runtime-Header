@@ -13,11 +13,13 @@
 
 @interface BPSSetupMiniFlowController : NSObject <BPSBuddyController>
 {
+    _Bool _isDisplayingInSkippedMiniFlow;
     id <BPSBuddyControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <BPSBuddyControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isDisplayingInSkippedMiniFlow; // @synthesize isDisplayingInSkippedMiniFlow=_isDisplayingInSkippedMiniFlow;
+@property(nonatomic) __weak id <BPSBuddyControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)pushController:(id)arg1 animated:(_Bool)arg2;
 - (id)navigationController;
 - (id)viewController;

@@ -7,6 +7,8 @@
 #import <UIKit/UIScrollView.h>
 
 @interface UIScrollView (DOCExtensions)
+- (double)doc_verticalOverlapIntoSafeAreaForView:(id)arg1 usingKeyboardInfo:(id)arg2;
+- (void)doc_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(_Bool)arg2 lastAdjustment:(double *)arg3;
 - (long long)doc_automaticContentOffsetAdjustmentDisabledCount;
 - (void)doc_setAutomaticContentOffsetAdjustmentDisabledCount:(long long)arg1;
 - (void)doc_endDisablingAutomaticContentOffsetAdjustment;

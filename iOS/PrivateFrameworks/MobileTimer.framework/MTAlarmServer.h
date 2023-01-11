@@ -22,13 +22,15 @@
 }
 
 + (_Bool)_notifyClientsForTriggerType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property(readonly, nonatomic, getter=isSystemReady) _Bool systemReady; // @synthesize systemReady=_systemReady;
 @property(readonly, nonatomic) MTXPCConnectionListenerProvider *connectionListenerProvider; // @synthesize connectionListenerProvider=_connectionListenerProvider;
 @property(readonly, nonatomic) MTAlarmStorage *storage; // @synthesize storage=_storage;
-- (void).cxx_destruct;
 - (id)gatherDiagnostics;
 - (void)printDiagnostics;
+- (void)resetSleepAlarmSnoozeStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateSleepAlarmsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)source:(id)arg1 didChangeNextAlarm:(id)arg2;
 - (void)source:(id)arg1 didFireAlarm:(id)arg2 triggerType:(unsigned long long)arg3;
 - (void)source:(id)arg1 didDismissAlarm:(id)arg2 dismissAction:(unsigned long long)arg3;
@@ -36,6 +38,7 @@
 - (void)source:(id)arg1 didRemoveAlarms:(id)arg2;
 - (void)source:(id)arg1 didUpdateAlarms:(id)arg2;
 - (void)source:(id)arg1 didAddAlarms:(id)arg2;
+- (void)nextSleepAlarmWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissAlarmWithIdentifier:(id)arg1 dismissAction:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)snoozeAlarmWithIdentifier:(id)arg1 snoozeAction:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)removeAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

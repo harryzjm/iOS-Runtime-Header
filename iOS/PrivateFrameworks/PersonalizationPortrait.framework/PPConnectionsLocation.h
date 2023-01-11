@@ -15,6 +15,7 @@
 {
     _Bool _copiedToPasteboard;
     _Bool _shouldAggregate;
+    NSString *_identifier;
     NSString *_name;
     NSString *_originatingBundleID;
     NSString *_fullFormattedAddress;
@@ -41,6 +42,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)round:(double)arg1 toNearest:(double)arg2;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *lifetime; // @synthesize lifetime=_lifetime;
 @property(copy, nonatomic) NSDate *createdAt; // @synthesize createdAt=_createdAt;
 @property(copy, nonatomic) NSString *trigger; // @synthesize trigger=_trigger;
@@ -63,10 +65,11 @@
 @property(copy, nonatomic) NSString *subThoroughfare; // @synthesize subThoroughfare=_subThoroughfare;
 @property(copy, nonatomic) NSString *thoroughfare; // @synthesize thoroughfare=_thoroughfare;
 @property(copy, nonatomic) NSString *fullFormattedAddress; // @synthesize fullFormattedAddress=_fullFormattedAddress;
-@property(copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
+@property(readonly, copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (_Bool)isEqualToConnectionsLocation:(id)arg1;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -76,6 +79,8 @@
 - (unsigned long long)_roundedPredictionAge;
 - (unsigned char)_pexItemSource;
 - (id)quickTypeItem;
+- (id)init;
+- (id)initWithOriginatingBundleID:(id)arg1;
 
 @end
 

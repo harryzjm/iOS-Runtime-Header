@@ -11,6 +11,7 @@
 }
 
 + (id)sharedInstance;
+- (void)audioAppMetadataThrottledWithBundleIdentifier:(id)arg1;
 - (void)navigationStartedWithBundleIdentifier:(id)arg1;
 - (void)_sendCoreAnalyticsEvent:(id)arg1 withDictionary:(id)arg2;
 @property(readonly, nonatomic) _Bool shouldRecordAnalyticsEvents;

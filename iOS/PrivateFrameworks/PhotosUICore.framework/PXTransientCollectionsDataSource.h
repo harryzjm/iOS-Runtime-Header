@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PHFetchResult;
+@class PHFetchResult;
 
 @interface PXTransientCollectionsDataSource
 {
     PHFetchResult *_fetchResult;
-    NSString *_navigationRootIdentifier;
 }
 
-@property(readonly, nonatomic) NSString *navigationRootIdentifier; // @synthesize navigationRootIdentifier=_navigationRootIdentifier;
-@property(readonly, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
 - (id)objectsInIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
@@ -24,7 +22,6 @@
 - (id)collectionAtIndexPath:(id)arg1;
 - (id)indexPathForCollection:(id)arg1;
 - (id)init;
-- (id)initWithNavigationRootTitle:(id)arg1 identifier:(id)arg2 photoLibrary:(id)arg3;
 - (id)initWithFetchResult:(id)arg1;
 
 @end

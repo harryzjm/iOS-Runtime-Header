@@ -14,14 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOURLPresent : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_items;
     GEOURLOptions *_options;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_items:1;
         unsigned int read_options:1;
-        unsigned int wrote_items:1;
-        unsigned int wrote_options:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -36,18 +37,20 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOURLOptions *options;
 @property(readonly, nonatomic) _Bool hasOptions;
-- (void)_readOptions;
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)itemsCount;
-- (void)_addNoFlagsItem:(id)arg1;
 - (void)addItem:(id)arg1;
 - (void)clearItems;
 @property(retain, nonatomic) NSMutableArray *items;
-- (void)_readItems;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithDirectionsOptions:(id)arg1;
 - (id)initWithOptions:(id)arg1;
 

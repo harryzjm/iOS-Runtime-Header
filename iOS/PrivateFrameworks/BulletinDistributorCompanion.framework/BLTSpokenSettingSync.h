@@ -22,6 +22,7 @@
     NSURL *_remoteSettingStoreURL;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *remoteSettingStoreURL; // @synthesize remoteSettingStoreURL=_remoteSettingStoreURL;
 @property(retain, nonatomic) BLTSettingSyncServer *syncServer; // @synthesize syncServer=_syncServer;
 @property(retain, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
@@ -31,16 +32,15 @@
 @property(retain, nonatomic) NSDate *localGlobalSpokenSettingDate; // @synthesize localGlobalSpokenSettingDate=_localGlobalSpokenSettingDate;
 @property(nonatomic) _Bool remoteGlobalSpokenSettingEnabled; // @synthesize remoteGlobalSpokenSettingEnabled=_remoteGlobalSpokenSettingEnabled;
 @property(nonatomic) _Bool localGlobalSpokenSettingEnabled; // @synthesize localGlobalSpokenSettingEnabled=_localGlobalSpokenSettingEnabled;
-- (void).cxx_destruct;
 - (void)_queue_synchronizeSettingsWithLocalEnabled:(_Bool)arg1;
 - (void)_queue_setNewLocalStateFromRemote:(_Bool)arg1;
 - (void)_queue_resolveState;
 - (void)transportUpdateRemoteGlobalSpokenSettingEnabled:(_Bool)arg1 date:(id)arg2;
-- (void)_queue_updateLocalGlobalSpokenSettingEnabledFromUser:(_Bool)arg1;
-- (void)bbUpdateLocalGlobalSpokenSettingEnabled:(_Bool)arg1;
+- (_Bool)_queue_updateLocalGlobalSpokenSettingEnabledFromUser:(_Bool)arg1;
+- (void)bbUpdateLocalGlobalSpokenSettingEnabled:(long long)arg1;
 - (void)_queue_setUpdatingLocalStateFromRemote;
 - (_Bool)_queue_isUpdatingLocalStateFromRemote;
-- (void)_queue_updateLocalSetting;
+- (_Bool)_queue_updateLocalSetting;
 - (void)_queue_writeRemoteSetting;
 - (void)_queue_writeLocalSetting;
 - (void)_queue_readSettings;

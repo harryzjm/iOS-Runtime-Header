@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)canDismissWithScrollView;
 - (id)controllerForStartPlacement:(id)arg1 endPlacement:(id)arg2;
-- (id)endPlacementForInputViewSet:(id)arg1;
-- (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2;
+- (id)endPlacementForInputViewSet:(id)arg1 windowScene:(id)arg2;
+- (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2 windowScene:(id)arg3;
 
 @end
 

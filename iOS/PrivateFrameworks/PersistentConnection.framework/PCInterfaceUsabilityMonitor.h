@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface PCInterfaceUsabilityMonitor : NSObject <PCInterfaceUsabilityMonitorProtocol>
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_scQueue;
     long long _interfaceIdentifier;
     CUTWeakReference *_delegateReference;
     NSObject<OS_nw_parameters> *_pathParameters;
@@ -23,7 +24,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_interface> *_lastDelegateInterface;
     _Bool _isPathSatisfied;
     void *_dynamicStore;
-    struct __CFRunLoopSource *_linkQualitySource;
     struct __CFString *_lqKey;
     int _linkQuality;
     _Bool _trackUsability;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_dynamicStoreCallback:(id)arg1;
 - (void)_processLinkQualityUpdateWithChangedKey:(id)arg1 updatedLinkQuality:(int)arg2;
 - (void)_unscheduleLinkQualityMonitor;
+- (void)_updatePathParameters;
 - (void)_pathUpdate:(id)arg1;
 - (void)_createPathEvaluator;
 - (void)_unschedulePathEvaluator;

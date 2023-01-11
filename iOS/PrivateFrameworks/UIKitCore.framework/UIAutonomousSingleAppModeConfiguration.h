@@ -14,12 +14,14 @@
 {
     NSMutableDictionary *_propertiesAsDictionary;
     unsigned long long _style;
+    NSDictionary *_managedConfigurationSettings;
 }
 
 + (id)defaultConfigurationForStyle:(unsigned long long)arg1;
 + (id)defaultConfiguration;
-@property(nonatomic) unsigned long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *managedConfigurationSettings; // @synthesize managedConfigurationSettings=_managedConfigurationSettings;
+@property(nonatomic) unsigned long long style; // @synthesize style=_style;
 - (_Bool)__gaxTrampoline_defaultBoolValueForFeatureKey:(id)arg1;
 - (void)_setBoolValue:(_Bool)arg1 forFeatureKey:(id)arg2;
 - (_Bool)_boolValueForFeatureKey:(id)arg1;

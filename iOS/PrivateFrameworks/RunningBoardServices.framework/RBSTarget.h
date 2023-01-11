@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/RBSProcessMatching-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSProcessIdentifier, RBSProcessIdentity;
 
-@interface RBSTarget : NSObject <BSXPCSecureCoding, RBSProcessMatching, NSCopying>
+@interface RBSTarget : NSObject <RBSXPCSecureCoding, RBSProcessMatching, NSCopying>
 {
     RBSProcessIdentifier *_processIdentifier;
     RBSProcessIdentity *_processIdentity;
     NSString *_environment;
-    NSString *_picoDesc;
+    NSString *_shortDescription;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
++ (_Bool)supportsRBSXPCSecureCoding;
 + (id)targetWithProcessIdentifier:(id)arg1 environmentIdentifier:(id)arg2;
 + (id)targetWithPid:(int)arg1 environmentIdentifier:(id)arg2;
 + (id)targetWithProcessIdentifier:(id)arg1;
@@ -29,22 +29,20 @@
 + (id)targetWithProcessIdentity:(id)arg1;
 + (id)currentProcess;
 + (id)systemTarget;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
 @property(readonly, nonatomic) RBSProcessIdentifier *processIdentifier; // @synthesize processIdentifier=_processIdentifier;
-- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isSystem) _Bool system;
-@property(readonly, nonatomic) NSString *picoDesc; // @synthesize picoDesc=_picoDesc;
-- (unsigned int)euid;
-- (id)_initWithProcessIdentifier:(id)arg1 processIdentity:(id)arg2 environmentIdentifier:(id)arg3 euid:(unsigned int)arg4;
+@property(readonly, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;
 - (id)copyWithEuid:(unsigned int)arg1;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
 - (id)init;

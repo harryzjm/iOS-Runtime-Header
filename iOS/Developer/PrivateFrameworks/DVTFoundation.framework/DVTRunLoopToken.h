@@ -17,15 +17,17 @@
     DVTStackBacktrace *_invalidationBacktrace;
     CDUnknownBlockType _block;
     NSRunLoop *_cancellationRunLoop;
+    SEL _initialSelector;
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
+@property SEL initialSelector; // @synthesize initialSelector=_initialSelector;
 @property(retain) NSRunLoop *cancellationRunLoop; // @synthesize cancellationRunLoop=_cancellationRunLoop;
 @property(copy) CDUnknownBlockType block; // @synthesize block=_block;
 @property(retain) DVTStackBacktrace *invalidationBacktrace; // @synthesize invalidationBacktrace=_invalidationBacktrace;
 @property(retain) DVTStackBacktrace *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
 @property(retain) id target; // @synthesize target=_target;
-- (void).cxx_destruct;
 - (void)cancel;
 @property(readonly, getter=isCancelled) _Bool cancelled;
 - (id)initWithCancellationRunLoop:(id)arg1 block:(CDUnknownBlockType)arg2;

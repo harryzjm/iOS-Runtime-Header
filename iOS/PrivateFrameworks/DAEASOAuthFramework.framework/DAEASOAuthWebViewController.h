@@ -26,9 +26,9 @@
 }
 
 + (void)presentInternetOfflineError;
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
++ (void)presentUsernameMismatchAlert;
 - (void).cxx_destruct;
-- (void)_presentUsernameMismatchAlert;
+@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 - (void)_dismissAndCompleteWithIdentity:(id)arg1 error:(id)arg2 extensionCompletion:(CDUnknownBlockType)arg3;
 - (void)_extensionRequestDidCompleteWithTokens:(id)arg1 extensionCompletion:(CDUnknownBlockType)arg2;
 - (void)_extensionRequestDidCancelWithError:(id)arg1;

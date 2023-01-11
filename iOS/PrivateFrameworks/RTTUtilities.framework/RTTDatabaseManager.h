@@ -22,6 +22,7 @@
 - (_Bool)deleteConversationsWithCallUIDs:(id)arg1;
 - (_Bool)saveConversation:(id)arg1;
 - (id)conversationForCallUID:(id)arg1;
+- (void)_callHistoryDBDidChange:(id)arg1;
 - (void)callHistoryDBDidChange:(id)arg1;
 - (void)logMessage:(id)arg1;
 - (id)containerIdentifier;

@@ -6,12 +6,12 @@
 
 #import <HMFoundation/NSNetServiceBrowserDelegate-Protocol.h>
 
-@class HMFUnfairLock, NSArray, NSHashTable, NSMutableOrderedSet, NSNetServiceBrowser, NSObject, NSString;
+@class NSArray, NSHashTable, NSMutableOrderedSet, NSNetServiceBrowser, NSObject, NSString;
 @protocol HMFNetServiceBrowserDelegate, OS_dispatch_queue;
 
 @interface HMFNetServiceBrowser <NSNetServiceBrowserDelegate>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSHashTable *_netServices;
     NSMutableOrderedSet *_cachedNetServices;
     _Bool _browsing;
@@ -25,13 +25,13 @@
 
 + (id)logCategory;
 + (id)shortDescription;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType browseBlock; // @synthesize browseBlock=_browseBlock;
 @property(readonly, nonatomic) NSNetServiceBrowser *internal; // @synthesize internal=_internal;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property __weak id <HMFNetServiceBrowserDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2 moreComing:(_Bool)arg3;
 - (void)netServiceBrowser:(id)arg1 didRemoveDomain:(id)arg2 moreComing:(_Bool)arg3;
 - (void)netServiceBrowser:(id)arg1 didFindService:(id)arg2 moreComing:(_Bool)arg3;

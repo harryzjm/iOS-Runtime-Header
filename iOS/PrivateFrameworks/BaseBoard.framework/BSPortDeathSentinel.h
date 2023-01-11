@@ -14,19 +14,18 @@
 @interface BSPortDeathSentinel : NSObject <BSInvalidatable>
 {
     BSMachPortSendRight *_sendRight;
-    NSObject<OS_dispatch_queue> *_callOutQueue;
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_source> *_source;
     _Bool _activated;
     _Bool _invalidated;
+    NSObject<OS_dispatch_queue> *_callOutQueue;
 }
 
-+ (id)_callOutQueue;
 + (void)monitorSendRight:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_callOutQueue;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_callOutQueue;
 - (void)invalidate;
-@property(readonly, nonatomic, getter=isValid) _Bool valid; // @dynamic valid;
+@property(readonly, nonatomic, getter=isValid) _Bool valid;
 - (void)dealloc;
 - (void)activateWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithSendRight:(id)arg1;

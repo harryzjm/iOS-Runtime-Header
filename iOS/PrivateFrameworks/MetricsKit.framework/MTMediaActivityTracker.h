@@ -21,6 +21,7 @@
 }
 
 + (CDUnknownBlockType)playlistItemComparator;
+- (void).cxx_destruct;
 @property(retain, nonatomic) MTMediaTimeTracker *timeTracker; // @synthesize timeTracker=_timeTracker;
 @property(retain, nonatomic) NSMutableArray *eventData; // @synthesize eventData=_eventData;
 @property(retain, nonatomic) MTMediaActivity *seekActivity; // @synthesize seekActivity=_seekActivity;
@@ -28,12 +29,12 @@
 @property(retain, nonatomic) id <MTMediaPlaylist> playlist; // @synthesize playlist=_playlist;
 @property(nonatomic) __weak MTVPAFKit *vpafKit; // @synthesize vpafKit=_vpafKit;
 @property(nonatomic) _Bool shouldGenerateTransitions; // @synthesize shouldGenerateTransitions=_shouldGenerateTransitions;
-- (void).cxx_destruct;
 - (void)generatePlaylistTransitionsIfNecessary:(unsigned long long)arg1;
 - (void)stopActivity:(long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
 - (id)startActivity:(long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
 - (id)combineEventData:(id)arg1 withPlaylistDataForItem:(id)arg2;
 - (void)updateEventData:(id)arg1;
+- (void)synchronizeAtOverallPosition:(unsigned long long)arg1;
 - (void)synchronizePlaybackRate:(float)arg1 overallPosition:(unsigned long long)arg2;
 - (void)seekStoppedAtOverallPosition:(unsigned long long)arg1 type:(id)arg2 reason:(id)arg3 eventData:(id)arg4;
 - (void)seekStartedAtOverallPosition:(unsigned long long)arg1 type:(id)arg2 reason:(id)arg3 eventData:(id)arg4;

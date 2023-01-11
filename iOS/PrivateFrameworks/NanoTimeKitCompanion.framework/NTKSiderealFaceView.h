@@ -5,28 +5,25 @@
 //
 
 #import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
-#import <NanoTimeKitCompanion/NTKSiderealDataSourceDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKSiderealDataSourceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSCalendar, NSDateFormatter, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealSolarContainerView, NTKSiderealSolarOrbitView, NTKSiderealTimeView, NTKSiderealWaypointsView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
+@class CALayer, CAShapeLayer, CLKClockTimerToken, NSDateFormatter, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealData, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealTimeView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
 
-@interface NTKSiderealFaceView <NTKTimeView, NTKSiderealDataSourceDelegate, CLKMonochromeFilterProvider>
+@interface NTKSiderealFaceView <NTKTimeView, NTKSiderealDataSourceObserver, CLKMonochromeFilterProvider>
 {
     long long _previousDataMode;
-    NSCalendar *_calendar;
     NTKWhistlerAnalogFaceViewComplicationFactory *_faceViewComplicationFactory;
     _Bool _isHandlingHardwareEvents;
     NSTimer *_wheelDelayTimer;
     NSTimer *_buttonPressTimer;
     NTKSiderealDataSource *_dataSource;
-    struct NSNumber *_clockTimerToken;
+    NTKSiderealData *_currentData;
+    CLKClockTimerToken *_clockTimerToken;
     double _currentSolarDayProgress;
     double _interactionProgress;
     double _lastTestedWaypointProgress;
     NTKSiderealDialBackgroundView *_dialBackgroundView;
-    NTKSiderealSolarContainerView *_solarContainerView;
-    NTKSiderealSolarOrbitView *_solarOrbitView;
-    NTKSiderealWaypointsView *_waypointsView;
     NTKSiderealAuxiliaryDialLabels *_auxiliaryDialLabels;
     NTKSiderealTimeView *_siderealTimeView;
     UILabel *_offsetLabel;
@@ -40,10 +37,15 @@
     unsigned long long _transitionState;
     double _breathScaleModifier;
     double _rubberBandScaleModifier;
+    _Bool _sunsetFilterEnabled;
+    float _sunsetFilterRampUpStartProgress;
+    float _sunsetFilterRampDownStartProgress;
+    _Bool _useXR;
 }
 
-+ (long long)uiSensitivity;
++ (id)_prewarmSharedData;
 - (void).cxx_destruct;
+- (void)performScrollTestNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (id)_innerComplicationColors;
 - (id)_outerComplicationColors;
@@ -54,9 +56,20 @@
 - (double)_idealizedSolarDayProgress;
 - (double)_solarDayProgressForCurrentTime;
 - (struct CGAffineTransform)_timeViewScaleTransform;
+- (id)waypointBetweenPreviousOffset:(double)arg1 currentOffset:(double)arg2;
+- (id)closestWaypointForSolarDayProgress:(double)arg1 range:(double)arg2;
 - (struct CGImage *)newImageRefFromView:(id)arg1;
-- (struct CGImage *)_waypointViewImageRef;
-- (struct CGImage *)_dialViewImageRef;
+- (struct CGImage *)newImageRefFromSolarContainerView:(id)arg1 withHeight:(double)arg2;
+- (id)_nightRingImageFromSolarContainerView:(id)arg1;
+- (id)_nightDiscImageFromSolarContainerView:(id)arg1;
+- (id)_nightGnomonImageFromSolarContainerView:(id)arg1;
+- (id)_dayDiscImageFromSolarContainerView:(id)arg1;
+- (id)_dayDiskBloomImageFromSolarContainerView:(id)arg1;
+- (id)_dayGnomonImageFromSolarContainerView:(id)arg1;
+- (id)_gnomonImage;
+- (id)_newGnomonLayer;
+- (id)_waypointViewImageRef;
+- (id)_dialViewImageRef;
 - (id)_customEditOptionContainerViewForSlot:(id)arg1;
 - (id)_pickerMaskForSlot:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
@@ -66,7 +79,7 @@
 - (void)_loadLayoutRules;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (struct CGRect)_timeViewKeylineFrameForEditing;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
@@ -95,8 +108,9 @@
 - (void)_updateTimeLabelsWithReferenceDate:(id)arg1 overrideDate:(id)arg2;
 - (void)_updateWaypointLabel;
 - (void)_updateSolarOrbitGlowPath:(double)arg1;
+- (void)_refreshGlowPathState;
 - (void)_updateStatusBarVisibility;
-- (void)_cleanupAfterSettingViewMode:(unsigned long long)arg1;
+- (void)_cleanupAfterSettingViewMode:(unsigned long long)arg1 previousViewMode:(unsigned long long)arg2;
 - (void)_interpolateFromViewMode:(unsigned long long)arg1 toViewMode:(unsigned long long)arg2 progress:(double)arg3;
 - (void)_prepareForSettingViewMode:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)_setViewMode:(unsigned long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -108,12 +122,10 @@
 - (void)_animateSolarDayFromProgress:(double)arg1 toProgress:(double)arg2 minDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_forceSolarDayUpdate;
 - (void)_setSolarDayProgress:(double)arg1;
-- (void)_updateSolarDayMask;
-- (void)dataSourceDidUpdateSolarData;
+- (void)dataSourceDidUpdateSolarData:(id)arg1;
+- (void)_updateSunsetFilter;
 - (void)_updateLocale;
 - (void)_asyncUpdateLocale;
-- (void)_timeZoneChanged:(id)arg1;
-- (void)_significantTimeChanged;
 - (void)setTimeOffset:(double)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)_timeDidUpdate:(id)arg1;
@@ -129,12 +141,13 @@
 - (void)_disableCrown;
 - (void)_enableCrown;
 - (void)_updateFramerate;
-- (void)screenWillTurnOn;
-- (void)screenDidTurnOff;
+- (void)screenWillTurnOnAnimated:(_Bool)arg1;
+- (void)screenDidTurnOffAnimated:(_Bool)arg1;
 @property(nonatomic, getter=isFrozen) _Bool frozen;
 - (void)_applyDataMode;
 - (void)setDataMode:(long long)arg1;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)_supportsTimeScrubbing;
 - (_Bool)_wantsMinorDetents;
 - (void)handleScreenBlanked;
@@ -145,10 +158,6 @@
 - (void)_loadSnapshotContentViews;
 - (void)_unloadTimeView;
 - (void)_loadTimeView;
-- (void)_unloadSolarViews;
-- (void)_loadSolarViews;
-- (void)_unloadSolarOrbit;
-- (void)_loadSolarOrbit;
 - (void)_unloadDial;
 - (void)_loadDial;
 - (void)_unloadUI;

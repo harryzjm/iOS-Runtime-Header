@@ -8,12 +8,12 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDIDSMessageCenter, IDSDevice, NSData, NSDate, NSDictionary, NSString;
+@class HDIDSMessageCenter, HDIDSParticipant, NSData, NSDate, NSDictionary, NSString;
 
 @interface HDIDSIncomingResponse : NSObject <HDNanoSyncDescription>
 {
     unsigned short _messageID;
-    IDSDevice *_fromDevice;
+    HDIDSParticipant *_fromParticipant;
     NSData *_data;
     NSString *_idsIdentifier;
     NSString *_requestIDSIdentifier;
@@ -23,7 +23,8 @@
     id _pbResponse;
 }
 
-@property(retain, nonatomic) id pbResponse; // @synthesize pbResponse=_pbResponse;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id pbResponse; // @synthesize pbResponse=_pbResponse;
 @property(nonatomic) __weak HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
 @property(retain, nonatomic) NSDictionary *requestPersistentUserInfo; // @synthesize requestPersistentUserInfo=_requestPersistentUserInfo;
 @property(retain, nonatomic) NSDate *requestSent; // @synthesize requestSent=_requestSent;
@@ -31,8 +32,8 @@
 @property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
-@property(retain, nonatomic) IDSDevice *fromDevice; // @synthesize fromDevice=_fromDevice;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HDIDSParticipant *fromParticipant; // @synthesize fromParticipant=_fromParticipant;
+- (void)setPbResponse:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)nanoSyncDescription;
 

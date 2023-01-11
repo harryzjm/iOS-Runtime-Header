@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHMomentShareParticipant;
+@class PHShareParticipant;
 
 @interface PXMomentShareParticipantRecipient
 {
-    PHMomentShareParticipant *_momentShareParticipant;
+    PHShareParticipant *_momentShareParticipant;
 }
 
-@property(readonly, nonatomic) PHMomentShareParticipant *momentShareParticipant; // @synthesize momentShareParticipant=_momentShareParticipant;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHShareParticipant *momentShareParticipant; // @synthesize momentShareParticipant=_momentShareParticipant;
 - (id)initWithContact:(id)arg1 address:(id)arg2 nameComponents:(id)arg3 recipientKind:(long long)arg4;
 - (id)initWithMomentShareParticipant:(id)arg1;
 

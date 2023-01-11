@@ -58,9 +58,9 @@
 + (id)objectsWithRecordID:(id)arg1 context:(id)arg2;
 + (id)objectWithRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)keyPathsForValuesAffectingCloudAccount;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isMergingUnappliedEncryptedRecord) _Bool mergingUnappliedEncryptedRecord; // @synthesize mergingUnappliedEncryptedRecord;
 @property(nonatomic) _Bool needsToLoadDecryptedValues; // @synthesize needsToLoadDecryptedValues=_needsToLoadDecryptedValues;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isVisible;
 - (id)ic_loggingValues;
 - (id)ic_loggingIdentifier;
@@ -110,6 +110,8 @@
 @property(retain, nonatomic) NSData *cryptoSalt; // @dynamic cryptoSalt;
 @property(retain, nonatomic) NSData *cryptoInitializationVector; // @dynamic cryptoInitializationVector;
 @property(retain, nonatomic) NSData *cryptoTag; // @dynamic cryptoTag;
+- (id)shareDescriptionForShareParticipants:(id)arg1;
+- (id)shareDescription;
 - (void)didAcceptShare:(id)arg1;
 - (void)setServerShareIfNewer:(id)arg1;
 - (id)shareType;
@@ -164,6 +166,7 @@
 - (_Bool)needsToBePushedToCloud;
 - (void)mergeCryptoTagAndInitializationVectorFromRecord:(id)arg1;
 - (void)mergeEncryptedDataFromRecord:(id)arg1;
+@property(readonly, nonatomic) _Bool canSyncPasswordProtectionFields;
 - (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
 - (id)newlyCreatedRecordWithObfuscator:(id)arg1;
 - (id)newlyCreatedRecord;

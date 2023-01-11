@@ -4,35 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKLabel, TLKMultilineText, UIColor, UIFont;
+@class TLKLabel, TLKMultilineText, TLKProminenceView, UIColor, UIFont;
 
 @interface TLKEmbossedLabel
 {
-    struct UIEdgeInsets _customInsets;
     _Bool _shouldBadge;
     TLKMultilineText *_text;
     UIColor *_color;
     UIFont *_font;
     TLKLabel *_label;
+    TLKProminenceView *_backgroundView;
     struct CGSize _textOffset;
+    struct CGSize _customInsetSize;
 }
 
-+ (Class)layerClass;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TLKProminenceView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) TLKLabel *label; // @synthesize label=_label;
+@property(nonatomic) struct CGSize customInsetSize; // @synthesize customInsetSize=_customInsetSize;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(nonatomic) struct CGSize textOffset; // @synthesize textOffset=_textOffset;
 @property(retain, nonatomic) TLKMultilineText *text; // @synthesize text=_text;
 @property(nonatomic) _Bool shouldBadge; // @synthesize shouldBadge=_shouldBadge;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
-- (void)tlk_updateForAppearance:(id)arg1;
-- (void)didMoveToWindow;
-- (void)_dynamicUserInterfaceTraitDidChange;
+- (double)effectiveFirstBaselineOffsetFromTop;
+- (double)effectiveBaselineOffsetFromBottom;
 @property(nonatomic) _Bool adjustsFontSizeToFitWidth;
 - (void)observedPropertiesChanged;
-- (void)setText:(id)arg1 font:(id)arg2 customInsets:(struct UIEdgeInsets)arg3 badge:(_Bool)arg4;
+- (void)setText:(id)arg1 font:(id)arg2 customInsetSize:(struct CGSize)arg3 badge:(_Bool)arg4;
 - (id)init;
 
 @end

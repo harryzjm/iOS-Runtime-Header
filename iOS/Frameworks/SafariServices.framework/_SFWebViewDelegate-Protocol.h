@@ -11,6 +11,7 @@
 @protocol _SFWebViewDelegate <NSObject>
 
 @optional
+- (_Bool)sfWebViewCanPromptForAccountSecurityRecommendation;
 - (_SFDownload *)sfWebView:(_SFWebView *)arg1 didStartDownload:(_WKDownload *)arg2;
 - (void)sfWebViewDidEndFormControlInteraction:(_SFWebView *)arg1;
 - (void)sfWebViewDidStartFormControlInteraction:(_SFWebView *)arg1;

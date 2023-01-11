@@ -10,13 +10,14 @@
 #import <PassKitUI/PKSpendingSummaryFetcherObserver-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, UIBarButtonItem, UIScrollView;
+@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, PKTransactionSource, UIBarButtonItem, UIScrollView;
 @protocol OS_dispatch_source, PKSpendingSummaryViewControllerDelegate;
 
 @interface PKSpendingSummaryViewController : UIViewController <PKSpendingSummaryFetcherObserver, UIScrollViewDelegate, PKSpendingSingleSummaryViewControllerDelegate>
 {
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKAccount *_account;
+    PKPaymentPass *_pass;
     PKSpendingSummaryFetcher *_summaryFetcher;
     NSCalendar *_currentCalendar;
     NSArray *_weeks;
@@ -53,8 +54,9 @@
     id <PKSpendingSummaryViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <PKSpendingSummaryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PKSpendingSummaryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_reportTappedButtonWithTag:(id)arg1;
 - (void)invalidatedSummariesAvailable;
 - (void)invalidatedSpendingSummaryOfType:(unsigned long long)arg1 startingWithDate:(id)arg2;
 - (void)spendingSingleSummaryViewController:(id)arg1 changedSelection:(unsigned long long)arg2;
@@ -89,9 +91,11 @@
 - (void)_updateScrollViewContentSize;
 - (void)_layoutCollectionViews;
 - (void)viewWillLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithPaymentPass:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
+- (id)initWithTransactionSource:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -21,6 +21,7 @@
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 - (id)_debugDictionary;
 - (void)_playedAtTime:(double)arg1 engine:(id)arg2;
+- (double)_effectiveDuration;
 - (unsigned long long)_effectiveEventType;
 - (id)_playableProtocol;
 - (id)dictionaryRepresentation;

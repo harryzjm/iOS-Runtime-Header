@@ -19,16 +19,18 @@
     NSMutableDictionary *_notificationManagementSuggestionContentProviders;
     NSMutableSet *_sectionIdentifiersWithNotificationManagementSuggestions;
     NCNotificationRequest *_requestWithRemoteNotificationManagementSuggestion;
+    NCNotificationRequest *_requestWithProvisionalNotificationManagementSuggestion;
     double _scoreForRequestWithRemoteNotificationManagementSuggestion;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double scoreForRequestWithRemoteNotificationManagementSuggestion; // @synthesize scoreForRequestWithRemoteNotificationManagementSuggestion=_scoreForRequestWithRemoteNotificationManagementSuggestion;
+@property(retain, nonatomic) NCNotificationRequest *requestWithProvisionalNotificationManagementSuggestion; // @synthesize requestWithProvisionalNotificationManagementSuggestion=_requestWithProvisionalNotificationManagementSuggestion;
 @property(retain, nonatomic) NCNotificationRequest *requestWithRemoteNotificationManagementSuggestion; // @synthesize requestWithRemoteNotificationManagementSuggestion=_requestWithRemoteNotificationManagementSuggestion;
 @property(retain, nonatomic) NSMutableSet *sectionIdentifiersWithNotificationManagementSuggestions; // @synthesize sectionIdentifiersWithNotificationManagementSuggestions=_sectionIdentifiersWithNotificationManagementSuggestions;
 @property(retain, nonatomic) NSMutableDictionary *notificationManagementSuggestionContentProviders; // @synthesize notificationManagementSuggestionContentProviders=_notificationManagementSuggestionContentProviders;
 @property(nonatomic, getter=isDeviceAuthenticated) _Bool deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property(nonatomic) __weak id <NCNotificationManagementSuggestionManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_removeSuggestionIfNecessaryForNotificationRequest:(id)arg1;
 - (void)_createNewPromotingSuggestionForNotificationRequest:(id)arg1 sectionSettings:(id)arg2;
 - (void)_createNewQuietingSuggestionForNotificationRequest:(id)arg1 sectionSettings:(id)arg2;

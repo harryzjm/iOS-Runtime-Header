@@ -26,18 +26,24 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIPanGestureRecognizer> _interactivePanDismissGestureRecognizer;
     struct RetainPtr<UIPinchGestureRecognizer> _interactivePinchDismissGestureRecognizer;
     struct RetainPtr<WKFullScreenInteractiveTransition> _interactiveDismissTransitionCoordinator;
+    struct WKFullScreenWindowControllerVideoFullscreenModelClient _videoFullscreenClient;
+    _Bool _inPictureInPicture;
+    _Bool _returnToFullscreenFromPictureInPicture;
     struct CGRect _initialFrame;
     struct CGRect _finalFrame;
     struct RetainPtr<NSString> _EVOrganizationName;
     _Bool _EVOrganizationNameIsValid;
     _Bool _inInteractiveDismiss;
+    _Bool _exitRequested;
+    _Bool _enterRequested;
+    _Bool _exitingFullScreen;
     struct RetainPtr<id> _notificationListener;
     WKWebView *__webView;
 }
 
-@property(nonatomic) __weak WKWebView *_webView; // @synthesize _webView=__webView;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) __weak WKWebView *_webView; // @synthesize _webView=__webView;
 - (void)_interactivePinchDismissChanged:(id)arg1;
 - (void)_interactiveDismissChanged:(id)arg1;
 - (void)_dismissFullscreenViewController;
@@ -53,6 +59,11 @@ __attribute__((visibility("hidden")))
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)didExitPictureInPicture;
+- (void)prepareToExitPictureInPicture;
+- (void)failedToEnterPictureInPicture;
+- (void)didEnterPictureInPicture;
+- (void)willEnterPictureInPicture;
 - (void)placeholderWillMoveToSuperview:(id)arg1;
 - (void)videoControlsManagerDidChange;
 - (void)webViewDidRemoveFromSuperviewWhileInFullscreen;
@@ -61,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)beganExitFullScreenWithInitialFrame:(struct CGRect)arg1 finalFrame:(struct CGRect)arg2;
 - (void)exitFullScreen;
 - (void)requestExitFullScreen;
+- (void)requestEnterFullScreen;
 - (void)beganEnterFullScreenWithInitialFrame:(struct CGRect)arg1 finalFrame:(struct CGRect)arg2;
 - (void)enterFullScreen;
 @property(readonly, retain, nonatomic) UIView *webViewPlaceholder;

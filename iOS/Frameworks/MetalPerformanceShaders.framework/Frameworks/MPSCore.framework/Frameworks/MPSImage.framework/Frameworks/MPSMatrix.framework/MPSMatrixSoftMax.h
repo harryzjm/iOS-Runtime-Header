@@ -10,7 +10,7 @@
     unsigned long long _sourceRows;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long sourceRows; // @synthesize sourceRows=_sourceRows;
 @property(nonatomic) unsigned long long sourceColumns; // @synthesize sourceColumns=_sourceColumns;
 - (id)debugDescription;

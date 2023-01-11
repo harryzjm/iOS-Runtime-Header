@@ -8,34 +8,34 @@
 
 #import <PassKitCore/PKForegroundActiveArbiterObserver-Protocol.h>
 
-@class NSLock, NSString, NSXPCConnection, NSXPCInterface, PKXPCForwarder;
-@protocol NSObject, PKForegroundActiveArbiter, PKXPCServiceDelegate;
+@class NSString, NSXPCConnection, NSXPCInterface, PKXPCForwarder;
+@protocol NSObject, PKForegroundActiveArbiter, PKInvalidatable, PKXPCServiceDelegate;
 
 @interface PKXPCService : NSObject <PKForegroundActiveArbiterObserver>
 {
     NSXPCInterface *_remoteObjectInterface;
     NSXPCInterface *_exportedObjectInterface;
-    id _exportedObject;
     NSString *_className;
     NSString *_serviceResumedNotificationName;
-    NSLock *_connectionLock;
+    struct os_unfair_lock_s _lock;
     NSXPCConnection *_connection;
-    PKXPCForwarder *_exportedProxy;
+    PKXPCForwarder *_templateExportedProxy;
+    PKXPCForwarder *_currentExportedProxy;
     _Bool _suspendCallbacks;
     _Bool _forceConnectionOnResume;
     id <PKForegroundActiveArbiter> _foregroundActiveArbiter;
     id <NSObject> _foregroundListener;
     id <NSObject> _backgroundListener;
-    int _serviceResumedToken;
+    id <PKInvalidatable> _serviceResumedListenerInvalidater;
     id <PKXPCServiceDelegate> _delegate;
     NSString *_machServiceName;
     unsigned long long _options;
 }
 
 + (void)setForegroundActiveArbiter:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
-- (void).cxx_destruct;
 - (CDUnknownBlockType)_newErrorHandlerWithSemaphore:(id)arg1;
 - (CDUnknownBlockType)_newWrappedErrorHandlerForHandler:(CDUnknownBlockType)arg1;
 @property(nonatomic) _Bool forceConnectionOnResume;

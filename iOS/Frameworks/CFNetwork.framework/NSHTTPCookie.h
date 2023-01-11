@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CFNetwork/NSCoding-Protocol.h>
+
 @class NSArray, NSDate, NSDictionary, NSHTTPCookieInternal, NSString, NSURL;
 
-@interface NSHTTPCookie : NSObject
+@interface NSHTTPCookie : NSObject <NSCoding>
 {
     NSHTTPCookieInternal *_cookiePrivate;
 }
@@ -16,11 +18,10 @@
 + (id)_cookieForSetCookieString:(id)arg1 forURL:(id)arg2 partition:(id)arg3;
 + (id)cookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2;
 + (id)_parsedCookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2;
-+ (id)_cookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2 singleCookie:(_Bool)arg3;
 + (id)requestHeaderFieldsWithCookies:(id)arg1;
 + (const struct __CFArray *)_ns2cfCookies:(id)arg1;
 + (id)_cf2nsCookies:(struct __CFArray *)arg1;
-+ (id)cookieWithCFHTTPCookie:(id)arg1;
++ (id)cookieWithCFHTTPCookie:(struct OpaqueCFHTTPCookie *)arg1;
 + (id)cookieWithProperties:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -59,19 +60,18 @@
 @property(readonly, getter=isSecure) _Bool secure;
 @property(readonly, getter=isSessionOnly) _Bool sessionOnly;
 @property(readonly) unsigned long long version;
-- (id)_CFHTTPCookie;
-- (id)_GetInternalCFHTTPCookie;
+- (const struct OpaqueCFHTTPCookie *)_CFHTTPCookie;
+- (const struct OpaqueCFHTTPCookie *)_GetInternalCFHTTPCookie;
 @property(readonly, copy) NSDictionary *properties;
 - (void)dealloc;
 - (id)init;
-- (id)initWithCFHTTPCookie:(id)arg1;
+- (id)initWithCFHTTPCookie:(struct OpaqueCFHTTPCookie *)arg1;
 - (id)initWithProperties:(id)arg1;
 - (id)_initWithInternal:(id)arg1;
 - (id)_initWithReference:(const struct CompactCookieArray *)arg1 index:(long long)arg2;
 - (id)_initWithProperties:(id)arg1 fromString:(_Bool)arg2;
 - (id)_initWithCookie:(id)arg1 partition:(id)arg2;
 - (id)_initWithHeader:(const struct CompactCookieHeader *)arg1;
-- (id)ensureCookieValid;
 @property(readonly) struct HTTPCookie *_inner; // @dynamic _inner;
 
 @end

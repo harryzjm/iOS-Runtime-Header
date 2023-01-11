@@ -9,6 +9,7 @@
 @class NSDate, NSOperationQueue;
 @protocol OS_dispatch_source, _HDDemoDataModuleDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _HDDemoDataModule : NSObject
 {
     NSOperationQueue *_operationQueue;
@@ -17,9 +18,9 @@
     NSDate *_lastFireDate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *lastFireDate; // @synthesize lastFireDate=_lastFireDate;
 @property(nonatomic) __weak id <_HDDemoDataModuleDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)timerDidFireWithInterval:(double)arg1;
 - (void)scheduleNextFireWithInterval:(double)arg1;
 - (void)scheduleNextFire;

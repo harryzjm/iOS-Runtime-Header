@@ -19,10 +19,9 @@
 + (void)setDefaultMessageHeadersClass:(Class)arg1;
 + (Class)classForMimePart;
 + (Class)headersClass;
-@property(readonly, retain, nonatomic) MFMessageStoreObjectCache *objectCache; // @synthesize objectCache=_objectCache;
++ (id)log;
 - (void).cxx_destruct;
-- (id)additionalHeadersForForwardOfMessage:(id)arg1;
-- (id)additionalHeadersForReplyOfMessage:(id)arg1;
+@property(readonly, retain, nonatomic) MFMessageStoreObjectCache *objectCache; // @synthesize objectCache=_objectCache;
 - (void)setMessageClass:(Class)arg1;
 - (_Bool)wantsLineEndingConversionForMIMEPart:(id)arg1;
 - (void)setNumberOfAttachments:(unsigned int)arg1 isSigned:(_Bool)arg2 isEncrypted:(_Bool)arg3 forMessage:(id)arg4;
@@ -30,9 +29,7 @@
 - (_Bool)hasCompleteDataForMimePart:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1 isComplete:(_Bool *)arg2 isPartial:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4;
 - (id)_fetchBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 downloadIfNecessary:(_Bool)arg3 partial:(_Bool *)arg4;
-- (void)deleteBodyDataForMessage:(id)arg1;
 - (void)_flushAllCaches;
-- (void)_deleteCachedBodyForMessage:(id)arg1;
 - (id)_cachedBodyDataContainerForMessage:(id)arg1 valueIfNotPresent:(id)arg2;
 - (id)_cachedHeadersForMessage:(id)arg1 valueIfNotPresent:(id)arg2;
 - (id)_cachedBodyForMessage:(id)arg1 valueIfNotPresent:(id)arg2;

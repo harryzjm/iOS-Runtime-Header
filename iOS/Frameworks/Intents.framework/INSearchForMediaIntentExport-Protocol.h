@@ -7,9 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INMediaSearch, NSArray;
+@class INMediaSearch, INPrivateSearchForMediaIntentData, NSArray;
 
 @protocol INSearchForMediaIntentExport <NSObject, JSExport>
+@property(copy, nonatomic) INPrivateSearchForMediaIntentData *privateSearchForMediaIntentData;
 @property(copy, nonatomic) INMediaSearch *mediaSearch;
 @property(copy, nonatomic) NSArray *mediaItems;
 - (id)init;

@@ -23,7 +23,10 @@
     _Bool _preventsSleepDuringVideoPlayback;
     _Bool _updatesMediaRemoteInfoAutomatically;
     _Bool _isLive;
+    _Bool _prefersSDRVideo;
     _Bool _limitsBandwidthForCellularAccess;
+    _Bool _allowsCellularUsage;
+    _Bool _allowsConstrainedNetworkUsage;
     _Bool _invalidated;
     _Bool _handleRemoteCommandsWithoutUpdatingMediaRemote;
     _Bool _pausesOnRouteChange;
@@ -36,6 +39,7 @@
     _Bool _currentPlayerItemContainsRealDates;
     _Bool _modifyingAVPlayerRate;
     _Bool _modifyingAVPlayerQueue;
+    _Bool _playerItemChangeIsHappening;
     _Bool _sceneCompletelyBuffered;
     _Bool _outputObscuredDueToInsufficientExternalProtection;
     _Bool _asyncDelegateInProgress;
@@ -79,6 +83,8 @@
     NSHashTable *_videoViewWeakReferences;
     NSMutableSet *_mediaItemLoaders;
     long long _currentMediaItemVideoRange;
+    long long _currentMediaItemAudioFormat;
+    long long _currentMediaItemAudioChannels;
     NSArray *_pendingSelectedMediaArray;
     TVPPlayerItem *_currentPlayerItem;
     NSDate *_dateBeingSeekedTo;
@@ -95,6 +101,7 @@
     NSNumber *_temporarySubtitleOverrideType;
     NSArray *_playbackEndTimeBoundaryObserverTokens;
     TVPAudioOption *_cachedSelectedAudioOption;
+    AVQueuePlayer *_earlyAVQueuePlayer;
     NSArray *_cachedLoadedTimeRanges;
     NSArray *_cachedSeekableTimeRanges;
     AVQueuePlayer *_AVQueuePlayer;
@@ -115,6 +122,8 @@
     CDStruct_1b6d18a9 _cachedDuration;
 }
 
++ (id)_stringForAudioFormat:(long long)arg1;
++ (long long)_audioFormatForAudioCodecType:(unsigned int)arg1;
 + (id)_audioSelectionCriteriaForMediaItemLoader:(id)arg1;
 + (id)_newAVQueuePlayer;
 + (void)setSavedPreferredAudioLanguageCode:(id)arg1;
@@ -123,9 +132,11 @@
 + (void)setShouldDeactivateAVAudioSession:(_Bool)arg1;
 + (_Bool)shouldDeactivateAVAudioSession;
 + (void)_playerWillBecomeActive:(id)arg1;
++ (long long)tvpVideoRangeForVideoDynamicRange:(int)arg1;
 + (void)removeTemporaryDownloadDirectory;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool initialMediaItemHasCompletedInitialLoading; // @synthesize initialMediaItemHasCompletedInitialLoading=_initialMediaItemHasCompletedInitialLoading;
 @property(nonatomic) _Bool remainLoadingWhenSeekCompletes; // @synthesize remainLoadingWhenSeekCompletes=_remainLoadingWhenSeekCompletes;
 @property(nonatomic) _Bool mediaRemoteUpdatingEnabled; // @synthesize mediaRemoteUpdatingEnabled=_mediaRemoteUpdatingEnabled;
@@ -144,6 +155,7 @@
 @property(retain, nonatomic) NSArray *cachedLoadedTimeRanges; // @synthesize cachedLoadedTimeRanges=_cachedLoadedTimeRanges;
 @property(nonatomic) CDStruct_1b6d18a9 cachedDuration; // @synthesize cachedDuration=_cachedDuration;
 @property(nonatomic) float cachedAVPlayerRate; // @synthesize cachedAVPlayerRate=_cachedAVPlayerRate;
+@property(retain, nonatomic) AVQueuePlayer *earlyAVQueuePlayer; // @synthesize earlyAVQueuePlayer=_earlyAVQueuePlayer;
 @property(retain, nonatomic) TVPAudioOption *cachedSelectedAudioOption; // @synthesize cachedSelectedAudioOption=_cachedSelectedAudioOption;
 @property(retain, nonatomic) NSArray *playbackEndTimeBoundaryObserverTokens; // @synthesize playbackEndTimeBoundaryObserverTokens=_playbackEndTimeBoundaryObserverTokens;
 @property(retain, nonatomic) NSNumber *temporarySubtitleOverrideType; // @synthesize temporarySubtitleOverrideType=_temporarySubtitleOverrideType;
@@ -162,6 +174,7 @@
 @property(retain, nonatomic) NSDate *playbackDateAtStartOfSeek; // @synthesize playbackDateAtStartOfSeek=_playbackDateAtStartOfSeek;
 @property(retain, nonatomic) NSDate *dateBeingSeekedTo; // @synthesize dateBeingSeekedTo=_dateBeingSeekedTo;
 @property(nonatomic) CDStruct_1b6d18a9 timeBeingSeekedTo; // @synthesize timeBeingSeekedTo=_timeBeingSeekedTo;
+@property(nonatomic) _Bool playerItemChangeIsHappening; // @synthesize playerItemChangeIsHappening=_playerItemChangeIsHappening;
 @property(nonatomic) _Bool modifyingAVPlayerQueue; // @synthesize modifyingAVPlayerQueue=_modifyingAVPlayerQueue;
 @property(nonatomic) _Bool modifyingAVPlayerRate; // @synthesize modifyingAVPlayerRate=_modifyingAVPlayerRate;
 @property(nonatomic) _Bool currentPlayerItemContainsRealDates; // @synthesize currentPlayerItemContainsRealDates=_currentPlayerItemContainsRealDates;
@@ -171,6 +184,8 @@
 @property(nonatomic) _Bool screenIsBeingRecorded; // @synthesize screenIsBeingRecorded=_screenIsBeingRecorded;
 @property(nonatomic) int screenRecordingNotifyToken; // @synthesize screenRecordingNotifyToken=_screenRecordingNotifyToken;
 @property(copy, nonatomic) NSArray *pendingSelectedMediaArray; // @synthesize pendingSelectedMediaArray=_pendingSelectedMediaArray;
+@property(nonatomic) long long currentMediaItemAudioChannels; // @synthesize currentMediaItemAudioChannels=_currentMediaItemAudioChannels;
+@property(nonatomic) long long currentMediaItemAudioFormat; // @synthesize currentMediaItemAudioFormat=_currentMediaItemAudioFormat;
 @property(nonatomic) long long currentMediaItemVideoRange; // @synthesize currentMediaItemVideoRange=_currentMediaItemVideoRange;
 @property(nonatomic) _Bool pausesOnHDCPProtectionDown; // @synthesize pausesOnHDCPProtectionDown=_pausesOnHDCPProtectionDown;
 @property(nonatomic) CDStruct_1b6d18a9 lastTimeSentToAVKitImageHandler; // @synthesize lastTimeSentToAVKitImageHandler=_lastTimeSentToAVKitImageHandler;
@@ -200,19 +215,18 @@
 @property(nonatomic) _Bool waitsAfterPreparingMediaItems; // @synthesize waitsAfterPreparingMediaItems=_waitsAfterPreparingMediaItems;
 @property(nonatomic) __weak id <TVPASyncPlaybackDelegate> asyncDelegate; // @synthesize asyncDelegate=_asyncDelegate;
 @property(nonatomic) __weak id <TVPPlaybackDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_registerStateMachineHandlers;
 - (void)_savePreferredAudioLanguageFromAudioOption:(id)arg1;
 - (void)_populatePlayerItem:(id)arg1 withMetadataFromMediaItem:(id)arg2;
 - (void)_updateScreenRecordingState;
 - (_Bool)_getStringForTitleLabel:(id *)arg1 subtitleLabel:(id *)arg2 forMediaItem:(id)arg3;
 - (_Bool)_hasDolbyAtmosForTracks:(id)arg1;
+- (void)_updateCurrentMediaItemAudioInfoForPlayerItem:(id)arg1 tracks:(id)arg2;
 - (void)_updateMetadataWithVideoQualityColorRangeAndDolbyAtmosForPlayerItem:(id)arg1 tracks:(id)arg2;
 - (id)_descriptionForVideoRange:(long long)arg1;
 - (id)_descriptionForVideoResolutionClass:(long long)arg1;
 - (id)_audioAssetTracksFromTracks:(id)arg1;
 - (id)_videoAssetTracksFromTracks:(id)arg1;
-- (long long)_tvpVideoRangeForVideoDynamicRange:(int)arg1;
 - (void)_updateMediaRemoteManager;
 - (id)_bitRateString:(double)arg1;
 - (void)_logAccessLogEvents;
@@ -225,7 +239,7 @@
 - (void)_enqueueAsyncDelegateOperation:(id)arg1;
 - (void)_updateIsLiveForElapsedTime:(CDStruct_1b6d18a9)arg1;
 - (id)_soundCheckNormalizationForMediaItem:(id)arg1;
-- (id)tvp_PlaybackErrorFromError:(id)arg1;
+- (id)tvp_PlaybackErrorFromError:(id)arg1 forMediaItem:(id)arg2;
 - (_Bool)_isPlaybackLikelyToKeepUp;
 - (void)_updateVideoViewsWithAVQueuePlayer:(id)arg1;
 - (void)_HDCPUnprotectedTooLongTimerFired:(id)arg1;
@@ -306,7 +320,10 @@
 - (void)_subtitleSettingsDidChange;
 - (void)_preferVideoDescriptionsSettingDidChange;
 - (long long)externalPlaybackType;
+@property(nonatomic) _Bool allowsConstrainedNetworkUsage; // @synthesize allowsConstrainedNetworkUsage=_allowsConstrainedNetworkUsage;
+@property(nonatomic) _Bool allowsCellularUsage; // @synthesize allowsCellularUsage=_allowsCellularUsage;
 @property(nonatomic) _Bool limitsBandwidthForCellularAccess; // @synthesize limitsBandwidthForCellularAccess=_limitsBandwidthForCellularAccess;
+@property(nonatomic) _Bool prefersSDRVideo; // @synthesize prefersSDRVideo=_prefersSDRVideo;
 @property(nonatomic) struct CGSize preferredMaximumResolution; // @synthesize preferredMaximumResolution=_preferredMaximumResolution;
 @property(nonatomic) double preferredForwardBufferDuration; // @synthesize preferredForwardBufferDuration=_preferredForwardBufferDuration;
 - (void)setPlaybackHUDString:(id)arg1;
@@ -316,6 +333,8 @@
 - (id)accessLog;
 @property(readonly, nonatomic) AVPlayer *avPlayer;
 - (void)_selectMediaArray:(id)arg1 withItem:(id)arg2;
+- (void)restartPlaybackWithState:(id)arg1;
+- (id)AVQueuePlayerCreateIfNecessary:(_Bool)arg1;
 - (void)selectMediaArray:(id)arg1;
 - (long long)currentScanMode;
 - (void)removeWeakReferenceToVideoView:(id)arg1;

@@ -12,6 +12,7 @@
 + (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(_Bool)arg5 hasPlayLightsAndSirens:(_Bool)arg6;
 + (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(_Bool)arg5;
 + (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4;
++ (id)requesterIdentifier;
 @property(readonly, nonatomic) NSString *contactIdentifier;
 - (_Bool)hasSameContactAsNotificationRequest:(id)arg1;
 @property(readonly, nonatomic) BBObserver *observer;
@@ -22,5 +23,9 @@
 @property(readonly, nonatomic) _Bool hasOnlySingleMinimalTextInputAction;
 @property(readonly, nonatomic) _Bool hasOnlySingleTextInputAction;
 @property(readonly, nonatomic) _Bool hasAttachments;
+@property(readonly, copy, nonatomic) NSString *carPlayMessage;
+@property(readonly, copy, nonatomic) NSString *carPlaySubTitle;
+@property(readonly, copy, nonatomic) NSString *carPlayTitle;
+@property(readonly, copy, nonatomic) NSString *carPlayRequestIdentifier;
 @end
 

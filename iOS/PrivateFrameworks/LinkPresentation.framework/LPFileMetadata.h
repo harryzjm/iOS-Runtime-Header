@@ -23,13 +23,13 @@
 
 + (id)keyPathsForValuesAffecting_dummyPropertyForObservation;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(retain, nonatomic) LPImage *icon; // @synthesize icon=_icon;
 @property(retain, nonatomic) LPImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(nonatomic) unsigned long long size; // @synthesize size=_size;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (void)_enumerateAsynchronousFields:(CDUnknownBlockType)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -44,8 +44,10 @@
 - (id)presentationPropertiesForTransformer:(id)arg1;
 - (id)_nameForTransformer:(id)arg1;
 - (id)_singleLineDescriptionForRemoteFileWithTransformer:(id)arg1;
+- (_Bool)_shouldUseBackground;
 - (_Bool)_shouldUseCircularIcon;
 - (_Bool)_shouldUseSquareIcon;
+- (_Bool)_isWatchFace;
 - (_Bool)_isPlainText;
 - (_Bool)_isImage;
 - (id)_bottomCaptionStringForTransformer:(id)arg1;

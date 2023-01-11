@@ -18,10 +18,12 @@
     CDUnknownBlockType _responseHandler;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(readonly, copy, nonatomic) MPCModelStorePlaybackItemsRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
-- (void)_getShouldLibraryPersonalizeRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_validateUserIdentityForRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_shouldUseLegacyAccumulator;
+- (void)_executeWithUserIdentity:(id)arg1;
 - (void)execute;
 - (void)cancel;
 - (id)initWithRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;

@@ -5,11 +5,12 @@
 //
 
 @class CKDProtocolTranslator, NSArray, NSData, NSString, NSURL, PCCKey;
+@protocol CKCodeOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDCodeFunctionInvokeOperation
 {
-    _Bool _local;
+    _Bool _shouldSendRecordPCSKeys;
     _Bool _shouldFetchAssetContentInMemory;
     CDUnknownBlockType _replaceLocalSerializationsBlobs;
     CDUnknownBlockType _initialResponseReceivedCallback;
@@ -25,9 +26,8 @@ __attribute__((visibility("hidden")))
     NSArray *_requestLocalSerializations;
     NSArray *_requestLocalEnvelopes;
     NSData *_permittedRemoteMeasurement;
-    NSURL *_explicitBaseURL;
+    NSURL *_resolvedBaseURL;
     NSArray *_requestRecords;
-    NSArray *_requestEnvelopes;
     NSData *_serializedArguments;
     NSData *_serializedResponse;
     NSArray *_responseRecords;
@@ -35,15 +35,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)isPredominatelyDownload;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property(copy, nonatomic) NSArray *responseRecords; // @synthesize responseRecords=_responseRecords;
 @property(copy, nonatomic) NSData *serializedResponse; // @synthesize serializedResponse=_serializedResponse;
 @property(copy, nonatomic) NSData *serializedArguments; // @synthesize serializedArguments=_serializedArguments;
-@property(copy, nonatomic) NSArray *requestEnvelopes; // @synthesize requestEnvelopes=_requestEnvelopes;
 @property(copy, nonatomic) NSArray *requestRecords; // @synthesize requestRecords=_requestRecords;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
-@property(nonatomic) _Bool local; // @synthesize local=_local;
-@property(copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
+@property(copy, nonatomic) NSURL *resolvedBaseURL; // @synthesize resolvedBaseURL=_resolvedBaseURL;
+@property(nonatomic) _Bool shouldSendRecordPCSKeys; // @synthesize shouldSendRecordPCSKeys=_shouldSendRecordPCSKeys;
 @property(copy, nonatomic) NSData *permittedRemoteMeasurement; // @synthesize permittedRemoteMeasurement=_permittedRemoteMeasurement;
 @property(copy, nonatomic) NSArray *requestLocalEnvelopes; // @synthesize requestLocalEnvelopes=_requestLocalEnvelopes;
 @property(copy, nonatomic) NSArray *requestLocalSerializations; // @synthesize requestLocalSerializations=_requestLocalSerializations;
@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType replaceWireSerializations; // @synthesize replaceWireSerializations=_replaceWireSerializations;
 @property(copy, nonatomic) CDUnknownBlockType initialResponseReceivedCallback; // @synthesize initialResponseReceivedCallback=_initialResponseReceivedCallback;
 @property(copy, nonatomic) CDUnknownBlockType replaceLocalSerializationsBlobs; // @synthesize replaceLocalSerializationsBlobs=_replaceLocalSerializationsBlobs;
-- (void).cxx_destruct;
 - (void)main;
 - (void)_postflightRecords;
 - (void)_getDeserializedRecords;
@@ -68,8 +67,13 @@ __attribute__((visibility("hidden")))
 - (void)_preflightRecords;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
+- (int)operationType;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) id <CKCodeOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property(nonatomic) unsigned long long state; // @dynamic state;
 
 @end
 

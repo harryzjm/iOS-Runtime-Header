@@ -16,7 +16,7 @@
     MPSCNNConvolutionGradient *_convolutionGradient;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) unsigned long long gradientOption; // @synthesize gradientOption=_gradientOption;
 @property(readonly, nonatomic) unsigned long long groups; // @synthesize groups=_groups;
 @property(readonly, nonatomic) unsigned long long sourceImageFeatureChannels; // @synthesize sourceImageFeatureChannels=_outputFeatureChannels;

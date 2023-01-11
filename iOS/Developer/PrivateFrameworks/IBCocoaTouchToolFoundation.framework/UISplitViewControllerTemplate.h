@@ -9,20 +9,38 @@
 @interface UISplitViewControllerTemplate
 {
     _Bool _presentsWithGesture;
+    long long _style;
     UIViewControllerTemplate *_masterViewController;
     UIViewControllerTemplate *_detailViewController;
+    UIViewControllerTemplate *_supplementaryViewController;
+    UIViewControllerTemplate *_compactViewController;
     NSNumber *_maximumPrimaryColumnWidth;
     NSNumber *_minimumPrimaryColumnWidth;
     NSNumber *_preferredPrimaryColumnWidthFraction;
+    NSNumber *_maximumSupplementaryColumnWidth;
+    NSNumber *_minimumSupplementaryColumnWidth;
+    NSNumber *_preferredSupplementaryColumnWidthFraction;
+    long long _primaryEdge;
+    long long _preferredDisplayMode;
+    long long _preferredSplitBehavior;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long preferredSplitBehavior; // @synthesize preferredSplitBehavior=_preferredSplitBehavior;
+@property(nonatomic) long long preferredDisplayMode; // @synthesize preferredDisplayMode=_preferredDisplayMode;
+@property(nonatomic) long long primaryEdge; // @synthesize primaryEdge=_primaryEdge;
 @property(nonatomic) _Bool presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
+@property(retain, nonatomic) NSNumber *preferredSupplementaryColumnWidthFraction; // @synthesize preferredSupplementaryColumnWidthFraction=_preferredSupplementaryColumnWidthFraction;
+@property(retain, nonatomic) NSNumber *minimumSupplementaryColumnWidth; // @synthesize minimumSupplementaryColumnWidth=_minimumSupplementaryColumnWidth;
+@property(retain, nonatomic) NSNumber *maximumSupplementaryColumnWidth; // @synthesize maximumSupplementaryColumnWidth=_maximumSupplementaryColumnWidth;
 @property(retain, nonatomic) NSNumber *preferredPrimaryColumnWidthFraction; // @synthesize preferredPrimaryColumnWidthFraction=_preferredPrimaryColumnWidthFraction;
 @property(retain, nonatomic) NSNumber *minimumPrimaryColumnWidth; // @synthesize minimumPrimaryColumnWidth=_minimumPrimaryColumnWidth;
 @property(retain, nonatomic) NSNumber *maximumPrimaryColumnWidth; // @synthesize maximumPrimaryColumnWidth=_maximumPrimaryColumnWidth;
+@property(retain, nonatomic) UIViewControllerTemplate *compactViewController; // @synthesize compactViewController=_compactViewController;
+@property(retain, nonatomic) UIViewControllerTemplate *supplementaryViewController; // @synthesize supplementaryViewController=_supplementaryViewController;
 @property(retain, nonatomic) UIViewControllerTemplate *detailViewController; // @synthesize detailViewController=_detailViewController;
 @property(retain, nonatomic) UIViewControllerTemplate *masterViewController; // @synthesize masterViewController=_masterViewController;
-- (void).cxx_destruct;
+@property(nonatomic) long long style; // @synthesize style=_style;
 - (void)encodeWithCoder:(id)arg1;
 - (void)updateChildViewControllers;
 

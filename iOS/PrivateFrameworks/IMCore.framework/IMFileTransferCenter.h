@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
+#import <IMCore/IMFileTransferCenter-Protocol.h>
 
-@interface IMFileTransferCenter : NSObject
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+
+@interface IMFileTransferCenter : NSObject <IMFileTransferCenter>
 {
     NSMutableDictionary *_guidToTransferMap;
     NSMutableDictionary *_guidToRemovedTransferMap;
@@ -19,6 +21,7 @@
     NSMutableSet *_pendingTransfers;
     _Bool _disconnectionListenerSetUp;
     NSMutableDictionary *_fetchHighQualityVariantCompletionHandlers;
+    _Bool _issueSandboxEstensionsForTransfers;
 }
 
 + (Class)fileTransferClass;
@@ -26,6 +29,7 @@
 + (void)setTransferCenterClass:(Class)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic, getter=shouldIssueSandboxEstensionsForTransfers) _Bool issueSandboxEstensionsForTransfers; // @synthesize issueSandboxEstensionsForTransfers=_issueSandboxEstensionsForTransfers;
 - (void)preWarmConnection;
 - (void)_daemonRestarted:(id)arg1;
 - (void)_initiateHighQualityVariantDownloadWithDaemonForGUID:(id)arg1;
@@ -67,6 +71,7 @@
 - (void)assignTransfer:(id)arg1 toMessage:(id)arg2 account:(id)arg3;
 - (void)_addSpotlightProperties:(id)arg1 sender:(id)arg2 recipients:(id)arg3 incoming:(_Bool)arg4;
 - (_Bool)registerGUID:(id)arg1 forNewOutgoingTransferWithLocalURL:(id)arg2;
+- (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1 useLegacyGuid:(_Bool)arg2;
 - (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1;
 - (_Bool)doesLocalURLRequireArchiving:(id)arg1 toHandle:(id)arg2;
 - (void)_addTransfer:(id)arg1;
@@ -82,6 +87,12 @@
 - (void)_addPendingTransfer:(id)arg1;
 @property(readonly, nonatomic) _Bool hasPendingFileTransfers;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

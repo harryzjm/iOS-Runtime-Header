@@ -20,10 +20,12 @@
 
 + (id)sharedBackgroundConnection;
 + (id)sharedConnection;
+- (void).cxx_destruct;
 @property(nonatomic) struct __CFDictionary *runningQueries; // @synthesize runningQueries=_runningQueries;
 @property(retain, nonatomic) NSString *daemonName; // @synthesize daemonName=_daemonName;
-- (void).cxx_destruct;
 - (void)dealloc;
+- (void)barrierOnXPC:(CDUnknownBlockType)arg1;
+- (id)connectionQueue;
 - (id)init;
 - (id)initWithDaemonName:(id)arg1 qos:(unsigned int)arg2;
 - (void)sendSFFeedback:(id)arg1 type:(long long)arg2 queryId:(unsigned long long)arg3;

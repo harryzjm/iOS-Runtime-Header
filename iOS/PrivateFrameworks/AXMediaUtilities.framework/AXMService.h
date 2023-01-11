@@ -10,16 +10,18 @@
 #import <AXMediaUtilities/AXMServiceInterface-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol AXMServiceDelegate, OS_dispatch_queue;
 
 @interface AXMService : NSObject <AXMServiceClientInterface, AXMServiceInterface>
 {
     NSObject<OS_dispatch_queue> *_xpcConnectionQueue;
+    id <AXMServiceDelegate> _delegate;
     NSXPCConnection *_xpcConnection;
 }
 
-@property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property(nonatomic) __weak id <AXMServiceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)visionEngine:(id)arg1 evaluateSource:(id)arg2 context:(id)arg3 options:(long long)arg4 result:(CDUnknownBlockType)arg5;
 - (void)prewarmVisionEngineService;
 - (id)_serviceProxy;

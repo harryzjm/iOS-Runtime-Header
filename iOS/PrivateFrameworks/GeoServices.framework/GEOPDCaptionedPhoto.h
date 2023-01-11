@@ -8,44 +8,41 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPhoto, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDJoeColor, GEOPDPhoto, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCaptionedPhoto : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_author;
     NSString *_caption;
+    GEOPDJoeColor *_joeColor;
     NSString *_licenseDescription;
     NSString *_licenseUrl;
     GEOPDPhoto *_photo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     _Bool _displayFullPhotoInline;
+    _Bool _displayFullScreenPhotoGallery;
     _Bool _highQuality;
     _Bool _isBusinessOwned;
     _Bool _useGallery;
     struct {
         unsigned int has_displayFullPhotoInline:1;
+        unsigned int has_displayFullScreenPhotoGallery:1;
         unsigned int has_highQuality:1;
         unsigned int has_isBusinessOwned:1;
         unsigned int has_useGallery:1;
         unsigned int read_unknownFields:1;
         unsigned int read_author:1;
         unsigned int read_caption:1;
+        unsigned int read_joeColor:1;
         unsigned int read_licenseDescription:1;
         unsigned int read_licenseUrl:1;
         unsigned int read_photo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_author:1;
-        unsigned int wrote_caption:1;
-        unsigned int wrote_licenseDescription:1;
-        unsigned int wrote_licenseUrl:1;
-        unsigned int wrote_photo:1;
-        unsigned int wrote_displayFullPhotoInline:1;
-        unsigned int wrote_highQuality:1;
-        unsigned int wrote_isBusinessOwned:1;
-        unsigned int wrote_useGallery:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -62,8 +59,15 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOPDJoeColor *joeColor;
+@property(readonly, nonatomic) _Bool hasJoeColor;
+@property(nonatomic) _Bool hasDisplayFullScreenPhotoGallery;
+@property(nonatomic) _Bool displayFullScreenPhotoGallery;
 @property(nonatomic) _Bool hasIsBusinessOwned;
 @property(nonatomic) _Bool isBusinessOwned;
 @property(nonatomic) _Bool hasHighQuality;
@@ -74,19 +78,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool displayFullPhotoInline;
 @property(retain, nonatomic) GEOPDPhoto *photo;
 @property(readonly, nonatomic) _Bool hasPhoto;
-- (void)_readPhoto;
 @property(retain, nonatomic) NSString *licenseUrl;
 @property(readonly, nonatomic) _Bool hasLicenseUrl;
-- (void)_readLicenseUrl;
 @property(retain, nonatomic) NSString *licenseDescription;
 @property(readonly, nonatomic) _Bool hasLicenseDescription;
-- (void)_readLicenseDescription;
 @property(retain, nonatomic) NSString *author;
 @property(readonly, nonatomic) _Bool hasAuthor;
-- (void)_readAuthor;
 @property(retain, nonatomic) NSString *caption;
 @property(readonly, nonatomic) _Bool hasCaption;
-- (void)_readCaption;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

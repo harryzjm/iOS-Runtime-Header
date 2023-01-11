@@ -13,9 +13,9 @@
 }
 
 + (id)_analogImageProvider;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showIdealizedTime; // @synthesize showIdealizedTime=_showIdealizedTime;
 @property(retain, nonatomic) WorldClockCity *city; // @synthesize city=_city;
-- (void).cxx_destruct;
 - (double)_timeZoneOffset;
 - (id)_timeZone;
 - (id)_timeAndDifferenceOffsetTextProvider;
@@ -30,7 +30,9 @@
 - (id)_dayOffsetTextProvider;
 - (id)_timeTextProvider;
 - (id)_newSignatureBezelTemplate;
+- (id)_newSignatureExtraLargeCircularTemplate;
 - (id)_newSignatureCircularTemplate;
+- (id)_graphicCircularMetadata;
 - (id)_signatureCorner;
 - (id)_newLargeUtilityTemplate;
 - (id)_newExtraLargeTemplate;
@@ -39,6 +41,7 @@
 - (id)_newLargeModularTemplate;
 - (id)_newSmallModularTemplate;
 - (id)_newSmallFlatUtilityTemplate;
+- (id)_newSignatureRectangularTemplate;
 - (id)templateForComplicationFamily:(long long)arg1;
 - (id)init;
 

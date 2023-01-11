@@ -13,6 +13,7 @@
 
 @interface CAMTimelapseState : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _captureMirrored;
     _Bool _allFramesWritten;
     _Bool _preferHEVC;
     unsigned short _sessionIdentifier;
@@ -34,6 +35,7 @@
 + (id)stateWithContentsOfFile:(id)arg1;
 + (double)maxTimeToWaitForWrittenFrameAfterStop;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool preferHEVC; // @synthesize preferHEVC=_preferHEVC;
 @property(nonatomic) struct CGSize nominalIntermediateFrameSize; // @synthesize nominalIntermediateFrameSize=_nominalIntermediateFrameSize;
 @property(nonatomic) float focusLensPosition; // @synthesize focusLensPosition=_focusLensPosition;
@@ -46,11 +48,11 @@
 @property(retain, nonatomic) NSDate *lastFrameResponseTime; // @synthesize lastFrameResponseTime=_lastFrameResponseTime;
 @property(retain, nonatomic) CLLocation *startLocation; // @synthesize startLocation=_startLocation;
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
+@property(nonatomic, getter=isCaptureMirrored) _Bool captureMirrored; // @synthesize captureMirrored=_captureMirrored;
 @property(nonatomic) int captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property(nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property(nonatomic) unsigned short sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(retain, nonatomic) NSString *timelapseUUID; // @synthesize timelapseUUID=_timelapseUUID;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) long long connectionMode;
 - (_Bool)writeToFile:(id)arg1 createDirectoryIfNeeded:(_Bool)arg2;
 - (void)forceCompleted;

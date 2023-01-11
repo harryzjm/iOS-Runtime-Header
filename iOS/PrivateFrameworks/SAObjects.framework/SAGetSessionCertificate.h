@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface SAGetSessionCertificate <SAServerBoundCommand>
 {
@@ -15,6 +15,7 @@
 + (id)getSessionCertificateWithDictionary:(id)arg1 context:(id)arg2;
 + (id)getSessionCertificate;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSNumber *deviceAuthVersion;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

@@ -17,17 +17,15 @@
     struct {
         unsigned int aggregateScore:1;
     } _has;
-    _Bool __encodeLegacyGloryData;
     float _aggregateScore;
     NSArray *_components;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)componentsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property(nonatomic) float aggregateScore; // @synthesize aggregateScore=_aggregateScore;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <FindMyDevice/NSObject-Protocol.h>
 
-@class FMDLostModeInfo, NSData, NSDictionary, NSString;
+@class FMDFMIPAccountInfo, FMDLostModeInfo, NSData, NSDictionary, NSString;
 
 @protocol FMDFMIPProtocol <NSObject>
 - (void)showDailyLocateReport;
@@ -28,6 +28,7 @@
 - (oneway void)isActivationLockAllowedUsingCallback:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)markPairedDeviceWithUDID:(NSString *)arg1 asMissingUsingToken:(NSString *)arg2 callback:(void (^)(NSError *))arg3;
 - (oneway void)markAsMissingSupportedForPairedDeviceWithUDID:(NSString *)arg1 usingCallback:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)disableFMIPForAccount:(FMDFMIPAccountInfo *)arg1 pairedDeviceWithUDID:(NSString *)arg2 usingCallback:(void (^)(NSError *))arg3;
 - (oneway void)disableFMIPUsingToken:(NSString *)arg1 forPairedDeviceWithUDID:(NSString *)arg2 usingCallback:(void (^)(NSError *))arg3;
 - (oneway void)disableFMIPUsingToken:(NSString *)arg1 inContext:(unsigned long long)arg2 usingCallback:(void (^)(NSError *))arg3;
 - (oneway void)enableFMIPInContext:(unsigned long long)arg1 usingCallback:(void (^)(NSError *))arg2;

@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)setCurrentUser:(id)arg1;
 - (void)setPeerPaymentAccount:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setPaymentPass:(id)arg1;

@@ -46,7 +46,7 @@
 }
 
 + (Class)contentItemIdentifiersType;
-+ (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isLegacyNowPlayingInfoRequest; // @synthesize isLegacyNowPlayingInfoRequest=_isLegacyNowPlayingInfoRequest;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 @property(nonatomic) int cachingPolicy; // @synthesize cachingPolicy=_cachingPolicy;
@@ -64,7 +64,6 @@
 @property(nonatomic) _Bool includeMetadata; // @synthesize includeMetadata=_includeMetadata;
 @property(nonatomic) int length; // @synthesize length=_length;
 @property(nonatomic) int location; // @synthesize location=_location;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -94,8 +93,6 @@
 @property(nonatomic) _Bool hasIncludeMetadata;
 @property(nonatomic) _Bool hasLength;
 @property(nonatomic) _Bool hasLocation;
-- (id)customDescription;
-- (id)customDictionaryRepresentation;
 
 @end
 

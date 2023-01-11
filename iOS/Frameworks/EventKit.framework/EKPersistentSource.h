@@ -14,17 +14,21 @@
 + (Class)meltedClass;
 + (id)relations;
 + (id)defaultPropertiesToLoad;
-@property(retain) EKFrozenReminderSource *reminderSource; // @synthesize reminderSource=_reminderSource;
 - (void).cxx_destruct;
+@property(retain) EKFrozenReminderSource *reminderSource; // @synthesize reminderSource=_reminderSource;
 - (id)description;
 - (void)setDelegatedAccountOwnerStoreID:(id)arg1;
 - (id)delegatedAccountOwnerStoreID;
+- (void)setLastSyncErrorData:(id)arg1;
+- (id)lastSyncErrorData;
 - (void)setLastSyncError:(unsigned long long)arg1;
 - (unsigned long long)lastSyncError;
 - (void)setLastSyncEndDate:(id)arg1;
 - (id)lastSyncEndDate;
 - (void)setLastSyncStartDate:(id)arg1;
 - (id)lastSyncStartDate;
+- (void)setFlags2:(int)arg1;
+- (int)flags2;
 - (void)setFlags:(int)arg1;
 - (int)flags;
 - (void)setShowsNotifications:(_Bool)arg1;
@@ -36,17 +40,23 @@
 - (id)creatorBundleID;
 @property(nonatomic) _Bool disabled; // @dynamic disabled;
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
-- (void)setConstraintsDescriptionPath:(id)arg1;
-- (id)constraintsDescriptionPath;
+- (void)setConstraintsName:(id)arg1;
+- (id)constraintsName;
 @property(copy, nonatomic) NSString *externalID; // @dynamic externalID;
 @property(retain, nonatomic) NSString *UUID;
 @property(copy, nonatomic) NSNumber *defaultAlarmOffset; // @dynamic defaultAlarmOffset;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
-@property(nonatomic) int strictestEventPrivateValue; // @dynamic strictestEventPrivateValue;
-@property(nonatomic) int preferredEventPrivateValue; // @dynamic preferredEventPrivateValue;
+- (void)setStrictestEventPrivateValueRaw:(int)arg1;
+- (int)strictestEventPrivateValueRaw;
+- (void)setPreferredEventPrivateValueRaw:(int)arg1;
+- (int)preferredEventPrivateValueRaw;
 @property(nonatomic) long long sourceType; // @dynamic sourceType;
 - (int)entityType;
 - (id)constraints;
+
+// Remaining properties
+@property(nonatomic) int preferredEventPrivateValue; // @dynamic preferredEventPrivateValue;
+@property(nonatomic) int strictestEventPrivateValue; // @dynamic strictestEventPrivateValue;
 
 @end
 

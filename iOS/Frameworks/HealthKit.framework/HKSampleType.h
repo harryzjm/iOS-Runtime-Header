@@ -8,8 +8,11 @@
 {
 }
 
++ (id)_sampleTypeWithCode:(long long)arg1;
++ (id)medicalRecordTypesWithOptions:(unsigned long long)arg1;
 + (id)medicalRecordTypes;
 - (id)_earliestAllowedStartDateForSampleOverlappingDate:(id)arg1;
+- (_Bool)_validateStartDate:(double)arg1 endDate:(double)arg2 error:(id *)arg3;
 - (_Bool)_validateMetadata:(id)arg1 sample:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) _Bool isMaximumDurationRestricted;
 @property(readonly, nonatomic) _Bool isMinimumDurationRestricted;

@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) MKAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
+- (double)pointOffsetForDistanceOffset:(double)arg1;
+- (struct CGPoint)pointInLayer:(id)arg1 bound:(struct CGRect)arg2;
 - (CDStruct_c3b9c2ee)coordinate;
 
 @end

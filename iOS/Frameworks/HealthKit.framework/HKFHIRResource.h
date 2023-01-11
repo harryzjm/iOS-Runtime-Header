@@ -9,10 +9,11 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString, NSURL;
+@class HKFHIRVersion, NSData, NSDate, NSString, NSURL;
 
 @interface HKFHIRResource : NSObject <NSSecureCoding, NSCopying>
 {
+    HKFHIRVersion *_FHIRVersion;
     NSString *_resourceType;
     NSString *_identifier;
     NSData *_data;
@@ -33,7 +34,8 @@
 @property(readonly, copy) NSData *data;
 @property(readonly, copy) NSString *identifier;
 @property(readonly, copy) NSString *resourceType;
-- (id)initWithResourceType:(id)arg1 identifier:(id)arg2 data:(id)arg3 sourceURL:(id)arg4 lastUpdatedDate:(id)arg5;
+@property(readonly, copy) HKFHIRVersion *FHIRVersion;
+- (id)initWithResourceType:(id)arg1 identifier:(id)arg2 FHIRVersion:(id)arg3 data:(id)arg4 sourceURL:(id)arg5 lastUpdatedDate:(id)arg6;
 - (id)init;
 
 @end

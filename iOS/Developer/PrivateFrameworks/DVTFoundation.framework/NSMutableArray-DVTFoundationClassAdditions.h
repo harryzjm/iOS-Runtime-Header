@@ -19,6 +19,7 @@
 - (void)dvt_truncateToMaxCount:(long long)arg1;
 - (void)dvt_moveObjectAtIndex:(long long)arg1 toIndex:(long long)arg2;
 - (void)dvt_stablePartitionObjectsPassingIsSuffixTest:(CDUnknownBlockType)arg1;
+- (void)dvt_keepObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (void)dvt_removeObjectsIdenticalToObjectsInArray:(id)arg1;
 - (void)dvt_addObjectsFromCollection:(id)arg1;
 - (void)dvt_addObjectsFromArrayIfAbsent:(id)arg1;
@@ -26,7 +27,6 @@
 - (void)dvt_insertObjects:(id)arg1 atIndex:(long long)arg2;
 - (void)dvt_insertObjectIfNonNil:(id)arg1 atIndex:(long long)arg2;
 - (void)dvt_addObjectIfAbsent:(id)arg1;
-- (id)dvt_popSuffixWithMaxLength:(long long)arg1;
 - (id)dvt_popLastObject;
 - (id)dvt_popFirstObject;
 @end

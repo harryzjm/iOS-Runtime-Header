@@ -13,8 +13,8 @@
 + (_Bool)shouldInvertOrderOfFirst:(id)arg1 last:(id)arg2;
 + (id)cjkSpacersToWhiteSpace:(id)arg1;
 + (id)cjkSpacerCharacters;
-+ (id)nameStringFromEmailAddress:(id)arg1 inContext:(id)arg2;
-+ (id)possibleNameStringFromEmailAddress:(id)arg1 inContext:(id)arg2;
++ (id)nameStringFromEmailAddress:(id)arg1;
++ (id)possibleNameStringFromEmailAddress:(id)arg1;
 + (id)sgNameFromString:(id)arg1 origin:(id)arg2 recordId:(id)arg3 extractionInfo:(id)arg4;
 + (id)bestName:(id)arg1;
 + (id)surnameFromName:(id)arg1;
@@ -31,6 +31,7 @@
 + (id)universalCleanName:(id)arg1;
 + (id)stripAndReturnHonorifics:(id)arg1;
 + (id)stripHonorifics:(id)arg1;
++ (_Bool)isCapitalized:(id)arg1;
 + (_Bool)isDifficultName:(id)arg1;
 + (_Bool)isCommonVietnameseSurname:(id)arg1;
 + (_Bool)isProbablyShortCJKName:(id)arg1;

@@ -23,9 +23,12 @@
     double _displayOrder;
 }
 
++ (id)effectiveValueInSlot:(id)arg1;
 + (id)valueFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2 returningDefaultValue:(_Bool)arg3;
 + (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
 + (id)fallbackContentsJSONKeys;
++ (id)createDynamicComponentWithIdentifier:(id)arg1;
++ (_Bool)createsComponentsDynamically;
 + (id)displayName;
 + (id)descriptionKey;
 + (id)contentsJSONKey;
@@ -40,12 +43,12 @@
 + (id)groupedAttributeValueForManifestArchiving;
 + (id)groupingKeyForManifestArchiving;
 + (long long)encodingType;
+- (void).cxx_destruct;
 @property(readonly) _Bool deprecated; // @synthesize deprecated=_deprecated;
 @property(readonly) double displayOrder; // @synthesize displayOrder=_displayOrder;
 @property(readonly) NSString *fileNameComponent; // @synthesize fileNameComponent=_fileNameComponent;
 @property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

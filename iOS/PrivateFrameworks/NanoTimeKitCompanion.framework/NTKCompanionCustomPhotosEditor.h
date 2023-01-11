@@ -30,6 +30,7 @@
 - (_Bool)setOriginalCrop:(struct CGRect)arg1 forPhotoAtIndex:(long long)arg2;
 - (void)movePhotoAtIndex:(long long)arg1 toIndex:(long long)arg2;
 - (void)deletePhotoAtIndex:(long long)arg1;
+- (_Bool)addAssetsFromAssetList:(id)arg1 maxPhotosCount:(unsigned long long)arg2;
 - (_Bool)addAssetsFromAssetList:(id)arg1;
 - (_Bool)addPhotosFromUIImagePicker:(id)arg1;
 @property(readonly, nonatomic) long long photosCount;

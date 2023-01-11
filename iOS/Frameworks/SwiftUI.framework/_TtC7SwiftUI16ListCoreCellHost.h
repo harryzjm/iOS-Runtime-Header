@@ -11,17 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI16ListCoreCellHost : UITableViewCell
 {
+    MISSING_TYPE *cellConfiguration;
     MISSING_TYPE *host;
     MISSING_TYPE *selectionBehavior;
-    MISSING_TYPE *contextMenuItemsSeed;
-    MISSING_TYPE *contextMenuOptions;
+    MISSING_TYPE *outlineRootSeed;
 }
 
 - (void).cxx_destruct;
+- (id)initWithReuseIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
 - (void)_setHiddenForReuse:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)prepareForReuse;
 
 @end
 

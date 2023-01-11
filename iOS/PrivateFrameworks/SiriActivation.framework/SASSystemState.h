@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, SASLockStateMonitor, SUICApplicationStateHelper;
+@class AFNotifyObserver, FBSDisplayLayoutMonitor, NSHashTable, SASLockStateMonitor, SUICApplicationStateHelper;
 
 @interface SASSystemState : NSObject
 {
@@ -14,30 +14,47 @@
     _Bool _enabled;
     int _carPlayConnectionState;
     SASLockStateMonitor *_lockStateMonitor;
+    FBSDisplayLayoutMonitor *_displayLayoutMonitor;
     SUICApplicationStateHelper *_applicationStateHelper;
     NSHashTable *_listeners;
+    AFNotifyObserver *_observerWirelessSplitter;
+    AFNotifyObserver *_observerBluetoothGuestConnected;
 }
 
++ (id)new;
 + (id)sharedSystemState;
+- (void).cxx_destruct;
+@property(retain, nonatomic) AFNotifyObserver *observerBluetoothGuestConnected; // @synthesize observerBluetoothGuestConnected=_observerBluetoothGuestConnected;
+@property(retain, nonatomic) AFNotifyObserver *observerWirelessSplitter; // @synthesize observerWirelessSplitter=_observerWirelessSplitter;
 @property(retain, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) SUICApplicationStateHelper *applicationStateHelper; // @synthesize applicationStateHelper=_applicationStateHelper;
+@property(retain, nonatomic) FBSDisplayLayoutMonitor *displayLayoutMonitor; // @synthesize displayLayoutMonitor=_displayLayoutMonitor;
 @property(nonatomic) _Bool accessibilityShortcutEnabled; // @synthesize accessibilityShortcutEnabled=_accessibilityShortcutEnabled;
 @property(nonatomic) int carPlayConnectionState; // @synthesize carPlayConnectionState=_carPlayConnectionState;
 @property(retain, nonatomic) SASLockStateMonitor *lockStateMonitor; // @synthesize lockStateMonitor=_lockStateMonitor;
-- (void).cxx_destruct;
+- (_Bool)isConnectedToEyesFreeDevice;
 - (_Bool)siriIsSupported;
 - (_Bool)siriIsRestricted;
 - (_Bool)siriIsEnabled;
 - (void)_updateAccessibilityState;
+- (_Bool)isATV;
 - (_Bool)smartCoverClosed;
 - (_Bool)isPad;
+- (_Bool)isRightHandDrive;
 - (_Bool)isConnectedToTrustedCarPlay;
 - (_Bool)isConnectedToCarPlay;
 - (void)monitorCarSessions;
 - (_Bool)carDNDActive;
+- (_Bool)_mapsAppIsVisibleOnLockscreen;
+- (_Bool)_internalAlwaysEyesFreeEnabled;
+- (_Bool)carDNDActiveOrEyesFreeAndShouldHaveFullScreenPresentation;
+- (_Bool)isGuestConnected;
+- (_Bool)isWirelessSplitterOn;
 - (_Bool)isInActiveCall;
 - (id)foregroundAppInfosForPresentationIdentifier:(long long)arg1;
+- (_Bool)_deviceIsUnlocked;
+- (_Bool)deviceScreenIsOn;
 - (_Bool)deviceIsPasscodeLocked;
 - (_Bool)deviceIsBlocked;
 - (_Bool)hasUnlockedSinceBoot;
@@ -45,6 +62,7 @@
 - (void)removeStateChangeListener:(id)arg1;
 - (void)addStateChangeListener:(id)arg1;
 - (id)init;
+- (id)_initForTesting;
 
 @end
 

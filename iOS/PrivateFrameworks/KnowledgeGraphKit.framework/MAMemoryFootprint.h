@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MAGraph, NSMutableSet;
+@class MABaseGraph, NSMutableSet;
 
 @interface MAMemoryFootprint : NSObject
 {
-    MAGraph *_graph;
+    MABaseGraph *_graph;
     NSMutableSet *_allKeys;
     NSMutableSet *_allValues;
     unsigned long long _allNodesSize;
@@ -28,13 +28,13 @@
     unsigned long long _countOfNodesWithAtMostEightEdges;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long countOfNodesWithAtMostEightEdges; // @synthesize countOfNodesWithAtMostEightEdges=_countOfNodesWithAtMostEightEdges;
 @property(readonly, nonatomic) unsigned long long maximumEdgeCountInNode; // @synthesize maximumEdgeCountInNode=_maximumEdgeCountInNode;
 @property(readonly, nonatomic) unsigned long long nodeCount; // @synthesize nodeCount=_nodeCount;
 @property(readonly, nonatomic) unsigned long long allEdgesSize; // @synthesize allEdgesSize=_allEdgesSize;
 @property(readonly, nonatomic) unsigned long long allNodesSize; // @synthesize allNodesSize=_allNodesSize;
 @property(readonly, nonatomic) unsigned long long graphSize; // @synthesize graphSize=_graphSize;
-- (void).cxx_destruct;
 - (void)dump;
 - (void)update;
 - (unsigned long long)version;

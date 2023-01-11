@@ -11,7 +11,7 @@
 #import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
 
-@class FBSSceneClientSettingsDiffInspector, FBSceneClientProviderInvalidationAction, NSMutableArray, NSMutableDictionary, NSString;
+@class FBSceneClientProviderInvalidationAction, NSMutableArray, NSMutableDictionary, NSString;
 @protocol NSCopying;
 
 @interface FBLocalSynchronousSceneClientProvider : NSObject <FBSWorkspaceScenesSource, FBSceneClient, FBSSceneUpdater, FBSceneClientProvider>
@@ -21,13 +21,11 @@
     FBSceneClientProviderInvalidationAction *_invalidationAction;
     NSMutableDictionary *_localSceneInfoByIdentifier;
     NSMutableDictionary *_hostsByIdentifier;
-    FBSSceneClientSettingsDiffInspector *_clientSettingsDiffInspector;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_sendSceneCreateFBSWorkspaceDelegateForSceneInfo:(id)arg1 transitionContext:(id)arg2;
-- (void)_updateLevelForScene:(id)arg1;
 - (id)sceneWithIdentifier:(id)arg1;
 - (id)scenes;
 @property(readonly, nonatomic) NSObject<NSCopying> *identifier;
@@ -41,9 +39,8 @@
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)unregisterHost:(id)arg1;
-- (id)registerHost:(id)arg1 withInitialParameters:(id)arg2;
+- (id)registerHost:(id)arg1 withSpecification:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4 fromRemnant:(id)arg5;
 - (void)registerInvalidationAction:(id)arg1;
-- (id)_newSceneForWindow:(id)arg1 oldDisplay:(id)arg2 newDisplay:(id)arg3;
 - (id)fbsSceneWithIdentifier:(id)arg1;
 - (id)_init;
 - (id)init;

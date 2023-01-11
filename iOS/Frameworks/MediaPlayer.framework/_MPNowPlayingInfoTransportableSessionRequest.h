@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPNowPlayingInfoTransportableSessionRequest : NSObject <MPNowPlayingInfoTransportableSessionRequest>
 {
     NSString *_identifier;
@@ -17,9 +18,9 @@
 }
 
 + (id)requestWithIdentifier:(id)arg1 preferredSessionType:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *preferredSessionType; // @synthesize preferredSessionType=_preferredSessionType;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

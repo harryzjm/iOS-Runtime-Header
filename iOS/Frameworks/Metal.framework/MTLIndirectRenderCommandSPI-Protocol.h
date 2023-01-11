@@ -10,6 +10,7 @@
 
 @protocol MTLIndirectRenderCommandSPI <MTLIndirectRenderCommand>
 - (unsigned long long)getPipelineStateUniqueIdentifier;
+- (unsigned long long)getOptimizedStatus;
 - (_MTLIndirectTessellationFactorArguments *)getTessellationFactorArguments;
 - (_MTLIndirectDrawIndexedPatchesArguments *)drawIndexedPatchesArguments;
 - (_MTLIndirectDrawPatchesArguments *)drawPatchesArguments;

@@ -16,11 +16,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *_listener;
 }
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)startWithAssertionManager:(id)arg1;
-- (void)handleMessage:(id)arg1 fromConnection:(id)arg2;
-- (void)handleCPUViolationMessage:(id)arg1 fromConnection:(id)arg2;
 
 @end
 

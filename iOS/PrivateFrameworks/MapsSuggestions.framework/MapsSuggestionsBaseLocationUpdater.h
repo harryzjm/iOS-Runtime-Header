@@ -12,6 +12,7 @@
 
 @interface MapsSuggestionsBaseLocationUpdater : NSObject <MapsSuggestionsLocationUpdater>
 {
+    NSString *_name;
     struct Queue _queue;
     MapsSuggestionsObservers *_locationObservers;
     MapsSuggestionsObservers *_visitObservers;
@@ -20,17 +21,19 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (unsigned long long)countLocationObservers;
-- (void)awaitSync;
+- (void)awaitQueue;
+- (id)dispatchQueue;
 - (id)restartLocationUpdatesForDelegate:(id)arg1;
 - (void)stopLocationUpdatesForDelegate:(id)arg1;
 - (id)startLocationUpdatesForDelegate:(id)arg1;
-- (void)condsiderNewVisit:(id)arg1;
-- (void)condsiderNewLocation:(id)arg1;
-- (void)stopImplementation;
-- (void)startImplemention;
+- (void)considerMyAllowanceAsLimited:(_Bool)arg1;
+- (void)considerMyNewVisit:(id)arg1;
+- (void)considerMyNewLocation:(id)arg1;
+- (void)onStopImplementation;
+- (void)onStartImplementation;
 - (_Bool)hasObservers;
 - (void)dealloc;
-- (id)init;
+- (id)initWithName:(id)arg1 queue:(id)arg2;
 @property(readonly, nonatomic) NSString *uniqueName;
 
 // Remaining properties

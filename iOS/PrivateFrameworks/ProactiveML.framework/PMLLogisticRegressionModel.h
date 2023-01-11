@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <ProactiveML/PMLClassifierModelProtocol-Protocol.h>
+#import <ProactiveML/PMLMultiLabelClassifierProtocol-Protocol.h>
 #import <ProactiveML/PMLPlistAndChunksSerializableProtocol-Protocol.h>
-#import <ProactiveML/PMLRegressionModelProtocol-Protocol.h>
 
 @class NSString, PMLGradientSolver;
 
-@interface PMLLogisticRegressionModel : NSObject <PMLRegressionModelProtocol, PMLClassifierModelProtocol, PMLPlistAndChunksSerializableProtocol>
+@interface PMLLogisticRegressionModel : NSObject <PMLMultiLabelClassifierProtocol, PMLPlistAndChunksSerializableProtocol>
 {
     PMLGradientSolver *_solver;
 }
@@ -27,8 +26,8 @@
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
 - (id)weights;
-- (_Bool)classify:(id)arg1;
-- (float)predict:(id)arg1;
+- (id)predict:(id)arg1;
+- (unsigned long long)outputDimension;
 - (id)initWithSolver:(id)arg1;
 
 // Remaining properties

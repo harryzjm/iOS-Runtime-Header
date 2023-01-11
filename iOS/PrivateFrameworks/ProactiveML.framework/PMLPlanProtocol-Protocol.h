@@ -10,6 +10,6 @@
 
 @protocol PMLPlanProtocol <PMLPlistAndChunksSerializableProtocol>
 @property(readonly, nonatomic) NSString *planId;
-- (NSDictionary *)runWhile:(_Bool (^)(void))arg1 didFinish:(_Bool *)arg2;
+- (NSDictionary *)runWithError:(id *)arg1;
 @end
 

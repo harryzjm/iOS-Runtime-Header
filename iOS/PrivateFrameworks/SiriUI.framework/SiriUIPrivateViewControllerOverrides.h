@@ -10,6 +10,7 @@
 {
 }
 
++ (id)viewControllerForSnippet:(id)arg1 sizeClass:(long long)arg2;
 + (id)viewControllerForSnippet:(id)arg1;
 
 @end

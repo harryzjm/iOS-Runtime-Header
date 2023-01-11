@@ -13,6 +13,7 @@
 @interface BLHLSPlaylist : NSObject <BLM3U8ParserDelegate>
 {
     _Bool _independentSegments;
+    _Bool _ignoreSegments;
     NSArray *_groups;
     NSArray *_streamInfs;
     NSArray *_segments;
@@ -21,20 +22,22 @@
     NSArray *_requestedBitrates;
 }
 
++ (id)playlistParsingURL:(id)arg1 ignoreSegments:(_Bool)arg2 error:(id *)arg3;
 + (id)playlistParsingURL:(id)arg1 error:(id *)arg2;
 + (id)playlistParsingData:(id)arg1 error:(id *)arg2;
-+ (id)_playlistUsingParser:(id)arg1 error:(id *)arg2;
++ (id)_playlistUsingParser:(id)arg1 ignoreSegments:(_Bool)arg2 error:(id *)arg3;
 + (_Bool)_rewritePlaylistWithParser:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
 + (_Bool)rewritePlaylistURL:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
 + (_Bool)rewritePlaylistData:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *requestedBitrates; // @synthesize requestedBitrates=_requestedBitrates;
 @property(retain, nonatomic) NSMutableSet *uniqueKeys; // @synthesize uniqueKeys=_uniqueKeys;
 @property(retain, nonatomic) BLHLSPlaylistState *state; // @synthesize state=_state;
+@property(nonatomic) _Bool ignoreSegments; // @synthesize ignoreSegments=_ignoreSegments;
 @property(retain, nonatomic) NSArray *segments; // @synthesize segments=_segments;
 @property(nonatomic) _Bool independentSegments; // @synthesize independentSegments=_independentSegments;
 @property(retain, nonatomic) NSArray *streamInfs; // @synthesize streamInfs=_streamInfs;
 @property(retain, nonatomic) NSArray *groups; // @synthesize groups=_groups;
-- (void).cxx_destruct;
 - (_Bool)parserShouldCollectLine:(id)arg1;
 - (void)parser:(id)arg1 lineIsTag:(id)arg2 value:(id)arg3 attributeList:(id)arg4;
 - (void)parser:(id)arg1 lineIsURL:(id)arg2;

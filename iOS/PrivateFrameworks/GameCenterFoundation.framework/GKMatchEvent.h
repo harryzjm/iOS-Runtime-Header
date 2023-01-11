@@ -14,9 +14,9 @@
     GKPlayer *_recipientPlayer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKPlayer *recipientPlayer; // @synthesize recipientPlayer=_recipientPlayer;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-- (void)dealloc;
 
 @end
 

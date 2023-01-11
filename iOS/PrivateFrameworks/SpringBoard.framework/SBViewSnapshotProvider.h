@@ -11,15 +11,16 @@
 @interface SBViewSnapshotProvider : NSObject
 {
     UIView *_view;
+    long long _orientation;
     CDUnknownBlockType _completionBlock;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 - (void)snapshotAsynchronously:(_Bool)arg1 withImageBlock:(CDUnknownBlockType)arg2;
 - (void)snapshotWithImageBlock:(CDUnknownBlockType)arg1;
 - (id)snapshot;
-- (id)initWithView:(id)arg1;
+- (id)initWithView:(id)arg1 orientation:(long long)arg2;
 
 @end
 

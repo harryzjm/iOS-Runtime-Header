@@ -12,9 +12,11 @@
     IBICSlotFilter *_rhs;
 }
 
+- (void).cxx_destruct;
 @property(retain) IBICSlotFilter *rhs; // @synthesize rhs=_rhs;
 @property(retain) IBICSlotFilter *lhs; // @synthesize lhs=_lhs;
-- (void).cxx_destruct;
+- (_Bool)_continueEnumeratingUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)matchesSlot:(id)arg1;
 - (id)descriptionWithIndent:(long long)arg1;
 - (id)descriptionName;
 - (void)ibic_generateSubNodes:(CDUnknownBlockType)arg1;

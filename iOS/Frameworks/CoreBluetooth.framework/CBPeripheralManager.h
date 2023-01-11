@@ -26,6 +26,7 @@
         unsigned int didStopAdvertisingWithError:1;
         unsigned int didUpdateANCSAuthorization:1;
     } _delegateFlags;
+    _Bool _observingKeyPaths;
     _Bool _isAdvertising;
     _Bool _readyForUpdates;
     _Bool _waitingForReady;
@@ -41,6 +42,7 @@
 
 + (_Bool)supportsFeatures:(unsigned long long)arg1;
 + (long long)authorizationStatus;
+- (void).cxx_destruct;
 @property unsigned long long attributeIDGenerator; // @synthesize attributeIDGenerator=_attributeIDGenerator;
 @property(readonly, retain, nonatomic) NSHashTable *l2capChannels; // @synthesize l2capChannels=_l2capChannels;
 @property(retain, nonatomic) NSNumber *multipleAdvertisingSupported; // @synthesize multipleAdvertisingSupported=_multipleAdvertisingSupported;
@@ -52,7 +54,6 @@
 @property(readonly, retain, nonatomic) NSMapTable *centrals; // @synthesize centrals=_centrals;
 @property(nonatomic) _Bool isAdvertising; // @synthesize isAdvertising=_isAdvertising;
 @property(nonatomic) __weak id <CBPeripheralManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (_Bool)isMsgAllowedAlways:(unsigned short)arg1;
 - (_Bool)isMsgAllowedWhenOff:(unsigned short)arg1;

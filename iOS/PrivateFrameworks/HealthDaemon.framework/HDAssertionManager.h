@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HDAssertionManager : NSObject
 {
@@ -16,20 +16,32 @@
     NSMutableDictionary *_assertionRecordsByIdentifier;
     NSMutableDictionary *_observerSetsByAssertionIdentifier;
     _Bool _invalidated;
+    _Bool _consumeBudgets;
+    NSObject<OS_dispatch_source> *_budgetConsumptionTimer;
     NSObject<OS_dispatch_queue> *_assertionExpirationQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *assertionExpirationQueue; // @synthesize assertionExpirationQueue=_assertionExpirationQueue;
 - (void).cxx_destruct;
-- (void)_postNotification:(id)arg1 forAssertion:(id)arg2;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *assertionExpirationQueue; // @synthesize assertionExpirationQueue=_assertionExpirationQueue;
+- (void)_lock_setBudgetConsumptionTimerWithStartTime:(double)arg1;
+- (void)_lock_consumeBudgetsThenResetTimerWithIntermediateBlock:(CDUnknownBlockType)arg1;
+- (void)_lock_consumeBudgetsThroughTime:(double)arg1;
+- (void)_lock_suspendBudgetConsumption;
+- (void)_lock_resumeBudgetConsumption;
 - (void)_lock_enumerateActiveAssertionsWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_lock_releaseAssertion:(id)arg1;
+- (void)_budgetConsumptionTimerDidFire;
+- (void)_postNotification:(id)arg1 forAssertion:(id)arg2;
 - (void)_releaseAssertion:(id)arg1;
 - (void)invalidate;
 - (void)removeObserver:(id)arg1;
 - (void)removeObserver:(id)arg1 forAssertionIdentifier:(id)arg2;
 - (void)addObserver:(id)arg1 forAssertionIdentifier:(id)arg2 queue:(id)arg3;
+- (void)suspendBudgetConsumption;
+- (void)resumeBudgetConsumption;
 - (_Bool)takeAssertion:(id)arg1;
 - (id)ownerIdentifiersForAssertionIdentifier:(id)arg1;
+- (id)allAssertionsForIdentifier:(id)arg1;
 - (id)activeAssertionsForIdentifier:(id)arg1;
 - (_Bool)hasActiveAssertionForIdentifier:(id)arg1;
 - (void)dealloc;

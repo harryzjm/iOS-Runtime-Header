@@ -14,7 +14,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (map_8a5bf7af)getSampleData;
+- (unordered_map_74b681bc)getSampleData;
 - (void)dealloc;
 - (float *)bufferWithKey:(id)arg1;
 - (struct vImage_Buffer)imageWithKey:(id)arg1;

@@ -11,6 +11,8 @@
 + (id)iconLocation;
 + (Class)_contentViewClass;
 + (Class)configurationClass;
+- (void)folderView:(id)arg1 didEndEditingTitle:(id)arg2;
+- (void)folderView:(id)arg1 didBeginEditingTitle:(id)arg2;
 - (id)presentedIconLocations;
 - (_Bool)isPresentingIconLocation:(id)arg1;
 @property(nonatomic) unsigned long long backgroundEffect;

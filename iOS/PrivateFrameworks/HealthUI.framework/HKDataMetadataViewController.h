@@ -21,6 +21,7 @@
     HKDataMetadataWorkoutRouteSection *_workoutRouteSection;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) HKDataMetadataWorkoutRouteSection *workoutRouteSection; // @synthesize workoutRouteSection=_workoutRouteSection;
 @property(retain, nonatomic) HKLocationReadings *locationReadings; // @synthesize locationReadings=_locationReadings;
 @property(retain, nonatomic) HKLocationFetcher *locationFetcher; // @synthesize locationFetcher=_locationFetcher;
@@ -28,7 +29,6 @@
 @property(readonly, nonatomic) id <HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSArray *subSampleTypes; // @synthesize subSampleTypes=_subSampleTypes;
 @property(retain, nonatomic) HKSample *sample; // @synthesize sample=_sample;
-- (void).cxx_destruct;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -54,7 +54,7 @@
 - (void)viewDidLoad;
 - (void)_localeOrDisplayTypeChange:(id)arg1;
 - (void)dealloc;
-- (id)initWithSample:(id)arg1 usingInsetStyling:(_Bool)arg2 delegate:(id)arg3;
+- (id)initWithSample:(id)arg1 usingInsetStyling:(_Bool)arg2 profileName:(id)arg3 delegate:(id)arg4;
 
 @end
 

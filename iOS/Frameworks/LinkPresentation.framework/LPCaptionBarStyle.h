@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarAccessoryStyle, LPImageViewStyle, LPMusicPlayButtonStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle;
+@class LPButtonStyle, LPCaptionBarAccessoryStyle, LPImageViewStyle, LPMusicPlayButtonStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle;
 
 __attribute__((visibility("hidden")))
 @interface LPCaptionBarStyle : NSObject
@@ -20,8 +20,11 @@ __attribute__((visibility("hidden")))
     LPImageViewStyle *_placeholderIcon;
     LPMusicPlayButtonStyle *_playButton;
     LPPadding *_playButtonPadding;
+    LPButtonStyle *_button;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) LPButtonStyle *button; // @synthesize button=_button;
 @property(readonly, retain, nonatomic) LPPadding *playButtonPadding; // @synthesize playButtonPadding=_playButtonPadding;
 @property(readonly, nonatomic) LPMusicPlayButtonStyle *playButton; // @synthesize playButton=_playButton;
 @property(readonly, nonatomic) LPImageViewStyle *placeholderIcon; // @synthesize placeholderIcon=_placeholderIcon;
@@ -31,7 +34,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) LPCaptionBarAccessoryStyle *leadingAccessory; // @synthesize leadingAccessory=_leadingAccessory;
 @property(readonly, nonatomic) LPImageViewStyle *trailingIcon; // @synthesize trailingIcon=_trailingIcon;
 @property(readonly, nonatomic) LPImageViewStyle *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
-- (void).cxx_destruct;
 - (id)rightAccessory;
 - (id)leftAccessory;
 - (id)rightIcon;

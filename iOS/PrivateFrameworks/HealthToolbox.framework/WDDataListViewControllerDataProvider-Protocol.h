@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool textAdjustsFontSizeToFitWidth;
 @property(readonly, nonatomic) unsigned long long numberOfSections;
 @property(readonly, nonatomic) long long cellStyle;
+@property(copy, nonatomic) NSString *profileName;
 @property(retain, nonatomic) NSPredicate *defaultQueryPredicate;
 - (UIViewController *)viewControllerForItemAtIndexPath:(NSIndexPath *)arg1;
 - (void)viewControllerIsNearEndOfScreen;

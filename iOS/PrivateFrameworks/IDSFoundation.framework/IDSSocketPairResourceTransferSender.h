@@ -26,11 +26,13 @@
     _Bool _wantsAppAck;
     _Bool _compressPayload;
     _Bool _compressed;
+    _Bool _didWakeHint;
     NSString *_peerResponseIdentifier;
     NSString *_messageUUID;
     NSDate *_expiryDate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
 @property(readonly, nonatomic) unsigned long long totalBytes; // @synthesize totalBytes=_totalBytes;
 @property(nonatomic) unsigned long long nextByte; // @synthesize nextByte=_nextByte;
@@ -40,7 +42,6 @@
 @property(nonatomic) unsigned int maxChunkSize; // @synthesize maxChunkSize=_maxChunkSize;
 @property(readonly, nonatomic) _Bool isDone; // @synthesize isDone=_done;
 @property(readonly, nonatomic) _Bool sentFirstMessage; // @synthesize sentFirstMessage=_sentFirstMessage;
-- (void).cxx_destruct;
 - (void)reset;
 - (id)nextMessage;
 - (id)nextMessage_old;
@@ -50,10 +51,11 @@
 - (void)dealloc;
 - (unsigned char)command;
 - (id)description;
-- (id)initWithResourceAtPath:(id)arg1 metadata:(id)arg2 sequenceNumber:(unsigned int)arg3 streamID:(unsigned short)arg4 expectsPeerResponse:(_Bool)arg5 wantsAppAck:(_Bool)arg6 compressPayload:(_Bool)arg7 compressed:(_Bool)arg8 peerResponseIdentifier:(id)arg9 messageUUID:(id)arg10 expiryDate:(id)arg11;
+- (id)initWithResourceAtPath:(id)arg1 metadata:(id)arg2 sequenceNumber:(unsigned int)arg3 streamID:(unsigned short)arg4 expectsPeerResponse:(_Bool)arg5 wantsAppAck:(_Bool)arg6 compressPayload:(_Bool)arg7 compressed:(_Bool)arg8 didWakeHint:(_Bool)arg9 peerResponseIdentifier:(id)arg10 messageUUID:(id)arg11 expiryDate:(id)arg12;
 
 // Remaining properties
 @property(readonly, nonatomic) NSData *data;
+@property(readonly, nonatomic) _Bool didWakeHint;
 @property(readonly, nonatomic) _Bool expectsPeerResponse;
 @property(retain, nonatomic) NSDate *expiryDate;
 @property(readonly, nonatomic) NSString *peerResponseIdentifier;

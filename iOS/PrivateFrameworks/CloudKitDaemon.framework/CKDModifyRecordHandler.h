@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _isDelete;
     _Bool _saveCompletionBlockCalled;
     _Bool _needsRefetch;
-    _Bool _didAttemptDugongKeyRoll;
+    _Bool _didAttemptZoneWideShareKeyRoll;
     _Bool _didRollRecordPCSMasterKey;
     int _saveAttempts;
     CKDModifyRecordsOperation *_operation;
@@ -38,10 +38,11 @@ __attribute__((visibility("hidden")))
 + (id)_stringForState:(unsigned long long)arg1;
 + (id)modifyHandlerForDeleteWithRecordID:(id)arg1 operation:(id)arg2;
 + (id)modifyHandlerWithRecord:(id)arg1 operation:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didRollRecordPCSMasterKey; // @synthesize didRollRecordPCSMasterKey=_didRollRecordPCSMasterKey;
 @property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property(copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
-@property(nonatomic) _Bool didAttemptDugongKeyRoll; // @synthesize didAttemptDugongKeyRoll=_didAttemptDugongKeyRoll;
+@property(nonatomic) _Bool didAttemptZoneWideShareKeyRoll; // @synthesize didAttemptZoneWideShareKeyRoll=_didAttemptZoneWideShareKeyRoll;
 @property(retain, nonatomic) CKDZonePCSData *sharedZonePCSData; // @synthesize sharedZonePCSData=_sharedZonePCSData;
 @property(nonatomic) _Bool needsRefetch; // @synthesize needsRefetch=_needsRefetch;
 @property(nonatomic) _Bool saveCompletionBlockCalled; // @synthesize saveCompletionBlockCalled=_saveCompletionBlockCalled;
@@ -59,7 +60,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *pcsGroup; // @synthesize pcsGroup=_pcsGroup;
 @property(retain, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property(nonatomic) __weak CKDModifyRecordsOperation *operation; // @synthesize operation=_operation;
-- (void).cxx_destruct;
 - (void)_clearRecordProtectionDataForRecord;
 - (void)clearProtectionDataForRecord;
 - (void)savePCSDataToCache;
@@ -83,6 +83,8 @@ __attribute__((visibility("hidden")))
 - (void)_createAndSavePCS;
 - (id)_addParentPCS:(id)arg1 toRecordPCS:(id)arg2;
 - (void)_fetchParentPCSForData:(id)arg1 withError:(id)arg2;
+- (void)_reallyAddShareToPCSData:(id)arg1 withError:(id)arg2;
+- (void)_keyRollIfNeededForRecordPCSData:(id)arg1 withError:(id)arg2;
 - (void)_addShareToPCSData:(id)arg1 withError:(id)arg2;
 - (void)_fetchSharePCSForID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchParentPCSForID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

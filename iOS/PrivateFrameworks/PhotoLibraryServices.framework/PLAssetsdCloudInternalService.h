@@ -12,13 +12,15 @@
 {
 }
 
+- (void)getResetSyncStatusWithReply:(CDUnknownBlockType)arg1;
 - (void)forceSyncMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)queryUserIdentitiesWithEmails:(id)arg1 phoneNumbers:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)acceptMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)fetchMomentShareWithURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)publishMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)acceptShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)fetchShareWithURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)publishShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)overrideSystemBudgetsForSyncSession:(_Bool)arg1 systemBudgets:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getSystemBudgetsWithReply:(CDUnknownBlockType)arg1;
+- (void)getNotUploadedCount:(CDUnknownBlockType)arg1;
 - (void)getCurrentTransferProgress:(CDUnknownBlockType)arg1;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setCloudPhotoLibraryPauseState:(_Bool)arg1 reason:(short)arg2;

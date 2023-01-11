@@ -57,7 +57,6 @@
 @property(nonatomic) int minimumCharacterHeight; // @synthesize minimumCharacterHeight=_minimumCharacterHeight;
 @property(nonatomic) _Bool detectDiacritics; // @synthesize detectDiacritics=_detectDiacritics;
 - (unsigned long long)getMemoryUsageOfLastOperation;
-- (id)detectCharacterInBoundingBox:(struct CGRect)arg1 error:(id *)arg2;
 - (id)detectFeaturesInBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)detectFeaturesInBuffer:(struct __CVBuffer *)arg1 withRegionOfInterest:(struct CGRect)arg2 error:(id *)arg3;
 - (void)resetTimers;

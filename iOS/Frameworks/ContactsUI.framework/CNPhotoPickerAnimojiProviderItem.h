@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     AVTAvatarRecordImageProvider *_imageProvider;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVTAvatarRecordImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
 @property(retain, nonatomic) AVTRenderingScope *renderingScope; // @synthesize renderingScope=_renderingScope;
 @property(retain, nonatomic) CNAvatarStickerGeneratorProvider *stickerGeneratorProvider; // @synthesize stickerGeneratorProvider=_stickerGeneratorProvider;
@@ -30,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNPhotoPickerColorVariant *backgroundColorVariant; // @synthesize backgroundColorVariant=_backgroundColorVariant;
 @property(retain, nonatomic) AVTStickerConfiguration *poseConfiguration; // @synthesize poseConfiguration=_poseConfiguration;
 @property(retain, nonatomic) id <AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)contactImageForMetadataStore;
@@ -42,12 +42,14 @@ __attribute__((visibility("hidden")))
 - (id)renderAvatarWithBackgroundWithImageData:(id)arg1;
 - (id)renderAvatarWithPoseWithSize:(double)arg1;
 - (id)renderDefaultAvatarImage;
+- (unsigned long long)imageType;
+- (id)variantIdentifier;
 - (id)copyWithPoseConfiguration:(id)arg1 generatorProvider:(id)arg2;
 - (id)copyWithColor:(id)arg1;
 - (id)initWithAvatarRecord:(id)arg1 imageProvider:(id)arg2 renderingScope:(id)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5;
 - (id)initWithOriginalImageData:(id)arg1 cropRect:(struct CGRect)arg2;
 - (id)initWithOriginalImageData:(id)arg1 cropRect:(struct CGRect)arg2 backgroundColorVariant:(id)arg3;
-- (void)updateContact:(id)arg1;
+- (void)updateVisualIdentity:(id)arg1;
 - (id)originalImageData;
 - (id)imageData;
 - (_Bool)shouldShowCaption;

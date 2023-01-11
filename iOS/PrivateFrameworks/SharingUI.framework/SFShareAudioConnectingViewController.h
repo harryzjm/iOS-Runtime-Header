@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIActivityIndicatorView, UIButton, UIImageView, UILabel, UIView;
+@class SFMediaPlayerView, UIActivityIndicatorView, UIButton, UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SFShareAudioConnectingViewController
 {
+    unsigned int _productIDActive;
     unsigned int _colorCode;
     unsigned int _productID;
     UIImageView *_productImageView;
+    SFMediaPlayerView *_productMovieView;
     UIImageView *_shareImageView;
     UIView *_progressView;
     UIActivityIndicatorView *_progressActivity;
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
     UIButton *_cancelButton;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int productID; // @synthesize productID=_productID;
 @property(nonatomic) unsigned int colorCode; // @synthesize colorCode=_colorCode;
 @property(retain, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
@@ -26,8 +29,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIActivityIndicatorView *progressActivity; // @synthesize progressActivity=_progressActivity;
 @property(retain, nonatomic) UIView *progressView; // @synthesize progressView=_progressView;
 @property(retain, nonatomic) UIImageView *shareImageView; // @synthesize shareImageView=_shareImageView;
+@property(retain, nonatomic) SFMediaPlayerView *productMovieView; // @synthesize productMovieView=_productMovieView;
 @property(retain, nonatomic) UIImageView *productImageView; // @synthesize productImageView=_productImageView;
-- (void).cxx_destruct;
+- (void)_updateDeviceVisual:(id)arg1;
 - (void)_updateForDeviceInfo;
 - (void)sessionProgressEvent:(int)arg1 info:(id)arg2;
 - (void)eventCancel:(id)arg1;

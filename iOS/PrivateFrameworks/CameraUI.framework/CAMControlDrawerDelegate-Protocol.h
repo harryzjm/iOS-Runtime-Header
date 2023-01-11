@@ -9,6 +9,7 @@
 @class CAMControlDrawer;
 
 @protocol CAMControlDrawerDelegate <NSObject>
+- (void)controlDrawerDidCreateExposureSlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateLowLightSlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateIntensitySlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateApertureSlider:(CAMControlDrawer *)arg1;

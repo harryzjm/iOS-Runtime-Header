@@ -18,7 +18,9 @@
 + (id)attendeeWithName:(id)arg1 emailAddress:(id)arg2;
 + (id)attendeeWithName:(id)arg1 url:(id)arg2;
 + (id)attendeeWithEmailAddress:(id)arg1 name:(id)arg2;
++ (id)knownSingleValueKeysForComparison;
 + (Class)frozenClass;
+@property(readonly, nonatomic) _Bool rsvpRequested;
 - (void)markAsForward;
 @property(nonatomic) _Bool proposedStartDateChanged;
 @property(nonatomic) _Bool statusChanged;
@@ -40,6 +42,7 @@
 - (int)statusRaw;
 - (id)owner;
 - (id)description;
+- (id)displayString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

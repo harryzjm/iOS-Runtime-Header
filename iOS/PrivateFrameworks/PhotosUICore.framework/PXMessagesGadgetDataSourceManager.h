@@ -5,16 +5,18 @@
 //
 
 #import <PhotosUICore/PXCMMCloudGadgetViewControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSArray, NSString, PXCMMSuggestionsDataSourceManager, PXCloudWelcomeGadgetProvider, PXGadgetNavigationHelper, PXMessagesCMMSuggestionsCollectionGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
+@class NSArray, NSString, PXCMMEnabledStatusProvider, PXCMMSuggestionsDataSourceManager, PXCloudWelcomeGadgetProvider, PXGadgetNavigationHelper, PXMessagesCMMSuggestionsGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
 @protocol PXGadgetDelegate, PXGadgetTransition, PXPhotoLibraryPresenting;
 
-@interface PXMessagesGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate>
+@interface PXMessagesGadgetDataSourceManager <PXChangeObserver, PXCMMCloudGadgetViewControllerDelegate>
 {
     PXMessagesExtensionViewModel *_viewModel;
     PXCloudWelcomeGadgetProvider *_cloudWelcomeGadgeProvider;
-    PXMessagesCMMSuggestionsCollectionGadgetProvider *_suggestionsCollectionGadgetProvider;
+    PXMessagesCMMSuggestionsGadgetProvider *_suggestionsGadgetProvider;
     NSArray *_cachedGadgetProviders;
+    PXCMMEnabledStatusProvider *_cmmEnabledStatusProvider;
     PXCMMSuggestionsDataSourceManager *_suggestionsDataSourceManager;
     UIViewController<PXPhotoLibraryPresenting> *_recentPhotosViewController;
     double _recentPhotosHeight;
@@ -22,15 +24,17 @@
     PXMessagesRecentPhotosGadgetProvider *_recentPhotosProvider;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PXMessagesRecentPhotosGadgetProvider *recentPhotosProvider; // @synthesize recentPhotosProvider=_recentPhotosProvider;
 @property(copy, nonatomic) NSString *placeholderTitle; // @synthesize placeholderTitle=_placeholderTitle;
 @property(nonatomic) double recentPhotosHeight; // @synthesize recentPhotosHeight=_recentPhotosHeight;
 @property(retain, nonatomic) UIViewController<PXPhotoLibraryPresenting> *recentPhotosViewController; // @synthesize recentPhotosViewController=_recentPhotosViewController;
 @property(retain, nonatomic) PXCMMSuggestionsDataSourceManager *suggestionsDataSourceManager; // @synthesize suggestionsDataSourceManager=_suggestionsDataSourceManager;
-- (void).cxx_destruct;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)didUpdateCloudPhotoLibraryEnablement:(id)arg1;
 - (void)presentationRequestForWelcomeCloudViewController:(id)arg1;
 - (id)gadgetProviders;
+- (void)removeCachedProviders;
 - (void)_updateGadgetProviders;
 - (id)initWithViewModel:(id)arg1 dataSourceManager:(id)arg2;
 

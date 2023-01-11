@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
+@class CLLocation, GEOAutocompleteSessionData, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
 @protocol MKAutocompleteAnalyticsProvider, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
 
 @interface MKLocalSearchCompleter : NSObject
@@ -37,7 +37,10 @@
     unsigned long long _maxNumberOfConcurrentRequests;
     NSMutableArray *_inFlightTickets;
     NSMutableArray *_pendingTickets;
+    _Bool _statefulQueriesEnabled;
+    GEOAutocompleteSessionData *_autocompleteSessionData;
     _Bool _shouldDisplayNoResults;
+    _Bool _shouldEnableRAPForNoResults;
     _Bool _autocompleteTopSectionIsQuerySuggestions;
     _Bool _showAutocompleteClientSource;
     _Bool _shouldPreloadTransitInfo;
@@ -49,6 +52,7 @@
     long long _privateFilterType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_privateFilterType, setter=_setPrivateFilterType:) long long privateFilterType; // @synthesize privateFilterType=_privateFilterType;
 @property(readonly, nonatomic, getter=_sections) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic, getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:) _Bool shouldPreloadTransitInfo; // @synthesize shouldPreloadTransitInfo=_shouldPreloadTransitInfo;
@@ -57,6 +61,7 @@
 @property(readonly, nonatomic, getter=_autocompleteTopSectionIsQuerySuggestions) _Bool autocompleteTopSectionIsQuerySuggestions; // @synthesize autocompleteTopSectionIsQuerySuggestions=_autocompleteTopSectionIsQuerySuggestions;
 @property(readonly, nonatomic, getter=_sortPriorityMapping) GEOSortPriorityMapping *sortPriorityMapping; // @synthesize sortPriorityMapping=_sortPriorityMapping;
 @property(readonly, nonatomic, getter=_clientRankingModel) GEOClientRankingModel *clientRankingModel; // @synthesize clientRankingModel=_clientRankingModel;
+@property(readonly, nonatomic, getter=_shouldEnableRAPForNoResults) _Bool shouldEnableRAPForNoResults; // @synthesize shouldEnableRAPForNoResults=_shouldEnableRAPForNoResults;
 @property(readonly, nonatomic, getter=_shouldDisplayNoResults) _Bool shouldDisplayNoResults; // @synthesize shouldDisplayNoResults=_shouldDisplayNoResults;
 @property(retain, nonatomic) id <MKAutocompleteAnalyticsProvider> analyticsProvider; // @synthesize analyticsProvider=_analyticsProvider;
 @property(copy, nonatomic) MKPointOfInterestFilter *pointOfInterestFilter; // @synthesize pointOfInterestFilter=_pointOfInterestFilter;
@@ -73,10 +78,11 @@
 @property(retain, nonatomic) GEOSearchCategory *categoryFilter; // @synthesize categoryFilter=_categoryFilter;
 @property(nonatomic) CDStruct_b7cb895d region; // @synthesize region=_region;
 @property(copy, nonatomic) NSString *queryFragment; // @synthesize queryFragment=_queryFragment;
-- (void).cxx_destruct;
 @property(nonatomic) long long entriesType;
 @property(copy, nonatomic) NSString *fragment;
 @property(nonatomic) CDStruct_b7cb895d boundingRegion;
+@property(nonatomic) _Bool statefulQueriesEnabled;
+- (void)clearQueryState;
 @property(readonly, nonatomic) NSArray *results;
 - (void)retry;
 - (void)cancel;
@@ -96,8 +102,8 @@
 - (id)_completionTicketForFilterTypeWithTraits:(id)arg1;
 - (void)_fireRequest;
 - (void)_handleError:(id)arg1 forTicket:(id)arg2;
-- (void)_notifyDelegatesWithResults:(id)arg1 sections:(id)arg2 shouldDisplayNoResults:(_Bool)arg3 ticket:(id)arg4;
-- (void)_handleCompletion:(id)arg1 shouldDisplayNoResults:(_Bool)arg2 forTicket:(id)arg3;
+- (void)_notifyDelegatesWithResults:(id)arg1 sections:(id)arg2 shouldDisplayNoResults:(_Bool)arg3 shouldEnableRAPForNoResults:(_Bool)arg4 ticket:(id)arg5;
+- (void)_handleCompletion:(id)arg1 shouldDisplayNoResults:(_Bool)arg2 shouldEnableRAPForNoResults:(_Bool)arg3 forTicket:(id)arg4;
 - (void)dealloc;
 - (id)init;
 

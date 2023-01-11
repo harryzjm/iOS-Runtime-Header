@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBSwitcherLiveContentOverlayCoordinating-Protocol.h>
 
-@class NSArray, NSString, SBAppLayout, SBDeviceApplicationSceneViewController, SBInlineAppExposeLiveContentOverlayView;
+@class NSString, SBAppLayout, SBDeviceApplicationSceneViewController, SBInlineAppExposeLiveContentOverlayView;
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate;
 
 @interface SBInlineAppExposeLiveContentOverlayCoordinator : NSObject <SBSwitcherLiveContentOverlayCoordinating>
@@ -24,18 +24,19 @@
     id <SBSwitcherLiveContentOverlayCoordinatorDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <SBSwitcherLiveContentOverlayCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=areLiveContentOverlayUpdatesSuspended) _Bool liveContentOverlayUpdatesSuspended; // @synthesize liveContentOverlayUpdatesSuspended=_liveContentOverlayUpdatesSuspended;
 @property(nonatomic) long long containerOrientation; // @synthesize containerOrientation=_containerOrientation;
-- (void).cxx_destruct;
 - (id)_appLayoutFromLayoutState:(id)arg1;
 - (void)_removeLiveContentOverlay;
 - (void)_addLiveContentOverlay:(id)arg1 forAppLayout:(id)arg2 animated:(_Bool)arg3;
+- (void)appLayoutWillBecomeVisible:(id)arg1;
+- (void)appLayoutDidBecomeHidden:(id)arg1;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (id)animationControllerForTransitionRequest:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
-@property(readonly, nonatomic) NSArray *windowsToExcludeForCrossfadeSnapshot;
 - (void)updateSceneViewController:(id)arg1 environment:(long long)arg2 layoutRole:(long long)arg3 overlay:(_Bool)arg4;
 
 // Remaining properties

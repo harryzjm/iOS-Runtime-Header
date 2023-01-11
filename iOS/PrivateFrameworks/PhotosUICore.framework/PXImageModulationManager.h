@@ -34,6 +34,7 @@
     PXImageModulationSettings *_settings;
     NSHashTable *_imageLayerModulators;
     PXRequestedEDRHeadroomFactorFilter *_requestedEDRHeadroomFactorFilter;
+    long long _requestedEDRHeadroomSignpost;
     CAContext *_coreAnimationContext;
     UIViewController *_rootViewController;
     double _HDRFocus;
@@ -41,9 +42,11 @@
     double _requestedEDRHeadroomFactor;
 }
 
-+ (long long)_contentTypeForAsset:(id)arg1;
-+ (CDStruct_fd7332cd)optionsForAsset:(id)arg1;
++ (long long)_contentFormatForAsset:(id)arg1;
++ (double)_hdrGainForAsset:(id)arg1;
++ (CDStruct_4f961314)optionsForAsset:(id)arg1;
 + (double)HDRValueForAsset:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double requestedEDRHeadroomFactor; // @synthesize requestedEDRHeadroomFactor=_requestedEDRHeadroomFactor;
 @property(readonly, nonatomic) double imageModulationIntensity; // @synthesize imageModulationIntensity=_imageModulationIntensity;
 @property(readonly, nonatomic) double HDRFocus; // @synthesize HDRFocus=_HDRFocus;
@@ -55,10 +58,10 @@
 @property(nonatomic, getter=isApplicationActive) _Bool applicationActive; // @synthesize applicationActive=_applicationActive;
 @property(nonatomic, getter=isLowPowerModeEnabled) _Bool lowPowerModeEnabled; // @synthesize lowPowerModeEnabled=_lowPowerModeEnabled;
 @property(retain, nonatomic) CAContext *coreAnimationContext; // @synthesize coreAnimationContext=_coreAnimationContext;
+@property(nonatomic) long long requestedEDRHeadroomSignpost; // @synthesize requestedEDRHeadroomSignpost=_requestedEDRHeadroomSignpost;
 @property(readonly, nonatomic) PXRequestedEDRHeadroomFactorFilter *requestedEDRHeadroomFactorFilter; // @synthesize requestedEDRHeadroomFactorFilter=_requestedEDRHeadroomFactorFilter;
 @property(readonly, nonatomic) NSHashTable *imageLayerModulators; // @synthesize imageLayerModulators=_imageLayerModulators;
 @property(readonly, nonatomic) PXImageModulationSettings *settings; // @synthesize settings=_settings;
-- (void).cxx_destruct;
 - (void)preferencesDidChange;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
@@ -92,14 +95,19 @@
 - (void)_processInfoPowerStateDidChange:(id)arg1;
 - (void)setCurrentScreenSupportsHDR:(_Bool)arg1;
 - (void)_updateCoreAnimationContext;
+- (void)_didEndRequestingEDRHeadroomFactor:(double)arg1;
+- (void)_didStartRequestingEDRHeadroomFactor:(double)arg1;
 - (void)setRequestedEDRHeadroomFactor:(double)arg1;
 - (void)setImageModulationIntensity:(double)arg1;
 - (void)setHDRFocus:(double)arg1;
 - (void)setNeedsImageModulationIntensityUpdate;
 - (void)setNeedsHDRFocusUpdate;
 - (void)_updateImageLayerModulator:(id)arg1;
+- (void)checkInLivePhotoViewModulator:(id)arg1;
+- (id)checkoutLivePhotoViewModulatorWithOptions:(CDStruct_4f961314)arg1;
 - (void)checkInImageLayerModulator:(id)arg1;
-- (id)checkoutImageLayerModulatorWithOptions:(CDStruct_fd7332cd)arg1;
+- (id)_checkoutImageLayerModulatorWithOptions:(CDStruct_4f961314)arg1 contentType:(long long)arg2;
+- (id)checkoutImageLayerModulatorWithOptions:(CDStruct_4f961314)arg1;
 - (void)setActive:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)dealloc;

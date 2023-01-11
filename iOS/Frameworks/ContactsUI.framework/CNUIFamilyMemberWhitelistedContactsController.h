@@ -13,36 +13,37 @@
 #import <ContactsUI/CNUIFamilyMemberDowntimeContactPickerControllerDelegate-Protocol.h>
 
 @class CNContactFormatter, CNContactStore, CNContactViewController, FAFamilyMember, NSArray, NSString;
-@protocol CNSchedulerProvider, CNUICoreContactManagementConsentCheck, CNUICoreFamilyMemberWhitelistedContactsDataSource, CNUIFamilyMemberContactsPresentation, CNUIFamilyMemberWhitelistedContactsControllerDelegate;
+@protocol CNDowntimeWhitelistContainerFetching, CNSchedulerProvider, CNUICoreContactManagementConsentCheck, CNUICoreFamilyMemberWhitelistedContactsDataSource, CNUIFamilyMemberContactsPresentation, CNUIFamilyMemberWhitelistedContactsControllerDelegate;
 
 @interface CNUIFamilyMemberWhitelistedContactsController : NSObject <CNContactViewControllerPrivateDelegate, CNContactPickerDelegate, CNFamilyMemberAddContactsToWhitelistOptionSheetDelegate, CNUIFamilyMemberDowntimeContactPickerControllerDelegate, CNUICoreFamilyMemberContactsObserver>
 {
     id <CNUIFamilyMemberContactsPresentation> _familyMemberContactsPresentation;
     FAFamilyMember *_familyMember;
-    long long _status;
     id <CNUIFamilyMemberWhitelistedContactsControllerDelegate> _delegate;
     CNContactStore *_familyMemberScopedContactStore;
     CNContactFormatter *_contactCardWarningFormatter;
     id <CNUICoreFamilyMemberWhitelistedContactsDataSource> _dataSource;
     id <CNUICoreContactManagementConsentCheck> _contactManagentConsentCheck;
+    id <CNDowntimeWhitelistContainerFetching> _downtimeContaienerFetcher;
     id <CNSchedulerProvider> _schedulerProvider;
     CNContactViewController *_contactViewControllerPresentingItemDetails;
 }
 
-+ (id)contactPickerWithDelegate:(id)arg1 familyMember:(id)arg2;
++ (id)contactPickerWithDelegate:(id)arg1 familyMember:(id)arg2 parentContainer:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) __weak CNContactViewController *contactViewControllerPresentingItemDetails; // @synthesize contactViewControllerPresentingItemDetails=_contactViewControllerPresentingItemDetails;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property(readonly, nonatomic) id <CNDowntimeWhitelistContainerFetching> downtimeContaienerFetcher; // @synthesize downtimeContaienerFetcher=_downtimeContaienerFetcher;
 @property(readonly, nonatomic) id <CNUICoreContactManagementConsentCheck> contactManagentConsentCheck; // @synthesize contactManagentConsentCheck=_contactManagentConsentCheck;
 @property(readonly, nonatomic) id <CNUICoreFamilyMemberWhitelistedContactsDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly, nonatomic) CNContactFormatter *contactCardWarningFormatter; // @synthesize contactCardWarningFormatter=_contactCardWarningFormatter;
 @property(readonly, nonatomic) CNContactStore *familyMemberScopedContactStore; // @synthesize familyMemberScopedContactStore=_familyMemberScopedContactStore;
 @property(nonatomic) __weak id <CNUIFamilyMemberWhitelistedContactsControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) long long status; // @synthesize status=_status;
 @property(readonly, nonatomic) FAFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
-- (void).cxx_destruct;
 - (void)addContactsToWhitelist:(id)arg1;
 - (void)downtimePickerController:(id)arg1 didFinishWithContacts:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContacts:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
 - (void)contactViewController:(id)arg1 didDeleteContact:(id)arg2;
 - (void)contactViewControllerDidExecuteDeleteFromDowntimeWhitelistAction:(id)arg1;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
@@ -66,7 +67,8 @@
 - (_Bool)contactManagementEnabled;
 - (void)familyMemberContactItemsDidChange;
 @property(readonly, nonatomic) NSArray *familyMemberContactItems;
-- (long long)fetchStatus;
+@property(readonly, nonatomic) long long fetchStatus;
+@property(readonly, nonatomic) long long status;
 @property(readonly, nonatomic) id <CNUIFamilyMemberContactsPresentation> familyMemberContactsPresentation; // @synthesize familyMemberContactsPresentation=_familyMemberContactsPresentation;
 - (id)initWithFamilyMember:(id)arg1 familyMemberContactsPresentation:(id)arg2;
 - (id)init;

@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIImage, UIScrollView;
+@class NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIContextMenuInteraction, UIImage, UIScrollView;
 @protocol PXAssetImportStatusManager;
 
 @protocol PXOneUpPresentationDelegate <NSObject>
@@ -25,8 +25,15 @@
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 scrollAssetReferenceToVisible:(PXAssetReference *)arg2;
 - (PXRegionOfInterest *)oneUpPresentation:(PXOneUpPresentation *)arg1 regionOfInterestForAssetReference:(PXAssetReference *)arg2;
 - (UIImage *)oneUpPresentation:(PXOneUpPresentation *)arg1 currentImageForAssetReference:(PXAssetReference *)arg2;
+- (_Bool)oneUpPresentationWantsShowInLibraryButton:(PXOneUpPresentation *)arg1;
 - (_Bool)oneUpPresentationShouldPreventShowInAllPhotosAction:(PXOneUpPresentation *)arg1;
 - (_Bool)oneUpPresentationShouldAutoPlay:(PXOneUpPresentation *)arg1;
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 didEndPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 willStartPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 commitPreviewForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 allowsPreviewCommitingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 allowsActionsForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 canStartPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
 - (PXAssetReference *)oneUpPresentationInitialAssetReference:(PXOneUpPresentation *)arg1;
 - (PXPhotosDetailsContext *)oneUpPresentationPhotosDetailsContext:(PXOneUpPresentation *)arg1;
 @end

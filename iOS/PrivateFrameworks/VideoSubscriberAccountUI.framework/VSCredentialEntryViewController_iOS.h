@@ -9,7 +9,7 @@
 #import <VideoSubscriberAccountUI/VSCredentialEntryViewController-Protocol.h>
 #import <VideoSubscriberAccountUI/VSPSPickerTableViewCellDelegate-Protocol.h>
 
-@class NSArray, NSString, PSSpecifier, UIButton, UIView, VSCredentialEntryPicker, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
+@class NSArray, NSString, PSSpecifier, UIButton, UIView, VSCredentialEntryPicker, VSCredentialEntryViewModel, VSIdentityProviderLogoView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     VSCredentialEntryPicker *_picker;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) VSCredentialEntryPicker *picker; // @synthesize picker=_picker;
 @property(retain, nonatomic) PSSpecifier *pickerSpecifier; // @synthesize pickerSpecifier=_pickerSpecifier;
 @property(retain, nonatomic) PSSpecifier *pickerButtonSpecifier; // @synthesize pickerButtonSpecifier=_pickerButtonSpecifier;
@@ -47,9 +48,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIButton *linkButton; // @synthesize linkButton=_linkButton;
 @property(retain, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
 @property(nonatomic) __weak id <VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) VSViewModel *viewModel;
+@property(retain, nonatomic) VSCredentialEntryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
-- (void).cxx_destruct;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)_updateLinkButtonLayout;
@@ -66,8 +67,9 @@ __attribute__((visibility("hidden")))
 - (long long)pickerViewCellNumberOfRows:(id)arg1;
 - (long long)pickerViewCellInitialSelectedRow:(id)arg1;
 - (id)pickerViewCell:(id)arg1 titleForRow:(long long)arg2;
+- (id)pickerTitle;
 - (void)pickerButtonSelected;
-- (void)setViewModel:(id)arg1;
+- (void)buildButtonsIfNeeded;
 - (id)_createSpecifierForField:(id)arg1;
 - (void)_stopObservingViewModel:(id)arg1;
 - (void)_startObservingViewModel:(id)arg1;

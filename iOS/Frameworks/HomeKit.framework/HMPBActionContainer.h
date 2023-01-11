@@ -8,21 +8,23 @@
 
 #import <HomeKit/NSCopying-Protocol.h>
 
-@class HMPBCharacteristicWriteAction, HMPBMediaPlaybackAction;
+@class HMPBCharacteristicWriteAction, HMPBMediaPlaybackAction, HMPBNaturalLightingAction;
 
 @interface HMPBActionContainer : PBCodable <NSCopying>
 {
     HMPBCharacteristicWriteAction *_characteristicWriteAction;
     HMPBMediaPlaybackAction *_mediaPlaybackAction;
+    HMPBNaturalLightingAction *_naturalLightingAction;
     int _type;
     struct {
         unsigned int type:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HMPBNaturalLightingAction *naturalLightingAction; // @synthesize naturalLightingAction=_naturalLightingAction;
 @property(retain, nonatomic) HMPBMediaPlaybackAction *mediaPlaybackAction; // @synthesize mediaPlaybackAction=_mediaPlaybackAction;
 @property(retain, nonatomic) HMPBCharacteristicWriteAction *characteristicWriteAction; // @synthesize characteristicWriteAction=_characteristicWriteAction;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -32,6 +34,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasNaturalLightingAction;
 @property(readonly, nonatomic) _Bool hasMediaPlaybackAction;
 @property(readonly, nonatomic) _Bool hasCharacteristicWriteAction;
 - (int)StringAsType:(id)arg1;

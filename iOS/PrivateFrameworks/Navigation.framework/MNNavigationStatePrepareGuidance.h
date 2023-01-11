@@ -22,6 +22,7 @@
 - (void)leaveState;
 - (void)enterState;
 - (id)initWithStateManager:(id)arg1 previewRoutes:(id)arg2 selectedRouteIndex:(unsigned long long)arg3;
+- (id)simulationLocationProvider;
 - (id)traceManager;
 - (_Bool)shouldClearStoredRoutes;
 - (unsigned long long)desiredLocationProviderType;

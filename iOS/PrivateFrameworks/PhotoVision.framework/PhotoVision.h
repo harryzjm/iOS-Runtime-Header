@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL, PVClusterer, PVContext, PVDataAccessor, PVEventManager, PVFaceMerger, PVVisionAnalyzer;
+@class NSURL, PVClusterer, PVContext, PVEventManager, PVFaceMerger, PVVisionAnalyzer;
 @protocol PVNotificationListener, PVPersistenceDelegate, PVVisionIntegrating;
 
 @interface PhotoVision : NSObject
@@ -17,7 +17,6 @@
     PVContext *_context;
     PVVisionAnalyzer *_analyzer;
     PVFaceMerger *_faceMerger;
-    PVDataAccessor *_dataAccessor;
     PVEventManager *_eventManager;
     PVClusterer *_clusterer;
     NSURL *_cacheDirUrl;
@@ -36,9 +35,9 @@
 + (unsigned int)maximumFaceAlgorithmUmbrellaVersion;
 + (unsigned int)minimumFaceAlgorithmUmbrellaVersion;
 + (int)_intValueForKey:(id)arg1 defaultValue:(int)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int sceneAlgorithmUmbrellaVersion; // @synthesize sceneAlgorithmUmbrellaVersion=_sceneAlgorithmUmbrellaVersion;
 @property(readonly, nonatomic) unsigned int faceAlgorithmUmbrellaVersion; // @synthesize faceAlgorithmUmbrellaVersion=_faceAlgorithmUmbrellaVersion;
-- (void).cxx_destruct;
 - (id)suggestedPersonLocalIdentifierForPersonLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)suggestedPersonLocalIdentifierForFaceLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)suggestionsForFaceClusterSequenceNumbers:(id)arg1 error:(id *)arg2;

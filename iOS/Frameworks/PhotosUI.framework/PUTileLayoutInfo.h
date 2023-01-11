@@ -25,6 +25,7 @@
     struct CGAffineTransform _transform;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_6c514524 expandedRectInsets; // @synthesize expandedRectInsets=_expandedRectInsets;
 @property(retain, nonatomic, setter=_setCoordinateSystem:) id <PUTilingCoordinateSystem> coordinateSystem; // @synthesize coordinateSystem=_coordinateSystem;
 @property(readonly, nonatomic) struct UIEdgeInsets hitTestOutset; // @synthesize hitTestOutset=_hitTestOutset;
@@ -35,12 +36,11 @@
 @property(nonatomic, setter=_setSize:) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic, setter=_setCenter:) struct CGPoint center; // @synthesize center=_center;
 @property(retain, nonatomic, setter=_setTileIdentifier:) PUTileIdentifier *tileIdentifier; // @synthesize tileIdentifier=_tileIdentifier;
-- (void).cxx_destruct;
 - (id)description;
 @property(readonly, nonatomic) struct CGRect frame;
 - (id)layoutInfoByInterpolatingWithLayoutInfo:(id)arg1 mixFactor:(double)arg2 coordinateSystem:(id)arg3;
-- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 alpha:(double)arg3 tranform:(struct CGAffineTransform)arg4 zPosition:(double)arg5 coordinateSystem:(id)arg6;
-- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 tranform:(struct CGAffineTransform)arg3;
+- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 alpha:(double)arg3 transform:(struct CGAffineTransform)arg4 zPosition:(double)arg5 coordinateSystem:(id)arg6;
+- (id)layoutInfoWithCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 transform:(struct CGAffineTransform)arg3;
 - (id)layoutInfoWithZPosition:(double)arg1;
 - (id)layoutInfoWithAlpha:(double)arg1;
 - (id)layoutInfoWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3;

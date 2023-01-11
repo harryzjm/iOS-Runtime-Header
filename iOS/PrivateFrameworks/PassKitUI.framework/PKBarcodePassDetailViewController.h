@@ -47,13 +47,11 @@
 }
 
 + (_Bool)isWifiEnabled;
-+ (id)_linkColor;
-+ (id)_linkTextAttributes;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showDoneButton; // @synthesize showDoneButton=_showDoneButton;
-@property(nonatomic) id <PKPassDeleteHandler> deleteOverrider; // @synthesize deleteOverrider=_deleteOverrider;
+@property(nonatomic) __weak id <PKPassDeleteHandler> deleteOverrider; // @synthesize deleteOverrider=_deleteOverrider;
 @property(nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
 @property(readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
-- (void).cxx_destruct;
 - (void)_passSettingsChanged:(id)arg1;
 - (void)pushSettingsFromViewToModel;
 - (id)_relevantBuckets;
@@ -94,7 +92,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (id)_locationHelpViewForTableView:(id)arg1;
-- (id)_locationRelevancyHelpText;
+- (id)_locationHelpTextWithLink:(id *)arg1 linkRange:(struct _NSRange *)arg2;
 - (void)_bluetoothPowerChanged:(id)arg1;
 - (_Bool)_isBluetoothEnabled;
 - (void)_wifiChanged:(id)arg1;

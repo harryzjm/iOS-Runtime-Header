@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigCaptionRendererCALayerOutputNodeLayerInternal *layerInternal;
 }
 
+- (void)setWindowOpacity:(double)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;

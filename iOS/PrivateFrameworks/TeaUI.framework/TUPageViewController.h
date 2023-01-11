@@ -20,13 +20,13 @@
     id <TUPageViewControllerDataSource> _dataSource;
     id <TUPageViewControllerDelegate> _delegate;
     UIViewController *_visibleViewController;
+    UIViewController *_secondaryVisibleViewController;
+    UIViewController *_previousViewController;
+    UIViewController *_nextViewController;
     double _pageGutter;
     TUPageViewControllerScrollView *_scrollView;
     NSObject<OS_dispatch_group> *_idleDispatchGroup;
     UIViewController *_managedForViewController;
-    UIViewController *_previousViewController;
-    UIViewController *_nextViewController;
-    UIViewController *_possibleNextViewController;
     UIViewController *_originalVisibleViewController;
     UIViewController *_appearingViewController;
     UIViewController *_disappearingViewController;
@@ -34,6 +34,7 @@
     struct CGSize _transitioningSize;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *replayViewTransitions; // @synthesize replayViewTransitions=_replayViewTransitions;
 @property(readonly, nonatomic) _Bool scrollViewStartedScrolling; // @synthesize scrollViewStartedScrolling=_scrollViewStartedScrolling;
 @property(readonly, nonatomic) struct CGSize transitioningSize; // @synthesize transitioningSize=_transitioningSize;
@@ -42,17 +43,16 @@
 @property(retain, nonatomic) UIViewController *disappearingViewController; // @synthesize disappearingViewController=_disappearingViewController;
 @property(retain, nonatomic) UIViewController *appearingViewController; // @synthesize appearingViewController=_appearingViewController;
 @property(retain, nonatomic) UIViewController *originalVisibleViewController; // @synthesize originalVisibleViewController=_originalVisibleViewController;
-@property(retain, nonatomic) UIViewController *possibleNextViewController; // @synthesize possibleNextViewController=_possibleNextViewController;
-@property(retain, nonatomic) UIViewController *nextViewController; // @synthesize nextViewController=_nextViewController;
-@property(retain, nonatomic) UIViewController *previousViewController; // @synthesize previousViewController=_previousViewController;
 @property(retain, nonatomic) UIViewController *managedForViewController; // @synthesize managedForViewController=_managedForViewController;
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *idleDispatchGroup; // @synthesize idleDispatchGroup=_idleDispatchGroup;
 @property(readonly, nonatomic) TUPageViewControllerScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic) double pageGutter; // @synthesize pageGutter=_pageGutter;
+@property(retain, nonatomic) UIViewController *nextViewController; // @synthesize nextViewController=_nextViewController;
+@property(retain, nonatomic) UIViewController *previousViewController; // @synthesize previousViewController=_previousViewController;
+@property(readonly, nonatomic) UIViewController *secondaryVisibleViewController; // @synthesize secondaryVisibleViewController=_secondaryVisibleViewController;
 @property(retain, nonatomic) UIViewController *visibleViewController; // @synthesize visibleViewController=_visibleViewController;
 @property(nonatomic) __weak id <TUPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <TUPageViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (id)childViewControllerForStatusBarHidden;
 - (_Bool)isTransitioningToViewController;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -77,13 +77,14 @@
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)reindexViewControllers;
-- (void)addViewController:(id)arg1;
+- (void)addViewController:(id)arg1 fromScroll:(_Bool)arg2;
 - (void)removeViewController:(id)arg1;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)updatePositionForViewController:(id)arg1;
 - (void)managePreviousAndNextViewController;
 - (void)repositionPages;
 - (struct CGPoint)centerForIndex:(unsigned long long)arg1;
+- (void)setSecondaryVisibleViewController:(id)arg1;
 - (void)updateContentOffset;
 - (void)updateContentSize;
 - (void)updateScrollView;
@@ -91,6 +92,7 @@
 @property(nonatomic) _Bool pagingEnabled;
 @property(readonly, nonatomic) struct CGSize pageSize;
 - (void)performWhenIdle:(CDUnknownBlockType)arg1;
+- (void)viewLayoutMarginsDidChange;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

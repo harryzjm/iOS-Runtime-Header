@@ -13,6 +13,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityShowEditingHUD;
+- (id)_accessibilityMLProxiedElements;
+- (id)_accessibilityNativeFocusableElements:(id)arg1 matchingBlock:(CDUnknownBlockType)arg2 forExistenceCheckOnly:(_Bool)arg3;
 - (id)_accessibilityNativeFocusableElements:(id)arg1 matchingBlock:(CDUnknownBlockType)arg2;
 - (id)_accessibilityNativeFocusableElements:(id)arg1 withQueryString:(id)arg2;
 - (id)_accessibilityNativeFocusableElements:(id)arg1;
@@ -43,15 +45,17 @@
 - (id)_axAuditCheckDynamicTextSupport:(_Bool)arg1 andClippingIssues:(_Bool)arg2 spinRunloop:(_Bool)arg3;
 - (id)_targetInChainForAction:(SEL)arg1 sender:(id)arg2;
 - (id)_responderForKeyEvents;
-- (_Bool)_accessibilityHandleDefaultActionForNativeFocusedElement;
 - (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 withEvaluator:(CDUnknownBlockType)arg2;
 - (_Bool)_accessibilityMoveAppFocusForElementMatchingQuery:(id)arg1 heading:(unsigned long long)arg2;
+- (_Bool)_accessibilityMoveFocusToTopLevel;
 - (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
 - (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1;
+- (_Bool)_accessibilitySafeMoveInDirection:(unsigned long long)arg1 withSearchInfo:(id)arg2;
 - (_Bool)_accessibilityApplicationDidBecomeFocused;
 - (_Bool)_accessibilityHandleFullKeyboardAccessAction:(int)arg1 value:(id)arg2;
 - (void)_accessibilityShowKeyboardHints;
 - (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (id)_accessibilityMakeUIPressInfoWithType:(long long)arg1 Phase:(long long)arg2 timestamp:(double)arg3 contextID:(unsigned int)arg4;
 - (_Bool)_accessibilityActionIsPhysicalButton:(int)arg1 nativeUIKitTypeRef:(long long *)arg2;
 - (id)_accessibilityElementsWithSemanticContext:(id)arg1;
 - (id)accessibilityLabel;
@@ -66,6 +70,7 @@
 - (_Bool)_accessibilityIsInitialBundleLoadFinished;
 - (int)_accessibilityApplicationInterfaceOrientation;
 - (int)_accessibilityApplicationForPosition:(struct CGPoint)arg1;
+- (id)_accessibilityApplicationWindowFramesAndIds;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (_Bool)_accessibilityDispatchKeyboardAction:(id)arg1;
@@ -90,6 +95,7 @@
 - (id)_accessibilityTypingCandidates;
 - (id)_accessibilityTextReplacementCandidates;
 - (id)_axAllSubviews;
+- (id)_accessibilityWindowSections;
 - (id)_accessibilitySummaryElement;
 - (id)_accessibilityTitleBarElement;
 - (id)_accessibilityFirstElement;
@@ -110,12 +116,12 @@
 - (id)_accessibilityValidateResponderForFocus:(id)arg1;
 - (id)_accessibilityValidatedResponderForExistingGoodResponder:(id)arg1 forFocus:(_Bool)arg2;
 - (id)_accessibilityResponderElement:(_Bool)arg1;
+- (id)_axActiveEmojiSearchField;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityResponderElementForFocus;
 - (void)dealloc;
 - (void)accessibilityDisable;
 - (void)_accessibilityInitialize;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_loadAllAccessibilityInformation;
 - (void)_accessibilityAVCaptureStopped:(id)arg1;
 - (void)_accessibilityAVCaptureStarted:(id)arg1;
@@ -126,6 +132,8 @@
 - (unsigned int)_accessibilityMachPort;
 - (void)_accessibilityKeyboardDidShow:(id)arg1;
 - (void)_accessibilityKeyboardDidHide:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)_accessibilityUseWindowBoundsForOutOfBoundsChecking;
 - (struct CGRect)_accessibilityConvertSystemBoundedScreenRectToContextSpace:(struct CGRect)arg1;
 - (struct CGRect)accessibilityFrame;
 - (unsigned long long)_accessibilityAutomationType;

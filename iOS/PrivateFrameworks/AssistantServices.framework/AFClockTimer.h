@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <AssistantServices/AFClockItem-Protocol.h>
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString, NSURL, NSUUID;
 
-@interface AFClockTimer : NSObject <AFClockItem, NSCopying, NSSecureCoding>
+@interface AFClockTimer : NSObject <AFClockItem, NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     _Bool _isFiring;
     NSUUID *_timerID;
@@ -30,6 +31,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property(readonly, copy, nonatomic) NSDate *dismissedDate; // @synthesize dismissedDate=_dismissedDate;
 @property(readonly, copy, nonatomic) NSDate *firedDate; // @synthesize firedDate=_firedDate;
@@ -42,7 +44,8 @@
 @property(readonly, nonatomic) _Bool isFiring; // @synthesize isFiring=_isFiring;
 @property(readonly, copy, nonatomic) NSURL *timerURL; // @synthesize timerURL=_timerURL;
 @property(readonly, copy, nonatomic) NSUUID *timerID; // @synthesize timerID=_timerID;
-- (void).cxx_destruct;
+- (id)buildDictionaryRepresentation;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

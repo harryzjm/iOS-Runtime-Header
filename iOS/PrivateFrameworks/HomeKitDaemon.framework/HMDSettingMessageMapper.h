@@ -4,28 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDSettingsMessageHandler, NSString, NSUUID;
+@class HMFMessageDispatcher, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDSettingMessageMapper : NSObject <HMFMessageReceiver>
+@interface HMDSettingMessageMapper : HMFObject <HMFMessageReceiver>
 {
     NSUUID *_identifier;
-    HMDSettingsMessageHandler *_messageHandler;
+    HMFMessageDispatcher *_messageDispatcher;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property __weak HMDSettingsMessageHandler *messageHandler; // @synthesize messageHandler=_messageHandler;
-@property(retain) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(retain) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
+@property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
-- (void)registerForMessage:(id)arg1 policies:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
-- (id)initWithIdentifier:(id)arg1 queue:(id)arg2 messageHandler:(id)arg3;
+- (void)deregisterFromAllMessages;
+- (void)registerForMessage:(id)arg1 policies:(id)arg2 messageDispatcher:(id)arg3 messageHandler:(CDUnknownBlockType)arg4;
+- (id)initWithIdentifier:(id)arg1 queue:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

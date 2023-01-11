@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     struct _NSRange _replacementRange;
     double _errorScore;
     double _lmScore;
-    _Bool _blacklisted;
+    _Bool _blocklisted;
     _Bool _hasCustomErrorScore;
 }
 
@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 - (double)score;
 - (_Bool)hasCustomErrorScore;
 - (void)setCustomErrorScore:(_Bool)arg1;
-- (_Bool)isBlacklisted;
-- (void)setBlacklisted:(_Bool)arg1;
+- (_Bool)isBlocklisted;
+- (void)setBlocklisted:(_Bool)arg1;
 - (double)languageModelScore;
 - (void)setLanguageModelScore:(double)arg1;
 - (double)errorScore;

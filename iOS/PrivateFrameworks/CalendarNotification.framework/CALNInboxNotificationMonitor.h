@@ -17,12 +17,10 @@
     _EKNotificationMonitor *_notificationMonitor;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) _EKNotificationMonitor *notificationMonitor; // @synthesize notificationMonitor=_notificationMonitor;
-- (void).cxx_destruct;
 - (void)protectedDataDidBecomeAvailable;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (void)didRegisterForBackgroundTaskAgentJobs;
 - (void)receivedAlarmNamed:(id)arg1;
 - (void)didRegisterForAlarms;
 - (void)receivedNotificationNamed:(id)arg1;
@@ -30,6 +28,8 @@
 - (void)activate;
 @property(readonly, nonatomic) unsigned long long eventNotificationCount;
 @property(readonly, nonatomic) NSArray *eventNotificationReferences;
+- (void)removeNotificationsLoadedObserver:(id)arg1 selector:(SEL)arg2;
+- (void)addNotificationsLoadedObserver:(id)arg1 selector:(SEL)arg2;
 - (void)removeNotificationCountChangedObserver:(id)arg1 selector:(SEL)arg2;
 - (void)addNotificationCountChangedObserver:(id)arg1 selector:(SEL)arg2;
 - (void)removeNotificationsChangedObserver:(id)arg1;

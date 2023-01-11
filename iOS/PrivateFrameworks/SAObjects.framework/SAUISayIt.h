@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString, SAUIAudioData;
+@class NSNumber, NSString, SAUIAudioData, SAUIListenAfterSpeakingBehavior;
 @protocol SAAceSerializable;
 
 @interface SAUISayIt
@@ -16,6 +16,7 @@
 - (_Bool)requiresResponse;
 @property(nonatomic) _Bool repeatable;
 @property(copy, nonatomic) NSString *message;
+@property(retain, nonatomic) SAUIListenAfterSpeakingBehavior *listenAfterSpeakingBehavior;
 @property(copy, nonatomic) NSNumber *listenAfterSpeaking;
 @property(copy, nonatomic) NSString *languageCode;
 @property(copy, nonatomic) NSString *gender;

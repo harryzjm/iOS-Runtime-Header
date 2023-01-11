@@ -11,7 +11,7 @@
 @interface MapsSuggestionsGEOMapItemDeduper <MapsSuggestionsDeduper>
 {
     long long _type;
-    struct NSString *_name;
+    NSString *_name;
 }
 
 + (_Bool)isEnabled;

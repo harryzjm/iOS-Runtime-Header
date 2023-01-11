@@ -6,9 +6,10 @@
 
 #import <BarcodeSupport/BCSAction-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class CPSClipMetadataRequest, NSArray, NSDictionary, NSString;
 
 @protocol BCSActionPrivate <BCSAction>
+@property(retain, nonatomic) CPSClipMetadataRequest *clipMetadataRequest;
 @property(readonly, nonatomic) _Bool isWiFiAction;
 @property(readonly, nonatomic) _Bool isInvalidDataAction;
 @property(readonly, copy, nonatomic) NSArray *appLinks;

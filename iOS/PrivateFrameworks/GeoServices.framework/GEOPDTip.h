@@ -8,29 +8,27 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDUser, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDTipUser, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTip : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_snippets;
     NSString *_tipId;
     double _tipTime;
-    GEOPDUser *_tipster;
+    GEOPDTipUser *_tipster;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_tipTime:1;
         unsigned int read_unknownFields:1;
         unsigned int read_snippets:1;
         unsigned int read_tipId:1;
         unsigned int read_tipster:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_snippets:1;
-        unsigned int wrote_tipId:1;
-        unsigned int wrote_tipTime:1;
-        unsigned int wrote_tipster:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,23 +46,24 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *tipId;
 @property(readonly, nonatomic) _Bool hasTipId;
-- (void)_readTipId;
-@property(retain, nonatomic) GEOPDUser *tipster;
+@property(retain, nonatomic) GEOPDTipUser *tipster;
 @property(readonly, nonatomic) _Bool hasTipster;
-- (void)_readTipster;
 @property(nonatomic) _Bool hasTipTime;
 @property(nonatomic) double tipTime;
 - (id)snippetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)snippetsCount;
-- (void)_addNoFlagsSnippet:(id)arg1;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;
 @property(retain, nonatomic) NSMutableArray *snippets;
-- (void)_readSnippets;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

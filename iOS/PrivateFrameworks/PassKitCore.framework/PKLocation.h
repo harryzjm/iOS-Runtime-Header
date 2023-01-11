@@ -8,40 +8,40 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSString;
 
 @interface PKLocation : NSObject <NSSecureCoding>
 {
-    NSNumber *_latitude;
-    NSNumber *_longitude;
-    NSNumber *_maxDistance;
-    NSNumber *_altitude;
+    _Bool _hasAltitude;
+    _Atomic _Bool _hashComputed;
+    _Atomic unsigned long long _hash;
     NSString *_name;
     NSString *_relevantText;
+    double _latitude;
+    double _longitude;
+    double _altitude;
+    double _maxDistance;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) double maxDistance; // @synthesize maxDistance=_maxDistance;
+@property(nonatomic) double altitude; // @synthesize altitude=_altitude;
+@property(readonly, nonatomic) _Bool hasAltitude; // @synthesize hasAltitude=_hasAltitude;
+@property(nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property(nonatomic) double latitude; // @synthesize latitude=_latitude;
 @property(copy, nonatomic) NSString *relevantText; // @synthesize relevantText=_relevantText;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)CLLocation;
 - (unsigned long long)hash;
 - (_Bool)hasEqualCoordinatesToLocation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (_Bool)hasAltitude;
-- (double)altitude;
-- (double)maxDistance;
-- (double)longitude;
-- (double)latitude;
-- (void)setAltitude:(id)arg1;
-- (void)setMaxDistance:(id)arg1;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
-- (void)setLongitude:(id)arg1;
-- (void)setLatitude:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)init;
 
 @end
 

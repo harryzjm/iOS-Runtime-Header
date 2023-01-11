@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class KTSignedMutationTimestamp, NSData;
+@class KTSignedMutationTimestamp, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface KTSMTFailure : NSManagedObject
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(nonatomic) long long errorCode; // @dynamic errorCode;
+@property(copy, nonatomic) NSString *errorDomain; // @dynamic errorDomain;
 @property(retain, nonatomic) NSData *proofOfFailure; // @dynamic proofOfFailure;
 @property(retain, nonatomic) KTSignedMutationTimestamp *smt; // @dynamic smt;
 

@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
     NSNumber *_cachedDependencyProcessingOrdinality;
 }
 
-+ (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 + (id)compoundRequestProcessingDeviceFromOriginalRequestsProcessingDevice:(id)arg1;
 + (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
-@property(readonly, copy, nonatomic) NSArray *originalRequests; // @synthesize originalRequests=_originalRequests;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *originalRequests; // @synthesize originalRequests=_originalRequests;
 - (id)description;
 - (_Bool)usesCPUOnly;
 - (void)recordWarningsInOriginalRequests;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)sequencedRequestPreviousObservationsKey;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (_Bool)allowsCachingOfResults;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (id)compoundResults;
 - (id)initWithOriginalRequests:(id)arg1;
 

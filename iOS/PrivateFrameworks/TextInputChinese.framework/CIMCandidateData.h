@@ -18,18 +18,19 @@
 
 + (_Bool)shouldShowZhuyinSortingMethod;
 + (id)sortTitleFromSortingMethod:(int)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *candidateInfoCache; // @synthesize candidateInfoCache=_candidateInfoCache;
 @property(retain, nonatomic) NSArray *storedCandidates; // @synthesize storedCandidates=_storedCandidates;
 @property(nonatomic) int sortingMethod; // @synthesize sortingMethod=_sortingMethod;
 @property(readonly, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
-- (void).cxx_destruct;
-- (id)candidatesSortedByMethod:(int)arg1;
+- (id)candidatesSortedByMethod:(int)arg1 omittingEmoji:(_Bool)arg2;
 - (void)setCandidates:(id)arg1;
+- (id)candidatesSortedByWubi:(id)arg1 omittingEmoji:(_Bool)arg2;
 - (id)candidatesSortedByPinyinOrZhuyin:(id)arg1 simplified:(_Bool)arg2 zhuyin:(_Bool)arg3;
 - (id)candidatesSortedByStrokes:(id)arg1 simplified:(_Bool)arg2;
 - (id)candidatesSortedByRadical:(id)arg1 simplified:(_Bool)arg2 collationLocale:(id)arg3;
 - (id)candidatesSortedByEmoji:(id)arg1;
-- (id)candidatesSortedByFrequency:(id)arg1;
+- (id)candidatesSortedByFrequency:(id)arg1 omittingEmoji:(_Bool)arg2;
 - (id)candidateGroupsFromDictionary:(id)arg1 sortedKeys:(id)arg2;
 - (void)sortCharactersByStrokeCount:(id)arg1 wordPropertiesDictionary:(id)arg2;
 - (id)wordPropertyDictionaryForCandidates:(id)arg1 isSimplified:(_Bool)arg2;

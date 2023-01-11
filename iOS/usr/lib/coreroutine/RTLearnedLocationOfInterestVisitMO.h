@@ -24,13 +24,15 @@
 @property(copy, nonatomic) NSDate *exitDate; // @dynamic exitDate;
 @property(copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 @property(retain, nonatomic) NSUUID *identifier; // @dynamic identifier;
+@property(copy, nonatomic) NSNumber *locationAltitude; // @dynamic locationAltitude;
+@property(copy, nonatomic) NSNumber *locationHorizontalUncertainty; // @dynamic locationHorizontalUncertainty;
 @property(copy, nonatomic) NSNumber *locationLatitude; // @dynamic locationLatitude;
 @property(copy, nonatomic) NSNumber *locationLongitude; // @dynamic locationLongitude;
 @property(retain, nonatomic) RTLearnedLocationOfInterestMO *locationOfInterest; // @dynamic locationOfInterest;
 @property(copy, nonatomic) NSNumber *locationOfInterestConfidence; // @dynamic locationOfInterestConfidence;
 @property(copy, nonatomic) NSNumber *locationOfInterestSource; // @dynamic locationOfInterestSource;
 @property(copy, nonatomic) NSNumber *locationReferenceFrame; // @dynamic locationReferenceFrame;
-@property(copy, nonatomic) NSNumber *locationUncertainty; // @dynamic locationUncertainty;
+@property(copy, nonatomic) NSNumber *locationVerticalUncertainty; // @dynamic locationVerticalUncertainty;
 
 @end
 

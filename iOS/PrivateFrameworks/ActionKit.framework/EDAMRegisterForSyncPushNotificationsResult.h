@@ -13,8 +13,8 @@
 
 + (id)structFields;
 + (id)structName;
-@property(retain, nonatomic) NSData *sharedSecret; // @synthesize sharedSecret=_sharedSecret;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *sharedSecret; // @synthesize sharedSecret=_sharedSecret;
 
 @end
 

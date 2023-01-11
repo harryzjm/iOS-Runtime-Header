@@ -9,6 +9,8 @@
 @interface GKCollectionGridLayout
 {
     _Bool _centersItemsInExcessSpace;
+    _Bool _shouldPerformInitialScrollToContentInsetTop;
+    _Bool _didPerformInitialContentInsetScroll;
     long long _autoWidthColumns;
     double _extraSectionHeaderToCellSpace;
     NSIndexSet *_sectionsThatShowHeaderWhenEmpty;
@@ -18,15 +20,17 @@
     NSDictionary *_footerAttributes;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didPerformInitialContentInsetScroll; // @synthesize didPerformInitialContentInsetScroll=_didPerformInitialContentInsetScroll;
 @property(retain, nonatomic) NSDictionary *footerAttributes; // @synthesize footerAttributes=_footerAttributes;
 @property(retain, nonatomic) NSDictionary *headerAttributes; // @synthesize headerAttributes=_headerAttributes;
 @property(retain, nonatomic) NSDictionary *itemAttributes; // @synthesize itemAttributes=_itemAttributes;
+@property(nonatomic) _Bool shouldPerformInitialScrollToContentInsetTop; // @synthesize shouldPerformInitialScrollToContentInsetTop=_shouldPerformInitialScrollToContentInsetTop;
 @property(retain, nonatomic) NSIndexSet *sectionsThatShowFootersWhenEmpty; // @synthesize sectionsThatShowFootersWhenEmpty=_sectionsThatShowFootersWhenEmpty;
 @property(retain, nonatomic) NSIndexSet *sectionsThatShowHeaderWhenEmpty; // @synthesize sectionsThatShowHeaderWhenEmpty=_sectionsThatShowHeaderWhenEmpty;
 @property(nonatomic) double extraSectionHeaderToCellSpace; // @synthesize extraSectionHeaderToCellSpace=_extraSectionHeaderToCellSpace;
 @property(nonatomic) long long autoWidthColumns; // @synthesize autoWidthColumns=_autoWidthColumns;
 @property(nonatomic) _Bool centersItemsInExcessSpace; // @synthesize centersItemsInExcessSpace=_centersItemsInExcessSpace;
-- (void).cxx_destruct;
 - (long long)lastValidSection;
 - (struct CGSize)collectionViewContentSize;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;

@@ -15,7 +15,6 @@
 - (void)dropTarget:(id)arg1 dragDidMoveToPoint:(struct CGPoint)arg2;
 - (void)dropTarget:(id)arg1 dragEnteredAtPoint:(struct CGPoint)arg2;
 - (id)dragSource:(id)arg1 draggableItemsAtPoint:(struct CGPoint)arg2;
-- (void)setFromAddressPickerVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (_Bool)presentSearchResults:(id)arg1;
 - (id)_searchResultsTable;

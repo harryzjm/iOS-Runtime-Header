@@ -21,6 +21,7 @@
     _Bool _hideVerticalDivider;
     _Bool _titleNoWrap;
     _Bool _thumbnailCropCircle;
+    _Bool _subtitleIsEmphasized;
     int _separatorStyle;
     float _rating;
     int _auxiliaryBottomTextColor;
@@ -52,6 +53,8 @@
     _SFPBRichText *_richSubtitle;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool subtitleIsEmphasized; // @synthesize subtitleIsEmphasized=_subtitleIsEmphasized;
 @property(retain, nonatomic) _SFPBRichText *richSubtitle; // @synthesize richSubtitle=_richSubtitle;
 @property(copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property(copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
@@ -89,7 +92,6 @@
 @property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

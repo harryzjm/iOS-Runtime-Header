@@ -16,20 +16,25 @@
         unsigned int magic;
         int opsLeft;
         long long nsecLeft;
+        int extraOpsLeft;
     } _state;
     unsigned long long _absTimeAtOpStart;
+    unsigned long long _timeSinceOpStart;
     int _fd;
     _Bool _opInProgress;
     _Bool _dirty;
+    _Bool _wasOnBattery;
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)discretionaryOpsLeft;
 - (void)refill;
+- (void)didConsumeAnExtraBudgetedOperation;
 - (void)endWork;
 - (void)startWork;
 - (id)state;
+- (_Bool)canDoExtraDiscretionaryWork;
 - (_Bool)canDoDiscretionaryWork;
+- (void)_updateOperationProgress;
 - (void)_writeThrottleStateLocked;
 - (void)_writeThrottleState;
 - (void)_readThrottleState;

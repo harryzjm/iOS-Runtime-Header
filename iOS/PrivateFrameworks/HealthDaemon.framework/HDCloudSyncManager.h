@@ -6,55 +6,91 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDAnalyticsSubmissionCoordinatorDelegate-Protocol.h>
 #import <HealthDaemon/HDContentProtectionObserver-Protocol.h>
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDAssertion, HDProfile, NSString;
+@class HDAssertion, HDProfile, HKObserverSet, NSDate, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDCloudSyncManager : NSObject <HDContentProtectionObserver, HDDatabaseProtectedDataObserver, HDHealthDaemonReadyObserver>
+@interface HDCloudSyncManager : NSObject <HDContentProtectionObserver, HDDatabaseProtectedDataObserver, HDHealthDaemonReadyObserver, HDAnalyticsSubmissionCoordinatorDelegate>
 {
     HDAssertion *_preparedDatabaseAccessibilityAssertion;
+    struct os_unfair_lock_s _lock;
+    NSDate *_lock_lastSuccessfulPullDate;
+    NSDate *_lock_lastSuccessfulPushDate;
+    NSDate *_lock_lastDataUploadRequestStartDate;
+    NSDate *_lock_lastDataUploadRequestCompletionDate;
+    long long _lock_uploadRequestStatus;
+    HKObserverSet *_observers;
     _Bool _supportsRebase;
-    _Bool _shouldResync;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     long long _inProgressSyncCount;
 }
 
 + (void)_containerIdentifiersWithEncryptionSupportEnabled:(_Bool)arg1 accountManateeEnabled:(_Bool)arg2 internalSettingManateeEnabled:(_Bool)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) long long inProgressSyncCount; // @synthesize inProgressSyncCount=_inProgressSyncCount;
-@property(nonatomic) _Bool shouldResync; // @synthesize shouldResync=_shouldResync;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) _Bool supportsRebase; // @synthesize supportsRebase=_supportsRebase;
 @property(retain) HDAssertion *preparedDatabaseAccessibilityAssertion; // @synthesize preparedDatabaseAccessibilityAssertion=_preparedDatabaseAccessibilityAssertion;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (void)unitTest_setSupportsRebase:(_Bool)arg1;
+- (void)fetchServerPreferredPushEnvironment:(CDUnknownBlockType)arg1;
+- (void)requestDataUploadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)subscribeToDataAvailableNotificationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)subscribeToDataUploadRequestsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_subscribeToSubscriptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)acceptShare:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)leaveSharesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)fetchShareParticipantsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)removeAllParticipantsFromSharesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)removeParticipants:(id)arg1 fromSharesWithCompletion:(CDUnknownBlockType)arg2;
+- (id)_removeParticipants:(id)arg1 fromSharesWithCompletion:(CDUnknownBlockType)arg2;
+- (id)setupSharingToAccountWithIdentityLookupInfo:(id)arg1 requireExistingRelationship:(_Bool)arg2 requireZoneDeviceMode:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)prepareForSharingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)configureForShareSetupMetadata:(id)arg1 acceptedShares:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_isValidOwnerParticipant:(id)arg1;
+- (_Bool)setShareOwnerParticipant:(id)arg1 error:(id *)arg2;
+- (id)shareOwnerParticipantWithError:(id *)arg1;
 - (void)_queue_considerStartingBackstopSyncForThreshold:(double)arg1;
 - (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
 - (void)daemonReady:(id)arg1;
+- (void)_updateDataUploadRequestStatus:(long long)arg1;
+- (_Bool)persistRestoreCompletionDate:(id)arg1 withError:(id *)arg2;
+- (_Bool)_persistErrorRequiringUserAction:(id)arg1;
+- (void)updateErrorRequiringUserAction:(id)arg1;
+- (id)_errorForNilProfile;
 - (void)_queue_updateAccessibilityAssertion;
 - (void)_addFinalProgressUpdateWithTaskTree:(id)arg1 progress:(id)arg2;
+- (void)_tinkerContainerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_primaryContainerIdentifiersForCurrentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_containerIdentifiersForCurrentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_containerWithIdentifier:(id)arg1 error:(id *)arg2;
+- (void)cloudSyncRepositoriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_cloudSyncRepositoriesWithCompletion:(CDUnknownBlockType)arg1;
-- (id)disableAndDeleteAllSyncDataWithTaskTree:(id)arg1;
-- (void)disableSyncLocallyWithTaskTree:(id)arg1;
+- (id)_syncCircleIdentifierForProfile:(id)arg1 error:(id *)arg2;
+- (id)syncMedicalIDDataWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)disableAndDeleteAllSyncDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchCloudKitEmailAddressWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
-- (id)fetchDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
-- (id)resetWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3;
-- (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3 permitResync:(_Bool)arg4;
-- (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3;
-- (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)fetchDescriptionWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)resetWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)syncWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)syncSessionForSyncStore:(id)arg1 reason:(id)arg2 delegate:(id)arg3 accessibilityAssertion:(id)arg4 excludedStores:(id)arg5;
-- (void)requestImmediateResync;
 - (void)prepareForSync;
+- (_Bool)canPerformCloudSyncWithError:(id *)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1 queue:(id)arg2;
+- (void)reportDailyAnalyticsWithCoordinator:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)didCompleteSuccessfulPushWithDate:(id)arg1;
+- (void)didCompleteSuccessfulPullWithDate:(id)arg1;
 - (id)lastPushForwardProgressDate;
+@property(readonly, nonatomic) NSDate *lastSuccessfulPushDate;
+@property(readonly, nonatomic) NSDate *lastSuccessfulPullDate;
 @property(readonly) long long bytesPerChangeRecordAssetThresholdHardLimit;
 @property(readonly) long long bytesPerChangeRecordAssetThreshold;
 - (void)dealloc;

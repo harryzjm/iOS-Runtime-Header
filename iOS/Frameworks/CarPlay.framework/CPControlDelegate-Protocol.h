@@ -9,6 +9,7 @@
 @protocol CPControl;
 
 @protocol CPControlDelegate <NSObject>
+- (_Bool)control:(id <CPControl>)arg1 setSelected:(_Bool)arg2;
 - (_Bool)control:(id <CPControl>)arg1 setEnabled:(_Bool)arg2;
 @end
 

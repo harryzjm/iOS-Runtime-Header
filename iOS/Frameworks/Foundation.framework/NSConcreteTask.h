@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSObject, NSPort;
+@class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_dictionary;
     CDUnknownBlockType _terminationHandler;
     NSObject<OS_dispatch_source> *_dsrc;
-    NSPort *_tmpPort;
     long long _suspendCount;
     int _pid;
     _Atomic unsigned long long __exitRunningInfo;

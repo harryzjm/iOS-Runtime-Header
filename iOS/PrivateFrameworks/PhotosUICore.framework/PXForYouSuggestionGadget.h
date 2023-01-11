@@ -16,6 +16,7 @@
 {
     _Bool _contentHidden;
     _Bool _blursDegradedContent;
+    _Bool _shouldSuppressSelectionAnimation;
     _Bool _contentViewVisible;
     unsigned short _suggestionType;
     PXGadgetSpec *_gadgetSpec;
@@ -33,7 +34,7 @@
 
 + (id)fetchQueue;
 + (void)preloadResources;
-+ (id)placeholderFilters;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned short suggestionType; // @synthesize suggestionType=_suggestionType;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -42,6 +43,7 @@
 @property(nonatomic) struct CGSize cachedHeightForWidth; // @synthesize cachedHeightForWidth=_cachedHeightForWidth;
 @property(retain, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(retain, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property(nonatomic) _Bool shouldSuppressSelectionAnimation; // @synthesize shouldSuppressSelectionAnimation=_shouldSuppressSelectionAnimation;
 @property(nonatomic) _Bool blursDegradedContent; // @synthesize blursDegradedContent=_blursDegradedContent;
 @property(nonatomic, getter=isContentHidden) _Bool contentHidden; // @synthesize contentHidden=_contentHidden;
 @property(retain, nonatomic) id <PXDisplaySuggestion> suggestion; // @synthesize suggestion=_suggestion;
@@ -49,20 +51,19 @@
 @property(nonatomic) __weak id <PXForYouSuggestionGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
-- (void).cxx_destruct;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)_updateKeyAsset;
 - (void)_markSuggestionAsDeclined;
 - (void)_markSuggestionAsActive;
 - (void)_handleDismiss;
-- (void)_handleContentViewTap:(id)arg1;
+- (void)userDidSelectGadget;
 - (id)_contentViewIfLoaded;
 - (void)_updateTitleAndSubtitle;
 - (void)_updateContentViewMode;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
 - (void)commitPreviewViewController:(id)arg1;
-- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (id)debugDictionary;
 - (id)debugURLsForDiagnostics;
 - (void)contentViewDidDisappear;
@@ -70,7 +71,7 @@
 - (void)gadgetControllerHasAppeared;
 - (void)contentHasBeenSeen;
 - (id)uniqueGadgetIdentifier;
-@property(readonly, nonatomic) _Bool hasContentToDisplay;
+@property(readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property(readonly, nonatomic) unsigned long long gadgetType;
 @property(readonly, nonatomic) UIImage *currentImage;
 @property(readonly, nonatomic) PXRegionOfInterest *regionOfInterestForOneUpTransition;
@@ -90,9 +91,6 @@
 @property(readonly, nonatomic) unsigned long long headerStyle;
 @property(readonly, nonatomic) NSString *localizedTitle;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool supportsAssetsDrop;
-@property(readonly, nonatomic) _Bool supportsHighlighting;
-@property(readonly, nonatomic) _Bool supportsSelection;
 
 @end
 

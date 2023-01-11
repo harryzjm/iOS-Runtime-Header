@@ -24,6 +24,7 @@
     struct UIEdgeInsets _yearsLevelSectionHeaderHighlightInset;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setGridSpec:) PUPhotosGridViewControllerSpec *gridSpec; // @synthesize gridSpec=_gridSpec;
 @property(readonly, nonatomic) long long yearsSectionHeaderStyle; // @synthesize yearsSectionHeaderStyle=_yearsSectionHeaderStyle;
 @property(readonly, nonatomic) struct UIEdgeInsets yearsLevelSectionHeaderHighlightInset; // @synthesize yearsLevelSectionHeaderHighlightInset=_yearsLevelSectionHeaderHighlightInset;
@@ -36,16 +37,12 @@
 @property(nonatomic) double magnifiedYOffset; // @synthesize magnifiedYOffset=_magnifiedYOffset;
 @property(readonly, nonatomic) struct CGSize magnifiedImageSize; // @synthesize magnifiedImageSize=_magnifiedImageSize;
 @property(readonly, nonatomic) _Bool canDisplayMultipleRightBarButtonItems; // @synthesize canDisplayMultipleRightBarButtonItems=_canDisplayMultipleRightBarButtonItems;
-- (void).cxx_destruct;
 - (_Bool)dynamicLayoutEnabled;
 @property(readonly, nonatomic) struct CGSize yearsLevelThumbnailSize;
 @property(readonly, nonatomic) long long yearsLevelCellFillMode;
 - (void)configureYearsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 @property(readonly, nonatomic) struct CGSize collectionsLevelThumbnailSize;
 @property(readonly, nonatomic) long long collectionsLevelCellFillMode;
-@property(readonly, nonatomic) unsigned long long yearsSectionHeaderBackgroundStyle;
-@property(readonly, nonatomic) unsigned long long collectionsSectionHeaderBackgroundStyle;
-@property(readonly, nonatomic) unsigned long long fullMomentsSectionHeaderBackgroundStyle;
 - (void)configureCollectionsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 @property(readonly, nonatomic) long long fullMomentsLevelCellFillMode;
 - (void)configureFullMomentsLevelGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;

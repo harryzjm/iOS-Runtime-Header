@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     _Bool _flushImmediately;
     _Bool _autovacuumInProgress;
     long long _changesOverride;
+    _Bool _isReadonly;
     unsigned long long _vmStepsExecuted;
 }
 
-@property(readonly, nonatomic) unsigned long long vmStepsExecuted; // @synthesize vmStepsExecuted=_vmStepsExecuted;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isReadonly; // @synthesize isReadonly=_isReadonly;
+@property(readonly, nonatomic) unsigned long long vmStepsExecuted; // @synthesize vmStepsExecuted=_vmStepsExecuted;
 - (void)autovacuumIfNeeded;
 - (_Bool)needsAutovacuum;
 - (long long)sizeInBytes;

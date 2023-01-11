@@ -6,7 +6,18 @@
 
 #import <Foundation/NSNumber.h>
 
-@interface NSNumber (RCAdditions)
+#import <VoiceMemos/RCRecordingsFolderIdentifier-Protocol.h>
+
+@class NSString;
+
+@interface NSNumber (RCAdditions) <RCRecordingsFolderIdentifier>
 - (long long)rc_persistentIDValue;
+@property(readonly, nonatomic) long long __rc_folderType;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

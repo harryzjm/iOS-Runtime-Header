@@ -29,10 +29,10 @@
     CDStruct_14d5dc5e _matrix4x4;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isDefaultValue; // @synthesize isDefaultValue=_isDefaultValue;
 @property(nonatomic) CDStruct_14d5dc5e matrix4x4; // @synthesize matrix4x4=_matrix4x4;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (void)setMatrix4x4Value:(CDStruct_14d5dc5e)arg1;
 @property(nonatomic) MISSING_TYPE *float4Value;
 @property(nonatomic) MISSING_TYPE *float3Value;

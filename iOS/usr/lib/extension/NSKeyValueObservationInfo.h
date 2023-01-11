@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
+@property(readonly, nonatomic) _Bool containsOnlyInternalObservationHelpers;
 - (id)_initWithObservances:(id *)arg1 count:(unsigned long long)arg2 hashValue:(unsigned long long)arg3;
 - (id)_copyByAddingObservance:(id)arg1;
 

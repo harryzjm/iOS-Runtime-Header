@@ -7,7 +7,7 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/_HMAccesorySettingDelegate-Protocol.h>
 
-@class HMAccessorySettingGroup, NSString, _HMAccessorySetting;
+@class HMAccessorySettingGroup, NSString, NSUUID, _HMAccessorySetting;
 
 @interface HMAccessorySetting <_HMAccesorySettingDelegate, HMFLogging>
 {
@@ -18,18 +18,20 @@
 + (id)logCategory;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)settingForInternal:(id)arg1;
+- (void).cxx_destruct;
 @property __weak HMAccessorySettingGroup *group; // @synthesize group=_group;
 @property(readonly) _HMAccessorySetting *internal; // @synthesize internal=_internal;
-- (void).cxx_destruct;
 - (id)logIdentifier;
-- (void)_settingDidUpdateReflected:(id)arg1;
-- (void)_settingWillUpdateReflected:(id)arg1;
 - (void)_settingDidUpdateValue:(id)arg1;
 - (void)_settingWillUpdateValue:(id)arg1;
+- (void)settingDidUpdateReflected;
+- (void)settingWillUpdateReflected;
+- (void)updateReflected:(_Bool)arg1;
 @property(readonly, getter=isReflected) _Bool reflected;
 - (void)updateValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)value;
 @property(readonly) Class valueClass;
+@property(readonly, copy) NSUUID *identifier;
 @property(readonly, copy) NSString *keyPath;
 @property(readonly, copy) NSString *description;
 - (_Bool)isWritable;

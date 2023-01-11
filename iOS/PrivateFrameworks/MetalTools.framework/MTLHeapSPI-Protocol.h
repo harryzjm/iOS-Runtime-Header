@@ -11,5 +11,8 @@
 @protocol MTLHeapSPI <MTLHeap>
 @property(readonly) unsigned long long unfilteredResourceOptions;
 - (NSString *)formattedDescription:(unsigned long long)arg1;
+
+@optional
+@property(readonly, nonatomic) unsigned long long gpuAddress;
 @end
 

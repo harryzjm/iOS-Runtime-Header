@@ -11,6 +11,7 @@
 @interface PLPersistedFolderMetadata : NSObject
 {
     _Bool _pinned;
+    _Bool _prototype;
     _Bool _inTrash;
     _Bool _customSortAscending;
     int _customSortKey;
@@ -26,6 +27,7 @@
 
 + (void)updateChildrenOrderingInFolder:(id)arg1 usingChildUUIDs:(id)arg2 sourceDescription:(id)arg3 includePendingChanges:(_Bool)arg4;
 + (_Bool)isValidPath:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property(retain, nonatomic) PLManagedFolder *folder; // @synthesize folder=_folder;
 @property(readonly, retain, nonatomic) NSString *remappedUUID; // @synthesize remappedUUID=_remappedUUID;
@@ -33,12 +35,12 @@
 @property(nonatomic) int customSortKey; // @synthesize customSortKey=_customSortKey;
 @property(nonatomic) _Bool customSortAscending; // @synthesize customSortAscending=_customSortAscending;
 @property(nonatomic, getter=isInTrash) _Bool inTrash; // @synthesize inTrash=_inTrash;
+@property(nonatomic, getter=isPrototype) _Bool prototype; // @synthesize prototype=_prototype;
 @property(nonatomic, getter=isPinned) _Bool pinned; // @synthesize pinned=_pinned;
 @property(retain, nonatomic) NSNumber *kind; // @synthesize kind=_kind;
 @property(retain, nonatomic) NSString *cloudGUID; // @synthesize cloudGUID=_cloudGUID;
 @property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
 - (void)_saveMetadata;
 - (_Bool)_readMetadata;
 - (id)description;
@@ -46,6 +48,7 @@
 - (id)insertFolderFromDataInManagedObjectContext:(id)arg1;
 - (void)removePersistedData;
 - (void)writePersistedData;
+@property(readonly, nonatomic) _Bool isProjectAlbumRootFolder;
 @property(readonly, nonatomic) _Bool isRootFolder;
 - (id)initWithPersistedDataAtURL:(id)arg1;
 - (id)initWithPLManagedFolder:(id)arg1 pathManager:(id)arg2;

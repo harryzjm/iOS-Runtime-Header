@@ -19,10 +19,11 @@
 - (id)_createLabel;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (void)applyPalette:(id)arg1;
+- (struct CGRect)padContentFrame:(struct CGRect)arg1;
 - (struct CGRect)contentFrame;
 - (void)layoutSubviews;
 - (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(_Bool)arg3 timeTravelDate:(id)arg4;
-- (id)init;
+- (id)initWithBackgroundView:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) _Bool canUseCurvedText;

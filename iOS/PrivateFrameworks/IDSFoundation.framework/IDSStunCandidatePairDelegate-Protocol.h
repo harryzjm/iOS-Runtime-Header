@@ -6,9 +6,10 @@
 
 #import <IDSFoundation/NSObject-Protocol.h>
 
-@class IDSStunCandidatePair, NSDictionary;
+@class IDSStunCandidatePair, NSDictionary, NSString;
 
 @protocol IDSStunCandidatePairDelegate <NSObject>
+- (void)sendProbingRequestWithoptions:(NSDictionary *)arg1 candidatePairToken:(NSString *)arg2;
 - (void)sendAllocbindRequest:(IDSStunCandidatePair *)arg1 isRealloc:(_Bool)arg2 inResponseToNoSessionState:(_Bool)arg3;
 - (void)disconnectCandidatePair:(IDSStunCandidatePair *)arg1;
 - (void)candidatePair:(IDSStunCandidatePair *)arg1 didAddQREvent:(NSDictionary *)arg2;

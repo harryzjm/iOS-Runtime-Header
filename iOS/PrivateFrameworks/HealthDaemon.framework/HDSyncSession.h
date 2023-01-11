@@ -14,6 +14,7 @@
     id <HDSyncSessionDelegate> _delegate;
     id <HDSyncStore> _syncStore;
     NSUUID *_sessionUUID;
+    NSString *_shortSessionIdentifier;
     NSDate *_startDate;
     NSCalendar *_calendar;
     NSString *_reason;
@@ -21,18 +22,21 @@
     double _databaseAccessibilityTimeout;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double databaseAccessibilityTimeout; // @synthesize databaseAccessibilityTimeout=_databaseAccessibilityTimeout;
 @property(retain, nonatomic) HDAssertion *databaseAccessibilityAssertion; // @synthesize databaseAccessibilityAssertion=_databaseAccessibilityAssertion;
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(readonly, copy, nonatomic) NSString *shortSessionIdentifier; // @synthesize shortSessionIdentifier=_shortSessionIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
 @property(readonly, nonatomic) id <HDSyncStore> syncStore; // @synthesize syncStore=_syncStore;
 @property(readonly, nonatomic) __weak id <HDSyncSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)description;
-- (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
+- (_Bool)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (id)excludedSyncStores;
 - (void)syncDidFinishWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (_Bool)transactionDidEndWithError:(id *)arg1;

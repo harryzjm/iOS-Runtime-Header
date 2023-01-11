@@ -10,7 +10,7 @@
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
-@class CLHeading, CLLocation, NSString, NSURL;
+@class CAMAnalyticsCaptureEvent, CLHeading, CLLocation, NSString, NSURL;
 @protocol CAMPanoramaCaptureRequestDelegate;
 
 @interface CAMMutablePanoramaCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin, CAMMutableCaptureRequestEncodingBehavior>
@@ -36,6 +36,7 @@
 @property(nonatomic) long long captureDevice; // @dynamic captureDevice;
 @property(nonatomic) long long captureOrientation; // @dynamic captureOrientation;
 @property(nonatomic) __weak id <CAMPanoramaCaptureRequestDelegate> delegate; // @dynamic delegate;
+@property(retain, nonatomic) CAMAnalyticsCaptureEvent *analyticsEvent; // @dynamic analyticsEvent;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

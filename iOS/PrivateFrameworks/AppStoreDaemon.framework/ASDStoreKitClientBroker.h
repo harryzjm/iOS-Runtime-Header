@@ -17,6 +17,9 @@
 
 + (id)defaultBroker;
 - (void).cxx_destruct;
+- (void)handleEngagementRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void)handleDialogRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void)handleAuthenticateRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)shouldContinueTransaction:(id)arg1 withNewStorefront:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
 - (void)storefrontChanged:(id)arg1;
 - (void)downloadRemoved:(id)arg1;
@@ -24,6 +27,8 @@
 - (void)downloadAdded:(id)arg1;
 - (void)removedTransactions:(id)arg1;
 - (void)updatedTransactions:(id)arg1;
+- (void)removedEntitlementsForProductIdentifiers:(id)arg1;
+- (void)askToShowMessageWithReplyBlock:(CDUnknownBlockType)arg1;
 - (void)unregisterClientWithIdentifier:(id)arg1;
 - (void)registerClient:(id)arg1 withIdentifier:(id)arg2;
 - (id)init;

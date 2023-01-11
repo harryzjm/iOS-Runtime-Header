@@ -10,15 +10,22 @@
 {
 }
 
++ (_Bool)canonicalizedEqualityTestValue1:(id)arg1 value2:(id)arg2 key:(id)arg3 object1:(id)arg4 object2:(id)arg5;
 + (id)timeZoneFromTimeZoneName:(id)arg1 withFloatingTimeZone:(id)arg2;
 + (id)timeZoneNameFromTimeZone:(id)arg1;
 + (_Bool)_shouldDeleteAndAddForMoveFromCalendar:(id)arg1 toCalendar:(id)arg2;
++ (id)adjustDateFromUTC:(id)arg1 allDay:(_Bool)arg2 timeZone:(id)arg3;
++ (long long)CADICSExportOptionsFromEKICSExportOptions:(long long)arg1;
++ (id)knownDerivedRelationshipKeys;
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (id)knownRelationshipWeakKeys;
 + (id)knownRelationshipMultiValueKeys;
 + (id)knownRelationshipSingleValueKeys;
++ (id)EKObjectChangeSummarizer_multiValueDiffKeys;
++ (id)EKObjectChangeSummarizer_singleValueDiffKeys;
 - (id)_generateNewUniqueID;
 - (void)_willCommit;
-- (_Bool)_validateDeletable:(id *)arg1;
 - (void)_updateModifiedAlarmByAcknowledging;
 - (void)updateWithAppLink:(id)arg1 usedSelectedText:(_Bool *)arg2;
 - (void)_deletePersistentItemAndDetachedItems:(id)arg1 forCommittingItem:(id)arg2;
@@ -42,12 +49,14 @@
 - (void)_moveToCalendar:(id)arg1 forCommittingItem:(id)arg2;
 - (void)moveToCalendar:(id)arg1;
 - (_Bool)validate:(id *)arg1;
+- (_Bool)canMoveOrCopyToCalendar:(id)arg1 fromCalendar:(id)arg2 error:(id *)arg3;
 - (_Bool)canMoveToCalendar:(id)arg1 fromCalendar:(id)arg2 error:(id *)arg3;
 - (_Bool)canMoveToCalendar:(id)arg1 error:(id *)arg2;
 - (void)setContactIdentifiers:(id)arg1;
 - (id)contactIdentifiers;
-- (void)_removeAttachment:(id)arg1;
-- (void)_addAttachment:(id)arg1;
+- (_Bool)hasAttachment;
+- (void)removeAttachment:(id)arg1;
+- (void)addAttachment:(id)arg1;
 @property(retain, nonatomic) NSArray *attachments;
 - (void)setSharedItemModifiedTimeZone:(id)arg1;
 - (id)sharedItemModifiedTimeZone;
@@ -83,7 +92,6 @@
 - (id)participantMatchingContact:(id)arg1;
 - (long long)selfParticipantStatus;
 - (int)selfParticipantStatusRaw;
-- (id)attendeeForMe;
 - (void)_setSelfAttendee:(id)arg1;
 - (void)setSelfAttendee:(id)arg1;
 - (id)selfAttendee;
@@ -92,6 +100,7 @@
 - (void)addAttendee:(id)arg1;
 - (void)setAttendees:(id)arg1;
 - (id)filterAttendeesPendingDeletion:(id)arg1;
+- (void)setAttendeesRaw:(id)arg1;
 - (id)attendeesRaw;
 @property(readonly, nonatomic) NSArray *attendees;
 - (void)_updateHasAttendeesIfNeeded;
@@ -104,6 +113,9 @@
 - (void)_updateHasRecurrenceRulesIfNeeded;
 - (_Bool)_hadRecurrenceRules;
 @property(readonly, nonatomic) _Bool hasRecurrenceRules;
+- (void)setSingleRecurrenceRule:(id)arg1;
+- (id)singleRecurrenceRule;
+- (id)recurrenceRuleString;
 - (void)removeAllSnoozedAlarms;
 - (void)removeAcknowledgedSnoozedAlarms;
 - (_Bool)isOnlyAlarmAcknowledgedPropertyDirty;
@@ -120,6 +132,7 @@
 - (id)sortedAlarms;
 @property(copy, nonatomic) NSArray *alarms;
 @property(readonly, nonatomic) _Bool hasAlarms;
+- (id)adjustDateFromUTC:(id)arg1;
 - (unsigned long long)actionsState;
 - (_Bool)allowsAttendeesModifications;
 - (_Bool)allowsAlarmModifications;
@@ -127,14 +140,21 @@
 - (_Bool)allowsCalendarModifications;
 - (_Bool)isOrganizedBySharedCalendarOwner;
 - (_Bool)isExternallyOrganizedInvitation;
-- (_Bool)_isExternallyOrganizedInvitationWithAttendees:(_Bool)arg1;
 - (_Bool)isSelfOrganizedInvitation;
 - (_Bool)isSelfOrganized;
 - (_Bool)isFloating;
+- (_Bool)_validateDeletableBySharedCalendarShareeWithError:(id *)arg1;
+- (_Bool)_isInSharedToMeCalendarWithNoSharingScheduling;
+- (_Bool)_validateDeletableInCalendarWithError:(id *)arg1;
+- (_Bool)_validateAccessConsent:(id *)arg1;
+- (_Bool)_validateDeletable:(id *)arg1;
+- (_Bool)isDeletable;
 - (_Bool)isEditable;
 - (_Bool)allowsSpansOtherThanThisEvent;
 - (_Bool)requiresDetach;
 - (id)externalURI;
+- (_Bool)isDifferentFromCommitted;
+- (id)exportToICSWithOptions:(long long)arg1;
 - (id)exportToICS;
 - (int)sequenceNumber;
 - (void)setModifiedProperties:(unsigned int)arg1;
@@ -159,9 +179,7 @@
 - (id)startTimeZoneName;
 @property(copy, nonatomic) NSTimeZone *timeZone;
 @property(retain, nonatomic) EKCalendar *calendar;
-- (void)_updateDefaultAlarms;
-- (void)_addDefaultAlarms;
-- (void)_removeDefaultAlarms;
+- (id)defaultAlarms;
 @property(copy, nonatomic) NSURL *URL;
 - (void)setAppLink:(id)arg1;
 - (id)appLink;
@@ -193,13 +211,17 @@
 - (void)_updateHasNotesIfNeeded;
 @property(readonly, nonatomic) _Bool hasNotes;
 @property(copy, nonatomic) NSString *notes;
+- (id)localUID;
 @property(readonly, nonatomic) NSString *UUID;
 - (void)setUniqueID:(id)arg1;
 - (id)uniqueID;
-@property(readonly, nonatomic) NSString *calendarItemExternalIdentifier;
-@property(retain, nonatomic) NSString *calendarItemIdentifier;
 - (void)setUniqueId:(id)arg1;
 - (id)uniqueId;
+@property(readonly, nonatomic) NSString *calendarItemExternalIdentifier;
+@property(retain, nonatomic) NSString *calendarItemIdentifier;
+- (void)setStartDateRaw:(id)arg1;
+- (id)startDateRaw;
+- (unsigned long long)entityType;
 - (id)description;
 - (void)willSave;
 - (void)setLocalCustomObject:(id)arg1 forKey:(id)arg2;

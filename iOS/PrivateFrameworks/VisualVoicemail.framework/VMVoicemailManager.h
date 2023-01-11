@@ -35,6 +35,7 @@
     VMClientWrapper *_client;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) VMClientWrapper *client; // @synthesize client=_client;
 @property(retain, nonatomic) VMVoicemailCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
@@ -49,7 +50,6 @@
 @property(readonly, nonatomic) _Bool canChangeGreeting; // @synthesize canChangeGreeting=_canChangeGreeting;
 @property(readonly, nonatomic) _Bool canChangePassword; // @synthesize canChangePassword=_canChangePassword;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
-- (void).cxx_destruct;
 - (void)saveGreeting:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)changePassword:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)messagesForMailboxType:(long long)arg1 read:(_Bool)arg2 limit:(long long)arg3 offset:(long long)arg4 error:(id *)arg5;
@@ -68,6 +68,7 @@
 - (long long)minimumPasscodeLengthForAccountUUID:(id)arg1;
 - (_Bool)isPasscodeChangeSupportedForAccountUUID:(id)arg1;
 @property(copy, nonatomic) NSArray *accounts; // @synthesize accounts=_accounts;
+- (id)fetchAccounts;
 - (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
 - (void)obliterate;
@@ -85,6 +86,7 @@
 - (id)markVoicemailAsRead:(id)arg1;
 - (id)deleteVoicemails:(id)arg1;
 - (id)deleteVoicemail:(id)arg1;
+- (void)remapAccount:(id)arg1 toAccount:(id)arg2;
 - (id)uniqueIdentifierForVoiceMail:(id)arg1;
 - (unsigned long long)countOfVoicemailsPassingTest:(CDUnknownBlockType)arg1;
 - (id)voicemailsPassingTest:(CDUnknownBlockType)arg1;

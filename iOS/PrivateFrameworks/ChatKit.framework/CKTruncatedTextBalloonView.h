@@ -11,12 +11,14 @@
 @interface CKTruncatedTextBalloonView <NSLayoutManagerDelegate>
 {
     _Bool _avoidTextLineBreaks;
+    _Bool _wantsChevron;
     UIImageView *_chevron;
 }
 
-@property(retain, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
-@property(nonatomic) _Bool avoidTextLineBreaks; // @synthesize avoidTextLineBreaks=_avoidTextLineBreaks;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
+@property(nonatomic) _Bool wantsChevron; // @synthesize wantsChevron=_wantsChevron;
+@property(nonatomic) _Bool avoidTextLineBreaks; // @synthesize avoidTextLineBreaks=_avoidTextLineBreaks;
 - (void)prepareForDisplay;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (void)layoutSubviews;

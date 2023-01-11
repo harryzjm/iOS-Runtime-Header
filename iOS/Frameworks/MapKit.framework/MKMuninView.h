@@ -11,21 +11,23 @@
 #import <MapKit/VKMapViewCameraDelegate-Protocol.h>
 #import <MapKit/VKMapViewDelegate-Protocol.h>
 
-@class GEOMuninViewState, GEOStorefrontView, MKHapticEngine, MKMapItem, MKMuninBumpFlash, MKMuninGestureController, NSArray, NSDate, NSLayoutConstraint, NSString, NSURL, UIImageView, UITapGestureRecognizer, VKLabelMarker, VKMapView, VKMuninMarker, _MKCustomFeatureStore, _MKMuninLayerHostingView;
-@protocol MKMapServiceTicket, MKMuninViewDelegate;
+@class GEOMuninViewState, GEOStorefrontView, MKHapticEngine, MKMapItem, MKMuninBumpFlash, MKMuninGestureController, NSArray, NSDate, NSLayoutConstraint, NSString, NSURL, UIImageView, UITapGestureRecognizer, VKLabelMarker, VKMapView, VKMuninMarker, _MKMuninLayerHostingView;
+@protocol MKCompassView, MKMapServiceTicket, MKMuninViewDelegate;
 
 @interface MKMuninView : UIView <MKMuninGestureControllerDelegate, VKMapViewCameraDelegate, VKMapViewDelegate, NSCoding>
 {
     _MKMuninLayerHostingView *_hostView;
     _Bool _changingViewSize;
+    _Bool _wantsCompassShown;
     UIImageView *_transitionStartImageview;
     UIImageView *_transitionEndImageview;
     UIImageView *_transitionGridImageview;
-    UIImageView *_compassView;
-    NSLayoutConstraint *_compassTopConstraint;
+    UIView<MKCompassView> *_compassView;
+    NSLayoutConstraint *_compassTopOrBottomConstraint;
     NSLayoutConstraint *_compassTrailingConstraint;
     UITapGestureRecognizer *_compassTapGestureRecognizer;
     MKMuninGestureController *_gestureController;
+    MKMuninBumpFlash *_bumpFlashView;
     VKMapView *_muninView;
     struct CLLocationCoordinate2D _lastCoordinate;
     NSArray *_lastGroundViews;
@@ -41,11 +43,9 @@
     MKMapItem *_mapItem;
     MKMapItem *_revGeoMapItem;
     GEOStorefrontView *_requestedStorefrontView;
-    _MKCustomFeatureStore *_customFeatureStore;
     NSDate *_startTime;
     int _triggerAction;
     MKHapticEngine *_hapticEngine;
-    MKMuninBumpFlash *_bumpFlashView;
     _Bool _hasEnteredMunin;
     _Bool _navigatingEnabled;
     _Bool _panningEnabled;
@@ -55,8 +55,9 @@
     struct UIEdgeInsets _compassInsets;
 }
 
-@property(readonly, nonatomic) MKHapticEngine *hapticEngine; // @synthesize hapticEngine=_hapticEngine;
-@property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) MKMapItem *revGeoMapItem; // @synthesize revGeoMapItem=_revGeoMapItem;
+@property(readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(readonly, nonatomic) GEOMuninViewState *muninViewState; // @synthesize muninViewState=_muninViewState;
 @property(nonatomic) __weak id <MKMuninViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool pinchingEnabled; // @synthesize pinchingEnabled=_pinchingEnabled;
@@ -65,12 +66,12 @@
 @property(nonatomic) _Bool hasEnteredMunin; // @synthesize hasEnteredMunin=_hasEnteredMunin;
 @property(nonatomic) struct UIEdgeInsets compassInsets; // @synthesize compassInsets=_compassInsets;
 @property(retain, nonatomic) VKMapView *muninView; // @synthesize muninView=_muninView;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *imageResources;
 @property(readonly, nonatomic) NSArray *visibleRoadLabels;
 @property(readonly, nonatomic) NSArray *visiblePlaceMUIDs;
 - (void)_updateLocationInfoForCoordinate:(struct CLLocationCoordinate2D)arg1 allowReverseGeocodeIfNeeded:(_Bool)arg2;
 - (void)_updateLocationInfo;
+- (void)_setInitialLocationInfo;
 - (void)_updateCompassInsets;
 - (void)_updateCompass;
 - (void)_updateCameraFrame;
@@ -98,19 +99,21 @@
 - (void)recordTriggerAction:(int)arg1;
 - (void)deselectLabelMarker;
 - (void)selectLabelMarker:(id)arg1;
-- (void)moveToStandOffUpViewAnimated:(_Bool)arg1;
-- (void)moveToStandOffUpView;
+- (void)moveToStandOffViewAnimated:(_Bool)arg1;
+- (void)moveToStandOffView;
 - (void)moveToCloseUpViewAnimated:(_Bool)arg1;
 - (void)moveToCloseUpView;
 - (_Bool)_moveToStorefrontView:(id)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)moveToMapItem:(id)arg1 wantsCloseUpView:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)jumpToStandOffView;
+- (void)jumpToCloseUpView;
+- (_Bool)tapAtPoint:(struct CGPoint)arg1;
+- (_Bool)moveToMapItem:(id)arg1 wantsCloseUpView:(_Bool)arg2 orMuninMarker:(id)arg3 withHeading:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 @property(readonly, nonatomic, getter=isLoading) _Bool loading;
 @property(readonly, nonatomic) _Bool adequatelyDrawn;
 @property(readonly, nonatomic) VKLabelMarker *selectedLabelMarker;
 - (void)openInMapsWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) VKMuninMarker *muninMarker;
 - (_Bool)cancelPendingMove;
-- (_Bool)moveToMuninMarker:(id)arg1 withHeading:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_enterMuninForMuninViewState:(id)arg1;
 - (void)_enterMuninForMuninMarker:(id)arg1 withHeading:(double)arg2;
 - (void)_enterMuninForMapItem:(id)arg1 wantsCloseUpView:(_Bool)arg2;
@@ -125,9 +128,11 @@
 @property(nonatomic) _Bool showsRoadLabels;
 - (void)setCompassHidden:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isCompassHidden) _Bool compassHidden;
+- (void)willMoveToWindow:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)_animateCanvasForBounds:(struct CGRect)arg1;
+- (void)setUserInteractionEnabled:(_Bool)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)encodeWithCoder:(id)arg1;

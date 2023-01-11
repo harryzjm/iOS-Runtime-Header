@@ -16,6 +16,7 @@
     CDUnknownBlockType _filterHandler;
     CDUnknownBlockType _serviceHandler;
     CDUnknownBlockType _propertyChangedHandler;
+    CDUnknownBlockType _cancelHandler;
 }
 
 - (void).cxx_destruct;

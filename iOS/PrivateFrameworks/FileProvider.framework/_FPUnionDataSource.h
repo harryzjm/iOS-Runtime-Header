@@ -16,11 +16,12 @@ __attribute__((visibility("hidden")))
 @interface _FPUnionDataSource : NSObject <FPCollectionDataSource, FPItemCollectionItemIDBasedDelegate>
 {
     NSArray *_collections;
+    _Bool _isRunning;
     id <FPCollectionDataSourceDelegate> delegate;
 }
 
-@property(nonatomic) __weak id <FPCollectionDataSourceDelegate> delegate; // @synthesize delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <FPCollectionDataSourceDelegate> delegate; // @synthesize delegate;
 @property(readonly, nonatomic) _Bool hasMoreIncoming;
 - (void)enumerationMightHaveResumed;
 - (void)invalidate;

@@ -15,7 +15,10 @@
 
 + (id)currentDevice;
 - (void).cxx_destruct;
+- (id)description;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
+@property(readonly, nonatomic) long long chipID;
+@property(readonly, nonatomic) NSString *marketingName;
 @property(readonly, nonatomic) NSString *localizedWiFiDisplayName;
 - (_Bool)hasCapability:(id)arg1;
 @property(readonly, nonatomic) NSArray *capabilities; // @synthesize capabilities=_capabilities;
@@ -26,6 +29,7 @@
 @property(readonly, nonatomic) NSString *model;
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) NSString *systemVersion;
+@property(readonly, nonatomic) double screenCornerRadius;
 @property(readonly, nonatomic) double screenScale;
 @property(readonly, nonatomic) struct CGRect screenBounds;
 

@@ -29,6 +29,7 @@
 - (id)CKDPIdentifier_Record;
 - (id)CKDPIdentifier_Raw;
 - (id)_CKDPIdentifierWithType:(int)arg1;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)ckShortDescription;
 
 // Remaining properties

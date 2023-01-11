@@ -27,7 +27,7 @@
 - (_Bool)isPhotoIris;
 - (_Bool)hasAdjustments;
 - (id)backingResourceForVideoResource:(id)arg1;
-- (id)initWithManagedObjectContext:(id)arg1 assetObjectID:(id)arg2;
+- (id)initWithManagedObjectContext:(id)arg1 asset:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

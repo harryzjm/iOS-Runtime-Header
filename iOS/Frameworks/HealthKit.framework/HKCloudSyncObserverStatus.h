@@ -18,19 +18,29 @@
     NSDate *_lastPushDate;
     NSDate *_restoreCompletionDate;
     NSError *_errorRequiringUserAction;
+    long long _dataUploadRequestStatus;
+    NSDate *_dataUploadRequestStartDate;
+    NSDate *_dataUploadRequestCompletionDate;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *dataUploadRequestCompletionDate; // @synthesize dataUploadRequestCompletionDate=_dataUploadRequestCompletionDate;
+@property(copy, nonatomic) NSDate *dataUploadRequestStartDate; // @synthesize dataUploadRequestStartDate=_dataUploadRequestStartDate;
+@property(nonatomic) long long dataUploadRequestStatus; // @synthesize dataUploadRequestStatus=_dataUploadRequestStatus;
 @property(copy, nonatomic) NSError *errorRequiringUserAction; // @synthesize errorRequiringUserAction=_errorRequiringUserAction;
 @property(copy, nonatomic) NSDate *restoreCompletionDate; // @synthesize restoreCompletionDate=_restoreCompletionDate;
 @property(copy, nonatomic) NSDate *lastPushDate; // @synthesize lastPushDate=_lastPushDate;
 @property(copy, nonatomic) NSDate *lastPullDate; // @synthesize lastPullDate=_lastPullDate;
 @property(nonatomic) _Bool syncEnabled; // @synthesize syncEnabled=_syncEnabled;
-- (void).cxx_destruct;
 - (id)description;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithSyncEnabled:(_Bool)arg1 lastPullDate:(id)arg2 lastPushDate:(id)arg3 restoreCompletionDate:(id)arg4 errorRequiringUserAction:(id)arg5 dataUploadRequestStatus:(long long)arg6 dataUploadRequestStartDate:(id)arg7 dataUploadRequestCompletionDate:(id)arg8;
+- (id)init;
 
 @end
 

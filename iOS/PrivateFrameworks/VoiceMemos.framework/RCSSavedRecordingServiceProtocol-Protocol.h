@@ -6,7 +6,7 @@
 
 #import <VoiceMemos/NSObject-Protocol.h>
 
-@class AVAudioPCMBuffer, NSArray, NSDate, NSDictionary, NSString, NSURL, RCSSavedRecordingAccessToken;
+@class AVAudioPCMBuffer, NSArray, NSDate, NSDictionary, NSSecurityScopedURLWrapper, NSString, NSURL, RCSSavedRecordingAccessToken;
 
 @protocol RCSSavedRecordingServiceProtocol <NSObject>
 - (oneway void)updateSearchMetadataWithRecordingURIsToInsert:(NSArray *)arg1 recordingURIsToUpdate:(NSArray *)arg2 recordingURIsToDelete:(NSArray *)arg3 completionBlock:(void (^)(NSError *))arg4;
@@ -26,14 +26,14 @@
 - (oneway void)prepareToPreviewCompositionAVURL:(NSURL *)arg1 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg2;
 - (oneway void)writeAudioFile:(NSURL *)arg1 buffer:(AVAudioPCMBuffer *)arg2 completionBlock:(void (^)(NSError *))arg3;
 - (oneway void)closeAudioFile:(RCSSavedRecordingAccessToken *)arg1 completionBlock:(void (^)(NSError *))arg2;
-- (oneway void)openAudioFile:(NSURL *)arg1 settings:(NSDictionary *)arg2 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg3;
+- (oneway void)openAudioFile:(NSURL *)arg1 settings:(NSDictionary *)arg2 metadata:(NSDictionary *)arg3 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg4;
 - (oneway void)prepareToCaptureToCompositionAVURL:(NSURL *)arg1 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg2;
 - (oneway void)expungeRecordingsFromCloud:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)exportRecordingsToCloud:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)importRecordingsFromCloud:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)disableCloudRecordingsSaveLocalCopies:(_Bool)arg1 withCompletionBlock:(void (^)(NSError *))arg2;
 - (oneway void)enableCloudRecordingsWithCompletionBlock:(void (^)(NSError *))arg1;
-- (oneway void)importRecordingWithSourceAudioURL:(NSURL *)arg1 name:(NSString *)arg2 date:(NSDate *)arg3 importCompletionBlock:(void (^)(NSURL *, NSError *))arg4;
+- (oneway void)importRecordingWithSourceAudioURL:(NSSecurityScopedURLWrapper *)arg1 name:(NSString *)arg2 date:(NSDate *)arg3 userInfo:(NSDictionary *)arg4 importCompletionBlock:(void (^)(NSURL *, NSError *))arg5;
 - (oneway void)performDatabaseMigrationWithCompletionBlock:(void (^)(NSError *))arg1;
 @end
 

@@ -12,11 +12,14 @@ __attribute__((visibility("hidden")))
     struct CGPoint _panLastScreenPoint;
     _Bool _isPitchIncreasing;
     double _beganPitch;
+    double _currentPitch;
     VKTimedAnimation *_zoomAnimation;
 }
 
+- (Matrix_6e1d3589)positionClampedToCameraRestriction:(Matrix_6e1d3589)arg1 delta:(Matrix_6e1d3589)arg2;
 - (Matrix_6e1d3589)positionClampedToCameraRestriction:(Matrix_6e1d3589)arg1;
 - (_Bool)isPitchIncreasing;
+- (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)beginPitch:(struct CGPoint)arg1;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;

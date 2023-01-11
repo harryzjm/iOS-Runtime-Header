@@ -12,17 +12,21 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axNextSelectableIndexPathForIndexPath:(id)arg1;
+- (void)_accessibilitySetSelectedChildren:(id)arg1;
+- (id)_accessibilitySelectedChildren;
 - (id)_axPreviousSelectableIndexPathForIndexPath:(id)arg1;
+- (void)_axSetupIndexGuide;
+- (void)_axSetIndexGuide:(id)arg1;
+- (id)_axGetIndexGuide;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
-- (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 - (_Bool)_accessibilityDrawsFocusRingWhenChildrenFocused;
 - (id)preferredFocusedView;
+- (id)preferredFocusEnvironments;
 - (id)_accessibilityLastFocusedChild;
 - (_Bool)canBecomeFocused;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)_accessibilityKeyCommandsShouldOverrideKeyCommands;
-- (void)_fkaScrollToNextRow;
-- (void)_fkaScrollToPreviousRow;
-- (id)_accessibilityKeyCommands;
+- (_Bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (_Bool)_accessibilityIsInMasterSplitViewController;
 - (_Bool)_accessibilityNativeFocusPreferredElementIsValid;
 - (id)_accessibilityReusableViewForOpaqueElement:(id)arg1;
@@ -65,7 +69,8 @@
 - (void)_accessibilityInitializeInternalData;
 - (long long)_axNumberOfSections;
 - (long long)accessibilityElementCount;
-- (id)_accessibilitySortedElementsWithinPreservingFloatingHeader:(id)arg1;
+- (id)_accessibilitySortedElementsWithinPreservingFloatingHeader:(id)arg1 sortedElements:(id)arg2;
+- (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
 - (_Bool)_accessibilitySearchControllerDimmingViewVisible;
@@ -97,6 +102,7 @@
 - (id)_accessibilityInternalData;
 - (void)_axPostLayoutChange;
 - (id)accessibilityCellForRowAtIndexPath:(id)arg1;
+- (_Bool)_swipeDeletionCommitted;
 - (void)_reuseTableViewSubview:(id)arg1 viewType:(int)arg2;
 - (void)setCountString:(id)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
@@ -130,6 +136,7 @@
 - (_Bool)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
 - (id)indexPathsForRowsInRect:(struct CGRect)arg1;
 - (unsigned long long)_accessibilityAutomationType;
+@property(nonatomic, setter=_accessibilitySetShouldConsiderSwipeDeletionCommitted:) _Bool _accessibilityShouldConsiderSwipeDeletionCommitted;
 - (void)_accessibilitySetUseOpaqueElements:(id)arg1;
 - (id)_accessibilityUseOpaqueElements;
 

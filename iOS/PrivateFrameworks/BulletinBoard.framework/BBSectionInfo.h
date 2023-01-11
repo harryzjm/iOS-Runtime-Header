@@ -9,7 +9,7 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSString;
+@class BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @interface BBSectionInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -27,6 +27,9 @@
     NSString *_factorySectionID;
     NSArray *_dataProviderIDs;
     _Bool _suppressFromSettings;
+    _Bool _isAppClip;
+    _Bool _isModificationAllowed;
+    _Bool _isRestricted;
     _Bool _hideWeeApp;
     NSString *_appName;
     long long _subsectionPriority;
@@ -37,6 +40,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)defaultSectionInfoForType:(long long)arg1;
 + (id)defaultSectionInfoForSection:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(copy, nonatomic) NSArray *dataProviderIDs; // @synthesize dataProviderIDs=_dataProviderIDs;
 @property(copy, nonatomic) NSString *factorySectionID; // @synthesize factorySectionID=_factorySectionID;
@@ -52,10 +56,12 @@
 @property(copy, nonatomic) BBSectionInfoSettings *sectionInfoSettings; // @synthesize sectionInfoSettings=_sectionInfoSettings;
 @property(nonatomic) _Bool suppressFromSettings; // @synthesize suppressFromSettings=_suppressFromSettings;
 @property(nonatomic) long long sectionCategory; // @synthesize sectionCategory=_sectionCategory;
+@property(nonatomic) _Bool isRestricted; // @synthesize isRestricted=_isRestricted;
+@property(nonatomic) _Bool isModificationAllowed; // @synthesize isModificationAllowed=_isModificationAllowed;
+@property(nonatomic) _Bool isAppClip; // @synthesize isAppClip=_isAppClip;
 @property(nonatomic) long long sectionType; // @synthesize sectionType=_sectionType;
 @property(copy, nonatomic) NSString *subsectionID; // @synthesize subsectionID=_subsectionID;
 @property(copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
-- (void).cxx_destruct;
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (id)replacementObjectForCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -68,6 +74,10 @@
 @property(readonly, copy, nonatomic) NSData *iconData;
 @property(nonatomic) unsigned long long bulletinCount;
 @property(nonatomic) _Bool enabled;
+@property(readonly, copy, nonatomic) NSDictionary *stateCapture;
+- (id)_suppressedSettingsList:(unsigned long long)arg1;
+- (void)makeAuthorizationPermanent;
+- (void)deliverQuietly:(_Bool)arg1 changeAuthorizationStatus:(_Bool)arg2;
 - (void)deliverQuietly:(_Bool)arg1;
 - (void)_deliverQuietly:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isDeliveredQuietly;
@@ -90,8 +100,8 @@
 @property(readonly, nonatomic) BBSectionInfoSettings *readableSettings;
 @property(readonly, nonatomic) _Bool usesManagedSettings;
 @property(copy, nonatomic) BBSectionInfoSettings *managedSectionInfoSettings;
-- (_Bool)queryAndUseManagedSettingsForSectionID:(id)arg1;
-- (_Bool)queryAndUseManagedSettings;
+- (void)queryAndUseManagedSettingsForSectionID:(id)arg1;
+- (void)queryAndUseManagedSettings;
 - (void)setEmergencySetting:(long long)arg1;
 - (long long)emergencySetting;
 @property(nonatomic) _Bool showsCustomSettingsLink;
@@ -111,7 +121,9 @@
 - (void)setShowsInNotificationCenter:(_Bool)arg1;
 - (_Bool)showsInNotificationCenter;
 @property(nonatomic) long long notificationCenterSetting;
+@property(nonatomic) NSDate *lastUserGrantedAuthorizationDate;
 @property(nonatomic) long long authorizationStatus;
+@property(nonatomic) NSDate *authorizationExpirationDate;
 @property(nonatomic) _Bool allowsNotifications;
 
 @end

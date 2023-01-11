@@ -15,6 +15,14 @@
     NSMutableDictionary *_settings;
 }
 
++ (void)setAlwaysRequireHardwareVideoEncoder:(_Bool)arg1;
++ (_Bool)alwaysRequireHardwareVideoEncoder;
++ (void)setVideoCompositorDebugMode:(unsigned long long)arg1;
++ (unsigned long long)videoCompositorDebugMode;
++ (void)setRunNeutrinoSynchronously:(_Bool)arg1;
++ (_Bool)runNeutrinoSynchronously;
++ (void)setTileAssemblyCABased:(_Bool)arg1;
++ (_Bool)tileAssemblyCABased;
 + (void)setLogPeakRenderCIUsuage:(_Bool)arg1;
 + (_Bool)logPeakRenderCIUsuage;
 + (void)setUpCacheNodeDirectoryWithComponent:(id)arg1;
@@ -80,9 +88,7 @@
 + (long long)deviceDefaultSampleMode;
 + (void)setDevicePrintRenderer:(_Bool)arg1;
 + (_Bool)devicePrintRenderer;
-+ (void)setDeviceDisableOpenGL:(_Bool)arg1;
 + (_Bool)deviceDisableOpenGL;
-+ (void)setDeviceDisableMetal:(_Bool)arg1;
 + (_Bool)deviceDisableMetal;
 + (void)reset;
 + (id)globalSettings;

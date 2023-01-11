@@ -8,6 +8,7 @@
 
 @class SPAssetCacheClientCache;
 
+__attribute__((visibility("hidden")))
 @interface SPCompanionAssetCache : NSObject
 {
     SPAssetCacheClientCache *_permanentCache;
@@ -15,9 +16,9 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SPAssetCacheClientCache *transientCache; // @synthesize transientCache=_transientCache;
 @property(retain, nonatomic) SPAssetCacheClientCache *permanentCache; // @synthesize permanentCache=_permanentCache;
-- (void).cxx_destruct;
 - (id)keyFromImageData:(id)arg1;
 - (id)dataForImageWithName:(id)arg1;
 - (id)cachedImages;

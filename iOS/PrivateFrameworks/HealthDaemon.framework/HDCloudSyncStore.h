@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDSyncStore-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class CKRecordZoneID, HDProfile, HDSharingPredicate, NSString, NSUUID;
+@class HDProfile, HDSharingPredicate, NSString, NSUUID;
 
 @interface HDCloudSyncStore : NSObject <NSCopying, HDSyncStore>
 {
@@ -24,13 +24,12 @@
     HDProfile *_profile;
     NSString *_sharingIdentifier;
     HDSharingPredicate *_sharingPredicate;
-    CKRecordZoneID *_zoneID;
 }
 
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 sharingIdentifier:(id)arg6 predicate:(id)arg7 error:(id *)arg8;
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 error:(id *)arg6;
 + (void)samplesDeletedInProfile:(id)arg1 byUser:(_Bool)arg2;
-@property(retain, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool syncTombstonesOnly; // @synthesize syncTombstonesOnly=_syncTombstonesOnly;
 @property(readonly, nonatomic) HDSharingPredicate *sharingPredicate; // @synthesize sharingPredicate=_sharingPredicate;
 @property(readonly, copy, nonatomic) NSString *sharingIdentifier; // @synthesize sharingIdentifier=_sharingIdentifier;
@@ -39,7 +38,6 @@
 @property(readonly, copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property(readonly, copy, nonatomic) NSString *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)setExpectedSequenceNumber:(long long)arg1 forSyncEntityClass:(Class)arg2;
 - (long long)expectedSequenceNumberForSyncEntityClass:(Class)arg1;
@@ -58,6 +56,7 @@
 - (_Bool)replaceFrozenAnchorMap:(id)arg1 updateDate:(id)arg2 error:(id *)arg3;
 - (id)persistedStateWithError:(id *)arg1;
 - (_Bool)persistState:(id)arg1 error:(id *)arg2;
+- (id)_syncAnchorMapByStrippingBlacklistedEntities:(id)arg1;
 - (id)getPersistedAnchorMapWithError:(id *)arg1;
 - (_Bool)clearAllSyncAnchorsWithError:(id *)arg1;
 - (_Bool)replacePersistedAnchorMap:(id)arg1 error:(id *)arg2;

@@ -6,28 +6,46 @@
 
 #import <UIKit/UIView.h>
 
-@class MKMapItem, UIImageView, _MKUILabel;
+#import <MapKit/MKActivityObserving-Protocol.h>
+#import <MapKit/MKPhotoBigAttributionViewSubclass-Protocol.h>
+
+@class MKMapItem, NSString, UIActivityIndicatorView, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface MKPhotoBigAttributionView : UIView
+@interface MKPhotoBigAttributionView : UIView <MKPhotoBigAttributionViewSubclass, MKActivityObserving>
 {
     UIImageView *_imageView;
-    _MKUILabel *_firstLineLabel;
-    _MKUILabel *_secondLineLabel;
-    UIView *_labelsView;
     UIView *_backgroundView;
+    _Bool _needsImageLoad;
+    UIActivityIndicatorView *_spinner;
+    long long _context;
     long long _type;
     MKMapItem *_mapItem;
+    UIView *_contentView;
 }
 
++ (id)bigAttributionViewForMapItem:(id)arg1 attributionType:(long long)arg2 isFirstParty:(_Bool)arg3 context:(long long)arg4;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(nonatomic) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
-- (void)updateBackground;
-- (void)setMapItem:(id)arg1 andType:(long long)arg2;
-- (void)updateInfoAttributionString;
+@property(readonly, nonatomic) long long context; // @synthesize context=_context;
+@property(readonly, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)willStartAnimatingActivityIndicatorView;
+- (void)didUpdateMapItem;
+- (void)didUpdateAttributionViewType;
+- (void)didEndAnimatingActivityIndicatorView;
+- (void)updateBackgroundIfNeeded;
+- (void)endAnimatingActivityIndicatorWithError:(id)arg1;
+- (void)beginAnimatingActivityIndicator;
+- (id)initWithContext:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

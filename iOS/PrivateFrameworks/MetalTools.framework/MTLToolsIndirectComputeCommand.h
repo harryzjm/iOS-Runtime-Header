@@ -12,6 +12,7 @@
 {
 }
 
+- (unsigned long long)getOptimizedStatus;
 - (unsigned long long)getCommandType;
 - (void *)getKernelBufferAtIndex:(unsigned long long)arg1;
 - (unsigned long long)getPipelineStateUniqueIdentifier;
@@ -24,12 +25,13 @@
 - (void)concurrentDispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)clearBarrier;
 - (void)setBarrier;
+- (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (id)getImageBlockSize;
 - (_Bool)hasBarrier;
 - (CDStruct_1e3be3a8)getStageInRegion;
 - (unsigned long long)getThreadgroupMemoryLengthAtIndex:(unsigned long long)arg1;
 - (void)concurrentDispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)setComputePipelineState:(id)arg1;
-- (void)acceptVisitor:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

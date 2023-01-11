@@ -8,25 +8,24 @@
 
 #import <ContactsUI/CNPhotoPickerProvider-Protocol.h>
 
-@class CNContact, CNContactViewCache, NSString;
+@class CNVisualIdentity, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerAccountPhotoProvider : NSObject <CNPhotoPickerProvider>
 {
     _Bool _includeUnifiedContactImages;
     NSString *identifier;
-    CNContact *_contact;
-    CNContactViewCache *_contactViewCache;
+    CNVisualIdentity *_visualIdentity;
 }
 
-@property(nonatomic) _Bool includeUnifiedContactImages; // @synthesize includeUnifiedContactImages=_includeUnifiedContactImages;
-@property(readonly, nonatomic) CNContactViewCache *contactViewCache; // @synthesize contactViewCache=_contactViewCache;
-@property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool includeUnifiedContactImages; // @synthesize includeUnifiedContactImages=_includeUnifiedContactImages;
+@property(readonly, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier;
+- (id)providerItemForVisualIdentity:(id)arg1 forSize:(struct CGSize)arg2 scale:(double)arg3 RTL:(_Bool)arg4 renderingQueue:(id)arg5 callbackQueue:(id)arg6 itemDelegate:(id)arg7;
 - (id)loadItemsForSize:(struct CGSize)arg1 scale:(double)arg2 RTL:(_Bool)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5 itemDelegate:(id)arg6;
-- (id)initWithContact:(id)arg1;
-- (id)initWithContact:(id)arg1 contactViewCache:(id)arg2 includeUnifiedContactImages:(_Bool)arg3;
+- (id)initWithVisualIdentity:(id)arg1;
+- (id)initWithVisualIdentity:(id)arg1 includeUnifiedContactImages:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

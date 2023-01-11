@@ -6,19 +6,22 @@
 
 #import <MediaRemote/MRAVDistantExternalDeviceClientProtocol-Protocol.h>
 
-@class MRAVDistantExternalDeviceMetadata, NSObject, NSString, NSXPCConnection, NSXPCListenerEndpoint, _MROriginProtobuf;
+@class MRAVDistantExternalDeviceMetadata, MROrigin, NSNumber, NSObject, NSString, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface MRDistantExternalDevice <MRAVDistantExternalDeviceClientProtocol>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_xpcQueue;
     MRAVDistantExternalDeviceMetadata *_externalDeviceMetadata;
     NSXPCConnection *_hostedExternalDeviceConnection;
     unsigned long long _callbacks;
     unsigned long long _deviceNotifications;
     unsigned int _connectionState;
-    _MROriginProtobuf *_customOrigin;
+    MROrigin *_customOrigin;
     _Bool _isValid;
+    _Bool _hasEverAtteptedToConnectWhileInvalid;
+    NSNumber *_isPaired;
     _Bool _hasEverAttemptedToConnect;
     CDUnknownBlockType _connectionStateCallback;
     NSObject<OS_dispatch_queue> *_connectionStateCallbackQueue;
@@ -30,9 +33,9 @@
     NSObject<OS_dispatch_queue> *_volumeCallbackQueue;
 }
 
-+ (id)_notificationSerialQueue;
 + (id)clientInterface;
 + (id)serviceInterface;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *volumeCallbackQueue; // @synthesize volumeCallbackQueue=_volumeCallbackQueue;
 @property(copy, nonatomic) CDUnknownBlockType volumeCallback; // @synthesize volumeCallback=_volumeCallback;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *customDataCallbackQueue; // @synthesize customDataCallbackQueue=_customDataCallbackQueue;
@@ -42,17 +45,12 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *connectionStateCallbackQueue; // @synthesize connectionStateCallbackQueue=_connectionStateCallbackQueue;
 @property(copy, nonatomic) CDUnknownBlockType connectionStateCallback; // @synthesize connectionStateCallback=_connectionStateCallback;
 @property(readonly, nonatomic) _Bool hasEverAttemptedToConnect; // @synthesize hasEverAttemptedToConnect=_hasEverAttemptedToConnect;
-- (void).cxx_destruct;
-- (void)_updateHostedDeviceDesiredNotifications;
-- (void)_updateHostedDeviceDesiredCallbacks;
-- (void)_onSerialQueue_synchronousLoadExternalDeviceMetadataIfNecessary;
-- (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)_hostedExternalDeviceConnection;
 - (void)hostedExternalDeviceEndpointDidChange:(id)arg1;
 - (void)hostedExternalDeviceVolumeDidChange:(float)arg1 forEndpointWithIdentifier:(id)arg2 forOutputDeviceWithIdentifier:(id)arg3;
 - (void)hostedExternalDeviceDidReceiveCustomData:(id)arg1 withName:(id)arg2;
 - (void)hostedExternalDeviceNameDidChange:(id)arg1;
 - (void)hostedExternalDeviceConnectionStateDidChange:(unsigned int)arg1 withError:(id)arg2;
+- (id)personalOutputDevices;
 - (void)sendButtonEvent:(struct _MRHIDButtonEvent)arg1;
 - (void)ping:(double)arg1 callback:(CDUnknownBlockType)arg2 withQueue:(id)arg3;
 - (void)sendCustomData:(id)arg1 withName:(id)arg2;
@@ -68,17 +66,21 @@
 - (void)setPairingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)unpair;
 - (void)disconnect:(id)arg1;
-- (void)connectWithOptions:(unsigned int)arg1;
+- (void)connectWithOptions:(unsigned int)arg1 userInfo:(id)arg2;
 - (id)customOrigin;
 - (id)deviceInfo;
 - (void)_handleDeviceInfoDidChange:(id)arg1;
 - (_Bool)isUsingSystemPairing;
 - (_Bool)isPaired;
 - (unsigned int)connectionState;
+- (void)setWantsEndpointChangeNotifications:(_Bool)arg1;
+- (_Bool)wantsEndpointChangeNotifications;
 - (void)setWantsOutputDeviceNotifications:(_Bool)arg1;
 - (_Bool)wantsOutputDeviceNotifications;
 - (void)setWantsVolumeNotifications:(_Bool)arg1;
 - (_Bool)wantsVolumeNotifications;
+- (void)setWantsNowPlayingArtworkNotifications:(_Bool)arg1;
+- (_Bool)wantsNowPlayingArtworkNotifications;
 - (void)setWantsNowPlayingNotifications:(_Bool)arg1;
 - (_Bool)wantsNowPlayingNotifications;
 - (id)supportedMessages;
@@ -87,12 +89,12 @@
 - (id)name;
 - (_Bool)isValid;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *listenerEndpoint;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithExternalDeviceListenerEndpoint:(id)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

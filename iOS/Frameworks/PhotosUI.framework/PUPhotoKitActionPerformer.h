@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PUPhotoKitDataSourceManager;
+@class NSArray, PXPhotosDataSource;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoKitActionPerformer
 {
-    PUPhotoKitDataSourceManager *_photoKitDataSourceManager;
+    PXPhotosDataSource *_photosDataSource;
 }
 
 + (_Bool)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
-@property(retain, nonatomic) PUPhotoKitDataSourceManager *photoKitDataSourceManager; // @synthesize photoKitDataSourceManager=_photoKitDataSourceManager;
 - (void).cxx_destruct;
-- (id)_photosDataSourceFromDataSourceManager:(id)arg1;
+@property(retain, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 - (id)_indexPathsInPhotosDataSource:(id)arg1;
 - (void)forceIncludeAssetsInDataSource;
 - (void)stopExcludingAssetsFromDataSource;

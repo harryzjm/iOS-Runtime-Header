@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PPBaseFeedback;
+@class NSArray, NSDate, NSString;
 
 @protocol PPFeedbackProcessing
-- (void)processFeedback:(PPBaseFeedback *)arg1;
+- (void)processfeedbackItems:(NSArray *)arg1 scoringDate:(NSDate *)arg2 clientIdentifier:(NSString *)arg3 clientBundleId:(NSString *)arg4 mappingId:(NSString *)arg5;
 @end
 

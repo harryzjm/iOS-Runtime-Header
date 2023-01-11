@@ -4,34 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
+@class NSArray, NSUUID;
 
 @interface SBTransitionSwitcherModifier
 {
     _Bool _wantsResignActiveAndAsyncRenderingAssertions;
+    _Bool _isTransitioningToSwitcher;
+    NSArray *_appLayoutsToEnsureExist;
     unsigned long long _transitionPhase;
     NSUUID *_transitionID;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *transitionID; // @synthesize transitionID=_transitionID;
 @property(readonly, nonatomic) unsigned long long transitionPhase; // @synthesize transitionPhase=_transitionPhase;
-- (void).cxx_destruct;
 - (id)handleTimerEvent:(id)arg1;
+- (id)handleRemovalEvent:(id)arg1;
+- (id)handleScrollEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)_handleTransitionEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (id)handleInlineTransitionEvent:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (void)_setTransitionPhase:(unsigned long long)arg1;
-- (long long)keyboardSuppressionMode;
+- (id)keyboardSuppressionMode;
 - (_Bool)wantsAsynchronousSurfaceRetentionAssertion;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)sceneDeactivationReason;
-- (_Bool)wantsResignActiveAssertion;
+- (long long)transitionLiveContentRasterizationStyle;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)appLayoutsToResignActive;
+- (_Bool)shouldPerformCrossfadeForReduceMotion;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
-- (long long)layoutUpdateMode;
-- (_Bool)asynchronouslyRendersUntilDelay:(inout double *)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
+- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionDidEnd;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;

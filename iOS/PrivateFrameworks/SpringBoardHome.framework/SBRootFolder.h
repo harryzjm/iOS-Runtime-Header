@@ -9,27 +9,48 @@
 
 @interface SBRootFolder
 {
+    _Bool _supportsTodayList;
     id <SBRootFolderDelegate> _delegate;
     SBHIconModel *_model;
 }
 
 + (_Bool)isRootFolderClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsTodayList; // @synthesize supportsTodayList=_supportsTodayList;
 @property(nonatomic) __weak SBHIconModel *model; // @synthesize model=_model;
 @property(nonatomic) __weak id <SBRootFolderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)enumerateExtraListsUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)isValidListIndex:(unsigned long long)arg1;
+- (void)removeList:(id)arg1;
+- (unsigned long long)hiddenIndexOfList:(id)arg1;
+- (unsigned long long)visibleIndexOfList:(id)arg1;
+- (unsigned long long)indexOfList:(id)arg1;
+- (unsigned long long)_specialIndexOfList:(id)arg1;
+- (id)listAtIndex:(unsigned long long)arg1;
 - (id)folderContainingIndexPath:(id)arg1 relativeIndexPath:(id *)arg2;
 - (_Bool)canAddIconCount:(unsigned long long)arg1 startingAtList:(id)arg2;
-- (id)indexPathForFirstFreeSlotStartingAtList:(id)arg1 avoidingFirstList:(_Bool)arg2;
 - (_Bool)isRootFolder;
 - (id)nodeDescriptionWithPrefix:(id)arg1;
 - (id)nodeIdentifier;
+- (void)_didExplicitlyRemoveHiddenLists:(id)arg1;
+@property(readonly, nonatomic) _Bool containsVisibleWidgetIconExcludingTodayList;
+@property(readonly, nonatomic) _Bool containsWidgetIconExcludingTodayList;
 - (id)icons;
 - (_Bool)canBounceIcon:(id)arg1;
+- (_Bool)isIconAtIndexPathInIgnoredList:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsIgnoredList;
+@property(retain, nonatomic, setter=_setIgnoredList:) SBIconListModel *ignoredList;
+- (_Bool)isIconAtIndexPathInFavoriteTodayList:(id)arg1;
+@property(retain, nonatomic, setter=_setFavoriteTodayList:) SBIconListModel *favoriteTodayList;
+- (_Bool)isIconAtIndexPathInTodayList:(id)arg1;
+@property(retain, nonatomic, setter=_setTodayList:) SBIconListModel *todayList;
+- (_Bool)supportsTodayPage;
 - (_Bool)isIconAtIndexPathInDock:(id)arg1 includingDockFolders:(_Bool)arg2;
 - (_Bool)isIconAtIndexPathInDock:(id)arg1;
 @property(retain, nonatomic, setter=_setDock:) SBIconListModel *dock;
+@property(readonly, nonatomic) _Bool supportsBadging;
 @property(readonly, nonatomic) _Bool supportsDock;
-- (id)_listsForCompaction;
+- (_Bool)_compactsFirstList;
 - (_Bool)canEditDisplayName;
 - (_Bool)canRemoveIcons;
 

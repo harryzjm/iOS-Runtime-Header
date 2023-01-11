@@ -16,6 +16,7 @@
 + (id)_handleIDForHandle:(struct _IMDHandleRecordStruct *)arg1;
 + (id)_contactForHandle:(struct _IMDHandleRecordStruct *)arg1;
 + (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(id)arg4;
++ (id)groupPhotoPathCustomKey;
 + (id)suggestedContactPhotoCustomKey;
 + (id)suggestedContactNameCustomKey;
 

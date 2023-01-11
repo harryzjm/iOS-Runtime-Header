@@ -17,17 +17,22 @@
     struct CGPoint _dismissingViewTouchOffset;
     struct CGRect _originalBounds;
     struct CGPoint _originalCenter;
+    _Bool _initiatedFromBottomEdge;
     _Bool _hasPreservedInputViews;
     _Bool _isDismissing;
+    _Bool _animateGestureCancelationOrFailure;
+    double _dismissalThreshold;
     SBAssistantController *_assistantController;
     long long _dismissalType;
     SBMainWorkspaceTransaction *_currentTransaction;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBMainWorkspaceTransaction *currentTransaction; // @synthesize currentTransaction=_currentTransaction;
 @property(readonly, nonatomic) long long dismissalType; // @synthesize dismissalType=_dismissalType;
 @property(retain, nonatomic) SBAssistantController *assistantController; // @synthesize assistantController=_assistantController;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool animateGestureCancelationOrFailure; // @synthesize animateGestureCancelationOrFailure=_animateGestureCancelationOrFailure;
+@property(nonatomic) double dismissalThreshold; // @synthesize dismissalThreshold=_dismissalThreshold;
 - (void)_cleanupHierarchyForDismissal:(_Bool)arg1;
 - (id)_viewForGesture;
 - (void)_setFluidDismissalState:(id)arg1;
@@ -37,6 +42,7 @@
 - (double)_yOffsetForGestureProgress;
 - (double)_backgroundWeightingForGestureProgress;
 - (double)_scaleForGestureProgress;
+- (double)_backgroundWeightingForDismissal:(_Bool)arg1;
 - (double)_scaleForDismissal;
 - (void)_dismissClientAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)_notificationFeedbackType;
@@ -57,7 +63,7 @@
 - (void)_begin;
 - (void)_didInterruptWithReason:(id)arg1;
 - (_Bool)canInterruptForTransitionRequest:(id)arg1;
-- (id)initWithTransitionRequest:(id)arg1 assistantController:(id)arg2 dismissalType:(long long)arg3;
+- (id)initWithTransitionRequest:(id)arg1 assistantController:(id)arg2 dismissalType:(long long)arg3 initiatedFromBottomEdge:(_Bool)arg4;
 
 @end
 

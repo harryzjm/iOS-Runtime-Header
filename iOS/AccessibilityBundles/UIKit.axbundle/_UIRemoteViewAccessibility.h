@@ -8,8 +8,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilitySetFocusOnElement:(_Bool)arg1;
 - (void)_accessibilityUnregisterRemoteView;
 - (id)accessibilityElements;
 - (void)_accessibilitySetRemoteElementIfNecessary;

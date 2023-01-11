@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, SADataSourceInfo;
 
 @interface SATimerObject
 {
@@ -16,6 +16,8 @@
 @property(copy, nonatomic) NSString *title;
 @property(copy, nonatomic) NSNumber *timerValue;
 @property(copy, nonatomic) NSString *state;
+@property(copy, nonatomic) NSNumber *isFiring;
+@property(retain, nonatomic) SADataSourceInfo *dataSourceInfo;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

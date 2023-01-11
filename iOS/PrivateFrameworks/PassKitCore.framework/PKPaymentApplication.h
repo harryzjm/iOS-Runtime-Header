@@ -9,13 +9,15 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDecimalNumber, NSString, PKFelicaPassProperties, PKTransitPassProperties;
+@class NSArray, NSDecimalNumber, NSSet, NSString, PKFelicaPassProperties, PKTransitPassProperties;
 
 @interface PKPaymentApplication : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _supportsContactlessPayment;
     _Bool _supportsInAppPayment;
+    _Bool _supportsBarcodePayment;
     _Bool _supportsOptionalAuthentication;
+    _Bool _supportsServiceMode;
     _Bool _requiresDeferredAuthorization;
     _Bool _inAppPINRequired;
     _Bool _auxiliary;
@@ -37,16 +39,21 @@
     NSString *_displayName;
     long long _contactlessPriority;
     long long _inAppPriority;
+    NSString *_transactionSourceIdentifier;
     NSString *_appletDataFormat;
     PKTransitPassProperties *_transitProperties;
     NSArray *_supportedTransitNetworkIdentifiers;
+    NSSet *_subcredentials;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)applicationWithProtobuf:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *subcredentials; // @synthesize subcredentials=_subcredentials;
 @property(copy, nonatomic) NSArray *supportedTransitNetworkIdentifiers; // @synthesize supportedTransitNetworkIdentifiers=_supportedTransitNetworkIdentifiers;
 @property(copy, nonatomic) PKTransitPassProperties *transitProperties; // @synthesize transitProperties=_transitProperties;
 @property(copy, nonatomic) NSString *appletDataFormat; // @synthesize appletDataFormat=_appletDataFormat;
+@property(copy, nonatomic) NSString *transactionSourceIdentifier; // @synthesize transactionSourceIdentifier=_transactionSourceIdentifier;
 @property(nonatomic) _Bool supportsInstantFundsIn; // @synthesize supportsInstantFundsIn=_supportsInstantFundsIn;
 @property(nonatomic) long long inAppPriority; // @synthesize inAppPriority=_inAppPriority;
 @property(nonatomic) long long contactlessPriority; // @synthesize contactlessPriority=_contactlessPriority;
@@ -59,9 +66,11 @@
 @property(nonatomic) long long paymentNetworkIdentifier; // @synthesize paymentNetworkIdentifier=_paymentNetworkIdentifier;
 @property(nonatomic) _Bool requiresDeferredAuthorization; // @synthesize requiresDeferredAuthorization=_requiresDeferredAuthorization;
 @property(copy, nonatomic) NSString *appletCurrencyCode; // @synthesize appletCurrencyCode=_appletCurrencyCode;
+@property(nonatomic) _Bool supportsServiceMode; // @synthesize supportsServiceMode=_supportsServiceMode;
 @property(copy, nonatomic) NSArray *automaticSelectionCriteria; // @synthesize automaticSelectionCriteria=_automaticSelectionCriteria;
 @property(copy, nonatomic) NSArray *supportedExpressModes; // @synthesize supportedExpressModes=_supportedExpressModes;
 @property(nonatomic) _Bool supportsOptionalAuthentication; // @synthesize supportsOptionalAuthentication=_supportsOptionalAuthentication;
+@property(nonatomic) _Bool supportsBarcodePayment; // @synthesize supportsBarcodePayment=_supportsBarcodePayment;
 @property(nonatomic) _Bool supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
 @property(nonatomic) _Bool supportsContactlessPayment; // @synthesize supportsContactlessPayment=_supportsContactlessPayment;
 @property(copy, nonatomic) NSString *suspendedReason; // @synthesize suspendedReason=_suspendedReason;
@@ -71,18 +80,17 @@
 @property(copy, nonatomic, setter=setSanitizedDPAN:) NSString *sanitizedDPAN; // @synthesize sanitizedDPAN=_sanitizedDPAN;
 @property(copy, nonatomic, setter=setDPANSuffix:) NSString *dpanSuffix; // @synthesize dpanSuffix=_dpanSuffix;
 @property(copy, nonatomic, setter=setDPANIdentifier:) NSString *dpanIdentifier; // @synthesize dpanIdentifier=_dpanIdentifier;
-- (void).cxx_destruct;
+- (id)asDictionary;
 @property(readonly, nonatomic) NSString *stationCodeProvider;
 @property(readonly, nonatomic) _Bool supportsTransitHistory;
 @property(readonly, nonatomic) _Bool generatesLocalTransactions;
 @property(readonly, nonatomic, getter=isParsedTransitApplication) _Bool parsedTransitApplication;
-@property(readonly, nonatomic) _Bool supportsExpressSuica;
 @property(readonly, nonatomic) _Bool supportsSuica;
 @property(copy, nonatomic) PKFelicaPassProperties *felicaProperties;
 @property(readonly, nonatomic) _Bool supportsTransit;
-@property(readonly, nonatomic) _Bool supportsExpressTransit;
+- (_Bool)supportsAutomaticSelectionForTCI:(id)arg1;
 - (_Bool)supportsExpressMode:(id)arg1;
-- (_Bool)supportsExpressForAutomaticPresentationTechnologyType:(long long)arg1;
+- (_Bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (_Bool)supportsExpress;
 - (_Bool)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;
 - (_Bool)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;

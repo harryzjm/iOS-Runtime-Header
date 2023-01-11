@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 @class CATOperationQueue, NSArray;
 
@@ -17,11 +17,11 @@
 }
 
 + (id)sequentialOperationWithOperations:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CATOperationQueue *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSArray *operations; // @synthesize operations=_operations;
 @property(nonatomic) unsigned long long frontOfQueue; // @synthesize frontOfQueue=_frontOfQueue;
 @property(retain, nonatomic) CATOperation *failedOperation; // @synthesize failedOperation=_failedOperation;
-- (void).cxx_destruct;
 - (void)frontOperationDidFinish:(id)arg1;
 - (void)enqueueFront;
 - (void)cancel;

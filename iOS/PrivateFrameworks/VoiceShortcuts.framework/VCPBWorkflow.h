@@ -16,7 +16,7 @@
     unsigned long long _integerLastMigratedClientVersion;
     unsigned long long _integerMinimumClientVersion;
     double _modificationDate;
-    NSData *_accessResourcePermissionStateData;
+    NSData *_accessResourcePerWorkflowStateData;
     NSData *_actionsData;
     unsigned int _iconColor;
     unsigned int _iconGlyph;
@@ -26,6 +26,7 @@
     NSString *_minimumClientVersion;
     NSString *_name;
     int _remoteQuarantineStatus;
+    NSString *_subtitle;
     NSMutableArray *_workflowTypes;
     struct {
         unsigned int creationDate:1;
@@ -40,7 +41,9 @@
 
 + (Class)inputClassesType;
 + (Class)workflowTypesType;
-@property(retain, nonatomic) NSData *accessResourcePermissionStateData; // @synthesize accessResourcePermissionStateData=_accessResourcePermissionStateData;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(retain, nonatomic) NSData *accessResourcePerWorkflowStateData; // @synthesize accessResourcePerWorkflowStateData=_accessResourcePerWorkflowStateData;
 @property(retain, nonatomic) NSString *lastMigratedClientVersion; // @synthesize lastMigratedClientVersion=_lastMigratedClientVersion;
 @property(retain, nonatomic) NSString *minimumClientVersion; // @synthesize minimumClientVersion=_minimumClientVersion;
 @property(nonatomic) unsigned long long integerLastMigratedClientVersion; // @synthesize integerLastMigratedClientVersion=_integerLastMigratedClientVersion;
@@ -54,7 +57,6 @@
 @property(nonatomic) unsigned int iconGlyph; // @synthesize iconGlyph=_iconGlyph;
 @property(nonatomic) unsigned int iconColor; // @synthesize iconColor=_iconColor;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -64,11 +66,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSubtitle;
 - (int)StringAsRemoteQuarantineStatus:(id)arg1;
 - (id)remoteQuarantineStatusAsString:(int)arg1;
 @property(nonatomic) _Bool hasRemoteQuarantineStatus;
 @property(nonatomic) int remoteQuarantineStatus; // @synthesize remoteQuarantineStatus=_remoteQuarantineStatus;
-@property(readonly, nonatomic) _Bool hasAccessResourcePermissionStateData;
+@property(readonly, nonatomic) _Bool hasAccessResourcePerWorkflowStateData;
 @property(readonly, nonatomic) _Bool hasLastMigratedClientVersion;
 @property(readonly, nonatomic) _Bool hasMinimumClientVersion;
 @property(nonatomic) _Bool hasIntegerLastMigratedClientVersion;

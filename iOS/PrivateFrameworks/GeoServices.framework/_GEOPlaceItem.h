@@ -6,7 +6,7 @@
 
 #import <GeoServices/GEOMapItem-Protocol.h>
 
-@class GEOAddress, GEOAddressObject, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
+@class GEOAddress, GEOAddressObject, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL, geo_isolater;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     GEOPlaceResult *_placeResult;
     GEOPlace *_place;
+    geo_isolater *_lazyIvarIsolater;
     GEOAddressObject *_addressObject;
 }
 
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_placecardLayoutConfiguration) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
 @property(readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
 @property(readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
+@property(readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property(readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
 @property(readonly, nonatomic, getter=_messageLink) GEOMessageLink *messageLink;
 @property(readonly, nonatomic, getter=_featureLink) GEORestaurantFeaturesLink *featureLink;
@@ -139,10 +141,13 @@ __attribute__((visibility("hidden")))
 - (id)initWithPlaceResult:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic, getter=_alternateSearchableNames) NSArray *alternateSearchableNames;
 @property(readonly, nonatomic, getter=_annotatedItemList) id <GEOAnnotatedItemList> annotatedItemList;
+@property(readonly, nonatomic, getter=_appleRatings) NSArray *appleRatings;
 @property(readonly, nonatomic, getter=_brandMUID) unsigned long long brandMUID;
 @property(readonly, nonatomic, getter=_browseCategories) NSArray *browseCategories;
 @property(readonly, nonatomic, getter=_businessHours) NSArray *businessHours;
+@property(readonly, nonatomic, getter=_canDownloadMorePhotos) _Bool canDownloadMorePhotos;
 @property(readonly, nonatomic, getter=_childItems) NSArray *childItems;
 @property(readonly, nonatomic, getter=_containedPlace) GEOMapItemContainedPlace *containedPlace;
 @property(readonly, copy) NSString *debugDescription;
@@ -156,20 +161,27 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasDisplayMinZoom;
 @property(readonly, nonatomic, getter=_hasGroundViewLocationId) _Bool hasGroundViewLocationId;
 @property(readonly, nonatomic, getter=_hasLinkedServices) _Bool hasLinkedServices;
+@property(readonly, nonatomic, getter=_hasPlaceQuestionnaire) _Bool hasPlaceQuestionnaire;
 @property(readonly, nonatomic) _Bool hasVenueCapacity;
 @property(readonly, nonatomic, getter=_hasVenueFeatureType) _Bool hasVenueFeatureType;
 @property(readonly, nonatomic, getter=_hasWifiFingerprintConfidence) _Bool hasWifiFingerprintConfidence;
 @property(readonly, nonatomic, getter=_hasWifiFingerprintLabelStatusCode) _Bool hasWifiFingerprintLabelStatusCode;
 @property(readonly, nonatomic, getter=_hasWifiFingerprintLabelType) _Bool hasWifiFingerprintLabelType;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic, getter=_identifierHistory) NSArray *identifierHistory;
 @property(readonly, nonatomic, getter=_isInLinkedPlaceRelationship) _Bool inLinkedPlaceRelationship;
 @property(readonly, nonatomic, getter=_isStandaloneBrand) _Bool isStandAloneBrand;
 @property(readonly, nonatomic, getter=_isTransitDisplayFeature) _Bool isTransitDisplayFeature;
+@property(readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
+@property(readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
 @property(readonly, nonatomic, getter=_linkedServices) NSArray *linkedServices;
 @property(readonly, nonatomic, getter=_mapsCategoryId) NSString *mapsCategoryId;
 @property(readonly, nonatomic, getter=_muninViewState) GEOMuninViewState *muninViewState;
+@property(readonly, nonatomic, getter=_overallAppleRating) GEOAppleRating *overallRating;
+@property(readonly, nonatomic, getter=_placeCollectionsIds) NSArray *placeCollectionsIds;
 @property(readonly, nonatomic, getter=_placeDisplayStyle) int placeDisplayStyle;
 @property(readonly, nonatomic, getter=_placeDisplayType) int placeDisplayType;
+@property(readonly, nonatomic, getter=_placeQuestionnaire) GEOPlaceQuestionnaire *placeQuestionnaire;
 @property(readonly, nonatomic, getter=_poiCategory) NSString *poiCategory;
 @property(readonly, nonatomic) NSString *secondaryName;
 @property(readonly, nonatomic) NSString *secondarySpokenName;
@@ -178,6 +190,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_storefrontInfo) GEOStorefrontInfo *storefrontInfo;
 @property(readonly, nonatomic, getter=_storefrontPresentationInfo) GEOStorefrontPresentationInfo *storefrontPresentationInfo;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic, getter=_supportsAppleRatings) _Bool supportsAppleRatings;
+@property(readonly, nonatomic, getter=_totalPhotoCount) unsigned long long totalPhotoCount;
 @property(readonly, nonatomic) long long venueCapacity;
 @property(readonly, nonatomic, getter=_venueFeatureType) int venueFeatureType;
 @property(readonly, nonatomic, getter=_venueInfo) id <GEOMapItemVenueInfo> venueInfo;

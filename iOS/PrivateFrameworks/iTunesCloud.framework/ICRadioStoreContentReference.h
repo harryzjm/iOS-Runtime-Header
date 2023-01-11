@@ -4,24 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iTunesCloud/ICRadioContentReferenceContainable-Protocol.h>
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
-@interface ICRadioStoreContentReference <NSCopying, NSSecureCoding>
+@interface ICRadioStoreContentReference <ICRadioContentReferenceContainable, NSCopying, NSSecureCoding>
 {
+    NSString *_containerID;
     NSNumber *_storeIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSNumber *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSNumber *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
+@property(copy, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)rawContentDictionary;
 - (id)matchDictionary;
 - (id)initWithStoreIdentifier:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

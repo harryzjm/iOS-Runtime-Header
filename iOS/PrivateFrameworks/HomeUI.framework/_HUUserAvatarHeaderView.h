@@ -6,29 +6,36 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class ACAccountStore, HUContactView, HUSplitAccountHeaderTableView, NSArray, NSAttributedString;
-@protocol HUSplitAccountDelegate;
+@class ACAccountStore, HUContactView, HUMultiUserTokenFixTableView, HUSplitAccountHeaderTableView, NAFuture, NSArray, NSAttributedString;
+@protocol HUMediaAccountDelegate;
 
 @interface _HUUserAvatarHeaderView : UITableViewHeaderFooterView
 {
     HUContactView *_contactView;
     HUSplitAccountHeaderTableView *_splitAccountHeaderView;
+    HUMultiUserTokenFixTableView *_multiUserTokenFixHeaderView;
     ACAccountStore *_accountStore;
     NSArray *_layoutConstraints;
-    id <HUSplitAccountDelegate> _splitAccountDelegate;
+    id <HUMediaAccountDelegate> _mediaAccountDelegate;
+    NAFuture *_mediaAccountFuture;
 }
 
-@property(nonatomic) __weak id <HUSplitAccountDelegate> splitAccountDelegate; // @synthesize splitAccountDelegate=_splitAccountDelegate;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NAFuture *mediaAccountFuture; // @synthesize mediaAccountFuture=_mediaAccountFuture;
+@property(nonatomic) __weak id <HUMediaAccountDelegate> mediaAccountDelegate; // @synthesize mediaAccountDelegate=_mediaAccountDelegate;
 @property(retain, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
 @property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property(retain, nonatomic) HUMultiUserTokenFixTableView *multiUserTokenFixHeaderView; // @synthesize multiUserTokenFixHeaderView=_multiUserTokenFixHeaderView;
 @property(retain, nonatomic) HUSplitAccountHeaderTableView *splitAccountHeaderView; // @synthesize splitAccountHeaderView=_splitAccountHeaderView;
 @property(readonly, nonatomic) HUContactView *contactView; // @synthesize contactView=_contactView;
-- (void).cxx_destruct;
 - (id)_keyDescriptors;
 @property(retain, nonatomic) NSAttributedString *message;
 - (void)dismissSplitAccountView;
 - (void)showSplitAccountViewIfNeeded;
 - (void)setAccounts:(id)arg1 forHome:(id)arg2;
+- (void)dismissMultiUserTokenFixUI;
+- (void)presentMultiUserTokenFixUIForMediaAccount:(id)arg1 inHome:(id)arg2;
+- (void)dealloc;
 - (id)initWithUserHandle:(id)arg1 home:(id)arg2 delegate:(id)arg3;
 
 @end

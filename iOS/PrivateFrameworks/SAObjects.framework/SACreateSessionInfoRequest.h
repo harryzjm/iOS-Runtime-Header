@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSNumber, NSString;
 
 @interface SACreateSessionInfoRequest <SAServerBoundCommand>
 {
@@ -16,6 +16,7 @@
 + (id)createSessionInfoRequest;
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSData *sessionInfoRequest;
+@property(copy, nonatomic) NSNumber *deviceAuthVersion;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

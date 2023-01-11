@@ -21,9 +21,12 @@
     HKQuantity *_averageValue;
     HKQuantity *_duration;
     NSArray *_histogramCounts;
+    NSArray *_contextIdentifiers;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *contextIdentifiers; // @synthesize contextIdentifiers=_contextIdentifiers;
 @property(readonly, nonatomic) NSArray *histogramCounts; // @synthesize histogramCounts=_histogramCounts;
 @property(readonly, nonatomic) HKQuantity *duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic) HKQuantity *averageValue; // @synthesize averageValue=_averageValue;
@@ -32,10 +35,10 @@
 @property(readonly, nonatomic) HKQuantity *minimumBucketValue; // @synthesize minimumBucketValue=_minimumBucketValue;
 @property(readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 minimumBucketValue:(id)arg3 minimumValue:(id)arg4 maximumValue:(id)arg5 averageValue:(id)arg6 duration:(id)arg7 histogramCounts:(id)arg8 contextIdentifiers:(id)arg9;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 minimumBucketValue:(id)arg3 minimumValue:(id)arg4 maximumValue:(id)arg5 averageValue:(id)arg6 duration:(id)arg7 histogramCounts:(id)arg8;
 
 @end

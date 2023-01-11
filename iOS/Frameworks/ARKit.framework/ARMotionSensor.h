@@ -16,15 +16,8 @@
     id <ARSensorDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <ARSensorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)setInterval:(double)arg1;
-- (void)stop;
-- (void)start;
-- (double)preferredInterval;
-- (unsigned long long)providedDataTypes;
-- (void)dealloc;
-- (id)initWithMotionManager:(id)arg1;
+@property(nonatomic) __weak id <ARSensorDelegate> delegate; // @synthesize delegate=_delegate;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

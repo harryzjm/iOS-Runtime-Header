@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(retain) CIImage *inputShiftmapImage; // @synthesize inputShiftmapImage;
 @property(retain) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
+- (id)unifiedRenderingOutputImage:(struct CGImageMetadata *)arg1;
 - (id)blurMapV4:(id)arg1 shiftmap:(id)arg2 alphaImage:(id)arg3 hairImage:(id)arg4;
 - (id)blurMapV3:(id)arg1 shiftmap:(id)arg2 alphaImage:(id)arg3;
 - (id)refineShiftMapV3WithMainImage:(id)arg1 shiftmap:(id)arg2 lensModel:(id)arg3;

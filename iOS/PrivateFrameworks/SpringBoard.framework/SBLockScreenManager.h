@@ -22,8 +22,8 @@
 #import <SpringBoard/SBUILockStateProvider-Protocol.h>
 #import <SpringBoard/SBWallpaperObserver-Protocol.h>
 
-@class CSCoverSheetViewController, NSMutableDictionary, NSMutableSet, NSString, SBCoverSheetBiometricResourceObserver, SBFAuthenticationAssertion, SBFUserAuthenticationController, SBIdleTimerCoordinatorHelper, SBLiftToWakeManager, SBLockScreenAutoUnlockAggregateRule, SBLockScreenBiometricAuthenticationCoordinator, SBLockScreenDisabledAssertionManager, SBLockScreenOrientationManager, SBLockScreenUnlockRequest, SBPasscodeEntryTransientOverlayViewController, SBPearlInterlockObserver, SBSRemoteAlertHandle, SBTapToWakeController, UINotificationFeedbackGenerator;
-@protocol SBFLockOutStatusProvider, SBHomeButtonShowPasscodeRecognizer, SBHomeButtonSuppressAfterUnlockRecognizer, SBLockScreenEnvironment, SBNotificationDestination;
+@class CSCoverSheetViewController, NSMutableDictionary, NSMutableSet, NSString, SBCoverSheetBiometricResourceObserver, SBFAuthenticationAssertion, SBFMouseButtonDownGestureRecognizer, SBFUserAuthenticationController, SBIdleTimerCoordinatorHelper, SBLiftToWakeManager, SBLockScreenAutoUnlockAggregateRule, SBLockScreenBiometricAuthenticationCoordinator, SBLockScreenDisabledAssertionManager, SBLockScreenOrientationManager, SBLockScreenUnlockRequest, SBPasscodeEntryTransientOverlayViewController, SBPearlInterlockObserver, SBSRemoteAlertHandle, SBTapToWakeController, UINotificationFeedbackGenerator;
+@protocol BSInvalidatable, SBFLockOutStatusProvider, SBHomeButtonShowPasscodeRecognizer, SBHomeButtonSuppressAfterUnlockRecognizer, SBLockScreenEnvironment, SBNotificationDestination;
 
 @interface SBLockScreenManager : NSObject <BSDescriptionProviding, SBPasscodeEntryTransientOverlayViewControllerDelegate, SBFPrivateAuthenticationObserver, CSCoverSheetViewControllerDelegate, CSWallpaperColorProvider, SBLockScreenBiometricAuthenticationCoordinatorDelegate, SBHomeButtonShowPasscodeRecognizerDelegate, SBHomeButtonSuppressAfterUnlockRecognizerDelegate, SBWallpaperObserver, SBCoverSheetPresentationDelegate, SBUILockStateProvider, SBTapToWakeDelegate, SBSRemoteAlertHandleObserver, SBIdleTimerProviding, SBIdleTimerCoordinating>
 {
@@ -54,6 +54,7 @@
     SBFUserAuthenticationController *_userAuthController;
     SBLiftToWakeManager *_liftToWakeManager;
     SBTapToWakeController *_tapToWakeController;
+    SBFMouseButtonDownGestureRecognizer *_mouseButtonDownGesture;
     NSMutableDictionary *_mesaCoordinatorDisabledAssertions;
     NSMutableDictionary *_mesaWalletPreArmDisabledAssertions;
     NSMutableSet *_mesaWalletPreArmDisabledReasons;
@@ -61,6 +62,8 @@
     NSMutableDictionary *_mesaUnlockingDisabledAssertions;
     SBIdleTimerCoordinatorHelper *_idleTimerCoordinatorHelper;
     UINotificationFeedbackGenerator *_authenticationFeedbackGenerator;
+    id <BSInvalidatable> _bannerSuppressionAssertion;
+    id <BSInvalidatable> _pipInterruptionAssertion;
     _Bool _isWaitingToLockUI;
     SBLockScreenOrientationManager *_lockScreenOrientationManager;
     CDUnknownBlockType _unlockActionBlock;
@@ -69,6 +72,7 @@
 + (id)sharedInstanceIfExists;
 + (id)sharedInstance;
 + (id)_sharedInstanceCreateIfNeeded:(_Bool)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType unlockActionBlock; // @synthesize unlockActionBlock=_unlockActionBlock;
 @property(readonly) _Bool isWaitingToLockUI; // @synthesize isWaitingToLockUI=_isWaitingToLockUI;
 @property(readonly, nonatomic) SBLockScreenOrientationManager *lockScreenOrientationManager; // @synthesize lockScreenOrientationManager=_lockScreenOrientationManager;
@@ -79,7 +83,6 @@
 @property(nonatomic, getter=isUIUnlocking) _Bool UIUnlocking; // @synthesize UIUnlocking=_uiUnlocking;
 @property(readonly) _Bool isUILocked; // @synthesize isUILocked=_isUILocked;
 @property(readonly, nonatomic) id <SBLockScreenEnvironment> lockScreenEnvironment; // @synthesize lockScreenEnvironment=_lockScreenEnvironment;
-- (void).cxx_destruct;
 - (void)_emulateInterstitialPasscodePresentation;
 - (_Bool)_shouldEmulateInterstitialPresentation;
 - (void)wallpaperDidChangeForVariant:(long long)arg1;
@@ -131,6 +134,7 @@
 - (void)_prepareWallpaperForStaticMode;
 - (void)_prepareWallpaperForInteractiveMode;
 - (void)_evaluateWallpaperMode;
+- (void)_wakeScreenForMouseButtonDown:(id)arg1;
 - (void)_setHomeButtonSuppressAfterUnlockRecognizer:(id)arg1;
 - (void)_setHomeButtonShowPasscodeRecognizer:(id)arg1;
 - (void)updateSpringBoardStatusBarForLockScreenTeardown;
@@ -138,6 +142,7 @@
 - (_Bool)unlockWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_isPasscodeVisible;
 - (_Bool)isPasscodeEntryTransientOverlayVisible;
+- (_Bool)_specifiesTransientPresentationForMode:(long long)arg1;
 - (_Bool)_setPasscodeVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setPasscodeVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)_isUnlockDisabled;
@@ -154,10 +159,10 @@
 - (void)_setUILocked:(_Bool)arg1;
 - (void)_createAuthenticationAssertion;
 - (void)_clearAuthenticationLockAssertion;
-- (void)_relockUIForButtonlikeSource:(int)arg1 afterCall:(_Bool)arg2;
+- (void)_relockUIForButtonlikeSource:(int)arg1;
 - (void)_disconnectActiveCallIfNeededFromSource:(int)arg1;
 - (_Bool)_shouldDisconnectCallWhenLockingForActiveAudioRoute;
-- (void)_activateLockScreenAnimated:(_Bool)arg1 animationProvider:(CDUnknownBlockType)arg2 automatically:(_Bool)arg3 inScreenOffMode:(_Bool)arg4 dimInAnimation:(_Bool)arg5 dismissNotificationCenter:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_activateLockScreenAnimated:(_Bool)arg1 animationProvider:(CDUnknownBlockType)arg2 automatically:(_Bool)arg3 inScreenOffMode:(_Bool)arg4 dismissNotificationCenter:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_setMesaAutoUnlockingDisabled:(_Bool)arg1 forReason:(id)arg2;
 - (void)_setMesaCoordinatorDisabled:(_Bool)arg1 forReason:(id)arg2;
 - (void)_setWalletPreArmDisabled:(_Bool)arg1 forReason:(id)arg2;
@@ -177,6 +182,8 @@
 - (double)contrastForCurrentWallpaper;
 - (id)averageColorForCurrentWallpaperInScreenRect:(struct CGRect)arg1;
 - (id)averageColorForCurrentWallpaper;
+- (void)coverSheetViewController:(id)arg1 setMesaUnlockingDisabled:(_Bool)arg2 forReason:(id)arg3;
+- (void)coverSheetViewControllerShouldDismissContextMenu:(id)arg1;
 - (void)coverSheetViewController:(id)arg1 unlockWithRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)coverSheetViewController:(id)arg1 requestsTouchIDDisabled:(_Bool)arg2 forReason:(id)arg3;
 - (void)coverSheetViewControllerIrisPlayingDidFinish:(id)arg1;

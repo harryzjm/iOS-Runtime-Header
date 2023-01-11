@@ -21,10 +21,10 @@
 + (_Bool)supportsSecureCoding;
 + (id)getVisitsFromVisitsDescriptionData:(id)arg1;
 + (id)visitsDescriptionDataAtPath:(id)arg1;
-@property(readonly) NSArray *expectedVisits; // @synthesize expectedVisits=_expectedVisits;
-@property(readonly) RTLocation *endLocation; // @synthesize endLocation=_endLocation;
-@property(readonly) RTLocation *startLocation; // @synthesize startLocation=_startLocation;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *expectedVisits; // @synthesize expectedVisits=_expectedVisits;
+@property(readonly, nonatomic) RTLocation *endLocation; // @synthesize endLocation=_endLocation;
+@property(readonly, nonatomic) RTLocation *startLocation; // @synthesize startLocation=_startLocation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

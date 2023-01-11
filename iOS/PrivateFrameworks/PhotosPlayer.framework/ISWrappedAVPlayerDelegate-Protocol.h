@@ -9,7 +9,6 @@
 @class AVPlayerItem, ISWrappedAVPlayer;
 
 @protocol ISWrappedAVPlayerDelegate <NSObject>
-- (void)avPlayerDidDeallocate;
 - (void)avPlayer:(ISWrappedAVPlayer *)arg1 itemDidPlayToEnd:(AVPlayerItem *)arg2;
 @end
 

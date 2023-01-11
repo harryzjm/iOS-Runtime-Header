@@ -24,17 +24,15 @@
     NSString *_fullPath;
 }
 
-+ (id)log;
+- (void).cxx_destruct;
 @property _Bool setupIsComplete; // @synthesize setupIsComplete=_setupIsComplete;
 @property(readonly, nonatomic) NSString *fullPath; // @synthesize fullPath=_fullPath;
 @property(readonly, nonatomic) NSString *databaseName; // @synthesize databaseName=_databaseName;
 @property(readonly, nonatomic) NSString *basePath; // @synthesize basePath=_basePath;
 @property(readonly, nonatomic) EDProtectedDatabasePersistence *protectedDatabasePersistence; // @synthesize protectedDatabasePersistence=_protectedDatabasePersistence;
-@property(readonly, nonatomic) EDPersistenceDatabaseConnectionPool *connectionPool; // @synthesize connectionPool=_connectionPool;
 @property(readonly, nonatomic) EFSQLPropertyMapper *propertyMapper; // @synthesize propertyMapper=_propertyMapper;
 @property(readonly, nonatomic) EFSQLSchema *protectedSchema; // @synthesize protectedSchema=_protectedSchema;
 @property(readonly, nonatomic) EFSQLSchema *schema; // @synthesize schema=_schema;
-- (void).cxx_destruct;
 - (id)urlForDatabasePath:(id)arg1 type:(long long)arg2;
 - (id)urlForDatabasePath:(id)arg1 type:(long long)arg2 fileProtection:(id)arg3;
 - (id)fileProtectionForDatabaseType:(long long)arg1;
@@ -47,7 +45,7 @@
 - (id)checkOutConnectionIsWriter:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isNestedDatabaseCall;
 - (void)closeAllConnections;
-- (_Bool)performBlock:(CDUnknownBlockType)arg1 isWriter:(_Bool)arg2 useTransaction:(_Bool)arg3;
+- (_Bool)performWithOptions:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)performDatabaseSetupUsingTransaction:(_Bool)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)performWriteBlock:(CDUnknownBlockType)arg1;
 - (_Bool)performReadBlock:(CDUnknownBlockType)arg1;

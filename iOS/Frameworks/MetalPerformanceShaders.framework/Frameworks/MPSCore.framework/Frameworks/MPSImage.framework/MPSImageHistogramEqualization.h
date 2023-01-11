@@ -18,7 +18,7 @@
     _Bool encodeTransform;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)encodeTransformToCommandBuffer:(id)arg1 sourceTexture:(id)arg2 histogram:(id)arg3 histogramOffset:(unsigned long long)arg4;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

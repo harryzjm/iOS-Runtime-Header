@@ -6,16 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <HeroAppPredictionClient/ATXHeroAppPredictionXPCInterface-Protocol.h>
+
 @class NSXPCConnection;
 
-@interface ATXHeroAppPredictionClient : NSObject
+@interface ATXHeroAppPredictionClient : NSObject <ATXHeroAppPredictionXPCInterface>
 {
     NSXPCConnection *_xpcConnection;
 }
 
 - (void).cxx_destruct;
-- (void)invalidatePredictionsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)donateHeroAppPredictionsWithBundleIds:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)openAppClipWithHeroAppPrediction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)feedbackScoreForAppClipWithHeroAppPrediction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addHardRejectForAppClipWithHeroAppPrediction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addSoftRejectForAppClipWithHeroAppPrediction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addConfirmForAppClipWithHeroAppPrediction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)donateHeroAppPredictions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 

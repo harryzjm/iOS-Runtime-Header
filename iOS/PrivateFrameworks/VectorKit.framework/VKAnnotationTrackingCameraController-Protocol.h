@@ -13,8 +13,8 @@
 @property(readonly, nonatomic) _Bool isAnimatingToTrackAnnotation;
 @property(readonly, nonatomic) id <VKTrackableAnnotation> trackingAnnotation;
 @property(nonatomic) long long annotationTrackingHeadingAnimationDisplayRate;
-@property(nonatomic) long long annotationTrackingZoomStyle;
+@property(nonatomic) CDStruct_211b8904 annotationTrackingBehavior;
 - (void)stopTrackingAnnotation;
-- (void)startTrackingAnnotation:(id <VKTrackableAnnotation>)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)startTrackingAnnotation:(id <VKTrackableAnnotation>)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3 duration:(double)arg4 timingFunction:(float (^)(float))arg5;
 @end
 

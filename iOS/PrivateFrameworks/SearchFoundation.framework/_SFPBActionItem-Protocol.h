@@ -10,6 +10,11 @@
 
 @protocol _SFPBActionItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int directionsMode;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute;
+@property(retain, nonatomic) _SFPBPunchout *customDirectionsPunchout;
+@property(copy, nonatomic) NSString *interactionContentType;
+@property(copy, nonatomic) NSString *universalLibraryID;
 @property(nonatomic) int mediaEntityType;
 @property(copy, nonatomic) NSString *persistentID;
 @property(retain, nonatomic) _SFPBURL *messageURL;

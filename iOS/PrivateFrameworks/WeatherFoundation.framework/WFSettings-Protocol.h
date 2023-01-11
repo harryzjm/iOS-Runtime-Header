@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSObject-Protocol.h>
 
-@class NSSet, NSString;
+@class NSSet, NSString, NSURL, WFWeatherEventsConfig;
 
-@protocol WFSettings <NSObject>
+@protocol WFSettings <NSObject, NSCopying>
+@property(readonly, nonatomic) double privateUserIdentifierResetTimeInterval;
+@property(readonly, nonatomic) double userIdentifierResetTimeInterval;
+@property(readonly, nonatomic) float telemetrySamplingRate;
+@property(readonly, nonatomic) float dataSamplingRate;
+@property(readonly, nonatomic) NSURL *appAnalyticsEndpointUrl;
+@property(readonly, nonatomic) WFWeatherEventsConfig *weatherEventsConfig;
 @property(readonly, nonatomic) unsigned long long locationNumDecimalsOfPrecision;
 @property(readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds;
 @property(readonly, nonatomic) unsigned long long networkFailedAttemptsLimit;

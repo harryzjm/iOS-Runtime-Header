@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDAnalyticsSubmissionCoordinatorDelegate-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class HDProfile, NSMutableArray, NSMutableDictionary, NSString, _HDAWDPeriodicAction;
 @protocol OS_dispatch_queue;
 
-@interface HDAWDSubmissionManager : NSObject <HDHealthDaemonReadyObserver, HDDiagnosticObject>
+@interface HDAWDSubmissionManager : NSObject <HDHealthDaemonReadyObserver, HDDiagnosticObject, HDAnalyticsSubmissionCoordinatorDelegate>
 {
     HDProfile *_profile;
     NSMutableDictionary *_serverConnectionsByComponentId;
@@ -24,16 +25,25 @@
     CDUnknownBlockType _testHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType testHandler; // @synthesize testHandler=_testHandler;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
 - (_Bool)_computeAndSubmitSleepAlarmStatistics:(_Bool)arg1;
 - (id)_sleepConsistencyEventForMonthPriorToDate:(id)arg1 calendar:(id)arg2;
 - (id)_statisticsForTimeDeltas:(id)arg1;
 - (_Bool)_computeAndSubmitHeartDailyAnalyticsWithAction:(id)arg1 force:(_Bool)arg2;
 - (id)_generateHeartDailyAnalyticsWithStartDate:(id)arg1 endDate:(id)arg2;
+- (void)_resetMobileAssetsDownloadedPast24Hours;
+- (long long)_countMobileAssetsDownloadedPast24Hours;
+- (void)_resetCountAnalyzedTachogramsPast24Hours;
+- (long long)_countAnalyzedTachogramsPast24Hours;
+- (long long)_countActiveEnergySamplesBetweenStartDate:(id)arg1 endDate:(id)arg2;
+- (id)_ecgAlgorithmVersion;
+- (_Bool)_isBradycardiaDetectionEnabled;
+- (_Bool)_isTachycardiaDetectionEnabled;
 - (id)_ecgClassificationsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_aFibSamplesBetweenStartDate:(id)arg1 endDate:(id)arg2;
+- (long long)_countRecordedTachogramsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (_Bool)_computeAndSubmitSleepAlarmDailyReportWithAction:(id)arg1 force:(_Bool)arg2;
 - (id)_sleepNightEventFromSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 calendar:(id)arg4;
 - (id)_sleepSamplesBeforeDate:(id)arg1 days:(long long)arg2 startDate:(id *)arg3 endDate:(id *)arg4 calendar:(id)arg5;
@@ -41,13 +51,14 @@
 - (id)motionToken;
 - (id)_exerciseMinuteHoursFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
 - (_Bool)_enumerateAppleStandHoursFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-- (_Bool)_activitySummaryForActivitySummaryIndex:(long long)arg1 activitySummaryOut:(id *)arg2 error:(id *)arg3;
-- (id)_newActivitySummaryQueryHelperWithFilter:(id)arg1 initialResultsHandler:(CDUnknownBlockType)arg2;
+- (id)_activitySummaryForActivityCacheIndex:(long long)arg1 error:(id *)arg2;
 - (id)_hourlyStatisticsCollectionForStartDate:(id)arg1 endDate:(id)arg2 quantityType:(id)arg3 statisticsOptions:(unsigned long long)arg4 error:(id *)arg5;
+- (void)reportDailyAnalyticsWithCoordinator:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)aggregateDatabaseSizeStats:(id)arg1;
 - (_Bool)_computeAndSubmitDatabaseStatsMetric:(_Bool)arg1;
 - (_Bool)_addRowCountDeltaToEvent:(id)arg1 profile:(id)arg2 currentDate:(id)arg3;
 - (_Bool)_updateDatabaseStatsEvent:(id)arg1 profile:(id)arg2 currentDate:(id)arg3;
-- (id)_updateMonthDeltaToInt64:(long long)arg1 forKey:(id)arg2 profile:(id)arg3 currentDate:(id)arg4 error:(id *)arg5;
+- (id)_updateDeltaToInt64:(long long)arg1 forKey:(id)arg2 profile:(id)arg3 currentDate:(id)arg4 timeInterval:(double)arg5 error:(id *)arg6;
 - (_Bool)_setInt64:(long long)arg1 keyPrefix:(id)arg2 profile:(id)arg3 date:(id)arg4 error:(id *)arg5;
 - (long long)_int64ForKeyPrefix:(id)arg1 profile:(id)arg2 date:(id *)arg3 error:(id *)arg4;
 - (long long)_nonAppleSourcesWithDataSince:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
@@ -71,7 +82,6 @@
 - (_Bool)isFitnessDailyCollectionEnabled;
 - (id)_actions;
 - (id)_serverConnectionForComponentId:(unsigned int)arg1;
-@property(readonly, nonatomic) double activitySummaryQueryTimeout;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMapTable, NSMutableDictionary, NSMutableSet;
+@class NSMapTable;
 
 @interface CBClassicManager
 {
@@ -15,62 +15,64 @@
     _Bool _testMode;
     CDUnknownBlockType _connectCallback;
     CDUnknownBlockType _disconnectCallback;
+    CDUnknownBlockType _serviceAddedHandler;
+    CDUnknownBlockType _inquiryServiceAddedHandler;
     NSMapTable *_peers;
-    NSMutableSet *_sdpServices;
-    NSMutableSet *_inquiryServices;
-    NSMutableDictionary *_sdpRecords;
-    CDUnknownBlockType _classicPeerDiscovered;
-    CDUnknownBlockType _servicesAdded;
-    CDUnknownBlockType _inquiryServicesAdded;
-    CDUnknownBlockType _sdpRecordAdded;
     long long _powerState;
-    CDUnknownBlockType _connectRFCOMMCallback;
+    CDUnknownBlockType _classicPeerDiscovered;
+    CDUnknownBlockType _sdpRecordAddedHandler;
+    CDUnknownBlockType _pairingStatusHandler;
+    CDUnknownBlockType _connectionStatusHandler;
 }
 
-@property(copy) CDUnknownBlockType connectRFCOMMCallback; // @synthesize connectRFCOMMCallback=_connectRFCOMMCallback;
+- (void).cxx_destruct;
+@property(copy) CDUnknownBlockType connectionStatusHandler; // @synthesize connectionStatusHandler=_connectionStatusHandler;
+@property(copy) CDUnknownBlockType pairingStatusHandler; // @synthesize pairingStatusHandler=_pairingStatusHandler;
+@property(copy) CDUnknownBlockType sdpRecordAddedHandler; // @synthesize sdpRecordAddedHandler=_sdpRecordAddedHandler;
+@property(copy) CDUnknownBlockType classicPeerDiscovered; // @synthesize classicPeerDiscovered=_classicPeerDiscovered;
 @property(nonatomic) _Bool testMode; // @synthesize testMode=_testMode;
 @property(readonly) long long powerState; // @synthesize powerState=_powerState;
-@property(copy, nonatomic) CDUnknownBlockType sdpRecordAdded; // @synthesize sdpRecordAdded=_sdpRecordAdded;
-@property(copy, nonatomic) CDUnknownBlockType inquiryServicesAdded; // @synthesize inquiryServicesAdded=_inquiryServicesAdded;
-@property(copy, nonatomic) CDUnknownBlockType servicesAdded; // @synthesize servicesAdded=_servicesAdded;
-@property(copy, nonatomic) CDUnknownBlockType classicPeerDiscovered; // @synthesize classicPeerDiscovered=_classicPeerDiscovered;
-@property(readonly, retain, nonatomic) NSMutableDictionary *sdpRecords; // @synthesize sdpRecords=_sdpRecords;
-@property(readonly, retain, nonatomic) NSMutableSet *inquiryServices; // @synthesize inquiryServices=_inquiryServices;
-@property(readonly, retain, nonatomic) NSMutableSet *sdpServices; // @synthesize sdpServices=_sdpServices;
 @property(readonly, nonatomic) _Bool isInquiryRunning; // @synthesize isInquiryRunning=_isInquiryRunning;
 @property(readonly, retain, nonatomic) NSMapTable *peers; // @synthesize peers=_peers;
+@property(copy) CDUnknownBlockType inquiryServiceAddedHandler; // @synthesize inquiryServiceAddedHandler=_inquiryServiceAddedHandler;
+@property(copy) CDUnknownBlockType serviceAddedHandler; // @synthesize serviceAddedHandler=_serviceAddedHandler;
 @property(copy) CDUnknownBlockType disconnectCallback; // @synthesize disconnectCallback=_disconnectCallback;
 @property(copy) CDUnknownBlockType connectCallback; // @synthesize connectCallback=_connectCallback;
 @property(readonly) _Bool connectable; // @synthesize connectable=_connectable;
 @property(readonly) _Bool discoverable; // @synthesize discoverable=_discoverable;
 @property(readonly) _Bool inquiryState; // @synthesize inquiryState=_inquiryState;
-- (void).cxx_destruct;
 - (void)handlePeerDisconnectionCompleted:(id)arg1;
 - (void)handlePeerConnectionCompleted:(id)arg1;
 - (void)handleSDPRecordAdded:(id)arg1;
-- (void)handleServicesAddedToInquiryList:(id)arg1;
-- (void)handleServicesAddedToSDP:(id)arg1;
+- (void)handleServiceAddedToInquiryList:(id)arg1;
+- (void)handleServiceAddedToSDP:(id)arg1;
+- (void)handlePeerConnectionStateUpdated:(id)arg1;
 - (void)handlePeerDiscovered:(id)arg1;
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
-- (void)removeAAPClient:(unsigned short)arg1;
-- (void)addAAPClient:(unsigned short)arg1 aapClientAdded:(CDUnknownBlockType)arg2;
+- (id)retrievePeerWithAddress:(id)arg1;
+- (void)removeAACPClient:(unsigned short)arg1;
+- (void)addAACPClient:(unsigned short)arg1 aacpClientAdded:(CDUnknownBlockType)arg2;
+- (void)cancelPeerConnection:(id)arg1 options:(id)arg2;
 - (void)cancelPeerConnection:(id)arg1 force:(_Bool)arg2;
 - (void)cancelPeerConnection:(id)arg1;
 - (void)connectPeer:(id)arg1 options:(id)arg2;
-- (void)addService:(id)arg1 sdpRecord:(id)arg2 sdpRecordAdded:(CDUnknownBlockType)arg3;
+- (void)addService:(id)arg1 sdpRecord:(id)arg2 sdpRecordAddedHandler:(CDUnknownBlockType)arg3;
 - (void)removeAllServicesFromInquiryList;
 - (void)removeServiceFromInquiryList:(id)arg1;
-- (void)addServicesToInquiryList:(id)arg1 servicesAdded:(CDUnknownBlockType)arg2;
+- (void)addServiceToInquiryList:(id)arg1;
 - (void)removeAllServices;
 - (void)removeService:(id)arg1;
-- (void)addServices:(id)arg1 servicesAdded:(CDUnknownBlockType)arg2;
+- (void)addService:(id)arg1;
 - (id)retrievePairedPeersWithOptions:(id)arg1;
 - (void)stopInquiry;
 - (void)startInquiryWithOptions:(id)arg1 classicPeerDiscovered:(CDUnknownBlockType)arg2;
 - (void)handleLocalDeviceStateUpdatedMsg:(id)arg1;
-- (void)setBTPowerState:(_Bool)arg1;
+- (_Bool)secureBluetooth:(_Bool)arg1 withAuthData:(id)arg2;
+- (_Bool)setBTPowerState:(_Bool)arg1;
 - (void)setBTDiscoverable:(_Bool)arg1;
 - (void)setBTConnectable:(_Bool)arg1;
+- (_Bool)isMsgAllowedAlways:(unsigned short)arg1;
+- (_Bool)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (void)orphanClassicPeers;
 - (void)forEachClassicPeer:(CDUnknownBlockType)arg1;
 - (id)peerWithInfo:(id)arg1;

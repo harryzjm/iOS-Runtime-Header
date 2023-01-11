@@ -21,6 +21,7 @@
 @property(nonatomic) unsigned long long minutesBreathed; // @synthesize minutesBreathed=_minutesBreathed;
 - (id)_signatureCornerTemplate;
 - (id)_signatureBezelTemplate;
+- (id)_signatureExtraLargeTemplate;
 - (id)_signatureCircularTemplate;
 - (id)_extraLargeTemplate;
 - (id)_utilitarianSmallTemplate;

@@ -8,14 +8,15 @@ __attribute__((visibility("hidden")))
 @interface VNFaceQualityGenerator
 {
     struct shared_ptr<vision::mod::FaceQualityPredictor> _mFaceQualityPredictor;
-    struct FaceQualityOptions _mNetworkOptions;
 }
 
 + (id)configurationOptionKeysForDetectorKey;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (_Bool)supportsProcessingDevice:(id)arg1;
 
 @end

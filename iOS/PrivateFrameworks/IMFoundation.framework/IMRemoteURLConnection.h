@@ -6,47 +6,57 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURLRequest;
+@class IMURLSession, NSString, NSURLRequest;
 @protocol OS_xpc_object;
 
 @interface IMRemoteURLConnection : NSObject
 {
-    NSURLRequest *_request;
-    NSString *_bundleIdentifierForDataUsage;
-    CDUnknownBlockType _block;
-    NSObject<OS_xpc_object> *_connection;
+    _Bool _requireIDSHost;
+    _Bool _forceCellularIfPossible;
+    _Bool _shouldUsePipelining;
+    _Bool _disableKeepAlive;
+    _Bool _shouldReturnTimingData;
     _Bool _cancelled;
     _Bool _loading;
-    _Bool _forceCellularIfPossible;
-    _Bool _requireIDSHost;
-    int _retries;
-    _Bool _shouldUsePipelining;
     int _concurrentConnections;
-    _Bool _disableKeepAlive;
     int _keepAliveWifi;
     int _keepAliveCell;
-    _Bool _shouldReturnTimingData;
+    int _retries;
+    NSString *_bundleIdentifierForDataUsage;
+    NSURLRequest *_request;
+    CDUnknownBlockType _block;
+    NSObject<OS_xpc_object> *_connection;
+    IMURLSession *_URLSession;
 }
 
-@property _Bool shouldReturnTimingData; // @synthesize shouldReturnTimingData=_shouldReturnTimingData;
+- (void).cxx_destruct;
+@property(retain, nonatomic) IMURLSession *URLSession; // @synthesize URLSession=_URLSession;
+@property(nonatomic) int retries; // @synthesize retries=_retries;
+@property(retain, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
+@property(nonatomic) _Bool loading; // @synthesize loading=_loading;
+@property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(copy) CDUnknownBlockType block; // @synthesize block=_block;
 @property(retain) NSURLRequest *request; // @synthesize request=_request;
+@property _Bool shouldReturnTimingData; // @synthesize shouldReturnTimingData=_shouldReturnTimingData;
 @property int keepAliveCell; // @synthesize keepAliveCell=_keepAliveCell;
 @property int keepAliveWifi; // @synthesize keepAliveWifi=_keepAliveWifi;
 @property _Bool disableKeepAlive; // @synthesize disableKeepAlive=_disableKeepAlive;
 @property int concurrentConnections; // @synthesize concurrentConnections=_concurrentConnections;
 @property _Bool shouldUsePipelining; // @synthesize shouldUsePipelining=_shouldUsePipelining;
-@property _Bool requireIDSHost; // @synthesize requireIDSHost=_requireIDSHost;
 @property(retain) NSString *bundleIdentifierForDataUsage; // @synthesize bundleIdentifierForDataUsage=_bundleIdentifierForDataUsage;
 @property _Bool forceCellularIfPossible; // @synthesize forceCellularIfPossible=_forceCellularIfPossible;
+@property _Bool requireIDSHost; // @synthesize requireIDSHost=_requireIDSHost;
 - (void)cancel;
 - (void)load;
 - (void)dealloc;
 - (id)initWithURLRequest:(id)arg1 completionBlockWithTimingData:(CDUnknownBlockType)arg2;
 - (id)initWithURLRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (_Bool)_connect;
-- (_Bool)_disconnect;
-- (void)_disconnected;
+- (void)_xpc_load;
+- (_Bool)_xpc_connect;
+- (_Bool)_xpc_disconnect;
+- (void)_xpc_disconnected;
+- (void)_direct_load;
+- (void)_direct_cancel;
 
 @end
 

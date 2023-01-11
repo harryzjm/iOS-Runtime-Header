@@ -19,21 +19,32 @@
     NSArray *_vertexAttributes;
     NSArray *_functionConstants;
     NSDictionary *_functionConstantDictionary;
+    unsigned long long _options;
+    NSObject<OS_dispatch_data> *_precompiledOutput;
     MTLType *_returnType;
     NSArray *_arguments;
     NSString *_unpackedFilePath;
+    CDStruct_41a22ec7 _functionConstantSpecializationHash;
 }
 
+@property(readonly) unsigned long long options; // @synthesize options=_options;
 @property(copy) NSString *unpackedFilePath; // @synthesize unpackedFilePath=_unpackedFilePath;
 @property(readonly) id vendorPrivate; // @synthesize vendorPrivate=_vendorPrivate;
 @property(readonly) struct MTLLibraryData *libraryData; // @synthesize libraryData=_libraryData;
 @property(readonly) NSString *name; // @synthesize name=_name;
 @property(readonly) unsigned long long functionType; // @synthesize functionType=_functionType;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
+- (const CDStruct_41a22ec7 *)functionConstantSpecializationHash;
 - (id)bitcodeData;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 functionReflection:(id)arg3;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(id)arg3;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
 - (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
+- (id)reflectionWithOptions:(unsigned long long)arg1 binaryArchives:(id)arg2;
 - (id)reflectionWithOptions:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)formattedDescription:(unsigned long long)arg1;
@@ -61,6 +72,7 @@
 @property(readonly) long long patchControlPointCount; // @dynamic patchControlPointCount;
 @property(readonly) unsigned long long patchType; // @dynamic patchType;
 @property NSData *pluginData; // @dynamic pluginData;
+@property NSObject<OS_dispatch_data> *precompiledOutput; // @dynamic precompiledOutput;
 @property(readonly) unsigned long long renderTargetArrayIndexType; // @dynamic renderTargetArrayIndexType;
 @property MTLType *returnType; // @dynamic returnType;
 @property(readonly) NSArray *stageInputAttributes; // @dynamic stageInputAttributes;

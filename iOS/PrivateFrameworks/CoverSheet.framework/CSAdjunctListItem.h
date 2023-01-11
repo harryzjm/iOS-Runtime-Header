@@ -19,14 +19,15 @@
     NSString *_identifier;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) UIViewController<CSAdjunctItemHosting> *contentHost; // @synthesize contentHost;
 @property(retain, nonatomic) UIView *platterView; // @synthesize platterView;
-- (void).cxx_destruct;
 - (_Bool)isValid;
 - (void)removeAction:(id)arg1;
 - (void)addAction:(id)arg1;
 @property(readonly, nonatomic) SBSLockScreenContentAction *action;
+- (void)conformsToCSAdjunctListItemProviding;
 - (id)init;
 
 // Remaining properties

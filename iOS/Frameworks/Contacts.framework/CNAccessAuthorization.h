@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CNFAccessAuthorization;
+@class CNAuthorizationContext;
 
 @interface CNAccessAuthorization : NSObject
 {
-    CNFAccessAuthorization *_authorizer;
+    CNAuthorizationContext *_authorizer;
 }
 
 + (id)new;
 + (id)allAuthorizationKeys;
-@property(retain, nonatomic) CNFAccessAuthorization *authorizer; // @synthesize authorizer=_authorizer;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CNAuthorizationContext *authorizer; // @synthesize authorizer=_authorizer;
 - (id)authorizedKeysForContactKeys:(id)arg1;
 - (void)removeUnauthorizedKeysFromFetchRequest:(id)arg1;
 - (_Bool)authorizeFetchRequest:(id)arg1 accessError:(id *)arg2;

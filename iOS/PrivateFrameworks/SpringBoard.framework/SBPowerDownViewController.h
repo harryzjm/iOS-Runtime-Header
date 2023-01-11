@@ -17,12 +17,13 @@
     id <SBPowerDownViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBPowerDownViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBPowerDownViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_resetScreenBrightness;
 - (void)_endTimeTrackingIncludingReportWithKey:(id)arg1;
 - (void)_incrementCountForKey:(id)arg1;
 - (void)_beginTimeTracking;
+- (_Bool)handleLockButtonPress;
 - (_Bool)shouldPendAlertItems;
 - (_Bool)shouldDisableSiri;
 - (_Bool)shouldDisableControlCenter;
@@ -30,6 +31,7 @@
 - (long long)idleTimerMode;
 - (id)newTransientOverlayPresentationTransitionCoordinator;
 - (id)newTransientOverlayDismissalTransitionCoordinator;
+- (_Bool)allowsStackingOverlayContentAbove;
 - (void)powerDownView:(id)arg1 didUpdateSlideWithValue:(double)arg2;
 - (void)powerDownViewDidReceiveCancelButtonAction:(id)arg1;
 - (void)powerDownViewDidFireIdleTimer:(id)arg1;

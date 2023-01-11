@@ -21,6 +21,7 @@
 - (void)stopPredictingDestinations;
 - (void)leaveState;
 - (void)enterState;
+- (id)clParameters;
 - (unsigned long long)desiredLocationProviderType;
 - (unsigned long long)type;
 - (id)traceManager;

@@ -17,6 +17,8 @@
 - (_Bool)isEqualToGeometryTransformOrientation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (_Bool)isIdentityImageTransform;
+- (CDStruct_14d5dc5e)transformMatrix:(CDStruct_14d5dc5e)arg1;
 - (struct CGPoint)transformPoint:(struct CGPoint)arg1;
 - (id)inverseTransform;
 - (id)initWithOrientation:(long long)arg1 imageSize:(CDStruct_912cb5d2)arg2 imageOrigin:(CDStruct_912cb5d2)arg3;

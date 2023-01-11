@@ -26,8 +26,10 @@
 + (void)_reportWithOptions:(id)arg1 networkEvent:(id)arg2 genericEvent:(id)arg3 triggers:(int)arg4;
 + (void)reportMetricWithOptions:(id)arg1 genericMetricType:(long long)arg2 eventName:(id)arg3 startTime:(id)arg4 endTime:(id)arg5 attributes:(id)arg6;
 + (void)reportNetworkEvent:(id)arg1 triggers:(int)arg2 originalSessionTask:(id)arg3;
++ (id)gzipDecode:(id)arg1;
 + (id)gzipEncode:(id)arg1;
 + (id)requestForMetricRequestOptions:(id)arg1 networkEvent:(id)arg2 genericEvent:(id)arg3 triggers:(int)arg4;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType testBehavior_didCompleteWithError; // @synthesize testBehavior_didCompleteWithError=_testBehavior_didCompleteWithError;
 @property(copy, nonatomic) CDUnknownBlockType testBehavior_tooManyTasksRunning; // @synthesize testBehavior_tooManyTasksRunning=_testBehavior_tooManyTasksRunning;
 @property(retain, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;
@@ -37,7 +39,6 @@
 @property(nonatomic) unsigned long long requestThrottleLimit; // @synthesize requestThrottleLimit=_requestThrottleLimit;
 @property(retain, nonatomic) NSString *requestThrottleIdentifier; // @synthesize requestThrottleIdentifier=_requestThrottleIdentifier;
 @property(nonatomic) _Bool ignoreRequestThrottle; // @synthesize ignoreRequestThrottle=_ignoreRequestThrottle;
-- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;

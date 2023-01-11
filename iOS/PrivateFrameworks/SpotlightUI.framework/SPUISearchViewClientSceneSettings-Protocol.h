@@ -7,6 +7,8 @@
 #import <SpotlightUI/NSObject-Protocol.h>
 
 @protocol SPUISearchViewClientSceneSettings <NSObject>
+@property(readonly) unsigned int searchHeaderContextID;
+@property(readonly) unsigned long long searchHeaderLayerRenderID;
 @property(readonly) double distanceToTopOfIcons;
 @end
 

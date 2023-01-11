@@ -9,12 +9,13 @@
 #import <MobileTimer/MTAgentDiagnosticDelegate-Protocol.h>
 #import <MobileTimer/MTSystemStateDelegate-Protocol.h>
 
-@class MTAgentDiagnosticListener, MTAgentNotificationManager, MTAlarmIntentDonor, MTAlarmScheduler, MTAlarmServer, MTAlarmSnapshot, MTAlarmStorage, MTBedtimeDNDMonitor, MTBedtimeSessionManager, MTBedtimeSessionTracker, MTCoreDuetMonitor, MTLanguageChangeListener, MTSleepCoordinator, MTSystemStateListener, MTTimeListener, MTTimerIntentDonor, MTTimerScheduler, MTTimerServer, MTTimerSnapshot, MTTimerStorage, NSDate, NSString;
+@class MTAgentDiagnosticListener, MTAgentNotificationManager, MTAlarmIntentDonor, MTAlarmScheduler, MTAlarmServer, MTAlarmSnapshot, MTAlarmStorage, MTAlarmSyncDataModel, MTCoreDuetMonitor, MTLanguageChangeListener, MTMetrics, MTSleepCoordinator, MTSleepManager, MTSleepModeMonitor, MTSleepSessionManager, MTSleepSessionTracker, MTSystemStateListener, MTTimeListener, MTTimerIntentDonor, MTTimerScheduler, MTTimerServer, MTTimerSnapshot, MTTimerStorage, NSDate, NSString;
 @protocol MTNotificationCenter, NAScheduler;
 
 @interface MTAgent : NSObject <MTAgentDiagnosticDelegate, MTSystemStateDelegate>
 {
     _Bool _systemReady;
+    MTSleepManager *_sleepManager;
     NSDate *_launchDate;
     id <NAScheduler> _serializer;
     MTAgentNotificationManager *_notificationManager;
@@ -35,15 +36,20 @@
     MTTimerIntentDonor *_timerIntentDonor;
     MTCoreDuetMonitor *_coreDuetMonitor;
     MTSleepCoordinator *_sleepCoordinator;
-    MTBedtimeDNDMonitor *_bedtimeDNDMonitor;
-    MTBedtimeSessionManager *_bedtimeSessionManager;
-    MTBedtimeSessionTracker *_bedtimeSessionTracker;
+    MTSleepModeMonitor *_sleepModeMonitor;
+    MTSleepSessionManager *_sleepSessionManager;
+    MTSleepSessionTracker *_sleepSessionTracker;
+    MTAlarmSyncDataModel *_alarmSyncDataModel;
+    MTMetrics *_syncMetrics;
 }
 
 + (id)agent;
-@property(retain, nonatomic) MTBedtimeSessionTracker *bedtimeSessionTracker; // @synthesize bedtimeSessionTracker=_bedtimeSessionTracker;
-@property(retain, nonatomic) MTBedtimeSessionManager *bedtimeSessionManager; // @synthesize bedtimeSessionManager=_bedtimeSessionManager;
-@property(retain, nonatomic) MTBedtimeDNDMonitor *bedtimeDNDMonitor; // @synthesize bedtimeDNDMonitor=_bedtimeDNDMonitor;
+- (void).cxx_destruct;
+@property(retain, nonatomic) MTMetrics *syncMetrics; // @synthesize syncMetrics=_syncMetrics;
+@property(retain, nonatomic) MTAlarmSyncDataModel *alarmSyncDataModel; // @synthesize alarmSyncDataModel=_alarmSyncDataModel;
+@property(retain, nonatomic) MTSleepSessionTracker *sleepSessionTracker; // @synthesize sleepSessionTracker=_sleepSessionTracker;
+@property(retain, nonatomic) MTSleepSessionManager *sleepSessionManager; // @synthesize sleepSessionManager=_sleepSessionManager;
+@property(retain, nonatomic) MTSleepModeMonitor *sleepModeMonitor; // @synthesize sleepModeMonitor=_sleepModeMonitor;
 @property(retain, nonatomic) MTSleepCoordinator *sleepCoordinator; // @synthesize sleepCoordinator=_sleepCoordinator;
 @property(retain, nonatomic) MTCoreDuetMonitor *coreDuetMonitor; // @synthesize coreDuetMonitor=_coreDuetMonitor;
 @property(retain, nonatomic) MTTimerIntentDonor *timerIntentDonor; // @synthesize timerIntentDonor=_timerIntentDonor;
@@ -65,7 +71,7 @@
 @property(retain, nonatomic) id <NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property(nonatomic) _Bool systemReady; // @synthesize systemReady=_systemReady;
 @property(retain, nonatomic) NSDate *launchDate; // @synthesize launchDate=_launchDate;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) MTSleepManager *sleepManager; // @synthesize sleepManager=_sleepManager;
 - (id)gatherDiagnostics;
 - (void)printDiagnostics;
 - (id)_diagnosticProviders;
@@ -74,6 +80,7 @@
 - (void)_setupSecondaryListeners;
 - (void)restoreDidFinish;
 - (void)_setupInitialListeners;
+- (void)_setupSync;
 - (void)_setupTimers;
 - (void)_setupAlarms;
 - (void)_setupNotificationCenter;

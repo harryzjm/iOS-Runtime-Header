@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)_setPreferredIconName:(id)arg1 forIdentifier:(id)arg2;
 - (id)_getPreferredIconNameForIdentifier:(id)arg1;
 - (void)setAlternateIconName:(id)arg1 forIdentifier:(id)arg2 iconsDictionary:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)getAlternateIconNameForIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)alternateIconNameForIdentifier:(id)arg1 error:(id *)arg2;
 - (void)clearAlternateNameForBundleIdentifier:(id)arg1 validationDictionary:(id)arg2;
 - (id)init;
 

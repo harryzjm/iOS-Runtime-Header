@@ -28,8 +28,11 @@
     HRStackedButtonView *_stackedButtonView;
     NSLayoutConstraint *_contentViewBottomConstraint;
     NSString *_productType;
+    long long _provenance;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long provenance; // @synthesize provenance=_provenance;
 @property(retain, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) HRStackedButtonView *stackedButtonView; // @synthesize stackedButtonView=_stackedButtonView;
@@ -47,7 +50,6 @@
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIView *heroView; // @synthesize heroView=_heroView;
 @property(retain, nonatomic) HKHeartRhythmAvailability *availability; // @synthesize availability=_availability;
-- (void).cxx_destruct;
 - (id)watchOSVersionTooLowBodyString;
 - (id)deviceNotSupportedBodyString;
 - (id)featureDisabledBodyString;
@@ -96,6 +98,7 @@
 - (void)setUpConstraints;
 - (void)setUpUI;
 - (void)viewDidLoad;
+- (id)initForOnboarding:(_Bool)arg1 WithProvenance:(long long)arg2;
 - (id)initForOnboarding:(_Bool)arg1;
 
 // Remaining properties

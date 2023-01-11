@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool pluginStarted; // @synthesize pluginStarted=_pluginStarted;
 @property(nonatomic) _Bool toggledOriginal; // @synthesize toggledOriginal=_toggledOriginal;
 - (void)finishSessionWithEnd:(long long)arg1;
-- (void)finishSessionWithEnd:(long long)arg1 newCompositionController:(id)arg2 oldCompositionController:(id)arg3;
+- (id)finishSessionWithEnd:(long long)arg1 newCompositionController:(id)arg2 oldCompositionController:(id)arg3;
 - (void)_recordKeys:(id)arg1;
 - (id)_sessionKeysWithEnd:(long long)arg1;
 @property(readonly, nonatomic) __weak NSArray *_autoCropKeys;

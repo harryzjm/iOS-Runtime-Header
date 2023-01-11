@@ -10,6 +10,7 @@
 {
 }
 
++ (id)extensionMatchingDictionaryForItems:(id)arg1;
 + (id)extensionForPlugin:(id)arg1;
 + (id)uiExtensionPluginForProviderDomain:(id)arg1;
 + (void)getUIExtensionPlugin:(id *)arg1 nonUIExtensionPlugin:(id *)arg2 forProviderDomain:(id)arg3;

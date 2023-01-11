@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, PSCellularManagementCache, PSDataUsageStatisticsCache, PSListController, PSUICallTimeGroup, PSUICarrierSpaceManager, PSUICellularUsageContentSpecifiers, PSUIResetStatisticsGroup, PSUITotalCellularUsageSubgroup;
-@protocol PSAppCellularUsageSpecifierDelegate, PSBillingPeriodSelectorSpecifierDelegate;
+#import <SettingsCellularUI/Loggable-Protocol.h>
+
+@class Logger, NSArray, NSString, PSCellularManagementCache, PSDataUsageStatisticsCache, PSListController, PSUICallTimeGroup, PSUICarrierSpaceManager, PSUICellularUsageContentSpecifiers, PSUIResetStatisticsGroup, PSUITotalCellularUsageSubgroup;
+@protocol PSAppCellularUsageSpecifierDelegate, PSBillingPeriodSelectorSpecifierDelegate, PSUIResetStatisticsGroupDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PSUICellularUsageLayoutGroup : NSObject
+@interface PSUICellularUsageLayoutGroup : NSObject <Loggable>
 {
+    Logger *_logger;
     PSCellularManagementCache *_managementCache;
     PSDataUsageStatisticsCache *_statisticsCache;
     PSUICarrierSpaceManager *_carrierSpaceManager;
     PSListController *_hostController;
     id <PSBillingPeriodSelectorSpecifierDelegate> _billingCycleDelegate;
     id <PSAppCellularUsageSpecifierDelegate> _policySpecifierDelegate;
+    id <PSUIResetStatisticsGroupDelegate> _resetStatisticsDelegate;
     NSString *_groupSpecifierTitle;
     NSArray *_savedHeaderSpecifiers;
     PSUICellularUsageContentSpecifiers *_savedContentSpecifiers;
@@ -26,23 +30,31 @@ __attribute__((visibility("hidden")))
     PSUIResetStatisticsGroup *_resetStatisticsGroup;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PSUIResetStatisticsGroup *resetStatisticsGroup; // @synthesize resetStatisticsGroup=_resetStatisticsGroup;
 @property(retain, nonatomic) PSUICallTimeGroup *callTimeGroup; // @synthesize callTimeGroup=_callTimeGroup;
 @property(retain, nonatomic) PSUITotalCellularUsageSubgroup *totalUsageSubgroup; // @synthesize totalUsageSubgroup=_totalUsageSubgroup;
 @property(retain) PSUICellularUsageContentSpecifiers *savedContentSpecifiers; // @synthesize savedContentSpecifiers=_savedContentSpecifiers;
 @property(retain) NSArray *savedHeaderSpecifiers; // @synthesize savedHeaderSpecifiers=_savedHeaderSpecifiers;
 @property(retain, nonatomic) NSString *groupSpecifierTitle; // @synthesize groupSpecifierTitle=_groupSpecifierTitle;
+@property(nonatomic) __weak id <PSUIResetStatisticsGroupDelegate> resetStatisticsDelegate; // @synthesize resetStatisticsDelegate=_resetStatisticsDelegate;
 @property(nonatomic) __weak id <PSAppCellularUsageSpecifierDelegate> policySpecifierDelegate; // @synthesize policySpecifierDelegate=_policySpecifierDelegate;
 @property(nonatomic) __weak id <PSBillingPeriodSelectorSpecifierDelegate> billingCycleDelegate; // @synthesize billingCycleDelegate=_billingCycleDelegate;
-@property(retain, nonatomic) PSListController *hostController; // @synthesize hostController=_hostController;
+@property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
 @property(retain, nonatomic) PSUICarrierSpaceManager *carrierSpaceManager; // @synthesize carrierSpaceManager=_carrierSpaceManager;
 @property(retain, nonatomic) PSDataUsageStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
 @property(retain, nonatomic) PSCellularManagementCache *managementCache; // @synthesize managementCache=_managementCache;
-- (void).cxx_destruct;
+- (id)getLogger;
 - (void)refreshOrderingOfContentSpecifiers;
 - (id)contentSpecifiers;
 - (id)headerSpecifiers;
-- (id)initWithGroupSpecifierTitle:(id)arg1 hostController:(id)arg2 managementCache:(id)arg3 statisticsCache:(id)arg4 carrierSpaceManager:(id)arg5 billingCycleDelegate:(id)arg6 policySpecifierDelegate:(id)arg7;
+- (id)initWithGroupSpecifierTitle:(id)arg1 hostController:(id)arg2 managementCache:(id)arg3 statisticsCache:(id)arg4 carrierSpaceManager:(id)arg5 billingCycleDelegate:(id)arg6 policySpecifierDelegate:(id)arg7 resetStatisticsDelegate:(id)arg8;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

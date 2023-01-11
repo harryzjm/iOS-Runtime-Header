@@ -10,16 +10,15 @@
 
 @class CKDAppContainerTuple, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDAppContainerAccountTuple : NSObject <NSCopying>
 {
     CKDAppContainerTuple *_appContainerTuple;
     NSString *_accountID;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property(retain, nonatomic) CKDAppContainerTuple *appContainerTuple; // @synthesize appContainerTuple=_appContainerTuple;
-- (void).cxx_destruct;
 - (id)description;
 - (id)CKPropertiesDescription;
 - (unsigned long long)hash;

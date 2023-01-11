@@ -35,8 +35,8 @@
 - (_Bool)isEqualToBopr:(id)arg1;
 - (shared_ptr_7e6b0415)model;
 - (_Bool)isEqual:(id)arg1;
-- (void)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 error:(id *)arg3;
-- (void)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (_Bool)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 error:(id *)arg3;
+- (_Bool)updateModelFromFeatures:(id)arg1 toTarget:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)convertOutputFeatureToPredictionValues:(id)arg1 event:(_Bool *)arg2 importance:(double *)arg3 error:(id *)arg4;
 - (id)regress:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (double)getSamplingTruncation:(id)arg1;

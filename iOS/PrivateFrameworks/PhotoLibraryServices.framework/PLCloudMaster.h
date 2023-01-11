@@ -6,19 +6,22 @@
 
 #import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
-@class NSDate, NSManagedObject, NSSet, NSString, PLMomentShare;
+@class NSDate, NSSet, NSString, PLCloudMasterMediaMetadata, PLMomentShare;
 
 @interface PLCloudMaster <PLSyncableObject>
 {
 }
 
 + (id)entityName;
++ (unsigned long long)fullSizeJPEGSourceForUTI:(id)arg1 andImageDimensions:(struct CGSize)arg2;
 + (id)listOfSyncedProperties;
 + (id)_originalTypes;
-+ (void)resetCloudMastersStateInManagedObjectContext:(id)arg1 hardReset:(_Bool)arg2;
++ (void)resetCloudMastersStateInManagedObjectContext:(id)arg1;
 + (void)deleteAllCloudMastersInManagedObjectContext:(id)arg1;
-+ (id)cloudMasterWithScopedIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)cloudMasterWithGUID:(id)arg1 inMomentShare:(id)arg2 inManagedObjectContext:(id)arg3;
++ (id)cloudMastersWithScopedIdentifiers:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 inLibrary:(id)arg3;
++ (id)cloudMasterWithScopedIdentifier:(id)arg1 prefetchResources:(_Bool)arg2 inManagedObjectContext:(id)arg3;
++ (id)cloudMastersByScopedIdentifiers:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 inLibrary:(id)arg3;
++ (id)cloudMasterWithGUID:(id)arg1 inMomentShare:(id)arg2 prefetchResources:(_Bool)arg3 inManagedObjectContext:(id)arg4;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2 inMomentShare:(id)arg3;
 - (_Bool)isSyncableChange;
 - (id)originalFilenameForResourceType:(unsigned long long)arg1 filePath:(id)arg2;
@@ -33,9 +36,6 @@
 - (unsigned long long)sizeOfOriginal;
 @property(readonly, copy) NSString *description;
 - (void)applyPropertiesFromCPLMasterChange:(id)arg1;
-- (id)cloudResourcesForResourceType:(unsigned long long)arg1;
-- (id)assetUUIDToCloudResources;
-- (id)cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (void)awakeFromInsert;
 - (_Bool)supportsCloudUpload;
 - (void)rm_applyExpungeableResourceStatesFromCPLMasterChange:(id)arg1 inPhotoLibrary:(id)arg2;
@@ -59,7 +59,7 @@
 @property(retain, nonatomic) NSDate *importDate; // @dynamic importDate;
 @property(retain, nonatomic) NSString *importSessionID; // @dynamic importSessionID;
 @property(nonatomic) short importedBy; // @dynamic importedBy;
-@property(retain, nonatomic) NSManagedObject *mediaMetadata; // @dynamic mediaMetadata;
+@property(retain, nonatomic) PLCloudMasterMediaMetadata *mediaMetadata; // @dynamic mediaMetadata;
 @property(retain, nonatomic) NSString *mediaMetadataType; // @dynamic mediaMetadataType;
 @property(retain, nonatomic) PLMomentShare *momentShare; // @dynamic momentShare;
 @property(retain, nonatomic) NSString *originalFilename; // @dynamic originalFilename;

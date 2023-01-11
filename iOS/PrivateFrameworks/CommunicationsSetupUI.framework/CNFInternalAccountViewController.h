@@ -8,14 +8,15 @@
 
 @class FTRegConnectionHandler, IMAccount;
 
+__attribute__((visibility("hidden")))
 @interface CNFInternalAccountViewController : PSListController
 {
     IMAccount *_account;
     FTRegConnectionHandler *_connectionHandler;
 }
 
-@property(retain, nonatomic) IMAccount *account; // @synthesize account=_account;
 - (void).cxx_destruct;
+@property(retain, nonatomic) IMAccount *account; // @synthesize account=_account;
 - (void)_handleAccountNotification:(id)arg1;
 - (void)_handleDaemonConnected:(id)arg1;
 - (void)_handleDaemonDisconnected:(id)arg1;

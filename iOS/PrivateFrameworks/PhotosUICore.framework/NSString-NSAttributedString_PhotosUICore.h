@@ -14,11 +14,14 @@
 - (id)stringByRemovingDigits;
 - (_Bool)containsDigits;
 - (struct _NSRange)rangeOfDigits;
+- (id)px_stringByAppendingDescriptionDetails:(id)arg1;
+- (id)px_stringByAppendingDescriptionDetailsWithFormat:(id)arg1;
 @property(readonly, nonatomic) _Bool px_endsWithFullStopOrEquivalentPunctuationMark;
 @property(readonly, nonatomic) NSArray *px_integerValues;
 @property(readonly, nonatomic) struct _NSRange px_firstLetterRange;
 @property(readonly, nonatomic) NSString *px_stringByIndentingNewLines;
 @property(readonly, nonatomic) long long px_platformAgnosticHash;
+- (id)px_stringByRepeating:(long long)arg1;
 - (id)px_stringByDeletingCharactersInSet:(id)arg1;
 - (_Bool)px_hasStringIgnoringCaseAndDiacritics:(id)arg1;
 - (_Bool)px_hasPrefixIgnoringCaseAndDiacritics:(id)arg1;

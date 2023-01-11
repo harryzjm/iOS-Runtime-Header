@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSURL;
+@class NSURL;
 
 @interface REMFileAttachment
 {
+    _Bool _isTemporaryFileURL;
     unsigned long long _fileSize;
     NSURL *_fileURL;
-    NSData *_data;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)createTemporaryFileWithData:(id)arg1 UTI:(id)arg2;
++ (id)createTemporaryFileURLWithUTI:(id)arg1;
 + (id)cdEntityName;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isTemporaryFileURL; // @synthesize isTemporaryFileURL=_isTemporaryFileURL;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
-- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_deepCopy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 reminderID:(id)arg3 UTI:(id)arg4 fileSize:(unsigned long long)arg5 fileURL:(id)arg6 data:(id)arg7;
 
 @end

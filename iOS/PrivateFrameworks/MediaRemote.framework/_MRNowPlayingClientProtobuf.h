@@ -13,8 +13,9 @@
 @interface _MRNowPlayingClientProtobuf : PBCodable <NSCopying>
 {
     NSString *_bundleIdentifier;
-    NSMutableArray *_bundleIdentifierHierarchys;
     NSString *_displayName;
+    NSMutableArray *_extendedBundleIdentifierHierarchys;
+    NSString *_iconURL;
     int _nowPlayingVisibility;
     NSString *_parentApplicationBundleIdentifier;
     int _processIdentifier;
@@ -29,16 +30,17 @@
     } _has;
 }
 
-+ (Class)bundleIdentifierHierarchyType;
++ (Class)extendedBundleIdentifierHierarchyType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *iconURL; // @synthesize iconURL=_iconURL;
 @property(nonatomic) _Bool isEmptyDeprecated; // @synthesize isEmptyDeprecated=_isEmptyDeprecated;
-@property(retain, nonatomic) NSMutableArray *bundleIdentifierHierarchys; // @synthesize bundleIdentifierHierarchys=_bundleIdentifierHierarchys;
+@property(retain, nonatomic) NSMutableArray *extendedBundleIdentifierHierarchys; // @synthesize extendedBundleIdentifierHierarchys=_extendedBundleIdentifierHierarchys;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain, nonatomic) _MRColorProtobuf *tintColor; // @synthesize tintColor=_tintColor;
 @property(nonatomic) int processUserIdentifier; // @synthesize processUserIdentifier=_processUserIdentifier;
 @property(retain, nonatomic) NSString *parentApplicationBundleIdentifier; // @synthesize parentApplicationBundleIdentifier=_parentApplicationBundleIdentifier;
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -48,11 +50,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasIconURL;
 @property(nonatomic) _Bool hasIsEmptyDeprecated;
-- (id)bundleIdentifierHierarchyAtIndex:(unsigned long long)arg1;
-- (unsigned long long)bundleIdentifierHierarchysCount;
-- (void)addBundleIdentifierHierarchy:(id)arg1;
-- (void)clearBundleIdentifierHierarchys;
+- (id)extendedBundleIdentifierHierarchyAtIndex:(unsigned long long)arg1;
+- (unsigned long long)extendedBundleIdentifierHierarchysCount;
+- (void)addExtendedBundleIdentifierHierarchy:(id)arg1;
+- (void)clearExtendedBundleIdentifierHierarchys;
 @property(readonly, nonatomic) _Bool hasDisplayName;
 @property(readonly, nonatomic) _Bool hasTintColor;
 - (int)StringAsNowPlayingVisibility:(id)arg1;

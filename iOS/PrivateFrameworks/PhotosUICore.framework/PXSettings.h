@@ -4,27 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UISettings.h>
+#import <PrototypeTools/PTSettings.h>
 
-@class NSMutableSet, NSSet;
+@class NSArray, NSMutableSet, NSSet;
 
-@interface PXSettings : _UISettings
+@interface PXSettings : PTSettings
 {
     NSMutableSet *_archivedSettings;
     NSSet *_cachedTransientProperties;
+    _Bool _hasUserDefaultsOverrides;
     long long _version;
+    NSArray *_reparentedRootSettings;
 }
 
 + (id)_signatureDictionaryWithDefaultSettings:(id *)arg1;
 + (id)_defaultsKey;
 + (id)_userDefaults;
 + (id)transientProperties;
++ (_Bool)ignoresKey:(id)arg1;
 + (id)createSharedInstance;
 + (id)sharedInstance;
 + (void)setSuiteName:(id)arg1;
 + (id)suiteName;
-@property(nonatomic) long long version; // @synthesize version=_version;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *reparentedRootSettings; // @synthesize reparentedRootSettings=_reparentedRootSettings;
+@property(nonatomic) long long version; // @synthesize version=_version;
 - (void)addDeferredKeyPathObserver:(id)arg1;
 - (void)addDeferredKeyObserver:(id)arg1;
 - (void)removeKeyPathObserver:(id)arg1;
@@ -36,10 +40,18 @@
 - (void)applyArchiveValue:(id)arg1 forKey:(id)arg2;
 - (id)archiveValueForKey:(id)arg1;
 - (void)_validateArchivableValue:(id)arg1 forKey:(id)arg2;
+- (id)archiveDictionary;
+- (void)_willArchiveSettings:(id)arg1;
 - (void)save;
+- (void)clearManualOverrides;
+@property(readonly, nonatomic) _Bool hasDefaultValues;
+- (void)restoreDefaultValues;
+- (_Bool)_setOverrideValuesFromDictionary:(id)arg1;
+@property(readonly, nonatomic) _Bool hasUserDefaultsOverrides;
 - (void)_resetValuesThatChangedBetweenCurrentDefaultValues:(id)arg1 andArchivedDefaultValues:(id)arg2 defaultSettings:(id)arg3;
 - (_Bool)_isTransientKey:(id)arg1;
-- (id)parentSettings;
+@property(readonly, nonatomic) PXSettings *parentSettings;
+- (_Bool)suppressesIntrospectionOnCustomerInstalls;
 
 @end
 

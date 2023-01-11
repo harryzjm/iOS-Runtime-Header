@@ -27,7 +27,7 @@
 - (id)_connectToServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setUpServiceProxyIfNeeded;
 - (void)_sceneDidEnterBackground:(id)arg1;
-- (id)init;
+- (_Bool)_canShowWhileLocked;
 
 @end
 

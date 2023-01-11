@@ -8,8 +8,8 @@
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 #import <SpringBoard/SBSuspendedUnderLockManagerDelegate-Protocol.h>
 
-@class FBSSceneClientSettingsDiffInspector, NSArray, NSHashTable, NSMutableSet, NSString, SBFaceContactExpectationManager, SBMainDisplayLayoutState, SBMainDisplayLayoutStateManager, SBMainDisplayPolicyAggregator, SBMainDisplaySceneLayoutViewController, SBMedusaHostedKeyboardWindow, SBSuspendedUnderLockManager, UIApplicationSceneClientSettingsDiffInspector;
-@protocol SBIdleTimerCoordinating;
+@class FBSSceneClientSettingsDiffInspector, NSArray, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, SBFaceContactExpectationManager, SBMainDisplayLayoutState, SBMainDisplayLayoutStateManager, SBMainDisplayPolicyAggregator, SBMainDisplaySceneLayoutViewController, SBMedusaHostedKeyboardWindow, SBSuspendedUnderLockManager, UIApplicationSceneClientSettingsDiffInspector, UIWindow;
+@protocol BSInvalidatable, SBIdleTimerCoordinating;
 
 @interface SBMainDisplaySceneManager <SBIdleTimerCoordinating, SBSuspendedUnderLockManagerDelegate, SBIdleTimerProviding>
 {
@@ -17,6 +17,7 @@
     UIApplicationSceneClientSettingsDiffInspector *_internalClientSettingsDiffInspector;
     UIApplicationSceneClientSettingsDiffInspector *_appClientSettingsDiffInspector;
     FBSSceneClientSettingsDiffInspector *_externalClientSettingsDiffInspector;
+    FBSSceneClientSettingsDiffInspector *_keyboardLayersClientSettingsDiffInspector;
     long long _validInterfaceOrientation;
     unsigned long long _validInterfaceOrientationChangeCount;
     unsigned long long _processedValidInterfaceOrientationChangeCount;
@@ -26,35 +27,46 @@
     _Bool _didAddSceneLayoutViewControllerWindowContextIdentifier;
     SBSuspendedUnderLockManager *_lazy_suspendedUnderLockManager;
     NSHashTable *_preventAdditionalMedusaSnapshotsAssertions;
+    NSMutableDictionary *_sceneIdentifierToIgnoreSuspendedUnderLockAssertions;
+    id <BSInvalidatable> stateCaptureInvalidatable;
+    _Bool _isUsingMedusaHostedKeyboardWindow;
     id <SBIdleTimerCoordinating> _idleTimerCoordinator;
 }
 
 + (Class)_sceneLayoutWindowClass;
 + (Class)_applicationSceneHandleClass;
 + (Class)_layoutStateManagerClass;
-@property(nonatomic) __weak id <SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_isUsingMedusaHostedKeyboardWindow) _Bool _isUsingMedusaHostedKeyboardWindow; // @synthesize _isUsingMedusaHostedKeyboardWindow;
+@property(readonly, nonatomic) UIWindow *_medusaHostedKeyboardWindow; // @synthesize _medusaHostedKeyboardWindow;
+@property(nonatomic) __weak id <SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 - (void)_userInterfaceStyleArbiterStyleChanged:(id)arg1;
+@property(readonly, nonatomic) _Bool hasIdleTimerBehaviors;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (id)idleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 forReason:(id)arg3;
 - (id)_proposeIdleTimerBehaviorForReason:(id)arg1;
 - (void)_updateLevelAndBackgroundSettingsForScene:(id)arg1 transitionContext:(id)arg2;
 - (void)_updateMedusaHostedKeyboardWindowForScene:(id)arg1 isForeground:(_Bool *)arg2;
 - (void)_updateMedusaHostedKeyboardWindow;
+- (id)newMedusaHostedKeyboardWindowLevelAssertionWithPriority:(unsigned long long)arg1 windowLevel:(double)arg2;
+@property(readonly, nonatomic, getter=_isKeyboardVisibleForSpringBoard) _Bool _isKeyboardVisibleForSpringBoard;
 - (void)_updateValidInterfaceOrientationForTransitionContext:(id)arg1;
 - (void)_updateDeviceOrientation:(long long)arg1 ifNeededForScene:(id)arg2;
 - (_Bool)_animateGeometryChangesForExternalForegroundApplicationScenes;
-- (void)_updateExternalForegroundApplicationScenesToInterfaceOrientation:(long long)arg1 force:(_Bool)arg2 prefersTouchCancellationDisabled:(_Bool)arg3;
+- (void)_updateExternalForegroundApplicationScenesToInterfaceOrientation:(long long)arg1 force:(_Bool)arg2 prefersTouchCancellationDisabled:(_Bool)arg3 validator:(CDUnknownBlockType)arg4;
+- (void)_attemptAutorotationOfExternalForegroundApplicationScenesToInterfaceOrientation:(long long)arg1;
 - (void)_deviceOrientationChanged:(id)arg1;
 - (void)_application:(id)arg1 initiatedChangefromInterfaceOrientation:(long long)arg2 toInterfaceOrientation:(long long)arg3 scene:(id)arg4 sceneSettings:(id)arg5 transitionContext:(id)arg6;
 - (id)_externalClientSettingsDiffInspector;
 - (id)_appClientSettingsDiffInspector;
 - (id)_internalClientSettingsDiffInspector;
+- (id)_keyboardLayersClientSettingsDiffInspector;
 - (_Bool)_isExternalForegroundScene:(id)arg1;
 - (void)_removeMedusaDraggingDestinationWindow:(id)arg1;
 - (void)_addMedusaDraggingDestinationWindow:(id)arg1;
 @property(readonly, nonatomic) NSArray *_requiredContextIdentifiersForMedusaDraggingDestination;
-- (id)_newSceneIdentifierForApplication:(id)arg1;
+- (id)_sceneIdentifierForBundleIdentifier:(id)arg1 uniqueIdentifier:(id)arg2;
+- (id)_newSceneIdentifierForBundleIdentifier:(id)arg1 supportsMultiwindow:(_Bool)arg2;
 - (id)_newSceneIdentifierForBundleIdentifier:(id)arg1;
 - (id)_identifierForApplication:(id)arg1;
 - (id)newSceneIdentityForApplication:(id)arg1;
@@ -66,7 +78,8 @@
 - (id)sceneIdentityForApplication:(id)arg1 excludingIdentifiers:(id)arg2;
 - (id)sceneIdentityForApplication:(id)arg1 uniqueIdentifier:(id)arg2;
 - (id)sceneIdentityForApplication:(id)arg1;
-- (id)fetchOrCreateApplicationSceneHandleForApplication:(id)arg1 withIdentity:(id)arg2;
+- (id)fetchOrCreateApplicationSceneHandleForRequest:(id)arg1;
+- (_Bool)suspendedUnderLockManager:(id)arg1 shouldPreventSuspendUnderLockForScene:(id)arg2;
 - (id)suspendedUnderLockManagerVisibleScenesInLayoutState:(id)arg1;
 - (id)runningApplicationScenes:(id)arg1;
 - (id)suspendedUnderLockManager:(id)arg1 sceneHandleForScene:(id)arg2;
@@ -86,8 +99,10 @@
 - (_Bool)_shouldTrackScenesForDeactivation;
 - (_Bool)_shouldAutoHostScene:(id)arg1;
 - (id)_createRootWindowScenePresentationBinder;
+- (id)acquireIgnoreSuspendedUnderLockAssertionForSceneIdentifier:(id)arg1 reason:(id)arg2;
 - (id)preventTakingAdditionalMedusaSnapshotsForBackgroundingScenesWithReason:(id)arg1;
 - (void)createSceneForApplication:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setSuspendedUnderLock:(_Bool)arg1 alongsideWillChangeBlock:(CDUnknownBlockType)arg2 alongsideDidChangeBlock:(CDUnknownBlockType)arg3;
 @property(nonatomic, getter=isSuspendedUnderLock) _Bool suspendedUnderLock;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

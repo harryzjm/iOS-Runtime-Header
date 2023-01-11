@@ -15,6 +15,7 @@
     _Bool _cloudSync;
     NSMutableArray *_entities;
     NSMutableArray *_topics;
+    NSMutableArray *_topicsExactMatchesInSourceText;
     NSMutableDictionary *_locations;
     PPSource *_source;
     unsigned long long _entityAlgorithm;
@@ -23,6 +24,7 @@
     double _sentimentScore;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double sentimentScore; // @synthesize sentimentScore=_sentimentScore;
 @property(nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
 @property(nonatomic) _Bool cloudSync; // @synthesize cloudSync=_cloudSync;
@@ -30,15 +32,14 @@
 @property(nonatomic) unsigned long long entityAlgorithm; // @synthesize entityAlgorithm=_entityAlgorithm;
 @property(retain, nonatomic) PPSource *source; // @synthesize source=_source;
 @property(retain, nonatomic) NSMutableDictionary *locations; // @synthesize locations=_locations;
+@property(retain, nonatomic) NSMutableArray *topicsExactMatchesInSourceText; // @synthesize topicsExactMatchesInSourceText=_topicsExactMatchesInSourceText;
 @property(retain, nonatomic) NSMutableArray *topics; // @synthesize topics=_topics;
 @property(retain, nonatomic) NSMutableArray *entities; // @synthesize entities=_entities;
-- (void).cxx_destruct;
 - (void)flushWrites;
 - (void)writeWithEntityStore:(id)arg1;
 - (void)writeSynchronous;
 - (void)addLocation:(id)arg1 algorithm:(unsigned short)arg2;
 - (unsigned long long)_donateLocationsWithContextualNamedEntities:(id)arg1;
-- (id)asyncWriteQueue;
 
 @end
 

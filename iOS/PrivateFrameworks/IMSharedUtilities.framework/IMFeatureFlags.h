@@ -11,6 +11,30 @@
 }
 
 + (id)sharedInstance;
+@property(readonly, nonatomic) _Bool fullTranscriptLoggingEnabled;
+@property(readonly, nonatomic) _Bool messageSyncP2Enabled;
+@property(readonly, nonatomic) _Bool macApplicationMetricsGatheringEnabled;
+@property(readonly, nonatomic) _Bool macToolbarEnabled;
+@property(readonly, nonatomic) _Bool mentionsKeyboardSuggestionsEnabled;
+@property(readonly, nonatomic) _Bool mentionsEnabled;
+@property(readonly, nonatomic) _Bool avatarViewAllowsStaleRendering;
+@property(readonly, nonatomic) _Bool conversationPinningTouchdownDimEnabled;
+@property(readonly, nonatomic) _Bool conversationPinningMultiDragEnabled;
+@property(readonly, nonatomic) _Bool conversationPinningUsesLastNameForDuplicatesEnabled;
+@property(readonly, nonatomic) _Bool conversationPinningSyncEnabled;
+@property(readonly, nonatomic) _Bool conversationPinningOnboardingEnabled;
+@property(readonly, nonatomic) _Bool conversationPinningEnabled;
+@property(readonly, nonatomic) _Bool newConversationListEnabled;
+- (_Bool)isImagePreviewBlastDoorEnabled;
+- (_Bool)isGreenfieldBlastDoorEnabled;
+- (_Bool)isGreenfieldEnabled;
+- (_Bool)fixIMDPersistenceAgentPriorityInversion;
+- (_Bool)fixIMTranscoderAgentPriorityInversion;
+- (_Bool)messageAppFreezerEnabled;
+- (_Bool)fixImagentPriorityInversion;
+- (_Bool)loadAllChatsProgressivelyEnabled;
+- (_Bool)groupPhotoEnabled;
+- (_Bool)messagesBlastdoorEnabled;
 - (_Bool)manuallyAckMessagesEnabled;
 - (_Bool)certifiedDeliveryEnabled;
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSString, PLPhotoLibrary;
+@class NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSString, PLLibraryServicesManager, PLPhotoLibrary;
 
 @interface PLFileSystemAssetImporter : NSObject
 {
     PLPhotoLibrary *_photoLibrary;
-    NSString *_mediaDirectoryPath;
+    PLLibraryServicesManager *_libraryServicesManager;
+    NSString *_libraryBundlePath;
     NSString *_photoLibraryStoreUUID;
     NSMutableIndexSet *_thumbIndexes;
     _Bool _hasProcessedAnyAssets;
@@ -21,11 +22,11 @@
     unsigned long long _thumbnailBatchFetchSize;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long thumbnailBatchFetchSize; // @synthesize thumbnailBatchFetchSize=_thumbnailBatchFetchSize;
 @property(retain, nonatomic) NSMutableDictionary *existingOIDsByUUID; // @synthesize existingOIDsByUUID=_existingOIDsByUUID;
 @property(retain, nonatomic) NSMutableDictionary *existingUUIDsByUppercasePath; // @synthesize existingUUIDsByUppercasePath=_existingUUIDsByUppercasePath;
 @property(retain, nonatomic) NSMutableSet *existingUUIDs; // @synthesize existingUUIDs=_existingUUIDs;
-- (void).cxx_destruct;
 - (unsigned long long)nextThumbnailIndex;
 - (void)addAvailableThumbnailIndex:(unsigned long long)arg1;
 - (_Bool)_setupVideoAsset:(id)arg1 withURL:(id)arg2;
@@ -37,11 +38,11 @@
 - (_Bool)_setupPhotoAssetAsPhotoIrisIfNeeded:(id)arg1 hasVideoComplementResource:(_Bool)arg2;
 - (void)setModificationAndCreationDateOnAsset:(id)arg1 withURL:(id)arg2;
 - (id)addAssetWithURLs:(id)arg1 assetPayload:(id)arg2 forceInsert:(_Bool)arg3 forceUpdate:(_Bool)arg4 fixAddedDate:(_Bool)arg5;
-- (id)assetURLisInDatabase:(id)arg1;
-- (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2 isPlaceholder:(_Bool)arg3;
+- (id)assetURLisInDatabase:(id)arg1 deferredPreviewURL:(id)arg2;
+- (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2 assetUUID:(id)arg3 isPlaceholder:(_Bool)arg4;
 - (void)dealloc;
-- (id)mediaDirectoryPathWithPhotoLibrary:(id)arg1;
-- (id)initWithPhotoLibrary:(id)arg1;
+- (id)libraryBundlePathWithPhotoLibrary:(id)arg1;
+- (id)initWithPhotoLibrary:(id)arg1 libraryServicesManager:(id)arg2;
 
 @end
 

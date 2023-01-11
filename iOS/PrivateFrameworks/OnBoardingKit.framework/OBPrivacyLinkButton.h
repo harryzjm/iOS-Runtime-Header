@@ -6,33 +6,42 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSString, OBTintInheritingImageView, UITextView, UIView;
+@class NSString, UIImageView, UILabel, UITextView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface OBPrivacyLinkButton : UIButton
 {
-    OBTintInheritingImageView *_iconView;
+    _Bool _largeIcon;
+    UIImageView *_iconView;
     UITextView *_textView;
+    UILabel *_buttonLabel;
     UIView *_containerView;
     NSString *_captionText;
     NSString *_buttonText;
+    struct CGSize _contentSize;
 }
 
+- (void).cxx_destruct;
+@property struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property _Bool largeIcon; // @synthesize largeIcon=_largeIcon;
 @property(readonly) NSString *buttonText; // @synthesize buttonText=_buttonText;
 @property(readonly) NSString *captionText; // @synthesize captionText=_captionText;
 @property(readonly) UIView *containerView; // @synthesize containerView=_containerView;
+@property(readonly) UILabel *buttonLabel; // @synthesize buttonLabel=_buttonLabel;
 @property(readonly) UITextView *textView; // @synthesize textView=_textView;
-@property(readonly) OBTintInheritingImageView *iconView; // @synthesize iconView=_iconView;
-- (void).cxx_destruct;
+@property(readonly) UIImageView *iconView; // @synthesize iconView=_iconView;
+- (_Bool)_isButtonAboveCaptionText;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)labelText;
-- (id)_textViewFont;
+- (id)_font;
 - (struct _NSRange)_rangeForButtonText;
 - (id)viewForLastBaselineLayout;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (id)titleForState:(unsigned long long)arg1;
 - (void)_updateButtonColorWithColor:(id)arg1;
+- (id)buttonColor;
+- (struct CGSize)intrinsicContentSize;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
 - (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize)arg4 useLargeIcon:(_Bool)arg5;

@@ -41,11 +41,12 @@
     _Bool _hostingPolicyForDisplay;
     _Bool _hostingPolicyForScene;
     _Bool _createDefaultTransitionContext;
+    _Bool _clientDidConnect;
 }
 
 + (id)observerWithObserver:(id)arg1;
-@property(readonly, nonatomic) __weak id <FBSceneManagerObserver> observer; // @synthesize observer=_observer;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <FBSceneManagerObserver> observer; // @synthesize observer=_observer;
 - (id)_privateDelegate;
 - (id)_internalObserver;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -54,9 +55,8 @@
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (void)sceneManager:(id)arg1 interceptUpdateForScene:(id)arg2 withNewSettings:(id)arg3;
+- (void)sceneManager:(id)arg1 clientDidConnectWithHandshake:(id)arg2;
 - (id)sceneManager:(id)arg1 createDefaultTransitionContextForScene:(id)arg2;
-- (long long)sceneManager:(id)arg1 hostingPolicyForScene:(id)arg2;
-- (long long)sceneManager:(id)arg1 hostingPolicyForDisplay:(id)arg2;
 - (void)sceneManager:(id)arg1 scene:(id)arg2 didReceiveActions:(id)arg3;
 - (void)sceneManager:(id)arg1 scene:(id)arg2 didUpdateClientSettingsWithDiff:(id)arg3 oldClientSettings:(id)arg4 transitionContext:(id)arg5;
 - (void)sceneManager:(id)arg1 updateForScene:(id)arg2 completedWithContext:(id)arg3 error:(id)arg4;

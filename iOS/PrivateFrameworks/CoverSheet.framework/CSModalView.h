@@ -40,6 +40,7 @@
     _Bool _showsDateView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showsDateView; // @synthesize showsDateView=_showsDateView;
 @property(nonatomic) _Bool wantsEnhancedSecondaryActionButton; // @synthesize wantsEnhancedSecondaryActionButton=_wantsEnhancedSecondaryActionButton;
 @property(retain, nonatomic) UIView *detailView; // @synthesize detailView=_detailView;
@@ -52,7 +53,6 @@
 @property(nonatomic) _Bool showsStatusText; // @synthesize showsStatusText=_showsStatusText;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic) __weak id <CSModalViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (double)_bottomBaselineOffset;
 - (double)_timeToSubtitleLabelBaselineDifferenceY;
 - (double)_timeLabelBaselineY;

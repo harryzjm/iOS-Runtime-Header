@@ -7,6 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BusinessChatService)
+- (id)stringByRemovingOccurancesOfCharacter:(id)arg1 fromPosition:(long long)arg2;
+- (id)removeFilePrefix;
 - (_Bool)isBusinessID;
 - (id)prefixedBizID;
 - (id)bizIDWithoutPrefix;

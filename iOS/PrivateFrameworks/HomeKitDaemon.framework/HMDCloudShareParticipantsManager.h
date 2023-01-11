@@ -21,17 +21,19 @@
 }
 
 + (id)logCategory;
-@property(readonly) HMDHome *home; // @synthesize home=_home;
+- (void).cxx_destruct;
+@property __weak HMDHome *home; // @synthesize home=_home;
 @property(readonly) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property __weak id <HMDCloudShareParticipantsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property __weak id <HMDCloudShareParticipantsManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 - (void)handleHomeUserRemovedNotification:(id)arg1;
 - (void)handleHomeUserAddedNotification:(id)arg1;
-- (id)invitationContextForUser:(id)arg1 shouldGrantWriteAccess:(_Bool)arg2;
+- (id)_untrustedInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(_Bool)arg2;
+- (id)fetchInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(_Bool)arg2;
 - (id)fetchInvitationToUser:(id)arg1 shouldGrantWriteAccess:(_Bool)arg2;
+- (void)clearParticipants;
 - (void)updateShareParticipants;
 - (void)configure;
 @property(readonly) NSSet *participatingUsers;

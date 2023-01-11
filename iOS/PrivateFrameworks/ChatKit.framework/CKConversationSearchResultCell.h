@@ -13,6 +13,7 @@
 
 @interface CKConversationSearchResultCell : UICollectionViewCell <CNAvatarViewDelegate, CKSearchResultCell>
 {
+    _Bool _ck_editing;
     CKAvatarView *_avatarView;
     UILabel *_nameLabel;
     CKConversation *_conversation;
@@ -20,11 +21,12 @@
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing; // @synthesize _ck_editing;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
-- (void).cxx_destruct;
 - (void)_configureNameLabelForConversation:(id)arg1 searchText:(id)arg2;
 - (void)_configureAvatarViewForConversation:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;

@@ -10,8 +10,8 @@
 
 @interface AVPlayerItem (MPAVItemAdditions)
 @property(retain, nonatomic) MPAVItem *MPAVItem;
-- (id)MP_shortDescription;
 @property(nonatomic) __weak MPQueuePlayer *MP_associatedQueuePlayer;
+- (id)MP_shortDescription;
 - (id)createLanguageOptions;
 @end
 

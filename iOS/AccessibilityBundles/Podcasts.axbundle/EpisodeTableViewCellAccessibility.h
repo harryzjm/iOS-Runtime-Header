@@ -14,6 +14,8 @@
 - (id)_accessibilityUserTestingChildren;
 - (id)accessibilityCustomActions;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityCustomContent;
+- (_Bool)accessibilityActivate;
 - (id)accessibilityLabel;
 - (id)_axEpisodeView;
 - (_Bool)isAccessibilityElement;

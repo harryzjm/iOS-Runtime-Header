@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDatabase;
+@class CKDatabase, CKDatabaseOperationInfo;
 
 @interface CKDatabaseOperation
 {
@@ -12,11 +12,15 @@
 }
 
 - (void).cxx_destruct;
+- (long long)databaseScope;
 - (id)flowControlKey;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 @property(retain, nonatomic) CKDatabase *database; // @synthesize database=_database;
+
+// Remaining properties
+@property(readonly, nonatomic) CKDatabaseOperationInfo *operationInfo; // @dynamic operationInfo;
 
 @end
 

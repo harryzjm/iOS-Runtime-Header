@@ -16,9 +16,9 @@
     NSMutableArray *_hitTestViews;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long containerOrientation; // @synthesize containerOrientation=_containerOrientation;
 @property(nonatomic) long long contentOrientation; // @synthesize contentOrientation=_contentOrientation;
-- (void).cxx_destruct;
 - (void)setCenter:(struct CGPoint)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
@@ -39,6 +39,7 @@
 - (void)addHitTestView:(id)arg1;
 - (void)addContentView:(id)arg1;
 @property(readonly, nonatomic) NSArray *contentViews;
+@property(nonatomic, getter=isCounterTransformView) _Bool counterTransformView;
 - (id)description;
 - (id)initWithFrame:(struct CGRect)arg1;
 

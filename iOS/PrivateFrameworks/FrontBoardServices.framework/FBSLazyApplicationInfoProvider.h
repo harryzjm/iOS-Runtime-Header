@@ -16,6 +16,7 @@
 }
 
 @property(nonatomic) Class applicationInfoSubclass; // @synthesize applicationInfoSubclass=_applicationInfoSubclass;
+- (id)applicationInfoForAuditToken:(id)arg1;
 - (id)applicationInfoForBundleIdentifier:(id)arg1;
 - (id)init;
 

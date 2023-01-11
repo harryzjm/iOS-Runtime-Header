@@ -12,9 +12,9 @@
     long long _length;
 }
 
-@property(nonatomic) long long length; // @synthesize length=_length;
-@property(readonly, nonatomic) HDQuantityDatum *lastDatum; // @synthesize lastDatum=_lastDatum;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long length; // @synthesize length=_length;
+@property(readonly, nonatomic) HDQuantityDatum *lastDatum; // @synthesize lastDatum=_lastDatum;
 - (id)initWithRemainingSensorData:(id)arg1 currentSeries:(id)arg2 lastDatum:(id)arg3 length:(long long)arg4;
 
 @end

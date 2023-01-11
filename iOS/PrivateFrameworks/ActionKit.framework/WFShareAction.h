@@ -10,10 +10,11 @@
 {
 }
 
-- (id)excludedActivityTypes;
++ (id)userInterfaceXPCInterface;
++ (id)userInterfaceProtocol;
 - (_Bool)usesExtensionItems;
-- (void)presentActivityViewControllerForItems:(id)arg1 withUserInterface:(id)arg2;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2 isContentManaged:(_Bool)arg3;
+- (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end
 

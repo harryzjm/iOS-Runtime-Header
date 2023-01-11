@@ -11,7 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityNativeFocusPreferredElement;
+- (id)accessibilityPath;
 - (id)accessibilityLabel;
+- (id)accessibilityIdentifier;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)accessibilityElementsHidden;

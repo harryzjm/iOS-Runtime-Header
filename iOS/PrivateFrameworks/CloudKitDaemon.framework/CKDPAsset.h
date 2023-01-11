@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     long long _size;
     NSString *_assetAuthorizationResponseUUID;
     NSData *_clearAssetKey;
+    NSData *_constructedAssetDownloadParameters;
     NSString *_constructedAssetDownloadURL;
     NSString *_contentBaseURL;
     NSString *_downloadBaseURL;
@@ -41,6 +42,8 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSData *constructedAssetDownloadParameters; // @synthesize constructedAssetDownloadParameters=_constructedAssetDownloadParameters;
 @property(nonatomic) long long constructedAssetDownloadEstimatedSize; // @synthesize constructedAssetDownloadEstimatedSize=_constructedAssetDownloadEstimatedSize;
 @property(nonatomic) long long constructedAssetDownloadURLExpiration; // @synthesize constructedAssetDownloadURLExpiration=_constructedAssetDownloadURLExpiration;
 @property(retain, nonatomic) NSString *constructedAssetDownloadURL; // @synthesize constructedAssetDownloadURL=_constructedAssetDownloadURL;
@@ -60,7 +63,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long size; // @synthesize size=_size;
 @property(retain, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property(retain, nonatomic) NSString *owner; // @synthesize owner=_owner;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -70,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasConstructedAssetDownloadParameters;
 @property(nonatomic) _Bool hasConstructedAssetDownloadEstimatedSize;
 @property(nonatomic) _Bool hasConstructedAssetDownloadURLExpiration;
 @property(readonly, nonatomic) _Bool hasConstructedAssetDownloadURL;

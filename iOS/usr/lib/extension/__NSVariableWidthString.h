@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     NSString *_defaultString;
 }
 
+- (id)_widthVariants;
 @property(readonly) unsigned long long length;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;

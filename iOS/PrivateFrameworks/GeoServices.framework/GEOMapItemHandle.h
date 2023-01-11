@@ -13,20 +13,19 @@
 @interface GEOMapItemHandle : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOMapItemClientAttributes *_clientAttributes;
     GEOPDPlaceRefinementParameters *_placeRefinementParameters;
     GEOMapItemInitialRequestData *_placeRequestData;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _handleType;
     struct {
         unsigned int has_handleType:1;
         unsigned int read_clientAttributes:1;
         unsigned int read_placeRefinementParameters:1;
         unsigned int read_placeRequestData:1;
-        unsigned int wrote_clientAttributes:1;
-        unsigned int wrote_placeRefinementParameters:1;
-        unsigned int wrote_placeRequestData:1;
-        unsigned int wrote_handleType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -42,21 +41,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOMapItemClientAttributes *clientAttributes;
 @property(readonly, nonatomic) _Bool hasClientAttributes;
-- (void)_readClientAttributes;
 @property(retain, nonatomic) GEOMapItemInitialRequestData *placeRequestData;
 @property(readonly, nonatomic) _Bool hasPlaceRequestData;
-- (void)_readPlaceRequestData;
 @property(retain, nonatomic) GEOPDPlaceRefinementParameters *placeRefinementParameters;
 @property(readonly, nonatomic) _Bool hasPlaceRefinementParameters;
-- (void)_readPlaceRefinementParameters;
 - (int)StringAsHandleType:(id)arg1;
 - (id)handleTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasHandleType;
 @property(nonatomic) int handleType;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

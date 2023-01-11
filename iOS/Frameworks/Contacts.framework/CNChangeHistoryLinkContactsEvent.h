@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
     CNContact *_toContact;
 }
 
++ (unsigned long long)instanceSortOrder;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CNContact *toContact; // @synthesize toContact=_toContact;
 @property(readonly, nonatomic) CNContact *fromContact; // @synthesize fromContact=_fromContact;
-- (void).cxx_destruct;
+- (long long)comparisonResultWithinSameClass:(id)arg1;
 - (void)acceptEventVisitor:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;

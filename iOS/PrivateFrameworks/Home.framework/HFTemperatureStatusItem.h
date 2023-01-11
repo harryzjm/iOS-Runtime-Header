@@ -10,6 +10,7 @@
 
 + (unsigned long long)abstractCurrentModeInResponse:(id)arg1;
 + (unsigned long long)abstractTargetModeInResponse:(id)arg1;
++ (_Bool)shouldShowAverageForRange:(id)arg1;
 + (_Bool)isPercentRange;
 + (id)customValueFormatter;
 + (CDUnknownBlockType)displayValueComparator;
@@ -22,6 +23,8 @@
 + (id)currentValueCharacteristicType;
 + (id)sensorServiceTypes;
 + (id)controllableServiceTypes;
++ (unsigned long long)statusItemCategory;
+- (id)title;
 
 @end
 

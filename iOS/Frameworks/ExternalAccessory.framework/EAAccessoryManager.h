@@ -30,6 +30,7 @@
 + (void)accessibilityStartListening;
 + (void)registerCapabilities:(unsigned int)arg1;
 + (id)sharedAccessoryManager;
+- (void)sendWiredCarPlayAvailable:(id)arg1 usbIdentifier:(id)arg2 wirelessCarPlayAvailable:(id)arg3 bluetoothIdentifier:(id)arg4 forUUID:(id)arg5;
 - (void)sendDeviceIdentifierNotification:(id)arg1 usbIdentifier:(id)arg2 forUUID:(id)arg3;
 - (id)currentVehicleInformation:(id)arg1;
 - (void)requestIAPAccessoryWiFiCredentials:(id)arg1;

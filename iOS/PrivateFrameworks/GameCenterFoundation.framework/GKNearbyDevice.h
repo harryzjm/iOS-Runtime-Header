@@ -17,12 +17,12 @@
 }
 
 + (id)nearbyDeviceWithID:(id)arg1 discovery:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKPlayer *player; // @synthesize player=_player;
 @property(retain, nonatomic) GKDiscovery *discovery; // @synthesize discovery=_discovery;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(retain, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
-- (void)sendDictionary:(id)arg1;
-- (void)dealloc;
+- (void)sendDictionary:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

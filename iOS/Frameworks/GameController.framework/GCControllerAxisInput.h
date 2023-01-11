@@ -8,25 +8,31 @@
 
 @interface GCControllerAxisInput
 {
-    _Bool _flipped;
+    float _minValue;
+    float _maxValue;
+    _Bool _horizontal;
     float _value;
     CDUnknownBlockType _valueChangedHandler;
     GCControllerButtonInput *_positive;
     GCControllerButtonInput *_negative;
 }
 
-@property(nonatomic, getter=isFlipped) _Bool flipped; // @synthesize flipped=_flipped;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GCControllerButtonInput *negative; // @synthesize negative=_negative;
 @property(retain, nonatomic) GCControllerButtonInput *positive; // @synthesize positive=_positive;
 @property(nonatomic) float value; // @synthesize value=_value;
+@property(nonatomic, getter=isHorizontal) _Bool horizontal; // @synthesize horizontal=_horizontal;
 @property(copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
-- (void).cxx_destruct;
 - (int)getAndResetTimesPressed;
 - (_Bool)_setValue:(float)arg1 queue:(id)arg2;
 - (_Bool)_setValue:(float)arg1;
 - (_Bool)isAnalog;
 - (id)description;
-- (id)initWithCollection:(id)arg1 flipped:(_Bool)arg2;
+- (float)maxValue;
+- (float)minValue;
+- (void)setMinValue:(float)arg1 andMaxValue:(float)arg2;
+- (id)initWithCollection:(id)arg1;
+- (id)initWithCollection:(id)arg1 horizontal:(_Bool)arg2;
 
 @end
 

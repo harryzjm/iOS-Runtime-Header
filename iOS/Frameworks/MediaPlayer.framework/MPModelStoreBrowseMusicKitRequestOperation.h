@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface MPModelStoreBrowseMusicKitRequestOperation
 {
 }
 
-- (id)radioGenresURLWithStoreBagDictionary:(id)arg1;
-- (id)browseURLWithStoreBagDictionary:(id)arg1;
-- (id)_produceResponseWithParser:(id)arg1 results:(id)arg2 error:(id *)arg3;
-- (void)produceResponseWithLoadedOutput:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)configurationForLoadingModelDataWithStoreBagDictionary:(id)arg1 error:(id *)arg2;
+- (id)groupingNameBagKey;
 
 @end
 

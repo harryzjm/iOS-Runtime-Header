@@ -31,7 +31,7 @@
     NSURL *_objectID;
     NSDate *_date;
     NSDate *_lastCredentialRenewalRejectionDate;
-    NSString *_parentAccountIdentifier;
+    NSString *_modificationID;
     ACAccount *_parentAccount;
     NSArray *_childAccounts;
     ACMutableTrackedSet *_trackedProvisionedDataclasses;
@@ -45,21 +45,29 @@
     _Bool _accountAccessAvailable;
     _Bool _authenticated;
     _Bool _active;
+    _Bool _warmingUp;
     _Bool _supportsAuthentication;
     _Bool _visible;
-    _Bool _haveCheckedForParentAccount;
     _Bool _haveCheckedForChildAccounts;
     _Bool _wasProvisionedDataclassesReset;
     _Bool _wasEnabledDataclassesReset;
 }
 
++ (id)keypathsRequiredForInitialization;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType accountPropertiesTransformer; // @synthesize accountPropertiesTransformer=_accountPropertiesTransformer;
 @property(readonly, nonatomic) _Bool wasEnabledDataclassesReset; // @synthesize wasEnabledDataclassesReset=_wasEnabledDataclassesReset;
 @property(copy, nonatomic) ACTrackedSet *trackedEnabledDataclasses; // @synthesize trackedEnabledDataclasses=_trackedEnabledDataclasses;
 @property(readonly, nonatomic) _Bool wasProvisionedDataclassesReset; // @synthesize wasProvisionedDataclassesReset=_wasProvisionedDataclassesReset;
 @property(copy, nonatomic) ACTrackedSet *trackedProvisionedDataclasses; // @synthesize trackedProvisionedDataclasses=_trackedProvisionedDataclasses;
-- (void).cxx_destruct;
+@property(retain) NSString *managingSourceName;
+@property(retain) NSString *managingOwnerIdentifier;
+- (void)setChildCardDAVAccountIdentifier:(id)arg1;
+- (id)childCardDAVAccountIdentifier;
+- (_Bool)correctPersonaScopedForAccount;
+- (id)personaIdentifier;
+- (_Bool)isDataSeparatedAccount;
 - (id)secCertificates;
 - (void)setSecCertificates:(id)arg1;
 - (struct __SecIdentity *)copySecIdentity;
@@ -75,7 +83,6 @@
 - (_Bool)addClientToken:(id)arg1;
 @property(readonly, nonatomic) NSString *clientToken;
 - (id)accountByCleaningThirdPartyTransformations;
-- (void)_loadCachedPropertiesWithoutCredentials;
 - (void)_loadAllCachedProperties;
 - (void)refresh;
 - (void)reload;
@@ -93,6 +100,7 @@
 - (void)setProvisioned:(_Bool)arg1 forDataclass:(id)arg2;
 - (_Bool)isProvisionedForDataclass:(id)arg1;
 @property(retain, nonatomic) NSMutableSet *provisionedDataclasses;
+@property(readonly, nonatomic) NSString *modificationID;
 - (void)_clearCachedChildAccounts;
 - (id)childAccountsWithAccountTypeIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSArray *childAccounts;
@@ -105,6 +113,7 @@
 @property(readonly, nonatomic) _Bool supportsPush;
 @property(nonatomic) _Bool supportsAuthentication;
 @property(nonatomic, getter=isVisible) _Bool visible;
+@property(nonatomic, getter=isWarmingUp) _Bool warmingUp;
 @property(nonatomic, getter=isActive) _Bool active;
 @property(retain, nonatomic) NSDate *lastCredentialRenewalRejectionDate;
 @property(nonatomic, getter=isAuthenticated) _Bool authenticated;
@@ -121,6 +130,7 @@
 - (void)setOwningBundleID:(id)arg1;
 - (id)owningBundleID;
 @property(copy, nonatomic) NSString *accountDescription;
+@property(readonly, nonatomic) ACAccountCredential *internalCredential;
 @property(retain, nonatomic) ACAccountCredential *credential;
 - (id)credentialWithError:(id *)arg1;
 @property(readonly, nonatomic) NSString *userFullName;

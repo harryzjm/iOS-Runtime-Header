@@ -44,6 +44,7 @@
 
 + (_Bool)isEmulatingImagePicker;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CAMCameraViewControllerCameraSessionDelegate> cameraSessionDelegate; // @synthesize cameraSessionDelegate=_cameraSessionDelegate;
 @property(nonatomic) _Bool automaticallyManagesCameraSession; // @synthesize automaticallyManagesCameraSession=_automaticallyManagesCameraSession;
 @property(nonatomic) __weak id <CAMCameraViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
@@ -64,15 +65,17 @@
 @property(readonly, nonatomic) CAMTimelapseController *timelapseController; // @synthesize timelapseController=_timelapseController;
 @property(readonly, nonatomic) CUCaptureController *captureController; // @synthesize captureController=_captureController;
 @property(nonatomic) __weak id <CAMCameraCaptureDelegate> captureDelegate; // @synthesize captureDelegate=_captureDelegate;
-- (void).cxx_destruct;
 @property(nonatomic, getter=creativeCameraDelegate) __weak id <CAMCreativeCameraDelegate> creativeCameraDelegate;
 - (id)reviewButton;
 - (void)handleReviewButtonReleased:(id)arg1;
+- (void)_renderLivePhotoWithCoordinator:(id)arg1 specifiers:(unsigned long long)arg2 photoProperties:(id)arg3 videoProperties:(id)arg4 adjustments:(id)arg5;
 - (id)_mediaConversionOptionsForAdjustments:(id)arg1 mediaType:(long long)arg2;
 @property(readonly, nonatomic) PAVideoConversionServiceClient *_videoConversionClient; // @synthesize _videoConversionClient=__videoConversionClient;
 @property(readonly, nonatomic) PAImageConversionServiceClient *_imageConversionClient; // @synthesize _imageConversionClient=__imageConversionClient;
+- (void)stillImagePersistenceCoordinatorDidCompleteAllDispatches:(id)arg1;
+- (void)_handlePhotoProperties:(id)arg1 videoProperties:(id)arg2 unfilteredPhotoProperties:(id)arg3 unfilteredVideoProperties:(id)arg4 assetAdjustments:(id)arg5 attemptPairingVideo:(_Bool)arg6 error:(id)arg7;
 - (void)stillImagePersistenceCoordinator:(id)arg1 requestsDispatchForResultSpecifiers:(unsigned long long)arg2 photoProperties:(id)arg3 videoProperties:(id)arg4 unfilteredPhotoProperties:(id)arg5 unfilteredVideoProperties:(id)arg6 assetAdjustments:(id)arg7 error:(id)arg8;
-- (void)_resultQueue_removeStillImageResultCoordinatorForRequest:(id)arg1;
+- (void)_resultQueue_removeStillImageResultCoordinatorForIdentifier:(id)arg1;
 - (id)_resultQueue_getStillImageResultCoordinatorForRequest:(id)arg1;
 - (id)_resultQueue_getOrCreateStillImageResultCoordinatorForRequest:(id)arg1 captureTimeExpectedResultSpecifiers:(id)arg2 isExpectingPairedVideo:(_Bool)arg3 isDisablingMultipleCaptures:(_Bool)arg4 isGeneratingFilteredMedia:(_Bool)arg5;
 - (void)_resultQueue_forceCompletionIfPossibleForRequest:(id)arg1;
@@ -87,6 +90,7 @@
 - (void)captureController:(id)arg1 didGenerateStillImageCaptureResult:(id)arg2 fromRequest:(id)arg3;
 - (id)_clientPropertiesForVideoURL:(id)arg1 renderedURL:(id)arg2 duration:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4 creationDate:(id)arg5 captureOrientation:(long long)arg6 previewOrientation:(long long)arg7 adjustments:(id)arg8 uniqueIdentifier:(id)arg9 savedToPhotoLibrary:(_Bool)arg10;
 - (id)_clientPropertiesForLivePhotoVideoURL:(id)arg1 duration:(CDStruct_1b6d18a9)arg2 error:(id)arg3;
+- (id)_clientPropertiesForPhotoProperties:(id)arg1 withFilteredImageURL:(id)arg2 conversionOutputInfo:(id)arg3 error:(id)arg4;
 - (id)_clientPropertiesForStillImageWithURL:(id)arg1 captureMode:(long long)arg2 captureOrientation:(long long)arg3 previewSurface:(void *)arg4 previewOrientation:(long long)arg5 uniqueIdentifier:(id)arg6 savedToPhotoLibrary:(_Bool)arg7 captureResult:(id)arg8;
 - (id)_exportPropertiesForClientProperties:(id)arg1;
 - (void)_notifyCaptureDelegateOfCompletedCaptureOfVideo:(id)arg1 withProperties:(id)arg2 error:(id)arg3;

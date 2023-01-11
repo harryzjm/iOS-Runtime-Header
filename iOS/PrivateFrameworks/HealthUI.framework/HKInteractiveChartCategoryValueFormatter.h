@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface HKInteractiveChartCategoryValueFormatter
 {
+    NSString *_localizedCategoryName;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *localizedCategoryName; // @synthesize localizedCategoryName=_localizedCategoryName;
+- (id)_uniqueChartPoints:(id)arg1;
 - (id)formattedValueStringForChartData:(id)arg1 options:(long long)arg2;
 - (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
-- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1;
+- (id)_formattedStringWithText:(id)arg1;
 - (id)_formattedStringWithCount:(long long)arg1;
 - (id)_formattedStringWithValue:(long long)arg1 useColorAttributes:(_Bool)arg2;
+- (id)initWithLocalizedCategoryName:(id)arg1;
 
 @end
 

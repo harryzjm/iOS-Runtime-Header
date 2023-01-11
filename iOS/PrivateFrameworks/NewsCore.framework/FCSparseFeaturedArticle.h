@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCFeedTransformationItem-Protocol.h>
 
-@class CKRecord, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSArray, NSDate, NSString;
+@class CKRecord, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
 @protocol FCChannelProviding;
 
 @interface FCSparseFeaturedArticle : NSObject <FCFeedTransformationItem>
@@ -16,13 +16,15 @@
     CKRecord *_articleRecord;
     NSString *_storefrontID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *_conversionStats;
 }
 
-+ (id)requiredArticleRecordKeysWithStorefrontID:(id)arg1;
++ (id)requiredArticleRecordKeysWithRecordSource:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *scores; // @synthesize scores=_scores;
 @property(readonly, copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(readonly, nonatomic) CKRecord *articleRecord; // @synthesize articleRecord=_articleRecord;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool canBePurchased;
 @property(readonly, nonatomic) long long publisherArticleVersion;
 @property(readonly, nonatomic) long long minimumNewsVersion;
@@ -36,11 +38,17 @@
 @property(readonly, copy, nonatomic) NSString *clusterID;
 @property(readonly, copy, nonatomic) NSString *articleID;
 @property(readonly, copy, nonatomic) NSString *feedID;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
 @property(readonly, nonatomic) long long bodyTextLength;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
+@property(readonly, nonatomic) _Bool hasAudioTrack;
 @property(readonly, nonatomic) _Bool hasVideo;
 @property(readonly, nonatomic, getter=isBundlePaid) _Bool bundlePaid;
 @property(readonly, nonatomic, getter=isPaid) _Bool paid;
@@ -53,7 +61,7 @@
 @property(readonly, copy, nonatomic) NSDate *publishDate;
 @property(readonly, copy, nonatomic) NSString *itemID;
 @property(readonly, copy, nonatomic) NSString *sourceFeedID;
-- (id)initWithArticleRecord:(id)arg1 storefrontID:(id)arg2;
+- (id)initWithArticleRecord:(id)arg1 storefrontID:(id)arg2 recordSource:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

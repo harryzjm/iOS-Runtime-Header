@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class OSLogEventLiveStream, SignpostIntervalBuilder, SignpostSupportExactProcessNameFilter, SignpostSupportObjectFilter, SignpostSupportPIDFilter, SignpostSupportSubsystemCategoryFilter, SignpostSupportUniquePIDFilter;
+@class NSUUID, OSLogEventLiveStream, SignpostIntervalBuilder, SignpostSupportExactProcessNameFilter, SignpostSupportObjectFilter, SignpostSupportPIDFilter, SignpostSupportSubsystemCategoryFilter, SignpostSupportUniquePIDFilter;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface SignpostSupportObjectExtractor : NSObject
@@ -32,6 +32,7 @@
     CDUnknownBlockType _timedOutBeginEventProcessingBlock;
     NSObject<OS_dispatch_semaphore> *_completionSemaphore;
     NSObject<OS_dispatch_semaphore> *_syncSem;
+    NSUUID *_currentBootUUID;
     unsigned long long __notificationTimeout;
     NSObject<OS_dispatch_queue> *_notificationProcessingQueue;
     OSLogEventLiveStream *__liveStream;
@@ -39,11 +40,13 @@
     CDUnknownBlockType __intervalEndHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType _intervalEndHandler; // @synthesize _intervalEndHandler=__intervalEndHandler;
 @property(copy, nonatomic) CDUnknownBlockType _stopProcessingBlock; // @synthesize _stopProcessingBlock=__stopProcessingBlock;
 @property(retain, nonatomic) OSLogEventLiveStream *_liveStream; // @synthesize _liveStream=__liveStream;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *notificationProcessingQueue; // @synthesize notificationProcessingQueue=_notificationProcessingQueue;
 @property(nonatomic) unsigned long long _notificationTimeout; // @synthesize _notificationTimeout=__notificationTimeout;
+@property(retain, nonatomic) NSUUID *currentBootUUID; // @synthesize currentBootUUID=_currentBootUUID;
 @property(readonly, nonatomic) NSObject<OS_dispatch_semaphore> *syncSem; // @synthesize syncSem=_syncSem;
 @property(readonly, nonatomic) NSObject<OS_dispatch_semaphore> *completionSemaphore; // @synthesize completionSemaphore=_completionSemaphore;
 @property _Bool _shouldStopProcessing; // @synthesize _shouldStopProcessing=__shouldStopProcessing;
@@ -65,7 +68,6 @@
 @property(retain, nonatomic) SignpostSupportPIDFilter *pidFilter; // @synthesize pidFilter=_pidFilter;
 @property(retain, nonatomic) SignpostSupportExactProcessNameFilter *processNameFilter; // @synthesize processNameFilter=_processNameFilter;
 @property(retain, nonatomic) SignpostSupportSubsystemCategoryFilter *subsystemCategoryFilter; // @synthesize subsystemCategoryFilter=_subsystemCategoryFilter;
-- (void).cxx_destruct;
 - (id)_loggingSupportStreamPredicateFromFiltersWithForLiveStreaming:(_Bool)arg1;
 - (void)dealloc;
 - (void)_processingCompleted:(id)arg1;
@@ -82,6 +84,7 @@
 - (_Bool)_hasNonObjectFilters;
 - (_Bool)_isTrackingIntervals;
 - (_Bool)_hasSignpostProcessingBlock;
+- (_Bool)_hasProcessingBlock;
 - (_Bool)processSerializedObjectsFromSignpostFile:(id)arg1 errorOut:(id *)arg2;
 - (void)finishProcessingSerializedData;
 - (_Bool)processSerializedObjectsFromData:(id)arg1 errorOut:(id *)arg2;

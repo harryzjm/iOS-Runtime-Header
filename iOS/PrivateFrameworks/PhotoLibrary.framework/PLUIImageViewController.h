@@ -93,7 +93,6 @@
 - (long long)_imagePickerStatusBarStyle;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)didUpdateNavigationBarAppearance;
 - (_Bool)isDisplayedInPhotoPicker;
 - (long long)preferredStatusBarUpdateAnimation;
 - (_Bool)prefersStatusBarHidden;

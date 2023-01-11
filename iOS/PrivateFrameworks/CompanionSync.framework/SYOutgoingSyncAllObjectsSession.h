@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 @interface SYOutgoingSyncAllObjectsSession
 {
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     _Bool _errorIsLocal;
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     NSObject<OS_dispatch_source> *_sessionTimer;
@@ -22,12 +22,12 @@ __attribute__((visibility("hidden")))
     _Bool canRollback;
 }
 
+- (void).cxx_destruct;
 - (void)setCanRollback:(_Bool)arg1;
 - (_Bool)canRollback;
 - (void)setCanRestart:(_Bool)arg1;
 - (_Bool)canRestart;
 - (_Bool)wasCancelled;
-- (void).cxx_destruct;
 - (_Bool)_handleBatchSyncEndResponse:(id)arg1 error:(id *)arg2;
 - (void)cancelWithError:(id)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
@@ -42,9 +42,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)protocolVersion;
 - (_Bool)isSending;
 - (_Bool)isResetSync;
-- (void)_setStateQuietly:(long long)arg1;
-- (void)setState:(long long)arg1;
-- (long long)state;
+- (void)_setStateQuietly:(unsigned int)arg1;
+- (void)setState:(unsigned int)arg1;
+- (unsigned int)state;
 - (id)initWithService:(id)arg1;
 
 @end

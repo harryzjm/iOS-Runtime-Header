@@ -32,6 +32,10 @@ __attribute__((visibility("hidden")))
     } sc_out_address;
     unsigned short sc_shoes_request_length_hbo;
     unsigned char sc_out_address_domain_length;
+    unsigned long long sc_busy_counter;
+    unsigned long long sc_busy_start_time_nanos;
+    unsigned long long sc_total_busy_time_nanos;
+    unsigned long long sc_start_time_nanos;
     NSObject<OS_nw_connection> *sc_out_connection;
     NSObject<OS_nw_error> *sc_error;
     unsigned int sc_out_connection_failed_or_sent_write_close:1;
@@ -49,7 +53,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithConnection:(id)arg1 queue:(id)arg2 parent:(id)arg3 shoes:(_Bool)arg4 disableProxy:(_Bool)arg5;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties

@@ -6,9 +6,10 @@
 
 #import <NanoSystemSettings/NSSServerProtocol-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSNumber, NSString;
 
 @protocol NSSCompanionServerProtocol <NSSServerProtocol>
+- (void)recordSoftwareUpdateSpaceFailure:(NSNumber *)arg1 osBeingUpdatedTo:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getLocalesInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getLegalDocuments:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)rebootDevice;
@@ -21,6 +22,10 @@
 - (void)getAboutInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)deleteDiagnosticLogFile:(NSString *)arg1 withResult:(void (^)(NSError *))arg2;
 - (void)cancelActiveLogFileTranfers;
+- (void)cancelDiagnosticLogTranfer:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)retrieveDiagnosticLogTransferProgress:(NSString *)arg1 withProgress:(void (^)(unsigned long long, NSError *))arg2;
+- (void)setAirplaneModeSettings:(NSDictionary *)arg1 withCompletionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)retrieveAirplaneModeSettingsWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getDiagnosticLogsInfo:(void (^)(NSArray *, NSError *))arg1;
 - (void)getDiagnosticLogFileFromGizmo:(NSString *)arg1 withResults:(void (^)(NSURL *, NSError *))arg2;
 - (void)purgeUsageBundle:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;

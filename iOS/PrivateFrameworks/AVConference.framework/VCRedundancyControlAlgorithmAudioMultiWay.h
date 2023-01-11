@@ -18,8 +18,9 @@ __attribute__((visibility("hidden")))
     unsigned int _packetLossPercentageIncreaseThresholds[3];
     unsigned int _packetLossPercentageDecreaseThresholds[3];
     _Bool _isPacketLossIncreasing;
-    unsigned int _packetLossPercentage;
-    unsigned int _packetLossPercentageThreshold;
+    double _packetLossPercentage;
+    double _packetLossPercentageThreshold;
+    double _plrEnvelope;
     unsigned int _burstLossPacketCount;
     _Bool _isUplinkRecentlyCongested;
 }
@@ -28,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
 - (unsigned int)updateRedundancyPercentageWithPLRThresholds:(unsigned int *)arg1;
 - (void)computeRedundancyInfo;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
 - (id)init;
 
 // Remaining properties

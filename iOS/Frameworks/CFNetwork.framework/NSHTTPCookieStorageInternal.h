@@ -17,11 +17,8 @@
 }
 
 - (void)dealloc;
-- (void)_syncCookiesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_syncCookies;
-- (id)initInternalWithCFStorage:(struct OpaqueCFHTTPCookieStorage *)arg1;
 - (void)registerForPostingNotificationsWithContext:(id)arg1;
-- (id)_initWithIdentifier:(id)arg1 private:(_Bool)arg2;
 
 @end
 

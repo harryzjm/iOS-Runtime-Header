@@ -15,6 +15,7 @@
 @optional
 - (unsigned long long)oneUpPresentationHelperAdditionalOptions:(PUOneUpPresentationHelper *)arg1;
 - (long long)oneUpPresentationHelperPreferredPresentationOrientation:(PUOneUpPresentationHelper *)arg1;
+- (_Bool)oneUpPresentationHelperWantsShowInLibraryButton:(PUOneUpPresentationHelper *)arg1;
 - (_Bool)oneUpPresentationHelperPreventRevealInMomentAction:(PUOneUpPresentationHelper *)arg1;
 - (void)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 willPresentOneUpPreviewViewController:(PUOneUpViewController *)arg2;
 - (void)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 previewScrubberDidBecomeAvailable:(UIScrollView *)arg2;

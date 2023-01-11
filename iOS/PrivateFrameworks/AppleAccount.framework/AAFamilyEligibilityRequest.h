@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SSAccount;
+@class ACAccount;
 
 @interface AAFamilyEligibilityRequest
 {
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
 }
 
 + (Class)responseClass;
-@property(retain, nonatomic) SSAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 - (id)urlRequest;
 - (id)urlString;
 

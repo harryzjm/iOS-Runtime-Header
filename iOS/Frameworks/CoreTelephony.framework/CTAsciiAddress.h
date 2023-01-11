@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)asciiAddressWithString:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly) NSString *address; // @synthesize address=_address;
-- (void)dealloc;
 - (id)canonicalFormat;
 - (id)encodedString;
 - (id)copyWithZone:(struct _NSZone *)arg1;

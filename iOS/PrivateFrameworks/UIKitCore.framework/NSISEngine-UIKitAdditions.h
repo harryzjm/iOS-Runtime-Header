@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSISEngine.h>
+#import <CoreAutoLayout/NSISEngine.h>
 
 @interface NSISEngine (UIKitAdditions)
 - (id)debugQuickLookObject;

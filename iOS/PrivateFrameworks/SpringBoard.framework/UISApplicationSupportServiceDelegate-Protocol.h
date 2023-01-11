@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BSAuditToken, BSProcessHandle, NSArray, UISApplicationInitializationContext, UISApplicationSupportService;
+@class BSAuditToken, BSProcessHandle, NSArray, UISApplicationInitializationContext, UISApplicationInitializationContextParameters, UISApplicationSupportService;
 
 @protocol UISApplicationSupportServiceDelegate <NSObject>
 
@@ -14,6 +14,7 @@
 - (UISApplicationInitializationContext *)applicationInitializationContextForClient:(BSAuditToken *)arg1;
 - (void)destroyScenesWithPersistentIdentifiers:(NSArray *)arg1 animationType:(unsigned long long)arg2 destroySessions:(_Bool)arg3 forClient:(BSAuditToken *)arg4 completion:(void (^)(_Bool, NSError *))arg5;
 - (void)requestPasscodeUnlockUIForClient:(BSAuditToken *)arg1 withCompletion:(void (^)(_Bool))arg2;
+- (UISApplicationInitializationContext *)service:(UISApplicationSupportService *)arg1 initializeClient:(BSProcessHandle *)arg2 withParameters:(UISApplicationInitializationContextParameters *)arg3;
 - (void)service:(UISApplicationSupportService *)arg1 initializeClient:(BSProcessHandle *)arg2 withCompletion:(void (^)(UISApplicationInitializationContext *))arg3;
 - (UISApplicationInitializationContext *)service:(UISApplicationSupportService *)arg1 initializeClient:(BSProcessHandle *)arg2;
 - (_Bool)service:(UISApplicationSupportService *)arg1 overrideClientInitialization:(BSProcessHandle *)arg2;

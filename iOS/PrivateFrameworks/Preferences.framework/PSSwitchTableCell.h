@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;
 - (void)setValue:(id)arg1;
 - (void)reloadWithSpecifier:(id)arg1 animated:(_Bool)arg2;

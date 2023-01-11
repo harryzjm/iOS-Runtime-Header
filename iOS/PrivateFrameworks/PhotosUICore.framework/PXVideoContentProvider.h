@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVPlayerItem, NSError, NSString;
+@class NSDictionary, NSNumber, NSString, PXVideoContentProviderLoadingResult;
 
 @interface PXVideoContentProvider
 {
-    AVPlayerItem *_playerItem;
+    PXVideoContentProviderLoadingResult *_loadingResult;
     double _loadingProgress;
+    NSNumber *_videoAspectRatio;
     NSString *_contentIdentifier;
-    NSError *_error;
 }
 
-@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(readonly, copy, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;
-@property(nonatomic) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
-@property(retain, nonatomic) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;
+@property(retain, nonatomic) NSNumber *videoAspectRatio; // @synthesize videoAspectRatio=_videoAspectRatio;
+@property(nonatomic) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
+@property(retain, nonatomic) PXVideoContentProviderLoadingResult *loadingResult; // @synthesize loadingResult=_loadingResult;
+@property(readonly, nonatomic) NSDictionary *analyticsPayload;
 - (void)cancelLoading;
 - (void)beginLoadingWithPriority:(long long)arg1;
 - (id)mutableChangeObject;

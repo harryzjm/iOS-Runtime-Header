@@ -34,11 +34,13 @@
     NSDate *_lastQueryStartedTime;
 }
 
-+ (id)_leafAccountTypesToCheckForEquality;
++ (_Bool)shouldCreateAccountForBackingAccountInfo:(id)arg1;
 + (id)daAccountSubclassWithBackingAccountInfo:(id)arg1;
 + (void)reacquireClientRestrictions:(id)arg1;
 + (id)oneshotListOfAccountIDs;
 + (id)_leafAccountTypes;
++ (id)_leafAccountTypes;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *lastQueryStartedTime; // @synthesize lastQueryStartedTime=_lastQueryStartedTime;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *pendingQueryQueue; // @synthesize pendingQueryQueue=_pendingQueryQueue;
 @property(retain, nonatomic) NSMutableArray *pendingQueries; // @synthesize pendingQueries=_pendingQueries;
@@ -52,7 +54,6 @@
 @property(nonatomic) _Bool shouldUseOpportunisticSockets; // @synthesize shouldUseOpportunisticSockets=_shouldUseOpportunisticSockets;
 @property(retain, nonatomic) DAStatusReport *statusReport; // @synthesize statusReport=_statusReport;
 @property(readonly, nonatomic) ACAccount *backingAccountInfo; // @synthesize backingAccountInfo=_backingAccountInfo;
-- (void).cxx_destruct;
 - (_Bool)getFetchingAutomaticallyState;
 - (void)saveFetchingAutomaticallyState:(_Bool)arg1;
 - (void)removeXpcActivity;
@@ -76,7 +77,7 @@
 - (_Bool)isCalDAVAccount;
 - (_Bool)isLDAPAccount;
 - (_Bool)isActiveSyncAccount;
-- (_Bool)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
+- (_Bool)accountHasSignificantPropertyChangesWithChangeInfo:(id)arg1;
 - (_Bool)isEqualToAccount:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldFailAllTasks; // @synthesize shouldFailAllTasks=_shouldFailAllTasks;
 - (void)resetStatusReport;
@@ -111,7 +112,8 @@
 @property(readonly, nonatomic) NSSet *serverComplianceClasses;
 @property(readonly, nonatomic) NSString *serverRoot;
 @property(readonly, nonatomic) NSString *userAgentHeader;
-- (void)accountDidChangeFromOldAccountInfo:(id)arg1;
+- (void)_handleSignificantPropertyChanges;
+- (void)accountDidChangeWithChangeInfo:(id)arg1;
 - (void)removeDBSyncData;
 - (_Bool)shouldRemoveDBSyncDataOnAccountChange;
 - (id)onBehalfOfBundleIdentifier;
@@ -128,6 +130,7 @@
 @property(nonatomic) long long port;
 @property(retain, nonatomic) NSData *encryptionIdentityPersistentReference;
 @property(retain, nonatomic) NSData *signingIdentityPersistentReference;
+@property(readonly, nonatomic) NSString *preferredAddress;
 - (_Bool)accountContainsEmailAddress:(id)arg1;
 @property(copy, nonatomic) NSArray *emailAddresses;
 @property(copy, nonatomic) NSString *emailAddress;
@@ -200,6 +203,11 @@
 - (void)dropAssertionsAndRenewCredentialsInQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)localizedInvalidPasswordMessage;
 - (id)localizedIdenticalAccountFailureMessage;
+- (void)accountDidChangeFromOldAccountInfo:(id)arg1;
+- (_Bool)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
+- (void)cancelOfficeHoursRequestWithID:(id)arg1;
+- (id)setOfficeHours:(id)arg1 withConsumer:(id)arg2 error:(id *)arg3;
+- (id)fetchOfficeHoursWithConsumer:(id)arg1 error:(id *)arg2;
 - (void)cancelShareResponseInstance:(id)arg1 error:(id)arg2;
 - (id)reportShareRequestAsJunkForCalendar:(id)arg1 consumer:(id)arg2;
 - (id)respondToShareRequestForCalendar:(id)arg1 withResponse:(long long)arg2 consumer:(id)arg3;

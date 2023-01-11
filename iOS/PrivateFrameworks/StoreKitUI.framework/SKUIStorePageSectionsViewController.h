@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 
 + (id)viewControllerWithRestorationIdentifierPath:(id)arg1 coder:(id)arg2;
 + (_Bool)_shouldForwardViewWillTransitionToSize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SKUIIndexBarControl *indexBarControl; // @synthesize indexBarControl=_indexBarControl;
 @property(retain, nonatomic) SKUIResourceLoader *resourceLoader; // @synthesize resourceLoader=_resourceLoader;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
@@ -72,7 +73,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <SKUIStorePageSectionsDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) SKUIColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
 @property(retain, nonatomic) SKUIMetricsImpressionSession *activeMetricsImpressionSession; // @synthesize activeMetricsImpressionSession=_activeMetricsImpressionSession;
-- (void).cxx_destruct;
 - (void)_updateSectionsAfterMenuChange;
 - (void)_updateCollectionViewWithUpdates:(CDUnknownBlockType)arg1;
 - (void)_unregisterForNotificationsForEntityProvider:(id)arg1;
@@ -158,6 +158,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutCacheDidFinishBatch:(id)arg1;
 - (void)itemStateCenter:(id)arg1 itemStatesChanged:(id)arg2;
 - (void)collectionView:(id)arg1 editorialView:(id)arg2 didSelectLink:(id)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;

@@ -22,20 +22,25 @@
     NSNumber *_delegatedPrivateListeningEnabled;
     long long _reasonType;
     ICStoreRequestContext *_requestContext;
+    long long _requestedTrackCount;
     NSString *_stationHash;
     long long _stationID;
     NSString *_stationStringID;
     NSURL *_stationURL;
     ICRadioContentReference *_seedContentReference;
     ICRadioContentReference *_nowPlayingContentReference;
+    NSArray *_queueContentReferences;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *queueContentReferences; // @synthesize queueContentReferences=_queueContentReferences;
 @property(copy, nonatomic) ICRadioContentReference *nowPlayingContentReference; // @synthesize nowPlayingContentReference=_nowPlayingContentReference;
 @property(copy, nonatomic) ICRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;
 @property(copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 @property(copy, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
 @property(nonatomic) long long stationID; // @synthesize stationID=_stationID;
 @property(copy, nonatomic) NSString *stationHash; // @synthesize stationHash=_stationHash;
+@property(nonatomic) long long requestedTrackCount; // @synthesize requestedTrackCount=_requestedTrackCount;
 @property(nonatomic) _Bool shouldResponseContainStationMetadata; // @synthesize shouldResponseContainStationMetadata=_shouldResponseContainStationMetadata;
 @property(copy, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property(nonatomic) long long reasonType; // @synthesize reasonType=_reasonType;
@@ -46,7 +51,6 @@
 @property(copy, nonatomic) NSArray *playActivityEvents; // @synthesize playActivityEvents=_playActivityEvents;
 @property(nonatomic) _Bool allowsExplicitContent; // @synthesize allowsExplicitContent=_allowsExplicitContent;
 @property(copy, nonatomic) NSDictionary *additionalRequestParameters; // @synthesize additionalRequestParameters=_additionalRequestParameters;
-- (void).cxx_destruct;
 - (void)performWithResponseHandler:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

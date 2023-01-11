@@ -6,26 +6,21 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKAuthenticator;
+@class PKAuthenticator, UIViewController;
 
 @protocol PKAuthenticatorDelegate <NSObject>
 
 @optional
 - (void)dismissPassphraseViewController;
-- (void)presentPassphraseViewController:(struct UIViewController *)arg1 completionHandler:(void (^)(_Bool))arg2 reply:(void (^)(NSData *))arg3;
-- (struct UIViewController *)passphraseViewController;
+- (void)presentPassphraseViewController:(UIViewController *)arg1 completionHandler:(void (^)(_Bool))arg2 reply:(void (^)(NSData *))arg3;
+- (UIViewController *)passphraseViewController;
 - (void)dismissPasscodeViewController;
-- (void)presentPasscodeViewController:(struct UIViewController *)arg1 completionHandler:(void (^)(_Bool))arg2 reply:(void (^)(NSData *))arg3;
-- (struct UIViewController *)passcodeViewController;
+- (void)presentPasscodeViewController:(UIViewController *)arg1 completionHandler:(void (^)(_Bool))arg2 reply:(void (^)(NSData *))arg3;
+- (UIViewController *)passcodeViewController;
 - (void)authenticatorDidDeactivateTouchID:(PKAuthenticator *)arg1 status:(long long)arg2;
 - (void)authenticatorDidActivateTouchID:(PKAuthenticator *)arg1;
 - (void)authenticatorDidEncounterBiometricLockout:(PKAuthenticator *)arg1;
-- (void)authenticatorDidEncounterMatchMiss:(PKAuthenticator *)arg1;
-- (void)authenticator:(PKAuthenticator *)arg1 didRequestUserAction:(long long)arg2;
-- (void)authenticatorDidEncounterFingerOff:(PKAuthenticator *)arg1;
-- (void)authenticatorDidEncounterFingerOn:(PKAuthenticator *)arg1;
 - (void)authenticator:(PKAuthenticator *)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(PKAuthenticator *)arg1 didTransitionToPearlState:(long long)arg2;
-- (void)authenticatorWillRestartEvaluation:(PKAuthenticator *)arg1;
+- (void)authenticator:(PKAuthenticator *)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_912cb5d2)arg2;
 @end
 

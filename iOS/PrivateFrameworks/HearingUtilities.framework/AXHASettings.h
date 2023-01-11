@@ -6,26 +6,48 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, NSDictionary, NSMutableDictionary, NSMutableSet;
+@class ACAccountStore, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol OS_dispatch_queue;
 
 @interface AXHASettings : NSObject
 {
     ACAccountStore *_accountStore;
+    int _contentProtectionNotifyToken;
+    _Bool _finishediCloudSetup;
+    struct os_unfair_lock_s _syncLock;
+    NSMutableDictionary *_soundDetectionSnoozeDictionary;
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
+    NSObject<OS_dispatch_queue> *_icloudInitializationQueue;
 }
 
++ (id)stringForSoundDetectionState:(int)arg1;
 + (id)sharedInstance;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *icloudInitializationQueue; // @synthesize icloudInitializationQueue=_icloudInitializationQueue;
 @property(retain, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
 @property(retain, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
 @property(retain, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *soundDetectionSnoozeDictionary; // @synthesize soundDetectionSnoozeDictionary=_soundDetectionSnoozeDictionary;
+- (void)setSupportedSoundDetectionTypes:(id)arg1;
+@property(readonly, nonatomic) NSArray *supportedSoundDetectionTypes;
+- (void)addSnoozeDateToSnoozeDictionary:(id)arg1 forKey:(id)arg2;
+- (void)removeAllSoundDetectionTypes;
+- (void)removeSoundDetectionType:(id)arg1;
+- (void)addSoundDetectionType:(id)arg1;
+@property(retain, nonatomic) NSArray *enabledSoundDetectionTypes;
+@property(nonatomic) int soundDetectionState;
+@property(readonly, nonatomic) _Bool soundDetectionEnabled;
+@property(nonatomic) _Bool ultronIsRunning;
+@property(nonatomic) _Bool ultronSupportEnabled;
 - (_Bool)isDeviceIDOnCloudBlacklist:(id)arg1;
 - (void)removeDeviceIDFromCloudBlacklist:(id)arg1;
 - (void)addDeviceIDToCloudBlacklist:(id)arg1;
+@property(nonatomic) unsigned long long usedHearingFeatures;
 @property(nonatomic) long long complicationPreferredDisplayMode;
+@property(nonatomic) _Bool shouldStreamSystemSounds;
 @property(nonatomic) _Bool multideviceAudioEnabled;
 @property(nonatomic) _Bool multideviceSettingsEnabled;
 @property(nonatomic) _Bool exportsLiveListenToFile;
@@ -35,6 +57,7 @@
 @property(nonatomic) _Bool shouldStreamToLeftAid;
 @property(nonatomic) _Bool allowHearingAidControlOnLockScreen;
 @property(nonatomic) _Bool independentHearingAidSettings;
+@property(retain, nonatomic) NSDictionary *knownPeripheralUUIDs;
 @property(retain, nonatomic) NSDictionary *pairedHearingAids;
 - (id)deviceIDForPairingInformation:(id)arg1;
 - (id)_valueForPreferenceKey:(id)arg1;
@@ -54,6 +77,7 @@
 - (void)icloudHearingSettingsDidChange:(id)arg1;
 - (_Bool)shouldUseiCloud;
 - (id)convertPersistentRepresentation:(id)arg1 fromVersion:(float)arg2 toVersion:(float)arg3;
+- (_Bool)isPairedWithRealHearingAids;
 - (_Bool)isiCloudPaired;
 - (_Bool)isPairedWithFakeHearingAids;
 - (void)dealloc;

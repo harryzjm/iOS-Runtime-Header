@@ -6,22 +6,23 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLocking-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMFMessageDispatcher, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMAccessoryCategory, HMDAccessoryAdvertisement, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDUnassociatedAccessory : HMFObject <HMFLogging, HMFMessageReceiver, NSSecureCoding>
+@interface HMDUnassociatedAccessory : HMFObject <HMFLogging, HMFMessageReceiver, HMFLocking, NSSecureCoding>
 {
     NSUUID *_uuid;
+    id <HMFLocking> _lock;
     NSString *_name;
     HMAccessoryCategory *_category;
     NSString *_identifier;
     long long _associationOptions;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    HMDAccessoryAdvertisement *_accessoryAdvertisement;
     HMFMessageDispatcher *_messageDispatcher;
 }
 
@@ -29,26 +30,26 @@
 + (id)logCategory;
 + (id)shortDescription;
 + (id)otherAccessoryCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property(retain, nonatomic) HMDAccessoryAdvertisement *accessoryAdvertisement; // @synthesize accessoryAdvertisement=_accessoryAdvertisement;
 @property(readonly) long long associationOptions; // @synthesize associationOptions=_associationOptions;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)messageDestination;
 - (id)logIdentifier;
+- (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)unlock;
+- (void)lock;
+- (void)associateWithAccessoryAdvertisement:(id)arg1;
 - (void)identifyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleIdentify:(id)arg1;
 @property(readonly, getter=isReachable) _Bool reachable;
 - (void)updateCategoryWithCategoryIdentifier:(id)arg1;
-- (void)notifyClientOfUpdatedCategory:(id)arg1;
 @property(retain) HMAccessoryCategory *category; // @synthesize category=_category;
-- (void)notifyClientOfUpdatedName:(id)arg1;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)_registerForMessages;
 - (id)dumpDescription;
@@ -57,12 +58,14 @@
 - (id)descriptionWithPointer:(_Bool)arg1 additionalDescription:(id)arg2;
 - (id)shortDescription;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long transportTypes;
 @property(readonly) unsigned long long hash;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 - (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly) Class superclass;
 
 @end

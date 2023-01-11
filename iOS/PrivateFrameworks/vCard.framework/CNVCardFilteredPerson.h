@@ -18,11 +18,13 @@
 }
 
 + (id)filteredPersonWithPerson:(id)arg1 scope:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CNVCardFilteredPersonScope *scope; // @synthesize scope=_scope;
 @property(readonly, nonatomic) id <CNVCardPerson> person; // @synthesize person=_person;
-- (void).cxx_destruct;
 @property(readonly) NSArray *unknownProperties;
-@property(readonly) NSString *downtimeWhitelist;
+@property(readonly) NSData *imageHash;
+@property(readonly) NSString *imageType;
+@property(readonly) int downtimeWhitelistAuthorization;
 @property(readonly) NSString *preferredApplePersonaIdentifier;
 @property(readonly) NSString *preferredLikenessSource;
 @property(readonly) NSString *phonemeData;

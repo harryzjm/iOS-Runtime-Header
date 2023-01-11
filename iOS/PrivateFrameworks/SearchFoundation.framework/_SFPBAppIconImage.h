@@ -13,11 +13,13 @@
 
 @interface _SFPBAppIconImage : PBCodable <_SFPBAppIconImage, NSSecureCoding>
 {
+    int _iconType;
     NSString *_bundleIdentifier;
 }
 
-@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (void).cxx_destruct;
+@property(nonatomic) int iconType; // @synthesize iconType=_iconType;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

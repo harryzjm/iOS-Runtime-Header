@@ -27,6 +27,8 @@
 }
 
 + (_Bool)_ensureTCCAccessPreflightAndCheckForFileExistenceAtPath:(id)arg1;
++ (id)_abbreviatedDescriptionOfMediaPlaybackArchive:(id)arg1;
++ (id)_abbreviatedDescriptionOfToneIdentifierWithUnderlyingMediaPlaybackArchiveForLogging:(id)arg1;
 + (id)_currentOverridePolicyPreferenceKeyForAlertType:(long long)arg1;
 + (_Bool)_migrateLegacyToneSettings;
 + (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
@@ -41,6 +43,9 @@
 - (id)_localizedNameOfToneWithIdentifier:(id)arg1;
 - (id)_fileNameFromToneIdentifier:(id)arg1 withPrefix:(id)arg2;
 - (void)_performBlockInAccessQueue:(CDUnknownBlockType)arg1;
+- (_Bool)_hasUnderlyingPlaybackArchiveForToneIdentifier:(id)arg1;
+- (id)_underlyingPlaybackArchiveForToneIdentifier:(id)arg1;
+- (id)_toneIdentifierWithUnderlyingPlaybackArchive:(id)arg1;
 - (void)_setCurrentOverridePolicy:(long long)arg1 forAlertType:(long long)arg2;
 - (long long)_currentOverridePolicyForAlertType:(long long)arg1 didFindAlertOverridePolicy:(_Bool *)arg2;
 - (long long)_currentOverridePolicyForAlertType:(long long)arg1;
@@ -70,6 +75,7 @@
 - (_Bool)toneWithIdentifierIsValid:(id)arg1;
 - (_Bool)_toneWithIdentifierIsValid:(id)arg1;
 - (id)_toneIdentifierForFileAtPath:(id)arg1 isValid:(_Bool *)arg2;
+- (id)subtitleForToneIdentifier:(id)arg1;
 - (id)_nameForToneIdentifier:(id)arg1 isValid:(_Bool *)arg2;
 - (id)nameForToneIdentifier:(id)arg1;
 - (id)_previewSoundForToneIdentifier:(id)arg1;
@@ -94,6 +100,7 @@
 - (_Bool)_setToneIdentifierUsingService:(id)arg1 keyedByTopic:(id)arg2 forPreferenceKey:(id)arg3;
 - (id)_tonePreferencesFromService;
 - (id)_newServiceConnection;
+- (_Bool)_toneWithIdentifierIsMediaPlaybackArchive:(id)arg1;
 - (_Bool)_toneWithIdentifierIsAlarmWakeUp:(id)arg1;
 - (_Bool)_toneWithIdentifierIsSystemAlertTone:(id)arg1;
 - (_Bool)_toneWithIdentifierIsITunesRingtone:(id)arg1;

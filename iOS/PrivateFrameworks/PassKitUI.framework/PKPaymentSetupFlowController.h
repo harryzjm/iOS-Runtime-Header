@@ -19,10 +19,16 @@
     id <PKPaymentSetupViewControllerDelegate> _delegate;
 }
 
-@property(readonly, nonatomic) id <PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long setupContext; // @synthesize setupContext=_setupContext;
 @property(readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
-- (void).cxx_destruct;
+- (id)_onboardingViewControllerForProduct:(id)arg1;
+- (id)_educationViewControllerShouldShow;
+- (id)_offerOptionalExpressModeSetup;
+- (id)_offerMakeDefaultViewController;
+- (id)_nextPaymentCredentialControllerWithSetupProduct:(id)arg1 allowsManualEntry:(_Bool)arg2;
+- (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 state:(long long)arg2 allowsManualEntry:(_Bool)arg3;
 - (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 allowsManualEntry:(_Bool)arg2;
 - (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentPasscodeUpgradeOnViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -30,7 +36,7 @@
 - (id)_paymentSetupViewControllerForAssociatedCredential:(id)arg1 product:(id)arg2 allowsManualEntry:(_Bool)arg3;
 - (id)paymentSetupViewControllerForAssociatedCredentials:(id)arg1 product:(id)arg2 allowsManualEntry:(_Bool)arg3;
 - (id)_defaultPaymentSetupViewControllerAllowingManualEntry:(_Bool)arg1;
-- (id)intialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(_Bool)arg2;
+- (id)initialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(_Bool)arg2;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 
 // Remaining properties

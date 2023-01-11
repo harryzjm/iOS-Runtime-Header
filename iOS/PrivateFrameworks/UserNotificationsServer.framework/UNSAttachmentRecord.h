@@ -6,31 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString, NSURL;
+@class NSDictionary, NSNumber, NSString, NSURL;
 
 @interface UNSAttachmentRecord : NSObject
 {
     _Bool _thumbnailHidden;
     _Bool _hiddenFromDefaultExpandedView;
     NSString *_identifier;
-    unsigned long long _family;
     NSURL *_URL;
     NSString *_type;
+    NSDictionary *_thumbnailClippingRect;
     NSNumber *_thumbnailFrameNumber;
-    CDStruct_1b6d18a9 _thumbnailTimestamp;
-    struct CGRect _thumbnailClippingRect;
+    NSDictionary *_thumbnailTimestamp;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hiddenFromDefaultExpandedView; // @synthesize hiddenFromDefaultExpandedView=_hiddenFromDefaultExpandedView;
-@property(nonatomic) CDStruct_1b6d18a9 thumbnailTimestamp; // @synthesize thumbnailTimestamp=_thumbnailTimestamp;
+@property(copy, nonatomic) NSDictionary *thumbnailTimestamp; // @synthesize thumbnailTimestamp=_thumbnailTimestamp;
 @property(copy, nonatomic) NSNumber *thumbnailFrameNumber; // @synthesize thumbnailFrameNumber=_thumbnailFrameNumber;
-@property(nonatomic) struct CGRect thumbnailClippingRect; // @synthesize thumbnailClippingRect=_thumbnailClippingRect;
+@property(copy, nonatomic) NSDictionary *thumbnailClippingRect; // @synthesize thumbnailClippingRect=_thumbnailClippingRect;
 @property(nonatomic) _Bool thumbnailHidden; // @synthesize thumbnailHidden=_thumbnailHidden;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property(nonatomic) unsigned long long family; // @synthesize family=_family;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

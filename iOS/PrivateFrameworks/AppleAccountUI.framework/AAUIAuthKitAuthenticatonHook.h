@@ -8,7 +8,7 @@
 
 #import <AppleAccountUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface AAUIAuthKitAuthenticatonHook : NSObject <AAUIServerHook>
@@ -16,10 +16,14 @@
     NSString *_appleId;
     NSString *_altDSID;
     id <AAUIServerHookDelegate> _delegate;
+    AAUIServerHookResponse *_serverHookResponse;
 }
 
-@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse; // @synthesize serverHookResponse=_serverHookResponse;
+@property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)updateResponseWithAuthResults:(id)arg1;
+- (id)authContextFromAttributes:(id)arg1;
 - (void)_reauthenticateWithServerAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -31,7 +35,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse;
+@property(retain, nonatomic) RUIObjectModel *objectModel;
 @property(readonly) Class superclass;
 
 @end

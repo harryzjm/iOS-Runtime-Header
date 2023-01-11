@@ -12,9 +12,17 @@
 
 + (_Bool)isInternalInstall;
 + (id)osBuild;
-+ (id)osVersion;
-+ (id)systemName;
++ (id)deviceName;
++ (id)deviceModel;
++ (id)deviceProductType;
++ (id)uniqueDeviceSpecifier;
++ (id)platform;
++ (id)deviceEnclosureColor;
++ (id)deviceClass;
++ (id)deviceColor;
 + (id)sharedLog;
++ (id)modelForProductType:(id)arg1;
++ (id)deviceClassForProductType:(id)arg1;
 
 @end
 

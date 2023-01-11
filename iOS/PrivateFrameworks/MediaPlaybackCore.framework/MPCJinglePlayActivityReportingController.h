@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString, SSVPlayActivityController;
+@class ICPlayActivityController, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPCJinglePlayActivityReportingController
@@ -19,15 +19,13 @@
     NSString *_nonCatalogBuildVersion;
     NSString *_nonCatalogStoreFrontID;
     unsigned long long _nonCatalogSourceType;
-    _Bool _shouldReportAggregateTimePlayActivityEvents;
     _Bool _shouldReportPlayActivityEvents;
-    SSVPlayActivityController *_playActivityController;
+    ICPlayActivityController *_playActivityController;
 }
 
-@property(nonatomic) _Bool shouldReportPlayActivityEvents; // @synthesize shouldReportPlayActivityEvents=_shouldReportPlayActivityEvents;
-@property(nonatomic) _Bool shouldReportAggregateTimePlayActivityEvents; // @synthesize shouldReportAggregateTimePlayActivityEvents=_shouldReportAggregateTimePlayActivityEvents;
-@property(readonly, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldReportPlayActivityEvents; // @synthesize shouldReportPlayActivityEvents=_shouldReportPlayActivityEvents;
+@property(readonly, nonatomic) ICPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 - (void)_clearNonCatalogAggregatePlayActivityEventData;
 - (id)_captureNonCatalogAggregatePlayActivityEventWithNonCatalogAggregateEndTime:(double)arg1;
 - (void)_applicationWillTerminateNotification:(id)arg1;

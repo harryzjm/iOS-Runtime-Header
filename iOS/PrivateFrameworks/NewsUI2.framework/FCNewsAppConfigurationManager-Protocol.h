@@ -12,7 +12,6 @@
 @protocol FCNewsAppConfigurationManager <NSObject>
 - (void)removeAppConfigObserver:(id <FCNewsAppConfigurationObserving>)arg1;
 - (void)addAppConfigObserver:(id <FCNewsAppConfigurationObserving>)arg1;
-- (void)fetchTrendingSearchesIfNeededWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)refreshAppConfigurationIfNeededWithCompletionQueue:(OS_dispatch_queue *)arg1 refreshCompletion:(void (^)(id <FCNewsAppConfiguration>, NSError *))arg2;
 - (void)fetchAppConfigurationIfNeededWithCompletionQueue:(OS_dispatch_queue *)arg1 completion:(void (^)(id <FCNewsAppConfiguration>, NSError *))arg2;
 - (void)fetchAppConfigurationIfNeededWithCompletion:(void (^)(id <FCNewsAppConfiguration>, NSError *))arg1;
@@ -25,6 +24,6 @@
 @property(nonatomic, readonly) NSString *feldsparID;
 @property(nonatomic, readonly) NSArray *segmentSetIDs;
 @property(nonatomic, readonly) NSArray *treatmentIDs;
-- (void)fetchAppWidgetConfigurationUseBackgroundRefreshRate:(_Bool)arg1 completion:(void (^)(id <FCNewsAppConfiguration>, NSDictionary *, NSError *))arg2;
+- (void)fetchAppWidgetConfigurationWithCompletion:(void (^)(id <FCNewsAppConfiguration>, NSDictionary *, NSError *))arg1;
 @end
 

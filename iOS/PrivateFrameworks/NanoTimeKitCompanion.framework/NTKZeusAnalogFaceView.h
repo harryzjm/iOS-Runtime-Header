@@ -12,6 +12,8 @@
     _Bool _isHandsVisibleInColorEditing;
     _Bool _isStatusBarIconShadowNeeded;
     NTKZeusColorPalette *_palette;
+    unsigned long long _density;
+    unsigned long long _faceColor;
     UIView *_cornerView;
     struct CGRect _upperComplicationOverrideFrame;
     struct CGRect _lowerComplicationOverrideFrame;
@@ -22,7 +24,6 @@
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (id)_supportedComplicationSlots;
 - (void).cxx_destruct;
-- (_Bool)_timeViewBehindContentForEditMode:(long long)arg1;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
 - (void)_setStatusBarIconShadowNeeded:(_Bool)arg1;
 - (_Bool)_wantsStatusBarIconShadow;
@@ -50,6 +51,7 @@
 - (void)_loadLayoutRules;
 - (struct CGRect)_upperComplicationFrameForStyle:(unsigned long long)arg1;
 - (struct CGRect)_lowerComplicationFrameForStyle:(unsigned long long)arg1;
+- (_Bool)_needsForegroundContainerView;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;

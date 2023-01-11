@@ -11,7 +11,6 @@
 @class HMFUnfairLock, HMHome, HMService, NSString, NSUUID, _HMCameraProfile, _HMContext;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface _HMCameraControl : NSObject <HMFMessageReceiver>
 {
     HMFUnfairLock *_lock;
@@ -22,12 +21,12 @@ __attribute__((visibility("hidden")))
     HMHome *_home;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
 @property(readonly, nonatomic) HMService *service; // @synthesize service=_service;
 @property(readonly, nonatomic) __weak _HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
-- (void).cxx_destruct;
 - (void)_registerNotificationHandlers;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;

@@ -21,7 +21,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (void)raise:(id)arg1 format:(id)arg2;
-+ (void)raise:(id)arg1 format:(id)arg2 arguments:(struct __va_list_tag [1])arg3;
++ (void)raise:(id)arg1 format:(id)arg2 arguments:(char *)arg3;
 + (id)exceptionWithName:(id)arg1 reason:(id)arg2 userInfo:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

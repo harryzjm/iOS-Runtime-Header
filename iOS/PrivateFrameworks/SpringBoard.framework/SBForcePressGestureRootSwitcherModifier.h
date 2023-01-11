@@ -5,11 +5,10 @@
 //
 
 @class SBSwitcherModifier;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBForcePressGestureRootSwitcherModifier
 {
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
 }
 
 - (void).cxx_destruct;

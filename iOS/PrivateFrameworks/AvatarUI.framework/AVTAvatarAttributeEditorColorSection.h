@@ -6,35 +6,37 @@
 
 #import <objc/NSObject.h>
 
-#import <AvatarUI/AVTAvatarAttributeEditorColorSectionProtocol-Protocol.h>
+#import <AvatarUI/AVTAvatarAttributeEditorColorSection-Protocol.h>
 
-@class AVTAvatarColorVariationStore, NSArray, NSString;
-@protocol AVTAvatarAttributeEditorHeaderPicker;
+@class AVTAvatarAttributeEditorSectionOptions, AVTAvatarColorVariationStore, NSArray, NSString;
+@protocol AVTAvatarAttributeEditorSectionSupplementalPicker;
 
-@interface AVTAvatarAttributeEditorColorSection : NSObject <AVTAvatarAttributeEditorColorSectionProtocol>
+@interface AVTAvatarAttributeEditorColorSection : NSObject <AVTAvatarAttributeEditorColorSection>
 {
     _Bool _alwaysShowExtended;
     NSString *_localizedName;
     NSString *_identifier;
-    id <AVTAvatarAttributeEditorHeaderPicker> _headerAccessory;
+    id <AVTAvatarAttributeEditorSectionSupplementalPicker> _supplementalPicker;
+    AVTAvatarAttributeEditorSectionOptions *_options;
     NSArray *_primaryItems;
     NSArray *_extendedItems;
     AVTAvatarColorVariationStore *_colorVariationStore;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool alwaysShowExtended; // @synthesize alwaysShowExtended=_alwaysShowExtended;
 @property(readonly, nonatomic) AVTAvatarColorVariationStore *colorVariationStore; // @synthesize colorVariationStore=_colorVariationStore;
 @property(readonly, copy, nonatomic) NSArray *extendedItems; // @synthesize extendedItems=_extendedItems;
 @property(readonly, copy, nonatomic) NSArray *primaryItems; // @synthesize primaryItems=_primaryItems;
-@property(retain, nonatomic) id <AVTAvatarAttributeEditorHeaderPicker> headerAccessory; // @synthesize headerAccessory=_headerAccessory;
+@property(readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options; // @synthesize options=_options;
+@property(retain, nonatomic) id <AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker; // @synthesize supplementalPicker=_supplementalPicker;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
-- (void).cxx_destruct;
 - (_Bool)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (_Bool)shouldDisplayTitle;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSArray *sectionItems;
-- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(_Bool)arg6;
+- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(_Bool)arg6 options:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

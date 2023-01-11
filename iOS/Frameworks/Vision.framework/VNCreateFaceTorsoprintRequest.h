@@ -15,12 +15,12 @@
 
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
-+ (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
++ (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
 @property(nonatomic) _Bool forceFaceprintCreation; // @synthesize forceFaceprintCreation=_forceFaceprintCreation;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (long long)dependencyProcessingOrdinality;
-- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties

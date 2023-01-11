@@ -7,18 +7,17 @@
 #import <Vision/VNDetectorKeyProviding-Protocol.h>
 
 @class NSString;
-@protocol VNModelFile;
 
 __attribute__((visibility("hidden")))
 @interface VNFaceLandmarkDetector <VNDetectorKeyProviding>
 {
     struct shared_ptr<vision::mod::LandmarkAttributes> _faceAttributesPupilRefiner;
-    id <VNModelFile> mLandmarkRefinerModelFileHandle;
-    _Bool modelFilesWereMemmapped;
+    _Bool _modelFilesWereMemmapped;
 }
 
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (struct _Geometry2D_point2D_)computeCentroidUsingPoints:(const struct _Geometry2D_point2D_ *)arg1 indicies:(const int *)arg2 numberOfIndicies:(int)arg3;
++ (const vector_3203cf93 *)allLandmarksPointsIndexesForConstellation:(unsigned long long)arg1;
 + (const struct _LandmarkDetector_faceMeshParts_ *)landmarksMeshPartsForConstellation:(unsigned long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (struct __CVBuffer *)createLumaPixelBufferFrom:(id)arg1 forFaceBBox:(struct _Geometry2D_rect2D_)arg2 initializeVImage:(struct vImage_Buffer *)arg3 initializeRect2D:(struct _Geometry2D_rect2D_ *)arg4 initializeIgnoreCropAndScaleFlag:(_Bool *)arg5 initializeLumaScaleFromOriginal:(float *)arg6 options:(id)arg7 error:(id *)arg8;
 - (void)dealloc;
 - (_Bool)loadRefinersAndReturnError:(id *)arg1;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

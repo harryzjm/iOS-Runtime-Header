@@ -29,6 +29,7 @@
 }
 
 + (unsigned long long)dragTypeForDropSession:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isWaitingForConcludeDrag) _Bool waitingForConcludeDrag; // @synthesize waitingForConcludeDrag=_waitingForConcludeDrag;
 @property(retain, nonatomic) id <SBIconListViewDraggingPolicyHandling> springLoadingPolicyHandler; // @synthesize springLoadingPolicyHandler=_springLoadingPolicyHandler;
 @property(nonatomic) unsigned long long currentSpringLoadedDragType; // @synthesize currentSpringLoadedDragType=_currentSpringLoadedDragType;
@@ -36,11 +37,11 @@
 @property(nonatomic) unsigned long long currentDragType; // @synthesize currentDragType=_currentDragType;
 @property(readonly, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
 @property(readonly, nonatomic) __weak SBIconListView *iconListView; // @synthesize iconListView=_iconListView;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
+- (id)_dropInteraction:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;

@@ -6,22 +6,19 @@
 
 #import <SpotlightUIInternal/NSObject-Protocol.h>
 
-@class SFResultSection, SFSearchResult, UIViewController;
-@protocol SearchUIResultShortLook;
+@class SFCardSection, SFResultSection, SFSearchResult, SearchUIResultsViewController;
 
 @protocol SearchUIResultsViewDelegate <NSObject>
 
 @optional
+- (void)resultsViewController:(SearchUIResultsViewController *)arg1 didChangeContentSize:(struct CGSize)arg2 animated:(_Bool)arg3;
+- (void)didUpdateKeyboardFocusToResult:(SFSearchResult *)arg1 cardSection:(SFCardSection *)arg2;
 - (void)getUserActivityForResult:(SFSearchResult *)arg1 completionHandler:(void (^)(NSUserActivity *))arg2;
-- (UIViewController<SearchUIResultShortLook> *)shortLookViewControllerForResult:(SFSearchResult *)arg1;
-- (_Bool)hasShortLookViewControllerForResult:(SFSearchResult *)arg1;
 - (void)didScrollPastBottomOfContent;
 - (void)didUpdateContentScrolledOffScreenStatus:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)didBeginScrollingResults;
 - (void)didChangeExpansionStateForSection:(SFResultSection *)arg1 expanded:(_Bool)arg2;
 - (_Bool)sectionShouldBeExpanded:(SFResultSection *)arg1;
-- (void)clearResultsFromSection:(SFResultSection *)arg1;
-- (_Bool)sectionIsClearable:(SFResultSection *)arg1;
 - (void)didTapInEmptyRegion;
 @end
 

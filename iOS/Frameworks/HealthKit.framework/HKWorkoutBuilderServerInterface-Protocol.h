@@ -6,7 +6,7 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKDevice, HKQuantityType, NSArray, NSDate, NSDictionary;
+@class HKDevice, HKQuantityType, NSArray, NSDate, NSDictionary, NSString;
 
 @protocol HKWorkoutBuilderServerInterface <NSObject>
 - (void)remote_setShouldCollectEvents:(_Bool)arg1;
@@ -14,6 +14,7 @@
 - (void)remote_setStatisticsMergeStrategy:(unsigned long long)arg1 forType:(HKQuantityType *)arg2;
 - (void)remote_updateDevice:(HKDevice *)arg1;
 - (void)remote_recoverWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)remote_removeMetadata:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_addMetadata:(NSDictionary *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_addWorkoutEvents:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_addSamples:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

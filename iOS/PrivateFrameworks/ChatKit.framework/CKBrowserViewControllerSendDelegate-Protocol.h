@@ -14,6 +14,7 @@
 - (void)commitSticker:(IMSticker *)arg1;
 - (id <CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;
 - (void)dismissToKeyboard:(_Bool)arg1;
+- (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 completion:(void (^)(void))arg4;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1;
 - (void)dismiss;
 - (void)dismissAndReloadInputViews:(_Bool)arg1;
@@ -31,6 +32,7 @@
 - (_Bool)handwritingIsDisplayed;
 - (void)requestPresentationStyleFullScreenModalForPlugin:(NSString *)arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1 forPlugin:(NSString *)arg2;
+- (void)startEditingPayloadBypassingValidation:(CKBrowserItemPayload *)arg1 forPlugin:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)startEditingPayload:(CKBrowserItemPayload *)arg1 dismiss:(_Bool)arg2 forPlugin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)startEditingPayload:(CKBrowserItemPayload *)arg1 dismiss:(_Bool)arg2 forPlugin:(NSString *)arg3;
 - (void)dismissAndPresentPhotosApp;

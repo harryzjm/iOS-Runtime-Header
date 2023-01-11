@@ -11,7 +11,7 @@
 @interface HKElectrocardiogramQuery <HKElectrocardiogramQueryClientInterface>
 {
     HKElectrocardiogram *_elecrocardiogram;
-    unsigned long long _leadName;
+    long long _lead;
     CDUnknownBlockType _dataHandler;
 }
 
@@ -21,7 +21,8 @@
 - (void)queue_deliverError:(id)arg1;
 - (void)_enumerateDataWithHandler:(CDUnknownBlockType)arg1;
 - (void)client_deliverData;
-- (id)initWithElectrocardiogram:(id)arg1 lead:(unsigned long long)arg2 dataHandler:(CDUnknownBlockType)arg3;
+- (id)initWithElectrocardiogram:(id)arg1 dataHandler:(CDUnknownBlockType)arg2;
+- (id)initWithElectrocardiogram:(id)arg1 lead:(long long)arg2 dataHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

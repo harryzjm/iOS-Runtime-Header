@@ -16,13 +16,12 @@
 - (void).cxx_destruct;
 - (id)assetId;
 - (id)originatingAssetID;
-- (void)didDownloadFile:(id)arg1 error:(id)arg2 options:(id)arg3 contextInfo:(void *)arg4;
-- (void)downloadToPathAsync:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)copyToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSArray *cameraFiles;
 - (void)thumbnailUsingRequest:(id)arg1 atEnd:(CDUnknownBlockType)arg2;
 - (void)loadMetadataAsync:(CDUnknownBlockType)arg1;
 - (void)loadMetadataSync;
-- (id)createMetadataFromCameraFile:(id)arg1;
+- (id)createMetadataFromProperties:(id)arg1;
 - (id)duration;
 - (id)spatialOverCaptureIdentifier;
 - (id)mediaGroupId;

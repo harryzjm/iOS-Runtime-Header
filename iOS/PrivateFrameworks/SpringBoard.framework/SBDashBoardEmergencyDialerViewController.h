@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoverSheet/CSCoverSheetViewControllerBase.h>
-
 #import <SpringBoard/SBLockScreenEmergencyDialerDelegate-Protocol.h>
 
 @class NSString, SBLockScreenEmergencyDialerController, TUCallCenter;
 
-@interface SBDashBoardEmergencyDialerViewController : CSCoverSheetViewControllerBase <SBLockScreenEmergencyDialerDelegate>
+@interface SBDashBoardEmergencyDialerViewController <SBLockScreenEmergencyDialerDelegate>
 {
     TUCallCenter *_callCenter;
     SBLockScreenEmergencyDialerController *_controller;

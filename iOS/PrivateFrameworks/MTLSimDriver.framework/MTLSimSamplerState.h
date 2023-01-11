@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
 @interface MTLSimSamplerState : _MTLSamplerState <MTLSamplerStateSPI, MTLSerializerSamplerState>
 {
     unsigned int _reference;
+    unsigned long long _uniqueIdentifier;
 }
 
+@property(readonly) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (unsigned int)samplerRef;
 - (void)dealloc;
 - (id)initWithDescriptor:(id)arg1 reference:(unsigned int)arg2 device:(id)arg3;
@@ -26,11 +28,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) id <MTLDevice> device;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *label;
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly, nonatomic) unsigned long long pixelFormat;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) Class superclass;
-@property(readonly) unsigned long long uniqueIdentifier;
 
 @end
 

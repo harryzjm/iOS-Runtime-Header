@@ -24,9 +24,10 @@
 - (void)purgeSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2;
 - (id)_harvestPodcastsIntent:(id)arg1 identifier:(id)arg2 groupIdentifier:(id)arg3;
 - (id)processInteraction:(id)arg1 bundleIdentifier:(id)arg2 protectionClass:(id)arg3;
+- (id)extractionsFromText:(id)arg1 bundleId:(id)arg2;
 - (id)extractionsFromSearchableItem:(id)arg1;
 - (id)processSearchableItem:(id)arg1;
-- (void)extractAndDonateTopicsForText:(id)arg1 isPlainText:(_Bool)arg2 bundleId:(id)arg3 groupId:(id)arg4 documentId:(id)arg5 weight:(double)arg6;
+- (void)extractAndDonateTopicsForText:(id)arg1 isPlainText:(_Bool)arg2 bundleId:(id)arg3 groupId:(id)arg4 documentId:(id)arg5 contactHandles:(id)arg6 weight:(double)arg7 isOutgoing:(_Bool)arg8;
 - (_Bool)_shouldDeferProcessingSearchableItem:(id)arg1;
 - (_Bool)interestedInSearchableItem:(id)arg1;
 - (id)setup;

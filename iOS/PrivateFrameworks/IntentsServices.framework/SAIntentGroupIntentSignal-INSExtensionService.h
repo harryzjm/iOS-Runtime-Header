@@ -10,6 +10,8 @@
 - (_Bool)ins_shouldUseExtendedFlowTimeout;
 - (long long)ins_analyticsEndEventType;
 - (long long)ins_analyticsBeginEventType;
+- (void)ins_setJSONEncodedIntent:(id)arg1;
+- (void)ins_setProtobufEncodedIntent:(id)arg1;
 - (id)ins_protobufEncodedIntent;
 - (id)ins_jsonEncodedIntent;
 @end

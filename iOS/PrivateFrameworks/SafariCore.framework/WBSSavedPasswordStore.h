@@ -21,12 +21,15 @@
 
 + (void)removePassword:(id)arg1;
 + (id)sharedStore;
-@property(readonly, nonatomic) _Bool hasPasswordsEligibleForAutoFill; // @synthesize hasPasswordsEligibleForAutoFill=_hasPasswordsEligibleForAutoFill;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasPasswordsEligibleForAutoFill; // @synthesize hasPasswordsEligibleForAutoFill=_hasPasswordsEligibleForAutoFill;
+- (id)_persistentIdentifierForUser:(id)arg1 host:(id)arg2;
+- (id)persistentIdentifierForSavedPassword:(id)arg1;
 - (id)persistentIdentifierForCredential:(id)arg1 protectionSpace:(id)arg2;
 - (void)_ensureDomainsToUsersExists;
 - (void)_cleanUpRedundantCredentialsWithoutUsernames;
 - (void)reset;
+- (unsigned long long)numberOfSavedPasswordForHighLevelDomain:(id)arg1;
 - (void)_postSavedPasswordStoreDidChangeNotification;
 - (id)saveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
 - (_Bool)canSaveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
@@ -40,7 +43,11 @@
 @property(readonly, nonatomic) NSSet *highLevelDomainsOfAllSavedPasswordsExcludingNeverSaveMarkerPasswords;
 @property(readonly, nonatomic) NSArray *savedPasswordsExcludingNeverSaveMarkerPasswords;
 - (id)_allInternetPasswordEntriesFromKeychain;
+- (id)savedPasswordsForPersistentIdentifiers:(id)arg1;
+- (id)_savedPasswordForProtectionSpace:(id)arg1 user:(id)arg2 password:(id)arg3;
 - (id)savedPasswordForURL:(id)arg1 user:(id)arg2 password:(id)arg3;
+- (void)savedPasswordWithAllMetadataForURLCredential:(id)arg1 protectionSpace:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)savedPasswordForURLCredential:(id)arg1 protectionSpace:(id)arg2;
 - (void)dealloc;
 - (id)init;
 

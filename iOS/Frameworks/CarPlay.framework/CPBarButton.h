@@ -16,28 +16,33 @@
 {
     _Bool _enabled;
     NSUUID *_identifier;
-    unsigned long long _buttonType;
+    long long _buttonStyle;
     UIImage *_image;
     NSString *_title;
+    unsigned long long _buttonType;
     CDUnknownBlockType _handler;
     id <CPBarButtonDelegate> _delegate;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <CPBarButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property(readonly, nonatomic) unsigned long long buttonType; // @synthesize buttonType=_buttonType;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
-@property(nonatomic) unsigned long long buttonType; // @synthesize buttonType=_buttonType;
+@property(nonatomic) long long buttonStyle; // @synthesize buttonStyle=_buttonStyle;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (id)initWithType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)handlePressesEnd;
+- (void)handlePressesStart;
 - (void)handlePrimaryAction;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)_init;
-- (id)initWithType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initWithImage:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBMessageCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBColor;
+@class NSArray, NSData, NSString, _SFPBColor, _SFPBMessageAttachment, _SFPBURL;
 
 @interface _SFPBMessageCardSection : PBCodable <_SFPBMessageCardSection, NSSecureCoding>
 {
@@ -25,8 +25,13 @@
     NSString *_type;
     _SFPBColor *_backgroundColor;
     NSString *_messageText;
+    _SFPBURL *_audioMessageURL;
+    _SFPBMessageAttachment *_messageAttachment;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBMessageAttachment *messageAttachment; // @synthesize messageAttachment=_messageAttachment;
+@property(retain, nonatomic) _SFPBURL *audioMessageURL; // @synthesize audioMessageURL=_audioMessageURL;
 @property(nonatomic) int messageServiceType; // @synthesize messageServiceType=_messageServiceType;
 @property(nonatomic) int messageStatus; // @synthesize messageStatus=_messageStatus;
 @property(copy, nonatomic) NSString *messageText; // @synthesize messageText=_messageText;
@@ -39,7 +44,6 @@
 @property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

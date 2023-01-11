@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface BCSRemoteFetch : NSObject
 {
 }
 
 + (id)createSessionForClientBundleID:(id)arg1;
-+ (id)cloudServerRequestHelper;
++ (id)cloudServerRequestHelperForType:(long long)arg1;
 + (id)_completionPool;
 + (id)_requestDispatchQueue;
 - (id)dequeueCompletionBlocksForRequest:(id)arg1;

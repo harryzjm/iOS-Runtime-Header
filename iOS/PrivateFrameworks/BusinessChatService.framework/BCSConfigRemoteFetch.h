@@ -4,13 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
-@interface BCSConfigRemoteFetch
+#import <BusinessChatService/BCSConfigRemoteFetching-Protocol.h>
+#import <BusinessChatService/BCSShardRemoteFetching-Protocol.h>
+
+@class NSString;
+
+@interface BCSConfigRemoteFetch <BCSConfigRemoteFetching, BCSShardRemoteFetching>
 {
 }
 
-- (void)fetchBloomFilterWithStartIndex:(long long)arg1 shardCount:(long long)arg2 forClientBundleID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)fetchConfigItemForClientBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_configRequestForType:(long long)arg1;
+- (id)_bloomFilterRequestForShardMatching:(id)arg1 timeout:(double)arg2;
+- (void)fetchShardMatching:(id)arg1 clientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchConfigItemWithType:(long long)arg1 clientBundleID:(id)arg2 xpcActivity:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)fetchConfigItemWithType:(long long)arg1 clientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

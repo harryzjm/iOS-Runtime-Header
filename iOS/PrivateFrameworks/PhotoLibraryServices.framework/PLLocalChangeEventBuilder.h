@@ -20,23 +20,25 @@
     NSMutableArray *_deletedMemoryCloudGUIDs;
     NSMutableArray *_deletedPersonCloudGUIDs;
     NSMutableArray *_deletedFaceCropCloudGUIDs;
-    NSMutableArray *_deletedOwnedMomentShareCloudGUIDs;
-    NSMutableArray *_deletedSubscribedMomentShareCloudGUIDs;
+    NSMutableArray *_deletedOwnedShareCloudGUIDs;
+    NSMutableArray *_deletedSubscribedShareCloudGUIDs;
     NSMutableArray *_deletedSuggestionCloudGUIDs;
     NSMutableArray *_deletedInternalResourceUUIDToResourceTypeMappings;
     _Bool _coalescedEvent;
     _Bool _syncChange;
+    _Bool _unknownMergeEvent;
     CDUnknownBlockType _transactionFilter;
     CDUnknownBlockType _updatedPropertyFilter;
 }
 
 + (id)localEventFromTransaction:(id)arg1;
 + (id)localEventWithBuilderBlock:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType updatedPropertyFilter; // @synthesize updatedPropertyFilter=_updatedPropertyFilter;
 @property(copy, nonatomic) CDUnknownBlockType transactionFilter; // @synthesize transactionFilter=_transactionFilter;
+@property(nonatomic, getter=isUnknownMergeEvent) _Bool unknownMergeEvent; // @synthesize unknownMergeEvent=_unknownMergeEvent;
 @property(nonatomic, getter=isSyncChange) _Bool syncChange; // @synthesize syncChange=_syncChange;
 @property(nonatomic, getter=isCoalescedEvent) _Bool coalescedEvent; // @synthesize coalescedEvent=_coalescedEvent;
-- (void).cxx_destruct;
 - (id)buildLocalEvent;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (CDUnknownBlockType)recordDeletedCloudGUIDBlockForChangeKey:(id)arg1;

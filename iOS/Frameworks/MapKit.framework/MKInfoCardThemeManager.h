@@ -15,7 +15,6 @@
     _Bool _themeWasExplicitySet;
     NSDictionary *_colors;
     CDUnknownBlockType _tintColorProvider;
-    UIColor *_currentTintColor;
     _Bool _useSmallFont;
     unsigned long long _themeType;
 }
@@ -25,11 +24,14 @@
 + (void)setTheme:(unsigned long long)arg1;
 + (id)themeWithThemeType:(unsigned long long)arg1;
 + (id)currentTheme;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 @property(readonly, nonatomic) unsigned long long themeType; // @synthesize themeType=_themeType;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *javaScriptName;
 @property(readonly, nonatomic) UIColor *tintColor;
+@property(readonly, nonatomic) UIColor *ratingBarBackgroundColor;
+@property(readonly, nonatomic) UIColor *ratingBarEndColor;
+@property(readonly, nonatomic) UIColor *ratingBarStartColor;
 @property(readonly, nonatomic) UIColor *normalBackgroundColor;
 @property(readonly, nonatomic) UIColor *transitChevronBackgroundColor;
 @property(readonly, nonatomic) UIColor *transitDelayedTextColor;
@@ -42,7 +44,6 @@
 @property(readonly, nonatomic) UIColor *disabledActionRowBackgroundColor;
 @property(readonly, nonatomic) UIColor *normalActionRowBackgroundColor;
 @property(readonly, nonatomic) UIColor *disabledActionRowTextColor;
-@property(readonly, nonatomic) UIColor *highlightedActionRowTextColor;
 @property(readonly, nonatomic) UIColor *selectedRowColor;
 @property(readonly, nonatomic) UIColor *rowColor;
 @property(readonly, nonatomic) UIColor *separatorLineColor;
@@ -52,7 +53,6 @@
 @property(readonly, nonatomic) UIColor *textColor;
 @property(readonly, nonatomic) _Bool isDarkTheme;
 - (void)_setTintColorProvider:(CDUnknownBlockType)arg1;
-- (void)_tintColorDidChange;
 - (void)_setTheme:(unsigned long long)arg1;
 - (unsigned long long)_currentSystemTheme;
 - (id)_initWithThemeType:(unsigned long long)arg1;

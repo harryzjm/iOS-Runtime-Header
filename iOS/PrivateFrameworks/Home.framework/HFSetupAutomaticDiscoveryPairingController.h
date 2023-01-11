@@ -8,15 +8,13 @@
 
 #import <Home/HFSetupPairingController-Protocol.h>
 
-@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMAccessorySetupCompletedInfo, HMHome, HMSetupAccessoryDescription, NAFuture, NSDate, NSHashTable, NSSet, NSString, NSTimer;
-@protocol HMSetupRemoteService;
+@class HFDiscoveredAccessory, HFSetupAccessoryResult, HFSetupPairingContext, HMAccessorySetupCompletedInfo, HMHome, NAFuture, NSDate, NSHashTable, NSSet, NSString, NSTimer;
 
 @interface HFSetupAutomaticDiscoveryPairingController : NSObject <HFSetupPairingController>
 {
+    HFSetupPairingContext *_context;
     HFSetupAccessoryResult *_setupResult;
     HMAccessorySetupCompletedInfo *_completedInfo;
-    HMSetupAccessoryDescription *_setupAccessoryDescription;
-    id <HMSetupRemoteService> _setupRemoteService;
     unsigned long long _phase;
     NSString *_statusTitle;
     NSString *_statusDescription;
@@ -31,6 +29,7 @@
 }
 
 + (_Bool)supportsSetupPayloadRetry;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *accessoryNotFoundSoftTimeoutTimer; // @synthesize accessoryNotFoundSoftTimeoutTimer=_accessoryNotFoundSoftTimeoutTimer;
 @property(retain, nonatomic) NSTimer *accessoryNotFoundFatalTimeoutTimer; // @synthesize accessoryNotFoundFatalTimeoutTimer=_accessoryNotFoundFatalTimeoutTimer;
 @property(retain, nonatomic) NSDate *phaseStartDate; // @synthesize phaseStartDate=_phaseStartDate;
@@ -42,11 +41,9 @@
 @property(retain, nonatomic) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;
 @property(retain, nonatomic) NSString *statusTitle; // @synthesize statusTitle=_statusTitle;
 @property(nonatomic) unsigned long long phase; // @synthesize phase=_phase;
-@property(nonatomic) __weak id <HMSetupRemoteService> setupRemoteService; // @synthesize setupRemoteService=_setupRemoteService;
-@property(readonly, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription; // @synthesize setupAccessoryDescription=_setupAccessoryDescription;
 @property(retain, nonatomic) HMAccessorySetupCompletedInfo *completedInfo; // @synthesize completedInfo=_completedInfo;
 @property(retain, nonatomic) HFSetupAccessoryResult *setupResult; // @synthesize setupResult=_setupResult;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) HFSetupPairingContext *context; // @synthesize context=_context;
 - (void)_assertValidTransitionFromPhase:(unsigned long long)arg1 toPhase:(unsigned long long)arg2;
 - (void)_updateStatusTextAndNotifyDelegate:(_Bool)arg1;
 - (void)_finishPairingWithAccessories:(id)arg1 completedInfo:(id)arg2;
@@ -58,7 +55,7 @@
 - (void)removePairingObserver:(id)arg1;
 - (void)addPairingObserver:(id)arg1;
 - (void)dealloc;
-- (id)initWithSetupAccessoryDescription:(id)arg1 setupRemoteService:(id)arg2;
+- (id)initWithContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

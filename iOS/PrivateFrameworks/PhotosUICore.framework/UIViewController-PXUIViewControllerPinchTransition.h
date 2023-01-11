@@ -9,11 +9,12 @@
 #import <PhotosUICore/PXAnonymousViewController-Protocol.h>
 #import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
 #import <PhotosUICore/PXProgrammaticNavigationParticipant-Protocol.h>
+#import <PhotosUICore/PXProgrammaticNavigationUpdateTarget-Protocol.h>
 
-@class NSArray, NSString, PXBarAppearance, PXExtendedTraitCollection, PXImageModulationManager, PXOneUpPresentation, UIToolbar;
+@class NSArray, NSString, PXBarAppearance, PXExtendedTraitCollection, PXImageModulationManager, PXOneUpPresentation, PXProgrammaticNavigationDestination, UIToolbar;
 @protocol PXUIViewControllerTransitionEndPoint;
 
-@interface UIViewController (PXUIViewControllerPinchTransition) <PXDiagnosticsEnvironment, PXAnonymousViewController, PXProgrammaticNavigationParticipant>
+@interface UIViewController (PXUIViewControllerPinchTransition) <PXDiagnosticsEnvironment, PXAnonymousViewController, PXProgrammaticNavigationParticipant, PXProgrammaticNavigationUpdateTarget>
 + (id)px_viewControllerWithContinuousOutputProducer:(CDUnknownBlockType)arg1;
 + (id)px_viewControllerWithAsynchronousOutputProducer:(CDUnknownBlockType)arg1;
 + (id)px_viewControllerWithOutput:(CDUnknownBlockType)arg1;
@@ -43,6 +44,7 @@
 - (void)_px_dismiss:(id)arg1;
 - (void)px_presentViewControllerInNavigationController:(id)arg1 animated:(_Bool)arg2 dimissButtonLocation:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)_pxswizzled_barAppearance_preferredStatusBarUpdateAnimation;
+- (long long)_pxswizzled_barAppearance_preferredStatusBarStyle;
 - (_Bool)_pxswizzled_barAppearance_prefersStatusBarHidden;
 - (void)_pxswizzled_barAppearance_viewDidDisappear:(_Bool)arg1;
 - (void)_pxswizzled_barAppearance_viewWillAppear:(_Bool)arg1;
@@ -56,11 +58,14 @@
 - (void)_pxswizzled_viewControllerTraitCollection_traitCollectionDidChange:(id)arg1;
 - (void)_pxswizzled_viewControllerTraitCollection_viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_pxswizzled_viewControllerTraitCollection_viewWillLayoutSubviews;
+- (void)_pxswizzled_viewControllerTraitCollection_viewDidAppear:(_Bool)arg1;
 - (void)_pxswizzled_viewControllerTraitCollection_viewWillAppear:(_Bool)arg1;
 - (void)_pxswizzled_viewControllerTraitCollection_viewDidLoad;
 @property(readonly, nonatomic) PXExtendedTraitCollection *px_extendedTraitCollection;
 - (void)px_enableExtendedTraitCollection;
 - (id)debugURLsForDiagnostics;
+@property(readonly, nonatomic) _Bool px_determinesPreferredStatusBarHidden;
+@property(readonly, nonatomic) _Bool px_determinesPreferredStatusBarStyle;
 @property(readonly, nonatomic) UIViewController *px_nextViewControllerInNavigationController;
 @property(readonly, nonatomic) UIViewController *px_previousViewControllerInNavigationController;
 @property(retain, nonatomic, setter=px_setPreviewActionMenus:) NSArray *px_previewActionMenus;
@@ -68,6 +73,9 @@
 - (void)px_enumerateDescendantViewControllersWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (_Bool)px_isDescendantOfViewController:(id)arg1;
 - (_Bool)px_canPresentViewControllerAnimated:(_Bool)arg1;
+- (void)px_addOrReplaceChildViewController:(id)arg1 activateConstraints:(_Bool)arg2;
+- (void)px_presentOverTopmostPresentedViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) UIViewController *px_topmostPresentedViewController;
 @property(readonly, nonatomic) struct UIEdgeInsets px_layoutMargins;
 @property(readonly, nonatomic) struct UIEdgeInsets px_safeAreaInsets;
 @property(readonly, nonatomic) _Bool px_isVisible;
@@ -89,6 +97,7 @@
 @property(readonly, nonatomic) _Bool px_photosUICategoriesAvailable;
 - (_Bool)px_canPerformSwipeDownTransitionWithMasterViewController:(id)arg1;
 - (_Bool)px_canPerformSwipeDownTransitionWithDetailViewController:(id)arg1;
+@property(readonly, nonatomic) struct CGSize px_windowReferenceSize;
 @property(readonly, nonatomic) struct CGSize px_referenceSize;
 - (void)_pxswizzled_oneUpPresentation_viewDidDisappear:(_Bool)arg1;
 - (void)_pxswizzled_oneUpPresentation_viewWillDisappear:(_Bool)arg1;
@@ -97,16 +106,16 @@
 @property(readonly, nonatomic) PXOneUpPresentation *px_oneUpPresentation;
 - (void)px_enableOneUpPresentationFromViewController:(id)arg1;
 - (void)px_enableOneUpPresentation;
-- (void)_px_prepareNavigationFromViewController:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)px_navigationDestinationWillChange:(id)arg1;
+@property(readonly, nonatomic) PXProgrammaticNavigationDestination *px_navigationDestination;
+- (void)_px_prepareNavigationFromViewController:(id)arg1 routingOptions:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)provideViewControllersForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_nextExistingViewControllerOnRouteToDestination:(id)arg1;
 - (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
-- (_Bool)canRouteToDestination:(id)arg1;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool px_allowsTabSwitching;
-@property(readonly, nonatomic) NSString *px_snapBackHistorySubtitle;
-@property(readonly, nonatomic) NSString *px_snapBackHistoryTitle;
-@property(readonly, nonatomic) _Bool px_isSnapBackDestination;
 - (id)px_endPointForTransition:(id)arg1;
 @property(retain, nonatomic, setter=px_setDefaultTransitionEndPoint:) id <PXUIViewControllerTransitionEndPoint> px_defaultTransitionEndPoint;
 - (id)px_splitViewController;

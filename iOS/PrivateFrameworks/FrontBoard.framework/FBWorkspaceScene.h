@@ -9,44 +9,35 @@
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSSceneAgentProxy-Protocol.h>
 #import <FrontBoard/FBSSceneHandle-Protocol.h>
-#import <FrontBoard/FBSceneClient-Protocol.h>
-#import <FrontBoard/FBWorkspaceServerSceneEventHandler-Protocol.h>
 
 @class FBProcess, FBSSceneClientSettings, FBSSceneSettings, FBSSceneSpecification, FBSSerialQueue, FBWorkspace, NSMutableArray, NSString;
-@protocol FBSSceneHostAgent, FBSceneHost, OS_dispatch_queue;
+@protocol FBSSceneHostAgent, FBSceneHost;
 
-@interface FBWorkspaceScene : NSObject <FBWorkspaceServerSceneEventHandler, FBSSceneHandle, FBSSceneAgentProxy, BSDescriptionProviding, FBSceneClient>
+@interface FBWorkspaceScene : NSObject <FBSSceneHandle, FBSSceneAgentProxy, BSDescriptionProviding>
 {
+    struct os_unfair_lock_s _lock;
     id <FBSceneHost> _host;
-    FBWorkspace *_workspace;
-    NSObject<OS_dispatch_queue> *_workspaceQueue;
     NSString *_identifier;
+    NSString *_group;
     FBSSceneSpecification *_specification;
-    FBSSceneSettings *_settings;
-    FBSSceneClientSettings *_clientSettings;
-    NSMutableArray *_workspaceQueue_initializationCompletedBlocks;
-    unsigned char _workspaceQueue_creationState;
-    _Bool _workspaceQueue_invalidated;
+    FBSSceneSettings *_lock_settings;
+    FBSSceneClientSettings *_lock_clientSettings;
+    NSMutableArray *_lock_sceneCreatedBlocks;
+    _Bool _lock_sentSceneCreate;
+    _Bool _fromRemnant;
+    _Bool _lock_invalidated;
     id <FBSSceneHostAgent> _hostAgent;
-    FBSSerialQueue *_agentQueue;
-    CDUnknownBlockType _agentMessageHandler;
-    unsigned long long _agentEventSequenceNumber;
-    NSMutableArray *_agentOutstandingEventSequence;
     NSMutableArray *_agentSessions;
     FBProcess *_process;
+    FBWorkspace *_workspace;
+    FBSSerialQueue *_workspaceQueue;
+    unsigned char _lock_lifecycleState;
 }
 
-@property(copy, nonatomic, getter=_workspaceQueue_sceneSettings, setter=_workspaceQueue_setSceneSettings:) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_settings;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) __weak id <FBSceneHost> host; // @synthesize host=_host;
 @property(readonly, nonatomic) __weak FBWorkspace *parentWorkspace; // @synthesize parentWorkspace=_workspace;
-- (void).cxx_destruct;
-- (void)sceneDidReceiveMessage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)sceneDidReceiveActions:(id)arg1;
-- (void)sceneDidUpdateClientSettings:(id)arg1 transitionContext:(id)arg2;
-- (void)host:(id)arg1 didReceiveActions:(id)arg2;
-- (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)agent:(id)arg1 sendMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (void)agent:(id)arg1 registerMessageHandler:(CDUnknownBlockType)arg2;
 - (void)closeSession:(id)arg1;
@@ -64,21 +55,16 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
-- (void)_handleInvalidationWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_handleDidUpdateSettings:(id)arg1 withDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_dispatchBlockAfterProcessLaunch:(CDUnknownBlockType)arg1;
-- (void)_workspaceQueue_invalidateSceneAgentWithEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_workspaceQueue_sendDestroyWithTransitionContext:(id)arg1 responseEventHandler:(CDUnknownBlockType)arg2;
-- (void)_workspaceQueue_sendSettingsDiff:(id)arg1 transitionContext:(id)arg2 responseEventHandler:(CDUnknownBlockType)arg3;
-- (void)_workspaceQueue_addInitializationCompletedBlockToWorkspaceQueue:(CDUnknownBlockType)arg1;
+- (void)_workspaceQueue_handleInvalidationWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_workspaceQueue_handleDidUpdateSettings:(id)arg1 withDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_workspaceQueue_invalidate;
-- (id)_workspaceQueue;
-- (id)_workspaceQueue_process;
-- (void)_workspaceQueue_dispatchClientBlockIfNecessary:(CDUnknownBlockType)arg1 success:(_Bool)arg2;
-@property(readonly, nonatomic, getter=_workspaceQueue_handledInitialSettingsDiff) _Bool handledInitialSettingsDiff;
-- (void)queue_invalidate;
-- (void)queue_configureWithInitialParameters:(id)arg1;
+- (void)_workspaceQueue_sendMessageToClient:(CDUnknownBlockType)arg1;
+- (void)_workspaceQueue_invalidateSceneAgentWithEvent:(id)arg1;
+- (void)_workspaceQueue_sendUpdateToClient:(id)arg1 settingsDiff:(id)arg2 transitionContext:(id)arg3 responseEventHandler:(CDUnknownBlockType)arg4;
+- (void)invalidate;
+- (void)configureFromRemnant:(_Bool)arg1 withSpecification:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4;
 @property(readonly, copy, nonatomic) FBSSceneSettings *settings;
+- (void)dealloc;
 - (id)initWithParentWorkspace:(id)arg1 host:(id)arg2;
 
 // Remaining properties

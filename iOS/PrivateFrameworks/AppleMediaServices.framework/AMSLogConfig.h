@@ -25,10 +25,12 @@
 + (id)_createLogConfigWithSubsystem:(id)arg1 category:(id)arg2;
 + (id)sharedMediaServiceOwnerConfig;
 + (id)sharedUserNotificationConfig;
++ (id)sharedRatingsProviderConfig;
 + (id)sharedPushNotificationConfig;
 + (id)sharedPurchaseConfig;
 + (id)sharedPrivacyConfig;
 + (id)sharedMediaConfig;
++ (id)sharedMarketingItemConfig;
 + (id)sharedKeychainConfig;
 + (id)sharedFollowUpConfig;
 + (id)sharedBagCacheConfig;
@@ -39,6 +41,7 @@
 + (id)sharedAccountsStorefrontConfig;
 + (id)sharedAccountsOversizeConfig;
 + (id)sharedAccountsNotificationPluginConfig;
++ (id)sharedAccountsMultiUserConfig;
 + (id)sharedAccountsMigrationConfigOversize;
 + (id)sharedAccountsMigrationConfig;
 + (id)sharedAccountsLogoutConfig;
@@ -50,11 +53,11 @@
 + (id)sharedAccountsAuthenticationPluginConfig;
 + (id)sharedConfigOversize;
 + (id)sharedConfig;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *propertyAccessQueue; // @synthesize propertyAccessQueue=_propertyAccessQueue;
 @property(retain, nonatomic) NSObject<OS_os_log> *backingOSLogObject; // @synthesize backingOSLogObject=_backingOSLogObject;
 @property(copy, nonatomic) NSString *subsystem; // @synthesize subsystem=_subsystem;
 @property(copy, nonatomic) NSString *category; // @synthesize category=_category;
-- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

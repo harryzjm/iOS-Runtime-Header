@@ -6,7 +6,7 @@
 
 #import <Photos/PHPhotoLibrary.h>
 
-@class PXPhotoLibraryLocalDefaults;
+@class PHFetchOptions, PXPhotoLibraryLocalDefaults;
 
 @interface PHPhotoLibrary (PhotosUICore)
 + (id)px_appPhotoLibrary;
@@ -16,6 +16,7 @@
 - (id)px_memoryWithLocalIdentifier:(id)arg1;
 - (id)px_assetCollectionWithLocalIdentifier:(id)arg1;
 - (id)px_assetCollectionForSmartAlbumWithSubtype:(long long)arg1;
+- (id)px_objectWithLocalIdentifier:(id)arg1;
 - (_Bool)px_fetchHasNoVisibleAssets;
 @property(readonly) PXPhotoLibraryLocalDefaults *px_localDefaults;
 @property(readonly, nonatomic, getter=px_areChangesPaused) _Bool px_changesPaused;
@@ -24,5 +25,6 @@
 - (void)px_unregisterChangeObserver:(id)arg1;
 - (void)px_registerChangeObserver:(id)arg1;
 - (id)px_changeDistributor;
+@property(readonly, copy, nonatomic) PHFetchOptions *px_standardLibrarySpecificFetchOptions;
 @end
 

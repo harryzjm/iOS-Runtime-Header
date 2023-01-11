@@ -26,6 +26,7 @@
     CDStruct_d58201db _size;
 }
 
+- (void).cxx_destruct;
 @property(retain) id <NURAWImageProperties> rawProperties; // @synthesize rawProperties=_rawProperties;
 @property(retain) NSDictionary *auxiliaryImagesProperties; // @synthesize auxiliaryImagesProperties=_auxiliaryImagesProperties;
 @property _Bool isFusedOvercapture; // @synthesize isFusedOvercapture=_isFusedOvercapture;
@@ -34,10 +35,9 @@
 @property(retain) NSString *fileUTI; // @synthesize fileUTI=_fileUTI;
 @property long long orientation; // @synthesize orientation=_orientation;
 @property CDStruct_912cb5d2 size; // @synthesize size=_size;
-@property struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property(retain) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(retain) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties

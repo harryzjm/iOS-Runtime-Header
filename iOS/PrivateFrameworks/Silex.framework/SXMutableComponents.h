@@ -16,6 +16,7 @@
 - (void)removeComponentWithIdentifier:(id)arg1;
 - (void)removeComponentAtIndex:(unsigned long long)arg1;
 - (void)setComponents:(id)arg1;
+- (void)replaceComponent:(id)arg1 withComponent:(id)arg2;
 - (void)replaceComponentAtIndex:(unsigned long long)arg1 withComponent:(id)arg2;
 - (void)insertComponent:(id)arg1 afterComponent:(id)arg2;
 

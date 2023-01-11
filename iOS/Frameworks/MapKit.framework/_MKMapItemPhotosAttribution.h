@@ -12,6 +12,10 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsReportingIssue;
+@property(readonly, nonatomic) _Bool shouldAddPhotosLocally;
+@property(readonly, nonatomic) _Bool shouldHandlePhotosLocally;
+@property(readonly, nonatomic) _Bool shouldSuppressPhotoAttribution;
 - (id)urlsForPhotoWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSArray *addPhotoURLs;
 - (id)initWithGEOMapItemAttribution:(id)arg1;

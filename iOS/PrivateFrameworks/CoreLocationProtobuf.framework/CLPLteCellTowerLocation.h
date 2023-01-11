@@ -18,6 +18,7 @@
     int _bandInfo;
     int _bandwidth;
     int _ci;
+    unsigned int _deploymentType;
     int _ecn0;
     CLPLocation *_location;
     int _mcc;
@@ -38,6 +39,7 @@
         unsigned int cellLongitude:1;
         unsigned int bandInfo:1;
         unsigned int bandwidth:1;
+        unsigned int deploymentType:1;
         unsigned int ecn0:1;
         unsigned int pid:1;
         unsigned int rscp:1;
@@ -49,6 +51,8 @@
 }
 
 + (Class)neighborType;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned int deploymentType; // @synthesize deploymentType=_deploymentType;
 @property(retain, nonatomic) NSString *serviceProviderName; // @synthesize serviceProviderName=_serviceProviderName;
 @property(nonatomic) _Bool isLimitedService; // @synthesize isLimitedService=_isLimitedService;
 @property(nonatomic) int bandwidth; // @synthesize bandwidth=_bandwidth;
@@ -70,7 +74,6 @@
 @property(nonatomic) int tac; // @synthesize tac=_tac;
 @property(nonatomic) int mnc; // @synthesize mnc=_mnc;
 @property(nonatomic) int mcc; // @synthesize mcc=_mcc;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -80,6 +83,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDeploymentType;
 @property(readonly, nonatomic) _Bool hasServiceProviderName;
 @property(nonatomic) _Bool hasIsLimitedService;
 @property(nonatomic) _Bool hasBandwidth;

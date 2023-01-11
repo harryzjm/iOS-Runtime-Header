@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppStoreDaemon/NSObject-Protocol.h>
+#import <AppStoreDaemon/ASDNotificationCenterDialogObserver-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
-@protocol ASDStoreKitClientProtocol <NSObject>
+@protocol ASDStoreKitClientProtocol <ASDNotificationCenterDialogObserver>
 - (void)shouldContinueTransaction:(NSDictionary *)arg1 withNewStorefront:(NSString *)arg2 replyBlock:(void (^)(_Bool))arg3;
 - (void)storefrontChanged:(NSDictionary *)arg1;
 - (void)downloadRemoved:(NSDictionary *)arg1;
@@ -16,5 +16,7 @@
 - (void)downloadAdded:(NSDictionary *)arg1;
 - (void)removedTransactions:(NSArray *)arg1;
 - (void)updatedTransactions:(NSArray *)arg1;
+- (void)removedEntitlementsForProductIdentifiers:(NSArray *)arg1;
+- (void)askToShowMessageWithReplyBlock:(void (^)(_Bool))arg1;
 @end
 

@@ -22,17 +22,12 @@
 
 + (id)sharedInstance;
 - (id)description;
-- (void)_resetAndConfigureAndPostNotification:(_Bool)arg1;
-- (double)_currentAbsoluteTime;
-- (struct __CFCalendar *)_copyCurrentCalendar;
 - (void)_resetAndConfigure;
-- (void)_resetAndConfigureIfNecessary;
 - (_Bool)isWithinNextWeek:(double)arg1;
 - (_Bool)isWithinPrevWeek:(double)arg1 includeToday:(_Bool)arg2;
 - (_Bool)isWithinPrevWeek:(double)arg1;
 - (_Bool)isYesterday:(double)arg1;
 - (_Bool)isTomorrow:(double)arg1;
-- (_Bool)_isToday:(double)arg1;
 - (_Bool)isToday:(double)arg1;
 - (double)nextWeek;
 - (double)prevWeek;

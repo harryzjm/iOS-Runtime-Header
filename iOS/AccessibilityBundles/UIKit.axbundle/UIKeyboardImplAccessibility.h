@@ -31,11 +31,12 @@
 - (void)setInputModeToNextInPreferredList;
 - (void)completeDeleteFromInput;
 - (void)textDidChange:(id)arg1;
+- (void)_performKeyboardOutput:(id)arg1 shouldCheckDelegate:(_Bool)arg2;
 - (void)handleKeyboardInput:(id)arg1 executionContext:(id)arg2;
 - (void)insertText:(id)arg1;
 - (_Bool)_accessibilityInputObjectUsesSecureText:(id)arg1;
 - (id)_accessibilityKeyboardInputDelegate;
-- (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 inputString:(id)arg3 searchString:(id)arg4;
+- (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 inputString:(id)arg3 searchString:(id)arg4 compareAttributes:(_Bool)arg5;
 - (void)unmarkText:(id)arg1;
 - (void)hideKeyboard;
 - (void)showKeyboard;
@@ -43,6 +44,7 @@
 - (void)dismissKeyboard;
 - (void)setInputMode:(id)arg1 userInitiated:(_Bool)arg2;
 - (void)setShift:(_Bool)arg1 autoshift:(_Bool)arg2;
+- (void)deleteBackwardAndNotify:(_Bool)arg1;
 - (_Bool)autocorrectionPreference;
 - (_Bool)autocorrectSpellingEnabled;
 - (void)dealloc;

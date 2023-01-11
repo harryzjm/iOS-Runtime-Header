@@ -18,16 +18,21 @@
     RUIElement *_parent;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak RUIElement *parent; // @synthesize parent=_parent;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property(retain, nonatomic) RUIStyle *style; // @synthesize style=_style;
 @property(copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
+- (void)stopActivityIndicator;
+- (void)startActivityIndicator;
 - (void)setImageAlignment:(int)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
 - (void)setImage:(id)arg1;
+- (_Bool)loadImageFromImageURL;
+- (id)image:(id)arg1 size:(struct CGSize)arg2;
+- (_Bool)loadSystemImage;
 - (_Bool)loadImage;
 - (_Bool)hasImage;
 - (void)imageLoaded:(id)arg1;
@@ -39,6 +44,7 @@
 - (id)sourceURL;
 - (void)dealloc;
 - (id)mutableAttributes;
+- (id)viewForElementIdentifier:(id)arg1;
 - (id)subElementWithID:(id)arg1;
 - (id)subElementsWithName:(id)arg1;
 - (void)populatePostbackDictionary:(id)arg1;

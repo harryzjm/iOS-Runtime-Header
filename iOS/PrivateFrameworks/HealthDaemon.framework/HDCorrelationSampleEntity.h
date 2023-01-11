@@ -9,11 +9,11 @@
 }
 
 + (_Bool)isConcreteEntity;
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (_Bool)addCodableObject:(id)arg1 toCollection:(id)arg2;
 + (id)codableObjectsFromObjectCollection:(id)arg1;
 + (id)_objectsWithIDs:(id)arg1 profile:(id)arg2;
-+ (id)deleteStatementsForRelatedEntitiesInDatabase:(id)arg1;
++ (id)deleteStatementsForRelatedEntitiesWithTransaction:(id)arg1;
 + (_Bool)acceptsObject:(id)arg1;
 + (id)createTableSQL;
 + (_Bool)requiresSampleTypePredicate;

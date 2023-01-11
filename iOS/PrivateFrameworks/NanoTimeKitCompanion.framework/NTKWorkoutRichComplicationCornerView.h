@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKWorkoutRichComplicationBaseCircularView;
+@class NTKWorkoutRichComplicationCircularContentView;
 
 @interface NTKWorkoutRichComplicationCornerView
 {
-    NTKWorkoutRichComplicationBaseCircularView *_richView;
+    NTKWorkoutRichComplicationCircularContentView *_richView;
 }
 
 - (void).cxx_destruct;

@@ -13,16 +13,9 @@
     struct sqlite3_stmt *_statement;
 }
 
-- (int)_bindParameterIndex:(int)arg1 dataValue:(id)arg2;
-- (int)_bindParameterIndex:(int)arg1 numberValue:(id)arg2;
-- (int)_bindParameterIndex:(int)arg1 stringValue:(id)arg2;
-- (int)_bindParameterIndex:(int)arg1 nullValue:(id)arg2;
-- (int)_bindKey:(id)arg1 value:(id)arg2;
-- (id)_sqliteError:(int)arg1;
 - (void)sqliteDatabaseConnectionWillClose:(id)arg1;
 - (_Bool)executeWithBindings:(id)arg1 resultRowHandler:(CDUnknownBlockType)arg2 error:(out id *)arg3;
 - (void)dealloc;
-- (id)initWithDatabaseConnection:(id)arg1 statement:(struct sqlite3_stmt *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,15 +6,27 @@
 
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 
-@class SBIconListView, SBRootFolderController, SBViewControllerTransitionContext, UIView, UIViewPropertyAnimator;
+@class NSString, SBHAddWidgetSheetViewController, SBIconListView, SBIconView, SBRootFolderController, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewPropertyAnimator;
+@protocol UIViewImplicitlyAnimating;
 
 @protocol SBRootFolderControllerDelegate <SBFolderControllerDelegate>
 
 @optional
-- (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 prepareAddSheetViewController:(SBHAddWidgetSheetViewController *)arg2;
+- (void)rootFolderControllerDidDismissWidgetEditing:(SBRootFolderController *)arg1;
+- (void)rootFolderControllerWillPresentWidgetEditing:(SBRootFolderController *)arg1;
+- (void)rootFolderController:(SBRootFolderController *)arg1 handleInsertionForWidgetIcon:(SBWidgetIcon *)arg2 withReferenceIconView:(SBIconView *)arg3 fromTodayPresenter:(_Bool)arg4 dismissViewControllerHandler:(void (^)(void))arg5;
+- (void)rootFolderControllerViewDidDisappear:(SBRootFolderController *)arg1;
+- (void)rootFolderControllerViewWillAppear:(SBRootFolderController *)arg1;
+- (void)rootFolderControllerDidDismissPageManagement:(SBRootFolderController *)arg1;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willPresentPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
+- (NSString *)rootFolderController:(SBRootFolderController *)arg1 vendorNameForAppWithBundleIdentifiers:(NSString *)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didOverscrollOnLastPageByAmount:(double)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
-- (_Bool)rootFolderControllerShouldAllowOverscrollOnFirstPage:(SBRootFolderController *)arg1;
-- (void)rootFolderControllerDidChangeSidebarPinned:(SBRootFolderController *)arg1;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
 - (SBIconListView *)externalDockIconListViewForRootFolderController:(SBRootFolderController *)arg1;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willUsePropertyAnimator:(UIViewPropertyAnimator *)arg2 toTransitionToState:(long long)arg3;

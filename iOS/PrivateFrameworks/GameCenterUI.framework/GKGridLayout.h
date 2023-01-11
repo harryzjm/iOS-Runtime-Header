@@ -177,7 +177,7 @@
 - (unsigned long long)filteredTotalItemCountForSection:(long long)arg1;
 - (id)metricDataForSection:(long long)arg1;
 - (id)metricDataForKey:(id)arg1;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (struct CGRect)layoutBounds;
 - (double)scale;
 - (void)dealloc;

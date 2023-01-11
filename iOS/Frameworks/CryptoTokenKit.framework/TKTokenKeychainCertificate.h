@@ -18,6 +18,7 @@
     NSNumber *_certificateEncoding;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSNumber *certificateEncoding; // @synthesize certificateEncoding=_certificateEncoding;
 @property(retain) NSNumber *certificateType; // @synthesize certificateType=_certificateType;
 @property(retain) NSData *publicKeyHash; // @synthesize publicKeyHash=_publicKeyHash;
@@ -26,9 +27,9 @@
 @property(retain) NSData *issuer; // @synthesize issuer=_issuer;
 @property(retain) NSData *subject; // @synthesize subject=_subject;
 @property(readonly, copy) NSData *data; // @synthesize data=_data;
-- (void).cxx_destruct;
 - (id)keychainAttributes;
 - (id)initWithItemInfo:(id)arg1;
+- (id)encodedObjectID;
 - (id)initWithCertificate:(struct __SecCertificate *)arg1 objectID:(id)arg2;
 
 @end

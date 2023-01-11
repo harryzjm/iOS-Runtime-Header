@@ -9,24 +9,23 @@
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
 @class MPCModelRadioContentReference, MPModelRadioStation, NSURL;
-@protocol MPCRadioPlaybackIntentTracklistTokenRadioStationMetadata;
 
 @interface MPCRadioPlaybackIntentTracklistToken : NSObject <NSSecureCoding>
 {
+    _Bool _continueListeningStation;
     MPCModelRadioContentReference *_nowPlayingContentReference;
     MPCModelRadioContentReference *_seedContentReference;
     MPModelRadioStation *_radioStation;
     NSURL *_radioStationURL;
-    id <MPCRadioPlaybackIntentTracklistTokenRadioStationMetadata> _radioStationPlaybackMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) id <MPCRadioPlaybackIntentTracklistTokenRadioStationMetadata> radioStationPlaybackMetadata; // @synthesize radioStationPlaybackMetadata=_radioStationPlaybackMetadata;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSURL *radioStationURL; // @synthesize radioStationURL=_radioStationURL;
 @property(retain, nonatomic) MPModelRadioStation *radioStation; // @synthesize radioStation=_radioStation;
 @property(copy, nonatomic) MPCModelRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;
 @property(copy, nonatomic) MPCModelRadioContentReference *nowPlayingContentReference; // @synthesize nowPlayingContentReference=_nowPlayingContentReference;
-- (void).cxx_destruct;
+@property(nonatomic) _Bool continueListeningStation; // @synthesize continueListeningStation=_continueListeningStation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

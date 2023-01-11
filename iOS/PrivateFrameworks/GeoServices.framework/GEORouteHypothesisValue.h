@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedWaypoint, GEOMapServiceTraits, GEORouteHypothesis, GEORouteHypothesisMonitor, NSDate;
+@class GEOComposedWaypoint, GEOMapServiceTraits, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesisMonitor, NSDate;
 
 @interface GEORouteHypothesisValue : NSObject <NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     GEOComposedWaypoint *_origin;
     GEOComposedWaypoint *_destination;
     int _transportType;
+    GEORouteAttributes *_routeAttributes;
     NSDate *_arrivalDate;
     NSDate *_expirationDate;
     GEOMapServiceTraits *_traits;
@@ -27,9 +28,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) long long rowId; // @synthesize rowId=_rowId;
 @property(nonatomic) double valueRefreshTimeStamp; // @synthesize valueRefreshTimeStamp=_valueRefreshTimeStamp;
-@property(nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property(copy, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
@@ -39,8 +41,8 @@
 @property(nonatomic) _Bool prediction; // @synthesize prediction=_prediction;
 @property(retain, nonatomic) GEORouteHypothesis *currentHypothesis; // @synthesize currentHypothesis=_currentHypothesis;
 @property(readonly, nonatomic) GEORouteHypothesisMonitor *monitor; // @synthesize monitor=_monitor;
-- (void).cxx_destruct;
 - (id)description;
+@property(readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 - (_Bool)canBePersistedToDisk;
 @property(readonly, nonatomic) _Bool isStaleToPurgeFromDisk;
 @property(readonly, nonatomic) _Bool isStaleToRefresh;
@@ -48,7 +50,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)commonInit;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 expirationDate:(id)arg5 traceName:(id)arg6 traits:(id)arg7;
+- (id)initWithSource:(id)arg1 toDestination:(id)arg2 arrivalDate:(id)arg3 expirationDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6 routeAttributes:(id)arg7;
 
 @end
 

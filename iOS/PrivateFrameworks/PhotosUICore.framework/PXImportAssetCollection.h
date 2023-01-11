@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotosUICore/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString;
+@class NSArray, NSMutableArray, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface PXImportAssetCollection : NSObject <NSCopying>
+@interface PXImportAssetCollection <NSCopying>
 {
     NSObject<OS_dispatch_queue> *_assetQueue;
     NSMutableArray *_assetList;
@@ -23,9 +21,9 @@
 }
 
 + (id)dayFormatter;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool alreadyImportedGroup; // @synthesize alreadyImportedGroup=_alreadyImportedGroup;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)localizedTitle;
 - (long long)indexOfItem:(id)arg1;
 - (id)itemAtIndex:(unsigned long long)arg1;

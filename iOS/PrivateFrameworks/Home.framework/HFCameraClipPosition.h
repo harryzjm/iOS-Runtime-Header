@@ -10,24 +10,28 @@
 #import <Home/NSCopying-Protocol.h>
 
 @class HMCameraClip, NSDate, NSString;
+@protocol HFCameraRecordingEvent;
 
 @interface HFCameraClipPosition : NSObject <NAIdentifiable, NSCopying>
 {
-    HMCameraClip *_clip;
     double _offset;
+    id <HFCameraRecordingEvent> _event;
 }
 
 + (id)na_identity;
++ (id)positionWithEvent:(id)arg1 offset:(double)arg2;
 + (id)positionWithClip:(id)arg1 offset:(double)arg2;
-@property(readonly, nonatomic) double offset; // @synthesize offset=_offset;
-@property(readonly, nonatomic) HMCameraClip *clip; // @synthesize clip=_clip;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <HFCameraRecordingEvent> event; // @synthesize event=_event;
+@property(readonly, nonatomic) double offset; // @synthesize offset=_offset;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy, nonatomic) NSDate *date;
+@property(readonly, nonatomic) HMCameraClip *clip;
 - (id)initWithClip:(id)arg1 offset:(double)arg2;
+- (id)initWithEvent:(id)arg1 offset:(double)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

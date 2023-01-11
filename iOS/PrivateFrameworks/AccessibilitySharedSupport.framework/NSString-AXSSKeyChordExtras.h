@@ -7,7 +7,12 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (AXSSKeyChordExtras)
++ (struct USet *)_japaneseLetterSet;
++ (struct USet *)_ideographSet;
++ (struct USet *)_characterSetWithPattern:(id)arg1;
 - (id)axss_keyChordKeyDisplayValueForUSKeyboard:(_Bool)arg1;
 - (id)axss_stringByTrimmingToLength:(unsigned long long)arg1 encoding:(unsigned long long)arg2;
+- (_Bool)_isJapanesePhrase;
+- (_Bool)_isOnlyIdeographs;
 @end
 

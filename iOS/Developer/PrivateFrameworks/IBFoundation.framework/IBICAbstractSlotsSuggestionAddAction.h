@@ -11,8 +11,8 @@
     NSSet *_slots;
 }
 
-@property(readonly) NSSet *slots; // @synthesize slots=_slots;
 - (void).cxx_destruct;
+@property(readonly) NSSet *slots; // @synthesize slots=_slots;
 - (void)ibic_generateSubNodes:(CDUnknownBlockType)arg1;
 - (id)initWithSlots:(id)arg1;
 

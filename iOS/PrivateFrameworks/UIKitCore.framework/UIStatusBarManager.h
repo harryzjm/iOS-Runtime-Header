@@ -23,6 +23,7 @@
 }
 
 + (id)_implicitStatusBarAnimationParametersWithClass:(Class)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType debugMenuHandler; // @synthesize debugMenuHandler=_debugMenuHandler;
 @property(readonly, nonatomic) double statusBarAlpha; // @synthesize statusBarAlpha=_statusBarAlpha;
 @property(readonly, nonatomic, getter=isInStatusBarFadeAnimation) _Bool inStatusBarFadeAnimation; // @synthesize inStatusBarFadeAnimation=_inStatusBarFadeAnimation;
@@ -31,7 +32,6 @@
 @property(retain, nonatomic) UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
 @property(readonly, nonatomic, getter=isStatusBarHidden) _Bool statusBarHidden; // @synthesize statusBarHidden=_statusBarHidden;
 @property(readonly, nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
-- (void).cxx_destruct;
 - (_Bool)statusBarHidden;
 - (void)_handleScrollToTopAtXPosition:(double)arg1;
 - (struct CGPoint)_adjustedLocationForXPosition:(double)arg1;
@@ -51,9 +51,11 @@
 - (void)updateStatusBarAppearanceWithAnimationParameters:(id)arg1;
 - (void)updateStatusBarAppearance;
 - (double)defaultStatusBarHeightInOrientation:(long long)arg1;
+@property(readonly, nonatomic) double defaultStatusBarHeight;
 @property(readonly, nonatomic) double statusBarHeight;
 @property(readonly, nonatomic) struct CGRect statusBarFrame;
 - (struct CGRect)statusBarFrameForStatusBarHeight:(double)arg1;
+- (struct CGRect)statusBarFrameForStatusBarHeight:(double)arg1 inOrientation:(long long)arg2;
 - (id)_settingsDiffActionsForScene:(id)arg1;
 @property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene;
 - (id)initWithScene:(id)arg1;

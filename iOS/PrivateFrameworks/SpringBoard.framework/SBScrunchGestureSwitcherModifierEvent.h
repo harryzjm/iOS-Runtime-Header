@@ -16,6 +16,7 @@
 @property(nonatomic) double absoluteScale; // @synthesize absoluteScale=_absoluteScale;
 @property(nonatomic) struct CGPoint centroid; // @synthesize centroid=_centroid;
 @property(nonatomic) struct CGPoint initialCentroid; // @synthesize initialCentroid=_initialCentroid;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
 
 @end

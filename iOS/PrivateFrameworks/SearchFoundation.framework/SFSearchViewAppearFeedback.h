@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SFSearchViewAppearFeedback
 {
     _Bool _isOnLockScreen;
     _Bool _isOverApp;
     _Bool _readerTextAvailable;
     unsigned long long _viewAppearEvent;
+    NSString *_preexistingInput;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *preexistingInput; // @synthesize preexistingInput=_preexistingInput;
 @property(nonatomic) _Bool readerTextAvailable; // @synthesize readerTextAvailable=_readerTextAvailable;
 @property(nonatomic) _Bool isOverApp; // @synthesize isOverApp=_isOverApp;
 @property(nonatomic) _Bool isOnLockScreen; // @synthesize isOnLockScreen=_isOnLockScreen;

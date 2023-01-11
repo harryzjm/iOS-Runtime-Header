@@ -6,10 +6,12 @@
 
 #import <UIKit/UIControl.h>
 
-@class UIImageView, UILabel;
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
+
+@class CAMSlashMaskView, CAMSlashView, NSString, UIImageView, UILabel, UIView;
 @protocol CAMControlStatusIndicatorDelegate;
 
-@interface CAMControlStatusIndicator : UIControl
+@interface CAMControlStatusIndicator : UIControl <CAMAccessibilityHUDItemProvider>
 {
     _Bool _showingValue;
     _Bool __needsUpdateValueText;
@@ -18,6 +20,9 @@
     UIImageView *__imageView;
     UIImageView *__outlineView;
     UILabel *__valueLabel;
+    CAMSlashView *__slashView;
+    CAMSlashMaskView *__slashMaskView;
+    UIView *__slashMaskContainer;
     struct CGSize __valueLabelSize;
 }
 
@@ -26,33 +31,54 @@
 + (id)_outlineImage;
 + (id)integerFormatter;
 + (id)decimalFormatter;
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setNeedsUpdateValueText:) _Bool _needsUpdateValueText; // @synthesize _needsUpdateValueText=__needsUpdateValueText;
 @property(nonatomic, setter=_setValueLabelSize:) struct CGSize _valueLabelSize; // @synthesize _valueLabelSize=__valueLabelSize;
+@property(readonly, nonatomic) UIView *_slashMaskContainer; // @synthesize _slashMaskContainer=__slashMaskContainer;
+@property(readonly, nonatomic) CAMSlashMaskView *_slashMaskView; // @synthesize _slashMaskView=__slashMaskView;
+@property(readonly, nonatomic) CAMSlashView *_slashView; // @synthesize _slashView=__slashView;
 @property(readonly, nonatomic) UILabel *_valueLabel; // @synthesize _valueLabel=__valueLabel;
 @property(readonly, nonatomic) UIImageView *_outlineView; // @synthesize _outlineView=__outlineView;
 @property(readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property(nonatomic, getter=isShowingValue) _Bool showingValue; // @synthesize showingValue=_showingValue;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) __weak id <CAMControlStatusIndicatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
+- (void)_updateSlashAnimated:(_Bool)arg1;
 - (void)setShowingValue:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_updateImageOrientationAnimated:(_Bool)arg1;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
-@property(readonly, nonatomic) _Bool canShowValue;
+- (void)stopAnimating;
+- (void)startAnimating;
 - (void)_updateValueLabelVisibilityAnimated:(_Bool)arg1;
 - (void)_updateValueText;
 - (id)valueText;
 - (void)setNeedsUpdateValueText;
+@property(readonly, nonatomic) _Bool canShowValue;
 - (_Bool)shouldUseActiveTintForCurrentState;
+- (_Bool)supportsOrientations;
+- (_Bool)shouldShowSlashForCurrentState;
+- (_Bool)shouldUseSlash;
 - (_Bool)shouldFillOutlineForCurrentState;
+- (_Bool)shouldShowOutlineForCurrentState;
 - (_Bool)shouldUseOutline;
+@property(readonly, nonatomic) _Bool canAnimate;
+- (id)imageAnimationFramesForCurrentState;
 - (id)imageNameForCurrentState;
 - (id)imageForCurrentState;
+- (void)updateImageAnimated:(_Bool)arg1;
 - (void)updateImage;
 - (struct CGSize)intrinsicContentSize;
 - (double)_additionalWidthForValue;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

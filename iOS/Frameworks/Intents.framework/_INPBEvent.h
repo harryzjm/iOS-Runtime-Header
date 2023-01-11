@@ -15,17 +15,15 @@
 @interface _INPBEvent : PBCodable <_INPBEvent, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     NSArray *_eventDescriptors;
     _INPBString *_eventType;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)eventDescriptorsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBString *eventType; // @synthesize eventType=_eventType;
 @property(copy, nonatomic) NSArray *eventDescriptors; // @synthesize eventDescriptors=_eventDescriptors;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

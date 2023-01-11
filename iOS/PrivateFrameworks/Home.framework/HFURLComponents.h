@@ -15,19 +15,29 @@
 }
 
 + (id)homeKitObjectURLForDestination:(unsigned long long)arg1 secondaryDestination:(unsigned long long)arg2 UUID:(id)arg3;
++ (id)homeKitObjectURLForDestination:(unsigned long long)arg1 secondaryDestination:(unsigned long long)arg2 UUID:(id)arg3 queryItems:(id)arg4;
 + (id)_URLComponentsForDestination:(unsigned long long)arg1;
 + (_Bool)isHomeAppURL:(id)arg1;
 + (id)symptomFromURL:(id)arg1 accessory:(id)arg2;
++ (id)aboutImproveSiriAndDictationURL;
 + (id)fixSymptomURLForAccessoryWithUUID:(id)arg1 symptom:(id)arg2;
 + (id)fixSymptomURLForAccessory:(id)arg1 symptom:(id)arg2;
++ (id)_settingsURLHostString:(id)arg1 UUID:(id)arg2 forHome:(id)arg3;
++ (id)_settingsURLHostString:(id)arg1 forHome:(id)arg2;
++ (id)faceRecognitionSettingsURLForHome:(id)arg1;
++ (id)networkRouterSettingsURLForHome:(id)arg1;
++ (id)bridgeSettingsURLForAccessory:(id)arg1 home:(id)arg2;
++ (id)cameraProfileDetailsURLForCameraProfile:(id)arg1 home:(id)arg2;
++ (id)serviceDetailsURLForService:(id)arg1 home:(id)arg2;
++ (id)accessoryDetailsURLForAccessory:(id)arg1 home:(id)arg2;
 + (id)musicLoginURL;
 + (id)locationPrivacyURL;
 + (id)musicPrivacyURL;
 + (id)siriPrivacyURL;
 + (id)aboutResidentDeviceURL;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HFHomeKitDispatcher *homeKitDispatcher; // @synthesize homeKitDispatcher=_homeKitDispatcher;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-- (void).cxx_destruct;
 - (id)_homeKitIdentifier;
 - (id)valueForParameter:(id)arg1;
 - (id)description;

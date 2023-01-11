@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 
 - (void)updateConstraints;
 - (double)onePixelSize;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateProminenceForAppearance:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

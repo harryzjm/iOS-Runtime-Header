@@ -9,5 +9,7 @@
 @interface UITextField (NUIContainerView)
 - (CDStruct_c3b9c2ee)_nui_additionalInsetsForBaselines;
 - (long long)_nui_baselineViewType;
+- (_Bool)canUseFastLayoutSizeCalulation;
+- (double)_nui_lineHeight;
 @end
 

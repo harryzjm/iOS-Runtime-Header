@@ -6,10 +6,11 @@
 
 #import <CoreDuetContext/_CDContext-Protocol.h>
 
-@class NSArray, NSObject, _CDContextualKeyPath;
+@class NSArray, NSObject, NSPredicate, _CDContextualKeyPath;
 @protocol NSCopying><NSSecureCoding;
 
 @protocol _CDLocalContext <_CDContext>
+- (NSArray *)removeObjectsMatchingPredicate:(NSPredicate *)arg1 fromArrayAtKeyPath:(_CDContextualKeyPath *)arg2;
 - (_Bool)addObjects:(NSArray *)arg1 andRemoveObjects:(NSArray *)arg2 fromArrayAtKeyPath:(_CDContextualKeyPath *)arg3;
 - (_Bool)removeObjects:(NSArray *)arg1 fromArrayAtKeyPath:(_CDContextualKeyPath *)arg2;
 - (_Bool)addObjects:(NSArray *)arg1 toArrayAtKeyPath:(_CDContextualKeyPath *)arg2;

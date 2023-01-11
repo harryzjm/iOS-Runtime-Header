@@ -12,13 +12,14 @@
 @interface PXGColorProgramLibrary : NSObject
 {
     NSMutableArray *_programs;
+    struct os_unfair_lock_s _lock;
     id <MTLDevice> _device;
     struct CGColorSpace *_destinationColorSpace;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGColorSpace *destinationColorSpace; // @synthesize destinationColorSpace=_destinationColorSpace;
 @property(readonly, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (id)colorProgramForSourceColorSpace:(struct CGColorSpace *)arg1 flags:(unsigned long long)arg2;
 - (id)description;
 - (void)dealloc;

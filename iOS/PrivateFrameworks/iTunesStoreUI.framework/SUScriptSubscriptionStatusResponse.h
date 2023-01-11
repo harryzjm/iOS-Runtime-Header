@@ -9,7 +9,6 @@
 @interface SUScriptSubscriptionStatusResponse
 {
     NSNumber *_acceptedStoreTermsVersion;
-    NSString *_accountIdentifier;
     NSString *_accountStatus;
     NSString *_carrierBundlingStatus;
     NSNumber *_carrierBundlingErrorCode;
@@ -28,6 +27,7 @@
 
 + (void)initialize;
 + (id)webScriptNameForKeyName:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, getter=isSubscribed) id subscribed; // @synthesize subscribed=_subscribed;
 @property(readonly) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly) SUScriptDictionary *rawResponseData; // @synthesize rawResponseData=_rawResponseData;
@@ -42,9 +42,7 @@
 @property(readonly) NSNumber *carrierBundlingErrorCode; // @synthesize carrierBundlingErrorCode=_carrierBundlingErrorCode;
 @property(readonly) NSString *carrierBundlingStatus; // @synthesize carrierBundlingStatus=_carrierBundlingStatus;
 @property(readonly) NSString *accountStatus; // @synthesize accountStatus=_accountStatus;
-@property(readonly) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(readonly) NSNumber *acceptedStoreTermsVersion; // @synthesize acceptedStoreTermsVersion=_acceptedStoreTermsVersion;
-- (void).cxx_destruct;
 - (id)scriptAttributeKeys;
 - (id)attributeKeys;
 @property(readonly) NSString *eligibilityStatusUnknown;
@@ -54,6 +52,7 @@
 @property(readonly) NSString *accountStatusSubscribed;
 @property(readonly) NSString *accountStatusNotSubscribed;
 @property(readonly) NSString *accountStatusNeedsAuthentication;
+@property(readonly) NSString *accountIdentifier;
 - (id)_className;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

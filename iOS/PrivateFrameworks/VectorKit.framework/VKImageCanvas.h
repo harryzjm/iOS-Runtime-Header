@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapRegion, VKCameraController;
+@class GEOMapRegion, VKCamera, VKCameraController;
 @protocol MDRenderTarget;
 
 __attribute__((visibility("hidden")))
@@ -19,33 +19,34 @@ __attribute__((visibility("hidden")))
         struct _release_objc _release;
     } _cameraController;
     shared_ptr_e963992e _taskContext;
+    _retain_ptr_c0a21da9 _camera;
     int _mapType;
-    struct DisplayStyle _mapDisplayStyle;
     id <MDRenderTarget> _displayTarget;
     struct Renderer {
         CDUnknownFunctionPointerType *;
         shared_ptr_e963992e;
         struct unique_ptr<md::PassList, std::__1::default_delete<md::PassList>>;
-        struct unique_ptr<md::RenderTargetRegistry, std::__1::default_delete<md::RenderTargetRegistry>>;
+        struct unique_ptr<md::FrameGraphResourceRegistry, std::__1::default_delete<md::FrameGraphResourceRegistry>>;
         struct vector<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>, std::__1::allocator<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>>>;
         struct linear_map<md::CommandBufferLocation, md::RenderLayer *, std::__1::equal_to<md::CommandBufferLocation>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>, std::__1::vector<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>>>;
         struct RunLoopController *;
         struct MapEngine *;
+        id;
     } *_mapRenderer;
     struct LayoutContext *_layoutContext;
     struct RunLoopController *_runLoopController;
     struct VKEdgeInsets _edgeInsets;
 }
 
-@property(nonatomic) struct VKEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
-@property(nonatomic) struct DisplayStyle mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
-@property(nonatomic) int mapType; // @synthesize mapType=_mapType;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) struct VKEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property(nonatomic) int mapType; // @synthesize mapType=_mapType;
 - (void)didReceiveMemoryWarning:(_Bool)arg1;
-- (void)renderSceneWithEngine:(struct MapEngine *)arg1 completion:(function_d3afe2e2)arg2;
+- (void)renderSceneWithEngine:(struct MapEngine *)arg1 completion:(function_84aba934)arg2;
 - (void)cancelLoad;
 - (void)loadScene;
+@property(readonly, nonatomic) VKCamera *camera;
 @property(readonly, nonatomic) double pitch;
 @property(readonly, nonatomic) double yaw;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelTileRequests;
 - (void)clearScene;
 - (void)didLayout;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 @property(readonly, nonatomic) shared_ptr_e963992e taskContext;
 - (void)dealloc;
 - (id)initWithMapEngine:(struct MapEngine *)arg1;

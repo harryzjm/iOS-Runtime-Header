@@ -11,9 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)accessibilityPerformEscape;
 - (id)locationStartShareCell;
 - (id)locationSendCell;
+- (void)loadView;
+- (_Bool)accessibilityPerformEscape;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

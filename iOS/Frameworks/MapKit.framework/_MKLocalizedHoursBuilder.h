@@ -33,14 +33,16 @@
 + (id)testGetDayOfWeekFormatterShort;
 + (id)testGetDayOfWeekFormatterFull;
 + (id)testGetMonthAndDayFormatter;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GEOBusinessHours *operatingHours; // @synthesize operatingHours=_operatingHours;
 @property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(nonatomic) unsigned long long localizedHoursStringOptions; // @synthesize localizedHoursStringOptions=_localizedHoursStringOptions;
 @property(nonatomic) unsigned long long geoMapItemOpeningHourOptions; // @synthesize geoMapItemOpeningHourOptions=_geoMapItemOpeningHourOptions;
 @property(retain, nonatomic) NSDate *compareDate; // @synthesize compareDate=_compareDate;
-- (void).cxx_destruct;
+- (id)concatenateStrings:(id)arg1 joinedByString:(id)arg2;
 - (void)calculateWidthsForData:(id)arg1;
 - (id)formatData:(id)arg1;
+- (void)updateHoursLabelColorWithDefaultLabelColor:(id)arg1;
 - (void)updateHoursLabelColor;
 - (id)_updateLocalizedOperatingHoursString:(unsigned long long)arg1;
 - (void)_updateLocalizedString;

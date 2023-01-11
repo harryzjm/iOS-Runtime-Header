@@ -16,6 +16,7 @@
     _Bool _audioEnabled;
     _Bool _videoEnabled;
     _Bool _locallyCreated;
+    _Bool _hasJoined;
     TUContactsDataProvider *_contactsDataProvider;
     NSUUID *_UUID;
     NSUUID *_groupUUID;
@@ -37,6 +38,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)numberFormatter;
 + (id)emptyConversationWithGroupUUID:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject *reportingHierarchySubToken; // @synthesize reportingHierarchySubToken=_reportingHierarchySubToken;
 @property(retain, nonatomic) NSObject *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 @property(nonatomic) long long maxVideoDecodesAllowed; // @synthesize maxVideoDecodesAllowed=_maxVideoDecodesAllowed;
@@ -44,6 +46,7 @@
 @property(retain, nonatomic) TUHandle *initiator; // @synthesize initiator=_initiator;
 @property(retain, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
 @property(retain, nonatomic) TUConversationMember *localMember; // @synthesize localMember=_localMember;
+@property(nonatomic, getter=hasJoined) _Bool hasJoined; // @synthesize hasJoined=_hasJoined;
 @property(copy, nonatomic) NSString *avcSessionIdentifier; // @synthesize avcSessionIdentifier=_avcSessionIdentifier;
 @property(nonatomic) long long avcSessionToken; // @synthesize avcSessionToken=_avcSessionToken;
 @property(copy, nonatomic) NSSet *activeRemoteParticipants; // @synthesize activeRemoteParticipants=_activeRemoteParticipants;
@@ -55,13 +58,15 @@
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) NSUUID *groupUUID; // @synthesize groupUUID=_groupUUID;
 @property(readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqualToConversation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)contactNamesByHandleWithContactsDataSource:(id)arg1;
+- (id)handles;
+- (id)bundleIdentifier;
 @property(readonly, nonatomic) TUContactsDataProvider *contactsDataProvider; // @synthesize contactsDataProvider=_contactsDataProvider;
 - (_Bool)isRepresentedByRemoteMembers:(id)arg1;
 - (id)initiatorLocalizedName;

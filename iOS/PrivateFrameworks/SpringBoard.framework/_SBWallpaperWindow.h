@@ -4,21 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBWallpaperDefaults;
-@protocol SBWallpaperWindowDelegate;
-
 @interface _SBWallpaperWindow
 {
-    SBWallpaperDefaults *_wallpaperDefaults;
-    id <SBWallpaperWindowDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <SBWallpaperWindowDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)traitCollectionDidChange:(id)arg1;
 - (long long)activeInterfaceOrientation;
-- (void)_observeDefaults;
-- (id)initWithScreen:(id)arg1 debugName:(id)arg2;
 
 @end
 

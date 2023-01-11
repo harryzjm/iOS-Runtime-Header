@@ -6,7 +6,7 @@
 
 #import <SafariServices/WKUIDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, UIDragItem, UIDropProposal, UIGestureRecognizer, UIImage, UIScrollView, UITargetedDragPreview, UIViewController, WKContextMenuElementInfo, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKActivatedElementInfo, _WKAttachment, _WKFrameHandle;
+@class NSArray, NSDictionary, NSString, NSURL, UIDragItem, UIDropProposal, UIGestureRecognizer, UIImage, UIScrollView, UITargetedDragPreview, UIViewController, WKContextMenuElementInfo, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKActivatedElementInfo, _WKAttachment, _WKFrameHandle, _WKWebAuthenticationPanel;
 @protocol NSSecureCoding, UIContextMenuInteractionCommitAnimating, UIDragSession, UIDropSession;
 
 @protocol WKUIDelegatePrivate <WKUIDelegate>
@@ -52,11 +52,15 @@
 - (void)_webView:(WKWebView *)arg1 willPreviewImageWithURL:(NSURL *)arg2;
 - (void)_webView:(WKWebView *)arg1 commitPreviewedViewController:(UIViewController *)arg2;
 - (UIViewController *)_webView:(WKWebView *)arg1 previewViewControllerForURL:(NSURL *)arg2;
+- (_Bool)_webView:(WKWebView *)arg1 fileUploadPanelContentIsManagedWithInitiatingFrame:(WKFrameInfo *)arg2;
 - (void)_webView:(WKWebView *)arg1 requestGeolocationAuthorizationForURL:(NSURL *)arg2 frame:(WKFrameInfo *)arg3 decisionHandler:(void (^)(_Bool))arg4;
 - (_Bool)_webView:(WKWebView *)arg1 shouldRequestGeolocationAuthorizationForURL:(NSURL *)arg2 isMainFrame:(_Bool)arg3 mainFrameURL:(NSURL *)arg4;
 - (void)_webView:(WKWebView *)arg1 didNotHandleTapAsClickAtPoint:(struct CGPoint)arg2;
 - (NSArray *)_webView:(WKWebView *)arg1 actionsForElement:(_WKActivatedElementInfo *)arg2 defaultActions:(NSArray *)arg3;
 - (_Bool)_webView:(WKWebView *)arg1 shouldIncludeAppLinkActionsForElement:(_WKActivatedElementInfo *)arg2;
+- (void)_webView:(WKWebView *)arg1 willShareActivityItems:(NSArray *)arg2;
+- (void)_webView:(WKWebView *)arg1 handleAutoplayEvent:(long long)arg2 withFlags:(unsigned long long)arg3;
+- (void)_webView:(WKWebView *)arg1 runWebAuthenticationPanel:(_WKWebAuthenticationPanel *)arg2 initiatedByFrame:(WKFrameInfo *)arg3 completionHandler:(void (^)(long long))arg4;
 - (void)_webView:(WKWebView *)arg1 takeFocus:(long long)arg2;
 - (void)_webView:(WKWebView *)arg1 didChangeFontAttributes:(NSDictionary *)arg2;
 - (void)_webView:(WKWebView *)arg1 requestStorageAccessPanelForDomain:(NSString *)arg2 underCurrentDomain:(NSString *)arg3 completionHandler:(void (^)(_Bool))arg4;
@@ -76,6 +80,7 @@
 - (void)_webView:(WKWebView *)arg1 requestMediaCaptureAuthorization:(unsigned long long)arg2 decisionHandler:(void (^)(_Bool))arg3;
 - (NSDictionary *)_dataDetectionContextForWebView:(WKWebView *)arg1;
 - (void)_webView:(WKWebView *)arg1 imageOrMediaDocumentSizeChanged:(struct CGSize)arg2;
+- (void)_webView:(WKWebView *)arg1 shouldAllowPDFAtURL:(NSURL *)arg2 toOpenFromFrame:(WKFrameInfo *)arg3 completionHandler:(void (^)(_Bool))arg4;
 - (void)_webView:(WKWebView *)arg1 hasVideoInPictureInPictureDidChange:(_Bool)arg2;
 - (void)_webViewDidLosePointerLock:(WKWebView *)arg1;
 - (void)_webViewDidShowSafeBrowsingWarning:(WKWebView *)arg1;
@@ -85,6 +90,7 @@
 - (void)_webViewDidEnterFullscreen:(WKWebView *)arg1;
 - (void)_webViewFullscreenMayReturnToInline:(WKWebView *)arg1;
 - (void)_webViewClose:(WKWebView *)arg1;
+- (void)_webView:(WKWebView *)arg1 printFrame:(_WKFrameHandle *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)_webView:(WKWebView *)arg1 printFrame:(_WKFrameHandle *)arg2;
 - (void)_webView:(WKWebView *)arg1 decideWebApplicationCacheQuotaForSecurityOrigin:(WKSecurityOrigin *)arg2 currentQuota:(unsigned long long)arg3 totalBytesNeeded:(unsigned long long)arg4 decisionHandler:(void (^)(unsigned long long))arg5;
 - (void)_webView:(WKWebView *)arg1 decideDatabaseQuotaForSecurityOrigin:(WKSecurityOrigin *)arg2 databaseName:(NSString *)arg3 displayName:(NSString *)arg4 currentQuota:(unsigned long long)arg5 currentOriginUsage:(unsigned long long)arg6 currentDatabaseUsage:(unsigned long long)arg7 expectedUsage:(unsigned long long)arg8 decisionHandler:(void (^)(unsigned long long))arg9;

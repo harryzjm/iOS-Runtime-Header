@@ -17,7 +17,10 @@
 + (id)hk_setByUnioningSet:(id)arg1 otherSet:(id)arg2;
 - (id)hk_dataForAllUUIDs;
 - (_Bool)hk_enumerateUUIDsWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
+- (_Bool)hk_allObjectsPassTestWithError:(id *)arg1 test:(CDUnknownBlockType)arg2;
+- (_Bool)hk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)hk_mapToDictionary:(CDUnknownBlockType)arg1;
+- (id)hk_anyObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)hk_firstSortedObjectWithComparison:(CDUnknownBlockType)arg1;
 - (id)hk_intersection:(id)arg1;
 - (id)hk_minus:(id)arg1;

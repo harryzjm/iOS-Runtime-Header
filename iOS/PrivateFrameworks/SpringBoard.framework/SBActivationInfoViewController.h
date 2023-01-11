@@ -24,8 +24,8 @@
     UIButton *_regulatoryInfoButton;
 }
 
-@property(readonly, nonatomic) UIButton *regulatoryInfoButton; // @synthesize regulatoryInfoButton=_regulatoryInfoButton;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIButton *regulatoryInfoButton; // @synthesize regulatoryInfoButton=_regulatoryInfoButton;
 - (id)_formattedString:(id)arg1 withSpaceAfterDigits:(unsigned long long)arg2;
 - (id)_formattedCSN:(id)arg1;
 - (id)_formattedIMEI:(id)arg1;
@@ -46,6 +46,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)mobileEquipmentInfoDidChangeForStateProvider:(id)arg1 slot:(long long)arg2;
 - (void)subscriptionInfoDidChangeForStateProvider:(id)arg1 slot:(long long)arg2;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;

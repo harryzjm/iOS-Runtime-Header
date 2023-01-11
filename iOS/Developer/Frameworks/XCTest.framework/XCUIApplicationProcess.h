@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <XCTest/XCTElementSnapshotAttributeDataSource-Protocol.h>
+#import <XCTest/XCUIIssueDiagnosticsProviding-Protocol.h>
 
 @class NSString, XCAccessibilityElement, XCElementSnapshot, XCTFuture;
 @protocol OS_dispatch_queue, XCTRunnerAutomationSession, XCUIApplicationProcessDelegate, XCUIDevice;
 
-@interface XCUIApplicationProcess : NSObject <XCTElementSnapshotAttributeDataSource>
+@interface XCUIApplicationProcess : NSObject <XCTElementSnapshotAttributeDataSource, XCUIIssueDiagnosticsProviding>
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _accessibilityActive;
@@ -26,6 +27,7 @@
     unsigned long long _alertCount;
     id <XCTRunnerAutomationSession> _automationSession;
     XCTFuture *_automationSessionFuture;
+    NSString *_path;
     NSString *_bundleID;
     XCElementSnapshot *_lastSnapshot;
     id <XCUIDevice> _device;
@@ -40,16 +42,22 @@
 + (id)keyPathsForValuesAffectingSuspended;
 + (id)keyPathsForValuesAffectingRunning;
 + (id)keyPathsForValuesAffectingIsApplicationStateKnown;
+- (void).cxx_destruct;
 @property(readonly) id <XCUIApplicationProcessDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) id <XCUIDevice> device; // @synthesize device=_device;
 @property(retain) XCElementSnapshot *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
 @property _Bool hasCrashReport; // @synthesize hasCrashReport=_hasCrashReport;
 @property _Bool hasExitCode; // @synthesize hasExitCode=_hasExitCode;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
+- (id)diagnosticAttachmentsForError:(id)arg1;
+- (_Bool)isMacCatalystForPID:(int)arg1;
+@property(readonly) _Bool hasBannerNotificationIsStickyAttribute;
 @property(readonly) _Bool usePointTransformationsForFrameConversions;
 @property(readonly) _Bool supportsHostedViewCoordinateTransformations;
 - (id)parameterizedAttribute:(id)arg1 forElement:(id)arg2 parameter:(id)arg3 error:(id *)arg4;
+- (id)valuesForPrivilegedAttributes:(id)arg1 forElement:(id)arg2 error:(id *)arg3;
+@property(readonly) _Bool providesValuesForPrivilegedAttributes;
 - (id)attributesForElement:(id)arg1 attributes:(id)arg2 error:(id *)arg3;
 @property(readonly) _Bool allowsRemoteAccess;
 - (id)_underlyingDataSourceForElement:(id)arg1;
@@ -89,6 +97,7 @@
 - (id)_queue_description;
 @property(readonly, copy) NSString *description;
 - (id)initWithBundleID:(id)arg1 device:(id)arg2 delegate:(id)arg3;
+- (id)initWithPath:(id)arg1 bundleID:(id)arg2 device:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

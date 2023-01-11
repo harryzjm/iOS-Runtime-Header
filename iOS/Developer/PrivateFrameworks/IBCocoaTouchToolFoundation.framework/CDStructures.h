@@ -52,7 +52,7 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool _field1[42];
+    _Bool _field1[43];
     char _field2[64];
     char _field3[64];
     char _field4[256];
@@ -106,7 +106,7 @@ typedef struct {
     unsigned int :1;
     char _field32[100];
     char _field33[100];
-} CDStruct_41b839a7;
+} CDStruct_3ada4cd2;
 
 typedef struct {
     double minX;

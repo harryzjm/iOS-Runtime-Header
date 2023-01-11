@@ -16,11 +16,12 @@
 + (id)generateUniqueIDWithReminder:(id)arg1 calendar:(id)arg2;
 + (void)_removeSnoozedAlarmsFromReminder:(id)arg1 usingDueDate:(id)arg2;
 + (id)reminderWithEventStore:(id)arg1;
++ (id)knownSingleValueKeysForComparison;
 + (Class)frozenClass;
+- (void).cxx_destruct;
 @property(retain, nonatomic) EKObjectID *parentID; // @synthesize parentID=_parentID;
 @property(copy, nonatomic) NSDateComponents *dueDateComponents; // @synthesize dueDateComponents=_dueDateComponents;
 @property(copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
-- (void).cxx_destruct;
 - (id)startDateForRecurrence;
 - (id)bestDisplayAlarm;
 - (_Bool)_reset;
@@ -38,7 +39,9 @@
 - (id)externalURI;
 - (id)reminderIdentifier;
 - (id)init;
+- (unsigned long long)entityType;
 - (id)initWithPersistentObject:(id)arg1;
+- (void)forceUpdateFrozenCalendar:(id)arg1;
 - (_Bool)refresh;
 - (void)rollback;
 - (void)reset;
@@ -58,7 +61,6 @@
 - (_Bool)startDateAllDay;
 - (void)setStartDateTimeZone:(id)arg1;
 - (id)startDateTimeZone;
-- (void)forceUpdateFrozenCalendar:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) unsigned long long priority; // @dynamic priority;

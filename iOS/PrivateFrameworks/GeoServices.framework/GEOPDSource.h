@@ -14,20 +14,19 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSource : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_sourceId;
     NSString *_version;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _resultProviderId;
     struct {
         unsigned int has_resultProviderId:1;
         unsigned int read_unknownFields:1;
         unsigned int read_sourceId:1;
         unsigned int read_version:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_sourceId:1;
-        unsigned int wrote_version:1;
-        unsigned int wrote_resultProviderId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,16 +42,19 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) NSString *version;
 @property(readonly, nonatomic) _Bool hasVersion;
-- (void)_readVersion;
 @property(retain, nonatomic) NSString *sourceId;
 @property(readonly, nonatomic) _Bool hasSourceId;
-- (void)_readSourceId;
 @property(nonatomic) _Bool hasResultProviderId;
 @property(nonatomic) int resultProviderId;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

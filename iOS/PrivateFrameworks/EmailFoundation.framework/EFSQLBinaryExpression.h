@@ -7,24 +7,25 @@
 #import <objc/NSObject.h>
 
 #import <EmailFoundation/EFSQLBitExpressable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSString;
 @protocol EFSQLExpressable;
 
-@interface EFSQLBinaryExpression : NSObject <EFSQLBitExpressable, EFSQLExpressable>
+@interface EFSQLBinaryExpression : NSObject <EFSQLBitExpressable, EFSQLValueExpressable>
 {
     id <EFSQLExpressable> _left;
     id <EFSQLExpressable> _right;
     unsigned long long _binaryOperator;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long binaryOperator; // @synthesize binaryOperator=_binaryOperator;
 @property(readonly, nonatomic) id <EFSQLExpressable> right; // @synthesize right=_right;
 @property(readonly, nonatomic) id <EFSQLExpressable> left; // @synthesize left=_left;
-- (void).cxx_destruct;
 - (void)setColumnExpression:(id)arg1;
-- (id)_stringForOperator:(unsigned long long)arg1;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 - (id)initWithLeft:(id)arg1 operator:(unsigned long long)arg2 right:(id)arg3;
 

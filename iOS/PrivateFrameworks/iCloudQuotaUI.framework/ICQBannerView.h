@@ -17,6 +17,12 @@
     ICQOffer *_offer;
     id <ICQBannerViewDelegate> _delegate;
     UIFont *_font;
+    UIFont *_titleFont;
+    UIFont *_detailMessageFont;
+    UIFont *_linkMessageFont;
+    UIColor *_titleColor;
+    UIColor *_detailMessageColor;
+    UIColor *_linkMessageColor;
     UIColor *_textColor;
     long long _textAlignment;
     double _textLineSpacing;
@@ -25,12 +31,14 @@
     ICQUpgradeFlowOptions *_flowOptions;
     _ICQTextView *_textView;
     NSArray *_activeConstraints;
-    ICQUpgradeFlowManager *_upgradeFlowManager;
+    ICQUpgradeFlowManager *_localFlowManager;
     struct NSDirectionalEdgeInsets _textMargins;
 }
 
++ (id)replaceWordsIn:(id)arg1 with:(id)arg2;
 + (_Bool)shouldShowForOffer:(id)arg1;
-@property(retain, nonatomic) ICQUpgradeFlowManager *upgradeFlowManager; // @synthesize upgradeFlowManager=_upgradeFlowManager;
+- (void).cxx_destruct;
+@property(retain, nonatomic) ICQUpgradeFlowManager *localFlowManager; // @synthesize localFlowManager=_localFlowManager;
 @property(retain, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
 @property(readonly, nonatomic) _ICQTextView *textView; // @synthesize textView=_textView;
 @property(copy, nonatomic) ICQUpgradeFlowOptions *flowOptions; // @synthesize flowOptions=_flowOptions;
@@ -40,11 +48,19 @@
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(nonatomic) struct NSDirectionalEdgeInsets textMargins; // @synthesize textMargins=_textMargins;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
+@property(retain, nonatomic) UIColor *linkMessageColor; // @synthesize linkMessageColor=_linkMessageColor;
+@property(retain, nonatomic) UIColor *detailMessageColor; // @synthesize detailMessageColor=_detailMessageColor;
+@property(retain, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
+@property(retain, nonatomic) UIFont *linkMessageFont; // @synthesize linkMessageFont=_linkMessageFont;
+@property(retain, nonatomic) UIFont *detailMessageFont; // @synthesize detailMessageFont=_detailMessageFont;
+@property(retain, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(nonatomic) __weak id <ICQBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)updateBannerView;
 - (void)textViewDidChangeSelection:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
+- (void)_registerForDarwinNotifications;
+- (void)_handlePushReceivedDarwinNotification;
 - (void)upgradeFlowManagerDidComplete:(id)arg1;
 - (void)upgradeFlowManagerDidCancel:(id)arg1;
 - (long long)_delegateActionForAction:(long long)arg1;
@@ -52,9 +68,13 @@
 - (_Bool)_performLink:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(retain, nonatomic) ICQOffer *offer;
+- (id)detailAttributedText;
 - (id)attributedText;
 - (void)_applyTextStorageAttributes;
 - (void)_applyTextParagraphAttributes;
+- (id)linkAttributes;
+- (id)detailMessageAttributes;
+- (id)titleAttributes;
 - (id)messageAttributes;
 - (id)textParagraphStyleAttributes;
 - (id)textParagraphStyle;

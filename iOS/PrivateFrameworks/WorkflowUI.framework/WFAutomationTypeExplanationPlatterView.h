@@ -16,11 +16,15 @@
     WFMultilineBackgroundFadingButton *_button;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) WFMultilineBackgroundFadingButton *button; // @synthesize button=_button;
 @property(readonly, nonatomic) UILabel *explanationTextLabel; // @synthesize explanationTextLabel=_explanationTextLabel;
 @property(readonly, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property(readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
-- (void).cxx_destruct;
+- (void)prepareForReuse;
+- (id)homeButtonColor;
+- (id)homeExplanatoryText;
+- (id)homeAutomationIcon;
 - (void)setButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setButtonColor:(id)arg1;
 - (void)setButtonTitle:(id)arg1;

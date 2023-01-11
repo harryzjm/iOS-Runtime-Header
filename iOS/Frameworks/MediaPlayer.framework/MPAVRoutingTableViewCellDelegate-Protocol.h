@@ -11,6 +11,7 @@
 @protocol MPAVRoutingTableViewCellDelegate <NSObject>
 
 @optional
+- (void)routingCellDidTapToExpand:(MPAVRoutingTableViewCell *)arg1;
 - (void)routingCell:(MPAVRoutingTableViewCell *)arg1 mirroringSwitchValueDidChange:(_Bool)arg2;
 @end
 

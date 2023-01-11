@@ -12,11 +12,12 @@
     UIButton *_cameraCaptureButton;
 }
 
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) UIButton *cameraCaptureButton; // @synthesize cameraCaptureButton=_cameraCaptureButton;
 @property(nonatomic) _Bool showsCameraCaptureButton; // @synthesize showsCameraCaptureButton=_showsCameraCaptureButton;
-- (void).cxx_destruct;
 - (_Bool)textFieldShouldClear:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)setEnabled:(_Bool)arg1;
 - (void)setPaymentSetupField:(id)arg1;
 - (void)dealloc;
 - (id)init;

@@ -11,6 +11,9 @@
 @class ECEmailAddress;
 
 @interface NSString (ECEmailAddressQuoting) <ECEmailAddressConvertible>
++ (id)ec_partialSurnames;
++ (id)ec_nameExtensions;
++ (void)__ec_extractFirstName:(id *)arg1 middleName:(id *)arg2 lastName:(id *)arg3 extension:(id *)arg4 fromString:(id)arg5;
 @property(readonly, copy, nonatomic) NSString *ecemailaddress_uniquedDomain;
 - (id)ecemailaddress_quotedString;
 @property(readonly, copy, nonatomic) NSString *ecemailaddress_trimmedAndQuotedDisplayName;
@@ -18,6 +21,9 @@
 @property(readonly, nonatomic) NSString *stringValue;
 @property(readonly, nonatomic) ECEmailAddress *emailAddressValue;
 @property(readonly, copy) NSString *ec_messageIDSubstring;
+- (id)ec_trimCommasSpacesQuotes;
+- (_Bool)ec_appearsToBeAnInitial;
+- (id)ec_personNameComponents;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

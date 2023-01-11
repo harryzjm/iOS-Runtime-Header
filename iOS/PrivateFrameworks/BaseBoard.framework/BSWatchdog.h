@@ -11,31 +11,25 @@
 
 @interface BSWatchdog : NSObject
 {
-    id <BSWatchdogDelegate> _delegate;
-    id <BSWatchdogProviding> _provider;
-    NSObject<OS_dispatch_queue> *_queue;
-    double _timeout;
     BSTimer *_timer;
     CDUnknownBlockType _completion;
-    NSDate *_startDate;
     _Bool _invalidated;
     _Bool _completed;
     _Bool _hasFired;
+    id <BSWatchdogDelegate> _delegate;
+    id <BSWatchdogProviding> _provider;
+    double _timeout;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSDate *_startDate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=hasFired) _Bool fired; // @synthesize fired=_hasFired;
 @property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property(readonly, nonatomic) id <BSWatchdogProviding> provider; // @synthesize provider=_provider;
 @property(retain, nonatomic) id <BSWatchdogDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)_stageTwoTimerFired;
-- (void)_stageOneTimerFired;
-- (void)_startWatchdogTimer;
-- (void)_setupTimerWithInterval:(double)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_invalidateTimer;
-- (void)_completeWatchdogAfterFiring:(_Bool)arg1;
 - (void)_watchdogTimerFired;
 - (void)_watchdogInvalidated;
 - (void)invalidate;

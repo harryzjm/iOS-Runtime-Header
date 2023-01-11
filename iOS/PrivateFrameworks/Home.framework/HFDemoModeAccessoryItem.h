@@ -9,7 +9,7 @@
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMAccessory, NSDictionary, NSSet, NSString;
+@class HMAccessory, HMHome, NSDictionary, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFDemoModeAccessoryItem <HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem, HFGroupableItemProtocol>
@@ -19,13 +19,14 @@
 }
 
 + (id)accessoryItemForAccessory:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *configInfo; // @synthesize configInfo=_configInfo;
 @property(nonatomic) __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
-- (void).cxx_destruct;
 - (id)namingComponentForHomeKitObject;
 - (_Bool)isMediaSystemDemoType;
 @property(readonly, nonatomic) NSSet *services;
 - (id)accessories;
+@property(readonly, nonatomic) HMHome *home;
 - (id)_subclass_updateWithOptions:(id)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property(readonly, nonatomic) _Bool isContainedWithinItemGroup;

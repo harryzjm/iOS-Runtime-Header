@@ -19,6 +19,7 @@
 }
 
 + (void)updateLabel:(id)arg1 withRichText:(id)arg2 alignment:(long long)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool needsSizingPass; // @synthesize needsSizingPass=_needsSizingPass;
 @property(nonatomic) unsigned long long indexOfFirstTrailingColumn; // @synthesize indexOfFirstTrailingColumn=_indexOfFirstTrailingColumn;
 @property(nonatomic) unsigned long long indexOfFirstCenteredColumnForForcedCentering; // @synthesize indexOfFirstCenteredColumnForForcedCentering=_indexOfFirstCenteredColumnForForcedCentering;
@@ -27,7 +28,6 @@
 @property(retain, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
 @property(retain, nonatomic) TLKTableRow *tableRow; // @synthesize tableRow=_tableRow;
 @property(retain, nonatomic) TLKGridLayoutManager *manager; // @synthesize manager=_manager;
-- (void).cxx_destruct;
 - (void)generateLabelsAndImagesIfNecessary;
 - (void)resetStateOfAllViews;
 - (void)observedPropertiesChanged;
@@ -36,6 +36,7 @@
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (id)leadingTextView;
 - (id)init;
 
 @end

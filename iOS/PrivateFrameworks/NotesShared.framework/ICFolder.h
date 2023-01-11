@@ -6,7 +6,7 @@
 
 #import <NotesShared/ICCloudObject-Protocol.h>
 
-@class ICAccount, NSData, NSDate, NSNumber, NSSet, NSString;
+@class ICAccount, NSArray, NSData, NSDate, NSNumber, NSSet, NSString;
 
 @interface ICFolder <ICCloudObject>
 {
@@ -26,18 +26,23 @@
 + (id)keyPathsForValuesAffectingIsDefaultFolderForAccount;
 + (id)keyPathsForValuesAffectingVisibleNoteContainerChildren;
 + (id)keyPathsForValuesAffectingIsTrashFolder;
++ (unsigned long long)maximumDistanceToLeafFolderOfFolders:(id)arg1;
++ (unsigned long long)maximumDepthOfFolders:(id)arg1;
 + (id)keyPathsForValuesAffectingDepth;
 + (id)keyPathsForValuesAffectingIsLeaf;
 + (id)keyPathsForValuesAffectingSupportsCustomNoteSortType;
++ (unsigned long long)folderDepthLimit;
 + (id)keyPathsForValuesAffectingCustomNoteSortType;
 + (id)stringByScrubbingStringForFolderName:(id)arg1;
 + (id)localizedNewFolderName;
 + (id)deduplicatingTitle:(id)arg1 forFolder:(id)arg2 forNewFolderParent:(id)arg3 ofAccount:(id)arg4;
 + (id)deduplicatingTitle:(id)arg1 forFolder:(id)arg2 ofAccount:(id)arg3;
 + (id)reservedFolderTitles;
-+ (id)predicateForVisibleFoldersIncludingHiddenNoteContainers:(_Bool)arg1;
++ (id)predicateForFoldersInFolder:(id)arg1;
++ (id)predicateForNotesInFolder:(id)arg1;
++ (id)predicateForVisibleFoldersIncludingHiddenNoteContainers:(_Bool)arg1 inContext:(id)arg2;
 + (id)predicateForVisibleObjects;
-+ (id)predicateForVisibleFolders;
++ (id)predicateForVisibleFoldersInContext:(id)arg1;
 + (unsigned long long)countOfFoldersMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)foldersMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)visibleFoldersInContext:(id)arg1;
@@ -67,6 +72,7 @@
 - (id)rootSharingFolder;
 - (id)rootSharedNotesIncludingChildFolders;
 - (id)rootSharedFoldersInDescendantsIncludingSelf;
+- (_Bool)containsSharedNotesOrSharedDescendantFolders;
 - (_Bool)containsSharedNotesOrSharedDescendantFolders:(_Bool *)arg1;
 - (_Bool)containsSharedDescendantFolders;
 - (_Bool)containsSharedDescendantFolders:(_Bool *)arg1;
@@ -78,7 +84,6 @@
 - (id)ic_loggingValues;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (_Bool)supportsEditingNotes;
-- (id)detailForTableViewCell;
 - (id)titleForTableViewCell;
 - (id)localizedTitle;
 - (id)titleForNavigationBar;
@@ -93,17 +98,18 @@
 - (id)recursiveVisibleSubfolders;
 - (id)visibleNotesIncludingChildFolders;
 - (id)accountName;
-- (_Bool)containsVisibleLockedNotesIncludingChildFolders;
 - (_Bool)visibleChildFoldersContainsFolderWithTitle:(id)arg1;
 - (_Bool)isTitleValid:(id)arg1 error:(out id *)arg2;
 - (_Bool)validateTitle:(inout id *)arg1 error:(out id *)arg2;
 - (void)updateChangeCount;
 - (void)setMarkedForDeletion:(_Bool)arg1;
 - (void)markForDeletion;
+- (_Bool)containsVisibleLockedNotesIncludingChildFolders:(_Bool)arg1;
 - (_Bool)shouldSyncMinimumSupportedNotesVersion;
 - (long long)intrinsicNotesVersion;
 @property(retain, nonatomic) ICAccount *account; // @dynamic account;
 - (void)updateSortOrder;
+@property(readonly, nonatomic) NSArray *ancestorFolderObjectIDs;
 - (_Bool)isAncestorOfFolder:(id)arg1;
 - (_Bool)isDefaultFolderOrDescendantOfDefaultFolder;
 @property(readonly, nonatomic) _Bool isDefaultFolderForAccount; // @dynamic isDefaultFolderForAccount;
@@ -118,9 +124,12 @@
 - (id)visibleNoteContainerChildrenUnsorted;
 - (id)containerIdentifier;
 - (_Bool)isTrashFolder;
+- (_Bool)canAddSubfolder;
 - (_Bool)canMoveAddOrDeleteContents;
 - (_Bool)isMovable;
 - (_Bool)isDescendantOfFolder:(id)arg1;
+- (unsigned long long)maximumDistanceToLeafFolder;
+- (unsigned long long)maximumDepthIncludingChildFolders;
 - (unsigned long long)depth;
 - (_Bool)isLeaf;
 - (_Bool)isDeletable;

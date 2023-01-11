@@ -9,7 +9,7 @@
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSString, NSTimer, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
+@class CLInUseAssertion, NSString, NSTimer, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentProvisioningTracker, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
 
 @interface PKPaymentSetupProvisioningFieldsViewController <UITextFieldDelegate, RemoteUIControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
@@ -23,16 +23,17 @@
     CDUnknownBlockType _waitForActivationCompletionHandler;
     NSTimer *_waitForActivationTimer;
     NSString *_activatingPaymentPassUniqueID;
+    PKPaymentProvisioningTracker *_provisioningTracker;
     PKPasscodeUpgradeFlowController *_passcodeUpgradeFlowController;
     _Bool _hideSetupLaterButton;
     PKPaymentProvisioningController *_paymentProvisioningController;
     CDUnknownBlockType _continueActionHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType continueActionHandler; // @synthesize continueActionHandler=_continueActionHandler;
 @property(nonatomic) _Bool hideSetupLaterButton; // @synthesize hideSetupLaterButton=_hideSetupLaterButton;
 @property(retain, nonatomic) PKPaymentProvisioningController *paymentProvisioningController; // @synthesize paymentProvisioningController=_paymentProvisioningController;
-- (void).cxx_destruct;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
 - (void)resetRightBarButtonState;
@@ -73,7 +74,6 @@
 - (id)newPaymentProvisioningRequest;
 - (id)newPaymentEligibilityRequest;
 - (id)newPaymentRequirementsRequest;
-- (void)showPrivacy:(id)arg1;
 - (void)setupLater:(id)arg1;
 - (void)addDifferentCard:(id)arg1;
 - (void)_showVerifiedUI;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MRExternalDeviceTransport : NSObject
@@ -16,18 +16,18 @@ __attribute__((visibility("hidden")))
     NSString *_uid;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
 @property(readonly, nonatomic) _Bool requiresCustomPairing; // @synthesize requiresCustomPairing=_requiresCustomPairing;
 @property(readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
-- (void).cxx_destruct;
 - (void)reset;
-- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 @property(readonly, nonatomic) NSError *error;
 @property(nonatomic) _Bool shouldUseSystemAuthenticationPrompt; // @dynamic shouldUseSystemAuthenticationPrompt;
 @property(readonly, nonatomic) long long port;
 @property(readonly, nonatomic) NSString *hostname;
 @property(readonly, nonatomic) NSString *name;
-@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property(readonly, nonatomic) MRDeviceInfo *deviceInfo;
 
 @end
 

@@ -9,27 +9,27 @@
 #import <HomeKitDaemon/HMDCameraStreamControlManagerProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDStreamingManagerDelegate-Protocol.h>
 
-@class HMDCameraMediaConfigGenerator, HMDCameraStreamMetrics, HMDCameraSupportedConfigurationCache, HMDLocalStreamSession, NSString;
+@class HMDCameraLocalStreamSession, HMDCameraMediaConfigGenerator, HMDCameraStreamMetrics, HMDCameraSupportedConfigurationCache, NSString;
 
 @interface HMDCameraLocalStreamControlManager <HMDStreamingManagerDelegate, HMDCameraIDSSessionInitiatorDelegate, HMDCameraIDSDeviceConnectionSenderDelegate, HMDCameraStreamControlManagerProtocol>
 {
-    HMDLocalStreamSession *_streamSession;
+    HMDCameraLocalStreamSession *_streamSession;
     HMDCameraMediaConfigGenerator *_configGenerator;
     HMDCameraSupportedConfigurationCache *_supportedConfigCache;
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMDCameraSupportedConfigurationCache *supportedConfigCache; // @synthesize supportedConfigCache=_supportedConfigCache;
 @property(retain, nonatomic) HMDCameraMediaConfigGenerator *configGenerator; // @synthesize configGenerator=_configGenerator;
-@property(retain, nonatomic) HMDLocalStreamSession *streamSession; // @synthesize streamSession=_streamSession;
-- (void).cxx_destruct;
+@property(retain, nonatomic) HMDCameraLocalStreamSession *streamSession; // @synthesize streamSession=_streamSession;
 - (void)_sendUpdatedConfiguration;
 - (void)_reconfigureStreams;
 - (void)streamingManagerDidUpdateConfiguration:(id)arg1;
 - (void)streamingManagerDidNetworkDeteriorate:(id)arg1;
 - (void)streamingManagerDidNetworkImprove:(id)arg1;
 - (void)streamingManagerDidStopStream:(id)arg1 error:(id)arg2;
-- (void)streamingManager:(id)arg1 didStartRelay:(id)arg2;
+- (void)streamingManagerDidStartRelay:(id)arg1;
 - (void)streamingManagerDidReceiveFirstFrame:(id)arg1 audioStreamSetting:(unsigned long long)arg2 aspectRatio:(id)arg3 slotIdentifier:(id)arg4;
 - (void)streamingManager:(id)arg1 didStartStream:(id)arg2 slotIdentifier:(id)arg3;
 - (void)deviceConnectionSender:(id)arg1 didEndSession:(id)arg2;

@@ -13,13 +13,15 @@
 #import <PhotosUI/UIActivityViewControllerAirDropDelegate-Protocol.h>
 #import <PhotosUI/UIPresentationControllerDelegatePrivate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PHAsset, PHPerson, PUActivitySharingViewModel, PUActivityViewController, PUCarouselSharingViewController, PXSelectionSnapshot, UIActivityViewController;
+@class NSArray, NSDictionary, NSString, PHAsset, PHPerson, PHResourceLocalAvailabilityRequest, PUActivitySharingViewModel, PUActivityViewController, PUCarouselSharingViewController, PXSelectionSnapshot, UIActivityViewController;
 @protocol PXActivitySharingControllerDelegate, PXActivityViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUActivitySharingController : NSObject <PUActivityViewControllerDelegate, UIActivityViewControllerAirDropDelegate, PUCarouselSharingViewControllerDelegate, UIPresentationControllerDelegatePrivate, PXChangeObserver, PXActivitySharingController>
 {
-    _Bool _allowAirPlayActivity;
+    _Bool _activityViewControllerWasCreated;
+    _Bool _allowsAirPlayActivity;
+    _Bool _allowsRemoveFromFeaturedPhotosActivity;
     _Bool _excludeShareActivity;
     id <PXActivitySharingControllerDelegate> _delegate;
     PUActivitySharingViewModel *_viewModel;
@@ -29,21 +31,28 @@ __attribute__((visibility("hidden")))
     NSArray *_activities;
     const struct __CFString *_aggregateKey;
     PUCarouselSharingViewController *_carouselViewController;
+    PHResourceLocalAvailabilityRequest *_resourcesPreheatRequest;
     PUActivityViewController *_internalActivityViewController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak PUActivityViewController *internalActivityViewController; // @synthesize internalActivityViewController=_internalActivityViewController;
+@property(retain, nonatomic) PHResourceLocalAvailabilityRequest *resourcesPreheatRequest; // @synthesize resourcesPreheatRequest=_resourcesPreheatRequest;
 @property(readonly, nonatomic) _Bool excludeShareActivity; // @synthesize excludeShareActivity=_excludeShareActivity;
 @property(retain, nonatomic) PUCarouselSharingViewController *carouselViewController; // @synthesize carouselViewController=_carouselViewController;
 @property(nonatomic) const struct __CFString *aggregateKey; // @synthesize aggregateKey=_aggregateKey;
 @property(copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
-@property(nonatomic) _Bool allowAirPlayActivity; // @synthesize allowAirPlayActivity=_allowAirPlayActivity;
+@property(nonatomic) _Bool allowsRemoveFromFeaturedPhotosActivity; // @synthesize allowsRemoveFromFeaturedPhotosActivity=_allowsRemoveFromFeaturedPhotosActivity;
+@property(nonatomic) _Bool allowsAirPlayActivity; // @synthesize allowsAirPlayActivity=_allowsAirPlayActivity;
 @property(copy, nonatomic) NSDictionary *assetsFetchResultsByAssetCollection; // @synthesize assetsFetchResultsByAssetCollection=_assetsFetchResultsByAssetCollection;
 @property(retain, nonatomic) PUActivitySharingViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <PXActivitySharingControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (void)_updatePreheatResourcesRequest;
+- (void)_cancelPreheatResourcesRequest;
+- (void)_handlePreheatRequestCompletionWithSuccess:(_Bool)arg1 cancelled:(_Bool)arg2 error:(id)arg3;
+- (void)_preheatResources;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)carouselSharingViewController:(id)arg1 replaceAssetItem:(id)arg2 withAssetItem:(id)arg3;
@@ -67,6 +76,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) PXSelectionSnapshot *selectionSnapshot;
 - (id)photosDataSource;
 @property(readonly, nonatomic) UIActivityViewController<PXActivityViewController> *activityViewController;
+- (id)activityViewControllerIfAvailable;
 - (void)_createCarouselSharingViewControllerIfNeeded;
 - (void)dealloc;
 - (id)initWithActivitySharingConfiguration:(id)arg1;

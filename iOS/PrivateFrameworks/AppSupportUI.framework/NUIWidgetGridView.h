@@ -26,6 +26,7 @@
 
 + (unsigned long long)maxNumberOfItems;
 + (double)itemWidth;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double currentLabelOutset; // @synthesize currentLabelOutset=_currentLabelOutset;
 @property(nonatomic) double centerAdjustmentAllowed; // @synthesize centerAdjustmentAllowed=_centerAdjustmentAllowed;
 @property(nonatomic) long long subtitleStyle; // @synthesize subtitleStyle=_subtitleStyle;
@@ -33,22 +34,13 @@
 @property(nonatomic) long long imageStyle; // @synthesize imageStyle=_imageStyle;
 @property(nonatomic) __weak id <NUIWidgetGridViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <NUIWidgetGridViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (void)layoutSubviews;
-- (void)_createGridViewIfNeeded;
-- (double)horizontalMargin;
-- (double)labelMinSpacing;
-- (double)labelOutset;
-- (void)generateItems;
 - (CDStruct_c3b9c2ee)borrowableSpaceForCellAtIndex:(unsigned long long)arg1;
 - (CDStruct_c3b9c2ee)entitledExtraSpaceForCellAtIndex:(unsigned long long)arg1;
-- (unsigned long long)maxNumberOfItems;
-- (unsigned long long)itemsPerRow;
 - (id)cellForGridViewItemAtIndex:(long long)arg1;
 - (void)reloadData;
 - (void)contentSizeDidChange;
 - (id)initWithDataSource:(id)arg1 delegate:(id)arg2;
-- (long long)currentLayout;
 
 @end
 

@@ -14,8 +14,8 @@
 + (id)managedObjectWithMapItem:(id)arg1 managedObject:(id)arg2 inManagedObjectContext:(id)arg3;
 + (id)managedObjectWithMapItem:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchRequest;
-@property(retain, nonatomic) RTMapItemExtendedAttributesMO *cachedExtendedAttributes; // @synthesize cachedExtendedAttributes;
 - (void).cxx_destruct;
+@property(retain, nonatomic) RTMapItemExtendedAttributesMO *cachedExtendedAttributes; // @synthesize cachedExtendedAttributes;
 - (void)didSave;
 - (void)setExtendedAttributes:(id)arg1;
 - (id)extendedAttributes;
@@ -23,6 +23,7 @@
 // Remaining properties
 @property(retain, nonatomic) RTAddressMO *address; // @dynamic address;
 @property(copy, nonatomic) NSString *displayLanguage; // @dynamic displayLanguage;
+@property(nonatomic) _Bool disputed; // @dynamic disputed;
 @property(copy, nonatomic) NSUUID *extendedAttributesIdentifier; // @dynamic extendedAttributesIdentifier;
 @property(retain, nonatomic) NSData *geoMapItemHandle; // @dynamic geoMapItemHandle;
 @property(copy, nonatomic) NSNumber *latitude; // @dynamic latitude;

@@ -27,6 +27,7 @@
     NSString *_subtitle;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSDate *universalEndDate; // @synthesize universalEndDate=_universalEndDate;
@@ -40,7 +41,6 @@
 @property(nonatomic) unsigned short notificationState; // @synthesize notificationState=_notificationState;
 @property(readonly, nonatomic) unsigned short subtype; // @synthesize subtype=_subtype;
 @property(readonly, nonatomic) unsigned short type; // @synthesize type=_type;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) unsigned long long relevanceDurationInDays;
 @property(readonly, nonatomic) id recipe;
@@ -48,6 +48,7 @@
 @property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly, nonatomic) long long version;
 - (id)_whitelistedMeaningLabels;
+- (id)assetCollectionToShareForAssetCollection:(id)arg1 loggingConnection:(id)arg2;
 - (id)initWithType:(unsigned short)arg1 subtype:(unsigned short)arg2 enrichableEvent:(id)arg3 sharingSuggestionResults:(id)arg4 manager:(id)arg5 loggingConnection:(id)arg6;
 
 // Remaining properties
@@ -55,6 +56,7 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isInvalid;
 @property(readonly, copy, nonatomic) NSArray *reasons;
+@property(readonly, nonatomic) double score;
 @property(readonly) Class superclass;
 
 @end

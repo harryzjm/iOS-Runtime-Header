@@ -7,26 +7,31 @@
 #import <objc/NSObject.h>
 
 @class BSTimer, FBSDisplayLayoutMonitor, NSHashTable, RBSAssertion, RBSProcessHandle, SPUIAppService;
+@protocol OS_dispatch_queue, SPUISpotlightSceneManagerDelegate;
 
 @interface SPUISpotlightSceneManager : NSObject
 {
     SPUIAppService *_appService;
+    id <SPUISpotlightSceneManagerDelegate> _delegate;
     NSHashTable *_managedScenes;
     NSHashTable *_foregroundScenes;
     FBSDisplayLayoutMonitor *_layoutMonitor;
     BSTimer *_watchdogTimer;
     RBSProcessHandle *_spotlightProcessHandle;
     RBSAssertion *_initializationAssertions;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
+@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain) RBSAssertion *initializationAssertions; // @synthesize initializationAssertions=_initializationAssertions;
 @property(retain) RBSProcessHandle *spotlightProcessHandle; // @synthesize spotlightProcessHandle=_spotlightProcessHandle;
 @property(retain) BSTimer *watchdogTimer; // @synthesize watchdogTimer=_watchdogTimer;
 @property(retain) FBSDisplayLayoutMonitor *layoutMonitor; // @synthesize layoutMonitor=_layoutMonitor;
 @property(retain) NSHashTable *foregroundScenes; // @synthesize foregroundScenes=_foregroundScenes;
 @property(retain) NSHashTable *managedScenes; // @synthesize managedScenes=_managedScenes;
-- (void).cxx_destruct;
+@property(nonatomic) __weak id <SPUISpotlightSceneManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)applyAssertionAsNeeded;
 - (void)sceneWillBackground:(id)arg1;
 - (void)sceneWillForeground:(id)arg1;

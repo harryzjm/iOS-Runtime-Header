@@ -11,15 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface CKAvatarContactNameCollectionReusableView : UICollectionReusableView
 {
+    _Bool _shouldDisplayTitle;
     long long _style;
     UILabel *_titleLabel;
 }
 
 + (id)supplementaryViewKind;
 + (id)reuseIdentifier;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(nonatomic) _Bool shouldDisplayTitle; // @synthesize shouldDisplayTitle=_shouldDisplayTitle;
+@property(nonatomic) long long style; // @synthesize style=_style;
 - (void)layoutSubviews;
 - (void)configureWithEntity:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

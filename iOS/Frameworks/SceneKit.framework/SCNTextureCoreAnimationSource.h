@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (double)__renderLayer:(id)arg1 withCARenderer:(id)arg2 engineContext:(struct __C3DEngineContext *)arg3 viewport:(double)arg4 atTime:(_Bool)arg5 forceUpdate:(_Bool *)arg6 didUpdate: /* Error: Ran out of types for this method. */;
 - (double)__renderLayerUsingMetal:(id)arg1 withCARenderer:(id)arg2 engineContext:(struct __C3DEngineContext *)arg3 viewport:(double)arg4 atTime:(_Bool)arg5 forceUpdate:(_Bool *)arg6 didUpdate: /* Error: Ran out of types for this method. */;
 - (void)_resizeLayer:(id)arg1 toSize:(struct CGSize)arg2 updateLayer:(_Bool)arg3 updateTransform:(_Bool)arg4 caRenderer:(id)arg5;
+- (_Bool)requiresMainThreadUpdates;
 - (float)clearValue;
 - (id)layerToFocusForRenderedLayer:(id)arg1;
 - (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;

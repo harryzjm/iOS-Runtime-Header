@@ -19,14 +19,17 @@
     CLPLocation *_location;
     NSString *_mac;
     int _rssi;
+    int _scanType;
     int _serverHash;
     struct {
         unsigned int scanTimestamp:1;
         unsigned int hidden:1;
+        unsigned int scanType:1;
         unsigned int serverHash:1;
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) int serverHash; // @synthesize serverHash=_serverHash;
 @property(retain, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
 @property(retain, nonatomic) CLPLocation *location; // @synthesize location=_location;
@@ -35,7 +38,6 @@
 @property(nonatomic) int hidden; // @synthesize hidden=_hidden;
 @property(nonatomic) int channel; // @synthesize channel=_channel;
 @property(retain, nonatomic) NSString *mac; // @synthesize mac=_mac;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -45,6 +47,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsScanType:(id)arg1;
+- (id)scanTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasScanType;
+@property(nonatomic) int scanType; // @synthesize scanType=_scanType;
 @property(nonatomic) _Bool hasServerHash;
 @property(readonly, nonatomic) _Bool hasAppBundleId;
 @property(nonatomic) _Bool hasScanTimestamp;

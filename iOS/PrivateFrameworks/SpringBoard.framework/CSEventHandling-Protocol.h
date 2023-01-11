@@ -11,5 +11,6 @@
 @protocol CSEventHandling <NSObject>
 - (_Bool)wouldHandleButtonEvent:(CSEvent *)arg1;
 - (_Bool)handleEvent:(CSEvent *)arg1;
+- (void)conformsToCSEventHandling;
 @end
 

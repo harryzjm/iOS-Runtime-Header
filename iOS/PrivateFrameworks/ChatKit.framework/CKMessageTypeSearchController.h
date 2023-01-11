@@ -4,29 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IMTimingCollection, NSArray, NSSet;
+@class IMTimingCollection, NSArray, NSMutableSet, NSSet, NSString;
 
 @interface CKMessageTypeSearchController
 {
     _Bool _searchTerminated;
     _Bool _gotResults;
     NSSet *_intermediaryResults;
+    NSString *_priorQueryIdentifier;
     NSArray *_resultsToCheck;
     IMTimingCollection *_timingCollection;
+    NSMutableSet *_itemsVerifiedOnDiskCache;
 }
 
 + (unsigned long long)recencyRankedTargetResultCount;
 + (_Bool)useRecencyRankedSearchForMode:(unsigned long long)arg1;
 + (id)timeRankedQueries;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *itemsVerifiedOnDiskCache; // @synthesize itemsVerifiedOnDiskCache=_itemsVerifiedOnDiskCache;
 @property(retain, nonatomic) IMTimingCollection *timingCollection; // @synthesize timingCollection=_timingCollection;
 @property(retain, nonatomic) NSArray *resultsToCheck; // @synthesize resultsToCheck=_resultsToCheck;
+@property(retain, nonatomic) NSString *priorQueryIdentifier; // @synthesize priorQueryIdentifier=_priorQueryIdentifier;
 @property(nonatomic) _Bool gotResults; // @synthesize gotResults=_gotResults;
 @property(retain, nonatomic) NSSet *intermediaryResults; // @synthesize intermediaryResults=_intermediaryResults;
 @property(nonatomic) _Bool searchTerminated; // @synthesize searchTerminated=_searchTerminated;
-- (void).cxx_destruct;
-- (void)_IMSPIQueryMessageItemsWithGUIDs:(id)arg1 results:(CDUnknownBlockType)arg2;
-- (void)_deleteResult:(id)arg1;
-- (id)menuActionsForResult:(id)arg1 atRect:(struct CGRect)arg2;
+- (void)deleteAttachmentForResult:(id)arg1;
+- (id)menuElementsForResult:(id)arg1 atRect:(struct CGRect)arg2;
 - (_Bool)wantsDeleteAction;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (Class)footerClass;

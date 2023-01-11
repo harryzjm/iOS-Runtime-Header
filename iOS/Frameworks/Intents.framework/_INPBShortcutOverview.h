@@ -15,7 +15,6 @@
 @interface _INPBShortcutOverview : PBCodable <_INPBShortcutOverview, NSSecureCoding, NSCopying>
 {
     struct _has;
-    _Bool __encodeLegacyGloryData;
     _INPBDataString *_descriptiveText;
     _INPBImageValue *_icon;
     _INPBDataString *_name;
@@ -25,13 +24,12 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)stepsType;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _INPBDataString *voiceCommand; // @synthesize voiceCommand=_voiceCommand;
 @property(copy, nonatomic) NSArray *steps; // @synthesize steps=_steps;
 @property(retain, nonatomic) _INPBDataString *name; // @synthesize name=_name;
 @property(retain, nonatomic) _INPBImageValue *icon; // @synthesize icon=_icon;
 @property(retain, nonatomic) _INPBDataString *descriptiveText; // @synthesize descriptiveText=_descriptiveText;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

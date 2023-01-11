@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool isInferredChild;
 @property(readonly, nonatomic) NSDate *birthdayDate;
 - (long long)compareToPerson:(id)arg1;
+@property(readonly, nonatomic) NSString *fullName;
 @property(readonly, nonatomic) NSString *suggestedContactIdentifier;
 @property(readonly, nonatomic) NSString *contactIdentifier;
 @property(readonly, nonatomic) NSString *keywordDescription;
@@ -22,7 +23,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) NSString *displayName;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isVerified;
 @property(readonly, nonatomic) NSString *localIdentifier;

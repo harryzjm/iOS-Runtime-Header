@@ -6,6 +6,7 @@
 
 @class CMMotionManager, GCController;
 
+__attribute__((visibility("hidden")))
 @interface _GCAppleTVRemoteMotionProfile
 {
     CDStruct_31142d93 _gravity;
@@ -30,8 +31,8 @@
     GCController *_controller;
 }
 
-- (id)controller;
 - (void).cxx_destruct;
+- (id)controller;
 - (void)_setRotationRate:(CDStruct_39925896)arg1;
 - (void)_setAttitude:(struct GCQuaternion)arg1;
 - (void)_setUserAcceleration:(CDStruct_39925896)arg1;
@@ -52,8 +53,11 @@
 - (float)_tip;
 - (CDStruct_39925896)rotationRate;
 - (struct GCQuaternion)attitude;
+- (_Bool)hasRotationRate;
+- (_Bool)hasAttitude;
 - (_Bool)hasAttitudeAndRotationRate;
 - (void)_setCompassEnabled:(_Bool)arg1;
+- (_Bool)hasGravityAndUserAcceleration;
 - (CDStruct_39925896)userAcceleration;
 - (CDStruct_39925896)gravity;
 - (void)_setMotionLite:(_Bool)arg1;

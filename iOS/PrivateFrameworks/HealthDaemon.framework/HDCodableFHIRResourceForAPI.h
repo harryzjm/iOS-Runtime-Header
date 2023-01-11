@@ -12,22 +12,31 @@
 
 @interface HDCodableFHIRResourceForAPI : PBCodable <NSCopying>
 {
+    long long _fhirVersionMajor;
+    long long _fhirVersionMinor;
+    long long _fhirVersionPatch;
     double _lastUpdatedDate;
     NSData *_data;
     NSString *_identifier;
     NSString *_resourceType;
     NSString *_sourceURL;
     struct {
+        unsigned int fhirVersionMajor:1;
+        unsigned int fhirVersionMinor:1;
+        unsigned int fhirVersionPatch:1;
         unsigned int lastUpdatedDate:1;
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long fhirVersionPatch; // @synthesize fhirVersionPatch=_fhirVersionPatch;
+@property(nonatomic) long long fhirVersionMinor; // @synthesize fhirVersionMinor=_fhirVersionMinor;
+@property(nonatomic) long long fhirVersionMajor; // @synthesize fhirVersionMajor=_fhirVersionMajor;
 @property(nonatomic) double lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
 @property(retain, nonatomic) NSString *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSString *resourceType; // @synthesize resourceType=_resourceType;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -37,6 +46,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasFhirVersionPatch;
+@property(nonatomic) _Bool hasFhirVersionMinor;
+@property(nonatomic) _Bool hasFhirVersionMajor;
 @property(nonatomic) _Bool hasLastUpdatedDate;
 @property(readonly, nonatomic) _Bool hasSourceURL;
 @property(readonly, nonatomic) _Bool hasData;

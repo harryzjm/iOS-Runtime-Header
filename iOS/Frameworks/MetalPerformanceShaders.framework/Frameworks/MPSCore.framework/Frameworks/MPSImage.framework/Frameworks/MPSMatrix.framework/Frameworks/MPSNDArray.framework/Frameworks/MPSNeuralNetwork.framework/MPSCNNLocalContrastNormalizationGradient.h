@@ -14,7 +14,7 @@
     float _ps;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) float ps; // @synthesize ps=_ps;
 @property(nonatomic) float pm; // @synthesize pm=_pm;
 @property(nonatomic) float p0; // @synthesize p0=_p0;

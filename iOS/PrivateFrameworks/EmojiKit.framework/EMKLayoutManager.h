@@ -21,6 +21,7 @@
     NSMutableData *_glyphIndexTable;
     _Bool _emojiConversionEnabled;
     _Bool _emojiConversionActive;
+    _Bool _darkModeEnabled;
 }
 
 - (void).cxx_destruct;
@@ -34,6 +35,8 @@
 - (id)attributes;
 - (void)setEmojiConversionLanguages:(id)arg1;
 - (id)emojiConversionLanguages;
+- (void)setDarkModeEnabled:(_Bool)arg1;
+- (_Bool)isDarkModeEnabled;
 - (void)setEmojiConversionActive:(_Bool)arg1;
 - (_Bool)isEmojiConversionActive;
 @property(getter=isEmojiConversionEnabled) _Bool emojiConversionEnabled;

@@ -8,7 +8,7 @@
 {
 }
 
-- (id)queueType;
+- (id)queue;
 - (id)featuresForTextString:(id)arg1 inMessageUnit:(id)arg2 context:(id)arg3;
 - (id)eventIdentifierForLanguageID:(id)arg1;
 - (void)identifyAndStorePolarityInFeatureSentences:(id)arg1 eventIdentifier:(id)arg2 previousFeatureSentences:(id)arg3;

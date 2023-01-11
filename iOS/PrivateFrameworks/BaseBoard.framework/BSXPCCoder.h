@@ -27,14 +27,11 @@
 + (_Bool)supportsBSXPCSecureCoding;
 + (id)coderWithMessage:(id)arg1;
 + (id)coder;
-@property(readonly, retain, nonatomic) NSObject<OS_xpc_object> *XPCConnection; // @synthesize XPCConnection=_xpcConnection;
-@property(readonly, retain, nonatomic) NSObject<OS_xpc_object> *message; // @synthesize message=_message;
 - (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
-- (void)_appendXPCObject:(id)arg1 withName:(const char *)arg2 toBuilder:(id)arg3;
 @property(readonly, copy) NSString *description;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
@@ -64,6 +61,8 @@
 - (void)encodeCollection:(id)arg1 forKey:(id)arg2;
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (id)createMessage;
+@property(readonly, retain, nonatomic) NSObject<OS_xpc_object> *XPCConnection;
+@property(readonly, retain, nonatomic) NSObject<OS_xpc_object> *message;
 - (void)dealloc;
 - (id)initWithMessage:(id)arg1;
 - (id)init;

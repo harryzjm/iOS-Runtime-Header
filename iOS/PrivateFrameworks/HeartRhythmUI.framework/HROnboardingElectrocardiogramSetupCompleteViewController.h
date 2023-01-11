@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HeartRhythmUI/HRLinkTextViewDelegate-Protocol.h>
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
 @class HKAnchoredObjectQuery, HKElectrocardiogram, HKElectrocardiogramCardView, HRStackedButtonView, NSLayoutConstraint, NSLayoutYAxisAnchor, UIActivityIndicatorView, UILabel, UITapGestureRecognizer;
 
-@interface HROnboardingElectrocardiogramSetupCompleteViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate>
+@interface HROnboardingElectrocardiogramSetupCompleteViewController <HRStackedButtonViewDelegate>
 {
+    _Bool _firstViewDidLayoutSubviews;
+    _Bool _isSampleInteractive;
     long long _state;
     HKAnchoredObjectQuery *_electrocardiogramQuery;
     HKElectrocardiogram *_electrocardiogram;
@@ -25,6 +26,9 @@
     NSLayoutYAxisAnchor *_viewBottomAnchor;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isSampleInteractive; // @synthesize isSampleInteractive=_isSampleInteractive;
+@property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property(retain, nonatomic) NSLayoutYAxisAnchor *viewBottomAnchor; // @synthesize viewBottomAnchor=_viewBottomAnchor;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) HRStackedButtonView *stackedButtonView; // @synthesize stackedButtonView=_stackedButtonView;
@@ -37,7 +41,6 @@
 @property(retain, nonatomic) HKElectrocardiogram *electrocardiogram; // @synthesize electrocardiogram=_electrocardiogram;
 @property(retain, nonatomic) HKAnchoredObjectQuery *electrocardiogramQuery; // @synthesize electrocardiogramQuery=_electrocardiogramQuery;
 @property(nonatomic) long long state; // @synthesize state=_state;
-- (void).cxx_destruct;
 - (id)_subheadlineFont;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
@@ -45,16 +48,18 @@
 - (void)_stopElectrocardiogramQuery;
 - (void)_setUpElectrocardiogramQuery;
 - (void)_setupBodyLabelForSetupCompleteState:(long long)arg1;
-- (id)_classificationAttributedTextForElectrocardiogram:(id)arg1;
+- (id)_classificationAttributedTextForElectrocardiogram:(id)arg1 activeAlgorithmVersion:(long long)arg2;
 - (void)_recomputeState;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
-- (void)linkTextView:(id)arg1 didTapOnLinkInRange:(struct _NSRange)arg2;
 - (void)_electrocardiogramCardViewTapped:(id)arg1;
+- (void)_updateUI;
 - (void)_updateUIForElectrocardiogram:(id)arg1;
 - (void)_setUpConstraints;
 - (void)_resetUI;
 - (void)_setUpUI;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (id)initForOnboarding:(_Bool)arg1 isSampleInteractive:(_Bool)arg2;
 - (id)initForOnboarding:(_Bool)arg1;
 
 @end

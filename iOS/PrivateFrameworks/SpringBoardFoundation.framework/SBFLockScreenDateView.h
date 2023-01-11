@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSDate, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
+@class NSDate, NSTimeZone, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
 
 @interface SBFLockScreenDateView : UIView
 {
@@ -15,6 +15,7 @@
     double _subtitleAlpha;
     SBFLockScreenDateSubtitleDateView *_dateSubtitleView;
     SBFLockScreenDateSubtitleView *_customSubtitleView;
+    NSTimeZone *_timeZone;
     _Bool _useCompactDateFormat;
     NSDate *_date;
     UIColor *_overrideTextColor;
@@ -30,6 +31,7 @@
 + (CDStruct_91d2e2b9)timeFontMetrics;
 + (id)timeFont;
 + (double)defaultHeight;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBFLockScreenDateSubtitleView *customSubtitleView; // @synthesize customSubtitleView=_customSubtitleView;
 @property(nonatomic) struct CGRect restingFrame; // @synthesize restingFrame=_restingFrame;
 @property(nonatomic) double maximumSubtitleWidth; // @synthesize maximumSubtitleWidth=_maximumSubtitleWidth;
@@ -41,7 +43,6 @@
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_overrideTextColor;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 @property(readonly, nonatomic) double subtitleBaselineOffsetFromOrigin;
 @property(readonly, nonatomic) double timeBaselineOffsetFromOrigin;
@@ -61,6 +62,7 @@
 - (void)setContentAlpha:(double)arg1 withSubtitleVisible:(_Bool)arg2;
 @property(readonly, nonatomic) double contentAlpha;
 - (void)updateFormat;
+- (void)_setDate:(id)arg1 inTimeZone:(id)arg2;
 @property(nonatomic, getter=isSubtitleHidden) _Bool subtitleHidden;
 - (id)initWithFrame:(struct CGRect)arg1;
 

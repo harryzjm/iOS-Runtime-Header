@@ -8,7 +8,7 @@
 
 #import <MapKit/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, GEOWalkingOptions, MKMapItem, NSArray, NSDate;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, GEOWalkingOptions, MKMapItem, NSArray, NSDate;
 
 @interface MKDirectionsRequest : NSObject <NSCopying>
 {
@@ -21,6 +21,7 @@
     _Bool _includeZilchRoutePoints;
     _Bool _includeBasicRoutePoints;
     _Bool _includeEntryPoints;
+    _Bool _resolveExtraAutomobileOptions;
     _Bool _includeDistanceInETA;
     NSDate *_departureDate;
     NSDate *_arrivalDate;
@@ -28,14 +29,18 @@
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
     GEOWalkingOptions *_walkingOptions;
+    GEOCyclingOptions *_cyclingOptions;
 }
 
 + (_Bool)isDirectionsRequestURL:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic, getter=_cyclingOptions, setter=_setCyclingOptions:) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property(retain, nonatomic, getter=_walkingOptions, setter=_setWalkingOptions:) GEOWalkingOptions *walkingOptions; // @synthesize walkingOptions=_walkingOptions;
 @property(retain, nonatomic, getter=_transitOptions, setter=_setTransitOptions:) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property(retain, nonatomic, getter=_automobileOptions, setter=_setAutomobileOptions:) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property(retain, nonatomic, getter=_additionalTransportTypesRequested, setter=_setAdditionalTransportTypesRequested:) NSArray *additionalTransportTypesRequested; // @synthesize additionalTransportTypesRequested=_additionalTransportTypesRequested;
 @property(nonatomic, getter=_includeDistanceInETA, setter=_setIncludeDistanceInETA:) _Bool includeDistanceInETA; // @synthesize includeDistanceInETA=_includeDistanceInETA;
+@property(readonly, nonatomic) _Bool _resolveExtraAutomobileOptions; // @synthesize _resolveExtraAutomobileOptions;
 @property(readonly, nonatomic) _Bool _includeEntryPoints; // @synthesize _includeEntryPoints;
 @property(readonly, nonatomic) _Bool _includeBasicRoutePoints; // @synthesize _includeBasicRoutePoints;
 @property(readonly, nonatomic) _Bool _includeZilchRoutePoints; // @synthesize _includeZilchRoutePoints;
@@ -43,7 +48,6 @@
 @property(readonly, nonatomic) _Bool _includeTravelTimes; // @synthesize _includeTravelTimes;
 @property(retain, nonatomic) MKMapItem *destination; // @synthesize destination=_destination;
 @property(retain, nonatomic) MKMapItem *source; // @synthesize source=_source;
-- (void).cxx_destruct;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
 - (id)dictionaryRepresentation;
 - (id)description;
@@ -54,7 +58,7 @@
 - (id)_mapkit_initWithAllTransportTypesSource:(id)arg1 destination:(id)arg2 departureDate:(id)arg3;
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4;
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 arrivalDate:(id)arg4 includeTravelTimes:(_Bool)arg5 includeTrafficIncidents:(_Bool)arg6 includeEntryPoints:(_Bool)arg7 includeRoutePoints:(_Bool)arg8;
-- (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4 includeTravelTimes:(_Bool)arg5 includeTrafficIncidents:(_Bool)arg6 includeEntryPoints:(_Bool)arg7 includeRoutePoints:(_Bool)arg8;
+- (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4 includeTravelTimes:(_Bool)arg5 includeTrafficIncidents:(_Bool)arg6 includeEntryPoints:(_Bool)arg7 includeRoutePoints:(_Bool)arg8 resolveExtraAutomobileOptions:(_Bool)arg9;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (void)setArrivalDate:(id)arg1;

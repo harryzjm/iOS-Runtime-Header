@@ -14,6 +14,7 @@
 - (_Bool)filtersPrinters;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (void)printerBrowserViewDidDisappear;
 - (void)dismissAnimated:(_Bool)arg1;
 
 @optional

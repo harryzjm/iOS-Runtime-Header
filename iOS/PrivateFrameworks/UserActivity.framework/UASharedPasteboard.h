@@ -22,6 +22,7 @@
 + (void)localPasteboardDidAddData:(id)arg1 toItemAtIndex:(unsigned long long)arg2 generation:(unsigned long long)arg3;
 + (void)initialize;
 @property UASharedPasteboardManager *manager; // @synthesize manager=_manager;
+- (id)currentRemoteDeviceName;
 - (void)prefetchRemotePasteboardTypes:(id)arg1;
 - (void)requestRemotePasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)requestRemotePasteboardTypesForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;

@@ -16,6 +16,7 @@
         _Bool didFinishEnteringAddress;
         _Bool requestAddRecipient;
         _Bool didFinishPickingRecipient;
+        _Bool disambiguateRecipient;
         _Bool didAddRecipient;
         _Bool didRemoveRecipient;
         _Bool didChangeSize;
@@ -30,6 +31,7 @@
     NSArray *_recipients;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(nonatomic, getter=isSeparatorHidden) _Bool separatorHidden; // @synthesize separatorHidden=_separatorHidden;
 @property(nonatomic) long long maxRecipients; // @synthesize maxRecipients=_maxRecipients;
@@ -38,7 +40,6 @@
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(readonly, nonatomic) UIFont *baseFont; // @synthesize baseFont=_baseFont;
 @property(nonatomic) __weak id <PXComposeRecipientViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)removeRecipients:(id)arg1;
 - (void)addRecipients:(id)arg1;
 - (void)removeRecipient:(id)arg1;

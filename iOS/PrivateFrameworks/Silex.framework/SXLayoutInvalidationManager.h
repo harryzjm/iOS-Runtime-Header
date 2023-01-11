@@ -20,15 +20,19 @@
     NSMutableDictionary *_pendingInvalidations;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool invalidationDispatched; // @synthesize invalidationDispatched=_invalidationDispatched;
 @property(retain, nonatomic) NSMutableDictionary *pendingInvalidations; // @synthesize pendingInvalidations=_pendingInvalidations;
 @property(readonly, nonatomic) NSMutableArray *possibleInvalidations; // @synthesize possibleInvalidations=_possibleInvalidations;
 @property(readonly, nonatomic) id <SXLayoutBlueprintProvider> layoutBlueprintProvider; // @synthesize layoutBlueprintProvider=_layoutBlueprintProvider;
 @property(nonatomic) __weak id <SXLayoutInvalidationManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)invalidateQueuedComponents;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2 suggestedSize:(struct CGSize)arg3 priority:(unsigned long long)arg4;
 - (id)invalidateComponent:(id)arg1 suggestedSize:(struct CGSize)arg2 priority:(unsigned long long)arg3;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)invalidateComponent:(id)arg1 suggestedSize:(struct CGSize)arg2;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2 priority:(unsigned long long)arg3;
+- (id)invalidateComponent:(id)arg1 state:(id)arg2;
 - (id)invalidateComponent:(id)arg1;
 - (void)cancelPendingInvalidationForComponent:(id)arg1;
 - (void)mightInvalidateComponent:(id)arg1;

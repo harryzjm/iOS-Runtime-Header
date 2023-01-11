@@ -20,10 +20,10 @@
 @property(readonly, nonatomic) struct UIEdgeInsets peripheryInsets;
 
 // Remaining properties
-@property(nonatomic) unsigned long long artworkSubtype;
+@property(readonly, nonatomic) unsigned long long artworkSubtype;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(retain, nonatomic) FBSDisplayConfiguration *displayConfiguration;
+@property(readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 @end

@@ -9,14 +9,13 @@
 #import <UserNotificationsKit/NCNotificationAlertDestinationDelegate-Protocol.h>
 #import <UserNotificationsKit/NCNotificationDestinationDelegate-Protocol.h>
 
-@class NCLayoutLoopDetector, NCNotificationAlertQueue, NCNotificationDestinationsRegistry, NCNotificationStore, NSHashTable, NSMutableDictionary, NSString;
+@class NCLayoutLoopDetector, NCNotificationAlertQueue, NCNotificationDestinationsRegistry, NSHashTable, NSMutableDictionary, NSString;
 @protocol NCAlertingController, NCNotificationDispatcherDelegate;
 
 @interface NCNotificationDispatcher : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationDestinationDelegate>
 {
     id <NCNotificationDispatcherDelegate> _delegate;
     NCNotificationDestinationsRegistry *_destinationsRegistry;
-    NCNotificationStore *_notificationStore;
     NCNotificationAlertQueue *_alertQueue;
     NSMutableDictionary *_sectionSettings;
     NSHashTable *_sourceDelegates;
@@ -24,15 +23,14 @@
     id <NCAlertingController> _alertingController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <NCAlertingController> alertingController; // @synthesize alertingController=_alertingController;
 @property(retain, nonatomic) NCLayoutLoopDetector *layoutDetector; // @synthesize layoutDetector=_layoutDetector;
 @property(retain, nonatomic) NSHashTable *sourceDelegates; // @synthesize sourceDelegates=_sourceDelegates;
 @property(retain, nonatomic) NSMutableDictionary *sectionSettings; // @synthesize sectionSettings=_sectionSettings;
 @property(retain, nonatomic) NCNotificationAlertQueue *alertQueue; // @synthesize alertQueue=_alertQueue;
-@property(retain, nonatomic) NCNotificationStore *notificationStore; // @synthesize notificationStore=_notificationStore;
 @property(retain, nonatomic) NCNotificationDestinationsRegistry *destinationsRegistry; // @synthesize destinationsRegistry=_destinationsRegistry;
 @property(nonatomic) __weak id <NCNotificationDispatcherDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_clearUnsafeNotification:(id)arg1;
 - (void)_didRemoveNotificationRequest:(id)arg1;
 - (void)_didPostNotificationRequest:(id)arg1;
@@ -65,6 +63,7 @@
 - (void)setDestination:(id)arg1 enabled:(_Bool)arg2;
 - (void)unregisterDestination:(id)arg1;
 - (void)registerDestination:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)removeNotificationSectionWithIdentifier:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1;
 - (void)withdrawNotificationWithRequest:(id)arg1;

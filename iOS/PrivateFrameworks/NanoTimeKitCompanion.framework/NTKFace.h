@@ -9,38 +9,40 @@
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 #import <NanoTimeKitCompanion/NTKEditModeMapping-Protocol.h>
-#import <NanoTimeKitCompanion/NTKInstalledSystemApplicationsChangeObserver-Protocol.h>
 
 @class CLKDevice, NSArray, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSNumber, NSString, NTKFaceConfiguration;
+@protocol NTKFaceComplicationConfiguration;
 
-@interface NTKFace : NSObject <NSSecureCoding, NSCopying, NTKInstalledSystemApplicationsChangeObserver, NTKEditModeMapping>
+@interface NTKFace : NSObject <NSSecureCoding, NSCopying, NTKEditModeMapping>
 {
     NTKFaceConfiguration *_configuration;
     NSHashTable *_fvcObservers;
     NSHashTable *_observers;
     NSDictionary *_complicationSlotDescriptors;
-    _Bool _editOptionsPrepared;
     NSMutableDictionary *_selectedSlotsByEditMode;
     _Bool _suppressingConfigurationChangeNotifications;
     _Bool _configurationChangedWhileSuppressingNotifications;
+    _Bool _configurationWasModifiedForThisDevice;
     _Bool _resourceDirectoryIsOwned;
     NSString *_cachedDefaultName;
+    NSArray *_cachedDynamicEditOptions;
+    _Bool _editOptionsPrepared;
     _Bool _isLibraryFace;
-    _Bool _complicationExistenceInvalidatesSnapshot;
     _Bool _beingEdited;
     long long _faceStyle;
+    NSString *_bundleIdentifier;
     CLKDevice *_device;
     NSString *_resourceDirectory;
+    id <NTKFaceComplicationConfiguration> _complicationConfiguration;
     long long _mostRecentEditMode;
 }
 
 + (id)PPTBlankFace;
 + (_Bool)isRestrictedForDevice:(id)arg1;
-+ (_Bool)isFaceStyleRestricted:(long long)arg1 forDevice:(id)arg2;
 + (_Bool)isFaceStyleAvailableInternal:(long long)arg1 forDevice:(id)arg2;
 + (id)availableInternalFaceStylesForDevice:(id)arg1;
 + (Class)_faceClassForStyle:(long long)arg1;
-+ (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2 forMigration:(_Bool)arg3;
++ (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2 forMigration:(_Bool)arg3 allowFallbackFromInvalidFaceStyle:(_Bool)arg4;
 + (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)_richComplicationSlotsForDevice:(id)arg1;
@@ -50,6 +52,7 @@
 + (id)_monogramComplicationSlotForDevice:(id)arg1;
 + (id)_dateComplicationSlotForDevice:(id)arg1;
 + (_Bool)_complication:(id)arg1 isValidForSlot:(id)arg2 forDevice:(id)arg3;
++ (_Bool)_customEditModeDeterminesDynamicSections:(long long)arg1 forDevice:(id)arg2;
 + (_Bool)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
 + (_Bool)_customEditModeIsShowSeconds:(long long)arg1 forDevice:(id)arg2;
 + (_Bool)_customEditModeIsRows:(long long)arg1 forDevice:(id)arg2;
@@ -62,16 +65,16 @@
 + (id)_complicationSlotDescriptors;
 + (id)_defaultSelectedSlotForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 + (id)_slotsForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
-+ (id)_sampleFaceDifferentFromFaces:(id)arg1 forDevice:(id)arg2;
 + (id)_initialDefaultComplicationForSlot:(id)arg1 forDevice:(id)arg2;
 + (unsigned long long)maximumRemoteComplicationsOnAnyFaceForDevice:(id)arg1;
 + (unsigned long long)maximumRemoteComplicationsOnAnyFace;
-+ (id)sampleFaceOfStyle:(long long)arg1 forDevice:(id)arg2 differentFromFaces:(id)arg3;
++ (id)bundledFaceWithIdentifier:(id)arg1 forDevice:(id)arg2 initCustomization:(CDUnknownBlockType)arg3;
 + (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2 initCustomization:(CDUnknownBlockType)arg3;
 + (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2;
 + (id)possibleComplicationTypesForSlot:(id)arg1;
 + (void)enumerateComplicationSlotsWithBlock:(CDUnknownBlockType)arg1;
 + (void)enumerateComplicationSlots:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
++ (_Bool)customEditModeDeterminesDynamicSections:(long long)arg1 forDevice:(id)arg2;
 + (_Bool)customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
 + (_Bool)customEditModeIsShowSeconds:(long long)arg1 forDevice:(id)arg2;
 + (_Bool)customEditModeIsRows:(long long)arg1 forDevice:(id)arg2;
@@ -79,23 +82,42 @@
 + (id)localizedNameForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 + (id)_linkedResourceRootDirectory;
 + (id)richComplicationSlotsForDevice:(id)arg1;
++ (id)complicationConfiguration;
++ (void)initialize;
++ (id)defaultFaceFromFaceDescriptor:(id)arg1 forDevice:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool beingEdited; // @synthesize beingEdited=_beingEdited;
 @property(nonatomic) long long mostRecentEditMode; // @synthesize mostRecentEditMode=_mostRecentEditMode;
-@property(readonly, nonatomic) _Bool complicationExistenceInvalidatesSnapshot; // @synthesize complicationExistenceInvalidatesSnapshot=_complicationExistenceInvalidatesSnapshot;
+@property(retain, nonatomic) id <NTKFaceComplicationConfiguration> complicationConfiguration; // @synthesize complicationConfiguration=_complicationConfiguration;
 @property(nonatomic) _Bool isLibraryFace; // @synthesize isLibraryFace=_isLibraryFace;
+@property(readonly, nonatomic) _Bool editOptionsPrepared; // @synthesize editOptionsPrepared=_editOptionsPrepared;
 @property(readonly, nonatomic) NSString *resourceDirectory; // @synthesize resourceDirectory=_resourceDirectory;
 @property(readonly, nonatomic) NTKFaceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) long long faceStyle; // @synthesize faceStyle=_faceStyle;
-- (void).cxx_destruct;
-- (_Bool)hasValidConfigurationForDeviceVersion:(unsigned int)arg1;
+- (_Bool)hasValidConfigurationForDevice:(id)arg1;
 - (void)_selectDefaultSlots;
 - (id)_sortedComplicationSlots;
 - (_Bool)_verifyCompatibilityOfConfiguration:(id)arg1;
 - (_Bool)_applyConfiguration:(id)arg1 allowFailure:(_Bool)arg2;
 - (Class)editOptionClassFromEditMode:(long long)arg1 resourceDirectoryExists:(_Bool)arg2;
-- (void)installedSystemApplicationsDidChange;
 - (id)JSONObjectRepresentation;
+- (id)deepCopy;
+- (void)_notifyAppsOfSharedComplicationDescriptors;
+- (_Bool)_sanitizeFaceConfiguration:(id *)arg1;
+- (_Bool)sanitizeFaceConfiguration:(id *)arg1;
+- (_Bool)_shouldSanitizeFaceConfigurationWhenAddingSharedFace;
+- (_Bool)shouldSanitizeFaceConfigurationWhenAddingSharedFace;
+- (_Bool)_createResourceDirectorySuitableForSharingAtPath:(id)arg1 error:(id *)arg2;
+- (_Bool)createResourceDirectorySuitableForSharingAtPath:(id)arg1 error:(id *)arg2;
+- (_Bool)_shouldIncludeResourceDirectoryForSharing;
+- (_Bool)shouldIncludeResourceDirectoryForSharing;
+- (void)_handleSharingMetadata:(id)arg1;
+- (void)handleSharingMetadata:(id)arg1;
+- (id)_createSharingMetadata;
+- (id)createSharingMetadata;
+- (id)faceSharingName;
 - (id)_configurationFromOldEncodingWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -114,12 +136,15 @@
 - (void)didMoveToLibrary;
 - (_Bool)_allowsEditing;
 - (_Bool)_option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3;
+- (_Bool)option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3;
 - (_Bool)_option:(id)arg1 isValidForCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_noteOptionChangedFrom:(id)arg1 to:(id)arg2 forCustomEditMode:(long long)arg3 slot:(id)arg4;
 - (_Bool)_hasOptionsForCustomEditMode:(long long)arg1;
 - (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (unsigned long long)_numberOfDynamicSections;
+- (long long)_dynamicEditMode;
 - (void)_cleanupEditOptions;
 - (void)_prepareEditOptions;
 - (id)_defaultComplicationOfType:(unsigned long long)arg1 forSlot:(id)arg2;
@@ -130,6 +155,7 @@
 - (id)_defaultOptionForMissingCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_customEditModes;
+- (void)clearMetrics;
 - (void)incrementNumberOfCompanionEdits;
 @property(readonly, nonatomic) _Bool hasCompanionEdits;
 @property(readonly, nonatomic) NSNumber *numberOfCompanionEdits;
@@ -157,6 +183,7 @@
 - (_Bool)applyConfiguration:(id)arg1;
 - (void)setSelectedSlot:(id)arg1 forEditMode:(long long)arg2;
 - (id)selectedSlotForEditMode:(long long)arg1;
+@property(readonly, nonatomic, getter=isUsingConfigurationModifiedForThisDevice) _Bool usingConfigurationModifiedForThisDevice;
 @property(readonly, nonatomic, getter=isSingular) _Bool singular;
 @property(readonly, nonatomic, getter=isEditable) _Bool editable;
 @property(readonly, nonatomic) long long editModeForCustomEditViewController;
@@ -164,6 +191,9 @@
 - (void)performCustomSwitcherSelectionAction;
 - (_Bool)hasCustomSwitcherSelectionAction;
 - (void)_updateComplicationTombstones;
+- (void)_complicationsDidChange;
+- (void)_handleSingleComplicationDidChangeNotification:(id)arg1;
+- (void)_handleComplicationChangeNotification;
 - (id)_disabledComplicationTypesIndexSet;
 - (_Bool)hasComplicationsOfType:(unsigned long long)arg1 forSlot:(id)arg2;
 - (id)_allowedComplicationsOfType:(unsigned long long)arg1 forSlot:(id)arg2;
@@ -173,7 +203,9 @@
 - (id)possibleComplicationTypesForSlot:(id)arg1;
 - (id)allowedComplicationTypesForSlot:(id)arg1;
 - (id)allowedComplicationTypesFromDescriptors:(id)arg1 slot:(id)arg2;
-- (long long)complicationFamilyForSlot:(id)arg1;
+- (_Bool)slot:(id)arg1 supportsFamiliesOfComplications:(id)arg2;
+- (id)rankedComplicationFamiliesForSlot:(id)arg1;
+- (long long)preferredComplicationFamilyForComplication:(id)arg1 withSlot:(id)arg2;
 - (_Bool)isFullscreenConfiguration;
 - (id)allVisibleComplicationsForCurrentConfiguration;
 - (id)_allComplications;
@@ -181,10 +213,20 @@
 - (void)enumerateComplicationSlotsWithBlock:(CDUnknownBlockType)arg1;
 - (void)setComplication:(id)arg1 forSlot:(id)arg2;
 - (id)complicationForSlot:(id)arg1;
+- (id)newDynamicEditOptionCollectionForSection:(unsigned long long)arg1;
+- (unsigned long long)_collectionTypeForEditMode:(long long)arg1;
+- (id)_editOptionsForEditMode:(long long)arg1;
 - (id)editOptionsForCustomEditModes;
+- (id)customDataForKey:(id)arg1;
+- (void)setCustomData:(id)arg1 forKey:(id)arg2;
 - (id)namesOfSelectedOptionsForCustomEditModes;
 - (id)nameOfSelectedOptionForCustomEditMode:(long long)arg1;
 - (id)selectedOptionsForCustomEditModes;
+- (id)selectedSlotOptionsForCustomEditMode:(long long)arg1;
+- (unsigned long long)numberOfDynamicSections;
+- (long long)dynamicEditMode;
+- (id)defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (void)selectOptions:(id)arg1 forCustomEditMode:(long long)arg2;
 - (void)selectOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (id)selectedOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)customEditModes;
@@ -193,6 +235,7 @@
 - (_Bool)_wantsUnadornedSnapshot;
 @property(readonly, nonatomic) _Bool wantsUnadornedSnapshot;
 - (_Bool)_complication:(id)arg1 appearsInDailySnapshotForSlot:(id)arg2;
+@property(readonly, nonatomic) _Bool complicationExistenceInvalidatesSnapshot;
 @property(readonly, nonatomic) NSString *dailySnapshotKey;
 - (_Bool)_shouldHideUI;
 - (void)_notifyObserversFaceUpgradeOccurred;
@@ -208,14 +251,20 @@
 - (void)setResourceDirectory:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)toggleComplicationChangeObservation:(_Bool)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)_initWithFaceStyle:(long long)arg1 forDevice:(id)arg2;
-- (void)_registerComplicationsDidChangeNotification;
 - (void)_commonInit;
 - (id)complicationSlotsHiddenByEditOption:(id)arg1;
 - (id)editOptionThatHidesAllComplications;
+- (_Bool)_faceGalleryIsRestricted;
+- (id)_faceGalleryCalloutName;
+- (_Bool)_faceGalleryDidUpdateFaceColorForColorEditOptionClass:(Class)arg1 availableHardwareSpecificColorOptions:(id)arg2 availableColorOptions:(id)arg3;
+- (void)_setFaceGalleryComplicationTypesForSlots:(id)arg1 canRepeat:(_Bool)arg2;
+- (void)_setFaceGalleryComplicationTypesForSlots:(id)arg1;
+- (id)faceDescriptor;
 - (id)_complicationMigrationPaths;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
 - (id)_faceDescriptionKeyForExternal;

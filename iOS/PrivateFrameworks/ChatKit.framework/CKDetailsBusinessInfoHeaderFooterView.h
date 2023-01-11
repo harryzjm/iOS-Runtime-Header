@@ -17,9 +17,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)reuseIdentifier;
-@property(retain, nonatomic) CKBusinessInfoView *businessInfoView; // @synthesize businessInfoView=_businessInfoView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKBusinessInfoView *businessInfoView; // @synthesize businessInfoView=_businessInfoView;
 - (void)layoutSubviews;
+- (id)initWithReuseIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

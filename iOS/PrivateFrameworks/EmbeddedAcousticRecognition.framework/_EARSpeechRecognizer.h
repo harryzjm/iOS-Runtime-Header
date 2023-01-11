@@ -13,8 +13,10 @@
 {
     NSObject<OS_dispatch_queue> *_formatterQueue;
     _EARFormatter *_formatter;
-    struct unique_ptr<quasar::SpeechRecognizer, std::__1::default_delete<quasar::SpeechRecognizer>> _recognizer;
-    struct unique_ptr<quasar::TextTokenizer, std::__1::default_delete<quasar::TextTokenizer>> _tokenizer;
+    NSObject<OS_dispatch_queue> *_trainingQueue;
+    struct shared_ptr<quasar::SpeakerCodeTraining> _training;
+    shared_ptr_22b796d4 _recognizer;
+    unique_ptr_3068360f _tokenizer;
     _EARSpeechRecognitionAudioBuffer *_currentAudioBuffer;
     struct weak_ptr<ResultStreamWrapper> _currentResultStreamWrapper;
     NSString *_currentLanguage;
@@ -40,12 +42,20 @@
     NSString *_bluetoothDeviceId;
     NSString *_userId;
     NSString *_sessionId;
+    NSArray *_extraLmList;
+    NSString *_speakerCode;
 }
 
++ (void)purgeCompiledRecognizerModelsWithConfiguration:(id)arg1;
++ (void)compileRecognizerModelsWithConfiguration:(id)arg1;
 + (id)rawTokenResultsFromRecognitionResults:(id)arg1;
 + (id)maximumSupportedConfigurationVersion;
 + (id)minimumSupportedConfigurationVersion;
 + (void)initialize;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *speakerCode; // @synthesize speakerCode=_speakerCode;
+@property(copy, nonatomic) NSArray *extraLmList; // @synthesize extraLmList=_extraLmList;
 @property(copy, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
 @property(copy, nonatomic) NSString *userId; // @synthesize userId=_userId;
 @property(copy, nonatomic) NSString *bluetoothDeviceId; // @synthesize bluetoothDeviceId=_bluetoothDeviceId;
@@ -64,17 +74,22 @@
 @property(nonatomic) _Bool detectUtterances; // @synthesize detectUtterances=_detectUtterances;
 @property(copy, nonatomic) NSData *jitProfileData; // @synthesize jitProfileData=_jitProfileData;
 @property(copy, nonatomic) NSData *userProfileData; // @synthesize userProfileData=_userProfileData;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+- (shared_ptr_22b796d4)getRecognizer;
 - (void)setAlternateRawRecognitionTokenSausage:(id)arg1;
+- (void)dumpModelVirtualMemoryInfo;
+- (void)_waitForInitialization;
 - (void)getFormatterWithBlock:(CDUnknownBlockType)arg1;
+- (id)recognitionUtterenceStatistics;
 - (id)recognitionStatistics;
+- (void)interruptTraining;
 - (void)cancelRecognition;
 - (id)recognitionResultsWithAudioData:(id)arg1 userProfileData:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5 extraLanguageModel:(id)arg6;
 - (id)recognitionResultsWithAudioData:(id)arg1 userProfileData:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5;
 - (void)_restartActiveRecognition;
 - (shared_ptr_809f9c31)_audioBufferWithLangauge:(id)arg1 task:(id)arg2 samplingRate:(unsigned long long)arg3 userProfileData:(id)arg4 resultStream:(shared_ptr_5cb47a18)arg5;
-- (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4 userProfileData:(id)arg5;
+- (void)writeRecordedStateAccesses;
+- (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4 userProfileData:(id)arg5 trainingResultStream:(id)arg6;
+- (id)runRecognitionWithResultStream:(id)arg1 trainingResultStream:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5;
 - (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4;
 - (shared_ptr_9f04d411)requestParametersWithUserProfileData:(id)arg1 task:(id)arg2 samplingRate:(unsigned long long)arg3 resultStream:(shared_ptr_5cb47a18)arg4 extraLanguageModel:(id)arg5 symbolTableList:(const shared_ptr_ca83464d *)arg6;
 - (void)updateJitProfileData:(id)arg1;

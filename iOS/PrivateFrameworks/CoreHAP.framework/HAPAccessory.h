@@ -16,6 +16,7 @@
     _Bool _reachable;
     _Bool _primary;
     _Bool _supportsRelay;
+    int _consecutiveFailedPingCount;
     id <HAPAccessoryDelegate> _delegate;
     HAPAccessoryServer *_server;
     NSString *_identifier;
@@ -30,14 +31,20 @@
     NSString *_manufacturer;
     NSString *_serialNumber;
     NSString *_firmwareVersion;
+    NSString *_productData;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSNumber *_sleepInterval;
 }
 
 + (_Bool)isAccessoryPrimaryWithUniqueIdentifier:(id)arg1;
 + (id)instanceIDForUniqueIdentifier:(id)arg1;
 + (id)serverIdentifierWithUniqueIdentifier:(id)arg1;
++ (id)productDataStringFromData:(id)arg1;
 + (_Bool)isAccessoryPairedWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSNumber *sleepInterval; // @synthesize sleepInterval=_sleepInterval;
 @property(retain) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(copy, nonatomic) NSString *productData; // @synthesize productData=_productData;
 @property(copy, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
 @property(copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
@@ -54,13 +61,12 @@
 @property(nonatomic, getter=isPrimary) _Bool primary; // @synthesize primary=_primary;
 @property(nonatomic) __weak HAPAccessoryServer *server; // @synthesize server=_server;
 @property(nonatomic) __weak id <HAPAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (_Bool)mergeObject:(id)arg1;
 - (_Bool)shouldMergeObject:(id)arg1;
 - (id)characteristicOfType:(id)arg1 serviceType:(id)arg2;
 - (id)characteristicsOfType:(id)arg1;
 - (id)servicesOfType:(id)arg1;
-- (_Bool)validateCharacteristicValues:(id *)arg1;
+- (_Bool)_validateCharacteristicValues;
 - (void)invalidate;
 - (_Bool)_updateForAccessoryInformationService;
 - (_Bool)_updateService:(id)arg1;
@@ -71,6 +77,7 @@
 - (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @property(readonly, copy, nonatomic) NSNumber *category;
 - (void)_setReachable:(_Bool)arg1;
+@property(nonatomic) int consecutiveFailedPingCount; // @synthesize consecutiveFailedPingCount=_consecutiveFailedPingCount;
 @property(nonatomic, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
 - (_Bool)_isReachable;
 @property(readonly, nonatomic, getter=isPaired) _Bool paired;

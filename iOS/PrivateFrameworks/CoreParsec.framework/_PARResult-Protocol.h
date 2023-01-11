@@ -10,6 +10,12 @@
 
 @protocol _PARResult <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSDictionary *serverFeatures;
+@property(copy, nonatomic) NSArray *alternativeURLs;
+@property(nonatomic) _Bool usesCompactDisplay;
+@property(nonatomic) _Bool preferTopPlatter;
+@property(nonatomic) _Bool noGoTakeover;
+@property(nonatomic) _Bool shouldUseCompactDisplay;
 @property(copy, nonatomic) NSString *completedQuery;
 @property(copy, nonatomic) NSString *correctedQuery;
 @property(copy, nonatomic) NSString *intendedQuery;
@@ -37,6 +43,12 @@
 @property(copy, nonatomic) NSString *type;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(NSString *)arg2;
+- (_Bool)getServerFeatures:(double *)arg1 forKey:(NSString *)arg2;
+- (NSString *)alternativeURLsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternativeURLsCount;
+- (void)addAlternativeURLs:(NSString *)arg1;
+- (void)clearAlternativeURLs;
 - (_PAREntity *)entitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entitiesCount;
 - (void)addEntities:(_PAREntity *)arg1;

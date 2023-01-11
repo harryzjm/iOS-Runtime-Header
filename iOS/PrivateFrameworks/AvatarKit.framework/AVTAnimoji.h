@@ -8,9 +8,10 @@
 
 @interface AVTAnimoji
 {
-    _Bool _loaded;
     NSURL *_url;
     SCNNode *_lightingNode;
+    SCNNode *_headNode;
+    SCNNode *_avatarNode;
     SCNNode *_cameraNode;
     NSDictionary *_specializationSettings;
     NSString *_name;
@@ -18,24 +19,22 @@
 
 + (unsigned char)classIdentifier;
 + (void)preloadAnimojiNamed:(id)arg1;
-+ (struct UIImage *)thumbnailForAnimojiNamed:(id)arg1 options:(id)arg2;
++ (id)thumbnailForAnimojiNamed:(id)arg1 options:(id)arg2;
 + (id)animojiNamed:(id)arg1;
 + (id)animojiWithContentsOfURL:(id)arg1;
-+ (id)animoji;
++ (id)_sceneURLForPuppetDirectoryURL:(id)arg1;
 + (id)_scenePathForPuppetNamed:(id)arg1;
 + (id)animojiNames;
 + (void)preloadPuppetNamed:(id)arg1;
 + (void)preloadPuppet:(id)arg1;
-+ (struct UIImage *)thumbnailForPuppetNamed:(id)arg1 options:(id)arg2;
++ (id)thumbnailForPuppetNamed:(id)arg1 options:(id)arg2;
 + (id)puppetNamed:(id)arg1 options:(id)arg2;
 + (id)puppetNames;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+- (void)configureForBestAnimationQuality;
 - (id)stickerPhysicsStateIdentifier;
 - (id)specializationSettings;
-- (id)arTechniqueName;
-- (_Bool)hasCustomARTechnique;
-- (_Bool)_decode:(id)arg1 error:(id *)arg2;
 - (void)_encode:(id)arg1;
 - (void)setPuppetState:(id)arg1;
 - (id)puppetState;
@@ -45,12 +44,17 @@
 @property(readonly, nonatomic) SCNNode *cameraNode;
 @property(readonly, nonatomic) SCNNode *lightingNode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setAvatarNode:(id)arg1;
+- (id)copyWithUsageIntent:(unsigned long long)arg1;
+- (unsigned long long)usageIntent;
 - (id)description;
+- (id)initWithDictionaryRepresentation:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithName:(id)arg1;
 - (void)update;
+- (id)headNode;
 - (id)avatarNode;
 - (void)loadIfNeeded;
 - (void)_load;
+- (id)_sceneURL;
 
 @end
 

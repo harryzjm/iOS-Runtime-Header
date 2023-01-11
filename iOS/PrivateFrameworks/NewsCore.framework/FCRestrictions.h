@@ -20,8 +20,8 @@
 @property(nonatomic) long long buildVersionNumber; // @synthesize buildVersionNumber=_buildVersionNumber;
 - (_Bool)isContentBlockedInStorefrontID:(id)arg1 withAllowedStorefrontIDs:(id)arg2 blockedStorefrontIDs:(id)arg3;
 - (_Bool)isContentAllowedInStorefrontID:(id)arg1 withAllowedStorefrontIDs:(id)arg2 blockedStorefrontIDs:(id)arg3;
+- (_Bool)isNewsVersionAllowedWithMinNewsVersion:(long long)arg1 maxNewsVersion:(long long)arg2;
 - (_Bool)isNewsVersionAllowed:(long long)arg1;
-@property(readonly, nonatomic) _Bool isDiagnosticsUsageEnabled;
 - (void)t_stopForcingExplicitContentDisallowed;
 - (void)t_startForcingExplicitContentDisallowed;
 @property(readonly, nonatomic) _Bool isExplicitContentAllowed;

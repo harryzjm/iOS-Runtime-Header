@@ -13,6 +13,7 @@
 - (id)_mutableTokenRows;
 - (void)sortTokenRows;
 - (void)removeTokenRowAtIndex:(long long)arg1;
+- (void)setTokenRowWithTokens:(id)arg1 atIndex:(long long)arg2;
 - (long long)addTokenRowWithTokens:(id)arg1;
 @property(copy, nonatomic) NSArray *tokenRows; // @dynamic tokenRows;
 - (id)copyWithZone:(struct _NSZone *)arg1;

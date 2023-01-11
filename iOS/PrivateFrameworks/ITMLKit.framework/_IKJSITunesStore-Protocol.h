@@ -18,6 +18,9 @@
 @property(readonly, nonatomic) NSString *userAgent;
 @property(readonly, nonatomic) NSDictionary *accountInfo;
 @property(readonly, nonatomic) NSString *DSID;
+- (void)openDynamicUIURL:(NSString *)arg1:(NSDictionary *)arg2:(JSValue *)arg3;
+- (void)openMarketingItem:(NSDictionary *)arg1:(NSDictionary *)arg2:(JSValue *)arg3;
+- (void)fetchMarketingItem:(NSString *)arg1:(NSString *)arg2:(NSString *)arg3:(NSString *)arg4:(JSValue *)arg5;
 - (void)updateServiceEligibility:(NSDictionary *)arg1;
 - (void)signOut;
 - (void)authenticate:(NSDictionary *)arg1:(JSValue *)arg2;

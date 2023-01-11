@@ -34,6 +34,8 @@
     UIView *_snapshotOverlayView;
     UITapGestureRecognizer *_backGestureRecognizer;
     NSUUID *_currentRunningAnimationsUUID;
+    _Bool _shouldDeactivateReachabilityWhenTransitioning;
+    _Bool _forcePresentationInPresenterScene;
     _Bool _changedPresentingViewControllerDuringAdaptation;
     _Bool _shouldContinueTouchesOnTargetViewController;
     _Bool _containerIgnoresDirectTouchEvents;
@@ -61,6 +63,7 @@
     CDUnknownBlockType __computeToEndFrameForCurrentTransition;
     CDUnknownBlockType __currentTransitionDidComplete;
     UIView *_customViewForTouchContinuation;
+    UITraitCollection *_internalOverrideTraitCollection;
     UIView *_realSourceView;
     struct CGSize _preferredContentSize;
     struct CGRect _sourceRect;
@@ -70,11 +73,13 @@
 + (_Bool)_shouldDeferTransitions;
 + (_Bool)_allowsDeferredTransitions;
 + (_Bool)_preventsAppearanceProxyCustomization;
-+ (struct UIEdgeInsets)_statusBarOverlapAndMarginInfoForView:(id)arg1;
++ (struct UIEdgeInsets)_statusBarOverlapAndMarginInfoForView:(id)arg1 inWindow:(id)arg2;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_realSourceView) UIView *realSourceView; // @synthesize realSourceView=_realSourceView;
 @property(nonatomic) _Bool isCurrentStateCancelled; // @synthesize isCurrentStateCancelled=_isCurrentStateCancelled;
 @property(nonatomic, getter=_containerIgnoresDirectTouchEvents, setter=_setContainerIgnoresDirectTouchEvents:) _Bool containerIgnoresDirectTouchEvents; // @synthesize containerIgnoresDirectTouchEvents=_containerIgnoresDirectTouchEvents;
+@property(copy, nonatomic, getter=_internalOverrideTraitCollection, setter=_setInternalOverrideTraitCollection:) UITraitCollection *internalOverrideTraitCollection; // @synthesize internalOverrideTraitCollection=_internalOverrideTraitCollection;
 @property(retain, nonatomic, getter=_customViewForTouchContinuation, setter=_setCustomViewForTouchContinuation:) UIView *customViewForTouchContinuation; // @synthesize customViewForTouchContinuation=_customViewForTouchContinuation;
 @property(nonatomic, getter=_shouldContinueTouchesOnTargetViewController, setter=_setShouldContinueTouchesOnTargetViewController:) _Bool shouldContinueTouchesOnTargetViewController; // @synthesize shouldContinueTouchesOnTargetViewController=_shouldContinueTouchesOnTargetViewController;
 @property(copy, nonatomic) CDUnknownBlockType _currentTransitionDidComplete; // @synthesize _currentTransitionDidComplete=__currentTransitionDidComplete;
@@ -98,11 +103,13 @@
 @property(retain, nonatomic, setter=_setContainerView:) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic, setter=_setPresentedViewController:) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property(retain, nonatomic, setter=_setPresentingViewController:) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property(nonatomic, setter=_setForcePresentationInPresenterScene:) _Bool _forcePresentationInPresenterScene; // @synthesize _forcePresentationInPresenterScene;
+@property(nonatomic, getter=_shouldDeactivateReachabilityWhenTransitioning, setter=_setShouldDeactivateReachabilityWhenTransitioning:) _Bool shouldDeactivateReachabilityWhenTransitioning; // @synthesize shouldDeactivateReachabilityWhenTransitioning=_shouldDeactivateReachabilityWhenTransitioning;
 @property(retain, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
 @property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(nonatomic, getter=_preferredContentSize, setter=_setPreferredContentSize:) struct CGSize _preferredContentSize; // @synthesize _preferredContentSize;
-- (void).cxx_destruct;
+- (_Bool)_canPresentInSeparateScene;
 - (_Bool)_shouldSavePresentedViewControllerForStateRestoration;
 - (struct UIEdgeInsets)_additionalSafeAreaInsets;
 - (void)_sendFallbackDidDismiss;
@@ -134,6 +141,7 @@
 - (id)_adaptiveWillTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_window:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (void)_parent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
+- (void)_setOverrideTraitCollection:(id)arg1 updatingPresentedViewControllerImmediately:(_Bool)arg2;
 - (void)_updateTraitsIfNecessary;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
@@ -184,7 +192,9 @@
 - (void)dismissalTransitionWillBegin;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionWillBegin;
+- (void)_initViewHierarchyForPresentationSuperview:(id)arg1 inWindow:(id)arg2;
 - (void)_initViewHierarchyForPresentationSuperview:(id)arg1;
+- (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1 inWindow:(id)arg2;
 - (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1;
 - (void)_releaseSnapshot;
 - (void)_coverWithSnapshot;
@@ -206,6 +216,9 @@
 - (id)_fullscreenPresentationSuperview;
 - (id)_currentContextPresentationSuperview;
 - (_Bool)_shouldGrabPresentersView;
+- (void)_closeScene;
+- (void)_convertToSceneFromPresentingViewController:(id)arg1;
+- (_Bool)_shouldConvertToScene;
 @property(readonly, nonatomic) _Bool _mayChildGrabPresentedViewControllerView;
 @property(readonly, nonatomic) _Bool shouldRemovePresentersView;
 @property(readonly, nonatomic) _Bool shouldPresentInFullscreen;
@@ -217,14 +230,17 @@
 - (id)_parentPresentationController;
 - (void)_transitionToPresentationController:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_dismissWithAnimationController:(id)arg1 interactionController:(id)arg2 target:(id)arg3 didEndSelector:(SEL)arg4;
-- (void)_presentWithAnimationController:(id)arg1 interactionController:(id)arg2 target:(id)arg3 didEndSelector:(SEL)arg4;
+- (void)_presentWithAnimationController:(id)arg1 inWindow:(id)arg2 interactionController:(id)arg3 target:(id)arg4 didEndSelector:(SEL)arg5;
 - (void)_adjustOrientationIfNecessaryInWindow:(id)arg1 forViewController:(id)arg2 preservingViewController:(id)arg3;
 - (_Bool)_presentationPotentiallyUnderlapsStatusBar;
+- (void)_prepareForWindowDeallocRecursively:(_Bool)arg1;
 - (void)_cleanup;
 - (void)transitionDidFinish:(_Bool)arg1;
 - (_Bool)_shouldDisableInteractionDuringTransitions;
 - (_Bool)_preserveResponderAcrossWindows;
+- (_Bool)_shouldRestoreFirstResponder;
 - (_Bool)_shouldKeepCurrentFirstResponder;
+- (_Bool)_shouldPreserveFirstResponder;
 - (_Bool)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (_Bool)_shouldDisablePresentersAppearanceCallbacks;
 - (id)_activePresentationController;
@@ -242,7 +258,7 @@
 - (id)init;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (void)_realSourceViewGeometryDidChange;
-- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (void)_realSourceViewDidChangeFromView:(id)arg1 toView:(id)arg2;
 - (void)_setRealSourceView:(id)arg1;
 - (void)_updateRealSourceView;
@@ -251,6 +267,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

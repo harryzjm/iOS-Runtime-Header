@@ -23,6 +23,7 @@
 }
 
 + (id)groupForProperty:(id)arg1 contact:(id)arg2 store:(id)arg3 policy:(id)arg4 linkedPolicies:(id)arg5;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *deletedItems; // @synthesize deletedItems=_deletedItems;
 @property(nonatomic) _Bool isAdded; // @synthesize isAdded=_isAdded;
 @property(nonatomic) _Bool allowsDisplayModePickerActions; // @synthesize allowsDisplayModePickerActions=_allowsDisplayModePickerActions;
@@ -32,7 +33,6 @@
 @property(readonly, nonatomic) CNPolicy *policy; // @synthesize policy=_policy;
 @property(readonly, nonatomic) NSArray *propertyItems; // @synthesize propertyItems=_propertyItems;
 @property(readonly, nonatomic) NSString *property; // @synthesize property=_property;
-- (void).cxx_destruct;
 - (id)_nextAvailableSocialService;
 - (id)_nextAvailableInstantMessageService;
 - (id)_nextAvailableLabel;
@@ -57,6 +57,7 @@
 - (id)displayItems;
 - (void)saveChanges;
 - (void)reloadDataPreservingChanges:(_Bool)arg1;
+- (id)lastEditingItem;
 - (void)removeEditingItem:(id)arg1;
 - (_Bool)addEditingItem;
 - (id)nextAvailableLabel;

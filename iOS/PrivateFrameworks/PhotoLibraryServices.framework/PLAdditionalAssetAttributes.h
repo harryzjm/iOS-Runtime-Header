@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLPTPTransferableAdditionalAssetAttributes-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSManagedObject, NSNumber, NSSet, NSString, PLAssetDescription, PLManagedAsset, PLSceneprint, PLSpatialOverCaptureInformation, PLUnmanagedAdjustment;
+@class CLLocation, NSData, NSDate, NSNumber, NSSet, NSString, PLAssetDescription, PLCloudMasterMediaMetadata, PLEditedIPTCAttributes, PLManagedAsset, PLSceneprint, PLSpatialOverCaptureInformation, PLUnmanagedAdjustment;
 
 @interface PLAdditionalAssetAttributes <PLPTPTransferableAdditionalAssetAttributes>
 {
@@ -18,8 +18,8 @@
 + (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_198678f7 *)arg2 videoDuration:(CDStruct_198678f7 *)arg3;
 + (id)newExtraDurationDataFromStillDisplayTime:(CDStruct_198678f7)arg1 videoDuration:(CDStruct_198678f7)arg2;
 + (id)descriptionForDestinationAssetCopyState:(short)arg1;
-@property(retain, nonatomic, setter=_setCachedShiftedLocation:) CLLocation *_cachedShiftedLocation; // @synthesize _cachedShiftedLocation=__cachedShiftedLocation;
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setCachedShiftedLocation:) CLLocation *_cachedShiftedLocation; // @synthesize _cachedShiftedLocation=__cachedShiftedLocation;
 @property(nonatomic) _Bool shiftedLocationIsValid; // @dynamic shiftedLocationIsValid;
 @property(retain, nonatomic) CLLocation *shiftedLocation;
 - (void)willSave;
@@ -31,17 +31,18 @@
 - (_Bool)validateForInsert:(id *)arg1;
 - (id)payloadForChangedKeys:(id)arg1;
 - (id)payloadID;
-@property(retain, nonatomic) NSString *longDescription;
-@property(retain, nonatomic) NSData *mediaMetadataData;
 - (void)resetCloudRecoveryState;
 - (_Bool)hasCloudRecoveryStateFlagSet:(unsigned long long)arg1;
 - (void)removeCloudRecoveryStateFlag:(unsigned long long)arg1;
 - (void)setCloudRecoveryStateFlag:(unsigned long long)arg1;
 - (_Bool)hasConsistentCloudState;
+@property(retain, nonatomic) NSString *longDescription;
+@property(retain, nonatomic) NSData *mediaMetadataData;
 - (void)setSceneprintWithData:(id)arg1;
 @property(readonly) PLSpatialOverCaptureInformation *spatialOverCaptureInformation;
 
 // Remaining properties
+@property(retain, nonatomic) NSString *accessibilityDescription; // @dynamic accessibilityDescription;
 @property(copy, nonatomic) NSString *adjustedFingerPrint; // @dynamic adjustedFingerPrint;
 @property(nonatomic) _Bool allowedForAnalysis; // @dynamic allowedForAnalysis;
 @property(retain, nonatomic) NSDate *alternateImportImageDate; // @dynamic alternateImportImageDate;
@@ -49,15 +50,17 @@
 @property(retain, nonatomic) PLAssetDescription *assetDescription; // @dynamic assetDescription;
 @property(nonatomic) short cameraCaptureDevice; // @dynamic cameraCaptureDevice;
 @property(nonatomic) int cloudAvalanchePickType; // @dynamic cloudAvalanchePickType;
-@property(nonatomic) long long cloudGroupingState; // @dynamic cloudGroupingState;
 @property(nonatomic) short cloudKindSubtype; // @dynamic cloudKindSubtype;
 @property(nonatomic) unsigned long long cloudRecoveryState; // @dynamic cloudRecoveryState;
 @property(nonatomic) short cloudStateRecoveryAttemptsCount; // @dynamic cloudStateRecoveryAttemptsCount;
 @property(retain, nonatomic) NSString *creatorBundleID; // @dynamic creatorBundleID;
 @property(readonly, copy) NSString *debugDescription;
+@property(copy, nonatomic) NSString *deferredPhotoIdentifier; // @dynamic deferredPhotoIdentifier;
+@property(nonatomic) unsigned short deferredProcessingCandidateOptions; // @dynamic deferredProcessingCandidateOptions;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) short destinationAssetCopyState; // @dynamic destinationAssetCopyState;
 @property(retain, nonatomic) NSData *distanceIdentity; // @dynamic distanceIdentity;
+@property(retain, nonatomic) PLEditedIPTCAttributes *editedIPTCAttributes; // @dynamic editedIPTCAttributes;
 @property(retain, nonatomic) NSString *editorBundleID; // @dynamic editorBundleID;
 @property(retain, nonatomic) NSNumber *embeddedThumbnailHeight; // @dynamic embeddedThumbnailHeight;
 @property(retain, nonatomic) NSNumber *embeddedThumbnailLength; // @dynamic embeddedThumbnailLength;
@@ -65,6 +68,7 @@
 @property(retain, nonatomic) NSNumber *embeddedThumbnailWidth; // @dynamic embeddedThumbnailWidth;
 @property(retain, nonatomic) NSString *exifTimestampString; // @dynamic exifTimestampString;
 @property(retain, nonatomic) NSData *faceRegions; // @dynamic faceRegions;
+@property(nonatomic) double gpsHorizontalAccuracy; // @dynamic gpsHorizontalAccuracy;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) short importedBy; // @dynamic importedBy;
 @property(retain, nonatomic) NSNumber *inferredTimeZoneOffset; // @dynamic inferredTimeZoneOffset;
@@ -72,9 +76,10 @@
 @property(retain, nonatomic) NSDate *lastUploadAttemptDate; // @dynamic lastUploadAttemptDate;
 @property(retain, nonatomic) NSNumber *locationHash; // @dynamic locationHash;
 @property(copy, nonatomic) NSString *masterFingerPrint; // @dynamic masterFingerPrint;
-@property(retain, nonatomic) NSManagedObject *mediaMetadata; // @dynamic mediaMetadata;
+@property(retain, nonatomic) PLCloudMasterMediaMetadata *mediaMetadata; // @dynamic mediaMetadata;
 @property(retain, nonatomic) NSString *mediaMetadataType; // @dynamic mediaMetadataType;
 @property(retain, nonatomic) NSString *montage; // @dynamic montage;
+@property(retain, nonatomic) NSData *objectSaliencyRectsData; // @dynamic objectSaliencyRectsData;
 @property(retain, nonatomic) id originalAssetsUUID; // @dynamic originalAssetsUUID;
 @property(retain, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
 @property(retain, nonatomic) NSNumber *originalFilesize; // @dynamic originalFilesize;
@@ -103,9 +108,8 @@
 @property(copy, nonatomic) NSString *shareOriginator; // @dynamic shareOriginator;
 @property(nonatomic) short shareType; // @dynamic shareType;
 @property(retain, nonatomic) NSData *shiftedLocationData; // @dynamic shiftedLocationData;
-@property(copy, nonatomic) NSString *snowdayIdentifier; // @dynamic snowdayIdentifier;
 @property(copy, nonatomic) NSString *snowdaySnowplowIdentifier; // @dynamic snowdaySnowplowIdentifier;
-@property(copy, nonatomic) NSString *snowplowGroupUUID; // @dynamic snowplowGroupUUID;
+@property(copy, nonatomic) NSString *spatialOverCaptureGroupIdentifier; // @dynamic spatialOverCaptureGroupIdentifier;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) NSString *timeZoneName; // @dynamic timeZoneName;
 @property(retain, nonatomic) NSNumber *timeZoneOffset; // @dynamic timeZoneOffset;

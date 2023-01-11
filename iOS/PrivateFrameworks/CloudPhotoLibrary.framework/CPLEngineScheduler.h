@@ -21,7 +21,7 @@
     double _intervalForRetry;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _currentSyncState;
-    _Bool _needsToUpdateScopeList;
+    unsigned long long _pendingRequiredFirstState;
     _Bool _shouldNoteServerHasChanges;
     CPLSyncSession *_currentSession;
     _Bool _opened;
@@ -49,11 +49,11 @@
 
 + (id)validElements;
 + (id)platformImplementationProtocol;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType shouldBackOffOnErrorBlock; // @synthesize shouldBackOffOnErrorBlock=_shouldBackOffOnErrorBlock;
 @property(copy, nonatomic) CDUnknownBlockType requiredStateObserverBlock; // @synthesize requiredStateObserverBlock=_requiredStateObserverBlock;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long requiredState;
 - (void)_resetFirstSynchronizationMarker;
 - (id)_minimalDateForFirstSync;
@@ -64,6 +64,7 @@
 - (id)componentName;
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getCurrentRequiredStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetBackoffInterval;
 - (void)noteSyncSession:(id)arg1 failedDuringPhase:(unsigned long long)arg2 withError:(id)arg3;
 - (void)_handleResetGlobalAnchorWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -97,6 +98,7 @@
 - (void)noteResourceDownloadQueueIsFull;
 - (void)noteServerHasChanges;
 - (void)_reallyNoteServerHasChangesLocked;
+- (void)_noteSyncSessionNeededFromStateDontRewindImmediately:(unsigned long long)arg1;
 - (void)noteClientIsNotInSyncWithClientCache;
 - (void)noteClientIsInSyncWithClientCache;
 - (void)noteClientNeedsToPull;

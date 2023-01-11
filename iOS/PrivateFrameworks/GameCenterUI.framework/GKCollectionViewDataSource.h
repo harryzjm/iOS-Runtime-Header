@@ -24,6 +24,7 @@
     NSString *_defaultSearchKey;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *defaultSearchKey; // @synthesize defaultSearchKey=_defaultSearchKey;
 @property(retain, nonatomic) GKSectionMetrics *defaultSectionMetricsInternal; // @synthesize defaultSectionMetricsInternal=_defaultSectionMetricsInternal;
 @property(retain, nonatomic) GKGridLayoutMetrics *dataSourceMetricsInternal; // @synthesize dataSourceMetricsInternal=_dataSourceMetricsInternal;
@@ -31,6 +32,7 @@
 @property(retain, nonatomic) NSMutableDictionary *sectionsToMetrics; // @synthesize sectionsToMetrics=_sectionsToMetrics;
 @property(retain, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 @property(retain, nonatomic) NSMutableDictionary *kindsToFactories; // @synthesize kindsToFactories=_kindsToFactories;
+@property(nonatomic) __weak id <GKCollectionViewDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)targetForAction:(SEL)arg1;
 - (void)notifyBatchUpdate:(CDUnknownBlockType)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)notifyBatchUpdate:(CDUnknownBlockType)arg1;
@@ -42,6 +44,7 @@
 - (void)notifySectionsRemoved:(id)arg1;
 - (void)notifySectionsInserted:(id)arg1;
 - (void)notifyItemMovedFromIndexPath:(id)arg1 toIndexPaths:(id)arg2;
+- (void)notifyItemsRefreshedAtIndexPaths:(id)arg1 animated:(_Bool)arg2;
 - (void)notifyItemsRefreshedAtIndexPaths:(id)arg1;
 - (void)notifyItemsRemovedAtIndexPaths:(id)arg1;
 - (void)notifyItemsInsertedAtIndexPaths:(id)arg1;
@@ -76,11 +79,9 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)indexPathsForItem:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;
-@property(nonatomic) id <GKCollectionViewDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)localDescription;
-- (void)dealloc;
 - (id)init;
 - (id)supplementaryViewFactoryForKind:(id)arg1;
 - (void)registerSupplementaryViewOfKind:(id)arg1 withClass:(Class)arg2 target:(id)arg3 configurator:(SEL)arg4;

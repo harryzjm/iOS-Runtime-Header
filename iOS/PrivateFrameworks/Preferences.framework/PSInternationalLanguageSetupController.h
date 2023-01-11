@@ -11,8 +11,8 @@
     PSLanguageSelector *_languageSelector;
 }
 
-@property(retain, nonatomic) PSLanguageSelector *languageSelector; // @synthesize languageSelector=_languageSelector;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PSLanguageSelector *languageSelector; // @synthesize languageSelector=_languageSelector;
 - (void)setupController;
 - (void)setLanguage:(id)arg1 specifier:(id)arg2;
 - (void)commit;

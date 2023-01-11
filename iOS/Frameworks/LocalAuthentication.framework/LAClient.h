@@ -9,7 +9,7 @@
 #import <LocalAuthentication/LAContextCallbackXPC-Protocol.h>
 #import <LocalAuthentication/LAContextXPC-Protocol.h>
 
-@class LACachedExternalizedContext, NSData, NSError, NSMutableArray, NSNumber, NSString, NSUUID, NSXPCConnection;
+@class LACachedExternalizedContext, LAContext, NSData, NSError, NSMutableArray, NSNumber, NSString, NSUUID, NSXPCConnection;
 @protocol LAContextXPC, LAUIDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,32 +19,35 @@ __attribute__((visibility("hidden")))
     _Bool _synchronous;
     id <LAUIDelegate> _uiDelegate;
     NSUUID *_uuid;
+    NSError *_permanentError;
     NSXPCConnection *_serverConnection;
     NSObject<LAContextXPC> *_remoteContext;
     NSObject<LAContextXPC> *_synchronousRemoteContext;
     NSMutableArray *_invalidations;
     LACachedExternalizedContext *_cachedExternalizedContext;
-    NSError *_permanentError;
     NSNumber *_userSession;
     NSData *_existingContext;
+    LAContext *_context;
 }
 
 + (void)_performInvalidationBlocks:(id)arg1;
 + (id)createConnection:(const unsigned int *)arg1 legacyService:(_Bool)arg2;
 + (id)_recoveryQueue;
 + (id)_queue;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak LAContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSData *existingContext; // @synthesize existingContext=_existingContext;
 @property(readonly, nonatomic) NSNumber *userSession; // @synthesize userSession=_userSession;
-@property(retain) NSError *permanentError; // @synthesize permanentError=_permanentError;
 @property(retain) LACachedExternalizedContext *cachedExternalizedContext; // @synthesize cachedExternalizedContext=_cachedExternalizedContext;
 @property(readonly, nonatomic) NSMutableArray *invalidations; // @synthesize invalidations=_invalidations;
 @property(readonly, nonatomic) NSObject<LAContextXPC> *synchronousRemoteContext; // @synthesize synchronousRemoteContext=_synchronousRemoteContext;
 @property(retain, nonatomic) NSObject<LAContextXPC> *remoteContext; // @synthesize remoteContext=_remoteContext;
 @property(readonly, nonatomic) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
+@property(retain) NSError *permanentError; // @synthesize permanentError=_permanentError;
 @property(nonatomic) _Bool synchronous; // @synthesize synchronous=_synchronous;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) __weak id <LAUIDelegate> uiDelegate; // @synthesize uiDelegate=_uiDelegate;
-- (void).cxx_destruct;
+- (void)bootstrapServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setShowingCoachingHint:(_Bool)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)notifyEvent:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resetWithReply:(CDUnknownBlockType)arg1;
@@ -57,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (id)serverPropertyForOption:(long long)arg1 error:(id *)arg2;
 - (void)setServerPropertyForOption:(long long)arg1 value:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)serverPropertyForOption:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)optionsForInternalOperation:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setCredential:(id)arg1 type:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)isCredentialSet:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forProcessedEvent:(long long)arg2 credentialType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
@@ -87,9 +92,8 @@ __attribute__((visibility("hidden")))
 - (void)_synchronousRemoteObjectProxy:(const unsigned int *)arg1 performCall:(CDUnknownBlockType)arg2;
 - (void)_connectToServerWithRecovery:(_Bool)arg1 userSession:(const unsigned int *)arg2 legacyService:(_Bool)arg3;
 - (void)dealloc;
-- (id)initWithUUID:(id)arg1 token:(id)arg2 senderAuditTokenData:(id)arg3;
-- (id)initWithExistingContext:(id)arg1 userSession:(unsigned int *)arg2;
-- (id)initWithExistingContext:(id)arg1;
+- (id)initWithUUID:(id)arg1 token:(id)arg2 senderAuditTokenData:(id)arg3 context:(id)arg4;
+- (id)initWithExternalizedContext:(id)arg1 userSession:(unsigned int *)arg2 context:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

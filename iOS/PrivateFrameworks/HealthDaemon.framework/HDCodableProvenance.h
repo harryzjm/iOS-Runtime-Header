@@ -12,6 +12,7 @@
 
 @interface HDCodableProvenance : PBCodable <NSCopying>
 {
+    NSData *_contributorUUID;
     NSData *_deviceUUID;
     NSString *_originBuild;
     int _originMajorVersion;
@@ -28,6 +29,8 @@
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSData *contributorUUID; // @synthesize contributorUUID=_contributorUUID;
 @property(nonatomic) int originPatchVersion; // @synthesize originPatchVersion=_originPatchVersion;
 @property(nonatomic) int originMinorVersion; // @synthesize originMinorVersion=_originMinorVersion;
 @property(nonatomic) int originMajorVersion; // @synthesize originMajorVersion=_originMajorVersion;
@@ -37,7 +40,6 @@
 @property(retain, nonatomic) NSData *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
 @property(retain, nonatomic) NSData *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
 @property(retain, nonatomic) NSString *originBuild; // @synthesize originBuild=_originBuild;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -47,6 +49,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasContributorUUID;
 @property(nonatomic) _Bool hasOriginPatchVersion;
 @property(nonatomic) _Bool hasOriginMinorVersion;
 @property(nonatomic) _Bool hasOriginMajorVersion;

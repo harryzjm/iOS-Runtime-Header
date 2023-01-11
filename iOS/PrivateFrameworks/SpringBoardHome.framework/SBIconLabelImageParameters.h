@@ -20,6 +20,8 @@
     _Bool _canTighten;
     _Bool _recalculateHash;
     _Bool _accessibilityReduceTransparencyEnabled;
+    _Bool _colorspaceGrayscale;
+    _Bool _colorspaceGrayscaleSet;
     NSString *_contentSizeCategory;
     double _scale;
     struct CGSize _maxSize;
@@ -32,6 +34,7 @@
     unsigned long long _hash;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *iconLocation; // @synthesize iconLocation=_iconLocation;
 @property(readonly, nonatomic) struct UIEdgeInsets fontLanguageInsets; // @synthesize fontLanguageInsets=_fontLanguageInsets;
 @property(readonly, nonatomic) struct UIEdgeInsets textInsets; // @synthesize textInsets=_textInsets;
@@ -47,7 +50,6 @@
 @property(readonly, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(readonly, nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
 @property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
-- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

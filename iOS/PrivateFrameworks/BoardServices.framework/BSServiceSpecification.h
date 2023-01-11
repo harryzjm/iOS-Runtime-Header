@@ -9,19 +9,19 @@
 #import <BoardServices/BSDescriptionProviding-Protocol.h>
 #import <BoardServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface BSServiceSpecification : NSObject <NSCopying, BSDescriptionProviding>
 {
-    NSString *_identifier;
-    _Bool _launchWhitelisted;
+    NSDictionary *_options;
     _Bool _derived;
+    NSString *_identifier;
+    NSDictionary *_configuration;
 }
 
-@property(readonly, nonatomic, getter=isDerived) _Bool derived; // @synthesize derived=_derived;
-@property(readonly, nonatomic, getter=isLaunchWhitelisted) _Bool launchWhitelisted; // @synthesize launchWhitelisted=_launchWhitelisted;
-@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isDerived) _Bool derived; // @synthesize derived=_derived;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -30,7 +30,8 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)_initWithIdentifier:(id)arg1 launchWhitelisted:(_Bool)arg2 derived:(_Bool)arg3;
+- (id)optionForKey:(id)arg1;
+@property(readonly, nonatomic, getter=isLaunchWhitelisted) _Bool launchWhitelisted;
 - (id)init;
 
 // Remaining properties

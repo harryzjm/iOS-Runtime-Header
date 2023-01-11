@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class ICScheme, NSDictionary, NSString, NSURL, NSUUID;
-@protocol WFUserInterface;
+@protocol WFUserInterfaceHost;
 
 @interface _ICURLRequest : NSObject
 {
@@ -20,7 +20,7 @@
     NSURL *_URL;
     ICScheme *_scheme;
     NSString *_bundleIdentifier;
-    id <WFUserInterface> _userInterface;
+    id <WFUserInterfaceHost> _userInterface;
     CDUnknownBlockType _successHandler;
     CDUnknownBlockType _failureHandler;
     NSDictionary *_parameters;
@@ -33,6 +33,7 @@
 + (id)requestWithURL:(id)arg1 scheme:(id)arg2 userInterface:(id)arg3 bundleIdentifier:(id)arg4 successHandler:(CDUnknownBlockType)arg5 failureHandler:(CDUnknownBlockType)arg6;
 + (id)requestWithURL:(id)arg1 fromSourceApplication:(id)arg2;
 + (id)requestWithURL:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isInternalCallbackRequest) _Bool internalCallbackRequest; // @synthesize internalCallbackRequest=_internalCallbackRequest;
 @property(nonatomic) long long retries; // @synthesize retries=_retries;
 @property(copy, nonatomic) NSURL *generatedCallbackURL; // @synthesize generatedCallbackURL=_generatedCallbackURL;
@@ -43,12 +44,11 @@
 @property(copy, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property(copy, nonatomic) CDUnknownBlockType failureHandler; // @synthesize failureHandler=_failureHandler;
 @property(copy, nonatomic) CDUnknownBlockType successHandler; // @synthesize successHandler=_successHandler;
-@property(readonly, nonatomic) __weak id <WFUserInterface> userInterface; // @synthesize userInterface=_userInterface;
+@property(readonly, nonatomic) __weak id <WFUserInterfaceHost> userInterface; // @synthesize userInterface=_userInterface;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) ICScheme *scheme; // @synthesize scheme=_scheme;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, nonatomic) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
-- (void).cxx_destruct;
 - (id)description;
 - (void)parseActions;
 @property(readonly, nonatomic) NSString *subAction; // @synthesize subAction=_subAction;

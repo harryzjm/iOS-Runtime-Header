@@ -13,12 +13,14 @@
 
 @interface _UIStatusBarStyleAttributes : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _scaledFixedWidthBar;
     long long _style;
     long long _mode;
     UITraitCollection *_traitCollection;
     long long _effectiveLayoutDirection;
     double _iconScale;
     long long _symbolScale;
+    long long _iconSize;
     UIFont *_font;
     UIFont *_emphasizedFont;
     UIFont *_smallFont;
@@ -31,6 +33,8 @@
 + (id)overriddenStyleAttributes;
 + (id)styleAttributesForStatusBar:(id)arg1 style:(long long)arg2;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic, getter=isScaledFixedWidthBar) _Bool scaledFixedWidthBar; // @synthesize scaledFixedWidthBar=_scaledFixedWidthBar;
 @property(copy, nonatomic) NSArray *imageNamePrefixes; // @synthesize imageNamePrefixes=_imageNamePrefixes;
 @property(copy, nonatomic) UIColor *imageDimmedTintColor; // @synthesize imageDimmedTintColor=_imageDimmedTintColor;
 @property(copy, nonatomic) UIColor *imageTintColor; // @synthesize imageTintColor=_imageTintColor;
@@ -38,13 +42,13 @@
 @property(copy, nonatomic) UIFont *smallFont; // @synthesize smallFont=_smallFont;
 @property(copy, nonatomic) UIFont *emphasizedFont; // @synthesize emphasizedFont=_emphasizedFont;
 @property(copy, nonatomic) UIFont *font; // @synthesize font=_font;
+@property(nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 @property(nonatomic) long long symbolScale; // @synthesize symbolScale=_symbolScale;
 @property(nonatomic) double iconScale; // @synthesize iconScale=_iconScale;
 @property(readonly, nonatomic) long long effectiveLayoutDirection; // @synthesize effectiveLayoutDirection=_effectiveLayoutDirection;
 @property(copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (void).cxx_destruct;
 - (id)fontForStyle:(long long)arg1;
 - (id)styleAttributesWithOverrides:(id)arg1;
 - (id)description;

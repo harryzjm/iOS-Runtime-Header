@@ -6,15 +6,18 @@
 
 #import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@class KTInclusionProofVerifier, LogEntry, MapEntry, NSData, TransparencyManagedDataStore;
+@class KTInclusionProofVerifier, LogEntry, MapEntry, NSData, NSDictionary, TransparencyManagedDataStore;
 
 @interface InclusionProof <TransparencyVerifiable>
 {
 }
 
 + (id)descriptor;
-- (_Bool)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyWithError:(id *)arg1;
 - (id)mapLeafWithError:(id *)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
+- (void)setMetadata:(id)arg1;
+@property(readonly) NSDictionary *metadata;
 @property(retain) KTInclusionProofVerifier *verifier;
 @property(retain) TransparencyManagedDataStore *dataStore;
 

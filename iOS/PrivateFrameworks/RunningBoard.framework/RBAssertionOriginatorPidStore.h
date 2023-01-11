@@ -26,17 +26,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_lock_sortSharedMemory;
-- (_Bool)_lock_containsPid:(int)arg1;
-- (unsigned int)_lock_indexOfPidInSharedMemory:(int)arg1;
-- (_Bool)_lock_resizeSharedMemoryIfNecessary;
-- (void)_lock_removePidFromSharedMemory:(int)arg1;
-- (void)_lock_addPidToSharedMemory:(int)arg1;
-- (_Bool)_lock_isPidDataValid;
-- (_Bool)_lock_isHeaderValid;
-- (_Bool)_lock_allocSharedMemoryWithName:(const char *)arg1 size:(unsigned long long)arg2 address:(out void **)arg3 fileDescriptor:(out int *)arg4 created:(out _Bool *)arg5;
-- (void)_lock_deallocSharedMemory;
-- (void)_allocSharedMemory;
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;
 - (void)setValidProcesses:(id)arg1;

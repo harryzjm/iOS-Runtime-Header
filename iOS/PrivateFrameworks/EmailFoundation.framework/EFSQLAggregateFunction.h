@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface EFSQLAggregateFunction : NSObject <EFSQLExpressable>
+@interface EFSQLAggregateFunction : NSObject <EFSQLValueExpressable>
 {
     NSString *_name;
     NSArray *_arguments;
@@ -29,10 +29,11 @@
 + (id)count:(id)arg1;
 + (id)avgDistinct:(id)arg1;
 + (id)avg:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
-- (id)ef_aggregateColumnExpression;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 - (id)initWithName:(id)arg1 arguments:(id)arg2;
 

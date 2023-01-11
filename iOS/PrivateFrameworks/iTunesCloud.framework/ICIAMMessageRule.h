@@ -13,6 +13,7 @@
 @interface ICIAMMessageRule : PBCodable <NSCopying>
 {
     NSString *_identifier;
+    NSString *_requiredApplicationContextBundleIdentifier;
     int _ruleOperator;
     NSMutableArray *_subrules;
     ICIAMTriggerCondition *_triggerCondition;
@@ -25,11 +26,12 @@
 }
 
 + (Class)subrulesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *requiredApplicationContextBundleIdentifier; // @synthesize requiredApplicationContextBundleIdentifier=_requiredApplicationContextBundleIdentifier;
 @property(retain, nonatomic) NSString *triggerEventName; // @synthesize triggerEventName=_triggerEventName;
 @property(retain, nonatomic) ICIAMTriggerCondition *triggerCondition; // @synthesize triggerCondition=_triggerCondition;
 @property(retain, nonatomic) NSMutableArray *subrules; // @synthesize subrules=_subrules;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -39,6 +41,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasRequiredApplicationContextBundleIdentifier;
 @property(readonly, nonatomic) _Bool hasTriggerEventName;
 @property(readonly, nonatomic) _Bool hasTriggerCondition;
 - (id)subrulesAtIndex:(unsigned long long)arg1;

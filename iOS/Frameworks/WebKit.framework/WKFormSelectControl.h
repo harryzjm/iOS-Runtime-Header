@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)initWithView:(id)arg1;
+- (_Bool)selectFormAccessoryHasCheckedItemAtRow:(long long)arg1;
 @property(readonly, nonatomic) NSString *selectFormPopoverTitle;
 - (void)selectRow:(long long)arg1 inComponent:(long long)arg2 extendingSelection:(_Bool)arg3;
 

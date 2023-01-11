@@ -10,12 +10,22 @@ __attribute__((visibility("hidden")))
 @interface _UIPencilPreferences : NSObject
 {
     long long _cachedPreferredTapAction;
+    _Bool _cachedPrefersPencilOnlyDrawing;
+    _Bool _cachedHasSeenPencilPairingUI;
 }
 
 + (id)sharedPreferences;
++ (void)setPrefersPencilOnlyDrawing:(_Bool)arg1;
++ (_Bool)prefersPencilOnlyDrawing;
++ (_Bool)hasSeenPencilPairingUI;
 + (long long)preferredTapAction;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_hasSeenPencilPairingUIDidChange;
+- (void)_prefersPencilOnlyDrawingDidChange;
 - (void)_preferredTapActionDidChange;
+- (void)_setPrefersPencilOnlyDrawing:(_Bool)arg1;
+- (_Bool)_prefersPencilOnlyDrawing;
+- (_Bool)_hasSeenPencilPairingUI;
 - (long long)_preferredTapAction;
 - (void)dealloc;
 - (id)init;

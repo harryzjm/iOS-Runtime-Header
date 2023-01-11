@@ -15,6 +15,7 @@
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)isInternalWindow;
 - (id)init;
+- (id)initWithWindowScene:(id)arg1;
 
 @end
 

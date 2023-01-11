@@ -10,10 +10,15 @@
 
 @interface GEOLogMsgStateMapSettings : PBCodable <NSCopying>
 {
+    int _locationType;
     int _navVoiceVolume;
     int _preferredTransportMode;
+    _Bool _avoidBusyRoads;
     _Bool _avoidHighways;
+    _Bool _avoidHills;
+    _Bool _avoidStairs;
     _Bool _avoidTolls;
+    _Bool _eBike;
     _Bool _findMyCarEnabled;
     _Bool _headingEnabled;
     _Bool _labelEnabled;
@@ -21,10 +26,15 @@
     _Bool _speedLimitEnabled;
     _Bool _trafficEnabled;
     struct {
+        unsigned int has_locationType:1;
         unsigned int has_navVoiceVolume:1;
         unsigned int has_preferredTransportMode:1;
+        unsigned int has_avoidBusyRoads:1;
         unsigned int has_avoidHighways:1;
+        unsigned int has_avoidHills:1;
+        unsigned int has_avoidStairs:1;
         unsigned int has_avoidTolls:1;
+        unsigned int has_eBike:1;
         unsigned int has_findMyCarEnabled:1;
         unsigned int has_headingEnabled:1;
         unsigned int has_labelEnabled:1;
@@ -43,8 +53,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasEBike;
+@property(nonatomic) _Bool eBike;
+- (int)StringAsLocationType:(id)arg1;
+- (id)locationTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasLocationType;
+@property(nonatomic) int locationType;
+@property(nonatomic) _Bool hasAvoidBusyRoads;
+@property(nonatomic) _Bool avoidBusyRoads;
+@property(nonatomic) _Bool hasAvoidStairs;
+@property(nonatomic) _Bool avoidStairs;
+@property(nonatomic) _Bool hasAvoidHills;
+@property(nonatomic) _Bool avoidHills;
 @property(nonatomic) _Bool hasLabelEnabled;
 @property(nonatomic) _Bool labelEnabled;
 @property(nonatomic) _Bool hasTrafficEnabled;

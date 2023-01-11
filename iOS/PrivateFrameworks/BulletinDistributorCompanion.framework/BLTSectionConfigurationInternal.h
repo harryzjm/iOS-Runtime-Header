@@ -27,7 +27,7 @@
 - (_Bool)hasSectionIDDisplayedCriticalBulletins:(id)arg1;
 - (_Bool)hasSectionIDOptedOutOfNotificationTuning:(id)arg1;
 - (_Bool)hasSectionIDOptedOutOfWaitForUserIdle:(id)arg1;
-- (_Bool)shouldSectionIDAlwaysAlert:(id)arg1;
+- (_Bool)shouldSectionIDAlwaysAlert:(id)arg1 category:(id)arg2;
 - (_Bool)shouldSectionIDSettingsAlwaysSync:(id)arg1;
 - (_Bool)hasSectionIDOptedOutOfAttachmentCoordination:(id)arg1;
 - (unsigned long long)coordinationTypeForSectionID:(id)arg1 subtype:(long long)arg2 category:(id)arg3;

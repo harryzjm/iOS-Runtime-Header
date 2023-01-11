@@ -21,11 +21,14 @@
     NSDictionary *_environmentVariables;
     NSDictionary *_lazy_entitlements;
     _Bool _provisioningProfileValidated;
+    _Bool _uppProvisioningProfileValidated;
+    _Bool _freeDeveloperProvisioningProfileValidated;
     _Bool _isManaged;
     NSString *_sdkVersion;
     NSArray *_customMachServices;
     _Bool _hasViewServicesEntitlement;
     NSString *_appIDEntitlement;
+    NSString *_shortVersionString;
     unsigned long long _type;
     NSArray *_requiredCapabilities;
     NSArray *_tags;
@@ -52,16 +55,17 @@
     _Bool _initialized;
     _Bool _pendingUninstall;
     _Bool _supportsMultiwindow;
-    _Bool _blockedForScreenTimeExpiration;
+    long long _screenTimePolicy;
     NSArray *_folderNames;
     NSString *_fallbackFolderName;
 }
 
 + (id)_configureEnvironment:(id)arg1 withInfo:(id)arg2 isPreApex:(_Bool)arg3;
 + (unsigned long long)_applicationTypeForProxy:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *fallbackFolderName; // @synthesize fallbackFolderName=_fallbackFolderName;
 @property(readonly, nonatomic) NSArray *folderNames; // @synthesize folderNames=_folderNames;
-@property(readonly, nonatomic, getter=isBlockedForScreenTimeExpiration) _Bool blockedForScreenTimeExpiration; // @synthesize blockedForScreenTimeExpiration=_blockedForScreenTimeExpiration;
+@property(readonly, nonatomic) long long screenTimePolicy; // @synthesize screenTimePolicy=_screenTimePolicy;
 @property(nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
 @property(readonly, nonatomic) _Bool supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 @property(nonatomic, getter=_isPendingUninstall, setter=_setPendingUninstall:) _Bool pendingUninstall; // @synthesize pendingUninstall=_pendingUninstall;
@@ -76,6 +80,7 @@
 @property(readonly, nonatomic) float minimumBrightnessLevel; // @synthesize minimumBrightnessLevel=_minimumBrightnessLevel;
 @property(readonly, nonatomic) _Bool requiresPersistentWiFi; // @synthesize requiresPersistentWiFi=_requiresPersistentWiFi;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property(readonly, copy, nonatomic) NSString *shortVersionString; // @synthesize shortVersionString=_shortVersionString;
 @property(readonly, nonatomic, getter=isBeta) _Bool beta; // @synthesize beta=_beta;
 @property(readonly, nonatomic, getter=isBlocked) _Bool blocked; // @synthesize blocked=_blocked;
 @property(readonly, nonatomic, getter=isRestricted) _Bool restricted; // @synthesize restricted=_restricted;
@@ -86,6 +91,8 @@
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSArray *customMachServices; // @synthesize customMachServices=_customMachServices;
 @property(readonly, copy, nonatomic) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
+@property(readonly, nonatomic, getter=isFreeDeveloperProvisioningProfileValidated) _Bool freeDeveloperProvisioningProfileValidated; // @synthesize freeDeveloperProvisioningProfileValidated=_freeDeveloperProvisioningProfileValidated;
+@property(readonly, nonatomic, getter=isUPPProvisioningProfileValidated) _Bool UPPProvisioningProfileValidated; // @synthesize UPPProvisioningProfileValidated=_uppProvisioningProfileValidated;
 @property(readonly, nonatomic, getter=isProvisioningProfileValidated) _Bool provisioningProfileValidated; // @synthesize provisioningProfileValidated=_provisioningProfileValidated;
 @property(readonly, nonatomic) _Bool hasViewServicesEntitlement; // @synthesize hasViewServicesEntitlement=_hasViewServicesEntitlement;
 @property(readonly, nonatomic) NSDictionary *environmentVariables; // @synthesize environmentVariables=_environmentVariables;
@@ -97,7 +104,6 @@
 @property(readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property(readonly, nonatomic) NSURL *bundleContainerURL; // @synthesize bundleContainerURL=_bundleContainerURL;
 @property(readonly, nonatomic) NSURL *executableURL; // @synthesize executableURL=_executableURL;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (void)_loadFromProxy:(id)arg1;
@@ -109,12 +115,14 @@
 - (_Bool)supportsInterfaceOrientation:(long long)arg1;
 - (_Bool)supportsBackgroundMode:(id)arg1;
 @property(readonly, nonatomic, getter=isExitsOnSuspend) _Bool exitsOnSuspend;
+@property(readonly, nonatomic, getter=isBlockedForScreenTimeExpiration) _Bool blockedForScreenTimeExpiration;
 @property(readonly, nonatomic) NSDictionary *entitlements;
 - (id)_initWithApplicationProxy:(id)arg1 overrideURL:(id)arg2;
 - (id)_initWithApplicationProxy:(id)arg1;
 - (id)initWithApplicationProxy:(id)arg1;
 - (id)_initWithBundleProxy:(id)arg1 overrideURL:(id)arg2;
 - (id)_initWithBundleIdentifier:(id)arg1 url:(id)arg2;
+- (unsigned long long)unauthoritativeTrustState;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

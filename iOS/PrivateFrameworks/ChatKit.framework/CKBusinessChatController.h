@@ -6,21 +6,21 @@
 
 @class CKNavbarCanvasViewController;
 
-__attribute__((visibility("hidden")))
 @interface CKBusinessChatController
 {
     CKNavbarCanvasViewController *_navbarCanvasViewController;
 }
 
-@property(retain, nonatomic) CKNavbarCanvasViewController *navbarCanvasViewController; // @synthesize navbarCanvasViewController=_navbarCanvasViewController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKNavbarCanvasViewController *navbarCanvasViewController; // @synthesize navbarCanvasViewController=_navbarCanvasViewController;
+- (_Bool)shouldListParticipantsInTitle;
 - (void)cleanUpBizNavBarIfNecessary;
+- (void)_updateNavigationUI;
 - (void)setupBizNavBarIfNecessary;
-- (void)_addressBookChanged:(id)arg1;
+- (void)_handleAddressBookChangedNotification:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (void)dealloc;
 - (void)loadView;
 
 @end

@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)layoutDocumentView;
+- (void)updateVisibility;
 - (_Bool)_axIsUsingPDFExtensionView;
 - (id)_axGetPDFView;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

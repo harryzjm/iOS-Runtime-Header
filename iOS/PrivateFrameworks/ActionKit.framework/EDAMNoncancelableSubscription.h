@@ -25,6 +25,7 @@
 
 + (id)structFields;
 + (id)structName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *itunesOriginalTransactionId; // @synthesize itunesOriginalTransactionId=_itunesOriginalTransactionId;
 @property(retain, nonatomic) NSNumber *unitPrice; // @synthesize unitPrice=_unitPrice;
 @property(retain, nonatomic) NSString *currency; // @synthesize currency=_currency;
@@ -38,7 +39,6 @@
 @property(retain, nonatomic) NSNumber *premiumServiceStatus; // @synthesize premiumServiceStatus=_premiumServiceStatus;
 @property(retain, nonatomic) EDAMUser *user; // @synthesize user=_user;
 @property(retain, nonatomic) NSNumber *subscriptionId; // @synthesize subscriptionId=_subscriptionId;
-- (void).cxx_destruct;
 
 @end
 

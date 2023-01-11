@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
     struct RefPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::DumbPtrTraits<WebCore::VideoFullscreenInterfaceAVKit>> _fullscreenInterface;
     struct RetainPtr<WebAVPlayerController> _avPlayerController;
     struct RetainPtr<CALayer> _videoSublayer;
+    struct FloatRect _videoSublayerFrame;
     struct RetainPtr<NSString> _videoGravity;
+    struct RetainPtr<NSString> _previousVideoGravity;
     _Bool _readyForDisplay;
     NSDictionary *_pixelBufferAttributes;
     struct CGSize _videoDimensions;
@@ -22,12 +24,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingVideoRect;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property struct CGRect modelVideoLayerFrame; // @synthesize modelVideoLayerFrame=_modelVideoLayerFrame;
 @property struct CGSize videoDimensions; // @synthesize videoDimensions=_videoDimensions;
 @property(copy, nonatomic) NSDictionary *pixelBufferAttributes; // @synthesize pixelBufferAttributes=_pixelBufferAttributes;
 @property(nonatomic, getter=isReadyForDisplay) _Bool readyForDisplay; // @synthesize readyForDisplay=_readyForDisplay;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (struct CGRect)videoRect;
 @property(retain, nonatomic) NSString *videoGravity;
 - (void)resolveBounds;

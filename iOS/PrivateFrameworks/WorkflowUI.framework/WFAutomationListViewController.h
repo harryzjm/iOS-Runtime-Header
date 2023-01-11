@@ -19,6 +19,7 @@
 
 @interface WFAutomationListViewController : UITableViewController <WFCreateAutomationCoordinatorDelegate, WFEditAutomationCoordinatorDelegate, WFDatabaseResultObserver, WFHomeManagerEventObserver, HMHomeDelegate, HUTriggerEditorDelegate, UITableViewDataSource, UITableViewDelegate>
 {
+    _Bool _showsAddNewAutomationButton;
     WFDatabase *_database;
     WFTriggerManager *_triggerManager;
     UIView *_subheadWrapperView;
@@ -30,6 +31,8 @@
     WFEditAutomationCoordinator *_editAutomationCoordinator;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool showsAddNewAutomationButton; // @synthesize showsAddNewAutomationButton=_showsAddNewAutomationButton;
 @property(retain, nonatomic) WFEditAutomationCoordinator *editAutomationCoordinator; // @synthesize editAutomationCoordinator=_editAutomationCoordinator;
 @property(retain, nonatomic) WFCreateAutomationCoordinator *createAutomationCoordinator; // @synthesize createAutomationCoordinator=_createAutomationCoordinator;
 @property(retain, nonatomic) WFHomeManager *homeManager; // @synthesize homeManager=_homeManager;
@@ -39,7 +42,6 @@
 @property(readonly, nonatomic) UIView *subheadWrapperView; // @synthesize subheadWrapperView=_subheadWrapperView;
 @property(retain, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
 @property(readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
-- (void).cxx_destruct;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (_Bool)showHomeAutomationEditorForTriggerItem:(id)arg1;
 - (void)editAutomationCoordinatorDidCancel:(id)arg1;
@@ -59,7 +61,7 @@
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (void)createAutomationCoordinatorDidCancel:(id)arg1;
 - (void)createAutomationCoordinatorDidFinish:(id)arg1;
-- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (void)databaseResultDidChange:(id)arg1;
 - (void)startCreateNewAutomationFlowAtStep:(unsigned long long)arg1;
 - (void)startCreateNewHomeAutomation:(id)arg1;
 - (void)startCreateNewPersonalAutomation:(id)arg1;
@@ -67,12 +69,11 @@
 - (_Bool)showPersonalAutomationEditorForConfiguredTrigger:(id)arg1;
 - (_Bool)showEditViewForItem:(id)arg1;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
-- (void)showAddNewAutomationButton:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)buildTableSections;
 - (void)flashAutomationForTriggerID:(id)arg1;
 - (void)updateUI;
 - (void)updateTableViewLayoutMargins;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateSubheadLayoutMargins;
 - (void)viewLayoutMarginsDidChange;
 - (void)viewDidLoad;

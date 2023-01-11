@@ -10,6 +10,23 @@
 {
 }
 
++ (id)reasonType;
++ (id)reason;
++ (id)indexSelected;
++ (id)engagementType;
++ (id)numberOfVisibleSuggestions;
++ (id)iCloudFamilyInvocation;
++ (id)trackingID;
++ (id)transportBundleID;
++ (id)supportedBundleIDs;
++ (id)sourceBundleID;
++ (id)peopleSuggestionsDisabled;
++ (id)isAdaptedModelUsed;
++ (id)isAdaptedModelCreated;
++ (id)adaptedModelRecipeID;
++ (id)modelSuggestionProxies;
++ (id)photoSuggestedContacts;
++ (id)locationUUIDs;
 + (id)attachments;
 + (id)extensionContextUUID;
 + (id)targetBundleID;

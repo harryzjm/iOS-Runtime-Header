@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUICore/ISBasePlayerUIViewChangeObserver-Protocol.h>
 #import <PhotosUICore/PXMutableImageLayerModulator_Private-Protocol.h>
 
-@class CAFilter, CALayer, ISLivePhotoUIView, NSString;
+@class CAFilter, CALayer, NSString;
 
-@interface PXImageLayerModulator : NSObject <PXMutableImageLayerModulator_Private, ISBasePlayerUIViewChangeObserver>
+@interface PXImageLayerModulator : NSObject <PXMutableImageLayerModulator_Private>
 {
     _Bool _isPerformingChanges;
     _Bool _isPerformingUpdates;
     struct {
+        _Bool filterInput;
+        _Bool filter;
         _Bool filteredLayer;
         _Bool displayingVideoComplement;
         _Bool filterIntensity;
@@ -24,36 +25,35 @@
     _Bool _enabled;
     float _hdrGain;
     CALayer *_layer;
-    ISLivePhotoUIView *_livePhotoView;
+    long long _filterType;
     CAFilter *_filter;
     NSString *_layerFilterIntensityKeyPath;
     CALayer *_filteredLayer;
     double _intensityAnimationDuration;
-    long long _contentType;
-    long long _filterType;
     double _intensity;
+    CDStruct_0b45e515 _options;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double intensity; // @synthesize intensity=_intensity;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
-@property(readonly, nonatomic) float hdrGain; // @synthesize hdrGain=_hdrGain;
-@property(readonly, nonatomic) long long filterType; // @synthesize filterType=_filterType;
-@property(readonly, nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) double intensityAnimationDuration; // @synthesize intensityAnimationDuration=_intensityAnimationDuration;
 @property(retain, nonatomic) CALayer *filteredLayer; // @synthesize filteredLayer=_filteredLayer;
-@property(readonly, nonatomic) NSString *layerFilterIntensityKeyPath; // @synthesize layerFilterIntensityKeyPath=_layerFilterIntensityKeyPath;
+@property(retain, nonatomic) NSString *layerFilterIntensityKeyPath; // @synthesize layerFilterIntensityKeyPath=_layerFilterIntensityKeyPath;
 @property(readonly, nonatomic) CAFilter *filter; // @synthesize filter=_filter;
+@property(readonly, nonatomic) float hdrGain; // @synthesize hdrGain=_hdrGain;
+@property(readonly, nonatomic) long long filterType; // @synthesize filterType=_filterType;
+@property(readonly, nonatomic) CDStruct_0b45e515 options; // @synthesize options=_options;
 @property(readonly, nonatomic, getter=isDisplayingVideoComplement) _Bool displayingVideoComplement; // @synthesize displayingVideoComplement=_displayingVideoComplement;
-@property(readonly, nonatomic) ISLivePhotoUIView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
 @property(readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
-- (void).cxx_destruct;
-- (void)basePlayerUIView:(id)arg1 didChange:(unsigned long long)arg2 withAnimationDuration:(double)arg3;
 - (void)_updateFilterIntensityIfNeeded;
 - (void)_invalidateFilterIntensity;
-- (void)_updateDisplayingVideoComplementIfNeeded;
-- (void)_invalidateDisplayingVideoComplement;
 - (void)_updateFilteredLayerIfNeeded;
 - (void)_invalidateFilteredLayer;
+- (void)_updateFilter;
+- (void)_invalidateFilter;
+- (void)_updateFilterInput;
+- (void)_invalidateFilterInput;
 - (void)_updateIfNeeded;
 - (void)_setNeedsUpdate;
 - (_Bool)_needsUpdate;
@@ -64,12 +64,15 @@
 - (void)setDisplayingVideoComplement:(_Bool)arg1;
 - (void)setIntensity:(double)arg1;
 - (void)setEnabled:(_Bool)arg1;
-- (void)setLivePhotoView:(id)arg1;
 - (void)_removeFilterFromLayer:(id)arg1;
 - (void)_addFilterToLayer:(id)arg1;
 - (void)removeFilterFromUnownedLayer:(id)arg1;
+- (void)setHdrGain:(float)arg1;
+- (void)setFilterType:(long long)arg1;
+- (void)setFilter:(id)arg1;
 - (void)setLayer:(id)arg1;
-- (id)initWithContentType:(long long)arg1 filterType:(long long)arg2 hdrGain:(float)arg3;
+- (void)dealloc;
+- (id)initWithOptions:(CDStruct_0b45e515)arg1;
 - (id)init;
 
 // Remaining properties

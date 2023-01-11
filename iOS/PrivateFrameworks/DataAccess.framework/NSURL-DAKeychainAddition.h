@@ -24,6 +24,7 @@
 - (id)da_urlBySettingScheme:(id)arg1;
 - (id)da_urlForLogging;
 - (id)da_urlByRemovingUsername;
+- (id)da_urlBySettingPassword:(id)arg1;
 - (id)da_urlBySettingUsername:(id)arg1;
 - (id)da_urlBySettingPath:(id)arg1 keepUsername:(_Bool)arg2;
 - (id)da_urlBySettingPort:(id)arg1 keepUsername:(_Bool)arg2;

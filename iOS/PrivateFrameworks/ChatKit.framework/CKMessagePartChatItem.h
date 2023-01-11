@@ -4,24 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IMMessage, NSArray, UIItemProvider;
+@class IMMessage, IMMessageItem, NSArray, NSString, UIItemProvider;
 
 @interface CKMessagePartChatItem
 {
     NSArray *_visibleAssociatedMessageChatItems;
 }
 
-@property(readonly, nonatomic) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 @property(readonly, nonatomic) UIItemProvider *dragItemProvider;
+- (unsigned long long)chatItemReplyLineContiguousTypeForChatStyle:(unsigned char)arg1;
+@property(readonly, nonatomic) IMMessageItem *threadOriginator;
+@property(readonly, nonatomic) NSString *threadIdentifier;
+@property(readonly, nonatomic) _Bool isReplyContextPreview;
+@property(readonly, nonatomic) _Bool isReply;
+@property(readonly, nonatomic) _Bool isBlackholed;
 @property(readonly, nonatomic) _Bool isCorrupt;
 @property(readonly, nonatomic) _Bool hasStickers;
 @property(readonly, nonatomic) _Bool hasMessageAcknowledgment;
 @property(readonly, nonatomic) struct _NSRange messagePartRange;
 @property(readonly, nonatomic) _Bool canSendMessageAcknowledgment;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
+- (id)fileURLForAttachment;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 @property(readonly, copy, nonatomic) NSArray *pasteboardItems;
 @property(readonly, nonatomic) BOOL color;
+@property(readonly, nonatomic) long long index;
 @property(readonly, nonatomic) IMMessage *message;
 - (_Bool)_isSURFRelatedMessage;
 - (void)configureBalloonView:(id)arg1;
@@ -31,10 +40,12 @@
 - (_Bool)isFromMe;
 - (_Bool)stickersSnapToPoint;
 - (_Bool)canAttachStickers;
+- (_Bool)canInlineReply;
 - (_Bool)canSendAsTextMessage;
 - (_Bool)canForward;
 - (_Bool)canCopy;
 - (id)description;
+- (id)supplementaryItemsWithLayoutEnvironment:(id)arg1;
 - (id)aggregateAcknowledgmentChatItem;
 - (_Bool)shouldShowVotingView;
 - (id)votingCounts;

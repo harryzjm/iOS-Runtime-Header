@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _centroid;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIDruidSourceConnection *druidConnection; // @synthesize druidConnection=_druidConnection;
 @property(readonly, nonatomic) unsigned long long outsideAppSourceOperationMask; // @synthesize outsideAppSourceOperationMask=_outsideAppSourceOperationMask;
 @property(readonly, nonatomic) unsigned long long withinAppSourceOperationMask; // @synthesize withinAppSourceOperationMask=_withinAppSourceOperationMask;
@@ -51,7 +52,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(nonatomic) __weak UIDragEvent *dragEvent; // @synthesize dragEvent=_dragEvent;
 @property(nonatomic) __weak id <_UIDraggingSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)_sendDataTransferFinished;
 - (void)_sendDidMove;
 - (void)_sendDidEndWithOperation:(unsigned long long)arg1;
@@ -68,6 +68,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldCancelOnAppDeactivation;
 - (void)_sendWillEndWithOperation:(unsigned long long)arg1;
 - (void)_handOffCancelledItems:(id)arg1;
+- (void)_setupAnimationForCancelledItems:(id)arg1 returningContextID:(unsigned int *)arg2 layerRenderID:(unsigned long long *)arg3;
+- (_Bool)_canHandOffCancelledItems:(id)arg1;
 - (void)addPublicItems:(id)arg1;
 - (void)dragIsInsideApp;
 - (void)dragDidExitApp;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)_getOperationMaskFromDelegate;
 - (void)_didBeginDrag;
 - (void)beginDrag:(CDUnknownBlockType)arg1;
+- (_Bool)_routingPolicyHasSpecificTouchContextIDs;
 @property(readonly, nonatomic) unsigned long long draggingSourceOperationMask;
 - (struct CGPoint)draggingLocationInCoordinateSpace:(id)arg1;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;

@@ -7,14 +7,14 @@
 #import <HealthKit/HKWorkout.h>
 
 @interface HKWorkout (FitnessUI)
-+ (_Bool)fiui_activitySupportsMetricType:(unsigned long long)arg1 activityType:(id)arg2;
++ (_Bool)fiui_activitySupportsMetricType:(unsigned long long)arg1 activityType:(id)arg2 activityMoveMode:(long long)arg3;
 + (unsigned long long)fiui_associatedMetricForGoalType:(unsigned long long)arg1;
 + (_Bool)fiui_shouldTrackPaceWithOdometerForActivityType:(unsigned long long)arg1;
 + (_Bool)_isHeartRateSupportedInPowerSettingsForActivityType:(unsigned long long)arg1;
 + (_Bool)_isHeartRateSupportedInPrivacySettings;
 + (_Bool)fiui_isHeartRateSupportedForActivityType:(unsigned long long)arg1 isIndoor:(_Bool)arg2;
-+ (id)fiui_supportedGoalTypesForActivityType:(id)arg1;
-+ (id)fiui_supportedMetricsForActivityType:(id)arg1;
++ (id)fiui_supportedGoalTypesForActivityType:(id)arg1 activityMoveMode:(long long)arg2;
++ (id)fiui_supportedMetricsForActivityType:(id)arg1 activityMoveMode:(long long)arg2;
 + (double)fiui_weightedAverageHeartRateWithSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)fiui_splitsFromDistanceSamples:(id)arg1 distanceInMetersPerSplit:(double)arg2 workoutStartDate:(id)arg3;
 - (long long)fiui_strokeStyle;

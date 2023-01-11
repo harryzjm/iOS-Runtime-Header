@@ -11,7 +11,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKInviteeAlternativeTimeSearcher, EKUIEventInviteesEditViewController, EKUIEventInviteesView, EKUIInviteesViewAddInviteesSection, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewInvisibleInviteeStatusSection, EKUIInviteesViewNotRespondedInviteesSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewProposedTimeSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSMutableArray, NSString;
+@class EKEvent, EKInviteeAlternativeTimeSearcher, EKUIEventInviteesEditViewController, EKUIEventInviteesView, EKUIInviteesViewAddInviteesSection, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewInvisibleInviteeStatusSection, EKUIInviteesViewMessageSendingManager, EKUIInviteesViewNotRespondedInviteesSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewProposedTimeSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSMutableArray, NSString;
 @protocol EKEditItemViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -38,10 +38,13 @@ __attribute__((visibility("hidden")))
     EKUIInviteesViewSomeInviteesCanAttendSection *_someInviteesCanAttendSection;
     EKUIInviteesViewAllInviteesCanAttendSection *_allInviteesCanAttendSection;
     EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
+    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
 }
 
 + (id)_participantsInArray:(id)arg1 thatAreNotInArray:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool prohibitCallingSearcherStateChanged; // @synthesize prohibitCallingSearcherStateChanged=_prohibitCallingSearcherStateChanged;
+@property(retain, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property(retain, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
 @property(retain, nonatomic) EKUIInviteesViewAllInviteesCanAttendSection *allInviteesCanAttendSection; // @synthesize allInviteesCanAttendSection=_allInviteesCanAttendSection;
 @property(retain, nonatomic) EKUIInviteesViewSomeInviteesCanAttendSection *someInviteesCanAttendSection; // @synthesize someInviteesCanAttendSection=_someInviteesCanAttendSection;
@@ -62,7 +65,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *selectedEndDate; // @synthesize selectedEndDate=_selectedEndDate;
 @property(retain, nonatomic) NSDate *selectedStartDate; // @synthesize selectedStartDate=_selectedStartDate;
 @property(nonatomic) __weak EKUIEventInviteesEditViewController *parentController; // @synthesize parentController=_parentController;
-- (void).cxx_destruct;
 - (void)_searcherStateChanged:(long long)arg1;
 - (void)_requestDismissal;
 - (void)_refreshIfNeeded;
@@ -77,11 +79,11 @@ __attribute__((visibility("hidden")))
 - (void)_eventModified:(id)arg1;
 - (void)_sendMessageToParticipants:(id)arg1;
 - (void)_dismiss:(id)arg1;
+- (id)editItemEventToDetach;
 - (_Bool)editItemViewControllerShouldShowDetachAlert;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
-- (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;

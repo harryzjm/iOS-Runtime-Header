@@ -22,13 +22,12 @@
     BCULayerRenderer *_renderer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) BCULayerRenderer *renderer; // @synthesize renderer=_renderer;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
-- (id)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(id)arg5 waitForCPUSynchronization:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)_coverLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2;
 - (id)_layerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 scale:(double)arg3 shadow:(id)arg4;
-- (struct CGImage *)newRestrictedImage:(struct CGImage *)arg1 size:(struct CGSize)arg2;
 - (id)_shadowLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 tint:(_Bool)arg3 shadow:(id)arg4;
 - (id)coverLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3;
 - (id)shadowLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 kind:(unsigned long long)arg4;

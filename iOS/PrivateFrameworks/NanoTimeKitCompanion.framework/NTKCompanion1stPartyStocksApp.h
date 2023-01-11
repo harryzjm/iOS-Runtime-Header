@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CLKDevice;
+
 @interface NTKCompanion1stPartyStocksApp
 {
+    CLKDevice *_device;
 }
 
+- (void).cxx_destruct;
 - (id)complication;
 - (void)install;
-- (id)init;
+- (id)initWithDevice:(id)arg1;
 
 @end
 

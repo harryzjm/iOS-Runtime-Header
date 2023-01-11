@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+@class NSMapTable;
+
 @interface _CDObservationCenter : NSObject
 {
-    struct NSMapTable *_senderToNotificationObservers;
-    struct NSMapTable *_senderToNotificationObserverObservers;
+    NSMapTable *_senderToNotificationObservers;
+    NSMapTable *_senderToNotificationObserverObservers;
 }
 
 + (id)sharedInstance;
@@ -24,14 +26,6 @@
 - (void)postNotificationName:(id)arg1 userInfo:(id)arg2 sender:(id)arg3;
 - (void)addObserver:(id)arg1 name:(id)arg2 sender:(id)arg3 queue:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (void)addObserver:(id)arg1 name:(id)arg2 sender:(id)arg3 queue:(id)arg4 usingSelector:(SEL)arg5;
-- (void)_postObserverChangesNotificationWithObserverCounts:(id)arg1;
-- (void)_removeObserver:(id)arg1 name:(id)arg2 sender:(id)arg3 observerObserver:(_Bool)arg4 observerCounts:(id)arg5;
-- (void)_removeObserver:(id)arg1 name:(id)arg2 observerObserver:(_Bool)arg3;
-- (void)_removeObserver:(id)arg1 observerObserver:(_Bool)arg2;
-- (void)_postNotificationName:(id)arg1 userInfo:(id)arg2 sender:(id)arg3 observerObserver:(_Bool)arg4;
-- (void)_addObserver:(id)arg1 name:(id)arg2 sender:(id)arg3 queue:(id)arg4 observerObserver:(_Bool)arg5 usingCall:(id)arg6;
-- (struct NSMapTable *)_observerToEntriesForSender:(id)arg1 name:(id)arg2 observerObserver:(_Bool)arg3 shouldCreate:(_Bool)arg4;
-- (struct NSMapTable *)_notificationToObserverEntriesForSender:(id)arg1 observerObserver:(_Bool)arg2 shouldCreate:(_Bool)arg3;
 - (id)init;
 
 @end

@@ -16,19 +16,23 @@
     SGDHarvestQueueInMemory *_inMemory;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SGDHarvestQueueInMemory *inMemory; // @synthesize inMemory=_inMemory;
 @property(readonly, nonatomic) SGDHarvestQueueLegacy *legacyLowPriority; // @synthesize legacyLowPriority=_legacyLowPriority;
 @property(readonly, nonatomic) SGDHarvestQueueLegacy *legacyHighPriority; // @synthesize legacyHighPriority=_legacyHighPriority;
 @property(readonly, nonatomic) SGDHarvestQueueOnDisk *onDisk; // @synthesize onDisk=_onDisk;
-- (void).cxx_destruct;
 - (void)close;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;
+- (unsigned long long)countStructuredEventCandidates;
+- (unsigned long long)countInMemory;
 - (unsigned long long)count;
 - (void)popBySourceKey:(id)arg1 messageId:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)popByItemId:(long long)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)popByCustomPriorityCriteria:(unsigned char)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popHighPriority:(CDUnknownBlockType)arg1;
+- (void)popInMemory:(CDUnknownBlockType)arg1;
 - (void)pop:(CDUnknownBlockType)arg1;
-- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(_Bool)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(_Bool)arg3 customPriorityCriteria:(unsigned char)arg4 item:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)backends;
 - (void)dealloc;
 - (id)initWithOnDiskQueue:(id)arg1 legacyHighPriority:(id)arg2 legacyLowPriority:(id)arg3 inMemoryCache:(id)arg4;

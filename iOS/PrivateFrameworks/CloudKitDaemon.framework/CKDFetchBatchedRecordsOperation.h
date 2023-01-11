@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
 @property(nonatomic) _Bool forcePCSDecryptionAttempt; // @synthesize forcePCSDecryptionAttempt=_forcePCSDecryptionAttempt;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property(nonatomic) _Bool shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *fetchRecordsGroup; // @synthesize fetchRecordsGroup=_fetchRecordsGroup;
-- (void).cxx_destruct;
+- (_Bool)supportsClearAssetEncryption;
 - (void)_noteOperationFinishedBlockEnd;
 - (void)_noteOperationEnding;
 - (void)_noteOperationBeginning;
@@ -47,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)_optionsForZonesWithPendingChangesAfterRequest:(id)arg1;
 - (id)_createAndConfigureURLRequestForZoneIDs:(id)arg1 optionsByZoneID:(id)arg2;
 - (void)_noteDeletedRecordWithID:(id)arg1 recordType:(id)arg2;
-- (void)_noteChangedRecordWithID:(id)arg1 recordType:(id)arg2 record:(id)arg3 error:(id)arg4;
+- (void)_noteChangedRecordWithID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (id)activityCreate;
 @property(readonly, nonatomic) NSString *pipeliningDescription;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleChangedRecords:(id)arg1 perRequestSchedulerInfo:(id)arg2;
 - (void)_handleFetchChangesRequestFinishedWithSchedulerInfo:(id)arg1;
 @property(readonly, nonatomic) CKDRecordCache *recordCache; // @synthesize recordCache=_recordCache;
+- (id)relevantZoneIDs;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 
 // Remaining properties

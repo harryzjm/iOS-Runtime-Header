@@ -10,8 +10,9 @@
 
 @interface FCTopStoriesOperationResult : NSObject
 {
-    NSArray *_mandatoryHeadlines;
+    NSArray *_mandatoryHeadlinePairs;
     NSArray *_optionalHeadlines;
+    NSArray *_todayFeedTopStoriesHeadlines;
     NSDate *_publishDate;
     NSDictionary *_topStoriesMetadataByArticleID;
     FCColorGradient *_backgroundColorGradient;
@@ -19,15 +20,16 @@
     NSString *_subtitle;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, copy, nonatomic) FCColorGradient *darkStyleBackgroundColorGradient; // @synthesize darkStyleBackgroundColorGradient=_darkStyleBackgroundColorGradient;
 @property(copy, nonatomic) FCColorGradient *backgroundColorGradient; // @synthesize backgroundColorGradient=_backgroundColorGradient;
 @property(copy) NSDictionary *topStoriesMetadataByArticleID; // @synthesize topStoriesMetadataByArticleID=_topStoriesMetadataByArticleID;
 @property(copy) NSDate *publishDate; // @synthesize publishDate=_publishDate;
+@property(readonly, copy, nonatomic) NSArray *todayFeedTopStoriesHeadlines; // @synthesize todayFeedTopStoriesHeadlines=_todayFeedTopStoriesHeadlines;
 @property(copy) NSArray *optionalHeadlines; // @synthesize optionalHeadlines=_optionalHeadlines;
-@property(copy) NSArray *mandatoryHeadlines; // @synthesize mandatoryHeadlines=_mandatoryHeadlines;
-- (void).cxx_destruct;
-- (id)initWithTopStoriesGroupConfig:(id)arg1 mandatoryHeadlines:(id)arg2 optionalHeadlines:(id)arg3 topStoriesMetadataByArticleID:(id)arg4 publishDate:(id)arg5 subtitle:(id)arg6;
+@property(copy) NSArray *mandatoryHeadlinePairs; // @synthesize mandatoryHeadlinePairs=_mandatoryHeadlinePairs;
+- (id)initWithTopStoriesGroupConfig:(id)arg1 mandatoryHeadlinePairs:(id)arg2 optionalHeadlines:(id)arg3 todayFeedTopStoriesHeadlines:(id)arg4 topStoriesMetadataByArticleID:(id)arg5 publishDate:(id)arg6 subtitle:(id)arg7;
 
 @end
 

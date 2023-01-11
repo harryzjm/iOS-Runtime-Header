@@ -9,7 +9,7 @@
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 #import <PersonalizationPortraitInternals/PPFeedbackProcessing-Protocol.h>
 
-@class PPM2FeedbackPortraitRegistered, PPMFeedbackRegistered, PPQuickTypeConnectionsServant, PPQuickTypeContactsServant, PPQuickTypeEventsServant, PPQuickTypeNavigationServant, _PASLock;
+@class PPQuickTypeConnectionsServant, PPQuickTypeContactsServant, PPQuickTypeEventsServant, PPQuickTypeNavigationServant, _PASLock;
 
 @interface PPLocalQuickTypeBroker : NSObject <PPFeedbackAccepting, PPFeedbackProcessing>
 {
@@ -18,14 +18,12 @@
     PPQuickTypeEventsServant *_eventsServant;
     PPQuickTypeConnectionsServant *_connectionsServant;
     _PASLock *_cacheLock;
-    PPMFeedbackRegistered *_feedbackTracker;
-    PPM2FeedbackPortraitRegistered *_feedbackTracker2;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)filterFeedback:(id)arg1;
-- (void)processFeedback:(id)arg1;
+- (void)processfeedbackItems:(id)arg1 scoringDate:(id)arg2 clientIdentifier:(id)arg3 clientBundleId:(id)arg4 mappingId:(id)arg5;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_cacheEntryWithRecipients:(id)arg1;
 - (id)_cachedQuickTypeItemsWithRecipients:(id)arg1;

@@ -7,6 +7,7 @@
 #import <Foundation/NSLocale.h>
 
 @interface NSLocale (PhotosUICore)
++ (long long)px_currentLeadingTextAlignment;
 + (unsigned long long)px_currentCharacterDirection;
 @end
 

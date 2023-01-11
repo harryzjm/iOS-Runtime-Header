@@ -14,9 +14,10 @@
 
 + (id)createCheckmarkView;
 + (id)identifier;
+- (void).cxx_destruct;
 @property(retain) UIImageView *checkmarkImageView; // @synthesize checkmarkImageView=_checkmarkImageView;
 @property(nonatomic, getter=isCheckmarkVisible) _Bool checkmarkVisible; // @synthesize checkmarkVisible=_checkmarkVisible;
-- (void).cxx_destruct;
+- (_Bool)canCollapseRecipient;
 @property(readonly) UIView *checkmarkView;
 - (void)setRecipient:(id)arg1;
 - (id)titleTextStyle;

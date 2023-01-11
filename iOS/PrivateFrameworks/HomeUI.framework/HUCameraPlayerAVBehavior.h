@@ -16,11 +16,12 @@
     id <HUCameraPlayerAVBehaviorDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <HUCameraPlayerAVBehaviorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <HUCameraPlayerAVBehaviorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)scrubToTime:(double)arg1;
 - (void)endScrubbingWithTargetTime:(double)arg1;
 - (void)beginScrubbing;
+- (void)playbackControlsDidChangePlayerVolume:(float)arg1;
 - (void)pictureInPictureActionButtonTapped;
 - (void)playbackControlsDidUpdateVisibilityOfLoadingIndicator:(_Bool)arg1;
 - (void)playbackControlsDidToggleMuted:(_Bool)arg1;

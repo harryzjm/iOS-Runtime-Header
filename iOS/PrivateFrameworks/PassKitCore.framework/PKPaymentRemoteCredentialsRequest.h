@@ -13,8 +13,9 @@
     long long _credentialType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
-@property(nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
+@property(copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property(nonatomic) _Bool includeMetadata; // @synthesize includeMetadata=_includeMetadata;
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 

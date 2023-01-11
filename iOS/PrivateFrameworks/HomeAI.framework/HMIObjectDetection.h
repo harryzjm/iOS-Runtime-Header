@@ -8,19 +8,27 @@
 
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
+@class NSNumber;
+
 @interface HMIObjectDetection : NSObject <NSSecureCoding>
 {
     int _labelIndex;
     double _confidence;
+    NSNumber *_yaw;
+    NSNumber *_roll;
     struct CGRect _boundingBox;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGRect boundingBox; // @synthesize boundingBox=_boundingBox;
+@property(readonly) NSNumber *roll; // @synthesize roll=_roll;
+@property(readonly) NSNumber *yaw; // @synthesize yaw=_yaw;
 @property(readonly) double confidence; // @synthesize confidence=_confidence;
 @property(readonly) int labelIndex; // @synthesize labelIndex=_labelIndex;
 - (id)description;
-- (id)init:(int)arg1 confidence:(double)arg2 boundingBox:(struct CGRect)arg3;
+- (id)initWithLabelIndex:(int)arg1 confidence:(double)arg2 boundingBox:(struct CGRect)arg3 yaw:(id)arg4 roll:(id)arg5;
+- (id)initWithLabelIndex:(int)arg1 confidence:(double)arg2 unclampedBoundingBox:(struct CGRect)arg3 yaw:(id)arg4 roll:(id)arg5;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

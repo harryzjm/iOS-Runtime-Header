@@ -40,7 +40,6 @@
     NSMutableDictionary *__inkForIdentifierDict;
     _PKAllowDrawingWhilePresentingPopoverView *__allowDrawingWhilePresentingPopoverView;
     PKInkAttributesPicker *_presentedInkAttributesPicker;
-    PKInk *_aggd_initialInkOnPopoverOpen;
     NSObject<OS_dispatch_queue> *_serialViewControllerTransitionQueue;
     NSObject<OS_dispatch_semaphore> *_serialViewControllerTransitionSemaphore;
     UIPencilInteraction *_pencilInteraction;
@@ -63,6 +62,7 @@
 + (id)_defaultInkForIdentifier:(id)arg1 attributeSet:(unsigned long long)arg2;
 + (_Bool)inkIdentifierHasMutableAttributes:(id)arg1;
 + (double)spacingForToolIndex:(unsigned long long)arg1 sizeState:(unsigned long long)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long attributeSet; // @synthesize attributeSet=_attributeSet;
 @property(nonatomic) _Bool pencilGestureSupportEnabled; // @synthesize pencilGestureSupportEnabled=_pencilGestureSupportEnabled;
 @property(retain, nonatomic) NSArray *allowedTools; // @synthesize allowedTools=_allowedTools;
@@ -78,7 +78,6 @@
 @property(retain, nonatomic) UIPencilInteraction *pencilInteraction; // @synthesize pencilInteraction=_pencilInteraction;
 @property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *serialViewControllerTransitionSemaphore; // @synthesize serialViewControllerTransitionSemaphore=_serialViewControllerTransitionSemaphore;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialViewControllerTransitionQueue; // @synthesize serialViewControllerTransitionQueue=_serialViewControllerTransitionQueue;
-@property(retain, nonatomic) PKInk *aggd_initialInkOnPopoverOpen; // @synthesize aggd_initialInkOnPopoverOpen=_aggd_initialInkOnPopoverOpen;
 @property(retain, nonatomic) PKInkAttributesPicker *presentedInkAttributesPicker; // @synthesize presentedInkAttributesPicker=_presentedInkAttributesPicker;
 @property(retain, nonatomic) _PKAllowDrawingWhilePresentingPopoverView *_allowDrawingWhilePresentingPopoverView; // @synthesize _allowDrawingWhilePresentingPopoverView=__allowDrawingWhilePresentingPopoverView;
 @property(retain, nonatomic) NSMutableDictionary *_inkForIdentifierDict; // @synthesize _inkForIdentifierDict=__inkForIdentifierDict;
@@ -92,7 +91,6 @@
 @property(readonly, nonatomic) unsigned long long previousDrawingToolIndex; // @synthesize previousDrawingToolIndex=_previousDrawingToolIndex;
 @property(readonly, nonatomic) unsigned long long selectedInkIndex; // @synthesize selectedInkIndex=_selectedInkIndex;
 @property(retain, nonatomic) NSArray *inkIdentifiers; // @synthesize inkIdentifiers=_inkIdentifiers;
-- (void).cxx_destruct;
 - (id)_axLabelForToolButton:(id)arg1;
 - (void)_axHandleLongPressForLargeTextHUD:(id)arg1;
 - (void)toolIndicator:(id)arg1 willPresent:(_Bool)arg2 animated:(_Bool)arg3;
@@ -102,8 +100,8 @@
 - (void)_inlineColorPickerTeardownAllowDrawingPassthroughView:(id)arg1;
 - (void)_inlineColorPickerSetupAllowDrawingPassthroughViewIfNeeded:(id)arg1;
 - (id)_inlineColorPickerAllowDrawingPassthroughView:(id)arg1;
-- (_Bool)popoverPresentationControllerShouldDismissPopover:(id)arg1;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (_Bool)presentationControllerShouldDismiss:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)inkAttributesPickerDidChangeSelectedInk:(id)arg1;
 - (struct CGRect)_colorPickerRectForContentsHiddenColorPickerPresentation:(id)arg1;

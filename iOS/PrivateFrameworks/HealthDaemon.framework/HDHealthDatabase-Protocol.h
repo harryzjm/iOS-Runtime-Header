@@ -25,6 +25,7 @@
 - (void)performWhenDataProtectedByFirstUnlockIsAvailableOnQueue:(NSObject<OS_dispatch_queue> *)arg1 block:(void (^)(void))arg2;
 - (HDAssertion *)cloneAccessibilityAssertion:(HDAssertion *)arg1 ownerIdentifier:(NSString *)arg2 error:(id *)arg3;
 - (HDAssertion *)takeAccessibilityAssertionWithOwnerIdentifier:(NSString *)arg1 timeout:(double)arg2 error:(id *)arg3;
+- (_Bool)performHighPriorityTransactionsWithError:(id *)arg1 block:(_Bool (^)(id *))arg2;
 - (_Bool)performWithTransactionContext:(HDDatabaseTransactionContext *)arg1 error:(id *)arg2 block:(_Bool (^)(id *))arg3;
 - (_Bool)performTransactionWithContext:(HDDatabaseTransactionContext *)arg1 error:(id *)arg2 block:(_Bool (^)(HDDatabaseTransaction *, id *))arg3 inaccessibilityHandler:(_Bool (^)(NSError *, id *))arg4;
 @end

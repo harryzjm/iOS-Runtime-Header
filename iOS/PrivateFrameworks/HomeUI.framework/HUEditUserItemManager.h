@@ -21,16 +21,19 @@
     HFItem *_personalRequestsFooterItem;
     HFItem *_tvViewingProfilesItem;
     HUAccessorySettingsItemModule *_userSettingsItemModule;
+    NSArray *_supportedMULanguageCodes;
     HMHome *_homeForUser;
     HFItem *_removeItem;
     NSArray *_sectionOrderArrayWhenViewingSelf;
     NSArray *_sectionOrderArrayWhenViewingOther;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *sectionOrderArrayWhenViewingOther; // @synthesize sectionOrderArrayWhenViewingOther=_sectionOrderArrayWhenViewingOther;
 @property(retain, nonatomic) NSArray *sectionOrderArrayWhenViewingSelf; // @synthesize sectionOrderArrayWhenViewingSelf=_sectionOrderArrayWhenViewingSelf;
 @property(retain, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
 @property(retain, nonatomic) HMHome *homeForUser; // @synthesize homeForUser=_homeForUser;
+@property(retain, nonatomic) NSArray *supportedMULanguageCodes; // @synthesize supportedMULanguageCodes=_supportedMULanguageCodes;
 @property(retain, nonatomic) HUAccessorySettingsItemModule *userSettingsItemModule; // @synthesize userSettingsItemModule=_userSettingsItemModule;
 @property(retain, nonatomic) HFItem *tvViewingProfilesItem; // @synthesize tvViewingProfilesItem=_tvViewingProfilesItem;
 @property(readonly, nonatomic) HFItem *personalRequestsFooterItem; // @synthesize personalRequestsFooterItem=_personalRequestsFooterItem;
@@ -40,7 +43,7 @@
 @property(retain, nonatomic) HFItem *allowEditingItem; // @synthesize allowEditingItem=_allowEditingItem;
 @property(retain, nonatomic) HFItem *remoteAccessItem; // @synthesize remoteAccessItem=_remoteAccessItem;
 @property(retain, nonatomic) HFItem *localAccessItem; // @synthesize localAccessItem=_localAccessItem;
-- (void).cxx_destruct;
+- (id)_siriSectionFooter;
 - (_Bool)_isVoiceIDEnabled:(id)arg1;
 - (_Bool)_isTVViewingProfilesEnabledForUser;
 - (_Bool)_isPersonalRequestsEnabledForUser;
@@ -48,13 +51,14 @@
 - (_Bool)_hasPendingAccessories;
 - (_Bool)_hasTVViewingProfilesDevice;
 - (_Bool)_hasPersonalRequestsDevice;
-- (_Bool)_hasSupportedCameraWithRecording;
 - (_Bool)_hasResidentDevice;
 - (_Bool)_isUserBeingEditedTheDeviceUser;
 - (_Bool)_isUserAdmin:(id)arg1;
 - (_Bool)_isUserOwner:(id)arg1;
 - (_Bool)_isEditingAllowedForUser:(id)arg1;
 - (_Bool)_isRemoteAccessAllowedForUser:(id)arg1;
+- (void)_unregisterForExternalUpdates;
+- (void)_registerForExternalUpdates;
 - (id)_itemsToHideInSet:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;

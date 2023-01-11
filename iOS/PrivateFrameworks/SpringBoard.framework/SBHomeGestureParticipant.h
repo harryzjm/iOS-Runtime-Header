@@ -14,18 +14,24 @@
 @interface SBHomeGestureParticipant : NSObject <BSDescriptionProviding>
 {
     _Bool _ownsHomeGesture;
+    _Bool _canShareOwnershipWithNextParticipant;
     long long _identifier;
     id <SBHomeGestureParticipantDelegate> _delegate;
+    long long _homeAffordanceSuppression;
+    long long _resolvedHomeAffordanceSuppression;
     NSIndexSet *_trumpsAdditionalIdentifiers;
     SBHomeGestureArbiter *_arbiter;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak SBHomeGestureArbiter *arbiter; // @synthesize arbiter=_arbiter;
 @property(copy, nonatomic) NSIndexSet *trumpsAdditionalIdentifiers; // @synthesize trumpsAdditionalIdentifiers=_trumpsAdditionalIdentifiers;
+@property(nonatomic) long long resolvedHomeAffordanceSuppression; // @synthesize resolvedHomeAffordanceSuppression=_resolvedHomeAffordanceSuppression;
+@property(nonatomic) long long homeAffordanceSuppression; // @synthesize homeAffordanceSuppression=_homeAffordanceSuppression;
+@property(nonatomic) _Bool canShareOwnershipWithNextParticipant; // @synthesize canShareOwnershipWithNextParticipant=_canShareOwnershipWithNextParticipant;
 @property(nonatomic) __weak id <SBHomeGestureParticipantDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool ownsHomeGesture; // @synthesize ownsHomeGesture=_ownsHomeGesture;
 @property(nonatomic) long long identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

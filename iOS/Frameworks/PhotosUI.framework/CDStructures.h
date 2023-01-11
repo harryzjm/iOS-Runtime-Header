@@ -67,31 +67,11 @@ struct NSDirectionalEdgeInsets {
     double _field4;
 };
 
-struct NSHashTable {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
-};
-
-struct NSObject {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
-};
-
 struct PHDisplayVelocity {
     double _field1;
     double _field2;
     double _field3;
     double _field4;
-};
-
-struct PUAlbumListCellContentView {
-    Class _field1;
 };
 
 struct PUBarAnimationSettings {
@@ -135,6 +115,8 @@ struct PXAssetMediaTypeCount {
     unsigned long long _field5;
     unsigned long long _field6;
     unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
 };
 
 struct PXDisplayVelocity {
@@ -151,8 +133,9 @@ struct PXSimpleIndexPath {
     long long subitem;
 };
 
-struct UICollectionViewCell {
-    Class _field1;
+struct TransformMetadataItemPair {
+    id _field1;
+    id _field2;
 };
 
 struct UIEdgeInsets {
@@ -178,20 +161,7 @@ struct _PUSectionedTilingLayoutSectionInfo {
     struct CGRect _field3;
 };
 
-struct __va_list_tag {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-    void *_field4;
-};
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    _Bool isEnabled;
-    double startTime;
-    double endTime;
-} CDStruct_3139860e;
 
 typedef struct {
     MISSING_TYPE *columns[3];
@@ -207,7 +177,8 @@ typedef struct {
 typedef struct {
     long long privateInteger;
     float privateFloat;
-} CDStruct_910f5d27;
+    float privateFloat2;
+} CDStruct_0b004a15;
 
 typedef struct {
     long long value;
@@ -232,20 +203,20 @@ typedef struct {
     struct CGAffineTransform _field3;
 } CDStruct_d54ccef3;
 
-typedef struct {
-    struct CGRect startCropRect;
-} CDStruct_0de14bd3;
-
 // Ambiguous groups
 typedef struct {
     _Bool _field1;
     _Bool _field2;
     _Bool _field3;
-} CDStruct_2a4d9400;
+    _Bool _field4;
+    _Bool _field5;
+} CDStruct_df7f102b;
 
 typedef struct {
     _Bool excludeLiveness;
     _Bool excludeLocation;
+    _Bool excludeCaption;
+    _Bool excludeAccessibilityDescription;
     _Bool includeAllOriginalResources;
-} CDStruct_7f880b36;
+} CDStruct_915a387c;
 

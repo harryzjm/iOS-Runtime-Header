@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNDetectorIdealImageSizeProviding-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface VNSceneClassifier <VNDetectorIdealImageSizeProviding>
+@interface VNSceneClassifier
 {
     shared_ptr_eb20c8f2 _sceneClassifierHierarchicalModel;
 }
 
 + (void)initDumpDebugIntermediates:(id *)arg1 debugInfo:(id *)arg2;
-+ (id)supportedImageSizeSetForOptions:(id)arg1;
++ (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 + (id)createObservationWithDescriptors:(id)arg1 forRequestRevision:(unsigned long long)arg2;
 + (id)returnAllResultsOptionKey;
 + (Class)espressoModelImageprintClass;
@@ -29,13 +25,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)initImageDescriptorBuffer:(id)arg1 descriptorBuffer:(shared_ptr_0a6daad2 *)arg2 error:(id *)arg3;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (_Bool)isSceneprinterCompatibleWithSceneprinterCreatedWithOptions:(id)arg1 error:(id *)arg2;
-- (_Bool)completeInitializationAndReturnError:(id *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
+- (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 
 @end
 

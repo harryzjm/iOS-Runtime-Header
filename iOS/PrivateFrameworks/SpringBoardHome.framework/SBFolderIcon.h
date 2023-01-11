@@ -20,6 +20,7 @@
     SBFolder *_folder;
 }
 
++ (_Bool)hasIconImage;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) SBFolder *folder; // @synthesize folder=_folder;
@@ -39,17 +40,15 @@
 - (id)containedNodeIdentifiers;
 - (_Bool)containsNodeIdentifier:(id)arg1;
 - (id)nodeIdentifier;
-- (void)removeChild:(id)arg1;
-- (id)children;
 - (void)iconLaunchEnabledDidChange:(id)arg1;
 - (void)iconAccessoriesDidUpdate:(id)arg1;
 - (void)iconImageDidUpdate:(id)arg1;
 - (id)iconAtListIndex:(unsigned long long)arg1 iconIndex:(unsigned long long)arg2;
 - (unsigned long long)gridCellIndexForIconIndex:(unsigned long long)arg1;
 - (unsigned long long)listIndexForContainedIcon:(id)arg1;
+- (_Bool)canBeAddedToSubfolder;
 - (_Bool)canBeAddedToMultiItemDrag;
 - (id)leafIconsWithBadgesSortedByImportance;
-- (void)ancestryDidChange;
 - (void)rootFolderDelegateDidChange:(id)arg1;
 - (void)_containedIconLaunchEnabledDidUpdate:(id)arg1;
 - (void)_containedIconAccessoriesDidUpdate:(id)arg1;
@@ -63,6 +62,8 @@
 - (long long)progressState;
 - (void)_updateProgress;
 - (void)_updateBadgeValue;
+- (void)_performDelayedIconUpdates;
+- (id)badgeNumberOrString;
 - (void)updateLabel;
 @property(readonly, copy) NSString *description;
 - (void)localeChanged;

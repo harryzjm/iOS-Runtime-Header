@@ -17,6 +17,7 @@
 + (id)cleanDictionaryForXPC:(id)arg1;
 + (id)safeErrorClasses;
 + (id)safeErrorCollectionClasses;
++ (id)safeCKErrorPrimitiveClasses;
 + (id)safeErrorPrimitiveClasses;
 
 @end

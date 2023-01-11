@@ -10,7 +10,7 @@
 #import <Silex/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, SXComponentSizer, SXLayoutBlueprint;
-@protocol SXComponent, SXComponentLayout;
+@protocol SXComponent, SXComponentLayout, SXComponentState;
 
 @interface SXComponentBlueprint : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     _Bool _hasValidPosition;
     _Bool _hidden;
     id <SXComponent> _component;
+    id <SXComponentState> _componentState;
     SXComponentSizer *_componentSizer;
     id <SXComponentLayout> _componentLayout;
     SXLayoutBlueprint *_parentLayoutBlueprint;
@@ -36,6 +37,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *infoFromLayouting; // @synthesize infoFromLayouting=_infoFromLayouting;
 @property(nonatomic) struct CGSize suggestedSizeAfterInvalidation; // @synthesize suggestedSizeAfterInvalidation=_suggestedSizeAfterInvalidation;
 @property(nonatomic) struct CGRect backgroundViewFrame; // @synthesize backgroundViewFrame=_backgroundViewFrame;
@@ -46,16 +48,16 @@
 @property(nonatomic) struct UIEdgeInsets borderInsets; // @synthesize borderInsets=_borderInsets;
 @property(nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property(nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
-@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property(readonly, nonatomic) struct CGRect frame;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
-@property(nonatomic) _Bool hasValidPosition; // @synthesize hasValidPosition=_hasValidPosition;
-@property(nonatomic) _Bool hasValidSize; // @synthesize hasValidSize=_hasValidSize;
+@property(readonly, nonatomic) _Bool hasValidPosition;
+@property(readonly, nonatomic) _Bool hasValidSize;
 @property(nonatomic) struct _NSRange columnRange; // @synthesize columnRange=_columnRange;
 @property(nonatomic) __weak SXLayoutBlueprint *parentLayoutBlueprint; // @synthesize parentLayoutBlueprint=_parentLayoutBlueprint;
 @property(readonly, nonatomic) id <SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
 @property(readonly, nonatomic) SXComponentSizer *componentSizer; // @synthesize componentSizer=_componentSizer;
+@property(retain, nonatomic) id <SXComponentState> componentState; // @synthesize componentState=_componentState;
 @property(readonly, nonatomic) id <SXComponent> component; // @synthesize component=_component;
-- (void).cxx_destruct;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)storeInformationForRenderingPhase:(id)arg1;

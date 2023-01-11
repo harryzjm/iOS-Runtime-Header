@@ -9,7 +9,7 @@
 #import <MapKit/VKCustomFeatureDataSource-Protocol.h>
 #import <MapKit/_MKPinAnnotationViewDelegate-Protocol.h>
 
-@class MKAnnotationView, MKPinAnnotationView, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
+@class MKAnnotationView, MKPinAnnotationView, MKPriorityToIndexMap, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 @protocol MKAnnotationContainerViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -45,11 +45,13 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_collidableAnnotationViews;
     NSMutableDictionary *_collidingAnnotationViews;
     NSMutableDictionary *_existingClusterAnnotationViews;
+    MKPriorityToIndexMap *_priorityMap;
+    NSMutableSet *_prioritiesToAdd;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MKAnnotationView *draggingAnnotationView; // @synthesize draggingAnnotationView=_draggingAnnotationView;
 @property(nonatomic) _Bool suppressCallout; // @synthesize suppressCallout=_suppressCallout;
-- (void).cxx_destruct;
 - (void)updateAnnotationViewsWithDelay;
 - (void)_performStateUpdatesIfNeeded;
 - (void)_updateCollidableAnnotationViews;
@@ -64,9 +66,11 @@ __attribute__((visibility("hidden")))
 - (CDStruct_02837cd9)_mapRectWithFraction:(double)arg1 ofVisible:(CDStruct_02837cd9)arg2;
 - (void)transitionTo:(long long)arg1;
 - (void)annotationViewDidChangeCenterOffset:(id)arg1;
+- (_Bool)_updatePriorityMapIfNeeded;
+- (void)_addPrioritiesForAnnotationViewIfNeeded:(id)arg1;
 - (void)_updateZPositionForAnnotationView:(id)arg1 inBounds:(struct CGRect)arg2;
 - (void)annotationViewDidChangeHidden:(id)arg1;
-- (void)annotationViewDidChangeZIndex:(id)arg1;
+- (void)annotationViewDidChangeZPriority:(id)arg1;
 @property(readonly, nonatomic) CDStruct_089f5ccb currentComparisonContext;
 - (void)selectAnnotationView:(id)arg1 animated:(_Bool)arg2;
 - (void)dropPinsIfNeeded;
@@ -100,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAnnotationViewsRotationAnimations;
 - (void)setAnnotationViewsRotationRadians:(double)arg1 animation:(id)arg2;
 @property(readonly, nonatomic) MKPinAnnotationView *bubblePin;
+- (void)visibleCenteringRectChanged;
 - (struct CGRect)_visibleRect;
 - (struct CGRect)_visibleCenteringRectInView:(id)arg1;
 - (struct CGRect)_visibleCenteringRect;

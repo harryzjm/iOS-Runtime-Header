@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface AVPresentationContext : NSObject
 {
     _Bool _allowsSecondWindowPresentations;
+    _Bool _wasInitiallyPresentedWithoutSecondWindow;
     _Bool _allowsPausingWhenTransitionCompletes;
     UIView *_sourceView;
     UIView *_touchBlockingView;
@@ -26,18 +27,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsInteractiveCounterRotationDismissals;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak AVPresentationController *presentationController; // @synthesize presentationController=_presentationController;
 @property(nonatomic) _Bool allowsPausingWhenTransitionCompletes; // @synthesize allowsPausingWhenTransitionCompletes=_allowsPausingWhenTransitionCompletes;
 @property(retain, nonatomic) AVPresentationContextTransition *dismissingTransition; // @synthesize dismissingTransition=_dismissingTransition;
 @property(retain, nonatomic) AVPresentationContextTransition *presentingTransition; // @synthesize presentingTransition=_presentingTransition;
 @property(readonly, nonatomic) __weak AVFullScreenViewController *avFullScreenViewController; // @synthesize avFullScreenViewController=_avFullScreenViewController;
 @property(retain, nonatomic) UIWindow *rotatableSecondWindow; // @synthesize rotatableSecondWindow=_rotatableSecondWindow;
+@property(nonatomic) _Bool wasInitiallyPresentedWithoutSecondWindow; // @synthesize wasInitiallyPresentedWithoutSecondWindow=_wasInitiallyPresentedWithoutSecondWindow;
 @property(nonatomic) _Bool allowsSecondWindowPresentations; // @synthesize allowsSecondWindowPresentations=_allowsSecondWindowPresentations;
 @property(nonatomic) __weak id <UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
 @property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) UIView *touchBlockingView; // @synthesize touchBlockingView=_touchBlockingView;
 @property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
-- (void).cxx_destruct;
 - (id)dismissalToView;
 - (id)presentationFromView;
 @property(readonly, nonatomic) _Bool canBeInteractivelyDismissed;

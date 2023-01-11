@@ -8,8 +8,8 @@
 
 #import <FileProvider/CSSearchableIndexDelegate-Protocol.h>
 
-@class CSSearchableIndex, FPXDomainContext, NSData, NSOperation, NSOperationQueue, NSString;
-@protocol NSFileProviderEnumerator, OS_dispatch_queue, OS_dispatch_semaphore;
+@class CSSearchableIndex, FPXDomainContext, FPXFetchClientStateOperation, NSData, NSOperation, NSOperationQueue, NSString;
+@protocol NSFileProviderEnumerator, OS_dispatch_semaphore, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
 @interface FPXSpotlightIndexer : NSObject <CSSearchableIndexDelegate>
@@ -18,11 +18,12 @@ __attribute__((visibility("hidden")))
     NSString *_domainID;
     NSString *_providerIdentifier;
     CSSearchableIndex *_index;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_workloop> *_workloop;
     NSOperationQueue *_operationQueue;
     NSOperation *_currentOperation;
     NSData *_lastIndexState;
     unsigned long long _clientState;
+    FPXFetchClientStateOperation *_fetchStateOperation;
     _Bool _isCanceled;
     id <NSFileProviderEnumerator> _vendorEnumerator;
     NSObject<OS_dispatch_semaphore> *_clientStateSemaphore;
@@ -30,13 +31,13 @@ __attribute__((visibility("hidden")))
     FPXDomainContext *_domainContext;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isIndexing) _Bool indexing; // @synthesize indexing=_indexing;
 @property(readonly, nonatomic) NSData *lastIndexState; // @synthesize lastIndexState=_lastIndexState;
 @property(readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
 @property(readonly) id <NSFileProviderEnumerator> vendorEnumerator; // @synthesize vendorEnumerator=_vendorEnumerator;
 @property(readonly) __weak FPXDomainContext *domainContext; // @synthesize domainContext=_domainContext;
-- (void).cxx_destruct;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)dumpStateTo:(id)arg1;
@@ -49,6 +50,8 @@ __attribute__((visibility("hidden")))
 - (void)_invalidate;
 - (void)fetchCurrentIndexingAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchCurrentIndexingAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)indexOutOfBandUpdatedItems:(id)arg1 deletedItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_indexOutOfBandUpdatedItems:(id)arg1 deletedItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)indexOneBatchFromAnchor:(id)arg1 toAnchor:(id)arg2 updatedItems:(id)arg3 deletedItems:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_indexOneBatchFromAnchor:(id)arg1 toAnchor:(id)arg2 updatedItems:(id)arg3 deletedItems:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -7,17 +7,15 @@
 #import <HealthUI/HKTableViewController.h>
 
 #import <HealthToolbox/HKInteractiveChartViewObserver-Protocol.h>
-#import <HealthToolbox/SKStoreProductViewControllerDelegate-Protocol.h>
 #import <HealthToolbox/UITableViewDataSource-Protocol.h>
 #import <HealthToolbox/UITableViewDelegate-Protocol.h>
-#import <HealthToolbox/WDAppSwooshTableViewCellDelegate-Protocol.h>
 #import <HealthToolbox/WDSourceOrderObserver-Protocol.h>
 #import <HealthToolbox/WDUserActivityResponder-Protocol.h>
 
 @class HKDisplayCategory, HKDisplayType, HKInteractiveChartViewController, HKNavigationController, HKTimeScopeControl, NSDate, NSMutableArray, NSSet, NSString, UIFont, WDProfile, _UINavigationControllerPalette;
 
 __attribute__((visibility("hidden")))
-@interface WDDisplayTypeDetailViewController : HKTableViewController <SKStoreProductViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, WDAppSwooshTableViewCellDelegate, HKInteractiveChartViewObserver, WDSourceOrderObserver, WDUserActivityResponder>
+@interface WDDisplayTypeDetailViewController : HKTableViewController <UITableViewDataSource, UITableViewDelegate, HKInteractiveChartViewObserver, WDSourceOrderObserver, WDUserActivityResponder>
 {
     HKDisplayType *_displayType;
     HKDisplayCategory *_displayCategory;
@@ -33,14 +31,11 @@ __attribute__((visibility("hidden")))
     HKInteractiveChartViewController *_interactiveChartViewController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HKInteractiveChartViewController *interactiveChartViewController; // @synthesize interactiveChartViewController=_interactiveChartViewController;
 @property(retain, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
-- (void).cxx_destruct;
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)appsCell:(id)arg1 showStorePageWithStoreID:(id)arg2;
-- (void)_displayAppWithStoreID:(id)arg1;
 - (void)_addActivityForAction:(long long)arg1 newResponder:(id)arg2;
 - (id)applyTransitionActivity:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;
@@ -58,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)_selectedUnitCellText;
-- (_Bool)_shouldShowAppsRow;
 - (_Bool)_shouldShowUnitsRow;
 - (_Bool)_canSelectUnitsRow;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -72,12 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)addSectionWithItems:(id)arg1;
 - (void)addSectionWithItem:(id)arg1;
 - (void)viewDidLoad;
-- (void)_didBecomeActive:(id)arg1;
-- (void)_showAppsRowIfNecessary:(id)arg1;
-- (void)updateAppsSectionIfNecessary;
-- (long long)findAppsSectionLocation;
 - (void)_displayTypeStringsChanged:(id)arg1;
-- (void)_loadStoreData:(id)arg1;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_unitPreferencesDidUpdate:(id)arg1;
 - (void)_localeDidChange:(id)arg1;

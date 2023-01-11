@@ -8,7 +8,7 @@
 
 #import <CalendarNotification/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, EKTimedEventStorePurger, NSMutableDictionary, NSString, PCPersistentTimer;
+@class CLLocationManager, EKTimedEventStorePurger, NSMutableDictionary, NSString;
 @protocol CALNRouteHypothesizerProvider, OS_dispatch_queue, OS_dispatch_source;
 
 @interface EKTravelEngine : NSObject <CLLocationManagerDelegate>
@@ -21,7 +21,6 @@
     _Bool _databaseIsEncryptedAndUnreadable;
     _Bool _yieldingToSync;
     NSMutableDictionary *_eventExternalURLsToAgendaEntries;
-    PCPersistentTimer *_periodicRefreshTimer;
     CLLocationManager *_locationManager;
     EKTimedEventStorePurger *_timedEventStorePurger;
     _Bool _authorizedInternal;
@@ -37,25 +36,24 @@
 + (id)travelEligibleEventsInEventStore:(id)arg1;
 + (double)requestRefreshTimeInterval;
 + (id)requestedDarwinNotifications;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool authorizedInternal; // @synthesize authorizedInternal=_authorizedInternal;
 @property(readonly, nonatomic) id <CALNRouteHypothesizerProvider> routeHypothesizerProvider; // @synthesize routeHypothesizerProvider=_routeHypothesizerProvider;
 @property(copy, nonatomic) CDUnknownBlockType eventSignificantlyChangedBlock; // @synthesize eventSignificantlyChangedBlock=_eventSignificantlyChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType authorizationChangedBlock; // @synthesize authorizationChangedBlock=_authorizationChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType adviceBlock; // @synthesize adviceBlock=_adviceBlock;
-- (void).cxx_destruct;
 - (void)_sendFeedbackForPostingNotificationForEventWithExternalURL:(id)arg1 feedback:(CDUnknownBlockType)arg2;
 - (void)_uninstallLocationManager;
 - (void)_installLocationManager;
-- (void)_periodicRefreshTimerFired:(id)arg1;
+- (void)_periodicRefreshTimerFired;
 - (void)_unregisterAllAgendaEntries;
 - (void)_refreshIfNeeded;
+- (id)_eventStore;
 - (_Bool)_authorizedToAcquireLocation;
 - (void)_trimAgendaEntriesBeforeDate:(id)arg1 andAfterDate:(id)arg2;
-- (void)_unregisterForNotificationObservation;
-- (void)_registerForNotificationObservation;
 - (void)_uninstallPeriodicRefreshTimer;
 - (void)_installPeriodicRefreshTimer;
-- (id)btaJobName;
+- (id)alarmName;
 - (void)_uninstallSyncYieldTimer;
 - (void)_installSyncYieldTimer;
 - (_Bool)_isProtectedDataAvailable;
@@ -72,7 +70,7 @@
 - (void)sendFeedbackForPostingLeaveNowNotificationForEventWithExternalURL:(id)arg1;
 - (void)sendFeedbackForPostingLeaveByNotificationForEventWithExternalURL:(id)arg1;
 @property(readonly, nonatomic) _Bool authorized;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
+- (void)receivedAlarmNamed:(id)arg1;
 - (void)handleDarwinNotification:(id)arg1;
 - (void)ceaseMonitoringForEventWithExternalURL:(id)arg1;
 - (void)cancelHypothesisRefreshRequestForEventWithExternalURL:(id)arg1;

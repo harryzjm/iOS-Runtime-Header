@@ -38,6 +38,11 @@ __attribute__((visibility("hidden")))
     int _deviceRole;
     void *_callLogFile;
     unsigned int _tilesPerVideoFrame;
+    _Bool _oneToOneModeSupported;
+    _Bool _ltrpEnabled;
+    NSSet *_pixelFormats;
+    unsigned char _mediaControlInfoFECFeedbackVersion;
+    unsigned char _linkProbingCapabilityVersion;
     _Bool _alwaysOnAudRedEnabled;
     _Bool _alwaysOnAudioRedundancyEnabled;
     _Bool _highFecEnabled;
@@ -64,6 +69,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool alwaysOnAudRedEnabled; // @synthesize alwaysOnAudRedEnabled=_alwaysOnAudRedEnabled;
 @property(nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property(nonatomic) int preferredAudioCodec; // @synthesize preferredAudioCodec=_preferredAudioCodec;
+@property(nonatomic) unsigned char linkProbingCapabilityVersion; // @synthesize linkProbingCapabilityVersion=_linkProbingCapabilityVersion;
+@property(nonatomic) unsigned char mediaControlInfoFECFeedbackVersion; // @synthesize mediaControlInfoFECFeedbackVersion=_mediaControlInfoFECFeedbackVersion;
+@property(retain, nonatomic) NSSet *pixelFormats; // @synthesize pixelFormats=_pixelFormats;
+@property(nonatomic) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
+@property(nonatomic) _Bool oneToOneModeSupported; // @synthesize oneToOneModeSupported=_oneToOneModeSupported;
 @property(nonatomic) unsigned int tilesPerVideoFrame; // @synthesize tilesPerVideoFrame=_tilesPerVideoFrame;
 @property(nonatomic) unsigned int customVideoHeight; // @synthesize customVideoHeight=_customVideoHeight;
 @property(nonatomic) unsigned int customVideoWidth; // @synthesize customVideoWidth=_customVideoWidth;

@@ -7,34 +7,41 @@
 #import <GameCenterFoundation/GKClientProtocol-Protocol.h>
 #import <GameCenterFoundation/NSXPCConnectionDelegate-Protocol.h>
 
-@class NSDictionary, NSObject, NSString, NSXPCConnection;
+@class NSDictionary, NSHashTable, NSObject, NSString, NSXPCConnection;
 @protocol GKDaemonProxyDataUpdateDelegate, GKDaemonProxyNetworkActivityIndicatorDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface GKDaemonProxy <NSXPCConnectionDelegate, GKClientProtocol>
 {
     int _hostPID;
-    NSXPCConnection *_connection;
-    NSDictionary *_interfaceLookup;
     NSObject<OS_dispatch_queue> *_invocationQueue;
     NSObject<OS_dispatch_semaphore> *_concurrentRequestSemaphore;
-    id <GKDaemonProxyDataUpdateDelegate> _dataUpdateDelegate;
+    NSDictionary *_interfaceLookup;
+    NSXPCConnection *_connection;
     id <GKDaemonProxyNetworkActivityIndicatorDelegate> _networkActivityIndicatorDelegate;
+    id <GKDaemonProxyDataUpdateDelegate> _dataUpdateDelegate;
+    NSHashTable *_dataUpdateDelegates;
 }
 
 + (id)proxyForPlayer:(id)arg1;
 + (void)removeProxyForPlayer:(id)arg1;
++ (id)proxiesForPlayer;
 + (id)daemonProxy;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSHashTable *dataUpdateDelegates; // @synthesize dataUpdateDelegates=_dataUpdateDelegates;
 @property(nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
+@property(nonatomic) __weak id <GKDaemonProxyDataUpdateDelegate> dataUpdateDelegate; // @synthesize dataUpdateDelegate=_dataUpdateDelegate;
+@property(nonatomic) __weak id <GKDaemonProxyNetworkActivityIndicatorDelegate> networkActivityIndicatorDelegate; // @synthesize networkActivityIndicatorDelegate=_networkActivityIndicatorDelegate;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(retain, nonatomic) NSDictionary *interfaceLookup; // @synthesize interfaceLookup=_interfaceLookup;
+@property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *concurrentRequestSemaphore; // @synthesize concurrentRequestSemaphore=_concurrentRequestSemaphore;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *invocationQueue; // @synthesize invocationQueue=_invocationQueue;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (id)replyQueueForRequestSelector:(SEL)arg1;
+- (oneway void)requestSandboxExtension:(CDUnknownBlockType)arg1;
 - (oneway void)setLogBits:(int)arg1;
 - (oneway void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (oneway void)setBadgeCount:(unsigned long long)arg1 forType:(unsigned long long)arg2;
-@property(nonatomic) id <GKDaemonProxyDataUpdateDelegate> dataUpdateDelegate; // @synthesize dataUpdateDelegate=_dataUpdateDelegate;
-@property(nonatomic) id <GKDaemonProxyNetworkActivityIndicatorDelegate> networkActivityIndicatorDelegate; // @synthesize networkActivityIndicatorDelegate=_networkActivityIndicatorDelegate;
 - (void)resetLoginCancelCount;
-- (oneway void)processQuickAction:(id)arg1;
 - (void)loadRemoteImageDataForClientForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)localizedMessageFromDictionary:(id)arg1 forBundleID:(id)arg2;
 - (oneway void)session:(id)arg1 didReceiveMessage:(id)arg2 withData:(id)arg3 fromPlayer:(id)arg4;
@@ -69,23 +76,22 @@
 - (oneway void)resetNetworkActivity;
 - (oneway void)endNetworkActivity;
 - (oneway void)beginNetworkActivity;
+- (void)removeDataUpdateDelegate:(id)arg1;
+- (void)addDataUpdateDelegate:(id)arg1;
 - (oneway void)getAuthenticatedPlayerIDWithHandler:(CDUnknownBlockType)arg1;
 - (oneway void)getAccountNameWithHandler:(CDUnknownBlockType)arg1;
+- (id)getGamedFiredUp;
 - (id)authenticatedLocalPlayersWithStatus:(unsigned long long)arg1;
 - (id)authenticatedPlayerInfo;
 - (_Bool)hasAuthenticatedAccount;
 - (id)accountName;
 - (id)authenticatedPlayerID;
-- (void)dealloc;
 - (id)init;
 - (oneway void)setTestGame:(id)arg1;
 - (void)buildInterfaceLookup;
-- (id)interfaceLookup;
 - (void)addInterface:(id)arg1 toLookup:(id)arg2;
 - (void)resetServiceLookup;
 - (void)_resetServiceLookup;
-- (id)concurrentRequestSemaphore;
-- (id)invocationQueue;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

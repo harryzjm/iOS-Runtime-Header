@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, RPCompanionLinkClient, RPCompanionLinkDevice;
+@class NSMutableDictionary, NSSet, RPCompanionLinkClient, RPCompanionLinkDevice;
 
 @interface HUNearbyDevice : NSObject
 {
@@ -16,16 +16,18 @@
     unsigned long long _connectionStatus;
     RPCompanionLinkClient *_client;
     NSMutableDictionary *_previousMessageCache;
+    NSSet *_cachableKeys;
 }
 
 + (id)nearbyDeviceWithPeerDevice:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *cachableKeys; // @synthesize cachableKeys=_cachableKeys;
 @property(retain, nonatomic) NSMutableDictionary *previousMessageCache; // @synthesize previousMessageCache=_previousMessageCache;
 @property(nonatomic) _Bool shouldTrack; // @synthesize shouldTrack=_shouldTrack;
 @property(nonatomic, getter=isActivating) _Bool activating; // @synthesize activating=_activating;
 @property(retain) RPCompanionLinkClient *client; // @synthesize client=_client;
 @property(nonatomic) unsigned long long connectionStatus; // @synthesize connectionStatus=_connectionStatus;
 @property(retain, nonatomic) RPCompanionLinkDevice *device; // @synthesize device=_device;
-- (void).cxx_destruct;
 - (void)sendMessage:(id)arg1;
 - (void)purgeMessageCache;
 - (void)setupSessionIfNecessary;

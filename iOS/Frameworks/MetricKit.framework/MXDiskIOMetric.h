@@ -12,8 +12,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly) NSMeasurement *cumulativeLogicalWrites; // @synthesize cumulativeLogicalWrites=_cumulativeLogicalWrites;
 - (void).cxx_destruct;
+@property(readonly) NSMeasurement *cumulativeLogicalWrites; // @synthesize cumulativeLogicalWrites=_cumulativeLogicalWrites;
 - (id)toDictionary;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

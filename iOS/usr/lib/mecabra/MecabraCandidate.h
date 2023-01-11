@@ -36,12 +36,15 @@
 - (struct __CFArray *)copySyllableLengthArrayInDictionaryReading;
 - (struct __CFArray *)copySyllableLengthArrayInConvertedAnalysisString;
 - (struct __CFArray *)copySyllableLengthArrayInAnalysisString;
+- (long long)matchPenalty;
 - (unsigned short)matchedLengthType;
 - (double)lmProbability;
 - (unsigned short)matchType;
 - (unsigned short)kind;
+- (long long)baseCost;
 - (long long)weight;
 - (unsigned short)lastPrefixValue;
+- (unsigned short)kindAtIndex:(unsigned long long)arg1;
 - (unsigned long long)trieValueAtIndex:(unsigned long long)arg1;
 - (long long)costAtIndex:(unsigned long long)arg1;
 - (unsigned short)rcAttrAtIndex:(unsigned long long)arg1;
@@ -63,6 +66,9 @@
 @property(readonly, nonatomic) NSString *string;
 @property(readonly, nonatomic) NSString *surface;
 @property(readonly, nonatomic) int type;
+@property(readonly, nonatomic) unsigned long long wubixingType;
+@property(readonly, nonatomic) _Bool isWubixingConvertedByPinyin;
+@property(readonly, nonatomic) _Bool isAbbreviated;
 @property(readonly, nonatomic) _Bool isPartialCandidate;
 @property(readonly, nonatomic) _Bool isBilingualCandidate;
 @property(readonly, nonatomic) _Bool isRegionalCandidate;
@@ -74,6 +80,7 @@
 @property(readonly, nonatomic) _Bool isLearningDictionaryCandidate;
 @property(readonly, nonatomic) _Bool isPersonName;
 @property(readonly, nonatomic) _Bool isEmojiCandidate;
+@property(readonly, nonatomic) _Bool isExtensionForCandidateBar;
 @property(readonly, nonatomic) _Bool isExtensionCandidate;
 @property(readonly, nonatomic) _Bool isSyntheticCandidate;
 @property(readonly, nonatomic) _Bool isConversionCandidate;

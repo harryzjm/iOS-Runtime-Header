@@ -14,17 +14,17 @@
 @interface GEOConditionalFormattedString : PBCodable <GEOServerConditionalString, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOCondition *_condition;
     GEOFormattedString *_formattedString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_condition:1;
         unsigned int read_formattedString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_condition:1;
-        unsigned int wrote_formattedString:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -40,14 +40,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) GEOCondition *condition;
 @property(readonly, nonatomic) _Bool hasCondition;
-- (void)_readCondition;
 @property(retain, nonatomic) GEOFormattedString *formattedString;
 @property(readonly, nonatomic) _Bool hasFormattedString;
-- (void)_readFormattedString;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

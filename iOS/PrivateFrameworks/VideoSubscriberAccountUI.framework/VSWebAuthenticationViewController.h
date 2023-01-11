@@ -11,7 +11,7 @@
 #import <VideoSubscriberAccountUI/VSMessageQueueDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSWebAuthenticationViewController-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIWebView, VSViewModel, VSWebAuthenticationViewModel;
+@class NSString, UIActivityIndicatorView, UIWebView, VSWebAuthenticationViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,12 +24,12 @@ __attribute__((visibility("hidden")))
     UIActivityIndicatorView *_activityIndicator;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) UIWebView *webView; // @synthesize webView=_webView;
-@property(readonly, nonatomic) VSViewModel *viewModel;
+@property(retain, nonatomic) VSWebAuthenticationViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
-- (void).cxx_destruct;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)_cancelButtonPressed:(id)arg1;
 - (void)_didEndActivity;
 - (void)_didBeginActivity;
-- (void)setViewModel:(id)arg1;
 - (void)dealloc;
 
 // Remaining properties

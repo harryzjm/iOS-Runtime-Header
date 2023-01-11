@@ -19,13 +19,11 @@
     _Bool _displaysUnavailableActionTypes;
     _Bool _displaysTitles;
     id <CNUIObjectViewControllerDelegate> objectViewControllerDelegate;
-    CNContact *_contact;
     NSArray *_supportedActionTypes;
     double _actionTypesInterspace;
     long long _viewStyle;
     id <CNContactInlineActionsViewControllerDelegate> _delegate;
     NSArray *_actionItems;
-    CNActionsView *_actionsView;
     NSArray *_tokens;
     NSDictionary *_defaultActionPerType;
     id <CNCustomPresentation> _actionsControllerPresentation;
@@ -33,9 +31,14 @@
     CNContactActionsController *_actionsController;
     CNUIContactsEnvironment *_environment;
     CNUIUserActionListDataSource *_actionListDataSource;
+    NSArray *_contacts;
+    CNActionsView *_actionsView;
 }
 
 + (id)descriptorForRequiredKeys;
+- (void).cxx_destruct;
+@property(nonatomic) __weak CNActionsView *actionsView; // @synthesize actionsView=_actionsView;
+@property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property(retain, nonatomic) CNUIUserActionListDataSource *actionListDataSource; // @synthesize actionListDataSource=_actionListDataSource;
 @property(retain, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) CNContactActionsController *actionsController; // @synthesize actionsController=_actionsController;
@@ -43,20 +46,23 @@
 @property(retain, nonatomic) id <CNCustomPresentation> actionsControllerPresentation; // @synthesize actionsControllerPresentation=_actionsControllerPresentation;
 @property(copy, nonatomic) NSDictionary *defaultActionPerType; // @synthesize defaultActionPerType=_defaultActionPerType;
 @property(copy, nonatomic) NSArray *tokens; // @synthesize tokens=_tokens;
-@property(nonatomic) __weak CNActionsView *actionsView; // @synthesize actionsView=_actionsView;
 @property(copy, nonatomic) NSArray *actionItems; // @synthesize actionItems=_actionItems;
 @property(nonatomic) __weak id <CNContactInlineActionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long viewStyle; // @synthesize viewStyle=_viewStyle;
 @property(nonatomic) double actionTypesInterspace; // @synthesize actionTypesInterspace=_actionTypesInterspace;
 @property(copy, nonatomic) NSArray *supportedActionTypes; // @synthesize supportedActionTypes=_supportedActionTypes;
-@property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(nonatomic) _Bool displaysTitles; // @synthesize displaysTitles=_displaysTitles;
 @property(nonatomic) _Bool displaysUnavailableActionTypes; // @synthesize displaysUnavailableActionTypes=_displaysUnavailableActionTypes;
 @property(nonatomic) __weak id <CNUIObjectViewControllerDelegate> objectViewControllerDelegate; // @synthesize objectViewControllerDelegate;
-- (void).cxx_destruct;
-- (void)showDisambiguationFromSourceView:(id)arg1 actionType:(id)arg2;
+- (id)actionImageTextStyleForViewStyle:(long long)arg1;
+- (_Bool)isGroupActionsView;
+- (void)performGroupActionForType:(id)arg1;
+- (void)setupGroupActions;
+- (_Bool)shouldShowDisambiguationForAction:(id)arg1;
+- (void)generateActionsControllerForActionType:(id)arg1;
 - (void)performAction:(id)arg1;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
+- (_Bool)actionsView:(id)arg1 shouldPresentDisambiguationUIForAction:(id)arg2;
 - (void)didSelectAction:(id)arg1 withSourceView:(id)arg2 longPress:(_Bool)arg3;
 - (void)reset;
 - (id)existingActionItemForType:(id)arg1;
@@ -66,7 +72,9 @@
 - (void)displayActionForType:(id)arg1 withDefaultAction:(id)arg2 enabled:(_Bool)arg3;
 - (void)processModels:(id)arg1;
 - (void)discoverAvailableActionTypes;
+- (void)loadCachedActions;
 - (id)allModelsObservable;
+- (void)contactActionsController:(id)arg1 didUpdateWithMenu:(id)arg2;
 - (void)updateVisibleActionItems:(id)arg1;
 - (void)displayAdditionalActionItems:(id)arg1;
 - (void)removeVisibleActionItems:(id)arg1;
@@ -74,10 +82,14 @@
 - (void)loadView;
 @property(readonly, nonatomic) double throttleDelay;
 - (void)checkinLaunchTasksForUndiscoverableActionsForContact:(id)arg1;
+- (void)setupSingleContactActions;
+@property(retain, nonatomic) CNContact *contact;
 - (void)displayAllSupportedTypesDisabled;
 - (void)updateDesiredTitleFontSizeIfNeeded;
+- (_Bool)_canShowWhileLocked;
 - (void)dealloc;
 - (id)initWithActionListDataSource:(id)arg1 environment:(id)arg2;
+- (id)initWithContactActionsContext:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties

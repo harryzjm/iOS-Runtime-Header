@@ -19,10 +19,11 @@
     NSMutableDictionary *_context;
 }
 
++ (id)matchingDescriptionWithEventNode:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *context; // @synthesize context=_context;
 @property(nonatomic) double score; // @synthesize score=_score;
 @property(readonly, nonatomic) PGGraphNode<PGGraphRelatableEvent> *event; // @synthesize event=_event;
-- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;

@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) _Bool isRotated;
 @property(readonly, nonatomic) _Bool isPitched;
 @property(readonly, nonatomic) double maxPitch;
+@property(readonly, nonatomic) double minPitch;
 @property(readonly, nonatomic) double altitude;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
 @property(nonatomic) double pitch;

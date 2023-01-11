@@ -10,16 +10,9 @@
 {
 }
 
-+ (id)familyNames;
-+ (id)hardwareModel;
 + (id)sharedInstance;
-- (void)addToDictionary:(id)arg1 perfMetric:(id)arg2;
-- (void)addToDictionary:(id)arg1 perfMetricFamily:(id)arg2;
 - (id)dictionary;
-- (void)addToStatsPrinter:(id)arg1 perfMetricFamily:(id)arg2;
 - (id)string;
-- (void)dealloc;
-- (id)init;
 
 @end
 

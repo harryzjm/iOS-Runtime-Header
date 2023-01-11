@@ -10,5 +10,6 @@
 - (double)peakSpeed;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
+- (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 @end
 

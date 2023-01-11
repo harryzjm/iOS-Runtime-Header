@@ -18,14 +18,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completion;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(readonly, copy, nonatomic) HKDevice *device; // @synthesize device=_device;
 @property(readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(readonly, copy, nonatomic) NSArray *data; // @synthesize data=_data;
 @property(readonly, copy, nonatomic) NSUUID *batchUUID; // @synthesize batchUUID=_batchUUID;
-- (void).cxx_destruct;
 - (id)description;
-- (id)initWithData:(id)arg1 metadata:(id)arg2 device:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithIdentifier:(id)arg1 data:(id)arg2 metadata:(id)arg3 device:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)init;
 
 @end

@@ -35,6 +35,7 @@
 }
 
 + (_Bool)_shouldTransitionEarlyOnSystemRoute;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AVExternalPlaybackMonitor *externalPlaybackMonitor; // @synthesize externalPlaybackMonitor=_externalPlaybackMonitor;
 @property(copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
 @property(retain, nonatomic) MPAVEndpointRoute *selectedRoute; // @synthesize selectedRoute=_selectedRoute;
@@ -46,7 +47,6 @@
 @property(copy, nonatomic) CDUnknownBlockType homeGestureDismissalAllowedBlock; // @synthesize homeGestureDismissalAllowedBlock=_homeGestureDismissalAllowedBlock;
 @property(copy, nonatomic) CDUnknownBlockType routingCornerViewTappedBlock; // @synthesize routingCornerViewTappedBlock=_routingCornerViewTappedBlock;
 @property(retain, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)homeObserverDidUpdateKnownUIDs:(id)arg1;
 - (void)_transitionToVisibleIfNeeded;
 - (_Bool)_isReadyForAppearanceTransition;
@@ -87,6 +87,8 @@
 - (id)platterViewController:(id)arg1 presentingViewForPresentedViewController:(id)arg2;
 - (void)platterViewController:(id)arg1 willToggleRoutingPicker:(_Bool)arg2;
 - (void)platterViewController:(id)arg1 didToggleRoutingPicker:(_Bool)arg2;
+- (_Bool)shouldExpandModuleOnTouch:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
 - (void)dismissPresentedContentAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)canDismissPresentedContent;
 @property(readonly, nonatomic) _Bool providesOwnPlatter;
@@ -110,6 +112,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
 @property(readonly) Class superclass;
 
 @end

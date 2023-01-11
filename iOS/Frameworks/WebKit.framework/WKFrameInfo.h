@@ -24,7 +24,8 @@
 @property(readonly, nonatomic, getter=isMainFrame) _Bool mainFrame;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-@property(readonly, nonatomic) _WKFrameHandle *_handle;
+@property(readonly, copy, nonatomic) _WKFrameHandle *_parentFrameHandle;
+@property(readonly, copy, nonatomic) _WKFrameHandle *_handle;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

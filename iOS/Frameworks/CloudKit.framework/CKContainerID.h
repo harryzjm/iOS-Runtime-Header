@@ -13,16 +13,20 @@
 
 @interface CKContainerID : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _isTestContainer;
+    _Bool _isAppleInternal;
     NSString *_containerIdentifier;
     long long _environment;
+    long long _specialContainerType;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) long long environment; // @synthesize environment=_environment;
-@property(readonly, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 - (void).cxx_destruct;
-- (id)dictionaryRepresentation;
-- (id)initWithDictionaryRepresentation:(id)arg1;
+@property(nonatomic) _Bool isAppleInternal; // @synthesize isAppleInternal=_isAppleInternal;
+@property(nonatomic) _Bool isTestContainer; // @synthesize isTestContainer=_isTestContainer;
+@property(nonatomic) long long specialContainerType; // @synthesize specialContainerType=_specialContainerType;
+@property(readonly, nonatomic) long long environment; // @synthesize environment=_environment;
+@property(readonly, copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -30,7 +34,13 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)CKPropertiesDescription;
+- (id)ckShortDescription;
+- (id)representativeDataclass;
+- (void)_deriveContainerAttributes;
+- (id)initWithSqliteRepresentation:(id)arg1;
+- (id)sqliteRepresentation;
 - (id)initWithContainerIdentifier:(id)arg1 environment:(long long)arg2;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 
 @end
 

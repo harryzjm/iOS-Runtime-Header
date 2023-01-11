@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
+@class PLAssetsdClientSandboxExtensions;
 
 @interface PLAssetsdLibraryClient
 {
-    NSMutableDictionary *_securityScopedURLs;
+    _Atomic _Bool _isOpen;
+    PLAssetsdClientSandboxExtensions *_sandboxExtensions;
 }
 
 - (void).cxx_destruct;
-- (void)_stopUsingSecurityScopedURLs;
 - (_Bool)_consumeSandboxExtensions:(id)arg1;
 - (void)pendingEventsForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -22,16 +22,17 @@
 - (id)_assetURIStringsForPhotos:(id)arg1;
 - (_Bool)repairSingletonObjectsWithError:(id *)arg1;
 - (void)recoverFromCrashIfNeeded;
-- (void)importFileSystemAssetsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (_Bool)synchronouslyImportFileSystemAssetsWithError:(id *)arg1;
+- (id)importFileSystemAssetsForce:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)synchronouslyImportFileSystemAssetsForce:(_Bool)arg1 withError:(id *)arg2;
 - (id)getPhotoLibraryStoreXPCListenerEndpoint;
-- (_Bool)shutdownPhotoLibraryDatabaseWithError:(id *)arg1;
-- (id)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)upgradePhotoLibraryDatabaseWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)openPhotoLibraryDatabaseWithoutProgressIfNeededWithOptions:(id)arg1 error:(id *)arg2;
+- (_Bool)openPhotoLibraryDatabaseWithPostOpenProgress:(id *)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)openPhotoLibraryDatabaseWithPostOpenProgress:(id *)arg1 error:(id *)arg2;
-- (_Bool)createPhotoLibraryDatabaseWithError:(id *)arg1;
+- (_Bool)createPhotoLibraryDatabaseWithOptions:(id)arg1 error:(id *)arg2;
 - (long long)getCurrentModelVersion;
 - (void)launchAssetsd;
-- (void)dealloc;
+- (id)initWithQueue:(id)arg1 proxyCreating:(id)arg2 proxyGetter:(SEL)arg3 sandboxExtensions:(id)arg4;
 
 @end
 

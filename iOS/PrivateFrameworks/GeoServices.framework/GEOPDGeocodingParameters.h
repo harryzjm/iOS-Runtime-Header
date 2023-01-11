@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDGeocodingParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_queryString;
     GEOStructuredAddress *_structuredAddress;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _maxResults;
     struct {
         unsigned int has_maxResults:1;
@@ -26,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_queryString:1;
         unsigned int read_structuredAddress:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_queryString:1;
-        unsigned int wrote_structuredAddress:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -46,19 +44,21 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOStructuredAddress *structuredAddress;
 @property(readonly, nonatomic) _Bool hasStructuredAddress;
-- (void)_readStructuredAddress;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(nonatomic) _Bool hasMaxResults;
 @property(nonatomic) unsigned int maxResults;
 @property(retain, nonatomic) NSString *queryString;
 @property(readonly, nonatomic) _Bool hasQueryString;
-- (void)_readQueryString;
+- (id)initWithData:(id)arg1;
+- (id)init;
 - (id)initWithForwardGeocodeAddressString:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)initWithForwardGeocodeAddress:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)initWithForwardGeocodeAddress:(id)arg1 addressString:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;

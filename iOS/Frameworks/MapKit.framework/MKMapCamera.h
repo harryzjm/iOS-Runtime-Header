@@ -19,6 +19,7 @@
     double _altitude;
     MKMapView *_mapView;
     _Bool _pitchAdjustsAltitude;
+    _Bool _needsStateUpdate;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -27,16 +28,17 @@
 + (id)cameraLookingAtCenterCoordinate:(struct CLLocationCoordinate2D)arg1 fromDistance:(double)arg2 pitch:(double)arg3 heading:(double)arg4;
 + (id)cameraLookingAtCenterCoordinate:(struct CLLocationCoordinate2D)arg1 fromEyeCoordinate:(struct CLLocationCoordinate2D)arg2 eyeAltitude:(double)arg3;
 + (id)camera;
-@property(nonatomic) double altitude; // @synthesize altitude=_altitude;
-@property(nonatomic, getter=_precisePitch, setter=_setPrecisePitch:) double precisePitch; // @synthesize precisePitch=_pitch;
-@property(nonatomic) double heading; // @synthesize heading=_heading;
-@property(nonatomic) struct CLLocationCoordinate2D centerCoordinate; // @synthesize centerCoordinate=_centerCoordinate;
 - (void).cxx_destruct;
+@property(nonatomic, getter=_precisePitch, setter=_setPrecisePitch:) double precisePitch; // @synthesize precisePitch=_pitch;
 - (_Bool)_validate;
 - (id)description;
 - (void)_updateState;
 @property(nonatomic) double centerCoordinateDistance;
+@property(nonatomic) double altitude; // @synthesize altitude=_altitude;
 @property(nonatomic) double pitch;
+@property(nonatomic) double heading; // @synthesize heading=_heading;
+@property(nonatomic) struct CLLocationCoordinate2D centerCoordinate; // @synthesize centerCoordinate=_centerCoordinate;
+- (void)_mapViewStateChanged;
 - (void)_setMapView:(id)arg1;
 - (id)_mapView;
 - (_Bool)isEqual:(id)arg1;

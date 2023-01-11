@@ -21,6 +21,7 @@
     _Bool _executablePathNeedsCorrection;
     unsigned long long _executableLoadAddress;
     int _cpuType;
+    unsigned int _platform;
     _Bool _is64Bit;
     struct timeval _proc_starttime;
     unsigned long long _physicalFootprint;
@@ -43,9 +44,9 @@
 
 + (struct _CSTypeRef)symbolicatorFromBinaryImagesDescription:(id)arg1;
 + (id)parseBinaryImagesDescription:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
 @property(readonly, nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (void)cleansePathsIncludingBinaryImageList:(_Bool)arg1;

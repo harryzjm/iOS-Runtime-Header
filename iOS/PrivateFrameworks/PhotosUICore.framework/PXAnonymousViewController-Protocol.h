@@ -8,6 +8,7 @@
 
 @protocol PXAnonymousViewController <NSObject>
 @property(readonly, nonatomic) _Bool px_isVisible;
+@property(readonly, nonatomic) struct CGSize px_windowReferenceSize;
 @property(readonly, nonatomic) struct CGSize px_referenceSize;
 @property(readonly, nonatomic) struct UIEdgeInsets px_layoutMargins;
 @property(readonly, nonatomic) struct UIEdgeInsets px_safeAreaInsets;

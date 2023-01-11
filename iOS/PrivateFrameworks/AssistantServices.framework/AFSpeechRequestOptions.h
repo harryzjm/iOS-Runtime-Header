@@ -8,7 +8,7 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFLanguageDetectionUserContext, AFMyriadContext, AFSpeechSynthesisRecord, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
+@class AFLanguageDetectionUserContext, AFMyriadContext, AFSpeechRecordingAlertPolicy, AFSpeechSynthesisRecord, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
 
 @interface AFSpeechRequestOptions : NSObject <NSSecureCoding>
 {
@@ -21,20 +21,25 @@
     _Bool _usePrelisteningMode;
     _Bool _pendCallbacksUntilAfterContinuation;
     _Bool _useBorealisBuffer;
-    _Bool _fetchSmartSiriVolume;
+    _Bool _reloadSmartSiriVolume;
+    _Bool _skipPersonalizedASR;
     _Bool _suppressStartAlert;
     _Bool _suppressStopAlert;
     _Bool _hasPlayedStartAlert;
     _Bool _isOnPhoneCall;
+    _Bool _isMediaPlaying;
+    float _mediaPlaybackVolume;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
     NSString *_serverCommandId;
     long long _endpointerOperationMode;
+    AFSpeechRecordingAlertPolicy *_recordingAlertPolicy;
     double _homeButtonDownEventTime;
     unsigned long long _homeButtonDownEventMachAbsoluteTime;
     double _activationEventTime;
     unsigned long long _activationEventMachAbsoluteTime;
     double _expectedActivationEventTime;
+    unsigned long long _stopRecordingHostTime;
     NSNumber *_homeButtonUpFromBeep;
     long long _audioFileType;
     NSFileHandle *_audioFileHandle;
@@ -53,13 +58,26 @@
     NSDictionary *_stopContext;
     AFLanguageDetectionUserContext *_languageDetectionUserContext;
     long long _dictationInputOrigin;
-    struct NSUUID *_turnIdentifier;
+    NSUUID *_turnIdentifier;
+    long long _presentationMode;
+    NSString *_preheatTestLanguage;
+    NSURL *_preheatTestModelPath;
+    NSString *_applicationDisplayName;
+    NSString *_applicationBundleIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
+@property(copy, nonatomic) NSString *applicationDisplayName; // @synthesize applicationDisplayName=_applicationDisplayName;
+@property(copy, nonatomic) NSURL *preheatTestModelPath; // @synthesize preheatTestModelPath=_preheatTestModelPath;
+@property(copy, nonatomic) NSString *preheatTestLanguage; // @synthesize preheatTestLanguage=_preheatTestLanguage;
+@property(nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property(copy, nonatomic) NSUUID *turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;
 @property(nonatomic) long long dictationInputOrigin; // @synthesize dictationInputOrigin=_dictationInputOrigin;
 @property(copy, nonatomic) AFLanguageDetectionUserContext *languageDetectionUserContext; // @synthesize languageDetectionUserContext=_languageDetectionUserContext;
+@property(nonatomic) float mediaPlaybackVolume; // @synthesize mediaPlaybackVolume=_mediaPlaybackVolume;
+@property(nonatomic) _Bool isMediaPlaying; // @synthesize isMediaPlaying=_isMediaPlaying;
 @property(nonatomic) _Bool isOnPhoneCall; // @synthesize isOnPhoneCall=_isOnPhoneCall;
 @property(copy, nonatomic) NSDictionary *stopContext; // @synthesize stopContext=_stopContext;
 @property(copy, nonatomic) NSDictionary *startContext; // @synthesize startContext=_startContext;
@@ -73,7 +91,8 @@
 @property(nonatomic) _Bool suppressStartAlert; // @synthesize suppressStartAlert=_suppressStartAlert;
 @property(copy, nonatomic) NSURL *audioFileURL; // @synthesize audioFileURL=_audioFileURL;
 @property(copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
-@property(nonatomic) _Bool fetchSmartSiriVolume; // @synthesize fetchSmartSiriVolume=_fetchSmartSiriVolume;
+@property(nonatomic) _Bool skipPersonalizedASR; // @synthesize skipPersonalizedASR=_skipPersonalizedASR;
+@property(nonatomic) _Bool reloadSmartSiriVolume; // @synthesize reloadSmartSiriVolume=_reloadSmartSiriVolume;
 @property(nonatomic) _Bool useBorealisBuffer; // @synthesize useBorealisBuffer=_useBorealisBuffer;
 @property(nonatomic) _Bool pendCallbacksUntilAfterContinuation; // @synthesize pendCallbacksUntilAfterContinuation=_pendCallbacksUntilAfterContinuation;
 @property(nonatomic) _Bool usePrelisteningMode; // @synthesize usePrelisteningMode=_usePrelisteningMode;
@@ -87,19 +106,20 @@
 @property(nonatomic) _Bool acousticIdEnabled; // @synthesize acousticIdEnabled=_acousticIdEnabled;
 @property(copy, nonatomic) NSNumber *homeButtonUpFromBeep; // @synthesize homeButtonUpFromBeep=_homeButtonUpFromBeep;
 @property(nonatomic) _Bool isInitialBringUp; // @synthesize isInitialBringUp=_isInitialBringUp;
+@property(nonatomic) unsigned long long stopRecordingHostTime; // @synthesize stopRecordingHostTime=_stopRecordingHostTime;
 @property(nonatomic) double expectedActivationEventTime; // @synthesize expectedActivationEventTime=_expectedActivationEventTime;
 @property(nonatomic) unsigned long long activationEventMachAbsoluteTime; // @synthesize activationEventMachAbsoluteTime=_activationEventMachAbsoluteTime;
 @property(nonatomic) double activationEventTime; // @synthesize activationEventTime=_activationEventTime;
 @property(nonatomic) unsigned long long homeButtonDownEventMachAbsoluteTime; // @synthesize homeButtonDownEventMachAbsoluteTime=_homeButtonDownEventMachAbsoluteTime;
 @property(nonatomic) double homeButtonDownEventTime; // @synthesize homeButtonDownEventTime=_homeButtonDownEventTime;
 @property(nonatomic) _Bool useStreamingDictation; // @synthesize useStreamingDictation=_useStreamingDictation;
+@property(copy, nonatomic) AFSpeechRecordingAlertPolicy *recordingAlertPolicy; // @synthesize recordingAlertPolicy=_recordingAlertPolicy;
 @property(nonatomic) long long endpointerOperationMode; // @synthesize endpointerOperationMode=_endpointerOperationMode;
 @property(nonatomic) _Bool useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property(copy, nonatomic) NSString *serverCommandId; // @synthesize serverCommandId=_serverCommandId;
 @property(nonatomic) _Bool isEyesFree; // @synthesize isEyesFree=_isEyesFree;
 @property(copy, nonatomic) NSString *activationDeviceIdentifier; // @synthesize activationDeviceIdentifier=_activationDeviceIdentifier;
 @property(nonatomic) long long activationEvent; // @synthesize activationEvent=_activationEvent;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(copy, nonatomic) NSString *btDeviceAddress;
 - (id)initWithCoder:(id)arg1;

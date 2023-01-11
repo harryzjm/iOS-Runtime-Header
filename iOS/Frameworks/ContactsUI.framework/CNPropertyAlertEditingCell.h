@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)wantsHorizontalLayout;
 - (id)variableConstraints;
-- (_Bool)shouldIndentWhileEditing;
 - (double)minCellHeight;
 - (_Bool)allowsCellSelection;
 

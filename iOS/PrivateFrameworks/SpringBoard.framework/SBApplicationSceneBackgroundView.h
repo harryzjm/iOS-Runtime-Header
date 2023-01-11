@@ -15,18 +15,18 @@
     long long _wallpaperStyle;
     SBWallpaperEffectView *_backgroundWallpaperEffectView;
     _Bool _needsClassicModeBackground;
+    _Bool _fullscreen;
     _Bool _shouldUseBrightMaterial;
+    unsigned long long _transformOptions;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldUseBrightMaterial; // @synthesize shouldUseBrightMaterial=_shouldUseBrightMaterial;
+@property(nonatomic) unsigned long long transformOptions; // @synthesize transformOptions=_transformOptions;
+@property(nonatomic, getter=isFullscreen) _Bool fullscreen; // @synthesize fullscreen=_fullscreen;
 @property(nonatomic) _Bool needsClassicModeBackground; // @synthesize needsClassicModeBackground=_needsClassicModeBackground;
 @property(nonatomic) long long wallpaperStyle; // @synthesize wallpaperStyle=_wallpaperStyle;
-- (void).cxx_destruct;
-- (void)_teardownBackgroundWallpaperEffectView;
-- (id)_backgroundWallpaperEffectView;
-- (id)_opaqueBackgroundColorOrClearColor;
 - (void)_setupBackground;
-- (_Bool)_isTranslucent;
 @property(readonly, copy) NSString *description;
 - (id)initWithFrame:(struct CGRect)arg1;
 

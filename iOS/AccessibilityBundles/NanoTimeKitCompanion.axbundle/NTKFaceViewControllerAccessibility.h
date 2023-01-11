@@ -12,9 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)faceViewWantsCustomKeylineFramesReloadedForEditMode:(long long)arg1;
-- (void)_endTransitionToValue:(long long)arg1 forEditMode:(long long)arg2;
-- (void)_tearDownEditing;
-- (void)_setupEditing;
 - (void)configureWithDuration:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 

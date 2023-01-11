@@ -13,23 +13,23 @@
 @interface GEORPFeedbackUserInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSData *_devicePushToken;
     NSString *_preferredEmail;
+    NSString *_ugcUserId;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_devicePushToken:1;
         unsigned int read_preferredEmail:1;
+        unsigned int read_ugcUserId:1;
         unsigned int read_userCredentials:1;
         unsigned int read_userEmail:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_devicePushToken:1;
-        unsigned int wrote_preferredEmail:1;
-        unsigned int wrote_userCredentials:1;
-        unsigned int wrote_userEmail:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,20 +45,23 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *ugcUserId;
+@property(readonly, nonatomic) _Bool hasUgcUserId;
 @property(retain, nonatomic) NSString *preferredEmail;
 @property(readonly, nonatomic) _Bool hasPreferredEmail;
-- (void)_readPreferredEmail;
 @property(retain, nonatomic) NSString *userEmail;
 @property(readonly, nonatomic) _Bool hasUserEmail;
-- (void)_readUserEmail;
 @property(retain, nonatomic) NSData *devicePushToken;
 @property(readonly, nonatomic) _Bool hasDevicePushToken;
-- (void)_readDevicePushToken;
 @property(retain, nonatomic) GEORPUserCredentials *userCredentials;
 @property(readonly, nonatomic) _Bool hasUserCredentials;
-- (void)_readUserCredentials;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

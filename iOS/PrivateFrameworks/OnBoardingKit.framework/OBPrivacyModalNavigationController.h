@@ -11,14 +11,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _dismissButtonPressedHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy) CDUnknownBlockType dismissButtonPressedHandler; // @synthesize dismissButtonPressedHandler=_dismissButtonPressedHandler;
 @property(nonatomic, getter=isDarkMode) _Bool darkMode; // @synthesize darkMode=_darkMode;
-- (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
 - (unsigned long long)supportedInterfaceOrientations;
 - (long long)preferredUserInterfaceStyle;
 - (void)_doneButtonPressed;
 - (void)addDismissButtonWithPressedHandler:(CDUnknownBlockType)arg1;
-- (void)viewDidLoad;
 
 @end
 

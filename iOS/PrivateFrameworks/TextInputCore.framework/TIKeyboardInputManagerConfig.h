@@ -28,6 +28,7 @@
     _Bool _shouldIgnoreCPRequirements;
     _Bool _usesCJContinuousPath;
     _Bool _testing;
+    _Bool _skipLanguageLayoutCheckCPML;
     _Bool _usesCustomNgramModel;
     _Bool _usesCustomStaticDictionary;
     _Bool _usesDODMLLogging;
@@ -44,10 +45,12 @@
     unsigned long long _maxWordsPerPrediction;
     NSDictionary *_continuousPathParams;
     double _continuousPathLanguageWeight;
+    long long _cpCandidatesCount;
     unsigned long long _sensorKitWordsThreshold;
 }
 
 + (id)configurationForInputMode:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool usesUserModelLogging; // @synthesize usesUserModelLogging=_usesUserModelLogging;
 @property(nonatomic) _Bool allowRelaxedOVSPolicy; // @synthesize allowRelaxedOVSPolicy=_allowRelaxedOVSPolicy;
 @property(nonatomic) unsigned long long sensorKitWordsThreshold; // @synthesize sensorKitWordsThreshold=_sensorKitWordsThreshold;
@@ -55,8 +58,10 @@
 @property(nonatomic) _Bool usesDODMLLogging; // @synthesize usesDODMLLogging=_usesDODMLLogging;
 @property(nonatomic) _Bool usesCustomStaticDictionary; // @synthesize usesCustomStaticDictionary=_usesCustomStaticDictionary;
 @property(nonatomic) _Bool usesCustomNgramModel; // @synthesize usesCustomNgramModel=_usesCustomNgramModel;
+@property(nonatomic) _Bool skipLanguageLayoutCheckCPML; // @synthesize skipLanguageLayoutCheckCPML=_skipLanguageLayoutCheckCPML;
 @property(nonatomic, getter=isTesting) _Bool testing; // @synthesize testing=_testing;
 @property(nonatomic) _Bool usesCJContinuousPath; // @synthesize usesCJContinuousPath=_usesCJContinuousPath;
+@property(nonatomic) long long cpCandidatesCount; // @synthesize cpCandidatesCount=_cpCandidatesCount;
 @property(nonatomic) int cpConfidenceModelType; // @synthesize cpConfidenceModelType=_cpConfidenceModelType;
 @property(nonatomic) _Bool shouldIgnoreCPRequirements; // @synthesize shouldIgnoreCPRequirements=_shouldIgnoreCPRequirements;
 @property(nonatomic) _Bool usesContinuousPathRetrocorrection; // @synthesize usesContinuousPathRetrocorrection=_usesContinuousPathRetrocorrection;
@@ -83,7 +88,6 @@
 @property(copy, nonatomic) NSString *dynamicResourcePath; // @synthesize dynamicResourcePath=_dynamicResourcePath;
 @property(copy, nonatomic) NSString *staticDictionaryPath; // @synthesize staticDictionaryPath=_staticDictionaryPath;
 @property(retain, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
-- (void).cxx_destruct;
 - (id)propertyList;
 @property(nonatomic) _Bool usesWordNgramModelAdaptation;
 

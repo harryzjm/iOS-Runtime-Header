@@ -26,13 +26,16 @@
     NSString *_receiverDestinationID;
     NSString *_receiverISOCountryCode;
     NSURL *_transcriptionURL;
+    NSString *_receiverLabelID;
     unsigned long long _flags;
 }
 
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)flagsByApplyingMailboxType:(long long)arg1 toFlags:(unsigned long long)arg2;
 + (long long)mailboxTypeForFlags:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long flags; // @synthesize flags=_flags;
+@property(copy, nonatomic) NSString *receiverLabelID; // @synthesize receiverLabelID=_receiverLabelID;
 @property(retain, nonatomic) NSURL *transcriptionURL; // @synthesize transcriptionURL=_transcriptionURL;
 @property(copy, nonatomic) NSString *receiverISOCountryCode; // @synthesize receiverISOCountryCode=_receiverISOCountryCode;
 @property(copy, nonatomic) NSString *receiverDestinationID; // @synthesize receiverDestinationID=_receiverDestinationID;
@@ -45,7 +48,6 @@
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) unsigned long long remoteUID; // @synthesize remoteUID=_remoteUID;
-- (void).cxx_destruct;
 - (void)setFlag:(unsigned long long)arg1 enabled:(_Bool)arg2;
 - (id)mailboxTypeDescription;
 - (id)flagDescription;
@@ -75,7 +77,6 @@
 @property(nonatomic, getter=isDeleted) _Bool deleted;
 @property(nonatomic, getter=isDataAvailable) _Bool dataAvailable;
 @property(nonatomic, getter=isBlocked) _Bool blocked;
-- (id)initWithRecord:(const void *)arg1;
 - (id)initWithMessage:(id)arg1;
 @property(readonly, nonatomic) _Bool hasCallbackNumber;
 - (id)contactUsingContactStore:(id)arg1 withKeysToFetch:(id)arg2;

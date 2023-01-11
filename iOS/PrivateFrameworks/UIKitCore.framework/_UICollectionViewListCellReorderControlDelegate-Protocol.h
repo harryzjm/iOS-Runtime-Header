@@ -10,7 +10,7 @@
 
 @protocol _UICollectionViewListCellReorderControlDelegate <NSObject>
 - (void)_reorderControlDidEndReordering:(_UICollectionViewListCellReorderControl *)arg1 cancelled:(_Bool)arg2;
-- (void)_reorderControl:(_UICollectionViewListCellReorderControl *)arg1 didMoveToPoint:(struct CGPoint)arg2;
+- (void)_reorderControl:(_UICollectionViewListCellReorderControl *)arg1 didUpdateWithOffset:(struct CGPoint)arg2;
 - (void)_reorderControlDidBeginReordering:(_UICollectionViewListCellReorderControl *)arg1;
 - (_Bool)_reorderControlShouldBeginReordering:(_UICollectionViewListCellReorderControl *)arg1;
 @end

@@ -8,41 +8,45 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDRecentRouteInfo, GEOPDViewportInfo, NSData, PBDataReader, PBUnknownFields;
+@class GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDSSearchEvChargingParameters, GEOPDViewportInfo, NSData, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategorySearchParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _supportedRelatedEntitySectionTypes;
+    CDStruct_95bda58d _supportedSearchTierTypes;
+    GEOPDETAFilter *_etaFilter;
+    GEOPDSSearchEvChargingParameters *_evChargingParameters;
     GEOPDRecentRouteInfo *_recentRouteInfo;
     NSData *_suggestionEntryMetadata;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    unsigned int _auxiliaryTierNumResults;
     unsigned int _blurredHourOfDay;
     unsigned int _dayOfWeek;
     unsigned int _maxResults;
     int _searchType;
     _Bool _supportCategorySearchResultSection;
     struct {
+        unsigned int has_auxiliaryTierNumResults:1;
         unsigned int has_blurredHourOfDay:1;
         unsigned int has_dayOfWeek:1;
         unsigned int has_maxResults:1;
         unsigned int has_searchType:1;
         unsigned int has_supportCategorySearchResultSection:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_supportedRelatedEntitySectionTypes:1;
+        unsigned int read_supportedSearchTierTypes:1;
+        unsigned int read_etaFilter:1;
+        unsigned int read_evChargingParameters:1;
         unsigned int read_recentRouteInfo:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_recentRouteInfo:1;
-        unsigned int wrote_suggestionEntryMetadata:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_blurredHourOfDay:1;
-        unsigned int wrote_dayOfWeek:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_searchType:1;
-        unsigned int wrote_supportCategorySearchResultSection:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,13 +62,37 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAuxiliaryTierNumResults;
+@property(nonatomic) unsigned int auxiliaryTierNumResults;
+- (int)StringAsSupportedSearchTierTypes:(id)arg1;
+- (id)supportedSearchTierTypesAsString:(int)arg1;
+- (void)setSupportedSearchTierTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedSearchTierTypeAtIndex:(unsigned long long)arg1;
+- (void)addSupportedSearchTierType:(int)arg1;
+- (void)clearSupportedSearchTierTypes;
+@property(readonly, nonatomic) int *supportedSearchTierTypes;
+@property(readonly, nonatomic) unsigned long long supportedSearchTierTypesCount;
+@property(retain, nonatomic) GEOPDETAFilter *etaFilter;
+@property(readonly, nonatomic) _Bool hasEtaFilter;
+- (int)StringAsSupportedRelatedEntitySectionTypes:(id)arg1;
+- (id)supportedRelatedEntitySectionTypesAsString:(int)arg1;
+- (void)setSupportedRelatedEntitySectionTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedRelatedEntitySectionTypeAtIndex:(unsigned long long)arg1;
+- (void)addSupportedRelatedEntitySectionType:(int)arg1;
+- (void)clearSupportedRelatedEntitySectionTypes;
+@property(readonly, nonatomic) int *supportedRelatedEntitySectionTypes;
+@property(readonly, nonatomic) unsigned long long supportedRelatedEntitySectionTypesCount;
+@property(retain, nonatomic) GEOPDSSearchEvChargingParameters *evChargingParameters;
+@property(readonly, nonatomic) _Bool hasEvChargingParameters;
 @property(nonatomic) _Bool hasSupportCategorySearchResultSection;
 @property(nonatomic) _Bool supportCategorySearchResultSection;
 @property(retain, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo;
 @property(readonly, nonatomic) _Bool hasRecentRouteInfo;
-- (void)_readRecentRouteInfo;
 - (int)StringAsSearchType:(id)arg1;
 - (id)searchTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasSearchType;
@@ -75,12 +103,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int blurredHourOfDay;
 @property(retain, nonatomic) NSData *suggestionEntryMetadata;
 @property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-- (void)_readSuggestionEntryMetadata;
 @property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
 @property(readonly, nonatomic) _Bool hasViewportInfo;
-- (void)_readViewportInfo;
 @property(nonatomic) _Bool hasMaxResults;
 @property(nonatomic) unsigned int maxResults;
+- (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -11,6 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_autoHideControlsAfterDelay:(double)arg1;
+- (void)_accessibilityHandlePlayerLayerViewFocused:(id)arg1;
+- (void)_axSetShouldShowRegularControlsBecauseOfAccessibility:(_Bool)arg1;
+- (_Bool)_axShouldShowRegularControlsBecauseOfAccessibility;
+- (void)_accessibilityPlayerLayerViewAccessibilityFocusedChanged:(id)arg1;
+- (void)_axAnnounceAudioControlStateDidChange;
 - (_Bool)_axToggleAudioControls:(id)arg1;
 - (_Bool)_axIsMuted;
 - (void)_axLoadVolumeButtonAccessibilityInformation;

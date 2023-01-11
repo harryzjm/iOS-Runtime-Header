@@ -18,16 +18,11 @@
     MRAVEndpoint *_endpoint;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) MRAVEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(readonly, nonatomic) NSString *outputDeviceUID; // @synthesize outputDeviceUID=_outputDeviceUID;
-- (void).cxx_destruct;
-- (id)_endpointContainingOutputDevice:(id)arg1;
-- (void)_reevaluateEndpoint;
 - (void)_handleOutputContextDidChangeNotification;
-- (void)_handleEndpointsDidChange:(id)arg1;
-- (id)discoveredEndpoints;
 - (void)end;
-- (id)_initializeDiscoverySession;
 - (void)begin;
 @property(copy, nonatomic) CDUnknownBlockType endpointChangedCallback;
 - (id)initWithOutputDeviceUID:(id)arg1;

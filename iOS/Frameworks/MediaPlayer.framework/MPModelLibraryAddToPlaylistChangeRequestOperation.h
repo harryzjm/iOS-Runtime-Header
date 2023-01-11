@@ -6,6 +6,7 @@
 
 @class MPModelLibraryAddToPlaylistChangeRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPModelLibraryAddToPlaylistChangeRequestOperation
 {
     NSOperationQueue *_operationQueue;
@@ -13,11 +14,11 @@
     CDUnknownBlockType _responseHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) MPModelLibraryAddToPlaylistChangeRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 - (_Bool)_isCloudLibraryEnabled;
-- (void)_finishWithCloudLibraryUpdateForPlaylist:(id)arg1;
+- (void)_updateCloudLibraryForPlaylist:(id)arg1;
 - (void)execute;
 
 @end

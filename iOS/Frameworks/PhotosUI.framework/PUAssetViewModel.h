@@ -25,7 +25,7 @@
     _Bool _isUpdatingDisplayedContent;
     _Bool _isFavorite;
     _Bool _accessoryViewVisible;
-    _Bool _isInEditMode;
+    _Bool _lowMemoryMode;
     _Bool _toggleCTM;
     _Bool __needsUpdateVideoPlayers;
     id <PUDisplayAsset> _asset;
@@ -40,6 +40,9 @@
     long long _lastAccessoryViewVisibilityChangeReason;
     long long _lastContentOffsetChangeReason;
     double _contentOffsetOverrideFactor;
+    long long _editStyle;
+    long long _lastEditStyleChangeReason;
+    long long _flippingFullSizeRenderState;
     long long __currentFavoriteOverrideRequest;
     long long _displayedContentUpdateCount;
     PUMediaProvider *_mediaProvider;
@@ -50,6 +53,7 @@
     struct CGPoint _overridingContentOffset;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;
 @property(retain, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property(copy, nonatomic) NSNumber *isFavoriteOverride; // @synthesize isFavoriteOverride=_isFavoriteOverride;
@@ -57,8 +61,11 @@
 @property(nonatomic) long long displayedContentUpdateCount; // @synthesize displayedContentUpdateCount=_displayedContentUpdateCount;
 @property(nonatomic, setter=_setCurrentFavoriteOverrideRequest:) long long _currentFavoriteOverrideRequest; // @synthesize _currentFavoriteOverrideRequest=__currentFavoriteOverrideRequest;
 @property(nonatomic, setter=_setNeedsUpdateVideoPlayers:) _Bool _needsUpdateVideoPlayers; // @synthesize _needsUpdateVideoPlayers=__needsUpdateVideoPlayers;
+@property(nonatomic) long long flippingFullSizeRenderState; // @synthesize flippingFullSizeRenderState=_flippingFullSizeRenderState;
 @property(nonatomic) _Bool toggleCTM; // @synthesize toggleCTM=_toggleCTM;
-@property(nonatomic) _Bool isInEditMode; // @synthesize isInEditMode=_isInEditMode;
+@property(readonly, nonatomic) _Bool lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
+@property(readonly, nonatomic) long long lastEditStyleChangeReason; // @synthesize lastEditStyleChangeReason=_lastEditStyleChangeReason;
+@property(readonly, nonatomic) long long editStyle; // @synthesize editStyle=_editStyle;
 @property(nonatomic) double contentOffsetOverrideFactor; // @synthesize contentOffsetOverrideFactor=_contentOffsetOverrideFactor;
 @property(nonatomic) struct CGPoint overridingContentOffset; // @synthesize overridingContentOffset=_overridingContentOffset;
 @property(nonatomic) struct CGPoint preferredContentOffset; // @synthesize preferredContentOffset=_preferredContentOffset;
@@ -78,7 +85,6 @@
 @property(nonatomic, setter=setUserTransformingTile:) _Bool isUserTransformingTile; // @synthesize isUserTransformingTile=_isUserTransformingTile;
 @property(copy, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
 @property(retain, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
 - (id)debugDetailedDescription;
 - (void)_handleBrowsingAnimatedImage:(id)arg1 didChange:(id)arg2;
 - (void)_handleBrowsingIrisPlayer:(id)arg1 didChange:(id)arg2;
@@ -89,6 +95,8 @@
 - (void)didUpdateDisplayedContent;
 - (void)willUpdateDisplayedContent;
 - (void)_updatePropertiesFromAssetSharedViewModel;
+- (void)setEditStyle:(long long)arg1 changeReason:(long long)arg2;
+@property(readonly, nonatomic) _Bool isInEditMode;
 - (void)setPreferredContentOffset:(struct CGPoint)arg1 changeReason:(long long)arg2;
 - (void)resetContentOffset;
 @property(readonly, nonatomic) struct CGPoint contentOffset;
@@ -110,6 +118,7 @@
 - (id)newViewModelChange;
 - (void)dealloc;
 - (id)init;
+- (id)initWithLowMemoryMode:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

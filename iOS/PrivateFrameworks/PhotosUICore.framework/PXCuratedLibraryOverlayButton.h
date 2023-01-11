@@ -6,49 +6,60 @@
 
 #import <UIKit/UIControl.h>
 
-#import <PhotosUICore/PXAccessibilityView-Protocol.h>
 #import <PhotosUICore/PXGReusableView-Protocol.h>
+#import <PhotosUICore/UIPointerInteractionDelegate-Protocol.h>
 
-@class NSString, PXCuratedLibraryOverlayButtonConfiguration, UIImageView, UILabel, UIView, UIVisualEffectView;
+@class NSString, PXCuratedLibraryOverlayButtonConfiguration, UIImageView, UILabel, UIPointerInteraction, UIView, UIVisualEffectView;
 
-@interface PXCuratedLibraryOverlayButton : UIControl <PXGReusableView, PXAccessibilityView>
+@interface PXCuratedLibraryOverlayButton : UIControl <UIPointerInteractionDelegate, PXGReusableView>
 {
     PXCuratedLibraryOverlayButtonConfiguration *_userData;
+    UIPointerInteraction *_pointerInteraction;
     UIVisualEffectView *_effectView;
     UIView *_contentView;
+    UIView *_solidBackgroundView;
     UIImageView *_iconImageView;
     UILabel *_titleLabel;
+    UILabel *_captionLabel;
+    NSString *_axLabel;
     struct CGRect _clippingRect;
 }
 
-+ (void)_getSize:(out struct CGSize *)arg1 titleFrame:(out struct CGRect *)arg2 iconFrame:(out struct CGRect *)arg3 forConfiguration:(id)arg4 title:(id)arg5;
++ (id)defaultTitleColor;
++ (id)defaultTitleFont;
++ (void)_getSize:(out struct CGSize *)arg1 titleFrame:(out struct CGRect *)arg2 captionFrame:(out struct CGRect *)arg3 iconFrame:(out struct CGRect *)arg4 forConfiguration:(id)arg5 title:(id)arg6;
 + (struct CGSize)sizeWithConfiguration:(id)arg1;
-+ (struct CGSize)_sizeOfTitle:(id)arg1 withFont:(struct UIFont *)arg2;
++ (struct CGSize)_sizeOfTitle:(id)arg1 withFont:(id)arg2;
 + (id)roundedCornerMaskImage:(CDStruct_2bd92d94)arg1 size:(struct CGSize)arg2;
 + (id)buttonSizeCache;
 + (id)titleSizeCache;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *axLabel; // @synthesize axLabel=_axLabel;
+@property(retain, nonatomic) UILabel *captionLabel; // @synthesize captionLabel=_captionLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
+@property(retain, nonatomic) UIView *solidBackgroundView; // @synthesize solidBackgroundView=_solidBackgroundView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
+@property(retain, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property(nonatomic) struct CGRect clippingRect; // @synthesize clippingRect=_clippingRect;
 @property(copy, nonatomic) PXCuratedLibraryOverlayButtonConfiguration *userData; // @synthesize userData=_userData;
-- (void).cxx_destruct;
 - (void)_updateEffectView;
 - (void)_updateEffectViewBackgroundStyle;
 - (void)_platformSpecificViewSetup;
-- (void)_setupEffectView;
+- (void)_updateBackgroundView;
+- (_Bool)canBecomeFocused;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_performAction:(id)arg1;
 - (void)_updateButtonWithConfiguration:(id)arg1;
 - (void)_setupViews;
-@property(readonly, copy, nonatomic) NSString *accessibilityLabel;
-@property(readonly, nonatomic) _Bool isContainedInAsset;
-@property(readonly, nonatomic) _Bool isAccessible;
 - (void)prepareForReuse;
 - (void)becomeReusable;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)layoutSubviews;
 @property(readonly, copy) NSString *description;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

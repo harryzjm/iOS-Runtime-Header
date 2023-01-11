@@ -59,6 +59,7 @@
 + (struct CGPoint)normalizeVectorPoint:(struct CGPoint)arg1;
 + (double)windowBackingScaleFactor:(id)arg1;
 + (_Bool)gpuAvailable;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long renderPreviewMode; // @synthesize renderPreviewMode=_renderPreviewMode;
 @property(nonatomic) __weak id <DKInkViewRenderDelegate> renderPreviewDelegate; // @synthesize renderPreviewDelegate=_renderPreviewDelegate;
 @property(readonly, nonatomic) _Bool isRenderingPaused; // @synthesize isRenderingPaused=_isRenderingPaused;
@@ -92,7 +93,6 @@
 @property(nonatomic) double minPressure; // @synthesize minPressure=_minPressure;
 @property(retain, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property(readonly, nonatomic) _Bool trackingTouches; // @synthesize trackingTouches=_trackingTouches;
-- (void).cxx_destruct;
 - (void)_updateVelocityWithTouch:(id)arg1 average:(_Bool)arg2;
 - (MISSING_TYPE *)_vector4ForTouchSettingWeightAndVelocity:(id)arg1 average:(_Bool)arg2;
 - (void)handleCoalescedTouches:(id)arg1 forTouch:(id)arg2 average:(_Bool)arg3;

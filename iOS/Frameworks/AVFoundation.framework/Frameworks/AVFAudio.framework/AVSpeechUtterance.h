@@ -14,6 +14,7 @@
 @interface AVSpeechUtterance : NSObject <NSCopying, NSSecureCoding>
 {
     AVSpeechSynthesisVoice *_voice;
+    _Bool _prefersAssistiveTechnologySettings;
     float _rate;
     float _pitchMultiplier;
     float _volume;
@@ -24,21 +25,24 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)speechUtteranceWithSSMLRepresentation:(id)arg1;
 + (id)speechUtteranceWithAttributedString:(id)arg1;
 + (id)speechUtteranceWithString:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) double postUtteranceDelay; // @synthesize postUtteranceDelay=_postUtteranceDelay;
 @property(nonatomic) double preUtteranceDelay; // @synthesize preUtteranceDelay=_preUtteranceDelay;
+@property(nonatomic) _Bool prefersAssistiveTechnologySettings; // @synthesize prefersAssistiveTechnologySettings=_prefersAssistiveTechnologySettings;
 @property(nonatomic) float volume; // @synthesize volume=_volume;
 @property(nonatomic) float pitchMultiplier; // @synthesize pitchMultiplier=_pitchMultiplier;
 @property(nonatomic) float rate; // @synthesize rate=_rate;
 @property(retain, nonatomic) NSAttributedString *attributedSpeechString; // @synthesize attributedSpeechString=_attributedSpeechString;
 @property(retain, nonatomic) NSString *speechString; // @synthesize speechString=_speechString;
 @property(retain, nonatomic) AVSpeechSynthesisVoice *voice; // @synthesize voice=_voice;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithSSMLRepresentation:(id)arg1;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithString:(id)arg1;
 

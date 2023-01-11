@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreHAP/HAPNumberParser.h>
+
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDAudioCodecGroup <NSCopying, NSSecureCoding>
+@interface HMDAudioCodecGroup : HAPNumberParser <NSCopying, NSSecureCoding>
 {
     unsigned long long _codec;
 }

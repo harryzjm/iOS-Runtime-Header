@@ -13,13 +13,14 @@
     struct __CNNetwork *_network;
 }
 
-@property(readonly, getter=isChosenHelper) _Bool chosenHelper;
-@property(readonly, getter=didJustJoin) _Bool justJoined;
-@property(readonly, getter=didAutoJoin) _Bool autoJoined;
-@property(readonly, getter=isSecure) _Bool secure;
++ (void)fetchCurrentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)isChosenHelper;
+- (_Bool)didJustJoin;
+- (_Bool)didAutoJoin;
+- (_Bool)isSecure;
 - (void)setPassword:(id)arg1;
 - (void)setConfidence:(long long)arg1;
-@property(readonly) double signalStrength;
+- (double)signalStrength;
 @property(readonly) NSString *BSSID;
 @property(readonly) NSString *SSID;
 @property(readonly) NSString *interfaceName;

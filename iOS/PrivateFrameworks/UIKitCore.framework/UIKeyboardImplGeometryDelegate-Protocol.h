@@ -9,6 +9,7 @@
 - (_Bool)isAutomatic;
 - (_Bool)isActive;
 - (_Bool)canDismiss;
+- (void)syncMinimizedStateToHardwareKeyboardAttachedState;
 - (_Bool)shouldSaveMinimizationState;
 - (void)implBoundsHeightChangeDone:(double)arg1 suppressNotification:(_Bool)arg2;
 - (void)prepareForImplBoundsHeightChange:(double)arg1 suppressNotification:(_Bool)arg2;

@@ -8,28 +8,28 @@
 
 @interface IMPingStatistics : NSObject
 {
-    double _packetLossRate;
+    double _sumRoundtripTimes;
+    int _numPacketsSuccessfullySent;
+    int _numPingsTransmitted;
+    int _numPingsReceived;
+    int _packetsSuccessfullySent;
     double _medianRoundtripTime;
     double _averageRoundtripTime;
     double _minRoundtripTime;
     double _maxRoundtripTime;
     double _standardDeviationRoundtripTime;
-    double _sumRoundtripTimes;
-    int _numPingsTransmitted;
-    int _numPingsReceived;
-    int _numPacketsSuccessfullySent;
 }
 
 @property(nonatomic, setter=_setStandardDeviationRoundtripTime:) double standardDeviationRoundtripTime; // @synthesize standardDeviationRoundtripTime=_standardDeviationRoundtripTime;
-@property(readonly, nonatomic) int packetsSuccessfullySent; // @synthesize packetsSuccessfullySent=_numPacketsSuccessfullySent;
-@property(readonly, nonatomic) int numPingsTransmitted; // @synthesize numPingsTransmitted=_numPingsTransmitted;
+@property(readonly, nonatomic) int packetsSuccessfullySent; // @synthesize packetsSuccessfullySent=_packetsSuccessfullySent;
 @property(readonly, nonatomic) int numPingsReceived; // @synthesize numPingsReceived=_numPingsReceived;
-@property(readonly, nonatomic) double averageRoundtripTime; // @synthesize averageRoundtripTime=_averageRoundtripTime;
-@property(nonatomic, setter=_setMinRoundtripTime:) double minRoundtripTime; // @synthesize minRoundtripTime=_minRoundtripTime;
-@property(nonatomic, setter=_setMedianRoundtripTime:) double medianRoundtripTime; // @synthesize medianRoundtripTime=_medianRoundtripTime;
+@property(readonly, nonatomic) int numPingsTransmitted; // @synthesize numPingsTransmitted=_numPingsTransmitted;
 @property(nonatomic, setter=_setMaxRoundtripTime:) double maxRoundtripTime; // @synthesize maxRoundtripTime=_maxRoundtripTime;
+@property(nonatomic, setter=_setMinRoundtripTime:) double minRoundtripTime; // @synthesize minRoundtripTime=_minRoundtripTime;
+@property(readonly, nonatomic) double averageRoundtripTime; // @synthesize averageRoundtripTime=_averageRoundtripTime;
+@property(nonatomic, setter=_setMedianRoundtripTime:) double medianRoundtripTime; // @synthesize medianRoundtripTime=_medianRoundtripTime;
 - (id)description;
-@property(readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
+@property(readonly, nonatomic) double packetLossRate;
 - (void)_addReceivedPacket:(double)arg1;
 - (void)_addTransmittedPacket:(_Bool)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

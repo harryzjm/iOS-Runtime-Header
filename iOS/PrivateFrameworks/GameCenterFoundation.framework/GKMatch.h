@@ -10,7 +10,7 @@
 #import <GameCenterFoundation/GKSessionPrivateDelegate-Protocol.h>
 
 @class GKConnection, GKSession, GKThreadsafeDictionary, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol GKMatchDelegate, OS_dispatch_queue;
+@protocol GKMatchDelegate, GKMatchDelegatePrivate, OS_dispatch_queue;
 
 @interface GKMatch : NSObject <GKSessionDelegate, GKSessionPrivateDelegate>
 {
@@ -22,7 +22,7 @@
     GKThreadsafeDictionary *_playersByIdentifier;
     NSMutableSet *_connectedPlayerIDs;
     NSObject<OS_dispatch_queue> *_stateChangeQueue;
-    id <GKMatchDelegate> _delegateWeak;
+    id <GKMatchDelegate> _delegate;
     GKSession *_session;
     GKConnection *_connection;
     unsigned long long _expectedPlayerCount;
@@ -31,7 +31,7 @@
     NSMutableDictionary *_playerEventQueues;
     NSMutableArray *_reinvitedPlayers;
     NSData *_selfBlob;
-    id <GKMatchDelegate> _inviteDelegateWeak;
+    id <GKMatchDelegatePrivate> _inviteDelegateWeak;
     NSMutableDictionary *_playerPushTokens;
     NSMutableArray *_opponentIDs;
     NSString *_rematchID;
@@ -41,6 +41,7 @@
     CDUnknownBlockType _chooseHostCompletion;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool recentlyBecameActive; // @synthesize recentlyBecameActive=_recentlyBecameActive;
 @property(copy, nonatomic) CDUnknownBlockType chooseHostCompletion; // @synthesize chooseHostCompletion=_chooseHostCompletion;
 @property(nonatomic) _Bool hostScoreForQuery; // @synthesize hostScoreForQuery=_hostScoreForQuery;
@@ -52,6 +53,7 @@
 @property(retain, nonatomic) NSMutableArray *opponentIDs; // @synthesize opponentIDs=_opponentIDs;
 @property(retain, nonatomic) NSMutableDictionary *playerPushTokens; // @synthesize playerPushTokens=_playerPushTokens;
 @property(nonatomic) unsigned int packetSequenceNumber; // @synthesize packetSequenceNumber=_packetSequenceNumber;
+@property(nonatomic) __weak id <GKMatchDelegatePrivate> inviteDelegate; // @synthesize inviteDelegate=_inviteDelegateWeak;
 @property(nonatomic) unsigned char version; // @synthesize version=_version;
 @property(retain, nonatomic) NSData *selfBlob; // @synthesize selfBlob=_selfBlob;
 @property(retain, nonatomic) NSMutableArray *reinvitedPlayers; // @synthesize reinvitedPlayers=_reinvitedPlayers;
@@ -103,11 +105,13 @@
 - (void)conditionallyReinvitePlayer:(id)arg1 sessionToken:(id)arg2;
 - (void)reinviteeDeclinedNotification:(id)arg1;
 - (void)reinviteeAcceptedNotification:(id)arg1;
+- (void)sendConnectingStateCallbackToDelegate:(id)arg1 forPlayers:(id)arg2;
 - (void)sendStateCallbackToDelegate:(id)arg1 forPlayer:(id)arg2 state:(long long)arg3;
 - (void)sendStateCallbackForPlayer:(id)arg1 state:(long long)arg2;
 - (void)updateStateForPlayer:(id)arg1 state:(long long)arg2;
 - (void)deferStateCallbackForPlayer:(id)arg1 state:(long long)arg2;
 - (void)sendQueuedPacketsForPlayer:(id)arg1;
+- (void)sendQueuedStatesAndPackets;
 - (void)sendData:(id)arg1 forRecipient:(id)arg2 fromPlayer:(id)arg3;
 - (void)_delegate:(id)arg1 didReceiveData:(id)arg2 forRecipient:(id)arg3 fromPlayer:(id)arg4;
 - (void)queueData:(id)arg1 withEventQueueForPlayer:(id)arg2 forRecipient:(id)arg3;
@@ -115,6 +119,7 @@
 - (id)playerFromPeer:(id)arg1;
 - (void)addPlayers:(id)arg1;
 - (id)voiceChatWithName:(id)arg1;
+- (void)clearSession;
 - (void)disconnect;
 - (void)disconnectGuestSessions;
 - (void)sendVersionData:(unsigned char)arg1 toPeer:(id)arg2;
@@ -138,9 +143,9 @@
 - (void)localPlayerDidChange:(id)arg1;
 - (void)dealloc;
 - (void)applicationWillEnterForeground:(id)arg1;
+- (void)applicationWillTerminateNotification:(id)arg1;
 - (id)init;
-@property(nonatomic) id <GKMatchDelegate> inviteDelegate; // @synthesize inviteDelegate=_inviteDelegateWeak;
-@property(nonatomic) id <GKMatchDelegate> delegate; // @synthesize delegate=_delegateWeak;
+@property(nonatomic) __weak id <GKMatchDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)connected:(id)arg1;
 - (id)allIDs;
 - (id)playerIDs;

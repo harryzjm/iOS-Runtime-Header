@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
 #import <EmailFoundation/EFSQLSelectComponent-Protocol.h>
+#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
-@interface EFSQLSelectStatement : NSObject <EFSQLExpressable, EFSQLSelectComponent>
+@interface EFSQLSelectStatement : NSObject <EFSQLValueCollectionExpressable, EFSQLSelectComponent>
 {
     _Bool _distinct;
-    id <EFSQLExpressable> _where;
+    id <EFSQLValueExpressable> _where;
     unsigned long long _limit;
     NSString *_tableName;
     NSMutableArray *_results;
@@ -24,15 +24,18 @@
     NSMutableArray *_orderExpressions;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *orderExpressions; // @synthesize orderExpressions=_orderExpressions;
 @property(retain, nonatomic) NSArray *groupExpressions; // @synthesize groupExpressions=_groupExpressions;
 @property(readonly, nonatomic) NSMutableArray *joinExpressions; // @synthesize joinExpressions=_joinExpressions;
 @property(readonly, nonatomic) NSMutableArray *results; // @synthesize results=_results;
 @property(readonly, copy, nonatomic) NSString *tableName; // @synthesize tableName=_tableName;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
-@property(retain, nonatomic) id <EFSQLExpressable> where; // @synthesize where=_where;
+@property(retain, nonatomic) id <EFSQLValueExpressable> where; // @synthesize where=_where;
 @property(nonatomic) _Bool distinct; // @synthesize distinct=_distinct;
-- (void).cxx_destruct;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1 conjoiner:(id)arg2;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 @property(readonly, copy, nonatomic) NSString *queryString;
 - (void)orderByColumn:(id)arg1 fromTable:(id)arg2 ascending:(_Bool)arg3;

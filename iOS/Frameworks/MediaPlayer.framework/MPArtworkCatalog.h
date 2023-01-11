@@ -6,54 +6,71 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSString;
+@class MPArtworkRepresentationCollection, NSCache, NSString;
 @protocol MPArtworkDataSource, MPArtworkDataSourceVisualIdenticality;
 
 @interface MPArtworkCatalog : NSObject
 {
     struct CGSize _fittingSize;
     long long _modelRevisionID;
+    _Bool _allowsVideoConstrainedNetworkAccess;
     _Bool _loadingRepresentation;
     double _destinationScale;
+    long long _preferredVideoFormat;
     NSString *_cacheIdentifier;
     id _requestingContext;
     id _destination;
     CDUnknownBlockType _configurationBlock;
+    unsigned long long _representationKinds;
+    MPArtworkRepresentationCollection *_bestAvailableRepresentationCollection;
     id _token;
     id <MPArtworkDataSource> _dataSource;
     unsigned long long _renderHint;
 }
 
 + (id)_artworkLoadQueue;
-+ (id)_artworkCacheForIdentifier:(id)arg1 requestingContext:(id)arg2;
++ (id)_artworkCacheForIdentifier:(id)arg1 requestingContext:(id)arg2 representationKind:(long long)arg3;
++ (void)setCachePurgesWhenEnteringBackground:(_Bool)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3 representationKind:(long long)arg4;
++ (void)setCacheLimit:(long long)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3 representationKind:(long long)arg4;
 + (void)setCachePurgesWhenEnteringBackground:(_Bool)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
 + (void)setCacheLimit:(long long)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
++ (id)staticArtworkCatalogWithRepresentationCollection:(id)arg1;
 + (id)staticArtworkCatalogWithImage:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long renderHint; // @synthesize renderHint=_renderHint;
-@property(nonatomic) __weak id <MPArtworkDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(retain, nonatomic) id token; // @synthesize token=_token;
+@property(readonly, nonatomic) __weak id <MPArtworkDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly, nonatomic) id token; // @synthesize token=_token;
 @property(getter=isLoadingRepresentation) _Bool loadingRepresentation; // @synthesize loadingRepresentation=_loadingRepresentation;
+@property(retain, nonatomic) MPArtworkRepresentationCollection *bestAvailableRepresentationCollection; // @synthesize bestAvailableRepresentationCollection=_bestAvailableRepresentationCollection;
+@property(nonatomic) unsigned long long representationKinds; // @synthesize representationKinds=_representationKinds;
 @property(copy, nonatomic) CDUnknownBlockType configurationBlock; // @synthesize configurationBlock=_configurationBlock;
 @property(nonatomic) __weak id destination; // @synthesize destination=_destination;
 @property(nonatomic) __weak id requestingContext; // @synthesize requestingContext=_requestingContext;
 @property(copy, nonatomic) NSString *cacheIdentifier; // @synthesize cacheIdentifier=_cacheIdentifier;
+@property(nonatomic) long long preferredVideoFormat; // @synthesize preferredVideoFormat=_preferredVideoFormat;
+@property(nonatomic) _Bool allowsVideoConstrainedNetworkAccess; // @synthesize allowsVideoConstrainedNetworkAccess=_allowsVideoConstrainedNetworkAccess;
 @property(nonatomic) struct CGSize fittingSize; // @synthesize fittingSize=_fittingSize;
 @property(nonatomic) double destinationScale; // @synthesize destinationScale=_destinationScale;
-- (void).cxx_destruct;
+- (void)setDestination:(id)arg1 progressiveConfigurationBlock:(CDUnknownBlockType)arg2;
+- (void)_requestBestRepresentationOfKind:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateWithRepresentation:(id)arg1 isBestRepresentation:(_Bool)arg2 modelRevisionID:(long long)arg3;
-- (void)_updateRepresentation;
-- (void)_loadBestRepresentationIfNeeded;
+- (void)_updateRepresentationOfKind:(long long)arg1;
+- (void)_updateRepresentations;
+- (id)_existingRepresentationOfKind:(long long)arg1;
+- (void)_loadRepresentationOfKind:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_loadBestRepresentationIfNeededOfKind:(long long)arg1;
+@property(readonly, nonatomic) NSCache *videoCache;
 @property(readonly, nonatomic) NSCache *cache;
 - (void)setCacheIdentifier:(id)arg1 forRequestingContext:(id)arg2;
 - (void)requestExportableArtworkPropertiesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)requestExportableArtworkURLWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestRadiosityImageWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)requestFocusRegionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestColorAnalysisWithAlgorithm:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)existingColorAnalysisWithAlgorithm:(long long)arg1;
 @property(readonly, nonatomic) id <MPArtworkDataSourceVisualIdenticality> visualIdenticalityIdentifier;
 - (_Bool)isArtworkVisuallyIdenticalToCatalog:(id)arg1;
-- (void)setDestination:(id)arg1 progressiveConfigurationBlock:(CDUnknownBlockType)arg2;
+- (void)setDestination:(id)arg1 forRepresentationKinds:(unsigned long long)arg2 configurationBlock:(CDUnknownBlockType)arg3;
+- (void)setPreferredVideoKind:(long long)arg1;
+- (void)requestVideoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setDestination:(id)arg1 configurationBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool hasImageOnDisk;
 - (id)bestImageFromDisk;

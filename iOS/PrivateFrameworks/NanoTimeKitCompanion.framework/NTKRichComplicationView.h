@@ -21,16 +21,17 @@
     NSDate *_timeTravelDate;
     _Bool canUseCurvedText;
     _Bool _paused;
+    _Bool _templateWantsPlatter;
     id <CLKMonochromeFilterProvider> _filterProvider;
     id <NTKComplicationDisplayObserver> displayObserver;
     CLKComplicationTemplate *_template;
     CLKDevice *_device;
     UIColor *_foregroundColor;
-    UIColor *_templateBackgroundColor;
 }
 
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-@property(retain, nonatomic) UIColor *templateBackgroundColor; // @synthesize templateBackgroundColor=_templateBackgroundColor;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool templateWantsPlatter; // @synthesize templateWantsPlatter=_templateWantsPlatter;
 @property(retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(nonatomic) _Bool paused; // @synthesize paused=_paused;
 @property(readonly, nonatomic) long long family; // @synthesize family=_family;
@@ -39,7 +40,6 @@
 @property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
-- (void).cxx_destruct;
 - (_Bool)viewShouldIgnoreTwoPieceImage:(id)arg1;
 - (id)interpolatedColorForView:(id)arg1;
 - (id)colorForView:(id)arg1 accented:(_Bool)arg2;
@@ -53,6 +53,7 @@
 - (void)_editingDidEnd;
 - (void)_setEditingTransitionFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_applyPausedUpdate;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (unsigned long long)timelineAnimationFadeTypeOverride;
@@ -62,7 +63,9 @@
 - (id)complicationTemplate;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
+- (long long)tritiumUpdateMode;
 - (void)_setWhistlerAnalogEditingAlphaTransitonFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)transitThemeFromTheme:(long long)arg1 toTheme:(long long)arg2 fraction:(double)arg3;
 - (void)setEditingTransitionFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted;

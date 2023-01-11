@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface WDElectrocardiogramDataMetadataViewController : HKTableViewController <HKDataMetadataDeletionSectionDelegate, HKElectrocardiogramMetadataViewDelegate>
 {
+    _Bool _firstViewDidLayoutSubviews;
     _Bool _actionsEnabled;
     HKElectrocardiogram *_sample;
     id <HKDataMetadataViewControllerDelegate> _delegate;
@@ -23,13 +24,14 @@ __attribute__((visibility("hidden")))
     HRElectrocardiogramReportGenerator *_reportGenerator;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool actionsEnabled; // @synthesize actionsEnabled=_actionsEnabled;
 @property(retain, nonatomic) HRElectrocardiogramReportGenerator *reportGenerator; // @synthesize reportGenerator=_reportGenerator;
 @property(retain, nonatomic) WDElectrocardiogramReportDataSource *reportDataSource; // @synthesize reportDataSource=_reportDataSource;
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) __weak id <HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property(retain, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)deleteSampleTriggeredBySection:(id)arg1;
 - (void)presentPDFViewController;
@@ -48,10 +50,10 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)_electrocardiogramMetadataContainerView;
 - (void)_reloadElectrocardiogramMetadataTableHeaderView;
-- (id)_shortVersionNumberFromString:(id)arg1;
 - (void)_loadSections;
 - (_Bool)_addSectionIfNonNull:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)_localeOrDisplayTypeChange:(id)arg1;
 - (void)dealloc;

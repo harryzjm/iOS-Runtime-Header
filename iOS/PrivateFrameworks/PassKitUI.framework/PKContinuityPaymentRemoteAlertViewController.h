@@ -38,6 +38,8 @@
 - (void)didReceiveCancellationForRemotePaymentRequest:(id)arg1;
 - (void)didReceivePaymentClientUpdate:(id)arg1 forRemotePaymentRequest:(id)arg2;
 - (void)didReceivePaymentResult:(id)arg1 forRemotePaymentRequest:(id)arg2;
+- (void)_presentEnrollAccessibilityIntentAlert;
+- (void)_cancelPayment;
 - (void)_dismiss;
 - (void)_invalidate;
 - (void)handleButtonActions:(id)arg1;

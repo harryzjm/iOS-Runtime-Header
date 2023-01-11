@@ -15,6 +15,8 @@
 @property(readonly, nonatomic) NSArray *timeStampValues;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artworkValue;
 @property(readonly, nonatomic) id <GEOServerFormatTokenPriceValue> priceValue;
+@property(readonly, nonatomic) _Bool shouldScaleUnits;
+@property(readonly, nonatomic) float percentageValue;
 @property(readonly, nonatomic) NSString *stringValue;
 @property(readonly, nonatomic) NSArray *value3s;
 @property(readonly, nonatomic) unsigned int value2;

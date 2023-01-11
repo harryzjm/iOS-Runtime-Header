@@ -9,7 +9,7 @@
     _Bool _useGridValueAsInputCoordinate;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 @property(nonatomic) _Bool useGridValueAsInputCoordinate; // @synthesize useGridValueAsInputCoordinate=_useGridValueAsInputCoordinate;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

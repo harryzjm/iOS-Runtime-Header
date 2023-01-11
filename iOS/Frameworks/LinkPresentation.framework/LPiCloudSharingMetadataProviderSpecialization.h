@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (id)applicationFromBundleIdentifiers:(id)arg1 containerIdentifier:(id)arg2;
 - (id)initWithContext:(id)arg1 applicationFromURL:(id)arg2 titleFromURL:(id)arg3;
 - (_Bool)canUseCloudKit;
-- (id)entitlementForKey:(id)arg1;
 
 @end
 

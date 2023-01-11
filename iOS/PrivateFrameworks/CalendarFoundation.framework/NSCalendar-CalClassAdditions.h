@@ -19,6 +19,8 @@
 - (id)CalDateFromComponents:(id)arg1 inTimeZone:(id)arg2;
 - (_Bool)dateIsFirstOfYear:(id)arg1;
 - (_Bool)dateIsFirstOfMonth:(id)arg1;
+- (long long)CalWeeksInYearContainingDate:(id)arg1;
+- (long long)CalDaysInYearContainingDate:(id)arg1;
 - (long long)daysInMonthContainingDate:(id)arg1;
 - (long long)calendarDaysFromDate:(id)arg1 toDate:(id)arg2;
 - (id)dateBySanityCheckingDateRoundedToDay:(id)arg1;

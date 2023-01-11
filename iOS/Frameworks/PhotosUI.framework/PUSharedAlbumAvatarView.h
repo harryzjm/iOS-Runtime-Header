@@ -6,7 +6,7 @@
 
 #import <UIKit/UIImageView.h>
 
-@class CAShapeLayer, CNMonogrammer, NSObject, PHAssetCollection, UIGraphicsImageRenderer, UIImage;
+@class CAShapeLayer, NSObject, PHAssetCollection, UIGraphicsImageRenderer, UIImage;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     _Bool _isRTL;
     _Bool _enabled;
     PHAssetCollection *_sharedAlbumCollection;
-    CNMonogrammer *_monogrammer;
     UIGraphicsImageRenderer *_imageRenderer;
     UIImage *_firstAvatar;
     UIImage *_secondAvatar;
@@ -24,19 +23,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedSerialQueue;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CAShapeLayer *overlayLayer; // @synthesize overlayLayer=_overlayLayer;
 @property(retain, nonatomic) UIImage *thirdAvatar; // @synthesize thirdAvatar=_thirdAvatar;
 @property(retain, nonatomic) UIImage *secondAvatar; // @synthesize secondAvatar=_secondAvatar;
 @property(retain, nonatomic) UIImage *firstAvatar; // @synthesize firstAvatar=_firstAvatar;
 @property(retain, nonatomic) UIGraphicsImageRenderer *imageRenderer; // @synthesize imageRenderer=_imageRenderer;
-@property(retain, nonatomic) CNMonogrammer *monogrammer; // @synthesize monogrammer=_monogrammer;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) PHAssetCollection *sharedAlbumCollection; // @synthesize sharedAlbumCollection=_sharedAlbumCollection;
-- (void).cxx_destruct;
 @property(readonly) NSObject<OS_os_log> *log;
 - (void)accessibilityInvertColorsStatusDidChange:(id)arg1;
 - (void)_renderAvatarsForAlbumCollection:(id)arg1;
 - (void)setPersonPhoto:(id)arg1 atIndex:(long long)arg2 albumCollection:(id)arg3;
+- (void)_requestSubscriberMonogram:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_requestPersonPhoto:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_setImage:(id)arg1 forIndex:(unsigned long long)arg2;
 - (void)_setContentsImage:(id)arg1 withShadowPath:(struct CGPath *)arg2 forAlbumCollection:(id)arg3;

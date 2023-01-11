@@ -21,6 +21,7 @@
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowCalloutActions; // @synthesize allowCalloutActions=_allowCalloutActions;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
@@ -28,8 +29,8 @@
 @property(retain, nonatomic) NSMutableDictionary *pluginDisplayContainers; // @synthesize pluginDisplayContainers=_pluginDisplayContainers;
 @property(retain, nonatomic) NSMutableDictionary *mediaObjects; // @synthesize mediaObjects=_mediaObjects;
 @property(nonatomic) BOOL balloonColor; // @synthesize balloonColor=_balloonColor;
-- (void).cxx_destruct;
 - (void)handleTapOrLongPress:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)attributedTextForCompositionText:(id)arg1;
 - (id)composeImageForTransferGUID:(id)arg1;
 - (void)previewDidChange:(id)arg1;
@@ -46,6 +47,7 @@
 - (void)cut:(id)arg1;
 - (void)copy:(id)arg1;
 - (id)pasteboard;
+- (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
 

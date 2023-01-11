@@ -17,6 +17,7 @@
     _Bool _isPhotoIrisPlaceholder;
     _Bool _HDR;
     _Bool _representsBurst;
+    NSDate *_localCreationDate;
     NSString *_uuid;
     unsigned long long _mediaType;
     unsigned long long _mediaSubtypes;
@@ -35,6 +36,7 @@
     CDStruct_1b6d18a9 _photoIrisVideoDuration;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long numberOfRepresentedAssets; // @synthesize numberOfRepresentedAssets=_numberOfRepresentedAssets;
 @property(readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
 @property(readonly, nonatomic) _Bool representsBurst; // @synthesize representsBurst=_representsBurst;
@@ -56,7 +58,7 @@
 @property(readonly, nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *localCreationDate; // @synthesize localCreationDate=_localCreationDate;
 - (unsigned long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) _Bool hasPhotoColorAdjustments;
 - (id)initWithAsset:(id)arg1 convertible:(id)arg2;
@@ -67,8 +69,6 @@
 - (id)init;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) NSDate *localCreationDate;
-- (id)creationDateUsingLocalTimeZone;
 @property(readonly, nonatomic) unsigned long long deferredLogInfo;
 @property(readonly, nonatomic, getter=isLivePhoto) _Bool livePhoto;
 @property(readonly, nonatomic) _Bool isAnimatedImage;
@@ -78,12 +78,15 @@
 @property(readonly, nonatomic) _Bool isTemporaryPlaceholder;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) double aspectRatio;
+@property(readonly, nonatomic, getter=isHidden) _Bool hidden;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isLivePhoto;
+@property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 

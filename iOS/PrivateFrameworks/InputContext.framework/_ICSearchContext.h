@@ -10,16 +10,20 @@
 
 @interface _ICSearchContext : NSObject
 {
+    _Bool _isResponseContextDenylisted;
+    _Bool _shouldDisableAutoCaps;
     NSString *_locale;
     NSArray *_recipients;
     NSString *_applicationBundleIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldDisableAutoCaps; // @synthesize shouldDisableAutoCaps=_shouldDisableAutoCaps;
+@property(readonly, nonatomic) _Bool isResponseContextDenylisted; // @synthesize isResponseContextDenylisted=_isResponseContextDenylisted;
 @property(readonly, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property(readonly, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(readonly, nonatomic) NSString *locale; // @synthesize locale=_locale;
-- (void).cxx_destruct;
-- (id)initWithLocale:(id)arg1 recipients:(id)arg2 applicationBundleIdentifier:(id)arg3;
+- (id)initWithLocale:(id)arg1 recipients:(id)arg2 applicationBundleIdentifier:(id)arg3 isResponseContextDenylisted:(_Bool)arg4 shouldDisableAutoCaps:(_Bool)arg5;
 
 @end
 

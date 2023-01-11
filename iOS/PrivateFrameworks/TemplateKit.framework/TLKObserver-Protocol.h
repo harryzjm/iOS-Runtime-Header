@@ -5,7 +5,7 @@
 //
 
 @protocol TLKObserver
-@property _Bool inBatchUpdate;
+@property(nonatomic) long long batchUpdateCount;
 - (void)propertiesDidChange;
 @end
 

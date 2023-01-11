@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoard/SBReachabilityObserver-Protocol.h>
+#import <SpringBoard/SBWallpaperReachabilityObserving-Protocol.h>
 #import <SpringBoard/_SBFakeBlur-Protocol.h>
 
-@class NSString, SBFWallpaperView, SBWallpaperController, UIImageView;
-@protocol _SBFakeBlurObserver;
+@class NSString, SBFWallpaperView, SBWallpaperViewController, UIImageView;
+@protocol SBWallpaperReachabilityCoordinating, _SBFakeBlurObserver;
 
-@interface _SBFakeBlurView : UIView <_SBFakeBlur, SBReachabilityObserver>
+@interface _SBFakeBlurView : UIView <_SBFakeBlur, SBWallpaperReachabilityObserving>
 {
     unsigned long long _transformOptions;
     long long _requestedStyle;
@@ -22,31 +22,29 @@
     UIImageView *_imageView;
     struct CGPoint _wallpaperOffset;
     id <_SBFakeBlurObserver> _observer;
-    SBWallpaperController *_wallpaperController;
+    SBWallpaperViewController *_wallpaperViewController;
+    id <SBWallpaperReachabilityCoordinating> _reachabilityCoordinator;
 }
 
-+ (id)_imageForStyle:(inout long long *)arg1 withSource:(id)arg2 rootSettings:(id)arg3 overrideTraitCollection:(id)arg4;
-+ (id)_imageForStyle:(inout long long *)arg1 withSource:(id)arg2 rootSettings:(id)arg3;
-@property(readonly, nonatomic) __weak SBWallpaperController *wallpaperController; // @synthesize wallpaperController=_wallpaperController;
++ (id)_imageForStyle:(inout long long *)arg1 withSource:(id)arg2 overrideTraitCollection:(id)arg3;
++ (id)_imageForStyle:(inout long long *)arg1 withSource:(id)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <SBWallpaperReachabilityCoordinating> reachabilityCoordinator; // @synthesize reachabilityCoordinator=_reachabilityCoordinator;
+@property(readonly, nonatomic) __weak SBWallpaperViewController *wallpaperViewController; // @synthesize wallpaperViewController=_wallpaperViewController;
 @property(nonatomic) unsigned long long transformOptions; // @synthesize transformOptions=_transformOptions;
 @property(nonatomic, getter=isFullscreen) _Bool fullscreen; // @synthesize fullscreen=_fullscreen;
 @property(nonatomic) __weak id <_SBFakeBlurObserver> observer; // @synthesize observer=_observer;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)_createOrRemoveMatchMoveAnimationIfNeeded;
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
 - (void)layoutSubviews;
 - (void)offsetWallpaperBy:(struct CGPoint)arg1;
 - (void)rotateToInterfaceOrientation:(long long)arg1;
-- (void)_setImage:(id)arg1 style:(long long)arg2 notify:(_Bool)arg3;
-- (void)_updateImageWithSource:(id)arg1 overrideTraitCollection:(id)arg2 notifyObserver:(_Bool)arg3;
-- (void)updateImageWithSource:(id)arg1 overrideTraitCollection:(id)arg2;
 - (void)updateImageWithSource:(id)arg1;
 - (void)reconfigureWithSource:(id)arg1;
 @property(readonly, nonatomic) long long variant;
 - (void)dealloc;
-- (id)initWithVariant:(long long)arg1 wallpaperController:(id)arg2 transformOptions:(unsigned long long)arg3;
+- (id)initWithVariant:(long long)arg1 wallpaperViewController:(id)arg2 transformOptions:(unsigned long long)arg3 reachabilityCoordinator:(id)arg4;
 - (void)handleReachabilityYOffsetDidChange;
 @property(nonatomic) double zoomScale;
 - (long long)effectiveStyle;

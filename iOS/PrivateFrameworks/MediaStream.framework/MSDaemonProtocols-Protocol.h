@@ -22,6 +22,5 @@
 - (void)deleteAssetCollections:(NSArray *)arg1 personID:(NSString *)arg2;
 - (void)dequeueAssetCollectionWithGUIDs:(NSArray *)arg1 personID:(NSString *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)enqueueAssetCollections:(NSArray *)arg1 personID:(NSString *)arg2 reply:(void (^)(NSDictionary *))arg3;
-- (void)isBusyCompletionBlock:(void (^)(_Bool))arg1;
 @end
 

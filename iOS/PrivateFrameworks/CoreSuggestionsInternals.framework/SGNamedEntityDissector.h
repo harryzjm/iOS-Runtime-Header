@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _PASLock;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
 
-@interface SGNamedEntityDissector
+@class NSString, _PASLock;
+
+@interface SGNamedEntityDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
     _PASLock *_lock;
     _Bool _significanceCheckEnabled;
@@ -14,17 +17,25 @@
 }
 
 - (void).cxx_destruct;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
+- (void)_dissectMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (id)entitiesInPlainText:(id)arg1 withEligibleRegions:(id)arg2 source:(id)arg3 cloudSync:(_Bool)arg4 algorithms:(id)arg5;
 - (id)_entitiesInPlainText:(id)arg1 withEligibleRegions:(id)arg2 dataDetections:(id)arg3 source:(id)arg4 cloudSync:(_Bool)arg5 algorithms:(id)arg6;
 - (void)_collectCustomTaggerResultsWithText:(id)arg1 eligibleRegions:(id)arg2 isMessagesSource:(_Bool)arg3 addNamedEntity:(CDUnknownBlockType)arg4;
 - (void)_collectNLPTaggerResultsWithText:(id)arg1 ddMatches:(id)arg2 eligibleRegions:(id)arg3 isMessagesSource:(_Bool)arg4 addNamedEntity:(CDUnknownBlockType)arg5;
-- (void)_harvestLocationFromEntity:(id)arg1 category:(unsigned long long)arg2 enrichment:(id)arg3 algorithm:(unsigned short)arg4;
+- (void)_harvestLocationFromEntity:(id)arg1 category:(unsigned long long)arg2 dynamicCategory:(id)arg3 enrichment:(id)arg4 algorithm:(unsigned short)arg5;
 - (id)_collectDataDetectorsWithText:(id)arg1 algorithms:(id)arg2 dataDetections:(id)arg3 isMessagesSource:(_Bool)arg4 lookupQids:(id)arg5 addNamedEntity:(CDUnknownBlockType)arg6;
 - (void)_registerForNotifications;
 - (void)dealloc;
 - (id)init;
 - (id)initWithSignificanceCheckEnabled:(_Bool)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

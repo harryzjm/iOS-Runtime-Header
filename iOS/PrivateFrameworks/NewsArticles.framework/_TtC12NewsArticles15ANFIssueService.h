@@ -10,8 +10,8 @@
 
 @interface _TtC12NewsArticles15ANFIssueService : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *headlineService;
-    MISSING_TYPE *personalizer;
+    MISSING_TYPE *issueArticleService;
+    MISSING_TYPE *personalizationService;
 }
 
 @end

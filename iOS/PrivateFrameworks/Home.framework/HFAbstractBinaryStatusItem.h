@@ -8,12 +8,17 @@
 {
 }
 
+- (id)multipleUnknownServicesFormatString;
+- (id)multipleNormalServicesFormatString;
 - (id)multipleAbnormalServicesFormatString;
 - (id)multipleAbnormalServicesWithRoomFormatString;
 - (id)oneAbnormalServiceWithRoomFormatString;
+- (id)oneUnknownServiceFormatString;
+- (id)oneNormalServiceFormatString;
 - (id)oneAbnormalServiceFormatString;
-- (id)serviceTypes;
+- (id)_shortTitleForTitle:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;
 
 @end
 

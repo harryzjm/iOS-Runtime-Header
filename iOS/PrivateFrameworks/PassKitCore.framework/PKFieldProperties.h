@@ -8,34 +8,48 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSError;
+@class NSArray, NSString;
 
 @interface PKFieldProperties : NSObject <NSSecureCoding>
 {
-    _Bool _shouldIgnore;
     _Bool _authenticationRequired;
+    _Bool _backgroundTransaction;
+    _Bool _secondaryPropertiesRequired;
+    _Bool _secondaryPropertiesAcquired;
+    _Bool _ECP2Field;
     unsigned long long _technology;
     long long _terminalType;
     long long _valueAddedServiceMode;
+    unsigned long long _terminalSubtype;
+    unsigned long long _pairingRequested;
     NSArray *_TCIs;
     NSArray *_merchantIdentifiers;
-    NSError *_error;
+    NSString *_applicationIdentifier;
+    NSString *_credentialIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy, nonatomic) NSError *error; // @synthesize error=_error;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *credentialIdentifier; // @synthesize credentialIdentifier=_credentialIdentifier;
+@property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property(copy, nonatomic) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
 @property(copy, nonatomic) NSArray *TCIs; // @synthesize TCIs=_TCIs;
+@property(nonatomic, getter=isECP2Field) _Bool ECP2Field; // @synthesize ECP2Field=_ECP2Field;
+@property(nonatomic) unsigned long long pairingRequested; // @synthesize pairingRequested=_pairingRequested;
+@property(nonatomic) _Bool secondaryPropertiesAcquired; // @synthesize secondaryPropertiesAcquired=_secondaryPropertiesAcquired;
+@property(nonatomic) _Bool secondaryPropertiesRequired; // @synthesize secondaryPropertiesRequired=_secondaryPropertiesRequired;
+@property(nonatomic) _Bool backgroundTransaction; // @synthesize backgroundTransaction=_backgroundTransaction;
 @property(nonatomic) _Bool authenticationRequired; // @synthesize authenticationRequired=_authenticationRequired;
-@property(nonatomic) _Bool shouldIgnore; // @synthesize shouldIgnore=_shouldIgnore;
+@property(readonly, nonatomic) unsigned long long terminalSubtype; // @synthesize terminalSubtype=_terminalSubtype;
 @property(readonly, nonatomic) long long valueAddedServiceMode; // @synthesize valueAddedServiceMode=_valueAddedServiceMode;
 @property(readonly, nonatomic) long long terminalType; // @synthesize terminalType=_terminalType;
 @property(readonly, nonatomic) unsigned long long technology; // @synthesize technology=_technology;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldIgnore;
+@property(readonly, nonatomic) long long accessTerminalSubtype;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithTechnology:(unsigned long long)arg1 terminalType:(long long)arg2 valueAddedServiceMode:(long long)arg3;
+- (id)initWithTechnology:(unsigned long long)arg1 terminalType:(long long)arg2 terminalSubtype:(unsigned long long)arg3 valueAddedServiceMode:(long long)arg4;
 
 @end
 

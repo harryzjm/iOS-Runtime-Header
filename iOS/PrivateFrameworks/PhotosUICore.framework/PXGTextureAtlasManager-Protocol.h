@@ -7,12 +7,15 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSArray, NSData, NSIndexSet, PXGChangeDetails;
+@protocol PXGTextureAtlasManagerDelegate, PXGTextureConverter;
 
 @protocol PXGTextureAtlasManager <NSObject>
 @property(readonly, copy, nonatomic) NSArray *textures;
 @property(retain, nonatomic) NSIndexSet *skipRenderSpriteIndexes;
 @property(readonly, nonatomic) unsigned long long pixelFormat;
 @property(readonly, nonatomic) struct CGSize thumbnailSize;
+@property(nonatomic) __weak id <PXGTextureAtlasManagerDelegate> delegate;
+@property(nonatomic) __weak id <PXGTextureConverter> textureConverter;
 - (void)pruneUnusedTextures;
 - (void)applyChangeDetails:(PXGChangeDetails *)arg1;
 - (void)removeSpriteIndex:(unsigned int)arg1 atThumbnailIndex:(unsigned int)arg2;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     UIView *_playButtonView;
     UIView *_muteButtonContainerView;
     UIImageView *_muteButtonView;
+    UIImageView *_unmuteButtonView;
     UIView *_videoPlaceholderView;
     UIView *_visualEffectView;
     UIView *_pulsingLoadView;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
     _Bool _wasPlayingOrWaitingToPlayWhenUnparented;
     _Bool _wasPlayingWhenSuspended;
     _Bool _showingPlayButton;
-    _Bool _waitingForPlaybackDueToAutoplay;
+    _Bool _waitingForPlaybackDueToAutoPlay;
     _Bool _hasEverPlayed;
     unsigned long long _lastInteractionTimestamp;
     unsigned long long _playbackWatchdogTimerID;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
     double _volume;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int loggingID; // @synthesize loggingID=_loggingID;
 @property(readonly, nonatomic) UIView *playbackView; // @synthesize playbackView=_playbackView;
 @property(readonly, nonatomic) LPVideo *video; // @synthesize video=_video;
@@ -53,7 +55,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isFullScreen) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;
 @property(nonatomic, getter=isWaitingForPlayback) _Bool waitingForPlayback; // @synthesize waitingForPlayback=_waitingForPlayback;
 @property(readonly, nonatomic) _Bool usesSharedAudioSession; // @synthesize usesSharedAudioSession=_usesSharedAudioSession;
-- (void).cxx_destruct;
 @property(nonatomic, getter=isActive) _Bool active;
 - (void)_muteButtonTapRecognized:(id)arg1;
 - (void)_muteButtonHighlightLongPressRecognized:(id)arg1;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)destroyFullScreenViewController;
 - (void)tapRecognized:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)shouldAllowHighlightToRecognizeSimultaneouslyWithGesture:(id)arg1;
 - (void)_buildVideoPlaceholderView;
 - (id)_createPosterFrameView;
 @property(nonatomic, getter=isMuted) _Bool muted;
@@ -76,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)showPlayButtonAnimated:(_Bool)arg1;
 - (void)updatePlayButtonVisibility;
 - (void)didChangeMutedState:(_Bool)arg1;
-- (void)updateMuteButtonImage;
+- (void)updateMuteButton;
 - (void)didEncounterPossiblyTransientPlaybackError;
 - (void)didEncounterPlaybackError;
 - (void)didChangePlayingState:(_Bool)arg1;
@@ -100,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldAutoPlay;
 - (void)applicationWillEnterForeground:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
+- (void)beginLoadingMediaForPreroll;
 - (void)componentViewDidMoveToWindow;
 - (_Bool)isParented;
 @property(readonly, copy, nonatomic) LPVideoViewConfiguration *configuration;

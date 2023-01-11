@@ -9,10 +9,13 @@
 @interface PKCenteredTextCollectionViewCell
 {
     UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
 }
 
 - (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateTitleTextColor;
+@property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
 - (void)layoutSubviews;
 - (void)resetFonts;

@@ -6,7 +6,7 @@
 
 #import <DocumentManagerUICore/NSObject-Protocol.h>
 
-@class UIImage;
+@class UIColor, UIImage;
 @protocol DOCThumbnailListener;
 
 @protocol DOCThumbnail <NSObject>
@@ -18,5 +18,6 @@
 - (void)scheduleUpdateIfNeeded;
 - (void)removeListener:(id <DOCThumbnailListener>)arg1;
 - (void)addListener:(id <DOCThumbnailListener>)arg1;
+- (UIColor *)averageColorInRect:(struct CGRect)arg1;
 @end
 

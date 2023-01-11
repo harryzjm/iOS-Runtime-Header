@@ -12,6 +12,8 @@
 
 + (id)_copyFileAtURLToTemporaryDirectory:(id)arg1;
 + (id)createTempDestinationURLWithExtension:(id)arg1;
++ (id)knownSingleValueKeysForComparison;
++ (id)knownIdentityKeysForComparison;
 + (Class)frozenClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -19,10 +21,11 @@
 - (long long)compareFileNames:(id)arg1;
 - (void)setURLForPendingFileCopy:(id)arg1;
 @property(readonly, nonatomic) NSURL *URLForPendingFileCopy;
-- (void)setExternalId:(id)arg1;
-- (id)externalId;
+- (void)setExternalID:(id)arg1;
+- (id)externalID;
 - (void)setXPropertiesData:(id)arg1;
 - (id)XPropertiesData;
+- (void)setUUID:(id)arg1;
 @property(readonly, nonatomic) NSString *UUID;
 - (void)setFileSize:(id)arg1;
 @property(readonly, nonatomic) NSNumber *fileSize;

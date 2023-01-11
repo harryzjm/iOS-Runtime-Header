@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol NSObject;
+@class NSObject;
+@protocol NSObject, OS_dispatch_queue;
 
 @interface SGCuratedChangeNotificationsAddressBookListener
 {
     id <NSObject> _notificationCenterToken;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
 }
 
 - (void).cxx_destruct;

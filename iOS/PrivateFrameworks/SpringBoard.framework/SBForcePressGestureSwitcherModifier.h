@@ -5,13 +5,12 @@
 //
 
 @class SBAppLayout, SBCoplanarSwitcherModifier, SBForcePressGestureStateTrackingSwitcherModifier, SBSwitcherModifier, UIViewFloatAnimatableProperty;
-@protocol SBFluidSwitcherScrollProviding;
 
 @interface SBForcePressGestureSwitcherModifier
 {
     SBAppLayout *_selectedAppLayout;
     long long _startingEnvironmentMode;
-    SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
+    SBSwitcherModifier *_multitaskingModifier;
     SBCoplanarSwitcherModifier *_coplanarModifier;
     SBForcePressGestureStateTrackingSwitcherModifier *_stateTrackingModifier;
     double _additionalScaleForBreathing;
@@ -25,14 +24,11 @@
 - (double)_scaleForCoplanarModifier;
 - (void)_beginAnimatingMultitaskingPropertyWithMode:(long long)arg1 settings:(id)arg2;
 - (double)initialPanThreshold;
-- (_Bool)wantsMinificationFilter;
-- (_Bool)wantsAsynchronousRenderingAssertion;
-- (long long)keyboardSuppressionMode;
-- (long long)sceneDeactivationReason;
-- (_Bool)wantsResignActiveAssertion;
-- (id)scaleSettingsForIndex:(unsigned long long)arg1;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (double)_switcherCardScale;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)keyboardSuppressionMode;
+- (id)appLayoutsToResignActive;
+- (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
@@ -40,16 +36,19 @@
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (_Bool)isContainerStatusBarVisible;
-- (double)backdropBlurProgress;
-- (long long)backdropBlurType;
-- (double)dimmingAlpha;
+- (double)homeScreenBackdropBlurProgress;
+- (long long)homeScreenBackdropBlurType;
+- (double)homeScreenDimmingAlpha;
 - (double)wallpaperScale;
 - (double)homeScreenScale;
 - (double)homeScreenAlpha;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)_scaleSettings;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AUAudioUnitBusArray, AUAudioUnitPreset, AUParameterTree, NSArray, NSDictionary, NSMutableArray, NSString;
+@class AUAudioUnitBusArray, AUAudioUnitPreset, AUParameterTree, NSArray, NSDictionary, NSMutableArray, NSString, UIViewController;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface AUAudioUnit : NSObject
@@ -14,7 +14,7 @@
     struct OpaqueAudioComponent *_component;
     NSString *_componentName;
     unsigned int _componentVersion;
-    struct UIViewController *_cachedViewController;
+    UIViewController *_cachedViewController;
     unsigned int _maximumFramesToRender;
     long long _MIDIOutputBufferSizeHint;
     struct RealtimeState _realtimeState;
@@ -49,6 +49,7 @@
 + (id)keyPathsForValuesAffectingAllParameterValues;
 + (id)auAudioUnitForAudioUnit:(struct OpaqueAudioComponentInstance *)arg1;
 + (void)instantiateWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)instantiateWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 connectionProvider:(function_c21c61b6)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)_monitorUserPresets:(id)arg1 callback:(CDUnknownBlockType)arg2;
 + (void)_loadUserPresets:(id)arg1 error:(id *)arg2;
 + (id)_presetStateFor:(id)arg1 error:(id *)arg2;
@@ -59,6 +60,8 @@
 + (id)__sanitizeFileName:(id)arg1;
 + (id)__presetFromPath:(id)arg1;
 + (void)registerSubclass:(Class)arg1 asComponentDescription:(struct AudioComponentDescription)arg2 name:(id)arg3 version:(unsigned int)arg4;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType profileChangedBlock; // @synthesize profileChangedBlock=_profileChangedBlock;
 @property(copy, nonatomic) NSArray *channelMap; // @synthesize channelMap=_channelMap;
 @property(readonly, nonatomic) _Bool supportsMPE; // @synthesize supportsMPE=_supportsMPE;
@@ -80,9 +83,10 @@
 @property(readonly, nonatomic) _Bool renderResourcesAllocated; // @synthesize renderResourcesAllocated=_renderResourcesAllocated;
 @property(readonly, copy, nonatomic) NSString *audioUnitShortName; // @synthesize audioUnitShortName=_audioUnitShortName;
 @property(readonly, nonatomic) struct AudioComponentDescription componentDescription; // @synthesize componentDescription=_componentDescription;
-- (id).cxx_construct;
-- (void).cxx_destruct;
+- (_Bool)isSpeechSynthesisProvider;
+- (int)remoteProcessIdentifier;
 @property(readonly, nonatomic) _Bool isLoadedInProcess;
+- (id)osWorkgroup;
 @property(readonly, copy, nonatomic) NSArray *userPresets;
 - (void)startUserPresetFolderMonitoring;
 - (_Bool)deleteUserPreset:(id)arg1 error:(id *)arg2;
@@ -94,14 +98,16 @@
 - (id)profileStateForCable:(unsigned char)arg1 channel:(unsigned char)arg2;
 - (void)selectViewConfiguration:(id)arg1;
 - (id)supportedViewConfigurations:(id)arg1;
+- (void)_setValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (id)_valueForProperty:(id)arg1 error:(id *)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)valueForUndefinedKey:(id)arg1;
 @property(nonatomic) long long MIDIOutputBufferSizeHint;
 @property(nonatomic) unsigned int maximumFramesToRender;
 @property(readonly, nonatomic) _Bool providesUserInterface;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)setCachedViewController:(struct UIViewController *)arg1;
-- (struct UIViewController *)cachedViewController;
+- (void)setCachedViewController:(id)arg1;
+- (id)cachedViewController;
 @property(copy, nonatomic) NSDictionary *fullStateForDocument;
 @property(copy, nonatomic) NSDictionary *fullState;
 @property(readonly, nonatomic) AUAudioUnitBusArray *outputBusses;
@@ -110,6 +116,7 @@
 - (void)reset;
 - (id)parametersForOverviewWithCount:(long long)arg1;
 @property(retain, nonatomic) AUParameterTree *parameterTree;
+- (void)internalDeallocateRenderResources;
 - (void)deallocateRenderResources;
 - (_Bool)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (void)removeRenderObserver:(CDUnknownFunctionPointerType)arg1 userData:(void *)arg2;
@@ -128,11 +135,14 @@
 @property(readonly, copy, nonatomic) NSString *audioUnitName;
 @property(readonly, copy, nonatomic) NSString *componentName;
 @property(readonly, nonatomic) struct OpaqueAudioComponent *component;
+- (struct OpaqueAudioComponentInstance *)audioUnit;
 - (void)invalidateAudioUnit;
 - (void)dealloc;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 error:(id *)arg2;
+- (void)setLoadedOutOfProcess;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 - (id)init;
+@property(readonly, nonatomic) CDUnknownBlockType renderContextObserver;
 - (void)setRenderResourcesAllocated:(_Bool)arg1;
 - (_Bool)shouldChangeToFormat:(id)arg1 forBus:(id)arg2;
 

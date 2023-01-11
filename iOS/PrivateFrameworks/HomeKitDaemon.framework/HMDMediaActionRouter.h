@@ -9,28 +9,35 @@
 #import <HomeKitDaemon/HMDMPCSessionDataMediaProfileSource-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDMPCSessionController, NSObject, NSString, NSUUID;
+@class HMDHome, HMDMPCSessionController, HMDResidentDevice, NSObject, NSString, NSUUID;
 @protocol HMDMediaActionRouterDataSource, OS_dispatch_queue;
 
 @interface HMDMediaActionRouter : HMFObject <HMDMPCSessionDataMediaProfileSource, HMFMessageReceiver>
 {
     _Bool _shouldExecuteOnCurrentDevice;
     id <HMDMediaActionRouterDataSource> _dataSource;
+    HMDResidentDevice *_targetResidentDeviceOverride;
     HMDMPCSessionController *_mpcSessionController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMDMPCSessionController *mpcSessionController; // @synthesize mpcSessionController=_mpcSessionController;
+@property(nonatomic) __weak HMDResidentDevice *targetResidentDeviceOverride; // @synthesize targetResidentDeviceOverride=_targetResidentDeviceOverride;
 @property(readonly, nonatomic) _Bool shouldExecuteOnCurrentDevice; // @synthesize shouldExecuteOnCurrentDevice=_shouldExecuteOnCurrentDevice;
 @property(readonly, nonatomic) __weak id <HMDMediaActionRouterDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (id)mediaProfileWithUUID:(id)arg1;
+@property(readonly) __weak HMDHome *home;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)executeMediaActionWithSessionData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)targetResidentDeviceForExecutingMediaActionWithProfiles:(id)arg1;
 - (void)routeMessage:(id)arg1;
-- (void)sendMediaActionMessageToDevice:(id)arg1 sessionData:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)routeMediaActionForExecution:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendMediaActionMessageToDevice:(id)arg1 sessionData:(id)arg2 encodePlaybackArchive:(_Bool)arg3 canForwardMessage:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)sendMediaActionMessageToCompanionWithSessionData:(id)arg1 encodePlaybackArchive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendMediaActionMessageToResident:(id)arg1 sessionData:(id)arg2 encodePlaybackArchive:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)handleNonResidentMediaActionExecutionWithSessionData:(id)arg1 encodePlaybackArchive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)routeSessionDataForExecution:(id)arg1 encodePlaybackArchive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)routeMediaActionForExecution:(id)arg1 source:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_registerForMessages;
 - (void)dealloc;
 - (id)init;

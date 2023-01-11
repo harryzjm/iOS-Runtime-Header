@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MCProfileConnection, SBAlertItemsController, SBApplicationController, SBAssistantController, SBCommandTabController, SBConferenceManager, SBLocalDefaults, SBLockScreenManager, SBLockStateAggregator, SBMainWorkspace, SBNotificationBannerDestination, SBRemoteTransientOverlaySessionManager, SBSetupManager, SBTelephonyManager;
+@class MCProfileConnection, SBAlertItemsController, SBApplicationController, SBAssistantController, SBBannerManager, SBCommandTabController, SBConferenceManager, SBLocalDefaults, SBLockScreenManager, SBLockStateAggregator, SBMainWorkspace, SBRemoteTransientOverlaySessionManager, SBSetupManager, SBTelephonyManager;
 
 @interface SBMainDisplayPolicyAggregator
 {
@@ -20,13 +20,14 @@
     SBLockStateAggregator *_override_lockStateAggregator;
     SBTelephonyManager *_override_telephonyManager;
     SBMainWorkspace *_override_mainWorkspace;
-    SBNotificationBannerDestination *_override_bannerDestination;
+    SBBannerManager *_override_bannerManager;
     struct __CFBoolean *_hasCameraCapability;
     SBLocalDefaults *_defaults;
     _Bool _storeDemoAppLockEnabled;
 }
 
-@property(retain, nonatomic, getter=_bannerDestination, setter=_setBannerDestination:) SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_override_bannerDestination;
+- (void).cxx_destruct;
+@property(retain, nonatomic, getter=_bannerManager, setter=_setBannerManager:) SBBannerManager *bannerManager; // @synthesize bannerManager=_override_bannerManager;
 @property(retain, nonatomic, getter=_mainWorkspace, setter=_setMainWorkspace:) SBMainWorkspace *mainWorkspace; // @synthesize mainWorkspace=_override_mainWorkspace;
 @property(retain, nonatomic, getter=_telephonyManager, setter=_setTelephonyManager:) SBTelephonyManager *telephonyManager; // @synthesize telephonyManager=_override_telephonyManager;
 @property(retain, nonatomic, getter=_lockStateAggregator, setter=_setLockStateAggregator:) SBLockStateAggregator *lockStateAggregator; // @synthesize lockStateAggregator=_override_lockStateAggregator;
@@ -39,7 +40,6 @@
 @property(retain, nonatomic, getter=_alertItemsController, setter=_setAlertItemsController:) SBAlertItemsController *alertItemsController; // @synthesize alertItemsController=_override_alertItemsController;
 @property(retain, nonatomic, getter=_setupManager, setter=_setSetupManager:) SBSetupManager *setupManager; // @synthesize setupManager=_override_setupManager;
 @property(retain, nonatomic, getter=_profileConnection, setter=_setProfileConnection:) MCProfileConnection *profileConnection; // @synthesize profileConnection=_override_profileConnection;
-- (void).cxx_destruct;
 - (_Bool)_dictationInfoOnScreen;
 - (_Bool)_allowsCapabilityQuickNoteWithExplanation:(id *)arg1;
 - (_Bool)_allowsCapabilityLiftToWakeWithExplanation:(id *)arg1;

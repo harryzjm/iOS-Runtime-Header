@@ -22,16 +22,16 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *currentLookupIdentifiers; // @synthesize currentLookupIdentifiers=_currentLookupIdentifiers;
 @property(readonly, nonatomic) NSMutableDictionary *transactionDetails; // @synthesize transactionDetails=_transactionDetails;
 @property(readonly, nonatomic) PKPaymentService *paymentService; // @synthesize paymentService=_paymentService;
-- (void).cxx_destruct;
 - (id)_sharedPeerPaymentWebService;
 - (void)_fetchAllPeerPaymentTransactionsWithPeerPaymentPassID:(id)arg1;
 - (void)_transactionsQueue_notifyStatusUpdateOfTransactionWithServiceIdentifier:(id)arg1;
 - (id)_transactionsQueue_transactionDetailsCreatedIfNecessaryForServiceIdentifier:(id)arg1;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
+- (void)transactionSourceIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
+- (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)lookupTransactionActionsIfNeededWithServiceIdentifier:(id)arg1;
 - (id)peerPaymentTransactionWithServiceIdentifier:(id)arg1;
 - (void)_transactionsQueue_setStatus:(unsigned long long)arg1 forPaymentTransactionWithServiceIdentifier:(id)arg2 notifyUpdate:(_Bool)arg3;

@@ -6,24 +6,26 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
+#import <WorkflowUI/WFTriggerMultiSelectCellDelegate-Protocol.h>
 #import <WorkflowUI/WFTriggerTableViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UITableView;
 
-@interface WFWorkoutTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFTriggerTableViewControllerDelegate>
+@interface WFWorkoutTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFTriggerTableViewControllerDelegate, WFTriggerMultiSelectCellDelegate>
 {
     UITableView *_tableView;
     NSArray *_sections;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void).cxx_destruct;
 - (void)triggerTableViewControllerDidCancel:(id)arg1;
-- (void)triggerTableViewController:(id)arg1 didSelectOptions:(id)arg2;
-- (void)presentNavControllerWithRootViewController:(id)arg1;
+- (void)triggerTableViewController:(id)arg1 didFinishWithAnySelected:(_Bool)arg2 orSelectedOptions:(id)arg3;
+- (void)cell:(id)arg1 didSelectOptionWithLeftViewSelected:(_Bool)arg2 rightViewSelected:(_Bool)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

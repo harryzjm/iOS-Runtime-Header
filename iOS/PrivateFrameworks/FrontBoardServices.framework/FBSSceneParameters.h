@@ -21,10 +21,10 @@
 }
 
 + (id)parametersForSpecification:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
 @property(copy, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property(readonly, copy, nonatomic) FBSSceneSpecification *specification; // @synthesize specification=_specification;
-- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -36,9 +36,9 @@
 @property(readonly, copy) NSString *description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_configureCopy:(id)arg1;
 - (void)updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithParameters:(id)arg1;
 - (id)initWithSpecification:(id)arg1;
 
 // Remaining properties

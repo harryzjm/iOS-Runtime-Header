@@ -10,7 +10,7 @@
 #import <VideoSubscriberAccountUI/VSTwoFactorDigitViewDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSTwoFactorEntryViewController-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIScrollView, VSFontCenter, VSIdentityProviderLogoView, VSTwoFactorDigitView, VSTwoFactorEntryViewModel, VSViewModel;
+@class NSArray, NSString, UIBarButtonItem, UIScrollView, VSFontCenter, VSIdentityProviderLogoView, VSTwoFactorDigitView, VSTwoFactorEntryViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,21 +27,20 @@ __attribute__((visibility("hidden")))
     VSFontCenter *_fontCenter;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
 @property(retain, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
 @property(retain, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property(retain, nonatomic) VSTwoFactorDigitView *digitView; // @synthesize digitView=_digitView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) UIBarButtonItem *verifyButton; // @synthesize verifyButton=_verifyButton;
-@property(readonly, nonatomic) VSViewModel *viewModel;
+@property(retain, nonatomic) VSTwoFactorEntryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
-- (void).cxx_destruct;
 - (void)twoFactorDigitView:(id)arg1 textDidChange:(id)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(readonly, nonatomic) struct CGSize preferredLogoSize;
-- (void)setViewModel:(id)arg1;
 - (void)stopObservingViewModel:(id)arg1;
 - (void)startObservingViewModel:(id)arg1;
 - (void)buttonPressed:(id)arg1;

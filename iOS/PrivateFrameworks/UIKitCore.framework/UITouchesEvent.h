@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
     long long _singleAllowableExternalTouchPathIndex;
 }
 
-@property(nonatomic) long long singleAllowableExternalTouchPathIndex; // @synthesize singleAllowableExternalTouchPathIndex=_singleAllowableExternalTouchPathIndex;
 - (void).cxx_destruct;
+@property(nonatomic) long long singleAllowableExternalTouchPathIndex; // @synthesize singleAllowableExternalTouchPathIndex=_singleAllowableExternalTouchPathIndex;
+@property(readonly, nonatomic, getter=_containsHIDPointerEvent) _Bool containsHIDPointerEvent;
+- (unsigned long long)_inputPrecision;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)predictedTouchesForTouch:(id)arg1;
 - (id)coalescedTouchesForTouch:(id)arg1;
@@ -39,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double _initialTouchTimestamp;
 - (id)description;
 - (id)_cloneEvent;
-- (long long)_modifierFlags;
 - (void)_moveTouchesFromView:(id)arg1 toView:(id)arg2;
 - (id)_exclusiveTouchWindows;
 - (id)_firstTouchForView:(id)arg1;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)_windows;
 - (void)_touchesForGesture:(id)arg1 withPhase:(long long)arg2 intoSet:(id)arg3;
 - (id)_touchesForGesture:(id)arg1 withPhase:(long long)arg2;
+- (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (_Bool)_sendEventToGestureRecognizer:(id)arg1;
 - (id)_touchesForView:(id)arg1 withPhase:(long long)arg2;
 - (void)_clearTouches;
@@ -60,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (void)_removeTouch:(id)arg1;
 - (void)_clearViewForTouch:(id)arg1;
 - (void)_addTouch:(id)arg1 forDelayedDelivery:(_Bool)arg2;
+- (void)_addGestureRecognizersForView:(id)arg1 toTouch:(id)arg2 forContinuation:(_Bool)arg3;
+- (void)_addGestureRecognizersForTouchContinuationInView:(id)arg1 toTouch:(id)arg2;
 - (void)_addGestureRecognizersForView:(id)arg1 toTouch:(id)arg2;
 - (_Bool)_anyInterestedGestureRecognizersForTouchInView:(id)arg1;
 - (void)_collectGestureRecognizersForView:(id)arg1 withBlock:(CDUnknownBlockType)arg2;

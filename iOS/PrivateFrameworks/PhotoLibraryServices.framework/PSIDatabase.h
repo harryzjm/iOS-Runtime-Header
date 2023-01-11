@@ -13,7 +13,7 @@
 @class NSDictionary, NSMutableArray, NSMutableString, NSString, PSIIntArray, PSIStatement, PSITokenizer, PSIWordEmbeddingTable;
 @protocol OS_dispatch_queue;
 
-@interface PSIDatabase : NSObject <PSITableDelegate, PSIQueryDelegate, PSIGroupCacheDelegate>
+@interface PSIDatabase : NSObject <PSIGroupCacheDelegate, PSIQueryDelegate, PSITableDelegate>
 {
     struct sqlite3 *_inqDatabase;
     _Bool _databaseIsValid;
@@ -29,13 +29,9 @@
     PSIStatement *_inqNumberOfCollectionsMatchingGroupWithIdStatement;
     PSIStatement *_inqNumberOfCollectionsByGroupIdMatchingGroupsWithIdsStatement;
     PSIStatement *_inqIdsOfAllGroupsStatement;
-    PSIStatement *_inqIdsOfAllGroupsMatchedByAssetsStatement;
-    PSIStatement *_inqIdsOfAllGroupsMatchedByCollectionsStatement;
-    PSIStatement *_inqRemoveUnmatchedGroupsFromGroupsStatement;
     PSIStatement *_inqIdsOfAllGroupsInPrefixStatement;
     PSIStatement *_inqIdsOfAllGroupsInLookupStatement;
     PSIStatement *_inqRemoveGroupsFromLookupStatement;
-    PSIStatement *_inqRemoveUnmatchedGroupsFromLookupStatement;
     struct __CFDictionary *_inqGroupObjectsById;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_searchQueue;
@@ -51,13 +47,14 @@
 }
 
 + (id)searchDatabaseLog;
++ (id)_scoreByUserCategory;
 + (struct sqlite3 *)_openDatabaseAtPath:(id)arg1 options:(long long)arg2;
 + (_Bool)_integrityCheckDatabase:(struct sqlite3 *)arg1;
 + (void)_dropDatabase:(struct sqlite3 *)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)dropDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long options; // @synthesize options=_options;
 @property(readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
-- (void).cxx_destruct;
 - (void)_inqPerformBatch:(CDUnknownBlockType)arg1;
 - (void)_inqPrepareAndExecuteStatement:(const char *)arg1;
 - (void)_inqExecutePreparedStatement:(struct sqlite3_stmt *)arg1 withStatementBlock:(CDUnknownBlockType)arg2;
@@ -75,7 +72,6 @@
 - (struct __CFArray *)_inqNewAssetIdsForGroupId:(unsigned long long)arg1 dateFilter:(id)arg2;
 - (struct __CFArray *)_inqNewAssetIdsWithDateFilter:(id)arg1;
 - (id)_inqNewSynonymTextsByOwningGroupIdWithGroupIds:(struct __CFSet *)arg1;
-- (struct __CFSet *)_inqNewGroupIdsWithOwningGroupIds:(struct __CFSet *)arg1;
 - (id)_inqGroupsWithMatchingGroupIds:(struct __CFSet *)arg1 dateFilter:(id)arg2 includeObjects:(_Bool)arg3 matchingPredicateBlock:(CDUnknownBlockType)arg4;
 - (id)_inqNonFilenameGroupsWithMatchingGroupIds:(struct __CFSet *)arg1 dateFilter:(id)arg2 includeObjects:(_Bool)arg3 matchingPredicateBlock:(CDUnknownBlockType)arg4;
 - (id)_inqFilenameGroupsWithMatchingGroupIds:(struct __CFSet *)arg1 dateFilter:(id)arg2 matchingPredicateBlock:(CDUnknownBlockType)arg3;
@@ -149,19 +145,9 @@
 - (void)_inqSync:(CDUnknownBlockType)arg1;
 - (void)_inqAsync:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)_finalizeEverything;
 - (id)initWithPath:(id)arg1 options:(long long)arg2 searchMetadata:(id)arg3;
-- (long long)lastInsertedRowID;
-- (void)unbindMatchingIds;
-- (void)bindMatchingIds:(const long long *)arg1 numberOfMatchingIds:(unsigned long long)arg2;
-- (void)bindMatchingIds:(struct __CFArray *)arg1 range:(struct _NSRange)arg2;
-- (void)bindMatchingIds:(struct __CFSet *)arg1;
-- (void)unprepareMatchingIds;
-- (void)prepareForNumberOfMatchingIds:(unsigned long long)arg1;
-- (void)executeStatement:(id)arg1 withResultEnumerationBlock:(CDUnknownBlockType)arg2;
-- (void)executeStatement:(id)arg1;
-- (void)executeStatementFromString:(id)arg1 withResultEnumerationBlock:(CDUnknownBlockType)arg2;
-- (void)executeStatementFromString:(id)arg1;
-- (id)statementFromString:(id)arg1;
+- (unsigned long long)updateGroupForText:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningGroupId:(unsigned long long)arg4 didUpdateGroup:(out _Bool *)arg5;
 - (void)fetchAssetUUIDsForAssetIDs:(struct __CFArray *)arg1 creationDateSorted:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)group:(id)arg1 fetchOwningContentString:(_Bool)arg2 assetIdRange:(struct _NSRange)arg3 collectionIdRange:(struct _NSRange)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)suggestionWhitelistedScenes;
@@ -175,7 +161,18 @@
 - (void)executeQuery:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
 @property(readonly) NSObject<OS_dispatch_queue> *groupResultsQueue;
 @property(readonly) PSITokenizer *tokenizer;
-- (unsigned long long)updateGroupForText:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningGroupId:(unsigned long long)arg4 didUpdateGroup:(out _Bool *)arg5;
+- (long long)lastInsertedRowID;
+- (void)unbindMatchingIds;
+- (void)bindMatchingIds:(const long long *)arg1 numberOfMatchingIds:(unsigned long long)arg2;
+- (void)bindMatchingIds:(struct __CFArray *)arg1 range:(struct _NSRange)arg2;
+- (void)bindMatchingIds:(struct __CFSet *)arg1;
+- (void)unprepareMatchingIds;
+- (void)prepareForNumberOfMatchingIds:(unsigned long long)arg1;
+- (void)executeStatement:(id)arg1 withResultEnumerationBlock:(CDUnknownBlockType)arg2;
+- (void)executeStatement:(id)arg1;
+- (void)executeStatementFromString:(id)arg1 withResultEnumerationBlock:(CDUnknownBlockType)arg2;
+- (void)executeStatementFromString:(id)arg1;
+- (id)statementFromString:(id)arg1;
 - (void)deleteFromLookupTableWithGroupId:(unsigned long long)arg1;
 - (id)groupIdsInLookupTable;
 - (id)groupIdsInPrefixTable;

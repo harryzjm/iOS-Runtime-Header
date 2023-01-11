@@ -29,6 +29,7 @@
     NSDictionary *_annotations;
     NSArray *_selectElementInfo;
     NSArray *_autocompleteTokens;
+    NSArray *_ancestorFrameURLs;
     double _rectLeft;
     double _rectTop;
     double _rectWidth;
@@ -44,6 +45,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *ancestorFrameURLs; // @synthesize ancestorFrameURLs=_ancestorFrameURLs;
 @property(readonly, nonatomic) double rectHeight; // @synthesize rectHeight=_rectHeight;
 @property(readonly, nonatomic) double rectWidth; // @synthesize rectWidth=_rectWidth;
 @property(readonly, nonatomic) double rectTop; // @synthesize rectTop=_rectTop;
@@ -63,7 +66,6 @@
 @property(readonly, copy, nonatomic) NSArray *autocompleteTokens; // @synthesize autocompleteTokens=_autocompleteTokens;
 @property(readonly, copy, nonatomic) NSDictionary *annotations; // @synthesize annotations=_annotations;
 @property(readonly, copy, nonatomic) NSString *addressBookLabel; // @synthesize addressBookLabel=_addressBookLabel;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) long long lastAutoFillButtonType;
 @property(readonly, nonatomic) long long autoFillButtonType;
 @property(readonly, nonatomic) unsigned long long selectionLength;

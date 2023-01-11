@@ -6,28 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableURLRequest, NSURLRequest, NSURLSessionEffectiveConfiguration, NSUUID, __CFN_TaskMetrics, __NSCFURLSession;
+@class NSMutableURLRequest, NSURLRequest, NSURLSession, NSURLSessionEffectiveConfiguration, NSUUID, __CFN_TaskMetrics;
 
 @interface CONNECTION_SessionTask : NSObject
 {
-    NSURLRequest *_originalRequest;
-    NSMutableURLRequest *_currentRequest;
+    struct _CFURLRequest *_originalRequest;
+    struct _CFURLRequest *_currentRequest;
     double _startTime;
     struct __CFDictionary *_connectionProperties;
     struct __CFDictionary *_socketProperties;
     NSMutableURLRequest *_nsCurrentRequest;
     NSURLRequest *_nsOriginalRequest;
-    __NSCFURLSession *_session_ivar;
+    NSURLSession *_session_ivar;
     NSURLSessionEffectiveConfiguration *_effectiveConfiguration;
     NSUUID *_uniqueIdentifier;
     _Bool _is_cellular;
     Class _my_protocolForTask;
     _Bool __shouldSkipPreferredClientCertificateLookup;
     struct __CFDictionary *_atsStateCache;
+    _Bool _preventsAppSSO;
+    _Bool _appSSOFallback;
+    _Bool _appleIDContextRedirect;
     __CFN_TaskMetrics *_metrics;
 }
 
 @property(retain, nonatomic) __CFN_TaskMetrics *_metrics; // @synthesize _metrics;
+- (id)_cookieTransformCallback;
+- (id)_resolvedCNAMEChain;
+- (void)set_resolvedCNAMEChain:(id)arg1;
 - (void)set_connectionIsCompanionLink:(_Bool)arg1;
 - (_Bool)_connectionIsCompanionLink;
 - (id)_httpConnectionInfoCompletionBlock;
@@ -36,6 +42,7 @@
 - (id)_uniqueIdentifier;
 - (_Bool)_isTopLevelNavigation;
 - (id)_siteForCookies;
+- (id)_hostOverride;
 - (id)_APSRelayTopic;
 - (id)_incompleteCurrentTaskTransactionMetrics;
 - (id)_incompleteTaskMetrics;
@@ -48,6 +55,10 @@
 - (_Bool)_allowsQUIC;
 - (void)set_allowsQUIC:(_Bool)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
+- (unsigned short)_TLSMaximumSupportedProtocolVersion;
+- (void)set_TLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
+- (unsigned short)_TLSMinimumSupportedProtocolVersion;
+- (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_TCPConnectionMetadata:(id)arg1;
 - (id)_storagePartitionIdentifier;
 - (void)set_trailers:(id)arg1;
@@ -58,9 +69,12 @@
 - (struct __CFDictionary *)_dependencyInfo;
 - (struct __CFDictionary *)_copyATSState;
 - (struct __CFSet *)_getAuthenticatorStatusCodes;
-- (void)_getAuthenticationHeadersForResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setAppleIDContext:(id)arg1;
+- (_Bool)_appleIDContextRedirect;
+- (void)set_appSSOFallback:(_Bool)arg1;
 - (_Bool)_appSSOFallback;
+- (void)set_preventsAppSSO:(_Bool)arg1;
 - (_Bool)_preventsAppSSO;
 - (_Bool)_requiresSecureHTTPSProxyConnection;
 - (_Bool)_preventsSystemHTTPProxyAuthentication;
@@ -69,6 +83,7 @@
 - (id)_protocolForTask;
 - (void)set_protocolForTask:(id)arg1;
 - (void)_setConnectionIsCellular:(_Bool)arg1;
+- (_Bool)prefersIncrementalDelivery;
 - (float)priority;
 - (void)_releasePreventIdleSleepAssertionIfAppropriate;
 - (void)_takePreventIdleSleepAssertionIfAppropriate;
@@ -88,6 +103,7 @@
 - (id)_timeWindowDuration;
 - (id)_timeWindowDelay;
 - (id)_expectedWorkload;
+- (id)_knownHTTP3Capable;
 - (id)_allowsCellularOverride;
 - (id)_allowsConstrainedOverride;
 - (id)_allowsExpensiveOverride;
@@ -124,6 +140,7 @@
 - (id)workQueue;
 - (id)session;
 - (_Bool)shouldHandleCookiesAndSchemeIsAppropriate;
+- (void)_setConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (const struct XCookieStorage *)_createXCookieStorage;
@@ -137,7 +154,7 @@
 - (id)_effectiveConfiguration;
 - (id)_private_nw_activity;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 mutableCurrent:(id)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4 session:(id)arg5;
+- (id)initWithRequest:(struct _CFURLRequest *)arg1 mutableCurrent:(struct _CFURLRequest *)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4 session:(id)arg5;
 
 @end
 

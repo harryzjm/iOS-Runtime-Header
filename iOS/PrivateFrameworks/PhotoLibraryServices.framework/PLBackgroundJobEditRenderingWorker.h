@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PAImageConversionServiceClient, PAVideoConversionServiceClient;
+@class NSProgress, PAImageConversionServiceClient, PAVideoConversionServiceClient;
 
 @interface PLBackgroundJobEditRenderingWorker
 {
     PAImageConversionServiceClient *_imageConversionServiceClient;
     PAVideoConversionServiceClient *_videoConversionServiceClient;
+    NSProgress *_progressForCurrentAsset;
 }
 
 + (id)workerWithLibrary:(id)arg1;
 - (void).cxx_destruct;
+- (void)stopWorkingOnManagedObjectID:(id)arg1;
+- (_Bool)isInterruptible;
 - (void)performWorkOnManagedObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)managedObjectIDsNeedingProcessing;
 - (_Bool)hasPendingJobs;

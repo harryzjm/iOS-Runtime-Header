@@ -6,25 +6,39 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTCellularPlanManager, PSListController, PSUICellularPlanManagerCache, PSUICellularPlanUniversalReference;
+#import <SettingsCellularUI/CXCallObserverDelegate-Protocol.h>
+
+@class CTCellularPlanManager, CXCallObserver, NSString, PSListController, PSUICellularPlanManagerCache, PSUICellularPlanUniversalReference, PSUICoreTelephonyCallCache;
 
 __attribute__((visibility("hidden")))
-@interface PSUITurnOnThisLineSpecifier : PSSpecifier
+@interface PSUITurnOnThisLineSpecifier : PSSpecifier <CXCallObserverDelegate>
 {
     PSUICellularPlanUniversalReference *_planReference;
     CTCellularPlanManager *_cellularPlanManager;
     PSUICellularPlanManagerCache *_planManagerCache;
+    PSUICoreTelephonyCallCache *_callCache;
     PSListController *_hostController;
+    CXCallObserver *_callObserver;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CXCallObserver *callObserver; // @synthesize callObserver=_callObserver;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
+@property(retain, nonatomic) PSUICoreTelephonyCallCache *callCache; // @synthesize callCache=_callCache;
 @property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property(retain, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
 @property(retain, nonatomic) PSUICellularPlanUniversalReference *planReference; // @synthesize planReference=_planReference;
-- (void).cxx_destruct;
+- (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)setPlanEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isPlanEnabled:(id)arg1;
-- (id)initWithPlanUniversalReference:(id)arg1 cellularPlanManager:(id)arg2 planManagerCache:(id)arg3 hostController:(id)arg4;
+- (void)setSwitchEnabled;
+- (id)initWithPlanUniversalReference:(id)arg1 cellularPlanManager:(id)arg2 planManagerCache:(id)arg3 callCache:(id)arg4 hostController:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

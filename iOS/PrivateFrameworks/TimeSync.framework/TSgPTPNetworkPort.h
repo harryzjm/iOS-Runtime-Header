@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString;
+@class IOKConnection, NSMutableArray, NSString;
 
 @interface TSgPTPNetworkPort
 {
-    unsigned int _connection;
+    IOKConnection *_connection;
     NSMutableArray *_clients;
     _Bool _remoteIsSameDevice;
     _Bool _asCapable;
@@ -45,7 +45,9 @@
     unsigned long long _overridenReceiveClockIdentity;
 }
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
++ (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned short overridenReceivePortNumber; // @synthesize overridenReceivePortNumber=_overridenReceivePortNumber;
 @property(nonatomic) unsigned long long overridenReceiveClockIdentity; // @synthesize overridenReceiveClockIdentity=_overridenReceiveClockIdentity;
 @property(nonatomic) _Bool overridenReceiveMatching; // @synthesize overridenReceiveMatching=_overridenReceiveMatching;
@@ -79,12 +81,12 @@
 @property(nonatomic) _Bool remoteIsSameDevice; // @synthesize remoteIsSameDevice=_remoteIsSameDevice;
 @property(nonatomic) unsigned short remotePortNumber; // @synthesize remotePortNumber=_remotePortNumber;
 @property(nonatomic) unsigned long long remoteClockIdentity; // @synthesize remoteClockIdentity=_remoteClockIdentity;
-- (void)dealloc;
+- (void)serviceTerminated;
 - (void)removeClient:(id)arg1;
 - (void)addClient:(id)arg1;
 - (_Bool)deregisterAsyncCallbackError:(id *)arg1;
 - (_Bool)registerAsyncCallbackError:(id *)arg1;
-- (void)_handleNotification:(int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
+- (void)_handleNotification:(int)arg1 withArg1:(unsigned long long)arg2 arg2:(unsigned long long)arg3 arg3:(unsigned long long)arg4 arg4:(unsigned long long)arg5 arg5:(unsigned long long)arg6 arg6:(unsigned long long)arg7;
 - (_Bool)getCurrentPortInfo:(CDStruct_57c52001 *)arg1 error:(id *)arg2;
 - (_Bool)disablePortError:(id *)arg1;
 - (_Bool)enablePortError:(id *)arg1;
@@ -123,9 +125,9 @@
 - (_Bool)_remoteIsSameDevice;
 - (unsigned short)_remotePortNumber;
 - (unsigned long long)_remoteClockIdentity;
-@property(readonly, nonatomic) unsigned int connection;
+@property(readonly, nonatomic) IOKConnection *connection;
 - (void)updateProperties;
-- (_Bool)_commonInitWithService:(unsigned int)arg1;
+- (_Bool)_commonInitWithService:(id)arg1;
 
 @end
 

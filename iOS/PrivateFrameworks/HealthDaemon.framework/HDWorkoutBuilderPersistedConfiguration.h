@@ -12,6 +12,7 @@
 
 @interface HDWorkoutBuilderPersistedConfiguration : NSObject <NSCopying>
 {
+    _Bool _shouldCollectWorkoutEvents;
     NSUUID *_builderIdentifier;
     HKWorkoutConfiguration *_workoutConfiguration;
     HDSourceEntity *_sourceEntity;
@@ -21,6 +22,8 @@
     HKQuantity *_goal;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldCollectWorkoutEvents; // @synthesize shouldCollectWorkoutEvents=_shouldCollectWorkoutEvents;
 @property(copy, nonatomic) HKQuantity *goal; // @synthesize goal=_goal;
 @property(nonatomic) unsigned long long goalType; // @synthesize goalType=_goalType;
 @property(retain, nonatomic) HDDeviceEntity *deviceEntity; // @synthesize deviceEntity=_deviceEntity;
@@ -28,7 +31,6 @@
 @property(retain, nonatomic) HDSourceEntity *sourceEntity; // @synthesize sourceEntity=_sourceEntity;
 @property(copy, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 @property(copy, nonatomic) NSUUID *builderIdentifier; // @synthesize builderIdentifier=_builderIdentifier;
-- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

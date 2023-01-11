@@ -34,8 +34,9 @@
 + (unsigned long long)proposedResolutionForError:(id)arg1;
 + (id)_displayableErrorOverrideForUnderlyingError:(id)arg1;
 + (id)displayableErrorForError:(id)arg1;
-@property(readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
+- (void)_updatePreservePeerPaymentBalanceSetting:(_Bool)arg1;
 @property(readonly, copy) NSString *description;
 - (void)_setPerformQuoteSuccess:(_Bool)arg1;
 - (id)internalState;
@@ -60,7 +61,6 @@
 - (void)performAction:(id)arg1 withPaymentIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)formalRequestTokenForAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateLastUsedAlternateFundingSource;
-- (id)performQuoteOrientation;
 - (void)performQuoteWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performQuote:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_defaultAlternateFundingSourceForMode:(unsigned long long)arg1;
@@ -91,6 +91,7 @@
 - (void)_setState:(unsigned long long)arg1 notify:(_Bool)arg2;
 - (void)dealloc;
 - (id)initWithPeerPaymentWebService:(id)arg1;
+- (id)init;
 - (void)requestTokenForAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)identifyRecipientWithAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

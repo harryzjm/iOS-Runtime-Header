@@ -8,27 +8,32 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString, PKAccount, PKPaymentPass, PKPaymentTransaction;
+@class NSString, PKAccount, PKPaymentPass, PKPaymentTransaction, PKTransactionSource;
 
 @interface PKDashboardPaymentTransactionItem : NSObject <PKDashboardItem>
 {
     PKPaymentPass *_pass;
     PKPaymentTransaction *_transaction;
     _Bool _isFeaturedTransaction;
+    PKTransactionSource *_transactionSource;
+    PKTransactionSource *_secondaryTransactionSource;
     PKAccount *_account;
 }
 
++ (id)identifier;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isFeaturedTransaction; // @synthesize isFeaturedTransaction=_isFeaturedTransaction;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
-@property(readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property(retain, nonatomic) PKTransactionSource *secondaryTransactionSource; // @synthesize secondaryTransactionSource=_secondaryTransactionSource;
+@property(readonly, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 @property(readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
-- (void).cxx_destruct;
-- (id)initWithPaymentPass:(id)arg1 transaction:(id)arg2 account:(id)arg3;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithTransactionSource:(id)arg1 transaction:(id)arg2 account:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     id _delegate;
     _Bool _browsing;
     NSMutableArray *_internalDevices;
+    _Bool _suspended;
 }
 
+@property(getter=isSuspended) _Bool suspended; // @synthesize suspended=_suspended;
 @property(retain) NSMutableArray *internalDevices; // @synthesize internalDevices=_internalDevices;
 @property(getter=isBrowsing) _Bool browsing; // @synthesize browsing=_browsing;
 @property id delegate; // @synthesize delegate=_delegate;

@@ -18,24 +18,14 @@
     NSString *_webClipIdentifier;
 }
 
-@property(retain, nonatomic) NSString *webClipIdentifier; // @synthesize webClipIdentifier=_webClipIdentifier;
-@property(retain, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
-@property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property(nonatomic) int type; // @synthesize type=_type;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasWebClipIdentifier;
-@property(readonly, nonatomic) _Bool hasSceneIdentifier;
-- (int)StringAsType:(id)arg1;
-- (id)typeAsString:(int)arg1;
 
 @end
 

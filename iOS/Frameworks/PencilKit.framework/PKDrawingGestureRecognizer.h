@@ -20,13 +20,15 @@
     _Bool _gestureDetected;
     _Bool _ignoreFingerTouchesUntilReset;
     id <PKDrawingGestureTarget> drawingTarget;
+    unsigned long long _activeInputProperties;
     UITouch *_drawingTouch;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UITouch *drawingTouch; // @synthesize drawingTouch=_drawingTouch;
 @property(nonatomic) double thresholdDistance; // @synthesize thresholdDistance=_thresholdDistance;
+@property(readonly, nonatomic) unsigned long long activeInputProperties; // @synthesize activeInputProperties=_activeInputProperties;
 @property(nonatomic) __weak id <PKDrawingGestureTarget> drawingTarget; // @synthesize drawingTarget;
-- (void).cxx_destruct;
 - (void)_drawingCancelled;
 - (void)_drawingEnded;
 - (void)_drawingMoved:(id)arg1;
@@ -41,6 +43,7 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+@property(readonly, nonatomic) _Bool isReplaying;
 - (_Bool)_shouldBeginDrawing:(id)arg1 withEvent:(id)arg2;
 - (void)end;
 - (void)cancel;

@@ -27,6 +27,7 @@
 - (void)bindInt:(int)arg1 atPosition:(int)arg2;
 - (void)bindFloat:(float)arg1 atPosition:(int)arg2;
 - (void)bindDouble:(double)arg1 atPosition:(int)arg2;
+@property(readonly, copy, nonatomic) NSString *firstStringValue;
 @property(readonly, copy, nonatomic) NSNumber *firstNumberValue;
 @property(readonly, nonatomic) long long firstInt64Value;
 - (void)enumerateRowsUsingBlock:(CDUnknownBlockType)arg1;

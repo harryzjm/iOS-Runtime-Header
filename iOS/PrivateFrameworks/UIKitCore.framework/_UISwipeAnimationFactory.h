@@ -11,9 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_animatorForDuration:(double)arg1 initialVelocity:(struct CGVector)arg2;
++ (id)_animatorForDuration:(double)arg1 initialVelocity:(struct CGVector)arg2 shouldLayoutSubviews:(_Bool)arg3;
 + (id)_animatorForStiffnessFactor:(double)arg1 initialVelocity:(struct CGVector)arg2;
-+ (id)animatorForCollapseWithOccurrence:(id)arg1;
++ (id)animatorForScanlineCollapse;
++ (id)animatorForCollapseWithAdditivelyAnimatedViews:(id)arg1;
++ (id)animatorForCollapse;
++ (id)animatorForTentativeWithOccurrence:(id)arg1 additivelyAnimatedViews:(id)arg2;
 + (id)animatorForTentativeWithOccurrence:(id)arg1;
 + (id)animatorForMoveWithOccurrence:(id)arg1;
 

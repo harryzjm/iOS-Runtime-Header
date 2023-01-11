@@ -10,7 +10,9 @@
 {
 }
 
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
++ (id)userInterfaceXPCInterface;
++ (id)userInterfaceProtocol;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 
 @end
 

@@ -10,11 +10,32 @@
 {
 }
 
++ (void)setPreferencesValueForKey:(struct __CFString *)arg1 value:(const struct __CFString *)arg2;
 + (id)preferencesValueforKey:(struct __CFString *)arg1 domain:(struct __CFString *)arg2;
++ (float)sceneIBLARIntensity;
++ (id)overrideCameraStateSerializedString;
++ (_Bool)forceShowAnimationScrubber;
++ (_Bool)triggerAffordanceShouldReshowAfterArReset;
++ (double)triggerAffordanceShowDuration;
++ (_Bool)wantsStatusPillHidden;
 + (_Bool)wantsStatisticsShown;
++ (_Bool)wantsDebugPhysicsEnabled;
 + (_Bool)wantsDebugVisualizationEnabled;
-+ (_Bool)wantsSTAREnabled;
++ (_Bool)forceDisableRayTracedAmbientOcclusion;
++ (_Bool)wantsTTRButton;
++ (_Bool)wantsDebugActionsButton;
 + (_Bool)wantsRayTracedAmbientOcclusionEnabled;
++ (float)objectFitToScreenPercentage;
++ (_Bool)wantsObjectFitToScreen;
++ (_Bool)wantsShowLastPlacementResultTypeStatus;
++ (_Bool)wantsTrackedRaycastStatus;
++ (_Bool)wantsPeopleOcclusionDisabled;
++ (_Bool)allowCheckoutNonSecureHTML;
++ (id)checkoutFragment;
++ (_Bool)wantsParentToCameraInARAndEnableProbes;
++ (_Bool)wantsOpenInObjectMode;
++ (id)defaultPlanePosition;
++ (_Bool)wantsObjectPlacedWithoutPlane;
 + (_Bool)wants2DOverlayControlsHidden;
 + (_Bool)wantsStatusBarHidden;
 + (_Bool)wantsAnimationDisabled;

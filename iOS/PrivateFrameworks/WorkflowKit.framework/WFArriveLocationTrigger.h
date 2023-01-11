@@ -10,7 +10,8 @@
 
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
+- (id)localizedDescriptionWithConfigurationSummary;
 
 @end
 

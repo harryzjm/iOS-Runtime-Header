@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)followUpPerformUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)processFollowUpItem:(id)arg1 selectedAction:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)syncHostContextWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)hostContextWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_shadowPrincipalObject;
 - (id)extensionLogicProvider;

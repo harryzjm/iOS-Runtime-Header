@@ -11,6 +11,7 @@
 @protocol ICQBannerViewDelegate <NSObject>
 
 @optional
+- (void)updateBannerView;
 - (void)bannerView:(ICQBannerView *)arg1 action:(long long)arg2 parameters:(NSDictionary *)arg3 dismiss:(_Bool)arg4;
 - (_Bool)bannerView:(ICQBannerView *)arg1 performAction:(long long)arg2 parameters:(NSDictionary *)arg3;
 - (UIViewController *)presentingViewControllerForBannerView:(ICQBannerView *)arg1;

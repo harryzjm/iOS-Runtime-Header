@@ -15,17 +15,16 @@
     NSArray *_steps;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_geoComposedRoute) GEOComposedRoute *geoComposedRoute; // @synthesize geoComposedRoute=_geoComposedRoute;
 @property(readonly, nonatomic) NSArray *steps; // @synthesize steps=_steps;
 @property(readonly, nonatomic) MKPolyline *polyline; // @synthesize polyline=_polyline;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) double expectedTravelTime;
 @property(readonly, nonatomic) double distance;
 @property(readonly, nonatomic) NSArray *advisoryNotices;
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) unsigned long long transportType;
 - (id)_initWithGEOComposedRoute:(id)arg1;
-- (id)_maneuverImageForStep:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 
 @end
 

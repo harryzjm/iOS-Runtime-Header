@@ -28,7 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void *)_internalRepresentation;
 - (id)initWithImage:(id)arg1 options:(id)arg2;
-- (id)_initWithImage:(id)arg1 key0:(id)arg2 vargs:(struct __va_list_tag [1])arg3;
+- (id)_initWithImage:(id)arg1 key0:(id)arg2 vargs:(char *)arg3;
 - (id)initWithImage:(id)arg1 keysAndValues:(id)arg2;
 - (id)initWithImage:(id)arg1;
 - (id)init;

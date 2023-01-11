@@ -8,7 +8,7 @@
 
 #import <Notes/ICSearchIndexableNote-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
+@class NSData, NSDate, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
 
 @interface NoteObject : NSManagedObject <ICSearchIndexableNote>
 {
@@ -36,23 +36,28 @@
 - (id)searchableItemAttributeSet;
 - (id)userActivityContentAttributeSet;
 - (id)searchDomainIdentifier;
+@property(readonly, nonatomic) _Bool isPinned;
+@property(readonly, nonatomic) _Bool isDeletedOrInTrash;
+@property(readonly, nonatomic) _Bool hasUnreadChanges;
+@property(readonly, nonatomic) long long currentStatus;
 - (id)contentIdentifier;
 - (id)searchIndexingIdentifier;
-- (id)dateForCurrentSortType;
 - (id)contentInfoText;
 - (id)noteAsPlainTextWithoutTitle;
-@property(readonly, nonatomic) NSArray *noteCellKeyPaths;
+@property(readonly, nonatomic) NSSet *noteCellKeyPaths;
 - (id)authorsExcludingCurrentUser;
 - (_Bool)isHiddenFromSearch;
 - (_Bool)searchResultCanBeDeletedFromNoteContext;
 - (unsigned long long)searchResultType;
 - (unsigned long long)searchResultsSection;
+- (id)dataSourceIdentifier;
 - (long long)visibilityTestingType;
 - (id)identifier;
 - (id)accountName;
 - (id)folderNameForNoteList;
 - (id)folderName;
 - (id)trimmedTitle;
+- (_Bool)isDeletable;
 - (_Bool)isMovable;
 - (_Bool)isSharedReadOnly;
 - (_Bool)isSharedViaICloudFolder;

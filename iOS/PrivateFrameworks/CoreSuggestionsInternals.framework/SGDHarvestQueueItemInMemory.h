@@ -16,16 +16,16 @@
     NSString *_messageId;
 }
 
+- (void).cxx_destruct;
 @property _Bool beingDeleted; // @synthesize beingDeleted=_beingDeleted;
 @property _Bool inProgress; // @synthesize inProgress=_inProgress;
 @property(readonly, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property(readonly, nonatomic) NSString *sourceKey; // @synthesize sourceKey=_sourceKey;
-- (void).cxx_destruct;
 - (id)description;
 - (_Bool)highPriority;
 - (void)markAsFailed;
 - (void)finish;
-- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3 sourceKey:(id)arg4 messageId:(id)arg5 highPriority:(_Bool)arg6 parentQueue:(id)arg7;
+- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3 sourceKey:(id)arg4 messageId:(id)arg5 highPriority:(_Bool)arg6 customPriorityCriteria:(unsigned char)arg7 parentQueue:(id)arg8;
 
 @end
 

@@ -6,14 +6,19 @@
 
 #import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@class NSData, NSMutableArray, SignedLogHead, TransparencyLogEntryVerifier, TransparencyManagedDataStore;
+@class NSData, NSDictionary, NSMutableArray, SignedLogHead, TransparencyLogEntryVerifier, TransparencyManagedDataStore;
 
 @interface LogEntry <TransparencyVerifiable>
 {
 }
 
 + (id)descriptor;
-- (_Bool)verifyWithError:(id *)arg1;
+- (unsigned long long)verifyTLTEntryForPerApplicationLogHead:(id)arg1 error:(id *)arg2;
+- (_Bool)setInclusionResult:(unsigned long long)arg1 signedLogHead:(id)arg2 error:(id *)arg3;
+- (unsigned long long)verifyWithError:(id *)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
+- (void)setMetadata:(id)arg1;
+@property(readonly) NSDictionary *metadata;
 @property(retain) TransparencyManagedDataStore *dataStore;
 @property(retain) TransparencyLogEntryVerifier *verifier;
 

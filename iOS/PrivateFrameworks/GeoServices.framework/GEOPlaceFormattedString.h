@@ -13,7 +13,6 @@
 @interface GEOPlaceFormattedString : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOFormattedString *_contactHome;
     GEOFormattedString *_contactOther;
@@ -24,6 +23,9 @@
     GEOFormattedString *_streetAddress;
     GEOFormattedString *_unknown;
     GEOFormattedString *_work;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_contactHome:1;
@@ -35,16 +37,7 @@
         unsigned int read_streetAddress:1;
         unsigned int read_unknown:1;
         unsigned int read_work:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_contactHome:1;
-        unsigned int wrote_contactOther:1;
-        unsigned int wrote_contactWork:1;
-        unsigned int wrote_custom:1;
-        unsigned int wrote_home:1;
-        unsigned int wrote_pointOfInterest:1;
-        unsigned int wrote_streetAddress:1;
-        unsigned int wrote_unknown:1;
-        unsigned int wrote_work:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -60,35 +53,31 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEOFormattedString *custom;
 @property(readonly, nonatomic) _Bool hasCustom;
-- (void)_readCustom;
 @property(retain, nonatomic) GEOFormattedString *unknown;
 @property(readonly, nonatomic) _Bool hasUnknown;
-- (void)_readUnknown;
 @property(retain, nonatomic) GEOFormattedString *streetAddress;
 @property(readonly, nonatomic) _Bool hasStreetAddress;
-- (void)_readStreetAddress;
 @property(retain, nonatomic) GEOFormattedString *pointOfInterest;
 @property(readonly, nonatomic) _Bool hasPointOfInterest;
-- (void)_readPointOfInterest;
 @property(retain, nonatomic) GEOFormattedString *contactOther;
 @property(readonly, nonatomic) _Bool hasContactOther;
-- (void)_readContactOther;
 @property(retain, nonatomic) GEOFormattedString *contactHome;
 @property(readonly, nonatomic) _Bool hasContactHome;
-- (void)_readContactHome;
 @property(retain, nonatomic) GEOFormattedString *contactWork;
 @property(readonly, nonatomic) _Bool hasContactWork;
-- (void)_readContactWork;
 @property(retain, nonatomic) GEOFormattedString *work;
 @property(readonly, nonatomic) _Bool hasWork;
-- (void)_readWork;
 @property(retain, nonatomic) GEOFormattedString *home;
 @property(readonly, nonatomic) _Bool hasHome;
-- (void)_readHome;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

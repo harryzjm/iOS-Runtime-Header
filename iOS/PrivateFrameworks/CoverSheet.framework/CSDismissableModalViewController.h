@@ -17,10 +17,9 @@
     id <CSModalHomeAffordanceControlling> _homeAffordanceController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <CSModalHomeAffordanceControlling> homeAffordanceController; // @synthesize homeAffordanceController=_homeAffordanceController;
 @property(nonatomic) __weak id <CSDismissableModalViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)aggregateBehavior:(id)arg1;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
 - (void)addGrabberView:(id)arg1;
@@ -30,7 +29,8 @@
 - (void)_handleBottomEdgeGestureBegan:(id)arg1;
 - (void)_handleBottomEdgeGestureRecognizer:(id)arg1;
 - (void)_addOrRemoveGestureForCurrentSettings;
-- (void)viewWillDisappear:(_Bool)arg1;
+- (_Bool)presentationCancelsTouches;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 
 // Remaining properties

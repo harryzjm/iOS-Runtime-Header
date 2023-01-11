@@ -13,7 +13,6 @@
 @interface GEORPFeedbackRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOPDAnalyticMetadata *_analyticMetadata;
@@ -23,6 +22,9 @@
     NSMutableArray *_displayLanguages;
     GEORPFeedbackRequestParameters *_feedbackRequestParameters;
     GEORPFeedbackUserInfo *_userInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _feedbackRequestType;
     struct {
         unsigned int has_feedbackRequestType:1;
@@ -35,16 +37,7 @@
         unsigned int read_displayLanguages:1;
         unsigned int read_feedbackRequestParameters:1;
         unsigned int read_userInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_abClientMetadata:1;
-        unsigned int wrote_analyticMetadata:1;
-        unsigned int wrote_clientCapabilities:1;
-        unsigned int wrote_clientMetadata:1;
-        unsigned int wrote_debugSettings:1;
-        unsigned int wrote_displayLanguages:1;
-        unsigned int wrote_feedbackRequestParameters:1;
-        unsigned int wrote_userInfo:1;
-        unsigned int wrote_feedbackRequestType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -63,43 +56,43 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(retain, nonatomic) GEORPDebugSettings *debugSettings;
 @property(readonly, nonatomic) _Bool hasDebugSettings;
-- (void)_readDebugSettings;
 @property(retain, nonatomic) GEOABSecondPartyPlaceRequestClientMetaData *abClientMetadata;
 @property(readonly, nonatomic) _Bool hasAbClientMetadata;
-- (void)_readAbClientMetadata;
 - (id)displayLanguageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)displayLanguagesCount;
-- (void)_addNoFlagsDisplayLanguage:(id)arg1;
 - (void)addDisplayLanguage:(id)arg1;
 - (void)clearDisplayLanguages;
 @property(retain, nonatomic) NSMutableArray *displayLanguages;
-- (void)_readDisplayLanguages;
 @property(retain, nonatomic) GEORPClientCapabilities *clientCapabilities;
 @property(readonly, nonatomic) _Bool hasClientCapabilities;
-- (void)_readClientCapabilities;
 @property(retain, nonatomic) GEOPDClientMetadata *clientMetadata;
 @property(readonly, nonatomic) _Bool hasClientMetadata;
-- (void)_readClientMetadata;
 @property(retain, nonatomic) GEOPDAnalyticMetadata *analyticMetadata;
 @property(readonly, nonatomic) _Bool hasAnalyticMetadata;
-- (void)_readAnalyticMetadata;
 @property(retain, nonatomic) GEORPFeedbackUserInfo *userInfo;
 @property(readonly, nonatomic) _Bool hasUserInfo;
-- (void)_readUserInfo;
 @property(retain, nonatomic) GEORPFeedbackRequestParameters *feedbackRequestParameters;
 @property(readonly, nonatomic) _Bool hasFeedbackRequestParameters;
-- (void)_readFeedbackRequestParameters;
 - (int)StringAsFeedbackRequestType:(id)arg1;
 - (id)feedbackRequestTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasFeedbackRequestType;
 @property(nonatomic) int feedbackRequestType;
-- (void)setPreferredEmailAddress:(id)arg1;
+- (id)initWithData:(id)arg1;
+- (id)init;
+- (_Bool)isPOIEnrichment;
+- (void)_setupSubmissionParameters;
 - (void)_initForSubmissionParameters;
+- (void)_sharedInitWithRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3;
 - (id)initWithFeedbackRequestParameters:(id)arg1 userCredentials:(id)arg2 pushToken:(id)arg3 allowContactBackAtEmailAddress:(id)arg4 traits:(id)arg5;
+- (id)initWithFeedbackRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3;
+- (id)initWithFeedbackRequestParameters:(id)arg1 traits:(id)arg2;
 
 @end
 

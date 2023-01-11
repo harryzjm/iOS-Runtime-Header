@@ -6,13 +6,15 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEODirectionsRequest, GEODirectionsResponse, GEOStep, MNActiveRouteInfo, MNAudioOutputSetting, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocationDetails, MNNavigationSessionManager, MNTracePlaybackDetails, MNTrafficIncidentAlertDetails, NSArray, NSDate, NSError, NSSet, NSString, NSUUID;
+@class GEOComposedGuidanceEvent, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOStep, MNActiveRouteInfo, MNAudioOutputSetting, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationSessionManager, MNRouteDistanceInfo, MNTracePlaybackDetails, MNTrafficIncidentAlert, NSArray, NSError, NSSet, NSString, NSUUID;
 
 @protocol MNNavigationSessionManagerDelegate <NSObject>
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didReceiveTransitUpdates:(NSSet *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 willSendTransitUpdateRequestForRouteIDs:(NSSet *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateTracePlaybackDetails:(MNTracePlaybackDetails *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 triggerHaptics:(int)arg2;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didProcessSpeechEvent:(GEOComposedGuidanceEvent *)arg2;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 willProcessSpeechEvent:(GEOComposedGuidanceEvent *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didChangeVolume:(unsigned long long)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didStartUsingVoiceLanguage:(NSString *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateAudioRouteSelection:(unsigned long long)arg2;
@@ -20,9 +22,9 @@
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateCurrentAudioSetting:(MNAudioOutputSetting *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateAudioSettings:(NSArray *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didStartSpeakingPrompt:(NSString *)arg2;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didInvalidateTrafficIncidentAlert:(MNTrafficIncidentAlertDetails *)arg2;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateTrafficIncidentAlert:(MNTrafficIncidentAlertDetails *)arg2;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didReceiveTrafficIncidentAlert:(MNTrafficIncidentAlertDetails *)arg2;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didInvalidateTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didReceiveTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didEnableGuidancePrompts:(_Bool)arg2;
@@ -47,23 +49,25 @@
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(MNActiveRouteInfo *)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateRouteWithNewRideSelection:(MNActiveRouteInfo *)arg2;
 - (void)navigationSessionManagerDidCancelReroute:(MNNavigationSessionManager *)arg1;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didRerouteWithRoute:(MNActiveRouteInfo *)arg2 locationDetails:(MNLocationDetails *)arg3 withAlternateRoutes:(NSArray *)arg4;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didRerouteWithRoute:(MNActiveRouteInfo *)arg2 location:(MNLocation *)arg3 withAlternateRoutes:(NSArray *)arg4;
 - (void)navigationSessionManagerWillReroute:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdatePreviewRoutes:(NSArray *)arg2 withSelectedRouteIndex:(unsigned long long)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateMotionType:(unsigned long long)arg2 confidence:(unsigned long long)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateETAResponseForRoute:(MNActiveRouteInfo *)arg2;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateRemainingTime:(double)arg2 remainingDistance:(double)arg3;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateDisplayETA:(NSDate *)arg2 displayRemainingMinutes:(unsigned long long)arg3 forRoute:(MNActiveRouteInfo *)arg4;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3;
 - (void)navigationSessionManagerWillResumeFromPause:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManagerWillPause:(MNNavigationSessionManager *)arg1;
-- (void)navigationSessionManagerDidTimeoutInArrivalRegion:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManagerDidArrive:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManagerDidEnterPreArrivalState:(MNNavigationSessionManager *)arg1;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateStepIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateLocation:(MNLocationDetails *)arg2;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didArriveAtWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didEnterPreArrivalStateForWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateLocation:(MNLocation *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didChangeNavigationState:(int)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didFailWithError:(NSError *)arg2;
+- (void)navigationSessionManagerShouldEnd:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 willStartNavigationWithRoute:(MNActiveRouteInfo *)arg2 navigationType:(int)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5;
 @end
 

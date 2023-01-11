@@ -11,13 +11,17 @@
 @interface BMBehaviorRetriever : NSObject
 {
     BMBehaviorStorage *_storage;
+    unsigned long long _fetchLimit;
 }
 
-@property(retain, nonatomic) BMBehaviorStorage *storage; // @synthesize storage=_storage;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long fetchLimit; // @synthesize fetchLimit=_fetchLimit;
+@property(retain, nonatomic) BMBehaviorStorage *storage; // @synthesize storage=_storage;
+- (id)retrieveRulesWithAbsoluteSupport:(unsigned long long)arg1 support:(double)arg2 confidence:(double)arg3 conviction:(double)arg4 lift:(double)arg5 rulePowerFactor:(double)arg6 uniqueDaysLastWeek:(unsigned long long)arg7 uniqueDaysTotal:(unsigned long long)arg8 filters:(id)arg9 error:(id *)arg10;
 - (id)retrieveRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3 error:(id *)arg4;
 - (id)retrieveRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3;
 - (id)retrieveRulesWithFilters:(id)arg1;
+- (id)initWithURL:(id)arg1 taskSpecificItemTypes:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)init;
 

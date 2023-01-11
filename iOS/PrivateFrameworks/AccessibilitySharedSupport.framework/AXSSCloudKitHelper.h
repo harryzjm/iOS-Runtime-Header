@@ -21,7 +21,7 @@
     NSManagedObjectContext *_managedObjectContext;
     NSString *_containerIdentifier;
     CKContainer *_container;
-    CKRecordZone *_zone;
+    CKRecordZone *_recordZone;
     CKRecordZoneSubscription *_zoneSubscription;
     CKDatabase *_database;
     NSObject<OS_dispatch_queue> *_cloudkitQueue;
@@ -31,6 +31,7 @@
     NSURL *_largeBlobDirectoryURL;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isProtectedDataAvailable; // @synthesize isProtectedDataAvailable=_isProtectedDataAvailable;
 @property(nonatomic) _Bool observeLocalDatabaseChanges; // @synthesize observeLocalDatabaseChanges=_observeLocalDatabaseChanges;
 @property(readonly, nonatomic) NSURL *largeBlobDirectoryURL; // @synthesize largeBlobDirectoryURL=_largeBlobDirectoryURL;
@@ -40,13 +41,12 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *cloudkitQueue; // @synthesize cloudkitQueue=_cloudkitQueue;
 @property(readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property(readonly, nonatomic) CKRecordZoneSubscription *zoneSubscription; // @synthesize zoneSubscription=_zoneSubscription;
-@property(readonly, nonatomic) CKRecordZone *zone; // @synthesize zone=_zone;
+@property(readonly, nonatomic) CKRecordZone *recordZone; // @synthesize recordZone=_recordZone;
 @property(readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property(readonly, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property(readonly, nonatomic) NSPersistentStoreCoordinator *observedCoordinator; // @synthesize observedCoordinator=_observedCoordinator;
 @property(readonly, nonatomic) __weak NSPersistentStore *observedStore; // @synthesize observedStore=_observedStore;
-- (void).cxx_destruct;
 - (void)_setApsConnection:(id)arg1;
 - (void)_setContainer:(id)arg1;
 - (void)_setDatabase:(id)arg1;

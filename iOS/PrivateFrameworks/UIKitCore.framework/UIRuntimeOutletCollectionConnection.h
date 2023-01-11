@@ -12,9 +12,9 @@
     _Bool addsContentToExistingCollection;
 }
 
+- (void).cxx_destruct;
 @property _Bool addsContentToExistingCollection; // @synthesize addsContentToExistingCollection;
 @property(copy) NSString *runtimeCollectionClassName; // @synthesize runtimeCollectionClassName;
-- (void).cxx_destruct;
 - (id)description;
 - (void)connectForSimulator;
 - (void)connect;

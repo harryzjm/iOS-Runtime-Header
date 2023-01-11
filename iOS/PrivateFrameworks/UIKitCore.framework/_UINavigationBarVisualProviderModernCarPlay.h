@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     NSArray *_debugViews;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *debugViews; // @synthesize debugViews=_debugViews;
 @property(retain, nonatomic) UIFocusContainerGuide *focusContainerGuide; // @synthesize focusContainerGuide=_focusContainerGuide;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -59,7 +60,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) _Bool havePrepared; // @synthesize havePrepared=_havePrepared;
 @property(readonly, nonatomic) _Bool compactMetrics; // @synthesize compactMetrics=_compactMetrics;
-- (void).cxx_destruct;
 - (void)_installGradientLayerMaskForClippingView:(id)arg1;
 - (void)_configureBackground;
 - (void)changeAppearance;
@@ -74,7 +74,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double defaultEdgeSpacing;
 @property(readonly, nonatomic) _Bool centerTextButtons;
 @property(readonly, nonatomic) UIColor *tintColor;
-@property(readonly, nonatomic) _Bool barWantsLetterpress;
 - (long long)barMetrics;
 @property(readonly, nonatomic) long long barType;
 @property(readonly, nonatomic) _UIBarButtonItemAppearanceStorage *appearanceStorage; // @synthesize appearanceStorage=_appearanceStorage;
@@ -98,11 +97,13 @@ __attribute__((visibility("hidden")))
 - (void)_updateContentAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2 direction:(unsigned long long)arg3;
 - (void)_updateContentForTopItem:(id)arg1 backItem:(id)arg2 animated:(_Bool)arg3 direction:(unsigned long long)arg4;
 - (void)__backButtonAction;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)animateForSearchPresentation:(_Bool)arg1;
 - (void)dismissHostedSearchWithTransitionCoordinator:(id)arg1;
 - (void)presentHostedSearchWithTransitionCoordinator:(id)arg1;
+- (void)navigationBarInvalidatedResolvedLayoutMargins;
 - (void)popAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prepareForPop;
 - (void)pushAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -115,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)prepare;
 
 // Remaining properties
+@property(readonly, nonatomic) struct CGRect bounds;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

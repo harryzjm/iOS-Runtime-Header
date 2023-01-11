@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)beginPitch:(struct CGPoint)arg1;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;

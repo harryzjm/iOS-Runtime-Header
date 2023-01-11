@@ -7,6 +7,7 @@
 @class CTXPCServiceSubscriptionContext;
 
 @protocol CTXPCServicePostponementInterface
+- (void)getActivationPolicyState:(void (^)(CTActivationPolicyState *, NSError *))arg1;
 - (void)copyPriVersion:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTPriVersion *, NSError *))arg2;
 @end
 

@@ -13,17 +13,17 @@
 @interface GEOWiFiQualityServiceRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDClientMetadata *_clientMetadata;
     NSMutableArray *_locationSearches;
     NSMutableArray *_networkSearches;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_clientMetadata:1;
         unsigned int read_locationSearches:1;
         unsigned int read_networkSearches:1;
-        unsigned int wrote_clientMetadata:1;
-        unsigned int wrote_locationSearches:1;
-        unsigned int wrote_networkSearches:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -41,25 +41,25 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)networkSearchesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)networkSearchesCount;
-- (void)_addNoFlagsNetworkSearches:(id)arg1;
 - (void)addNetworkSearches:(id)arg1;
 - (void)clearNetworkSearches;
 @property(retain, nonatomic) NSMutableArray *networkSearches;
-- (void)_readNetworkSearches;
 - (id)locationSearchesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationSearchesCount;
-- (void)_addNoFlagsLocationSearches:(id)arg1;
 - (void)addLocationSearches:(id)arg1;
 - (void)clearLocationSearches;
 @property(retain, nonatomic) NSMutableArray *locationSearches;
-- (void)_readLocationSearches;
 @property(retain, nonatomic) GEOPDClientMetadata *clientMetadata;
 @property(readonly, nonatomic) _Bool hasClientMetadata;
-- (void)_readClientMetadata;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

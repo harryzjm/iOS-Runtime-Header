@@ -6,40 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <Transparency/NSURLSessionDelegate-Protocol.h>
-
-@class NSString, NSURLSession;
+@class NSURLSession, TransparencyLogSessionDelegate;
 @protocol OS_dispatch_workloop;
 
-@interface TransparencyLogSession : NSObject <NSURLSessionDelegate>
+@interface TransparencyLogSession : NSObject
 {
+    unsigned long long _fetchCount;
+    TransparencyLogSessionDelegate *_delegate;
     NSURLSession *_backgroundSession;
     NSURLSession *_foregroundSession;
-    NSObject<OS_dispatch_workloop> *_workloop;
+    NSObject<OS_dispatch_workloop> *_callbackWorkloop;
+    NSObject<OS_dispatch_workloop> *_networkingWorkloop;
 }
 
-+ (id)requestDownloadLocation:(id)arg1 error:(id *)arg2;
-+ (id)requestDownloadFilename:(id)arg1;
-+ (id)requestIdentifier:(id)arg1;
-@property(retain) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
++ (void)dispatchToQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
++ (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2 allowEmptyData:(_Bool)arg3 error:(id)arg4;
+- (void).cxx_destruct;
+@property(retain) NSObject<OS_dispatch_workloop> *networkingWorkloop; // @synthesize networkingWorkloop=_networkingWorkloop;
+@property(retain) NSObject<OS_dispatch_workloop> *callbackWorkloop; // @synthesize callbackWorkloop=_callbackWorkloop;
 @property(retain) NSURLSession *foregroundSession; // @synthesize foregroundSession=_foregroundSession;
 @property(retain) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
-- (void).cxx_destruct;
-- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
-- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
-- (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)download:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(retain) TransparencyLogSessionDelegate *delegate; // @synthesize delegate=_delegate;
+@property unsigned long long fetchCount; // @synthesize fetchCount=_fetchCount;
+- (void)cancelDownloadId:(id)arg1;
+- (void)download:(id)arg1 retry:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)fetch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2;
 - (id)createAuthenticatedForegroundSession;
-- (id)initWithWorkloop:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)createAuthenticatedBackgroundSession:(id)arg1 delegateQueue:(id)arg2;
+- (id)initWithWorkloop:(id)arg1 sessionDelegate:(id)arg2;
 
 @end
 

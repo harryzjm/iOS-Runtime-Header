@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class InclusionProof, NSData, NSMutableArray, VRFWitness;
+@class InclusionProof, NSData, NSDictionary, NSMutableArray, VRFWitness;
 
 @interface QueryResponse
 {
 }
 
 + (id)descriptor;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
+- (void)setMetadata:(id)arg1;
+@property(readonly) NSDictionary *metadata;
 
 // Remaining properties
 @property(copy, nonatomic) NSData *accountId; // @dynamic accountId;

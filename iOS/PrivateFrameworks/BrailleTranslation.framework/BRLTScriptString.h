@@ -18,14 +18,16 @@
     struct _NSRange _focus;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *tokenRanges; // @synthesize tokenRanges=_tokenRanges;
 @property(readonly, nonatomic) struct _NSRange focus; // @synthesize focus=_focus;
 @property(readonly, nonatomic) struct _NSRange selection; // @synthesize selection=_selection;
 @property(readonly, nonatomic) NSString *string; // @synthesize string=_string;
-- (void).cxx_destruct;
+- (struct _NSRange)forwardEditingAtomForCursorLocation:(unsigned long long)arg1;
 - (struct _NSRange)forwardEditingAtom;
 - (struct _NSRange)backwardEditingAtom;
 - (struct _NSRange)deleteMergeAtom;
+- (struct _NSRange)_backwardEditingAtomForCursorLocation:(unsigned long long)arg1 isBreak:(_Bool *)arg2;
 - (struct _NSRange)_backwardEditingAtomForSelection:(struct _NSRange)arg1 isBreak:(_Bool *)arg2;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;

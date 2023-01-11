@@ -21,12 +21,14 @@
     NSThread *_HIDEventReceiveThread;
     CDUnknownBlockType _HIDEventHandler;
     unsigned long long _HIDEventFilterMask;
+    CDUnknownBlockType _failedToHandleEventInTime;
     NSString *_systemEventTapIdentifier;
     CDUnknownBlockType _systemEventHandler;
     NSMutableArray *_hidActualEventTapEnabledReasons;
     NSMutableArray *_systemActualEventTapEnabledReasons;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *systemActualEventTapEnabledReasons; // @synthesize systemActualEventTapEnabledReasons=_systemActualEventTapEnabledReasons;
 @property(nonatomic, getter=isHandlingSystemEvents) _Bool handlingSystemEvents; // @synthesize handlingSystemEvents=_handlingSystemEvents;
 @property(retain, nonatomic) NSMutableArray *hidActualEventTapEnabledReasons; // @synthesize hidActualEventTapEnabledReasons=_hidActualEventTapEnabledReasons;
@@ -34,6 +36,7 @@
 @property(copy, nonatomic) CDUnknownBlockType systemEventHandler; // @synthesize systemEventHandler=_systemEventHandler;
 @property(nonatomic) int systemEventTapPriority; // @synthesize systemEventTapPriority=_systemEventTapPriority;
 @property(retain, nonatomic) NSString *systemEventTapIdentifier; // @synthesize systemEventTapIdentifier=_systemEventTapIdentifier;
+@property(copy, nonatomic) CDUnknownBlockType failedToHandleEventInTime; // @synthesize failedToHandleEventInTime=_failedToHandleEventInTime;
 @property(nonatomic) unsigned long long HIDEventFilterMask; // @synthesize HIDEventFilterMask=_HIDEventFilterMask;
 @property(copy, nonatomic) CDUnknownBlockType HIDEventHandler; // @synthesize HIDEventHandler=_HIDEventHandler;
 @property(nonatomic, getter=isHandlingHIDEvents) _Bool handlingHIDEvents; // @synthesize handlingHIDEvents=_handlingHIDEvents;
@@ -41,7 +44,6 @@
 @property(nonatomic) int HIDEventTapPriority; // @synthesize HIDEventTapPriority=_HIDEventTapPriority;
 @property(retain, nonatomic) NSString *HIDEventTapIdentifier; // @synthesize HIDEventTapIdentifier=_HIDEventTapIdentifier;
 @property(nonatomic) _Bool shouldNotifyUserEventOccurred; // @synthesize shouldNotifyUserEventOccurred=_shouldNotifyUserEventOccurred;
-- (void).cxx_destruct;
 - (void)_uninstallSystemEventFilter;
 - (void)_installSystemEventFilter;
 - (void)_uninstallHIDEventFilter;

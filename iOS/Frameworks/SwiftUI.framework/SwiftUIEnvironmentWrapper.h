@@ -14,6 +14,7 @@
 {
     MISSING_TYPE *environment;
     MISSING_TYPE *phase;
+    MISSING_TYPE *focusedValues;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -21,6 +22,7 @@
 - (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 
 @end
 

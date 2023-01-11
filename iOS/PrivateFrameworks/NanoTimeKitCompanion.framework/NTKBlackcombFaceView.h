@@ -19,11 +19,11 @@
 }
 
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
-+ (long long)uiSensitivity;
 - (void).cxx_destruct;
 - (id)_renderBackgroundViewSwatchImageForBlackcombDialColor:(unsigned long long)arg1;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
+- (_Bool)_wantsConstantSpeedZoom;
 - (void)layoutSubviews;
 - (void)_prepareForStatusChange:(_Bool)arg1;
 - (double)_verticalPaddingForStatusBar;
@@ -43,9 +43,10 @@
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_updateHandsColors;
+- (id)_secondHandColorFor:(unsigned long long)arg1;
 - (void)_applyComplicationTransitionFraction:(double)arg1 fromBlackcombDialColor:(unsigned long long)arg2 toBlackcombDialColor:(unsigned long long)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromBlackcombDialColor:(unsigned long long)arg2 toBlackcombDialColor:(unsigned long long)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;

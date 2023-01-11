@@ -12,7 +12,7 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)item:(id)arg1 passesCriteria:(id)arg2 score:(double *)arg3;
+- (id)keyAssetInAssets:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)keyAssetWithFeeder:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)initWithPhotoLibrary:(id)arg1;
 

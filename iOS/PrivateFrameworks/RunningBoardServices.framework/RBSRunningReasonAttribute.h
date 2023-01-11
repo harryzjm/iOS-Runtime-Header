@@ -11,12 +11,11 @@
 
 + (id)withReason:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long runningReason; // @synthesize runningReason=_runningReason;
-- (id)_initWithReason:(unsigned long long)arg1;
-- (id)succinctDescriptionBuilder;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 
 @end
 

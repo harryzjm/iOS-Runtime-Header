@@ -9,36 +9,47 @@
 #import <PhotosUICore/PXGTextureConverter-Protocol.h>
 
 @class NSString, PXGColorProgramLibrary, PXGImageTexture;
-@protocol MTLDeviceSPI, OS_dispatch_queue;
+@protocol MTLDeviceSPI, OS_dispatch_queue, PXGMetalTextureConverterDelegate;
 
 @interface PXGMetalTextureConverter : NSObject <PXGTextureConverter>
 {
     long long _screenPixelCount;
-    _Bool _hasExtendedColorDisplay;
+    _Bool _lowMemoryMode;
+    _Bool _hasExtendedColorTarget;
     NSObject<OS_dispatch_queue> *_requestQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
     PXGImageTexture *_transparentTexture;
+    struct __CVMetalTextureCache *_videoTextureCache;
     id <MTLDeviceSPI> _device;
+    unsigned long long _destinationColorSpaceName;
+    id <PXGMetalTextureConverterDelegate> _delegate;
+    struct CGColorSpace *_destinationColorSpace;
     PXGColorProgramLibrary *_colorProgramLibrary;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) PXGColorProgramLibrary *colorProgramLibrary; // @synthesize colorProgramLibrary=_colorProgramLibrary;
-@property(readonly, nonatomic) _Bool hasExtendedColorDisplay; // @synthesize hasExtendedColorDisplay=_hasExtendedColorDisplay;
-@property(readonly, nonatomic) id <MTLDeviceSPI> device; // @synthesize device=_device;
+@property(readonly, nonatomic) struct CGColorSpace *destinationColorSpace; // @synthesize destinationColorSpace=_destinationColorSpace;
+@property(readonly, nonatomic) _Bool hasExtendedColorTarget; // @synthesize hasExtendedColorTarget=_hasExtendedColorTarget;
+@property(nonatomic) __weak id <PXGMetalTextureConverterDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) unsigned long long destinationColorSpaceName; // @synthesize destinationColorSpaceName=_destinationColorSpaceName;
+@property(retain, nonatomic) id <MTLDeviceSPI> device; // @synthesize device=_device;
+@property(nonatomic) _Bool lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
 @property(readonly, nonatomic) PXGImageTexture *transparentTexture; // @synthesize transparentTexture=_transparentTexture;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
-- (void).cxx_destruct;
+- (id)createAtlasForTextureAtlasManager:(id)arg1;
 - (id)createTextureAtlasManagerForImageDataSpec:(CDStruct_1b544862)arg1;
 @property(readonly, nonatomic) _Bool supportsTextureAtlas;
 - (id)createPayloadTextureFromPayload:(id)arg1;
 - (id)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)createTextureFromCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2;
 @property(readonly, nonatomic) int presentationType;
-@property(readonly, nonatomic) struct CGColorSpace *destinationColorSpace;
+@property(readonly, nonatomic) struct __CVMetalTextureCache *videoTextureCache; // @synthesize videoTextureCache=_videoTextureCache;
+- (void)dealloc;
 - (id)_createTransparentTexture;
 - (id)init;
-- (id)initWithDevice:(id)arg1;
+- (id)initWithDevice:(id)arg1 destinationColorspaceName:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

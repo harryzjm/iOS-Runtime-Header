@@ -11,13 +11,15 @@
     _Bool _noRestriction;
     _Bool _restrictDomains;
     NSArray *_appRules;
+    NSArray *_excludedDomains;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy) NSArray *excludedDomains; // @synthesize excludedDomains=_excludedDomains;
 @property _Bool restrictDomains; // @synthesize restrictDomains=_restrictDomains;
 @property _Bool noRestriction; // @synthesize noRestriction=_noRestriction;
 @property(copy) NSArray *appRules; // @synthesize appRules=_appRules;
-- (void).cxx_destruct;
 - (void)updateAppRulesForUID:(unsigned int)arg1;
 - (_Bool)installSigningIdentifiersWithFlowDivertControlSocket:(int)arg1;
 - (id)copyUniqueSigningIdentifiers;

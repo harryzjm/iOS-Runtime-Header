@@ -9,7 +9,7 @@
 }
 
 + (id)title;
-- (void)evaluate:(id)arg1;
+- (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (_Bool)requiresVisionFramework;
 
 @end

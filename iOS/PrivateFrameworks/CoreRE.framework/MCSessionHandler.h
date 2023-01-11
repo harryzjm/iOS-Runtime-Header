@@ -20,20 +20,20 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_pendingData;
     NSLock *_handlesLock;
     id <MCSessionPrivateDelegate> _nextDelegate;
-    DynamicArray_959538b5 _handles;
+    DynamicArray_0711906c _handles;
     DynamicArray_8f05e591 _tempBuf;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <MCSessionPrivateDelegate> nextDelegate; // @synthesize nextDelegate=_nextDelegate;
 @property(nonatomic) DynamicArray_8f05e591 tempBuf; // @synthesize tempBuf=_tempBuf;
-@property(nonatomic) DynamicArray_959538b5 *handles; // @synthesize handles=_handles;
+@property(nonatomic) DynamicArray_0711906c *handles; // @synthesize handles=_handles;
 @property(retain, nonatomic) NSLock *handlesLock; // @synthesize handlesLock=_handlesLock;
 @property(retain, nonatomic) NSMutableArray *pendingData; // @synthesize pendingData=_pendingData;
 @property(retain, nonatomic) NSMutableDictionary *peersToHandles; // @synthesize peersToHandles=_peersToHandles;
 @property(retain, nonatomic) MCSession *session; // @synthesize session=_session;
 @property(nonatomic) struct MultipeerProtocolLayer *protocolLayer; // @synthesize protocolLayer=_protocolLayer;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)session:(id)arg1 didReceiveStream:(id)arg2 withName:(id)arg3 fromPeer:(id)arg4 propagate:(_Bool *)arg5;
 - (void)session:(id)arg1 didFinishReceivingResourceWithName:(id)arg2 fromPeer:(id)arg3 atURL:(id)arg4 withError:(id)arg5 propagate:(_Bool *)arg6;
 - (void)session:(id)arg1 didStartReceivingResourceWithName:(id)arg2 fromPeer:(id)arg3 withProgress:(id)arg4 propagate:(_Bool *)arg5;

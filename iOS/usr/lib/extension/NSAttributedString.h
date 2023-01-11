@@ -19,6 +19,11 @@
 + (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)_setAttributedDictionaryClass:(Class)arg1;
++ (id)_attributedStringWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3 arguments:(char *)arg4;
++ (id)_localizedAttributedStringWithFormat:(id)arg1 options:(unsigned long long)arg2;
++ (id)_localizedAttributedStringWithFormat:(id)arg1;
++ (id)_attributedStringAttributesFromKnownAttributeKeys:(id)arg1;
++ (id)attributedStringFromMarkupString:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (Class)classForCoder;
@@ -39,9 +44,14 @@
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 @property(readonly, copy) NSString *string;
-- (id)replacementObjectForPortCoder:(id)arg1;
 - (id)_createAttributedSubstringWithRange:(struct _NSRange)arg1;
 - (unsigned long long)_cfTypeID;
+- (id)_inflectionLanguageForRange:(struct _NSRange)arg1;
+- (id)_inflectedAttributedStringWithReplacements:(id)arg1;
+- (id)_firstValueOfAttributeWithKey:(id)arg1 inRange:(struct _NSRange)arg2;
+- (id)_initWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3 arguments:(char *)arg4;
+- (id)_initWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3;
+- (id)replacementObjectForPortCoder:(id)arg1;
 
 @end
 

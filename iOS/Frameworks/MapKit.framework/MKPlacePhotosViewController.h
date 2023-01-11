@@ -6,30 +6,35 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <MapKit/MKAddPhotoBadgeViewDelegate-Protocol.h>
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKMuninContainerViewDelegate-Protocol.h>
 #import <MapKit/MKMuninViewProvider-Protocol.h>
+#import <MapKit/MKPhotoGalleryTransitionAnimator-Protocol.h>
 #import <MapKit/MKPlaceAttributionCellDelegate-Protocol.h>
-#import <MapKit/MKPlacePhotosViewDelegate-Protocol.h>
+#import <MapKit/MKPlacePhotoGalleryViewControllerDelegate-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
+#import <MapKit/UIViewControllerTransitioningDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKMuninContainerView, MKMuninView, MKPhotoSmallAttributionView, MKPlaceAttributionCell, MKPlacePhotosView, NSArray, NSLayoutConstraint, NSString, UIScrollView, UIView, _MKPlaceViewController;
-@protocol MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate;
+@class MKMapItem, MKMuninContainerView, MKMuninView, MKPhotoBigAttributionView, MKPlaceAttributionCell, NSArray, NSLayoutConstraint, NSString, UIButton, UIImageView, UIScrollView, UIView, _MKPlaceViewController;
+@protocol MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate, _MKInfoCardAnalyticsDelegate;
 
-@interface MKPlacePhotosViewController : UIViewController <MKPlaceAttributionCellDelegate, MKPlacePhotosViewDelegate, UIScrollViewDelegate, MKMuninContainerViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKMuninViewProvider>
+@interface MKPlacePhotosViewController : UIViewController <MKPlaceAttributionCellDelegate, UIScrollViewDelegate, MKPlacePhotoGalleryViewControllerDelegate, UIViewControllerTransitioningDelegate, MKPhotoGalleryTransitionAnimator, MKAddPhotoBadgeViewDelegate, MKMuninContainerViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKMuninViewProvider>
 {
-    MKPlacePhotosView *_currentPhotoViewer;
     UIView *_bottomHairline;
+    UIImageView *_imageViewForTransition;
+    MKPhotoBigAttributionView *_primaryAttributionView;
+    MKPhotoBigAttributionView *_secondaryAttributionView;
     NSArray *_photoViews;
     UIScrollView *_photosContainerScrollView;
     UIView *_photosContainer;
-    MKPhotoSmallAttributionView *_photosSmallAttributionsView;
+    UIView *_photosSmallAttributionsView;
+    UIView *_attributionClippingview;
     double _lastPhotoScrollOffset;
     _Bool _photoScrollViewScrollingLeft;
     _Bool _photoScrollViewScrollingRight;
     _Bool _canUseFullscreenViewer;
-    _Bool _canUseGallery;
     _Bool _photoLoaded;
     _Bool _loadAppImageCanceledOrFailed;
     _Bool _isRTL;
@@ -43,44 +48,75 @@
     unsigned long long _originalMode;
     unsigned long long _options;
     MKPlaceAttributionCell *_attributionCell;
+    UIButton *_previousPageButton;
+    UIButton *_nextPageButton;
     MKMuninContainerView *_muninContainerView;
     UIScrollView *_parentScrollView;
+    unsigned long long _initialAppearanceSignpostID;
+    _Bool _isDisappearing;
     _Bool _showsBottomHairline;
+    _Bool _hoverActive;
     _MKPlaceViewController *_owner;
     id <MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate> _photosControllerDelegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hoverActive; // @synthesize hoverActive=_hoverActive;
 @property(nonatomic) _Bool showsBottomHairline; // @synthesize showsBottomHairline=_showsBottomHairline;
 @property(nonatomic) __weak id <MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate> photosControllerDelegate; // @synthesize photosControllerDelegate=_photosControllerDelegate;
 @property(nonatomic) __weak _MKPlaceViewController *owner; // @synthesize owner=_owner;
-- (void).cxx_destruct;
 - (void)viewDidLayoutSubviews;
 - (void)viewLayoutMarginsDidChange;
+- (void)_setContentVisibility:(long long)arg1;
 - (void)setContentVisibility:(long long)arg1;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
+- (void)_logUGCAction:(int)arg1;
 - (void)muninContainerView:(id)arg1 didAddMuninView:(id)arg2;
-- (void)placePhotoViewerWillClose:(id)arg1 photo:(id)arg2 onIndex:(unsigned long long)arg3;
-- (void)placePhotoViewerAttributionTappedForPhotoAtIndex:(unsigned long long)arg1 photo:(id)arg2;
-- (id)placePhotoViewerViewForPhotoAtIndex:(unsigned long long)arg1;
-- (void)_callPhotoDelegateForPhotoAt:(unsigned long long)arg1;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (void)photoGalleryTransitionAnimatorDidFinishAnimation;
+- (_Bool)dismissPhotoGalleryIfNecessary:(id)arg1;
+- (void)placePhotoGalleryDidSelectAddPhoto:(id)arg1;
+- (void)placePhotoGallery:(id)arg1 didSelectReportImageAtIndex:(unsigned long long)arg2;
+- (void)placePhotoGalleryDidScrollToIndex:(unsigned long long)arg1;
+- (void)placePhotoGalleryDidScrollRightToIndex:(unsigned long long)arg1;
+- (void)placePhotoGalleryDidScrollLeftToIndex:(unsigned long long)arg1;
+- (void)placePhotoGallery:(id)arg1 openButtonTappedAtIndex:(unsigned long long)arg2;
+- (void)placePhotoGalleryDidCloseAtIndex:(unsigned long long)arg1;
+- (void)placePhotoGallery:(id)arg1 willCloseAtIndex:(unsigned long long)arg2;
+- (void)placePhotoGalleryAdditionalViewTapped:(id)arg1;
+- (void)placePhotoGallery:(id)arg1 attributionViewTappedAtIndex:(unsigned long long)arg2;
+- (id)placePhotoGalleryImageViewForPhotoAtIndex:(unsigned long long)arg1;
+- (void)addPhotoBadgeViewTapped:(id)arg1;
+- (void)_didTapAttributionViewWithPresentingViewController:(id)arg1 photoAttributionView:(id)arg2;
+- (void)didTapPrimaryAttributionViewWithPresentingViewController:(id)arg1;
+- (void)didTapSecondaryAttributionViewWithPresentingViewController:(id)arg1;
 - (void)_photoTappedAtIndex:(unsigned long long)arg1;
 - (void)_photoSelected:(id)arg1;
 - (void)_loadPhotos;
 - (void)_cancelLoadPhotos;
 - (void)_updatePhotoBackgroundColor:(id)arg1;
 - (void)infoCardThemeChanged;
+- (void)_updateChevronVisibility;
+- (void)handleHover:(id)arg1;
+- (void)_adjustScrollIndexByOffset:(long long)arg1;
+- (void)_scrollNext;
+- (void)_scrollPrevious;
 - (void)_updateAlphaAttribution;
 - (void)_catchScrollNotification:(id)arg1;
 - (void)updateAttributionPositionWithOffset:(double)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (struct CGSize)_photoSizeForIndex:(unsigned long long)arg1;
+- (struct CGSize)_photoActionSize;
 - (struct CGSize)sizeForIndex:(unsigned long long)arg1;
 - (void)layoutImages;
 - (void)_applyCornerRadius;
 - (void)_createImageViews;
 - (void)openURL;
 - (id)attributionString;
+- (id)_firstPartyMorePhotosAttributionString;
 - (id)formattedAttributionString;
 - (void)updateAttributionCell;
 - (void)addAttributionCell;
@@ -94,6 +130,14 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithMapItem:(id)arg1 mode:(unsigned long long)arg2 options:(unsigned long long)arg3;
+@property(readonly, nonatomic) _Bool isCompactMode;
+@property(readonly, nonatomic) id <_MKInfoCardAnalyticsDelegate> analyticsDelegate;
+@property(readonly, nonatomic) _Bool shouldShowAddPhotoButtons;
+@property(readonly, nonatomic) unsigned long long numberOfBigAttributionViews;
+@property(readonly, nonatomic) _Bool isFirstParty;
+- (_Bool)isSafariProcess;
+- (_Bool)isParsecProcess;
+- (_Bool)isSiriProcess;
 - (_Bool)_canShowWhileLocked;
 
 // Remaining properties

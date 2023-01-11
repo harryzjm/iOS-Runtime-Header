@@ -18,7 +18,6 @@
 + (id)currentTrieSha256;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)mappedTopicForEntity:(id)arg1;
 - (id)init;
 - (_Bool)_loadAssetData;

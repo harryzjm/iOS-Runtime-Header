@@ -8,6 +8,8 @@
 {
 }
 
++ (id)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
++ (id)_headphoneAudioExposureSamplesExpirationPredicateForNowDate:(id)arg1;
 + (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
 + (id)_objectWithCodable:(id)arg1;
 + (Class)_syncedSampleTypeClass;

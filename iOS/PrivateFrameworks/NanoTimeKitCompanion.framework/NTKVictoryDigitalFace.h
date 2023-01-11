@@ -19,6 +19,7 @@
 - (long long)_customEditModeForUniqueConfiguration;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_customEditModes;
+- (long long)preferredComplicationFamilyForComplication:(id)arg1 withSlot:(id)arg2;
 - (id)_localizedNameForComplicationSlot:(id)arg1;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
 

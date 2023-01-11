@@ -20,9 +20,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) int monogramStyle; // @synthesize monogramStyle=_monogramStyle;
 @property(copy, nonatomic) NSString *monogramLetters; // @synthesize monogramLetters=_monogramLetters;
-- (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -36,6 +36,7 @@
 // Remaining properties
 @property(copy, nonatomic) NSString *contentType;
 @property(nonatomic) double cornerRadius;
+@property(nonatomic) int cornerRoundingStyle;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(copy, nonatomic) NSString *identifier;

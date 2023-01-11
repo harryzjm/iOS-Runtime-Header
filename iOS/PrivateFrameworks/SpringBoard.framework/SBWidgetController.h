@@ -19,9 +19,9 @@
     SBHSidebarWidgetBootstrappingAdvisor *_sidebarWidgetBootstrappingAdvisor;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SBHSidebarWidgetBootstrappingAdvisor *sidebarWidgetBootstrappingAdvisor; // @synthesize sidebarWidgetBootstrappingAdvisor=_sidebarWidgetBootstrappingAdvisor;
 @property(retain, nonatomic, getter=_widgetDiscoveryController) WGWidgetDiscoveryController *widgetDiscoveryController; // @synthesize widgetDiscoveryController=_widgetDiscoveryController;
-- (void).cxx_destruct;
 - (void)_homescreenSidebarVisibilityDidChange:(id)arg1;
 - (void)_updateFavoriteWidgetLearning;
 - (void)sidebarWidgetLearningAdvisorDidUpdate:(id)arg1;
@@ -38,11 +38,16 @@
 - (void)widgetDiscoveryControllerDidDismissWidgetsPinningTeachingView:(id)arg1;
 - (_Bool)shouldShowWidgetsPinningTeachingViewForWidgetDiscoveryController:(id)arg1;
 - (_Bool)areWidgetsPinnedForWidgetDiscoveryController:(id)arg1;
+- (_Bool)_shouldUsePinnedWidgets;
 - (_Bool)shouldShowWidgetsPinButtonForWidgetDiscoveryController:(id)arg1;
 - (_Bool)widgetDiscoveryControllerShouldRespectFavorites:(id)arg1;
 - (_Bool)widgetDiscoveryControllerShouldIncludeInternalWidgets:(id)arg1;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithBundleIdentifier:(id)arg2 didEncounterProblematicSnapshotAtURL:(id)arg3;
+- (void)removeWidgetIdentifiersFromToday:(id)arg1;
+- (id)todayWidgetIdentifiers;
 @property(nonatomic) _Bool bootstrapFavoriteWidgets;
+- (id)newAvocadoWidgetListViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
+- (id)newWidgetListViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
 - (id)newWidgetGroupViewControllerWithSettings:(struct WGWidgetListSettings)arg1;
 - (void)_reloadWidgetPreferences;
 - (id)init;

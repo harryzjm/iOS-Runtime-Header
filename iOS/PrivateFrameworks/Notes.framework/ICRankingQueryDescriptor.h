@@ -8,21 +8,33 @@
 
 #import <Notes/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface ICRankingQueryDescriptor : NSObject <NSCopying>
 {
-    NSString *_fieldName;
-    long long _type;
+    NSString *_rankingQuery;
+    NSArray *_queryFields;
+    NSArray *_expandedTokens;
+    long long _rankingQueryType;
+    NSString *_rankingQueryFlags;
+    unsigned long long _displayedMatchedFields;
+    unsigned long long _purpose;
 }
 
-@property(readonly, nonatomic) long long type; // @synthesize type=_type;
-@property(readonly, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
 - (void).cxx_destruct;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
+@property(readonly, nonatomic) unsigned long long displayedMatchedFields; // @synthesize displayedMatchedFields=_displayedMatchedFields;
+@property(readonly, nonatomic) NSString *rankingQueryFlags; // @synthesize rankingQueryFlags=_rankingQueryFlags;
+@property(readonly, nonatomic) long long rankingQueryType; // @synthesize rankingQueryType=_rankingQueryType;
+@property(readonly, nonatomic) NSArray *expandedTokens; // @synthesize expandedTokens=_expandedTokens;
+@property(readonly, nonatomic) NSArray *queryFields; // @synthesize queryFields=_queryFields;
+@property(retain, nonatomic) NSString *rankingQuery; // @synthesize rankingQuery=_rankingQuery;
+- (id)rankingQueryForQueryField:(id)arg1 tokenString:(id)arg2;
+- (double)rankingScoreForSearchResultType:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSArray *tokens;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithFieldName:(id)arg1 type:(long long)arg2;
+- (id)initWithQueryFields:(id)arg1 expandedTokens:(id)arg2 rankingQueryType:(long long)arg3 rankingQueryFlags:(id)arg4 displayedMatchedFields:(unsigned long long)arg5 purpose:(unsigned long long)arg6;
+- (id)initWithQueryFields:(id)arg1 expandedTokens:(id)arg2 rankingQueryType:(long long)arg3 rankingQueryFlags:(id)arg4 purpose:(unsigned long long)arg5;
 
 @end
 

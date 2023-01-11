@@ -8,5 +8,6 @@
 
 @interface BBSectionIcon (UserNotificationsUIKit)
 - (id)nc_imageForFormat:(int)arg1 scale:(double)arg2;
+- (id)nc_bestVariantForUIFormat:(int)arg1;
 @end
 

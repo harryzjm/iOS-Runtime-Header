@@ -13,13 +13,18 @@ __attribute__((visibility("hidden")))
 {
     _UIRemoteView *_remoteView;
     BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
+    double _cornerRadiusScale;
+    double _cornerRadius;
+    _Bool _ignoreCornerRadiusUpdates;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool ignoreCornerRadiusUpdates; // @synthesize ignoreCornerRadiusUpdates=_ignoreCornerRadiusUpdates;
+@property(nonatomic) double cornerRadiusScale; // @synthesize cornerRadiusScale=_cornerRadiusScale;
 - (void)_manageSharingOfTouchesBetweenClientAndHostContext;
 - (void)didMoveToWindow;
-@property(nonatomic) struct CGAffineTransform layerHostTransform;
 @property(retain, nonatomic) PGHostedWindowHostingHandle *hostedWindowHostingHandle;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

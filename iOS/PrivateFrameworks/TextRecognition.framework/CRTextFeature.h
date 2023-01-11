@@ -23,6 +23,7 @@
     NSArray *_subFeatures;
     NSArray *_stringValueCandidates;
     NSArray *_candidateProbs;
+    NSArray *_candidateActivationProbs;
     NSArray *_subFeatureCandidates;
     long long _bestCandidateIndex;
     NSArray *_segmentationBreakPoints;
@@ -43,6 +44,8 @@
 + (id)overlayFeatures:(id)arg1 onImage:(id)arg2 showSubFeatures:(_Bool)arg3;
 + (id)lineFeatures:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3;
 + (id)sortedTextFeatures:(id)arg1;
++ (id)sortedRotateTextFeatures:(id)arg1 center:(struct CGPoint)arg2 radians:(float)arg3 sortingWithinLine:(_Bool)arg4;
+- (void).cxx_destruct;
 @property _Bool contextSet; // @synthesize contextSet=_contextSet;
 @property int punctuationGuess; // @synthesize punctuationGuess=_punctuationGuess;
 @property int featureMapID; // @synthesize featureMapID=_featureMapID;
@@ -59,6 +62,7 @@
 @property(retain) NSArray *segmentationBreakPoints; // @synthesize segmentationBreakPoints=_segmentationBreakPoints;
 @property long long bestCandidateIndex; // @synthesize bestCandidateIndex=_bestCandidateIndex;
 @property(retain) NSArray *subFeatureCandidates; // @synthesize subFeatureCandidates=_subFeatureCandidates;
+@property(retain) NSArray *candidateActivationProbs; // @synthesize candidateActivationProbs=_candidateActivationProbs;
 @property(retain) NSArray *candidateProbs; // @synthesize candidateProbs=_candidateProbs;
 @property(retain) NSArray *stringValueCandidates; // @synthesize stringValueCandidates=_stringValueCandidates;
 @property(retain) NSArray *subFeatures; // @synthesize subFeatures=_subFeatures;
@@ -67,8 +71,7 @@
 @property struct CGPoint topRight; // @synthesize topRight=_topRight;
 @property struct CGPoint topLeft; // @synthesize topLeft=_topLeft;
 @property struct CGRect bounds; // @synthesize bounds=_bounds;
-- (void).cxx_destruct;
-- (float)calculateTextBoxHeight;
+- (float)calculateTextBoxHeightForImageWidth:(unsigned long long)arg1 imageHeight:(unsigned long long)arg2;
 - (id)createWordSubFeaturesForCandidateAtIndex:(long long)arg1 topWhiteSpacePoints:(id)arg2 bottomWhiteSpacePoints:(id)arg3;
 - (float)aspectRatioWithImageSize:(struct CGSize)arg1;
 - (id)createCharacterSubFeaturesForCandidateAtIndex:(long long)arg1;

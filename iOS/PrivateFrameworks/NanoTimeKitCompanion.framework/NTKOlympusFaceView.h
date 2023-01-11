@@ -8,12 +8,12 @@
 #import <NanoTimeKitCompanion/NTKUtilityFlatComplicationViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKVictoryAnalogBackgroundViewDelegate-Protocol.h>
 
-@class NSDate, NSNumber, NSString, NTKCircularAnalogDialView, NTKOlympusTimeView, NTKRoundedCornerOverlayView, NTKVictoryAnalogBackgroundView;
+@class NSDate, NSString, NTKCircularAnalogDialView, NTKOlympusController, NTKOlympusTimeView, NTKRoundedCornerOverlayView, NTKVictoryAnalogBackgroundView;
 
 @interface NTKOlympusFaceView <NTKVictoryAnalogBackgroundViewDelegate, NTKUtilityFlatComplicationViewDelegate, NTKOlympusViewDelegate>
 {
     _Bool _contentLoaded;
-    _Bool _trackSeconds;
+    NTKOlympusController *_olympusController;
     NTKOlympusTimeView *_olympusView;
     NTKVictoryAnalogBackgroundView *_analogBackgroundView;
     NTKCircularAnalogDialView *_dialView;
@@ -26,18 +26,15 @@
     unsigned long long _currentStyle;
     unsigned long long _currentDial;
     unsigned long long _currentColor;
-    struct NSNumber *_clockTimerToken;
 }
 
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
-+ (long long)uiSensitivity;
-@property(retain, nonatomic) NSNumber *clockTimerToken; // @synthesize clockTimerToken=_clockTimerToken;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentColor; // @synthesize currentColor=_currentColor;
 @property(nonatomic) unsigned long long currentDial; // @synthesize currentDial=_currentDial;
 @property(nonatomic) unsigned long long currentStyle; // @synthesize currentStyle=_currentStyle;
 @property(nonatomic) double circleDiameter; // @synthesize circleDiameter=_circleDiameter;
-@property(nonatomic) _Bool trackSeconds; // @synthesize trackSeconds=_trackSeconds;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(nonatomic) unsigned long long second; // @synthesize second=_second;
 @property(nonatomic) unsigned long long minute; // @synthesize minute=_minute;
@@ -47,7 +44,7 @@
 @property(retain, nonatomic) NTKCircularAnalogDialView *dialView; // @synthesize dialView=_dialView;
 @property(retain, nonatomic) NTKVictoryAnalogBackgroundView *analogBackgroundView; // @synthesize analogBackgroundView=_analogBackgroundView;
 @property(retain, nonatomic) NTKOlympusTimeView *olympusView; // @synthesize olympusView=_olympusView;
-- (void).cxx_destruct;
+@property(retain, nonatomic) NTKOlympusController *olympusController; // @synthesize olympusController=_olympusController;
 - (id)utilityBezelComplicationView;
 - (double)bezelComplicationTextWidthInRadius;
 - (void)_updateDialTicksForBezelText;
@@ -57,11 +54,6 @@
 - (void)logoTappedFromRect:(struct CGRect)arg1;
 - (void)olympusView:(id)arg1 didTapAppLogoFromRect:(struct CGRect)arg2;
 - (_Bool)_showAnalogHands;
-- (_Bool)_hasWindrunnerWedge;
-- (void)animateClockHandsFromDate:(id)arg1 toDate:(id)arg2 duration:(double)arg3;
-- (double)_calculateDeviationBetweenHourAngle:(double)arg1 minuteAngle:(double)arg2;
-- (void)applyWindrunnerMaskStartAngle:(double)arg1 endAngle:(double)arg2;
-- (void)applyWindrunnerMask;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (id)customEditOptionContainerViewForSlot:(id)arg1;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -69,6 +61,7 @@
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (void)_cleanupAfterZoom;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
+- (_Bool)_wantsConstantSpeedZoom;
 - (void)_setComplicationAlphaForTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 customEditMode:(long long)arg4 slot:(id)arg5;
 - (double)_minimumBreathingScaleForComplicationSlot:(id)arg1;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -105,10 +98,7 @@
 - (_Bool)_wantsStatusBarIconShadow;
 - (void)_configureTimeView:(id)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
-- (void)_stopClockUpdates;
 - (void)setTimeOffset:(double)arg1;
-- (void)updateHourComponentsWithDate:(id)arg1;
-- (void)_startClockUpdates;
 - (void)_applyDataMode;
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (_Bool)_needsForegroundContainerView;
@@ -123,8 +113,8 @@
 - (void)setupViewsForCurrentState;
 - (void)createAndRemoveViewsForCurrentStateIfNeeded;
 - (void)_removeViews;
+- (void)_setupController;
 - (void)_setupViews;
-- (void)_handleSignificantTimeChanged;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (void)dealloc;

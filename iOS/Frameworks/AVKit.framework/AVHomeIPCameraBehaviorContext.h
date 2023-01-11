@@ -21,6 +21,9 @@
     _Bool _zoomingEnabled;
     _Bool _microphoneEnabled;
     _Bool _livePreviewActive;
+    _Bool _hasMicrophone;
+    _Bool _canStartPictureInPictureAutomaticallyWhenEnteringBackground;
+    _Bool _playbackControlsIncludePictureInPictureButton;
     _Bool _playbackControlsShowsLoadingIndicator;
     AVPlayerViewController *_playerViewController;
     AVHomeIPCameraBehavior *_behavior;
@@ -32,12 +35,16 @@
     struct CGSize _livePreviewAspectRatio;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool playbackControlsShowsLoadingIndicator; // @synthesize playbackControlsShowsLoadingIndicator=_playbackControlsShowsLoadingIndicator;
 @property(retain, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property(retain, nonatomic) AVPlayerController *playerControllerToRestore; // @synthesize playerControllerToRestore=_playerControllerToRestore;
 @property(nonatomic) __weak AVHomeIPCameraPlayerController *livePreviewPlayerController; // @synthesize livePreviewPlayerController=_livePreviewPlayerController;
 @property(retain, nonatomic) AVZoomingBehavior *zoomingBehavior; // @synthesize zoomingBehavior=_zoomingBehavior;
 @property(nonatomic) struct CGSize livePreviewAspectRatio; // @synthesize livePreviewAspectRatio=_livePreviewAspectRatio;
+@property(nonatomic) _Bool playbackControlsIncludePictureInPictureButton; // @synthesize playbackControlsIncludePictureInPictureButton=_playbackControlsIncludePictureInPictureButton;
+@property(nonatomic) _Bool canStartPictureInPictureAutomaticallyWhenEnteringBackground; // @synthesize canStartPictureInPictureAutomaticallyWhenEnteringBackground=_canStartPictureInPictureAutomaticallyWhenEnteringBackground;
+@property(nonatomic) _Bool hasMicrophone; // @synthesize hasMicrophone=_hasMicrophone;
 @property(nonatomic, getter=isLivePreviewActive) _Bool livePreviewActive; // @synthesize livePreviewActive=_livePreviewActive;
 @property(readonly, nonatomic) UIView *livePreviewContainerView; // @synthesize livePreviewContainerView=_livePreviewContainerView;
 @property(nonatomic, getter=isMicrophoneEnabled) _Bool microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
@@ -47,7 +54,7 @@
 @property(nonatomic) _Bool playbackControlsIncludeTransportControls; // @synthesize playbackControlsIncludeTransportControls=_playbackControlsIncludeTransportControls;
 @property(nonatomic) __weak AVHomeIPCameraBehavior *behavior; // @synthesize behavior=_behavior;
 @property(readonly, nonatomic) __weak AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
-- (void).cxx_destruct;
+- (void)_updatePictureInPictureController;
 - (void)_updatePlaybackControlsControllerAndZoomingBehavior;
 - (void)endScrubbing;
 - (void)scrubToTime:(double)arg1 resolution:(double)arg2;

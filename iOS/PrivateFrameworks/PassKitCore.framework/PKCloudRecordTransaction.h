@@ -13,8 +13,9 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)dateFormatter;
-@property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+- (void)applyCloudRecordObject:(id)arg1;
 - (id)_descriptionWithIncludeItem:(_Bool)arg1;
 - (id)description;
 - (id)descriptionWithItem:(_Bool)arg1;

@@ -14,17 +14,13 @@
         struct __IOHIDEventSystem *client;
         CDUnknownFunctionPointerType callback;
         void *refCon;
-        unsigned int lockCount;
-        struct _opaque_pthread_mutex_t {
-            long long __sig;
-            char __opaque[56];
-        } lock;
+        struct __IOHIDSessionQueueContext *queueContext;
         struct _opaque_pthread_cond_t {
             long long __sig;
             char __opaque[40];
         } stateCondition;
-        unsigned int state;
-        unsigned int stateBusy;
+        int state;
+        int stateBusy;
         NSObject<OS_dispatch_queue> *eventDispatchQueueSession;
         NSObject<OS_dispatch_source> *eventDispatchSource;
         struct __CFArray *eventDipsatchPending;

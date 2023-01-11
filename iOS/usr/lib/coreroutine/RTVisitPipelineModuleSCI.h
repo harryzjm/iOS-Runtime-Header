@@ -8,47 +8,69 @@
 
 #import <coreroutine/RTVisitPipelineModule-Protocol.h>
 
-@class NSMutableArray, NSString, RTHintManager, RTLearnedLocationManager, RTVisitHyperParameter, RTVisitSCIStayCluster;
+@class NSMutableArray, NSString, RTDefaultsManager, RTDelayedLocationRequester, RTDistanceCalculator, RTHint, RTHintManager, RTLocation, RTVisitHyperParameter, RTVisitSCIStayCluster;
+@protocol OS_dispatch_queue;
 
 @interface RTVisitPipelineModuleSCI : NSObject <RTVisitPipelineModule>
 {
     _Bool _useLowConfidence;
     _Bool _checkedForHintNearEntryLocation;
+    _Bool _hintNearEntryLocation;
     NSMutableArray *_clusters;
+    RTLocation *_lastPointProcessed;
+    RTDistanceCalculator *_distanceCalculator;
+    _Bool _latestGeofenceHintChecked;
     RTVisitSCIStayCluster *_workingHypothesis;
     unsigned long long _fsmState;
     unsigned long long _lcFSMState;
+    RTDefaultsManager *_defaultsManager;
+    RTDelayedLocationRequester *_delayedLocationRequester;
     RTHintManager *_hintManager;
+    NSObject<OS_dispatch_queue> *_queue;
     RTVisitHyperParameter *_hyperParameter;
-    RTLearnedLocationManager *_learnedLocationManager;
+    RTHint *_latestGeofenceHint;
 }
 
 + (id)FSMEventToString:(unsigned long long)arg1;
 + (id)LCFSMStateToString:(unsigned long long)arg1;
 + (id)FSMStateToString:(unsigned long long)arg1;
-+ (double)MinStaticIntervalForSLVArrivalWithHint;
-+ (double)MinStaticIntervalForSLVArrival;
-@property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
+- (void).cxx_destruct;
+@property(retain, nonatomic) RTHint *latestGeofenceHint; // @synthesize latestGeofenceHint=_latestGeofenceHint;
+@property(nonatomic) _Bool latestGeofenceHintChecked; // @synthesize latestGeofenceHintChecked=_latestGeofenceHintChecked;
 @property(retain, nonatomic) RTVisitHyperParameter *hyperParameter; // @synthesize hyperParameter=_hyperParameter;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
+@property(retain, nonatomic) RTDelayedLocationRequester *delayedLocationRequester; // @synthesize delayedLocationRequester=_delayedLocationRequester;
+@property(retain, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property(readonly, nonatomic) unsigned long long lcFSMState; // @synthesize lcFSMState=_lcFSMState;
 @property(readonly, nonatomic) unsigned long long fsmState; // @synthesize fsmState=_fsmState;
 @property(readonly, nonatomic) RTVisitSCIStayCluster *workingHypothesis; // @synthesize workingHypothesis=_workingHypothesis;
-- (void).cxx_destruct;
 - (id)process:(id)arg1;
+- (void)logIfLastPointProcessedCouldHaveCalledFastEntryForLocation:(id)arg1 hint:(id)arg2;
+- (_Bool)isLastGeofenceHintNearLocation:(id)arg1 OfSource:(long long)arg2;
+- (_Bool)isDwellTimeSatisfiedForLocation:(id)arg1;
+- (void)_onHintNotification:(id)arg1;
+- (void)onHintNotification:(id)arg1;
+- (double)requiredDwellTimeForLocation:(id)arg1;
+- (_Bool)isTimeOutsideClusterSatisfiedForOutlierCount:(unsigned long long)arg1 location:(id)arg2;
+- (double)requiredTimeOutsideClusterForOutlierCount:(unsigned long long)arg1 location:(id)arg2;
 - (void)processPoints:(id)arg1;
 - (id)handleFSM:(unsigned long long)arg1 point:(id)arg2;
 - (_Bool)isVisitInFlight;
 - (_Bool)isInWorkingHypothesis;
-- (id)fetchKnownLOINearLocation:(id)arg1;
-- (_Bool)isNearHint:(id)arg1;
+- (_Bool)isNearLocationOfInterestHint:(id)arg1;
+- (void)setHintNearEntryLocation:(id)arg1;
+- (_Bool)isHintNearEntryLocation:(id)arg1;
 - (void)addVisitFromWorkingHypothesis:(long long)arg1 confidence:(double)arg2;
 - (void)addToClusters:(id)arg1;
 - (void)exitUntilNotInWorkingHypotheisWithBlock:(CDUnknownBlockType)arg1;
 - (void)exitFromWorkingHypothesis;
 - (void)resetWorkingHypothesis;
-- (id)initWithHintManager:(id)arg1 hyperParameter:(id)arg2 learnedLocationManager:(id)arg3 useLowConfidence:(_Bool)arg4;
+- (void)shutdown;
+- (id)initWithDefaultsManager:(id)arg1 delayedLocationRequester:(id)arg2 hintManager:(id)arg3 queue:(id)arg4 hyperParameter:(id)arg5 useLowConfidence:(_Bool)arg6;
 - (id)init;
+- (double)minStaticIntervalForSLVArrivalWithHint;
+- (double)minStaticIntervalForSLVArrival;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

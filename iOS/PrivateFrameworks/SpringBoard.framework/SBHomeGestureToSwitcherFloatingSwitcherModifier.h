@@ -13,12 +13,14 @@
     SBFluidSwitcherAnimationSettings *_animationSettings;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SBFluidSwitcherAnimationSettings *animationSettings; // @synthesize animationSettings=_animationSettings;
 @property(retain, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
 @property(retain, nonatomic) SBSwitcherModifier *multitaskingModifier; // @synthesize multitaskingModifier=_multitaskingModifier;
-- (void).cxx_destruct;
-- (id)layoutSettings;
-- (_Bool)isIndexVisible:(unsigned long long)arg1;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (id)_layoutSettings;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleAppLayouts;
 - (id)transitionWillBegin;
 - (id)initWithTransitionID:(id)arg1 multitaskingModifier:(id)arg2 selectedAppLayout:(id)arg3;
 

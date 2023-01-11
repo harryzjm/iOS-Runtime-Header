@@ -16,9 +16,10 @@
 
 - (void).cxx_destruct;
 - (void)_foundCalendarEvents:(id)arg1;
-- (void)_checkIfPageContainsCalendarEvent;
+- (void)_service:(id)arg1 didFindEventCandidateForURL:(id)arg2 pageTitle:(id)arg3;
+- (void)_containsCalendarEventForPageWithSchemaOrgMarkup:(_Bool)arg1;
 - (void)cancelCheckForConfirmationPage;
-- (void)checkIfPageContainsCalendarEvent;
+- (void)containsCalendarEventForPageWithSchemaOrgMarkup:(_Bool)arg1;
 - (id)initWithWebView:(id)arg1;
 
 @end

@@ -30,14 +30,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSMutableArray *historyStateCacheIndex; // @synthesize historyStateCacheIndex=_historyStateCacheIndex;
-@property(retain, nonatomic) NSMutableArray *historyStateCacheMRU; // @synthesize historyStateCacheMRU=_historyStateCacheMRU;
-@property(retain, nonatomic) NSMutableDictionary *historyStateCache; // @synthesize historyStateCache=_historyStateCache;
-@property(retain, nonatomic) NRSwitchRecordCollection *switchRecords; // @synthesize switchRecords=_switchRecords;
-@property(retain, nonatomic) NSMutableArray *history; // @synthesize history=_history;
-@property(nonatomic) unsigned long long startIndex; // @synthesize startIndex=_startIndex;
-@property(readonly, nonatomic) NRMutableDeviceCollection *deviceCollection; // @synthesize deviceCollection=_deviceCollection;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NRMutableDeviceCollection *deviceCollection; // @synthesize deviceCollection=_deviceCollection;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqualToHistory:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -61,7 +55,6 @@
 - (void)_updateHistoryCachesWithIndex:(id)arg1;
 - (id)_mostRecentStateBefore:(id)arg1;
 - (unsigned long long)_findIndexInHistoryStateCache:(id)arg1 type:(unsigned long long)arg2;
-- (id)stateAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NRPBDeviceCollectionHistory *protobuf;
 - (id)initWithProtobuf:(id)arg1;
 - (id)initWithCoder:(id)arg1;

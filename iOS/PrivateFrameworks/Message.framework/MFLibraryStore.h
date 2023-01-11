@@ -11,7 +11,6 @@
     MFMailMessageLibrary *_library;
     NSDate *_earliestReceivedDate;
     MFMessageCriterion *_criterion;
-    unsigned long long _serverMessageCount;
     unsigned long long _fetchWindow;
 }
 
@@ -20,10 +19,9 @@
 + (id)sharedInstanceIfExists;
 + (id)sharedInstance;
 + (id)storeWithMailbox:(id)arg1;
-+ (id)storeWithCriterion:(id)arg1;
 + (unsigned int)defaultLoadOptions;
-@property(retain, nonatomic) NSDate *earliestReceivedDate; // @synthesize earliestReceivedDate=_earliestReceivedDate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *earliestReceivedDate; // @synthesize earliestReceivedDate=_earliestReceivedDate;
 - (_Bool)hasCompleteDataForMimePart:(id)arg1;
 - (void)_queueMessagesWereCompacted:(id)arg1;
 - (void)_queueMessagesWillBeCompacted:(id)arg1;
@@ -43,7 +41,6 @@
 - (id)URLString;
 - (id)criterion;
 - (void)_setNeedsAutosave;
-- (void)updateUserInfoToLatestValues;
 - (void)updateMetadata;
 - (void)writeUpdatedMessageDataToDisk;
 - (id)dataPathForMessage:(id)arg1 part:(id)arg2;
@@ -58,7 +55,6 @@
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(_Bool)arg2;
 - (void)deleteMessages:(id)arg1 moveToTrash:(_Bool)arg2;
 - (unsigned long long)indexOfMessage:(id)arg1;
-- (void)deleteBodyDataForMessage:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1 isComplete:(_Bool *)arg2 isPartial:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4;
 - (id)fullBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 isComplete:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4 didDownload:(_Bool *)arg5;
 - (id)fullBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 isComplete:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4 usePartDatas:(_Bool)arg5 didDownload:(_Bool *)arg6;
@@ -92,9 +88,6 @@
 - (void)willFetchMessages;
 - (id)dateOfOldestNonIndexedNonSearchResultMessage;
 - (id)serverSearchResults;
-- (id)oldestKnownMessage;
-- (long long)oldestKnownConversation;
-- (id)sendersByLibraryIDForConversation:(long long)arg1 limit:(long long)arg2;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2;
@@ -104,11 +97,8 @@
 - (id)copyOfAllMessages;
 - (id)copyOfAllMessagesWithOptions:(unsigned int)arg1;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2;
-- (id)copyOfMessageInfosForConversationsContainingMessagesMatchingCriterion:(id)arg1;
-- (id)copyOfMessageInfosMatchingCriterion:(id)arg1;
 - (id)copyOfMessageInfos;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2 generation:(unsigned long long *)arg3;
-- (id)messageWithLibraryID:(long long)arg1 options:(unsigned int)arg2;
 - (unsigned long long)allNonDeletedCountIncludingServerSearch:(_Bool)arg1 andThreadSearch:(_Bool)arg2;
 - (unsigned long long)nonDeletedCountIncludingServerSearch:(_Bool)arg1 andThreadSearch:(_Bool)arg2;
 - (unsigned long long)totalCount;
@@ -121,7 +111,6 @@
 - (void)setLibrary:(id)arg1;
 - (id)initWithMailbox:(id)arg1;
 - (id)initWithMailboxUid:(id)arg1 readOnly:(_Bool)arg2;
-- (id)initWithCriterion:(id)arg1;
 - (id)initWithCriterion:(id)arg1 mailbox:(id)arg2 readOnly:(_Bool)arg3;
 
 @end

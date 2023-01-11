@@ -22,6 +22,7 @@
 @property(copy, nonatomic) CDUnknownBlockType settingsChangeHandler; // @synthesize settingsChangeHandler=_settingsChangeHandler;
 @property(nonatomic) _Bool valid; // @synthesize valid=_valid;
 - (void)setDictionary:(id)arg1 forKey:(id)arg2;
+- (void)setArray:(id)arg1 forKey:(id)arg2;
 - (void)setString:(id)arg1 forKey:(id)arg2;
 - (void)setDouble:(double)arg1 forKey:(id)arg2;
 - (void)setFloat:(float)arg1 forKey:(id)arg2;

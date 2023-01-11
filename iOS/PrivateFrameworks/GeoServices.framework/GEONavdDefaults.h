@@ -26,7 +26,6 @@
 @property(readonly, nonatomic) _Bool useConservativeDepartureForRefreshTimer;
 @property(readonly, nonatomic) double updateTimeout;
 @property(readonly, nonatomic) unsigned long long maximumNumberOfLeechedLocations;
-@property(readonly, nonatomic) double ageForRefresh;
 @property(readonly, nonatomic) double minimumExpirationOffset;
 @property(readonly, nonatomic) double defaultExpirationOffset;
 @property(readonly, nonatomic) double predictionsWatchdogInterval;

@@ -15,7 +15,6 @@
 @interface _INPBIntentSlotResolutionResult : PBCodable <_INPBIntentSlotResolutionResult, NSSecureCoding, NSCopying>
 {
     CDStruct_f953fb60 _has;
-    _Bool __encodeLegacyGloryData;
     int _type;
     _INPBPayloadConfirmation *_payloadConfirmation;
     _INPBPayloadNeedsDisambiguation *_payloadNeedsDisambiguation;
@@ -26,7 +25,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+- (void).cxx_destruct;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(retain, nonatomic) _INPBPayloadUnsupported *payloadUnsupported; // @synthesize payloadUnsupported=_payloadUnsupported;
 @property(retain, nonatomic) _INPBPayloadSuccess *payloadSuccess; // @synthesize payloadSuccess=_payloadSuccess;
@@ -34,7 +33,6 @@
 @property(retain, nonatomic) _INPBPayloadNeedsExecuteIntent *payloadNeedsExecuteIntent; // @synthesize payloadNeedsExecuteIntent=_payloadNeedsExecuteIntent;
 @property(retain, nonatomic) _INPBPayloadNeedsDisambiguation *payloadNeedsDisambiguation; // @synthesize payloadNeedsDisambiguation=_payloadNeedsDisambiguation;
 @property(retain, nonatomic) _INPBPayloadConfirmation *payloadConfirmation; // @synthesize payloadConfirmation=_payloadConfirmation;
-- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

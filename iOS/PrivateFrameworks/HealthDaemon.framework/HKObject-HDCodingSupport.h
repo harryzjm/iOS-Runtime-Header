@@ -13,7 +13,7 @@
 - (_Bool)addCodableRepresentationToCollectionForJournal:(id)arg1;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
-- (_Bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id *)arg5;
+- (_Bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (id)hd_relatedJournalEntries;
 - (long long)entityType;
 - (id)hd_associatedSampleTypes;

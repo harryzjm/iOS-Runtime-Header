@@ -16,7 +16,7 @@
     _Bool _enabledEntryTypeCalendarEvent;
     _Bool _enabledEntryTypeFrequentLocation;
     _Bool _enabledEntryTypeRecentHistory;
-    _Bool _enabledEntryTypeFavoritePlace;
+    _Bool _enabledEntryTypeOldPreYukonFavorite;
     _Bool _enabledEntryTypeParkedCar;
     _Bool _enabledEntryTypeRestaurantReservation;
     _Bool _enabledEntryTypeRidesharing;
@@ -29,6 +29,9 @@
     _Bool _enabledEntryTypeTicketedEvent;
     _Bool _enabledEntryTypePortrait;
     _Bool _enabledEntryTypeUserPlace;
+    _Bool _enabledEntryTypeSchool;
+    _Bool _enabledEntryTypeVehicleSetup;
+    _Bool _enabledEntryTypeRatingRequest;
 }
 
 + (_Bool)isEnabled;

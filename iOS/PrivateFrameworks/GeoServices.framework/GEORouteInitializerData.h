@@ -20,15 +20,18 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
 @property(readonly, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property(readonly, nonatomic) GEOETATrafficUpdateResponse *etaTrafficUpdateResponse; // @synthesize etaTrafficUpdateResponse=_etaTrafficUpdateResponse;
 @property(readonly, nonatomic) GEODirectionsResponse *directionsResponse; // @synthesize directionsResponse=_directionsResponse;
+@property(readonly, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 - (_Bool)_MapsCarPlay_isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)incidentAtIndex:(unsigned long long)arg1 forGeoRoute:(id)arg2;
+- (id)incidentAtIndex:(unsigned long long)arg1 forGeoWaypointRoute:(id)arg2;
+- (id)arrivalParametersAtIndex:(unsigned long long)arg1;
 - (id)initWithWaypoints:(id)arg1 routeAttributes:(id)arg2 directionsResponse:(id)arg3 directionsRequest:(id)arg4;
 - (id)initWithWaypoints:(id)arg1 routeAttributes:(id)arg2 ETATrafficUpdateResponse:(id)arg3;
 - (id)initWithWaypoints:(id)arg1 routeAttributes:(id)arg2 directionsResponse:(id)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MTLCompileOptionsInternal
@@ -19,8 +19,18 @@ __attribute__((visibility("hidden")))
     _Bool _compileTimeStatisticsEnabled;
     NSString *_additionalCompilerArguments;
     unsigned char _sourceLanguage;
+    long long _libraryType;
+    NSArray *_libraries;
+    NSString *_installName;
+    _Bool _preserveInvariance;
 }
 
+- (void)setPreserveInvariance:(_Bool)arg1;
+- (_Bool)preserveInvariance;
+- (void)setInstallName:(id)arg1;
+- (id)installName;
+- (void)setLibraryType:(long long)arg1;
+- (long long)libraryType;
 - (void)setSourceLanguage:(unsigned char)arg1;
 - (unsigned char)sourceLanguage;
 - (void)setCompileTimeStatisticsEnabled:(_Bool)arg1;
@@ -43,6 +53,8 @@ __attribute__((visibility("hidden")))
 - (id)additionalCompilerArguments;
 - (void)setPreprocessorMacros:(id)arg1;
 - (id)preprocessorMacros;
+- (void)setLibraries:(id)arg1;
+- (id)libraries;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

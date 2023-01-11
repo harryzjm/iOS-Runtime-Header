@@ -13,11 +13,11 @@
     NSArray *_listItems;
 }
 
-@property(readonly, nonatomic) NSArray *listItems; // @synthesize listItems=_listItems;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *listItems; // @synthesize listItems=_listItems;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithText:(id)arg1 listItems:(id)arg2;
+- (id)initWithText:(id)arg1 simLabel:(id)arg2 listItems:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

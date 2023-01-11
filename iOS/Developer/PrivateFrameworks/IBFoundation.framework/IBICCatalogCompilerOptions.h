@@ -9,19 +9,21 @@
 #import <IBFoundation/IBBinaryArchiving-Protocol.h>
 #import <IBFoundation/NSCopying-Protocol.h>
 
-@class IBICDeviceThinningTraits, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
+@class IBICDeviceThinningTraits, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
 
 @interface IBICCatalogCompilerOptions : NSObject <IBBinaryArchiving, NSCopying>
 {
     NSMutableSet *_impliedIdiomIdentifiers;
     _Bool _compressPNGs;
     _Bool _enableOnDemandResources;
-    _Bool _appIconAsPNGOnly;
     _Bool _enableIncrementalDistill;
     _Bool _thinArtwork;
     _Bool _dumpAssets;
+    _Bool _includeStickerContent;
+    _Bool _includeLocalizationsInInfoPlist;
     _Bool _supportsResizableImages;
     _Bool _supportsTemplateRenderingIntent;
+    long long _appIconOutputLocation;
     long long _optimization;
     NSString *_issueTextForUnavailableOnDemandResourcesBuildSupport;
     NSString *_outputDirectory;
@@ -29,16 +31,19 @@
     NSString *_brandAssetCollectionName;
     NSString *_appIconName;
     NSString *_launchImageName;
+    NSString *_accentColorName;
+    NSString *_widgetBackgroundColorName;
     NSString *_minimumDeploymentTarget;
     NSString *_targetPlatform;
     NSNumber *_platformCoreUIValue;
     NSString *_targetName;
     NSSet *_targetDevices;
+    NSArray *_fallbackIdioms;
     NSDictionary *_assetPackOutputSpecifications;
     NSDictionary *_extendedParameters;
     NSString *_stickerPackIdentifierPrefix;
     NSDictionary *_stringFilesByStickerPackAndLanguage;
-    NSString *_productType;
+    long long _stickersIconRole;
     NSDictionary *_buildEnvironment;
     NSDictionary *_additionalEnvironment;
     NSString *_sourceGenerationOutputDirectory;
@@ -46,24 +51,30 @@
     NSString *_sourceGenerationVersion;
     NSDictionary *_appearanceSpecificationToPlatformAppearanceMapping;
     NSDictionary *_representativeColorsForCatalogReferences;
-    NSString *_xcodeVersion;
+    NSString *_xcodeBuildVersion;
+    NSString *_xcodeProductVersion;
     NSString *_developmentLanguage;
     NSString *_issueTextForResizableImage;
     NSString *_issueTextForTemplateRenderingIntent;
     IBICDeviceThinningTraits *_filterForDeviceTraits;
+    NSString *_hostOSVersionOverrideForUnitTesting;
     NSMutableDictionary *_masksByName;
     NSMutableDictionary *_failureIssuesByName;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *failureIssuesByName; // @synthesize failureIssuesByName=_failureIssuesByName;
 @property(retain, nonatomic) NSMutableDictionary *masksByName; // @synthesize masksByName=_masksByName;
+@property(retain) NSString *hostOSVersionOverrideForUnitTesting; // @synthesize hostOSVersionOverrideForUnitTesting=_hostOSVersionOverrideForUnitTesting;
 @property(copy) IBICDeviceThinningTraits *filterForDeviceTraits; // @synthesize filterForDeviceTraits=_filterForDeviceTraits;
 @property(copy) NSString *issueTextForTemplateRenderingIntent; // @synthesize issueTextForTemplateRenderingIntent=_issueTextForTemplateRenderingIntent;
 @property _Bool supportsTemplateRenderingIntent; // @synthesize supportsTemplateRenderingIntent=_supportsTemplateRenderingIntent;
 @property(copy) NSString *issueTextForResizableImage; // @synthesize issueTextForResizableImage=_issueTextForResizableImage;
 @property _Bool supportsResizableImages; // @synthesize supportsResizableImages=_supportsResizableImages;
+@property(nonatomic) _Bool includeLocalizationsInInfoPlist; // @synthesize includeLocalizationsInInfoPlist=_includeLocalizationsInInfoPlist;
 @property(copy, nonatomic) NSString *developmentLanguage; // @synthesize developmentLanguage=_developmentLanguage;
-@property(copy, nonatomic) NSString *xcodeVersion; // @synthesize xcodeVersion=_xcodeVersion;
+@property(copy, nonatomic) NSString *xcodeProductVersion; // @synthesize xcodeProductVersion=_xcodeProductVersion;
+@property(copy, nonatomic) NSString *xcodeBuildVersion; // @synthesize xcodeBuildVersion=_xcodeBuildVersion;
 @property(retain, nonatomic) NSDictionary *representativeColorsForCatalogReferences; // @synthesize representativeColorsForCatalogReferences=_representativeColorsForCatalogReferences;
 @property(copy, nonatomic) NSDictionary *appearanceSpecificationToPlatformAppearanceMapping; // @synthesize appearanceSpecificationToPlatformAppearanceMapping=_appearanceSpecificationToPlatformAppearanceMapping;
 @property(copy) NSString *sourceGenerationVersion; // @synthesize sourceGenerationVersion=_sourceGenerationVersion;
@@ -71,19 +82,23 @@
 @property(copy) NSString *sourceGenerationOutputDirectory; // @synthesize sourceGenerationOutputDirectory=_sourceGenerationOutputDirectory;
 @property(copy, nonatomic) NSDictionary *additionalEnvironment; // @synthesize additionalEnvironment=_additionalEnvironment;
 @property(copy, nonatomic) NSDictionary *buildEnvironment; // @synthesize buildEnvironment=_buildEnvironment;
-@property(copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
+@property(nonatomic) long long stickersIconRole; // @synthesize stickersIconRole=_stickersIconRole;
+@property(nonatomic) _Bool includeStickerContent; // @synthesize includeStickerContent=_includeStickerContent;
 @property(copy, nonatomic) NSDictionary *stringFilesByStickerPackAndLanguage; // @synthesize stringFilesByStickerPackAndLanguage=_stringFilesByStickerPackAndLanguage;
 @property(copy, nonatomic) NSString *stickerPackIdentifierPrefix; // @synthesize stickerPackIdentifierPrefix=_stickerPackIdentifierPrefix;
 @property(nonatomic) _Bool dumpAssets; // @synthesize dumpAssets=_dumpAssets;
 @property(retain, nonatomic) NSDictionary *extendedParameters; // @synthesize extendedParameters=_extendedParameters;
 @property(copy) NSDictionary *assetPackOutputSpecifications; // @synthesize assetPackOutputSpecifications=_assetPackOutputSpecifications;
 @property _Bool thinArtwork; // @synthesize thinArtwork=_thinArtwork;
+@property(copy, nonatomic) NSArray *fallbackIdioms; // @synthesize fallbackIdioms=_fallbackIdioms;
 @property(readonly) NSSet *impliedIdiomIdentifiers; // @synthesize impliedIdiomIdentifiers=_impliedIdiomIdentifiers;
 @property(copy) NSSet *targetDevices; // @synthesize targetDevices=_targetDevices;
 @property(copy, nonatomic) NSString *targetName; // @synthesize targetName=_targetName;
 @property(copy, nonatomic) NSNumber *platformCoreUIValue; // @synthesize platformCoreUIValue=_platformCoreUIValue;
 @property(copy) NSString *targetPlatform; // @synthesize targetPlatform=_targetPlatform;
 @property(copy) NSString *minimumDeploymentTarget; // @synthesize minimumDeploymentTarget=_minimumDeploymentTarget;
+@property(copy) NSString *widgetBackgroundColorName; // @synthesize widgetBackgroundColorName=_widgetBackgroundColorName;
+@property(copy) NSString *accentColorName; // @synthesize accentColorName=_accentColorName;
 @property(copy) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;
 @property(copy) NSString *appIconName; // @synthesize appIconName=_appIconName;
 @property(copy) NSString *brandAssetCollectionName; // @synthesize brandAssetCollectionName=_brandAssetCollectionName;
@@ -92,16 +107,15 @@
 @property(copy) NSString *issueTextForUnavailableOnDemandResourcesBuildSupport; // @synthesize issueTextForUnavailableOnDemandResourcesBuildSupport=_issueTextForUnavailableOnDemandResourcesBuildSupport;
 @property(nonatomic) long long optimization; // @synthesize optimization=_optimization;
 @property(nonatomic) _Bool enableIncrementalDistill; // @synthesize enableIncrementalDistill=_enableIncrementalDistill;
-@property _Bool appIconAsPNGOnly; // @synthesize appIconAsPNGOnly=_appIconAsPNGOnly;
+@property(nonatomic) long long appIconOutputLocation; // @synthesize appIconOutputLocation=_appIconOutputLocation;
 @property _Bool enableOnDemandResources; // @synthesize enableOnDemandResources=_enableOnDemandResources;
 @property _Bool compressPNGs; // @synthesize compressPNGs=_compressPNGs;
-- (void).cxx_destruct;
-- (id)uuidForCoreThemeDocument;
 - (id)failureIssueTextForName:(id)arg1;
 - (void)setFailureIssueText:(id)arg1 forName:(id)arg2;
 - (id)maskForName:(id)arg1;
 - (void)setMask:(id)arg1 forName:(id)arg2;
-@property(readonly) NSSet *targetIdioms;
+@property(readonly) NSSet *targetIdiomsForMasking;
+@property(readonly) NSSet *targetIdiomsForSelection;
 - (void)addImpliedIdiom:(id)arg1;
 - (_Bool)isDeployingToAtLeast:(id)arg1;
 - (_Bool)isTargetingDeploymentTargetsPriorTo:(id)arg1;

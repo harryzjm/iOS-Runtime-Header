@@ -16,12 +16,13 @@
 
 + (id)logCategory;
 + (id)bundleIdentifier;
-@property(getter=isValid) _Bool valid; // @synthesize valid=_valid;
-@property(readonly, copy) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+@property(readonly, getter=isValid) _Bool valid; // @synthesize valid=_valid;
+@property(readonly, copy) NSString *name; // @synthesize name=_name;
 - (id)logIdentifier;
 - (void)mark;
 - (void)invalidate;
+- (_Bool)acquire:(id *)arg1;
 @property(readonly, copy) NSString *uniqueDescription;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;

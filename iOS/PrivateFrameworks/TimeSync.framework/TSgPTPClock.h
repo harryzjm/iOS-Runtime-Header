@@ -13,13 +13,13 @@
 }
 
 + (id)clockNameForClockIdentifier:(unsigned long long)arg1;
-+ (id)diagnosticInfoForService:(unsigned int)arg1;
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
-+ (unsigned long long)clockIdentifierForInterfaceName:(id)arg1;
++ (id)diagnosticInfoForService:(id)arg1;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
 + (id)iokitMatchingDictionaryForInterfaceName:(id)arg1;
 + (id)iokitInterfaceMatchingDictionaryForInterfaceName:(id)arg1;
 + (id)availablegPTPClockIdentifiers;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long grandmasterIdentity; // @synthesize grandmasterIdentity=_grandmasterIdentity;
 @property(copy, nonatomic) NSArray *gptpPath; // @synthesize gptpPath=_gptpPath;
 - (void)dealloc;
@@ -49,10 +49,10 @@
 - (_Bool)removeLinkLayerPortFromInterfaceNamed:(id)arg1 error:(id *)arg2;
 - (_Bool)addLinkLayerPortOnInterfaceNamed:(id)arg1 allocatedPortNumber:(unsigned short *)arg2 error:(id *)arg3;
 - (_Bool)addLinkLayerPortOnInterfaceNamed:(id)arg1 error:(id *)arg2;
-@property(nonatomic) unsigned char clockAccuracy; // @dynamic clockAccuracy;
-@property(nonatomic) unsigned char clockClass; // @dynamic clockClass;
-@property(nonatomic) unsigned char clockPriority2; // @dynamic clockPriority2;
-@property(nonatomic) unsigned char clockPriority1; // @dynamic clockPriority1;
+@property(readonly, nonatomic) unsigned char clockAccuracy; // @dynamic clockAccuracy;
+@property(readonly, nonatomic) unsigned char clockClass; // @dynamic clockClass;
+@property(readonly, nonatomic) unsigned char clockPriority2; // @dynamic clockPriority2;
+@property(readonly, nonatomic) unsigned char clockPriority1; // @dynamic clockPriority1;
 @property(readonly, nonatomic) unsigned long long clockIdentity; // @dynamic clockIdentity;
 - (id)_gptpPath;
 - (unsigned long long)_grandmasterIdentity;

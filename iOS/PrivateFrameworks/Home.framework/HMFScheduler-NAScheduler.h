@@ -12,7 +12,6 @@
 
 @interface HMFScheduler (NAScheduler) <NAScheduler>
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
-- (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
 
 // Remaining properties

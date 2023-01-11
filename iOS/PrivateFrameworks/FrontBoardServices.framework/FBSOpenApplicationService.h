@@ -15,6 +15,7 @@
     BSServiceConnection *_connection;
 }
 
++ (_Bool)currentProcessServicesDefaultShellEndpoint;
 + (id)serviceWithDefaultShellEndpoint;
 + (id)serviceWithEndpoint:(id)arg1;
 + (id)serviceName;

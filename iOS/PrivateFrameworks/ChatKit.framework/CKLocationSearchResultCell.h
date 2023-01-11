@@ -4,28 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class CKSpotlightQueryResult, NSString, UIImageView, UILabel, UIVisualEffectView;
 
-@interface CKLocationSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKLocationSearchResultCell <CKSearchResultCell>
 {
     UIImageView *_imageView;
     UILabel *_placeLabel;
     UIVisualEffectView *_blurEffectView;
     CKSpotlightQueryResult *_result;
+    NSString *_searchText;
+    unsigned long long _mode;
     struct UIEdgeInsets marginInsets;
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property(retain, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property(retain, nonatomic) CKSpotlightQueryResult *result; // @synthesize result=_result;
 @property(retain, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
 @property(retain, nonatomic) UILabel *placeLabel; // @synthesize placeLabel=_placeLabel;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
-- (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_thumbnailGenerated:(id)arg1;
 - (void)_configurePlaceLabelWithResult:(id)arg1 searchText:(id)arg2;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
@@ -36,6 +39,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

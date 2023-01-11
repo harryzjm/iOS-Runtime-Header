@@ -18,17 +18,18 @@ __attribute__((visibility("hidden")))
     char *mUid;
     GQDBezierPath *mWrapPath;
     GQDAffineGeometry *mWrapGeometry;
-    set_3d57cb01 *mInnerWrapPoints;
+    set_978dc09f *mInnerWrapPoints;
     _Bool mHasPagesOrder;
     long long mPagesOrder;
 }
 
+- (void)setPagesOrder:(int)arg1;
 - (int)pagesOrder;
 - (_Bool)hasPagesOrder;
 - (struct CGPath *)createBezierPath;
 - (void)clearWrapPoints;
 - (vector_dadce35e *)createListOfWrapPointsAlongY:(float)arg1 minX:(float)arg2 maxX:(float)arg3 zIndex:(int)arg4;
-- (const set_3d57cb01 *)wrapPoints;
+- (const set_978dc09f *)wrapPoints;
 - (void)addWrapPoint:(id)arg1;
 - (int)collectWrapPointsForState:(id)arg1 graphicStyle:(id)arg2;
 - (const char *)uid;

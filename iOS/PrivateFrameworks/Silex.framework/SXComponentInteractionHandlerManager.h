@@ -8,22 +8,24 @@
 
 #import <Silex/SXComponentInteractionHandlerManager-Protocol.h>
 
-@class NSMapTable, NSString;
+@class NSMapTable, NSString, SXViewport;
 
 @interface SXComponentInteractionHandlerManager : NSObject <SXComponentInteractionHandlerManager>
 {
     NSMapTable *_interactionHandlers;
+    SXViewport *_viewport;
 }
 
-@property(readonly, nonatomic) NSMapTable *interactionHandlers; // @synthesize interactionHandlers=_interactionHandlers;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
+@property(readonly, nonatomic) NSMapTable *interactionHandlers; // @synthesize interactionHandlers=_interactionHandlers;
 - (void)updateUserInteractionForComponentView:(id)arg1;
 - (id)interactionsForComponentView:(id)arg1 type:(unsigned long long)arg2;
 - (id)interactionsForComponentView:(id)arg1;
 - (id)componentViewForLocation:(struct CGPoint)arg1;
 - (void)removeInteractionHandler:(id)arg1 componentView:(id)arg2;
 - (void)addInteractionHandler:(id)arg1 componentView:(id)arg2 types:(unsigned long long)arg3;
-- (id)init;
+- (id)initWithViewport:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

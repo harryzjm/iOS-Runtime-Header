@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 + (id)sharedLoader;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UISDisplayContext *initialDisplayContext;
-- (id)initialDisplayConfiguration;
 - (void)_startPreloadInitialDisplayContext;
 
 @end

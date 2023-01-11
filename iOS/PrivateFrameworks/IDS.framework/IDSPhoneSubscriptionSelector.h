@@ -14,14 +14,22 @@
     CDUnknownBlockType _syncDaemonControllerBuilder;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType syncDaemonControllerBuilder; // @synthesize syncDaemonControllerBuilder=_syncDaemonControllerBuilder;
 @property(retain, nonatomic) IDSXPCDaemonController *syncDaemonController; // @synthesize syncDaemonController=_syncDaemonController;
-- (void).cxx_destruct;
 - (void)_performSyncAction:(CDUnknownBlockType)arg1;
+- (id)unselectedTemporaryPhoneAliasesWithError:(id *)arg1;
+- (_Bool)disableTemporaryPhoneAlias:(id)arg1 withError:(id *)arg2;
+- (_Bool)enableTemporaryPhoneAlias:(id)arg1 withError:(id *)arg2;
+- (_Bool)removeTemporaryPhoneAlias:(id)arg1 withError:(id *)arg2;
 - (id)setSelectedSubscriptions:(id)arg1 withError:(id *)arg2;
 - (id)unselectSubscription:(id)arg1 withError:(id *)arg2;
 - (id)selectSubscription:(id)arg1 withError:(id *)arg2;
 - (id)selectedSubscriptionsWithError:(id *)arg1;
+- (void)requestUnselectedTemporaryPhoneAliasesWithError:(CDUnknownBlockType)arg1;
+- (void)enableTemporaryPhoneAlias:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)disableTemporaryPhoneAlias:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)removeTemporaryPhoneAlias:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setSelectedSubscriptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)unselectSubscription:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)selectSubscription:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

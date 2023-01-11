@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, WFWorkflow;
+@class NSDictionary, NSString, WFWorkflow;
 
 @interface WFWorkflowRemoteQuarantineRequest
 {
@@ -13,14 +13,15 @@
 }
 
 + (id)JSONKeyPathsByPropertyKey;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *workflowJavaScriptCoreRepresentation; // @synthesize workflowJavaScriptCoreRepresentation=_workflowJavaScriptCoreRepresentation;
 @property(readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
-- (void).cxx_destruct;
 - (id)policyFunctionName;
 - (id)javaScriptCoreRepresentationWithError:(id *)arg1;
 - (id)defaultLocalizedDeniedErrorMessage;
 - (id)defaultLocalizedDeniedErrorTitle;
 - (id)workflowJavaScriptCoreRepresentationWithError:(id *)arg1;
+@property(readonly, nonatomic) NSString *workflowName;
 - (id)initWithWorkflow:(id)arg1;
 
 @end

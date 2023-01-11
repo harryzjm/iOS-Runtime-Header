@@ -9,11 +9,17 @@
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
 @class NSString;
+@protocol CNScheduler;
 
 @interface _CNMainThreadScheduler : NSObject <CNScheduler>
 {
+    id <CNScheduler> _inlineScheduler;
+    id <CNScheduler> _jumpToMainScheduler;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <CNScheduler> jumpToMainScheduler; // @synthesize jumpToMainScheduler=_jumpToMainScheduler;
+@property(readonly, nonatomic) id <CNScheduler> inlineScheduler; // @synthesize inlineScheduler=_inlineScheduler;
 @property(readonly) double timestamp;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2 qualityOfService:(unsigned long long)arg3;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
@@ -21,6 +27,9 @@
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1;
+- (id)schedulerForDelayedExecution;
+- (id)schedulerForImmediateExecution;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

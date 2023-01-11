@@ -8,26 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSString, PBDataReader, PBUnknownFields;
+@class GEOLatLng, GEORestrictionInfo, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORouteIncident : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_crossStreet;
     long long _endTime;
     NSString *_incidentId;
     NSString *_info;
     GEOLatLng *_position;
+    GEORestrictionInfo *_restrictionInfo;
     long long _startTime;
     NSString *_street;
     long long _updateTime;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _laneClosureCount;
     int _laneClosureType;
     int _significance;
     int _type;
+    unsigned int _userReportsCount;
     _Bool _endTimeReliable;
+    _Bool _shouldDisplayOnMap;
     struct {
         unsigned int has_endTime:1;
         unsigned int has_startTime:1;
@@ -36,27 +41,17 @@
         unsigned int has_laneClosureType:1;
         unsigned int has_significance:1;
         unsigned int has_type:1;
+        unsigned int has_userReportsCount:1;
         unsigned int has_endTimeReliable:1;
+        unsigned int has_shouldDisplayOnMap:1;
         unsigned int read_unknownFields:1;
         unsigned int read_crossStreet:1;
         unsigned int read_incidentId:1;
         unsigned int read_info:1;
         unsigned int read_position:1;
+        unsigned int read_restrictionInfo:1;
         unsigned int read_street:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_crossStreet:1;
-        unsigned int wrote_endTime:1;
-        unsigned int wrote_incidentId:1;
-        unsigned int wrote_info:1;
-        unsigned int wrote_position:1;
-        unsigned int wrote_startTime:1;
-        unsigned int wrote_street:1;
-        unsigned int wrote_updateTime:1;
-        unsigned int wrote_laneClosureCount:1;
-        unsigned int wrote_laneClosureType:1;
-        unsigned int wrote_significance:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_endTimeReliable:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -72,8 +67,17 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasShouldDisplayOnMap;
+@property(nonatomic) _Bool shouldDisplayOnMap;
+@property(nonatomic) _Bool hasUserReportsCount;
+@property(nonatomic) unsigned int userReportsCount;
+@property(retain, nonatomic) GEORestrictionInfo *restrictionInfo;
+@property(readonly, nonatomic) _Bool hasRestrictionInfo;
 - (int)StringAsSignificance:(id)arg1;
 - (id)significanceAsString:(int)arg1;
 @property(nonatomic) _Bool hasSignificance;
@@ -94,23 +98,20 @@
 @property(nonatomic) long long startTime;
 @property(retain, nonatomic) NSString *crossStreet;
 @property(readonly, nonatomic) _Bool hasCrossStreet;
-- (void)_readCrossStreet;
 @property(retain, nonatomic) NSString *street;
 @property(readonly, nonatomic) _Bool hasStreet;
-- (void)_readStreet;
 - (int)StringAsType:(id)arg1;
 - (id)typeAsString:(int)arg1;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type;
 @property(retain, nonatomic) NSString *info;
 @property(readonly, nonatomic) _Bool hasInfo;
-- (void)_readInfo;
 @property(retain, nonatomic) NSString *incidentId;
 @property(readonly, nonatomic) _Bool hasIncidentId;
-- (void)_readIncidentId;
 @property(retain, nonatomic) GEOLatLng *position;
 @property(readonly, nonatomic) _Bool hasPosition;
-- (void)_readPosition;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

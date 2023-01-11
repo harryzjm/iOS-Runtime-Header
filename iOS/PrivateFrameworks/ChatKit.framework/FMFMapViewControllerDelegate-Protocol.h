@@ -13,7 +13,6 @@
 
 @optional
 - (CNContact *)annotationContactForHandle:(FMFHandle *)arg1;
-- (void *)annotationABRecordForHandle:(FMFHandle *)arg1;
 - (UIView *)titleViewForSelectedHandle;
 - (void)fmfMapViewController:(FMFMapViewController *)arg1 didReceiveLocation:(id <MKAnnotation>)arg2;
 - (void)fmfMapViewController:(FMFMapViewController *)arg1 regionDidChangeAnimated:(_Bool)arg2;

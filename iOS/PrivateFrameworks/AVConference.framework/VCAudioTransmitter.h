@@ -90,6 +90,7 @@ __attribute__((visibility("hidden")))
     _Bool _ignoreSilence;
     unsigned int _tierNetworkBitrate;
     _Bool _sendActiveVoiceOnly;
+    unsigned int _qualityIndex;
     double _lastReportingCallbackTime;
     CDStruct_3ab08b48 _currentChannelMetrics;
     CDStruct_94aa5fb4 _idsChannelDataFormat;
@@ -100,9 +101,16 @@ __attribute__((visibility("hidden")))
     _Bool _alwaysOnAudioRedundancyEnabled;
     _Bool _cellularAllowRedLowBitratesEnabled;
     _Bool _wifiAllowRedLowBitratesEnabled;
+    struct tagVCMemoryPool *_audioBundlePool;
+    unsigned long long _remoteIDSParticipantID;
+    _Bool _useChannelDataFormat;
+    _Bool _useWiFiTiers;
+    unsigned int _rtpTimestampBase;
+    _Bool _shouldApplyRedAsBoolean;
 }
 
 @property(nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
+@property(nonatomic) _Bool useWiFiTiers; // @synthesize useWiFiTiers=_useWiFiTiers;
 @property(nonatomic, getter=isCurrentDTXEnabled) _Bool currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property(nonatomic) _Bool sendActiveVoiceOnly; // @synthesize sendActiveVoiceOnly=_sendActiveVoiceOnly;
 @property(nonatomic) CDStruct_3ab08b48 currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
@@ -157,10 +165,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *dtxMetrics;
 - (void)reportRedundancyConfigChange;
 - (void)registerReportingTask;
+- (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;
 - (_Bool)setupAudio:(id *)arg1;
 - (void)setCellTech:(int)arg1 remoteCellular:(int)arg2 isIPV6:(int)arg3 audioCap:(unsigned int)arg4;
 - (_Bool)handleCodecRateModeChange:(unsigned char)arg1 withBitrate:(unsigned int)arg2;
-- (_Bool)isLocalOrRemoteOnCellular;
 @property id <VCAudioTransmitterDelegate> delegate;
 @property(readonly, nonatomic) VCAudioPayloadConfig *currentAudioPayloadConfig;
 - (void)dealloc;

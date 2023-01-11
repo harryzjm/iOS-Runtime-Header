@@ -7,8 +7,10 @@
 #import <XCTest/NSObject-Protocol.h>
 
 @class XCTRunnerIDESession;
+@protocol XCTTestWorker;
 
 @protocol XCTRunnerIDESessionDelegate <NSObject>
+- (id <XCTTestWorker>)testWorkerForIDESession:(XCTRunnerIDESession *)arg1;
 - (void)IDESessionDidDisconnect:(XCTRunnerIDESession *)arg1;
 @end
 

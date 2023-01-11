@@ -18,20 +18,18 @@
 }
 
 + (id)sharedStore;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 - (void).cxx_destruct;
-- (id)dumpForBundleIdentifier:(id)arg1;
-- (_Bool)isProviderIdentifier:(id)arg1 allowedToProvideItemID:(id)arg2 toConsumerWithIdentifier:(id)arg3;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
+- (void)addLRUSignature:(id)arg1;
+- (_Bool)lookupLRUSignature:(id)arg1;
+- (id)parseUnverifiedBookmark:(id)arg1;
+- (id)verifyBookmark:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 consumerIdentifier:(id)arg3;
+- (id)bookmarkForItemID:(id)arg1 consumerIdentifier:(id)arg2;
+- (id)keyForBundleIdentifier:(id)arg1 generateIfNotFound:(_Bool)arg2 keyGenBlock:(CDUnknownBlockType)arg3;
 - (void)validateDatabase:(id)arg1;
-- (id)_fileKeyForProviderKey:(id)arg1 domain:(id)arg2 identifier:(id)arg3 db:(id)arg4 create:(_Bool)arg5;
-- (_Bool)migrate:(id)arg1 fromLegacyDatabase:(id)arg2;
 - (void)openDatabase;
 - (void)reopenDatabaseAfterUnlock;
-- (void)disallowProviderWithIdentifier:(id)arg1 fromProvidingItemWithID:(id)arg2 toConsumerWithIdentifier:(id)arg3;
-- (void)allowProviderWithIdentifier:(id)arg1 toProvideItemID:(id)arg2 toConsumerWithIdentifier:(id)arg3;
 - (void)performWithDBConnection:(CDUnknownBlockType)arg1;
-- (id)_bundleKeyForBundleIdentifier:(id)arg1 db:(id)arg2 create:(_Bool)arg3;
-- (_Bool)isProviderWithIdentifier:(id)arg1 allowedToProvideItemID:(id)arg2 toConsumerWithIdentifier:(id)arg3;
 - (void)dealloc;
 - (id)initWithDatabaseBaseURL:(id)arg1;
 - (id)init;

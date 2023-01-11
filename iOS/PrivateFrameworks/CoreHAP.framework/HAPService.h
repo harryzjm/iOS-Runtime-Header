@@ -7,10 +7,11 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/HMFMerging-Protocol.h>
+#import <CoreHAP/NSCopying-Protocol.h>
 
 @class CBService, HAPAccessory, NSArray, NSNumber, NSString;
 
-@interface HAPService : HMFObject <HMFMerging>
+@interface HAPService : HMFObject <NSCopying, HMFMerging>
 {
     NSString *_type;
     NSNumber *_instanceID;
@@ -20,13 +21,14 @@
     unsigned long long _serviceProperties;
 }
 
++ (_Bool)hap2_mergeServices:(id)arg1 discoveredServices:(id)arg2 mergedServices:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long serviceProperties; // @synthesize serviceProperties=_serviceProperties;
 @property(retain, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
 @property(retain, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property(nonatomic) __weak HAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property(copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (_Bool)mergeObject:(id)arg1;
 - (_Bool)shouldMergeObject:(id)arg1;
 - (id)characteristicsOfType:(id)arg1;
@@ -42,6 +44,8 @@
 - (id)initWithType:(id)arg1 instanceID:(id)arg2;
 - (id)initWithType:(id)arg1 instanceID:(id)arg2 parsedCharacteristics:(id)arg3 serviceProperties:(unsigned long long)arg4 linkedServices:(id)arg5;
 @property(retain, nonatomic, setter=setCBService:) CBService *cbService;
+- (_Bool)hap2_mergeWithService:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

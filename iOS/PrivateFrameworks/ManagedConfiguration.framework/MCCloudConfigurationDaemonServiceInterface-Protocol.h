@@ -14,6 +14,7 @@
 - (void)retrieveDeviceUploadRequestTypesWithCredentials:(MCDeviceUploadCredentials *)arg1 completionBlock:(void (^)(_Bool, NSDictionary *, NSError *))arg2;
 - (void)retrieveDeviceUploadOrganizationsWithCredentials:(MCDeviceUploadCredentials *)arg1 completionBlock:(void (^)(_Bool, NSDictionary *, NSError *))arg2;
 - (void)unenrollWithCompletionBlock:(void (^)(_Bool, NSDictionary *, NSError *))arg1;
+- (void)fetchConfigurationWithoutValidationWithCompletionBlock:(void (^)(_Bool, NSDictionary *, NSError *))arg1;
 - (void)fetchConfigurationWithCompletionBlock:(void (^)(_Bool, NSDictionary *, NSError *))arg1;
 - (void)provisionallyEnrollWithNonce:(NSString *)arg1 completionBlock:(void (^)(_Bool, NSDictionary *, NSError *))arg2;
 @end

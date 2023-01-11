@@ -4,25 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKDashboardPaymentTransactionItem, PKPaymentTransactionGroupItem, PKPaymentTransactionView;
+#import <PassKitUI/PKPaymentTransactionCellResponder-Protocol.h>
 
-@interface PKPaymentTransactionCollectionViewCell
+@class NSString, PKPaymentTransactionView;
+
+@interface PKPaymentTransactionCollectionViewCell <PKPaymentTransactionCellResponder>
 {
-    PKDashboardPaymentTransactionItem *_item;
-    PKPaymentTransactionGroupItem *_groupItem;
+    NSString *_identifier;
     PKPaymentTransactionView *_transactionView;
 }
 
-@property(readonly, nonatomic) PKPaymentTransactionView *transactionView; // @synthesize transactionView=_transactionView;
-@property(retain, nonatomic) PKPaymentTransactionGroupItem *groupItem; // @synthesize groupItem=_groupItem;
-@property(retain, nonatomic) PKDashboardPaymentTransactionItem *item; // @synthesize item=_item;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKPaymentTransactionView *transactionView; // @synthesize transactionView=_transactionView;
+@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (double)maxWidthForTransactionCellInWidth:(double)arg1;
-- (void)setShowsBottomSeparator:(_Bool)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,21 +6,28 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HomeKitDaemon/CKCodeOperationMessageMutation-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@interface HMDCameraClipsQuotaDisableCameraResponse : PBCodable <NSCopying>
+@class NSString;
+
+@interface HMDCameraClipsQuotaDisableCameraResponse : PBCodable <CKCodeOperationMessageMutation, NSCopying>
 {
 }
 
 - (void)mergeFrom:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)description;
+@property(readonly, copy) NSString *description;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

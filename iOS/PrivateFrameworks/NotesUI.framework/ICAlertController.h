@@ -11,16 +11,17 @@
 @interface ICAlertController : UIAlertController
 {
     _Bool _didPerformAction;
-    _Bool _didDismissWithDissmissWithoutActionBlock;
-    CDUnknownBlockType _dissmissWithoutActionBlock;
+    _Bool _didDismissWithDismissWithoutActionBlock;
+    CDUnknownBlockType _dismissWithoutActionBlock;
     UIAlertAction *_dismissAction;
 }
 
-@property(nonatomic) _Bool didDismissWithDissmissWithoutActionBlock; // @synthesize didDismissWithDissmissWithoutActionBlock=_didDismissWithDissmissWithoutActionBlock;
-@property(retain, nonatomic) UIAlertAction *dismissAction; // @synthesize dismissAction=_dismissAction;
-@property(copy, nonatomic) CDUnknownBlockType dissmissWithoutActionBlock; // @synthesize dissmissWithoutActionBlock=_dissmissWithoutActionBlock;
-@property(nonatomic) _Bool didPerformAction; // @synthesize didPerformAction=_didPerformAction;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool didDismissWithDismissWithoutActionBlock; // @synthesize didDismissWithDismissWithoutActionBlock=_didDismissWithDismissWithoutActionBlock;
+@property(retain, nonatomic) UIAlertAction *dismissAction; // @synthesize dismissAction=_dismissAction;
+@property(copy, nonatomic) CDUnknownBlockType dismissWithoutActionBlock; // @synthesize dismissWithoutActionBlock=_dismissWithoutActionBlock;
+@property(nonatomic) _Bool didPerformAction; // @synthesize didPerformAction=_didPerformAction;
+- (_Bool)_canShowWhileLocked;
 - (void)dismissWhenPossible;
 - (void)dealloc;
 

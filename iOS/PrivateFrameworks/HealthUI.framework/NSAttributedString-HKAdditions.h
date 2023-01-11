@@ -7,6 +7,7 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (HKAdditions)
++ (id)hk_attributedStringForSpacing:(double)arg1 nonBreaking:(_Bool)arg2;
 + (id)hk_attributedStringForSpacing:(double)arg1;
 @end
 

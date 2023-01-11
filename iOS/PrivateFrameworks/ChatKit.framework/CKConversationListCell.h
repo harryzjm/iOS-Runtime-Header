@@ -8,44 +8,63 @@
 
 #import <ChatKit/CKConversationListCell-Protocol.h>
 
-@class CKAvatarView, CKConversation, CKLabel, NSDate, NSObject, NSString, STConversationContext, UIDateLabel, UIImageView, UILabel;
+@class CAGradientLayer, CKAvatarView, CKConversation, CKConversationListTypingIndicatorView, CKLabel, NSDate, NSObject, NSString, UIButton, UIDateLabel, UIImageView, UILabel;
 @protocol CKConversationListCellDelegate;
 
 @interface CKConversationListCell : UITableViewCell <CKConversationListCell>
 {
     UIDateLabel *_dateLabel;
     UILabel *_summaryLabel;
+    CAGradientLayer *_gradient;
+    UIButton *_closeButton;
+    UILabel *_summaryBlockedLabel;
     UIImageView *_chevronImageView;
     CKLabel *_fromLabel;
     _Bool _isPlaceholder;
     NSString *_searchSummaryText;
     NSString *_searchMessageGUID;
     NSDate *_searchMessageDate;
+    CKConversationListTypingIndicatorView *_typingIndicatorView;
     _Bool _verified;
-    _Bool _allowedByScreenTime;
+    _Bool _shouldHidePreviewSummary;
+    _Bool _shouldLabelsBeHighlighted;
+    _Bool _freezeSummaryText;
+    _Bool __editingPins;
     NSObject<CKConversationListCellDelegate> *_delegate;
-    STConversationContext *_screentimeConversationContext;
+    double _widthForDeterminingAvatarVisibility;
     CKConversation *_conversation;
+    struct CGRect _containerBounds;
 }
 
-+ (double)cellHeight;
++ (double)cellHeightForDisplayScale:(double)arg1;
 + (id)identifierForConversation:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool _editingPins; // @synthesize _editingPins=__editingPins;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
-@property(nonatomic) _Bool allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
-@property(nonatomic) __weak STConversationContext *screentimeConversationContext; // @synthesize screentimeConversationContext=_screentimeConversationContext;
+@property(nonatomic) _Bool freezeSummaryText; // @synthesize freezeSummaryText=_freezeSummaryText;
+@property(nonatomic) _Bool shouldLabelsBeHighlighted; // @synthesize shouldLabelsBeHighlighted=_shouldLabelsBeHighlighted;
+@property(nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 @property(nonatomic) __weak NSObject<CKConversationListCellDelegate> *delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool shouldHidePreviewSummary; // @synthesize shouldHidePreviewSummary=_shouldHidePreviewSummary;
 @property(nonatomic) _Bool verified; // @synthesize verified=_verified;
 @property(copy, nonatomic) NSString *searchSummaryText; // @synthesize searchSummaryText=_searchSummaryText;
 @property(retain, nonatomic) NSDate *searchMessageDate; // @synthesize searchMessageDate=_searchMessageDate;
 @property(copy, nonatomic) NSString *searchMessageGUID; // @synthesize searchMessageGUID=_searchMessageGUID;
-- (void).cxx_destruct;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (_Bool)lastMessageIsTypingIndicator;
+- (id)unreadIndicatorColorForVisibility:(_Bool)arg1;
+- (id)unreadIndicatorImageForVisibility:(_Bool)arg1 withMuteState:(_Bool)arg2;
+- (void)updateUnreadIndicatorForCurrentConversation;
+- (void)updateBlockedSummaryLabelIfNeeded;
+- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_performBlock:(CDUnknownBlockType)arg1 animated:(_Bool)arg2;
+- (void)setEditingPins:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)updateForEditing:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateWithSearchResult:(id)arg1;
-- (id)_makeSummaryAttributedStringWithText:(id)arg1;
-- (void)updateSummaryTextForConversation:(id)arg1 fastPreview:(_Bool)arg2 blockedForDowntime:(_Bool)arg3;
+- (id)_makeSummaryAttributedStringWithText:(id)arg1 multiwayConversation:(id)arg2;
+- (id)summaryAttributedTextForBlockedConversationWithIcon:(_Bool)arg1;
+- (unsigned long long)unreadMessageCount;
 - (void)updateSummaryTextForConversation:(id)arg1 fastPreview:(_Bool)arg2;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(_Bool)arg2;
 - (void)updateContentsForConversation:(id)arg1;
@@ -57,9 +76,17 @@
 - (void)_increaseContrastDidChange:(id)arg1;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)prepareForReuse;
+- (id)summaryLabel;
+- (id)dateLabel;
 @property(readonly, nonatomic) CKLabel *fromLabel;
 @property(readonly, nonatomic) CKAvatarView *avatarView;
+@property(nonatomic) struct CGRect containerBounds; // @synthesize containerBounds=_containerBounds;
 - (void)dealloc;
+- (void)deleteButtonTapped;
+- (void)didHoverOverCell:(id)arg1;
+- (id)summaryLabelTextColor;
+- (void)updateLabelTextColors;
+- (void)updateWithForwardedConfigurationState:(unsigned long long)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 // Remaining properties

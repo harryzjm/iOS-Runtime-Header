@@ -16,6 +16,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_effectCopyingFromCaptureGroup:(id)arg1;
 + (id)effectCompositingColor:(id)arg1 withMode:(long long)arg2 alpha:(double)arg3;
 + (id)effectCompositingImage:(id)arg1 withMode:(long long)arg2 alpha:(double)arg3;
 + (id)effectCompositingColor:(id)arg1;

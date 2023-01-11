@@ -16,20 +16,21 @@
     PARSession *_session;
     long long _contentFilter;
     _Bool _infinitePatience;
+    long long _maxUISuggestions;
 }
 
 + (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
 + (void)initialize;
-@property(nonatomic) _Bool infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 - (void).cxx_destruct;
-- (void)dealloc;
+@property long long maxUISuggestions; // @synthesize maxUISuggestions=_maxUISuggestions;
+@property(nonatomic) _Bool infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 - (void)finishRanking:(id)arg1 blendingDuration:(double)arg2;
 - (void)deactivate;
 - (void)activate;
 - (void)preheat;
 @property(readonly) NSArray *disabledBundleIds;
 - (_Bool)_setSearchDomains:(id)arg1;
-- (id)queryWithContext:(id)arg1;
+- (id)queryTaskWithContext:(id)arg1;
 - (long long)contentFilters;
 - (id)init;
 

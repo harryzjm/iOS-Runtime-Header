@@ -14,15 +14,15 @@ __attribute__((visibility("hidden")))
 {
     id <PSBillingPeriodSource> _billingPeriodSource;
     NSArray *_subcategorySpecifiers;
-    PSDataUsageStatisticsCache *_statisticsCache;
     unsigned long long _type;
+    PSDataUsageStatisticsCache *_statisticsCache;
 }
 
-@property(nonatomic) unsigned long long type; // @synthesize type=_type;
+- (void).cxx_destruct;
 @property(retain, nonatomic) PSDataUsageStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSArray *subcategorySpecifiers; // @synthesize subcategorySpecifiers=_subcategorySpecifiers;
 @property(nonatomic) __weak id <PSBillingPeriodSource> billingPeriodSource; // @synthesize billingPeriodSource=_billingPeriodSource;
-- (void).cxx_destruct;
 - (id)dataUsageString;
 - (unsigned long long)dataUsage;
 - (id)initWithType:(unsigned long long)arg1 subSpecifiers:(id)arg2;

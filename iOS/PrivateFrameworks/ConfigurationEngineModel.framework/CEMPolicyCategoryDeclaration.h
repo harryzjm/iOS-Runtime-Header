@@ -12,18 +12,21 @@
 {
     NSString *_payloadMode;
     NSArray *_payloadCategories;
+    NSArray *_payloadCategoriesVersion2;
 }
 
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1 withMode:(id)arg2;
 + (id)buildWithIdentifier:(id)arg1 withMode:(id)arg2 withCategories:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 withMode:(id)arg2 withCategories:(id)arg3 withCategoriesVersion2:(id)arg4;
 + (id)restrictionPayloadKeys;
 + (id)allowedPayloadKeys;
 + (id)profileType;
 + (id)registeredIdentifier;
 + (id)registeredClassName;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *payloadCategoriesVersion2; // @synthesize payloadCategoriesVersion2=_payloadCategoriesVersion2;
 @property(copy, nonatomic) NSArray *payloadCategories; // @synthesize payloadCategories=_payloadCategories;
 @property(copy, nonatomic) NSString *payloadMode; // @synthesize payloadMode=_payloadMode;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializePayloadWithAssetProviders:(id)arg1;
 - (_Bool)loadPayload:(id)arg1 error:(id *)arg2;

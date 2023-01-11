@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_setupViews:(id)arg1 vtPrefs:(id)arg2;
+- (void)_setupUI;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 

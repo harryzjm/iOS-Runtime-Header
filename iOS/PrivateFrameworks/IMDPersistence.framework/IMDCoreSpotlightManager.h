@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
+@class NSMutableOrderedSet;
 
 @interface IMDCoreSpotlightManager : NSObject
 {
-    NSMutableSet *_blacklistMessageGUIDs;
+    NSMutableOrderedSet *_blocklistMessageGUIDs;
 }
 
 + (id)chatStyleCustomKey;
 + (id)sharedInstance;
-@property(retain, nonatomic) NSMutableSet *blacklistMessageGUIDs; // @synthesize blacklistMessageGUIDs=_blacklistMessageGUIDs;
+@property(retain, nonatomic) NSMutableOrderedSet *blocklistMessageGUIDs; // @synthesize blocklistMessageGUIDs=_blocklistMessageGUIDs;
 - (unsigned long long)_lastIndexedRowID;
 - (unsigned long long)_batchSizeForTargetBatchSize:(unsigned long long)arg1 lastIndexedRowID:(unsigned long long)arg2 lastBatch:(_Bool *)arg3;
 - (_Bool)_shouldIndexNextBatchForBatchSize:(unsigned long long)arg1;
@@ -29,12 +29,12 @@
 - (void)_setNeedsDeferredIndexing:(_Bool)arg1;
 - (void)_setNeedsIndexing:(_Bool)arg1;
 - (_Bool)_shouldBypassForTesting;
-- (void)_indexSearchableItems:(id)arg1 lastIndexedRowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3 lastBatch:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_indexSearchableItems:(id)arg1 lastIndexedRowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3 lastBatch:(_Bool)arg4 withIndex:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)_newLegacySearchableIndexesForMessages:(struct __CFArray *)arg1;
 - (id)_newSearchableIndexesForMessages:(struct __CFArray *)arg1;
 - (struct __CFArray *)_copyMessagesForIndexingWithLastRowID:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
 - (void)indexNextMessageBatchIfNeeded:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_indexSearchableChatItems:(id)arg1;
+- (void)_indexSearchableChatItems:(id)arg1 withIndex:(id)arg2;
 - (id)_chatDictionaryForChatAtIndex:(unsigned long long)arg1 withChats:(id)arg2;
 - (long long)_chatCountForChats:(id)arg1;
 - (id)_newSearchableChatItemsForChats:(struct __CFArray *)arg1;
@@ -46,6 +46,8 @@
 - (id)newChatSearchableItemForChatDictionary:(id)arg1 optionalLastMessageDate:(id)arg2;
 - (void)_updateItem:(id)arg1 withGeoMapItem:(id)arg2;
 - (void)_geocodeItems:(id)arg1;
+- (void)_postProcessIndexingForItem:(id)arg1 chatDictionary:(id)arg2 isReindexing:(_Bool)arg3;
+- (id)_donationManager;
 - (id)newSearchableItemsForMessage:(struct _IMDMessageRecordStruct *)arg1 reindexing:(_Bool)arg2;
 - (id)newSearchableItemsForMessageGUID:(id)arg1 reindexing:(_Bool)arg2;
 - (void)clearMessageGUIDFromScrutiny:(id)arg1;

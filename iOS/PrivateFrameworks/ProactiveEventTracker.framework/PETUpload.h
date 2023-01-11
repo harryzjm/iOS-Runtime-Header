@@ -8,24 +8,30 @@
 
 #import <ProactiveEventTracker/NSCopying-Protocol.h>
 
-@class NSMutableArray, PETMetadata;
+@class NSData, NSMutableArray, PETMetadata;
 
 @interface PETUpload : PBCodable <NSCopying>
 {
     NSMutableArray *_aggregatedMessages;
+    NSData *_compressedData;
+    NSData *_compressedMessages;
     PETMetadata *_metadata;
-    NSMutableArray *_trialMessages;
     NSMutableArray *_unaggregatedMessages;
+    _Bool _isCompressed;
+    struct {
+        unsigned int isCompressed:1;
+    } _has;
 }
 
-+ (Class)trialMessagesType;
 + (Class)unaggregatedMessagesType;
 + (Class)aggregatedMessagesType;
-@property(retain, nonatomic) NSMutableArray *trialMessages; // @synthesize trialMessages=_trialMessages;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSData *compressedMessages; // @synthesize compressedMessages=_compressedMessages;
+@property(retain, nonatomic) NSData *compressedData; // @synthesize compressedData=_compressedData;
+@property(nonatomic) _Bool isCompressed; // @synthesize isCompressed=_isCompressed;
 @property(retain, nonatomic) NSMutableArray *unaggregatedMessages; // @synthesize unaggregatedMessages=_unaggregatedMessages;
 @property(retain, nonatomic) NSMutableArray *aggregatedMessages; // @synthesize aggregatedMessages=_aggregatedMessages;
 @property(retain, nonatomic) PETMetadata *metadata; // @synthesize metadata=_metadata;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -35,10 +41,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)trialMessagesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)trialMessagesCount;
-- (void)addTrialMessages:(id)arg1;
-- (void)clearTrialMessages;
+@property(readonly, nonatomic) _Bool hasCompressedMessages;
+@property(readonly, nonatomic) _Bool hasCompressedData;
+@property(nonatomic) _Bool hasIsCompressed;
 - (id)unaggregatedMessagesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)unaggregatedMessagesCount;
 - (void)addUnaggregatedMessages:(id)arg1;

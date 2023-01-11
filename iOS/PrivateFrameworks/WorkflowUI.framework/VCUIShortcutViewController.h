@@ -12,7 +12,7 @@
 #import <WorkflowUI/UITextFieldDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowViewControllerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, OBTrayButton, OBWelcomeController, UIBarButtonItem, UINavigationController, UITableView, UIView, WFDatabase, WFWorkflow, WFWorkflowIcon, WFWorkflowViewController;
+@class NSLayoutConstraint, NSString, OBTrayButton, OBWelcomeController, UIBarButtonItem, UINavigationController, UITableView, UIView, WFAutomationSuggestion, WFDatabase, WFTrigger, WFWorkflow, WFWorkflowIcon, WFWorkflowViewController;
 @protocol VCUIShortcutViewControllerDelegate;
 
 @interface VCUIShortcutViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, WFWorkflowViewControllerDelegate>
@@ -23,6 +23,8 @@
     UINavigationController *_navigationController;
     UIBarButtonItem *_rightBarButtonItem;
     WFWorkflow *_workflow;
+    WFTrigger *_trigger;
+    WFAutomationSuggestion *_suggestion;
     NSString *_shortcutName;
     NSString *_shortcutDescription;
     WFWorkflowIcon *_shortcutIcon;
@@ -39,6 +41,7 @@
 }
 
 + (_Bool)_preventsAppearanceProxyCustomization;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasAppeared; // @synthesize hasAppeared=_hasAppeared;
 @property(retain, nonatomic) WFWorkflowViewController *inlineWorkflowViewController; // @synthesize inlineWorkflowViewController=_inlineWorkflowViewController;
 @property(readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
@@ -53,16 +56,21 @@
 @property(copy, nonatomic) WFWorkflowIcon *shortcutIcon; // @synthesize shortcutIcon=_shortcutIcon;
 @property(copy, nonatomic) NSString *shortcutDescription; // @synthesize shortcutDescription=_shortcutDescription;
 @property(copy, nonatomic) NSString *shortcutName; // @synthesize shortcutName=_shortcutName;
+@property(retain, nonatomic) WFAutomationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
+@property(retain, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
 @property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(retain, nonatomic) UIBarButtonItem *rightBarButtonItem; // @synthesize rightBarButtonItem=_rightBarButtonItem;
 @property(readonly, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property(readonly, nonatomic) OBWelcomeController *welcomeController; // @synthesize welcomeController=_welcomeController;
 @property(nonatomic) __weak id <VCUIShortcutViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (int)eventSource;
+- (_Bool)isUpdatingExistingShortcut;
+- (void)trackAddEvent;
 - (void)keyboardWillChange:(id)arg1;
 - (void)updatePrimaryButton;
 - (void)didTapCancel;
 - (void)didTapSecondaryButton;
+- (void)createNewAutomationSuggestion;
 - (void)didTapPrimaryButton;
 - (id)nameCell;
 - (id)applicationBundleIdentifier;
@@ -98,6 +106,7 @@
 - (void)updateCustomView;
 - (unsigned long long)currentPreviewMode;
 - (void)dealloc;
+- (id)initWithAutomationSuggestion:(id)arg1 workflow:(id)arg2 database:(id)arg3;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2 mode:(unsigned long long)arg3;
 
 // Remaining properties

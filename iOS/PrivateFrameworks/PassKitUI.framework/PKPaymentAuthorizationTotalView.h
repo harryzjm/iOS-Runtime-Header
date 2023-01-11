@@ -30,19 +30,19 @@
     long long _labelNumberOfLines;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showsBoldValueText; // @synthesize showsBoldValueText=_showsBoldValueText;
 @property(nonatomic) long long labelNumberOfLines; // @synthesize labelNumberOfLines=_labelNumberOfLines;
 @property(nonatomic, getter=isProcessing) _Bool processing; // @synthesize processing=_processing;
 @property(nonatomic) _Bool isPendingTotal; // @synthesize isPendingTotal=_isPendingTotal;
 @property(nonatomic) long long style; // @synthesize style=_style;
-@property(nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
-- (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
 - (id)_valueAttributedStringWithString:(id)arg1;
 - (id)_labelAttributedStringWithString:(id)arg1;
 - (void)_prepareConstraints;
 - (double)_initialLeading;
 - (void)updateConstraints;
-- (_Bool)_hasAccessibilityLargeText;
+- (_Bool)_shouldUseLargeTextLayout;
 - (void)_createSubviews;
 - (void)setLabel:(id)arg1 value:(id)arg2;
 - (void)dealloc;

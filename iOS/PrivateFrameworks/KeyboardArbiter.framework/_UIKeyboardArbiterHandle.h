@@ -8,7 +8,7 @@
 
 #import <KeyboardArbiter/_UIKeyboardArbitration-Protocol.h>
 
-@class BKSProcessAssertion, BSServiceConnectionEndpointInjector, FBSCAContextSceneLayer, NSArray, NSMutableSet, NSString, NSXPCConnection, _UIKeyboardArbiter;
+@class BKSProcessAssertion, BSServiceConnectionEndpointInjector, FBSCAContextSceneLayer, FBSSceneIdentityToken, NSArray, NSMutableSet, NSString, NSXPCConnection, _UIKeyboardArbiter;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardArbiterHandle : NSObject <_UIKeyboardArbitration>
@@ -18,14 +18,17 @@ __attribute__((visibility("hidden")))
     _UIKeyboardArbiter *_owner;
     _Bool _running;
     FBSCAContextSceneLayer *_sceneLayer;
-    NSString *_remoteSceneID;
+    FBSSceneIdentityToken *_remoteSceneIdentity;
     _Bool _active;
     unsigned long long _wantedState;
     double _level;
     NSMutableSet *_hostedPids;
     _Bool _checkingShowability;
     int _suppressionCount;
+    int _childrenSuppressionCount;
     _Bool _wantsFence;
+    _Bool _deactivating;
+    _Bool _keyboardOnScreen;
     BKSProcessAssertion *_remoteKeepAliveAssertion;
     unsigned long long _remoteKeepAliveAssertionCount;
     unsigned long long _remoteKeepAliveTimerCount;
@@ -36,20 +39,23 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)handlerWithArbiter:(id)arg1 forConnection:(id)arg2;
+- (void).cxx_destruct;
+@property int suppressionCount; // @synthesize suppressionCount=_suppressionCount;
+@property(readonly) _Bool deactivating; // @synthesize deactivating=_deactivating;
 @property(readonly) _Bool wantsFence; // @synthesize wantsFence=_wantsFence;
 @property(readonly) double iavHeight; // @synthesize iavHeight=_iavHeight;
 @property(readonly) double level; // @synthesize level=_level;
 @property(readonly) unsigned long long wantedState; // @synthesize wantedState=_wantedState;
 @property(readonly) _Bool active; // @synthesize active=_active;
-@property(readonly, retain) NSString *remoteSceneID; // @synthesize remoteSceneID=_remoteSceneID;
+@property(readonly, retain) FBSSceneIdentityToken *remoteSceneIdentity; // @synthesize remoteSceneIdentity=_remoteSceneIdentity;
 @property(readonly, retain) FBSCAContextSceneLayer *sceneLayer; // @synthesize sceneLayer=_sceneLayer;
 @property _Bool running; // @synthesize running=_running;
 @property(readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(readonly, retain) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
+@property(readonly) _Bool hasHostedPids;
 - (void)signalEventSourceChanged:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setKeyboardTotalDisable:(_Bool)arg1 withFence:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneDeferringToken:(id)arg2 onCompletion:(CDUnknownBlockType)arg3;
+- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneIdentity:(id)arg2 onCompletion:(CDUnknownBlockType)arg3;
 - (void)applicationShouldFocusWithBundle:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 - (void)uncacheWindowContext;
@@ -71,10 +77,15 @@ __attribute__((visibility("hidden")))
 - (void)didDetachLayer;
 - (void)didAttachLayer;
 - (void)checkActivation:(unsigned long long)arg1;
-- (void)_reevaluateRemoteSceneID:(id)arg1;
-- (void)setWindowContextID:(unsigned int)arg1 sceneIdentifier:(id)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
+- (void)_reevaluateRemoteSceneIdentity:(id)arg1;
+- (void)setSceneIdentity:(id)arg1;
+- (void)setWindowContextID:(unsigned int)arg1 sceneIdentity:(id)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
+- (_Bool)isKeyboardOnScreen;
 - (void)_deactivateScene;
 - (void)startArbitrationWithExpectedState:(id)arg1 hostingPIDs:(id)arg2 usingFence:(_Bool)arg3 withSuppression:(int)arg4 onConnected:(CDUnknownBlockType)arg5;
+- (void)addHostedPids:(id)arg1;
+- (void)updateSuspensionCountForPids:(id)arg1;
+- (void)setDeactivating:(_Bool)arg1;
 @property(readonly) int processIdentifier;
 - (void)dealloc;
 

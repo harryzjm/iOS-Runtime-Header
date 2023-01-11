@@ -10,7 +10,7 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, SBDeviceApplicationSceneHandle, SBMedusaSettings, SBOrientationTransformWrapperView, UIColor, UIStatusBar, _UIStatusBar;
+@class NSMutableDictionary, NSMutableSet, NSString, SBMedusaSettings, SBOrientationTransformWrapperView, UIColor, UIStatusBar, _UIStatusBar;
 @protocol SBMainDisplaySceneLayoutStatusBarViewDataSource, UIStatusBarStyleDelegate_SpringBoardOnly;
 
 @interface SBMainDisplaySceneLayoutStatusBarView : UIView <PTSettingsKeyObserver, UIStatusBarStyleDelegate_SpringBoardOnly, SBDeviceApplicationSceneStatusBarStateObserver>
@@ -23,8 +23,9 @@
     NSMutableDictionary *_partIdentifiersDefaultStyles;
     NSMutableDictionary *_partIdentifiersCustomStyles;
     NSMutableDictionary *_hitTestLayers;
-    SBDeviceApplicationSceneHandle *_statusBarBreadcrumbSceneHandle;
+    NSString *_statusBarBreadcrumbSceneIdentifier;
     _Bool _statusBarLaidOutForClassic;
+    _Bool _lastHiddenValueForAnimation;
     SBMedusaSettings *_medusaSettings;
     _Bool _debugBackgroundColorEnabled;
     _Bool _debugOffsetEnabled;
@@ -49,9 +50,9 @@
     id <UIStatusBarStyleDelegate_SpringBoardOnly> _realStyleDelegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <UIStatusBarStyleDelegate_SpringBoardOnly> realStyleDelegate; // @synthesize realStyleDelegate=_realStyleDelegate;
 @property(nonatomic) __weak id <SBMainDisplaySceneLayoutStatusBarViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
 - (long long)overriddenRequestedStyleFromStyle:(long long)arg1;
 - (int)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(int)arg3;
 - (void)statusBar:(id)arg1 didTriggerButtonType:(long long)arg2 withAction:(long long)arg3 context:(id)arg4;
@@ -102,13 +103,12 @@
 @property(readonly, nonatomic, getter=isRequiringStatusBar) _Bool requiringStatusBar;
 - (void)_tearDownStatusBar;
 - (void)_layoutStatusBarForOrientation:(long long)arg1;
-- (_Bool)_statusBarNeedsLayoutForRotationToDifferentOrientation;
 - (struct CGRect)_statusBarFrameForOrientation:(long long)arg1;
 - (_Bool)_statusBarNeedsSpecialLayoutForClassic;
 - (void)updateStatusBarOrientationForLegacyApp;
 - (void)layoutStatusBarForSpringBoardRotationToOrientation:(long long)arg1;
 - (id)_sceneHandleForClassicApplicationIfAny;
-- (id)_sceneHandleForPrimaryApplicationIfAny;
+- (id)_statusBarDescriberForPrimaryApplicationIfAny;
 - (id)_anyAppViewControllerOwningInterfaceOrientation;
 - (void)_statusBarTapped:(id)arg1 type:(long long)arg2;
 - (void)_statusBarShowDebug:(id)arg1;

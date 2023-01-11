@@ -14,23 +14,21 @@ __attribute__((visibility("hidden")))
 @interface GEODrivingWalkingInstruction : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_continueCommands;
     GEOFormattedString *_distance;
     NSMutableArray *_mergeCommands;
     NSMutableArray *_normalCommands;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_continueCommands:1;
         unsigned int read_distance:1;
         unsigned int read_mergeCommands:1;
         unsigned int read_normalCommands:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_continueCommands:1;
-        unsigned int wrote_distance:1;
-        unsigned int wrote_mergeCommands:1;
-        unsigned int wrote_normalCommands:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,32 +47,30 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)mergeCommandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mergeCommandsCount;
-- (void)_addNoFlagsMergeCommand:(id)arg1;
 - (void)addMergeCommand:(id)arg1;
 - (void)clearMergeCommands;
 @property(retain, nonatomic) NSMutableArray *mergeCommands;
-- (void)_readMergeCommands;
 - (id)continueCommandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)continueCommandsCount;
-- (void)_addNoFlagsContinueCommand:(id)arg1;
 - (void)addContinueCommand:(id)arg1;
 - (void)clearContinueCommands;
 @property(retain, nonatomic) NSMutableArray *continueCommands;
-- (void)_readContinueCommands;
 - (id)normalCommandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)normalCommandsCount;
-- (void)_addNoFlagsNormalCommand:(id)arg1;
 - (void)addNormalCommand:(id)arg1;
 - (void)clearNormalCommands;
 @property(retain, nonatomic) NSMutableArray *normalCommands;
-- (void)_readNormalCommands;
 @property(retain, nonatomic) GEOFormattedString *distance;
 @property(readonly, nonatomic) _Bool hasDistance;
-- (void)_readDistance;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

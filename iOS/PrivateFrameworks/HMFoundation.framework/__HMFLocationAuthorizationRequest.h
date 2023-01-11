@@ -6,26 +6,23 @@
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 
-@class HMFLocationAuthorization, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface __HMFLocationAuthorizationRequest <HMFLogging>
 {
     _Bool _requested;
     long long _type;
-    HMFLocationAuthorization *_authorization;
 }
 
 + (id)logCategory;
-+ (void)initialize;
-@property(readonly) HMFLocationAuthorization *authorization; // @synthesize authorization=_authorization;
 @property(readonly) long long type; // @synthesize type=_type;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)main;
 - (void)dealloc;
 - (id)initWithType:(long long)arg1 authorization:(id)arg2;
 - (id)initWithType:(long long)arg1;
+- (id)initWithAuthorization:(id)arg1;
 - (id)initWithTimeout:(double)arg1;
 
 // Remaining properties

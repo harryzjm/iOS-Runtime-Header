@@ -14,6 +14,10 @@
 {
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _supportedPhoneticTypes;
+    _Bool _supportsLocalizedTrafficControlIcons;
+    struct {
+        unsigned int has_supportsLocalizedTrafficControlIcons:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -28,8 +32,13 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
+- (id)initWithJSON:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSupportsLocalizedTrafficControlIcons;
+@property(nonatomic) _Bool supportsLocalizedTrafficControlIcons;
 - (int)StringAsSupportedPhoneticTypes:(id)arg1;
 - (id)supportedPhoneticTypesAsString:(int)arg1;
 - (void)setSupportedPhoneticTypes:(int *)arg1 count:(unsigned long long)arg2;

@@ -10,6 +10,7 @@
 
 @protocol _SFPBDetailedRowCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool shouldUseCompactDisplay;
 @property(retain, nonatomic) _SFPBButton *button;
 @property(retain, nonatomic) _SFPBActionItem *action;
 @property(retain, nonatomic) _SFPBFormattedText *trailingBottomText;

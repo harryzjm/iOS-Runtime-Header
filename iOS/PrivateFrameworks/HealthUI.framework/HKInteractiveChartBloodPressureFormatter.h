@@ -11,7 +11,7 @@
 - (id)_stringFromRange:(id)arg1 numberFormatter:(id)arg2 displayType:(id)arg3 unitController:(id)arg4;
 - (id)formattedValueStringForChartData:(id)arg1 options:(long long)arg2;
 - (id)formattedUnitStringForChartData:(id)arg1;
-- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1;
+- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
 - (id)_formattedStringWithRange:(id)arg1 displayUnit:(_Bool)arg2;
 
 @end

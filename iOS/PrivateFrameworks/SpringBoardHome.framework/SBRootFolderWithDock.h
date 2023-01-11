@@ -11,36 +11,28 @@
 @interface SBRootFolderWithDock <SBIconIndexNodeObserver>
 {
     SBIconListModel *_dock;
+    SBIconListModel *_todayList;
+    SBIconListModel *_favoriteTodayList;
+    SBIconListModel *_ignoredList;
 }
 
-- (id)dock;
 - (void).cxx_destruct;
+- (id)ignoredList;
+- (id)favoriteTodayList;
+- (id)todayList;
+- (id)dock;
 - (void)nodeDidMoveContainedNodes:(id)arg1;
 - (void)node:(id)arg1 didRemoveContainedNodeIdentifiers:(id)arg2;
 - (void)node:(id)arg1 didAddContainedNodeIdentifiers:(id)arg2;
-- (void)listDidMoveNodes:(id)arg1;
-- (void)list:(id)arg1 didRemoveContainedNodeIdentifiers:(id)arg2;
-- (void)list:(id)arg1 didAddContainedNodeIdentifiers:(id)arg2;
 - (void)_notifyIndexChange:(int)arg1 identifiers:(id)arg2 withValidationBlock:(CDUnknownBlockType)arg3;
-- (id)nodesAlongIndexPath:(id)arg1 consumedIndexes:(unsigned long long)arg2;
-- (id)indexPathsForContainedNodeIdentifier:(id)arg1 prefixPath:(id)arg2;
-- (id)containedNodeIdentifiers;
-- (_Bool)containsNodeIdentifier:(id)arg1;
-- (void)enumerateAllIconsWithBaseIndexPath:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)sort;
-- (void)addIconsOfClass:(Class)arg1 toSet:(id)arg2;
-- (void)markIconStateClean;
-- (_Bool)isIconStateDirty;
-- (_Bool)isValidPageIndex:(unsigned long long)arg1;
-- (void)removeList:(id)arg1;
-- (id)listsContainingLeafIconWithIdentifier:(id)arg1;
-- (id)listsContainingIcon:(id)arg1;
-- (unsigned long long)indexOfList:(id)arg1;
-- (id)listAtIndex:(unsigned long long)arg1;
-- (void)setIcon:(id)arg1;
+- (void)_setIgnoredList:(id)arg1;
+- (_Bool)supportsIgnoredList;
+- (void)_setFavoriteTodayList:(id)arg1;
+- (void)_setTodayList:(id)arg1;
+- (_Bool)supportsTodayList;
 - (void)_setDock:(id)arg1;
 - (_Bool)supportsDock;
-- (id)initWithUniqueIdentifier:(id)arg1 displayName:(id)arg2 maxListCount:(unsigned long long)arg3 maxIconCountInLists:(unsigned long long)arg4;
+- (id)initWithUniqueIdentifier:(id)arg1 displayName:(id)arg2 maxListCount:(unsigned long long)arg3 listGridSize:(struct SBHIconGridSize)arg4 iconGridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

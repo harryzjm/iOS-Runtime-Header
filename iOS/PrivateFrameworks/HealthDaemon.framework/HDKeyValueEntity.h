@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (id)propertyForSyncProvenance;
 + (id)uniquedColumns;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
@@ -24,6 +24,7 @@
 + (_Bool)_insertValues:(id)arg1 forKeys:(id)arg2 modificationDates:(id)arg3 domain:(id)arg4 category:(long long)arg5 provenance:(long long)arg6 updatePolicy:(long long)arg7 profile:(id)arg8 error:(id *)arg9;
 + (long long)_validateModificationDatePolicyWithKey:(id)arg1 domain:(id)arg2 category:(long long)arg3 modificationDate:(double)arg4 database:(id)arg5 error:(id *)arg6;
 + (long long)_shouldUpdateWithPolicy:(long long)arg1 key:(id)arg2 domain:(id)arg3 category:(long long)arg4 modificationDate:(double)arg5 database:(id)arg6 error:(id *)arg7;
++ (const char *)_insertStatementKey;
 + (_Bool)_doInsertValues:(id)arg1 forKeys:(id)arg2 modificationDates:(id)arg3 domain:(id)arg4 category:(long long)arg5 provenance:(long long)arg6 updatePolicy:(long long)arg7 database:(id)arg8 error:(id *)arg9;
 + (_Bool)_insertCodableTimestampedKeyValuePairs:(id)arg1 domain:(id)arg2 category:(long long)arg3 provenance:(long long)arg4 updatePolicy:(long long)arg5 profile:(id)arg6 error:(id *)arg7;
 + (_Bool)_insertCodableTimestampedKeyValuePairs:(id)arg1 domain:(id)arg2 category:(long long)arg3 provenance:(long long)arg4 profile:(id)arg5 error:(id *)arg6;
@@ -38,6 +39,7 @@
 + (id)_rawValuesForKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)_rawValuesForKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 database:(id)arg4 error:(id *)arg5;
 + (id)_rawValueForKey:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 entity:(id *)arg5 error:(id *)arg6;
++ (_Bool)setValueForAllKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (_Bool)removeValuesForDomain:(id)arg1 category:(long long)arg2 keys:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 + (_Bool)setValuesWithDictionary:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (_Bool)setString:(id)arg1 forKey:(id)arg2 domain:(id)arg3 category:(long long)arg4 profile:(id)arg5 error:(id *)arg6;

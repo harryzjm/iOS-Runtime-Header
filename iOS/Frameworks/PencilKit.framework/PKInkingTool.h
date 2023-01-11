@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIColor;
+@class NSString, PKInk, UIColor;
 
 @interface PKInkingTool
 {
@@ -14,7 +14,8 @@
 + (void)_computeWeightToWidthMapFor:(id)arg1 in:(unordered_map_573a5644 *)arg2;
 + (double)_calculateEdgeWidthForWeight:(double)arg1 type:(id)arg2;
 + (double)_calculateWidthForWeight:(double)arg1 type:(id)arg2;
-+ (CDStruct_5237edf5)_contextForStroke:(id)arg1 weight:(double)arg2 type:(id)arg3;
++ (CDStruct_713d3c04)_contextForStroke:(id)arg1 weight:(double)arg2 type:(id)arg3;
++ (_Bool)_isUsingSystemColorPicker;
 + (id)convertColor:(id)arg1 fromUserInterfaceStyle:(long long)arg2 to:(long long)arg3;
 + (double)maximumWidthForInkType:(id)arg1;
 + (double)minimumWidthForInkType:(id)arg1;
@@ -24,8 +25,12 @@
 @property(readonly, nonatomic) double width;
 @property(readonly, nonatomic) UIColor *color;
 @property(readonly, nonatomic) NSString *inkType;
+- (id)initWithInk:(id)arg1 width:(double)arg2;
 - (id)initWithInkType:(id)arg1 color:(id)arg2;
 - (id)initWithInkType:(id)arg1 color:(id)arg2 width:(double)arg3;
+
+// Remaining properties
+@property(readonly, nonatomic) PKInk *ink; // @dynamic ink;
 
 @end
 

@@ -29,6 +29,7 @@
 + (id)importPriority;
 + (_Bool)fileNameIsIdentifier;
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSData *previewImageData; // @synthesize previewImageData=_previewImageData;
 @property(retain, nonatomic) NSData *pointCloudData; // @synthesize pointCloudData=_pointCloudData;
 @property(copy, nonatomic) NSString *imageReference; // @synthesize imageReference=_imageReference;
@@ -37,13 +38,12 @@
 @property(copy, nonatomic) NSArray *referenceOriginTranslation; // @synthesize referenceOriginTranslation=_referenceOriginTranslation;
 @property(copy, nonatomic) NSArray *referenceOriginRotation; // @synthesize referenceOriginRotation=_referenceOriginRotation;
 @property(copy, nonatomic) NSNumber *version; // @synthesize version=_version;
-- (void).cxx_destruct;
 - (CDStruct_f1db2b5e)referenceOriginMatrix;
 - (id)pointCloudURL;
 - (id)effectiveModificationDateForCARCompiler;
 - (_Bool)isMinimallyFitForCompiling;
 - (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
-- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2;
+- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2 manifestFileData:(id)arg3;
 - (_Bool)manifestArchivist:(id)arg1 validateManifest:(id)arg2 results:(id)arg3;
 - (void)replaceChildrenFromFileSystemSnapshot:(id)arg1 results:(id)arg2;
 - (id)manifestContent;

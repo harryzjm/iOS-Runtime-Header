@@ -22,11 +22,11 @@ __attribute__((visibility("hidden")))
     struct CGImageSource *_imageSourceSubsample8;
     NSURL *_imageURL;
     NSData *_imageData;
-    int _orientation;
+    unsigned int _orientation;
 }
 
 - (void).cxx_destruct;
-- (int)exifOrientation;
+- (unsigned int)exifOrientation;
 - (id)imageData;
 - (id)imageURL;
 - (struct CGImageSource *)obtainImageSourceRefWithSubSampleFactor:(unsigned int)arg1 andLowPriorityHint:(_Bool)arg2;

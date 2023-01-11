@@ -20,6 +20,7 @@
     NSString *_requestURLBagKey;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool includeSubscriptionKeybagSyncData; // @synthesize includeSubscriptionKeybagSyncData=_includeSubscriptionKeybagSyncData;
 @property(nonatomic) _Bool includeKeybagSyncData; // @synthesize includeKeybagSyncData=_includeKeybagSyncData;
 @property(copy, nonatomic) NSString *requestURLBagKey; // @synthesize requestURLBagKey=_requestURLBagKey;
@@ -28,7 +29,6 @@
 @property(nonatomic) _Bool usePrioritizedURLSession; // @synthesize usePrioritizedURLSession=_usePrioritizedURLSession;
 @property(nonatomic, getter=isStreamingRental) _Bool streamingRental; // @synthesize streamingRental=_streamingRental;
 @property(nonatomic, getter=isPlaybackRequest) _Bool playbackRequest; // @synthesize playbackRequest=_playbackRequest;
-- (void).cxx_destruct;
 - (void)_executeWithActiveICloudAccountProperties:(id)arg1;
 - (void)cancel;
 - (void)execute;

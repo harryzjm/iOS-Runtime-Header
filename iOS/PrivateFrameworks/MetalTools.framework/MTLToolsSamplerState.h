@@ -14,12 +14,12 @@
 {
 }
 
+@property(readonly, nonatomic) unsigned long long pixelFormat;
 @property(readonly) unsigned long long uniqueIdentifier;
-@property(nonatomic) unsigned long long resourceIndex;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSString *label;
-- (void)dealloc;
-- (void)acceptVisitor:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

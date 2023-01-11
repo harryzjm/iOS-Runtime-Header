@@ -13,10 +13,7 @@
 
 @interface PPEventMetricsLogger : NSObject <NSSecureCoding>
 {
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } _lock;
+    struct _opaque_pthread_mutex_t _lock;
     NSString *_path;
     NSMutableArray *_loggedInteractionsSummary;
     NSObject<OS_dispatch_source> *_persistenceTimerSource;
@@ -38,7 +35,7 @@
 - (_Bool)_incrementInteractionForEventIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)logEventInteractionForEventWithEventIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)logEventInteractionForEventHighlight:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
-- (id)whitelistedLogFromLog:(id)arg1;
+- (id)allowedLogFromLog:(id)arg1;
 - (id)logsToSend;
 - (_Bool)_removeInteractionsSummaryLogsFromLogsAndResetStoreAge:(id)arg1;
 - (double)_storeAge;

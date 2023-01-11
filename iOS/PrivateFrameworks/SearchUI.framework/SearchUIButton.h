@@ -8,10 +8,13 @@
 
 @interface SearchUIButton : TLKButton
 {
+    _Bool _useCompactMode;
     unsigned long long _type;
 }
 
+@property(nonatomic) _Bool useCompactMode; // @synthesize useCompactMode=_useCompactMode;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
+- (void)setFixedSize:(struct CGSize)arg1;
 - (void)updateWithType:(unsigned long long)arg1;
 - (_Bool)isPlayButton;
 - (id)initWithType:(unsigned long long)arg1;

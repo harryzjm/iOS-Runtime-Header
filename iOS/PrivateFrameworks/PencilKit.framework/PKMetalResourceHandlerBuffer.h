@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PKMetalBuffer;
+@class NSMutableArray, PKMetalBuffer;
 @protocol MTLDevice;
 
 @interface PKMetalResourceHandlerBuffer : NSObject
@@ -17,9 +17,13 @@
     unsigned long long _bufferSize;
     unsigned long long _options;
     _Bool _purgeable;
+    NSMutableArray *_reusableBuffers;
 }
 
 - (void).cxx_destruct;
+- (void)deallocateReusableBuffers;
+- (void)addReusableBuffer:(id)arg1;
+- (id)newBufferWithLength:(unsigned long long)arg1 bytes:(const void *)arg2 outOffset:(unsigned long long *)arg3 outReusableMetalBuffer:(id *)arg4;
 - (id)newBufferWithLength:(unsigned long long)arg1 bytes:(const void *)arg2 outOffset:(unsigned long long *)arg3;
 - (id)initWithSize:(unsigned long long)arg1 options:(unsigned long long)arg2 device:(id)arg3 purgeable:(_Bool)arg4;
 

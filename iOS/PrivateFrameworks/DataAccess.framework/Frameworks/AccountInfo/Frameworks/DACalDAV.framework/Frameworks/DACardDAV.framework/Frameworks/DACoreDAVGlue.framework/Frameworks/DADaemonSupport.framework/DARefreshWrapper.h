@@ -23,6 +23,7 @@
     long long _fetchInterval;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long fetchInterval; // @synthesize fetchInterval=_fetchInterval;
 @property(retain, nonatomic) NSMutableSet *refreshCollections; // @synthesize refreshCollections=_refreshCollections;
 @property(nonatomic) int refreshReason; // @synthesize refreshReason=_refreshReason;
@@ -31,7 +32,6 @@
 @property(retain, nonatomic) NSDate *pushRegistrationTime; // @synthesize pushRegistrationTime=_pushRegistrationTime;
 @property(nonatomic) int pushState; // @synthesize pushState=_pushState;
 @property(nonatomic) __weak id <DARefreshManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)retryCollections:(id)arg1 after:(double)arg2 reason:(int)arg3;
 - (void)dailyRefreshActivityFired;
 - (void)_retryActivityFired;
@@ -40,14 +40,14 @@
 - (void)tokenRegistrationRequest:(id)arg1 finishedWithError:(id)arg2;
 - (void)cancelAllTokenRegistrations;
 - (id)description;
-- (_Bool)isSetToSystemFetchInterval;
+- (_Bool)isSetToExpectedFetchInterval;
 - (void)cancelFetchActivity;
 - (void)startFetchActivityForPush;
-- (void)startFetchActivityForSystemPCStyle;
+- (void)startFetchActivityForFetch;
 - (void)startFetchActivityWithInterval:(long long)arg1;
 - (id)_fetchActivityCriteriaInOnPowerMode;
 - (id)_fetchActivityCriteriaWithInterval:(long long)arg1;
-- (long long)XPCActivityIntervalFromSystemSetting;
+- (long long)XPCActivityInterval;
 - (const char *)fetchActivityIdentifier;
 - (id)_stringForStyle:(int)arg1;
 - (void)stopCollectionsRefresh;

@@ -8,7 +8,7 @@
 
 @interface NSConstantDictionary <NSFastEnumeration>
 {
-    unsigned long long _hashOptions;
+    unsigned long long _options;
     unsigned long long _count;
     const id *_keys;
     const id *_objects;
@@ -26,7 +26,6 @@
 - (id)retain;
 - (id)autorelease;
 - (id)init;
-- (id)_cfMutableCopy;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopy;
 - (id)objectEnumerator;

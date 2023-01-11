@@ -10,13 +10,13 @@
 
 @interface VKMuninMarker : NSObject
 {
-    struct optional<md::mun::CollectionPoint> _collectionPoint;
+    optional_ff574c75 _collectionPoint;
     CDStruct_071ac149 _coordinate;
 }
 
-@property(readonly, nonatomic) CDStruct_071ac149 coordinate; // @synthesize coordinate=_coordinate;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDStruct_071ac149 coordinate; // @synthesize coordinate=_coordinate;
 @property(readonly, nonatomic) unsigned int buildId;
 @property(readonly, nonatomic) unsigned long long pointId;
 @property(readonly, nonatomic) _Bool canMoveToMarker;

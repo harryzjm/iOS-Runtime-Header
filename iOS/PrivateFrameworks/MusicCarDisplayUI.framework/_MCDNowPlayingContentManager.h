@@ -7,24 +7,29 @@
 #import <objc/NSObject.h>
 
 #import <MusicCarDisplayUI/CARSessionObserving-Protocol.h>
+#import <MusicCarDisplayUI/CPUINowPlayingViewControllerDataSource-Protocol.h>
+#import <MusicCarDisplayUI/CPUINowPlayingViewControllerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/MCDNowPlayingContentManagerProtocol-Protocol.h>
-#import <MusicCarDisplayUI/MCDNowPlayingViewControllerDataSource-Protocol.h>
-#import <MusicCarDisplayUI/MCDNowPlayingViewControllerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/MPRequestResponseControllerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class CARSessionStatus, MPArtworkCatalog, MPCPlayerResponse, MPCPlayerResponseItem, MPModelPlaylist, MPModelPlaylistEntry, MPModelRadioStation, MPModelSong, MPRequestResponseController, MSVTimer, NSString, UIAlertController, UIImage, UITableView;
+@class CARSessionStatus, MPArtworkCatalog, MPCPlayerResponse, MPCPlayerResponseItem, MPModelPlaylist, MPModelPlaylistEntry, MPModelRadioStation, MPModelSong, MPRequestResponseController, MSVTimer, NSMutableDictionary, NSString, UIAlertController, UIImage, UITableView;
 @protocol MCDNowPlayingContentManagerDelegate, MCDNowPlayingDataSource;
 
-@interface _MCDNowPlayingContentManager : NSObject <MPRequestResponseControllerDelegate, UITableViewDelegate, UITableViewDataSource, CARSessionObserving, MCDNowPlayingContentManagerProtocol, MCDNowPlayingViewControllerDataSource, MCDNowPlayingViewControllerDelegate>
+@interface _MCDNowPlayingContentManager : NSObject <MPRequestResponseControllerDelegate, UITableViewDelegate, UITableViewDataSource, CARSessionObserving, MCDNowPlayingContentManagerProtocol, CPUINowPlayingViewControllerDataSource, CPUINowPlayingViewControllerDelegate>
 {
     _Bool limitedUI;
+    _Bool _allowsAlbumArt;
     Class tableCellClass;
     MPModelSong *currentPlayingSong;
     MPModelPlaylistEntry *currentPlayingPlaylistEntry;
     MPModelPlaylist *currentPlayingPlaylist;
     MPModelRadioStation *currentPlayingRadioStation;
+    id <MCDNowPlayingContentManagerDelegate> _delegate;
+    MPCPlayerResponse *_lastReceivedResponse;
+    UITableView *_tableView;
+    MPCPlayerResponseItem *_nowPlayingItem;
     MPRequestResponseController *_requestController;
     UIImage *_albumArtwork;
     MPArtworkCatalog *_artworkCatalog;
@@ -32,18 +37,16 @@
     NSString *_bundleID;
     CARSessionStatus *_carSessionStatus;
     UIAlertController *_alertController;
+    long long _playerState;
+    NSMutableDictionary *_artworkCache;
     MSVTimer *_artworkTimer;
-    id <MCDNowPlayingContentManagerDelegate> _delegate;
-    MPCPlayerResponse *_lastReceivedResponse;
-    UITableView *_tableView;
-    MPCPlayerResponseItem *_nowPlayingItem;
 }
 
-@property(retain, nonatomic) MPCPlayerResponseItem *nowPlayingItem; // @synthesize nowPlayingItem=_nowPlayingItem;
-@property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
-@property(retain, nonatomic) MPCPlayerResponse *lastReceivedResponse; // @synthesize lastReceivedResponse=_lastReceivedResponse;
-@property(nonatomic) __weak id <MCDNowPlayingContentManagerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool allowsAlbumArt; // @synthesize allowsAlbumArt=_allowsAlbumArt;
 @property(retain, nonatomic) MSVTimer *artworkTimer; // @synthesize artworkTimer=_artworkTimer;
+@property(retain, nonatomic) NSMutableDictionary *artworkCache; // @synthesize artworkCache=_artworkCache;
+@property(nonatomic) long long playerState; // @synthesize playerState=_playerState;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(retain, nonatomic) CARSessionStatus *carSessionStatus; // @synthesize carSessionStatus=_carSessionStatus;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -51,26 +54,35 @@
 @property(retain, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property(retain, nonatomic) UIImage *albumArtwork; // @synthesize albumArtwork=_albumArtwork;
 @property(retain, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
+@property(retain, nonatomic) MPCPlayerResponseItem *nowPlayingItem; // @synthesize nowPlayingItem=_nowPlayingItem;
+@property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
+@property(retain, nonatomic) MPCPlayerResponse *lastReceivedResponse; // @synthesize lastReceivedResponse=_lastReceivedResponse;
+@property(nonatomic) __weak id <MCDNowPlayingContentManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) MPModelRadioStation *currentPlayingRadioStation; // @synthesize currentPlayingRadioStation;
 @property(retain, nonatomic) MPModelPlaylist *currentPlayingPlaylist; // @synthesize currentPlayingPlaylist;
 @property(retain, nonatomic) MPModelPlaylistEntry *currentPlayingPlaylistEntry; // @synthesize currentPlayingPlaylistEntry;
 @property(retain, nonatomic) MPModelSong *currentPlayingSong; // @synthesize currentPlayingSong;
 @property(nonatomic) _Bool limitedUI; // @synthesize limitedUI;
 @property(nonatomic) __weak Class tableCellClass; // @synthesize tableCellClass;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *nowPlayingBundleID;
 - (void)_performChangeRequest:(id)arg1;
+- (_Bool)nowPlayingViewControllerShouldUseMusicExplicitGlyph:(id)arg1;
 - (id)nowPlayingViewControllerGetPlaybackRate:(id)arg1;
 - (void)nowPlayingViewControllerChangePlaybackRate:(id)arg1;
 - (_Bool)nowPlayingViewControllerCanShowChangePlaybackRate:(id)arg1;
 - (void)nowPlayingViewControllerToggleRepeat:(id)arg1;
 - (_Bool)nowPlayingViewControllerCanRepeat:(id)arg1;
+- (_Bool)nowPlayingViewControllerCanShowAlbumLink:(id)arg1;
+- (_Bool)nowPlayingViewControllerCanShowAlbumArt:(id)arg1;
+- (void)nowPlayingViewControllerUpNextButtonTapped:(id)arg1;
+- (_Bool)nowPlayingViewControllerCanShowUpNext:(id)arg1;
 - (void)nowPlayingViewControllerToggleShuffle:(id)arg1;
 - (_Bool)nowPlayingViewControllerCanShuffle:(id)arg1;
+- (long long)placeholderTypeForNowPlayingViewController:(id)arg1;
 - (long long)repeatTypeForNowPlayingViewController:(id)arg1;
 - (long long)shuffleTypeForNowPlayingViewController:(id)arg1;
 - (_Bool)nowPlayingViewControllerIsPlaying:(id)arg1;
-- (CDStruct_fce57115)durationSnapshotForNowPlayingViewController:(id)arg1;
+- (CDStruct_1c9ae071)durationSnapshotForNowPlayingViewController:(id)arg1;
 - (_Bool)nowPlayingViewControllerIsShowingExplicitTrack:(id)arg1;
 - (id)backgroundArtForNowPlayingController:(id)arg1;
 - (id)titleForNowPlayingController:(id)arg1;
@@ -91,7 +103,9 @@
 - (id)_setupRequest;
 - (void)_performRequest;
 - (void)_limitedUIChanged:(id)arg1;
+- (void)session:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)sessionDidConnect:(id)arg1;
+- (_Bool)_sessionAllowsAlbumArt:(id)arg1;
 - (void)viewWillDisappear;
 - (void)endRequestObservation;
 - (void)beginRequestObservation;

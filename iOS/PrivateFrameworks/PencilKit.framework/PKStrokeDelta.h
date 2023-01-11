@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, PKStroke, _PKStrokeData;
+@class NSUUID, PKStroke, PKStrokePath;
 
 @interface PKStrokeDelta : NSObject
 {
     PKStroke *_deltaStroke;
-    _PKStrokeData *_deltaStrokeData;
+    PKStrokePath *_deltaStrokeData;
     NSUUID *_strokeUUID;
 }
 
-@property(retain, nonatomic) NSUUID *_strokeUUID; // @synthesize _strokeUUID;
-@property(retain, nonatomic) _PKStrokeData *deltaStrokeData; // @synthesize deltaStrokeData=_deltaStrokeData;
-@property(retain, nonatomic) PKStroke *deltaStroke; // @synthesize deltaStroke=_deltaStroke;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *_strokeUUID; // @synthesize _strokeUUID;
+@property(retain, nonatomic) PKStrokePath *deltaStrokeData; // @synthesize deltaStrokeData=_deltaStrokeData;
+@property(retain, nonatomic) PKStroke *deltaStroke; // @synthesize deltaStroke=_deltaStroke;
 - (id)description;
 - (void)saveToArchive:(struct StrokeDelta *)arg1;
 - (id)dataRepresentation;

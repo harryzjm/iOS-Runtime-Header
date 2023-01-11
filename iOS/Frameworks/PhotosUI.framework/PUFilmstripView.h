@@ -6,6 +6,7 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUI/PHVideoScrubberFilmstripView-Protocol.h>
 #import <PhotosUI/PUTilingViewTileSource-Protocol.h>
 #import <PhotosUI/PUTilingViewTileTransitionDelegate-Protocol.h>
 #import <PhotosUI/PXLivePhotoTrimScrubberFilmStripView-Protocol.h>
@@ -14,7 +15,7 @@
 @class AVAsset, AVVideoComposition, NSArray, NSObject, NSString, PUFilmstripDataSource, PUFilmstripMediaProvider, PUTileViewAnimator, PUTilingView, UIImage;
 @protocol OS_dispatch_queue;
 
-@interface PUFilmstripView : UIView <PXLivePhotoTrimScrubberFilmStripView, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, UIScrollViewDelegate>
+@interface PUFilmstripView : UIView <PXLivePhotoTrimScrubberFilmStripView, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, UIScrollViewDelegate, PHVideoScrubberFilmstripView>
 {
     _Bool _needsUpdateThumbnailAspectRatio;
     _Bool _needsUpdateDataSource;
@@ -36,6 +37,7 @@
     struct CGRect _visibleRect;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *generatedPlaceholderImage; // @synthesize generatedPlaceholderImage=_generatedPlaceholderImage;
 @property(nonatomic, setter=_setThumbnailAspectRatio:) double _thumbnailAspectRatio; // @synthesize _thumbnailAspectRatio=__thumbnailAspectRatio;
 @property(retain, nonatomic, setter=_setDataSource:) PUFilmstripDataSource *_dataSource; // @synthesize _dataSource=__dataSource;
@@ -46,9 +48,8 @@
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(nonatomic) _Bool generatesPlaceholderImage; // @synthesize generatesPlaceholderImage=_generatesPlaceholderImage;
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
-@property(copy, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
-@property(copy, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
+@property(readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
 - (id)tilingView:(id)arg1 dataSourceConverterForTransitionFromLayout:(id)arg2 toLayout:(id)arg3;
 - (id)tilingView:(id)arg1 tileTransitionCoordinatorForChangeFromFrame:(struct CGRect)arg2 toFrame:(struct CGRect)arg3 duration:(double)arg4;
 - (id)tilingView:(id)arg1 tileTransitionCoordinatorForTransitionFromLayout:(id)arg2 toLayout:(id)arg3 withContext:(id)arg4;
@@ -70,6 +71,8 @@
 - (void)layoutSubviews;
 - (void)_releaseAVObjects;
 - (void)reloadThumbnails;
+- (void)setAsset:(id)arg1 videoComposition:(id)arg2;
+- (void)setAsset:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setLivePhotoTrimScrubberThumbnail:(id)arg1;
 
@@ -78,6 +81,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(nonatomic) __weak id thumbnailUpdatingDelegate;
 
 @end
 

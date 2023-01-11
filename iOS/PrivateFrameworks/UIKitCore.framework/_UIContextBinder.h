@@ -6,38 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIAnimationFenceCoordinating-Protocol.h>
-
-@class NSArray, NSMutableArray, NSMutableOrderedSet, NSPointerArray, NSString;
+@class NSArray, NSMutableOrderedSet, NSPointerArray;
 @protocol _UIContextBinderContextCreationPolicyHolding, _UIContextBinding;
 
-@interface _UIContextBinder : NSObject <_UIAnimationFenceCoordinating>
+@interface _UIContextBinder : NSObject
 {
     NSPointerArray *_enrolledBindables;
     NSPointerArray *_attachedBindables;
     NSMutableOrderedSet *_contexts;
-    _Bool __registeredPreCommitHandler;
-    NSMutableArray *__preCommitHandlers;
-    CDUnknownBlockType __realPreCommitHandler;
-    CDUnknownBlockType __realPostCommitHandler;
     id <_UIContextBinding> _substrate;
     long long _contextManagementPolicy;
     id <_UIContextBinderContextCreationPolicyHolding> _contextCreationPolicyHolder;
 }
 
 + (id)createContextForBindable:(id)arg1 withSubstrate:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <_UIContextBinderContextCreationPolicyHolding> contextCreationPolicyHolder; // @synthesize contextCreationPolicyHolder=_contextCreationPolicyHolder;
 @property(nonatomic) long long contextManagementPolicy; // @synthesize contextManagementPolicy=_contextManagementPolicy;
 @property(readonly, nonatomic) id <_UIContextBinding> substrate; // @synthesize substrate=_substrate;
-- (void).cxx_destruct;
-- (void)_synchronizeDrawingWithFence:(id)arg1 preCommitHandler:(CDUnknownBlockType)arg2;
-- (void)_synchronizeDrawingAcrossProcessesOverPort:(unsigned int)arg1 withPreCommitHandler:(CDUnknownBlockType)arg2;
-- (void)_synchronizeDrawingAcrossProcessesOverPort:(unsigned int)arg1;
-- (unsigned int)_synchronizeDrawingAcrossProcesses;
-- (void)_synchronizeDrawingWithPreCommitHandler:(CDUnknownBlockType)arg1;
-- (void)_synchronizeDrawingWithFence:(id)arg1;
-- (id)_synchronizedDrawingFence;
-- (void)_synchronizeDrawing;
 - (id)_contextForBindable:(id)arg1;
 - (_Bool)permitContextCreationForBindable:(id)arg1;
 - (void)recreateContextForBindable:(id)arg1;
@@ -57,12 +43,6 @@
 - (void)expellBindable:(id)arg1;
 - (void)enrollBindable:(id)arg1;
 - (id)initWithSubstrate:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

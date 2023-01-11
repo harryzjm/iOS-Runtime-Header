@@ -10,7 +10,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKClinicalBrand, NSString, NSURL;
+@class HKClinicalBrand, HKFHIRVersion, NSString, NSURL;
 
 @interface HKClinicalGateway : NSObject <NSCopying, NSSecureCoding, HKClinicalBrandable>
 {
@@ -26,9 +26,14 @@
     long long _status;
     long long _type;
     HKClinicalBrand *_brand;
+    NSString *_country;
+    HKFHIRVersion *_FHIRVersion;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) HKFHIRVersion *FHIRVersion; // @synthesize FHIRVersion=_FHIRVersion;
+@property(readonly, copy, nonatomic) NSString *country; // @synthesize country=_country;
 @property(readonly, copy, nonatomic) HKClinicalBrand *brand; // @synthesize brand=_brand;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) long long status; // @synthesize status=_status;
@@ -41,14 +46,13 @@
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithExternalID:(id)arg1 title:(id)arg2 subtitle:(id)arg3 displayableDescription:(id)arg4 phoneNumber:(id)arg5 informationURL:(id)arg6 passwordResetURL:(id)arg7 patientPortalURL:(id)arg8 signupURL:(id)arg9 status:(long long)arg10 type:(long long)arg11 brand:(id)arg12;
+- (id)initWithExternalID:(id)arg1 title:(id)arg2 subtitle:(id)arg3 displayableDescription:(id)arg4 phoneNumber:(id)arg5 informationURL:(id)arg6 passwordResetURL:(id)arg7 patientPortalURL:(id)arg8 signupURL:(id)arg9 status:(long long)arg10 type:(long long)arg11 brand:(id)arg12 country:(id)arg13 FHIRVersion:(id)arg14;
 - (id)init;
 
 // Remaining properties

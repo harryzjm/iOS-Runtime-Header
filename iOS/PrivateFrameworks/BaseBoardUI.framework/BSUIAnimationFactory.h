@@ -13,8 +13,8 @@
 
 @interface BSUIAnimationFactory : NSObject <_UIBasicAnimationFactory, NSCopying>
 {
-    BSAnimationSettings *_settings;
     _Bool _allowsAdditiveAnimations;
+    BSAnimationSettings *_settings;
 }
 
 + (double)globalSlowDownFactor;
@@ -43,9 +43,9 @@
 + (id)factoryWithDuration:(double)arg1;
 + (id)factoryWithSettings:(id)arg1 timingFunction:(id)arg2;
 + (id)factoryWithSettings:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsAdditiveAnimations; // @synthesize allowsAdditiveAnimations=_allowsAdditiveAnimations;
 @property(readonly, copy, nonatomic) BSAnimationSettings *settings; // @synthesize settings=_settings;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -57,10 +57,8 @@
 @property(readonly, copy, nonatomic) BSAnimationSettings *effectiveSettings;
 @property(readonly, nonatomic) double delay;
 @property(readonly, nonatomic) double duration;
-- (void)_animateWithAdditionalDelay:(double)arg1 options:(unsigned long long)arg2 actions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)factoryWithTimingFunction:(id)arg1;
 - (id)init;
-- (id)_initWithSettings:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

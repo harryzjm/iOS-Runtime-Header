@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_widthAdjustmentConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *widthAdjustmentConstraint; // @synthesize widthAdjustmentConstraint=_widthAdjustmentConstraint;
 @property(retain, nonatomic) NSArray *adjustableConstraints; // @synthesize adjustableConstraints=_adjustableConstraints;
 @property(retain, nonatomic) NSLayoutConstraint *containerViewTopConstraits; // @synthesize containerViewTopConstraits=_containerViewTopConstraits;
@@ -29,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *mediaView; // @synthesize mediaView=_mediaView;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(nonatomic) long long appearance; // @synthesize appearance=_appearance;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) long long textBodyMaxLines;
 @property(readonly, nonatomic) double mediaLayoutWidthAdjustment;
 @property(readonly, nonatomic) double pagingInterval;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *textTitleDescriptions;
 @property(readonly, nonatomic) NSString *buttonTitle;
 - (void)extraButtonTapAction;
+- (void)restartPagingAnimation;
 - (void)tapInsideButton:(id)arg1;
 - (id)constructMediaView;
 - (void)updateMediaViewTextAndPlacement;

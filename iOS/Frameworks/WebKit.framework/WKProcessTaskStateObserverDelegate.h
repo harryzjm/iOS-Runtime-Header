@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property(copy) CDUnknownBlockType taskStateChangedCallback; // @synthesize taskStateChangedCallback=_taskStateChangedCallback;
 - (void)process:(id)arg1 taskStateDidChange:(long long)arg2;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

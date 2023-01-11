@@ -17,9 +17,9 @@
     DEDController *_delegate;
 }
 
+- (void).cxx_destruct;
 @property __weak DEDController *delegate; // @synthesize delegate=_delegate;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
-- (void).cxx_destruct;
 - (void)cancelNotifySession:(id)arg1;
 - (void)notifySession:(id)arg1;
 - (void)didCancelSession:(id)arg1;
@@ -33,6 +33,8 @@
 - (void)hasCollected:(id)arg1 isCollecting:(id)arg2 inSession:(id)arg3;
 - (void)syncSessionStatusWithSession:(id)arg1;
 - (void)getSessionStatusWithSession:(id)arg1;
+- (void)didGetState:(long long)arg1 info:(id)arg2 sessionID:(id)arg3;
+- (void)getSessionStateWithSession:(id)arg1;
 - (void)terminateExtension:(id)arg1 info:(id)arg2 session:(id)arg3;
 - (void)finishedDiagnosticWithIdentifier:(id)arg1 result:(id)arg2 session:(id)arg3;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 deferRunUntil:(id)arg3 session:(id)arg4;

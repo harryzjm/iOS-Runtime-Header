@@ -15,12 +15,15 @@
     TLKMultilineText *_multilineText;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool automaticUrlification; // @synthesize automaticUrlification=_automaticUrlification;
 @property(retain, nonatomic) TLKMultilineText *multilineText; // @synthesize multilineText=_multilineText;
 @property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
-- (void).cxx_destruct;
+- (double)effectiveBaselineOffsetFromBottom;
+- (double)effectiveFirstBaselineOffsetFromTop;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)_usesNonVibrantAppearance;
+- (void)updateAttributedString;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)urlify;
 - (void)didMoveToWindow;

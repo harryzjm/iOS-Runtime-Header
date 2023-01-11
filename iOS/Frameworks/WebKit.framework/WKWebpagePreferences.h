@@ -16,7 +16,10 @@
 }
 
 + (id)defaultPreferences;
+- (unsigned long long)_mouseEventPolicy;
+- (void)_setMouseEventPolicy:(unsigned long long)arg1;
 @property(nonatomic) long long preferredContentMode;
+@property(nonatomic) _Bool allowsContentJavaScript;
 @property(readonly) struct Object *_apiObject;
 - (void)_setApplicationNameForUserAgentWithModernCompatibility:(id)arg1;
 - (id)_applicationNameForUserAgentWithModernCompatibility;
@@ -24,10 +27,12 @@
 - (_Bool)_allowSiteSpecificQuirksToOverrideCompatibilityMode;
 - (id)_customNavigatorPlatform;
 - (void)_setCustomNavigatorPlatform:(id)arg1;
-- (id)_customJavaScriptUserAgentAsSiteSpecificQuirks;
-- (void)_setCustomJavaScriptUserAgentAsSiteSpecificQuirks:(id)arg1;
+- (id)_customUserAgentAsSiteSpecificQuirks;
+- (void)_setCustomUserAgentAsSiteSpecificQuirks:(id)arg1;
 - (id)_customUserAgent;
 - (void)_setCustomUserAgent:(id)arg1;
+- (void)_setUserContentController:(id)arg1;
+- (id)_userContentController;
 - (void)_setWebsiteDataStore:(id)arg1;
 - (id)_websiteDataStore;
 - (void)_setCustomHeaderFields:(id)arg1;

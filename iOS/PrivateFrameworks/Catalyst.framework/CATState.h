@@ -10,17 +10,17 @@
 
 @interface CATState : NSObject
 {
-    NSMutableDictionary *mTranstionByTriggeringEvent;
+    NSMutableDictionary *mTransitionByTriggeringEvent;
     NSString *_name;
     SEL _enterAction;
     SEL _exitAction;
 }
 
 + (id)new;
+- (void).cxx_destruct;
 @property(nonatomic) SEL exitAction; // @synthesize exitAction=_exitAction;
 @property(nonatomic) SEL enterAction; // @synthesize enterAction=_enterAction;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (id)transitionWithTriggeringEvent:(id)arg1;
 - (void)addTransitionToState:(id)arg1 triggeringEvent:(id)arg2 action:(SEL)arg3;
 - (void)addTransitionToState:(id)arg1 triggeringEvent:(id)arg2;

@@ -13,7 +13,6 @@
 + (id)sharedUtilities;
 + (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3 failureHandler:(CDUnknownBlockType)arg4;
 + (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3;
-+ (_Bool)isMMSEnabled;
 - (id)sendComposition:(id)arg1 toConversation:(id)arg2 useStandalone:(_Bool)arg3;
 - (id)_uniqueFilePathForFilename:(id)arg1;
 - (id)_sendMessageAndReturnGUIDs:(id)arg1;
@@ -21,7 +20,6 @@
 - (void)sendMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3 failureHandler:(CDUnknownBlockType)arg4;
 - (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3;
-- (_Bool)isMMSEnabledForPhoneNumber:(id)arg1 simID:(id)arg2;
 @property(readonly, nonatomic, getter=isMMSEnabled) _Bool MMSEnabled;
 - (_Bool)isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
 

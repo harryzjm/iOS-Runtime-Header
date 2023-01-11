@@ -11,6 +11,13 @@
 @class EFSQLBinding, NSString;
 
 @interface NSData (EmailFoundationAdditions) <EFSQLBindable>
++ (id)ef_crlfData;
+- (_Bool)ef_containsData:(id)arg1;
+- (_Bool)ef_hasSuffix:(id)arg1;
+- (struct _NSRange)ef_rangeOfData:(id)arg1 options:(unsigned long long)arg2;
+- (struct _NSRange)ef_rangeOfData:(id)arg1;
+- (id)ef_subdataToIndex:(unsigned long long)arg1;
+- (id)ef_subdataFromIndex:(unsigned long long)arg1;
 @property(readonly, copy) NSData *ef_sha256Digest;
 - (id)ef_sha256DigestWithSalts:(id)arg1;
 @property(readonly, copy) NSString *ef_hexString;

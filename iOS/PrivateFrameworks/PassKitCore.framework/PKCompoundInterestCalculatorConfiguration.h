@@ -20,6 +20,8 @@
     NSDate *_periodEndDate;
     NSDecimalNumber *_periodStartingBalance;
     NSDecimalNumber *_remainingPeriodStartingBalance;
+    NSDecimalNumber *_remainingPeriodMinimumPayment;
+    NSDecimalNumber *_remainingPeriodMinimumPaymentExcludedFromInterestCalculation;
     NSDecimalNumber *_currentBalance;
     NSDecimalNumber *_unpostedInterest;
     NSDate *_unpostedInterestTimestamp;
@@ -29,6 +31,7 @@
 }
 
 + (id)configurationWithCreditAccount:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimeZone *productTimeZone; // @synthesize productTimeZone=_productTimeZone;
 @property(copy, nonatomic) NSArray *futurePayments; // @synthesize futurePayments=_futurePayments;
 @property(copy, nonatomic) NSArray *periodTransactions; // @synthesize periodTransactions=_periodTransactions;
@@ -37,6 +40,8 @@
 @property(nonatomic) _Bool isInDisasterRecovery; // @synthesize isInDisasterRecovery=_isInDisasterRecovery;
 @property(nonatomic) _Bool inGrace; // @synthesize inGrace=_inGrace;
 @property(retain, nonatomic) NSDecimalNumber *currentBalance; // @synthesize currentBalance=_currentBalance;
+@property(retain, nonatomic) NSDecimalNumber *remainingPeriodMinimumPaymentExcludedFromInterestCalculation; // @synthesize remainingPeriodMinimumPaymentExcludedFromInterestCalculation=_remainingPeriodMinimumPaymentExcludedFromInterestCalculation;
+@property(retain, nonatomic) NSDecimalNumber *remainingPeriodMinimumPayment; // @synthesize remainingPeriodMinimumPayment=_remainingPeriodMinimumPayment;
 @property(retain, nonatomic) NSDecimalNumber *remainingPeriodStartingBalance; // @synthesize remainingPeriodStartingBalance=_remainingPeriodStartingBalance;
 @property(retain, nonatomic) NSDecimalNumber *periodStartingBalance; // @synthesize periodStartingBalance=_periodStartingBalance;
 @property(retain, nonatomic) NSDate *periodEndDate; // @synthesize periodEndDate=_periodEndDate;
@@ -44,8 +49,8 @@
 @property(nonatomic) long long compoundingPeriods; // @synthesize compoundingPeriods=_compoundingPeriods;
 @property(retain, nonatomic, setter=setAPR:) NSDecimalNumber *apr; // @synthesize apr=_apr;
 @property(nonatomic) unsigned long long calculationMethod; // @synthesize calculationMethod=_calculationMethod;
-- (void).cxx_destruct;
 - (id)description;
+- (long long)_daysInYearForDate:(id)arg1 withTimeZone:(id)arg2;
 - (void)updateWithCreditAccount:(id)arg1;
 - (id)init;
 

@@ -13,8 +13,9 @@
     NSDate *_currentDate;
 }
 
-@property(retain, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
+- (id)appIdentifier;
 - (void)saveObject:(id)arg1 withObjectType:(id)arg2 item:(id)arg3;
 - (void)forceUpdateSelectedUnit;
 - (void)updateParameterStates;
@@ -28,6 +29,7 @@
 - (id)dateForParameterValueWithKey:(id)arg1 error:(id *)arg2;
 - (void)handleWithQuantityType:(id)arg1;
 - (void)handleWithCategoryType:(id)arg1;
+- (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end
